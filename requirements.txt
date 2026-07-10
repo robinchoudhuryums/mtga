@@ -1,0 +1,8 @@
+# Core tooling (validate.py, enrich.py, query.py, deck.py) uses only the Python
+# standard library — no install needed for those.
+#
+# The dependencies below are ONLY required for scripts/sheets_sync.py, which
+# syncs the CSV with a Google Sheet. Install them with:
+#     pip install -r requirements.txt
+gspread>=6.0
+google-auth>=2.0

@@ -1,0 +1,7 @@
+# Deck: Merfolk Tribal (example)
+# Format: Standard
+# This is a sample deck file showing the format. Replace it with your own.
+
+4 Llanowar Elves
+2 Cheerful Osteomancer
+1 Kumena, Tyrant of Orazca (XLN)
