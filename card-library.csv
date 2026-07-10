@@ -1,1 +1,440 @@
 Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Quantity Owned
+Agent Maria Hill,Legendary Creature — Human Spy Hero,"Whenever Agent Maria Hill becomes tapped to pay a teamwork cost, put a +1/+1 counter on her and draw a card.",W,,MSH,2,1
+Dawnstrike Vanguard,Creature — Human Knight,"Lifelink
+At the beginning of your end step, if you control two or more tapped creatures, put a +1/+1 counter on each creature you control other than this creature.",W,,EOE,10,1
+Crowd of True Believers,Creature — Human Citizen,{T}: Target creature you control that's attacking alone gets +1/+0 until end of turn. You gain 1 life.,W,,MSH,14,1
+Archon's Glory,Instant,"Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)
+Target creature gets +2/+2 until end of turn. If this spell was bargained, that creature also gains flying and lifelink until end of turn.",W,,WOE,2,1
+Crumb and Get It,Instant,"Gift a Food (You may promise an opponent a gift as you cast this spell. If you do, they create a Food token before its other effects. It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+Target creature you control gets +2/+2 until end of turn. If the gift was promised, that creature also gains indestructible until end of turn.",W,,BLB,8,1
+Divine Resilience,Instant,"Kicker {2}{W} (You may pay an additional {2}{W} as you cast this spell.)
+Target creature you control gains indestructible until end of turn. If this spell was kicked, instead any number of target creatures you control gain indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy them.)",W,,FDN,10,1
+Curious Farm Animals,Creature — Boar Elk Bird Ox,"When this creature dies, you gain 3 life.
+{2}, Sacrifice this creature: Destroy up to one target artifact or enchantment.",W,,TLA,14,1
+Elite Interceptor,Creature — Human Wizard // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // You may tap or untap target creature.
+Draw a card.",W,,SOS,12,1
+Erode,Instant,"Destroy target creature or planeswalker. Its controller may search their library for a basic land card, put it onto the battlefield tapped, then shuffle.",W,,SOS,15,1
+Featherbrained Filcher,Creature — Bird Mutant,"Flying
+When this creature leaves the battlefield, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",W,,TMT,6,1
+Focus Fire,Instant,"Focus Fire deals X damage to target attacking or blocking creature, where X is 2 plus the number of creatures and/or Spacecraft you control.",W,,EOE,18,1
+Goldmeadow Nomad,Creature — Kithkin Scout,"{W}, Exile this card from your graveyard: Create a 1/1 green and white Kithkin creature token. Activate only as a sorcery.",W,,ECL,18,1
+Graduation Day,Enchantment,"Repartee — Whenever you cast an instant or sorcery spell that targets a creature, put a +1/+1 counter on target creature you control.",W,,SOS,16,1
+Hamato Guardian Stance,Instant,Target creature gets +1/+3 and gains flying until end of turn. Scry 1. (Look at the top card of your library. You may put that card on the bottom.),W,,TMT,8,1
+Healer's Hawk,Creature — Bird,"Flying
+Lifelink (Damage dealt by this creature also causes you to gain that much life.)",W,,FDN,142,1
+Helicarrier Strike,Instant,"Teamwork 2 (As an additional cost to cast this spell, you may tap any number of creatures you control with total power 2 or more.)
+Helicarrier Strike deals 2 damage to target attacking or blocking creature. If this spell was cast using teamwork, it deals 4 damage to that creature instead.",W,,MSH,15,1
+Helping Hand,Sorcery,Return target creature card with mana value 3 or less from your graveyard to the battlefield tapped.,W,,SOA,5,1
+Hinterland Sanctifier,Creature — Rabbit Cleric,"Whenever another creature you control enters, you gain 1 life.",W,,FDN,730,1
+"Leonardo, Leader in Blue",Legendary Creature — Mutant Ninja Turtle,"Sneak {3}{W}{W} (You may cast this spell for {3}{W}{W} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)
+When Leonardo enters, if his sneak cost was paid, creatures you control get +2/+0 until end of turn.
+{1}{W}: Leonardo gains first strike until end of turn.",W,,TMT,16,1
+Magitek Infantry,Artifact Creature — Robot Soldier,"This creature gets +1/+0 as long as you control another artifact.
+{2}{W}: Search your library for a card named Magitek Infantry, put it onto the battlefield tapped, then shuffle.",W,,FIN,25,1
+Mardu Devotee,Creature — Human Scout,"When this creature enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)
+{1}: Add {R}, {W}, or {B}. Activate only once each turn.",W/B/R,,TDM,16,1
+Miner's Guidewing,Creature — Bird,"Flying, vigilance
+When this creature dies, target creature you control explores. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)",W,,LCI,24,1
+"Momo, Friendly Flier",Legendary Creature — Lemur Bat Ally,"Flying
+The first non-Lemur creature spell with flying you cast during each of your turns costs {1} less to cast.
+Whenever another creature you control with flying enters, Momo gets +1/+1 until end of turn.",W,,TLA,29,1
+"Momo, Playful Pet",Legendary Creature — Lemur Bat Ally,"Flying, vigilance
+When Momo leaves the battlefield, choose one —
+• Create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+• Put a +1/+1 counter on target creature you control.
+• Scry 2.",W,,TLA,30,1
+"Nick Fury, Agent of S.H.I.E.L.D.",Legendary Creature — Human Spy Hero,"Power-up — {W}{U}{B}{R}{G}: Put two +1/+1 counters on Nick Fury, then look at the top seven cards of your library. You may put a Hero, Equipment, or Vehicle card from among them onto the battlefield. If it's a double-faced card, you may transform it. Put the rest on the bottom of your library in a random order. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",W/U/B/R/G,,MSH,25,1
+Panther Pounce,Instant,"Target player investigates. Target creature gets +1/+0 and gains flying until end of turn. Untap it. (To investigate, create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",W,,MSH,29,1
+Political Triumph,Enchantment — Plan,"Whenever a creature you control enters, scry 1 and put a plan counter on this enchantment.
+When the fourth plan counter is put on this enchantment, sacrifice it, draw a card, and put a +1/+1 counter on each creature you control.",W,,MSH,31,1
+Quintessential Katana,Artifact — Equipment,"Equipped creature gets +1/+1 and has ""Whenever this creature deals combat damage, untap it and you gain 2 life.""
+Whenever a Ninja you control enters, you may attach this Equipment to it.
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",W,,TMT,23,1
+Requisition Raid,Sorcery,"Spree (Choose one or more additional costs.)
++ {1} — Destroy target artifact.
++ {1} — Destroy target enchantment.
++ {1} — Put a +1/+1 counter on each creature target player controls.",W,,SOA,10,1
+Ruin-Lurker Bat,Creature — Bat,"Flying, lifelink
+At the beginning of your end step, if you descended this turn, scry 1. (You descended if a permanent card was put into your graveyard from anywhere.)",W,,LCI,33,1
+Rustler Rampage,Instant,"Spree (Choose one or more additional costs.)
++ {1} — Untap all creatures target player controls.
++ {1} — Target creature gains double strike until end of turn.",W,,OTJ,27,1
+S.H.I.E.L.D. Spy Kit,Artifact — Equipment,"Equipped creature gets +1/+1.
+Whenever equipped creature attacks alone, untap it and scry 1. (Look at the top card of your library. You may put that card on the bottom.)
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",W,,MSH,36,1
+Starport Security,Artifact Creature — Robot Soldier,"{3}{W}, {T}: Tap another target creature. This ability costs {2} less to activate if you control a creature with a +1/+1 counter on it.",W,,EOE,39,1
+Voyager Glidecar,Artifact — Vehicle,"When this Vehicle enters, scry 1.
+Tap three other untapped creatures you control: Until end of turn, this Vehicle becomes an artifact creature and gains flying. Put a +1/+1 counter on it.
+Crew 1",W,,DFT,36,1
+Wanderbrine Trapper,Creature — Merfolk Scout,"{1}, {T}, Tap another untapped creature you control: Tap target creature an opponent controls.",W,,ECL,42,1
+Wrench,Artifact — Clue Equipment,"Equipped creature gets +1/+1 and has vigilance and ""{3}, {T}: Tap target creature.""
+{2}, Sacrifice this Equipment: Draw a card.
+Equip {2}",W,,MKM,37,1
+Yip Yip!,Instant — Lesson,"Target creature you control gets +2/+2 until end of turn. If that creature is an Ally, it also gains flying until end of turn.",W,,TLA,43,1
+You're Not Alone,Instant,"Target creature gets +2/+2 until end of turn. If you control three or more creatures, it gets +4/+4 until end of turn instead.",W,,FIN,44,1
+Action News Crew,Creature — Human Citizen,"Vigilance
+Channel — {6}, Discard this card: Put a +1/+1 counter on each creature you control. Draw a card.",W,,TMT,1,1
+Agent of Atlas,Creature — Human Spy Hero,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)",W,,MSH,3,1
+Agent Phil Coulson,Legendary Creature — Human Spy Hero,"Vigilance
+{T}: Put a +1/+1 counter on each other Hero you control.",W,,MSH,4,1
+Airbender Ascension,Enchantment,"When this enchantment enters, airbend up to one target creature.
+Whenever a creature you control enters, put a quest counter on this enchantment.
+At the beginning of your end step, if this enchantment has four or more quest counters on it, exile up to one target creature you control, then return it to the battlefield under its owner's control.",W,,TLA,6,1
+Airbender's Reversal,Instant — Lesson,"Choose one —
+• Destroy target attacking creature.
+• Airbend target creature you control. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)",W,,TLA,7,1
+Ajani's Pridemate,Creature — Cat Soldier,"Whenever you gain life, put a +1/+1 counter on this creature.",W,,FDN,135,1
+"April O'Neil, Kunoichi Trainee",Legendary Creature — Human Ninja,"When April O'Neil enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)
+April O'Neil can't be blocked by creatures with power 3 or greater.",W,,TMT,3,1
+Auspicious Arrival,Instant,"Target creature gets +2/+2 until end of turn. Investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",W,,MKM,5,1
+Battle Menu,Instant,"Choose one —
+• Attack — Create a 2/2 white Knight creature token.
+• Ability — Target creature gets +0/+4 until end of turn.
+• Magic — Destroy target creature with power 4 or greater.
+• Item — You gain 4 life.",W,,FIN,9,1
+Brave Brawler,Creature — Human Warrior Hero,"Lifelink
+Power-up — {4}{W}: Put two +1/+1 counters on this creature. (Activate each power-up ability only once. Reduce the cost by its mana cost if it entered this turn.)",W,,MSH,8,1
+Bulwark Ox,Creature — Ox Mount,"Whenever this creature attacks while saddled, put a +1/+1 counter on target creature.
+Sacrifice this creature: Creatures you control with counters on them gain hexproof and indestructible until end of turn.
+Saddle 1 (Tap any number of other creatures you control with total power 1 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",W,,DFT,7,1
+"Cloud, Midgar Mercenary",Legendary Creature — Human Soldier Mercenary,"When Cloud enters, search your library for an Equipment card, reveal it, put it into your hand, then shuffle.
+As long as Cloud is equipped, if a triggered ability of Cloud or an Equipment attached to it triggers, that ability triggers an additional time.",W,,FIN,10,1
+Coeurl,Creature — Cat Beast,"{1}{W}, {T}: Tap target nonenchantment creature.",W,,FIN,12,1
+"Colleen Wing, Street Samurai",Legendary Creature — Human Samurai Hero,"Whenever you cast a spell that targets a creature you control, put a +1/+1 counter on Colleen Wing. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)",W,,MSH,13,1
+Compassionate Healer,Creature — Human Cleric Ally,"Whenever this creature becomes tapped, you gain 1 life and scry 1. (Look at the top card of your library. You may put it on the bottom.)",W,,TLA,13,1
+Crystal Barricade,Artifact Creature — Wall,"Defender (This creature can't attack.)
+You have hexproof. (You can't be the target of spells or abilities your opponents control.)
+Prevent all noncombat damage that would be dealt to other creatures you control.",W,,FDN,7,1
+Dawnwing Marshal,Creature — Cat Soldier,"Flying
+{4}{W}: Creatures you control get +1/+1 until end of turn.",W,,FDN,570,1
+Dwarven Castle Guard,Creature — Dwarf Soldier,"When this creature dies, create a 1/1 colorless Hero creature token.",W,,FIN,18,1
+Encumbered Reejerey,Creature — Merfolk Soldier,"This creature enters with three -1/-1 counters on it.
+Whenever this creature becomes tapped while it has a -1/-1 counter on it, remove a -1/-1 counter from it.",W,,ECL,14,1
+Fortress Kin-Guard,Creature — Dog Soldier,"When this creature enters, it endures 1. (Put a +1/+1 counter on it or create a 1/1 white Spirit creature token.)",W,,TDM,12,1
+"Giada, Font of Hope",Legendary Creature — Angel,"Flying, vigilance
+Each other Angel you control enters with an additional +1/+1 counter on it for each Angel you already control.
+{T}: Add {W}. Spend this mana only to cast an Angel spell.",W,,FDN,141,1
+Harsh Annotation,Instant,Destroy target creature. Its controller creates a 1/1 white and black Inkling creature token with flying.,W,,SOS,18,1
+Invasion Reinforcements,Creature — Human Warrior Ally,"Flash
+When this creature enters, create a 1/1 white Ally creature token.",W,,TLA,24,1
+Ironpaw Aspirant,Creature — Cat Warrior,"When this creature enters, put a +1/+1 counter on target creature.",W,,LCI,18,1
+Jennifer Walters,Legendary Creature — Human Advisor Hero // Legendary Creature — Gamma Hero,"Your opponents can't cast spells during your turn.
+{3}{G}{W}{W}: Transform Jennifer Walters. Activate only as a sorcery. // Reach, trample
+Your opponents can't cast spells during your turn.
+Whenever a creature you control is dealt damage, you may have The Sensational She-Hulk deal that much damage to any target. Do this only once each turn.",W/G,,MSH,18,1
+Jeong Jeong's Deserters,Creature — Human Rebel Ally,"When this creature enters, put a +1/+1 counter on target creature.",W,,TLA,25,1
+Leader's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+Whenever you attack, put a +1/+1 counter on target attacking creature.
+{2}{W}: Level 2
+Whenever a creature you control leaves the battlefield, if it had a counter on it, you gain 2 life.
+{3}{W}: Level 3
+Whenever you cast a spell, put a +1/+1 counter on each creature you control.",W,,TMT,13,1
+"Leonardo, Cutting Edge",Legendary Creature — Mutant Ninja Turtle,"Sneak {W} (You may cast this spell for {W} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)
+Lifelink
+Whenever you gain life, put a +1/+1 counter on Leonardo.",W,,TMT,15,1
+"Lita, Little Orphan Amphibian",Legendary Creature — Mutant Ninja Turtle,"Alliance — Whenever another creature you control enters, choose one that hasn't been chosen this turn.
+• Put a +1/+1 counter on Lita.
+• Create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+• Scry 1.",W,,TMT,19,1
+Murdock's Crusade,Sorcery,"Teamwork 4 (As an additional cost to cast this spell, you may tap any number of creatures you control with total power 4 or more.)
+Choose one. If this spell was cast using teamwork, choose both instead.
+• Street Justice — Exile target creature with toughness 4 or greater.
+• Legal Justice — Exile target enchantment with mana value 4 or greater.",W,,MSH,24,1
+"Night Nurse, Healer of Heroes",Legendary Creature — Human Doctor Hero,"Flash
+Lifelink
+When Night Nurse enters, choose target permanent card in your graveyard that was put there from anywhere this turn. Return it to your hand.",W,,MSH,26,1
+Omenport Vigilante,Creature — Human Mercenary,"This creature has double strike as long as you've committed a crime this turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)",W,,OTJ,21,1
+Origin of the Avengers,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Scry 2.
+II — You may put a Hero creature card with mana value 3 or less from your hand onto the battlefield. If you don't, draw a card.
+III — Put a +1/+1 counter on each creature you control.",W,,MSH,28,1
+Pacifism,Enchantment — Aura,"Enchant creature
+Enchanted creature can't attack or block.",W,,ANB,16,1
+Path to Redemption,Enchantment — Aura,"Enchant creature
+Enchanted creature can't attack or block.
+{5}, Sacrifice this Aura: Exile enchanted creature. Create a 1/1 white Ally creature token. Activate only during your turn.",W,,TLA,31,1
+Raft Security Officer,Creature — Human Soldier,"{2}, {T}: Tap target creature. This ability costs {1} less to activate if it targets a creature with power 3 or less.",W,,MSH,33,1
+Razor Rings,Instant,Razor Rings deals 4 damage to target attacking or blocking creature. You gain life equal to the excess damage dealt this way.,W,,TLA,33,1
+Resolute Reinforcements,Creature — Human Soldier,"Flash (You may cast this spell any time you could cast an instant.)
+When this creature enters, create a 1/1 white Soldier creature token.",W,,FDN,145,1
+Return Triumphant,Sorcery,"Return target creature card with mana value 3 or less from your graveyard to the battlefield. Create a Young Hero Role token attached to it. (Enchanted creature has ""Whenever this creature attacks, if its toughness is 3 or less, put a +1/+1 counter on it."" If you put another Role on the creature later, put this one into the graveyard.)",W,,WOE,26,1
+Riverguard's Reflexes,Instant,Target creature gets +2/+2 and gains first strike until end of turn. Untap it.,W,,ECL,33,1
+Sonar Strike,Instant,"Sonar Strike deals 4 damage to target attacking, blocking, or tapped creature. You gain 3 life if you control a Bat.",W,,BLB,32,1
+South Pole Voyager,Creature — Human Scout Ally,"Whenever this creature or another Ally you control enters, you gain 1 life. If this is the second time this ability has resolved this turn, draw a card.",W,,TLA,35,1
+Spectacular Tactics,Instant,"Choose one —
+• Put a +1/+1 counter on target creature you control. It gains hexproof until end of turn.
+• Destroy target creature with power 4 or greater.",W,,SPM,15,1
+Spiral into Solitude,Enchantment — Aura,"Enchant creature
+Enchanted creature can't attack or block.
+{1}{W}, Blight 1, Sacrifice this Aura: Exile enchanted creature. (To blight 1, put a -1/-1 counter on a creature you control.)",W,,ECL,36,1
+Stone Docent,Creature — Spirit Chimera,"{W}, Exile this card from your graveyard: You gain 2 life. Surveil 1. Activate only as a sorcery. (Look at the top card of your library. You may put it into your graveyard.)",W,,SOS,36,1
+Super-Soldier Serum,Enchantment — Aura,"Enchant creature
+Enchanted creature gets +2/+2, has first strike and vigilance, and is a legendary Soldier in addition to its other types.
+Whenever enchanted creature attacks or blocks, attach any number of target Equipment you control to it.",W,,MSH,38,1
+Super Villain Lockup,Enchantment,"Flash
+When this enchantment enters, exile target tapped creature an opponent controls until this enchantment leaves the battlefield.",W,,MSH,37,1
+Take Up the Shield,Instant,"Put a +1/+1 counter on target creature. It gains lifelink and indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)",W,,MSH,39,1
+Timid Shieldbearer,Creature — Kithkin Soldier,{4}{W}: Creatures you control get +1/+1 until end of turn.,W,,ECL,39,1
+Uneasy Alliance,Enchantment — Aura,"Enchant creature
+Enchanted creature can't attack or block.
+{5}, Sacrifice this Aura: Exile enchanted creature. You create a 1/1 black Ninja creature token. Activate only as a sorcery.",W,,TMT,28,1
+Valorous Stance,Instant,"Choose one —
+• Target creature gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)
+• Destroy target creature with toughness 4 or greater.",W,,FDN,583,1
+Wanderbrine Preacher,Creature — Merfolk Cleric,"Whenever this creature becomes tapped, you gain 2 life.",W,,ECL,41,1
+Water Tribe Rallier,Creature — Human Soldier Ally,"Waterbend {5}: Look at the top four cards of your library. You may reveal a creature card with power 3 or less from among them and put it into your hand. Put the rest on the bottom of your library in a random order. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",W,,TLA,42,1
+Web-Shooters,Artifact — Equipment,"Equipped creature gets +1/+1 and has reach and ""Whenever this creature attacks, tap target creature an opponent controls.""
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",W,,SPM,22,1
+White Mage's Staff,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
+Equipped creature gets +1/+1, has ""Whenever this creature attacks, you gain 1 life,"" and is a Cleric in addition to its other types.
+Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",W,,FIN,42,1
+Youthful Valkyrie,Creature — Angel,"Flying
+Whenever another Angel you control enters, put a +1/+1 counter on this creature.",W,,FDN,149,1
+Aang's Iceberg,Enchantment,"Flash
+When this enchantment enters, exile up to one other target nonland permanent until this enchantment leaves the battlefield.
+Waterbend {3}: Sacrifice this enchantment. If you do, scry 2. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",W,,TLA,5,1
+Agents of S.H.I.E.L.D.,Creature — Human Spy Hero,"Whenever a creature you control attacks alone, that creature gets +1/+1 until end of turn.",W,,MSH,5,1
+Airbending Lesson,Instant — Lesson,"Airbend target nonland permanent. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)
+Draw a card.",W,,TLA,8,1
+"Ajani, Outland Chaperone",Legendary Planeswalker — Ajani,"+1: Create a 1/1 green and white Kithkin creature token.
+−2: Ajani deals 4 damage to target tapped creature.
+−8: Look at the top X cards of your library, where X is your life total. You may put any number of nonland permanent cards with mana value 3 or less from among them onto the battlefield. Then shuffle.",W,,ECL,4,1
+"Anafenza, Unyielding Lineage",Legendary Creature — Spirit Soldier,"Flash
+First strike
+Whenever another nontoken creature you control dies, Anafenza endures 2. (Put two +1/+1 counters on it or create a 2/2 white Spirit creature token.)",W,,TDM,2,1
+Angel of Vitality,Creature — Angel,"Flying
+If you would gain life, you gain that much life plus 1 instead.
+This creature gets +2/+2 as long as you have 25 or more life.",W,,ANB,1,1
+Antiquities on the Loose,Sorcery,"Create two 2/2 red and white Spirit creature tokens. Then if this spell was cast from anywhere other than your hand, put a +1/+1 counter on each Spirit you control.
+Flashback {4}{W}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",W,,SOS,7,1
+Auron's Inspiration,Instant,"Attacking creatures get +2/+0 until end of turn.
+Flashback {2}{W}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",W,,FIN,8,1
+Avatar Enthusiasts,Creature — Human Peasant Ally,"Whenever another Ally you control enters, put a +1/+1 counter on this creature.",W,,TLA,11,1
+Banishing Light,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.",W,,EOE,6,1
+Brightspear Zealot,Creature — Human Soldier,"Vigilance
+This creature gets +2/+0 as long as you've cast two or more spells this turn.",W,,EOE,8,1
+"Captain America, Super-Soldier",Legendary Creature — Human Soldier Hero,"First strike
+Captain America enters with a shield counter on him. (If he would be dealt damage or destroyed, remove a shield counter from him instead.)
+As long as Captain America has a shield counter on him, you and other Heroes you control have hexproof.",W,,MSH,9,1
+"Captain America, Wings of Freedom",Legendary Creature — Human Soldier Hero,"Flying, first strike, ward {1}
+Whenever Captain America attacks, each other Hero you control gets +X/+X until end of turn, where X is Captain America's toughness.",W,,MSH,10,1
+Case File Auditor,Creature — Human Detective,"When this creature enters and whenever you solve a Case, look at the top six cards of your library. You may reveal an enchantment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.
+You may spend mana as though it were mana of any color to cast Case spells.",W,,MKM,7,1
+Celestial Armor,Artifact — Equipment,"Flash (You may cast this spell any time you could cast an instant.)
+When this Equipment enters, attach it to target creature you control. That creature gains hexproof and indestructible until end of turn.
+Equipped creature gets +2/+0 and has flying.
+Equip {3}{W} ({3}{W}: Attach to target creature you control. Equip only as a sorcery.)",W,,FDN,5,1
+Clachan Festival,Kindred Enchantment — Kithkin,"When this enchantment enters, create two 1/1 green and white Kithkin creature tokens.
+{4}{W}: Create a 1/1 green and white Kithkin creature token.",W,,ECL,10,1
+Cosmogrand Zenith,Creature — Human Soldier,"Whenever you cast your second spell each turn, choose one —
+• Create two 1/1 white Human Soldier creature tokens.
+• Put a +1/+1 counter on each creature you control.",W,,EOE,9,1
+Crib Swap,Kindred Instant — Shapeshifter,"Changeling (This card is every creature type.)
+Exile target creature. Its controller creates a 1/1 colorless Shapeshifter creature token with changeling.",W,,ECL,11,1
+Crusader of Odric,Creature — Human Soldier,Crusader of Odric's power and toughness are each equal to the number of creatures you control.,W,,FDN,569,1
+Cursed Courtier,Creature — Human Noble,"Lifelink
+When this creature enters, create a Cursed Role token attached to it. (Enchanted creature is 1/1.)",W,,WOE,9,1
+Daring Mechanic,Creature — Human Artificer,{3}{W}: Put a +1/+1 counter on target Mount or Vehicle.,W,,DFT,11,1
+Dauntless Veteran,Creature — Human Soldier,"Whenever this creature attacks, creatures you control get +1/+1 until end of turn.",W,,FDN,8,1
+Dazzling Angel,Creature — Angel,"Flying
+Whenever another creature you control enters, you gain 1 life.",W,,FDN,9,1
+Dual-Sun Adepts,Creature — Human Soldier,"Double strike
+{5}: Creatures you control get +1/+1 until end of turn.",W,,EOE,12,1
+Earth Kingdom Jailer,Creature — Human Soldier Ally,"When this creature enters, exile up to one target artifact, creature, or enchantment an opponent controls with mana value 3 or greater until this creature leaves the battlefield.",W,,TLA,16,1
+Fancy Footwork,Instant — Lesson,Untap one or two target creatures. They each get +2/+2 until end of turn.,W,,TLA,19,1
+Gaelicat,Creature — Cat,"Flying, vigilance
+As long as you control two or more artifacts, this creature gets +2/+0.",W,,FIN,22,1
+Glider Kids,Creature — Human Pilot Ally,"Flying
+When this creature enters, scry 1. (Look at the top card of your library. You may put it on the bottom.)",W,,TLA,21,1
+Glider Staff,Artifact — Equipment,"When this Equipment enters, airbend up to one target creature. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)
+Equipped creature gets +1/+1 and has flying.
+Equip {2}",W,,TLA,22,1
+Hero in Training,Creature — Human Hero,"When this creature enters, draw a card. If you control another Hero, you gain 2 life.",W,,MSH,16,1
+High-Flying Ace,Creature — Bird Mutant,"Flying
+{3}{W}: Target creature without flying gains flying until end of turn. Activate only as a sorcery.",W,,TMT,9,1
+Hop to It,Sorcery,Create three 1/1 white Rabbit creature tokens.,W,,SOA,6,1
+Inside Source,Creature — Human Citizen,"When this creature enters, create a 2/2 white and blue Detective creature token.
+{3}, {T}: Target Detective you control gets +2/+0 and gains vigilance until end of turn. Activate only as a sorcery.",W,,MKM,19,1
+Inspiring Overseer,Creature — Angel Cleric,"Flying
+When this creature enters, you gain 1 life and draw a card.",W,,FDN,496,1
+Jackdaw Savior,Creature — Bird Cleric,"Flying
+Whenever this creature or another creature you control with flying dies, return another target creature card with lesser mana value from your graveyard to the battlefield.",W,,BLB,18,1
+Kree Commandos,Creature — Kree Soldier Villain,"Flying, vigilance
+Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)",W,,MSH,19,1
+"Leonardo, Big Brother",Legendary Creature — Mutant Ninja Turtle,"Sneak {W} (You may cast this spell for {W} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)
+Leonardo gets +1/+0 for each other creature you control.",W,,TMT,14,1
+Living Phone,Artifact Creature — Toy,"When this creature dies, look at the top five cards of your library. You may reveal a creature card with power 2 or less from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",W,,DSK,20,1
+Mischievous Pup,Creature — Dog,"Flash (You may cast this spell any time you could cast an instant.)
+When this creature enters, return up to one other target permanent you control to its owner's hand.",W,,LCI,25,1
+Monica Rambeau,Legendary Creature — Human Hero // Legendary Creature — Elemental Hero,"Flying, prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+{2}{R}{W}{W}: Transform Monica Rambeau. Activate only as a sorcery. // Flying, hexproof, prowess
+Whenever you cast a noncreature spell, put a +1/+1 counter on each other creature you control.",W/R,,MSH,23,1
+Moonlit Lamenter,Creature — Treefolk Cleric,"This creature enters with a -1/-1 counter on it.
+{1}{W}, Remove a counter from this creature: Draw a card. Activate only as a sorcery.",W,,ECL,26,1
+Owlin Historian,Creature — Bird Cleric,"Flying
+When this creature enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
+Whenever one or more cards leave your graveyard, this creature gets +1/+1 until end of turn.",W,,SOS,24,1
+Paladin's Arms,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
+Equipped creature gets +2/+1, has ward {1}, and is a Knight in addition to its other types.
+Lightbringer and Hero's Shield — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,,FIN,28,1
+Prideful Parent,Creature — Cat,"Vigilance (Attacking doesn't cause this creature to tap.)
+When this creature enters, create a 1/1 white Cat creature token.",W,,FDN,21,1
+Pyrrhic Strike,Instant,"As an additional cost to cast this spell, you may blight 2. (You may put two -1/-1 counters on a creature you control.)
+Choose one. If this spell's additional cost was paid, choose both instead.
+• Destroy target artifact or enchantment.
+• Destroy target creature with mana value 3 or greater.",W,,ECL,30,1
+"Quake, Agent of S.H.I.E.L.D.",Legendary Creature — Inhuman Spy Hero,"Seismic Takedown — Whenever you cast a noncreature spell, tap target creature or land.",W,,MSH,32,1
+"Red Guardian, Super-Soldier",Legendary Creature — Human Soldier Villain,"Flash
+When Red Guardian enters, destroy target creature an opponent controls that dealt damage this turn.",W,,MSH,34,1
+Reluctant Dounguard,Creature — Kithkin Soldier,"This creature enters with two -1/-1 counters on it.
+Whenever another creature you control enters while this creature has a -1/-1 counter on it, remove a -1/-1 counter from this creature.",W,,ECL,31,1
+Sage of the Skies,Creature — Human Monk,"When you cast this spell, if you've cast another spell this turn, copy this spell. (The copy becomes a token.)
+Flying, lifelink",W,,TDM,22,1
+Savior of the Sleeping,Creature — Human Knight,"Vigilance
+Whenever an enchantment you control is put into a graveyard from the battlefield, put a +1/+1 counter on this creature.",W,,WOE,28,1
+Sheriff of Safe Passage,Creature — Human Knight,"This creature enters with a +1/+1 counter on it plus an additional +1/+1 counter on it for each other creature you control.
+Plot {1}{W} (You may pay {1}{W} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",W,,OTJ,29,1
+Sidequest: Catch a Fish,Enchantment // Land,"At the beginning of your upkeep, look at the top card of your library. If it's an artifact or creature card, you may reveal it and put it into your hand. If you put a card into your hand this way, create a Food token and transform this enchantment. // {T}: Add {W}.
+{3}, {T}, Sacrifice an artifact: Put a +1/+1 counter on each creature you control. Activate only as a sorcery.",W,,FIN,31,1
+Soaring Stoneglider,Creature — Elephant Cleric,"As an additional cost to cast this spell, exile two cards from your graveyard or pay {1}{W}.
+Flying, vigilance",W,,SOS,32,1
+Solitary Sanctuary,Enchantment,"When this enchantment enters, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
+Whenever you tap an untapped creature an opponent controls, put a +1/+1 counter on target creature you control.",W,,WOE,30,1
+Spiritcall Enthusiast,Creature — Cat Cleric // Sorcery,"Whenever one or more tokens you control enter, this creature becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // One or two target creatures each get +2/+2 until end of turn.",W,,SOS,33,1
+Stand Up for Yourself,Instant,Destroy target creature with power 3 or greater.,W,,SOS,34,1
+Stasis Snare,Enchantment,"Flash (You may cast this spell any time you could cast an instant.)
+When this enchantment enters, exile target creature an opponent controls until this enchantment leaves the battlefield.",W,,FDN,581,1
+Stormplain Detainment,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.",W,,TDM,28,1
+Stroke of Midnight,Instant,Destroy target nonland permanent. Its controller creates a 1/1 white Human creature token.,W,,FDN,148,1
+"Suki, Courageous Rescuer",Legendary Creature — Human Warrior Ally,"Other creatures you control get +1/+0.
+Whenever another permanent you control leaves the battlefield during your turn, create a 1/1 white Ally creature token. This ability triggers only once each turn.",W,,TLA,37,1
+Summon: Choco/Mog,Enchantment Creature — Saga Bird Moogle,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
+I, II, III, IV — Stampede! — Other creatures you control get +1/+0 until end of turn.",W,,FIN,35,1
+Team Avatar,Enchantment,"Whenever a creature you control attacks alone, it gets +X/+X until end of turn, where X is the number of creatures you control.
+{2}{W}, Discard this card: It deals damage equal to the number of creatures you control to target creature.",W,,TLA,38,1
+Thousand Moons Infantry,Creature — Human Soldier,Untap this creature during each other player's untap step.,W,,LCI,38,1
+Water Tribe Captain,Creature — Human Soldier Ally,{5}: Creatures you control get +1/+1 until end of turn.,W,,TLA,41,1
+Zealous Display,Instant,"Creatures you control get +2/+0 until end of turn. If it's not your turn, untap those creatures.",W,,EOE,45,1
+"Aang, the Last Airbender",Legendary Creature — Human Avatar Ally,"Flying
+When Aang enters, airbend up to one other target nonland permanent. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)
+Whenever you cast a Lesson spell, Aang gains lifelink until end of turn.",W,,TLA,4,1
+Aerith Rescue Mission,Sorcery,"Choose one —
+• Take the Elevator — Create three 1/1 colorless Hero creature tokens.
+• Take 59 Flights of Stairs — Tap up to three target creatures. Put a stun counter on one of them. (If a permanent with a stun counter would become untapped, remove one from it instead.)",W,,FIN,5,1
+"Appa, Steadfast Guardian",Legendary Creature — Bison Ally,"Flash
+Flying
+When Appa enters, airbend any number of other target nonland permanents you control. (Exile them. While each one is exiled, its owner may cast it for {2} rather than its mana cost.)
+Whenever you cast a spell from exile, create a 1/1 white Ally creature token.",W,,TLA,10,1
+Avatar's Wrath,Sorcery,"Choose up to one target creature, then airbend all other creatures. (Exile them. While each one is exiled, its owner may cast it for {2} rather than its mana cost.)
+Until your next turn, your opponents can't cast spells from anywhere other than their hands.
+Exile Avatar's Wrath.",W,,TLA,12,1
+Destined Confrontation,Sorcery,"Each player chooses any number of creatures they control with total power 4 or less, then sacrifices all other creatures they control.",W,,TLA,15,1
+"Dion, Bahamut's Dominant",Legendary Creature — Human Noble Knight // Legendary Enchantment Creature — Saga Dragon,"Dragonfire Dive — During your turn, Dion and other Knights you control have flying.
+When Dion enters, create a 2/2 white Knight creature token.
+{4}{W}{W}, {T}: Exile Dion, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery. // (As this Saga enters and after your draw step, add a lore counter.)
+I, II — Wings of Light — Put a +1/+1 counter on each other creature you control. Those creatures gain flying until end of turn.
+III — Gigaflare — Destroy target permanent. Exile Bahamut, then return it to the battlefield (front face up).
+Flying",W,,FIN,16,1
+Dragonback Lancer,Creature — Human Soldier,"Flying
+Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)",W,,TDM,9,1
+East Wind Avatar,Creature — Bird Spirit Avatar,"Flying, vigilance
+Alliance — Whenever another creature you control enters, this creature gets +1/+0 until end of turn.",W,,TMT,5,1
+Friendly Neighborhood,Enchantment — Aura,"Enchant land
+When this Aura enters, create three 1/1 green and white Human Citizen creature tokens.
+Enchanted land has ""{1}, {T}: Target creature gets +1/+1 until end of turn for each creature you control. Activate only as a sorcery.""",W,,SPM,8,1
+"Hakoda, Selfless Commander",Legendary Creature — Human Warrior Ally,"Vigilance
+You may look at the top card of your library any time.
+You may cast Ally spells from the top of your library.
+Sacrifice Hakoda: Creatures you control get +0/+5 and gain indestructible until end of turn.",W,,TLA,23,1
+Inkshape Demonstrator,Creature — Elephant Cleric,"Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
+Repartee — Whenever you cast an instant or sorcery spell that targets a creature, this creature gets +1/+0 and gains lifelink until end of turn.",W,,SOS,21,1
+Kyoshi Warriors,Creature — Human Warrior Ally,"When this creature enters, create a 1/1 white Ally creature token.",W,,TLA,26,1
+"Leonardo, Sewer Samurai",Legendary Creature — Mutant Ninja Turtle Samurai,"Sneak {2}{W}{W}
+Double strike
+During your turn, you may cast creature spells with power or toughness 1 or less from your graveyard. If you cast a spell this way, that creature enters with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)",W,,TMT,17,1
+Liminal Hold,Enchantment,"When this enchantment enters, exile up to one target nonland permanent an opponent controls until this enchantment leaves the battlefield. You gain 2 life.",W,,ECL,24,1
+"Luke Cage, Power Man",Legendary Creature — Human Hero,"Unbreakable Skin — Whenever Luke Cage attacks alone, he gets +2/+0 and gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy him.)",W,,MSH,20,1
+Luxknight Breacher,Creature — Human Knight,This creature enters with a +1/+1 counter on it for each other creature and/or artifact you control.,W,,EOE,26,1
+Mighty Mutanimals,Creature — Mutant Rebel,"When this creature enters, create a 2/2 red Mutant creature token.
+Alliance — Whenever another creature you control enters, put a +1/+1 counter on target creature you control.",W,,TMT,21,1
+"Mockingbird, Ace Agent",Legendary Creature — Human Spy Hero,"Double strike
+Whenever you cast a spell that targets a creature you control, put a +1/+1 counter on Mockingbird.",W,,MSH,22,1
+Morningtide's Light,Sorcery,"Exile any number of target creatures. At the beginning of the next end step, return those cards to the battlefield tapped under their owners' control.
+Until your next turn, prevent all damage that would be dealt to you.
+Exile Morningtide's Light.",W,,ECL,27,1
+"Okoye, Dora Milaje Leader",Legendary Creature — Human Warrior Hero,"When Okoye enters, create two 1/1 white Soldier creature tokens.
+Attacking creature tokens you control have first strike.",W,,MSH,27,1
+Radiant Strike,Instant,Destroy target artifact or tapped creature. You gain 3 life.,W,,EOE,29,1
+Release the Dogs,Sorcery,Create four 1/1 white Dog creature tokens.,W,,FDN,580,1
+Sandbenders' Storm,Instant,"Choose one —
+• Destroy target creature with power 4 or greater.
+• Earthbend 3. (Target land you control becomes a 0/0 creature with haste that's still a land. Put three +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",W,,TLA,34,1
+Shore Lurker,Creature — Merfolk Scout,"Flying
+When this creature enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W,,ECL,34,1
+Southern Air Temple,Legendary Enchantment — Shrine,"When Southern Air Temple enters, put X +1/+1 counters on each creature you control, where X is the number of Shrines you control.
+Whenever another Shrine you control enters, put a +1/+1 counter on each creature you control.",W,,TLA,36,1
+Summoned Dromedary,Creature — Spirit Camel,"Vigilance
+{1}{W}: Return this card from your graveyard to your hand. Activate only as a sorcery.",W,,SOS,37,1
+The Last Ronin's Technique,Instant,"Sneak {1}{W} (You may cast this spell for {1}{W} if you also return an unblocked attacker you control to hand during the declare blockers step.)
+Create three 1/1 white Ninja Turtle Spirit creature tokens. If this spell's sneak cost was paid, they enter tapped and attacking.",W,,TMT,12,1
+"The Sentry, Golden Guardian",Legendary Creature — Human Hero,"Flying, vigilance, indestructible
+When The Sentry enters, target opponent creates The Void, a legendary 5/5 black Horror Villain creature token with flying, indestructible, and ""The Void attacks each combat if able.""",W,,MSH,35,1
+Unsettling Twins,Creature — Human,"When this creature enters, manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)",W,,DSK,38,1
+Vanguard Seraph,Creature — Angel Warrior,"Flying
+Whenever you gain life for the first time each turn, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W,,FDN,28,1
+Vengeful Villagers,Creature — Human Citizen,"Whenever this creature attacks, choose target creature an opponent controls. Tap it, then you may sacrifice an artifact or creature. If you do, put a stun counter on the chosen creature. (If a permanent with a stun counter would become untapped, remove one from it instead.)",W,,TLA,40,1
+Wakandan Drone Flock,Artifact Creature — Robot,"Flying
+When this creature enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)",W,,MSH,40,1
+Wax-Wane Witness,Creature — Bat Cleric,"Flying, vigilance
+Whenever you gain or lose life during your turn, this creature gets +1/+0 until end of turn.",W,,BLB,39,1
+Wedgelight Rammer,Artifact — Spacecraft,"When this Spacecraft enters, create a 2/2 colorless Robot artifact creature token.
+Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 9+.)
+9+ | Flying, first strike",W,,EOE,43,1
+White Auracite,Artifact,"When this artifact enters, exile target nonland permanent an opponent controls until this artifact leaves the battlefield.
+{T}: Add {W}.",W,,FIN,41,1
+"White Widow, Free Agent",Legendary Creature — Human Hero Villain,"When White Widow enters, choose one —
+• Put a +1/+1 counter on each of up to two target creatures.
+• Return target artifact or enchantment card from your graveyard to your hand.",W,,MSH,42,1
+Avengers Assemble!,Enchantment,"Flash
+Heroes you control get +2/+2.
+At the beginning of each end step, if you attacked with a Hero this turn or a Hero entered the battlefield under your control this turn, draw a card.",W,,MSH,6,1
+Borough Backup,Sorcery,"Create two 3/2 white Hero creature tokens with vigilance.
+Basic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",W,,MSH,7,1
+"Captain Marvel, Earth's Protector",Legendary Creature — Human Kree Hero,"Flash
+Flying, lifelink
+Power-up — {5}{W}{W}: Put a +1/+1 counter and an indestructible counter on Captain Marvel. (Activate each power-up ability only once. Reduce the cost by her mana cost if she entered this turn.)",W,,MSH,11,1
+"Captain Mar-Vell, Space-Born",Legendary Creature — Kree Soldier Hero,"Flying, vigilance
+Cosmic Awareness — As long as an opponent has cast a spell this turn, you may cast spells as though they had flash.",W,,MSH,12,1
+Cloudbound Moogle,,,,,FIN,11,1
+Fate of the Sun-Cryst,,,,,FIN,19,1
+Gather the White Lotus,,,,,TLA,20,1
+G'raha Tia,,,,,FIN,21,1
+"Invisible Woman, Sue Storm",,,,,MSH,17,1
+"Jennika, Bad Apple Big Sister",,,,,TMT,10,1
+Luminous Rebuke,,,,,FDN,20,1
+Lyra Dawnbringer,,,,,FDN,707,1
+Primary Research,,,,,SOS,26,1
+Riling Dawnbreaker,,,,,TDM,21,1
+Rabaroo Troop,,,,,TLA,32,1
+Season of the Burrow,,,,,BLB,29,1
+Serra Angel,,,,,FDN,147,1
+Serra Redeemer,,,,,BLB,387,1
+Spectacular Pileup,,,,,DFT,29,1
+Stagecoach Security,,,,,OTJ,30,1
+Starfall Invocation,,,,,BLB,34,1
+Starfield Shepherd,,,,,EOE,37,1
+The Legend of Yangchen,,,,,TLA,27,1
+Ultima,,,,,FIN,38,1
+Unswerving Sloth,,,,,DFT,34,1
+Ancestor Dragon,,,,,FDN,489,1
+"Appa, Loyal Sky Bison",,,,,TLA,9,1
+Defenestrated Phantom,,,,,MKM,11,1
+Sun-Dappled Celebrant,,,,,ECL,37,1
+Weftblade Enhancer,,,,,EOE,44,1
+Restoration Seminar,,,,,SOS,30,1
+Valor's Flagship,,,,,DFT,35,1
+Moonshaker Cavalry,,,,,WOE,21,1
+Summon: Knights of Round,,,,,FIN,36,1
+United Front,,,,,TLA,39,1
+Another Round,,,,,OTJ,1,1
+Abandoned Air Temple,,,,,TLA,263,1

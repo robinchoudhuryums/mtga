@@ -47,13 +47,33 @@ SET_ALIASES = {
 }
 
 
-def _request_json(params):
+def _request_json(params, retries=6):
+    """GET a Scryfall endpoint as JSON, retrying transient failures.
+
+    429 (rate limited) and network errors are retried with exponential backoff,
+    honoring the Retry-After header when present. 404 and other HTTP errors are
+    raised immediately for the caller to handle.
+    """
     url = f"{SCRYFALL}?{urllib.parse.urlencode(params)}"
     req = urllib.request.Request(
         url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"}
     )
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return json.load(resp)
+    for attempt in range(retries):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return json.load(resp)
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < retries - 1:
+                wait = float(e.headers.get("Retry-After", 0) or 0) or 1.0 * (2 ** attempt)
+                eprint(f"       rate limited by Scryfall; waiting {wait:.0f}s...")
+                time.sleep(wait)
+                continue
+            raise
+        except urllib.error.URLError:
+            if attempt < retries - 1:
+                time.sleep(1.0 * (2 ** attempt))
+                continue
+            raise
 
 
 def fetch_card(name, set_code):
@@ -123,29 +143,49 @@ def enrich(path, dry_run=False, force=False, only=None):
     changed = 0
     matched = 0
 
-    for row in rows:
+    # Only these rows need a network call; count them for progress reporting.
+    todo = [
+        r for r in rows
+        if (r.get("Card Name") or "").strip()
+        and (not only or only.lower() in (r.get("Card Name") or "").lower())
+        and [c for c in FILLABLE if force or not (r.get(c) or "").strip()]
+    ]
+    total = len(todo)
+
+    def flush():
+        # Persist progress so a mid-run failure (or Ctrl-C) never loses work;
+        # re-running resumes because filled rows are skipped above.
+        if not dry_run:
+            write_rows(rows, path)
+
+    processed = 0
+    for row in todo:
         name = (row.get("Card Name") or "").strip()
-        if not name:
-            continue
-        if only and only.lower() not in name.lower():
-            continue
-
-        # Skip the network call if nothing is fillable and we're not forcing.
-        needs = [c for c in FILLABLE if force or not (row.get(c) or "").strip()]
-        if not needs:
-            continue
-
         set_code = (row.get("Set Code") or "").strip()
+        processed += 1
         try:
             card, set_matched = fetch_card(name, set_code)
+        except urllib.error.HTTPError as e:
+            eprint(f"ERROR: Scryfall returned HTTP {e.code} for {name!r}: {e.reason}")
+            flush()
+            eprint(f"       Saved progress ({changed} row(s) enriched). "
+                   f"Re-run to resume the remaining {total - processed + 1}.")
+            return 1
         except urllib.error.URLError as e:
             eprint(
                 f"ERROR: could not reach Scryfall for {name!r}: {e}\n"
                 f"       This environment may block api.scryfall.com; "
                 f"run enrich.py where it is reachable."
             )
+            flush()
+            eprint(f"       Saved progress ({changed} row(s) enriched).")
             return 1
-        time.sleep(0.1)  # be polite to the API
+        time.sleep(0.15)  # be polite to the API (Scryfall asks ~50-100ms+)
+
+        # Periodic progress + checkpoint on long runs.
+        if processed % 25 == 0:
+            eprint(f"       ...{processed}/{total} looked up")
+            flush()
 
         if card is None:
             eprint(f"WARN:  no Scryfall match for {name!r}"
