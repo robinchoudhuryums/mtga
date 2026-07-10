@@ -405,36 +405,81 @@ Flying, lifelink
 Power-up — {5}{W}{W}: Put a +1/+1 counter and an indestructible counter on Captain Marvel. (Activate each power-up ability only once. Reduce the cost by her mana cost if she entered this turn.)",W,,MSH,11,1
 "Captain Mar-Vell, Space-Born",Legendary Creature — Kree Soldier Hero,"Flying, vigilance
 Cosmic Awareness — As long as an opponent has cast a spell this turn, you may cast spells as though they had flash.",W,,MSH,12,1
-Cloudbound Moogle,,,,,FIN,11,1
-Fate of the Sun-Cryst,,,,,FIN,19,1
-Gather the White Lotus,,,,,TLA,20,1
-G'raha Tia,,,,,FIN,21,1
-"Invisible Woman, Sue Storm",,,,,MSH,17,1
-"Jennika, Bad Apple Big Sister",,,,,TMT,10,1
-Luminous Rebuke,,,,,FDN,20,1
-Lyra Dawnbringer,,,,,FDN,707,1
-Primary Research,,,,,SOS,26,1
-Riling Dawnbreaker,,,,,TDM,21,1
-Rabaroo Troop,,,,,TLA,32,1
-Season of the Burrow,,,,,BLB,29,1
-Serra Angel,,,,,FDN,147,1
-Serra Redeemer,,,,,BLB,387,1
-Spectacular Pileup,,,,,DFT,29,1
-Stagecoach Security,,,,,OTJ,30,1
-Starfall Invocation,,,,,BLB,34,1
-Starfield Shepherd,,,,,EOE,37,1
-The Legend of Yangchen,,,,,TLA,27,1
-Ultima,,,,,FIN,38,1
-Unswerving Sloth,,,,,DFT,34,1
-Ancestor Dragon,,,,,FDN,489,1
-"Appa, Loyal Sky Bison",,,,,TLA,9,1
-Defenestrated Phantom,,,,,MKM,11,1
-Sun-Dappled Celebrant,,,,,ECL,37,1
-Weftblade Enhancer,,,,,EOE,44,1
-Restoration Seminar,,,,,SOS,30,1
-Valor's Flagship,,,,,DFT,35,1
-Moonshaker Cavalry,,,,,WOE,21,1
-Summon: Knights of Round,,,,,FIN,36,1
-United Front,,,,,TLA,39,1
-Another Round,,,,,OTJ,1,1
-Abandoned Air Temple,,,,,TLA,263,1
+Cloudbound Moogle,Creature — Moogle,"Flying
+When this creature enters, put a +1/+1 counter on target creature.
+Plainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, put it into your hand, then shuffle.)",W,,FIN,11,1
+Fate of the Sun-Cryst,Instant,"This spell costs {2} less to cast if it targets a tapped creature.
+Destroy target nonland permanent.",W,,FIN,19,1
+Gather the White Lotus,Sorcery,"Create a 1/1 white Ally creature token for each Plains you control. Scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)",W,,TLA,20,1
+G'raha Tia,Legendary Creature — Cat Archer,"Reach
+The Allagan Eye — Whenever one or more other creatures and/or artifacts you control die, draw a card. This ability triggers only once each turn.",W,,FIN,21,1
+"Invisible Woman, Sue Storm",Legendary Creature — Human Hero,"Lifelink
+Whenever you put one or more +1/+1 counters on one or more other Heroes you control, you may create a 0/4 colorless Wall creature token with defender.",W,,MSH,17,1
+"Jennika, Bad Apple Big Sister",Legendary Creature — Mutant Ninja Turtle,"When Jennika enters, create a 2/2 red Mutant creature token.
+Plainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, put it into your hand, then shuffle.)",W,,TMT,10,1
+Luminous Rebuke,Instant,"This spell costs {3} less to cast if it targets a tapped creature.
+Destroy target creature.",W,,FDN,20,1
+Lyra Dawnbringer,Legendary Creature — Angel,"Flying
+First strike (This creature deals combat damage before creatures without first strike.)
+Lifelink (Damage dealt by this creature also causes you to gain that much life.)
+Other Angels you control get +1/+1 and have lifelink.",W,,FDN,707,1
+Primary Research,Enchantment,"When this enchantment enters, return target nonland permanent card with mana value 3 or less from your graveyard to the battlefield.
+At the beginning of your end step, if a card left your graveyard this turn, draw a card.",W,,SOS,26,1
+Riling Dawnbreaker,Creature — Dragon // Sorcery — Omen,"Flying, vigilance
+At the beginning of combat on your turn, another target creature you control gets +1/+0 until end of turn. // Create a 2/2 white Soldier creature token. (Then shuffle this card into its owner's library.)",W,,TDM,21,1
+Rabaroo Troop,Creature — Rabbit Kangaroo,"Landfall — Whenever a land you control enters, this creature gains flying until end of turn and you gain 1 life.
+Plainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, put it into your hand, then shuffle.)",W,,TLA,32,1
+Season of the Burrow,Sorcery,"Choose up to five {P} worth of modes. You may choose the same mode more than once.
+{P} — Create a 1/1 white Rabbit creature token.
+{P}{P} — Exile target nonland permanent. Its controller draws a card.
+{P}{P}{P} — Return target permanent card with mana value 3 or less from your graveyard to the battlefield with an indestructible counter on it.",W,,BLB,29,1
+Serra Angel,Creature — Angel,"Flying
+Vigilance (Attacking doesn't cause this creature to tap.)",W,,FDN,147,1
+Serra Redeemer,Creature — Angel Soldier,"Flying
+Whenever another creature you control with power 2 or less enters, put two +1/+1 counters on that creature.",W,,BLB,387,1
+Spectacular Pileup,Sorcery,"All creatures and Vehicles lose indestructible until end of turn, then destroy all creatures and Vehicles.
+Cycling {2} ({2}, Discard this card: Draw a card.)",W,,DFT,29,1
+Stagecoach Security,Creature — Human Soldier,"When this creature enters, creatures you control get +1/+1 and gain vigilance until end of turn.
+Plot {3}{W} (You may pay {3}{W} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",W,,OTJ,30,1
+Starfall Invocation,Sorcery,"Gift a card (You may promise an opponent a gift as you cast this spell. If you do, they draw a card before its other effects.)
+Destroy all creatures. If the gift was promised, return a creature card put into your graveyard this way to the battlefield under your control.",W,,BLB,34,1
+Starfield Shepherd,Creature — Angel,"Flying
+When this creature enters, search your library for a basic Plains card or a creature card with mana value 1 or less, reveal it, put it into your hand, then shuffle.
+Warp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,,EOE,37,1
+The Legend of Yangchen,Enchantment — Saga // Legendary Creature — Avatar,"(As this Saga enters and after your draw step, add a lore counter.)
+I — Starting with you, each player chooses up to one permanent with mana value 3 or greater from among permanents your opponents control. Exile those permanents.
+II — You may have target opponent draw three cards. If you do, draw three cards.
+III — Exile this Saga, then return it to the battlefield transformed under your control. // Flying
+Whenever you cast your second spell each turn, airbend up to one other target nonland permanent. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)",W,,TLA,27,1
+Ultima,Sorcery,"Destroy all artifacts and creatures. End the turn. (Exile all spells and abilities from the stack, including this card. The player whose turn it is discards down to their maximum hand size. Damage wears off, and ""this turn"" and ""until end of turn"" effects end.)",W,,FIN,38,1
+Unswerving Sloth,Creature — Sloth Mount,"Whenever this creature attacks while saddled, it gains indestructible until end of turn. Untap all creatures you control.
+Saddle 4 (Tap any number of other creatures you control with total power 4 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",W,,DFT,34,1
+Ancestor Dragon,Creature — Dragon,"Flying
+Whenever one or more creatures you control attack, you gain 1 life for each attacking creature.",W,,FDN,489,1
+"Appa, Loyal Sky Bison",Legendary Creature — Bison Ally,"Flying
+Whenever Appa enters or attacks, choose one —
+• Target creature you control gains flying until end of turn.
+• Airbend another target nonland permanent you control. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)",W,,TLA,9,1
+Defenestrated Phantom,Creature — Spirit,"Flying
+Disguise {4}{W} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)",W,,MKM,11,1
+Sun-Dappled Celebrant,Creature — Treefolk Cleric,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
+Vigilance",W,,ECL,37,1
+Weftblade Enhancer,Creature — Drix Artificer,"When this creature enters, put a +1/+1 counter on each of up to two target creatures.
+Warp {2}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,,EOE,44,1
+Restoration Seminar,Sorcery — Lesson,"Return target nonland permanent card from your graveyard to the battlefield.
+Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",W,,SOS,30,1
+Valor's Flagship,Legendary Artifact — Vehicle,"Flying, first strike, lifelink
+Crew 3
+Cycling {X}{2}{W} ({X}{2}{W}, Discard this card: Draw a card.)
+When you cycle this card, create X 1/1 colorless Pilot creature tokens with ""This token saddles Mounts and crews Vehicles as though its power were 2 greater.""",W,,DFT,35,1
+Moonshaker Cavalry,Creature — Spirit Knight,"Flying
+When this creature enters, creatures you control gain flying and get +X/+X until end of turn, where X is the number of creatures you control.",W,,WOE,21,1
+Summon: Knights of Round,Enchantment Creature — Saga Knight,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after V.)
+I, II, III, IV — Create three 2/2 white Knight creature tokens.
+V — Ultimate End — Other creatures you control get +2/+2 until end of turn. Put an indestructible counter on each of them.
+Indestructible",W,,FIN,36,1
+United Front,Sorcery,"Create X 1/1 white Ally creature tokens, then put a +1/+1 counter on each creature you control.",W,,TLA,39,1
+Another Round,Sorcery,"Exile any number of creatures you control, then return them to the battlefield under their owner's control. Then repeat this process X more times.",W,,OTJ,1,1
+Abandoned Air Temple,Land,"This land enters tapped unless you control a basic land.
+{T}: Add {W}.
+{3}{W}, {T}: Put a +1/+1 counter on each creature you control.",W,,TLA,263,1
