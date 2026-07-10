@@ -51,6 +51,15 @@ set code when present) and fills only **blank** fields — your Synergies and
 Quantity Owned are never touched. So you can add rows with just a Card Name (and
 ideally a Set Code) and let this backfill the rest. Handles multi-face cards.
 
+**Set codes & collector numbers:** Type, Card Text, and Color(s) are the same
+across every printing, so they're filled from any match. Collector # is
+printing-specific, so it's only written when the Set Code resolves to a real
+Scryfall printing. A few MTG Arena set codes differ from Scryfall's (e.g. Arena
+`DAR` = Scryfall `DOM` for Dominaria) — known ones are mapped automatically. If a
+set code isn't recognized, enrich still fills the shared fields but leaves
+Collector # blank and warns, so a wrong number is never written silently. (Add
+more mappings in `SET_ALIASES` at the top of `scripts/enrich.py` as you hit them.)
+
 > Requires outbound access to `api.scryfall.com`. Some managed/CI environments
 > block it by policy; if so, run enrich locally. No API key needed.
 

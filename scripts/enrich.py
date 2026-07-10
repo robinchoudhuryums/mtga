@@ -34,33 +34,61 @@ from lib import DEFAULT_CSV, load_rows, write_rows, eprint
 
 SCRYFALL = "https://api.scryfall.com/cards/named"
 USER_AGENT = "mtga-card-library/1.0"
-FILLABLE = ["Type", "Card Text", "Color(s)", "Collector #"]
+# Type/Card Text/Color(s) are identical across every printing of a card, so they
+# are safe to fill from any match. Collector # is printing-specific and is
+# handled separately — only written when we are sure of the printing.
+FILLABLE = ["Type", "Card Text", "Color(s)"]
+
+# MTG Arena uses a few set codes that differ from Scryfall's. Map Arena -> Scryfall
+# here so a set-constrained lookup resolves to the right printing. Unknown codes
+# fall through unchanged and are caught safely by the mismatch guard below.
+SET_ALIASES = {
+    "dar": "dom",  # Dominaria (Arena calls it DAR)
+}
 
 
-def fetch_card(name, set_code):
-    """Return the Scryfall card JSON for an exact name (optionally in a set).
-
-    Returns None if the card is not found. Raises on network/policy errors so
-    the caller can stop rather than silently produce an empty library.
-    """
-    params = {"exact": name}
-    if set_code:
-        params["set"] = set_code.lower()
+def _request_json(params):
     url = f"{SCRYFALL}?{urllib.parse.urlencode(params)}"
     req = urllib.request.Request(
         url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"}
     )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.load(resp)
+
+
+def fetch_card(name, set_code):
+    """Look up an exact card name, optionally constrained to a set.
+
+    Returns (card_json_or_None, set_matched). set_matched is True only when a
+    set code was requested AND the returned card is actually from that set — so
+    the caller knows whether the printing-specific Collector # can be trusted.
+
+    Raises on network/policy errors so the caller stops rather than silently
+    producing an empty library.
+    """
+    scry_set = SET_ALIASES.get(set_code.lower(), set_code.lower()) if set_code else None
     try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.load(resp)
+        params = {"exact": name}
+        if scry_set:
+            params["set"] = scry_set
+        card = _request_json(params)
     except urllib.error.HTTPError as e:
-        if e.code == 404:
-            # Card / set combination not found. If we constrained by set, retry
-            # without it — the printing may not be on Scryfall under that code.
-            if set_code:
-                return fetch_card(name, None)
-            return None
-        raise
+        if e.code != 404:
+            raise
+        # Set+name not found. Retry by name alone so we can still fill the
+        # printing-invariant fields, but report the printing as unmatched.
+        if scry_set:
+            try:
+                return _request_json({"exact": name}), False
+            except urllib.error.HTTPError as e2:
+                if e2.code == 404:
+                    return None, False
+                raise
+        return None, False
+
+    # Confirm the returned printing really is the requested set.
+    matched = bool(scry_set) and card.get("set", "").lower() == scry_set
+    return card, matched
 
 
 def color_shorthand(card):
@@ -109,7 +137,7 @@ def enrich(path, dry_run=False, force=False, only=None):
 
         set_code = (row.get("Set Code") or "").strip()
         try:
-            card = fetch_card(name, set_code)
+            card, set_matched = fetch_card(name, set_code)
         except urllib.error.URLError as e:
             eprint(
                 f"ERROR: could not reach Scryfall for {name!r}: {e}\n"
@@ -130,11 +158,22 @@ def enrich(path, dry_run=False, force=False, only=None):
             "Type": type_line,
             "Card Text": text,
             "Color(s)": color_shorthand(card),
-            "Collector #": str(card.get("collector_number", "")),
         }
+        # Collector # is printing-specific, so only fill it when we are certain
+        # of the printing (set code was given and Scryfall returned that set).
+        # Otherwise we'd write a number from an arbitrary reprint — the DAR->DOM
+        # class of bug. Warn so the user knows to check the set code.
+        if set_matched:
+            values["Collector #"] = str(card.get("collector_number", ""))
+        elif set_code:
+            eprint(
+                f"WARN:  {name!r}: Scryfall has no printing in set {set_code!r} "
+                f"(mapped to {SET_ALIASES.get(set_code.lower(), set_code.lower())!r}). "
+                f"Filled shared fields; left Collector # for you to confirm."
+            )
 
         row_changed = False
-        for col in FILLABLE:
+        for col in ["Type", "Card Text", "Color(s)", "Collector #"]:
             new = values.get(col, "")
             if not new:
                 continue
