@@ -2883,7 +2883,7 @@ Search your library for a basic land card. If this spell was kicked, instead sea
 You gain 2 life.",Colorless,Lesson; lifegain; ramp,TLA,1,1
 Surveillance Room,Land,"When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
 {T}: Add {C}.
-{1}, {T}: Add one mana of any color.",Colorless,graveyard; mana; etb,MSH,274,1
+{1}, {T}: Add one mana of any color.",Colorless,graveyard; mana; etb,MSH,274,2
 Rumble Arena,Land,"Vigilance
 When this land enters, scry 1. (Look at the top card of your library. You may put it on the bottom.)
 {T}: Add {C}.
@@ -2980,3 +2980,6 @@ If a card would be put into an opponent's graveyard from anywhere, instead exile
 "She-Hulk, Jennifer Walters",Legendary Creature — Gamma Berserker Hero,"Trample (This creature can deal excess combat damage to the player she's attacking.)
 {2}{R}, Sacrifice a land: Draw a card and put a +1/+1 counter on She-Hulk.",R,,MSC,554,1
 Unlikely Aid,Instant,"Target creature gets +2/+0 and gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)",B,,ANB,64,1
+Scout the City,Sorcery,"Choose one —
+• Look Around — Mill three cards. You may put a permanent card from among them into your hand. You gain 3 life. (To mill three cards, put the top three cards of your library into your graveyard.)
+• Bring Down — Destroy target creature with flying.",G,,SPM,113,1
