@@ -1,0 +1,54 @@
+#: name: Sacrifices
+#: format: Historic
+#: colors: BR
+#: notes: Rakdos (B/R) sacrifice / aristocrats, black-primary with a light green splash.
+
+# Nonland
+1 Sephiroth, Fabled SOLDIER (FIN) 115
+1 Perforating Artist (FDN) 124
+1 Buzzard-Wasp Colony (TLA) 88
+1 Vito's Inquisitor (LCI) 130
+1 Beetle-Headed Merchants (TLA) 86
+1 High-Society Hunter (FDN) 61
+1 Bullseye, Death Dealer (MSH) 209
+1 Zhao, Ruthless Admiral (TLA) 252
+1 Killmonger, Scourge of Wakanda (MSH) 218
+1 Barrels of Blasting Jelly (TLA) 254
+1 Bumbleflower's Sharepot (BLB) 244
+1 Anchovy & Banana Pizza (TMT) 57
+1 Ragost, Deft Gastronaut (EOE) 224
+1 Scrounge for Eternity (EOE) 114
+2 Pirate Peddlers (TLA) 115
+1 Jecht, Reluctant Guardian (FIN) 104
+1 Fire Navy Trebuchet (TLA) 100
+1 Vampire Gourmand (FDN) 74
+1 Stomped by the Foot (TMT) 82
+1 Obsessive Pursuit (TLA) 112
+1 Hungry Ghoul (FDN) 62
+1 Vampiric Rites (WOT) 37
+1 Embrace Oblivion (EOE) 98
+1 Deadly Precision (TLA) 95
+1 Zuko's Conviction (TLA) 123
+1 Lively Dirge (OTJ) 93
+1 Stromkirk Bloodthief (FDN) 185
+1 Too Evil to Stay Dead (MSH) 118
+1 Robot Domination (MSH) 111
+1 Foggy Swamp Visions (TLA) 102
+1 Cat-Gator (TLA) 91
+1 Bloodthirsty Conqueror (FDN) 58
+1 Morlun, Devourer of Spiders (SPM) 59
+1 Goldvein Pick (FDN) 253
+1 Long Feng, Grand Secretariat (TLA) 233
+1 Rabid Attack (SOS) 96
+1 Forum Necroscribe (SOS) 84
+
+# Lands
+1 Surveillance Room (MSH) 274
+2 Boiling Rock Prison (TLA) 267
+2 Castle Doom (MSH) 263
+1 Captivating Cave (LCI) 268
+2 Bloodfell Caves (TDM) 250
+1 Baxter Building (MSH) 261
+1 Villainous Hideout (MSH) 276
+3 Jungle Hollow (M21) 247
+9 Swamp (MSH) 292

@@ -1184,7 +1184,7 @@ Whenever Oroku Saki deals combat damage to a player, you draw a card and lose 1 
 Overkill,Instant,Target creature gets -0/-9999 until end of turn.,B,,FIN,109,1
 Psychic Whorl,Sorcery,"Target opponent discards two cards. Then if you control a Rat, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",B,graveyard,BLB,105,1
 Pirate Peddlers,Creature — Human Pirate,"Deathtouch
-Whenever you sacrifice another permanent, put a +1/+1 counter on this creature.",B,Human; Pirate; counters; sacrifice; deathtouch,TLA,115,1
+Whenever you sacrifice another permanent, put a +1/+1 counter on this creature.",B,Human; Pirate; counters; sacrifice; deathtouch,TLA,115,2
 Pull from the Grave,Sorcery,Return up to two target creature cards from your graveyard to your hand. You gain 2 life.,B,graveyard; lifegain,SOS,95,1
 Qutrub Forayer,Creature — Zombie Horror,"When this creature enters, choose one —
 • Destroy target creature that was dealt damage this turn.
@@ -2457,7 +2457,7 @@ If you would lose unspent mana, that mana becomes red instead.
 Ozai has flying and indestructible as long as you have six or more unspent mana.",B/R,Human; Noble; flying; trample; haste,TLA,235,1
 Boiling Rock Prison,Land,"This land enters tapped.
 {T}: Add {B} or {R}.
-{4}, {T}, Sacrifice this land: Draw a card.",B/R,card draw; sacrifice; mana,TLA,267,1
+{4}, {T}, Sacrifice this land: Draw a card.",B/R,card draw; sacrifice; mana,TLA,267,2
 Temple of Malice,Land,"This land enters tapped.
 When this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)
 {T}: Add {B} or {R}.",B/R,mana; etb; scry,FDN,701,1
@@ -2927,7 +2927,7 @@ Cosmic Spider-Man,Legendary Creature — Spider Human Hero,"Flying, first strike
 At the beginning of combat on your turn, other Spiders you control gain flying, first strike, trample, lifelink, and haste until end of turn.",W/U/B/R/G,Spider; Human; Hero; lifegain; flying; first strike; trample; lifelink; haste,SPM,127,1
 Castle Doom,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast an artifact spell.
-{3}, {T}, Sacrifice an artifact: Create a 3/3 colorless Robot Villain artifact creature token named Doombot. Activate only as a sorcery.",Colorless,sacrifice; tokens; mana,MSH,263,1
+{3}, {T}, Sacrifice an artifact: Create a 3/3 colorless Robot Villain artifact creature token named Doombot. Activate only as a sorcery.",Colorless,sacrifice; tokens; mana,MSH,263,2
 Capital City,Land — Town,"{T}: Add {C}.
 {1}, {T}: Add one mana of any color.
 Cycling {2} ({2}, Discard this card: Draw a card.)",Colorless,Town; card draw; mana,FIN,274,1
