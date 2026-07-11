@@ -76,7 +76,7 @@ docs. This file is the source of truth for the workflow commands in
 - Data: card-library.csv, card-pool.csv, card-mana.csv
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/sheets_sync.py, scripts/lib.py
 - Analysis: scripts/deck.py, scripts/query.py, scripts/pool.py, scripts/validate.py, scripts/check_all.py
-- Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/app.py (optional Flask editor), templates/
+- Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`)
 - Decks: decks/
 
 **Invariant Library:**
