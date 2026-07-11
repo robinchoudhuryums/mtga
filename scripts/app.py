@@ -12,8 +12,13 @@ save. Every mutation goes through the same safe path — rows are written to a
 temp file and run through validate() first; only if that passes is the current
 CSV backed up to a timestamped .bak and atomically replaced — so a bad edit
 can't corrupt the inventory. Adding a card also appends a card-mana.csv row so
-the integrity gate's INV-02 stays satisfied. (In-browser deck editing is a
-later phase.)
+the integrity gate's INV-02 stays satisfied.
+
+The /decks pages edit decks with live buildability: as you change quantities or
+add/remove cards, owned-vs-needed updates in the browser. Saving writes the
+deck's .txt file through the same validated, backed-up, atomic path, gated on
+INV-04 (the file must re-parse with every card line intact) and preserving the
+file's section comments.
 
 Run:
     pip install -r requirements-app.txt
@@ -38,6 +43,7 @@ import urllib.request
 
 from flask import Flask, jsonify, request
 
+import deck as deckmod
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, write_rows
 from validate import validate
 
@@ -359,6 +365,150 @@ def revert():
         return jsonify(ok=False, errors=[f"Backup {baks[-1]} failed validation; not restoring."]), 400
     shutil.copy2(newest, target)
     return jsonify(ok=True, restored=baks[-1])
+
+
+# --------------------------------------------------------------------------- #
+# Deck editing (live buildability)
+# --------------------------------------------------------------------------- #
+def _render_template(filename, replacements):
+    with open(os.path.join(REPO_ROOT, "templates", filename), encoding="utf-8") as fh:
+        html = fh.read()
+    for k, v in replacements.items():
+        html = html.replace(k, v)
+    return html
+
+
+def _decks_overview():
+    """Per-deck buildability summary for the deck-list page."""
+    _, _, by_name_qty = deckmod.load_collection()
+    out = []
+    for d in deckmod.discover_decks():
+        _, cards = deckmod.parse_deck_file(d["path"])
+        total = sum(q for q, *_ in cards)
+        short = missing = 0
+        for q, n, s, c in cards:
+            have, found = deckmod.owned(by_name_qty, n)
+            if not found:
+                missing += 1
+            elif have < q:
+                short += 1
+        out.append({"id": d["id"], "name": d["name"] or d["id"], "unique": len(cards),
+                    "total": total, "short": short, "missing": missing,
+                    "variant": bool(d["variant"])})
+    return out
+
+
+def _tokenize_deck(path):
+    """Ordered tokens preserving the file: comments/blank/meta lines are kept
+    verbatim ('other'); card lines are parsed. This lets the editor round-trip a
+    deck without flattening its section comments."""
+    toks = []
+    with open(path, encoding="utf-8") as fh:
+        for raw in fh:
+            line = raw.rstrip("\n")
+            s = line.strip()
+            if not s or s.startswith("#"):
+                toks.append({"kind": "other", "raw": line})
+                continue
+            m = deckmod.LINE_RE.match(line.split("#", 1)[0].strip())
+            if m:
+                toks.append({"kind": "card", "qty": int(m.group(1)), "name": m.group(2).strip(),
+                             "set": (m.group(3) or "").strip(), "cn": (m.group(4) or "").strip()})
+            else:
+                toks.append({"kind": "other", "raw": line})
+    return toks
+
+
+def _serialize_deck(lines):
+    out = []
+    for t in lines:
+        if t.get("kind") == "card":
+            name = (t.get("name") or "").strip()
+            if not name:
+                continue
+            qty = str(t.get("qty", "")).strip() or "1"
+            s = (t.get("set") or "").strip()
+            cn = (t.get("cn") or "").strip()
+            row = f"{qty} {name}"
+            if s:
+                row += f" ({s})" + (f" {cn}" if cn else "")
+            out.append(row)
+        else:
+            out.append(t.get("raw", ""))
+    return "\n".join(out).rstrip("\n") + "\n"
+
+
+@app.route("/decks")
+def decks():
+    payload = json.dumps({"decks": _decks_overview()}, ensure_ascii=False).replace("<", "\\u003c")
+    return _render_template("decks.html", {"__DATA__": payload})
+
+
+@app.route("/deck/<deck_id>")
+def deck_editor(deck_id):
+    d = deckmod.find_deck(deck_id)
+    if not d:
+        return (f"No deck with id {deck_id!r}. <a href='/decks'>← Decks</a>", 404)
+    _, _, by_name_qty = deckmod.load_collection()
+    payload = json.dumps({
+        "id": d["id"], "name": d["name"] or d["id"],
+        "file": os.path.relpath(d["path"], REPO_ROOT),
+        "lines": _tokenize_deck(d["path"]),
+        "owned": by_name_qty, "basics": sorted(deckmod.BASICS),
+    }, ensure_ascii=False).replace("<", "\\u003c")
+    return _render_template("deck.html", {"__DATA__": payload})
+
+
+@app.route("/api/deck/save", methods=["POST"])
+def deck_save():
+    """Write an edited deck back to its .txt file. Structure-preserving, and gated
+    on INV-04: the result must parse cleanly with every card line intact, else the
+    file is left untouched. Backs up to a timestamped .bak, then atomic replace.
+    """
+    data = request.get_json(silent=True) or {}
+    did = str(data.get("id", ""))
+    lines = data.get("lines")
+    if not isinstance(lines, list):
+        return jsonify(ok=False, errors=["Malformed request: expected a lines list."]), 400
+    d = deckmod.find_deck(did)
+    if not d:
+        return jsonify(ok=False, errors=[f"No deck with id {did!r}."]), 404
+
+    problems, ncards = [], 0
+    for t in lines:
+        if t.get("kind") != "card":
+            continue
+        name = (t.get("name") or "").strip()
+        if not name:
+            continue  # blank card row is dropped
+        q = str(t.get("qty", "")).strip()
+        if not q.isdigit() or int(q) < 1:
+            problems.append(f"{name}: quantity must be a positive integer (got {q!r}).")
+        ncards += 1
+    if problems:
+        return jsonify(ok=False, errors=problems), 400
+    if ncards == 0:
+        return jsonify(ok=False, errors=["A deck needs at least one card line."]), 400
+
+    text = _serialize_deck(lines)
+    target = os.path.abspath(d["path"])
+    fd, tmp = tempfile.mkstemp(suffix=".txt", dir=os.path.dirname(target))
+    os.close(fd)
+    try:
+        with open(tmp, "w", encoding="utf-8") as fh:
+            fh.write(text)
+        _, parsed = deckmod.parse_deck_file(tmp)
+        if len(parsed) != ncards:
+            return jsonify(ok=False, errors=[f"Deck didn't parse cleanly "
+                f"({len(parsed)} of {ncards} card lines survived) — not saved."]), 400
+        backup = f"{target}.{time.strftime('%Y%m%d-%H%M%S')}.bak"
+        shutil.copy2(target, backup)
+        os.replace(tmp, target)
+        tmp = None
+        return jsonify(ok=True, backup=os.path.basename(backup), cards=ncards)
+    finally:
+        if tmp and os.path.exists(tmp):
+            os.remove(tmp)
 
 
 def main():
