@@ -33,8 +33,6 @@ Grounded in the project's current state and deferred ideas. Regenerate with
 
 - **Deck suggestions from the collection** — given owned cards + synergy tags,
   propose brews or upgrades automatically (extends `pool.py` + `tribes`).
-- **Wildcard optimization across the roster** — plan crafting to maximize decks
-  unlocked per wildcard, using `card-pool.csv` rarity + deck craft lists.
 - **Meta integration** — pull archetype/meta data to score decks against the
   current field, not just internal consistency.
 
