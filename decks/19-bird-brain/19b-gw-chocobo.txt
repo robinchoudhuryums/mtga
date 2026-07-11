@@ -1,0 +1,60 @@
+#: name: Bird Brain — GW Chocobo
+#: format: Historic
+#: colors: GW
+#: based-on: deck.txt
+#: notes: Two-color Selesnya sibling of 19a: drops the blue splash (no Empyrean
+#: notes: Eagle / Kastral / Choco) for more green token-makers (Suki, Rinoa,
+#: notes: Spider-Ham) and a clean GW manabase. Chocobo landfall tokens + For the
+#: notes: Common Good copy-army + white/green anthems & go-wide. Compare to 19a.
+
+# Chocobo landfall / token engine
+1 Traveling Chocobo (FIN) 210
+1 Summon: Fat Chocobo (FIN) 202
+1 Sidequest: Raise a Chocobo (FIN) 201
+1 Sazh's Chocobo (FIN) 200
+1 Chocobo Racetrack (FIN) 179
+3 Gysahl Greens (FIN) 190
+
+# Token / go-wide payoffs (+ fun includes)
+1 For the Common Good (BLB) 172
+1 Ka-Zar of the Savage Land (MSH) 174
+1 Mole Man, Moloid Master (MSH) 177
+1 Galactic Wayfarer (EOE) 185
+1 Glacier Godmaw (EOE) 188
+1 Season of Gathering (BLB) 192
+1 Rydia's Return (FIN) 198
+1 The Unbeatable Squirrel Girl (MSH) 193
+1 Michelangelo, Mutant BFF (TMT) 120
+1 Storm, Windrider (MSH) 230
+1 Suki, Kyoshi Warrior (TLA) 243
+1 Rinoa Heartilly (FIN) 237
+1 Spider-Ham, Peter Porker (SPM) 114
+
+# Birds / flyers / anthems
+1 Jackdaw Savior (BLB) 18
+1 Salvation Swan (BLB) 28
+1 Miner's Guidewing (LCI) 24
+1 Ambrosia Whiteheart (FIN) 6
+1 Dawnwing Marshal (FDN) 570
+1 Dazzling Angel (FDN) 9
+1 Stirring Hopesinger (SOS) 35
+1 Cat-Owl (TLA) 212
+1 Momo, Friendly Flier (TLA) 29
+1 Sunbird Standard (LCI) 262
+1 Shrike Force (BLB) 31
+1 Aven Interrupter (OTJ) 4
+
+# Ramp / support / fun
+1 Studious First-Year (SOS) 162
+1 Earthbender Ascension (TLA) 175
+1 Rabaroo Troop (TLA) 32
+
+# Lands (GW — 6 nonbasic + 18 basics, green-weighted)
+1 Birnin Zana Plaza (MSH) 262
+1 Blossoming Sands (M21) 244
+1 Hushwood Verge (DSK) 261
+1 Gathering Place (MSH) 266
+1 Kyoshi Village (TLA) 271
+1 Ba Sing Se (TLA) 266
+10 Forest
+8 Plains
