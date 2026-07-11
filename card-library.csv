@@ -1447,7 +1447,7 @@ Abrade,Instant,"Choose one —
 • Destroy target artifact.",R,removal; burn,FDN,188,1
 Axgard Cavalry,Creature — Dwarf Berserker,{T}: Target creature gains haste until end of turn. (It can attack and {T} this turn.),R,Dwarf; Berserker; haste,FDN,189,1
 Blazing Crescendo,Instant,"Target creature gets +3/+1 until end of turn.
-Exile the top card of your library. Until the end of your next turn, you may play that card.",R,,MSH,125,1
+Exile the top card of your library. Until the end of your next turn, you may play that card.",R,,MSH,125,2
 Bulk Up,Instant,"Double target creature's power until end of turn.
 Flashback {4}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",R,graveyard; flashback,SOA,40,1
 "Casey Jones, Jury-Rig Justiciar",Legendary Creature — Human Berserker,"Haste
@@ -1499,7 +1499,7 @@ Choose one. If this spell was cast using teamwork, choose both instead.
 • Target creature you control deals damage equal to its power to target creature an opponent controls.",R,removal,MSH,135,1
 "Hobgoblin, Mantled Marauder",Legendary Creature — Goblin Human Villain,"Flying, haste
 Whenever you discard a card, Hobgoblin gets +2/+0 until end of turn.",R,Goblin; Human; Villain; flying; haste,MSC,805,1
-HYDRA Assault Robot,Artifact Creature — Robot Villain,"Whenever another Villain and/or artifact you control enters, this creature deals 1 damage to target opponent.",R,Robot; Villain; burn,MSH,137,1
+HYDRA Assault Robot,Artifact Creature — Robot Villain,"Whenever another Villain and/or artifact you control enters, this creature deals 1 damage to target opponent.",R,Robot; Villain; burn,MSH,137,2
 Invasive Maneuvers,Instant,Invasive Maneuvers deals 3 damage to target creature. It deals 5 damage instead if you control a Spacecraft.,R,burn,EOE,137,1
 Iroh's Demonstration,Sorcery — Lesson,"Choose one —
 • Iroh's Demonstration deals 1 damage to each creature your opponents control.
@@ -2983,3 +2983,6 @@ Unlikely Aid,Instant,"Target creature gets +2/+0 and gains indestructible until 
 Scout the City,Sorcery,"Choose one —
 • Look Around — Mill three cards. You may put a permanent card from among them into your hand. You gain 3 life. (To mill three cards, put the top three cards of your library into your graveyard.)
 • Bring Down — Destroy target creature with flying.",G,,SPM,113,1
+Rugged Highlands,Land,"This land enters tapped.
+When this land enters, you gain 1 life.
+{T}: Add {R} or {G}.",R/G,,M21,249,2
