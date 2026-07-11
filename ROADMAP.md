@@ -10,8 +10,6 @@ Grounded in the project's current state and deferred ideas. Regenerate with
 - **Theme the remaining UB flavor mechanics** (Vivid, Job select, Opus, Infusion,
   Paradigm, Increment, Disappear) in `tag_synergies.py`'s keyword→theme map, or
   decide they stay verbatim. (S)
-- **Trim card-unique "keyword" noise** from synergy tags — Scryfall lists FF/Marvel
-  ability names (Firaga, Wave Cannon, …) as keywords; filter obvious flavor names. (S)
 
 ## Tier 2 — Medium-term (weeks–months)
 

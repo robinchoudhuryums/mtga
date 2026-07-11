@@ -18,6 +18,9 @@ docs. This file is the source of truth for the workflow commands in
   --skip-basics`.
 - **Basic lands are not in the collection** (unlimited in Arena). `deck.py`
   treats them as unlimited; imports skip them with `--skip-basics`.
+- **Owned copies are fungible across printings.** For buildability, `deck.py`
+  and `pool.py` both sum a card's `Quantity Owned` across every printing (a card
+  owned 1× in two sets counts as 2) — never count a single printing in isolation.
 
 ## Common Gotchas
 
@@ -40,8 +43,11 @@ docs. This file is the source of truth for the workflow commands in
 
 ## Known Issues
 
-- A handful of Universe-Beyond flavor mechanics (Vivid, Job select, Opus, …)
-  aren't in `tag_synergies.py`'s keyword→theme map; they're tagged verbatim.
+- A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select,
+  Opus, …) aren't in `tag_synergies.py`'s keyword→theme map, so they're tagged
+  verbatim. Card-*unique* flavor ability names (Firaga, Wave Cannon, …), which
+  Scryfall also reports as keywords, are dropped via the `FLAVOR_KEYWORDS`
+  denylist so they don't pollute the tags.
 - A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
   warning (expected, not an error).
 
