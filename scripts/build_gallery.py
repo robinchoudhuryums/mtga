@@ -463,9 +463,13 @@ def main():
 
     cards = build_cards(rows, cache)
     with_img = sum(1 for c in cards if c["img"])
+    # Escape "<" as < so a card field containing "</script>" can't terminate
+    # the embedded <script type="application/json"> block (JSON.parse decodes it
+    # back). Valid JSON, so the browser reads the data unchanged.
+    data_json = json.dumps(cards, ensure_ascii=False).replace("<", "\\u003c")
     html = (HTML_TEMPLATE
             .replace("__STATS__", render_stats(compute_stats(cards)))
-            .replace("__DATA__", json.dumps(cards, ensure_ascii=False)))
+            .replace("__DATA__", data_json))
     with open(args.out, "w", encoding="utf-8") as fh:
         fh.write(html)
     print(f"Wrote {args.out}: {len(cards)} cards, {with_img} with images.")

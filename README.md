@@ -92,8 +92,10 @@ reanimator, lifegain, removal, burn, ramp, tokens, …), and — when `card-mana
 has been built — **Scryfall's authoritative keyword list** mapped to
 deck-building themes (Surveil → `surveil; graveyard`, Convoke → `convoke;
 go-wide; ramp`, Escape → `graveyard; recursion`, …). Using Scryfall's per-card
-keywords means the coverage is complete and maintained, not a hand-kept list.
-Fills only blank cells by default (`--force` regenerates). These make `query.py
+keywords means real-keyword coverage is complete and maintained, not a hand-kept
+list; a small `FLAVOR_KEYWORDS` denylist drops Universe-Beyond flavor ability
+names (Firaga, Wave Cannon, …) that Scryfall also reports as keywords, so they
+don't pollute the tags. Fills only blank cells by default (`--force` regenerates). These make `query.py
 --synergy` / `pool.py --synergy` and the gallery filters useful; tags are
 hand-editable. Rerun `build_mana.py` then `tag_synergies.py --force` after
 importing new cards to refresh keyword-aware tags.

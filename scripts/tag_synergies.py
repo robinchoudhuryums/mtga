@@ -116,16 +116,39 @@ KEYWORD_THEMES = {
     "crew": ["vehicles"], "equip": ["equipment"],
 }
 
+# Scryfall records Universe-Beyond *flavor* ability names in each card's
+# `keywords` list — Final Fantasy spells/commands (Firaga, Blue Magic, Item, …),
+# Marvel/Avatar signature moves (Wave Cannon, Angelo Cannon, Particle Beam, …),
+# and one-off named actions (Take the Elevator, The Allagan Eye, …). These are
+# card-unique flavor, not deck-building mechanics, so they're dropped from tags
+# rather than polluting the Synergies vocabulary. Recurring UB *mechanics*
+# (Vivid, Opus, Job select, Infusion, Paradigm, Increment, Disappear, Tiered)
+# are intentionally kept — theming those is a separate roadmap item — as are
+# genuine keywords that merely look unusual (Eerie, Survival). This is a
+# denylist so new *real* keywords still tag automatically; extend it as new
+# flavor-heavy sets land. Compare against the keyword lowercased.
+FLAVOR_KEYWORDS = {
+    "ability", "angelo cannon", "attack", "blue magic", "bring down",
+    "death gigas", "dinosaur formula", "double overdrive", "dragonfire dive",
+    "echo of the lost", "find new host", "fira", "firaga", "fire", "fire cross",
+    "galian beast", "harmonize", "heal", "hellmasker", "item", "look around",
+    "magic", "particle beam", "rat tail", "stagger", "starfall", "super nova",
+    "take 59 flights of stairs", "take the elevator", "the allagan eye",
+    "trance", "wave cannon",
+}
+
 # (tag, predicate(type_line_lower, text_lower)) — order defines output order.
 MECHANIC_RULES = [
-    ("counters", lambda t, x: "+1/+1 counter" in x or "counter on" in x),
+    ("counters", lambda t, x: "+1/+1 counter" in x or "-1/-1 counter" in x
+        or "counter on" in x or "stun counter" in x),
     ("counterspell", lambda t, x: "counter target" in x),
     ("reanimator", lambda t, x: "graveyard" in x and "battlefield" in x
         and ("return" in x or "put" in x) and "creature" in x),
     ("graveyard", lambda t, x: "graveyard" in x),
     ("mill", lambda t, x: "mill" in x),
     ("lifegain", lambda t, x: "lifelink" in x or re.search(r"gain \d+ life|gain that much life", x)),
-    ("card draw", lambda t, x: "draw a card" in x or "draw two" in x or "draw x" in x),
+    ("card draw", lambda t, x: re.search(
+        r"draw (a|two|three|four|five|six|seven|x|that many|\d+) cards?", x) is not None),
     ("sacrifice", lambda t, x: "sacrifice" in x),
     ("tokens", lambda t, x: "create" in x and "token" in x),
     ("removal", lambda t, x: "destroy target" in x or "exile target" in x),
@@ -145,6 +168,25 @@ MECHANIC_RULES = [
     ("vehicle", lambda t, x: "vehicle" in t),
     ("saga", lambda t, x: "saga" in t),
     ("planeswalker", lambda t, x: "planeswalker" in t),
+    # Common spell/enchantment effects that otherwise left many
+    # instants/sorceries/enchantments untagged: combat tricks & anthems, shrink-
+    # based removal / bite, bounce, hand disruption, card selection, impulse
+    # draw, theft, blink, and instant/sorcery-matters.
+    ("pump", lambda t, x: re.search(r"gets? \+[\dx]+/[+-][\dx]+", x) is not None),
+    ("removal", lambda t, x: re.search(r"gets [+-]?[\dx]+/-[\dx]+|gets -[\dx]+/", x) is not None
+        or "deals damage equal to its power to target creature" in x),
+    ("bounce", lambda t, x: re.search(r"return .*to (its|their) owner", x) is not None
+        and "hand" in x),
+    ("discard", lambda t, x: re.search(
+        r"target (player|opponent)[^.]*discard|discards (a|that|two|their|down)"
+        r"|unless (they|that player) discard", x) is not None),
+    ("selection", lambda t, x: "look at the top" in x),
+    ("impulse", lambda t, x: "exile the top" in x and "may play" in x),
+    ("theft", lambda t, x: "gain control of" in x),
+    ("blink", lambda t, x: "exile" in x and "return" in x
+        and "to the battlefield" in x and "graveyard" not in x),
+    ("spellslinger", lambda t, x: "whenever you cast an instant or sorcery" in x
+        or "instant and sorcery spell" in x),
 ]
 
 # Card types that make useful tags on their own.
@@ -182,9 +224,10 @@ def tags_for(row, keywords=None):
         except re.error:
             pass
     # Scryfall keyword abilities (authoritative) + the themes they imply.
+    # Skip Universe-Beyond flavor ability names (see FLAVOR_KEYWORDS).
     for kw in (keywords or []):
         k = kw.strip().lower()
-        if not k:
+        if not k or k in FLAVOR_KEYWORDS:
             continue
         if k not in tags:
             tags.append(k)

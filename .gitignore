@@ -14,5 +14,8 @@ venv/
 credentials*.json
 .env
 
+# Timestamped CSV snapshots written by sheets_sync.py pull before it overwrites
+*.bak
+
 # Personal Claude Code settings (permissions etc.) — not shared
 .claude/settings.local.json
