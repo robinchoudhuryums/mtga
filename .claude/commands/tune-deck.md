@@ -106,3 +106,19 @@ overwrite the base if the user wants it promoted to primary. Then show
 `deck.py diff <base> <new>`, `deck.py mana <new>`, the Arena import block via
 `deck.py arena <new>`, and the wildcard tally. Deck files save with a `.bak` and
 must re-parse cleanly (INV-04).
+
+## Recording flex swaps
+
+When the report surfaces discrete swaps the user might want later (Section 5),
+you can persist them as a **flex block** at the end of the deck file so they
+travel with the deck instead of living only in chat. These are `#~` comment lines
+— ignored by the parser, absent from the Arena export — so they're safe to append
+to any list (see `decks/README.md` → *Flex section*):
+
+```
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex <id>
+#~ -Card Out | +Card In | one-line reason grounded in card text
+```
+
+Read them back with `deck.py flex <id>` (enriches each `+In` with cost, rarity,
+owned count); the editing app shows them in a read-only panel.

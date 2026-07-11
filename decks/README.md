@@ -52,6 +52,26 @@ iteration evolves. (A `#: based-on:` line is just a note for humans.)
 Basic lands (Plains/Island/Swamp/Mountain/Forest/Wastes) are treated as
 unlimited — they don't count against your collection.
 
+### Flex section (suggested swaps)
+
+A deck file may end with a **flex block** recording swaps you're considering but
+haven't committed. These are plain comments — lines starting with `#~` — so they
+never count toward the 60, never affect buildability, and are stripped from the
+Arena export. Format each as pipe-separated columns; a `-` prefix is the card
+coming out, `+` the card going in, and any other column is a free-form note:
+
+```
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 19a
+#~ -Earthbender Ascension | +Bushwhack | fight OR fetch a basic; also feeds landfall
+#~ -Rabaroo Troop | +Harsh Annotation | clean hard removal — the deck runs almost none
+#~ note: all three swaps are OWNED (0 wildcards)
+```
+
+`deck.py flex <id>` prints the block and enriches each `+In` card with its mana
+cost, rarity, and owned count. The editing app also surfaces the block in a
+read-only "Suggested swaps" panel. `/tune-deck` can append a flex block when it
+builds or audits a deck.
+
 ## Commands
 
 ```
@@ -60,6 +80,7 @@ python3 scripts/deck.py check 1a      # owned vs needed vs your collection
 python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
 python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
 python3 scripts/deck.py stats 1a      # mana curve, color balance, type breakdown
+python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~ lines)
 ```
 
 `stats` fetches mana values from Scryfall once and caches them in
