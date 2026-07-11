@@ -127,11 +127,24 @@ python3 scripts/deck.py check 1a      # owned vs needed vs your collection
 python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
 python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
 python3 scripts/deck.py stats 1a      # mana curve, color balance, type breakdown
+python3 scripts/deck.py mana 1a       # hybrid-aware color requirements
 ```
 
 Decks live under `decks/` as one folder per core deck, with variations as sibling
 files (`deck.txt` → id `1`, `1a-*.txt` → id `1a`). Basics are treated as
 unlimited. Full format + structure docs are in [`decks/README.md`](decks/README.md).
+
+**Mana analysis (`stats` curve and `mana`) reads `card-mana.csv`** — real mana
+costs captured from Scryfall by `build_mana.py`. This matters because the CSV's
+Color(s) column stores color *identity*, which can't tell a hybrid `{W/U}`
+(payable with either color) from a strict `{W}{U}` (needs both). `deck.py mana`
+counts hybrids as flexible, so "how much white do I really need?" gets an honest
+answer. Rebuild the data after importing new cards:
+
+```
+python3 scripts/build_mana.py          # refresh card-mana.csv from card-library.csv
+python3 scripts/build_mana.py --pool   # also cover card-pool.csv names
+```
 
 ### Gallery — a visual, filterable view of the collection
 

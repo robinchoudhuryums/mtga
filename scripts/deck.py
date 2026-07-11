@@ -32,6 +32,10 @@ Commands:
     python3 scripts/deck.py diff 1 1a           # what the variant changes
     python3 scripts/deck.py arena 1a            # emit an Arena-importable list
     python3 scripts/deck.py stats 1a            # mana curve, colors, types
+    python3 scripts/deck.py mana 1a             # hybrid-aware color requirements
+
+Mana analysis reads card-mana.csv (real mana costs, built by build_mana.py), so
+hybrid {W/U} pips are counted as flexible rather than demanding both colors.
 """
 
 import argparse
@@ -46,7 +50,7 @@ import urllib.request
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
 
 DECKS_DIR = os.path.join(REPO_ROOT, "decks")
-MANA_CACHE = os.path.join(REPO_ROOT, ".mana-cache.json")
+MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
 BASICS = {"plains", "island", "swamp", "mountain", "forest", "wastes"}
 
 # "4 Card Name" / "4x Card Name", optional "(SET)" and collector number.
@@ -258,17 +262,27 @@ def cmd_arena(args):
     return 0
 
 
-# --- stats (needs mana value; fetched from Scryfall and cached) ------------- #
-def _load_mana_cache():
-    if os.path.exists(MANA_CACHE):
-        with open(MANA_CACHE, encoding="utf-8") as fh:
-            return json.load(fh)
-    return {}
+# --- mana data: real costs from card-mana.csv, with a live fallback --------- #
+def load_mana():
+    """name_lower -> (mana_cost, mana_value) from card-mana.csv (built by build_mana.py)."""
+    import csv as _csv
+    out = {}
+    if not os.path.exists(MANA_CSV):
+        return out
+    with open(MANA_CSV, newline="", encoding="utf-8") as fh:
+        for r in _csv.DictReader(fh):
+            n = (r.get("Card Name") or "").strip().lower()
+            if not n:
+                continue
+            mv = (r.get("Mana Value") or "").strip()
+            out[n] = (r.get("Mana Cost") or "", int(mv) if mv.isdigit() else None)
+            out.setdefault(n.split(" // ")[0], out[n])
+    return out
 
 
-def _fetch_cmc(names, cache):
-    """Fill cache[name_lower] = mana value for missing names via Scryfall batch."""
-    todo = [n for n in names if n.lower() not in cache]
+def fetch_missing_mana(names, mana):
+    """Live-fetch costs for names absent from card-mana.csv (e.g. unowned WIP cards)."""
+    todo = [n for n in names if n.lower() not in mana]
     for i in range(0, len(todo), 75):
         chunk = todo[i:i + 75]
         body = json.dumps({"identifiers": [{"name": n} for n in chunk]}).encode()
@@ -282,14 +296,37 @@ def _fetch_cmc(names, cache):
         except urllib.error.URLError:
             break
         for card in data.get("data", []):
+            faces = card.get("card_faces") or [{}]
+            cost = card.get("mana_cost") or faces[0].get("mana_cost", "")
+            mv = card.get("cmc", 0)
             full = card.get("name", "").lower()
-            cmc = card.get("cmc", card.get("mana_value", 0))
-            cache[full] = cmc
-            cache[full.split(" // ")[0]] = cmc
+            mana[full] = (cost or "", int(mv) if isinstance(mv, (int, float)) else None)
+            mana.setdefault(full.split(" // ")[0], mana[full])
         time.sleep(0.1)
-    with open(MANA_CACHE, "w", encoding="utf-8") as fh:
-        json.dump(cache, fh)
-    return cache
+    return mana
+
+
+SYMBOL_RE = re.compile(r"\{([^}]+)\}")
+
+
+def parse_pips(cost):
+    """Classify a mana cost's symbols into (strict, hybrid).
+
+    strict: {color: count} of single-color pips that MUST be paid with that color.
+    hybrid: list of frozensets of colors a symbol accepts (e.g. {'W','U'}) — each
+            payable with ANY one of them (hybrid {W/U}, monocolor hybrid {2/W},
+            or phyrexian {W/P}).
+    """
+    strict, hybrid = {}, []
+    for sym in SYMBOL_RE.findall(cost or ""):
+        colors = set(ch for ch in sym.upper() if ch in "WUBRG")
+        if "/" in sym:
+            if colors:
+                hybrid.append(frozenset(colors))
+        elif len(colors) == 1:
+            (c,) = colors
+            strict[c] = strict.get(c, 0) + 1
+    return strict, hybrid
 
 
 def _primary_type(type_line):
@@ -330,33 +367,100 @@ def cmd_stats(args):
     print("\nTypes:")
     for t, n in sorted(types.items(), key=lambda kv: -kv[1]):
         print(f"  {t:13} {n:3}  {'#' * n}")
-    print("\nColors (by mana symbol in identity):")
+    print("\nColor identity (rough — run `mana` for hybrid-aware requirements):")
     for ch in "WUBRGC":
         if colors.get(ch):
             print(f"  {ch}  {colors[ch]:3}  {'#' * colors[ch]}")
 
-    # Mana curve (fetched + cached).
-    cache = _fetch_cmc(sorted(set(nonland_names)), _load_mana_cache())
-    curve = {}
-    have_cmc = True
+    # Mana curve from real mana values.
+    mana = load_mana()
+    fetch_missing_mana(sorted(set(nonland_names)), mana)
+    curve, unknown = {}, 0
     for q, n, s, c in cards:
         if n.lower() in BASICS:
             continue
         row = by_key.get((n.lower(), s.lower(), c.lower())) or by_name.get(n.lower())
         if row and "Land" in _primary_type((row.get("Type") or "")):
             continue
-        cmc = cache.get(n.lower())
-        if cmc is None:
-            have_cmc = False
+        entry = mana.get(n.lower())
+        mv = entry[1] if entry else None
+        if mv is None:
+            unknown += q
             continue
-        bucket = int(cmc) if cmc < 7 else 7
+        bucket = mv if mv < 7 else 7
         curve[bucket] = curve.get(bucket, 0) + q
-    print("\nMana curve (nonland):" + ("" if have_cmc else "  [partial — some CMC unavailable]"))
+    print("\nMana curve (nonland):" + (f"  [{unknown} unknown]" if unknown else ""))
     for b in range(0, 8):
         if curve.get(b):
             label = f"{b}+" if b == 7 else str(b)
             print(f"  {label:>2} MV  {curve[b]:3}  {'#' * curve[b]}")
     return 0
+
+
+def cmd_mana(args):
+    """Hybrid-aware color requirements: which colors a deck STRICTLY needs."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}.")
+        return 1
+    by_key, by_name = load_collection()
+    _, cards = parse_deck_file(d["path"])
+    mana = load_mana()
+    if not mana:
+        eprint("No card-mana.csv found. Build it: python3 scripts/build_mana.py")
+        return 1
+    nonland = [n for q, n, s, c in cards if n.lower() not in BASICS]
+    fetch_missing_mana(sorted(set(nonland)), mana)
+
+    strict_pips = {c: 0 for c in "WUBRG"}
+    cards_need = {c: 0 for c in "WUBRG"}
+    hybrid_pips = {}
+    hybrid_only = unknown = 0
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        row = by_key.get((n.lower(), s.lower(), c.lower())) or by_name.get(n.lower())
+        if row and "Land" in _primary_type((row.get("Type") or "")):
+            continue
+        entry = mana.get(n.lower())
+        if entry is None:
+            unknown += q
+            continue
+        strict, hybrid = parse_pips(entry[0])
+        if not entry[0]:  # no mana cost (nonbasic land not in library, or 0-cost)
+            continue
+        for col, cnt in strict.items():
+            strict_pips[col] += cnt * q
+        for col in strict:
+            cards_need[col] += q
+        for h in hybrid:
+            hybrid_pips[h] = hybrid_pips.get(h, 0) + q
+        if hybrid and not strict:
+            hybrid_only += q
+
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — mana requirements (hybrid-aware)\n")
+    print("Strict color requirements (must be paid with that color):")
+    for c in "WUBRG":
+        if cards_need[c]:
+            note = _commitment(cards_need[c])
+            print(f"  {c}  {strict_pips[c]:3} pips across {cards_need[c]:2} card(s)   {note}")
+    if hybrid_pips:
+        print("\nHybrid pips (payable with EITHER color — don't demand their own sources):")
+        for h, n in sorted(hybrid_pips.items(), key=lambda kv: -kv[1]):
+            print(f"  {'/'.join(sorted(h))}  {n} pip(s)")
+    if hybrid_only:
+        print(f"\n{hybrid_only} card(s) are hybrid-only — castable with any of their colors.")
+    if unknown:
+        print(f"\n{unknown} card(s) had no cost data (run build_mana.py to refresh).")
+    return 0
+
+
+def _commitment(n):
+    if n <= 3:
+        return "<- light splash"
+    if n <= 8:
+        return "<- secondary color"
+    return "<- primary color"
 
 
 def main():
@@ -371,11 +475,13 @@ def main():
     p.add_argument("id")
     p = sub.add_parser("stats", help="mana curve, colors, and type breakdown")
     p.add_argument("id")
+    p = sub.add_parser("mana", help="hybrid-aware color requirements")
+    p.add_argument("id")
     args = ap.parse_args()
 
     return {
         "list": cmd_list, "check": cmd_check, "diff": cmd_diff,
-        "arena": cmd_arena, "stats": cmd_stats,
+        "arena": cmd_arena, "stats": cmd_stats, "mana": cmd_mana,
     }[args.cmd](args)
 
 
