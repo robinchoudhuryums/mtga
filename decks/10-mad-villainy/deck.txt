@@ -1,0 +1,45 @@
+#: name: Mad Villainy
+#: format: Historic
+#: colors: BR
+#: notes: Rakdos (B/R) — villains / artifacts midrange.
+
+# Nonland
+1 Whiplash, Vengeful Engineer (MSH) 121
+1 Agents of HYDRA (MSH) 85
+1 Doom Reigns Supreme (MSH) 96
+2 HYDRA Troopers (MSH) 101
+1 Super-Skrull (MSH) 115
+1 Thunderbolts Conspiracy (MSH) 117
+1 Venom's Hunger (SPM) 73
+1 Morlun, Devourer of Spiders (SPM) 59
+2 HYDRA Assault Robot (MSH) 137
+1 Electro, Assaulting Battery (SPM) 76
+1 Hire a Crew (MSH) 134
+1 Machinesmith Automaton (MSH) 144
+1 Molten Man, Inferno Incarnate (SPM) 84
+1 Red Hulk (MSH) 149
+1 Bullseye, Death Dealer (MSH) 209
+1 Avengers: Under Siege (MSH) 205
+1 Ultron Drone (MSH) 253
+1 Ronin, Shadow Stalker (MSH) 112
+1 Stolen Stark Tech (MSH) 114
+1 Diamond Pick-Axe (LCI) 143
+1 Glimmerlight (DSK) 249
+2 Goldvein Pick (FDN) 253
+1 Deadly Precision (TLA) 95
+1 Stomped by the Foot (TMT) 82
+1 Vito's Inquisitor (LCI) 130
+1 Oreplate Pangolin (EOE) 150
+1 Hawkeye, Master Marksman (MSH) 130
+1 Electro's Bolt (SPM) 77
+1 Combustion Man (TLA) 127
+1 Kavaron Skywarden (EOE) 140
+1 Raging Goblinoids (SPM) 85
+1 Orbital Plunge (EOE) 149
+1 Kav Landseeker (EOE) 138
+
+# Lands
+1 Castle Doom (MSH) 263
+1 Fire Nation Palace (TLA) 268
+11 Swamp (MSH) 292
+11 Mountain (MSH) 294

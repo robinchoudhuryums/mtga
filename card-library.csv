@@ -1168,7 +1168,7 @@ Gutless Plunderer,Creature — Skeleton Pirate,"Deathtouch (Any amount of damage
 Raid — When this creature enters, if you attacked this turn, look at the top three cards of your library. You may put one of those cards back on top of your library. Put the rest into your graveyard.",B,Skeleton; Pirate; graveyard; etb; deathtouch,FDN,60,1
 Hog-Monkey,Creature — Boar Monkey,"At the beginning of combat on your turn, target creature you control with a +1/+1 counter on it gains menace until end of turn. (It can't be blocked except by two or more creatures.)
 Exhaust — {5}: Put two +1/+1 counters on this creature. (Activate each exhaust ability only once.)",B,Boar; Monkey; counters; menace,TLA,104,1
-HYDRA Troopers,Creature — Human Soldier Villain,"When this creature enters, create a tapped 2/1 black Villain creature token with menace if there are two or more creature cards in your graveyard. Otherwise, mill two cards. (Put the top two cards of your library into your graveyard.)",B,Human; Soldier; Villain; graveyard; mill; tokens; etb; menace,MSH,101,1
+HYDRA Troopers,Creature — Human Soldier Villain,"When this creature enters, create a tapped 2/1 black Villain creature token with menace if there are two or more creature cards in your graveyard. Otherwise, mill two cards. (Put the top two cards of your library into your graveyard.)",B,Human; Soldier; Villain; graveyard; mill; tokens; etb; menace,MSH,101,2
 Insectoid Exterminator,Creature — Insect Mutant,"Flying
 Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, scry 1. (Look at the top card of your library. You may put that card on the bottom.)",B,Insect; Mutant; scry; flying,TMT,64,1
 Insatiable Skittermaw,Creature — Insect Horror,"Menace (This creature can't be blocked except by two or more creatures.)
@@ -2841,7 +2841,7 @@ Equipped creature gets +1/+1.
 Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; tokens; etb; equipment,DSK,249,1
 Goldvein Pick,Artifact — Equipment,"Equipped creature gets +1/+1.
 Whenever equipped creature deals combat damage to a player, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
-Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; sacrifice; tokens; treasure; equipment,FDN,253,1
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; sacrifice; tokens; treasure; equipment,FDN,253,2
 Villainous Hideout,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast a Villain spell or to activate an ability of a Villain source.
 {3}, {T}: Target Villain you control connives. Activate only as a sorcery. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",Colorless,counters; card draw; mana,MSH,276,1
