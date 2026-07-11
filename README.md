@@ -89,6 +89,35 @@ python3 scripts/query.py --color G --csv               # emit CSV to pipe elsewh
 ```
 
 Case-insensitive substring filters, AND-ed together. Table output by default.
+`query.py` searches only cards you **own** (`card-library.csv`); to search the
+full set of cards you *could* play, use `pool.py` below.
+
+### Card pool — reference cards you don't own yet
+
+For deck-building you often want to see options beyond your collection. The pool
+is a separate reference of Arena-playable cards (built from Scryfall), kept apart
+from your owned inventory. `card-library.csv` stays exactly your collection.
+
+```
+python3 scripts/build_pool.py            # (re)build card-pool.csv — Standard-legal Arena cards
+python3 scripts/build_pool.py --all      # every Arena-craftable card (~15.8k) instead
+```
+
+`card-pool.csv` carries a **Rarity** column (= Arena wildcard cost). Search it
+with `pool.py`, which joins against what you own so each result is flagged owned
+or craftable:
+
+```
+python3 scripts/pool.py --color U --text "counter target"    # all blue counters, owned or not
+python3 scripts/pool.py --color G --synergy ramp --unowned   # green ramp you'd need to craft
+python3 scripts/pool.py --synergy removal --rarity rare,mythic --unowned
+python3 scripts/pool.py --type Merfolk --count               # how many exist vs. how many you own
+```
+
+Each row shows `×N` (copies owned) or `craft`, plus rarity; the summary totals
+the wildcard cost of the craftable results. Rebuild the pool after a new set
+releases. For formats outside the stored pool (e.g. a one-off Historic card),
+just ask Claude Code — it can query Scryfall live and cross-check your library.
 
 ### Deck — manage decks and variations
 
