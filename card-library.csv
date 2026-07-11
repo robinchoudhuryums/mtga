@@ -769,7 +769,7 @@ Braided Net,Artifact // Artifact,"This artifact enters with three net counters o
 {T}, Remove a net counter from this artifact: Tap another target nonland permanent. Its activated abilities can't be activated for as long as it remains tapped.
 Craft with artifact {1}{U} // {3}{U}, {T}: Draw a card for each artifact you control, then put this artifact into its owner's library third from the top.",U,card draw,LCI,47,1
 Atlantean Cavalry,Creature — Merfolk Soldier,"Vigilance
-Whenever you draw your second card each turn, put a +1/+1 counter on this creature.",U,Merfolk; Soldier; counters; vigilance,MSH,45,1
+Whenever you draw your second card each turn, put a +1/+1 counter on this creature.",U,Merfolk; Soldier; counters; vigilance,MSH,45,2
 Bespoke Bō,Artifact — Equipment,"When this Equipment enters, return up to one other target nonland permanent to its owner's hand.
 Equipped creature gets +2/+1 and has vigilance.
 Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",U,Equipment; etb; equipment; vigilance,TMT,31,1
@@ -913,7 +913,7 @@ Waterbend {5}: Enchanted creature's owner shuffles it into their library. (While
 Witness Protection,Enchantment — Aura,"Enchant creature
 Enchanted creature loses all abilities and is a green and white Citizen creature with base power and toughness 1/1 named Legitimate Businessperson. (It loses all other colors, card types, creature types, and names.)",U,Aura; aura,FDN,168,1
 Super Intelligence,Enchantment — Aura,"Enchant creature
-At the beginning of the upkeep of enchanted creature's controller, that player draws a card.",U,Aura; aura,MSH,77,1
+At the beginning of the upkeep of enchanted creature's controller, that player draws a card.",U,Aura; aura,MSH,77,2
 Unsummon,Instant,Return target creature to its owner's hand.,U,,ANB,36,1
 "Stature, Size Shifter",Legendary Creature — Human Hero,"Stature can't be blocked if her power is 1 or less.
 Power-up — {X}{U}{U}: Put X +1/+1 counters on Stature. (Activate each power-up ability only once. Reduce the cost by her mana cost if she entered this turn.)",U,Human; Hero; counters,MSH,76,1
@@ -2345,7 +2345,7 @@ Hidden Lair,Land,"{T}: Add {C}.
 {T}: Add {U} or {B}. Activate only if this land entered this turn or if you control a basic land.",U/B,mana,MSH,269,1
 Dismal Backwater,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
-{T}: Add {U} or {B}.",U/B,lifegain; mana; etb,FDN,261,1
+{T}: Add {U} or {B}.",U/B,lifegain; mana; etb,FDN,261,2
 Serpent's Pass,Land,"This land enters tapped.
 {T}: Add {U} or {B}.
 {4}, {T}, Sacrifice this land: Draw a card.",U/B,card draw; sacrifice; mana,TLA,279,1
@@ -2967,7 +2967,7 @@ Avengers Tower,Land,"{T}: Add {C}.
 {4}, {T}: Look at the top three cards of your library. You may reveal a Hero card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",Colorless,mana,MSH,260,1
 Baxter Building,Land,"{T}: Add {C}.
 {4}, {T}: Add four mana in any combination of colors.
-{4}, {T}: Draw a card. Activate only if you control a creature with toughness 4 or greater.",Colorless,card draw; mana,MSH,261,1
+{4}, {T}: Draw a card. Activate only if you control a creature with toughness 4 or greater.",Colorless,card draw; mana,MSH,261,2
 Zuko's Exile,Instant — Lesson,"Exile target artifact, creature, or enchantment. Its controller creates a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",Colorless,Lesson; card draw; sacrifice; tokens; removal; clue,TLA,3,1
 Rancorous Archaic,Creature — Avatar,"Trample, reach
 Converge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.",Colorless,Avatar; counters; trample; reach,SOS,2,1

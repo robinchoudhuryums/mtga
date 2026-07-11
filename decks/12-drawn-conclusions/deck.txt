@@ -1,0 +1,49 @@
+#: name: Drawn Conclusions
+#: format: Historic
+#: colors: UB
+#: notes: Dimir (U/B) — card draw / control.
+
+# Nonland
+1 Kid Loki (MSH) 63
+1 Pym Particles (MSH) 70
+2 Super Intelligence (MSH) 77
+1 Futurist Forge (MSH) 55
+1 Loki, God of Mischief (MSH) 65
+1 Silent Hallcreeper (DSK) 72
+1 Amazing Acrobatics (SPM) 25
+2 Atlantean Cavalry (MSH) 45
+1 I Am Iron Man (MSH) 58
+1 Ms. Marvel, Kamala Khan (MSH) 67
+1 Namor the Sub-Mariner (MSH) 69
+1 Rewrite History (MSH) 71
+1 Attuma, Atlantean Warlord (MSH) 47
+1 Leader, Super-Genius (MSH) 64
+1 Mister Fantastic, Reed Richards (MSH) 66
+1 Archmage of Runes (FDN) 30
+1 Multiversal Incursion (MSH) 68
+1 Construct a Cosmic Cube (MSH) 90
+1 High-Society Hunter (FDN) 61
+1 Roxxon Brutes (MSH) 113
+1 Madame Masque (MSH) 104
+1 Messenger Hawk (TLA) 234
+1 H.E.R.B.I.E. Scout Unit (MSH) 247
+1 Yellowjacket, Heartless Marauder (MSH) 123
+1 Harmonized Trio (SOS) 52
+1 Erudite Wizard (FDN) 37
+1 Faebloom Trick (FDN) 38
+1 Trickster's Stratagem (MSH) 81
+1 Daring Waverider (BLB) 44
+1 Wanderwine Farewell (ECL) 83
+1 Satoru, the Infiltrator (OTJ) 230
+1 Last Gasp (SOS) 86
+1 Grim Reaper, Lethal Legionnaire (MSH) 98
+1 Painful Quandary (FDN) 179
+
+# Lands
+2 Baxter Building (MSH) 261
+1 Hidden Lair (MSH) 269
+1 Soured Springs (OTJ) 264
+1 Treno, Dark City (FIN) 290
+2 Dismal Backwater (FDN) 261
+6 Swamp (MSH) 292
+11 Island (MSH) 290
