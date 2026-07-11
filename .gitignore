@@ -1,7 +1,5 @@
 # Generated image-URL cache (regenerable via scripts/build_gallery.py)
 .image-cache.json
-# Generated mana-value cache (regenerable via scripts/deck.py stats)
-.mana-cache.json
 # Incidental gallery preview screenshot
 gallery-preview.png
 

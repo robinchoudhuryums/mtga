@@ -126,29 +126,42 @@ def find_deck(deck_id):
 # Collection lookup
 # --------------------------------------------------------------------------- #
 def load_collection():
+    """Return (by_key, by_name, by_name_qty).
+
+    by_key/by_name map to a representative row (for type/printing lookups);
+    by_name_qty sums Quantity Owned across every printing of a name, since Arena
+    copies are fungible across sets (see owned()).
+    """
     _, rows = load_rows(DEFAULT_CSV)
-    by_key, by_name = {}, {}
+    by_key, by_name, by_name_qty = {}, {}, {}
     for r in rows:
         name = (r.get("Card Name") or "").strip()
         if not name:
             continue
-        key = (name.lower(), (r.get("Set Code") or "").strip().lower(),
+        nl = name.lower()
+        key = (nl, (r.get("Set Code") or "").strip().lower(),
                (r.get("Collector #") or "").strip().lower())
         by_key[key] = r
-        by_name.setdefault(name.lower(), r)
-    return by_key, by_name
+        by_name.setdefault(nl, r)
+        q = (r.get("Quantity Owned") or "").strip()
+        by_name_qty[nl] = by_name_qty.get(nl, 0) + (int(q) if q.isdigit() else 0)
+    return by_key, by_name, by_name_qty
 
 
-def owned(by_key, by_name, name, set_code, collector):
-    """(count_owned, in_library) for a deck card. Basics count as unlimited."""
+def owned(by_name_qty, name):
+    """(count_owned, in_library) for a deck card.
+
+    Basics count as unlimited. Copies are summed across ALL printings of a card,
+    because an Arena playset is fungible regardless of set/collector number — a
+    card owned 1x in one set and 1x in another counts as 2 toward a deck's needs
+    (mirrors pool.py's owned_counts, which also sums across printings).
+    """
     if name.lower() in BASICS:
         return 99, True
-    key = (name.lower(), set_code.lower(), collector.lower())
-    row = by_key.get(key) or by_name.get(name.lower())
-    if not row:
+    nl = name.lower()
+    if nl not in by_name_qty:
         return 0, False
-    q = (row.get("Quantity Owned") or "").strip()
-    return (int(q) if q.isdigit() else 0), True
+    return by_name_qty[nl], True
 
 
 # --------------------------------------------------------------------------- #
@@ -160,7 +173,7 @@ def cmd_list(_args):
         print("No decks yet. Add one under decks/<NN-name>/deck.txt "
               "(see decks/README.md).")
         return 0
-    by_key, by_name = load_collection()
+    _, _, by_name_qty = load_collection()
     cores = {}
     for d in decks:
         cores.setdefault(d["core"], []).append(d)
@@ -172,7 +185,7 @@ def cmd_list(_args):
             total = sum(q for q, *_ in cards)
             short = 0
             for q, n, s, c in cards:
-                have, found = owned(by_key, by_name, n, s, c)
+                have, found = owned(by_name_qty, n)
                 if not found or have < q:
                     short += 1
             status = "OK " if short == 0 else f"{short} short"
@@ -187,7 +200,7 @@ def cmd_check(args):
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
-    by_key, by_name = load_collection()
+    _, _, by_name_qty = load_collection()
     _, cards = parse_deck_file(d["path"])
 
     print(f"Deck {d['id']}: {d['name'] or d['path']}")
@@ -195,7 +208,7 @@ def cmd_check(args):
     print("-" * 44)
     missing, short = [], []
     for q, n, s, c in cards:
-        have, found = owned(by_key, by_name, n, s, c)
+        have, found = owned(by_name_qty, n)
         flag = ""
         if not found:
             flag, _ = "  <- NOT IN LIBRARY", missing.append(n)
@@ -296,7 +309,10 @@ def fetch_missing_mana(names, mana):
         try:
             with urllib.request.urlopen(req, timeout=30) as resp:
                 data = json.load(resp)
-        except urllib.error.URLError:
+        except urllib.error.URLError as e:
+            eprint(f"WARN:  could not reach Scryfall for live mana lookup "
+                   f"({e}); {len(todo) - i} card(s) not in card-mana.csv will "
+                   f"show as unknown. This is a network issue, not stale data.")
             break
         for card in data.get("data", []):
             faces = card.get("card_faces") or [{}]
@@ -560,7 +576,7 @@ def cmd_mana(args):
     if not d:
         eprint(f"No deck with id {args.id!r}.")
         return 1
-    by_key, by_name = load_collection()
+    by_key, by_name, _ = load_collection()
     _, cards = parse_deck_file(d["path"])
     mana = load_mana()
     if not mana:
