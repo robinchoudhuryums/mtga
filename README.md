@@ -145,6 +145,7 @@ just ask Claude Code — it can query Scryfall live and cross-check your library
 
 ```
 python3 scripts/deck.py list          # every deck + variant, with buildable status
+python3 scripts/deck.py wildcards     # roster-wide crafting plan (wildcards to finish decks)
 python3 scripts/deck.py check 1a      # owned vs needed vs your collection
 python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
 python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
@@ -152,6 +153,14 @@ python3 scripts/deck.py stats 1a      # mana curve, color balance, type breakdow
 python3 scripts/deck.py mana 1a       # hybrid-aware color requirements
 python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
 ```
+
+`wildcards` reads every deck's craft targets (cards you're short of), prices each
+by rarity (= its Arena wildcard, from `card-pool.csv`, with a live Scryfall
+fallback for non-Standard cards), and reports three things: per-deck wildcards to
+finish (closest-to-done first), the **highest-leverage crafts** (one card that
+unblocks multiple decks), and the total wildcards to make the *whole* roster
+buildable — deduplicated, since one shared collection means a card is only ever
+short by `max(any deck needs) − total owned`.
 
 `stats` also flags **cost flexibility** (`◊` — cards whose text reduces their
 cost or grants flash, e.g. convoke/delve/"costs {1} less", so the printed mana
@@ -193,8 +202,11 @@ the art, but the file stays tiny and portable).
 
 Image URLs are resolved via Scryfall's batch endpoint (≈4 requests for a few
 hundred cards) and cached in `.image-cache.json` (gitignored) so rebuilds are
-instant and the canonical CSV is never modified. Use `--no-fetch` to rebuild
-from cache without touching the network. Rerun after importing new cards.
+instant and the canonical CSV is never modified. They're also written to
+`image-manifest.json`, which **is** committed — so a fresh clone (or anyone you
+share the repo with) can render the art and rebuild with `--no-fetch` offline,
+without the gitignored working cache. Use `--no-fetch` to rebuild from the
+manifest/cache without touching the network. Rerun after importing new cards.
 
 ### Sheets sync — round-trip with Google Sheets (optional)
 

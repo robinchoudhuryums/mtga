@@ -28,6 +28,7 @@ files (no folder) work too, with the filename as the id.
 
 Commands:
     python3 scripts/deck.py list                # all decks + variants, buildable?
+    python3 scripts/deck.py wildcards           # roster crafting plan (wildcards to finish)
     python3 scripts/deck.py check 1a            # owned vs needed vs your collection
     python3 scripts/deck.py diff 1 1a           # what the variant changes
     python3 scripts/deck.py arena 1a            # emit an Arena-importable list
@@ -55,6 +56,11 @@ POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
 DECKS_DIR = os.path.join(REPO_ROOT, "decks")
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
 BASICS = {"plains", "island", "swamp", "mountain", "forest", "wastes"}
+
+# Arena wildcard tiers. A card's Rarity == the wildcard needed to craft a copy.
+WC_LETTER = {"common": "C", "uncommon": "U", "rare": "R", "mythic": "M"}
+WC_NAMES = [("M", "Mythic"), ("R", "Rare"), ("U", "Uncommon"),
+            ("C", "Common"), ("?", "Unknown")]
 
 # "4 Card Name" / "4x Card Name", optional "(SET)" and collector number.
 LINE_RE = re.compile(r"^\s*(\d+)\s*[xX]?\s+(.+?)\s*(?:\(([^)]+)\)\s*([^\s]+)?)?\s*$")
@@ -192,6 +198,146 @@ def cmd_list(_args):
             label = d["name"] or os.path.basename(os.path.dirname(d["path"])) or d["id"]
             tag = "  └─ variant" if d["variant"] else "CORE"
             print(f"  [{d['id']:>4}] {tag:12} {label:28} {total:3} cards  {status}")
+    return 0
+
+
+# --- wildcard (crafting) planning ------------------------------------------- #
+def load_rarities():
+    """name_lower -> wildcard letter (C/U/R/M) from card-pool.csv's Rarity."""
+    out = {}
+    if not os.path.exists(POOL_CSV):
+        return out
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            n = (r.get("Card Name") or "").strip().lower()
+            rar = (r.get("Rarity") or "").strip().lower()
+            if n and rar:
+                out.setdefault(n, WC_LETTER.get(rar, "?"))
+    return out
+
+
+def fetch_missing_rarities(names, rarities):
+    """Live-fetch rarity for craft targets absent from the pool (e.g. non-Standard
+    WIP cards). Degrades gracefully to '?' if Scryfall is unreachable."""
+    todo = [n for n in names if n.lower() not in rarities]
+    for i in range(0, len(todo), 75):
+        chunk = todo[i:i + 75]
+        body = json.dumps({"identifiers": [{"name": n} for n in chunk]}).encode()
+        req = urllib.request.Request(
+            "https://api.scryfall.com/cards/collection", data=body,
+            headers={"User-Agent": "mtga-card-library/1.0",
+                     "Accept": "application/json", "Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                data = json.load(resp)
+        except urllib.error.URLError as e:
+            eprint(f"WARN:  could not reach Scryfall for rarity lookup ({e}); "
+                   f"{len(todo) - i} card(s) will show wildcard '?'.")
+            break
+        for card in data.get("data", []):
+            rar = WC_LETTER.get((card.get("rarity") or "").lower(), "?")
+            full = card.get("name", "").lower()
+            rarities.setdefault(full, rar)
+            rarities.setdefault(full.split(" // ")[0], rar)
+        time.sleep(0.1)
+    return rarities
+
+
+def _wc_breakdown(shortfalls, rar_of):
+    """{wildcard letter: copies} for a list of (name, missing_copies)."""
+    by = {}
+    for name, miss in shortfalls:
+        r = rar_of(name)
+        by[r] = by.get(r, 0) + miss
+    return by
+
+
+def _wc_str(by):
+    return " ".join(f"{by[r]}{r}" for r, _ in WC_NAMES if by.get(r))
+
+
+def cmd_wildcards(_args):
+    """Roster-wide crafting plan: what to craft, and which crafts unlock the most
+    decks. Owned copies are shared across decks and summed across printings, so a
+    card is only ever short by (max any deck needs − total owned)."""
+    decks = discover_decks()
+    if not decks:
+        print("No decks yet. Add one under decks/<NN-name>/deck.txt.")
+        return 0
+    _, _, by_name_qty = load_collection()
+    rarities = load_rarities()
+
+    deck_short = {}       # deck id -> [(name, missing_copies)]
+    max_need = {}         # name_lower -> max copies any single deck needs
+    display = {}          # name_lower -> display name
+    needed_by = {}        # name_lower -> set(deck ids short on it)
+    for d in decks:
+        _, cards = parse_deck_file(d["path"])
+        need = {}
+        for q, n, s, c in cards:
+            if n.lower() in BASICS:
+                continue  # basics are free/unlimited in Arena
+            need[n] = need.get(n, 0) + q
+        shorts = []
+        for n, req in need.items():
+            nl = n.lower()
+            display[nl] = n
+            max_need[nl] = max(max_need.get(nl, 0), req)
+            have, _ = owned(by_name_qty, n)
+            miss = max(0, req - have)
+            if miss > 0:
+                shorts.append((n, miss))
+                needed_by.setdefault(nl, set()).add(d["id"])
+        deck_short[d["id"]] = shorts
+
+    # Resolve rarities for every craft target (pool first, live fallback).
+    short_names = sorted({n for shorts in deck_short.values() for n, _ in shorts})
+    if short_names:
+        fetch_missing_rarities(short_names, rarities)
+    rar_of = lambda name: rarities.get(name.lower(), "?")
+
+    # Per-deck: wildcards to finish, closest-to-done first.
+    print("Roster crafting plan\n")
+    print(f"{'Deck':>5}  {'Name':26}  Wildcards to finish")
+    print("-" * 60)
+    ordered = sorted(decks, key=lambda d: (sum(m for _, m in deck_short[d["id"]]),
+                                           len(d["id"]), d["id"]))
+    for d in ordered:
+        shorts = deck_short[d["id"]]
+        label = (d["name"] or d["id"])[:26]
+        total = sum(m for _, m in shorts)
+        if total == 0:
+            print(f"{d['id']:>5}  {label:26}  buildable ✓")
+        else:
+            print(f"{d['id']:>5}  {label:26}  {total:2} copy(s):  "
+                  f"{_wc_str(_wc_breakdown(shorts, rar_of))}")
+
+    # Highest-leverage crafts: one craft, multiple decks unblocked.
+    multi = sorted(((nl, ids) for nl, ids in needed_by.items() if len(ids) >= 2),
+                   key=lambda kv: (-len(kv[1]), kv[0]))
+    if multi:
+        print("\nHighest-leverage crafts (one card, multiple decks):")
+        for nl, ids in multi[:15]:
+            decks_s = ", ".join(sorted(ids, key=lambda x: (len(x), x)))
+            print(f"  {display[nl]} ({rar_of(display[nl])})  — {len(ids)} decks: {decks_s}")
+
+    # Roster totals: one shared collection, so per card only max(0, maxneed-owned).
+    roster = {}
+    for nl, req in max_need.items():
+        have, _ = owned(by_name_qty, display[nl])
+        miss = max(0, req - have)
+        if miss > 0:
+            r = rar_of(display[nl])
+            roster[r] = roster.get(r, 0) + miss
+    print("\nTotal wildcards to make EVERY deck buildable (shared collection):")
+    if roster:
+        print("  " + "   ".join(f"{roster[r]} {name}" for r, name in WC_NAMES
+                                if roster.get(r)))
+        if roster.get("?"):
+            print("  ('?' = rarity unresolved — rebuild card-pool.csv or check "
+                  "Scryfall connectivity.)")
+    else:
+        print("  Nothing to craft — the whole roster is buildable. ✓")
     return 0
 
 
@@ -640,6 +786,7 @@ def main():
     ap = argparse.ArgumentParser(description="Manage decks and variations.")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("list", help="list all decks and variants")
+    sub.add_parser("wildcards", help="roster-wide crafting plan (wildcards to finish decks)")
     p = sub.add_parser("check", help="owned vs needed vs your collection")
     p.add_argument("id")
     p = sub.add_parser("diff", help="show what one deck changes vs another")
@@ -655,9 +802,9 @@ def main():
     args = ap.parse_args()
 
     return {
-        "list": cmd_list, "check": cmd_check, "diff": cmd_diff,
-        "arena": cmd_arena, "stats": cmd_stats, "mana": cmd_mana,
-        "tribes": cmd_tribes,
+        "list": cmd_list, "wildcards": cmd_wildcards, "check": cmd_check,
+        "diff": cmd_diff, "arena": cmd_arena, "stats": cmd_stats,
+        "mana": cmd_mana, "tribes": cmd_tribes,
     }[args.cmd](args)
 
 
