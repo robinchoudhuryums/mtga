@@ -220,10 +220,16 @@ manifest/cache without touching the network. Rerun after importing new cards.
 ### Editing app — edit the collection in your browser (optional)
 
 ```
+make app                               # one command: venv + install + launch + open browser
+# ...or manually:
 pip install -r requirements-app.txt
-python3 scripts/app.py                 # then open http://127.0.0.1:5000
-python3 scripts/app.py --port 8000     # different port
+python3 scripts/app.py                  # opens http://127.0.0.1:5000 in your browser
+python3 scripts/app.py --port 8000 --no-browser
 ```
+
+`make app` sets up an isolated `.venv`, installs Flask into it, launches the app,
+and opens your browser — so from a fresh clone it's a single command. (Run
+manually if you prefer; `--no-browser` skips the auto-open.)
 
 A small local Flask app that turns the collection into an **editable** grid: card
 art (from `image-manifest.json`), search/color/set filters, and each card's
@@ -248,7 +254,10 @@ quantities, add/remove cards, and see **live buildability** (owned vs. needed,
 short/missing) update as you type. Saving writes the deck's `.txt` file through
 the same safe path — validated (the file must re-parse with every card line
 intact, INV-04), backed up to a `.bak`, atomically replaced — and it preserves
-the file's `# Creatures` / `# Lands` section comments.
+the file's `# Creatures` / `# Lands` section comments. The editor also lets you
+edit the `#:` metadata fields, run **Stats / Mana / Tribes / Suggestions**
+analysis tabs (the same `deck.py` output, in-browser), and **＋ New deck** to
+create a fresh numbered deck.
 
 Flask is the only part of the toolkit with a dependency; it's isolated in
 `requirements-app.txt`, and the core scripts (and `check_all.py` / CI) never
