@@ -2040,7 +2040,7 @@ Drix Fatemaker,Creature — Drix Wizard,"When this creature enters, put a +1/+1 
 Each creature you control with a +1/+1 counter on it has trample.
 Warp {1}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,Drix; Wizard; counters; etb; trample,EOE,178,1
 Earth Kingdom General,Creature — Human Soldier Ally,"When this creature enters, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)
-Whenever you put one or more +1/+1 counters on a creature, you may gain that much life. Do this only once each turn.",G,Human; Soldier; Ally; counters; lifegain; etb; haste,TLA,173,1
+Whenever you put one or more +1/+1 counters on a creature, you may gain that much life. Do this only once each turn.",G,Human; Soldier; Ally; counters; lifegain; etb; haste,TLA,173,2
 Foggy Swamp Vinebender,Creature — Human Plant Ally,"This creature can't be blocked by creatures with power 2 or less.
 Waterbend {5}: Put a +1/+1 counter on this creature. Activate only during your turn. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",G,Human; Plant; Ally; counters,TLA,180,1
 Icecave Crasher,Creature — Beast,"Trample
@@ -2190,7 +2190,7 @@ When this creature leaves the battlefield, put its counters on target creature y
 Warp {X}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,Insect; Knight; counters,EOE,175,1
 Ba Sing Se,Land,"This land enters tapped unless you control a basic land.
 {T}: Add {G}.
-{2}{G}, {T}: Earthbend 2. Activate only as a sorcery. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",G,counters; mana; haste,TLA,266,1
+{2}{G}, {T}: Earthbend 2. Activate only as a sorcery. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",G,counters; mana; haste,TLA,266,2
 Deepchannel Duelist,Creature — Merfolk Soldier,"At the beginning of your end step, untap target Merfolk you control.
 Other Merfolk you control get +1/+1.",W/U,Merfolk; Soldier,ECL,213,1
 Air Nomad Legacy,Enchantment,"When this enchantment enters, create a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
@@ -2887,7 +2887,7 @@ Surveillance Room,Land,"When this land enters, surveil 1. (Look at the top card 
 Rumble Arena,Land,"Vigilance
 When this land enters, scry 1. (Look at the top card of your library. You may put it on the bottom.)
 {T}: Add {C}.
-{1}, {T}: Add one mana of any color.",Colorless,mana; etb; scry; vigilance,TLA,277,1
+{1}, {T}: Add one mana of any color.",Colorless,mana; etb; scry; vigilance,TLA,277,2
 Fountainport,Land,"{T}: Add {C}.
 {2}, {T}, Sacrifice a token: Draw a card.
 {3}, {T}, Pay 1 life: Create a 1/1 blue Fish creature token.
