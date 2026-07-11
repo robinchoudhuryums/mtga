@@ -483,3 +483,253 @@ Another Round,Sorcery,"Exile any number of creatures you control, then return th
 Abandoned Air Temple,Land,"This land enters tapped unless you control a basic land.
 {T}: Add {W}.
 {3}{W}, {T}: Put a +1/+1 counter on each creature you control.",W,,TLA,263,1
+Honest Work,Enchantment — Aura,"Enchant creature an opponent controls
+When this Aura enters, tap enchanted creature and remove all counters from it.
+Enchanted creature loses all abilities and is a Citizen with base power and toughness 1/1 and ""{T}: Add {C}"" named Humble Merchant. (It loses all other creature types and names.)",U,,TLA,55,1
+"Uthros, Titanic Godcore",Land — Planet,"This land enters tapped.
+{T}: Add {U}.
+Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
+12+ | {U}, {T}: Add {U} for each artifact you control.",U,,EOE,260,1
+Agna Qel'a,Land,"This land enters tapped unless you control a basic land.
+{T}: Add {U}.
+{2}{U}, {T}: Draw a card, then discard a card.",U,,TLA,264,1
+Syncopate,Instant,"Counter target spell unless its controller pays {X}. If that spell is countered this way, exile it instead of putting it into its owner's graveyard.",U,,FIN,80,1
+Procrastinate,Sorcery,"Tap target creature. Put twice X stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,,SOS,64,1
+Portent of Calamity,Sorcery,"Reveal the top X cards of your library. For each card type, you may exile a card of that type from among them. Put the rest into your graveyard. You may cast a spell from among the exiled cards without paying its mana cost if you exiled four or more cards this way. Then put the rest of the exiled cards into your hand.",U,,BLB,66,1
+Wanderwine Farewell,Kindred Sorcery — Merfolk,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
+Return one or two target nonland permanents to their owners' hands. Then if you control a Merfolk, create a 1/1 white and blue Merfolk creature token for each permanent returned to its owner's hand this way.",U,,ECL,83,1
+Turtles in Time,Sorcery,"Return all creatures to their owners' hands. Each player may shuffle their hand and graveyard into their library, then each player who does draws seven cards.
+Exile Turtles in Time.",U,,TMT,55,1
+Tolarian Terror,Creature — Serpent,"This spell costs {1} less to cast for each instant and sorcery card in your graveyard.
+Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)",U,,FDN,167,1
+Serpent of the Pass,Creature — Serpent,"If there are three or more Lesson cards in your graveyard, you may cast this spell as though it had flash.
+This spell costs {1} less to cast for each noncreature, nonland card in your graveyard.",U,,TLA,70,1
+Multiversal Incursion,Sorcery,"For each nontoken creature you control, create a token that's a copy of that creature, except it isn't legendary.",U,,MSH,68,1
+Atlantis Attacks,Sorcery,"Teamwork 4 (As an additional cost to cast this spell, you may tap any number of creatures you control with total power 4 or more.)
+Choose one. If this spell was cast using teamwork, choose both instead.
+• Target player creates a 6/5 blue Leviathan creature token with hexproof.
+• Return one or two target nonland permanents to their owners' hands.",U,,MSH,46,1
+Y'shtola Rhul,Legendary Creature — Cat Druid,"At the beginning of your end step, exile target creature you control, then return it to the battlefield under its owner's control. Then if it's the first end step of the turn, there is an additional end step after this step.",U,,FIN,86,1
+Weftwalking,Enchantment,"When this enchantment enters, if you cast it, shuffle your hand and graveyard into your library, then draw seven cards.
+The first spell each player casts during each of their turns may be cast without paying its mana cost.",U,,EOE,86,1
+Time Stop,Instant,"End the turn. (Exile all spells and abilities, including this spell. The player whose turn it is discards down to their maximum hand size. Damage heals and ""this turn"" and ""until end of turn"" effects end.)",U,,FDN,166,1
+Summon: Leviathan,Enchantment Creature — Saga Leviathan,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Return each creature that isn't a Kraken, Leviathan, Merfolk, Octopus, or Serpent to its owner's hand.
+II, III — Until end of turn, whenever a Kraken, Leviathan, Merfolk, Octopus, or Serpent attacks, draw a card.
+Ward {2}",U,,FIN,77,1
+Mirrorform,Instant,Each nonland permanent you control becomes a copy of target non-Aura permanent.,U,,ECL,59,1
+Mechanozoa,Artifact Creature — Robot Jellyfish,"When this creature enters, tap target artifact or creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
+Warp {2}{U} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",U,,EOE,66,1
+Marang River Regent,Creature — Dragon // Instant — Omen,"Flying
+When this creature enters, return up to two other target nonland permanents to their owners' hands. // Draw three cards, then discard a card. (Then shuffle this card into its owner's library.)",U,,TDM,51,1
+"Madame Web, Clairvoyant",Legendary Creature — Mutant Advisor,"You may look at the top card of your library any time.
+You may cast Spider spells and noncreature spells from the top of your library.
+Whenever you attack, you may mill a card. (You may put the top card of your library into your graveyard.)",U,,SPM,36,1
+"Kitsune, Dragon's Daughter",Legendary Creature — Fox Warlock Avatar,"Vigilance
+Whenever Kitsune enters or deals combat damage to a player, you may exchange control of two other target creatures controlled by different players.",U,,TMT,41,1
+Kitsune's Technique,Instant,"Sneak {1}{U} (You may cast this spell for {1}{U} if you also return an unblocked attacker you control to hand during the declare blockers step.)
+Target opponent mills half their library, rounded up.",U,,TMT,42,1
+Ice Flan,Creature — Elemental Ooze,"When this creature enters, tap target artifact or creature an opponent controls. Put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
+Islandcycling {2} ({2}, Discard this card: Search your library for an Island card, reveal it, put it into your hand, then shuffle.)",U,,FIN,55,1
+Homesickness,Instant,"Target player draws two cards. Tap up to two target creatures. Put a stun counter on each of them. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,,SOS,53,1
+Echocasting Symposium,,,,,SOS,44,1
+Giant Koi,,,,,TLA,53,1
+Dirgur Island Dragon,,,,,TDM,40,1
+Daring Waverider,,,,,BLB,44,1
+Bottomless Pool // Locker Room,,,,,DSK,43,1
+Curator of Destinies,,,,,FDN,34,1
+"Wiccan, Rising Magician",,,,,MSH,83,1
+Unexpected Assistance,,,,,ECL,80,1
+This Town Ain't Big Enough,,,,,OTJ,74,1
+Underwater Tunnel // Slimy Aquarium,,,,,DSK,79,1
+Stratosoarer,,,,,ECL,72,1
+"Stockman, Mad Fly-entist",,,,,TMT,54,1
+Sokka's Haiku,,,,,TLA,71,1
+Starbreach Whale,,,,,EOE,77,1
+Skyskipper Duo,,,,,BLB,71,1
+Robotics Mastery,,,,,SPM,41,1
+Quantum Riddler,,,,,EOE,72,1
+"Renet, Temporal Apprentice",,,,,TMT,50,1
+Muse's Encouragement,,,,,SOS,61,1
+Lost Days,,,,,TLA,62,1
+"Ironheart, Clever Champion",,,,,MSH,60,1
+Living Conundrum,,,,,MKM,63,1
+Illusion Spinners,,,,,ECL,55,1
+"Falcon, Winged Wonder",,,,,MSH,52,1
+Ember Island Production,,,,,TLA,48,1
+Emeritus of Ideation,,,,,SOS,45,1
+"Doc Ock, Sinister Scientist",,,,,SPM,29,1
+Benthic Criminologists,,,,,MKM,40,1
+"Yue, the Moon Spirit",,,,,TLA,83,1
+Archmage of Runes,,,,,FDN,30,1
+Waterbending Lesson,,,,,TLA,80,1
+Uncharted Voyage,,,,,FDN,53,1
+Trickster's Stratagem,,,,,MSH,81,1
+Trip Up,,,,,DFT,71,1
+Tractor Beam,,,,,EOE,82,1
+The Legend of Kuruk,,,,,TLA,61,1
+Temporal Cleansing,,,,,ECL,78,1
+"Teo, Spirited Glider",,,,,TLA,74,1
+Spellbook Seeker,,,,,SOS,68,1
+Secret of Bloodbending,,,,,TLA,69,1
+Rook Turret,,,,,FIN,69,1
+Run Behind,,,,,SOS,66,1
+Retrieve the Esper,,,,,FIN,68,1
+Relm's Sketching,,,,,FIN,67,1
+"Mister Fantastic, Reed Richards",,,,,MSH,66,1
+"Ray Fillet, Man Ray",,,,,TMT,49,1
+Lost in Space,,,,,EOE,62,1
+"Leader, Super-Genius",,,,,MSH,64,1
+Giant-Sized Flying Ant,,,,,MSH,56,1
+High Fae Trickster,,,,,FDN,40,1
+Flexible Waterbender,,,,,TLA,50,1
+Enduring Curiosity,,,,,DSK,51,1
+"Donatello, Turtle Techie",,,,,TMT,37,1
+Eject,,,,,FIN,52,1
+"Donatello, Mutant Mechanic",,,,,TMT,36,1
+"Chameleon, Master of Disguise",,,,,SPM,27,1
+Ancestral Reminiscence,,,,,LCI,45,1
+"Attuma, Atlantean Warlord",,,,,MSH,47,1
+Aetherize,,,,,FDN,151,1
+A.I.M. Scientists,,,,,MSH,44,1
+"Ty Lee, Chi Blocker",,,,,TLA,76,1
+Utrom Scientists,,,,,TMT,56,1
+Thirst for Knowledge,,,,,MSH,79,1
+The Spirit Oasis,,,,,TLA,72,1
+Textbook Tabulator,,,,,SOS,70,1
+"The Mechanist, Aerial Artisan",,,,,TLA,64,1
+Stock Up,,,,,SOA,24,1
+Spirit Water Revival,,,,,TLA,73,1
+Sinister Cryologist,,,,,EOE,75,1
+"Spider-Byte, Web Warden",,,,,SPM,44,1
+Silvergill Peddler,,,,,ECL,70,1
+Secret Invasion,,,,,MSH,72,1
+Rowdy Snowballers,,,,,TLA,68,1
+S.H.I.E.L.D. Deployment Drone,,,,,MSH,73,1
+Roadside Blowout,,,,,DFT,58,1
+Rewrite History,,,,,MSH,71,1
+Quistis Trepe,,,,,FIN,66,1
+Retro-Mutation,,,,,TMT,51,1
+Quick Study,,,,,SOS,65,1
+Pearl of Wisdom,,,,,BLB,64,1
+North Pole Patrol,,,,,TLA,65,1
+Ooze Spill,,,,,TMT,48,1
+Nanoform Sentinel,,,,,EOE,71,1
+Namor the Sub-Mariner,,,,,MSH,69,1
+Mondo Gecko,,,,,TMT,46,1
+"Ms. Marvel, Kamala Khan",,,,,MSH,67,1
+Mind Transfer Protocol,,,,,TMT,45,1
+Mana Sculpt,,,,,SOS,57,1
+"Justice, Vance Astrovik",,,,,MSH,61,1
+"Katara, Bending Prodigy",,,,,TLA,59,1
+Imprisoned in the Moon,,,,,FDN,156,1
+Iguana Parrot,,,,,TLA,56,1
+"Gogo, Master of Mimicry",,,,,FIN,54,1
+I Am Iron Man,,,,,MSH,58,1
+Glitch Ghost Surveyor,,,,,DFT,44,1
+Glen Elendra Guardian,,,,,ECL,51,1
+Frozen in Ice,,,,,MSH,54,1
+Glamermite,,,,,ECL,50,1
+Faebloom Trick,,,,,FDN,38,1
+Erudite Wizard,,,,,FDN,37,1
+Dragoon's Wyvern,,,,,FIN,49,1
+"Echo, Perceptive Prodigy",,,,,MSH,51,1
+"Donatello, Way with Machines",,,,,TMT,38,1
+Doc Ock's Henchmen,,,,,SPM,30,1
+Deluge Virtuoso,,,,,SOS,42,1
+Depower,,,,,MSH,50,1
+Combat Tutorial,,,,,FIN,48,1
+Braided Net,,,,,LCI,47,1
+Atlantean Cavalry,,,,,MSH,45,1
+Bespoke Bō,,,,,TMT,31,1
+Amazing Acrobatics,,,,,SPM,25,1
+We Say Thee Nay!,,,,,MSH,82,1
+Wild Unraveling,,,,,ECL,84,1
+Waterbending Scroll,,,,,TLA,81,1
+Waterbender Ascension,,,,,TLA,79,1
+Unwelcome Sprite,,,,,ECL,81,1
+"Vnwxt, Verbose Host",,,,,DFT,73,1
+Unstable Experiment,,,,,SPM,47,1
+"Ultros, Obnoxious Octopus",,,,,FIN,83,1
+Think Twice,,,,,FDN,165,1
+Tony Stark,,,,,MSH,80,1
+The Wondrous Wasp,,,,,MSH,84,1
+Tester of the Tangential,,,,,SOS,69,1
+Steelswarm Operator,,,,,EOE,80,1
+Super Suit,,,,,MSH,78,1
+Song of Stupefaction,,,,,LCI,77,1
+Silent Hallcreeper,,,,,DSK,72,1
+Scorpion Sentinel,,,,,FIN,72,1
+"Shuri, Wakandan Inventor",,,,,MSH,75,1
+Sahagin,,,,,FIN,71,1
+Reasonable Doubt,,,,,MKM,69,1
+Rimefire Torque,,,,,ECL,65,1
+Pirate Hat,,,,,LCI,70,1
+Otter-Penguin,,,,,TLA,67,1
+Negate,,,,,TMT,47,1
+Noggle the Mind,,,,,ECL,60,1
+Mischievous Mystic,,,,,FDN,47,1
+Mental Modulation,,,,,EOE,67,1
+"Loki, God of Mischief",,,,,MSH,65,1
+Master Pakku,,,,,TLA,63,1
+Landscape Painter,,,,,SOS,56,1
+Knowledge Seeker,,,,,TLA,60,1
+It'll Quench Ya!,,,,,TLA,58,1
+Jaded Analyst,,,,,MKM,62,1
+Illvoi Operative,,,,,EOE,61,1
+Hydro-Channeler,,,,,SOS,54,1
+Gravelgill Scoundrel,,,,,ECL,53,1
+Hydraulic Helper,,,,,MSH,57,1
+Glamer Gifter,,,,,ECL,49,1
+Gadwick's First Duel,,,,,WOE,51,1
+Forecasting Fortune Teller,,,,,TLA,51,1
+Futurist Forge,,,,,MSH,55,1
+Fog Bank,,,,,FDN,591,1
+Flying Octobot,,,,,SPM,31,1
+Falcon's Wing Harness,,,,,MSH,53,1
+First-Time Flyer,,,,,TLA,49,1
+Failed Fording,,,,,OTJ,47,1
+Essence Scatter,,,,,SOS,47,1
+Dreams of Laguna,,,,,FIN,50,1
+Elementalist Adept,,,,,FDN,36,1
+Don't Make a Sound,,,,,DSK,49,1
+Divert Disaster,,,,,EOE,55,1
+Deduce,,,,,SOA,16,1
+Disdainful Stroke,,,,,SOA,17,1
+Dazzling Denial,,,,,BLB,45,1
+Cryogen Relic,,,,,EOE,52,1
+Crashing Wave,,,,,TLA,47,1
+Crustacean Commando,,,,,TMT,33,1
+Chart a Course,,,,,FDN,586,1
+Buzz Bots,,,,,TMT,32,1
+Blossombind,,,,,ECL,45,1
+Bold Biochemist,,,,,MSH,48,1
+Benevolent River Spirit,,,,,TLA,45,1
+Banishing Betrayal,,,,,SOS,38,1
+Accumulate Wisdom,,,,,TLA,44,1
+Aquitect's Defenses,,,,,ECL,44,1
+Watery Grasp,,,,,TLA,82,1
+Witness Protection,,,,,FDN,168,1
+Super Intelligence,,,,,MSH,77,1
+Unsummon,,,,,ANB,36,1
+"Stature, Size Shifter",,,,,MSH,76,1
+Spell Pierce,,,,,SOA,23,1
+Sewer-veillance Cam,,,,,TMT,53,1
+Spectral Sailor,,,,,FDN,164,1
+Ringing Strike Mastery,,,,,TDM,53,1
+Pym Particles,,,,,MSH,70,1
+Magic Damper,,,,,FIN,61,1
+Octopus Form,,,,,TLA,66,1
+Kid Loki,,,,,MSH,63,1
+Illvoi Galeblade,,,,,EOE,58,1
+Humbling Elder,,,,,TDM,48,1
+Harmonized Trio,,,,,SOS,52,1
+Gran-Gran,,,,,TLA,54,1
+Chase Inspiration,,,,,SOS,41,1
+Fleeting Distraction,,,,,FDN,155,1
+Bruce Banner,,,,,MSH,49,1
+Bounce Off,,,,,DFT,39,1
+Aerial Doombot,,,,,MSH,43,1
+Boomerang Basics,,,,,TLA,46,1
+Aegis Turtle,,,,,FDN,150,1
+Grounded for Life,,,,,TMT,7,1
