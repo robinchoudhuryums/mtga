@@ -2752,3 +2752,222 @@ Skirmish Rhino,Creature — Rhino,"Trample
 When this creature enters, each opponent loses 2 life and you gain 2 life.",W/B/G,,TDM,224,1
 Flamehold Grappler,Creature — Human Monk,"First strike
 When this creature enters, copy the next spell you cast this turn when you cast it. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)",W/U/R,,TDM,185,1
+Kyoshi Battle Fan,Artifact — Equipment,"When this Equipment enters, create a 1/1 white Ally creature token, then attach this Equipment to it.
+Equipped creature gets +1/+0.
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,,TLA,257,1
+PuPu UFO,Artifact Creature — Construct Alien,"Flying
+{T}: You may put a land card from your hand onto the battlefield.
+{3}: Until end of turn, this creature's base power becomes equal to the number of Towns you control.",Colorless,,FIN,266,1
+Solemn Simulacrum,Artifact Creature — Golem,"When this creature enters, you may search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.
+When this creature dies, you may draw a card.",Colorless,,M21,239,1
+Biblioplex Tomekeeper,Artifact Creature — Construct,"When this creature enters, choose up to one —
+• Target creature becomes prepared. (Only creatures with prepare spells can become prepared.)
+• Target creature becomes unprepared.",Colorless,,SOS,247,1
+"Viv Vision, Teen Synthezoid",Legendary Artifact Creature — Robot Hero,"Flying
+Cybernetic Senses — Whenever Viv Vision attacks, draw a card if her power is 4 or greater.
+Power-up — {7}: Put two +1/+1 counters on Viv Vision. (Activate each power-up ability only once. Reduce the cost by her mana cost if she entered this turn.)",Colorless,,MSH,256,1
+Strixhaven Skycoach,Artifact — Vehicle,"Flying
+When this Vehicle enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.
+Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,,SOS,252,1
+Ultron Drone,Artifact Creature — Robot Villain,Power-up — {6}: Put two +1/+1 counters on this creature and create a 2/2 colorless Robot Villain artifact creature token. (Activate each power-up ability only once. Reduce the cost by its mana cost if it entered this turn.),Colorless,,MSH,253,1
+"Ultron, Artificial Malevolence",Legendary Artifact Creature — Robot Villain,"Whenever another nontoken artifact you control enters, you may pay {2}. If you do, create a token that's a copy of it. If the token isn't a creature, it becomes a 2/2 Robot Villain creature in addition to its other types.",Colorless,,MSH,252,1
+Magic Pot,Artifact Creature — Goblin Construct,"When this creature dies, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
+{2}, {T}: Exile target card from a graveyard.",Colorless,,FIN,263,1
+Technodrome,Artifact Creature — Construct,"Reach, trample
+This creature can't attack or block unless its power is 6 or greater.
+{T}, Sacrifice another artifact: Draw a card. Put a +1/+1 counter on this creature.",Colorless,,TMT,179,1
+Iron Man Armor,Artifact — Equipment,"When this Equipment enters, attach it to target creature you control.
+Equipped creature gets +2/+1 and has flying.
+{2}: If this Equipment isn't a creature, it becomes a 0/0 Construct Hero artifact creature with flying and ""This creature gets +1/+1 for each artifact you control"" until end of turn.
+Equip {2}",Colorless,,MSH,248,1
+Adventurer's Inn,Land — Town,"When this land enters, you gain 2 life.
+{T}: Add {C}.",Colorless,,FIN,271,1
+Summon: Bahamut,Enchantment Creature — Saga Dragon,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
+I, II — Destroy up to one target nonland permanent.
+III — Draw two cards.
+IV — Mega Flare — This creature deals damage equal to the total mana value of other permanents you control to each opponent.
+Flying",Colorless,,FIN,1,1
+Heraldic Banner,Artifact,"As this artifact enters, choose a color.
+Creatures you control of the chosen color get +1/+0.
+{T}: Add one mana of the chosen color.",Colorless,,FDN,254,1
+Dependable Quinjet,Artifact — Vehicle,"Flying
+{T}: Add one mana of any color.
+Crew 4 (Tap any number of creatures you control with total power 4 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,,MSH,246,1
+Dragonstorm Globe,Artifact,"Each Dragon you control enters with an additional +1/+1 counter on it.
+{T}: Add one mana of any color.",Colorless,,TDM,241,1
+"Krang, Utrom Warlord",Legendary Artifact Creature — Utrom Robot,"Flying, trample, indestructible, haste
+Other artifact creatures you control have flying, trample, indestructible, and haste.",Colorless,,TMT,175,1
+Buster Sword,Artifact — Equipment,"Equipped creature gets +3/+2.
+Whenever equipped creature deals combat damage to a player, draw a card, then you may cast a spell from your hand with mana value less than or equal to that damage without paying its mana cost.
+Equip {2}",Colorless,,FIN,255,1
+Changeling Wayfinder,Creature — Shapeshifter,"Changeling (This card is every creature type.)
+When this creature enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.",Colorless,,ECL,1,1
+Bender's Waterskin,Artifact,"Untap this artifact during each other player's untap step.
+{T}: Add one mana of any color.",Colorless,,TLA,255,1
+Adventurer's Airship,Artifact — Vehicle,"Flying
+Whenever this Vehicle attacks, draw a card, then discard a card.
+Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,,FIN,252,1
+The Dominion Bracelet,Legendary Artifact — Equipment,"Equipped creature gets +1/+1 and has ""{15}, Exile The Dominion Bracelet: You control target opponent during their next turn. This ability costs {X} less to activate, where X is this creature's power. Activate only as a sorcery."" (You see all cards that player could see and make all decisions for them.)
+Equip {1}",Colorless,,EOE,239,1
+Wurmwall Sweeper,Artifact — Spacecraft,"When this Spacecraft enters, surveil 2.
+Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 4+.)
+4+ | Flying",Colorless,,EOE,249,1
+Guidelight Matrix,Artifact,"When this artifact enters, draw a card.
+{2}, {T}: Target Mount you control becomes saddled until end of turn. Activate only as a sorcery.
+{2}, {T}: Target Vehicle you control becomes an artifact creature until end of turn.",Colorless,,DFT,233,1
+"Dawnsire, Sunstar Dreadnought",Legendary Artifact — Spacecraft,"Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 20+.)
+10+ | Whenever you attack, Dawnsire deals 100 damage to up to one target creature or planeswalker.
+20+ | Flying",Colorless,,EOE,238,1
+The Walls of Ba Sing Se,Legendary Artifact Creature — Wall,"Defender
+Other permanents you control have indestructible.",Colorless,,TLA,261,1
+Arc Reactor,Artifact,"Improvise (Your artifacts can help cast this spell. Each artifact you tap after you're done activating mana abilities pays for {1}.)
+This artifact enters tapped.
+{T}: Add {C}{C}{C}.",Colorless,,MSH,243,1
+Tomb Trawler,Artifact Creature — Golem,{2}: Put target card from your graveyard on the bottom of your library.,Colorless,,OTJ,250,1
+Swiftfoot Boots,Artifact — Equipment,"Equipped creature has hexproof and haste. (It can't be the target of spells or abilities your opponents control. It can attack and {T} no matter when it came under your control.)
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,,BRR,58,1
+Super-Adaptoid,Legendary Artifact Creature — Robot Villain,"Super-Adaptoid's power is equal to the number of legendary creatures you control.
+Whenever Super-Adaptoid enters or attacks, choose another target creature. If that creature has haste and Super-Adaptoid doesn't, put a haste counter on Super-Adaptoid. Do the same for flying, first strike, double strike, deathtouch, indestructible, lifelink, menace, reach, trample, and vigilance.",Colorless,,MSH,250,1
+Stalactite Dagger,Artifact — Equipment,"When this Equipment enters, create a 1/1 colorless Shapeshifter creature token with changeling. (It's every creature type.)
+Equipped creature gets +1/+1 and is all creature types.
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,,ECL,261,1
+Transcendent Archaic,Creature — Avatar,"Vigilance
+Converge — When this creature enters, you may draw X cards, where X is the number of colors of mana spent to cast this spell. If you draw one or more cards this way, discard two cards.",Colorless,,SOS,5,1
+Omni-Cheese Pizza,Artifact — Food,"When this artifact enters, draw a card.
+{1}, {T}, Sacrifice this artifact: Add one mana of any color.
+{2}, {T}, Sacrifice this artifact: You gain 3 life.",Colorless,,TMT,176,1
+Glimmerlight,Artifact — Equipment,"When this Equipment enters, create a 1/1 white Glimmer enchantment creature token.
+Equipped creature gets +1/+1.
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,,DSK,249,1
+Goldvein Pick,Artifact — Equipment,"Equipped creature gets +1/+1.
+Whenever equipped creature deals combat damage to a player, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,,FDN,253,1
+Villainous Hideout,Land,"{T}: Add {C}.
+{T}: Add one mana of any color. Spend this mana only to cast a Villain spell or to activate an ability of a Villain source.
+{3}, {T}: Target Villain you control connives. Activate only as a sorcery. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",Colorless,,MSH,276,1
+White Lotus Hideout,Land,"{T}: Add {C}.
+{T}: Add one mana of any color. Spend this mana only to cast a Lesson or Shrine spell.
+{1}, {T}: Add one mana of any color.",Colorless,,TLA,281,1
+Turtle Lair,Land,"{T}: Add {C}.
+{T}: Add one mana of any color. Spend this mana only to cast a Ninja or Turtle spell.
+{3}, {T}: Target Ninja or Turtle can't be blocked this turn.",Colorless,,TMT,190,1
+Uncharted Haven,Land,"This land enters tapped. As it enters, choose a color.
+{T}: Add one mana of the chosen color.",Colorless,,BLB,261,1
+Mirrormind Crown,Artifact — Equipment,"As long as this Equipment is attached to a creature, the first time you would create one or more tokens each turn, you may instead create that many tokens that are copies of equipped creature.
+Equip {2}",Colorless,,ECL,258,1
+The Ten Rings,Legendary Artifact,"Your maximum hand size is ten.
+At the beginning of your end step, if you have fewer than ten cards in hand, draw cards equal to the difference.",Colorless,,MSH,251,1
+Gleaming Barrier,Artifact Creature — Wall,"Defender
+When this creature dies, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",Colorless,,FDN,252,1
+Terramorphic Expanse,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,,MSC,828,1
+The Gold Saucer,Land — Town,"{T}: Add {C}.
+{2}, {T}: Flip a coin. If you win the flip, create a Treasure token.
+{3}, {T}, Sacrifice two artifacts: Draw a card.",Colorless,,FIN,279,1
+Starting Town,Land — Town,"This land enters tapped unless it's your first, second, or third turn of the game.
+{T}: Add {C}.
+{T}, Pay 1 life: Add one mana of any color.",Colorless,,FIN,289,1
+Foraging Wickermaw,Artifact Creature — Scarecrow,"When this creature enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
+{1}: Add one mana of any color. This creature becomes that color until end of turn. Activate only once each turn.",Colorless,,ECL,256,1
+Chrome Companion,Artifact Creature — Dog,"Whenever this creature becomes tapped, you gain 1 life.
+{2}, {T}: Put target card from a graveyard on the bottom of its owner's library.",Colorless,,EOE,236,1
+Energybending,Instant — Lesson,"Lands you control gain all basic land types until end of turn.
+Draw a card.",Colorless,,TLA,2,1
+Bumbleflower's Sharepot,Artifact,"When this artifact enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+{5}, {T}, Sacrifice this artifact: Destroy target nonland permanent. Activate only as a sorcery.",Colorless,,BLB,244,1
+Captain America's Shield,Legendary Artifact — Equipment,"Indestructible
+Equipped creature gets +0/+8 and has vigilance.
+Whenever equipped creature attacks, tap target creature defending player controls.
+Equip {2}",Colorless,,MSH,244,1
+Aang's Journey,Sorcery — Lesson,"Kicker {2} (You may pay an additional {2} as you cast this spell.)
+Search your library for a basic land card. If this spell was kicked, instead search your library for a basic land card and a Shrine card. Reveal those cards, put them into your hand, then shuffle.
+You gain 2 life.",Colorless,,TLA,1,1
+Surveillance Room,Land,"When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
+{T}: Add {C}.
+{1}, {T}: Add one mana of any color.",Colorless,,MSH,274,1
+Rumble Arena,Land,"Vigilance
+When this land enters, scry 1. (Look at the top card of your library. You may put it on the bottom.)
+{T}: Add {C}.
+{1}, {T}: Add one mana of any color.",Colorless,,TLA,277,1
+Fountainport,Land,"{T}: Add {C}.
+{2}, {T}, Sacrifice a token: Draw a card.
+{3}, {T}, Pay 1 life: Create a 1/1 blue Fish creature token.
+{4}, {T}: Create a Treasure token.",Colorless,,BLB,253,1
+Planetarium of Wan Shi Tong,Legendary Artifact,"{1}, {T}: Scry 2.
+Whenever you scry or surveil, look at the top card of your library. You may cast that card without paying its mana cost. Do this only once each turn. (Look at the card after you scry or surveil.)",Colorless,,TLA,259,1
+Pinnacle Kill-Ship,Artifact — Spacecraft,"When this Spacecraft enters, it deals 10 damage to up to one target creature.
+Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 7+.)
+7+ | Flying",Colorless,,EOE,244,1
+A.I.M. Synthoids,Artifact Creature — Robot Villain,"When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",Colorless,,MSH,242,1
+Chronicle of Victory,Legendary Artifact,"As Chronicle of Victory enters, choose a creature type.
+Creatures you control of the chosen type get +2/+2 and have first strike and trample.
+Whenever you cast a spell of the chosen type, draw a card.",Colorless,,ECL,253,1
+Vibranium Energy Daggers,Artifact — Equipment,"Indestructible (Effects that say ""destroy"" don't destroy this Equipment.)
+Equipped creature gets +2/+2.
+Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,,MSH,254,1
+Trusty Boomerang,Artifact — Equipment,"Equipped creature has ""{1}, {T}: Tap target creature. Return Trusty Boomerang to its owner's hand.""
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,,TLA,260,1
+Lunatic Pandora,Legendary Artifact,"{2}, {T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
+{6}, {T}, Sacrifice Lunatic Pandora: Destroy target nonland permanent.",Colorless,,FIN,262,1
+Thaumaton Torpedo,Artifact,"{6}, {T}, Sacrifice this artifact: Destroy target nonland permanent. This ability costs {3} less to activate if you attacked with a Spacecraft this turn.",Colorless,,EOE,246,1
+"Eden, Seat of the Sanctum",Land — Town,"{T}: Add {C}.
+{5}, {T}: Mill two cards. Then you may sacrifice this land. When you do, return another target permanent card from your graveyard to your hand.",Colorless,,FIN,277,1
+Crossroads Village,Land — Town,"This land enters tapped. As it enters, choose a color.
+{T}: Add one mana of the chosen color.",Colorless,,FIN,276,1
+Evolving Wilds,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,,ECL,264,1
+Gingerbrute,Artifact Creature — Food Golem,"Haste (This creature can attack and {T} as soon as it comes under your control.)
+{1}: This creature can't be blocked this turn except by creatures with haste.
+{2}, {T}, Sacrifice this creature: You gain 3 life.",Colorless,,ELD,219,1
+Dragonfire Blade,Artifact — Equipment,"Equipped creature gets +2/+2 and has hexproof from monocolored.
+Equip {4}. This ability costs {1} less to activate for each color of the creature it targets.",Colorless,,TDM,240,1
+Barrels of Blasting Jelly,Artifact,"{1}: Add one mana of any color. Activate only once each turn.
+{5}, {T}, Sacrifice this artifact: It deals 5 damage to target creature.",Colorless,,TLA,254,1
+Marina Vendrell,Legendary Creature — Human Warlock,"When Marina Vendrell enters, reveal the top seven cards of your library. Put all enchantment cards from among them into your hand and the rest on the bottom of your library in a random order.
+{T}: Lock or unlock a door of target Room you control. Activate only as a sorcery.",W/U/B/R/G,,DSK,221,1
+Cosmic Spider-Man,Legendary Creature — Spider Human Hero,"Flying, first strike, trample, lifelink, haste
+At the beginning of combat on your turn, other Spiders you control gain flying, first strike, trample, lifelink, and haste until end of turn.",W/U/B/R/G,,SPM,127,1
+Castle Doom,Land,"{T}: Add {C}.
+{T}: Add one mana of any color. Spend this mana only to cast an artifact spell.
+{3}, {T}, Sacrifice an artifact: Create a 3/3 colorless Robot Villain artifact creature token named Doombot. Activate only as a sorcery.",Colorless,,MSH,263,1
+Capital City,Land — Town,"{T}: Add {C}.
+{1}, {T}: Add one mana of any color.
+Cycling {2} ({2}, Discard this card: Draw a card.)",Colorless,,FIN,274,1
+Captivating Cave,Land — Cave,"{T}: Add {C}.
+{1}, {T}: Add one mana of any color.
+{4}, {T}, Sacrifice this land: Put two +1/+1 counters on target creature. Activate only as a sorcery.",Colorless,,LCI,268,1
+Turtle Blimp,Artifact — Vehicle,"Flying
+When this Vehicle enters, create a 2/2 red Mutant creature token.
+Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,,TMT,180,1
+Aettir and Priwen,Legendary Artifact — Equipment,"Equipped creature has base power and toughness X/X, where X is your life total.
+Equip {5}",Colorless,,FIN,253,1
+Cosmic Cube,Artifact,"Ward {2}
+Whenever you attack, look at the top six cards of your library. You may cast a spell from among them with mana value less than or equal to the greatest power among attacking creatures you control without paying its mana cost. Put the rest on the bottom of your library in a random order.",Colorless,,MSH,245,1
+The Vision,Legendary Artifact Creature — Robot Hero,"Flying, vigilance
+Whenever you cast a noncreature spell, choose one that hasn't been chosen this turn —
+• Solar Beam — The Vision gains double strike until end of turn.
+• Density Control — The Vision gains indestructible until end of turn.
+• Technopathy — Draw a card.",Colorless,,MSH,255,1
+H.E.R.B.I.E. Scout Unit,Artifact Creature — Robot Scout,"Flying
+When this creature enters, draw a card, then you may put a land card from your hand onto the battlefield tapped.",Colorless,,MSH,247,1
+S.H.I.E.L.D. Helicarrier,Artifact — Vehicle,"Flying
+When this Vehicle enters, create two 1/1 white Soldier creature tokens.
+Crew 6 (Tap any number of creatures you control with total power 6 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,,MSH,249,1
+Avatar Aang,Legendary Creature — Human Avatar Ally // Legendary Creature — Avatar Ally,"Flying, firebending 2
+Whenever you waterbend, earthbend, firebend, or airbend, draw a card. Then if you've done all four this turn, transform Avatar Aang. // Flying
+Spells you cast cost {W}{U}{B}{R}{G} less to cast. (This can reduce generic costs.)
+At the beginning of each upkeep, you may transform Aang, Master of Elements. If you do, you gain 4 life, draw four cards, put four +1/+1 counters on him, and he deals 4 damage to each opponent.",W/U/B/R/G,,TLA,207,1
+Opulent Palace,Land,"This land enters tapped.
+{T}: Add {B}, {G}, or {U}.",U/B/G,,TDM,264,1
+"Sokka, Tenacious Tactician",Legendary Creature — Human Warrior Ally,"Menace, prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+Other Allies you control have menace and prowess.
+Whenever you cast a noncreature spell, create a 1/1 white Ally creature token.",W/U/R,,TLA,242,1
+Lie in Wait,Sorcery,Return target creature card from your graveyard to your hand. Lie in Wait deals damage equal to that card's power to target creature.,U/B/G,,TDM,203,1
+"Narset, Jeskai Waymaster",Legendary Creature — Human Monk,"At the beginning of your end step, you may discard your hand. If you do, draw cards equal to the number of spells you've cast this turn.",W/U/R,,TDM,209,1
+Avengers Tower,Land,"{T}: Add {C}.
+{T}: Add one mana of any color. Spend this mana only to cast a Hero spell or to activate an ability of a Hero source.
+{4}, {T}: Look at the top three cards of your library. You may reveal a Hero card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",Colorless,,MSH,260,1
+Baxter Building,Land,"{T}: Add {C}.
+{4}, {T}: Add four mana in any combination of colors.
+{4}, {T}: Draw a card. Activate only if you control a creature with toughness 4 or greater.",Colorless,,MSH,261,1
+Zuko's Exile,Instant — Lesson,"Exile target artifact, creature, or enchantment. Its controller creates a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",Colorless,,TLA,3,1
+Rancorous Archaic,Creature — Avatar,"Trample, reach
+Converge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.",Colorless,,SOS,2,1
