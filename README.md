@@ -84,6 +84,25 @@ python3 scripts/deck.py decks/example-merfolk.txt
 Reports owned-vs-needed per card and flags shortfalls or cards missing from the
 library. Deck file format is documented in [`decks/README.md`](decks/README.md).
 
+### Gallery — a visual, filterable view of the collection
+
+```
+python3 scripts/build_gallery.py     # resolve card images + build gallery.html
+open gallery.html                    # (macOS) view it in your browser
+```
+
+Generates a self-contained `gallery.html`: a filterable grid of your cards with
+real card art, quantity badges, and set/collector labels. Search by name/type/
+text, filter by color (WUBRG/Colorless) or set, and sort by name/set/quantity —
+all in the browser, no server. Card data is embedded in the file; images are
+hotlinked from Scryfall's CDN (so you need internet to see the art, but the file
+stays tiny and portable).
+
+Image URLs are resolved via Scryfall's batch endpoint (≈4 requests for a few
+hundred cards) and cached in `.image-cache.json` (gitignored) so rebuilds are
+instant and the canonical CSV is never modified. Use `--no-fetch` to rebuild
+from cache without touching the network. Rerun after importing new cards.
+
 ### Sheets sync — round-trip with Google Sheets (optional)
 
 ```
