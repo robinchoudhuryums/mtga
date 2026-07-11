@@ -1298,7 +1298,7 @@ Super-Skrull,Legendary Creature — Skrull Shapeshifter Villain,"Flying
 Swarm Culler,Creature — Insect Warrior,"Flying
 Whenever this creature becomes tapped, you may sacrifice another creature or artifact. If you do, draw a card.",B,Insect; Warrior; card draw; sacrifice; flying,EOE,119,1
 Thunderbolts Conspiracy,Enchantment,"Flash
-Whenever a Villain you control dies, return it to the battlefield under its owner's control with a finality counter on it. That creature is a Hero in addition to its other types. (If a creature with a finality counter on it would die, exile it instead.)",B,counters; flash,MSH,117,1
+Whenever a Villain you control dies, return it to the battlefield under its owner's control with a finality counter on it. That creature is a Hero in addition to its other types. (If a creature with a finality counter on it would die, exile it instead.)",B,counters; flash,MSH,117,2
 The End,Instant,"This spell costs {2} less to cast if your life total is 5 or less.
 Exile target creature or planeswalker. Search its controller's graveyard, hand, and library for any number of cards with the same name as that permanent and exile them. That player shuffles, then draws a card for each card exiled from their hand this way.",B,graveyard; removal,WOE,87,1
 Tragedy Feaster,Creature — Demon,"Trample

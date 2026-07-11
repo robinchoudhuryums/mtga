@@ -1,0 +1,45 @@
+#: name: Villainous
+#: format: Historic
+#: colors: B
+#: notes: Mono-black villains / control-midrange.
+
+# Nonland
+1 Too Evil to Stay Dead (MSH) 118
+1 Bloodthirsty Conqueror (FDN) 58
+1 Agents of HYDRA (MSH) 85
+1 Decoy Ploy (MSH) 94
+1 Doom Reigns Supreme (MSH) 96
+1 Baron Helmut Zemo (MSH) 87
+2 HYDRA Troopers (MSH) 101
+1 Klaw, Sonic Subjugator (MSH) 103
+1 Grim Reaper, Lethal Legionnaire (MSH) 98
+2 Thunderbolts Conspiracy (MSH) 117
+1 M.O.D.O.K. (MSH) 106
+1 Madame Masque (MSH) 104
+1 Venom, Evil Unleashed (SPM) 71
+1 Venom's Hunger (SPM) 73
+1 Morlun, Devourer of Spiders (SPM) 59
+1 Fire Navy Trebuchet (TLA) 100
+1 Hero's Downfall (FDN) 175
+1 Murder (MKM) 95
+1 Fake Your Own Death (FDN) 174
+1 Massacre Wurm (FDN) 714
+1 Embrace Oblivion (EOE) 98
+1 Ultron Drone (MSH) 253
+1 Crossbones, Malicious Mercenary (MSH) 91
+1 Deadly Precision (TLA) 95
+1 Auntie's Sentence (ECL) 85
+1 Last Gasp (SOS) 86
+1 Lively Dirge (OTJ) 93
+1 Stomped by the Foot (TMT) 82
+1 Anchovy & Banana Pizza (TMT) 57
+1 Funeral Room // Awakening Hall (DSK) 100
+1 Vito's Inquisitor (LCI) 130
+1 Coiling Rebirth (BLB) 86
+1 Painful Quandary (FDN) 179
+1 Scrounge for Eternity (EOE) 114
+
+# Lands
+1 Castle Doom (MSH) 263
+1 Villainous Hideout (MSH) 276
+22 Swamp (MSH) 292
