@@ -128,7 +128,15 @@ python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
 python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
 python3 scripts/deck.py stats 1a      # mana curve, color balance, type breakdown
 python3 scripts/deck.py mana 1a       # hybrid-aware color requirements
+python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
 ```
+
+`stats` also flags **cost flexibility** (`◊` — cards whose text reduces their
+cost or grants flash, e.g. convoke/delve/"costs {1} less", so the printed mana
+value doesn't mislead). `tribes` reads oracle text to surface **type-matters
+payoffs** — e.g. a Saga that rewards Krakens/Leviathans/Merfolk/Octopuses/
+Serpents will list those types and how many of your creatures qualify — so
+cross-type tribal synergies aren't missed.
 
 Decks live under `decks/` as one folder per core deck, with variations as sibling
 files (`deck.txt` → id `1`, `1a-*.txt` → id `1a`). Basics are treated as

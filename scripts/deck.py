@@ -39,6 +39,7 @@ hybrid {W/U} pips are counted as flexible rather than demanding both colors.
 """
 
 import argparse
+import csv
 import json
 import os
 import re
@@ -48,6 +49,8 @@ import urllib.error
 import urllib.request
 
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
+
+POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
 
 DECKS_DIR = os.path.join(REPO_ROOT, "decks")
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
@@ -338,6 +341,53 @@ def _primary_type(type_line):
     return "Other"
 
 
+# --- card data (type + text) for synergy / cost analysis -------------------- #
+def load_card_data():
+    """name_lower -> {'type', 'text'} from card-library.csv then card-pool.csv.
+
+    The pool fills in oracle text/type for unowned WIP cards so analysis works on
+    decks that aren't fully owned yet.
+    """
+    data = {}
+    for path in (DEFAULT_CSV, POOL_CSV):
+        if not os.path.exists(path):
+            continue
+        with open(path, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                n = (r.get("Card Name") or "").strip().lower()
+                if n and n not in data:
+                    data[n] = {"type": r.get("Type") or "", "text": r.get("Card Text") or ""}
+                    data.setdefault(n.split(" // ")[0], data[n])
+    return data
+
+
+def creature_subtypes(type_line):
+    """Creature subtypes (after the em dash) across all faces of a type line."""
+    subs = []
+    for face in type_line.split("//"):
+        if "creature" in face.lower() and "—" in face:
+            subs += face.split("—", 1)[1].split()
+    return subs
+
+
+# Text signatures that make a card's real cost lower/more flexible than its
+# printed mana value — so the curve doesn't take MV at face value.
+COST_FLEX = [
+    ("less to cast", "cost reduction"),
+    ("convoke", "convoke"), ("affinity", "affinity"), ("delve", "delve"),
+    ("improvise", "improvise"), ("emerge", "emerge"), ("escape", "escape"),
+    ("assist", "assist"), ("spectacle", "spectacle"),
+    ("without paying its mana cost", "free cast"),
+    ("as though it had flash", "conditional flash"),
+]
+
+
+def cost_flex_reason(text):
+    t = (text or "").lower()
+    hits = [label for kw, label in COST_FLEX if kw in t]
+    return ", ".join(dict.fromkeys(hits)) if hits else None
+
+
 def cmd_stats(args):
     d = find_deck(args.id)
     if not d:
@@ -394,6 +444,74 @@ def cmd_stats(args):
         if curve.get(b):
             label = f"{b}+" if b == 7 else str(b)
             print(f"  {label:>2} MV  {curve[b]:3}  {'#' * curve[b]}")
+
+    # Cost flexibility: cards whose printed MV overstates their real cost.
+    carddata = load_card_data()
+    flex = []
+    seen_f = set()
+    for q, n, s, c in cards:
+        if n.lower() in BASICS or n in seen_f:
+            continue
+        d2 = carddata.get(n.lower())
+        if not d2 or "Land" in _primary_type(d2["type"]):
+            continue
+        r = cost_flex_reason(d2["text"])
+        if r:
+            seen_f.add(n)
+            flex.append((n, r))
+    if flex:
+        print("\nCost flexibility (printed MV above may overstate these):")
+        for n, r in flex:
+            print(f"  ◊ {n} — {r}")
+    return 0
+
+
+def cmd_tribes(args):
+    """Creature-subtype breakdown + type-matters synergy scan."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}.")
+        return 1
+    _, cards = parse_deck_file(d["path"])
+    data = load_card_data()
+
+    subcount = {}
+    subs_by_card = {}   # name -> set(subtypes)
+    for q, n, s, c in cards:
+        d2 = data.get(n.lower())
+        if not d2:
+            continue
+        subs = creature_subtypes(d2["type"])
+        if subs:
+            subs_by_card[n] = set(subs)
+            for st in subs:
+                subcount[st] = subcount.get(st, 0) + q
+
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — creature types & synergies\n")
+    print("Creature subtypes:")
+    for st, cnt in sorted(subcount.items(), key=lambda kv: -kv[1]):
+        print(f"  {st:14} {cnt:3}  {'#' * cnt}")
+
+    deck_types = {st for subs in subs_by_card.values() for st in subs}
+    payoffs = []
+    seen_p = set()
+    for q, n, s, c in cards:
+        if n in seen_p:
+            continue
+        d2 = data.get(n.lower())
+        if not d2 or not d2["text"]:
+            continue
+        refs = {t for t in deck_types
+                if re.search(rf"\b{re.escape(t)}\b", d2["text"])}
+        if refs:
+            qual = sum(q2 for q2, n2, s2, c2 in cards
+                       if subs_by_card.get(n2, set()) & refs)
+            seen_p.add(n)
+            payoffs.append((qual, n, sorted(refs)))
+    if payoffs:
+        print("\nType-matters payoffs (cards whose text rewards types you run):")
+        for qual, n, refs in sorted(payoffs, reverse=True):
+            print(f"  {n} — rewards {', '.join(refs)}  ({qual} qualifying creatures)")
     return 0
 
 
@@ -477,11 +595,14 @@ def main():
     p.add_argument("id")
     p = sub.add_parser("mana", help="hybrid-aware color requirements")
     p.add_argument("id")
+    p = sub.add_parser("tribes", help="creature-subtype breakdown + type-matters synergies")
+    p.add_argument("id")
     args = ap.parse_args()
 
     return {
         "list": cmd_list, "check": cmd_check, "diff": cmd_diff,
         "arena": cmd_arena, "stats": cmd_stats, "mana": cmd_mana,
+        "tribes": cmd_tribes,
     }[args.cmd](args)
 
 
