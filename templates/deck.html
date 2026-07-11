@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MTG Arena — Deck Editor</title>
+<style>
+  :root { --bg:#0f1115; --panel:#191c23; --panel2:#21252e; --line:#2c313c;
+    --text:#e7e9ee; --muted:#949bab; --accent:#d9a441; --dirty:#4f9d69;
+    --ok:#9dc7a3; --short:#e3c98a; --missing:#e39a8a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text);
+    font:15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  header { position:sticky; top:0; z-index:5; background:rgba(15,17,21,.96);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line); padding:14px 20px; }
+  .titlebar { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; }
+  h1 { font-size:19px; margin:0; }
+  .file { color:var(--muted); font-size:12px; font-family:ui-monospace, monospace; }
+  .summary { color:var(--muted); font-size:13px; margin-top:8px; display:flex; gap:14px; flex-wrap:wrap; }
+  .summary b.ok { color:var(--ok); } .summary b.short { color:var(--short); }
+  .summary b.missing { color:var(--missing); }
+  a.tool, button.tool { text-decoration:none; background:var(--panel2); color:var(--text);
+    border:1px solid var(--line); border-radius:8px; padding:8px 12px; font-size:13px; cursor:pointer; }
+  button.tool:hover, a.tool:hover { border-color:var(--accent); }
+  #save { margin-left:auto; }
+  #save.ready { background:var(--dirty); color:#0c130e; border-color:var(--dirty); font-weight:700; }
+  .wrap { padding:16px 20px 60px; max-width:820px; margin:0 auto; }
+  .row { display:flex; align-items:center; gap:8px; padding:3px 0; }
+  .row.other { color:var(--muted); font-family:ui-monospace, monospace; font-size:12px;
+    white-space:pre; min-height:12px; padding:2px 0; }
+  .row.comment { color:var(--accent); opacity:.8; }
+  .qty { width:52px; background:var(--panel2); color:var(--text); border:1px solid var(--line);
+    border-radius:6px; padding:6px 7px; font-size:14px; font-weight:700; text-align:center; }
+  .name { flex:1; min-width:140px; background:var(--panel2); color:var(--text);
+    border:1px solid var(--line); border-radius:6px; padding:6px 9px; font-size:14px; }
+  .set, .cn { width:64px; background:var(--panel2); color:var(--text); border:1px solid var(--line);
+    border-radius:6px; padding:6px 7px; font-size:13px; }
+  .cn { width:56px; }
+  .qty:focus, .name:focus, .set:focus, .cn:focus { outline:none; border-color:var(--accent); }
+  .stat { min-width:96px; font-size:12px; font-weight:700; text-align:right; }
+  .stat.ok { color:var(--ok); } .stat.short { color:var(--short); } .stat.missing { color:var(--missing); }
+  .rm { width:24px; height:24px; border-radius:6px; border:1px solid var(--line);
+    background:transparent; color:var(--muted); cursor:pointer; font-size:12px; padding:0; }
+  .rm:hover { color:var(--missing); border-color:var(--missing); }
+  .add { margin-top:12px; }
+  .toast { position:fixed; bottom:18px; left:50%; transform:translateX(-50%); background:var(--panel2);
+    border:1px solid var(--line); border-radius:8px; padding:10px 16px; font-size:13px; opacity:0;
+    transition:opacity .2s; pointer-events:none; max-width:80vw; }
+  .toast.show { opacity:1; }
+</style>
+</head>
+<body>
+<header>
+  <div class="titlebar">
+    <a class="tool" href="/decks">← Decks</a>
+    <h1 id="title"></h1>
+    <span class="file" id="file"></span>
+    <button id="save" class="tool">No changes</button>
+  </div>
+  <div class="summary" id="summary"></div>
+</header>
+<div class="wrap">
+  <div id="rows"></div>
+  <button class="tool add" id="addRow">＋ Add card line</button>
+</div>
+<div class="toast" id="toast"></div>
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const DATA = JSON.parse(document.getElementById('data').textContent);
+  const LINES = DATA.lines;                 // ordered tokens (card | other)
+  const OWNED = DATA.owned;                 // name_lower -> total owned
+  const BASICS = new Set(DATA.basics);      // lowercased basic land names
+  const ORIG = JSON.stringify(LINES);       // baseline for dirty detection
+
+  const rowsEl = document.getElementById('rows');
+  const saveBtn = document.getElementById('save');
+  document.getElementById('title').textContent = `Deck ${DATA.id}: ${DATA.name}`;
+  document.getElementById('file').textContent = DATA.file;
+
+  function cardStatus(t) {
+    const name = (t.name || '').trim().toLowerCase();
+    const need = parseInt(t.qty) || 0;
+    if (!name) return {cls:'', txt:''};
+    if (BASICS.has(name)) return {cls:'ok', txt:'basic ∞'};
+    if (!(name in OWNED)) return {cls:'missing', txt:'not owned'};
+    const have = OWNED[name];
+    return have < need ? {cls:'short', txt:`have ${have} / ${need}`}
+                       : {cls:'ok', txt:`have ${have} / ${need}`};
+  }
+
+  function recomputeSummary() {
+    let unique=0, total=0, short=0, missing=0;
+    for (const t of LINES) if (t.kind==='card' && (t.name||'').trim()) {
+      unique++; total += parseInt(t.qty)||0;
+      const st = cardStatus(t);
+      if (st.cls==='short') short++; else if (st.cls==='missing') missing++;
+    }
+    const ready = short===0 && missing===0;
+    document.getElementById('summary').innerHTML =
+      `<span>${unique} unique · ${total} cards</span>` +
+      (ready ? `<span><b class="ok">buildable ✓</b></span>`
+             : `<span>${missing?`<b class="missing">${missing} missing</b> `:''}` +
+               `${short?`<b class="short">${short} short</b>`:''}</span>`);
+    const dirty = JSON.stringify(LINES) !== ORIG;
+    saveBtn.textContent = dirty ? 'Save deck' : 'No changes';
+    saveBtn.classList.toggle('ready', dirty);
+  }
+
+  function render() {
+    rowsEl.innerHTML = '';
+    LINES.forEach((t, i) => {
+      const row = document.createElement('div');
+      if (t.kind !== 'card') {
+        const raw = t.raw || '';
+        row.className = 'row other' + (raw.trim().startsWith('#') && !raw.trim().startsWith('#:') ? ' comment' : '');
+        row.textContent = raw || ' ';
+        rowsEl.appendChild(row);
+        return;
+      }
+      row.className = 'row card';
+      row.dataset.i = i;
+      row.innerHTML =
+        `<input class="qty" type="number" min="1" value="${esc(t.qty)}">` +
+        `<input class="name" value="${esc(t.name)}" placeholder="Card name">` +
+        `<input class="set" value="${esc(t.set)}" placeholder="Set">` +
+        `<input class="cn" value="${esc(t.cn)}" placeholder="#">` +
+        `<span class="stat"></span>` +
+        `<button class="rm" title="Remove line">✕</button>`;
+      rowsEl.appendChild(row);
+      const q = row.querySelector('.qty'), nm = row.querySelector('.name');
+      const st = row.querySelector('.set'), cn = row.querySelector('.cn');
+      const stat = row.querySelector('.stat');
+      const paint = () => {
+        t.qty = q.value; t.name = nm.value; t.set = st.value; t.cn = cn.value;
+        const s = cardStatus(t); stat.textContent = s.txt; stat.className = 'stat ' + s.cls;
+        recomputeSummary();
+      };
+      [q, nm, st, cn].forEach(el => el.addEventListener('input', paint));
+      row.querySelector('.rm').addEventListener('click', () => {
+        LINES.splice(i, 1); render(); recomputeSummary();
+      });
+      const s = cardStatus(t); stat.textContent = s.txt; stat.className = 'stat ' + s.cls;
+    });
+  }
+
+  document.getElementById('addRow').addEventListener('click', () => {
+    LINES.push({kind:'card', qty:'1', name:'', set:'', cn:''});
+    render(); recomputeSummary();
+    const last = rowsEl.querySelector('.row.card:last-of-type .name');
+    if (last) last.focus();
+  });
+
+  saveBtn.addEventListener('click', async () => {
+    if (JSON.stringify(LINES) === ORIG) return;
+    saveBtn.disabled = true; saveBtn.textContent = 'Saving…';
+    try {
+      const res = await fetch('/api/deck/save', {method:'POST',
+        headers:{'Content-Type':'application/json'}, body: JSON.stringify({id: DATA.id, lines: LINES})});
+      const d = await res.json();
+      if (d.ok) { toast(`Saved ${d.cards} card lines · backup ${d.backup}`); location.reload(); }
+      else { toast('Save failed: ' + (d.errors||['unknown']).join('  |  ')); }
+    } catch (err) { toast('Save failed (is the server running?): ' + err.message); }
+    finally { saveBtn.disabled = false; recomputeSummary(); }
+  });
+
+  let toastT;
+  function toast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 4000);
+  }
+  function esc(s){ return (s==null?'':s).toString().replace(/[&<>"]/g,m=>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])); }
+
+  render(); recomputeSummary();
+</script>
+</body>
+</html>

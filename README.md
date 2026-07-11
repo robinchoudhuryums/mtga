@@ -242,9 +242,17 @@ from undo (which is exactly what Revert does). Adding a card also appends a
 `card-mana.csv` row, so the integrity gate's INV-02 keeps holding; run
 `build_mana.py` (or `/refresh`) afterwards to fill in its real mana cost/keywords.
 
+**Deck editing** lives under the same app: the **Decks →** link opens a deck list
+(with live buildable status), and each deck opens an editor where you change
+quantities, add/remove cards, and see **live buildability** (owned vs. needed,
+short/missing) update as you type. Saving writes the deck's `.txt` file through
+the same safe path — validated (the file must re-parse with every card line
+intact, INV-04), backed up to a `.bak`, atomically replaced — and it preserves
+the file's `# Creatures` / `# Lands` section comments.
+
 Flask is the only part of the toolkit with a dependency; it's isolated in
 `requirements-app.txt`, and the core scripts (and `check_all.py` / CI) never
-import it. In-browser deck editing is a planned later phase.
+import it.
 
 ### Sheets sync — round-trip with Google Sheets (optional)
 
