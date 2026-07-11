@@ -72,11 +72,17 @@ python3 scripts/tag_synergies.py --dry-run   # preview
 python3 scripts/tag_synergies.py             # fill blank Synergies cells
 ```
 
-Derives baseline tags for the Synergies column from each card's type line
-(tribal subtypes, key card types) and oracle text (counters, graveyard,
-reanimator, lifegain, card draw, removal, burn, ramp, tokens, keywords, …). Fills
-only blank cells by default (`--force` regenerates). These make `query.py
---synergy` and the gallery's synergy filters useful; every tag is hand-editable.
+Derives tags for the Synergies column from each card's type line (tribal
+subtypes, key card types), oracle text heuristics (counters, graveyard,
+reanimator, lifegain, removal, burn, ramp, tokens, …), and — when `card-mana.csv`
+has been built — **Scryfall's authoritative keyword list** mapped to
+deck-building themes (Surveil → `surveil; graveyard`, Convoke → `convoke;
+go-wide; ramp`, Escape → `graveyard; recursion`, …). Using Scryfall's per-card
+keywords means the coverage is complete and maintained, not a hand-kept list.
+Fills only blank cells by default (`--force` regenerates). These make `query.py
+--synergy` / `pool.py --synergy` and the gallery filters useful; tags are
+hand-editable. Rerun `build_mana.py` then `tag_synergies.py --force` after
+importing new cards to refresh keyword-aware tags.
 
 ### Query — search the collection
 

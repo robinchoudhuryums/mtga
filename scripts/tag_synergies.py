@@ -20,18 +20,69 @@ Usage:
 """
 
 import argparse
+import csv
+import os
 import re
 import sys
 
-from lib import DEFAULT_CSV, load_rows, write_rows
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, write_rows
 
-# Evergreen / common keyword abilities worth tagging when they appear as words.
-KEYWORDS = [
-    "flying", "first strike", "double strike", "deathtouch", "trample",
-    "vigilance", "menace", "lifelink", "haste", "hexproof", "reach", "defender",
-    "ward", "prowess", "flash", "convoke", "cascade", "flashback", "afterlife",
-    "exalted", "mentor", "crew", "embalm", "adapt", "escape",
-]
+MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
+
+# Keyword -> deck-building themes. Keyword presence comes from Scryfall's
+# authoritative per-card `keywords` list (via card-mana.csv), so we don't rely on
+# scanning oracle text with a hand-maintained list. Each keyword is tagged
+# verbatim AND expanded to the themes it implies, so e.g. Surveil surfaces
+# "graveyard" and Convoke surfaces "go-wide".
+KEYWORD_THEMES = {
+    # Evasion
+    "flying": ["evasion"], "menace": ["evasion"], "trample": ["evasion"],
+    "fear": ["evasion"], "intimidate": ["evasion"], "shadow": ["evasion"],
+    "skulk": ["evasion"], "horsemanship": ["evasion"], "ninjutsu": ["evasion", "tempo"],
+    # Combat / resilience
+    "first strike": ["combat"], "double strike": ["combat", "aggro"],
+    "deathtouch": ["combat", "removal"], "vigilance": ["combat"],
+    "reach": ["defense"], "defender": ["defense"], "indestructible": ["resilience"],
+    # Aggro / tempo
+    "haste": ["aggro"], "flash": ["tempo"], "prowess": ["spellslinger", "tempo"],
+    "exalted": ["aggro"], "dash": ["aggro"], "riot": ["aggro"],
+    "battle cry": ["go-wide", "aggro"], "training": ["counters", "aggro"],
+    # Lifegain / drain
+    "lifelink": ["lifegain"], "extort": ["lifegain", "drain"],
+    # Graveyard / recursion
+    "surveil": ["graveyard"], "mill": ["graveyard", "mill"],
+    "delve": ["graveyard", "cost-reduction"], "descend": ["graveyard"],
+    "flashback": ["graveyard", "recursion", "spellslinger"],
+    "escape": ["graveyard", "recursion"], "disturb": ["graveyard", "recursion"],
+    "unearth": ["graveyard", "recursion"], "embalm": ["graveyard", "tokens"],
+    "eternalize": ["graveyard", "tokens"], "jump-start": ["graveyard", "spellslinger"],
+    "aftermath": ["graveyard", "recursion"], "dredge": ["graveyard", "self-mill"],
+    "scavenge": ["graveyard", "counters"], "exploit": ["sacrifice"],
+    # Tokens / go-wide / sacrifice
+    "convoke": ["go-wide", "ramp"], "amass": ["tokens", "go-wide"],
+    "populate": ["tokens", "go-wide"], "fabricate": ["tokens", "counters"],
+    "afterlife": ["tokens", "sacrifice"], "devour": ["sacrifice", "tokens"],
+    # Counters
+    "proliferate": ["counters"], "bolster": ["counters"], "adapt": ["counters"],
+    "mentor": ["counters", "aggro"], "outlast": ["counters"], "graft": ["counters"],
+    "evolve": ["counters"], "modular": ["counters", "artifacts"],
+    # Artifacts / cost
+    "affinity": ["artifacts", "cost-reduction"], "improvise": ["artifacts", "ramp"],
+    # Card advantage
+    "cycling": ["card draw"], "learn": ["card draw"],
+    "investigate": ["tokens", "card draw"],
+    "connive": ["card draw", "counters", "graveyard"],
+    # Protection
+    "ward": ["protection"], "hexproof": ["protection"], "shroud": ["protection"],
+    "protection": ["protection"],
+    # Ramp / lands / spellslinger
+    "landfall": ["lands", "ramp"], "domain": ["lands"],
+    "cascade": ["value", "spellslinger"], "storm": ["spellslinger"],
+    "replicate": ["spellslinger"], "buyback": ["spellslinger", "recursion"],
+    "overload": ["spellslinger"],
+    # Vehicles / equipment
+    "crew": ["vehicles"], "equip": ["equipment"],
+}
 
 # (tag, predicate(type_line_lower, text_lower)) — order defines output order.
 MECHANIC_RULES = [
@@ -77,7 +128,7 @@ def type_subtypes(type_line):
     return subs
 
 
-def tags_for(row):
+def tags_for(row, keywords=None):
     type_line = (row.get("Type") or "").strip()
     text = (row.get("Card Text") or "").strip()
     t_low, x_low = type_line.lower(), text.lower()
@@ -91,18 +142,38 @@ def tags_for(row):
     for tt in TYPE_TAGS:
         if tt.lower() in t_low and tt not in tags:
             tags.append(tt)
-    # Mechanic heuristics.
+    # Mechanic heuristics from oracle text.
     for tag, pred in MECHANIC_RULES:
         try:
             if pred(t_low, x_low) and tag not in tags:
                 tags.append(tag)
         except re.error:
             pass
-    # Keyword abilities.
-    for kw in KEYWORDS:
-        if re.search(rf"\b{re.escape(kw)}\b", x_low) and kw not in tags:
-            tags.append(kw)
+    # Scryfall keyword abilities (authoritative) + the themes they imply.
+    for kw in (keywords or []):
+        k = kw.strip().lower()
+        if not k:
+            continue
+        if k not in tags:
+            tags.append(k)
+        for theme in KEYWORD_THEMES.get(k, []):
+            if theme not in tags:
+                tags.append(theme)
     return tags
+
+
+def load_keywords(path):
+    """name_lower -> [keywords] from card-mana.csv, if it's been built."""
+    kw = {}
+    if not os.path.exists(path):
+        return kw
+    with open(path, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            n = (r.get("Card Name") or "").strip().lower()
+            raw = (r.get("Keywords") or "").strip()
+            if n:
+                kw[n] = [k for k in raw.split(";") if k]
+    return kw
 
 
 def main():
@@ -113,14 +184,19 @@ def main():
     args = ap.parse_args()
 
     _, rows = load_rows(args.path)
+    kw_map = load_keywords(MANA_CSV)
+    if not kw_map:
+        print("Note: card-mana.csv not found — tagging without Scryfall keywords. "
+              "Run build_mana.py first for keyword-aware tags.")
     changed = 0
     sample = []
     for row in rows:
-        if not (row.get("Card Name") or "").strip():
+        name = (row.get("Card Name") or "").strip()
+        if not name:
             continue
         if (row.get("Synergies") or "").strip() and not args.force:
             continue
-        tags = tags_for(row)
+        tags = tags_for(row, kw_map.get(name.lower()))
         value = "; ".join(tags)
         if value != (row.get("Synergies") or "").strip():
             if len(sample) < 15:

@@ -6,10 +6,12 @@ hybrid {W/U} (payable with either color) from a strict {W}{U} (needs both). For
 deck-building mana math that distinction matters, so this fetches the actual
 mana cost of every card from Scryfall and writes card-mana.csv:
 
-    Card Name, Mana Cost, Mana Value
+    Card Name, Mana Cost, Mana Value, Keywords
 
-That file is the input to `deck.py mana`. Rerun after importing new cards.
-Lands (no mana cost) are written with an empty cost.
+Keywords is Scryfall's authoritative per-card ability list (Flying, Surveil,
+Convoke, …), used by tag_synergies.py for accurate, complete synergy tags rather
+than a hand-maintained keyword list. This file feeds `deck.py mana`. Rerun after
+importing new cards. Lands (no mana cost) are written with an empty cost.
 
 Usage:
     python3 scripts/build_mana.py            # refresh from card-library.csv
@@ -65,9 +67,10 @@ def fetch(names):
         for card in data.get("data", []):
             cost = _front_mana(card)
             mv = card.get("cmc", 0)
+            kw = ";".join(card.get("keywords", []) or [])
             for key in (card.get("name", "").lower(),
                         card.get("name", "").lower().split(" // ")[0]):
-                out.setdefault(key, (cost, mv))
+                out.setdefault(key, (cost, mv, kw))
         eprint(f"       fetched {min(i + 75, len(names))}/{len(names)}")
         time.sleep(0.1)
     return out
@@ -102,10 +105,10 @@ def main():
 
     with open(args.out, "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
-        w.writerow(["Card Name", "Mana Cost", "Mana Value"])
+        w.writerow(["Card Name", "Mana Cost", "Mana Value", "Keywords"])
         for n in names:
-            cost, mv = data.get(n.lower(), ("", ""))
-            w.writerow([n, cost, int(mv) if isinstance(mv, (int, float)) else ""])
+            cost, mv, kw = data.get(n.lower(), ("", "", ""))
+            w.writerow([n, cost, int(mv) if isinstance(mv, (int, float)) else "", kw])
     print(f"Wrote {args.out}: {len(names)} cards.")
     return 0
 

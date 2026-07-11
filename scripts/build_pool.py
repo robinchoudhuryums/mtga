@@ -75,7 +75,7 @@ def fetch_all(query):
 
 def row_for(card):
     type_line, text = oracle_fields(card)
-    tags = tags_for({"Type": type_line, "Card Text": text})
+    tags = tags_for({"Type": type_line, "Card Text": text}, card.get("keywords"))
     return {
         "Card Name": card.get("name", ""),
         "Type": type_line,
