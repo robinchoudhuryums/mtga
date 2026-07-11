@@ -2,8 +2,8 @@
 #: format: Historic
 #: colors: WU
 #: notes: Merfolk tribal / tempo — mono-U core with a light (mostly hybrid) W
-#: notes: splash. Primary build, promoted from the blue-tuned iteration; Sharae
-#: notes: of Numbing Depths in over Ooze Spill for a proactive tap-down body.
+#: notes: splash. Runs both Sharae of Numbing Depths (proactive tap-down) and
+#: notes: Ooze Spill (counter); trimmed to 23 lands to fit both.
 #: notes: Tap/convoke token engine (Deeproot Pilgrimage + Pestered Wellguard).
 #: notes: Some cards are still craft targets (WIP).
 
@@ -30,6 +30,7 @@
 1 Deepchannel Duelist (ECL) 213
 1 Voracious Tome-Skimmer (ECL) 250
 1 Negate (TMT) 47
+1 Ooze Spill (TMT) 48
 1 Essence Scatter (SOS) 47
 1 Mindspring Merfolk (DFT) 51
 1 Tishana's Tidebinder (LCI) 81
@@ -52,4 +53,4 @@
 1 Gleaming Bastion (MSH) 267
 1 Floodfarm Verge (DSK) 259
 1 Tranquil Cove (FDN) 270
-18 Island (MSH) 289
+17 Island (MSH) 289
