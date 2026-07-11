@@ -537,13 +537,15 @@ def _deck_payload(d, new=False):
         meta = [{"key": "name", "value": ""}, {"key": "format", "value": "Standard"},
                 {"key": "colors", "value": ""}, {"key": "notes", "value": ""}]
         body, ident, name, fname = [], None, "New deck", "(unsaved)"
+        flex = []
     else:
         meta, body = _parse_deck_doc(d["path"])
         ident, name = d["id"], (d["name"] or d["id"])
         fname = os.path.relpath(d["path"], REPO_ROOT)
+        flex = deckmod.parse_flex(d["path"])
     return json.dumps({"id": ident, "name": name, "file": fname, "new": new,
                        "meta": meta, "body": body, "owned": by_name_qty,
-                       "basics": sorted(deckmod.BASICS)},
+                       "flex": flex, "basics": sorted(deckmod.BASICS)},
                       ensure_ascii=False).replace("<", "\\u003c")
 
 

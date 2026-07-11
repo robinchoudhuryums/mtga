@@ -58,3 +58,9 @@
 1 Ba Sing Se (TLA) 266
 10 Forest
 8 Plains
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 19a
+#~ -Earthbender Ascension | +Bushwhack | fight OR fetch a basic; also feeds landfall
+#~ -Rabaroo Troop | +Harsh Annotation | clean hard removal — the deck runs almost none
+#~ -Studious First-Year | +Run Over | bite removal off your fat go-wide tokens
+#~ note: all three swaps are OWNED (0 wildcards) and add the interaction the deck lacks

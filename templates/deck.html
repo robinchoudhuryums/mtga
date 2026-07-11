@@ -58,6 +58,13 @@
     padding:14px; overflow-x:auto; font-size:12.5px; line-height:1.5; margin:0; min-height:40px;
     white-space:pre-wrap; }
   .note { color:var(--short); font-size:12px; margin:6px 0; }
+  .flexrow { display:flex; gap:8px; align-items:baseline; padding:8px 10px; border:1px solid var(--line);
+    border-radius:8px; margin:6px 0; background:var(--panel2); flex-wrap:wrap; }
+  .flexrow .swap { font-size:13.5px; }
+  .flexrow .out { color:var(--short); }
+  .flexrow .in { color:var(--accent); font-weight:600; }
+  .flexrow .meta { color:var(--muted); font-size:12px; }
+  .flexrow .fnote { flex-basis:100%; color:var(--muted); font-size:12px; margin-top:2px; }
   .toast { position:fixed; bottom:18px; left:50%; transform:translateX(-50%); background:var(--panel2);
     border:1px solid var(--line); border-radius:8px; padding:10px 16px; font-size:13px; opacity:0;
     transition:opacity .2s; pointer-events:none; max-width:80vw; }
@@ -83,6 +90,7 @@
   <div id="rows"></div>
   <button class="tool add" id="addRow">＋ Add card line</button>
 
+  <div id="flex"></div>
   <div id="analysis"></div>
 </div>
 <div class="toast" id="toast"></div>
@@ -237,7 +245,33 @@
   function esc(s){ return (s==null?'':s).toString().replace(/[&<>"]/g,m=>
     ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])); }
 
-  renderMeta(); renderRows(); buildAnalysis(); refresh();
+  // --- Flex / suggested swaps (read-only, from #~ lines in the deck file) ---
+  function renderFlex() {
+    const el = document.getElementById('flex');
+    const flex = DATA.flex || [];
+    if (NEW || !flex.length) { el.innerHTML = ''; return; }
+    const rows = flex.map(f => {
+      const inName = (f.in || '').trim();
+      let owned = '';
+      if (inName) {
+        const key = inName.toLowerCase();
+        owned = BASICS.has(key) ? '<span class="meta">basic ∞</span>'
+          : (key in OWNED ? `<span class="meta">owned ×${OWNED[key]}</span>`
+                          : '<span class="meta">not owned</span>');
+      }
+      const swap = (f.out || f.in)
+        ? `<span class="swap"><span class="out">− ${esc(f.out)}</span>`
+          + (f.in ? ` &nbsp;→&nbsp; <span class="in">+ ${esc(f.in)}</span> ${owned}` : '')
+          + `</span>` : '';
+      const note = f.note ? `<span class="fnote">${esc(f.note)}</span>` : '';
+      return `<div class="flexrow">${swap}${note}</div>`;
+    }).join('');
+    el.innerHTML = `<h2>Suggested swaps</h2>`
+      + `<div class="note">Flex ideas recorded in the deck file (comments — not part of the 60). `
+      + `Edit them there or via <code>deck.py flex ${esc(DATA.id)}</code>.</div>${rows}`;
+  }
+
+  renderMeta(); renderRows(); renderFlex(); buildAnalysis(); refresh();
 </script>
 </body>
 </html>

@@ -893,6 +893,68 @@ def _commitment(n):
     return "<- primary color"
 
 
+# --- flex / suggested swaps ------------------------------------------------- #
+def parse_flex(path):
+    """Return the deck's flex suggestions from `#~` lines.
+
+    A flex line is a comment (so it never counts toward the 60 or reaches Arena
+    import), machine-readable as:  #~ -Out card | +In card | reason
+    Any of the three fields may be omitted; a lone free-text field is a note.
+    """
+    entries = []
+    with open(path, encoding="utf-8") as fh:
+        for raw in fh:
+            s = raw.strip()
+            if not s.startswith("#~"):
+                continue
+            e = {"out": "", "in": "", "note": ""}
+            for col in (c.strip() for c in s[2:].split("|")):
+                if col.startswith("-"):
+                    e["out"] = col[1:].strip()
+                elif col.startswith("+"):
+                    e["in"] = col[1:].strip()
+                elif col:
+                    e["note"] = (e["note"] + "  " + col).strip()
+            if e["out"] or e["in"] or e["note"]:
+                entries.append(e)
+    return entries
+
+
+def cmd_flex(args):
+    """Show a deck's flex suggestions, enriching the +In card with cost / owned /
+    rarity so you can see what each swap would take."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    entries = parse_flex(d["path"])
+    print(f"Deck {d['id']}: {d['name'] or d['id']} — flex / suggested swaps")
+    if not entries:
+        print("  (none yet — add '#~ -Out card | +In card | reason' lines to the deck file.)")
+        return 0
+    mana = load_mana()
+    rar = load_rarities()
+    _, _, qty = load_collection()
+    print("-" * 62)
+    for e in entries:
+        left = f"− {e['out']}" if e["out"] else ""
+        right = ""
+        if e["in"]:
+            m = mana.get(e["in"].lower())
+            cost = m[0] if (m and m[0]) else ""
+            have, _ = owned(qty, e["in"])
+            r = rar.get(e["in"].lower(), "")
+            meta = " ".join(x for x in [cost, r, (f"×{have}" if have > 0 else "craft")] if x)
+            right = f"+ {e['in']}" + (f"  ({meta})" if meta else "")
+        if left and right:
+            print(f"  {left}   →   {right}")
+        elif left or right:
+            print(f"  {left or right}")
+        if e["note"]:
+            print(f"      {e['note']}")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="Manage decks and variations.")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -914,12 +976,15 @@ def main():
     p.add_argument("id")
     p.add_argument("--limit", type=int, default=20, help="max suggestions (default 20)")
     p.add_argument("--unowned", action="store_true", help="only craftable suggestions")
+    p = sub.add_parser("flex", help="show a deck's flex / suggested swaps (#~ lines)")
+    p.add_argument("id")
     args = ap.parse_args()
 
     return {
         "list": cmd_list, "wildcards": cmd_wildcards, "check": cmd_check,
         "diff": cmd_diff, "arena": cmd_arena, "stats": cmd_stats,
         "mana": cmd_mana, "tribes": cmd_tribes, "suggest": cmd_suggest,
+        "flex": cmd_flex,
     }[args.cmd](args)
 
 
