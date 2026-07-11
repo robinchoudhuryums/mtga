@@ -1,0 +1,69 @@
+#: name: Bird Brain — Bant Tokens
+#: format: Historic
+#: colors: GWU
+#: based-on: deck.txt
+#: notes: Bant (GWU) go-wide: Chocobo landfall Bird tokens + For the Common Good
+#: notes: copy-army, with a white/blue flyers-and-anthem package (Empyrean Eagle,
+#: notes: Kastral, Jackdaw Savior). Keeps several fun token-makers (Squirrel Girl,
+#: notes: Michelangelo BFF, Ka-Zar, Mole Man, Glacier Godmaw, Storm Windrider).
+#: notes: Light on interaction by design — see flex slots.
+
+# Chocobo landfall / token engine
+1 Traveling Chocobo (FIN) 210
+1 Summon: Fat Chocobo (FIN) 202
+1 Sidequest: Raise a Chocobo (FIN) 201
+1 Sazh's Chocobo (FIN) 200
+1 Chocobo Racetrack (FIN) 179
+1 Choco, Seeker of Paradise (FIN) 215
+3 Gysahl Greens (FIN) 190
+
+# Token / go-wide payoffs (+ fun includes)
+1 For the Common Good (BLB) 172
+1 Ka-Zar of the Savage Land (MSH) 174
+1 Mole Man, Moloid Master (MSH) 177
+1 Galactic Wayfarer (EOE) 185
+1 Glacier Godmaw (EOE) 188
+1 Season of Gathering (BLB) 192
+1 Rydia's Return (FIN) 198
+1 The Unbeatable Squirrel Girl (MSH) 193
+1 Michelangelo, Mutant BFF (TMT) 120
+1 Storm, Windrider (MSH) 230
+
+# Birds / flyers / anthems
+1 Empyrean Eagle (FDN) 239
+1 Kastral, the Windcrested (BLB) 221
+1 Jackdaw Savior (BLB) 18
+1 Salvation Swan (BLB) 28
+1 Miner's Guidewing (LCI) 24
+1 Ambrosia Whiteheart (FIN) 6
+1 Dawnwing Marshal (FDN) 570
+1 Dazzling Angel (FDN) 9
+1 Stirring Hopesinger (SOS) 35
+1 Cat-Owl (TLA) 212
+1 Momo, Friendly Flier (TLA) 29
+1 Sunbird Standard (LCI) 262
+1 Shrike Force (BLB) 31
+1 Aven Interrupter (OTJ) 4
+
+# Ramp / support / fun
+1 Studious First-Year (SOS) 162
+1 Earthbender Ascension (TLA) 175
+1 Rabaroo Troop (TLA) 32
+
+# Lands (Bant — 13 duals + 11 basics)
+1 Hallowed Fountain (ECL) 265
+1 Breeding Pool (EOE) 251
+1 Temple of Enlightenment (FDN) 698
+1 Dreamroot Cascade (SOS) 254
+1 Blossoming Sands (M21) 244
+1 Hushwood Verge (DSK) 261
+1 Gathering Place (MSH) 266
+1 Kyoshi Village (TLA) 271
+1 Thornwood Falls (FDN) 269
+1 Meditation Pools (TLA) 272
+1 Restless Anchorage (LCI) 280
+1 Azorius Guildgate (FDN) 683
+1 Birnin Zana Plaza (MSH) 262
+5 Forest
+3 Plains
+3 Island

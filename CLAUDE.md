@@ -5,6 +5,16 @@ enrich, search, analyze, and build decks against it. See `README.md` for user
 docs. This file is the source of truth for the workflow commands in
 `.claude/commands/`.
 
+## Player Profile
+
+- **Deck-building style: creative-leaning.** Robin values inventive / entertaining
+  / flavorful play over squeezing out the last few points of win-rate — happy to
+  run a functional-but-spicy card over a "correct" staple. `/tune-deck` reads this
+  by default (protect signature/spice cards, reserve a fun budget, keep flavorful
+  picks unless the power gap is large); override per run with `competitive` /
+  `balanced` in the args. Still always report the by-the-numbers pick — the
+  preference shifts recommendations, not honesty.
+
 ## Key Design Decisions
 
 - **`Color(s)` is color IDENTITY, not mana cost.** For anything mana-related

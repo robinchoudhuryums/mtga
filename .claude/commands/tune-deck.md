@@ -2,6 +2,13 @@ Analyze a deck and propose improvements — with owned cards and craftable upgra
 
 Input: a deck id in $ARGUMENTS (e.g. `18` or `18a`).
 
+## Stage 0 — Read the play-style profile
+
+Check CLAUDE.md's **Player Profile** for the default deck-building style on the
+creative ↔ competitive dial, and honor any per-run override in $ARGUMENTS
+(e.g. `19 competitive`, `19 creative`). The style changes how you weight cuts and
+swaps (see "Play-style weighting" below) — not the data-gathering.
+
 ## Stage 1 — Gather the full picture (before recommending anything)
 
 Read the actual card text — never judge by mana value or a single subtype:
@@ -33,15 +40,20 @@ speed; credit ◊ cost-reducers) · synergy density (theme/tribal count,
 payoff-to-enabler ratio) · interaction (amount AND type: removal/counter/tempo) ·
 card advantage / reach · consistency (redundancy vs. singleton context).
 
-**3. Keep (validated strengths)** — engines/cards that are working; say
-*explicitly* not to cut them. This is the guardrail against over-tuning.
+**3. Keep — validated strengths + signature/spice** — engines/cards that are
+working; say *explicitly* not to cut them (guardrail against over-tuning). Split
+out a **Signature & spice** line: the cards that give the deck its identity / fun
+factor. At a creative-leaning style these are *protected* — never cut them for a
+generic upgrade unless they're actively non-functional.
 
 **4. Findings** — tagged **Critical / Moderate / Minor**, each grounded in card
 text; separate problems from opportunities.
 
 **5. Recommended changes** — ranked; each a discrete swap:
-`− Out / + In` | wildcard cost (rarity + owned/craft) + **verdict: Worth it /
-Marginal / Skip** | impact deltas (creatures / tribe / curve / color) | confidence.
+`− Out / + In` | wildcard cost (rarity + owned/craft) | impact deltas (creatures /
+tribe / curve / color) | **two-axis verdict: power (helps/neutral/hurts) + fit/fun
+(on-identity/neutral/off-identity)** | confidence. Rating both axes keeps the
+power-vs-flavor trade visible instead of collapsing it into one "worth it."
 
 **6. Craft priority** — for WIP decks: tiered list by impact-per-wildcard.
 
@@ -65,6 +77,27 @@ them, don't decide unilaterally.
 - **Show before/after deltas** for each change.
 - **Respect singleton-vs-playset context** — tuning a 60-card highlander differs
   from a 4-of Standard list.
+
+## Play-style weighting (creative ↔ competitive)
+
+Apply the profile from Stage 0. The dial changes *recommendations*, never the
+honesty of the data (always still report the by-the-numbers pick).
+
+- **Creative-leaning** (default for this repo — see CLAUDE.md): optimize for
+  interesting/entertaining play, not raw win-rate.
+  - **Protect signature/spice cards** — don't cut a functional-but-quirky card
+    just because a generic "better" option exists.
+  - **Power-gap threshold for homogenizing swaps** — only suggest replacing a
+    flavorful card with a staple when the power gap is *large*; otherwise keep
+    the flavorful card and merely *note* the option.
+  - **Reserve a fun budget** — leave ~15–20% of flex slots for pure-flavor picks
+    even if suboptimal; call them out as intentional.
+  - Frame trade-offs as choices ("the netdeck pick is X; your Y does ~85% and is
+    more your style"), and lead with fit/fun in the two-axis verdict.
+- **Competitive-leaning**: flip it — prioritize power, recommend the staples,
+  minimal fun budget, lead with the power axis.
+- **Balanced**: in between — surface both the staple and the spicy option and let
+  the user pick.
 
 ## If asked to build it
 

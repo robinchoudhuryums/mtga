@@ -1,0 +1,89 @@
+#: name: Bird Brain
+#: format: Historic
+#: colors: WU
+#: notes: WIP PILE — 83 spells, 0 lands. Started bird/flyers-themed then sprawled
+#: notes: across chocobos, earthbending, TMNT, big-green, etc. Needs a direction
+#: notes: chosen and a trim to 60 (with a real manabase). Analyzing with the tool.
+
+# Nonland (WIP pile)
+1 Chocobo Kick (FIN) 178
+1 Traveling Chocobo (FIN) 210
+3 Gysahl Greens (FIN) 190
+1 Summon: Fat Chocobo (FIN) 202
+1 Ambrosia Whiteheart (FIN) 6
+1 Chocobo Racetrack (FIN) 179
+1 Miner's Guidewing (LCI) 24
+1 Aven Interrupter (OTJ) 4
+1 Jackdaw Savior (BLB) 18
+1 Shrike Force (BLB) 31
+1 Stirring Hopesinger (SOS) 35
+1 East Wind Avatar (TMT) 5
+1 Salvation Swan (BLB) 28
+1 Mockingbird, Ace Agent (MSH) 22
+1 Sazh's Chocobo (FIN) 200
+1 Sidequest: Raise a Chocobo (FIN) 201
+1 Spider-Ham, Peter Porker (SPM) 114
+1 Empyrean Eagle (FDN) 239
+1 Studious First-Year (SOS) 162
+1 Cat-Owl (TLA) 212
+1 Kastral, the Windcrested (BLB) 221
+1 Restless Anchorage (LCI) 280
+1 Choco, Seeker of Paradise (FIN) 215
+1 Sunbird Standard (LCI) 262
+1 Rabaroo Troop (TLA) 32
+1 Ride the Shoopuf (FIN) 197
+1 Claim the Kingdom (MSH) 163
+1 Earthbender Ascension (TLA) 175
+1 Mole Man, Moloid Master (MSH) 177
+1 Ka-Zar of the Savage Land (MSH) 174
+1 Glacier Godmaw (EOE) 188
+1 Galactic Wayfarer (EOE) 185
+1 Momo, Friendly Flier (TLA) 29
+1 Dawnwing Marshal (FDN) 570
+1 Dazzling Angel (FDN) 9
+1 Monica Rambeau (MSH) 23
+1 Sage of the Skies (TDM) 22
+1 Serra Redeemer (BLB) 387
+1 Ancestor Dragon (FDN) 489
+1 Mutant Chain Reaction (TMT) 125
+1 Hinterland Sanctifier (FDN) 730
+1 Restorative Technique (MSH) 183
+1 Spider-Man, Brooklyn Visionary (SPM) 115
+1 Gigantoad (FIN) 187
+1 Rydia's Return (FIN) 198
+1 Goobbue Gardener (FIN) 188
+1 Noxious Newt (SOS) 155
+1 Cycle of Renewal (TLA) 170
+1 Loot, Exuberant Explorer (FDN) 106
+1 Mona Lisa, Science Geek (TMT) 123
+1 Rockalanche (TLA) 192
+1 Sandman, Shifting Scoundrel (SPM) 112
+1 Earth Kingdom General (TLA) 173
+1 Icecave Crasher (EOE) 191
+1 Loading Zone (EOE) 196
+1 Michelangelo, Mutant BFF (TMT) 120
+1 Michelangelo, Improviser (TMT) 119
+1 New Generation's Technique (TMT) 126
+1 Pestbrood Sloth (SOS) 157
+1 The Boulder, Ready to Rumble (TLA) 168
+1 The Unbeatable Squirrel Girl (MSH) 193
+1 Training Regimen (MSH) 192
+1 Badgermole (TLA) 166
+1 Tenured Concocter (SOS) 163
+1 Venus, Torn Between Worlds (TMT) 136
+1 Flopsie, Bumi's Buddy (TLA) 179
+1 Saber-Tooth Moose-Lion (TLA) 194
+1 Season of Gathering (BLB) 192
+1 Ancient Adamantoise (FIN) 172
+1 For the Common Good (BLB) 172
+1 Broodguard Elite (EOE) 175
+1 Long Feng, Grand Secretariat (TLA) 233
+1 Essenceknit Scholar (SOS) 187
+1 Dai Li Agents (TLA) 214
+1 Witherbloom, the Balancer (SOS) 245
+1 Mikey & Leo, Chaos & Order (TMT) 158
+1 Storm, Windrider (MSH) 230
+1 Suki, Kyoshi Warrior (TLA) 243
+1 Rinoa Heartilly (FIN) 237
+1 Slithering Cryptid (TMT) 168
+1 Opulent Palace (TDM) 264
