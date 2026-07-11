@@ -1,25 +1,32 @@
 #!/usr/bin/env python3
-"""Auto-fill card details from the Scryfall API.
+"""Auto-fill card details from the Scryfall API (batched).
 
-For each row, this looks the card up on Scryfall (by Card Name, and by Set Code
-when one is present) and fills in any BLANK fields among:
+For each row this fills any BLANK fields among:
     Type, Card Text, Color(s), Collector #
 
 Fields you have already filled are never overwritten unless you pass --force.
 Your own columns (Synergies, Quantity Owned) are never touched.
 
+How it works: cards are looked up in batches of 75 via Scryfall's
+/cards/collection endpoint (so a few hundred cards take only a handful of
+requests instead of one-per-card), which keeps this well under Scryfall's rate
+limits. Double-faced "Front // Back" names that the batch endpoint can't match
+fall back to a single-card /cards/named lookup on the front face.
+
+Type / Card Text / Color(s) are identical across every printing, so they're
+filled from a name match. Collector # is printing-specific, so it's only written
+when the matched printing's set actually equals the row's Set Code (after
+mapping known Arena->Scryfall code differences) — otherwise it's left as-is so a
+wrong number is never written.
+
 Network requirement:
-    This needs outbound HTTPS access to https://api.scryfall.com. Some managed
-    environments block it by egress policy; if so, run this where Scryfall is
-    reachable (e.g. your local machine). No API key is required.
+    Needs outbound HTTPS to https://api.scryfall.com. No API key required.
 
 Usage:
     python3 scripts/enrich.py                # enrich the whole library in place
     python3 scripts/enrich.py --dry-run      # show what would change, write nothing
     python3 scripts/enrich.py --force        # also overwrite non-blank fields
     python3 scripts/enrich.py --only "Llanowar Elves"   # just matching rows
-
-Scryfall asks callers to rate-limit; this sleeps 100ms between requests.
 """
 
 import argparse
@@ -32,36 +39,28 @@ import urllib.request
 
 from lib import DEFAULT_CSV, load_rows, write_rows, eprint
 
-SCRYFALL = "https://api.scryfall.com/cards/named"
+COLLECTION_URL = "https://api.scryfall.com/cards/collection"
+NAMED_URL = "https://api.scryfall.com/cards/named"
 USER_AGENT = "mtga-card-library/1.0"
-# Type/Card Text/Color(s) are identical across every printing of a card, so they
-# are safe to fill from any match. Collector # is printing-specific and is
-# handled separately — only written when we are sure of the printing.
+BATCH_SIZE = 75  # Scryfall's max identifiers per /cards/collection request
 FILLABLE = ["Type", "Card Text", "Color(s)"]
 
 # MTG Arena uses a few set codes that differ from Scryfall's. Map Arena -> Scryfall
-# here so a set-constrained lookup resolves to the right printing. Unknown codes
-# fall through unchanged and are caught safely by the mismatch guard below.
+# here so the Collector # set-match check resolves correctly. Unknown codes fall
+# through unchanged and are handled safely (Collector # simply isn't filled).
 SET_ALIASES = {
     "dar": "dom",  # Dominaria (Arena calls it DAR)
 }
 
 
-def _request_json(params, retries=6):
-    """GET a Scryfall endpoint as JSON, retrying transient failures.
+def _retrying(do_request, retries=6):
+    """Run do_request(), retrying 429 and network errors with backoff.
 
-    429 (rate limited) and network errors are retried with exponential backoff,
-    honoring the Retry-After header when present. 404 and other HTTP errors are
-    raised immediately for the caller to handle.
+    Non-429 HTTPErrors (e.g. 404) are raised for the caller to handle.
     """
-    url = f"{SCRYFALL}?{urllib.parse.urlencode(params)}"
-    req = urllib.request.Request(
-        url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"}
-    )
     for attempt in range(retries):
         try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                return json.load(resp)
+            return do_request()
         except urllib.error.HTTPError as e:
             if e.code == 429 and attempt < retries - 1:
                 wait = float(e.headers.get("Retry-After", 0) or 0) or 1.0 * (2 ** attempt)
@@ -76,61 +75,58 @@ def _request_json(params, retries=6):
             raise
 
 
-def fetch_card(name, set_code):
-    """Look up an exact card name, optionally constrained to a set.
+def post_collection(names):
+    """Batch-look-up card names via /cards/collection. Returns the parsed JSON."""
+    body = json.dumps({"identifiers": [{"name": n} for n in names]}).encode("utf-8")
 
-    Returns (card_json_or_None, set_matched). set_matched is True only when a
-    set code was requested AND the returned card is actually from that set — so
-    the caller knows whether the printing-specific Collector # can be trusted.
+    def do():
+        req = urllib.request.Request(
+            COLLECTION_URL,
+            data=body,
+            headers={
+                "User-Agent": USER_AGENT,
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.load(resp)
 
-    Raises on network/policy errors so the caller stops rather than silently
-    producing an empty library.
-    """
-    scry_set = SET_ALIASES.get(set_code.lower(), set_code.lower()) if set_code else None
+    return _retrying(do)
+
+
+def get_named(front_name):
+    """Single-card lookup by exact (front-face) name; None if not found."""
+    def do():
+        url = f"{NAMED_URL}?{urllib.parse.urlencode({'exact': front_name})}"
+        req = urllib.request.Request(
+            url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"}
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.load(resp)
+
     try:
-        params = {"exact": name}
-        if scry_set:
-            params["set"] = scry_set
-        card = _request_json(params)
+        return _retrying(do)
     except urllib.error.HTTPError as e:
-        if e.code != 404:
-            raise
-        # Set+name not found. Retry by name alone so we can still fill the
-        # printing-invariant fields, but report the printing as unmatched.
-        if scry_set:
-            try:
-                return _request_json({"exact": name}), False
-            except urllib.error.HTTPError as e2:
-                if e2.code == 404:
-                    return None, False
-                raise
-        return None, False
-
-    # Confirm the returned printing really is the requested set.
-    matched = bool(scry_set) and card.get("set", "").lower() == scry_set
-    return card, matched
+        if e.code == 404:
+            return None
+        raise
 
 
 def color_shorthand(card):
-    """Derive a Color(s) shorthand from color identity, matching the sheet's style.
-
-    Examples: 'U', 'B/G', 'Colorless'. Uses color identity (not mana cost) so
-    lands and hybrid cards resolve to the colors they actually belong to.
-    """
+    """Derive a Color(s) shorthand from color identity, e.g. 'U', 'B/G', 'Colorless'."""
     ci = card.get("color_identity", [])
     if not ci:
         return "Colorless"
-    # Preserve WUBRG order for readability.
     order = {"W": 0, "U": 1, "B": 2, "R": 3, "G": 4}
     return "/".join(sorted(ci, key=lambda c: order.get(c, 9)))
 
 
 def oracle_fields(card):
-    """Return (type_line, oracle_text) handling multi-face (MDFC/adventure) cards."""
+    """Return (type_line, oracle_text), handling multi-face (MDFC/adventure) cards."""
     type_line = card.get("type_line", "")
     text = card.get("oracle_text")
     if not text and "card_faces" in card:
-        # Join faces with the standard '//' separator used on the card itself.
         faces = card["card_faces"]
         text = " // ".join(f.get("oracle_text", "") for f in faces)
         if not type_line:
@@ -138,58 +134,69 @@ def oracle_fields(card):
     return type_line, (text or "")
 
 
-def enrich(path, dry_run=False, force=False, only=None):
-    header, rows = load_rows(path)
-    changed = 0
-    matched = 0
+def index_card(by_name, card):
+    """Index a card under its full and front-face name (lowercased) for matching."""
+    full = card.get("name", "").lower()
+    by_name.setdefault(full, card)
+    by_name.setdefault(full.split(" // ")[0], card)
 
-    # Only these rows need a network call; count them for progress reporting.
+
+def resolve_cards(names):
+    """Return {name_lower: card} for the given names via batch + named fallback."""
+    by_name = {}
+    for i in range(0, len(names), BATCH_SIZE):
+        chunk = names[i:i + BATCH_SIZE]
+        data = post_collection(chunk)
+        for card in data.get("data", []):
+            index_card(by_name, card)
+        eprint(f"       looked up {min(i + BATCH_SIZE, len(names))}/{len(names)} names")
+        time.sleep(0.1)
+
+    # Fallback for names the batch couldn't match (e.g. "Front // Back" cards).
+    unmatched = [n for n in names if n.lower() not in by_name]
+    for n in unmatched:
+        card = get_named(n.split(" // ")[0])
+        if card:
+            index_card(by_name, card)
+        time.sleep(0.1)
+    return by_name
+
+
+def enrich(path, dry_run=False, force=False, only=None):
+    _, rows = load_rows(path)
+
+    def needs(r):
+        return [c for c in FILLABLE if force or not (r.get(c) or "").strip()]
+
     todo = [
         r for r in rows
         if (r.get("Card Name") or "").strip()
         and (not only or only.lower() in (r.get("Card Name") or "").lower())
-        and [c for c in FILLABLE if force or not (r.get(c) or "").strip()]
+        and needs(r)
     ]
-    total = len(todo)
+    if not todo:
+        print("Nothing to enrich (all matching rows already filled).")
+        return 0
 
-    def flush():
-        # Persist progress so a mid-run failure (or Ctrl-C) never loses work;
-        # re-running resumes because filled rows are skipped above.
-        if not dry_run:
-            write_rows(rows, path)
+    names = sorted({(r.get("Card Name") or "").strip() for r in todo})
+    try:
+        by_name = resolve_cards(names)
+    except urllib.error.HTTPError as e:
+        eprint(f"ERROR: Scryfall returned HTTP {e.code}: {e.reason}")
+        return 1
+    except urllib.error.URLError as e:
+        eprint(f"ERROR: could not reach Scryfall: {e}\n"
+               f"       This environment may block api.scryfall.com; "
+               f"run enrich.py where it is reachable.")
+        return 1
 
-    processed = 0
+    changed = matched = 0
+    unresolved = []
     for row in todo:
         name = (row.get("Card Name") or "").strip()
-        set_code = (row.get("Set Code") or "").strip()
-        processed += 1
-        try:
-            card, set_matched = fetch_card(name, set_code)
-        except urllib.error.HTTPError as e:
-            eprint(f"ERROR: Scryfall returned HTTP {e.code} for {name!r}: {e.reason}")
-            flush()
-            eprint(f"       Saved progress ({changed} row(s) enriched). "
-                   f"Re-run to resume the remaining {total - processed + 1}.")
-            return 1
-        except urllib.error.URLError as e:
-            eprint(
-                f"ERROR: could not reach Scryfall for {name!r}: {e}\n"
-                f"       This environment may block api.scryfall.com; "
-                f"run enrich.py where it is reachable."
-            )
-            flush()
-            eprint(f"       Saved progress ({changed} row(s) enriched).")
-            return 1
-        time.sleep(0.15)  # be polite to the API (Scryfall asks ~50-100ms+)
-
-        # Periodic progress + checkpoint on long runs.
-        if processed % 25 == 0:
-            eprint(f"       ...{processed}/{total} looked up")
-            flush()
-
-        if card is None:
-            eprint(f"WARN:  no Scryfall match for {name!r}"
-                   + (f" in set {set_code}" if set_code else ""))
+        card = by_name.get(name.lower())
+        if not card:
+            unresolved.append(name)
             continue
         matched += 1
 
@@ -199,18 +206,12 @@ def enrich(path, dry_run=False, force=False, only=None):
             "Card Text": text,
             "Color(s)": color_shorthand(card),
         }
-        # Collector # is printing-specific, so only fill it when we are certain
-        # of the printing (set code was given and Scryfall returned that set).
-        # Otherwise we'd write a number from an arbitrary reprint — the DAR->DOM
-        # class of bug. Warn so the user knows to check the set code.
-        if set_matched:
+        # Collector # is printing-specific: only fill it when the matched
+        # printing's set equals the row's Set Code (after alias mapping).
+        set_code = (row.get("Set Code") or "").strip()
+        scry_set = SET_ALIASES.get(set_code.lower(), set_code.lower()) if set_code else ""
+        if scry_set and card.get("set", "").lower() == scry_set:
             values["Collector #"] = str(card.get("collector_number", ""))
-        elif set_code:
-            eprint(
-                f"WARN:  {name!r}: Scryfall has no printing in set {set_code!r} "
-                f"(mapped to {SET_ALIASES.get(set_code.lower(), set_code.lower())!r}). "
-                f"Filled shared fields; left Collector # for you to confirm."
-            )
 
         row_changed = False
         for col in ["Type", "Card Text", "Color(s)", "Collector #"]:
@@ -218,14 +219,16 @@ def enrich(path, dry_run=False, force=False, only=None):
             if not new:
                 continue
             current = (row.get(col) or "").strip()
-            if force or not current:
-                if current != new:
-                    if dry_run:
-                        print(f"  {name} :: {col}: {current!r} -> {new!r}")
-                    row[col] = new
-                    row_changed = True
+            if (force or not current) and current != new:
+                if dry_run:
+                    print(f"  {name} :: {col}: {current!r} -> {new!r}")
+                row[col] = new
+                row_changed = True
         if row_changed:
             changed += 1
+
+    for n in unresolved:
+        eprint(f"WARN:  no Scryfall match for {n!r}")
 
     if dry_run:
         print(f"\n[dry-run] {matched} card(s) matched, {changed} row(s) would change. "
@@ -233,12 +236,14 @@ def enrich(path, dry_run=False, force=False, only=None):
         return 0
 
     write_rows(rows, path)
-    print(f"Enriched {changed} row(s) from {matched} Scryfall match(es). Wrote {path}.")
+    print(f"Enriched {changed} row(s) from {matched} Scryfall match(es)"
+          + (f", {len(unresolved)} unmatched" if unresolved else "")
+          + f". Wrote {path}.")
     return 0
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(description="Fill blank card fields from Scryfall.")
+    ap = argparse.ArgumentParser(description="Fill blank card fields from Scryfall (batched).")
     ap.add_argument("path", nargs="?", default=DEFAULT_CSV, help="CSV path")
     ap.add_argument("--dry-run", action="store_true", help="preview only, write nothing")
     ap.add_argument("--force", action="store_true", help="overwrite non-blank fields too")
