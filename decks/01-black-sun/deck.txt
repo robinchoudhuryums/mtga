@@ -1,0 +1,48 @@
+#: name: Black Sun
+#: format: Historic
+#: colors: BR
+#: notes: Rakdos (B/R) — first constructed deck.
+
+# Creatures
+1 Vindictive Warden (TLA) 249
+1 Stormclaw Rager (MOM) 254
+2 Perforating Artist (FDN) 124
+1 Alesha, Who Laughs at Fate (FDN) 115
+1 Hazoret, Godseeker (DFT) 133
+1 Raphael, Tough Turtle (TMT) 104
+2 Searslicer Goblin (FDN) 93
+1 Boar-q-pine (TLA) 124
+1 Kav Landseeker (EOE) 138
+1 Krenko, Mob Boss (FDN) 204
+1 Spider-Man, Hometown Hero (MSC) 556
+1 Snarling Gorehound (MKM) 105
+1 Dauthi Voidwalker (MAR) 63
+1 Wick's Patrol (BLB) 121
+1 High-Society Hunter (FDN) 61
+1 Massacre Wurm (FDN) 714
+1 She-Hulk, Jennifer Walters (MSC) 554
+1 Red Hulk (MSH) 149
+
+# Spells
+1 Avengers: Under Siege (MSH) 205
+1 Blood Spatter Analysis (MKM) 189
+1 Hell to Pay (OTJ) 126
+2 Burst Lightning (FDN) 192
+1 Diamond Pick-Axe (LCI) 143
+1 Sporogenic Infection (DSK) 117
+1 Bulk Up (SOA) 40
+1 Dragon Fodder (FDN) 535
+2 Reckless Ransacking (ECL) 152
+1 Tome Blast (SOS) 135
+1 Goblin Surprise (FDN) 200
+1 Prickly Pair (OTJ) 137
+1 Unlikely Aid (ANB) 64
+1 Day of Black Sun (TLA) 94
+
+# Lands
+1 Fire Nation Palace (TLA) 268
+2 Bloodfell Caves (TDM) 250
+1 Razortrap Gorge (DSK) 267
+1 Temple of Malice (FDN) 701
+9 Swamp (MSH) 292
+10 Mountain (MSH) 294
