@@ -356,7 +356,8 @@ def load_card_data():
             for r in csv.DictReader(fh):
                 n = (r.get("Card Name") or "").strip().lower()
                 if n and n not in data:
-                    data[n] = {"type": r.get("Type") or "", "text": r.get("Card Text") or ""}
+                    data[n] = {"type": r.get("Type") or "", "text": r.get("Card Text") or "",
+                               "colors": r.get("Color(s)") or ""}
                     data.setdefault(n.split(" // ")[0], data[n])
     return data
 
@@ -393,20 +394,20 @@ def cmd_stats(args):
     if not d:
         eprint(f"No deck with id {args.id!r}.")
         return 1
-    by_key, by_name = load_collection()
+    carddata = load_card_data()
     _, cards = parse_deck_file(d["path"])
 
     colors, types, total = {}, {}, 0
     nonland_names = []
     for q, n, s, c in cards:
         total += q
-        row = by_key.get((n.lower(), s.lower(), c.lower())) or by_name.get(n.lower())
-        tline = (row.get("Type") if row else "") or ""
+        cd = carddata.get(n.lower())
+        tline = (cd["type"] if cd else "") or ""
         ptype = "Land" if n.lower() in BASICS else _primary_type(tline)
         types[ptype] = types.get(ptype, 0) + q
         if ptype != "Land":
             nonland_names.append(n)
-        col = (row.get("Color(s)") if row else "") or ""
+        col = (cd["colors"] if cd else "") or ""
         for ch in (col.upper() if col else ""):
             if ch in "WUBRG":
                 colors[ch] = colors.get(ch, 0) + q
@@ -446,7 +447,6 @@ def cmd_stats(args):
             print(f"  {label:>2} MV  {curve[b]:3}  {'#' * curve[b]}")
 
     # Cost flexibility: cards whose printed MV overstates their real cost.
-    carddata = load_card_data()
     flex = []
     seen_f = set()
     for q, n, s, c in cards:
