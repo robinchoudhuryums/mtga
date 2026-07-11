@@ -228,20 +228,23 @@ python3 scripts/app.py --port 8000     # different port
 A small local Flask app that turns the collection into an **editable** grid: card
 art (from `image-manifest.json`), search/color/set filters, and each card's
 `Quantity Owned` and `Synergies` as inline fields with live "dirty" highlighting.
-Edit the fields, then **Save** — the changes are written back to
-`card-library.csv`. It binds to `127.0.0.1` only — a personal, local tool, so
-there's no auth.
+Edit the fields and **Save**; **＋ Add card** a new printing (its type/text/color/
+synergies auto-fill from Scryfall by exact name); remove a printing with the `✕`
+on its tile; or **⤺ Revert last save** to undo. It binds to `127.0.0.1` only — a
+personal, local tool, so there's no auth.
 
-**Saving is safe by construction:** the edited rows are written to a temp file and
-run through `validate.py` first; only if that passes is the current CSV backed up
-to a timestamped `.bak` (gitignored) and then atomically replaced. A bad edit —
-e.g. a non-numeric quantity — is rejected before anything is written, so the
-inventory can't be corrupted, and any save is one `.bak` away from undo.
+**Every change is safe by construction:** the new rows are written to a temp file
+and run through `validate.py` first; only if that passes is the current CSV backed
+up to a timestamped `.bak` (gitignored) and then atomically replaced. Bad input —
+a non-numeric quantity, a duplicate printing — is rejected before anything is
+written, so the inventory can't be corrupted, and any change is one `.bak` away
+from undo (which is exactly what Revert does). Adding a card also appends a
+`card-mana.csv` row, so the integrity gate's INV-02 keeps holding; run
+`build_mana.py` (or `/refresh`) afterwards to fill in its real mana cost/keywords.
 
 Flask is the only part of the toolkit with a dependency; it's isolated in
 `requirements-app.txt`, and the core scripts (and `check_all.py` / CI) never
-import it. Editing owned counts and synergy tags is the current scope; adding /
-removing cards and in-browser deck editing are planned later phases.
+import it. In-browser deck editing is a planned later phase.
 
 ### Sheets sync — round-trip with Google Sheets (optional)
 

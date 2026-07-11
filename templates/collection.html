@@ -64,6 +64,18 @@
     background: var(--panel2); border: 1px solid var(--line); border-radius: 8px;
     padding: 10px 16px; font-size: 13px; opacity: 0; transition: opacity .2s; pointer-events: none; }
   .toast.show { opacity: 1; }
+  .tool { background: var(--panel2); color: var(--text); border: 1px solid var(--line);
+    border-radius: 8px; padding: 8px 12px; font-size: 13px; cursor: pointer; }
+  .tool:hover { border-color: var(--accent); }
+  .tool.go { background: var(--accent); color: #1a1a1a; font-weight: 700; }
+  .addpanel { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+  .addpanel input { background: var(--panel2); color: var(--text); border: 1px solid var(--line);
+    border-radius: 8px; padding: 8px 10px; font-size: 14px; }
+  .addpanel .hint { color: var(--muted); font-size: 12px; }
+  .rm { position: absolute; top: 8px; left: 8px; z-index: 2; width: 24px; height: 24px;
+    border-radius: 50%; border: 1px solid var(--line); background: rgba(10,11,14,.8);
+    color: var(--muted); cursor: pointer; font-size: 12px; line-height: 1; padding: 0; }
+  .rm:hover { color: #e39a8a; border-color: #e39a8a; }
 </style>
 </head>
 <body>
@@ -89,6 +101,16 @@
       <option value="set">Sort: Set</option>
       <option value="qty">Sort: Quantity</option>
     </select>
+    <button id="addToggle" class="tool" title="Add a new printing to the collection">＋ Add card</button>
+    <button id="revert" class="tool" title="Undo the last save (restore the most recent backup)">⤺ Revert last save</button>
+  </div>
+  <div class="addpanel" id="addPanel" hidden>
+    <input id="aName" placeholder="Card name (exact)" size="26">
+    <input id="aSet" placeholder="Set" size="5">
+    <input id="aCn" placeholder="Coll #" size="5">
+    <input id="aQty" type="number" min="0" placeholder="Qty" style="width:70px">
+    <button id="addBtn" class="tool go">Add</button>
+    <span class="hint">An exact name auto-fills type/text/color/synergies from Scryfall.</span>
   </div>
 </header>
 <div class="grid" id="grid"></div>
@@ -168,6 +190,7 @@
       const curQty = dirty.has(c._key) ? dirty.get(c._key).quantity : (c.qty || '');
       const curSyn = dirty.has(c._key) ? dirty.get(c._key).synergies : (c.synergies || '');
       return `<div class="card${noimg}${isDirty}" data-key="${esc(c._key)}">
+        <button class="rm" title="Remove this printing">✕</button>
         <div class="art">
           <img loading="lazy" src="${c.img}" alt="${esc(c.name)}"
                onerror="this.closest('.card').classList.add('noimg')">
@@ -244,8 +267,61 @@
   function toast(msg) {
     const t = document.getElementById('toast');
     t.textContent = msg; t.classList.add('show');
-    clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 3200);
+    clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 4000);
   }
+
+  async function postJSON(url, body) {
+    const res = await fetch(url, {method: 'POST',
+      headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
+    return res.json();
+  }
+
+  // Add card — enrich + append server-side, then reload to pick up the new row.
+  const addPanel = document.getElementById('addPanel');
+  document.getElementById('addToggle').addEventListener('click', () => {
+    addPanel.hidden = !addPanel.hidden;
+    if (!addPanel.hidden) document.getElementById('aName').focus();
+  });
+  document.getElementById('addBtn').addEventListener('click', async () => {
+    const name = document.getElementById('aName').value.trim();
+    if (!name) { toast('Card name is required.'); return; }
+    const btn = document.getElementById('addBtn');
+    btn.disabled = true; btn.textContent = 'Adding…';
+    try {
+      const d = await postJSON('/api/add', {name,
+        set: document.getElementById('aSet').value.trim(),
+        collector: document.getElementById('aCn').value.trim(),
+        quantity: document.getElementById('aQty').value.trim()});
+      if (d.ok) {
+        sessionStorage.setItem('flash',
+          `Added ${d.name}` + (d.enriched ? '' : ' (offline — run enrich.py/refresh to fill details)'));
+        location.reload();
+      } else { toast('Add failed: ' + (d.errors || ['unknown']).join('  |  ')); }
+    } catch (err) { toast('Add failed (is the server running?): ' + err.message); }
+    finally { btn.disabled = false; btn.textContent = 'Add'; }
+  });
+
+  // Remove printing (delegated click on the ✕).
+  grid.addEventListener('click', async (e) => {
+    const rm = e.target.closest('.rm'); if (!rm) return;
+    const c = CARDS.find(x => x._key === rm.closest('.card').dataset.key); if (!c) return;
+    if (!confirm(`Remove ${c.name} (${c.set || '—'})? This deletes the printing from the collection.`)) return;
+    const d = await postJSON('/api/remove', {key: {name: c.name, set: c.set, collector: c.cn}});
+    if (d.ok) { sessionStorage.setItem('flash', `Removed ${c.name}`); location.reload(); }
+    else toast('Remove failed: ' + (d.errors || ['unknown']).join('  |  '));
+  });
+
+  // Revert last save.
+  document.getElementById('revert').addEventListener('click', async () => {
+    if (!confirm('Revert the last save? Restores the most recent backup and discards changes since then.')) return;
+    const d = await postJSON('/api/revert', {});
+    if (d.ok) { sessionStorage.setItem('flash', `Reverted to ${d.restored}`); location.reload(); }
+    else toast('Revert failed: ' + (d.errors || ['unknown']).join('  |  '));
+  });
+
+  // Surface a one-shot message across the reload that add/remove/revert trigger.
+  const flash = sessionStorage.getItem('flash');
+  if (flash) { sessionStorage.removeItem('flash'); setTimeout(() => toast(flash), 100); }
 
   render();
 </script>
