@@ -25,6 +25,7 @@ import json
 import os
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
@@ -53,6 +54,29 @@ def _image_url(card):
     if not uris and card.get("card_faces"):
         uris = card["card_faces"][0].get("image_uris", {}) or {}
     return uris.get("normal") or uris.get("large") or uris.get("small") or ""
+
+
+def _request_named(params, retries=6):
+    """GET the single-card /cards/named endpoint as JSON, with retry/backoff."""
+    url = "https://api.scryfall.com/cards/named?" + urllib.parse.urlencode(params)
+    req = urllib.request.Request(
+        url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"}
+    )
+    for attempt in range(retries):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return json.load(resp)
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < retries - 1:
+                wait = float(e.headers.get("Retry-After", 0) or 0) or 1.0 * (2 ** attempt)
+                time.sleep(wait)
+                continue
+            raise
+        except urllib.error.URLError:
+            if attempt < retries - 1:
+                time.sleep(1.0 * (2 ** attempt))
+                continue
+            raise
 
 
 def _post_collection(names, retries=6):
@@ -95,8 +119,6 @@ def resolve_images(rows, cache):
         if n and key not in seen and key not in cache:
             seen.add(key)
             names.append(n)
-    if not names:
-        return 0
 
     resolved = 0
     for i in range(0, len(names), 75):
@@ -121,6 +143,34 @@ def resolve_images(rows, cache):
         eprint(f"       resolved {min(i + 75, len(names))}/{len(names)} names")
         save_cache(cache)
         time.sleep(0.15)
+
+    # Fallback for names still without an image — notably double-faced cards
+    # whose "Front // Back" name the collection endpoint rejects but the
+    # single-card `named` endpoint (front-face lookup) accepts. Scans all rows so
+    # it also repairs entries the batch previously stored as empty.
+    misses, seen_m = [], set()
+    for r in rows:
+        n = (r.get("Card Name") or "").strip()
+        if n and n.lower() not in seen_m and not cache.get(n.lower()):
+            seen_m.add(n.lower())
+            misses.append(n)
+    for n in misses:
+        front = n.split(" // ")[0]
+        try:
+            params = {"exact": front}
+            data = _request_named(params)
+        except urllib.error.HTTPError:
+            continue
+        except urllib.error.URLError as e:
+            eprint(f"ERROR: could not reach Scryfall: {e}")
+            break
+        url = _image_url(data) if data else ""
+        if url:
+            cache[n.lower()] = url
+            resolved += 1
+        time.sleep(0.15)
+    if misses:
+        save_cache(cache)
     return resolved
 
 

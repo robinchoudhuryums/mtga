@@ -532,204 +532,426 @@ Target opponent mills half their library, rounded up.",U,,TMT,42,1
 Ice Flan,Creature — Elemental Ooze,"When this creature enters, tap target artifact or creature an opponent controls. Put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
 Islandcycling {2} ({2}, Discard this card: Search your library for an Island card, reveal it, put it into your hand, then shuffle.)",U,,FIN,55,1
 Homesickness,Instant,"Target player draws two cards. Tap up to two target creatures. Put a stun counter on each of them. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,,SOS,53,1
-Echocasting Symposium,,,,,SOS,44,1
-Giant Koi,,,,,TLA,53,1
-Dirgur Island Dragon,,,,,TDM,40,1
-Daring Waverider,,,,,BLB,44,1
-Bottomless Pool // Locker Room,,,,,DSK,43,1
-Curator of Destinies,,,,,FDN,34,1
-"Wiccan, Rising Magician",,,,,MSH,83,1
-Unexpected Assistance,,,,,ECL,80,1
-This Town Ain't Big Enough,,,,,OTJ,74,1
-Underwater Tunnel // Slimy Aquarium,,,,,DSK,79,1
-Stratosoarer,,,,,ECL,72,1
-"Stockman, Mad Fly-entist",,,,,TMT,54,1
-Sokka's Haiku,,,,,TLA,71,1
-Starbreach Whale,,,,,EOE,77,1
-Skyskipper Duo,,,,,BLB,71,1
-Robotics Mastery,,,,,SPM,41,1
-Quantum Riddler,,,,,EOE,72,1
-"Renet, Temporal Apprentice",,,,,TMT,50,1
-Muse's Encouragement,,,,,SOS,61,1
-Lost Days,,,,,TLA,62,1
-"Ironheart, Clever Champion",,,,,MSH,60,1
-Living Conundrum,,,,,MKM,63,1
-Illusion Spinners,,,,,ECL,55,1
-"Falcon, Winged Wonder",,,,,MSH,52,1
-Ember Island Production,,,,,TLA,48,1
-Emeritus of Ideation,,,,,SOS,45,1
-"Doc Ock, Sinister Scientist",,,,,SPM,29,1
-Benthic Criminologists,,,,,MKM,40,1
-"Yue, the Moon Spirit",,,,,TLA,83,1
-Archmage of Runes,,,,,FDN,30,1
-Waterbending Lesson,,,,,TLA,80,1
-Uncharted Voyage,,,,,FDN,53,1
-Trickster's Stratagem,,,,,MSH,81,1
-Trip Up,,,,,DFT,71,1
-Tractor Beam,,,,,EOE,82,1
-The Legend of Kuruk,,,,,TLA,61,1
-Temporal Cleansing,,,,,ECL,78,1
-"Teo, Spirited Glider",,,,,TLA,74,1
-Spellbook Seeker,,,,,SOS,68,1
-Secret of Bloodbending,,,,,TLA,69,1
-Rook Turret,,,,,FIN,69,1
-Run Behind,,,,,SOS,66,1
-Retrieve the Esper,,,,,FIN,68,1
-Relm's Sketching,,,,,FIN,67,1
-"Mister Fantastic, Reed Richards",,,,,MSH,66,1
-"Ray Fillet, Man Ray",,,,,TMT,49,1
-Lost in Space,,,,,EOE,62,1
-"Leader, Super-Genius",,,,,MSH,64,1
-Giant-Sized Flying Ant,,,,,MSH,56,1
-High Fae Trickster,,,,,FDN,40,1
-Flexible Waterbender,,,,,TLA,50,1
-Enduring Curiosity,,,,,DSK,51,1
-"Donatello, Turtle Techie",,,,,TMT,37,1
-Eject,,,,,FIN,52,1
-"Donatello, Mutant Mechanic",,,,,TMT,36,1
-"Chameleon, Master of Disguise",,,,,SPM,27,1
-Ancestral Reminiscence,,,,,LCI,45,1
-"Attuma, Atlantean Warlord",,,,,MSH,47,1
-Aetherize,,,,,FDN,151,1
-A.I.M. Scientists,,,,,MSH,44,1
-"Ty Lee, Chi Blocker",,,,,TLA,76,1
-Utrom Scientists,,,,,TMT,56,1
-Thirst for Knowledge,,,,,MSH,79,1
-The Spirit Oasis,,,,,TLA,72,1
-Textbook Tabulator,,,,,SOS,70,1
-"The Mechanist, Aerial Artisan",,,,,TLA,64,1
-Stock Up,,,,,SOA,24,1
-Spirit Water Revival,,,,,TLA,73,1
-Sinister Cryologist,,,,,EOE,75,1
-"Spider-Byte, Web Warden",,,,,SPM,44,1
-Silvergill Peddler,,,,,ECL,70,1
-Secret Invasion,,,,,MSH,72,1
-Rowdy Snowballers,,,,,TLA,68,1
-S.H.I.E.L.D. Deployment Drone,,,,,MSH,73,1
-Roadside Blowout,,,,,DFT,58,1
-Rewrite History,,,,,MSH,71,1
-Quistis Trepe,,,,,FIN,66,1
-Retro-Mutation,,,,,TMT,51,1
-Quick Study,,,,,SOS,65,1
-Pearl of Wisdom,,,,,BLB,64,1
-North Pole Patrol,,,,,TLA,65,1
-Ooze Spill,,,,,TMT,48,1
-Nanoform Sentinel,,,,,EOE,71,1
-Namor the Sub-Mariner,,,,,MSH,69,1
-Mondo Gecko,,,,,TMT,46,1
-"Ms. Marvel, Kamala Khan",,,,,MSH,67,1
-Mind Transfer Protocol,,,,,TMT,45,1
-Mana Sculpt,,,,,SOS,57,1
-"Justice, Vance Astrovik",,,,,MSH,61,1
-"Katara, Bending Prodigy",,,,,TLA,59,1
-Imprisoned in the Moon,,,,,FDN,156,1
-Iguana Parrot,,,,,TLA,56,1
-"Gogo, Master of Mimicry",,,,,FIN,54,1
-I Am Iron Man,,,,,MSH,58,1
-Glitch Ghost Surveyor,,,,,DFT,44,1
-Glen Elendra Guardian,,,,,ECL,51,1
-Frozen in Ice,,,,,MSH,54,1
-Glamermite,,,,,ECL,50,1
-Faebloom Trick,,,,,FDN,38,1
-Erudite Wizard,,,,,FDN,37,1
-Dragoon's Wyvern,,,,,FIN,49,1
-"Echo, Perceptive Prodigy",,,,,MSH,51,1
-"Donatello, Way with Machines",,,,,TMT,38,1
-Doc Ock's Henchmen,,,,,SPM,30,1
-Deluge Virtuoso,,,,,SOS,42,1
-Depower,,,,,MSH,50,1
-Combat Tutorial,,,,,FIN,48,1
-Braided Net,,,,,LCI,47,1
-Atlantean Cavalry,,,,,MSH,45,1
-Bespoke Bō,,,,,TMT,31,1
-Amazing Acrobatics,,,,,SPM,25,1
-We Say Thee Nay!,,,,,MSH,82,1
-Wild Unraveling,,,,,ECL,84,1
-Waterbending Scroll,,,,,TLA,81,1
-Waterbender Ascension,,,,,TLA,79,1
-Unwelcome Sprite,,,,,ECL,81,1
-"Vnwxt, Verbose Host",,,,,DFT,73,1
-Unstable Experiment,,,,,SPM,47,1
-"Ultros, Obnoxious Octopus",,,,,FIN,83,1
-Think Twice,,,,,FDN,165,1
-Tony Stark,,,,,MSH,80,1
-The Wondrous Wasp,,,,,MSH,84,1
-Tester of the Tangential,,,,,SOS,69,1
-Steelswarm Operator,,,,,EOE,80,1
-Super Suit,,,,,MSH,78,1
-Song of Stupefaction,,,,,LCI,77,1
-Silent Hallcreeper,,,,,DSK,72,1
-Scorpion Sentinel,,,,,FIN,72,1
-"Shuri, Wakandan Inventor",,,,,MSH,75,1
-Sahagin,,,,,FIN,71,1
-Reasonable Doubt,,,,,MKM,69,1
-Rimefire Torque,,,,,ECL,65,1
-Pirate Hat,,,,,LCI,70,1
-Otter-Penguin,,,,,TLA,67,1
-Negate,,,,,TMT,47,1
-Noggle the Mind,,,,,ECL,60,1
-Mischievous Mystic,,,,,FDN,47,1
-Mental Modulation,,,,,EOE,67,1
-"Loki, God of Mischief",,,,,MSH,65,1
-Master Pakku,,,,,TLA,63,1
-Landscape Painter,,,,,SOS,56,1
-Knowledge Seeker,,,,,TLA,60,1
-It'll Quench Ya!,,,,,TLA,58,1
-Jaded Analyst,,,,,MKM,62,1
-Illvoi Operative,,,,,EOE,61,1
-Hydro-Channeler,,,,,SOS,54,1
-Gravelgill Scoundrel,,,,,ECL,53,1
-Hydraulic Helper,,,,,MSH,57,1
-Glamer Gifter,,,,,ECL,49,1
-Gadwick's First Duel,,,,,WOE,51,1
-Forecasting Fortune Teller,,,,,TLA,51,1
-Futurist Forge,,,,,MSH,55,1
-Fog Bank,,,,,FDN,591,1
-Flying Octobot,,,,,SPM,31,1
-Falcon's Wing Harness,,,,,MSH,53,1
-First-Time Flyer,,,,,TLA,49,1
-Failed Fording,,,,,OTJ,47,1
-Essence Scatter,,,,,SOS,47,1
-Dreams of Laguna,,,,,FIN,50,1
-Elementalist Adept,,,,,FDN,36,1
-Don't Make a Sound,,,,,DSK,49,1
-Divert Disaster,,,,,EOE,55,1
-Deduce,,,,,SOA,16,1
-Disdainful Stroke,,,,,SOA,17,1
-Dazzling Denial,,,,,BLB,45,1
-Cryogen Relic,,,,,EOE,52,1
-Crashing Wave,,,,,TLA,47,1
-Crustacean Commando,,,,,TMT,33,1
-Chart a Course,,,,,FDN,586,1
-Buzz Bots,,,,,TMT,32,1
-Blossombind,,,,,ECL,45,1
-Bold Biochemist,,,,,MSH,48,1
-Benevolent River Spirit,,,,,TLA,45,1
-Banishing Betrayal,,,,,SOS,38,1
-Accumulate Wisdom,,,,,TLA,44,1
-Aquitect's Defenses,,,,,ECL,44,1
-Watery Grasp,,,,,TLA,82,1
-Witness Protection,,,,,FDN,168,1
-Super Intelligence,,,,,MSH,77,1
-Unsummon,,,,,ANB,36,1
-"Stature, Size Shifter",,,,,MSH,76,1
-Spell Pierce,,,,,SOA,23,1
-Sewer-veillance Cam,,,,,TMT,53,1
-Spectral Sailor,,,,,FDN,164,1
-Ringing Strike Mastery,,,,,TDM,53,1
-Pym Particles,,,,,MSH,70,1
-Magic Damper,,,,,FIN,61,1
-Octopus Form,,,,,TLA,66,1
-Kid Loki,,,,,MSH,63,1
-Illvoi Galeblade,,,,,EOE,58,1
-Humbling Elder,,,,,TDM,48,1
-Harmonized Trio,,,,,SOS,52,1
-Gran-Gran,,,,,TLA,54,1
-Chase Inspiration,,,,,SOS,41,1
-Fleeting Distraction,,,,,FDN,155,1
-Bruce Banner,,,,,MSH,49,1
-Bounce Off,,,,,DFT,39,1
-Aerial Doombot,,,,,MSH,43,1
-Boomerang Basics,,,,,TLA,46,1
-Aegis Turtle,,,,,FDN,150,1
-Grounded for Life,,,,,TMT,7,1
+Echocasting Symposium,Sorcery — Lesson,"Target player creates a token that's a copy of target creature you control.
+Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",U,,SOS,44,1
+Giant Koi,Creature — Fish,"Waterbend {3}: This creature can't be blocked this turn. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)
+Islandcycling {2} ({2}, Discard this card: Search your library for an Island card, reveal it, put it into your hand, then shuffle.)",U,,TLA,53,1
+Dirgur Island Dragon,Creature — Dragon // Instant — Omen,"Flying
+Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.) // Tap up to one target creature. Draw a card. (Then shuffle this card into its owner's library.)",U,,TDM,40,1
+Daring Waverider,Creature — Otter Wizard,"When this creature enters, you may cast target instant or sorcery card with mana value 4 or less from your graveyard without paying its mana cost. If that spell would be put into your graveyard, exile it instead.",U,,BLB,44,1
+Bottomless Pool // Locker Room,Enchantment — Room // Enchantment — Room,"When you unlock this door, return up to one target creature to its owner's hand.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // Whenever one or more creatures you control deal combat damage to a player, draw a card.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,,DSK,43,1
+Curator of Destinies,Creature — Sphinx,"This spell can't be countered.
+Flying
+When this creature enters, look at the top five cards of your library and separate them into a face-down pile and a face-up pile. An opponent chooses one of those piles. Put that pile into your hand and the other into your graveyard.",U,,FDN,34,1
+"Wiccan, Rising Magician",Legendary Creature — Mutant Warlock Hero,"Flying
+Whenever you cast a noncreature spell, exile another target nonland, nontoken permanent. Return that card to the battlefield under its owner's control at the beginning of the next end step.",U,,MSH,83,1
+Unexpected Assistance,Instant,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
+Draw three cards, then discard a card.",U,,ECL,80,1
+This Town Ain't Big Enough,Instant,"This spell costs {3} less to cast if it targets a permanent you control.
+Return up to two target nonland permanents to their owners' hands.",U,,OTJ,74,1
+Underwater Tunnel // Slimy Aquarium,Enchantment — Room // Enchantment — Room,"When you unlock this door, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, manifest dread, then put a +1/+1 counter on that creature.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,,DSK,79,1
+Stratosoarer,Creature — Elemental,"Flying
+When this creature enters, target creature gains flying until end of turn.
+Basic landcycling {1}{U} ({1}{U}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",U,,ECL,72,1
+"Stockman, Mad Fly-entist",Legendary Creature — Insect Mutant Scientist,"Flying
+When Stockman enters, draw a card, then discard a card.
+Islandcycling {2} ({2}, Discard this card: Search your library for an Island card, reveal it, put it into your hand, then shuffle.)",U,,TMT,54,1
+Sokka's Haiku,Instant — Lesson,"Counter target spell.
+Draw a card, then mill three cards.
+Untap target land.",U,,TLA,71,1
+Starbreach Whale,Creature — Whale,"Flying
+When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)
+Warp {1}{U} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",U,,EOE,77,1
+Skyskipper Duo,Creature — Bird Frog,"Flying
+When this creature enters, exile up to one other target creature you control. Return it to the battlefield under its owner's control at the beginning of the next end step.",U,,BLB,71,1
+Robotics Mastery,Enchantment — Aura,"Flash
+Enchant creature
+When this Aura enters, create two 1/1 colorless Robot artifact creature tokens with flying.
+Enchanted creature gets +2/+2.",U,,SPM,41,1
+Quantum Riddler,Creature — Sphinx,"Flying
+When this creature enters, draw a card.
+As long as you have one or fewer cards in hand, if you would draw one or more cards, you draw that many cards plus one instead.
+Warp {1}{U}",U,,EOE,72,1
+"Renet, Temporal Apprentice",Legendary Creature — Human Wizard,"Flash
+When Renet enters, return each other nonland permanent that entered this turn to its owner's hand.",U,,TMT,50,1
+Muse's Encouragement,Instant,"Create a 3/3 blue and red Elemental creature token with flying.
+Surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,,SOS,61,1
+Lost Days,Instant — Lesson,"The owner of target creature or enchantment puts it into their library second from the top or on the bottom. You create a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U,,TLA,62,1
+"Ironheart, Clever Champion",Legendary Artifact Creature — Human Hero,"Improvise (Your artifacts can help cast this spell. Each artifact you tap after you're done activating mana abilities pays for {1}.)
+Flying
+Noncreature spells you cast have improvise.",U,,MSH,60,1
+Living Conundrum,Creature — Elemental,"Hexproof
+If you would draw a card while your library has no cards in it, skip that draw instead.
+As long as there are no cards in your library, this creature has base power and toughness 10/10 and has flying and vigilance.",U,,MKM,63,1
+Illusion Spinners,Creature — Faerie Wizard,"You may cast this spell as though it had flash if you control a Faerie.
+Flying
+This creature has hexproof as long as it's untapped. (It can't be the target of spells or abilities your opponents control.)",U,,ECL,55,1
+"Falcon, Winged Wonder",Legendary Creature — Human Hero,"Flying
+Avian Telepathy — When Falcon enters, create Redwing, a legendary 1/1 blue Bird Scout creature token with flying and ""Whenever Redwing attacks, surveil 1."" (Look at the top card of your library. You may put it into your graveyard.)",U,,MSH,52,1
+Ember Island Production,Sorcery,"Choose one —
+• Create a token that's a copy of target creature you control, except it's not legendary and it's a 4/4 Hero in addition to its other types.
+• Create a token that's a copy of target creature an opponent controls, except it's not legendary and it's a 2/2 Coward in addition to its other types.",U,,TLA,48,1
+Emeritus of Ideation,Creature — Human Wizard // Instant,"Flying, ward {2}
+This creature enters prepared.
+Whenever this creature attacks, you may exile eight cards from your graveyard. If you do, this creature becomes prepared. // Target player draws three cards.",U,,SOS,45,1
+"Doc Ock, Sinister Scientist",Legendary Creature — Human Scientist Villain,"As long as there are eight or more cards in your graveyard, Doc Ock has base power and toughness 8/8.
+As long as you control another Villain, Doc Ock has hexproof. (He can't be the target of spells or abilities your opponents control.)",U,,SPM,29,1
+Benthic Criminologists,Creature — Merfolk Wizard,"Whenever this creature enters or attacks, you may sacrifice an artifact. If you do, draw a card.",U,,MKM,40,1
+"Yue, the Moon Spirit",Legendary Creature — Spirit Ally,"Flying, vigilance
+Waterbend {5}, {T}: You may cast a noncreature spell from your hand without paying its mana cost. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",U,,TLA,83,1
+Archmage of Runes,Creature — Giant Wizard,"Instant and sorcery spells you cast cost {1} less to cast.
+Whenever you cast an instant or sorcery spell, draw a card.",U,,FDN,30,1
+Waterbending Lesson,Sorcery — Lesson,"Draw three cards. Then discard a card unless you waterbend {2}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",U,,TLA,80,1
+Uncharted Voyage,Instant,"Target creature's owner puts it on their choice of the top or bottom of their library.
+Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",U,,FDN,53,1
+Trickster's Stratagem,Sorcery,"The owner of target creature an opponent controls puts it into their library second from the top or on the bottom. Then up to one target creature you control connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",U,,MSH,81,1
+Trip Up,Instant,"Target nonland permanent's owner puts it on their choice of the top or bottom of their library.
+Cycling {2} ({2}, Discard this card: Draw a card.)",U,,DFT,71,1
+Tractor Beam,Enchantment — Aura,"Enchant creature or Spacecraft
+When this Aura enters, tap enchanted permanent.
+You control enchanted permanent.
+Enchanted permanent doesn't untap during its controller's untap step.",U,,EOE,82,1
+The Legend of Kuruk,Enchantment — Saga // Legendary Creature — Avatar,"(As this Saga enters and after your draw step, add a lore counter.)
+I, II — Scry 2, then draw a card.
+III — Exile this Saga, then return it to the battlefield transformed under your control. // Whenever you cast a spell, create a 1/1 colorless Spirit creature token with ""This token can't block or be blocked by non-Spirit creatures.""
+Exhaust — Waterbend {20}: Take an extra turn after this one. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}. Activate each exhaust ability only once.)",U,,TLA,61,1
+Temporal Cleansing,Sorcery,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
+The owner of target nonland permanent puts it into their library second from the top or on the bottom.",U,,ECL,78,1
+"Teo, Spirited Glider",Legendary Creature — Human Pilot Ally,"Flying
+Whenever one or more creatures you control with flying attack, draw a card, then discard a card. When you discard a nonland card this way, put a +1/+1 counter on target creature you control.",U,,TLA,74,1
+Spellbook Seeker,Creature — Bird Wizard // Sorcery,"Flying
+This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Draw two cards, then discard two cards.",U,,SOS,68,1
+Secret of Bloodbending,Sorcery — Lesson,"As an additional cost to cast this spell, you may waterbend {10}.
+You control target opponent during their next combat phase. If this spell's additional cost was paid, you control that player during their next turn instead. (You see all cards that player could see and make all decisions for them.)
+Exile Secret of Bloodbending.",U,,TLA,69,1
+Rook Turret,Artifact Creature — Construct,"Flying
+Whenever another artifact you control enters, you may draw a card. If you do, discard a card.",U,,FIN,69,1
+Run Behind,Instant,"This spell costs {1} less to cast if it targets an attacking creature.
+Target creature's owner puts it on their choice of the top or bottom of their library.",U,,SOS,66,1
+Retrieve the Esper,Sorcery,"Create a 3/3 blue Robot Warrior artifact creature token. Then if this spell was cast from a graveyard, put two +1/+1 counters on that token.
+Flashback {5}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,,FIN,68,1
+Relm's Sketching,Sorcery,"Create a token that's a copy of target artifact, creature, or land.",U,,FIN,67,1
+"Mister Fantastic, Reed Richards",Legendary Creature — Human Scientist Hero,"Reach
+Whenever one or more tokens you control enter, you may draw a card.",U,,MSH,66,1
+"Ray Fillet, Man Ray",Legendary Creature — Fish Mutant,"Flying
+When Ray Fillet enters, create a Mutagen token. (It's an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")
+{2}, Remove a +1/+1 counter from a creature you control: Draw a card.",U,,TMT,49,1
+Lost in Space,Instant,Target artifact or creature's owner puts it on their choice of the top or bottom of their library. Surveil 1. (Look at the top card of your library. You may put it into your graveyard.),U,,EOE,62,1
+"Leader, Super-Genius",Legendary Creature — Gamma Scientist Villain,"If a creature you control would connive, instead you draw a card, then that creature connives.
+At the beginning of combat on your turn, target creature you control connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",U,,MSH,64,1
+Giant-Sized Flying Ant,Creature — Insect,"Flash
+Flying
+When this creature enters, choose one —
+• Tap target nonland permanent.
+• Untap target nonland permanent.",U,,MSH,56,1
+High Fae Trickster,Creature — Faerie Wizard,"Flash (You may cast this spell any time you could cast an instant.)
+Flying
+You may cast spells as though they had flash.",U,,FDN,40,1
+Flexible Waterbender,Creature — Human Warrior Ally,"Vigilance
+Waterbend {3}: This creature has base power and toughness 5/2 until end of turn. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",U,,TLA,50,1
+Enduring Curiosity,Enchantment Creature — Cat Glimmer,"Flash
+Whenever a creature you control deals combat damage to a player, draw a card.
+When Enduring Curiosity dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",U,,DSK,51,1
+"Donatello, Turtle Techie",Legendary Creature — Mutant Ninja Turtle,"When Donatello enters, if you control an artifact, draw a card.",U,,TMT,37,1
+Eject,Instant,"This spell can't be countered.
+Return target nonland permanent to its owner's hand.
+Draw a card.",U,,FIN,52,1
+"Donatello, Mutant Mechanic",Legendary Creature — Mutant Ninja Turtle,"{T}: Put three +1/+1 counters on target artifact you control. If it isn't a creature, it becomes a 0/0 Robot creature in addition to its other types. Activate only as a sorcery.
+Whenever an artifact you control is put into a graveyard from the battlefield, if it had counters on it, put those counters on up to one target artifact or creature you control.",U,,TMT,36,1
+"Chameleon, Master of Disguise",Legendary Creature — Human Shapeshifter Villain,"You may have Chameleon enter as a copy of a creature you control, except his name is Chameleon, Master of Disguise.
+Mayhem {2}{U} (You may cast this card from your graveyard for {2}{U} if you discarded it this turn. Timing rules still apply.)",U,,SPM,27,1
+Ancestral Reminiscence,Sorcery,"Draw three cards, then discard a card.",U,,LCI,45,1
+"Attuma, Atlantean Warlord",Legendary Creature — Merfolk Warrior Villain,"Other Merfolk you control get +1/+1.
+Whenever one or more Merfolk you control attack a player, draw a card.",U,,MSH,47,1
+Aetherize,Instant,Return all attacking creatures to their owner's hand.,U,,FDN,151,1
+A.I.M. Scientists,Creature — Human Scientist Villain,"When this creature enters, it connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)
+Basic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",U,,MSH,44,1
+"Ty Lee, Chi Blocker",Legendary Creature — Human Performer Ally,"Flash
+Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+When Ty Lee enters, tap up to one target creature. It doesn't untap during its controller's untap step for as long as you control Ty Lee.",U,,TLA,76,1
+Utrom Scientists,Artifact Creature — Utrom Robot Scientist,"When this creature enters, tap up to one target creature and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,,TMT,56,1
+Thirst for Knowledge,Instant,Draw three cards. Then discard two cards unless you discard an artifact card.,U,,MSH,79,1
+The Spirit Oasis,Legendary Enchantment — Shrine,"When The Spirit Oasis enters, draw a card for each Shrine you control.
+Whenever another Shrine you control enters, draw a card.",U,,TLA,72,1
+Textbook Tabulator,Creature — Frog Wizard,"Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)
+When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,,SOS,70,1
+"The Mechanist, Aerial Artisan",Legendary Creature — Human Artificer Ally,"Whenever you cast a noncreature spell, create a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
+{T}: Until end of turn, target artifact token you control becomes a 3/1 Construct artifact creature with flying.",U,,TLA,64,1
+Stock Up,Sorcery,Look at the top five cards of your library. Put two of them into your hand and the rest on the bottom of your library in any order.,U,,SOA,24,1
+Spirit Water Revival,Sorcery,"As an additional cost to cast this spell, you may waterbend {6}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)
+Draw two cards. If this spell's additional cost was paid, instead shuffle your graveyard into your library, draw seven cards, and you have no maximum hand size for the rest of the game.
+Exile Spirit Water Revival.",U,,TLA,73,1
+Sinister Cryologist,Creature — Jellyfish Wizard,"When this creature enters, target creature an opponent controls gets -3/-0 until end of turn.
+Warp {U} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",U,,EOE,75,1
+"Spider-Byte, Web Warden",Legendary Creature — Spider Avatar Hero,"When Spider-Byte enters, return up to one target nonland permanent to its owner's hand.",U,,SPM,44,1
+Silvergill Peddler,Creature — Merfolk Citizen,"Whenever this creature becomes tapped, draw a card, then discard a card.",U,,ECL,70,1
+Secret Invasion,Enchantment — Aura,"Enchant creature you control
+When this Aura enters, exile up to one target creature other than enchanted creature until this Aura leaves the battlefield. Enchanted creature becomes a copy of that creature until this Aura leaves the battlefield.
+Enchanted creature has ward {2}.",U,,MSH,72,1
+Rowdy Snowballers,Creature — Human Peasant Ally,"When this creature enters, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,,TLA,68,1
+S.H.I.E.L.D. Deployment Drone,Artifact Creature — Robot,"Flying
+When this creature enters, create a 1/1 white Soldier creature token.",U,,MSH,73,1
+Roadside Blowout,Sorcery,"This spell costs {2} less to cast if it targets a permanent with mana value 1.
+Return target creature or Vehicle an opponent controls to its owner's hand.
+Draw a card.",U,,DFT,58,1
+Rewrite History,Enchantment — Plan,"Whenever one or more creatures you control become tapped, draw a card, then discard a card and put a plan counter on this enchantment.
+When the fourth plan counter is put on this enchantment, sacrifice it. When you do, return up to two target instant and/or sorcery cards from your graveyard to your hand.",U,,MSH,71,1
+Quistis Trepe,Legendary Creature — Human Wizard,"Blue Magic — When Quistis Trepe enters, you may cast target instant or sorcery card from a graveyard, and mana of any type can be spent to cast that spell. If that spell would be put into a graveyard, exile it instead.",U,,FIN,66,1
+Retro-Mutation,Enchantment — Aura,"Flash
+Enchant creature
+Enchanted creature is a Turtle with base power and toughness 0/1. It can't attack and loses all abilities. (It also loses all other creature types.)",U,,TMT,51,1
+Quick Study,Instant,Draw two cards.,U,,SOS,65,1
+Pearl of Wisdom,Sorcery,"This spell costs {1} less to cast if you control an Otter.
+Draw two cards.",U,,BLB,64,1
+North Pole Patrol,Creature — Human Soldier Ally,"{T}: Untap another target permanent you control.
+Waterbend {3}, {T}: Tap target creature an opponent controls. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",U,,TLA,65,1
+Ooze Spill,Instant,"Counter target spell. Create a Mutagen token. (It's an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",U,,TMT,48,1
+Nanoform Sentinel,Artifact Creature — Robot,"Whenever this creature becomes tapped, untap another target permanent. This ability triggers only once each turn.",U,,EOE,71,1
+Namor the Sub-Mariner,Legendary Creature — Mutant Merfolk Villain,"Flying
+Namor's power is equal to the number of Merfolk you control.
+Whenever you cast a noncreature spell with one or more blue mana symbols in its mana cost, create that many 1/1 blue Merfolk creature tokens.",U,,MSH,69,1
+Mondo Gecko,Legendary Creature — Lizard Mutant,"{1}, Discard a card: Until end of turn, Mondo Gecko becomes the color of your choice and gains hexproof from that color.
+Whenever Mondo Gecko deals combat damage to a player, draw a card for each color among permanents you control.",U,,TMT,46,1
+"Ms. Marvel, Kamala Khan",Legendary Creature — Mutant Inhuman Hero,"Vigilance, reach
+You have no maximum hand size.
+Embiggen Fist — Whenever you cast a spell that targets a creature you control, draw a card. Until end of turn, Ms. Marvel gains ""Ms. Marvel's base power is equal to the number of cards in your hand.""",U,,MSH,67,1
+Mind Transfer Protocol,Instant,"Until end of turn, target artifact or creature becomes an artifact creature with base power and toughness 4/5.
+Draw a card.",U,,TMT,45,1
+Mana Sculpt,Instant,"Counter target spell. If you control a Wizard, add an amount of {C} equal to the amount of mana spent to cast that spell at the beginning of your next main phase.",U,,SOS,57,1
+"Justice, Vance Astrovik",Legendary Creature — Mutant Hero,"Flying
+When Justice enters, return up to one target nonland, nontoken permanent to its owner's hand.
+Whenever another nonland permanent you control is returned to its owner's hand, put a +1/+1 counter on Justice.",U,,MSH,61,1
+"Katara, Bending Prodigy",Legendary Creature — Human Warrior Ally,"At the beginning of your end step, if Katara is tapped, put a +1/+1 counter on her.
+Waterbend {6}: Draw a card. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",U,,TLA,59,1
+Imprisoned in the Moon,Enchantment — Aura,"Enchant creature, land, or planeswalker
+Enchanted permanent is a colorless land with ""{T}: Add {C}"" and loses all other card types and abilities.",U,,FDN,156,1
+Iguana Parrot,Creature — Lizard Bird Pirate,"Flying, vigilance
+Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)",U,,TLA,56,1
+"Gogo, Master of Mimicry",Legendary Creature — Wizard,"{X}{X}, {T}: Copy target activated or triggered ability you control X times. You may choose new targets for the copies. This ability can't be copied and X can't be 0. (Mana abilities can't be targeted.)",U,,FIN,54,1
+I Am Iron Man,Instant,"Until end of turn, target artifact or creature becomes an artifact creature with base power and toughness 4/4 and gains flying.
+Draw a card.",U,,MSH,58,1
+Glitch Ghost Surveyor,Creature — Spirit Scout,"Flying
+Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+Max speed — {3}, Exile this card from your graveyard: Draw a card.",U,,DFT,44,1
+Glen Elendra Guardian,Creature — Faerie Wizard,"Flash
+Flying
+This creature enters with a -1/-1 counter on it.
+{1}{U}, Remove a counter from this creature: Counter target noncreature spell. Its controller draws a card.",U,,ECL,51,1
+Frozen in Ice,Enchantment — Aura,"Enchant creature
+When this Aura enters, tap enchanted creature.
+Enchanted creature loses all abilities and can't become untapped.",U,,MSH,54,1
+Glamermite,Creature — Faerie Rogue,"Flash
+Flying
+When this creature enters, choose one —
+• Tap target creature.
+• Untap target creature.",U,,ECL,50,1
+Faebloom Trick,Instant,"Create two 1/1 blue Faerie creature tokens with flying. When you do, tap target creature an opponent controls.",U,,FDN,38,1
+Erudite Wizard,Creature — Human Wizard,"Whenever you draw your second card each turn, put a +1/+1 counter on this creature.",U,,FDN,37,1
+Dragoon's Wyvern,Creature — Drake,"Flying
+When this creature enters, create a 1/1 colorless Hero creature token.",U,,FIN,49,1
+"Echo, Perceptive Prodigy",Legendary Creature — Human Hero,"Vigilance
+{1}, {T}: Copy target activated or triggered ability you control from a creature source. You may choose new targets for the copy. (Mana abilities can't be targeted.)",U,,MSH,51,1
+"Donatello, Way with Machines",Legendary Creature — Mutant Ninja Turtle,"Flying
+Whenever an artifact you control enters, put a +1/+1 counter on Donatello.",U,,TMT,38,1
+Doc Ock's Henchmen,Creature — Human Villain,"Flash
+Whenever this creature attacks, it connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)",U,,SPM,30,1
+Deluge Virtuoso,Creature — Human Wizard,"When this creature enters, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
+Opus — Whenever you cast an instant or sorcery spell, this creature gets +1/+1 until end of turn. If five or more mana was spent to cast that spell, this creature gets +2/+2 until end of turn instead.",U,,SOS,42,1
+Depower,Instant,"This spell costs {2} less to cast if it targets an attacking creature.
+Target creature gets -4/-0 until end of turn.
+Draw a card.",U,,MSH,50,1
+Combat Tutorial,Sorcery,Target player draws two cards. Put a +1/+1 counter on up to one target creature you control.,U,,FIN,48,1
+Braided Net,Artifact // Artifact,"This artifact enters with three net counters on it.
+{T}, Remove a net counter from this artifact: Tap another target nonland permanent. Its activated abilities can't be activated for as long as it remains tapped.
+Craft with artifact {1}{U} // {3}{U}, {T}: Draw a card for each artifact you control, then put this artifact into its owner's library third from the top.",U,,LCI,47,1
+Atlantean Cavalry,Creature — Merfolk Soldier,"Vigilance
+Whenever you draw your second card each turn, put a +1/+1 counter on this creature.",U,,MSH,45,1
+Bespoke Bō,Artifact — Equipment,"When this Equipment enters, return up to one other target nonland permanent to its owner's hand.
+Equipped creature gets +2/+1 and has vigilance.
+Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",U,,TMT,31,1
+Amazing Acrobatics,Instant,"Choose one or both —
+• Counter target spell.
+• Tap one or two target creatures.",U,,SPM,25,1
+We Say Thee Nay!,Instant — Arcane,"Teamwork 2 (As an additional cost to cast this spell, you may tap any number of creatures you control with total power 2 or more.)
+Counter target spell unless its controller pays {2}. Counter that spell unless its controller pays {4} instead if this spell was cast using teamwork.",U,,MSH,82,1
+Wild Unraveling,Instant,"As an additional cost to cast this spell, blight 2 or pay {1}. (To blight 2, put two -1/-1 counters on a creature you control.)
+Counter target spell.",U,,ECL,84,1
+Waterbending Scroll,Artifact,"{6}, {T}: Draw a card. This ability costs {1} less to activate for each Island you control.",U,,TLA,81,1
+Waterbender Ascension,Enchantment,"Whenever a creature you control deals combat damage to a player, put a quest counter on this enchantment. Then if it has four or more quest counters on it, draw a card.
+Waterbend {4}: Target creature can't be blocked this turn. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",U,,TLA,79,1
+Unwelcome Sprite,Creature — Faerie Rogue,"Flying
+Whenever you cast a spell during an opponent's turn, surveil 2. (Look at the top two cards of your library. You may put any number of them into your graveyard and the rest on top of your library in any order.)",U,,ECL,81,1
+"Vnwxt, Verbose Host",Legendary Creature — Homunculus,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+You have no maximum hand size.
+Max speed — If you would draw a card, draw two cards instead.",U,,DFT,73,1
+Unstable Experiment,Instant,"Target player draws a card, then up to one target creature you control connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",U,,SPM,47,1
+"Ultros, Obnoxious Octopus",Legendary Creature — Octopus,"Whenever you cast a noncreature spell, if at least four mana was spent to cast it, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
+Whenever you cast a noncreature spell, if at least eight mana was spent to cast it, put eight +1/+1 counters on Ultros.",U,,FIN,83,1
+Think Twice,Instant,"Draw a card.
+Flashback {2}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,,FDN,165,1
+Tony Stark,Legendary Creature — Human Artificer Hero // Legendary Artifact Creature — Human Hero,"{1}, {T}: Look at the top four cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.
+{4}{U}{R}: Transform Tony Stark. Activate only as a sorcery. // Flying, haste
+At the beginning of combat on your turn, you may put an artifact card from your hand onto the battlefield. If it's an Equipment, attach it to The Invincible Iron Man.",U/R,,MSH,80,1
+The Wondrous Wasp,Legendary Creature — Human Hero,"Flash
+Flying
+Wasp's Sting — When The Wondrous Wasp enters, tap up to one target creature. It loses all abilities for as long as The Wondrous Wasp remains on the battlefield.",U,,MSH,84,1
+Tester of the Tangential,Creature — Djinn Wizard,"Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)
+At the beginning of combat on your turn, you may pay {X}. When you do, move X +1/+1 counters from this creature onto another target creature.",U,,SOS,69,1
+Steelswarm Operator,Artifact Creature — Robot Soldier,"Flying
+{T}: Add {U}. Spend this mana only to cast an artifact spell.
+{T}: Add {U}{U}. Spend this mana only to activate abilities of artifact sources.",U,,EOE,80,1
+Super Suit,Artifact — Equipment,"Flash
+When this Equipment enters, attach it to target creature you control. Untap that creature.
+Equipped creature gets +1/+2.
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",U,,MSH,78,1
+Song of Stupefaction,Enchantment — Aura,"Enchant creature or Vehicle
+When this Aura enters, you may mill two cards. (You may put the top two cards of your library into your graveyard.)
+Fathomless descent — Enchanted permanent gets -X/-0, where X is the number of permanent cards in your graveyard.",U,,LCI,77,1
+Silent Hallcreeper,Enchantment Creature — Horror,"This creature can't be blocked.
+Whenever this creature deals combat damage to a player, choose one that hasn't been chosen —
+• Put two +1/+1 counters on this creature.
+• Draw a card.
+• This creature becomes a copy of another target creature you control.",U,,DSK,72,1
+Scorpion Sentinel,Artifact Creature — Robot Scorpion,"As long as you control seven or more lands, this creature gets +3/+0.",U,,FIN,72,1
+"Shuri, Wakandan Inventor",Legendary Creature — Human Artificer Hero,"Artifact spells you cast cost {1} less to cast.
+{1}, {T}: Target artifact you control becomes a copy of a second target artifact you control until end of turn, except it isn't legendary. Activate only as a sorcery.",U,,MSH,75,1
+Sahagin,Creature — Merfolk Warrior,"Whenever you cast a noncreature spell, if at least four mana was spent to cast it, put a +1/+1 counter on this creature and it can't be blocked this turn.",U,,FIN,71,1
+Reasonable Doubt,Instant,"Counter target spell unless its controller pays {2}.
+Suspect up to one target creature. (A suspected creature has menace and can't block.)",U,,MKM,69,1
+Rimefire Torque,Artifact,"As this artifact enters, choose a creature type.
+Whenever a permanent you control of the chosen type enters, put a charge counter on this artifact.
+{T}, Remove three charge counters from this artifact: When you next cast an instant or sorcery spell this turn, copy it. You may choose new targets for the copy.",U,,ECL,65,1
+Pirate Hat,Artifact — Equipment,"Equipped creature gets +1/+1 and has ""Whenever this creature attacks, draw a card, then discard a card.""
+Equip Pirate {1}
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",U,,LCI,70,1
+Otter-Penguin,Creature — Otter Bird,"Whenever you draw your second card each turn, this creature gets +1/+2 until end of turn and can't be blocked this turn.",U,,TLA,67,1
+Negate,Instant,Counter target noncreature spell.,U,,TMT,47,1
+Noggle the Mind,Enchantment — Aura,"Flash
+Enchant creature
+Enchanted creature loses all abilities and is a colorless Noggle with base power and toughness 1/1. (It loses all colors and all other creature types.)",U,,ECL,60,1
+Mischievous Mystic,Creature — Human Wizard,"Flying
+Whenever you draw your second card each turn, create a 1/1 blue Faerie creature token with flying.",U,,FDN,47,1
+Mental Modulation,Instant,"This spell costs {1} less to cast during your turn.
+Tap target artifact or creature.
+Draw a card.",U,,EOE,67,1
+"Loki, God of Mischief",Legendary Creature — God Sorcerer Villain,"Whenever a player or permanent becomes the target of an ability you control, draw a card. This ability triggers only once each turn.",U,,MSH,65,1
+Master Pakku,Legendary Creature — Human Advisor Ally,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+Whenever Master Pakku becomes tapped, target player mills X cards, where X is the number of Lesson cards in your graveyard. (They put the top X cards of their library into their graveyard.)",U,,TLA,63,1
+Landscape Painter,Creature — Merfolk Wizard // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Draw two cards.",U,,SOS,56,1
+Knowledge Seeker,Creature — Fox Spirit,"Vigilance
+Whenever you draw your second card each turn, put a +1/+1 counter on this creature.
+When this creature dies, create a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U,,TLA,60,1
+It'll Quench Ya!,Instant — Lesson,Counter target spell unless its controller pays {2}.,U,,TLA,58,1
+Jaded Analyst,Creature — Human Detective,"Defender
+Whenever you draw your second card each turn, this creature loses defender and gains vigilance until end of turn.",U,,MKM,62,1
+Illvoi Operative,Creature — Jellyfish Rogue,"Whenever you cast your second spell each turn, put a +1/+1 counter on this creature.",U,,EOE,61,1
+Hydro-Channeler,Creature — Merfolk Wizard,"{T}: Add {U}. Spend this mana only to cast an instant or sorcery spell.
+{1}, {T}: Add one mana of any color. Spend this mana only to cast an instant or sorcery spell.",U,,SOS,54,1
+Gravelgill Scoundrel,Creature — Merfolk Rogue,"Vigilance
+Whenever this creature attacks, you may tap another untapped creature you control. If you do, this creature can't be blocked this turn.",U,,ECL,53,1
+Hydraulic Helper,Artifact Creature — Robot,"Defender
+{T}: Add {U}. This mana can't be spent to cast a nonartifact spell.",U,,MSH,57,1
+Glamer Gifter,Creature — Faerie Wizard,"Flash
+Flying
+When this creature enters, choose up to one other target creature. Until end of turn, that creature has base power and toughness 4/4 and gains all creature types.",U,,ECL,49,1
+Gadwick's First Duel,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Create a Cursed Role token attached to up to one target creature. (If you control another Role on it, put that one into the graveyard. Enchanted creature is 1/1.)
+II — Scry 2.
+III — When you next cast an instant or sorcery spell with mana value 3 or less this turn, copy that spell. You may choose new targets for the copy.",U,,WOE,51,1
+Forecasting Fortune Teller,Creature — Human Advisor Ally,"When this creature enters, create a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U,,TLA,51,1
+Futurist Forge,Artifact,"When this artifact enters, draw a card.
+{3}{U}, Sacrifice this artifact: Draw two cards.",U,,MSH,55,1
+Fog Bank,Creature — Wall,"Defender (This creature can't attack.)
+Flying
+Prevent all combat damage that would be dealt to and dealt by this creature.",U,,FDN,591,1
+Flying Octobot,Artifact Creature — Robot Villain,"Flying
+Whenever another Villain you control enters, put a +1/+1 counter on this creature. This ability triggers only once each turn.",U,,SPM,31,1
+Falcon's Wing Harness,Artifact — Equipment,"When this Equipment enters, attach it to target creature you control.
+Equipped creature gets +1/+1 and has flying and ward {1}. (Whenever equipped creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)
+Equip {2}{U} ({2}{U}: Attach to target creature you control. Equip only as a sorcery.)",U,,MSH,53,1
+First-Time Flyer,Creature — Human Pilot Ally,"Flying
+This creature gets +1/+1 as long as there's a Lesson card in your graveyard.",U,,TLA,49,1
+Failed Fording,Instant,"Return target nonland permanent to its owner's hand. If you control a Desert, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",U,,OTJ,47,1
+Essence Scatter,Instant,Counter target creature spell.,U,,SOS,47,1
+Dreams of Laguna,Instant,"Surveil 1, then draw a card. (To surveil 1, look at the top card of your library. You may put it into your graveyard.)
+Flashback {3}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,,FIN,50,1
+Elementalist Adept,Creature — Human Wizard,"Flash (You may cast this spell any time you could cast an instant.)
+Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)",U,,FDN,36,1
+Don't Make a Sound,Instant,"Counter target spell unless its controller pays {2}. If they do, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,,DSK,49,1
+Divert Disaster,Instant,"Counter target spell unless its controller pays {2}. If they do, you create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",U,,EOE,55,1
+Deduce,Instant,"Draw a card. Investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U,,SOA,16,1
+Disdainful Stroke,Instant,Counter target spell with mana value 4 or greater.,U,,SOA,17,1
+Dazzling Denial,Instant,"Counter target spell unless its controller pays {2}. If you control a Bird, counter that spell unless its controller pays {4} instead.",U,,BLB,45,1
+Cryogen Relic,Artifact,"When this artifact enters or leaves the battlefield, draw a card.
+{1}{U}, Sacrifice this artifact: Put a stun counter on up to one target tapped creature. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,,EOE,52,1
+Crashing Wave,Sorcery,"As an additional cost to cast this spell, waterbend {X}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)
+Tap up to X target creatures, then distribute three stun counters among any number of tapped creatures your opponents control. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,,TLA,47,1
+Crustacean Commando,Creature — Crab Mutant Soldier,"When this creature enters, create a Mutagen token. (It's an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",U,,TMT,33,1
+Chart a Course,Sorcery,Draw two cards. Then discard a card unless you attacked this turn.,U,,FDN,586,1
+Buzz Bots,Artifact Creature — Robot Insect,"Flying, vigilance
+When this creature dies, draw a card.",U,,TMT,32,1
+Blossombind,Enchantment — Aura,"Enchant creature
+When this Aura enters, tap enchanted creature.
+Enchanted creature can't become untapped and can't have counters put on it.",U,,ECL,45,1
+Bold Biochemist,Creature — Human Scientist,Power-up — {5}{U}: Put a +1/+1 counter on this creature and draw two cards. (Activate each power-up ability only once. Reduce the cost by its mana cost if it entered this turn.),U,,MSH,48,1
+Benevolent River Spirit,Creature — Spirit,"As an additional cost to cast this spell, waterbend {5}. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)
+Flying, ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
+When this creature enters, scry 2.",U,,TLA,45,1
+Banishing Betrayal,Instant,Return target nonland permanent to its owner's hand. Surveil 1. (Look at the top card of your library. You may put it into your graveyard.),U,,SOS,38,1
+Accumulate Wisdom,Instant — Lesson,Look at the top three cards of your library. Put one of those cards into your hand and the rest on the bottom of your library in any order. Put each of those cards into your hand instead if there are three or more Lesson cards in your graveyard.,U,,TLA,44,1
+Aquitect's Defenses,Enchantment — Aura,"Flash
+Enchant creature you control
+When this Aura enters, enchanted creature gains hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)
+Enchanted creature gets +1/+2.",U,,ECL,44,1
+Watery Grasp,Enchantment — Aura,"Enchant creature
+Enchanted creature doesn't untap during its controller's untap step.
+Waterbend {5}: Enchanted creature's owner shuffles it into their library. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",U,,TLA,82,1
+Witness Protection,Enchantment — Aura,"Enchant creature
+Enchanted creature loses all abilities and is a green and white Citizen creature with base power and toughness 1/1 named Legitimate Businessperson. (It loses all other colors, card types, creature types, and names.)",U,,FDN,168,1
+Super Intelligence,Enchantment — Aura,"Enchant creature
+At the beginning of the upkeep of enchanted creature's controller, that player draws a card.",U,,MSH,77,1
+Unsummon,Instant,Return target creature to its owner's hand.,U,,ANB,36,1
+"Stature, Size Shifter",Legendary Creature — Human Hero,"Stature can't be blocked if her power is 1 or less.
+Power-up — {X}{U}{U}: Put X +1/+1 counters on Stature. (Activate each power-up ability only once. Reduce the cost by her mana cost if she entered this turn.)",U,,MSH,76,1
+Spell Pierce,Instant,Counter target noncreature spell unless its controller pays {2}.,U,,SOA,23,1
+Sewer-veillance Cam,Artifact,"Flash
+When this artifact enters or leaves the battlefield, you may tap or untap target creature.
+{3}{U}, Sacrifice this artifact: Draw two cards.",U,,TMT,53,1
+Spectral Sailor,Creature — Spirit Pirate,"Flash (You may cast this spell any time you could cast an instant.)
+Flying
+{3}{U}: Draw a card.",U,,FDN,164,1
+Ringing Strike Mastery,Enchantment — Aura,"Enchant creature
+When this Aura enters, tap enchanted creature.
+Enchanted creature doesn't untap during its controller's untap step.
+Enchanted creature has ""{5}: Untap this creature.""",U,,TDM,53,1
+Pym Particles,Sorcery,"Target creature gains vigilance until end of turn and can't be blocked this turn.
+Draw a card.",U,,MSH,70,1
+Magic Damper,Instant,Target creature you control gets +1/+1 and gains hexproof until end of turn. Untap it.,U,,FIN,61,1
+Octopus Form,Instant — Lesson,Target creature you control gets +1/+1 and gains hexproof until end of turn. Untap it. (It can't be the target of spells or abilities your opponents control.),U,,TLA,66,1
+Kid Loki,Legendary Creature — God Hero Villain,"Each creature you control that you've put one or more +1/+1 counters on this turn has hexproof.
+Whenever you draw your second card each turn, put a +1/+1 counter on Kid Loki.",U,,MSH,63,1
+Illvoi Galeblade,Creature — Jellyfish Warrior,"Flash
+Flying
+{2}, Sacrifice this creature: Draw a card.",U,,EOE,58,1
+Humbling Elder,Creature — Human Monk,"Flash
+When this creature enters, target creature an opponent controls gets -2/-0 until end of turn.",U,,TDM,48,1
+Harmonized Trio,Creature — Merfolk Bard Wizard // Instant,"{T}, Tap two untapped creatures you control: This creature becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Draw three cards, then put two cards from your hand on top of your library in any order.",U,,SOS,52,1
+Gran-Gran,Legendary Creature — Human Peasant Ally,"Whenever Gran-Gran becomes tapped, draw a card, then discard a card.
+Noncreature spells you cast cost {1} less to cast as long as there are three or more Lesson cards in your graveyard.",U,,TLA,54,1
+Chase Inspiration,Instant,Target creature you control gets +0/+3 and gains hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.),U,,SOS,41,1
+Fleeting Distraction,Instant,"Target creature gets -1/-0 until end of turn.
+Draw a card.",U,,FDN,155,1
+Bruce Banner,Legendary Creature — Human Scientist Hero // Legendary Creature — Gamma Berserker Hero,"{X}{X}, {T}: Draw X cards. Activate only as a sorcery.
+{2}{R}{R}{G}{G}: Transform Bruce Banner. Activate only as a sorcery. // Reach, trample
+Enrage — Whenever The Incredible Hulk is dealt damage, put a +1/+1 counter on him. If he's attacking, untap him and there is an additional combat phase after this phase.",U/R/G,,MSH,49,1
+Bounce Off,Instant,Return target creature or Vehicle to its owner's hand.,U,,DFT,39,1
+Aerial Doombot,Artifact Creature — Robot Villain,"Flying
+Power-up — {5}{U}: Put three +1/+1 counters on this creature. (Activate each power-up ability only once. Reduce the cost by its mana cost if it entered this turn.)",U,,MSH,43,1
+Boomerang Basics,Sorcery — Lesson,"Return target nonland permanent to its owner's hand. If you controlled that permanent, draw a card.",U,,TLA,46,1
+Aegis Turtle,Creature — Turtle,,U,,FDN,150,1
+Grounded for Life,Instant,"This spell costs {3} less to cast if it targets a tapped creature.
+Destroy target creature.",W,,TMT,7,1
