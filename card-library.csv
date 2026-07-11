@@ -1786,3 +1786,412 @@ Fire Nation Palace,Land,"This land enters tapped unless you control a basic land
 {T}: Add {R}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
 12+ | {1}{R}, {T}, Sacrifice a land: Create a 2/2 colorless Robot artifact creature token, then creatures you control get +1/+0 and gain haste until end of turn.",R,,EOE,255,1
+Ambitious Augmenter,Creature — Turtle Wizard,"Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)
+When this creature dies, if it had one or more counters on it, create a 0/0 green and blue Fractal creature token, then put this creature's counters on that token.",G,,SOS,140,1
+Run Over,Instant,"This spell costs {1} less to cast if it targets a Mount or Vehicle you control.
+Target creature you control deals damage equal to its power to target creature an opponent controls.",G,,DFT,179,1
+Analyze the Pollen,Sorcery,"As an additional cost to cast this spell, you may collect evidence 8. (Exile cards with total mana value 8 or greater from your graveyard.)
+Search your library for a basic land card. If evidence was collected, instead search your library for a creature or land card. Reveal that card, put it into your hand, then shuffle.",G,,MKM,150,1
+Bushwhack,Sorcery,"Choose one —
+• Search your library for a basic land card, reveal it, put it into your hand, then shuffle.
+• Target creature you control fights target creature you don't control. (Each deals damage equal to its power to the other.)",G,,BRO,174,1
+Ankle Biter,Creature — Snake,Deathtouch,G,,OTJ,153,1
+Clash of the Eikons,Sorcery,"Choose one or more —
+• Target creature you control fights target creature an opponent controls.
+• Remove a lore counter from target Saga you control. (Removing lore counters doesn't cause chapter abilities to trigger.)
+• Put a lore counter on target Saga you control.",G,,FIN,180,1
+Commune with Beavers,Sorcery,"Look at the top three cards of your library. You may reveal an artifact, creature, or land card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",G,,FIN,182,1
+Earthen Ally,Creature — Human Soldier Ally,"This creature gets +1/+0 for each color among Allies you control.
+{2}{W}{U}{B}{R}{G}: Earthbend 5. (Target land you control becomes a 0/0 creature with haste that's still a land. Put five +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",W/U/B/R/G,,TLA,177,1
+Cowabunga!,Sorcery,"Look at the top four cards of your library. You may reveal a Mutant, Ninja, Turtle, or land card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",G,,TMT,113,1
+Giant Growth,Instant,Target creature gets +3/+3 until end of turn.,G,,MSH,167,1
+Go Nuts!,Sorcery,"Teamwork 3 (As an additional cost to cast this spell, you may tap any number of creatures you control with total power 3 or more.)
+Choose one. If this spell was cast using teamwork, choose both instead.
+• Put a +1/+1 counter on target creature.
+• Target creature you control fights target creature an opponent controls.",G,,MSH,168,1
+Guac & Marshmallow Pizza,Artifact — Food,"Flash
+When this artifact enters, target creature gets +2/+2 until end of turn. Untap it.
+{2}, {T}, Sacrifice this artifact: You gain 3 life.",G,,TMT,116,1
+Gran Pulse Ochu,Creature — Plant Beast,"Deathtouch
+{8}: Until end of turn, this creature gets +1/+1 for each permanent card in your graveyard.",G,,FIN,189,1
+Llanowar Elves,Creature — Elf Druid,{T}: Add {G}.,G,,M19,314,1
+Longstalk Brawl,Sorcery,"Gift a tapped Fish (You may promise an opponent a gift as you cast this spell. If you do, they create a tapped 1/1 blue Fish creature token before its other effects.)
+Choose target creature you control and target creature you don't control. Put a +1/+1 counter on the creature you control if the gift was promised. Then those creatures fight each other.",G,,BLB,182,1
+Party Dude,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+When this Class enters, each player creates a Food token.
+{1}{G}: Level 2
+Whenever an artifact an opponent controls is put into a graveyard from the battlefield, draw a card.
+{4}{G}: Level 3
+Whenever one or more of your opponents are attacked, up to one target attacking creature gets +X/+X until end of turn, where X is the number of cards in your hand.",G,,TMT,128,1
+Meltstrider's Gear,Artifact — Equipment,"When this Equipment enters, attach it to target creature you control.
+Equipped creature gets +2/+1 and has reach.
+Equip {5} ({5}: Attach to target creature you control. Equip only as a sorcery.)",G,,EOE,198,1
+Pick Your Poison,Sorcery,"Choose one —
+• Each opponent sacrifices an artifact of their choice.
+• Each opponent sacrifices an enchantment of their choice.
+• Each opponent sacrifices a creature with flying of their choice.",G,,SOA,55,1
+Pillar Launch,Instant,Target creature gets +2/+2 and gains reach until end of turn. Untap it.,G,,TLA,189,1
+"Reptil, Dinomorpher",Legendary Creature — Human Hero,"Brontosaurus — {3}: Until end of turn, Reptil becomes a Dinosaur Hero with base power and toughness 3/5 and gains vigilance and reach.
+Tyrannosaurus Rex — {6}: Until end of turn, Reptil becomes a Dinosaur Hero with base power and toughness 6/6 and gains trample.",G,,MSH,182,1
+Rapid Rescue,Instant,"Mill two cards. You may put a permanent card from among the milled cards into your hand. You gain 2 life. (To mill two cards, put the top two cards of your library into your graveyard.)",G,,MSH,181,1
+"Rick Jones, Destined Sidekick",Legendary Creature — Human Advisor,"{3}, {T}: Mill four cards. You may put a Hero or enchantment card from among those cards into your hand. (To mill four cards, put the top four cards of your library into your graveyard.)",G,,MSH,184,1
+Seismic Sense,Sorcery — Lesson,"Look at the top X cards of your library, where X is the number of lands you control. You may reveal a creature or land card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",G,,TLA,195,1
+Studious First-Year,Creature — Bear Wizard // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.",G,,SOS,162,1
+Serpent Specialist,Creature — Human Snake Villain,"Deathtouch
+Power-up — {3}{G}: Put two +1/+1 counters on this creature. (Activate each power-up ability only once. Reduce the cost by its mana cost if it entered this turn.)",G,,MSH,186,1
+Bakersbane Duo,Creature — Squirrel Raccoon,"When this creature enters, create a Food token.
+Whenever you expend 4, this creature gets +1/+1 until end of turn. (You expend 4 as you spend your fourth total mana to cast spells during a turn.)",G,,BLB,163,1
+Biosynthic Burst,Instant,"Put a +1/+1 counter on target creature you control. It gains reach, trample, and indestructible until end of turn. Untap it. (Damage and effects that say ""destroy"" don't destroy it.)",G,,EOE,173,1
+Blitzball Shot,Instant,Target creature gets +3/+3 and gains trample until end of turn.,G,,FIN,176,1
+Bite Down,Instant,Target creature you control deals damage equal to its power to target creature or planeswalker you don't control.,G,,FDN,212,1
+Blooming Stinger,Creature — Plant Scorpion,"Deathtouch
+When this creature enters, another target creature you control gains deathtouch until end of turn.",G,,EOE,174,1
+Bloom Tender,Creature — Elf Druid,"Vivid — {T}: For each color among permanents you control, add one mana of that color.",G,,ECL,166,1
+Chocobo Kick,Sorcery,"Kicker—Return a land you control to its owner's hand. (You may return a land you control to its owner's hand in addition to any other costs as you cast this spell.)
+Target creature you control deals damage equal to its power to target creature an opponent controls. If this spell was kicked, the creature you control deals twice that much damage instead.",G,,FIN,178,1
+Call Damage Control,Sorcery,"Choose up to two. Return those cards from your graveyard to your hand.
+• Target artifact card.
+• Target creature card.
+• Target enchantment card.
+• Target land card.",G,,MSH,162,1
+Claim the Kingdom,Enchantment — Plan,"Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature you control and a plan counter on this enchantment.
+When the fourth plan counter is put on this enchantment, sacrifice it. When you do, put an indestructible counter on target creature you control.",G,,MSH,163,1
+Druid of the Cowl,Creature — Elf Druid,{T}: Add {G}.,G,,M19,177,1
+Flesh Burrower,Creature — Insect,"Deathtouch
+Whenever this creature attacks, another target creature you control gains deathtouch until end of turn.",G,,DSK,178,1
+Dwynen's Elite,Creature — Elf Warrior,"When this creature enters, if you control another Elf, create a 1/1 green Elf Warrior creature token.",G,,FDN,218,1
+Frog Butler,Creature — Frog Spirit,"Deathtouch
+{T}: Add one mana of any color.
+{2}: This creature gains reach until end of turn.",G,,TMT,114,1
+"Fynn, the Fangbearer",Legendary Creature — Human Warrior,"Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)
+Whenever a creature you control with deathtouch deals combat damage to a player, that player gets two poison counters. (A player with ten or more poison counters loses the game.)",G,,FCA,46,1
+Goobbue Gardener,Creature — Plant Beast,{T}: Add {G}.,G,,FIN,188,1
+Glorious Decay,Instant,"Choose one —
+• Destroy target artifact.
+• Glorious Decay deals 4 damage to target creature with flying.
+• Exile target card from a graveyard. Draw a card.",G,,SOS,150,1
+Great Divide Guide,Creature — Human Scout Ally,"Each land and Ally you control has ""{T}: Add one mana of any color.""",G,,TLA,181,1
+Great Forest Druid,Creature — Treefolk Druid,{T}: Add one mana of any color.,G,,ECL,178,1
+Gysahl Greens,Sorcery,"Create a 2/2 green Bird creature token with ""Whenever a land you control enters, this token gets +1/+0 until end of turn.""
+Flashback {6}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",G,,FIN,190,1
+Guerrilla Gorilla,Creature — Ape Soldier Hero,"Reach
+Sacrifice this creature: Destroy target noncreature artifact or noncreature enchantment. Activate only as a sorcery.",G,,MSH,169,1
+"Haru, Hidden Talent",Legendary Creature — Human Peasant Ally,"Whenever another Ally you control enters, earthbend 1. (Target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)",G,,TLA,182,1
+"Hellcat, Undying Vigilante",Legendary Creature — Human Hero,"Haste
+When Hellcat dies, return her to the battlefield under her owner's control with a +1/+1 counter on her. She loses all abilities and gains haste.",G,,MSH,170,1
+Intrepid Tenderfoot,Creature — Insect Citizen,{3}: Put a +1/+1 counter on this creature. Activate only as a sorcery.,G,,EOE,193,1
+Heritage Reclamation,Instant,"Choose one —
+• Destroy target artifact.
+• Destroy target enchantment.
+• Exile up to one target card from a graveyard. Draw a card.",G,,TDM,145,1
+Jibbirik Omnivore,Creature — Beast,,G,,DFT,166,1
+Knight of Wundagore,Creature — Cat Knight Villain,"Trample
+Whenever you put a +1/+1 counter on another creature, put a +1/+1 counter on this creature. This ability triggers only once each turn.",G,,MSH,175,1
+Lys Alana Informant,Creature — Elf Scout,"When this creature enters or dies, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",G,,ECL,181,1
+Leaves from the Vine,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Mill three cards, then create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+II — Put a +1/+1 counter on each of up to two target creatures you control.
+III — Draw a card if there's a creature or Lesson card in your graveyard.",G,,TLA,185,1
+"Michelangelo, Weirdness to 11",Legendary Creature — Mutant Ninja Turtle,"When Michelangelo enters, create a Mutagen token. (It's an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")
+If one or more +1/+1 counters would be put on a creature you control, that many plus one +1/+1 counters are put on it instead.",G,,TMT,121,1
+Midnight Tilling,Instant,"Mill four cards, then you may return a permanent card from among them to your hand. (To mill four cards, put the top four cards of your library into your graveyard.)",G,,ECL,182,1
+Noxious Newt,Creature — Salamander,"Deathtouch
+{T}: Add {G}.",G,,SOS,155,1
+Mindful Biomancer,Creature — Dryad Druid,"When this creature enters, you gain 1 life.
+{2}{G}: This creature gets +2/+2 until end of turn. Activate only once each turn.",G,,SOS,154,1
+Rabid Bite,Sorcery,Target creature you control deals damage equal to its power to target creature you don't control.,G,,ANB,101,1
+Origin of Metalbending,Instant — Lesson,"Choose one —
+• Destroy target artifact or enchantment.
+• Put a +1/+1 counter on target creature you control. It gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)",G,,TLA,187,1
+Raucous Audience,Creature — Human Citizen,"{T}: Add {G}. If you control a creature with power 4 or greater, add {G}{G} instead.",G,,TLA,190,1
+Rebellious Captives,Creature — Human Peasant Ally,"Exhaust — {6}: Put two +1/+1 counters on this creature, then earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped. Activate each exhaust ability only once.)",G,,TLA,191,1
+Ride the Shoopuf,Enchantment,"Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature you control.
+{5}{G}{G}: This enchantment becomes a 7/7 Beast creature in addition to its other types.",G,,FIN,197,1
+Scout the City,Sorcery,"Choose one —
+• Look Around — Mill three cards. You may put a permanent card from among them into your hand. You gain 3 life. (To mill three cards, put the top three cards of your library into your graveyard.)
+• Bring Down — Destroy target creature with flying.",G,,MSC,817,1
+"Shang-Chi, Master of Kung Fu",Legendary Creature — Human Warrior Hero,"You may activate abilities of creatures you control as though those creatures had haste.
+{T}: Add two mana of any one color. Spend this mana only to activate abilities of creature sources.",G,,MSH,187,1
+Surly Farrier,Creature — Kithkin Citizen,{T}: Target creature you control gets +1/+1 and gains vigilance until end of turn. Activate only as a sorcery.,G,,ECL,196,1
+Sparring Dummy,Artifact Creature — Scarecrow,"Defender
+{T}: Mill a card. You may put a land card milled this way into your hand. You gain 2 life if a Lesson card is milled this way. (To mill a card, put the top card of your library into your graveyard.)",G,,TLA,197,1
+Synchronized Charge,Sorcery,"Distribute two +1/+1 counters among one or two target creatures you control. Creatures you control with counters on them gain vigilance and trample until end of turn.
+Harmonize {4}{G} (You may cast this card from your graveyard for its harmonize cost. You may tap a creature you control to reduce that cost by {X}, where X is its power. Then exile this spell.)",G,,TDM,162,1
+Tenderize,Instant,Target creature you control deals damage equal to its power to target creature an opponent controls.,G,,TMT,133,1
+Town Greeter,Creature — Human Citizen,"When this creature enters, mill four cards. You may put a land card from among them into your hand. If you put a Town card into your hand this way, you gain 2 life. (To mill four cards, a player puts the top four cards of their library into their graveyard.)",G,,FIN,209,1
+"Tigra, Feline Fury",Legendary Creature — Cat Human Hero,"Flash
+Trample
+Whenever you gain life, put a +1/+1 counter on Tigra.",G,,MSH,191,1
+True Ancestry,Sorcery — Lesson,"Return up to one target permanent card from your graveyard to your hand.
+Create a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",G,,TLA,199,1
+Undercover Skrull,Creature — Skrull Shapeshifter Villain,"As long as there are two or more creature cards in your graveyard, this creature gets +2/+2 and is all creature types.
+{T}: Add one mana of any color.",G,,MSH,194,1
+Wary Watchdog,Creature — Dog,"When this creature enters or dies, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",G,,DSK,206,1
+Venomsac Lagac,Creature — Lizard Mount,"Deathtouch
+Whenever this creature attacks while saddled, it gets +0/+3 until end of turn.
+Saddle 2 (Tap any number of other creatures you control with total power 2 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",G,,DFT,185,1
+"White Tiger, Ava Ayala",Legendary Creature — Human Hero,"Power-up — {5}{G}: Put a +1/+1 counter on White Tiger and create The Tiger God, a legendary 4/4 green Cat God creature token with ""The Tiger God can't be blocked by more than one creature."" (Activate each power-up ability only once. Reduce the cost by her mana cost if she entered this turn.)",G,,MSH,196,1
+Zoo Escapees,Creature — Boar Rhino,"When this creature leaves the battlefield, create a Mutagen token. (It's an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",G,,TMT,138,1
+Allies at Last,Instant,"Affinity for Allies (This spell costs {1} less to cast for each Ally you control.)
+Up to two target creatures you control each deal damage equal to their power to target creature an opponent controls.",G,,TLA,164,1
+Airtight Alibi,Enchantment — Aura,"Flash
+Enchant creature
+When this Aura enters, untap enchanted creature. It gains hexproof until end of turn. If it's suspected, it's no longer suspected.
+Enchanted creature gets +2/+2 and can't become suspected.",G,,MKM,149,1
+Ambush Wolf,Creature — Wolf,"Flash (You may cast this spell any time you could cast an instant.)
+When this creature enters, exile up to one target card from a graveyard.",G,,FDN,98,1
+Ant-Man's Army,Creature — Insect,"When this creature enters, create a Food token or a Treasure token. (A Food token is an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."" A Treasure token is an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",G,,MSH,161,1
+Beast-Kin Ranger,Creature — Elf Ranger,"Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)
+Whenever another creature you control enters, this creature gets +1/+0 until end of turn.",G,,FDN,100,1
+Bard's Bow,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
+Equipped creature gets +2/+2, has reach, and is a Bard in addition to its other types.
+Perseus's Bow — Equip {6} ({6}: Attach to target creature you control. Equip only as a sorcery.)",G,,FIN,174,1
+Broken Wings,Instant,"Destroy target artifact, enchantment, or creature with flying.",G,,FDN,214,1
+Chomping Changeling,Creature — Shapeshifter,"Changeling (This card is every creature type.)
+When this creature enters, destroy up to one target artifact or enchantment.",G,,ECL,172,1
+Dawn's Light Archer,Creature — Elf Archer,"Flash
+Reach",G,,ECL,174,1
+Cycle of Renewal,Instant — Lesson,"Sacrifice a land. Search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.",G,,TLA,170,1
+Defiant Survivor,Creature — Human Survivor,"Survival — At the beginning of your second main phase, if this creature is tapped, manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)",G,,DSK,175,1
+Earthbender Ascension,Enchantment,"When this enchantment enters, earthbend 2. Then search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
+Landfall — Whenever a land you control enters, put a quest counter on this enchantment. When you do, if it has four or more quest counters on it, put a +1/+1 counter on target creature you control. It gains trample until end of turn.",G,,TLA,175,1
+Emeritus of Abundance,Creature — Elf Druid // Sorcery,"Vigilance
+This creature enters prepared.
+Whenever this creature attacks, if you control eight or more lands, this creature becomes prepared. // Return target card from your graveyard to your hand.",G,,SOS,145,1
+Efflorescence,Instant,"Put two +1/+1 counters on target creature.
+Infusion — If you gained life this turn, that creature also gains trample and indestructible until end of turn.",G,,SOS,144,1
+Epic Fight,Sorcery,"Choose one or both —
+• Double target creature's power and toughness until end of turn.
+• Target creature you control fights target creature an opponent controls.",G,,MSH,166,1
+Felling Blow,Sorcery,Put a +1/+1 counter on target creature you control. Then that creature deals damage equal to its power to target creature an opponent controls.,G,,FDN,105,1
+Galactic Wayfarer,Creature — Human Scout,"When this creature enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",G,,EOE,185,1
+Frantic Strength,Enchantment — Aura,"Flash
+Enchant creature
+Enchanted creature gets +2/+2 and has trample.",G,,DSK,179,1
+Garruk's Uprising,Enchantment,"When this enchantment enters, if you control a creature with power 4 or greater, draw a card.
+Creatures you control have trample. (Each of those creatures can deal excess combat damage to the player or planeswalker it's attacking.)
+Whenever a creature you control with power 4 or greater enters, draw a card.",G,,M21,186,1
+"Hercules, Prince of Power",Legendary Creature — Demigod Warrior Hero,"Power-up — {4}{G}: Put a +1/+1 counter on Hercules. He gains vigilance, indestructible, and haste until end of turn. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",G,,MSH,171,1
+"Hulkling, Burgeoning Bruiser",Legendary Creature — Kree Skrull Hero,"Vigilance
+Whenever another creature you control enters, if it has greater power or toughness than Hulkling, put a +1/+1 counter on Hulkling.",G,,MSH,173,1
+Heroic Feast,Enchantment,"When this enchantment enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+Whenever you gain life, choose up to that many target creatures you control. Put a +1/+1 counter on each of them.",G,,MSH,172,1
+Kapow!,Sorcery,Put a +1/+1 counter on target creature you control. It fights target creature an opponent controls. (Each deals damage equal to its power to the other.),G,,SPM,103,1
+Kaslem's Stonetree,Artifact // Artifact Creature — Golem,"When this artifact enters, look at the top six cards of your library. You may put a land card from among them onto the battlefield tapped. Put the rest on the bottom in a random order.
+Craft with Cave {5}{G} ({5}{G}, Exile this artifact, Exile a Cave you control or a Cave card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.) // ",G,,LCI,197,1
+"Loot, Exuberant Explorer",Legendary Creature — Beast Noble,"You may play an additional land on each of your turns.
+{4}{G}{G}, {T}: Look at the top six cards of your library. You may reveal a creature card with mana value less than or equal to the number of lands you control from among them and put it onto the battlefield. Put the rest on the bottom in a random order.",G,,FDN,106,1
+Knockout Maneuver,Sorcery,"Put a +1/+1 counter on target creature you control, then it deals damage equal to its power to target creature an opponent controls.",G,,SOA,54,1
+"Michelangelo, Game Master",Legendary Creature — Mutant Ninja Turtle,"Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, put a +1/+1 counter on Michelangelo.",G,,TMT,118,1
+"Mole Man, Moloid Master",Legendary Creature — Human Villain,"You may play lands from your graveyard.
+Landfall — Whenever a land you control enters, create a 1/1 green Minion creature token named Moloid with ""Whenever this token attacks, you may mill a card.""",G,,MSH,177,1
+Mutable Explorer,Creature — Shapeshifter,"Changeling (This card is every creature type.)
+When this creature enters, create a tapped Mutavault token. (It's a land with ""{T}: Add {C}"" and ""{1}: This token becomes a 2/2 creature with all creature types until end of turn. It's still a land."")",G,,ECL,186,1
+"Mona Lisa, Science Geek",Legendary Creature — Lizard Mutant,"Reach
+{T}: Add X mana of any one color, where X is Mona Lisa's power.",G,,TMT,123,1
+Mutant Chain Reaction,Sorcery,"Destroy up to one target artifact, enchantment, or creature with flying. Create a Mutagen token. (It's an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",G,,TMT,125,1
+Novel Nunchaku,Artifact — Equipment,"When this Equipment enters, attach it to target creature you control. When you do, equipped creature fights up to one target creature an opponent controls. (Each deals damage equal to its power to the other.)
+Equipped creature gets +1/+1 and has trample.
+Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",G,,TMT,127,1
+Pompous Gadabout,Creature — Human Citizen,"During your turn, this creature has hexproof.
+This creature can't be blocked by creatures that don't have a name.",G,,MKM,171,1
+Ostrich-Horse,Creature — Bird Horse,"When this creature enters, mill three cards. You may put a land card from among them into your hand. If you don't, put a +1/+1 counter on this creature. (To mill three cards, put the top three cards of your library into your graveyard.)",G,,TLA,188,1
+Powerful Broker,Creature — Human Villain,"{T}: For each kind of counter on target permanent or player, give that permanent or player another counter of that kind. Activate only as a sorcery.",G,,MSH,179,1
+Punishing Punch,Instant,"This spell costs {2} less to cast if there are two or more creature cards in your graveyard.
+Target creature you control deals damage equal to twice its power to target creature an opponent controls.",G,,MSH,180,1
+Rockalanche,Sorcery — Lesson,"Earthbend X, where X is the number of Forests you control. (Target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)
+Flashback {5}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",G,,TLA,192,1
+Restorative Technique,Sorcery,"Target player gains 2 life, then searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles. Put a +1/+1 counter on up to one target creature.",G,,MSH,183,1
+"Sandman, Shifting Scoundrel",Legendary Creature — Sand Elemental Villain,"Sandman's power and toughness are each equal to the number of lands you control.
+Sandman can't be blocked by creatures with power 2 or less.
+{3}{G}{G}: Return this card and target land card from your graveyard to the battlefield tapped.",G,,SPM,112,1
+Shattered Wings,Sorcery,"Destroy target artifact, enchantment, or creature with flying. Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",G,,EOE,206,1
+Skystinger,Creature — Insect Warrior,"Reach
+Whenever this creature blocks a creature with flying, this creature gets +5/+0 until end of turn.",G,,EOE,207,1
+Shopkeeper's Bane,Creature — Badger Pest,"Trample
+Whenever this creature attacks, you gain 2 life.",G,,SOS,159,1
+"Surrak, Elusive Hunter",Legendary Creature — Human Warrior,"This spell can't be countered.
+Trample
+Whenever a creature you control or a creature spell you control becomes the target of a spell or ability an opponent controls, draw a card.",G,,TDM,161,1
+Sylvan Scavenging,Enchantment,"At the beginning of your end step, choose one —
+• Put a +1/+1 counter on target creature you control.
+• Create a 3/3 green Raccoon creature token if you control a creature with power 4 or greater.",G,,FDN,113,1
+"Toph, the Blind Bandit",Legendary Creature — Human Warrior Ally,"When Toph enters, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)
+Toph's power is equal to the number of +1/+1 counters on lands you control.",G,,TLA,198,1
+Thawbringer,Creature — Insect Scout,"When this creature enters or dies, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",G,,EOE,211,1
+Traveling Chocobo,Creature — Bird,"You may look at the top card of your library any time.
+You may play lands and cast Bird spells from the top of your library.
+If a land or Bird you control entering the battlefield causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.",G,,FIN,210,1
+Unforgiving Aim,Instant,"Choose one —
+• Destroy target creature with flying.
+• Destroy target enchantment.
+• Create a 2/2 black and green Elf creature token.",G,,ECL,200,1
+Walltop Sentries,Creature — Human Soldier Ally,"Reach, deathtouch
+When this creature dies, if there's a Lesson card in your graveyard, you gain 2 life.",G,,TLA,202,1
+Vinebred Brawler,Creature — Elf Berserker,"This creature must be blocked if able.
+Whenever this creature attacks, another target Elf you control gets +2/+1 until end of turn.",G,,ECL,201,1
+Avatar Destiny,Enchantment — Aura,"Enchant creature you control
+Enchanted creature gets +1/+1 for each creature card in your graveyard and is an Avatar in addition to its other types.
+When enchanted creature dies, mill cards equal to its power. Return this card to its owner's hand and up to one creature card milled this way to the battlefield under your control.",G,,TLA,165,1
+Cackling Prowler,Creature — Hyena Rogue,"Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
+Morbid — At the beginning of your end step, if a creature died this turn, put a +1/+1 counter on this creature.",G,,FDN,101,1
+Earthbending Lesson,Sorcery — Lesson,"Earthbend 4. (Target land you control becomes a 0/0 creature with haste that's still a land. Put four +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",G,,TLA,176,1
+Drix Fatemaker,Creature — Drix Wizard,"When this creature enters, put a +1/+1 counter on target creature.
+Each creature you control with a +1/+1 counter on it has trample.
+Warp {1}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,,EOE,178,1
+Earth Kingdom General,Creature — Human Soldier Ally,"When this creature enters, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)
+Whenever you put one or more +1/+1 counters on a creature, you may gain that much life. Do this only once each turn.",G,,TLA,173,1
+Foggy Swamp Vinebender,Creature — Human Plant Ally,"This creature can't be blocked by creatures with power 2 or less.
+Waterbend {5}: Put a +1/+1 counter on this creature. Activate only during your turn. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",G,,TLA,180,1
+Icecave Crasher,Creature — Beast,"Trample
+Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",G,,EOE,191,1
+Hungry Graffalon,Creature — Giraffe,"Reach
+Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)",G,,SOS,151,1
+Kyoshi Island Plaza,Legendary Enchantment — Shrine,"When Kyoshi Island Plaza enters, search your library for up to X basic land cards, where X is the number of Shrines you control. Put those cards onto the battlefield tapped, then shuffle.
+Whenever another Shrine you control enters, search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",G,,TLA,184,1
+Loading Zone,Enchantment,"If one or more counters would be put on a creature, Spacecraft, or Planet you control, twice that many of each of those kinds of counters are put on it instead.
+Warp {G} (You may cast this card from your hand for its warp cost. Exile this enchantment at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,,EOE,196,1
+"Michelangelo, Mutant BFF",Legendary Creature — Mutant Ninja Turtle,"Each creature you control with a counter on it can't be blocked by more than one creature.
+Whenever Michelangelo enters or attacks, create a Mutagen token. (It's an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",G,,TMT,120,1
+"Michelangelo, Improviser",Legendary Creature — Mutant Ninja Turtle,"Sneak {2}{G}{G} (You may cast this spell for {2}{G}{G} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)
+Whenever Michelangelo deals combat damage to a player, you may put a creature card and/or a land card from your hand onto the battlefield.",G,,TMT,119,1
+New Generation's Technique,Sorcery,"Sneak {2}{G} (You may cast this spell for {2}{G} if you also return an unblocked attacker you control to hand during the declare blockers step.)
+Search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.",G,,TMT,126,1
+Pestbrood Sloth,Creature — Plant Sloth,"Reach
+When this creature dies, create two 1/1 black and green Pest creature tokens with ""Whenever this token attacks, you gain 1 life.""",G,,SOS,157,1
+Primordial Pachyderm,Creature — Elephant Avatar,"Reach, trample
+When this creature enters, you gain 2 life.",G,,TMT,129,1
+Pet Avengers,Creature — Dragon Cat Dog Bird Frog Hero,"Reach
+Power-up — {6}{G}: Put a +1/+1 counter on this creature and create a 3/2 white Hero creature token with vigilance. (Activate each power-up ability only once. Reduce the cost by its mana cost if it entered this turn.)",G,,MSH,178,1
+Prismatic Undercurrents,Enchantment,"Vivid — When this enchantment enters, search your library for up to X basic land cards, where X is the number of colors among permanents you control. Reveal those cards, put them into your hand, then shuffle.
+You may play an additional land on each of your turns.",G,,ECL,189,1
+Safewright Cavalry,Creature — Elf Warrior,"This creature can't be blocked by more than one creature.
+{5}: Target Elf you control gets +2/+2 until end of turn.",G,,ECL,191,1
+Tapestry Warden,Artifact Creature — Robot Soldier,"Vigilance
+Each creature you control with toughness greater than its power assigns combat damage equal to its toughness rather than its power.
+Each creature you control with toughness greater than its power stations permanents using its toughness rather than its power.",G,,EOE,209,1
+"She-Hulk, Jade Defender",Legendary Creature — Gamma Hero,"Reach, trample
+Power-up — {4}{G}{G}: Destroy up to one target artifact or enchantment. Put a +1/+1 counter on She-Hulk. (Activate each power-up ability only once. Reduce the cost by her mana cost if she entered this turn.)",G,,MSH,188,1
+Terrific Team-Up,Instant,"This spell costs {2} less to cast if you control a permanent with mana value 4 or greater.
+One or two target creatures you control each get +1/+0 until end of turn. They each deal damage equal to their power to target creature an opponent controls.",G,,MSC,819,1
+"The Boulder, Ready to Rumble",Legendary Creature — Human Warrior Performer,"Whenever The Boulder attacks, earthbend X, where X is the number of creatures you control with power 4 or greater. (Target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",G,,TLA,168,1
+The Unbeatable Squirrel Girl,Legendary Creature — Squirrel Human Hero,"Do You Like Squirrels? — Whenever The Unbeatable Squirrel Girl enters or attacks, create a 1/1 green Squirrel creature token.
+I LOVE Squirrels! — {1}{G}{G}{G}: Create X 1/1 green Squirrel creature tokens, where X is the number of Squirrels you control.",G,,MSH,193,1
+The Earth King,Legendary Creature — Human Noble Ally,"When The Earth King enters, create a 4/4 green Bear creature token.
+Whenever one or more creatures you control with power 4 or greater attack, search your library for up to that many basic land cards, put them onto the battlefield tapped, then shuffle.",G,,TLA,172,1
+Training Regimen,Enchantment,"Creatures you control with +1/+1 counters on them have trample.
+At the beginning of combat on your turn, put a +1/+1 counter on target creature you control.",G,,MSH,192,1
+Treetop Snarespinner,Creature — Spider,"Reach (This creature can block creatures with flying.)
+Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)
+{2}{G}: Put a +1/+1 counter on target creature you control. Activate only as a sorcery.",G,,FDN,114,1
+Wildgrowth Archaic,Creature — Avatar,"Trample, reach
+Converge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.
+Whenever you cast a creature spell, that creature enters with X additional +1/+1 counters on it, where X is the number of colors of mana spent to cast it.",G,,SOS,168,1
+"Vanille, Cheerful l'Cie",Legendary Creature — Human Cleric,"When Vanille enters, mill two cards, then return a permanent card from your graveyard to your hand.
+At the beginning of your first main phase, if you both own and control Vanille and a creature named Fang, Fearless l'Cie, you may pay {3}{B}{G}. If you do, exile them, then meld them into Ragnarok, Divine Deliverance.",B/G,,FIN,211,1
+Zimone's Experiment,Sorcery,"Look at the top five cards of your library. You may reveal up to two creature and/or land cards from among them, then put the rest on the bottom of your library in a random order. Put all land cards revealed this way onto the battlefield tapped and put all creature cards revealed this way into your hand.",G,,SOS,169,1
+Badgermole,Creature — Badger Mole,"When this creature enters, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)
+Creatures you control with +1/+1 counters on them have trample.",G,,TLA,166,1
+Elemental Teachings,Instant — Lesson,"Search your library for up to four land cards with different names and reveal them. An opponent chooses two of those cards. Put the chosen cards into your graveyard and the rest onto the battlefield tapped, then shuffle.",G,,TLA,178,1
+"Doc Samson, Super Psychiatrist",Legendary Creature — Gamma Doctor Hero,"If you would put one or more counters on a permanent you control, put that many plus one of each of those kinds of counters on that permanent instead.
+{T}: Add X mana of any one color, where X is Doc Samson's power.",G,,MSH,164,1
+Germinating Wurm,Creature — Plant Wurm,"When this creature enters, you gain 2 life.
+Warp {1}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,,EOE,187,1
+Germination Practicum,Sorcery — Lesson,"Put two +1/+1 counters on each creature you control.
+Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",G,,SOS,149,1
+Gingerbread Hunter,Creature — Giant // Instant — Adventure,"When this creature enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."") // Target creature gets -2/-2 until end of turn. (Then exile this card. You may cast the creature later from exile.)",B/G,,WOE,227,1
+Gigantosaurus,Creature — Dinosaur,,G,,ANB,96,1
+Invasion Tactics,Enchantment,"When this enchantment enters, creatures you control get +2/+2 until end of turn.
+Whenever one or more Allies you control deal combat damage to a player, draw a card.",G,,TLA,183,1
+Ka-Zar of the Savage Land,Legendary Creature — Human Barbarian Hero,"You may look at the top card of your library any time.
+You may play lands from the top of your library.
+When Ka-Zar enters, create Zabu, a legendary 2/2 green Cat creature token with ""Landfall — Whenever a land you control enters, put a +1/+1 counter on Zabu.""",G,,MSH,174,1
+Ragamuffin Raptor,Creature — Dinosaur,"When this creature enters, return up to one target creature or Food card from your graveyard to your hand.",G,,TMT,130,1
+Mistmeadow Council,Creature — Kithkin Advisor,"This spell costs {1} less to cast if you control a Kithkin.
+When this creature enters, draw a card.",G,,ECL,183,1
+Rydia's Return,Sorcery,"Choose one —
+• Creatures you control get +3/+3 until end of turn.
+• Return up to two target permanent cards from your graveyard to your hand.",G,,FIN,198,1
+"Spider-Man, Brooklyn Visionary",Legendary Creature — Spider Human Hero,"Web-slinging {2}{G} (You may cast this spell for {2}{G} if you also return a tapped creature you control to its owner's hand.)
+When Spider-Man enters, search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",G,,SPM,115,1
+Super Strength,Enchantment — Aura,"Enchant creature
+Enchanted creature gets +4/+4 and has trample and ward {1}. (Whenever enchanted creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)",G,,MSH,189,1
+Summon: Fat Chocobo,Enchantment Creature — Saga Bird,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
+I — Wark — Create a 2/2 green Bird creature token with ""Whenever a land you control enters, this token gets +1/+0 until end of turn.""
+II, III, IV — Kerplunk — Creatures you control gain trample until end of turn.",G,,FIN,202,1
+Tenured Concocter,Creature — Troll Druid,"Vigilance
+Whenever this creature becomes the target of a spell or ability an opponent controls, you may draw a card.
+Infusion — This creature gets +2/+0 as long as you gained life this turn.",G,,SOS,163,1
+"Terrian, World Tyrant",Legendary Creature — Dinosaur Ooze,,G,,DFT,182,1
+Wakandan Royal Guard,Creature — Human Soldier Hero,"Vigilance
+When this creature enters, put a +1/+1 counter on target creature. If that creature is another Hero, put two +1/+1 counters on it instead.",G,,MSH,195,1
+"Venus, Torn Between Worlds",Legendary Creature — Mutant Frog Turtle,"Whenever Venus is dealt damage, put that many +1/+1 counters on her. (She must survive the damage to get the counters.)
+Whenever a creature you control with a counter on it deals combat damage to a player, you may pay {U}. If you do, draw a card.",U/G,,TMT,136,1
+World War Hulk,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — The next red or green creature spell you cast this turn can be cast without paying its mana cost.
+II — Put three +1/+1 counters on target creature you control.
+III — Choose target creature you control. Until end of turn, double its power and toughness and it gains trample.",G,,MSH,197,1
+Affectionate Indrik,Creature — Beast,"When this creature enters, you may have it fight target creature you don't control. (Each deals damage equal to its power to the other.)",G,,ANB,89,1
+Earthshaker Dreadmaw,Creature — Dinosaur,"Trample
+When this creature enters, draw a card for each other Dinosaur you control.",G,,LCI,183,1
+"Bumi, King of Three Trials",Legendary Creature — Human Noble Ally,"When Bumi enters, choose up to X, where X is the number of Lesson cards in your graveyard —
+• Put three +1/+1 counters on Bumi.
+• Target player scries 3.
+• Earthbend 3. (Target land you control becomes a 0/0 creature with haste that's still a land. Put three +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",G,,TLA,169,1
+Earth's Mightiest Heroes,Sorcery,"Teamwork 5 (As an additional cost to cast this spell, you may tap any number of creatures you control with total power 5 or more.)
+Reveal the top eight cards of your library. You may put a creature card from among them onto the battlefield. If this spell was cast using teamwork, put any number of creature cards from among them onto the battlefield instead. Put the rest into your graveyard.",G,,MSH,165,1
+"Flopsie, Bumi's Buddy",Legendary Creature — Ape Goat,"When Flopsie enters, put a +1/+1 counter on each creature you control.
+Each creature you control with power 4 or greater can't be blocked by more than one creature.",G,,TLA,179,1
+Saber-Tooth Moose-Lion,Creature — Elk Cat,"Reach
+Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,,TLA,194,1
+"Rocksteady, Crash Courser",Legendary Creature — Rhino Mutant,"Rocksteady can't be blocked by more than one creature.
+Boars you control can't be blocked by more than one creature.
+Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,,TMT,131,1
+Savage Land Dinosaur,Creature — Dinosaur,"Trample
+Basic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",G,,MSH,185,1
+Season of Gathering,Sorcery,"Choose up to five {P} worth of modes. You may choose the same mode more than once.
+{P} — Put a +1/+1 counter on a creature you control. It gains vigilance and trample until end of turn.
+{P}{P} — Choose artifact or enchantment. Destroy all permanents of the chosen type.
+{P}{P}{P} — Draw cards equal to the greatest power among creatures you control.",G,,BLB,192,1
+"Spider-Rex, Daring Dino",Legendary Creature — Spider Dinosaur Hero,"Reach, trample
+Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)",G,,MSC,818,1
+Snarl Song,Sorcery,"Converge — Create two 0/0 green and blue Fractal creature tokens. Put X +1/+1 counters on each of them and you gain X life, where X is the number of colors of mana spent to cast this spell.",G,,SOS,161,1
+The Legend of Kyoshi,Enchantment — Saga // Legendary Creature — Avatar,"(As this Saga enters and after your draw step, add a lore counter.)
+I — Draw cards equal to the greatest power among creatures you control.
+II — Earthbend X, where X is the number of cards in your hand. That land becomes an Island in addition to its other types.
+III — Exile this Saga, then return it to the battlefield transformed under your control. // Lands you control have trample and hexproof.
+{T}: Add X mana of any one color, where X is the greatest power among creatures you control.",G,,TLA,186,1
+"The Thing, Ben Grimm",Legendary Creature — Human Hero,"Trample
+Whenever one or more Heroes you control deal damage to a player, put two +1/+1 counters on The Thing.",G,,MSH,190,1
+Glacier Godmaw,Creature — Leviathan,"Trample
+When this creature enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
+Landfall — Whenever a land you control enters, creatures you control get +1/+1 and gain vigilance and haste until end of turn.",G,,EOE,188,1
+Aurora Awakener,Creature — Giant Druid,"Trample
+Vivid — When this creature enters, reveal cards from the top of your library until you reveal X permanent cards, where X is the number of colors among permanents you control. Put any number of those permanent cards onto the battlefield, then put the rest of the revealed cards on the bottom of your library in a random order.",G,,ECL,165,1
+Nurturing Bristleback,Creature — Dinosaur,"When this creature enters, create a 3/3 green Dinosaur creature token.
+Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,,LCI,203,1
+Wildvine Pummeler,Creature — Giant Berserker,"Vivid — This spell costs {1} less to cast for each color among permanents you control.
+Reach, trample",G,,ECL,203,1
+Diamond Weapon,Legendary Artifact Creature — Elemental,"This spell costs {1} less to cast for each permanent card in your graveyard.
+Reach
+Immune — Prevent all combat damage that would be dealt to Diamond Weapon.",G,,FIN,183,1
+Ancient Adamantoise,Creature — Turtle,"Vigilance, ward {3}
+Damage isn't removed from this creature during cleanup steps.
+All damage that would be dealt to you and other permanents you control is dealt to this creature instead.
+When this creature dies, exile it and create ten tapped Treasure tokens.",G,,FIN,172,1
+For the Common Good,Sorcery,Create X tokens that are copies of target token you control. Then tokens you control gain indestructible until your next turn. You gain 1 life for each token you control.,G,,BLB,172,1
+Jadelight Spelunker,Creature — Merfolk Scout,"When this creature enters, it explores X times. (To have it explore, reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)",G,,LCI,196,1
+Wildwood Scourge,Creature — Hydra,"This creature enters with X +1/+1 counters on it.
+Whenever one or more +1/+1 counters are put on another non-Hydra creature you control, put a +1/+1 counter on this creature.",G,,FDN,236,1
+Wild Hypothesis,Sorcery,"Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it.
+Surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",G,,SOS,167,1
+Broodguard Elite,Creature — Insect Knight,"This creature enters with X +1/+1 counters on it.
+When this creature leaves the battlefield, put its counters on target creature you control.
+Warp {X}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,,EOE,175,1
+Ba Sing Se,Land,"This land enters tapped unless you control a basic land.
+{T}: Add {G}.
+{2}{G}, {T}: Earthbend 2. Activate only as a sorcery. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",G,,TLA,266,1
+Deepchannel Duelist,Creature — Merfolk Soldier,"At the beginning of your end step, untap target Merfolk you control.
+Other Merfolk you control get +1/+1.",W/U,,ECL,213,1
+Air Nomad Legacy,Enchantment,"When this enchantment enters, create a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
+Creatures you control with flying get +1/+1.",W/U,,TLA,206,1
