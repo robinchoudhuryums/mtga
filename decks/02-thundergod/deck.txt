@@ -1,0 +1,46 @@
+#: name: Thundergod
+#: format: Historic
+#: colors: R
+#: notes: Mono-red, Thor-themed aggro.
+
+# Nonland
+1 J. Jonah Jameson (SPM) 81
+1 Bulk Up (SOA) 40
+1 Firebrand Archer (FDN) 196
+1 Hawkeye, Master Marksman (MSH) 130
+1 Lightning Strike (MSH) 142
+1 K'un-Lun Warrior (MSH) 140
+1 Loki Laufeyson (MSH) 143
+1 Romantic Rendezvous (MSC) 808
+1 Team Tactics (MSH) 155
+1 Vision of Love (MSH) 158
+1 Electro's Bolt (SPM) 77
+1 Human Torch, Johnny Storm (MSH) 136
+1 Iron Fist, Living Weapon (MSH) 138
+1 Jessica Jones, Private Eye (MSH) 139
+1 Molten Man, Inferno Incarnate (SPM) 84
+1 Spider-Gwen, Free Spirit (MSC) 874
+1 Solstice Revelations (TLA) 153
+1 Ty Lee, Artful Acrobat (TLA) 158
+1 Wisecrack (MSC) 813
+1 Bumi Bash (TLA) 125
+1 Fire Nation Raider (TLA) 135
+1 Mjölnir, Hammer of Thor (MSH) 146
+1 Combustion Man (TLA) 127
+1 Ultimate Green Goblin (SPM) 157
+1 Raging Goblinoids (SPM) 85
+1 Thor, God of Thunder (MSH) 156
+1 Stegron the Dinosaur Man (MSC) 810
+1 Etali, Primal Storm (FDN) 194
+1 Photon Blast Barrage (MSH) 147
+1 Hobgoblin, Mantled Marauder (MSC) 805
+1 Bullseye, Death Dealer (MSH) 209
+1 Spider-Islanders (SPM) 91
+1 Zealous Lorecaster (SOS) 137
+1 Summit Intimidator (TDM) 125
+1 Child of the Volcano (LCI) 140
+1 Burst Lightning (FDN) 192
+
+# Lands
+1 Fire Nation Palace (TLA) 268
+23 Mountain (MSH) 294
