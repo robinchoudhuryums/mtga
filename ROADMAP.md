@@ -31,8 +31,6 @@ Grounded in the project's current state and deferred ideas. Regenerate with
 
 ## Tier 4 — Future possibilities (exploratory)
 
-- **Deck suggestions from the collection** — given owned cards + synergy tags,
-  propose brews or upgrades automatically (extends `pool.py` + `tribes`).
 - **Meta integration** — pull archetype/meta data to score decks against the
   current field, not just internal consistency.
 

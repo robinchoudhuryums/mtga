@@ -152,7 +152,16 @@ python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to pas
 python3 scripts/deck.py stats 1a      # mana curve, color balance, type breakdown
 python3 scripts/deck.py mana 1a       # hybrid-aware color requirements
 python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
+python3 scripts/deck.py suggest 1a    # pool cards that fit the deck's colors + themes
 ```
+
+`suggest` fingerprints a deck by its color identity and synergy themes (weighted
+by how central each is), then scores the Arena pool (`card-pool.csv`) for cards
+that fit — on-color, sharing the deck's themes, not already in the list — and
+flags each as owned (`×N`) or `craft` with its wildcard rarity. Use `--unowned`
+to see only craft targets and `--limit N` to widen the list. It composes the
+same synergy tags and color data the rest of the tooling uses, so brew upgrades
+fall out of what you already own plus what you'd craft.
 
 `wildcards` reads every deck's craft targets (cards you're short of), prices each
 by rarity (= its Arena wildcard, from `card-pool.csv`, with a live Scryfall

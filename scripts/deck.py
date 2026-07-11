@@ -34,6 +34,7 @@ Commands:
     python3 scripts/deck.py arena 1a            # emit an Arena-importable list
     python3 scripts/deck.py stats 1a            # mana curve, colors, types
     python3 scripts/deck.py mana 1a             # hybrid-aware color requirements
+    python3 scripts/deck.py suggest 1a          # pool cards that fit the deck's colors + themes
 
 Mana analysis reads card-mana.csv (real mana costs, built by build_mana.py), so
 hybrid {W/U} pips are counted as flexible rather than demanding both colors.
@@ -716,6 +717,116 @@ def cmd_tribes(args):
     return 0
 
 
+# --- deck suggestions from the pool ----------------------------------------- #
+def load_card_meta():
+    """name_lower -> {'colors': set(WUBRG), 'synergies': [tags]} from library then
+    pool. Color(s) is color IDENTITY, which is exactly what we want for deck fit
+    (a card is playable in a deck whose identity covers it)."""
+    meta = {}
+    for path in (DEFAULT_CSV, POOL_CSV):
+        if not os.path.exists(path):
+            continue
+        with open(path, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                nl = (r.get("Card Name") or "").strip().lower()
+                if not nl or nl in meta:
+                    continue
+                cols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+                tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
+                meta[nl] = {"colors": cols, "synergies": tags}
+                meta.setdefault(nl.split(" // ")[0], meta[nl])
+    return meta
+
+
+def cmd_suggest(args):
+    """Recommend pool cards that fit a deck's color identity and synergy themes.
+
+    Scores each candidate by how strongly its tags overlap the deck's themes
+    (weighted by how central each theme is to the deck), filters to the deck's
+    colors, and flags owned vs. craftable with wildcard rarity. Composes
+    card-pool.csv + the synergy tags + tribes-style theme matching.
+    """
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    if not os.path.exists(POOL_CSV):
+        eprint("No card-pool.csv. Build it: python3 scripts/build_pool.py")
+        return 1
+
+    _, cards = parse_deck_file(d["path"])
+    meta = load_card_meta()
+
+    # Deck fingerprint: color identity + theme weights (copies carrying each tag).
+    deck_names = {n.lower() for _, n, _, _ in cards}
+    deck_colors, theme_w = set(), {}
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        m = meta.get(n.lower())
+        if not m:
+            continue
+        deck_colors |= m["colors"]
+        for t in m["synergies"]:
+            theme_w[t] = theme_w.get(t, 0) + q
+    if not theme_w:
+        print(f"Deck {d['id']} has no synergy tags to match against "
+              "(run tag_synergies.py). Nothing to suggest.")
+        return 0
+
+    # Score every pool card not already in the deck.
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        pool = list(csv.DictReader(fh))
+    _, _, by_name_qty = load_collection()
+    suggestions = []
+    for r in pool:
+        name = (r.get("Card Name") or "").strip()
+        nl = name.lower()
+        if not name or nl in deck_names or nl in BASICS:
+            continue
+        ccolors = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+        if not ccolors.issubset(deck_colors):
+            continue  # off-color for this deck
+        shared = [t for t in (r.get("Synergies") or "").split(";")
+                  if t.strip() and t.strip() in theme_w]
+        if not shared:
+            continue
+        shared = [t.strip() for t in shared]
+        score = sum(theme_w[t] for t in shared)
+        suggestions.append((score, name, r, shared))
+
+    owned_of = lambda nl: by_name_qty.get(nl, 0)
+    if args.unowned:
+        suggestions = [x for x in suggestions if owned_of(x[1].lower()) == 0]
+    # Rank: strongest theme fit first; owned as a tiebreaker so quick adds float up.
+    suggestions.sort(key=lambda x: (-x[0], -min(owned_of(x[1].lower()), 1), x[1].lower()))
+    top = suggestions[:args.limit]
+
+    topthemes = sorted(theme_w.items(), key=lambda kv: -kv[1])[:6]
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — suggestions from the pool\n")
+    print(f"Colors: {'/'.join(sorted(deck_colors)) or 'Colorless'}  ·  "
+          f"top themes: {', '.join(f'{t}({w})' for t, w in topthemes)}")
+    if not top:
+        print("\nNo pool cards matched this deck's colors + themes.")
+        return 0
+    print(f"\n{'Have':>5}  {'Card':30}  {'Rarity':8}  Matches (deck themes)")
+    print("-" * 78)
+    craftby = {}
+    for score, name, r, shared in top:
+        h = owned_of(name.lower())
+        have = f"×{h}" if h > 0 else "craft"
+        rar = (r.get("Rarity") or "").strip()
+        if h == 0:
+            craftby[rar] = craftby.get(rar, 0) + 1
+        print(f"{have:>5}  {name[:30]:30}  {rar[:8]:8}  {', '.join(shared[:5])}")
+    ncraft = sum(craftby.values())
+    print("-" * 78)
+    print(f"{len(top)} suggestion(s) — {len(top) - ncraft} owned, {ncraft} to craft"
+          + (f" ({', '.join(f'{n} {r}' for r, n in sorted(craftby.items()))})"
+             if ncraft else ""))
+    return 0
+
+
 def cmd_mana(args):
     """Hybrid-aware color requirements: which colors a deck STRICTLY needs."""
     d = find_deck(args.id)
@@ -799,12 +910,16 @@ def main():
     p.add_argument("id")
     p = sub.add_parser("tribes", help="creature-subtype breakdown + type-matters synergies")
     p.add_argument("id")
+    p = sub.add_parser("suggest", help="recommend pool cards that fit a deck's colors + themes")
+    p.add_argument("id")
+    p.add_argument("--limit", type=int, default=20, help="max suggestions (default 20)")
+    p.add_argument("--unowned", action="store_true", help="only craftable suggestions")
     args = ap.parse_args()
 
     return {
         "list": cmd_list, "wildcards": cmd_wildcards, "check": cmd_check,
         "diff": cmd_diff, "arena": cmd_arena, "stats": cmd_stats,
-        "mana": cmd_mana, "tribes": cmd_tribes,
+        "mana": cmd_mana, "tribes": cmd_tribes, "suggest": cmd_suggest,
     }[args.cmd](args)
 
 
