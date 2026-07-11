@@ -68,8 +68,9 @@
 3 Plains
 3 Island
 
-# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 19a
-#~ -Earthbender Ascension | +Bushwhack | fight OR fetch a basic; also feeds landfall
-#~ -Rabaroo Troop | +Harsh Annotation | clean hard removal — the deck runs almost none
-#~ -Studious First-Year | +Run Over | bite removal off your fat go-wide tokens
-#~ note: all three swaps are OWNED (0 wildcards) and add the interaction the deck lacks
+# Flex — best owned fits found scouring the whole collection (comments; not part of the 60). See: deck.py flex 19a
+#~ -Cat-Owl | +Spellbook Seeker | trade a vanilla flyer for a BIRD flyer that draws two — feeds Eagle/Kastral/Jackdaw + Dazzling Denial, fixes card advantage
+#~ -Studious First-Year | +Dazzling Denial | on-flavor Bird counter that hardens with a Bird out — the cheap interaction the deck lacks
+#~ -Momo, Friendly Flier | +Cloudblazer | flyer that gains 2 and draws 2 — more evasive card advantage
+#~ -Earthbender Ascension | +The Legend of Kyoshi | draw = your biggest power (huge off Fat Chocobo), then earthbend = free landfall, then a finisher Avatar
+#~ note: all four are OWNED (0 wildcards). Bushwhack / Harsh Annotation / Run Over remain owned interaction options too.
