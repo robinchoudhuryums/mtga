@@ -1,0 +1,21 @@
+#: name: Example Avatar WU — Counter Splash
+#: format: Standard
+#: colors: WU
+#: based-on: deck.txt
+#: notes: Variant testing more countermagic (Syncopate over Negate).
+
+# Creatures
+1 Healer's Hawk (FDN) 142
+1 Serra Angel (FDN) 147
+1 Katara, Bending Prodigy (TLA) 59
+1 Aang, the Last Airbender (TLA) 4
+
+# Spells
+1 Banishing Light (EOE) 6
+1 Essence Scatter (SOS) 47
+1 Syncopate (FIN) 80
+1 Time Stop (FDN) 166
+
+# Lands
+9 Plains
+9 Island
