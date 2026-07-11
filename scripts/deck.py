@@ -371,22 +371,50 @@ def creature_subtypes(type_line):
     return subs
 
 
-# Text signatures that make a card's real cost lower/more flexible than its
-# printed mana value — so the curve doesn't take MV at face value.
-COST_FLEX = [
-    ("less to cast", "cost reduction"),
-    ("convoke", "convoke"), ("affinity", "affinity"), ("delve", "delve"),
-    ("improvise", "improvise"), ("emerge", "emerge"), ("escape", "escape"),
-    ("assist", "assist"), ("spectacle", "spectacle"),
-    ("without paying its mana cost", "free cast"),
-    ("as though it had flash", "conditional flash"),
-]
+def load_keywords():
+    """name_lower -> [keywords] from card-mana.csv (Scryfall's per-card list)."""
+    kw = {}
+    if not os.path.exists(MANA_CSV):
+        return kw
+    with open(MANA_CSV, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            n = (r.get("Card Name") or "").strip().lower()
+            raw = (r.get("Keywords") or "").strip()
+            if n:
+                kw[n] = [k.strip().lower() for k in raw.split(";") if k.strip()]
+    return kw
 
 
-def cost_flex_reason(text):
+# Keywords whose real cost is LOWER than the printed mana value (alt/reduced cost).
+CHEAPER_KW = {
+    "warp", "sneak", "plot", "convoke", "affinity", "delve", "improvise",
+    "emerge", "spectacle", "evoke", "offering", "surge", "miracle", "foretell",
+}
+# Keywords that gate an ability or mode behind an ADDITIONAL / activated cost —
+# so the card does more than its base cost implies (and you pay for it).
+GATED_KW = {
+    "kicker", "multikicker", "bargain", "gift", "spree", "teamwork", "saddle",
+    "station", "power-up", "boast", "channel", "craft", "exhaust", "disguise",
+    "cycling", "landcycling", "typecycling", "basic landcycling", "plainscycling",
+    "islandcycling", "swampcycling", "mountaincycling", "forestcycling",
+    "escape", "embalm", "eternalize", "flashback", "jump-start", "unearth",
+    "reconfigure", "equip", "level up", "adapt", "outlast", "monstrosity",
+}
+CHEAPER_TEXT = [("less to cast", "cost reduction"),
+                ("without paying its mana cost", "free cast"),
+                ("as though it had flash", "conditional flash")]
+
+
+def classify_cost(keywords, text):
+    """Return (cheaper_reasons, gated_reasons) for a card's cost profile."""
+    kset = set(keywords or [])
     t = (text or "").lower()
-    hits = [label for kw, label in COST_FLEX if kw in t]
-    return ", ".join(dict.fromkeys(hits)) if hits else None
+    cheaper = sorted(kset & CHEAPER_KW)
+    for phrase, label in CHEAPER_TEXT:
+        if phrase in t:
+            cheaper.append(label)
+    gated = sorted(kset & GATED_KW)
+    return list(dict.fromkeys(cheaper)), list(dict.fromkeys(gated))
 
 
 def cmd_stats(args):
@@ -405,8 +433,9 @@ def cmd_stats(args):
         tline = (cd["type"] if cd else "") or ""
         ptype = "Land" if n.lower() in BASICS else _primary_type(tline)
         types[ptype] = types.get(ptype, 0) + q
-        if ptype != "Land":
-            nonland_names.append(n)
+        if ptype == "Land":
+            continue
+        nonland_names.append(n)
         col = (cd["colors"] if cd else "") or ""
         for ch in (col.upper() if col else ""):
             if ch in "WUBRG":
@@ -430,8 +459,8 @@ def cmd_stats(args):
     for q, n, s, c in cards:
         if n.lower() in BASICS:
             continue
-        row = by_key.get((n.lower(), s.lower(), c.lower())) or by_name.get(n.lower())
-        if row and "Land" in _primary_type((row.get("Type") or "")):
+        d2 = carddata.get(n.lower())
+        if d2 and "Land" in _primary_type(d2["type"]):
             continue
         entry = mana.get(n.lower())
         mv = entry[1] if entry else None
@@ -446,8 +475,11 @@ def cmd_stats(args):
             label = f"{b}+" if b == 7 else str(b)
             print(f"  {label:>2} MV  {curve[b]:3}  {'#' * curve[b]}")
 
-    # Cost flexibility: cards whose printed MV overstates their real cost.
-    flex = []
+    # Cost nature: cheaper-than-MV cards, and cards whose abilities/modes carry
+    # an added cost (from Scryfall keywords + oracle text). The printed curve
+    # doesn't capture either, so surface both.
+    kw_by = load_keywords()
+    cheaper, gated = [], []
     seen_f = set()
     for q, n, s, c in cards:
         if n.lower() in BASICS or n in seen_f:
@@ -455,14 +487,21 @@ def cmd_stats(args):
         d2 = carddata.get(n.lower())
         if not d2 or "Land" in _primary_type(d2["type"]):
             continue
-        r = cost_flex_reason(d2["text"])
-        if r:
+        ch, ga = classify_cost(kw_by.get(n.lower()), d2["text"])
+        if ch or ga:
             seen_f.add(n)
-            flex.append((n, r))
-    if flex:
-        print("\nCost flexibility (printed MV above may overstate these):")
-        for n, r in flex:
+            if ch:
+                cheaper.append((n, ", ".join(ch)))
+            if ga:
+                gated.append((n, ", ".join(ga)))
+    if cheaper:
+        print("\nEffective cost may be LOWER than printed MV (◊):")
+        for n, r in cheaper:
             print(f"  ◊ {n} — {r}")
+    if gated:
+        print("\nAbility/mode has an ADDED cost or condition — check text (△):")
+        for n, r in gated:
+            print(f"  △ {n} — {r}")
     return 0
 
 

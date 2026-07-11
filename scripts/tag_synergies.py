@@ -39,47 +39,79 @@ KEYWORD_THEMES = {
     "flying": ["evasion"], "menace": ["evasion"], "trample": ["evasion"],
     "fear": ["evasion"], "intimidate": ["evasion"], "shadow": ["evasion"],
     "skulk": ["evasion"], "horsemanship": ["evasion"], "ninjutsu": ["evasion", "tempo"],
+    "web-slinging": ["evasion", "tempo"],
     # Combat / resilience
     "first strike": ["combat"], "double strike": ["combat", "aggro"],
     "deathtouch": ["combat", "removal"], "vigilance": ["combat"],
     "reach": ["defense"], "defender": ["defense"], "indestructible": ["resilience"],
+    "enrage": ["combat"], "fight": ["removal", "combat"], "valiant": ["combat", "counters"],
+    "immune": ["protection"], "wither": ["combat", "counters"],
     # Aggro / tempo
     "haste": ["aggro"], "flash": ["tempo"], "prowess": ["spellslinger", "tempo"],
-    "exalted": ["aggro"], "dash": ["aggro"], "riot": ["aggro"],
+    "exalted": ["aggro"], "dash": ["aggro"], "riot": ["aggro"], "raid": ["aggro"],
     "battle cry": ["go-wide", "aggro"], "training": ["counters", "aggro"],
+    "mobilize": ["go-wide", "aggro"], "alliance": ["aggro", "value"],
+    # Speed (Aetherdrift)
+    "start your engines!": ["speed"], "max speed": ["speed", "aggro"],
+    "mayhem": ["graveyard", "aggro"],
     # Lifegain / drain
     "lifelink": ["lifegain"], "extort": ["lifegain", "drain"],
     # Graveyard / recursion
     "surveil": ["graveyard"], "mill": ["graveyard", "mill"],
     "delve": ["graveyard", "cost-reduction"], "descend": ["graveyard"],
+    "fathomless descent": ["graveyard"], "threshold": ["graveyard"],
+    "delirium": ["graveyard"], "morbid": ["sacrifice", "aristocrats"],
+    "collect evidence": ["graveyard"], "void": ["graveyard", "payoff"],
     "flashback": ["graveyard", "recursion", "spellslinger"],
     "escape": ["graveyard", "recursion"], "disturb": ["graveyard", "recursion"],
     "unearth": ["graveyard", "recursion"], "embalm": ["graveyard", "tokens"],
     "eternalize": ["graveyard", "tokens"], "jump-start": ["graveyard", "spellslinger"],
     "aftermath": ["graveyard", "recursion"], "dredge": ["graveyard", "self-mill"],
     "scavenge": ["graveyard", "counters"], "exploit": ["sacrifice"],
+    "blight": ["graveyard", "counters"],
     # Tokens / go-wide / sacrifice
     "convoke": ["go-wide", "ramp"], "amass": ["tokens", "go-wide"],
     "populate": ["tokens", "go-wide"], "fabricate": ["tokens", "counters"],
     "afterlife": ["tokens", "sacrifice"], "devour": ["sacrifice", "tokens"],
+    "offspring": ["tokens", "go-wide"], "role token": ["tokens", "auras"],
+    "manifest": ["tokens"], "manifest dread": ["tokens", "graveyard"],
+    "teamwork": ["go-wide", "combat"], "saddle": ["go-wide", "combat"],
     # Counters
     "proliferate": ["counters"], "bolster": ["counters"], "adapt": ["counters"],
     "mentor": ["counters", "aggro"], "outlast": ["counters"], "graft": ["counters"],
     "evolve": ["counters"], "modular": ["counters", "artifacts"],
+    "endure": ["counters", "tokens"], "power-up": ["counters", "payoff"],
     # Artifacts / cost
     "affinity": ["artifacts", "cost-reduction"], "improvise": ["artifacts", "ramp"],
-    # Card advantage
-    "cycling": ["card draw"], "learn": ["card draw"],
-    "investigate": ["tokens", "card draw"],
-    "connive": ["card draw", "counters", "graveyard"],
+    "station": ["counters", "artifacts"], "prototype": ["artifacts"],
+    "craft": ["artifacts", "graveyard"], "reconfigure": ["equipment"],
+    # Card advantage / selection
+    "cycling": ["card draw"], "learn": ["card draw"], "channel": ["card advantage"],
+    "investigate": ["tokens", "card draw"], "scry": ["selection"],
+    "connive": ["card draw", "counters", "graveyard"], "discover": ["value", "spellslinger"],
+    "landcycling": ["card draw", "lands"], "typecycling": ["card draw"],
+    "basic landcycling": ["card draw", "lands"], "plainscycling": ["card draw", "lands"],
+    "islandcycling": ["card draw", "lands"], "swampcycling": ["card draw", "lands"],
+    "mountaincycling": ["card draw", "lands"], "forestcycling": ["card draw", "lands"],
+    "behold": ["dragons"], "explore": ["counters", "selection"],
     # Protection
     "ward": ["protection"], "hexproof": ["protection"], "shroud": ["protection"],
-    "protection": ["protection"],
-    # Ramp / lands / spellslinger
-    "landfall": ["lands", "ramp"], "domain": ["lands"],
+    "protection": ["protection"], "changeling": ["tribal"],
+    # Ramp / lands / spellslinger / modal
+    "landfall": ["lands", "ramp"], "domain": ["lands"], "converge": ["multicolor"],
     "cascade": ["value", "spellslinger"], "storm": ["spellslinger"],
     "replicate": ["spellslinger"], "buyback": ["spellslinger", "recursion"],
-    "overload": ["spellslinger"],
+    "overload": ["spellslinger"], "flurry": ["spellslinger"], "prepared": ["spellslinger", "tempo"],
+    "repartee": ["spellslinger"], "magecraft": ["spellslinger"],
+    # Alternative / additional cost & tempo
+    "warp": ["tempo", "cost-reduction"], "sneak": ["tempo", "cost-reduction"],
+    "plot": ["tempo", "cost-reduction"], "evoke": ["value", "sacrifice"],
+    "kicker": ["value"], "multikicker": ["value"], "bargain": ["sacrifice", "value"],
+    "gift": ["value"], "spree": ["value"], "disguise": ["tempo"], "boast": ["payoff"],
+    "exhaust": ["payoff"], "suspect": ["aristocrats"], "gates": ["lands"],
+    # Universe-of-Beyond flavor mechanics
+    "waterbend": ["bending"], "earthbend": ["bending"], "airbend": ["bending"],
+    "firebending": ["bending"],
     # Vehicles / equipment
     "crew": ["vehicles"], "equip": ["equipment"],
 }
