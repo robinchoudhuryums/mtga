@@ -1,0 +1,60 @@
+#: name: Earth Kingdom
+#: format: Historic
+#: colors: GR
+#: notes: Green-red Avatar Earth Kingdom deck (green-primary), light W/B/U splashes via a wide land base.
+
+# Nonland
+1 Earthbender Ascension (TLA) 175
+1 Rebellious Captives (TLA) 191
+1 Rockalanche (TLA) 192
+1 Toph, the Blind Bandit (TLA) 198
+2 Earth Kingdom General (TLA) 173
+1 Earthbending Lesson (TLA) 176
+1 The Boulder, Ready to Rumble (TLA) 168
+1 Badgermole (TLA) 166
+1 Bumi, King of Three Trials (TLA) 169
+1 The Legend of Kyoshi (TLA) 186
+1 Beifong's Bounty Hunters (TLA) 209
+1 Dai Li Agents (TLA) 214
+1 Bumi, Unleashed (TLA) 211
+1 Sandbenders' Storm (TLA) 34
+1 Friendly Neighborhood (SPM) 8
+1 Bumi Bash (TLA) 125
+1 Bushwhack (BRO) 174
+1 Seismic Sense (TLA) 195
+1 Call Damage Control (MSH) 162
+1 Claim the Kingdom (MSH) 163
+1 Great Divide Guide (TLA) 181
+1 Cycle of Renewal (TLA) 170
+1 Galactic Wayfarer (EOE) 185
+1 Loot, Exuberant Explorer (FDN) 106
+1 Mole Man, Moloid Master (MSH) 177
+1 Ostrich-Horse (TLA) 188
+1 Restorative Technique (MSH) 183
+1 Sandman, Shifting Scoundrel (SPM) 112
+1 New Generation's Technique (TMT) 126
+1 Prismatic Undercurrents (ECL) 189
+1 The Earth King (TLA) 172
+1 Elemental Teachings (TLA) 178
+1 Spider-Man, Brooklyn Visionary (SPM) 115
+1 Ka-Zar of the Savage Land (MSH) 174
+1 Absorbing Man (MSH) 199
+
+# Lands
+2 Ba Sing Se (TLA) 266
+1 Rugged Highlands (FDN) 265
+1 Omashu City (TLA) 275
+1 Training Compound (MSH) 275
+1 Wind-Scarred Crag (FDN) 271
+1 Birnin Zana Plaza (MSH) 262
+1 Restless Ridgeline (LCI) 283
+1 Hushwood Verge (DSK) 261
+2 Baxter Building (MSH) 261
+1 Capital City (FIN) 274
+1 Captivating Cave (LCI) 268
+2 Rumble Arena (TLA) 277
+2 Surveillance Room (MSH) 274
+1 Swamp (MSH) 292
+1 Island (MSH) 290
+1 Plains (MSH) 288
+4 Forest (MSH) 296

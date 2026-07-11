@@ -1,0 +1,20 @@
+# Generated image-URL cache (regenerable via scripts/build_gallery.py)
+.image-cache.json
+# Generated mana-value cache (regenerable via scripts/deck.py stats)
+.mana-cache.json
+# Incidental gallery preview screenshot
+gallery-preview.png
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Never commit Google service-account keys or other secrets
+*service-account*.json
+credentials*.json
+.env
+
+# Personal Claude Code settings (permissions etc.) — not shared
+.claude/settings.local.json

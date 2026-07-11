@@ -1,0 +1,22 @@
+name: Integrity check
+
+# Runs the project's integrity gate (scripts/check_all.py) on every push and PR.
+# check_all.py is pure standard-library and reads only committed files
+# (card-library.csv + the derived card-mana.csv / card-pool.csv / gallery.html
+# and decks/), so it needs no dependencies and no network — Scryfall is never
+# contacted here.
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run integrity check (validate + invariants)
+        run: python3 scripts/check_all.py

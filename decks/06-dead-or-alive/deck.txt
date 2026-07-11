@@ -1,0 +1,49 @@
+#: name: Dead or Alive
+#: format: Historic
+#: colors: WBG
+#: notes: Abzan (W/B/G) — graveyard value / reanimator.
+
+# Nonland
+1 The Last Ronin (TMT) 154
+1 Exdeath, Void Warlock (FIN) 220
+1 Cloud of Darkness (FIN) 217
+1 Helping Hand (SOA) 5
+1 Owlin Historian (SOS) 24
+1 Night Nurse, Healer of Heroes (MSH) 26
+1 Stone Docent (SOS) 36
+1 Leonardo, Sewer Samurai (TMT) 17
+1 White Widow, Free Agent (MSH) 42
+1 Primary Research (SOS) 26
+1 Starfall Invocation (BLB) 34
+1 Restoration Seminar (SOS) 30
+1 Moonshadow (ECL) 110
+1 Zuko's Conviction (TLA) 123
+1 Lively Dirge (OTJ) 93
+1 Ral Zarek, Guest Lecturer (SOS) 97
+1 Symbiote Spider-Man (SPM) 156
+1 Grim Reaper, Lethal Legionnaire (MSH) 98
+1 Rot Farm Mortipede (MKM) 102
+1 Coiling Rebirth (BLB) 86
+1 Prison Break (SPM) 61
+1 Forum Necroscribe (SOS) 84
+1 Funeral Room // Awakening Hall (DSK) 100
+1 Emeritus of Abundance (SOS) 145
+1 Undercover Skrull (MSH) 194
+1 Punishing Punch (MSH) 180
+1 Sandman, Shifting Scoundrel (SPM) 112
+1 Avatar Destiny (TLA) 165
+1 Rydia's Return (FIN) 198
+1 Scout the City (SPM) 113
+1 Diamond Weapon (FIN) 183
+1 Cauldron of Essence (SOS) 179
+1 Killmonger, Scourge of Wakanda (MSH) 218
+1 Spider-Man Noir (SPM) 67
+1 Titania, Rugged Rumbler (MSH) 235
+
+# Lands
+1 Eden, Seat of the Sanctum (FIN) 277
+1 Gathering Place (MSH) 266
+2 Surveillance Room (MSH) 274
+7 Swamp (MSH) 291
+6 Plains (MSH) 287
+8 Forest (MSH) 295

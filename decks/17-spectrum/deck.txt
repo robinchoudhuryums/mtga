@@ -1,0 +1,51 @@
+#: name: Spectrum
+#: format: Historic
+#: colors: WUBRG
+#: notes: Five-color rainbow good-stuff / superheroes.
+
+# Nonland
+1 Great Divide Guide (TLA) 181
+1 Undercover Skrull (MSH) 194
+1 Shang-Chi, Master of Kung Fu (MSH) 187
+1 Hermitic Herbalist (TLA) 226
+1 Energybending (TLA) 2
+1 Bender's Waterskin (TLA) 255
+1 Doc Samson, Super Psychiatrist (MSH) 164
+1 Diamond Pick-Axe (LCI) 143
+1 Goldvein Pick (FDN) 253
+1 Barrels of Blasting Jelly (TLA) 254
+1 Dependable Quinjet (MSH) 246
+1 Super-Skrull (MSH) 115
+1 Nick Fury, Agent of S.H.I.E.L.D. (MSH) 25
+1 Thanos, the Mad Titan (MSH) 233
+1 Earthen Ally (TLA) 177
+1 Cosmic Spider-Man (SPM) 127
+1 Avatar Aang (TLA) 207
+1 Wonder Man, Hollywood Hero (MSH) 160
+1 Wildgrowth Archaic (SOS) 168
+1 Aurora Awakener (ECL) 165
+1 Transcendent Archaic (SOS) 5
+1 Iron Man, Master of Machines (MSH) 216
+1 Shimmercreep (ECL) 120
+1 Prismatic Undercurrents (ECL) 189
+1 Explosive Prodigy (ECL) 136
+1 The Legend of Kyoshi (TLA) 186
+1 Sokka, Tenacious Tactician (TLA) 242
+1 Aang, Swift Savior (TLA) 204
+1 Aang, at the Crossroads (TLA) 203
+1 Captain America, Living Legend (MSH) 210
+1 Absolute Virtue (FIN) 212
+1 Flamehold Grappler (TDM) 185
+1 Tony Stark (MSH) 80
+1 Iron Man Armor (MSH) 248
+
+# Lands
+1 Planetarium of Wan Shi Tong (TLA) 259
+1 The Walls of Ba Sing Se (TLA) 261
+2 Baxter Building (MSH) 261
+1 Surveillance Room (MSH) 274
+6 Forest (MSH) 295
+4 Plains (MSH) 287
+4 Island (MSH) 289
+4 Swamp (MSH) 291
+3 Mountain (MSH) 293

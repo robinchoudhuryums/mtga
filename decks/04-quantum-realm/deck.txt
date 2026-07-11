@@ -1,0 +1,46 @@
+#: name: Quantum Realm
+#: format: Historic
+#: colors: UG
+#: notes: Simic (U/G) — +1/+1 counters / value.
+
+# Nonland
+1 The Astonishing Ant-Man (MSH) 204
+1 Ant-Man, Colony Commander (MSH) 201
+1 Justice, Vance Astrovik (MSH) 61
+1 Stature, Size Shifter (MSH) 76
+1 S.H.I.E.L.D. Deployment Drone (MSH) 73
+1 Ka-Zar of the Savage Land (MSH) 174
+1 She-Hulk, Jade Defender (MSH) 188
+1 Doc Samson, Super Psychiatrist (MSH) 164
+1 Undercover Skrull (MSH) 194
+1 Restorative Technique (MSH) 183
+1 H.E.R.B.I.E. Scout Unit (MSH) 247
+1 Training Regimen (MSH) 192
+1 Pet Avengers (MSH) 178
+1 Call Damage Control (MSH) 162
+1 Thirst for Knowledge (MSH) 79
+1 Mole Man, Moloid Master (MSH) 177
+1 Savage Land Dinosaur (MSH) 185
+1 Crustacean Commando (TMT) 33
+1 Mutant Chain Reaction (TMT) 125
+1 Negate (TMT) 47
+1 Ooze Spill (TMT) 48
+1 Renet, Temporal Apprentice (TMT) 50
+1 Utrom Scientists (TMT) 56
+1 Ray Fillet, Man Ray (TMT) 49
+1 Kitsune, Dragon's Daughter (TMT) 41
+1 Bespoke Bō (TMT) 31
+1 Sewer-veillance Cam (TMT) 53
+1 Donatello, Turtle Techie (TMT) 37
+1 Michelangelo, Weirdness to 11 (TMT) 121
+1 Germination Practicum (SOS) 149
+1 Fractal Tender (SOS) 190
+1 Cuboid Colony (SOS) 183
+1 Ambitious Augmenter (SOS) 140
+1 Pterafractyl (SOS) 215
+1 Tester of the Tangential (SOS) 69
+1 Textbook Tabulator (SOS) 70
+
+# Lands
+12 Island (MSH) 289
+12 Forest (MSH) 295

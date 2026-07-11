@@ -1,0 +1,20 @@
+#: name: Example Avatar WU
+#: format: Standard
+#: colors: WU
+#: notes: Illustrative example showing the deck format. Replace with your real decks.
+
+# Creatures
+1 Healer's Hawk (FDN) 142
+1 Serra Angel (FDN) 147
+1 Katara, Bending Prodigy (TLA) 59
+1 Aang, the Last Airbender (TLA) 4
+
+# Spells
+1 Banishing Light (EOE) 6
+1 Essence Scatter (SOS) 47
+1 Negate (TMT) 47
+1 Time Stop (FDN) 166
+
+# Lands
+9 Plains
+9 Island
