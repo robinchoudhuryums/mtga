@@ -195,7 +195,7 @@ When this enchantment enters, exile up to one other target nonland permanent unt
 Waterbend {3}: Sacrifice this enchantment. If you do, scry 2. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",W,sacrifice; etb; scry; flash,TLA,5,1
 Agents of S.H.I.E.L.D.,Creature — Human Spy Hero,"Whenever a creature you control attacks alone, that creature gets +1/+1 until end of turn.",W,Human; Spy; Hero,MSH,5,1
 Airbending Lesson,Instant — Lesson,"Airbend target nonland permanent. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)
-Draw a card.",W,Lesson; card draw,TLA,8,1
+Draw a card.",W,Lesson; card draw,TLA,8,2
 "Ajani, Outland Chaperone",Legendary Planeswalker — Ajani,"+1: Create a 1/1 green and white Kithkin creature token.
 −2: Ajani deals 4 damage to target tapped creature.
 −8: Look at the top X cards of your library, where X is your life total. You may put any number of nonland permanent cards with mana value 3 or less from among them onto the battlefield. Then shuffle.",W,Ajani; Planeswalker; tokens; burn; planeswalker,ECL,4,1
