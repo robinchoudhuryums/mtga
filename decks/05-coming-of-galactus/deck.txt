@@ -1,0 +1,45 @@
+#: name: Coming of Galactus
+#: format: Historic
+#: colors: BG
+#: notes: Golgari (B/G) — graveyard / midrange value.
+
+# Nonland
+1 Super-Skrull (MSH) 115
+1 Rapid Rescue (MSH) 181
+1 Call Damage Control (MSH) 162
+1 Flesh Burrower (DSK) 178
+1 Hellcat, Undying Vigilante (MSH) 170
+1 Lys Alana Informant (ECL) 181
+1 Midnight Tilling (ECL) 182
+1 Scout the City (MSC) 817
+1 Shang-Chi, Master of Kung Fu (MSH) 187
+1 Sparring Dummy (TLA) 197
+1 True Ancestry (TLA) 199
+1 Wary Watchdog (DSK) 206
+1 Hulkling, Burgeoning Bruiser (MSH) 173
+1 Sandman, Shifting Scoundrel (SPM) 112
+1 Thawbringer (EOE) 211
+1 Avatar Destiny (TLA) 165
+1 Gingerbread Hunter (WOE) 227
+1 Ka-Zar of the Savage Land (MSH) 174
+1 Earth's Mightiest Heroes (MSH) 165
+1 Titania, Rugged Rumbler (MSH) 235
+1 Exdeath, Void Warlock (FIN) 220
+1 Host of the Hereafter (TDM) 193
+1 Killmonger, Scourge of Wakanda (MSH) 218
+1 The Coming of Galactus (MSH) 212
+1 Dai Li Agents (TLA) 214
+1 Lively Dirge (OTJ) 93
+1 Too Evil to Stay Dead (MSH) 118
+1 Fell Horseman (WOE) 92
+1 Grim Reaper, Lethal Legionnaire (MSH) 98
+1 Hour of Defeat (MSH) 99
+1 Rot Farm Mortipede (MKM) 102
+1 Day of Black Sun (TLA) 94
+1 Wick's Patrol (BLB) 121
+1 Cauldron of Essence (SOS) 179
+
+# Lands
+4 Jungle Hollow (M21) 247
+11 Swamp (MSH) 292
+11 Forest (MSH) 296

@@ -2506,7 +2506,7 @@ II — Mill four cards. When you do, return target creature card from your grave
 III — Whenever a creature you control attacks alone this turn, put three +1/+1 counters on it. It gains trample, lifelink, and indestructible until end of turn.",B/G,Saga; counters; graveyard; mill; lifegain; sacrifice; saga; trample; lifelink,TMT,154,1
 Jungle Hollow,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
-{T}: Add {B} or {G}.",B/G,lifegain; mana; etb,M21,247,1
+{T}: Add {B} or {G}.",B/G,lifegain; mana; etb,M21,247,4
 Gangly Stompling,Creature — Shapeshifter,"Changeling (This card is every creature type.)
 Trample",R/G,Shapeshifter; trample,ECL,226,1
 "Terra, Magical Adept",Legendary Creature — Human Wizard Warrior // Legendary Enchantment Creature — Saga Wizard,"When Terra enters, mill five cards. Put up to one enchantment card milled this way into your hand.
