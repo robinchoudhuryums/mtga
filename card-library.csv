@@ -1386,3 +1386,403 @@ Stargaze,Sorcery,Look at twice X cards from the top of your library. Put X cards
 Realm of Koh,Land,"This land enters tapped unless you control a basic land.
 {T}: Add {B}.
 {3}{B}, {T}: Create a 1/1 colorless Spirit creature token with ""This token can't block or be blocked by non-Spirit creatures.""",B,,TLA,276,1
+Ancestral Anger,Sorcery,"Target creature gains trample and gets +X/+0 until end of turn, where X is 1 plus the number of cards named Ancestral Anger in your graveyard.
+Draw a card.",R,,SOS,106,1
+Summit Intimidator,Creature — Yeti,"Reach
+When this creature enters, target creature can't block this turn.",R,,TDM,125,1
+Cinder Strike,Sorcery,"As an additional cost to cast this spell, you may blight 1. (You may put a -1/-1 counter on a creature you control.)
+Cinder Strike deals 2 damage to target creature. It deals 4 damage to that creature instead if this spell's additional cost was paid.",R,,ECL,131,1
+Burst Lightning,Instant,"Kicker {4} (You may pay an additional {4} as you cast this spell.)
+Burst Lightning deals 2 damage to any target. If this spell was kicked, it deals 4 damage instead.",R,,FDN,192,1
+Clockwork Percussionist,Artifact Creature — Monkey Toy,"Haste
+When this creature dies, exile the top card of your library. You may play it until the end of your next turn.",R,,DSK,130,1
+Coral Sword,Artifact — Equipment,"Flash
+When this Equipment enters, attach it to target creature you control. That creature gains first strike until end of turn.
+Equipped creature gets +1/+0.
+Equip {1}",R,,FIN,134,1
+Fanatical Firebrand,Creature — Goblin Pirate,"Haste (This creature can attack and {T} as soon as it comes under your control.)
+{T}, Sacrifice this creature: It deals 1 damage to any target.",R,,FDN,195,1
+Diamond Pick-Axe,Artifact — Equipment,"Indestructible (Effects that say ""destroy"" don't destroy this Equipment.)
+Equipped creature gets +1/+1 and has ""Whenever this creature attacks, create a Treasure token."" (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
+Equip {2}",R,,LCI,143,1
+Firebending Lesson,Instant — Lesson,"Kicker {4} (You may pay an additional {4} as you cast this spell.)
+Firebending Lesson deals 2 damage to target creature. If this spell was kicked, it deals 5 damage to that creature instead.",R,,TLA,138,1
+Fire Magic,Instant,"Tiered (Choose one additional cost.)
+• Fire — {0} — Fire Magic deals 1 damage to each creature.
+• Fira — {2} — Fire Magic deals 2 damage to each creature.
+• Firaga — {5} — Fire Magic deals 3 damage to each creature.",R,,FIN,136,1
+Fire Nation Cadets,Creature — Human Soldier,"This creature has firebending 2 as long as there's a Lesson card in your graveyard. (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)
+{2}: This creature gets +1/+0 until end of turn.",R,,TLA,134,1
+Frenzied Goblin,Creature — Goblin Berserker,"Whenever this creature attacks, you may pay {R}. If you do, target creature can't block this turn.",R,,FDN,199,1
+Hawkeye's Bow,Artifact — Equipment,"Equipped creature gets +1/+0 and has reach.
+Whenever equipped creature becomes tapped, it deals 1 damage to each opponent.
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",R,,MSH,132,1
+Heartfire Hero,Creature — Mouse Soldier,"Valiant — Whenever this creature becomes the target of a spell or ability you control for the first time each turn, put a +1/+1 counter on it.
+When this creature dies, it deals damage equal to its power to each opponent.",R,,BLB,138,1
+"Kellan, Planar Trailblazer",Legendary Creature — Human Faerie Scout,"{1}{R}: If Kellan is a Scout, it becomes a Human Faerie Detective and gains ""Whenever Kellan deals combat damage to a player, exile the top card of your library. You may play that card this turn.""
+{2}{R}: If Kellan is a Detective, it becomes a 3/2 Human Faerie Rogue and gains double strike.",R,,FDN,91,1
+Jet's Brainwashing,Sorcery,"Kicker {3} (You may pay an additional {3} as you cast this spell.)
+Target creature can't block this turn. If this spell was kicked, gain control of that creature until end of turn, untap it, and it gains haste until end of turn.
+Create a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",R,,TLA,143,1
+Masked Meower,Creature — Spider Cat Hero,"Haste
+Discard a card, Sacrifice this creature: Draw a card.",R,,MSC,807,1
+Monstrous Rage,Instant,"Target creature gets +2/+0 until end of turn. Create a Monster Role token attached to it. (If you control another Role on it, put that one into the graveyard. Enchanted creature gets +1/+1 and has trample.)",R,,SOA,45,1
+Redirect Lightning,Instant — Lesson,"As an additional cost to cast this spell, pay 5 life or pay {2}.
+Change the target of target spell or ability with a single target.",R,,TLA,151,1
+Plasma Bolt,Sorcery,"Plasma Bolt deals 2 damage to any target.
+Void — Plasma Bolt deals 3 damage instead if a nonland permanent left the battlefield this turn or a spell was warped this turn.",R,,EOE,152,1
+Shock,Instant,Shock deals 2 damage to any target.,R,,ANB,84,1
+Stark Industries Executive,Creature — Human Advisor,"{2}, {T}: Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,,MSH,153,1
+Sunfire Torch,Artifact — Equipment,"Equipped creature gets +1/+0 and has ""Whenever this creature attacks, you may sacrifice Sunfire Torch. When you do, this creature deals 2 damage to any target.""
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",R,,LCI,167,1
+Super Speed,Enchantment — Aura,"Flash
+Enchant creature
+When this Aura enters, enchanted creature gains first strike until end of turn.
+Enchanted creature gets +1/+0 and has haste.",R,,MSH,154,1
+"Ashling, Rekindled",Legendary Creature — Elemental Sorcerer // Legendary Creature — Elemental Wizard,"Whenever this creature enters or transforms into Ashling, Rekindled, you may discard a card. If you do, draw a card.
+At the beginning of your first main phase, you may pay {U}. If you do, transform Ashling. // Whenever this creature transforms into Ashling, Rimebound and at the beginning of your first main phase, add two mana of any one color. Spend this mana only to cast spells with mana value 4 or greater.
+At the beginning of your first main phase, you may pay {R}. If you do, transform Ashling.",U/R,,ECL,124,1
+Abrade,Instant,"Choose one —
+• Abrade deals 3 damage to target creature.
+• Destroy target artifact.",R,,FDN,188,1
+Axgard Cavalry,Creature — Dwarf Berserker,{T}: Target creature gains haste until end of turn. (It can attack and {T} this turn.),R,,FDN,189,1
+Blazing Crescendo,Instant,"Target creature gets +3/+1 until end of turn.
+Exile the top card of your library. Until the end of your next turn, you may play that card.",R,,MSH,125,1
+Bulk Up,Instant,"Double target creature's power until end of turn.
+Flashback {4}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",R,,SOA,40,1
+"Casey Jones, Jury-Rig Justiciar",Legendary Creature — Human Berserker,"Haste
+When Casey Jones enters, look at the top four cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",R,,TMT,87,1
+Combustion Technique,Instant — Lesson,"Combustion Technique deals damage equal to 2 plus the number of Lesson cards in your graveyard to target creature. If that creature would die this turn, exile it instead.",R,,TLA,128,1
+Cunning Maneuver,Instant,"Target creature gets +3/+1 until end of turn.
+Create a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",R,,TLA,130,1
+Deserter's Disciple,Creature — Human Rebel Ally,{T}: Another target creature you control with power 2 or less can't be blocked this turn.,R,,TLA,131,1
+Discerning Peddler,Creature — Human Rogue,"When this creature enters, you may discard a card. If you do, draw a card.",R,,OTJ,121,1
+Draconautics Engineer,Creature — Goblin Artificer,"Exhaust — {R}: Other creatures you control gain haste until end of turn. Put a +1/+1 counter on this creature. (Activate each exhaust ability only once.)
+Exhaust — {3}{R}: Create a 4/4 red Dinosaur Dragon creature token with flying.",R,,DFT,121,1
+Dragon Fodder,Sorcery,Create two 1/1 red Goblin creature tokens.,R,,FDN,535,1
+Emeritus of Conflict,Creature — Human Wizard // Instant,"First strike
+Whenever you cast your third spell each turn, this creature becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Lightning Bolt deals 3 damage to any target.",R,,SOS,113,1
+Explosive Prodigy,Creature — Elemental Sorcerer,"Vivid — When this creature enters, it deals X damage to target creature an opponent controls, where X is the number of colors among permanents you control.",R,,ECL,136,1
+Expressive Firedancer,Creature — Human Sorcerer,"Opus — Whenever you cast an instant or sorcery spell, this creature gets +1/+1 until end of turn. If five or more mana was spent to cast that spell, this creature also gains double strike until end of turn.",R,,SOS,114,1
+Firebender Ascension,Enchantment,"When this enchantment enters, create a 2/2 red Soldier creature token with firebending 1.
+Whenever a creature you control attacking causes a triggered ability of that creature to trigger, put a quest counter on this enchantment. Then if it has four or more quest counters on it, you may copy that ability. You may choose new targets for the copy.",R,,TLA,137,1
+Firebending Student,Creature — Human Monk,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+Firebending X, where X is this creature's power. (Whenever this creature attacks, add X {R}. This mana lasts until end of combat.)",R,,TLA,139,1
+Firebrand Archer,Creature — Human Archer,"Whenever you cast a noncreature spell, this creature deals 1 damage to each opponent.",R,,FDN,196,1
+Fire Sages,Creature — Human Cleric,"Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.)
+{1}{R}{R}: Put a +1/+1 counter on this creature.",R,,TLA,136,1
+Flame-Chain Mauler,Creature — Elemental Warrior,{1}{R}: This creature gets +1/+0 and gains menace until end of turn. (It can't be blocked except by two or more creatures.),R,,ECL,138,1
+Food Fight,Enchantment,"Artifacts you control have ""{2}, Sacrifice this artifact: It deals damage to any target equal to 1 plus the number of permanents named Food Fight you control.""",R,,WOE,129,1
+Galvanize,Instant,"Galvanize deals 3 damage to target creature. If you've drawn two or more cards this turn, Galvanize deals 5 damage to that creature instead.",R,,MKM,128,1
+Giantfall,Instant,"Choose one —
+• Target creature you control deals damage equal to its power to target creature an opponent controls.
+• Destroy target artifact.",R,,ECL,141,1
+Gilded Ghoda,Creature — Horse Mount,"Whenever this creature attacks while saddled, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
+Saddle 1 (Tap any number of other creatures you control with total power 1 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",R,,DFT,130,1
+Goblin Glasswright,Creature — Goblin Sorcerer // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,,SOS,117,1
+Gristle Glutton,Creature — Goblin Scout,"{T}, Blight 1: Discard a card. If you do, draw a card. (To blight 1, put a -1/-1 counter on a creature you control.)",R,,ECL,144,1
+Hard-Won Jitte,Artifact — Equipment,"Equipped creature has double strike.
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",R,,TMT,91,1
+Haste Magic,Instant,Target creature gets +3/+1 and gains haste until end of turn. Exile the top card of your library. You may play it until your next end step.,R,,FIN,140,1
+"Hawkeye, Master Marksman",Legendary Creature — Human Archer Hero,"First strike, reach
+Trick Arrows — Whenever Hawkeye becomes tapped, you may pay {1} up to three times. When you do, choose up to that many.
+• Net — Target creature can't block this turn.
+• Explosive — Hawkeye deals 2 damage to target player.
+• Boomerang — Discard a card, then draw a card.",R,,MSH,130,1
+"Hazoret, Godseeker",Legendary Creature — God,"Indestructible, haste
+Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+{1}, {T}: Target creature with power 2 or less can't be blocked this turn.
+Hazoret can't attack or block unless you have max speed.",R,,DFT,133,1
+HULK SMASH!,Instant,"Teamwork 4 (As an additional cost to cast this spell, you may tap any number of creatures you control with total power 4 or more.)
+Choose one. If this spell was cast using teamwork, choose both instead.
+• Destroy target noncreature artifact.
+• Target creature you control deals damage equal to its power to target creature an opponent controls.",R,,MSH,135,1
+"Hobgoblin, Mantled Marauder",Legendary Creature — Goblin Human Villain,"Flying, haste
+Whenever you discard a card, Hobgoblin gets +2/+0 until end of turn.",R,,MSC,805,1
+HYDRA Assault Robot,Artifact Creature — Robot Villain,"Whenever another Villain and/or artifact you control enters, this creature deals 1 damage to target opponent.",R,,MSH,137,1
+Invasive Maneuvers,Instant,Invasive Maneuvers deals 3 damage to target creature. It deals 5 damage instead if you control a Spacecraft.,R,,EOE,137,1
+Iroh's Demonstration,Sorcery — Lesson,"Choose one —
+• Iroh's Demonstration deals 1 damage to each creature your opponents control.
+• Iroh's Demonstration deals 4 damage to target creature.",R,,TLA,141,1
+Jeskai Devotee,Creature — Orc Monk,"Flurry — Whenever you cast your second spell each turn, this creature gets +1/+1 until end of turn.
+{1}: Add {U}, {R}, or {W}. Activate only once each turn.",W/U/R,,TDM,110,1
+Lightning Strike,Instant,Lightning Strike deals 3 damage to any target.,R,,MSH,142,1
+K'un-Lun Warrior,Creature — Human Warrior Hero,"When this creature enters, you may sacrifice an artifact or discard a card. If you do, draw a card.",R,,MSH,140,1
+Loki Laufeyson,Legendary Creature — God Sorcerer Villain,"{1}, {T}: When you next cast an instant or sorcery spell with mana value less than or equal to Loki's power this turn, copy that spell. You may choose new targets for the copy.
+Power-up — {4}{R}: Put two +1/+1 counters on Loki. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",R,,MSH,143,1
+Magebane Lizard,Creature — Lizard,"Whenever a player casts a noncreature spell, this creature deals damage to that player equal to the number of noncreature spells they've cast this turn.",R,,OTJ,134,1
+Manhole Missile,Instant,"Manhole Missile deals 3 damage to target creature. You may put a card from your hand on the bottom of your library. If you do, draw a card.",R,,TMT,94,1
+Melded Moxite,Artifact,"When this artifact enters, you may discard a card. If you do, draw two cards.
+{3}, Sacrifice this artifact: Create a tapped 2/2 colorless Robot artifact creature token.",R,,EOE,143,1
+Price of Freedom,Sorcery — Lesson,"Destroy target artifact or land an opponent controls. Its controller may search their library for a basic land card, put it onto the battlefield tapped, then shuffle.
+Draw a card.",R,,TLA,149,1
+Oreplate Pangolin,Artifact Creature — Robot Pangolin,"Whenever another artifact you control enters, you may pay {1}. If you do, put a +1/+1 counter on this creature.",R,,EOE,150,1
+Purple Dragon Punks,Creature — Human Rogue,{T}: Add {R}. Spend this mana only to cast an artifact spell or to activate an ability.,R,,TMT,100,1
+"Raphael, Tough Turtle",Legendary Creature — Mutant Ninja Turtle,"Alliance — Whenever another creature you control enters, Raphael deals 1 damage to target opponent.",R,,TMT,104,1
+Ratcatcher Trainee,Creature — Human Peasant // Instant — Adventure,"During your turn, this creature has first strike. // Create two 1/1 black Rat creature tokens with ""This token can't block."" (Then exile this card. You may cast the creature later from exile.)",R,,WOE,144,1
+Reckless Ransacking,Instant,"Target creature gets +3/+2 until end of turn. Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,,ECL,152,1
+Return the Favor,Instant,"Spree (Choose one or more additional costs.)
++ {1} — Copy target instant spell, sorcery spell, activated ability, or triggered ability. You may choose new targets for the copy.
++ {1} — Change the target of target spell or ability with a single target.",R,,SOA,47,1
+Rig for War,Instant,Target creature gets +3/+0 and gains first strike and reach until end of turn.,R,,EOE,156,1
+Sabotender,Creature — Plant,"Reach
+Landfall — Whenever a land you control enters, this creature deals 1 damage to each opponent.",R,,FIN,153,1
+Romantic Rendezvous,Sorcery,"Discard a card, then draw two cards.",R,,MSC,808,1
+"Sarkhan, Dragon Ascendant",Legendary Creature — Human Druid,"When Sarkhan enters, you may behold a Dragon. If you do, create a Treasure token. (To behold a Dragon, choose a Dragon you control or reveal a Dragon card from your hand.)
+Whenever a Dragon you control enters, put a +1/+1 counter on Sarkhan. Until end of turn, Sarkhan becomes a Dragon in addition to its other types and gains flying.",R,,TDM,118,1
+Searslicer Goblin,Creature — Goblin Warrior,"Raid — At the beginning of your end step, if you attacked this turn, create a 1/1 red Goblin creature token.",R,,FDN,93,1
+Slumbering Cerberus,Creature — Dog,"This creature doesn't untap during your untap step.
+Morbid — At the beginning of each end step, if a creature died this turn, untap this creature.",R,,FDN,94,1
+"Speed, Young Avenger",Legendary Creature — Mutant Hero,"Haste
+Whenever you cast a noncreature spell, you may pay {1}. When you do, target creature with haste can't be blocked this turn except by creatures with haste.",R,,MSH,152,1
+Team Tactics,Instant,"Teamwork 1 (As an additional cost to cast this spell, you may tap any number of creatures you control with total power 1 or more.)
+Target creature gains double strike until end of turn. If this spell was cast using teamwork, that creature also gains trample until end of turn.",R,,MSH,155,1
+Sure Strike,Instant,Target creature gets +3/+0 and gains first strike until end of turn. (It deals combat damage before creatures without first strike.),R,,FDN,209,1
+The Last Agni Kai,Instant,"Target creature you control fights target creature an opponent controls. If the creature the opponent controls is dealt excess damage this way, add that much {R}.
+Until end of turn, you don't lose unspent red mana as steps and phases end.",R,,TLA,144,1
+Tome Blast,Sorcery,"Tome Blast deals 2 damage to any target.
+Flashback {4}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",R,,SOS,135,1
+Untimely Malfunction,Instant,"Choose one —
+• Destroy target artifact.
+• Change the target of target spell or ability with a single target.
+• One or two target creatures can't block this turn.",R,,DSK,161,1
+Vision of Love,Instant,"You may sacrifice an artifact or discard a card. If you do, draw two cards.",R,,MSH,158,1
+Avengers Disassembled,Sorcery,"Choose one or both —
+• Avengers Disassembled deals 3 damage to each creature.
+• Destroy target land. Its controller may search their library for a basic land card, put it onto the battlefield tapped, then shuffle.",R,,MSH,124,1
+Yuyan Archers,Creature — Human Archer,"Reach
+When this creature enters, you may discard a card. If you do, draw a card.",R,,TLA,161,1
+Blazing Firesinger,Creature — Dwarf Bard // Instant,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Add {R}{R}{R}{R}{R}.",R,,SOS,109,1
+Boar-q-pine,Creature — Boar Porcupine,"Whenever you cast a noncreature spell, put a +1/+1 counter on this creature.",R,,TLA,124,1
+Bombard,Instant,Bombard deals 4 damage to target creature.,R,,EOE,129,1
+Brazen Scourge,Creature — Gremlin,Haste (This creature can attack and {T} as soon as it comes under your control.),R,,FDN,191,1
+Burning Curiosity,Sorcery,"As an additional cost to cast this spell, you may blight 1. (You may put a -1/-1 counter on a creature you control.)
+Exile the top two cards of your library. If this spell's additional cost was paid, exile the top three cards instead. Until the end of your next turn, you may play those cards.",R,,ECL,129,1
+Charging Strifeknight,Creature — Spirit Knight,"Haste
+{T}, Discard a card: Draw a card.",R,,SOS,110,1
+Count on Luck,Enchantment,"At the beginning of your upkeep, exile the top card of your library. You may play that card this turn.",R,,DFT,118,1
+Crackling Cyclops,Creature — Cyclops Wizard,"Whenever you cast a noncreature spell, this creature gets +3/+0 until end of turn.",R,,FDN,83,1
+Cut Propulsion,Instant,"Target creature deals damage to itself equal to its power. If that creature has flying, it deals twice that much damage to itself instead.",R,,EOE,130,1
+"Electro, Assaulting Battery",Legendary Creature — Human Villain,"Flying
+You don't lose unspent red mana as steps and phases end.
+Whenever you cast an instant or sorcery spell, add {R}.
+When Electro leaves the battlefield, you may pay {X}. When you do, he deals X damage to target player.",R,,SPM,76,1
+Electro's Bolt,Sorcery,"Electro's Bolt deals 4 damage to target creature.
+Mayhem {1}{R} (You may cast this card from your graveyard for {1}{R} if you discarded it this turn. Timing rules still apply.)",R,,SPM,77,1
+Evil's Thrall,Sorcery,"Gain control of target creature until end of turn. If you control a Villain with greater mana value than that creature, gain control of that creature until the end of your next turn instead. Untap that creature. It gains haste until end of turn.",R,,MSH,128,1
+Fiery Annihilation,Instant,"Fiery Annihilation deals 5 damage to target creature. Exile up to one target Equipment attached to that creature. If that creature would die this turn, exile it instead.",R,,FDN,86,1
+Frontline War-Rager,Creature — Kavu Soldier,"At the beginning of your end step, if you control two or more tapped creatures, put a +1/+1 counter on this creature.",R,,EOE,134,1
+Goblin Boarders,Creature — Goblin Pirate,Raid — This creature enters with a +1/+1 counter on it if you attacked this turn.,R,,FDN,87,1
+Goblin Surprise,Instant,"Choose one —
+• Creatures you control get +2/+0 until end of turn.
+• Create two 1/1 red Goblin creature tokens.",R,,FDN,200,1
+Hex Magic,Sorcery — Arcane,"Exile all the cards from your hand, then draw that many cards. Until the end of your next turn, you may play cards exiled this way.",R,,MSH,133,1
+Hire a Crew,Instant,"Create a 2/1 black Villain creature token with menace, then creatures you control get +1/+0 until end of turn. (A creature with menace can't be blocked except by two or more creatures.)",R,,MSH,134,1
+Hotfoot Gnome,Artifact Creature — Gnome,"Haste
+{T}: Another target creature gains haste until end of turn.",R,,LCI,154,1
+How to Start a Riot,Instant — Lesson,"Target creature gains menace until end of turn. (It can't be blocked except by two or more creatures.)
+Creatures target player controls get +2/+0 until end of turn.",R,,TLA,140,1
+"Human Torch, Johnny Storm",Legendary Creature — Human Hero,"Flying
+Whenever you draw a card, if you control another Hero, Human Torch deals 1 damage to target opponent.
+Power-up — {6}{R}: Put three +1/+1 counters on Human Torch. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",R,,MSH,136,1
+"Iron Fist, Living Weapon",Legendary Creature — Human Warrior Hero,"Whenever you cast a spell that targets a creature you control, Iron Fist gains ""{T}: Iron Fist deals damage equal to his power to any other target"" until end of turn.",R,,MSH,138,1
+J. Jonah Jameson,Legendary Creature — Human Citizen,"When J. Jonah Jameson enters, suspect up to one target creature. (A suspected creature has menace and can't block.)
+Whenever a creature you control with menace attacks, create a Treasure token.",R,,SPM,81,1
+Jennika's Technique,Instant,"Sneak {R} (You may cast this spell for {R} if you also return an unblocked attacker you control to hand during the declare blockers step.)
+Jennika's Technique deals 2 damage to each creature.",R,,TMT,93,1
+"Jeong Jeong, the Deserter",Legendary Creature — Human Rebel Ally,"Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.)
+Exhaust — {3}: Put a +1/+1 counter on Jeong Jeong. When you next cast a Lesson spell this turn, copy it and you may choose new targets for the copy. (Activate each exhaust ability only once.)",R,,TLA,142,1
+"Jessica Jones, Private Eye",Legendary Creature — Human Detective Hero,"{T}, Put a stun counter on Jessica Jones: Exile the top X cards of your library, where X is Jessica Jones's power. You may play those cards this turn. (If a permanent with a stun counter would become untapped, remove one from it instead.)",R,,MSH,139,1
+Machinesmith Automaton,Artifact Creature — Robot Villain,"Trample
+Whenever another artifact you control enters, put a +1/+1 counter on this creature.",R,,MSH,144,1
+Kavaron Turbodrone,Artifact Creature — Robot Scout,{T}: Target creature you control gets +1/+1 and gains haste until end of turn. Activate only as a sorcery.,R,,EOE,141,1
+Minecart Daredevil,Creature — Dwarf Knight // Instant — Adventure, // Target creature gets +2/+1 until end of turn. (Then exile this card. You may cast the creature later from exile.),R,,WOE,141,1
+Molecular Modifier,Creature — Kavu Artificer,"At the beginning of combat on your turn, target creature you control gets +1/+0 and gains first strike until end of turn.",R,,EOE,146,1
+Mutant Town Musicians,Creature — Mutant Bard Performer,"Trample
+Alliance — Whenever another creature you control enters, this creature gets +1/+0 until end of turn.",R,,TMT,97,1
+"Molten Man, Inferno Incarnate",Legendary Creature — Elemental Villain,"When Molten Man enters, search your library for a basic Mountain card, put it onto the battlefield tapped, then shuffle.
+Molten Man gets +1/+1 for each Mountain you control.
+When Molten Man leaves the battlefield, sacrifice a land.",R,,SPM,84,1
+Mysidian Elder,Creature — Human Wizard,"When this creature enters, create a 0/1 black Wizard creature token with ""Whenever you cast a noncreature spell, this token deals 1 damage to each opponent.""",R,,FIN,145,1
+Null Group Biological Assets,Creature — Mutant Mercenary,"During your turn, this creature has first strike.
+Whenever this creature attacks, you may discard a card. If you do, draw a card.",R,,TMT,98,1
+Outpace Oblivion,Enchantment,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+When this enchantment enters, it deals 5 damage to up to one target creature or planeswalker.
+{2}, Sacrifice this enchantment: It deals 2 damage to each player who doesn't have max speed.",R,,DFT,139,1
+Outlaws' Fury,Instant,"Creatures you control get +2/+0 until end of turn. If you control an outlaw, exile the top card of your library. Until the end of your next turn, you may play that card. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)",R,,OTJ,136,1
+Pain for All,Enchantment — Aura,"Enchant creature you control
+When this Aura enters, enchanted creature deals damage equal to its power to any other target.
+Whenever enchanted creature is dealt damage, it deals that much damage to each opponent.",R,,EOE,151,1
+Prickly Pair,Creature — Plant Mercenary,"When this creature enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",R,,OTJ,137,1
+Rubble Rouser,Creature — Dwarf Sorcerer,"When this creature enters, you may discard a card. If you do, draw a card.
+{T}, Exile a card from your graveyard: Add {R}. When you do, this creature deals 1 damage to each opponent.",R,,SOS,128,1
+Seismic Rupture,Sorcery,Seismic Rupture deals 2 damage to each creature without flying.,R,,FDN,205,1
+Seize the Spoils,Sorcery,"As an additional cost to cast this spell, discard a card.
+Draw two cards and create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,,SOS,129,1
+Sidequest: Play Blitzball,Enchantment // Legendary Artifact — Equipment,"At the beginning of combat on your turn, target creature you control gets +2/+0 until end of turn.
+At the end of combat on your turn, if a player was dealt 6 or more combat damage this turn, transform this enchantment, then attach it to a creature you control. // Double Overdrive — Equipped creature gets +2/+0 and has double strike.
+Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",R,,FIN,158,1
+Solstice Revelations,Instant — Lesson,"Exile cards from the top of your library until you exile a nonland card. You may cast that card without paying its mana cost if the spell's mana value is less than the number of Mountains you control. If you don't cast that card this way, put it into your hand.
+Flashback {6}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",R,,TLA,153,1
+Spicy Oatmeal Pizza,Artifact — Food,"When this artifact enters, it deals 4 damage to any target and 3 damage to you.
+{2}, {T}, Sacrifice this artifact: You gain 3 life.",R,,TMT,109,1
+"Spider-Gwen, Free Spirit",Legendary Creature — Spider Human Hero,"Reach
+Whenever Spider-Gwen becomes tapped, you may discard a card. If you do, draw a card.",R,,MSC,874,1
+Sting-Slinger,Creature — Goblin Warrior,"{1}{R}, {T}, Blight 1: This creature deals 2 damage to each opponent. (To blight 1, put a -1/-1 counter on a creature you control.)",R,,ECL,161,1
+Strife Scholar,Creature — Orc Sorcerer // Sorcery,"Ward—Pay 2 life.
+This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Create two 2/2 red and white Spirit creature tokens.",R,,SOS,131,1
+Treetop Freedom Fighters,Creature — Human Rebel Ally,"Haste
+When this creature enters, create a 1/1 white Ally creature token.",R,,TLA,156,1
+Tweeze,Instant,"Tweeze deals 3 damage to any target. You may discard a card. If you do, draw a card.",R,,ECL,162,1
+"Ty Lee, Artful Acrobat",Legendary Creature — Human Performer,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+Whenever Ty Lee attacks, you may pay {1}. When you do, target creature can't block this turn.",R,,TLA,158,1
+Unsubtle Mockery,Instant,Unsubtle Mockery deals 4 damage to target creature. Surveil 1. (Look at the top card of your library. You may put it into your graveyard.),R,,SOS,136,1
+Volcanic Villain,Creature — Elemental Villain,"Haste
+Power-up — {5}{R}: Put two +1/+1 counters on this creature. (Activate each power-up ability only once. Reduce the cost by its mana cost if it entered this turn.)",R,,MSH,159,1
+War Balloon,Artifact — Vehicle,"Flying
+{1}: Put a fire counter on this Vehicle.
+As long as this Vehicle has three or more fire counters on it, it's an artifact creature.
+Crew 3 (Tap any number of creatures you control with total power 3 or more: This Vehicle becomes an artifact creature until end of turn.)",R,,TLA,159,1
+Weftstalker Ardent,Creature — Drix Artificer,"Whenever another creature or artifact you control enters, this creature deals 1 damage to each opponent.
+Warp {R} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",R,,EOE,169,1
+Wisecrack,Instant,"Target creature deals damage equal to its power to itself. If that creature is attacking, Wisecrack deals 2 damage to that creature's controller.",R,,MSC,813,1
+Battlesong Berserker,Creature — Human Berserker,"Whenever you attack, target creature you control gets +1/+0 and gains menace until end of turn. (It can't be blocked except by two or more creatures.)",R,,FDN,78,1
+Bot Bashing Time,Sorcery,"Bot Bashing Time deals 6 damage to target creature. If that creature would die this turn, exile it instead.",R,,TMT,85,1
+Bumi Bash,Sorcery,"Choose one —
+• Bumi Bash deals damage equal to the number of lands you control to target creature.
+• Destroy target land creature or nonbasic land.",R,,TLA,125,1
+Child of the Volcano,Creature — Elemental,"Trample
+At the beginning of your end step, if you descended this turn, put a +1/+1 counter on this creature. (You descended if a permanent card was put into your graveyard from anywhere.)",R,,LCI,140,1
+Crescent Island Temple,Legendary Enchantment — Shrine,"When Crescent Island Temple enters, for each Shrine you control, create a 1/1 red Monk creature token with prowess. (Whenever you cast a noncreature spell, it gets +1/+1 until end of turn.)
+Whenever another Shrine you control enters, create a 1/1 red Monk creature token with prowess.",R,,TLA,129,1
+Crimson Operative,Artifact Creature — Human Villain,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+When this creature enters, exile the top card of your library. Until the end of your next turn, you may play that card.",R,,MSH,126,1
+Enduring Courage,Enchantment Creature — Dog Glimmer,"Whenever another creature you control enters, it gets +2/+0 and gains haste until end of turn.
+When Enduring Courage dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",R,,DSK,133,1
+Fin Fang Foom,Legendary Creature — Alien Dragon Villain,"Flying
+Whenever you cast an instant or sorcery spell that targets an artifact or land, copy that spell. You may choose new targets for the copy. Put two +1/+1 counters on Fin Fang Foom.",R,,MSH,129,1
+Fire Nation Raider,Creature — Human Soldier,"Raid — When this creature enters, if you attacked this turn, create a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",R,,TLA,135,1
+Flamekin Gildweaver,Creature — Elemental Sorcerer,"Trample
+When this creature enters, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,,ECL,140,1
+Garrison Excavator,Creature — Orc Sorcerer,"Menace (This creature can't be blocked except by two or more creatures.)
+Whenever one or more cards leave your graveyard, create a 2/2 red and white Spirit creature token.",R,,SOS,116,1
+"Hawkeye, Young Avenger",Legendary Creature — Human Archer Hero,"Reach
+If a source you control would deal noncombat damage to an opponent or a permanent an opponent controls, instead it deals that much damage plus X, where X is Hawkeye's power.",R,,MSH,131,1
+Hidetsugu's Second Rite,Instant,"If target player has exactly 10 life, Hidetsugu's Second Rite deals 10 damage to that player.",R,,FDN,202,1
+Kav Landseeker,Creature — Kavu Soldier,"Menace (This creature can't be blocked except by two or more creatures.)
+When this creature enters, create a Lander token. At the beginning of the end step on your next turn, sacrifice that token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",R,,EOE,138,1
+Kindle the Inner Flame,Kindred Sorcery — Elemental,"Create a token that's a copy of target creature you control, except it has haste and ""At the beginning of the end step, sacrifice this token.""
+Flashback—{1}{R}, Behold three Elementals. (You may cast this card from your graveyard for its flashback cost. Then exile it. To behold an Elemental, choose an Elemental you control or reveal an Elemental card from your hand.)",R,,ECL,147,1
+"Krenko, Mob Boss",Legendary Creature — Goblin Warrior,"{T}: Create X 1/1 red Goblin creature tokens, where X is the number of Goblins you control.",R,,FDN,204,1
+"Mjölnir, Hammer of Thor",Legendary Artifact — Equipment,"When Mjölnir enters, it deals 4 damage to up to one target creature.
+Double all damage equipped creature would deal.
+Equip worthy {1} (A creature is worthy if it's a legendary non-Villain that's red and/or white.)
+{2}{R}, Discard this card: It deals 2 damage to each creature.",R,,MSH,146,1
+Nibelheim Aflame,Sorcery,"Choose target creature you control. It deals damage equal to its power to each other creature. If this spell was cast from a graveyard, discard your hand and draw four cards.
+Flashback {5}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",R,,FIN,146,1
+Orbital Plunge,Sorcery,"Orbital Plunge deals 6 damage to target creature. If excess damage was dealt this way, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",R,,EOE,149,1
+"Raphael, Ninja Destroyer",Legendary Creature — Mutant Ninja Turtle,"Raphael must be blocked if able.
+Enrage — Whenever Raphael is dealt damage, add that much {R}. Until end of turn, you don't lose this mana as steps and phases end.",R,,TMT,102,1
+Repulsor Blast,Sorcery,"Teamwork 2 (As an additional cost to cast this spell, you may tap any number of creatures you control with total power 2 or more.)
+Repulsor Blast deals 5 damage to target creature. If this spell was cast using teamwork, it also deals 2 damage to that creature's controller.",R,,MSH,150,1
+Rock Soldiers,Artifact Creature — Elemental Soldier,"When this creature enters, destroy up to one target noncreature artifact.",R,,TMT,107,1
+Seifer Almasy,Legendary Creature — Human Knight,"Whenever a creature you control attacks alone, it gains double strike until end of turn.
+Fire Cross — Whenever Seifer Almasy deals combat damage to a player, you may cast target instant or sorcery card with mana value 3 or less from your graveyard without paying its mana cost. If that spell would be put into your graveyard, exile it instead.",R,,FIN,156,1
+Spider-Islanders,Creature — Spider Horror Citizen,Mayhem {1}{R} (You may cast this card from your graveyard for {1}{R} if you discarded it this turn. Timing rules still apply.),R,,SPM,91,1
+Strongbox Raider,Creature — Orc Pirate,"Raid — When this creature enters, if you attacked this turn, exile the top two cards of your library. Choose one of them. Until the end of your next turn, you may play that card.",R,,FDN,96,1
+Summon: Esper Ramuh,Enchantment Creature — Saga Wizard,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Judgment Bolt — This creature deals damage equal to the number of noncreature, nonland cards in your graveyard to target creature an opponent controls.
+II, III — Wizards you control get +1/+0 until end of turn.",R,,FIN,161,1
+The Cave of Two Lovers,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Create two 1/1 white Ally creature tokens.
+II — Search your library for a Mountain or Cave card, reveal it, put it into your hand, then shuffle.
+III — Earthbend 3. (Target land you control becomes a 0/0 creature with haste that's still a land. Put three +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",R,,TLA,126,1
+The Legend of Roku,Enchantment — Saga // Legendary Creature — Avatar,"(As this Saga enters and after your draw step, add a lore counter.)
+I — Exile the top three cards of your library. Until the end of your next turn, you may play those cards.
+II — Add one mana of any color.
+III — Exile this Saga, then return it to the battlefield transformed under your control. // Firebending 4 (Whenever this creature attacks, add {R}{R}{R}{R}. This mana lasts until end of combat.)
+{8}: Create a 4/4 red Dragon creature token with flying and firebending 4.",R,,TLA,145,1
+Truck Toss,Instant,"This spell costs {2} less to cast if you control a Vehicle.
+Truck Toss deals 4 damage to any target.",R,,MSH,157,1
+Warrior's Sword,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
+Equipped creature gets +3/+2 and is a Warrior in addition to its other types.
+Equip {5} ({5}: Attach to target creature you control. Equip only as a sorcery.)",R,,FIN,169,1
+Wartime Protestors,Creature — Human Rebel Ally,"Haste
+Whenever another Ally you control enters, put a +1/+1 counter on that creature and it gains haste until end of turn.",R,,TLA,160,1
+Bellowing Bruiser,Creature — Ogre // Sorcery — Adventure,Haste // Up to two target creatures can't block this turn. (Then exile this card. You may cast the creature later from exile.),R,,WOE,121,1
+Boldwyr Aggressor,Creature — Giant Warrior,"Double strike
+Other Giants you control have double strike.",R,,ECL,125,1
+Broadcast Takeover,Sorcery,Gain control of all artifacts your opponents control until end of turn. Untap them. They gain haste until end of turn.,R,,TMT,86,1
+Combustion Man,Legendary Creature — Human Assassin,"Whenever Combustion Man attacks, destroy target permanent unless its controller has Combustion Man deal damage to them equal to his power.",R,,TLA,127,1
+Goldfury Strider,Artifact Creature — Golem,"Trample
+Tap two untapped artifacts and/or creatures you control: Target creature gets +2/+0 until end of turn. Activate only as a sorcery.",R,,LCI,152,1
+Gorehorn Raider,Creature — Minotaur Pirate,"Raid — When this creature enters, if you attacked this turn, this creature deals 2 damage to any target.",R,,FDN,89,1
+Heated Argument,Instant,"Heated Argument deals 6 damage to target creature. You may exile a card from your graveyard. If you do, Heated Argument also deals 2 damage to that creature's controller.",R,,SOS,118,1
+Kree Sentinel,Artifact Creature — Kree Robot Villain,"Reach
+Basic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",R,,MSH,141,1
+Kavaron Skywarden,Creature — Kavu Soldier,"Reach
+Void — At the beginning of your end step, if a nonland permanent left the battlefield this turn or a spell was warped this turn, put a +1/+1 counter on this creature.",R,,EOE,140,1
+Nova Hellkite,Creature — Dragon,"Flying, haste
+When this creature enters, it deals 1 damage to target creature an opponent controls.
+Warp {2}{R} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",R,,EOE,148,1
+Raging Goblinoids,Creature — Goblin Berserker Villain,"Haste
+Mayhem {2}{R} (You may cast this card from your graveyard for {2}{R} if you discarded it this turn. Timing rules still apply.)",R,,SPM,85,1
+Ran and Shaw,Legendary Creature — Dragon,"Flying, firebending 2
+When Ran and Shaw enter, if you cast them and there are three or more Dragon and/or Lesson cards in your graveyard, create a token that's a copy of Ran and Shaw, except it's not legendary.
+{3}{R}: Dragons you control get +2/+0 until end of turn.",R,,TLA,150,1
+Rearing Embermare,Creature — Horse Beast,"Reach, haste",R,,SOS,127,1
+Spinerock Tyrant,Creature — Dragon,"Flying
+Wither (This deals damage to creatures in the form of -1/-1 counters.)
+Whenever you cast an instant or sorcery spell with a single target, you may copy it. If you do, those spells gain wither. You may choose new targets for the copy.",R,,ECL,159,1
+Rough Rhino Cavalry,Creature — Human Mercenary,"Firebending 2 (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)
+Exhaust — {8}: Put two +1/+1 counters on this creature. It gains trample until end of turn. (Activate each exhaust ability only once.)",R,,TLA,152,1
+Steel Wrecking Ball,Artifact,"When this artifact enters, it deals 5 damage to target creature.
+{1}{R}, Discard this card: Destroy target artifact.",R,,SPM,177,1
+Stegron the Dinosaur Man,Legendary Creature — Dinosaur Villain,"Menace (This creature can't be blocked except by two or more creatures.)
+Dinosaur Formula — {1}{R}, Discard this card: Until end of turn, target creature you control gets +3/+1 and becomes a Dinosaur in addition to its other types.",R,,MSC,810,1
+Stormshriek Feral,Creature — Dragon // Sorcery — Omen,"Flying, haste
+{1}{R}: This creature gets +1/+0 until end of turn. // Discard a card. If you do, draw two cards. (Then shuffle this card into its owner's library.)",R,,TDM,124,1
+"Thor, God of Thunder",Legendary Creature — God Warrior Hero,"Flying
+When Thor enters, exile target Equipment, instant, or sorcery card from your graveyard. Until the end of your next turn, you may play that card.
+Whenever you cast a noncreature spell, Thor deals damage equal to that spell's mana value to any target.",R,,MSH,156,1
+"Zog, Triceraton Castaway",Legendary Creature — Dinosaur Soldier,"Reach, trample
+When Zog enters, target creature can't block this turn.
+Mountaincycling {2} ({2}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)",R,,TMT,111,1
+"Wonder Man, Hollywood Hero",Legendary Creature — Human Performer Hero,"Flying
+Each power-up ability of permanents you control can be activated an additional time.
+Power-up — {5}{R}{R}: Put two +1/+1 counters on Wonder Man. (Activate each power-up ability only . . . once? Reduce the cost by his mana cost if he entered this turn.)",R,,MSH,160,1
+"Clive, Ifrit's Dominant",Legendary Creature — Human Noble Warrior // Legendary Enchantment Creature — Saga Demon,"When Clive enters, you may discard your hand, then draw cards equal to your devotion to red. (Each {R} in the mana costs of permanents you control counts toward your devotion to red.)
+{4}{R}{R}, {T}: Exile Clive, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery. // (As this Saga enters and after your draw step, add a lore counter.)
+I — Lunge — Ifrit fights up to one other target creature.
+II, III — Brimstone — Add {R}{R}{R}{R}. If Ifrit has three or more lore counters on it, exile it, then return it to the battlefield (front face up).",R,,FIN,133,1
+"Etali, Primal Storm",Legendary Creature — Elder Dinosaur,"Whenever Etali attacks, exile the top card of each player's library, then you may cast any number of spells from among those cards without paying their mana costs.",R,,FDN,194,1
+Hill Gigas,Creature — Giant,"Trample, haste
+Mountaincycling {2} ({2}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)",R,,FIN,141,1
+Kulrath Zealot,Creature — Elemental Warrior,"When this creature enters, exile the top card of your library. Until the end of your next turn, you may play that card.
+Basic landcycling {1}{R} ({1}{R}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",R,,ECL,148,1
+Random Encounter,Sorcery,"Shuffle your library, then mill four cards. Put each creature card milled this way onto the battlefield. They gain haste. At the beginning of the next end step, return those creatures to their owner's hand.
+Flashback {6}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",R,,FIN,150,1
+Mongoose Lizard,Creature — Mongoose Lizard,"Menace (This creature can't be blocked except by two or more creatures.)
+When this creature enters, it deals 1 damage to any target.
+Mountaincycling {2} ({2}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)",R,,TLA,148,1
+Red Hulk,Legendary Creature — Gamma Berserker Villain,"Reach, trample
+Enrage — Whenever Red Hulk is dealt damage, put a +1/+1 counter on him. When you do, he deals damage equal to the number of +1/+1 counters on him to any other target.",R,,MSH,149,1
+Territorial Bruntar,Creature — Beast,"Reach
+Landfall — Whenever a land you control enters, exile cards from the top of your library until you exile a nonland card. You may cast that card this turn.",R,,EOE,165,1
+Zealous Lorecaster,Creature — Giant Sorcerer,"When this creature enters, return target instant or sorcery card from your graveyard to your hand.",R,,SOS,137,1
+Nebula Dragon,Creature — Dragon,"Flying
+When this creature enters, it deals 3 damage to any target.",R,,EOE,147,1
+Glassworks // Shattered Yard,Enchantment — Room // Enchantment — Room,"When you unlock this door, this Room deals 4 damage to target creature an opponent controls.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // At the beginning of your end step, this Room deals 1 damage to each opponent.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",R,,DSK,137,1
+Devastating Onslaught,Sorcery,Create X tokens that are copies of target artifact or creature you control. Those tokens gain haste until end of turn. Sacrifice them at the beginning of the next end step.,R,,EOE,132,1
+Hell to Pay,Sorcery,Hell to Pay deals X damage to target creature. Create a number of tapped Treasure tokens equal to the amount of excess damage dealt to that creature this way.,R,,OTJ,126,1
+Photon Blast Barrage,Sorcery,"When you cast this spell, copy it X times. You may choose new targets for the copies.
+Photon Blast Barrage deals 1 damage to target creature.",R,,MSH,147,1
+Fire Nation Palace,Land,"This land enters tapped unless you control a basic land.
+{T}: Add {R}.
+{1}{R}, {T}: Target creature you control gains firebending 4 until end of turn. (Whenever it attacks, add {R}{R}{R}{R}. This mana lasts until end of combat.)",R,,TLA,268,1
+"Kavaron, Memorial World",Land — Planet,"This land enters tapped.
+{T}: Add {R}.
+Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
+12+ | {1}{R}, {T}, Sacrifice a land: Create a 2/2 colorless Robot artifact creature token, then creatures you control get +1/+0 and gain haste until end of turn.",R,,EOE,255,1
