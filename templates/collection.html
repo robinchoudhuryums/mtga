@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MTG Arena — Collection Editor</title>
+<style>
+  :root {
+    --bg: #0f1115; --panel: #191c23; --panel2: #21252e; --line: #2c313c;
+    --text: #e7e9ee; --muted: #949bab; --accent: #d9a441; --dirty: #4f9d69;
+    --W:#f4e7c3; --U:#a5c8e8; --B:#b7a3c7; --R:#e39a8a; --G:#9dc7a3; --C:#c9ccd3;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  header { position: sticky; top: 0; z-index: 5; background: rgba(15,17,21,.96);
+    backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 14px 20px; }
+  .titlebar { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  h1 { font-size: 19px; margin: 0; letter-spacing: .2px; }
+  .stats { color: var(--muted); font-size: 13px; }
+  .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; align-items: center; }
+  input[type=search], select { background: var(--panel2); color: var(--text);
+    border: 1px solid var(--line); border-radius: 8px; padding: 8px 11px; font-size: 14px; }
+  input[type=search] { min-width: 240px; flex: 1 1 240px; }
+  .pips { display: flex; gap: 6px; }
+  .pip { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent;
+    cursor: pointer; font-weight: 700; color: #1a1a1a; display: grid; place-items: center;
+    font-size: 13px; opacity: .45; transition: opacity .12s, border-color .12s; user-select: none; }
+  .pip.on { opacity: 1; border-color: var(--text); }
+  .pip.W{background:var(--W)} .pip.U{background:var(--U)} .pip.B{background:var(--B)}
+  .pip.R{background:var(--R)} .pip.G{background:var(--G)} .pip.C{background:var(--C)}
+  #save { margin-left: auto; background: var(--panel2); color: var(--muted);
+    border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px; font-size: 14px;
+    font-weight: 700; cursor: not-allowed; }
+  #save.ready { background: var(--dirty); color: #0c130e; border-color: var(--dirty); cursor: pointer; }
+  .grid { display: grid; gap: 14px; padding: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .card { position: relative; border-radius: 11px; overflow: hidden; background: var(--panel);
+    border: 1px solid var(--line); display: flex; flex-direction: column; }
+  .card.dirty { border-color: var(--dirty); box-shadow: 0 0 0 1px var(--dirty); }
+  .art { position: relative; aspect-ratio: 5 / 7; }
+  .art img { width: 100%; height: 100%; object-fit: cover; display: block; background: var(--panel2); }
+  .art .fallback { position: absolute; inset: 0; display: none; flex-direction: column;
+    padding: 14px; gap: 6px; }
+  .card.noimg .fallback { display: flex; }
+  .card.noimg .art img { display: none; }
+  .fallback .fname { font-weight: 700; font-size: 15px; }
+  .fallback .ftype { color: var(--muted); font-size: 12px; }
+  .setcode { position: absolute; bottom: 8px; left: 8px; background: rgba(10,11,14,.8);
+    color: var(--muted); font-size: 10px; letter-spacing: .5px; padding: 2px 6px; border-radius: 5px; }
+  .edit { padding: 8px; display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--line); }
+  .qtyrow { display: flex; align-items: center; gap: 6px; }
+  .qtyrow label { color: var(--muted); font-size: 12px; }
+  .qty { width: 62px; background: var(--panel2); color: var(--text); border: 1px solid var(--line);
+    border-radius: 6px; padding: 5px 7px; font-size: 14px; font-weight: 700; }
+  .syn { width: 100%; background: var(--panel2); color: var(--text); border: 1px solid var(--line);
+    border-radius: 6px; padding: 5px 7px; font-size: 12px; }
+  .qty:focus, .syn:focus { outline: none; border-color: var(--accent); }
+  .cname { font-size: 12px; font-weight: 700; padding: 0 8px; margin-top: 6px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .empty { padding: 60px 20px; text-align: center; color: var(--muted); }
+  footer { color: var(--muted); font-size: 12px; text-align: center; padding: 20px; }
+  .toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+    background: var(--panel2); border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 16px; font-size: 13px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<header>
+  <div class="titlebar">
+    <h1>Collection Editor</h1>
+    <span class="stats" id="stats"></span>
+    <button id="save" title="Saving is wired up in Phase 2">No changes</button>
+  </div>
+  <div class="controls">
+    <input type="search" id="q" placeholder="Search name, type, or text…" autocomplete="off">
+    <div class="pips" id="pips">
+      <div class="pip W" data-c="W" title="White">W</div>
+      <div class="pip U" data-c="U" title="Blue">U</div>
+      <div class="pip B" data-c="B" title="Black">B</div>
+      <div class="pip R" data-c="R" title="Red">R</div>
+      <div class="pip G" data-c="G" title="Green">G</div>
+      <div class="pip C" data-c="C" title="Colorless">C</div>
+    </div>
+    <select id="set"></select>
+    <select id="sort">
+      <option value="name">Sort: Name</option>
+      <option value="set">Sort: Set</option>
+      <option value="qty">Sort: Quantity</option>
+    </select>
+  </div>
+</header>
+<div class="grid" id="grid"></div>
+<div class="empty" id="empty" style="display:none">No cards match your filters.</div>
+<footer>Editing card-library.csv · Phase 1 (view + edit fields; Save comes in Phase 2)
+  · images © Wizards of the Coast, via Scryfall</footer>
+<div class="toast" id="toast"></div>
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const CARDS = JSON.parse(document.getElementById('data').textContent);
+  // key -> {qty, synergies} of the original values, to detect edits.
+  CARDS.forEach(c => { c._key = [c.name, c.set, c.cn].join(''); });
+  const orig = new Map(CARDS.map(c => [c._key, {qty: c.qty || '', syn: c.synergies || ''}]));
+  const dirty = new Map();  // key -> {name,set,collector,quantity,synergies}
+
+  const grid = document.getElementById('grid'), empty = document.getElementById('empty');
+  const q = document.getElementById('q'), setSel = document.getElementById('set');
+  const sortSel = document.getElementById('sort'), statsEl = document.getElementById('stats');
+  const saveBtn = document.getElementById('save');
+  const activeColors = new Set();
+
+  const sets = [...new Set(CARDS.map(c => c.set).filter(Boolean))].sort();
+  setSel.innerHTML = '<option value="">All sets</option>' +
+    sets.map(s => `<option value="${s}">${s}</option>`).join('');
+
+  document.getElementById('pips').addEventListener('click', e => {
+    const pip = e.target.closest('.pip'); if (!pip) return;
+    const c = pip.dataset.c;
+    if (activeColors.has(c)) { activeColors.delete(c); pip.classList.remove('on'); }
+    else { activeColors.add(c); pip.classList.add('on'); }
+    render();
+  });
+  q.addEventListener('input', render);
+  setSel.addEventListener('change', render);
+  sortSel.addEventListener('change', render);
+
+  function matches(c) {
+    const term = q.value.trim().toLowerCase();
+    if (term && !((c.name + ' ' + c.type + ' ' + c.text + ' ' + c.synergies)
+        .toLowerCase().includes(term))) return false;
+    if (setSel.value && c.set !== setSel.value) return false;
+    if (activeColors.size && !c.colors.some(x => activeColors.has(x))) return false;
+    return true;
+  }
+
+  function markDirty(c, qtyVal, synVal) {
+    const o = orig.get(c._key);
+    const changed = (qtyVal !== o.qty) || (synVal !== o.syn);
+    if (changed) {
+      dirty.set(c._key, {name: c.name, set: c.set, collector: c.cn,
+                         quantity: qtyVal, synergies: synVal});
+    } else {
+      dirty.delete(c._key);
+    }
+    updateSaveButton();
+    return changed;
+  }
+
+  function updateSaveButton() {
+    const n = dirty.size;
+    if (n === 0) { saveBtn.textContent = 'No changes'; saveBtn.classList.remove('ready'); }
+    else { saveBtn.textContent = `Save changes (${n})`; saveBtn.classList.add('ready'); }
+  }
+
+  function render() {
+    let list = CARDS.filter(matches);
+    const s = sortSel.value;
+    list.sort((a, b) =>
+      s === 'qty' ? (parseInt(b.qty || 0) - parseInt(a.qty || 0)) || a.name.localeCompare(b.name)
+      : s === 'set' ? (a.set.localeCompare(b.set) || a.name.localeCompare(b.name))
+      : a.name.localeCompare(b.name));
+
+    grid.innerHTML = list.map(c => {
+      const noimg = c.img ? '' : ' noimg';
+      const isDirty = dirty.has(c._key) ? ' dirty' : '';
+      const set = c.set ? `<span class="setcode">${esc(c.set)}${c.cn ? ' · ' + esc(c.cn) : ''}</span>` : '';
+      const curQty = dirty.has(c._key) ? dirty.get(c._key).quantity : (c.qty || '');
+      const curSyn = dirty.has(c._key) ? dirty.get(c._key).synergies : (c.synergies || '');
+      return `<div class="card${noimg}${isDirty}" data-key="${esc(c._key)}">
+        <div class="art">
+          <img loading="lazy" src="${c.img}" alt="${esc(c.name)}"
+               onerror="this.closest('.card').classList.add('noimg')">
+          <div class="fallback"><div class="fname">${esc(c.name)}</div>
+            <div class="ftype">${esc(c.type)}</div></div>
+          ${set}
+        </div>
+        <div class="cname" title="${esc(c.name)}">${esc(c.name)}</div>
+        <div class="edit">
+          <div class="qtyrow"><label>Owned ×</label>
+            <input class="qty" type="number" min="0" step="1" value="${esc(curQty)}"></div>
+          <input class="syn" type="text" value="${esc(curSyn)}" placeholder="synergies (semicolon-separated)">
+        </div>
+      </div>`;
+    }).join('');
+    wireInputs();
+    empty.style.display = list.length ? 'none' : 'block';
+    const owned = CARDS.reduce((n, c) => n + (parseInt(c.qty) || 0), 0);
+    statsEl.textContent = `${list.length} of ${CARDS.length} printings shown · ${owned} copies owned`;
+  }
+
+  function wireInputs() {
+    grid.querySelectorAll('.card').forEach(el => {
+      const key = el.dataset.key;
+      const c = CARDS.find(x => x._key === key);
+      const qEl = el.querySelector('.qty'), sEl = el.querySelector('.syn');
+      const onEdit = () => {
+        const changed = markDirty(c, qEl.value.trim(), sEl.value.trim());
+        el.classList.toggle('dirty', changed);
+      };
+      qEl.addEventListener('input', onEdit);
+      sEl.addEventListener('input', onEdit);
+    });
+  }
+
+  function esc(s) { return (s || '').toString().replace(/[&<>"]/g, m =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])); }
+
+  // Phase 1: Save is not wired to the server yet. Explain on click.
+  saveBtn.addEventListener('click', () => {
+    if (!dirty.size) return;
+    toast(`${dirty.size} edit(s) staged. Saving to the CSV is wired up in Phase 2.`);
+  });
+  let toastT;
+  function toast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 3200);
+  }
+
+  render();
+</script>
+</body>
+</html>

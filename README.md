@@ -217,6 +217,26 @@ share the repo with) can render the art and rebuild with `--no-fetch` offline,
 without the gitignored working cache. Use `--no-fetch` to rebuild from the
 manifest/cache without touching the network. Rerun after importing new cards.
 
+### Editing app — edit the collection in your browser (optional)
+
+```
+pip install -r requirements-app.txt
+python3 scripts/app.py                 # then open http://127.0.0.1:5000
+python3 scripts/app.py --port 8000     # different port
+```
+
+A small local Flask app that turns the collection into an **editable** grid: card
+art (from `image-manifest.json`), search/color/set filters, and each card's
+`Quantity Owned` and `Synergies` as inline fields with live "dirty" highlighting.
+It binds to `127.0.0.1` only — a personal, local tool, so there's no auth.
+
+Flask is the only part of the toolkit with a dependency; it's isolated in
+`requirements-app.txt`, and the core scripts (and `check_all.py` / CI) never
+import it. **Phase 1** (current) is view-and-edit: you can change fields and see
+what's dirty, but nothing is written yet. **Phase 2** will wire the Save button to
+write back to `card-library.csv` — validated in a temp file first, with an
+automatic timestamped `.bak`, so a bad edit can never corrupt the inventory.
+
 ### Sheets sync — round-trip with Google Sheets (optional)
 
 ```

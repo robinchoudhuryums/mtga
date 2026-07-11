@@ -1,0 +1,8 @@
+# Optional dependency for the local editing app (scripts/app.py) ONLY.
+# The core tooling (validate/enrich/query/deck/pool/build_*) is pure standard
+# library and needs none of this. Install just to run the editor:
+#     pip install -r requirements-app.txt
+#     python3 scripts/app.py
+#
+# Flask is pure-Python (no compiled extensions), so it installs cleanly anywhere.
+Flask>=3.0
