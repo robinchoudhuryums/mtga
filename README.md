@@ -228,14 +228,20 @@ python3 scripts/app.py --port 8000     # different port
 A small local Flask app that turns the collection into an **editable** grid: card
 art (from `image-manifest.json`), search/color/set filters, and each card's
 `Quantity Owned` and `Synergies` as inline fields with live "dirty" highlighting.
-It binds to `127.0.0.1` only — a personal, local tool, so there's no auth.
+Edit the fields, then **Save** — the changes are written back to
+`card-library.csv`. It binds to `127.0.0.1` only — a personal, local tool, so
+there's no auth.
+
+**Saving is safe by construction:** the edited rows are written to a temp file and
+run through `validate.py` first; only if that passes is the current CSV backed up
+to a timestamped `.bak` (gitignored) and then atomically replaced. A bad edit —
+e.g. a non-numeric quantity — is rejected before anything is written, so the
+inventory can't be corrupted, and any save is one `.bak` away from undo.
 
 Flask is the only part of the toolkit with a dependency; it's isolated in
 `requirements-app.txt`, and the core scripts (and `check_all.py` / CI) never
-import it. **Phase 1** (current) is view-and-edit: you can change fields and see
-what's dirty, but nothing is written yet. **Phase 2** will wire the Save button to
-write back to `card-library.csv` — validated in a temp file first, with an
-automatic timestamped `.bak`, so a bad edit can never corrupt the inventory.
+import it. Editing owned counts and synergy tags is the current scope; adding /
+removing cards and in-browser deck editing are planned later phases.
 
 ### Sheets sync — round-trip with Google Sheets (optional)
 

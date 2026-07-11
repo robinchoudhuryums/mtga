@@ -71,7 +71,7 @@
   <div class="titlebar">
     <h1>Collection Editor</h1>
     <span class="stats" id="stats"></span>
-    <button id="save" title="Saving is wired up in Phase 2">No changes</button>
+    <button id="save" title="Save edits to card-library.csv (validated, with a .bak backup)">No changes</button>
   </div>
   <div class="controls">
     <input type="search" id="q" placeholder="Search name, type, or text…" autocomplete="off">
@@ -93,8 +93,8 @@
 </header>
 <div class="grid" id="grid"></div>
 <div class="empty" id="empty" style="display:none">No cards match your filters.</div>
-<footer>Editing card-library.csv · Phase 1 (view + edit fields; Save comes in Phase 2)
-  · images © Wizards of the Coast, via Scryfall</footer>
+<footer>Editing card-library.csv · edits Save back to the CSV (validated, with a
+  timestamped .bak backup) · images © Wizards of the Coast, via Scryfall</footer>
 <div class="toast" id="toast"></div>
 <script id="data" type="application/json">__DATA__</script>
 <script>
@@ -206,10 +206,39 @@
   function esc(s) { return (s || '').toString().replace(/[&<>"]/g, m =>
     ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])); }
 
-  // Phase 1: Save is not wired to the server yet. Explain on click.
-  saveBtn.addEventListener('click', () => {
-    if (!dirty.size) return;
-    toast(`${dirty.size} edit(s) staged. Saving to the CSV is wired up in Phase 2.`);
+  // Save: POST changed rows to the server, which validates + backs up before
+  // writing card-library.csv. On success, adopt the saved values as the new
+  // baseline and clear the dirty set.
+  saveBtn.addEventListener('click', async () => {
+    if (!dirty.size || saveBtn.dataset.busy) return;
+    const staged = [...dirty.entries()];
+    const edits = staged.map(([, e]) => ({
+      key: {name: e.name, set: e.set, collector: e.collector},
+      quantity: e.quantity, synergies: e.synergies}));
+    saveBtn.dataset.busy = '1'; saveBtn.textContent = 'Saving…';
+    try {
+      const res = await fetch('/api/save', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(edits)});
+      const data = await res.json();
+      if (data.ok) {
+        for (const [key, e] of staged) {
+          const c = CARDS.find(x => x._key === key);
+          if (c) { c.qty = e.quantity; c.synergies = e.synergies; }
+          orig.set(key, {qty: e.quantity, syn: e.synergies});
+          dirty.delete(key);
+        }
+        render();
+        toast(`Saved ${data.updated} card(s)` + (data.backup ? ` · backup ${data.backup}` : ''));
+      } else {
+        toast('Save failed: ' + (data.errors || ['unknown error']).join('  |  '));
+      }
+    } catch (err) {
+      toast('Save failed (is the server running?): ' + err.message);
+    } finally {
+      delete saveBtn.dataset.busy;
+      updateSaveButton();
+    }
   });
   let toastT;
   function toast(msg) {
