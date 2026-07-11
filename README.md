@@ -28,6 +28,20 @@ handle this automatically).
 All scripts live in `scripts/` and run on Python 3 with no dependencies, except
 `sheets_sync.py` (see below). Run them from the repo root.
 
+### Import — ingest an Arena export
+
+```
+python3 scripts/import_arena.py batch.txt          # merge a deck/collection export
+python3 scripts/import_arena.py deck.txt --skip-basics   # reconcile owned counts from a built deck
+```
+
+Parses MTG Arena's `<qty> <Name> (<SET>) <collector#>` export format and merges
+it into `card-library.csv`, keyed by Card Name + Set Code + Collector # (one row
+per printing). Re-imports take the **max** quantity seen (decks share one
+collection, so counts don't sum); `--skip-basics` ignores basic lands so a deck
+list can true up owned counts without polluting the collection. Follow with
+`enrich.py` to backfill new cards.
+
 ### Validate — catch problems early
 
 ```
@@ -214,6 +228,7 @@ Claude Code slash commands live in `.claude/commands/`:
 - **Project:** `/check` (integrity), `/refresh` (rebuild derived data),
   `/add-deck` (ingest a pasted deck), `/tune-deck` (deck-building analysis).
 - **Audit (from claude-workflow-tools):** `/broad-scan`, `/broad-implement`,
-  `/sync-docs` — project-agnostic; they read the **Cycle Workflow Config** in
-  `CLAUDE.md` (Test Command = `check_all.py`, Subsystems, Invariant Library) for
-  all project specifics.
+  `/sync-docs`, `/health-pulse` (quick directional read), `/roadmap` —
+  project-agnostic; they read the **Cycle Workflow Config** in `CLAUDE.md` (Test
+  Command = `check_all.py`, Health Dimensions, Subsystems, Invariant Library) for
+  all project specifics. See also [`ROADMAP.md`](ROADMAP.md).
