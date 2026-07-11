@@ -201,3 +201,19 @@ interchange format, you can also import/export manually in Sheets without this.)
 3. `python3 scripts/validate.py` to confirm the file is clean.
 4. `python3 scripts/query.py …` while brewing; `python3 scripts/deck.py …` to
    check buildability.
+
+## Integrity check & workflow commands
+
+`python3 scripts/check_all.py` is the project's integrity gate — it verifies the
+invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
+derived files present, decks parse) and exits non-zero on any hard break. A
+SessionStart hook runs it (quiet) so drift surfaces immediately.
+
+Claude Code slash commands live in `.claude/commands/`:
+
+- **Project:** `/check` (integrity), `/refresh` (rebuild derived data),
+  `/add-deck` (ingest a pasted deck), `/tune-deck` (deck-building analysis).
+- **Audit (from claude-workflow-tools):** `/broad-scan`, `/broad-implement`,
+  `/sync-docs` — project-agnostic; they read the **Cycle Workflow Config** in
+  `CLAUDE.md` (Test Command = `check_all.py`, Subsystems, Invariant Library) for
+  all project specifics.

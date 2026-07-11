@@ -15,3 +15,6 @@ venv/
 *service-account*.json
 credentials*.json
 .env
+
+# Personal Claude Code settings (permissions etc.) — not shared
+.claude/settings.local.json
