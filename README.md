@@ -46,10 +46,12 @@ python3 scripts/enrich.py --dry-run     # preview
 python3 scripts/enrich.py               # fill blank Type / Card Text / Color(s) / Collector #
 ```
 
-Looks each card up on [Scryfall](https://scryfall.com/docs/api) (by name, and by
-set code when present) and fills only **blank** fields — your Synergies and
-Quantity Owned are never touched. So you can add rows with just a Card Name (and
-ideally a Set Code) and let this backfill the rest. Handles multi-face cards.
+Looks cards up on [Scryfall](https://scryfall.com/docs/api) in **batches** (75 per
+request via the collection endpoint, so a few hundred cards take seconds) and
+fills only **blank** fields — your Synergies and Quantity Owned are never
+touched. So you can add rows with just a Card Name (and ideally a Set Code) and
+let this backfill the rest. Handles multi-face cards (with a single-card fallback
+for `Front // Back` names).
 
 **Set codes & collector numbers:** Type, Card Text, and Color(s) are the same
 across every printing, so they're filled from any match. Collector # is
@@ -63,6 +65,19 @@ more mappings in `SET_ALIASES` at the top of `scripts/enrich.py` as you hit them
 > Requires outbound access to `api.scryfall.com`. Some managed/CI environments
 > block it by policy; if so, run enrich locally. No API key needed.
 
+### Tag synergies — populate deck-building tags
+
+```
+python3 scripts/tag_synergies.py --dry-run   # preview
+python3 scripts/tag_synergies.py             # fill blank Synergies cells
+```
+
+Derives baseline tags for the Synergies column from each card's type line
+(tribal subtypes, key card types) and oracle text (counters, graveyard,
+reanimator, lifegain, card draw, removal, burn, ramp, tokens, keywords, …). Fills
+only blank cells by default (`--force` regenerates). These make `query.py
+--synergy` and the gallery's synergy filters useful; every tag is hand-editable.
+
 ### Query — search the collection
 
 ```
@@ -75,14 +90,19 @@ python3 scripts/query.py --color G --csv               # emit CSV to pipe elsewh
 
 Case-insensitive substring filters, AND-ed together. Table output by default.
 
-### Deck — check a deck against your collection
+### Deck — manage decks and variations
 
 ```
-python3 scripts/deck.py decks/example-merfolk.txt
+python3 scripts/deck.py list          # every deck + variant, with buildable status
+python3 scripts/deck.py check 1a      # owned vs needed vs your collection
+python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
+python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
+python3 scripts/deck.py stats 1a      # mana curve, color balance, type breakdown
 ```
 
-Reports owned-vs-needed per card and flags shortfalls or cards missing from the
-library. Deck file format is documented in [`decks/README.md`](decks/README.md).
+Decks live under `decks/` as one folder per core deck, with variations as sibling
+files (`deck.txt` → id `1`, `1a-*.txt` → id `1a`). Basics are treated as
+unlimited. Full format + structure docs are in [`decks/README.md`](decks/README.md).
 
 ### Gallery — a visual, filterable view of the collection
 
@@ -91,12 +111,13 @@ python3 scripts/build_gallery.py     # resolve card images + build gallery.html
 open gallery.html                    # (macOS) view it in your browser
 ```
 
-Generates a self-contained `gallery.html`: a filterable grid of your cards with
-real card art, quantity badges, and set/collector labels. Search by name/type/
-text, filter by color (WUBRG/Colorless) or set, and sort by name/set/quantity —
-all in the browser, no server. Card data is embedded in the file; images are
-hotlinked from Scryfall's CDN (so you need internet to see the art, but the file
-stays tiny and portable).
+Generates a self-contained `gallery.html`: a **collection dashboard** (totals,
+color/type/set breakdowns, and clickable top-synergy chips) above a filterable
+grid of your cards with real card art, quantity badges, and set/collector labels.
+Search by name/type/text/synergy, filter by color (WUBRG/Colorless) or set, and
+sort by name/set/quantity — all in the browser, no server. Card data is embedded
+in the file; images are hotlinked from Scryfall's CDN (so you need internet to see
+the art, but the file stays tiny and portable).
 
 Image URLs are resolved via Scryfall's batch endpoint (≈4 requests for a few
 hundred cards) and cached in `.image-cache.json` (gitignored) so rebuilds are

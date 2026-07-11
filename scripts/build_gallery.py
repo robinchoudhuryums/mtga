@@ -204,6 +204,80 @@ def build_cards(rows, cache):
     return cards
 
 
+def _primary_type(type_line):
+    for t in ["Land", "Creature", "Planeswalker", "Battle", "Artifact",
+              "Enchantment", "Instant", "Sorcery"]:
+        if t.lower() in type_line.lower():
+            return t
+    return "Other"
+
+
+def compute_stats(cards):
+    colors = {c: 0 for c in "WUBRGC"}
+    types, sets, syn = {}, {}, {}
+    owned = 0
+    for c in cards:
+        q = c["qty"]
+        owned += int(q) if q.isdigit() else 0
+        for ch in c["colors"]:
+            colors[ch] = colors.get(ch, 0) + 1
+        t = _primary_type(c["type"])
+        types[t] = types.get(t, 0) + 1
+        if c["set"]:
+            sets[c["set"]] = sets.get(c["set"], 0) + 1
+        for tag in (c["synergies"].split(";") if c["synergies"] else []):
+            tag = tag.strip()
+            if tag:
+                syn[tag] = syn.get(tag, 0) + 1
+    return {"printings": len(cards), "owned": owned, "colors": colors,
+            "types": types, "sets": sets, "syn": syn}
+
+
+def _bars(counts, cls_by_key=None, top=None):
+    items = sorted(counts.items(), key=lambda kv: -kv[1])
+    if top:
+        items = items[:top]
+    mx = max((v for _, v in items), default=1)
+    out = []
+    for k, v in items:
+        cls = f" {cls_by_key[k]}" if cls_by_key else ""
+        pct = round(100 * v / mx)
+        out.append(
+            f'<div class="bar{cls}"><span>{k}</span>'
+            f'<span class="track"><span class="fill" style="width:{pct}%"></span></span>'
+            f'<span class="num">{v}</span></div>')
+    return "".join(out)
+
+
+def render_stats(stats):
+    color_names = {"W": "W", "U": "U", "B": "B", "R": "R", "G": "G", "C": "C"}
+    color_bars = _bars({color_names[c]: stats["colors"][c] for c in "WUBRGC"
+                        if stats["colors"][c]}, cls_by_key={c: c for c in "WUBRGC"})
+    type_bars = _bars(stats["types"], top=8)
+    set_bars = _bars(stats["sets"], top=8)
+
+    chips = []
+    for tag, n in sorted(stats["syn"].items(), key=lambda kv: -kv[1])[:16]:
+        esc = tag.replace("\\", "\\\\").replace("'", "\\'")
+        chips.append(
+            f'<span class="chip" onclick="var q=document.getElementById(\'q\');'
+            f'q.value=\'{esc}\';q.dispatchEvent(new Event(\'input\'));'
+            f'window.scrollTo(0,0)">{tag} <span class="n">{n}</span></span>')
+
+    return f"""<details class="dash" open>
+  <summary>Collection overview</summary>
+  <div class="dashgrid">
+    <div class="tile"><div class="kpi">{stats['printings']:,}</div><h3>printings</h3>
+      <div class="kpi">{stats['owned']:,}</div><h3>copies owned</h3></div>
+    <div class="tile"><h3>Colors</h3>{color_bars}</div>
+    <div class="tile"><h3>Card types</h3>{type_bars}</div>
+    <div class="tile"><h3>Top sets</h3>{set_bars}</div>
+  </div>
+  <h3 style="margin-top:16px">Top synergies — click to filter</h3>
+  <div class="chips">{''.join(chips)}</div>
+</details>"""
+
+
 HTML_TEMPLATE = """<!doctype html>
 <html lang="en">
 <head>
@@ -254,6 +328,29 @@ HTML_TEMPLATE = """<!doctype html>
     color: var(--muted); font-size: 10px; letter-spacing: .5px; padding: 2px 6px; border-radius: 5px; }
   .empty { padding: 60px 20px; text-align: center; color: var(--muted); }
   footer { color: var(--muted); font-size: 12px; text-align: center; padding: 20px; }
+  .dash { margin: 16px 20px 0; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 12px; padding: 4px 16px 16px; }
+  .dash > summary { cursor: pointer; padding: 12px 0; font-weight: 700; list-style: none; }
+  .dash > summary::-webkit-details-marker { display: none; }
+  .dash > summary::before { content: "▾ "; color: var(--muted); }
+  .dashgrid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+  .tile { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .tile .kpi { font-size: 26px; font-weight: 800; letter-spacing: .3px; }
+  .tile h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .6px;
+    color: var(--muted); margin: 0 0 10px; font-weight: 700; }
+  .bar { display: grid; grid-template-columns: 82px 1fr 30px; align-items: center;
+    gap: 8px; margin: 4px 0; font-size: 12px; }
+  .bar > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bar .track { height: 10px; background: #0f1115; border-radius: 6px; overflow: hidden; }
+  .bar .fill { height: 100%; background: var(--accent); border-radius: 6px; }
+  .bar .num { text-align: right; color: var(--muted); }
+  .bar.W .fill{background:var(--W)} .bar.U .fill{background:var(--U)} .bar.B .fill{background:var(--B)}
+  .bar.R .fill{background:var(--R)} .bar.G .fill{background:var(--G)} .bar.C .fill{background:var(--C)}
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .chip { background: var(--panel2); border: 1px solid var(--line); border-radius: 20px;
+    padding: 3px 11px; font-size: 12px; cursor: pointer; color: var(--text); }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip .n { color: var(--muted); }
 </style>
 </head>
 <body>
@@ -280,6 +377,7 @@ HTML_TEMPLATE = """<!doctype html>
     </select>
   </div>
 </header>
+__STATS__
 <div class="grid" id="grid"></div>
 <div class="empty" id="empty" style="display:none">No cards match your filters.</div>
 <footer>Generated from card-library.csv · images © Wizards of the Coast, via Scryfall</footer>
@@ -365,7 +463,9 @@ def main():
 
     cards = build_cards(rows, cache)
     with_img = sum(1 for c in cards if c["img"])
-    html = HTML_TEMPLATE.replace("__DATA__", json.dumps(cards, ensure_ascii=False))
+    html = (HTML_TEMPLATE
+            .replace("__STATS__", render_stats(compute_stats(cards)))
+            .replace("__DATA__", json.dumps(cards, ensure_ascii=False)))
     with open(args.out, "w", encoding="utf-8") as fh:
         fh.write(html)
     print(f"Wrote {args.out}: {len(cards)} cards, {with_img} with images.")
