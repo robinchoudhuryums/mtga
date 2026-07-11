@@ -24,8 +24,10 @@ Grounded in the project's current state and deferred ideas. Regenerate with
 
 ## Tier 3 — Long-term (months+)
 
-- **Local editing app** — a small Flask/FastAPI UI for in-browser collection and
-  deck editing that writes back to the CSVs (Tier 2 of the original UI plan). (L)
+- **Local editing app — deck editing** — collection editing has shipped
+  (`scripts/app.py`: view / edit / add / remove / revert, with validated writes
+  and a timestamped `.bak`). Remaining: in-browser deck building/editing with
+  live buildability, reusing `deck.py check` / `wildcards` / `suggest`. (M)
 - **Google Sheets round-trip in practice** — wire up `sheets_sync.py` against the
   companion sheet so the CSV and Sheet stay in sync automatically. (M)
 
