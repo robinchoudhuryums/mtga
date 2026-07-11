@@ -15,15 +15,19 @@ can't corrupt the inventory. Adding a card also appends a card-mana.csv row so
 the integrity gate's INV-02 stays satisfied.
 
 The /decks pages edit decks with live buildability: as you change quantities or
-add/remove cards, owned-vs-needed updates in the browser. Saving writes the
-deck's .txt file through the same validated, backed-up, atomic path, gated on
-INV-04 (the file must re-parse with every card line intact) and preserving the
-file's section comments.
+add/remove cards, owned-vs-needed updates in the browser. You can edit the `#:`
+metadata fields, create a new numbered deck, and open Stats/Mana/Tribes/
+Suggestions analysis tabs (deck.py output). Saving writes the deck's .txt file
+through the same validated, backed-up, atomic path, gated on INV-04 (the file
+must re-parse with every card line intact) and preserving the file's section
+comments.
 
 Run:
+    make app                     # venv + install + launch + open browser (one command)
+    # ...or manually:
     pip install -r requirements-app.txt
-    python3 scripts/app.py                 # then open http://127.0.0.1:5000
-    python3 scripts/app.py --port 8000     # different port
+    python3 scripts/app.py                 # opens http://127.0.0.1:5000 in your browser
+    python3 scripts/app.py --port 8000 --no-browser
 
 Bound to 127.0.0.1 by default — it's a personal, local tool, so there's no auth.
 """
@@ -34,14 +38,25 @@ import csv
 import io
 import json
 import os
+import re
 import shutil
 import tempfile
+import threading
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import webbrowser
 
-from flask import Flask, jsonify, request
+try:
+    from flask import Flask, jsonify, request
+except ModuleNotFoundError:
+    import sys
+    sys.stderr.write(
+        "This editor needs Flask, which isn't installed. Install it with:\n"
+        "    pip install -r requirements-app.txt\n"
+        "or just run `make app`, which sets up an isolated venv for you.\n")
+    raise SystemExit(1)
 
 import deck as deckmod
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, write_rows
@@ -398,30 +413,41 @@ def _decks_overview():
     return out
 
 
-def _tokenize_deck(path):
-    """Ordered tokens preserving the file: comments/blank/meta lines are kept
-    verbatim ('other'); card lines are parsed. This lets the editor round-trip a
-    deck without flattening its section comments."""
-    toks = []
+def _parse_deck_doc(path):
+    """Split a deck file into (meta, body). meta is an ordered list of
+    {key, value} from the `#:` header; body preserves comments/blank/card lines so
+    the editor round-trips a deck without flattening its section comments."""
+    meta, body = [], []
     with open(path, encoding="utf-8") as fh:
         for raw in fh:
             line = raw.rstrip("\n")
             s = line.strip()
-            if not s or s.startswith("#"):
-                toks.append({"kind": "other", "raw": line})
+            mm = deckmod.META_RE.match(s)
+            if mm:
+                meta.append({"key": mm.group(1).lower(), "value": mm.group(2).strip()})
                 continue
-            m = deckmod.LINE_RE.match(line.split("#", 1)[0].strip())
-            if m:
-                toks.append({"kind": "card", "qty": int(m.group(1)), "name": m.group(2).strip(),
-                             "set": (m.group(3) or "").strip(), "cn": (m.group(4) or "").strip()})
+            if not s or s.startswith("#"):
+                body.append({"kind": "other", "raw": line})
+                continue
+            cm = deckmod.LINE_RE.match(line.split("#", 1)[0].strip())
+            if cm:
+                body.append({"kind": "card", "qty": int(cm.group(1)), "name": cm.group(2).strip(),
+                             "set": (cm.group(3) or "").strip(), "cn": (cm.group(4) or "").strip()})
             else:
-                toks.append({"kind": "other", "raw": line})
-    return toks
+                body.append({"kind": "other", "raw": line})
+    return meta, body
 
 
-def _serialize_deck(lines):
-    out = []
-    for t in lines:
+def _serialize_doc(meta, body):
+    """Reassemble a deck file: `#:` header lines, a blank, then the body."""
+    out = [f"#: {k}: {(p.get('value') or '').strip()}"
+           for p in meta for k in [(p.get("key") or "").strip()] if k]
+    b = list(body)
+    while b and b[0].get("kind") == "other" and not (b[0].get("raw") or "").strip():
+        b.pop(0)  # avoid a double blank between header and body
+    if out and b:
+        out.append("")
+    for t in b:
         if t.get("kind") == "card":
             name = (t.get("name") or "").strip()
             if not name:
@@ -438,44 +464,10 @@ def _serialize_deck(lines):
     return "\n".join(out).rstrip("\n") + "\n"
 
 
-@app.route("/decks")
-def decks():
-    payload = json.dumps({"decks": _decks_overview()}, ensure_ascii=False).replace("<", "\\u003c")
-    return _render_template("decks.html", {"__DATA__": payload})
-
-
-@app.route("/deck/<deck_id>")
-def deck_editor(deck_id):
-    d = deckmod.find_deck(deck_id)
-    if not d:
-        return (f"No deck with id {deck_id!r}. <a href='/decks'>← Decks</a>", 404)
-    _, _, by_name_qty = deckmod.load_collection()
-    payload = json.dumps({
-        "id": d["id"], "name": d["name"] or d["id"],
-        "file": os.path.relpath(d["path"], REPO_ROOT),
-        "lines": _tokenize_deck(d["path"]),
-        "owned": by_name_qty, "basics": sorted(deckmod.BASICS),
-    }, ensure_ascii=False).replace("<", "\\u003c")
-    return _render_template("deck.html", {"__DATA__": payload})
-
-
-@app.route("/api/deck/save", methods=["POST"])
-def deck_save():
-    """Write an edited deck back to its .txt file. Structure-preserving, and gated
-    on INV-04: the result must parse cleanly with every card line intact, else the
-    file is left untouched. Backs up to a timestamped .bak, then atomic replace.
-    """
-    data = request.get_json(silent=True) or {}
-    did = str(data.get("id", ""))
-    lines = data.get("lines")
-    if not isinstance(lines, list):
-        return jsonify(ok=False, errors=["Malformed request: expected a lines list."]), 400
-    d = deckmod.find_deck(did)
-    if not d:
-        return jsonify(ok=False, errors=[f"No deck with id {did!r}."]), 404
-
-    problems, ncards = [], 0
-    for t in lines:
+def _validate_body(body):
+    """(ok, errors, ncards) for a deck body — quantities must be positive ints."""
+    problems, n = [], 0
+    for t in body:
         if t.get("kind") != "card":
             continue
         name = (t.get("name") or "").strip()
@@ -484,14 +476,18 @@ def deck_save():
         q = str(t.get("qty", "")).strip()
         if not q.isdigit() or int(q) < 1:
             problems.append(f"{name}: quantity must be a positive integer (got {q!r}).")
-        ncards += 1
+        n += 1
     if problems:
-        return jsonify(ok=False, errors=problems), 400
-    if ncards == 0:
-        return jsonify(ok=False, errors=["A deck needs at least one card line."]), 400
+        return False, problems, n
+    if n == 0:
+        return False, ["A deck needs at least one card line."], n
+    return True, [], n
 
-    text = _serialize_deck(lines)
-    target = os.path.abspath(d["path"])
+
+def _write_deck(path, text, ncards, backup):
+    """temp write -> INV-04 parse-check -> optional .bak -> atomic replace.
+    Returns (payload_dict, status)."""
+    target = os.path.abspath(path)
     fd, tmp = tempfile.mkstemp(suffix=".txt", dir=os.path.dirname(target))
     os.close(fd)
     try:
@@ -499,16 +495,132 @@ def deck_save():
             fh.write(text)
         _, parsed = deckmod.parse_deck_file(tmp)
         if len(parsed) != ncards:
-            return jsonify(ok=False, errors=[f"Deck didn't parse cleanly "
-                f"({len(parsed)} of {ncards} card lines survived) — not saved."]), 400
-        backup = f"{target}.{time.strftime('%Y%m%d-%H%M%S')}.bak"
-        shutil.copy2(target, backup)
+            return {"ok": False, "errors": [f"Deck didn't parse cleanly "
+                    f"({len(parsed)} of {ncards} card lines survived) — not saved."]}, 400
+        bak = None
+        if backup and os.path.exists(target):
+            bak = f"{target}.{time.strftime('%Y%m%d-%H%M%S')}.bak"
+            shutil.copy2(target, bak)
         os.replace(tmp, target)
         tmp = None
-        return jsonify(ok=True, backup=os.path.basename(backup), cards=ncards)
+        return {"ok": True, "backup": (os.path.basename(bak) if bak else None), "cards": ncards}, 200
     finally:
         if tmp and os.path.exists(tmp):
             os.remove(tmp)
+
+
+def _run_deck_analysis(kind, deck_id):
+    """Capture deck.py's stats/mana/tribes/suggest output for a deck as text."""
+    fn = {"stats": deckmod.cmd_stats, "mana": deckmod.cmd_mana,
+          "tribes": deckmod.cmd_tribes, "suggest": deckmod.cmd_suggest}.get(kind)
+    if not fn:
+        return None
+    ns = argparse.Namespace(id=deck_id, limit=20, unowned=False)
+    buf = io.StringIO()
+    with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
+        try:
+            fn(ns)
+        except Exception as e:  # analysis is best-effort; never 500 the page
+            buf.write(f"\n[analysis error: {e}]")
+    return buf.getvalue()
+
+
+@app.route("/decks")
+def decks():
+    payload = json.dumps({"decks": _decks_overview()}, ensure_ascii=False).replace("<", "\\u003c")
+    return _render_template("decks.html", {"__DATA__": payload})
+
+
+def _deck_payload(d, new=False):
+    _, _, by_name_qty = deckmod.load_collection()
+    if new:
+        meta = [{"key": "name", "value": ""}, {"key": "format", "value": "Standard"},
+                {"key": "colors", "value": ""}, {"key": "notes", "value": ""}]
+        body, ident, name, fname = [], None, "New deck", "(unsaved)"
+    else:
+        meta, body = _parse_deck_doc(d["path"])
+        ident, name = d["id"], (d["name"] or d["id"])
+        fname = os.path.relpath(d["path"], REPO_ROOT)
+    return json.dumps({"id": ident, "name": name, "file": fname, "new": new,
+                       "meta": meta, "body": body, "owned": by_name_qty,
+                       "basics": sorted(deckmod.BASICS)},
+                      ensure_ascii=False).replace("<", "\\u003c")
+
+
+@app.route("/deck/new")
+def deck_new():
+    return _render_template("deck.html", {"__DATA__": _deck_payload(None, new=True)})
+
+
+@app.route("/deck/<deck_id>")
+def deck_editor(deck_id):
+    d = deckmod.find_deck(deck_id)
+    if not d:
+        return (f"No deck with id {deck_id!r}. <a href='/decks'>← Decks</a>", 404)
+    return _render_template("deck.html", {"__DATA__": _deck_payload(d)})
+
+
+@app.route("/api/deck/analysis/<deck_id>/<kind>")
+def deck_analysis(deck_id, kind):
+    if kind not in ("stats", "mana", "tribes", "suggest"):
+        return jsonify(ok=False, error="unknown analysis kind"), 400
+    if not deckmod.find_deck(deck_id):
+        return jsonify(ok=False, error="no such deck"), 404
+    return jsonify(ok=True, text=_run_deck_analysis(kind, deck_id) or "(no output)")
+
+
+@app.route("/api/deck/save", methods=["POST"])
+def deck_save():
+    """Write an edited deck back to its .txt (structure + section comments
+    preserved). Gated on INV-04: must re-parse with every card line intact, else
+    the file is untouched. Backs up to a timestamped .bak, then atomic replace."""
+    data = request.get_json(silent=True) or {}
+    did = str(data.get("id", ""))
+    meta, body = data.get("meta") or [], data.get("body")
+    if not isinstance(body, list) or not isinstance(meta, list):
+        return jsonify(ok=False, errors=["Malformed request."]), 400
+    d = deckmod.find_deck(did)
+    if not d:
+        return jsonify(ok=False, errors=[f"No deck with id {did!r}."]), 404
+    ok, errs, ncards = _validate_body(body)
+    if not ok:
+        return jsonify(ok=False, errors=errs), 400
+    payload, status = _write_deck(d["path"], _serialize_doc(meta, body), ncards, backup=True)
+    return jsonify(**payload), status
+
+
+@app.route("/api/deck/new", methods=["POST"])
+def deck_create():
+    """Create a new numbered deck (decks/NN-slug/deck.txt) from the editor."""
+    data = request.get_json(silent=True) or {}
+    meta, body = data.get("meta") or [], data.get("body")
+    if not isinstance(body, list) or not isinstance(meta, list):
+        return jsonify(ok=False, errors=["Malformed request."]), 400
+    name = next((( p.get("value") or "").strip() for p in meta
+                 if (p.get("key") or "").lower() == "name"), "")
+    if not name:
+        return jsonify(ok=False, errors=["Give the deck a name first (the 'name' field)."]), 400
+    ok, errs, ncards = _validate_body(body)
+    if not ok:
+        return jsonify(ok=False, errors=errs), 400
+
+    nums = [int(dd["core"]) for dd in deckmod.discover_decks() if str(dd["core"]).isdigit()]
+    nextn = (max(nums) + 1) if nums else 1
+    slug = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-") or "deck"
+    folder = os.path.join(deckmod.DECKS_DIR, f"{nextn:02d}-{slug}")
+    if os.path.exists(folder):
+        return jsonify(ok=False, errors=[f"Folder {os.path.basename(folder)} already exists."]), 409
+    os.makedirs(folder)
+    payload, status = _write_deck(os.path.join(folder, "deck.txt"),
+                                  _serialize_doc(meta, body), ncards, backup=False)
+    if not payload.get("ok"):
+        try:
+            os.rmdir(folder)  # roll back the empty folder on failure
+        except OSError:
+            pass
+        return jsonify(**payload), status
+    payload["id"] = str(nextn)
+    return jsonify(**payload), status
 
 
 def main():
@@ -516,8 +628,15 @@ def main():
     ap.add_argument("--host", default="127.0.0.1", help="bind address (default localhost)")
     ap.add_argument("--port", type=int, default=5000, help="port (default 5000)")
     ap.add_argument("--debug", action="store_true", help="Flask debug/auto-reload")
+    ap.add_argument("--no-browser", action="store_true", help="don't auto-open the browser")
     args = ap.parse_args()
-    print(f"Collection editor → http://{args.host}:{args.port}  (Ctrl-C to stop)")
+    url = f"http://{args.host}:{args.port}"
+    print(f"Collection & deck editor → {url}  (Ctrl-C to stop)")
+    # Auto-open the browser once the server is up (localhost only, and not in the
+    # debug reloader's child process, so it opens exactly once).
+    if (not args.no_browser and args.host in ("127.0.0.1", "localhost")
+            and not os.environ.get("WERKZEUG_RUN_MAIN")):
+        threading.Timer(1.0, lambda: webbrowser.open(url)).start()
     app.run(host=args.host, port=args.port, debug=args.debug)
 
 

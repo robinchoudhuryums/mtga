@@ -24,7 +24,14 @@
   button.tool:hover, a.tool:hover { border-color:var(--accent); }
   #save { margin-left:auto; }
   #save.ready { background:var(--dirty); color:#0c130e; border-color:var(--dirty); font-weight:700; }
-  .wrap { padding:16px 20px 60px; max-width:820px; margin:0 auto; }
+  .wrap { padding:16px 20px 60px; max-width:860px; margin:0 auto; }
+  h2 { font-size:12px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted);
+    margin:20px 0 8px; font-weight:700; }
+  .meta .mrow { display:flex; gap:8px; align-items:center; padding:2px 0; }
+  .mkey { width:100px; background:var(--panel2); color:var(--muted); border:1px solid var(--line);
+    border-radius:6px; padding:6px 8px; font-size:12px; }
+  .mval { flex:1; background:var(--panel2); color:var(--text); border:1px solid var(--line);
+    border-radius:6px; padding:6px 9px; font-size:14px; }
   .row { display:flex; align-items:center; gap:8px; padding:3px 0; }
   .row.other { color:var(--muted); font-family:ui-monospace, monospace; font-size:12px;
     white-space:pre; min-height:12px; padding:2px 0; }
@@ -36,13 +43,21 @@
   .set, .cn { width:64px; background:var(--panel2); color:var(--text); border:1px solid var(--line);
     border-radius:6px; padding:6px 7px; font-size:13px; }
   .cn { width:56px; }
-  .qty:focus, .name:focus, .set:focus, .cn:focus { outline:none; border-color:var(--accent); }
+  input:focus { outline:none; border-color:var(--accent); }
   .stat { min-width:96px; font-size:12px; font-weight:700; text-align:right; }
   .stat.ok { color:var(--ok); } .stat.short { color:var(--short); } .stat.missing { color:var(--missing); }
   .rm { width:24px; height:24px; border-radius:6px; border:1px solid var(--line);
     background:transparent; color:var(--muted); cursor:pointer; font-size:12px; padding:0; }
   .rm:hover { color:var(--missing); border-color:var(--missing); }
   .add { margin-top:12px; }
+  .tabs { display:flex; gap:6px; margin:8px 0; flex-wrap:wrap; }
+  .tab { background:var(--panel2); border:1px solid var(--line); border-radius:8px 8px 0 0;
+    padding:7px 12px; font-size:13px; cursor:pointer; color:var(--muted); }
+  .tab.on { color:var(--text); border-color:var(--accent); }
+  pre.out { background:var(--panel); border:1px solid var(--line); border-radius:0 8px 8px 8px;
+    padding:14px; overflow-x:auto; font-size:12.5px; line-height:1.5; margin:0; min-height:40px;
+    white-space:pre-wrap; }
+  .note { color:var(--short); font-size:12px; margin:6px 0; }
   .toast { position:fixed; bottom:18px; left:50%; transform:translateX(-50%); background:var(--panel2);
     border:1px solid var(--line); border-radius:8px; padding:10px 16px; font-size:13px; opacity:0;
     transition:opacity .2s; pointer-events:none; max-width:80vw; }
@@ -60,21 +75,32 @@
   <div class="summary" id="summary"></div>
 </header>
 <div class="wrap">
+  <h2>Metadata</h2>
+  <div class="meta" id="meta"></div>
+  <button class="tool add" id="addMeta" style="margin-top:8px">＋ Add field</button>
+
+  <h2>Cards</h2>
   <div id="rows"></div>
   <button class="tool add" id="addRow">＋ Add card line</button>
+
+  <div id="analysis"></div>
 </div>
 <div class="toast" id="toast"></div>
 <script id="data" type="application/json">__DATA__</script>
 <script>
   const DATA = JSON.parse(document.getElementById('data').textContent);
-  const LINES = DATA.lines;                 // ordered tokens (card | other)
-  const OWNED = DATA.owned;                 // name_lower -> total owned
-  const BASICS = new Set(DATA.basics);      // lowercased basic land names
-  const ORIG = JSON.stringify(LINES);       // baseline for dirty detection
+  const NEW = !!DATA.new;
+  const META = DATA.meta;                 // [{key,value}]
+  const BODY = DATA.body;                 // ordered tokens (card | other)
+  const OWNED = DATA.owned;               // name_lower -> total owned
+  const BASICS = new Set(DATA.basics);
+  const baseline = () => JSON.stringify({m: META, b: BODY});
+  let ORIG = baseline();
 
   const rowsEl = document.getElementById('rows');
+  const metaEl = document.getElementById('meta');
   const saveBtn = document.getElementById('save');
-  document.getElementById('title').textContent = `Deck ${DATA.id}: ${DATA.name}`;
+  document.getElementById('title').textContent = NEW ? 'New deck' : `Deck ${DATA.id}: ${DATA.name}`;
   document.getElementById('file').textContent = DATA.file;
 
   function cardStatus(t) {
@@ -88,9 +114,9 @@
                        : {cls:'ok', txt:`have ${have} / ${need}`};
   }
 
-  function recomputeSummary() {
+  function refresh() {
     let unique=0, total=0, short=0, missing=0;
-    for (const t of LINES) if (t.kind==='card' && (t.name||'').trim()) {
+    for (const t of BODY) if (t.kind==='card' && (t.name||'').trim()) {
       unique++; total += parseInt(t.qty)||0;
       const st = cardStatus(t);
       if (st.cls==='short') short++; else if (st.cls==='missing') missing++;
@@ -98,81 +124,120 @@
     const ready = short===0 && missing===0;
     document.getElementById('summary').innerHTML =
       `<span>${unique} unique · ${total} cards</span>` +
-      (ready ? `<span><b class="ok">buildable ✓</b></span>`
-             : `<span>${missing?`<b class="missing">${missing} missing</b> `:''}` +
-               `${short?`<b class="short">${short} short</b>`:''}</span>`);
-    const dirty = JSON.stringify(LINES) !== ORIG;
-    saveBtn.textContent = dirty ? 'Save deck' : 'No changes';
-    saveBtn.classList.toggle('ready', dirty);
+      (unique===0 ? '' : ready ? `<span><b class="ok">buildable ✓</b></span>`
+        : `<span>${missing?`<b class="missing">${missing} missing</b> `:''}${short?`<b class="short">${short} short</b>`:''}</span>`);
+    const dirty = baseline() !== ORIG;
+    saveBtn.textContent = NEW ? 'Create deck' : (dirty ? 'Save deck' : 'No changes');
+    saveBtn.classList.toggle('ready', dirty || NEW);
+    renderAnalysisNote(dirty);
   }
 
-  function render() {
+  function renderMeta() {
+    metaEl.innerHTML = '';
+    META.forEach((p, i) => {
+      const row = document.createElement('div');
+      row.className = 'mrow';
+      row.innerHTML = `<input class="mkey" value="${esc(p.key)}" placeholder="field">` +
+        `<input class="mval" value="${esc(p.value)}" placeholder="value">` +
+        `<button class="rm" title="Remove field">✕</button>`;
+      const k = row.querySelector('.mkey'), v = row.querySelector('.mval');
+      k.addEventListener('input', () => { p.key = k.value; refresh(); });
+      v.addEventListener('input', () => { p.value = v.value; refresh(); });
+      row.querySelector('.rm').addEventListener('click', () => { META.splice(i,1); renderMeta(); refresh(); });
+      metaEl.appendChild(row);
+    });
+  }
+
+  function renderRows() {
     rowsEl.innerHTML = '';
-    LINES.forEach((t, i) => {
+    BODY.forEach((t, i) => {
       const row = document.createElement('div');
       if (t.kind !== 'card') {
         const raw = t.raw || '';
         row.className = 'row other' + (raw.trim().startsWith('#') && !raw.trim().startsWith('#:') ? ' comment' : '');
-        row.textContent = raw || ' ';
-        rowsEl.appendChild(row);
-        return;
+        row.textContent = raw || ' ';
+        rowsEl.appendChild(row); return;
       }
       row.className = 'row card';
-      row.dataset.i = i;
       row.innerHTML =
         `<input class="qty" type="number" min="1" value="${esc(t.qty)}">` +
         `<input class="name" value="${esc(t.name)}" placeholder="Card name">` +
         `<input class="set" value="${esc(t.set)}" placeholder="Set">` +
         `<input class="cn" value="${esc(t.cn)}" placeholder="#">` +
-        `<span class="stat"></span>` +
-        `<button class="rm" title="Remove line">✕</button>`;
+        `<span class="stat"></span><button class="rm" title="Remove line">✕</button>`;
       rowsEl.appendChild(row);
-      const q = row.querySelector('.qty'), nm = row.querySelector('.name');
-      const st = row.querySelector('.set'), cn = row.querySelector('.cn');
-      const stat = row.querySelector('.stat');
+      const q=row.querySelector('.qty'), nm=row.querySelector('.name');
+      const st=row.querySelector('.set'), cn=row.querySelector('.cn'), stat=row.querySelector('.stat');
       const paint = () => {
-        t.qty = q.value; t.name = nm.value; t.set = st.value; t.cn = cn.value;
-        const s = cardStatus(t); stat.textContent = s.txt; stat.className = 'stat ' + s.cls;
-        recomputeSummary();
+        t.qty=q.value; t.name=nm.value; t.set=st.value; t.cn=cn.value;
+        const s=cardStatus(t); stat.textContent=s.txt; stat.className='stat '+s.cls; refresh();
       };
-      [q, nm, st, cn].forEach(el => el.addEventListener('input', paint));
-      row.querySelector('.rm').addEventListener('click', () => {
-        LINES.splice(i, 1); render(); recomputeSummary();
-      });
-      const s = cardStatus(t); stat.textContent = s.txt; stat.className = 'stat ' + s.cls;
+      [q,nm,st,cn].forEach(el => el.addEventListener('input', paint));
+      row.querySelector('.rm').addEventListener('click', () => { BODY.splice(i,1); renderRows(); refresh(); });
+      const s=cardStatus(t); stat.textContent=s.txt; stat.className='stat '+s.cls;
     });
   }
 
+  document.getElementById('addMeta').addEventListener('click', () => { META.push({key:'', value:''}); renderMeta(); refresh(); });
   document.getElementById('addRow').addEventListener('click', () => {
-    LINES.push({kind:'card', qty:'1', name:'', set:'', cn:''});
-    render(); recomputeSummary();
-    const last = rowsEl.querySelector('.row.card:last-of-type .name');
-    if (last) last.focus();
+    BODY.push({kind:'card', qty:'1', name:'', set:'', cn:''}); renderRows(); refresh();
+    const last = rowsEl.querySelector('.row.card:last-of-type .name'); if (last) last.focus();
   });
 
   saveBtn.addEventListener('click', async () => {
-    if (JSON.stringify(LINES) === ORIG) return;
+    if (!NEW && baseline() === ORIG) return;
     saveBtn.disabled = true; saveBtn.textContent = 'Saving…';
     try {
-      const res = await fetch('/api/deck/save', {method:'POST',
-        headers:{'Content-Type':'application/json'}, body: JSON.stringify({id: DATA.id, lines: LINES})});
+      const url = NEW ? '/api/deck/new' : '/api/deck/save';
+      const res = await fetch(url, {method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({id: DATA.id, meta: META, body: BODY})});
       const d = await res.json();
-      if (d.ok) { toast(`Saved ${d.cards} card lines · backup ${d.backup}`); location.reload(); }
-      else { toast('Save failed: ' + (d.errors||['unknown']).join('  |  ')); }
+      if (d.ok) {
+        if (NEW) { location.href = '/deck/' + encodeURIComponent(d.id); }
+        else { toast(`Saved ${d.cards} card lines` + (d.backup?` · backup ${d.backup}`:'')); location.reload(); }
+      } else { toast('Save failed: ' + (d.errors||['unknown']).join('  |  ')); }
     } catch (err) { toast('Save failed (is the server running?): ' + err.message); }
-    finally { saveBtn.disabled = false; recomputeSummary(); }
+    finally { saveBtn.disabled = false; refresh(); }
   });
 
-  let toastT;
-  function toast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg; t.classList.add('show');
-    clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 4000);
+  // --- Analysis tabs (stats / mana / tribes / suggest), read-only, saved deck ---
+  const KINDS = [['stats','Stats'],['mana','Mana'],['tribes','Tribes'],['suggest','Suggestions']];
+  const cache = {}; let curKind = null;
+  function buildAnalysis() {
+    if (NEW) return;  // no saved file yet
+    const el = document.getElementById('analysis');
+    el.innerHTML = `<h2>Analysis</h2><div class="tabs" id="tabs"></div>` +
+      `<div class="note" id="anote" style="display:none"></div><pre class="out" id="out">Pick a tab.</pre>`;
+    const tabs = document.getElementById('tabs');
+    tabs.innerHTML = KINDS.map(([k,l]) => `<span class="tab" data-k="${k}">${l}</span>`).join('');
+    tabs.addEventListener('click', e => { const t=e.target.closest('.tab'); if(t) showKind(t.dataset.k); });
   }
+  async function showKind(kind) {
+    curKind = kind;
+    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.dataset.k===kind));
+    const out = document.getElementById('out');
+    if (cache[kind] !== undefined) { out.textContent = cache[kind]; return; }
+    out.textContent = 'Running…';
+    try {
+      const res = await fetch(`/api/deck/analysis/${encodeURIComponent(DATA.id)}/${kind}`);
+      const d = await res.json();
+      cache[kind] = d.ok ? d.text : ('error: ' + (d.error||'unknown'));
+    } catch (err) { cache[kind] = 'error: ' + err.message; }
+    if (curKind === kind) out.textContent = cache[kind];
+  }
+  function renderAnalysisNote(dirty) {
+    const n = document.getElementById('anote'); if (!n) return;
+    n.style.display = dirty ? 'block' : 'none';
+    if (dirty) n.textContent = 'Unsaved changes — analysis reflects the last saved version. Save to refresh.';
+  }
+
+  let toastT;
+  function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+    clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),4000); }
   function esc(s){ return (s==null?'':s).toString().replace(/[&<>"]/g,m=>
     ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])); }
 
-  render(); recomputeSummary();
+  renderMeta(); renderRows(); buildAnalysis(); refresh();
 </script>
 </body>
 </html>
