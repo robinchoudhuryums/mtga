@@ -1393,7 +1393,7 @@ When this creature enters, target creature can't block this turn.",R,Yeti; etb; 
 Cinder Strike,Sorcery,"As an additional cost to cast this spell, you may blight 1. (You may put a -1/-1 counter on a creature you control.)
 Cinder Strike deals 2 damage to target creature. It deals 4 damage to that creature instead if this spell's additional cost was paid.",R,counters; burn,ECL,131,1
 Burst Lightning,Instant,"Kicker {4} (You may pay an additional {4} as you cast this spell.)
-Burst Lightning deals 2 damage to any target. If this spell was kicked, it deals 4 damage instead.",R,burn,FDN,192,1
+Burst Lightning deals 2 damage to any target. If this spell was kicked, it deals 4 damage instead.",R,burn,FDN,192,2
 Clockwork Percussionist,Artifact Creature — Monkey Toy,"Haste
 When this creature dies, exile the top card of your library. You may play it until the end of your next turn.",R,Monkey; Toy; haste,DSK,130,1
 Coral Sword,Artifact — Equipment,"Flash
@@ -1520,7 +1520,7 @@ Oreplate Pangolin,Artifact Creature — Robot Pangolin,"Whenever another artifac
 Purple Dragon Punks,Creature — Human Rogue,{T}: Add {R}. Spend this mana only to cast an artifact spell or to activate an ability.,R,Human; Rogue; mana,TMT,100,1
 "Raphael, Tough Turtle",Legendary Creature — Mutant Ninja Turtle,"Alliance — Whenever another creature you control enters, Raphael deals 1 damage to target opponent.",R,Mutant; Ninja; Turtle; burn,TMT,104,1
 Ratcatcher Trainee,Creature — Human Peasant // Instant — Adventure,"During your turn, this creature has first strike. // Create two 1/1 black Rat creature tokens with ""This token can't block."" (Then exile this card. You may cast the creature later from exile.)",R,Human; Peasant; Adventure; tokens; first strike,WOE,144,1
-Reckless Ransacking,Instant,"Target creature gets +3/+2 until end of turn. Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,sacrifice; tokens; treasure,ECL,152,1
+Reckless Ransacking,Instant,"Target creature gets +3/+2 until end of turn. Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,sacrifice; tokens; treasure,ECL,152,2
 Return the Favor,Instant,"Spree (Choose one or more additional costs.)
 + {1} — Copy target instant spell, sorcery spell, activated ability, or triggered ability. You may choose new targets for the copy.
 + {1} — Change the target of target spell or ability with a single target.",R,,SOA,47,1
@@ -1530,7 +1530,7 @@ Landfall — Whenever a land you control enters, this creature deals 1 damage to
 Romantic Rendezvous,Sorcery,"Discard a card, then draw two cards.",R,card draw,MSC,808,1
 "Sarkhan, Dragon Ascendant",Legendary Creature — Human Druid,"When Sarkhan enters, you may behold a Dragon. If you do, create a Treasure token. (To behold a Dragon, choose a Dragon you control or reveal a Dragon card from your hand.)
 Whenever a Dragon you control enters, put a +1/+1 counter on Sarkhan. Until end of turn, Sarkhan becomes a Dragon in addition to its other types and gains flying.",R,Human; Druid; counters; tokens; etb; treasure; flying,TDM,118,1
-Searslicer Goblin,Creature — Goblin Warrior,"Raid — At the beginning of your end step, if you attacked this turn, create a 1/1 red Goblin creature token.",R,Goblin; Warrior; tokens,FDN,93,1
+Searslicer Goblin,Creature — Goblin Warrior,"Raid — At the beginning of your end step, if you attacked this turn, create a 1/1 red Goblin creature token.",R,Goblin; Warrior; tokens,FDN,93,2
 Slumbering Cerberus,Creature — Dog,"This creature doesn't untap during your untap step.
 Morbid — At the beginning of each end step, if a creature died this turn, untap this creature.",R,Dog,FDN,94,1
 "Speed, Young Avenger",Legendary Creature — Mutant Hero,"Haste
@@ -2199,7 +2199,7 @@ Rakdos Guildgate,Land — Gate,"This land enters tapped.
 {T}: Add {B} or {R}.",B/R,Gate; mana,FDN,693,1
 Bloodfell Caves,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
-{T}: Add {B} or {R}.",B/R,lifegain; mana; etb,TDM,250,1
+{T}: Add {B} or {R}.",B/R,lifegain; mana; etb,TDM,250,2
 "Aang, Swift Savior",Legendary Creature — Human Avatar Ally // Legendary Creature — Avatar Spirit Ally,"Flash
 Flying
 When Aang enters, airbend up to one other target creature or spell. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)
@@ -2432,7 +2432,7 @@ Whenever an attacking creature you control dies, return that card to its owner's
 "Bullseye, Death Dealer",Legendary Creature — Human Assassin Villain,"When Bullseye enters, you may sacrifice an artifact or discard a nonland card. When you do, Bullseye deals 2 damage to any target.
 {3}, {T}, Sacrifice an artifact or discard a nonland card: Bullseye deals 2 damage to any target.",B/R,Human; Assassin; Villain; sacrifice; burn; etb,MSH,209,1
 Perforating Artist,Creature — Devil,"Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)
-Raid — At the beginning of your end step, if you attacked this turn, each opponent loses 3 life unless that player sacrifices a nonland permanent of their choice or discards a card.",B/R,Devil; sacrifice; deathtouch,FDN,124,1
+Raid — At the beginning of your end step, if you attacked this turn, each opponent loses 3 life unless that player sacrifices a nonland permanent of their choice or discards a card.",B/R,Devil; sacrifice; deathtouch,FDN,124,2
 Sawblade Skinripper,Creature — Human Assassin,"Menace
 {2}, Sacrifice another creature or enchantment: Put a +1/+1 counter on this creature.
 At the beginning of your end step, if you sacrificed one or more permanents this turn, this creature deals that much damage to any target.",B/R,Human; Assassin; counters; sacrifice; menace,DSK,231,1
@@ -2971,3 +2971,12 @@ Baxter Building,Land,"{T}: Add {C}.
 Zuko's Exile,Instant — Lesson,"Exile target artifact, creature, or enchantment. Its controller creates a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",Colorless,Lesson; card draw; sacrifice; tokens; removal; clue,TLA,3,1
 Rancorous Archaic,Creature — Avatar,"Trample, reach
 Converge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.",Colorless,Avatar; counters; trample; reach,SOS,2,1
+Stormclaw Rager,Creature — Ogre Warrior,"{1}, Sacrifice another creature or artifact: Put a +1/+1 counter on this creature and draw a card. Activate only as a sorcery.",B/R,,MOM,254,1
+"Spider-Man, Hometown Hero",Legendary Creature — Spider Human Hero,"Reach (This creature can block creatures with flying.)
+When Spider-Man enters, target creature with power 2 or less can't be blocked this turn.",R,,MSC,556,1
+Dauthi Voidwalker,Creature — Dauthi Rogue,"Shadow (This creature can block or be blocked by only creatures with shadow.)
+If a card would be put into an opponent's graveyard from anywhere, instead exile it with a void counter on it.
+{T}, Sacrifice this creature: Choose an exiled card an opponent owns with a void counter on it. You may play it this turn without paying its mana cost.",B,,MAR,63,1
+"She-Hulk, Jennifer Walters",Legendary Creature — Gamma Berserker Hero,"Trample (This creature can deal excess combat damage to the player she's attacking.)
+{2}{R}, Sacrifice a land: Draw a card and put a +1/+1 counter on She-Hulk.",R,,MSC,554,1
+Unlikely Aid,Instant,"Target creature gets +2/+0 and gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)",B,,ANB,64,1

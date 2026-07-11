@@ -42,9 +42,12 @@ LINE_RE = re.compile(
 )
 # Section headers Arena emits that aren't cards.
 SECTIONS = {"deck", "sideboard", "commander", "companion", "maybeboard", "about"}
+# Basic lands are unlimited in Arena and don't belong in the owned collection;
+# skip them when reconciling the library from a deck list (--skip-basics).
+BASICS = {"plains", "island", "swamp", "mountain", "forest", "wastes"}
 
 
-def parse(text):
+def parse(text, skip_basics=False):
     """Return (entries, warnings). entries: list of (qty, name, set, collector)."""
     entries, warnings = [], []
     for lineno, raw in enumerate(text.splitlines(), 1):
@@ -61,6 +64,8 @@ def parse(text):
         name = m.group(2).strip()
         set_code = (m.group(3) or "").strip()
         collector = (m.group(4) or "").strip()
+        if skip_basics and name.lower() in BASICS:
+            continue
         entries.append((qty, name, set_code, collector))
     return entries, warnings
 
@@ -111,10 +116,12 @@ def main():
     ap.add_argument("--sum", action="store_true",
                     help="add quantities on re-import instead of taking the max")
     ap.add_argument("--dry-run", action="store_true", help="report only, write nothing")
+    ap.add_argument("--skip-basics", action="store_true",
+                    help="ignore basic lands (use when reconciling from a deck list)")
     args = ap.parse_args()
 
     text = sys.stdin.read() if args.source == "-" else open(args.source, encoding="utf-8").read()
-    entries, warnings = parse(text)
+    entries, warnings = parse(text, skip_basics=args.skip_basics)
     for w in warnings:
         eprint(f"WARN:  {w}")
     if not entries:
