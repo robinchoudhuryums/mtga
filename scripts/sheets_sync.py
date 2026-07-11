@@ -27,7 +27,9 @@ automates the round-trip.
 
 import argparse
 import os
+import shutil
 import sys
+import time
 
 from lib import HEADER, DEFAULT_CSV, load_rows, write_rows, eprint
 
@@ -105,6 +107,12 @@ def pull(worksheet_name, dry_run):
         print(f"[dry-run] would write {len(rows)} row(s) to {DEFAULT_CSV}. "
               f"Nothing written.")
         return 0
+    # pull() overwrites the canonical inventory in place, so snapshot it first —
+    # a bad/empty sheet shouldn't be able to destroy the local CSV irrecoverably.
+    if os.path.exists(DEFAULT_CSV):
+        backup = f"{DEFAULT_CSV}.{time.strftime('%Y%m%d-%H%M%S')}.bak"
+        shutil.copy2(DEFAULT_CSV, backup)
+        print(f"Backed up existing CSV to {os.path.basename(backup)} before overwrite.")
     write_rows(rows, DEFAULT_CSV)
     print(f"Pulled {len(rows)} row(s) from Google Sheet into {DEFAULT_CSV}.")
     return 0

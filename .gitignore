@@ -1,7 +1,5 @@
 # Generated image-URL cache (regenerable via scripts/build_gallery.py)
 .image-cache.json
-# Generated mana-value cache (regenerable via scripts/deck.py stats)
-.mana-cache.json
 # Incidental gallery preview screenshot
 gallery-preview.png
 
@@ -15,6 +13,9 @@ venv/
 *service-account*.json
 credentials*.json
 .env
+
+# Timestamped CSV snapshots written by sheets_sync.py pull before it overwrites
+*.bak
 
 # Personal Claude Code settings (permissions etc.) — not shared
 .claude/settings.local.json

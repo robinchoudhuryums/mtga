@@ -12,7 +12,8 @@ Checks (hard = fails the run):
   INV-03  the derived reference files exist (card-mana.csv, card-pool.csv,
           gallery.html).                                               [hard]
   INV-04  every deck file under decks/ parses with no bad lines.       [hard]
-  INV-05  deck buildability summary vs. the collection.               [info]
+  (info)  deck buildability summary vs. the collection — not a hard
+          invariant (CLAUDE.md's INV-05 is the Color(s)=identity rule). [info]
 
 Usage:
     python3 scripts/check_all.py          # full check, exit 1 on hard failures
@@ -59,10 +60,10 @@ def check_derived_files():
 
 
 def check_decks():
-    """INV-04 (parse) + INV-05 (buildability)."""
+    """INV-04 (deck parse) + buildability summary (info, not a hard invariant)."""
     errs, info = [], []
     decks = deckmod.discover_decks()
-    by_key, by_name = deckmod.load_collection()
+    _, _, by_name_qty = deckmod.load_collection()
     for d in decks:
         _, cards = deckmod.parse_deck_file(d["path"])
         if not cards:
@@ -70,7 +71,7 @@ def check_decks():
             continue
         missing = short = 0
         for q, n, s, c in cards:
-            have, found = deckmod.owned(by_key, by_name, n, s, c)
+            have, found = deckmod.owned(by_name_qty, n)
             if not found:
                 missing += 1
             elif have < q:

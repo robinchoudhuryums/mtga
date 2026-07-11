@@ -10,8 +10,6 @@ Grounded in the project's current state and deferred ideas. Regenerate with
 - **Theme the remaining UB flavor mechanics** (Vivid, Job select, Opus, Infusion,
   Paradigm, Increment, Disappear) in `tag_synergies.py`'s keyword→theme map, or
   decide they stay verbatim. (S)
-- **Trim card-unique "keyword" noise** from synergy tags — Scryfall lists FF/Marvel
-  ability names (Firaga, Wave Cannon, …) as keywords; filter obvious flavor names. (S)
 
 ## Tier 2 — Medium-term (weeks–months)
 
@@ -26,17 +24,15 @@ Grounded in the project's current state and deferred ideas. Regenerate with
 
 ## Tier 3 — Long-term (months+)
 
-- **Local editing app** — a small Flask/FastAPI UI for in-browser collection and
-  deck editing that writes back to the CSVs (Tier 2 of the original UI plan). (L)
+- **Local editing app — deck editing** — collection editing has shipped
+  (`scripts/app.py`: view / edit / add / remove / revert, with validated writes
+  and a timestamped `.bak`). Remaining: in-browser deck building/editing with
+  live buildability, reusing `deck.py check` / `wildcards` / `suggest`. (M)
 - **Google Sheets round-trip in practice** — wire up `sheets_sync.py` against the
   companion sheet so the CSV and Sheet stay in sync automatically. (M)
 
 ## Tier 4 — Future possibilities (exploratory)
 
-- **Deck suggestions from the collection** — given owned cards + synergy tags,
-  propose brews or upgrades automatically (extends `pool.py` + `tribes`).
-- **Wildcard optimization across the roster** — plan crafting to maximize decks
-  unlocked per wildcard, using `card-pool.csv` rarity + deck craft lists.
 - **Meta integration** — pull archetype/meta data to score decks against the
   current field, not just internal consistency.
 

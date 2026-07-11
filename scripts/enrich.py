@@ -166,7 +166,15 @@ def enrich(path, dry_run=False, force=False, only=None):
     _, rows = load_rows(path)
 
     def needs(r):
-        return [c for c in FILLABLE if force or not (r.get(c) or "").strip()]
+        cols = [c for c in FILLABLE if force or not (r.get(c) or "").strip()]
+        # Collector # is filled separately (only when the printing's set matches),
+        # so also queue a row whose Collector # is blank but that carries a Set
+        # Code to resolve against — otherwise a lone-missing Collector # would
+        # never be backfilled once the shared fields are already present.
+        if (r.get("Set Code") or "").strip() and (
+                force or not (r.get("Collector #") or "").strip()):
+            cols.append("Collector #")
+        return cols
 
     todo = [
         r for r in rows

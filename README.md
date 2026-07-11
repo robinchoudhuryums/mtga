@@ -69,12 +69,12 @@ for `Front // Back` names).
 
 **Set codes & collector numbers:** Type, Card Text, and Color(s) are the same
 across every printing, so they're filled from any match. Collector # is
-printing-specific, so it's only written when the Set Code resolves to a real
-Scryfall printing. A few MTG Arena set codes differ from Scryfall's (e.g. Arena
-`DAR` = Scryfall `DOM` for Dominaria) — known ones are mapped automatically. If a
-set code isn't recognized, enrich still fills the shared fields but leaves
-Collector # blank and warns, so a wrong number is never written silently. (Add
-more mappings in `SET_ALIASES` at the top of `scripts/enrich.py` as you hit them.)
+printing-specific, so it's only written when the matched printing's set equals
+the row's Set Code (after mapping known Arena→Scryfall differences — e.g. Arena
+`DAR` = Scryfall `DOM` for Dominaria). When the sets don't line up, enrich still
+fills the shared fields but leaves Collector # as-is, so a wrong number is never
+written silently. (Add more mappings in `SET_ALIASES` at the top of
+`scripts/enrich.py` as you hit them.)
 
 > Requires outbound access to `api.scryfall.com`. Some managed/CI environments
 > block it by policy; if so, run enrich locally. No API key needed.
@@ -92,8 +92,10 @@ reanimator, lifegain, removal, burn, ramp, tokens, …), and — when `card-mana
 has been built — **Scryfall's authoritative keyword list** mapped to
 deck-building themes (Surveil → `surveil; graveyard`, Convoke → `convoke;
 go-wide; ramp`, Escape → `graveyard; recursion`, …). Using Scryfall's per-card
-keywords means the coverage is complete and maintained, not a hand-kept list.
-Fills only blank cells by default (`--force` regenerates). These make `query.py
+keywords means real-keyword coverage is complete and maintained, not a hand-kept
+list; a small `FLAVOR_KEYWORDS` denylist drops Universe-Beyond flavor ability
+names (Firaga, Wave Cannon, …) that Scryfall also reports as keywords, so they
+don't pollute the tags. Fills only blank cells by default (`--force` regenerates). These make `query.py
 --synergy` / `pool.py --synergy` and the gallery filters useful; tags are
 hand-editable. Rerun `build_mana.py` then `tag_synergies.py --force` after
 importing new cards to refresh keyword-aware tags.
@@ -143,13 +145,31 @@ just ask Claude Code — it can query Scryfall live and cross-check your library
 
 ```
 python3 scripts/deck.py list          # every deck + variant, with buildable status
+python3 scripts/deck.py wildcards     # roster-wide crafting plan (wildcards to finish decks)
 python3 scripts/deck.py check 1a      # owned vs needed vs your collection
 python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
 python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
 python3 scripts/deck.py stats 1a      # mana curve, color balance, type breakdown
 python3 scripts/deck.py mana 1a       # hybrid-aware color requirements
 python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
+python3 scripts/deck.py suggest 1a    # pool cards that fit the deck's colors + themes
 ```
+
+`suggest` fingerprints a deck by its color identity and synergy themes (weighted
+by how central each is), then scores the Arena pool (`card-pool.csv`) for cards
+that fit — on-color, sharing the deck's themes, not already in the list — and
+flags each as owned (`×N`) or `craft` with its wildcard rarity. Use `--unowned`
+to see only craft targets and `--limit N` to widen the list. It composes the
+same synergy tags and color data the rest of the tooling uses, so brew upgrades
+fall out of what you already own plus what you'd craft.
+
+`wildcards` reads every deck's craft targets (cards you're short of), prices each
+by rarity (= its Arena wildcard, from `card-pool.csv`, with a live Scryfall
+fallback for non-Standard cards), and reports three things: per-deck wildcards to
+finish (closest-to-done first), the **highest-leverage crafts** (one card that
+unblocks multiple decks), and the total wildcards to make the *whole* roster
+buildable — deduplicated, since one shared collection means a card is only ever
+short by `max(any deck needs) − total owned`.
 
 `stats` also flags **cost flexibility** (`◊` — cards whose text reduces their
 cost or grants flash, e.g. convoke/delve/"costs {1} less", so the printed mana
@@ -191,8 +211,40 @@ the art, but the file stays tiny and portable).
 
 Image URLs are resolved via Scryfall's batch endpoint (≈4 requests for a few
 hundred cards) and cached in `.image-cache.json` (gitignored) so rebuilds are
-instant and the canonical CSV is never modified. Use `--no-fetch` to rebuild
-from cache without touching the network. Rerun after importing new cards.
+instant and the canonical CSV is never modified. They're also written to
+`image-manifest.json`, which **is** committed — so a fresh clone (or anyone you
+share the repo with) can render the art and rebuild with `--no-fetch` offline,
+without the gitignored working cache. Use `--no-fetch` to rebuild from the
+manifest/cache without touching the network. Rerun after importing new cards.
+
+### Editing app — edit the collection in your browser (optional)
+
+```
+pip install -r requirements-app.txt
+python3 scripts/app.py                 # then open http://127.0.0.1:5000
+python3 scripts/app.py --port 8000     # different port
+```
+
+A small local Flask app that turns the collection into an **editable** grid: card
+art (from `image-manifest.json`), search/color/set filters, and each card's
+`Quantity Owned` and `Synergies` as inline fields with live "dirty" highlighting.
+Edit the fields and **Save**; **＋ Add card** a new printing (its type/text/color/
+synergies auto-fill from Scryfall by exact name); remove a printing with the `✕`
+on its tile; or **⤺ Revert last save** to undo. It binds to `127.0.0.1` only — a
+personal, local tool, so there's no auth.
+
+**Every change is safe by construction:** the new rows are written to a temp file
+and run through `validate.py` first; only if that passes is the current CSV backed
+up to a timestamped `.bak` (gitignored) and then atomically replaced. Bad input —
+a non-numeric quantity, a duplicate printing — is rejected before anything is
+written, so the inventory can't be corrupted, and any change is one `.bak` away
+from undo (which is exactly what Revert does). Adding a card also appends a
+`card-mana.csv` row, so the integrity gate's INV-02 keeps holding; run
+`build_mana.py` (or `/refresh`) afterwards to fill in its real mana cost/keywords.
+
+Flask is the only part of the toolkit with a dependency; it's isolated in
+`requirements-app.txt`, and the core scripts (and `check_all.py` / CI) never
+import it. In-browser deck editing is a planned later phase.
 
 ### Sheets sync — round-trip with Google Sheets (optional)
 

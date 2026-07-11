@@ -18,6 +18,9 @@ docs. This file is the source of truth for the workflow commands in
   --skip-basics`.
 - **Basic lands are not in the collection** (unlimited in Arena). `deck.py`
   treats them as unlimited; imports skip them with `--skip-basics`.
+- **Owned copies are fungible across printings.** For buildability, `deck.py`
+  and `pool.py` both sum a card's `Quantity Owned` across every printing (a card
+  owned 1× in two sets counts as 2) — never count a single printing in isolation.
 
 ## Common Gotchas
 
@@ -35,13 +38,22 @@ docs. This file is the source of truth for the workflow commands in
   `build_pool.py` → `build_gallery.py`. Or run `/refresh`.
 - **Scryfall egress**: needs `api.scryfall.com` + `*.scryfall.io` allowed; some
   managed environments block it. Enrichment/pool/mana builds require it.
+- **The optional editing app (`scripts/app.py`) mutates `card-library.csv`** via
+  validated writes + a timestamped `.bak`, and appends a `card-mana.csv` row when
+  you add a card (to keep INV-02). After an app-editing session, run `/refresh`
+  so derived data catches up — an added card needs `build_mana.py` for its real
+  cost/keywords, `tag_synergies.py` for keyword tags, and `build_gallery.py` for
+  its art (until then it shows a fallback tile).
 - **`card-pool.csv` is Standard-legal Arena by default**; rebuild with `--all`
   for the full Arena pool. For cards outside the stored pool, query Scryfall live.
 
 ## Known Issues
 
-- A handful of Universe-Beyond flavor mechanics (Vivid, Job select, Opus, …)
-  aren't in `tag_synergies.py`'s keyword→theme map; they're tagged verbatim.
+- A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select,
+  Opus, …) aren't in `tag_synergies.py`'s keyword→theme map, so they're tagged
+  verbatim. Card-*unique* flavor ability names (Firaga, Wave Cannon, …), which
+  Scryfall also reports as keywords, are dropped via the `FLAVOR_KEYWORDS`
+  denylist so they don't pollute the tags.
 - A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
   warning (expected, not an error).
 
@@ -62,7 +74,7 @@ docs. This file is the source of truth for the workflow commands in
 - Data: card-library.csv, card-pool.csv, card-mana.csv
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/sheets_sync.py, scripts/lib.py
 - Analysis: scripts/deck.py, scripts/query.py, scripts/pool.py, scripts/validate.py, scripts/check_all.py
-- Presentation: scripts/build_gallery.py, gallery.html
+- Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/app.py (optional Flask editor), templates/
 - Decks: decks/
 
 **Invariant Library:**
@@ -79,6 +91,7 @@ docs. This file is the source of truth for the workflow commands in
 1. Ingest a batch — `import_arena.py <file>` → `enrich.py` → `validate.py` → `build_gallery.py`. Expect: validate clean, gallery card count == library row count.
 2. Analyze a deck — `deck.py check|mana|tribes|stats <id>`. Expect: no traceback; mana is hybrid-aware; tribes surfaces type-matters payoffs.
 3. Refresh derived data — `build_mana.py` → `tag_synergies.py --force` → `build_pool.py` → `build_gallery.py` → `check_all.py`. Expect: check_all reports all invariants hold.
+4. Edit via the app — start `scripts/app.py`, change a quantity and Save, then add a card; run `check_all.py`. Expect: CSV updated, a `.bak` written, and all invariants hold (INV-02 included, since add appends a card-mana.csv row).
 
 **Frozen Subsystems:** none.
 

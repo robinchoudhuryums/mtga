@@ -6,6 +6,12 @@ card name, gitignored) so the canonical CSV is never modified and images aren't
 re-fetched on every build. Image lookups use Scryfall's batch /cards/collection
 endpoint (up to 75 cards per request) to stay well under rate limits.
 
+The resolved URLs are also written to image-manifest.json, which IS committed.
+That makes the gallery offline-resilient: a fresh clone (or anyone you share the
+repo with) can render art and rebuild with --no-fetch without hitting Scryfall,
+since the working .image-cache.json isn't in git. The manifest is refreshed on
+every build (both fetch and --no-fetch).
+
 The output is a single self-contained gallery.html: card data is embedded as
 JSON and filtering happens in the browser. Images are hotlinked from Scryfall's
 CDN (cards.scryfall.io), so an internet connection is needed to see the art but
@@ -32,20 +38,39 @@ from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
 
 COLLECTION_URL = "https://api.scryfall.com/cards/collection"
 USER_AGENT = "mtga-card-library/1.0"
+# Local working cache (gitignored) vs. the committed, portable manifest. The
+# manifest is what makes the gallery offline-resilient: a fresh clone (or anyone
+# you share the repo with) can render art and rebuild with --no-fetch without
+# ever hitting Scryfall, since .image-cache.json isn't committed.
 CACHE_PATH = os.path.join(REPO_ROOT, ".image-cache.json")
+MANIFEST_PATH = os.path.join(REPO_ROOT, "image-manifest.json")
 DEFAULT_OUT = os.path.join(REPO_ROOT, "gallery.html")
 
 
 def load_cache():
-    if os.path.exists(CACHE_PATH):
-        with open(CACHE_PATH, encoding="utf-8") as fh:
-            return json.load(fh)
-    return {}
+    """Merge the committed manifest with the local working cache.
+
+    Manifest is read first so a fresh clone has image URLs; the local cache is
+    overlaid on top (it may hold newer entries or empty-string "known misses").
+    """
+    cache = {}
+    for path in (MANIFEST_PATH, CACHE_PATH):
+        if os.path.exists(path):
+            with open(path, encoding="utf-8") as fh:
+                cache.update(json.load(fh))
+    return cache
 
 
 def save_cache(cache):
     with open(CACHE_PATH, "w", encoding="utf-8") as fh:
         json.dump(cache, fh, indent=0, sort_keys=True)
+
+
+def save_manifest(cache):
+    """Write the committed, portable manifest (resolved URLs only, no misses)."""
+    resolved = {k: v for k, v in cache.items() if v}
+    with open(MANIFEST_PATH, "w", encoding="utf-8") as fh:
+        json.dump(resolved, fh, indent=0, sort_keys=True)
 
 
 def _image_url(card):
@@ -461,11 +486,19 @@ def main():
         added = resolve_images(rows, cache)
         eprint(f"       {added} new image(s) resolved this run")
 
+    # Keep the committed manifest in step with whatever we resolved, so offline
+    # rebuilds (and anyone who clones the repo) keep their art.
+    save_manifest(cache)
+
     cards = build_cards(rows, cache)
     with_img = sum(1 for c in cards if c["img"])
+    # Escape "<" as < so a card field containing "</script>" can't terminate
+    # the embedded <script type="application/json"> block (JSON.parse decodes it
+    # back). Valid JSON, so the browser reads the data unchanged.
+    data_json = json.dumps(cards, ensure_ascii=False).replace("<", "\\u003c")
     html = (HTML_TEMPLATE
             .replace("__STATS__", render_stats(compute_stats(cards)))
-            .replace("__DATA__", json.dumps(cards, ensure_ascii=False)))
+            .replace("__DATA__", data_json))
     with open(args.out, "w", encoding="utf-8") as fh:
         fh.write(html)
     print(f"Wrote {args.out}: {len(cards)} cards, {with_img} with images.")
