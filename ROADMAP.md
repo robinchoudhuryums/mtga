@@ -5,8 +5,6 @@ Grounded in the project's current state and deferred ideas. Regenerate with
 
 ## Tier 1 — Short-term (days–weeks)
 
-- **Lock Atlantis Attacks 18a as the primary build** once crafted — retire or
-  rename base `18` so the roster reflects the intended list. (S)
 - **Theme the remaining UB flavor mechanics** (Vivid, Job select, Opus, Infusion,
   Paradigm, Increment, Disappear) in `tag_synergies.py`'s keyword→theme map, or
   decide they stay verbatim. (S)
