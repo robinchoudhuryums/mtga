@@ -2,8 +2,10 @@
 #: format: Historic
 #: colors: WU
 #: based-on: deck.txt
-#: notes: -Erode -Requisition Raid, +Mindspring Merfolk +Brineborn Cutthroat.
-#: notes: Trades two marginal white spells for blue payoff/tempo; white demand 7 -> 5.
+#: notes: vs base: -Erode -Requisition Raid -Adept Watershaper,
+#: notes: +Mindspring Merfolk +Brineborn Cutthroat +Pestered Wellguard.
+#: notes: Blue tempo/tribal; white demand 7 -> 4; Pestered Wellguard taps into
+#: notes: flying tokens, doubling with Deeproot Pilgrimage.
 
 # Nonland
 1 Namor the Sub-Mariner (MSH) 69
@@ -34,7 +36,7 @@
 1 Tishana's Tidebinder (LCI) 81
 1 Silvergill Mentor (ECL) 69
 1 Mistway Spy (MKM) 65
-1 Adept Watershaper (ECL) 3
+1 Pestered Wellguard (ECL) 63
 1 Wanderbrine Trapper (ECL) 42
 1 Sygg's Command (ECL) 244
 1 Deeproot Pilgrimage (LCI) 52
