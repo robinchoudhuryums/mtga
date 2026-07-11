@@ -1406,7 +1406,7 @@ Diamond Pick-Axe,Artifact — Equipment,"Indestructible (Effects that say ""dest
 Equipped creature gets +1/+1 and has ""Whenever this creature attacks, create a Treasure token."" (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
 Equip {2}",R,Equipment; sacrifice; tokens; treasure; equipment,LCI,143,1
 Firebending Lesson,Instant — Lesson,"Kicker {4} (You may pay an additional {4} as you cast this spell.)
-Firebending Lesson deals 2 damage to target creature. If this spell was kicked, it deals 5 damage to that creature instead.",R,Lesson; burn,TLA,138,1
+Firebending Lesson deals 2 damage to target creature. If this spell was kicked, it deals 5 damage to that creature instead.",R,Lesson; burn,TLA,138,2
 Fire Magic,Instant,"Tiered (Choose one additional cost.)
 • Fire — {0} — Fire Magic deals 1 damage to each creature.
 • Fira — {2} — Fire Magic deals 2 damage to each creature.
@@ -1735,7 +1735,7 @@ Spinerock Tyrant,Creature — Dragon,"Flying
 Wither (This deals damage to creatures in the form of -1/-1 counters.)
 Whenever you cast an instant or sorcery spell with a single target, you may copy it. If you do, those spells gain wither. You may choose new targets for the copy.",R,Dragon; flying,ECL,159,1
 Rough Rhino Cavalry,Creature — Human Mercenary,"Firebending 2 (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)
-Exhaust — {8}: Put two +1/+1 counters on this creature. It gains trample until end of turn. (Activate each exhaust ability only once.)",R,Human; Mercenary; counters; trample,TLA,152,1
+Exhaust — {8}: Put two +1/+1 counters on this creature. It gains trample until end of turn. (Activate each exhaust ability only once.)",R,Human; Mercenary; counters; trample,TLA,152,2
 Steel Wrecking Ball,Artifact,"When this artifact enters, it deals 5 damage to target creature.
 {1}{R}, Discard this card: Destroy target artifact.",R,removal; burn; etb,SPM,177,1
 Stegron the Dinosaur Man,Legendary Creature — Dinosaur Villain,"Menace (This creature can't be blocked except by two or more creatures.)
@@ -1781,7 +1781,7 @@ Photon Blast Barrage,Sorcery,"When you cast this spell, copy it X times. You may
 Photon Blast Barrage deals 1 damage to target creature.",R,burn,MSH,147,1
 Fire Nation Palace,Land,"This land enters tapped unless you control a basic land.
 {T}: Add {R}.
-{1}{R}, {T}: Target creature you control gains firebending 4 until end of turn. (Whenever it attacks, add {R}{R}{R}{R}. This mana lasts until end of combat.)",R,mana,TLA,268,1
+{1}{R}, {T}: Target creature you control gains firebending 4 until end of turn. (Whenever it attacks, add {R}{R}{R}{R}. This mana lasts until end of combat.)",R,mana,TLA,268,2
 "Kavaron, Memorial World",Land — Planet,"This land enters tapped.
 {T}: Add {R}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
@@ -2794,7 +2794,7 @@ Dependable Quinjet,Artifact — Vehicle,"Flying
 {T}: Add one mana of any color.
 Crew 4 (Tap any number of creatures you control with total power 4 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,Vehicle; mana; vehicle; flying; crew,MSH,246,1
 Dragonstorm Globe,Artifact,"Each Dragon you control enters with an additional +1/+1 counter on it.
-{T}: Add one mana of any color.",Colorless,counters; mana,TDM,241,1
+{T}: Add one mana of any color.",Colorless,counters; mana,TDM,241,2
 "Krang, Utrom Warlord",Legendary Artifact Creature — Utrom Robot,"Flying, trample, indestructible, haste
 Other artifact creatures you control have flying, trample, indestructible, and haste.",Colorless,Utrom; Robot; flying; trample; haste,TMT,175,1
 Buster Sword,Artifact — Equipment,"Equipped creature gets +3/+2.
@@ -2986,3 +2986,4 @@ Scout the City,Sorcery,"Choose one —
 Rugged Highlands,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
 {T}: Add {R} or {G}.",R/G,,M21,249,2
+Lightning Strike,Instant,Lightning Strike deals 3 damage to any target.,R,,TLA,146,1
