@@ -83,3 +83,12 @@ docs. This file is the source of truth for the workflow commands in
 **Frozen Subsystems:** none.
 
 **Deploy Command:** N/A — this project has no deploy step (data + local tooling; changes ship by commit/push).
+
+## Command provenance
+
+`broad-scan`, `broad-implement`, `sync-docs`, `health-pulse`, and `roadmap` in
+`.claude/commands/` are copied **verbatim** from
+[claude-workflow-tools](https://github.com/robinchoudhuryums/claude-workflow-tools);
+they stay project-agnostic and read everything from the Cycle Workflow Config
+above. To update them, re-copy the files when that repo bumps them — don't edit
+them here. `check`, `refresh`, `add-deck`, and `tune-deck` are project-specific.
