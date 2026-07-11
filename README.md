@@ -231,6 +231,24 @@ python3 scripts/app.py --port 8000 --no-browser
 and opens your browser — so from a fresh clone it's a single command. (Run
 manually if you prefer; `--no-browser` skips the auto-open.)
 
+**Run it in the cloud, without a local clone (GitHub Codespaces).** The editor is
+a small server that reads and *writes* your CSV/deck files, so it can't run on a
+static host like GitHub Pages — but a Codespace is a live git checkout, which is
+exactly what it needs:
+
+1. On the repo page, **Code → Codespaces → Create codespace on `main`**.
+2. In the Codespace terminal: `make app ARGS='--no-browser'`.
+3. When the "port 5000 is available" prompt appears (or via the **Ports** tab),
+   open the forwarded URL — the full editor, in your browser.
+4. **To keep your edits, commit and push from the Codespace** (`git add -A &&
+   git commit -m "edits" && git push`) — the app writes to the Codespace's copy
+   of the repo, so unpushed changes are lost when it's deleted.
+
+Codespace port-forwarding is private to your GitHub account, which matters since
+the app has no auth. (A public host like Render is a poor fit: its free-tier disk
+is ephemeral so edits vanish on restart, edits don't flow back to git, and the
+auth-less editor would be exposed publicly.)
+
 A small local Flask app that turns the collection into an **editable** grid: card
 art (from `image-manifest.json`), search/color/set filters, and each card's
 `Quantity Owned` and `Synergies` as inline fields with live "dirty" highlighting.
