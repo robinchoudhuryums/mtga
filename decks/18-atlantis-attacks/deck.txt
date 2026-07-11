@@ -1,7 +1,11 @@
 #: name: Atlantis Attacks
 #: format: Historic
 #: colors: WU
-#: notes: Merfolk tribal / tempo (Azorius). WORK IN PROGRESS — not all cards owned yet.
+#: notes: Merfolk tribal / tempo — mono-U core with a light (mostly hybrid) W
+#: notes: splash. Primary build, promoted from the blue-tuned iteration; Sharae
+#: notes: of Numbing Depths in over Ooze Spill for a proactive tap-down body.
+#: notes: Tap/convoke token engine (Deeproot Pilgrimage + Pestered Wellguard).
+#: notes: Some cards are still craft targets (WIP).
 
 # Nonland
 1 Namor the Sub-Mariner (MSH) 69
@@ -26,20 +30,20 @@
 1 Deepchannel Duelist (ECL) 213
 1 Voracious Tome-Skimmer (ECL) 250
 1 Negate (TMT) 47
-1 Ooze Spill (TMT) 48
 1 Essence Scatter (SOS) 47
-1 Erode (SOS) 15
-1 Requisition Raid (SOA) 10
+1 Mindspring Merfolk (DFT) 51
 1 Tishana's Tidebinder (LCI) 81
 1 Silvergill Mentor (ECL) 69
 1 Mistway Spy (MKM) 65
-1 Adept Watershaper (ECL) 3
+1 Pestered Wellguard (ECL) 63
 1 Wanderbrine Trapper (ECL) 42
 1 Sygg's Command (ECL) 244
 1 Deeproot Pilgrimage (LCI) 52
 1 Into the Flood Maw (BLB) 52
 1 Champions of the Shoal (ECL) 46
 1 Floodpits Drowner (DSK) 59
+1 Brineborn Cutthroat (FDN) 152
+1 Sharae of Numbing Depths (WOE) 213
 
 # Lands
 1 Agna Qel'a (TLA) 264

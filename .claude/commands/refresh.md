@@ -5,9 +5,11 @@ Rebuild them in dependency order (all require Scryfall egress except the last
 two):
 
 1. `python3 scripts/enrich.py` — fill blank Type/Card Text/Color(s)/Collector #
-2. `python3 scripts/build_mana.py` — refresh card-mana.csv (mana costs + keywords)
+2. `python3 scripts/build_mana.py --pool` — refresh card-mana.csv (mana costs +
+   keywords). `--pool` keeps costs for the full Arena pool (unowned cards), which
+   is slow; omit it for a fast library-only build (but that drops pool coverage)
 3. `python3 scripts/tag_synergies.py --force` — keyword-aware synergy tags
-4. `python3 scripts/build_pool.py` — refresh the Standard card pool (add `--all` only if the user wants the full Arena pool)
+4. `python3 scripts/build_pool.py --all` — refresh the full Arena card pool (drop `--all` for a smaller Standard-only pool)
 5. `python3 scripts/build_gallery.py` — rebuild gallery.html (images + dashboard)
 6. `python3 scripts/check_all.py` — confirm all invariants hold
 

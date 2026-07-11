@@ -46,8 +46,12 @@ docs. This file is the source of truth for the workflow commands in
   derived data catches up — an added card needs `build_mana.py` for its real
   cost/keywords, `tag_synergies.py` for keyword tags, and `build_gallery.py` for
   its art (until then it shows a fallback tile).
-- **`card-pool.csv` is Standard-legal Arena by default**; rebuild with `--all`
-  for the full Arena pool. For cards outside the stored pool, query Scryfall live.
+- **`card-pool.csv` now holds the full Arena pool** (`build_pool.py --all`,
+  ~15.8k cards) and **`card-mana.csv` covers it** (`build_mana.py --pool`), so
+  unowned cards have real costs/tags. Both tools DEFAULT to the smaller scope
+  (Standard pool / library-only mana), so a plain rebuild SHRINKS coverage back —
+  pass `--all` / `--pool` (as `/refresh` now does) to keep full coverage. The
+  full-pool mana build is slow (Scryfall rate limits ~15.8k cards).
 
 ## Known Issues
 

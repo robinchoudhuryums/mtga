@@ -5,8 +5,6 @@ Grounded in the project's current state and deferred ideas. Regenerate with
 
 ## Tier 1 — Short-term (days–weeks)
 
-- **Lock Atlantis Attacks 18a as the primary build** once crafted — retire or
-  rename base `18` so the roster reflects the intended list. (S)
 - **Theme the remaining UB flavor mechanics** (Vivid, Job select, Opus, Infusion,
   Paradigm, Increment, Disappear) in `tag_synergies.py`'s keyword→theme map, or
   decide they stay verbatim. (S)
@@ -19,8 +17,6 @@ Grounded in the project's current state and deferred ideas. Regenerate with
 - **Match / deck win-rate tracking** — a local `parse_matches.py` that reads
   `Player.log` after sessions into `matches.csv`, plus win-rate analytics linked to
   `decks/`. Batch first; a live daemon later. (M–L)
-- **Pool scope** — rebuild `card-pool.csv --all` (full Arena) if deck-building
-  regularly reaches beyond Standard; today live Scryfall covers the tail. (S)
 
 ## Tier 3 — Long-term (months+)
 
