@@ -63,13 +63,22 @@ power-vs-flavor trade visible instead of collapsing it into one "worth it."
 
 **6. Craft upgrades** — ALWAYS run `deck.py suggest <id> --unowned` (it
 auto-filters to the deck's `#: format:`) and surface the craftable cards that
-would *markedly* improve the deck, tiered by impact-per-wildcard (prefer low
-rarity; read the card text, don't trust the tag match). Do this **even when the
-deck is fully owned** — a 0-wildcard deck can still have craftable upgrades worth
-flagging, and the user shouldn't have to ask. If nothing clears the bar, say so
-explicitly ("no craft target beats what you own"). For WIP decks, also give the
+would improve the deck, read from card text (don't trust the tag match). Do this
+**even when the deck is fully owned**. **Tag every pick with an explicit weight so
+the user never burns a wildcard on a lateral card:**
+- **★ Marked upgrade** — fills a real gap or a large power jump. Worth the
+  wildcard; lead with these.
+- **~ Sidegrade** — lateral / ~85% of something you already run. Name it only to
+  say *skip it* (unless the user specifically wants it).
+- **· Minor** — marginal. Explicitly tell the user not to spend a wildcard.
+
+**Before recommending ANY craft, check whether an OWNED card already does ~the
+same job** (from the `--owned` scan) — if one does, the craft is at best a
+sidegrade: recommend the owned card and downgrade the craft's weight. If nothing
+clears the ★ bar, say so plainly ("no craft target beats what you own"). Prefer a
+lower-rarity card that does ~90% of a rare's job. For WIP decks, also give the
 craft plan for the not-yet-owned cards. Offer to record the top picks as a flex
-block.
+block (carry the ★/~/· weight into the block).
 
 **7. Routes / branches** — when directions genuinely diverge (e.g. more tempo vs.
 more midrange), present as forks with trade-offs, not one linear answer.
