@@ -1297,8 +1297,10 @@ def main():
     p.add_argument("id")
     p.add_argument("--limit", type=int, default=20,
                    help="max suggestions (default 20; 0 = unlimited)")
-    p.add_argument("--unowned", action="store_true", help="only craftable suggestions")
-    p.add_argument("--owned", action="store_true", help="only cards you already own")
+    g = p.add_mutually_exclusive_group()
+    g.add_argument("--unowned", action="store_true", help="only craftable suggestions")
+    g.add_argument("--owned", action="store_true",
+                   help="only cards you already own (0 wildcards)")
     p = sub.add_parser("flex", help="show a deck's flex / suggested swaps (#~ lines)")
     p.add_argument("id")
     p = sub.add_parser("swap", help="preview/apply a single -cut/+add swap with deltas")
