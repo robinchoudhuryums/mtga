@@ -1,6 +1,6 @@
 #: name: Sacrifices
 #: format: Standard
-#: colors: BR
+#: colors: BRG
 #: notes: Rakdos (B/R) sacrifice / aristocrats, black-primary with a light green splash.
 
 # Nonland
@@ -16,7 +16,7 @@
 1 Barrels of Blasting Jelly (TLA) 254
 1 Bumbleflower's Sharepot (BLB) 244
 1 Anchovy & Banana Pizza (TMT) 57
-1 Ragost, Deft Gastronaut (EOE) 224
+1 Raven Eagle (TLA) 116
 1 Scrounge for Eternity (EOE) 114
 2 Pirate Peddlers (TLA) 115
 1 Jecht, Reluctant Guardian (FIN) 104
@@ -52,3 +52,9 @@
 1 Villainous Hideout (MSH) 276
 3 Jungle Hollow (M21) 247
 9 Swamp (MSH) 292
+
+# Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 8
+#~ -Fire Navy Trebuchet | +Deep-Cavern Bat | CRAFT (U) ★ MARKED UPGRADE: {1}{B} flying lifelink + Thoughtseize-on-a-body hand disruption — a unique effect the deck lacks
+#~ -Anchovy & Banana Pizza | +The Ruinous Wrecking Crew | CRAFT (R) ~ SIDEGRADE HERE / ★ ACROSS THE ROSTER: flexible {X}{B}{R} modal (loot + drain + edict + token-kill). Redundant with this deck's heavy removal/drain, but a MARKED upgrade for Black Sun (1) and Mad Villainy (10) — one wildcard, three BR aristocrats decks
+#~ -Bumbleflower's Sharepot | +Disturbing Mirth | CRAFT (U) ~ SIDEGRADE: more sac->draw 2 card advantage, but you already run sac-to-draw (Sephiroth, Raven Eagle, High-Society Hunter) — skip unless you want more
+#~ note: only Deep-Cavern Bat is a clear marked upgrade for THIS deck. Wrecking Crew earns its wildcard via cross-deck reuse (decks 1, 8, 10).
