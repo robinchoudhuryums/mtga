@@ -29,7 +29,7 @@
 1 Bulk Up (SOA) 40
 2 Blazing Crescendo (MSH) 125
 1 Iroh's Demonstration (TLA) 141
-1 Hawkeye's Bow (MSH) 132
+1 Michelangelo, Weirdness to 11 (TMT) 121
 1 Diamond Pick-Axe (LCI) 143
 2 HYDRA Assault Robot (MSH) 137
 1 Hire a Crew (MSH) 134
@@ -37,7 +37,7 @@
 1 Epic Fight (MSH) 166
 1 Super Strength (MSH) 189
 1 Goldvein Pick (FDN) 253
-1 Ant-Man's Army (MSH) 161
+1 Ka-Zar of the Savage Land (MSH) 174
 
 # Lands
 1 Restless Ridgeline (LCI) 283
@@ -47,3 +47,9 @@
 1 Castle Doom (MSH) 263
 9 Mountain (MSH) 294
 9 Forest (MSH) 296
+
+# Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 9
+#~ -Pain for All | +Sharp-Eyed Rookie | CRAFT (R) ★ MARKED UPGRADE / ★ ACROSS THE ROSTER: vigilance body that grows a counter AND investigates whenever a bigger creature enters — the card-advantage-plus-counters engine the deck lacks, cutting a thin 2-for-1 aura. Fits 10 of your decks; wildcard very well spent
+#~ -Super Strength | +Mutagen Man, Living Ooze | CRAFT (R) ★ MARKED UPGRADE: trample body that makes X Mutagen tokens (each a counter) and cheapens your artifact-token abilities (Mutagen/Food/Treasure/Lander) — trades a 2-for-1 aura risk for a resilient counters payoff. Fits 10 decks
+#~ -Goldvein Pick | +Bioengineered Future | CRAFT (R) ~ SIDEGRADE: every creature enters with a counter per land that entered — good, but needs landfall you only partly support; skip unless you lean into landers
+#~ note: owned adds already done — Michelangelo, Weirdness to 11 (counter amplifier) and Ka-Zar (card advantage) beat anything craftable for THIS deck. The crafts above earn their wildcard mostly on cross-deck reuse (10 decks each).
