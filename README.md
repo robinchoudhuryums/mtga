@@ -146,22 +146,27 @@ just ask Claude Code — it can query Scryfall live and cross-check your library
 ```
 python3 scripts/deck.py list          # every deck + variant, with buildable status
 python3 scripts/deck.py wildcards     # roster-wide crafting plan (wildcards to finish decks)
-python3 scripts/deck.py check 1a      # owned vs needed vs your collection
+python3 scripts/deck.py check 1a      # owned vs needed + a castability lint (off-color cards)
 python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
 python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
-python3 scripts/deck.py stats 1a      # mana curve, color balance, type breakdown
-python3 scripts/deck.py mana 1a       # hybrid-aware color requirements
+python3 scripts/deck.py stats 1a      # curve, colors, types, cost flags, functional roles
+python3 scripts/deck.py mana 1a       # hybrid-aware color requirements + castability lint
 python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
-python3 scripts/deck.py suggest 1a    # pool cards that fit the deck's colors + themes
+python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
+python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~ lines)
+python3 scripts/deck.py swap 1a --cut A --add B   # preview a swap's deltas; --apply writes (.bak)
+python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
 ```
 
 `suggest` fingerprints a deck by its color identity and synergy themes (weighted
 by how central each is), then scores the Arena pool (`card-pool.csv`) for cards
 that fit — on-color, sharing the deck's themes, not already in the list — and
-flags each as owned (`×N`) or `craft` with its wildcard rarity. Use `--unowned`
-to see only craft targets and `--limit N` to widen the list. It composes the
-same synergy tags and color data the rest of the tooling uses, so brew upgrades
-fall out of what you already own plus what you'd craft.
+flags each as owned (`×N`) or `craft` with its wildcard rarity. Use `--owned` to
+scour only what you already have (0-wildcard upgrades sitting in your roster),
+`--unowned` for craft targets only, and `--limit N` (or `--limit 0` for no cap)
+to size the list. It composes the same synergy tags and color data the rest of
+the tooling uses, so brew upgrades fall out of what you already own plus what
+you'd craft.
 
 `wildcards` reads every deck's craft targets (cards you're short of), prices each
 by rarity (= its Arena wildcard, from `card-pool.csv`, with a live Scryfall
@@ -171,12 +176,19 @@ unblocks multiple decks), and the total wildcards to make the *whole* roster
 buildable — deduplicated, since one shared collection means a card is only ever
 short by `max(any deck needs) − total owned`.
 
-`stats` also flags **cost flexibility** (`◊` — cards whose text reduces their
-cost or grants flash, e.g. convoke/delve/"costs {1} less", so the printed mana
-value doesn't mislead). `tribes` reads oracle text to surface **type-matters
-payoffs** — e.g. a Saga that rewards Krakens/Leviathans/Merfolk/Octopuses/
-Serpents will list those types and how many of your creatures qualify — so
-cross-type tribal synergies aren't missed.
+`stats` also flags **cost nature** — `◊` for cards whose text reduces their cost
+or grants flash (convoke/delve/"costs {1} less", so the printed mana value doesn't
+mislead), `△` for abilities/modes that carry an added or conditional cost — and
+breaks the nonland spells into **functional roles**: a heuristic read of card text
+that counts removal / counters / card advantage / ramp / anthems (with an
+interaction total), so "light on interaction" is *measured*, not eyeballed.
+`mana` and `check` add a **castability lint** that flags any card whose real color
+needs fall outside the deck's declared `#: colors:` — a strict off-color pip means
+uncastable, an off-color identity (a hybrid you'd pay on-color, or an off-color
+ability) is a softer heads-up. `tribes` reads oracle text to surface
+**type-matters payoffs** — e.g. a Saga that rewards Krakens/Leviathans/Merfolk/
+Octopuses/Serpents will list those types and how many of your creatures qualify —
+so cross-type tribal synergies aren't missed.
 
 Decks live under `decks/` as one folder per core deck, with variations as sibling
 files (`deck.txt` → id `1`, `1a-*.txt` → id `1a`). Basics are treated as
