@@ -1,5 +1,5 @@
 #: name: Bird Brain
-#: format: Historic
+#: format: Standard
 #: colors: WU
 #: notes: WIP PILE — 83 spells, 0 lands. Started bird/flyers-themed then sprawled
 #: notes: across chocobos, earthbending, TMNT, big-green, etc. Needs a direction

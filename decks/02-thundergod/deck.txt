@@ -1,5 +1,5 @@
 #: name: Thundergod
-#: format: Historic
+#: format: Standard
 #: colors: R
 #: notes: Mono-red, Thor-themed aggro.
 

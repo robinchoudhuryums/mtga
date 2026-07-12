@@ -1,5 +1,5 @@
 #: name: Drawn Conclusions
-#: format: Historic
+#: format: Standard
 #: colors: UB
 #: notes: Dimir (U/B) — card draw / control.
 

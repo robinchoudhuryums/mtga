@@ -1,5 +1,5 @@
 #: name: Mad Villainy
-#: format: Historic
+#: format: Standard
 #: colors: BR
 #: notes: Rakdos (B/R) — villains / artifacts midrange.
 

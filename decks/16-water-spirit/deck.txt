@@ -1,5 +1,5 @@
 #: name: Water Spirit
-#: format: Historic
+#: format: Standard
 #: colors: WU
 #: notes: Azorius (W/U) — Water Tribe / spirits tempo.
 

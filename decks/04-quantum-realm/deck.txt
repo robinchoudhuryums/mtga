@@ -1,5 +1,5 @@
 #: name: Quantum Realm
-#: format: Historic
+#: format: Standard
 #: colors: UG
 #: notes: Simic (U/G) — +1/+1 counters / value.
 

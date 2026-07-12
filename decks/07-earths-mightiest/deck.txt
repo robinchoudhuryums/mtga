@@ -1,5 +1,5 @@
 #: name: Earth's Mightiest
-#: format: Historic
+#: format: Standard
 #: colors: GW
 #: notes: Selesnya (G/W) — Avengers heroes go-wide.
 

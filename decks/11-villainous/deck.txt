@@ -1,5 +1,5 @@
 #: name: Villainous
-#: format: Historic
+#: format: Standard
 #: colors: B
 #: notes: Mono-black villains / control-midrange.
 

@@ -1,5 +1,5 @@
 #: name: Bird Brain — Bant Tokens
-#: format: Historic
+#: format: Standard
 #: colors: GWU
 #: based-on: deck.txt
 #: notes: Bant (GWU) go-wide: Chocobo landfall Bird tokens + For the Common Good
