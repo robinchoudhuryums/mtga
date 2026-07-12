@@ -42,5 +42,16 @@
 1 Beast, Erudite Aerialist (MSH) 206
 
 # Lands
-11 Plains (MSH) 288
-13 Forest (MSH) 296
+8 Plains (MSH) 288
+1 Blossoming Sands (M21) 244
+1 Gathering Place (MSH) 266
+1 Hushwood Verge (DSK) 261
+11 Forest (MSH) 296
+1 Birnin Zana Plaza (MSH) 262
+1 Kyoshi Village (TLA) 271
+
+# Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 7
+#~ -Requisition Raid | +Kutzil's Flanker | CRAFT (R) ★ MARKED UPGRADE: flash — big counters OR removal; the flexible interaction the deck genuinely lacks
+#~ -Graduation Day | +Sharp-Eyed Rookie | CRAFT (R) ~ SIDEGRADE: card advantage off counters — but you OWN Mikey & Leo (draw whenever you counter a creature), which does the same job for 0 wildcards. Craft only if you want both.
+#~ -Foggy Swamp Vinebender | +Silver Sable | CRAFT (U) · MINOR: another on-tribe counter body — lateral; don't spend a wildcard here
+#~ note: owned card-advantage fix available now — -Graduation Day +Mikey & Leo (G/W)(G/W): draw a card whenever you put a counter on a creature (Doc Samson/Knight of Wundagore trigger it constantly).
