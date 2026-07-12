@@ -77,6 +77,15 @@ docs. This file is the source of truth for the workflow commands in
   during `build_pool.py`, but a pool built before the column exists lacks it —
   `suggest` then warns and shows all until you rebuild. `pool.py --legal <fmt>`
   uses the same data.
+- **`deck.py suggest` scopes by castable colors, not identity.** It builds the
+  deck's colors from the declared `#: colors:` (else mana costs), so a card's
+  off-color *activated abilities* (e.g. Super-Skrull's `{4}{R}`) don't surface
+  uncastable picks. Run it both ways: `--owned --limit 0` scours the collection
+  for 0-wildcard upgrades already owned; `--unowned` lists craft targets.
+- **Flex-block craftables are format-scoped.** When a deck's `#: format:` changes,
+  re-check its `#~` craft suggestions — a craftable legal under the old format may
+  have rotated (hit moving decks 1/2 Historic→Standard). `deck.py flex <id>` plus
+  the pool's `Legalities` column confirm.
 
 ## Known Issues
 
