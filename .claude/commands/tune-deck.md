@@ -13,15 +13,20 @@ swaps (see "Play-style weighting" below) — not the data-gathering.
 
 Read the actual card text — never judge by mana value or a single subtype:
 1. `python3 scripts/deck.py check <id>` — owned vs. craft targets.
-2. `python3 scripts/deck.py stats <id>` — types, curve, and the ◊ (cheaper) /
-   △ (added-cost) flags. Treat printed MV skeptically for flagged cards.
+2. `python3 scripts/deck.py stats <id>` — types, curve, the ◊ (cheaper) /
+   △ (added-cost) flags, and a **Functional roles** breakdown (heuristic count of
+   removal / counters / card advantage / ramp / anthems). Use the roles numbers —
+   especially the interaction total — to ground the Health scorecard instead of
+   eyeballing "light on interaction". Treat printed MV skeptically for ◊/△ cards.
 3. `python3 scripts/deck.py mana <id>` — hybrid-aware color requirements. This,
    not stats' rough color identity, is the truth about how many sources each
    color needs. Hybrids don't demand their off-color.
 4. `python3 scripts/deck.py tribes <id>` — creature subtypes and type-matters
    payoffs (which payoff cards reward which types, how many creatures qualify).
 5. `python3 scripts/deck.py suggest <id>` — on-color, on-theme pool cards, owned
-   vs. craftable with rarity.
+   vs. craftable with rarity. Add `--owned` (with `--limit 0`) to scour the whole
+   collection for 0-wildcard upgrades already sitting in the roster; `--unowned`
+   for craft targets only.
 6. For every card you'd cut OR keep, read its Card Text from card-library.csv /
    card-pool.csv. A card's real value is in its text (tap engines, alt costs,
    token generation) — the tribes/curve tools miss cross-mechanic synergies.
@@ -121,4 +126,9 @@ to any list (see `decks/README.md` → *Flex section*):
 ```
 
 Read them back with `deck.py flex <id>` (enriches each `+In` with cost, rarity,
-owned count); the editing app shows them in a read-only panel.
+owned count); the editing app shows them in a read-only panel. Promote one into
+the 60 with `deck.py apply-flex <id> <n>` (dry-run by default; `--apply` writes a
+`.bak` and drops the consumed flex line). To preview any swap's before/after
+deltas first, use `deck.py swap <id> --cut A --add B` — it prints the real card
+types (so a "vanilla flyer" that's actually a Bird won't slip past) plus the
+card-count / creature / avg-MV / color-identity deltas.
