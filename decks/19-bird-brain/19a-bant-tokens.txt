@@ -48,7 +48,7 @@
 # Ramp / support / fun
 1 Studious First-Year (SOS) 162
 1 Earthbender Ascension (TLA) 175
-1 Rabaroo Troop (TLA) 32
+1 The Legend of Kyoshi (TLA) 186
 
 # Lands (Bant — 13 duals + 11 basics)
 1 Hallowed Fountain (ECL) 265
@@ -69,8 +69,8 @@
 3 Island
 
 # Flex — best owned fits found scouring the whole collection (comments; not part of the 60). See: deck.py flex 19a
-#~ -Cat-Owl | +Spellbook Seeker | trade a vanilla flyer for a BIRD flyer that draws two — feeds Eagle/Kastral/Jackdaw + Dazzling Denial, fixes card advantage
-#~ -Studious First-Year | +Dazzling Denial | on-flavor Bird counter that hardens with a Bird out — the cheap interaction the deck lacks
-#~ -Momo, Friendly Flier | +Cloudblazer | flyer that gains 2 and draws 2 — more evasive card advantage
-#~ -Earthbender Ascension | +The Legend of Kyoshi | draw = your biggest power (huge off Fat Chocobo), then earthbend = free landfall, then a finisher Avatar
-#~ note: all four are OWNED (0 wildcards). Bushwhack / Harsh Annotation / Run Over remain owned interaction options too.
+# (The Legend of Kyoshi already swapped in over Rabaroo Troop; Earthbender Ascension stays.)
+#~ -Cat-Owl | +Spellbook Seeker | still a Bird flyer, but this one draws-2/discards-2 (card filtering) — feeds Eagle/Kastral/Jackdaw + Dazzling Denial. TRADE: near-lateral; loses Cat-Owl's untap utility, card-neutral not card-advantage
+#~ -Studious First-Year | +Dazzling Denial | on-flavor Bird counter that hardens with a Bird out. TRADE: reactive — dead when you're the aggressor with nothing to counter; loses a turn-1 body + banked ramp
+#~ -Momo, Friendly Flier | +Cloudblazer | flyer that gains 2 and draws 2. TRADE: 1-drop → 5-drop, loses Momo's flyer cost-reduction
+#~ note: all OWNED (0 wildcards). Bushwhack / Harsh Annotation / Run Over remain owned interaction options too.

@@ -38,7 +38,6 @@
 1 Dawnwing Marshal (FDN) 570
 1 Dazzling Angel (FDN) 9
 1 Stirring Hopesinger (SOS) 35
-1 Cat-Owl (TLA) 212
 1 Momo, Friendly Flier (TLA) 29
 1 Sunbird Standard (LCI) 262
 1 Shrike Force (BLB) 31
@@ -47,7 +46,8 @@
 
 # Ramp / support / fun
 1 Earthbender Ascension (TLA) 175
-1 Rabaroo Troop (TLA) 32
+1 The Earth King (TLA) 172
+1 The Legend of Kyoshi (TLA) 186
 
 # Lands (GW — 6 nonbasic + 18 basics, green-weighted)
 1 Birnin Zana Plaza (MSH) 262
@@ -60,8 +60,6 @@
 8 Plains
 
 # Flex — best owned fits found scouring the whole collection (comments; not part of the 60). See: deck.py flex 19b
-# (Summon: Choco/Mog already swapped in over Studious First-Year.) Cuts below preserve BOTH landfall pieces.
-#~ -Rabaroo Troop | +The Earth King | 4/4 Bear now + landfall ramp off power-4 fatties. TRADE: conditional ramp; drops the earthbend/quest payoff you'd get from Earthbender Ascension (which stays)
-#~ -Momo, Friendly Flier | +The Legend of Kyoshi | keeps Cat-Owl; draw = biggest power, then earthbend = free landfall, then a finisher. TRADE: 1-drop → 6-drop, curve gets heavier
-#~ -Rabaroo Troop | +Stroke of Midnight | ALT for the Rabaroo slot: destroy ANY nonland permanent — the catch-all removal the deck lacks. TRADE: hands them a 1/1, lowers creature count
+# (Applied: Choco/Mog over Studious First-Year; Earth King over Rabaroo Troop; Legend of Kyoshi over Cat-Owl. Earthbender Ascension stays.)
+#~ -Momo, Friendly Flier | +Stroke of Midnight | destroy ANY nonland permanent — the catch-all removal the deck still lacks. TRADE: hands them a 1/1, drops a 1-drop flyer
 #~ note: all OWNED (0 wildcards). Also owned: Summon: Knights of Round (top-end token engine), Claim the Kingdom (landfall +1/+1 counters), Sandbenders' Storm (modal removal).
