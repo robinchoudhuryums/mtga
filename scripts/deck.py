@@ -33,7 +33,7 @@ Commands:
     python3 scripts/deck.py diff 1 1a           # what the variant changes
     python3 scripts/deck.py arena 1a            # emit an Arena-importable list
     python3 scripts/deck.py stats 1a            # mana curve, colors, types, functional roles
-    python3 scripts/deck.py mana 1a             # hybrid-aware color requirements
+    python3 scripts/deck.py mana 1a             # hybrid-aware color requirements + castability lint
     python3 scripts/deck.py suggest 1a --owned  # OWNED pool cards that fit the deck (0 wildcards)
     python3 scripts/deck.py swap 1a --cut A --add B   # preview a swap's deltas (--apply to write)
     python3 scripts/deck.py apply-flex 1a 2     # promote flex swap #2 into the maindeck
@@ -346,13 +346,64 @@ def cmd_wildcards(_args):
     return 0
 
 
+def _declared_colors(meta):
+    """The deck's stated colors as a WUBRG set, from the `#: colors:` header."""
+    return {ch for ch in (meta.get("colors") or "").upper() if ch in "WUBRG"}
+
+
+def _castability(cards, declared, mana, carddata):
+    """Flag nonland cards whose color needs fall outside `declared` (a WUBRG set).
+
+    Returns (uncastable, off_identity):
+      uncastable   – [(name, "needs X")] : a STRICT pip, or a true multicolor
+                     hybrid with NO in-declared-color option, in a color the deck
+                     can't produce. These genuinely can't be cast off the stated
+                     colors. (Needs real mana costs — pass a populated `mana`.)
+      off_identity – [(name, "identity has X")] : castable as printed, but the
+                     card's color IDENTITY strays outside declared (an off-color
+                     ability, or a hybrid you'd pay on-color) — a softer heads-up.
+
+    An empty `declared` disables the lint. With an empty `mana` dict the strict
+    check is skipped and only the offline identity check runs (so `check` stays
+    network-free)."""
+    uncastable, off_ident = [], []
+    if not declared:
+        return uncastable, off_ident
+    seen = set()
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl in seen:
+            continue
+        cd = carddata.get(nl)
+        if cd and "Land" in _primary_type(cd["type"]):
+            continue
+        seen.add(nl)
+        entry = mana.get(nl)
+        strict, hybrid = parse_pips(entry[0] if entry else "")
+        off_strict = sorted(set(strict) - declared)
+        # A single-color hybrid ({2/W} generic-or-W, {W/P} phyrexian) can always be
+        # paid without its color; only a true multicolor hybrid constrains castability.
+        bad_hybrid = sorted({x for h in hybrid
+                             if len(h) >= 2 and not (h & declared) for x in h})
+        if off_strict or bad_hybrid:
+            uncastable.append((n, "needs " + "/".join(sorted(set(off_strict + bad_hybrid)))))
+            continue
+        colstr = ((cd["colors"] if cd else "") or "").strip()
+        ident = set() if colstr.lower() == "colorless" else \
+            {ch for ch in colstr.upper() if ch in "WUBRG"}
+        stray = sorted(ident - declared)
+        if stray:
+            off_ident.append((n, "identity has " + "/".join(stray)))
+    return uncastable, off_ident
+
+
 def cmd_check(args):
     d = find_deck(args.id)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
     _, _, by_name_qty = load_collection()
-    _, cards = parse_deck_file(d["path"])
+    meta, cards = parse_deck_file(d["path"])
 
     print(f"Deck {d['id']}: {d['name'] or d['path']}")
     print(f"{'Have':>4} / {'Need':<4}  Card")
@@ -377,6 +428,17 @@ def cmd_check(args):
         print(f"{len(short)} short of the deck's requirement.")
     if not missing and not short:
         print("You own everything in this deck. Ready to build.")
+
+    # Castability lint (offline, identity-only — pass an empty mana dict). Flags
+    # cards whose color identity strays outside the deck's declared colors.
+    declared = _declared_colors(meta)
+    _, off_ident = _castability(cards, declared, {}, load_card_data())
+    if declared and off_ident:
+        cols = "".join(sorted(declared))
+        print(f"\n⚠ {len(off_ident)} card(s) stray outside the deck's {cols} colors "
+              f"(run `deck.py mana {d['id']}` for castability detail):")
+        for n, why in off_ident:
+            print(f"    {n} — {why}")
     return 1 if (missing or short) else 0
 
 
@@ -910,7 +972,7 @@ def cmd_mana(args):
         eprint(f"No deck with id {args.id!r}.")
         return 1
     by_key, by_name, _ = load_collection()
-    _, cards = parse_deck_file(d["path"])
+    meta, cards = parse_deck_file(d["path"])
     mana = load_mana()
     if not mana:
         eprint("No card-mana.csv found. Build it: python3 scripts/build_mana.py")
@@ -958,6 +1020,25 @@ def cmd_mana(args):
         print(f"\n{hybrid_only} card(s) are hybrid-only — castable with any of their colors.")
     if unknown:
         print(f"\n{unknown} card(s) had no cost data (run build_mana.py to refresh).")
+
+    # Castability lint: compare each card's real color needs against the deck's
+    # declared colors (the `#: colors:` header). Only meaningful when declared.
+    declared = _declared_colors(meta)
+    if declared:
+        uncastable, off_ident = _castability(cards, declared, mana, load_card_data())
+        cols = "".join(sorted(declared))
+        if uncastable:
+            print(f"\n✗ Uncastable off the deck's {cols} colors "
+                  "(a pip needs a color the deck can't produce):")
+            for n, why in uncastable:
+                print(f"    {n} — {why}")
+        if off_ident:
+            print(f"\n△ Castable, but color identity strays outside {cols} "
+                  "(off-color ability, or a hybrid you'd pay on-color):")
+            for n, why in off_ident:
+                print(f"    {n} — {why}")
+        if not uncastable and not off_ident:
+            print(f"\nCastability: every nonland card fits the declared {cols} colors. ✓")
     return 0
 
 

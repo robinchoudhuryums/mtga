@@ -76,10 +76,11 @@ builds or audits a deck.
 
 ```
 python3 scripts/deck.py list          # every deck + variant, with buildable status
-python3 scripts/deck.py check 1a      # owned vs needed vs your collection
+python3 scripts/deck.py check 1a      # owned vs needed + castability lint (off-color cards)
 python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
 python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
 python3 scripts/deck.py stats 1a      # curve, colors, type breakdown, functional roles
+python3 scripts/deck.py mana 1a       # hybrid-aware color requirements + castability lint
 python3 scripts/deck.py suggest 1a --owned   # owned pool cards that fit (0 wildcards; --limit 0 = all)
 python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~ lines)
 python3 scripts/deck.py swap 1a --cut A --add B   # preview a swap's deltas; --apply writes (.bak)
@@ -88,10 +89,13 @@ python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 
 
 `stats` also reports **functional roles** — a heuristic read of card text that
 counts removal / counters / card advantage / ramp / anthems, so "light on
-interaction" is measured, not eyeballed. `swap` and `apply-flex` default to a
-**dry-run** (before/after deltas: card count, creatures, avg MV, color identity)
-and only write with `--apply`, always leaving a timestamped `.bak` and re-checking
-that the file re-parses at the same card total (INV-04).
+interaction" is measured, not eyeballed. `check` and `mana` run a **castability
+lint** against the deck's declared `#: colors:` header: a strict off-color pip is
+uncastable, an off-color identity (a hybrid you'd pay on-color, or an off-color
+ability) is a softer heads-up. `swap` and `apply-flex` default to a **dry-run**
+(before/after deltas: card count, creatures, avg MV, color identity) and only
+write with `--apply`, always leaving a timestamped `.bak` and re-checking that the
+file re-parses at the same card total (INV-04).
 
 `stats` fetches mana values from Scryfall once and caches them in
 `.mana-cache.json` (gitignored).

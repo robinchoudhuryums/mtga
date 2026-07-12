@@ -35,9 +35,17 @@ docs. This file is the source of truth for the workflow commands in
 ## Common Gotchas
 
 - **Don't judge a card by printed mana value or a single subtype.** `deck.py
-  stats` flags cost flexibility (`◊` cheaper / `△` added cost) and `deck.py
-  tribes` reads oracle text for cross-type synergies (e.g. a Serpent feeding a
-  Leviathan payoff). Read the card text (stored in the CSV) for real evaluation.
+  stats` flags cost flexibility (`◊` cheaper / `△` added cost), buckets spells
+  into functional roles (removal / card advantage / ramp / …, heuristic from
+  oracle text), and `deck.py tribes` reads oracle text for cross-type synergies
+  (e.g. a Serpent feeding a Leviathan payoff). `deck.py mana` / `check` also run
+  a castability lint against the deck's declared `#: colors:`. Read the card text
+  (stored in the CSV) for real evaluation.
+- **Previewing and applying swaps.** `deck.py swap <id> --cut A --add B` shows a
+  swap's before/after deltas (and the real card types — so a "vanilla flyer"
+  that's actually a Bird can't slip past); `--apply` writes with a `.bak` and an
+  INV-04 re-check. `deck.py apply-flex <id> <n>` promotes a `#~` flex line into
+  the 60. Both default to a dry run.
 - **MTG Arena set codes can differ from Scryfall** (e.g. Arena `DAR` = Scryfall
   `DOM`). `enrich.py` maps known ones (`SET_ALIASES`) and never writes a
   collector # for an unconfirmed printing.
@@ -72,6 +80,14 @@ docs. This file is the source of truth for the workflow commands in
   denylist so they don't pollute the tags.
 - A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
   warning (expected, not an error).
+- The **functional-role** breakdown (`deck.py stats`) and **castability lint**
+  (`deck.py mana` / `check`) are heuristic. Roles are matched from oracle text, so
+  modal cards land in several buckets and single-draw cantrips are deliberately
+  *not* counted as card advantage. The lint reads the deck's `#: colors:` header,
+  so a stale or intentionally-narrow header flags cards as off-color — e.g. the
+  raw 83-card `19` pile is headed `WU` but is really multicolor, and decks whose
+  header trails their contents (8, 13) will list genuinely off-color cards. Treat
+  both as signal to review, not hard failures — neither gates `check_all.py`.
 
 ## Cycle Workflow Config
 
