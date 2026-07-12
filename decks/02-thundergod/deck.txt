@@ -5,14 +5,14 @@
 
 # Nonland
 1 J. Jonah Jameson (SPM) 81
-1 Bulk Up (SOA) 40
+1 Crimson Operative (MSH) 126
 1 Firebrand Archer (FDN) 196
 1 Hawkeye, Master Marksman (MSH) 130
 1 Lightning Strike (MSH) 142
 1 K'un-Lun Warrior (MSH) 140
 1 Loki Laufeyson (MSH) 143
 1 Romantic Rendezvous (MSC) 808
-1 Team Tactics (MSH) 155
+1 Electro, Assaulting Battery (SPM) 76
 1 Vision of Love (MSH) 158
 1 Electro's Bolt (SPM) 77
 1 Human Torch, Johnny Storm (MSH) 136
@@ -37,10 +37,15 @@
 1 Bullseye, Death Dealer (MSH) 209
 1 Spider-Islanders (SPM) 91
 1 Zealous Lorecaster (SOS) 137
-1 Summit Intimidator (TDM) 125
+1 Rubble Rouser (SOS) 128
 1 Child of the Volcano (LCI) 140
 1 Burst Lightning (FDN) 192
 
 # Lands
 1 Fire Nation Palace (TLA) 268
 23 Mountain (MSH) 294
+
+# Flex — craftable red upgrades (deepen the spellslinger / Hero plan). See: deck.py flex 2
+#~ -Child of the Volcano | +Jack of Hearts, Volatile Hero | CRAFT (R): flying haste Hero; dies into a board-wipe + a discard-hand→draw-3 wheel — aggression AND card advantage
+#~ -Wisecrack | +Iron Fist, Hero for Hire | CRAFT (R): a cheap trample prowess Hero — another spellslinger payoff that also counts for Human Torch
+#~ note: both are CRAFT targets (not owned), both mono-red. AVOID Ash Zealot despite the tribal match — it punishes ALL graveyard casting, which hits your own Mayhem/flashback.

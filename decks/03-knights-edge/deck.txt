@@ -8,16 +8,16 @@
 1 Dion, Bahamut's Dominant (FIN) 16
 1 Battle Menu (FIN) 9
 1 Cosmogrand Zenith (EOE) 9
-1 Dawnstrike Vanguard (EOE) 10
+1 Summon: Bahamut (FIN) 1
 1 Divine Resilience (FDN) 10
-1 Graduation Day (SOS) 16
-1 Helping Hand (SOA) 5
+1 Stasis Snare (FDN) 581
+1 Crib Swap (ECL) 11
 1 Hinterland Sanctifier (FDN) 730
 1 Leonardo, Leader in Blue (TMT) 16
 1 Political Triumph (MSH) 31
 1 Quintessential Katana (TMT) 23
 1 Requisition Raid (SOA) 10
-1 Starport Security (EOE) 39
+1 Red Guardian, Super-Soldier (MSH) 34
 1 Ajani's Pridemate (FDN) 135
 1 Colleen Wing, Street Samurai (MSH) 13
 1 Leader's Talent (TMT) 13
