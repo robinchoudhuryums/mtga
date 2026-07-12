@@ -1,5 +1,5 @@
 #: name: Dragon King Roku
-#: format: Historic
+#: format: Standard
 #: colors: WBR
 #: notes: Mardu (W/B/R) — Fire Nation / dragons midrange.
 

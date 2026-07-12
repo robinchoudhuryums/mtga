@@ -1,5 +1,5 @@
 #: name: Air Nomads
-#: format: Historic
+#: format: Standard
 #: colors: WU
 #: notes: Azorius (W/U) — Air Nomads fliers / tempo.
 

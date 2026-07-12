@@ -1,5 +1,5 @@
 #: name: Sacrifices
-#: format: Historic
+#: format: Standard
 #: colors: BR
 #: notes: Rakdos (B/R) sacrifice / aristocrats, black-primary with a light green splash.
 

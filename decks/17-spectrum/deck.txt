@@ -1,5 +1,5 @@
 #: name: Spectrum
-#: format: Historic
+#: format: Standard
 #: colors: WUBRG
 #: notes: Five-color rainbow good-stuff / superheroes.
 

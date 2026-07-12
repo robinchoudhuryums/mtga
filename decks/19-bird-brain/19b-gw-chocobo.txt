@@ -1,5 +1,5 @@
 #: name: Bird Brain — GW Chocobo
-#: format: Historic
+#: format: Standard
 #: colors: GW
 #: based-on: deck.txt
 #: notes: Two-color Selesnya sibling of 19a: drops the blue splash (no Empyrean

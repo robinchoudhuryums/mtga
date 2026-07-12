@@ -1,5 +1,5 @@
 #: name: Hulk Smash
-#: format: Historic
+#: format: Standard
 #: colors: RG
 #: notes: Gruul (R/G) — big creatures / smash.
 

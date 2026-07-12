@@ -1,5 +1,5 @@
 #: name: Earth Kingdom
-#: format: Historic
+#: format: Standard
 #: colors: GR
 #: notes: Green-red Avatar Earth Kingdom deck (green-primary), light W/B/U splashes via a wide land base.
 

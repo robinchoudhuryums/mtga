@@ -1,5 +1,5 @@
 #: name: Knight's Edge
-#: format: Historic
+#: format: Standard
 #: colors: W
 #: notes: Mono-white go-wide / knights.
 

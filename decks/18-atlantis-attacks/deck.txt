@@ -1,5 +1,5 @@
 #: name: Atlantis Attacks
-#: format: Historic
+#: format: Standard
 #: colors: WU
 #: notes: Merfolk tribal / tempo — mono-U core with a light (mostly hybrid) W
 #: notes: splash. Runs both Sharae of Numbing Depths (proactive tap-down) and

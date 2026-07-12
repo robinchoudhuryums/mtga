@@ -1,5 +1,5 @@
 #: name: Coming of Galactus
-#: format: Historic
+#: format: Standard
 #: colors: BG
 #: notes: Golgari (B/G) — graveyard / midrange value.
 
