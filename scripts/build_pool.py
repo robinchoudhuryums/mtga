@@ -3,8 +3,10 @@
 
 This is the pool of cards you could play/craft, separate from card-library.csv
 (what you own). It's pulled from Scryfall's `game:arena` filter and, by default,
-restricted to Standard-legal cards. Each row carries a Rarity column so you can
-see the wildcard cost of anything you don't yet own.
+restricted to Standard-legal cards. Each row carries a Rarity column (the
+wildcard cost of anything you don't yet own) and a Legalities column (a
+`;`-joined list of formats the card is legal in) so tools can filter a
+suggestion to a deck's format — `deck.py suggest` does this by default.
 
 The pool is regenerable — rerun after a new set releases (or to change scope).
 Ownership is not stored here; pool.py computes it by joining against
@@ -35,8 +37,20 @@ from tag_synergies import tags_for
 
 POOL_PATH = os.path.join(REPO_ROOT, "card-pool.csv")
 POOL_HEADER = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
-               "Set Code", "Collector #", "Rarity"]
+               "Set Code", "Collector #", "Rarity", "Legalities"]
 SEARCH_URL = "https://api.scryfall.com/cards/search"
+
+# Formats worth tracking for deck-building (Arena formats + the major paper
+# ones). The Legalities column stores a `;`-joined subset of these in which the
+# card is legal, so tools can filter a suggestion to a deck's format.
+POOL_FORMATS = ["standard", "pioneer", "modern", "legacy", "vintage", "pauper",
+                "historic", "timeless", "alchemy", "explorer", "brawl"]
+
+
+def legalities_str(card):
+    """`;`-joined POOL_FORMATS the card is legal (or restricted) in."""
+    leg = card.get("legalities", {})
+    return ";".join(f for f in POOL_FORMATS if leg.get(f) in ("legal", "restricted"))
 
 
 def _get(url, retries=6):
@@ -85,6 +99,7 @@ def row_for(card):
         "Set Code": card.get("set", "").upper(),
         "Collector #": card.get("collector_number", ""),
         "Rarity": card.get("rarity", "").capitalize(),
+        "Legalities": legalities_str(card),
     }
 
 

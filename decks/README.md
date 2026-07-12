@@ -82,6 +82,7 @@ python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to pas
 python3 scripts/deck.py stats 1a      # curve, colors, type breakdown, functional roles
 python3 scripts/deck.py mana 1a       # hybrid-aware color requirements + castability lint
 python3 scripts/deck.py suggest 1a --owned   # owned pool cards that fit (0 wildcards; --limit 0 = all)
+                                             #   (filters to the deck's #: format: by default; --format / --any-format to change)
 python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~ lines)
 python3 scripts/deck.py swap 1a --cut A --add B   # preview a swap's deltas; --apply writes (.bak)
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)

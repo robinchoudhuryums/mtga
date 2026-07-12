@@ -62,6 +62,11 @@ DECKS_DIR = os.path.join(REPO_ROOT, "decks")
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
 BASICS = {"plains", "island", "swamp", "mountain", "forest", "wastes"}
 
+# Formats the pool's Legalities column can carry (mirrors build_pool.py). Used to
+# filter `suggest` to a deck's format so craft picks are legal to play/acquire.
+POOL_FORMATS = {"standard", "pioneer", "modern", "legacy", "vintage", "pauper",
+                "historic", "timeless", "alchemy", "explorer", "brawl"}
+
 # Arena wildcard tiers. A card's Rarity == the wildcard needed to craft a copy.
 WC_LETTER = {"common": "C", "uncommon": "U", "rare": "R", "mythic": "M"}
 WC_NAMES = [("M", "Mythic"), ("R", "Rare"), ("U", "Uncommon"),
@@ -890,8 +895,15 @@ def cmd_suggest(args):
         eprint("No card-pool.csv. Build it: python3 scripts/build_pool.py")
         return 1
 
-    _, cards = parse_deck_file(d["path"])
+    dmeta, cards = parse_deck_file(d["path"])
     meta = load_card_meta()
+
+    # Format filter: default to the deck's own `#: format:` so craft suggestions
+    # are legal to play (and acquire) in that format. --format overrides,
+    # --any-format disables. Only applies when card-pool.csv carries legality data
+    # (build_pool.py) and the format is one we track.
+    fmt = "" if getattr(args, "any_format", False) else \
+        (getattr(args, "fmt", None) or dmeta.get("format") or "").strip().lower()
 
     # Deck fingerprint: color identity + theme weights (copies carrying each tag).
     deck_names = {n.lower() for _, n, _, _ in cards}
@@ -913,6 +925,8 @@ def cmd_suggest(args):
     # Score every pool card not already in the deck.
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
         pool = list(csv.DictReader(fh))
+    has_leg = bool(pool) and "Legalities" in pool[0]
+    apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
     _, _, by_name_qty = load_collection()
     suggestions = []
     for r in pool:
@@ -923,6 +937,9 @@ def cmd_suggest(args):
         ccolors = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
         if not ccolors.issubset(deck_colors):
             continue  # off-color for this deck
+        if apply_fmt and fmt not in {x.strip() for x in
+                                     (r.get("Legalities") or "").split(";")}:
+            continue  # not legal in the target format
         shared = [t for t in (r.get("Synergies") or "").split(";")
                   if t.strip() and t.strip() in theme_w]
         if not shared:
@@ -944,6 +961,14 @@ def cmd_suggest(args):
     print(f"Deck {d['id']}: {d['name'] or d['path']} — suggestions from the pool\n")
     print(f"Colors: {'/'.join(sorted(deck_colors)) or 'Colorless'}  ·  "
           f"top themes: {', '.join(f'{t}({w})' for t, w in topthemes)}")
+    if apply_fmt:
+        print(f"Format: {fmt}-legal only  (override with --format <fmt> / --any-format)")
+    elif fmt and not has_leg:
+        print(f"Format: '{fmt}' filter requested but card-pool.csv has no legality "
+              "data — rebuild with build_pool.py. Showing all.")
+    elif fmt and fmt not in POOL_FORMATS:
+        print(f"Format: '{fmt}' not tracked — not filtering. "
+              f"(known: {', '.join(sorted(POOL_FORMATS))})")
     if not top:
         print("\nNo pool cards matched this deck's colors + themes.")
         return 0
@@ -1378,6 +1403,11 @@ def main():
     p.add_argument("id")
     p.add_argument("--limit", type=int, default=20,
                    help="max suggestions (default 20; 0 = unlimited)")
+    p.add_argument("--format", dest="fmt", metavar="FMT",
+                   help="only suggest cards legal in FMT (default: the deck's "
+                        "#: format:). Needs a legality-aware pool (build_pool.py).")
+    p.add_argument("--any-format", action="store_true",
+                   help="don't filter suggestions by format legality")
     g = p.add_mutually_exclusive_group()
     g.add_argument("--unowned", action="store_true", help="only craftable suggestions")
     g.add_argument("--owned", action="store_true",

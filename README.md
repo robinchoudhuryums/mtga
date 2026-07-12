@@ -168,6 +168,14 @@ to size the list. It composes the same synergy tags and color data the rest of
 the tooling uses, so brew upgrades fall out of what you already own plus what
 you'd craft.
 
+By default `suggest` also **filters to the deck's `#: format:`** (using the
+`Legalities` column `build_pool.py` writes), so it won't recommend a card you
+can't legally play or acquire in that format — a Historic deck gets Historic-legal
+picks, a Standard deck gets Standard-legal ones. Override with `--format <fmt>`
+(e.g. `--format standard` to check what a Historic brew would need for Standard)
+or `--any-format` to turn the filter off. (Requires a legality-aware pool; rerun
+`build_pool.py` if yours predates the column.)
+
 `wildcards` reads every deck's craft targets (cards you're short of), prices each
 by rarity (= its Arena wildcard, from `card-pool.csv`, with a live Scryfall
 fallback for non-Standard cards), and reports three things: per-deck wildcards to
