@@ -7,7 +7,7 @@
 1 Too Evil to Stay Dead (MSH) 118
 1 Bloodthirsty Conqueror (FDN) 58
 1 Agents of HYDRA (MSH) 85
-1 Decoy Ploy (MSH) 94
+1 Baron Strucker, HYDRA Overlord (MSH) 88
 1 Doom Reigns Supreme (MSH) 96
 1 Baron Helmut Zemo (MSH) 87
 2 HYDRA Troopers (MSH) 101
@@ -45,6 +45,5 @@
 22 Swamp (MSH) 292
 
 # Flex — suggested swaps, weighted. See: deck.py flex 11
-#~ -Fire Navy Trebuchet | +Baron Strucker, HYDRA Overlord | OWNED (U) ★ ENGINE (your call): Villain spells cost {1} less + connive whenever another Villain enters — a tribe-wide cost/card engine. NOTE: Trebuchet is a real two-way card (Defender+reach blocker AND a recurring 2/1 flying attacker), so this is a ceiling-vs-defense tradeoff, not a strict upgrade. Keep Trebuchet if you want the early wall + flying reach
-#~ -Decoy Ploy | +Bringer of the Last Gift | CRAFT (R) ★ FINISHER (this deck): ETB each player sacs all other creatures, then you return ALL creatures from your graveyard — a one-card wipe-and-mass-reanimation, the top-end payoff the deck lacks. Judged on THIS deck alone (its reuse count is inflated by the broad graveyard theme). Cut the softest recursion piece (Decoy Ploy returns to hand only)
-#~ note: applied — Kingpin's Enforcers (Villain sac-to-draw engine) replaced Vito's Inquisitor to feed the reanimator with card advantage.
+#~ -Scrounge for Eternity | +Bringer of the Last Gift | CRAFT (R) ★ FINISHER (this deck): ETB each player sacs all other creatures, then you return ALL creatures from your graveyard — a one-card wipe-and-mass-reanimation, the top-end payoff the deck lacks. Judged on THIS deck alone (its reuse count is inflated by the broad graveyard theme). Cut the softest remaining reanimator
+#~ note: applied — Baron Strucker (tribe-wide {1}-off + connive engine) over Decoy Ploy (most redundant recursion, hand-only), and Kingpin's Enforcers (Villain sac-to-draw) over Vito's Inquisitor. Fire Navy Trebuchet kept: a two-way Defender+reach blocker / recurring 2/1 flyer.
