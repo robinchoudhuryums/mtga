@@ -45,5 +45,17 @@
 1 Gathering Place (MSH) 266
 2 Surveillance Room (MSH) 274
 7 Swamp (MSH) 291
-6 Plains (MSH) 287
-8 Forest (MSH) 295
+3 Plains (MSH) 287
+1 Kyoshi Village (TLA) 271
+1 Hushwood Verge (DSK) 261
+1 Scoured Barrens (M21) 250
+5 Forest (MSH) 295
+1 Opulent Palace (TDM) 264
+1 Blossoming Sands (M21) 244
+1 Jungle Hollow (M21) 247
+
+# Flex — STANDARD-LEGAL craftable reanimator upgrades. See: deck.py flex 6
+#~ -Helping Hand | +Nullpriest of Oblivion | CRAFT (R): a reanimation creature — curves early as an evasive body OR kicker-reanimates a bomb
+#~ -Stone Docent | +Neva, Stalked by Nightmares | CRAFT (U): cheap recursion/graveyard value that fits the self-mill plan
+#~ -Owlin Historian | +Ygra, Eater of All | CRAFT (M): an Elemental bomb that snowballs off every creature that dies — a reanimation target that also wins on its own
+#~ note: all three are CRAFT targets (not owned) and Standard-legal. But the 6 owned duals above are the real fix — craft nothing until the manabase is in. Priority: Nullpriest of Oblivion.
