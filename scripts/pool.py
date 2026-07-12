@@ -68,6 +68,10 @@ def matches(card, args, owned):
         rarities = [r.strip().lower() for r in args.rarity.split(",")]
         if (card.get("Rarity") or "").lower() not in rarities:
             return False
+    if args.legal:
+        legal = {x.strip() for x in (card.get("Legalities") or "").split(";") if x.strip()}
+        if args.legal.lower() not in legal:
+            return False
     have = owned.get((card.get("Card Name") or "").strip().lower(), 0)
     if args.owned and have <= 0:
         return False
@@ -106,6 +110,9 @@ def main():
     ap.add_argument("--name"); ap.add_argument("--type"); ap.add_argument("--text")
     ap.add_argument("--color"); ap.add_argument("--synergy")
     ap.add_argument("--rarity", help="comma-separated: common,uncommon,rare,mythic")
+    ap.add_argument("--legal", metavar="FMT",
+                    help="only cards legal in FMT (e.g. standard, historic) — "
+                         "needs a legality-aware pool (build_pool.py)")
     ap.add_argument("--owned", action="store_true", help="only cards you own")
     ap.add_argument("--unowned", action="store_true", help="only cards to craft")
     ap.add_argument("--count", action="store_true")
@@ -117,6 +124,11 @@ def main():
     except FileNotFoundError:
         eprint(f"No pool at {args.pool}. Build it: python3 scripts/build_pool.py")
         return 1
+
+    if args.legal and not (pool and "Legalities" in pool[0]):
+        eprint("Pool has no Legalities column — rebuild with build_pool.py to use "
+               "--legal. Ignoring the filter.")
+        args.legal = None
 
     owned = owned_counts()
     hits = [c for c in pool if matches(c, args, owned)]

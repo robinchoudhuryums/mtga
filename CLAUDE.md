@@ -69,7 +69,14 @@ docs. This file is the source of truth for the workflow commands in
   unowned cards have real costs/tags. Both tools DEFAULT to the smaller scope
   (Standard pool / library-only mana), so a plain rebuild SHRINKS coverage back —
   pass `--all` / `--pool` (as `/refresh` now does) to keep full coverage. The
-  full-pool mana build is slow (Scryfall rate limits ~15.8k cards).
+  full-pool mana build is slow (Scryfall rate limits ~15.8k cards); the pool
+  build itself is fast (paginated search, ~90 requests).
+- **`card-pool.csv` carries a `Legalities` column** (`;`-joined formats a card is
+  legal in) so `deck.py suggest` filters craft picks to the deck's `#: format:`
+  by default (override `--format` / disable `--any-format`). It's captured free
+  during `build_pool.py`, but a pool built before the column exists lacks it —
+  `suggest` then warns and shows all until you rebuild. `pool.py --legal <fmt>`
+  uses the same data.
 
 ## Known Issues
 
