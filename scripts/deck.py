@@ -600,11 +600,12 @@ def cmd_stats(args):
             continue
         nonland_names.append(n)
         col = (cd["colors"] if cd else "") or ""
-        for ch in (col.upper() if col else ""):
-            if ch in "WUBRG":
-                colors[ch] = colors.get(ch, 0) + q
         if col.lower() == "colorless":
             colors["C"] = colors.get("C", 0) + q
+        else:
+            for ch in col.upper():
+                if ch in "WUBRG":
+                    colors[ch] = colors.get(ch, 0) + q
 
     print(f"Deck {d['id']}: {d['name'] or d['path']}  ({total} cards)")
     print("\nTypes:")
