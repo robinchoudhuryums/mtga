@@ -24,9 +24,10 @@ Read the actual card text — never judge by mana value or a single subtype:
 4. `python3 scripts/deck.py tribes <id>` — creature subtypes and type-matters
    payoffs (which payoff cards reward which types, how many creatures qualify).
 5. `python3 scripts/deck.py suggest <id>` — on-color, on-theme pool cards, owned
-   vs. craftable with rarity. Add `--owned` (with `--limit 0`) to scour the whole
-   collection for 0-wildcard upgrades already sitting in the roster; `--unowned`
-   for craft targets only.
+   vs. craftable with rarity (auto-filtered to the deck's format). Run it BOTH
+   ways every time: `--owned --limit 0` to scour the whole collection for
+   0-wildcard upgrades already in the roster, AND `--unowned` for craft targets
+   (these feed Section 6 — always evaluate them, even for a fully-owned deck).
 6. For every card you'd cut OR keep, read its Card Text from card-library.csv /
    card-pool.csv. A card's real value is in its text (tap engines, alt costs,
    token generation) — the tribes/curve tools miss cross-mechanic synergies.
@@ -60,7 +61,15 @@ tribe / curve / color) | **two-axis verdict: power (helps/neutral/hurts) + fit/f
 (on-identity/neutral/off-identity)** | confidence. Rating both axes keeps the
 power-vs-flavor trade visible instead of collapsing it into one "worth it."
 
-**6. Craft priority** — for WIP decks: tiered list by impact-per-wildcard.
+**6. Craft upgrades** — ALWAYS run `deck.py suggest <id> --unowned` (it
+auto-filters to the deck's `#: format:`) and surface the craftable cards that
+would *markedly* improve the deck, tiered by impact-per-wildcard (prefer low
+rarity; read the card text, don't trust the tag match). Do this **even when the
+deck is fully owned** — a 0-wildcard deck can still have craftable upgrades worth
+flagging, and the user shouldn't have to ask. If nothing clears the bar, say so
+explicitly ("no craft target beats what you own"). For WIP decks, also give the
+craft plan for the not-yet-owned cards. Offer to record the top picks as a flex
+block.
 
 **7. Routes / branches** — when directions genuinely diverge (e.g. more tempo vs.
 more midrange), present as forks with trade-offs, not one linear answer.
@@ -111,6 +120,12 @@ overwrite the base if the user wants it promoted to primary. Then show
 `deck.py diff <base> <new>`, `deck.py mana <new>`, the Arena import block via
 `deck.py arena <new>`, and the wildcard tally. Deck files save with a `.bak` and
 must re-parse cleanly (INV-04).
+
+**Whenever you apply changes to a deck** (build or swap), finish by pasting the
+`deck.py arena <id>` output — the clean, `Deck`-prefixed import block — directly
+in chat. The user often imports on mobile (Arena → Decks → Import from clipboard)
+and can't run the command themselves, so the raw file (with its `#` headers) is
+useless to them; the pasted block is what they actually use.
 
 ## Recording flex swaps
 
