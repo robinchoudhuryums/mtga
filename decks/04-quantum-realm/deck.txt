@@ -39,7 +39,7 @@
 1 Knockout Maneuver (SOA) 54
 1 Pterafractyl (SOS) 215
 1 Novel Nunchaku (TMT) 127
-1 Textbook Tabulator (SOS) 70
+1 Tester of the Tangential (SOS) 69
 
 # Lands
 10 Island (MSH) 289
