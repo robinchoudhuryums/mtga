@@ -43,3 +43,9 @@
 
 # Lands
 24 Plains (MSH) 288
+
+# Flex — STANDARD-LEGAL craftable upgrades (interaction + go-wide). See: deck.py flex 3
+#~ -Team Avatar | +Kutzil's Flanker | CRAFT (R): flash — big counters OR removal; flexible interaction, and cuts the anti-synergy "attacks alone" card
+#~ -Divine Resilience | +Flowerfoot Swordmaster | CRAFT (U): a {W} Soldier that makes a token copy (Offspring) — cheap go-wide + Valiant
+#~ -Requisition Raid | +Rayblade Trooper | CRAFT (U): +1/+1 counter on ETB + a death payoff — on the counters/go-wide plan
+#~ note: all three are CRAFT targets (not owned) and Standard-legal. Priority: Kutzil's Flanker (adds the flexible removal the deck is thin on).

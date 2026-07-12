@@ -48,3 +48,9 @@
 10 Forest (MSH) 295
 1 Thornwood Falls (FDN) 269
 1 Breeding Pool (EOE) 251
+
+# Flex — STANDARD-LEGAL craftable +1/+1-counter payoffs. See: deck.py flex 4
+#~ -Bespoke Bō | +The Goose Mother | CRAFT (R): scalable GU flyer — enters with X counters, makes Food, and draws off counters. The payoff + card advantage the deck wants
+#~ -Utrom Scientists | +Case of the Filched Falcon | CRAFT (U): investigate (card advantage) + solve to dump counters onto an artifact — cheap and on-theme
+#~ -S.H.I.E.L.D. Deployment Drone | +Wan Shi Tong, Librarian | CRAFT (M): flash flyer with X counters that draws half X — a counters/card-advantage bomb
+#~ note: all three are CRAFT targets (not owned) and Standard-legal. Priority: The Goose Mother (scalable counters payoff + refuel).

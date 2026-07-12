@@ -45,7 +45,8 @@
 1 Fire Nation Palace (TLA) 268
 23 Mountain (MSH) 294
 
-# Flex — craftable red upgrades (deepen the spellslinger / Hero plan). See: deck.py flex 2
-#~ -Child of the Volcano | +Jack of Hearts, Volatile Hero | CRAFT (R): flying haste Hero; dies into a board-wipe + a discard-hand→draw-3 wheel — aggression AND card advantage
-#~ -Wisecrack | +Iron Fist, Hero for Hire | CRAFT (R): a cheap trample prowess Hero — another spellslinger payoff that also counts for Human Torch
-#~ note: both are CRAFT targets (not owned), both mono-red. AVOID Ash Zealot despite the tribal match — it punishes ALL graveyard casting, which hits your own Mayhem/flashback.
+# Flex — STANDARD-LEGAL craftable red upgrades (deepen the spellslinger / Hero plan). See: deck.py flex 2
+#~ -Child of the Volcano | +Charming Scoundrel | CRAFT (R): haste 2-drop, modal ETB (loot / Treasure / Wicked Role) — flexible aggressive value
+#~ -Wisecrack | +Queen Brahne | CRAFT (U): prowess + makes a Wizard token every attack — spellslinger go-wide that also fuels Firebrand/Ty Lee
+#~ -Zealous Lorecaster | +Realm-Scorcher Hellkite | CRAFT (M): Bargain dragon finisher — flying haste + a big ETB burn
+#~ note: all three are CRAFT targets (not owned) and Standard-legal. Priority: Charming Scoundrel. AVOID Ash Zealot — it punishes ALL graveyard casting, hitting your own Mayhem/flashback.
