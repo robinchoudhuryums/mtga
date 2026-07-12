@@ -19,7 +19,7 @@
 1 Spider-Man, To the Rescue (MSH) 228
 1 Black Panther, Vanguard (MSH) 207
 1 Colleen Wing, Street Samurai (MSH) 13
-1 Graduation Day (SOS) 16
+1 Mikey & Leo, Chaos & Order (TMT) 158
 1 Political Triumph (MSH) 31
 1 Requisition Raid (SOA) 10
 1 Battle Menu (FIN) 9
@@ -52,6 +52,5 @@
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 7
 #~ -Requisition Raid | +Kutzil's Flanker | CRAFT (R) ★ MARKED UPGRADE: flash — big counters OR removal; the flexible interaction the deck genuinely lacks
-#~ -Graduation Day | +Sharp-Eyed Rookie | CRAFT (R) ~ SIDEGRADE: card advantage off counters — but you OWN Mikey & Leo (draw whenever you counter a creature), which does the same job for 0 wildcards. Craft only if you want both.
 #~ -Foggy Swamp Vinebender | +Silver Sable | CRAFT (U) · MINOR: another on-tribe counter body — lateral; don't spend a wildcard here
-#~ note: owned card-advantage fix available now — -Graduation Day +Mikey & Leo (G/W)(G/W): draw a card whenever you put a counter on a creature (Doc Samson/Knight of Wundagore trigger it constantly).
+#~ note: card advantage already handled — Mikey & Leo (drew off counters) is now maindeck over Graduation Day. Sharp-Eyed Rookie would be a redundant sidegrade; skip it.

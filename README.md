@@ -158,10 +158,13 @@ python3 scripts/deck.py swap 1a --cut A --add B   # preview a swap's deltas; --a
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
 ```
 
-`suggest` fingerprints a deck by its color identity and synergy themes (weighted
-by how central each is), then scores the Arena pool (`card-pool.csv`) for cards
-that fit — on-color, sharing the deck's themes, not already in the list — and
-flags each as owned (`×N`) or `craft` with its wildcard rarity. Use `--owned` to
+`suggest` fingerprints a deck by its **colors** — the deck's declared
+`#: colors:`, falling back to its cards' mana **costs** (never color *identity*,
+so a card's off-color activated abilities don't drag in uncastable picks) — and
+its synergy themes (weighted by how central each is), then scores the Arena pool
+(`card-pool.csv`) for cards that fit — castable, sharing the deck's themes, not
+already in the list — and flags each as owned (`×N`) or `craft` with its wildcard
+rarity. Use `--owned` to
 scour only what you already have (0-wildcard upgrades sitting in your roster),
 `--unowned` for craft targets only, and `--limit N` (or `--limit 0` for no cap)
 to size the list. It composes the same synergy tags and color data the rest of
