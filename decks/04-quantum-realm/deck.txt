@@ -20,7 +20,7 @@
 1 Call Damage Control (MSH) 162
 1 Thirst for Knowledge (MSH) 79
 1 Mole Man, Moloid Master (MSH) 177
-1 Savage Land Dinosaur (MSH) 185
+1 Bite Down (FDN) 212
 1 Crustacean Commando (TMT) 33
 1 Mutant Chain Reaction (TMT) 125
 1 Negate (TMT) 47
@@ -36,11 +36,15 @@
 1 Germination Practicum (SOS) 149
 1 Fractal Tender (SOS) 190
 1 Cuboid Colony (SOS) 183
-1 Ambitious Augmenter (SOS) 140
+1 Knockout Maneuver (SOA) 54
 1 Pterafractyl (SOS) 215
 1 Tester of the Tangential (SOS) 69
 1 Textbook Tabulator (SOS) 70
 
 # Lands
-12 Island (MSH) 289
-12 Forest (MSH) 295
+10 Island (MSH) 289
+1 Pym Technologies (MSH) 271
+1 Dreamroot Cascade (SOS) 254
+10 Forest (MSH) 295
+1 Thornwood Falls (FDN) 269
+1 Breeding Pool (EOE) 251
