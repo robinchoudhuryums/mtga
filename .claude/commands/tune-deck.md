@@ -72,6 +72,12 @@ the user never burns a wildcard on a lateral card:**
   say *skip it* (unless the user specifically wants it).
 - **· Minor** — marginal. Explicitly tell the user not to spend a wildcard.
 
+`suggest --unowned` prints a **`Decks` column** (cross-deck reuse: how many of the
+user's decks the card is castable + on-theme in). Factor it into the weight — a
+card that's only a ~ sidegrade *here* but a marked upgrade in 2-3 other decks earns
+its wildcard on reuse (tag it "~ here / ★ across the roster" and name the other
+decks). A pick that fits only this deck is judged on this deck alone.
+
 **Before recommending ANY craft, check whether an OWNED card already does ~the
 same job** (from the `--owned` scan) — if one does, the craft is at best a
 sidegrade: recommend the owned card and downgrade the craft's weight. If nothing

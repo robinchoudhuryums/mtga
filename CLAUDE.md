@@ -82,6 +82,14 @@ docs. This file is the source of truth for the workflow commands in
   off-color *activated abilities* (e.g. Super-Skrull's `{4}{R}`) don't surface
   uncastable picks. Run it both ways: `--owned --limit 0` scours the collection
   for 0-wildcard upgrades already owned; `--unowned` lists craft targets.
+- **`deck.py suggest` shows a cross-deck reuse count (`Decks` column).** For each
+  pick it counts how many of your decks the card is *castable* (its identity ⊆ the
+  deck's declared/derived colors) **and** shares ≥1 synergy theme with — a rough
+  "value per wildcard" signal, so a craft that fits several decks outranks a
+  one-deck sidegrade. It's a broad any-theme-overlap heuristic (a generic
+  sac/tokens card scores high because it touches many decks), so read it as
+  breadth, not curated fit. A "High cross-deck reuse" line summarizes the top
+  fits≥3. Factor it into a craft's ★/~/· weight in a flex block.
 - **Flex-block craftables are format-scoped.** When a deck's `#: format:` changes,
   re-check its `#~` craft suggestions — a craftable legal under the old format may
   have rotated (hit moving decks 1/2 Historic→Standard). `deck.py flex <id>` plus
