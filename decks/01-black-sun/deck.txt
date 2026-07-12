@@ -11,7 +11,7 @@
 1 Hazoret, Godseeker (DFT) 133
 1 Raphael, Tough Turtle (TMT) 104
 2 Searslicer Goblin (FDN) 93
-1 Boar-q-pine (TLA) 124
+1 Fire Nation Raider (TLA) 135
 1 Kav Landseeker (EOE) 138
 1 Krenko, Mob Boss (FDN) 204
 1 Spider-Man, Hometown Hero (MSC) 556
@@ -30,13 +30,13 @@
 2 Burst Lightning (FDN) 192
 1 Diamond Pick-Axe (LCI) 143
 1 Sporogenic Infection (DSK) 117
-1 Bulk Up (SOA) 40
+1 Robot Domination (MSH) 111
 1 Dragon Fodder (FDN) 535
 2 Reckless Ransacking (ECL) 152
 1 Tome Blast (SOS) 135
 1 Goblin Surprise (FDN) 200
 1 Prickly Pair (OTJ) 137
-1 Unlikely Aid (ANB) 64
+1 Callous Inspector (TLA) 89
 1 Day of Black Sun (TLA) 94
 
 # Lands
