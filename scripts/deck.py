@@ -905,22 +905,37 @@ def cmd_suggest(args):
     fmt = "" if getattr(args, "any_format", False) else \
         (getattr(args, "fmt", None) or dmeta.get("format") or "").strip().lower()
 
-    # Deck fingerprint: color identity + theme weights (copies carrying each tag).
+    # Deck fingerprint: theme weights from synergy tags (copies carrying each tag).
     deck_names = {n.lower() for _, n, _, _ in cards}
-    deck_colors, theme_w = set(), {}
+    theme_w = {}
     for q, n, s, c in cards:
         if n.lower() in BASICS:
             continue
         m = meta.get(n.lower())
         if not m:
             continue
-        deck_colors |= m["colors"]
         for t in m["synergies"]:
             theme_w[t] = theme_w.get(t, 0) + q
     if not theme_w:
         print(f"Deck {d['id']} has no synergy tags to match against "
               "(run tag_synergies.py). Nothing to suggest.")
         return 0
+
+    # Deck colors = the colors the deck can actually CAST, so suggestions are
+    # castable. Prefer the declared `#: colors:`; else derive from mana COSTS —
+    # never color identity, since a card's off-color activated abilities (e.g.
+    # Super-Skrull's {4}{R}) must not widen the deck's colors or we'd suggest
+    # cards you can't cast.
+    deck_colors = _declared_colors(dmeta)
+    if not deck_colors:
+        dm = load_mana()
+        for q, n, s, c in cards:
+            if n.lower() in BASICS:
+                continue
+            entry = dm.get(n.lower())
+            if entry and entry[0]:
+                strict, hybrid = parse_pips(entry[0])
+                deck_colors |= set(strict) | {x for h in hybrid for x in h}
 
     # Score every pool card not already in the deck.
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:

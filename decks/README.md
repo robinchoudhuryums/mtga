@@ -44,10 +44,16 @@ comments; blank lines are ignored.
 9 Island
 ```
 
-Variations are **full lists too** (not diffs) — so every file is robust,
-independently checkable, and can be pasted straight back into Arena. Use
-`deck.py diff` to see what a variation changes; git history tracks how each
-iteration evolves. (A `#: based-on:` line is just a note for humans.)
+Variations are **full lists too** (not diffs) — so every file is robust and
+independently checkable. Use `deck.py diff` to see what a variation changes; git
+history tracks how each iteration evolves. (A `#: based-on:` line is just a note
+for humans.)
+
+**Importing into MTG Arena:** don't paste the raw file — its `# Creatures` /
+`# Lands` section headers and `#:` metadata are for humans and Arena's importer
+rejects them. Run `python3 scripts/deck.py arena <id>` and paste *that* — it emits
+the clean, `Deck`-prefixed `<qty> <Name> (<SET>) <#>` list Arena accepts (comments
+and metadata stripped).
 
 Basic lands (Plains/Island/Swamp/Mountain/Forest/Wastes) are treated as
 unlimited — they don't count against your collection.
