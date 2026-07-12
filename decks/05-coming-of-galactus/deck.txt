@@ -13,7 +13,7 @@
 1 Midnight Tilling (ECL) 182
 1 Scout the City (MSC) 817
 1 Shang-Chi, Master of Kung Fu (MSH) 187
-1 Sparring Dummy (TLA) 197
+1 Sidisi, Regent of the Mire (TDM) 92
 1 True Ancestry (TLA) 199
 1 Wary Watchdog (DSK) 206
 1 Hulkling, Burgeoning Bruiser (MSH) 173
@@ -41,5 +41,15 @@
 
 # Lands
 4 Jungle Hollow (M21) 247
-11 Swamp (MSH) 292
-11 Forest (MSH) 296
+9 Swamp (MSH) 292
+1 Opulent Palace (TDM) 264
+1 Cruel Truths (TDM) 76
+10 Forest (MSH) 296
+1 Visions of Villainy (MSH) 120
+
+# Flex — STANDARD-LEGAL craftable upgrades that markedly improve the deck. See: deck.py flex 5
+#~ -Swamp | +Restless Cottage | CRAFT (R): a BG creature-LAND — fixing that's never a dead draw (flood insurance), a 4/4 threat, and graveyard exile on attack. Best bang for a Rare.
+#~ -Wary Watchdog | +Overlord of the Balemurk | CRAFT (M): premium graveyard value-bomb (Impending 5—{1}{B}); mills + recurs a creature. A real engine.
+#~ -Thawbringer | +The Swarmweaver | CRAFT (R): two flying Insect tokens + a delirium anthem — your self-mill turns on delirium easily
+#~ -Rapid Rescue | +Insatiable Avarice | CRAFT (R): Spree tutor — find The Coming of Galactus (or any payoff), or draw three
+#~ note: all four are CRAFT targets (not owned), Standard-legal. Priority: Restless Cottage (fixes the manabase permanently), then Overlord of the Balemurk.
