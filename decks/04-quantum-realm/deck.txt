@@ -38,7 +38,7 @@
 1 Cuboid Colony (SOS) 183
 1 Knockout Maneuver (SOA) 54
 1 Pterafractyl (SOS) 215
-1 Tester of the Tangential (SOS) 69
+1 Novel Nunchaku (TMT) 127
 1 Textbook Tabulator (SOS) 70
 
 # Lands

@@ -1,11 +1,11 @@
 #: name: Black Sun
-#: format: Historic
+#: format: Standard
 #: colors: BR
 #: notes: Rakdos (B/R) — first constructed deck.
 
 # Creatures
 1 Vindictive Warden (TLA) 249
-1 Stormclaw Rager (MOM) 254
+1 Cruel Administrator (TLA) 213
 2 Perforating Artist (FDN) 124
 1 Alesha, Who Laughs at Fate (FDN) 115
 1 Hazoret, Godseeker (DFT) 133
@@ -14,13 +14,13 @@
 1 Fire Nation Raider (TLA) 135
 1 Kav Landseeker (EOE) 138
 1 Krenko, Mob Boss (FDN) 204
-1 Spider-Man, Hometown Hero (MSC) 556
+1 Technodrome (TMT) 179
 1 Snarling Gorehound (MKM) 105
-1 Dauthi Voidwalker (MAR) 63
+1 Raven Eagle (TLA) 116
 1 Wick's Patrol (BLB) 121
 1 High-Society Hunter (FDN) 61
 1 Massacre Wurm (FDN) 714
-1 She-Hulk, Jennifer Walters (MSC) 554
+1 Namazu Trader (FIN) 107
 1 Red Hulk (MSH) 149
 
 # Spells
@@ -48,13 +48,12 @@
 9 Swamp (MSH) 292
 10 Mountain (MSH) 294
 
-# Flex — craftable aristocrats payoffs the deck lacks. See: deck.py flex 1
-# Tier 1 — cheap + transformative:
-#~ -Diamond Pick-Axe | +Mayhem Devil | CRAFT (U): every sacrifice pings any target — the payoff this whole deck is built to enable
-#~ -Reckless Ransacking | +Deadly Dispute | CRAFT (C): sac a token/creature → draw 2 + Treasure; premium card advantage
-#~ -Tome Blast | +Village Rites | CRAFT (C): instant-speed sac → draw 2; cheap sac outlet + refuel
-# Tier 2 — engines:
-#~ -Prickly Pair | +Bastion of Remembrance | CRAFT (U): Blood-Artist drain on every creature death — inevitability
-#~ -Kav Landseeker | +Pitiless Plunderer | CRAFT (U): creature dies → Treasure (ramp toward the BBB Wurm + more sac fuel)
-#~ -Goblin Surprise | +Judith, the Scourge Diva | CRAFT (R): team anthem (+1/+0) + death-ping — great with your Goblins/tokens
-#~ note: all six are CRAFT targets (not owned). Cuts shown are the softest maindeck slots — swap to taste. Priority: Mayhem Devil, then Deadly Dispute / Village Rites.
+# Flex — STANDARD-LEGAL craftable aristocrats upgrades. See: deck.py flex 1
+# Tier 1 — Goblin/sacrifice payoffs (on-theme with Krenko + your Goblins):
+#~ -Kav Landseeker | +Krenko, Baron of Tin Street | CRAFT (R): a 2nd Krenko — Goblin/sacrifice/reanimator payoff that snowballs the go-wide plan
+#~ -Diamond Pick-Axe | +Redcap Gutter-Dweller | CRAFT (R): Goblin that eats tokens for counters + reach; a real sacrifice payoff
+#~ -Reckless Ransacking | +Reckless Lackey | CRAFT (C): cheap Goblin — sac for card draw + Treasure
+# Tier 2 — removal / value:
+#~ -Tome Blast | +Disturbing Mirth | CRAFT (U): sac a creature → draw two, then it manifests a card — cheap BR sacrifice card advantage
+#~ -Prickly Pair | +Boneyard Desecrator | CRAFT (C): Mercenary sac payoff with counters + Treasure
+#~ note: all five are CRAFT targets (not owned) and Standard-legal. Cuts are the softest maindeck slots — swap to taste. Priority: Krenko, Baron of Tin Street.
