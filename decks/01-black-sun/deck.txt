@@ -32,7 +32,8 @@
 1 Sporogenic Infection (DSK) 117
 1 Robot Domination (MSH) 111
 1 Dragon Fodder (FDN) 535
-2 Reckless Ransacking (ECL) 152
+1 Reckless Ransacking (ECL) 152
+1 Magic Pot (FIN) 263
 1 Tome Blast (SOS) 135
 1 Goblin Surprise (FDN) 200
 1 Prickly Pair (OTJ) 137
@@ -46,3 +47,14 @@
 1 Temple of Malice (FDN) 701
 9 Swamp (MSH) 292
 10 Mountain (MSH) 294
+
+# Flex — craftable aristocrats payoffs the deck lacks. See: deck.py flex 1
+# Tier 1 — cheap + transformative:
+#~ -Diamond Pick-Axe | +Mayhem Devil | CRAFT (U): every sacrifice pings any target — the payoff this whole deck is built to enable
+#~ -Reckless Ransacking | +Deadly Dispute | CRAFT (C): sac a token/creature → draw 2 + Treasure; premium card advantage
+#~ -Tome Blast | +Village Rites | CRAFT (C): instant-speed sac → draw 2; cheap sac outlet + refuel
+# Tier 2 — engines:
+#~ -Prickly Pair | +Bastion of Remembrance | CRAFT (U): Blood-Artist drain on every creature death — inevitability
+#~ -Kav Landseeker | +Pitiless Plunderer | CRAFT (U): creature dies → Treasure (ramp toward the BBB Wurm + more sac fuel)
+#~ -Goblin Surprise | +Judith, the Scourge Diva | CRAFT (R): team anthem (+1/+0) + death-ping — great with your Goblins/tokens
+#~ note: all six are CRAFT targets (not owned). Cuts shown are the softest maindeck slots — swap to taste. Priority: Mayhem Devil, then Deadly Dispute / Village Rites.
