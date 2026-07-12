@@ -32,9 +32,11 @@ Commands:
     python3 scripts/deck.py check 1a            # owned vs needed vs your collection
     python3 scripts/deck.py diff 1 1a           # what the variant changes
     python3 scripts/deck.py arena 1a            # emit an Arena-importable list
-    python3 scripts/deck.py stats 1a            # mana curve, colors, types
+    python3 scripts/deck.py stats 1a            # mana curve, colors, types, functional roles
     python3 scripts/deck.py mana 1a             # hybrid-aware color requirements
-    python3 scripts/deck.py suggest 1a          # pool cards that fit the deck's colors + themes
+    python3 scripts/deck.py suggest 1a --owned  # OWNED pool cards that fit the deck (0 wildcards)
+    python3 scripts/deck.py swap 1a --cut A --add B   # preview a swap's deltas (--apply to write)
+    python3 scripts/deck.py apply-flex 1a 2     # promote flex swap #2 into the maindeck
 
 Mana analysis reads card-mana.csv (real mana costs, built by build_mana.py), so
 hybrid {W/U} pips are counted as flexible rather than demanding both colors.
@@ -45,7 +47,9 @@ import csv
 import json
 import os
 import re
+import shutil
 import sys
+import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -580,6 +584,52 @@ def classify_cost(keywords, text):
     return list(dict.fromkeys(cheaper)), list(dict.fromkeys(gated))
 
 
+# Functional-role heuristics: bucket a nonland card by the JOB it does for the
+# deck (interaction, card advantage, ramp, ...) by pattern-matching oracle text.
+# This is intentionally heuristic — a card can fill several roles, and single
+# "draw a card" cantrips are NOT counted as card advantage (they're card-neutral,
+# the same reason Spellbook Seeker reads as filtering, not advantage). The point
+# is to MEASURE the "light on removal / card advantage" judgment the /tune-deck
+# scorecard used to make by eye, not to be authoritative.
+ROLE_ORDER = ["Removal (spot)", "Sweeper", "Counter", "Card advantage",
+              "Ramp / fixing", "Team pump / anthem", "Protection / trick",
+              "Recursion"]
+_ROLE_PATTERNS = {
+    "Removal (spot)": [
+        r"destroy target (?:creature|permanent|nonland permanent|artifact or creature|"
+        r"tapped creature|attacking creature|creature or planeswalker|creature with)",
+        r"exile target (?:creature|permanent|nonland permanent|attacking|tapped)",
+        r"deals? \d+ damage to (?:target|any target|another target)",
+        r"fights? (?:target|another target)",
+        r"deals damage equal to its power to target (?:creature|creature or planeswalker)",
+        r"target creature gets -\d",
+        r"return target creature.{0,40}?(?:owner|their) hand",
+        r"enchanted creature can't attack or block",
+    ],
+    "Sweeper": [r"destroy all", r"exile all", r"all creatures get -",
+                r"each (?:other )?creature (?:gets|deals|is|you don't control)"],
+    "Counter": [r"counter target"],
+    "Card advantage": [r"draws? (?:two|three|four|x|that many) cards?",
+                       r"draw a card for each", r"draws? cards? equal to",
+                       r"\binvestigate\b"],
+    "Ramp / fixing": [r"search your library for .{0,30}?\bland",
+                      r"\{t\}: add \{",
+                      r"put (?:a|that|those|up to \w+).{0,40}?land.{0,40}?onto the battlefield"],
+    "Team pump / anthem": [r"(?:other )?creatures you control get \+"],
+    "Protection / trick": [r"\bhexproof\b", r"\bindestructible\b", r"protection from",
+                           r"gets \+\d+/\+\d+ until end of turn"],
+    "Recursion": [r"from your graveyard"],
+}
+_ROLE_COMPILED = [(label, [re.compile(p) for p in _ROLE_PATTERNS[label]])
+                  for label in ROLE_ORDER]
+
+
+def classify_roles(text):
+    """Return the set of functional-role labels a card's oracle text matches."""
+    t = (text or "").lower().replace("−", "-")  # normalize unicode minus
+    return {label for label, pats in _ROLE_COMPILED if any(p.search(t) for p in pats)}
+
+
 def cmd_stats(args):
     d = find_deck(args.id)
     if not d:
@@ -666,6 +716,29 @@ def cmd_stats(args):
         print("\nAbility/mode has an ADDED cost or condition — check text (△):")
         for n, r in gated:
             print(f"  △ {n} — {r}")
+
+    # Functional roles: what jobs the nonland spells actually do. Heuristic from
+    # oracle text (see classify_roles) so the tune-deck health scorecard can
+    # MEASURE interaction / card advantage / ramp instead of eyeballing it.
+    role_counts = {}
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        d2 = carddata.get(n.lower())
+        if not d2 or "Land" in _primary_type(d2["type"]):
+            continue
+        for label in classify_roles(d2["text"]):
+            role_counts[label] = role_counts.get(label, 0) + q
+    if role_counts:
+        print("\nFunctional roles (heuristic from card text; a card can fill several):")
+        for label in ROLE_ORDER:
+            cnt = role_counts.get(label, 0)
+            if cnt:
+                print(f"  {label:20} {cnt:3}  {'#' * cnt}")
+        interaction = sum(role_counts.get(k, 0)
+                          for k in ("Removal (spot)", "Sweeper", "Counter"))
+        print(f"  {'interaction total':20} {interaction:3}  "
+              "(removal + sweeper + counter)")
     return 0
 
 
@@ -799,9 +872,11 @@ def cmd_suggest(args):
     owned_of = lambda nl: by_name_qty.get(nl, 0)
     if args.unowned:
         suggestions = [x for x in suggestions if owned_of(x[1].lower()) == 0]
+    if getattr(args, "owned", False):
+        suggestions = [x for x in suggestions if owned_of(x[1].lower()) > 0]
     # Rank: strongest theme fit first; owned as a tiebreaker so quick adds float up.
     suggestions.sort(key=lambda x: (-x[0], -min(owned_of(x[1].lower()), 1), x[1].lower()))
-    top = suggestions[:args.limit]
+    top = suggestions if args.limit == 0 else suggestions[:args.limit]
 
     topthemes = sorted(theme_w.items(), key=lambda kv: -kv[1])[:6]
     print(f"Deck {d['id']}: {d['name'] or d['path']} — suggestions from the pool\n")
@@ -895,6 +970,22 @@ def _commitment(n):
 
 
 # --- flex / suggested swaps ------------------------------------------------- #
+def _parse_flex_line(s):
+    """Parse one stripped line into a flex entry dict, or None if it isn't a
+    (non-empty) `#~` line.  Format:  #~ -Out card | +In card | reason"""
+    if not s.startswith("#~"):
+        return None
+    e = {"out": "", "in": "", "note": ""}
+    for col in (c.strip() for c in s[2:].split("|")):
+        if col.startswith("-"):
+            e["out"] = col[1:].strip()
+        elif col.startswith("+"):
+            e["in"] = col[1:].strip()
+        elif col:
+            e["note"] = (e["note"] + "  " + col).strip()
+    return e if (e["out"] or e["in"] or e["note"]) else None
+
+
 def parse_flex(path):
     """Return the deck's flex suggestions from `#~` lines.
 
@@ -905,18 +996,8 @@ def parse_flex(path):
     entries = []
     with open(path, encoding="utf-8") as fh:
         for raw in fh:
-            s = raw.strip()
-            if not s.startswith("#~"):
-                continue
-            e = {"out": "", "in": "", "note": ""}
-            for col in (c.strip() for c in s[2:].split("|")):
-                if col.startswith("-"):
-                    e["out"] = col[1:].strip()
-                elif col.startswith("+"):
-                    e["in"] = col[1:].strip()
-                elif col:
-                    e["note"] = (e["note"] + "  " + col).strip()
-            if e["out"] or e["in"] or e["note"]:
+            e = _parse_flex_line(raw.strip())
+            if e:
                 entries.append(e)
     return entries
 
@@ -956,6 +1037,245 @@ def cmd_flex(args):
     return 0
 
 
+# --- swap preview / apply (and flex promotion) ------------------------------ #
+def _printing_of(name):
+    """Best-known (set, collector#) for a card name: an owned library printing
+    first (so the added line matches something you have), else any known
+    printing. ('', '') if unknown — a bare '1 Name' line still parses/checks."""
+    nl = name.strip().lower()
+    best = ("", "")
+    for path, owned_pref in ((DEFAULT_CSV, True), (POOL_CSV, False)):
+        if not os.path.exists(path):
+            continue
+        with open(path, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                if (r.get("Card Name") or "").strip().lower() != nl:
+                    continue
+                setc = (r.get("Set Code") or "").strip()
+                cn = (r.get("Collector #") or "").strip()
+                if not setc:
+                    continue
+                if owned_pref:
+                    try:
+                        q = int(r.get("Quantity Owned") or 0)
+                    except ValueError:
+                        q = 0
+                    if q > 0:
+                        return (setc, cn)      # an owned printing wins outright
+                if best == ("", ""):
+                    best = (setc, cn)
+    return best
+
+
+def _card_line_name(line):
+    """If a raw line is a card line, return its parsed name; else None. Comment
+    lines (`#`, `#:`, `#~`) split to empty and return None."""
+    body = line.split("#", 1)[0].strip()
+    if not body:
+        return None
+    m = LINE_RE.match(body)
+    return m.group(2).strip() if m else None
+
+
+def _deck_summary(cards, carddata, mana):
+    """Small before/after fingerprint for a cards list: totals, creature count,
+    average nonland MV, and color identity (excluding basics/lands)."""
+    total = crea = mv_sum = mv_n = 0
+    colors = set()
+    for q, n, s, c in cards:
+        total += q
+        nl = n.lower()
+        if nl in BASICS:
+            continue
+        cd = carddata.get(nl)
+        tline = (cd["type"] if cd else "") or ""
+        if "Land" in _primary_type(tline):
+            continue
+        if "creature" in tline.lower():
+            crea += q
+        col = (cd["colors"] if cd else "") or ""
+        if col.lower() != "colorless":
+            colors |= {ch for ch in col.upper() if ch in "WUBRG"}
+        entry = mana.get(nl)
+        if entry and entry[1] is not None:
+            mv_sum += entry[1] * q
+            mv_n += q
+    return {"total": total, "creatures": crea,
+            "avg_mv": (mv_sum / mv_n if mv_n else 0.0), "colors": colors}
+
+
+def _cards_after_swap(cards, cut, add, add_printing):
+    """Return the cards list with one copy of `cut` replaced by `add`, or None
+    if `cut` isn't present."""
+    out, removed = [], False
+    for (q, n, s, c) in cards:
+        if not removed and n.lower() == cut.strip().lower():
+            if q > 1:
+                out.append((q - 1, n, s, c))
+            removed = True
+            continue
+        out.append((q, n, s, c))
+    if not removed:
+        return None
+    out.append((1, add.strip(), add_printing[0], add_printing[1]))
+    return out
+
+
+def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
+    """Apply the swap to raw file lines: -1 copy of `cut` (removed if it was a
+    singleton, else decremented) with the `add` line taking its slot; optionally
+    drop the flex line matching `drop_flex` (an entry dict). Raises ValueError if
+    `cut` isn't a card line."""
+    out = list(lines)
+    ci = next((i for i, ln in enumerate(out)
+               if (_card_line_name(ln) or "").lower() == cut.strip().lower()), None)
+    if ci is None:
+        raise ValueError(f"{cut!r} is not a card line in this deck.")
+    m = LINE_RE.match(out[ci].split("#", 1)[0].strip())
+    qty = int(m.group(1))
+    setc, cn = add_printing
+    add_line = f"1 {add.strip()}"
+    if setc:
+        add_line += f" ({setc})" + (f" {cn}" if cn else "")
+    if qty > 1:
+        indent = out[ci][:len(out[ci]) - len(out[ci].lstrip())]
+        rebuilt = f"{indent}{qty - 1} {m.group(2).strip()}"
+        if m.group(3):
+            rebuilt += f" ({m.group(3).strip()})" + (f" {m.group(4).strip()}" if m.group(4) else "")
+        out[ci] = rebuilt
+        out.insert(ci + 1, add_line)
+    else:
+        out[ci] = add_line
+    if drop_flex is not None:
+        for j, ln in enumerate(out):
+            e = _parse_flex_line(ln.strip())
+            if e and e["out"].lower() == drop_flex["out"].lower() \
+                    and e["in"].lower() == drop_flex["in"].lower():
+                del out[j]
+                break
+    return out
+
+
+def _safe_write_lines(path, lines, expected_total):
+    """temp write -> INV-04 parse-check (parses cleanly AND total copies ==
+    expected) -> timestamped .bak -> atomic replace. Returns the .bak path."""
+    target = os.path.abspath(path)
+    text = "\n".join(lines).rstrip("\n") + "\n"
+    fd, tmp = tempfile.mkstemp(suffix=".txt", dir=os.path.dirname(target))
+    os.close(fd)
+    try:
+        with open(tmp, "w", encoding="utf-8") as fh:
+            fh.write(text)
+        _, parsed = parse_deck_file(tmp)
+        got = sum(q for q, *_ in parsed)
+        if got != expected_total:
+            raise ValueError(f"post-write copy count {got} != expected "
+                             f"{expected_total}; not saved.")
+        bak = f"{target}.{time.strftime('%Y%m%d-%H%M%S')}.bak"
+        shutil.copy2(target, bak)
+        os.replace(tmp, target)
+        tmp = None
+        return bak
+    finally:
+        if tmp and os.path.exists(tmp):
+            os.remove(tmp)
+
+
+def _do_swap(d, cut, add, apply, flex_entry=None):
+    """Shared engine for `swap` and `apply-flex`: preview deltas, and on --apply
+    perform the edit with a .bak + INV-04 re-check."""
+    carddata = load_card_data()
+    mana = load_mana()
+    _, cards = parse_deck_file(d["path"])
+    add_pr = _printing_of(add)
+    after = _cards_after_swap(cards, cut, add, add_pr)
+    if after is None:
+        eprint(f"{cut!r} is not in deck {d['id']}. Nothing swapped.")
+        return 1
+
+    nonland = [n for q, n, s, c in cards if n.lower() not in BASICS]
+    fetch_missing_mana(sorted(set(nonland + [add])), mana)
+    before_s = _deck_summary(cards, carddata, mana)
+    after_s = _deck_summary(after, carddata, mana)
+
+    cut_t = (carddata.get(cut.lower()) or {}).get("type", "") or "?"
+    add_cd = carddata.get(add.lower())
+    add_t = (add_cd or {}).get("type", "") or "?"
+    _, _, qty_by = load_collection()
+    have, _ = owned(qty_by, add)
+    rar = load_rarities().get(add.lower(), "")
+    add_mv = (mana.get(add.lower()) or (None, None))[1]
+
+    print(f"Deck {d['id']}: {d['name'] or d['id']} — swap preview\n")
+    print(f"  − {cut}   [{cut_t}]")
+    tail = " ".join(x for x in [rar, (f"×{have}" if have > 0 else "craft"),
+                                (f"MV {add_mv}" if add_mv is not None else "")] if x)
+    print(f"  + {add}   [{add_t}]" + (f"   ({tail})" if tail else ""))
+    if not add_cd:
+        print(f"  ⚠ '{add}' not found in library or pool — check spelling; "
+              "it will be added as a bare line.")
+
+    def delta(a, b):
+        d_ = b - a
+        return f"{a} → {b}" + (f"  ({d_:+d})" if d_ else "")
+
+    print("\n  deltas:")
+    print(f"    total cards     {delta(before_s['total'], after_s['total'])}")
+    print(f"    creatures       {delta(before_s['creatures'], after_s['creatures'])}")
+    print(f"    avg nonland MV  {before_s['avg_mv']:.2f} → {after_s['avg_mv']:.2f}"
+          f"  ({after_s['avg_mv'] - before_s['avg_mv']:+.2f})")
+    b_col = "/".join(sorted(before_s["colors"])) or "—"
+    a_col = "/".join(sorted(after_s["colors"])) or "—"
+    print(f"    color identity  {b_col} → {a_col}"
+          + ("   (adds a color!)" if after_s["colors"] - before_s["colors"] else ""))
+
+    if not apply:
+        print("\n(dry run — pass --apply to write the change with a .bak)")
+        return 0
+
+    with open(d["path"], encoding="utf-8") as fh:
+        lines = fh.read().split("\n")
+    try:
+        new_lines = _swap_edit_lines(lines, cut, add, add_pr, drop_flex=flex_entry)
+        bak = _safe_write_lines(d["path"], new_lines, before_s["total"])
+    except ValueError as e:
+        eprint(f"Not saved: {e}")
+        return 1
+    print(f"\nApplied. Wrote {os.path.relpath(d['path'], REPO_ROOT)} "
+          f"(backup: {os.path.basename(bak)}).")
+    if flex_entry is not None:
+        print("Removed the consumed flex line.")
+    return 0
+
+
+def cmd_swap(args):
+    """Preview (or --apply) a single -cut/+add swap with before/after deltas."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    return _do_swap(d, args.cut, args.add, args.apply)
+
+
+def cmd_apply_flex(args):
+    """Promote flex swap #n (a `#~ -Out | +In` line) into the maindeck."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    swaps = [e for e in parse_flex(d["path"]) if e["out"] and e["in"]]
+    if not swaps:
+        print("No applicable flex swaps (need a '#~ -Out | +In' line). "
+              f"See: deck.py flex {args.id}")
+        return 0
+    if args.n < 1 or args.n > len(swaps):
+        eprint(f"Flex swap #{args.n} out of range (1..{len(swaps)}). "
+               f"See: deck.py flex {args.id}")
+        return 1
+    e = swaps[args.n - 1]
+    return _do_swap(d, e["out"], e["in"], args.apply, flex_entry=e)
+
+
 def main():
     ap = argparse.ArgumentParser(description="Manage decks and variations.")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -975,17 +1295,30 @@ def main():
     p.add_argument("id")
     p = sub.add_parser("suggest", help="recommend pool cards that fit a deck's colors + themes")
     p.add_argument("id")
-    p.add_argument("--limit", type=int, default=20, help="max suggestions (default 20)")
+    p.add_argument("--limit", type=int, default=20,
+                   help="max suggestions (default 20; 0 = unlimited)")
     p.add_argument("--unowned", action="store_true", help="only craftable suggestions")
+    p.add_argument("--owned", action="store_true", help="only cards you already own")
     p = sub.add_parser("flex", help="show a deck's flex / suggested swaps (#~ lines)")
     p.add_argument("id")
+    p = sub.add_parser("swap", help="preview/apply a single -cut/+add swap with deltas")
+    p.add_argument("id")
+    p.add_argument("--cut", required=True, help="card to remove")
+    p.add_argument("--add", required=True, help="card to add")
+    p.add_argument("--apply", action="store_true",
+                   help="write the change (with a .bak); default is a dry-run preview")
+    p = sub.add_parser("apply-flex", help="promote a flex swap (#~ line) into the maindeck")
+    p.add_argument("id")
+    p.add_argument("n", type=int, help="which flex swap (1-based; see deck.py flex <id>)")
+    p.add_argument("--apply", action="store_true",
+                   help="write the change (with a .bak); default is a dry-run preview")
     args = ap.parse_args()
 
     return {
         "list": cmd_list, "wildcards": cmd_wildcards, "check": cmd_check,
         "diff": cmd_diff, "arena": cmd_arena, "stats": cmd_stats,
         "mana": cmd_mana, "tribes": cmd_tribes, "suggest": cmd_suggest,
-        "flex": cmd_flex,
+        "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
     }[args.cmd](args)
 
 
