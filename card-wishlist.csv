@@ -18,7 +18,7 @@ The Scarlet Witch,Legendary Creature — Mutant Warlock Hero,"Instant and sorcer
 The Serpent Society,Legendary Creature — Human Snake Villain,"Deathtouch
 Ward—Get five poison counters. (A player with ten or more poison counters loses the game.)
 Whenever another creature you control with deathtouch dies, each opponent sacrifices a nontoken creature of their choice.",B/G,Human; Snake; Villain; sacrifice; ward; protection; deathtouch; combat; removal,MSH,226,Rare,8,"best 8 (Sacrifices); also 20b,21,21a"
-Vision Quest,Sorcery,"Search your library and/or graveyard for an artifact creature card with mana value X or less and put it onto the battlefield with X additional +1/+1 counters on it. If X is 4 or greater, it gains haste until end of turn. If you search your library this way, shuffle.",U/R,counters; reanimator; graveyard,MSH,237,Rare,17,best 17 (Spectrum)
+Vision Quest,Sorcery,"Search your library and/or graveyard for an artifact creature card with mana value X or less and put it onto the battlefield with X additional +1/+1 counters on it. If X is 4 or greater, it gains haste until end of turn. If you search your library this way, shuffle.",U/R,counters; reanimator; graveyard,MSH,237,Rare,general,UR artifact-creature cheat/reanimator — wants a dedicated artifacts shell
 Death to Our Enemies,Enchantment — Plan,"Whenever you cast a noncreature spell, create a tapped Treasure token and put a plan counter on this enchantment.
 When the fourth plan counter is put on this enchantment, sacrifice it. When you do, it deals 7 damage divided as you choose among one or two targets.",R,Plan; counters; sacrifice; tokens; burn; treasure,MSH,127,Uncommon,21,"broadly useful — best 21 (Gastromancer); also 8,21a,1"
 "Ghost, Spectral Saboteur",Legendary Creature — Human Rogue Villain,"Flash
@@ -62,10 +62,10 @@ Planar Engineering,Sorcery,"Sacrifice two lands. Search your library for four ba
 Slumbering Trudge,Creature — Plant Beast,"This creature enters with a number of stun counters on it equal to three minus X. If X is 2 or less, it enters tapped. (If a permanent with a stun counter would become untapped, remove one from it instead.)",G,Plant; Beast; counters,SOS,160,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 4,13,9"
 Splatter Technique,Sorcery,"Choose one —
 • Draw four cards.
-• Splatter Technique deals 4 damage to each creature and planeswalker.",U/R,card draw; burn,SOS,231,Rare,17,best 17 (Spectrum)
+• Splatter Technique deals 4 damage to each creature and planeswalker.",U/R,card draw; burn,SOS,231,Rare,general,flexible UR: draw 4 OR sweep 4 to each creature/PW — role-player in any UR/grixis shell
 Sundown Pass,Land,"This land enters tapped unless you control two or more other lands.
 {T}: Add {R} or {W}.",W/R,mana,SOS,264,Rare,13,"best 13 (Earth Kingdom); also 21,21a,17"
-Traumatic Critique,Instant,"Traumatic Critique deals X damage to any target. Draw two cards, then discard a card.",U/R,card draw; burn,SOS,239,Rare,17,best 17 (Spectrum)
+Traumatic Critique,Instant,"Traumatic Critique deals X damage to any target. Draw two cards, then discard a card.",U/R,card draw; burn,SOS,239,Rare,general,UR X-burn + card advantage — good in any UR/spellslinger shell (cf. Prismari concept)
 Vastlands Scavenger // Bind to Life,Creature — Bear Druid // Instant,"Deathtouch
 This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Mill seven cards. Then put a creature card from among them onto the battlefield.",G,Bear; Druid; mill; prepared; spellslinger; tempo; graveyard; deathtouch; combat; removal,SOS,166,Rare,6,"best 6 (Dead or Alive); also 5,20b,8"
 Vicious Rivalry,Sorcery,"As an additional cost to cast this spell, pay X life.
@@ -93,10 +93,10 @@ Topiary Lecturer,Creature — Elf Druid,"Increment (Whenever you cast a spell, i
 {T}: Add an amount of {G} equal to this creature's power.",G,Elf; Druid; counters; mana; increment,SOS,165,Uncommon,13,"broadly useful — best 13 (Earth Kingdom); also 21,7,21a"
 Bogwater Lumaret,Creature — Spirit Frog,"Whenever this creature or another creature you control enters, you gain 1 life.",B/G,Spirit; Frog; lifegain,SOS,177,Common,21,"best 21 (Gastromancer); also 21a,20b,8"
 Pest Mascot,Creature — Pest Ape,"Trample
-Whenever you gain life, put a +1/+1 counter on this creature.",B/G,Pest; Ape; counters; trample; evasion,SOS,209,Common,17,"best 17 (Spectrum); also 13,21,8"
+Whenever you gain life, put a +1/+1 counter on this creature.",B/G,Pest; Ape; counters; trample; evasion,SOS,209,Common,21,BG trample: gain life puts a +1/+1 counter on it — grows off Gastromancer's lifegain
 Spectacle Summit,Land,"This land enters tapped.
 {T}: Add {U} or {R}.
-{2}{U}{R}, {T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",U/R,graveyard; mana; selection; surveil,SOS,262,Common,17,best 17 (Spectrum)
+{2}{U}{R}, {T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",U/R,graveyard; mana; selection; surveil,SOS,262,Common,general,UR fixing land (surveil) — any UR/5c deck
 Badgermole Cub,Creature — Badger Mole,"When this creature enters, earthbend 1. (Target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)
 Whenever you tap a creature for mana, add an additional {G}.",G,Badger; Mole; counters; etb; blink; earthbend; bending,TLA,167,Mythic,13,"best 13 (Earth Kingdom); also 21,4,21a"
 Fated Firepower,Enchantment,"Flash
@@ -114,12 +114,12 @@ Whenever Fire Lord Sozin deals combat damage to a player, you may pay {X}. When 
 "Azula, Cunning Usurper",Legendary Creature — Human Noble Rogue,"Firebending 2 (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)
 When Azula enters, target opponent exiles a nontoken creature they control, then they exile a nonland card from their graveyard.
 During your turn, you may cast cards exiled with Azula and you may cast them as though they had flash. Mana of any type can be spent to cast those spells.",U/B,Human; Noble; Rogue; graveyard; etb; firebending; bending,TLA,208,Rare,22,"best 22 (Bloodbending); also 17,12"
-Diligent Zookeeper,Creature — Human Citizen Ally,"Each non-Human creature you control gets +1/+1 for each of its creature types, to a maximum of 10.",G,Human; Citizen; Ally; pump,TLA,171,Rare,17,"best 17 (Spectrum); also 19b,13,7"
+Diligent Zookeeper,Creature — Human Citizen Ally,"Each non-Human creature you control gets +1/+1 for each of its creature types, to a maximum of 10.",G,Human; Citizen; Ally; pump,TLA,171,Rare,17,typal anthem: non-Humans get +1/+1 per creature type — ideal on Spectrum's max-diversity board
 Earth King's Lieutenant,Creature — Human Soldier Ally,"Trample
 When this creature enters, put a +1/+1 counter on each other Ally creature you control.
 Whenever another Ally you control enters, put a +1/+1 counter on this creature.",W/G,Human; Soldier; Ally; counters; etb; trample; evasion,TLA,217,Rare,13,"broadly useful — best 13 (Earth Kingdom); also 17,7,19b"
 "Sokka, Bold Boomeranger",Legendary Creature — Human Warrior Ally,"When Sokka enters, discard up to two cards, then draw that many cards.
-Whenever you cast an artifact or Lesson spell, put a +1/+1 counter on Sokka.",U/R,Human; Warrior; Ally; counters; card draw; etb,TLA,240,Rare,17,RU only fits 17
+Whenever you cast an artifact or Lesson spell, put a +1/+1 counter on Sokka.",U/R,Human; Warrior; Ally; counters; card draw; etb,TLA,240,Rare,17,UR loot + grows on artifact/Lesson casts; only strong home is 5-color Spectrum
 The Fire Nation Drill,Legendary Artifact — Vehicle,"Trample
 When The Fire Nation Drill enters, you may tap it. When you do, destroy target creature with power 4 or less.
 {1}: Permanents your opponents control lose hexproof and indestructible until end of turn.
@@ -133,7 +133,7 @@ Nonbasic lands enter tapped.
 {7}: Put a conqueror counter on Zhao.
 As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17"
 Foggy Swamp Spirit Keeper,Creature — Human Druid Ally,"Lifelink
-Whenever you draw your second card each turn, create a 1/1 colorless Spirit creature token with ""This token can't block or be blocked by non-Spirit creatures.""",U/B,Human; Druid; Ally; lifegain; tokens; lifelink,TLA,222,Uncommon,17,"best 17 (Spectrum); also 22,12"
+Whenever you draw your second card each turn, create a 1/1 colorless Spirit creature token with ""This token can't block or be blocked by non-Spirit creatures.""",U/B,Human; Druid; Ally; lifegain; tokens; lifelink,TLA,222,Uncommon,22,UB: draw-your-second-card makes Spirits + lifelink — feeds Bloodbending's draw engine
 Ozai's Cruelty,Sorcery — Lesson,Ozai's Cruelty deals 2 damage to target player. That player discards two cards.,B,Lesson; burn; discard,TLA,113,Uncommon,10,"best 10 (Mad Villainy); also 1,22,14"
 Unlucky Cabbage Merchant,Creature — Human Citizen,"When this creature enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
 Whenever you sacrifice a Food, you may search your library for a basic land card and put it onto the battlefield tapped. If you search your library this way, put this creature on the bottom of its owner's library, then shuffle.",G,Human; Citizen; lifegain; sacrifice; tokens; ramp; etb; food,TLA,201,Uncommon,21,"best 21 (Gastromancer); also 21a,8,19b"
@@ -147,14 +147,14 @@ Whenever you discard a card, this Class deals 2 damage to each opponent.
 {1}{R}: Level 3
 When this Class becomes level 3, search your library for a card, put it into your hand, shuffle, then discard a card at random.",R,Class; card draw; burn,TMT,89,Rare,2,"best 2 (Thundergod); also 8,1,21a"
 "Don & Raph, Hard Science",Legendary Creature — Mutant Ninja Turtle,"Menace
-Whenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)",U/R,Mutant; Ninja; Turtle; menace; evasion,TMT,144,Rare,17,best 17 (Spectrum)
+Whenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)",U/R,Mutant; Ninja; Turtle; menace; evasion,TMT,144,Rare,concept,TMNT UR-artifacts legend — new-deck focal point (menace + artifact-affinity payoff)
 Groundchuck & Dirtbag,Legendary Creature — Ox Mole Mutant,"Trample
-Whenever you tap a land for mana, add {G}.",G,Ox; Mole; Mutant; trample; evasion,TMT,115,Rare,17,"best 17 (Spectrum); also 19a,19b,4"
+Whenever you tap a land for mana, add {G}.",G,Ox; Mole; Mutant; trample; evasion,TMT,115,Rare,13,mono-G ramp payoff: tap a land adds an extra {G}; accelerates Earth Kingdom's ramp (TMNT flavor)
 Improvised Arsenal,Artifact — Equipment,"Equipped creature gets +1/+0 for each artifact you control.
 {4}{R}: Create a token that's a copy of this Equipment.
 Equip {R}",R,Equipment; tokens; equipment; pump; equip,TMT,92,Rare,10,"broadly useful — best 10 (Mad Villainy); also 9,1,21"
 Krang & Shredder,Legendary Creature — Utrom Human Ninja,"Whenever Krang & Shredder enter or attack, each opponent exiles cards from the top of their library until they exile a nonland card.
-Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, you may cast a card exiled with Krang & Shredder without paying its mana cost.",U/B,Utrom; Human; Ninja; disappear,TMT,153,Rare,17,"best 17 (Spectrum); also 22,12"
+Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, you may cast a card exiled with Krang & Shredder without paying its mana cost.",U/B,Utrom; Human; Ninja; disappear,TMT,153,Rare,22,UB exile-and-cast value + mill; fits Bloodbending's UB control (TMNT flavor)
 "Madame Null, Power Broker",Legendary Creature — Demon Advisor,"Deathtouch
 Whenever another creature you control enters, you may pay life equal to its power. If you do, put that many +1/+1 counters on it.",B,Demon; Advisor; counters; deathtouch; combat; removal,TMT,66,Rare,20b,"broadly useful — best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 11,8,21"
 Michelangelo's Technique,Sorcery,"Sneak {3}{G} (You may cast this spell for {3}{G} if you also return an unblocked attacker you control to hand during the declare blockers step.)
@@ -173,7 +173,7 @@ Creatures you control get +1/+0 and have menace.
 Creature cards in your graveyard have sneak {3}{B}.
 You may cast creature spells from your graveyard using their sneak abilities.",B,Class; graveyard; pump,TMT,67,Rare,20,"Ninja flavor (heuristic top 6 graveyard) | fits: 6,5,22"
 "Raph & Mikey, Troublemakers",Legendary Creature — Mutant Ninja Turtle,"Trample, haste
-Whenever Raph & Mikey attack, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.",R/G,Mutant; Ninja; Turtle; haste; aggro; trample; evasion,TMT,167,Rare,17,best 17 (Spectrum)
+Whenever Raph & Mikey attack, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.",R/G,Mutant; Ninja; Turtle; haste; aggro; trample; evasion,TMT,167,Rare,9,"RG aggro: on attack, cheat a creature into play attacking — fits Hulk Smash (TMNT flavor)"
 Raphael's Technique,Instant,"Sneak {2}{R} (You may cast this spell for {2}{R} if you also return an unblocked attacker you control to hand during the declare blockers step.)
 Each player may discard their hand and draw seven cards.",R,card draw; sneak; tempo; cost-reduction,TMT,105,Rare,8,"best 8 (Sacrifices); also 21a,21,2"
 "Raphael, the Nightwatcher",Legendary Creature — Mutant Ninja Turtle,"Sneak {1}{R}{R} (You may cast this spell for {1}{R}{R} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)
