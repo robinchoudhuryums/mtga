@@ -1,6 +1,7 @@
 #: name: Villainous
 #: format: Standard
 #: colors: B
+#: archetype: Mono-black villains control-midrange — graveyard / sacrifice.
 #: notes: Mono-black villains / control-midrange.
 
 # Nonland

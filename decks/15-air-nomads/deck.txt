@@ -1,6 +1,7 @@
 #: name: Air Nomads
 #: format: Standard
 #: colors: WU
+#: archetype: Azorius (W/U) Air Nomads fliers / airbend tempo.
 #: notes: Azorius (W/U) — Air Nomads fliers / tempo.
 
 # Nonland

@@ -1,6 +1,7 @@
 #: name: Spectrum
 #: format: Standard
 #: colors: WUBRG
+#: archetype: Five-color rainbow good-stuff / superheroes.
 #: notes: Five-color rainbow good-stuff / superheroes.
 
 # Nonland

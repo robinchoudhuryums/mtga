@@ -1,6 +1,7 @@
 #: name: Dragon King Roku
 #: format: Standard
 #: colors: WBR
+#: archetype: Mardu (W/B/R) Fire Nation dragons / firebending midrange.
 #: notes: Mardu (W/B/R) — Fire Nation / dragons midrange.
 
 # Nonland

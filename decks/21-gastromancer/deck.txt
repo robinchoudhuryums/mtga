@@ -1,6 +1,7 @@
 #: name: Gastromancer
 #: format: Standard
 #: colors: WBGR
+#: archetype: Abzan (W/B/G, light red) Food-sacrifice / artifact-aristocrats — Ragost + a deep sac-payoff web.
 #: notes: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats with a LIGHT red splash
 #: notes: for the namesake Ragost, Deft Gastronaut ({R}{W} — makes all your artifacts
 #: notes: Food, then sacs Food to drain 3 each). Food generators feed a deep sac-payoff

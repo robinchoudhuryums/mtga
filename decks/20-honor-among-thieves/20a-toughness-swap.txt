@@ -2,6 +2,7 @@
 #: format: Standard
 #: colors: WB
 #: based-on: deck.txt
+#: archetype: 20 variant — P/T-swap novelty: high-toughness bodies deal damage via Kingpin (leans on drawing him).
 #: notes: The P/T-swap novelty variant. Built around The Kingpin of Crime's attack
 #: notes: trigger (pay 2 life: creatures with toughness > power deal combat damage
 #: notes: equal to their TOUGHNESS). Fills the deck with high-toughness/low-power

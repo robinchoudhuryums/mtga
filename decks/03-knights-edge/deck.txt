@@ -1,6 +1,7 @@
 #: name: Knight's Edge
 #: format: Standard
 #: colors: W
+#: archetype: Mono-white go-wide Knights — tokens, counters, anthems.
 #: notes: Mono-white go-wide / knights.
 
 # Nonland

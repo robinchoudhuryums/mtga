@@ -18,7 +18,8 @@ whose lines start with `#:` — for example:
     #: name: Avatar Tempo
     #: format: Standard
     #: colors: WU
-    #: notes: removal-heavy base build
+    #: archetype: Azorius (W/U) fliers / tempo   (one-line identity; `list` shows it)
+    #: notes: removal-heavy base build   (free-form; may span several `#: notes:` lines)
 
     4 Katara, Bending Prodigy (TLA) 59
     ...
@@ -83,13 +84,22 @@ META_RE = re.compile(r"^#:\s*([A-Za-z_]+)\s*:\s*(.*)$")
 # Deck discovery + parsing
 # --------------------------------------------------------------------------- #
 def parse_deck_file(path):
-    """Return (meta_dict, [(qty, name, set, collector), ...])."""
+    """Return (meta_dict, [(qty, name, set, collector), ...]).
+
+    A repeated `#:` key (notably a multi-line `#: notes:` block) is concatenated
+    in order rather than overwritten, so the FULL note survives — previously only
+    the last `#: notes:` line was kept, which truncated a deck's documented intent
+    to a mid-sentence fragment in every tool that reads it."""
     meta, cards = {}, []
     with open(path, encoding="utf-8") as fh:
         for raw in fh:
             m = META_RE.match(raw.strip())
             if m:
-                meta[m.group(1).lower()] = m.group(2).strip()
+                key, val = m.group(1).lower(), m.group(2).strip()
+                if key in meta and meta[key] and val:
+                    meta[key] = f"{meta[key]} {val}"
+                elif key not in meta or val:
+                    meta[key] = val
                 continue
             line = raw.split("#", 1)[0].strip()
             if not line:
@@ -185,6 +195,16 @@ def owned(by_name_qty, name):
 # --------------------------------------------------------------------------- #
 # Commands
 # --------------------------------------------------------------------------- #
+def _deck_identity(meta, width=92):
+    """One-line 'meant-for' summary for `list`: the `#: archetype:` field if the
+    deck declares one, else the first sentence of its `#: notes:`. '' if neither."""
+    txt = (meta.get("archetype") or "").strip()
+    if not txt:
+        note = (meta.get("notes") or "").strip()
+        txt = re.split(r"(?<=[.;])\s", note, 1)[0] if note else ""
+    return (txt[:width - 1].rstrip() + "…") if len(txt) > width else txt
+
+
 def cmd_list(_args):
     decks = discover_decks()
     if not decks:
@@ -210,6 +230,9 @@ def cmd_list(_args):
             label = d["name"] or os.path.basename(os.path.dirname(d["path"])) or d["id"]
             tag = "  └─ variant" if d["variant"] else "CORE"
             print(f"  [{d['id']:>4}] {tag:12} {label:28} {total:3} cards  {status}")
+            ident = _deck_identity(d["meta"])
+            if ident:
+                print(f"          {ident}")
     return 0
 
 

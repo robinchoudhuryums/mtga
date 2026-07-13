@@ -1,6 +1,7 @@
 #: name: Water Spirit
 #: format: Standard
 #: colors: WU
+#: archetype: Azorius (W/U) Water Tribe spirits / waterbend tempo.
 #: notes: Azorius (W/U) — Water Tribe / spirits tempo.
 
 # Nonland

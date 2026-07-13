@@ -1,6 +1,7 @@
 #: name: Sacrifices
 #: format: Standard
 #: colors: BRG
+#: archetype: Rakdos (B/R, light green) sacrifice / aristocrats.
 #: notes: Rakdos (B/R) sacrifice / aristocrats, black-primary with a light green splash.
 
 # Nonland

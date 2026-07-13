@@ -1,6 +1,7 @@
 #: name: Atlantis Attacks
 #: format: Standard
 #: colors: WU
+#: archetype: Mono-U (light W) Merfolk tribal tempo — tap/convoke token engine (WIP).
 #: notes: Merfolk tribal / tempo — mono-U core with a light (mostly hybrid) W
 #: notes: splash. Runs both Sharae of Numbing Depths (proactive tap-down) and
 #: notes: Ooze Spill (counter); trimmed to 23 lands to fit both.

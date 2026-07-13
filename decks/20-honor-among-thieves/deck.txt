@@ -1,6 +1,7 @@
 #: name: Honor Among Thieves
 #: format: Standard
 #: colors: WB
+#: archetype: Orzhov (W/B) lifegain-drain aggro-midrange — evasive Ninjas fuel the Kingpin life-swing.
 #: notes: Orzhov (W/B) lifegain-drain aggro-midrange seeded by The Kingpin of Crime (Extort). An evasive Ninja package (Sneak) connects for combat damage to fuel the life-swing engine; the two R/W-hybrid Ninjas are cast off white. P/T-swap novelty lives in the 20a variant.
 
 # Nonland

@@ -1,6 +1,7 @@
 #: name: Earth Kingdom
 #: format: Standard
 #: colors: GWBR
+#: archetype: Green-base 4-color Avatar Earthbend ramp — rainbow-fixed W/B/R splashes into big earthbenders.
 #: notes: Green-base Avatar Earth Kingdom / Earthbend ramp deck (green-primary), light
 #: notes: W/B/R splashes enabled by a wide rainbow-fixing land base (8 any-color lands +
 #: notes: green ramp fetching basics). Header lists the real castable colors, not just GR.

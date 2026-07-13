@@ -1,6 +1,7 @@
 #: name: Dead or Alive
 #: format: Standard
 #: colors: WBG
+#: archetype: Abzan (W/B/G) reanimator — graveyard value.
 #: notes: Abzan (W/B/G) — graveyard value / reanimator.
 
 # Nonland

@@ -2,6 +2,7 @@
 #: format: Standard
 #: colors: WBRG
 #: based-on: deck.txt
+#: archetype: 21 variant — 4-color (WBRG) big-artifact goodstuff; colorless bombs + heavy any-color fixing; least consistent of the three.
 #: notes: The "heavy artifact drift" version. 4-color (WBRG) big-artifact goodstuff,
 #: notes: with Ragost (turns every artifact into Food + drain fuel) as the bridge to
 #: notes: the Food/sac core. Leans on colorless bombs (Ultron, Krang, The Vision,

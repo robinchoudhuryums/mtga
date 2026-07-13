@@ -1,6 +1,7 @@
 #: name: Thundergod
 #: format: Standard
 #: colors: R
+#: archetype: Mono-red Thor-themed aggro / burn.
 #: notes: Mono-red, Thor-themed aggro.
 
 # Nonland
