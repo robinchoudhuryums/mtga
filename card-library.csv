@@ -2995,3 +2995,5 @@ Whenever you gain life for the first time during each of your turns, create a 1/
 Eager Trufflesnout,Creature — Boar,"Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)
 Whenever this creature deals combat damage to a player, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",G,Boar; lifegain; sacrifice; tokens; food; trample; evasion,FDN,102,2
 Bake into a Pie,Instant,"Destroy target creature. Create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",B,lifegain; sacrifice; tokens; removal; food,FDN,169,2
+Inspiration from Beyond,Sorcery,"Mill three cards, then return an instant or sorcery card from your graveyard to your hand.
+Flashback {5}{U}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; mill; flashback; recursion; spellslinger,FDN,43,2
