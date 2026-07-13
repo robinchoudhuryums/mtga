@@ -42,10 +42,14 @@ docs. This file is the source of truth for the workflow commands in
   a castability lint against the deck's declared `#: colors:`. Read the card text
   (stored in the CSV) for real evaluation.
 - **Previewing and applying swaps.** `deck.py swap <id> --cut A --add B` shows a
-  swap's before/after deltas (and the real card types — so a "vanilla flyer"
-  that's actually a Bird can't slip past); `--apply` writes with a `.bak` and an
-  INV-04 re-check. `deck.py apply-flex <id> <n>` promotes a `#~` flex line into
-  the 60. Both default to a dry run.
+  swap's before/after deltas plus the **full oracle text of BOTH the cut and add
+  cards** (not just the type line) — so a later ability can't hide behind a
+  truncated read (this is how M.O.D.O.K.'s board-wide −1/−1 and Momo's modal
+  leaves-play trigger got missed when grading cuts from a sliced text field).
+  **Always grade a cut from this full-text preview, never from a `Card Text[:N]`
+  slice.** `--apply` writes with a `.bak` and an INV-04 re-check. `deck.py
+  apply-flex <id> <n>` promotes a `#~` flex line into the 60. Both default to a
+  dry run.
 - **MTG Arena set codes can differ from Scryfall** (e.g. Arena `DAR` = Scryfall
   `DOM`). `enrich.py` maps known ones (`SET_ALIASES`) and never writes a
   collector # for an unconfirmed printing.

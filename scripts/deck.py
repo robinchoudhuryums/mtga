@@ -1352,7 +1352,8 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
     before_s = _deck_summary(cards, carddata, mana)
     after_s = _deck_summary(after, carddata, mana)
 
-    cut_t = (carddata.get(cut.lower()) or {}).get("type", "") or "?"
+    cut_cd = carddata.get(cut.lower()) or {}
+    cut_t = cut_cd.get("type", "") or "?"
     add_cd = carddata.get(add.lower())
     add_t = (add_cd or {}).get("type", "") or "?"
     _, _, qty_by = load_collection()
@@ -1360,11 +1361,20 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
     rar = load_rarities().get(add.lower(), "")
     add_mv = (mana.get(add.lower()) or (None, None))[1]
 
+    # Print the FULL oracle text of both cards. Grading a swap from a type line
+    # (or a truncated read) hides later abilities — the whole card must be in view.
+    def _oracle(cd):
+        return [ln for ln in (cd.get("text", "") or "").splitlines() if ln.strip()]
+
     print(f"Deck {d['id']}: {d['name'] or d['id']} — swap preview\n")
     print(f"  − {cut}   [{cut_t}]")
+    for ln in _oracle(cut_cd):
+        print(f"        {ln}")
     tail = " ".join(x for x in [rar, (f"×{have}" if have > 0 else "craft"),
                                 (f"MV {add_mv}" if add_mv is not None else "")] if x)
     print(f"  + {add}   [{add_t}]" + (f"   ({tail})" if tail else ""))
+    for ln in _oracle(add_cd or {}):
+        print(f"        {ln}")
     if not add_cd:
         print(f"  ⚠ '{add}' not found in library or pool — check spelling; "
               "it will be added as a bare line.")
