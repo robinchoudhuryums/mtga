@@ -42,10 +42,22 @@ docs. This file is the source of truth for the workflow commands in
   a castability lint against the deck's declared `#: colors:`. Read the card text
   (stored in the CSV) for real evaluation.
 - **Previewing and applying swaps.** `deck.py swap <id> --cut A --add B` shows a
-  swap's before/after deltas (and the real card types — so a "vanilla flyer"
-  that's actually a Bird can't slip past); `--apply` writes with a `.bak` and an
-  INV-04 re-check. `deck.py apply-flex <id> <n>` promotes a `#~` flex line into
-  the 60. Both default to a dry run.
+  swap's before/after deltas plus the **full oracle text of BOTH the cut and add
+  cards** (not just the type line) — so a later ability can't hide behind a
+  truncated read (this is how M.O.D.O.K.'s board-wide −1/−1 and Momo's modal
+  leaves-play trigger got missed when grading cuts from a sliced text field).
+  **Always grade a cut from this full-text preview, never from a `Card Text[:N]`
+  slice.** `--apply` writes with a `.bak` and an INV-04 re-check. `deck.py
+  apply-flex <id> <n>` promotes a `#~` flex line into the 60. Both default to a
+  dry run.
+- **"Not in library" for a card you own is the deck-dump undercount symptom.**
+  `import_arena.py` takes a lower bound per line, so a card can end up
+  *undercounted or entirely absent* from `card-library.csv` — then `deck.py
+  check` reports it as a craft target even though you own it. Reconcile via
+  `import_arena.py <deck> --skip-basics` (trues up from a built deck), or append
+  the row from `card-pool.csv` at the right `Quantity Owned` and rebuild the
+  gallery. Hit repeatedly in practice (Primeval Bounty, Cat Collector, Inspiration
+  from Beyond, Dion, …).
 - **MTG Arena set codes can differ from Scryfall** (e.g. Arena `DAR` = Scryfall
   `DOM`). `enrich.py` maps known ones (`SET_ALIASES`) and never writes a
   collector # for an unconfirmed printing.
@@ -82,6 +94,14 @@ docs. This file is the source of truth for the workflow commands in
   off-color *activated abilities* (e.g. Super-Skrull's `{4}{R}`) don't surface
   uncastable picks. Run it both ways: `--owned --limit 0` scours the collection
   for 0-wildcard upgrades already owned; `--unowned` lists craft targets.
+- **`deck.py suggest` shows a cross-deck reuse count (`Decks` column).** For each
+  pick it counts how many of your decks the card is *castable* (its identity ⊆ the
+  deck's declared/derived colors) **and** shares ≥1 synergy theme with — a rough
+  "value per wildcard" signal, so a craft that fits several decks outranks a
+  one-deck sidegrade. It's a broad any-theme-overlap heuristic (a generic
+  sac/tokens card scores high because it touches many decks), so read it as
+  breadth, not curated fit. A "High cross-deck reuse" line summarizes the top
+  fits≥3. Factor it into a craft's ★/~/· weight in a flex block.
 - **Flex-block craftables are format-scoped.** When a deck's `#: format:` changes,
   re-check its `#~` craft suggestions — a craftable legal under the old format may
   have rotated (hit moving decks 1/2 Historic→Standard). `deck.py flex <id>` plus
@@ -101,9 +121,10 @@ docs. This file is the source of truth for the workflow commands in
   modal cards land in several buckets and single-draw cantrips are deliberately
   *not* counted as card advantage. The lint reads the deck's `#: colors:` header,
   so a stale or intentionally-narrow header flags cards as off-color — e.g. the
-  raw 83-card `19` pile is headed `WU` but is really multicolor, and decks whose
-  header trails their contents (8, 13) will list genuinely off-color cards. Treat
-  both as signal to review, not hard failures — neither gates `check_all.py`.
+  raw 83-card `19` pile is headed `WU` but is really multicolor. Fixing a stale
+  header to the deck's real castable colors clears the false positives (e.g. deck
+  `13` was corrected `GR`→`GWBR`). Treat a flag as signal to review, not a hard
+  failure — it doesn't gate `check_all.py`.
 
 ## Cycle Workflow Config
 

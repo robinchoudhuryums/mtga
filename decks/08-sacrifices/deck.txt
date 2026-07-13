@@ -55,6 +55,6 @@
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 8
 #~ -Fire Navy Trebuchet | +Deep-Cavern Bat | CRAFT (U) ★ MARKED UPGRADE: {1}{B} flying lifelink + Thoughtseize-on-a-body hand disruption — a unique effect the deck lacks
-#~ -Anchovy & Banana Pizza | +The Ruinous Wrecking Crew | CRAFT (R) ~ SIDEGRADE HERE / ★ ACROSS THE ROSTER: flexible {X}{B}{R} modal (loot + drain + edict + token-kill). Redundant with this deck's heavy removal/drain, but a MARKED upgrade for Black Sun (1) and Mad Villainy (10) — one wildcard, three BR aristocrats decks
+#~ -Beetle-Headed Merchants | +The Ruinous Wrecking Crew | CRAFT (R) ~ SIDEGRADE HERE / ★ ACROSS THE ROSTER: flexible {X}{B}{R} modal (loot + drain + edict + token-kill), cutting a redundant {4}{B} sac->draw body. Lateral for this deck's heavy removal/drain, but a MARKED upgrade for Black Sun (1) and Mad Villainy (10) — one wildcard, three BR aristocrats decks
 #~ -Bumbleflower's Sharepot | +Disturbing Mirth | CRAFT (U) ~ SIDEGRADE: more sac->draw 2 card advantage, but you already run sac-to-draw (Sephiroth, Raven Eagle, High-Society Hunter) — skip unless you want more
 #~ note: only Deep-Cavern Bat is a clear marked upgrade for THIS deck. Wrecking Crew earns its wildcard via cross-deck reuse (decks 1, 8, 10).

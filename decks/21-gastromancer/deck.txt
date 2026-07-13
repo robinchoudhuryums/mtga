@@ -1,0 +1,72 @@
+#: name: Gastromancer
+#: format: Standard
+#: colors: WBGR
+#: notes: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats with a LIGHT red splash
+#: notes: for the namesake Ragost, Deft Gastronaut ({R}{W} — makes all your artifacts
+#: notes: Food, then sacs Food to drain 3 each). Food generators feed a deep sac-payoff
+#: notes: web: G'raha Tia draws off any artifact/creature death, Pizza Face makes
+#: notes: counters, Cauldron of Essence drains + reanimates, Ice Cream Kitty draws.
+#: notes: ~4 red-capable sources (Bloodfell Caves x2, Wind-Scarred Crag, Capital City)
+#: notes: enable Ragost without derailing the WBG core. See variant 21a for the
+#: notes: 4-color big-artifact-goodstuff version. (A pure-WBG build that cuts Ragost
+#: notes: is just -Ragost +Vayne's Treachery and reverting 3 lands — no separate list.)
+
+# Nonland — sac payoffs / aristocrats
+1 Pizza Face, Gastromancer (TMT) 163
+1 Ragost, Deft Gastronaut (EOE) 224
+1 G'raha Tia (FIN) 21
+1 Cauldron of Essence (SOS) 179
+1 Ice Cream Kitty (TMT) 150
+1 Hei Bai, Spirit of Balance (TLA) 225
+1 Beetle-Headed Merchants (TLA) 86
+1 Vito's Inquisitor (LCI) 130
+1 Luxknight Breacher (EOE) 26
+1 Bullseye, Death Dealer (MSH) 209
+
+# Nonland — Food generators / enablers
+1 Cat Collector (FDN) 4
+1 Eager Trufflesnout (FDN) 102
+1 Leaves from the Vine (TLA) 185
+1 Party Dude (TMT) 128
+1 Guac & Marshmallow Pizza (TMT) 116
+1 Gingerbrute (ELD) 219
+1 Bumbleflower's Sharepot (BLB) 244
+1 Heroic Feast (MSH) 172
+1 Ant-Man's Army (MSH) 161
+1 Omni-Cheese Pizza (TMT) 176
+1 Lita, Little Orphan Amphibian (TMT) 19
+
+# Nonland — removal
+1 Anchovy & Banana Pizza (TMT) 57
+1 Bake into a Pie (FDN) 169
+1 Feed the Cauldron (WOE) 91
+1 Deadly Precision (TLA) 95
+1 Stomped by the Foot (TMT) 82
+1 Requisition Raid (SOA) 10
+1 Mutant Chain Reaction (TMT) 125
+1 She-Hulk, Jade Defender (MSH) 188
+
+# Nonland — value / light artifact package
+1 Sidequest: Hunt the Mark (FIN) 119
+1 White Widow, Free Agent (MSH) 42
+1 White Auracite (FIN) 41
+1 Welcome to Sweettooth (WOE) 198
+1 Momo, Playful Pet (TLA) 30
+1 Sweettooth Witch (WOE) 111
+1 M.O.D.O.K. (MSH) 106
+
+# Lands
+4 Jungle Hollow (M21) 247
+1 Scoured Barrens (M21) 250
+1 Insomnia, Crown City (FIN) 282
+1 Blossoming Sands (M21) 244
+1 Hushwood Verge (DSK) 261
+1 Gathering Place (MSH) 266
+1 Opulent Palace (TDM) 264
+1 Castle Doom (MSH) 263
+1 Capital City (FIN) 274
+2 Bloodfell Caves (TDM) 250
+1 Wind-Scarred Crag (FDN) 271
+3 Forest (MSH) 296
+3 Swamp (MSH) 292
+3 Plains (MSH) 288

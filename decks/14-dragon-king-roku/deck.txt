@@ -21,19 +21,20 @@
 1 Corroding Dragonstorm (TDM) 75
 1 Sarkhan, Dragon Ascendant (TDM) 118
 1 Nova Hellkite (EOE) 148
-2 Dragonstorm Globe (TDM) 241
+1 Dragonstorm Globe (TDM) 241
+1 Summon: Bahamut (FIN) 1
 1 Redirect Lightning (TLA) 151
 1 Lightning Strike (TLA) 146
 1 How to Start a Riot (TLA) 140
-1 War Balloon (TLA) 159
+1 Spinerock Tyrant (ECL) 159
 1 Combustion Man (TLA) 127
 1 Professor Zei, Anthropologist (TLA) 238
 1 Uncle Iroh (TLA) 248
 1 Wandering Musicians (TLA) 250
 1 Zuko's Conviction (TLA) 123
 1 Day of Black Sun (TLA) 94
+1 War Balloon (TLA) 159
 1 Long Feng, Grand Secretariat (TLA) 233
-1 Mardu Devotee (TDM) 16
 1 Stormshriek Feral (TDM) 124
 1 Red Hulk (MSH) 149
 1 Photon Blast Barrage (MSH) 147
@@ -45,5 +46,9 @@
 2 Boiling Rock Prison (TLA) 267
 1 Dark Fortress (MSH) 264
 5 Swamp (MSH) 292
-7 Mountain (MSH) 294
-4 Plains (MSH) 288
+9 Mountain (MSH) 294
+2 Plains (MSH) 288
+
+# Flex — suggested swaps. See: deck.py flex 14
+#~ -Summon: Bahamut | +Charging Strifeknight | OWNED (U) SAFE ALT: if the {9} Bahamut bricks in slow hands, swap to a {2}{R} haste body with a repeatable {T},discard:draw loot engine — low-curve, shores up card flow (deck's thin dimension). Bahamut is the higher-ceiling firebending mana-sink finisher (removal + draw + Dragon); Strifeknight is the low-variance consistency pick.
+#~ note: CRAFT — Realm-Scorcher Hellkite (M) ★: {4}{R}{R} Dragon, flying haste + bargain->4 mana any color + {1}{R} ping -- a Dragon bomb/finisher that also fuels the Dragon payoffs. Queen Brahne (U) ~: prowess + a pinging Wizard-token engine, good with the firebending instant-slinging plan.

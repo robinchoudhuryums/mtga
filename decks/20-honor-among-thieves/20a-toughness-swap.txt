@@ -1,0 +1,67 @@
+#: name: Honor Among Thieves — Toughness Swap
+#: format: Standard
+#: colors: WB
+#: based-on: deck.txt
+#: notes: The P/T-swap novelty variant. Built around The Kingpin of Crime's attack
+#: notes: trigger (pay 2 life: creatures with toughness > power deal combat damage
+#: notes: equal to their TOUGHNESS). Fills the deck with high-toughness/low-power
+#: notes: bodies (deathtouch + evasion preferred) that block well early and swing as
+#: notes: beaters once Kingpin is online. Aettir and Priwen (X/X = life) is an
+#: notes: independent finisher; the lifegain shell pays Kingpin's 2-life attack tax.
+#: notes: FRAGILITY: Kingpin is the ONLY toughness->damage payoff owned — the gimmick
+#: notes: leans on drawing him. Koh (ability-steal) is the flavor centerpiece.
+
+# Nonland — centerpiece & tools
+1 The Kingpin of Crime (MSH) 220
+1 Koh, the Face Stealer (TLA) 107
+1 Aettir and Priwen (FIN) 253
+
+# Nonland — high-toughness beaters (deathtouch / evasion / vigilance)
+1 Vampire Nighthawk (FDN) 186
+1 Venom, Evil Unleashed (SPM) 71
+1 Ancestor Dragon (FDN) 489
+1 The Masters of Evil (MSH) 105
+1 East Wind Avatar (TMT) 5
+1 Crypt Feaster (FDN) 59
+1 Dazzling Angel (FDN) 9
+1 Moonstone, Harsh Mistress (MSH) 107
+1 Cosmogrand Zenith (EOE) 9
+1 Brightspear Zealot (EOE) 8
+1 Stagecoach Security (OTJ) 30
+1 Dawnstrike Vanguard (EOE) 10
+1 Appa, Steadfast Guardian (TLA) 10
+1 Inkshape Demonstrator (SOS) 21
+1 Sun-Dappled Celebrant (ECL) 37
+1 Raven Eagle (TLA) 116
+1 Syr Vondam, the Lucent (EOE) 232
+1 Cloak and Dagger, Entwined (MSH) 211
+
+# Nonland — lifegain shell (pays the attack tax + fuels Aettir/Extort)
+1 Bloodthirsty Conqueror (FDN) 58
+1 Ajani's Pridemate (FDN) 135
+1 Elenda, Saint of Dusk (FDN) 119
+1 Lunar Convocation (BLB) 223
+1 Hinterland Sanctifier (FDN) 730
+1 Sanguine Syphoner (FDN) 68
+
+# Nonland — toughness pumps / deathtouch grants
+1 Battle Menu (FIN) 9
+1 Scarblade's Malice (ECL) 119
+1 Dauntless Veteran (FDN) 8
+1 Pain 101 (TMT) 69
+
+# Nonland — removal / drain
+1 Sephiroth's Intervention (FIN) 116
+1 Venom's Hunger (SPM) 73
+1 Anchovy & Banana Pizza (TMT) 57
+1 Tribute to Hunger (FDN) 614
+1 Social Snub (SOS) 228
+
+# Lands
+4 Scoured Barrens (FDN) 266
+1 Insomnia, Crown City (FIN) 282
+1 Temple of Silence (FDN) 704
+1 Abandoned Air Temple (TLA) 263
+1 Realm of Koh (TLA) 276
+8 Plains (MSH) 288
+8 Swamp (MSH) 292

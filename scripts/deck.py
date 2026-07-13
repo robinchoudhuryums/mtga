@@ -879,6 +879,27 @@ def load_card_meta():
     return meta
 
 
+def _deck_fingerprints(meta):
+    """[(id, colors:set, themes:set), ...] for every deck — used to score a craft
+    target's cross-deck reuse (a card that fits several of your decks is worth more
+    per wildcard). Colors are the deck's declared `#: colors:` (else the union of
+    its cards' identities); themes are the synergy tags its cards carry."""
+    fps = []
+    for dd in discover_decks():
+        dm, cards = parse_deck_file(dd["path"])
+        colors, ident, themes = _declared_colors(dm), set(), set()
+        for q, n, s, c in cards:
+            if n.lower() in BASICS:
+                continue
+            m = meta.get(n.lower())
+            if not m:
+                continue
+            ident |= m["colors"]
+            themes |= set(m["synergies"])
+        fps.append((dd["id"], colors or ident, themes))
+    return fps
+
+
 def cmd_suggest(args):
     """Recommend pool cards that fit a deck's color identity and synergy themes.
 
@@ -987,21 +1008,33 @@ def cmd_suggest(args):
     if not top:
         print("\nNo pool cards matched this deck's colors + themes.")
         return 0
-    print(f"\n{'Have':>5}  {'Card':30}  {'Rarity':8}  Matches (deck themes)")
-    print("-" * 78)
+    fps = _deck_fingerprints(meta)
+    print(f"\n{'Have':>5}  {'Card':28}  {'Rarity':8}  {'Decks':>5}  Matches (deck themes)")
+    print("-" * 82)
     craftby = {}
+    hi_reuse = []
     for score, name, r, shared in top:
         h = owned_of(name.lower())
         have = f"×{h}" if h > 0 else "craft"
         rar = (r.get("Rarity") or "").strip()
         if h == 0:
             craftby[rar] = craftby.get(rar, 0) + 1
-        print(f"{have:>5}  {name[:30]:30}  {rar[:8]:8}  {', '.join(shared[:5])}")
+        card_cols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+        card_themes = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
+        fits = sum(1 for _id, dc, dt in fps if card_cols <= dc and (card_themes & dt))
+        if h == 0 and fits >= 3:
+            hi_reuse.append((name, fits))
+        print(f"{have:>5}  {name[:28]:28}  {rar[:8]:8}  {fits:>5}  {', '.join(shared[:5])}")
     ncraft = sum(craftby.values())
-    print("-" * 78)
+    print("-" * 82)
     print(f"{len(top)} suggestion(s) — {len(top) - ncraft} owned, {ncraft} to craft"
           + (f" ({', '.join(f'{n} {r}' for r, n in sorted(craftby.items()))})"
              if ncraft else ""))
+    print("Decks = how many of your decks the card is castable + on-theme in "
+          "(higher = more value per wildcard).")
+    if hi_reuse:
+        print("High cross-deck reuse: "
+              + ", ".join(f"{n} ({k})" for n, k in sorted(hi_reuse, key=lambda x: -x[1])[:6]))
     return 0
 
 
@@ -1319,7 +1352,8 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
     before_s = _deck_summary(cards, carddata, mana)
     after_s = _deck_summary(after, carddata, mana)
 
-    cut_t = (carddata.get(cut.lower()) or {}).get("type", "") or "?"
+    cut_cd = carddata.get(cut.lower()) or {}
+    cut_t = cut_cd.get("type", "") or "?"
     add_cd = carddata.get(add.lower())
     add_t = (add_cd or {}).get("type", "") or "?"
     _, _, qty_by = load_collection()
@@ -1327,11 +1361,20 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
     rar = load_rarities().get(add.lower(), "")
     add_mv = (mana.get(add.lower()) or (None, None))[1]
 
+    # Print the FULL oracle text of both cards. Grading a swap from a type line
+    # (or a truncated read) hides later abilities — the whole card must be in view.
+    def _oracle(cd):
+        return [ln for ln in (cd.get("text", "") or "").splitlines() if ln.strip()]
+
     print(f"Deck {d['id']}: {d['name'] or d['id']} — swap preview\n")
     print(f"  − {cut}   [{cut_t}]")
+    for ln in _oracle(cut_cd):
+        print(f"        {ln}")
     tail = " ".join(x for x in [rar, (f"×{have}" if have > 0 else "craft"),
                                 (f"MV {add_mv}" if add_mv is not None else "")] if x)
     print(f"  + {add}   [{add_t}]" + (f"   ({tail})" if tail else ""))
+    for ln in _oracle(add_cd or {}):
+        print(f"        {ln}")
     if not add_cd:
         print(f"  ⚠ '{add}' not found in library or pool — check spelling; "
               "it will be added as a bare line.")

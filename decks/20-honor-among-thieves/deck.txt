@@ -1,0 +1,51 @@
+#: name: Honor Among Thieves
+#: format: Standard
+#: colors: WB
+#: notes: Orzhov (W/B) lifegain-drain aggro-midrange seeded by The Kingpin of Crime (Extort). An evasive Ninja package (Sneak) connects for combat damage to fuel the life-swing engine; the two R/W-hybrid Ninjas are cast off white. P/T-swap novelty lives in the 20a variant.
+
+# Nonland
+1 The Kingpin of Crime (MSH) 220
+1 Hinterland Sanctifier (FDN) 730
+1 Ajani's Pridemate (FDN) 135
+1 Wanderbrine Preacher (ECL) 41
+1 Leonardo, Cutting Edge (TMT) 15
+1 Fiendish Panda (FDN) 120
+1 Bloodthirsty Conqueror (FDN) 58
+1 Sanguine Syphoner (FDN) 68
+1 Vengeful Bloodwitch (FDN) 76
+1 Vampire Nighthawk (FDN) 186
+1 Mai, Scornful Striker (TLA) 109
+1 Melancholic Poet (SOS) 90
+1 Syr Vondam, the Lucent (EOE) 232
+1 Cloak and Dagger, Entwined (MSH) 211
+1 Elenda, Saint of Dusk (FDN) 119
+1 Lunar Convocation (BLB) 223
+1 Lita, Little Orphan Amphibian (TMT) 19
+1 Dark Leo & Shredder (TMT) 142
+1 Splinter, Hamato Yoshi (TMT) 79
+1 Shredder, Unrelenting (TMT) 74
+1 Leonardo, Sewer Samurai (TMT) 17
+1 Super Shredder (TMT) 83
+1 Foot Elite (TMT) 146
+1 Foot Ninjas (TMT) 147
+1 The Last Ronin's Technique (TMT) 12
+1 Raph & Leo, Sibling Rivals (TMT) 166
+1 Mechanized Ninja Cavalry (TMT) 156
+1 Quintessential Katana (TMT) 23
+1 Aettir and Priwen (FIN) 253
+1 Sephiroth, Fabled SOLDIER (FIN) 115
+1 Sephiroth's Intervention (FIN) 116
+1 Venom's Hunger (SPM) 73
+1 Tribute to Hunger (FDN) 614
+1 Anchovy & Banana Pizza (TMT) 57
+1 Social Snub (SOS) 228
+1 Dissection Practice (SOS) 79
+
+# Lands
+4 Scoured Barrens (FDN) 266
+1 Insomnia, Crown City (FIN) 282
+1 Temple of Silence (FDN) 704
+1 Abandoned Air Temple (TLA) 263
+1 Realm of Koh (TLA) 276
+7 Plains (MSH) 288
+9 Swamp (MSH) 292

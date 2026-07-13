@@ -1,0 +1,80 @@
+#: name: Honor Among Thieves — Abzan Toughness Ramp
+#: format: Standard
+#: colors: WBG
+#: based-on: deck.txt
+#: notes: The 3-color (Abzan) toughness-swap ramp variant, built to actually CAST
+#: notes: Ancient Adamantoise (8/20 -> 20-damage swing with a swap payoff). Green
+#: notes: fixes the WB build's biggest weakness: TWO payoffs instead of one —
+#: notes: Kingpin (pay 2 life, toughness>power deals toughness) AND Tapestry Warden
+#: notes: (static Doran: same effect on your whole board, no life cost). Green ramp
+#: notes: (Llanowar Elves, Druid of the Cowl, Great Forest Druid + Noxious Newt as
+#: notes: toughness dorks, land ramp) powers out the fatties; Loot can cheat
+#: notes: Adamantoise into play. Slower ramp-midrange, not aggro. Aettir and Priwen
+#: notes: (X/X = life) is a backup finisher.
+
+# Nonland — payoffs & flavor
+1 The Kingpin of Crime (MSH) 220
+1 Tapestry Warden (EOE) 209
+1 Aettir and Priwen (FIN) 253
+1 Koh, the Face Stealer (TLA) 107
+
+# Nonland — ramp (dorks double as high-toughness bodies)
+1 Llanowar Elves (M19) 314
+1 Druid of the Cowl (M19) 177
+1 Great Forest Druid (ECL) 178
+1 Noxious Newt (SOS) 155
+1 Doc Samson, Super Psychiatrist (MSH) 164
+1 Loot, Exuberant Explorer (FDN) 106
+1 Glacier Godmaw (EOE) 188
+1 Restorative Technique (MSH) 183
+1 Kyoshi Island Plaza (TLA) 184
+1 Cycle of Renewal (TLA) 170
+
+# Nonland — high-toughness beaters (the payoff targets)
+1 Ancient Adamantoise (FIN) 172
+1 Treetop Snarespinner (FDN) 114
+1 Tenured Concocter (SOS) 163
+1 Hungry Graffalon (SOS) 151
+1 Venom, Evil Unleashed (SPM) 71
+1 Ancestor Dragon (FDN) 489
+1 The Masters of Evil (MSH) 105
+1 Vampire Nighthawk (FDN) 186
+1 Crypt Feaster (FDN) 59
+1 East Wind Avatar (TMT) 5
+1 Dawnstrike Vanguard (EOE) 10
+1 Sun-Dappled Celebrant (ECL) 37
+1 Syr Vondam, the Lucent (EOE) 232
+1 Cloak and Dagger, Entwined (MSH) 211
+1 Inkshape Demonstrator (SOS) 21
+
+# Nonland — lifegain / drain / removal
+1 Bloodthirsty Conqueror (FDN) 58
+1 Ajani's Pridemate (FDN) 135
+1 Lunar Convocation (BLB) 223
+1 Sephiroth's Intervention (FIN) 116
+1 Venom's Hunger (SPM) 73
+1 Anchovy & Banana Pizza (TMT) 57
+1 Tribute to Hunger (FDN) 614
+
+# Lands
+4 Jungle Hollow (M21) 247
+1 Blossoming Sands (M21) 244
+1 Hushwood Verge (DSK) 261
+1 Gathering Place (MSH) 266
+1 Opulent Palace (TDM) 264
+1 Scoured Barrens (M21) 250
+1 Temple of Silence (FDN) 704
+1 Insomnia, Crown City (FIN) 282
+1 Capital City (FIN) 274
+1 Captivating Cave (LCI) 268
+1 Starting Town (FIN) 289
+5 Forest (MSH) 296
+2 Plains (MSH) 288
+3 Swamp (MSH) 292
+
+# Flex — STANDARD-LEGAL craft targets (all WBG — 20b ONLY; uncastable in 20/20a). See: deck.py flex 20b
+#~ -Hungry Graffalon | +Betor, Kin to All | CRAFT (M) ★ MARKED UPGRADE: {2}{W}{B}{G} 5/7 flyer that is a toughness-matters ENGINE (total toughness >=10 draw / >=20 untap all / >=40 drain) AND a swap-target itself (7>5, attacks for 7) AND card advantage. Best craft for this deck
+#~ -Sun-Dappled Celebrant | +Doran, Besieged by Time | CRAFT (R) ★ MARKED UPGRADE: {1}{W}{B}{G} 0/5 — a THIRD swap payoff. Toughness>power creature spells cost {1} less, and every creature gets +X/+X on attack/block (X = toughness-power gap), turning a 1/4 into a 4/7. Cost-reducer + payoff + body
+#~ -Inkshape Demonstrator | +Abzan Monument | CRAFT (U) ~ SIDEGRADE: {2} artifact — early fixing (fetch a basic), later sacs for {1}{W}{B}{G} into an X/X where X = your greatest toughness (a 20/20 off Adamantoise). Nice fixing-into-payoff, but the sac needs WBG open + a big body already down
+#~ note: priority Betor > Doran > Abzan Monument. SKIP Lumra, Bellow of the Woods — its power EQUALS its toughness, so it never triggers a swap payoff (they need toughness strictly greater).
+#~ note: CRAFT — Bedrock Tortoise (R) ★: a Doran-style THIRD static toughness payoff ({3}{G}: creatures deal combat damage equal to toughness) AND grants your creatures hexproof on your turn (board protection). Alongside Tapestry Warden + Kingpin, turns the toughness plan into a real engine. Cut a vanilla beater (Tenured Concocter / Hungry Graffalon) when crafted.

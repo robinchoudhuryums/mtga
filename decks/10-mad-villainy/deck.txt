@@ -24,7 +24,7 @@
 1 Ronin, Shadow Stalker (MSH) 112
 1 Stolen Stark Tech (MSH) 114
 1 Diamond Pick-Axe (LCI) 143
-1 Glimmerlight (DSK) 249
+1 Madame Masque (MSH) 104
 2 Goldvein Pick (FDN) 253
 1 Deadly Precision (TLA) 95
 1 Stomped by the Foot (TMT) 82
@@ -36,10 +36,17 @@
 1 Kavaron Skywarden (EOE) 140
 1 Raging Goblinoids (SPM) 85
 1 Orbital Plunge (EOE) 149
-1 Kav Landseeker (EOE) 138
+1 Crossbones, Malicious Mercenary (MSH) 91
 
 # Lands
 1 Castle Doom (MSH) 263
 1 Fire Nation Palace (TLA) 268
-11 Swamp (MSH) 292
+1 Boiling Rock Prison (TLA) 267
+10 Swamp (MSH) 292
 11 Mountain (MSH) 294
+
+# Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 10
+#~ -Kavaron Skywarden | +The Ruinous Wrecking Crew | CRAFT (R) ★ MARKED UPGRADE / ★ ACROSS THE ROSTER: a Villain that enters with X counters and does up to X of {loot / drain 2 / kill a token / edict} — card advantage + removal + reach on one on-tribe body. Same wildcard also upgrades Black Sun (1) and Sacrifices (8): one craft, three BR decks
+#~ -Oreplate Pangolin | +Mechanical Mobster | CRAFT (C) ~ SIDEGRADE: a Villain AND Robot (double-tribal, feeds Ultron/Castle Doom) with ETB grave-exile + connive card selection — cheap and on-theme, but connive overlaps Madame Masque/Red Room Recruit; craft only if you want more selection
+#~ note: owned adds already done — Madame Masque (card advantage + Villain-token engine) and Crossbones (Villain payoff) closed the card-advantage hole for 0 wildcards. Wrecking Crew earns its wildcard mainly on cross-deck reuse (decks 1, 8, 10).
+#~ note: CRAFT — Deep-Cavern Bat (U) ★: {1}{B} flying lifelink + a Thoughtseize-on-a-body (exile a nonland card from their hand while it lives). Premium cheap disruption + evasion for this BR aggro-midrange; best value-per-wildcard of the black craft targets.

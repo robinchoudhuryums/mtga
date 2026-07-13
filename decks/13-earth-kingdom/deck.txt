@@ -1,11 +1,13 @@
 #: name: Earth Kingdom
 #: format: Standard
-#: colors: GR
-#: notes: Green-red Avatar Earth Kingdom deck (green-primary), light W/B/U splashes via a wide land base.
+#: colors: GWBR
+#: notes: Green-base Avatar Earth Kingdom / Earthbend ramp deck (green-primary), light
+#: notes: W/B/R splashes enabled by a wide rainbow-fixing land base (8 any-color lands +
+#: notes: green ramp fetching basics). Header lists the real castable colors, not just GR.
 
 # Nonland
 1 Earthbender Ascension (TLA) 175
-1 Rebellious Captives (TLA) 191
+1 Kapow! (SPM) 103
 1 Rockalanche (TLA) 192
 1 Toph, the Blind Bandit (TLA) 198
 2 Earth Kingdom General (TLA) 173
@@ -38,7 +40,7 @@
 1 Elemental Teachings (TLA) 178
 1 Spider-Man, Brooklyn Visionary (SPM) 115
 1 Ka-Zar of the Savage Land (MSH) 174
-1 Absorbing Man (MSH) 199
+1 Bite Down (FDN) 212
 
 # Lands
 2 Ba Sing Se (TLA) 266
@@ -55,6 +57,8 @@
 2 Rumble Arena (TLA) 277
 2 Surveillance Room (MSH) 274
 1 Swamp (MSH) 292
-1 Island (MSH) 290
 1 Plains (MSH) 288
-4 Forest (MSH) 296
+5 Forest (MSH) 296
+
+# Flex — craft-target notes. See: deck.py flex 13
+#~ note: CRAFT — Lumra, Bellow of the Woods (M) ★: {4}{G}{G} P/T = lands, mills 4 + RETURNS ALL your lands from graveyard -- a ramp/lands finisher that snowballs the earthbend/landfall plan. (NOT a toughness card; power = toughness.) Bioengineered Future (R) ★: creatures enter with +1 counter per land that entered -- a landfall->counters payoff, ideal here. Sharp-Eyed Rookie (R) ~: vigilance body that grows a counter + investigates when a bigger creature enters (card advantage). Cut a weak earthbend body when crafting.

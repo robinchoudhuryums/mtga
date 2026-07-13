@@ -5,7 +5,7 @@
 
 # Nonland
 1 Kid Loki (MSH) 63
-1 Pym Particles (MSH) 70
+1 Heartless Act (TLA) 103
 2 Super Intelligence (MSH) 77
 1 Futurist Forge (MSH) 55
 1 Loki, God of Mischief (MSH) 65
@@ -15,7 +15,7 @@
 1 I Am Iron Man (MSH) 58
 1 Ms. Marvel, Kamala Khan (MSH) 67
 1 Namor the Sub-Mariner (MSH) 69
-1 Rewrite History (MSH) 71
+1 Long Goodbye (MKM) 92
 1 Attuma, Atlantean Warlord (MSH) 47
 1 Leader, Super-Genius (MSH) 64
 1 Mister Fantastic, Reed Richards (MSH) 66
@@ -47,3 +47,8 @@
 2 Dismal Backwater (FDN) 261
 6 Swamp (MSH) 292
 11 Island (MSH) 290
+
+# Flex — suggested swaps (all OWNED, 0 wildcards — single-black to respect the splash). See: deck.py flex 12
+#~ -Futurist Forge | +Bitter Triumph | OWNED (R) ~ 3RD ANSWER: {1}{B} destroy target creature or planeswalker — a third flexible removal spell if you want to lean control. Cost: a little draw-engine depth (Futurist Forge). Take it vs midrange/planeswalker metas
+#~ -Futurist Forge | +Disdainful Stroke | OWNED (U) ~ COUNTER ALT: {1}{U} counter a spell MV>=4 — swap this in instead of the 3rd removal if your meta is full of bombs/board wipes (you already run Amazing Acrobatics as a soft counter)
+#~ note: applied — Long Goodbye (uncounterable removal, hits planeswalkers) over Rewrite History, and Heartless Act (cheap hard removal) over Pym Particles. The deck's real gap was HARD removal, not interaction volume (Amazing Acrobatics / Wanderwine Farewell / Trickster's Stratagem are soft answers it already runs). Craft nothing — every answer is in your collection.

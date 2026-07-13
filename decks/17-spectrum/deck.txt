@@ -49,3 +49,6 @@
 4 Island (MSH) 289
 4 Swamp (MSH) 291
 3 Mountain (MSH) 293
+
+# Flex — cross-deck craft notes. See: deck.py flex 17
+#~ note: CROSS-DECK CRAFT — Betor, Kin to All (WBG M) is a strong good-stuff pickup here: a 5/7 flyer that draws off total toughness >=10 and untaps your board at >=20. Abzan Monument (WBG U) is cheap 5c fixing + a token mana-sink. Both share one wildcard across decks 20b, 6, and 17 (best value-per-wildcard of the WBG craft targets; see cross-deck analysis).

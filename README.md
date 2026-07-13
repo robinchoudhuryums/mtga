@@ -154,7 +154,7 @@ python3 scripts/deck.py mana 1a       # hybrid-aware color requirements + castab
 python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
 python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
 python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~ lines)
-python3 scripts/deck.py swap 1a --cut A --add B   # preview a swap's deltas; --apply writes (.bak)
+python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both cards; --apply writes (.bak)
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
 ```
 
@@ -170,6 +170,13 @@ scour only what you already have (0-wildcard upgrades sitting in your roster),
 to size the list. It composes the same synergy tags and color data the rest of
 the tooling uses, so brew upgrades fall out of what you already own plus what
 you'd craft.
+
+Each pick also carries a **`Decks` column** — a cross-deck reuse count of how many
+of your decks the card is *castable* (its identity ⊆ the deck's colors) **and**
+shares a synergy theme with. It's a rough value-per-wildcard signal (a craft that
+fits several decks outranks a one-deck sidegrade), but a broad any-theme-overlap
+heuristic — read it as breadth, not curated fit. A "High cross-deck reuse" line
+summarizes the top picks.
 
 By default `suggest` also **filters to the deck's `#: format:`** (using the
 `Legalities` column `build_pool.py` writes), so it won't recommend a card you
