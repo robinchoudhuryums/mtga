@@ -1,14 +1,19 @@
 #: name: Gastromancer
 #: format: Standard
-#: colors: WBG
-#: notes: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats. Food generators feed a
-#: notes: deep sac-payoff web (G'raha Tia draws off any artifact/creature death, Pizza
-#: notes: Face makes counters, Cauldron of Essence drains + reanimates, Ice Cream Kitty
-#: notes: draws). The namesake Ragost is CUT here (its {R}{W} cost doesn't fit WBG) — see
-#: notes: variant 21b for a red splash, and 21a for the 4-color big-artifact version.
+#: colors: WBGR
+#: notes: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats with a LIGHT red splash
+#: notes: for the namesake Ragost, Deft Gastronaut ({R}{W} — makes all your artifacts
+#: notes: Food, then sacs Food to drain 3 each). Food generators feed a deep sac-payoff
+#: notes: web: G'raha Tia draws off any artifact/creature death, Pizza Face makes
+#: notes: counters, Cauldron of Essence drains + reanimates, Ice Cream Kitty draws.
+#: notes: ~4 red-capable sources (Bloodfell Caves x2, Wind-Scarred Crag, Capital City)
+#: notes: enable Ragost without derailing the WBG core. See variant 21a for the
+#: notes: 4-color big-artifact-goodstuff version. (A pure-WBG build that cuts Ragost
+#: notes: is just -Ragost +Vayne's Treachery and reverting 3 lands — no separate list.)
 
 # Nonland — sac payoffs / aristocrats
 1 Pizza Face, Gastromancer (TMT) 163
+1 Ragost, Deft Gastronaut (EOE) 224
 1 G'raha Tia (FIN) 21
 1 Cauldron of Essence (SOS) 179
 1 Ice Cream Kitty (TMT) 150
@@ -49,7 +54,6 @@
 1 Ultron, Artificial Malevolence (MSH) 252
 1 Goldvein Pick (FDN) 253
 1 M.O.D.O.K. (MSH) 106
-1 Vayne's Treachery (FIN) 124
 
 # Lands
 4 Jungle Hollow (M21) 247
@@ -61,8 +65,8 @@
 1 Opulent Palace (TDM) 264
 1 Castle Doom (MSH) 263
 1 Capital City (FIN) 274
-1 Realm of Koh (TLA) 276
-1 Abandoned Air Temple (TLA) 263
+2 Bloodfell Caves (TDM) 250
+1 Wind-Scarred Crag (FDN) 271
 3 Forest (MSH) 296
-4 Swamp (MSH) 292
+3 Swamp (MSH) 292
 3 Plains (MSH) 288
