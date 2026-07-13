@@ -33,7 +33,7 @@
 1 Zuko's Conviction (TLA) 123
 1 Day of Black Sun (TLA) 94
 1 War Balloon (TLA) 159
-1 Mardu Devotee (TDM) 16
+1 Long Feng, Grand Secretariat (TLA) 233
 1 Stormshriek Feral (TDM) 124
 1 Red Hulk (MSH) 149
 1 Photon Blast Barrage (MSH) 147
@@ -45,5 +45,5 @@
 2 Boiling Rock Prison (TLA) 267
 1 Dark Fortress (MSH) 264
 5 Swamp (MSH) 292
-7 Mountain (MSH) 294
-4 Plains (MSH) 288
+9 Mountain (MSH) 294
+2 Plains (MSH) 288
