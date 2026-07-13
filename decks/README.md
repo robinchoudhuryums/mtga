@@ -1,7 +1,8 @@
 # Decks
 
 Constructed decks and their variations, checkable against your collection with
-`scripts/deck.py`.
+`scripts/deck.py` — `deck.py check <id>` for ownership, `deck.py legal <id>` for
+construction legality (size, copy limits, format).
 
 ## Structure
 

@@ -156,6 +156,8 @@ python3 scripts/deck.py stats 1a      # curve, colors, types, cost flags, functi
 python3 scripts/deck.py mana 1a       # hybrid-aware color requirements + castability lint
 python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
 python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
+python3 scripts/deck.py legal 1a      # construction lint: deck size, copy limits, format legality
+python3 scripts/deck.py cuts 1a       # rank the deck's weakest-fit cards as cut candidates
 python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~ lines)
 python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both cards; --apply writes (.bak)
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
@@ -176,11 +178,13 @@ you'd craft.
 
 Each pick also carries a **`Decks` column** — a cross-deck reuse count of how many
 of your *other* decks the card is *castable* (its identity ⊆ the deck's colors)
-**and** shares a synergy theme with (the deck being analyzed is excluded, so it
-can't inflate its own picks). It's a rough value-per-wildcard signal (a craft that
-fits several decks outranks a one-deck sidegrade), but a broad any-theme-overlap
-heuristic — read it as breadth, not curated fit. A "High cross-deck reuse" line
-summarizes the top picks.
+**and** shares a **central** theme with (the deck being analyzed is excluded, so it
+can't inflate its own picks). "Central" means a theme carried by at least a quarter
+of that deck's most-common theme's copies — so a card that merely grazes a deck on
+one incidental tag no longer counts, and the number tracks genuine fit rather than
+any single-tag overlap. It's still a rough value-per-wildcard signal (a craft that
+fits several decks outranks a one-deck sidegrade) — read it as breadth, not curated
+fit. A "High cross-deck reuse" line summarizes the top picks.
 
 By default `suggest` also **filters to the deck's `#: format:`** (using the
 `Legalities` column `build_pool.py` writes), so it won't recommend a card you
@@ -211,6 +215,20 @@ ability) is a softer heads-up. `tribes` reads oracle text to surface
 **type-matters payoffs** — e.g. a Saga that rewards Krakens/Leviathans/Merfolk/
 Octopuses/Serpents will list those types and how many of your creatures qualify —
 so cross-type tribal synergies aren't missed.
+
+`legal` is a **deck-construction lint**: it checks deck size against the format
+minimum (60, or 100 for Commander-likes), the copy limit (4 of any nonbasic — or 1
+in singleton formats like Brawl), and every nonbasic card's legality in the deck's
+`#: format:` (using the pool's `Legalities` column; `--format` overrides). Basics
+are exempt; a card absent from the pool is reported as *legality-unverified* rather
+than failed, and the command exits non-zero on a real construction violation — so a
+deck can be checked legal before you paste it into Arena. `cuts` is the counterpart
+to `suggest` (which proposes adds): it ranks the deck's nonland cards **weakest-fit
+first** as cut candidates, scoring each from data the tooling already computes — how
+central its synergy themes are to the deck, whether it fills a functional role, and
+its tribal contribution — and shows those components so you judge. It doesn't know
+your spice/signature cards, so read it as a shortlist, not a verdict; pair it with
+`suggest` and preview the result with `swap`.
 
 Decks live under `decks/` as one folder per core deck, with variations as sibling
 files (`deck.txt` → id `1`, `1a-*.txt` → id `1a`). Basics are treated as

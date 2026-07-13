@@ -51,6 +51,16 @@ docs. This file is the source of truth for the workflow commands in
   is already in the deck it bumps that line rather than adding a second line for
   the same card. `deck.py apply-flex <id> <n>` promotes a `#~` flex line into the
   60. Both default to a dry run.
+- **Legality lint and cut candidates are separate from ownership.** `deck.py check`
+  answers "do I own this deck"; `deck.py legal <id>` answers "is it a *legal* deck"
+  — size vs the format minimum, the copy limit (4, or 1 in singleton formats), and
+  each nonbasic's legality in the deck's `#: format:` (from the pool's `Legalities`
+  column; `--format` overrides). It exits non-zero on a real violation but treats a
+  pool-absent card as *unverified*, not illegal (so WIP/older-print decks aren't
+  false-flagged). `deck.py cuts <id>` is the counterpart to `suggest` (adds): it
+  ranks nonland cards weakest-fit first (central-theme fit + functional role +
+  tribal contribution), but it's a heuristic shortlist that can't see spice/
+  signature cards — grade its picks, then preview with `swap`.
 - **"Not in library" for a card you own is the deck-dump undercount symptom.**
   `import_arena.py` takes a lower bound per line, so a card can end up
   *undercounted or entirely absent* from `card-library.csv` — then `deck.py
@@ -102,12 +112,15 @@ docs. This file is the source of truth for the workflow commands in
 - **`deck.py suggest` shows a cross-deck reuse count (`Decks` column).** For each
   pick it counts how many of your OTHER decks (the deck being analyzed is excluded,
   so it can't inflate its own picks) the card is *castable* (its identity ⊆ the
-  deck's declared/derived colors) **and** shares ≥1 synergy theme with — a rough
+  deck's declared/derived colors) **and** shares ≥1 *central* theme with (a theme
+  carried by ≥25% of that deck's most-common theme's copies, floor 2) — a rough
   "value per wildcard" signal, so a craft that fits several decks outranks a
-  one-deck sidegrade. It's a broad any-theme-overlap heuristic (a generic
-  sac/tokens card scores high because it touches many decks), so read it as
-  breadth, not curated fit. A "High cross-deck reuse" line summarizes the top
-  fits≥3. Factor it into a craft's ★/~/· weight in a flex block.
+  one-deck sidegrade. It weights by theme centrality rather than any single-tag
+  overlap, so a card that only grazes a deck on one incidental tag no longer
+  counts — but it's still broad (a generic sac/tokens card that's genuinely
+  central to many decks scores high), so read it as breadth, not curated fit. A
+  "High cross-deck reuse" line summarizes the top fits≥3. Factor it into a craft's
+  ★/~/· weight in a flex block.
 - **Flex-block craftables are format-scoped.** When a deck's `#: format:` changes,
   re-check its `#~` craft suggestions — a craftable legal under the old format may
   have rotated (hit moving decks 1/2 Historic→Standard). `deck.py flex <id>` plus
@@ -164,7 +177,7 @@ docs. This file is the source of truth for the workflow commands in
 
 **Regression Scenarios** (manual walks; the Test Command above is the primary gate):
 1. Ingest a batch — `import_arena.py <file>` → `enrich.py` → `validate.py` → `build_gallery.py`. Expect: validate clean, gallery card count == library row count.
-2. Analyze a deck — `deck.py check|mana|tribes|stats <id>`. Expect: no traceback; mana is hybrid-aware; tribes surfaces type-matters payoffs.
+2. Analyze a deck — `deck.py check|mana|tribes|stats|legal|cuts <id>`. Expect: no traceback; mana is hybrid-aware; tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts ranks weakest-fit cards.
 3. Refresh derived data — `build_mana.py` → `tag_synergies.py --force` → `build_pool.py` → `build_gallery.py` → `check_all.py`. Expect: check_all reports all invariants hold.
 4. Edit via the app — start `scripts/app.py`, change a quantity and Save, add a card, then open a deck (Decks →), change a card's quantity and Save; run `check_all.py`. Expect: CSV + deck file updated, `.bak`s written, and all invariants hold (INV-02 since add appends a card-mana.csv row; INV-04 since deck save re-parses cleanly).
 
