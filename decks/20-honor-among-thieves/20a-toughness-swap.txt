@@ -65,3 +65,6 @@
 1 Realm of Koh (TLA) 276
 8 Plains (MSH) 288
 8 Swamp (MSH) 292
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 20a
+#~ -Pain 101 | +Beza, the Bounding Spring | SIDEGRADE (owned): flexible W catch-up value (Treasure/life/Fish/draw when behind) — fits the lifegain/from-behind plan.

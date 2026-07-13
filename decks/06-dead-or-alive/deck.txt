@@ -38,7 +38,7 @@
 1 Cauldron of Essence (SOS) 179
 1 Killmonger, Scourge of Wakanda (MSH) 218
 1 Spider-Man Noir (SPM) 67
-1 Titania, Rugged Rumbler (MSH) 235
+1 Judge Magister Gabranth (FIN) 230
 
 # Lands
 1 Eden, Seat of the Sanctum (FIN) 277
@@ -61,3 +61,5 @@
 #~ note: all three are CRAFT targets (not owned) and Standard-legal. But the 6 owned duals above are the real fix — craft nothing until the manabase is in. Priority: Nullpriest of Oblivion.
 #~ note: CROSS-DECK CRAFT — Betor, Kin to All (WBG M) is castable here too: a 5/7 flyer that draws off total toughness >=10 (a self-sufficient value engine, not just a 20b payoff). Abzan Monument (WBG U) is cheap fixing + a token mana-sink. Both share a single wildcard with deck 20b (and 17). See: cross-deck analysis.
 #~ note: CRAFT — Restless Cottage (R) ~: a Golgari creature-LAND ({2}{B}{G}: 4/4, still a land; attack -> Food + exile a graveyard card). Near-zero-opportunity-cost threat + graveyard hate that slots into the BG manabase; also fits Sacrifices (8) and Gastromancer (21). Overlord of the Balemurk / Nullpriest (see priority note above) are the bigger reanimator gains.
+
+#~ +Ygra, Eater of All | SIDEGRADE (owned): Food/aristocrats bomb (BG in this deck's colors), but this build is reanimator, not Food-focused — ~ here; it's a marked upgrade in 21 / 21a / 8.

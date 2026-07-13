@@ -50,3 +50,5 @@
 #~ -Wisecrack | +Queen Brahne | CRAFT (U): prowess + makes a Wizard token every attack — spellslinger go-wide that also fuels Firebrand/Ty Lee
 #~ -Zealous Lorecaster | +Realm-Scorcher Hellkite | CRAFT (M): Bargain dragon finisher — flying haste + a big ETB burn
 #~ note: all three are CRAFT targets (not owned) and Standard-legal. Priority: Charming Scoundrel. AVOID Ash Zealot — it punishes ALL graveyard casting, hitting your own Mayhem/flashback.
+
+#~ -Photon Blast Barrage | +Conduct Electricity | SIDEGRADE (owned): kills bigger (6 dmg) but 5 mana is slow vs the go-wide Photon Blast — lateral; take only if you want to kill fatter creatures.

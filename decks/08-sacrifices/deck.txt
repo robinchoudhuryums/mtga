@@ -34,12 +34,12 @@
 1 Too Evil to Stay Dead (MSH) 118
 1 Robot Domination (MSH) 111
 1 Foggy Swamp Visions (TLA) 102
-1 Cat-Gator (TLA) 91
+1 Ygra, Eater of All (BLB) 241
 1 Bloodthirsty Conqueror (FDN) 58
 1 Morlun, Devourer of Spiders (SPM) 59
 1 Goldvein Pick (FDN) 253
 1 Long Feng, Grand Secretariat (TLA) 233
-1 Rabid Attack (SOS) 96
+1 Season of Loss (BLB) 112
 1 Forum Necroscribe (SOS) 84
 
 # Lands

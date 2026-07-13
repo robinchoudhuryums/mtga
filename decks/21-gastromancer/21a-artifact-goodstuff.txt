@@ -29,8 +29,8 @@
 1 Ultron Drone (MSH) 253
 1 Krang, Utrom Warlord (TMT) 175
 1 The Vision (MSH) 255
-1 Cosmic Cube (MSH) 245
-1 Chronicle of Victory (ECL) 253
+1 Ygra, Eater of All (BLB) 241
+1 Judge Magister Gabranth (FIN) 230
 1 Pinnacle Kill-Ship (EOE) 244
 1 Technodrome (TMT) 179
 1 Sweettooth Witch (WOE) 111
@@ -40,7 +40,7 @@
 
 # Nonland — fixing / ramp artifacts
 1 Arc Reactor (MSH) 243
-1 Heraldic Banner (FDN) 254
+1 Season of Loss (BLB) 112
 1 Barrels of Blasting Jelly (TLA) 254
 1 Goldvein Pick (FDN) 253
 
