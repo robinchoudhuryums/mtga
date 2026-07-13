@@ -57,6 +57,5 @@
 2 Rumble Arena (TLA) 277
 2 Surveillance Room (MSH) 274
 1 Swamp (MSH) 292
-1 Island (MSH) 290
 1 Plains (MSH) 288
-4 Forest (MSH) 296
+5 Forest (MSH) 296
