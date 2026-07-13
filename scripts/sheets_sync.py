@@ -26,12 +26,16 @@ automates the round-trip.
 """
 
 import argparse
+import contextlib
+import io
 import os
 import shutil
 import sys
+import tempfile
 import time
 
 from lib import HEADER, DEFAULT_CSV, load_rows, write_rows, eprint
+from validate import validate
 
 SHEET_ID_ENV = "MTGA_SHEET_ID"
 
@@ -107,13 +111,34 @@ def pull(worksheet_name, dry_run):
         print(f"[dry-run] would write {len(rows)} row(s) to {DEFAULT_CSV}. "
               f"Nothing written.")
         return 0
-    # pull() overwrites the canonical inventory in place, so snapshot it first —
-    # a bad/empty sheet shouldn't be able to destroy the local CSV irrecoverably.
-    if os.path.exists(DEFAULT_CSV):
-        backup = f"{DEFAULT_CSV}.{time.strftime('%Y%m%d-%H%M%S')}.bak"
-        shutil.copy2(DEFAULT_CSV, backup)
-        print(f"Backed up existing CSV to {os.path.basename(backup)} before overwrite.")
-    write_rows(rows, DEFAULT_CSV)
+    # pull() overwrites the canonical inventory in place, so the incoming data
+    # must clear the SAME validate() gate every other write path honors — a sheet
+    # with a matching header but bad rows (non-numeric quantities, duplicate
+    # printings) must not be able to overwrite the local CSV. Write to a temp file
+    # in the target directory, validate it, and only then back up + atomically
+    # promote it; on any failure the real CSV is left untouched.
+    target = os.path.abspath(DEFAULT_CSV)
+    fd, tmp = tempfile.mkstemp(suffix=".csv", dir=os.path.dirname(target))
+    os.close(fd)
+    try:
+        write_rows(rows, tmp)
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
+            rc = validate(tmp)
+        if rc != 0:
+            eprint("ERROR: the pulled data failed validation; local CSV left untouched.")
+            for ln in [l for l in buf.getvalue().splitlines() if l.strip()][-8:]:
+                eprint(f"  {ln}")
+            return 1
+        if os.path.exists(target):
+            backup = f"{target}.{time.strftime('%Y%m%d-%H%M%S')}.bak"
+            shutil.copy2(target, backup)
+            print(f"Backed up existing CSV to {os.path.basename(backup)} before overwrite.")
+        os.replace(tmp, target)
+        tmp = None
+    finally:
+        if tmp and os.path.exists(tmp):
+            os.remove(tmp)
     print(f"Pulled {len(rows)} row(s) from Google Sheet into {DEFAULT_CSV}.")
     return 0
 

@@ -380,7 +380,13 @@ def _castability(cards, declared, mana, carddata):
         if nl in BASICS or nl in seen:
             continue
         cd = carddata.get(nl)
-        if cd and "Land" in _primary_type(cd["type"]):
+        if cd is None:
+            # No type/identity data for this card (in neither library nor pool —
+            # e.g. a brand-new WIP craft target). We can't tell a land from a
+            # spell or read its identity, so don't lint it rather than treat it
+            # as a nonland and flag it against empty color data.
+            continue
+        if "Land" in _primary_type(cd["type"]):
             continue
         seen.add(nl)
         entry = mana.get(nl)
@@ -410,23 +416,37 @@ def cmd_check(args):
     _, _, by_name_qty = load_collection()
     meta, cards = parse_deck_file(d["path"])
 
+    # Aggregate copies per card first: a deck may list the same card on more than
+    # one line, and owned counts are per-name (fungible across printings), so the
+    # short/missing check must compare total-need vs total-owned, not line-by-line.
+    need, order, printing = {}, [], {}
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl not in need:
+            order.append(nl)
+            printing[nl] = (n, s)
+        need[nl] = need.get(nl, 0) + q
+
     print(f"Deck {d['id']}: {d['name'] or d['path']}")
     print(f"{'Have':>4} / {'Need':<4}  Card")
     print("-" * 44)
     missing, short = [], []
-    for q, n, s, c in cards:
+    for nl in order:
+        n, s = printing[nl]
+        req = need[nl]
         have, found = owned(by_name_qty, n)
         flag = ""
         if not found:
-            flag, _ = "  <- NOT IN LIBRARY", missing.append(n)
-        elif have < q:
-            flag = f"  <- short {q - have}"
+            flag = "  <- NOT IN LIBRARY"
+            missing.append(n)
+        elif have < req:
+            flag = f"  <- short {req - have}"
             short.append(n)
-        shown = "unlim" if n.lower() in BASICS else have
-        print(f"{str(shown):>4} / {q:<4}  {n} ({s}){flag}")
+        shown = "unlim" if nl in BASICS else have
+        print(f"{str(shown):>4} / {req:<4}  {n} ({s}){flag}")
     print("-" * 44)
-    total = sum(q for q, *_ in cards)
-    print(f"{len(cards)} unique, {total} total.")
+    total = sum(need.values())
+    print(f"{len(order)} unique, {total} total.")
     if missing:
         print(f"{len(missing)} not in library: {', '.join(missing)}")
     if short:
@@ -879,13 +899,19 @@ def load_card_meta():
     return meta
 
 
-def _deck_fingerprints(meta):
+def _deck_fingerprints(meta, exclude_id=None):
     """[(id, colors:set, themes:set), ...] for every deck — used to score a craft
     target's cross-deck reuse (a card that fits several of your decks is worth more
     per wildcard). Colors are the deck's declared `#: colors:` (else the union of
-    its cards' identities); themes are the synergy tags its cards carry."""
+    its cards' identities); themes are the synergy tags its cards carry.
+
+    `exclude_id` drops one deck from the roster (the deck being analyzed), so a
+    suggestion's reuse count is 'how many OTHER decks it fits' — otherwise the
+    current deck always counts itself and inflates every score by one."""
     fps = []
     for dd in discover_decks():
+        if exclude_id is not None and dd["id"].lower() == exclude_id.lower():
+            continue
         dm, cards = parse_deck_file(dd["path"])
         colors, ident, themes = _declared_colors(dm), set(), set()
         for q, n, s, c in cards:
@@ -1008,7 +1034,7 @@ def cmd_suggest(args):
     if not top:
         print("\nNo pool cards matched this deck's colors + themes.")
         return 0
-    fps = _deck_fingerprints(meta)
+    fps = _deck_fingerprints(meta, exclude_id=d["id"])
     print(f"\n{'Have':>5}  {'Card':28}  {'Rarity':8}  {'Decks':>5}  Matches (deck themes)")
     print("-" * 82)
     craftby = {}
@@ -1030,7 +1056,7 @@ def cmd_suggest(args):
     print(f"{len(top)} suggestion(s) — {len(top) - ncraft} owned, {ncraft} to craft"
           + (f" ({', '.join(f'{n} {r}' for r, n in sorted(craftby.items()))})"
              if ncraft else ""))
-    print("Decks = how many of your decks the card is castable + on-theme in "
+    print("Decks = how many of your OTHER decks the card is castable + on-theme in "
           "(higher = more value per wildcard).")
     if hi_reuse:
         print("High cross-deck reuse: "
@@ -1260,7 +1286,8 @@ def _deck_summary(cards, carddata, mana):
 
 def _cards_after_swap(cards, cut, add, add_printing):
     """Return the cards list with one copy of `cut` replaced by `add`, or None
-    if `cut` isn't present."""
+    if `cut` isn't present. If `add` is already in the deck, its existing line is
+    bumped by one rather than adding a second line for the same card."""
     out, removed = [], False
     for (q, n, s, c) in cards:
         if not removed and n.lower() == cut.strip().lower():
@@ -1271,7 +1298,13 @@ def _cards_after_swap(cards, cut, add, add_printing):
         out.append((q, n, s, c))
     if not removed:
         return None
-    out.append((1, add.strip(), add_printing[0], add_printing[1]))
+    add_nl = add.strip().lower()
+    for i, (q, n, s, c) in enumerate(out):
+        if n.lower() == add_nl:
+            out[i] = (q + 1, n, s, c)
+            break
+    else:
+        out.append((1, add.strip(), add_printing[0], add_printing[1]))
     return out
 
 
@@ -1291,7 +1324,27 @@ def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
     add_line = f"1 {add.strip()}"
     if setc:
         add_line += f" ({setc})" + (f" {cn}" if cn else "")
-    if qty > 1:
+
+    # If `add` is already a line in the deck, bump that line by one instead of
+    # writing a second line for the same card (which would split its count).
+    ai = next((i for i, ln in enumerate(out)
+               if (_card_line_name(ln) or "").lower() == add.strip().lower()), None)
+    if ai is not None:
+        am = LINE_RE.match(out[ai].split("#", 1)[0].strip())
+        a_indent = out[ai][:len(out[ai]) - len(out[ai].lstrip())]
+        a_rebuilt = f"{a_indent}{int(am.group(1)) + 1} {am.group(2).strip()}"
+        if am.group(3):
+            a_rebuilt += f" ({am.group(3).strip()})" + (f" {am.group(4).strip()}" if am.group(4) else "")
+        out[ai] = a_rebuilt
+        if qty > 1:
+            indent = out[ci][:len(out[ci]) - len(out[ci].lstrip())]
+            rebuilt = f"{indent}{qty - 1} {m.group(2).strip()}"
+            if m.group(3):
+                rebuilt += f" ({m.group(3).strip()})" + (f" {m.group(4).strip()}" if m.group(4) else "")
+            out[ci] = rebuilt
+        else:
+            del out[ci]
+    elif qty > 1:
         indent = out[ci][:len(out[ci]) - len(out[ci].lstrip())]
         rebuilt = f"{indent}{qty - 1} {m.group(2).strip()}"
         if m.group(3):

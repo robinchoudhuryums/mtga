@@ -64,6 +64,13 @@ def fetch(names):
                     time.sleep(wait)
                     continue
                 raise
+            except urllib.error.URLError:
+                # Transient network blip — back off and retry like build_pool.py's
+                # _get, rather than failing the whole run on the first hiccup.
+                if attempt < 5:
+                    time.sleep(1.0 * (2 ** attempt))
+                    continue
+                raise
         for card in data.get("data", []):
             cost = _front_mana(card)
             mv = card.get("cmc", 0)

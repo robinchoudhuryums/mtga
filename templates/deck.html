@@ -111,10 +111,20 @@
   document.getElementById('title').textContent = NEW ? 'New deck' : `Deck ${DATA.id}: ${DATA.name}`;
   document.getElementById('file').textContent = DATA.file;
 
+  // Total copies of a card across ALL its lines — owned counts are per-name, so
+  // buildability must weigh the summed need, not a single line's quantity.
+  function needFor(name) {
+    const nl = (name || '').trim().toLowerCase();
+    let n = 0;
+    for (const t of BODY)
+      if (t.kind==='card' && (t.name||'').trim().toLowerCase()===nl) n += parseInt(t.qty)||0;
+    return n;
+  }
+
   function cardStatus(t) {
     const name = (t.name || '').trim().toLowerCase();
-    const need = parseInt(t.qty) || 0;
     if (!name) return {cls:'', txt:''};
+    const need = needFor(name);
     if (BASICS.has(name)) return {cls:'ok', txt:'basic ∞'};
     if (!(name in OWNED)) return {cls:'missing', txt:'not owned'};
     const have = OWNED[name];
@@ -124,8 +134,13 @@
 
   function refresh() {
     let unique=0, total=0, short=0, missing=0;
+    const seen = new Set();
     for (const t of BODY) if (t.kind==='card' && (t.name||'').trim()) {
-      unique++; total += parseInt(t.qty)||0;
+      total += parseInt(t.qty)||0;
+      const nl = t.name.trim().toLowerCase();
+      if (seen.has(nl)) continue;   // count each card once, on the summed need
+      seen.add(nl);
+      unique++;
       const st = cardStatus(t);
       if (st.cls==='short') short++; else if (st.cls==='missing') missing++;
     }
