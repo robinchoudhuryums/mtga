@@ -35,6 +35,8 @@ Commands:
     python3 scripts/deck.py stats 1a            # mana curve, colors, types, functional roles
     python3 scripts/deck.py mana 1a             # hybrid-aware color requirements + castability lint
     python3 scripts/deck.py suggest 1a --owned  # OWNED pool cards that fit the deck (0 wildcards)
+    python3 scripts/deck.py legal 1a            # construction lint: size, copy limits, format legality
+    python3 scripts/deck.py cuts 1a             # rank the deck's weakest-fit cards as cut candidates
     python3 scripts/deck.py swap 1a --cut A --add B   # preview a swap's deltas (--apply to write)
     python3 scripts/deck.py apply-flex 1a 2     # promote flex swap #2 into the maindeck
 
@@ -380,7 +382,13 @@ def _castability(cards, declared, mana, carddata):
         if nl in BASICS or nl in seen:
             continue
         cd = carddata.get(nl)
-        if cd and "Land" in _primary_type(cd["type"]):
+        if cd is None:
+            # No type/identity data for this card (in neither library nor pool —
+            # e.g. a brand-new WIP craft target). We can't tell a land from a
+            # spell or read its identity, so don't lint it rather than treat it
+            # as a nonland and flag it against empty color data.
+            continue
+        if "Land" in _primary_type(cd["type"]):
             continue
         seen.add(nl)
         entry = mana.get(nl)
@@ -410,23 +418,37 @@ def cmd_check(args):
     _, _, by_name_qty = load_collection()
     meta, cards = parse_deck_file(d["path"])
 
+    # Aggregate copies per card first: a deck may list the same card on more than
+    # one line, and owned counts are per-name (fungible across printings), so the
+    # short/missing check must compare total-need vs total-owned, not line-by-line.
+    need, order, printing = {}, [], {}
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl not in need:
+            order.append(nl)
+            printing[nl] = (n, s)
+        need[nl] = need.get(nl, 0) + q
+
     print(f"Deck {d['id']}: {d['name'] or d['path']}")
     print(f"{'Have':>4} / {'Need':<4}  Card")
     print("-" * 44)
     missing, short = [], []
-    for q, n, s, c in cards:
+    for nl in order:
+        n, s = printing[nl]
+        req = need[nl]
         have, found = owned(by_name_qty, n)
         flag = ""
         if not found:
-            flag, _ = "  <- NOT IN LIBRARY", missing.append(n)
-        elif have < q:
-            flag = f"  <- short {q - have}"
+            flag = "  <- NOT IN LIBRARY"
+            missing.append(n)
+        elif have < req:
+            flag = f"  <- short {req - have}"
             short.append(n)
-        shown = "unlim" if n.lower() in BASICS else have
-        print(f"{str(shown):>4} / {q:<4}  {n} ({s}){flag}")
+        shown = "unlim" if nl in BASICS else have
+        print(f"{str(shown):>4} / {req:<4}  {n} ({s}){flag}")
     print("-" * 44)
-    total = sum(q for q, *_ in cards)
-    print(f"{len(cards)} unique, {total} total.")
+    total = sum(need.values())
+    print(f"{len(order)} unique, {total} total.")
     if missing:
         print(f"{len(missing)} not in library: {', '.join(missing)}")
     if short:
@@ -879,15 +901,35 @@ def load_card_meta():
     return meta
 
 
-def _deck_fingerprints(meta):
-    """[(id, colors:set, themes:set), ...] for every deck — used to score a craft
-    target's cross-deck reuse (a card that fits several of your decks is worth more
-    per wildcard). Colors are the deck's declared `#: colors:` (else the union of
-    its cards' identities); themes are the synergy tags its cards carry."""
+def _central_themes(theme_w, frac=0.25):
+    """The themes that are actually CENTRAL to a deck: those carried by at least a
+    quarter of the deck's most-common theme's copies (floor of 2 copies). Filters
+    out one-off tag overlaps so a generic sac/tokens card doesn't read as fitting a
+    deck it only grazes."""
+    if not theme_w:
+        return set()
+    cutoff = max(2, frac * max(theme_w.values()))
+    return {t for t, w in theme_w.items() if w >= cutoff}
+
+
+def _deck_fingerprints(meta, exclude_id=None):
+    """[(id, colors:set, central_themes:set), ...] for every deck — used to score a
+    craft target's cross-deck reuse (a card that fits several of your decks is worth
+    more per wildcard). Colors are the deck's declared `#: colors:` (else the union
+    of its cards' identities); themes are the deck's CENTRAL synergy tags (weighted
+    by copies, then thresholded via _central_themes) rather than every tag that
+    appears once — so reuse counts a deck only when the card is genuinely on-theme
+    for it, not merely sharing an incidental keyword.
+
+    `exclude_id` drops one deck from the roster (the deck being analyzed), so a
+    suggestion's reuse count is 'how many OTHER decks it fits' — otherwise the
+    current deck always counts itself and inflates every score by one."""
     fps = []
     for dd in discover_decks():
+        if exclude_id is not None and dd["id"].lower() == exclude_id.lower():
+            continue
         dm, cards = parse_deck_file(dd["path"])
-        colors, ident, themes = _declared_colors(dm), set(), set()
+        colors, ident, theme_w = _declared_colors(dm), set(), {}
         for q, n, s, c in cards:
             if n.lower() in BASICS:
                 continue
@@ -895,8 +937,9 @@ def _deck_fingerprints(meta):
             if not m:
                 continue
             ident |= m["colors"]
-            themes |= set(m["synergies"])
-        fps.append((dd["id"], colors or ident, themes))
+            for t in m["synergies"]:
+                theme_w[t] = theme_w.get(t, 0) + q
+        fps.append((dd["id"], colors or ident, _central_themes(theme_w)))
     return fps
 
 
@@ -1008,7 +1051,7 @@ def cmd_suggest(args):
     if not top:
         print("\nNo pool cards matched this deck's colors + themes.")
         return 0
-    fps = _deck_fingerprints(meta)
+    fps = _deck_fingerprints(meta, exclude_id=d["id"])
     print(f"\n{'Have':>5}  {'Card':28}  {'Rarity':8}  {'Decks':>5}  Matches (deck themes)")
     print("-" * 82)
     craftby = {}
@@ -1030,8 +1073,8 @@ def cmd_suggest(args):
     print(f"{len(top)} suggestion(s) — {len(top) - ncraft} owned, {ncraft} to craft"
           + (f" ({', '.join(f'{n} {r}' for r, n in sorted(craftby.items()))})"
              if ncraft else ""))
-    print("Decks = how many of your decks the card is castable + on-theme in "
-          "(higher = more value per wildcard).")
+    print("Decks = how many of your OTHER decks the card is castable in + shares a "
+          "CENTRAL theme with (higher = more value per wildcard).")
     if hi_reuse:
         print("High cross-deck reuse: "
               + ", ".join(f"{n} ({k})" for n, k in sorted(hi_reuse, key=lambda x: -x[1])[:6]))
@@ -1260,7 +1303,8 @@ def _deck_summary(cards, carddata, mana):
 
 def _cards_after_swap(cards, cut, add, add_printing):
     """Return the cards list with one copy of `cut` replaced by `add`, or None
-    if `cut` isn't present."""
+    if `cut` isn't present. If `add` is already in the deck, its existing line is
+    bumped by one rather than adding a second line for the same card."""
     out, removed = [], False
     for (q, n, s, c) in cards:
         if not removed and n.lower() == cut.strip().lower():
@@ -1271,7 +1315,13 @@ def _cards_after_swap(cards, cut, add, add_printing):
         out.append((q, n, s, c))
     if not removed:
         return None
-    out.append((1, add.strip(), add_printing[0], add_printing[1]))
+    add_nl = add.strip().lower()
+    for i, (q, n, s, c) in enumerate(out):
+        if n.lower() == add_nl:
+            out[i] = (q + 1, n, s, c)
+            break
+    else:
+        out.append((1, add.strip(), add_printing[0], add_printing[1]))
     return out
 
 
@@ -1291,7 +1341,27 @@ def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
     add_line = f"1 {add.strip()}"
     if setc:
         add_line += f" ({setc})" + (f" {cn}" if cn else "")
-    if qty > 1:
+
+    # If `add` is already a line in the deck, bump that line by one instead of
+    # writing a second line for the same card (which would split its count).
+    ai = next((i for i, ln in enumerate(out)
+               if (_card_line_name(ln) or "").lower() == add.strip().lower()), None)
+    if ai is not None:
+        am = LINE_RE.match(out[ai].split("#", 1)[0].strip())
+        a_indent = out[ai][:len(out[ai]) - len(out[ai].lstrip())]
+        a_rebuilt = f"{a_indent}{int(am.group(1)) + 1} {am.group(2).strip()}"
+        if am.group(3):
+            a_rebuilt += f" ({am.group(3).strip()})" + (f" {am.group(4).strip()}" if am.group(4) else "")
+        out[ai] = a_rebuilt
+        if qty > 1:
+            indent = out[ci][:len(out[ci]) - len(out[ci].lstrip())]
+            rebuilt = f"{indent}{qty - 1} {m.group(2).strip()}"
+            if m.group(3):
+                rebuilt += f" ({m.group(3).strip()})" + (f" {m.group(4).strip()}" if m.group(4) else "")
+            out[ci] = rebuilt
+        else:
+            del out[ci]
+    elif qty > 1:
         indent = out[ci][:len(out[ci]) - len(out[ci].lstrip())]
         rebuilt = f"{indent}{qty - 1} {m.group(2).strip()}"
         if m.group(3):
@@ -1440,6 +1510,199 @@ def cmd_apply_flex(args):
     return _do_swap(d, e["out"], e["in"], args.apply, flex_entry=e)
 
 
+# --- deck-construction legality lint ---------------------------------------- #
+# Formats where the deck is singleton (at most one of each nonbasic) and/or has a
+# larger minimum size than the 60-card constructed default.
+SINGLETON_FORMATS = {"brawl", "historic brawl", "commander", "oathbreaker", "duel"}
+BIG_DECK_FORMATS = {"commander", "historic brawl", "oathbreaker"}
+
+
+def load_legalities():
+    """name_lower -> set(formats the card is legal in), from card-pool.csv's
+    Legalities column. Empty if the pool is missing or predates the column."""
+    out = {}
+    if not os.path.exists(POOL_CSV):
+        return out
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            n = (r.get("Card Name") or "").strip().lower()
+            if not n:
+                continue
+            legs = {x.strip().lower() for x in (r.get("Legalities") or "").split(";")
+                    if x.strip()}
+            out.setdefault(n, legs)
+            out.setdefault(n.split(" // ")[0], legs)
+    return out
+
+
+def cmd_legal(args):
+    """Deck-construction legality lint: deck size, copy limits, and per-card format
+    legality against the deck's declared `#: format:` (override with --format). Size
+    and copy rules are offline; the legality check needs the pool's Legalities
+    column (build_pool.py). Basic lands are exempt (unlimited)."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    meta, cards = parse_deck_file(d["path"])
+    fmt = (getattr(args, "fmt", None) or meta.get("format") or "").strip().lower()
+
+    # Aggregate copies per card name (a card may span lines / printings); basics
+    # are unlimited so they only count toward deck size, never the copy limit.
+    counts, order, disp, total = {}, [], {}, 0
+    for q, n, s, c in cards:
+        total += q
+        nl = n.lower()
+        if nl in BASICS:
+            continue
+        if nl not in counts:
+            order.append(nl)
+            disp[nl] = n
+        counts[nl] = counts.get(nl, 0) + q
+
+    singleton = fmt in SINGLETON_FORMATS
+    copy_limit = 1 if singleton else 4
+    min_size = 100 if fmt in BIG_DECK_FORMATS else 60
+
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — legality check"
+          + (f"  ({fmt})" if fmt else "  (no #: format: declared)"))
+    print("-" * 52)
+    problems = []
+
+    print(f"Deck size: {total} cards" + (f"  (min {min_size})" if fmt else ""))
+    if fmt and total < min_size:
+        problems.append(f"deck has {total} cards — {fmt} minimum is {min_size}")
+
+    over = [(disp[nl], counts[nl]) for nl in order if counts[nl] > copy_limit]
+    for name, cnt in over:
+        problems.append(f"{name}: {cnt} copies (max {copy_limit}"
+                        + (", singleton format" if singleton else "") + ")")
+
+    unknown = []
+    leg = load_legalities()
+    if fmt and fmt in POOL_FORMATS and leg:
+        illegal = []
+        for nl in order:
+            card_leg = leg.get(nl)
+            if card_leg is None:
+                unknown.append(disp[nl])
+            elif fmt not in card_leg:
+                illegal.append(disp[nl])
+        for name in illegal:
+            problems.append(f"{name}: not legal in {fmt}")
+    elif fmt and fmt not in POOL_FORMATS:
+        print(f"Format '{fmt}' isn't tracked for legality "
+              f"(known: {', '.join(sorted(POOL_FORMATS))}) — checking size/copies only.")
+    elif fmt and not leg:
+        print("card-pool.csv has no legality data (rebuild with build_pool.py) — "
+              "checking size/copies only.")
+
+    if problems:
+        print(f"\n✗ {len(problems)} construction issue(s):")
+        for p in problems:
+            print(f"    {p}")
+    else:
+        print("\n✓ No construction issues"
+              + (f" for {fmt}." if fmt else " (size/copy rules only — no format declared)."))
+    if unknown:
+        shown = ", ".join(unknown[:8]) + ("…" if len(unknown) > 8 else "")
+        print(f"\n{len(unknown)} card(s) not in the pool — {fmt} legality unverified "
+              f"(WIP / older printings): {shown}")
+    return 1 if problems else 0
+
+
+# --- cut candidates: the companion to `suggest` (adds) ---------------------- #
+def cmd_cuts(args):
+    """Rank the deck's nonland cards from most to least cuttable — the counterpart
+    to `suggest` (which proposes adds). Heuristic from data the rest of the tooling
+    already computes: a card is more cuttable when it sits OFF the deck's central
+    themes, fills no functional role, and (in a tribal deck) shares no creature type
+    the deck runs in numbers. Transparent by design — it shows the components so you
+    judge, and it does NOT know your spice/signature cards, so read it as a
+    shortlist, not a verdict."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    meta, cards = parse_deck_file(d["path"])
+    cardmeta = load_card_meta()
+    carddata = load_card_data()
+    mana = load_mana()
+
+    # Deck theme weights (by copies) — the same fingerprint `suggest` uses.
+    theme_w = {}
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        m = cardmeta.get(n.lower())
+        if m:
+            for t in m["synergies"]:
+                theme_w[t] = theme_w.get(t, 0) + q
+    central = _central_themes(theme_w)
+
+    # Deck creature subtypes (for the tribal-contribution signal).
+    sub_count = {}
+    for q, n, s, c in cards:
+        cd = carddata.get(n.lower())
+        if cd:
+            for st in creature_subtypes(cd["type"]):
+                sub_count[st] = sub_count.get(st, 0) + q
+
+    rows, seen = [], set()
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl in seen:
+            continue
+        cd = carddata.get(nl)
+        tline = (cd["type"] if cd else "") or ""
+        if "Land" in _primary_type(tline):
+            continue
+        seen.add(nl)
+        tags = cardmeta.get(nl, {}).get("synergies", [])
+        fit, hit_central = 0, False
+        for t in tags:
+            if t in theme_w:
+                fit += theme_w[t]
+                if t in central:
+                    hit_central = True
+        roles = classify_roles(cd["text"]) if cd else set()
+        subs = set(creature_subtypes(tline))
+        tribal = sum(sub_count.get(st, 0) for st in subs)  # includes own copies
+        mv = (mana.get(nl) or (None, None))[1]
+
+        # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
+        keep = fit + 3 * len(roles) + (1 if hit_central else 0) + min(tribal, 6)
+        reasons = []
+        if tags and not hit_central:
+            reasons.append("off the deck's central themes")
+        elif not tags:
+            reasons.append("no synergy tags")
+        if not roles:
+            reasons.append("no functional role")
+        if subs and tribal <= q:
+            reasons.append("off-tribe")
+        rows.append((keep, n, mv, sorted(roles), fit, reasons))
+
+    if not rows:
+        print(f"Deck {d['id']}: no nonland cards to evaluate.")
+        return 0
+    rows.sort(key=lambda r: (r[0], r[1].lower()))
+    limit = args.limit if getattr(args, "limit", 0) and args.limit > 0 else len(rows)
+
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — cut candidates (weakest fit first)")
+    print(f"Central themes: {', '.join(sorted(central)) or '(none)'}")
+    print("Heuristic shortlist — spice/signature cards aren't known here.\n")
+    print(f"  {'Card':30} {'MV':>3}  {'Fit':>4}  Roles / why-cuttable")
+    print("-" * 74)
+    for keep, n, mv, roles, fit, reasons in rows[:limit]:
+        mvs = str(mv) if mv is not None else "?"
+        tail = ", ".join(roles) if roles else ("; ".join(reasons) if reasons else "—")
+        print(f"  {n[:30]:30} {mvs:>3}  {fit:>4}  {tail}")
+    print(f"\nPair with `deck.py suggest {d['id']}` for adds; preview a swap with "
+          f"`deck.py swap {d['id']} --cut <weak> --add <pick>`.")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="Manage decks and variations.")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -1470,6 +1733,14 @@ def main():
     g.add_argument("--unowned", action="store_true", help="only craftable suggestions")
     g.add_argument("--owned", action="store_true",
                    help="only cards you already own (0 wildcards)")
+    p = sub.add_parser("legal", help="deck-construction lint: size, copy limits, format legality")
+    p.add_argument("id")
+    p.add_argument("--format", dest="fmt", metavar="FMT",
+                   help="check against FMT instead of the deck's #: format:")
+    p = sub.add_parser("cuts", help="rank the deck's weakest-fit cards as cut candidates")
+    p.add_argument("id")
+    p.add_argument("--limit", type=int, default=8,
+                   help="how many cut candidates to show (default 8; 0 = all)")
     p = sub.add_parser("flex", help="show a deck's flex / suggested swaps (#~ lines)")
     p.add_argument("id")
     p = sub.add_parser("swap", help="preview/apply a single -cut/+add swap with deltas")
@@ -1489,6 +1760,7 @@ def main():
         "list": cmd_list, "wildcards": cmd_wildcards, "check": cmd_check,
         "diff": cmd_diff, "arena": cmd_arena, "stats": cmd_stats,
         "mana": cmd_mana, "tribes": cmd_tribes, "suggest": cmd_suggest,
+        "legal": cmd_legal, "cuts": cmd_cuts,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
     }[args.cmd](args)
 

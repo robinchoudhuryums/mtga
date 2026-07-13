@@ -113,6 +113,28 @@ def get_named(front_name):
         raise
 
 
+def get_named_in_set(front_name, set_code):
+    """Look up a card's printing in a SPECIFIC set (exact name + set); None if
+    that set has no such printing. The batch /cards/collection endpoint returns
+    one representative printing per name (usually the newest), so Collector # —
+    which is printing-specific — often can't be filled from it. This targeted
+    lookup fetches the row's own set so the collector number actually resolves."""
+    def do():
+        url = f"{NAMED_URL}?{urllib.parse.urlencode({'exact': front_name, 'set': set_code})}"
+        req = urllib.request.Request(
+            url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"}
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.load(resp)
+
+    try:
+        return _retrying(do)
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return None
+        raise
+
+
 def color_shorthand(card):
     """Derive a Color(s) shorthand from color identity, e.g. 'U', 'B/G', 'Colorless'."""
     ci = card.get("color_identity", [])
@@ -200,6 +222,7 @@ def enrich(path, dry_run=False, force=False, only=None):
 
     changed = matched = 0
     unresolved = []
+    coll_cache = {}  # (name_lower, scry_set) -> collector # for set-scoped lookups
     for row in todo:
         name = (row.get("Card Name") or "").strip()
         card = by_name.get(name.lower())
@@ -214,12 +237,24 @@ def enrich(path, dry_run=False, force=False, only=None):
             "Card Text": text,
             "Color(s)": color_shorthand(card),
         }
-        # Collector # is printing-specific: only fill it when the matched
-        # printing's set equals the row's Set Code (after alias mapping).
+        # Collector # is printing-specific. Fill it from the batched printing when
+        # its set matches the row's Set Code; otherwise (the common case — the
+        # batch endpoint returns one representative printing per name, rarely the
+        # row's set) do a targeted set-scoped lookup so the number still resolves.
         set_code = (row.get("Set Code") or "").strip()
         scry_set = SET_ALIASES.get(set_code.lower(), set_code.lower()) if set_code else ""
         if scry_set and card.get("set", "").lower() == scry_set:
             values["Collector #"] = str(card.get("collector_number", ""))
+        elif scry_set and (force or not (row.get("Collector #") or "").strip()):
+            ck = (name.lower(), scry_set)
+            if ck not in coll_cache:
+                printing = get_named_in_set(name, scry_set)
+                coll_cache[ck] = (str(printing.get("collector_number", ""))
+                                  if printing and printing.get("set", "").lower() == scry_set
+                                  else "")
+                time.sleep(0.1)
+            if coll_cache[ck]:
+                values["Collector #"] = coll_cache[ck]
 
         row_changed = False
         for col in ["Type", "Card Text", "Color(s)", "Collector #"]:
