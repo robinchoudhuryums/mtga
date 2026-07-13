@@ -69,11 +69,14 @@ for `Front // Back` names).
 
 **Set codes & collector numbers:** Type, Card Text, and Color(s) are the same
 across every printing, so they're filled from any match. Collector # is
-printing-specific, so it's only written when the matched printing's set equals
-the row's Set Code (after mapping known Arena→Scryfall differences — e.g. Arena
-`DAR` = Scryfall `DOM` for Dominaria). When the sets don't line up, enrich still
-fills the shared fields but leaves Collector # as-is, so a wrong number is never
-written silently. (Add more mappings in `SET_ALIASES` at the top of
+printing-specific: it's filled from the batch match when that printing's set
+equals the row's Set Code, and otherwise via a targeted `/cards/named?exact=&set=`
+lookup of the row's own set (the batch endpoint returns one representative
+printing per name — usually the newest, rarely the row's set — so this makes the
+number actually resolve for older printings). Set mapping applies first (known
+Arena→Scryfall differences, e.g. Arena `DAR` = Scryfall `DOM` for Dominaria). If
+neither resolves the row's set, Collector # is left as-is, so a wrong number is
+never written silently. (Add more mappings in `SET_ALIASES` at the top of
 `scripts/enrich.py` as you hit them.)
 
 > Requires outbound access to `api.scryfall.com`. Some managed/CI environments
@@ -172,8 +175,9 @@ the tooling uses, so brew upgrades fall out of what you already own plus what
 you'd craft.
 
 Each pick also carries a **`Decks` column** — a cross-deck reuse count of how many
-of your decks the card is *castable* (its identity ⊆ the deck's colors) **and**
-shares a synergy theme with. It's a rough value-per-wildcard signal (a craft that
+of your *other* decks the card is *castable* (its identity ⊆ the deck's colors)
+**and** shares a synergy theme with (the deck being analyzed is excluded, so it
+can't inflate its own picks). It's a rough value-per-wildcard signal (a craft that
 fits several decks outranks a one-deck sidegrade), but a broad any-theme-overlap
 heuristic — read it as breadth, not curated fit. A "High cross-deck reuse" line
 summarizes the top picks.
@@ -321,7 +325,10 @@ python3 scripts/sheets_sync.py push    # local CSV  -> Google Sheet
 python3 scripts/sheets_sync.py pull    # Google Sheet -> local CSV
 ```
 
-Keeps the CSV and the companion Google Sheet in sync. Setup details are in the
+Keeps the CSV and the companion Google Sheet in sync. `pull` overwrites the local
+CSV, so the incoming rows are run through `validate.py` on a temp file first (and
+the current CSV is backed up to a timestamped `.bak`) — a sheet with a matching
+header but bad rows can't corrupt the inventory. Setup details are in the
 docstring at the top of `scripts/sheets_sync.py`. (Since the CSV is the
 interchange format, you can also import/export manually in Sheets without this.)
 

@@ -47,9 +47,10 @@ docs. This file is the source of truth for the workflow commands in
   truncated read (this is how M.O.D.O.K.'s board-wide −1/−1 and Momo's modal
   leaves-play trigger got missed when grading cuts from a sliced text field).
   **Always grade a cut from this full-text preview, never from a `Card Text[:N]`
-  slice.** `--apply` writes with a `.bak` and an INV-04 re-check. `deck.py
-  apply-flex <id> <n>` promotes a `#~` flex line into the 60. Both default to a
-  dry run.
+  slice.** `--apply` writes with a `.bak` and an INV-04 re-check; if the add card
+  is already in the deck it bumps that line rather than adding a second line for
+  the same card. `deck.py apply-flex <id> <n>` promotes a `#~` flex line into the
+  60. Both default to a dry run.
 - **"Not in library" for a card you own is the deck-dump undercount symptom.**
   `import_arena.py` takes a lower bound per line, so a card can end up
   *undercounted or entirely absent* from `card-library.csv` — then `deck.py
@@ -59,8 +60,12 @@ docs. This file is the source of truth for the workflow commands in
   gallery. Hit repeatedly in practice (Primeval Bounty, Cat Collector, Inspiration
   from Beyond, Dion, …).
 - **MTG Arena set codes can differ from Scryfall** (e.g. Arena `DAR` = Scryfall
-  `DOM`). `enrich.py` maps known ones (`SET_ALIASES`) and never writes a
-  collector # for an unconfirmed printing.
+  `DOM`). `enrich.py` maps known ones (`SET_ALIASES`). It fills a row's Collector #
+  from the batch match when that printing's set lines up, else via a targeted
+  `/cards/named?exact=&set=` lookup of the row's own set (the batch endpoint
+  returns one representative printing per name, rarely the row's set) — and still
+  never writes a number from an unconfirmed printing: a set it can't resolve
+  leaves Collector # blank.
 - **WIP decks legitimately show "missing" cards** in `check_all.py` — those are
   craft targets not yet owned (e.g. Atlantis Attacks 18/18a). Not a failure.
 - **Regenerate derived data after imports**, in order: `enrich.py` →
@@ -95,7 +100,8 @@ docs. This file is the source of truth for the workflow commands in
   uncastable picks. Run it both ways: `--owned --limit 0` scours the collection
   for 0-wildcard upgrades already owned; `--unowned` lists craft targets.
 - **`deck.py suggest` shows a cross-deck reuse count (`Decks` column).** For each
-  pick it counts how many of your decks the card is *castable* (its identity ⊆ the
+  pick it counts how many of your OTHER decks (the deck being analyzed is excluded,
+  so it can't inflate its own picks) the card is *castable* (its identity ⊆ the
   deck's declared/derived colors) **and** shares ≥1 synergy theme with — a rough
   "value per wildcard" signal, so a craft that fits several decks outranks a
   one-deck sidegrade. It's a broad any-theme-overlap heuristic (a generic
