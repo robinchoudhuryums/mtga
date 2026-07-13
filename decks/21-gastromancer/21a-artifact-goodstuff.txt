@@ -1,0 +1,72 @@
+#: name: Gastromancer — 4-Color Artifact Goodstuff
+#: format: Standard
+#: colors: WBRG
+#: based-on: deck.txt
+#: notes: The "heavy artifact drift" version. 4-color (WBRG) big-artifact goodstuff,
+#: notes: with Ragost (turns every artifact into Food + drain fuel) as the bridge to
+#: notes: the Food/sac core. Leans on colorless bombs (Ultron, Krang, The Vision,
+#: notes: Cosmic Cube, Pinnacle Kill-Ship) that need no colored mana, so the greedy
+#: notes: manabase rides heavy any-color fixing (Castle Doom makes any color FOR
+#: notes: artifacts — nearly the whole deck) + Heraldic Banner / Barrels / Arc Reactor.
+#: notes: Powerful and flavorful but the least consistent of the three.
+
+# Nonland — Food / sac core
+1 Pizza Face, Gastromancer (TMT) 163
+1 Ragost, Deft Gastronaut (EOE) 224
+1 G'raha Tia (FIN) 21
+1 Cauldron of Essence (SOS) 179
+1 Ice Cream Kitty (TMT) 150
+1 Cat Collector (FDN) 4
+1 Party Dude (TMT) 128
+1 Ant-Man's Army (MSH) 161
+1 Bumbleflower's Sharepot (BLB) 244
+1 Gingerbrute (ELD) 219
+1 Heroic Feast (MSH) 172
+1 Lita, Little Orphan Amphibian (TMT) 19
+
+# Nonland — big artifact goodstuff
+1 Ultron, Artificial Malevolence (MSH) 252
+1 Ultron Drone (MSH) 253
+1 Krang, Utrom Warlord (TMT) 175
+1 The Vision (MSH) 255
+1 Cosmic Cube (MSH) 245
+1 Chronicle of Victory (ECL) 253
+1 Pinnacle Kill-Ship (EOE) 244
+1 Technodrome (TMT) 179
+1 Mirrormind Crown (ECL) 258
+1 The Dominion Bracelet (EOE) 239
+1 Iron Man Armor (MSH) 248
+1 Buster Sword (FIN) 255
+
+# Nonland — fixing / ramp artifacts
+1 Arc Reactor (MSH) 243
+1 Heraldic Banner (FDN) 254
+1 Barrels of Blasting Jelly (TLA) 254
+1 Goldvein Pick (FDN) 253
+
+# Nonland — removal + sac payoffs
+1 Anchovy & Banana Pizza (TMT) 57
+1 Bake into a Pie (FDN) 169
+1 Feed the Cauldron (WOE) 91
+1 Bullseye, Death Dealer (MSH) 209
+1 Mutant Chain Reaction (TMT) 125
+1 She-Hulk, Jade Defender (MSH) 188
+1 Hei Bai, Spirit of Balance (TLA) 225
+1 Beetle-Headed Merchants (TLA) 86
+
+# Lands
+2 Castle Doom (MSH) 263
+2 Baxter Building (MSH) 261
+2 Rumble Arena (TLA) 277
+2 Surveillance Room (MSH) 274
+1 Capital City (FIN) 274
+1 Captivating Cave (LCI) 268
+1 Starting Town (FIN) 289
+1 Jungle Hollow (M21) 247
+1 Blossoming Sands (M21) 244
+1 Bloodfell Caves (TDM) 250
+1 Opulent Palace (TDM) 264
+3 Forest (MSH) 296
+2 Swamp (MSH) 292
+2 Plains (MSH) 288
+2 Mountain (MSH) 294

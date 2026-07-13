@@ -1,0 +1,68 @@
+#: name: Gastromancer
+#: format: Standard
+#: colors: WBG
+#: notes: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats. Food generators feed a
+#: notes: deep sac-payoff web (G'raha Tia draws off any artifact/creature death, Pizza
+#: notes: Face makes counters, Cauldron of Essence drains + reanimates, Ice Cream Kitty
+#: notes: draws). The namesake Ragost is CUT here (its {R}{W} cost doesn't fit WBG) — see
+#: notes: variant 21b for a red splash, and 21a for the 4-color big-artifact version.
+
+# Nonland — sac payoffs / aristocrats
+1 Pizza Face, Gastromancer (TMT) 163
+1 G'raha Tia (FIN) 21
+1 Cauldron of Essence (SOS) 179
+1 Ice Cream Kitty (TMT) 150
+1 Hei Bai, Spirit of Balance (TLA) 225
+1 Beetle-Headed Merchants (TLA) 86
+1 Vito's Inquisitor (LCI) 130
+1 Luxknight Breacher (EOE) 26
+1 Bullseye, Death Dealer (MSH) 209
+
+# Nonland — Food generators / enablers
+1 Cat Collector (FDN) 4
+1 Eager Trufflesnout (FDN) 102
+1 Leaves from the Vine (TLA) 185
+1 Party Dude (TMT) 128
+1 Guac & Marshmallow Pizza (TMT) 116
+1 Gingerbrute (ELD) 219
+1 Bumbleflower's Sharepot (BLB) 244
+1 Heroic Feast (MSH) 172
+1 Ant-Man's Army (MSH) 161
+1 Momo, Playful Pet (TLA) 30
+1 Lita, Little Orphan Amphibian (TMT) 19
+
+# Nonland — removal
+1 Anchovy & Banana Pizza (TMT) 57
+1 Bake into a Pie (FDN) 169
+1 Feed the Cauldron (WOE) 91
+1 Deadly Precision (TLA) 95
+1 Stomped by the Foot (TMT) 82
+1 Requisition Raid (SOA) 10
+1 Mutant Chain Reaction (TMT) 125
+1 She-Hulk, Jade Defender (MSH) 188
+
+# Nonland — value / light artifact package
+1 Sidequest: Hunt the Mark (FIN) 119
+1 White Widow, Free Agent (MSH) 42
+1 White Auracite (FIN) 41
+1 Chronicle of Victory (ECL) 253
+1 Ultron, Artificial Malevolence (MSH) 252
+1 Goldvein Pick (FDN) 253
+1 M.O.D.O.K. (MSH) 106
+1 Vayne's Treachery (FIN) 124
+
+# Lands
+4 Jungle Hollow (M21) 247
+1 Scoured Barrens (M21) 250
+1 Insomnia, Crown City (FIN) 282
+1 Blossoming Sands (M21) 244
+1 Hushwood Verge (DSK) 261
+1 Gathering Place (MSH) 266
+1 Opulent Palace (TDM) 264
+1 Castle Doom (MSH) 263
+1 Capital City (FIN) 274
+1 Realm of Koh (TLA) 276
+1 Abandoned Air Temple (TLA) 263
+3 Forest (MSH) 296
+4 Swamp (MSH) 292
+3 Plains (MSH) 288
