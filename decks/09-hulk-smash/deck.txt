@@ -1,6 +1,7 @@
 #: name: Hulk Smash
 #: format: Standard
 #: colors: RG
+#: archetype: Gruul (R/G) big creatures / smash.
 #: notes: Gruul (R/G) — big creatures / smash.
 
 # Nonland

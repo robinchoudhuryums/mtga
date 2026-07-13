@@ -1,6 +1,7 @@
 #: name: Drawn Conclusions
 #: format: Standard
 #: colors: UB
+#: archetype: Dimir (U/B) card-draw control.
 #: notes: Dimir (U/B) — card draw / control.
 
 # Nonland

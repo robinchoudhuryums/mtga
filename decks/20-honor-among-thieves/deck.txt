@@ -1,6 +1,7 @@
 #: name: Honor Among Thieves
 #: format: Standard
 #: colors: WB
+#: archetype: Orzhov (W/B) lifegain-drain aggro-midrange — evasive Ninjas fuel the Kingpin life-swing.
 #: notes: Orzhov (W/B) lifegain-drain aggro-midrange seeded by The Kingpin of Crime (Extort). An evasive Ninja package (Sneak) connects for combat damage to fuel the life-swing engine; the two R/W-hybrid Ninjas are cast off white. P/T-swap novelty lives in the 20a variant.
 
 # Nonland
@@ -32,7 +33,7 @@
 1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Mechanized Ninja Cavalry (TMT) 156
 1 Quintessential Katana (TMT) 23
-1 Aettir and Priwen (FIN) 253
+1 Beza, the Bounding Spring (BLB) 2
 1 Sephiroth, Fabled SOLDIER (FIN) 115
 1 Sephiroth's Intervention (FIN) 116
 1 Venom's Hunger (SPM) 73
@@ -49,3 +50,6 @@
 1 Realm of Koh (TLA) 276
 7 Plains (MSH) 288
 9 Swamp (MSH) 292
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 20
+#~ +Judge Magister Gabranth | SIDEGRADE (owned): WB aristocrats 2-drop that grows on your creatures/artifacts dying, but this deck isn't sac-central — ~ here; a marked upgrade in 21 / 21a / 6.

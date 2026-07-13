@@ -2,6 +2,7 @@
 #: format: Standard
 #: colors: WB
 #: based-on: deck.txt
+#: archetype: 20 variant — P/T-swap novelty: high-toughness bodies deal damage via Kingpin (leans on drawing him).
 #: notes: The P/T-swap novelty variant. Built around The Kingpin of Crime's attack
 #: notes: trigger (pay 2 life: creatures with toughness > power deal combat damage
 #: notes: equal to their TOUGHNESS). Fills the deck with high-toughness/low-power
@@ -65,3 +66,6 @@
 1 Realm of Koh (TLA) 276
 8 Plains (MSH) 288
 8 Swamp (MSH) 292
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 20a
+#~ -Pain 101 | +Beza, the Bounding Spring | SIDEGRADE (owned): flexible W catch-up value (Treasure/life/Fish/draw when behind) — fits the lifegain/from-behind plan.

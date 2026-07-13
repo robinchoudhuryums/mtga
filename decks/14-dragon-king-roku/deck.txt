@@ -1,6 +1,7 @@
 #: name: Dragon King Roku
 #: format: Standard
 #: colors: WBR
+#: archetype: Mardu (W/B/R) Fire Nation dragons / firebending midrange.
 #: notes: Mardu (W/B/R) — Fire Nation / dragons midrange.
 
 # Nonland
@@ -23,7 +24,7 @@
 1 Nova Hellkite (EOE) 148
 1 Dragonstorm Globe (TDM) 241
 1 Summon: Bahamut (FIN) 1
-1 Redirect Lightning (TLA) 151
+1 Sozin's Comet (TLA) 154
 1 Lightning Strike (TLA) 146
 1 How to Start a Riot (TLA) 140
 1 Spinerock Tyrant (ECL) 159

@@ -2,6 +2,7 @@
 #: format: Standard
 #: colors: WU
 #: based-on: deck.txt
+#: archetype: 0 variant — more countermagic (Syncopate over Negate).
 #: notes: Variant testing more countermagic (Syncopate over Negate).
 
 # Creatures

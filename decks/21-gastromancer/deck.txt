@@ -1,6 +1,7 @@
 #: name: Gastromancer
 #: format: Standard
 #: colors: WBGR
+#: archetype: Abzan (W/B/G, light red) Food-sacrifice / artifact-aristocrats — Ragost + a deep sac-payoff web.
 #: notes: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats with a LIGHT red splash
 #: notes: for the namesake Ragost, Deft Gastronaut ({R}{W} — makes all your artifacts
 #: notes: Food, then sacs Food to drain 3 each). Food generators feed a deep sac-payoff
@@ -20,7 +21,7 @@
 1 Hei Bai, Spirit of Balance (TLA) 225
 1 Beetle-Headed Merchants (TLA) 86
 1 Vito's Inquisitor (LCI) 130
-1 Luxknight Breacher (EOE) 26
+1 Ygra, Eater of All (BLB) 241
 1 Bullseye, Death Dealer (MSH) 209
 
 # Nonland — Food generators / enablers
@@ -44,7 +45,7 @@
 1 Stomped by the Foot (TMT) 82
 1 Requisition Raid (SOA) 10
 1 Mutant Chain Reaction (TMT) 125
-1 She-Hulk, Jade Defender (MSH) 188
+1 Judge Magister Gabranth (FIN) 230
 
 # Nonland — value / light artifact package
 1 Sidequest: Hunt the Mark (FIN) 119
@@ -70,3 +71,6 @@
 3 Forest (MSH) 296
 3 Swamp (MSH) 292
 3 Plains (MSH) 288
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 21
+#~ +Season of Loss | SIDEGRADE (owned): flexible modal sac payoff, but this deck is already saturated with sac payoffs (Ygra + Gabranth added) — lateral here; it's a marked upgrade in 8 / 11 / 21a.

@@ -34,6 +34,7 @@ comments; blank lines are ignored.
 #: name: Avatar Tempo
 #: format: Standard
 #: colors: WU
+#: archetype: Azorius (W/U) fliers / tempo — one-line "meant-for" summary.
 #: notes: removal-heavy base build
 
 # Creatures
@@ -44,6 +45,14 @@ comments; blank lines are ignored.
 9 Plains
 9 Island
 ```
+
+`#: archetype:` is a one-line identity (colors + core plan; for a variant, how it
+differs from its core) that `deck.py list` prints under each deck — a quick guard
+against homogenizing a deck when scanning the roster for swaps. `#: notes:` is
+free-form and **may span several lines** (repeat `#: notes:`); the tooling now
+concatenates them in order, so the full note survives rather than only the last
+line. If a deck has no `#: archetype:`, `list` falls back to the first sentence of
+its notes.
 
 Variations are **full lists too** (not diffs) — so every file is robust and
 independently checkable. Use `deck.py diff` to see what a variation changes; git

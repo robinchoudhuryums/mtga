@@ -2,6 +2,7 @@
 #: format: Standard
 #: colors: WBG
 #: based-on: deck.txt
+#: archetype: 20 variant — Abzan (W/B/G) toughness-swap RAMP into Adamantoise; two swap payoffs (Kingpin + Tapestry Warden).
 #: notes: The 3-color (Abzan) toughness-swap ramp variant, built to actually CAST
 #: notes: Ancient Adamantoise (8/20 -> 20-damage swing with a swap payoff). Green
 #: notes: fixes the WB build's biggest weakness: TWO payoffs instead of one —

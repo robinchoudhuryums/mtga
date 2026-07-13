@@ -1,6 +1,7 @@
 #: name: Bird Brain
 #: format: Standard
 #: colors: WU
+#: archetype: WIP pile (83 cards, 0 lands) — undirected; needs a direction + trim to 60. See variants 19a/19b.
 #: notes: WIP PILE — 83 spells, 0 lands. Started bird/flyers-themed then sprawled
 #: notes: across chocobos, earthbending, TMNT, big-green, etc. Needs a direction
 #: notes: chosen and a trim to 60 (with a real manabase). Analyzing with the tool.

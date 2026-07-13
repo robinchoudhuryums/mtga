@@ -1,6 +1,7 @@
 #: name: Black Sun
 #: format: Standard
 #: colors: BR
+#: archetype: Rakdos (B/R) aggro-sacrifice — tokens + graveyard; the first constructed deck.
 #: notes: Rakdos (B/R) — first constructed deck.
 
 # Creatures

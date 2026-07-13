@@ -2,6 +2,7 @@
 #: format: Standard
 #: colors: GWU
 #: based-on: deck.txt
+#: archetype: 19 variant — Bant (G/W/U) go-wide: Chocobo landfall Birds + copy-army + flyers/anthems.
 #: notes: Bant (GWU) go-wide: Chocobo landfall Bird tokens + For the Common Good
 #: notes: copy-army, with a white/blue flyers-and-anthem package (Empyrean Eagle,
 #: notes: Kastral, Jackdaw Savior). Keeps several fun token-makers (Squirrel Girl,

@@ -1,6 +1,7 @@
 #: name: Coming of Galactus
 #: format: Standard
 #: colors: BG
+#: archetype: Golgari (B/G) graveyard midrange / value.
 #: notes: Golgari (B/G) — graveyard / midrange value.
 
 # Nonland

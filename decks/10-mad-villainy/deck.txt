@@ -1,6 +1,7 @@
 #: name: Mad Villainy
 #: format: Standard
 #: colors: BR
+#: archetype: Rakdos (B/R) villains / artifacts midrange.
 #: notes: Rakdos (B/R) — villains / artifacts midrange.
 
 # Nonland
