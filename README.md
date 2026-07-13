@@ -144,6 +144,33 @@ the wildcard cost of the craftable results. Rebuild the pool after a new set
 releases. For formats outside the stored pool (e.g. a one-off Historic card),
 just ask Claude Code — it can query Scryfall live and cross-check your library.
 
+### Wishlist — track craft targets you don't own yet
+
+`card-wishlist.csv` is a curated shortlist of **unowned** cards worth crafting,
+slotting into a deck, or building a new concept around — kept apart from your
+owned inventory (`card-library.csv`) and the full pool (`card-pool.csv`). Each card
+is auto-enriched (Rarity, Color, Type, oracle text, synergy tags) from the pool,
+with a Scryfall fallback for cards the pool lacks (e.g. newer double-faced cards,
+stored under their full `Front // Back` name). Two columns are yours to annotate:
+**Target** (a deck id, `general`, or `concept: …`) and **Note** (why it caught your
+eye).
+
+```
+python3 scripts/wishlist.py --add batch.txt   # append an Arena-export batch (enriches each)
+python3 scripts/wishlist.py                    # browse the whole wishlist
+python3 scripts/wishlist.py --set SOS --rarity rare,mythic   # filter (substring, AND-ed)
+python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme
+python3 scripts/wishlist.py --target 14        # what you've earmarked for a deck
+python3 scripts/wishlist.py --by-set           # PACK OPTIMIZATION: cards per set, by rarity
+python3 scripts/wishlist.py --owned            # cards you've since acquired — prune these
+```
+
+`--by-set` is the gem-spending view: it ranks the sets by how many wishlist cards
+each pack could net you (broken down by rarity), so you open the highest-value
+packs first. `--owned` flags anything you've since crafted so you can drop it. Set
+`Target`/`Note` by editing the CSV directly. Paste a new batch anytime — Claude
+Code can add it and suggest which deck each card fits.
+
 ### Deck — manage decks and variations
 
 ```
