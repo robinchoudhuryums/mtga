@@ -50,6 +50,14 @@ docs. This file is the source of truth for the workflow commands in
   slice.** `--apply` writes with a `.bak` and an INV-04 re-check. `deck.py
   apply-flex <id> <n>` promotes a `#~` flex line into the 60. Both default to a
   dry run.
+- **"Not in library" for a card you own is the deck-dump undercount symptom.**
+  `import_arena.py` takes a lower bound per line, so a card can end up
+  *undercounted or entirely absent* from `card-library.csv` — then `deck.py
+  check` reports it as a craft target even though you own it. Reconcile via
+  `import_arena.py <deck> --skip-basics` (trues up from a built deck), or append
+  the row from `card-pool.csv` at the right `Quantity Owned` and rebuild the
+  gallery. Hit repeatedly in practice (Primeval Bounty, Cat Collector, Inspiration
+  from Beyond, Dion, …).
 - **MTG Arena set codes can differ from Scryfall** (e.g. Arena `DAR` = Scryfall
   `DOM`). `enrich.py` maps known ones (`SET_ALIASES`) and never writes a
   collector # for an unconfirmed printing.
@@ -113,9 +121,10 @@ docs. This file is the source of truth for the workflow commands in
   modal cards land in several buckets and single-draw cantrips are deliberately
   *not* counted as card advantage. The lint reads the deck's `#: colors:` header,
   so a stale or intentionally-narrow header flags cards as off-color — e.g. the
-  raw 83-card `19` pile is headed `WU` but is really multicolor, and decks whose
-  header trails their contents (8, 13) will list genuinely off-color cards. Treat
-  both as signal to review, not hard failures — neither gates `check_all.py`.
+  raw 83-card `19` pile is headed `WU` but is really multicolor. Fixing a stale
+  header to the deck's real castable colors clears the false positives (e.g. deck
+  `13` was corrected `GR`→`GWBR`). Treat a flag as signal to review, not a hard
+  failure — it doesn't gate `check_all.py`.
 
 ## Cycle Workflow Config
 
