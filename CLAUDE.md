@@ -106,6 +106,18 @@ docs. This file is the source of truth for the workflow commands in
   `--by-set` is the pack/gem-optimization view (wishlist cards per set by rarity);
   `--owned` flags cards you've since crafted so you can prune them. `Target`/`Note`
   are hand-annotated (deck id / `general` / `concept: …`). Not gated by check_all.
+- **Auto-targeting a wishlist batch: trust STRONG, judge `review`.** `wishlist.py
+  --suggest-targets` scores each card's deck fit by **theme rarity (idf)** so broad
+  decks stop acting as catch-alls: naive theme-overlap over-assigns to 5-color
+  decks (17) and many-themed decks (21 Gastromancer) because *generic* themes
+  (etb/counters/tokens/lifegain/sacrifice) are central to nearly every deck and
+  carry ~no signal — only a *specific* theme (food, earthbend, firebending, Ninja
+  `sneak`, reanimator, Merfolk, …) is a confident match. Evergreen keywords
+  (trample/deathtouch) are excluded from the signal (they'd else fake a match).
+  Workflow for a new batch: `--add` → `--suggest-targets --write` (fills only
+  blank Targets with STRONG/ok picks) → text-review the `review` cards (generic/
+  multi-home/new-concept — the tag heuristic genuinely can't place these). This is
+  why the first batch's 21/17 buckets needed a manual text pass and were trimmed.
 - **`card-pool.csv` carries a `Legalities` column** (`;`-joined formats a card is
   legal in) so `deck.py suggest` filters craft picks to the deck's `#: format:`
   by default (override `--format` / disable `--any-format`). It's captured free

@@ -163,7 +163,27 @@ python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme
 python3 scripts/wishlist.py --target 14        # what you've earmarked for a deck
 python3 scripts/wishlist.py --by-set           # PACK OPTIMIZATION: cards per set, by rarity
 python3 scripts/wishlist.py --owned            # cards you've since acquired — prune these
+python3 scripts/wishlist.py --suggest-targets  # propose a Target per card (confidence-flagged)
+python3 scripts/wishlist.py --suggest-targets --write   # auto-fill the confident picks
 ```
+
+**Auto-targeting workflow (efficient + catch-all-resistant).** `--suggest-targets`
+scores each card's fit to every deck by **theme rarity (idf)**: a card that shares
+a *specific* theme with a deck (food → Gastromancer, earthbend → Earth Kingdom,
+the Ninja `sneak` package → Honor Among Thieves) gets a confident `STRONG`/`ok`
+pick, while a card that only overlaps on *generic* themes (`etb`, `counters`,
+`tokens`, `lifegain`, …) — the ones central to nearly every deck — is flagged
+`review`. That idf-weighting is deliberate: raw theme-overlap makes broad decks
+(5-color, or many-themed like Gastromancer) act as **catch-alls** that soak up
+anything castable; weighting by rarity kills that. Evergreen keywords (trample,
+deathtouch, …) are excluded from the signal too, so an incidental keyword can't
+manufacture a false-confident match. The intended loop for a new batch:
+
+1. `wishlist.py --add batch.txt` — append + enrich.
+2. `wishlist.py --suggest-targets --write` — auto-fill the `STRONG`/`ok` picks
+   into blank `Target`s (never overwrites your edits without `--overwrite`).
+3. Judge only the `review` cards from card text — they're the generic-value /
+   multi-home / new-concept cards where the tag heuristic genuinely can't decide.
 
 `--by-set` is the gem-spending view: it ranks the sets by how many wishlist cards
 each pack could net you (broken down by rarity), so you open the highest-value

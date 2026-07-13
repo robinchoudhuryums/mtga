@@ -273,6 +273,120 @@ def cmd_by_set(rows, owned):
     return 0
 
 
+def _theme_model():
+    """Build the deck theme model for target suggestion. Returns (fps, idf):
+
+      fps  – [(deck_id, colors:set, central:set, tw_norm:dict)] per deck.
+      idf  – {theme: inverse-deck-frequency weight}. A theme CENTRAL to few decks
+             (food, earthbend, firebending, Ninja, …) scores high; one central to
+             most decks (etb, counters, tokens, mana, lifegain, …) scores ~0.
+
+    idf-weighting is what stops broad decks from acting as catch-alls: a card that
+    only overlaps a deck on generic themes gets a near-zero score and is flagged
+    for review, while a specific-theme match (the real signal) ranks confidently.
+    """
+    import math
+    import deck as dk
+    meta = dk.load_card_meta()
+    fps, df = [], {}
+    for dd in dk.discover_decks():
+        dm, cards = dk.parse_deck_file(dd["path"])
+        colors, ident, tw = dk._declared_colors(dm), set(), {}
+        for q, n, s, c in cards:
+            if n.lower() in dk.BASICS:
+                continue
+            m = meta.get(n.lower())
+            if not m:
+                continue
+            ident |= m["colors"]
+            for t in m["synergies"]:
+                tw[t] = tw.get(t, 0) + q
+        central = dk._central_themes(tw)
+        mx = max(tw.values()) if tw else 1
+        fps.append((dd["id"], colors or ident, central, {t: tw[t] / mx for t in central}))
+        for t in central:
+            df[t] = df.get(t, 0) + 1
+    n = len(fps)
+    idf = {t: math.log(n / (1 + c)) for t, c in df.items()}
+    return fps, idf
+
+
+SPECIFIC_IDF = 1.5   # a theme this "rare" (central to <= ~6 of 29 decks) is real signal
+
+# Evergreen keywords / generic role descriptors are rare across decks (so they'd
+# score as "specific") but are INCIDENTAL to a card — a trample creature isn't
+# thereby a fit for the one deck that happens to run trample. Excluded from the
+# confidence signal so they don't manufacture false-confident matches; a strategic
+# theme (food, earthbend, reanimator, Ninja, spellslinger, …) still has to carry it.
+NON_SIGNAL_TAGS = {
+    "flying", "trample", "menace", "deathtouch", "lifelink", "vigilance", "haste",
+    "reach", "first strike", "double strike", "ward", "hexproof", "shroud",
+    "prowess", "defender", "indestructible", "protection", "intimidate", "fear",
+    "evasion", "combat", "aggro", "tempo", "pump", "defense", "resilience",
+}
+
+
+def cmd_suggest_targets(rows, write=False, overwrite=False):
+    """Propose a Target per card via idf-weighted theme fit + a confidence flag.
+
+    STRONG/ok picks share a SPECIFIC (rare) theme with the deck; `review` picks
+    match only generic themes (or nothing) — those are the catch-all-prone cards a
+    human should judge from card text. With --write, fills STRONG/ok picks into
+    blank Targets (or all, with --overwrite); `review` cards are always left for you.
+    """
+    fps, idf = _theme_model()
+    strong = ok = review = wrote = 0
+    print(f"  {'Card':30} {'Conf':6} {'Target':9} Signal")
+    print("  " + "-" * 84)
+    for r in rows:
+        ccols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+        ctags = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
+        fits = []
+        for did, dcols, central, twn in fps:
+            if not ccols.issubset(dcols):
+                continue
+            shared = ctags & central
+            if not shared:
+                continue
+            score = sum(idf.get(t, 0) * twn[t] for t in shared)
+            specific = sorted((t for t in shared if idf.get(t, 0) >= SPECIFIC_IDF
+                               and t.lower() not in NON_SIGNAL_TAGS),
+                              key=lambda t: -idf[t])
+            fits.append((round(score, 2), did, specific, sorted(shared)))
+        fits.sort(reverse=True)
+
+        proposal = None
+        if not fits:
+            conf, tgt, sig = "review", "?", "no central-theme fit — general/concept?"
+        else:
+            best = fits[0]
+            alts = ",".join(d for _, d, _, _ in fits[1:3])
+            if best[2]:  # shares a specific (rare) theme — real signal
+                lead = len(fits) < 2 or best[0] >= fits[1][0] + 0.5
+                conf = "STRONG" if (lead or best[0] >= 1.5) else "ok"
+                tgt = proposal = best[1]
+                sig = f"{'/'.join(best[2][:2])}  (score {best[0]}; alts {alts or '—'})"
+            else:  # only generic-theme overlap — the catch-all zone
+                conf, tgt = "review", best[1] + "?"
+                sig = f"only generic: {','.join(best[3][:3])}  (alts {alts or '—'})"
+
+        strong += conf == "STRONG"; ok += conf == "ok"; review += conf == "review"
+        if write and proposal and (overwrite or not (r.get("Target") or "").strip()):
+            r["Target"] = proposal
+            wrote += 1
+        print(f"  {r['Card Name'][:30]:30} {conf:6} {str(tgt):9} {sig[:52]}")
+
+    print(f"\n  {strong} strong · {ok} ok · {review} review "
+          "(review = generic/no theme match — judge these from card text).")
+    if write:
+        write_wishlist(rows)
+        print(f"  Wrote {wrote} target(s) to {os.path.basename(WISHLIST_CSV)} "
+              f"(review cards left blank/unchanged).")
+    else:
+        print("  Read-only. Re-run with --write to fill blank Targets with strong/ok picks.")
+    return 0
+
+
 def print_table(hits, owned):
     cols = ["Have", "Card Name", "Type", "Color(s)", "Set", "Rarity", "Target"]
     def have_of(c):
@@ -304,6 +418,13 @@ def main():
                     help="append an Arena-export batch (or '-' for stdin), enriching each card")
     ap.add_argument("--by-set", action="store_true",
                     help="summarize unowned wishlist cards per set (pack optimization)")
+    ap.add_argument("--suggest-targets", action="store_true",
+                    help="propose a Target per card (idf-weighted theme fit + confidence); "
+                         "review flags are cards to judge from card text")
+    ap.add_argument("--write", action="store_true",
+                    help="with --suggest-targets: write strong/ok picks into blank Targets")
+    ap.add_argument("--overwrite", action="store_true",
+                    help="with --suggest-targets --write: also overwrite existing Targets")
     ap.add_argument("--owned", action="store_true",
                     help="show only wishlist cards you now OWN (drop candidates)")
     ap.add_argument("--name"); ap.add_argument("--type"); ap.add_argument("--text")
@@ -324,6 +445,8 @@ def main():
 
     if args.by_set:
         return cmd_by_set(rows, owned)
+    if args.suggest_targets:
+        return cmd_suggest_targets(rows, write=args.write, overwrite=args.overwrite)
 
     hits = [c for c in rows if _match(c, args)]
     if args.owned:
