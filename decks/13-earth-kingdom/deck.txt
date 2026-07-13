@@ -59,3 +59,6 @@
 1 Swamp (MSH) 292
 1 Plains (MSH) 288
 5 Forest (MSH) 296
+
+# Flex — craft-target notes. See: deck.py flex 13
+#~ note: CRAFT — Lumra, Bellow of the Woods (M) ★: {4}{G}{G} P/T = lands, mills 4 + RETURNS ALL your lands from graveyard -- a ramp/lands finisher that snowballs the earthbend/landfall plan. (NOT a toughness card; power = toughness.) Bioengineered Future (R) ★: creatures enter with +1 counter per land that entered -- a landfall->counters payoff, ideal here. Sharp-Eyed Rookie (R) ~: vigilance body that grows a counter + investigates when a bigger creature enters (card advantage). Cut a weak earthbend body when crafting.
