@@ -39,7 +39,7 @@
 1 Buster Sword (FIN) 255
 
 # Nonland — fixing / ramp artifacts
-1 Arc Reactor (MSH) 243
+1 Cosmic Cube (MSH) 245
 1 Season of Loss (BLB) 112
 1 Barrels of Blasting Jelly (TLA) 254
 1 Goldvein Pick (FDN) 253

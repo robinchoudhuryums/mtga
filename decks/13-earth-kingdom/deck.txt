@@ -37,7 +37,7 @@
 1 New Generation's Technique (TMT) 126
 1 Prismatic Undercurrents (ECL) 189
 1 The Earth King (TLA) 172
-1 Elemental Teachings (TLA) 178
+1 Lumra, Bellow of the Woods (BLB) 183
 1 Spider-Man, Brooklyn Visionary (SPM) 115
 1 Ka-Zar of the Savage Land (MSH) 174
 1 Bite Down (FDN) 212
@@ -61,8 +61,7 @@
 5 Forest (MSH) 296
 
 # Flex — craft-target notes. See: deck.py flex 13
-#~ note: CRAFT — Lumra, Bellow of the Woods (M) ★: {4}{G}{G} P/T = lands, mills 4 + RETURNS ALL your lands from graveyard -- a ramp/lands finisher that snowballs the earthbend/landfall plan. (NOT a toughness card; power = toughness.) Bioengineered Future (R) ★: creatures enter with +1 counter per land that entered -- a landfall->counters payoff, ideal here. Sharp-Eyed Rookie (R) ~: vigilance body that grows a counter + investigates when a bigger creature enters (card advantage). Cut a weak earthbend body when crafting.
+#~ note: (Lumra, Bellow of the Woods now OWNED and maindecked over Elemental Teachings.) CRAFT — Bioengineered Future (R) ★: creatures enter with +1 counter per land that entered -- a landfall->counters payoff, ideal here. Sharp-Eyed Rookie (R) ~: vigilance body that grows a counter + investigates when a bigger creature enters (card advantage). Cut a weak earthbend body when crafting.
 
 #~ -Seismic Sense | +The Mind Stone | SIDEGRADE (owned): on-theme blink engine (harness = end-step self-blink to re-fire ETBs), but taps W only and needs ~7 mana to come online — a long-game engine, not a curve piece.
-#~ +Lumra, Bellow of the Woods | SIDEGRADE (owned): P/T = lands + returns all lands from graveyard; a big vigilance/reach body, but no lands-matter payoff here to exploit it.
 #~ +Evendo, Waking Haven | SIDEGRADE (owned): G ramp land (Station -> add G per creature) for the mana/ramp plan; swap over a tapland.
