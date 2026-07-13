@@ -1,213 +1,213 @@
 Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,Note
 Doctor Doom,Legendary Creature — Human Scientist Villain,"When Doctor Doom enters, create two 3/3 colorless Robot Villain artifact creature tokens named Doombot.
 As long as you control an artifact creature or a Plan, Doctor Doom has indestructible.
-At the beginning of your end step, you draw a card and lose 1 life.",B,Human; Scientist; Villain; card draw; tokens; etb,MSH,95,Mythic,,
+At the beginning of your end step, you draw a card and lose 1 life.",B,Human; Scientist; Villain; card draw; tokens; etb,MSH,95,Mythic,11,"villain payoff; also 12 | fits: 12,8"
 "King T'Challa // Black Panther, Hope Enduring",Legendary Creature — Human Noble Hero // Legendary Creature — Human Warrior Hero,"Flash
 Whenever a player draws their second card each turn, you draw a card.
 {4}{W}{U}: Transform King T'Challa. Activate only as a sorcery. // Flash
 Double strike
 Prevent all damage that would be dealt to Black Panther.
-Whenever Black Panther deals combat damage to a player, draw a card.",W/U,Human; Noble; Hero; Warrior; card draw; transform; double strike; combat; aggro; flash; tempo,MSH,219,Mythic,,
+Whenever Black Panther deals combat damage to a player, draw a card.",W/U,Human; Noble; Hero; Warrior; card draw; transform; double strike; combat; aggro; flash; tempo,MSH,219,Mythic,19,"best 19 (Bird Brain); also 15,17,16"
 The Ruinous Wrecking Crew,Legendary Creature — Human Villain,"The Ruinous Wrecking Crew enters with X +1/+1 counters on it.
 When The Ruinous Wrecking Crew enters, choose up to X —
 • Discard a card, then draw a card.
 • Target opponent loses 2 life.
 • Destroy target token.
-• Each player sacrifices a creature of their choice.",B/R,Human; Villain; counters; card draw; sacrifice; removal; etb,MSH,224,Rare,,
-The Scarlet Witch,Legendary Creature — Mutant Warlock Hero,"Instant and sorcery spells you cast with mana value 4 or greater cost {X} less to cast, where X is The Scarlet Witch's power.",R,Mutant; Warlock; Hero; spellslinger,MSH,151,Rare,,
+• Each player sacrifices a creature of their choice.",B/R,Human; Villain; counters; card draw; sacrifice; removal; etb,MSH,224,Rare,8,"best 8 (Sacrifices); also 21,21a,10"
+The Scarlet Witch,Legendary Creature — Mutant Warlock Hero,"Instant and sorcery spells you cast with mana value 4 or greater cost {X} less to cast, where X is The Scarlet Witch's power.",R,Mutant; Warlock; Hero; spellslinger,MSH,151,Rare,2,best 2 (Thundergod); also 17
 The Serpent Society,Legendary Creature — Human Snake Villain,"Deathtouch
 Ward—Get five poison counters. (A player with ten or more poison counters loses the game.)
-Whenever another creature you control with deathtouch dies, each opponent sacrifices a nontoken creature of their choice.",B/G,Human; Snake; Villain; sacrifice; ward; protection; deathtouch; combat; removal,MSH,226,Rare,,
-Vision Quest,Sorcery,"Search your library and/or graveyard for an artifact creature card with mana value X or less and put it onto the battlefield with X additional +1/+1 counters on it. If X is 4 or greater, it gains haste until end of turn. If you search your library this way, shuffle.",U/R,counters; reanimator; graveyard,MSH,237,Rare,,
+Whenever another creature you control with deathtouch dies, each opponent sacrifices a nontoken creature of their choice.",B/G,Human; Snake; Villain; sacrifice; ward; protection; deathtouch; combat; removal,MSH,226,Rare,8,"best 8 (Sacrifices); also 20b,21,21a"
+Vision Quest,Sorcery,"Search your library and/or graveyard for an artifact creature card with mana value X or less and put it onto the battlefield with X additional +1/+1 counters on it. If X is 4 or greater, it gains haste until end of turn. If you search your library this way, shuffle.",U/R,counters; reanimator; graveyard,MSH,237,Rare,17,best 17 (Spectrum)
 Death to Our Enemies,Enchantment — Plan,"Whenever you cast a noncreature spell, create a tapped Treasure token and put a plan counter on this enchantment.
-When the fourth plan counter is put on this enchantment, sacrifice it. When you do, it deals 7 damage divided as you choose among one or two targets.",R,Plan; counters; sacrifice; tokens; burn; treasure,MSH,127,Uncommon,,
+When the fourth plan counter is put on this enchantment, sacrifice it. When you do, it deals 7 damage divided as you choose among one or two targets.",R,Plan; counters; sacrifice; tokens; burn; treasure,MSH,127,Uncommon,21,"broadly useful — best 21 (Gastromancer); also 8,21a,1"
 "Ghost, Spectral Saboteur",Legendary Creature — Human Rogue Villain,"Flash
-Intangibility — Ghost can't be blocked.",U/B,Human; Rogue; Villain; flash; tempo,MSH,214,Uncommon,,
+Intangibility — Ghost can't be blocked.",U/B,Human; Rogue; Villain; flash; tempo,MSH,214,Uncommon,12,"best 12 (Drawn Conclusions); also 17,22"
 "Mister Hyde, Monster Within",Legendary Creature — Human Villain,"At the beginning of your upkeep, choose one —
 • Put a +1/+1 counter on Mister Hyde.
-• Remove a counter from a creature you control. If you do, draw a card.",G,Human; Villain; counters; card draw,MSH,176,Uncommon,,
+• Remove a counter from a creature you control. If you do, draw a card.",G,Human; Villain; counters; card draw,MSH,176,Uncommon,7,"broadly useful — best 7 (Earth's Mightiest); also 8,13,4"
 Emeritus of Woe // Demonic Tutor,Creature — Vampire Warlock // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)
-At the beginning of your end step, if two or more creatures died this turn, this creature becomes prepared. // Search your library for a card, put that card into your hand, then shuffle.",B,Vampire; Warlock; prepared; spellslinger; tempo,SOS,80,Mythic,,
+At the beginning of your end step, if two or more creatures died this turn, this creature becomes prepared. // Search your library for a card, put that card into your hand, then shuffle.",B,Vampire; Warlock; prepared; spellslinger; tempo,SOS,80,Mythic,general,black tutor — universally useful in any B deck
 Improvisation Capstone,Sorcery — Lesson,"Exile cards from the top of your library until you exile cards with total mana value 4 or greater. You may cast any number of spells from among them without paying their mana costs.
-Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",R,Lesson; paradigm,SOS,120,Mythic,,
+Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",R,Lesson; paradigm,SOS,120,Mythic,general,big R impulse/artifacts payoff
 "Lorehold, the Historian",Legendary Creature — Elder Dragon,"Flying, haste
 Each instant and sorcery card in your hand has miracle {2}. (You may cast a card for its miracle cost when you draw it if it's the first card you drew this turn.)
-At the beginning of each opponent's upkeep, you may discard a card. If you do, draw a card.",W/R,Elder; Dragon; card draw; flying; evasion; haste; aggro,SOS,201,Mythic,,
+At the beginning of each opponent's upkeep, you may discard a card. If you do, draw a card.",W/R,Elder; Dragon; card draw; flying; evasion; haste; aggro,SOS,201,Mythic,concept,"RW Lorehold artifacts/spells build-around | fits: 17,14,21a"
 "Prismari, the Inspiration",Legendary Creature — Elder Dragon,"Flying
 Ward—Pay 5 life.
-Instant and sorcery spells you cast have storm. (Whenever you cast an instant or sorcery spell, copy it for each spell cast before it this turn. You may choose new targets for the copies.)",U/R,Elder; Dragon; spellslinger; flying; evasion; ward; protection,SOS,212,Mythic,,
+Instant and sorcery spells you cast have storm. (Whenever you cast an instant or sorcery spell, copy it for each spell cast before it this turn. You may choose new targets for the copies.)",U/R,Elder; Dragon; spellslinger; flying; evasion; ward; protection,SOS,212,Mythic,concept,UR Prismari spellslinger build-around | fits: 17
 Professor Dellian Fel,Legendary Planeswalker — Dellian,"+2: You gain 3 life.
 0: You draw a card and lose 1 life.
 −3: Destroy target creature.
-−6: You get an emblem with ""Whenever you gain life, target opponent loses that much life.""",B/G,Dellian; Planeswalker; lifegain; card draw; removal; planeswalker,SOS,214,Mythic,,
+−6: You get an emblem with ""Whenever you gain life, target opponent loses that much life.""",B/G,Dellian; Planeswalker; lifegain; card draw; removal; planeswalker,SOS,214,Mythic,21,"best 21 (Gastromancer); also 8,21a,20b"
 "Silverquill, the Disputant",Legendary Creature — Elder Dragon,"Flying, vigilance
-Each instant and sorcery spell you cast has casualty 1. (As you cast that spell, you may sacrifice a creature with power 1 or greater. When you do, copy the spell and you may choose new targets for the copy.)",W/B,Elder; Dragon; sacrifice; spellslinger; flying; evasion; vigilance; combat,SOS,226,Mythic,,
-"Aziza, Mage Tower Captain",Legendary Creature — Djinn Sorcerer,"Whenever you cast an instant or sorcery spell, you may tap three untapped creatures you control. If you do, copy that spell. You may choose new targets for the copy.",W/R,Djinn; Sorcerer; spellslinger,SOS,174,Rare,,
+Each instant and sorcery spell you cast has casualty 1. (As you cast that spell, you may sacrifice a creature with power 1 or greater. When you do, copy the spell and you may choose new targets for the copy.)",W/B,Elder; Dragon; sacrifice; spellslinger; flying; evasion; vigilance; combat,SOS,226,Mythic,concept,"WB Silverquill drain/keywords build-around | fits: 21,17,20b"
+"Aziza, Mage Tower Captain",Legendary Creature — Djinn Sorcerer,"Whenever you cast an instant or sorcery spell, you may tap three untapped creatures you control. If you do, copy that spell. You may choose new targets for the copy.",W/R,Djinn; Sorcerer; spellslinger,SOS,174,Rare,concept,RW spells/magecraft (Strixhaven-style)
 Comforting Counsel,Enchantment,"Whenever you gain life, put a growth counter on this enchantment.
-As long as there are five or more growth counters on this enchantment, creatures you control get +3/+3.",G,counters; pump,SOS,143,Rare,,
+As long as there are five or more growth counters on this enchantment, creatures you control get +3/+3.",G,counters; pump,SOS,143,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 9,19b,19a"
 Deathcap Glade,Land,"This land enters tapped unless you control two or more other lands.
-{T}: Add {B} or {G}.",B/G,mana,SOS,253,Rare,,
+{T}: Add {B} or {G}.",B/G,mana,SOS,253,Rare,20b,"broadly useful — best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 13,21,21a"
 Magmablood Archaic,Creature — Avatar,"Trample, reach
 Converge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.
-Whenever you cast an instant or sorcery spell, creatures you control get +1/+0 until end of turn for each color of mana spent to cast that spell.",R,Avatar; counters; pump; spellslinger; reach; defense; converge; multicolor; trample; evasion,SOS,123,Rare,,
+Whenever you cast an instant or sorcery spell, creatures you control get +1/+0 until end of turn for each color of mana spent to cast that spell.",R,Avatar; counters; pump; spellslinger; reach; defense; converge; multicolor; trample; evasion,SOS,123,Rare,14,"red Avatar firebending; also 17 | fits: 17,9"
 Moment of Reckoning,Sorcery,"Choose up to four. You may choose the same mode more than once.
 • Destroy target nonland permanent.
-• Return target nonland permanent card from your graveyard to the battlefield.",W/B,graveyard; removal,SOS,205,Rare,,
+• Return target nonland permanent card from your graveyard to the battlefield.",W/B,graveyard; removal,SOS,205,Rare,6,"best 6 (Dead or Alive); also 20b,20a,20"
 "Moseo, Vein's New Dean",Legendary Creature — Bird Skeleton Warlock,"Flying
 When Moseo enters, create a 1/1 black and green Pest creature token with ""Whenever this token attacks, you gain 1 life.""
-Infusion — At the beginning of your end step, if you gained life this turn, return up to one target creature card with mana value X or less from your graveyard to the battlefield, where X is the amount of life you gained this turn.",B,Bird; Skeleton; Warlock; reanimator; graveyard; lifegain; tokens; etb; infusion; flying; evasion,SOS,91,Rare,,
+Infusion — At the beginning of your end step, if you gained life this turn, return up to one target creature card with mana value X or less from your graveyard to the battlefield, where X is the amount of life you gained this turn.",B,Bird; Skeleton; Warlock; reanimator; graveyard; lifegain; tokens; etb; infusion; flying; evasion,SOS,91,Rare,6,"broadly useful — best 6 (Dead or Alive); also 21,20a,5"
 "Nita, Forum Conciliator",Legendary Creature — Human Advisor,"Whenever you cast a spell you don't own, put a +1/+1 counter on each creature you control.
-{2}, Sacrifice another creature: Exile target instant or sorcery card from an opponent's graveyard. You may cast it this turn, and mana of any type can be spent to cast that spell. If that spell would be put into a graveyard, exile it instead. Activate only as a sorcery.",W/B,Human; Advisor; counters; graveyard; sacrifice; removal,SOS,206,Rare,,
-Planar Engineering,Sorcery,"Sacrifice two lands. Search your library for four basic land cards, put them onto the battlefield tapped, then shuffle.",G,sacrifice,SOS,158,Rare,,
-Slumbering Trudge,Creature — Plant Beast,"This creature enters with a number of stun counters on it equal to three minus X. If X is 2 or less, it enters tapped. (If a permanent with a stun counter would become untapped, remove one from it instead.)",G,Plant; Beast; counters,SOS,160,Rare,,
+{2}, Sacrifice another creature: Exile target instant or sorcery card from an opponent's graveyard. You may cast it this turn, and mana of any type can be spent to cast that spell. If that spell would be put into a graveyard, exile it instead. Activate only as a sorcery.",W/B,Human; Advisor; counters; graveyard; sacrifice; removal,SOS,206,Rare,21,"broadly useful — best 21 (Gastromancer); also 13,21a,14"
+Planar Engineering,Sorcery,"Sacrifice two lands. Search your library for four basic land cards, put them onto the battlefield tapped, then shuffle.",G,sacrifice,SOS,158,Rare,8,"best 8 (Sacrifices); also 21,21a,9"
+Slumbering Trudge,Creature — Plant Beast,"This creature enters with a number of stun counters on it equal to three minus X. If X is 2 or less, it enters tapped. (If a permanent with a stun counter would become untapped, remove one from it instead.)",G,Plant; Beast; counters,SOS,160,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 4,13,9"
 Splatter Technique,Sorcery,"Choose one —
 • Draw four cards.
-• Splatter Technique deals 4 damage to each creature and planeswalker.",U/R,card draw; burn,SOS,231,Rare,,
+• Splatter Technique deals 4 damage to each creature and planeswalker.",U/R,card draw; burn,SOS,231,Rare,17,best 17 (Spectrum)
 Sundown Pass,Land,"This land enters tapped unless you control two or more other lands.
-{T}: Add {R} or {W}.",W/R,mana,SOS,264,Rare,,
-Traumatic Critique,Instant,"Traumatic Critique deals X damage to any target. Draw two cards, then discard a card.",U/R,card draw; burn,SOS,239,Rare,,
+{T}: Add {R} or {W}.",W/R,mana,SOS,264,Rare,13,"best 13 (Earth Kingdom); also 21,21a,17"
+Traumatic Critique,Instant,"Traumatic Critique deals X damage to any target. Draw two cards, then discard a card.",U/R,card draw; burn,SOS,239,Rare,17,best 17 (Spectrum)
 Vastlands Scavenger // Bind to Life,Creature — Bear Druid // Instant,"Deathtouch
-This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Mill seven cards. Then put a creature card from among them onto the battlefield.",G,Bear; Druid; mill; prepared; spellslinger; tempo; graveyard; deathtouch; combat; removal,SOS,166,Rare,,
+This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Mill seven cards. Then put a creature card from among them onto the battlefield.",G,Bear; Druid; mill; prepared; spellslinger; tempo; graveyard; deathtouch; combat; removal,SOS,166,Rare,6,"best 6 (Dead or Alive); also 5,20b,8"
 Vicious Rivalry,Sorcery,"As an additional cost to cast this spell, pay X life.
-Destroy all artifacts and creatures with mana value X or less.",B/G,,SOS,241,Rare,,
+Destroy all artifacts and creatures with mana value X or less.",B/G,,SOS,241,Rare,general,BG fight/removal
 Additive Evolution,Enchantment,"When this enchantment enters, create a 0/0 green and blue Fractal creature token. Put three +1/+1 counters on it.
-At the beginning of combat on your turn, put a +1/+1 counter on target creature you control. It gains vigilance until end of turn.",G,counters; tokens; etb,SOS,139,Uncommon,,
-Archaic's Agony,Sorcery,"Converge — Archaic's Agony deals X damage to target creature, where X is the number of colors of mana spent to cast this spell. Exile cards from the top of your library equal to the excess damage dealt to that creature this way. You may play those cards until the end of your next turn.",R,burn; converge; multicolor,SOS,107,Uncommon,,
-Chelonian Tackle,Sorcery,Target creature you control gets +0/+10 until end of turn. Then it fights up to one target creature an opponent controls. (Each deals damage equal to its power to the other.),G,pump; fight; removal; combat,SOS,142,Uncommon,,
+At the beginning of combat on your turn, put a +1/+1 counter on target creature you control. It gains vigilance until end of turn.",G,counters; tokens; etb,SOS,139,Uncommon,21,"broadly useful — best 21 (Gastromancer); also 4,21a,13"
+Archaic's Agony,Sorcery,"Converge — Archaic's Agony deals X damage to target creature, where X is the number of colors of mana spent to cast this spell. Exile cards from the top of your library equal to the excess damage dealt to that creature this way. You may play those cards until the end of your next turn.",R,burn; converge; multicolor,SOS,107,Uncommon,2,"best 2 (Thundergod); also 10,1,9"
+Chelonian Tackle,Sorcery,Target creature you control gets +0/+10 until end of turn. Then it fights up to one target creature an opponent controls. (Each deals damage equal to its power to the other.),G,pump; fight; removal; combat,SOS,142,Uncommon,20b,"best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 7,19b,17"
 "Emil, Vastlands Roamer",Legendary Creature — Elf Druid,"Creatures you control with +1/+1 counters on them have trample.
-{4}{G}, {T}: Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it, where X is the number of differently named lands you control.",G,Elf; Druid; counters; tokens,SOS,146,Uncommon,,
-Infirmary Healer // Stream of Life,Creature — Cat Cleric // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Target player gains X life.",G,Cat; Cleric; prepared; spellslinger; tempo,SOS,152,Uncommon,,
+{4}{G}, {T}: Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it, where X is the number of differently named lands you control.",G,Elf; Druid; counters; tokens,SOS,146,Uncommon,4,"broadly useful — best 4 (Quantum Realm); also 21,7,9"
+Infirmary Healer // Stream of Life,Creature — Cat Cleric // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Target player gains X life.",G,Cat; Cleric; prepared; spellslinger; tempo,SOS,152,Uncommon,19a,best 19a (Bird Brain — Bant Tokens)
 "Lluwen, Exchange Student // Pest Friend",Legendary Creature — Elf Druid // Sorcery,"Lluwen enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)
-Exile a creature card from your graveyard: Lluwen becomes prepared. Activate only as a sorcery. // Create a 1/1 black and green Pest creature token with ""Whenever this token attacks, you gain 1 life.""",B/G,Elf; Druid; graveyard; lifegain; tokens; prepared; spellslinger; tempo,SOS,199,Uncommon,,
+Exile a creature card from your graveyard: Lluwen becomes prepared. Activate only as a sorcery. // Create a 1/1 black and green Pest creature token with ""Whenever this token attacks, you gain 1 life.""",B/G,Elf; Druid; graveyard; lifegain; tokens; prepared; spellslinger; tempo,SOS,199,Uncommon,6,"broadly useful — best 6 (Dead or Alive); also 21,8,21a"
 Tablet of Discovery,Artifact,"When this artifact enters, mill a card. You may play that card this turn. (To mill a card, put the top card of your library into your graveyard.)
 {T}: Add {R}.
-{T}: Add {R}{R}. Spend this mana only to cast instant and sorcery spells.",R,graveyard; mill; mana; etb; spellslinger,SOS,132,Uncommon,,
+{T}: Add {R}{R}. Spend this mana only to cast instant and sorcery spells.",R,graveyard; mill; mana; etb; spellslinger,SOS,132,Uncommon,13,"best 13 (Earth Kingdom); also 8,21,21a"
 Teacher's Pest,Creature — Skeleton Pest,"Menace (This creature can't be blocked except by two or more creatures.)
 Whenever this creature attacks, you gain 1 life.
-{B}{G}: Return this card from your graveyard to the battlefield tapped.",B/G,Skeleton; Pest; reanimator; graveyard; lifegain; menace; evasion,SOS,238,Uncommon,,
+{B}{G}: Return this card from your graveyard to the battlefield tapped.",B/G,Skeleton; Pest; reanimator; graveyard; lifegain; menace; evasion,SOS,238,Uncommon,6,"best 6 (Dead or Alive); also 5,21,8"
 Thornfist Striker,Creature — Elf Druid,"Ward {1} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)
-Infusion — Creatures you control get +1/+0 and have trample as long as you gained life this turn.",G,Elf; Druid; pump; infusion; ward; protection,SOS,164,Uncommon,,
+Infusion — Creatures you control get +1/+0 and have trample as long as you gained life this turn.",G,Elf; Druid; pump; infusion; ward; protection,SOS,164,Uncommon,19b,"best 19b (Bird Brain — GW Chocobo); also 19a,17,9"
 Thunderdrum Soloist,Creature — Dwarf Bard,"Reach
-Opus — Whenever you cast an instant or sorcery spell, this creature deals 1 damage to each opponent. If five or more mana was spent to cast that spell, this creature deals 3 damage to each opponent instead.",R,Dwarf; Bard; burn; spellslinger; reach; defense; opus,SOS,134,Uncommon,,
+Opus — Whenever you cast an instant or sorcery spell, this creature deals 1 damage to each opponent. If five or more mana was spent to cast that spell, this creature deals 3 damage to each opponent instead.",R,Dwarf; Bard; burn; spellslinger; reach; defense; opus,SOS,134,Uncommon,2,"best 2 (Thundergod); also 10,1,9"
 Topiary Lecturer,Creature — Elf Druid,"Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)
-{T}: Add an amount of {G} equal to this creature's power.",G,Elf; Druid; counters; mana; increment,SOS,165,Uncommon,,
-Bogwater Lumaret,Creature — Spirit Frog,"Whenever this creature or another creature you control enters, you gain 1 life.",B/G,Spirit; Frog; lifegain,SOS,177,Common,,
+{T}: Add an amount of {G} equal to this creature's power.",G,Elf; Druid; counters; mana; increment,SOS,165,Uncommon,13,"broadly useful — best 13 (Earth Kingdom); also 21,7,21a"
+Bogwater Lumaret,Creature — Spirit Frog,"Whenever this creature or another creature you control enters, you gain 1 life.",B/G,Spirit; Frog; lifegain,SOS,177,Common,21,"best 21 (Gastromancer); also 21a,20b,8"
 Pest Mascot,Creature — Pest Ape,"Trample
-Whenever you gain life, put a +1/+1 counter on this creature.",B/G,Pest; Ape; counters; trample; evasion,SOS,209,Common,,
+Whenever you gain life, put a +1/+1 counter on this creature.",B/G,Pest; Ape; counters; trample; evasion,SOS,209,Common,17,"best 17 (Spectrum); also 13,21,8"
 Spectacle Summit,Land,"This land enters tapped.
 {T}: Add {U} or {R}.
-{2}{U}{R}, {T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",U/R,graveyard; mana; selection; surveil,SOS,262,Common,,
+{2}{U}{R}, {T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",U/R,graveyard; mana; selection; surveil,SOS,262,Common,17,best 17 (Spectrum)
 Badgermole Cub,Creature — Badger Mole,"When this creature enters, earthbend 1. (Target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)
-Whenever you tap a creature for mana, add an additional {G}.",G,Badger; Mole; counters; etb; blink; earthbend; bending,TLA,167,Mythic,,
+Whenever you tap a creature for mana, add an additional {G}.",G,Badger; Mole; counters; etb; blink; earthbend; bending,TLA,167,Mythic,13,"best 13 (Earth Kingdom); also 21,4,21a"
 Fated Firepower,Enchantment,"Flash
 This enchantment enters with X fire counters on it.
-If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus an amount of damage equal to the number of fire counters on this enchantment instead.",R,flash; tempo,TLA,132,Mythic,,
+If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus an amount of damage equal to the number of fire counters on this enchantment instead.",R,flash; tempo,TLA,132,Mythic,concept,mono-R firebending/burn payoff; try 2/14
 Phoenix Fleet Airship,Artifact — Vehicle,"Flying
 At the beginning of your end step, if you sacrificed a permanent this turn, create a token that's a copy of this Vehicle.
 As long as you control eight or more permanents named Phoenix Fleet Airship, this Vehicle is an artifact creature.
-Crew 1",B,Vehicle; sacrifice; tokens; vehicle; flying; evasion; crew; vehicles,TLA,114,Mythic,,
+Crew 1",B,Vehicle; sacrifice; tokens; vehicle; flying; evasion; crew; vehicles,TLA,114,Mythic,21,"best 21 (Gastromancer); also 8,21a,1"
 The Rise of Sozin // Fire Lord Sozin,Enchantment — Saga // Legendary Creature — Human Noble,"(As this Saga enters and after your draw step, add a lore counter.)
 I — Destroy all creatures.
 II — Choose a card name. Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them. Then that player shuffles.
 III — Exile this Saga, then return it to the battlefield transformed under your control. // Menace, firebending 3 (Whenever this creature attacks, add {R}{R}{R}. This mana lasts until end of combat.)
-Whenever Fire Lord Sozin deals combat damage to a player, you may pay {X}. When you do, put any number of target creature cards with total mana value X or less from that player's graveyard onto the battlefield under your control.",B,Saga; Human; Noble; reanimator; graveyard; saga; transform; firebending; bending; menace; evasion,TLA,117,Mythic,,
+Whenever Fire Lord Sozin deals combat damage to a player, you may pay {X}. When you do, put any number of target creature cards with total mana value X or less from that player's graveyard onto the battlefield under your control.",B,Saga; Human; Noble; reanimator; graveyard; saga; transform; firebending; bending; menace; evasion,TLA,117,Mythic,14,"broadly useful — best 14 (Dragon King Roku); also 6,17,13"
 "Azula, Cunning Usurper",Legendary Creature — Human Noble Rogue,"Firebending 2 (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)
 When Azula enters, target opponent exiles a nontoken creature they control, then they exile a nonland card from their graveyard.
-During your turn, you may cast cards exiled with Azula and you may cast them as though they had flash. Mana of any type can be spent to cast those spells.",U/B,Human; Noble; Rogue; graveyard; etb; firebending; bending,TLA,208,Rare,,
-Diligent Zookeeper,Creature — Human Citizen Ally,"Each non-Human creature you control gets +1/+1 for each of its creature types, to a maximum of 10.",G,Human; Citizen; Ally; pump,TLA,171,Rare,,
+During your turn, you may cast cards exiled with Azula and you may cast them as though they had flash. Mana of any type can be spent to cast those spells.",U/B,Human; Noble; Rogue; graveyard; etb; firebending; bending,TLA,208,Rare,22,"best 22 (Bloodbending); also 17,12"
+Diligent Zookeeper,Creature — Human Citizen Ally,"Each non-Human creature you control gets +1/+1 for each of its creature types, to a maximum of 10.",G,Human; Citizen; Ally; pump,TLA,171,Rare,17,"best 17 (Spectrum); also 19b,13,7"
 Earth King's Lieutenant,Creature — Human Soldier Ally,"Trample
 When this creature enters, put a +1/+1 counter on each other Ally creature you control.
-Whenever another Ally you control enters, put a +1/+1 counter on this creature.",W/G,Human; Soldier; Ally; counters; etb; trample; evasion,TLA,217,Rare,,
+Whenever another Ally you control enters, put a +1/+1 counter on this creature.",W/G,Human; Soldier; Ally; counters; etb; trample; evasion,TLA,217,Rare,13,"broadly useful — best 13 (Earth Kingdom); also 17,7,19b"
 "Sokka, Bold Boomeranger",Legendary Creature — Human Warrior Ally,"When Sokka enters, discard up to two cards, then draw that many cards.
-Whenever you cast an artifact or Lesson spell, put a +1/+1 counter on Sokka.",U/R,Human; Warrior; Ally; counters; card draw; etb,TLA,240,Rare,,
+Whenever you cast an artifact or Lesson spell, put a +1/+1 counter on Sokka.",U/R,Human; Warrior; Ally; counters; card draw; etb,TLA,240,Rare,17,RU only fits 17
 The Fire Nation Drill,Legendary Artifact — Vehicle,"Trample
 When The Fire Nation Drill enters, you may tap it. When you do, destroy target creature with power 4 or less.
 {1}: Permanents your opponents control lose hexproof and indestructible until end of turn.
-Crew 2",B,Vehicle; removal; etb; vehicle; crew; vehicles; trample; evasion,TLA,98,Rare,,
+Crew 2",B,Vehicle; removal; etb; vehicle; crew; vehicles; trample; evasion,TLA,98,Rare,21,"broadly useful — best 21 (Gastromancer); also 17,20b,20a"
 The Lion-Turtle,Legendary Creature — Elder Cat Turtle,"Vigilance, reach
 When The Lion-Turtle enters, you gain 3 life.
 The Lion-Turtle can't attack or block unless there are three or more Lesson cards in your graveyard.
-{T}: Add one mana of any color.",U/G,Elder; Cat; Turtle; graveyard; lifegain; mana; etb; reach; defense; vigilance; combat,TLA,232,Rare,,
+{T}: Add one mana of any color.",U/G,Elder; Cat; Turtle; graveyard; lifegain; mana; etb; reach; defense; vigilance; combat,TLA,232,Rare,19a,"best 19a (Bird Brain — Bant Tokens); also 17,4"
 "Zhao, the Moon Slayer",Legendary Creature — Human Soldier,"Menace
 Nonbasic lands enter tapped.
 {7}: Put a conqueror counter on Zhao.
-As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,,
+As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17"
 Foggy Swamp Spirit Keeper,Creature — Human Druid Ally,"Lifelink
-Whenever you draw your second card each turn, create a 1/1 colorless Spirit creature token with ""This token can't block or be blocked by non-Spirit creatures.""",U/B,Human; Druid; Ally; lifegain; tokens; lifelink,TLA,222,Uncommon,,
-Ozai's Cruelty,Sorcery — Lesson,Ozai's Cruelty deals 2 damage to target player. That player discards two cards.,B,Lesson; burn; discard,TLA,113,Uncommon,,
+Whenever you draw your second card each turn, create a 1/1 colorless Spirit creature token with ""This token can't block or be blocked by non-Spirit creatures.""",U/B,Human; Druid; Ally; lifegain; tokens; lifelink,TLA,222,Uncommon,17,"best 17 (Spectrum); also 22,12"
+Ozai's Cruelty,Sorcery — Lesson,Ozai's Cruelty deals 2 damage to target player. That player discards two cards.,B,Lesson; burn; discard,TLA,113,Uncommon,10,"best 10 (Mad Villainy); also 1,22,14"
 Unlucky Cabbage Merchant,Creature — Human Citizen,"When this creature enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
-Whenever you sacrifice a Food, you may search your library for a basic land card and put it onto the battlefield tapped. If you search your library this way, put this creature on the bottom of its owner's library, then shuffle.",G,Human; Citizen; lifegain; sacrifice; tokens; ramp; etb; food,TLA,201,Uncommon,,
+Whenever you sacrifice a Food, you may search your library for a basic land card and put it onto the battlefield tapped. If you search your library this way, put this creature on the bottom of its owner's library, then shuffle.",G,Human; Citizen; lifegain; sacrifice; tokens; ramp; etb; food,TLA,201,Uncommon,21,"best 21 (Gastromancer); also 21a,8,19b"
 "Armaggon, Future Shark",Legendary Creature — Shark Horror Mutant,"Flash
-When Armaggon enters, destroy up to three target creatures.",B,Shark; Horror; Mutant; etb; flash; tempo,TMT,58,Rare,,
-Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,,
+When Armaggon enters, destroy up to three target creatures.",B,Shark; Horror; Mutant; etb; flash; tempo,TMT,58,Rare,21,"broadly useful — best 21 (Gastromancer); also 20,13,21a"
+Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,8,"best 8 (Sacrifices); also 21,21a,5"
 Cool but Rude,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
 Whenever you attack, you may discard a card. If you do, draw a card.
 {1}{R}: Level 2
 Whenever you discard a card, this Class deals 2 damage to each opponent.
 {1}{R}: Level 3
-When this Class becomes level 3, search your library for a card, put it into your hand, shuffle, then discard a card at random.",R,Class; card draw; burn,TMT,89,Rare,,
+When this Class becomes level 3, search your library for a card, put it into your hand, shuffle, then discard a card at random.",R,Class; card draw; burn,TMT,89,Rare,2,"best 2 (Thundergod); also 8,1,21a"
 "Don & Raph, Hard Science",Legendary Creature — Mutant Ninja Turtle,"Menace
-Whenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)",U/R,Mutant; Ninja; Turtle; menace; evasion,TMT,144,Rare,,
+Whenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)",U/R,Mutant; Ninja; Turtle; menace; evasion,TMT,144,Rare,17,best 17 (Spectrum)
 Groundchuck & Dirtbag,Legendary Creature — Ox Mole Mutant,"Trample
-Whenever you tap a land for mana, add {G}.",G,Ox; Mole; Mutant; trample; evasion,TMT,115,Rare,,
+Whenever you tap a land for mana, add {G}.",G,Ox; Mole; Mutant; trample; evasion,TMT,115,Rare,17,"best 17 (Spectrum); also 19a,19b,4"
 Improvised Arsenal,Artifact — Equipment,"Equipped creature gets +1/+0 for each artifact you control.
 {4}{R}: Create a token that's a copy of this Equipment.
-Equip {R}",R,Equipment; tokens; equipment; pump; equip,TMT,92,Rare,,
+Equip {R}",R,Equipment; tokens; equipment; pump; equip,TMT,92,Rare,10,"broadly useful — best 10 (Mad Villainy); also 9,1,21"
 Krang & Shredder,Legendary Creature — Utrom Human Ninja,"Whenever Krang & Shredder enter or attack, each opponent exiles cards from the top of their library until they exile a nonland card.
-Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, you may cast a card exiled with Krang & Shredder without paying its mana cost.",U/B,Utrom; Human; Ninja; disappear,TMT,153,Rare,,
+Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, you may cast a card exiled with Krang & Shredder without paying its mana cost.",U/B,Utrom; Human; Ninja; disappear,TMT,153,Rare,17,"best 17 (Spectrum); also 22,12"
 "Madame Null, Power Broker",Legendary Creature — Demon Advisor,"Deathtouch
-Whenever another creature you control enters, you may pay life equal to its power. If you do, put that many +1/+1 counters on it.",B,Demon; Advisor; counters; deathtouch; combat; removal,TMT,66,Rare,,
+Whenever another creature you control enters, you may pay life equal to its power. If you do, put that many +1/+1 counters on it.",B,Demon; Advisor; counters; deathtouch; combat; removal,TMT,66,Rare,20b,"broadly useful — best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 11,8,21"
 Michelangelo's Technique,Sorcery,"Sneak {3}{G} (You may cast this spell for {3}{G} if you also return an unblocked attacker you control to hand during the declare blockers step.)
-Look at the top eight cards of your library. Put up to two creature cards with total mana value 6 or less from among them onto the battlefield and the rest on the bottom of your library in a random order.",G,selection; sneak; tempo; cost-reduction,TMT,122,Rare,,
+Look at the top eight cards of your library. Put up to two creature cards with total mana value 6 or less from among them onto the battlefield and the rest on the bottom of your library in a random order.",G,selection; sneak; tempo; cost-reduction,TMT,122,Rare,19a,"best 19a (Bird Brain — Bant Tokens); also 13,5,17"
 "Mikey & Don, Party Planners",Legendary Creature — Mutant Ninja Turtle,"Ward {2}
 You may look at the top card of your library any time.
-You may play lands and cast Mutant, Ninja, or Turtle spells from the top of your library. If you cast a creature spell this way, that creature enters with an additional +1/+1 counter on it.",U/G,Mutant; Ninja; Turtle; counters; selection; ward; protection,TMT,157,Rare,,
+You may play lands and cast Mutant, Ninja, or Turtle spells from the top of your library. If you cast a creature spell this way, that creature enters with an additional +1/+1 counter on it.",U/G,Mutant; Ninja; Turtle; counters; selection; ward; protection,TMT,157,Rare,4,"best 4 (Quantum Realm); also 19a,17"
 "Mutagen Man, Living Ooze",Legendary Creature — Ooze Mutant,"Trample
 Activated abilities of artifact tokens you control cost {1} less to activate.
-When Mutagen Man enters, create X Mutagen tokens. (They're artifacts with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",G,Ooze; Mutant; counters; sacrifice; tokens; etb; trample; evasion,TMT,124,Rare,,
+When Mutagen Man enters, create X Mutagen tokens. (They're artifacts with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",G,Ooze; Mutant; counters; sacrifice; tokens; etb; trample; evasion,TMT,124,Rare,21,"broadly useful — best 21 (Gastromancer); also 21a,8,4"
 Ninja Teen,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
 Whenever a creature you control leaves the battlefield, each opponent loses 1 life.
 {1}{B}: Level 2
 Creatures you control get +1/+0 and have menace.
 {B}: Level 3
 Creature cards in your graveyard have sneak {3}{B}.
-You may cast creature spells from your graveyard using their sneak abilities.",B,Class; graveyard; pump,TMT,67,Rare,,
+You may cast creature spells from your graveyard using their sneak abilities.",B,Class; graveyard; pump,TMT,67,Rare,20,"Ninja flavor (heuristic top 6 graveyard) | fits: 6,5,22"
 "Raph & Mikey, Troublemakers",Legendary Creature — Mutant Ninja Turtle,"Trample, haste
-Whenever Raph & Mikey attack, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.",R/G,Mutant; Ninja; Turtle; haste; aggro; trample; evasion,TMT,167,Rare,,
+Whenever Raph & Mikey attack, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.",R/G,Mutant; Ninja; Turtle; haste; aggro; trample; evasion,TMT,167,Rare,17,best 17 (Spectrum)
 Raphael's Technique,Instant,"Sneak {2}{R} (You may cast this spell for {2}{R} if you also return an unblocked attacker you control to hand during the declare blockers step.)
-Each player may discard their hand and draw seven cards.",R,card draw; sneak; tempo; cost-reduction,TMT,105,Rare,,
+Each player may discard their hand and draw seven cards.",R,card draw; sneak; tempo; cost-reduction,TMT,105,Rare,8,"best 8 (Sacrifices); also 21a,21,2"
 "Raphael, the Nightwatcher",Legendary Creature — Mutant Ninja Turtle,"Sneak {1}{R}{R} (You may cast this spell for {1}{R}{R} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)
-Attacking creatures you control have double strike.",R,Mutant; Ninja; Turtle; sneak; tempo; cost-reduction,TMT,103,Rare,,
+Attacking creatures you control have double strike.",R,Mutant; Ninja; Turtle; sneak; tempo; cost-reduction,TMT,103,Rare,concept,mono-R TMNT aggro build-around
 "Shark Shredder, Killer Clone",Legendary Creature — Shark Octopus Ninja,"Sneak {3}{B}{B}
 First strike
-Whenever Shark Shredder deals combat damage to a player, put up to one target creature card from that player's graveyard onto the battlefield under your control. It enters tapped and attacking that player.",B,Shark; Octopus; Ninja; reanimator; graveyard; first strike; combat; sneak; tempo; cost-reduction,TMT,73,Rare,,
+Whenever Shark Shredder deals combat damage to a player, put up to one target creature card from that player's graveyard onto the battlefield under your control. It enters tapped and attacking that player.",B,Shark; Octopus; Ninja; reanimator; graveyard; first strike; combat; sneak; tempo; cost-reduction,TMT,73,Rare,6,"best 6 (Dead or Alive); also 20,5,11"
 "Slash, Reptile Rampager",Legendary Creature — Mutant Berserker Turtle,"Alliance — Whenever another creature you control enters, Slash deals 2 damage to each opponent.
-Whenever Slash attacks, create a 2/2 red Mutant creature token.",R,Mutant; Berserker; Turtle; tokens; burn; alliance; aggro; value,TMT,108,Rare,,
+Whenever Slash attacks, create a 2/2 red Mutant creature token.",R,Mutant; Berserker; Turtle; tokens; burn; alliance; aggro; value,TMT,108,Rare,1,"Rakdos aggro/burn/tokens; also 10 | fits: 10,9"
 South Wind Avatar,Creature — Snake Spirit Avatar,"Deathtouch
 Whenever another creature you control dies, you gain life equal to its toughness.
-Whenever you gain life, each opponent loses 1 life.",B,Snake; Spirit; Avatar; deathtouch; combat; removal,TMT,78,Rare,,
+Whenever you gain life, each opponent loses 1 life.",B,Snake; Spirit; Avatar; deathtouch; combat; removal,TMT,78,Rare,20b,"best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 20a,20,11"
 Splinter's Technique,Sorcery,"Sneak {1}{B} (You may cast this spell for {1}{B} if you also return an unblocked attacker you control to hand during the declare blockers step.)
-Search your library for a card, put that card into your hand, then shuffle.",B,sneak; tempo; cost-reduction,TMT,80,Rare,,
+Search your library for a card, put that card into your hand, then shuffle.",B,sneak; tempo; cost-reduction,TMT,80,Rare,20,Ninja sneak tempo
 "Splinter, Radical Rat",Legendary Creature — Mutant Ninja Rat,"If a triggered ability of a Ninja creature you control triggers, that ability triggers an additional time.
-{1}{U}: Target Ninja can't be blocked this turn.",W/U/B,Mutant; Ninja; Rat,TMT,169,Rare,,
+{1}{U}: Target Ninja can't be blocked this turn.",W/U/B,Mutant; Ninja; Rat,TMT,169,Rare,concept,WUB TMNT legends/tokens — new-deck focal point
 Transdimensional Bovine,Creature — Ox Avatar,"Flying
-{T}: Add two mana of any one color.",G,Ox; Avatar; mana; flying; evasion,TMT,134,Rare,,
+{T}: Add two mana of any one color.",G,Ox; Avatar; mana; flying; evasion,TMT,134,Rare,19a,"best 19a (Bird Brain — Bant Tokens); also 17,19b,20b"
 Turtle Power!,Enchantment,"Flash
-Turtles you control get +2/+2.",G,pump; flash; tempo,TMT,135,Rare,,
-Courier of Comestibles,Creature — Human Citizen,"When this creature enters, you may search your library for a Food card, reveal it, put it into your hand, then shuffle. If you don't put a card into your hand this way, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",G,Human; Citizen; lifegain; sacrifice; tokens; etb; food,TMT,112,Uncommon,,
+Turtles you control get +2/+2.",G,pump; flash; tempo,TMT,135,Rare,19a,"best 19a (Bird Brain — Bant Tokens); also 19b,17,9"
+Courier of Comestibles,Creature — Human Citizen,"When this creature enters, you may search your library for a Food card, reveal it, put it into your hand, then shuffle. If you don't put a card into your hand this way, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",G,Human; Citizen; lifegain; sacrifice; tokens; etb; food,TMT,112,Uncommon,21,"best 21 (Gastromancer); also 21a,8,19b"
 Karai's Technique,Sorcery,"Sneak {W}{B} (You may cast this spell for {W}{B} if you also return an unblocked attacker you control to hand during the declare blockers step.)
 Choose one or both —
 • Target creature gets +3/+3 until end of turn.
-• Target creature gets -3/-3 until end of turn.",W/B,pump; removal; sneak; tempo; cost-reduction,TMT,152,Uncommon,,
+• Target creature gets -3/-3 until end of turn.",W/B,pump; removal; sneak; tempo; cost-reduction,TMT,152,Uncommon,20,"Ninja sneak/removal | fits: 20a,20b"
 "Karai, Future of the Foot",Legendary Creature — Human Ninja,"Sneak {2}{W}{B} (You may cast this spell for {2}{W}{B} if you also return an unblocked attacker you control to hand during the declare blockers step. She enters tapped and attacking.)
-Whenever Karai deals combat damage to a player, return target creature card from your graveyard to your hand. If her sneak cost was paid this turn, instead return that card to the battlefield.",W/B,Human; Ninja; reanimator; graveyard; sneak; tempo; cost-reduction,TMT,151,Uncommon,,
+Whenever Karai deals combat damage to a player, return target creature card from your graveyard to your hand. If her sneak cost was paid this turn, instead return that card to the battlefield.",W/B,Human; Ninja; reanimator; graveyard; sneak; tempo; cost-reduction,TMT,151,Uncommon,20,"Foot Ninja flavor; also 6 graveyard | fits: 6,13"
 "Raphael, Most Attitude",Legendary Creature — Mutant Ninja Turtle,"Menace (This creature can't be blocked except by two or more creatures.)
 Alliance — Whenever another creature you control enters, you may exile the top card of your library.
-Whenever Raphael attacks, until end of turn, you may play a card exiled with Raphael.",R,Mutant; Ninja; Turtle; impulse; alliance; aggro; value; menace; evasion,TMT,101,Uncommon,,
-Tainted Treats,Instant,"Destroy target artifact or creature. If its mana value was 4 or less, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",B/G,lifegain; sacrifice; tokens; removal; food,TMT,170,Uncommon,,
+Whenever Raphael attacks, until end of turn, you may play a card exiled with Raphael.",R,Mutant; Ninja; Turtle; impulse; alliance; aggro; value; menace; evasion,TMT,101,Uncommon,2,"mono-R aggro; also 1 | fits: 1,17"
+Tainted Treats,Instant,"Destroy target artifact or creature. If its mana value was 4 or less, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",B/G,lifegain; sacrifice; tokens; removal; food,TMT,170,Uncommon,21,"best 21 (Gastromancer); also 21a,8,20b"
 West Wind Avatar,Creature — Cat Spirit Avatar,"Trample
 Whenever this creature enters or attacks, you may sacrifice a token or a land. If you do, you gain 3 life.
-Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, draw a card.",G,Cat; Spirit; Avatar; lifegain; card draw; sacrifice; disappear; trample; evasion,TMT,137,Uncommon,,
+Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, draw a card.",G,Cat; Spirit; Avatar; lifegain; card draw; sacrifice; disappear; trample; evasion,TMT,137,Uncommon,21,"best 21 (Gastromancer); also 8,21a,17"
 Illegitimate Business,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
-{T}: Add {B} or {G}.",B/G,lifegain; mana; etb,TMT,186,Common,,
+{T}: Add {B} or {G}.",B/G,lifegain; mana; etb,TMT,186,Common,21,"broadly useful — best 21 (Gastromancer); also 21a,20b,8"
