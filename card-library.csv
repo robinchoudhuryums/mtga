@@ -2987,3 +2987,6 @@ Rugged Highlands,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
 {T}: Add {R} or {G}.",R/G,lifegain; mana; etb,M21,249,2
 Lightning Strike,Instant,Lightning Strike deals 3 damage to any target.,R,burn,TLA,146,1
+Primeval Bounty,Enchantment,"Whenever you cast a creature spell, create a 3/3 green Beast creature token.
+Whenever you cast a noncreature spell, put three +1/+1 counters on target creature you control.
+Landfall — Whenever a land you control enters, you gain 3 life.",G,counters; lifegain; tokens; landfall; lands; ramp,FDN,644,1
