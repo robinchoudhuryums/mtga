@@ -1647,7 +1647,7 @@ Weftstalker Ardent,Creature — Drix Artificer,"Whenever another creature or art
 Warp {R} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",R,Drix; Artificer; burn; warp; tempo; cost-reduction,EOE,169,1
 Wisecrack,Instant,"Target creature deals damage equal to its power to itself. If that creature is attacking, Wisecrack deals 2 damage to that creature's controller.",R,burn,MSC,813,1
 Battlesong Berserker,Creature — Human Berserker,"Whenever you attack, target creature you control gets +1/+0 and gains menace until end of turn. (It can't be blocked except by two or more creatures.)",R,Human; Berserker; pump,FDN,78,1
-Bot Bashing Time,Sorcery,"Bot Bashing Time deals 6 damage to target creature. If that creature would die this turn, exile it instead.",R,burn,TMT,85,1
+Bot Bashing Time,Sorcery,"Bot Bashing Time deals 6 damage to target creature. If that creature would die this turn, exile it instead.",R,burn,TMT,85,2
 Bumi Bash,Sorcery,"Choose one —
 • Bumi Bash deals damage equal to the number of lands you control to target creature.
 • Destroy target land creature or nonbasic land.",R,removal,TLA,125,1
@@ -2503,7 +2503,7 @@ Instant and sorcery spells you cast have affinity for creatures.",B/G,Elder; Dra
 The Last Ronin,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Destroy all creatures.
 II — Mill four cards. When you do, return target creature card from your graveyard to your hand.
-III — Whenever a creature you control attacks alone this turn, put three +1/+1 counters on it. It gains trample, lifelink, and indestructible until end of turn.",B/G,Saga; counters; graveyard; mill; lifegain; sacrifice; saga,TMT,154,1
+III — Whenever a creature you control attacks alone this turn, put three +1/+1 counters on it. It gains trample, lifelink, and indestructible until end of turn.",B/G,Saga; counters; graveyard; mill; lifegain; sacrifice; saga,TMT,154,2
 Jungle Hollow,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
 {T}: Add {B} or {G}.",B/G,lifegain; mana; etb,M21,247,4
@@ -2970,7 +2970,7 @@ Baxter Building,Land,"{T}: Add {C}.
 {4}, {T}: Draw a card. Activate only if you control a creature with toughness 4 or greater.",Colorless,card draw; mana,MSH,261,2
 Zuko's Exile,Instant — Lesson,"Exile target artifact, creature, or enchantment. Its controller creates a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",Colorless,Lesson; card draw; sacrifice; tokens; removal; clue,TLA,3,1
 Rancorous Archaic,Creature — Avatar,"Trample, reach
-Converge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.",Colorless,Avatar; counters; reach; defense; converge; multicolor; trample; evasion,SOS,2,1
+Converge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.",Colorless,Avatar; counters; reach; defense; converge; multicolor; trample; evasion,SOS,2,2
 Stormclaw Rager,Creature — Ogre Warrior,"{1}, Sacrifice another creature or artifact: Put a +1/+1 counter on this creature and draw a card. Activate only as a sorcery.",B/R,Ogre; Warrior; counters; card draw; sacrifice,MOM,254,1
 "Spider-Man, Hometown Hero",Legendary Creature — Spider Human Hero,"Reach (This creature can block creatures with flying.)
 When Spider-Man enters, target creature with power 2 or less can't be blocked this turn.",R,Spider; Human; Hero; etb; reach; defense,MSC,556,1
@@ -3031,3 +3031,47 @@ Whenever a Food is put into a graveyard from the battlefield, put two +1/+1 coun
 "Taigam, Master Opportunist",Legendary Creature — Human Monk,"Flurry — Whenever you cast your second spell each turn, copy it, then exile the spell you cast with four time counters on it. If it doesn't have suspend, it gains suspend. (At the beginning of its owner's upkeep, they remove a time counter. When the last is removed, they may play it without paying its mana cost. If it's a creature, it has haste.)",U,Human; Monk; flurry; spellslinger,TDM,60,1
 Dragonbroods' Relic,Artifact,"{T}, Tap an untapped creature you control: Add one mana of any color.
 {3}{W}{U}{B}{R}{G}, Sacrifice this artifact: Create a 4/4 Dragon creature token named Reliquary Dragon that's all colors. It has flying, lifelink, and ""When this token enters, it deals 3 damage to any target."" Activate only as a sorcery.",W/U/B/R/G,lifegain; sacrifice; tokens; burn; etb,TDM,140,1
+Triceraton Commander,Creature — Dinosaur Soldier,"Flying
+Whenever this creature attacks, Dinosaurs you control other than this creature get +1/+1 and gain flying until end of turn.
+When this creature enters, create X 2/2 white Dinosaur Soldier creature tokens.",W,Dinosaur; Soldier; tokens; etb; pump; flying; evasion,TMT,25,2
+"Raphael, Most Attitude",Legendary Creature — Mutant Ninja Turtle,"Menace (This creature can't be blocked except by two or more creatures.)
+Alliance — Whenever another creature you control enters, you may exile the top card of your library.
+Whenever Raphael attacks, until end of turn, you may play a card exiled with Raphael.",R,Mutant; Ninja; Turtle; impulse; alliance; aggro; value; menace; evasion,TMT,101,1
+Tablet of Discovery,Artifact,"When this artifact enters, mill a card. You may play that card this turn. (To mill a card, put the top card of your library into your graveyard.)
+{T}: Add {R}.
+{T}: Add {R}{R}. Spend this mana only to cast instant and sorcery spells.",R,graveyard; mill; mana; etb; spellslinger,SOS,132,2
+Badgermole Cub,Creature — Badger Mole,"When this creature enters, earthbend 1. (Target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)
+Whenever you tap a creature for mana, add an additional {G}.",G,Badger; Mole; counters; etb; blink; earthbend; bending,TLA,167,1
+"Silverquill, the Disputant",Legendary Creature — Elder Dragon,"Flying, vigilance
+Each instant and sorcery spell you cast has casualty 1. (As you cast that spell, you may sacrifice a creature with power 1 or greater. When you do, copy the spell and you may choose new targets for the copy.)",W/B,Elder; Dragon; sacrifice; spellslinger; flying; evasion; vigilance; combat,SOS,226,1
+Everything Pizza,Artifact — Food,"When this artifact enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.
+{2}{W}{U}{B}{R}{G}, {T}, Sacrifice this artifact: Target player gains 3 life and draws a card. Each of your opponents discards a card. This artifact deals 3 damage to any target. Put three +1/+1 counters on up to one target creature.",W/U/B/R/G,Food; counters; sacrifice; burn; ramp; etb; discard,TMT,173,1
+"Lluwen, Exchange Student",Legendary Creature — Elf Druid // Sorcery,"Lluwen enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)
+Exile a creature card from your graveyard: Lluwen becomes prepared. Activate only as a sorcery. // Create a 1/1 black and green Pest creature token with ""Whenever this token attacks, you gain 1 life.""",B/G,Elf; Druid; graveyard; lifegain; tokens; prepared; spellslinger; tempo,SOS,199,1
+Witherbloom Charm,Instant,"Choose one —
+• You may sacrifice a permanent. If you do, draw two cards.
+• You gain 5 life.
+• Destroy target nonland permanent with mana value 2 or less.",B/G,lifegain; card draw; sacrifice; removal,SOS,244,1
+Root Manipulation,Sorcery,"Until end of turn, creatures you control get +2/+2 and gain menace and ""Whenever this creature attacks, you gain 1 life."" (A creature with menace can't be blocked except by two or more creatures.)",B/G,lifegain; pump,SOS,222,1
+Radiant Lotus,Artifact,"{T}, Sacrifice one or more artifacts: Choose a color. Target player adds three mana of the chosen color for each artifact sacrificed this way.",Colorless,sacrifice,DFT,240,1
+"Liliana, Dreadhorde General",Legendary Planeswalker — Liliana,"Whenever a creature you control dies, draw a card.
++1: Create a 2/2 black Zombie creature token.
+−4: Each player sacrifices two creatures of their choice.
+−9: Each opponent chooses a permanent they control of each permanent type and sacrifices the rest.",B,Liliana; Planeswalker; card draw; sacrifice; tokens; planeswalker,FDN,176,1
+"Kaito, Bane of Nightmares",Legendary Planeswalker — Kaito,"Ninjutsu {1}{U}{B} ({1}{U}{B}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)
+During your turn, as long as Kaito has one or more loyalty counters on him, he's a 3/4 Ninja creature and has hexproof.
++1: You get an emblem with ""Ninjas you control get +1/+1.""
+0: Surveil 2. Then draw a card for each opponent who lost life this turn.
+−2: Tap target creature. Put two stun counters on it.",U/B,Kaito; Planeswalker; counters; card draw; planeswalker; pump; surveil; graveyard; ninjutsu; evasion; tempo,DSK,220,1
+"Kaito, Cunning Infiltrator",Legendary Planeswalker — Kaito,"Whenever a creature you control deals combat damage to a player, put a loyalty counter on Kaito.
++1: Up to one target creature you control can't be blocked this turn. Draw a card, then discard a card.
+−2: Create a 2/1 blue Ninja creature token.
+−9: You get an emblem with ""Whenever a player casts a spell, you create a 2/1 blue Ninja creature token.""",U,Kaito; Planeswalker; counters; card draw; tokens; planeswalker,FDN,44,1
+Courier of Comestibles,Creature — Human Citizen,"When this creature enters, you may search your library for a Food card, reveal it, put it into your hand, then shuffle. If you don't put a card into your hand this way, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",G,Human; Citizen; lifegain; sacrifice; tokens; etb; food,TMT,112,1
+"Old Hob, Alleycat Blues",Legendary Creature — Cat Mutant Rebel,"At the beginning of combat on your turn, create a 2/2 red Mutant creature token. It gains haste until end of turn. Destroy it at the beginning of the next end step.
+{1}{W}: Target attacking creature token gains indestructible until end of turn.",W/R,Cat; Mutant; Rebel; tokens,TMT,99,1
+Willowrush Verge,Land,"{T}: Add {U}.
+{T}: Add {G}. Activate only if you control a Forest or an Island.",U/G,mana,DFT,270,1
+Archaic's Agony,Sorcery,"Converge — Archaic's Agony deals X damage to target creature, where X is the number of colors of mana spent to cast this spell. Exile cards from the top of your library equal to the excess damage dealt to that creature this way. You may play those cards until the end of your next turn.",R,burn; converge; multicolor,SOS,107,1
+Emeritus of Woe,Creature — Vampire Warlock // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)
+At the beginning of your end step, if two or more creatures died this turn, this creature becomes prepared. // Search your library for a card, put that card into your hand, then shuffle.",B,Vampire; Warlock; prepared; spellslinger; tempo,SOS,80,1

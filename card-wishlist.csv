@@ -77,8 +77,6 @@ Intangibility — Ghost can't be blocked.",U/B,Human; Rogue; Villain; flash; tem
 "Mister Hyde, Monster Within",Legendary Creature — Human Villain,"At the beginning of your upkeep, choose one —
 • Put a +1/+1 counter on Mister Hyde.
 • Remove a counter from a creature you control. If you do, draw a card.",G,Human; Villain; counters; card draw,MSH,176,Uncommon,7,"broadly useful — best 7 (Earth's Mightiest); also 8,13,4"
-Emeritus of Woe // Demonic Tutor,Creature — Vampire Warlock // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)
-At the beginning of your end step, if two or more creatures died this turn, this creature becomes prepared. // Search your library for a card, put that card into your hand, then shuffle.",B,Vampire; Warlock; prepared; spellslinger; tempo,SOS,80,Mythic,general,black tutor — universally useful in any B deck
 Improvisation Capstone,Sorcery — Lesson,"Exile cards from the top of your library until you exile cards with total mana value 4 or greater. You may cast any number of spells from among them without paying their mana costs.
 Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",R,Lesson; paradigm,SOS,120,Mythic,general,big R impulse/artifacts payoff
 "Lorehold, the Historian",Legendary Creature — Elder Dragon,"Flying, haste
@@ -94,8 +92,6 @@ Professor Dellian Fel,Legendary Planeswalker — Dellian,"+2: You gain 3 life.
 "Quandrix, the Proof",Legendary Creature — Elder Dragon,"Flying, trample
 Cascade (When you cast this spell, exile cards from the top of your library until you exile a nonland card that costs less. You may cast it without paying its mana cost. Put the exiled cards on the bottom in a random order.)
 Instant and sorcery spells you cast from your hand have cascade.",U/G,Elder; Dragon; spellslinger; cascade; value; flying; evasion; trample,SOS,218,Mythic,19a,
-"Silverquill, the Disputant",Legendary Creature — Elder Dragon,"Flying, vigilance
-Each instant and sorcery spell you cast has casualty 1. (As you cast that spell, you may sacrifice a creature with power 1 or greater. When you do, copy the spell and you may choose new targets for the copy.)",W/B,Elder; Dragon; sacrifice; spellslinger; flying; evasion; vigilance; combat,SOS,226,Mythic,concept,"WB Silverquill drain/keywords build-around | fits: 21,17,20b"
 The Dawning Archaic,Legendary Creature — Avatar,"This spell costs {1} less to cast for each instant and sorcery card in your graveyard.
 Reach
 Whenever The Dawning Archaic attacks, you may cast target instant or sorcery card from your graveyard without paying its mana cost. If that spell would be put into your graveyard, exile it instead.",Colorless,Avatar; graveyard; reach; defense,SOS,1,Mythic,17,
@@ -135,19 +131,13 @@ Vicious Rivalry,Sorcery,"As an additional cost to cast this spell, pay X life.
 Destroy all artifacts and creatures with mana value X or less.",B/G,,SOS,241,Rare,general,BG fight/removal
 Additive Evolution,Enchantment,"When this enchantment enters, create a 0/0 green and blue Fractal creature token. Put three +1/+1 counters on it.
 At the beginning of combat on your turn, put a +1/+1 counter on target creature you control. It gains vigilance until end of turn.",G,counters; tokens; etb,SOS,139,Uncommon,4,pure +1/+1 counters payoff (Fractal + combat counters) — fits Quantum Realm
-Archaic's Agony,Sorcery,"Converge — Archaic's Agony deals X damage to target creature, where X is the number of colors of mana spent to cast this spell. Exile cards from the top of your library equal to the excess damage dealt to that creature this way. You may play those cards until the end of your next turn.",R,burn; converge; multicolor,SOS,107,Uncommon,2,"best 2 (Thundergod); also 10,1,9"
 Chelonian Tackle,Sorcery,Target creature you control gets +0/+10 until end of turn. Then it fights up to one target creature an opponent controls. (Each deals damage equal to its power to the other.),G,pump; fight; removal; combat,SOS,142,Uncommon,20b,"best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 7,19b,17"
 "Emil, Vastlands Roamer",Legendary Creature — Elf Druid,"Creatures you control with +1/+1 counters on them have trample.
 {4}{G}, {T}: Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it, where X is the number of differently named lands you control.",G,Elf; Druid; counters; tokens,SOS,146,Uncommon,4,"broadly useful — best 4 (Quantum Realm); also 21,7,9"
 Infirmary Healer // Stream of Life,Creature — Cat Cleric // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Target player gains X life.",G,Cat; Cleric; prepared; spellslinger; tempo,SOS,152,Uncommon,19a,best 19a (Bird Brain — Bant Tokens)
 Leech Collector // Bloodletting,Creature — Human Warlock // Sorcery,"Whenever you gain life for the first time each turn, this creature becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Each opponent loses 2 life.",B,Human; Warlock; prepared; spellslinger; tempo,SOS,88,Uncommon,20,"lifegain-drain payoff — becomes prepared on first lifegain, copies a 2-life drain"
-"Lluwen, Exchange Student // Pest Friend",Legendary Creature — Elf Druid // Sorcery,"Lluwen enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)
-Exile a creature card from your graveyard: Lluwen becomes prepared. Activate only as a sorcery. // Create a 1/1 black and green Pest creature token with ""Whenever this token attacks, you gain 1 life.""",B/G,Elf; Druid; graveyard; lifegain; tokens; prepared; spellslinger; tempo,SOS,199,Uncommon,6,BG graveyard value: prepared spell + Pest tokens; looser fit (also 21/8)
 Skycoach Waypoint,Land,"{T}: Add {C}.
 {3}, {T}: Target creature becomes prepared. (Only creatures with prepare spells can become prepared.)",Colorless,mana; prepared; spellslinger; tempo,SOS,261,Uncommon,2,
-Tablet of Discovery,Artifact,"When this artifact enters, mill a card. You may play that card this turn. (To mill a card, put the top card of your library into your graveyard.)
-{T}: Add {R}.
-{T}: Add {R}{R}. Spend this mana only to cast instant and sorcery spells.",R,graveyard; mill; mana; etb; spellslinger,SOS,132,Uncommon,2,"red spellslinger mana rock (mill+play; taps R for instants/sorceries) — fits Thundergod, not green ramp"
 Teacher's Pest,Creature — Skeleton Pest,"Menace (This creature can't be blocked except by two or more creatures.)
 Whenever this creature attacks, you gain 1 life.
 {B}{G}: Return this card from your graveyard to the battlefield tapped.",B/G,Skeleton; Pest; reanimator; graveyard; lifegain; menace; evasion,SOS,238,Uncommon,6,"best 6 (Dead or Alive); also 5,21,8"
@@ -200,8 +190,6 @@ Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your d
 I, II — Create a 5/5 green Elephant creature token.
 III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum
 Dragonclaw Strike,Sorcery,Double the power and toughness of target creature you control until end of turn. Then it fights up to one target creature an opponent controls. (Each deals damage equal to its power to the other.),U/R/G,fight; removal; combat; double,TDM,180,Uncommon,17,Temur (URG) pump+fight removal — only castable in 5c Spectrum
-Badgermole Cub,Creature — Badger Mole,"When this creature enters, earthbend 1. (Target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)
-Whenever you tap a creature for mana, add an additional {G}.",G,Badger; Mole; counters; etb; blink; earthbend; bending,TLA,167,Mythic,13,"best 13 (Earth Kingdom); also 21,4,21a"
 Fated Firepower,Enchantment,"Flash
 This enchantment enters with X fire counters on it.
 If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus an amount of damage equal to the number of fire counters on this enchantment instead.",R,flash; tempo,TLA,132,Mythic,concept,mono-R firebending/burn payoff; try 2/14
@@ -319,16 +307,12 @@ Weather Maker,Artifact,"Landfall — Whenever a land you control enters, put a c
 {T}: Add one mana of any color.
 {T}, Remove two charge counters from this artifact: Add {C}{C}.
 {T}, Remove three charge counters from this artifact: It deals 3 damage to any target.",Colorless,counters; burn; mana; landfall; lands; ramp,TMT,182,Rare,general,landfall any-color ramp rock — flexible fixing/ramp (also 13/19a landfall)
-Courier of Comestibles,Creature — Human Citizen,"When this creature enters, you may search your library for a Food card, reveal it, put it into your hand, then shuffle. If you don't put a card into your hand this way, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",G,Human; Citizen; lifegain; sacrifice; tokens; etb; food,TMT,112,Uncommon,21,Food tutor/maker — pure Gastromancer payoff
 Karai's Technique,Sorcery,"Sneak {W}{B} (You may cast this spell for {W}{B} if you also return an unblocked attacker you control to hand during the declare blockers step.)
 Choose one or both —
 • Target creature gets +3/+3 until end of turn.
 • Target creature gets -3/-3 until end of turn.",W/B,pump; removal; sneak; tempo; cost-reduction,TMT,152,Uncommon,20,"Ninja sneak/removal | fits: 20a,20b"
 "Karai, Future of the Foot",Legendary Creature — Human Ninja,"Sneak {2}{W}{B} (You may cast this spell for {2}{W}{B} if you also return an unblocked attacker you control to hand during the declare blockers step. She enters tapped and attacking.)
 Whenever Karai deals combat damage to a player, return target creature card from your graveyard to your hand. If her sneak cost was paid this turn, instead return that card to the battlefield.",W/B,Human; Ninja; reanimator; graveyard; sneak; tempo; cost-reduction,TMT,151,Uncommon,20,"Foot Ninja flavor; also 6 graveyard | fits: 6,13"
-"Raphael, Most Attitude",Legendary Creature — Mutant Ninja Turtle,"Menace (This creature can't be blocked except by two or more creatures.)
-Alliance — Whenever another creature you control enters, you may exile the top card of your library.
-Whenever Raphael attacks, until end of turn, you may play a card exiled with Raphael.",R,Mutant; Ninja; Turtle; impulse; alliance; aggro; value; menace; evasion,TMT,101,Uncommon,2,"mono-R aggro; also 1 | fits: 1,17"
 Tainted Treats,Instant,"Destroy target artifact or creature. If its mana value was 4 or less, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",B/G,lifegain; sacrifice; tokens; removal; food,TMT,170,Uncommon,21,removal that leaves a Food — on-theme removal for Gastromancer
 West Wind Avatar,Creature — Cat Spirit Avatar,"Trample
 Whenever this creature enters or attacks, you may sacrifice a token or a land. If you do, you gain 3 life.
