@@ -9,7 +9,7 @@
 1 Aang, Swift Savior (TLA) 204
 1 Appa, Steadfast Guardian (TLA) 10
 1 Sokka, Lateral Strategist (TLA) 241
-1 Cat-Owl (TLA) 212
+1 Spectral Sailor (FDN) 164
 1 Katara, Water Tribe's Hope (TLA) 231
 1 Hakoda, Selfless Commander (TLA) 23
 1 Ty Lee, Chi Blocker (TLA) 76
@@ -20,7 +20,7 @@
 1 North Pole Patrol (TLA) 65
 1 Absolute Virtue (FIN) 212
 1 Benevolent River Spirit (TLA) 45
-1 Water Tribe Captain (TLA) 41
+1 Yue, the Moon Spirit (TLA) 83
 1 South Pole Voyager (TLA) 35
 1 Giant Koi (TLA) 53
 1 Forecasting Fortune Teller (TLA) 51
@@ -31,18 +31,18 @@
 1 Aang's Iceberg (TLA) 5
 1 Path to Redemption (TLA) 31
 1 Crashing Wave (TLA) 47
-1 Lost Days (TLA) 62
-1 Boomerang Basics (TLA) 46
-1 Waterbending Scroll (TLA) 81
+1 Floodfarm Verge (DSK) 259
+1 Waterbending Lesson (TLA) 80
+1 East Wind Avatar (TMT) 5
 1 Gather the White Lotus (TLA) 20
-1 United Front (TLA) 39
+1 Waterbender Ascension (TLA) 79
 1 Air Nomad Legacy (TLA) 206
 1 The Legend of Yangchen (TLA) 27
-1 Glider Staff (TLA) 22
+1 Flexible Waterbender (TLA) 50
 1 Ember Island Production (TLA) 48
 1 Sandbenders' Storm (TLA) 34
 
 # Lands
-1 Abandoned Air Temple (TLA) 263
-11 Plains (ANB) 115
-11 Island (ANB) 113
+1 Hallowed Fountain (ECL) 265
+10 Plains (ANB) 115
+12 Island (ANB) 113
