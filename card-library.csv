@@ -149,7 +149,7 @@ I — Scry 2.
 II — You may put a Hero creature card with mana value 3 or less from your hand onto the battlefield. If you don't, draw a card.
 III — Put a +1/+1 counter on each creature you control.",W,Saga; counters; card draw; sacrifice; scry; saga; selection,MSH,28,1
 Pacifism,Enchantment — Aura,"Enchant creature
-Enchanted creature can't attack or block.",W,Aura; aura; enchant,ANB,16,1
+Enchanted creature can't attack or block.",W,Aura; aura; enchant,ANB,16,3
 Path to Redemption,Enchantment — Aura,"Enchant creature
 Enchanted creature can't attack or block.
 {5}, Sacrifice this Aura: Exile enchanted creature. Create a 1/1 white Ally creature token. Activate only during your turn.",W,Aura; sacrifice; tokens; aura; enchant,TLA,31,1
@@ -397,7 +397,7 @@ White Auracite,Artifact,"When this artifact enters, exile target nonland permane
 • Return target artifact or enchantment card from your graveyard to your hand.",W,Human; Hero; Villain; counters; graveyard; etb,MSH,42,1
 Avengers Assemble!,Enchantment,"Flash
 Heroes you control get +2/+2.
-At the beginning of each end step, if you attacked with a Hero this turn or a Hero entered the battlefield under your control this turn, draw a card.",W,card draw; pump; flash; tempo,MSH,6,1
+At the beginning of each end step, if you attacked with a Hero this turn or a Hero entered the battlefield under your control this turn, draw a card.",W,card draw; pump; flash; tempo,MSH,6,2
 Borough Backup,Sorcery,"Create two 3/2 white Hero creature tokens with vigilance.
 Basic landcycling {2} ({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",W,tokens; ramp; landcycling; card draw; lands; basic landcycling; typecycling; cycling,MSH,7,1
 "Captain Marvel, Earth's Protector",Legendary Creature — Human Kree Hero,"Flash
@@ -2223,7 +2223,7 @@ Whenever this creature attacks, untap target artifact or creature.",W/U,Cat; Bir
 Cloudblazer,Creature — Human Scout,"Flying
 When this creature enters, you gain 2 life and draw two cards.",W/U,Human; Scout; lifegain; card draw; etb; flying; evasion,FDN,653,1
 "Spider-Woman, Secret Agent",Legendary Creature — Spider Human Spy Hero,"Flash
-When Spider-Woman enters, tap target creature an opponent controls. That creature can't become untapped for as long as you control Spider-Woman.",W/U,Spider; Human; Spy; Hero; etb; flash; tempo,MSH,229,1
+When Spider-Woman enters, tap target creature an opponent controls. That creature can't become untapped for as long as you control Spider-Woman.",W/U,Spider; Human; Spy; Hero; etb; flash; tempo,MSH,229,2
 "Don & Leo, Problem Solvers",Legendary Creature — Mutant Ninja Turtle,"Vigilance
 At the beginning of your end step, exile up to one target artifact you control and up to one target creature you control. Then return them to the battlefield under their owners' control.",W/U,Mutant; Ninja; Turtle; blink; vigilance; combat,TMT,143,1
 "Katara, Water Tribe's Hope",Legendary Creature — Human Warrior Ally,"Vigilance
@@ -2964,7 +2964,7 @@ Lie in Wait,Sorcery,Return target creature card from your graveyard to your hand
 "Narset, Jeskai Waymaster",Legendary Creature — Human Monk,"At the beginning of your end step, you may discard your hand. If you do, draw cards equal to the number of spells you've cast this turn.",W/U/R,Human; Monk,TDM,209,1
 Avengers Tower,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast a Hero spell or to activate an ability of a Hero source.
-{4}, {T}: Look at the top three cards of your library. You may reveal a Hero card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",Colorless,mana; selection,MSH,260,1
+{4}, {T}: Look at the top three cards of your library. You may reveal a Hero card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",Colorless,mana; selection,MSH,260,3
 Baxter Building,Land,"{T}: Add {C}.
 {4}, {T}: Add four mana in any combination of colors.
 {4}, {T}: Draw a card. Activate only if you control a creature with toughness 4 or greater.",Colorless,card draw; mana,MSH,261,2
@@ -3075,3 +3075,4 @@ Willowrush Verge,Land,"{T}: Add {U}.
 Archaic's Agony,Sorcery,"Converge — Archaic's Agony deals X damage to target creature, where X is the number of colors of mana spent to cast this spell. Exile cards from the top of your library equal to the excess damage dealt to that creature this way. You may play those cards until the end of your next turn.",R,burn; converge; multicolor,SOS,107,1
 Emeritus of Woe,Creature — Vampire Warlock // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)
 At the beginning of your end step, if two or more creatures died this turn, this creature becomes prepared. // Search your library for a card, put that card into your hand, then shuffle.",B,Vampire; Warlock; prepared; spellslinger; tempo,SOS,80,1
+"U.S.Agent, John Walker",Legendary Creature — Human Soldier Hero,"When U.S.Agent enters, create a colorless Equipment artifact token named Sturdy Shield with ""Equipped creature gets +1/+2"" and equip {2}. Attach it to U.S.Agent.",W/B,Human; Soldier; Hero; tokens; equipment; pump,MSH,236,1

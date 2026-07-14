@@ -1,5 +1,5 @@
 #: name: Avengers
-#: format: Historic
+#: format: Standard
 #: colors: W
 #: notes: Mono-white Heroes — go-wide/midrange around Avengers/Hero payoffs. WIP
 #:        83-card pile (53 nonland + 30 land); refine down to a focused 60.
