@@ -35,7 +35,7 @@
 
 # Nonland — "draw your second card" payoffs
 1 Kid Loki (MSH) 63
-1 Mischievous Mystic (FDN) 47
+1 Kaito, Bane of Nightmares (DSK) 220
 1 Foggy Swamp Spirit Keeper (TLA) 222
 1 Super Intelligence (MSH) 77
 

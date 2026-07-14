@@ -31,7 +31,7 @@
 1 Yellowjacket, Heartless Marauder (MSH) 123
 1 Harmonized Trio (SOS) 52
 1 Erudite Wizard (FDN) 37
-1 Faebloom Trick (FDN) 38
+1 Kaito, Cunning Infiltrator (FDN) 44
 1 Trickster's Stratagem (MSH) 81
 1 Daring Waverider (BLB) 44
 1 Wanderwine Farewell (ECL) 83
