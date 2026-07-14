@@ -31,6 +31,17 @@ docs. This file is the source of truth for the workflow commands in
 - **Owned copies are fungible across printings.** For buildability, `deck.py`
   and `pool.py` both sum a card's `Quantity Owned` across every printing (a card
   owned 1× in two sets counts as 2) — never count a single printing in isolation.
+- **Decks share the collection — a card is NOT consumed by a deck.** In MTG Arena
+  the whole collection is available to every deck at once, so one owned copy can
+  sit in any number of decks *simultaneously*; owning N copies lets each deck run
+  up to N (and up to the format limit) with no competition between decks. The
+  buildability check already models this correctly — it compares *each* deck's
+  required quantity against total owned, independently, so a card in 5 decks
+  never needs 5× copies. When recommending swaps, therefore, never frame decks as
+  competing for a card, tell the user to "pick" one home, or "split" copies across
+  decks: the same copy can go everywhere it fits. (Recurring misread in past
+  sessions — the only real question per deck is "do I want it here," not "can I
+  spare a copy.")
 
 ## Common Gotchas
 

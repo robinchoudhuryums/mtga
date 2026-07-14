@@ -37,7 +37,7 @@
 1 Funeral Room // Awakening Hall (DSK) 100
 1 Kingpin's Enforcers (MSH) 102
 1 Coiling Rebirth (BLB) 86
-1 Painful Quandary (FDN) 179
+1 Emeritus of Woe (SOS) 80
 1 Scrounge for Eternity (EOE) 114
 
 # Lands

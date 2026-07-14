@@ -9,7 +9,7 @@
 1 Rapid Rescue (MSH) 181
 1 Call Damage Control (MSH) 162
 1 The Last Ronin (TMT) 154
-1 Hellcat, Undying Vigilante (MSH) 170
+1 Witherbloom, the Balancer (SOS) 245
 1 Lys Alana Informant (ECL) 181
 1 Midnight Tilling (ECL) 182
 1 Scout the City (MSC) 817
