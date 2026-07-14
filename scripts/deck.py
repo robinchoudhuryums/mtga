@@ -704,8 +704,9 @@ def classify_cost(keywords, text):
 # is to MEASURE the "light on removal / card advantage" judgment the /tune-deck
 # scorecard used to make by eye, not to be authoritative.
 ROLE_ORDER = ["Removal (spot)", "Sweeper", "Counter", "Card advantage",
-              "Ramp / fixing", "Team pump / anthem", "Protection / trick",
-              "Recursion"]
+              "Ramp / fixing", "Reanimation", "Payoff / engine", "Burn / drain",
+              "Lifegain", "Cost reduction / cheat", "Team pump / anthem",
+              "Protection / trick", "Recursion"]
 _ROLE_PATTERNS = {
     "Removal (spot)": [
         r"destroy target (?:creature|permanent|nonland permanent|artifact or creature|"
@@ -713,13 +714,16 @@ _ROLE_PATTERNS = {
         r"exile target (?:creature|permanent|nonland permanent|attacking|tapped)",
         r"deals? \d+ damage to (?:target|any target|another target)",
         r"fights? (?:target|another target)",
-        r"deals damage equal to its power to target (?:creature|creature or planeswalker)",
+        r"deals damage equal to (?:twice )?.{0,20}?power to target (?:creature|creature or planeswalker|attacking)",
         r"target creature gets -\d",
         r"return target creature.{0,40}?(?:owner|their) hand",
         r"enchanted creature can't attack or block",
     ],
     "Sweeper": [r"destroy all", r"exile all", r"all creatures get -",
-                r"each (?:other )?creature (?:gets|deals|is|you don't control)"],
+                r"each (?:other )?creature (?:gets|deals|is|you don't control)",
+                # scalable / conditional wipes the fixed patterns above miss
+                r"creature with mana value.{0,20}?or less.{0,40}?destroy",
+                r"destroy those creatures"],
     "Counter": [r"counter target"],
     "Card advantage": [r"draws? (?:two|three|four|x|that many) cards?",
                        r"draw a card for each", r"draws? cards? equal to",
@@ -727,19 +731,79 @@ _ROLE_PATTERNS = {
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
                       r"\{t\}: add \{",
                       r"put (?:a|that|those|up to \w+).{0,40}?land.{0,40}?onto the battlefield"],
+    # Return a permanent to the BATTLEFIELD from the graveyard (higher value than
+    # to-hand recursion). Catches "in your graveyard … return … to the battlefield"
+    # phrasing, which the old "from your graveyard" Recursion pattern silently missed
+    # (Too Evil to Stay Dead, Bringer of the Last Gift, sagas, etc.).
+    "Reanimation": [
+        r"(?:card|creature|permanent).{0,80}?in your graveyard.{0,80}?to the battlefield",
+        r"return .{0,60}?(?:creature|permanent|card).{0,40}?to the battlefield",
+        r"put .{0,50}?(?:creature|card|permanent).{0,60}?onto the battlefield",
+    ],
+    # Repeatable/triggered engines — the death, ETB-matters, lifegain and
+    # leaves-play payoffs the role map used to score as "no functional role"
+    # (Judge Magister Gabranth, Rot Farm Mortipede, aristocrats/lifedrain bodies).
+    "Payoff / engine": [
+        r"whenever .{0,60}?dies",
+        r"whenever (?:a|another|one or more) .{0,40}?(?:enters|leave|leaves|die|dies)",
+        r"whenever you gain life",
+        r"whenever you cast",
+        r"put a \+1/\+1 counter on .{0,60}?whenever",
+        r"\bwhenever\b.{0,80}?(?:draw a card|put a \+1/\+1 counter|create|each opponent loses)",
+    ],
+    # Direct damage / life loss to a player — reach & finishers the fixed-number
+    # removal pattern misses (Cat-Gator, drain effects).
+    "Burn / drain": [
+        r"deals damage equal to .{0,60}?(?:any target|a player|target player|each opponent|that player)",
+        r"(?:each opponent|target opponent|any opponent|that player|each player) loses \d",
+        r"loses life equal to",
+    ],
+    "Lifegain": [r"\blifelink\b", r"you gain \d+ life", r"gain \d+ life"],
+    # Cost reducers / free-cast enablers — the value that makes a nominally
+    # expensive card cheap (Diamond Weapon, affinity/convoke, cascade cheats).
+    "Cost reduction / cheat": [
+        r"costs \{[0-9x]+\} less",
+        r"costs \{1\} less for each",
+        r"\baffinity\b", r"\bconvoke\b", r"\bimprovise\b", r"\bcascade\b",
+        r"without paying its mana cost",
+    ],
     "Team pump / anthem": [r"(?:other )?creatures you control get \+"],
     "Protection / trick": [r"\bhexproof\b", r"\bindestructible\b", r"protection from",
                            r"gets \+\d+/\+\d+ until end of turn"],
-    "Recursion": [r"from your graveyard"],
+    "Recursion": [r"from your graveyard", r"card in your graveyard",
+                  r"return .{0,40}?to your hand"],
 }
 _ROLE_COMPILED = [(label, [re.compile(p) for p in _ROLE_PATTERNS[label]])
                   for label in ROLE_ORDER]
+
+# Mechanics whose value depends on the DECK (colors of mana available, board
+# state), not the card in isolation — the cuts/grade step must check them against
+# the specific deck, never rank them from the label alone (e.g. converge is dead
+# in a mono-color deck; affinity/X scale with your board).
+_CONTEXT_PATTERNS = {
+    "converge": [r"\bconverge\b", r"for each color of mana spent"],
+    "devotion": [r"\bdevotion\b"],
+    "affinity": [r"\baffinity\b"],
+    "convoke": [r"\bconvoke\b"],
+    "improvise": [r"\bimprovise\b"],
+}
+_CONTEXT_COMPILED = {k: [re.compile(p) for p in v] for k, v in _CONTEXT_PATTERNS.items()}
 
 
 def classify_roles(text):
     """Return the set of functional-role labels a card's oracle text matches."""
     t = (text or "").lower().replace("−", "-")  # normalize unicode minus
     return {label for label, pats in _ROLE_COMPILED if any(p.search(t) for p in pats)}
+
+
+def context_flags(text, mana_cost):
+    """Mechanics whose value is deck-dependent (converge/devotion/affinity/X-cost);
+    these must be graded against the deck, not from the shortlist label."""
+    t = (text or "").lower()
+    flags = [k for k, pats in _CONTEXT_COMPILED.items() if any(p.search(t) for p in pats)]
+    if mana_cost and "{x}" in mana_cost.lower():
+        flags.append("X-cost")
+    return flags
 
 
 def cmd_stats(args):
@@ -1688,10 +1752,12 @@ def cmd_cuts(args):
                 fit += theme_w[t]
                 if t in central:
                     hit_central = True
-        roles = classify_roles(cd["text"]) if cd else set()
+        text = cd["text"] if cd else ""
+        roles = classify_roles(text)
         subs = set(creature_subtypes(tline))
         tribal = sum(sub_count.get(st, 0) for st in subs)  # includes own copies
-        mv = (mana.get(nl) or (None, None))[1]
+        cost, mv = (mana.get(nl) or (None, None))
+        ctx = context_flags(text, cost)
 
         # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
         keep = fit + 3 * len(roles) + (1 if hit_central else 0) + min(tribal, 6)
@@ -1701,10 +1767,10 @@ def cmd_cuts(args):
         elif not tags:
             reasons.append("no synergy tags")
         if not roles:
-            reasons.append("no functional role")
+            reasons.append("role not auto-detected — read text")
         if subs and tribal <= q:
             reasons.append("off-tribe")
-        rows.append((keep, n, mv, sorted(roles), fit, reasons))
+        rows.append((keep, n, mv, sorted(roles), fit, reasons, ctx, text))
 
     if not rows:
         print(f"Deck {d['id']}: no nonland cards to evaluate.")
@@ -1717,12 +1783,29 @@ def cmd_cuts(args):
     print("Heuristic shortlist — spice/signature cards aren't known here.\n")
     print(f"  {'Card':30} {'MV':>3}  {'Fit':>4}  Roles / why-cuttable")
     print("-" * 74)
-    for keep, n, mv, roles, fit, reasons in rows[:limit]:
+    for keep, n, mv, roles, fit, reasons, ctx, text in rows[:limit]:
         mvs = str(mv) if mv is not None else "?"
         tail = ", ".join(roles) if roles else ("; ".join(reasons) if reasons else "—")
+        if ctx:
+            tail += f"   ⚠ context: {'/'.join(ctx)}"
         print(f"  {n[:30]:30} {mvs:>3}  {fit:>4}  {tail}")
-    print(f"\nPair with `deck.py suggest {d['id']}` for adds; preview a swap with "
-          f"`deck.py swap {d['id']} --cut <weak> --add <pick>`.")
+
+    # Surface the actual oracle text so a cut is graded from what the card DOES,
+    # never from the label above (the role map is a shortlist, not a verdict).
+    import textwrap
+    text_n = args.limit if getattr(args, "limit", 0) and args.limit > 0 else min(12, len(rows))
+    print(f"\n── Oracle text of the top {min(text_n, len(rows))} cut candidates "
+          f"(grade from THIS, not the label) ──")
+    for keep, n, mv, roles, fit, reasons, ctx, text in rows[:text_n]:
+        warn = f"   ⚠ context: {'/'.join(ctx)} — value depends on this deck" if ctx else ""
+        print(f"\n• {n}{warn}")
+        for para in (text or "(no oracle text on file)").split("\n"):
+            for line in (textwrap.wrap(para, width=86) or [""]):
+                print(f"    {line}")
+    print(f"\nRead the text above before cutting — the ranking is a shortlist, not a "
+          f"verdict, and can't see spice/signature cards. Pair with "
+          f"`deck.py suggest {d['id']}` for adds; preview a swap with "
+          f"`deck.py swap {d['id']} --cut <weak> --add <pick>` (shows full text of both).")
     return 0
 
 

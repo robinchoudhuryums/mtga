@@ -47,7 +47,7 @@
 1 Pym Technologies (MSH) 271
 1 Dreamroot Cascade (SOS) 254
 10 Forest (MSH) 295
-1 Thornwood Falls (FDN) 269
+1 Willowrush Verge (DFT) 270
 1 Breeding Pool (EOE) 251
 
 # Flex — STANDARD-LEGAL craftable +1/+1-counter payoffs. See: deck.py flex 4

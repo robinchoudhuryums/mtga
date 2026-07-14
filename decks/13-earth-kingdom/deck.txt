@@ -22,13 +22,13 @@
 1 Bumi, Unleashed (TLA) 211
 1 Sandbenders' Storm (TLA) 34
 1 Friendly Neighborhood (SPM) 8
-1 Bumi Bash (TLA) 125
+1 Witherbloom, the Balancer (SOS) 245
 1 Bushwhack (BRO) 174
 1 Seismic Sense (TLA) 195
 1 Call Damage Control (MSH) 162
 1 Claim the Kingdom (MSH) 163
 1 Great Divide Guide (TLA) 181
-1 Cycle of Renewal (TLA) 170
+1 Badgermole Cub (TLA) 167
 1 Galactic Wayfarer (EOE) 185
 1 Loot, Exuberant Explorer (FDN) 106
 1 Mole Man, Moloid Master (MSH) 177

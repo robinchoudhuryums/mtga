@@ -5,10 +5,10 @@
 #: notes: Abzan (W/B/G) — graveyard value / reanimator.
 
 # Nonland
-1 The Last Ronin (TMT) 154
+2 The Last Ronin (TMT) 154
 1 Exdeath, Void Warlock (FIN) 220
 1 Cloud of Darkness (FIN) 217
-1 Helping Hand (SOA) 5
+1 Lluwen, Exchange Student (SOS) 199
 1 Owlin Historian (SOS) 24
 1 Night Nurse, Healer of Heroes (MSH) 26
 1 Stone Docent (SOS) 36
@@ -23,7 +23,6 @@
 1 Ral Zarek, Guest Lecturer (SOS) 97
 1 Symbiote Spider-Man (SPM) 156
 1 Grim Reaper, Lethal Legionnaire (MSH) 98
-1 Rot Farm Mortipede (MKM) 102
 1 Coiling Rebirth (BLB) 86
 1 Prison Break (SPM) 61
 1 Forum Necroscribe (SOS) 84
@@ -33,7 +32,7 @@
 1 Punishing Punch (MSH) 180
 1 Sandman, Shifting Scoundrel (SPM) 112
 1 Avatar Destiny (TLA) 165
-1 Rydia's Return (FIN) 198
+1 Emeritus of Woe (SOS) 80
 1 Scout the City (SPM) 113
 1 Diamond Weapon (FIN) 183
 1 Cauldron of Essence (SOS) 179
