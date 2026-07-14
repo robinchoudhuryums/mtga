@@ -1,0 +1,63 @@
+#: name: Avengers
+#: format: Historic
+#: colors: W
+#: notes: Mono-white Heroes — go-wide/midrange around Avengers/Hero payoffs. WIP
+#:        83-card pile (53 nonland + 30 land); refine down to a focused 60.
+
+Deck
+1 Graduation Day (SOS) 16
+1 Agent Phil Coulson (MSH) 4
+2 Spider-Woman, Secret Agent (MSH) 229
+1 Omenport Vigilante (OTJ) 21
+3 Pacifism (ANB) 16
+1 Mockingbird, Ace Agent (MSH) 22
+1 Angel of Vitality (ANB) 1
+1 Friendly Neighborhood (SPM) 8
+1 Lita, Little Orphan Amphibian (TMT) 19
+1 Leonardo, Cutting Edge (TMT) 15
+1 Crystal Barricade (FDN) 7
+1 Ajani's Pridemate (FDN) 135
+1 Hinterland Sanctifier (FDN) 730
+1 Moonshaker Cavalry (WOE) 21
+1 Stasis Snare (FDN) 581
+1 Release the Dogs (FDN) 580
+1 Leonardo, Big Brother (TMT) 14
+1 Dazzling Angel (FDN) 9
+1 Antiquities on the Loose (SOS) 7
+1 Fortress Kin-Guard (TDM) 12
+1 Compassionate Healer (TLA) 13
+1 Dauntless Veteran (FDN) 8
+1 Agent Maria Hill (MSH) 2
+1 Archon's Glory (WOE) 2
+1 Focus Fire (EOE) 18
+1 Captain America, Super-Soldier (MSH) 9
+1 Serra Angel (FDN) 147
+1 Resolute Reinforcements (FDN) 145
+1 Stagecoach Security (OTJ) 30
+1 Brave Brawler (MSH) 8
+2 Avengers Assemble! (MSH) 6
+1 Unswerving Sloth (DFT) 34
+1 Starfall Invocation (BLB) 34
+1 Dwarven Castle Guard (FIN) 18
+1 Captain America, Wings of Freedom (MSH) 10
+1 Quake, Agent of S.H.I.E.L.D. (MSH) 32
+1 Aerith Rescue Mission (FIN) 5
+1 Okoye, Dora Milaje Leader (MSH) 27
+1 White Widow, Free Agent (MSH) 42
+1 Borough Backup (MSH) 7
+1 Captain Marvel, Earth's Protector (MSH) 11
+1 Invisible Woman, Sue Storm (MSH) 17
+1 U.S.Agent, John Walker (MSH) 236
+1 Quintessential Katana (TMT) 23
+1 Leonardo, Sewer Samurai (TMT) 17
+1 The Last Ronin's Technique (TMT) 12
+1 Don & Leo, Problem Solvers (TMT) 143
+1 Raph & Leo, Sibling Rivals (TMT) 166
+1 Mikey & Leo, Chaos & Order (TMT) 158
+
+# Lands
+24 Plains (MSH) 288
+3 Avengers Tower (MSH) 260
+1 Urban Retreat (SPM) 187
+1 Baxter Building (MSH) 261
+1 Surveillance Room (MSH) 274
