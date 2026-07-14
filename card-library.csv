@@ -3028,3 +3028,6 @@ Foretell {2}{R} (During your turn, you may pay {2} and exile this card from your
 "Ygra, Eater of All",Legendary Creature — Elemental Cat,"Ward—Sacrifice a Food.
 Other creatures are Food artifacts in addition to their other types and have ""{2}, {T}, Sacrifice this permanent: You gain 3 life.""
 Whenever a Food is put into a graveyard from the battlefield, put two +1/+1 counters on Ygra.",B/G,Elemental; Cat; counters; reanimator; graveyard; lifegain; sacrifice; food; ward; protection,BLB,241,1
+"Taigam, Master Opportunist",Legendary Creature — Human Monk,"Flurry — Whenever you cast your second spell each turn, copy it, then exile the spell you cast with four time counters on it. If it doesn't have suspend, it gains suspend. (At the beginning of its owner's upkeep, they remove a time counter. When the last is removed, they may play it without paying its mana cost. If it's a creature, it has haste.)",U,Human; Monk; flurry; spellslinger,TDM,60,1
+Dragonbroods' Relic,Artifact,"{T}, Tap an untapped creature you control: Add one mana of any color.
+{3}{W}{U}{B}{R}{G}, Sacrifice this artifact: Create a 4/4 Dragon creature token named Reliquary Dragon that's all colors. It has flying, lifelink, and ""When this token enters, it deals 3 damage to any target."" Activate only as a sorcery.",W/U/B/R/G,lifegain; sacrifice; tokens; burn; etb,TDM,140,1
