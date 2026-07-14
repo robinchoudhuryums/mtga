@@ -47,7 +47,7 @@ Deck
 2 Pacifism (ANB) 16
 1 Focus Fire (EOE) 18
 1 Red Guardian, Super-Soldier (MSH) 34
-1 Archon's Glory (WOE) 2
+1 Cosmogrand Zenith (EOE) 9
 1 Starfall Invocation (BLB) 34
 
 # Lands
