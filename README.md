@@ -162,6 +162,7 @@ python3 scripts/wishlist.py --set SOS --rarity rare,mythic   # filter (substring
 python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme
 python3 scripts/wishlist.py --target 14        # what you've earmarked for a deck
 python3 scripts/wishlist.py --by-set           # PACK OPTIMIZATION: cards per set, by rarity
+python3 scripts/wishlist.py --rank             # WILDCARD PRIORITY: fit + cross-deck breadth, tiered
 python3 scripts/wishlist.py --owned            # cards you've since acquired — prune these
 python3 scripts/wishlist.py --suggest-targets  # propose a Target per card (confidence-flagged)
 python3 scripts/wishlist.py --suggest-targets --write   # auto-fill the confident picks
@@ -187,9 +188,16 @@ manufacture a false-confident match. The intended loop for a new batch:
 
 `--by-set` is the gem-spending view: it ranks the sets by how many wishlist cards
 each pack could net you (broken down by rarity), so you open the highest-value
-packs first. `--owned` flags anything you've since crafted so you can drop it. Set
-`Target`/`Note` by editing the CSV directly. Paste a new batch anytime — Claude
-Code can add it and suggest which deck each card fits.
+packs first. `--rank` is the **wildcard-spend order**: it scores every card by
+theme fit (the same idf model as `--suggest-targets`) plus *cross-deck breadth*
+(how many decks it's castable in **and** shares a specific theme with — generic
+overlap doesn't count), then groups the list into recommendation tiers (A = craft
+first, B = solid single-deck upgrade, C = situational build-around) with a
+per-tier wildcard-cost rollup. It reads theme-fit, not raw power, so eyeball
+Tier C for generic-tagged bombs (planeswalkers, mana rocks). `--owned` flags
+anything you've since crafted so you can drop it. Set `Target`/`Note` by editing
+the CSV directly. Paste a new batch anytime — Claude Code can add it and suggest
+which deck each card fits.
 
 ### Deck — manage decks and variations
 
