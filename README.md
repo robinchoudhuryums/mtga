@@ -144,6 +144,53 @@ the wildcard cost of the craftable results. Rebuild the pool after a new set
 releases. For formats outside the stored pool (e.g. a one-off Historic card),
 just ask Claude Code — it can query Scryfall live and cross-check your library.
 
+### Wishlist — track craft targets you don't own yet
+
+`card-wishlist.csv` is a curated shortlist of **unowned** cards worth crafting,
+slotting into a deck, or building a new concept around — kept apart from your
+owned inventory (`card-library.csv`) and the full pool (`card-pool.csv`). Each card
+is auto-enriched (Rarity, Color, Type, oracle text, synergy tags) from the pool,
+with a Scryfall fallback for cards the pool lacks (e.g. newer double-faced cards,
+stored under their full `Front // Back` name). Two columns are yours to annotate:
+**Target** (a deck id, `general`, or `concept: …`) and **Note** (why it caught your
+eye).
+
+```
+python3 scripts/wishlist.py --add batch.txt   # append an Arena-export batch (enriches each)
+python3 scripts/wishlist.py                    # browse the whole wishlist
+python3 scripts/wishlist.py --set SOS --rarity rare,mythic   # filter (substring, AND-ed)
+python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme
+python3 scripts/wishlist.py --target 14        # what you've earmarked for a deck
+python3 scripts/wishlist.py --by-set           # PACK OPTIMIZATION: cards per set, by rarity
+python3 scripts/wishlist.py --owned            # cards you've since acquired — prune these
+python3 scripts/wishlist.py --suggest-targets  # propose a Target per card (confidence-flagged)
+python3 scripts/wishlist.py --suggest-targets --write   # auto-fill the confident picks
+```
+
+**Auto-targeting workflow (efficient + catch-all-resistant).** `--suggest-targets`
+scores each card's fit to every deck by **theme rarity (idf)**: a card that shares
+a *specific* theme with a deck (food → Gastromancer, earthbend → Earth Kingdom,
+the Ninja `sneak` package → Honor Among Thieves) gets a confident `STRONG`/`ok`
+pick, while a card that only overlaps on *generic* themes (`etb`, `counters`,
+`tokens`, `lifegain`, …) — the ones central to nearly every deck — is flagged
+`review`. That idf-weighting is deliberate: raw theme-overlap makes broad decks
+(5-color, or many-themed like Gastromancer) act as **catch-alls** that soak up
+anything castable; weighting by rarity kills that. Evergreen keywords (trample,
+deathtouch, …) are excluded from the signal too, so an incidental keyword can't
+manufacture a false-confident match. The intended loop for a new batch:
+
+1. `wishlist.py --add batch.txt` — append + enrich.
+2. `wishlist.py --suggest-targets --write` — auto-fill the `STRONG`/`ok` picks
+   into blank `Target`s (never overwrites your edits without `--overwrite`).
+3. Judge only the `review` cards from card text — they're the generic-value /
+   multi-home / new-concept cards where the tag heuristic genuinely can't decide.
+
+`--by-set` is the gem-spending view: it ranks the sets by how many wishlist cards
+each pack could net you (broken down by rarity), so you open the highest-value
+packs first. `--owned` flags anything you've since crafted so you can drop it. Set
+`Target`/`Note` by editing the CSV directly. Paste a new batch anytime — Claude
+Code can add it and suggest which deck each card fits.
+
 ### Deck — manage decks and variations
 
 ```
