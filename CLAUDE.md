@@ -57,7 +57,8 @@ docs. This file is the source of truth for the workflow commands in
   cards** (not just the type line) — so a later ability can't hide behind a
   truncated read (this is how M.O.D.O.K.'s board-wide −1/−1 and Momo's modal
   leaves-play trigger got missed when grading cuts from a sliced text field).
-  **Always grade a cut from this full-text preview, never from a `Card Text[:N]`
+  **Always grade a cut from full oracle text — the `swap` preview or the text
+  block `cuts` now prints — never from a role/fit label or a `Card Text[:N]`
   slice.** `--apply` writes with a `.bak` and an INV-04 re-check; if the add card
   is already in the deck it bumps that line rather than adding a second line for
   the same card. `deck.py apply-flex <id> <n>` promotes a `#~` flex line into the
@@ -70,8 +71,17 @@ docs. This file is the source of truth for the workflow commands in
   pool-absent card as *unverified*, not illegal (so WIP/older-print decks aren't
   false-flagged). `deck.py cuts <id>` is the counterpart to `suggest` (adds): it
   ranks nonland cards weakest-fit first (central-theme fit + functional role +
-  tribal contribution), but it's a heuristic shortlist that can't see spice/
-  signature cards — grade its picks, then preview with `swap`.
+  tribal contribution) **and prints the full oracle text of the top candidates
+  plus a `⚠ context` flag on deck-dependent mechanics (converge / devotion /
+  affinity / X-cost)** — because the role/fit line is a SHORTLIST SIGNAL, NOT A
+  GRADE: its classifier can miss what a card does (reanimation, counter-scaling,
+  burn/drain finishers, lifegain, cost-reduction) and can't see spice/signature
+  cards. **Read the printed oracle text (and check any `⚠ context` mechanic
+  against the deck's actual colors/board), then preview the swap with `swap`
+  (which re-shows both cards' full text) before recommending or applying a cut.**
+  Repeated cut mis-grades in past sessions traced to trusting the label instead
+  of the text — don't. For a holistic add/cut pass, prefer the `/tune-deck`
+  skill, which protects signature/spice cards and reserves a fun budget.
 - **"Not in library" for a card you own is the deck-dump undercount symptom.**
   `import_arena.py` takes a lower bound per line, so a card can end up
   *undercounted or entirely absent* from `card-library.csv` — then `deck.py
