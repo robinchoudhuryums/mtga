@@ -3076,3 +3076,11 @@ Archaic's Agony,Sorcery,"Converge — Archaic's Agony deals X damage to target c
 Emeritus of Woe,Creature — Vampire Warlock // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)
 At the beginning of your end step, if two or more creatures died this turn, this creature becomes prepared. // Search your library for a card, put that card into your hand, then shuffle.",B,Vampire; Warlock; prepared; spellslinger; tempo,SOS,80,1
 "U.S.Agent, John Walker",Legendary Creature — Human Soldier Hero,"When U.S.Agent enters, create a colorless Equipment artifact token named Sturdy Shield with ""Equipped creature gets +1/+2"" and equip {2}. Attach it to U.S.Agent.",W/B,Human; Soldier; Hero; tokens; equipment; pump,MSH,236,1
+Brass's Bounty,Sorcery,"For each land you control, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,sacrifice; tokens; treasure,FDN,190,1
+Go Ninja Go,Sorcery,"Choose one or both —
+• Exile target creature you control, then return it to the battlefield under its owner's control.
+• Go Ninja Go deals damage equal to the greatest power among creatures you control to target creature an opponent controls.",W/R,removal; blink,TMT,149,1
+The Super Hero Civil War,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Gain control of up to two target creatures with total mana value 6 or less for as long as this Saga remains on the battlefield.
+II — Creatures you control get +1/+1 and gain vigilance until end of turn.
+III — Target creature you control fights up to one other target creature.",W/R,Saga; sacrifice; saga; pump; theft; fight; removal; combat,MSH,231,1

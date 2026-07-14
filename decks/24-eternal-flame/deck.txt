@@ -1,0 +1,51 @@
+#: name: Eternal Flame
+#: format: Standard
+#: colors: WR
+#: notes: Boros (W/R) — new build. Fire/Hero midrange with treasure/spells accents
+#:        (Sozin's Comet, Brass's Bounty, Quintorius Kand, Aurelia). WIP — verify
+#:        count/curve and focus via tune-deck.
+
+Deck
+# Nonland
+1 United Front (TLA) 39
+1 Triceraton Commander (TMT) 25
+1 Nibelheim Aflame (FIN) 146
+1 Wartime Protestors (TLA) 160
+1 Broadcast Takeover (TMT) 86
+1 Sozin's Comet (TLA) 154
+1 Steel Wrecking Ball (SPM) 177
+1 Etali, Primal Storm (FDN) 194
+1 Brass's Bounty (FDN) 190
+1 Photon Blast Barrage (MSH) 147
+1 Go Ninja Go (TMT) 149
+1 EPF Point Squad (TMT) 145
+1 Spirit Mascot (SOS) 230
+1 Hardened Academic (SOS) 194
+1 Practiced Scrollsmith (SOS) 210
+1 Lightning, Army of One (FIN) 233
+1 Raph & Leo, Sibling Rivals (TMT) 166
+1 War Machine, Legacy of Iron (MSH) 238
+1 Daredevil, Man Without Fear (MSH) 213
+1 Heroic Reinforcements (FDN) 241
+1 Startled Relic Sloth (SOS) 233
+1 Sun Warriors (TLA) 244
+1 The Neutrinos (TMT) 160
+1 Hovel Hurler (ECL) 230
+1 The Super Hero Civil War (MSH) 231
+1 Quintorius Kand (LCI) 238
+1 Thor Odinson (MSH) 234
+1 Sami, Wildcat Captain (EOE) 226
+1 Aurelia, the Warleader (FDN) 651
+1 Catharsis (ECL) 209
+
+# Lands
+8 Mountain (MSH) 294
+9 Plains (MSH) 288
+1 The Cave of Two Lovers (TLA) 126
+1 Fire Nation Palace (TLA) 268
+1 Kavaron, Memorial World (EOE) 255
+1 Abraded Bluffs (OTJ) 251
+1 Sun-Blessed Peak (TLA) 280
+1 Boros Guildgate (FDN) 684
+1 Temple of Triumph (FDN) 705
+1 Wind-Scarred Crag (FDN) 271
