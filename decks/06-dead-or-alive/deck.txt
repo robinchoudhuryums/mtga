@@ -33,7 +33,7 @@
 1 Punishing Punch (MSH) 180
 1 Sandman, Shifting Scoundrel (SPM) 112
 1 Avatar Destiny (TLA) 165
-1 Rydia's Return (FIN) 198
+1 Emeritus of Woe (SOS) 80
 1 Scout the City (SPM) 113
 1 Diamond Weapon (FIN) 183
 1 Cauldron of Essence (SOS) 179

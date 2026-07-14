@@ -37,7 +37,7 @@
 1 Sweettooth Witch (WOE) 111
 1 Omni-Cheese Pizza (TMT) 176
 1 Iron Man Armor (MSH) 248
-1 Buster Sword (FIN) 255
+1 Radiant Lotus (DFT) 240
 
 # Nonland — fixing / ramp artifacts
 1 Cosmic Cube (MSH) 245

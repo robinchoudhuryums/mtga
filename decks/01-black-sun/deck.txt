@@ -16,7 +16,7 @@
 1 Kav Landseeker (EOE) 138
 1 Krenko, Mob Boss (FDN) 204
 1 Technodrome (TMT) 179
-1 Snarling Gorehound (MKM) 105
+1 Bot Bashing Time (TMT) 85
 1 Raven Eagle (TLA) 116
 1 Wick's Patrol (BLB) 121
 1 High-Society Hunter (FDN) 61
