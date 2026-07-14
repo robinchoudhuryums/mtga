@@ -387,6 +387,95 @@ def cmd_suggest_targets(rows, write=False, overwrite=False):
     return 0
 
 
+_WC_RANK = {"Mythic": 3, "Rare": 2, "Uncommon": 1, "Common": 0}
+
+
+def _rank_scores(rows):
+    """Score every wishlist card for wildcard-spend priority. Reuses the idf theme
+    model (so it stays consistent with --suggest-targets):
+
+      fit    – idf-weighted theme fit to the card's best-matching deck.
+      reuse  – # decks the card is castable in AND shares a SPECIFIC (idf-signal)
+               theme with — real cross-deck breadth, not generic overlap.
+      pri    – fit + 0.6 * max(0, reuse - 1)   (home-run fit + a breadth bonus).
+
+    Tiers: A = confident theme home (fit>=1.5 on a specific theme) OR breadth>=3;
+    B = a specific-theme fit / castable-on-theme in >=1 deck; C = generic/none.
+    """
+    fps, idf = _theme_model()
+    out = []
+    for r in rows:
+        ccols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+        ctags = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
+        best, best_specific, reuse = 0.0, [], 0
+        for did, dcols, central, twn in fps:
+            if not ccols.issubset(dcols):
+                continue
+            shared = ctags & central
+            if not shared:
+                continue
+            specific = sorted((t for t in shared if idf.get(t, 0) >= SPECIFIC_IDF
+                               and t.lower() not in NON_SIGNAL_TAGS),
+                              key=lambda t: -idf[t])
+            if specific:
+                reuse += 1
+            score = sum(idf.get(t, 0) * twn[t] for t in shared)
+            if score > best:
+                best, best_specific = score, specific
+        if best_specific and best >= 1.5:
+            conf = "STRONG"
+        elif best_specific:
+            conf = "ok"
+        else:
+            conf = "review"
+        pri = best + 0.6 * max(0, reuse - 1)
+        tier = "A" if (conf == "STRONG" or reuse >= 3) else \
+               "B" if (best_specific or reuse >= 1) else "C"
+        out.append({
+            "name": r.get("Card Name", ""), "rarity": (r.get("Rarity") or "").capitalize(),
+            "target": (r.get("Target") or "").strip() or "—",
+            "conf": conf, "fit": round(best, 2), "reuse": reuse,
+            "pri": round(pri, 2), "tier": tier,
+            "sig": "/".join(best_specific[:2]) or ("generic/no-theme" if conf == "review" else ""),
+        })
+    order = {"A": 0, "B": 1, "C": 2}
+    out.sort(key=lambda s: (order[s["tier"]], -s["pri"], -_WC_RANK.get(s["rarity"], 0), s["name"]))
+    return out
+
+
+def cmd_rank(rows):
+    """Rank the wishlist by wildcard-spend priority, grouped by recommendation tier."""
+    scored = _rank_scores(rows)
+    labels = {"A": "TIER A — craft first (confident theme home and/or real cross-deck breadth)",
+              "B": "TIER B — solid targeted upgrade (one clear deck)",
+              "C": "TIER C — situational / build-around (niche; craft when you build that deck)"}
+    cur = None
+    for s in scored:
+        if s["tier"] != cur:
+            cur = s["tier"]
+            n = sum(1 for x in scored if x["tier"] == cur)
+            print(f"\n{labels[cur]}  ({n} cards)")
+            print(f"  {'#':>3} {'Card':32} {'WC':3} {'Deck':6} {'reuse':>5} {'pri':>5}  signal")
+            print("  " + "-" * 86)
+            i = 0
+        i += 1
+        wc = (s["rarity"] or "?")[:1] or "?"
+        print(f"  {i:>3} {s['name'][:32]:32} {wc:3} {s['target']:6} "
+              f"{s['reuse']:>5} {s['pri']:>5}  {s['sig'][:34]}")
+    print("\n" + "=" * 60)
+    print("Wildcard cost by tier (you spend that rarity's wildcards):")
+    for t in ("A", "B", "C"):
+        by = {}
+        for s in scored:
+            if s["tier"] == t:
+                by[s["rarity"]] = by.get(s["rarity"], 0) + 1
+        line = ", ".join(f"{by[k]} {k}" for k in ("Mythic", "Rare", "Uncommon", "Common") if by.get(k))
+        print(f"  Tier {t}: {line}")
+    print("\nNote: ranking reads THEME-fit, not raw power — a few generic-tagged bombs "
+          "(planeswalkers, mana rocks, Krenko-likes) sit in Tier C; eyeball those.")
+    return 0
+
+
 def print_table(hits, owned):
     cols = ["Have", "Card Name", "Type", "Color(s)", "Set", "Rarity", "Target"]
     def have_of(c):
@@ -425,6 +514,9 @@ def main():
                     help="with --suggest-targets: write strong/ok picks into blank Targets")
     ap.add_argument("--overwrite", action="store_true",
                     help="with --suggest-targets --write: also overwrite existing Targets")
+    ap.add_argument("--rank", action="store_true",
+                    help="rank cards by wildcard-spend priority (fit + cross-deck breadth), "
+                         "grouped by recommendation tier")
     ap.add_argument("--owned", action="store_true",
                     help="show only wishlist cards you now OWN (drop candidates)")
     ap.add_argument("--name"); ap.add_argument("--type"); ap.add_argument("--text")
@@ -447,6 +539,8 @@ def main():
         return cmd_by_set(rows, owned)
     if args.suggest_targets:
         return cmd_suggest_targets(rows, write=args.write, overwrite=args.overwrite)
+    if args.rank:
+        return cmd_rank(rows)
 
     hits = [c for c in rows if _match(c, args)]
     if args.owned:
