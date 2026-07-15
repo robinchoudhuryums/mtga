@@ -3101,3 +3101,13 @@ When this land enters, scry 1. (Look at the top card of your library. You may pu
 {T}: Add {U} or {R}.",U/R,mana; etb; scry; selection,FDN,699,1
 Sorceress's Schemes,Sorcery,"Return target instant or sorcery card from your graveyard or exiled card with flashback you own to your hand. Add {R}.
 Flashback {4}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",R,graveyard; flashback; recursion; spellslinger,FIN,159,1
+"Prismari, the Inspiration",Legendary Creature — Elder Dragon,"Flying
+Ward—Pay 5 life.
+Instant and sorcery spells you cast have storm. (Whenever you cast an instant or sorcery spell, copy it for each spell cast before it this turn. You may choose new targets for the copies.)",U/R,Elder; Dragon; spellslinger; flying; evasion; ward; protection,SOS,212,1
+The Scarlet Witch,Legendary Creature — Mutant Warlock Hero,"Instant and sorcery spells you cast with mana value 4 or greater cost {X} less to cast, where X is The Scarlet Witch's power.",R,Mutant; Warlock; Hero; spellslinger,MSH,151,1
+Artistic Process,Sorcery,"Choose one —
+• Artistic Process deals 6 damage to target creature.
+• Artistic Process deals 2 damage to each creature you don't control.
+• Create a 3/3 blue and red Elemental creature token with flying. It gains haste until end of turn.",R,tokens; burn,SOS,108,1
+Spectacular Skywhale,Creature — Elemental Whale,"Flying
+Opus — Whenever you cast an instant or sorcery spell, this creature gets +3/+0 until end of turn. If five or more mana was spent to cast that spell, put three +1/+1 counters on this creature instead.",U/R,Elemental; Whale; counters; pump; spellslinger; flying; evasion; opus,SOS,229,1

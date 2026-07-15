@@ -1,6 +1,14 @@
 Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,Note
+"Bria, Riptide Rogue",Legendary Creature — Otter Rogue,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+Other creatures you control have prowess. (If a creature has multiple instances of prowess, each triggers separately.)
+Whenever you cast a noncreature spell, target creature you control can't be blocked this turn.",U/R,Otter; Rogue; pump; prowess; spellslinger; tempo,BLB,379,Mythic,25,prowess + gives your team menace/evasion
 "Dragonhawk, Fate's Tempest",Legendary Creature — Bird Dragon,"Flying
 Whenever Dragonhawk enters or attacks, exile the top X cards of your library, where X is the number of creatures you control with power 4 or greater. You may play those cards until your next end step. At the beginning of your next end step, Dragonhawk deals 2 damage to each opponent for each of those cards that are still exiled.",R,Bird; Dragon; burn; impulse; flying; evasion,BLB,132,Mythic,24,impulse + burn payoff
+"Ral, Crackling Wit",Legendary Planeswalker — Ral,"Whenever you cast a noncreature spell, put a loyalty counter on Ral.
++1: Create a 1/1 blue and red Otter creature token with prowess.
+−3: Draw three cards, then discard two cards.
+−10: Draw three cards. You get an emblem with ""Instant and sorcery spells you cast have storm."" (Whenever you cast an instant or sorcery spell, copy it for each spell cast before it this turn.)",U/R,Ral; Planeswalker; counters; card draw; tokens; planeswalker; spellslinger,BLB,230,Mythic,25,UR spellslinger planeswalker — tokens + copy your spells
+"Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
 When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)"
@@ -35,6 +43,8 @@ Nullpriest of Oblivion,Creature — Vampire Cleric,"Kicker {3}{B} (You may pay a
 Lifelink
 Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, if it was kicked, return target creature card from your graveyard to the battlefield.",B,Vampire; Cleric; reanimator; graveyard; lifegain; etb; lifelink; menace; evasion; kicker; value,FDN,611,Rare,11,
+Shipwreck Dowser,Creature — Merfolk Wizard,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+When this creature enters, return target instant or sorcery card from your graveyard to your hand.",U,Merfolk; Wizard; graveyard; etb; pump; prowess; spellslinger; tempo,FDN,596,Uncommon,25,Wizard: recast an instant/sorcery from GY
 "Lightning, Security Sergeant",Legendary Creature — Human Soldier,"Menace (This creature can't be blocked except by two or more creatures.)
 Whenever Lightning deals combat damage to a player, exile the top card of your library. You may play that card for as long as you control Lightning.",R,Human; Soldier; impulse; menace; evasion,FIN,560,Rare,24,persistent impulse on a menace body
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
@@ -42,12 +52,16 @@ Equipped creature gets +2/+2 for each artifact you control and is an Artificer i
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell"
 Queen Brahne,Legendary Creature — Human Noble,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 Whenever Queen Brahne attacks, create a 0/1 black Wizard creature token with ""Whenever you cast a noncreature spell, this token deals 1 damage to each opponent.""",R,Human; Noble; tokens; burn; pump; prowess; spellslinger; tempo,FIN,149,Uncommon,2,
+"Saheeli, the Sun's Brilliance",Legendary Creature — Human Artificer,"{U}{R}, {T}: Create a token that's a copy of another target creature or artifact you control, except it's an artifact in addition to its other types. It gains haste. Sacrifice it at the beginning of the next end step.",U/R,Human; Artificer; sacrifice; tokens,LCI,239,Mythic,25,"2-mana PW, copy a creature/artifact each turn"
 Bedrock Tortoise,Creature — Turtle,"During your turn, creatures you control have hexproof.
 Each creature you control with toughness greater than its power assigns combat damage equal to its toughness rather than its power.",G,Turtle,LCI,176,Rare,20b,toughness-matters payoff (Doran: assigns dmg = toughness) + team hexproof — exactly 20b's plan
 Bringer of the Last Gift,Creature — Vampire Demon,"Flying
 When this creature enters, if you cast it, each player sacrifices all other creatures they control. Then each player returns all creature cards from their graveyard that weren't put there this way to the battlefield.",B,Vampire; Demon; reanimator; graveyard; sacrifice; etb; flying; evasion,LCI,94,Rare,11,
 Deep-Cavern Bat,Creature — Bat,"Flying, lifelink
 When this creature enters, look at target opponent's hand. You may exile a nonland card from it until this creature leaves the battlefield.",B,Bat; lifegain; etb; flying; evasion; lifelink,LCI,102,Uncommon,general,premium B disruption: flying lifelink + exile a card from hand (Thoughtseize on a body)
+"Melek, Reforged Researcher",Legendary Creature — Weird Detective,"Melek's power and toughness are each equal to twice the number of instant and sorcery cards in your graveyard.
+The first instant or sorcery spell you cast each turn costs {3} less to cast.",U/R,Weird; Detective; graveyard,MKM,430,Mythic,25,P/T = 2x instants/sorceries in GY
+Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn
 "Krenko, Baron of Tin Street",Legendary Creature — Goblin,"Haste
 {T}, Sacrifice an artifact: Put a +1/+1 counter on each Goblin you control.
 Whenever an artifact is put into a graveyard from the battlefield, you may pay {R}. If you do, create a 1/1 red Goblin creature token. It gains haste until end of turn.",R,Goblin; counters; reanimator; graveyard; sacrifice; tokens; haste; aggro,MKM,135,Rare,10,Goblin/artifact-aristocrats engine (sac artifact -> pump; artifact death -> Goblin) — fits Mad Villainy BR artifacts
@@ -70,7 +84,6 @@ When The Ruinous Wrecking Crew enters, choose up to X —
 • Target opponent loses 2 life.
 • Destroy target token.
 • Each player sacrifices a creature of their choice.",B/R,Human; Villain; counters; card draw; sacrifice; removal; etb,MSH,224,Rare,8,"best 8 (Sacrifices); also 21,21a,10"
-The Scarlet Witch,Legendary Creature — Mutant Warlock Hero,"Instant and sorcery spells you cast with mana value 4 or greater cost {X} less to cast, where X is The Scarlet Witch's power.",R,Mutant; Warlock; Hero; spellslinger,MSH,151,Rare,2,best 2 (Thundergod); also 17
 The Serpent Society,Legendary Creature — Human Snake Villain,"Deathtouch
 Ward—Get five poison counters. (A player with ten or more poison counters loses the game.)
 Whenever another creature you control with deathtouch dies, each opponent sacrifices a nontoken creature of their choice.",B/G,Human; Snake; Villain; sacrifice; ward; protection; deathtouch; combat; removal,MSH,226,Rare,8,"best 8 (Sacrifices); also 20b,21,21a"
@@ -82,14 +95,15 @@ Intangibility — Ghost can't be blocked.",U/B,Human; Rogue; Villain; flash; tem
 "Mister Hyde, Monster Within",Legendary Creature — Human Villain,"At the beginning of your upkeep, choose one —
 • Put a +1/+1 counter on Mister Hyde.
 • Remove a counter from a creature you control. If you do, draw a card.",G,Human; Villain; counters; card draw,MSH,176,Uncommon,7,"broadly useful — best 7 (Earth's Mightiest); also 8,13,4"
+"Lilah, Undefeated Slickshot",Legendary Creature — Human Rogue,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+Whenever you cast a multicolored instant or sorcery spell from your hand, exile that spell instead of putting it into your graveyard as it resolves. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/R,Human; Rogue; graveyard; pump; plot; tempo; cost-reduction; prowess; spellslinger,OTJ,217,Rare,25,prowess 3-drop that impulses off your spells
+"Malcolm, the Eyes",Legendary Creature — Siren Pirate,"Flying, haste
+Whenever you cast your second spell each turn, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U/R,Siren; Pirate; card draw; sacrifice; tokens; clue; flying; evasion; investigate; haste; aggro,OTJ,219,Rare,25,2-drop: second spell -> investigate
 Improvisation Capstone,Sorcery — Lesson,"Exile cards from the top of your library until you exile cards with total mana value 4 or greater. You may cast any number of spells from among them without paying their mana costs.
 Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",R,Lesson; paradigm,SOS,120,Mythic,general,big R impulse/artifacts payoff
 "Lorehold, the Historian",Legendary Creature — Elder Dragon,"Flying, haste
 Each instant and sorcery card in your hand has miracle {2}. (You may cast a card for its miracle cost when you draw it if it's the first card you drew this turn.)
 At the beginning of each opponent's upkeep, you may discard a card. If you do, draw a card.",W/R,Elder; Dragon; card draw; flying; evasion; haste; aggro,SOS,201,Mythic,concept,"RW Lorehold artifacts/spells build-around | fits: 17,14,21a"
-"Prismari, the Inspiration",Legendary Creature — Elder Dragon,"Flying
-Ward—Pay 5 life.
-Instant and sorcery spells you cast have storm. (Whenever you cast an instant or sorcery spell, copy it for each spell cast before it this turn. You may choose new targets for the copies.)",U/R,Elder; Dragon; spellslinger; flying; evasion; ward; protection,SOS,212,Mythic,concept,UR Prismari spellslinger build-around | fits: 17
 Professor Dellian Fel,Legendary Planeswalker — Dellian,"+2: You gain 3 life.
 0: You draw a card and lose 1 life.
 −3: Destroy target creature.
@@ -136,10 +150,6 @@ Vicious Rivalry,Sorcery,"As an additional cost to cast this spell, pay X life.
 Destroy all artifacts and creatures with mana value X or less.",B/G,,SOS,241,Rare,general,BG fight/removal
 Additive Evolution,Enchantment,"When this enchantment enters, create a 0/0 green and blue Fractal creature token. Put three +1/+1 counters on it.
 At the beginning of combat on your turn, put a +1/+1 counter on target creature you control. It gains vigilance until end of turn.",G,counters; tokens; etb,SOS,139,Uncommon,4,pure +1/+1 counters payoff (Fractal + combat counters) — fits Quantum Realm
-Artistic Process,Sorcery,"Choose one —
-• Artistic Process deals 6 damage to target creature.
-• Artistic Process deals 2 damage to each creature you don't control.
-• Create a 3/3 blue and red Elemental creature token with flying. It gains haste until end of turn.",R,tokens; burn,SOS,108,Uncommon,25,modal burn: 6dmg / one-sided sweeper / 3-3 flyer
 Chelonian Tackle,Sorcery,Target creature you control gets +0/+10 until end of turn. Then it fights up to one target creature an opponent controls. (Each deals damage equal to its power to the other.),G,pump; fight; removal; combat,SOS,142,Uncommon,20b,"best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 7,19b,17"
 "Emil, Vastlands Roamer",Legendary Creature — Elf Druid,"Creatures you control with +1/+1 counters on them have trample.
 {4}{G}, {T}: Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it, where X is the number of differently named lands you control.",G,Elf; Druid; counters; tokens,SOS,146,Uncommon,4,"broadly useful — best 4 (Quantum Realm); also 21,7,9"
@@ -147,8 +157,6 @@ Infirmary Healer // Stream of Life,Creature — Cat Cleric // Sorcery,"This crea
 Leech Collector // Bloodletting,Creature — Human Warlock // Sorcery,"Whenever you gain life for the first time each turn, this creature becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Each opponent loses 2 life.",B,Human; Warlock; prepared; spellslinger; tempo,SOS,88,Uncommon,20,"lifegain-drain payoff — becomes prepared on first lifegain, copies a 2-life drain"
 Skycoach Waypoint,Land,"{T}: Add {C}.
 {3}, {T}: Target creature becomes prepared. (Only creatures with prepare spells can become prepared.)",Colorless,mana; prepared; spellslinger; tempo,SOS,261,Uncommon,2,
-Spectacular Skywhale,Creature — Elemental Whale,"Flying
-Opus — Whenever you cast an instant or sorcery spell, this creature gets +3/+0 until end of turn. If five or more mana was spent to cast that spell, put three +1/+1 counters on this creature instead.",U/R,Elemental; Whale; counters; pump; spellslinger; flying; evasion; opus,SOS,229,Uncommon,25,opus flyer (grows on each instant/sorcery)
 Teacher's Pest,Creature — Skeleton Pest,"Menace (This creature can't be blocked except by two or more creatures.)
 Whenever this creature attacks, you gain 1 life.
 {B}{G}: Return this card from your graveyard to the battlefield tapped.",B/G,Skeleton; Pest; reanimator; graveyard; lifegain; menace; evasion,SOS,238,Uncommon,6,"best 6 (Dead or Alive); also 5,21,8"
@@ -347,6 +355,8 @@ The Goose Mother,Legendary Creature — Bird Hydra,"Flying
 The Goose Mother enters with X +1/+1 counters on it.
 When The Goose Mother enters, create half X Food tokens, rounded up.
 Whenever The Goose Mother attacks, you may sacrifice a Food. If you do, draw a card.",U/G,Bird; Hydra; counters; card draw; sacrifice; tokens; etb; food; flying; evasion,WOE,204,Rare,19a,
+Frolicking Familiar // Blow Off Steam,Creature — Otter Wizard // Instant — Adventure,"Flying
+Whenever you cast an instant or sorcery spell, this creature gets +1/+1 until end of turn. // Blow Off Steam deals 1 damage to any target. (Then exile this card. You may cast the creature later from exile.)",U/R,Otter; Wizard; Adventure; burn; pump; spellslinger; flying; evasion,WOE,226,Uncommon,25,Otter Wizard prowess + a bounce spell (UR staple)
 Korvold and the Noble Thief,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I, II — Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
 III — Exile the top three cards of target opponent's library. You may play those cards this turn.",R,Saga; sacrifice; tokens; treasure; saga; impulse,WOE,139,Uncommon,24,Treasure ramp (Sami) + impulse Saga
