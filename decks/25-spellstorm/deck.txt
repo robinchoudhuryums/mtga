@@ -1,74 +1,56 @@
 #: name: Spellstorm
 #: format: Standard
 #: colors: UR
-#: notes: Izzet (U/R) spellslinger — magecraft/prowess payoffs (Thousand-Year Storm,
-#:        Balmor, Stormcatch Mentor, Niv-Mizzet, Prismari) + firebending/burn. WIP
-#:        build target: some cards unowned. Trim to 60 and tighten via tune-deck.
+#: notes: Izzet (U/R) storm / spells-matter. Cost reduction (Scarlet Witch,
+#: notes: Stormcatch Mentor, Tolarian Terror, Emperor of Palamecia, Electro) into
+#: notes: a curated set of big spells; Thousand-Year Storm / Prismari / Loki copy
+#: notes: them; Niv-Mizzet / Ovika / opus + graveyard-drakes pay off; cheap owned
+#: notes: burn covers the early game. Promoted from the refined 60 (was variant
+#: notes: 25b); the raw 86-card pool is kept as variant 25a.
 
 Deck
-# Nonland
-1 Mana Sculpt (SOS) 57
-1 High Fae Trickster (FDN) 40
-1 Wiccan, Rising Magician (MSH) 83
-1 Echocasting Symposium (SOS) 44
-1 Mirrorform (ECL) 59
-1 Time Stop (FDN) 166
+# Storm / spell-copy payoffs
+1 Thousand-Year Storm (FDN) 248
+1 Prismari, the Inspiration (SOS) 212
+1 Loki Laufeyson (MSH) 143
+# Cost reduction / ramp
+1 The Scarlet Witch (MSH) 151
+1 Stormcatch Mentor (BLB) 234
 1 Tolarian Terror (FDN) 167
-1 Wisdom of Ages (SOS) 71
-1 Redirect Lightning (TLA) 151
+1 The Emperor of Palamecia (FIN) 219
+1 Electro, Assaulting Battery (SPM) 76
+# Prowess / opus / magecraft creatures
+1 Firebending Student (TLA) 139
 1 Emeritus of Conflict (SOS) 113
 1 Firebender Ascension (TLA) 137
-1 Firebending Student (TLA) 139
-1 Hawkeye, Master Marksman (MSH) 130
-1 Iroh's Demonstration (TLA) 141
-1 Loki Laufeyson (MSH) 143
-1 The Last Agni Kai (TLA) 144
-1 Electro, Assaulting Battery (SPM) 76
-1 Hex Magic (MSH) 133
-1 Solstice Revelations (TLA) 153
-1 Tablet of Discovery (SOS) 132
-1 Abandon Attachments (TLA) 205
-1 Balmor, Battlemage Captain (FDN) 237
-1 The Emperor of Palamecia (FIN) 219
-1 Professor Zei, Anthropologist (TLA) 238
 1 Colorstorm Stallion (SOS) 180
-1 Stormcatch Mentor (BLB) 234
-1 Dragonfly Swarm (TLA) 215
-1 Enigma Drake (FDN) 657
-1 Iron Man, Master of Machines (MSH) 216
-1 Prismari, the Inspiration (SOS) 212
-1 Niv-Mizzet, Visionary (FDN) 123
-1 Stature, Size Shifter (MSH) 76
-1 Rite of Replication (MAR) 14
-1 Artistic Process (SOS) 108
-1 Spider-Man 2099 (SPM) 150
 1 Elemental Mascot (SOS) 185
+1 Dragonfly Swarm (TLA) 215
 1 Spectacular Skywhale (SOS) 229
-1 Thousand-Year Storm (FDN) 248
+1 High Fae Trickster (FDN) 40
+1 Wiccan, Rising Magician (MSH) 83
+# Card-advantage payoffs (finishers)
+1 Niv-Mizzet, Visionary (FDN) 123
 1 Ovika, Enigma Goliath (FDN) 663
-1 Roaring Furnace // Steaming Sauna (DSK) 230
-1 Visionary's Dance (SOS) 242
-1 The Scarlet Witch (MSH) 151
-1 Retrieve the Esper (FIN) 68
-1 Trickster's Stratagem (MSH) 81
-1 Ember Island Production (TLA) 48
-1 Muse's Encouragement (SOS) 61
-1 Sokka's Haiku (TLA) 71
-1 Homesickness (SOS) 53
-1 Kitsune's Technique (TMT) 42
-1 Atlantis Attacks (MSH) 46
-1 Multiversal Incursion (MSH) 68
-1 Call the Mountain Chocobo (FIN) 131
-1 Bumi Bash (TLA) 125
+1 Balmor, Battlemage Captain (FDN) 237
+# Card advantage / dig
+1 Abandon Attachments (TLA) 205
+1 Solstice Revelations (TLA) 153
+1 Professor Zei, Anthropologist (TLA) 238
+1 Hex Magic (MSH) 133
+1 Sorceress's Schemes (FIN) 159
+# Interaction — cheap burn (owned) + kept removal
+1 Lightning Strike (MSH) 142
+1 Galvanize (MKM) 128
+1 Bombard (EOE) 129
+1 Tome Blast (SOS) 135
+1 Iroh's Demonstration (TLA) 141
 1 Nibelheim Aflame (FIN) 146
 1 Orbital Plunge (EOE) 149
-1 Sorceress's Schemes (FIN) 159
-1 Conduct Electricity (BLB) 130
 1 Heated Argument (SOS) 118
-1 Incinerating Blast (FDN) 90
-1 Random Encounter (FIN) 150
-1 Brass's Bounty (FDN) 190
-1 Stress Dream (SOS) 235
+1 Enigma Drake (FDN) 657
+1 Artistic Process (SOS) 108
+1 Wisdom of Ages (SOS) 71
 
 # Lands
 6 Mountain (MSH) 294
@@ -81,3 +63,9 @@ Deck
 3 Stark Industries (MSH) 272
 4 Swiftwater Cliffs (TDM) 268
 1 Temple of Epiphany (FDN) 699
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 25
+#~ -Firebender Ascension | +Spider-Man 2099 | spice: end-step pinger when you cast a spell from GY/exile that turn
+#~ -Sorceress's Schemes | +Rite of Replication | 4-mana copy of Niv/Ovika/Prismari; 9 if kicked = 5-copy finisher
+#~ -Colorstorm Stallion | +Echocasting Symposium | Paradigm = recurring FREE copy of your best creature each turn
+#~ -Iroh's Demonstration | +Roaring Furnace // Steaming Sauna | modal Room: removal (dmg = hand size) OR draw each end step
