@@ -10,7 +10,7 @@
 Deck
 # Threats / value
 1 United Front (TLA) 39
-1 Triceraton Commander (TMT) 25
+1 Jessica Jones, Private Eye (MSH) 139
 1 Wartime Protestors (TLA) 160
 1 Etali, Primal Storm (FDN) 194
 1 EPF Point Squad (TMT) 145
@@ -36,7 +36,7 @@ Deck
 1 Sami, Wildcat Captain (EOE) 226
 1 Steel Wrecking Ball (SPM) 177
 1 Quintorius Kand (LCI) 238
-1 The Super Hero Civil War (MSH) 231
+1 Thor, God of Thunder (MSH) 156
 
 # Firebending / spells
 1 Sozin's Comet (TLA) 154
