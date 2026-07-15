@@ -1,25 +1,19 @@
 #: name: Eternal Flame
 #: format: Standard
 #: colors: WR
-#: notes: Boros (W/R) — new build. Fire/Hero midrange with treasure/spells accents
-#:        (Sozin's Comet, Brass's Bounty, Quintorius Kand, Aurelia). WIP — verify
-#:        count/curve and focus via tune-deck.
+#: notes: Boros (W/R) midrange goodstuff. Treasure/ramp (Brass's Bounty + Sami
+#: notes: affinity) into bombs (Etali, Aurelia, The Sentry), cast-from-exile value
+#: notes: (Quintorius, Practiced Scrollsmith, Daredevil), extra-combat (Aurelia,
+#: notes: Raph & Leo) + firebending (Sozin's Comet, Sun Warriors), backed by a deep
+#: notes: removal suite. Promoted from the refined 60 (formerly variant 24b).
 
 Deck
-# Nonland
+# Threats / value
 1 United Front (TLA) 39
 1 Triceraton Commander (TMT) 25
-1 Nibelheim Aflame (FIN) 146
 1 Wartime Protestors (TLA) 160
-1 Broadcast Takeover (TMT) 86
-1 Sozin's Comet (TLA) 154
-1 Steel Wrecking Ball (SPM) 177
 1 Etali, Primal Storm (FDN) 194
-1 Brass's Bounty (FDN) 190
-1 Photon Blast Barrage (MSH) 147
-1 Go Ninja Go (TMT) 149
 1 EPF Point Squad (TMT) 145
-1 Spirit Mascot (SOS) 230
 1 Hardened Academic (SOS) 194
 1 Practiced Scrollsmith (SOS) 210
 1 Lightning, Army of One (FIN) 233
@@ -27,16 +21,35 @@ Deck
 1 War Machine, Legacy of Iron (MSH) 238
 1 Daredevil, Man Without Fear (MSH) 213
 1 Heroic Reinforcements (FDN) 241
-1 Startled Relic Sloth (SOS) 233
 1 Sun Warriors (TLA) 244
 1 The Neutrinos (TMT) 160
-1 Hovel Hurler (ECL) 230
-1 The Super Hero Civil War (MSH) 231
-1 Quintorius Kand (LCI) 238
 1 Thor Odinson (MSH) 234
-1 Sami, Wildcat Captain (EOE) 226
 1 Aurelia, the Warleader (FDN) 651
 1 Catharsis (ECL) 209
+1 Fire Nation Raider (TLA) 135
+1 Hakoda, Selfless Commander (TLA) 23
+1 Ran and Shaw (TLA) 150
+1 The Sentry, Golden Guardian (MSH) 35
+
+# Treasure / artifacts / cast-from-exile engine
+1 Brass's Bounty (FDN) 190
+1 Sami, Wildcat Captain (EOE) 226
+1 Steel Wrecking Ball (SPM) 177
+1 Quintorius Kand (LCI) 238
+1 The Super Hero Civil War (MSH) 231
+
+# Firebending / spells
+1 Sozin's Comet (TLA) 154
+1 Go Ninja Go (TMT) 149
+1 Nibelheim Aflame (FIN) 146
+
+# Interaction / removal
+1 Fiery Annihilation (FDN) 86
+1 Lightning Strike (MSH) 142
+1 Abrade (FDN) 188
+1 Valorous Stance (FDN) 583
+1 Bombard (EOE) 129
+1 Seismic Rupture (FDN) 205
 
 # Lands
 8 Mountain (MSH) 294
