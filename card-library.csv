@@ -3087,3 +3087,5 @@ III — Target creature you control fights up to one other target creature.",W/R
 "Niv-Mizzet, Visionary",Legendary Creature — Dragon Wizard,"Flying
 You have no maximum hand size.
 Whenever a source you control deals noncombat damage to an opponent, you draw that many cards.",U/R,Dragon; Wizard; card draw; flying; evasion,FDN,123,1
+Enigma Drake,Creature — Drake,"Flying
+Enigma Drake's power is equal to the number of instant and sorcery cards in your graveyard.",U/R,Drake; graveyard; flying; evasion,FDN,657,1
