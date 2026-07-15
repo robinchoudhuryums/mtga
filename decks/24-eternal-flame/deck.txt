@@ -1,49 +1,48 @@
 #: name: Eternal Flame
 #: format: Standard
 #: colors: WR
-#: notes: Boros (W/R) midrange goodstuff. Treasure/ramp (Brass's Bounty + Sami
-#: notes: affinity) into bombs (Etali, Aurelia, The Sentry), cast-from-exile value
-#: notes: (Quintorius, Practiced Scrollsmith, Daredevil), extra-combat (Aurelia,
-#: notes: Raph & Leo) + firebending (Sozin's Comet, Sun Warriors), backed by a deep
-#: notes: removal suite. Promoted from the refined 60 (formerly variant 24b).
+#: notes: Boros impulse / cast-from-exile. Quintorius Kand + Thor, God of Thunder as
+#: notes: payoffs; a dense "exile the top card, play it" package (Practiced
+#: notes: Scrollsmith, Daredevil, Jessica Jones, Crimson Operative, Territorial
+#: notes: Bruntar, Blazing Crescendo, Etali, Clive). Firebending + Treasure ramp cast
+#: notes: the exiled cards; deep removal holds the board. Promoted from variant 24c;
+#: notes: the earlier midrange list is kept as variant 24b.
 
 Deck
-# Threats / value
-1 United Front (TLA) 39
-1 Jessica Jones, Private Eye (MSH) 139
-1 Wartime Protestors (TLA) 160
-1 Etali, Primal Storm (FDN) 194
-1 EPF Point Squad (TMT) 145
-1 Hardened Academic (SOS) 194
-1 Practiced Scrollsmith (SOS) 210
-1 Lightning, Army of One (FIN) 233
-1 Raph & Leo, Sibling Rivals (TMT) 166
-1 War Machine, Legacy of Iron (MSH) 238
-1 Daredevil, Man Without Fear (MSH) 213
-1 Heroic Reinforcements (FDN) 241
-1 Sun Warriors (TLA) 244
-1 The Neutrinos (TMT) 160
-1 Thor Odinson (MSH) 234
-1 Aurelia, the Warleader (FDN) 651
-1 Catharsis (ECL) 209
-1 Fire Nation Raider (TLA) 135
-1 Hakoda, Selfless Commander (TLA) 23
-1 Ran and Shaw (TLA) 150
-1 The Sentry, Golden Guardian (MSH) 35
-
-# Treasure / artifacts / cast-from-exile engine
-1 Brass's Bounty (FDN) 190
-1 Sami, Wildcat Captain (EOE) 226
-1 Steel Wrecking Ball (SPM) 177
+# Impulse payoffs / engine
 1 Quintorius Kand (LCI) 238
 1 Thor, God of Thunder (MSH) 156
-
-# Firebending / spells
+1 Thor Odinson (MSH) 234
+1 Etali, Primal Storm (FDN) 194
+# Impulse enablers
+1 Practiced Scrollsmith (SOS) 210
+1 Daredevil, Man Without Fear (MSH) 213
+1 Jessica Jones, Private Eye (MSH) 139
+1 Crimson Operative (MSH) 126
+1 Territorial Bruntar (EOE) 165
+1 Seifer Almasy (FIN) 156
+2 Blazing Crescendo (MSH) 125
+1 Solstice Revelations (TLA) 153
+1 Hex Magic (MSH) 133
+# Firebending / ramp / artifacts
 1 Sozin's Comet (TLA) 154
+1 Sun Warriors (TLA) 244
+1 Brass's Bounty (FDN) 190
+1 Sami, Wildcat Captain (EOE) 226
+# Threats / combat
+1 Aurelia, the Warleader (FDN) 651
+1 Raph & Leo, Sibling Rivals (TMT) 166
+1 The Sentry, Golden Guardian (MSH) 35
+1 Lightning, Army of One (FIN) 233
+1 War Machine, Legacy of Iron (MSH) 238
+1 Clive, Ifrit's Dominant (FIN) 133
+1 The Super Hero Civil War (MSH) 231
+# Card advantage
+1 Fire Nation Raider (TLA) 135
+1 Hakoda, Selfless Commander (TLA) 23
+# Removal / reach
 1 Go Ninja Go (TMT) 149
 1 Nibelheim Aflame (FIN) 146
-
-# Interaction / removal
 1 Fiery Annihilation (FDN) 86
 1 Lightning Strike (MSH) 142
 1 Abrade (FDN) 188
