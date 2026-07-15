@@ -3186,3 +3186,37 @@ Whenever you cast an instant or sorcery spell, this creature gets +1/+1 until en
 Korvold and the Noble Thief,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I, II — Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
 III — Exile the top three cards of target opponent's library. You may play those cards this turn.",R,Saga; sacrifice; tokens; treasure; saga; impulse,WOE,139,1
+"Kiora, the Rising Tide",Legendary Creature — Merfolk Noble,"When Kiora enters, draw two cards, then discard two cards.
+Threshold — Whenever Kiora attacks, if there are seven or more cards in your graveyard, you may create Scion of the Deep, a legendary 8/8 blue Octopus creature token.",U,Merfolk; Noble; graveyard; card draw; tokens; etb; threshold,FDN,45,1
+Waterwind Scout,Creature — Merfolk Scout,"Flying
+When this creature enters, create a Map token. (It's an artifact with ""{1}, {T}, Sacrifice this token: Target creature you control explores. Activate only as a sorcery."")",U,Merfolk; Scout; sacrifice; tokens; etb; explore; flying; evasion; counters; selection,LCI,84,1
+Harbinger of the Tides,Creature — Merfolk Wizard,"You may cast this spell as though it had flash if you pay {2} more to cast it. (You may cast it any time you could cast an instant.)
+When this creature enters, you may return target tapped creature an opponent controls to its owner's hand.",U,Merfolk; Wizard; etb; bounce,FDN,593,1
+Mindspring Merfolk,Creature — Merfolk Wizard,"Exhaust — {X}{U}{U}, {T}: Draw X cards. Put a +1/+1 counter on each Merfolk creature you control. (Activate each exhaust ability only once.)",U,Merfolk; Wizard; counters; card draw; exhaust; payoff,DFT,51,1
+Tishana's Tidebinder,Creature — Merfolk Wizard,"Flash
+When this creature enters, counter up to one target activated or triggered ability. If an ability of an artifact, creature, or planeswalker is countered this way, that permanent loses all abilities for as long as this creature remains on the battlefield. (Mana abilities can't be targeted.)",U,Merfolk; Wizard; etb; flash; tempo,LCI,81,1
+Silvergill Mentor,Creature — Merfolk Wizard,"As an additional cost to cast this spell, behold a Merfolk or pay {2}. (To behold a Merfolk, choose a Merfolk you control or reveal a Merfolk card from your hand.)
+When this creature enters, create a 1/1 white and blue Merfolk creature token.",U,Merfolk; Wizard; tokens; etb; behold; dragons,ECL,69,1
+Mistway Spy,Creature — Merfolk Detective,"Flying
+Disguise {1}{U} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)
+When this creature is turned face up, until end of turn, whenever a creature you control deals combat damage to a player, investigate.",U,Merfolk; Detective; clue; flying; evasion; investigate; tokens; card draw; disguise; tempo,MKM,65,1
+Pestered Wellguard,Creature — Merfolk Soldier,"Whenever this creature becomes tapped, create a 1/1 blue and black Faerie creature token with flying.",U,Merfolk; Soldier; tokens,ECL,63,1
+Sygg's Command,Kindred Sorcery — Merfolk,"Choose two —
+• Create a token that's a copy of target Merfolk you control.
+• Creatures target player controls gain lifelink until end of turn.
+• Target player draws a card.
+• Tap target creature. Put a stun counter on it.",W/U,Merfolk; counters; lifegain; tokens,ECL,244,1
+Deeproot Pilgrimage,Enchantment,"Whenever one or more nontoken Merfolk you control become tapped, create a 1/1 blue Merfolk creature token with hexproof.",U,tokens,LCI,52,1
+Into the Flood Maw,Instant,"Gift a tapped Fish (You may promise an opponent a gift as you cast this spell. If you do, they create a tapped 1/1 blue Fish creature token before its other effects.)
+Return target creature an opponent controls to its owner's hand. If the gift was promised, instead return target nonland permanent an opponent controls to its owner's hand.",U,tokens; bounce; gift; value,BLB,52,1
+Champions of the Shoal,Creature — Merfolk Soldier,"As an additional cost to cast this spell, behold a Merfolk and exile it. (Exile a Merfolk you control or a Merfolk card from your hand.)
+Whenever this creature enters or becomes tapped, tap up to one target creature and put a stun counter on it.
+When this creature leaves the battlefield, return the exiled card to its owner's hand.",U,Merfolk; Soldier; counters; bounce; behold; dragons,ECL,46,1
+Floodpits Drowner,Creature — Merfolk,"Flash
+Vigilance
+When this creature enters, tap target creature an opponent controls and put a stun counter on it.
+{1}{U}, {T}: Shuffle this creature and target creature with a stun counter on it into their owners' libraries.",U,Merfolk; counters; etb; vigilance; combat; flash; tempo,DSK,59,1
+Brineborn Cutthroat,Creature — Merfolk Pirate,"Flash (You may cast this spell any time you could cast an instant.)
+Whenever you cast a spell during an opponent's turn, put a +1/+1 counter on this creature.",U,Merfolk; Pirate; counters; flash; tempo,FDN,152,1
+Sharae of Numbing Depths,Legendary Creature — Merfolk Wizard,"When Sharae enters, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
+Whenever you tap one or more untapped creatures your opponents control, draw a card. This ability triggers only once each turn.",W/U,Merfolk; Wizard; counters; card draw; etb,WOE,213,1
