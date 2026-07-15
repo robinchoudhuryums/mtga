@@ -1,0 +1,63 @@
+#: name: Eternal Flame
+#: format: Standard
+#: colors: WR
+#: notes: Boros impulse / cast-from-exile. Quintorius Kand + Thor, God of Thunder as
+#: notes: payoffs; a dense "exile the top card, play it" package (Practiced
+#: notes: Scrollsmith, Daredevil, Jessica Jones, Crimson Operative, Territorial
+#: notes: Bruntar, Blazing Crescendo, Etali, Clive). Firebending + Treasure ramp cast
+#: notes: the exiled cards; deep removal holds the board. Promoted from variant 24c;
+#: notes: the earlier midrange list is kept as variant 24b.
+
+Deck
+# Impulse payoffs / engine
+1 Quintorius Kand (LCI) 238
+1 Thor, God of Thunder (MSH) 156
+1 Thor Odinson (MSH) 234
+1 Etali, Primal Storm (FDN) 194
+# Impulse enablers
+1 Practiced Scrollsmith (SOS) 210
+1 Daredevil, Man Without Fear (MSH) 213
+1 Jessica Jones, Private Eye (MSH) 139
+1 Crimson Operative (MSH) 126
+1 Territorial Bruntar (EOE) 165
+1 Seifer Almasy (FIN) 156
+2 Blazing Crescendo (MSH) 125
+1 Solstice Revelations (TLA) 153
+1 Hex Magic (MSH) 133
+# Firebending / ramp / artifacts
+1 Sozin's Comet (TLA) 154
+1 Sun Warriors (TLA) 244
+1 Brass's Bounty (FDN) 190
+1 Sami, Wildcat Captain (EOE) 226
+# Threats / combat
+1 Aurelia, the Warleader (FDN) 651
+1 Raph & Leo, Sibling Rivals (TMT) 166
+1 The Sentry, Golden Guardian (MSH) 35
+1 Lightning, Army of One (FIN) 233
+1 War Machine, Legacy of Iron (MSH) 238
+1 Clive, Ifrit's Dominant (FIN) 133
+1 The Super Hero Civil War (MSH) 231
+# Card advantage
+1 Fire Nation Raider (TLA) 135
+1 Hakoda, Selfless Commander (TLA) 23
+# Removal / reach
+1 Go Ninja Go (TMT) 149
+1 Nibelheim Aflame (FIN) 146
+1 Fiery Annihilation (FDN) 86
+1 Lightning Strike (MSH) 142
+1 Abrade (FDN) 188
+1 Valorous Stance (FDN) 583
+1 Bombard (EOE) 129
+1 Seismic Rupture (FDN) 205
+
+# Lands
+8 Mountain (MSH) 294
+9 Plains (MSH) 288
+1 The Cave of Two Lovers (TLA) 126
+1 Fire Nation Palace (TLA) 268
+1 Kavaron, Memorial World (EOE) 255
+1 Abraded Bluffs (OTJ) 251
+1 Sun-Blessed Peak (TLA) 280
+1 Boros Guildgate (FDN) 684
+1 Temple of Triumph (FDN) 705
+1 Wind-Scarred Crag (FDN) 271

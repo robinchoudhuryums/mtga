@@ -1,0 +1,65 @@
+#: name: Eternal Flame — Boros Midrange (Route B)
+#: format: Standard
+#: colors: WR
+#: based-on: deck.txt
+#: archetype: 24 variant — grindy Boros midrange goodstuff. Treasure/ramp (Brass's
+#: archetype: Bounty + Sami affinity) into bombs (Etali, Aurelia, The Sentry),
+#: archetype: cast-from-exile value, extra-combat + firebending, deep removal.
+#: notes: The midrange build (former primary). Kept as a variant after the deck was
+#: notes: promoted to the Quintorius-impulse list.
+
+Deck
+# Threats / value
+1 United Front (TLA) 39
+1 Jessica Jones, Private Eye (MSH) 139
+1 Wartime Protestors (TLA) 160
+1 Etali, Primal Storm (FDN) 194
+1 EPF Point Squad (TMT) 145
+1 Hardened Academic (SOS) 194
+1 Practiced Scrollsmith (SOS) 210
+1 Lightning, Army of One (FIN) 233
+1 Raph & Leo, Sibling Rivals (TMT) 166
+1 War Machine, Legacy of Iron (MSH) 238
+1 Daredevil, Man Without Fear (MSH) 213
+1 Heroic Reinforcements (FDN) 241
+1 Sun Warriors (TLA) 244
+1 The Neutrinos (TMT) 160
+1 Thor Odinson (MSH) 234
+1 Aurelia, the Warleader (FDN) 651
+1 Catharsis (ECL) 209
+1 Fire Nation Raider (TLA) 135
+1 Hakoda, Selfless Commander (TLA) 23
+1 Ran and Shaw (TLA) 150
+1 The Sentry, Golden Guardian (MSH) 35
+
+# Treasure / artifacts / cast-from-exile engine
+1 Brass's Bounty (FDN) 190
+1 Sami, Wildcat Captain (EOE) 226
+1 Steel Wrecking Ball (SPM) 177
+1 Quintorius Kand (LCI) 238
+1 Thor, God of Thunder (MSH) 156
+
+# Firebending / spells
+1 Sozin's Comet (TLA) 154
+1 Go Ninja Go (TMT) 149
+1 Nibelheim Aflame (FIN) 146
+
+# Interaction / removal
+1 Fiery Annihilation (FDN) 86
+1 Lightning Strike (MSH) 142
+1 Abrade (FDN) 188
+1 Valorous Stance (FDN) 583
+1 Bombard (EOE) 129
+1 Seismic Rupture (FDN) 205
+
+# Lands
+8 Mountain (MSH) 294
+9 Plains (MSH) 288
+1 The Cave of Two Lovers (TLA) 126
+1 Fire Nation Palace (TLA) 268
+1 Kavaron, Memorial World (EOE) 255
+1 Abraded Bluffs (OTJ) 251
+1 Sun-Blessed Peak (TLA) 280
+1 Boros Guildgate (FDN) 684
+1 Temple of Triumph (FDN) 705
+1 Wind-Scarred Crag (FDN) 271
