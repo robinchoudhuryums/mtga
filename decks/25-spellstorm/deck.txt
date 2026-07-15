@@ -69,3 +69,9 @@ Deck
 #~ -Sorceress's Schemes | +Rite of Replication | 4-mana copy of Niv/Ovika/Prismari; 9 if kicked = 5-copy finisher
 #~ -Colorstorm Stallion | +Echocasting Symposium | Paradigm = recurring FREE copy of your best creature each turn
 #~ -Iroh's Demonstration | +Roaring Furnace // Steaming Sauna | modal Room: removal (dmg = hand size) OR draw each end step
+#~ -Firebender Ascension | +Thunderdrum Soloist | cheap Opus reach — pings each opponent on every instant/sorcery
+#~ -Colorstorm Stallion | +Queen Brahne | prowess + a token that burns on each noncreature spell
+#~ -Hex Magic | +Death to Our Enemies | Treasure ramp -> 7-damage finisher (vs a risky hand-dump wheel)
+#~ -Tome Blast | +Zuko, Exiled Prince | firebending ramp + repeatable impulse card advantage
+#~ -Wisdom of Ages | +The Dawning Archaic | free, repeatable recast of your instants/sorceries from the graveyard
+#~ -Sorceress's Schemes | +Magmablood Archaic | on-board spellslinger anthem (converge counters + team pump)
