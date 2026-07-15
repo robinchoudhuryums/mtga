@@ -28,7 +28,7 @@ Deck
 1 Firebender Ascension (TLA) 137
 1 Colorstorm Stallion (SOS) 180
 1 Elemental Mascot (SOS) 185
-1 Enigma Drake (FDN) 657
+1 Dragonfly Swarm (TLA) 215
 1 Spectacular Skywhale (SOS) 229
 1 High Fae Trickster (FDN) 40
 1 Wiccan, Rising Magician (MSH) 83
@@ -52,8 +52,8 @@ Deck
 1 Orbital Plunge (EOE) 149
 1 Heated Argument (SOS) 118
 1 Nibelheim Aflame (FIN) 146
-1 Stress Dream (SOS) 235
-1 Muse's Encouragement (SOS) 61
+1 Artistic Process (SOS) 108
+1 Wisdom of Ages (SOS) 71
 
 # Lands
 6 Mountain (MSH) 294
@@ -66,3 +66,9 @@ Deck
 3 Stark Industries (MSH) 272
 4 Swiftwater Cliffs (TDM) 268
 1 Temple of Epiphany (FDN) 699
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 25b
+#~ -Firebender Ascension | +Spider-Man 2099 | spice: end-step pinger when you cast a spell from GY/exile that turn
+#~ -Sorceress's Schemes | +Rite of Replication | 4-mana copy of Niv/Ovika/Prismari; 9 if kicked = 5-copy finisher
+#~ -Colorstorm Stallion | +Echocasting Symposium | Paradigm = recurring FREE copy of your best creature each turn
+#~ -Iroh's Demonstration | +Roaring Furnace // Steaming Sauna | modal Room: removal (dmg = hand size) OR draw each end step
