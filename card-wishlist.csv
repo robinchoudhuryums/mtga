@@ -1,4 +1,6 @@
 Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,Note
+"Dragonhawk, Fate's Tempest",Legendary Creature — Bird Dragon,"Flying
+Whenever Dragonhawk enters or attacks, exile the top X cards of your library, where X is the number of creatures you control with power 4 or greater. You may play those cards until your next end step. At the beginning of your next end step, Dragonhawk deals 2 damage to each opponent for each of those cards that are still exiled.",R,Bird; Dragon; burn; impulse; flying; evasion,BLB,132,Mythic,24,impulse + burn payoff
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
 When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)"
@@ -6,6 +8,7 @@ Flowerfoot Swordmaster,Creature — Mouse Soldier,"Offspring {2} (You may pay an
 Valiant — Whenever this creature becomes the target of a spell or ability you control for the first time each turn, Mice you control get +1/+0 until end of turn.",W,Mouse; Soldier; tokens; etb; pump; offspring; go-wide; valiant; combat; counters,BLB,14,Uncommon,3,
 Overlord of the Balemurk,Enchantment Creature — Avatar Horror,"Impending 5—{1}{B} (If you cast this spell for its impending cost, it enters with five time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
 Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.",B,Avatar; Horror; graveyard; mill; impending,DSK,113,Mythic,22,
+End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff
 Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19a,
 Rayblade Trooper,Creature — Human Soldier,"When this creature enters, put a +1/+1 counter on target creature you control.
@@ -32,6 +35,8 @@ Nullpriest of Oblivion,Creature — Vampire Cleric,"Kicker {3}{B} (You may pay a
 Lifelink
 Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, if it was kicked, return target creature card from your graveyard to the battlefield.",B,Vampire; Cleric; reanimator; graveyard; lifegain; etb; lifelink; menace; evasion; kicker; value,FDN,611,Rare,11,
+"Lightning, Security Sergeant",Legendary Creature — Human Soldier,"Menace (This creature can't be blocked except by two or more creatures.)
+Whenever Lightning deals combat damage to a player, exile the top card of your library. You may play that card for as long as you control Lightning.",R,Human; Soldier; impulse; menace; evasion,FIN,560,Rare,24,persistent impulse on a menace body
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +2/+2 for each artifact you control and is an Artificer in addition to its other types.
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell"
@@ -166,6 +171,8 @@ The Soul Stone,Legendary Artifact — Infinity Stone,"Indestructible
 "Carnage, Crimson Chaos",Legendary Creature — Symbiote Villain,"Trample
 When Carnage enters, return target creature card with mana value 3 or less from your graveyard to the battlefield. It gains ""This creature attacks each combat if able"" and ""When this creature deals combat damage to a player, sacrifice it.""
 Mayhem {B}{R}",B/R,Symbiote; Villain; reanimator; graveyard; sacrifice; etb; mayhem; aggro; trample; evasion,SPM,125,Rare,10,
+Interdimensional Web Watch,Artifact,"When this artifact enters, exile the top two cards of your library. Until the end of your next turn, you may play those cards.
+{T}: Add two mana in any combination of colors. Spend this mana only to cast spells from exile.",Colorless,mana; etb; impulse,SPM,165,Rare,24,artifact: exile 2 + mana to cast from exile
 "Iron Spider, Stark Upgrade",Legendary Artifact Creature — Spider Hero,"Vigilance
 {T}: Put a +1/+1 counter on each artifact creature and/or Vehicle you control.
 {2}, Remove two +1/+1 counters from among artifacts you control: Draw a card.",Colorless,Spider; Hero; counters; card draw; vigilance; combat,SPM,166,Rare,17,
@@ -237,6 +244,8 @@ Whenever you draw your second card each turn, create a 1/1 colorless Spirit crea
 Ozai's Cruelty,Sorcery — Lesson,Ozai's Cruelty deals 2 damage to target player. That player discards two cards.,B,Lesson; burn; discard,TLA,113,Uncommon,10,"best 10 (Mad Villainy); also 1,22,14"
 Unlucky Cabbage Merchant,Creature — Human Citizen,"When this creature enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
 Whenever you sacrifice a Food, you may search your library for a basic land card and put it onto the battlefield tapped. If you search your library this way, put this creature on the bottom of its owner's library, then shuffle.",G,Human; Citizen; lifegain; sacrifice; tokens; ramp; etb; food,TLA,201,Uncommon,21,"Food engine: ETB Food, sac-Food -> ramp — pure Gastromancer payoff"
+"Zuko, Exiled Prince",Legendary Creature — Human Noble,"Firebending 3 (Whenever this creature attacks, add {R}{R}{R}. This mana lasts until end of combat.)
+{3}: Exile the top card of your library. You may play that card this turn.",R,Human; Noble; impulse; firebending; bending,TLA,163,Uncommon,24,firebending ramp + repeatable impulse
 "Armaggon, Future Shark",Legendary Creature — Shark Horror Mutant,"Flash
 When Armaggon enters, destroy up to three target creatures.",B,Shark; Horror; Mutant; etb; flash; tempo,TMT,58,Rare,general,"flash, ETB destroy up to 3 creatures — premium removal in ANY black deck"
 Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,8,"best 8 (Sacrifices); also 21,21a,5"
@@ -332,3 +341,6 @@ The Goose Mother,Legendary Creature — Bird Hydra,"Flying
 The Goose Mother enters with X +1/+1 counters on it.
 When The Goose Mother enters, create half X Food tokens, rounded up.
 Whenever The Goose Mother attacks, you may sacrifice a Food. If you do, draw a card.",U/G,Bird; Hydra; counters; card draw; sacrifice; tokens; etb; food; flying; evasion,WOE,204,Rare,19a,
+Korvold and the Noble Thief,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I, II — Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
+III — Exile the top three cards of target opponent's library. You may play those cards this turn.",R,Saga; sacrifice; tokens; treasure; saga; impulse,WOE,139,Uncommon,24,Treasure ramp (Sami) + impulse Saga
