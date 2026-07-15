@@ -3089,3 +3089,15 @@ You have no maximum hand size.
 Whenever a source you control deals noncombat damage to an opponent, you draw that many cards.",U/R,Dragon; Wizard; card draw; flying; evasion,FDN,123,1
 Enigma Drake,Creature — Drake,"Flying
 Enigma Drake's power is equal to the number of instant and sorcery cards in your graveyard.",U/R,Drake; graveyard; flying; evasion,FDN,657,1
+"Ovika, Enigma Goliath",Legendary Creature — Phyrexian Nightmare,"Flying
+Ward—{3}, Pay 3 life.
+Whenever you cast a noncreature spell, create X 1/1 red Phyrexian Goblin creature tokens, where X is the mana value of that spell. They gain haste until end of turn.",U/R,Phyrexian; Nightmare; tokens; flying; evasion; ward; protection,FDN,663,1
+"Balmor, Battlemage Captain",Legendary Creature — Bird Wizard,"Flying
+Whenever you cast an instant or sorcery spell, creatures you control get +1/+0 and gain trample until end of turn.",U/R,Bird; Wizard; pump; spellslinger; flying; evasion,FDN,237,1
+Izzet Guildgate,Land — Gate,"This land enters tapped.
+{T}: Add {U} or {R}.",U/R,Gate; mana,FDN,691,1
+Temple of Epiphany,Land,"This land enters tapped.
+When this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)
+{T}: Add {U} or {R}.",U/R,mana; etb; scry; selection,FDN,699,1
+Sorceress's Schemes,Sorcery,"Return target instant or sorcery card from your graveyard or exiled card with flashback you own to your hand. Add {R}.
+Flashback {4}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",R,graveyard; flashback; recursion; spellslinger,FIN,159,1
