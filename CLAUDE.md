@@ -203,6 +203,25 @@ docs. This file is the source of truth for the workflow commands in
   re-check its `#~` craft suggestions — a craftable legal under the old format may
   have rotated (hit moving decks 1/2 Historic→Standard). `deck.py flex <id>` plus
   the pool's `Legalities` column confirm.
+- **`deck.py suggest-homes <card>` automates the "which of my decks does this new
+  card improve" fit pass** (the manual dance repeated every craft this session —
+  Doctor Doom, Elspeth, Wan Shi Tong, Shark Shredder). It scans EVERY deck and
+  lists the ones where the card is both *castable* (its identity ⊆ the deck's
+  declared/derived colors) **and** shares ≥1 *central* theme (same 25%-centrality
+  test as `suggest`'s reuse count), ranked by theme-fit, marking where it's
+  already maindecked and naming the single weakest nonland cut candidate per deck
+  (`#: protect:` cards excluded). It's a SHORTLIST, not a verdict — the cut is one
+  heuristic pick, so still grade from full oracle text via `deck.py cuts <id>` and
+  preview with `deck.py swap` before applying. Because copies are fungible, it
+  reminds you to slot a card into *all* decks that earn it, not pick one home.
+- **`deck.py mana` also lints color SOURCES, not just pip demand.** After the pip
+  breakdown it prints "Color sources (lands producing each color)" (basics by
+  name, nonbasics by color identity — mana dorks aren't counted) and flags cards
+  whose strict colored pips look thin against those sources (`△ Pip-intensive`:
+  wants CC with <9 sources, or C with <4). This catches the "wants UU but this is
+  really a U-splash" problem the castability lint (which only checks identity ⊆
+  declared colors) can't see — e.g. a 3-source green splash flagging GG cards. A
+  heuristic review signal, not a hard fail; it doesn't gate `check_all.py`.
 
 ## Known Issues
 
