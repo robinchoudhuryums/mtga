@@ -37,8 +37,8 @@ Deck
 1 Abandon Attachments (TLA) 205
 1 Solstice Revelations (TLA) 153
 1 Professor Zei, Anthropologist (TLA) 238
-1 Hex Magic (MSH) 133
-1 Sorceress's Schemes (FIN) 159
+1 Melek, Reforged Researcher (MKM) 430
+1 The Dawning Archaic (SOS) 1
 # Interaction — cheap burn (owned) + kept removal
 1 Lightning Strike (MSH) 142
 1 Galvanize (MKM) 128
@@ -66,12 +66,9 @@ Deck
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 25
 #~ -Firebender Ascension | +Spider-Man 2099 | spice: end-step pinger when you cast a spell from GY/exile that turn
-#~ -Sorceress's Schemes | +Rite of Replication | 4-mana copy of Niv/Ovika/Prismari; 9 if kicked = 5-copy finisher
+#~ note: applied — Melek, Reforged Researcher (-Hex Magic) and The Dawning Archaic (-Sorceress's Schemes): a scaling spellslinger payoff/cost-reducer and a repeatable free graveyard-recast finisher. (Craft ideas Rite of Replication / Magmablood Archaic remain on the wishlist.)
 #~ -Colorstorm Stallion | +Echocasting Symposium | Paradigm = recurring FREE copy of your best creature each turn
 #~ -Iroh's Demonstration | +Roaring Furnace // Steaming Sauna | modal Room: removal (dmg = hand size) OR draw each end step
 #~ -Firebender Ascension | +Thunderdrum Soloist | cheap Opus reach — pings each opponent on every instant/sorcery
 #~ -Colorstorm Stallion | +Queen Brahne | prowess + a token that burns on each noncreature spell
-#~ -Hex Magic | +Death to Our Enemies | Treasure ramp -> 7-damage finisher (vs a risky hand-dump wheel)
 #~ -Tome Blast | +Zuko, Exiled Prince | firebending ramp + repeatable impulse card advantage
-#~ -Wisdom of Ages | +The Dawning Archaic | free, repeatable recast of your instants/sorceries from the graveyard
-#~ -Sorceress's Schemes | +Magmablood Archaic | on-board spellslinger anthem (converge counters + team pump)
