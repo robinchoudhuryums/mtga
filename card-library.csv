@@ -2410,10 +2410,10 @@ Riverpyre Verge,Land,"{T}: Add {R}.
 {T}: Add {U}. Activate only if you control an Island or a Mountain.",U/R,mana,DFT,260,1
 Stark Industries,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
-{T}: Add {U} or {R}.",U/R,lifegain; mana; etb,MSH,272,1
+{T}: Add {U} or {R}.",U/R,lifegain; mana; etb,MSH,272,3
 Swiftwater Cliffs,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
-{T}: Add {U} or {R}.",U/R,lifegain; mana; etb,MOM,273,1
+{T}: Add {U} or {R}.",U/R,lifegain; mana; etb,MOM,273,4
 Blood Spatter Analysis,Enchantment,"When this enchantment enters, it deals 3 damage to target creature an opponent controls.
 Whenever one or more creatures die, mill a card and put a bloodstain counter on this enchantment. Then sacrifice it if it has five or more bloodstain counters on it. When you do, return target creature card from your graveyard to your hand.",B/R,counters; graveyard; mill; sacrifice; burn; etb,MKM,189,1
 "Garland, Knight of Cornelia",Legendary Creature — Human Knight // Legendary Creature — Demon,"Whenever you cast a noncreature spell, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
