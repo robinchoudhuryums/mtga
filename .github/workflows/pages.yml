@@ -1,0 +1,45 @@
+name: Deploy dashboard to Pages
+
+# Rebuilds the roster dashboard (scripts/build_dashboard.py) and publishes it to
+# GitHub Pages on every push to main, so the craft plan / deck analysis / wishlist
+# stay current at a permanent URL with no local setup. The build is offline —
+# build_dashboard.py disables deck.py's live-Scryfall fallbacks and reads only
+# committed data (card-*.csv + decks/), so no network is needed and nothing can
+# hang on Scryfall (same reason check_all.py runs network-free).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; a newer push supersedes an in-flight run.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build dashboard (offline, from committed data)
+        run: |
+          mkdir -p _site
+          python3 scripts/build_dashboard.py --out _site/index.html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deploy
+        uses: actions/deploy-pages@v4

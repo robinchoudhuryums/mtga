@@ -52,18 +52,31 @@ def _capture(fn, ns):
 
 
 def deck_detail(did):
-    """The per-deck analysis panels, captured from the real deck.py commands."""
+    """The text analysis panels, captured from the real deck.py commands."""
     return {
         "stats": _capture(deckmod.cmd_stats, SimpleNamespace(id=did)),
         "mana": _capture(deckmod.cmd_mana, SimpleNamespace(id=did, fmt=None)),
         "legal": _capture(deckmod.cmd_legal, SimpleNamespace(id=did, fmt=None)),
         "cuts": _capture(deckmod.cmd_cuts, SimpleNamespace(id=did, limit=8)),
-        "craft": _capture(deckmod.cmd_suggest, SimpleNamespace(
-            id=did, unowned=True, owned=False, limit=15, any_format=False, fmt=None)),
         # The clean Arena-importable block (Deck-prefixed, comments/metadata
         # stripped) — what the copy button hands to the clipboard.
         "arena": _capture(deckmod.cmd_arena, SimpleNamespace(id=did)),
     }
+
+
+def craft_rows(d):
+    """Structured craft picks (unowned, on-color, on-theme) for the interactive
+    table — from the SAME suggest_scored() the `deck.py suggest` CLI renders, so
+    the dashboard table can't drift from the command."""
+    try:
+        res = deckmod.suggest_scored(d, unowned=True, limit=15)
+    except Exception as e:
+        eprint(f"WARN: craft picks for deck {d['id']} unavailable ({e})")
+        return []
+    if not res.get("ok"):
+        return []
+    return [{"name": p["name"], "rarity": p["rarity"], "decks": p["decks"],
+             "matches": p["matches"]} for p in res["picks"]]
 
 
 def collect():
@@ -110,6 +123,7 @@ def collect():
             "short": short,
             "buildable": ok,
             "wc": wc,
+            "craft": craft_rows(d),
             "detail": deck_detail(d["id"]),
         })
 
@@ -233,6 +247,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   </section>
   <section id="wl-sec">
     <h2>Wildcard priority — wishlist</h2>
+    <input class="filter" id="wlfilter" placeholder="filter wishlist by card, target, or signal…">
     <div id="wishlist"></div>
   </section>
   <section>
@@ -247,6 +262,48 @@ TEMPLATE = r"""<!DOCTYPE html>
   const D = JSON.parse(document.getElementById('data').textContent);
   const esc = s => (s||'').toString().replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
   const WC = {Mythic:'M',Rare:'R',Uncommon:'U',Common:'C'};
+  const RANK = {Mythic:3,Rare:2,Uncommon:1,Common:0};
+  const rankOf = r => (r in RANK ? RANK[r] : -1);
+  const wcCell = r => { const w = WC[r]||'?'; return `<span class="wcpill r-${w}">${w}</span>`; };
+  const preOf = txt => { const p = document.createElement('pre'); p.textContent = txt; return p; };
+
+  // Generic sortable table. cols: [{key,label,num,get,html?}]. Click a header to
+  // sort (numeric desc-first, text asc-first); click again to flip. Cells go in
+  // via textContent — or a fixed, safe html() for the rarity pill only — so no
+  // data field can inject markup.
+  function buildTable(cols, rows){
+    const tbl = document.createElement('table');
+    const thead = document.createElement('thead'), htr = document.createElement('tr');
+    let sortKey = null, dir = 1;
+    cols.forEach(c => {
+      const th = document.createElement('th'); th.textContent = c.label;
+      if (c.num) th.classList.add('num');
+      th.style.cursor = 'pointer';
+      th.onclick = () => { if (sortKey === c.key) dir = -dir; else { sortKey = c.key; dir = c.num ? -1 : 1; } draw(); };
+      htr.appendChild(th);
+    });
+    thead.appendChild(htr); tbl.appendChild(thead);
+    const tbody = document.createElement('tbody'); tbl.appendChild(tbody);
+    function draw(){
+      let rs = rows.slice();
+      if (sortKey) rs.sort((a,b) => {
+        const va = a[sortKey], vb = b[sortKey];
+        const cmp = (typeof va === 'number' && typeof vb === 'number') ? va - vb : ('' + va).localeCompare('' + vb);
+        return cmp * dir;
+      });
+      tbody.innerHTML = '';
+      for (const r of rs) {
+        const tr = document.createElement('tr');
+        cols.forEach(c => {
+          const td = document.createElement('td'); if (c.num) td.classList.add('num');
+          if (c.html) td.innerHTML = c.html(r); else td.textContent = c.get(r);
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      }
+    }
+    draw(); return tbl;
+  }
 
   document.getElementById('sub').textContent = 'Read-only snapshot · generated ' + D.generated +
     ' · numbers match `deck.py` exactly (captured from the same commands).';
@@ -257,25 +314,33 @@ TEMPLATE = r"""<!DOCTYPE html>
     `<div class="kpi"><b>${t.buildable}/${t.decks}</b><span>buildable now</span></div>`;
   document.getElementById('plan').textContent = D.roster_plan || '(no craft plan)';
 
-  // Wishlist tiers
+  // Wishlist — interactive: filterable, sortable, grouped by tier.
   const labels = {A:'Tier A — craft first', B:'Tier B — targeted upgrade', C:'Tier C — situational'};
   function rollStr(o){ return ['Mythic','Rare','Uncommon','Common'].filter(k=>o&&o[k]).map(k=>`${o[k]} ${k}`).join(' · '); }
-  let wl = '';
-  let anyWl = false;
-  for (const tier of ['A','B','C']) {
-    const rows = (D.wishlist[tier]||[]);
-    if (!rows.length) continue;
-    anyWl = true;
-    wl += `<div class="tierhdr"><h3>${labels[tier]}</h3><span class="roll">${rows.length} cards · ${esc(rollStr(D.wishlist_rollup[tier]))}</span></div>`;
-    wl += `<table><thead><tr><th>Card</th><th>WC</th><th>Target</th><th class="num">reuse</th><th class="num">pri</th><th>signal</th></tr></thead><tbody>`;
-    for (const s of rows) {
-      const w = WC[s.rarity] || '?';
-      wl += `<tr><td>${esc(s.name)}</td><td class="wcpill r-${w}">${w}</td><td>${esc(s.target)}</td>`+
-            `<td class="num">${s.reuse}</td><td class="num">${s.pri}</td><td>${esc(s.sig)}</td></tr>`;
+  const WLCOLS = [
+    {key:'name',   label:'Card',   get:r=>r.name},
+    {key:'_rank',  label:'WC',     num:true, html:r=>wcCell(r.rarity)},
+    {key:'target', label:'Target', get:r=>r.target},
+    {key:'reuse',  label:'reuse',  num:true, get:r=>r.reuse},
+    {key:'pri',    label:'pri',    num:true, get:r=>r.pri},
+    {key:'sig',    label:'signal', get:r=>r.sig},
+  ];
+  const wlWrap = document.getElementById('wishlist');
+  const anyWl = ['A','B','C'].some(t => (D.wishlist[t]||[]).length);
+  function renderWishlist(q){
+    q = (q||'').toLowerCase().trim();
+    wlWrap.innerHTML = '';
+    for (const tier of ['A','B','C']) {
+      let rows = (D.wishlist[tier]||[]).map(r => ({...r, _rank: rankOf(r.rarity)}));
+      if (q) rows = rows.filter(r => (r.name+' '+r.target+' '+r.sig).toLowerCase().includes(q));
+      if (!rows.length) continue;
+      const hdr = document.createElement('div'); hdr.className = 'tierhdr';
+      hdr.innerHTML = `<h3>${labels[tier]}</h3><span class="roll">${rows.length} cards · ${esc(rollStr(D.wishlist_rollup[tier]))}</span>`;
+      wlWrap.appendChild(hdr);
+      wlWrap.appendChild(buildTable(WLCOLS, rows));
     }
-    wl += `</tbody></table>`;
   }
-  if (anyWl) document.getElementById('wishlist').innerHTML = wl;
+  if (anyWl) { renderWishlist(''); document.getElementById('wlfilter').addEventListener('input', e => renderWishlist(e.target.value)); }
   else document.getElementById('wl-sec').style.display = 'none';
 
   // Clipboard with a fallback for non-secure contexts (e.g. opening the file
@@ -324,13 +389,25 @@ TEMPLATE = r"""<!DOCTYPE html>
           <button class="copy" data-copy>⧉ Copy Arena import</button>
           <span class="expand">▸ analysis</span>
         </div>
-        <div class="detail"><div class="tabs">${tabs}</div><pre class="out"></pre></div>
+        <div class="detail"><div class="tabs">${tabs}</div><div class="detailbody"></div></div>
       </div>`;
     }).join('');
     grid.querySelectorAll('.card').forEach(cardEl=>{
       const d = list.find(x=>x.id===cardEl.dataset.id);
-      const out = cardEl.querySelector('.out');
-      const show = k => { out.textContent = (d.detail[k]||'(no output)'); };
+      const body = cardEl.querySelector('.detailbody');
+      const CRAFTCOLS = [
+        {key:'name',    label:'Card',    get:r=>r.name},
+        {key:'_rank',   label:'WC',      num:true, html:r=>wcCell(r.rarity)},
+        {key:'decks',   label:'reuse',   num:true, get:r=>r.decks},
+        {key:'matches', label:'Matches', get:r=>r.matches.join(', ')},
+      ];
+      const show = k => {
+        body.innerHTML = '';
+        if (k === 'craft') {
+          if (!d.craft.length) { body.appendChild(preOf('No craft picks — nothing on-color and on-theme to craft here.')); return; }
+          body.appendChild(buildTable(CRAFTCOLS, d.craft.map(r => ({...r, _rank: rankOf(r.rarity)}))));
+        } else body.appendChild(preOf(d.detail[k] || '(no output)'));
+      };
       show('craft');
       cardEl.querySelector('[data-copy]').onclick = () => {
         const block = d.detail.arena || '';

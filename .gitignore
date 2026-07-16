@@ -2,6 +2,8 @@
 .image-cache.json
 # Incidental gallery preview screenshot
 gallery-preview.png
+# GitHub Pages build output (dashboard is rebuilt in CI from committed data)
+_site/
 
 # Python
 __pycache__/

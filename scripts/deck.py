@@ -1030,31 +1030,34 @@ def _deck_fingerprints(meta, exclude_id=None):
     return fps
 
 
-def cmd_suggest(args):
-    """Recommend pool cards that fit a deck's color identity and synergy themes.
+def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_format=False):
+    """Structured core of `suggest` — returns the scored, sorted, limited picks as
+    plain dicts so both `cmd_suggest` (renders below) and build_dashboard.py (craft
+    table) read from ONE code path and can't drift. See `cmd_suggest` for how each
+    field is displayed.
 
-    Scores each candidate by how strongly its tags overlap the deck's themes
-    (weighted by how central each theme is to the deck), filters to the deck's
-    colors, and flags owned vs. craftable with wildcard rarity. Composes
-    card-pool.csv + the synergy tags + tribes-style theme matching.
+    Returns a dict:
+      ok         – False if there's nothing to score (see `reason`).
+      reason     – 'no-pool' | 'no-themes' when ok is False.
+      colors     – the deck's castable colors (WUBRG set).
+      themes     – top-6 [(theme, weight)] for the header line.
+      fmt/apply_fmt/has_leg – format-filter state for the header messages.
+      picks      – [{name, rarity, owned, decks, score, matches:[themes]}], ranked.
+      total      – len(picks) (== the shown count).
+      hi_reuse   – [(name, decks)] for craftable picks that fit >=3 other decks.
     """
-    d = find_deck(args.id)
-    if not d:
-        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
-        return 1
+    res = {"ok": False, "reason": None, "colors": set(), "themes": [], "fmt": "",
+           "apply_fmt": False, "has_leg": False, "picks": [], "total": 0, "hi_reuse": []}
     if not os.path.exists(POOL_CSV):
-        eprint("No card-pool.csv. Build it: python3 scripts/build_pool.py")
-        return 1
+        res["reason"] = "no-pool"
+        return res
 
     dmeta, cards = parse_deck_file(d["path"])
     meta = load_card_meta()
 
-    # Format filter: default to the deck's own `#: format:` so craft suggestions
-    # are legal to play (and acquire) in that format. --format overrides,
-    # --any-format disables. Only applies when card-pool.csv carries legality data
-    # (build_pool.py) and the format is one we track.
-    fmt = "" if getattr(args, "any_format", False) else \
-        (getattr(args, "fmt", None) or dmeta.get("format") or "").strip().lower()
+    # Format filter: default to the deck's own `#: format:` (--format overrides,
+    # --any-format disables). Only bites when the pool carries legality data.
+    fmt = "" if any_format else (fmt or dmeta.get("format") or "").strip().lower()
 
     # Deck fingerprint: theme weights from synergy tags (copies carrying each tag).
     deck_names = {n.lower() for _, n, _, _ in cards}
@@ -1068,15 +1071,12 @@ def cmd_suggest(args):
         for t in m["synergies"]:
             theme_w[t] = theme_w.get(t, 0) + q
     if not theme_w:
-        print(f"Deck {d['id']} has no synergy tags to match against "
-              "(run tag_synergies.py). Nothing to suggest.")
-        return 0
+        res["reason"] = "no-themes"
+        return res
 
-    # Deck colors = the colors the deck can actually CAST, so suggestions are
-    # castable. Prefer the declared `#: colors:`; else derive from mana COSTS —
-    # never color identity, since a card's off-color activated abilities (e.g.
-    # Super-Skrull's {4}{R}) must not widen the deck's colors or we'd suggest
-    # cards you can't cast.
+    # Deck colors = the colors the deck can actually CAST. Prefer the declared
+    # `#: colors:`; else derive from mana COSTS — never color identity, so a card's
+    # off-color activated abilities don't widen the deck and surface uncastable picks.
     deck_colors = _declared_colors(dmeta)
     if not deck_colors:
         dm = load_mana()
@@ -1115,56 +1115,97 @@ def cmd_suggest(args):
         suggestions.append((score, name, r, shared))
 
     owned_of = lambda nl: by_name_qty.get(nl, 0)
-    if args.unowned:
+    if unowned:
         suggestions = [x for x in suggestions if owned_of(x[1].lower()) == 0]
-    if getattr(args, "owned", False):
+    if owned:
         suggestions = [x for x in suggestions if owned_of(x[1].lower()) > 0]
     # Rank: strongest theme fit first; owned as a tiebreaker so quick adds float up.
     suggestions.sort(key=lambda x: (-x[0], -min(owned_of(x[1].lower()), 1), x[1].lower()))
-    top = suggestions if args.limit == 0 else suggestions[:args.limit]
+    top = suggestions if limit == 0 else suggestions[:limit]
 
-    topthemes = sorted(theme_w.items(), key=lambda kv: -kv[1])[:6]
-    print(f"Deck {d['id']}: {d['name'] or d['path']} — suggestions from the pool\n")
-    print(f"Colors: {'/'.join(sorted(deck_colors)) or 'Colorless'}  ·  "
-          f"top themes: {', '.join(f'{t}({w})' for t, w in topthemes)}")
-    if apply_fmt:
-        print(f"Format: {fmt}-legal only  (override with --format <fmt> / --any-format)")
-    elif fmt and not has_leg:
-        print(f"Format: '{fmt}' filter requested but card-pool.csv has no legality "
-              "data — rebuild with build_pool.py. Showing all.")
-    elif fmt and fmt not in POOL_FORMATS:
-        print(f"Format: '{fmt}' not tracked — not filtering. "
-              f"(known: {', '.join(sorted(POOL_FORMATS))})")
-    if not top:
-        print("\nNo pool cards matched this deck's colors + themes.")
-        return 0
     fps = _deck_fingerprints(meta, exclude_id=d["id"])
-    print(f"\n{'Have':>5}  {'Card':28}  {'Rarity':8}  {'Decks':>5}  Matches (deck themes)")
-    print("-" * 82)
-    craftby = {}
-    hi_reuse = []
+    picks, hi_reuse = [], []
     for score, name, r, shared in top:
         h = owned_of(name.lower())
-        have = f"×{h}" if h > 0 else "craft"
-        rar = (r.get("Rarity") or "").strip()
-        if h == 0:
-            craftby[rar] = craftby.get(rar, 0) + 1
         card_cols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
         card_themes = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
         fits = sum(1 for _id, dc, dt in fps if card_cols <= dc and (card_themes & dt))
         if h == 0 and fits >= 3:
             hi_reuse.append((name, fits))
-        print(f"{have:>5}  {name[:28]:28}  {rar[:8]:8}  {fits:>5}  {', '.join(shared[:5])}")
+        picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(),
+                      "owned": h, "decks": fits, "score": score, "matches": shared})
+
+    res.update(ok=True, colors=deck_colors,
+               themes=sorted(theme_w.items(), key=lambda kv: -kv[1])[:6],
+               fmt=fmt, apply_fmt=apply_fmt, has_leg=has_leg,
+               picks=picks, total=len(top), hi_reuse=hi_reuse)
+    return res
+
+
+def cmd_suggest(args):
+    """Recommend pool cards that fit a deck's color identity and synergy themes.
+
+    Scores each candidate by how strongly its tags overlap the deck's themes
+    (weighted by how central each theme is to the deck), filters to the deck's
+    colors, and flags owned vs. craftable with wildcard rarity. Composes
+    card-pool.csv + the synergy tags + tribes-style theme matching. Rendering only —
+    the scoring lives in suggest_scored() so the dashboard shares it verbatim.
+    """
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    if not os.path.exists(POOL_CSV):
+        eprint("No card-pool.csv. Build it: python3 scripts/build_pool.py")
+        return 1
+
+    res = suggest_scored(d, unowned=args.unowned, owned=getattr(args, "owned", False),
+                         limit=args.limit, fmt=getattr(args, "fmt", None),
+                         any_format=getattr(args, "any_format", False))
+    if not res["ok"]:
+        if res["reason"] == "no-themes":
+            print(f"Deck {d['id']} has no synergy tags to match against "
+                  "(run tag_synergies.py). Nothing to suggest.")
+            return 0
+        eprint("No card-pool.csv. Build it: python3 scripts/build_pool.py")
+        return 1
+
+    deck_colors, fmt = res["colors"], res["fmt"]
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — suggestions from the pool\n")
+    print(f"Colors: {'/'.join(sorted(deck_colors)) or 'Colorless'}  ·  "
+          f"top themes: {', '.join(f'{t}({w})' for t, w in res['themes'])}")
+    if res["apply_fmt"]:
+        print(f"Format: {fmt}-legal only  (override with --format <fmt> / --any-format)")
+    elif fmt and not res["has_leg"]:
+        print(f"Format: '{fmt}' filter requested but card-pool.csv has no legality "
+              "data — rebuild with build_pool.py. Showing all.")
+    elif fmt and fmt not in POOL_FORMATS:
+        print(f"Format: '{fmt}' not tracked — not filtering. "
+              f"(known: {', '.join(sorted(POOL_FORMATS))})")
+    if not res["picks"]:
+        print("\nNo pool cards matched this deck's colors + themes.")
+        return 0
+    print(f"\n{'Have':>5}  {'Card':28}  {'Rarity':8}  {'Decks':>5}  Matches (deck themes)")
+    print("-" * 82)
+    craftby = {}
+    for p in res["picks"]:
+        h = p["owned"]
+        have = f"×{h}" if h > 0 else "craft"
+        rar = p["rarity"]
+        if h == 0:
+            craftby[rar] = craftby.get(rar, 0) + 1
+        print(f"{have:>5}  {p['name'][:28]:28}  {rar[:8]:8}  {p['decks']:>5}  "
+              f"{', '.join(p['matches'][:5])}")
     ncraft = sum(craftby.values())
     print("-" * 82)
-    print(f"{len(top)} suggestion(s) — {len(top) - ncraft} owned, {ncraft} to craft"
+    print(f"{res['total']} suggestion(s) — {res['total'] - ncraft} owned, {ncraft} to craft"
           + (f" ({', '.join(f'{n} {r}' for r, n in sorted(craftby.items()))})"
              if ncraft else ""))
     print("Decks = how many of your OTHER decks the card is castable in + shares a "
           "CENTRAL theme with (higher = more value per wildcard).")
-    if hi_reuse:
+    if res["hi_reuse"]:
         print("High cross-deck reuse: "
-              + ", ".join(f"{n} ({k})" for n, k in sorted(hi_reuse, key=lambda x: -x[1])[:6]))
+              + ", ".join(f"{n} ({k})" for n, k in sorted(res["hi_reuse"], key=lambda x: -x[1])[:6]))
     return 0
 
 
