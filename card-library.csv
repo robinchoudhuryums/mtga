@@ -3290,3 +3290,7 @@ Tribute to Hunger,Instant,Target opponent sacrifices a creature of their choice.
 Temple of Silence,Land,"This land enters tapped.
 When this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)
 {T}: Add {W} or {B}.",W/B,mana; etb; scry; selection,FDN,704,1
+The Everflowing Well,Legendary Artifact // Legendary Artifact Land,"When The Everflowing Well enters, mill two cards, then draw two cards.
+Descend 8 — At the beginning of your upkeep, if there are eight or more permanent cards in your graveyard, transform The Everflowing Well. // (Transforms from The Everflowing Well.)
+{T}: Add {U}.
+Whenever you cast a permanent spell using mana produced by The Myriad Pools, up to one other target permanent you control becomes a copy of that spell until end of turn.",U,graveyard; mill; card draw; mana; etb; transform; descend,LCI,56,1
