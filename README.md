@@ -164,6 +164,8 @@ python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme
 python3 scripts/wishlist.py --target 14        # what you've earmarked for a deck
 python3 scripts/wishlist.py --by-set           # PACK OPTIMIZATION: cards per set, by rarity
 python3 scripts/wishlist.py --rank             # WILDCARD PRIORITY: theme fit + hand-graded power, blended
+python3 scripts/wishlist.py --budget "9M 10R 38U 48C"   # optimal craft plan within a wildcard budget
+python3 scripts/wishlist.py --seed-power       # first-pass heuristic estimate for BLANK Power cells (+ --write)
 python3 scripts/wishlist.py --owned            # cards you've since acquired — prune these
 python3 scripts/wishlist.py --suggest-targets  # propose a Target per card (confidence-flagged)
 python3 scripts/wishlist.py --suggest-targets --write   # auto-fill the confident picks
@@ -314,8 +316,15 @@ to `suggest` (which proposes adds): it ranks the deck's nonland cards **weakest-
 first** as cut candidates, scoring each from data the tooling already computes — how
 central its synergy themes are to the deck, whether it fills a functional role, and
 its tribal contribution — and shows those components so you judge. It doesn't know
-your spice/signature cards, so read it as a shortlist, not a verdict; pair it with
-`suggest` and preview the result with `swap`.
+your spice/signature cards from the numbers alone, so read it as a shortlist, not a
+verdict; pair it with `suggest` and preview the result with `swap`.
+
+To hard-protect a deck's signature/spice cards, add a **`#: protect:`** header —
+`#: protect: Thousand-Year Storm; Niv-Mizzet, Visionary` (semicolon-separated,
+repeatable across lines; card names contain commas, so `;` is the separator).
+`cuts` then keeps those cards **off** the cut list (and lists them as protected),
+and `swap --cut`-ing one prints a warning. Use it for the cards a deck is built
+around so the tooling never proposes cutting them.
 
 Decks live under `decks/` as one folder per core deck, with variations as sibling
 files (`deck.txt` → id `1`, `1a-*.txt` → id `1a`). Basics are treated as

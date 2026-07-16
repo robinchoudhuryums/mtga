@@ -477,8 +477,11 @@ def _rank_scores(rows):
 
 
 def cmd_rank(rows):
-    """Rank the wishlist by wildcard-spend priority, grouped by recommendation tier."""
+    """Rank the wishlist by wildcard-spend priority — theme fit + hand-graded power
+    blended into a `combined` score — grouped by recommendation tier."""
     scored = _rank_scores(rows)
+    order = {"A": 0, "B": 1, "C": 2}
+    scored.sort(key=lambda s: (order.get(s["tier"], 9), -s["combined"], s["name"]))
     labels = {"A": "TIER A — craft first (confident theme home and/or real cross-deck breadth)",
               "B": "TIER B — solid targeted upgrade (one clear deck)",
               "C": "TIER C — situational / build-around (niche; craft when you build that deck)"}
@@ -488,13 +491,14 @@ def cmd_rank(rows):
             cur = s["tier"]
             n = sum(1 for x in scored if x["tier"] == cur)
             print(f"\n{labels[cur]}  ({n} cards)")
-            print(f"  {'#':>3} {'Card':32} {'WC':3} {'Deck':6} {'reuse':>5} {'pri':>5}  signal")
-            print("  " + "-" * 86)
+            print(f"  {'#':>3} {'Card':30} {'WC':3} {'Deck':6} {'fit':>4} {'pow':>4} "
+                  f"{'comb':>5}  signal")
+            print("  " + "-" * 88)
             i = 0
         i += 1
         wc = (s["rarity"] or "?")[:1] or "?"
-        print(f"  {i:>3} {s['name'][:32]:32} {wc:3} {s['target']:6} "
-              f"{s['reuse']:>5} {s['pri']:>5}  {s['sig'][:34]}")
+        print(f"  {i:>3} {s['name'][:30]:30} {wc:3} {s['target']:6} "
+              f"{s['fitN']:>4.1f} {s['power']:>4.1f} {s['combined']:>5.1f}  {s['sig'][:30]}")
     print("\n" + "=" * 60)
     print("Wildcard cost by tier (you spend that rarity's wildcards):")
     for t in ("A", "B", "C"):
@@ -504,8 +508,118 @@ def cmd_rank(rows):
                 by[s["rarity"]] = by.get(s["rarity"], 0) + 1
         line = ", ".join(f"{by[k]} {k}" for k in ("Mythic", "Rare", "Uncommon", "Common") if by.get(k))
         print(f"  Tier {t}: {line}")
-    print("\nNote: ranking reads THEME-fit, not raw power — a few generic-tagged bombs "
-          "(planeswalkers, mana rocks, Krenko-likes) sit in Tier C; eyeball those.")
+    print("\ncomb = 50/50 blend of theme fit (fit, 0–10) and hand-graded power (pow). "
+          "For an optimal craft plan within your wildcards use "
+          '`--budget "9M 10R 38U 48C"`; to first-pass blank Power cells use '
+          "`--seed-power`.")
+    return 0
+
+
+_RARITY_LETTER = {"M": "Mythic", "R": "Rare", "U": "Uncommon", "C": "Common"}
+
+
+def _parse_budget(s):
+    """'9M 10R 38U 48C' (any order/spacing, case-insensitive) -> {rarity: count}."""
+    caps = {}
+    for num, let in re.findall(r"(\d+)\s*([MmRrUuCc])", s or ""):
+        caps[_RARITY_LETTER[let.upper()]] = caps.get(_RARITY_LETTER[let.upper()], 0) + int(num)
+    return caps
+
+
+def cmd_budget(rows, budget_str):
+    """Given a wildcard budget ('9M 10R 38U 48C'), pick the highest-`combined`
+    cards affordable within each rarity's cap (it's separable per rarity, so the
+    top-K-by-combined per rarity IS optimal), with 1-2 alternates each and an
+    Arena import block of the picks."""
+    caps = _parse_budget(budget_str)
+    if not caps:
+        eprint('Could not parse budget. Example: --budget "9M 10R 38U 48C"')
+        return 1
+    scored = _rank_scores(rows)
+    by_rar = {}
+    for s in scored:
+        by_rar.setdefault(s["rarity"], []).append(s)
+    for r in by_rar:
+        by_rar[r].sort(key=lambda s: (-s["combined"], s["name"]))
+
+    print(f"Wildcard-spend plan for budget: "
+          + ", ".join(f"{caps[r]} {r}" for r in ("Mythic", "Rare", "Uncommon", "Common") if caps.get(r)))
+    print("(picks = highest combined fit+power within each cap; alts = next best)\n")
+    import_block = ["Deck"]
+    meta_by = {s["name"]: s for s in scored}
+    for rar in ("Mythic", "Rare", "Uncommon", "Common"):
+        cap = caps.get(rar, 0)
+        if not cap:
+            continue
+        pool = by_rar.get(rar, [])
+        picks, alts = pool[:cap], pool[cap:cap + 2]
+        print(f"=== {rar}  ({len(picks)} pick(s) of {cap} WC"
+              + (f"; {cap - len(picks)} WC left over — wishlist has no more {rar}s)" if len(picks) < cap else ")"))
+        for s in picks:
+            print(f"   {s['combined']:>4.1f}  {s['name'][:34]:34} "
+                  f"deck {s['target']:6}  (fit {s['fitN']:.1f} / pow {s['power']:.1f})")
+        for s in alts:
+            print(f"    alt {s['combined']:>3.1f}  {s['name'][:32]:32} deck {s['target']}")
+        print()
+
+    # Arena import block of the picks (front/full name is what the wishlist stores).
+    wl_by = {(r.get("Card Name") or ""): r for r in rows}
+    print("Import block (recommended crafts):\n```")
+    print("Deck")
+    for rar in ("Mythic", "Rare", "Uncommon", "Common"):
+        for s in by_rar.get(rar, [])[:caps.get(rar, 0)]:
+            r = wl_by.get(s["name"], {})
+            setc, coll = r.get("Set Code", ""), r.get("Collector #", "")
+            print(f"1 {s['name']}" + (f" ({setc}) {coll}" if setc else ""))
+    print("```")
+    return 0
+
+
+# Heuristic power SEED (a first pass for blank Power cells — NOT authoritative;
+# the role classifier underrates bombs whose value is unique text, so treat the
+# number as an estimate to hand-adjust). Rarity is the objective floor.
+_SEED_RARITY = {"Mythic": 4.5, "Rare": 3.2, "Uncommon": 2.0, "Common": 1.0}
+_SEED_ROLE = {"Sweeper": 2.0, "Reanimation": 1.6, "Cost reduction / cheat": 1.6,
+              "Payoff / engine": 1.5, "Card advantage": 1.3, "Removal (spot)": 1.1,
+              "Burn / drain": 1.1, "Counter": 0.8, "Recursion": 0.7, "Ramp / fixing": 0.6,
+              "Team pump / anthem": 0.6, "Protection / trick": 0.4, "Lifegain": 0.3}
+
+
+def _seed_power(r):
+    import deck as dk
+    p = _SEED_RARITY.get((r.get("Rarity") or "").capitalize(), 2.0)
+    p += sum(_SEED_ROLE.get(x, 0) for x in dk.classify_roles(r.get("Card Text") or ""))
+    ty = (r.get("Type") or "").lower()
+    if "planeswalker" in ty:
+        p += 2.0
+    if "legendary" in ty:
+        p += 0.3
+    return min(10.0, round(p * 2) / 2)  # nearest 0.5
+
+
+def cmd_seed_power(rows, write=False):
+    """Fill BLANK Power cells with a heuristic first-pass estimate (rarity floor +
+    functional-role signals). Never touches a Power you've already graded. It's an
+    ESTIMATE to review — the classifier can't see a bomb's unique text."""
+    blanks = [r for r in rows if not (r.get("Power") or "").strip()]
+    if not blanks:
+        print("Every wishlist card already has a Power grade — nothing to seed.")
+        return 0
+    print(f"Heuristic Power seed for {len(blanks)} blank cell(s) "
+          "(estimate — review & adjust):\n")
+    print(f"  {'seed':>4}  {'WC':3} Card")
+    for r in sorted(blanks, key=lambda r: -_seed_power(r)):
+        est = _seed_power(r)
+        if write:
+            r["Power"] = str(est)
+        wc = (r.get("Rarity") or "?")[:1]
+        print(f"  {est:>4.1f}  {wc:3} {r.get('Card Name', '')[:44]}")
+    if write:
+        write_wishlist(rows)
+        print(f"\nWrote {len(blanks)} Power estimate(s) to {os.path.basename(WISHLIST_CSV)}. "
+              "Review and hand-adjust the bombs the heuristic undersells.")
+    else:
+        print("\nRead-only. Re-run with --write to fill the blank Power cells.")
     return 0
 
 
@@ -548,8 +662,14 @@ def main():
     ap.add_argument("--overwrite", action="store_true",
                     help="with --suggest-targets --write: also overwrite existing Targets")
     ap.add_argument("--rank", action="store_true",
-                    help="rank cards by wildcard-spend priority (fit + cross-deck breadth), "
-                         "grouped by recommendation tier")
+                    help="rank cards by wildcard-spend priority (theme fit + hand-graded "
+                         "power, blended), grouped by recommendation tier")
+    ap.add_argument("--budget", metavar="SPEC",
+                    help='optimal craft plan within a wildcard budget, e.g. '
+                         '"9M 10R 38U 48C" (picks highest combined score per rarity cap)')
+    ap.add_argument("--seed-power", dest="seed_power", action="store_true",
+                    help="first-pass heuristic estimate for BLANK Power cells "
+                         "(add --write to persist; review — it's an estimate)")
     ap.add_argument("--owned", action="store_true",
                     help="show only wishlist cards you now OWN (drop candidates)")
     ap.add_argument("--name"); ap.add_argument("--type"); ap.add_argument("--text")
@@ -574,6 +694,10 @@ def main():
         return cmd_suggest_targets(rows, write=args.write, overwrite=args.overwrite)
     if args.rank:
         return cmd_rank(rows)
+    if args.budget:
+        return cmd_budget(rows, args.budget)
+    if args.seed_power:
+        return cmd_seed_power(rows, write=args.write)
 
     hits = [c for c in rows if _match(c, args)]
     if args.owned:

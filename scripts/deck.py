@@ -1523,6 +1523,10 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
     if after is None:
         eprint(f"{cut!r} is not in deck {d['id']}. Nothing swapped.")
         return 1
+    if cut.strip().lower() in _protected(d.get("meta") or {}):
+        eprint(f"⚠ {cut!r} is marked protected (#: protect:) in deck {d['id']} — a "
+               "signature/spice card. Proceeding, but reconsider; remove it from the "
+               "header if this cut is intentional.")
 
     nonland = [n for q, n, s, c in cards if n.lower() not in BASICS]
     fetch_missing_mana(sorted(set(nonland + [add])), mana)
@@ -1719,6 +1723,15 @@ def cmd_legal(args):
 
 
 # --- cut candidates: the companion to `suggest` (adds) ---------------------- #
+def _protected(meta):
+    """Cards a deck's `#: protect:` header marks as signature/spice — the tooling
+    must never propose cutting them. Format: `#: protect: Card A; Card B`
+    (repeatable across lines; SEMICOLON-separated — card names contain commas, so
+    comma can't be the separator). Returns a lowercased set of card names."""
+    raw = (meta or {}).get("protect", "") or ""
+    return {p.strip().lower() for p in raw.split(";") if p.strip()}
+
+
 def cmd_cuts(args):
     """Rank the deck's nonland cards from most to least cuttable — the counterpart
     to `suggest` (which proposes adds). Heuristic from data the rest of the tooling
@@ -1732,6 +1745,7 @@ def cmd_cuts(args):
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
     meta, cards = parse_deck_file(d["path"])
+    protected = _protected(meta)
     cardmeta = load_card_meta()
     carddata = load_card_data()
     mana = load_mana()
@@ -1755,10 +1769,14 @@ def cmd_cuts(args):
             for st in creature_subtypes(cd["type"]):
                 sub_count[st] = sub_count.get(st, 0) + q
 
-    rows, seen = [], set()
+    rows, seen, prot_present = [], set(), []
     for q, n, s, c in cards:
         nl = n.lower()
         if nl in BASICS or nl in seen:
+            continue
+        if nl in protected:
+            prot_present.append(n)
+            seen.add(nl)
             continue
         cd = carddata.get(nl)
         tline = (cd["type"] if cd else "") or ""
@@ -1800,7 +1818,10 @@ def cmd_cuts(args):
 
     print(f"Deck {d['id']}: {d['name'] or d['path']} — cut candidates (weakest fit first)")
     print(f"Central themes: {', '.join(sorted(central)) or '(none)'}")
-    print("Heuristic shortlist — spice/signature cards aren't known here.\n")
+    if prot_present:
+        print(f"Protected (kept OFF the cut list via #: protect:): {'; '.join(prot_present)}")
+    print("Heuristic shortlist — read the text; it can't see spice/signature cards "
+          "beyond the #: protect: header.\n")
     print(f"  {'Card':30} {'MV':>3}  {'Fit':>4}  Roles / why-cuttable")
     print("-" * 74)
     for keep, n, mv, roles, fit, reasons, ctx, text in rows[:limit]:

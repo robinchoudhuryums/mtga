@@ -96,7 +96,11 @@ docs. This file is the source of truth for the workflow commands in
   (which re-shows both cards' full text) before recommending or applying a cut.**
   Repeated cut mis-grades in past sessions traced to trusting the label instead
   of the text — don't. For a holistic add/cut pass, prefer the `/tune-deck`
-  skill, which protects signature/spice cards and reserves a fun budget.
+  skill, which protects signature/spice cards and reserves a fun budget. To
+  hard-protect a deck's signature/spice cards, add a **`#: protect: Card A; Card
+  B`** header (semicolon-separated — card names contain commas): `cuts` then keeps
+  them off the cut list and `swap --cut`-ing one warns. Set these for cards a deck
+  is built around so the tooling never proposes cutting them.
 - **"Not in library" for a card you own is the deck-dump undercount symptom.**
   `import_arena.py` takes a lower bound per line, so a card can end up
   *undercounted or entirely absent* from `card-library.csv` — then `deck.py
@@ -147,8 +151,12 @@ docs. This file is the source of truth for the workflow commands in
   fallback — double-faced cards are stored under their **full `Front // Back` name**
   (matching the pool) so joins work, unlike the library's front-name convention.
   `--by-set` is the pack/gem-optimization view (wishlist cards per set by rarity);
-  `--owned` flags cards you've since crafted so you can prune them (or feed them to
-  `reconcile_crafts.py`). `Target`/`Note`/`Power` are hand-annotated: `Target` is a
+  `--budget "9M 10R 38U 48C"` turns a wildcard budget into an optimal craft plan
+  (top `combined` per rarity cap + alternates + an import block); `--seed-power`
+  first-passes BLANK `Power` cells with a heuristic estimate (rarity floor + roles;
+  review it — the classifier undersells bombs); `--owned` flags cards you've since
+  crafted so you can prune them (or feed them to `reconcile_crafts.py`).
+  `Target`/`Note`/`Power` are hand-annotated: `Target` is a
   deck id / `general` / `concept: …`; **`Power` is a 1–10 hand-graded constructed-
   power score** that `--rank` blends 50/50 with theme fit into a `combined` score
   (an idf theme model can't see raw power, so bombs like Doctor Doom get buried
