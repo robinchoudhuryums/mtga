@@ -2303,7 +2303,7 @@ When this creature enters, you gain 3 life.",W/B,Human; Ninja; lifegain; etb; sn
 {T}: Add {W} or {B}.",W/B,Town; mana,FIN,282,1
 Scoured Barrens,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
-{T}: Add {W} or {B}.",W/B,lifegain; mana; etb,M21,250,1
+{T}: Add {W} or {B}.",W/B,lifegain; mana; etb,M21,250,4
 Misty Palms Oasis,Land,"This land enters tapped.
 {T}: Add {W} or {B}.
 {4}, {T}, Sacrifice this land: Draw a card.",W/B,card draw; sacrifice; mana,TLA,273,1
@@ -3279,3 +3279,14 @@ Whenever Shark Shredder deals combat damage to a player, put up to one target cr
 South Wind Avatar,Creature — Snake Spirit Avatar,"Deathtouch
 Whenever another creature you control dies, you gain life equal to its toughness.
 Whenever you gain life, each opponent loses 1 life.",B,Snake; Spirit; Avatar; deathtouch; combat; removal,TMT,78,1
+Sanguine Syphoner,Creature — Vampire Warlock,"Whenever this creature attacks, each opponent loses 1 life and you gain 1 life.",B,Vampire; Warlock; lifegain,FDN,68,1
+Vengeful Bloodwitch,Creature — Vampire Warlock,"Whenever this creature or another creature you control dies, target opponent loses 1 life and you gain 1 life.",B,Vampire; Warlock; lifegain,FDN,76,1
+Vampire Nighthawk,Creature — Vampire Shaman,"Flying
+Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)
+Lifelink (Damage dealt by this creature also causes you to gain that much life.)",B,Vampire; Shaman; lifegain; deathtouch; combat; removal; flying; evasion; lifelink,FDN,757,1
+"Elenda, Saint of Dusk",Legendary Creature — Vampire Knight,"Lifelink, hexproof from instants
+As long as your life total is greater than your starting life total, Elenda gets +1/+1 and has menace. Elenda gets an additional +5/+5 as long as your life total is at least 10 greater than your starting life total.",W/B,Vampire; Knight; lifegain; pump; lifelink; hexproof from; hexproof; protection,FDN,119,1
+Tribute to Hunger,Instant,Target opponent sacrifices a creature of their choice. You gain life equal to that creature's toughness.,B,sacrifice,FDN,614,1
+Temple of Silence,Land,"This land enters tapped.
+When this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)
+{T}: Add {W} or {B}.",W/B,mana; etb; scry; selection,FDN,704,1
