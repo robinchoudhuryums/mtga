@@ -276,7 +276,10 @@ def cmd_by_set(rows, owned):
 def _theme_model():
     """Build the deck theme model for target suggestion. Returns (fps, idf):
 
-      fps  – [(deck_id, colors:set, central:set, tw_norm:dict)] per deck.
+      fps  – [(deck_id, colors:set, central:set, tw_norm:dict)] — one entry per
+             CORE archetype (variant builds / raw piles / pools are collapsed to
+             their primary, and untuned placeholder lists are skipped) so breadth
+             and idf count each real deck once, not once per alternate build.
       idf  – {theme: inverse-deck-frequency weight}. A theme CENTRAL to few decks
              (food, earthbend, firebending, Ninja, …) scores high; one central to
              most decks (etb, counters, tokens, mana, lifegain, …) scores ~0.
@@ -290,7 +293,17 @@ def _theme_model():
     meta = dk.load_card_meta()
     fps, df = [], {}
     for dd in dk.discover_decks():
+        # One fingerprint per CORE archetype. Variants (alternate builds, raw
+        # piles, pre-trim pools) share a core deck's themes, so counting them as
+        # separate decks double-counts a theme's centrality (idf) and inflates a
+        # card's cross-deck breadth (reuse) — e.g. a Bird card "reaching" 19, 19b
+        # AND 19c. Skip variants (keep the primary) and skip any untuned list
+        # (the 26-card example placeholder, an 83-card raw pile, an 86-card pool).
+        if dd["variant"]:
+            continue
         dm, cards = dk.parse_deck_file(dd["path"])
+        if not (55 <= sum(q for q, _n, _s, _c in cards) <= 70):
+            continue
         colors, ident, tw = dk._declared_colors(dm), set(), {}
         for q, n, s, c in cards:
             if n.lower() in dk.BASICS:
