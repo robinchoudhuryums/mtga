@@ -147,8 +147,15 @@ docs. This file is the source of truth for the workflow commands in
   fallback — double-faced cards are stored under their **full `Front // Back` name**
   (matching the pool) so joins work, unlike the library's front-name convention.
   `--by-set` is the pack/gem-optimization view (wishlist cards per set by rarity);
-  `--owned` flags cards you've since crafted so you can prune them. `Target`/`Note`
-  are hand-annotated (deck id / `general` / `concept: …`). Not gated by check_all.
+  `--owned` flags cards you've since crafted so you can prune them (or feed them to
+  `reconcile_crafts.py`). `Target`/`Note`/`Power` are hand-annotated: `Target` is a
+  deck id / `general` / `concept: …`; **`Power` is a 1–10 hand-graded constructed-
+  power score** that `--rank` blends 50/50 with theme fit into a `combined` score
+  (an idf theme model can't see raw power, so bombs like Doctor Doom get buried
+  without it — the Power column is the fix; the artifact exposes a live fit↔power
+  slider). The wishlist CSV itself isn't gated by check_all, but the **ranking
+  model is** — `check_rankings.py` (run inside check_all) guards the specific-theme
+  cutoff so a scoring change can't silently reclassify a real tribe as "generic".
 - **Auto-targeting a wishlist batch: trust STRONG, judge `review`.** `wishlist.py
   --suggest-targets` scores each card's deck fit by **theme rarity (idf)** so broad
   decks stop acting as catch-alls: naive theme-overlap over-assigns to 5-color

@@ -151,9 +151,10 @@ slotting into a deck, or building a new concept around — kept apart from your
 owned inventory (`card-library.csv`) and the full pool (`card-pool.csv`). Each card
 is auto-enriched (Rarity, Color, Type, oracle text, synergy tags) from the pool,
 with a Scryfall fallback for cards the pool lacks (e.g. newer double-faced cards,
-stored under their full `Front // Back` name). Two columns are yours to annotate:
-**Target** (a deck id, `general`, or `concept: …`) and **Note** (why it caught your
-eye).
+stored under their full `Front // Back` name). Three columns are yours to annotate:
+**Target** (a deck id, `general`, or `concept: …`), **Note** (why it caught your
+eye), and **Power** (a 1–10 hand-graded constructed-power score — see `--rank`
+below, which blends it with theme fit).
 
 ```
 python3 scripts/wishlist.py --add batch.txt   # append an Arena-export batch (enriches each)
@@ -162,7 +163,7 @@ python3 scripts/wishlist.py --set SOS --rarity rare,mythic   # filter (substring
 python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme
 python3 scripts/wishlist.py --target 14        # what you've earmarked for a deck
 python3 scripts/wishlist.py --by-set           # PACK OPTIMIZATION: cards per set, by rarity
-python3 scripts/wishlist.py --rank             # WILDCARD PRIORITY: fit + cross-deck breadth, tiered
+python3 scripts/wishlist.py --rank             # WILDCARD PRIORITY: theme fit + hand-graded power, blended
 python3 scripts/wishlist.py --owned            # cards you've since acquired — prune these
 python3 scripts/wishlist.py --suggest-targets  # propose a Target per card (confidence-flagged)
 python3 scripts/wishlist.py --suggest-targets --write   # auto-fill the confident picks
@@ -188,16 +189,47 @@ manufacture a false-confident match. The intended loop for a new batch:
 
 `--by-set` is the gem-spending view: it ranks the sets by how many wishlist cards
 each pack could net you (broken down by rarity), so you open the highest-value
-packs first. `--rank` is the **wildcard-spend order**: it scores every card by
-theme fit (the same idf model as `--suggest-targets`) plus *cross-deck breadth*
-(how many decks it's castable in **and** shares a specific theme with — generic
-overlap doesn't count), then groups the list into recommendation tiers (A = craft
-first, B = solid single-deck upgrade, C = situational build-around) with a
-per-tier wildcard-cost rollup. It reads theme-fit, not raw power, so eyeball
-Tier C for generic-tagged bombs (planeswalkers, mana rocks). `--owned` flags
-anything you've since crafted so you can drop it. Set `Target`/`Note` by editing
-the CSV directly. Paste a new batch anytime — Claude Code can add it and suggest
-which deck each card fits.
+packs first. `--rank` is the **wildcard-spend order**. It scores each card on two
+independent axes and blends them:
+
+- **Fit** — theme fit (the same idf model as `--suggest-targets`) plus *cross-deck
+  breadth* (how many decks it's castable in **and** shares a *specific* theme with;
+  generic overlap doesn't count). This is a synergy signal, **not** raw power — an
+  idf model can't tell that a generic-tagged planeswalker is a bomb.
+- **Power** — the hand-graded 1–10 `Power` column (constructed impact), so those
+  bombs aren't buried by a low fit score.
+
+The two are normalized and blended 50/50 into a `combined` score; the list still
+groups into fit tiers (A = confident home / real breadth, B = one clear deck,
+C = situational). The published wishlist artifact renders the same data with a
+live **fit↔power slider** so you can reweight the ranking on the fly. `--owned`
+flags anything you've since crafted so you can drop it (or reconcile it with
+`reconcile_crafts.py`, below). Set `Target`/`Note`/`Power` by editing the CSV
+directly. Paste a new batch anytime — Claude Code can add it and suggest which
+deck each card fits.
+
+**Ranking sanity is gated.** Because the fit model's "specific theme" cutoff is
+distribution-sensitive (it once drifted and silently reclassified a real tribe as
+"generic", burying bombs), `scripts/check_rankings.py` asserts the cutoff still
+behaves — a rare theme stays *specific*, a broad theme stays *generic* — and it
+runs inside `check_all.py`, so a scoring regression fails the integrity gate.
+
+### Reconcile crafts — fold newly-crafted cards into the library
+
+```
+python3 scripts/reconcile_crafts.py crafts.txt          # dry run (default)
+python3 scripts/reconcile_crafts.py crafts.txt --apply   # write, with .bak backups
+```
+
+When you craft (or discover you already own) cards, paste them as an Arena export
+(`1 Doctor Doom (MSH) 95`). This adds each to `card-library.csv` (a double-faced
+card under its **front** name, matching the library convention), adds the matching
+`card-mana.csv` row so INV-02 keeps holding, drops it from `card-wishlist.csv`, and
+lists the decks that reference it so you can re-check buildability. The line's
+quantity becomes the owned count (so `4 Scoured Barrens (FDN) 266` sets it to 4).
+Dry-run by default; after `--apply`, run `build_gallery.py` + `check_all.py` (or
+`/refresh`). This is the fast fix for the **"not in library" undercount symptom**
+— a card you own that `deck.py check` still lists as a craft target.
 
 ### Deck — manage decks and variations
 
@@ -214,7 +246,7 @@ python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-
 python3 scripts/deck.py legal 1a      # construction lint: deck size, copy limits, format legality
 python3 scripts/deck.py cuts 1a       # rank the deck's weakest-fit cards as cut candidates
 python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~ lines)
-python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both cards; --apply writes (.bak)
+python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
 ```
 
@@ -417,7 +449,8 @@ interchange format, you can also import/export manually in Sheets without this.)
 
 `python3 scripts/check_all.py` is the project's integrity gate — it verifies the
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
-derived files present, decks parse) and exits non-zero on any hard break. A
+derived files present, decks parse) plus a **ranking-model sanity check**
+(`check_rankings.py`, above), and exits non-zero on any hard break. A
 SessionStart hook runs it (quiet) so drift surfaces immediately.
 
 Claude Code slash commands live in `.claude/commands/`:
