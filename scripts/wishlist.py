@@ -47,7 +47,7 @@ WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
 
 HEADER = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
-          "Set Code", "Collector #", "Rarity", "Target", "Note"]
+          "Set Code", "Collector #", "Rarity", "Target", "Note", "Power"]
 RARITY_RANK = {"Mythic": 0, "Rare": 1, "Uncommon": 2, "Common": 3, "": 4, "?": 5}
 
 # "<qty> <Name>" with optional "(SET)" + collector number — mirrors deck.py/import_arena.
@@ -453,13 +453,24 @@ def _rank_scores(rows):
         pri = best + 0.6 * max(0, reuse - 1)
         tier = "A" if (conf == "STRONG" or reuse >= 3) else \
                "B" if (best_specific or reuse >= 1) else "C"
+        try:
+            power = float(r.get("Power") or 0)
+        except ValueError:
+            power = 0.0
         out.append({
             "name": r.get("Card Name", ""), "rarity": (r.get("Rarity") or "").capitalize(),
             "target": (r.get("Target") or "").strip() or "—",
             "conf": conf, "fit": round(best, 2), "reuse": reuse,
-            "pri": round(pri, 2), "tier": tier,
+            "pri": round(pri, 2), "tier": tier, "power": round(power, 1),
             "sig": "/".join(best_specific[:2]) or ("generic/no-theme" if conf == "review" else ""),
         })
+    # Normalize fit (pri) to 0-10 and blend 50/50 with the hand-graded power
+    # (already 0-10) into a combined value-per-wildcard score. fitN is exposed so
+    # the artifact can re-blend live at any fit/power weight.
+    mx = max((s["pri"] for s in out), default=0) or 1
+    for s in out:
+        s["fitN"] = round(s["pri"] / mx * 10, 2)
+        s["combined"] = round(0.5 * s["fitN"] + 0.5 * s["power"], 2)
     order = {"A": 0, "B": 1, "C": 2}
     out.sort(key=lambda s: (order[s["tier"]], -s["pri"], -_WC_RANK.get(s["rarity"], 0), s["name"]))
     return out
