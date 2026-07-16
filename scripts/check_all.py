@@ -111,6 +111,14 @@ def main():
     deck_errs, deck_info, ndecks = check_decks()
     hard += deck_errs
 
+    # Ranking-model sanity — guards the Doctor-Doom-class scoring regression
+    # (a real tribe silently read as "generic" after a threshold drifted).
+    try:
+        from check_rankings import check as check_rankings
+        hard += check_rankings()
+    except Exception as e:
+        hard.append(f"ranking model sanity check errored: {e}")
+
     if args.quiet:
         state = "OK" if not hard else f"{len(hard)} ISSUE(S)"
         print(f"[card-library] {ncards} cards, {ndecks} decks — integrity: {state}")

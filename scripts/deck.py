@@ -1464,7 +1464,27 @@ def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
                     and e["in"].lower() == drop_flex["in"].lower():
                 del out[j]
                 break
-    return out
+
+    # Auto-retire flex lines made stale by THIS swap: a `#~ -Out | +In` proposal
+    # is stale once we've maindecked its +In card, or cut its -Out card (and it's
+    # no longer in the deck). Replace the first such line with an `applied` note
+    # and drop the rest. Only touches `#~` comment lines, never card lines — so it
+    # can't affect the copy count or INV-04. (Past sessions hand-cleaned these.)
+    add_l, cut_l = add.strip().lower(), cut.strip().lower()
+    maindeck = {(_card_line_name(ln) or "").lower() for ln in out if _card_line_name(ln)}
+    cut_gone = cut_l not in maindeck
+    cleaned, noted = [], False
+    for ln in out:
+        e = _parse_flex_line(ln.strip())
+        if e and e["out"] and e["in"] and (
+                e["in"].lower() == add_l or (e["out"].lower() == cut_l and cut_gone)):
+            if not noted:
+                indent = ln[:len(ln) - len(ln.lstrip())]
+                cleaned.append(f"{indent}#~ note: applied — {add.strip()} in for {cut.strip()}.")
+                noted = True
+            continue
+        cleaned.append(ln)
+    return cleaned
 
 
 def _safe_write_lines(path, lines, expected_total):

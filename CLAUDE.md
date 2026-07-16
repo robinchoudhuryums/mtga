@@ -41,7 +41,10 @@ docs. This file is the source of truth for the workflow commands in
   competing for a card, tell the user to "pick" one home, or "split" copies across
   decks: the same copy can go everywhere it fits. (Recurring misread in past
   sessions — the only real question per deck is "do I want it here," not "can I
-  spare a copy.")
+  spare a copy.") Turn this into a *proactive* habit: when a crafted card earns a
+  slot in more than one deck, offer to slot it into **all** of them (Elspeth in
+  both Knight's Edge and Avengers; Wan Shi Tong in both Bloodbending and Drawn
+  Conclusions) rather than asking the user to choose a single home.
 
 ## Common Gotchas
 
@@ -59,10 +62,22 @@ docs. This file is the source of truth for the workflow commands in
   leaves-play trigger got missed when grading cuts from a sliced text field).
   **Always grade a cut from full oracle text — the `swap` preview or the text
   block `cuts` now prints — never from a role/fit label or a `Card Text[:N]`
-  slice.** `--apply` writes with a `.bak` and an INV-04 re-check; if the add card
-  is already in the deck it bumps that line rather than adding a second line for
-  the same card. `deck.py apply-flex <id> <n>` promotes a `#~` flex line into the
-  60. Both default to a dry run.
+  slice.** **And grade the text against THIS deck's engine, not the card in the
+  abstract:** a cost or effect that reads as a downside in isolation is often an
+  *upside* in the matching deck — a "sacrifice an artifact / creature" cost is
+  cheap and *triggers your payoffs* in a Food/aristocrats deck (Deadly Precision
+  in deck 21), "attacks alone" can be a finisher while your other creatures hold
+  back to block (Team Avatar), a kicker unlocks a mode the base card hides (Divine
+  Resilience → mass indestructible), and a symmetric board wipe is a *reset the
+  reanimator rebuilds from* (Villainous Wrath / Rise of Sozin). Ask "what does
+  this do *here*" before calling it weak — repeated mis-grades this session traced
+  to judging cards in isolation. `--apply` writes with a `.bak` and an INV-04
+  re-check; if the add card is already in the deck it bumps that line rather than
+  adding a second line for the same card, and it **auto-retires `#~` flex lines
+  made stale by the swap** (a line proposing the card you just maindecked, or
+  cutting a card you just removed) — replacing the first with an `applied` note.
+  `deck.py apply-flex <id> <n>` promotes a `#~` flex line into the 60. Both
+  default to a dry run.
 - **Legality lint and cut candidates are separate from ownership.** `deck.py check`
   answers "do I own this deck"; `deck.py legal <id>` answers "is it a *legal* deck"
   — size vs the format minimum, the copy limit (4, or 1 in singleton formats), and
@@ -85,11 +100,18 @@ docs. This file is the source of truth for the workflow commands in
 - **"Not in library" for a card you own is the deck-dump undercount symptom.**
   `import_arena.py` takes a lower bound per line, so a card can end up
   *undercounted or entirely absent* from `card-library.csv` — then `deck.py
-  check` reports it as a craft target even though you own it. Reconcile via
-  `import_arena.py <deck> --skip-basics` (trues up from a built deck), or append
-  the row from `card-pool.csv` at the right `Quantity Owned` and rebuild the
-  gallery. Hit repeatedly in practice (Primeval Bounty, Cat Collector, Inspiration
-  from Beyond, Dion, …).
+  check` reports it as a craft target even though you own it. Fastest fix:
+  `reconcile_crafts.py <arena-export>` — paste the crafted/owned cards as an Arena
+  export ("1 Doctor Doom (MSH) 95"), and it adds each to `card-library.csv` (DFC
+  stored under its **front** name), adds the matching `card-mana.csv` row, drops it
+  from `card-wishlist.csv`, and lists the decks to re-check. Dry-run by default;
+  `--apply` writes with `.bak`s; then run `build_gallery.py` + `check_all.py` (or
+  `/refresh`). (The DFC front-vs-full name handling — pool/mana key `A // B`, the
+  library keys `A` — was the most error-prone part when done by hand.) Alternatives:
+  `import_arena.py <deck> --skip-basics` (trues up from a built deck), or append the
+  `card-pool.csv` row manually. Hit repeatedly in practice (Primeval Bounty, Cat
+  Collector, Inspiration from Beyond, Dion, Atlantis Attacks, the deck 20–22 FDN
+  cards, The Everflowing Well, …).
 - **MTG Arena set codes can differ from Scryfall** (e.g. Arena `DAR` = Scryfall
   `DOM`). `enrich.py` maps known ones (`SET_ALIASES`). It fills a row's Collector #
   from the batch match when that printing's set lines up, else via a targeted
@@ -189,7 +211,11 @@ docs. This file is the source of truth for the workflow commands in
 ## Cycle Workflow Config
 
 **Test Command:** `python3 scripts/check_all.py`
-(deterministic integrity gate; exits non-zero on any hard invariant break)
+(deterministic integrity gate; exits non-zero on any hard invariant break —
+INV-01…04 plus a **ranking-model sanity check** (`check_rankings.py`) that guards
+the Doctor-Doom-class regression: a scoring change that silently reclassifies a
+real tribal theme as "generic". The ranking check is distribution-based, so it
+survives cards being crafted off the wishlist.)
 
 **Health Dimensions:**
 - Data Integrity — CSV structure, no drift between library and derived files
@@ -201,8 +227,8 @@ docs. This file is the source of truth for the workflow commands in
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv
-- Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/sheets_sync.py, scripts/lib.py
-- Analysis: scripts/deck.py, scripts/query.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py
+- Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/lib.py
+- Analysis: scripts/deck.py, scripts/query.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`)
 - Decks: decks/
 
