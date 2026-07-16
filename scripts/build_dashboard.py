@@ -60,6 +60,9 @@ def deck_detail(did):
         "cuts": _capture(deckmod.cmd_cuts, SimpleNamespace(id=did, limit=8)),
         "craft": _capture(deckmod.cmd_suggest, SimpleNamespace(
             id=did, unowned=True, owned=False, limit=15, any_format=False, fmt=None)),
+        # The clean Arena-importable block (Deck-prefixed, comments/metadata
+        # stripped) — what the copy button hands to the clipboard.
+        "arena": _capture(deckmod.cmd_arena, SimpleNamespace(id=did)),
     }
 
 
@@ -96,6 +99,7 @@ def collect():
         wc = deckmod._wc_str(deckmod._wc_breakdown(shorts, rar_of))
         decks.append({
             "id": d["id"],
+            "core": d["core"],
             "name": d["name"] or d["id"],
             "archetype": deckmod._deck_identity(meta, width=140),
             "format": (meta.get("format") or "").strip(),
@@ -185,6 +189,15 @@ TEMPLATE = r"""<!DOCTYPE html>
   .pip.W{background:var(--W)}.pip.U{background:var(--U)}.pip.B{background:var(--B)}
   .pip.R{background:var(--R)}.pip.G{background:var(--G)}.pip.C{background:var(--C)}
   .wc { font-family:ui-monospace,monospace; font-size:12px; margin-top:8px; }
+  .actions { display:flex; gap:8px; align-items:center; margin-top:10px; flex-wrap:wrap; }
+  .copy { font-size:12px; font-weight:600; padding:5px 11px; border-radius:8px; cursor:pointer;
+    background:var(--accent); color:#fff; border:1px solid var(--accent); }
+  .copy:hover { filter:brightness(1.08); }
+  .vtag { font-size:11px; color:var(--muted); border:1px dashed var(--line); border-radius:999px; padding:1px 8px; }
+  .toast { position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(20px);
+    background:var(--ink); color:var(--bg); padding:9px 16px; border-radius:8px; font-size:13px;
+    opacity:0; pointer-events:none; transition:opacity .18s, transform .18s; z-index:20; }
+  .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
   .detail { margin-top:12px; border-top:1px solid var(--line); padding-top:10px; display:none; }
   .card.open .detail { display:block; }
   .tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; }
@@ -214,20 +227,21 @@ TEMPLATE = r"""<!DOCTYPE html>
 </header>
 <main>
   <section>
-    <h2>Craft plan — whole roster</h2>
-    <pre id="plan"></pre>
+    <h2>Decks &amp; variants</h2>
+    <input class="filter" id="filter" placeholder="filter by id, name, or colors…">
+    <div class="grid" id="decks"></div>
   </section>
   <section id="wl-sec">
     <h2>Wildcard priority — wishlist</h2>
     <div id="wishlist"></div>
   </section>
   <section>
-    <h2>Decks</h2>
-    <input class="filter" id="filter" placeholder="filter by id, name, or colors…">
-    <div class="grid" id="decks"></div>
+    <h2>Craft plan — whole roster</h2>
+    <pre id="plan"></pre>
   </section>
   <div class="foot" id="foot"></div>
 </main>
+<div id="toast" class="toast"></div>
 <script id="data" type="application/json">__DATA__</script>
 <script>
   const D = JSON.parse(document.getElementById('data').textContent);
@@ -264,8 +278,26 @@ TEMPLATE = r"""<!DOCTYPE html>
   if (anyWl) document.getElementById('wishlist').innerHTML = wl;
   else document.getElementById('wl-sec').style.display = 'none';
 
+  // Clipboard with a fallback for non-secure contexts (e.g. opening the file
+  // locally); on GitHub Pages the async Clipboard API path is used.
+  const toastEl = document.getElementById('toast');
+  function toast(msg){ toastEl.textContent = msg; toastEl.classList.add('show');
+    clearTimeout(toast._t); toast._t = setTimeout(()=>toastEl.classList.remove('show'), 1500); }
+  function copyText(text, label){
+    const ok = ()=>toast(label + ' copied to clipboard');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(ok).catch(()=>fallbackCopy(text, ok));
+    } else fallbackCopy(text, ok);
+  }
+  function fallbackCopy(text, ok){
+    const ta = document.createElement('textarea'); ta.value = text;
+    ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); ok(); } catch(e) { toast('Copy failed — select the Arena tab manually'); }
+    document.body.removeChild(ta);
+  }
+
   // Decks
-  const TABS = [['craft','Craft picks'],['stats','Stats'],['mana','Mana'],['cuts','Cuts'],['legal','Legal']];
+  const TABS = [['craft','Craft picks'],['arena','Arena import'],['stats','Stats'],['mana','Mana'],['cuts','Cuts'],['legal','Legal']];
   function pips(colors){
     if(!colors) return '';
     return '<span class="pips">'+[...colors].filter(c=>'WUBRGC'.includes(c))
@@ -282,12 +314,16 @@ TEMPLATE = r"""<!DOCTYPE html>
   function render(list){
     grid.innerHTML = list.map(d => {
       const tabs = TABS.map((t,i)=>`<span class="tab${i===0?' active':''}" data-k="${t[0]}">${t[1]}</span>`).join('');
+      const vtag = d.variant ? `<span class="vtag">variant of #${esc(d.core)}</span>` : '';
       return `<div class="card" data-id="${esc(d.id)}">
-        <div class="top"><div><h3>${esc(d.name)} <span class="id">#${esc(d.id)}${d.variant?' · variant':''}</span></h3></div>${badge(d)}</div>
+        <div class="top"><div><h3>${esc(d.name)} <span class="id">#${esc(d.id)}</span></h3></div>${badge(d)}</div>
         <div class="arch">${esc(d.archetype)}</div>
-        <div class="meta">${d.format?`<span>${esc(d.format)}</span>·`:''}${pips(d.colors)}<span>${d.total} cards</span></div>
+        <div class="meta">${vtag}${d.format?`<span>${esc(d.format)}</span>·`:''}${pips(d.colors)}<span>${d.total} cards</span></div>
         <div class="wc">${d.buildable?'<span class="badge b-ok">no wildcards needed</span>':'to finish: '+esc(d.wc||'—')}</div>
-        <span class="expand">▸ analysis</span>
+        <div class="actions">
+          <button class="copy" data-copy>⧉ Copy Arena import</button>
+          <span class="expand">▸ analysis</span>
+        </div>
         <div class="detail"><div class="tabs">${tabs}</div><pre class="out"></pre></div>
       </div>`;
     }).join('');
@@ -296,6 +332,10 @@ TEMPLATE = r"""<!DOCTYPE html>
       const out = cardEl.querySelector('.out');
       const show = k => { out.textContent = (d.detail[k]||'(no output)'); };
       show('craft');
+      cardEl.querySelector('[data-copy]').onclick = () => {
+        const block = d.detail.arena || '';
+        copyText(block, `#${d.id} ${d.name} import`);
+      };
       cardEl.querySelector('.expand').onclick = () => {
         cardEl.classList.toggle('open');
         cardEl.querySelector('.expand').textContent = cardEl.classList.contains('open') ? '▾ analysis' : '▸ analysis';
