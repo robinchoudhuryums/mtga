@@ -321,10 +321,19 @@ def _theme_model():
             df[t] = df.get(t, 0) + 1
     n = len(fps)
     idf = {t: math.log(n / (1 + c)) for t, c in df.items()}
-    return fps, idf
+    # "specific" cutoff as a fraction of the pool (self-adjusts to deck count):
+    # a theme central to <= SPECIFIC_MAX_FRAC of decks clears it.
+    spec_idf = math.log(n / (1 + SPECIFIC_MAX_FRAC * n)) if n else 0.0
+    return fps, idf, spec_idf
 
 
-SPECIFIC_IDF = 1.5   # a theme this "rare" (central to <= ~6 of 29 decks) is real signal
+# A theme counts as "specific" (real signal, not a catch-all) when it is central to
+# only a small SHARE of decks. Expressed as a FRACTION of the deck pool so the cutoff
+# self-adjusts to the deck count — an absolute idf constant silently mis-calibrates when
+# decks are added/removed: collapsing variants (34 -> 25 decks) once pushed the 5-deck
+# "Villain" tribe below a hard 1.5 cutoff, mislabeling Doctor Doom & other Villain
+# payoffs as "generic". 0.25 => central to <= ~1/4 of decks (<= ~6 of 25) is signal.
+SPECIFIC_MAX_FRAC = 0.25
 
 # Evergreen keywords / generic role descriptors are rare across decks (so they'd
 # score as "specific") but are INCIDENTAL to a card — a trample creature isn't
@@ -347,7 +356,7 @@ def cmd_suggest_targets(rows, write=False, overwrite=False):
     human should judge from card text. With --write, fills STRONG/ok picks into
     blank Targets (or all, with --overwrite); `review` cards are always left for you.
     """
-    fps, idf = _theme_model()
+    fps, idf, spec_idf = _theme_model()
     strong = ok = review = wrote = 0
     print(f"  {'Card':30} {'Conf':6} {'Target':9} Signal")
     print("  " + "-" * 84)
@@ -362,7 +371,7 @@ def cmd_suggest_targets(rows, write=False, overwrite=False):
             if not shared:
                 continue
             score = sum(idf.get(t, 0) * twn[t] for t in shared)
-            specific = sorted((t for t in shared if idf.get(t, 0) >= SPECIFIC_IDF
+            specific = sorted((t for t in shared if idf.get(t, 0) >= spec_idf
                                and t.lower() not in NON_SIGNAL_TAGS),
                               key=lambda t: -idf[t])
             fits.append((round(score, 2), did, specific, sorted(shared)))
@@ -415,7 +424,7 @@ def _rank_scores(rows):
     Tiers: A = confident theme home (fit>=1.5 on a specific theme) OR breadth>=3;
     B = a specific-theme fit / castable-on-theme in >=1 deck; C = generic/none.
     """
-    fps, idf = _theme_model()
+    fps, idf, spec_idf = _theme_model()
     out = []
     for r in rows:
         ccols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
@@ -427,7 +436,7 @@ def _rank_scores(rows):
             shared = ctags & central
             if not shared:
                 continue
-            specific = sorted((t for t in shared if idf.get(t, 0) >= SPECIFIC_IDF
+            specific = sorted((t for t in shared if idf.get(t, 0) >= spec_idf
                                and t.lower() not in NON_SIGNAL_TAGS),
                               key=lambda t: -idf[t])
             if specific:
