@@ -36,9 +36,6 @@ Desecration Demon,Creature — Demon,"Flying
 At the beginning of each combat, any opponent may sacrifice a creature of their choice. If a player does, tap this creature and put a +1/+1 counter on it.",B,Demon; counters; sacrifice; flying; evasion,FDN,603,Rare,general,efficient 6/6 flying B beater (opp-sac edict) — any black midrange,6.5
 "Drakuseth, Maw of Flames",Legendary Creature — Dragon,"Flying
 Whenever Drakuseth attacks, it deals 4 damage to any target and 3 damage to each of up to two other targets.",R,Dragon; burn; flying; evasion,FDN,193,Rare,14,,7.5
-"Lathliss, Dragon Queen",Legendary Creature — Dragon,"Flying
-Whenever another nontoken Dragon you control enters, create a 5/5 red Dragon creature token with flying.
-{1}{R}: Dragons you control get +1/+0 until end of turn.",R,Dragon; tokens; pump; flying; evasion,FDN,627,Rare,14,,7.0
 "Lathril, Blade of the Elves",Legendary Creature — Elf Noble,"Menace (This creature can't be blocked except by two or more creatures.)
 Whenever Lathril deals combat damage to a player, create that many 1/1 green Elf Warrior creature tokens.
 {T}, Tap ten untapped Elves you control: Each opponent loses 10 life and you gain 10 life.",B/G,Elf; Noble; lifegain; tokens; menace; evasion,FDN,242,Rare,concept,"BG Elfball focal point — combat dmg makes Elves, tap 10 Elves to drain 10",7.0
@@ -48,24 +45,13 @@ Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, if it was kicked, return target creature card from your graveyard to the battlefield.",B,Vampire; Cleric; reanimator; graveyard; lifegain; etb; lifelink; menace; evasion; kicker; value,FDN,611,Rare,11,,6.0
 "Choco, Seeker of Paradise",Legendary Creature — Bird,"Whenever one or more Birds you control attack, look at that many cards from the top of your library. You may put one of them into your hand. Then put any number of land cards from among them onto the battlefield tapped and the rest into your graveyard.
 Landfall — Whenever a land you control enters, Choco gets +1/+0 until end of turn.",W/U/G,Bird; graveyard; landfall; pump; lands; ramp,FIN,215,Rare,19,Bird Brain (Bant Tokens) craft target,6.0
-"Lightning, Security Sergeant",Legendary Creature — Human Soldier,"Menace (This creature can't be blocked except by two or more creatures.)
-Whenever Lightning deals combat damage to a player, exile the top card of your library. You may play that card for as long as you control Lightning.",R,Human; Soldier; impulse; menace; evasion,FIN,560,Rare,24,persistent impulse on a menace body,6.0
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +2/+2 for each artifact you control and is an Artificer in addition to its other types.
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell",4.5
-Ambrosia Whiteheart,Legendary Creature — Bird,"Flash
-When Ambrosia Whiteheart enters, you may return another permanent you control to its owner's hand.
-Landfall — Whenever a land you control enters, Ambrosia Whiteheart gets +1/+0 until end of turn.",W,Bird; etb; landfall; pump; bounce; flash; tempo; lands; ramp,FIN,6,Uncommon,19,Bird Brain (Bant Tokens) craft target,5.5
 Chocobo Racetrack,Artifact,"Landfall — Whenever a land you control enters, create a 2/2 green Bird creature token with ""Whenever a land you control enters, this token gets +1/+0 until end of turn.""",G,tokens; landfall; pump; lands; ramp,FIN,179,Uncommon,19,Bird Brain (Bant Tokens) craft target,5.0
-Sazh's Chocobo,Creature — Bird,"Landfall — Whenever a land you control enters, put a +1/+1 counter on this creature.",G,Bird; counters; landfall; lands; ramp,FIN,200,Uncommon,19,Bird Brain (Bant Tokens) craft target,4.0
-Sidequest: Raise a Chocobo // Black Chocobo,Enchantment // Creature — Bird,"When this enchantment enters, create a 2/2 green Bird creature token with ""Whenever a land you control enters, this token gets +1/+0 until end of turn.""
-At the beginning of your first main phase, if you control four or more Birds, transform this enchantment. // When this permanent transforms into Black Chocobo, search your library for a land card, put it onto the battlefield tapped, then shuffle.
-Landfall — Whenever a land you control enters, Birds you control get +1/+0 until end of turn.",G,Bird; tokens; ramp; etb; landfall; pump; transform; lands,FIN,201,Uncommon,19,Bird Brain (Bant Tokens) craft target,4.0
 "Saheeli, the Sun's Brilliance",Legendary Creature — Human Artificer,"{U}{R}, {T}: Create a token that's a copy of another target creature or artifact you control, except it's an artifact in addition to its other types. It gains haste. Sacrifice it at the beginning of the next end step.",U/R,Human; Artificer; sacrifice; tokens,LCI,239,Mythic,25,"2-mana PW, copy a creature/artifact each turn",7.5
 Bedrock Tortoise,Creature — Turtle,"During your turn, creatures you control have hexproof.
 Each creature you control with toughness greater than its power assigns combat damage equal to its toughness rather than its power.",G,Turtle,LCI,176,Rare,20b,toughness-matters payoff (Doran: assigns dmg = toughness) + team hexproof — exactly 20b's plan,6.5
-Bringer of the Last Gift,Creature — Vampire Demon,"Flying
-When this creature enters, if you cast it, each player sacrifices all other creatures they control. Then each player returns all creature cards from their graveyard that weren't put there this way to the battlefield.",B,Vampire; Demon; reanimator; graveyard; sacrifice; etb; flying; evasion,LCI,94,Rare,11,,8.0
 Restless Anchorage,Land,"This land enters tapped.
 {T}: Add {W} or {U}.
 {1}{W}{U}: Until end of turn, this land becomes a 2/3 white and blue Bird creature with flying. It's still a land.
@@ -74,17 +60,12 @@ Sunbird Standard // Sunbird Effigy,Artifact // Artifact Creature — Bird Constr
 Craft with one or more {5} ({5}, Exile this artifact, Exile one or more other permanents you control and/or cards from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.) // Flying, vigilance, haste
 Sunbird Effigy's power and toughness are each equal to the number of colors among the exiled cards used to craft it.
 {T}: For each color among the exiled cards used to craft this creature, add one mana of that color.",Colorless,Bird; Construct; graveyard; mana; flying; evasion; craft; artifacts; vigilance; combat; transform; haste; aggro,LCI,262,Uncommon,19,Bird Brain (Bant Tokens) craft target,4.0
-"Melek, Reforged Researcher",Legendary Creature — Weird Detective,"Melek's power and toughness are each equal to twice the number of instant and sorcery cards in your graveyard.
-The first instant or sorcery spell you cast each turn costs {3} less to cast.",U/R,Weird; Detective; graveyard,MKM,430,Mythic,25,P/T = 2x instants/sorceries in GY,7.0
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0
 "Krenko, Baron of Tin Street",Legendary Creature — Goblin,"Haste
 {T}, Sacrifice an artifact: Put a +1/+1 counter on each Goblin you control.
 Whenever an artifact is put into a graveyard from the battlefield, you may pay {R}. If you do, create a 1/1 red Goblin creature token. It gains haste until end of turn.",R,Goblin; counters; reanimator; graveyard; sacrifice; tokens; haste; aggro,MKM,135,Rare,10,Goblin/artifact-aristocrats engine (sac artifact -> pump; artifact death -> Goblin) — fits Mad Villainy BR artifacts,6.5
 Sharp-Eyed Rookie,Creature — Human Detective,"Vigilance
 Whenever a creature you control enters, if its power is greater than this creature's power or its toughness is greater than this creature's toughness, put a +1/+1 counter on this creature and investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",G,Human; Detective; counters; card draw; sacrifice; tokens; clue; investigate; vigilance; combat,MKM,176,Rare,13,grows + investigates when a bigger creature enters — its own flex-noted home (counters/value),5.5
-Doctor Doom,Legendary Creature — Human Scientist Villain,"When Doctor Doom enters, create two 3/3 colorless Robot Villain artifact creature tokens named Doombot.
-As long as you control an artifact creature or a Plan, Doctor Doom has indestructible.
-At the beginning of your end step, you draw a card and lose 1 life.",B,Human; Scientist; Villain; card draw; tokens; etb,MSH,95,Mythic,11,"villain payoff; also 12 | fits: 12,8",8.5
 Kang the Conqueror,Legendary Creature — Human Villain,"Flying
 Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after this one. During that turn, power-up abilities can't be activated. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",U,Human; Villain; counters; flying; evasion; power-up; payoff,MSH,62,Mythic,12,blue control finisher — evasive body + extra-turn power-up; UUU castable in Dimir,7.0
 "King T'Challa // Black Panther, Hope Enduring",Legendary Creature — Human Noble Hero // Legendary Creature — Human Warrior Hero,"Flash
@@ -93,12 +74,6 @@ Whenever a player draws their second card each turn, you draw a card.
 Double strike
 Prevent all damage that would be dealt to Black Panther.
 Whenever Black Panther deals combat damage to a player, draw a card.",W/U,Human; Noble; Hero; Warrior; card draw; transform; double strike; combat; aggro; flash; tempo,MSH,219,Mythic,19,"best 19 (Bird Brain); also 15,17,16",7.5
-The Ruinous Wrecking Crew,Legendary Creature — Human Villain,"The Ruinous Wrecking Crew enters with X +1/+1 counters on it.
-When The Ruinous Wrecking Crew enters, choose up to X —
-• Discard a card, then draw a card.
-• Target opponent loses 2 life.
-• Destroy target token.
-• Each player sacrifices a creature of their choice.",B/R,Human; Villain; counters; card draw; sacrifice; removal; etb,MSH,224,Rare,8,"best 8 (Sacrifices); also 21,21a,10",6.5
 The Serpent Society,Legendary Creature — Human Snake Villain,"Deathtouch
 Ward—Get five poison counters. (A player with ten or more poison counters loses the game.)
 Whenever another creature you control with deathtouch dies, each opponent sacrifices a nontoken creature of their choice.",B/G,Human; Snake; Villain; sacrifice; ward; protection; deathtouch; combat; removal,MSH,226,Rare,8,"best 8 (Sacrifices); also 20b,21,21a",5.0
@@ -116,16 +91,6 @@ Paradigm (Then exile this spell. After you first resolve a spell with this name,
 "Lorehold, the Historian",Legendary Creature — Elder Dragon,"Flying, haste
 Each instant and sorcery card in your hand has miracle {2}. (You may cast a card for its miracle cost when you draw it if it's the first card you drew this turn.)
 At the beginning of each opponent's upkeep, you may discard a card. If you do, draw a card.",W/R,Elder; Dragon; card draw; flying; evasion; haste; aggro,SOS,201,Mythic,concept,"RW Lorehold artifacts/spells build-around | fits: 17,14,21a",7.0
-Professor Dellian Fel,Legendary Planeswalker — Dellian,"+2: You gain 3 life.
-0: You draw a card and lose 1 life.
-−3: Destroy target creature.
-−6: You get an emblem with ""Whenever you gain life, target opponent loses that much life.""",B/G,Dellian; Planeswalker; lifegain; card draw; removal; planeswalker,SOS,214,Mythic,21,BG PW: lifegain/draw/removal + lifegain->drain emblem; also strong in 5/6/20b,8.0
-"Quandrix, the Proof",Legendary Creature — Elder Dragon,"Flying, trample
-Cascade (When you cast this spell, exile cards from the top of your library until you exile a nonland card that costs less. You may cast it without paying its mana cost. Put the exiled cards on the bottom in a random order.)
-Instant and sorcery spells you cast from your hand have cascade.",U/G,Elder; Dragon; spellslinger; cascade; value; flying; evasion; trample,SOS,218,Mythic,19a,,7.5
-The Dawning Archaic,Legendary Creature — Avatar,"This spell costs {1} less to cast for each instant and sorcery card in your graveyard.
-Reach
-Whenever The Dawning Archaic attacks, you may cast target instant or sorcery card from your graveyard without paying its mana cost. If that spell would be put into your graveyard, exile it instead.",Colorless,Avatar; graveyard; reach; defense,SOS,1,Mythic,17,,7.0
 "Aziza, Mage Tower Captain",Legendary Creature — Djinn Sorcerer,"Whenever you cast an instant or sorcery spell, you may tap three untapped creatures you control. If you do, copy that spell. You may choose new targets for the copy.",W/R,Djinn; Sorcerer; spellslinger,SOS,174,Rare,concept,RW spells/magecraft (Strixhaven-style),6.0
 Comforting Counsel,Enchantment,"Whenever you gain life, put a growth counter on this enchantment.
 As long as there are five or more growth counters on this enchantment, creatures you control get +3/+3.",G,counters; pump,SOS,143,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 9,19b,19a",4.5
@@ -183,13 +148,6 @@ Interdimensional Web Watch,Artifact,"When this artifact enters, exile the top tw
 Multiversal Passage,Land,"As this land enters, choose a basic land type. Then you may pay 2 life. If you don't, it enters tapped.
 This land is the chosen type.",Colorless,,SPM,180,Rare,general,basic-type fixing land — any deck,6.5
 Strength of Will,Instant,"Until end of turn, target creature you control gains indestructible and ""Whenever this creature is dealt damage, put that many +1/+1 counters on it.""",G,counters,SPM,118,Rare,general,green protect + damage->counters combat trick — any green deck,4.0
-Villainous Wrath,Sorcery,Target opponent loses life equal to the number of creatures they control. Then destroy all creatures.,B,,SPM,74,Rare,11,one-sided-ish B board wipe + drain — sweeper/finisher for Villainous control,8.0
-"Betor, Kin to All",Legendary Creature — Spirit Dragon,"Flying
-At the beginning of your end step, if creatures you control have total toughness 10 or greater, draw a card. Then if creatures you control have total toughness 20 or greater, untap each creature you control. Then if creatures you control have total toughness 40 or greater, each opponent loses half their life, rounded up.",W/B/G,Spirit; Dragon; card draw; flying; evasion,TDM,172,Mythic,20b,toughness-thresholds payoff (draw/untap/…) — a bomb for Abzan Toughness (20b),7.0
-"Elspeth, Storm Slayer",Legendary Planeswalker — Elspeth,"If one or more tokens would be created under your control, twice that many of those tokens are created instead.
-+1: Create a 1/1 white Soldier creature token.
-0: Put a +1/+1 counter on each creature you control. Those creatures gain flying until your next turn.
-−3: Destroy target creature an opponent controls with mana value 3 or greater.",W,Elspeth; Planeswalker; counters; tokens; removal; planeswalker,TDM,11,Mythic,3,token DOUBLER + go-wide anthem PW — a bomb for Knight's Edge tokens (also 7/19),9.0
 "Neriv, Heart of the Storm",Legendary Creature — Spirit Dragon,"Flying
 If a creature you control that entered this turn would deal damage, it deals twice that much damage instead.",W/B/R,Spirit; Dragon; flying; evasion,TDM,210,Mythic,14,,6.5
 Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
@@ -202,15 +160,6 @@ Phoenix Fleet Airship,Artifact — Vehicle,"Flying
 At the beginning of your end step, if you sacrificed a permanent this turn, create a token that's a copy of this Vehicle.
 As long as you control eight or more permanents named Phoenix Fleet Airship, this Vehicle is an artifact creature.
 Crew 1",B,Vehicle; sacrifice; tokens; vehicle; flying; evasion; crew; vehicles,TLA,114,Mythic,21,sacrifice-matters: copies itself when you sac a permanent (quirky build-around),5.5
-The Rise of Sozin // Fire Lord Sozin,Enchantment — Saga // Legendary Creature — Human Noble,"(As this Saga enters and after your draw step, add a lore counter.)
-I — Destroy all creatures.
-II — Choose a card name. Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them. Then that player shuffles.
-III — Exile this Saga, then return it to the battlefield transformed under your control. // Menace, firebending 3 (Whenever this creature attacks, add {R}{R}{R}. This mana lasts until end of combat.)
-Whenever Fire Lord Sozin deals combat damage to a player, you may pay {X}. When you do, put any number of target creature cards with total mana value X or less from that player's graveyard onto the battlefield under your control.",B,Saga; Human; Noble; reanimator; graveyard; saga; transform; firebending; bending; menace; evasion,TLA,117,Mythic,14,"broadly useful — best 14 (Dragon King Roku); also 6,17,13",8.0
-"Wan Shi Tong, Librarian",Legendary Creature — Bird Spirit,"Flash
-Flying, vigilance
-When Wan Shi Tong enters, put X +1/+1 counters on him. Then draw half X cards, rounded down.
-Whenever an opponent searches their library, put a +1/+1 counter on Wan Shi Tong and draw a card.",U,Bird; Spirit; counters; card draw; etb; flying; evasion; vigilance; combat; flash; tempo,TLA,78,Mythic,19a,,8.0
 White Lotus Tile,Artifact,"This artifact enters tapped.
 {T}: Add X mana of any one color, where X is the greatest number of creatures you control that have a creature type in common.",Colorless,mana,TLA,262,Mythic,general,tribal ramp rock (X any-color = creatures sharing a type) — go-wide/tribal decks,5.0
 "Azula, Cunning Usurper",Legendary Creature — Human Noble Rogue,"Firebending 2 (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)
@@ -236,8 +185,6 @@ At the beginning of your end step, earthbend 2. (Target land you control becomes
 Nonbasic lands enter tapped.
 {7}: Put a conqueror counter on Zhao.
 As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17",4.5
-"Armaggon, Future Shark",Legendary Creature — Shark Horror Mutant,"Flash
-When Armaggon enters, destroy up to three target creatures.",B,Shark; Horror; Mutant; etb; flash; tempo,TMT,58,Rare,general,"flash, ETB destroy up to 3 creatures — premium removal in ANY black deck",8.0
 Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,8,"best 8 (Sacrifices); also 21,21a,5",4.5
 Cool but Rude,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
 Whenever you attack, you may discard a card. If you do, draw a card.
@@ -281,14 +228,8 @@ Each player may discard their hand and draw seven cards.",R,card draw; sneak; te
 Attacking creatures you control have double strike.",R,Mutant; Ninja; Turtle; sneak; tempo; cost-reduction,TMT,103,Rare,concept,mono-R TMNT aggro build-around,5.5
 "Rat King, Verminister",Legendary Creature — Rat Avatar,"Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, create a 1/1 black Rat creature token and put a +1/+1 counter on Rat King.
 {T}, Sacrifice three Rats: Return target creature card and all other cards with the same name as that card from your graveyard to the battlefield tapped.",B,Rat; Avatar; counters; reanimator; graveyard; sacrifice; tokens; disappear,TMT,71,Rare,11,Rat Avatar — reanimator/sacrifice payoff; grindy mono-black value,5.5
-"Shark Shredder, Killer Clone",Legendary Creature — Shark Octopus Ninja,"Sneak {3}{B}{B}
-First strike
-Whenever Shark Shredder deals combat damage to a player, put up to one target creature card from that player's graveyard onto the battlefield under your control. It enters tapped and attacking that player.",B,Shark; Octopus; Ninja; reanimator; graveyard; first strike; combat; sneak; tempo; cost-reduction,TMT,73,Rare,6,"best 6 (Dead or Alive); also 20,5,11",6.0
 "Slash, Reptile Rampager",Legendary Creature — Mutant Berserker Turtle,"Alliance — Whenever another creature you control enters, Slash deals 2 damage to each opponent.
 Whenever Slash attacks, create a 2/2 red Mutant creature token.",R,Mutant; Berserker; Turtle; tokens; burn; alliance; aggro; value,TMT,108,Rare,1,"Rakdos aggro/burn/tokens; also 10 | fits: 10,9",6.0
-South Wind Avatar,Creature — Snake Spirit Avatar,"Deathtouch
-Whenever another creature you control dies, you gain life equal to its toughness.
-Whenever you gain life, each opponent loses 1 life.",B,Snake; Spirit; Avatar; deathtouch; combat; removal,TMT,78,Rare,20b,"best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 20a,20,11",5.5
 Splinter's Technique,Sorcery,"Sneak {1}{B} (You may cast this spell for {1}{B} if you also return an unblocked attacker you control to hand during the declare blockers step.)
 Search your library for a card, put that card into your hand, then shuffle.",B,sneak; tempo; cost-reduction,TMT,80,Rare,20,Ninja sneak tempo,4.5
 "Splinter, Radical Rat",Legendary Creature — Mutant Ninja Rat,"If a triggered ability of a Ninja creature you control triggers, that ability triggers an additional time.

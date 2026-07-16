@@ -3220,3 +3220,62 @@ Brineborn Cutthroat,Creature — Merfolk Pirate,"Flash (You may cast this spell 
 Whenever you cast a spell during an opponent's turn, put a +1/+1 counter on this creature.",U,Merfolk; Pirate; counters; flash; tempo,FDN,152,1
 Sharae of Numbing Depths,Legendary Creature — Merfolk Wizard,"When Sharae enters, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
 Whenever you tap one or more untapped creatures your opponents control, draw a card. This ability triggers only once each turn.",W/U,Merfolk; Wizard; counters; card draw; etb,WOE,213,1
+"Lathliss, Dragon Queen",Legendary Creature — Dragon,"Flying
+Whenever another nontoken Dragon you control enters, create a 5/5 red Dragon creature token with flying.
+{1}{R}: Dragons you control get +1/+0 until end of turn.",R,Dragon; tokens; pump; flying; evasion,FDN,627,1
+"Lightning, Security Sergeant",Legendary Creature — Human Soldier,"Menace (This creature can't be blocked except by two or more creatures.)
+Whenever Lightning deals combat damage to a player, exile the top card of your library. You may play that card for as long as you control Lightning.",R,Human; Soldier; impulse; menace; evasion,FIN,560,1
+Ambrosia Whiteheart,Legendary Creature — Bird,"Flash
+When Ambrosia Whiteheart enters, you may return another permanent you control to its owner's hand.
+Landfall — Whenever a land you control enters, Ambrosia Whiteheart gets +1/+0 until end of turn.",W,Bird; etb; landfall; pump; bounce; flash; tempo; lands; ramp,FIN,6,1
+Sazh's Chocobo,Creature — Bird,"Landfall — Whenever a land you control enters, put a +1/+1 counter on this creature.",G,Bird; counters; landfall; lands; ramp,FIN,200,1
+Sidequest: Raise a Chocobo,Enchantment // Creature — Bird,"When this enchantment enters, create a 2/2 green Bird creature token with ""Whenever a land you control enters, this token gets +1/+0 until end of turn.""
+At the beginning of your first main phase, if you control four or more Birds, transform this enchantment. // When this permanent transforms into Black Chocobo, search your library for a land card, put it onto the battlefield tapped, then shuffle.
+Landfall — Whenever a land you control enters, Birds you control get +1/+0 until end of turn.",G,Bird; tokens; ramp; etb; landfall; pump; transform; lands,FIN,201,1
+Bringer of the Last Gift,Creature — Vampire Demon,"Flying
+When this creature enters, if you cast it, each player sacrifices all other creatures they control. Then each player returns all creature cards from their graveyard that weren't put there this way to the battlefield.",B,Vampire; Demon; reanimator; graveyard; sacrifice; etb; flying; evasion,LCI,94,1
+"Melek, Reforged Researcher",Legendary Creature — Weird Detective,"Melek's power and toughness are each equal to twice the number of instant and sorcery cards in your graveyard.
+The first instant or sorcery spell you cast each turn costs {3} less to cast.",U/R,Weird; Detective; graveyard,MKM,430,1
+Doctor Doom,Legendary Creature — Human Scientist Villain,"When Doctor Doom enters, create two 3/3 colorless Robot Villain artifact creature tokens named Doombot.
+As long as you control an artifact creature or a Plan, Doctor Doom has indestructible.
+At the beginning of your end step, you draw a card and lose 1 life.",B,Human; Scientist; Villain; card draw; tokens; etb,MSH,95,1
+The Ruinous Wrecking Crew,Legendary Creature — Human Villain,"The Ruinous Wrecking Crew enters with X +1/+1 counters on it.
+When The Ruinous Wrecking Crew enters, choose up to X —
+• Discard a card, then draw a card.
+• Target opponent loses 2 life.
+• Destroy target token.
+• Each player sacrifices a creature of their choice.",B/R,Human; Villain; counters; card draw; sacrifice; removal; etb,MSH,224,1
+Professor Dellian Fel,Legendary Planeswalker — Dellian,"+2: You gain 3 life.
+0: You draw a card and lose 1 life.
+−3: Destroy target creature.
+−6: You get an emblem with ""Whenever you gain life, target opponent loses that much life.""",B/G,Dellian; Planeswalker; lifegain; card draw; removal; planeswalker,SOS,214,1
+"Quandrix, the Proof",Legendary Creature — Elder Dragon,"Flying, trample
+Cascade (When you cast this spell, exile cards from the top of your library until you exile a nonland card that costs less. You may cast it without paying its mana cost. Put the exiled cards on the bottom in a random order.)
+Instant and sorcery spells you cast from your hand have cascade.",U/G,Elder; Dragon; spellslinger; cascade; value; flying; evasion; trample,SOS,218,1
+The Dawning Archaic,Legendary Creature — Avatar,"This spell costs {1} less to cast for each instant and sorcery card in your graveyard.
+Reach
+Whenever The Dawning Archaic attacks, you may cast target instant or sorcery card from your graveyard without paying its mana cost. If that spell would be put into your graveyard, exile it instead.",Colorless,Avatar; graveyard; reach; defense,SOS,1,1
+Villainous Wrath,Sorcery,Target opponent loses life equal to the number of creatures they control. Then destroy all creatures.,B,,SPM,74,1
+"Betor, Kin to All",Legendary Creature — Spirit Dragon,"Flying
+At the beginning of your end step, if creatures you control have total toughness 10 or greater, draw a card. Then if creatures you control have total toughness 20 or greater, untap each creature you control. Then if creatures you control have total toughness 40 or greater, each opponent loses half their life, rounded up.",W/B/G,Spirit; Dragon; card draw; flying; evasion,TDM,172,1
+"Elspeth, Storm Slayer",Legendary Planeswalker — Elspeth,"If one or more tokens would be created under your control, twice that many of those tokens are created instead.
++1: Create a 1/1 white Soldier creature token.
+0: Put a +1/+1 counter on each creature you control. Those creatures gain flying until your next turn.
+−3: Destroy target creature an opponent controls with mana value 3 or greater.",W,Elspeth; Planeswalker; counters; tokens; removal; planeswalker,TDM,11,1
+The Rise of Sozin,Enchantment — Saga // Legendary Creature — Human Noble,"(As this Saga enters and after your draw step, add a lore counter.)
+I — Destroy all creatures.
+II — Choose a card name. Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them. Then that player shuffles.
+III — Exile this Saga, then return it to the battlefield transformed under your control. // Menace, firebending 3 (Whenever this creature attacks, add {R}{R}{R}. This mana lasts until end of combat.)
+Whenever Fire Lord Sozin deals combat damage to a player, you may pay {X}. When you do, put any number of target creature cards with total mana value X or less from that player's graveyard onto the battlefield under your control.",B,Saga; Human; Noble; reanimator; graveyard; saga; transform; firebending; bending; menace; evasion,TLA,117,1
+"Wan Shi Tong, Librarian",Legendary Creature — Bird Spirit,"Flash
+Flying, vigilance
+When Wan Shi Tong enters, put X +1/+1 counters on him. Then draw half X cards, rounded down.
+Whenever an opponent searches their library, put a +1/+1 counter on Wan Shi Tong and draw a card.",U,Bird; Spirit; counters; card draw; etb; flying; evasion; vigilance; combat; flash; tempo,TLA,78,1
+"Armaggon, Future Shark",Legendary Creature — Shark Horror Mutant,"Flash
+When Armaggon enters, destroy up to three target creatures.",B,Shark; Horror; Mutant; etb; flash; tempo,TMT,58,1
+"Shark Shredder, Killer Clone",Legendary Creature — Shark Octopus Ninja,"Sneak {3}{B}{B}
+First strike
+Whenever Shark Shredder deals combat damage to a player, put up to one target creature card from that player's graveyard onto the battlefield under your control. It enters tapped and attacking that player.",B,Shark; Octopus; Ninja; reanimator; graveyard; first strike; combat; sneak; tempo; cost-reduction,TMT,73,1
+South Wind Avatar,Creature — Snake Spirit Avatar,"Deathtouch
+Whenever another creature you control dies, you gain life equal to its toughness.
+Whenever you gain life, each opponent loses 1 life.",B,Snake; Spirit; Avatar; deathtouch; combat; removal,TMT,78,1
