@@ -12,6 +12,15 @@ Whenever Dragonhawk enters or attacks, exile the top X cards of your library, wh
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
 When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)"
+"Kastral, the Windcrested",Legendary Creature — Bird Scout,"Flying
+Whenever one or more Birds you control deal combat damage to a player, choose one —
+• You may put a Bird creature card from your hand or graveyard onto the battlefield with a finality counter on it.
+• Put a +1/+1 counter on each Bird you control.
+• Draw a card.",W/U,Bird; Scout; counters; reanimator; graveyard; card draw; flying; evasion,BLB,221,Rare,19,Bird Brain (Bant Tokens) craft target
+Salvation Swan,Creature — Bird Cleric,"Flash
+Flying
+Whenever this creature or another Bird you control enters, exile up to one target creature you control without flying. Return it to the battlefield under its owner's control with a flying counter on it at the beginning of the next end step.",W,Bird; Cleric; counters; blink; flying; evasion; flash; tempo,BLB,28,Rare,19,Bird Brain (Bant Tokens) craft target
+Shrike Force,Creature — Bird Knight,"Flying, double strike, vigilance",W,Bird; Knight; flying; evasion; vigilance; combat; double strike; aggro,BLB,31,Uncommon,19,Bird Brain (Bant Tokens) craft target
 Overlord of the Balemurk,Enchantment Creature — Avatar Horror,"Impending 5—{1}{B} (If you cast this spell for its impending cost, it enters with five time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
 Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.",B,Avatar; Horror; graveyard; mill; impending,DSK,113,Mythic,22,
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff
@@ -37,16 +46,34 @@ Nullpriest of Oblivion,Creature — Vampire Cleric,"Kicker {3}{B} (You may pay a
 Lifelink
 Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, if it was kicked, return target creature card from your graveyard to the battlefield.",B,Vampire; Cleric; reanimator; graveyard; lifegain; etb; lifelink; menace; evasion; kicker; value,FDN,611,Rare,11,
+"Choco, Seeker of Paradise",Legendary Creature — Bird,"Whenever one or more Birds you control attack, look at that many cards from the top of your library. You may put one of them into your hand. Then put any number of land cards from among them onto the battlefield tapped and the rest into your graveyard.
+Landfall — Whenever a land you control enters, Choco gets +1/+0 until end of turn.",W/U/G,Bird; graveyard; landfall; pump; lands; ramp,FIN,215,Rare,19,Bird Brain (Bant Tokens) craft target
 "Lightning, Security Sergeant",Legendary Creature — Human Soldier,"Menace (This creature can't be blocked except by two or more creatures.)
 Whenever Lightning deals combat damage to a player, exile the top card of your library. You may play that card for as long as you control Lightning.",R,Human; Soldier; impulse; menace; evasion,FIN,560,Rare,24,persistent impulse on a menace body
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +2/+2 for each artifact you control and is an Artificer in addition to its other types.
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell"
+Ambrosia Whiteheart,Legendary Creature — Bird,"Flash
+When Ambrosia Whiteheart enters, you may return another permanent you control to its owner's hand.
+Landfall — Whenever a land you control enters, Ambrosia Whiteheart gets +1/+0 until end of turn.",W,Bird; etb; landfall; pump; bounce; flash; tempo; lands; ramp,FIN,6,Uncommon,19,Bird Brain (Bant Tokens) craft target
+Chocobo Racetrack,Artifact,"Landfall — Whenever a land you control enters, create a 2/2 green Bird creature token with ""Whenever a land you control enters, this token gets +1/+0 until end of turn.""",G,tokens; landfall; pump; lands; ramp,FIN,179,Uncommon,19,Bird Brain (Bant Tokens) craft target
+Sazh's Chocobo,Creature — Bird,"Landfall — Whenever a land you control enters, put a +1/+1 counter on this creature.",G,Bird; counters; landfall; lands; ramp,FIN,200,Uncommon,19,Bird Brain (Bant Tokens) craft target
+Sidequest: Raise a Chocobo // Black Chocobo,Enchantment // Creature — Bird,"When this enchantment enters, create a 2/2 green Bird creature token with ""Whenever a land you control enters, this token gets +1/+0 until end of turn.""
+At the beginning of your first main phase, if you control four or more Birds, transform this enchantment. // When this permanent transforms into Black Chocobo, search your library for a land card, put it onto the battlefield tapped, then shuffle.
+Landfall — Whenever a land you control enters, Birds you control get +1/+0 until end of turn.",G,Bird; tokens; ramp; etb; landfall; pump; transform; lands,FIN,201,Uncommon,19,Bird Brain (Bant Tokens) craft target
 "Saheeli, the Sun's Brilliance",Legendary Creature — Human Artificer,"{U}{R}, {T}: Create a token that's a copy of another target creature or artifact you control, except it's an artifact in addition to its other types. It gains haste. Sacrifice it at the beginning of the next end step.",U/R,Human; Artificer; sacrifice; tokens,LCI,239,Mythic,25,"2-mana PW, copy a creature/artifact each turn"
 Bedrock Tortoise,Creature — Turtle,"During your turn, creatures you control have hexproof.
 Each creature you control with toughness greater than its power assigns combat damage equal to its toughness rather than its power.",G,Turtle,LCI,176,Rare,20b,toughness-matters payoff (Doran: assigns dmg = toughness) + team hexproof — exactly 20b's plan
 Bringer of the Last Gift,Creature — Vampire Demon,"Flying
 When this creature enters, if you cast it, each player sacrifices all other creatures they control. Then each player returns all creature cards from their graveyard that weren't put there this way to the battlefield.",B,Vampire; Demon; reanimator; graveyard; sacrifice; etb; flying; evasion,LCI,94,Rare,11,
+Restless Anchorage,Land,"This land enters tapped.
+{T}: Add {W} or {U}.
+{1}{W}{U}: Until end of turn, this land becomes a 2/3 white and blue Bird creature with flying. It's still a land.
+Whenever this land attacks, create a Map token.",W/U,tokens; mana,LCI,280,Rare,19,Bird Brain (Bant Tokens) craft target
+Sunbird Standard // Sunbird Effigy,Artifact // Artifact Creature — Bird Construct,"{T}: Add one mana of any color.
+Craft with one or more {5} ({5}, Exile this artifact, Exile one or more other permanents you control and/or cards from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.) // Flying, vigilance, haste
+Sunbird Effigy's power and toughness are each equal to the number of colors among the exiled cards used to craft it.
+{T}: For each color among the exiled cards used to craft this creature, add one mana of that color.",Colorless,Bird; Construct; graveyard; mana; flying; evasion; craft; artifacts; vigilance; combat; transform; haste; aggro,LCI,262,Uncommon,19,Bird Brain (Bant Tokens) craft target
 "Melek, Reforged Researcher",Legendary Creature — Weird Detective,"Melek's power and toughness are each equal to twice the number of instant and sorcery cards in your graveyard.
 The first instant or sorcery spell you cast each turn costs {3} less to cast.",U/R,Weird; Detective; graveyard,MKM,430,Mythic,25,P/T = 2x instants/sorceries in GY
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn
@@ -76,6 +103,10 @@ The Serpent Society,Legendary Creature — Human Snake Villain,"Deathtouch
 Ward—Get five poison counters. (A player with ten or more poison counters loses the game.)
 Whenever another creature you control with deathtouch dies, each opponent sacrifices a nontoken creature of their choice.",B/G,Human; Snake; Villain; sacrifice; ward; protection; deathtouch; combat; removal,MSH,226,Rare,8,"best 8 (Sacrifices); also 20b,21,21a"
 Vision Quest,Sorcery,"Search your library and/or graveyard for an artifact creature card with mana value X or less and put it onto the battlefield with X additional +1/+1 counters on it. If X is 4 or greater, it gains haste until end of turn. If you search your library this way, shuffle.",U/R,counters; reanimator; graveyard,MSH,237,Rare,general,UR artifact-creature cheat/reanimator — wants a dedicated artifacts shell
+Aven Interrupter,Creature — Bird Rogue,"Flash
+Flying
+When this creature enters, exile target spell. It becomes plotted. (Its owner may cast it as a sorcery on a later turn without paying its mana cost.)
+Spells your opponents cast from graveyards or from exile cost {2} more to cast.",W,Bird; Rogue; graveyard; removal; etb; flying; evasion; plot; tempo; cost-reduction; flash,OTJ,4,Rare,19,Bird Brain (Bant Tokens) craft target
 "Lilah, Undefeated Slickshot",Legendary Creature — Human Rogue,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 Whenever you cast a multicolored instant or sorcery spell from your hand, exile that spell instead of putting it into your graveyard as it resolves. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/R,Human; Rogue; graveyard; pump; plot; tempo; cost-reduction; prowess; spellslinger,OTJ,217,Rare,25,prowess 3-drop that impulses off your spells
 "Malcolm, the Eyes",Legendary Creature — Siren Pirate,"Flying, haste
@@ -121,6 +152,8 @@ Slumbering Trudge,Creature — Plant Beast,"This creature enters with a number o
 Splatter Technique,Sorcery,"Choose one —
 • Draw four cards.
 • Splatter Technique deals 4 damage to each creature and planeswalker.",U/R,card draw; burn,SOS,231,Rare,general,flexible UR: draw 4 OR sweep 4 to each creature/PW — role-player in any UR/grixis shell
+Stirring Hopesinger,Creature — Bird Bard,"Flying, lifelink
+Repartee — Whenever you cast an instant or sorcery spell that targets a creature, put a +1/+1 counter on each creature you control.",W,Bird; Bard; counters; lifegain; spellslinger; flying; evasion; lifelink; repartee,SOS,35,Rare,19,Bird Brain (Bant Tokens) craft target
 Sundown Pass,Land,"This land enters tapped unless you control two or more other lands.
 {T}: Add {R} or {W}.",W/R,mana,SOS,264,Rare,general,"WR fixing land — generic fixing, not earthbend-specific"
 Together as One,Sorcery,"Converge — Target player draws X cards, Together as One deals X damage to any target, and you gain X life, where X is the number of colors of mana spent to cast this spell.",Colorless,burn; converge; multicolor,SOS,4,Rare,17,Converge payoff (draw/burn/gain X = colors spent) — rewards the 5-color manabase
