@@ -35,6 +35,7 @@ Bound to 127.0.0.1 by default — it's a personal, local tool, so there's no aut
 import argparse
 import contextlib
 import csv
+import datetime
 import io
 import json
 import os
@@ -127,6 +128,23 @@ def index():
 # --------------------------------------------------------------------------- #
 # Safe write + card-mana maintenance (shared by save / add / remove)
 # --------------------------------------------------------------------------- #
+def _backup_path(target):
+    """A unique timestamped `.bak` path for `target`.
+
+    Includes microseconds (and, in the vanishingly unlikely event that still
+    collides, an incrementing counter) so two writes within the same wall-clock
+    second can't overwrite each other's snapshot — which would silently destroy
+    the older one that `revert` relies on (audit F8). The `%f` suffix keeps the
+    names lexicographically ordered by time, so `sorted(...)[-1]` stays newest."""
+    stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+    path = f"{target}.{stamp}.bak"
+    n = 1
+    while os.path.exists(path):
+        path = f"{target}.{stamp}.{n}.bak"
+        n += 1
+    return path
+
+
 def _safe_write(rows):
     """Validate rows in a temp file, then back up + atomically replace the CSV.
 
@@ -144,7 +162,7 @@ def _safe_write(rows):
         if rc != 0:
             tail = [ln for ln in buf.getvalue().splitlines() if ln.strip()][-8:]
             return False, None, ["Validation failed — nothing written.", *tail]
-        backup = f"{target}.{time.strftime('%Y%m%d-%H%M%S')}.bak"
+        backup = _backup_path(target)
         shutil.copy2(target, backup)
         os.replace(tmp, target)
         tmp = None
@@ -314,17 +332,19 @@ def add():
                "Synergies": "", "Set Code": set_code, "Collector #": collector,
                "Quantity Owned": qty}
 
-    # Keep INV-02 intact: ensure card-mana.csv has a row for this name first.
+    rows.append(new)
+    ok, backup, errors = _safe_write(rows)
+    if not ok:
+        return jsonify(ok=False, errors=errors), 400
+    # Only NOW keep INV-02 intact by appending a card-mana.csv row for the new
+    # name. Doing it after the library write succeeds avoids leaving an orphan
+    # mana row when the add is rejected by validation (audit F7); offline, a blank
+    # row is written and a later build_mana.py/refresh fills in cost/keywords.
     if not _mana_has(stored):
         if info:
             _append_mana(stored, info["mana_cost"], info["mv"], info["keywords"])
         else:
             _append_mana(stored, "", "", "")
-
-    rows.append(new)
-    ok, backup, errors = _safe_write(rows)
-    if not ok:
-        return jsonify(ok=False, errors=errors), 400
     return jsonify(ok=True, backup=backup, enriched=enriched, name=stored)
 
 
@@ -378,7 +398,21 @@ def revert():
         rc = validate(newest)
     if rc != 0:
         return jsonify(ok=False, errors=[f"Backup {baks[-1]} failed validation; not restoring."]), 400
-    shutil.copy2(newest, target)
+    # Snapshot the CURRENT state before clobbering it, so a revert is itself
+    # undoable (audit F5) — otherwise the pre-revert inventory is lost. Then
+    # restore atomically: stage the backup into a temp file and os.replace() it
+    # in, so an interruption mid-restore can't leave a truncated CSV.
+    if os.path.exists(target):
+        shutil.copy2(target, _backup_path(target))
+    fd, tmp = tempfile.mkstemp(suffix=".csv", dir=d)
+    os.close(fd)
+    try:
+        shutil.copy2(newest, tmp)
+        os.replace(tmp, target)
+        tmp = None
+    finally:
+        if tmp and os.path.exists(tmp):
+            os.remove(tmp)
     return jsonify(ok=True, restored=baks[-1])
 
 
@@ -484,9 +518,46 @@ def _validate_body(body):
     return True, [], n
 
 
-def _write_deck(path, text, ncards, backup):
-    """temp write -> INV-04 parse-check -> optional .bak -> atomic replace.
-    Returns (payload_dict, status)."""
+def _body_cards(body):
+    """The (qty, name, set, cn) card tuples a deck-editor body intends, in order —
+    to be matched EXACTLY against parse_deck_file() output. Mirrors _serialize_doc's
+    own field handling (a collector # is only emitted when a set is present) so the
+    check flags genuine round-trip corruption (a name containing '(' or '#'), not
+    that serialization choice. Assumes _validate_body() already vetted the qtys."""
+    out = []
+    for t in body:
+        if t.get("kind") != "card":
+            continue
+        name = (t.get("name") or "").strip()
+        if not name:
+            continue
+        qty = str(t.get("qty", "")).strip() or "1"
+        s = (t.get("set") or "").strip()
+        cn = (t.get("cn") or "").strip()
+        out.append((int(qty), name, s, cn if s else ""))
+    return out
+
+
+def _first_line_mismatch(parsed, expected):
+    """Human-readable reason the re-parsed deck diverged from what was intended."""
+    if len(parsed) != len(expected):
+        return f"expected {len(expected)} card line(s) but {len(parsed)} parsed back."
+    for got, want in zip(parsed, expected):
+        if got != want:
+            return (f"the line for {want[1]!r} re-parsed as name={got[1]!r} "
+                    f"set={got[2]!r} #={got[3]!r} qty={got[0]}.")
+    return "a card line changed on round-trip."
+
+
+def _write_deck(path, text, expected, backup):
+    """temp write -> INV-04 content-fidelity check -> optional .bak -> atomic
+    replace. Returns (payload_dict, status).
+
+    `expected` is the (qty, name, set, cn) tuples the editor intended; the file must
+    re-parse to EXACTLY that — not merely the same line COUNT — so a card name that
+    round-trips to a different card/set (e.g. one containing '(' or '#', which the
+    parser treats as a set delimiter / comment) is rejected instead of silently
+    corrupting the deck (audit F6)."""
     target = os.path.abspath(path)
     fd, tmp = tempfile.mkstemp(suffix=".txt", dir=os.path.dirname(target))
     os.close(fd)
@@ -494,16 +565,18 @@ def _write_deck(path, text, ncards, backup):
         with open(tmp, "w", encoding="utf-8") as fh:
             fh.write(text)
         _, parsed = deckmod.parse_deck_file(tmp)
-        if len(parsed) != ncards:
-            return {"ok": False, "errors": [f"Deck didn't parse cleanly "
-                    f"({len(parsed)} of {ncards} card lines survived) — not saved."]}, 400
+        if parsed != expected:
+            return {"ok": False, "errors": [
+                "Deck didn't round-trip cleanly — " + _first_line_mismatch(parsed, expected)
+                + " Card names containing '(' or '#' aren't supported. Not saved."]}, 400
         bak = None
         if backup and os.path.exists(target):
-            bak = f"{target}.{time.strftime('%Y%m%d-%H%M%S')}.bak"
+            bak = _backup_path(target)
             shutil.copy2(target, bak)
         os.replace(tmp, target)
         tmp = None
-        return {"ok": True, "backup": (os.path.basename(bak) if bak else None), "cards": ncards}, 200
+        return {"ok": True, "backup": (os.path.basename(bak) if bak else None),
+                "cards": len(expected)}, 200
     finally:
         if tmp and os.path.exists(tmp):
             os.remove(tmp)
@@ -584,10 +657,11 @@ def deck_save():
     d = deckmod.find_deck(did)
     if not d:
         return jsonify(ok=False, errors=[f"No deck with id {did!r}."]), 404
-    ok, errs, ncards = _validate_body(body)
+    ok, errs, _ = _validate_body(body)
     if not ok:
         return jsonify(ok=False, errors=errs), 400
-    payload, status = _write_deck(d["path"], _serialize_doc(meta, body), ncards, backup=True)
+    payload, status = _write_deck(d["path"], _serialize_doc(meta, body),
+                                  _body_cards(body), backup=True)
     return jsonify(**payload), status
 
 
@@ -602,7 +676,7 @@ def deck_create():
                  if (p.get("key") or "").lower() == "name"), "")
     if not name:
         return jsonify(ok=False, errors=["Give the deck a name first (the 'name' field)."]), 400
-    ok, errs, ncards = _validate_body(body)
+    ok, errs, _ = _validate_body(body)
     if not ok:
         return jsonify(ok=False, errors=errs), 400
 
@@ -614,7 +688,7 @@ def deck_create():
         return jsonify(ok=False, errors=[f"Folder {os.path.basename(folder)} already exists."]), 409
     os.makedirs(folder)
     payload, status = _write_deck(os.path.join(folder, "deck.txt"),
-                                  _serialize_doc(meta, body), ncards, backup=False)
+                                  _serialize_doc(meta, body), _body_cards(body), backup=False)
     if not payload.get("ok"):
         try:
             os.rmdir(folder)  # roll back the empty folder on failure
