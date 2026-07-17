@@ -400,17 +400,23 @@ and run through `validate.py` first; only if that passes is the current CSV back
 up to a timestamped `.bak` (gitignored) and then atomically replaced. Bad input —
 a non-numeric quantity, a duplicate printing — is rejected before anything is
 written, so the inventory can't be corrupted, and any change is one `.bak` away
-from undo (which is exactly what Revert does). Adding a card also appends a
-`card-mana.csv` row, so the integrity gate's INV-02 keeps holding; run
-`build_mana.py` (or `/refresh`) afterwards to fill in its real mana cost/keywords.
+from undo. **Revert** restores the most recent snapshot — snapshotting the current
+state to a fresh `.bak` first and swapping the file in atomically, so a revert
+can't leave a half-written CSV and is itself undoable. Backups are timestamped to
+the microsecond, so two saves in the same second never overwrite each other. Adding
+a card also appends a `card-mana.csv` row (only after the library write succeeds),
+so the integrity gate's INV-02 keeps holding; run `build_mana.py` (or `/refresh`)
+afterwards to fill in its real mana cost/keywords.
 
 **Deck editing** lives under the same app: the **Decks →** link opens a deck list
 (with live buildable status), and each deck opens an editor where you change
 quantities, add/remove cards, and see **live buildability** (owned vs. needed,
 short/missing) update as you type. Saving writes the deck's `.txt` file through
-the same safe path — validated (the file must re-parse with every card line
-intact, INV-04), backed up to a `.bak`, atomically replaced — and it preserves
-the file's `# Creatures` / `# Lands` section comments. The editor also lets you
+the same safe path — validated (every card line must re-parse to the *exact* same
+card it was entered as, INV-04, so a name containing `(` or `#` — which the parser
+would read as a set delimiter / comment — is rejected rather than silently
+mangled), backed up to a `.bak`, atomically replaced — and it preserves the file's
+`# Creatures` / `# Lands` section comments. The editor also lets you
 edit the `#:` metadata fields, run **Stats / Mana / Tribes / Suggestions**
 analysis tabs (the same `deck.py` output, in-browser), and **＋ New deck** to
 create a fresh numbered deck.
@@ -432,9 +438,13 @@ python3 scripts/sheets_sync.py pull    # Google Sheet -> local CSV
 Keeps the CSV and the companion Google Sheet in sync. `pull` overwrites the local
 CSV, so the incoming rows are run through `validate.py` on a temp file first (and
 the current CSV is backed up to a timestamped `.bak`) — a sheet with a matching
-header but bad rows can't corrupt the inventory. Setup details are in the
-docstring at the top of `scripts/sheets_sync.py`. (Since the CSV is the
-interchange format, you can also import/export manually in Sheets without this.)
+header but bad rows can't corrupt the inventory. `push` writes cells as **RAW**
+values, so a field whose text begins `=`, `+`, `-`, or `@` is stored literally and
+never evaluated as a spreadsheet formula (a CSV-injection guard, and it also keeps
+leading-zero collector numbers intact). Setup details are in the docstring at the
+top of `scripts/sheets_sync.py`. (Since the CSV is the interchange format, you can
+also import/export manually in Sheets without this — note that a *manual* File →
+Import applies Sheets' own formula parsing, which this RAW guard can't cover.)
 
 ## Typical workflow
 

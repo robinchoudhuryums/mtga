@@ -111,8 +111,10 @@ docs. This file is the source of truth for the workflow commands in
   `deck.py mana/stats/wildcards/swap` show `?`/unknown, `build_gallery.py` flags
   missing art and exits non-zero (instead of reporting an imageless gallery as
   success), and `wishlist.py --add` marks rows added name-only-due-to-outage
-  distinctly from a genuine no-match. (Not yet routed through the client:
-  `enrich.py` / `build_mana.py` / `build_pool.py` — see Known Issues.)
+  distinctly from a genuine no-match. The rebuild scripts (`enrich.py` /
+  `build_mana.py` / `build_pool.py`) also fail cleanly on an outage — a clear error
+  and a non-zero exit that leaves the existing derived file unchanged, rather than
+  crashing or writing a partial-blank file over good data.
 - **The optional editing app (`scripts/app.py`) mutates `card-library.csv`** via
   validated writes + a timestamped `.bak`, appends a `card-mana.csv` row when you
   add a card (to keep INV-02), and also edits deck files under `decks/` (gated on
@@ -185,12 +187,6 @@ docs. This file is the source of truth for the workflow commands in
   denylist so they don't pollute the tags.
 - A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
   warning (expected, not an error).
-- **`enrich.py` / `build_mana.py` / `build_pool.py` are not yet routed through
-  `scripts/scryfall.py`**, so a mid-run Scryfall read-timeout or truncated body
-  still crashes those *rebuild* scripts (they catch only `HTTPError`/`URLError`).
-  The interactive tools (`deck.py`, `build_gallery.py`, `wishlist.py`) already
-  degrade gracefully; finishing the migration of the three build scripts closes
-  this (audit F16 follow-on).
 - The **functional-role** breakdown (`deck.py stats`) and **castability lint**
   (`deck.py mana` / `check`) are heuristic. Roles are matched from oracle text, so
   modal cards land in several buckets and single-draw cantrips are deliberately
