@@ -27,6 +27,7 @@ Requires outbound access to api.scryfall.com (data) and cards.scryfall.io
 """
 
 import argparse
+import html
 import json
 import os
 import time
@@ -233,7 +234,7 @@ def _bars(counts, cls_by_key=None, top=None):
         cls = f" {cls_by_key[k]}" if cls_by_key else ""
         pct = round(100 * v / mx)
         out.append(
-            f'<div class="bar{cls}"><span>{k}</span>'
+            f'<div class="bar{cls}"><span>{html.escape(str(k))}</span>'
             f'<span class="track"><span class="fill" style="width:{pct}%"></span></span>'
             f'<span class="num">{v}</span></div>')
     return "".join(out)
@@ -248,11 +249,17 @@ def render_stats(stats):
 
     chips = []
     for tag, n in sorted(stats["syn"].items(), key=lambda kv: -kv[1])[:16]:
-        esc = tag.replace("\\", "\\\\").replace("'", "\\'")
+        # The tag lands in TWO contexts: a JS single-quoted string AND the
+        # double-quoted onclick attribute (plus as HTML text). Escape for the JS
+        # string first (backslash, quote), then HTML-escape so a '"', '<', or '&'
+        # in the tag can't break out of the attribute — the deliberate __DATA__
+        # escaping didn't cover this dashboard path (audit F12).
+        js_tag = tag.replace("\\", "\\\\").replace("'", "\\'")
+        attr = html.escape(js_tag, quote=True)
         chips.append(
             f'<span class="chip" onclick="var q=document.getElementById(\'q\');'
-            f'q.value=\'{esc}\';q.dispatchEvent(new Event(\'input\'));'
-            f'window.scrollTo(0,0)">{tag} <span class="n">{n}</span></span>')
+            f'q.value=\'{attr}\';q.dispatchEvent(new Event(\'input\'));'
+            f'window.scrollTo(0,0)">{html.escape(tag)} <span class="n">{n}</span></span>')
 
     return f"""<details class="dash" open>
   <summary>Collection overview</summary>

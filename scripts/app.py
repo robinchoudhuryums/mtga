@@ -222,6 +222,13 @@ def _lookup_card(name):
     }
 
 
+def _list_of_objs(x):
+    """True iff x is a list whose every element is a JSON object (dict). Guards the
+    mutating endpoints so a payload like [1, 2, 3] returns a clean 400 instead of a
+    500 when the handler calls .get() on a non-dict element (audit F9)."""
+    return isinstance(x, list) and all(isinstance(e, dict) for e in x)
+
+
 @app.route("/api/save", methods=["POST"])
 def save():
     """Persist edited Quantity Owned / Synergies back to card-library.csv.
@@ -237,8 +244,8 @@ def save():
     On any failure the real CSV is left untouched and errors are returned.
     """
     edits = request.get_json(silent=True)
-    if not isinstance(edits, list):
-        return jsonify(ok=False, errors=["Malformed request: expected a JSON list of edits."]), 400
+    if not _list_of_objs(edits):
+        return jsonify(ok=False, errors=["Malformed request: expected a JSON list of edit objects."]), 400
     if not edits:
         return jsonify(ok=True, updated=0, backup=None)
 
@@ -652,7 +659,7 @@ def deck_save():
     data = request.get_json(silent=True) or {}
     did = str(data.get("id", ""))
     meta, body = data.get("meta") or [], data.get("body")
-    if not isinstance(body, list) or not isinstance(meta, list):
+    if not _list_of_objs(body) or not _list_of_objs(meta):
         return jsonify(ok=False, errors=["Malformed request."]), 400
     d = deckmod.find_deck(did)
     if not d:
@@ -670,7 +677,7 @@ def deck_create():
     """Create a new numbered deck (decks/NN-slug/deck.txt) from the editor."""
     data = request.get_json(silent=True) or {}
     meta, body = data.get("meta") or [], data.get("body")
-    if not isinstance(body, list) or not isinstance(meta, list):
+    if not _list_of_objs(body) or not _list_of_objs(meta):
         return jsonify(ok=False, errors=["Malformed request."]), 400
     name = next((( p.get("value") or "").strip() for p in meta
                  if (p.get("key") or "").lower() == "name"), "")

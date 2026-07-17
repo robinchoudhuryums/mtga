@@ -342,7 +342,12 @@ def _theme_model():
         for t in central:
             df[t] = df.get(t, 0) + 1
     n = len(fps)
-    idf = {t: math.log(n / (1 + c)) for t, c in df.items()}
+    # Clamp at 0: a theme central to (almost) every deck yields log(n/(1+c)) <= 0,
+    # and a *negative* weight would drag down the score of a card that also matches
+    # a genuinely specific theme. Floor it so a generic theme is worth zero signal,
+    # never negative (audit F15). Values above 0 are unchanged, so ranking output
+    # only moves for the pathological central-to-all case.
+    idf = {t: max(0.0, math.log(n / (1 + c))) for t, c in df.items()}
     return fps, idf
 
 
