@@ -28,7 +28,8 @@ import urllib.error
 import urllib.request
 
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
-from enrich import USER_AGENT
+import scryfall
+from scryfall import ScryfallUnavailable
 
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -47,30 +48,10 @@ def fetch(names):
     out = {}
     for i in range(0, len(names), 75):
         chunk = names[i:i + 75]
-        body = json.dumps({"identifiers": [{"name": n} for n in chunk]}).encode()
-        req = urllib.request.Request(
-            "https://api.scryfall.com/cards/collection", data=body,
-            headers={"User-Agent": USER_AGENT, "Accept": "application/json",
-                     "Content-Type": "application/json"})
-        for attempt in range(6):
-            try:
-                with urllib.request.urlopen(req, timeout=30) as resp:
-                    data = json.load(resp)
-                break
-            except urllib.error.HTTPError as e:
-                if e.code == 429 and attempt < 5:
-                    wait = float(e.headers.get("Retry-After", 0) or 0) or 1.0 * (2 ** attempt)
-                    eprint(f"       rate limited; waiting {wait:.0f}s...")
-                    time.sleep(wait)
-                    continue
-                raise
-            except urllib.error.URLError:
-                # Transient network blip — back off and retry like build_pool.py's
-                # _get, rather than failing the whole run on the first hiccup.
-                if attempt < 5:
-                    time.sleep(1.0 * (2 ** attempt))
-                    continue
-                raise
+        # Shared resilient client: retries 429/5xx/timeout and raises
+        # ScryfallUnavailable on give-up, which main() turns into a clean error
+        # (leaving the existing card-mana.csv untouched) instead of a traceback.
+        data = scryfall.post_collection(chunk)
         for card in data.get("data", []):
             cost = _front_mana(card)
             mv = card.get("cmc", 0)
@@ -106,8 +87,10 @@ def main():
     eprint(f"Fetching mana costs for {len(names)} card(s)...")
     try:
         data = fetch(names)
-    except urllib.error.URLError as e:
-        eprint(f"ERROR: could not reach Scryfall: {e}")
+    except ScryfallUnavailable as e:
+        eprint(f"ERROR: could not reach Scryfall: {e}\n"
+               f"       A slow/blocked Scryfall stopped the mana build; the existing "
+               f"card-mana.csv was left unchanged. Rerun where it's reachable.")
         return 1
 
     with open(args.out, "w", newline="", encoding="utf-8") as fh:

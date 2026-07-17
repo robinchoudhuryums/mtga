@@ -32,8 +32,10 @@ import urllib.parse
 import urllib.request
 
 from lib import REPO_ROOT, eprint
-from enrich import color_shorthand, oracle_fields, USER_AGENT
+from enrich import color_shorthand, oracle_fields
 from tag_synergies import tags_for
+import scryfall
+from scryfall import ScryfallUnavailable
 
 POOL_PATH = os.path.join(REPO_ROOT, "card-pool.csv")
 POOL_HEADER = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
@@ -53,25 +55,10 @@ def legalities_str(card):
     return ";".join(f for f in POOL_FORMATS if leg.get(f) in ("legal", "restricted"))
 
 
-def _get(url, retries=6):
-    req = urllib.request.Request(
-        url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
-    for attempt in range(retries):
-        try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                return json.load(resp)
-        except urllib.error.HTTPError as e:
-            if e.code == 429 and attempt < retries - 1:
-                wait = float(e.headers.get("Retry-After", 0) or 0) or 1.0 * (2 ** attempt)
-                eprint(f"       rate limited; waiting {wait:.0f}s...")
-                time.sleep(wait)
-                continue
-            raise
-        except urllib.error.URLError:
-            if attempt < retries - 1:
-                time.sleep(1.0 * (2 ** attempt))
-                continue
-            raise
+def _get(url):
+    """Fetch a Scryfall URL as JSON via the shared resilient client (retries
+    429/5xx/timeout; raises ScryfallUnavailable on give-up)."""
+    return scryfall.get_json(url)
 
 
 def fetch_all(query):
@@ -114,8 +101,10 @@ def main():
     eprint(f"Fetching pool for query: {query!r}")
     try:
         cards = fetch_all(query)
-    except urllib.error.URLError as e:
-        eprint(f"ERROR: could not reach Scryfall: {e}")
+    except ScryfallUnavailable as e:
+        eprint(f"ERROR: could not reach Scryfall: {e}\n"
+               f"       A slow/blocked Scryfall stopped the pool build; the existing "
+               f"card-pool.csv was left unchanged. Rerun where it's reachable.")
         return 1
 
     # Sort by set then collector number for readability.
