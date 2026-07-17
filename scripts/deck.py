@@ -2052,6 +2052,96 @@ def _interaction_count(cards, carddata):
     return n
 
 
+AUDIT_ORDER = {"TUNE": 0, "craft": 1, "review": 2, "ok": 3}
+
+
+def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta):
+    """Score one deck for the roster triage — the structured core shared by
+    `cmd_audit` (CLI table) and build_dashboard.py (the roster Audit view), so the
+    two can't drift. Pass the big lookups (collection / card data / mana / legalities
+    / card meta) in pre-loaded so a whole-roster pass reads each CSV once. Returns a
+    dict of raw counts + a verdict (TUNE / craft / review / ok) + human reasons; each
+    caller renders its own cells. Offline — no Scryfall."""
+    meta, cards = parse_deck_file(d["path"])
+    fmt = (meta.get("format") or "").strip().lower()
+
+    # Ownership: unique cards that are missing or short of the deck's need.
+    need = {}
+    for q, n, s, c in cards:
+        need[n.lower()] = need.get(n.lower(), 0) + q
+    short = 0
+    for nl, req in need.items():
+        disp = next(n for q, n, s, c in cards if n.lower() == nl)
+        have, found = owned(by_name_qty, disp)
+        if not found or have < req:
+            short += 1
+
+    rep = legality_report(meta, cards, fmt, leg)
+    n_illegal = len(rep["problems"])
+
+    declared = _declared_colors(meta)
+    uncast, off_ident = _castability(cards, declared, mana, carddata)
+
+    interaction = _interaction_count(cards, carddata)
+
+    theme_w = {}
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        m = cmeta.get(n.lower())
+        if not m:
+            continue
+        for t in m["synergies"]:
+            theme_w[t] = theme_w.get(t, 0) + q
+    n_themes = len(_central_themes(theme_w))
+
+    # Verdict: hard problems first (a tune target), then unbuilt, then soft.
+    thin = interaction < (5 if rep["min_size"] >= 100 else 3)
+    reasons = []
+    if n_illegal:
+        reasons.append(f"illegal ×{n_illegal}")
+    if uncast:
+        reasons.append(f"uncastable ×{len(uncast)}")
+    if n_illegal or uncast:
+        verdict = "TUNE"
+    elif short:
+        verdict = "craft"
+        reasons.append(f"{short} to craft")
+    elif off_ident or thin:
+        verdict = "review"
+        if off_ident:
+            reasons.append(f"off-color ×{len(off_ident)}")
+        if thin:
+            reasons.append(f"thin interaction ({interaction})")
+    else:
+        verdict = "ok"
+
+    return {
+        "id": d["id"],
+        "name": (d["name"] or os.path.basename(os.path.dirname(d["path"])) or d["id"]),
+        "sz": rep["total"],
+        "short": short,
+        "illegal": n_illegal,
+        "uncast": len(uncast),
+        "stray": len(off_ident),
+        "int": interaction,
+        "thm": n_themes,
+        "thin": thin,
+        "verdict": verdict,
+        "why": ", ".join(reasons),
+    }
+
+
+def audit_roster():
+    """Score every deck for the roster triage — loads each reference CSV once, then
+    runs audit_deck per deck. Returns the list of row dicts (unsorted, discovery
+    order). Shared by the CLI and the dashboard."""
+    decks = discover_decks()
+    refs = dict(by_name_qty=load_collection()[2], carddata=load_card_data(),
+                mana=load_mana(), leg=load_legalities(), cmeta=load_card_meta())
+    return [audit_deck(d, **refs) for d in decks]
+
+
 def cmd_audit(args):
     """Roster-wide triage scorecard — one cheap, OFFLINE line per deck so you can see
     which decks actually need a full (expensive) tune-deck pass instead of re-tuning
@@ -2065,99 +2155,30 @@ def cmd_audit(args):
     A deck is flagged TUNE for a hard problem (illegal / uncastable), review for a
     soft one (off-identity strays / thin interaction), craft when it's just unbuilt,
     else ok. No Scryfall calls — everything is read from the already-built CSVs."""
-    decks = discover_decks()
-    if not decks:
+    scored = audit_roster()
+    if not scored:
         print("No decks yet. Add one under decks/<NN-name>/deck.txt (see decks/README.md).")
         return 0
 
-    # Load every reference once, then loop the decks (no per-deck reloads, no network).
-    _, _, by_name_qty = load_collection()
-    carddata = load_card_data()
-    mana = load_mana()
-    leg = load_legalities()
-    cmeta = load_card_meta()
+    _by_id = lambda ids: sorted(ids, key=lambda i: (len(i), i))
+    tune = _by_id([r["id"] for r in scored if r["verdict"] == "TUNE"])
+    craft = _by_id([r["id"] for r in scored if r["verdict"] == "craft"])
+    review = _by_id([r["id"] for r in scored if r["verdict"] == "review"])
 
-    rows, tune, craft, review = [], [], [], []
-    for d in sorted(decks, key=lambda x: (len(x["id"]), x["id"])):
-        meta, cards = parse_deck_file(d["path"])
-        fmt = (meta.get("format") or "").strip().lower()
+    rows = []
+    for r in scored:
+        cast_cell = "✓" if not (r["uncast"] or r["stray"]) else \
+            " ".join(([f"{r['uncast']}u"] if r["uncast"] else [])
+                     + ([f"{r['stray']}s"] if r["stray"] else []))
+        rows.append({**r, "own": "✓" if r["short"] == 0 else f"{r['short']}✗",
+                     "legal": "✓" if r["illegal"] == 0 else f"{r['illegal']}✗",
+                     "cast": cast_cell})
 
-        # Ownership: unique cards that are missing or short of the deck's need.
-        need = {}
-        for q, n, s, c in cards:
-            need[n.lower()] = need.get(n.lower(), 0) + q
-        short = 0
-        for nl, req in need.items():
-            disp = next(n for q, n, s, c in cards if n.lower() == nl)
-            have, found = owned(by_name_qty, disp)
-            if not found or have < req:
-                short += 1
-
-        rep = legality_report(meta, cards, fmt, leg)
-        n_illegal = len(rep["problems"])
-
-        declared = _declared_colors(meta)
-        uncast, off_ident = _castability(cards, declared, mana, carddata)
-
-        interaction = _interaction_count(cards, carddata)
-
-        theme_w = {}
-        for q, n, s, c in cards:
-            if n.lower() in BASICS:
-                continue
-            m = cmeta.get(n.lower())
-            if not m:
-                continue
-            for t in m["synergies"]:
-                theme_w[t] = theme_w.get(t, 0) + q
-        n_themes = len(_central_themes(theme_w))
-
-        # Verdict: hard problems first (a tune target), then unbuilt, then soft.
-        thin = interaction < (5 if rep["min_size"] >= 100 else 3)
-        reasons = []
-        if n_illegal:
-            reasons.append(f"illegal ×{n_illegal}")
-        if uncast:
-            reasons.append(f"uncastable ×{len(uncast)}")
-        if n_illegal or uncast:
-            verdict = "TUNE"
-            tune.append(d["id"])
-        elif short:
-            verdict = "craft"
-            reasons.append(f"{short} to craft")
-            craft.append(d["id"])
-        elif off_ident or thin:
-            verdict = "review"
-            if off_ident:
-                reasons.append(f"off-color ×{len(off_ident)}")
-            if thin:
-                reasons.append(f"thin interaction ({interaction})")
-            review.append(d["id"])
-        else:
-            verdict = "ok"
-
-        cast_cell = "✓" if not (uncast or off_ident) else \
-            " ".join(([f"{len(uncast)}u"] if uncast else [])
-                     + ([f"{len(off_ident)}s"] if off_ident else []))
-        rows.append({
-            "id": d["id"],
-            "name": (d["name"] or os.path.basename(os.path.dirname(d["path"])) or d["id"]),
-            "sz": rep["total"],
-            "own": "✓" if short == 0 else f"{short}✗",
-            "legal": "✓" if n_illegal == 0 else f"{n_illegal}✗",
-            "cast": cast_cell,
-            "int": interaction,
-            "thm": n_themes,
-            "verdict": verdict,
-            "why": ", ".join(reasons),
-        })
-
-    order = {"TUNE": 0, "craft": 1, "review": 2, "ok": 3}
     if args.flagged:
         rows = [r for r in rows if r["verdict"] != "ok"]
-    rows.sort(key=lambda r: (order[r["verdict"]], len(r["id"]), r["id"]))
+    rows.sort(key=lambda r: (AUDIT_ORDER[r["verdict"]], len(r["id"]), r["id"]))
 
-    print(f"Deck roster audit — {len(decks)} decks "
+    print(f"Deck roster audit — {len(scored)} decks "
           f"(offline triage; full-tune only the flagged ones)\n")
     name_w = min(32, max(4, max((len(r["name"]) for r in rows), default=4)))
     hdr = (f"  {'ID':<4}  {'Deck':<{name_w}}  {'Sz':>3}  {'Own':<4}  {'Legal':<5}  "
@@ -2174,7 +2195,7 @@ def cmd_audit(args):
     print(f"\nLegend: Own/Legal ✓ clean · Cast Nu=uncastable Ns=off-identity stray · "
           f"Int=removal+sweeper+counter · Thm=central themes")
     print(f"Summary: {len(tune)} to tune · {len(craft)} to craft · "
-          f"{len(review)} to review · {len(decks) - len(tune) - len(craft) - len(review)} ok")
+          f"{len(review)} to review · {len(scored) - len(tune) - len(craft) - len(review)} ok")
     if tune:
         print(f"\nFull-tune candidates (hard flags): {', '.join(tune)}")
         print("  → run: python3 scripts/deck.py text <id>  then  /tune-deck <id>")

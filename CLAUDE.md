@@ -70,7 +70,9 @@ docs. This file is the source of truth for the workflow commands in
   construction legality (`legal`), color strays (`mana`/`check` castability),
   interaction count and central-theme count (`stats`) — labelled **★ TUNE** (hard:
   illegal / uncastable), **craft** (unbuilt), **review** (soft: off-color strays or
-  thin interaction), or **ok**. `--flagged` drops the ok rows. It's a SHORTLIST
+  thin interaction), or **ok**. `--flagged` drops the ok rows. The dashboard opens
+  with the same scorecard as a sortable **Roster-triage** table (both render from a
+  shared `audit_deck()` scorer, so CLI and page can't drift). It's a SHORTLIST
   SIGNAL like `suggest`/`cuts`: a flag says "look here," then grade the flagged deck
   from `deck.py text` + `/tune-deck` — a review/ok label is not a verdict on the
   deck. (A stale `#: colors:` header inflates the `Cast` column — e.g. the raw

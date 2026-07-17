@@ -366,12 +366,16 @@ python3 scripts/build_dashboard.py --out x.html
 
 Surfaces the two things that otherwise live only behind a terminal prompt — the
 roster-wide **craft plan** (`deck.py wildcards`) and each deck's **analysis** — as
-one self-contained page. Every deck (and variant) shows its buildable status and a
-one-click **⧉ Copy Arena import** button (the clean `deck.py arena` block, for
-pasting into Arena on mobile); expanding a deck gives sortable **Craft picks** and a
-**Wishlist priority** table (the `wishlist.py --rank` tiers), plus Stats / Mana /
-Cuts / Legal / Arena panels. The craft numbers come from the same `suggest_scored()`
-the CLI renders, so the dashboard can't drift from the command.
+one self-contained page. It opens with a **Roster triage** table (the `deck.py
+audit` scorecard): one sortable row per deck — Own / Legal / Cast / Int / Thm — with
+a color-coded **★ tune / craft / review / ok** verdict, so you see at a glance which
+decks need attention; click a deck to filter the list below to it. Every deck (and
+variant) shows its buildable status and a one-click **⧉ Copy Arena import** button
+(the clean `deck.py arena` block, for pasting into Arena on mobile); expanding a deck
+gives sortable **Craft picks** and a **Wishlist priority** table (the `wishlist.py
+--rank` tiers), plus Stats / Mana / Cuts / Legal / Arena panels. The triage and craft
+numbers come from the same `audit_deck()` / `suggest_scored()` the CLI renders, so
+the dashboard can't drift from the commands.
 
 The build is **offline** — it disables `deck.py`'s live-Scryfall fallbacks and reads
 only committed data (`card-*.csv` + `decks/`), so it never touches the network and
