@@ -18,7 +18,7 @@
 1 Don & Leo, Problem Solvers (TMT) 143
 1 Iron Man, Master of Machines (MSH) 216
 1 Metalhead (TMT) 44
-1 Wistfulness (ECL) 252
+1 Aerial Doombot (MSH) 43
 1 HYDRA Assault Robot (MSH) 137
 1 Oreplate Pangolin (EOE) 150
 1 Machinesmith Automaton (MSH) 144
