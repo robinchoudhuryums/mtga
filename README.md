@@ -324,6 +324,37 @@ share the repo with) can render the art and rebuild with `--no-fetch` offline,
 without the gitignored working cache. Use `--no-fetch` to rebuild from the
 manifest/cache without touching the network. Rerun after importing new cards.
 
+### Dashboard — an always-on roster view (craft plan + deck analysis)
+
+```
+python3 scripts/build_dashboard.py            # writes a self-contained dashboard.html
+python3 scripts/build_dashboard.py --out x.html
+```
+
+Surfaces the two things that otherwise live only behind a terminal prompt — the
+roster-wide **craft plan** (`deck.py wildcards`) and each deck's **analysis** — as
+one self-contained page. Every deck (and variant) shows its buildable status and a
+one-click **⧉ Copy Arena import** button (the clean `deck.py arena` block, for
+pasting into Arena on mobile); expanding a deck gives sortable **Craft picks** and a
+**Wishlist priority** table (the `wishlist.py --rank` tiers), plus Stats / Mana /
+Cuts / Legal / Arena panels. The craft numbers come from the same `suggest_scored()`
+the CLI renders, so the dashboard can't drift from the command.
+
+The build is **offline** — it disables `deck.py`'s live-Scryfall fallbacks and reads
+only committed data (`card-*.csv` + `decks/`), so it never touches the network and
+runs in CI.
+
+**Hosting it (GitHub Pages).** `.github/workflows/pages.yml` rebuilds the dashboard
+and publishes it on every push to `main`, so it stays current at a permanent,
+bookmarkable URL with no local setup. One-time operator steps:
+
+1. Make the repo **public** (GitHub Pages on a *private* repo requires GitHub Pro).
+2. **Settings → Pages → Build and deployment → Source: "GitHub Actions."**
+
+Once enabled, the site publishes at `https://<owner>.github.io/<repo>/` on the next
+push to `main`. Prefer not to host it? The self-contained `dashboard.html` opens
+straight from disk — no server, no setup.
+
 ### Editing app — edit the collection in your browser (optional)
 
 ```
