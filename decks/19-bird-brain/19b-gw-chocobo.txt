@@ -2,11 +2,11 @@
 #: format: Standard
 #: colors: GW
 #: based-on: deck.txt
-#: archetype: 19 variant — Selesnya (G/W) sibling of 19a; drops blue for more green token-makers.
-#: notes: Two-color Selesnya sibling of 19a: drops the blue splash (no Empyrean
+#: archetype: 19 variant — Selesnya (G/W) sibling of the promoted Bant primary; drops blue for more green token-makers.
+#: notes: Two-color Selesnya sibling of the Bant primary: drops the blue splash (no Empyrean
 #: notes: Eagle / Kastral / Choco) for more green token-makers (Suki, Rinoa,
 #: notes: Spider-Ham) and a clean GW manabase. Chocobo landfall tokens + For the
-#: notes: Common Good copy-army + white/green anthems & go-wide. Compare to 19a.
+#: notes: Common Good copy-army + white/green anthems & go-wide. Compare to the primary (deck.txt).
 
 # Chocobo landfall / token engine
 1 Traveling Chocobo (FIN) 210

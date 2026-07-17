@@ -17,7 +17,7 @@
 1 Firebender Ascension (TLA) 137
 1 Fire Nation Cadets (TLA) 134
 2 Firebending Lesson (TLA) 138
-1 Tundra Tank (TLA) 121
+1 The Rise of Sozin (TLA) 117
 1 Draconautics Engineer (DFT) 121
 1 Corroding Dragonstorm (TDM) 75
 1 Sarkhan, Dragon Ascendant (TDM) 118
@@ -26,7 +26,7 @@
 1 Summon: Bahamut (FIN) 1
 1 Sozin's Comet (TLA) 154
 1 Lightning Strike (TLA) 146
-1 How to Start a Riot (TLA) 140
+1 Lathliss, Dragon Queen (FDN) 627
 1 Spinerock Tyrant (ECL) 159
 1 Combustion Man (TLA) 127
 1 Professor Zei, Anthropologist (TLA) 238

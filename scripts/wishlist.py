@@ -48,7 +48,7 @@ WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
 
 HEADER = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
-          "Set Code", "Collector #", "Rarity", "Target", "Note"]
+          "Set Code", "Collector #", "Rarity", "Target", "Note", "Power"]
 RARITY_RANK = {"Mythic": 0, "Rare": 1, "Uncommon": 2, "Common": 3, "": 4, "?": 5}
 
 # "<qty> <Name>" with optional "(SET)" + collector number — mirrors deck.py/import_arena.
@@ -309,9 +309,12 @@ def cmd_by_set(rows, owned):
 
 
 def _theme_model():
-    """Build the deck theme model for target suggestion. Returns (fps, idf):
+    """Build the deck theme model for target suggestion. Returns (fps, idf, spec_idf):
 
-      fps  – [(deck_id, colors:set, central:set, tw_norm:dict)] per deck.
+      fps  – [(deck_id, colors:set, central:set, tw_norm:dict)] — one entry per
+             CORE archetype (variant builds / raw piles / pools are collapsed to
+             their primary, and untuned placeholder lists are skipped) so breadth
+             and idf count each real deck once, not once per alternate build.
       idf  – {theme: inverse-deck-frequency weight}. A theme CENTRAL to few decks
              (food, earthbend, firebending, Ninja, …) scores high; one central to
              most decks (etb, counters, tokens, mana, lifegain, …) scores ~0.
@@ -325,7 +328,17 @@ def _theme_model():
     meta = dk.load_card_meta()
     fps, df = [], {}
     for dd in dk.discover_decks():
+        # One fingerprint per CORE archetype. Variants (alternate builds, raw
+        # piles, pre-trim pools) share a core deck's themes, so counting them as
+        # separate decks double-counts a theme's centrality (idf) and inflates a
+        # card's cross-deck breadth (reuse) — e.g. a Bird card "reaching" 19, 19b
+        # AND 19c. Skip variants (keep the primary) and skip any untuned list
+        # (the 26-card example placeholder, an 83-card raw pile, an 86-card pool).
+        if dd["variant"]:
+            continue
         dm, cards = dk.parse_deck_file(dd["path"])
+        if not (55 <= sum(q for q, _n, _s, _c in cards) <= 70):
+            continue
         colors, ident, tw = dk._declared_colors(dm), set(), {}
         for q, n, s, c in cards:
             if n.lower() in dk.BASICS:
@@ -348,10 +361,19 @@ def _theme_model():
     # never negative (audit F15). Values above 0 are unchanged, so ranking output
     # only moves for the pathological central-to-all case.
     idf = {t: max(0.0, math.log(n / (1 + c))) for t, c in df.items()}
-    return fps, idf
+    # "specific" cutoff as a fraction of the pool (self-adjusts to deck count):
+    # a theme central to <= SPECIFIC_MAX_FRAC of decks clears it.
+    spec_idf = math.log(n / (1 + SPECIFIC_MAX_FRAC * n)) if n else 0.0
+    return fps, idf, spec_idf
 
 
-SPECIFIC_IDF = 1.5   # a theme this "rare" (central to <= ~6 of 29 decks) is real signal
+# A theme counts as "specific" (real signal, not a catch-all) when it is central to
+# only a small SHARE of decks. Expressed as a FRACTION of the deck pool so the cutoff
+# self-adjusts to the deck count — an absolute idf constant silently mis-calibrates when
+# decks are added/removed: collapsing variants (34 -> 25 decks) once pushed the 5-deck
+# "Villain" tribe below a hard 1.5 cutoff, mislabeling Doctor Doom & other Villain
+# payoffs as "generic". 0.25 => central to <= ~1/4 of decks (<= ~6 of 25) is signal.
+SPECIFIC_MAX_FRAC = 0.25
 
 # Evergreen keywords / generic role descriptors are rare across decks (so they'd
 # score as "specific") but are INCIDENTAL to a card — a trample creature isn't
@@ -374,7 +396,7 @@ def cmd_suggest_targets(rows, write=False, overwrite=False):
     human should judge from card text. With --write, fills STRONG/ok picks into
     blank Targets (or all, with --overwrite); `review` cards are always left for you.
     """
-    fps, idf = _theme_model()
+    fps, idf, spec_idf = _theme_model()
     strong = ok = review = wrote = 0
     print(f"  {'Card':30} {'Conf':6} {'Target':9} Signal")
     print("  " + "-" * 84)
@@ -389,7 +411,7 @@ def cmd_suggest_targets(rows, write=False, overwrite=False):
             if not shared:
                 continue
             score = sum(idf.get(t, 0) * twn[t] for t in shared)
-            specific = sorted((t for t in shared if idf.get(t, 0) >= SPECIFIC_IDF
+            specific = sorted((t for t in shared if idf.get(t, 0) >= spec_idf
                                and t.lower() not in NON_SIGNAL_TAGS),
                               key=lambda t: -idf[t])
             fits.append((round(score, 2), did, specific, sorted(shared)))
@@ -442,7 +464,7 @@ def _rank_scores(rows):
     Tiers: A = confident theme home (fit>=1.5 on a specific theme) OR breadth>=3;
     B = a specific-theme fit / castable-on-theme in >=1 deck; C = generic/none.
     """
-    fps, idf = _theme_model()
+    fps, idf, spec_idf = _theme_model()
     out = []
     for r in rows:
         ccols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
@@ -454,7 +476,7 @@ def _rank_scores(rows):
             shared = ctags & central
             if not shared:
                 continue
-            specific = sorted((t for t in shared if idf.get(t, 0) >= SPECIFIC_IDF
+            specific = sorted((t for t in shared if idf.get(t, 0) >= spec_idf
                                and t.lower() not in NON_SIGNAL_TAGS),
                               key=lambda t: -idf[t])
             if specific:
@@ -471,21 +493,35 @@ def _rank_scores(rows):
         pri = best + 0.6 * max(0, reuse - 1)
         tier = "A" if (conf == "STRONG" or reuse >= 3) else \
                "B" if (best_specific or reuse >= 1) else "C"
+        try:
+            power = float(r.get("Power") or 0)
+        except ValueError:
+            power = 0.0
         out.append({
             "name": r.get("Card Name", ""), "rarity": (r.get("Rarity") or "").capitalize(),
             "target": (r.get("Target") or "").strip() or "—",
             "conf": conf, "fit": round(best, 2), "reuse": reuse,
-            "pri": round(pri, 2), "tier": tier,
+            "pri": round(pri, 2), "tier": tier, "power": round(power, 1),
             "sig": "/".join(best_specific[:2]) or ("generic/no-theme" if conf == "review" else ""),
         })
+    # Normalize fit (pri) to 0-10 and blend 50/50 with the hand-graded power
+    # (already 0-10) into a combined value-per-wildcard score. fitN is exposed so
+    # the artifact can re-blend live at any fit/power weight.
+    mx = max((s["pri"] for s in out), default=0) or 1
+    for s in out:
+        s["fitN"] = round(s["pri"] / mx * 10, 2)
+        s["combined"] = round(0.5 * s["fitN"] + 0.5 * s["power"], 2)
     order = {"A": 0, "B": 1, "C": 2}
     out.sort(key=lambda s: (order[s["tier"]], -s["pri"], -_WC_RANK.get(s["rarity"], 0), s["name"]))
     return out
 
 
 def cmd_rank(rows):
-    """Rank the wishlist by wildcard-spend priority, grouped by recommendation tier."""
+    """Rank the wishlist by wildcard-spend priority — theme fit + hand-graded power
+    blended into a `combined` score — grouped by recommendation tier."""
     scored = _rank_scores(rows)
+    order = {"A": 0, "B": 1, "C": 2}
+    scored.sort(key=lambda s: (order.get(s["tier"], 9), -s["combined"], s["name"]))
     labels = {"A": "TIER A — craft first (confident theme home and/or real cross-deck breadth)",
               "B": "TIER B — solid targeted upgrade (one clear deck)",
               "C": "TIER C — situational / build-around (niche; craft when you build that deck)"}
@@ -495,13 +531,14 @@ def cmd_rank(rows):
             cur = s["tier"]
             n = sum(1 for x in scored if x["tier"] == cur)
             print(f"\n{labels[cur]}  ({n} cards)")
-            print(f"  {'#':>3} {'Card':32} {'WC':3} {'Deck':6} {'reuse':>5} {'pri':>5}  signal")
-            print("  " + "-" * 86)
+            print(f"  {'#':>3} {'Card':30} {'WC':3} {'Deck':6} {'fit':>4} {'pow':>4} "
+                  f"{'comb':>5}  signal")
+            print("  " + "-" * 88)
             i = 0
         i += 1
         wc = (s["rarity"] or "?")[:1] or "?"
-        print(f"  {i:>3} {s['name'][:32]:32} {wc:3} {s['target']:6} "
-              f"{s['reuse']:>5} {s['pri']:>5}  {s['sig'][:34]}")
+        print(f"  {i:>3} {s['name'][:30]:30} {wc:3} {s['target']:6} "
+              f"{s['fitN']:>4.1f} {s['power']:>4.1f} {s['combined']:>5.1f}  {s['sig'][:30]}")
     print("\n" + "=" * 60)
     print("Wildcard cost by tier (you spend that rarity's wildcards):")
     for t in ("A", "B", "C"):
@@ -511,8 +548,118 @@ def cmd_rank(rows):
                 by[s["rarity"]] = by.get(s["rarity"], 0) + 1
         line = ", ".join(f"{by[k]} {k}" for k in ("Mythic", "Rare", "Uncommon", "Common") if by.get(k))
         print(f"  Tier {t}: {line}")
-    print("\nNote: ranking reads THEME-fit, not raw power — a few generic-tagged bombs "
-          "(planeswalkers, mana rocks, Krenko-likes) sit in Tier C; eyeball those.")
+    print("\ncomb = 50/50 blend of theme fit (fit, 0–10) and hand-graded power (pow). "
+          "For an optimal craft plan within your wildcards use "
+          '`--budget "9M 10R 38U 48C"`; to first-pass blank Power cells use '
+          "`--seed-power`.")
+    return 0
+
+
+_RARITY_LETTER = {"M": "Mythic", "R": "Rare", "U": "Uncommon", "C": "Common"}
+
+
+def _parse_budget(s):
+    """'9M 10R 38U 48C' (any order/spacing, case-insensitive) -> {rarity: count}."""
+    caps = {}
+    for num, let in re.findall(r"(\d+)\s*([MmRrUuCc])", s or ""):
+        caps[_RARITY_LETTER[let.upper()]] = caps.get(_RARITY_LETTER[let.upper()], 0) + int(num)
+    return caps
+
+
+def cmd_budget(rows, budget_str):
+    """Given a wildcard budget ('9M 10R 38U 48C'), pick the highest-`combined`
+    cards affordable within each rarity's cap (it's separable per rarity, so the
+    top-K-by-combined per rarity IS optimal), with 1-2 alternates each and an
+    Arena import block of the picks."""
+    caps = _parse_budget(budget_str)
+    if not caps:
+        eprint('Could not parse budget. Example: --budget "9M 10R 38U 48C"')
+        return 1
+    scored = _rank_scores(rows)
+    by_rar = {}
+    for s in scored:
+        by_rar.setdefault(s["rarity"], []).append(s)
+    for r in by_rar:
+        by_rar[r].sort(key=lambda s: (-s["combined"], s["name"]))
+
+    print(f"Wildcard-spend plan for budget: "
+          + ", ".join(f"{caps[r]} {r}" for r in ("Mythic", "Rare", "Uncommon", "Common") if caps.get(r)))
+    print("(picks = highest combined fit+power within each cap; alts = next best)\n")
+    import_block = ["Deck"]
+    meta_by = {s["name"]: s for s in scored}
+    for rar in ("Mythic", "Rare", "Uncommon", "Common"):
+        cap = caps.get(rar, 0)
+        if not cap:
+            continue
+        pool = by_rar.get(rar, [])
+        picks, alts = pool[:cap], pool[cap:cap + 2]
+        print(f"=== {rar}  ({len(picks)} pick(s) of {cap} WC"
+              + (f"; {cap - len(picks)} WC left over — wishlist has no more {rar}s)" if len(picks) < cap else ")"))
+        for s in picks:
+            print(f"   {s['combined']:>4.1f}  {s['name'][:34]:34} "
+                  f"deck {s['target']:6}  (fit {s['fitN']:.1f} / pow {s['power']:.1f})")
+        for s in alts:
+            print(f"    alt {s['combined']:>3.1f}  {s['name'][:32]:32} deck {s['target']}")
+        print()
+
+    # Arena import block of the picks (front/full name is what the wishlist stores).
+    wl_by = {(r.get("Card Name") or ""): r for r in rows}
+    print("Import block (recommended crafts):\n```")
+    print("Deck")
+    for rar in ("Mythic", "Rare", "Uncommon", "Common"):
+        for s in by_rar.get(rar, [])[:caps.get(rar, 0)]:
+            r = wl_by.get(s["name"], {})
+            setc, coll = r.get("Set Code", ""), r.get("Collector #", "")
+            print(f"1 {s['name']}" + (f" ({setc}) {coll}" if setc else ""))
+    print("```")
+    return 0
+
+
+# Heuristic power SEED (a first pass for blank Power cells — NOT authoritative;
+# the role classifier underrates bombs whose value is unique text, so treat the
+# number as an estimate to hand-adjust). Rarity is the objective floor.
+_SEED_RARITY = {"Mythic": 4.5, "Rare": 3.2, "Uncommon": 2.0, "Common": 1.0}
+_SEED_ROLE = {"Sweeper": 2.0, "Reanimation": 1.6, "Cost reduction / cheat": 1.6,
+              "Payoff / engine": 1.5, "Card advantage": 1.3, "Removal (spot)": 1.1,
+              "Burn / drain": 1.1, "Counter": 0.8, "Recursion": 0.7, "Ramp / fixing": 0.6,
+              "Team pump / anthem": 0.6, "Protection / trick": 0.4, "Lifegain": 0.3}
+
+
+def _seed_power(r):
+    import deck as dk
+    p = _SEED_RARITY.get((r.get("Rarity") or "").capitalize(), 2.0)
+    p += sum(_SEED_ROLE.get(x, 0) for x in dk.classify_roles(r.get("Card Text") or ""))
+    ty = (r.get("Type") or "").lower()
+    if "planeswalker" in ty:
+        p += 2.0
+    if "legendary" in ty:
+        p += 0.3
+    return min(10.0, round(p * 2) / 2)  # nearest 0.5
+
+
+def cmd_seed_power(rows, write=False):
+    """Fill BLANK Power cells with a heuristic first-pass estimate (rarity floor +
+    functional-role signals). Never touches a Power you've already graded. It's an
+    ESTIMATE to review — the classifier can't see a bomb's unique text."""
+    blanks = [r for r in rows if not (r.get("Power") or "").strip()]
+    if not blanks:
+        print("Every wishlist card already has a Power grade — nothing to seed.")
+        return 0
+    print(f"Heuristic Power seed for {len(blanks)} blank cell(s) "
+          "(estimate — review & adjust):\n")
+    print(f"  {'seed':>4}  {'WC':3} Card")
+    for r in sorted(blanks, key=lambda r: -_seed_power(r)):
+        est = _seed_power(r)
+        if write:
+            r["Power"] = str(est)
+        wc = (r.get("Rarity") or "?")[:1]
+        print(f"  {est:>4.1f}  {wc:3} {r.get('Card Name', '')[:44]}")
+    if write:
+        write_wishlist(rows)
+        print(f"\nWrote {len(blanks)} Power estimate(s) to {os.path.basename(WISHLIST_CSV)}. "
+              "Review and hand-adjust the bombs the heuristic undersells.")
+    else:
+        print("\nRead-only. Re-run with --write to fill the blank Power cells.")
     return 0
 
 
@@ -555,8 +702,14 @@ def main():
     ap.add_argument("--overwrite", action="store_true",
                     help="with --suggest-targets --write: also overwrite existing Targets")
     ap.add_argument("--rank", action="store_true",
-                    help="rank cards by wildcard-spend priority (fit + cross-deck breadth), "
-                         "grouped by recommendation tier")
+                    help="rank cards by wildcard-spend priority (theme fit + hand-graded "
+                         "power, blended), grouped by recommendation tier")
+    ap.add_argument("--budget", metavar="SPEC",
+                    help='optimal craft plan within a wildcard budget, e.g. '
+                         '"9M 10R 38U 48C" (picks highest combined score per rarity cap)')
+    ap.add_argument("--seed-power", dest="seed_power", action="store_true",
+                    help="first-pass heuristic estimate for BLANK Power cells "
+                         "(add --write to persist; review — it's an estimate)")
     ap.add_argument("--owned", action="store_true",
                     help="show only wishlist cards you now OWN (drop candidates)")
     ap.add_argument("--name"); ap.add_argument("--type"); ap.add_argument("--text")
@@ -581,6 +734,10 @@ def main():
         return cmd_suggest_targets(rows, write=args.write, overwrite=args.overwrite)
     if args.rank:
         return cmd_rank(rows)
+    if args.budget:
+        return cmd_budget(rows, args.budget)
+    if args.seed_power:
+        return cmd_seed_power(rows, write=args.write)
 
     hits = [c for c in rows if _match(c, args)]
     if args.owned:

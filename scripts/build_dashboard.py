@@ -182,6 +182,8 @@ def collect():
     carddata = deckmod.load_card_data()
     mana = deckmod.load_mana()
     keywords = deckmod.load_keywords()
+    leg = deckmod.load_legalities()
+    cmeta = deckmod.load_card_meta()
 
     decks, buildable = [], 0
     for d in deckmod.discover_decks():
@@ -222,6 +224,10 @@ def collect():
             "craft": craft_rows(d),
             "viz": deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name),
             "detail": deck_detail(d["id"]),
+            # Roster-triage score from the SAME audit_deck() the `deck.py audit` CLI
+            # uses (shared scorer, so the dashboard view can't drift from the command).
+            "audit": deckmod.audit_deck(d, by_name_qty=qty, carddata=carddata,
+                                        mana=mana, leg=leg, cmeta=cmeta),
         })
 
     # Wishlist wildcard-priority tiers (structured, from the real _rank_scores).
@@ -325,6 +331,22 @@ TEMPLATE = r"""<!DOCTYPE html>
   .tierhdr h3 { margin:0; font-size:14px; } .tierhdr .roll { color:var(--muted); font-size:12px; }
   .wcpill { font-family:ui-monospace,monospace; font-weight:700; }
   .r-M{color:#d97706}.r-R{color:#ca8a04}.r-U{color:#64748b}.r-C{color:#94a3b8}
+  .vpill { font-size:11px; font-weight:700; padding:2px 9px; border-radius:999px; white-space:nowrap;
+    text-transform:uppercase; letter-spacing:.03em; }
+  .v-tune   { background:color-mix(in srgb,var(--bad) 18%,transparent);   color:var(--bad); }
+  .v-craft  { background:color-mix(in srgb,var(--warn) 20%,transparent);  color:var(--warn); }
+  .v-review { background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--accent); }
+  .v-ok     { background:color-mix(in srgb,var(--ok) 16%,transparent);    color:var(--ok); }
+  .auditsummary { display:flex; gap:8px; flex-wrap:wrap; margin:2px 0 12px; }
+  .auditsummary .chip { font-size:12px; color:var(--muted); border:1px solid var(--line);
+    border-radius:999px; padding:3px 10px; }
+  .auditsummary .chip b { color:var(--ink); }
+  #audit td .why { color:var(--muted); font-size:11.5px; }
+  #audit tr.clk { cursor:pointer; } #audit tr.clk:hover td { background:color-mix(in srgb,var(--accent) 7%,transparent); }
+  .auditnote { color:var(--muted); font-size:12px; margin:10px 0 0; }
+  .cell-flag { color:var(--bad); font-weight:600; } .cell-ok { color:var(--muted); }
+  #audit a.goto { color:var(--accent); cursor:pointer; text-decoration:none; }
+  #audit a.goto:hover { text-decoration:underline; }
   input.filter { width:100%; max-width:340px; padding:8px 10px; border:1px solid var(--line);
     border-radius:8px; background:var(--panel); color:var(--ink); margin-bottom:12px; }
   .foot { color:var(--muted); font-size:12px; margin-top:24px; border-top:1px solid var(--line); padding-top:12px; }
@@ -355,6 +377,12 @@ TEMPLATE = r"""<!DOCTYPE html>
   <div class="kpis" id="kpis"></div>
 </header>
 <main>
+  <section id="audit-sec">
+    <h2>Roster triage — which decks need a tune</h2>
+    <div class="auditsummary" id="auditsummary"></div>
+    <div id="audit"></div>
+    <p class="auditnote" id="auditnote"></p>
+  </section>
   <section>
     <h2>Decks &amp; variants</h2>
     <input class="filter" id="filter" placeholder="filter by id, name, or colors…">
@@ -618,6 +646,59 @@ TEMPLATE = r"""<!DOCTYPE html>
     const q = e.target.value.toLowerCase().trim();
     render(D.decks.filter(d => !q ||
       (d.id+' '+d.name+' '+d.colors+' '+d.format+' '+d.archetype).toLowerCase().includes(q)));
+  });
+
+  // Roster triage table — one row per deck from the SAME audit_deck() scorer the
+  // `deck.py audit` CLI uses. Sorted worst-first; click a row to filter the decks
+  // below to that family.
+  const SEV = {TUNE:0, craft:1, review:2, ok:3};
+  const VLAB = {TUNE:'★ tune', craft:'craft', review:'review', ok:'ok'};
+  const VCLS = {TUNE:'v-tune', craft:'v-craft', review:'v-review', ok:'v-ok'};
+  const flagCell = (n, suffix) => n ? `<span class="cell-flag">${n}${suffix}</span>`
+                                    : '<span class="cell-ok">✓</span>';
+  const arows = D.decks.map(d => {
+    const a = d.audit;
+    const cast = (!a.uncast && !a.stray) ? '✓'
+      : [a.uncast ? `${a.uncast}u` : '', a.stray ? `${a.stray}s` : ''].filter(Boolean).join(' ');
+    return { id:d.id, name:d.name, deck:`#${d.id} ${d.name}`, sz:a.sz,
+      short:a.short, illegal:a.illegal, uncast:a.uncast, stray:a.stray, cast,
+      _castsev:a.uncast*100 + a.stray, int:a.int, thm:a.thm,
+      verdict:a.verdict, why:a.why, _sev:SEV[a.verdict] };
+  });
+  arows.sort((x,y) => x._sev - y._sev || x.id.length - y.id.length || (''+x.id).localeCompare(''+y.id));
+  const ACOLS = [
+    {key:'deck',    label:'Deck',    html:r=>`<a class="goto" data-goto="${esc(r.name)}">${esc(r.deck)}</a>`},
+    {key:'sz',      label:'Sz',      num:true, get:r=>r.sz},
+    {key:'short',   label:'Own',     num:true, html:r=>flagCell(r.short, '✗')},
+    {key:'illegal', label:'Legal',   num:true, html:r=>flagCell(r.illegal, '✗')},
+    {key:'_castsev',label:'Cast',    num:true, html:r=>(r.uncast||r.stray)?`<span class="cell-flag">${esc(r.cast)}</span>`:'<span class="cell-ok">✓</span>'},
+    {key:'int',     label:'Int',     num:true, get:r=>r.int},
+    {key:'thm',     label:'Thm',     num:true, get:r=>r.thm},
+    {key:'_sev',    label:'Verdict', num:true, html:r=>`<span class="vpill ${VCLS[r.verdict]}">${VLAB[r.verdict]}</span>`+(r.why?` <span class="why">${esc(r.why)}</span>`:'')},
+  ];
+  const auditWrap = document.getElementById('audit');
+  const auditTbl = buildTable(ACOLS, arows);
+  auditTbl.querySelectorAll('tbody tr').forEach(tr => tr.classList.add('clk'));
+  auditWrap.appendChild(auditTbl);
+  const c = {TUNE:0, craft:0, review:0, ok:0};
+  arows.forEach(r => c[r.verdict]++);
+  document.getElementById('auditsummary').innerHTML =
+    `<span class="chip"><b>${c.TUNE}</b> to tune</span>` +
+    `<span class="chip"><b>${c.craft}</b> to craft</span>` +
+    `<span class="chip"><b>${c.review}</b> to review</span>` +
+    `<span class="chip"><b>${c.ok}</b> ok</span>`;
+  document.getElementById('auditnote').textContent =
+    'Offline triage — same numbers as `deck.py audit`. Own/Legal/Cast ✓ = clean; ' +
+    'Cast Nu = uncastable in the deck’s colors, Ns = off-identity stray. ★ tune = a hard ' +
+    'problem (illegal or uncastable card); craft = just unbuilt; review = a soft flag ' +
+    '(off-color strays or thin interaction). Click a deck to filter the list below.';
+  auditWrap.addEventListener('click', e => {
+    const a = e.target.closest('[data-goto]');
+    if (!a) return;
+    const f = document.getElementById('filter');
+    f.value = a.dataset.goto;
+    f.dispatchEvent(new Event('input'));
+    document.getElementById('decks').scrollIntoView({behavior:'smooth', block:'start'});
   });
   document.getElementById('foot').textContent =
     'Offline snapshot from committed data. Regenerate with `python3 scripts/build_dashboard.py`. ' +

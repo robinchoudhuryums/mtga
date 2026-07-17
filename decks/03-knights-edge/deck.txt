@@ -24,7 +24,7 @@
 1 Leader's Talent (TMT) 13
 1 Leonardo, Cutting Edge (TMT) 15
 1 Resolute Reinforcements (FDN) 145
-1 Super-Soldier Serum (MSH) 38
+1 Elspeth, Storm Slayer (TDM) 11
 1 White Mage's Staff (FIN) 42
 1 Ajani, Outland Chaperone (ECL) 4
 1 Leonardo, Big Brother (TMT) 14

@@ -2,8 +2,8 @@
 #: format: Standard
 #: colors: WUR
 #: archetype: Jeskai (W/U/R) artifacts + Robot tribal — the 73-pile cut to a legal 60; Iron Man / Ultron payoffs, Dawnsire for removal.
-#: based-on: 25
-#: notes: Tuned 60 from base 25. Removed the off-color Bullseye (B) and the weakest filler/equipment; kept Dawnsire (its 10+ mode is repeatable removal) and swapped the 8-mana Walls of Ba Sing Se for The Vision (cheaper Robot-Hero draw/indestructible engine; Walls' indestructible was largely redundant with Krang).
+#: based-on: 26
+#: notes: Tuned 60 from base 26. Removed the off-color Bullseye (B) and the weakest filler/equipment; kept Dawnsire (its 10+ mode is repeatable removal) and swapped the 8-mana Walls of Ba Sing Se for The Vision (cheaper Robot-Hero draw/indestructible engine; Walls' indestructible was largely redundant with Krang).
 
 # Creatures
 1 Shuri, Wakandan Inventor (MSH) 75
@@ -53,7 +53,7 @@
 10 Island (MSH) 290
 1 Plains (MSH) 288
 
-# Flex — parked from the 73-pile / craft options. See: deck.py flex 25a
+# Flex — parked from the 73-pile / craft options. See: deck.py flex 26a
 #~ -Cosmic Cube | +The Walls of Ba Sing Se | OWNED: re-add the 8-mana anchor (all your permanents indestructible) if you want top-end board protection; parked because it partly overlaps Krang
 #~ -War Machine, Legacy of Iron | +Chainsaw | CRAFT (R): the one on-theme removal upgrade (ETB 3 dmg, grows with deaths) if interaction keeps lagging
-#~ note: Cuts from base 25 → Bullseye (off-color B), Broadcast Takeover, Radiant Lotus, Waterbending Scroll, Bender's Waterskin, Mind Transfer Protocol, I Am Iron Man, Relm's Sketching, Nanoform Sentinel, Diamond Pick-Axe, Bespoke Bō, Goldvein Pick, Mirrormind Crown, The Walls of Ba Sing Se; +The Vision.
+#~ note: Cuts from base 26 → Bullseye (off-color B), Broadcast Takeover, Radiant Lotus, Waterbending Scroll, Bender's Waterskin, Mind Transfer Protocol, I Am Iron Man, Relm's Sketching, Nanoform Sentinel, Diamond Pick-Axe, Bespoke Bō, Goldvein Pick, Mirrormind Crown, The Walls of Ba Sing Se; +The Vision.
