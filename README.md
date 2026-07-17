@@ -217,7 +217,20 @@ python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~
 python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both cards; --apply writes (.bak)
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
 pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export against the stored deck
+python3 scripts/deck.py text 1a              # full oracle text of every card (read before grading)
+python3 scripts/deck.py suggest 1a --unowned --full  # picks WITH full text + keywords + flags
 ```
+
+`text` dumps every nonland card's **full oracle text** with a `⌘ keywords:` line
+(Scryfall's per-card keyword list) and a `⚠` on the classes a role/tag label can
+miss — board-wide / modal / leaves-play / deck-dependent (converge·devotion·
+affinity·X) / ◊·△ alt-cost. It's the "read before grading" step: never judge a
+cut/keep/swap from a role label or a truncated field. `deck.py cuts` and `deck.py
+suggest --full` print the same text+keywords+flags for cut candidates and for
+add/craft picks respectively, so both sides of a swap are graded from text. The
+keyword line means a named mechanic (Warp, Increment, …) is surfaced explicitly
+rather than skimmed as an ordinary word. `query.py --full` / `pool.py --full` do
+the same for a themed deep-read of your owned library or the whole pool.
 
 `verify` reconciles a decklist you've edited in Arena against the repo: pipe or pass
 its **Arena export** (`<qty> <Name> (SET) <#>`) and it reports **identical** or a

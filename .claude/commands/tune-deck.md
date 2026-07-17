@@ -37,6 +37,11 @@ Read the actual card text — never judge by mana value or a single subtype:
    ways every time: `--owned --limit 0` to scour the whole collection for
    0-wildcard upgrades already in the roster, AND `--unowned` for craft targets
    (these feed Section 6 — always evaluate them, even for a fully-owned deck).
+   **Add `--full`** so the picks come with full oracle text + keyword line + ⚠
+   flags — grade every ADD from that text, not the tag-match line (same phased-
+   ingestion discipline as `text`/`cuts`; the funnel is "shortlist cheap, read the
+   finalists"). For a themed deep-read of the whole library or pool, `query.py
+   --synergy X --full` / `pool.py --synergy X --full` dump full text + keywords too.
 6. For every card you'd cut OR keep, its full text is already in the Stage 1.0
    dump — a card's real value is in its text (tap engines, alt costs, token
    generation), which the tribes/curve/role tools miss.

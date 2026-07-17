@@ -868,6 +868,12 @@ def cmd_text(args):
             text = (cd["text"] if cd else "") or ""
             cost, mv = (mana.get(nl) or (None, None))
             print(f"\n• {qty}× {disp}   [{tline}]" + (f"   ·  MV {mv}" if mv is not None else ""))
+            card_kw = kw.get(nl) or []
+            if card_kw:
+                # Surface Scryfall's per-card keywords so a named mechanic (Warp,
+                # Increment, …) is never skimmed over as "just a word" — its meaning
+                # is in the oracle text below, but the label makes sure it's read.
+                print(f"    ⌘ keywords: {', '.join(k.title() for k in card_kw)}")
             flags = read_flags(text, cost, kw.get(nl))
             if flags:
                 print(f"    ⚠ {' · '.join(flags)}")
@@ -1282,6 +1288,33 @@ def cmd_suggest(args):
     if res["hi_reuse"]:
         print("High cross-deck reuse: "
               + ", ".join(f"{n} ({k})" for n, k in sorted(res["hi_reuse"], key=lambda x: -x[1])[:6]))
+
+    # --full: phased ingestion for ADDS — print the full oracle text + keywords +
+    # ⚠ flags of the picks, so a craft/owned add is graded from text (like `cuts`
+    # does for the deck's own cards), never from the tag-match line above.
+    if getattr(args, "full", False) and res["picks"]:
+        import textwrap
+        carddata, mana, kw = load_card_data(), load_mana(), load_keywords()
+        print(f"\n── Full text of the {len(res['picks'])} pick(s) — grade adds from THIS ──")
+        for p in res["picks"]:
+            nl = p["name"].lower()
+            cd = carddata.get(nl)
+            tline = (cd["type"] if cd else "") or "?"
+            text = (cd["text"] if cd else "") or ""
+            cost, mv = (mana.get(nl) or (None, None))
+            have = f"×{p['owned']}" if p["owned"] else "craft"
+            print(f"\n• {p['name']}   [{tline}]"
+                  + (f"  ·  MV {mv}" if mv is not None else "")
+                  + f"  ·  {p['rarity'] or '?'} · {have} · fits {p['decks']} other deck(s)")
+            card_kw = kw.get(nl) or []
+            if card_kw:
+                print(f"    ⌘ keywords: {', '.join(k.title() for k in card_kw)}")
+            flags = read_flags(text, cost, card_kw)
+            if flags:
+                print(f"    ⚠ {' · '.join(flags)}")
+            for para in (text or "(no oracle text on file)").split("\n"):
+                for line in (textwrap.wrap(para, width=90) or [""]):
+                    print(f"    {line}")
     return 0
 
 
@@ -2013,6 +2046,9 @@ def main():
                         "#: format:). Needs a legality-aware pool (build_pool.py).")
     p.add_argument("--any-format", action="store_true",
                    help="don't filter suggestions by format legality")
+    p.add_argument("--full", action="store_true",
+                   help="also print full oracle text + keywords/flags of the picks "
+                        "(grade adds from text, not the tag-match line)")
     g = p.add_mutually_exclusive_group()
     g.add_argument("--unowned", action="store_true", help="only craftable suggestions")
     g.add_argument("--owned", action="store_true",

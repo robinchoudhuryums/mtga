@@ -23,9 +23,44 @@ piping back into other tools).
 
 import argparse
 import csv
+import os
 import sys
+import textwrap
 
-from lib import HEADER, DEFAULT_CSV, load_rows, eprint
+from lib import HEADER, DEFAULT_CSV, REPO_ROOT, load_rows, eprint
+
+
+def keywords_map():
+    """name_lower -> [keywords] from card-mana.csv (Scryfall's per-card list), so a
+    --full read can surface named mechanics (Warp, Increment, …) explicitly instead
+    of letting them read as ordinary words. Empty if card-mana.csv isn't built."""
+    path = os.path.join(REPO_ROOT, "card-mana.csv")
+    out = {}
+    if os.path.exists(path):
+        with open(path, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                n = (r.get("Card Name") or "").strip().lower()
+                kw = [k for k in (r.get("Keywords") or "").split(";") if k.strip()]
+                if n and kw:
+                    out[n] = kw
+    return out
+
+
+def print_full(rows, kwmap):
+    """Full oracle text + keyword line per card — the phased-ingestion read for
+    scanning owned cards as possible deck additions (grade from text, not a label)."""
+    for r in rows:
+        name = (r.get("Card Name") or "").strip()
+        colors = (r.get("Color(s)") or "").strip()
+        print(f"\n• {name}   [{(r.get('Type') or '').strip() or '?'}]"
+              + (f"  ·  {colors}" if colors else ""))
+        kw = kwmap.get(name.lower())
+        if kw:
+            print(f"    ⌘ keywords: {', '.join(k.title() for k in kw)}")
+        text = (r.get("Card Text") or "").strip()
+        for para in (text or "(no oracle text on file)").split("\n"):
+            for line in (textwrap.wrap(para, width=90) or [""]):
+                print(f"    {line}")
 
 
 def matches(row, args):
@@ -85,6 +120,8 @@ def main():
                     help="only cards with Quantity Owned >= N (blank counts as 0)")
     ap.add_argument("--csv", action="store_true", help="emit CSV instead of a table")
     ap.add_argument("--count", action="store_true", help="print only the number of matches")
+    ap.add_argument("--full", action="store_true",
+                    help="print each hit's full oracle text + keywords (deep read for adds)")
     args = ap.parse_args()
 
     try:
@@ -101,6 +138,11 @@ def main():
 
     if not hits:
         eprint("No cards matched.")
+        return 0
+
+    if args.full:
+        print_full(hits, keywords_map())
+        print(f"\n{len(hits)} card(s) matched.")
         return 0
 
     if args.csv:
