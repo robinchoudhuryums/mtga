@@ -35,6 +35,8 @@ import urllib.parse
 import urllib.request
 
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
+import scryfall
+from scryfall import NotFound, ScryfallUnavailable
 
 COLLECTION_URL = "https://api.scryfall.com/cards/collection"
 USER_AGENT = "mtga-card-library/1.0"
@@ -81,57 +83,16 @@ def _image_url(card):
     return uris.get("normal") or uris.get("large") or uris.get("small") or ""
 
 
-def _request_named(params, retries=6):
-    """GET the single-card /cards/named endpoint as JSON, with retry/backoff."""
-    url = "https://api.scryfall.com/cards/named?" + urllib.parse.urlencode(params)
-    req = urllib.request.Request(
-        url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"}
-    )
-    for attempt in range(retries):
-        try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                return json.load(resp)
-        except urllib.error.HTTPError as e:
-            if e.code == 429 and attempt < retries - 1:
-                wait = float(e.headers.get("Retry-After", 0) or 0) or 1.0 * (2 ** attempt)
-                time.sleep(wait)
-                continue
-            raise
-        except urllib.error.URLError:
-            if attempt < retries - 1:
-                time.sleep(1.0 * (2 ** attempt))
-                continue
-            raise
+def _request_named(params):
+    """GET /cards/named as JSON via the shared resilient client. Raises NotFound
+    (404) or ScryfallUnavailable (transient) — see scryfall.py."""
+    return scryfall.named(params)
 
 
-def _post_collection(names, retries=6):
-    """POST a batch of name identifiers to Scryfall, returning the card list."""
-    body = json.dumps({"identifiers": [{"name": n} for n in names]}).encode("utf-8")
-    req = urllib.request.Request(
-        COLLECTION_URL,
-        data=body,
-        headers={
-            "User-Agent": USER_AGENT,
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-        },
-    )
-    for attempt in range(retries):
-        try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                return json.load(resp)
-        except urllib.error.HTTPError as e:
-            if e.code == 429 and attempt < retries - 1:
-                wait = float(e.headers.get("Retry-After", 0) or 0) or 1.0 * (2 ** attempt)
-                eprint(f"       rate limited; waiting {wait:.0f}s...")
-                time.sleep(wait)
-                continue
-            raise
-        except urllib.error.URLError:
-            if attempt < retries - 1:
-                time.sleep(1.0 * (2 ** attempt))
-                continue
-            raise
+def _post_collection(names):
+    """Batch /cards/collection lookup via the shared resilient client. Raises
+    ScryfallUnavailable on a transient outage (timeout / 5xx / bad body)."""
+    return scryfall.post_collection(names)
 
 
 def resolve_images(rows, cache):
@@ -146,13 +107,15 @@ def resolve_images(rows, cache):
             names.append(n)
 
     resolved = 0
+    degraded = False  # True if a Scryfall outage cut the run short (art may be missing)
     for i in range(0, len(names), 75):
         chunk = names[i:i + 75]
         try:
             data = _post_collection(chunk)
-        except urllib.error.URLError as e:
+        except ScryfallUnavailable as e:
             eprint(f"ERROR: could not reach Scryfall: {e}")
             save_cache(cache)
+            degraded = True
             break
         # Index returned cards by full and front-face name for matching.
         by_name = {}
@@ -182,12 +145,14 @@ def resolve_images(rows, cache):
     for n in misses:
         front = n.split(" // ")[0]
         try:
-            params = {"exact": front}
-            data = _request_named(params)
-        except urllib.error.HTTPError:
+            data = _request_named({"exact": front})
+        except NotFound:
+            # Genuinely no such card on Scryfall — a real miss, leave it blank and
+            # move on. (Distinct from an outage, which must NOT be swallowed.)
             continue
-        except urllib.error.URLError as e:
+        except ScryfallUnavailable as e:
             eprint(f"ERROR: could not reach Scryfall: {e}")
+            degraded = True
             break
         url = _image_url(data) if data else ""
         if url:
@@ -196,7 +161,7 @@ def resolve_images(rows, cache):
         time.sleep(0.15)
     if misses:
         save_cache(cache)
-    return resolved
+    return resolved, degraded
 
 
 def color_letters(s):
@@ -482,8 +447,9 @@ def main():
     _, rows = load_rows(args.csv)
     cache = load_cache()
 
+    degraded = False
     if not args.no_fetch:
-        added = resolve_images(rows, cache)
+        added, degraded = resolve_images(rows, cache)
         eprint(f"       {added} new image(s) resolved this run")
 
     # Keep the committed manifest in step with whatever we resolved, so offline
@@ -501,7 +467,17 @@ def main():
             .replace("__DATA__", data_json))
     with open(args.out, "w", encoding="utf-8") as fh:
         fh.write(html)
+    missing = len(cards) - with_img
     print(f"Wrote {args.out}: {len(cards)} cards, {with_img} with images.")
+    # A Scryfall outage mid-run leaves cards without art. Say so plainly and exit
+    # non-zero rather than presenting an incomplete gallery as a clean success —
+    # the missing art is transient, so a later rebuild (or --no-fetch from the
+    # manifest) will fill it in.
+    if degraded:
+        eprint(f"WARN:  Scryfall was unreachable during this build — {missing} "
+               f"card(s) have no art yet. This is transient: rerun when Scryfall "
+               f"is reachable, or use --no-fetch to rebuild from the cache/manifest.")
+        return 1
     return 0
 
 

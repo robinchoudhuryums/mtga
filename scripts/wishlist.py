@@ -42,6 +42,7 @@ import os
 import sys
 
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
+from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -116,34 +117,34 @@ def write_wishlist(rows):
 # Enrichment (pool first, Scryfall fallback)
 # --------------------------------------------------------------------------- #
 def _from_scryfall(name, set_code):
-    """Best-effort single lookup for a card the pool lacks (e.g. a new DFC). Returns
-    an enrichment dict or None. Imports network/enrich bits lazily so the common
-    (pool-hit) path stays dependency- and network-free."""
-    import json
+    """Best-effort single lookup for a card the pool lacks (e.g. a new DFC).
+
+    Returns an enrichment dict on success, or None if Scryfall genuinely has no
+    such card. Raises ScryfallUnavailable when Scryfall can't be reached (429 /
+    5xx / timeout / bad body) — the caller MUST NOT treat that transient outage as
+    a real 'not found' and silently store a blank row (audit F14). Imports the
+    enrich/tag bits lazily so the common (pool-hit) path stays dependency-free."""
     import time
-    import urllib.error
-    import urllib.parse
-    import urllib.request
+    import scryfall
     from enrich import color_shorthand, oracle_fields
     from tag_synergies import tags_for
 
-    def _get(params):
-        url = "https://api.scryfall.com/cards/named?" + urllib.parse.urlencode(params)
-        req = urllib.request.Request(
-            url, headers={"User-Agent": "mtga-card-library/1.0", "Accept": "application/json"})
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            return json.load(resp)
-
-    card = None
+    card, transient = None, False
     for params in ({"exact": name, "set": set_code.lower()} if set_code else {"exact": name},
                    {"fuzzy": name}):
         try:
-            card = _get(params)
+            card = scryfall.named(params)
             break
-        except (urllib.error.URLError, ValueError):
+        except scryfall.NotFound:
+            continue  # this query didn't match — try the next (fuzzy) one
+        except ScryfallUnavailable:
+            transient = True  # outage; still try the remaining query in case it hits
             continue
-    time.sleep(0.1)
-    if not card:
+        finally:
+            time.sleep(0.1)
+    if card is None:
+        if transient:
+            raise ScryfallUnavailable(f"could not reach Scryfall for {name!r}")
         return None
     type_line, text = oracle_fields(card)
     tags = tags_for({"Type": type_line, "Card Text": text}, card.get("keywords"))
@@ -157,18 +158,33 @@ def _from_scryfall(name, set_code):
 
 
 def enrich(name, set_code, collector, pool):
-    """Build a wishlist row for one card. Uses the canonical (full) name from the
-    pool/Scryfall so double-faced cards join cleanly with the rest of the tooling."""
+    """Build a wishlist row for one card, using the canonical (full) name from the
+    pool/Scryfall so double-faced cards join cleanly with the rest of the tooling.
+
+    Returns (row, status) where status is:
+      'pool'     – enriched from card-pool.csv,
+      'scryfall' – enriched via a live Scryfall lookup,
+      'miss'     – Scryfall has no such card; row is name-only (check spelling),
+      'error'    – Scryfall was UNREACHABLE; row is name-only, but the blanks are
+                   transient (rerun to fill them), NOT a confirmed miss (F14)."""
     p = pool.get(name.lower())
     if p:
         data = {"Card Name": p.get("Card Name", name), "Type": p.get("Type", ""),
                 "Card Text": p.get("Card Text", ""), "Color(s)": p.get("Color(s)", ""),
                 "Synergies": p.get("Synergies", ""), "Rarity": p.get("Rarity", "")}
+        status = "pool"
     else:
-        s = _from_scryfall(name, set_code)
+        try:
+            s = _from_scryfall(name, set_code)
+        except ScryfallUnavailable as e:
+            eprint(f"WARN:  Scryfall unreachable while enriching {name!r} ({e}); "
+                   "added with name only — rerun the add when Scryfall is reachable.")
+            s, status = None, "error"
+        else:
+            status = "scryfall" if s is not None else "miss"
+            if s is None:
+                eprint(f"WARN:  no Scryfall match for {name!r} — added with name only.")
         if s is None:
-            eprint(f"WARN:  could not resolve {name!r} in pool or Scryfall — "
-                   "added with name only.")
             data = {"Card Name": name, "Type": "", "Card Text": "", "Color(s)": "",
                     "Synergies": "", "Rarity": ""}
         else:
@@ -177,7 +193,7 @@ def enrich(name, set_code, collector, pool):
     data["Collector #"] = collector
     data.setdefault("Target", "")
     data.setdefault("Note", "")
-    return data
+    return data, status
 
 
 def cmd_add(path):
@@ -204,17 +220,20 @@ def cmd_add(path):
              (r.get("Set Code") or "").strip().lower(),
              (r.get("Collector #") or "").strip().lower()) for r in existing}
 
-    added, dupes, owned_hits, warns = 0, 0, [], 0
+    added, dupes, owned_hits = 0, 0, []
+    unenriched_miss, unenriched_err = [], []
     for name, setc, cn in entries:
-        row = enrich(name, setc, cn, pool)
+        row, status = enrich(name, setc, cn, pool)
         key = (row["Card Name"].strip().lower(), setc.lower(), cn.lower())
         if key in seen:
             dupes += 1
             continue
         if owned.get(name.lower(), 0) > 0:
             owned_hits.append(row["Card Name"])
-        if not row.get("Rarity") and not row.get("Type"):
-            warns += 1
+        if status == "miss":
+            unenriched_miss.append(row["Card Name"])
+        elif status == "error":
+            unenriched_err.append(row["Card Name"])
         existing.append(row)
         seen.add(key)
         added += 1
@@ -226,6 +245,18 @@ def cmd_add(path):
         print(f"NOTE: {len(owned_hits)} added card(s) you ALREADY OWN "
               f"(consider removing): {', '.join(owned_hits[:8])}"
               + ("…" if len(owned_hits) > 8 else ""))
+    # A transient Scryfall outage must be called out distinctly from a genuine
+    # not-found: these rows are name-only ONLY because Scryfall was down, and a
+    # re-add (or build_pool.py) will fill them in — they aren't confirmed misses.
+    if unenriched_err:
+        print(f"WARN: {len(unenriched_err)} card(s) added NAME-ONLY because Scryfall "
+              f"was unreachable — transient; re-add them (or run build_pool.py) to "
+              f"enrich: {', '.join(unenriched_err[:8])}"
+              + ("…" if len(unenriched_err) > 8 else ""))
+    if unenriched_miss:
+        print(f"NOTE: {len(unenriched_miss)} card(s) had no Scryfall match and were "
+              f"added name-only (check spelling): {', '.join(unenriched_miss[:8])}"
+              + ("…" if len(unenriched_miss) > 8 else ""))
     return 0
 
 

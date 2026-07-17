@@ -58,6 +58,7 @@ import urllib.error
 import urllib.request
 
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
+from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
 
@@ -257,15 +258,11 @@ def fetch_missing_rarities(names, rarities):
     todo = [n for n in names if n.lower() not in rarities]
     for i in range(0, len(todo), 75):
         chunk = todo[i:i + 75]
-        body = json.dumps({"identifiers": [{"name": n} for n in chunk]}).encode()
-        req = urllib.request.Request(
-            "https://api.scryfall.com/cards/collection", data=body,
-            headers={"User-Agent": "mtga-card-library/1.0",
-                     "Accept": "application/json", "Content-Type": "application/json"})
         try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                data = json.load(resp)
-        except urllib.error.URLError as e:
+            data = post_collection(chunk)
+        except ScryfallUnavailable as e:
+            # A slow/flaky Scryfall (timeout, 5xx, bad body) must degrade to '?'
+            # here, not crash — this helper exists precisely for the offline case.
             eprint(f"WARN:  could not reach Scryfall for rarity lookup ({e}); "
                    f"{len(todo) - i} card(s) will show wildcard '?'.")
             break
@@ -564,15 +561,9 @@ def fetch_missing_mana(names, mana):
     todo = [n for n in names if n.lower() not in mana]
     for i in range(0, len(todo), 75):
         chunk = todo[i:i + 75]
-        body = json.dumps({"identifiers": [{"name": n} for n in chunk]}).encode()
-        req = urllib.request.Request(
-            "https://api.scryfall.com/cards/collection", data=body,
-            headers={"User-Agent": "mtga-card-library/1.0",
-                     "Accept": "application/json", "Content-Type": "application/json"})
         try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                data = json.load(resp)
-        except urllib.error.URLError as e:
+            data = post_collection(chunk)
+        except ScryfallUnavailable as e:
             eprint(f"WARN:  could not reach Scryfall for live mana lookup "
                    f"({e}); {len(todo) - i} card(s) not in card-mana.csv will "
                    f"show as unknown. This is a network issue, not stale data.")
