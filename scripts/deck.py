@@ -490,9 +490,15 @@ def cmd_check(args):
 
 
 def _multiset(cards):
+    """{name_lower: (display_name, total_qty)} — keyed case-insensitively (like
+    every other command) so the SAME card spelled with different casing across two
+    files isn't reported as a spurious −N / +N change (audit F4). The first-seen
+    spelling is kept for display."""
     m = {}
     for q, n, s, c in cards:
-        m[n] = m.get(n, 0) + q
+        nl = n.lower()
+        disp, cur = m.get(nl, (n, 0))
+        m[nl] = (disp, cur + q)
     return m
 
 
@@ -507,14 +513,15 @@ def cmd_diff(args):
     print("-" * 40)
     names = sorted(set(ma) | set(mb))
     added = removed = 0
-    for n in names:
-        da, db = ma.get(n, 0), mb.get(n, 0)
-        if db > da:
-            print(f"  +{db - da}  {n}")
-            added += db - da
-        elif da > db:
-            print(f"  -{da - db}  {n}")
-            removed += da - db
+    for nl in names:
+        da, db = ma.get(nl, (None, 0)), mb.get(nl, (None, 0))
+        disp = db[0] or da[0]  # prefer the target deck's spelling, else the base's
+        if db[1] > da[1]:
+            print(f"  +{db[1] - da[1]}  {disp}")
+            added += db[1] - da[1]
+        elif da[1] > db[1]:
+            print(f"  -{da[1] - db[1]}  {disp}")
+            removed += da[1] - db[1]
     if not added and not removed:
         print("  (identical)")
     else:
@@ -1077,7 +1084,11 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
             entry = dm.get(n.lower())
             if entry and entry[0]:
                 strict, hybrid = parse_pips(entry[0])
-                deck_colors |= set(strict) | {x for h in hybrid for x in h}
+                # Only a TRUE multicolor hybrid ({W/U}) constrains castable colors;
+                # a monocolor hybrid ({2/W}) or Phyrexian ({W/P}) is payable WITHOUT
+                # its color, so it must not widen the deck's colors and surface
+                # uncastable picks (audit F3; mirrors _castability's len(h) >= 2).
+                deck_colors |= set(strict) | {x for h in hybrid if len(h) >= 2 for x in h}
 
     # Score every pool card not already in the deck.
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
@@ -1527,6 +1538,13 @@ def _safe_write_lines(path, lines, expected_total):
 def _do_swap(d, cut, add, apply, flex_entry=None):
     """Shared engine for `swap` and `apply-flex`: preview deltas, and on --apply
     perform the edit with a .bak + INV-04 re-check."""
+    # A card can't be swapped for itself: it's a no-op, and on --apply the raw-line
+    # edit would decrement (or delete) the shared line instead (audit F2). The
+    # INV-04 copy-count guard wouldn't catch it, since a 1-for-1 swap preserves the
+    # total — so reject it up front rather than silently corrupt the count.
+    if cut.strip().lower() == add.strip().lower():
+        eprint(f"Cut and add are the same card ({cut!r}) — nothing to swap.")
+        return 1
     carddata = load_card_data()
     mana = load_mana()
     _, cards = parse_deck_file(d["path"])

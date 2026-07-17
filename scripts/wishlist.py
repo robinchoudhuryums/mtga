@@ -88,7 +88,11 @@ def owned_index():
             continue
         q = (r.get("Quantity Owned") or "").strip()
         c = int(q) if q.isdigit() else 0
-        for k in (n, n.split(" // ")[0]):
+        # Index under the full name AND the front-face name so a lookup by either
+        # resolves. Use a SET so a single-faced card (where the two are identical)
+        # is counted once, not twice — matching pool.py/deck.py's per-name sum
+        # (audit F13). A DFC has two distinct keys, each mapping to its count.
+        for k in {n, n.split(" // ")[0]}:
             counts[k] = counts.get(k, 0) + c
     return counts
 
