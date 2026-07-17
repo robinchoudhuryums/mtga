@@ -38,6 +38,8 @@ import urllib.parse
 import urllib.request
 
 from lib import DEFAULT_CSV, load_rows, write_rows, eprint
+import scryfall
+from scryfall import NotFound, ScryfallUnavailable
 
 COLLECTION_URL = "https://api.scryfall.com/cards/collection"
 NAMED_URL = "https://api.scryfall.com/cards/named"
@@ -53,64 +55,13 @@ SET_ALIASES = {
 }
 
 
-def _retrying(do_request, retries=6):
-    """Run do_request(), retrying 429 and network errors with backoff.
-
-    Non-429 HTTPErrors (e.g. 404) are raised for the caller to handle.
-    """
-    for attempt in range(retries):
-        try:
-            return do_request()
-        except urllib.error.HTTPError as e:
-            if e.code == 429 and attempt < retries - 1:
-                wait = float(e.headers.get("Retry-After", 0) or 0) or 1.0 * (2 ** attempt)
-                eprint(f"       rate limited by Scryfall; waiting {wait:.0f}s...")
-                time.sleep(wait)
-                continue
-            raise
-        except urllib.error.URLError:
-            if attempt < retries - 1:
-                time.sleep(1.0 * (2 ** attempt))
-                continue
-            raise
-
-
-def post_collection(names):
-    """Batch-look-up card names via /cards/collection. Returns the parsed JSON."""
-    body = json.dumps({"identifiers": [{"name": n} for n in names]}).encode("utf-8")
-
-    def do():
-        req = urllib.request.Request(
-            COLLECTION_URL,
-            data=body,
-            headers={
-                "User-Agent": USER_AGENT,
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-            },
-        )
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.load(resp)
-
-    return _retrying(do)
-
-
 def get_named(front_name):
-    """Single-card lookup by exact (front-face) name; None if not found."""
-    def do():
-        url = f"{NAMED_URL}?{urllib.parse.urlencode({'exact': front_name})}"
-        req = urllib.request.Request(
-            url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"}
-        )
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.load(resp)
-
+    """Single-card lookup by exact (front-face) name; None if not found. A
+    transient outage raises ScryfallUnavailable (see scryfall.py)."""
     try:
-        return _retrying(do)
-    except urllib.error.HTTPError as e:
-        if e.code == 404:
-            return None
-        raise
+        return scryfall.named({"exact": front_name})
+    except NotFound:
+        return None
 
 
 def get_named_in_set(front_name, set_code):
@@ -119,20 +70,10 @@ def get_named_in_set(front_name, set_code):
     one representative printing per name (usually the newest), so Collector # —
     which is printing-specific — often can't be filled from it. This targeted
     lookup fetches the row's own set so the collector number actually resolves."""
-    def do():
-        url = f"{NAMED_URL}?{urllib.parse.urlencode({'exact': front_name, 'set': set_code})}"
-        req = urllib.request.Request(
-            url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"}
-        )
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.load(resp)
-
     try:
-        return _retrying(do)
-    except urllib.error.HTTPError as e:
-        if e.code == 404:
-            return None
-        raise
+        return scryfall.named({"exact": front_name, "set": set_code})
+    except NotFound:
+        return None
 
 
 def color_shorthand(card):
@@ -168,7 +109,7 @@ def resolve_cards(names):
     by_name = {}
     for i in range(0, len(names), BATCH_SIZE):
         chunk = names[i:i + BATCH_SIZE]
-        data = post_collection(chunk)
+        data = scryfall.post_collection(chunk)
         for card in data.get("data", []):
             index_card(by_name, card)
         eprint(f"       looked up {min(i + BATCH_SIZE, len(names))}/{len(names)} names")
@@ -211,18 +152,17 @@ def enrich(path, dry_run=False, force=False, only=None):
     names = sorted({(r.get("Card Name") or "").strip() for r in todo})
     try:
         by_name = resolve_cards(names)
-    except urllib.error.HTTPError as e:
-        eprint(f"ERROR: Scryfall returned HTTP {e.code}: {e.reason}")
-        return 1
-    except urllib.error.URLError as e:
+    except ScryfallUnavailable as e:
         eprint(f"ERROR: could not reach Scryfall: {e}\n"
-               f"       This environment may block api.scryfall.com; "
-               f"run enrich.py where it is reachable.")
+               f"       A slow/blocked Scryfall (timeout, 5xx, or a bad response) "
+               f"stopped enrichment; nothing was written. This environment may "
+               f"block api.scryfall.com — run enrich.py where it is reachable.")
         return 1
 
     changed = matched = 0
     unresolved = []
     coll_cache = {}  # (name_lower, scry_set) -> collector # for set-scoped lookups
+    set_lookup_down = False  # trips on a mid-run outage so we stop retrying per-row
     for row in todo:
         name = (row.get("Card Name") or "").strip()
         card = by_name.get(name.lower())
@@ -248,11 +188,22 @@ def enrich(path, dry_run=False, force=False, only=None):
         elif scry_set and (force or not (row.get("Collector #") or "").strip()):
             ck = (name.lower(), scry_set)
             if ck not in coll_cache:
-                printing = get_named_in_set(name, scry_set)
-                coll_cache[ck] = (str(printing.get("collector_number", ""))
-                                  if printing and printing.get("set", "").lower() == scry_set
-                                  else "")
-                time.sleep(0.1)
+                if set_lookup_down:
+                    coll_cache[ck] = ""  # outage already seen; don't hammer Scryfall
+                else:
+                    try:
+                        printing = get_named_in_set(name, scry_set)
+                    except ScryfallUnavailable as e:
+                        # The batch resolve succeeded but Scryfall went flaky during
+                        # the per-row collector-# lookups — degrade (leave the rest
+                        # as-is) instead of crashing, and stop retrying.
+                        eprint(f"WARN:  Scryfall outage during collector-# lookups "
+                               f"({e}); leaving remaining collector numbers as-is.")
+                        set_lookup_down, printing = True, None
+                    coll_cache[ck] = (str(printing.get("collector_number", ""))
+                                      if printing and printing.get("set", "").lower() == scry_set
+                                      else "")
+                    time.sleep(0.1)
             if coll_cache[ck]:
                 values["Collector #"] = coll_cache[ck]
 

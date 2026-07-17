@@ -87,7 +87,12 @@ def push(worksheet_name, dry_run):
         return 0
     ws = _worksheet(worksheet_name)
     ws.clear()
-    ws.update(range_name="A1", values=grid)
+    # RAW so a cell whose text begins with '=', '+', '-', or '@' is stored as
+    # literal text, never evaluated as a spreadsheet formula — a CSV-injection
+    # guard for the companion Sheet that also keeps values (e.g. leading-zero
+    # collector numbers) verbatim, without mutating the pristine local CSV
+    # (audit F10). USER_ENTERED would let such a value run as a live formula.
+    ws.update(range_name="A1", values=grid, value_input_option="RAW")
     print(f"Pushed {len(rows)} row(s) to Google Sheet worksheet {worksheet_name!r}.")
     return 0
 
