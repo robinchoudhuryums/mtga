@@ -63,6 +63,19 @@ docs. This file is the source of truth for the workflow commands in
   is already in the deck it bumps that line rather than adding a second line for
   the same card. `deck.py apply-flex <id> <n>` promotes a `#~` flex line into the
   60. Both default to a dry run.
+- **Triage the roster before full-tuning it.** `deck.py audit` is the cheap,
+  offline funnel that answers "which decks actually need a tune" so you don't run
+  the expensive `/tune-deck` text-read on all 30+ decks. One line per deck reusing
+  the same primitives the single-deck commands do — ownership drift (`check`),
+  construction legality (`legal`), color strays (`mana`/`check` castability),
+  interaction count and central-theme count (`stats`) — labelled **★ TUNE** (hard:
+  illegal / uncastable), **craft** (unbuilt), **review** (soft: off-color strays or
+  thin interaction), or **ok**. `--flagged` drops the ok rows. It's a SHORTLIST
+  SIGNAL like `suggest`/`cuts`: a flag says "look here," then grade the flagged deck
+  from `deck.py text` + `/tune-deck` — a review/ok label is not a verdict on the
+  deck. (A stale `#: colors:` header inflates the `Cast` column — e.g. the raw
+  83-card `19` pile headed `WU` shows dozens of "uncastable"; fixing the header to
+  the deck's real castable colors clears it, same as it does for `mana`/`check`.)
 - **Legality lint and cut candidates are separate from ownership.** `deck.py check`
   answers "do I own this deck"; `deck.py legal <id>` answers "is it a *legal* deck"
   — size vs the format minimum, the copy limit (4, or 1 in singleton formats), and

@@ -204,6 +204,7 @@ which deck each card fits.
 ```
 python3 scripts/deck.py list          # every deck + variant, with buildable status
 python3 scripts/deck.py wildcards     # roster-wide crafting plan (wildcards to finish decks)
+python3 scripts/deck.py audit         # roster triage: one line per deck — which decks need a tune
 python3 scripts/deck.py check 1a      # owned vs needed + a castability lint (off-color cards)
 python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
 python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
@@ -220,6 +221,17 @@ pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export agains
 python3 scripts/deck.py text 1a              # full oracle text of every card (read before grading)
 python3 scripts/deck.py suggest 1a --unowned --full  # picks WITH full text + keywords + flags
 ```
+
+`audit` is the **roster triage** for when you don't want to full-tune all your
+decks at once. It prints one offline line per deck — ownership drift (`Own`),
+construction legality (`Legal`), color strays (`Cast`: `Nu` uncastable / `Ns`
+off-identity), interaction count (`Int`), and central-theme count (`Thm`) — then
+labels each deck **★ TUNE** (a hard problem: illegal or uncastable cards),
+**craft** (just unbuilt), **review** (a soft flag: off-color strays or thin
+interaction), or **ok**. It reuses the exact `check` / `legal` / `mana` / `stats`
+primitives, so a flag means the same thing it does in those commands — but across
+the whole roster in one pass and with no Scryfall calls. Use it to pick the few
+decks worth the expensive `/tune-deck` read; `--flagged` hides the `ok` rows.
 
 `text` dumps every nonland card's **full oracle text** with a `⌘ keywords:` line
 (Scryfall's per-card keyword list) and a `⚠` on the classes a role/tag label can
