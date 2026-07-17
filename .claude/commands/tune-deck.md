@@ -12,6 +12,15 @@ swaps (see "Play-style weighting" below) — not the data-gathering.
 ## Stage 1 — Gather the full picture (before recommending anything)
 
 Read the actual card text — never judge by mana value or a single subtype:
+0. **`python3 scripts/deck.py text <id>` FIRST — phased ingestion.** Dump and
+   *read* the full oracle text of every nonland card before running any other
+   analysis. This is non-negotiable: the recurring mis-grade in past sessions came
+   from grading a keep/cut/swap off a role label, a tag match, or a truncated
+   `Card Text[:N]` slice — missing board-wide effects (M.O.D.O.K.), modal /
+   leaves-play triggers (Momo), alt-costs, and deck-dependent scaling. The dump
+   prints a `⚠` on exactly those classes (board-wide / modal / leaves-play /
+   converge·devotion·affinity·X / ◊·△ cost). Ingest the whole deck's text here so
+   nothing downstream is graded from a summary.
 1. `python3 scripts/deck.py check <id>` — owned vs. craft targets.
 2. `python3 scripts/deck.py stats <id>` — types, curve, the ◊ (cheaper) /
    △ (added-cost) flags, and a **Functional roles** breakdown (heuristic count of
@@ -28,9 +37,31 @@ Read the actual card text — never judge by mana value or a single subtype:
    ways every time: `--owned --limit 0` to scour the whole collection for
    0-wildcard upgrades already in the roster, AND `--unowned` for craft targets
    (these feed Section 6 — always evaluate them, even for a fully-owned deck).
-6. For every card you'd cut OR keep, read its Card Text from card-library.csv /
-   card-pool.csv. A card's real value is in its text (tap engines, alt costs,
-   token generation) — the tribes/curve tools miss cross-mechanic synergies.
+6. For every card you'd cut OR keep, its full text is already in the Stage 1.0
+   dump — a card's real value is in its text (tap engines, alt costs, token
+   generation), which the tribes/curve/role tools miss.
+
+**Grade-from-text rule (mandatory).** In the Stage 2 report, **quote the operative
+oracle clause** for every card you cut, keep-as-signature, or swap — never a role
+or tag label. If you can't quote it, you haven't read it: go back to the `text`
+dump. This makes each grade auditable and is the enforced version of "read the
+card."
+
+**Verification pass (the secondary pass — do it before finalizing).** Re-read the
+full text of every card named in a cut/keep/swap against this checklist, since a
+label can hide any of them:
+- **board-wide** — does it affect *all* creatures / permanents / each opponent?
+  (a sweeper, an anthem, a team-buff, a one-sided wrath)
+- **modal / leaves-play** — "choose one/two", or a trigger on dying / leaving /
+  being sacrificed that changes its real value.
+- **alt / added cost** — evoke/warp/flashback/kicker/station/improvise/affinity:
+  the printed MV lies; grade the *effective* cost.
+- **deck-dependent scaling** — converge/devotion/affinity/X/"for each artifact":
+  check it against THIS deck's actual board, not in the abstract.
+- **mis-grouping** — confirm the type line (a "land" or "Defender" may actually be
+  an artifact-creature anchor that feeds your payoffs). If a re-read changes a
+  grade, say so explicitly in the report ("on a full-text re-read, X is a keep
+  because …").
 
 ## Stage 2 — Deliver a STRUCTURED report
 

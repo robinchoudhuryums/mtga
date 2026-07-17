@@ -804,6 +804,80 @@ def context_flags(text, mana_cost):
     return flags
 
 
+def read_flags(text, mana_cost, keywords=None):
+    """Caution tags for a card whose FULL text must be read before grading — the
+    classes that have slipped past a role/tag label before: board-wide effects,
+    modal choices, leaves-play triggers, deck-dependent scaling (context_flags),
+    and alt/added costs (classify_cost). A signal to READ, not a grade."""
+    t = (text or "").lower()
+    flags = []
+    if re.search(r"\ball creatures\b|each creature|creatures you control|"
+                 r"creatures your opponents control|each opponent|each player", t):
+        flags.append("board-wide")
+    if re.search(r"\bchoose one\b|choose two|choose one or more|choose up to", t):
+        flags.append("modal")
+    if re.search(r"leaves the battlefield|\bwhen[^.]*dies\b|\bwhenever[^.]*dies\b", t):
+        flags.append("leaves-play")
+    flags += context_flags(text, mana_cost)
+    cheaper, gated = classify_cost(keywords, text)
+    if cheaper:
+        flags.append("◊ " + ", ".join(cheaper))
+    if gated:
+        flags.append("△ " + ", ".join(gated))
+    return flags
+
+
+def cmd_text(args):
+    """Dump the FULL oracle text of every card in a deck — the phased-ingestion read
+    that grading a keep/cut/swap must be based on, never a role/tag label or a
+    truncated field (the recurring mis-grade in past sessions). Flags cards whose
+    text hides something a label can miss (board-wide / modal / leaves-play /
+    deck-dependent / alt-cost). Basics are omitted."""
+    import textwrap
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    carddata, mana, kw = load_card_data(), load_mana(), load_keywords()
+    _, cards = parse_deck_file(d["path"])
+    agg, order = {}, []
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            continue
+        if nl not in agg:
+            agg[nl] = [0, n]
+            order.append(nl)
+        agg[nl][0] += q
+
+    nonland, land = [], []
+    for nl in order:
+        cd = carddata.get(nl)
+        tline = (cd["type"] if cd else "") or ""
+        (land if "Land" in _primary_type(tline) else nonland).append(nl)
+
+    print(f"Deck {d['id']}: {d['name'] or d['id']} — full card text (read before grading)")
+    for group, label in ((nonland, "NONLAND"), (land, "NONBASIC LANDS")):
+        if not group:
+            continue
+        print(f"\n══ {label} ({len(group)}) ══")
+        for nl in group:
+            qty, disp = agg[nl]
+            cd = carddata.get(nl)
+            tline = (cd["type"] if cd else "") or "?"
+            text = (cd["text"] if cd else "") or ""
+            cost, mv = (mana.get(nl) or (None, None))
+            print(f"\n• {qty}× {disp}   [{tline}]" + (f"   ·  MV {mv}" if mv is not None else ""))
+            flags = read_flags(text, cost, kw.get(nl))
+            if flags:
+                print(f"    ⚠ {' · '.join(flags)}")
+            for para in (text or "(no oracle text on file — enrich/build the pool)").split("\n"):
+                for line in (textwrap.wrap(para, width=90) or [""]):
+                    print(f"    {line}")
+    print("\nGrade every keep / cut / swap from the text above — not a role or tag label.")
+    return 0
+
+
 def cmd_stats(args):
     d = find_deck(args.id)
     if not d:
@@ -1968,6 +2042,8 @@ def main():
     p.add_argument("id")
     p.add_argument("source", nargs="?", default="-",
                    help="path to an export file, or '-' / omitted to read stdin")
+    p = sub.add_parser("text", help="dump every card's FULL oracle text (read before grading cuts/swaps)")
+    p.add_argument("id")
     args = ap.parse_args()
 
     return {
@@ -1976,7 +2052,7 @@ def main():
         "mana": cmd_mana, "tribes": cmd_tribes, "suggest": cmd_suggest,
         "legal": cmd_legal, "cuts": cmd_cuts,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
-        "verify": cmd_verify,
+        "verify": cmd_verify, "text": cmd_text,
     }[args.cmd](args)
 
 
