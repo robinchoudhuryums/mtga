@@ -52,15 +52,106 @@ def _capture(fn, ns):
 
 
 def deck_detail(did):
-    """The text analysis panels, captured from the real deck.py commands."""
+    """The text analysis panels, captured from the real deck.py commands. (Stats
+    and Mana are rendered visually from deck_viz instead — see below.)"""
     return {
-        "stats": _capture(deckmod.cmd_stats, SimpleNamespace(id=did)),
-        "mana": _capture(deckmod.cmd_mana, SimpleNamespace(id=did, fmt=None)),
         "legal": _capture(deckmod.cmd_legal, SimpleNamespace(id=did, fmt=None)),
         "cuts": _capture(deckmod.cmd_cuts, SimpleNamespace(id=did, limit=8)),
         # The clean Arena-importable block (Deck-prefixed, comments/metadata
         # stripped) — what the copy button hands to the clipboard.
         "arena": _capture(deckmod.cmd_arena, SimpleNamespace(id=did)),
+    }
+
+
+def deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name):
+    """Structured data for the visual Stats/Mana tabs — the SAME per-card
+    primitives cmd_stats/cmd_mana use (deckmod._primary_type, classify_roles,
+    classify_cost, parse_pips, _castability), just aggregated for charting instead
+    of ASCII bars, so the numbers match the CLI. Pass the big lookup tables in
+    (loaded once by collect) so this stays cheap per deck."""
+    B = deckmod.BASICS
+    types, colors, curve, roles = {}, {}, {}, {}
+    cheaper, gated, seen_flag = [], [], set()
+    curve_unknown = 0
+    for q, n, s, c in cards:
+        nl = n.lower()
+        cd = carddata.get(nl)
+        tline = (cd["type"] if cd else "") or ""
+        ptype = "Land" if nl in B else deckmod._primary_type(tline)
+        types[ptype] = types.get(ptype, 0) + q
+        if ptype == "Land":
+            continue
+        col = (cd["colors"] if cd else "") or ""
+        if col.lower() == "colorless":
+            colors["C"] = colors.get("C", 0) + q
+        else:
+            for ch in col.upper():
+                if ch in "WUBRG":
+                    colors[ch] = colors.get(ch, 0) + q
+        entry = mana.get(nl)
+        mv = entry[1] if entry else None
+        if mv is None:
+            curve_unknown += q
+        else:
+            curve[min(mv, 7)] = curve.get(min(mv, 7), 0) + q
+        for label in deckmod.classify_roles(cd["text"] if cd else ""):
+            roles[label] = roles.get(label, 0) + q
+        if n not in seen_flag:
+            ch2, ga = deckmod.classify_cost(keywords.get(nl), cd["text"] if cd else "")
+            if ch2:
+                cheaper.append({"name": n, "why": ", ".join(ch2)})
+            if ga:
+                gated.append({"name": n, "why": ", ".join(ga)})
+            seen_flag.add(n)
+
+    # Mana requirements (hybrid-aware) + castability lint — mirrors cmd_mana.
+    declared = deckmod._declared_colors(meta)
+    strict_pips = {c: 0 for c in "WUBRG"}
+    cards_need = {c: 0 for c in "WUBRG"}
+    hyb, hybrid_only, mana_unknown = {}, 0, 0
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in B:
+            continue
+        row = by_key.get((nl, s.lower(), c.lower())) or by_name.get(nl)
+        if row and "Land" in deckmod._primary_type((row.get("Type") or "")):
+            continue
+        entry = mana.get(nl)
+        if entry is None:
+            mana_unknown += q
+            continue
+        if not entry[0]:
+            continue
+        strict, hybrid = deckmod.parse_pips(entry[0])
+        for col, cnt in strict.items():
+            strict_pips[col] += cnt * q
+        for col in strict:
+            cards_need[col] += q
+        for h in hybrid:
+            k = "/".join(sorted(h))
+            hyb[k] = hyb.get(k, 0) + q
+        if hybrid and not strict:
+            hybrid_only += q
+    uncastable, off_ident = deckmod._castability(cards, declared, mana, carddata)
+
+    return {
+        "types": [{"t": t, "n": types[t]} for t in sorted(types, key=lambda x: -types[x])],
+        "colors": {c: colors[c] for c in "WUBRGC" if colors.get(c)},
+        "curve": {str(b): curve.get(b, 0) for b in range(8)},
+        "curve_unknown": curve_unknown,
+        "roles": [{"label": l, "n": roles[l]} for l in deckmod.ROLE_ORDER if roles.get(l)],
+        "interaction": sum(roles.get(k, 0) for k in ("Removal (spot)", "Sweeper", "Counter")),
+        "cheaper": cheaper, "gated": gated,
+        "mana": {
+            "declared": "".join(sorted(declared)),
+            "strict": [{"c": c, "pips": strict_pips[c], "cards": cards_need[c]}
+                       for c in "WUBRG" if cards_need[c]],
+            "hybrids": [{"colors": k, "n": v}
+                        for k, v in sorted(hyb.items(), key=lambda kv: -kv[1])],
+            "hybrid_only": hybrid_only, "unknown": mana_unknown,
+            "uncastable": [{"name": n, "why": w} for n, w in uncastable],
+            "off_ident": [{"name": n, "why": w} for n, w in off_ident],
+        },
     }
 
 
@@ -83,9 +174,14 @@ def collect():
     """Gather the structured dashboard payload from committed data only."""
     _no_network()
     _, rows = load_rows(DEFAULT_CSV)
-    _, _, qty = deckmod.load_collection()
+    by_key, by_name, qty = deckmod.load_collection()
     rarities = deckmod.load_rarities()
     rar_of = lambda name: rarities.get(name.lower(), "?")
+    # Big lookup tables loaded ONCE and shared across every deck's viz (each is a
+    # multi-MB CSV read), instead of re-reading them per deck.
+    carddata = deckmod.load_card_data()
+    mana = deckmod.load_mana()
+    keywords = deckmod.load_keywords()
 
     decks, buildable = [], 0
     for d in deckmod.discover_decks():
@@ -124,6 +220,7 @@ def collect():
             "buildable": ok,
             "wc": wc,
             "craft": craft_rows(d),
+            "viz": deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name),
             "detail": deck_detail(d["id"]),
         })
 
@@ -231,6 +328,24 @@ TEMPLATE = r"""<!DOCTYPE html>
   input.filter { width:100%; max-width:340px; padding:8px 10px; border:1px solid var(--line);
     border-radius:8px; background:var(--panel); color:var(--ink); margin-bottom:12px; }
   .foot { color:var(--muted); font-size:12px; margin-top:24px; border-top:1px solid var(--line); padding-top:12px; }
+  /* --- visual Stats / Mana panels --- */
+  .viz { display:flex; flex-direction:column; gap:15px; }
+  .vizsec h4 { margin:0 0 7px; font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+  .hbar { display:grid; grid-template-columns:96px 1fr auto; align-items:center; gap:8px; margin:3px 0; font-size:12.5px; }
+  .hbar .lbl { color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .hbar .track { background:var(--bg); border:1px solid var(--line); border-radius:5px; height:14px; overflow:hidden; }
+  .hbar .fill { height:100%; background:var(--accent); border-radius:4px; min-width:2px; }
+  .hbar .val { font-variant-numeric:tabular-nums; color:var(--muted); min-width:1.6em; text-align:right; }
+  .curve { display:flex; align-items:flex-end; gap:6px; height:92px; }
+  .curvecol { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:4px; }
+  .curvebar { width:100%; max-width:34px; background:var(--accent); border-radius:4px 4px 0 0; min-height:2px; }
+  .curvecol .cn, .curvecol .cx { font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .fill.W,.pipfill.W{background:var(--W)}.fill.U,.pipfill.U{background:var(--U)}.fill.B,.pipfill.B{background:var(--B)}
+  .fill.R,.pipfill.R{background:var(--R)}.fill.G,.pipfill.G{background:var(--G)}.fill.C,.pipfill.C{background:var(--C)}
+  .flags { display:flex; flex-wrap:wrap; gap:6px; }
+  .flag { font-size:11.5px; border:1px solid var(--line); border-radius:6px; padding:2px 7px; background:var(--bg); }
+  .castlist { font-size:12px; margin:4px 0 0; padding-left:18px; color:var(--ink); }
+  .metaline { font-size:12px; color:var(--muted); margin-top:5px; }
 </style>
 </head>
 <body>
@@ -303,6 +418,77 @@ TEMPLATE = r"""<!DOCTYPE html>
       }
     }
     draw(); return tbl;
+  }
+
+  // --- visual Stats / Mana renderers (fed by deck.viz; same numbers as the CLI) ---
+  function bar(label, value, max, cls) {
+    const pct = max > 0 ? Math.round(100 * value / max) : 0;
+    return `<div class="hbar"><span class="lbl">${esc(label)}</span>`
+      + `<span class="track"><span class="fill ${cls||''}" style="width:${pct}%"></span></span>`
+      + `<span class="val">${value}</span></div>`;
+  }
+  function section(title, inner) { return `<div class="vizsec"><h4>${esc(title)}</h4>${inner}</div>`; }
+  function vizEl(html) { const el = document.createElement('div'); el.className = 'viz'; el.innerHTML = html; return el; }
+
+  function renderStats(v) {
+    let html = '';
+    const cur = v.curve, cmax = Math.max(1, ...Object.values(cur));
+    let cols = '';
+    for (let b = 0; b < 8; b++) {
+      const n = cur[String(b)] || 0;
+      cols += `<div class="curvecol"><span class="cn">${n||''}</span>`
+        + `<div class="curvebar" style="height:${n?Math.max(Math.round(100*n/cmax),3):0}%" title="MV ${b===7?'7+':b}: ${n}"></div>`
+        + `<span class="cx">${b===7?'7+':b}</span></div>`;
+    }
+    html += section('Mana curve' + (v.curve_unknown ? ` · ${v.curve_unknown} unknown` : ''), `<div class="curve">${cols}</div>`);
+    const tmax = Math.max(1, ...v.types.map(t => t.n));
+    html += section('Types', v.types.map(t => bar(t.t, t.n, tmax)).join(''));
+    const ck = Object.keys(v.colors), clmax = Math.max(1, ...ck.map(c => v.colors[c]));
+    if (ck.length) html += section('Color identity', ck.map(c => bar(c, v.colors[c], clmax, c)).join(''));
+    if (v.roles.length) {
+      const rmax = Math.max(1, ...v.roles.map(r => r.n));
+      html += section('Functional roles', v.roles.map(r => bar(r.label, r.n, rmax)).join('')
+        + `<div class="metaline">interaction total: <b>${v.interaction}</b> (removal + sweeper + counter)</div>`);
+    }
+    if (v.cheaper.length || v.gated.length) {
+      const chips = v.cheaper.map(x => `<span class="flag" title="${esc(x.why)}">◊ ${esc(x.name)}</span>`).join('')
+        + v.gated.map(x => `<span class="flag" title="${esc(x.why)}">△ ${esc(x.name)}</span>`).join('');
+      html += section('Cost flags — ◊ cheaper than MV · △ added cost', `<div class="flags">${chips}</div>`);
+    }
+    return vizEl(html);
+  }
+
+  function renderMana(v) {
+    const m = v.mana; let html = '';
+    if (m.strict.length) {
+      const smax = Math.max(1, ...m.strict.map(x => x.pips));
+      html += section('Strict color requirements (pips that MUST be paid with that color)',
+        m.strict.map(x => `<div class="hbar"><span class="lbl">${x.c}</span>`
+          + `<span class="track"><span class="fill pipfill ${x.c}" style="width:${Math.round(100*x.pips/smax)}%"></span></span>`
+          + `<span class="val">${x.pips} · ${x.cards}c</span></div>`).join(''));
+    } else {
+      html += section('Strict color requirements', '<div class="metaline">No strict single-color pips.</div>');
+    }
+    if (m.hybrids.length) {
+      html += section('Hybrid pips (payable with either color)',
+        `<div class="flags">${m.hybrids.map(h => `<span class="flag"><b>${esc(h.colors)}</b> ×${h.n}</span>`).join('')}</div>`);
+    }
+    let cast;
+    if (!m.declared) cast = '<div class="metaline">No declared colors — castability lint off.</div>';
+    else if (!m.uncastable.length && !m.off_ident.length) cast = `<span class="badge b-ok">every nonland card fits ${esc(m.declared)} ✓</span>`;
+    else {
+      cast = '';
+      if (m.uncastable.length) cast += `<div class="metaline"><span class="badge b-missing">${m.uncastable.length} uncastable off ${esc(m.declared)}</span></div>`
+        + `<ul class="castlist">${m.uncastable.map(x => `<li>${esc(x.name)} — ${esc(x.why)}</li>`).join('')}</ul>`;
+      if (m.off_ident.length) cast += `<div class="metaline"><span class="badge b-short">${m.off_ident.length} stray outside ${esc(m.declared)}</span></div>`
+        + `<ul class="castlist">${m.off_ident.map(x => `<li>${esc(x.name)} — ${esc(x.why)}</li>`).join('')}</ul>`;
+    }
+    html += section('Castability', cast);
+    const notes = [];
+    if (m.hybrid_only) notes.push(`${m.hybrid_only} hybrid-only card(s)`);
+    if (m.unknown) notes.push(`${m.unknown} card(s) with no cost data`);
+    if (notes.length) html += `<div class="metaline">${notes.join(' · ')}</div>`;
+    return vizEl(html);
   }
 
   document.getElementById('sub').textContent = 'Read-only snapshot · generated ' + D.generated +
@@ -406,7 +592,9 @@ TEMPLATE = r"""<!DOCTYPE html>
         if (k === 'craft') {
           if (!d.craft.length) { body.appendChild(preOf('No craft picks — nothing on-color and on-theme to craft here.')); return; }
           body.appendChild(buildTable(CRAFTCOLS, d.craft.map(r => ({...r, _rank: rankOf(r.rarity)}))));
-        } else body.appendChild(preOf(d.detail[k] || '(no output)'));
+        } else if (k === 'stats') body.appendChild(renderStats(d.viz));
+        else if (k === 'mana') body.appendChild(renderMana(d.viz));
+        else body.appendChild(preOf(d.detail[k] || '(no output)'));
       };
       show('craft');
       cardEl.querySelector('[data-copy]').onclick = () => {

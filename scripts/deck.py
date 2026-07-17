@@ -1859,6 +1859,60 @@ def cmd_cuts(args):
     return 0
 
 
+def cmd_verify(args):
+    """Compare a pasted/piped Arena export against a stored deck and report either
+    'identical' or a +/- differential by card. Case-insensitive, quantity-aware,
+    and printing-fungible — a different printing (or basic-land art) of the same
+    card counts as a match, since Arena copies are fungible across printings."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    try:
+        text = sys.stdin.read() if args.source == "-" else open(args.source, encoding="utf-8").read()
+    except OSError as e:
+        eprint(f"Could not read {args.source!r}: {e}")
+        return 1
+    from import_arena import parse as parse_arena
+    entries, warnings = parse_arena(text)
+    for w in warnings:
+        eprint(f"WARN:  {w}")
+    if not entries:
+        eprint("No card lines found in the pasted export.")
+        return 1
+
+    stored_cards = parse_deck_file(d["path"])[1]
+    stored = _multiset(stored_cards)
+    pasted = _multiset(entries)
+    print(f"Deck {d['id']}: {d['name'] or d['id']} — vs pasted export")
+    print("-" * 48)
+    if "sideboard" in {ln.strip().lower() for ln in text.splitlines()}:
+        eprint("Note: the export has a Sideboard section — its cards are included "
+               "in this comparison (stored decks are maindeck-only).")
+    added = removed = 0
+    diffs = []
+    for nl in sorted(set(stored) | set(pasted)):
+        sd, pd = stored.get(nl, (None, 0)), pasted.get(nl, (None, 0))
+        disp = pd[0] or sd[0]
+        if pd[1] > sd[1]:
+            diffs.append(f"  +{pd[1] - sd[1]}  {disp}")
+            added += pd[1] - sd[1]
+        elif sd[1] > pd[1]:
+            diffs.append(f"  -{sd[1] - pd[1]}  {disp}")
+            removed += sd[1] - pd[1]
+    if not added and not removed:
+        s_total = sum(q for q, *_ in stored_cards)
+        print(f"  ✓ identical — the pasted export matches deck {d['id']} ({s_total} cards).")
+        return 0
+    for ln in diffs:
+        print(ln)
+    print("-" * 48)
+    print(f"  {added} added, {removed} removed vs the stored deck")
+    print("  (+ = the paste has more, − = the repo has more; compared by card name/qty "
+          "— printings & basic-land art are the same card.)")
+    return 1
+
+
 def main():
     ap = argparse.ArgumentParser(description="Manage decks and variations.")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -1910,6 +1964,10 @@ def main():
     p.add_argument("n", type=int, help="which flex swap (1-based; see deck.py flex <id>)")
     p.add_argument("--apply", action="store_true",
                    help="write the change (with a .bak); default is a dry-run preview")
+    p = sub.add_parser("verify", help="compare a pasted/piped Arena export against a stored deck")
+    p.add_argument("id")
+    p.add_argument("source", nargs="?", default="-",
+                   help="path to an export file, or '-' / omitted to read stdin")
     args = ap.parse_args()
 
     return {
@@ -1918,6 +1976,7 @@ def main():
         "mana": cmd_mana, "tribes": cmd_tribes, "suggest": cmd_suggest,
         "legal": cmd_legal, "cuts": cmd_cuts,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
+        "verify": cmd_verify,
     }[args.cmd](args)
 
 

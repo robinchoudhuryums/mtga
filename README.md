@@ -216,7 +216,15 @@ python3 scripts/deck.py cuts 1a       # rank the deck's weakest-fit cards as cut
 python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~ lines)
 python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both cards; --apply writes (.bak)
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
+pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export against the stored deck
 ```
+
+`verify` reconciles a decklist you've edited in Arena against the repo: pipe or pass
+its **Arena export** (`<qty> <Name> (SET) <#>`) and it reports **identical** or a
+`+/−` differential by card — `+` = the paste has more, `−` = the repo has more. It
+compares by card **name and quantity** (printings and basic-land art of the same
+card count as a match, since Arena copies are fungible), includes basics, and exits
+non-zero when they differ, so it's scriptable.
 
 `suggest` fingerprints a deck by its **colors** — the deck's declared
 `#: colors:`, falling back to its cards' mana **costs** (never color *identity*,
