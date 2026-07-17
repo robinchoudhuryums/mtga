@@ -7,7 +7,8 @@
 # Nonland
 1 Kid Loki (MSH) 63
 1 Heartless Act (TLA) 103
-2 Super Intelligence (MSH) 77
+1 Super Intelligence (MSH) 77
+1 Wan Shi Tong, Librarian (TLA) 78
 1 Futurist Forge (MSH) 55
 1 Loki, God of Mischief (MSH) 65
 1 Silent Hallcreeper (DSK) 72

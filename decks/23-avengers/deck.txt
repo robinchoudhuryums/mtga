@@ -44,7 +44,8 @@ Deck
 
 # Interaction
 1 Stasis Snare (FDN) 581
-2 Pacifism (ANB) 16
+1 Pacifism (ANB) 16
+1 Elspeth, Storm Slayer (TDM) 11
 1 Focus Fire (EOE) 18
 1 Red Guardian, Super-Soldier (MSH) 34
 1 Cosmogrand Zenith (EOE) 9

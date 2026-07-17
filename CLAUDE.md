@@ -41,7 +41,10 @@ docs. This file is the source of truth for the workflow commands in
   competing for a card, tell the user to "pick" one home, or "split" copies across
   decks: the same copy can go everywhere it fits. (Recurring misread in past
   sessions — the only real question per deck is "do I want it here," not "can I
-  spare a copy.")
+  spare a copy.") Turn this into a *proactive* habit: when a crafted card earns a
+  slot in more than one deck, offer to slot it into **all** of them (Elspeth in
+  both Knight's Edge and Avengers; Wan Shi Tong in both Bloodbending and Drawn
+  Conclusions) rather than asking the user to choose a single home.
 
 ## Common Gotchas
 
@@ -59,10 +62,22 @@ docs. This file is the source of truth for the workflow commands in
   leaves-play trigger got missed when grading cuts from a sliced text field).
   **Always grade a cut from full oracle text — the `swap` preview or the text
   block `cuts` now prints — never from a role/fit label or a `Card Text[:N]`
-  slice.** `--apply` writes with a `.bak` and an INV-04 re-check; if the add card
-  is already in the deck it bumps that line rather than adding a second line for
-  the same card. `deck.py apply-flex <id> <n>` promotes a `#~` flex line into the
-  60. Both default to a dry run.
+  slice.** **And grade the text against THIS deck's engine, not the card in the
+  abstract:** a cost or effect that reads as a downside in isolation is often an
+  *upside* in the matching deck — a "sacrifice an artifact / creature" cost is
+  cheap and *triggers your payoffs* in a Food/aristocrats deck (Deadly Precision
+  in deck 21), "attacks alone" can be a finisher while your other creatures hold
+  back to block (Team Avatar), a kicker unlocks a mode the base card hides (Divine
+  Resilience → mass indestructible), and a symmetric board wipe is a *reset the
+  reanimator rebuilds from* (Villainous Wrath / Rise of Sozin). Ask "what does
+  this do *here*" before calling it weak — repeated mis-grades this session traced
+  to judging cards in isolation. `--apply` writes with a `.bak` and an INV-04
+  re-check; if the add card is already in the deck it bumps that line rather than
+  adding a second line for the same card, and it **auto-retires `#~` flex lines
+  made stale by the swap** (a line proposing the card you just maindecked, or
+  cutting a card you just removed) — replacing the first with an `applied` note.
+  `deck.py apply-flex <id> <n>` promotes a `#~` flex line into the 60. Both
+  default to a dry run.
 - **Triage the roster before full-tuning it.** `deck.py audit` is the cheap,
   offline funnel that answers "which decks actually need a tune" so you don't run
   the expensive `/tune-deck` text-read on all 30+ decks. One line per deck reusing
@@ -96,15 +111,26 @@ docs. This file is the source of truth for the workflow commands in
   (which re-shows both cards' full text) before recommending or applying a cut.**
   Repeated cut mis-grades in past sessions traced to trusting the label instead
   of the text — don't. For a holistic add/cut pass, prefer the `/tune-deck`
-  skill, which protects signature/spice cards and reserves a fun budget.
+  skill, which protects signature/spice cards and reserves a fun budget. To
+  hard-protect a deck's signature/spice cards, add a **`#: protect: Card A; Card
+  B`** header (semicolon-separated — card names contain commas): `cuts` then keeps
+  them off the cut list and `swap --cut`-ing one warns. Set these for cards a deck
+  is built around so the tooling never proposes cutting them.
 - **"Not in library" for a card you own is the deck-dump undercount symptom.**
   `import_arena.py` takes a lower bound per line, so a card can end up
   *undercounted or entirely absent* from `card-library.csv` — then `deck.py
-  check` reports it as a craft target even though you own it. Reconcile via
-  `import_arena.py <deck> --skip-basics` (trues up from a built deck), or append
-  the row from `card-pool.csv` at the right `Quantity Owned` and rebuild the
-  gallery. Hit repeatedly in practice (Primeval Bounty, Cat Collector, Inspiration
-  from Beyond, Dion, …).
+  check` reports it as a craft target even though you own it. Fastest fix:
+  `reconcile_crafts.py <arena-export>` — paste the crafted/owned cards as an Arena
+  export ("1 Doctor Doom (MSH) 95"), and it adds each to `card-library.csv` (DFC
+  stored under its **front** name), adds the matching `card-mana.csv` row, drops it
+  from `card-wishlist.csv`, and lists the decks to re-check. Dry-run by default;
+  `--apply` writes with `.bak`s; then run `build_gallery.py` + `check_all.py` (or
+  `/refresh`). (The DFC front-vs-full name handling — pool/mana key `A // B`, the
+  library keys `A` — was the most error-prone part when done by hand.) Alternatives:
+  `import_arena.py <deck> --skip-basics` (trues up from a built deck), or append the
+  `card-pool.csv` row manually. Hit repeatedly in practice (Primeval Bounty, Cat
+  Collector, Inspiration from Beyond, Dion, Atlantis Attacks, the deck 20–22 FDN
+  cards, The Everflowing Well, …).
 - **MTG Arena set codes can differ from Scryfall** (e.g. Arena `DAR` = Scryfall
   `DOM`). `enrich.py` maps known ones (`SET_ALIASES`). It fills a row's Collector #
   from the batch match when that printing's set lines up, else via a targeted
@@ -151,8 +177,19 @@ docs. This file is the source of truth for the workflow commands in
   fallback — double-faced cards are stored under their **full `Front // Back` name**
   (matching the pool) so joins work, unlike the library's front-name convention.
   `--by-set` is the pack/gem-optimization view (wishlist cards per set by rarity);
-  `--owned` flags cards you've since crafted so you can prune them. `Target`/`Note`
-  are hand-annotated (deck id / `general` / `concept: …`). Not gated by check_all.
+  `--budget "9M 10R 38U 48C"` turns a wildcard budget into an optimal craft plan
+  (top `combined` per rarity cap + alternates + an import block); `--seed-power`
+  first-passes BLANK `Power` cells with a heuristic estimate (rarity floor + roles;
+  review it — the classifier undersells bombs); `--owned` flags cards you've since
+  crafted so you can prune them (or feed them to `reconcile_crafts.py`).
+  `Target`/`Note`/`Power` are hand-annotated: `Target` is a
+  deck id / `general` / `concept: …`; **`Power` is a 1–10 hand-graded constructed-
+  power score** that `--rank` blends 50/50 with theme fit into a `combined` score
+  (an idf theme model can't see raw power, so bombs like Doctor Doom get buried
+  without it — the Power column is the fix; the artifact exposes a live fit↔power
+  slider). The wishlist CSV itself isn't gated by check_all, but the **ranking
+  model is** — `check_rankings.py` (run inside check_all) guards the specific-theme
+  cutoff so a scoring change can't silently reclassify a real tribe as "generic".
 - **Auto-targeting a wishlist batch: trust STRONG, judge `review`.** `wishlist.py
   --suggest-targets` scores each card's deck fit by **theme rarity (idf)** so broad
   decks stop acting as catch-alls: naive theme-overlap over-assigns to 5-color
@@ -192,6 +229,25 @@ docs. This file is the source of truth for the workflow commands in
   re-check its `#~` craft suggestions — a craftable legal under the old format may
   have rotated (hit moving decks 1/2 Historic→Standard). `deck.py flex <id>` plus
   the pool's `Legalities` column confirm.
+- **`deck.py suggest-homes <card>` automates the "which of my decks does this new
+  card improve" fit pass** (the manual dance repeated every craft this session —
+  Doctor Doom, Elspeth, Wan Shi Tong, Shark Shredder). It scans EVERY deck and
+  lists the ones where the card is both *castable* (its identity ⊆ the deck's
+  declared/derived colors) **and** shares ≥1 *central* theme (same 25%-centrality
+  test as `suggest`'s reuse count), ranked by theme-fit, marking where it's
+  already maindecked and naming the single weakest nonland cut candidate per deck
+  (`#: protect:` cards excluded). It's a SHORTLIST, not a verdict — the cut is one
+  heuristic pick, so still grade from full oracle text via `deck.py cuts <id>` and
+  preview with `deck.py swap` before applying. Because copies are fungible, it
+  reminds you to slot a card into *all* decks that earn it, not pick one home.
+- **`deck.py mana` also lints color SOURCES, not just pip demand.** After the pip
+  breakdown it prints "Color sources (lands producing each color)" (basics by
+  name, nonbasics by color identity — mana dorks aren't counted) and flags cards
+  whose strict colored pips look thin against those sources (`△ Pip-intensive`:
+  wants CC with <9 sources, or C with <4). This catches the "wants UU but this is
+  really a U-splash" problem the castability lint (which only checks identity ⊆
+  declared colors) can't see — e.g. a 3-source green splash flagging GG cards. A
+  heuristic review signal, not a hard fail; it doesn't gate `check_all.py`.
 
 ## Known Issues
 
@@ -215,7 +271,11 @@ docs. This file is the source of truth for the workflow commands in
 ## Cycle Workflow Config
 
 **Test Command:** `python3 scripts/check_all.py`
-(deterministic integrity gate; exits non-zero on any hard invariant break)
+(deterministic integrity gate; exits non-zero on any hard invariant break —
+INV-01…04 plus a **ranking-model sanity check** (`check_rankings.py`) that guards
+the Doctor-Doom-class regression: a scoring change that silently reclassifies a
+real tribal theme as "generic". The ranking check is distribution-based, so it
+survives cards being crafted off the wishlist.)
 
 **Health Dimensions:**
 - Data Integrity — CSV structure, no drift between library and derived files
@@ -227,8 +287,8 @@ docs. This file is the source of truth for the workflow commands in
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv
-- Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
-- Analysis: scripts/deck.py, scripts/query.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py
+- Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
+- Analysis: scripts/deck.py, scripts/query.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`)
 - Decks: decks/
 

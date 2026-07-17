@@ -44,7 +44,7 @@
 1 Deadly Precision (TLA) 95
 1 Stomped by the Foot (TMT) 82
 1 Courier of Comestibles (TMT) 112
-1 Mutant Chain Reaction (TMT) 125
+1 Professor Dellian Fel (SOS) 214
 1 Judge Magister Gabranth (FIN) 230
 
 # Nonland — value / light artifact package

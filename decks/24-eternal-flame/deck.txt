@@ -48,7 +48,7 @@ Deck
 1 Abrade (FDN) 188
 1 Valorous Stance (FDN) 583
 1 Bombard (EOE) 129
-1 Seismic Rupture (FDN) 205
+1 Lightning, Security Sergeant (FIN) 560
 
 # Lands
 8 Mountain (MSH) 294

@@ -35,7 +35,7 @@
 1 Ancient Adamantoise (FIN) 172
 1 Treetop Snarespinner (FDN) 114
 1 Tenured Concocter (SOS) 163
-1 Hungry Graffalon (SOS) 151
+1 Betor, Kin to All (TDM) 172
 1 Venom, Evil Unleashed (SPM) 71
 1 Ancestor Dragon (FDN) 489
 1 The Masters of Evil (MSH) 105
@@ -43,7 +43,7 @@
 1 Crypt Feaster (FDN) 59
 1 East Wind Avatar (TMT) 5
 1 Dawnstrike Vanguard (EOE) 10
-1 Sun-Dappled Celebrant (ECL) 37
+1 South Wind Avatar (TMT) 78
 1 Syr Vondam, the Lucent (EOE) 232
 1 Cloak and Dagger, Entwined (MSH) 211
 1 Inkshape Demonstrator (SOS) 21
@@ -74,8 +74,8 @@
 3 Swamp (MSH) 292
 
 # Flex — STANDARD-LEGAL craft targets (all WBG — 20b ONLY; uncastable in 20/20a). See: deck.py flex 20b
-#~ -Hungry Graffalon | +Betor, Kin to All | CRAFT (M) ★ MARKED UPGRADE: {2}{W}{B}{G} 5/7 flyer that is a toughness-matters ENGINE (total toughness >=10 draw / >=20 untap all / >=40 drain) AND a swap-target itself (7>5, attacks for 7) AND card advantage. Best craft for this deck
-#~ -Sun-Dappled Celebrant | +Doran, Besieged by Time | CRAFT (R) ★ MARKED UPGRADE: {1}{W}{B}{G} 0/5 — a THIRD swap payoff. Toughness>power creature spells cost {1} less, and every creature gets +X/+X on attack/block (X = toughness-power gap), turning a 1/4 into a 4/7. Cost-reducer + payoff + body
+#~ note: applied — Betor, Kin to All (-Hungry Graffalon) and South Wind Avatar (-Sun-Dappled Celebrant): a 5/7 toughness engine + swap target, and a deathtouch toughness-lifegain-drain body. Both upgrade near-vanilla high-toughness beaters.
+#~ -Tenured Concocter | +Doran, Besieged by Time | CRAFT (R) ★ MARKED UPGRADE: {1}{W}{B}{G} 0/5 — a THIRD swap payoff. Toughness>power creature spells cost {1} less, and every creature gets +X/+X on attack/block (X = toughness-power gap), turning a 1/4 into a 4/7. Cost-reducer + payoff + body
 #~ -Inkshape Demonstrator | +Abzan Monument | CRAFT (U) ~ SIDEGRADE: {2} artifact — early fixing (fetch a basic), later sacs for {1}{W}{B}{G} into an X/X where X = your greatest toughness (a 20/20 off Adamantoise). Nice fixing-into-payoff, but the sac needs WBG open + a big body already down
-#~ note: priority Betor > Doran > Abzan Monument. SKIP Lumra, Bellow of the Woods — its power EQUALS its toughness, so it never triggers a swap payoff (they need toughness strictly greater).
-#~ note: CRAFT — Bedrock Tortoise (R) ★: a Doran-style THIRD static toughness payoff ({3}{G}: creatures deal combat damage equal to toughness) AND grants your creatures hexproof on your turn (board protection). Alongside Tapestry Warden + Kingpin, turns the toughness plan into a real engine. Cut a vanilla beater (Tenured Concocter / Hungry Graffalon) when crafted.
+#~ note: priority Doran > Abzan Monument (Betor now maindecked). SKIP Lumra, Bellow of the Woods — its power EQUALS its toughness, so it never triggers a swap payoff (they need toughness strictly greater).
+#~ note: CRAFT — Bedrock Tortoise (R) ★: a Doran-style THIRD static toughness payoff ({3}{G}: creatures deal combat damage equal to toughness) AND grants your creatures hexproof on your turn (board protection). Alongside Tapestry Warden + Kingpin, turns the toughness plan into a real engine. Cut a vanilla beater (Tenured Concocter) when crafted.
