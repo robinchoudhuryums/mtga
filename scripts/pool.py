@@ -28,11 +28,45 @@ import argparse
 import csv
 import os
 import sys
+import textwrap
 
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
 
 POOL_PATH = os.path.join(REPO_ROOT, "card-pool.csv")
+MANA_PATH = os.path.join(REPO_ROOT, "card-mana.csv")
 WC = {"Common": "C", "Uncommon": "U", "Rare": "R", "Mythic": "M"}
+
+
+def keywords_map():
+    """name_lower -> [keywords] from card-mana.csv, to surface named mechanics in a
+    --full read (empty if card-mana.csv isn't built)."""
+    out = {}
+    if os.path.exists(MANA_PATH):
+        with open(MANA_PATH, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                n = (r.get("Card Name") or "").strip().lower()
+                kw = [k for k in (r.get("Keywords") or "").split(";") if k.strip()]
+                if n and kw:
+                    out[n] = kw
+    return out
+
+
+def print_full(rows, owned, kwmap):
+    """Full oracle text + keyword line + owned/craft per card — the phased-ingestion
+    read for scanning the pool as possible additions / craft targets."""
+    for c in rows:
+        name = (c.get("Card Name") or "").strip()
+        have = owned.get(name.lower(), 0)
+        tag = f"×{have}" if have > 0 else "craft"
+        print(f"\n• {name}   [{(c.get('Type') or '').strip() or '?'}]  ·  "
+              f"{(c.get('Rarity') or '?')} · {tag}")
+        kw = kwmap.get(name.lower())
+        if kw:
+            print(f"    ⌘ keywords: {', '.join(k.title() for k in kw)}")
+        text = (c.get("Card Text") or "").strip()
+        for para in (text or "(no oracle text on file)").split("\n"):
+            for line in (textwrap.wrap(para, width=90) or [""]):
+                print(f"    {line}")
 
 
 def owned_counts():
@@ -117,6 +151,8 @@ def main():
     ap.add_argument("--unowned", action="store_true", help="only cards to craft")
     ap.add_argument("--count", action="store_true")
     ap.add_argument("--csv", action="store_true")
+    ap.add_argument("--full", action="store_true",
+                    help="print each hit's full oracle text + keywords (deep read for adds)")
     args = ap.parse_args()
 
     try:
@@ -140,6 +176,12 @@ def main():
         return 0
     if not hits:
         eprint("No cards matched.")
+        return 0
+
+    if args.full:
+        print_full(hits, owned, keywords_map())
+        craft = sum(1 for c in hits if owned.get((c.get("Card Name") or "").strip().lower(), 0) == 0)
+        print(f"\n{len(hits)} match — {len(hits) - craft} owned, {craft} to craft")
         return 0
     if args.csv:
         w = csv.DictWriter(sys.stdout, fieldnames=pool[0].keys())

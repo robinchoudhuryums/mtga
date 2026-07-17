@@ -8,6 +8,13 @@ Steps:
    Add a `#:` metadata header (name, format, colors, notes) and the card list
    (group nonland / lands for readability — grouping is cosmetic).
 2. `python3 scripts/deck.py check NN` — see what's owned vs. flagged.
+2b. **`python3 scripts/deck.py text NN` — read the full oracle text of the whole
+   deck once, now.** Ingestion is the cheapest time to actually read every card:
+   it surfaces mistyped/mismatched names (a wrong printing resolves to blank or the
+   wrong text), off-color cards the `#: colors` guess missed, and hidden board-wide
+   / leaves-play / alt-cost effects (flagged `⚠`) — so a later `/tune-deck` starts
+   from a deck you've genuinely read, not a card list. Note anything surprising in
+   the `#: notes`.
 3. **Determine ownership intent.** If this is a deck the user has BUILT and
    owns, reconcile the catalog from it (a built deck is ownership evidence):
    `python3 scripts/import_arena.py decks/NN-slug/deck.txt --skip-basics`
