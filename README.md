@@ -418,6 +418,15 @@ gives sortable **Craft picks** and a **Wishlist priority** table (the `wishlist.
 numbers come from the same `audit_deck()` / `suggest_scored()` the CLI renders, so
 the dashboard can't drift from the commands.
 
+It also has a **"Check for stale decks"** panel: paste one deck's Arena export to see
+whether it drifted from the stored list, or paste several `Deck` blocks at once for a
+roster staleness report (*N in sync · M drifted*, naming the decks to update). Each
+paste is **auto-matched to its closest stored deck — variants included** (Arena
+exports carry no deck name), then diffed by card name + quantity with printings and
+basic-land art treated as fungible — the **same rules as `deck.py verify`**, run
+entirely client-side (nothing is uploaded). Use it to spot which decks you've edited
+in Arena but not yet updated in the repo (or vice-versa).
+
 The build is **offline** — it disables `deck.py`'s live-Scryfall fallbacks and reads
 only committed data (`card-*.csv` + `decks/`), so it never touches the network and
 runs in CI.
