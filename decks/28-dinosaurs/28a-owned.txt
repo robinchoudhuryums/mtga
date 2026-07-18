@@ -2,7 +2,7 @@
 #: format: Standard
 #: colors: RGW
 #: based-on: 28
-#: archetype: 28 variant built ENTIRELY from owned cards — Naya go-wide: Triceraton + Soldier tokens (Serra Redeemer/Okoye) with big owned Dinos as top-end. No unowned tribal payoffs (Gishath/Regal Imperiosaur), so it leans go-wide, not true Dino tribal.
+#: archetype: 28 variant built from owned cards — Naya Dinosaurs + Soldier go-wide. Now with the crafted removal (Itzquinth, Triumphant Chomp) and more Dinos (Scalestorm, Dracosaur, Belligerent) swapped in over the off-plan filler. Still missing the rare/mythic tribal payoffs (Regal Imperiosaur lord, Gishath), so it's a solid Dino midrange, not yet full tribal.
 
 2 Triceraton Commander (TMT) 25
 1 Serra Redeemer (BLB) 387
@@ -32,14 +32,14 @@
 1 Stegron the Dinosaur Man (MSC) 810
 1 Zog, Triceraton Castaway (TMT) 111
 1 Draconautics Engineer (DFT) 121
-1 Frontline War-Rager (EOE) 134
 1 Kav Landseeker (EOE) 138
 1 Reptil, Dinomorpher (MSH) 182
-1 Kree Commandos (MSH) 19
-1 Fire Nation Raider (TLA) 135
-1 Captain Mar-Vell, Space-Born (MSH) 12
 1 East Wind Avatar (TMT) 5
-1 Owlin Historian (SOS) 24
+1 Itzquinth, Firstborn of Gishath (LCI) 230
+1 Triumphant Chomp (LCI) 170
+1 Scalestorm Summoner (OTJ) 144
+1 Dracosaur Auxiliary (DFT) 122
+1 Belligerent Yearling (LCI) 133
 
 # Lands (23 — Naya fixing: 11 owned duals + 12 basics, all owned + Standard-legal)
 1 Restless Ridgeline (LCI) 283

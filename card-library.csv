@@ -3308,3 +3308,12 @@ Welcome to Sweettooth,Enchantment — Saga,"(As this Saga enters and after your 
 I — Create a 1/1 white Human creature token.
 II — Create a Food token.
 III — Put X +1/+1 counters on target creature you control, where X is one plus the number of Foods you control.",G,Saga; counters; sacrifice; tokens; food; saga,WOE,198,1
+"Itzquinth, Firstborn of Gishath",Legendary Creature — Dinosaur,"Haste
+When Itzquinth enters, you may pay {2}. When you do, target Dinosaur you control deals damage equal to its power to another target creature.",R/G,Dinosaur; etb; haste; aggro,LCI,230,1
+Triumphant Chomp,Sorcery,"Triumphant Chomp deals damage to target creature equal to 2 or the greatest power among Dinosaurs you control, whichever is greater.",R,,LCI,170,1
+Scalestorm Summoner,Creature — Human Warlock,"Whenever this creature attacks, create a 3/1 red Dinosaur creature token if you control a creature with power 4 or greater.",R,Human; Warlock; tokens,OTJ,144,1
+Dracosaur Auxiliary,Creature — Dinosaur Dragon Mount,"Flying, haste
+Whenever this creature attacks while saddled, it deals 2 damage to any target.
+Saddle 3 (Tap any number of other creatures you control with total power 3 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",R,Dinosaur; Dragon; Mount; burn; flying; evasion; saddle; go-wide; combat; haste; aggro,DFT,122,1
+Belligerent Yearling,Creature — Dinosaur,"Trample
+Whenever another Dinosaur you control enters, you may have this creature's base power become equal to that creature's power until end of turn.",R,Dinosaur; trample; evasion,LCI,133,1
