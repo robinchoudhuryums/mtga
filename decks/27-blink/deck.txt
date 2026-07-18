@@ -1,0 +1,50 @@
+#: name: Blink
+#: format: Standard
+#: colors: WU
+#: archetype: Azorius (W/U) blink / flicker value — re-trigger ETB creatures with repeatable blink engines (Y'shtola, Don & Leo, Wiccan). WIP.
+
+# Cards (unsorted WIP — analyzing)
+1 Y'shtola Rhul (FIN) 86
+1 The Mind Stone (MSH) 21
+1 Daydream (SOS) 9
+1 Morningtide's Light (ECL) 27
+1 Enduring Curiosity (DSK) 51
+1 Another Round (OTJ) 1
+1 Wiccan, Rising Magician (MSH) 83
+1 The Mighty Thor, Jane Foster (MSH) 222
+1 Don & Leo, Problem Solvers (TMT) 143
+1 Leonardo, Leader in Blue (TMT) 16
+1 Ambrosia Whiteheart (FIN) 6
+1 Costume Closet (SPM) 5
+1 Ironpaw Aspirant (LCI) 18
+1 Jeong Jeong's Deserters (TLA) 25
+1 Lita, Little Orphan Amphibian (TMT) 19
+1 Rayblade Trooper (EOE) 30
+1 Red Guardian, Super-Soldier (MSH) 34
+1 Sheriff of Safe Passage (OTJ) 29
+1 Solitary Sanctuary (WOE) 30
+1 Spiritcall Enthusiast (SOS) 33
+1 Beza, the Bounding Spring (BLB) 2
+1 Appa, Steadfast Guardian (TLA) 10
+1 East Wind Avatar (TMT) 5
+1 Felidar Savior (FDN) 12
+1 Mighty Mutanimals (TMT) 21
+1 Luxknight Breacher (EOE) 26
+1 Stagecoach Security (OTJ) 30
+1 Serra Redeemer (BLB) 387
+1 Triceraton Commander (TMT) 25
+1 Abandoned Air Temple (TLA) 263
+1 Crustacean Commando (TMT) 33
+1 Dragoon's Wyvern (FIN) 49
+1 Justice, Vance Astrovik (MSH) 61
+1 Katara, Water Tribe's Hope (TLA) 231
+1 Abigale, Eloquent First-Year (ECL) 204
+1 Temple of Enlightenment (FDN) 698
+1 Hallowed Fountain (ECL) 265
+1 North Pole Gates (TLA) 274
+1 Hei Bai, Spirit of Balance (TLA) 225
+1 Deceit (ECL) 212
+1 EPF Point Squad (TMT) 145
+1 Earth Kingdom Soldier (TLA) 216
+1 The Last Ronin's Technique (TMT) 12
+1 Foot Ninjas (TMT) 147
