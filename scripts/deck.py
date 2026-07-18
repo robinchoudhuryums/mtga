@@ -731,6 +731,7 @@ _ROLE_PATTERNS = {
         r"tapped creature|attacking creature|creature or planeswalker|creature with)",
         r"exile target (?:creature|permanent|nonland permanent|attacking|tapped)",
         r"deals? \d+ damage to (?:target|any target|another target)",
+        r"deals? \d+ damage to up to \w+ target",
         r"fights? (?:target|another target)",
         r"deals damage equal to (?:twice )?.{0,20}?power to target (?:creature|creature or planeswalker|attacking)",
         r"target creature gets -\d",
@@ -741,7 +742,8 @@ _ROLE_PATTERNS = {
                 r"each (?:other )?creature (?:gets|deals|is|you don't control)",
                 # scalable / conditional wipes the fixed patterns above miss
                 r"creature with mana value.{0,20}?or less.{0,40}?destroy",
-                r"destroy those creatures"],
+                r"destroy those creatures",
+                r"deals? \d+ damage to each (?:other )?creature"],
     "Counter": [r"counter target"],
     "Card advantage": [r"draws? (?:two|three|four|x|that many) cards?",
                        r"draw a card for each", r"draws? cards? equal to",
@@ -780,8 +782,8 @@ _ROLE_PATTERNS = {
     # Cost reducers / free-cast enablers — the value that makes a nominally
     # expensive card cheap (Diamond Weapon, affinity/convoke, cascade cheats).
     "Cost reduction / cheat": [
-        r"costs \{[0-9x]+\} less",
-        r"costs \{1\} less for each",
+        r"costs? \{[0-9x]+\} less",
+        r"costs? \{1\} less for each",
         r"\baffinity\b", r"\bconvoke\b", r"\bimprovise\b", r"\bcascade\b",
         r"without paying its mana cost",
     ],
@@ -812,6 +814,27 @@ def classify_roles(text):
     """Return the set of functional-role labels a card's oracle text matches."""
     t = (text or "").lower().replace("−", "-")  # normalize unicode minus
     return {label for label, pats in _ROLE_COMPILED if any(p.search(t) for p in pats)}
+
+
+# The roles that make a card a keeper almost regardless of theme fit — a removal
+# spell, a card-advantage engine, ramp, a cost-reducer, a payoff. `cuts`/`suggest-homes`
+# weight these extra so a strong-but-off-tribe card (Cosmic Cube, Shuri, Mjölnir) stops
+# floating to the TOP of the cut list just because its synergy tags don't match the
+# deck's central themes. Incidental roles (lifegain, a combat trick, an anthem) get the
+# base credit only. Still a shortlist signal — grade the finalists from oracle text.
+IMPACT_ROLES = {"Removal (spot)", "Sweeper", "Counter", "Card advantage",
+                "Ramp / fixing", "Cost reduction / cheat", "Payoff / engine",
+                "Reanimation", "Burn / drain"}
+
+
+def _role_credit(roles):
+    """Keep-score credit for a card's functional roles: base 3 each, +6 more for each
+    IMPACT role, so a card that does a high-value job clears the no-role 'filler' band
+    (theme-fit only, ~0–8) and doesn't rank as a top cut. It can't fully offset a large
+    theme-fit gap — an off-theme power card (Cosmic Cube, The Ten Rings) still sorts
+    low in a tuned deck, which is inherent to a synergy model and exactly why `cuts`
+    prints full oracle text and wishlist ranking pairs fit with a hand-graded Power."""
+    return 3 * len(roles) + 6 * len(set(roles) & IMPACT_ROLES)
 
 
 def context_flags(text, mana_cost):
@@ -2047,7 +2070,9 @@ def cmd_cuts(args):
         ctx = context_flags(text, cost)
 
         # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
-        keep = fit + 3 * len(roles) + (1 if hit_central else 0) + min(tribal, 6)
+        # Role credit is impact-weighted (see _role_credit) so a strong-but-off-theme
+        # card (removal/engine/cost-reducer) isn't mis-ranked as a top cut.
+        keep = fit + _role_credit(roles) + (1 if hit_central else 0) + min(tribal, 6)
         reasons = []
         if tags and not hit_central:
             reasons.append("off the deck's central themes")
@@ -2347,7 +2372,7 @@ def _weakest_cut(dmeta, cards, cardmeta, carddata):
             continue
         tags = cardmeta.get(nl, {}).get("synergies", [])
         fit = sum(theme_w.get(t, 0) for t in tags if t in central)
-        keep = fit + 3 * len(classify_roles(cd["text"] if cd else ""))
+        keep = fit + _role_credit(classify_roles(cd["text"] if cd else ""))
         if best is None or keep < best[0]:
             best = (keep, n)
     return best[1] if best else None
