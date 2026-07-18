@@ -228,6 +228,11 @@ def collect():
             # uses (shared scorer, so the dashboard view can't drift from the command).
             "audit": deckmod.audit_deck(d, by_name_qty=qty, carddata=carddata,
                                         mana=mana, leg=leg, cmeta=cmeta),
+            # Card multiset for the client-side "stale deck" compare — SAME semantics
+            # as `deck.py verify` (deckmod._multiset: keyed by lowercased name,
+            # quantities summed, printings/basics fungible), so the browser diff and
+            # the CLI can't disagree. Stored as {name_lower: [display, qty]}.
+            "cards": {nl: [disp, q] for nl, (disp, q) in deckmod._multiset(cards).items()},
         })
 
     # Wishlist wildcard-priority tiers (structured, from the real _rank_scores).
@@ -368,6 +373,22 @@ TEMPLATE = r"""<!DOCTYPE html>
   .flag { font-size:11.5px; border:1px solid var(--line); border-radius:6px; padding:2px 7px; background:var(--bg); }
   .castlist { font-size:12px; margin:4px 0 0; padding-left:18px; color:var(--ink); }
   .metaline { font-size:12px; color:var(--muted); margin-top:5px; }
+  .staletext { width:100%; min-height:120px; box-sizing:border-box; padding:10px 12px;
+    border:1px solid var(--line); border-radius:8px; background:var(--panel); color:var(--ink);
+    font-family:ui-monospace,monospace; font-size:12.5px; resize:vertical; }
+  .staleactions { margin:10px 0 4px; display:flex; gap:8px; }
+  button.ghost { background:transparent; color:var(--muted); border:1px solid var(--line);
+    border-radius:8px; padding:6px 14px; cursor:pointer; font-size:13px; }
+  .stalecard { border:1px solid var(--line); border-radius:10px; padding:10px 14px; margin:10px 0;
+    background:var(--panel); }
+  .stalecard h4 { margin:0 0 4px; font-size:14px; }
+  .stalecard .sub2 { font-size:12px; color:var(--muted); margin-bottom:6px; }
+  .stale-sync { color:var(--ok); font-weight:600; }
+  .stale-drift { color:var(--warn); font-weight:600; }
+  .stale-nomatch { color:var(--bad); font-weight:600; }
+  .difflist { font-family:ui-monospace,monospace; font-size:12px; margin:6px 0 0; }
+  .diffadd { color:var(--ok); } .diffrem { color:var(--bad); }
+  .staletot { font-size:13px; margin:2px 0 10px; }
 </style>
 </head>
 <body>
@@ -382,6 +403,16 @@ TEMPLATE = r"""<!DOCTYPE html>
     <div class="auditsummary" id="auditsummary"></div>
     <div id="audit"></div>
     <p class="auditnote" id="auditnote"></p>
+  </section>
+  <section id="stale-sec">
+    <h2>Check for stale decks — paste your Arena export(s)</h2>
+    <p class="auditnote" id="stalenote">Paste one deck's Arena export to see if it drifted from the stored list, or paste several <code>Deck</code> blocks at once for a roster staleness report. Each block is auto-matched to its closest stored deck (variants included) — Arena exports don't carry a deck name. Compared by card name + quantity; printings and basic-land art are treated as the same card (same rules as <code>deck.py verify</code>). Nothing is uploaded — the compare runs entirely in your browser.</p>
+    <textarea id="staletext" class="staletext" placeholder="Deck&#10;1 Y'shtola Rhul (FIN) 86&#10;1 Don &amp; Leo, Problem Solvers (TMT) 143&#10;…"></textarea>
+    <div class="staleactions">
+      <button class="copy" id="stalego">Compare</button>
+      <button class="ghost" id="staleclear">Clear</button>
+    </div>
+    <div id="staleout"></div>
   </section>
   <section>
     <h2>Decks &amp; variants</h2>
@@ -700,6 +731,123 @@ TEMPLATE = r"""<!DOCTYPE html>
     f.dispatchEvent(new Event('input'));
     document.getElementById('decks').scrollIntoView({behavior:'smooth', block:'start'});
   });
+
+  // --- Stale-deck compare: paste Arena export(s) → auto-match to the closest stored
+  // deck (variants included) → diff. Same rules as `deck.py verify`: keyed by
+  // lowercased name, quantities summed, printings & basic-land art fungible. Runs
+  // entirely client-side against the card multisets embedded in D.decks[].cards.
+  const SECTION = /^(sideboard|commander|companion|maybeboard)\b/i;
+  function parseLine(raw){
+    const line = raw.trim();
+    if (!line) return null;
+    const m = line.match(/^(\d+)\s+(.+?)(?:\s+\(([^)]+)\)(?:\s+\S+)?)?$/);
+    if (!m) return null;
+    const name = m[2].trim();
+    if (!name) return null;
+    return { nl: name.toLowerCase(), disp: name, qty: parseInt(m[1], 10) };
+  }
+  function splitDecks(text){
+    const segs = []; let cur = null; let started = false;
+    for (const ln of text.split(/\r?\n/)){
+      const t = ln.trim();
+      if (/^deck\s*$/i.test(t)){ cur = []; segs.push(cur); started = true; continue; }
+      if (SECTION.test(t)) continue;               // skip non-maindeck section headers
+      if (!started){ cur = []; segs.push(cur); started = true; }
+      cur.push(ln);
+    }
+    return segs.filter(s => s.length);
+  }
+  function multiset(lines){
+    const m = {};
+    for (const ln of lines){
+      const p = parseLine(ln);
+      if (!p) continue;
+      if (m[p.nl]) m[p.nl][1] += p.qty; else m[p.nl] = [p.disp, p.qty];
+    }
+    return m;
+  }
+  function diffSets(pasted, stored){
+    const names = new Set([...Object.keys(pasted), ...Object.keys(stored)]);
+    let added = 0, removed = 0; const diffs = [];
+    for (const nl of names){
+      const p = pasted[nl] ? pasted[nl][1] : 0, s = stored[nl] ? stored[nl][1] : 0;
+      const disp = (pasted[nl] && pasted[nl][0]) || (stored[nl] && stored[nl][0]) || nl;
+      if (p > s){ added += p - s; diffs.push({sign:'+', qty:p-s, name:disp}); }
+      else if (s > p){ removed += s - p; diffs.push({sign:'-', qty:s-p, name:disp}); }
+    }
+    diffs.sort((a,b)=> a.sign===b.sign ? a.name.localeCompare(b.name) : (a.sign==='-'?-1:1));
+    return { added, removed, diffs };
+  }
+  function bestMatch(pasted){
+    let best = null;
+    for (const d of D.decks){
+      const r = diffSets(pasted, d.cards || {});
+      const drift = r.added + r.removed;
+      const shared = Object.keys(pasted).filter(nl => (d.cards||{})[nl]).length;
+      if (!best || drift < best.drift) best = { deck:d, drift, shared, ...r };
+    }
+    return best;
+  }
+  function analyzeOne(seg){
+    const pasted = multiset(seg);
+    const nCards = Object.values(pasted).reduce((a,v)=>a+v[1],0);
+    if (!nCards) return null;
+    const uniq = Object.keys(pasted).length;
+    const m = bestMatch(pasted);
+    if (!m || m.shared < Math.max(3, uniq*0.3)) return { unmatched:true, nCards, uniq };
+    return { unmatched:false, deck:m.deck, sync:m.drift===0,
+             added:m.added, removed:m.removed, diffs:m.diffs, shared:m.shared, nCards };
+  }
+  function stalecardEl(r){
+    const el = document.createElement('div'); el.className = 'stalecard';
+    if (r.unmatched){
+      el.innerHTML = `<h4>Unmatched paste <span class="stale-nomatch">no close deck</span></h4>`
+        + `<div class="sub2">${r.nCards} cards, ${r.uniq} unique — doesn't closely match any stored deck (a new deck, or not from this collection?).</div>`;
+      return el;
+    }
+    const d = r.deck;
+    const status = r.sync ? `<span class="stale-sync">✓ in sync</span>`
+      : `<span class="stale-drift">⟳ drifted — ${r.added} added / ${r.removed} removed</span>`;
+    el.innerHTML = `<h4>#${esc(d.id)} ${esc(d.name)} ${status}</h4>`
+      + `<div class="sub2">matched by ${r.shared} shared cards${d.variant?' · variant':''}`
+      + `${r.sync?'':' · update it in Arena or in the repo'}</div>`;
+    if (!r.sync){
+      const dl = document.createElement('div'); dl.className='difflist';
+      dl.innerHTML = r.diffs.map(x =>
+        `<div class="${x.sign==='+'?'diffadd':'diffrem'}">${x.sign}${x.qty}  ${esc(x.name)}</div>`).join('');
+      el.appendChild(dl);
+      const note = document.createElement('div'); note.className='metaline';
+      note.textContent = '+ = your Arena paste has more · − = the stored repo deck has more';
+      el.appendChild(note);
+    }
+    return el;
+  }
+  function runStale(){
+    staleOut.innerHTML = '';
+    const segs = splitDecks(document.getElementById('staletext').value);
+    if (!segs.length){ staleOut.innerHTML = '<div class="metaline">Nothing to compare — paste an Arena export above.</div>'; return; }
+    const results = segs.map(analyzeOne).filter(Boolean);
+    if (!results.length){ staleOut.innerHTML = '<div class="metaline">No card lines found in the paste.</div>'; return; }
+    if (results.length > 1){
+      const drifted = results.filter(r => !r.unmatched && !r.sync);
+      const synced  = results.filter(r => !r.unmatched && r.sync).length;
+      const unm     = results.filter(r => r.unmatched).length;
+      const summary = document.createElement('div'); summary.className = 'staletot';
+      summary.innerHTML = `<b>${results.length}</b> decks checked · `
+        + `<span class="stale-sync">${synced} in sync</span> · `
+        + `<span class="stale-drift">${drifted.length} drifted</span>`
+        + (unm ? ` · <span class="stale-nomatch">${unm} unmatched</span>` : '')
+        + (drifted.length ? `<br>Update in Arena: ` + drifted.map(r => `#${esc(r.deck.id)} ${esc(r.deck.name)}`).join(', ') : '');
+      staleOut.appendChild(summary);
+    }
+    results.forEach(r => staleOut.appendChild(stalecardEl(r)));
+  }
+  const staleOut = document.getElementById('staleout');
+  document.getElementById('stalego').addEventListener('click', runStale);
+  document.getElementById('staleclear').addEventListener('click', () => {
+    document.getElementById('staletext').value = ''; staleOut.innerHTML = '';
+  });
+
   document.getElementById('foot').textContent =
     'Offline snapshot from committed data. Regenerate with `python3 scripts/build_dashboard.py`. ' +
     'The judgment calls (craft X or Y, tuning) still live in the Claude Code chat — this shows state, not decisions.';
