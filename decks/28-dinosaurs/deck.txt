@@ -1,0 +1,44 @@
+#: name: Dino Stampede
+#: format: Standard
+#: colors: RGW
+#: archetype: Naya (R/G/W) Dinosaur tribal with a Soldier secondary — Triceraton Commander token engine into big dinos (Ghalta, Gishath). WIP brew.
+
+2 Triceraton Commander (TMT) 25
+1 Giant Cindermaw (FDN) 624
+1 Draconautics Engineer (DFT) 121
+1 Stegron the Dinosaur Man (MSC) 810
+1 Earthshaker Dreadmaw (LCI) 183
+1 Needletooth Pack (FDN) 108
+1 Nurturing Bristleback (LCI) 203
+1 Quakestrider Ceratops (FDN) 110
+1 Flowerfoot Swordmaster (BLB) 14
+1 Encumbered Reejerey (ECL) 14
+1 Raft Security Officer (MSH) 33
+1 Super-Soldier Serum (MSH) 38
+1 Captain America, Wings of Freedom (MSH) 10
+1 Cosmogrand Zenith (EOE) 9
+1 Dual-Sun Adepts (EOE) 12
+1 Earth Kingdom Jailer (TLA) 16
+1 Red Guardian, Super-Soldier (MSH) 34
+1 Okoye, Dora Milaje Leader (MSH) 27
+1 Captain Mar-Vell, Space-Born (MSH) 12
+1 Riling Dawnbreaker (TDM) 21
+1 Frontline War-Rager (EOE) 134
+1 Kav Landseeker (EOE) 138
+1 Zog, Triceraton Castaway (TMT) 111
+1 Serra Redeemer (BLB) 387
+1 Belligerent Yearling (LCI) 133
+1 Triumphant Chomp (LCI) 170
+1 Scalestorm Summoner (OTJ) 144
+1 Rampaging Ceratops (LCI) 162
+1 Dracosaur Auxiliary (DFT) 122
+1 Regal Imperiosaur (DFT) 177
+1 Hulking Raptor (LCI) 191
+1 Palani's Hatcher (LCI) 237
+1 Gishath, Sun's Avatar (LCI) 229
+1 Ghalta, Primal Hunger (FDN) 222
+1 Itzquinth, Firstborn of Gishath (LCI) 230
+1 Restless Ridgeline (LCI) 283
+7 Mountain (MSH) 294
+9 Plains (MSH) 288
+7 Forest (MSH) 296
