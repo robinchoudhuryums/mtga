@@ -3317,3 +3317,6 @@ Whenever this creature attacks while saddled, it deals 2 damage to any target.
 Saddle 3 (Tap any number of other creatures you control with total power 3 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",R,Dinosaur; Dragon; Mount; burn; flying; evasion; saddle; go-wide; combat; haste; aggro,DFT,122,1
 Belligerent Yearling,Creature — Dinosaur,"Trample
 Whenever another Dinosaur you control enters, you may have this creature's base power become equal to that creature's power until end of turn.",R,Dinosaur; trample; evasion,LCI,133,1
+"Hugs, Grisly Guardian",Legendary Creature — Badger Warrior,"Trample
+When Hugs enters, exile the top X cards of your library. Until the end of your next turn, you may play those cards.
+You may play an additional land on each of your turns.",R/G,Badger; Warrior; etb; impulse; trample; evasion,BLB,218,1
