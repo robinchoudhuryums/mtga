@@ -1,18 +1,17 @@
-#: name: Enchantress — Temur Fractals (GUR) Variant
+#: name: Temur Fractals
 #: format: Standard
 #: colors: GUR
-#: based-on: 29
-#: protect: Emil, Vastlands Roamer; Loading Zone; Growth Curve; Germination Practicum; Quandrix Charm
-#: archetype: Temur (G/U/R) +1/+1 counters & Fractals with a lands-matter ramp shell — the blue
-#: archetype: pivot of deck 29, rebuilt around the SOS "Quandrix" package the user is collecting.
-#: notes: Reframed away from enchantments toward what the card list actually points at: Fractal
-#: notes: token-makers (Emil, Wild Hypothesis, Fractal Tender, Additive Evolution) + counter
-#: notes: DOUBLERS (Loading Zone, Growth Curve) into a wide counters board, on a lands ramp
-#: notes: base (Emil scales with differently-named lands; Zimone/Environmental Scientist/
-#: notes: Proctor's Gaze/Terramorphic fetch them; Lumra/Terra self-mill). Combo lines:
-#: notes: Growth Curve or Germination Practicum with Loading Zone in play = counters quadrupled.
-#: notes: Increment payoffs (Cuboid Colony, Fractal Tender, Topiary Lecturer) reward the big-mana
-#: notes: ramp turns. Owned-heavy: only 4 crafts (see deck.py check 29a). Standard-legal 60.
+#: protect: Emil, Vastlands Roamer; Loading Zone; Growth Curve; Quandrix Charm
+#: archetype: Temur (G/U/R) +1/+1 counters & Fractals on a lands-matter ramp shell. Built from the
+#: archetype: SOS "Quandrix" package: Fractal token-makers + counter DOUBLERS go wide on a ramp base.
+#: notes: Split out of the deck-29 Enchantress folder — this is the blue counters build, a
+#: notes: distinct deck from the GWR enchantress list (they shared almost no cards).
+#: notes: Engine: Fractal makers (Emil, Wild Hypothesis, Fractal Tender, Additive Evolution) +
+#: notes: counter doublers (Loading Zone, Growth Curve). Growth Curve with Loading Zone out
+#: notes: quadruples counters on a creature. Emil scales with differently-named lands; Zimone /
+#: notes: Environmental Scientist / Proctor's Gaze / Terramorphic fetch them; Lumra / Terra
+#: notes: self-mill into more. Increment payoffs (Cuboid Colony, Fractal Tender, Topiary Lecturer)
+#: notes: reward big-mana ramp turns. Fully owned. Craft upgrades parked in the flex block.
 
 # Fractals & counter engine
 1 Emil, Vastlands Roamer (SOS) 146
@@ -55,7 +54,7 @@
 1 Super Intelligence (MSH) 77
 1 Heroic Feast (MSH) 172
 
-# Craft targets (from your list)
+# Land-fetch / ramp value
 1 Environmental Scientist (SOS) 147
 1 Proctor's Gaze (SOS) 213
 1 Follow the Lumarets (SOS) 148
@@ -79,6 +78,6 @@
 4 Island
 3 Mountain
 
-# Flex — craft upgrades that supercharge the counters plan. See: deck.py flex 29a
+# Flex — craft upgrades that supercharge the counters plan. See: deck.py flex 30
 #~ -Heroic Feast | +Germination Practicum | CRAFT (M): two +1/+1 counters on EACH creature, recastable via Paradigm — quadruples with Loading Zone
 #~ -Super Intelligence | +Tatyova, Benthic Druid | CRAFT (U): landfall "draw a card" — turns the lands/ramp shell into a card-advantage engine

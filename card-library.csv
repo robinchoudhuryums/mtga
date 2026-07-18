@@ -3320,3 +3320,8 @@ Whenever another Dinosaur you control enters, you may have this creature's base 
 "Hugs, Grisly Guardian",Legendary Creature — Badger Warrior,"Trample
 When Hugs enters, exile the top X cards of your library. Until the end of your next turn, you may play those cards.
 You may play an additional land on each of your turns.",R/G,Badger; Warrior; etb; impulse; trample; evasion,BLB,218,1
+Environmental Scientist,Creature — Human Druid,"When this creature enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.",G,Human; Druid; ramp; etb,SOS,147,1
+Proctor's Gaze,Instant,"Return up to one target nonland permanent to its owner's hand. Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",U/G,ramp; bounce,SOS,213,1
+Follow the Lumarets,Sorcery,"Infusion — Look at the top four cards of your library. You may reveal a creature or land card from among them and put it into your hand. If you gained life this turn, you may instead reveal two creature and/or land cards from among them and put them into your hand. Put the rest on the bottom of your library in a random order.",G,selection; infusion,SOS,148,1
+Improvisation Capstone,Sorcery — Lesson,"Exile cards from the top of your library until you exile cards with total mana value 4 or greater. You may cast any number of spells from among them without paying their mana costs.
+Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",R,Lesson; paradigm,SOS,120,1
