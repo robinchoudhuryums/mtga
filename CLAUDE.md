@@ -109,13 +109,18 @@ docs. This file is the source of truth for the workflow commands in
   column; `--format` overrides). It exits non-zero on a real violation but treats a
   pool-absent card as *unverified*, not illegal (so WIP/older-print decks aren't
   false-flagged). `deck.py cuts <id>` is the counterpart to `suggest` (adds): it
-  ranks nonland cards weakest-fit first (central-theme fit + functional role +
-  tribal contribution) **and prints the full oracle text of the top candidates
-  plus a `⚠ context` flag on deck-dependent mechanics (converge / devotion /
+  ranks nonland cards weakest-fit first (central-theme fit + **impact-weighted**
+  functional role + tribal contribution) **and prints the full oracle text of the top
+  candidates plus a `⚠ context` flag on deck-dependent mechanics (converge / devotion /
   affinity / X-cost)** — because the role/fit line is a SHORTLIST SIGNAL, NOT A
-  GRADE: its classifier can miss what a card does (reanimation, counter-scaling,
-  burn/drain finishers, lifegain, cost-reduction) and can't see spice/signature
-  cards. **Read the printed oracle text (and check any `⚠ context` mechanic
+  GRADE: its classifier can miss what a card does and can't see spice/signature
+  cards. (Role credit is now impact-weighted — removal / card advantage / ramp /
+  cost-reduction / payoff engines get a bonus via `_role_credit`, so a strong card no
+  longer floats to the top of the cut list just for being off-theme; two detection
+  bugs that hid Shuri's cost-reduction and Mjölnir's removal are fixed too. The
+  residual is inherent: an off-theme power card with **zero** matching themes still
+  sorts low in a tuned deck — a synergy model can't see raw power, which is why the
+  oracle text is printed and why wishlist ranking pairs fit with a hand-graded Power.) **Read the printed oracle text (and check any `⚠ context` mechanic
   against the deck's actual colors/board), then preview the swap with `swap`
   (which re-shows both cards' full text) before recommending or applying a cut.**
   Repeated cut mis-grades in past sessions traced to trusting the label instead
@@ -221,7 +226,10 @@ docs. This file is the source of truth for the workflow commands in
   deck's colors from the declared `#: colors:` (else mana costs), so a card's
   off-color *activated abilities* (e.g. Super-Skrull's `{4}{R}`) don't surface
   uncastable picks. Run it both ways: `--owned --limit 0` scours the collection
-  for 0-wildcard upgrades already owned; `--unowned` lists craft targets.
+  for 0-wildcard upgrades already owned; `--unowned` lists craft targets. Picks are
+  ranked by theme fit **plus the same impact-role credit `cuts` uses** (`_role_credit`),
+  so among on-theme options a removal / card-advantage / ramp / cost-reduction / payoff
+  card outranks a same-theme vanilla body instead of being buried by tag overlap alone.
 - **`deck.py suggest` shows a cross-deck reuse count (`Decks` column).** For each
   pick it counts how many of your OTHER decks (the deck being analyzed is excluded,
   so it can't inflate its own picks) the card is *castable* (its identity ⊆ the

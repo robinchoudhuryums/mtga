@@ -1236,7 +1236,12 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         if not shared:
             continue
         shared = [t.strip() for t in shared]
-        score = sum(theme_w[t] for t in shared)
+        # Theme fit + impact-role credit: among on-theme picks, a card that also fills
+        # a high-value functional role (removal / card advantage / ramp / cost-reduction
+        # / a payoff engine) outranks a same-theme vanilla body — the mirror of the
+        # `cuts` fix, so a strong-but-thinly-tagged upgrade isn't buried. Reads the
+        # pool's Card Text; a text-less row just gets no bonus.
+        score = sum(theme_w[t] for t in shared) + _role_credit(classify_roles(r.get("Card Text") or ""))
         suggestions.append((score, name, r, shared))
 
     owned_of = lambda nl: by_name_qty.get(nl, 0)
