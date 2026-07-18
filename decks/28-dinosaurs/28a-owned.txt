@@ -41,8 +41,18 @@
 1 East Wind Avatar (TMT) 5
 1 Owlin Historian (SOS) 24
 
-# Lands (23 — Naya, basics-heavy; owned fixing is thin)
+# Lands (23 — Naya fixing: 11 owned duals + 12 basics, all owned + Standard-legal)
 1 Restless Ridgeline (LCI) 283
-8 Plains
-7 Forest
-7 Mountain
+1 Blossoming Sands (M21) 244
+1 Hushwood Verge (DSK) 261
+1 Gathering Place (MSH) 266
+1 Birnin Zana Plaza (MSH) 262
+1 Rugged Highlands (FDN) 265
+1 Gruul Guildgate (RNA) 250
+1 Omashu City (TLA) 275
+1 Wind-Scarred Crag (FDN) 271
+1 Temple of Triumph (FDN) 705
+1 Abraded Bluffs (OTJ) 251
+4 Plains
+4 Forest
+4 Mountain
