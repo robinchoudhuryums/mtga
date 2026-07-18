@@ -51,8 +51,8 @@
 1 World War Hulk (MSH) 197
 1 Sokka's Haiku (TLA) 71
 1 Enduring Curiosity (DSK) 51
-1 Super Intelligence (MSH) 77
-1 Heroic Feast (MSH) 172
+1 Tatyova, Benthic Druid (FDN) 247
+1 Germination Practicum (SOS) 149
 
 # Land-fetch / ramp value
 1 Environmental Scientist (SOS) 147
@@ -79,5 +79,5 @@
 3 Mountain
 
 # Flex — craft upgrades that supercharge the counters plan. See: deck.py flex 30
-#~ -Heroic Feast | +Germination Practicum | CRAFT (M): two +1/+1 counters on EACH creature, recastable via Paradigm — quadruples with Loading Zone
-#~ -Super Intelligence | +Tatyova, Benthic Druid | CRAFT (U): landfall "draw a card" — turns the lands/ramp shell into a card-advantage engine
+#~ note: applied — Germination Practicum in for Heroic Feast.
+#~ note: applied — Tatyova, Benthic Druid in for Super Intelligence.
