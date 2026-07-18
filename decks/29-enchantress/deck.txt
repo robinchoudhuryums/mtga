@@ -1,0 +1,40 @@
+#: name: Enchantress
+#: format: Standard
+#: colors: GWR
+#: archetype: Naya (G/W/R) enchantments-matter — Yuna + enchantment payoffs (Political Triumph, Garruk's Uprising) with Aura/enchantment beaters. WIP, aspirational (some craft targets).
+
+1 Terra, Magical Adept (FIN) 245
+1 Lumra, Bellow of the Woods (BLB) 183
+1 Alien Invasion (MSH) 200
+1 Yuna, Hope of Spira (FIN) 250
+1 Political Triumph (MSH) 31
+1 Death to Our Enemies (MSH) 127
+1 Firebender Ascension (TLA) 137
+1 Enduring Courage (DSK) 133
+1 Claim the Kingdom (MSH) 163
+1 Origin of Metalbending (TLA) 187
+1 Garruk's Uprising (FDN) 220
+1 Heroic Feast (MSH) 172
+1 Sylvan Scavenging (FDN) 113
+1 Loading Zone (EOE) 196
+1 She-Hulk, Jade Defender (MSH) 188
+1 Additive Evolution (SOS) 139
+1 Eusocial Engineering (EOE) 181
+1 World War Hulk (MSH) 197
+1 Anthem of Champions (FDN) 116
+1 Unflinching Courage (FDN) 722
+1 Quandrix Charm (SOS) 217
+1 Pain for All (EOE) 151
+1 War Squeak (BLB) 160
+1 Angelic Destiny (FDN) 565
+1 Savior of the Sleeping (WOE) 28
+1 Airbender Ascension (TLA) 6
+1 Enduring Vitality (DSK) 176
+1 Summon: Fenrir (FIN) 203
+1 Summon: Titan (FIN) 204
+1 Call Damage Control (MSH) 162
+1 Aftermath Analyst (MKM) 148
+1 Topiary Lecturer (SOS) 165
+6 Mountain (MSH) 294
+5 Plains (MSH) 288
+12 Forest (MSH) 296
