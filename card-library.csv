@@ -3300,3 +3300,11 @@ Felidar Savior,Creature — Cat Beast,"Lifelink (Damage dealt by this creature a
 When this creature enters, put a +1/+1 counter on each of up to two other target creatures you control.",W,Cat; Beast; counters; lifegain; etb; lifelink,FDN,12,1
 "Abigale, Eloquent First-Year",Legendary Creature — Bird Bard,"Flying, first strike, lifelink
 When Abigale enters, up to one other target creature loses all abilities. Put a flying counter, a first strike counter, and a lifelink counter on that creature.",W/B,Bird; Bard; counters; lifegain; etb; flying; evasion; lifelink; first strike; combat,ECL,204,1
+Mouser Foundry,Artifact,"When this artifact enters or leaves the battlefield, create a 1/1 colorless Robot artifact creature token.
+{4}{R}, Sacrifice this artifact: It deals 3 damage to target creature.",R,sacrifice; tokens; burn; etb,TMT,96,1
+Sweettooth Witch,Creature — Human Warlock,"When this creature enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+{2}, Sacrifice a Food: Target player loses 2 life.",B,Human; Warlock; lifegain; sacrifice; tokens; etb; food,WOE,111,1
+Welcome to Sweettooth,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Create a 1/1 white Human creature token.
+II — Create a Food token.
+III — Put X +1/+1 counters on target creature you control, where X is one plus the number of Foods you control.",G,Saga; counters; sacrifice; tokens; food; saga,WOE,198,1
