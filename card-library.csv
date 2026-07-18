@@ -3294,3 +3294,9 @@ The Everflowing Well,Legendary Artifact // Legendary Artifact Land,"When The Eve
 Descend 8 — At the beginning of your upkeep, if there are eight or more permanent cards in your graveyard, transform The Everflowing Well. // (Transforms from The Everflowing Well.)
 {T}: Add {U}.
 Whenever you cast a permanent spell using mana produced by The Myriad Pools, up to one other target permanent you control becomes a copy of that spell until end of turn.",U,graveyard; mill; card draw; mana; etb; transform; descend,LCI,56,1
+Daydream,Sorcery,"Exile target creature you control, then return that card to the battlefield under its owner's control with a +1/+1 counter on it.
+Flashback {2}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",W,counters; reanimator; graveyard; removal; flashback; recursion; spellslinger,SOS,9,1
+Felidar Savior,Creature — Cat Beast,"Lifelink (Damage dealt by this creature also causes you to gain that much life.)
+When this creature enters, put a +1/+1 counter on each of up to two other target creatures you control.",W,Cat; Beast; counters; lifegain; etb; lifelink,FDN,12,1
+"Abigale, Eloquent First-Year",Legendary Creature — Bird Bard,"Flying, first strike, lifelink
+When Abigale enters, up to one other target creature loses all abilities. Put a flying counter, a first strike counter, and a lifelink counter on that creature.",W/B,Bird; Bard; counters; lifegain; etb; flying; evasion; lifelink; first strike; combat,ECL,204,1
