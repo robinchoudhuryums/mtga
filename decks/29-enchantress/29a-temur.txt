@@ -1,59 +1,67 @@
-#: name: Enchantress — Temur (GUR) Variant
+#: name: Enchantress — Temur Fractals (GUR) Variant
 #: format: Standard
 #: colors: GUR
 #: based-on: 29
-#: archetype: Temur (G/U/R) lands-matter + enchantment VALUE, with blue card-draw as the glue.
-#: notes: The blue pivot of deck 29. Drops white (and Yuna) to fold in blue's card advantage
-#: notes: and interaction, reframing the deck around the LANDS-MATTER / self-mill spine the
-#: notes: green core already had (Terra/Lumra/Summon: Titan/Aftermath Analyst mill → land-
-#: notes: reanimation + landfall). Tatyova turns every landfall into a card; the enchantment
-#: notes: sub-theme survives via the blue enchantments (Glacierwood Siege, Entity Tracker,
-#: notes: Waterbender Ascension, Glimmerburst's Glimmer token) + the green/red Ascensions & Plans.
-#: notes: Aspirational: several blue pieces are craft targets — see the tune report for the WC tally.
+#: protect: Emil, Vastlands Roamer; Loading Zone; Growth Curve; Germination Practicum; Quandrix Charm
+#: archetype: Temur (G/U/R) +1/+1 counters & Fractals with a lands-matter ramp shell — the blue
+#: archetype: pivot of deck 29, rebuilt around the SOS "Quandrix" package the user is collecting.
+#: notes: Reframed away from enchantments toward what the card list actually points at: Fractal
+#: notes: token-makers (Emil, Wild Hypothesis, Fractal Tender, Additive Evolution) + counter
+#: notes: DOUBLERS (Loading Zone, Growth Curve) into a wide counters board, on a lands ramp
+#: notes: base (Emil scales with differently-named lands; Zimone/Environmental Scientist/
+#: notes: Proctor's Gaze/Terramorphic fetch them; Lumra/Terra self-mill). Combo lines:
+#: notes: Growth Curve or Germination Practicum with Loading Zone in play = counters quadrupled.
+#: notes: Increment payoffs (Cuboid Colony, Fractal Tender, Topiary Lecturer) reward the big-mana
+#: notes: ramp turns. Owned-heavy: only 4 crafts (see deck.py check 29a). Standard-legal 60.
 
-# Green core — lands / self-mill / enchantment value
-1 Terra, Magical Adept (FIN) 245
-1 Lumra, Bellow of the Woods (BLB) 183
-1 Summon: Titan (FIN) 204
-1 Summon: Fenrir (FIN) 203
-1 Aftermath Analyst (MKM) 148
-1 Topiary Lecturer (SOS) 165
-1 Claim the Kingdom (MSH) 163
-1 Eusocial Engineering (EOE) 181
-1 Enduring Vitality (DSK) 176
-1 Garruk's Uprising (FDN) 220
-1 Loading Zone (EOE) 196
+# Fractals & counter engine
+1 Emil, Vastlands Roamer (SOS) 146
+1 Wild Hypothesis (SOS) 167
+1 Fractal Tender (SOS) 190
+1 Cuboid Colony (SOS) 183
+1 Growth Curve (SOS) 193
 1 Additive Evolution (SOS) 139
-1 World War Hulk (MSH) 197
-1 She-Hulk, Jade Defender (MSH) 188
-1 Origin of Metalbending (TLA) 187
-1 Heroic Feast (MSH) 172
+1 Loading Zone (EOE) 196
+1 Topiary Lecturer (SOS) 165
+1 Quandrix Charm (SOS) 217
 1 Sylvan Scavenging (FDN) 113
 
-# Blue — card advantage, interaction, blue enchantments
-1 Tatyova, Benthic Druid (FDN) 247
-1 Glimmerburst (DSK) 62
+# Counter payoffs / creatures
+1 Knight of Wundagore (MSH) 175
+1 Jadelight Spelunker (LCI) 196
+1 Broodguard Elite (EOE) 175
+
+# Card advantage / dig
+1 Mind into Matter (SOS) 202
+1 Zimone's Experiment (SOS) 169
+1 Stadium Tidalmage (SOS) 232
+1 Garruk's Uprising (FDN) 220
+1 Charging Strifeknight (SOS) 110
+
+# Lands-matter ramp / bombs
+1 Lumra, Bellow of the Woods (BLB) 183
+1 Terra, Magical Adept (FIN) 245
+1 Claim the Kingdom (MSH) 163
+
+# Interaction / red value
+1 Tablet of Discovery (SOS) 132
+1 Garrison Excavator (SOS) 116
+1 She-Hulk, Jade Defender (MSH) 188
+1 Wistfulness (ECL) 252
+1 Origin of Metalbending (TLA) 187
+1 World War Hulk (MSH) 197
 1 Sokka's Haiku (TLA) 71
-1 Quandrix Charm (SOS) 217
-1 Glacierwood Siege (TDM) 189
-1 Entity Tracker (DSK) 53
-1 Waterbender Ascension (TLA) 79
 1 Enduring Curiosity (DSK) 51
 1 Super Intelligence (MSH) 77
-1 Spellgyre (BLB) 72
-1 Wistfulness (ECL) 252
-1 Tam, Observant Sequencer (SOS) 237
-1 Roiling Dragonstorm (TDM) 55
+1 Heroic Feast (MSH) 172
 
-# Red — token engines / spells-matter / removal-auras
-1 Alien Invasion (MSH) 200
-1 Death to Our Enemies (MSH) 127
-1 Firebender Ascension (TLA) 137
-1 Enduring Courage (DSK) 133
-1 Pain for All (EOE) 151
-1 War Squeak (BLB) 160
+# Craft targets (from your list)
+1 Environmental Scientist (SOS) 147
+1 Proctor's Gaze (SOS) 213
+1 Follow the Lumarets (SOS) 148
+1 Improvisation Capstone (SOS) 120
 
-# Lands (24 — Temur fixing: 12 owned duals + 12 basics)
+# Lands (25 — Temur fixing: 12 owned duals + Terramorphic + 12 basics; many differently-named for Emil)
 1 Breeding Pool (EOE) 251
 1 Dreamroot Cascade (SOS) 254
 1 Thornwood Falls (FDN) 269
@@ -66,6 +74,11 @@
 1 Rugged Highlands (FDN) 265
 1 Wind-Scarred Crag (FDN) 271
 1 Abraded Bluffs (OTJ) 251
+1 Terramorphic Expanse (MSC) 828
 5 Forest
 4 Island
 3 Mountain
+
+# Flex — craft upgrades that supercharge the counters plan. See: deck.py flex 29a
+#~ -Heroic Feast | +Germination Practicum | CRAFT (M): two +1/+1 counters on EACH creature, recastable via Paradigm — quadruples with Loading Zone
+#~ -Super Intelligence | +Tatyova, Benthic Druid | CRAFT (U): landfall "draw a card" — turns the lands/ramp shell into a card-advantage engine
