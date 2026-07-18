@@ -1,0 +1,65 @@
+#: name: Iron Forge — Full Pile (brew)
+#: format: Standard
+#: colors: WUR
+#: based-on: 26
+#: archetype: Archived 73-card brew pile that seeded the primary 60 (deck 26). Not a tuned list — kept for reference / re-brewing.
+#: notes: The original over-60 Iron Forge dump. Artifact/Equipment/Vehicle theme with a heavy Iron Man / Ultron / TMNT sub-cast. The finalized, legal 60 is the primary deck 26.
+
+# Main
+1 Shuri, Wakandan Inventor (MSH) 75
+1 Hydraulic Helper (MSH) 57
+1 Steelswarm Operator (EOE) 80
+1 Super Suit (MSH) 78
+1 Waterbending Scroll (TLA) 81
+1 Tony Stark (MSH) 80
+1 Bespoke Bō (TMT) 31
+1 Donatello, Way with Machines (TMT) 38
+1 I Am Iron Man (MSH) 58
+1 Mind Transfer Protocol (TMT) 45
+1 Nanoform Sentinel (EOE) 71
+1 The Mechanist, Aerial Artisan (TLA) 64
+1 Donatello, Mutant Mechanic (TMT) 36
+1 Donatello, Turtle Techie (TMT) 37
+1 Relm's Sketching (FIN) 67
+1 Retrieve the Esper (FIN) 68
+1 Ironheart, Clever Champion (MSH) 60
+1 Uthros, Titanic Godcore (EOE) 260
+1 Don & Leo, Problem Solvers (TMT) 143
+1 Iron Man, Master of Machines (MSH) 216
+1 Metalhead (TMT) 44
+1 Wistfulness (ECL) 252
+1 Diamond Pick-Axe (LCI) 143
+1 HYDRA Assault Robot (MSH) 137
+1 Mouser Foundry (TMT) 96
+1 Oreplate Pangolin (EOE) 150
+1 Machinesmith Automaton (MSH) 144
+1 Weftstalker Ardent (EOE) 169
+1 Fin Fang Foom (MSH) 129
+1 Mjölnir, Hammer of Thor (MSH) 146
+1 Broadcast Takeover (TMT) 86
+1 Steel Wrecking Ball (SPM) 177
+1 Armor Wars (MSH) 203
+1 Bullseye, Death Dealer (MSH) 209
+1 War Machine, Legacy of Iron (MSH) 238
+1 Sami, Wildcat Captain (EOE) 226
+1 Goldvein Pick (FDN) 253
+1 Super-Adaptoid (MSH) 250
+1 Technodrome (TMT) 179
+1 Bender's Waterskin (TLA) 255
+1 Buster Sword (FIN) 255
+1 Iron Man Armor (MSH) 248
+1 Ultron, Artificial Malevolence (MSH) 252
+1 Ultron Drone (MSH) 253
+1 Mirrormind Crown (ECL) 258
+1 Cosmic Cube (MSH) 245
+1 Dawnsire, Sunstar Dreadnought (EOE) 238
+1 Radiant Lotus (DFT) 240
+1 Krang, Utrom Warlord (TMT) 175
+
+# Lands
+1 Castle Doom (MSH) 263
+1 The Gold Saucer (FIN) 279
+1 The Walls of Ba Sing Se (TLA) 261
+10 Mountain (MSH) 294
+10 Island (MSH) 290
+1 Plains (MSH) 288
