@@ -90,9 +90,18 @@ docs. This file is the source of truth for the workflow commands in
   shared `audit_deck()` scorer, so CLI and page can't drift). It's a SHORTLIST
   SIGNAL like `suggest`/`cuts`: a flag says "look here," then grade the flagged deck
   from `deck.py text` + `/tune-deck` — a review/ok label is not a verdict on the
-  deck. (A stale `#: colors:` header inflates the `Cast` column — e.g. the raw
-  83-card `19` pile headed `WU` shows dozens of "uncastable"; fixing the header to
+  deck. (A stale `#: colors:` header inflates the `Cast` column — e.g. the archived
+  raw 83-card `19c` pile headed `WU` shows dozens of "uncastable"; fixing the header to
   the deck's real castable colors clears it, same as it does for `mana`/`check`.)
+- **Stored decks drift from the real Arena decks.** The user edits decks in the Arena
+  app; the repo only updates when someone writes the deck file, so the two silently
+  diverge (hit this session: deck `12` had been changed to 2× Super Intelligence / −Futurist
+  Forge in Arena while the repo still showed the old list). Catch it with **`deck.py verify
+  <id>`** (pipe/paste an Arena export — reports *identical* or a `+/−` diff, printing- and
+  basic-fungible) or the dashboard's **"Check for stale decks"** panel (paste one or many
+  `Deck` blocks; it auto-matches each to its closest stored deck — variants included — and
+  flags the drifted ones). When a drift is confirmed, reconcile the deck file to match Arena
+  (a `swap --apply` or a hand-edit) so the repo is the source of truth again.
 - **Legality lint and cut candidates are separate from ownership.** `deck.py check`
   answers "do I own this deck"; `deck.py legal <id>` answers "is it a *legal* deck"
   — size vs the format minimum, the copy limit (4, or 1 in singleton formats), and
@@ -263,7 +272,7 @@ docs. This file is the source of truth for the workflow commands in
   modal cards land in several buckets and single-draw cantrips are deliberately
   *not* counted as card advantage. The lint reads the deck's `#: colors:` header,
   so a stale or intentionally-narrow header flags cards as off-color — e.g. the
-  raw 83-card `19` pile is headed `WU` but is really multicolor. Fixing a stale
+  archived raw 83-card `19c` pile is headed `WU` but is really multicolor. Fixing a stale
   header to the deck's real castable colors clears the false positives (e.g. deck
   `13` was corrected `GR`→`GWBR`). Treat a flag as signal to review, not a hard
   failure — it doesn't gate `check_all.py`.
@@ -304,13 +313,16 @@ survives cards being crafted off the wishlist.)
 
 **Regression Scenarios** (manual walks; the Test Command above is the primary gate):
 1. Ingest a batch — `import_arena.py <file>` → `enrich.py` → `validate.py` → `build_gallery.py`. Expect: validate clean, gallery card count == library row count.
-2. Analyze a deck — `deck.py check|mana|tribes|stats|legal|cuts <id>`. Expect: no traceback; mana is hybrid-aware; tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts ranks weakest-fit cards.
+2. Analyze a deck — `deck.py check|mana|tribes|stats|legal|cuts|text|verify <id>` and roster-wide `deck.py audit` / `deck.py suggest-homes <card>`. Expect: no traceback; mana is hybrid-aware; tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts/text print full oracle text; audit scores every deck TUNE/craft/review/ok; verify diffs a pasted Arena export against the stored deck.
 3. Refresh derived data — `build_mana.py` → `tag_synergies.py --force` → `build_pool.py` → `build_gallery.py` → `check_all.py`. Expect: check_all reports all invariants hold.
 4. Edit via the app — start `scripts/app.py`, change a quantity and Save, add a card, then open a deck (Decks →), change a card's quantity and Save; run `check_all.py`. Expect: CSV + deck file updated, `.bak`s written, and all invariants hold (INV-02 since add appends a card-mana.csv row; INV-04 since deck save re-parses cleanly).
 
 **Frozen Subsystems:** none.
 
-**Deploy Command:** N/A — this project has no deploy step (data + local tooling; changes ship by commit/push).
+**Deploy Command:** Data + local tooling ship by commit/push (no build/release step). The
+one deployed artifact is the **roster dashboard**: `.github/workflows/pages.yml` rebuilds
+`build_dashboard.py` offline and publishes it to **GitHub Pages on every push to `main`**
+(no manual step). Everything else is read/run locally.
 
 ## Command provenance
 

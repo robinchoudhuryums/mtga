@@ -42,7 +42,7 @@
 
 # Lands
 1 Planetarium of Wan Shi Tong (TLA) 259
-1 The Walls of Ba Sing Se (TLA) 261
+1 Bloom Tender (ECL) 166
 2 Baxter Building (MSH) 261
 1 Surveillance Room (MSH) 274
 6 Forest (MSH) 295

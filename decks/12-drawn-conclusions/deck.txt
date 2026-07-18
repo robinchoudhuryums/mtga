@@ -7,9 +7,8 @@
 # Nonland
 1 Kid Loki (MSH) 63
 1 Heartless Act (TLA) 103
-1 Super Intelligence (MSH) 77
+2 Super Intelligence (MSH) 77
 1 Wan Shi Tong, Librarian (TLA) 78
-1 Futurist Forge (MSH) 55
 1 Loki, God of Mischief (MSH) 65
 1 Silent Hallcreeper (DSK) 72
 1 Amazing Acrobatics (SPM) 25
@@ -51,6 +50,5 @@
 11 Island (MSH) 290
 
 # Flex — suggested swaps (all OWNED, 0 wildcards — single-black to respect the splash). See: deck.py flex 12
-#~ -Futurist Forge | +Bitter Triumph | OWNED (R) ~ 3RD ANSWER: {1}{B} destroy target creature or planeswalker — a third flexible removal spell if you want to lean control. Cost: a little draw-engine depth (Futurist Forge). Take it vs midrange/planeswalker metas
-#~ -Futurist Forge | +Disdainful Stroke | OWNED (U) ~ COUNTER ALT: {1}{U} counter a spell MV>=4 — swap this in instead of the 3rd removal if your meta is full of bombs/board wipes (you already run Amazing Acrobatics as a soft counter)
+#~ note: applied — Super Intelligence in for Futurist Forge.
 #~ note: applied — Long Goodbye (uncounterable removal, hits planeswalkers) over Rewrite History, and Heartless Act (cheap hard removal) over Pym Particles. The deck's real gap was HARD removal, not interaction volume (Amazing Acrobatics / Wanderwine Farewell / Trickster's Stratagem are soft answers it already runs). Craft nothing — every answer is in your collection.
