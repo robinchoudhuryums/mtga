@@ -14,7 +14,7 @@
 1 Avengers Assemble! (MSH) 6
 1 White Tiger, Ava Ayala (MSH) 196
 1 The Unbeatable Squirrel Girl (MSH) 193
-1 Doc Samson, Super Psychiatrist (MSH) 164
+1 Elspeth, Storm Slayer (TDM) 11
 1 Spider-Man, Brooklyn Visionary (SPM) 115
 1 Wakandan Royal Guard (MSH) 195
 1 The Thing, Ben Grimm (MSH) 190
@@ -27,7 +27,7 @@
 1 Battle Menu (FIN) 9
 1 Leader's Talent (TMT) 13
 1 Spectacular Tactics (SPM) 15
-1 Web-Shooters (SPM) 22
+1 Longstalk Brawl (BLB) 182
 1 Friendly Neighborhood (SPM) 8
 1 Go Nuts! (MSH) 168
 1 Anafenza, Unyielding Lineage (TDM) 2
@@ -37,7 +37,7 @@
 1 Avatar Destiny (TLA) 165
 1 Primeval Bounty (FDN) 644
 1 Michelangelo, Mutant BFF (TMT) 120
-1 New Generation's Technique (TMT) 126
+1 Kapow! (SPM) 103
 1 Invisible Woman, Sue Storm (MSH) 17
 1 Flopsie, Bumi's Buddy (TLA) 179
 1 Wildwood Scourge (FDN) 236

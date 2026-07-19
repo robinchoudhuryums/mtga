@@ -60,6 +60,11 @@ Chocobo Racetrack,Artifact,"Landfall — Whenever a land you control enters, cre
 "Saheeli, the Sun's Brilliance",Legendary Creature — Human Artificer,"{U}{R}, {T}: Create a token that's a copy of another target creature or artifact you control, except it's an artifact in addition to its other types. It gains haste. Sacrifice it at the beginning of the next end step.",U/R,Human; Artificer; sacrifice; tokens,LCI,239,Mythic,25,"2-mana PW, copy a creature/artifact each turn",7.5
 Bedrock Tortoise,Creature — Turtle,"During your turn, creatures you control have hexproof.
 Each creature you control with toughness greater than its power assigns combat damage equal to its toughness rather than its power.",G,Turtle,LCI,176,Rare,20b,toughness-matters payoff (Doran: assigns dmg = toughness) + team hexproof — exactly 20b's plan,6.5
+Kutzil's Flanker,Creature — Cat Warrior,"Flash
+When this creature enters, choose one —
+• Put a +1/+1 counter on this creature for each creature that left the battlefield under your control this turn.
+• You gain 2 life and scry 2.
+• Exile target player's graveyard.",W,Cat; Warrior; counters; reanimator; graveyard; lifegain; removal; etb; scry; flash; tempo; selection,LCI,20,Rare,7,"Flash G flyer, big counters OR removal — the flexible instant-speed interaction Earth's Mightiest (7) lacks",6
 Restless Anchorage,Land,"This land enters tapped.
 {T}: Add {W} or {U}.
 {1}{W}{U}: Until end of turn, this land becomes a 2/3 white and blue Bird creature with flying. It's still a land.
