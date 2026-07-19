@@ -42,7 +42,7 @@ Deck
 1 The Dawning Archaic (SOS) 1
 # Interaction — cheap burn (owned) + kept removal
 1 Lightning Strike (MSH) 142
-1 Galvanize (MKM) 128
+1 Thunder Magic (FIN) 165
 1 Vibrant Outburst (SOS) 240
 1 Tome Blast (SOS) 135
 1 Iroh's Demonstration (TLA) 141
