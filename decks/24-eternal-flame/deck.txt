@@ -54,7 +54,7 @@ Deck
 # Lands
 8 Mountain (MSH) 294
 9 Plains (MSH) 288
-1 The Cave of Two Lovers (TLA) 126
+1 The Legend of Roku (TLA) 145
 1 Fire Nation Palace (TLA) 268
 1 Kavaron, Memorial World (EOE) 255
 1 Abraded Bluffs (OTJ) 251

@@ -24,7 +24,7 @@ Deck
 1 Quake, Agent of S.H.I.E.L.D. (MSH) 32
 1 U.S.Agent, John Walker (MSH) 236
 1 Borough Backup (MSH) 7
-1 Hero in Training (MSH) 16
+1 Origin of the Avengers (MSH) 28
 1 The Sentry, Golden Guardian (MSH) 35
 
 # Go-wide / anthems / tokens
@@ -47,7 +47,7 @@ Deck
 1 Stasis Snare (FDN) 581
 1 Pacifism (ANB) 16
 1 Elspeth, Storm Slayer (TDM) 11
-1 Focus Fire (EOE) 18
+1 Dwarven Castle Guard (FIN) 18
 1 Red Guardian, Super-Soldier (MSH) 34
 1 Cosmogrand Zenith (EOE) 9
 1 Starfall Invocation (BLB) 34
