@@ -9,19 +9,18 @@
 1 The Kingpin of Crime (MSH) 220
 1 Hinterland Sanctifier (FDN) 730
 1 Ajani's Pridemate (FDN) 135
-1 Wanderbrine Preacher (ECL) 41
 1 Leonardo, Cutting Edge (TMT) 15
 1 Fiendish Panda (FDN) 120
 1 Bloodthirsty Conqueror (FDN) 58
 1 Sanguine Syphoner (FDN) 68
 1 Vengeful Bloodwitch (FDN) 76
 1 Vampire Nighthawk (FDN) 186
-1 Mai, Scornful Striker (TLA) 109
+1 Karai's Technique (TMT) 152
 1 Shark Shredder, Killer Clone (TMT) 73
 1 Syr Vondam, the Lucent (EOE) 232
 1 Cloak and Dagger, Entwined (MSH) 211
 1 Elenda, Saint of Dusk (FDN) 119
-1 Lunar Convocation (BLB) 223
+2 Bake into a Pie (FDN) 169
 1 Lita, Little Orphan Amphibian (TMT) 19
 1 Dark Leo & Shredder (TMT) 142
 1 Splinter, Hamato Yoshi (TMT) 79

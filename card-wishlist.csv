@@ -69,7 +69,7 @@ This land enters tapped.
 When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W/G,Forest; Plains; graveyard; mana; etb; selection; surveil,MKM,263,Rare,21,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks,6
 Shadowy Backstreet,Land — Plains Swamp,"({T}: Add {W} or {B}.)
 This land enters tapped.
-When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W/B,Plains; Swamp; graveyard; mana; etb; selection; surveil,MKM,268,Rare,21,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks,6
+When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W/B,Plains; Swamp; graveyard; mana; etb; selection; surveil,MKM,268,Rare,21,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also de-taplands + firms black in deck 20 (Honor Among Thieves) — fungible.,6
 Sharp-Eyed Rookie,Creature — Human Detective,"Vigilance
 Whenever a creature you control enters, if its power is greater than this creature's power or its toughness is greater than this creature's toughness, put a +1/+1 counter on this creature and investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",G,Human; Detective; counters; card draw; sacrifice; tokens; clue; investigate; vigilance; combat,MKM,176,Rare,13,grows + investigates when a bigger creature enters — its own flex-noted home (counters/value),5.5
 Underground Mortuary,Land — Swamp Forest,"({T}: Add {B} or {G}.)
@@ -94,7 +94,7 @@ Spells your opponents cast from graveyards or from exile cost {2} more to cast."
 Blooming Marsh,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {B} or {G}.",B/G,mana,OTJ,266,Rare,21,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible.,6
 Concealed Courtyard,Land,"This land enters tapped unless you control two or fewer other lands.
-{T}: Add {W} or {B}.",W/B,mana,OTJ,268,Rare,21,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks,6
+{T}: Add {W} or {B}.",W/B,mana,OTJ,268,Rare,21,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also de-taplands + firms black in deck 20 (Honor Among Thieves) — fungible.,6
 "Lilah, Undefeated Slickshot",Legendary Creature — Human Rogue,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 Whenever you cast a multicolored instant or sorcery spell from your hand, exile that spell instead of putting it into your graveyard as it resolves. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/R,Human; Rogue; graveyard; pump; plot; tempo; cost-reduction; prowess; spellslinger,OTJ,217,Rare,25,prowess 3-drop that impulses off your spells,6.0
 "Malcolm, the Eyes",Legendary Creature — Siren Pirate,"Flying, haste
