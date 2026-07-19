@@ -1,0 +1,75 @@
+#: name: Enchantress — Competitive (GWR)
+#: format: Standard
+#: colors: GWR
+#: based-on: 29
+#: protect: Yuna, Hope of Spira; Terra, Magical Adept
+#: archetype: Naya (G/W/R) enchantments MIDRANGE, spike-tuned. Same Yuna/Terra core as deck 29
+#: archetype: but the slow build-around enchantments are cut for a real removal suite + bombs.
+#: notes: Competitive rebuild of deck 29 (win-rate over flavor). CUT the durdle: the quest
+#: notes: Ascensions (need 4 triggers), the 3-turn value Sagas (Fenrir / Sweettooth / Cave),
+#: notes: Alien Invasion, Call Damage Control, Friendly Neighborhood, War Squeak, Aftermath
+#: notes: Analyst, Sylvan Scavenging, Pain for All, Eusocial Engineering, Loading Zone.
+#: notes: ADD 9 owned removal (Stasis Snare exile, Abrade, Lightning Strike, Bombard, Pacifism,
+#: notes: Valorous Stance, Unforgiving Aim, Harsh Annotation) + the Dion bomb + Super Strength,
+#: notes: and craft Slumbering Keepguard as the enchantress draw engine (its one craft).
+#: notes: Interaction jumps from 1 → ~10. Manabase +1 land (24) for the heavier top-end.
+
+# Threats / bombs
+1 Terra, Magical Adept (FIN) 245
+1 Yuna, Hope of Spira (FIN) 250
+1 Dion, Bahamut's Dominant (FIN) 16
+1 Lumra, Bellow of the Woods (BLB) 183
+1 World War Hulk (MSH) 197
+1 Summon: Titan (FIN) 204
+1 She-Hulk, Jade Defender (MSH) 188
+1 Savior of the Sleeping (WOE) 28
+1 Enduring Vitality (DSK) 176
+1 Enduring Courage (DSK) 133
+1 Additive Evolution (SOS) 139
+1 Topiary Lecturer (SOS) 165
+
+# Enchantment engine / card advantage
+1 Political Triumph (MSH) 31
+1 Garruk's Uprising (FDN) 220
+1 Anthem of Champions (FDN) 116
+1 Origin of the Avengers (MSH) 28
+1 Slumbering Keepguard (WOE) 29
+
+# Resilient auras / reach
+1 Unflinching Courage (FDN) 722
+1 Angelic Destiny (FDN) 565
+1 Avatar Destiny (TLA) 165
+1 Super Strength (MSH) 189
+1 Death to Our Enemies (MSH) 127
+1 Heroic Feast (MSH) 172
+1 Claim the Kingdom (MSH) 163
+
+# Removal / interaction
+1 Spiral into Solitude (ECL) 36
+1 Origin of Metalbending (TLA) 187
+1 Stasis Snare (FDN) 581
+1 Pacifism (ANB) 16
+1 Abrade (FDN) 188
+1 Lightning Strike (MSH) 142
+1 Bombard (EOE) 129
+1 Unforgiving Aim (ECL) 200
+1 Valorous Stance (FDN) 583
+1 Harsh Annotation (SOS) 18
+1 Super-Soldier Serum (MSH) 38
+1 Frantic Strength (DSK) 179
+
+# Lands (24 — Naya fixing: 11 owned duals + 13 basics)
+1 Restless Ridgeline (LCI) 283
+1 Blossoming Sands (M21) 244
+1 Hushwood Verge (DSK) 261
+1 Gathering Place (MSH) 266
+1 Birnin Zana Plaza (MSH) 262
+1 Rugged Highlands (FDN) 265
+1 Gruul Guildgate (RNA) 250
+1 Omashu City (TLA) 275
+1 Wind-Scarred Crag (FDN) 271
+1 Temple of Triumph (FDN) 705
+1 Abraded Bluffs (OTJ) 251
+6 Forest
+4 Plains
+3 Mountain
