@@ -1,5 +1,6 @@
 #: name: Spellstorm
 #: format: Standard
+#: tier: B — Izzet spells-matter/storm; 9 interaction + Thousand Year Storm payoff, singleton-inconsistent
 #: colors: UR
 #: notes: Izzet (U/R) storm / spells-matter. Cost reduction (Scarlet Witch,
 #: notes: Stormcatch Mentor, Tolarian Terror, Emperor of Palamecia, Electro) into

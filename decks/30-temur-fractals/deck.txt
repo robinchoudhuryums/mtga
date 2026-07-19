@@ -1,5 +1,6 @@
 #: name: Temur Fractals
 #: format: Standard
+#: tier: A — Temur Fractals counters/ramp; powerful engine + card advantage + ramp — only 2 interaction is the one gap
 #: colors: GUR
 #: protect: Emil, Vastlands Roamer; Loading Zone; Growth Curve; Quandrix Charm
 #: archetype: Temur (G/U/R) +1/+1 counters & Fractals on a lands-matter ramp shell. Built from the

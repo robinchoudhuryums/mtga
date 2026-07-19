@@ -1,5 +1,6 @@
 #: name: Sacrifices
 #: format: Standard
+#: tier: B — Rakdos aristocrats; coherent sac engine + 7 interaction (strong B, near A)
 #: colors: BRG
 #: archetype: Rakdos (B/R, light green) sacrifice / aristocrats.
 #: notes: Rakdos (B/R) sacrifice / aristocrats, black-primary with a light green splash.

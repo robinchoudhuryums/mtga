@@ -1,5 +1,6 @@
 #: name: Hulk Smash
 #: format: Standard
+#: tier: A — Gruul aggro/smash; low curve (2.81) + 8 interaction
 #: colors: RG
 #: archetype: Gruul (R/G) big creatures / smash.
 #: notes: Gruul (R/G) — big creatures / smash.

@@ -1,5 +1,6 @@
 #: name: Earth's Mightiest
 #: format: Standard
+#: tier: B — Selesnya go-wide heroes; fast clock but thin interaction (3)
 #: colors: GW
 #: archetype: Selesnya (G/W) Avengers heroes go-wide.
 #: notes: Selesnya (G/W) — Avengers heroes go-wide.

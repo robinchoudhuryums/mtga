@@ -1,5 +1,6 @@
 #: name: Bloodbending
 #: format: Standard
+#: tier: C — Dimir mill; mill is a weak Bo1 ladder plan + thin interaction (2)
 #: colors: UB
 #: archetype: Dimir (U/B) mill / card-advantage control — Hama + waterbend, graveyard payoffs.
 #: notes: Dimir (U/B) mill / card-advantage control, built around Hama, the Bloodbender

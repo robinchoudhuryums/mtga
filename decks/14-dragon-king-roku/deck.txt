@@ -1,5 +1,6 @@
 #: name: Dragon King Roku
 #: format: Standard
+#: tier: B — Mardu dragons midrange; bombs + 8 interaction, capped by 3-color fixing
 #: colors: WBR
 #: archetype: Mardu (W/B/R) Fire Nation dragons / firebending midrange.
 #: notes: Mardu (W/B/R) — Fire Nation / dragons midrange.

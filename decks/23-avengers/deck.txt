@@ -1,5 +1,6 @@
 #: name: Avengers
 #: format: Standard
+#: tier: B — Mono-W go-wide/counters; payoffs but slow curve (3.6), 6 one-two-drops
 #: colors: W
 #: notes: Mono-white Hero go-wide/counters — Avengers Assemble + Captain America +
 #: notes: Phil Coulson, with a TMT secondary engine (Raph & Leo extra combat,

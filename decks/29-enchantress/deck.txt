@@ -1,5 +1,6 @@
 #: name: Enchantress
 #: format: Standard
+#: tier: C — Naya enchantments (creative-first); slow build-arounds, 4 interaction
 #: colors: GWR
 #: protect: Yuna, Hope of Spira; Terra, Magical Adept; Political Triumph; Savior of the Sleeping
 #: archetype: Naya (G/W/R) enchantments-matter — Yuna anchors an enchantment-recursion engine

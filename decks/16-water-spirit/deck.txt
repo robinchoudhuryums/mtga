@@ -1,5 +1,6 @@
 #: name: Water Spirit
 #: format: Standard
+#: tier: B — Azorius tempo; evasive, modest (3) interaction
 #: colors: WU
 #: archetype: Azorius (W/U) Water Tribe spirits / waterbend tempo.
 #: notes: Azorius (W/U) — Water Tribe / spirits tempo.

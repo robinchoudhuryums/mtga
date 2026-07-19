@@ -1,5 +1,6 @@
 #: name: Dead or Alive
 #: format: Standard
+#: tier: B — Abzan reanimator; powerful top-end but 3-color + singleton = inconsistent
 #: colors: WBG
 #: archetype: Abzan (W/B/G) reanimator — graveyard value.
 #: notes: Abzan (W/B/G) — graveyard value / reanimator.

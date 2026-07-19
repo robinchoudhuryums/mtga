@@ -1,5 +1,6 @@
 #: name: Air Nomads
 #: format: Standard
+#: tier: B — Azorius fliers tempo; evasive clock but only 2 interaction
 #: colors: WU
 #: archetype: Azorius (W/U) Air Nomads fliers / airbend tempo.
 #: notes: Azorius (W/U) — Air Nomads fliers / tempo.

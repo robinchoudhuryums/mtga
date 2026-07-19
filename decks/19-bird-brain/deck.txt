@@ -1,5 +1,6 @@
 #: name: Bird Brain
 #: format: Standard
+#: tier: D — Bant tokens — incomplete (10 cards to craft); ungradeable as-is
 #: colors: GWU
 #: archetype: Bant (G/W/U) go-wide tokens — Chocobo landfall Birds + copy-army + flyers/anthems.
 #: notes: Promoted from variant 19a (Bant Tokens) to primary. Bant (GWU) go-wide:

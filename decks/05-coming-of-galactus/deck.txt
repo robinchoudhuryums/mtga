@@ -1,5 +1,6 @@
 #: name: Coming of Galactus
 #: format: Standard
+#: tier: B — Golgari graveyard midrange; grindy value, 7 interaction
 #: colors: BG
 #: archetype: Golgari (B/G) graveyard midrange / value.
 #: notes: Golgari (B/G) — graveyard / midrange value.

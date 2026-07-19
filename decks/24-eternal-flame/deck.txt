@@ -1,5 +1,6 @@
 #: name: Eternal Flame
 #: format: Standard
+#: tier: B — Boros impulse; card-advantage engine + 7 interaction, high curve (3.8)
 #: colors: WR
 #: notes: Boros impulse / cast-from-exile. Quintorius Kand + Thor, God of Thunder as
 #: notes: payoffs; a dense "exile the top card, play it" package (Practiced

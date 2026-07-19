@@ -1,5 +1,6 @@
 #: name: Villainous
 #: format: Standard
+#: tier: B — Mono-B control; consistent mana + 7 interaction but slow, finisher-light
 #: colors: B
 #: archetype: Mono-black villains control-midrange — graveyard / sacrifice.
 #: notes: Mono-black villains / control-midrange.
