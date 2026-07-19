@@ -67,3 +67,6 @@
 1 Serpent's Pass (TLA) 279
 13 Island (MSH) 290
 4 Swamp (MSH) 292
+
+# Flex — notes (comments; not part of the 60).
+#~ note: NEW PACK CARD — Bloodchief Ascension (owned; 'Bloodbender's Rise' reskin, {B} Mythic): after 3 quest counters, EVERY opponent-mill drains 2 (they lose 2 / you gain 2). The kill this mill deck lacks + flavor-perfect (Hama bloodbending). Slot when we tune deck 22.

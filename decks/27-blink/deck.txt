@@ -68,3 +68,4 @@
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 27
 #~ -Triceraton Commander | +Cloudblazer | OWNED: trade the X-cost ETB (blink resets X to 0 → 0 tokens) for a flat "gain 2 life, draw 2 cards" ETB flyer that pays off on every blink. Raises the curve (2→5) but is real card advantage in the engine.
+#~ note: NEW PACK CARD — Waxen Shapethief (owned, {3}{U} flash: enter as a copy of a creature/artifact you control, cycling {2}): flexible ETB/tempo value for the blink shell. Consider when we tune deck 27.

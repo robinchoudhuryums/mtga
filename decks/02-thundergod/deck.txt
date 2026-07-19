@@ -54,3 +54,4 @@
 #~ note: all three are CRAFT targets (not owned) and Standard-legal. Priority: Charming Scoundrel. AVOID Ash Zealot — it punishes ALL graveyard casting, hitting your own Mayhem/flashback.
 
 #~ -Photon Blast Barrage | +Conduct Electricity | SIDEGRADE (owned): kills bigger (6 dmg) but 5 mana is slow vs the go-wide Photon Blast — lateral; take only if you want to kill fatter creatures.
+#~ note: NEW PACK CARD — Thunder Magic (owned, {R} Tiered burn: 2 dmg / 4 dmg for {3} / more for {5}): cheap scalable removal, premium in mono-red. Consider slotting when we tune deck 2.
