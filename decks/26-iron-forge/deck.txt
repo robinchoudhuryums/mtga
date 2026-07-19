@@ -28,7 +28,7 @@
 1 Machinesmith Automaton (MSH) 144
 1 Weftstalker Ardent (EOE) 169
 1 Fin Fang Foom (MSH) 129
-1 War Machine, Legacy of Iron (MSH) 238
+1 Abrade (FDN) 188
 1 Viv Vision, Teen Synthezoid (MSH) 256
 1 Super-Adaptoid (MSH) 250
 1 Technodrome (TMT) 179
@@ -58,5 +58,5 @@
 
 # Flex — parked from the 73-pile / craft options. See: deck.py flex 26
 #~ -Cosmic Cube | +The Walls of Ba Sing Se | OWNED: re-add the 8-mana anchor (all your permanents indestructible) if you want top-end board protection; parked because it partly overlaps Krang
-#~ -War Machine, Legacy of Iron | +Chainsaw | CRAFT (R): the one on-theme removal upgrade (ETB 3 dmg, grows with deaths) if interaction keeps lagging
+#~ note: applied — Abrade in for War Machine, Legacy of Iron.
 #~ note: Cuts from base 26 → Bullseye (off-color B), Broadcast Takeover, Radiant Lotus, Waterbending Scroll, Bender's Waterskin, Mind Transfer Protocol, I Am Iron Man, Relm's Sketching, Nanoform Sentinel, Diamond Pick-Axe, Bespoke Bō, Goldvein Pick, Mirrormind Crown, The Walls of Ba Sing Se; +The Vision.
