@@ -3344,3 +3344,12 @@ Impostor Syndrome,Enchantment,"Whenever a nontoken creature you control deals co
 Whenever a creature you control with power or toughness 1 or less dies, target opponent loses 2 life and you gain 2 life.",B,Vampire; Druid; lifegain; deathtouch; combat; removal,SOS,74,1
 Poisoner's Apprentice,Creature — Orc Warlock,"Infusion — When this creature enters, target creature an opponent controls gets -4/-4 until end of turn if you gained life this turn.",B,Orc; Warlock; etb; removal; infusion,SOS,92,1
 Vibrant Outburst,Instant,Vibrant Outburst deals 3 damage to any target. Tap up to one target creature.,U/R,burn,SOS,240,1
+Waxen Shapethief,Creature — Shapeshifter,"Flash
+You may have this creature enter as a copy of an artifact or creature you control.
+Cycling {2} ({2}, Discard this card: Draw a card.)",U,Shapeshifter; card draw; flash; tempo; cycling,DFT,74,1
+Veteran Beastrider,Creature — Human Knight,"At the beginning of your end step, untap each creature you control.
+{2}{G}{W}: Creatures you control get +1/+1 until end of turn.",W/G,Human; Knight; pump,DFT,226,1
+Thunder Magic,Instant,"Tiered (Choose one additional cost.)
+• Thunder — {0} — Thunder Magic deals 2 damage to target creature.
+• Thundara — {3} — Thunder Magic deals 4 damage to target creature.
+• Thundaga — {5}{R} — Thunder Magic deals 8 damage to target creature.",R,burn; thunder; thundaga; tiered; thundara,FIN,165,1
