@@ -1,5 +1,6 @@
 #: name: Dino Stampede — Owned Build
 #: format: Standard
+#: tier: C — Dino Stampede owned build; solid Naya dino midrange but thin interaction (2) and missing the rare tribal payoffs
 #: colors: RGW
 #: based-on: 28
 #: archetype: 28 variant built from owned cards — Naya Dinosaurs + Soldier go-wide. Now with the crafted removal (Itzquinth, Triumphant Chomp) and more Dinos (Scalestorm, Dracosaur, Belligerent) swapped in over the off-plan filler. Still missing the rare/mythic tribal payoffs (Regal Imperiosaur lord, Gishath), so it's a solid Dino midrange, not yet full tribal.

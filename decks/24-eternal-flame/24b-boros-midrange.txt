@@ -1,5 +1,6 @@
 #: name: Eternal Flame — Boros Midrange (Route B)
 #: format: Standard
+#: tier: B — Eternal Flame Boros midrange (Route B); grindy Treasure/ramp goodstuff, 8 interaction
 #: colors: WR
 #: based-on: deck.txt
 #: archetype: 24 variant — grindy Boros midrange goodstuff. Treasure/ramp (Brass's

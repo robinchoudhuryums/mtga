@@ -1,5 +1,6 @@
 #: name: Enchantress — Competitive (GWR)
 #: format: Standard
+#: tier: B — Enchantress competitive; spike-tuned, 10 interaction + Dion bomb, but a thin owned threat base caps it at mid-ladder
 #: colors: GWR
 #: based-on: 29
 #: protect: Yuna, Hope of Spira; Terra, Magical Adept

@@ -1,5 +1,6 @@
 #: name: Spellstorm — Full Card Pool (pre-trim)
 #: format: Standard
+#: tier: D — Spellstorm 86-card pre-trim pile — oversized reference, not a legal deck (play primary 25)
 #: colors: UR
 #: based-on: deck.txt
 #: archetype: 25 variant — the original 86-card Izzet pile before tuning. Kept for

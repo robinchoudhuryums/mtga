@@ -1,5 +1,6 @@
 #: name: Gastromancer — 4-Color Artifact Goodstuff
 #: format: Standard
+#: tier: B — Gastromancer 4-color artifact goodstuff; colorless bombs + heavy fixing, capped by 4-color consistency
 #: colors: WBRG
 #: based-on: deck.txt
 #: archetype: 21 variant — 4-color (WBRG) big-artifact goodstuff; colorless bombs + heavy any-color fixing; least consistent of the three.
