@@ -3326,3 +3326,21 @@ Follow the Lumarets,Sorcery,"Infusion — Look at the top four cards of your lib
 Improvisation Capstone,Sorcery — Lesson,"Exile cards from the top of your library until you exile cards with total mana value 4 or greater. You may cast any number of spells from among them without paying their mana costs.
 Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",R,Lesson; paradigm,SOS,120,1
 "Tatyova, Benthic Druid",Legendary Creature — Merfolk Druid,"Landfall — Whenever a land you control enters, you gain 1 life and draw a card.",U/G,Merfolk; Druid; lifegain; card draw; landfall; lands; ramp,FDN,247,1
+Abzan Devotee,Creature — Dog Cleric,"{1}: Add {W}, {B}, or {G}. Activate only once each turn.
+{2}{B}: Return this card from your graveyard to your hand.",W/B/G,Dog; Cleric; graveyard,TDM,68,1
+"Lorehold, the Historian",Legendary Creature — Elder Dragon,"Flying, haste
+Each instant and sorcery card in your hand has miracle {2}. (You may cast a card for its miracle cost when you draw it if it's the first card you drew this turn.)
+At the beginning of each opponent's upkeep, you may discard a card. If you do, draw a card.",W/R,Elder; Dragon; card draw; flying; evasion; haste; aggro,SOS,201,1
+Scavenger's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+Whenever one or more creatures you control die, create a Food token. This ability triggers only once each turn.
+{1}{B}: Level 2
+Whenever you sacrifice a permanent, target player mills two cards.
+{2}{B}: Level 3
+At the beginning of your end step, you may sacrifice three other nonland permanents. If you do, return a creature card from your graveyard to the battlefield with a finality counter on it.",B,Class; counters; reanimator; graveyard; mill; sacrifice; tokens; food,BLB,111,1
+"Raphael, the Nightwatcher",Legendary Creature — Mutant Ninja Turtle,"Sneak {1}{R}{R} (You may cast this spell for {1}{R}{R} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)
+Attacking creatures you control have double strike.",R,Mutant; Ninja; Turtle; sneak; tempo; cost-reduction,TMT,103,1
+Impostor Syndrome,Enchantment,"Whenever a nontoken creature you control deals combat damage to a player, create a token that's a copy of it, except it isn't legendary.",U,tokens,SPM,34,1
+"Arnyn, Deathbloom Botanist",Legendary Creature — Vampire Druid,"Deathtouch
+Whenever a creature you control with power or toughness 1 or less dies, target opponent loses 2 life and you gain 2 life.",B,Vampire; Druid; lifegain; deathtouch; combat; removal,SOS,74,1
+Poisoner's Apprentice,Creature — Orc Warlock,"Infusion — When this creature enters, target creature an opponent controls gets -4/-4 until end of turn if you gained life this turn.",B,Orc; Warlock; etb; removal; infusion,SOS,92,1
+Vibrant Outburst,Instant,Vibrant Outburst deals 3 damage to any target. Tap up to one target creature.,U/R,burn,SOS,240,1
