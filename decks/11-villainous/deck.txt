@@ -1,6 +1,6 @@
 #: name: Villainous
 #: format: Standard
-#: tier: B — Mono-B control; consistent mana + 7 interaction but slow, finisher-light
+#: tier: B — Mono-B Villain tribal control (strong B / A-adjacent); perfect mono-B mana, bomb-rich top end, deep interaction, and now an on-tribe card-advantage suite (Robot Domination + Tombstone + Arnim Zola). Residual knock: slightly top-heavy curve.
 #: colors: B
 #: archetype: Mono-black villains control-midrange — graveyard / sacrifice.
 #: notes: Mono-black villains / control-midrange.
@@ -12,7 +12,8 @@
 1 Baron Strucker, HYDRA Overlord (MSH) 88
 1 Doom Reigns Supreme (MSH) 96
 1 Baron Helmut Zemo (MSH) 87
-2 HYDRA Troopers (MSH) 101
+1 HYDRA Troopers (MSH) 101
+1 Arnim Zola, Bio-Fanatic (MSH) 86
 1 Klaw, Sonic Subjugator (MSH) 103
 1 Grim Reaper, Lethal Legionnaire (MSH) 98
 1 Thunderbolts Conspiracy (MSH) 117
@@ -31,15 +32,15 @@
 1 Ultron Drone (MSH) 253
 1 Crossbones, Malicious Mercenary (MSH) 91
 1 Doctor Doom (MSH) 95
-1 Auntie's Sentence (ECL) 85
+1 Tombstone, Career Criminal (SPM) 70
 1 Last Gasp (SOS) 86
 1 Lively Dirge (OTJ) 93
 1 Stomped by the Foot (TMT) 82
-1 Anchovy & Banana Pizza (TMT) 57
+1 Bullseye, Death Dealer (MSH) 209
 1 Funeral Room // Awakening Hall (DSK) 100
 1 Kingpin's Enforcers (MSH) 102
 1 Bringer of the Last Gift (LCI) 94
-1 Emeritus of Woe (SOS) 80
+1 Robot Domination (MSH) 111
 1 Scrounge for Eternity (EOE) 114
 
 # Lands
@@ -50,4 +51,6 @@
 # Flex — suggested swaps, weighted. See: deck.py flex 11
 #~ note: applied — added 4 owned bombs: Doctor Doom (-Deadly Precision), Bringer of the Last Gift (-Coiling Rebirth), Villainous Wrath (-Embrace Oblivion), Armaggon Future Shark (-1 Thunderbolts Conspiracy, now 1x). Bringer/Wrath are symmetric wipes rebuilt via reanimation; Armaggon is one-sided flash removal.
 #~ note: applied — Baron Strucker (tribe-wide {1}-off + connive engine) over Decoy Ploy (most redundant recursion, hand-only), and Kingpin's Enforcers (Villain sac-to-draw) over Vito's Inquisitor. Fire Navy Trebuchet kept: a two-way Defender+reach blocker / recurring 2/1 flyer.
-#~ note: CRAFT — Overlord of the Balemurk (M) ★: Impending {1}{B}; mill 4 + return a creature/PW to hand on enter/attack -- a recurring reanimator value engine. Nullpriest of Oblivion (R) ★: flexible {1}{B} lifelink-menace body OR kicked reanimation. Both slot into the graveyard plan; cut a weaker recursion/removal slot.
+#~ note: applied — on-tribe card-advantage/engine suite (all owned, 0 WC): Robot Domination (-Emeritus of Woe) draws on creature-death + makes 3 Villain tokens; Tombstone, Career Criminal (-Auntie's Sentence) recurs a Villain + 2nd {1}-off cost reducer; Arnim Zola, Bio-Fanatic (-1 HYDRA Troopers, now 1x) repeatable Villain-token mana sink; Bullseye, Death Dealer (-Anchovy & Banana Pizza) repeatable removal/reach + finisher (B/R hybrid, cast for {2}{B}).
+#~ +The Masters of Evil | OWNED (parked): {5}{B} tribal anthem (+2/+1 to Villains) + discard-to-tutor a Plan. A real finisher but a 6-drop into an already top-heavy curve — only add by cutting Ultron Drone or Too Evil to Stay Dead (see below), accepting a heavier top end.
+#~ note: CRAFT — Overlord of the Balemurk (M): off-tribe (Avatar Horror, no payoff synergy) here — primarily a deck-5 card; the owned Robot Domination now fills the on-tribe card-advantage role it would have.
