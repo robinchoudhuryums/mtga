@@ -1,7 +1,7 @@
 #: name: Iron Forge
 #: format: Standard
-#: tier: B — Jeskai artifacts/robots; Iron Man/Ultron bombs, moderate interaction, 3-color
-#: colors: WUR
+#: tier: B — Izzet artifacts/robots; Iron Man/Ultron bombs, moderate interaction (tightened from Jeskai to 2-color)
+#: colors: UR
 #: archetype: Jeskai (W/U/R) artifacts + Robot tribal — the finalized playable 60; Iron Man / Ultron payoffs, Dawnsire for removal, The Ten Rings for card advantage.
 #: notes: The tuned, legal 60 (promoted from the old 73-card brew, which is archived
 #: notes: as variant 26b-full-pile). Removed the off-color Bullseye (B) and the weakest
@@ -29,7 +29,7 @@
 1 Weftstalker Ardent (EOE) 169
 1 Fin Fang Foom (MSH) 129
 1 War Machine, Legacy of Iron (MSH) 238
-1 Sami, Wildcat Captain (EOE) 226
+1 Viv Vision, Teen Synthezoid (MSH) 256
 1 Super-Adaptoid (MSH) 250
 1 Technodrome (TMT) 179
 1 Iron Man Armor (MSH) 248
@@ -54,8 +54,7 @@
 1 Castle Doom (MSH) 263
 1 The Gold Saucer (FIN) 279
 10 Mountain (MSH) 294
-10 Island (MSH) 290
-1 Plains (MSH) 288
+11 Island (MSH) 290
 
 # Flex — parked from the 73-pile / craft options. See: deck.py flex 26
 #~ -Cosmic Cube | +The Walls of Ba Sing Se | OWNED: re-add the 8-mana anchor (all your permanents indestructible) if you want top-end board protection; parked because it partly overlaps Krang
