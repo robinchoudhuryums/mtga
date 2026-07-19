@@ -41,10 +41,9 @@
 1 Wick's Patrol (BLB) 121
 1 Cauldron of Essence (SOS) 179
 
-# Lands
+# Lands (owned tidy: −Opulent Palace, a Sultai tapland whose blue is dead here → +Swamp)
 4 Jungle Hollow (M21) 247
-9 Swamp (MSH) 292
-1 Opulent Palace (TDM) 264
+10 Swamp (MSH) 292
 1 Cruel Truths (TDM) 76
 10 Forest (MSH) 296
 1 Visions of Villainy (MSH) 120
