@@ -26,10 +26,10 @@ Deck
 1 Solstice Revelations (TLA) 153
 1 Hex Magic (MSH) 133
 # Firebending / ramp / artifacts
-1 Sozin's Comet (TLA) 154
+1 Clockwork Percussionist (DSK) 130
 1 Sun Warriors (TLA) 244
-1 Brass's Bounty (FDN) 190
-1 Sami, Wildcat Captain (EOE) 226
+1 Zuko, Exiled Prince (TLA) 163
+1 Kellan, Planar Trailblazer (FDN) 91
 # Threats / combat
 1 Aurelia, the Warleader (FDN) 651
 1 Raph & Leo, Sibling Rivals (TMT) 166
