@@ -3357,3 +3357,7 @@ Bloodchief Ascension,Enchantment,"At the beginning of each end step, if an oppon
 Whenever a card is put into an opponent's graveyard from anywhere, if this enchantment has three or more quest counters on it, you may have that player lose 2 life. If you do, you gain 2 life.",B,counters; graveyard; lifegain,TLE,23,1
 "Ennis, Debate Moderator",Legendary Creature — Human Cleric,"When Ennis enters, exile up to one other target creature you control. Return that card to the battlefield under its owner's control at the beginning of the next end step.
 At the beginning of your end step, if one or more cards were put into exile this turn, put a +1/+1 counter on Ennis.",W,Human; Cleric; counters; etb; blink,SOS,14,1
+The Goose Mother,Legendary Creature — Bird Hydra,"Flying
+The Goose Mother enters with X +1/+1 counters on it.
+When The Goose Mother enters, create half X Food tokens, rounded up.
+Whenever The Goose Mother attacks, you may sacrifice a Food. If you do, draw a card.",U/G,Bird; Hydra; counters; card draw; sacrifice; tokens; etb; food; flying; evasion,WOE,204,1

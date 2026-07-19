@@ -274,7 +274,3 @@ Restless Cottage,Land,"This land enters tapped.
 {T}: Add {B} or {G}.
 {2}{B}{G}: This land becomes a 4/4 black and green Horror creature until end of turn. It's still a land.
 Whenever this land attacks, create a Food token and exile up to one target card from a graveyard.",B/G,graveyard; tokens; mana; food,WOE,258,Rare,5,"B/G creature-land for Coming of Galactus (5): permanent fixing, never a dead draw, a 4/4 inevitability threat — the A-lever manland",6.0
-The Goose Mother,Legendary Creature — Bird Hydra,"Flying
-The Goose Mother enters with X +1/+1 counters on it.
-When The Goose Mother enters, create half X Food tokens, rounded up.
-Whenever The Goose Mother attacks, you may sacrifice a Food. If you do, draw a card.",U/G,Bird; Hydra; counters; card draw; sacrifice; tokens; etb; food; flying; evasion,WOE,204,Rare,19a,,7.0
