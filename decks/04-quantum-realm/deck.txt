@@ -1,6 +1,6 @@
 #: name: Quantum Realm
 #: format: Standard
-#: tier: B — Simic +1/+1 counters value midrange; moderate interaction, singleton-inconsistent
+#: tier: B — Simic +1/+1 counters value midrange (strong B); added scalable counters-payoff card advantage (Wan Shi Tong + Teo + Knowledge Seeker) and on-theme interaction (Glen Elendra Guardian counter). Residual: singleton-inconsistent (the heuristic CA stat undercounts creature-based draw here).
 #: colors: UG
 #: archetype: Simic (U/G) +1/+1 counters / value.
 #: notes: Simic (U/G) — +1/+1 counters / value.
@@ -10,7 +10,7 @@
 1 Ant-Man, Colony Commander (MSH) 201
 1 Justice, Vance Astrovik (MSH) 61
 1 Stature, Size Shifter (MSH) 76
-1 S.H.I.E.L.D. Deployment Drone (MSH) 73
+1 Wan Shi Tong, Librarian (TLA) 78
 1 Ka-Zar of the Savage Land (MSH) 174
 1 She-Hulk, Jade Defender (MSH) 188
 1 Doc Samson, Super Psychiatrist (MSH) 164
@@ -20,17 +20,17 @@
 1 Training Regimen (MSH) 192
 1 Pet Avengers (MSH) 178
 1 Quandrix, the Proof (SOS) 218
-1 Thirst for Knowledge (MSH) 79
+1 Teo, Spirited Glider (TLA) 74
 1 Mole Man, Moloid Master (MSH) 177
 1 Bite Down (FDN) 212
 1 Crustacean Commando (TMT) 33
 1 Mutant Chain Reaction (TMT) 125
-1 Negate (TMT) 47
+1 Glen Elendra Guardian (ECL) 51
 1 Ooze Spill (TMT) 48
 1 Renet, Temporal Apprentice (TMT) 50
 1 Utrom Scientists (TMT) 56
 1 Ray Fillet, Man Ray (TMT) 49
-1 Kitsune, Dragon's Daughter (TMT) 41
+1 Knowledge Seeker (TLA) 60
 1 Bespoke Bō (TMT) 31
 1 Sewer-veillance Cam (TMT) 53
 1 Donatello, Turtle Techie (TMT) 37
@@ -52,7 +52,6 @@
 1 Breeding Pool (EOE) 251
 
 # Flex — STANDARD-LEGAL craftable +1/+1-counter payoffs. See: deck.py flex 4
-#~ -Bespoke Bō | +The Goose Mother | CRAFT (R): scalable GU flyer — enters with X counters, makes Food, and draws off counters. The payoff + card advantage the deck wants
-#~ -Utrom Scientists | +Case of the Filched Falcon | CRAFT (U): investigate (card advantage) + solve to dump counters onto an artifact — cheap and on-theme
-#~ -S.H.I.E.L.D. Deployment Drone | +Wan Shi Tong, Librarian | CRAFT (M): flash flyer with X counters that draws half X — a counters/card-advantage bomb
-#~ note: all three are CRAFT targets (not owned) and Standard-legal. Priority: The Goose Mother (scalable counters payoff + refuel).
+#~ note: applied — owned card-advantage + interaction pass (0 WC): Wan Shi Tong, Librarian (-S.H.I.E.L.D. Deployment Drone) scalable flying draw-X/2 counter payoff; Glen Elendra Guardian (-Negate) counter-on-a-flyer (repeatable via +1/+1 counters, on-theme); Knowledge Seeker (-Kitsune, Dragon's Daughter) cheap counters body that dies into a Clue, also trims the curve; Teo, Spirited Glider (-Thirst for Knowledge) loot+counter engine off the deck's fliers.
+#~ -Restorative Technique | +The Goose Mother | CRAFT (R) ★ PRIORITY: {X}{G}{U} flying Bird Hydra — enters with X counters, makes X/2 Food, sacs Food on attack to draw. Scalable counters payoff + repeatable card advantage; a Simic sibling to Wan Shi Tong (good redundancy). Cut the durdly Restorative Technique for it.
+#~ note: Case of the Filched Falcon — assessed and SKIPPED: its ETB Clue is fine, but the solve payoff (3+ artifacts → 4 counters onto a NONCREATURE artifact) is under-supported here (~3 artifacts, few noncreature targets). A below-rate Clue source in this build; revisit only if going artifact-heavy.
