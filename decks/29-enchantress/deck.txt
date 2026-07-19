@@ -18,7 +18,7 @@
 1 Yuna, Hope of Spira (FIN) 250
 1 She-Hulk, Jade Defender (MSH) 188
 1 Savior of the Sleeping (WOE) 28
-1 Aftermath Analyst (MKM) 148
+1 Lightning Strike (MSH) 142
 1 Topiary Lecturer (SOS) 165
 
 # Enchantments — Plans / Sagas / engines
@@ -48,13 +48,13 @@
 1 Origin of Metalbending (TLA) 187
 1 Unflinching Courage (FDN) 722
 1 Pain for All (EOE) 151
-1 War Squeak (BLB) 160
+1 Stasis Snare (FDN) 581
 1 Angelic Destiny (FDN) 565
 1 Spiral into Solitude (ECL) 36
 1 Avatar Destiny (TLA) 165
 
 # Sorcery / utility
-1 Call Damage Control (MSH) 162
+1 Pacifism (ANB) 16
 1 The Cave of Two Lovers (TLA) 126
 
 # Lands (23 — Naya fixing: 11 owned duals + 12 basics)
@@ -74,4 +74,4 @@
 3 Mountain
 
 # Flex — craft upgrade for the missing enchantress draw engine. See: deck.py flex 29
-#~ -Call Damage Control | +Slumbering Keepguard | CRAFT (C): "Whenever an enchantment you control enters, scry 1" + a mana-sink that scales with your enchantment count — the closest thing Standard has to a real enchantress engine
+#~ note: applied — Pacifism in for Call Damage Control.
