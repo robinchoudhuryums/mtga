@@ -32,7 +32,7 @@ Deck
 1 Kellan, Planar Trailblazer (FDN) 91
 # Threats / combat
 1 Aurelia, the Warleader (FDN) 651
-1 Mardu Devotee (TDM) 16
+1 Raph & Leo, Sibling Rivals (TMT) 166
 1 The Sentry, Golden Guardian (MSH) 35
 1 Lightning, Army of One (FIN) 233
 1 War Machine, Legacy of Iron (MSH) 238
@@ -62,3 +62,7 @@ Deck
 1 Boros Guildgate (FDN) 684
 1 Temple of Triumph (FDN) 705
 1 Wind-Scarred Crag (FDN) 271
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 24
+#~ -Raph & Leo, Sibling Rivals | +Mardu Devotee | OWNED: a {W} 1-drop mana dork (taps W/B/R — fixes the thin red: ~15 R sources for 36 R pips) + scry 2 on ETB. Lowers the curve and smooths draws into the bombs; swap in over the off-theme Raph & Leo if you want more consistency.
+#~ note: A-track curve-lowering applied — -Sozin's Comet/+Clockwork Percussionist, -Sami/+Kellan, -Brass's Bounty/+Zuko, -Thor Odinson/+Ennis (exile-grows). Kept Raph & Leo for now (Mardu Devotee parked above).
