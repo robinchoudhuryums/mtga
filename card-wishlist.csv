@@ -74,7 +74,7 @@ Sharp-Eyed Rookie,Creature — Human Detective,"Vigilance
 Whenever a creature you control enters, if its power is greater than this creature's power or its toughness is greater than this creature's toughness, put a +1/+1 counter on this creature and investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",G,Human; Detective; counters; card draw; sacrifice; tokens; clue; investigate; vigilance; combat,MKM,176,Rare,13,grows + investigates when a bigger creature enters — its own flex-noted home (counters/value),5.5
 Underground Mortuary,Land — Swamp Forest,"({T}: Add {B} or {G}.)
 This land enters tapped.
-When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",B/G,Swamp; Forest; graveyard; mana; etb; selection; surveil,MKM,271,Rare,21,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks,6
+When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",B/G,Swamp; Forest; graveyard; mana; etb; selection; surveil,MKM,271,Rare,21,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible.,6
 Kang the Conqueror,Legendary Creature — Human Villain,"Flying
 Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after this one. During that turn, power-up abilities can't be activated. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",U,Human; Villain; counters; flying; evasion; power-up; payoff,MSH,62,Mythic,12,blue control finisher — evasive body + extra-turn power-up; UUU castable in Dimir,7.0
 "King T'Challa // Black Panther, Hope Enduring",Legendary Creature — Human Noble Hero // Legendary Creature — Human Warrior Hero,"Flash
@@ -92,7 +92,7 @@ Flying
 When this creature enters, exile target spell. It becomes plotted. (Its owner may cast it as a sorcery on a later turn without paying its mana cost.)
 Spells your opponents cast from graveyards or from exile cost {2} more to cast.",W,Bird; Rogue; graveyard; removal; etb; flying; evasion; plot; tempo; cost-reduction; flash,OTJ,4,Rare,19,Bird Brain (Bant Tokens) craft target,7.0
 Blooming Marsh,Land,"This land enters tapped unless you control two or fewer other lands.
-{T}: Add {B} or {G}.",B/G,mana,OTJ,266,Rare,21,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks,6
+{T}: Add {B} or {G}.",B/G,mana,OTJ,266,Rare,21,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible.,6
 Concealed Courtyard,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {W} or {B}.",W/B,mana,OTJ,268,Rare,21,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks,6
 "Lilah, Undefeated Slickshot",Legendary Creature — Human Rogue,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)

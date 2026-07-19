@@ -44,16 +44,17 @@
 1 Season of Loss (BLB) 112
 1 Forum Necroscribe (SOS) 84
 
-# Lands
+# Lands (owned tempo fixes: this is a ~mono-black deck — red was 10 sources for
+# 2 pips. −2 Boiling Rock Prison, −1 Bloodfell Caves → +3 Swamp: 3 fewer taplands,
+# black primary shored up, R/G splashes still covered. Untapped splash duals wishlisted.)
 1 Surveillance Room (MSH) 274
-2 Boiling Rock Prison (TLA) 267
 2 Castle Doom (MSH) 263
 1 Captivating Cave (LCI) 268
-2 Bloodfell Caves (TDM) 250
+1 Bloodfell Caves (TDM) 250
 1 Baxter Building (MSH) 261
 1 Villainous Hideout (MSH) 276
 3 Jungle Hollow (M21) 247
-9 Swamp (MSH) 292
+12 Swamp (MSH) 292
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 8
 #~ -Fire Navy Trebuchet | +Deep-Cavern Bat | CRAFT (U) ★ MARKED UPGRADE: {1}{B} flying lifelink + Thoughtseize-on-a-body hand disruption — a unique effect the deck lacks
