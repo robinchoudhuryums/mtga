@@ -1,6 +1,5 @@
 #: name: Bird Brain — WIP Pile (raw dump)
 #: format: Standard
-#: tier: D — Bird Brain raw 83-card pile — oversized/uncastable dump, not a playable deck (play primary 19)
 #: colors: WU
 #: based-on: deck.txt
 #: archetype: 19 variant — the original undirected 83-card / 0-land dump that seeded the Bant primary and the GW sibling (19b). Archived for reference; not a playable 60.

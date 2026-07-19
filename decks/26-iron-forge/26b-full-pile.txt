@@ -1,6 +1,5 @@
 #: name: Iron Forge — Full Pile (brew)
 #: format: Standard
-#: tier: D — Iron Forge 73-card archived brew — untuned oversized reference (play the tuned 60, deck 26 at B)
 #: colors: WUR
 #: based-on: 26
 #: archetype: Archived 73-card brew pile that seeded the primary 60 (deck 26). Not a tuned list — kept for reference / re-brewing.
