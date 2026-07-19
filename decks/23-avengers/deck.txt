@@ -51,7 +51,7 @@ Deck
 1 Jennifer Walters (MSH) 18
 1 Red Guardian, Super-Soldier (MSH) 34
 1 Cosmogrand Zenith (EOE) 9
-1 Starfall Invocation (BLB) 34
+1 Captain America's Shield (MSH) 244
 
 # Lands
 20 Plains (MSH) 288
