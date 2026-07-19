@@ -1,9 +1,12 @@
 #: name: Air Nomads
 #: format: Standard
-#: tier: B — Azorius fliers tempo; evasive clock but only 2 interaction
+#: tier: B — Azorius fliers tempo (strong B); airbend/waterbend tempo + a counter (It'll Quench Ya!) + Wan Shi Tong card advantage. Strict interaction metric (3) undersells it — airbend exile / waterbend / Watery Grasp lockdown aren't tallied. Flavor-first singleton build caps it short of A.
 #: colors: WU
-#: archetype: Azorius (W/U) Air Nomads fliers / airbend tempo.
-#: notes: Azorius (W/U) — Air Nomads fliers / tempo.
+#: archetype: Azorius (W/U) Air Nomads fliers / airbend + waterbend tempo.
+#: notes: Azorius (W/U) — Air Nomads fliers / tempo. A-track pass: +Wan Shi Tong (owned card-advantage
+#: notes: bomb) + It'll Quench Ya! (counter) + Watery Grasp (on-theme lockdown), firmed blue to 12 sources.
+#: notes: Kept the waterbend token fuel (Gather the White Lotus / United Front) — it pays the
+#: notes: waterbend {5}/{3}/{X} costs (Water Tribe Rallier, Aang's Iceberg, Crashing Wave, Katara).
 
 # Nonland
 1 Aang, the Last Airbender (TLA) 4
@@ -37,8 +40,8 @@
 1 Air Nomad Legacy (TLA) 206
 1 The Legend of Yangchen (TLA) 27
 1 United Front (TLA) 39
-1 Forecasting Fortune Teller (TLA) 51
-1 Lost Days (TLA) 62
+1 Watery Grasp (TLA) 82
+1 It'll Quench Ya! (TLA) 58
 1 Path to Redemption (TLA) 31
 1 Aang's Iceberg (TLA) 5
 1 Crashing Wave (TLA) 47
@@ -51,4 +54,4 @@
 1 Hallowed Fountain (ECL) 265
 
 # Flex — suggested craft. See: deck.py flex 15
-#~ +Wan Shi Tong, Librarian | CRAFT (M): Air Nomads flavor bomb — flash flying-vigilance, enters with X +1/+1 counters and draws half X; also grows/draws when an opponent searches. Craft AFTER the mana fix ({X}{U}{U} wants blue sources).
+#~ note: applied — Wan Shi Tong, Librarian maindecked (now owned) for -1 Airbending Lesson, with blue firmed to 12 sources.
