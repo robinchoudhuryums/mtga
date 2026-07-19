@@ -13,7 +13,7 @@ Deck
 # Impulse payoffs / engine
 1 Quintorius Kand (LCI) 238
 1 Thor, God of Thunder (MSH) 156
-1 Thor Odinson (MSH) 234
+1 Ennis, Debate Moderator (SOS) 14
 1 Etali, Primal Storm (FDN) 194
 # Impulse enablers
 1 Practiced Scrollsmith (SOS) 210
@@ -32,7 +32,7 @@ Deck
 1 Kellan, Planar Trailblazer (FDN) 91
 # Threats / combat
 1 Aurelia, the Warleader (FDN) 651
-1 Raph & Leo, Sibling Rivals (TMT) 166
+1 Mardu Devotee (TDM) 16
 1 The Sentry, Golden Guardian (MSH) 35
 1 Lightning, Army of One (FIN) 233
 1 War Machine, Legacy of Iron (MSH) 238
