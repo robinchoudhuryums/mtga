@@ -2202,6 +2202,20 @@ def _interaction_count(cards, carddata):
 
 AUDIT_ORDER = {"TUNE": 0, "craft": 1, "review": 2, "ok": 3}
 
+# Competitive power tier (from the deck's `#: tier:` header) — a win-capability
+# grade separate from the maintenance-health verdict. S strongest → D weakest;
+# "" (ungraded) sorts last.
+TIER_ORDER = {"S": 0, "A": 1, "B": 2, "C": 3, "D": 4, "": 5}
+
+
+def _deck_tier(meta):
+    """The competitive tier LETTER (S/A/B/C/D) from a deck's `#: tier:` header,
+    or '' if ungraded. The header is `#: tier: B — one-line rationale`; we keep
+    only the leading letter so the audit can column/sort on it."""
+    raw = (meta.get("tier") or "").strip()
+    m = re.match(r"([SABCD])\b", raw)
+    return m.group(1) if m else ""
+
 
 def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta):
     """Score one deck for the roster triage — the structured core shared by
@@ -2267,6 +2281,7 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta):
     return {
         "id": d["id"],
         "name": (d["name"] or os.path.basename(os.path.dirname(d["path"])) or d["id"]),
+        "tier": _deck_tier(meta),
         "sz": rep["total"],
         "short": short,
         "illegal": n_illegal,
@@ -2324,23 +2339,28 @@ def cmd_audit(args):
 
     if args.flagged:
         rows = [r for r in rows if r["verdict"] != "ok"]
-    rows.sort(key=lambda r: (AUDIT_ORDER[r["verdict"]], len(r["id"]), r["id"]))
+    if getattr(args, "by_tier", False):
+        # Sort by competitive tier (S→D, ungraded last), then id.
+        rows.sort(key=lambda r: (TIER_ORDER.get(r["tier"], 5), len(r["id"]), r["id"]))
+    else:
+        rows.sort(key=lambda r: (AUDIT_ORDER[r["verdict"]], len(r["id"]), r["id"]))
 
     print(f"Deck roster audit — {len(scored)} decks "
           f"(offline triage; full-tune only the flagged ones)\n")
     name_w = min(32, max(4, max((len(r["name"]) for r in rows), default=4)))
-    hdr = (f"  {'ID':<4}  {'Deck':<{name_w}}  {'Sz':>3}  {'Own':<4}  {'Legal':<5}  "
+    hdr = (f"  {'ID':<4}  {'Deck':<{name_w}}  {'Tier':<4}  {'Sz':>3}  {'Own':<4}  {'Legal':<5}  "
            f"{'Cast':<7}  {'Int':>3}  {'Thm':>3}  Action")
     print(hdr)
     print("  " + "-" * (len(hdr) - 2))
     for r in rows:
         label = {"TUNE": "★ TUNE", "craft": "craft", "review": "review", "ok": "ok"}[r["verdict"]]
         action = label + (f" — {r['why']}" if r["why"] else "")
-        print(f"  {r['id']:<4}  {r['name'][:name_w]:<{name_w}}  {r['sz']:>3}  "
-              f"{r['own']:<4}  {r['legal']:<5}  {r['cast']:<7}  {r['int']:>3}  "
+        print(f"  {r['id']:<4}  {r['name'][:name_w]:<{name_w}}  {(r['tier'] or '·'):<4}  "
+              f"{r['sz']:>3}  {r['own']:<4}  {r['legal']:<5}  {r['cast']:<7}  {r['int']:>3}  "
               f"{r['thm']:>3}  {action}")
 
-    print(f"\nLegend: Own/Legal ✓ clean · Cast Nu=uncastable Ns=off-identity stray · "
+    print(f"\nLegend: Tier S→D competitive/win-capability (· = ungraded) · "
+          f"Own/Legal ✓ clean · Cast Nu=uncastable Ns=off-identity stray · "
           f"Int=removal+sweeper+counter · Thm=central themes")
     print(f"Summary: {len(tune)} to tune · {len(craft)} to craft · "
           f"{len(review)} to review · {len(scored) - len(tune) - len(craft) - len(review)} ok")
@@ -2451,6 +2471,8 @@ def main():
     p = sub.add_parser("audit", help="roster-wide triage scorecard — which decks need a tune (offline)")
     p.add_argument("--flagged", action="store_true",
                    help="show only decks with a flag (hide the 'ok' rows)")
+    p.add_argument("--by-tier", action="store_true",
+                   help="sort by competitive tier (S→D, ungraded last) instead of by maintenance verdict")
     p = sub.add_parser("check", help="owned vs needed vs your collection")
     p.add_argument("id")
     p = sub.add_parser("diff", help="show what one deck changes vs another")
