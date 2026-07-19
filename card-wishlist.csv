@@ -49,6 +49,8 @@ Nullpriest of Oblivion,Creature — Vampire Cleric,"Kicker {3}{B} (You may pay a
 Lifelink
 Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, if it was kicked, return target creature card from your graveyard to the battlefield.",B,Vampire; Cleric; reanimator; graveyard; lifegain; etb; lifelink; menace; evasion; kicker; value,FDN,611,Rare,11,,6.0
+Rite of Replication,Sorcery,"Kicker {5} (You may pay an additional {5} as you cast this spell.)
+Create a token that's a copy of target creature. If this spell was kicked, create five of those tokens instead.",U,tokens; kicker; value,FDN,711,Rare,25,Copy engine for Spellstorm (25): clone your best creature (kicker = 5 copies) — payoff redundancy,6
 "Choco, Seeker of Paradise",Legendary Creature — Bird,"Whenever one or more Birds you control attack, look at that many cards from the top of your library. You may put one of them into your hand. Then put any number of land cards from among them onto the battlefield tapped and the rest into your graveyard.
 Landfall — Whenever a land you control enters, Choco gets +1/+0 until end of turn.",W/U/G,Bird; graveyard; landfall; pump; lands; ramp,FIN,215,Rare,19,Bird Brain (Bant Tokens) craft target,6.0
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
@@ -116,7 +118,7 @@ Deathcap Glade,Land,"This land enters tapped unless you control two or more othe
 Exhibition Tidecaller,Creature — Djinn Wizard,"Opus — Whenever you cast an instant or sorcery spell, target player mills three cards. If five or more mana was spent to cast that spell, that player mills ten cards instead.",U,Djinn; Wizard; mill; spellslinger; graveyard; opus,SOS,48,Rare,22,mill/spellslinger Djinn — feeds the Dimir graveyard/card-advantage plan,6.0
 Magmablood Archaic,Creature — Avatar,"Trample, reach
 Converge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.
-Whenever you cast an instant or sorcery spell, creatures you control get +1/+0 until end of turn for each color of mana spent to cast that spell.",R,Avatar; counters; pump; spellslinger; reach; defense; converge; multicolor; trample; evasion,SOS,123,Rare,14,"red Avatar firebending; also 17 | fits: 17,9",5.0
+Whenever you cast an instant or sorcery spell, creatures you control get +1/+0 until end of turn for each color of mana spent to cast that spell.",R,Avatar; counters; pump; spellslinger; reach; defense; converge; multicolor; trample; evasion,SOS,123,Rare,25,Repeatable spellslinger payoff for Spellstorm (25) — the flex block's craft target,5.0
 Moment of Reckoning,Sorcery,"Choose up to four. You may choose the same mode more than once.
 • Destroy target nonland permanent.
 • Return target nonland permanent card from your graveyard to the battlefield.",W/B,graveyard; removal,SOS,205,Rare,6,"best 6 (Dead or Alive); also 20b,20a,20",6.5
