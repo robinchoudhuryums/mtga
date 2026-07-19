@@ -3353,3 +3353,5 @@ Thunder Magic,Instant,"Tiered (Choose one additional cost.)
 • Thunder — {0} — Thunder Magic deals 2 damage to target creature.
 • Thundara — {3} — Thunder Magic deals 4 damage to target creature.
 • Thundaga — {5}{R} — Thunder Magic deals 8 damage to target creature.",R,burn; thunder; thundaga; tiered; thundara,FIN,165,1
+Bloodchief Ascension,Enchantment,"At the beginning of each end step, if an opponent lost 2 or more life this turn, you may put a quest counter on this enchantment. (Damage causes loss of life.)
+Whenever a card is put into an opponent's graveyard from anywhere, if this enchantment has three or more quest counters on it, you may have that player lose 2 life. If you do, you gain 2 life.",B,counters; graveyard; lifegain,TLE,23,1
