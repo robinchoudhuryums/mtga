@@ -342,6 +342,14 @@ TEMPLATE = r"""<!DOCTYPE html>
   .v-craft  { background:color-mix(in srgb,var(--warn) 20%,transparent);  color:var(--warn); }
   .v-review { background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--accent); }
   .v-ok     { background:color-mix(in srgb,var(--ok) 16%,transparent);    color:var(--ok); }
+  .tierpill { font-size:11px; font-weight:800; padding:2px 8px; border-radius:6px; min-width:20px;
+    display:inline-block; text-align:center; }
+  .t-s { background:color-mix(in srgb,var(--accent) 30%,transparent); color:var(--accent); }
+  .t-a { background:color-mix(in srgb,var(--ok) 22%,transparent);     color:var(--ok); }
+  .t-b { background:color-mix(in srgb,var(--warn) 20%,transparent);   color:var(--warn); }
+  .t-c { background:color-mix(in srgb,var(--bad) 16%,transparent);    color:var(--bad); }
+  .t-d { background:color-mix(in srgb,var(--line) 60%,transparent);   color:var(--muted); }
+  .cell-muted { color:var(--muted); }
   .auditsummary { display:flex; gap:8px; flex-wrap:wrap; margin:2px 0 12px; }
   .auditsummary .chip { font-size:12px; color:var(--muted); border:1px solid var(--line);
     border-radius:999px; padding:3px 10px; }
@@ -692,13 +700,16 @@ TEMPLATE = r"""<!DOCTYPE html>
     const cast = (!a.uncast && !a.stray) ? '✓'
       : [a.uncast ? `${a.uncast}u` : '', a.stray ? `${a.stray}s` : ''].filter(Boolean).join(' ');
     return { id:d.id, name:d.name, deck:`#${d.id} ${d.name}`, sz:a.sz,
+      tier:a.tier||'', _tierord:({S:0,A:1,B:2,C:3,D:4})[a.tier] ?? 5,
       short:a.short, illegal:a.illegal, uncast:a.uncast, stray:a.stray, cast,
       _castsev:a.uncast*100 + a.stray, int:a.int, thm:a.thm,
       verdict:a.verdict, why:a.why, _sev:SEV[a.verdict] };
   });
   arows.sort((x,y) => x._sev - y._sev || x.id.length - y.id.length || (''+x.id).localeCompare(''+y.id));
+  const TCLS = {S:'t-s', A:'t-a', B:'t-b', C:'t-c', D:'t-d'};
   const ACOLS = [
     {key:'deck',    label:'Deck',    html:r=>`<a class="goto" data-goto="${esc(r.name)}">${esc(r.deck)}</a>`},
+    {key:'_tierord',label:'Tier',    num:true, html:r=>r.tier?`<span class="tierpill ${TCLS[r.tier]}">${r.tier}</span>`:'<span class="cell-muted">·</span>'},
     {key:'sz',      label:'Sz',      num:true, get:r=>r.sz},
     {key:'short',   label:'Own',     num:true, html:r=>flagCell(r.short, '✗')},
     {key:'illegal', label:'Legal',   num:true, html:r=>flagCell(r.illegal, '✗')},
@@ -719,7 +730,9 @@ TEMPLATE = r"""<!DOCTYPE html>
     `<span class="chip"><b>${c.review}</b> to review</span>` +
     `<span class="chip"><b>${c.ok}</b> ok</span>`;
   document.getElementById('auditnote').textContent =
-    'Offline triage — same numbers as `deck.py audit`. Own/Legal/Cast ✓ = clean; ' +
+    'Offline triage — same numbers as `deck.py audit`. Tier = competitive/win-capability ' +
+    'grade (S→D, · = ungraded), from each deck’s #: tier: header; click the Tier header to sort. ' +
+    'Own/Legal/Cast ✓ = clean; ' +
     'Cast Nu = uncastable in the deck’s colors, Ns = off-identity stray. ★ tune = a hard ' +
     'problem (illegal or uncastable card); craft = just unbuilt; review = a soft flag ' +
     '(off-color strays or thin interaction). Click a deck to filter the list below.';

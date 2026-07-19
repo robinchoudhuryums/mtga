@@ -1,5 +1,6 @@
 #: name: Spectrum
 #: format: Standard
+#: tier: C — 5-color goodstuff; bombs but inconsistent mana + thin interaction (2)
 #: colors: WUBRG
 #: archetype: Five-color rainbow good-stuff / superheroes.
 #: notes: Five-color rainbow good-stuff / superheroes.

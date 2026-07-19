@@ -1,5 +1,6 @@
 #: name: Mad Villainy
 #: format: Standard
+#: tier: A — Rakdos artifacts midrange; removal-dense (12 interaction — most in the roster)
 #: colors: BR
 #: archetype: Rakdos (B/R) villains / artifacts midrange.
 #: notes: Rakdos (B/R) — villains / artifacts midrange.

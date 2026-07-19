@@ -1,0 +1,78 @@
+#: name: Enchantress
+#: format: Standard
+#: tier: C — Naya enchantments (creative-first); slow build-arounds, 4 interaction
+#: colors: GWR
+#: protect: Yuna, Hope of Spira; Terra, Magical Adept; Political Triumph; Savior of the Sleeping
+#: archetype: Naya (G/W/R) enchantments-matter — Yuna anchors an enchantment-recursion engine
+#: archetype: (return an enchantment from the graveyard each end step) alongside the "Plan"/Saga
+#: archetype: enchantments and Aura beaters. The blue counters build split off to deck 30 (Temur Fractals).
+#: notes: Refined to a legal 60: cut Quandrix Charm (needs blue — uncastable here) and added a
+#: notes: 6-card owned enchantment package — Spiral into Solitude (removal), Origin of the Avengers
+#: notes: (card advantage), Avatar Destiny (recurs + reanimates, loops with Yuna), Welcome to
+#: notes: Sweettooth / Friendly Neighborhood / The Cave of Two Lovers (enchantment tokens). Manabase
+#: notes: upgraded from all-basics to the 11 owned Naya duals. Interaction is still light — the
+#: notes: closest true enchantress draw engine is a Slumbering Keepguard craft (a Common).
+
+# Creatures / anchors
+1 Terra, Magical Adept (FIN) 245
+1 Lumra, Bellow of the Woods (BLB) 183
+1 Yuna, Hope of Spira (FIN) 250
+1 She-Hulk, Jade Defender (MSH) 188
+1 Savior of the Sleeping (WOE) 28
+1 Lightning Strike (MSH) 142
+1 Topiary Lecturer (SOS) 165
+
+# Enchantments — Plans / Sagas / engines
+1 Alien Invasion (MSH) 200
+1 Political Triumph (MSH) 31
+1 Death to Our Enemies (MSH) 127
+1 Firebender Ascension (TLA) 137
+1 Enduring Courage (DSK) 133
+1 Claim the Kingdom (MSH) 163
+1 Garruk's Uprising (FDN) 220
+1 Heroic Feast (MSH) 172
+1 Sylvan Scavenging (FDN) 113
+1 Loading Zone (EOE) 196
+1 Additive Evolution (SOS) 139
+1 Eusocial Engineering (EOE) 181
+1 World War Hulk (MSH) 197
+1 Anthem of Champions (FDN) 116
+1 Airbender Ascension (TLA) 6
+1 Enduring Vitality (DSK) 176
+1 Summon: Fenrir (FIN) 203
+1 Summon: Titan (FIN) 204
+1 Origin of the Avengers (MSH) 28
+1 Welcome to Sweettooth (WOE) 198
+1 Friendly Neighborhood (SPM) 8
+
+# Auras / removal
+1 Origin of Metalbending (TLA) 187
+1 Unflinching Courage (FDN) 722
+1 Pain for All (EOE) 151
+1 Stasis Snare (FDN) 581
+1 Angelic Destiny (FDN) 565
+1 Spiral into Solitude (ECL) 36
+1 Avatar Destiny (TLA) 165
+
+# Sorcery / utility
+1 Pacifism (ANB) 16
+1 The Cave of Two Lovers (TLA) 126
+
+# Lands (23 — Naya fixing: 11 owned duals + 12 basics)
+1 Restless Ridgeline (LCI) 283
+1 Blossoming Sands (M21) 244
+1 Hushwood Verge (DSK) 261
+1 Gathering Place (MSH) 266
+1 Birnin Zana Plaza (MSH) 262
+1 Rugged Highlands (FDN) 265
+1 Gruul Guildgate (RNA) 250
+1 Omashu City (TLA) 275
+1 Wind-Scarred Crag (FDN) 271
+1 Temple of Triumph (FDN) 705
+1 Abraded Bluffs (OTJ) 251
+6 Forest
+3 Plains
+3 Mountain
+
+# Flex — craft upgrade for the missing enchantress draw engine. See: deck.py flex 29
+#~ note: applied — Pacifism in for Call Damage Control.

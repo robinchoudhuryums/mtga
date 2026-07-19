@@ -1,5 +1,6 @@
 #: name: Atlantis Attacks
 #: format: Standard
+#: tier: B — Mono-U Merfolk tempo; lowest curve (2.65) + tribal redundancy + mono-color mana (WIP)
 #: colors: WU
 #: archetype: Mono-U (light W) Merfolk tribal tempo — tap/convoke token engine (WIP).
 #: notes: Merfolk tribal / tempo — mono-U core with a light (mostly hybrid) W

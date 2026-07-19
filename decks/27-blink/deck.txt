@@ -1,5 +1,6 @@
 #: name: Blink
 #: format: Standard
+#: tier: B — Azorius blink value; strong ETB engine but slow + thin interaction (3)
 #: colors: WU
 #: archetype: Azorius (W/U) blink / "creatures-entering-matters" value — repeatable blink engines (Y'shtola, Don & Leo, Wiccan) re-trigger both ETB value creatures AND enter-matters payoffs (Serra Redeemer, Mighty Mutanimals, East Wind Avatar). A Sneak tempo package doubles as bounce-to-recast ETB recursion.
 #: notes: Tuned from the 44-card brew. All hybrids kept — {W/B}/{U/B}/{R/W}/{G/W}

@@ -1,5 +1,6 @@
 #: name: Drawn Conclusions
 #: format: Standard
+#: tier: B — Dimir card-draw control; grinds mid-ladder but interaction light for a control deck
 #: colors: UB
 #: archetype: Dimir (U/B) card-draw control.
 #: notes: Dimir (U/B) — card draw / control.

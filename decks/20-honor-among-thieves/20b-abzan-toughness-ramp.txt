@@ -1,5 +1,6 @@
 #: name: Honor Among Thieves — Abzan Toughness Ramp
 #: format: Standard
+#: tier: C — Honor Among Thieves Abzan toughness-ramp; ambitious 3-color combo-ramp, thin interaction (3)
 #: colors: WBG
 #: based-on: deck.txt
 #: archetype: 20 variant — Abzan (W/B/G) toughness-swap RAMP into Adamantoise; two swap payoffs (Kingpin + Tapestry Warden).

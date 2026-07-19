@@ -1,5 +1,6 @@
 #: name: Black Sun
 #: format: Standard
+#: tier: A — Rakdos aggro-sacrifice; low curve + 7 interaction + reach — fast and consistent
 #: colors: BR
 #: archetype: Rakdos (B/R) aggro-sacrifice — tokens + graveyard; the first constructed deck.
 #: notes: Rakdos (B/R) — first constructed deck.

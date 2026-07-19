@@ -1,5 +1,6 @@
 #: name: Knight's Edge
 #: format: Standard
+#: tier: A — Mono-W go-wide aggro; fast, anthems, 7 interaction
 #: colors: W
 #: archetype: Mono-white go-wide Knights — tokens, counters, anthems.
 #: notes: Mono-white go-wide / knights.

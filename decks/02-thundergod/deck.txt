@@ -1,5 +1,6 @@
 #: name: Thundergod
 #: format: Standard
+#: tier: A — Mono-R burn/aggro; consistent mana, 9 burn doubling as removal
 #: colors: R
 #: archetype: Mono-red Thor-themed aggro / burn.
 #: notes: Mono-red, Thor-themed aggro.

@@ -1,13 +1,18 @@
 #: name: Dragon King Roku
 #: format: Standard
-#: colors: WBR
-#: archetype: Mardu (W/B/R) Fire Nation dragons / firebending midrange.
-#: notes: Mardu (W/B/R) — Fire Nation / dragons midrange.
+#: tier: B — Rakdos dragons midrange; bombs + 8 interaction, tightened from Mardu to 2-color for consistency (A-track)
+#: colors: BR
+#: archetype: Rakdos (B/R) Fire Nation dragons / firebending midrange.
+#: notes: Rakdos (B/R) — Fire Nation / dragons midrange. Tightened from the old Mardu build:
+#: notes: the only white card was Sun Warriors, so it was cut for Charging Strifeknight (owned)
+#: notes: and the white lands re-fixed to red/black — 2-color for A-track consistency. The
+#: notes: former U/G identity cards (Professor Zei, Uncle Iroh, Long Feng) are all hybrids
+#: notes: castable in R/B, so they stay. Craft target: Blazemire Verge (untapped B/R) — wishlisted.
 
 # Nonland
 1 The Legend of Roku (TLA) 145
 1 Ran and Shaw (TLA) 150
-1 Sun Warriors (TLA) 244
+1 Charging Strifeknight (SOS) 110
 1 Ozai, the Phoenix King (TLA) 235
 1 Cruel Administrator (TLA) 213
 2 Rough Rhino Cavalry (TLA) 152
@@ -40,15 +45,15 @@
 1 Red Hulk (MSH) 149
 1 Photon Blast Barrage (MSH) 147
 
-# Lands
+# Lands (pure-Rakdos re-fix: −Sun-Blessed Peak (W/R tapland) & −2 Plains → +2 Mountain
+# for the 37-pip red primary + Razortrap Gorge (owned, untapped-cond B/R). White cut with Sun Warriors.)
 2 Fire Nation Palace (TLA) 268
 2 Bloodfell Caves (TDM) 250
-1 Sun-Blessed Peak (TLA) 280
 2 Boiling Rock Prison (TLA) 267
 1 Dark Fortress (MSH) 264
+1 Razortrap Gorge (DSK) 267
 5 Swamp (MSH) 292
-9 Mountain (MSH) 294
-2 Plains (MSH) 288
+11 Mountain (MSH) 294
 
 # Flex — suggested swaps. See: deck.py flex 14
 #~ -Summon: Bahamut | +Charging Strifeknight | OWNED (U) SAFE ALT: if the {9} Bahamut bricks in slow hands, swap to a {2}{R} haste body with a repeatable {T},discard:draw loot engine — low-curve, shores up card flow (deck's thin dimension). Bahamut is the higher-ceiling firebending mana-sink finisher (removal + draw + Dragon); Strifeknight is the low-variance consistency pick.

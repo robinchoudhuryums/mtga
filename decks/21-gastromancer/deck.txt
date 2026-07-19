@@ -1,5 +1,6 @@
 #: name: Gastromancer
 #: format: Standard
+#: tier: B — Abzan food-aristocrats; dense interaction (10) + low curve, capped by 3-color
 #: colors: WBGR
 #: archetype: Abzan (W/B/G, light red) Food-sacrifice / artifact-aristocrats — Ragost + a deep sac-payoff web.
 #: notes: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats with a LIGHT red splash
@@ -19,7 +20,7 @@
 1 Cauldron of Essence (SOS) 179
 1 Ice Cream Kitty (TMT) 150
 1 Hei Bai, Spirit of Balance (TLA) 225
-1 Beetle-Headed Merchants (TLA) 86
+1 Scavenger's Talent (BLB) 111
 1 Witherbloom Charm (SOS) 244
 1 Ygra, Eater of All (BLB) 241
 1 Bullseye, Death Dealer (MSH) 209
@@ -56,20 +57,21 @@
 1 Sweettooth Witch (WOE) 111
 1 M.O.D.O.K. (MSH) 106
 
-# Lands
+# Lands (owned tempo fixes: −Opulent Palace (dead U tapland), −1 Bloodfell Caves
+# (red was 3 sources for 1 pip) → +2 Swamp for the 19-pip black primary. The 4
+# vanilla WBG taplands are queued for craft-upgrade to fastlands/surveil lands — see wishlist.)
 4 Jungle Hollow (M21) 247
 1 Scoured Barrens (M21) 250
 1 Insomnia, Crown City (FIN) 282
 1 Blossoming Sands (M21) 244
 1 Hushwood Verge (DSK) 261
 1 Gathering Place (MSH) 266
-1 Opulent Palace (TDM) 264
 1 Castle Doom (MSH) 263
 1 Capital City (FIN) 274
-2 Bloodfell Caves (TDM) 250
+1 Bloodfell Caves (TDM) 250
 1 Wind-Scarred Crag (FDN) 271
 3 Forest (MSH) 296
-3 Swamp (MSH) 292
+5 Swamp (MSH) 292
 3 Plains (MSH) 288
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 21

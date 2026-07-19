@@ -1,5 +1,6 @@
 #: name: Spellstorm
 #: format: Standard
+#: tier: B — Izzet spells-matter/storm; 9 interaction + Thousand Year Storm payoff, singleton-inconsistent
 #: colors: UR
 #: notes: Izzet (U/R) storm / spells-matter. Cost reduction (Scarlet Witch,
 #: notes: Stormcatch Mentor, Tolarian Terror, Emperor of Palamecia, Electro) into
@@ -42,7 +43,7 @@ Deck
 # Interaction — cheap burn (owned) + kept removal
 1 Lightning Strike (MSH) 142
 1 Galvanize (MKM) 128
-1 Bombard (EOE) 129
+1 Vibrant Outburst (SOS) 240
 1 Tome Blast (SOS) 135
 1 Iroh's Demonstration (TLA) 141
 1 Nibelheim Aflame (FIN) 146

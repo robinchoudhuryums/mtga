@@ -1,0 +1,84 @@
+#: name: Temur Fractals
+#: format: Standard
+#: tier: A — Temur Fractals counters/ramp; powerful engine + card advantage + ramp — only 2 interaction is the one gap
+#: colors: GUR
+#: protect: Emil, Vastlands Roamer; Loading Zone; Growth Curve; Quandrix Charm
+#: archetype: Temur (G/U/R) +1/+1 counters & Fractals on a lands-matter ramp shell. Built from the
+#: archetype: SOS "Quandrix" package: Fractal token-makers + counter DOUBLERS go wide on a ramp base.
+#: notes: Split out of the deck-29 Enchantress folder — this is the blue counters build, a
+#: notes: distinct deck from the GWR enchantress list (they shared almost no cards).
+#: notes: Engine: Fractal makers (Emil, Wild Hypothesis, Fractal Tender, Additive Evolution) +
+#: notes: counter doublers (Loading Zone, Growth Curve). Growth Curve with Loading Zone out
+#: notes: quadruples counters on a creature. Emil scales with differently-named lands; Zimone /
+#: notes: Environmental Scientist / Proctor's Gaze / Terramorphic fetch them; Lumra / Terra
+#: notes: self-mill into more. Increment payoffs (Cuboid Colony, Fractal Tender, Topiary Lecturer)
+#: notes: reward big-mana ramp turns. Fully owned. Craft upgrades parked in the flex block.
+
+# Fractals & counter engine
+1 Emil, Vastlands Roamer (SOS) 146
+1 Wild Hypothesis (SOS) 167
+1 Fractal Tender (SOS) 190
+1 Cuboid Colony (SOS) 183
+1 Growth Curve (SOS) 193
+1 Additive Evolution (SOS) 139
+1 Loading Zone (EOE) 196
+1 Topiary Lecturer (SOS) 165
+1 Quandrix Charm (SOS) 217
+1 Sylvan Scavenging (FDN) 113
+
+# Counter payoffs / creatures
+1 Knight of Wundagore (MSH) 175
+1 Jadelight Spelunker (LCI) 196
+1 Broodguard Elite (EOE) 175
+
+# Card advantage / dig
+1 Mind into Matter (SOS) 202
+1 Zimone's Experiment (SOS) 169
+1 Stadium Tidalmage (SOS) 232
+1 Garruk's Uprising (FDN) 220
+1 Charging Strifeknight (SOS) 110
+
+# Lands-matter ramp / bombs
+1 Lumra, Bellow of the Woods (BLB) 183
+1 Terra, Magical Adept (FIN) 245
+1 Claim the Kingdom (MSH) 163
+
+# Interaction / red value
+1 Tablet of Discovery (SOS) 132
+1 Garrison Excavator (SOS) 116
+1 She-Hulk, Jade Defender (MSH) 188
+1 Wistfulness (ECL) 252
+1 Origin of Metalbending (TLA) 187
+1 World War Hulk (MSH) 197
+1 Sokka's Haiku (TLA) 71
+1 Enduring Curiosity (DSK) 51
+1 Tatyova, Benthic Druid (FDN) 247
+1 Germination Practicum (SOS) 149
+
+# Land-fetch / ramp value
+1 Environmental Scientist (SOS) 147
+1 Proctor's Gaze (SOS) 213
+1 Follow the Lumarets (SOS) 148
+1 Improvisation Capstone (SOS) 120
+
+# Lands (25 — Temur fixing: 12 owned duals + Terramorphic + 12 basics; many differently-named for Emil)
+1 Breeding Pool (EOE) 251
+1 Dreamroot Cascade (SOS) 254
+1 Thornwood Falls (FDN) 269
+1 Willowrush Verge (DFT) 270
+1 Stark Industries (MSH) 272
+1 Swiftwater Cliffs (MOM) 273
+1 Riverpyre Verge (DFT) 260
+1 Spectacle Summit (SOS) 262
+1 Restless Ridgeline (LCI) 283
+1 Rugged Highlands (FDN) 265
+1 Wind-Scarred Crag (FDN) 271
+1 Abraded Bluffs (OTJ) 251
+1 Terramorphic Expanse (MSC) 828
+5 Forest
+4 Island
+3 Mountain
+
+# Flex — craft upgrades that supercharge the counters plan. See: deck.py flex 30
+#~ note: applied — Germination Practicum in for Heroic Feast.
+#~ note: applied — Tatyova, Benthic Druid in for Super Intelligence.

@@ -1,5 +1,6 @@
 #: name: Earth Kingdom
 #: format: Standard
+#: tier: C — 4-color Earthbend ramp; big payoffs undercut by clunky 4-color mana
 #: colors: GWBR
 #: archetype: Green-base 4-color Avatar Earthbend ramp — rainbow-fixed W/B/R splashes into big earthbenders.
 #: notes: Green-base Avatar Earth Kingdom / Earthbend ramp deck (green-primary), light

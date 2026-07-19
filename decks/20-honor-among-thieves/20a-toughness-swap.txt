@@ -1,5 +1,6 @@
 #: name: Honor Among Thieves — Toughness Swap
 #: format: Standard
+#: tier: C — Honor Among Thieves P/T-swap novelty; combo-reliant (Kingpin + high toughness), less consistent than base 20 (B)
 #: colors: WB
 #: based-on: deck.txt
 #: archetype: 20 variant — P/T-swap novelty: high-toughness bodies deal damage via Kingpin (leans on drawing him).
