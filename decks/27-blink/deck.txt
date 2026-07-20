@@ -19,7 +19,7 @@
 1 The Mind Stone (MSH) 21
 1 Daydream (SOS) 9
 1 Sharae of Numbing Depths (WOE) 213
-1 Another Round (OTJ) 1
+1 Morningtide's Light (ECL) 27
 
 # ETB value + "creature enters" payoffs
 1 Enduring Curiosity (DSK) 51
@@ -67,5 +67,6 @@
 6 Island
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 27
-#~ note: applied — interaction + value pass (all owned, 0 WC): Floodpits Drowner (-Triceraton Commander, whose {X}{X}{W}{W} makes 0 tokens when blinked) = repeatable tap+shuffle-away removal the blink engine re-triggers; Cloudblazer (-Luxknight Breacher) = gain 2 + draw 2 on every blink; Waxen Shapethief (-Spiritcall Enthusiast) = flash-copy your best ETB creature (re-fires its ETB), cycling {2} when dead; Sharae of Numbing Depths (-Morningtide's Light) = ETB tap+stun + draws whenever you tap an opponent's creature (pays off Floodpits/Solitary Sanctuary taps).
+#~ note: applied — interaction + value pass (all owned, 0 WC): Floodpits Drowner (-Triceraton Commander, whose {X}{X}{W}{W} makes 0 tokens when blinked) = repeatable tap+shuffle-away removal the blink engine re-triggers; Cloudblazer (-Luxknight Breacher) = gain 2 + draw 2 on every blink; Waxen Shapethief (-Spiritcall Enthusiast) = flash-copy your best ETB creature (re-fires its ETB), cycling {2} when dead; Sharae of Numbing Depths (-Another Round) = ETB tap+stun + draws whenever you tap an opponent's creature (pays off Floodpits/Solitary Sanctuary taps).
+#~ note: Morningtide's Light KEPT (cut Another Round instead) — full text is a mass ETB-retrigger PLUS "until your next turn, prevent all damage that would be dealt to you": a blink-wave + one-sided Fog/stabilizer, strictly more useful here than Another Round's own-creatures-only X-cost mass-blink.
 #~ note: mana confirmed — all adds are single-pip (Floodpits {1}{U}, Waxen {3}{U}, Sharae {2}{W}{U}); cutting Triceraton/Luxknight/Spiritcall DROPPED white demand. Sources W 17 / U 13; blue rises to ~14 single pips, comfortably supported.
