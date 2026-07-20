@@ -117,6 +117,22 @@ Case-insensitive substring filters, AND-ed together. Table output by default.
 `query.py` searches only cards you **own** (`card-library.csv`); to search the
 full set of cards you *could* play, use `pool.py` below.
 
+### Card — inspect one card in full
+
+```
+python3 scripts/card.py "morningtide"            # substring / fuzzy match
+python3 scripts/card.py "Ghalta, Primal Hunger"  # exact
+```
+
+Prints one card's **complete, untruncated oracle text** alongside its mana cost,
+**format legality** (from the pool's `Legalities` column), owned quantity,
+rarity/wildcard, and which decks run it — in a single view. Use it as the default
+way to read a card before grading a cut or recommending a craft: it removes the
+temptation to read a *sliced* text dump (which once hid a card's game-changing
+clause), and it puts legality up front so a Historic-only card is never mistaken
+for a Standard-legal craft (`✗ NOT Standard-legal`). Matches the library first,
+then the pool, so it works for unowned cards too.
+
 ### Card pool — reference cards you don't own yet
 
 For deck-building you often want to see options beyond your collection. The pool
@@ -157,7 +173,7 @@ eye), and **Power** (a 1–10 hand-graded constructed-power score — see `--ran
 below, which blends it with theme fit).
 
 ```
-python3 scripts/wishlist.py --add batch.txt   # append an Arena-export batch (enriches each)
+python3 scripts/wishlist.py --add batch.txt   # append a batch (enriches + AUTO-seeds a Power estimate)
 python3 scripts/wishlist.py                    # browse the whole wishlist
 python3 scripts/wishlist.py --set SOS --rarity rare,mythic   # filter (substring, AND-ed)
 python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme
@@ -167,6 +183,7 @@ python3 scripts/wishlist.py --rank             # WILDCARD PRIORITY: theme fit + 
 python3 scripts/wishlist.py --budget "9M 10R 38U 48C"   # optimal craft plan within a wildcard budget
 python3 scripts/wishlist.py --seed-power       # first-pass heuristic estimate for BLANK Power cells (+ --write)
 python3 scripts/wishlist.py --owned            # cards you've since acquired — prune these
+python3 scripts/wishlist.py --audit-targets    # flag cards whose Target deck can't cast them (color drift)
 python3 scripts/wishlist.py --suggest-targets  # propose a Target per card (confidence-flagged)
 python3 scripts/wishlist.py --suggest-targets --write   # auto-fill the confident picks
 ```
@@ -203,7 +220,13 @@ independent axes and blends them:
 
 The two are normalized and blended 50/50 into a `combined` score; the list still
 groups into fit tiers (A = confident home / real breadth, B = one clear deck,
-C = situational). The published wishlist artifact renders the same data with a
+C = situational). A **`state`** column shows each card's target deck as
+`tier·remaining-crafts` (★ = the card helps *finish* a near-complete deck), so a
+wildcard that **upgrades a deck you already play** (low remaining) reads apart from
+one that only **builds an unbuilt project** (a big remaining count) — the strategic
+overlay the raw combined score can't capture. Cards with a blank `Power` are marked
+`pow?` and flagged, since `--add` auto-seeds an estimate you should review. The
+published wishlist artifact renders the same data with a
 live **fit↔power slider** so you can reweight the ranking on the fly. `--owned`
 flags anything you've since crafted so you can drop it (or reconcile it with
 `reconcile_crafts.py`, below). Set `Target`/`Note`/`Power` by editing the CSV
@@ -257,9 +280,11 @@ python3 scripts/deck.py suggest 1a --unowned --full  # picks WITH full text + ke
 ```
 
 `audit` is the **roster triage** for when you don't want to full-tune all your
-decks at once. It prints one offline line per deck — ownership drift (`Own`),
-construction legality (`Legal`), color strays (`Cast`: `Nu` uncastable / `Ns`
-off-identity), interaction count (`Int`), and central-theme count (`Thm`) — then
+decks at once. It prints one offline line per deck — competitive **`Tier`**
+(S/A/B/C/D win-capability, from the deck's `#: tier:` header; sort with
+`--by-tier`), ownership drift (`Own`), construction legality (`Legal`), color
+strays (`Cast`: `Nu` uncastable / `Ns` off-identity), interaction count (`Int`),
+and central-theme count (`Thm`) — then
 labels each deck **★ TUNE** (a hard problem: illegal or uncastable cards),
 **craft** (just unbuilt), **review** (a soft flag: off-color strays or thin
 interaction), or **ok**. It reuses the exact `check` / `legal` / `mana` / `stats`

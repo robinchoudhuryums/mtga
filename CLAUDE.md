@@ -48,6 +48,17 @@ docs. This file is the source of truth for the workflow commands in
 
 ## Common Gotchas
 
+- **Inspect one card with `card.py <name>`, never a truncated slice.** `scripts/card.py
+  "<name>"` (substring/fuzzy match) prints a card's **complete, untruncated oracle
+  text** plus mana cost, **format legality**, owned quantity, rarity/wildcard, and
+  which decks run it — all in one place. It exists to stop two recurring mistakes:
+  (1) grading a card from a *sliced* read (piping `query.py --full` through `head`
+  hid Morningtide's Light's "prevent all damage" clause and mis-graded the cut), and
+  (2) recommending a craft without a **legality check** (Champion of Rhonas / Chord
+  of Calling read as green cheat enablers but are Historic-only, not Standard;
+  Heartfire Hero likewise). Before grading or recommending ANY card in chat, run
+  `card.py` — the pool's `Legalities` column is authoritative, so "it's in the pool"
+  is NOT "it's Standard-legal."
 - **Don't judge a card by printed mana value or a single subtype.** `deck.py
   stats` flags cost flexibility (`◊` cheaper / `△` added cost), buckets spells
   into functional roles (removal / card advantage / ramp / …, heuristic from
@@ -85,7 +96,10 @@ docs. This file is the source of truth for the workflow commands in
   construction legality (`legal`), color strays (`mana`/`check` castability),
   interaction count and central-theme count (`stats`) — labelled **★ TUNE** (hard:
   illegal / uncastable), **craft** (unbuilt), **review** (soft: off-color strays or
-  thin interaction), or **ok**. `--flagged` drops the ok rows. The dashboard opens
+  thin interaction), or **ok**. `--flagged` drops the ok rows. Each deck also
+  carries a competitive **`Tier`** (S/A/B/C/D win-capability) read from its `#:
+  tier:` header — shown as a column and sortable with `deck.py audit --by-tier`
+  (and a color-coded pill on the dashboard). The dashboard opens
   with the same scorecard as a sortable **Roster-triage** table (both render from a
   shared `audit_deck()` scorer, so CLI and page can't drift). It's a SHORTLIST
   SIGNAL like `suggest`/`cuts`: a flag says "look here," then grade the flagged deck
@@ -195,7 +209,16 @@ docs. This file is the source of truth for the workflow commands in
   (top `combined` per rarity cap + alternates + an import block); `--seed-power`
   first-passes BLANK `Power` cells with a heuristic estimate (rarity floor + roles;
   review it — the classifier undersells bombs); `--owned` flags cards you've since
-  crafted so you can prune them (or feed them to `reconcile_crafts.py`).
+  crafted so you can prune them (or feed them to `reconcile_crafts.py`). `--add`
+  now **auto-seeds a heuristic `Power`** on the newly-appended rows (so a fresh card
+  never ranks at a 0.0 blank — the Elf engine and the Dino/Enchantress batches each
+  sank until graded; review the estimate and hand-adjust the bombs). `--audit-targets`
+  flags any card whose **Target deck can no longer cast it** (color/theme drift after
+  a retune — e.g. Neriv orphaned when deck 14 went Mardu→Rakdos) or has blank Power;
+  it's also folded into `check_all` as a **soft, non-gating warning**. `--rank` shows
+  a **`state`** column (target deck's tier·remaining-crafts, ★ = this card helps
+  *finish* a near-complete deck) so "upgrade a BUILT deck" reads apart from "build an
+  UNBUILT one" — the strategic overlay the raw score can't show.
   `Target`/`Note`/`Power` are hand-annotated: `Target` is a
   deck id / `general` / `concept: …`; **`Power` is a 1–10 hand-graded constructed-
   power score** that `--rank` blends 50/50 with theme fit into a `combined` score
@@ -292,7 +315,9 @@ docs. This file is the source of truth for the workflow commands in
 INV-01…04 plus a **ranking-model sanity check** (`check_rankings.py`) that guards
 the Doctor-Doom-class regression: a scoring change that silently reclassifies a
 real tribal theme as "generic". The ranking check is distribution-based, so it
-survives cards being crafted off the wishlist.)
+survives cards being crafted off the wishlist. It also emits a **soft, non-gating
+warning** for wishlist target drift — a card whose Target deck can no longer cast it
+after a retune — via `wishlist.py --audit-targets`; soft warnings never fail the build.)
 
 **Health Dimensions:**
 - Data Integrity — CSV structure, no drift between library and derived files
@@ -305,7 +330,7 @@ survives cards being crafted off the wishlist.)
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
-- Analysis: scripts/deck.py, scripts/query.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py
+- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`)
 - Decks: decks/
 
