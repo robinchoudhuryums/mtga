@@ -1,6 +1,6 @@
 #: name: Coming of Galactus
 #: format: Standard
-#: tier: B — Golgari graveyard midrange; grindy value, 7 interaction
+#: tier: A — Golgari graveyard midrange; grindy value, 7 interaction (5 spot removal + 2 sweepers) + 3 card advantage on a clean 2-color base. Re-graded B→A: measurable floor is A (strong interaction + card advantage, coherent recursion engine) with no offsetting consistency tax — the earlier B under-rated it.
 #: colors: BG
 #: archetype: Golgari (B/G) graveyard midrange / value.
 #: notes: Golgari (B/G) — graveyard / midrange value.
