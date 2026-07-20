@@ -13,12 +13,12 @@
 1 Nurturing Bristleback (LCI) 203
 1 Quakestrider Ceratops (FDN) 110
 1 Flowerfoot Swordmaster (BLB) 14
-1 Encumbered Reejerey (ECL) 14
+1 Bushwhack (BRO) 174
 1 Raft Security Officer (MSH) 33
-1 Super-Soldier Serum (MSH) 38
+1 Clash of the Eikons (FIN) 180
 1 Captain America, Wings of Freedom (MSH) 10
 1 Cosmogrand Zenith (EOE) 9
-1 Dual-Sun Adepts (EOE) 12
+1 Auspicious Arrival (MKM) 5
 1 Earth Kingdom Jailer (TLA) 16
 1 Red Guardian, Super-Soldier (MSH) 34
 1 Okoye, Dora Milaje Leader (MSH) 27
