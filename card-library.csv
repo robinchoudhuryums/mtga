@@ -3382,3 +3382,17 @@ Wardens of the Cycle,Creature — Elf Warlock,"Morbid — At the beginning of yo
 • You draw a card and you lose 1 life.",B/G,Elf; Warlock; lifegain; card draw; morbid; sacrifice; aristocrats,FDN,125,1
 Elfsworn Giant,Creature — Giant,"Reach (This creature can block creatures with flying.)
 Landfall — Whenever a land you control enters, create a 1/1 green Elf Warrior creature token.",G,Giant; tokens; landfall; reach; defense; lands; ramp,FDN,103,1
+Exclusion Mage,Creature — Human Wizard,"When this creature enters, return target creature an opponent controls to its owner's hand.",U,Human; Wizard; etb; bounce,FDN,508,1
+Leyline of Transformation,Enchantment,"If this card is in your opening hand, you may begin the game with it on the battlefield.
+As this enchantment enters, choose a creature type.
+Creatures you control are the chosen type in addition to their other types. The same is true for creature spells you control and creature cards you own that aren't on the battlefield.",U,,DSK,63,1
+Mouth of the Storm,Creature — Elemental,"Flying
+Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
+When this creature enters, creatures your opponents control get -3/-0 until your next turn.",U,Elemental; etb; flying; evasion; ward; protection,EOE,70,1
+Drake Hatcher,Creature — Human Wizard,"Vigilance, prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+Whenever this creature deals combat damage to a player, put that many incubation counters on it.
+Remove three incubation counters from this creature: Create a 2/2 blue Drake creature token with flying.",U,Human; Wizard; tokens; pump; prowess; spellslinger; tempo; vigilance; combat,FDN,35,1
+Muse Seeker,Creature — Elf Wizard,"Opus — Whenever you cast an instant or sorcery spell, draw a card. Then discard a card unless five or more mana was spent to cast that spell.",U,Elf; Wizard; card draw; spellslinger; opus,SOS,60,1
+"April, Reporter of the Weird",Legendary Creature — Human Detective,"Whenever April deals combat damage to a player, draw that many cards, then discard a card.",U,Human; Detective; card draw,TMT,30,1
+Arcanis the Omnipotent,Legendary Creature — Wizard,"{T}: Draw three cards.
+{2}{U}{U}: Return Arcanis to its owner's hand.",U,Wizard; card draw; bounce,FDN,741,1
