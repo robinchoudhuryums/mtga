@@ -1,6 +1,6 @@
 #: name: Bird Brain
 #: format: Standard
-#: tier: D — Bant tokens — incomplete (10 cards to craft); ungradeable as-is
+#: tier: C — Bant (effectively GW go-wide + a trivial 3-pip U splash) Bird tribal / Chocobo-landfall tokens; now fully built. Deep, coherent engine (16 Birds, 8 Bird payoffs, 20 total payoffs + 3 anthems) on a low aggressive curve with clean 2-color-effective mana. Capped by near-ZERO interaction (1 — no removal/counters/protection, so a sweeper or a resolved bomb is a hard loss it can only race) + singleton variance. Strong C; the owned interaction in the flex (Dazzling Denial / Bushwhack / Harsh Annotation / Run Over) is the clearest step toward B. Buildable now bar 2 more Gysahl Greens (Common).
 #: colors: GWU
 #: archetype: Bant (G/W/U) go-wide tokens — Chocobo landfall Birds + copy-army + flyers/anthems.
 #: notes: Promoted from variant 19a (Bant Tokens) to primary. Bant (GWU) go-wide:
