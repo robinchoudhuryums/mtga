@@ -1,6 +1,6 @@
 #: name: Temur Fractals
 #: format: Standard
-#: tier: B — Temur Fractals counters/ramp; powerful engine + card advantage + ramp, but only 2 interaction (2 counters; a land-ping is NOT removal) + 2 card advantage puts the measurable floor at C. Re-graded A→B: a real engine deck genuinely capped by thin interaction — B is the defensible letter (one band above floor, crediting the ramp/engine bombs). Reaching A wants ~3 more true interaction pieces without gutting the engine — see the flex block.
+#: tier: A — Temur Fractals counters/ramp; powerful engine + card advantage + ramp, now with adequate interaction. The interaction package (+Spell Pierce / +Plasma Bolt / +Shock, cutting redundant card-selection) took interaction 2→5 and resil 4→7, lifting the measurable floor to A while keeping the 10 payoffs + 4 ramp intact (curve improved 3.40→3.23). Held at A (not an S conversation) by the 3-color GUR mana. Earlier B was correct pre-package; re-graded B→A once the metrics floor reached A.
 #: colors: GUR
 #: protect: Emil, Vastlands Roamer; Loading Zone; Growth Curve; Quandrix Charm
 #: archetype: Temur (G/U/R) +1/+1 counters & Fractals on a lands-matter ramp shell. Built from the
