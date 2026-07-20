@@ -277,6 +277,17 @@ docs. This file is the source of truth for the workflow commands in
   re-check its `#~` craft suggestions — a craftable legal under the old format may
   have rotated (hit moving decks 1/2 Historic→Standard). `deck.py flex <id>` plus
   the pool's `Legalities` column confirm.
+- **The pool's `Legalities` is a build-time SNAPSHOT — Standard rotates.** So a
+  card the pool still marks `standard` may have aged out since the last
+  `build_pool.py`. `deck.py suggest` guards against this with a **date-aware
+  rotation check**: `build_pool.py` now writes a `Released` date per card and a
+  `card-pool.build` date sidecar, and `suggest` marks a pick **`⚠rot`** when its
+  set is >~3 years old (rotated / rotates soon) and warns when the pool stamp
+  itself is stale. Treat `⚠rot` as "verify before crafting" and rebuild the pool
+  (`build_pool.py --all`, per `/refresh`) to refresh both the legality snapshot and
+  the date stamp. `rotation_risk()` returns False on a blank `Released` (graceful
+  before a pool rebuild adds the column), so the flag only fires once the data
+  supports it.
 - **`deck.py suggest-homes <card>` automates the "which of my decks does this new
   card improve" fit pass** (the manual dance repeated every craft this session —
   Doctor Doom, Elspeth, Wan Shi Tong, Shark Shredder). It scans EVERY deck and

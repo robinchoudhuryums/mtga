@@ -144,9 +144,13 @@ python3 scripts/build_pool.py            # (re)build card-pool.csv — Standard-
 python3 scripts/build_pool.py --all      # every Arena-craftable card (~15.8k) instead
 ```
 
-`card-pool.csv` carries a **Rarity** column (= Arena wildcard cost). Search it
-with `pool.py`, which joins against what you own so each result is flagged owned
-or craftable:
+`card-pool.csv` carries a **Rarity** column (= Arena wildcard cost) and a
+**`Released`** column (each card's set release date). `build_pool.py` also writes
+a `card-pool.build` sidecar stamping when the pool was last built — together these
+let `deck.py suggest` reason about **rotation** (Standard holds ~the last 3 years
+of sets), flagging picks whose set has aged out even when the static `Legalities`
+snapshot still says `standard`. Search the pool with `pool.py`, which joins
+against what you own so each result is flagged owned or craftable:
 
 ```
 python3 scripts/pool.py --color U --text "counter target"    # all blue counters, owned or not
@@ -351,6 +355,14 @@ picks, a Standard deck gets Standard-legal ones. Override with `--format <fmt>`
 (e.g. `--format standard` to check what a Historic brew would need for Standard)
 or `--any-format` to turn the filter off. (Requires a legality-aware pool; rerun
 `build_pool.py` if yours predates the column.)
+
+On top of that static filter, `suggest` layers a **date-aware rotation check**:
+using each card's `Released` date and today's date, it marks a pick **`⚠rot`**
+when its set is more than ~3 years old (rotated out of Standard, or rotating
+soon) — so a stale `Legalities` snapshot can't surface a card you can no longer
+play. It also warns when the `card-pool.build` stamp is old (the pool itself may
+have gone stale since a rotation), prompting a `build_pool.py` rebuild to refresh
+both the legality snapshot and the date stamp.
 
 `wildcards` reads every deck's craft targets (cards you're short of), prices each
 by rarity (= its Arena wildcard, from `card-pool.csv`, with a live Scryfall
