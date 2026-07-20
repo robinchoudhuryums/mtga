@@ -80,16 +80,11 @@ label (CLAUDE.md's recurring mis-grade):
      is `/apply-changes` (which the user confirms). Honor the standing "propose,
      don't apply until confirmed" rule.
 
-## Stage 4 — Commit (standardized tail)
+## Stage 4 — Commit
 
 Only the **catalog** changes (library / mana / wishlist / gallery) are committed
-by this skill — the swaps are not applied yet. Follow the shared commit
-discipline:
-
-- `python3 scripts/check_all.py` must pass first (all invariants hold).
-- Commit the changed data files with a clear message; end it with the
-  `Co-Authored-By:` and `Claude-Session:` lines and **never** put the model ID in
-  the message, code, or any pushed artifact.
-- Push to the working branch with `git push -u origin <branch>` (retry with
-  backoff on network errors). If that branch's PR is already merged, restart the
-  branch from `main` per CLAUDE.md before pushing the follow-up.
+by this skill — the swaps are not applied yet (that's `/apply-changes`). Follow
+the shared **verify + commit tail** in `docs/verify-commit-tail.md` verbatim:
+`check_all` must pass first; the commit ends with the `Co-Authored-By:` /
+`Claude-Session:` trailer and never contains the model ID; push to the working
+branch (restart from `main` first if its PR is already merged).

@@ -85,12 +85,10 @@ For each `−cut / +add`:
      `Deck`-prefixed import block the user pastes into Arena on mobile (the raw
      file with `#` headers is useless to them).
 
-## Stage 6 — Commit (standardized tail)
+## Stage 6 — Commit
 
-- `python3 scripts/check_all.py` must pass first (all invariants hold).
-- Commit the deck file (+ any wishlist/library/gallery changes) with a clear
-  message; end it with the `Co-Authored-By:` and `Claude-Session:` lines and
-  **never** put the model ID in the message, code, or any pushed artifact.
-- Push to the working branch with `git push -u origin <branch>` (retry with
-  backoff on network errors). If that branch's PR is already merged, restart the
-  branch from `main` per CLAUDE.md before pushing the follow-up.
+Commit the deck file (+ any wishlist/library/gallery changes) per the shared
+**verify + commit tail** in `docs/verify-commit-tail.md` verbatim: `check_all`
+must pass first; the commit ends with the `Co-Authored-By:` / `Claude-Session:`
+trailer and never contains the model ID; push to the working branch (restart from
+`main` first if its PR is already merged).

@@ -218,6 +218,14 @@ independent axes and blends them:
 - **Power** — the hand-graded 1–10 `Power` column (constructed impact), so those
   bombs aren't buried by a low fit score.
 
+**Lands are scored on a different axis.** A land has no synergy themes, so theme
+fit would sink it to ~0; instead `--rank` rates a land on **manabase value** for
+its target deck — how much of the deck's colors it actually produces (a WB dual in
+a mono-W deck is half-dead), with a bonus for entering untapped — on the same
+0–10 scale, then blends that with `Power`. So a dual or verge that fixes a
+two-color deck ranks as the real upgrade it is (`sig: manabase (land)`), instead
+of being buried under spells.
+
 The two are normalized and blended 50/50 into a `combined` score; the list still
 groups into fit tiers (A = confident home / real breadth, B = one clear deck,
 C = situational). A **`state`** column shows each card's target deck as
@@ -277,6 +285,9 @@ python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 
 pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export against the stored deck
 python3 scripts/deck.py text 1a              # full oracle text of every card (read before grading)
 python3 scripts/deck.py suggest 1a --unowned --full  # picks WITH full text + keywords + flags
+python3 scripts/deck.py suggest-homes "Crib Swap"    # which decks a card fits, with a fit-strength label
+python3 scripts/deck.py preflight 1a         # one-call verify: legal + owned + castable + integrity
+python3 scripts/deck.py quality 1a --json    # deck-quality vector; --vs FILE diffs a before-snapshot
 ```
 
 `audit` is the **roster triage** for when you don't want to full-tune all your
@@ -383,6 +394,28 @@ repeatable across lines; card names contain commas, so `;` is the separator).
 `cuts` then keeps those cards **off** the cut list (and lists them as protected),
 and `swap --cut`-ing one prints a warning. Use it for the cards a deck is built
 around so the tooling never proposes cutting them.
+
+`suggest-homes <card>` answers "which of my decks does this new card improve" —
+it scans every deck for the ones where the card is *castable* and shares a
+*central* theme, and tags each fit with a **strength** label: **KEY** (it fills an
+interaction / card-advantage gap the deck is short on, or shares the deck's
+signature theme), **role-player** (a secondary central theme), or **tangential**
+(only generic overlap — etb/tokens/lifegain/…). Rows sort strongest-fit first and
+name the single weakest nonland cut candidate per deck. Because copies are
+fungible, slot a card into *every* deck it earns, not one.
+
+`preflight <id>` is the one-call gate the editing skills run before committing: it
+folds `legal` (construction) + owned/buildable + castability + a full `check_all`
+integrity pass into one structured PASS/FAIL block with a **READY / BLOCKED**
+verdict, exiting non-zero only on a hard failure (an illegal deck or broken
+integrity — unowned craft targets on a WIP deck are a WARN, not a block).
+`quality <id>` computes a **deck-quality vector** (buildable · uncastable strays ·
+interaction / card-advantage role counts · curve · central themes); `--json`
+snapshots it before a change and `--vs FILE` diffs after, flagging **regressions**
+(interaction dropped, castability broke, a central theme lost its last copy, the
+curve got heavier) so a cut/swap that *worsens* the deck self-catches. It's a soft
+guard — intentional trades are fine — so it warns rather than blocking unless
+`--strict`; `--add NAME` warns if a proposed add is only a tangential fit.
 
 Decks live under `decks/` as one folder per core deck, with variations as sibling
 files (`deck.txt` → id `1`, `1a-*.txt` → id `1a`). Basics are treated as
@@ -571,13 +604,19 @@ Import applies Sheets' own formula parsing, which this RAW guard can't cover.)
 `python3 scripts/check_all.py` is the project's integrity gate — it verifies the
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
 derived files present, decks parse) plus a **ranking-model sanity check**
-(`check_rankings.py`, above), and exits non-zero on any hard break. A
-SessionStart hook runs it (quiet) so drift surfaces immediately.
+(`check_rankings.py`, above), and exits non-zero on any hard break. It also emits
+**soft warnings** (never gating): wishlist target drift (a card whose target deck
+can no longer cast it) and **new unindexed card mechanics** — `check_keywords.py`
+flags a keyword on an owned card that isn't in the synergy map yet (a new set's
+mechanic), so tags never silently miss it. A SessionStart hook runs the gate
+(quiet) so drift surfaces immediately.
 
 Claude Code slash commands live in `.claude/commands/`:
 
 - **Project:** `/check` (integrity), `/refresh` (rebuild derived data),
-  `/add-deck` (ingest a pasted deck), `/tune-deck` (deck-building analysis).
+  `/add-deck` (ingest a pasted deck), `/tune-deck` (deck-building analysis),
+  `/add-cards` (catalog newly-owned cards + find their homes), `/apply-changes`
+  (apply confirmed swaps, run the quality guard, verify + commit).
 - **Audit (from claude-workflow-tools):** `/broad-scan`, `/broad-implement`,
   `/sync-docs`, `/health-pulse` (quick directional read), `/roadmap` —
   project-agnostic; they read the **Cycle Workflow Config** in `CLAUDE.md` (Test

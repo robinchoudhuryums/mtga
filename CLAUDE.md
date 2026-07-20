@@ -226,7 +226,13 @@ docs. This file is the source of truth for the workflow commands in
   power score** that `--rank` blends 50/50 with theme fit into a `combined` score
   (an idf theme model can't see raw power, so bombs like Doctor Doom get buried
   without it — the Power column is the fix; the artifact exposes a live fit↔power
-  slider). The wishlist CSV itself isn't gated by check_all, but the **ranking
+  slider). **Lands rank on a different axis:** a land has no synergy themes, so
+  theme fit would sink it — `--rank` instead rates a land on **manabase value** for
+  its target deck (how much of the deck's colors it produces, +untapped bonus, on
+  the same 0–10 scale) and blends *that* with `Power`, tagging it `manabase (land)`.
+  So a dual/verge that fixes a two-color deck ranks as the upgrade it is instead of
+  bottoming out under spells; the same dual pointed at a mono-color deck stays low.
+  The wishlist CSV itself isn't gated by check_all, but the **ranking
   model is** — `check_rankings.py` (run inside check_all) guards the specific-theme
   cutoff so a scoring change can't silently reclassify a real tribe as "generic".
 - **Auto-targeting a wishlist batch: trust STRONG, judge `review`.** `wishlist.py
@@ -281,7 +287,27 @@ docs. This file is the source of truth for the workflow commands in
   (`#: protect:` cards excluded). It's a SHORTLIST, not a verdict — the cut is one
   heuristic pick, so still grade from full oracle text via `deck.py cuts <id>` and
   preview with `deck.py swap` before applying. Because copies are fungible, it
-  reminds you to slot a card into *all* decks that earn it, not pick one home.
+  reminds you to slot a card into *all* decks that earn it, not pick one home. Each
+  fit row now carries a **strength label** (`KEY` / `role-player` / `tangential`):
+  KEY = it fills an interaction/card-advantage gap the deck is short on or shares
+  the deck's *signature* theme; role-player = a secondary central theme;
+  tangential = generic overlap only (etb/tokens/lifegain/…). Rows sort
+  strongest-first — trust KEY, judge role-player, and read a tangential fit as
+  "probably not for this deck." The same `fit_strength` classifier flags a
+  merely-tangential add in `deck.py quality --add`.
+- **Before committing a deck edit, run `deck.py preflight <id>` — and grade a
+  cut/swap with `deck.py quality`.** `preflight` is the one-call gate the editing
+  skills use: it folds `legal` + owned/buildable + castability + a full `check_all`
+  pass into one PASS/FAIL block with a READY/BLOCKED verdict (hard-fails only on an
+  illegal deck or broken integrity; WIP craft targets are WARN). `quality <id>`
+  computes a deck-quality vector (buildable · uncastable · interaction/
+  card-advantage · curve · central themes); snapshot it with `--json` **before** a
+  change, then `--vs FILE` **after** to flag regressions (interaction dropped,
+  castability broke, a central theme lost its last copy, curve heavier) so a swap
+  that *worsens* the deck self-catches. It's a SOFT guard — an intentional trade
+  (e.g. dropping card advantage for interaction in an aggressive deck) is fine and
+  it only warns; grade the flagged axis from full text before accepting or
+  reverting. This is what the `/apply-changes` skill runs around every swap.
 - **`deck.py mana` also lints color SOURCES, not just pip demand.** After the pip
   breakdown it prints "Color sources (lands producing each color)" (basics by
   name, nonbasics by color identity — mana dorks aren't counted) and flags cards
@@ -317,9 +343,14 @@ docs. This file is the source of truth for the workflow commands in
 INV-01…04 plus a **ranking-model sanity check** (`check_rankings.py`) that guards
 the Doctor-Doom-class regression: a scoring change that silently reclassifies a
 real tribal theme as "generic". The ranking check is distribution-based, so it
-survives cards being crafted off the wishlist. It also emits a **soft, non-gating
-warning** for wishlist target drift — a card whose Target deck can no longer cast it
-after a retune — via `wishlist.py --audit-targets`; soft warnings never fail the build.)
+survives cards being crafted off the wishlist. It also emits **soft, non-gating
+warnings**: wishlist target drift — a card whose Target deck can no longer cast it
+after a retune — via `wishlist.py --audit-targets`; and **new unindexed mechanics**
+— `check_keywords.py` flags a keyword on an owned card that isn't in
+`tag_synergies.py`'s map yet (a new set's mechanic), baselined in
+`keyword_baseline.txt` so it stays quiet until something genuinely new appears
+(`check_keywords.py --update-baseline` to acknowledge one). Soft warnings never
+fail the build.)
 
 **Health Dimensions:**
 - Data Integrity — CSV structure, no drift between library and derived files
@@ -332,7 +363,7 @@ after a retune — via `wishlist.py --audit-targets`; soft warnings never fail t
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
-- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py
+- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`)
 - Decks: decks/
 
@@ -366,4 +397,11 @@ one deployed artifact is the **roster dashboard**: `.github/workflows/pages.yml`
 [claude-workflow-tools](https://github.com/robinchoudhuryums/claude-workflow-tools);
 they stay project-agnostic and read everything from the Cycle Workflow Config
 above. To update them, re-copy the files when that repo bumps them — don't edit
-them here. `check`, `refresh`, `add-deck`, and `tune-deck` are project-specific.
+them here. `check`, `refresh`, `add-deck`, `tune-deck`, `add-cards`, and
+`apply-changes` are project-specific. `add-cards` (catalog newly-owned cards +
+find their homes) and `apply-changes` (apply confirmed swaps, run the F10 quality
+guard, verify + commit) **orchestrate the scripts, never re-implement them** — the
+scripts stay the single source of truth so the skills can't drift. Both end with
+the shared verify+commit tail in `docs/verify-commit-tail.md` (check_all-first,
+the Co-Authored-By/Claude-Session trailer, no model ID, branch-restart on a merged
+PR) — edit that one file to change the commit discipline for both.
