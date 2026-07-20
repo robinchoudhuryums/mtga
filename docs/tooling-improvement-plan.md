@@ -1,8 +1,9 @@
 # Tooling Improvement Plan
 
 A structured findings list for `/broad-implement`. Each finding is self-contained:
-**why**, **files**, **changes**, and **acceptance**. Implement in ID order —
-later findings depend on earlier primitives. Every change must keep
+**why**, **files**, **changes**, and **acceptance**. Implement in the phased order
+in **Suggested implementation sequence** at the bottom (not strict ID order) —
+later work depends on earlier primitives. Every change must keep
 `scripts/check_all.py` green and follow CLAUDE.md's Common Gotchas.
 
 **Design constraints (apply to all findings):**
@@ -157,8 +158,14 @@ any now-owned adds and prune them from the wishlist → `deck.py preflight` →
 changes, tier-before/after with a *prompt* to re-grade, verification) →
 standardized commit (F08). Orchestrates scripts only.
 
-**Acceptance.** A swap list applies systematically with the structured report; flex
-notes and wishlist stay in sync; tier letter is prompted, not auto-written.
+**Acceptance (live test case).** Validate against the **Bird Brain (deck 19)
+B-tier package** held over from this session: `+Crib Swap / +Stroke of Midnight /
++Dazzling Denial / +Bushwhack`, cutting `Season of Gathering / The Legend of
+Kyoshi / Rydia's Return / Cat-Owl`. The skill must: apply all four swaps, keep flex
++ wishlist in sync, run the F10 quality guard (which should CONFIRM the change is a
+net improvement — interaction 1→~5, curve smoothed, no central theme lost, still
+legal/owned), emit the structured report, prompt a tier re-grade (C→B), and commit
+per F08. Do NOT apply this package by hand beforehand — it is the acceptance run.
 
 ---
 
@@ -192,3 +199,92 @@ unindexed-mechanic detector (F02), the land rating (F03) and fit-strength labels
 `check_keywords.py` to the Subsystems lists. Note `check_all`'s new soft warning.
 
 **Acceptance.** `sync-docs` finds no remaining drift for these features.
+
+---
+
+## F10 — Deck-quality regression guard (self-check on cuts/swaps)
+
+**Why.** A suggested cut/swap may not be the best option — or may *worsen* the
+deck. The skills (and `/tune-deck`) should self-catch a net-negative change instead
+of trusting the suggestion blindly.
+
+**Files.** `scripts/deck.py` (new `quality <id>` snapshot + a before/after diff
+mode, reusing `audit_deck` / `stats` / `mana` / `cuts` primitives); consumed by
+F07 `apply-changes` and F06 `add-cards`, and referenced by `/tune-deck`.
+
+**Changes.** Compute a **deck-quality vector** from existing primitives — buildable
+(owned+legal), castability strays, interaction count, curve health (avg MV +
+early-drop count), central-theme coverage, and the functional-role vector
+(removal / card advantage / ramp / payoff …). Snapshot it before a change and again
+after, then **flag regressions**:
+1. **Axis regression** — any key axis got worse past a threshold (interaction
+   dropped, castability broke, a central theme lost its last copy, curve worsened)
+   with no compensating gain → warn with the specific axis.
+2. **Wrong-cut check** — re-run `cuts` on the pre-change deck; if a swap removed a
+   card that ranks *above* cards it kept (you cut something better than what
+   remains), warn.
+3. **Weak-add check** — the added card's F04 fit-strength must be ≥ role-player;
+   an added **tangential**/off-theme card warns.
+It is a **soft guard** — it flags, it does not block (some regressions are
+intentional trades). Output a compact "quality delta" block the skills surface.
+
+**Acceptance.** A swap that drops interaction with no offsetting gain, cuts a
+higher-ranked card than it keeps, or adds a tangential card → the guard warns with
+the specific reason; a genuine upgrade (e.g. the Bird Brain package) → "net
+improvement, no regressions."
+
+---
+
+## F11 — Optimize unowned-card search (date-aware legality + pre-filter)
+
+**Why.** Scanning the ~15.8k-card pool for build/tune targets is heavy, and the
+pool's `Legalities` is a **build-time snapshot** — Standard rotates on a schedule,
+so stale entries waste the search and risk recommending a rotated-out card.
+
+**Files.** `scripts/build_pool.py` (capture set release/rotation info), a small
+set→rotation table (or derive from Scryfall via `scripts/scryfall.py`),
+`scripts/deck.py` (`suggest`), `scripts/pool.py`. Python may read the real date
+(`datetime.date.today()`).
+
+**Changes.**
+1. **Date-aware Standard legality.** Layer a rotation check over the pool's static
+   `Legalities`: given today's date and a set→in-Standard-until table, treat a card
+   as Standard only if its set is *currently* in Standard; **flag** cards whose set
+   has rotated (or rotates within ~3 months) even if the stale pool still marks them
+   `standard`. `suggest`/`pool --legal standard` default to currently-legal.
+2. **Pre-filter the search space.** Before the expensive text/theme scoring, prune
+   the pool to candidates that pass color (identity ⊆ deck colors) + format +
+   date-legality — so scoring runs on a small set, not all ~15.8k. Optionally cache
+   a pre-indexed pool (by color/format/theme) for repeated queries.
+
+**Acceptance.** `suggest` on a deck never recommends a rotated-out card and flags
+rotates-soon; the candidate set is pruned by color+format+date before theme
+scoring (measurably fewer cards scored); results match the old scoring on the
+surviving candidates.
+
+---
+
+## Suggested implementation sequence
+
+Phased, so each wave builds on stable primitives and can be validated before the
+next. `/broad-implement` one phase at a time.
+
+**Phase 1 — principles & standalone tooling (low-risk, no dependencies).**
+`F01` (full-text default) → `F02` (unindexed-mechanic detector) → `F11` (search
+optimization: date-legality + pre-filter). All are self-contained script changes
+that also make later work cheaper and safer.
+
+**Phase 2 — rating & verification primitives (the shared building blocks).**
+`F03` (land-aware rating) → `F04` (fit-strength labels) → `F05` (`preflight`) →
+`F10` (quality-regression guard). These are the primitives the skills call; land
+them and their gates (`check_rankings`) before building on top.
+
+**Phase 3 — the skills (orchestration only).**
+`F06` (`add-cards`) → `F07` (`apply-changes`). Build `add-cards` first (highest-
+frequency loop; exercises F04/F11), then `apply-changes`. **Validate `F07` with the
+Bird Brain B-tier package** as its live acceptance run (see F07), confirming the
+F10 guard reports a net improvement and the tier re-grade prompt fires (C→B).
+
+**Phase 4 — glue & docs.**
+`F08` (verify+commit tail, folded into the skills) → `F09` (docs sync). Do F09 last
+so it documents the final shape of everything above.
