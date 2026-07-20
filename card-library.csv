@@ -3396,3 +3396,30 @@ Muse Seeker,Creature — Elf Wizard,"Opus — Whenever you cast an instant or so
 "April, Reporter of the Weird",Legendary Creature — Human Detective,"Whenever April deals combat damage to a player, draw that many cards, then discard a card.",U,Human; Detective; card draw,TMT,30,1
 Arcanis the Omnipotent,Legendary Creature — Wizard,"{T}: Draw three cards.
 {2}{U}{U}: Return Arcanis to its owner's hand.",U,Wizard; card draw; bounce,FDN,741,1
+Salvation Swan,Creature — Bird Cleric,"Flash
+Flying
+Whenever this creature or another Bird you control enters, exile up to one target creature you control without flying. Return it to the battlefield under its owner's control with a flying counter on it at the beginning of the next end step.",W,Bird; Cleric; counters; blink; flying; evasion; flash; tempo,BLB,28,1
+Aven Interrupter,Creature — Bird Rogue,"Flash
+Flying
+When this creature enters, exile target spell. It becomes plotted. (Its owner may cast it as a sorcery on a later turn without paying its mana cost.)
+Spells your opponents cast from graveyards or from exile cost {2} more to cast.",W,Bird; Rogue; graveyard; removal; etb; flying; evasion; plot; tempo; cost-reduction; flash,OTJ,4,1
+Chocobo Racetrack,Artifact,"Landfall — Whenever a land you control enters, create a 2/2 green Bird creature token with ""Whenever a land you control enters, this token gets +1/+0 until end of turn.""",G,tokens; landfall; pump; lands; ramp,FIN,179,1
+Eusocial Engineering,Enchantment,"Landfall — Whenever a land you control enters, create a 2/2 colorless Robot artifact creature token.
+Warp {1}{G} (You may cast this card from your hand for its warp cost. Exile this enchantment at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,tokens; landfall; warp; tempo; cost-reduction; lands; ramp,EOE,181,1
+Stirring Hopesinger,Creature — Bird Bard,"Flying, lifelink
+Repartee — Whenever you cast an instant or sorcery spell that targets a creature, put a +1/+1 counter on each creature you control.",W,Bird; Bard; counters; lifegain; spellslinger; flying; evasion; lifelink; repartee,SOS,35,1
+Shrike Force,Creature — Bird Knight,"Flying, double strike, vigilance",W,Bird; Knight; flying; evasion; vigilance; combat; double strike; aggro,BLB,31,1
+Unflinching Courage,Enchantment — Aura,"Enchant creature
+Enchanted creature gets +2/+2 and has trample and lifelink. (Damage dealt by the creature also causes its controller to gain that much life.)",W/G,Aura; lifegain; aura; pump; enchant,FDN,722,1
+Angelic Destiny,Enchantment — Aura,"Enchant creature
+Enchanted creature gets +4/+4, has flying and first strike, and is an Angel in addition to its other types.
+When enchanted creature dies, return this card to its owner's hand.",W,Aura; aura; pump; bounce; enchant,FDN,565,1
+Needletooth Pack,Creature — Dinosaur,"Morbid — At the beginning of your end step, if a creature died this turn, put two +1/+1 counters on target creature you control.",G,Dinosaur; counters; morbid; sacrifice; aristocrats,FDN,108,1
+Quakestrider Ceratops,Creature — Dinosaur,,G,Dinosaur,FDN,110,1
+Sunbird Standard,Artifact // Artifact Creature — Bird Construct,"{T}: Add one mana of any color.
+Craft with one or more {5} ({5}, Exile this artifact, Exile one or more other permanents you control and/or cards from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.) // Flying, vigilance, haste
+Sunbird Effigy's power and toughness are each equal to the number of colors among the exiled cards used to craft it.
+{T}: For each color among the exiled cards used to craft this creature, add one mana of that color.",Colorless,Bird; Construct; graveyard; mana; flying; evasion; craft; artifacts; vigilance; combat; transform; haste; aggro,LCI,262,1
+Giant Cindermaw,Creature — Dinosaur Beast,"Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)
+Players can't gain life.",R,Dinosaur; Beast; trample; evasion,FDN,624,1
+Anthem of Champions,Enchantment,Creatures you control get +1/+1.,W/G,pump,FDN,116,1
