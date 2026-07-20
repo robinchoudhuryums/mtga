@@ -23,9 +23,9 @@
 1 Mole Man, Moloid Master (MSH) 177
 1 Galactic Wayfarer (EOE) 185
 1 Glacier Godmaw (EOE) 188
-1 Season of Gathering (BLB) 192
+1 Bushwhack (BRO) 174
 1 Rydia's Return (FIN) 198
-1 The Unbeatable Squirrel Girl (MSH) 193
+1 Clash of the Eikons (FIN) 180
 1 Michelangelo, Mutant BFF (TMT) 120
 1 Storm, Windrider (MSH) 230
 1 Suki, Kyoshi Warrior (TLA) 243
@@ -37,7 +37,7 @@
 1 Salvation Swan (BLB) 28
 1 Miner's Guidewing (LCI) 24
 1 Ambrosia Whiteheart (FIN) 6
-1 Dawnwing Marshal (FDN) 570
+1 Erode (SOS) 15
 1 Dazzling Angel (FDN) 9
 1 Stirring Hopesinger (SOS) 35
 1 Momo, Friendly Flier (TLA) 29
