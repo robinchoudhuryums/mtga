@@ -1,6 +1,6 @@
 #: name: Villainous
 #: format: Standard
-#: tier: B — Mono-B Villain tribal control (strong B / A-adjacent); perfect mono-B mana, bomb-rich top end, deep interaction, and now an on-tribe card-advantage suite (Robot Domination + Tombstone + Arnim Zola). Residual knock: slightly top-heavy curve.
+#: tier: A — Mono-B Villain tribal control; perfect mono-B mana, bomb-rich top end (Liliana/Doctor Doom/Massacre Wurm/Bringer), deep interaction (6 removal + 3 sweepers), and an on-tribe card-advantage suite (Robot Domination + Tombstone + Arnim Zola) + anthem (Masters of Evil). Promoted from B: mono-color consistency + bombs + interaction + card advantage. Residual: slightly top-heavy curve (flex-out Masters of Evil first if racing aggro).
 #: colors: B
 #: archetype: Mono-black villains control-midrange — graveyard / sacrifice.
 #: notes: Mono-black villains / control-midrange.

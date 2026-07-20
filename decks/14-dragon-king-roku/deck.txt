@@ -1,6 +1,6 @@
 #: name: Dragon King Roku
 #: format: Standard
-#: tier: B — Rakdos dragons midrange; bombs + 8 interaction, tightened from Mardu to 2-color for consistency (A-track)
+#: tier: A — Rakdos (BR) dragons midrange; bombs + 8 interaction (6 removal + 2 sweepers), low curve base (14 cards at 1-2 MV) with a dragon payoff cluster at 5. Promoted from B: tightened Mardu->2-color for consistency; A-caliber interaction + closing power.
 #: colors: BR
 #: archetype: Rakdos (B/R) Fire Nation dragons / firebending midrange.
 #: notes: Rakdos (B/R) — Fire Nation / dragons midrange. Tightened from the old Mardu build:

@@ -1,6 +1,6 @@
 #: name: Eternal Flame
 #: format: Standard
-#: tier: B — Boros impulse; card-advantage engine + 7 interaction, high curve (3.8)
+#: tier: A — Boros (WR) impulse/cast-from-exile; deepest synergy web on the roster (Thm 20), card-advantage engine (Quintorius Kand + Thor), 7 interaction, curve lowered on the A-track pass. Promoted from B: 2-color consistency + engine + interaction + deep synergy.
 #: colors: WR
 #: notes: Boros impulse / cast-from-exile. Quintorius Kand + Thor, God of Thunder as
 #: notes: payoffs; a dense "exile the top card, play it" package (Practiced
