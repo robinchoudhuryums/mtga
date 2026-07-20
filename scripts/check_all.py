@@ -119,14 +119,30 @@ def main():
     except Exception as e:
         hard.append(f"ranking model sanity check errored: {e}")
 
+    # Soft: wishlist target drift — a target deck that can no longer cast its card
+    # after a retune (e.g. deck 14 Mardu->Rakdos orphaned Neriv). Informational
+    # only; never fails the build.
+    soft = []
+    try:
+        import wishlist as wl
+        for _sev, name, msg in wl._audit_target_issues(color_only=True):
+            soft.append(f"wishlist target drift: {name} — {msg}")
+    except Exception as e:
+        soft.append(f"wishlist target audit skipped ({e})")
+
     if args.quiet:
         state = "OK" if not hard else f"{len(hard)} ISSUE(S)"
-        print(f"[card-library] {ncards} cards, {ndecks} decks — integrity: {state}")
+        extra = f", {len(soft)} soft" if soft else ""
+        print(f"[card-library] {ncards} cards, {ndecks} decks — integrity: {state}{extra}")
         return 1 if hard else 0
 
     print(f"\n=== Integrity: {ncards} cards, {ndecks} decks ===")
     for line in deck_info:
         print(line)
+    if soft:
+        eprint("\nSOFT WARNINGS (not gating):")
+        for s in soft:
+            eprint(f"  ~ {s}")
     if hard:
         eprint("\nHARD FAILURES:")
         for e in hard:

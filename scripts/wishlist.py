@@ -226,6 +226,7 @@ def cmd_add(path):
 
     added, dupes, owned_hits = 0, 0, []
     unenriched_miss, unenriched_err = [], []
+    new_rows = []
     for name, setc, cn in entries:
         row, status = enrich(name, setc, cn, pool)
         key = (row["Card Name"].strip().lower(), setc.lower(), cn.lower())
@@ -239,12 +240,25 @@ def cmd_add(path):
         elif status == "error":
             unenriched_err.append(row["Card Name"])
         existing.append(row)
+        new_rows.append(row)
         seen.add(key)
         added += 1
+
+    # Auto-seed a first-pass Power estimate for the newly-added rows so they don't
+    # rank at 0.0 (which repeatedly buried real cards until hand-graded). It's an
+    # ESTIMATE — the printed reminder says to hand-adjust bombs the heuristic misses.
+    seeded = 0
+    for row in new_rows:
+        if not (row.get("Power") or "").strip():
+            row["Power"] = str(_seed_power(row))
+            seeded += 1
 
     write_wishlist(existing)
     print(f"Added {added} card(s) to the wishlist ({dupes} already listed). "
           f"Wishlist now has {len(existing)} card(s). Wrote {os.path.basename(WISHLIST_CSV)}.")
+    if seeded:
+        print(f"Auto-seeded a heuristic Power estimate for {seeded} new card(s) — "
+              "REVIEW and hand-adjust (the classifier undersells bombs); see `--rank`.")
     if owned_hits:
         print(f"NOTE: {len(owned_hits)} added card(s) you ALREADY OWN "
               f"(consider removing): {', '.join(owned_hits[:8])}"
@@ -452,6 +466,49 @@ def cmd_suggest_targets(rows, write=False, overwrite=False):
 _WC_RANK = {"Mythic": 3, "Rare": 2, "Uncommon": 1, "Common": 0}
 
 
+def _deck_status():
+    """deck_id(lower) -> (tier_letter, remaining_craft_count).
+
+    remaining = distinct non-basic cards in the deck the collection doesn't own.
+    Lets `--rank` show whether a card's target deck is BUILT (an upgrade to a deck
+    you play — high value) or UNBUILT (a build project — lower value per wildcard),
+    and surface cards that are the LAST few crafts finishing a near-complete deck.
+    """
+    try:
+        import deck as dk
+    except Exception:
+        return {}
+    _bk, _bn, by_name_qty = dk.load_collection()
+    out = {}
+    for d in dk.discover_decks():
+        meta, cards = dk.parse_deck_file(d["path"])
+        tier = dk._deck_tier(meta) or "·"
+        need = set()
+        for _qty, name, _s, _c in cards:
+            cnt, in_lib = dk.owned(by_name_qty, name)
+            if cnt == 0 and not in_lib and name.strip().lower() not in dk.BASICS:
+                need.add(name.strip().lower())
+        out[d["id"].lower()] = (tier, len(need))
+    return out
+
+
+def _status_label(target, status_map):
+    """Compact 'built-state' tag for a card's target deck: '<tier>·<remaining>'.
+    '★' marks a deck this card would help FINISH (<=3 crafts left). '—' for
+    general/concept targets that aren't a single buildable deck."""
+    first = ""
+    for tok in re.split(r"[;,]", target or ""):
+        tok = tok.strip().lower()
+        if tok and tok not in ("—", "general") and not tok.startswith("concept"):
+            first = tok
+            break
+    if not first or first not in status_map:
+        return "—"
+    tier, rem = status_map[first]
+    star = "★" if 0 < rem <= 3 else ""
+    return f"{tier}·{rem}{star}"
+
+
 def _rank_scores(rows):
     """Score every wishlist card for wildcard-spend priority. Reuses the idf theme
     model (so it stays consistent with --suggest-targets):
@@ -465,6 +522,7 @@ def _rank_scores(rows):
     B = a specific-theme fit / castable-on-theme in >=1 deck; C = generic/none.
     """
     fps, idf, spec_idf = _theme_model()
+    status_map = _deck_status()
     out = []
     for r in rows:
         ccols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
@@ -497,11 +555,14 @@ def _rank_scores(rows):
             power = float(r.get("Power") or 0)
         except ValueError:
             power = 0.0
+        target = (r.get("Target") or "").strip() or "—"
         out.append({
             "name": r.get("Card Name", ""), "rarity": (r.get("Rarity") or "").capitalize(),
-            "target": (r.get("Target") or "").strip() or "—",
+            "target": target,
             "conf": conf, "fit": round(best, 2), "reuse": reuse,
             "pri": round(pri, 2), "tier": tier, "power": round(power, 1),
+            "state": _status_label(target, status_map),
+            "blank_power": not (r.get("Power") or "").strip(),
             "sig": "/".join(best_specific[:2]) or ("generic/no-theme" if conf == "review" else ""),
         })
     # Normalize fit (pri) to 0-10 and blend 50/50 with the hand-graded power
@@ -531,14 +592,15 @@ def cmd_rank(rows):
             cur = s["tier"]
             n = sum(1 for x in scored if x["tier"] == cur)
             print(f"\n{labels[cur]}  ({n} cards)")
-            print(f"  {'#':>3} {'Card':30} {'WC':3} {'Deck':6} {'fit':>4} {'pow':>4} "
-                  f"{'comb':>5}  signal")
-            print("  " + "-" * 88)
+            print(f"  {'#':>3} {'Card':28} {'WC':3} {'Deck':6} {'state':6} {'fit':>4} "
+                  f"{'pow':>4} {'comb':>5}  signal")
+            print("  " + "-" * 94)
             i = 0
         i += 1
         wc = (s["rarity"] or "?")[:1] or "?"
-        print(f"  {i:>3} {s['name'][:30]:30} {wc:3} {s['target']:6} "
-              f"{s['fitN']:>4.1f} {s['power']:>4.1f} {s['combined']:>5.1f}  {s['sig'][:30]}")
+        pw = f"{s['power']:>4.1f}" + ("?" if s["blank_power"] else " ")
+        print(f"  {i:>3} {s['name'][:28]:28} {wc:3} {s['target']:6} {s['state']:6} "
+              f"{s['fitN']:>4.1f} {pw} {s['combined']:>5.1f}  {s['sig'][:28]}")
     print("\n" + "=" * 60)
     print("Wildcard cost by tier (you spend that rarity's wildcards):")
     for t in ("A", "B", "C"):
@@ -548,10 +610,17 @@ def cmd_rank(rows):
                 by[s["rarity"]] = by.get(s["rarity"], 0) + 1
         line = ", ".join(f"{by[k]} {k}" for k in ("Mythic", "Rare", "Uncommon", "Common") if by.get(k))
         print(f"  Tier {t}: {line}")
+    blanks = [s["name"] for s in scored if s["blank_power"]]
     print("\ncomb = 50/50 blend of theme fit (fit, 0–10) and hand-graded power (pow). "
-          "For an optimal craft plan within your wildcards use "
-          '`--budget "9M 10R 38U 48C"`; to first-pass blank Power cells use '
-          "`--seed-power`.")
+          "state = target deck's tier·remaining-crafts (★ = this card helps FINISH a "
+          "near-complete deck; '—' = general/concept). A high-value wildcard upgrades a "
+          "BUILT deck (low remaining) — a big remaining count is a build PROJECT.")
+    if blanks:
+        print(f"⚠ {len(blanks)} card(s) have BLANK Power (shown as 'pow?', ranked low until "
+              f"graded): {', '.join(blanks[:8])}{' …' if len(blanks) > 8 else ''}. "
+              "Run `--seed-power --write` then hand-adjust the bombs.")
+    print("For an optimal craft plan within your wildcards use "
+          '`--budget "9M 10R 38U 48C"`.')
     return 0
 
 
@@ -688,6 +757,67 @@ def print_table(hits, owned):
         print(fmt(d))
 
 
+def _audit_target_issues(color_only=False):
+    """Return [(severity, card, message)] for wishlist-target problems, checked
+    against the CURRENT decks: 'color' = the target deck can't cast the card (the
+    drift you get when a deck changes colors, e.g. 14 Mardu->Rakdos orphaned Neriv);
+    'target' = an unknown deck id; 'power' = a blank Power cell. With color_only,
+    returns just the castability/target-drift issues (for check_all's soft pass)."""
+    rows = load_wishlist()
+    issues = []
+    deck_cols, deck_ids = {}, set()
+    try:
+        import deck as dk
+        for d in dk.discover_decks():
+            deck_ids.add(d["id"].lower())
+            deck_cols[d["id"].lower()] = {c for c in (d["meta"].get("colors") or "").upper()
+                                          if c in "WUBRG"}
+    except Exception:
+        pass
+    for r in rows:
+        name = (r.get("Card Name") or "").strip()
+        if not color_only and not (r.get("Power") or "").strip():
+            issues.append(("power", name, "blank Power (ranks low until graded)"))
+        ident = {c for c in (r.get("Color(s)") or "").upper() if c in "WUBRG"}
+        for tok in re.split(r"[;,]", (r.get("Target") or "")):
+            tok = tok.strip().lower()
+            if not tok or tok in ("—", "general") or tok.startswith("concept"):
+                continue
+            if deck_ids and tok not in deck_ids:
+                issues.append(("target", name, f"target '{tok}' is not a known deck id"))
+                continue
+            dc = deck_cols.get(tok)
+            if dc and ident and not ident.issubset(dc):
+                issues.append(("color", name, f"identity {''.join(sorted(ident)) or 'C'} "
+                               f"can't be cast in deck {tok} ({''.join(sorted(dc)) or 'C'})"))
+    return issues
+
+
+def cmd_audit_targets(_rows):
+    """Audit wishlist Targets against the current decks: flag cards whose target
+    deck can't cast them (color/theme drift after a retune) and blank Power cells."""
+    issues = _audit_target_issues()
+    if not issues:
+        print("Wishlist targets are clean: every target deck can cast its card, "
+              "and every card has a Power grade.")
+        return 0
+    groups = {}
+    for sev, name, msg in issues:
+        groups.setdefault(sev, []).append((name, msg))
+    for sev, label in [("color", "OFF-COLOR — target deck can't cast this (re-home the Target)"),
+                       ("target", "UNKNOWN TARGET — deck id not found"),
+                       ("power", "BLANK POWER — ranks low until graded")]:
+        g = groups.get(sev)
+        if not g:
+            continue
+        print(f"\n{label}  ({len(g)})")
+        for name, msg in g:
+            print(f"  {name[:32]:32} {msg}")
+    print(f"\n{len(issues)} issue(s). Re-home color/target drift by editing the Target; "
+          "fill blank Power with `--seed-power --write`, then hand-adjust bombs.")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="Manage the craft-target / wishlist.")
     ap.add_argument("--add", metavar="FILE",
@@ -710,6 +840,9 @@ def main():
     ap.add_argument("--seed-power", dest="seed_power", action="store_true",
                     help="first-pass heuristic estimate for BLANK Power cells "
                          "(add --write to persist; review — it's an estimate)")
+    ap.add_argument("--audit-targets", dest="audit_targets", action="store_true",
+                    help="flag wishlist cards whose target deck can't cast them "
+                         "(color/theme drift after a retune) or have blank Power")
     ap.add_argument("--owned", action="store_true",
                     help="show only wishlist cards you now OWN (drop candidates)")
     ap.add_argument("--name"); ap.add_argument("--type"); ap.add_argument("--text")
@@ -734,6 +867,8 @@ def main():
         return cmd_suggest_targets(rows, write=args.write, overwrite=args.overwrite)
     if args.rank:
         return cmd_rank(rows)
+    if args.audit_targets:
+        return cmd_audit_targets(rows)
     if args.budget:
         return cmd_budget(rows, args.budget)
     if args.seed_power:

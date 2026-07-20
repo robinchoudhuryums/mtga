@@ -3396,3 +3396,56 @@ Muse Seeker,Creature — Elf Wizard,"Opus — Whenever you cast an instant or so
 "April, Reporter of the Weird",Legendary Creature — Human Detective,"Whenever April deals combat damage to a player, draw that many cards, then discard a card.",U,Human; Detective; card draw,TMT,30,1
 Arcanis the Omnipotent,Legendary Creature — Wizard,"{T}: Draw three cards.
 {2}{U}{U}: Return Arcanis to its owner's hand.",U,Wizard; card draw; bounce,FDN,741,1
+Salvation Swan,Creature — Bird Cleric,"Flash
+Flying
+Whenever this creature or another Bird you control enters, exile up to one target creature you control without flying. Return it to the battlefield under its owner's control with a flying counter on it at the beginning of the next end step.",W,Bird; Cleric; counters; blink; flying; evasion; flash; tempo,BLB,28,1
+Aven Interrupter,Creature — Bird Rogue,"Flash
+Flying
+When this creature enters, exile target spell. It becomes plotted. (Its owner may cast it as a sorcery on a later turn without paying its mana cost.)
+Spells your opponents cast from graveyards or from exile cost {2} more to cast.",W,Bird; Rogue; graveyard; removal; etb; flying; evasion; plot; tempo; cost-reduction; flash,OTJ,4,1
+Chocobo Racetrack,Artifact,"Landfall — Whenever a land you control enters, create a 2/2 green Bird creature token with ""Whenever a land you control enters, this token gets +1/+0 until end of turn.""",G,tokens; landfall; pump; lands; ramp,FIN,179,1
+Eusocial Engineering,Enchantment,"Landfall — Whenever a land you control enters, create a 2/2 colorless Robot artifact creature token.
+Warp {1}{G} (You may cast this card from your hand for its warp cost. Exile this enchantment at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,tokens; landfall; warp; tempo; cost-reduction; lands; ramp,EOE,181,1
+Stirring Hopesinger,Creature — Bird Bard,"Flying, lifelink
+Repartee — Whenever you cast an instant or sorcery spell that targets a creature, put a +1/+1 counter on each creature you control.",W,Bird; Bard; counters; lifegain; spellslinger; flying; evasion; lifelink; repartee,SOS,35,1
+Shrike Force,Creature — Bird Knight,"Flying, double strike, vigilance",W,Bird; Knight; flying; evasion; vigilance; combat; double strike; aggro,BLB,31,1
+Unflinching Courage,Enchantment — Aura,"Enchant creature
+Enchanted creature gets +2/+2 and has trample and lifelink. (Damage dealt by the creature also causes its controller to gain that much life.)",W/G,Aura; lifegain; aura; pump; enchant,FDN,722,1
+Angelic Destiny,Enchantment — Aura,"Enchant creature
+Enchanted creature gets +4/+4, has flying and first strike, and is an Angel in addition to its other types.
+When enchanted creature dies, return this card to its owner's hand.",W,Aura; aura; pump; bounce; enchant,FDN,565,1
+Needletooth Pack,Creature — Dinosaur,"Morbid — At the beginning of your end step, if a creature died this turn, put two +1/+1 counters on target creature you control.",G,Dinosaur; counters; morbid; sacrifice; aristocrats,FDN,108,1
+Quakestrider Ceratops,Creature — Dinosaur,,G,Dinosaur,FDN,110,1
+Sunbird Standard,Artifact // Artifact Creature — Bird Construct,"{T}: Add one mana of any color.
+Craft with one or more {5} ({5}, Exile this artifact, Exile one or more other permanents you control and/or cards from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.) // Flying, vigilance, haste
+Sunbird Effigy's power and toughness are each equal to the number of colors among the exiled cards used to craft it.
+{T}: For each color among the exiled cards used to craft this creature, add one mana of that color.",Colorless,Bird; Construct; graveyard; mana; flying; evasion; craft; artifacts; vigilance; combat; transform; haste; aggro,LCI,262,1
+Giant Cindermaw,Creature — Dinosaur Beast,"Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)
+Players can't gain life.",R,Dinosaur; Beast; trample; evasion,FDN,624,1
+Anthem of Champions,Enchantment,Creatures you control get +1/+1.,W/G,pump,FDN,116,1
+Morcant's Loyalist,Creature — Elf Warrior,"Other Elves you control get +1/+1.
+When this creature dies, return another target Elf card from your graveyard to your hand.",B/G,Elf; Warrior; graveyard; pump,ECL,236,1
+Morcant's Eyes,Kindred Enchantment — Elf,"At the beginning of your upkeep, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
+{4}{G}{G}, Sacrifice this enchantment: Create X 2/2 black and green Elf creature tokens, where X is the number of Elf cards in your graveyard. Activate only as a sorcery.",G,Elf; graveyard; sacrifice; tokens; selection; surveil,ECL,185,1
+Lys Alana Dignitary,Creature — Elf Advisor,"As an additional cost to cast this spell, behold an Elf or pay {2}. (To behold an Elf, choose an Elf you control or reveal an Elf card from your hand.)
+{T}: Add {G}{G}. Activate only if there is an Elf card in your graveyard.",G,Elf; Advisor; graveyard; mana; behold; dragons,ECL,180,1
+"Lathril, Blade of the Elves",Legendary Creature — Elf Noble,"Menace (This creature can't be blocked except by two or more creatures.)
+Whenever Lathril deals combat damage to a player, create that many 1/1 green Elf Warrior creature tokens.
+{T}, Tap ten untapped Elves you control: Each opponent loses 10 life and you gain 10 life.",B/G,Elf; Noble; lifegain; tokens; menace; evasion,FDN,242,1
+Imperious Perfect,Creature — Elf Warrior,"Other Elves you control get +1/+1.
+{G}, {T}: Create a 1/1 green Elf Warrior creature token.",G,Elf; Warrior; tokens; pump,FDN,719,1
+Elvish Archdruid,Creature — Elf Druid,"Other Elf creatures you control get +1/+1.
+{T}: Add {G} for each Elf you control.",G,Elf; Druid; mana; pump,FDN,219,1
+High Perfect Morcant,Legendary Creature — Elf Noble,"Whenever High Perfect Morcant or another Elf you control enters, each opponent blights 1. (They each put a -1/-1 counter on a creature they control.)
+Tap three untapped Elves you control: Proliferate. Activate only as a sorcery. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",B/G,Elf; Noble; counters; blight; graveyard; proliferate,ECL,229,1
+"Choco, Seeker of Paradise",Legendary Creature — Bird,"Whenever one or more Birds you control attack, look at that many cards from the top of your library. You may put one of them into your hand. Then put any number of land cards from among them onto the battlefield tapped and the rest into your graveyard.
+Landfall — Whenever a land you control enters, Choco gets +1/+0 until end of turn.",W/U/G,Bird; graveyard; landfall; pump; lands; ramp,FIN,215,1
+"Kastral, the Windcrested",Legendary Creature — Bird Scout,"Flying
+Whenever one or more Birds you control deal combat damage to a player, choose one —
+• You may put a Bird creature card from your hand or graveyard onto the battlefield with a finality counter on it.
+• Put a +1/+1 counter on each Bird you control.
+• Draw a card.",W/U,Bird; Scout; counters; reanimator; graveyard; card draw; flying; evasion,BLB,221,1
+Restless Anchorage,Land,"This land enters tapped.
+{T}: Add {W} or {U}.
+{1}{W}{U}: Until end of turn, this land becomes a 2/3 white and blue Bird creature with flying. It's still a land.
+Whenever this land attacks, create a Map token.",W/U,tokens; mana,LCI,280,1

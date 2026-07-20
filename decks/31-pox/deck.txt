@@ -1,7 +1,7 @@
 #: name: Pox
 #: format: Standard
 #: colors: BG
-#: tier: C — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; coherent aggressive plan on a low curve, interaction now firmed to 5 (added Bite Down — any deathtoucher kills anything for {G} — + Bake into a Pie, which also clear blockers to push the poison clock). Remaining gap to B is the Elf engine: Lathril / Elvish Archdruid / Imperious Perfect are still UNOWNED (wishlisted, Target 31). Craft those 3 and it's a solid B; singleton dilution is the residual A-cap.
+#: tier: B — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; now fully built. Elf engine online (Lathril drain finish + Elvish Archdruid ramp/anthem + Imperious Perfect / Morcant's Loyalist anthems + High Perfect Morcant blight), interaction at 5 (Bite Down — any deathtoucher kills anything for {G} — + Bake into a Pie clearing blockers for the poison clock), card advantage from Morcant's Eyes surveil + token dump. Residual A-cap: singleton dilution across the two half-density plans (Elf go-wide + poison).
 #: archetype: Golgari (B/G) poison (Fynn + deathtouch) x Elf tribal go-wide hybrid.
 #: notes: Two reinforcing plans: go-wide Elves (Lathril/Imperious Perfect/Elvish Archdruid
 #: notes: engine — CRAFT targets — + Dwynen's Elite/Elfsworn Giant tokens, Druid ramp) AND a
@@ -20,8 +20,8 @@
 1 Grapple with Death (SOS) 192
 1 Sporogenic Infection (DSK) 117
 1 Dwynen's Elite (FDN) 218
-1 Druid of the Cowl (FDN) 554
-1 Lys Alana Informant (ECL) 181
+1 Lys Alana Dignitary (ECL) 180
+1 Morcant's Eyes (ECL) 185
 1 Emeritus of Abundance (SOS) 145
 1 Unforgiving Aim (ECL) 200
 1 Topiary Lecturer (SOS) 165
@@ -33,7 +33,7 @@
 1 Dawnhand Eulogist (ECL) 99
 1 Gloom Ripper (ECL) 102
 1 Scarblade's Malice (ECL) 119
-1 Melancholic Poet (SOS) 90
+1 Morcant's Loyalist (ECL) 236
 1 Lathril, Blade of the Elves (FDN) 242
 1 High Perfect Morcant (ECL) 229
 1 Imperious Perfect (FDN) 719
@@ -64,3 +64,4 @@
 4 Jungle Hollow (FDN) 263
 1 Temple of Malady (FDN) 700
 1 Adventurer's Inn (FIN) 271
+#~ note: applied — Elf engine deepened (owned Uncommon crafts): Morcant's Loyalist (-Melancholic Poet) non-legendary Elf anthem + dies->recur an Elf; Morcant's Eyes (-Lys Alana Informant) upkeep surveil + late {4}{G}{G} sac for X Elf tokens. Adds anthem redundancy + card advantage/recursion.
