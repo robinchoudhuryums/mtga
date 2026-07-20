@@ -293,6 +293,9 @@ python3 scripts/deck.py suggest-homes "Crib Swap"    # which decks a card fits, 
 python3 scripts/deck.py preflight 1a         # one-call verify: legal + owned + castable + integrity
 python3 scripts/deck.py quality 1a --json    # deck-quality vector; --vs FILE diffs a before-snapshot
 python3 scripts/deck.py tier 1a              # claimed #: tier: vs the tier its metrics support
+python3 scripts/deck.py tier 1a --to A       # gap to A + owned fillers AND craft targets for the short axis
+python3 scripts/deck.py history 1a           # the deck's git change history (its changelog)
+python3 scripts/deck.py quality 1a --at HASH # compare this deck's list at a past commit vs now
 ```
 
 `audit` is the **roster triage** for when you don't want to full-tune all your
@@ -453,7 +456,17 @@ and lists the owned, on-color, **0-wildcard** cards that fill the short axis, pl
 pointer to `cuts` for room. It does the *arithmetic*; the card **selection** — which
 fillers preserve the engine/identity, what to cut — stays a `/tune-deck` judgment
 call (protect signature/spice). `/tune-deck` runs it so a tune aims at a concrete
-tier target instead of generic improvement.
+tier target instead of generic improvement. The gap list shows both **owned**
+fillers (0 wildcards) and **craft targets** (unowned, format-legal, cheaper
+wildcard first), so it doubles as a wildcard-spend planner for lifting a deck a
+tier.
+
+A deck's **change history is git** — no in-file changelog to go unwieldy or drift.
+`deck.py history <id>` prints the deck file's commit log (each message states the
+thematic + technical *why*), and `deck.py quality <id> --at <hash>` re-scores that
+past version's list against current card knowledge and diffs it vs now — so "was my
+previous version better, technically?" is answerable directly (interaction / curve /
+central-theme deltas), and `git show <hash>:<path>` recovers the full old list.
 
 Decks live under `decks/` as one folder per core deck, with variations as sibling
 files (`deck.txt` → id `1`, `1a-*.txt` → id `1a`). Basics are treated as

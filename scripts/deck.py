@@ -2690,17 +2690,57 @@ def deck_quality_vector(d):
     }
 
 
+def _quality_vector_at(d, ref):
+    """The quality vector for a deck's list AS OF a git ref — evaluates that past
+    version against CURRENT card knowledge (so 'was my old list better?' is a
+    like-for-like comparison). Returns (vec, None) or (None, error)."""
+    import subprocess
+    import tempfile
+    rel = os.path.relpath(d["path"], REPO_ROOT)
+    r = subprocess.run(["git", "show", f"{ref}:{rel}"], capture_output=True, text=True,
+                       cwd=REPO_ROOT)
+    if r.returncode != 0:
+        return None, (r.stderr.strip() or f"deck not found at {ref}")
+    fd, tmp = tempfile.mkstemp(suffix=".txt")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            fh.write(r.stdout)
+        return deck_quality_vector({"id": d["id"], "path": tmp, "name": d.get("name")}), None
+    finally:
+        os.remove(tmp)
+
+
 def cmd_quality(args):
     """Deck-quality guard (F10): print the quality vector, diff it against a saved
     snapshot (`--vs FILE`) to flag regressions from a cut/swap, and/or check that a
-    proposed add isn't a merely-tangential fit (`--add NAME`). Soft by design — it
-    WARNS (some regressions are intentional trades); exits 0 unless --strict."""
+    proposed add isn't a merely-tangential fit (`--add NAME`). `--at REF` compares
+    this deck's list at a past git ref against now. Soft by design — it WARNS (some
+    regressions are intentional trades); exits 0 unless --strict."""
     import json
     d = find_deck(args.id)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
     vec = deck_quality_vector(d)
+    if getattr(args, "at", None):
+        old, err = _quality_vector_at(d, args.at)
+        if old is None:
+            eprint(f"could not read deck {d['id']} at {args.at!r}: {err} "
+                   f"(renamed? see `deck.py history {d['id']}`)")
+            return 1
+        print(f"Quality — deck {d['id']} @ {args.at}  →  current:")
+        for k in ("buildable", "uncastable", "interaction", "card_advantage",
+                  "avg_mv", "early_drops", "central_themes"):
+            o, n = old[k], vec[k]
+            delta = "" if o == n else f"   ({o} → {n})"
+            print(f"  {k:15}: {n}{delta}")
+        lost = sorted(set(old["central"]) - set(vec["central"]))
+        gained = sorted(set(vec["central"]) - set(old["central"]))
+        if lost:
+            print(f"  central themes lost since {args.at}: {', '.join(lost)}")
+        if gained:
+            print(f"  central themes gained: {', '.join(gained)}")
+        return 0
     if getattr(args, "json", False):
         print(json.dumps(vec))
         return 0
@@ -2866,6 +2906,50 @@ def owned_role_fillers(d, roles, *, limit=10):
     return out[:limit]
 
 
+def craft_role_fillers(d, roles, *, limit=8):
+    """Unowned pool cards (CRAFT targets) not already in deck d that fill any role in
+    `roles`, on-color and legal in the deck's format — the wildcard-spend options to
+    close a tier gap when the owned pool is thin (the natural question for an
+    aspirational/unbuilt deck). Sorted cheaper-wildcard first, then mana value."""
+    if not os.path.exists(POOL_CSV):
+        return []
+    meta, cards = parse_deck_file(d["path"])
+    mana = load_mana()
+    _, _, qty = load_collection()
+    in_deck = {n.lower() for q, n, s, c in cards}
+    declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
+    fmt = (meta.get("format") or "").strip().lower()
+    RANK = {"Common": 0, "Uncommon": 1, "Rare": 2, "Mythic": 3}
+    out, seen = [], set()
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            name = (r.get("Card Name") or "").strip()
+            nl = name.lower()
+            if not nl or nl in seen or nl in in_deck or nl in BASICS:
+                continue
+            if "Land" in _primary_type(r.get("Type") or ""):
+                continue
+            have, found = owned(qty, name)
+            if found and have > 0:              # want CRAFT targets — skip owned
+                continue
+            ident = set((r.get("Color(s)") or "").replace(" ", ""))
+            if not ident <= declared:
+                continue
+            legs = {x.strip().lower() for x in (r.get("Legalities") or "").split(";") if x.strip()}
+            if fmt and legs and fmt not in legs:
+                continue
+            if not (set(classify_roles(r.get("Card Text") or "")) & set(roles)):
+                continue
+            seen.add(nl)
+            entry = mana.get(nl)
+            mv = entry[1] if entry and entry[1] is not None else 99
+            rar = (r.get("Rarity") or "?").strip()
+            out.append((RANK.get(rar, 9), mv, name, "".join(sorted(ident)) or "C", rar,
+                        (r.get("Card Text") or "").split("\n")[0][:56]))
+    out.sort(key=lambda x: (x[0], x[1], x[2]))
+    return out[:limit]
+
+
 def tier_consistency(d):
     """(claimed, implied, mismatch, msg) for a deck's claimed tier vs its metrics
     floor. `mismatch` is True only when a claimed tier sits ≥2 bands ABOVE the floor
@@ -2961,22 +3045,57 @@ def cmd_tier(args):
                   "the letter is a human call from here (bombs/meta).")
             return 0
         print("  measurable gap: " + "; ".join(gapinfo["summary"]))
-        if gapinfo["add_interaction"]:
-            fillers = owned_role_fillers(d, _INTERACTION_ROLES, limit=8)
-            print(f"\n  owned on-color interaction to add (0 wildcards, {len(fillers)} shown):"
-                  if fillers else "\n  (no owned on-color interaction found — craft targets via "
-                  "`deck.py suggest <id> --unowned`)")
-            for mv, name, ident, hit, txt in fillers:
-                print(f"    MV{mv:>2} {name:30} [{ident:4}] {','.join(hit):18} {txt}")
-        if gapinfo["add_card_advantage"]:
-            caf = owned_role_fillers(d, {"Card advantage"}, limit=8)
-            print(f"\n  owned on-color card advantage to add ({len(caf)} shown):" if caf else
-                  "\n  (no owned on-color card advantage found)")
-            for mv, name, ident, hit, txt in caf:
-                print(f"    MV{mv:>2} {name:30} [{ident:4}] {','.join(hit):18} {txt}")
+
+        def _axis(role_set, add_flag, label):
+            if not add_flag:
+                return
+            owned_f = owned_role_fillers(d, role_set, limit=6)
+            if owned_f:
+                print(f"\n  owned on-color {label} to add (0 wildcards, {len(owned_f)} shown):")
+                for mv, name, ident, hit, txt in owned_f:
+                    print(f"    MV{mv:>2} {name:30} [{ident:4}] {','.join(hit):18} {txt}")
+            else:
+                print(f"\n  (no owned on-color {label} found)")
+            # Craft targets — the wildcard-spend options, cheaper rarity first.
+            craft = craft_role_fillers(d, role_set, limit=6)
+            if craft:
+                print(f"  craft targets ({label}, format-legal, cheaper wildcard first):")
+                for rk, mv, name, ident, rar, txt in craft:
+                    print(f"    {rar[:1] or '?'} MV{mv:>2} {name:28} [{ident:4}] {txt}")
+
+        _axis(_INTERACTION_ROLES, gapinfo["add_interaction"], "interaction")
+        _axis({"Card advantage"}, gapinfo["add_card_advantage"], "card advantage")
         print("\n  → make room with `deck.py cuts %s` (grade cuts from full text); the card"
               " SELECTION\n    is a judgment call — protect signature/spice (that's /tune-deck)."
               % d["id"])
+    return 0
+
+
+def cmd_history(args):
+    """Show a deck file's git change history — the accurate, complete record of how
+    the deck evolved (each commit message states the thematic + technical why). This
+    is the deck's changelog; it lives in git rather than in-file so it can't get
+    unwieldy or drift. Pair with `deck.py quality <id> --at <hash>` to compare a past
+    version's measurable vector (interaction / curve / themes) against now."""
+    import subprocess
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    rel = os.path.relpath(d["path"], REPO_ROOT)
+    r = subprocess.run(["git", "log", "--follow", "--date=short",
+                        "--format=%h  %ad  %s", "--", rel],
+                       capture_output=True, text=True, cwd=REPO_ROOT)
+    if r.returncode != 0:
+        eprint(f"git log failed: {r.stderr.strip()}")
+        return 1
+    lines = [ln for ln in r.stdout.splitlines() if ln.strip()]
+    print(f"History — deck {d['id']}: {d['name'] or rel}  ({len(lines)} commit(s))")
+    for ln in lines:
+        print(f"  {ln}")
+    if lines:
+        print(f"\n  full text of any version:   git show <hash>:{rel}"
+              f"\n  compare a version's metrics: deck.py quality {d['id']} --at <hash>")
     return 0
 
 
@@ -3091,7 +3210,10 @@ def main():
     p.add_argument("--json", action="store_true", help="print the quality vector as JSON (snapshot before a change)")
     p.add_argument("--vs", metavar="FILE", help="diff against a saved --json snapshot and flag regressions")
     p.add_argument("--add", metavar="NAME", help="warn if adding NAME would be a merely-tangential fit")
+    p.add_argument("--at", metavar="REF", help="compare this deck's list at a past git ref against now")
     p.add_argument("--strict", action="store_true", help="exit non-zero on any regression/weak-add (default: warn only)")
+    p = sub.add_parser("history", help="show a deck file's git change history (its changelog)")
+    p.add_argument("id")
     p = sub.add_parser("tier", help="check a deck's claimed tier against its measurable quality floor")
     p.add_argument("id")
     p.add_argument("--strict", action="store_true", help="exit non-zero on a tier mismatch (default: warn only)")
@@ -3132,6 +3254,7 @@ def main():
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
         "verify": cmd_verify, "text": cmd_text, "suggest-homes": cmd_suggest_homes,
         "preflight": cmd_preflight, "quality": cmd_quality, "tier": cmd_tier,
+        "history": cmd_history,
     }[args.cmd](args)
 
 
