@@ -3377,3 +3377,8 @@ Ward—Get five poison counters. (A player with ten or more poison counters lose
 Whenever another creature you control with deathtouch dies, each opponent sacrifices a nontoken creature of their choice.",B/G,Human; Snake; Villain; sacrifice; ward; protection; deathtouch; combat; removal,MSH,226,1
 Sultai Devotee,Creature — Zombie Snake Druid,"Deathtouch
 {1}: Add {B}, {G}, or {U}. Activate only once each turn.",U/B/G,Zombie; Snake; Druid; deathtouch; combat; removal,TDM,160,1
+Wardens of the Cycle,Creature — Elf Warlock,"Morbid — At the beginning of your end step, if a creature died this turn, choose one —
+• You gain 2 life.
+• You draw a card and you lose 1 life.",B/G,Elf; Warlock; lifegain; card draw; morbid; sacrifice; aristocrats,FDN,125,1
+Elfsworn Giant,Creature — Giant,"Reach (This creature can block creatures with flying.)
+Landfall — Whenever a land you control enters, create a 1/1 green Elf Warrior creature token.",G,Giant; tokens; landfall; reach; defense; lands; ramp,FDN,103,1

@@ -30,6 +30,8 @@ Whenever one or more creatures die, put a rev counter on this Equipment.
 Equipped creature gets +X/+0, where X is the number of rev counters on this Equipment.
 Equip {3}",R,Equipment; counters; burn; etb; equipment; pump; equip,DSK,128,Rare,26,"On-theme R removal for Iron Forge (26): ETB deal 3, grows with deaths — the interaction upgrade over War Machine",6
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.5
+High Perfect Morcant,Legendary Creature — Elf Noble,"Whenever High Perfect Morcant or another Elf you control enters, each opponent blights 1. (They each put a -1/-1 counter on a creature they control.)
+Tap three untapped Elves you control: Proliferate. Activate only as a sorcery. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",B/G,Elf; Noble; counters; blight; graveyard; proliferate,ECL,229,Rare,31,deck 31 (Pox) — core Elf engine craft: Elf Noble payoff,
 Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19a,,5.0
 "Ramos, Dragon Engine",Legendary Artifact Creature — Dragon,"Flying
@@ -42,15 +44,19 @@ Desecration Demon,Creature — Demon,"Flying
 At the beginning of each combat, any opponent may sacrifice a creature of their choice. If a player does, tap this creature and put a +1/+1 counter on it.",B,Demon; counters; sacrifice; flying; evasion,FDN,603,Rare,general,efficient 6/6 flying B beater (opp-sac edict) — any black midrange,6.5
 "Drakuseth, Maw of Flames",Legendary Creature — Dragon,"Flying
 Whenever Drakuseth attacks, it deals 4 damage to any target and 3 damage to each of up to two other targets.",R,Dragon; burn; flying; evasion,FDN,193,Rare,14,,7.5
+Elvish Archdruid,Creature — Elf Druid,"Other Elf creatures you control get +1/+1.
+{T}: Add {G} for each Elf you control.",G,Elf; Druid; mana; pump,FDN,219,Rare,31,deck 31 (Pox) — core Elf engine craft: Elf lord + taps for G per Elf (ramp engine),
 "Lathril, Blade of the Elves",Legendary Creature — Elf Noble,"Menace (This creature can't be blocked except by two or more creatures.)
 Whenever Lathril deals combat damage to a player, create that many 1/1 green Elf Warrior creature tokens.
-{T}, Tap ten untapped Elves you control: Each opponent loses 10 life and you gain 10 life.",B/G,Elf; Noble; lifegain; tokens; menace; evasion,FDN,242,Rare,concept,"BG Elfball focal point — combat dmg makes Elves, tap 10 Elves to drain 10",7.0
+{T}, Tap ten untapped Elves you control: Each opponent loses 10 life and you gain 10 life.",B/G,Elf; Noble; lifegain; tokens; menace; evasion,FDN,242,Rare,31,"BG Elfball focal point — combat dmg makes Elves, tap 10 Elves to drain 10",7.0
 Nullpriest of Oblivion,Creature — Vampire Cleric,"Kicker {3}{B} (You may pay an additional {3}{B} as you cast this spell.)
 Lifelink
 Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, if it was kicked, return target creature card from your graveyard to the battlefield.",B,Vampire; Cleric; reanimator; graveyard; lifegain; etb; lifelink; menace; evasion; kicker; value,FDN,611,Rare,11,,6.0
 Rite of Replication,Sorcery,"Kicker {5} (You may pay an additional {5} as you cast this spell.)
 Create a token that's a copy of target creature. If this spell was kicked, create five of those tokens instead.",U,tokens; kicker; value,FDN,711,Rare,25,Copy engine for Spellstorm (25): clone your best creature (kicker = 5 copies) — payoff redundancy,6
+Imperious Perfect,Creature — Elf Warrior,"Other Elves you control get +1/+1.
+{G}, {T}: Create a 1/1 green Elf Warrior creature token.",G,Elf; Warrior; tokens; pump,FDN,719,Uncommon,31,deck 31 (Pox) — core Elf engine craft: Elf anthem + repeatable Elf token maker,
 "Choco, Seeker of Paradise",Legendary Creature — Bird,"Whenever one or more Birds you control attack, look at that many cards from the top of your library. You may put one of them into your hand. Then put any number of land cards from among them onto the battlefield tapped and the rest into your graveyard.
 Landfall — Whenever a land you control enters, Choco gets +1/+0 until end of turn.",W/U/G,Bird; graveyard; landfall; pump; lands; ramp,FIN,215,Rare,19,Bird Brain (Bant Tokens) craft target,6.0
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
