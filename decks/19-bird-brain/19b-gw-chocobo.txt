@@ -1,6 +1,6 @@
 #: name: Bird Brain — GW Chocobo
 #: format: Standard
-#: tier: C — Bird Brain GW Chocobo variant; graded on the LIST ignoring ownership (legal 60): interaction 2 + card advantage 2 → C-floor (thin interaction is the cap, same as the GWU primary before its package). The earlier D meant "unbuilt"; per the rubric, tier rates the list, not build-state. Aspirational sibling of the primary 19.
+#: tier: A — Bird Brain GW Chocobo variant; graded on the LIST ignoring ownership (legal 60). Re-graded C→A after the green-fight interaction package (+Bushwhack / +Clash of the Eikons / +Erode, cutting off-tribe chaff) took interaction 2→4, then +Season of Gathering back over Dazzling Angel (its destroy-all mode = interaction, draw mode = card advantage) reached interaction 5 / card advantage 2 → A-floor. A distinctness-preserving fork of the GWU primary 19 — leans green fights + a Selesnya go-wide creature-count package (Suki/Rinoa/Earth King/Spider-Ham), sharing only Bushwhack with the primary.
 #: colors: GW
 #: based-on: deck.txt
 #: archetype: 19 variant — Selesnya (G/W) sibling of the promoted Bant primary; drops blue for more green token-makers.
