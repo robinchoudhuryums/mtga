@@ -34,9 +34,9 @@
 # Card advantage / dig
 1 Mind into Matter (SOS) 202
 1 Zimone's Experiment (SOS) 169
-1 Stadium Tidalmage (SOS) 232
+1 Shock (ANB) 84
 1 Garruk's Uprising (FDN) 220
-1 Charging Strifeknight (SOS) 110
+1 Plasma Bolt (EOE) 152
 
 # Lands-matter ramp / bombs
 1 Lumra, Bellow of the Woods (BLB) 183
@@ -58,7 +58,7 @@
 # Land-fetch / ramp value
 1 Environmental Scientist (SOS) 147
 1 Proctor's Gaze (SOS) 213
-1 Follow the Lumarets (SOS) 148
+1 Spell Pierce (SOA) 23
 1 Improvisation Capstone (SOS) 120
 
 # Lands (25 — Temur fixing: 12 owned duals + Terramorphic + 12 basics; many differently-named for Emil)
