@@ -300,6 +300,32 @@ unbuilt list on its power (not its ownership), and `check_all` stays green (soft
 only). *(Implemented and calibrated against the live 44-deck roster: 0 mismatches
 today; fires on a simulated inflation.)*
 
+## F13 — Unify the interaction / card-advantage counters (found via F12)
+
+**Why.** Running the F12 tier pass across the roster exposed that **three separate
+implementations counted "interaction"** and disagreed by ±1 on several decks:
+`deck_role_counts` (quality/tier vector — line-count, skipped only basics),
+`_interaction_count` (audit — quantity-weighted, skipped nonbasic lands), and
+`cmd_stats`' "interaction total" (quantity-weighted *sum of buckets*, double-counting
+a modal removal+counter card). At a band boundary the tier floor could hinge on a
+number the user couldn't reproduce in `stats` — undermining F12's premise. Deck 30
+was mis-served: a nonbasic **land that pings** was counted as removal, inflating its
+interaction to 3 (the human's own rationale said "only 2"), which hid that its A
+claim sits 2 bands above the true floor.
+
+**Files.** `scripts/deck.py` (`role_tally`, `deck_role_counts`, `_interaction_count`,
+`cmd_stats`).
+
+**Changes.** One canonical `role_tally(cards, carddata)` all three route through —
+quantity-weighted, a card counted ONCE toward interaction regardless of how many
+interaction roles it fills, basics **and** nonbasic lands skipped. `cmd_stats` shows
+the once-per-card "interaction total (distinct removal/sweeper/counter cards)".
+
+**Acceptance.** All three counters agree on every deck (verified: 0 drift across 44
+decks); `stats`' interaction total equals the audit `Int` column equals the tier/
+quality vector; `check_all` green. *(Implemented; the unification also resolved false
+"under-graded" flags on decks 22 and 28a whose counts now match their rationales.)*
+
 ## Suggested implementation sequence
 
 Phased, so each wave builds on stable primitives and can be validated before the

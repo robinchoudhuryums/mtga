@@ -1017,25 +1017,17 @@ def cmd_stats(args):
     # Functional roles: what jobs the nonland spells actually do. Heuristic from
     # oracle text (see classify_roles) so the tune-deck health scorecard can
     # MEASURE interaction / card advantage / ramp instead of eyeballing it.
-    role_counts = {}
-    for q, n, s, c in cards:
-        if n.lower() in BASICS:
-            continue
-        d2 = carddata.get(n.lower())
-        if not d2 or "Land" in _primary_type(d2["type"]):
-            continue
-        for label in classify_roles(d2["text"]):
-            role_counts[label] = role_counts.get(label, 0) + q
-    if role_counts:
+    role_counts = role_tally(cards, carddata)
+    if any(v for k, v in role_counts.items() if k in ROLE_ORDER):
         print("\nFunctional roles (heuristic from card text; a card can fill several):")
         for label in ROLE_ORDER:
             cnt = role_counts.get(label, 0)
             if cnt:
                 print(f"  {label:20} {cnt:3}  {'#' * cnt}")
-        interaction = sum(role_counts.get(k, 0)
-                          for k in ("Removal (spot)", "Sweeper", "Counter"))
-        print(f"  {'interaction total':20} {interaction:3}  "
-              "(removal + sweeper + counter)")
+        # Once-per-card union (a modal removal+counter card counts once), matching the
+        # audit and quality/tier vectors — NOT the sum of the buckets above.
+        print(f"  {'interaction total':20} {role_counts['interaction']:3}  "
+              "(distinct removal/sweeper/counter cards)")
     return 0
 
 
@@ -1130,21 +1122,45 @@ GENERIC_THEMES = {
 _INTERACTION_ROLES = {"Removal (spot)", "Sweeper", "Counter"}
 
 
-def deck_role_counts(cards, carddata):
-    """(interaction, card_advantage) role counts for a deck — used to tell whether
-    a candidate card FILLS A GAP (interaction / card advantage the deck is short on),
-    which makes an otherwise-secondary fit a KEY one."""
-    inter = ca = 0
+def role_tally(cards, carddata):
+    """The CANONICAL per-deck functional-role tally — the single source every view
+    (stats, audit, quality/tier) routes through so their interaction / card-advantage
+    numbers can't drift apart (they used to: three separate counters disagreed by ±1,
+    which is exactly the kind of gap that could move a tier band the user couldn't
+    reproduce in `stats`). Rules, fixed once here:
+      • quantity-weighted (2 copies of a removal spell = 2 interaction),
+      • a card counts ONCE toward 'interaction' regardless of how many interaction
+        roles it fills (a modal removal+counter card is one interaction card, not
+        two — the per-role buckets still credit each role for the stats display),
+      • basics and nonbasic lands are skipped.
+    Returns a dict: each role → weighted count, plus 'interaction' (once-per-card
+    union of Removal/Sweeper/Counter) and 'card_advantage'."""
+    per_role = {}
+    interaction = ca = 0
     for q, n, s, c in cards:
         if n.lower() in BASICS:
             continue
         cd = carddata.get(n.lower())
-        roles = set(classify_roles(cd["text"] if cd else ""))
+        if not cd or "Land" in _primary_type(cd["type"]):
+            continue
+        roles = set(classify_roles(cd["text"]))
+        for r in roles:
+            per_role[r] = per_role.get(r, 0) + q
         if roles & _INTERACTION_ROLES:
-            inter += 1
+            interaction += q
         if "Card advantage" in roles:
-            ca += 1
-    return inter, ca
+            ca += q
+    per_role["interaction"] = interaction
+    per_role["card_advantage"] = ca
+    return per_role
+
+
+def deck_role_counts(cards, carddata):
+    """(interaction, card_advantage) for a deck, from the canonical `role_tally` —
+    used to tell whether a candidate card FILLS A GAP (interaction / card advantage
+    the deck is short on), which makes an otherwise-secondary fit a KEY one."""
+    t = role_tally(cards, carddata)
+    return t["interaction"], t["card_advantage"]
 
 
 def fit_strength(shared, theme_w, card_text, deck_int, deck_ca):
@@ -2277,19 +2293,9 @@ def cmd_verify(args):
 
 def _interaction_count(cards, carddata):
     """Copies of nonland spells that do removal / sweeping / countering — the same
-    'interaction total' cmd_stats reports, computed offline from oracle text so the
-    roster audit can rank thin-interaction decks without a per-deck stats run."""
-    n = 0
-    for q, name, s, c in cards:
-        if name.lower() in BASICS:
-            continue
-        cd = carddata.get(name.lower())
-        if not cd or "Land" in _primary_type(cd["type"]):
-            continue
-        roles = classify_roles(cd["text"])
-        if roles & {"Removal (spot)", "Sweeper", "Counter"}:
-            n += q
-    return n
+    'interaction total' cmd_stats reports and the same number the quality/tier vector
+    uses, all via the canonical `role_tally` so the three can't drift."""
+    return role_tally(cards, carddata)["interaction"]
 
 
 AUDIT_ORDER = {"TUNE": 0, "craft": 1, "review": 2, "ok": 3}
