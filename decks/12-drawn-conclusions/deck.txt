@@ -1,6 +1,6 @@
 #: name: Drawn Conclusions
 #: format: Standard
-#: tier: B — Dimir card-draw control; grinds mid-ladder but interaction light for a control deck
+#: tier: B — Dimir card-draw control (strong B); added a Mythic finisher/engine (Kaito, Bane of Nightmares) + upgraded interaction quality (Sokka's Haiku hard counter-that-draws, Bitter Triumph flexible removal). Raw interaction count is still modest (~5) — a deliberate draw-payoff density trade; Disdainful Stroke (for the 2nd Super Intelligence) is the queued net-add if more answers are wanted.
 #: colors: UB
 #: archetype: Dimir (U/B) card-draw control.
 #: notes: Dimir (U/B) — card draw / control.
@@ -8,11 +8,12 @@
 # Nonland
 1 Kid Loki (MSH) 63
 1 Heartless Act (TLA) 103
-2 Super Intelligence (MSH) 77
+1 Super Intelligence (MSH) 77
+1 Bitter Triumph (SOA) 26
 1 Wan Shi Tong, Librarian (TLA) 78
 1 Loki, God of Mischief (MSH) 65
 1 Silent Hallcreeper (DSK) 72
-1 Amazing Acrobatics (SPM) 25
+1 Sokka's Haiku (TLA) 71
 2 Atlantean Cavalry (MSH) 45
 1 I Am Iron Man (MSH) 58
 1 Ms. Marvel, Kamala Khan (MSH) 67
@@ -29,7 +30,7 @@
 1 Madame Masque (MSH) 104
 1 Messenger Hawk (TLA) 234
 1 H.E.R.B.I.E. Scout Unit (MSH) 247
-1 Yellowjacket, Heartless Marauder (MSH) 123
+1 Kaito, Bane of Nightmares (DSK) 220
 1 Harmonized Trio (SOS) 52
 1 Erudite Wizard (FDN) 37
 1 Kaito, Cunning Infiltrator (FDN) 44
@@ -53,3 +54,5 @@
 # Flex — suggested swaps (all OWNED, 0 wildcards — single-black to respect the splash). See: deck.py flex 12
 #~ note: applied — Super Intelligence in for Futurist Forge.
 #~ note: applied — Long Goodbye (uncounterable removal, hits planeswalkers) over Rewrite History, and Heartless Act (cheap hard removal) over Pym Particles. The deck's real gap was HARD removal, not interaction volume (Amazing Acrobatics / Wanderwine Farewell / Trickster's Stratagem are soft answers it already runs). Craft nothing — every answer is in your collection.
+#~ note: applied — Mythic-finisher + interaction-quality pass (all owned, 0 WC): Kaito, Bane of Nightmares (-Yellowjacket, Heartless Marauder, whose Villain-pump was thin here) a self-protecting PW/Ninja that surveils+draws and taps-and-stuns; Sokka's Haiku (-Amazing Acrobatics) a HARD counter that also draws+mills; Bitter Triumph (-1 Super Intelligence, single-black to respect the splash) flexible removal hitting creatures + PWs. Kept 1 Super Intelligence for the draw-matters payoffs (Madame Masque / Construct a Cosmic Cube / Kang).
+#~ +Disdainful Stroke | OWNED (queued net-add): the -2nd Super Intelligence / +Disdainful Stroke swap raises raw interaction if the deck wants more hard answers; declined for now to keep draw-payoff density.
