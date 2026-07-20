@@ -1,6 +1,6 @@
 #: name: Dino Stampede
 #: format: Standard
-#: tier: B — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit): interaction 3 + a dense payoff curve → B-floor. The fully-owned playable version is variant 28a; this aspirational full list grades B on its merits (the earlier D reflected unbuilt-status, not list power).
+#: tier: A — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit). Re-graded B→A after the interaction package (+Bushwhack / +Clash of the Eikons fight removal / +Auspicious Arrival investigate-draw, cutting off-tribe Soldier chaff) took interaction 3→5 and card advantage 1→2 → A-floor, while tightening the Dino/Soldier split. A here is a clean, resilient fair-creature A (not a bomb-driven one). The fully-owned playable version is variant 28a.
 #: colors: RGW
 #: archetype: Naya (R/G/W) Dinosaur tribal with a Soldier secondary — Triceraton Commander token engine into big dinos (Ghalta, Gishath). WIP brew.
 
