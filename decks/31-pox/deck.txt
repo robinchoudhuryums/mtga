@@ -21,7 +21,7 @@
 1 Sporogenic Infection (DSK) 117
 1 Dwynen's Elite (FDN) 218
 1 Druid of the Cowl (FDN) 554
-1 Lys Alana Informant (ECL) 181
+1 Morcant's Eyes (ECL) 185
 1 Emeritus of Abundance (SOS) 145
 1 Unforgiving Aim (ECL) 200
 1 Topiary Lecturer (SOS) 165
@@ -33,7 +33,7 @@
 1 Dawnhand Eulogist (ECL) 99
 1 Gloom Ripper (ECL) 102
 1 Scarblade's Malice (ECL) 119
-1 Melancholic Poet (SOS) 90
+1 Morcant's Loyalist (ECL) 236
 1 Lathril, Blade of the Elves (FDN) 242
 1 High Perfect Morcant (ECL) 229
 1 Imperious Perfect (FDN) 719
@@ -64,3 +64,4 @@
 4 Jungle Hollow (FDN) 263
 1 Temple of Malady (FDN) 700
 1 Adventurer's Inn (FIN) 271
+#~ note: applied — Elf engine deepened (owned Uncommon crafts): Morcant's Loyalist (-Melancholic Poet) non-legendary Elf anthem + dies->recur an Elf; Morcant's Eyes (-Lys Alana Informant) upkeep surveil + late {4}{G}{G} sac for X Elf tokens. Adds anthem redundancy + card advantage/recursion.

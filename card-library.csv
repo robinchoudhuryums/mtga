@@ -3423,3 +3423,7 @@ Sunbird Effigy's power and toughness are each equal to the number of colors amon
 Giant Cindermaw,Creature — Dinosaur Beast,"Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)
 Players can't gain life.",R,Dinosaur; Beast; trample; evasion,FDN,624,1
 Anthem of Champions,Enchantment,Creatures you control get +1/+1.,W/G,pump,FDN,116,1
+Morcant's Loyalist,Creature — Elf Warrior,"Other Elves you control get +1/+1.
+When this creature dies, return another target Elf card from your graveyard to your hand.",B/G,Elf; Warrior; graveyard; pump,ECL,236,1
+Morcant's Eyes,Kindred Enchantment — Elf,"At the beginning of your upkeep, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
+{4}{G}{G}, Sacrifice this enchantment: Create X 2/2 black and green Elf creature tokens, where X is the number of Elf cards in your graveyard. Activate only as a sorcery.",G,Elf; graveyard; sacrifice; tokens; selection; surveil,ECL,185,1
