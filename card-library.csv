@@ -3429,3 +3429,12 @@ Morcant's Eyes,Kindred Enchantment — Elf,"At the beginning of your upkeep, sur
 {4}{G}{G}, Sacrifice this enchantment: Create X 2/2 black and green Elf creature tokens, where X is the number of Elf cards in your graveyard. Activate only as a sorcery.",G,Elf; graveyard; sacrifice; tokens; selection; surveil,ECL,185,1
 Lys Alana Dignitary,Creature — Elf Advisor,"As an additional cost to cast this spell, behold an Elf or pay {2}. (To behold an Elf, choose an Elf you control or reveal an Elf card from your hand.)
 {T}: Add {G}{G}. Activate only if there is an Elf card in your graveyard.",G,Elf; Advisor; graveyard; mana; behold; dragons,ECL,180,1
+"Lathril, Blade of the Elves",Legendary Creature — Elf Noble,"Menace (This creature can't be blocked except by two or more creatures.)
+Whenever Lathril deals combat damage to a player, create that many 1/1 green Elf Warrior creature tokens.
+{T}, Tap ten untapped Elves you control: Each opponent loses 10 life and you gain 10 life.",B/G,Elf; Noble; lifegain; tokens; menace; evasion,FDN,242,1
+Imperious Perfect,Creature — Elf Warrior,"Other Elves you control get +1/+1.
+{G}, {T}: Create a 1/1 green Elf Warrior creature token.",G,Elf; Warrior; tokens; pump,FDN,719,1
+Elvish Archdruid,Creature — Elf Druid,"Other Elf creatures you control get +1/+1.
+{T}: Add {G} for each Elf you control.",G,Elf; Druid; mana; pump,FDN,219,1
+High Perfect Morcant,Legendary Creature — Elf Noble,"Whenever High Perfect Morcant or another Elf you control enters, each opponent blights 1. (They each put a -1/-1 counter on a creature they control.)
+Tap three untapped Elves you control: Proliferate. Activate only as a sorcery. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",B/G,Elf; Noble; counters; blight; graveyard; proliferate,ECL,229,1
