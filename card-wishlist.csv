@@ -21,7 +21,7 @@ Salvation Swan,Creature — Bird Cleric,"Flash
 Flying
 Whenever this creature or another Bird you control enters, exile up to one target creature you control without flying. Return it to the battlefield under its owner's control with a flying counter on it at the beginning of the next end step.",W,Bird; Cleric; counters; blink; flying; evasion; flash; tempo,BLB,28,Rare,19,Bird Brain (Bant Tokens) craft target,5.5
 Shrike Force,Creature — Bird Knight,"Flying, double strike, vigilance",W,Bird; Knight; flying; evasion; vigilance; combat; double strike; aggro,BLB,31,Uncommon,19,Bird Brain (Bant Tokens) craft target,4.5
-Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,
+Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,6.0
 Overlord of the Balemurk,Enchantment Creature — Avatar Horror,"Impending 5—{1}{B} (If you cast this spell for its impending cost, it enters with five time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
 Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.",B,Avatar; Horror; graveyard; mill; impending,DSK,113,Mythic,5; 11,"Impending {1}{B} graveyard value-bomb for Coming of Galactus (5): mills + recurs a creature — a real engine | Also deck 11 (Villainous, mono-B): the recurring, no-strings card-advantage + reanimation engine it lacks — mill 4 + recur a creature on enter AND attack.",8.5
 Blazemire Verge,Land,"{T}: Add {B}.
@@ -32,24 +32,24 @@ Equipped creature gets +X/+0, where X is the number of rev counters on this Equi
 Equip {3}",R,Equipment; counters; burn; etb; equipment; pump; equip,DSK,128,Rare,26,"On-theme R removal for Iron Forge (26): ETB deal 3, grows with deaths — the interaction upgrade over War Machine",6
 Enduring Vitality,Enchantment Creature — Elk Glimmer,"Vigilance
 Creatures you control have ""{T}: Add one mana of any color.""
-When Enduring Vitality dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",G,Elk; Glimmer; mana; vigilance; combat,DSK,176,Rare,29,,
+When Enduring Vitality dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",G,Elk; Glimmer; mana; vigilance; combat,DSK,176,Rare,29,,6.5
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.5
 High Perfect Morcant,Legendary Creature — Elf Noble,"Whenever High Perfect Morcant or another Elf you control enters, each opponent blights 1. (They each put a -1/-1 counter on a creature they control.)
 Tap three untapped Elves you control: Proliferate. Activate only as a sorcery. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",B/G,Elf; Noble; counters; blight; graveyard; proliferate,ECL,229,Rare,31,deck 31 (Pox) — core Elf engine craft: Elf Noble payoff,6.5
 Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19a,,5.0
 Eusocial Engineering,Enchantment,"Landfall — Whenever a land you control enters, create a 2/2 colorless Robot artifact creature token.
-Warp {1}{G} (You may cast this card from your hand for its warp cost. Exile this enchantment at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,tokens; landfall; warp; tempo; cost-reduction; lands; ramp,EOE,181,Uncommon,29,,
+Warp {1}{G} (You may cast this card from your hand for its warp cost. Exile this enchantment at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,tokens; landfall; warp; tempo; cost-reduction; lands; ramp,EOE,181,Uncommon,29,,5.5
 Angelic Destiny,Enchantment — Aura,"Enchant creature
 Enchanted creature gets +4/+4, has flying and first strike, and is an Angel in addition to its other types.
-When enchanted creature dies, return this card to its owner's hand.",W,Aura; aura; pump; bounce; enchant,FDN,565,Mythic,29,,
+When enchanted creature dies, return this card to its owner's hand.",W,Aura; aura; pump; bounce; enchant,FDN,565,Mythic,29,,6.5
 "Ramos, Dragon Engine",Legendary Artifact Creature — Dragon,"Flying
 Whenever you cast a spell, put a +1/+1 counter on Ramos for each of that spell's colors.
 Remove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activate only once each turn.",W/U/B/R/G,Dragon; counters; flying; evasion,FDN,678,Mythic,17,5-color mana-engine/ramp payoff — the Spectrum rainbow home,6.5
 Rite of the Dragoncaller,Enchantment,"Whenever you cast an instant or sorcery spell, create a 5/5 red Dragon creature token with flying.",R,tokens; spellslinger,FDN,92,Mythic,2,,7.5
 Twinflame Tyrant,Creature — Dragon,"Flying
 If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals double that damage instead.",R,Dragon; flying; evasion; double,FDN,97,Mythic,14,,7.5
-Anthem of Champions,Enchantment,Creatures you control get +1/+1.,W/G,pump,FDN,116,Rare,29,,
+Anthem of Champions,Enchantment,Creatures you control get +1/+1.,W/G,pump,FDN,116,Rare,29,,5.5
 Desecration Demon,Creature — Demon,"Flying
 At the beginning of each combat, any opponent may sacrifice a creature of their choice. If a player does, tap this creature and put a +1/+1 counter on it.",B,Demon; counters; sacrifice; flying; evasion,FDN,603,Rare,general,efficient 6/6 flying B beater (opp-sac edict) — any black midrange,6.5
 "Drakuseth, Maw of Flames",Legendary Creature — Dragon,"Flying
@@ -57,7 +57,7 @@ Whenever Drakuseth attacks, it deals 4 damage to any target and 3 damage to each
 Elvish Archdruid,Creature — Elf Druid,"Other Elf creatures you control get +1/+1.
 {T}: Add {G} for each Elf you control.",G,Elf; Druid; mana; pump,FDN,219,Rare,31,deck 31 (Pox) — core Elf engine craft: Elf lord + taps for G per Elf (ramp engine),7.0
 "Ghalta, Primal Hunger",Legendary Creature — Elder Dinosaur,"This spell costs {X} less to cast, where X is the total power of creatures you control.
-Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",G,Elder; Dinosaur; trample; evasion,FDN,222,Rare,28,,
+Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",G,Elder; Dinosaur; trample; evasion,FDN,222,Rare,28,,7.0
 "Lathril, Blade of the Elves",Legendary Creature — Elf Noble,"Menace (This creature can't be blocked except by two or more creatures.)
 Whenever Lathril deals combat damage to a player, create that many 1/1 green Elf Warrior creature tokens.
 {T}, Tap ten untapped Elves you control: Each opponent loses 10 life and you gain 10 life.",B/G,Elf; Noble; lifegain; tokens; menace; evasion,FDN,242,Rare,31,"BG Elfball focal point — combat dmg makes Elves, tap 10 Elves to drain 10",7.0
@@ -68,13 +68,13 @@ When this creature enters, if it was kicked, return target creature card from yo
 Rite of Replication,Sorcery,"Kicker {5} (You may pay an additional {5} as you cast this spell.)
 Create a token that's a copy of target creature. If this spell was kicked, create five of those tokens instead.",U,tokens; kicker; value,FDN,711,Rare,25,Copy engine for Spellstorm (25): clone your best creature (kicker = 5 copies) — payoff redundancy,6
 Giant Cindermaw,Creature — Dinosaur Beast,"Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)
-Players can't gain life.",R,Dinosaur; Beast; trample; evasion,FDN,624,Uncommon,28,,
+Players can't gain life.",R,Dinosaur; Beast; trample; evasion,FDN,624,Uncommon,28,,5.0
 Imperious Perfect,Creature — Elf Warrior,"Other Elves you control get +1/+1.
 {G}, {T}: Create a 1/1 green Elf Warrior creature token.",G,Elf; Warrior; tokens; pump,FDN,719,Uncommon,31,deck 31 (Pox) — core Elf engine craft: Elf anthem + repeatable Elf token maker,7.0
-Needletooth Pack,Creature — Dinosaur,"Morbid — At the beginning of your end step, if a creature died this turn, put two +1/+1 counters on target creature you control.",G,Dinosaur; counters; morbid; sacrifice; aristocrats,FDN,108,Uncommon,28,,
-Quakestrider Ceratops,Creature — Dinosaur,,G,Dinosaur,FDN,110,Uncommon,28,,
+Needletooth Pack,Creature — Dinosaur,"Morbid — At the beginning of your end step, if a creature died this turn, put two +1/+1 counters on target creature you control.",G,Dinosaur; counters; morbid; sacrifice; aristocrats,FDN,108,Uncommon,28,,4.5
+Quakestrider Ceratops,Creature — Dinosaur,,G,Dinosaur,FDN,110,Uncommon,28,,4.5
 Unflinching Courage,Enchantment — Aura,"Enchant creature
-Enchanted creature gets +2/+2 and has trample and lifelink. (Damage dealt by the creature also causes its controller to gain that much life.)",W/G,Aura; lifegain; aura; pump; enchant,FDN,722,Uncommon,29,,
+Enchanted creature gets +2/+2 and has trample and lifelink. (Damage dealt by the creature also causes its controller to gain that much life.)",W/G,Aura; lifegain; aura; pump; enchant,FDN,722,Uncommon,29,,5.5
 "Choco, Seeker of Paradise",Legendary Creature — Bird,"Whenever one or more Birds you control attack, look at that many cards from the top of your library. You may put one of them into your hand. Then put any number of land cards from among them onto the battlefield tapped and the rest into your graveyard.
 Landfall — Whenever a land you control enters, Choco gets +1/+0 until end of turn.",W/U/G,Bird; graveyard; landfall; pump; lands; ramp,FIN,215,Rare,19,Bird Brain (Bant Tokens) craft target,6.0
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
@@ -84,19 +84,19 @@ Summon: Titan,Enchantment Creature — Saga Giant,"(As this Saga enters and afte
 I — Mill five cards.
 II — Return all land cards from your graveyard to the battlefield tapped.
 III — Until end of turn, another target creature you control gains trample and gets +X/+X, where X is the number of lands you control.
-Reach, trample",G,Saga; Giant; reanimator; graveyard; mill; sacrifice; saga; pump; reach; defense; trample; evasion,FIN,204,Rare,29,,
+Reach, trample",G,Saga; Giant; reanimator; graveyard; mill; sacrifice; saga; pump; reach; defense; trample; evasion,FIN,204,Rare,29,,5.5
 Chocobo Racetrack,Artifact,"Landfall — Whenever a land you control enters, create a 2/2 green Bird creature token with ""Whenever a land you control enters, this token gets +1/+0 until end of turn.""",G,tokens; landfall; pump; lands; ramp,FIN,179,Uncommon,19,Bird Brain (Bant Tokens) craft target,5.0
 Summon: Fenrir,Enchantment Creature — Saga Wolf,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Crescent Fang — Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
 II — Heavenward Howl — When you next cast a creature spell this turn, that creature enters with an additional +1/+1 counter on it.
-III — Ecliptic Growl — Draw a card if you control the creature with the greatest power or tied for the greatest power.",G,Saga; Wolf; counters; card draw; sacrifice; ramp; etb; saga,FIN,203,Uncommon,29,,
+III — Ecliptic Growl — Draw a card if you control the creature with the greatest power or tied for the greatest power.",G,Saga; Wolf; counters; card draw; sacrifice; ramp; etb; saga,FIN,203,Uncommon,29,,5.5
 "Gishath, Sun's Avatar",Legendary Creature — Dinosaur Avatar,"Vigilance, trample, haste
-Whenever Gishath deals combat damage to a player, reveal that many cards from the top of your library. Put any number of Dinosaur creature cards from among them onto the battlefield and the rest on the bottom of your library in a random order.",W/R/G,Dinosaur; Avatar; vigilance; combat; haste; aggro; trample; evasion,LCI,229,Mythic,28,,
+Whenever Gishath deals combat damage to a player, reveal that many cards from the top of your library. Put any number of Dinosaur creature cards from among them onto the battlefield and the rest on the bottom of your library in a random order.",W/R/G,Dinosaur; Avatar; vigilance; combat; haste; aggro; trample; evasion,LCI,229,Mythic,28,,7.0
 "Saheeli, the Sun's Brilliance",Legendary Creature — Human Artificer,"{U}{R}, {T}: Create a token that's a copy of another target creature or artifact you control, except it's an artifact in addition to its other types. It gains haste. Sacrifice it at the beginning of the next end step.",U/R,Human; Artificer; sacrifice; tokens,LCI,239,Mythic,25,"2-mana PW, copy a creature/artifact each turn",7.5
 Bedrock Tortoise,Creature — Turtle,"During your turn, creatures you control have hexproof.
 Each creature you control with toughness greater than its power assigns combat damage equal to its toughness rather than its power.",G,Turtle,LCI,176,Rare,20b,toughness-matters payoff (Doran: assigns dmg = toughness) + team hexproof — exactly 20b's plan,6.5
 Hulking Raptor,Creature — Dinosaur,"Ward {2}
-At the beginning of your first main phase, add {G}{G}.",G,Dinosaur; ward; protection,LCI,191,Rare,28,,
+At the beginning of your first main phase, add {G}{G}.",G,Dinosaur; ward; protection,LCI,191,Rare,28,,6.0
 Kutzil's Flanker,Creature — Cat Warrior,"Flash
 When this creature enters, choose one —
 • Put a +1/+1 counter on this creature for each creature that left the battlefield under your control this turn.
@@ -104,12 +104,12 @@ When this creature enters, choose one —
 • Exile target player's graveyard.",W,Cat; Warrior; counters; reanimator; graveyard; lifegain; removal; etb; scry; flash; tempo; selection,LCI,20,Rare,7,"Flash G flyer, big counters OR removal — the flexible instant-speed interaction Earth's Mightiest (7) lacks",6
 Palani's Hatcher,Creature — Dinosaur,"Other Dinosaurs you control have haste.
 When this creature enters, create two 0/1 green Dinosaur Egg creature tokens.
-At the beginning of combat on your turn, if you control one or more Eggs, sacrifice an Egg, then create a 3/3 green Dinosaur creature token.",R/G,Dinosaur; sacrifice; tokens; etb,LCI,237,Rare,28,,
+At the beginning of combat on your turn, if you control one or more Eggs, sacrifice an Egg, then create a 3/3 green Dinosaur creature token.",R/G,Dinosaur; sacrifice; tokens; etb,LCI,237,Rare,28,,6.0
 Restless Anchorage,Land,"This land enters tapped.
 {T}: Add {W} or {U}.
 {1}{W}{U}: Until end of turn, this land becomes a 2/3 white and blue Bird creature with flying. It's still a land.
 Whenever this land attacks, create a Map token.",W/U,tokens; mana,LCI,280,Rare,19,Bird Brain (Bant Tokens) craft target,6.0
-Rampaging Ceratops,Creature — Dinosaur,This creature can't be blocked except by three or more creatures.,R,Dinosaur,LCI,162,Uncommon,28,,
+Rampaging Ceratops,Creature — Dinosaur,This creature can't be blocked except by three or more creatures.,R,Dinosaur,LCI,162,Uncommon,28,,4.5
 Sunbird Standard // Sunbird Effigy,Artifact // Artifact Creature — Bird Construct,"{T}: Add one mana of any color.
 Craft with one or more {5} ({5}, Exile this artifact, Exile one or more other permanents you control and/or cards from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.) // Flying, vigilance, haste
 Sunbird Effigy's power and toughness are each equal to the number of colors among the exiled cards used to craft it.
