@@ -466,6 +466,43 @@ def cmd_suggest_targets(rows, write=False, overwrite=False):
 _WC_RANK = {"Mythic": 3, "Rare": 2, "Uncommon": 1, "Common": 0}
 
 
+def _deck_colors_map():
+    """deck_id(lower) -> declared color set, for land manabase scoring."""
+    try:
+        import deck as dk
+        return {d["id"].lower(): {c for c in (d["meta"].get("colors") or "").upper()
+                                  if c in "WUBRG"}
+                for d in dk.discover_decks()}
+    except Exception:
+        return {}
+
+
+def _is_land(row):
+    return "land" in (row.get("Type") or "").lower()
+
+
+def _land_value(row, deck_colors):
+    """0–10 MANABASE value of a land for its target deck (F03) — the theme-fit axis
+    is meaningless for lands (no synergy tags), so score fixing instead: reward
+    producing colors the deck actually runs (a WB dual in mono-W is half-dead),
+    require the deck to span >=2 of the land's colors for a dual to matter, and
+    prize untapped fixing. Colorless/utility or unknown-deck lands score neutral."""
+    txt = (row.get("Card Text") or "")
+    prod = {c for c in (row.get("Color(s)") or "").upper() if c in "WUBRG"}
+    for c in "WUBRG":
+        if "{" + c + "}" in txt:
+            prod.add(c)
+    if not prod or not deck_colors:
+        return 3.5  # colorless/utility land, or no known target — neutral
+    used = prod & deck_colors
+    match = len(used) / len(prod)                 # fraction of its colors the deck uses
+    multi = 1.0 if len(used) >= 2 else 0.5 if len(used) == 1 else 0.0
+    base = 3.5 + 4.5 * match * multi              # ~3.5..8 by color usefulness
+    if "enters tapped" not in txt.lower() and "enters the battlefield tapped" not in txt.lower():
+        base += 1.5                               # untapped fixing is premium
+    return round(min(10.0, base), 1)
+
+
 def _deck_status():
     """deck_id(lower) -> (tier_letter, remaining_craft_count).
 
@@ -523,6 +560,7 @@ def _rank_scores(rows):
     """
     fps, idf, spec_idf = _theme_model()
     status_map = _deck_status()
+    deck_colors = _deck_colors_map()
     out = []
     for r in rows:
         ccols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
@@ -556,6 +594,17 @@ def _rank_scores(rows):
         except ValueError:
             power = 0.0
         target = (r.get("Target") or "").strip() or "—"
+        # F03: lands score on manabase value (not synergy themes), against the
+        # target deck's colors. Resolve the first real deck id in the Target.
+        land_val = None
+        if _is_land(r):
+            dcols = set()
+            for tok in re.split(r"[;,]", target):
+                t = tok.strip().lower()
+                if t in deck_colors:
+                    dcols = deck_colors[t]
+                    break
+            land_val = _land_value(r, dcols)
         out.append({
             "name": r.get("Card Name", ""), "rarity": (r.get("Rarity") or "").capitalize(),
             "target": target,
@@ -563,6 +612,7 @@ def _rank_scores(rows):
             "pri": round(pri, 2), "tier": tier, "power": round(power, 1),
             "state": _status_label(target, status_map),
             "blank_power": not (r.get("Power") or "").strip(),
+            "land_val": land_val,
             "sig": "/".join(best_specific[:2]) or ("generic/no-theme" if conf == "review" else ""),
         })
     # Normalize fit (pri) to 0-10 and blend 50/50 with the hand-graded power
@@ -570,8 +620,19 @@ def _rank_scores(rows):
     # the artifact can re-blend live at any fit/power weight.
     mx = max((s["pri"] for s in out), default=0) or 1
     for s in out:
-        s["fitN"] = round(s["pri"] / mx * 10, 2)
-        s["combined"] = round(0.5 * s["fitN"] + 0.5 * s["power"], 2)
+        if s.get("land_val") is not None:
+            # F03: a land's "fit" IS its manabase value; blend land-heavy with any
+            # hand-graded Power (usually blank for lands → land value carries it),
+            # and re-tier from the land value so a well-matched untapped dual ranks
+            # like a real upgrade instead of at a 0.0 theme-fit.
+            s["fitN"] = s["land_val"]
+            pw = s["power"] or s["land_val"]
+            s["combined"] = round(0.65 * s["land_val"] + 0.35 * pw, 2)
+            s["tier"] = "A" if s["land_val"] >= 7 else "B" if s["land_val"] >= 5 else "C"
+            s["sig"] = "manabase (land)"
+        else:
+            s["fitN"] = round(s["pri"] / mx * 10, 2)
+            s["combined"] = round(0.5 * s["fitN"] + 0.5 * s["power"], 2)
     order = {"A": 0, "B": 1, "C": 2}
     out.sort(key=lambda s: (order[s["tier"]], -s["pri"], -_WC_RANK.get(s["rarity"], 0), s["name"]))
     return out
