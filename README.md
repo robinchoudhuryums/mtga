@@ -441,6 +441,14 @@ above it is fine (that band credits the intangibles); two bands is the red flag.
 roster-wide pass is a **soft, non-gating** `check_all` warning, so an inflated or
 stale tier can't hide. See the tier **rubric** in [`CLAUDE.md`](CLAUDE.md).
 
+Add **`--to <TIER>`** (e.g. `deck.py tier 30 --to A`) for a **tier-gap diagnostic**:
+it reports the exact measurable work to reach that band's floor ("+3 interaction")
+and lists the owned, on-color, **0-wildcard** cards that fill the short axis, plus a
+pointer to `cuts` for room. It does the *arithmetic*; the card **selection** — which
+fillers preserve the engine/identity, what to cut — stays a `/tune-deck` judgment
+call (protect signature/spice). `/tune-deck` runs it so a tune aims at a concrete
+tier target instead of generic improvement.
+
 Decks live under `decks/` as one folder per core deck, with variations as sibling
 files (`deck.txt` → id `1`, `1a-*.txt` → id `1a`). Basics are treated as
 unlimited. Full format + structure docs are in [`decks/README.md`](decks/README.md).

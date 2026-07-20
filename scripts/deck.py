@@ -2717,6 +2717,74 @@ def tier_band(vec):
     return "D"
 
 
+# The measurable FLOOR requirement per band: (min interaction, min interaction+ca).
+# Kept in lockstep with tier_band above — the single source for both the classifier
+# and the gap diagnostic, so they can't disagree about what a band needs.
+TIER_FLOOR_REQ = {"S": (5, 7), "A": (5, 7), "B": (3, 4), "C": (0, 2), "D": (0, 0)}
+
+
+def tier_gap(vec, target):
+    """What a deck's measurable vector needs to reach `target` tier's FLOOR (F14):
+    the exact axis shortfall — +N interaction, +N card advantage, and any uncastable
+    strays to clear (they cap the floor at C). Blind to bombs/meta like tier_band, so
+    it reports the measurable floor gap, NOT the intangible A-vs-S judgment. Returns
+    None for a bad target; a dict {target, add_interaction, add_card_advantage,
+    fix_uncastable, met, summary[]} otherwise."""
+    target = (target or "").upper()
+    if target not in TIER_FLOOR_REQ:
+        return None
+    need_i, need_r = TIER_FLOOR_REQ[target]
+    inter, ca = vec["interaction"], vec["card_advantage"]
+    parts = []
+    # Any target above C requires 0 castability strays (a stray caps the floor at C).
+    fix_unc = vec["uncastable"] if (TIER_RANK[target] > TIER_RANK["C"] and vec["uncastable"]) else 0
+    if fix_unc:
+        parts.append(f"clear {fix_unc} uncastable stray(s) — they cap the floor at C")
+    add_i = max(0, need_i - inter)
+    # Interaction adds also raise the resilience sum; only the remainder needs card advantage.
+    add_ca = max(0, need_r - (inter + ca + add_i))
+    if add_i:
+        parts.append(f"+{add_i} interaction ({inter}→{inter + add_i})")
+    if add_ca:
+        parts.append(f"+{add_ca} card advantage ({ca}→{ca + add_ca})")
+    return {"target": target, "add_interaction": add_i, "add_card_advantage": add_ca,
+            "fix_uncastable": fix_unc, "met": not parts, "summary": parts}
+
+
+def owned_role_fillers(d, roles, *, limit=10):
+    """Owned, on-color cards NOT already in deck d that fill any role in `roles`
+    (e.g. `_INTERACTION_ROLES`, or {"Card advantage"}) — the 0-wildcard fillers that
+    can close a tier gap, cheapest first. On-color = the card's identity ⊆ the deck's
+    declared/derived colors, so it won't surface an uncastable pick."""
+    meta, cards = parse_deck_file(d["path"])
+    mana, carddata = load_mana(), load_card_data()
+    _, _, qty = load_collection()
+    in_deck = {n.lower() for q, n, s, c in cards}
+    declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
+    out = []
+    for nl, cd in carddata.items():
+        if nl in in_deck or nl in BASICS:
+            continue
+        if "Land" in _primary_type(cd.get("type") or ""):
+            continue
+        name = cd.get("name") or nl
+        have, found = owned(qty, name)
+        if not found or have < 1:
+            continue
+        ident = set((cd.get("colors") or "").replace(" ", ""))
+        if not ident <= declared:
+            continue
+        hit = set(classify_roles(cd.get("text") or "")) & set(roles)
+        if not hit:
+            continue
+        entry = mana.get(nl)
+        mv = entry[1] if entry and entry[1] is not None else 99
+        out.append((mv, name, "".join(sorted(ident)) or "C", sorted(hit),
+                    (cd.get("text") or "").split("\n")[0][:64]))
+    out.sort(key=lambda r: (r[0], r[1]))
+    return out[:limit]
+
+
 def tier_consistency(d):
     """(claimed, implied, mismatch, msg) for a deck's claimed tier vs its metrics
     floor. `mismatch` is True only when a claimed tier sits ≥2 bands ABOVE the floor
@@ -2788,6 +2856,39 @@ def cmd_tier(args):
         print(f"\n  ✓ defensible — {claimed} is one band above the floor (intangibles credit).")
     else:
         print(f"\n  ✓ consistent — {claimed} matches the metrics floor.")
+
+    # F14 — tier-gap diagnostic: the MEASURABLE work to reach a target band's floor,
+    # plus the owned (0-wildcard) on-color cards that fill the short axis. The
+    # selection stays a human call (protect signature/spice — that's /tune-deck's job).
+    target = getattr(args, "to", None)
+    if target:
+        gapinfo = tier_gap(vec, target)
+        if not gapinfo:
+            eprint(f"\n--to: unknown target tier {target!r} (use S/A/B/C/D)")
+            return 1
+        print(f"\n── Path to the {gapinfo['target']} floor ──")
+        if gapinfo["met"]:
+            print(f"  ✓ already meets the {gapinfo['target']} floor "
+                  f"(interaction {vec['interaction']}, card-adv {vec['card_advantage']}) — "
+                  "the letter is a human call from here (bombs/meta).")
+            return 0
+        print("  measurable gap: " + "; ".join(gapinfo["summary"]))
+        if gapinfo["add_interaction"]:
+            fillers = owned_role_fillers(d, _INTERACTION_ROLES, limit=8)
+            print(f"\n  owned on-color interaction to add (0 wildcards, {len(fillers)} shown):"
+                  if fillers else "\n  (no owned on-color interaction found — craft targets via "
+                  "`deck.py suggest <id> --unowned`)")
+            for mv, name, ident, hit, txt in fillers:
+                print(f"    MV{mv:>2} {name:30} [{ident:4}] {','.join(hit):18} {txt}")
+        if gapinfo["add_card_advantage"]:
+            caf = owned_role_fillers(d, {"Card advantage"}, limit=8)
+            print(f"\n  owned on-color card advantage to add ({len(caf)} shown):" if caf else
+                  "\n  (no owned on-color card advantage found)")
+            for mv, name, ident, hit, txt in caf:
+                print(f"    MV{mv:>2} {name:30} [{ident:4}] {','.join(hit):18} {txt}")
+        print("\n  → make room with `deck.py cuts %s` (grade cuts from full text); the card"
+              " SELECTION\n    is a judgment call — protect signature/spice (that's /tune-deck)."
+              % d["id"])
     return 0
 
 
@@ -2906,6 +3007,7 @@ def main():
     p = sub.add_parser("tier", help="check a deck's claimed tier against its measurable quality floor")
     p.add_argument("id")
     p.add_argument("--strict", action="store_true", help="exit non-zero on a tier mismatch (default: warn only)")
+    p.add_argument("--to", metavar="TIER", help="show the measurable gap + owned fillers to reach TIER's floor (S/A/B/C/D)")
     p = sub.add_parser("cuts", help="rank the deck's weakest-fit cards as cut candidates")
     p.add_argument("id")
     p.add_argument("--limit", type=int, default=8,

@@ -326,6 +326,33 @@ decks); `stats`' interaction total equals the audit `Int` column equals the tier
 quality vector; `check_all` green. *(Implemented; the unification also resolved false
 "under-graded" flags on decks 22 and 28a whose counts now match their rationales.)*
 
+## F14 — Tier-gap diagnostic (the mechanical half of "get to the next tier")
+
+**Why.** "What would it take to move deck N up a tier" was a hands-on synthesis
+(done for deck 30). The *diagnostic* half is deterministic and should be codified;
+the *selection* half (which cards preserve the engine/identity, is the trade worth
+it) stays a `/tune-deck` judgment call — automating it would reintroduce the
+graded-from-a-label failure mode.
+
+**Files.** `scripts/deck.py` (`tier_gap`, `owned_role_fillers`, `tier <id> --to
+TIER`); `.claude/commands/tune-deck.md` (consume it); `README.md`.
+
+**Changes.**
+1. `tier_gap(vec, target)` — the exact axis shortfall to reach a target band's
+   FLOOR (from the same `tier_band` thresholds): `+N interaction`, `+N card
+   advantage`, and any uncastable strays to clear. Blind to bombs/meta, so it
+   reports the measurable floor gap, not the A-vs-S judgment.
+2. `owned_role_fillers(d, roles, …)` — owned, on-color cards NOT already in the
+   deck that fill the short axis (interaction / card advantage), cheapest first —
+   the 0-wildcard fillers that close the gap. Pairs with `cuts` for room.
+3. `deck.py tier <id> --to A` prints the gap + the fillers + weakest cut
+   candidates. `/tune-deck` runs it so a tune aims at a concrete tier target
+   ("close +3 interaction") instead of generic improvement.
+
+**Acceptance.** `deck.py tier 30 --to A` reports "+3 interaction" and surfaces
+owned GUR removal/counters; the numbers match the tier_band thresholds; the
+selection stays a human call. `check_all` green.
+
 ## Suggested implementation sequence
 
 Phased, so each wave builds on stable primitives and can be validated before the
