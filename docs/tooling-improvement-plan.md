@@ -353,6 +353,37 @@ TIER`); `.claude/commands/tune-deck.md` (consume it); `README.md`.
 owned GUR removal/counters; the numbers match the tier_band thresholds; the
 selection stays a human call. `check_all` green.
 
+## F15 — Classifier coverage self-audit (surface silent under-counts)
+
+**Why.** The role classifier (`classify_roles`) is precise regexes, so it inevitably
+misses phrasings and silently UNDER-counts — the recurring failure that only a
+hands-on read caught (a creature-ETB kill, an edict, a `-X/-X`, a bounce, "exile up
+to one target"). The count then feeds `stats` / `audit` / `quality` / `tier`, so a
+miss quietly drags a grade down.
+
+**Files.** `scripts/deck.py` (`role_coverage_flags`, broadened `_ROLE_PATTERNS`,
+`cmd_stats` / `cmd_tier` surfacing); `README.md`, `CLAUDE.md`.
+
+**Changes (two parts, same philosophy as F02/the tier guard — keep the precise thing
+precise, make the blind spot visible).**
+1. **Visibility:** `role_coverage_flags(cards, carddata)` — broad, high-recall
+   lexical cues (`_INT_CUES` / `_CA_CUES`) for "this text interacts / draws cards";
+   when a cue fires but the precise classifier tagged NO matching role, flag the card
+   for a human verify (never silently change a count). Surfaced in `deck.py stats`
+   (a "⚠ Possible UNDER-COUNT" list + the count of unclassified noncreature spells)
+   and `deck.py tier` (a compact pointer, since the floor grades on the count).
+2. **Fix the common misses the flag surfaced:** broadened `_ROLE_PATTERNS` for the
+   unambiguous high-frequency templates — any `fight`, `destroy/exile up to N target`,
+   `-N/-N` / `-X/-X` shrink, and one-sided minus-wraths ("creatures your opponents
+   control get -2/-2"). Cut the flag volume ~in half (84→42 residual, genuinely-
+   ambiguous cards left for review) and correctly counts cards like Massacre Wurm,
+   Mutant Chain Reaction, She-Hulk, Cloud of Darkness.
+
+**Acceptance.** The previously-missed cards now classify as interaction; `stats`/`tier`
+print a verify list for the residual ambiguous cards; no new tier mismatch and
+`check_all` green. *(Side effect: the more-accurate counts raised interaction on ~12
+decks, several now measuring a band higher — re-grade candidates, not auto-applied.)*
+
 ## Suggested implementation sequence
 
 Phased, so each wave builds on stable primitives and can be validated before the

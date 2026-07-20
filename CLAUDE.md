@@ -380,7 +380,15 @@ castability · curve · central-theme density), with the intangibles moving a de
 - The **functional-role** breakdown (`deck.py stats`) and **castability lint**
   (`deck.py mana` / `check`) are heuristic. Roles are matched from oracle text, so
   modal cards land in several buckets and single-draw cantrips are deliberately
-  *not* counted as card advantage. The lint reads the deck's `#: colors:` header,
+  *not* counted as card advantage. Because regex matching inevitably misses
+  phrasings and silently *under*-counts (a `-X/-X`, an edict, a bounce, "exile up
+  to one target"), `stats` and `tier` run a **coverage self-audit** (`role_
+  coverage_flags`, F15): a broad lexical net flags any card whose text reads like
+  interaction / card advantage the classifier *didn't* tag, printing a
+  "⚠ Possible UNDER-COUNT — verify" list so a miss is explicit, never silent. It
+  only prompts a human read; it never changes a count. (The common templates —
+  any `fight`, `destroy/exile up to N target`, `-N/-N` shrink, one-sided
+  minus-wraths — are now *counted* directly; the flag catches the residual.) The lint reads the deck's `#: colors:` header,
   so a stale or intentionally-narrow header flags cards as off-color — e.g. the
   archived raw 83-card `19c` pile is headed `WU` but is really multicolor. Fixing a stale
   header to the deck's real castable colors clears the false positives (e.g. deck

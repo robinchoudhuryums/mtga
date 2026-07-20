@@ -378,7 +378,13 @@ or grants flash (convoke/delve/"costs {1} less", so the printed mana value doesn
 mislead), `△` for abilities/modes that carry an added or conditional cost — and
 breaks the nonland spells into **functional roles**: a heuristic read of card text
 that counts removal / counters / card advantage / ramp / anthems (with an
-interaction total), so "light on interaction" is *measured*, not eyeballed.
+interaction total), so "light on interaction" is *measured*, not eyeballed. Because
+that regex read can silently **under**-count a phrasing it doesn't recognize,
+`stats` (and `tier`) also run a **coverage self-audit**: a broad lexical net flags
+any card whose text *reads like* interaction / card advantage the classifier didn't
+tag ("⚠ Possible UNDER-COUNT — verify"), so a miss becomes an explicit prompt to
+read the card rather than a silent gap in the count. It never changes a count — it
+tells you where to look.
 `mana` and `check` add a **castability lint** that flags any card whose real color
 needs fall outside the deck's declared `#: colors:` — a strict off-color pip means
 uncastable, an off-color identity (a hybrid you'd pay on-color, or an off-color

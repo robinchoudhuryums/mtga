@@ -730,16 +730,28 @@ _ROLE_PATTERNS = {
         r"destroy target (?:creature|permanent|nonland permanent|artifact or creature|"
         r"tapped creature|attacking creature|creature or planeswalker|creature with)",
         r"exile target (?:creature|permanent|nonland permanent|attacking|tapped)",
+        # "destroy/exile up to one/two target ..." — the fixed "target" patterns above
+        # miss the up-to-N wording (She-Hulk's power-up, Mutant Chain Reaction).
+        r"(?:destroy|exile) up to \w+ target (?:creature|permanent|nonland permanent|"
+        r"artifact|enchantment|planeswalker|artifact or|artifact, enchantment)",
         r"deals? \d+ damage to (?:target|any target|another target)",
         r"deals? \d+ damage to up to \w+ target",
-        r"fights? (?:target|another target)",
+        # any "fight" is removal (Novel Nunchaku "fights up to one target", Longstalk
+        # Brawl "fight each other") — the old pattern only caught "fights target".
+        r"\bfights?\b|creatures? fight",
         r"deals damage equal to (?:twice )?.{0,20}?power to target (?:creature|creature or planeswalker|attacking)",
-        r"target creature gets -\d",
+        # -N/-N or -X/-X shrink on a targeted creature (incl. "creature an opponent
+        # controls gets -X/-X" — Cloud of Darkness, Wick's Patrol).
+        r"target creature (?:an opponent controls )?gets -[0-9x]",
+        r"creature an opponent controls gets -[0-9x]",
         r"return target creature.{0,40}?(?:owner|their) hand",
         r"enchanted creature can't attack or block",
     ],
     "Sweeper": [r"destroy all", r"exile all", r"all creatures get -",
                 r"each (?:other )?creature (?:gets|deals|is|you don't control)",
+                # one-sided / opponent-only wraths ("creatures your opponents control
+                # get -2/-2" — Massacre Wurm) the "all creatures" pattern misses.
+                r"creatures (?:you don't control|your opponents control|target player controls) get -",
                 # scalable / conditional wipes the fixed patterns above miss
                 r"creature with mana value.{0,20}?or less.{0,40}?destroy",
                 r"destroy those creatures",
@@ -808,6 +820,62 @@ _CONTEXT_PATTERNS = {
     "improvise": [r"\bimprovise\b"],
 }
 _CONTEXT_COMPILED = {k: [re.compile(p) for p in v] for k, v in _CONTEXT_PATTERNS.items()}
+
+# Coverage self-audit (F15). The role classifier above is PRECISE (low false
+# positives) but inevitably misses phrasings, silently UNDER-counting — the recurring
+# failure only a hands-on read used to catch (a creature-ETB kill, an edict, a -1/-1,
+# a bounce, "exile up to one target"). These BROAD cues are the complement: high-
+# recall nets for "this text interacts / draws cards." When a broad cue fires but the
+# precise classifier tagged NO matching role, that's a likely under-read — flagged for
+# a human verify, never silently changing a count. Tuned to the classifier's intent:
+# single-card draw is a cantrip (deliberately not card advantage), and damage to a
+# PLAYER is burn/reach, not creature interaction — so both are excluded here.
+_INT_CUES = re.compile(
+    r"(?:destroy|exile) (?:target |up to \w+ target |all |each |those |that |another )?"
+    r"(?:creature|permanent|nonland permanent|artifact|enchantment|planeswalker|tapped|attacking)"
+    r"|counter (?:target|that spell|it unless)"
+    r"|deals? \d+ damage to (?:any target|target creature|each (?:other )?creature|up to \w+ target)"
+    r"|\bfights?\b"
+    r"|gets? -\d+/-[0-9x]+|gets? \-[0-9x]+/\-[0-9x]+"
+    r"|(?:each opponent|target opponent|target player|each player) sacrifices"
+    r"|return target (?:creature|permanent|nonland permanent)[^.]{0,40}?hand",
+    re.I)
+_CA_CUES = re.compile(
+    r"draws? (?:two|three|four|five|x|that many) cards?"
+    r"|draw cards? equal to|draw a card for each"
+    r"|\binvestigate\b",
+    re.I)
+
+
+def role_coverage_flags(cards, carddata):
+    """Cards whose oracle text likely holds a role the precise classifier MISSED — a
+    coverage self-audit so a silent under-count becomes an explicit 'read these.'
+    Returns (unclassified, under_read):
+      • unclassified — noncreature, nonland spells that matched NO functional role
+        (the classifier had nothing to say about them; read the text yourself),
+      • under_read   — (name, axis) where a broad interaction / card-advantage cue
+        fires but classify_roles tagged no matching role (a likely under-read).
+    Neither changes any count — both are review prompts (grade from full text via
+    card.py / deck.py text)."""
+    unclassified, under_read = [], []
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        cd = carddata.get(n.lower())
+        if not cd or "Land" in _primary_type(cd.get("type") or ""):
+            continue
+        text = cd.get("text") or ""
+        roles = set(classify_roles(text))
+        missed = []
+        if _INT_CUES.search(text) and not (roles & _INTERACTION_ROLES):
+            missed.append("interaction")
+        if _CA_CUES.search(text) and "Card advantage" not in roles:
+            missed.append("card advantage")
+        if missed:
+            under_read.append((n, "/".join(missed)))
+        elif not roles and "Creature" not in (cd.get("type") or ""):
+            unclassified.append(n)
+    return unclassified, under_read
 
 
 def classify_roles(text):
@@ -1028,6 +1096,19 @@ def cmd_stats(args):
         # audit and quality/tier vectors — NOT the sum of the buckets above.
         print(f"  {'interaction total':20} {role_counts['interaction']:3}  "
               "(distinct removal/sweeper/counter cards)")
+
+    # Coverage self-audit (F15): the classifier is precise but misses phrasings, so a
+    # count can silently UNDER-read. Surface the cards whose text reads like a role it
+    # didn't tag, so the miss becomes an explicit "verify" instead of a silent gap.
+    unclassified, under_read = role_coverage_flags(cards, carddata)
+    if under_read:
+        print("\n⚠ Possible UNDER-COUNT — text reads like a role the classifier didn't tag;"
+              " verify from full text (card.py):")
+        for name, axis in under_read:
+            print(f"    {name}  → looks like {axis}")
+    if unclassified:
+        print(f"\n  (classifier found no role for {len(unclassified)} noncreature spell(s): "
+              f"{', '.join(unclassified[:6])}{'…' if len(unclassified) > 6 else ''} — read if grading)")
     return 0
 
 
@@ -2839,6 +2920,13 @@ def cmd_tier(args):
     print(f"  vector        : buildable {vec['buildable']} · uncastable {vec['uncastable']} · "
           f"interaction {vec['interaction']} · card-adv {vec['card_advantage']} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
+    # F15: warn if the count may be under-read, since the floor grades on it.
+    _meta2, _cards2 = parse_deck_file(d["path"])
+    _unc, _under = role_coverage_flags(_cards2, load_card_data())
+    if _under:
+        names = ", ".join(f"{n} ({a})" for n, a in _under[:4])
+        print(f"  ⚠ count may under-read {len(_under)} card(s) — verify via `deck.py stats {d['id']}`: {names}"
+              + ("…" if len(_under) > 4 else ""))
     if not claimed:
         print("\n  (untiered — add a `#: tier: X — rationale` header; see the tier rubric in CLAUDE.md)")
         return 0
