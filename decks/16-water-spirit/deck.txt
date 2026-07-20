@@ -37,10 +37,10 @@
 1 East Wind Avatar (TMT) 5
 1 Gather the White Lotus (TLA) 20
 1 Waterbender Ascension (TLA) 79
-1 Air Nomad Legacy (TLA) 206
+1 Into the Flood Maw (BLB) 52
 1 The Legend of Yangchen (TLA) 27
 1 Flexible Waterbender (TLA) 50
-1 Ember Island Production (TLA) 48
+1 Disdainful Stroke (SOA) 17
 1 Sandbenders' Storm (TLA) 34
 
 # Lands

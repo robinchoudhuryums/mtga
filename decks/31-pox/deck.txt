@@ -1,0 +1,66 @@
+#: name: Pox
+#: format: Standard
+#: colors: BG
+#: tier: C — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; coherent aggressive plan on a low curve, interaction now firmed to 5 (added Bite Down — any deathtoucher kills anything for {G} — + Bake into a Pie, which also clear blockers to push the poison clock). Remaining gap to B is the Elf engine: Lathril / Elvish Archdruid / Imperious Perfect are still UNOWNED (wishlisted, Target 31). Craft those 3 and it's a solid B; singleton dilution is the residual A-cap.
+#: archetype: Golgari (B/G) poison (Fynn + deathtouch) x Elf tribal go-wide hybrid.
+#: notes: Two reinforcing plans: go-wide Elves (Lathril/Imperious Perfect/Elvish Archdruid
+#: notes: engine — CRAFT targets — + Dwynen's Elite/Elfsworn Giant tokens, Druid ramp) AND a
+#: notes: Fynn deathtouch-poison kill (~14 deathtouchers incl. flying Vampire Nighthawk; The
+#: notes: Serpent Society is a 2nd poison payoff + deathtouch sac-engine). Bridge: deathtouch
+#: notes: grants (Widow's Bite, Scarblade's Malice) turn go-wide bodies into poison carriers.
+#: notes: Trimmed 67->60 (aspirational build; keeps the 4 Elf-engine crafts — see wishlist,
+#: notes: Target 31). Sultai Devotee casts {1}{G} (U is ability-only, not a splash). 22 lands
+#: notes: + ~5 ramp is slightly lean — bump to 23 by cutting a marginal body if it flounders.
+
+# Nonland
+1 The Serpent Society (MSH) 226
+1 Llanowar Elves (FDN) 227
+1 Fynn, the Fangbearer (FCA) 46
+1 Noxious Newt (SOS) 155
+1 Grapple with Death (SOS) 192
+1 Sporogenic Infection (DSK) 117
+1 Dwynen's Elite (FDN) 218
+1 Druid of the Cowl (FDN) 554
+1 Lys Alana Informant (ECL) 181
+1 Emeritus of Abundance (SOS) 145
+1 Unforgiving Aim (ECL) 200
+1 Topiary Lecturer (SOS) 165
+1 Vinebred Brawler (ECL) 201
+1 Elfsworn Giant (FDN) 103
+1 Lluwen, Exchange Student (SOS) 199
+1 Wardens of the Cycle (FDN) 125
+1 Bite Down (FDN) 212
+1 Dawnhand Eulogist (ECL) 99
+1 Gloom Ripper (ECL) 102
+1 Scarblade's Malice (ECL) 119
+1 Melancholic Poet (SOS) 90
+1 Lathril, Blade of the Elves (FDN) 242
+1 High Perfect Morcant (ECL) 229
+1 Imperious Perfect (FDN) 719
+1 Elvish Archdruid (FDN) 219
+1 Widow's Bite (MSH) 122
+1 Arnyn, Deathbloom Botanist (SOS) 74
+1 Bake into a Pie (FDN) 169
+1 Vampire Nighthawk (FDN) 186
+1 South Wind Avatar (TMT) 78
+1 Venom, Evil Unleashed (SPM) 71
+1 Shredder, Unrelenting (TMT) 74
+1 Gran Pulse Ochu (FIN) 189
+1 Serpent Specialist (MSH) 186
+1 Sultai Devotee (TDM) 160
+1 Putrid Pals (TMT) 165
+1 Witherbloom, the Balancer (SOS) 245
+
+1 Derelict Attic // Widow's Walk (DSK) 93
+
+# Lands (22)
+6 Swamp (MSH) 292
+5 Forest (MSH) 296
+1 Evendo, Waking Haven (EOE) 253
+1 Foggy Bottom Swamp (TLA) 269
+1 Illegitimate Business (TMT) 186
+1 Subterranean Cavern (MSH) 273
+1 Golgari Guildgate (FDN) 689
+4 Jungle Hollow (FDN) 263
+1 Temple of Malady (FDN) 700
+1 Adventurer's Inn (FIN) 271

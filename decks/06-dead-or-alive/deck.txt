@@ -1,6 +1,6 @@
 #: name: Dead or Alive
 #: format: Standard
-#: tier: B — Abzan reanimator; powerful top-end but 3-color + singleton = inconsistent
+#: tier: B — Abzan reanimator; powerful top-end. Mana pass firmed the 3-color base (owned WBG duals: white 8->10 sources for the WW cards, green ->12). White is the reanimator ENGINE (Restoration Seminar/Primary Research/Starfall/Night Nurse/Owlin), not a cuttable splash. Residual cap: singleton inconsistency (redundancy is the only A-lever, and it trades away the singleton character).
 #: colors: WBG
 #: archetype: Abzan (W/B/G) reanimator — graveyard value.
 #: notes: Abzan (W/B/G) — graveyard value / reanimator.
@@ -45,12 +45,15 @@
 1 Eden, Seat of the Sanctum (FIN) 277
 1 Gathering Place (MSH) 266
 2 Surveillance Room (MSH) 274
-7 Swamp (MSH) 291
+5 Swamp (MSH) 291
+1 Illegitimate Business (TMT) 186
+1 Insomnia, Crown City (FIN) 282
 3 Plains (MSH) 287
 1 Kyoshi Village (TLA) 271
 1 Hushwood Verge (DSK) 261
 1 Scoured Barrens (M21) 250
-5 Forest (MSH) 295
+4 Forest (MSH) 295
+1 Birnin Zana Plaza (MSH) 262
 1 Opulent Palace (TDM) 264
 1 Blossoming Sands (M21) 244
 1 Jungle Hollow (M21) 247
@@ -59,7 +62,9 @@
 #~ -Helping Hand | +Nullpriest of Oblivion | CRAFT (R): a reanimation creature — curves early as an evasive body OR kicker-reanimates a bomb
 #~ -Stone Docent | +Neva, Stalked by Nightmares | CRAFT (U): cheap recursion/graveyard value that fits the self-mill plan
 #~ -Owlin Historian | +Ygra, Eater of All | CRAFT (M): an Elemental bomb that snowballs off every creature that dies — a reanimation target that also wins on its own
-#~ note: all three are CRAFT targets (not owned) and Standard-legal. But the 6 owned duals above are the real fix — craft nothing until the manabase is in. Priority: Nullpriest of Oblivion.
+#~ note: all three are CRAFT targets (not owned) and Standard-legal. Priority: Nullpriest of Oblivion.
+#~ note: applied — owned 0-WC mana pass: -1 Swamp/+Insomnia, Crown City (WB), -1 Forest/+Birnin Zana Plaza (WG), -1 Swamp/+Illegitimate Business (BG). White 8->10 sources (de-stresses the WW cards Starfall/Restoration Seminar), green ->12. Reanimator can afford the tapped lands.
+#~ note: CRAFT manabase upgrade (bigger fix, shared wildcard with deck 21): the Abzan fastlands/surveil-lands — Concealed Courtyard (WB), Blooming Marsh (BG), Underground Mortuary (BG), Shadowy Backstreet (WB), Lush Portico (GW). Enter untapped-or-better; fungible across 6 + 21. Wishlisted for both.
 #~ note: CROSS-DECK CRAFT — Betor, Kin to All (WBG M) is castable here too: a 5/7 flyer that draws off total toughness >=10 (a self-sufficient value engine, not just a 20b payoff). Abzan Monument (WBG U) is cheap fixing + a token mana-sink. Both share a single wildcard with deck 20b (and 17). See: cross-deck analysis.
 #~ note: CRAFT — Restless Cottage (R) ~: a Golgari creature-LAND ({2}{B}{G}: 4/4, still a land; attack -> Food + exile a graveyard card). Near-zero-opportunity-cost threat + graveyard hate that slots into the BG manabase; also fits Sacrifices (8) and Gastromancer (21). Overlord of the Balemurk / Nullpriest (see priority note above) are the bigger reanimator gains.
 

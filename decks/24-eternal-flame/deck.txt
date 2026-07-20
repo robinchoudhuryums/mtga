@@ -1,6 +1,6 @@
 #: name: Eternal Flame
 #: format: Standard
-#: tier: B — Boros impulse; card-advantage engine + 7 interaction, high curve (3.8)
+#: tier: A — Boros (WR) impulse/cast-from-exile; deepest synergy web on the roster (Thm 20), card-advantage engine (Quintorius Kand + Thor), 7 interaction, curve lowered on the A-track pass. Promoted from B: 2-color consistency + engine + interaction + deep synergy.
 #: colors: WR
 #: notes: Boros impulse / cast-from-exile. Quintorius Kand + Thor, God of Thunder as
 #: notes: payoffs; a dense "exile the top card, play it" package (Practiced
@@ -13,7 +13,7 @@ Deck
 # Impulse payoffs / engine
 1 Quintorius Kand (LCI) 238
 1 Thor, God of Thunder (MSH) 156
-1 Thor Odinson (MSH) 234
+1 Ennis, Debate Moderator (SOS) 14
 1 Etali, Primal Storm (FDN) 194
 # Impulse enablers
 1 Practiced Scrollsmith (SOS) 210
@@ -26,10 +26,10 @@ Deck
 1 Solstice Revelations (TLA) 153
 1 Hex Magic (MSH) 133
 # Firebending / ramp / artifacts
-1 Sozin's Comet (TLA) 154
+1 Clockwork Percussionist (DSK) 130
 1 Sun Warriors (TLA) 244
-1 Brass's Bounty (FDN) 190
-1 Sami, Wildcat Captain (EOE) 226
+1 Zuko, Exiled Prince (TLA) 163
+1 Kellan, Planar Trailblazer (FDN) 91
 # Threats / combat
 1 Aurelia, the Warleader (FDN) 651
 1 Raph & Leo, Sibling Rivals (TMT) 166
@@ -54,7 +54,7 @@ Deck
 # Lands
 8 Mountain (MSH) 294
 9 Plains (MSH) 288
-1 The Cave of Two Lovers (TLA) 126
+1 The Legend of Roku (TLA) 145
 1 Fire Nation Palace (TLA) 268
 1 Kavaron, Memorial World (EOE) 255
 1 Abraded Bluffs (OTJ) 251
@@ -62,3 +62,7 @@ Deck
 1 Boros Guildgate (FDN) 684
 1 Temple of Triumph (FDN) 705
 1 Wind-Scarred Crag (FDN) 271
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 24
+#~ -Raph & Leo, Sibling Rivals | +Mardu Devotee | OWNED: a {W} 1-drop mana dork (taps W/B/R — fixes the thin red: ~15 R sources for 36 R pips) + scry 2 on ETB. Lowers the curve and smooths draws into the bombs; swap in over the off-theme Raph & Leo if you want more consistency.
+#~ note: A-track curve-lowering applied — -Sozin's Comet/+Clockwork Percussionist, -Sami/+Kellan, -Brass's Bounty/+Zuko, -Thor Odinson/+Ennis (exile-grows). Kept Raph & Leo for now (Mardu Devotee parked above).
