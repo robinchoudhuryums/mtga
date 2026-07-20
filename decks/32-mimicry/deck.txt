@@ -1,82 +1,61 @@
 #: name: Mimicry
 #: format: Standard
 #: colors: U
-#: archetype: Mono-U clone / copy "mimicry" theme — WIP brew (oversized pile).
-#: notes: Built around copying other cards — clone bodies (Waxen Shapethief, Chameleon,
-#: notes: Gogo, Echo, Mirrorform, Impostor Syndrome, Secret Invasion, Leyline of
-#: notes: Transformation) plus a blue card-advantage / tempo shell. Ingested as-is
-#: notes: (oversized) for analysis; needs heavy trimming to a tight 60.
+#: tier: B — Mono-U copy-creatures value/midrange; perfect mana + deep card advantage (Wan Shi Tong/Arcanis/Kiora/Marang + clone-copies of them) + a coherent Impostor Syndrome clone engine and Multiversal Incursion finisher. Caps: interaction is ENTIRELY SOFT (bounce/tap/stun/counter-ability — the heuristic's "0" means no HARD removal, so a resolved resilient bomb is a problem), the curve is 3-drop-heavy/slow, and it's singleton-inconsistent. A grindy mid-ladder deck. Path toward A: add hard removal / a faster clock.
+#: archetype: Mono-U copy-creatures tempo/value — clone bodies + strong ETB creatures worth copying.
+#: notes: Focused from a 93-card pile to a copy-CREATURES primary build. Clone bodies
+#: notes: (Chameleon, Waxen Shapethief, Secret Invasion, Silent Hallcreeper) + copy-token
+#: notes: payoffs (Impostor Syndrome, Relm's Sketching, Ember Island Production,
+#: notes: Multiversal Incursion) copy a shell of premium ETB value creatures (Wan Shi Tong,
+#: notes: Marang River Regent, Arcanis, Kiora, Justice, Mister Fantastic). Echo/Taigam are a
+#: notes: light ability/spell-copy secondary. Cut the spellslinger half (prowess/Opus/cast-
+#: notes: matters) as off-plan for a creature deck, plus off-color and high-cost clunkers.
 
-# Cards (raw pile — nonland + lands as pasted)
+# Copy engine — creatures
 1 Impostor Syndrome (SPM) 34
-1 Multiversal Incursion (MSH) 68
-1 Mirrorform (ECL) 59
-1 Echocasting Symposium (SOS) 44
-1 Waxen Shapethief (DFT) 74
-1 Ember Island Production (TLA) 48
-1 Relm's Sketching (FIN) 67
 1 Chameleon, Master of Disguise (SPM) 27
-1 The Everflowing Well (LCI) 56
+1 Waxen Shapethief (DFT) 74
 1 Secret Invasion (MSH) 72
-1 Echo, Perceptive Prodigy (MSH) 51
-1 Gogo, Master of Mimicry (FIN) 54
-1 Taigam, Master Opportunist (TDM) 60
 1 Silent Hallcreeper (DSK) 72
-1 Rimefire Torque (ECL) 65
-1 Kid Loki (MSH) 63
-1 Deluge Virtuoso (SOS) 42
-1 Exclusion Mage (FDN) 508
-1 Frozen in Ice (MSH) 54
-1 Kiora, the Rising Tide (FDN) 45
-1 Rowdy Snowballers (TLA) 68
-1 Tishana's Tidebinder (LCI) 81
-1 Ty Lee, Chi Blocker (TLA) 76
-1 Waterwind Scout (LCI) 84
+1 Relm's Sketching (FIN) 67
+1 Ember Island Production (TLA) 48
 1 Leyline of Transformation (DSK) 63
-1 Mister Fantastic, Reed Richards (MSH) 66
-1 Tractor Beam (EOE) 82
-1 Emeritus of Ideation (SOS) 45
-1 Daring Waverider (BLB) 44
-1 Kitsune, Dragon's Daughter (TMT) 41
-1 Weftwalking (EOE) 86
-1 Mouth of the Storm (EOE) 70
-1 Wan Shi Tong, Librarian (TLA) 78
-1 Spider-Woman, Secret Agent (MSH) 229
-1 Messenger Hawk (TLA) 234
-1 Symbiote Spider-Man (SPM) 156
-1 Hama, the Bloodbender (TLA) 224
-1 Wistfulness (ECL) 252
-1 Bruce Banner (MSH) 49
-1 Drake Hatcher (FDN) 35
-1 Hydro-Channeler (SOS) 54
-1 Knowledge Seeker (TLA) 60
-1 Loki, God of Mischief (MSH) 65
-1 Otter-Penguin (TLA) 67
-1 Muse Seeker (SOS) 60
-1 Tester of the Tangential (SOS) 69
-1 The Wondrous Wasp (MSH) 84
-1 Vnwxt, Verbose Host (DFT) 73
-1 April, Reporter of the Weird (TMT) 30
-1 Doc Ock's Henchmen (SPM) 30
-1 Justice, Vance Astrovik (MSH) 61
-1 Katara, Bending Prodigy (TLA) 59
-1 Ms. Marvel, Kamala Khan (MSH) 67
-1 Quistis Trepe (FIN) 66
-1 Silvergill Peddler (ECL) 70
-1 Teo, Spirited Glider (TLA) 74
-1 Yue, the Moon Spirit (TLA) 83
-1 Archmage of Runes (FDN) 30
-1 Doc Ock, Sinister Scientist (SPM) 29
-1 Arcanis the Omnipotent (FDN) 585
-1 Wiccan, Rising Magician (MSH) 83
-1 Marang River Regent (TDM) 51
-1 Sokka, Lateral Strategist (TLA) 241
-1 Cat-Owl (TLA) 212
-1 Ghost, Spectral Saboteur (MSH) 214
-1 Professor Zei, Anthropologist (TLA) 238
-1 Beast, Erudite Aerialist (MSH) 206
+1 Multiversal Incursion (MSH) 68
+1 Taigam, Master Opportunist (TDM) 60
+1 Echo, Perceptive Prodigy (MSH) 51
 
-# Lands
-24 Island (MSH) 290
+# Premium copy-targets / value engines
+1 Wan Shi Tong, Librarian (TLA) 78
+1 Marang River Regent (TDM) 51
+1 Kiora, the Rising Tide (FDN) 45
+1 Mister Fantastic, Reed Richards (MSH) 66
+1 Arcanis the Omnipotent (FDN) 585
+1 April, Reporter of the Weird (TMT) 30
+1 Ms. Marvel, Kamala Khan (MSH) 67
+1 Justice, Vance Astrovik (MSH) 61
+1 Symbiote Spider-Man (SPM) 156
+1 Daring Waverider (BLB) 44
+1 Silvergill Peddler (ECL) 70
+1 Knowledge Seeker (TLA) 60
+1 Messenger Hawk (TLA) 234
+
+# Interaction
+1 Frozen in Ice (MSH) 54
+1 Tishana's Tidebinder (LCI) 81
+1 Exclusion Mage (FDN) 508
+1 Spider-Woman, Secret Agent (MSH) 229
+1 Rowdy Snowballers (TLA) 68
+1 Deluge Virtuoso (SOS) 42
+1 The Wondrous Wasp (MSH) 84
+1 Ghost, Spectral Saboteur (MSH) 214
+
+# Tempo / enablers
+1 Waterwind Scout (LCI) 84
+1 Doc Ock's Henchmen (SPM) 30
+1 Sokka, Lateral Strategist (TLA) 241
+1 Hydro-Channeler (SOS) 54
+
+# Lands (24)
+22 Island (MSH) 290
 1 Agna Qel'a (TLA) 264
 1 Uthros, Titanic Godcore (EOE) 260
