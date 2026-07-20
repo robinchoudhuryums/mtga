@@ -1,6 +1,6 @@
 #: name: Blink
 #: format: Standard
-#: tier: B — Azorius blink value; strong ETB engine but slow + thin interaction (3)
+#: tier: B — Azorius blink value (strong B); strong ETB engine, now with repeatable tempo interaction the engine abuses (Floodpits Drowner tap+shuffle-away, Sharae tap-lockdown-that-draws) + a card-advantage engine (Cloudblazer draw-2 on every blink). NOTE: the heuristic "interaction total (3)" undercounts this — it only tallies destroy/exile/counter, not tap/stun/shuffle. Residual: still a slow value deck by design.
 #: colors: WU
 #: archetype: Azorius (W/U) blink / "creatures-entering-matters" value — repeatable blink engines (Y'shtola, Don & Leo, Wiccan) re-trigger both ETB value creatures AND enter-matters payoffs (Serra Redeemer, Mighty Mutanimals, East Wind Avatar). A Sneak tempo package doubles as bounce-to-recast ETB recursion.
 #: notes: Tuned from the 44-card brew. All hybrids kept — {W/B}/{U/B}/{R/W}/{G/W}
@@ -18,7 +18,7 @@
 1 The Mighty Thor, Jane Foster (MSH) 222
 1 The Mind Stone (MSH) 21
 1 Daydream (SOS) 9
-1 Morningtide's Light (ECL) 27
+1 Sharae of Numbing Depths (WOE) 213
 1 Another Round (OTJ) 1
 
 # ETB value + "creature enters" payoffs
@@ -30,16 +30,16 @@
 1 Red Guardian, Super-Soldier (MSH) 34
 1 Sheriff of Safe Passage (OTJ) 29
 1 Solitary Sanctuary (WOE) 30
-1 Spiritcall Enthusiast (SOS) 33
+1 Waxen Shapethief (DFT) 74
 1 Beza, the Bounding Spring (BLB) 2
 1 Appa, Steadfast Guardian (TLA) 10
 1 East Wind Avatar (TMT) 5
 1 Felidar Savior (FDN) 12
 1 Mighty Mutanimals (TMT) 21
-1 Luxknight Breacher (EOE) 26
+1 Cloudblazer (FDN) 653
 1 Stagecoach Security (OTJ) 30
 1 Serra Redeemer (BLB) 387
-1 Triceraton Commander (TMT) 25
+1 Floodpits Drowner (DSK) 59
 1 Crustacean Commando (TMT) 33
 1 Dragoon's Wyvern (FIN) 49
 1 Justice, Vance Astrovik (MSH) 61
@@ -67,5 +67,5 @@
 6 Island
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 27
-#~ -Triceraton Commander | +Cloudblazer | OWNED: trade the X-cost ETB (blink resets X to 0 → 0 tokens) for a flat "gain 2 life, draw 2 cards" ETB flyer that pays off on every blink. Raises the curve (2→5) but is real card advantage in the engine.
-#~ note: NEW PACK CARD — Waxen Shapethief (owned, {3}{U} flash: enter as a copy of a creature/artifact you control, cycling {2}): flexible ETB/tempo value for the blink shell. Consider when we tune deck 27.
+#~ note: applied — interaction + value pass (all owned, 0 WC): Floodpits Drowner (-Triceraton Commander, whose {X}{X}{W}{W} makes 0 tokens when blinked) = repeatable tap+shuffle-away removal the blink engine re-triggers; Cloudblazer (-Luxknight Breacher) = gain 2 + draw 2 on every blink; Waxen Shapethief (-Spiritcall Enthusiast) = flash-copy your best ETB creature (re-fires its ETB), cycling {2} when dead; Sharae of Numbing Depths (-Morningtide's Light) = ETB tap+stun + draws whenever you tap an opponent's creature (pays off Floodpits/Solitary Sanctuary taps).
+#~ note: mana confirmed — all adds are single-pip (Floodpits {1}{U}, Waxen {3}{U}, Sharae {2}{W}{U}); cutting Triceraton/Luxknight/Spiritcall DROPPED white demand. Sources W 17 / U 13; blue rises to ~14 single pips, comfortably supported.
