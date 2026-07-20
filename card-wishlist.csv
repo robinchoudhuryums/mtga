@@ -96,9 +96,6 @@ Whenever a player draws their second card each turn, you draw a card.
 Double strike
 Prevent all damage that would be dealt to Black Panther.
 Whenever Black Panther deals combat damage to a player, draw a card.",W/U,Human; Noble; Hero; Warrior; card draw; transform; double strike; combat; aggro; flash; tempo,MSH,219,Mythic,19,"best 19 (Bird Brain); also 15,17,16",7.5
-The Serpent Society,Legendary Creature — Human Snake Villain,"Deathtouch
-Ward—Get five poison counters. (A player with ten or more poison counters loses the game.)
-Whenever another creature you control with deathtouch dies, each opponent sacrifices a nontoken creature of their choice.",B/G,Human; Snake; Villain; sacrifice; ward; protection; deathtouch; combat; removal,MSH,226,Rare,8,"best 8 (Sacrifices); also 20b,21,21a",5.0
 Vision Quest,Sorcery,"Search your library and/or graveyard for an artifact creature card with mana value X or less and put it onto the battlefield with X additional +1/+1 counters on it. If X is 4 or greater, it gains haste until end of turn. If you search your library this way, shuffle.",U/R,counters; reanimator; graveyard,MSH,237,Rare,general,UR artifact-creature cheat/reanimator — wants a dedicated artifacts shell,5.5
 Aven Interrupter,Creature — Bird Rogue,"Flash
 Flying

@@ -3361,3 +3361,19 @@ The Goose Mother,Legendary Creature — Bird Hydra,"Flying
 The Goose Mother enters with X +1/+1 counters on it.
 When The Goose Mother enters, create half X Food tokens, rounded up.
 Whenever The Goose Mother attacks, you may sacrifice a Food. If you do, draw a card.",U/G,Bird; Hydra; counters; card draw; sacrifice; tokens; etb; food; flying; evasion,WOE,204,1
+Golgari Guildgate,Land — Gate,"This land enters tapped.
+{T}: Add {B} or {G}.",B/G,Gate; mana,FDN,689,1
+Subterranean Cavern,Land,"This land enters tapped.
+When this land enters, you gain 1 life.
+{T}: Add {B} or {G}.",B/G,lifegain; mana; etb,MSH,273,1
+Foggy Bottom Swamp,Land,"This land enters tapped.
+{T}: Add {B} or {G}.
+{4}, {T}, Sacrifice this land: Draw a card.",B/G,card draw; sacrifice; mana,TLA,269,1
+Temple of Malady,Land,"This land enters tapped.
+When this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)
+{T}: Add {B} or {G}.",B/G,mana; etb; scry; selection,FDN,700,1
+The Serpent Society,Legendary Creature — Human Snake Villain,"Deathtouch
+Ward—Get five poison counters. (A player with ten or more poison counters loses the game.)
+Whenever another creature you control with deathtouch dies, each opponent sacrifices a nontoken creature of their choice.",B/G,Human; Snake; Villain; sacrifice; ward; protection; deathtouch; combat; removal,MSH,226,1
+Sultai Devotee,Creature — Zombie Snake Druid,"Deathtouch
+{1}: Add {B}, {G}, or {U}. Activate only once each turn.",U/B/G,Zombie; Snake; Druid; deathtouch; combat; removal,TDM,160,1
