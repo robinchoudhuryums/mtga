@@ -1,7 +1,7 @@
 #: name: Pox
 #: format: Standard
 #: colors: BG
-#: tier: C — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; coherent aggressive plan on a low curve with two synergistic kills (Elf drain/anthem + poison), but thin interaction (3), singleton-inconsistent, and its best engine (Lathril / Elvish Archdruid / Imperious Perfect) is still UNOWNED. B-potential once those 4 crafts are in and interaction firms up.
+#: tier: C — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; coherent aggressive plan on a low curve, interaction now firmed to 5 (added Bite Down — any deathtoucher kills anything for {G} — + Bake into a Pie, which also clear blockers to push the poison clock). Remaining gap to B is the Elf engine: Lathril / Elvish Archdruid / Imperious Perfect are still UNOWNED (wishlisted, Target 31). Craft those 3 and it's a solid B; singleton dilution is the residual A-cap.
 #: archetype: Golgari (B/G) poison (Fynn + deathtouch) x Elf tribal go-wide hybrid.
 #: notes: Two reinforcing plans: go-wide Elves (Lathril/Imperious Perfect/Elvish Archdruid
 #: notes: engine — CRAFT targets — + Dwynen's Elite/Elfsworn Giant tokens, Druid ramp) AND a
@@ -29,7 +29,7 @@
 1 Elfsworn Giant (FDN) 103
 1 Lluwen, Exchange Student (SOS) 199
 1 Wardens of the Cycle (FDN) 125
-1 Stoic Grove-Guide (ECL) 243
+1 Bite Down (FDN) 212
 1 Dawnhand Eulogist (ECL) 99
 1 Gloom Ripper (ECL) 102
 1 Scarblade's Malice (ECL) 119
@@ -40,7 +40,7 @@
 1 Elvish Archdruid (FDN) 219
 1 Widow's Bite (MSH) 122
 1 Arnyn, Deathbloom Botanist (SOS) 74
-1 Ninja of the Hand (MSH) 108
+1 Bake into a Pie (FDN) 169
 1 Vampire Nighthawk (FDN) 186
 1 South Wind Avatar (TMT) 78
 1 Venom, Evil Unleashed (SPM) 71
