@@ -57,8 +57,10 @@ castability · curve · central-theme density), with the intangibles moving a de
 
 - **Tier rates the LIST's competitive power, not whether you own it.** Build-state
   is tracked separately (`check`/`audit`); an aspirational unbuilt list is graded
-  on its merits. **Never auto-write a tier letter** — it's a human competitive
-  judgment (design constraint).
+  on its merits **provided it's legal and a real 60** (that's a purpose of variant
+  decks — a fully-owned playable version plus an aspirational variant, each tiered
+  on its own list; an incomplete/illegal pile isn't gradeable). **Never auto-write a
+  tier letter** — it's a human competitive judgment (design constraint).
 - **The measurable FLOOR** (`deck.py tier <id>` → "metrics floor", via
   `tier_band`): interaction + card-advantage = the resilience axis. Roughly:
   **A-floor** interaction ≥5 and (interaction+card-adv) ≥7; **B-floor** interaction

@@ -1,6 +1,6 @@
 #: name: Dino Stampede
 #: format: Standard
-#: tier: D — Naya Dinosaurs — incomplete (9 to craft); owned build 28a plays ~C
+#: tier: B — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit): interaction 3 + a dense payoff curve → B-floor. The fully-owned playable version is variant 28a; this aspirational full list grades B on its merits (the earlier D reflected unbuilt-status, not list power).
 #: colors: RGW
 #: archetype: Naya (R/G/W) Dinosaur tribal with a Soldier secondary — Triceraton Commander token engine into big dinos (Ghalta, Gishath). WIP brew.
 

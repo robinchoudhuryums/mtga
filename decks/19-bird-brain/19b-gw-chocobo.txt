@@ -1,6 +1,6 @@
 #: name: Bird Brain — GW Chocobo
 #: format: Standard
-#: tier: D — Bird Brain GW Chocobo — incomplete (8 to craft); ungradeable as built
+#: tier: C — Bird Brain GW Chocobo variant; graded on the LIST ignoring ownership (legal 60): interaction 2 + card advantage 2 → C-floor (thin interaction is the cap, same as the GWU primary before its package). The earlier D meant "unbuilt"; per the rubric, tier rates the list, not build-state. Aspirational sibling of the primary 19.
 #: colors: GW
 #: based-on: deck.txt
 #: archetype: 19 variant — Selesnya (G/W) sibling of the promoted Bant primary; drops blue for more green token-makers.

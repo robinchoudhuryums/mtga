@@ -1,6 +1,6 @@
 #: name: Enchantress
 #: format: Standard
-#: tier: C — Naya enchantments (creative-first); slow build-arounds, 4 interaction
+#: tier: B — Naya enchantments (creative-first); slow build-arounds but real interaction (6, undercounted as 4 before the classifier fix). Graded on the LIST ignoring ownership (legal 60): B-floor, capped there by thin card advantage (0) and a slow curve. Aspirational full list; the competitive variant is 29a.
 #: colors: GWR
 #: protect: Yuna, Hope of Spira; Terra, Magical Adept; Political Triumph; Savior of the Sleeping
 #: archetype: Naya (G/W/R) enchantments-matter — Yuna anchors an enchantment-recursion engine

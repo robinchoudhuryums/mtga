@@ -1,7 +1,7 @@
 #: name: Pox
 #: format: Standard
 #: colors: BG
-#: tier: B — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; now fully built. Elf engine online (Lathril drain finish + Elvish Archdruid ramp/anthem + Imperious Perfect / Morcant's Loyalist anthems + High Perfect Morcant blight), interaction at 5 (Bite Down — any deathtoucher kills anything for {G} — + Bake into a Pie clearing blockers for the poison clock), card advantage from Morcant's Eyes surveil + token dump. Residual A-cap: singleton dilution across the two half-density plans (Elf go-wide + poison).
+#: tier: A — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; fully built. Elf engine (Lathril drain finish + Elvish Archdruid ramp/anthem + Imperious Perfect / Morcant's Loyalist anthems + High Perfect Morcant blight), interaction 6 (~8 with The Serpent Society / Sporogenic Infection reading as interaction) — Bite Down (any deathtoucher kills anything for {G}) + Bake into a Pie clearing the poison clock's blockers — plus card advantage from Morcant's Eyes surveil + token dump, on a clean 2-color base → A-floor. Re-graded B→A on corrected interaction; the only reason it's not a clearer S-conversation is the singleton dilution across two half-density plans (Elf go-wide + poison).
 #: archetype: Golgari (B/G) poison (Fynn + deathtouch) x Elf tribal go-wide hybrid.
 #: notes: Two reinforcing plans: go-wide Elves (Lathril/Imperious Perfect/Elvish Archdruid
 #: notes: engine — CRAFT targets — + Dwynen's Elite/Elfsworn Giant tokens, Druid ramp) AND a

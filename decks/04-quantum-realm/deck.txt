@@ -1,6 +1,6 @@
 #: name: Quantum Realm
 #: format: Standard
-#: tier: B — Simic +1/+1 counters value midrange (strong B); added scalable counters-payoff card advantage (Wan Shi Tong + Teo + Knowledge Seeker) and on-theme interaction (Glen Elendra Guardian counter). Residual: singleton-inconsistent (the heuristic CA stat undercounts creature-based draw here).
+#: tier: A — Simic (GU) +1/+1 counters value midrange; 7 interaction + a scalable counters-payoff card-advantage engine (Wan Shi Tong + Teo + Knowledge Seeker) + on-theme interaction (Glen Elendra Guardian) on a clean 2-color base. Re-graded B→A: A-floor on corrected interaction, coherent 12-payoff engine. Residual cap: singleton-inconsistent (and the heuristic CA stat undercounts the creature-based draw here, so it plays with more card advantage than the "1" shown).
 #: colors: UG
 #: archetype: Simic (U/G) +1/+1 counters / value.
 #: notes: Simic (U/G) — +1/+1 counters / value.
