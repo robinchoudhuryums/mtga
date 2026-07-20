@@ -1151,6 +1151,39 @@ def _deck_fingerprints(meta, exclude_id=None):
     return fps
 
 
+POOL_BUILD_STAMP = os.path.join(REPO_ROOT, "card-pool.build")
+
+
+def pool_staleness_days():
+    """Days since card-pool.csv was built (from the card-pool.build sidecar), or
+    None if unstamped. Standard rotates on a schedule, so an old pool can still
+    mark a rotated-out card as `standard` — this lets `suggest` warn and prompt a
+    rebuild. Dormant until a `build_pool.py` run writes the stamp."""
+    if not os.path.exists(POOL_BUILD_STAMP):
+        return None
+    try:
+        import datetime
+        built = datetime.date.fromisoformat(open(POOL_BUILD_STAMP).read().strip()[:10])
+        return (datetime.date.today() - built).days
+    except Exception:
+        return None
+
+
+def rotation_risk(released, years=3):
+    """True if a set released more than ~`years` ago — Standard's rough rotation
+    window — so a still-`standard`-marked pick may have rotated (stale pool) or
+    rotates soon. Empty/absent `released` → False (graceful before a pool rebuild
+    captures the Released column)."""
+    if not released:
+        return False
+    try:
+        import datetime
+        rel = datetime.date.fromisoformat(released[:10])
+        return (datetime.date.today() - rel).days > 365 * years
+    except Exception:
+        return False
+
+
 def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_format=False):
     """Structured core of `suggest` — returns the scored, sorted, limited picks as
     plain dicts so both `cmd_suggest` (renders below) and build_dashboard.py (craft
@@ -1263,7 +1296,8 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         if h == 0 and fits >= 3:
             hi_reuse.append((name, fits))
         picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(),
-                      "owned": h, "decks": fits, "score": score, "matches": shared})
+                      "owned": h, "decks": fits, "score": score, "matches": shared,
+                      "rotates": rotation_risk(r.get("Released") or "")})
 
     res.update(ok=True, colors=deck_colors,
                themes=sorted(theme_w.items(), key=lambda kv: -kv[1])[:6],
@@ -1312,9 +1346,16 @@ def cmd_suggest(args):
     elif fmt and fmt not in POOL_FORMATS:
         print(f"Format: '{fmt}' not tracked — not filtering. "
               f"(known: {', '.join(sorted(POOL_FORMATS))})")
+    stale = pool_staleness_days()
+    if stale is not None and stale > 180:
+        print(f"⚠ card-pool.csv was built {stale} days ago — Standard legality may be "
+              "stale (sets rotate). Rebuild: build_pool.py --all (or /refresh).")
     if not res["picks"]:
         print("\nNo pool cards matched this deck's colors + themes.")
         return 0
+    rotn = sum(1 for p in res["picks"] if p.get("rotates"))
+    if rotn:
+        print(f"({rotn} pick(s) marked ⚠rot — set >3yr old, may have rotated / rotates soon)")
     print(f"\n{'Have':>5}  {'Card':28}  {'Rarity':8}  {'Decks':>5}  Matches (deck themes)")
     print("-" * 82)
     craftby = {}
@@ -1324,8 +1365,9 @@ def cmd_suggest(args):
         rar = p["rarity"]
         if h == 0:
             craftby[rar] = craftby.get(rar, 0) + 1
+        rotflag = " ⚠rot" if p.get("rotates") else ""
         print(f"{have:>5}  {p['name'][:28]:28}  {rar[:8]:8}  {p['decks']:>5}  "
-              f"{', '.join(p['matches'][:5])}")
+              f"{', '.join(p['matches'][:5])}{rotflag}")
     ncraft = sum(craftby.values())
     print("-" * 82)
     print(f"{res['total']} suggestion(s) — {res['total'] - ncraft} owned, {ncraft} to craft"

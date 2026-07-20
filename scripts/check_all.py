@@ -130,6 +130,16 @@ def main():
     except Exception as e:
         soft.append(f"wishlist target audit skipped ({e})")
 
+    # Soft: NEW unindexed card mechanics (a new set's keyword not yet in the synergy
+    # map). Baselined, so it stays quiet until something genuinely new appears.
+    try:
+        import check_keywords as ck
+        for kw, ex, _sig in ck.check():
+            soft.append(f"unindexed mechanic '{kw}' (e.g. {ex}) — add to tag_synergies "
+                        "KEYWORD_THEMES/FLAVOR_KEYWORDS or run check_keywords.py --update-baseline")
+    except Exception as e:
+        soft.append(f"keyword radar skipped ({e})")
+
     if args.quiet:
         state = "OK" if not hard else f"{len(hard)} ISSUE(S)"
         extra = f", {len(soft)} soft" if soft else ""

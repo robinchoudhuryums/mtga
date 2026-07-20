@@ -52,6 +52,35 @@ def write_rows(rows, path=DEFAULT_CSV):
             writer.writerow({col: (row.get(col, "") or "") for col in HEADER})
 
 
+_POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
+
+
+def full_card_text(name, _cache={}):
+    """Return a card's COMPLETE, untruncated oracle text — library first, then the
+    pool (so unowned cards resolve too). '' if not found.
+
+    This is the accessor every card-EVALUATION path should use. Grading a card from
+    a truncated / sliced read is a known, repeated mistake (see CLAUDE.md's card.py
+    gotcha); routing evaluators through one never-truncating accessor removes the
+    temptation. DFC names match on the full name or the front face.
+    """
+    nl = (name or "").strip().lower()
+    if not nl:
+        return ""
+    front = nl.split(" // ")[0]
+    if not _cache:
+        for path in (DEFAULT_CSV, _POOL_CSV):
+            if not os.path.exists(path):
+                continue
+            with open(path, newline="", encoding="utf-8") as fh:
+                for r in csv.DictReader(fh):
+                    cn = (r.get("Card Name") or "").strip().lower()
+                    if cn and cn not in _cache:
+                        _cache[cn] = r.get("Card Text") or ""
+                        _cache.setdefault(cn.split(" // ")[0], _cache[cn])
+    return _cache.get(nl) or _cache.get(front) or ""
+
+
 def eprint(*args, **kwargs):
     """Print to stderr (keeps machine-readable output clean on stdout)."""
     print(*args, file=sys.stderr, **kwargs)

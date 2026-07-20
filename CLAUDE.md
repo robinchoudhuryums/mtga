@@ -58,7 +58,9 @@ docs. This file is the source of truth for the workflow commands in
   of Calling read as green cheat enablers but are Historic-only, not Standard;
   Heartfire Hero likewise). Before grading or recommending ANY card in chat, run
   `card.py` — the pool's `Legalities` column is authoritative, so "it's in the pool"
-  is NOT "it's Standard-legal."
+  is NOT "it's Standard-legal." **In code, any card-evaluation path reads the
+  COMPLETE text by default** — use `lib.full_card_text(name)` (library→pool,
+  never truncated); never slice a card's text to grade/classify/rank it.
 - **Don't judge a card by printed mana value or a single subtype.** `deck.py
   stats` flags cost flexibility (`◊` cheaper / `△` added cost), buckets spells
   into functional roles (removal / card advantage / ramp / …, heuristic from
