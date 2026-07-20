@@ -1,0 +1,68 @@
+#: name: Pox
+#: format: Standard
+#: colors: BG
+#: archetype: Golgari (B/G) poison (Fynn + deathtouch) x Elf tribal hybrid — WIP brew.
+#: notes: Started around the poison keyword (Fynn, the Fangbearer + a deathtouch shell
+#: notes: turns combat damage into poison counters) and grew an Elf-tribal engine
+#: notes: (Lathril / Imperious Perfect / Elvish Archdruid / Dwynen's Elite). Currently a
+#: notes: 67-card brew (over the 60 minimum) — needs trimming to a tight 60. Ingested
+#: notes: as-is for analysis.
+
+# Nonland
+1 The Serpent Society (MSH) 226
+1 Llanowar Elves (FDN) 227
+1 Fynn, the Fangbearer (FCA) 46
+1 Noxious Newt (SOS) 155
+1 Grapple with Death (SOS) 192
+1 Sporogenic Infection (DSK) 117
+1 Dwynen's Elite (FDN) 218
+1 Druid of the Cowl (FDN) 554
+1 Lys Alana Informant (ECL) 181
+1 Emeritus of Abundance (SOS) 145
+1 Unforgiving Aim (ECL) 200
+1 Topiary Lecturer (SOS) 165
+1 Vinebred Brawler (ECL) 201
+1 Elfsworn Giant (FDN) 103
+1 Lluwen, Exchange Student (SOS) 199
+1 Wardens of the Cycle (FDN) 125
+1 Stoic Grove-Guide (ECL) 243
+1 Dawnhand Eulogist (ECL) 99
+1 Gloom Ripper (ECL) 102
+1 Creakwood Safewright (ECL) 96
+1 Scarblade's Malice (ECL) 119
+1 Melancholic Poet (SOS) 90
+1 Dawn's Light Archer (ECL) 174
+1 Emil, Vastlands Roamer (SOS) 146
+1 Safewright Cavalry (ECL) 191
+1 Lathril, Blade of the Elves (FDN) 242
+1 High Perfect Morcant (ECL) 229
+1 Imperious Perfect (FDN) 719
+1 Elvish Archdruid (FDN) 219
+1 Widow's Bite (MSH) 122
+1 Pain 101 (TMT) 69
+1 Arnyn, Deathbloom Botanist (SOS) 74
+1 Ninja of the Hand (MSH) 108
+1 Vampire Nighthawk (FDN) 186
+1 South Wind Avatar (TMT) 78
+1 Venom, Evil Unleashed (SPM) 71
+1 Shredder, Unrelenting (TMT) 74
+1 Gran Pulse Ochu (FIN) 189
+1 Serpent Specialist (MSH) 186
+1 Sultai Devotee (TDM) 160
+1 Putrid Pals (TMT) 165
+1 Witherbloom, the Balancer (SOS) 245
+
+# Lands
+6 Swamp (MSH) 292
+5 Forest (MSH) 296
+1 Derelict Attic // Widow's Walk (DSK) 93
+1 Evendo, Waking Haven (EOE) 253
+1 Foggy Bottom Swamp (TLA) 269
+1 Illegitimate Business (TMT) 186
+1 Subterranean Cavern (MSH) 273
+1 Golgari Guildgate (FDN) 689
+4 Jungle Hollow (FDN) 263
+1 Temple of Malady (FDN) 700
+1 Adventurer's Inn (FIN) 271
+1 Opulent Palace (TDM) 264
+1 Evolving Wilds (ECL) 264
