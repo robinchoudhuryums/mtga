@@ -1,12 +1,16 @@
 #: name: Pox
 #: format: Standard
 #: colors: BG
-#: archetype: Golgari (B/G) poison (Fynn + deathtouch) x Elf tribal hybrid — WIP brew.
-#: notes: Started around the poison keyword (Fynn, the Fangbearer + a deathtouch shell
-#: notes: turns combat damage into poison counters) and grew an Elf-tribal engine
-#: notes: (Lathril / Imperious Perfect / Elvish Archdruid / Dwynen's Elite). Currently a
-#: notes: 67-card brew (over the 60 minimum) — needs trimming to a tight 60. Ingested
-#: notes: as-is for analysis.
+#: tier: C — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; coherent aggressive plan on a low curve with two synergistic kills (Elf drain/anthem + poison), but thin interaction (3), singleton-inconsistent, and its best engine (Lathril / Elvish Archdruid / Imperious Perfect) is still UNOWNED. B-potential once those 4 crafts are in and interaction firms up.
+#: archetype: Golgari (B/G) poison (Fynn + deathtouch) x Elf tribal go-wide hybrid.
+#: notes: Two reinforcing plans: go-wide Elves (Lathril/Imperious Perfect/Elvish Archdruid
+#: notes: engine — CRAFT targets — + Dwynen's Elite/Elfsworn Giant tokens, Druid ramp) AND a
+#: notes: Fynn deathtouch-poison kill (~14 deathtouchers incl. flying Vampire Nighthawk; The
+#: notes: Serpent Society is a 2nd poison payoff + deathtouch sac-engine). Bridge: deathtouch
+#: notes: grants (Widow's Bite, Scarblade's Malice) turn go-wide bodies into poison carriers.
+#: notes: Trimmed 67->60 (aspirational build; keeps the 4 Elf-engine crafts — see wishlist,
+#: notes: Target 31). Sultai Devotee casts {1}{G} (U is ability-only, not a splash). 22 lands
+#: notes: + ~5 ramp is slightly lean — bump to 23 by cutting a marginal body if it flounders.
 
 # Nonland
 1 The Serpent Society (MSH) 226
@@ -28,18 +32,13 @@
 1 Stoic Grove-Guide (ECL) 243
 1 Dawnhand Eulogist (ECL) 99
 1 Gloom Ripper (ECL) 102
-1 Creakwood Safewright (ECL) 96
 1 Scarblade's Malice (ECL) 119
 1 Melancholic Poet (SOS) 90
-1 Dawn's Light Archer (ECL) 174
-1 Emil, Vastlands Roamer (SOS) 146
-1 Safewright Cavalry (ECL) 191
 1 Lathril, Blade of the Elves (FDN) 242
 1 High Perfect Morcant (ECL) 229
 1 Imperious Perfect (FDN) 719
 1 Elvish Archdruid (FDN) 219
 1 Widow's Bite (MSH) 122
-1 Pain 101 (TMT) 69
 1 Arnyn, Deathbloom Botanist (SOS) 74
 1 Ninja of the Hand (MSH) 108
 1 Vampire Nighthawk (FDN) 186
@@ -52,10 +51,11 @@
 1 Putrid Pals (TMT) 165
 1 Witherbloom, the Balancer (SOS) 245
 
-# Lands
+1 Derelict Attic // Widow's Walk (DSK) 93
+
+# Lands (22)
 6 Swamp (MSH) 292
 5 Forest (MSH) 296
-1 Derelict Attic // Widow's Walk (DSK) 93
 1 Evendo, Waking Haven (EOE) 253
 1 Foggy Bottom Swamp (TLA) 269
 1 Illegitimate Business (TMT) 186
@@ -64,5 +64,3 @@
 4 Jungle Hollow (FDN) 263
 1 Temple of Malady (FDN) 700
 1 Adventurer's Inn (FIN) 271
-1 Opulent Palace (TDM) 264
-1 Evolving Wilds (ECL) 264
