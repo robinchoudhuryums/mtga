@@ -264,6 +264,42 @@ surviving candidates.
 
 ---
 
+## F12 — Tier robustness (ground + verify the competitive tier)
+
+**Why.** The `#: tier:` letter drives a lot of downstream judgment (audit sort,
+dashboard, which decks get tuned, how a swap is weighed), yet it was the one
+most-trusted signal with **no verifier** — free text nothing checks, graded from
+prose rationales rather than a rubric, and silently stale after a tune. The risk
+the user named: "so many decisions are made according to your evaluation of decks
+and the tiering system."
+
+**Files.** `CLAUDE.md` (a documented tier **rubric**); `scripts/deck.py` (`tier_band`
+/ `tier_consistency` / `tier_consistency_issues` + a `tier <id>` subcommand);
+`scripts/check_all.py` (soft, non-gating roster warning); `README.md`.
+
+**Changes.**
+1. **Rubric (A).** Define S/A/B/C/D as bands over the measurable quality vector
+   (`deck_quality_vector`) — interaction + card-advantage (resilience axis),
+   castability, curve, theme density — with the intangibles (bombs, protection,
+   proven closing speed, meta) moving a deck *within* a band. Tier rates the LIST's
+   power, **independent of ownership** (build-state is tracked by `check`/`audit`);
+   never auto-assigned.
+2. **Guard (B).** `tier_band(vec)` → the tier FLOOR the metrics support (blind to
+   bombs/meta, so it under-rates by design). `deck.py tier <id>` shows claimed-vs-
+   floor and flags a **mismatch** when the letter is ≥2 bands above the floor
+   (indefensible/stale) or possibly under-graded (claimed below the under-rating
+   floor). A one-band-over letter is fine (intangibles credit). Never writes the
+   letter.
+3. **Roster check (C).** `tier_consistency_issues()` folds into `check_all` as a
+   soft, non-gating warning, so an inflated/stale tier can't hide. The
+   `/apply-changes` skill runs `tier` after an edit so a tune re-grounds the letter.
+
+**Acceptance.** The guard is quiet across a well-tiered roster (0 false positives),
+fires when a letter is set ≥2 bands above its metrics floor, treats an aspirational
+unbuilt list on its power (not its ownership), and `check_all` stays green (soft
+only). *(Implemented and calibrated against the live 44-deck roster: 0 mismatches
+today; fires on a simulated inflation.)*
+
 ## Suggested implementation sequence
 
 Phased, so each wave builds on stable primitives and can be validated before the

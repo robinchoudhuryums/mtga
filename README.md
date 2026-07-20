@@ -292,6 +292,7 @@ python3 scripts/deck.py suggest 1a --unowned --full  # picks WITH full text + ke
 python3 scripts/deck.py suggest-homes "Crib Swap"    # which decks a card fits, with a fit-strength label
 python3 scripts/deck.py preflight 1a         # one-call verify: legal + owned + castable + integrity
 python3 scripts/deck.py quality 1a --json    # deck-quality vector; --vs FILE diffs a before-snapshot
+python3 scripts/deck.py tier 1a              # claimed #: tier: vs the tier its metrics support
 ```
 
 `audit` is the **roster triage** for when you don't want to full-tune all your
@@ -428,6 +429,17 @@ snapshots it before a change and `--vs FILE` diffs after, flagging **regressions
 curve got heavier) so a cut/swap that *worsens* the deck self-catches. It's a soft
 guard — intentional trades are fine — so it warns rather than blocking unless
 `--strict`; `--add NAME` warns if a proposed add is only a tangential fit.
+
+`tier <id>` keeps the competitive **`#: tier:` letter honest**. It's a human
+judgment (never auto-assigned), but it should be *defensible* against the deck's
+metrics — so `tier` shows the claimed letter next to the **tier floor** the
+measurable quality vector supports (interaction + card-advantage, castability), and
+flags a **mismatch** when the letter sits ≥2 bands above that floor (inflated or
+stale) or, conversely, when a deck looks **under-graded**. The floor is blind to
+raw card power / bombs / meta, so it deliberately under-rates — a letter one band
+above it is fine (that band credits the intangibles); two bands is the red flag. A
+roster-wide pass is a **soft, non-gating** `check_all` warning, so an inflated or
+stale tier can't hide. See the tier **rubric** in [`CLAUDE.md`](CLAUDE.md).
 
 Decks live under `decks/` as one folder per core deck, with variations as sibling
 files (`deck.txt` → id `1`, `1a-*.txt` → id `1a`). Basics are treated as
@@ -618,10 +630,13 @@ invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
 derived files present, decks parse) plus a **ranking-model sanity check**
 (`check_rankings.py`, above), and exits non-zero on any hard break. It also emits
 **soft warnings** (never gating): wishlist target drift (a card whose target deck
-can no longer cast it) and **new unindexed card mechanics** — `check_keywords.py`
+can no longer cast it); **new unindexed card mechanics** — `check_keywords.py`
 flags a keyword on an owned card that isn't in the synergy map yet (a new set's
-mechanic), so tags never silently miss it. A SessionStart hook runs the gate
-(quiet) so drift surfaces immediately.
+mechanic), so tags never silently miss it; and **tier mismatch** — a deck whose
+claimed `#: tier:` sits ≥2 bands above the tier its measurable quality vector
+supports (an inflated or stale letter), so the most-trusted signal in the roster
+can't drift unchecked. A SessionStart hook runs the gate (quiet) so drift surfaces
+immediately.
 
 Claude Code slash commands live in `.claude/commands/`:
 

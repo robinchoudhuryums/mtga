@@ -46,6 +46,46 @@ docs. This file is the source of truth for the workflow commands in
   both Knight's Edge and Avengers; Wan Shi Tong in both Bloodbending and Drawn
   Conclusions) rather than asking the user to choose a single home.
 
+## Competitive Tiering (the rubric)
+
+The `#: tier:` letter drives a lot of downstream judgment (audit sort, dashboard
+pills, which decks get tuned, how I weigh a swap), so it must be **defensible, not
+vibes**. Grade against this rubric — bands over the *measurable* quality vector
+(`deck.py quality` / `deck_quality_vector`: interaction · card-advantage ·
+castability · curve · central-theme density), with the intangibles moving a deck
+*within* a band.
+
+- **Tier rates the LIST's competitive power, not whether you own it.** Build-state
+  is tracked separately (`check`/`audit`); an aspirational unbuilt list is graded
+  on its merits. **Never auto-write a tier letter** — it's a human competitive
+  judgment (design constraint).
+- **The measurable FLOOR** (`deck.py tier <id>` → "metrics floor", via
+  `tier_band`): interaction + card-advantage = the resilience axis. Roughly:
+  **A-floor** interaction ≥5 and (interaction+card-adv) ≥7; **B-floor** interaction
+  ≥3 and sum ≥4; **C-floor** sum ≥2; **D** below that; any uncastable stray caps at
+  C. The floor is blind to raw card power / bombs / meta (an idf+role model can't
+  see those), so it **under-rates by design.**
+- **The bands (what the letter means):**
+  - **S** — measurably A-floor AND a human call that it's top-meta capable: real
+    bombs, a protection/interaction suite, proven to close fast. Rare.
+  - **A** — A-floor (strong interaction + card advantage), coherent engine, tight
+    curve, at most one clear weakness.
+  - **B** — B-floor (moderate interaction) OR a single real gap (e.g. thin card
+    advantage / reach), coherent but capped.
+  - **C** — a hard cap: near-zero interaction, heavy singleton variance, or thin
+    themes / castability strays.
+  - **D** — incoherent, illegal, or no theme spine.
+  A human letter **one band above the floor is fine** — that band credits the
+  intangibles the metrics can't see. **Two-or-more bands above is indefensible or
+  stale**, and that's the only thing the guard flags.
+- **The guard** — `deck.py tier <id>` shows claimed-vs-floor and flags a mismatch
+  (≥2 bands over) or a possibly-under-graded deck (claimed *below* the under-rating
+  floor). A roster pass is a **soft, non-gating** `check_all` warning, so an
+  inflated/stale letter can't hide. It never assigns — it says "re-grade this, or
+  justify the bombs/meta in the `#: tier:` rationale." **Run it after any deck edit**
+  (the `/apply-changes` skill does) so a tune that moves the metrics re-grounds the
+  letter. The floor makes the *floor* bulletproof; S-vs-A still needs your judgment.
+
 ## Common Gotchas
 
 - **Inspect one card with `card.py <name>`, never a truncated slice.** `scripts/card.py
@@ -360,8 +400,10 @@ after a retune — via `wishlist.py --audit-targets`; and **new unindexed mechan
 — `check_keywords.py` flags a keyword on an owned card that isn't in
 `tag_synergies.py`'s map yet (a new set's mechanic), baselined in
 `keyword_baseline.txt` so it stays quiet until something genuinely new appears
-(`check_keywords.py --update-baseline` to acknowledge one). Soft warnings never
-fail the build.)
+(`check_keywords.py --update-baseline` to acknowledge one); and **tier mismatch**
+— `deck.py tier_consistency_issues()` flags a deck whose claimed `#: tier:` sits ≥2
+bands above the tier its measurable quality vector supports (an inflated/stale
+letter — see the Competitive Tiering rubric). Soft warnings never fail the build.)
 
 **Health Dimensions:**
 - Data Integrity — CSV structure, no drift between library and derived files

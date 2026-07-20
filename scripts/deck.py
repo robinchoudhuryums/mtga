@@ -2678,6 +2678,113 @@ def cmd_quality(args):
     return 0
 
 
+# Competitive-tier robustness (F12). The tier LETTER is a human competitive
+# judgment and is NEVER auto-assigned — but it should be DEFENSIBLE against the
+# deck's measurable quality vector. `tier_band` maps that vector to the tier FLOOR
+# the metrics alone support; it is deliberately blind to raw card power / bombs /
+# meta positioning (an idf + role model can't see those), so it systematically
+# UNDER-rates. A human letter one band above the floor is fine — that band credits
+# the intangibles. A letter TWO-or-more bands above the floor is indefensible or
+# stale, and that's the only thing the guard flags.
+TIER_RANK = {"S": 5, "A": 4, "B": 3, "C": 2, "D": 1}
+
+
+def tier_band(vec):
+    """The tier FLOOR (S/A/B/C/D) a deck's measurable quality vector supports.
+    Metrics-only and blind to bombs/meta, so it under-rates by design — used to flag
+    a claimed tier sitting ≥2 bands above it, never to assign a tier.
+
+    It rates the LIST's competitive power independent of whether the cards are owned
+    — tier is a power judgment, and build-state (ownership) is tracked separately by
+    `check`/`audit`, so an aspirational unbuilt list is graded on its merits. A
+    castability stray IS a list flaw (a dead card), so it caps the floor."""
+    if vec["uncastable"] > 0:
+        return "C"                        # castability strays cap the floor
+    inter, ca = vec["interaction"], vec["card_advantage"]
+    resil = inter + ca                    # interaction + card advantage = grind / resilience
+    if inter >= 5 and resil >= 7:
+        return "A"                        # measurable ceiling; S is a human call on top
+    if inter >= 3 and resil >= 4:
+        return "B"
+    if resil >= 2:
+        return "C"
+    return "D"
+
+
+def tier_consistency(d):
+    """(claimed, implied, mismatch, msg) for a deck's claimed tier vs its metrics
+    floor. `mismatch` is True only when a claimed tier sits ≥2 bands ABOVE the floor
+    (indefensible / stale) — a soft signal to re-grade, never an auto-assignment.
+    An untiered deck returns claimed='' and mismatch False."""
+    meta, _cards = parse_deck_file(d["path"])
+    claimed = _deck_tier(meta)
+    vec = deck_quality_vector(d)
+    implied = tier_band(vec)
+    if not claimed:
+        return "", implied, False, "untiered"
+    gap = TIER_RANK.get(claimed, 0) - TIER_RANK.get(implied, 0)
+    if gap >= 2:
+        why = []
+        if vec["uncastable"]:
+            why.append(f"{vec['uncastable']} uncastable")
+        why.append(f"interaction {vec['interaction']}, card-adv {vec['card_advantage']}")
+        return claimed, implied, True, (
+            f"tier {claimed} sits {gap} bands above the metrics floor (~{implied}): "
+            + "; ".join(why))
+    return claimed, implied, False, f"tier {claimed}, metrics floor ~{implied}"
+
+
+def tier_consistency_issues():
+    """Roster-wide (id, claimed, implied, msg) for decks whose claimed tier is
+    indefensibly high vs its metrics — folded into check_all as a soft warning."""
+    out = []
+    for d in discover_decks():
+        claimed, implied, mismatch, msg = tier_consistency(d)
+        if mismatch:
+            out.append((d["id"], claimed, implied, msg))
+    return out
+
+
+def cmd_tier(args):
+    """Tier robustness (F12): show a deck's claimed tier next to the tier FLOOR its
+    measurable quality vector supports, and flag an indefensible/stale letter. It
+    NEVER writes the tier — grading is a human judgment that credits bombs/meta the
+    metrics can't see; this only surfaces a letter ≥2 bands above what the numbers
+    support (or, conversely, a deck the metrics say is under-graded)."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    meta, _cards = parse_deck_file(d["path"])
+    claimed = _deck_tier(meta)
+    vec = deck_quality_vector(d)
+    implied = tier_band(vec)
+    print(f"Tier — deck {d['id']}: {d['name'] or d['path']}")
+    print(f"  claimed tier  : {claimed or '(untiered)'}")
+    print(f"  metrics floor : {implied}   (measurable-only — blind to bombs/meta, so it under-rates)")
+    print(f"  vector        : buildable {vec['buildable']} · uncastable {vec['uncastable']} · "
+          f"interaction {vec['interaction']} · card-adv {vec['card_advantage']} · "
+          f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
+    if not claimed:
+        print("\n  (untiered — add a `#: tier: X — rationale` header; see the tier rubric in CLAUDE.md)")
+        return 0
+    gap = TIER_RANK.get(claimed, 0) - TIER_RANK.get(implied, 0)
+    if gap >= 2:
+        print(f"\n⚠ TIER MISMATCH: {claimed} sits {gap} bands above the metrics floor ({implied}).")
+        print("  Either the letter is inflated/stale (re-grade from the CLAUDE.md rubric), or it")
+        print("  genuinely rests on bombs/meta the metrics can't see — state which in the")
+        print("  `#: tier:` rationale so the call is auditable.")
+        return 1 if getattr(args, "strict", False) else 0
+    if gap <= -1:
+        print(f"\n  ↑ possibly UNDER-graded: even the (under-rating) metrics floor is {implied}. "
+              "Consider re-grading up.")
+    elif gap == 1:
+        print(f"\n  ✓ defensible — {claimed} is one band above the floor (intangibles credit).")
+    else:
+        print(f"\n  ✓ consistent — {claimed} matches the metrics floor.")
+    return 0
+
+
 def cmd_preflight(args):
     """One-call verification for the skills (F05): construction legality + owned/
     buildable + castability + repo integrity, as a structured PASS/FAIL block.
@@ -2790,6 +2897,9 @@ def main():
     p.add_argument("--vs", metavar="FILE", help="diff against a saved --json snapshot and flag regressions")
     p.add_argument("--add", metavar="NAME", help="warn if adding NAME would be a merely-tangential fit")
     p.add_argument("--strict", action="store_true", help="exit non-zero on any regression/weak-add (default: warn only)")
+    p = sub.add_parser("tier", help="check a deck's claimed tier against its measurable quality floor")
+    p.add_argument("id")
+    p.add_argument("--strict", action="store_true", help="exit non-zero on a tier mismatch (default: warn only)")
     p = sub.add_parser("cuts", help="rank the deck's weakest-fit cards as cut candidates")
     p.add_argument("id")
     p.add_argument("--limit", type=int, default=8,
@@ -2825,7 +2935,7 @@ def main():
         "legal": cmd_legal, "cuts": cmd_cuts,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
         "verify": cmd_verify, "text": cmd_text, "suggest-homes": cmd_suggest_homes,
-        "preflight": cmd_preflight, "quality": cmd_quality,
+        "preflight": cmd_preflight, "quality": cmd_quality, "tier": cmd_tier,
     }[args.cmd](args)
 
 

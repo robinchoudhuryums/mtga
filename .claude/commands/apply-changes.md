@@ -76,10 +76,13 @@ For each `−cut / +add`:
      curve / central-theme changes; state "net improvement" or name each
      regression and why it's an acceptable trade.
    - **Wishlist / flex changes:** rows added or pruned, flex lines auto-retired.
-   - **Tier:** show the deck's current `#: tier:` and, if the change plausibly
-     moves it, **prompt the user to re-grade** (e.g. "this likely takes it C→B —
-     confirm and I'll update the header"). **Never auto-write a tier letter** —
-     tier is a competitive judgment (design constraint).
+   - **Tier:** run `python3 scripts/deck.py tier <id>` — it shows the claimed
+     `#: tier:` against the tier its post-change metrics now support. If the letter
+     no longer matches (the guard flags a mismatch, or the change plausibly moves
+     it), **prompt the user to re-grade** against the CLAUDE.md rubric (e.g. "the
+     metrics floor is now B — confirm and I'll update the header"). **Never
+     auto-write a tier letter** — tier is a competitive judgment (design
+     constraint).
    - **Verification:** the preflight verdict.
    - **Arena block:** paste `python3 scripts/deck.py arena <id>` — the clean
      `Deck`-prefixed import block the user pastes into Arena on mobile (the raw
