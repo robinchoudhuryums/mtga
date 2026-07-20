@@ -1,6 +1,6 @@
 #: name: Enchantress
 #: format: Standard
-#: tier: B — Naya enchantments (creative-first); slow build-arounds but real interaction (6, undercounted as 4 before the classifier fix). Graded on the LIST ignoring ownership (legal 60): B-floor, capped there by thin card advantage (0) and a slow curve. Aspirational full list; the competitive variant is 29a.
+#: tier: A — Naya enchantments (creative-first); slow build-arounds with real interaction (6) and, after +Summon: Bahamut (Enchantment-Saga: destroy nonland ×2 + draw 2 + Mega Flare) over Pacifism, card advantage 0→1 → A-floor. Graded on the LIST ignoring ownership (legal 60). Re-graded B→A: the deck also runs an uncounted draw engine (Garruk's Uprising — draw on each power-4+ creature), so A is airtight now, not just floor-consistent. Aspirational full list; the competitive variant is 29a.
 #: colors: GWR
 #: protect: Yuna, Hope of Spira; Terra, Magical Adept; Political Triumph; Savior of the Sleeping
 #: archetype: Naya (G/W/R) enchantments-matter — Yuna anchors an enchantment-recursion engine
