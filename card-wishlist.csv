@@ -12,11 +12,6 @@ Whenever Dragonhawk enters or attacks, exile the top X cards of your library, wh
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
 When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)",5.5
-"Kastral, the Windcrested",Legendary Creature — Bird Scout,"Flying
-Whenever one or more Birds you control deal combat damage to a player, choose one —
-• You may put a Bird creature card from your hand or graveyard onto the battlefield with a finality counter on it.
-• Put a +1/+1 counter on each Bird you control.
-• Draw a card.",W/U,Bird; Scout; counters; reanimator; graveyard; card draw; flying; evasion,BLB,221,Rare,19,Bird Brain (Bant Tokens) craft target,7.0
 Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,6.0
 Overlord of the Balemurk,Enchantment Creature — Avatar Horror,"Impending 5—{1}{B} (If you cast this spell for its impending cost, it enters with five time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
 Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.",B,Avatar; Horror; graveyard; mill; impending,DSK,113,Mythic,5; 11,"Impending {1}{B} graveyard value-bomb for Coming of Galactus (5): mills + recurs a creature — a real engine | Also deck 11 (Villainous, mono-B): the recurring, no-strings card-advantage + reanimation engine it lacks — mill 4 + recur a creature on enter AND attack.",8.5
@@ -31,7 +26,7 @@ Creatures you control have ""{T}: Add one mana of any color.""
 When Enduring Vitality dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",G,Elk; Glimmer; mana; vigilance; combat,DSK,176,Rare,29,,6.5
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.5
 Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
-Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19a,,5.0
+Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19,,5.0
 "Ramos, Dragon Engine",Legendary Artifact Creature — Dragon,"Flying
 Whenever you cast a spell, put a +1/+1 counter on Ramos for each of that spell's colors.
 Remove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activate only once each turn.",W/U/B/R/G,Dragon; counters; flying; evasion,FDN,678,Mythic,17,5-color mana-engine/ramp payoff — the Spectrum rainbow home,6.5
@@ -50,8 +45,6 @@ Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, if it was kicked, return target creature card from your graveyard to the battlefield.",B,Vampire; Cleric; reanimator; graveyard; lifegain; etb; lifelink; menace; evasion; kicker; value,FDN,611,Rare,11,,6.0
 Rite of Replication,Sorcery,"Kicker {5} (You may pay an additional {5} as you cast this spell.)
 Create a token that's a copy of target creature. If this spell was kicked, create five of those tokens instead.",U,tokens; kicker; value,FDN,711,Rare,25,Copy engine for Spellstorm (25): clone your best creature (kicker = 5 copies) — payoff redundancy,6
-"Choco, Seeker of Paradise",Legendary Creature — Bird,"Whenever one or more Birds you control attack, look at that many cards from the top of your library. You may put one of them into your hand. Then put any number of land cards from among them onto the battlefield tapped and the rest into your graveyard.
-Landfall — Whenever a land you control enters, Choco gets +1/+0 until end of turn.",W/U/G,Bird; graveyard; landfall; pump; lands; ramp,FIN,215,Rare,19,Bird Brain (Bant Tokens) craft target,6.0
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +2/+2 for each artifact you control and is an Artificer in addition to its other types.
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell",4.5
@@ -79,10 +72,6 @@ When this creature enters, choose one —
 Palani's Hatcher,Creature — Dinosaur,"Other Dinosaurs you control have haste.
 When this creature enters, create two 0/1 green Dinosaur Egg creature tokens.
 At the beginning of combat on your turn, if you control one or more Eggs, sacrifice an Egg, then create a 3/3 green Dinosaur creature token.",R/G,Dinosaur; sacrifice; tokens; etb,LCI,237,Rare,28,,6.0
-Restless Anchorage,Land,"This land enters tapped.
-{T}: Add {W} or {U}.
-{1}{W}{U}: Until end of turn, this land becomes a 2/3 white and blue Bird creature with flying. It's still a land.
-Whenever this land attacks, create a Map token.",W/U,tokens; mana,LCI,280,Rare,19,Bird Brain (Bant Tokens) craft target,6.0
 Rampaging Ceratops,Creature — Dinosaur,This creature can't be blocked except by three or more creatures.,R,Dinosaur,LCI,162,Uncommon,28,,4.5
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0
 "Krenko, Baron of Tin Street",Legendary Creature — Goblin,"Haste
@@ -201,7 +190,7 @@ Crew 2",B,Vehicle; removal; etb; vehicle; crew; vehicles; trample; evasion,TLA,9
 The Lion-Turtle,Legendary Creature — Elder Cat Turtle,"Vigilance, reach
 When The Lion-Turtle enters, you gain 3 life.
 The Lion-Turtle can't attack or block unless there are three or more Lesson cards in your graveyard.
-{T}: Add one mana of any color.",U/G,Elder; Cat; Turtle; graveyard; lifegain; mana; etb; reach; defense; vigilance; combat,TLA,232,Rare,19a,"best 19a (Bird Brain — Bant Tokens); also 17,4",4.5
+{T}: Add one mana of any color.",U/G,Elder; Cat; Turtle; graveyard; lifegain; mana; etb; reach; defense; vigilance; combat,TLA,232,Rare,concept: Turtle,"best 19a (Bird Brain — Bant Tokens); also 17,4",4.5
 "Toph, the First Metalbender",Legendary Creature — Human Warrior Ally,"Nontoken artifacts you control are lands in addition to their other types. (They don't gain the ability to {T} for mana.)
 At the beginning of your end step, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",W/R/G,Human; Warrior; Ally; counters; blink; earthbend; bending,TLA,247,Rare,13,,6.0
 "Zhao, the Moon Slayer",Legendary Creature — Human Soldier,"Menace
@@ -229,7 +218,7 @@ Disappear — At the beginning of your end step, if a permanent left the battlef
 "Madame Null, Power Broker",Legendary Creature — Demon Advisor,"Deathtouch
 Whenever another creature you control enters, you may pay life equal to its power. If you do, put that many +1/+1 counters on it.",B,Demon; Advisor; counters; deathtouch; combat; removal,TMT,66,Rare,20b,"broadly useful — best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 11,8,21",5.5
 Michelangelo's Technique,Sorcery,"Sneak {3}{G} (You may cast this spell for {3}{G} if you also return an unblocked attacker you control to hand during the declare blockers step.)
-Look at the top eight cards of your library. Put up to two creature cards with total mana value 6 or less from among them onto the battlefield and the rest on the bottom of your library in a random order.",G,selection; sneak; tempo; cost-reduction,TMT,122,Rare,19a,"best 19a (Bird Brain — Bant Tokens); also 13,5,17",4.5
+Look at the top eight cards of your library. Put up to two creature cards with total mana value 6 or less from among them onto the battlefield and the rest on the bottom of your library in a random order.",G,selection; sneak; tempo; cost-reduction,TMT,122,Rare,concept: Turtle,"best 19a (Bird Brain — Bant Tokens); also 13,5,17",4.5
 "Mikey & Don, Party Planners",Legendary Creature — Mutant Ninja Turtle,"Ward {2}
 You may look at the top card of your library any time.
 You may play lands and cast Mutant, Ninja, or Turtle spells from the top of your library. If you cast a creature spell this way, that creature enters with an additional +1/+1 counter on it.",U/G,Mutant; Ninja; Turtle; counters; selection; ward; protection,TMT,157,Rare,4,"best 4 (Quantum Realm); also 19a,17",5.5
@@ -256,11 +245,11 @@ Search your library for a card, put that card into your hand, then shuffle.",B,s
 "Splinter, Radical Rat",Legendary Creature — Mutant Ninja Rat,"If a triggered ability of a Ninja creature you control triggers, that ability triggers an additional time.
 {1}{U}: Target Ninja can't be blocked this turn.",W/U/B,Mutant; Ninja; Rat,TMT,169,Rare,concept,WUB TMNT legends/tokens — new-deck focal point,5.5
 The Ooze,Legendary Artifact,"Whenever a creature you control with a +1/+1 counter on it leaves the battlefield, create a Mutagen token for each +1/+1 counter on it. (A Mutagen token is an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")
-{T}: Exile target card from a graveyard. Create a Mutagen token.",Colorless,counters; reanimator; graveyard; sacrifice; tokens; removal,TMT,177,Rare,4,counters payoff: +1/+1-counter creature dies -> Mutagen counter-tokens — fits Quantum Realm,4.5
+{T}: Exile target card from a graveyard. Create a Mutagen token.",Colorless,counters; reanimator; graveyard; sacrifice; tokens; removal,TMT,177,Rare,general,counters payoff: +1/+1-counter creature dies -> Mutagen counter-tokens — fits Quantum Realm,4.5
 Transdimensional Bovine,Creature — Ox Avatar,"Flying
-{T}: Add two mana of any one color.",G,Ox; Avatar; mana; flying; evasion,TMT,134,Rare,19a,"best 19a (Bird Brain — Bant Tokens); also 17,19b,20b",5.0
+{T}: Add two mana of any one color.",G,Ox; Avatar; mana; flying; evasion,TMT,134,Rare,17,"best 19a (Bird Brain — Bant Tokens); also 17,19b,20b",5.0
 Turtle Power!,Enchantment,"Flash
-Turtles you control get +2/+2.",G,pump; flash; tempo,TMT,135,Rare,19a,"best 19a (Bird Brain — Bant Tokens); also 19b,17,9",4.0
+Turtles you control get +2/+2.",G,pump; flash; tempo,TMT,135,Rare,concept: Turtle,"best 19a (Bird Brain — Bant Tokens); also 19b,17,9",4.0
 Turtle Van,Artifact — Vehicle,"Whenever this Vehicle attacks, put a +1/+1 counter on target creature that crewed it this turn. Then if that creature is a Mutant, Ninja, or Turtle, double the number of +1/+1 counters on it.
 Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,Vehicle; counters; vehicle; crew; vehicles; double,TMT,181,Rare,concept,"TMNT payoff: crew -> counters, doubled for Mutant/Ninja/Turtle — a TMNT-tribal build-around",4.5
 Turtles Forever,Instant,"Search your library and/or outside the game for exactly four legendary creature cards you own with different names, then reveal those cards. An opponent chooses two of them. Put the chosen cards into your hand and shuffle the rest into your library.",W,,TMT,27,Rare,general,legendary toolbox — needs a legend-dense white shell; niche build-around,4.0

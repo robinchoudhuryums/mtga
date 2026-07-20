@@ -3438,3 +3438,14 @@ Elvish Archdruid,Creature — Elf Druid,"Other Elf creatures you control get +1/
 {T}: Add {G} for each Elf you control.",G,Elf; Druid; mana; pump,FDN,219,1
 High Perfect Morcant,Legendary Creature — Elf Noble,"Whenever High Perfect Morcant or another Elf you control enters, each opponent blights 1. (They each put a -1/-1 counter on a creature they control.)
 Tap three untapped Elves you control: Proliferate. Activate only as a sorcery. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",B/G,Elf; Noble; counters; blight; graveyard; proliferate,ECL,229,1
+"Choco, Seeker of Paradise",Legendary Creature — Bird,"Whenever one or more Birds you control attack, look at that many cards from the top of your library. You may put one of them into your hand. Then put any number of land cards from among them onto the battlefield tapped and the rest into your graveyard.
+Landfall — Whenever a land you control enters, Choco gets +1/+0 until end of turn.",W/U/G,Bird; graveyard; landfall; pump; lands; ramp,FIN,215,1
+"Kastral, the Windcrested",Legendary Creature — Bird Scout,"Flying
+Whenever one or more Birds you control deal combat damage to a player, choose one —
+• You may put a Bird creature card from your hand or graveyard onto the battlefield with a finality counter on it.
+• Put a +1/+1 counter on each Bird you control.
+• Draw a card.",W/U,Bird; Scout; counters; reanimator; graveyard; card draw; flying; evasion,BLB,221,1
+Restless Anchorage,Land,"This land enters tapped.
+{T}: Add {W} or {U}.
+{1}{W}{U}: Until end of turn, this land becomes a 2/3 white and blue Bird creature with flying. It's still a land.
+Whenever this land attacks, create a Map token.",W/U,tokens; mana,LCI,280,1
