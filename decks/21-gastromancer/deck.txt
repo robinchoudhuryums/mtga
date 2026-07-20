@@ -1,6 +1,6 @@
 #: name: Gastromancer
 #: format: Standard
-#: tier: B — Abzan food-aristocrats; dense interaction (10) + low curve, capped by 3-color
+#: tier: A — Abzan (WBG) food-aristocrats; dense interaction (12) + low curve (2.81). Re-graded B→A after the mana fix: dropping the 1-card red splash (Ragost → variant 21a) collapsed a stretched 4-color base to a focused Abzan, so every land now serves the three real colors. A-floor on interaction; the residual is a still-thin black (19 pips / 12 sources) that the wishlist WBG verges finish. The intentional 4-color version is variant 21a.
 #: colors: WBG
 #: archetype: Abzan (W/B/G, light red) Food-sacrifice / artifact-aristocrats — Ragost + a deep sac-payoff web.
 #: notes: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats with a LIGHT red splash
