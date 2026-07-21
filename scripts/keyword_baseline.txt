@@ -1,0 +1,25 @@
+# Acknowledged-but-unindexed card keywords (mostly Universe-Beyond
+# flavor names). check_keywords.py flags only mechanics NOT here — a
+# new set's mechanic. Triage into tag_synergies, or re-run
+# `check_keywords.py --update-baseline` to acknowledge the current set.
+disappear
+double
+eerie
+enchant
+food
+foretell
+hexproof from
+increment
+infusion
+job select
+meld
+opus
+paradigm
+survival
+thundaga
+thundara
+thunder
+tiered
+transform
+treasure
+vivid

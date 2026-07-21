@@ -1,6 +1,6 @@
 #: name: Bird Brain
 #: format: Standard
-#: tier: D — Bant tokens — incomplete (10 cards to craft); ungradeable as-is
+#: tier: B — Bant (effectively GW go-wide + a trivial 3-pip U splash) Bird tribal / Chocobo-landfall tokens; fully built. Deep, coherent engine (16 Birds, 8 Bird payoffs, 20 total payoffs + 3 anthems) on a low aggressive curve with clean 2-color-effective mana. Promoted from C after the interaction package: +Crib Swap / +Stroke of Midnight / +Dazzling Denial / +Bushwhack took interaction 1→4 (exile / destroy-any-permanent / Bird-boosted counter / fight) so a sweeper or resolved bomb is no longer an auto-loss, and +The Legend of Kyoshi (over Squirrel Girl) restored a wipe-resilient refuel engine (draws = greatest creature power; later a land-animating mana sink), keeping card advantage from bottoming out. Held below A by singleton variance + a still-modest interaction/card-advantage count (no true bombs, no protection). Buildable now bar 2 more Gysahl Greens (Common).
 #: colors: GWU
 #: archetype: Bant (G/W/U) go-wide tokens — Chocobo landfall Birds + copy-army + flyers/anthems.
 #: notes: Promoted from variant 19a (Bant Tokens) to primary. Bant (GWU) go-wide:
@@ -26,9 +26,9 @@
 1 Mole Man, Moloid Master (MSH) 177
 1 Galactic Wayfarer (EOE) 185
 1 Glacier Godmaw (EOE) 188
-1 Season of Gathering (BLB) 192
-1 Rydia's Return (FIN) 198
-1 The Unbeatable Squirrel Girl (MSH) 193
+1 Crib Swap (ECL) 11
+1 Dazzling Denial (BLB) 45
+1 The Legend of Kyoshi (TLA) 186
 1 Michelangelo, Mutant BFF (TMT) 120
 1 Storm, Windrider (MSH) 230
 
@@ -42,7 +42,7 @@
 1 Dawnwing Marshal (FDN) 570
 1 Dazzling Angel (FDN) 9
 1 Stirring Hopesinger (SOS) 35
-1 Cat-Owl (TLA) 212
+1 Bushwhack (BRO) 174
 1 Momo, Friendly Flier (TLA) 29
 1 Sunbird Standard (LCI) 262
 1 Shrike Force (BLB) 31
@@ -51,7 +51,7 @@
 # Ramp / support / fun
 1 Studious First-Year (SOS) 162
 1 Earthbender Ascension (TLA) 175
-1 The Legend of Kyoshi (TLA) 186
+1 Stroke of Midnight (FDN) 148
 
 # Lands (Bant — 13 duals + 11 basics)
 1 Hallowed Fountain (ECL) 265
@@ -65,7 +65,7 @@
 1 Thornwood Falls (FDN) 269
 1 Meditation Pools (TLA) 272
 1 Restless Anchorage (LCI) 280
-1 Azorius Guildgate (FDN) 683
+1 Floodfarm Verge (DSK) 259
 1 Birnin Zana Plaza (MSH) 262
 5 Forest
 3 Plains
@@ -73,7 +73,7 @@
 
 # Flex — best owned fits found scouring the whole collection (comments; not part of the 60). See: deck.py flex 19
 # (The Legend of Kyoshi already swapped in over Rabaroo Troop; Earthbender Ascension stays.)
-#~ -Cat-Owl | +Spellbook Seeker | still a Bird flyer, but this one draws-2/discards-2 (card filtering) — feeds Eagle/Kastral/Jackdaw + Dazzling Denial. TRADE: near-lateral; loses Cat-Owl's untap utility, card-neutral not card-advantage
-#~ -Studious First-Year | +Dazzling Denial | on-flavor Bird counter that hardens with a Bird out. TRADE: reactive — dead when you're the aggressor with nothing to counter; loses a turn-1 body + banked ramp
+#~ note: applied — Bushwhack in for Cat-Owl.
+#~ note: applied — Dazzling Denial in for Rydia's Return.
 #~ -Momo, Friendly Flier | +Cloudblazer | flyer that gains 2 and draws 2. TRADE: 1-drop → 5-drop, loses Momo's flyer cost-reduction
 #~ note: all OWNED (0 wildcards). Bushwhack / Harsh Annotation / Run Over remain owned interaction options too.

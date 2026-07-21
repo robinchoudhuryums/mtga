@@ -1,6 +1,6 @@
 #: name: Enchantress
 #: format: Standard
-#: tier: C — Naya enchantments (creative-first); slow build-arounds, 4 interaction
+#: tier: A — Naya enchantments (creative-first); slow build-arounds with real interaction (6) and, after +Summon: Bahamut (Enchantment-Saga: destroy nonland ×2 + draw 2 + Mega Flare) over Pacifism, card advantage 0→1 → A-floor. Graded on the LIST ignoring ownership (legal 60). Re-graded B→A: the deck also runs an uncounted draw engine (Garruk's Uprising — draw on each power-4+ creature), so A is airtight now, not just floor-consistent. Aspirational full list; the competitive variant is 29a.
 #: colors: GWR
 #: protect: Yuna, Hope of Spira; Terra, Magical Adept; Political Triumph; Savior of the Sleeping
 #: archetype: Naya (G/W/R) enchantments-matter — Yuna anchors an enchantment-recursion engine
@@ -55,7 +55,7 @@
 1 Avatar Destiny (TLA) 165
 
 # Sorcery / utility
-1 Pacifism (ANB) 16
+1 Summon: Bahamut (FIN) 1
 1 The Cave of Two Lovers (TLA) 126
 
 # Lands (23 — Naya fixing: 11 owned duals + 12 basics)
@@ -64,10 +64,10 @@
 1 Hushwood Verge (DSK) 261
 1 Gathering Place (MSH) 266
 1 Birnin Zana Plaza (MSH) 262
-1 Rugged Highlands (FDN) 265
+1 Thornspire Verge (DSK) 270
 1 Gruul Guildgate (RNA) 250
 1 Omashu City (TLA) 275
-1 Wind-Scarred Crag (FDN) 271
+1 Sunbillow Verge (DFT) 264
 1 Temple of Triumph (FDN) 705
 1 Abraded Bluffs (OTJ) 251
 6 Forest

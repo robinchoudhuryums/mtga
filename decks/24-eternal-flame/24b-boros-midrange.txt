@@ -1,6 +1,6 @@
 #: name: Eternal Flame — Boros Midrange (Route B)
 #: format: Standard
-#: tier: B — Eternal Flame Boros midrange (Route B); grindy Treasure/ramp goodstuff, 8 interaction
+#: tier: A — Eternal Flame Boros midrange (Route B); grindy Treasure/ramp goodstuff with 8 interaction on a clean 2-color base. Re-graded B→A: measurable floor is A (strong interaction, coherent engine) and the primary 24 is already A — this route clears the same bar. Card advantage is lean (1), the one thing keeping it from a clear S-conversation.
 #: colors: WR
 #: based-on: deck.txt
 #: archetype: 24 variant — grindy Boros midrange goodstuff. Treasure/ramp (Brass's
@@ -59,7 +59,7 @@ Deck
 1 The Cave of Two Lovers (TLA) 126
 1 Fire Nation Palace (TLA) 268
 1 Kavaron, Memorial World (EOE) 255
-1 Abraded Bluffs (OTJ) 251
+1 Sunbillow Verge (DFT) 264
 1 Sun-Blessed Peak (TLA) 280
 1 Boros Guildgate (FDN) 684
 1 Temple of Triumph (FDN) 705

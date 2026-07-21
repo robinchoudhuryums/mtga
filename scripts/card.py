@@ -137,6 +137,16 @@ def main():
         print("  legality: (unknown — not in pool; verify before crafting)")
     if kw:
         print(f"  keywords: {kw}")
+    # Flag mechanics the synergy tagger doesn't index (a new set's keyword), so a
+    # card is never evaluated with a hidden/mis-tagged mechanic.
+    try:
+        import check_keywords as ck
+        unindexed = ck.unknown_for_card(kw)
+        if unindexed:
+            print(f"  ⚠ unindexed mechanic(s): {', '.join(unindexed)} "
+                  "(not in the synergy map — grade its effect from the text above)")
+    except Exception:
+        pass
 
     # FULL oracle text — never truncated (this is the whole point).
     print("\n  Oracle text:")

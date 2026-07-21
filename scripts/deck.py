@@ -730,16 +730,28 @@ _ROLE_PATTERNS = {
         r"destroy target (?:creature|permanent|nonland permanent|artifact or creature|"
         r"tapped creature|attacking creature|creature or planeswalker|creature with)",
         r"exile target (?:creature|permanent|nonland permanent|attacking|tapped)",
+        # "destroy/exile up to one/two target ..." — the fixed "target" patterns above
+        # miss the up-to-N wording (She-Hulk's power-up, Mutant Chain Reaction).
+        r"(?:destroy|exile) up to \w+ target (?:creature|permanent|nonland permanent|"
+        r"artifact|enchantment|planeswalker|artifact or|artifact, enchantment)",
         r"deals? \d+ damage to (?:target|any target|another target)",
         r"deals? \d+ damage to up to \w+ target",
-        r"fights? (?:target|another target)",
+        # any "fight" is removal (Novel Nunchaku "fights up to one target", Longstalk
+        # Brawl "fight each other") — the old pattern only caught "fights target".
+        r"\bfights?\b|creatures? fight",
         r"deals damage equal to (?:twice )?.{0,20}?power to target (?:creature|creature or planeswalker|attacking)",
-        r"target creature gets -\d",
+        # -N/-N or -X/-X shrink on a targeted creature (incl. "creature an opponent
+        # controls gets -X/-X" — Cloud of Darkness, Wick's Patrol).
+        r"target creature (?:an opponent controls )?gets -[0-9x]",
+        r"creature an opponent controls gets -[0-9x]",
         r"return target creature.{0,40}?(?:owner|their) hand",
         r"enchanted creature can't attack or block",
     ],
     "Sweeper": [r"destroy all", r"exile all", r"all creatures get -",
                 r"each (?:other )?creature (?:gets|deals|is|you don't control)",
+                # one-sided / opponent-only wraths ("creatures your opponents control
+                # get -2/-2" — Massacre Wurm) the "all creatures" pattern misses.
+                r"creatures (?:you don't control|your opponents control|target player controls) get -",
                 # scalable / conditional wipes the fixed patterns above miss
                 r"creature with mana value.{0,20}?or less.{0,40}?destroy",
                 r"destroy those creatures",
@@ -808,6 +820,62 @@ _CONTEXT_PATTERNS = {
     "improvise": [r"\bimprovise\b"],
 }
 _CONTEXT_COMPILED = {k: [re.compile(p) for p in v] for k, v in _CONTEXT_PATTERNS.items()}
+
+# Coverage self-audit (F15). The role classifier above is PRECISE (low false
+# positives) but inevitably misses phrasings, silently UNDER-counting — the recurring
+# failure only a hands-on read used to catch (a creature-ETB kill, an edict, a -1/-1,
+# a bounce, "exile up to one target"). These BROAD cues are the complement: high-
+# recall nets for "this text interacts / draws cards." When a broad cue fires but the
+# precise classifier tagged NO matching role, that's a likely under-read — flagged for
+# a human verify, never silently changing a count. Tuned to the classifier's intent:
+# single-card draw is a cantrip (deliberately not card advantage), and damage to a
+# PLAYER is burn/reach, not creature interaction — so both are excluded here.
+_INT_CUES = re.compile(
+    r"(?:destroy|exile) (?:target |up to \w+ target |all |each |those |that |another )?"
+    r"(?:creature|permanent|nonland permanent|artifact|enchantment|planeswalker|tapped|attacking)"
+    r"|counter (?:target|that spell|it unless)"
+    r"|deals? \d+ damage to (?:any target|target creature|each (?:other )?creature|up to \w+ target)"
+    r"|\bfights?\b"
+    r"|gets? -\d+/-[0-9x]+|gets? \-[0-9x]+/\-[0-9x]+"
+    r"|(?:each opponent|target opponent|target player|each player) sacrifices"
+    r"|return target (?:creature|permanent|nonland permanent)[^.]{0,40}?hand",
+    re.I)
+_CA_CUES = re.compile(
+    r"draws? (?:two|three|four|five|x|that many) cards?"
+    r"|draw cards? equal to|draw a card for each"
+    r"|\binvestigate\b",
+    re.I)
+
+
+def role_coverage_flags(cards, carddata):
+    """Cards whose oracle text likely holds a role the precise classifier MISSED — a
+    coverage self-audit so a silent under-count becomes an explicit 'read these.'
+    Returns (unclassified, under_read):
+      • unclassified — noncreature, nonland spells that matched NO functional role
+        (the classifier had nothing to say about them; read the text yourself),
+      • under_read   — (name, axis) where a broad interaction / card-advantage cue
+        fires but classify_roles tagged no matching role (a likely under-read).
+    Neither changes any count — both are review prompts (grade from full text via
+    card.py / deck.py text)."""
+    unclassified, under_read = [], []
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        cd = carddata.get(n.lower())
+        if not cd or "Land" in _primary_type(cd.get("type") or ""):
+            continue
+        text = cd.get("text") or ""
+        roles = set(classify_roles(text))
+        missed = []
+        if _INT_CUES.search(text) and not (roles & _INTERACTION_ROLES):
+            missed.append("interaction")
+        if _CA_CUES.search(text) and "Card advantage" not in roles:
+            missed.append("card advantage")
+        if missed:
+            under_read.append((n, "/".join(missed)))
+        elif not roles and "Creature" not in (cd.get("type") or ""):
+            unclassified.append(n)
+    return unclassified, under_read
 
 
 def classify_roles(text):
@@ -1017,25 +1085,30 @@ def cmd_stats(args):
     # Functional roles: what jobs the nonland spells actually do. Heuristic from
     # oracle text (see classify_roles) so the tune-deck health scorecard can
     # MEASURE interaction / card advantage / ramp instead of eyeballing it.
-    role_counts = {}
-    for q, n, s, c in cards:
-        if n.lower() in BASICS:
-            continue
-        d2 = carddata.get(n.lower())
-        if not d2 or "Land" in _primary_type(d2["type"]):
-            continue
-        for label in classify_roles(d2["text"]):
-            role_counts[label] = role_counts.get(label, 0) + q
-    if role_counts:
+    role_counts = role_tally(cards, carddata)
+    if any(v for k, v in role_counts.items() if k in ROLE_ORDER):
         print("\nFunctional roles (heuristic from card text; a card can fill several):")
         for label in ROLE_ORDER:
             cnt = role_counts.get(label, 0)
             if cnt:
                 print(f"  {label:20} {cnt:3}  {'#' * cnt}")
-        interaction = sum(role_counts.get(k, 0)
-                          for k in ("Removal (spot)", "Sweeper", "Counter"))
-        print(f"  {'interaction total':20} {interaction:3}  "
-              "(removal + sweeper + counter)")
+        # Once-per-card union (a modal removal+counter card counts once), matching the
+        # audit and quality/tier vectors — NOT the sum of the buckets above.
+        print(f"  {'interaction total':20} {role_counts['interaction']:3}  "
+              "(distinct removal/sweeper/counter cards)")
+
+    # Coverage self-audit (F15): the classifier is precise but misses phrasings, so a
+    # count can silently UNDER-read. Surface the cards whose text reads like a role it
+    # didn't tag, so the miss becomes an explicit "verify" instead of a silent gap.
+    unclassified, under_read = role_coverage_flags(cards, carddata)
+    if under_read:
+        print("\n⚠ Possible UNDER-COUNT — text reads like a role the classifier didn't tag;"
+              " verify from full text (card.py):")
+        for name, axis in under_read:
+            print(f"    {name}  → looks like {axis}")
+    if unclassified:
+        print(f"\n  (classifier found no role for {len(unclassified)} noncreature spell(s): "
+              f"{', '.join(unclassified[:6])}{'…' if len(unclassified) > 6 else ''} — read if grading)")
     return 0
 
 
@@ -1120,6 +1193,80 @@ def _central_themes(theme_w, frac=0.25):
     return {t for t, w in theme_w.items() if w >= cutoff}
 
 
+# Themes carried by nearly every deck — low signal for how KEY a fit is (mirrors
+# wishlist.NON_SIGNAL_TAGS's intent, kept local so deck.py has no wishlist import).
+GENERIC_THEMES = {
+    "etb", "tokens", "counters", "lifegain", "sacrifice", "card draw", "graveyard",
+    "mana", "ramp", "combat", "aggro", "tempo", "pump", "removal", "evasion",
+    "flying", "trample", "menace", "deathtouch", "lifelink", "vigilance",
+}
+_INTERACTION_ROLES = {"Removal (spot)", "Sweeper", "Counter"}
+
+
+def role_tally(cards, carddata):
+    """The CANONICAL per-deck functional-role tally — the single source every view
+    (stats, audit, quality/tier) routes through so their interaction / card-advantage
+    numbers can't drift apart (they used to: three separate counters disagreed by ±1,
+    which is exactly the kind of gap that could move a tier band the user couldn't
+    reproduce in `stats`). Rules, fixed once here:
+      • quantity-weighted (2 copies of a removal spell = 2 interaction),
+      • a card counts ONCE toward 'interaction' regardless of how many interaction
+        roles it fills (a modal removal+counter card is one interaction card, not
+        two — the per-role buckets still credit each role for the stats display),
+      • basics and nonbasic lands are skipped.
+    Returns a dict: each role → weighted count, plus 'interaction' (once-per-card
+    union of Removal/Sweeper/Counter) and 'card_advantage'."""
+    per_role = {}
+    interaction = ca = 0
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        cd = carddata.get(n.lower())
+        if not cd or "Land" in _primary_type(cd["type"]):
+            continue
+        roles = set(classify_roles(cd["text"]))
+        for r in roles:
+            per_role[r] = per_role.get(r, 0) + q
+        if roles & _INTERACTION_ROLES:
+            interaction += q
+        if "Card advantage" in roles:
+            ca += q
+    per_role["interaction"] = interaction
+    per_role["card_advantage"] = ca
+    return per_role
+
+
+def deck_role_counts(cards, carddata):
+    """(interaction, card_advantage) for a deck, from the canonical `role_tally` —
+    used to tell whether a candidate card FILLS A GAP (interaction / card advantage
+    the deck is short on), which makes an otherwise-secondary fit a KEY one."""
+    t = role_tally(cards, carddata)
+    return t["interaction"], t["card_advantage"]
+
+
+def fit_strength(shared, theme_w, card_text, deck_int, deck_ca):
+    """Classify a card→deck fit as KEY / role-player / tangential (F04).
+
+      KEY          – shares the deck's SIGNATURE (top central theme) on a specific
+                     theme, OR fills a role the deck is short on (interaction < 5 /
+                     card advantage < 3).
+      tangential   – shares only GENERIC themes (etb/tokens/…): low real signal.
+      role-player  – shares a specific central theme, but not the signature.
+    """
+    specific = [t for t in shared if t.lower() not in GENERIC_THEMES]
+    roles = set(classify_roles(card_text or ""))
+    gap = (bool(roles & _INTERACTION_ROLES) and deck_int < 5) or \
+          ("Card advantage" in roles and deck_ca < 3)
+    if gap:
+        return "KEY"
+    if not specific:
+        return "tangential"
+    top = max(theme_w.values()) if theme_w else 0
+    if top and any(theme_w.get(t, 0) >= top for t in specific):
+        return "KEY"
+    return "role-player"
+
+
 def _deck_fingerprints(meta, exclude_id=None):
     """[(id, colors:set, central_themes:set), ...] for every deck — used to score a
     craft target's cross-deck reuse (a card that fits several of your decks is worth
@@ -1149,6 +1296,39 @@ def _deck_fingerprints(meta, exclude_id=None):
                 theme_w[t] = theme_w.get(t, 0) + q
         fps.append((dd["id"], colors or ident, _central_themes(theme_w)))
     return fps
+
+
+POOL_BUILD_STAMP = os.path.join(REPO_ROOT, "card-pool.build")
+
+
+def pool_staleness_days():
+    """Days since card-pool.csv was built (from the card-pool.build sidecar), or
+    None if unstamped. Standard rotates on a schedule, so an old pool can still
+    mark a rotated-out card as `standard` — this lets `suggest` warn and prompt a
+    rebuild. Dormant until a `build_pool.py` run writes the stamp."""
+    if not os.path.exists(POOL_BUILD_STAMP):
+        return None
+    try:
+        import datetime
+        built = datetime.date.fromisoformat(open(POOL_BUILD_STAMP).read().strip()[:10])
+        return (datetime.date.today() - built).days
+    except Exception:
+        return None
+
+
+def rotation_risk(released, years=3):
+    """True if a set released more than ~`years` ago — Standard's rough rotation
+    window — so a still-`standard`-marked pick may have rotated (stale pool) or
+    rotates soon. Empty/absent `released` → False (graceful before a pool rebuild
+    captures the Released column)."""
+    if not released:
+        return False
+    try:
+        import datetime
+        rel = datetime.date.fromisoformat(released[:10])
+        return (datetime.date.today() - rel).days > 365 * years
+    except Exception:
+        return False
 
 
 def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_format=False):
@@ -1263,7 +1443,8 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         if h == 0 and fits >= 3:
             hi_reuse.append((name, fits))
         picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(),
-                      "owned": h, "decks": fits, "score": score, "matches": shared})
+                      "owned": h, "decks": fits, "score": score, "matches": shared,
+                      "rotates": rotation_risk(r.get("Released") or "")})
 
     res.update(ok=True, colors=deck_colors,
                themes=sorted(theme_w.items(), key=lambda kv: -kv[1])[:6],
@@ -1312,9 +1493,16 @@ def cmd_suggest(args):
     elif fmt and fmt not in POOL_FORMATS:
         print(f"Format: '{fmt}' not tracked — not filtering. "
               f"(known: {', '.join(sorted(POOL_FORMATS))})")
+    stale = pool_staleness_days()
+    if stale is not None and stale > 180:
+        print(f"⚠ card-pool.csv was built {stale} days ago — Standard legality may be "
+              "stale (sets rotate). Rebuild: build_pool.py --all (or /refresh).")
     if not res["picks"]:
         print("\nNo pool cards matched this deck's colors + themes.")
         return 0
+    rotn = sum(1 for p in res["picks"] if p.get("rotates"))
+    if rotn:
+        print(f"({rotn} pick(s) marked ⚠rot — set >3yr old, may have rotated / rotates soon)")
     print(f"\n{'Have':>5}  {'Card':28}  {'Rarity':8}  {'Decks':>5}  Matches (deck themes)")
     print("-" * 82)
     craftby = {}
@@ -1324,8 +1512,9 @@ def cmd_suggest(args):
         rar = p["rarity"]
         if h == 0:
             craftby[rar] = craftby.get(rar, 0) + 1
+        rotflag = " ⚠rot" if p.get("rotates") else ""
         print(f"{have:>5}  {p['name'][:28]:28}  {rar[:8]:8}  {p['decks']:>5}  "
-              f"{', '.join(p['matches'][:5])}")
+              f"{', '.join(p['matches'][:5])}{rotflag}")
     ncraft = sum(craftby.values())
     print("-" * 82)
     print(f"{res['total']} suggestion(s) — {res['total'] - ncraft} owned, {ncraft} to craft"
@@ -2185,19 +2374,9 @@ def cmd_verify(args):
 
 def _interaction_count(cards, carddata):
     """Copies of nonland spells that do removal / sweeping / countering — the same
-    'interaction total' cmd_stats reports, computed offline from oracle text so the
-    roster audit can rank thin-interaction decks without a per-deck stats run."""
-    n = 0
-    for q, name, s, c in cards:
-        if name.lower() in BASICS:
-            continue
-        cd = carddata.get(name.lower())
-        if not cd or "Land" in _primary_type(cd["type"]):
-            continue
-        roles = classify_roles(cd["text"])
-        if roles & {"Removal (spot)", "Sweeper", "Counter"}:
-            n += q
-    return n
+    'interaction total' cmd_stats reports and the same number the quality/tier vector
+    uses, all via the canonical `role_tally` so the three can't drift."""
+    return role_tally(cards, carddata)["interaction"]
 
 
 AUDIT_ORDER = {"TUNE": 0, "craft": 1, "review": 2, "ok": 3}
@@ -2439,21 +2618,27 @@ def cmd_suggest_homes(args):
             continue
         already = card.lower() in {n.lower() for _, n, _, _ in cards}
         fit = sum(theme_w.get(t, 0) for t in shared)
+        d_int, d_ca = deck_role_counts(cards, carddata)
+        strength = fit_strength(shared, theme_w, cd.get("text") or "", d_int, d_ca)
         cut = None if already else _weakest_cut(dmeta, cards, cardmeta, carddata)
-        results.append((fit, dd["id"], already, shared, cut))
+        results.append((fit, dd["id"], already, shared, cut, strength))
 
     if not results:
         print("No deck is both castable and shares a central theme with this card.\n"
               "(Off-color everywhere, or its themes are too generic — try "
               "`deck.py suggest <id>` from a specific deck instead.)")
         return 0
-    results.sort(key=lambda r: (-r[0], r[1]))
-    print(f"  {'deck':5} {'fit':>4}  {'in?':3}  shared themes  ·  suggested cut")
-    print("  " + "-" * 74)
-    for fit, did, already, shared, cut in results:
+    # Sort KEY fits first (then role-player, then tangential), then by fit weight —
+    # so the decks the card most belongs in lead, differentiating a key from a
+    # tangential home (F04).
+    _srank = {"KEY": 0, "role-player": 1, "tangential": 2}
+    results.sort(key=lambda r: (_srank.get(r[5], 3), -r[0], r[1]))
+    print(f"  {'deck':5} {'strength':11} {'fit':>4}  {'in?':3}  shared themes  ·  suggested cut")
+    print("  " + "-" * 82)
+    for fit, did, already, shared, cut, strength in results:
         tag = "yes" if already else "no"
         hint = "already maindecked" if already else (f"cut ~ {cut}" if cut else "")
-        print(f"  {did:5} {fit:>4}  {tag:3}  {', '.join(shared[:3]):28}  {hint}")
+        print(f"  {did:5} {strength:11} {fit:>4}  {tag:3}  {', '.join(shared[:3]):28}  {hint}")
     strong = [r for r in results if not r[2]]
     if len(strong) >= 2:
         print(f"\nCastable + on-theme in {len(strong)} decks it's not already in — one owned "
@@ -2461,6 +2646,519 @@ def cmd_suggest_homes(args):
     print(f"\nGrade each from full text: `deck.py cuts <id>`, then "
           f'`deck.py swap <id> --cut <weak> --add "{card}"` (shows both cards\' full text).')
     return 0
+
+
+def deck_quality_vector(d):
+    """A deck's measurable QUALITY vector (F10), from the same primitives the CLI
+    uses — so a cut/swap can be checked for regression before/after: buildable,
+    uncastable strays, interaction + card-advantage role counts, curve (avg nonland
+    MV + early-drop count), and central-theme coverage."""
+    dmeta, cards = parse_deck_file(d["path"])
+    mana, carddata, cardmeta = load_mana(), load_card_data(), load_card_meta()
+    _, _, qty = load_collection()
+    missing = short = 0
+    theme_w, mvs, early = {}, [], 0
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            continue
+        have, inlib = owned(qty, n)
+        if not inlib:
+            missing += 1
+        elif have < q:
+            short += 1
+        cd = carddata.get(nl)
+        if cd and "Land" not in _primary_type(cd.get("type") or ""):
+            entry = mana.get(nl)
+            if entry and entry[1] is not None:
+                mvs += [entry[1]] * q
+                if entry[1] <= 2:
+                    early += q
+        m = cardmeta.get(nl)
+        if m:
+            for t in m["synergies"]:
+                theme_w[t] = theme_w.get(t, 0) + q
+    declared = _declared_colors(dmeta) or _deck_castable_colors(dmeta, cards, mana)
+    uncast, _off = _castability(cards, declared, mana, carddata)
+    d_int, d_ca = deck_role_counts(cards, carddata)
+    return {
+        "buildable": missing == 0 and short == 0, "missing": missing, "short": short,
+        "uncastable": len(uncast), "interaction": d_int, "card_advantage": d_ca,
+        "avg_mv": round(sum(mvs) / len(mvs), 2) if mvs else 0.0, "early_drops": early,
+        "central_themes": len(_central_themes(theme_w)),
+        "central": sorted(_central_themes(theme_w)),
+    }
+
+
+def _quality_vector_at(d, ref):
+    """The quality vector for a deck's list AS OF a git ref — evaluates that past
+    version against CURRENT card knowledge (so 'was my old list better?' is a
+    like-for-like comparison). Returns (vec, None) or (None, error)."""
+    import subprocess
+    import tempfile
+    rel = os.path.relpath(d["path"], REPO_ROOT)
+    r = subprocess.run(["git", "show", f"{ref}:{rel}"], capture_output=True, text=True,
+                       cwd=REPO_ROOT)
+    if r.returncode != 0:
+        return None, (r.stderr.strip() or f"deck not found at {ref}")
+    fd, tmp = tempfile.mkstemp(suffix=".txt")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            fh.write(r.stdout)
+        return deck_quality_vector({"id": d["id"], "path": tmp, "name": d.get("name")}), None
+    finally:
+        os.remove(tmp)
+
+
+def cmd_quality(args):
+    """Deck-quality guard (F10): print the quality vector, diff it against a saved
+    snapshot (`--vs FILE`) to flag regressions from a cut/swap, and/or check that a
+    proposed add isn't a merely-tangential fit (`--add NAME`). `--at REF` compares
+    this deck's list at a past git ref against now. Soft by design — it WARNS (some
+    regressions are intentional trades); exits 0 unless --strict."""
+    import json
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    vec = deck_quality_vector(d)
+    if getattr(args, "at", None):
+        old, err = _quality_vector_at(d, args.at)
+        if old is None:
+            eprint(f"could not read deck {d['id']} at {args.at!r}: {err} "
+                   f"(renamed? see `deck.py history {d['id']}`)")
+            return 1
+        print(f"Quality — deck {d['id']} @ {args.at}  →  current:")
+        for k in ("buildable", "uncastable", "interaction", "card_advantage",
+                  "avg_mv", "early_drops", "central_themes"):
+            o, n = old[k], vec[k]
+            delta = "" if o == n else f"   ({o} → {n})"
+            print(f"  {k:15}: {n}{delta}")
+        lost = sorted(set(old["central"]) - set(vec["central"]))
+        gained = sorted(set(vec["central"]) - set(old["central"]))
+        if lost:
+            print(f"  central themes lost since {args.at}: {', '.join(lost)}")
+        if gained:
+            print(f"  central themes gained: {', '.join(gained)}")
+        return 0
+    if getattr(args, "json", False):
+        print(json.dumps(vec))
+        return 0
+    print(f"Quality — deck {d['id']}: {d['name'] or d['path']}")
+    for k in ("buildable", "uncastable", "interaction", "card_advantage",
+              "avg_mv", "early_drops", "central_themes"):
+        print(f"  {k:15}: {vec[k]}")
+
+    regressions = []
+    if getattr(args, "vs", None):
+        try:
+            before = json.load(open(args.vs))
+        except Exception as e:
+            eprint(f"could not read --vs snapshot {args.vs!r}: {e}")
+            return 1
+        if before.get("buildable") and not vec["buildable"]:
+            regressions.append("became UNbuildable")
+        if vec["uncastable"] > before.get("uncastable", 0):
+            regressions.append(f"castability worse ({before.get('uncastable',0)}→{vec['uncastable']})")
+        if vec["interaction"] < before.get("interaction", 0):
+            regressions.append(f"interaction dropped ({before['interaction']}→{vec['interaction']})")
+        if vec["card_advantage"] < before.get("card_advantage", 0):
+            regressions.append(f"card advantage dropped ({before['card_advantage']}→{vec['card_advantage']})")
+        if vec["central_themes"] < before.get("central_themes", 0):
+            lost = set(before.get("central", [])) - set(vec["central"])
+            regressions.append(f"lost central theme(s): {', '.join(sorted(lost)) or '?'}")
+        if vec["avg_mv"] - before.get("avg_mv", 0) > 0.3:
+            regressions.append(f"curve heavier (avg MV {before['avg_mv']}→{vec['avg_mv']})")
+
+    weak_add = None
+    if getattr(args, "add", None):
+        dmeta, cards = parse_deck_file(d["path"])
+        carddata, cardmeta = load_card_data(), load_card_meta()
+        theme_w = {}
+        for q, n, s, c in cards:
+            if n.lower() in BASICS:
+                continue
+            m = cardmeta.get(n.lower())
+            if m:
+                for t in m["synergies"]:
+                    theme_w[t] = theme_w.get(t, 0) + q
+        cd = carddata.get(args.add.lower())
+        ctags = set(cardmeta.get(args.add.lower(), {}).get("synergies", []))
+        shared = sorted(ctags & _central_themes(theme_w))
+        d_int, d_ca = deck_role_counts(cards, carddata)
+        strength = fit_strength(shared, theme_w, (cd or {}).get("text") or "", d_int, d_ca)
+        if strength == "tangential":
+            weak_add = f"add {args.add!r} is only a TANGENTIAL fit (generic themes only)"
+
+    if regressions or weak_add:
+        print("\n⚠ QUALITY GUARD:")
+        for r in regressions:
+            print(f"  - {r}")
+        if weak_add:
+            print(f"  - {weak_add}")
+        print("  (soft — intentional trades are fine; re-grade the cut from full "
+              "text via `deck.py cuts`/`card.py` if unsure)")
+        if getattr(args, "strict", False):
+            return 1
+    elif getattr(args, "vs", None) or getattr(args, "add", None):
+        print("\n✓ QUALITY GUARD: net improvement / no regressions.")
+    return 0
+
+
+# Competitive-tier robustness (F12). The tier LETTER is a human competitive
+# judgment and is NEVER auto-assigned — but it should be DEFENSIBLE against the
+# deck's measurable quality vector. `tier_band` maps that vector to the tier FLOOR
+# the metrics alone support; it is deliberately blind to raw card power / bombs /
+# meta positioning (an idf + role model can't see those), so it systematically
+# UNDER-rates. A human letter one band above the floor is fine — that band credits
+# the intangibles. A letter TWO-or-more bands above the floor is indefensible or
+# stale, and that's the only thing the guard flags.
+TIER_RANK = {"S": 5, "A": 4, "B": 3, "C": 2, "D": 1}
+
+
+def tier_band(vec):
+    """The tier FLOOR (S/A/B/C/D) a deck's measurable quality vector supports.
+    Metrics-only and blind to bombs/meta, so it under-rates by design — used to flag
+    a claimed tier sitting ≥2 bands above it, never to assign a tier.
+
+    It rates the LIST's competitive power independent of whether the cards are owned
+    — tier is a power judgment, and build-state (ownership) is tracked separately by
+    `check`/`audit`, so an aspirational unbuilt list is graded on its merits. A
+    castability stray IS a list flaw (a dead card), so it caps the floor."""
+    if vec["uncastable"] > 0:
+        return "C"                        # castability strays cap the floor
+    inter, ca = vec["interaction"], vec["card_advantage"]
+    resil = inter + ca                    # interaction + card advantage = grind / resilience
+    if inter >= 5 and resil >= 7:
+        return "A"                        # measurable ceiling; S is a human call on top
+    if inter >= 3 and resil >= 4:
+        return "B"
+    if resil >= 2:
+        return "C"
+    return "D"
+
+
+# The measurable FLOOR requirement per band: (min interaction, min interaction+ca).
+# Kept in lockstep with tier_band above — the single source for both the classifier
+# and the gap diagnostic, so they can't disagree about what a band needs.
+TIER_FLOOR_REQ = {"S": (5, 7), "A": (5, 7), "B": (3, 4), "C": (0, 2), "D": (0, 0)}
+
+
+def tier_gap(vec, target):
+    """What a deck's measurable vector needs to reach `target` tier's FLOOR (F14):
+    the exact axis shortfall — +N interaction, +N card advantage, and any uncastable
+    strays to clear (they cap the floor at C). Blind to bombs/meta like tier_band, so
+    it reports the measurable floor gap, NOT the intangible A-vs-S judgment. Returns
+    None for a bad target; a dict {target, add_interaction, add_card_advantage,
+    fix_uncastable, met, summary[]} otherwise."""
+    target = (target or "").upper()
+    if target not in TIER_FLOOR_REQ:
+        return None
+    need_i, need_r = TIER_FLOOR_REQ[target]
+    inter, ca = vec["interaction"], vec["card_advantage"]
+    parts = []
+    # Any target above C requires 0 castability strays (a stray caps the floor at C).
+    fix_unc = vec["uncastable"] if (TIER_RANK[target] > TIER_RANK["C"] and vec["uncastable"]) else 0
+    if fix_unc:
+        parts.append(f"clear {fix_unc} uncastable stray(s) — they cap the floor at C")
+    add_i = max(0, need_i - inter)
+    # Interaction adds also raise the resilience sum; only the remainder needs card advantage.
+    add_ca = max(0, need_r - (inter + ca + add_i))
+    if add_i:
+        parts.append(f"+{add_i} interaction ({inter}→{inter + add_i})")
+    if add_ca:
+        parts.append(f"+{add_ca} card advantage ({ca}→{ca + add_ca})")
+    return {"target": target, "add_interaction": add_i, "add_card_advantage": add_ca,
+            "fix_uncastable": fix_unc, "met": not parts, "summary": parts}
+
+
+def owned_role_fillers(d, roles, *, limit=10):
+    """Owned, on-color cards NOT already in deck d that fill any role in `roles`
+    (e.g. `_INTERACTION_ROLES`, or {"Card advantage"}) — the 0-wildcard fillers that
+    can close a tier gap, cheapest first. On-color = the card's identity ⊆ the deck's
+    declared/derived colors, so it won't surface an uncastable pick."""
+    meta, cards = parse_deck_file(d["path"])
+    mana, carddata = load_mana(), load_card_data()
+    _, _, qty = load_collection()
+    in_deck = {n.lower() for q, n, s, c in cards}
+    declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
+    out = []
+    for nl, cd in carddata.items():
+        if nl in in_deck or nl in BASICS:
+            continue
+        if "Land" in _primary_type(cd.get("type") or ""):
+            continue
+        name = cd.get("name") or nl
+        have, found = owned(qty, name)
+        if not found or have < 1:
+            continue
+        ident = set((cd.get("colors") or "").replace(" ", ""))
+        if not ident <= declared:
+            continue
+        hit = set(classify_roles(cd.get("text") or "")) & set(roles)
+        if not hit:
+            continue
+        entry = mana.get(nl)
+        mv = entry[1] if entry and entry[1] is not None else 99
+        out.append((mv, name, "".join(sorted(ident)) or "C", sorted(hit),
+                    (cd.get("text") or "").split("\n")[0][:64]))
+    out.sort(key=lambda r: (r[0], r[1]))
+    return out[:limit]
+
+
+def craft_role_fillers(d, roles, *, limit=8):
+    """Unowned pool cards (CRAFT targets) not already in deck d that fill any role in
+    `roles`, on-color and legal in the deck's format — the wildcard-spend options to
+    close a tier gap when the owned pool is thin (the natural question for an
+    aspirational/unbuilt deck). Sorted cheaper-wildcard first, then mana value."""
+    if not os.path.exists(POOL_CSV):
+        return []
+    meta, cards = parse_deck_file(d["path"])
+    mana = load_mana()
+    _, _, qty = load_collection()
+    in_deck = {n.lower() for q, n, s, c in cards}
+    declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
+    fmt = (meta.get("format") or "").strip().lower()
+    RANK = {"Common": 0, "Uncommon": 1, "Rare": 2, "Mythic": 3}
+    out, seen = [], set()
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            name = (r.get("Card Name") or "").strip()
+            nl = name.lower()
+            if not nl or nl in seen or nl in in_deck or nl in BASICS:
+                continue
+            if "Land" in _primary_type(r.get("Type") or ""):
+                continue
+            have, found = owned(qty, name)
+            if found and have > 0:              # want CRAFT targets — skip owned
+                continue
+            ident = set((r.get("Color(s)") or "").replace(" ", ""))
+            if not ident <= declared:
+                continue
+            legs = {x.strip().lower() for x in (r.get("Legalities") or "").split(";") if x.strip()}
+            if fmt and legs and fmt not in legs:
+                continue
+            if not (set(classify_roles(r.get("Card Text") or "")) & set(roles)):
+                continue
+            seen.add(nl)
+            entry = mana.get(nl)
+            mv = entry[1] if entry and entry[1] is not None else 99
+            rar = (r.get("Rarity") or "?").strip()
+            out.append((RANK.get(rar, 9), mv, name, "".join(sorted(ident)) or "C", rar,
+                        (r.get("Card Text") or "").split("\n")[0][:56]))
+    out.sort(key=lambda x: (x[0], x[1], x[2]))
+    return out[:limit]
+
+
+def tier_consistency(d):
+    """(claimed, implied, mismatch, msg) for a deck's claimed tier vs its metrics
+    floor. `mismatch` is True only when a claimed tier sits ≥2 bands ABOVE the floor
+    (indefensible / stale) — a soft signal to re-grade, never an auto-assignment.
+    An untiered deck returns claimed='' and mismatch False."""
+    meta, _cards = parse_deck_file(d["path"])
+    claimed = _deck_tier(meta)
+    vec = deck_quality_vector(d)
+    implied = tier_band(vec)
+    if not claimed:
+        return "", implied, False, "untiered"
+    gap = TIER_RANK.get(claimed, 0) - TIER_RANK.get(implied, 0)
+    if gap >= 2:
+        why = []
+        if vec["uncastable"]:
+            why.append(f"{vec['uncastable']} uncastable")
+        why.append(f"interaction {vec['interaction']}, card-adv {vec['card_advantage']}")
+        return claimed, implied, True, (
+            f"tier {claimed} sits {gap} bands above the metrics floor (~{implied}): "
+            + "; ".join(why))
+    return claimed, implied, False, f"tier {claimed}, metrics floor ~{implied}"
+
+
+def tier_consistency_issues():
+    """Roster-wide (id, claimed, implied, msg) for decks whose claimed tier is
+    indefensibly high vs its metrics — folded into check_all as a soft warning."""
+    out = []
+    for d in discover_decks():
+        claimed, implied, mismatch, msg = tier_consistency(d)
+        if mismatch:
+            out.append((d["id"], claimed, implied, msg))
+    return out
+
+
+def cmd_tier(args):
+    """Tier robustness (F12): show a deck's claimed tier next to the tier FLOOR its
+    measurable quality vector supports, and flag an indefensible/stale letter. It
+    NEVER writes the tier — grading is a human judgment that credits bombs/meta the
+    metrics can't see; this only surfaces a letter ≥2 bands above what the numbers
+    support (or, conversely, a deck the metrics say is under-graded)."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    meta, _cards = parse_deck_file(d["path"])
+    claimed = _deck_tier(meta)
+    vec = deck_quality_vector(d)
+    implied = tier_band(vec)
+    print(f"Tier — deck {d['id']}: {d['name'] or d['path']}")
+    print(f"  claimed tier  : {claimed or '(untiered)'}")
+    print(f"  metrics floor : {implied}   (measurable-only — blind to bombs/meta, so it under-rates)")
+    print(f"  vector        : buildable {vec['buildable']} · uncastable {vec['uncastable']} · "
+          f"interaction {vec['interaction']} · card-adv {vec['card_advantage']} · "
+          f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
+    # F15: warn if the count may be under-read, since the floor grades on it.
+    _meta2, _cards2 = parse_deck_file(d["path"])
+    _unc, _under = role_coverage_flags(_cards2, load_card_data())
+    if _under:
+        names = ", ".join(f"{n} ({a})" for n, a in _under[:4])
+        print(f"  ⚠ count may under-read {len(_under)} card(s) — verify via `deck.py stats {d['id']}`: {names}"
+              + ("…" if len(_under) > 4 else ""))
+    if not claimed:
+        print("\n  (untiered — add a `#: tier: X — rationale` header; see the tier rubric in CLAUDE.md)")
+        return 0
+    gap = TIER_RANK.get(claimed, 0) - TIER_RANK.get(implied, 0)
+    if gap >= 2:
+        print(f"\n⚠ TIER MISMATCH: {claimed} sits {gap} bands above the metrics floor ({implied}).")
+        print("  Either the letter is inflated/stale (re-grade from the CLAUDE.md rubric), or it")
+        print("  genuinely rests on bombs/meta the metrics can't see — state which in the")
+        print("  `#: tier:` rationale so the call is auditable.")
+        return 1 if getattr(args, "strict", False) else 0
+    if gap <= -1:
+        print(f"\n  ↑ possibly UNDER-graded: even the (under-rating) metrics floor is {implied}. "
+              "Consider re-grading up.")
+    elif gap == 1:
+        print(f"\n  ✓ defensible — {claimed} is one band above the floor (intangibles credit).")
+    else:
+        print(f"\n  ✓ consistent — {claimed} matches the metrics floor.")
+
+    # F14 — tier-gap diagnostic: the MEASURABLE work to reach a target band's floor,
+    # plus the owned (0-wildcard) on-color cards that fill the short axis. The
+    # selection stays a human call (protect signature/spice — that's /tune-deck's job).
+    target = getattr(args, "to", None)
+    if target:
+        gapinfo = tier_gap(vec, target)
+        if not gapinfo:
+            eprint(f"\n--to: unknown target tier {target!r} (use S/A/B/C/D)")
+            return 1
+        print(f"\n── Path to the {gapinfo['target']} floor ──")
+        if gapinfo["met"]:
+            print(f"  ✓ already meets the {gapinfo['target']} floor "
+                  f"(interaction {vec['interaction']}, card-adv {vec['card_advantage']}) — "
+                  "the letter is a human call from here (bombs/meta).")
+            return 0
+        print("  measurable gap: " + "; ".join(gapinfo["summary"]))
+
+        def _axis(role_set, add_flag, label):
+            if not add_flag:
+                return
+            owned_f = owned_role_fillers(d, role_set, limit=6)
+            if owned_f:
+                print(f"\n  owned on-color {label} to add (0 wildcards, {len(owned_f)} shown):")
+                for mv, name, ident, hit, txt in owned_f:
+                    print(f"    MV{mv:>2} {name:30} [{ident:4}] {','.join(hit):18} {txt}")
+            else:
+                print(f"\n  (no owned on-color {label} found)")
+            # Craft targets — the wildcard-spend options, cheaper rarity first.
+            craft = craft_role_fillers(d, role_set, limit=6)
+            if craft:
+                print(f"  craft targets ({label}, format-legal, cheaper wildcard first):")
+                for rk, mv, name, ident, rar, txt in craft:
+                    print(f"    {rar[:1] or '?'} MV{mv:>2} {name:28} [{ident:4}] {txt}")
+
+        _axis(_INTERACTION_ROLES, gapinfo["add_interaction"], "interaction")
+        _axis({"Card advantage"}, gapinfo["add_card_advantage"], "card advantage")
+        print("\n  → make room with `deck.py cuts %s` (grade cuts from full text); the card"
+              " SELECTION\n    is a judgment call — protect signature/spice (that's /tune-deck)."
+              % d["id"])
+    return 0
+
+
+def cmd_history(args):
+    """Show a deck file's git change history — the accurate, complete record of how
+    the deck evolved (each commit message states the thematic + technical why). This
+    is the deck's changelog; it lives in git rather than in-file so it can't get
+    unwieldy or drift. Pair with `deck.py quality <id> --at <hash>` to compare a past
+    version's measurable vector (interaction / curve / themes) against now."""
+    import subprocess
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    rel = os.path.relpath(d["path"], REPO_ROOT)
+    r = subprocess.run(["git", "log", "--follow", "--date=short",
+                        "--format=%h  %ad  %s", "--", rel],
+                       capture_output=True, text=True, cwd=REPO_ROOT)
+    if r.returncode != 0:
+        eprint(f"git log failed: {r.stderr.strip()}")
+        return 1
+    lines = [ln for ln in r.stdout.splitlines() if ln.strip()]
+    print(f"History — deck {d['id']}: {d['name'] or rel}  ({len(lines)} commit(s))")
+    for ln in lines:
+        print(f"  {ln}")
+    if lines:
+        print(f"\n  full text of any version:   git show <hash>:{rel}"
+              f"\n  compare a version's metrics: deck.py quality {d['id']} --at <hash>")
+    return 0
+
+
+def cmd_preflight(args):
+    """One-call verification for the skills (F05): construction legality + owned/
+    buildable + castability + repo integrity, as a structured PASS/FAIL block.
+    Orchestrates the existing checks (legal/check_all) rather than re-implementing
+    them. Exits non-zero only on a HARD failure (illegal deck or broken integrity);
+    unowned craft targets / hybrid strays are WARN, since WIP decks are legitimate."""
+    import io
+    import contextlib
+    import subprocess
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    dmeta, cards = parse_deck_file(d["path"])
+
+    # Construction legality (size, copies, format) — reuse cmd_legal, captured.
+    buf = io.StringIO()
+    with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
+        legal_rc = cmd_legal(argparse.Namespace(id=args.id, fmt=None))
+
+    # Owned / buildable.
+    _, _, qty = load_collection()
+    missing = short = 0
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        have, inlib = owned(qty, n)
+        if not inlib:
+            missing += 1
+        elif have < q:
+            short += 1
+
+    # Castability.
+    mana = load_mana()
+    carddata = load_card_data()
+    declared = _declared_colors(dmeta) or _deck_castable_colors(dmeta, cards, mana)
+    uncast, off_ident = _castability(cards, declared, mana, carddata)
+
+    # Repo integrity — the deterministic gate, run out-of-process for a clean signal.
+    integ = subprocess.run(
+        [sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                      "check_all.py"), "--quiet"],
+        capture_output=True, text=True)
+    integ_ok = integ.returncode == 0
+
+    def mark(ok):
+        return "PASS" if ok else "FAIL"
+    legal_ok = legal_rc == 0
+    print(f"Preflight — deck {d['id']}: {d['name'] or d['path']}")
+    print(f"  legal (construction) : {mark(legal_ok)}")
+    print(f"  owned (buildable)    : "
+          + ("PASS — fully owned" if missing == 0 and short == 0
+             else f"WARN — {missing} craft target(s), {short} short (WIP-ok)"))
+    print(f"  castability          : "
+          + ("PASS" if not uncast else f"FAIL — {len(uncast)} uncastable")
+          + (f" (+{len(off_ident)} hybrid stray, ok)" if off_ident else ""))
+    print(f"  integrity (check_all): {mark(integ_ok)}")
+    hard = (not legal_ok) or bool(uncast) or (not integ_ok)
+    print(f"Verdict: {'BLOCKED' if hard else 'READY'}")
+    return 1 if hard else 0
 
 
 def main():
@@ -2505,6 +3203,21 @@ def main():
     p.add_argument("id")
     p.add_argument("--format", dest="fmt", metavar="FMT",
                    help="check against FMT instead of the deck's #: format:")
+    p = sub.add_parser("preflight", help="one-call verify: legal + owned + castable + integrity (for skills)")
+    p.add_argument("id")
+    p = sub.add_parser("quality", help="deck-quality vector + regression guard for a cut/swap (for skills)")
+    p.add_argument("id")
+    p.add_argument("--json", action="store_true", help="print the quality vector as JSON (snapshot before a change)")
+    p.add_argument("--vs", metavar="FILE", help="diff against a saved --json snapshot and flag regressions")
+    p.add_argument("--add", metavar="NAME", help="warn if adding NAME would be a merely-tangential fit")
+    p.add_argument("--at", metavar="REF", help="compare this deck's list at a past git ref against now")
+    p.add_argument("--strict", action="store_true", help="exit non-zero on any regression/weak-add (default: warn only)")
+    p = sub.add_parser("history", help="show a deck file's git change history (its changelog)")
+    p.add_argument("id")
+    p = sub.add_parser("tier", help="check a deck's claimed tier against its measurable quality floor")
+    p.add_argument("id")
+    p.add_argument("--strict", action="store_true", help="exit non-zero on a tier mismatch (default: warn only)")
+    p.add_argument("--to", metavar="TIER", help="show the measurable gap + owned fillers to reach TIER's floor (S/A/B/C/D)")
     p = sub.add_parser("cuts", help="rank the deck's weakest-fit cards as cut candidates")
     p.add_argument("id")
     p.add_argument("--limit", type=int, default=8,
@@ -2540,6 +3253,8 @@ def main():
         "legal": cmd_legal, "cuts": cmd_cuts,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
         "verify": cmd_verify, "text": cmd_text, "suggest-homes": cmd_suggest_homes,
+        "preflight": cmd_preflight, "quality": cmd_quality, "tier": cmd_tier,
+        "history": cmd_history,
     }[args.cmd](args)
 
 

@@ -1873,7 +1873,7 @@ Glorious Decay,Instant,"Choose one —
 Great Divide Guide,Creature — Human Scout Ally,"Each land and Ally you control has ""{T}: Add one mana of any color.""",G,Human; Scout; Ally; mana,TLA,181,1
 Great Forest Druid,Creature — Treefolk Druid,{T}: Add one mana of any color.,G,Treefolk; Druid; mana,ECL,178,1
 Gysahl Greens,Sorcery,"Create a 2/2 green Bird creature token with ""Whenever a land you control enters, this token gets +1/+0 until end of turn.""
-Flashback {6}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",G,graveyard; tokens; pump; flashback; recursion; spellslinger,FIN,190,1
+Flashback {6}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",G,graveyard; tokens; pump; flashback; recursion; spellslinger,FIN,190,3
 Guerrilla Gorilla,Creature — Ape Soldier Hero,"Reach
 Sacrifice this creature: Destroy target noncreature artifact or noncreature enchantment. Activate only as a sorcery.",G,Ape; Soldier; Hero; sacrifice; removal; reach; defense,MSH,169,1
 "Haru, Hidden Talent",Legendary Creature — Human Peasant Ally,"Whenever another Ally you control enters, earthbend 1. (Target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)",G,Human; Peasant; Ally; counters; blink; earthbend; bending,TLA,182,1
@@ -3449,3 +3449,15 @@ Restless Anchorage,Land,"This land enters tapped.
 {T}: Add {W} or {U}.
 {1}{W}{U}: Until end of turn, this land becomes a 2/3 white and blue Bird creature with flying. It's still a land.
 Whenever this land attacks, create a Map token.",W/U,tokens; mana,LCI,280,1
+Sunbillow Verge,Land,"{T}: Add {W}.
+{T}: Add {R}. Activate only if you control a Mountain or a Plains.",W/R,mana,DFT,264,1
+Thornspire Verge,Land,"{T}: Add {R}.
+{T}: Add {G}. Activate only if you control a Mountain or a Forest.",R/G,mana,DSK,270,1
+Wastewood Verge,Land,"{T}: Add {G}.
+{T}: Add {B}. Activate only if you control a Swamp or a Forest.",B/G,mana,DFT,268,1
+Bleachbone Verge,Land,"{T}: Add {B}.
+{T}: Add {W}. Activate only if you control a Plains or a Swamp.",W/B,mana,DFT,250,1
+Gloomlake Verge,Land,"{T}: Add {U}.
+{T}: Add {B}. Activate only if you control an Island or a Swamp.",U/B,mana,DSK,260,1
+Blazemire Verge,Land,"{T}: Add {B}.
+{T}: Add {R}. Activate only if you control a Swamp or a Mountain.",B/R,mana,DSK,256,1

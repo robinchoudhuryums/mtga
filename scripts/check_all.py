@@ -130,6 +130,26 @@ def main():
     except Exception as e:
         soft.append(f"wishlist target audit skipped ({e})")
 
+    # Soft: NEW unindexed card mechanics (a new set's keyword not yet in the synergy
+    # map). Baselined, so it stays quiet until something genuinely new appears.
+    try:
+        import check_keywords as ck
+        for kw, ex, _sig in ck.check():
+            soft.append(f"unindexed mechanic '{kw}' (e.g. {ex}) — add to tag_synergies "
+                        "KEYWORD_THEMES/FLAVOR_KEYWORDS or run check_keywords.py --update-baseline")
+    except Exception as e:
+        soft.append(f"keyword radar skipped ({e})")
+
+    # Soft: tier robustness — a deck whose claimed #: tier: sits ≥2 bands above the
+    # tier its measurable quality vector supports (inflated or stale). Never gating —
+    # tier is a human judgment, this only flags an indefensible letter to re-grade.
+    try:
+        for did, claimed, implied, msg in deckmod.tier_consistency_issues():
+            soft.append(f"tier mismatch: deck {did} — {msg} "
+                        "(re-grade from the CLAUDE.md rubric, or justify the bombs/meta in the rationale)")
+    except Exception as e:
+        soft.append(f"tier robustness check skipped ({e})")
+
     if args.quiet:
         state = "OK" if not hard else f"{len(hard)} ISSUE(S)"
         extra = f", {len(soft)} soft" if soft else ""

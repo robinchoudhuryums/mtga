@@ -60,7 +60,8 @@
 
 # Lands
 1 Agna Qel'a (TLA) 264
-2 Dismal Backwater (FDN) 261
+1 Dismal Backwater (FDN) 261
+1 Gloomlake Verge (DSK) 260
 1 Soured Springs (OTJ) 264
 1 Treno, Dark City (FIN) 290
 1 Hidden Lair (MSH) 269

@@ -46,6 +46,56 @@ docs. This file is the source of truth for the workflow commands in
   both Knight's Edge and Avengers; Wan Shi Tong in both Bloodbending and Drawn
   Conclusions) rather than asking the user to choose a single home.
 
+## Competitive Tiering (the rubric)
+
+The `#: tier:` letter drives a lot of downstream judgment (audit sort, dashboard
+pills, which decks get tuned, how I weigh a swap), so it must be **defensible, not
+vibes**. Grade against this rubric — bands over the *measurable* quality vector
+(`deck.py quality` / `deck_quality_vector`: interaction · card-advantage ·
+castability · curve · central-theme density), with the intangibles moving a deck
+*within* a band.
+
+- **Tier rates the LIST's competitive power, not whether you own it.** Build-state
+  is tracked separately (`check`/`audit`); an aspirational unbuilt list is graded
+  on its merits **provided it's legal and a real 60** (that's a purpose of variant
+  decks — a fully-owned playable version plus an aspirational variant, each tiered
+  on its own list; an incomplete/illegal pile isn't gradeable). **Never auto-write a
+  tier letter** — it's a human competitive judgment (design constraint).
+- **The measurable FLOOR** (`deck.py tier <id>` → "metrics floor", via
+  `tier_band`): interaction + card-advantage = the resilience axis. Roughly:
+  **A-floor** interaction ≥5 and (interaction+card-adv) ≥7; **B-floor** interaction
+  ≥3 and sum ≥4; **C-floor** sum ≥2; **D** below that; any uncastable stray caps at
+  C. The floor is blind to raw card power / bombs / meta (an idf+role model can't
+  see those), so it **under-rates by design.**
+- **The bands (what the letter means):**
+  - **S** — measurably A-floor AND a human call that it's top-meta capable: real
+    bombs, a protection/interaction suite, proven to close fast. Rare.
+  - **A** — A-floor (strong interaction + card advantage), coherent engine, tight
+    curve, at most one clear weakness.
+  - **B** — B-floor (moderate interaction) OR a single real gap (e.g. thin card
+    advantage / reach), coherent but capped.
+  - **C** — a hard cap: near-zero interaction, heavy singleton variance, or thin
+    themes / castability strays.
+  - **D** — incoherent, illegal, or no theme spine.
+  A human letter **one band above the floor is fine** — that band credits the
+  intangibles the metrics can't see. **Two-or-more bands above is indefensible or
+  stale**, and that's the only thing the guard flags.
+- **The guard** — `deck.py tier <id>` shows claimed-vs-floor and flags a mismatch
+  (≥2 bands over) or a possibly-under-graded deck (claimed *below* the under-rating
+  floor). A roster pass is a **soft, non-gating** `check_all` warning, so an
+  inflated/stale letter can't hide. It never assigns — it says "re-grade this, or
+  justify the bombs/meta in the `#: tier:` rationale." **Run it after any deck edit**
+  (the `/apply-changes` skill does) so a tune that moves the metrics re-grounds the
+  letter. The floor makes the *floor* bulletproof; S-vs-A still needs your judgment.
+- **Climbing a tier** — `deck.py tier <id> --to A` prints the exact measurable gap
+  to a target band's floor ("+3 interaction"), then the owned (0-wildcard) on-color
+  cards **and** the unowned craft targets that fill the short axis, so it doubles as
+  a wildcard-spend planner. `/tune-deck` runs it so a tune aims at a concrete tier
+  target. The tool does the arithmetic; the card *selection* stays a human call
+  (protect signature/spice). Compare a deck's past versions with `deck.py history
+  <id>` (its git changelog) + `deck.py quality <id> --at <ref>` (re-scores a past
+  list's vector against now) — change history lives in git, not an in-file log.
+
 ## Common Gotchas
 
 - **Inspect one card with `card.py <name>`, never a truncated slice.** `scripts/card.py
@@ -58,7 +108,9 @@ docs. This file is the source of truth for the workflow commands in
   of Calling read as green cheat enablers but are Historic-only, not Standard;
   Heartfire Hero likewise). Before grading or recommending ANY card in chat, run
   `card.py` — the pool's `Legalities` column is authoritative, so "it's in the pool"
-  is NOT "it's Standard-legal."
+  is NOT "it's Standard-legal." **In code, any card-evaluation path reads the
+  COMPLETE text by default** — use `lib.full_card_text(name)` (library→pool,
+  never truncated); never slice a card's text to grade/classify/rank it.
 - **Don't judge a card by printed mana value or a single subtype.** `deck.py
   stats` flags cost flexibility (`◊` cheaper / `△` added cost), buckets spells
   into functional roles (removal / card advantage / ramp / …, heuristic from
@@ -224,7 +276,13 @@ docs. This file is the source of truth for the workflow commands in
   power score** that `--rank` blends 50/50 with theme fit into a `combined` score
   (an idf theme model can't see raw power, so bombs like Doctor Doom get buried
   without it — the Power column is the fix; the artifact exposes a live fit↔power
-  slider). The wishlist CSV itself isn't gated by check_all, but the **ranking
+  slider). **Lands rank on a different axis:** a land has no synergy themes, so
+  theme fit would sink it — `--rank` instead rates a land on **manabase value** for
+  its target deck (how much of the deck's colors it produces, +untapped bonus, on
+  the same 0–10 scale) and blends *that* with `Power`, tagging it `manabase (land)`.
+  So a dual/verge that fixes a two-color deck ranks as the upgrade it is instead of
+  bottoming out under spells; the same dual pointed at a mono-color deck stays low.
+  The wishlist CSV itself isn't gated by check_all, but the **ranking
   model is** — `check_rankings.py` (run inside check_all) guards the specific-theme
   cutoff so a scoring change can't silently reclassify a real tribe as "generic".
 - **Auto-targeting a wishlist batch: trust STRONG, judge `review`.** `wishlist.py
@@ -269,6 +327,17 @@ docs. This file is the source of truth for the workflow commands in
   re-check its `#~` craft suggestions — a craftable legal under the old format may
   have rotated (hit moving decks 1/2 Historic→Standard). `deck.py flex <id>` plus
   the pool's `Legalities` column confirm.
+- **The pool's `Legalities` is a build-time SNAPSHOT — Standard rotates.** So a
+  card the pool still marks `standard` may have aged out since the last
+  `build_pool.py`. `deck.py suggest` guards against this with a **date-aware
+  rotation check**: `build_pool.py` now writes a `Released` date per card and a
+  `card-pool.build` date sidecar, and `suggest` marks a pick **`⚠rot`** when its
+  set is >~3 years old (rotated / rotates soon) and warns when the pool stamp
+  itself is stale. Treat `⚠rot` as "verify before crafting" and rebuild the pool
+  (`build_pool.py --all`, per `/refresh`) to refresh both the legality snapshot and
+  the date stamp. `rotation_risk()` returns False on a blank `Released` (graceful
+  before a pool rebuild adds the column), so the flag only fires once the data
+  supports it.
 - **`deck.py suggest-homes <card>` automates the "which of my decks does this new
   card improve" fit pass** (the manual dance repeated every craft this session —
   Doctor Doom, Elspeth, Wan Shi Tong, Shark Shredder). It scans EVERY deck and
@@ -279,7 +348,27 @@ docs. This file is the source of truth for the workflow commands in
   (`#: protect:` cards excluded). It's a SHORTLIST, not a verdict — the cut is one
   heuristic pick, so still grade from full oracle text via `deck.py cuts <id>` and
   preview with `deck.py swap` before applying. Because copies are fungible, it
-  reminds you to slot a card into *all* decks that earn it, not pick one home.
+  reminds you to slot a card into *all* decks that earn it, not pick one home. Each
+  fit row now carries a **strength label** (`KEY` / `role-player` / `tangential`):
+  KEY = it fills an interaction/card-advantage gap the deck is short on or shares
+  the deck's *signature* theme; role-player = a secondary central theme;
+  tangential = generic overlap only (etb/tokens/lifegain/…). Rows sort
+  strongest-first — trust KEY, judge role-player, and read a tangential fit as
+  "probably not for this deck." The same `fit_strength` classifier flags a
+  merely-tangential add in `deck.py quality --add`.
+- **Before committing a deck edit, run `deck.py preflight <id>` — and grade a
+  cut/swap with `deck.py quality`.** `preflight` is the one-call gate the editing
+  skills use: it folds `legal` + owned/buildable + castability + a full `check_all`
+  pass into one PASS/FAIL block with a READY/BLOCKED verdict (hard-fails only on an
+  illegal deck or broken integrity; WIP craft targets are WARN). `quality <id>`
+  computes a deck-quality vector (buildable · uncastable · interaction/
+  card-advantage · curve · central themes); snapshot it with `--json` **before** a
+  change, then `--vs FILE` **after** to flag regressions (interaction dropped,
+  castability broke, a central theme lost its last copy, curve heavier) so a swap
+  that *worsens* the deck self-catches. It's a SOFT guard — an intentional trade
+  (e.g. dropping card advantage for interaction in an aggressive deck) is fine and
+  it only warns; grade the flagged axis from full text before accepting or
+  reverting. This is what the `/apply-changes` skill runs around every swap.
 - **`deck.py mana` also lints color SOURCES, not just pip demand.** After the pip
   breakdown it prints "Color sources (lands producing each color)" (basics by
   name, nonbasics by color identity — mana dorks aren't counted) and flags cards
@@ -301,7 +390,20 @@ docs. This file is the source of truth for the workflow commands in
 - The **functional-role** breakdown (`deck.py stats`) and **castability lint**
   (`deck.py mana` / `check`) are heuristic. Roles are matched from oracle text, so
   modal cards land in several buckets and single-draw cantrips are deliberately
-  *not* counted as card advantage. The lint reads the deck's `#: colors:` header,
+  *not* counted as card advantage. Because regex matching inevitably misses
+  phrasings and silently *under*-counts (a `-X/-X`, an edict, a bounce, "exile up
+  to one target"), `stats` and `tier` run a **coverage self-audit** (`role_
+  coverage_flags`, F15): a broad lexical net flags any card whose text reads like
+  interaction / card advantage the classifier *didn't* tag, printing a
+  "⚠ Possible UNDER-COUNT — verify" list so a miss is explicit, never silent. It
+  only prompts a human read; it never changes a count. (The common templates —
+  any `fight`, `destroy/exile up to N target`, `-N/-N` shrink, one-sided
+  minus-wraths — are now *counted* directly; the flag catches the residual.) The
+  interaction / card-advantage counts are now computed by ONE canonical
+  `role_tally` (F13) — quantity-weighted, a card counted once per axis, basics and
+  nonbasic lands skipped — that `stats`, `audit`, and the `quality`/`tier` vectors
+  all route through, so the number you eyeball in `stats` is the number the tier
+  floor grades on (three separate counters used to disagree by ±1). The lint reads the deck's `#: colors:` header,
   so a stale or intentionally-narrow header flags cards as off-color — e.g. the
   archived raw 83-card `19c` pile is headed `WU` but is really multicolor. Fixing a stale
   header to the deck's real castable colors clears the false positives (e.g. deck
@@ -315,9 +417,16 @@ docs. This file is the source of truth for the workflow commands in
 INV-01…04 plus a **ranking-model sanity check** (`check_rankings.py`) that guards
 the Doctor-Doom-class regression: a scoring change that silently reclassifies a
 real tribal theme as "generic". The ranking check is distribution-based, so it
-survives cards being crafted off the wishlist. It also emits a **soft, non-gating
-warning** for wishlist target drift — a card whose Target deck can no longer cast it
-after a retune — via `wishlist.py --audit-targets`; soft warnings never fail the build.)
+survives cards being crafted off the wishlist. It also emits **soft, non-gating
+warnings**: wishlist target drift — a card whose Target deck can no longer cast it
+after a retune — via `wishlist.py --audit-targets`; and **new unindexed mechanics**
+— `check_keywords.py` flags a keyword on an owned card that isn't in
+`tag_synergies.py`'s map yet (a new set's mechanic), baselined in
+`keyword_baseline.txt` so it stays quiet until something genuinely new appears
+(`check_keywords.py --update-baseline` to acknowledge one); and **tier mismatch**
+— `deck.py tier_consistency_issues()` flags a deck whose claimed `#: tier:` sits ≥2
+bands above the tier its measurable quality vector supports (an inflated/stale
+letter — see the Competitive Tiering rubric). Soft warnings never fail the build.)
 
 **Health Dimensions:**
 - Data Integrity — CSV structure, no drift between library and derived files
@@ -330,7 +439,7 @@ after a retune — via `wishlist.py --audit-targets`; soft warnings never fail t
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
-- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py
+- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`)
 - Decks: decks/
 
@@ -364,4 +473,11 @@ one deployed artifact is the **roster dashboard**: `.github/workflows/pages.yml`
 [claude-workflow-tools](https://github.com/robinchoudhuryums/claude-workflow-tools);
 they stay project-agnostic and read everything from the Cycle Workflow Config
 above. To update them, re-copy the files when that repo bumps them — don't edit
-them here. `check`, `refresh`, `add-deck`, and `tune-deck` are project-specific.
+them here. `check`, `refresh`, `add-deck`, `tune-deck`, `add-cards`, and
+`apply-changes` are project-specific. `add-cards` (catalog newly-owned cards +
+find their homes) and `apply-changes` (apply confirmed swaps, run the F10 quality
+guard, verify + commit) **orchestrate the scripts, never re-implement them** — the
+scripts stay the single source of truth so the skills can't drift. Both end with
+the shared verify+commit tail in `docs/verify-commit-tail.md` (check_all-first,
+the Co-Authored-By/Claude-Session trailer, no model ID, branch-restart on a merged
+PR) — edit that one file to change the commit discipline for both.

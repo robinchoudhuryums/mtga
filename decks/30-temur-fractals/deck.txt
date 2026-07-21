@@ -1,6 +1,6 @@
 #: name: Temur Fractals
 #: format: Standard
-#: tier: A — Temur Fractals counters/ramp; powerful engine + card advantage + ramp — only 2 interaction is the one gap
+#: tier: A — Temur Fractals counters/ramp; powerful engine + card advantage + ramp, now with adequate interaction. The interaction package (+Spell Pierce / +Plasma Bolt / +Shock, cutting redundant card-selection) took interaction 2→5 and resil 4→7, lifting the measurable floor to A while keeping the 10 payoffs + 4 ramp intact (curve improved 3.40→3.23). Held at A (not an S conversation) by the 3-color GUR mana. Earlier B was correct pre-package; re-graded B→A once the metrics floor reached A.
 #: colors: GUR
 #: protect: Emil, Vastlands Roamer; Loading Zone; Growth Curve; Quandrix Charm
 #: archetype: Temur (G/U/R) +1/+1 counters & Fractals on a lands-matter ramp shell. Built from the
@@ -34,9 +34,9 @@
 # Card advantage / dig
 1 Mind into Matter (SOS) 202
 1 Zimone's Experiment (SOS) 169
-1 Stadium Tidalmage (SOS) 232
+1 Shock (ANB) 84
 1 Garruk's Uprising (FDN) 220
-1 Charging Strifeknight (SOS) 110
+1 Plasma Bolt (EOE) 152
 
 # Lands-matter ramp / bombs
 1 Lumra, Bellow of the Woods (BLB) 183
@@ -58,7 +58,7 @@
 # Land-fetch / ramp value
 1 Environmental Scientist (SOS) 147
 1 Proctor's Gaze (SOS) 213
-1 Follow the Lumarets (SOS) 148
+1 Spell Pierce (SOA) 23
 1 Improvisation Capstone (SOS) 120
 
 # Lands (25 — Temur fixing: 12 owned duals + Terramorphic + 12 basics; many differently-named for Emil)
@@ -71,7 +71,7 @@
 1 Riverpyre Verge (DFT) 260
 1 Spectacle Summit (SOS) 262
 1 Restless Ridgeline (LCI) 283
-1 Rugged Highlands (FDN) 265
+1 Thornspire Verge (DSK) 270
 1 Wind-Scarred Crag (FDN) 271
 1 Abraded Bluffs (OTJ) 251
 1 Terramorphic Expanse (MSC) 828

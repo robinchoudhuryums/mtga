@@ -38,8 +38,11 @@ import scryfall
 from scryfall import ScryfallUnavailable
 
 POOL_PATH = os.path.join(REPO_ROOT, "card-pool.csv")
+# Sidecar stamping when the pool was last built, so `deck.py suggest` can warn that
+# Standard legality may be stale (cards rotate on a schedule) and prompt a rebuild.
+POOL_BUILD_STAMP = os.path.join(REPO_ROOT, "card-pool.build")
 POOL_HEADER = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
-               "Set Code", "Collector #", "Rarity", "Legalities"]
+               "Set Code", "Collector #", "Rarity", "Legalities", "Released"]
 SEARCH_URL = "https://api.scryfall.com/cards/search"
 
 # Formats worth tracking for deck-building (Arena formats + the major paper
@@ -87,6 +90,9 @@ def row_for(card):
         "Collector #": card.get("collector_number", ""),
         "Rarity": card.get("rarity", "").capitalize(),
         "Legalities": legalities_str(card),
+        # Set release date (YYYY-MM-DD) — feeds deck.py suggest's rotation-risk flag
+        # (Standard holds ~the last 3 years of sets).
+        "Released": card.get("released_at", ""),
     }
 
 
@@ -118,6 +124,11 @@ def main():
         writer.writeheader()
         for c in cards:
             writer.writerow(row_for(c))
+    # Stamp the build date so suggest can flag a stale pool (rotation happened since).
+    import datetime
+    if args.out == POOL_PATH:
+        with open(POOL_BUILD_STAMP, "w", encoding="utf-8") as fh:
+            fh.write(datetime.date.today().isoformat() + "\n")
     print(f"Wrote {args.out}: {len(cards)} cards.")
     return 0
 

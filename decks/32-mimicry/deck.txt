@@ -59,7 +59,7 @@
 16 Island (MSH) 290
 1 Hidden Lair (MSH) 269
 1 Undercity Sewers (PZA) 0
-1 Treno, Dark City (FIN) 290
+1 Gloomlake Verge (DSK) 260
 1 Soured Springs (OTJ) 264
 1 Serpent's Pass (TLA) 279
 1 Dismal Backwater (FDN) 261

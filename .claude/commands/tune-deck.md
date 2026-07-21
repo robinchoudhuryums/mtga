@@ -27,6 +27,14 @@ Read the actual card text — never judge by mana value or a single subtype:
    removal / counters / card advantage / ramp / anthems). Use the roles numbers —
    especially the interaction total — to ground the Health scorecard instead of
    eyeballing "light on interaction". Treat printed MV skeptically for ◊/△ cards.
+2b. `python3 scripts/deck.py tier <id>` — the claimed `#: tier:` vs the tier its
+   measurable quality vector supports. If the deck is being tuned to climb a tier,
+   add `--to <NEXT>` (e.g. `--to A`): it prints the **exact measurable gap** (e.g.
+   "+3 interaction") plus the owned, on-color, 0-wildcard cards that fill the short
+   axis. Use this to make the tune **tier-targeted** — aim the Recommended-changes
+   block at closing that specific axis, not generic "improvement." The tool does the
+   arithmetic; the card SELECTION (which fillers preserve the engine/identity, what to
+   cut) stays your judgment — protect signature/spice per the play-style profile.
 3. `python3 scripts/deck.py mana <id>` — hybrid-aware color requirements. This,
    not stats' rough color identity, is the truth about how many sources each
    color needs. Hybrids don't demand their off-color.
@@ -95,7 +103,10 @@ text; separate problems from opportunities.
 `− Out / + In` | wildcard cost (rarity + owned/craft) | impact deltas (creatures /
 tribe / curve / color) | **two-axis verdict: power (helps/neutral/hurts) + fit/fun
 (on-identity/neutral/off-identity)** | confidence. Rating both axes keeps the
-power-vs-flavor trade visible instead of collapsing it into one "worth it."
+power-vs-flavor trade visible instead of collapsing it into one "worth it." **If the
+goal is a tier climb, lead with the swaps that close the `deck.py tier --to` gap**
+(the specific axis it named — e.g. interaction) and say how far each moves it toward
+the next floor, so the block is aimed at the target, not scattered.
 
 **6. Craft upgrades** — ALWAYS run `deck.py suggest <id> --unowned` (it
 auto-filters to the deck's `#: format:`) and surface the craftable cards that

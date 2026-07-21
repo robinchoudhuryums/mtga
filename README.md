@@ -144,9 +144,13 @@ python3 scripts/build_pool.py            # (re)build card-pool.csv — Standard-
 python3 scripts/build_pool.py --all      # every Arena-craftable card (~15.8k) instead
 ```
 
-`card-pool.csv` carries a **Rarity** column (= Arena wildcard cost). Search it
-with `pool.py`, which joins against what you own so each result is flagged owned
-or craftable:
+`card-pool.csv` carries a **Rarity** column (= Arena wildcard cost) and a
+**`Released`** column (each card's set release date). `build_pool.py` also writes
+a `card-pool.build` sidecar stamping when the pool was last built — together these
+let `deck.py suggest` reason about **rotation** (Standard holds ~the last 3 years
+of sets), flagging picks whose set has aged out even when the static `Legalities`
+snapshot still says `standard`. Search the pool with `pool.py`, which joins
+against what you own so each result is flagged owned or craftable:
 
 ```
 python3 scripts/pool.py --color U --text "counter target"    # all blue counters, owned or not
@@ -218,6 +222,14 @@ independent axes and blends them:
 - **Power** — the hand-graded 1–10 `Power` column (constructed impact), so those
   bombs aren't buried by a low fit score.
 
+**Lands are scored on a different axis.** A land has no synergy themes, so theme
+fit would sink it to ~0; instead `--rank` rates a land on **manabase value** for
+its target deck — how much of the deck's colors it actually produces (a WB dual in
+a mono-W deck is half-dead), with a bonus for entering untapped — on the same
+0–10 scale, then blends that with `Power`. So a dual or verge that fixes a
+two-color deck ranks as the real upgrade it is (`sig: manabase (land)`), instead
+of being buried under spells.
+
 The two are normalized and blended 50/50 into a `combined` score; the list still
 groups into fit tiers (A = confident home / real breadth, B = one clear deck,
 C = situational). A **`state`** column shows each card's target deck as
@@ -277,6 +289,13 @@ python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 
 pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export against the stored deck
 python3 scripts/deck.py text 1a              # full oracle text of every card (read before grading)
 python3 scripts/deck.py suggest 1a --unowned --full  # picks WITH full text + keywords + flags
+python3 scripts/deck.py suggest-homes "Crib Swap"    # which decks a card fits, with a fit-strength label
+python3 scripts/deck.py preflight 1a         # one-call verify: legal + owned + castable + integrity
+python3 scripts/deck.py quality 1a --json    # deck-quality vector; --vs FILE diffs a before-snapshot
+python3 scripts/deck.py tier 1a              # claimed #: tier: vs the tier its metrics support
+python3 scripts/deck.py tier 1a --to A       # gap to A + owned fillers AND craft targets for the short axis
+python3 scripts/deck.py history 1a           # the deck's git change history (its changelog)
+python3 scripts/deck.py quality 1a --at HASH # compare this deck's list at a past commit vs now
 ```
 
 `audit` is the **roster triage** for when you don't want to full-tune all your
@@ -341,6 +360,14 @@ picks, a Standard deck gets Standard-legal ones. Override with `--format <fmt>`
 or `--any-format` to turn the filter off. (Requires a legality-aware pool; rerun
 `build_pool.py` if yours predates the column.)
 
+On top of that static filter, `suggest` layers a **date-aware rotation check**:
+using each card's `Released` date and today's date, it marks a pick **`⚠rot`**
+when its set is more than ~3 years old (rotated out of Standard, or rotating
+soon) — so a stale `Legalities` snapshot can't surface a card you can no longer
+play. It also warns when the `card-pool.build` stamp is old (the pool itself may
+have gone stale since a rotation), prompting a `build_pool.py` rebuild to refresh
+both the legality snapshot and the date stamp.
+
 `wildcards` reads every deck's craft targets (cards you're short of), prices each
 by rarity (= its Arena wildcard, from `card-pool.csv`, with a live Scryfall
 fallback for non-Standard cards), and reports three things: per-deck wildcards to
@@ -354,7 +381,13 @@ or grants flash (convoke/delve/"costs {1} less", so the printed mana value doesn
 mislead), `△` for abilities/modes that carry an added or conditional cost — and
 breaks the nonland spells into **functional roles**: a heuristic read of card text
 that counts removal / counters / card advantage / ramp / anthems (with an
-interaction total), so "light on interaction" is *measured*, not eyeballed.
+interaction total), so "light on interaction" is *measured*, not eyeballed. Because
+that regex read can silently **under**-count a phrasing it doesn't recognize,
+`stats` (and `tier`) also run a **coverage self-audit**: a broad lexical net flags
+any card whose text *reads like* interaction / card advantage the classifier didn't
+tag ("⚠ Possible UNDER-COUNT — verify"), so a miss becomes an explicit prompt to
+read the card rather than a silent gap in the count. It never changes a count — it
+tells you where to look.
 `mana` and `check` add a **castability lint** that flags any card whose real color
 needs fall outside the deck's declared `#: colors:` — a strict off-color pip means
 uncastable, an off-color identity (a hybrid you'd pay on-color, or an off-color
@@ -383,6 +416,57 @@ repeatable across lines; card names contain commas, so `;` is the separator).
 `cuts` then keeps those cards **off** the cut list (and lists them as protected),
 and `swap --cut`-ing one prints a warning. Use it for the cards a deck is built
 around so the tooling never proposes cutting them.
+
+`suggest-homes <card>` answers "which of my decks does this new card improve" —
+it scans every deck for the ones where the card is *castable* and shares a
+*central* theme, and tags each fit with a **strength** label: **KEY** (it fills an
+interaction / card-advantage gap the deck is short on, or shares the deck's
+signature theme), **role-player** (a secondary central theme), or **tangential**
+(only generic overlap — etb/tokens/lifegain/…). Rows sort strongest-fit first and
+name the single weakest nonland cut candidate per deck. Because copies are
+fungible, slot a card into *every* deck it earns, not one.
+
+`preflight <id>` is the one-call gate the editing skills run before committing: it
+folds `legal` (construction) + owned/buildable + castability + a full `check_all`
+integrity pass into one structured PASS/FAIL block with a **READY / BLOCKED**
+verdict, exiting non-zero only on a hard failure (an illegal deck or broken
+integrity — unowned craft targets on a WIP deck are a WARN, not a block).
+`quality <id>` computes a **deck-quality vector** (buildable · uncastable strays ·
+interaction / card-advantage role counts · curve · central themes); `--json`
+snapshots it before a change and `--vs FILE` diffs after, flagging **regressions**
+(interaction dropped, castability broke, a central theme lost its last copy, the
+curve got heavier) so a cut/swap that *worsens* the deck self-catches. It's a soft
+guard — intentional trades are fine — so it warns rather than blocking unless
+`--strict`; `--add NAME` warns if a proposed add is only a tangential fit.
+
+`tier <id>` keeps the competitive **`#: tier:` letter honest**. It's a human
+judgment (never auto-assigned), but it should be *defensible* against the deck's
+metrics — so `tier` shows the claimed letter next to the **tier floor** the
+measurable quality vector supports (interaction + card-advantage, castability), and
+flags a **mismatch** when the letter sits ≥2 bands above that floor (inflated or
+stale) or, conversely, when a deck looks **under-graded**. The floor is blind to
+raw card power / bombs / meta, so it deliberately under-rates — a letter one band
+above it is fine (that band credits the intangibles); two bands is the red flag. A
+roster-wide pass is a **soft, non-gating** `check_all` warning, so an inflated or
+stale tier can't hide. See the tier **rubric** in [`CLAUDE.md`](CLAUDE.md).
+
+Add **`--to <TIER>`** (e.g. `deck.py tier 30 --to A`) for a **tier-gap diagnostic**:
+it reports the exact measurable work to reach that band's floor ("+3 interaction")
+and lists the owned, on-color, **0-wildcard** cards that fill the short axis, plus a
+pointer to `cuts` for room. It does the *arithmetic*; the card **selection** — which
+fillers preserve the engine/identity, what to cut — stays a `/tune-deck` judgment
+call (protect signature/spice). `/tune-deck` runs it so a tune aims at a concrete
+tier target instead of generic improvement. The gap list shows both **owned**
+fillers (0 wildcards) and **craft targets** (unowned, format-legal, cheaper
+wildcard first), so it doubles as a wildcard-spend planner for lifting a deck a
+tier.
+
+A deck's **change history is git** — no in-file changelog to go unwieldy or drift.
+`deck.py history <id>` prints the deck file's commit log (each message states the
+thematic + technical *why*), and `deck.py quality <id> --at <hash>` re-scores that
+past version's list against current card knowledge and diffs it vs now — so "was my
+previous version better, technically?" is answerable directly (interaction / curve /
+central-theme deltas), and `git show <hash>:<path>` recovers the full old list.
 
 Decks live under `decks/` as one folder per core deck, with variations as sibling
 files (`deck.txt` → id `1`, `1a-*.txt` → id `1a`). Basics are treated as
@@ -451,6 +535,12 @@ exports carry no deck name), then diffed by card name + quantity with printings 
 basic-land art treated as fungible — the **same rules as `deck.py verify`**, run
 entirely client-side (nothing is uploaded). Use it to spot which decks you've edited
 in Arena but not yet updated in the repo (or vice-versa).
+
+A **"Find a card"** search box (top of the page) is the dashboard mirror of
+`card.py`'s *in decks* line: type any card name and it lists every deck **including
+variants** that runs it (with the copy count), each a click-through chip that
+filters the deck list to that deck. It searches the same per-deck card multisets the
+stale-deck compare uses, entirely in-browser.
 
 The build is **offline** — it disables `deck.py`'s live-Scryfall fallbacks and reads
 only committed data (`card-*.csv` + `decks/`), so it never touches the network and
@@ -571,13 +661,22 @@ Import applies Sheets' own formula parsing, which this RAW guard can't cover.)
 `python3 scripts/check_all.py` is the project's integrity gate — it verifies the
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
 derived files present, decks parse) plus a **ranking-model sanity check**
-(`check_rankings.py`, above), and exits non-zero on any hard break. A
-SessionStart hook runs it (quiet) so drift surfaces immediately.
+(`check_rankings.py`, above), and exits non-zero on any hard break. It also emits
+**soft warnings** (never gating): wishlist target drift (a card whose target deck
+can no longer cast it); **new unindexed card mechanics** — `check_keywords.py`
+flags a keyword on an owned card that isn't in the synergy map yet (a new set's
+mechanic), so tags never silently miss it; and **tier mismatch** — a deck whose
+claimed `#: tier:` sits ≥2 bands above the tier its measurable quality vector
+supports (an inflated or stale letter), so the most-trusted signal in the roster
+can't drift unchecked. A SessionStart hook runs the gate (quiet) so drift surfaces
+immediately.
 
 Claude Code slash commands live in `.claude/commands/`:
 
 - **Project:** `/check` (integrity), `/refresh` (rebuild derived data),
-  `/add-deck` (ingest a pasted deck), `/tune-deck` (deck-building analysis).
+  `/add-deck` (ingest a pasted deck), `/tune-deck` (deck-building analysis),
+  `/add-cards` (catalog newly-owned cards + find their homes), `/apply-changes`
+  (apply confirmed swaps, run the quality guard, verify + commit).
 - **Audit (from claude-workflow-tools):** `/broad-scan`, `/broad-implement`,
   `/sync-docs`, `/health-pulse` (quick directional read), `/roadmap` —
   project-agnostic; they read the **Cycle Workflow Config** in `CLAUDE.md` (Test

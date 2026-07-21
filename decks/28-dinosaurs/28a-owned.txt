@@ -48,10 +48,10 @@
 1 Hushwood Verge (DSK) 261
 1 Gathering Place (MSH) 266
 1 Birnin Zana Plaza (MSH) 262
-1 Rugged Highlands (FDN) 265
+1 Thornspire Verge (DSK) 270
 1 Gruul Guildgate (RNA) 250
 1 Omashu City (TLA) 275
-1 Wind-Scarred Crag (FDN) 271
+1 Sunbillow Verge (DFT) 264
 1 Temple of Triumph (FDN) 705
 1 Abraded Bluffs (OTJ) 251
 4 Plains

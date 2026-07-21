@@ -1,6 +1,6 @@
 #: name: Dino Stampede
 #: format: Standard
-#: tier: D — Naya Dinosaurs — incomplete (9 to craft); owned build 28a plays ~C
+#: tier: A — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit). Re-graded B→A after the interaction package (+Bushwhack / +Clash of the Eikons fight removal / +Auspicious Arrival investigate-draw, cutting off-tribe Soldier chaff) took interaction 3→5 and card advantage 1→2 → A-floor, while tightening the Dino/Soldier split. A here is a clean, resilient fair-creature A (not a bomb-driven one). The fully-owned playable version is variant 28a.
 #: colors: RGW
 #: archetype: Naya (R/G/W) Dinosaur tribal with a Soldier secondary — Triceraton Commander token engine into big dinos (Ghalta, Gishath). WIP brew.
 
@@ -13,12 +13,12 @@
 1 Nurturing Bristleback (LCI) 203
 1 Quakestrider Ceratops (FDN) 110
 1 Flowerfoot Swordmaster (BLB) 14
-1 Encumbered Reejerey (ECL) 14
+1 Bushwhack (BRO) 174
 1 Raft Security Officer (MSH) 33
-1 Super-Soldier Serum (MSH) 38
+1 Clash of the Eikons (FIN) 180
 1 Captain America, Wings of Freedom (MSH) 10
 1 Cosmogrand Zenith (EOE) 9
-1 Dual-Sun Adepts (EOE) 12
+1 Auspicious Arrival (MKM) 5
 1 Earth Kingdom Jailer (TLA) 16
 1 Red Guardian, Super-Soldier (MSH) 34
 1 Okoye, Dora Milaje Leader (MSH) 27
@@ -46,10 +46,10 @@
 1 Hushwood Verge (DSK) 261
 1 Gathering Place (MSH) 266
 1 Birnin Zana Plaza (MSH) 262
-1 Rugged Highlands (FDN) 265
+1 Thornspire Verge (DSK) 270
 1 Gruul Guildgate (RNA) 250
 1 Omashu City (TLA) 275
-1 Wind-Scarred Crag (FDN) 271
+1 Sunbillow Verge (DFT) 264
 1 Temple of Triumph (FDN) 705
 1 Abraded Bluffs (OTJ) 251
 5 Plains

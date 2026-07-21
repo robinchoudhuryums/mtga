@@ -1,6 +1,6 @@
 #: name: Drawn Conclusions
 #: format: Standard
-#: tier: B — Dimir card-draw control (strong B); added a Mythic finisher/engine (Kaito, Bane of Nightmares) + upgraded interaction quality (Sokka's Haiku hard counter-that-draws, Bitter Triumph flexible removal). Raw interaction count is still modest (~5) — a deliberate draw-payoff density trade; Disdainful Stroke (for the 2nd Super Intelligence) is the queued net-add if more answers are wanted.
+#: tier: A — Dimir card-draw control; a Mythic finisher/engine (Kaito, Bane of Nightmares) + 5 interaction (hard counters + flexible removal like Sokka's Haiku / Bitter Triumph) + card advantage on a clean 2-color base. Re-graded B→A: measurable floor is A (interaction 5 + card advantage, coherent control engine) — the raw count is deliberately modest for draw-payoff density, but the interaction QUALITY (hard counters + a mythic finisher) clears the bar. Disdainful Stroke (for the 2nd Super Intelligence) is the queued net-add if more answers are wanted.
 #: colors: UB
 #: archetype: Dimir (U/B) card-draw control.
 #: notes: Dimir (U/B) — card draw / control.
@@ -45,7 +45,7 @@
 # Lands
 2 Baxter Building (MSH) 261
 1 Hidden Lair (MSH) 269
-1 Soured Springs (OTJ) 264
+1 Gloomlake Verge (DSK) 260
 1 Treno, Dark City (FIN) 290
 2 Dismal Backwater (FDN) 261
 6 Swamp (MSH) 292

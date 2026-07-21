@@ -1,6 +1,6 @@
 #: name: Bird Brain — GW Chocobo
 #: format: Standard
-#: tier: D — Bird Brain GW Chocobo — incomplete (8 to craft); ungradeable as built
+#: tier: A — Bird Brain GW Chocobo variant; graded on the LIST ignoring ownership (legal 60). Re-graded C→A after the green-fight interaction package (+Bushwhack / +Clash of the Eikons / +Erode, cutting off-tribe chaff) took interaction 2→4, then +Season of Gathering back over Dazzling Angel (its destroy-all mode = interaction, draw mode = card advantage) reached interaction 5 / card advantage 2 → A-floor. A distinctness-preserving fork of the GWU primary 19 — leans green fights + a Selesnya go-wide creature-count package (Suki/Rinoa/Earth King/Spider-Ham), sharing only Bushwhack with the primary.
 #: colors: GW
 #: based-on: deck.txt
 #: archetype: 19 variant — Selesnya (G/W) sibling of the promoted Bant primary; drops blue for more green token-makers.
@@ -23,9 +23,9 @@
 1 Mole Man, Moloid Master (MSH) 177
 1 Galactic Wayfarer (EOE) 185
 1 Glacier Godmaw (EOE) 188
-1 Season of Gathering (BLB) 192
+1 Bushwhack (BRO) 174
 1 Rydia's Return (FIN) 198
-1 The Unbeatable Squirrel Girl (MSH) 193
+1 Clash of the Eikons (FIN) 180
 1 Michelangelo, Mutant BFF (TMT) 120
 1 Storm, Windrider (MSH) 230
 1 Suki, Kyoshi Warrior (TLA) 243
@@ -37,8 +37,8 @@
 1 Salvation Swan (BLB) 28
 1 Miner's Guidewing (LCI) 24
 1 Ambrosia Whiteheart (FIN) 6
-1 Dawnwing Marshal (FDN) 570
-1 Dazzling Angel (FDN) 9
+1 Erode (SOS) 15
+1 Season of Gathering (BLB) 192
 1 Stirring Hopesinger (SOS) 35
 1 Momo, Friendly Flier (TLA) 29
 1 Sunbird Standard (LCI) 262

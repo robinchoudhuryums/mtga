@@ -45,7 +45,8 @@
 1 Fire Nation Palace (TLA) 268
 1 Boiling Rock Prison (TLA) 267
 10 Swamp (MSH) 292
-11 Mountain (MSH) 294
+10 Mountain (MSH) 294
+1 Blazemire Verge (DSK) 256
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 10
 #~ -Kavaron Skywarden | +The Ruinous Wrecking Crew | CRAFT (R) ★ MARKED UPGRADE / ★ ACROSS THE ROSTER: a Villain that enters with X counters and does up to X of {loot / drain 2 / kill a token / edict} — card advantage + removal + reach on one on-tribe body. Same wildcard also upgrades Black Sun (1) and Sacrifices (8): one craft, three BR decks

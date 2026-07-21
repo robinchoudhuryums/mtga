@@ -1,7 +1,7 @@
 #: name: Gastromancer
 #: format: Standard
-#: tier: B — Abzan food-aristocrats; dense interaction (10) + low curve, capped by 3-color
-#: colors: WBGR
+#: tier: A — Abzan (WBG) food-aristocrats; dense interaction (12) + low curve (2.81). Re-graded B→A after the mana fix: dropping the 1-card red splash (Ragost → variant 21a) collapsed a stretched 4-color base to a focused Abzan, so every land now serves the three real colors. A-floor on interaction; the residual is a still-thin black (19 pips / 12 sources) that the wishlist WBG verges finish. The intentional 4-color version is variant 21a.
+#: colors: WBG
 #: archetype: Abzan (W/B/G, light red) Food-sacrifice / artifact-aristocrats — Ragost + a deep sac-payoff web.
 #: notes: Abzan (W/B/G) Food-sacrifice / artifact-aristocrats with a LIGHT red splash
 #: notes: for the namesake Ragost, Deft Gastronaut ({R}{W} — makes all your artifacts
@@ -15,7 +15,7 @@
 
 # Nonland — sac payoffs / aristocrats
 1 Pizza Face, Gastromancer (TMT) 163
-1 Ragost, Deft Gastronaut (EOE) 224
+1 Unlucky Cabbage Merchant (TLA) 201
 1 G'raha Tia (FIN) 21
 1 Cauldron of Essence (SOS) 179
 1 Ice Cream Kitty (TMT) 150
@@ -68,11 +68,9 @@
 1 Gathering Place (MSH) 266
 1 Castle Doom (MSH) 263
 1 Capital City (FIN) 274
-1 Bloodfell Caves (TDM) 250
-1 Wind-Scarred Crag (FDN) 271
 3 Forest (MSH) 296
-5 Swamp (MSH) 292
-3 Plains (MSH) 288
+6 Swamp (MSH) 292
+4 Plains (MSH) 288
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 21
 #~ +Season of Loss | SIDEGRADE (owned): flexible modal sac payoff, but this deck is already saturated with sac payoffs (Ygra + Gabranth added) — lateral here; it's a marked upgrade in 8 / 11 / 21a.

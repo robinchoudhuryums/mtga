@@ -1,6 +1,6 @@
 #: name: Iron Forge
 #: format: Standard
-#: tier: B — Izzet artifacts/robots; Iron Man/Ultron bombs, moderate interaction (tightened from Jeskai to 2-color)
+#: tier: A — Izzet artifacts/robots; Iron Man/Ultron bombs + 6 interaction + 2 card advantage on a tightened 2-color base (down from Jeskai). Re-graded B→A: measurable floor is A (solid interaction + card advantage) and the deck adds real bombs the metrics can't see — the earlier B under-rated a coherent 2-color engine.
 #: colors: UR
 #: archetype: Jeskai (W/U/R) artifacts + Robot tribal — the finalized playable 60; Iron Man / Ultron payoffs, Dawnsire for removal, The Ten Rings for card advantage.
 #: notes: The tuned, legal 60 (promoted from the old 73-card brew, which is archived
