@@ -1,7 +1,7 @@
 #: name: Fighting Spirit
 #: format: Standard
 #: colors: UR
-#: tier: A — Izzet (UR) aggro-tempo. A-floor: interaction 6 on a coherent haste / double-strike / spell-payoff engine with a tight 2.44 curve (22 early drops) on a clean R-primary base. Real interaction — Heartfire sac-removal + Artistic Process + Impractical Joke, plus a soft counter suite (We Say Thee Nay, Redirect Lightning, Death to Our Enemies). Held out of any S conversation by two honest gaps: card advantage runs thin (measured 1; ~4 real via Enduring Curiosity / Null Group / loot / Clues, but the deck still dumps its hand and can flood out against removal-heavy control) and raw power sits below tuned Standard staples — this is a creative UB brew, and the premier upgrades (Slickshot Show-Off, Emberheart Challenger) are still unowned in flex. Low-end A / defensible B; re-grade toward S only after crafting the flex staples and proving it closes fast.
+#: tier: A — Izzet (UR) aggro-tempo. A-floor: interaction 6 on a coherent haste / double-strike / spell-payoff engine with a tight 2.44 curve (22 early drops) on a clean R-primary base. Real interaction — Heartfire sac-removal + Artistic Process + Impractical Joke, plus a soft counter suite (We Say Thee Nay, Redirect Lightning). Held out of any S conversation by two honest gaps: card advantage runs thin (measured 1; ~4 real via Enduring Curiosity / Null Group / loot / Clues, but the deck still dumps its hand and can flood out against removal-heavy control) and raw power sits below tuned Standard staples — this is a creative UB brew, and the premier upgrades (Slickshot Show-Off, Emberheart Challenger) are still unowned in flex. Low-end A / defensible B; re-grade toward S only after crafting the flex staples and proving it closes fast.
 #: archetype: Izzet (UR) aggro-tempo — haste, double strike, pump, aggressive damage.
 #: notes: Trimmed 58-card brew to a legal 60 (22 creatures + 14 noncreature spells + 24
 #: notes: lands). R-primary / U-secondary: blue is a light splash (We Say Thee Nay counter +
@@ -10,11 +10,11 @@
 #: notes: Double-strike spine: Raphael the Nightwatcher (attackers gain DS), Team Tactics,
 #: notes: Hard-Won Jitte, Quicksilver (power-up DS), Raph & Leo (extra combat). Spell payoffs:
 #: notes: Stormcatch Mentor (cost reduction), Balmor (team anthem), Emeritus of Conflict,
-#: notes: Death to Our Enemies. Heartfire Immolator (owned) adds sac-removal; Felonious Rage /
+#: notes: The Vision (modal DS / draw / indestructible). Heartfire Immolator adds sac-removal; Felonious Rage /
 #: notes: Reverberating Summons / Samurai's Katana crafted in. Graded tier A (see header) —
 #: notes: re-grade after playtesting if the card-advantage/inevitability plan proves out.
 
-# Threats / payoffs (22)
+# Threats / payoffs (23)
 1 Quicksilver, Brash Blur (MSH) 148
 1 Speed, Young Avenger (MSH) 152
 1 Draconautics Engineer (DFT) 121
@@ -37,8 +37,9 @@
 1 Raphael, the Nightwatcher (TMT) 103
 1 Enduring Courage (DSK) 133
 1 Enduring Curiosity (DSK) 51
+1 The Vision (MSH) 255
 
-# Spells — pump / haste / burn / interaction (14)
+# Spells — pump / haste / burn / interaction (13)
 1 Felonious Rage (MKM) 125
 1 Impractical Joke (SOS) 119
 1 Jet's Brainwashing (TLA) 143
@@ -50,7 +51,6 @@
 1 Team Tactics (MSH) 155
 1 Reverberating Summons (TDM) 117
 1 Samurai's Katana (FIN) 154
-1 Death to Our Enemies (MSH) 127
 1 Devastating Onslaught (EOE) 132
 1 Artistic Process (SOS) 108
 
