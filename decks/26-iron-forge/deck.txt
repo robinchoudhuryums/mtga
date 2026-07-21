@@ -11,7 +11,7 @@
 
 # Creatures
 1 Shuri, Wakandan Inventor (MSH) 75
-1 Hydraulic Helper (MSH) 57
+1 Fiery Annihilation (FDN) 86
 1 Steelswarm Operator (EOE) 80
 1 Tony Stark (MSH) 80
 1 Donatello, Way with Machines (TMT) 38
@@ -59,4 +59,6 @@
 # Flex — parked from the 73-pile / craft options. See: deck.py flex 26
 #~ -Cosmic Cube | +The Walls of Ba Sing Se | OWNED: re-add the 8-mana anchor (all your permanents indestructible) if you want top-end board protection; parked because it partly overlaps Krang
 #~ note: applied — Abrade in for War Machine, Legacy of Iron.
+#~ note: applied — Fiery Annihilation (-Hydraulic Helper): 2nd instant-speed answer (interaction profile was 1 instant/6 sorcery). Flat 5 damage + exile-if-dies beats indestructible/recursion; cut a passive Defender mana-wall the 24-land base already covers.
+#~ -Iron Man Armor | +Galvanize | OWNED alt to Fiery Annihilation: cheaper (MV2) instant, 3 damage / 5 if you've drawn 2+ this turn (achievable with the deck's card-draw engine). Take it over Fiery Annihilation if you want a cheaper reactive answer that rewards your draws.
 #~ note: Cuts from base 26 → Bullseye (off-color B), Broadcast Takeover, Radiant Lotus, Waterbending Scroll, Bender's Waterskin, Mind Transfer Protocol, I Am Iron Man, Relm's Sketching, Nanoform Sentinel, Diamond Pick-Axe, Bespoke Bō, Goldvein Pick, Mirrormind Crown, The Walls of Ba Sing Se; +The Vision.
