@@ -85,6 +85,14 @@ castability · curve · central-theme density), with the intangibles moving a de
   ≥3 and sum ≥4; **C-floor** sum ≥2; **D** below that; any uncastable stray caps at
   C. The floor is blind to raw card power / bombs / meta (an idf+role model can't
   see those), so it **under-rates by design.**
+- **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
+  interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
+  cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
+  demands — a fast burn deck isn't floored at C for light removal. Every other plan
+  (midrange / control / combo) keeps the exact interaction+card-advantage floor
+  (clock 0), so nothing else regrades. The plan comes from an explicit **`#: plan:
+  aggro|control|combo|midrange`** header, else keywords in `#: archetype:`, else a
+  strict metric inference (default midrange). `deck.py tier` prints the plan + clock.
 - **The bands (what the letter means):**
   - **S** — measurably A-floor AND a human call that it's top-meta capable: real
     bombs, a protection/interaction suite, proven to close fast. Rare.
@@ -348,6 +356,28 @@ castability · curve · central-theme density), with the intangibles moving a de
   ranked by theme fit **plus the same impact-role credit `cuts` uses** (`_role_credit`),
   so among on-theme options a removal / card-advantage / ramp / cost-reduction / payoff
   card outranks a same-theme vanilla body instead of being buried by tag overlap alone.
+  That ranking is now **needs-aware**: the role credit is **saturation-discounted** (the
+  8th removal spell is worth far less than the 1st, so `suggest` stops recommending an
+  effect the deck is already deep in and `cuts` ranks a redundant piece as more cuttable
+  while protecting a scarce one — #1); the score is nudged by a bounded (±15%) **curve
+  factor** that gently favors filling a thin CHEAP slot and penalizes an over-full one
+  (#2); and a modest **power co-signal** (the wishlist's rarity+role seed) surfaces an
+  owned/craftable BOMB with only modest theme overlap without pulling in off-theme junk
+  (it only re-ranks WITHIN the on-theme set — #6). All three are BOUNDED modifiers on the
+  dominant theme-fit signal, gated by `check_suggest.py` so they can't silently reorder a
+  tuned deck.
+- **`deck.py engines <id>` grades a deck's two-sided ENGINES** (enabler ↔ payoff, #3).
+  A synergy tag says "sacrifice" is in the deck; it can't say which cards FEED the engine
+  (outlets/fodder) vs PAY IT OFF (death triggers). `engines` classifies each card's text
+  as enabler and/or payoff for the engine themes (sacrifice, counters, tokens, graveyard,
+  lifegain, food) and flags a lopsided engine — the ⚠ fires only off the trustworthy
+  PAYOFF side ("payoffs but NO enablers" = dead payoffs; "payoff-heavy" = under-enabled),
+  since enabler cues are broad; `deck.py stats` surfaces the flag inline. It's a shortlist
+  that prints the card lists — read them, the classifier is heuristic.
+- **`deck.py stats` also prints an INTERACTION PROFILE** (#5): the raw interaction count
+  treats all removal alike, so `stats` breaks it down by SPEED (instant vs sorcery) and by
+  whether it can answer a NONCREATURE permanent (planeswalker / enchantment / artifact),
+  flagging "all sorcery-speed" or "no noncreature answer" — measured, not eyeballed.
 - **`deck.py suggest` shows a cross-deck reuse count (`Decks` column).** For each
   pick it counts how many of your OTHER decks (the deck being analyzed is excluded,
   so it can't inflate its own picks) the card is *castable* (its identity ⊆ the
@@ -457,11 +487,17 @@ castability · curve · central-theme density), with the intangibles moving a de
 INV-01…04 plus a **ranking-model sanity check** (`check_rankings.py`) that guards
 the Doctor-Doom-class regression: a scoring change that silently reclassifies a
 real tribal theme as "generic". The ranking check is distribution-based, so it
-survives cards being crafted off the wishlist. A **color-parsing sanity check**
-(`check_colors.py`) is also hard-gated — it locks in the F1/F2 fix (a colorless
-card must not read as red; a slash-gold must pass the subset test). It also emits
-**soft, non-gating warnings**: wishlist target drift — a card whose Target deck can
-no longer cast it
+survives cards being crafted off the wishlist. Four more model-sanity checks are
+also hard-gated: **color-parsing** (`check_colors.py`) locks in the F1/F2 fix (a
+colorless card must not read as red; a slash-gold must pass the subset test);
+**suggest scoring** (`check_suggest.py`) keeps the needs-aware suggest/cuts terms
+BOUNDED — the diminishing-returns role credit and the curve-gap factor can't
+silently reorder a tuned deck (#1/#2), and the power co-signal never overrides
+theme fit (#6); **engine classifier** (`check_engines.py`) anchors the enabler/
+payoff detection on canonical cards (#3); **tier floor** (`check_tier.py`) proves
+the archetype-aware floor grades non-aggro decks identically to before and only
+ever raises an aggro band (#4). It also emits **soft, non-gating warnings**:
+wishlist target drift — a card whose Target deck can no longer cast it
 after a retune — via `wishlist.py --audit-targets`; and **new unindexed mechanics**
 — `check_keywords.py` flags a keyword on an owned card that isn't in
 `tag_synergies.py`'s map yet (a new set's mechanic), baselined in
@@ -469,7 +505,11 @@ after a retune — via `wishlist.py --audit-targets`; and **new unindexed mechan
 (`check_keywords.py --update-baseline` to acknowledge one); **FLAVOR_KEYWORDS
 overreach** — `check_keywords.flavor_overreach()` flags a denylisted "flavor" word
 that's also theme-mapped, or one shared by several owned cards (likely a real
-mechanic being suppressed, audit F24); and **tier mismatch**
+mechanic being suppressed, audit F24); **theme coverage** — `check_themes.py` flags
+an owned card whose oracle text clearly plays a high-confidence theme (food, landfall,
+proliferate, convoke, graveyard, lifegain, counters) it ISN'T tagged with (the theme
+analog of `role_coverage_flags`; a stale/removed tag distorts every tag-based
+recommendation), summarized to one line (#7); and **tier mismatch**
 — `deck.py tier_consistency_issues()` flags a deck whose claimed `#: tier:` sits ≥2
 bands above the tier its measurable quality vector supports (an inflated/stale
 letter — see the Competitive Tiering rubric). Soft warnings never fail the build.)
@@ -485,7 +525,7 @@ letter — see the Competitive Tiering rubric). Soft warnings never fail the bui
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
-- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py
+- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`)
 - Decks: decks/
 
