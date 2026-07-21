@@ -3461,3 +3461,13 @@ Gloomlake Verge,Land,"{T}: Add {U}.
 {T}: Add {B}. Activate only if you control an Island or a Swamp.",U/B,mana,DSK,260,1
 Blazemire Verge,Land,"{T}: Add {B}.
 {T}: Add {R}. Activate only if you control a Swamp or a Mountain.",B/R,mana,DSK,256,1
+"Quicksilver, Brash Blur",Legendary Creature — Mutant Hero,"If Quicksilver, Brash Blur is in your opening hand, you may begin the game with him on the battlefield.
+Haste
+Power-up — {4}{R}: Put a +1/+1 counter and a double strike counter on Quicksilver. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",R,Mutant; Hero; counters; power-up; payoff; haste; aggro,MSH,148,1
+War Squeak,Enchantment — Aura,"Enchant creature
+When this Aura enters, target creature an opponent controls can't block this turn.
+Enchanted creature gets +1/+1 and has haste.",R,Aura; etb; aura; pump; enchant,BLB,160,1
+"Caelorna, Coral Tyrant",Legendary Creature — Octopus,,U,Octopus,DFT,40,1
+Diversion Unit,Artifact Creature — Robot,"Flying
+{U}, Sacrifice this creature: Counter target instant or sorcery spell unless its controller pays {3}.",U,Robot; counterspell; sacrifice; flying; evasion,DFT,41,1
+Impractical Joke,Sorcery,Damage can't be prevented this turn. Impractical Joke deals 3 damage to up to one target creature or planeswalker.,R,burn,SOS,119,1
