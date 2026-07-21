@@ -83,7 +83,7 @@ At the beginning of your end step, if this enchantment has four or more quest co
 Airbender's Reversal,Instant — Lesson,"Choose one —
 • Destroy target attacking creature.
 • Airbend target creature you control. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)",W,Lesson; removal; airbend; bending,TLA,7,1
-Ajani's Pridemate,Creature — Cat Soldier,"Whenever you gain life, put a +1/+1 counter on this creature.",W,Cat; Soldier; counters,FDN,135,1
+Ajani's Pridemate,Creature — Cat Soldier,"Whenever you gain life, put a +1/+1 counter on this creature.",W,Cat; Soldier; counters; lifegain,FDN,135,1
 "April O'Neil, Kunoichi Trainee",Legendary Creature — Human Ninja,"When April O'Neil enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)
 April O'Neil can't be blocked by creatures with power 3 or greater.",W,Human; Ninja; etb; scry; selection,TMT,3,1
 Auspicious Arrival,Instant,"Target creature gets +2/+2 until end of turn. Investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",W,card draw; sacrifice; tokens; clue; pump; investigate,MKM,5,1
@@ -381,7 +381,7 @@ Create three 1/1 white Ninja Turtle Spirit creature tokens. If this spell's snea
 When The Sentry enters, target opponent creates The Void, a legendary 5/5 black Horror Villain creature token with flying, indestructible, and ""The Void attacks each combat if able.""",W,Human; Hero; tokens; etb; flying; evasion; indestructible; resilience; vigilance; combat,MSH,35,1
 Unsettling Twins,Creature — Human,"When this creature enters, manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)",W,Human; reanimator; graveyard; etb; selection; manifest; tokens; manifest dread,DSK,38,1
 Vanguard Seraph,Creature — Angel Warrior,"Flying
-Whenever you gain life for the first time each turn, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W,Angel; Warrior; graveyard; selection; flying; evasion; surveil,FDN,28,1
+Whenever you gain life for the first time each turn, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W,Angel; Warrior; graveyard; selection; flying; evasion; surveil; lifegain,FDN,28,1
 Vengeful Villagers,Creature — Human Citizen,"Whenever this creature attacks, choose target creature an opponent controls. Tap it, then you may sacrifice an artifact or creature. If you do, put a stun counter on the chosen creature. (If a permanent with a stun counter would become untapped, remove one from it instead.)",W,Human; Citizen; counters; sacrifice,TLA,40,1
 Wakandan Drone Flock,Artifact Creature — Robot,"Flying
 When this creature enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)",W,Robot; etb; scry; selection; flying; evasion,MSH,40,1
@@ -996,7 +996,7 @@ Whenever another creature you control with power 2 or less enters, surveil 1. (L
 Vampiric Rites,Enchantment,"{1}{B}, Sacrifice a creature: You gain 1 life and draw a card.",B,lifegain; card draw; sacrifice,WOT,37,1
 Stab,Instant,Target creature gets -2/-2 until end of turn.,B,removal,FDN,71,1
 "Whiplash, Vengeful Engineer",Legendary Creature — Human Artificer Villain,"Whiplash enters tapped.
-Whenever Whiplash attacks, if he's equipped, each opponent loses X life and you gain X life, where X is the number of Equipment attached to him.",B,Human; Artificer; Villain,MSH,121,1
+Whenever Whiplash attacks, if he's equipped, each opponent loses X life and you gain X life, where X is the number of Equipment attached to him.",B,Human; Artificer; Villain; lifegain,MSH,121,1
 Zuko's Conviction,Instant,"Kicker {4} (You may pay an additional {4} as you cast this spell.)
 Return target creature card from your graveyard to your hand. If this spell was kicked, instead put that card onto the battlefield tapped.",B,reanimator; graveyard; kicker; value,TLA,123,1
 Auntie's Sentence,Sorcery,"Choose one —
@@ -1097,7 +1097,7 @@ Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)
 Starscape Cleric,Creature — Bat Cleric,"Offspring {2}{B} (You may pay an additional {2}{B} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
 Flying
 This creature can't block.
-Whenever you gain life, each opponent loses 1 life.",B,Bat; Cleric; tokens; etb; flying; evasion; offspring; go-wide,BLB,116,1
+Whenever you gain life, each opponent loses 1 life.",B,Bat; Cleric; tokens; etb; flying; evasion; offspring; go-wide; lifegain,BLB,116,1
 Stomped by the Foot,Instant,"Kicker—Sacrifice an artifact or creature. (You may sacrifice an artifact or creature in addition to any other costs as you cast this spell.)
 Target creature gets -2/-2 until end of turn. If this spell was kicked, that creature gets -5/-5 until end of turn instead.",B,sacrifice; removal; kicker; value,TMT,82,1
 Super Shredder,Legendary Creature — Mutant Ninja Human,"Menace
@@ -1235,7 +1235,7 @@ Infusion — This creature gets +2/+0 as long as you gained life this turn.",B,G
 Venomized Cat,Creature — Symbiote Cat Villain,"Deathtouch
 When this creature enters, mill two cards. (Put the top two cards of your library into your graveyard.)",B,Symbiote; Cat; Villain; graveyard; mill; etb; deathtouch; combat; removal,SPM,72,1
 Withering Curse,Sorcery,"All creatures get -2/-2 until end of turn.
-Infusion — If you gained life this turn, destroy all creatures instead.",B,infusion,SOS,105,1
+Infusion — If you gained life this turn, destroy all creatures instead.",B,infusion; lifegain,SOS,105,1
 Visions of Villainy,Instant,"This spell costs {1} less to cast if you control a Villain.
 You draw two cards and lose 2 life.",B,card draw,MSH,120,1
 Anchovy & Banana Pizza,Artifact — Food,"When this artifact enters, destroy target creature.
@@ -1340,7 +1340,7 @@ Basic landcycling {2} ({2}, Discard this card: Search your library for a basic l
 Risen Necroregent,Creature — Zombie Cat Knight,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
 Max speed — At the beginning of your end step, create a 2/2 black Zombie creature token.",B,Zombie; Cat; Knight; tokens; max speed; speed; aggro; start your engines!,DFT,102,1
 Shimmercreep,Creature — Elemental,"Menace (This creature can't be blocked except by two or more creatures.)
-Vivid — When this creature enters, each opponent loses X life and you gain X life, where X is the number of colors among permanents you control.",B,Elemental; etb; menace; evasion; vivid,ECL,120,1
+Vivid — When this creature enters, each opponent loses X life and you gain X life, where X is the number of colors among permanents you control.",B,Elemental; etb; menace; evasion; vivid; lifegain,ECL,120,1
 "Shredder, Unrelenting",Legendary Creature — Human Ninja,"Sneak {3}{B} (You may cast this spell for {3}{B} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)
 Deathtouch
 Whenever Shredder enters or attacks, another target creature you control gains deathtouch until end of turn.",B,Human; Ninja; sneak; tempo; cost-reduction; deathtouch; combat; removal,TMT,74,1
@@ -1921,7 +1921,7 @@ Tenderize,Instant,Target creature you control deals damage equal to its power to
 Town Greeter,Creature — Human Citizen,"When this creature enters, mill four cards. You may put a land card from among them into your hand. If you put a Town card into your hand this way, you gain 2 life. (To mill four cards, a player puts the top four cards of their library into their graveyard.)",G,Human; Citizen; graveyard; mill; lifegain; etb,FIN,209,1
 "Tigra, Feline Fury",Legendary Creature — Cat Human Hero,"Flash
 Trample
-Whenever you gain life, put a +1/+1 counter on Tigra.",G,Cat; Human; Hero; counters; trample; evasion; flash; tempo,MSH,191,1
+Whenever you gain life, put a +1/+1 counter on Tigra.",G,Cat; Human; Hero; counters; trample; evasion; flash; tempo; lifegain,MSH,191,1
 True Ancestry,Sorcery — Lesson,"Return up to one target permanent card from your graveyard to your hand.
 Create a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",G,Lesson; graveyard; card draw; sacrifice; tokens; clue,TLA,199,1
 Undercover Skrull,Creature — Skrull Shapeshifter Villain,"As long as there are two or more creature cards in your graveyard, this creature gets +2/+2 and is all creature types.
@@ -1959,7 +1959,7 @@ Emeritus of Abundance,Creature — Elf Druid // Sorcery,"Vigilance
 This creature enters prepared.
 Whenever this creature attacks, if you control eight or more lands, this creature becomes prepared. // Return target card from your graveyard to your hand.",G,Elf; Druid; graveyard; vigilance; combat; prepared; spellslinger; tempo,SOS,145,1
 Efflorescence,Instant,"Put two +1/+1 counters on target creature.
-Infusion — If you gained life this turn, that creature also gains trample and indestructible until end of turn.",G,counters; infusion,SOS,144,1
+Infusion — If you gained life this turn, that creature also gains trample and indestructible until end of turn.",G,counters; infusion; lifegain,SOS,144,1
 Epic Fight,Sorcery,"Choose one or both —
 • Double target creature's power and toughness until end of turn.
 • Target creature you control fights target creature an opponent controls.",G,fight; removal; combat; double,MSH,166,1
@@ -2155,7 +2155,7 @@ Season of Gathering,Sorcery,"Choose up to five {P} worth of modes. You may choos
 {P}{P}{P} — Draw cards equal to the greatest power among creatures you control.",G,counters,BLB,192,1
 "Spider-Rex, Daring Dino",Legendary Creature — Spider Dinosaur Hero,"Reach, trample
 Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)",G,Spider; Dinosaur; Hero; reach; defense; trample; evasion; ward; protection,MSC,818,1
-Snarl Song,Sorcery,"Converge — Create two 0/0 green and blue Fractal creature tokens. Put X +1/+1 counters on each of them and you gain X life, where X is the number of colors of mana spent to cast this spell.",G,counters; tokens; converge; multicolor,SOS,161,1
+Snarl Song,Sorcery,"Converge — Create two 0/0 green and blue Fractal creature tokens. Put X +1/+1 counters on each of them and you gain X life, where X is the number of colors of mana spent to cast this spell.",G,counters; tokens; converge; multicolor; lifegain,SOS,161,1
 The Legend of Kyoshi,Enchantment — Saga // Legendary Creature — Avatar,"(As this Saga enters and after your draw step, add a lore counter.)
 I — Draw cards equal to the greatest power among creatures you control.
 II — Earthbend X, where X is the number of cards in your hand. That land becomes an Island in addition to its other types.
@@ -2263,7 +2263,7 @@ Whenever one or more creatures you control deal combat damage to a player, you m
 Pretending Poxbearers,Creature — Human Citizen Ally,"When this creature dies, create a 1/1 white Ally creature token.",W/B,Human; Citizen; Ally; tokens,TLA,237,1
 Lunar Convocation,Enchantment,"At the beginning of your end step, if you gained life this turn, each opponent loses 1 life.
 At the beginning of your end step, if you gained and lost life this turn, create a 1/1 black Bat creature token with flying.
-{1}{B}, Pay 2 life: Draw a card.",W/B,card draw; tokens,BLB,223,1
+{1}{B}, Pay 2 life: Draw a card.",W/B,card draw; tokens; lifegain,BLB,223,1
 Sandbender Scavengers,Creature — Human Rogue,"Whenever you sacrifice another permanent, put a +1/+1 counter on this creature.
 When this creature dies, you may exile it. When you do, return target creature card with mana value less than or equal to this creature's power from your graveyard to the battlefield.",W/B,Human; Rogue; counters; reanimator; graveyard; sacrifice,TLA,239,1
 Soul Search,Sorcery,"Target opponent reveals their hand. You choose a nonland card from it. Exile that card. If the card's mana value is 1 or less, create a 1/1 white and black Spirit creature token with flying.",W/B,tokens,MKM,232,1
@@ -2285,7 +2285,7 @@ When this creature is turned face up, another target creature you control gains 
 Social Snub,Sorcery,"When you cast this spell while you control a creature, you may copy this spell.
 Each player sacrifices a creature of their choice. Each opponent loses 1 life and you gain 1 life.",W/B,lifegain; sacrifice,SOS,228,1
 Fiendish Panda,Creature — Bear Demon,"Whenever you gain life, put a +1/+1 counter on this creature.
-When this creature dies, return another target non-Bear creature card with mana value less than or equal to this creature's power from your graveyard to the battlefield.",W/B,Bear; Demon; counters; reanimator; graveyard,FDN,120,1
+When this creature dies, return another target non-Bear creature card with mana value less than or equal to this creature's power from your graveyard to the battlefield.",W/B,Bear; Demon; counters; reanimator; graveyard; lifegain,FDN,120,1
 The Kingpin of Crime,Legendary Creature — Human Villain,"Extort (Whenever you cast a spell, you may pay {W/B}. If you do, each opponent loses 1 life and you gain that much life.)
 Whenever you attack, you may pay 2 life. If you do, until end of turn, creatures you control with toughness greater than their power assign combat damage equal to their toughness rather than their power.",W/B,Human; Villain; lifegain; extort; drain,MSH,220,1
 "Hei Bai, Spirit of Balance",Legendary Creature — Bear Spirit,"Whenever Hei Bai enters or attacks, you may sacrifice another creature or artifact. If you do, put two +1/+1 counters on Hei Bai.
@@ -2465,7 +2465,7 @@ Razortrap Gorge,Land,"This land enters tapped unless a player has 13 or less lif
 {T}: Add {B} or {R}.",B/R,mana,DSK,267,1
 Ice Cream Kitty,Artifact Creature — Food Cat Mutant,"{2}, Sacrifice another creature or token: Draw a card. Activate only as a sorcery.
 {2}, {T}, Sacrifice this creature: You gain 3 life.",B/G,Food; Cat; Mutant; lifegain; card draw; sacrifice,TMT,150,1
-"Blech, Loafing Pest",Legendary Creature — Pest,"Whenever you gain life, put a +1/+1 counter on each Pest, Bat, Insect, Snake, and Spider you control.",B/G,Pest; counters,SOS,176,1
+"Blech, Loafing Pest",Legendary Creature — Pest,"Whenever you gain life, put a +1/+1 counter on each Pest, Bat, Insect, Snake, and Spider you control.",B/G,Pest; counters; lifegain,SOS,176,1
 Earth Village Ruffians,Creature — Human Soldier Rogue,"When this creature dies, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",B/G,Human; Soldier; Rogue; counters; blink; earthbend; bending,TLA,219,1
 Cauldron of Essence,Artifact,"Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life.
 {1}{B}{G}, {T}, Sacrifice a creature: Return target creature card from your graveyard to the battlefield. Activate only as a sorcery.",B/G,reanimator; graveyard; lifegain; sacrifice,SOS,179,1
@@ -2491,7 +2491,7 @@ Particle Beam — When Cloud of Darkness enters, target creature an opponent con
 Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, put three +1/+1 counters on up to one other target artifact or creature. If it isn't a creature, it becomes a 0/0 Mutant creature in addition to its other types.
 {10}, {T}, Sacrifice Pizza Face: You gain 15 life.",B/G,Food; Mutant; counters; lifegain; sacrifice; tokens; etb; food; disappear,TMT,163,1
 Dai Li Agents,Creature — Human Soldier,"When this creature enters, earthbend 1, then earthbend 1. (To earthbend 1, target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)
-Whenever this creature attacks, each opponent loses X life and you gain X life, where X is the number of creatures you control with +1/+1 counters on them.",B/G,Human; Soldier; counters; etb; blink; earthbend; bending,TLA,214,1
+Whenever this creature attacks, each opponent loses X life and you gain X life, where X is the number of creatures you control with +1/+1 counters on them.",B/G,Human; Soldier; counters; etb; blink; earthbend; bending; lifegain,TLA,214,1
 Stoic Grove-Guide,Creature — Elf Druid,"{1}{B/G}, Exile this card from your graveyard: Create a 2/2 black and green Elf creature token. Activate only as a sorcery.",B/G,Elf; Druid; graveyard; tokens,ECL,243,1
 The Coming of Galactus,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
 I — Destroy up to one target nonland permanent.
@@ -2702,7 +2702,7 @@ Undercover Crocodelf,Creature — Elf Crocodile Detective,"Whenever this creatur
 Disguise {3}{G/U}{G/U} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)",U/G,Elf; Crocodile; Detective; card draw; sacrifice; tokens; clue; investigate; disguise; tempo,MKM,239,1
 Fractal Mascot,Creature — Fractal Elk,"Trample
 When this creature enters, tap target creature an opponent controls. Put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U/G,Fractal; Elk; counters; etb; trample; evasion,SOS,189,1
-"Omega, Heartless Evolution",Legendary Artifact Creature — Robot,"Wave Cannon — When Omega enters, for each opponent, tap up to one target nonland permanent that opponent controls. Put X stun counters on each of those permanents and you gain X life, where X is the number of nonbasic lands you control. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U/G,Robot; counters; etb,FIN,236,1
+"Omega, Heartless Evolution",Legendary Artifact Creature — Robot,"Wave Cannon — When Omega enters, for each opponent, tap up to one target nonland permanent that opponent controls. Put X stun counters on each of those permanents and you gain X life, where X is the number of nonbasic lands you control. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U/G,Robot; counters; etb; lifegain,FIN,236,1
 Worlds Within Worlds,Sorcery,Exile all creatures. Each player may put any number of creature cards from their hand onto the battlefield. Then put all cards exiled this way into their owners' hands. Exile Worlds Within Worlds.,U/G,,MSH,241,1
 Pterafractyl,Creature — Dinosaur Fractal,"Flying
 This creature enters with X +1/+1 counters on it.
@@ -3136,7 +3136,7 @@ Chelonian Tackle,Sorcery,Target creature you control gets +0/+10 until end of tu
 "Emil, Vastlands Roamer",Legendary Creature — Elf Druid,"Creatures you control with +1/+1 counters on them have trample.
 {4}{G}, {T}: Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it, where X is the number of differently named lands you control.",G,Elf; Druid; counters; tokens,SOS,146,1
 Infirmary Healer,Creature — Cat Cleric // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Target player gains X life.",G,Cat; Cleric; prepared; spellslinger; tempo,SOS,152,1
-Leech Collector,Creature — Human Warlock // Sorcery,"Whenever you gain life for the first time each turn, this creature becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Each opponent loses 2 life.",B,Human; Warlock; prepared; spellslinger; tempo,SOS,88,1
+Leech Collector,Creature — Human Warlock // Sorcery,"Whenever you gain life for the first time each turn, this creature becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Each opponent loses 2 life.",B,Human; Warlock; prepared; spellslinger; tempo; lifegain,SOS,88,1
 Skycoach Waypoint,Land,"{T}: Add {C}.
 {3}, {T}: Target creature becomes prepared. (Only creatures with prepare spells can become prepared.)",Colorless,mana; prepared; spellslinger; tempo,SOS,261,1
 Teacher's Pest,Creature — Skeleton Pest,"Menace (This creature can't be blocked except by two or more creatures.)
@@ -3150,7 +3150,7 @@ Topiary Lecturer,Creature — Elf Druid,"Increment (Whenever you cast a spell, i
 {T}: Add an amount of {G} equal to this creature's power.",G,Elf; Druid; counters; mana; increment,SOS,165,1
 Bogwater Lumaret,Creature — Spirit Frog,"Whenever this creature or another creature you control enters, you gain 1 life.",B/G,Spirit; Frog; lifegain,SOS,177,1
 Pest Mascot,Creature — Pest Ape,"Trample
-Whenever you gain life, put a +1/+1 counter on this creature.",B/G,Pest; Ape; counters; trample; evasion,SOS,209,1
+Whenever you gain life, put a +1/+1 counter on this creature.",B/G,Pest; Ape; counters; trample; evasion; lifegain,SOS,209,1
 Spectacle Summit,Land,"This land enters tapped.
 {T}: Add {U} or {R}.
 {2}{U}{R}, {T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",U/R,graveyard; mana; selection; surveil,SOS,262,1
@@ -3278,7 +3278,7 @@ First strike
 Whenever Shark Shredder deals combat damage to a player, put up to one target creature card from that player's graveyard onto the battlefield under your control. It enters tapped and attacking that player.",B,Shark; Octopus; Ninja; reanimator; graveyard; first strike; combat; sneak; tempo; cost-reduction,TMT,73,1
 South Wind Avatar,Creature — Snake Spirit Avatar,"Deathtouch
 Whenever another creature you control dies, you gain life equal to its toughness.
-Whenever you gain life, each opponent loses 1 life.",B,Snake; Spirit; Avatar; deathtouch; combat; removal,TMT,78,1
+Whenever you gain life, each opponent loses 1 life.",B,Snake; Spirit; Avatar; deathtouch; combat; removal; lifegain,TMT,78,1
 Sanguine Syphoner,Creature — Vampire Warlock,"Whenever this creature attacks, each opponent loses 1 life and you gain 1 life.",B,Vampire; Warlock; lifegain,FDN,68,1
 Vengeful Bloodwitch,Creature — Vampire Warlock,"Whenever this creature or another creature you control dies, target opponent loses 1 life and you gain 1 life.",B,Vampire; Warlock; lifegain,FDN,76,1
 Vampire Nighthawk,Creature — Vampire Shaman,"Flying
@@ -3322,7 +3322,7 @@ When Hugs enters, exile the top X cards of your library. Until the end of your n
 You may play an additional land on each of your turns.",R/G,Badger; Warrior; etb; impulse; trample; evasion,BLB,218,1
 Environmental Scientist,Creature — Human Druid,"When this creature enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.",G,Human; Druid; ramp; etb,SOS,147,1
 Proctor's Gaze,Instant,"Return up to one target nonland permanent to its owner's hand. Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",U/G,ramp; bounce,SOS,213,1
-Follow the Lumarets,Sorcery,"Infusion — Look at the top four cards of your library. You may reveal a creature or land card from among them and put it into your hand. If you gained life this turn, you may instead reveal two creature and/or land cards from among them and put them into your hand. Put the rest on the bottom of your library in a random order.",G,selection; infusion,SOS,148,1
+Follow the Lumarets,Sorcery,"Infusion — Look at the top four cards of your library. You may reveal a creature or land card from among them and put it into your hand. If you gained life this turn, you may instead reveal two creature and/or land cards from among them and put them into your hand. Put the rest on the bottom of your library in a random order.",G,selection; infusion; lifegain,SOS,148,1
 Improvisation Capstone,Sorcery — Lesson,"Exile cards from the top of your library until you exile cards with total mana value 4 or greater. You may cast any number of spells from among them without paying their mana costs.
 Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",R,Lesson; paradigm,SOS,120,1
 "Tatyova, Benthic Druid",Legendary Creature — Merfolk Druid,"Landfall — Whenever a land you control enters, you gain 1 life and draw a card.",U/G,Merfolk; Druid; lifegain; card draw; landfall; lands; ramp,FDN,247,1
@@ -3342,7 +3342,7 @@ Attacking creatures you control have double strike.",R,Mutant; Ninja; Turtle; sn
 Impostor Syndrome,Enchantment,"Whenever a nontoken creature you control deals combat damage to a player, create a token that's a copy of it, except it isn't legendary.",U,tokens,SPM,34,1
 "Arnyn, Deathbloom Botanist",Legendary Creature — Vampire Druid,"Deathtouch
 Whenever a creature you control with power or toughness 1 or less dies, target opponent loses 2 life and you gain 2 life.",B,Vampire; Druid; lifegain; deathtouch; combat; removal,SOS,74,1
-Poisoner's Apprentice,Creature — Orc Warlock,"Infusion — When this creature enters, target creature an opponent controls gets -4/-4 until end of turn if you gained life this turn.",B,Orc; Warlock; etb; removal; infusion,SOS,92,1
+Poisoner's Apprentice,Creature — Orc Warlock,"Infusion — When this creature enters, target creature an opponent controls gets -4/-4 until end of turn if you gained life this turn.",B,Orc; Warlock; etb; removal; infusion; lifegain,SOS,92,1
 Vibrant Outburst,Instant,Vibrant Outburst deals 3 damage to any target. Tap up to one target creature.,U/R,burn,SOS,240,1
 Waxen Shapethief,Creature — Shapeshifter,"Flash
 You may have this creature enter as a copy of an artifact or creature you control.

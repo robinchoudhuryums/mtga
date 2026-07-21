@@ -146,7 +146,11 @@ MECHANIC_RULES = [
         and ("return" in x or "put" in x) and "creature" in x),
     ("graveyard", lambda t, x: "graveyard" in x),
     ("mill", lambda t, x: "mill" in x),
-    ("lifegain", lambda t, x: "lifelink" in x or re.search(r"gain \d+ life|gain that much life", x)),
+    ("lifegain", lambda t, x: "lifelink" in x or re.search(
+        r"gain \d+ life|gain x life|gain that much life|"
+        # also the PAYOFF side — cards that care about lifegain without gaining it
+        # themselves (Ajani's Pridemate, Starscape Cleric) belong to the theme too.
+        r"whenever you gain life|(amount of )?life you gained|if you('ve| have)? gained", x)),
     ("card draw", lambda t, x: re.search(
         r"draw (a|two|three|four|five|six|seven|x|that many|\d+) cards?", x) is not None),
     ("sacrifice", lambda t, x: "sacrifice" in x),
