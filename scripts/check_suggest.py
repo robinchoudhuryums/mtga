@@ -82,6 +82,23 @@ def check():
         errs.append("_curve_gap_factor must NOT boost MV 0 (lands / free spells aren't a "
                     f"spell-curve slot); got {cf(0, lopsided)}.")
 
+    # (5) power co-signal (#6): bounded to a modest additive contribution, and a mythic
+    #     bomb outweighs a common vanilla — but the weighted power (≤10) stays small next
+    #     to a strongly-on-theme card's theme_w, so it can't override theme fit.
+    ps = deck._power_seed
+    bomb = {"Rarity": "Mythic", "Type": "Legendary Planeswalker",
+            "Card Text": "Destroy target permanent. Draw two cards."}
+    vanilla = {"Rarity": "Common", "Type": "Creature — Bear", "Card Text": ""}
+    pb, pv = ps(bomb), ps(vanilla)
+    if not (0.0 <= pv <= 10.0 and 0.0 <= pb <= 10.0):
+        errs.append(f"_power_seed out of [0,10]: bomb {pb}, vanilla {pv}.")
+    if not pb > pv:
+        errs.append(f"_power_seed: a mythic bomb ({pb}) should outrank a common vanilla ({pv}).")
+    if deck._SUGGEST_POWER_W * 10 > 15:
+        errs.append(f"_SUGGEST_POWER_W too large ({deck._SUGGEST_POWER_W}): max power "
+                    "contribution should stay a modest co-signal (≤ ~role-credit scale), "
+                    "not override theme fit.")
+
     return errs
 
 

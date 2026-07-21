@@ -961,6 +961,24 @@ def _curve_gap_factor(mv, curve):
     return 1.0
 
 
+# Weight of the power co-signal in `suggest` (#6): power is 0–10, so at 1.0 a bomb adds
+# up to ~10 — comparable to a strong role bonus, enough to lift a modest-fit bomb above a
+# same-fit vanilla, but small next to a strongly-on-theme card's theme_w. Never dominant.
+_SUGGEST_POWER_W = 1.0
+
+
+def _power_seed(row):
+    """A card's heuristic power (0–10) for suggest's card-quality co-signal (#6) — the
+    same rarity+role estimate the wishlist seeds Power with, so an owned/craftable bomb
+    surfaces even on a modest theme fit. Lazy-imports wishlist (which itself lazy-imports
+    deck) to avoid a load cycle; returns 0.0 if unavailable, so power just drops out."""
+    try:
+        import wishlist
+        return wishlist._seed_power(row)
+    except Exception:
+        return 0.0
+
+
 # --------------------------------------------------------------------------- #
 # Engine roles — enabler vs payoff WITHIN a theme (improvement #3)
 # --------------------------------------------------------------------------- #
@@ -1287,6 +1305,18 @@ def cmd_stats(args):
         print(f"  {'interaction total':20} {role_counts['interaction']:3}  "
               "(distinct removal/sweeper/counter cards)")
 
+    # Interaction profile (#5): the raw count treats all interaction alike, but a suite
+    # that's all sorcery-speed and creature-only has real gaps. Break it down by speed
+    # and by whether it can answer a NONCREATURE permanent (planeswalker / enchantment /
+    # artifact), and flag the gaps — measured, not eyeballed.
+    ip = interaction_profile(cards, carddata)
+    if ip["total"]:
+        print(f"\n  Interaction profile: {ip['total']} piece(s) — {ip['instant']} instant-speed"
+              f" / {ip['sorcery']} sorcery-speed · {ip['noncreature']} can answer a noncreature "
+              "permanent (pw/ench/artifact)")
+        for f in ip["flags"]:
+            print(f"    ⚠ {f}")
+
     # Coverage self-audit (F15): the classifier is precise but misses phrasings, so a
     # count can silently UNDER-read. Surface the cards whose text reads like a role it
     # didn't tag, so the miss becomes an explicit "verify" instead of a silent gap.
@@ -1450,6 +1480,63 @@ def role_tally(cards, carddata):
     per_role["interaction"] = interaction
     per_role["card_advantage"] = ca
     return per_role
+
+
+# Text cues that an interaction spell can hit a NONCREATURE permanent (planeswalker /
+# enchantment / artifact) or any target — the "reach past creatures" test for #5.
+_NONCREATURE_ANSWER_CUES = [re.compile(p) for p in [
+    r"destroy target permanent", r"exile target permanent", r"return target permanent",
+    r"destroy target (artifact|enchantment)", r"destroy target artifact or enchantment",
+    r"exile target (artifact|enchantment)", r"target permanent you don't control",
+    r"destroy target[^.]*planeswalker", r"destroy target[^.]*or planeswalker",
+    r"exile target[^.]*planeswalker", r"destroy all permanents", r"destroy each",
+    r"any target",  # burn to any target answers a planeswalker (and the opponent)
+    r"deals? \d+ damage to any target", r"destroy target nonland permanent",
+]]
+
+
+def interaction_profile(cards, carddata):
+    """Qualitative interaction breakdown (#5): beyond the raw count, how much of a deck's
+    interaction is INSTANT-speed vs sorcery-speed, and how much can answer a NONCREATURE
+    permanent (planeswalker / enchantment / artifact) — so 'thin against planeswalkers /
+    all sorcery-speed' is measured, not eyeballed. Quantity-weighted, once per card.
+
+    Returns {total, instant, sorcery, noncreature, flags:[…]}. Heuristic: instant-speed =
+    an Instant, a card with Flash, or a Counter (counters resolve at instant speed);
+    noncreature-answer = a Counter (answers any spell) or a removal cue that reaches past
+    creatures."""
+    total = instant = sorcery = noncreature = 0
+    seen = set()
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl in seen:
+            continue
+        seen.add(nl)
+        cd = carddata.get(nl)
+        if not cd:
+            continue
+        text = cd.get("text") or ""
+        roles = classify_roles(text)
+        if not (roles & _INTERACTION_ROLES):
+            continue
+        total += q
+        tl = (cd.get("type") or "").lower()
+        tx = text.lower()
+        is_counter = "Counter" in roles
+        if "instant" in tl or "flash" in tx or is_counter:
+            instant += q
+        else:
+            sorcery += q
+        if is_counter or any(p.search(tx) for p in _NONCREATURE_ANSWER_CUES):
+            noncreature += q
+    flags = []
+    if total >= 3 and instant == 0:
+        flags.append("all sorcery-speed — no instant-speed answers (you can't react)")
+    if total >= 3 and noncreature == 0:
+        flags.append("no answer to a noncreature permanent (planeswalkers / enchantments / "
+                     "artifacts slip through)")
+    return {"total": total, "instant": instant, "sorcery": sorcery,
+            "noncreature": noncreature, "flags": flags}
 
 
 def deck_role_counts(cards, carddata):
@@ -1668,7 +1755,12 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         roles = classify_roles(r.get("Card Text") or "")
         base = sum(theme_w[t] for t in shared) + _role_credit(roles, deck_roles)
         cand_mv = (mana_map.get(nl) or (None, None))[1]
-        score = round(base * _curve_gap_factor(cand_mv, deck_curve), 2)
+        # Card-quality (power) co-signal (#6): a heuristic 1–10 power seed (rarity floor +
+        # roles + planeswalker/legendary), added modestly so an owned/craftable BOMB with
+        # only MODEST theme overlap isn't buried under a well-tagged vanilla body. It can't
+        # pull in off-theme junk — only cards already sharing ≥1 theme are scored here — so
+        # it re-ranks WITHIN the on-theme set, the way wishlist --rank pairs fit with power.
+        score = round(base * _curve_gap_factor(cand_mv, deck_curve) + _SUGGEST_POWER_W * _power_seed(r), 2)
         suggestions.append((score, name, r, shared))
 
     # Ownership is keyed by the LIBRARY name (DFCs stored under their front face), but

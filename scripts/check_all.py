@@ -176,6 +176,21 @@ def main():
     except Exception as e:
         soft.append(f"keyword radar skipped ({e})")
 
+    # Soft: THEME coverage — owned cards whose text plays a theme they aren't tagged with
+    # (the theme analog of role_coverage_flags); distorts every tag-based recommendation.
+    # Summarized to one line so a batch of mis-tags doesn't flood the soft section.
+    try:
+        import check_themes as ct
+        tflags = ct.flags()
+        if tflags:
+            ex = ", ".join(f"{n} ({t})" for n, t, _ in tflags[:4])
+            soft.append(f"theme coverage: {len(tflags)} owned card(s) may be missing a synergy "
+                        f"tag their text implies (e.g. {ex}"
+                        + (", …" if len(tflags) > 4 else "")
+                        + ") — run `check_themes.py`, then tag_synergies.py --merge")
+    except Exception as e:
+        soft.append(f"theme coverage check skipped ({e})")
+
     # Soft: tier robustness — a deck whose claimed #: tier: sits ≥2 bands above the
     # tier its measurable quality vector supports (inflated or stale). Never gating —
     # tier is a human judgment, this only flags an indefensible letter to re-grade.
