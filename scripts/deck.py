@@ -1014,12 +1014,22 @@ ENGINE_THEMES = {
         ],
     },
     "sacrifice": {   # aristocrats: outlets/fodder vs death & sacrifice triggers
+        # A "whenever ~ dies" trigger ('death') fires on ANY death — combat included — so
+        # it is NOT sac-outlet-dependent the way a "whenever you sacrifice" payoff is.
+        # engine_balance keeps them apart: only sac-triggers "sit dead" without an outlet;
+        # death triggers are combat-fed when the deck has a real creature base (F-engines).
         "enabler": [r"\bsacrifice (a|an|another|two|three|\d+|x|it|them)\b", r"you may sacrifice"],
-        "payoff": [r"whenever[^.]*\bdies\b", r"whenever you sacrifice", r"whenever[^.]*is sacrificed"],
+        "payoff": [r"whenever you sacrifice", r"whenever[^.]*is sacrificed"],
+        "death": [r"whenever[^.]*\bdies\b"],
     },
     "graveyard": {   # fill the yard vs use the yard (reanimator / recursion)
+        # Self-recursion mechanics (flashback / escape / harmonize / …) put the card into
+        # the yard THEMSELVES, so a card that plays them is its own enabler — counted on
+        # BOTH sides so a graveyard full of flashback spells doesn't read as "unenabled".
         "enabler": [r"\bmill\b", r"\bsurveil\b", r"discard[^.]*card", r"put[^.]*(from|into)[^.]*graveyard",
-                    r"into your graveyard", r"\bdredge\b"],
+                    r"into your graveyard", r"\bdredge\b",
+                    r"\bflashback\b", r"\bescape\b", r"\bdisturb\b", r"\bunearth\b", r"\bharmonize\b",
+                    r"\bjump-start\b", r"\bretrace\b", r"\baftermath\b", r"cast [^.]*from (your )?graveyard"],
         "payoff": [r"return[^.]*from (your )?graveyard to the battlefield", r"from your graveyard",
                    r"for each[^.]*in your graveyard", r"\bescape\b", r"\bflashback\b", r"\bdelve\b",
                    r"\bdisturb\b", r"\bunearth\b", r"cards? in your graveyard"],
@@ -1038,6 +1048,11 @@ _ENGINE_COMPILED = {
     theme: {role: [re.compile(p) for p in pats] for role, pats in sides.items()}
     for theme, sides in ENGINE_THEMES.items()
 }
+
+# A deck fielding this many creatures trades in combat often enough that a "whenever ~
+# dies" death trigger is fed without any sac outlet — so combat-fed death triggers are
+# exempt from the sacrifice dead-payoff flag at/above this creature count.
+_COMBAT_FED_MIN = 6
 
 
 def engine_roles(text):
@@ -1071,8 +1086,10 @@ def engine_balance(cards, carddata, central, signature=frozenset()):
     central_engines = [t for t in central if t.lower() in _ENGINE_COMPILED]
     result = {}
     seen = set()
+    creatures = 0
     for theme in central_engines:
-        result[theme] = {"enablers": [], "payoffs": [], "en": 0, "pay": 0}
+        result[theme] = {"enablers": [], "payoffs": [], "deaths": [],
+                         "en": 0, "pay": 0, "death": 0}
     for q, n, s, c in cards:
         nl = n.lower()
         if nl in BASICS or nl in seen:
@@ -1081,6 +1098,8 @@ def engine_balance(cards, carddata, central, signature=frozenset()):
         cd = carddata.get(nl)
         if not cd:
             continue
+        if "creature" in (cd.get("type") or "").lower():
+            creatures += q
         roles = engine_roles(cd.get("text") or "")
         for theme in central_engines:
             r = roles.get(theme.lower(), set())
@@ -1088,26 +1107,45 @@ def engine_balance(cards, carddata, central, signature=frozenset()):
                 result[theme]["enablers"].append((n, q)); result[theme]["en"] += q
             if "payoff" in r:
                 result[theme]["payoffs"].append((n, q)); result[theme]["pay"] += q
+            if "death" in r:
+                result[theme]["deaths"].append((n, q)); result[theme]["death"] += q
     # Flags fire only off the PAYOFF side. Payoff cues ("whenever you gain life", "for
     # each +1/+1 counter") are specific, so a payoff gap is trustworthy; enabler cues
     # ("gain N life", "sacrifice a …") are broad and match incidental cards, so an
     # enabler-heavy count is NOISE — reported for the human read, never a ⚠.
+    #
+    # DEATH TRIGGERS ("whenever ~ dies") are combat-fed: with a real creature base they
+    # never "sit dead" for lack of a sac outlet, so they count toward the payoff readout
+    # but are EXEMPT from the dead-payoff flag once the deck fields ≥ _COMBAT_FED_MIN
+    # creatures (fixes the go-wide/deathtouch false positive). Only genuine sac-trigger
+    # payoffs ("whenever you sacrifice") stay outlet-dependent.
     for theme, d in result.items():
-        en, pay = d["en"], d["pay"]
+        en, pay, death = d["en"], d["pay"], d["death"]
         is_sig = theme.lower() in sig
-        if pay >= 2 and en == 0:
+        combat_fed = theme.lower() == "sacrifice" and creatures >= _COMBAT_FED_MIN
+        total_pay = pay + death                          # payoffs for the readout
+        dead_pay = pay + (0 if combat_fed else death)    # payoffs that truly need an enabler
+        note = ""
+        if death:
+            note = (f", {death} combat-fed" if combat_fed
+                    else f", {death} death-trigger/{creatures} creatures")
+        if dead_pay >= 2 and en == 0:
             d["verdict"], d["flag"] = "payoffs but NO enablers — the payoffs sit dead", True
-        elif pay >= 3 and en * 3 <= pay:
-            d["verdict"], d["flag"] = (f"payoff-heavy ({en} enabler / {pay} payoff) — thin on "
-                                       "enablers to turn the payoffs on"), True
-        elif en and pay:
-            d["verdict"], d["flag"] = f"balanced ({en} enabler / {pay} payoff)", False
-        elif en >= 2 and pay == 0:
+        elif total_pay >= 3 and en * 3 <= total_pay and dead_pay > 0:
+            d["verdict"], d["flag"] = (f"payoff-heavy ({en} enabler / {total_pay} payoff{note}) — "
+                                       "thin on enablers to turn the payoffs on"), True
+        elif en and total_pay:
+            d["verdict"], d["flag"] = f"balanced ({en} enabler / {total_pay} payoff{note})", False
+        elif en >= 2 and total_pay == 0:
             d["verdict"] = (f"{en} enablers, no payoff — your engine has no reward"
                             if is_sig else f"{en} enablers, no payoff (incidental)")
             d["flag"] = False   # broad enabler side — inform, don't cry wolf
-        elif en or pay:
-            d["verdict"], d["flag"] = f"({en} enabler / {pay} payoff)", False
+        elif total_pay and en == 0 and combat_fed:
+            d["verdict"], d["flag"] = (f"death-fed ({total_pay} death-trigger payoff(s), "
+                                       f"combat-fed by {creatures} creatures — no sac outlet "
+                                       "needed)"), False
+        elif en or total_pay:
+            d["verdict"], d["flag"] = f"({en} enabler / {total_pay} payoff)", False
         else:
             d["verdict"], d["flag"] = "no enabler/payoff cards detected", False
     return result
@@ -3691,6 +3729,8 @@ def cmd_engines(args):
             print(f"    enablers ({info['en']}): {fmt(info['enablers'])}")
         if info["payoffs"]:
             print(f"    payoffs  ({info['pay']}): {fmt(info['payoffs'])}")
+        if info.get("deaths"):
+            print(f"    death-triggers ({info['death']}, combat-fed): {fmt(info['deaths'])}")
         flagged += 1 if info["flag"] else 0
 
     print("\nHeuristic + text-based — a card can play both sides, and the classifier can "

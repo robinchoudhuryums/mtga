@@ -373,7 +373,17 @@ castability · curve · central-theme density), with the intangibles moving a de
   lifegain, food) and flags a lopsided engine — the ⚠ fires only off the trustworthy
   PAYOFF side ("payoffs but NO enablers" = dead payoffs; "payoff-heavy" = under-enabled),
   since enabler cues are broad; `deck.py stats` surfaces the flag inline. It's a shortlist
-  that prints the card lists — read them, the classifier is heuristic.
+  that prints the card lists — read them, the classifier is heuristic. **Two combat-/self-
+  fed false-positive classes are now discriminated (guarded by `check_engines.py`):** a
+  **`sacrifice` "whenever ~ dies" DEATH trigger** is split from an outlet-dependent "whenever
+  you sacrifice" payoff and is COMBAT-FED — exempt from the dead-payoff ⚠ once the deck fields
+  ≥`_COMBAT_FED_MIN` (6) creatures (so a go-wide/deathtouch deck that trades constantly no
+  longer reads as "payoffs sit dead" — the deck-31 misfire); and **`graveyard` self-recursion**
+  (flashback / escape / disturb / unearth / harmonize / jump-start / retrace / aftermath /
+  "cast from graveyard") counts as its OWN enabler, so a flashback-heavy yard isn't flagged
+  "payoff-heavy" (the deck-9 misfire). The fix is SURGICAL: a genuine thin-enabler signal —
+  e.g. many "N cards in your graveyard" *value* payoffs with few active fillers — still flags,
+  because combat fills the yard only slowly there (unlike an immediate death trigger).
 - **`deck.py stats` also prints an INTERACTION PROFILE** (#5): the raw interaction count
   treats all removal alike, so `stats` breaks it down by SPEED (instant vs sorcery) and by
   whether it can answer a NONCREATURE permanent (planeswalker / enchantment / artifact),
