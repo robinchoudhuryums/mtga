@@ -249,8 +249,12 @@ castability · curve · central-theme density), with the intangibles moving a de
 - **WIP decks legitimately show "missing" cards** in `check_all.py` — those are
   craft targets not yet owned (e.g. Atlantis Attacks 18/18a). Not a failure.
 - **Regenerate derived data after imports**, in order: `enrich.py` →
-  `tag_synergies.py --force` (needs `build_mana.py` first for keyword tags) →
-  `build_pool.py` → `build_gallery.py`. Or run `/refresh`.
+  `tag_synergies.py --merge` (needs `build_mana.py` first for keyword tags) →
+  `build_pool.py` → `build_gallery.py`. Or run `/refresh`. Use **`--merge`** (adds
+  newly-derived tags without removing existing/hand-curated ones), not `--force`,
+  which REPLACES every cell and clobbers hand edits (audit F10). `tag_synergies`
+  also warns when `card-mana.csv` is older than the library — rebuild it first or
+  new cards get keyword-less tags (audit F21).
 - **Scryfall egress**: needs `api.scryfall.com` + `*.scryfall.io` allowed; some
   managed environments block it. Enrichment/pool/mana builds require it. All
   Scryfall access now goes through **`scripts/scryfall.py`** (a shared, resilient
@@ -298,7 +302,12 @@ castability · curve · central-theme density), with the intangibles moving a de
   it's also folded into `check_all` as a **soft, non-gating warning**. `--rank` shows
   a **`state`** column (target deck's tier·remaining-crafts, ★ = this card helps
   *finish* a near-complete deck) so "upgrade a BUILT deck" reads apart from "build an
-  UNBUILT one" — the strategic overlay the raw score can't show.
+  UNBUILT one" — the strategic overlay the raw score can't show. `--rank` and
+  `--budget` **exclude cards you already own** (DFC front-name aware) so a craft plan
+  never tells you to craft what you have (audit F19); a **non-numeric** `Power` typo is
+  flagged `pow!` (scored 0.0 but surfaced, not silently sunk — audit F9); and
+  re-running `--add` on a batch **re-enriches** rows that were added name-only during
+  an earlier Scryfall outage instead of skipping them as dupes (audit F20).
   `Target`/`Note`/`Power` are hand-annotated: `Target` is a
   deck id / `general` / `concept: …`; **`Power` is a 1–10 hand-graded constructed-
   power score** that `--rank` blends 50/50 with theme fit into a `combined` score
@@ -457,7 +466,10 @@ after a retune — via `wishlist.py --audit-targets`; and **new unindexed mechan
 — `check_keywords.py` flags a keyword on an owned card that isn't in
 `tag_synergies.py`'s map yet (a new set's mechanic), baselined in
 `keyword_baseline.txt` so it stays quiet until something genuinely new appears
-(`check_keywords.py --update-baseline` to acknowledge one); and **tier mismatch**
+(`check_keywords.py --update-baseline` to acknowledge one); **FLAVOR_KEYWORDS
+overreach** — `check_keywords.flavor_overreach()` flags a denylisted "flavor" word
+that's also theme-mapped, or one shared by several owned cards (likely a real
+mechanic being suppressed, audit F24); and **tier mismatch**
 — `deck.py tier_consistency_issues()` flags a deck whose claimed `#: tier:` sits ≥2
 bands above the tier its measurable quality vector supports (an inflated/stale
 letter — see the Competitive Tiering rubric). Soft warnings never fail the build.)
@@ -483,14 +495,14 @@ letter — see the Competitive Tiering rubric). Soft warnings never fail the bui
 - INV-03 | Derived reference files exist: card-mana.csv, card-pool.csv, gallery.html | Subsystem: Data/Presentation | Verify: scripts/check_all.py
 - INV-04 | Every deck file under decks/ parses with no malformed card lines | Subsystem: Decks | Verify: scripts/check_all.py
 - INV-05 | Color(s) stores color identity; actual mana cost lives only in card-mana.csv | Subsystem: Data | Verify: design/manual
-- INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --force after imports | Subsystem: Ingest | Verify: manual
+- INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --merge after imports (--merge preserves hand-curated tags; --force replaces them) | Subsystem: Ingest | Verify: manual
 
 **Policy Configuration:** threshold 6/10; 2 consecutive cycles below triggers a policy response.
 
 **Regression Scenarios** (manual walks; the Test Command above is the primary gate):
 1. Ingest a batch — `import_arena.py <file>` → `enrich.py` → `validate.py` → `build_gallery.py`. Expect: validate clean, gallery card count == library row count.
 2. Analyze a deck — `deck.py check|mana|tribes|stats|legal|cuts|text|verify <id>` and roster-wide `deck.py audit` / `deck.py suggest-homes <card>`. Expect: no traceback; mana is hybrid-aware; tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts/text print full oracle text; audit scores every deck TUNE/craft/review/ok; verify diffs a pasted Arena export against the stored deck.
-3. Refresh derived data — `build_mana.py` → `tag_synergies.py --force` → `build_pool.py` → `build_gallery.py` → `check_all.py`. Expect: check_all reports all invariants hold.
+3. Refresh derived data — `build_mana.py` → `tag_synergies.py --merge` → `build_pool.py` → `build_gallery.py` → `check_all.py`. Expect: check_all reports all invariants hold.
 4. Edit via the app — start `scripts/app.py`, change a quantity and Save, add a card, then open a deck (Decks →), change a card's quantity and Save; run `check_all.py`. Expect: CSV + deck file updated, `.bak`s written, and all invariants hold (INV-02 since add appends a card-mana.csv row; INV-04 since deck save re-parses cleanly).
 
 **Frozen Subsystems:** none.

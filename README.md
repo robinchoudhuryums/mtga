@@ -76,7 +76,9 @@ printing per name — usually the newest, rarely the row's set — so this makes
 number actually resolve for older printings). Set mapping applies first (known
 Arena→Scryfall differences, e.g. Arena `DAR` = Scryfall `DOM` for Dominaria). If
 neither resolves the row's set, Collector # is left as-is, so a wrong number is
-never written silently. (Add more mappings in `SET_ALIASES` at the top of
+never written silently — and enrich now **reports** the set codes it couldn't
+resolve (rather than leaving them blank silently), so an Arena-specific code shows
+up as a prompt to add it. (Add more mappings in `SET_ALIASES` at the top of
 `scripts/enrich.py` as you hit them.)
 
 > Requires outbound access to `api.scryfall.com`. Some managed/CI environments
@@ -86,7 +88,9 @@ never written silently. (Add more mappings in `SET_ALIASES` at the top of
 
 ```
 python3 scripts/tag_synergies.py --dry-run   # preview
-python3 scripts/tag_synergies.py             # fill blank Synergies cells
+python3 scripts/tag_synergies.py             # fill blank Synergies cells only
+python3 scripts/tag_synergies.py --merge     # ADD new tags to non-blank cells, keep hand edits
+python3 scripts/tag_synergies.py --force     # REPLACE every cell (destructive — clobbers hand edits)
 ```
 
 Derives tags for the Synergies column from each card's type line (tribal
@@ -98,10 +102,14 @@ go-wide; ramp`, Escape → `graveyard; recursion`, …). Using Scryfall's per-ca
 keywords means real-keyword coverage is complete and maintained, not a hand-kept
 list; a small `FLAVOR_KEYWORDS` denylist drops Universe-Beyond flavor ability
 names (Firaga, Wave Cannon, …) that Scryfall also reports as keywords, so they
-don't pollute the tags. Fills only blank cells by default (`--force` regenerates). These make `query.py
+don't pollute the tags. Fills only blank cells by default; **`--merge`** adds
+newly-derived tags to non-blank cells while KEEPING existing/hand-curated ones (the
+safe refresh mode), and `--force` REPLACES every cell (use it only for a deliberate
+destructive regenerate). It also warns when `card-mana.csv` is older than the
+library, since new cards would otherwise get keyword-less tags. These make `query.py
 --synergy` / `pool.py --synergy` and the gallery filters useful; tags are
-hand-editable. Rerun `build_mana.py` then `tag_synergies.py --force` after
-importing new cards to refresh keyword-aware tags.
+hand-editable. Rerun `build_mana.py` then `tag_synergies.py --merge` after
+importing new cards to refresh keyword-aware tags without losing curation.
 
 ### Query — search the collection
 
@@ -607,8 +615,12 @@ art (from `image-manifest.json`), search/color/set filters, and each card's
 `Quantity Owned` and `Synergies` as inline fields with live "dirty" highlighting.
 Edit the fields and **Save**; **＋ Add card** a new printing (its type/text/color/
 synergies auto-fill from Scryfall by exact name); remove a printing with the `✕`
-on its tile; or **⤺ Revert last save** to undo. It binds to `127.0.0.1` only — a
-personal, local tool, so there's no auth.
+on its tile; or **⤺ Revert last save** to undo. It binds to `127.0.0.1` by default —
+a personal, local tool, so there's no auth. Because there's no auth, it **refuses**
+to run `--debug` on a non-local `--host` (the Flask debugger would be a remote
+code-execution console) and prints a loud warning on any non-local bind. Its write
+endpoints are serialized behind a single lock, so two overlapping requests can't
+lose an edit.
 
 **Every change is safe by construction:** the new rows are written to a temp file
 and run through `validate.py` first; only if that passes is the current CSV backed
