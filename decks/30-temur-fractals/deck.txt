@@ -75,9 +75,9 @@
 1 Wind-Scarred Crag (FDN) 271
 1 Abraded Bluffs (OTJ) 251
 1 Terramorphic Expanse (MSC) 828
-5 Forest
+6 Forest
 4 Island
-3 Mountain
+2 Mountain
 
 # Flex — craft upgrades that supercharge the counters plan. See: deck.py flex 30
 #~ note: applied — Germination Practicum in for Heroic Feast.
