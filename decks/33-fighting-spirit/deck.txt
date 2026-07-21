@@ -68,3 +68,8 @@
 1 Pain for All (EOE) 151
 1 Super Speed (MSH) 154
 1 Iron Man Armor (MSH) 248
+
+# Flex — unowned Standard-legal Izzet-aggro upgrades (craft targets). See: deck.py suggest 33 --unowned
+#~ +Slickshot Show-Off | CRAFT (R): {1}{R} flying + haste, +2/+0 per noncreature spell, Plot {1}{R}. Premier evasive prowess finisher; Plot dodges sorcery-speed removal. High reuse across UR/Izzet shells.
+#~ +Emberheart Challenger | CRAFT (R): {1}{R} haste + prowess + Valiant — impulse-draws whenever you target it, and this deck is full of pump/target spells. Card advantage stapled to an aggressive body.
+#~ +Kitsa, Otterball Elite | CRAFT (M): {1}{U} vigilance + prowess + {T} loot + {2}{T} copy an instant/sorcery you control (power>=3, trivial with prowess + 20 noncreature spells). Castable off the UR base (~12 blue sources); most efficient of the deck's copy effects — consider over Loki Laufeyson.
