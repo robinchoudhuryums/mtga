@@ -5,14 +5,14 @@
 #: archetype: Izzet (UR) aggro-tempo — haste, double strike, pump, aggressive damage.
 #: notes: Trimmed 58-card brew to a legal 60 (22 creatures + 14 noncreature spells + 24
 #: notes: lands). R-primary / U-secondary: blue is a light splash (We Say Thee Nay counter +
-#: notes: Jeskai Devotee fixing, and enables the Kitsa flex craft), so the base is R 18 / U 9
+#: notes: Kiora, and enables the Kitsa flex craft), so the base is R 18 / U 9
 #: notes: sources with only 2 tapped lands (Temple + Spectacle, which scry/surveil to smooth).
 #: notes: Double-strike spine: Raphael the Nightwatcher (attackers gain DS), Team Tactics,
 #: notes: Hard-Won Jitte, Quicksilver (power-up DS), Raph & Leo (extra combat). Spell payoffs:
 #: notes: Stormcatch Mentor (cost reduction), Balmor (team anthem), Emeritus of Conflict,
 #: notes: Death to Our Enemies. Heartfire Immolator (owned) adds sac-removal; Felonious Rage /
-#: notes: Reverberating Summons / Samurai's Katana crafted in. No #: tier: yet — grade after
-#: notes: playtesting (run deck.py tier 33 for the metrics floor).
+#: notes: Reverberating Summons / Samurai's Katana crafted in. Graded tier A (see header) —
+#: notes: re-grade after playtesting if the card-advantage/inevitability plan proves out.
 
 # Threats / payoffs (22)
 1 Quicksilver, Brash Blur (MSH) 148
@@ -22,7 +22,7 @@
 1 Emeritus of Conflict (SOS) 113
 1 Heartfire Immolator (FDN) 143
 1 Hobgoblin, Mantled Marauder (MSC) 805
-1 Jeskai Devotee (TDM) 110
+1 Kiora, the Rising Tide (FDN) 45
 1 Balmor, Battlemage Captain (FDN) 237
 1 Hawkeye, Master Marksman (MSH) 130
 1 Loki, God of Mischief (MSH) 65
@@ -65,3 +65,5 @@
 #~ +Slickshot Show-Off | CRAFT (R): {1}{R} flying + haste, +2/+0 per noncreature spell, Plot {1}{R}. Premier evasive prowess finisher; Plot dodges sorcery-speed removal. High reuse across UR/Izzet shells.
 #~ +Emberheart Challenger | CRAFT (R): {1}{R} haste + prowess + Valiant — impulse-draws whenever you target it, and this deck is full of pump/target spells. Card advantage stapled to an aggressive body.
 #~ +Kitsa, Otterball Elite | CRAFT (M): {1}{U} vigilance + prowess + {T} loot + {2}{T} copy an instant/sorcery you control (power>=3, trivial with prowess + noncreature spells). Also a KEY fit in deck 25 — serves multiple decks. If crafted, comes in here over Loki, God of Mischief (the current placeholder in that slot).
+#~ +Malcolm, the Eyes | CRAFT (R): {U}{R} flying + haste; investigate on your 2nd spell each turn. Best same-slot upgrade over a marginal 2-drop — evasive pressure + a Clue every turn patches the thin card-advantage gap.
+#~ +Frostcliff Siege | CRAFT (R): {1}{U}{R} enchantment; choose Jeskai (creatures connect -> draw a card, a resilient card-advantage engine) or Temur (team +1/+0, trample, haste anthem). Highest value ceiling; bodiless 3-drop, choose mode per matchup.
