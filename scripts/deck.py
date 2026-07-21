@@ -57,7 +57,7 @@ import time
 import urllib.error
 import urllib.request
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -1445,10 +1445,10 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         score = sum(theme_w[t] for t in shared) + _role_credit(classify_roles(r.get("Card Text") or ""))
         suggestions.append((score, name, r, shared))
 
-    # Ownership is keyed by the LIBRARY name (DFCs stored under their front face),
-    # but pool card names are the full "Front // Back"; fall back to the front so an
-    # owned DFC isn't mis-surfaced as a craft target (audit F6).
-    owned_of = lambda nl: by_name_qty.get(nl) or by_name_qty.get(nl.split(" // ")[0], 0)
+    # Ownership is keyed by the LIBRARY name (DFCs stored under their front face), but
+    # pool card names are the full "Front // Back" — the shared lib.owned_qty falls
+    # back to the front so an owned DFC isn't mis-surfaced as a craft target (audit F6).
+    owned_of = lambda nl: owned_qty(by_name_qty, nl)
     if unowned:
         suggestions = [x for x in suggestions if owned_of(x[1].lower()) == 0]
     if owned:

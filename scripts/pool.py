@@ -30,7 +30,7 @@ import os
 import sys
 import textwrap
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty
 
 POOL_PATH = os.path.join(REPO_ROOT, "card-pool.csv")
 MANA_PATH = os.path.join(REPO_ROOT, "card-mana.csv")
@@ -86,12 +86,8 @@ def owned_counts():
 
 
 def owned_of(owned, name):
-    """Copies owned for a pool card name. The pool stores double-faced cards under
-    their full ``Front // Back`` name, but the library (and so ``owned_counts``) keys
-    on the FRONT face only — so fall back to the front name, else an owned DFC reads
-    as ``craft`` (audit F6)."""
-    nl = (name or "").strip().lower()
-    return owned.get(nl) or owned.get(nl.split(" // ")[0], 0)
+    """Copies owned for a pool card name — DFC-aware via the shared lib primitive."""
+    return owned_qty(owned, name)
 
 
 def load_pool(path):

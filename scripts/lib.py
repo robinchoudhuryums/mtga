@@ -104,6 +104,19 @@ def card_colors(colstr):
     return {ch for ch in s.upper() if ch in "WUBRG"}
 
 
+def owned_qty(index, name):
+    """Quantity owned for a card name from a name→count index, DFC-aware.
+
+    The library — and every ownership index built from it — keys a double-faced card
+    under its FRONT face, while the pool / wishlist store the full ``Front // Back``
+    name. So look up the full name, then fall back to the front, else an owned DFC
+    reads as unowned (audit F6). Every pool-facing ownership join routes through here
+    so the three copies of this logic can't drift apart.
+    """
+    nl = (name or "").strip().lower()
+    return index.get(nl) or index.get(nl.split(" // ")[0], 0)
+
+
 def write_rows(rows, path=DEFAULT_CSV, *, backup=True):
     """Write rows (list of dicts) back to the CSV using the canonical header.
 

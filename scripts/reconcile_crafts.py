@@ -87,26 +87,35 @@ def reconcile(export_lines, apply=False, set_exact=False):
             unparsed.append(s)
             continue
         qty, name, setc, coll = int(m.group(1)), m.group(2).strip(), m.group(3).strip(), m.group(4).strip()
-        pr = pool_by_sc.get((setc.upper(), coll)) or pool_by_name.get(name.lower()) \
+        exact = pool_by_sc.get((setc.upper(), coll))
+        pr = exact or pool_by_name.get(name.lower()) \
             or pool_by_name.get((name + " // ").split(" // ")[0].lower())
         if not pr:
             notfound.append(f"{name} ({setc}) {coll}")
             continue
         full = pr["Card Name"]
         front = _front(full)
-        key = (front.lower(), pr["Set Code"].upper(), str(pr["Collector #"]))
+        # Which printing to RECORD: the exact pool printing when we matched on
+        # (set, collector); otherwise the printing the user actually PASTED — `pr`
+        # then only supplies printing-INDEPENDENT details (Type/Text/Color/Synergies),
+        # never set/collector. Else a card owned as (ANB) 16 gets recorded as some
+        # other pool printing (MSC 575) just because that's the one the pool happened
+        # to key by name — the reconcile follow-up bug.
+        rec_set = pr["Set Code"] if exact else setc
+        rec_coll = str(pr["Collector #"]) if exact else coll
+        key = (front.lower(), rec_set.upper(), str(rec_coll))
 
         # library: add or set-quantity
         existing = next((r for r in lib if r["Card Name"].lower() == front.lower()
-                         and r["Set Code"].upper() == pr["Set Code"].upper()
-                         and str(r["Collector #"]) == str(pr["Collector #"])), None)
+                         and r["Set Code"].upper() == rec_set.upper()
+                         and str(r["Collector #"]) == str(rec_coll)), None)
         if existing is None:
             lib.append({"Card Name": front, "Type": pr["Type"], "Card Text": pr["Card Text"],
                         "Color(s)": pr["Color(s)"], "Synergies": pr["Synergies"],
-                        "Set Code": pr["Set Code"], "Collector #": pr["Collector #"],
+                        "Set Code": rec_set, "Collector #": rec_coll,
                         "Quantity Owned": str(qty)})
             lib_keys.add(key)
-            added.append(f"{front} ({pr['Set Code']}) {pr['Collector #']} x{qty}"
+            added.append(f"{front} ({rec_set}) {rec_coll} x{qty}"
                          + ("  [DFC front of " + full + "]" if front != full else ""))
         else:
             old_s = existing.get("Quantity Owned") or ""
@@ -140,10 +149,11 @@ def reconcile(export_lines, apply=False, set_exact=False):
                 mana_names.add(front.lower())
                 mana_added.append(front + "  (blank — run build_mana.py to fill cost/keywords)")
 
-        # wishlist: drop by set+collector (matches the full-name DFC row too)
+        # wishlist: drop by the RECORDED set+collector (what the user pasted; matches
+        # the full-name DFC row too), consistent with the library row above.
         before = len(wish)
-        wish = [r for r in wish if not (r["Set Code"].upper() == pr["Set Code"].upper()
-                                         and str(r["Collector #"]) == str(pr["Collector #"]))]
+        wish = [r for r in wish if not (r["Set Code"].upper() == rec_set.upper()
+                                         and str(r["Collector #"]) == str(rec_coll))]
         if len(wish) != before:
             wish_removed.append(full)
 

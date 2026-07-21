@@ -41,7 +41,7 @@ import csv
 import os
 import sys
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty
 from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
@@ -98,11 +98,8 @@ def owned_index():
 
 
 def _owned_of(owned, name):
-    """Copies owned for a wishlist card name, DFC-aware. Wishlist rows key the full
-    ``Front // Back`` name; ``owned_index`` keys the library (front) name, so fall
-    back to the front face — else an owned DFC reads as unowned (audit F6)."""
-    nl = (name or "").strip().lower()
-    return owned.get(nl) or owned.get(nl.split(" // ")[0], 0)
+    """Copies owned for a wishlist card name — DFC-aware via the shared lib primitive."""
+    return owned_qty(owned, name)
 
 
 def load_wishlist():
@@ -260,7 +257,7 @@ def cmd_add(path):
             else:
                 dupes += 1
             continue
-        if owned.get(name.lower(), 0) > 0:
+        if _owned_of(owned, row["Card Name"]) > 0:
             owned_hits.append(row["Card Name"])
         if status == "miss":
             unenriched_miss.append(row["Card Name"])
@@ -333,8 +330,8 @@ def cmd_by_set(rows, owned):
     per_set, per_setrar = Counter(), Counter()
     still = 0
     for c in rows:
-        if owned.get((c.get("Card Name") or "").strip().lower(), 0) > 0:
-            continue  # already acquired — don't count toward crafting/packs
+        if _owned_of(owned, c.get("Card Name")) > 0:
+            continue  # already acquired — don't count toward crafting/packs (DFC-aware)
         still += 1
         s = (c.get("Set Code") or "?").upper()
         per_set[s] += 1
