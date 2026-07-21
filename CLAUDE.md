@@ -178,9 +178,15 @@ castability · curve · central-theme density), with the intangibles moving a de
   ranks nonland cards weakest-fit first (central-theme fit + **impact-weighted**
   functional role + tribal contribution) **and prints the full oracle text of the top
   candidates plus a `⚠ context` flag on deck-dependent mechanics (converge / devotion /
-  affinity / X-cost)** — because the role/fit line is a SHORTLIST SIGNAL, NOT A
-  GRADE: its classifier can miss what a card does and can't see spice/signature
-  cards. (Role credit is now impact-weighted — removal / card advantage / ramp /
+  affinity / X-cost) and a `⚠interaction` tag on removal/counter/sweeper rows showing
+  the deck's interaction count (with a header warning when the deck runs <5)** — so the
+  shortlist never silently lists the interaction you deliberately tuned in as
+  "weakest" (a recurring mis-read: Shock / Spell Pierce sorting to the top of a
+  freshly-firmed removal suite). A card on the deck's `#: protect:` **signature theme
+  also gets a keep-boost**, so a generic-tagged-but-central theme (e.g. counters in a
+  deck that protects counter-doublers) isn't mistaken for filler. This is because the
+  role/fit line is a SHORTLIST SIGNAL, NOT A GRADE: its classifier can miss what a
+  card does and can't see spice/signature cards. (Role credit is now impact-weighted — removal / card advantage / ramp /
   cost-reduction / payoff engines get a bonus via `_role_credit`, so a strong card no
   longer floats to the top of the cut list just for being off-theme; two detection
   bugs that hid Shuri's cost-reduction and Mjölnir's removal are fixed too. The
@@ -351,7 +357,10 @@ castability · curve · central-theme density), with the intangibles moving a de
   reminds you to slot a card into *all* decks that earn it, not pick one home. Each
   fit row now carries a **strength label** (`KEY` / `role-player` / `tangential`):
   KEY = it fills an interaction/card-advantage gap the deck is short on or shares
-  the deck's *signature* theme; role-player = a secondary central theme;
+  the deck's *signature* theme (the top central theme, **or any theme carried by the
+  deck's `#: protect:` cards** — so a counter-doubler reads KEY in a counters deck even
+  though "counters" is idf-generic, correcting a blind spot where the deck's actual
+  spine looked tangential); role-player = a secondary central theme;
   tangential = generic overlap only (etb/tokens/lifegain/…). Rows sort
   strongest-first — trust KEY, judge role-player, and read a tangential fit as
   "probably not for this deck." The same `fit_strength` classifier flags a
