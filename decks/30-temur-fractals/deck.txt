@@ -71,7 +71,7 @@
 1 Riverpyre Verge (DFT) 260
 1 Spectacle Summit (SOS) 262
 1 Restless Ridgeline (LCI) 283
-1 Rugged Highlands (FDN) 265
+1 Thornspire Verge (DSK) 270
 1 Wind-Scarred Crag (FDN) 271
 1 Abraded Bluffs (OTJ) 251
 1 Terramorphic Expanse (MSC) 828

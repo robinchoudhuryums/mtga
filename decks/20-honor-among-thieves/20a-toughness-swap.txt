@@ -60,7 +60,8 @@
 1 Social Snub (SOS) 228
 
 # Lands
-4 Scoured Barrens (FDN) 266
+3 Scoured Barrens (FDN) 266
+1 Bleachbone Verge (DFT) 250
 1 Insomnia, Crown City (FIN) 282
 1 Temple of Silence (FDN) 704
 1 Abandoned Air Temple (TLA) 263

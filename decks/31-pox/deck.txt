@@ -58,7 +58,7 @@
 5 Forest (MSH) 296
 1 Evendo, Waking Haven (EOE) 253
 1 Foggy Bottom Swamp (TLA) 269
-1 Illegitimate Business (TMT) 186
+1 Wastewood Verge (DFT) 268
 1 Subterranean Cavern (MSH) 273
 1 Golgari Guildgate (FDN) 689
 4 Jungle Hollow (FDN) 263

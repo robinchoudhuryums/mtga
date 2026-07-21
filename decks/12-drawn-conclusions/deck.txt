@@ -45,7 +45,7 @@
 # Lands
 2 Baxter Building (MSH) 261
 1 Hidden Lair (MSH) 269
-1 Soured Springs (OTJ) 264
+1 Gloomlake Verge (DSK) 260
 1 Treno, Dark City (FIN) 290
 2 Dismal Backwater (FDN) 261
 6 Swamp (MSH) 292

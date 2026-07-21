@@ -44,7 +44,8 @@
 
 # Lands
 1 Fire Nation Palace (TLA) 268
-2 Bloodfell Caves (TDM) 250
+1 Bloodfell Caves (TDM) 250
+1 Blazemire Verge (DSK) 256
 1 Razortrap Gorge (DSK) 267
 1 Temple of Malice (FDN) 701
 9 Swamp (MSH) 292

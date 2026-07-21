@@ -59,7 +59,7 @@ Deck
 1 The Cave of Two Lovers (TLA) 126
 1 Fire Nation Palace (TLA) 268
 1 Kavaron, Memorial World (EOE) 255
-1 Abraded Bluffs (OTJ) 251
+1 Sunbillow Verge (DFT) 264
 1 Sun-Blessed Peak (TLA) 280
 1 Boros Guildgate (FDN) 684
 1 Temple of Triumph (FDN) 705
