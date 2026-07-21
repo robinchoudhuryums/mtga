@@ -3471,3 +3471,11 @@ Enchanted creature gets +1/+1 and has haste.",R,Aura; etb; aura; pump; enchant,B
 Diversion Unit,Artifact Creature — Robot,"Flying
 {U}, Sacrifice this creature: Counter target instant or sorcery spell unless its controller pays {3}.",U,Robot; counterspell; sacrifice; flying; evasion,DFT,41,1
 Impractical Joke,Sorcery,Damage can't be prevented this turn. Impractical Joke deals 3 damage to up to one target creature or planeswalker.,R,burn,SOS,119,1
+Samurai's Katana,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
+Equipped creature gets +2/+2, has trample and haste, and is a Samurai in addition to its other types.
+Murasame — Equip {5}",R,Equipment; tokens; etb; equipment; pump; murasame; job select; equip,FIN,154,1
+Felonious Rage,Instant,"Target creature you control gets +2/+0 and gains haste until end of turn. When that creature dies this turn, create a 2/2 white and blue Detective creature token.",R,tokens; pump,MKM,125,1
+Reverberating Summons,Enchantment,"At the beginning of each combat, if you've cast two or more spells this turn, this enchantment becomes a 3/3 Monk creature with haste in addition to its other types until end of turn.
+{1}{R}, Discard your hand, Sacrifice this enchantment: Draw two cards.",R,card draw; sacrifice,TDM,117,1
+Heartfire Immolator,Creature — Human Wizard,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+{R}, Sacrifice this creature: It deals damage equal to its power to target creature or planeswalker.",R,Human; Wizard; sacrifice; pump; removal; prowess; spellslinger; tempo,FDN,201,1

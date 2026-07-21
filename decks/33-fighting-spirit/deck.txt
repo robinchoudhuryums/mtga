@@ -1,75 +1,66 @@
 #: name: Fighting Spirit
 #: format: Standard
 #: colors: UR
-#: archetype: Izzet (UR) aggro-tempo — haste, double strike, pump, aggressive damage
-#: notes: WIP brew (58 nonland cards, no manabase yet). Really Izzet, not Jeskai:
-#: notes: strict pips are U 14 / R 53 with the "white" cards R/W-hybrid (castable on
-#: notes: red), so no white sources are needed. Needs trimming to ~36 spells + ~24 UR
-#: notes: lands = 60. 5 cards not yet in library (confirm owned vs craft).
+#: archetype: Izzet (UR) aggro-tempo — haste, double strike, pump, aggressive damage.
+#: notes: Trimmed 58-card brew to a legal 60 (22 creatures + 14 noncreature spells + 24
+#: notes: lands). R-primary / U-secondary: blue is a light splash (We Say Thee Nay counter +
+#: notes: Jeskai Devotee fixing, and enables the Kitsa flex craft), so the base is R 18 / U 9
+#: notes: sources with only 2 tapped lands (Temple + Spectacle, which scry/surveil to smooth).
+#: notes: Double-strike spine: Raphael the Nightwatcher (attackers gain DS), Team Tactics,
+#: notes: Hard-Won Jitte, Quicksilver (power-up DS), Raph & Leo (extra combat). Spell payoffs:
+#: notes: Stormcatch Mentor (cost reduction), Balmor (team anthem), Emeritus of Conflict,
+#: notes: Death to Our Enemies. Heartfire Immolator (owned) adds sac-removal; Felonious Rage /
+#: notes: Reverberating Summons / Samurai's Katana crafted in. No #: tier: yet — grade after
+#: notes: playtesting (run deck.py tier 33 for the metrics floor).
 
-# Threats / payoffs
-1 Old Hob, Alleycat Blues (TMT) 99
-1 Speed, Young Avenger (MSH) 152
-1 Hazoret, Godseeker (DFT) 133
-1 Draconautics Engineer (DFT) 121
+# Threats / payoffs (22)
 1 Quicksilver, Brash Blur (MSH) 148
-1 War Squeak (BLB) 160
-1 Charging Strifeknight (SOS) 110
-1 Hotfoot Gnome (LCI) 154
-1 Emeritus of Conflict (SOS) 113
-1 Enduring Courage (DSK) 133
-1 Dracosaur Auxiliary (DFT) 122
+1 Speed, Young Avenger (MSH) 152
+1 Draconautics Engineer (DFT) 121
 1 Stormcatch Mentor (BLB) 234
-1 Colorstorm Stallion (SOS) 180
-1 Metalhead (TMT) 44
-1 Ovika, Enigma Goliath (FDN) 663
-1 Caelorna, Coral Tyrant (DFT) 40
-1 Brineborn Cutthroat (FDN) 152
-1 War Machine, Legacy of Iron (MSH) 238
-1 Diversion Unit (DFT) 41
-1 Speedball, New Warrior (MSH) 227
-1 Volcanic Villain (MSH) 159
-1 Hydro-Channeler (SOS) 54
-1 Loki, God of Mischief (MSH) 65
-1 Enduring Curiosity (DSK) 51
+1 Emeritus of Conflict (SOS) 113
+1 Heartfire Immolator (FDN) 143
 1 Hobgoblin, Mantled Marauder (MSC) 805
 1 Jeskai Devotee (TDM) 110
-1 Loki Laufeyson (MSH) 143
-1 Raphael, Tough Turtle (TMT) 104
-1 Iron Fist, Living Weapon (MSH) 138
-1 Null Group Biological Assets (TMT) 98
-1 Raphael, Ninja Destroyer (TMT) 102
-1 Raphael, the Nightwatcher (TMT) 103
-1 Spinerock Tyrant (ECL) 159
-1 Zog, Triceraton Castaway (TMT) 111
-1 Seifer Almasy (FIN) 156
-1 Giant Cindermaw (FDN) 624
 1 Balmor, Battlemage Captain (FDN) 237
 1 Hawkeye, Master Marksman (MSH) 130
+1 Loki Laufeyson (MSH) 143
+1 Colorstorm Stallion (SOS) 180
+1 Null Group Biological Assets (TMT) 98
+1 Charging Strifeknight (SOS) 110
+1 War Machine, Legacy of Iron (MSH) 238
+1 Speedball, New Warrior (MSH) 227
+1 Iron Fist, Living Weapon (MSH) 138
+1 Giant Cindermaw (FDN) 624
 1 Raph & Leo, Sibling Rivals (TMT) 166
+1 Raphael, the Nightwatcher (TMT) 103
+1 Enduring Courage (DSK) 133
+1 Enduring Curiosity (DSK) 51
 
-# Spells — pump / haste / burn / interaction
-1 Tablet of Discovery (SOS) 132
-1 Jet's Brainwashing (TLA) 143
-1 Haste Magic (FIN) 140
-1 Artistic Process (SOS) 108
-1 Random Encounter (FIN) 150
-1 Devastating Onslaught (EOE) 132
-1 Disdainful Stroke (SOA) 17
-1 We Say Thee Nay! (MSH) 82
+# Spells — pump / haste / burn / interaction (14)
+1 Felonious Rage (MKM) 125
 1 Impractical Joke (SOS) 119
+1 Jet's Brainwashing (TLA) 143
 1 Redirect Lightning (TLA) 151
+1 Haste Magic (FIN) 140
 1 Cunning Maneuver (TLA) 130
+1 We Say Thee Nay! (MSH) 82
 1 Hard-Won Jitte (TMT) 91
-1 Death to Our Enemies (MSH) 127
-1 Reckless Ransacking (ECL) 152
-1 Rig for War (EOE) 156
 1 Team Tactics (MSH) 155
-1 Pain for All (EOE) 151
-1 Super Speed (MSH) 154
-1 Iron Man Armor (MSH) 248
+1 Reverberating Summons (TDM) 117
+1 Samurai's Katana (FIN) 154
+1 Death to Our Enemies (MSH) 127
+1 Devastating Onslaught (EOE) 132
+1 Artistic Process (SOS) 108
+
+# Lands (24) — R 18 / U 9 sources; only Temple + Spectacle enter tapped
+1 Riverpyre Verge (DFT) 267
+1 Temple of Epiphany (FDN) 698
+1 Spectacle Summit (SOS) 258
+6 Island (MSH) 291
+15 Mountain (MSH) 293
 
 # Flex — unowned Standard-legal Izzet-aggro upgrades (craft targets). See: deck.py suggest 33 --unowned
 #~ +Slickshot Show-Off | CRAFT (R): {1}{R} flying + haste, +2/+0 per noncreature spell, Plot {1}{R}. Premier evasive prowess finisher; Plot dodges sorcery-speed removal. High reuse across UR/Izzet shells.
 #~ +Emberheart Challenger | CRAFT (R): {1}{R} haste + prowess + Valiant — impulse-draws whenever you target it, and this deck is full of pump/target spells. Card advantage stapled to an aggressive body.
-#~ +Kitsa, Otterball Elite | CRAFT (M): {1}{U} vigilance + prowess + {T} loot + {2}{T} copy an instant/sorcery you control (power>=3, trivial with prowess + 20 noncreature spells). Castable off the UR base (~12 blue sources); most efficient of the deck's copy effects — consider over Loki Laufeyson.
+#~ +Kitsa, Otterball Elite | CRAFT (M): {1}{U} vigilance + prowess + {T} loot + {2}{T} copy an instant/sorcery you control (power>=3, trivial with prowess + 20 noncreature spells). Also a KEY fit in deck 25 (over Loki Laufeyson) — serves multiple decks. Consider over Loki Laufeyson here too.
