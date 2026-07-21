@@ -1,0 +1,70 @@
+#: name: Fighting Spirit
+#: format: Standard
+#: colors: UR
+#: tier: A — Izzet (UR) aggro-tempo. A-floor: interaction 6 on a coherent haste / double-strike / spell-payoff engine with a tight 2.44 curve (22 early drops) on a clean R-primary base. Real interaction — Heartfire sac-removal + Artistic Process + Impractical Joke, plus a soft counter suite (We Say Thee Nay, Redirect Lightning). Held out of any S conversation by two honest gaps: card advantage runs thin (measured 1; ~4 real via Enduring Curiosity / Null Group / loot / Clues, but the deck still dumps its hand and can flood out against removal-heavy control) and raw power sits below tuned Standard staples — this is a creative UB brew, and the premier upgrades (Slickshot Show-Off, Emberheart Challenger) are still unowned in flex. Low-end A / defensible B; re-grade toward S only after crafting the flex staples and proving it closes fast.
+#: archetype: Izzet (UR) aggro-tempo — haste, double strike, pump, aggressive damage.
+#: notes: Trimmed 58-card brew to a legal 60 (22 creatures + 14 noncreature spells + 24
+#: notes: lands). R-primary / U-secondary: blue is a light splash (We Say Thee Nay counter +
+#: notes: Kiora, and enables the Kitsa flex craft), so the base is R 18 / U 9
+#: notes: sources with only 2 tapped lands (Temple + Spectacle, which scry/surveil to smooth).
+#: notes: Double-strike spine: Raphael the Nightwatcher (attackers gain DS), Team Tactics,
+#: notes: Hard-Won Jitte, Quicksilver (power-up DS), Raph & Leo (extra combat). Spell payoffs:
+#: notes: Stormcatch Mentor (cost reduction), Balmor (team anthem), Emeritus of Conflict,
+#: notes: The Vision (modal DS / draw / indestructible). Heartfire Immolator adds sac-removal; Felonious Rage /
+#: notes: Reverberating Summons / Samurai's Katana crafted in. Graded tier A (see header) —
+#: notes: re-grade after playtesting if the card-advantage/inevitability plan proves out.
+
+# Threats / payoffs (23)
+1 Quicksilver, Brash Blur (MSH) 148
+1 Speed, Young Avenger (MSH) 152
+1 Draconautics Engineer (DFT) 121
+1 Stormcatch Mentor (BLB) 234
+1 Emeritus of Conflict (SOS) 113
+1 Heartfire Immolator (FDN) 143
+1 Hobgoblin, Mantled Marauder (MSC) 805
+1 Kiora, the Rising Tide (FDN) 45
+1 Balmor, Battlemage Captain (FDN) 237
+1 Hawkeye, Master Marksman (MSH) 130
+1 Loki, God of Mischief (MSH) 65
+1 Seifer Almasy (FIN) 156
+1 Null Group Biological Assets (TMT) 98
+1 Charging Strifeknight (SOS) 110
+1 War Machine, Legacy of Iron (MSH) 238
+1 Speedball, New Warrior (MSH) 227
+1 Iron Fist, Living Weapon (MSH) 138
+1 Spinerock Tyrant (ECL) 159
+1 Raph & Leo, Sibling Rivals (TMT) 166
+1 Raphael, the Nightwatcher (TMT) 103
+1 Enduring Courage (DSK) 133
+1 Enduring Curiosity (DSK) 51
+1 The Vision (MSH) 255
+
+# Spells — pump / haste / burn / interaction (13)
+1 Felonious Rage (MKM) 125
+1 Impractical Joke (SOS) 119
+1 Jet's Brainwashing (TLA) 143
+1 Redirect Lightning (TLA) 151
+1 Haste Magic (FIN) 140
+1 Cunning Maneuver (TLA) 130
+1 We Say Thee Nay! (MSH) 82
+1 Hard-Won Jitte (TMT) 91
+1 Team Tactics (MSH) 155
+1 Reverberating Summons (TDM) 117
+1 Samurai's Katana (FIN) 154
+1 Devastating Onslaught (EOE) 132
+1 Artistic Process (SOS) 108
+
+# Lands (24) — R 18 / U 9 sources; only Temple + Spectacle enter tapped
+1 Riverpyre Verge (DFT) 267
+1 Temple of Epiphany (FDN) 698
+1 Spectacle Summit (SOS) 258
+6 Island (MSH) 291
+15 Mountain (MSH) 293
+
+# Flex — unowned Standard-legal Izzet-aggro upgrades (craft targets). See: deck.py suggest 33 --unowned
+#~ +Slickshot Show-Off | CRAFT (R): {1}{R} flying + haste, +2/+0 per noncreature spell, Plot {1}{R}. Premier evasive prowess finisher; Plot dodges sorcery-speed removal. High reuse across UR/Izzet shells.
+#~ +Emberheart Challenger | CRAFT (R): {1}{R} haste + prowess + Valiant — impulse-draws whenever you target it, and this deck is full of pump/target spells. Card advantage stapled to an aggressive body.
+#~ +Kitsa, Otterball Elite | CRAFT (M): {1}{U} vigilance + prowess + {T} loot + {2}{T} copy an instant/sorcery you control (power>=3, trivial with prowess + noncreature spells). Also a KEY fit in deck 25 — serves multiple decks. If crafted, comes in here over Loki, God of Mischief (the current placeholder in that slot).
+#~ +Malcolm, the Eyes | CRAFT (R): {U}{R} flying + haste; investigate on your 2nd spell each turn. Best same-slot upgrade over a marginal 2-drop — evasive pressure + a Clue every turn patches the thin card-advantage gap.
+#~ +Frostcliff Siege | CRAFT (R): {1}{U}{R} enchantment; choose Jeskai (creatures connect -> draw a card, a resilient card-advantage engine) or Temur (team +1/+0, trample, haste anthem). Highest value ceiling; bodiless 3-drop, choose mode per matchup.
+#~ +Pym Particles | OWNED alt (not a craft): {U} sorcery — cantrip that makes a creature unblockable + vigilance and draws a card; triggers spell payoffs. Considered over Felonious Rage / Cunning Maneuver but overlaps Jet's Brainwashing's push-through role, so held as a flex alt rather than maindecked.

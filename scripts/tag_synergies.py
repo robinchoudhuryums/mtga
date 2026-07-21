@@ -132,7 +132,7 @@ FLAVOR_KEYWORDS = {
     "death gigas", "dinosaur formula", "double overdrive", "dragonfire dive",
     "echo of the lost", "find new host", "fira", "firaga", "fire", "fire cross",
     "galian beast", "harmonize", "heal", "hellmasker", "item", "look around",
-    "magic", "particle beam", "rat tail", "stagger", "starfall", "super nova",
+    "magic", "murasame", "particle beam", "rat tail", "stagger", "starfall", "super nova",
     "take 59 flights of stairs", "take the elevator", "the allagan eye",
     "trance", "wave cannon",
 }

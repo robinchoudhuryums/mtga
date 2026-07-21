@@ -382,7 +382,7 @@ castability · curve · central-theme density), with the intangibles moving a de
 
 - A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select,
   Opus, …) aren't in `tag_synergies.py`'s keyword→theme map, so they're tagged
-  verbatim. Card-*unique* flavor ability names (Firaga, Wave Cannon, …), which
+  verbatim. Card-*unique* flavor ability names (Firaga, Wave Cannon, Murasame, …), which
   Scryfall also reports as keywords, are dropped via the `FLAVOR_KEYWORDS`
   denylist so they don't pollute the tags.
 - A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
