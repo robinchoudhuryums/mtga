@@ -41,6 +41,25 @@ def load_rows(path=DEFAULT_CSV):
     return header, rows
 
 
+def backup_path(target):
+    """A unique, lexicographically-sortable ``.bak`` path for ``target``.
+
+    Every backup in the toolkit routes through here so the naming can't drift into the
+    collision/ordering bugs audit F22 found (a second-precision name overwritten by a
+    same-second write; an ``-%f.N`` counter that sorted BEFORE its base). A microsecond
+    timestamp gives chronological lexical order; a sub-microsecond collision appends a
+    zero-padded counter placed so it still sorts AFTER the collision-free name. ``.bak``
+    files are gitignored. (Readers that need the newest should still prefer mtime.)
+    """
+    stamp = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+    path = f"{target}.{stamp}.bak"
+    n = 0
+    while os.path.exists(path):
+        n += 1
+        path = f"{target}.{stamp}{n:04d}.bak"
+    return path
+
+
 def atomic_write(path, write_fn, *, backup=True):
     """Write `path` durably: render to a temp file in the same directory, optionally
     back the existing file up to a timestamped `.bak`, then atomically ``os.replace``.
@@ -58,8 +77,7 @@ def atomic_write(path, write_fn, *, backup=True):
         with os.fdopen(fd, "w", newline="", encoding="utf-8") as fh:
             write_fn(fh)
         if backup and os.path.exists(path):
-            stamp = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
-            shutil.copy2(path, f"{path}.{stamp}.bak")
+            shutil.copy2(path, backup_path(path))
         os.replace(tmp, path)
     except BaseException:
         try:

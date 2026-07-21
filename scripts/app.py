@@ -60,7 +60,7 @@ except ModuleNotFoundError:
     raise SystemExit(1)
 
 import deck as deckmod
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, write_rows
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, write_rows, atomic_write, backup_path
 from validate import validate
 
 MANIFEST_PATH = os.path.join(REPO_ROOT, "image-manifest.json")
@@ -129,20 +129,11 @@ def index():
 # Safe write + card-mana maintenance (shared by save / add / remove)
 # --------------------------------------------------------------------------- #
 def _backup_path(target):
-    """A unique timestamped `.bak` path for `target`.
-
-    Includes microseconds (and, in the vanishingly unlikely event that still
-    collides, an incrementing counter) so two writes within the same wall-clock
-    second can't overwrite each other's snapshot — which would silently destroy
-    the older one that `revert` relies on (audit F8). The `%f` suffix keeps the
-    names lexicographically ordered by time, so `sorted(...)[-1]` stays newest."""
-    stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f")
-    path = f"{target}.{stamp}.bak"
-    n = 1
-    while os.path.exists(path):
-        path = f"{target}.{stamp}.{n}.bak"
-        n += 1
-    return path
+    """A unique timestamped `.bak` path for `target` — delegates to the shared
+    `lib.backup_path` so every backup in the toolkit uses one collision-free,
+    sort-safe naming scheme (audit F22). `revert` selects the newest by mtime, so it
+    no longer depends on lexical order alone."""
+    return backup_path(target)
 
 
 def _safe_write(rows):
@@ -185,13 +176,20 @@ def _mana_has(name):
 def _append_mana(name, cost, mv, keywords):
     """Append a card-mana.csv row so INV-02 (every library name has a mana row)
     holds after an add — even if enrichment was offline (then cost/kw are blank,
-    and a later build_mana.py/refresh fills them in)."""
-    exists = os.path.exists(MANA_CSV)
-    with open(MANA_CSV, "a", newline="", encoding="utf-8") as fh:
-        w = csv.writer(fh)
-        if not exists:
-            w.writerow(["Card Name", "Mana Cost", "Mana Value", "Keywords"])
-        w.writerow([name, cost or "", mv if isinstance(mv, int) else "", keywords or ""])
+    and a later build_mana.py/refresh fills them in).
+
+    Reads the file, appends in memory, and rewrites atomically (temp + os.replace),
+    so a crash mid-write can't leave a half-written or header-less mana file — the
+    plain ``open("a")`` append also mis-treated an existing-but-empty file as already
+    having a header (audit F11)."""
+    rows = []
+    if os.path.exists(MANA_CSV):
+        with open(MANA_CSV, newline="", encoding="utf-8") as fh:
+            rows = [r for r in csv.reader(fh)]
+    if not rows:
+        rows = [["Card Name", "Mana Cost", "Mana Value", "Keywords"]]
+    rows.append([name, cost or "", mv if isinstance(mv, int) else "", keywords or ""])
+    atomic_write(MANA_CSV, lambda fh: csv.writer(fh).writerows(rows), backup=False)
 
 
 def _lookup_card(name):
@@ -348,10 +346,23 @@ def add():
     # mana row when the add is rejected by validation (audit F7); offline, a blank
     # row is written and a later build_mana.py/refresh fills in cost/keywords.
     if not _mana_has(stored):
-        if info:
-            _append_mana(stored, info["mana_cost"], info["mv"], info["keywords"])
-        else:
-            _append_mana(stored, "", "", "")
+        try:
+            if info:
+                _append_mana(stored, info["mana_cost"], info["mv"], info["keywords"])
+            else:
+                _append_mana(stored, "", "", "")
+        except Exception as e:
+            # The library write already landed; if the mana-row write fails we'd leave
+            # a card with no mana row (INV-02). Roll the library back to the .bak
+            # _safe_write just made, so the add is all-or-nothing (audit F11).
+            if backup:
+                target = os.path.abspath(DEFAULT_CSV)
+                bpath = os.path.join(os.path.dirname(target), backup)
+                if os.path.exists(bpath):
+                    shutil.copy2(bpath, target)
+            return jsonify(ok=False, errors=[
+                f"Card written but its card-mana.csv row failed ({e}); rolled the "
+                "library add back to keep INV-02. Try again."]), 500
     return jsonify(ok=True, backup=backup, enriched=enriched, name=stored)
 
 
@@ -395,16 +406,18 @@ def revert():
     """
     target = os.path.abspath(DEFAULT_CSV)
     d, base = os.path.dirname(target), os.path.basename(target)
-    baks = sorted(f for f in os.listdir(d)
-                  if f.startswith(base + ".") and f.endswith(".bak"))
+    baks = [f for f in os.listdir(d)
+            if f.startswith(base + ".") and f.endswith(".bak")]
     if not baks:
         return jsonify(ok=False, errors=["No backup to revert to yet — nothing has been saved."]), 409
-    newest = os.path.join(d, baks[-1])  # timestamped names sort chronologically
+    # Newest by mtime, not lexical name — robust to any legacy/mixed .bak naming (F22).
+    newest_base = max(baks, key=lambda f: os.path.getmtime(os.path.join(d, f)))
+    newest = os.path.join(d, newest_base)
     buf = io.StringIO()
     with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
         rc = validate(newest)
     if rc != 0:
-        return jsonify(ok=False, errors=[f"Backup {baks[-1]} failed validation; not restoring."]), 400
+        return jsonify(ok=False, errors=[f"Backup {newest_base} failed validation; not restoring."]), 400
     # Snapshot the CURRENT state before clobbering it, so a revert is itself
     # undoable (audit F5) — otherwise the pre-revert inventory is lost. Then
     # restore atomically: stage the backup into a temp file and os.replace() it

@@ -140,7 +140,9 @@ def deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name):
         "curve": {str(b): curve.get(b, 0) for b in range(8)},
         "curve_unknown": curve_unknown,
         "roles": [{"label": l, "n": roles[l]} for l in deckmod.ROLE_ORDER if roles.get(l)],
-        "interaction": sum(roles.get(k, 0) for k in ("Removal (spot)", "Sweeper", "Counter")),
+        # Canonical once-per-card interaction (matches deck.py stats / the triage Int
+        # column); the old bucket-sum double-counted a card in >1 interaction role (F7).
+        "interaction": deckmod.role_tally(cards, carddata)["interaction"],
         "cheaper": cheaper, "gated": gated,
         "mana": {
             "declared": "".join(sorted(declared)),

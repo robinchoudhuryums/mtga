@@ -391,7 +391,11 @@ def _deck_castable_colors(dmeta, cards, mana):
         entry = mana.get(n.lower())
         if entry and entry[0]:
             strict, hybrid = parse_pips(entry[0])
-            cols |= set(strict) | {x for h in hybrid for x in h}
+            # Only a TRUE multicolor hybrid ({W/U}) constrains castable colors; a
+            # monocolor hybrid ({2/W}) or Phyrexian ({W/P}) is payable WITHOUT its
+            # color, so it must not widen the deck's colors (audit F15; mirrors
+            # suggest_scored line ~1401 and _castability's len(h) >= 2).
+            cols |= set(strict) | {x for h in hybrid if len(h) >= 2 for x in h}
     return cols
 
 
@@ -855,12 +859,18 @@ def role_coverage_flags(cards, carddata):
         fires but classify_roles tagged no matching role (a likely under-read).
     Neither changes any count — both are review prompts (grade from full text via
     card.py / deck.py text)."""
-    unclassified, under_read = [], []
+    unclassified, under_read, no_data = [], [], []
     for q, n, s, c in cards:
         if n.lower() in BASICS:
             continue
         cd = carddata.get(n.lower())
-        if not cd or "Land" in _primary_type(cd.get("type") or ""):
+        if not cd:
+            # No library/pool row at all (e.g. a WIP craft target): role_tally can't
+            # read its text, so it silently contributes 0 interaction/card-advantage.
+            # Surface it so the under-count is explicit, not invisible (audit F14).
+            no_data.append(n)
+            continue
+        if "Land" in _primary_type(cd.get("type") or ""):
             continue
         text = cd.get("text") or ""
         roles = set(classify_roles(text))
@@ -873,7 +883,7 @@ def role_coverage_flags(cards, carddata):
             under_read.append((n, "/".join(missed)))
         elif not roles and "Creature" not in (cd.get("type") or ""):
             unclassified.append(n)
-    return unclassified, under_read
+    return unclassified, under_read, no_data
 
 
 def classify_roles(text):
@@ -1098,7 +1108,12 @@ def cmd_stats(args):
     # Coverage self-audit (F15): the classifier is precise but misses phrasings, so a
     # count can silently UNDER-read. Surface the cards whose text reads like a role it
     # didn't tag, so the miss becomes an explicit "verify" instead of a silent gap.
-    unclassified, under_read = role_coverage_flags(cards, carddata)
+    unclassified, under_read, no_data = role_coverage_flags(cards, carddata)
+    if no_data:
+        print(f"\n⚠ {len(no_data)} card(s) not in library/pool — no oracle text on file, so"
+              " the interaction / card-advantage counts are a FLOOR (they contribute 0):")
+        print(f"    {', '.join(no_data[:8])}{'…' if len(no_data) > 8 else ''}"
+              "  — enrich them (build_pool.py) for a real count")
     if under_read:
         print("\n⚠ Possible UNDER-COUNT — text reads like a role the classifier didn't tag;"
               " verify from full text (card.py):")
@@ -2720,11 +2735,16 @@ def deck_quality_vector(d):
         if m:
             for t in m["synergies"]:
                 theme_w[t] = theme_w.get(t, 0) + q
-    declared = _declared_colors(dmeta) or _deck_castable_colors(dmeta, cards, mana)
+    declared_hdr = _declared_colors(dmeta)
+    declared = declared_hdr or _deck_castable_colors(dmeta, cards, mana)
     uncast, _off = _castability(cards, declared, mana, carddata)
     d_int, d_ca = deck_role_counts(cards, carddata)
     return {
         "buildable": missing == 0 and short == 0, "missing": missing, "short": short,
+        # Whether castability was audited against a DECLARED identity. Without a
+        # `#: colors:` header, `declared` is derived from the deck's own cards, so
+        # uncastable is 0 by construction (unverified, not a clean bill) — audit F16.
+        "colors_declared": bool(declared_hdr),
         "uncastable": len(uncast), "interaction": d_int, "card_advantage": d_ca,
         "avg_mv": round(sum(mvs) / len(mvs), 2) if mvs else 0.0, "early_drops": early,
         "central_themes": len(_central_themes(theme_w)),
@@ -3059,13 +3079,23 @@ def cmd_tier(args):
     print(f"  vector        : buildable {vec['buildable']} · uncastable {vec['uncastable']} · "
           f"interaction {vec['interaction']} · card-adv {vec['card_advantage']} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
+    # The floor caps at C on any uncastable stray; without a #: colors: header that
+    # count is derived from the deck's own cards, so it's 0 by construction — say so
+    # rather than imply a verified-clean castability (audit F16).
+    if not vec.get("colors_declared"):
+        print("  ⚠ castability UNVERIFIED — no `#: colors:` header, so uncastable=0 is "
+              "self-derived; add a colors header for the floor's stray-cap to mean anything.")
     # F15: warn if the count may be under-read, since the floor grades on it.
     _meta2, _cards2 = parse_deck_file(d["path"])
-    _unc, _under = role_coverage_flags(_cards2, load_card_data())
+    _unc, _under, _nodata = role_coverage_flags(_cards2, load_card_data())
     if _under:
         names = ", ".join(f"{n} ({a})" for n, a in _under[:4])
         print(f"  ⚠ count may under-read {len(_under)} card(s) — verify via `deck.py stats {d['id']}`: {names}"
               + ("…" if len(_under) > 4 else ""))
+    if _nodata:
+        print(f"  ⚠ {len(_nodata)} card(s) have no oracle text on file — the floor grades on a "
+              f"partial count; enrich via build_pool.py ({', '.join(_nodata[:4])}"
+              + ("…" if len(_nodata) > 4 else "") + ")")
     if not claimed:
         print("\n  (untiered — add a `#: tier: X — rationale` header; see the tier rubric in CLAUDE.md)")
         return 0

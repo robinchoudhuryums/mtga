@@ -34,7 +34,7 @@ import sys
 import tempfile
 import time
 
-from lib import HEADER, DEFAULT_CSV, load_rows, write_rows, eprint
+from lib import HEADER, DEFAULT_CSV, load_rows, write_rows, eprint, backup_path
 from validate import validate
 
 SHEET_ID_ENV = "MTGA_SHEET_ID"
@@ -136,7 +136,7 @@ def pull(worksheet_name, dry_run):
                 eprint(f"  {ln}")
             return 1
         if os.path.exists(target):
-            backup = f"{target}.{time.strftime('%Y%m%d-%H%M%S')}.bak"
+            backup = backup_path(target)  # shared collision-free naming (audit F22)
             shutil.copy2(target, backup)
             print(f"Backed up existing CSV to {os.path.basename(backup)} before overwrite.")
         os.replace(tmp, target)
