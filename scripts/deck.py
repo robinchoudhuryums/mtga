@@ -2946,6 +2946,7 @@ def deck_quality_vector(d):
     _, _, qty = load_collection()
     missing = short = 0
     theme_w, mvs, early = {}, [], 0
+    creatures = reach = 0
     for q, n, s, c in cards:
         nl = n.lower()
         if nl in BASICS:
@@ -2956,13 +2957,22 @@ def deck_quality_vector(d):
         elif have < q:
             short += 1
         cd = carddata.get(nl)
-        if cd and "Land" not in _primary_type(cd.get("type") or ""):
+        tline = (cd.get("type") if cd else "") or ""
+        m = cardmeta.get(nl)
+        tags = set(m["synergies"]) if m else set()
+        if cd and "Land" not in _primary_type(tline):
             entry = mana.get(nl)
             if entry and entry[1] is not None:
                 mvs += [entry[1]] * q
                 if entry[1] <= 2:
                     early += q
-        m = cardmeta.get(nl)
+        if "Creature" in _primary_type(tline):
+            creatures += q
+        # Reach = ability to CLOSE a game (the aggro axis): burn/drain reach, or an
+        # evasive body that keeps connecting. Used only by the archetype-aware floor.
+        if ("Burn / drain" in classify_roles((cd.get("text") if cd else "") or "")
+                or (tags & _EVASION_TAGS)):
+            reach += q
         if m:
             for t in m["synergies"]:
                 theme_w[t] = theme_w.get(t, 0) + q
@@ -2978,6 +2988,11 @@ def deck_quality_vector(d):
         "colors_declared": bool(declared_hdr),
         "uncastable": len(uncast), "interaction": d_int, "card_advantage": d_ca,
         "avg_mv": round(sum(mvs) / len(mvs), 2) if mvs else 0.0, "early_drops": early,
+        "creatures": creatures, "reach": reach,
+        # The deck's game PLAN drives which axes its tier floor weights (#4): an aggro
+        # deck is graded on its clock, not an interaction suite it doesn't want.
+        "plan": deck_plan(dmeta, avg_mv=(round(sum(mvs) / len(mvs), 2) if mvs else 0.0),
+                          interaction=d_int, early=early),
         "central_themes": len(_central_themes(theme_w)),
         "central": sorted(_central_themes(theme_w)),
         # Full per-theme copy counts — lets the F10 guard tell a theme that truly LEFT
@@ -3122,6 +3137,51 @@ def cmd_quality(args):
 TIER_RANK = {"S": 5, "A": 4, "B": 3, "C": 2, "D": 1}
 
 
+# Evasion tags that let a creature keep connecting — the "reach" the aggro floor credits.
+_EVASION_TAGS = {"evasion", "flying", "menace", "trample", "fear", "intimidate",
+                 "shadow", "skulk", "horsemanship", "unblockable", "double strike"}
+_AGGRO_WORDS = ("aggro", "aggressive", "hyper-aggressive", "burn")
+
+
+def deck_plan(meta, avg_mv=None, interaction=None, early=None):
+    """The deck's game PLAN — 'aggro' | 'control' | 'combo' | 'midrange' — which decides
+    the axes its tier floor weights (#4). Source order: an explicit `#: plan:` header,
+    then keywords in `#: archetype:`, then a conservative metric inference. Defaults to
+    'midrange' (the current interaction+card-advantage floor), so anything not clearly
+    aggro/control/combo is graded exactly as before."""
+    explicit = (meta.get("plan") or "").strip().lower()
+    if explicit in ("aggro", "control", "combo", "midrange"):
+        return explicit
+    arc = (meta.get("archetype") or "").lower()
+    if any(w in arc for w in _AGGRO_WORDS):
+        return "aggro"
+    if "control" in arc:
+        return "control"
+    if "combo" in arc:
+        return "combo"
+    if any(w in arc for w in ("midrange", "ramp", "value", "goodstuff", "tempo")):
+        return "midrange"
+    # Inference (only when nothing is declared): a clearly fast, cheap, low-interaction
+    # deck reads aggro. Deliberately strict so it never surprises a non-aggro deck.
+    if (avg_mv is not None and avg_mv <= 2.4 and (interaction or 0) < 4
+            and (early or 0) >= 8):
+        return "aggro"
+    return "midrange"
+
+
+def _clock_score(vec):
+    """Aggressive 'clock' proxy (0–7): a low curve + cheap threats + reach to close.
+    Substitutes for interaction in `tier_band` ONLY for an aggro plan — a fast deck's
+    resilience is its speed, not its removal count. Bounded so it can't wildly inflate."""
+    mv = vec.get("avg_mv") or 99.0
+    early = vec.get("early_drops", 0)
+    reach = vec.get("reach", 0)
+    c = 3 if mv <= 2.2 else 2 if mv <= 2.6 else 1 if mv <= 3.0 else 0
+    c += 2 if early >= 12 else 1 if early >= 8 else 0
+    c += 2 if reach >= 8 else 1 if reach >= 4 else 0
+    return c
+
+
 def tier_band(vec):
     """The tier FLOOR (S/A/B/C/D) a deck's measurable quality vector supports.
     Metrics-only and blind to bombs/meta, so it under-rates by design — used to flag
@@ -3134,10 +3194,17 @@ def tier_band(vec):
     if vec["uncastable"] > 0:
         return "C"                        # castability strays cap the floor
     inter, ca = vec["interaction"], vec["card_advantage"]
-    resil = inter + ca                    # interaction + card advantage = grind / resilience
-    if inter >= 5 and resil >= 7:
+    # An AGGRO deck closes on a fast clock, not an interaction suite — so for an aggro
+    # plan a strong clock (low curve + cheap threats + reach) substitutes for the
+    # interaction the resilience floor otherwise demands, and a genuinely fast deck
+    # isn't floored at C just for running light removal (#4). Every other plan keeps
+    # the exact interaction+card-advantage floor (clock = 0), so nothing else regrades.
+    clock = _clock_score(vec) if vec.get("plan") == "aggro" else 0
+    ir = inter + clock                    # effective pressure/interaction axis
+    resil = inter + ca + clock            # grind / resilience / closing speed
+    if ir >= 5 and resil >= 7:
         return "A"                        # measurable ceiling; S is a human call on top
-    if inter >= 3 and resil >= 4:
+    if ir >= 3 and resil >= 4:
         return "B"
     if resil >= 2:
         return "C"
@@ -3162,20 +3229,29 @@ def tier_gap(vec, target):
         return None
     need_i, need_r = TIER_FLOOR_REQ[target]
     inter, ca = vec["interaction"], vec["card_advantage"]
+    # For an aggro plan the clock already counts toward the floor (see tier_band), so
+    # the interaction the deck still needs is measured against interaction + clock (#4).
+    clock = _clock_score(vec) if vec.get("plan") == "aggro" else 0
+    inter_eff = inter + clock
     parts = []
     # Any target above C requires 0 castability strays (a stray caps the floor at C).
     fix_unc = vec["uncastable"] if (TIER_RANK[target] > TIER_RANK["C"] and vec["uncastable"]) else 0
     if fix_unc:
         parts.append(f"clear {fix_unc} uncastable stray(s) — they cap the floor at C")
-    add_i = max(0, need_i - inter)
+    add_i = max(0, need_i - inter_eff)
     # Interaction adds also raise the resilience sum; only the remainder needs card advantage.
-    add_ca = max(0, need_r - (inter + ca + add_i))
+    add_ca = max(0, need_r - (inter_eff + ca + add_i))
     if add_i:
-        parts.append(f"+{add_i} interaction ({inter}→{inter + add_i})")
+        label = "interaction or clock" if clock or vec.get("plan") == "aggro" else "interaction"
+        parts.append(f"+{add_i} {label} ({inter_eff}→{inter_eff + add_i})")
     if add_ca:
         parts.append(f"+{add_ca} card advantage ({ca}→{ca + add_ca})")
+    if vec.get("plan") == "aggro" and add_i:
+        parts.append("(aggro: raise the clock — lower the curve / add cheap threats / add "
+                     "reach — or add interaction)")
     return {"target": target, "add_interaction": add_i, "add_card_advantage": add_ca,
-            "fix_uncastable": fix_unc, "met": not parts, "summary": parts}
+            "fix_uncastable": fix_unc,
+            "met": not [p for p in parts if not p.startswith("(aggro:")], "summary": parts}
 
 
 def owned_role_fillers(d, roles, *, limit=10):
@@ -3273,6 +3349,8 @@ def tier_consistency(d):
         if vec["uncastable"]:
             why.append(f"{vec['uncastable']} uncastable")
         why.append(f"interaction {vec['interaction']}, card-adv {vec['card_advantage']}")
+        if vec.get("plan") == "aggro":
+            why.append(f"aggro clock {_clock_score(vec)}/7")
         return claimed, implied, True, (
             f"tier {claimed} sits {gap} bands above the metrics floor (~{implied}): "
             + "; ".join(why))
@@ -3307,6 +3385,9 @@ def cmd_tier(args):
     print(f"Tier — deck {d['id']}: {d['name'] or d['path']}")
     print(f"  claimed tier  : {claimed or '(untiered)'}")
     print(f"  metrics floor : {implied}   (measurable-only — blind to bombs/meta, so it under-rates)")
+    print(f"  plan          : {vec.get('plan', 'midrange')}"
+          + (f"  ·  clock {_clock_score(vec)}/7 (curve/threats/reach substitutes for interaction)"
+             if vec.get('plan') == 'aggro' else "  (floor weights interaction + card advantage)"))
     print(f"  vector        : buildable {vec['buildable']} · uncastable {vec['uncastable']} · "
           f"interaction {vec['interaction']} · card-adv {vec['card_advantage']} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
