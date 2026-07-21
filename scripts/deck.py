@@ -961,6 +961,140 @@ def _curve_gap_factor(mv, curve):
     return 1.0
 
 
+# --------------------------------------------------------------------------- #
+# Engine roles — enabler vs payoff WITHIN a theme (improvement #3)
+# --------------------------------------------------------------------------- #
+# A synergy tag says "sacrifice" appears in the deck; it does NOT say which cards
+# FEED the engine (sac outlets / fodder) and which cards PAY IT OFF (death triggers).
+# The most common real deckbuilding flaw — payoffs with no enablers (or vice versa) —
+# is invisible to a bag-of-tags model. For the handful of themes that are actual
+# two-sided engines, classify each card's oracle text as ENABLER (produces/enables the
+# resource) and/or PAYOFF (rewards/consumes it), so `engine_balance` can flag a
+# lopsided engine. Heuristic and text-based (so it catches an untagged outlet too);
+# the `engines` command prints the card lists for a human read, like `cuts`/`tribes`.
+ENGINE_THEMES = {
+    "counters": {
+        "enabler": [
+            r"put (a|one|two|three|four|x|that many|another|\d+)[^.]*\+1/\+1 counter",
+            r"enters[^.]*with[^.]*\+1/\+1 counter", r"\bproliferate\b", r"\badapt\b",
+            r"\bbolster\b", r"\bsupport \d", r"\bmonstrosity\b", r"\btraining\b",
+        ],
+        "payoff": [
+            r"for each \+1/\+1 counter",
+            r"\+1/\+1 counter[^.]*(among (creatures|permanents) you control|on creatures you control)",
+            r"whenever[^.]*\+1/\+1 counter is (put|placed)",
+            r"if[^.]*would[^.]*\+1/\+1 counter[^.]*instead", r"twice that many \+1/\+1",
+            r"remove (a|one|x|\d+)[^.]*\+1/\+1 counter", r"move (a|one|any number of)[^.]*\+1/\+1 counter",
+        ],
+    },
+    "tokens": {
+        "enabler": [r"create[s]? [^.]*\btoken", r"\bpopulate\b", r"\bfabricate\b"],
+        "payoff": [
+            r"for each (creature|token|artifact) you control", r"creatures you control get \+",
+            r"whenever a[^.]*token[^.]*enters", r"creatures you control (have|gain)",
+            r"each creature you control", r"sacrifice (a|another|\w+)[^.]*token",
+        ],
+    },
+    "sacrifice": {   # aristocrats: outlets/fodder vs death & sacrifice triggers
+        "enabler": [r"\bsacrifice (a|an|another|two|three|\d+|x|it|them)\b", r"you may sacrifice"],
+        "payoff": [r"whenever[^.]*\bdies\b", r"whenever you sacrifice", r"whenever[^.]*is sacrificed"],
+    },
+    "graveyard": {   # fill the yard vs use the yard (reanimator / recursion)
+        "enabler": [r"\bmill\b", r"\bsurveil\b", r"discard[^.]*card", r"put[^.]*(from|into)[^.]*graveyard",
+                    r"into your graveyard", r"\bdredge\b"],
+        "payoff": [r"return[^.]*from (your )?graveyard to the battlefield", r"from your graveyard",
+                   r"for each[^.]*in your graveyard", r"\bescape\b", r"\bflashback\b", r"\bdelve\b",
+                   r"\bdisturb\b", r"\bunearth\b", r"cards? in your graveyard"],
+    },
+    "lifegain": {
+        "enabler": [r"gain (\d+|x|that much) life", r"gains? \d+ life", r"\blifelink\b"],
+        "payoff": [r"whenever you gain life", r"for each[^.]*life[^.]*gained",
+                   r"if you (gained|would gain)[^.]*life", r"(the amount of )?life you gained"],
+    },
+    "food": {
+        "enabler": [r"create[s]? [^.]*food"],
+        "payoff": [r"sacrifice a food", r"for each food", r"food[^.]*you control"],
+    },
+}
+_ENGINE_COMPILED = {
+    theme: {role: [re.compile(p) for p in pats] for role, pats in sides.items()}
+    for theme, sides in ENGINE_THEMES.items()
+}
+
+
+def engine_roles(text):
+    """{theme: {roles}} — for each engine theme, which side(s) of its two-sided engine a
+    card's oracle text plays: 'enabler' (feeds the engine) and/or 'payoff' (rewards it).
+    A card can be both (a sac outlet that also triggers on death) or neither. Text-based,
+    so an untagged piece is still caught. `− → -` normalized like classify_roles."""
+    t = (text or "").lower().replace("−", "-")
+    out = {}
+    for theme, sides in _ENGINE_COMPILED.items():
+        hit = {role for role, pats in sides.items() if any(p.search(t) for p in pats)}
+        if hit:
+            out[theme] = hit
+    return out
+
+
+def engine_balance(cards, carddata, central, signature=frozenset()):
+    """For each engine theme CENTRAL to the deck, tally enabler vs payoff copies and a
+    verdict. Only reports themes that are (a) real two-sided engines (in ENGINE_THEMES)
+    and (b) central to THIS deck — so an incidental one-off doesn't raise a flag.
+
+    `signature` (the deck's built-around themes, from `_signature_themes`) gates the
+    NOISY verdicts: 'payoffs with no enablers' (dead payoffs) is a hard flag for ANY
+    central engine, but 'enablers with no payoff' / a skew is only flagged for a
+    SIGNATURE engine — a deck naturally has incidental lifegain/counters enablers it
+    doesn't need to pay off, so those must not cry wolf.
+
+    Returns {theme: {'enablers': [(name,q)], 'payoffs': [(name,q)], 'en': n, 'pay': n,
+    'verdict': str, 'flag': bool}} ordered by the deck's theme centrality."""
+    sig = {t.lower() for t in signature}
+    central_engines = [t for t in central if t.lower() in _ENGINE_COMPILED]
+    result = {}
+    seen = set()
+    for theme in central_engines:
+        result[theme] = {"enablers": [], "payoffs": [], "en": 0, "pay": 0}
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl in seen:
+            continue
+        seen.add(nl)
+        cd = carddata.get(nl)
+        if not cd:
+            continue
+        roles = engine_roles(cd.get("text") or "")
+        for theme in central_engines:
+            r = roles.get(theme.lower(), set())
+            if "enabler" in r:
+                result[theme]["enablers"].append((n, q)); result[theme]["en"] += q
+            if "payoff" in r:
+                result[theme]["payoffs"].append((n, q)); result[theme]["pay"] += q
+    # Flags fire only off the PAYOFF side. Payoff cues ("whenever you gain life", "for
+    # each +1/+1 counter") are specific, so a payoff gap is trustworthy; enabler cues
+    # ("gain N life", "sacrifice a …") are broad and match incidental cards, so an
+    # enabler-heavy count is NOISE — reported for the human read, never a ⚠.
+    for theme, d in result.items():
+        en, pay = d["en"], d["pay"]
+        is_sig = theme.lower() in sig
+        if pay >= 2 and en == 0:
+            d["verdict"], d["flag"] = "payoffs but NO enablers — the payoffs sit dead", True
+        elif pay >= 3 and en * 3 <= pay:
+            d["verdict"], d["flag"] = (f"payoff-heavy ({en} enabler / {pay} payoff) — thin on "
+                                       "enablers to turn the payoffs on"), True
+        elif en and pay:
+            d["verdict"], d["flag"] = f"balanced ({en} enabler / {pay} payoff)", False
+        elif en >= 2 and pay == 0:
+            d["verdict"] = (f"{en} enablers, no payoff — your engine has no reward"
+                            if is_sig else f"{en} enablers, no payoff (incidental)")
+            d["flag"] = False   # broad enabler side — inform, don't cry wolf
+        elif en or pay:
+            d["verdict"], d["flag"] = f"({en} enabler / {pay} payoff)", False
+        else:
+            d["verdict"], d["flag"] = "no enabler/payoff cards detected", False
+    return result
+
+
 def context_flags(text, mana_cost):
     """Mechanics whose value is deck-dependent (converge/devotion/affinity/X-cost);
     these must be graded against the deck, not from the shortlist label."""
@@ -1057,7 +1191,7 @@ def cmd_stats(args):
         eprint(f"No deck with id {args.id!r}.")
         return 1
     carddata = load_card_data()
-    _, cards = parse_deck_file(d["path"])
+    meta, cards = parse_deck_file(d["path"])
 
     colors, types, total = {}, {}, 0
     nonland_names = []
@@ -1170,6 +1304,27 @@ def cmd_stats(args):
     if unclassified:
         print(f"\n  (classifier found no role for {len(unclassified)} noncreature spell(s): "
               f"{', '.join(unclassified[:6])}{'…' if len(unclassified) > 6 else ''} — read if grading)")
+
+    # Engine balance (#3): flag a lopsided two-sided engine (payoffs with no enablers,
+    # or a lopsided signature engine) among the deck's CENTRAL themes — the detail and
+    # card lists are in `deck.py engines`.
+    cardmeta = load_card_meta()
+    theme_w = {}
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        m = cardmeta.get(n.lower())
+        if m:
+            for t in m["synergies"]:
+                theme_w[t] = theme_w.get(t, 0) + q
+    signature = _signature_themes(meta, cards, cardmeta)
+    flagged = [(t, info) for t, info in
+               engine_balance(cards, carddata, _central_themes(theme_w), signature).items()
+               if info["flag"]]
+    if flagged:
+        print(f"\n⚠ Engine balance (detail: `deck.py engines {d['id']}`):")
+        for t, info in flagged:
+            print(f"    {t}: {info['verdict']}")
     return 0
 
 
@@ -3322,6 +3477,55 @@ def cmd_preflight(args):
     return 1 if hard else 0
 
 
+def cmd_engines(args):
+    """Engine analysis: for each two-sided engine theme the deck is built on, show its
+    ENABLERS (feed the engine) vs PAYOFFS (reward it) and flag a lopsided engine —
+    payoffs with no enablers, or enablers with no reward — the flaw a bag-of-tags model
+    can't see. Heuristic + text-based; prints the card lists so you grade the balance."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    meta, cards = parse_deck_file(d["path"])
+    cardmeta = load_card_meta()
+    carddata = load_card_data()
+    theme_w = {}
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        m = cardmeta.get(n.lower())
+        if m:
+            for t in m["synergies"]:
+                theme_w[t] = theme_w.get(t, 0) + q
+    central = _central_themes(theme_w)
+    signature = _signature_themes(meta, cards, cardmeta)
+    bal = engine_balance(cards, carddata, central, signature)
+
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — engine analysis (enabler ↔ payoff)")
+    if not bal:
+        print("\nNo two-sided engine themes are central to this deck. Engines covered: "
+              + ", ".join(sorted(ENGINE_THEMES)) + ".")
+        return 0
+
+    def fmt(pairs):
+        return ", ".join(f"{n}×{q}" if q > 1 else n for n, q in pairs)
+
+    flagged = 0
+    for theme, info in bal.items():
+        mark = "⚠ " if info["flag"] else "  "
+        print(f"\n{mark}{theme}: {info['verdict']}")
+        if info["enablers"]:
+            print(f"    enablers ({info['en']}): {fmt(info['enablers'])}")
+        if info["payoffs"]:
+            print(f"    payoffs  ({info['pay']}): {fmt(info['payoffs'])}")
+        flagged += 1 if info["flag"] else 0
+
+    print("\nHeuristic + text-based — a card can play both sides, and the classifier can "
+          "miss an unusual phrasing, so read the lists. Fix a ⚠ by adding the short side "
+          "(`deck.py suggest`) or trimming dead payoffs (`deck.py cuts`).")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="Manage decks and variations.")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -3343,6 +3547,8 @@ def main():
     p = sub.add_parser("mana", help="hybrid-aware color requirements")
     p.add_argument("id")
     p = sub.add_parser("tribes", help="creature-subtype breakdown + type-matters synergies")
+    p.add_argument("id")
+    p = sub.add_parser("engines", help="enabler vs payoff balance for the deck's engine themes")
     p.add_argument("id")
     p = sub.add_parser("suggest", help="recommend pool cards that fit a deck's colors + themes")
     p.add_argument("id")
@@ -3410,7 +3616,7 @@ def main():
     return {
         "list": cmd_list, "wildcards": cmd_wildcards, "audit": cmd_audit, "check": cmd_check,
         "diff": cmd_diff, "arena": cmd_arena, "stats": cmd_stats,
-        "mana": cmd_mana, "tribes": cmd_tribes, "suggest": cmd_suggest,
+        "mana": cmd_mana, "tribes": cmd_tribes, "engines": cmd_engines, "suggest": cmd_suggest,
         "legal": cmd_legal, "cuts": cmd_cuts,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
         "verify": cmd_verify, "text": cmd_text, "suggest-homes": cmd_suggest_homes,
