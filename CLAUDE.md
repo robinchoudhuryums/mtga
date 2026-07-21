@@ -87,6 +87,14 @@ castability · curve · central-theme density), with the intangibles moving a de
   justify the bombs/meta in the `#: tier:` rationale." **Run it after any deck edit**
   (the `/apply-changes` skill does) so a tune that moves the metrics re-grounds the
   letter. The floor makes the *floor* bulletproof; S-vs-A still needs your judgment.
+- **Climbing a tier** — `deck.py tier <id> --to A` prints the exact measurable gap
+  to a target band's floor ("+3 interaction"), then the owned (0-wildcard) on-color
+  cards **and** the unowned craft targets that fill the short axis, so it doubles as
+  a wildcard-spend planner. `/tune-deck` runs it so a tune aims at a concrete tier
+  target. The tool does the arithmetic; the card *selection* stays a human call
+  (protect signature/spice). Compare a deck's past versions with `deck.py history
+  <id>` (its git changelog) + `deck.py quality <id> --at <ref>` (re-scores a past
+  list's vector against now) — change history lives in git, not an in-file log.
 
 ## Common Gotchas
 
@@ -390,7 +398,12 @@ castability · curve · central-theme density), with the intangibles moving a de
   "⚠ Possible UNDER-COUNT — verify" list so a miss is explicit, never silent. It
   only prompts a human read; it never changes a count. (The common templates —
   any `fight`, `destroy/exile up to N target`, `-N/-N` shrink, one-sided
-  minus-wraths — are now *counted* directly; the flag catches the residual.) The lint reads the deck's `#: colors:` header,
+  minus-wraths — are now *counted* directly; the flag catches the residual.) The
+  interaction / card-advantage counts are now computed by ONE canonical
+  `role_tally` (F13) — quantity-weighted, a card counted once per axis, basics and
+  nonbasic lands skipped — that `stats`, `audit`, and the `quality`/`tier` vectors
+  all route through, so the number you eyeball in `stats` is the number the tier
+  floor grades on (three separate counters used to disagree by ±1). The lint reads the deck's `#: colors:` header,
   so a stale or intentionally-narrow header flags cards as off-color — e.g. the
   archived raw 83-card `19c` pile is headed `WU` but is really multicolor. Fixing a stale
   header to the deck's real castable colors clears the false positives (e.g. deck
