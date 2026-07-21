@@ -36,6 +36,7 @@ import argparse
 import contextlib
 import csv
 import datetime
+import functools
 import io
 import json
 import os
@@ -68,6 +69,23 @@ TEMPLATE_PATH = os.path.join(REPO_ROOT, "templates", "collection.html")
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
 
 app = Flask(__name__)
+
+# Werkzeug's dev server is threaded, so mutating endpoints can run concurrently.
+# Each does load → modify → write with no coordination, so two overlapping requests
+# can lose an update (the second write clobbers the first) — widened by the in-band
+# Scryfall lookup in add(). Serialize every write through one lock (audit F13). This
+# is a single-user local tool, so full serialization is fine; the only cost is that
+# a save waits behind an in-flight add's Scryfall call (bounded by its short timeout).
+_WRITE_LOCK = threading.Lock()
+
+
+def _serialized(fn):
+    """Run a mutating request handler under the global write lock (audit F13)."""
+    @functools.wraps(fn)
+    def wrapper(*a, **k):
+        with _WRITE_LOCK:
+            return fn(*a, **k)
+    return wrapper
 
 
 def load_manifest():
@@ -228,6 +246,7 @@ def _list_of_objs(x):
 
 
 @app.route("/api/save", methods=["POST"])
+@_serialized
 def save():
     """Persist edited Quantity Owned / Synergies back to card-library.csv.
 
@@ -290,6 +309,7 @@ def save():
 
 
 @app.route("/api/add", methods=["POST"])
+@_serialized
 def add():
     """Add a new printing to the collection.
 
@@ -367,6 +387,7 @@ def add():
 
 
 @app.route("/api/remove", methods=["POST"])
+@_serialized
 def remove():
     """Remove a single printing (by name/set/collector key) from the collection.
 
@@ -398,6 +419,7 @@ def remove():
 
 
 @app.route("/api/revert", methods=["POST"])
+@_serialized
 def revert():
     """Undo the last save by restoring the most recent .bak snapshot.
 
@@ -665,6 +687,7 @@ def deck_analysis(deck_id, kind):
 
 
 @app.route("/api/deck/save", methods=["POST"])
+@_serialized
 def deck_save():
     """Write an edited deck back to its .txt (structure + section comments
     preserved). Gated on INV-04: must re-parse with every card line intact, else
@@ -686,6 +709,7 @@ def deck_save():
 
 
 @app.route("/api/deck/new", methods=["POST"])
+@_serialized
 def deck_create():
     """Create a new numbered deck (decks/NN-slug/deck.txt) from the editor."""
     data = request.get_json(silent=True) or {}
@@ -726,6 +750,21 @@ def main():
     ap.add_argument("--debug", action="store_true", help="Flask debug/auto-reload")
     ap.add_argument("--no-browser", action="store_true", help="don't auto-open the browser")
     args = ap.parse_args()
+
+    # This editor has NO auth by design (personal, localhost). Two guardrails (F12):
+    #  • --debug enables the Werkzeug interactive debugger, whose console runs
+    #    arbitrary code — exposing that on a non-local bind is a remote-code-exec
+    #    hole, so refuse the combination outright.
+    #  • Any non-local bind exposes the auth-less editor; warn loudly.
+    local = args.host in ("127.0.0.1", "localhost", "::1")
+    if args.debug and not local:
+        ap.error(f"refusing --debug on non-local host {args.host!r}: the Werkzeug debugger "
+                 "allows remote code execution and this editor has no auth. Bind 127.0.0.1 "
+                 "for debugging, or drop --debug.")
+    if not local:
+        print(f"WARNING: binding {args.host} exposes this AUTH-LESS editor beyond localhost — "
+              "anyone who can reach the port can read and write your files. Prefer 127.0.0.1 "
+              "with an SSH tunnel or a Codespace's private port forwarding.")
     url = f"http://{args.host}:{args.port}"
     print(f"Collection & deck editor → {url}  (Ctrl-C to stop)")
     # Auto-open the browser once the server is up (localhost only, and not in the

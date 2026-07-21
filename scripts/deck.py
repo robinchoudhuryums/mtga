@@ -655,7 +655,8 @@ def load_card_data():
             for r in csv.DictReader(fh):
                 n = (r.get("Card Name") or "").strip().lower()
                 if n and n not in data:
-                    data[n] = {"type": r.get("Type") or "", "text": r.get("Card Text") or "",
+                    data[n] = {"name": (r.get("Card Name") or "").strip(),
+                               "type": r.get("Type") or "", "text": r.get("Card Text") or "",
                                "colors": r.get("Color(s)") or ""}
                     data.setdefault(n.split(" // ")[0], data[n])
     return data
