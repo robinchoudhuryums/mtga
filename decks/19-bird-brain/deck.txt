@@ -77,3 +77,5 @@
 #~ note: applied — Dazzling Denial in for Rydia's Return.
 #~ -Momo, Friendly Flier | +Cloudblazer | flyer that gains 2 and draws 2. TRADE: 1-drop → 5-drop, loses Momo's flyer cost-reduction
 #~ note: all OWNED (0 wildcards). Bushwhack / Harsh Annotation / Run Over remain owned interaction options too.
+#~ +East Wind Avatar | OWNED (salvage from retired 19c pile): {3}{W} Bird — "Flying, vigilance. Alliance — whenever another creature you control enters, +1/+0 EOT." Evasive Bird that grows on go-wide; top-ranked pile leftover (suggest #9 here). ~ role-player over a weaker flyer.
+#~ note: 19c "WIP Pile (raw dump)" retired 2026-07 — checked all 46 pile orphans via updated `suggest --owned`; only East Wind Avatar ranks as a strong fit for this Bant primary (green landfall leftovers fit the GW 19b instead). The rest correctly trimmed (Cat-Owl already handled above).
