@@ -182,9 +182,9 @@ castability · curve · central-theme density), with the intangibles moving a de
   shared `audit_deck()` scorer, so CLI and page can't drift). It's a SHORTLIST
   SIGNAL like `suggest`/`cuts`: a flag says "look here," then grade the flagged deck
   from `deck.py text` + `/tune-deck` — a review/ok label is not a verdict on the
-  deck. (A stale `#: colors:` header inflates the `Cast` column — e.g. the archived
-  raw 83-card `19c` pile headed `WU` shows dozens of "uncastable"; fixing the header to
-  the deck's real castable colors clears it, same as it does for `mana`/`check`.)
+  deck. (A stale `#: colors:` header inflates the `Cast` column — a deck whose header is
+  narrower than the colors it actually casts shows spurious "uncastable" rows; fixing the
+  header to the deck's real castable colors clears it, same as it does for `mana`/`check`.)
 - **Stored decks drift from the real Arena decks.** The user edits decks in the Arena
   app; the repo only updates when someone writes the deck file, so the two silently
   diverge (hit this session: deck `12` had been changed to 2× Super Intelligence / −Futurist
@@ -484,8 +484,8 @@ castability · curve · central-theme density), with the intangibles moving a de
   nonbasic lands skipped — that `stats`, `audit`, and the `quality`/`tier` vectors
   all route through, so the number you eyeball in `stats` is the number the tier
   floor grades on (three separate counters used to disagree by ±1). The lint reads the deck's `#: colors:` header,
-  so a stale or intentionally-narrow header flags cards as off-color — e.g. the
-  archived raw 83-card `19c` pile is headed `WU` but is really multicolor. Fixing a stale
+  so a stale or intentionally-narrow header flags cards as off-color — a header
+  narrower than the deck's real card pool reads as multicolor strays. Fixing a stale
   header to the deck's real castable colors clears the false positives (e.g. deck
   `13` was corrected `GR`→`GWBR`). Treat a flag as signal to review, not a hard
   failure — it doesn't gate `check_all.py`.
