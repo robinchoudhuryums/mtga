@@ -12,7 +12,13 @@ Whenever Dragonhawk enters or attacks, exile the top X cards of your library, wh
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
 When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)",5.5
+Bleachbone Verge,Land,"{T}: Add {B}.
+{T}: Add {W}. Activate only if you control a Plains or a Swamp.",W/B,mana,DFT,250,Rare,20,"WB fixing — decks 20, 20a",6
 Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,6.0
+Sunbillow Verge,Land,"{T}: Add {W}.
+{T}: Add {R}. Activate only if you control a Mountain or a Plains.",W/R,mana,DFT,264,Rare,28,RW fixing — 7 decks (4 A: 24/24b/28/29); top-value verge craft,8
+Wastewood Verge,Land,"{T}: Add {G}.
+{T}: Add {B}. Activate only if you control a Swamp or a Forest.",B/G,mana,DFT,268,Rare,31,"BG fixing — decks 5, 31 (both A)",7
 Overlord of the Balemurk,Enchantment Creature — Avatar Horror,"Impending 5—{1}{B} (If you cast this spell for its impending cost, it enters with five time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
 Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.",B,Avatar; Horror; graveyard; mill; impending,DSK,113,Mythic,5; 11,"Impending {1}{B} graveyard value-bomb for Coming of Galactus (5): mills + recurs a creature — a real engine | Also deck 11 (Villainous, mono-B): the recurring, no-strings card-advantage + reanimation engine it lacks — mill 4 + recur a creature on enter AND attack.",8.5
 Blazemire Verge,Land,"{T}: Add {B}.
@@ -24,6 +30,10 @@ Equip {3}",R,Equipment; counters; burn; etb; equipment; pump; equip,DSK,128,Rare
 Enduring Vitality,Enchantment Creature — Elk Glimmer,"Vigilance
 Creatures you control have ""{T}: Add one mana of any color.""
 When Enduring Vitality dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",G,Elk; Glimmer; mana; vigilance; combat,DSK,176,Rare,29,,6.5
+Gloomlake Verge,Land,"{T}: Add {U}.
+{T}: Add {B}. Activate only if you control an Island or a Swamp.",U/B,mana,DSK,260,Rare,12,"BU fixing — decks 12, 22, 32",7
+Thornspire Verge,Land,"{T}: Add {R}.
+{T}: Add {G}. Activate only if you control a Mountain or a Forest.",R/G,mana,DSK,270,Rare,30,GR fixing — 6 decks (4 A: 9/28/29/30); top-value verge craft,8
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.5
 Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19,,5.0
