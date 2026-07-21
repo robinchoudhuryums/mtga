@@ -65,7 +65,7 @@
 1 Thornwood Falls (FDN) 269
 1 Meditation Pools (TLA) 272
 1 Restless Anchorage (LCI) 280
-1 Azorius Guildgate (FDN) 683
+1 Floodfarm Verge (DSK) 259
 1 Birnin Zana Plaza (MSH) 262
 5 Forest
 3 Plains
