@@ -56,7 +56,7 @@ def print_full(rows, owned, kwmap):
     read for scanning the pool as possible additions / craft targets."""
     for c in rows:
         name = (c.get("Card Name") or "").strip()
-        have = owned.get(name.lower(), 0)
+        have = owned_of(owned, name)
         tag = f"×{have}" if have > 0 else "craft"
         print(f"\n• {name}   [{(c.get('Type') or '').strip() or '?'}]  ·  "
               f"{(c.get('Rarity') or '?')} · {tag}")
@@ -85,6 +85,15 @@ def owned_counts():
     return counts
 
 
+def owned_of(owned, name):
+    """Copies owned for a pool card name. The pool stores double-faced cards under
+    their full ``Front // Back`` name, but the library (and so ``owned_counts``) keys
+    on the FRONT face only — so fall back to the front name, else an owned DFC reads
+    as ``craft`` (audit F6)."""
+    nl = (name or "").strip().lower()
+    return owned.get(nl) or owned.get(nl.split(" // ")[0], 0)
+
+
 def load_pool(path):
     with open(path, newline="", encoding="utf-8") as fh:
         return list(csv.DictReader(fh))
@@ -106,7 +115,7 @@ def matches(card, args, owned):
         legal = {x.strip() for x in (card.get("Legalities") or "").split(";") if x.strip()}
         if args.legal.lower() not in legal:
             return False
-    have = owned.get((card.get("Card Name") or "").strip().lower(), 0)
+    have = owned_of(owned, card.get("Card Name"))
     if args.owned and have <= 0:
         return False
     if args.unowned and have > 0:
@@ -117,7 +126,7 @@ def matches(card, args, owned):
 def print_table(hits, owned):
     cols = ["Have", "Card Name", "Type", "Color(s)", "Rarity"]
     def have_of(c):
-        h = owned.get((c.get("Card Name") or "").strip().lower(), 0)
+        h = owned_of(owned, c.get("Card Name"))
         return f"×{h}" if h > 0 else "craft"
     widths = {c: len(c) for c in cols}
     rowdata = []
@@ -171,7 +180,7 @@ def main():
 
     if args.count:
         have = sum(1 for c in hits
-                   if owned.get((c.get("Card Name") or "").strip().lower(), 0) > 0)
+                   if owned_of(owned, c.get("Card Name")) > 0)
         print(f"{len(hits)} match — {have} owned, {len(hits) - have} to craft")
         return 0
     if not hits:
@@ -180,7 +189,7 @@ def main():
 
     if args.full:
         print_full(hits, owned, keywords_map())
-        craft = sum(1 for c in hits if owned.get((c.get("Card Name") or "").strip().lower(), 0) == 0)
+        craft = sum(1 for c in hits if owned_of(owned, c.get("Card Name")) == 0)
         print(f"\n{len(hits)} match — {len(hits) - craft} owned, {craft} to craft")
         return 0
     if args.csv:
@@ -192,7 +201,7 @@ def main():
     print_table(hits, owned)
     # Summary: wildcard cost of the craftable results by rarity.
     craft = [c for c in hits
-             if owned.get((c.get("Card Name") or "").strip().lower(), 0) == 0]
+             if owned_of(owned, c.get("Card Name")) == 0]
     by_r = {}
     for c in craft:
         r = c.get("Rarity", "?")

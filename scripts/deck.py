@@ -57,7 +57,7 @@ import time
 import urllib.error
 import urllib.request
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -375,7 +375,7 @@ def cmd_wildcards(_args):
 
 def _declared_colors(meta):
     """The deck's stated colors as a WUBRG set, from the `#: colors:` header."""
-    return {ch for ch in (meta.get("colors") or "").upper() if ch in "WUBRG"}
+    return card_colors(meta.get("colors"))
 
 
 def _deck_castable_colors(dmeta, cards, mana):
@@ -441,9 +441,7 @@ def _castability(cards, declared, mana, carddata):
         if off_strict or bad_hybrid:
             uncastable.append((n, "needs " + "/".join(sorted(set(off_strict + bad_hybrid)))))
             continue
-        colstr = ((cd["colors"] if cd else "") or "").strip()
-        ident = set() if colstr.lower() == "colorless" else \
-            {ch for ch in colstr.upper() if ch in "WUBRG"}
+        ident = card_colors(cd["colors"] if cd else "")
         stray = sorted(ident - declared)
         if stray:
             off_ident.append((n, "identity has " + "/".join(stray)))
@@ -1175,7 +1173,7 @@ def load_card_meta():
                 nl = (r.get("Card Name") or "").strip().lower()
                 if not nl or nl in meta:
                     continue
-                cols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+                cols = card_colors(r.get("Color(s)"))
                 tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
                 meta[nl] = {"colors": cols, "synergies": tags}
                 meta.setdefault(nl.split(" // ")[0], meta[nl])
@@ -1412,7 +1410,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         nl = name.lower()
         if not name or nl in deck_names or nl in BASICS:
             continue
-        ccolors = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+        ccolors = card_colors(r.get("Color(s)"))
         if not ccolors.issubset(deck_colors):
             continue  # off-color for this deck
         if apply_fmt and fmt not in {x.strip() for x in
@@ -1431,7 +1429,10 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         score = sum(theme_w[t] for t in shared) + _role_credit(classify_roles(r.get("Card Text") or ""))
         suggestions.append((score, name, r, shared))
 
-    owned_of = lambda nl: by_name_qty.get(nl, 0)
+    # Ownership is keyed by the LIBRARY name (DFCs stored under their front face),
+    # but pool card names are the full "Front // Back"; fall back to the front so an
+    # owned DFC isn't mis-surfaced as a craft target (audit F6).
+    owned_of = lambda nl: by_name_qty.get(nl) or by_name_qty.get(nl.split(" // ")[0], 0)
     if unowned:
         suggestions = [x for x in suggestions if owned_of(x[1].lower()) == 0]
     if owned:
@@ -1444,7 +1445,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
     picks, hi_reuse = [], []
     for score, name, r, shared in top:
         h = owned_of(name.lower())
-        card_cols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+        card_cols = card_colors(r.get("Color(s)"))
         card_themes = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
         fits = sum(1 for _id, dc, dt in fps if card_cols <= dc and (card_themes & dt))
         if h == 0 and fits >= 3:
@@ -1645,7 +1646,7 @@ def cmd_mana(args):
         land, colid = _is_land(nl, s, c)
         if land:
             nlands += q
-            for col in {ch for ch in (colid or "").upper() if ch in "WUBRG"}:
+            for col in card_colors(colid):
                 sources[col] += q
     active = [c for c in "WUBRG" if sources[c] or cards_need[c]]
     if active:
@@ -2634,7 +2635,7 @@ def cmd_suggest_homes(args):
     if not cd:
         eprint(f"{card!r} not found in card-library.csv or card-pool.csv — check spelling.")
         return 1
-    ccols = {ch for ch in (cd.get("colors") or "").upper() if ch in "WUBRG"}
+    ccols = card_colors(cd.get("colors"))
     ctags = set(cardmeta.get(card.lower(), {}).get("synergies", []))
 
     print(f"Card: {card}  [{'/'.join(sorted(ccols)) or 'Colorless'}]  ({cd['type']})")
@@ -2946,7 +2947,7 @@ def owned_role_fillers(d, roles, *, limit=10):
         have, found = owned(qty, name)
         if not found or have < 1:
             continue
-        ident = set((cd.get("colors") or "").replace(" ", ""))
+        ident = card_colors(cd.get("colors"))
         if not ident <= declared:
             continue
         hit = set(classify_roles(cd.get("text") or "")) & set(roles)
@@ -2986,7 +2987,7 @@ def craft_role_fillers(d, roles, *, limit=8):
             have, found = owned(qty, name)
             if found and have > 0:              # want CRAFT targets — skip owned
                 continue
-            ident = set((r.get("Color(s)") or "").replace(" ", ""))
+            ident = card_colors(r.get("Color(s)"))
             if not ident <= declared:
                 continue
             legs = {x.strip().lower() for x in (r.get("Legalities") or "").split(";") if x.strip()}

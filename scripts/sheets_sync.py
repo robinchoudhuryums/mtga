@@ -126,7 +126,7 @@ def pull(worksheet_name, dry_run):
     fd, tmp = tempfile.mkstemp(suffix=".csv", dir=os.path.dirname(target))
     os.close(fd)
     try:
-        write_rows(rows, tmp)
+        write_rows(rows, tmp, backup=False)
         buf = io.StringIO()
         with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
             rc = validate(tmp)

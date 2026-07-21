@@ -27,7 +27,7 @@ import time
 import urllib.error
 import urllib.request
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write
 import scryfall
 from scryfall import ScryfallUnavailable
 
@@ -93,12 +93,13 @@ def main():
                f"card-mana.csv was left unchanged. Rerun where it's reachable.")
         return 1
 
-    with open(args.out, "w", newline="", encoding="utf-8") as fh:
+    def _write(fh):
         w = csv.writer(fh)
         w.writerow(["Card Name", "Mana Cost", "Mana Value", "Keywords"])
         for n in names:
             cost, mv, kw = data.get(n.lower(), ("", "", ""))
             w.writerow([n, cost, int(mv) if isinstance(mv, (int, float)) else "", kw])
+    atomic_write(args.out, _write)
     print(f"Wrote {args.out}: {len(names)} cards.")
     return 0
 

@@ -41,7 +41,7 @@ import csv
 import os
 import sys
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write
 from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
@@ -110,11 +110,14 @@ def write_wishlist(rows):
         (r.get("Set Code") or "").upper(),
         RARITY_RANK.get((r.get("Rarity") or "").capitalize(), 9),
         (r.get("Card Name") or "").lower()))
-    with open(WISHLIST_CSV, "w", newline="", encoding="utf-8") as fh:
+    def _write(fh):
         w = csv.DictWriter(fh, fieldnames=HEADER, quoting=csv.QUOTE_MINIMAL)
         w.writeheader()
         for r in rows:
             w.writerow({c: (r.get(c, "") or "") for c in HEADER})
+    # Atomic + timestamped .bak: the hand-annotated Target/Note/Power columns are the
+    # source of truth and had no backup before (audit F5).
+    atomic_write(WISHLIST_CSV, _write)
 
 
 # --------------------------------------------------------------------------- #

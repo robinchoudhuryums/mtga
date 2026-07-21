@@ -31,11 +31,11 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-from lib import REPO_ROOT, eprint
+from lib import REPO_ROOT, eprint, atomic_write
 from enrich import color_shorthand, oracle_fields
 from tag_synergies import tags_for
 import scryfall
-from scryfall import ScryfallUnavailable
+from scryfall import ScryfallUnavailable, NotFound
 
 POOL_PATH = os.path.join(REPO_ROOT, "card-pool.csv")
 # Sidecar stamping when the pool was last built, so `deck.py suggest` can warn that
@@ -101,6 +101,9 @@ def main():
     ap.add_argument("--query", help="custom Scryfall query (overrides --all)")
     ap.add_argument("--all", action="store_true", help="every Arena card (not just Standard)")
     ap.add_argument("--out", default=POOL_PATH)
+    ap.add_argument("--allow-shrink", action="store_true",
+                    help="permit overwriting even when the new pool is empty or far "
+                         "smaller than the existing file (a deliberate narrow --query)")
     args = ap.parse_args()
 
     query = args.query or ("game:arena" if args.all else "game:arena legal:standard")
@@ -112,6 +115,35 @@ def main():
                f"       A slow/blocked Scryfall stopped the pool build; the existing "
                f"card-pool.csv was left unchanged. Rerun where it's reachable.")
         return 1
+    except NotFound:
+        # Scryfall's search endpoint 404s when a query matches nothing — the empty
+        # result F3 guards against. Treat it as zero cards so the guard below refuses
+        # to overwrite instead of crashing with a traceback.
+        cards = []
+
+    # Sanity floor before we overwrite (audit F3): a query typo or a short/garbled
+    # first page can return [] (or a tiny slice) with NO exception, and writing that
+    # would silently destroy the ~15.8k-row reference AND stamp it fresh. Refuse to
+    # clobber a healthy existing pool with an empty/drastically-smaller result unless
+    # --allow-shrink says the shrink is intended.
+    existing = 0
+    if os.path.exists(args.out):
+        try:
+            with open(args.out, newline="", encoding="utf-8") as fh:
+                existing = sum(1 for _ in csv.DictReader(fh))
+        except OSError:
+            existing = 0
+    if not args.allow_shrink:
+        if not cards:
+            eprint(f"ERROR: Scryfall returned 0 cards for query {query!r}; refusing to "
+                   f"overwrite {args.out} with an empty pool ({existing} existing row(s) "
+                   f"left unchanged). Check the query, or pass --allow-shrink to force.")
+            return 1
+        if existing and len(cards) < existing // 2:
+            eprint(f"ERROR: query {query!r} returned {len(cards)} cards, less than half "
+                   f"the existing {existing}; refusing to overwrite {args.out} (left "
+                   f"unchanged). If this shrink is intended, pass --allow-shrink.")
+            return 1
 
     # Sort by set then collector number for readability.
     def sort_key(c):
@@ -119,16 +151,17 @@ def main():
         return (c.get("set", ""), int(cn) if cn.isdigit() else 0, cn)
     cards.sort(key=sort_key)
 
-    with open(args.out, "w", newline="", encoding="utf-8") as fh:
+    def _write(fh):
         writer = csv.DictWriter(fh, fieldnames=POOL_HEADER, quoting=csv.QUOTE_MINIMAL)
         writer.writeheader()
         for c in cards:
             writer.writerow(row_for(c))
+    atomic_write(args.out, _write)
     # Stamp the build date so suggest can flag a stale pool (rotation happened since).
     import datetime
     if args.out == POOL_PATH:
-        with open(POOL_BUILD_STAMP, "w", encoding="utf-8") as fh:
-            fh.write(datetime.date.today().isoformat() + "\n")
+        atomic_write(POOL_BUILD_STAMP,
+                     lambda fh: fh.write(datetime.date.today().isoformat() + "\n"))
     print(f"Wrote {args.out}: {len(cards)} cards.")
     return 0
 

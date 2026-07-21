@@ -35,7 +35,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write
 import scryfall
 from scryfall import NotFound, ScryfallUnavailable
 
@@ -58,22 +58,33 @@ def load_cache():
     """
     cache = {}
     for path in (MANIFEST_PATH, CACHE_PATH):
-        if os.path.exists(path):
+        if not os.path.exists(path):
+            continue
+        # A build killed mid-write (or a corrupt committed manifest in a fresh clone)
+        # leaves truncated JSON; treat that as an empty file with a warning rather than
+        # crashing every subsequent build — including --no-fetch (audit F4). Writes are
+        # now atomic (below), so this only rescues files damaged by an older build.
+        try:
             with open(path, encoding="utf-8") as fh:
                 cache.update(json.load(fh))
+        except (json.JSONDecodeError, OSError) as e:
+            eprint(f"WARN:  {os.path.basename(path)} is unreadable/corrupt ({e}); "
+                   f"ignoring it. It will be rewritten from this build.")
     return cache
 
 
 def save_cache(cache):
-    with open(CACHE_PATH, "w", encoding="utf-8") as fh:
-        json.dump(cache, fh, indent=0, sort_keys=True)
+    atomic_write(CACHE_PATH,
+                 lambda fh: json.dump(cache, fh, indent=0, sort_keys=True),
+                 backup=False)
 
 
 def save_manifest(cache):
     """Write the committed, portable manifest (resolved URLs only, no misses)."""
     resolved = {k: v for k, v in cache.items() if v}
-    with open(MANIFEST_PATH, "w", encoding="utf-8") as fh:
-        json.dump(resolved, fh, indent=0, sort_keys=True)
+    atomic_write(MANIFEST_PATH,
+                 lambda fh: json.dump(resolved, fh, indent=0, sort_keys=True),
+                 backup=False)
 
 
 def _image_url(card):
