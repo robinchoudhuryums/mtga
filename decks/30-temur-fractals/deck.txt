@@ -45,7 +45,7 @@
 
 # Interaction / red value
 1 Tablet of Discovery (SOS) 132
-1 Garrison Excavator (SOS) 116
+1 Zimone, Paradox Sculptor (FDN) 126
 1 She-Hulk, Jade Defender (MSH) 188
 1 Wistfulness (ECL) 252
 1 Origin of Metalbending (TLA) 187
@@ -82,4 +82,4 @@
 # Flex — craft upgrades that supercharge the counters plan. See: deck.py flex 30
 #~ note: applied — Germination Practicum in for Heroic Feast.
 #~ note: applied — Tatyova, Benthic Druid in for Super Intelligence.
-#~ +Quandrix, the Proof | OWNED alt (not a craft): {4}{G}{U} flying + trample + cascade Elder Dragon; also gives your instants/sorceries cascade. A ramp top-end with immediate cascade value, but the spellslinger payoff is off this counters plan and it's redundant with Lumra / World War Hulk / Terra — parked, not prioritized over maindecking Zimone, Paradox Sculptor.
+#~ +Quandrix, the Proof | OWNED alt (not a craft): {4}{G}{U} flying + trample + cascade Elder Dragon; also gives your instants/sorceries cascade. A ramp top-end with immediate cascade value, but the spellslinger payoff is off this counters plan and it's redundant with Lumra / World War Hulk / Terra — parked as an optional extra top-end (Zimone, Paradox Sculptor now maindecked, in over Garrison Excavator).
