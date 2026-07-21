@@ -145,6 +145,9 @@ def main():
         for kw, ex, _sig in ck.check():
             soft.append(f"unindexed mechanic '{kw}' (e.g. {ex}) — add to tag_synergies "
                         "KEYWORD_THEMES/FLAVOR_KEYWORDS or run check_keywords.py --update-baseline")
+        # Denylist overreach — a flavor keyword that may actually be a real mechanic.
+        for kw, _n, note in ck.flavor_overreach():
+            soft.append(f"FLAVOR_KEYWORDS overreach: '{kw}' — {note}")
     except Exception as e:
         soft.append(f"keyword radar skipped ({e})")
 

@@ -254,7 +254,11 @@ def load_keywords(path):
 def main():
     ap = argparse.ArgumentParser(description="Auto-tag the Synergies column.")
     ap.add_argument("path", nargs="?", default=DEFAULT_CSV)
-    ap.add_argument("--force", action="store_true", help="regenerate non-blank cells too")
+    ap.add_argument("--force", action="store_true",
+                    help="REPLACE non-blank cells too (destructive — clobbers hand edits)")
+    ap.add_argument("--merge", action="store_true",
+                    help="add newly-derived tags to non-blank cells WITHOUT removing "
+                         "existing/hand-curated ones — the safe refresh mode (audit F10)")
     ap.add_argument("--dry-run", action="store_true", help="preview a sample, write nothing")
     args = ap.parse_args()
 
@@ -263,17 +267,30 @@ def main():
     if not kw_map:
         print("Note: card-mana.csv not found — tagging without Scryfall keywords. "
               "Run build_mana.py first for keyword-aware tags.")
+    elif os.path.exists(args.path) and os.path.getmtime(MANA_CSV) < os.path.getmtime(args.path):
+        # A present-but-STALE mana file gives newly-imported cards no keyword tags with
+        # no warning (audit F21) — flag it so the operator rebuilds before tagging.
+        print("Note: card-mana.csv is OLDER than the library — newly-added cards may lack "
+              "keyword-aware tags. Run build_mana.py (--pool) first, then re-tag.")
     changed = 0
     sample = []
     for row in rows:
         name = (row.get("Card Name") or "").strip()
         if not name:
             continue
-        if (row.get("Synergies") or "").strip() and not args.force:
+        existing = (row.get("Synergies") or "").strip()
+        if existing and not (args.force or args.merge):
             continue
-        tags = tags_for(row, kw_map.get(name.lower()))
-        value = "; ".join(tags)
-        if value != (row.get("Synergies") or "").strip():
+        derived = tags_for(row, kw_map.get(name.lower()))
+        if args.merge and existing:
+            # Union: keep every existing tag (incl. hand-curated), append new ones.
+            have = [t.strip() for t in existing.split(";") if t.strip()]
+            haveset = {t.lower() for t in have}
+            merged = have + [t for t in derived if t.lower() not in haveset]
+            value = "; ".join(merged)
+        else:
+            value = "; ".join(derived)
+        if value != existing:
             if len(sample) < 15:
                 sample.append(f"  {row['Card Name']} -> {value}")
             row["Synergies"] = value

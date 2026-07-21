@@ -97,6 +97,14 @@ def owned_index():
     return counts
 
 
+def _owned_of(owned, name):
+    """Copies owned for a wishlist card name, DFC-aware. Wishlist rows key the full
+    ``Front // Back`` name; ``owned_index`` keys the library (front) name, so fall
+    back to the front face — else an owned DFC reads as unowned (audit F6)."""
+    nl = (name or "").strip().lower()
+    return owned.get(nl) or owned.get(nl.split(" // ")[0], 0)
+
+
 def load_wishlist():
     if not os.path.exists(WISHLIST_CSV):
         return []
@@ -223,18 +231,34 @@ def cmd_add(path):
     pool = load_pool_index()
     owned = owned_index()
     existing = load_wishlist()
-    seen = {((r.get("Card Name") or "").strip().lower(),
-             (r.get("Set Code") or "").strip().lower(),
-             (r.get("Collector #") or "").strip().lower()) for r in existing}
 
-    added, dupes, owned_hits = 0, 0, []
+    def _key(r):
+        return ((r.get("Card Name") or "").strip().lower(),
+                (r.get("Set Code") or "").strip().lower(),
+                (r.get("Collector #") or "").strip().lower())
+    by_key = {_key(r): r for r in existing}
+    seen = set(by_key)
+
+    added, dupes, owned_hits, reenriched = 0, 0, [], 0
     unenriched_miss, unenriched_err = [], []
     new_rows = []
     for name, setc, cn in entries:
         row, status = enrich(name, setc, cn, pool)
         key = (row["Card Name"].strip().lower(), setc.lower(), cn.lower())
         if key in seen:
-            dupes += 1
+            prev = by_key.get(key)
+            # F20: a row added NAME-ONLY during a Scryfall outage (blank Type+Text) is
+            # otherwise stuck — a re-add hits the dedupe and never enriches. If this
+            # pass DID enrich it, backfill the blanks in place instead of counting a dupe.
+            if prev is not None and status in ("pool", "scryfall") \
+                    and not (prev.get("Type") or "").strip() \
+                    and not (prev.get("Card Text") or "").strip():
+                for col in ("Type", "Card Text", "Color(s)", "Synergies", "Rarity"):
+                    if row.get(col):
+                        prev[col] = row[col]
+                reenriched += 1
+            else:
+                dupes += 1
             continue
         if owned.get(name.lower(), 0) > 0:
             owned_hits.append(row["Card Name"])
@@ -245,6 +269,7 @@ def cmd_add(path):
         existing.append(row)
         new_rows.append(row)
         seen.add(key)
+        by_key[key] = row
         added += 1
 
     # Auto-seed a first-pass Power estimate for the newly-added rows so they don't
@@ -259,6 +284,9 @@ def cmd_add(path):
     write_wishlist(existing)
     print(f"Added {added} card(s) to the wishlist ({dupes} already listed). "
           f"Wishlist now has {len(existing)} card(s). Wrote {os.path.basename(WISHLIST_CSV)}.")
+    if reenriched:
+        print(f"Re-enriched {reenriched} previously name-only row(s) (added during an "
+              "earlier Scryfall outage) now that their details resolved.")
     if seeded:
         print(f"Auto-seeded a heuristic Power estimate for {seeded} new card(s) — "
               "REVIEW and hand-adjust (the classifier undersells bombs); see `--rank`.")
@@ -592,10 +620,15 @@ def _rank_scores(rows):
         pri = best + 0.6 * max(0, reuse - 1)
         tier = "A" if (conf == "STRONG" or reuse >= 3) else \
                "B" if (best_specific or reuse >= 1) else "C"
+        raw_power = (r.get("Power") or "").strip()
         try:
-            power = float(r.get("Power") or 0)
+            power = float(raw_power) if raw_power else 0.0
+            bad_power = False
         except ValueError:
+            # A non-numeric typo ("~9", "4,5", "TBD") must NOT silently score 0.0 and
+            # sink a bomb without a flag (audit F9) — surface it like a blank cell.
             power = 0.0
+            bad_power = True
         target = (r.get("Target") or "").strip() or "—"
         # F03: lands score on manabase value (not synergy themes), against the
         # target deck's colors. Resolve the first real deck id in the Target.
@@ -614,7 +647,8 @@ def _rank_scores(rows):
             "conf": conf, "fit": round(best, 2), "reuse": reuse,
             "pri": round(pri, 2), "tier": tier, "power": round(power, 1),
             "state": _status_label(target, status_map),
-            "blank_power": not (r.get("Power") or "").strip(),
+            "blank_power": not raw_power,
+            "bad_power": bad_power, "raw_power": raw_power,
             "land_val": land_val,
             "sig": "/".join(best_specific[:2]) or ("generic/no-theme" if conf == "review" else ""),
         })
@@ -644,7 +678,12 @@ def _rank_scores(rows):
 def cmd_rank(rows):
     """Rank the wishlist by wildcard-spend priority — theme fit + hand-graded power
     blended into a `combined` score — grouped by recommendation tier."""
-    scored = _rank_scores(rows)
+    # Exclude cards already crafted — the wishlist keeps them until pruned, but a
+    # craft PLAN must not tell you to spend a wildcard on a card you own (audit F19).
+    owned = owned_index()
+    unowned = [r for r in rows if not _owned_of(owned, r.get("Card Name"))]
+    owned_skipped = len(rows) - len(unowned)
+    scored = _rank_scores(unowned)
     order = {"A": 0, "B": 1, "C": 2}
     scored.sort(key=lambda s: (order.get(s["tier"], 9), -s["combined"], s["name"]))
     labels = {"A": "TIER A — craft first (confident theme home and/or real cross-deck breadth)",
@@ -662,7 +701,7 @@ def cmd_rank(rows):
             i = 0
         i += 1
         wc = (s["rarity"] or "?")[:1] or "?"
-        pw = f"{s['power']:>4.1f}" + ("?" if s["blank_power"] else " ")
+        pw = f"{s['power']:>4.1f}" + ("?" if s["blank_power"] else "!" if s["bad_power"] else " ")
         print(f"  {i:>3} {s['name'][:28]:28} {wc:3} {s['target']:6} {s['state']:6} "
               f"{s['fitN']:>4.1f} {pw} {s['combined']:>5.1f}  {s['sig'][:28]}")
     print("\n" + "=" * 60)
@@ -683,6 +722,15 @@ def cmd_rank(rows):
         print(f"⚠ {len(blanks)} card(s) have BLANK Power (shown as 'pow?', ranked low until "
               f"graded): {', '.join(blanks[:8])}{' …' if len(blanks) > 8 else ''}. "
               "Run `--seed-power --write` then hand-adjust the bombs.")
+    bad = [(s["name"], s["raw_power"]) for s in scored if s["bad_power"]]
+    if bad:
+        # A malformed Power scored 0.0 and would otherwise sink silently (F9).
+        print(f"⚠ {len(bad)} card(s) have a NON-NUMERIC Power (shown as 'pow!', scored 0.0): "
+              f"{', '.join(f'{n} ({v!r})' for n, v in bad[:6])}"
+              f"{' …' if len(bad) > 6 else ''}. Fix the cell to a 1–10 number.")
+    if owned_skipped:
+        print(f"({owned_skipped} already-owned card(s) excluded from the ranking — "
+              "prune them with `--owned` / reconcile_crafts.py.)")
     print("For an optimal craft plan within your wildcards use "
           '`--budget "9M 10R 38U 48C"`.')
     return 0
@@ -708,6 +756,9 @@ def cmd_budget(rows, budget_str):
     if not caps:
         eprint('Could not parse budget. Example: --budget "9M 10R 38U 48C"')
         return 1
+    # Don't spend the budget on cards already owned (audit F19).
+    owned = owned_index()
+    rows = [r for r in rows if not _owned_of(owned, r.get("Card Name"))]
     scored = _rank_scores(rows)
     by_rar = {}
     for s in scored:

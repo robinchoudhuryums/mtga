@@ -173,6 +173,14 @@ def resolve_images(rows, cache):
         time.sleep(0.15)
     if misses:
         save_cache(cache)
+    # Floor: if we asked Scryfall for a real batch of names and it resolved NONE — a
+    # 200-with-empty-data or a blocking proxy that scryfall.py doesn't classify as an
+    # outage — treat the run as degraded rather than shipping an imageless gallery as a
+    # clean success (audit F23). A handful of genuine misses won't trip the threshold.
+    if not degraded and len(names) >= 5 and resolved == 0:
+        eprint(f"WARN: requested {len(names)} image(s) from Scryfall but resolved NONE — "
+               "treating the build as degraded (empty/blocked response, not a clean run).")
+        degraded = True
     return resolved, degraded
 
 
