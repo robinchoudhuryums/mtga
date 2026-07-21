@@ -76,7 +76,9 @@ printing per name — usually the newest, rarely the row's set — so this makes
 number actually resolve for older printings). Set mapping applies first (known
 Arena→Scryfall differences, e.g. Arena `DAR` = Scryfall `DOM` for Dominaria). If
 neither resolves the row's set, Collector # is left as-is, so a wrong number is
-never written silently. (Add more mappings in `SET_ALIASES` at the top of
+never written silently — and enrich now **reports** the set codes it couldn't
+resolve (rather than leaving them blank silently), so an Arena-specific code shows
+up as a prompt to add it. (Add more mappings in `SET_ALIASES` at the top of
 `scripts/enrich.py` as you hit them.)
 
 > Requires outbound access to `api.scryfall.com`. Some managed/CI environments
@@ -86,7 +88,9 @@ never written silently. (Add more mappings in `SET_ALIASES` at the top of
 
 ```
 python3 scripts/tag_synergies.py --dry-run   # preview
-python3 scripts/tag_synergies.py             # fill blank Synergies cells
+python3 scripts/tag_synergies.py             # fill blank Synergies cells only
+python3 scripts/tag_synergies.py --merge     # ADD new tags to non-blank cells, keep hand edits
+python3 scripts/tag_synergies.py --force     # REPLACE every cell (destructive — clobbers hand edits)
 ```
 
 Derives tags for the Synergies column from each card's type line (tribal
@@ -98,10 +102,14 @@ go-wide; ramp`, Escape → `graveyard; recursion`, …). Using Scryfall's per-ca
 keywords means real-keyword coverage is complete and maintained, not a hand-kept
 list; a small `FLAVOR_KEYWORDS` denylist drops Universe-Beyond flavor ability
 names (Firaga, Wave Cannon, …) that Scryfall also reports as keywords, so they
-don't pollute the tags. Fills only blank cells by default (`--force` regenerates). These make `query.py
+don't pollute the tags. Fills only blank cells by default; **`--merge`** adds
+newly-derived tags to non-blank cells while KEEPING existing/hand-curated ones (the
+safe refresh mode), and `--force` REPLACES every cell (use it only for a deliberate
+destructive regenerate). It also warns when `card-mana.csv` is older than the
+library, since new cards would otherwise get keyword-less tags. These make `query.py
 --synergy` / `pool.py --synergy` and the gallery filters useful; tags are
-hand-editable. Rerun `build_mana.py` then `tag_synergies.py --force` after
-importing new cards to refresh keyword-aware tags.
+hand-editable. Rerun `build_mana.py` then `tag_synergies.py --merge` after
+importing new cards to refresh keyword-aware tags without losing curation.
 
 ### Query — search the collection
 
@@ -142,7 +150,15 @@ from your owned inventory. `card-library.csv` stays exactly your collection.
 ```
 python3 scripts/build_pool.py            # (re)build card-pool.csv — Standard-legal Arena cards
 python3 scripts/build_pool.py --all      # every Arena-craftable card (~15.8k) instead
+python3 scripts/build_pool.py --allow-shrink   # permit an empty / far-smaller result to overwrite
 ```
+
+`build_pool.py` refuses to overwrite an existing pool with an **empty** result (a
+query typo, or Scryfall's zero-match 404) or one **less than half** the current row
+count — so a mistaken query, or a plain Standard rebuild run over a full `--all`
+pool, can't silently destroy the reference. Pass `--allow-shrink` when the shrink
+is intentional. (The write itself is atomic, so an interrupted build leaves the
+existing pool intact.)
 
 `card-pool.csv` carries a **Rarity** column (= Arena wildcard cost) and a
 **`Released`** column (each card's set release date). `build_pool.py` also writes
@@ -261,12 +277,17 @@ python3 scripts/reconcile_crafts.py crafts.txt --apply   # write, with .bak back
 When you craft (or discover you already own) cards, paste them as an Arena export
 (`1 Doctor Doom (MSH) 95`). This adds each to `card-library.csv` (a double-faced
 card under its **front** name, matching the library convention), adds the matching
-`card-mana.csv` row so INV-02 keeps holding, drops it from `card-wishlist.csv`, and
-lists the decks that reference it so you can re-check buildability. The line's
-quantity becomes the owned count (so `4 Scoured Barrens (FDN) 266` sets it to 4).
-Dry-run by default; after `--apply`, run `build_gallery.py` + `check_all.py` (or
-`/refresh`). This is the fast fix for the **"not in library" undercount symptom**
-— a card you own that `deck.py check` still lists as a craft target.
+`card-mana.csv` row so INV-02 keeps holding (a **blank** row when the card has no
+source mana row yet — a later `build_mana.py`/`/refresh` fills the cost), drops it
+from `card-wishlist.csv`, and lists the decks that reference it so you can re-check
+buildability. For a **new** card the line's quantity is the owned count; for a card
+**already** in the library it takes `max(existing, line)`, so pasting a deck-dump
+slice (each line a lower bound) can't silently drop a real count — pass
+`--set-exact` to set the count exactly (allowing a deliberate decrease). Lines that
+look like a card but don't parse are reported (not silently skipped). Dry-run by
+default; after `--apply`, run `build_gallery.py` + `check_all.py` (or `/refresh`).
+This is the fast fix for the **"not in library" undercount symptom** — a card you
+own that `deck.py check` still lists as a craft target.
 
 ### Deck — manage decks and variations
 
@@ -277,9 +298,10 @@ python3 scripts/deck.py audit         # roster triage: one line per deck — whi
 python3 scripts/deck.py check 1a      # owned vs needed + a castability lint (off-color cards)
 python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
 python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
-python3 scripts/deck.py stats 1a      # curve, colors, types, cost flags, functional roles
+python3 scripts/deck.py stats 1a      # curve, colors, types, cost flags, roles + interaction profile
 python3 scripts/deck.py mana 1a       # hybrid-aware color requirements + castability lint
 python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
+python3 scripts/deck.py engines 1a    # enabler ↔ payoff balance for the deck's engine themes
 python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
 python3 scripts/deck.py legal 1a      # construction lint: deck size, copy limits, format legality
 python3 scripts/deck.py cuts 1a       # rank the deck's weakest-fit cards as cut candidates
@@ -342,6 +364,14 @@ to size the list. It composes the same synergy tags and color data the rest of
 the tooling uses, so brew upgrades fall out of what you already own plus what
 you'd craft.
 
+The ranking is **needs-aware**, not just theme overlap: the impact-role credit is
+**saturation-discounted** (the deck's 9th removal spell scores far below its 1st, so
+`suggest` stops piling onto an effect you're already deep in), the score is nudged by
+a bounded **curve factor** (gently favoring a thin cheap slot, penalizing an over-full
+one), and a modest **power co-signal** (the wishlist's rarity+role seed) floats a
+BOMB up even on a modest theme fit — all bounded so theme fit stays in charge, and
+gated so a weighting change can't silently reorder a tuned deck.
+
 Each pick also carries a **`Decks` column** — a cross-deck reuse count of how many
 of your *other* decks the card is *castable* (its identity ⊆ the deck's colors)
 **and** shares a **central** theme with (the deck being analyzed is excluded, so it
@@ -387,7 +417,18 @@ that regex read can silently **under**-count a phrasing it doesn't recognize,
 any card whose text *reads like* interaction / card advantage the classifier didn't
 tag ("⚠ Possible UNDER-COUNT — verify"), so a miss becomes an explicit prompt to
 read the card rather than a silent gap in the count. It never changes a count — it
-tells you where to look.
+tells you where to look. `stats` also prints an **interaction profile**: the raw
+count treats all removal alike, so it breaks interaction down by **speed** (instant
+vs sorcery) and by whether it can answer a **noncreature permanent** (planeswalker /
+enchantment / artifact), flagging "all sorcery-speed" or "no noncreature answer".
+
+`engines <id>` grades the deck's two-sided **engines**: a synergy tag says "sacrifice"
+is in the deck but not which cards FEED the engine (outlets/fodder) vs PAY IT OFF
+(death triggers). It classifies each card as an **enabler** and/or **payoff** for the
+engine themes (sacrifice, counters, tokens, graveyard, lifegain, food) and flags a
+lopsided engine — the ⚠ fires only off the trustworthy payoff side ("payoffs but no
+enablers" = dead payoffs; "payoff-heavy" = under-enabled). A shortlist that prints the
+card lists to grade; `stats` surfaces the flag inline.
 `mana` and `check` add a **castability lint** that flags any card whose real color
 needs fall outside the deck's declared `#: colors:` — a strict off-color pip means
 uncastable, an off-color identity (a hybrid you'd pay on-color, or an off-color
@@ -405,9 +446,11 @@ than failed, and the command exits non-zero on a real construction violation —
 deck can be checked legal before you paste it into Arena. `cuts` is the counterpart
 to `suggest` (which proposes adds): it ranks the deck's nonland cards **weakest-fit
 first** as cut candidates, scoring each from data the tooling already computes — how
-central its synergy themes are to the deck, whether it fills a functional role, and
-its tribal contribution — and shows those components so you judge. It doesn't know
-your spice/signature cards from the numbers alone, so read it as a shortlist, not a
+central its synergy themes are to the deck, whether it fills a functional role
+(**saturation-aware**, so a redundant piece sorts up the cut list while the deck's
+*only* counterspell keeps full credit and stays protected), and its tribal
+contribution — and shows those components so you judge. It doesn't know your
+spice/signature cards from the numbers alone, so read it as a shortlist, not a
 verdict; pair it with `suggest` and preview the result with `swap`.
 
 To hard-protect a deck's signature/spice cards, add a **`#: protect:`** header —
@@ -448,7 +491,13 @@ stale) or, conversely, when a deck looks **under-graded**. The floor is blind to
 raw card power / bombs / meta, so it deliberately under-rates — a letter one band
 above it is fine (that band credits the intangibles); two bands is the red flag. A
 roster-wide pass is a **soft, non-gating** `check_all` warning, so an inflated or
-stale tier can't hide. See the tier **rubric** in [`CLAUDE.md`](CLAUDE.md).
+stale tier can't hide. The floor is **archetype-aware**: an aggro deck closes on a
+fast clock (low curve + cheap threats + reach), not an interaction suite, so for an
+**aggro** plan a bounded clock score substitutes for the interaction the floor
+otherwise demands — a fast burn deck isn't floored at C for light removal — while
+every other plan grades exactly as before. Set the plan with a **`#: plan:
+aggro|control|combo|midrange`** header (else it's read from `#: archetype:` or
+inferred). See the tier **rubric** in [`CLAUDE.md`](CLAUDE.md).
 
 Add **`--to <TIER>`** (e.g. `deck.py tier 30 --to A`) for a **tier-gap diagnostic**:
 it reports the exact measurable work to reach that band's floor ("+3 interaction")
@@ -594,8 +643,12 @@ art (from `image-manifest.json`), search/color/set filters, and each card's
 `Quantity Owned` and `Synergies` as inline fields with live "dirty" highlighting.
 Edit the fields and **Save**; **＋ Add card** a new printing (its type/text/color/
 synergies auto-fill from Scryfall by exact name); remove a printing with the `✕`
-on its tile; or **⤺ Revert last save** to undo. It binds to `127.0.0.1` only — a
-personal, local tool, so there's no auth.
+on its tile; or **⤺ Revert last save** to undo. It binds to `127.0.0.1` by default —
+a personal, local tool, so there's no auth. Because there's no auth, it **refuses**
+to run `--debug` on a non-local `--host` (the Flask debugger would be a remote
+code-execution console) and prints a loud warning on any non-local bind. Its write
+endpoints are serialized behind a single lock, so two overlapping requests can't
+lose an edit.
 
 **Every change is safe by construction:** the new rows are written to a temp file
 and run through `validate.py` first; only if that passes is the current CSV backed
@@ -660,15 +713,19 @@ Import applies Sheets' own formula parsing, which this RAW guard can't cover.)
 
 `python3 scripts/check_all.py` is the project's integrity gate — it verifies the
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
-derived files present, decks parse) plus a **ranking-model sanity check**
-(`check_rankings.py`, above), and exits non-zero on any hard break. It also emits
-**soft warnings** (never gating): wishlist target drift (a card whose target deck
-can no longer cast it); **new unindexed card mechanics** — `check_keywords.py`
-flags a keyword on an owned card that isn't in the synergy map yet (a new set's
-mechanic), so tags never silently miss it; and **tier mismatch** — a deck whose
-claimed `#: tier:` sits ≥2 bands above the tier its measurable quality vector
-supports (an inflated or stale letter), so the most-trusted signal in the roster
-can't drift unchecked. A SessionStart hook runs the gate (quiet) so drift surfaces
+derived files present, decks parse) plus five **model-sanity checks** that keep the
+grading/ranking models from silently drifting: the **ranking model**
+(`check_rankings.py`), **color parsing** (`check_colors.py`), the needs-aware
+**suggest/cuts scoring** (`check_suggest.py` — bounded modifiers, power never
+overrides theme fit), the **engine classifier** (`check_engines.py`), and the
+archetype-aware **tier floor** (`check_tier.py` — non-aggro grades unchanged, the
+aggro clock only ever raises a band). It exits non-zero on any hard break. It also
+emits **soft warnings** (never gating): wishlist target drift (a card whose target
+deck can no longer cast it); **new unindexed card mechanics** (`check_keywords.py`);
+**theme coverage** — `check_themes.py` flags an owned card whose text plays a theme
+it isn't tagged with (a stale tag distorts every recommendation), summarized to one
+line; and **tier mismatch** — a deck whose claimed `#: tier:` sits ≥2 bands above its
+measurable floor. A SessionStart hook runs the gate (quiet) so drift surfaces
 immediately.
 
 Claude Code slash commands live in `.claude/commands/`:

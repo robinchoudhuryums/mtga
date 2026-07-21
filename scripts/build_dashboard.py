@@ -140,7 +140,9 @@ def deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name):
         "curve": {str(b): curve.get(b, 0) for b in range(8)},
         "curve_unknown": curve_unknown,
         "roles": [{"label": l, "n": roles[l]} for l in deckmod.ROLE_ORDER if roles.get(l)],
-        "interaction": sum(roles.get(k, 0) for k in ("Removal (spot)", "Sweeper", "Counter")),
+        # Canonical once-per-card interaction (matches deck.py stats / the triage Int
+        # column); the old bucket-sum double-counted a card in >1 interaction role (F7).
+        "interaction": deckmod.role_tally(cards, carddata)["interaction"],
         "cheaper": cheaper, "gated": gated,
         "mana": {
             "declared": "".join(sorted(declared)),
@@ -846,13 +848,16 @@ TEMPLATE = r"""<!DOCTYPE html>
     return { added, removed, diffs };
   }
   function bestMatch(pasted){
-    let best = null;
+    let best = null, second = null;
     for (const d of D.decks){
       const r = diffSets(pasted, d.cards || {});
       const drift = r.added + r.removed;
       const shared = Object.keys(pasted).filter(nl => (d.cards||{})[nl]).length;
-      if (!best || drift < best.drift) best = { deck:d, drift, shared, ...r };
+      const cand = { deck:d, drift, shared, ...r };
+      if (!best || drift < best.drift){ second = best; best = cand; }
+      else if (!second || drift < second.drift){ second = cand; }
     }
+    if (best) best.runnerUp = second;
     return best;
   }
   function analyzeOne(seg){
@@ -862,8 +867,14 @@ TEMPLATE = r"""<!DOCTYPE html>
     const uniq = Object.keys(pasted).length;
     const m = bestMatch(pasted);
     if (!m || m.shared < Math.max(3, uniq*0.3)) return { unmatched:true, nCards, uniq };
+    // An Arena paste carries no deck name, so we pick the least-drift deck. If a
+    // second deck is nearly as close (within 2 card-differences and comparably
+    // shared), flag the match low-confidence so a near-tie isn't asserted as fact (F25).
+    const ru = m.runnerUp;
+    const lowconf = !!(ru && (ru.drift - m.drift) <= 2 && ru.shared >= m.shared * 0.8);
     return { unmatched:false, deck:m.deck, sync:m.drift===0,
-             added:m.added, removed:m.removed, diffs:m.diffs, shared:m.shared, nCards };
+             added:m.added, removed:m.removed, diffs:m.diffs, shared:m.shared, nCards,
+             lowconf, runnerUp: lowconf ? ru.deck : null };
   }
   function stalecardEl(r){
     const el = document.createElement('div'); el.className = 'stalecard';
@@ -875,9 +886,12 @@ TEMPLATE = r"""<!DOCTYPE html>
     const d = r.deck;
     const status = r.sync ? `<span class="stale-sync">✓ in sync</span>`
       : `<span class="stale-drift">⟳ drifted — ${r.added} added / ${r.removed} removed</span>`;
+    const conf = r.lowconf && r.runnerUp
+      ? ` · <span class="stale-nomatch">⚠ low confidence — #${esc(r.runnerUp.id)} ${esc(r.runnerUp.name)} is nearly as close</span>`
+      : '';
     el.innerHTML = `<h4>#${esc(d.id)} ${esc(d.name)} ${status}</h4>`
       + `<div class="sub2">matched by ${r.shared} shared cards${d.variant?' · variant':''}`
-      + `${r.sync?'':' · update it in Arena or in the repo'}</div>`;
+      + `${r.sync?'':' · update it in Arena or in the repo'}${conf}</div>`;
     if (!r.sync){
       const dl = document.createElement('div'); dl.className='difflist';
       dl.innerHTML = r.diffs.map(x =>

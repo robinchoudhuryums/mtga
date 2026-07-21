@@ -163,6 +163,7 @@ def enrich(path, dry_run=False, force=False, only=None):
     unresolved = []
     coll_cache = {}  # (name_lower, scry_set) -> collector # for set-scoped lookups
     set_lookup_down = False  # trips on a mid-run outage so we stop retrying per-row
+    unresolved_coll = {}  # set_code -> example name: collector # couldn't be resolved
     for row in todo:
         name = (row.get("Card Name") or "").strip()
         card = by_name.get(name.lower())
@@ -206,6 +207,11 @@ def enrich(path, dry_run=False, force=False, only=None):
                     time.sleep(0.1)
             if coll_cache[ck]:
                 values["Collector #"] = coll_cache[ck]
+            elif not set_lookup_down and not (row.get("Collector #") or "").strip():
+                # The set-scoped lookup didn't confirm a printing in this set, so the
+                # Collector # stays blank. Record the set so the miss isn't silent
+                # (audit F26): if it's an Arena-specific code, add it to SET_ALIASES.
+                unresolved_coll.setdefault(set_code.upper(), name)
 
         row_changed = False
         for col in ["Type", "Card Text", "Color(s)", "Collector #"]:
@@ -223,6 +229,11 @@ def enrich(path, dry_run=False, force=False, only=None):
 
     for n in unresolved:
         eprint(f"WARN:  no Scryfall match for {n!r}")
+    if unresolved_coll:
+        pairs = ", ".join(f"{s} (e.g. {ex})" for s, ex in sorted(unresolved_coll.items()))
+        eprint(f"NOTE:  Collector # left blank for {len(unresolved_coll)} set code(s) that "
+               f"didn't resolve on Scryfall: {pairs}. If a code is Arena-specific (like "
+               f"DAR→DOM), add it to SET_ALIASES in enrich.py so its numbers fill in.")
 
     if dry_run:
         print(f"\n[dry-run] {matched} card(s) matched, {changed} row(s) would change. "

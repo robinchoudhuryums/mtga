@@ -48,7 +48,7 @@
 1 Gran Pulse Ochu (FIN) 189
 1 Serpent Specialist (MSH) 186
 1 Sultai Devotee (TDM) 160
-1 Putrid Pals (TMT) 165
+1 Killmonger, Scourge of Wakanda (MSH) 218
 1 Witherbloom, the Balancer (SOS) 245
 
 1 Derelict Attic // Widow's Walk (DSK) 93
@@ -65,3 +65,5 @@
 1 Temple of Malady (FDN) 700
 1 Adventurer's Inn (FIN) 271
 #~ note: applied — Elf engine deepened (owned Uncommon crafts): Morcant's Loyalist (-Melancholic Poet) non-legendary Elf anthem + dies->recur an Elf; Morcant's Eyes (-Lys Alana Informant) upkeep surveil + late {4}{G}{G} sac for X Elf tokens. Adds anthem redundancy + card advantage/recursion.
+#~ note: applied — Killmonger, Scourge of Wakanda (-Putrid Pals): owned. ETB may sac a creature -> destroy target nonland permanent (the noncreature answer the deck lacked; 2->raises noncreature-answer count) AND the sac cost feeds the death-trigger payoffs (Arnyn/South Wind/Serpent Society); +2/+1 with 2+ creatures in yard is self-fed by combat deaths.
+#~ +Izoni, Center of the Web | CRAFT (Rare, R wildcard) — Standard-legal Elf Detective card-advantage engine. Menace; enter/attack collect evidence 4 -> two 2/1 Spiders; sac four tokens: surveil 2, draw 2, gain 2. Closes the card-advantage gap (still at 1) on-theme (Elf/tokens/graveyard/sac). See wishlist Target 31.

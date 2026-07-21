@@ -54,6 +54,12 @@ concatenates them in order, so the full note survives rather than only the last
 line. If a deck has no `#: archetype:`, `list` falls back to the first sentence of
 its notes.
 
+`#: plan:` (optional — `aggro` | `control` | `combo` | `midrange`) declares the deck's
+game plan so `deck.py tier` weights the right axes: an **aggro** deck is graded on its
+clock (curve + cheap threats + reach) instead of the interaction suite it doesn't want.
+Without it the plan is read from `#: archetype:` keywords, else inferred, else midrange
+(the default interaction+card-advantage floor).
+
 Variations are **full lists too** (not diffs) — so every file is robust and
 independently checkable. Use `deck.py diff` to see what a variation changes; git
 history tracks how each iteration evolves. (A `#: based-on:` line is just a note

@@ -20,6 +20,21 @@ docs. This file is the source of truth for the workflow commands in
 - **`Color(s)` is color IDENTITY, not mana cost.** For anything mana-related
   (castability, hybrids, pip counts) use `card-mana.csv` / `deck.py mana`
   (hybrid-aware). Never infer mana requirements from `Color(s)`.
+- **Parse a `Color(s)` cell with `lib.card_colors()`, never inline.** The naive
+  `{ch for ch in s.upper() if ch in "WUBRG"}` reads the literal string `"Colorless"`
+  as `{R}` (the word contains an R), so a colorless card was mis-routed as red by
+  `suggest`/`suggest-homes`/fingerprints; a `.replace(" ", "")` variant kept the `/`
+  and broke gold cards (audit F1/F2). `card_colors()` handles both — route every new
+  color-parse site through it. `scripts/check_colors.py` (a hard `check_all` gate,
+  like `check_rankings`) locks this in: a colorless card must not read as colored.
+- **Write canonical files through `lib.atomic_write()` (+ `lib.backup_path()`).**
+  Every mutation of `card-library.csv` / `card-mana.csv` / `card-pool.csv` /
+  `card-wishlist.csv` goes temp-file → timestamped `.bak` → atomic `os.replace`, so
+  an interrupted or empty-result write can't truncate the source of truth (audit
+  F3/F5). `.bak` names come from one collision-free, sort-safe helper so "newest"
+  is unambiguous (audit F22); readers that need the latest (e.g. `app.py revert`)
+  select by mtime. Pass `backup=False` only when writing a scratch temp the caller
+  promotes itself.
 - **`card-library.csv` is the owned inventory** and stays compatible with the
   companion Google Sheet (fixed 8-column header). Derived/reference data lives
   in separate files (`card-mana.csv`, `card-pool.csv`) so the CSV isn't polluted.
@@ -31,6 +46,9 @@ docs. This file is the source of truth for the workflow commands in
 - **Owned copies are fungible across printings.** For buildability, `deck.py`
   and `pool.py` both sum a card's `Quantity Owned` across every printing (a card
   owned 1× in two sets counts as 2) — never count a single printing in isolation.
+  The pool-facing ownership joins (`pool.py`, `deck.py suggest`) fall back to a
+  DFC's **front** face, since the pool keys the full `Front // Back` name but the
+  library stores the front only — else an owned DFC would read as `craft` (audit F6).
 - **Decks share the collection — a card is NOT consumed by a deck.** In MTG Arena
   the whole collection is available to every deck at once, so one owned copy can
   sit in any number of decks *simultaneously*; owning N copies lets each deck run
@@ -67,6 +85,14 @@ castability · curve · central-theme density), with the intangibles moving a de
   ≥3 and sum ≥4; **C-floor** sum ≥2; **D** below that; any uncastable stray caps at
   C. The floor is blind to raw card power / bombs / meta (an idf+role model can't
   see those), so it **under-rates by design.**
+- **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
+  interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
+  cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
+  demands — a fast burn deck isn't floored at C for light removal. Every other plan
+  (midrange / control / combo) keeps the exact interaction+card-advantage floor
+  (clock 0), so nothing else regrades. The plan comes from an explicit **`#: plan:
+  aggro|control|combo|midrange`** header, else keywords in `#: archetype:`, else a
+  strict metric inference (default midrange). `deck.py tier` prints the plan + clock.
 - **The bands (what the letter means):**
   - **S** — measurably A-floor AND a human call that it's top-meta capable: real
     bombs, a protection/interaction suite, proven to close fast. Rare.
@@ -156,9 +182,9 @@ castability · curve · central-theme density), with the intangibles moving a de
   shared `audit_deck()` scorer, so CLI and page can't drift). It's a SHORTLIST
   SIGNAL like `suggest`/`cuts`: a flag says "look here," then grade the flagged deck
   from `deck.py text` + `/tune-deck` — a review/ok label is not a verdict on the
-  deck. (A stale `#: colors:` header inflates the `Cast` column — e.g. the archived
-  raw 83-card `19c` pile headed `WU` shows dozens of "uncastable"; fixing the header to
-  the deck's real castable colors clears it, same as it does for `mana`/`check`.)
+  deck. (A stale `#: colors:` header inflates the `Cast` column — a deck whose header is
+  narrower than the colors it actually casts shows spurious "uncastable" rows; fixing the
+  header to the deck's real castable colors clears it, same as it does for `mana`/`check`.)
 - **Stored decks drift from the real Arena decks.** The user edits decks in the Arena
   app; the repo only updates when someone writes the deck file, so the two silently
   diverge (hit this session: deck `12` had been changed to 2× Super Intelligence / −Futurist
@@ -208,10 +234,14 @@ castability · curve · central-theme density), with the intangibles moving a de
   check` reports it as a craft target even though you own it. Fastest fix:
   `reconcile_crafts.py <arena-export>` — paste the crafted/owned cards as an Arena
   export ("1 Doctor Doom (MSH) 95"), and it adds each to `card-library.csv` (DFC
-  stored under its **front** name), adds the matching `card-mana.csv` row, drops it
-  from `card-wishlist.csv`, and lists the decks to re-check. Dry-run by default;
-  `--apply` writes with `.bak`s; then run `build_gallery.py` + `check_all.py` (or
-  `/refresh`). (The DFC front-vs-full name handling — pool/mana key `A // B`, the
+  stored under its **front** name), adds the matching `card-mana.csv` row — a
+  **blank** one when the card has no source mana row yet, so INV-02 always holds
+  and `build_mana.py`/`/refresh` fills the cost later (audit F8) — drops it
+  from `card-wishlist.csv`, and lists the decks to re-check. For a card already in
+  the library it takes `max(existing, line)` so a deck-dump slice can't drop a real
+  count (`--set-exact` forces the exact/lower value, audit F17); unparseable lines
+  are reported, not skipped silently. Dry-run by default; `--apply` writes with
+  `.bak`s; then run `build_gallery.py` + `check_all.py` (or `/refresh`). (The DFC front-vs-full name handling — pool/mana key `A // B`, the
   library keys `A` — was the most error-prone part when done by hand.) Alternatives:
   `import_arena.py <deck> --skip-basics` (trues up from a built deck), or append the
   `card-pool.csv` row manually. Hit repeatedly in practice (Primeval Bounty, Cat
@@ -227,8 +257,12 @@ castability · curve · central-theme density), with the intangibles moving a de
 - **WIP decks legitimately show "missing" cards** in `check_all.py` — those are
   craft targets not yet owned (e.g. Atlantis Attacks 18/18a). Not a failure.
 - **Regenerate derived data after imports**, in order: `enrich.py` →
-  `tag_synergies.py --force` (needs `build_mana.py` first for keyword tags) →
-  `build_pool.py` → `build_gallery.py`. Or run `/refresh`.
+  `tag_synergies.py --merge` (needs `build_mana.py` first for keyword tags) →
+  `build_pool.py` → `build_gallery.py`. Or run `/refresh`. Use **`--merge`** (adds
+  newly-derived tags without removing existing/hand-curated ones), not `--force`,
+  which REPLACES every cell and clobbers hand edits (audit F10). `tag_synergies`
+  also warns when `card-mana.csv` is older than the library — rebuild it first or
+  new cards get keyword-less tags (audit F21).
 - **Scryfall egress**: needs `api.scryfall.com` + `*.scryfall.io` allowed; some
   managed environments block it. Enrichment/pool/mana builds require it. All
   Scryfall access now goes through **`scripts/scryfall.py`** (a shared, resilient
@@ -276,7 +310,12 @@ castability · curve · central-theme density), with the intangibles moving a de
   it's also folded into `check_all` as a **soft, non-gating warning**. `--rank` shows
   a **`state`** column (target deck's tier·remaining-crafts, ★ = this card helps
   *finish* a near-complete deck) so "upgrade a BUILT deck" reads apart from "build an
-  UNBUILT one" — the strategic overlay the raw score can't show.
+  UNBUILT one" — the strategic overlay the raw score can't show. `--rank` and
+  `--budget` **exclude cards you already own** (DFC front-name aware) so a craft plan
+  never tells you to craft what you have (audit F19); a **non-numeric** `Power` typo is
+  flagged `pow!` (scored 0.0 but surfaced, not silently sunk — audit F9); and
+  re-running `--add` on a batch **re-enriches** rows that were added name-only during
+  an earlier Scryfall outage instead of skipping them as dupes (audit F20).
   `Target`/`Note`/`Power` are hand-annotated: `Target` is a
   deck id / `general` / `concept: …`; **`Power` is a 1–10 hand-graded constructed-
   power score** that `--rank` blends 50/50 with theme fit into a `combined` score
@@ -317,6 +356,38 @@ castability · curve · central-theme density), with the intangibles moving a de
   ranked by theme fit **plus the same impact-role credit `cuts` uses** (`_role_credit`),
   so among on-theme options a removal / card-advantage / ramp / cost-reduction / payoff
   card outranks a same-theme vanilla body instead of being buried by tag overlap alone.
+  That ranking is now **needs-aware**: the role credit is **saturation-discounted** (the
+  8th removal spell is worth far less than the 1st, so `suggest` stops recommending an
+  effect the deck is already deep in and `cuts` ranks a redundant piece as more cuttable
+  while protecting a scarce one — #1); the score is nudged by a bounded (±15%) **curve
+  factor** that gently favors filling a thin CHEAP slot and penalizes an over-full one
+  (#2); and a modest **power co-signal** (the wishlist's rarity+role seed) surfaces an
+  owned/craftable BOMB with only modest theme overlap without pulling in off-theme junk
+  (it only re-ranks WITHIN the on-theme set — #6). All three are BOUNDED modifiers on the
+  dominant theme-fit signal, gated by `check_suggest.py` so they can't silently reorder a
+  tuned deck.
+- **`deck.py engines <id>` grades a deck's two-sided ENGINES** (enabler ↔ payoff, #3).
+  A synergy tag says "sacrifice" is in the deck; it can't say which cards FEED the engine
+  (outlets/fodder) vs PAY IT OFF (death triggers). `engines` classifies each card's text
+  as enabler and/or payoff for the engine themes (sacrifice, counters, tokens, graveyard,
+  lifegain, food) and flags a lopsided engine — the ⚠ fires only off the trustworthy
+  PAYOFF side ("payoffs but NO enablers" = dead payoffs; "payoff-heavy" = under-enabled),
+  since enabler cues are broad; `deck.py stats` surfaces the flag inline. It's a shortlist
+  that prints the card lists — read them, the classifier is heuristic. **Two combat-/self-
+  fed false-positive classes are now discriminated (guarded by `check_engines.py`):** a
+  **`sacrifice` "whenever ~ dies" DEATH trigger** is split from an outlet-dependent "whenever
+  you sacrifice" payoff and is COMBAT-FED — exempt from the dead-payoff ⚠ once the deck fields
+  ≥`_COMBAT_FED_MIN` (6) creatures (so a go-wide/deathtouch deck that trades constantly no
+  longer reads as "payoffs sit dead" — the deck-31 misfire); and **`graveyard` self-recursion**
+  (flashback / escape / disturb / unearth / harmonize / jump-start / retrace / aftermath /
+  "cast from graveyard") counts as its OWN enabler, so a flashback-heavy yard isn't flagged
+  "payoff-heavy" (the deck-9 misfire). The fix is SURGICAL: a genuine thin-enabler signal —
+  e.g. many "N cards in your graveyard" *value* payoffs with few active fillers — still flags,
+  because combat fills the yard only slowly there (unlike an immediate death trigger).
+- **`deck.py stats` also prints an INTERACTION PROFILE** (#5): the raw interaction count
+  treats all removal alike, so `stats` breaks it down by SPEED (instant vs sorcery) and by
+  whether it can answer a NONCREATURE permanent (planeswalker / enchantment / artifact),
+  flagging "all sorcery-speed" or "no noncreature answer" — measured, not eyeballed.
 - **`deck.py suggest` shows a cross-deck reuse count (`Decks` column).** For each
   pick it counts how many of your OTHER decks (the deck being analyzed is excluded,
   so it can't inflate its own picks) the card is *castable* (its identity ⊆ the
@@ -413,8 +484,8 @@ castability · curve · central-theme density), with the intangibles moving a de
   nonbasic lands skipped — that `stats`, `audit`, and the `quality`/`tier` vectors
   all route through, so the number you eyeball in `stats` is the number the tier
   floor grades on (three separate counters used to disagree by ±1). The lint reads the deck's `#: colors:` header,
-  so a stale or intentionally-narrow header flags cards as off-color — e.g. the
-  archived raw 83-card `19c` pile is headed `WU` but is really multicolor. Fixing a stale
+  so a stale or intentionally-narrow header flags cards as off-color — a header
+  narrower than the deck's real card pool reads as multicolor strays. Fixing a stale
   header to the deck's real castable colors clears the false positives (e.g. deck
   `13` was corrected `GR`→`GWBR`). Treat a flag as signal to review, not a hard
   failure — it doesn't gate `check_all.py`.
@@ -426,13 +497,29 @@ castability · curve · central-theme density), with the intangibles moving a de
 INV-01…04 plus a **ranking-model sanity check** (`check_rankings.py`) that guards
 the Doctor-Doom-class regression: a scoring change that silently reclassifies a
 real tribal theme as "generic". The ranking check is distribution-based, so it
-survives cards being crafted off the wishlist. It also emits **soft, non-gating
-warnings**: wishlist target drift — a card whose Target deck can no longer cast it
+survives cards being crafted off the wishlist. Four more model-sanity checks are
+also hard-gated: **color-parsing** (`check_colors.py`) locks in the F1/F2 fix (a
+colorless card must not read as red; a slash-gold must pass the subset test);
+**suggest scoring** (`check_suggest.py`) keeps the needs-aware suggest/cuts terms
+BOUNDED — the diminishing-returns role credit and the curve-gap factor can't
+silently reorder a tuned deck (#1/#2), and the power co-signal never overrides
+theme fit (#6); **engine classifier** (`check_engines.py`) anchors the enabler/
+payoff detection on canonical cards (#3); **tier floor** (`check_tier.py`) proves
+the archetype-aware floor grades non-aggro decks identically to before and only
+ever raises an aggro band (#4). It also emits **soft, non-gating warnings**:
+wishlist target drift — a card whose Target deck can no longer cast it
 after a retune — via `wishlist.py --audit-targets`; and **new unindexed mechanics**
 — `check_keywords.py` flags a keyword on an owned card that isn't in
 `tag_synergies.py`'s map yet (a new set's mechanic), baselined in
 `keyword_baseline.txt` so it stays quiet until something genuinely new appears
-(`check_keywords.py --update-baseline` to acknowledge one); and **tier mismatch**
+(`check_keywords.py --update-baseline` to acknowledge one); **FLAVOR_KEYWORDS
+overreach** — `check_keywords.flavor_overreach()` flags a denylisted "flavor" word
+that's also theme-mapped, or one shared by several owned cards (likely a real
+mechanic being suppressed, audit F24); **theme coverage** — `check_themes.py` flags
+an owned card whose oracle text clearly plays a high-confidence theme (food, landfall,
+proliferate, convoke, graveyard, lifegain, counters) it ISN'T tagged with (the theme
+analog of `role_coverage_flags`; a stale/removed tag distorts every tag-based
+recommendation), summarized to one line (#7); and **tier mismatch**
 — `deck.py tier_consistency_issues()` flags a deck whose claimed `#: tier:` sits ≥2
 bands above the tier its measurable quality vector supports (an inflated/stale
 letter — see the Competitive Tiering rubric). Soft warnings never fail the build.)
@@ -448,7 +535,7 @@ letter — see the Competitive Tiering rubric). Soft warnings never fail the bui
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
-- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py
+- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`)
 - Decks: decks/
 
@@ -458,14 +545,14 @@ letter — see the Competitive Tiering rubric). Soft warnings never fail the bui
 - INV-03 | Derived reference files exist: card-mana.csv, card-pool.csv, gallery.html | Subsystem: Data/Presentation | Verify: scripts/check_all.py
 - INV-04 | Every deck file under decks/ parses with no malformed card lines | Subsystem: Decks | Verify: scripts/check_all.py
 - INV-05 | Color(s) stores color identity; actual mana cost lives only in card-mana.csv | Subsystem: Data | Verify: design/manual
-- INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --force after imports | Subsystem: Ingest | Verify: manual
+- INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --merge after imports (--merge preserves hand-curated tags; --force replaces them) | Subsystem: Ingest | Verify: manual
 
 **Policy Configuration:** threshold 6/10; 2 consecutive cycles below triggers a policy response.
 
 **Regression Scenarios** (manual walks; the Test Command above is the primary gate):
 1. Ingest a batch — `import_arena.py <file>` → `enrich.py` → `validate.py` → `build_gallery.py`. Expect: validate clean, gallery card count == library row count.
 2. Analyze a deck — `deck.py check|mana|tribes|stats|legal|cuts|text|verify <id>` and roster-wide `deck.py audit` / `deck.py suggest-homes <card>`. Expect: no traceback; mana is hybrid-aware; tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts/text print full oracle text; audit scores every deck TUNE/craft/review/ok; verify diffs a pasted Arena export against the stored deck.
-3. Refresh derived data — `build_mana.py` → `tag_synergies.py --force` → `build_pool.py` → `build_gallery.py` → `check_all.py`. Expect: check_all reports all invariants hold.
+3. Refresh derived data — `build_mana.py` → `tag_synergies.py --merge` → `build_pool.py` → `build_gallery.py` → `check_all.py`. Expect: check_all reports all invariants hold.
 4. Edit via the app — start `scripts/app.py`, change a quantity and Save, add a card, then open a deck (Decks →), change a card's quantity and Save; run `check_all.py`. Expect: CSV + deck file updated, `.bak`s written, and all invariants hold (INV-02 since add appends a card-mana.csv row; INV-04 since deck save re-parses cleanly).
 
 **Frozen Subsystems:** none.

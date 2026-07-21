@@ -65,3 +65,5 @@
 # (Applied: Choco/Mog over Studious First-Year; Earth King over Rabaroo Troop; Legend of Kyoshi over Cat-Owl. Earthbender Ascension stays.)
 #~ -Momo, Friendly Flier | +Stroke of Midnight | destroy ANY nonland permanent — the catch-all removal the deck still lacks. TRADE: hands them a 1/1, drops a 1-drop flyer
 #~ note: all OWNED (0 wildcards). Also owned: Summon: Knights of Round (top-end token engine), Claim the Kingdom (landfall +1/+1 counters), Sandbenders' Storm (modal removal).
+#~ +East Wind Avatar | OWNED (salvage from retired 19c pile): {3}{W} Bird — "Flying, vigilance. Alliance — whenever another creature you control enters, +1/+0 EOT." An evasive Bird that grows as you flood the board; top-ranked pile leftover (suggest #10 here). ~ role-player over a weaker Bird body.
+#~ note: 19c "WIP Pile (raw dump)" retired 2026-07 — checked all 46 pile orphans via updated `suggest --owned`; only East Wind Avatar + Claim the Kingdom rank as fits (both above). Also-rans, lower priority: Icecave Crasher ({3}{G} trample landfall beater), Earth Kingdom General ({3}{G} earthbend + counters->lifegain). The other 42 correctly trimmed.

@@ -57,7 +57,7 @@ import time
 import urllib.error
 import urllib.request
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -375,7 +375,7 @@ def cmd_wildcards(_args):
 
 def _declared_colors(meta):
     """The deck's stated colors as a WUBRG set, from the `#: colors:` header."""
-    return {ch for ch in (meta.get("colors") or "").upper() if ch in "WUBRG"}
+    return card_colors(meta.get("colors"))
 
 
 def _deck_castable_colors(dmeta, cards, mana):
@@ -391,7 +391,11 @@ def _deck_castable_colors(dmeta, cards, mana):
         entry = mana.get(n.lower())
         if entry and entry[0]:
             strict, hybrid = parse_pips(entry[0])
-            cols |= set(strict) | {x for h in hybrid for x in h}
+            # Only a TRUE multicolor hybrid ({W/U}) constrains castable colors; a
+            # monocolor hybrid ({2/W}) or Phyrexian ({W/P}) is payable WITHOUT its
+            # color, so it must not widen the deck's colors (audit F15; mirrors
+            # suggest_scored line ~1401 and _castability's len(h) >= 2).
+            cols |= set(strict) | {x for h in hybrid if len(h) >= 2 for x in h}
     return cols
 
 
@@ -441,9 +445,7 @@ def _castability(cards, declared, mana, carddata):
         if off_strict or bad_hybrid:
             uncastable.append((n, "needs " + "/".join(sorted(set(off_strict + bad_hybrid)))))
             continue
-        colstr = ((cd["colors"] if cd else "") or "").strip()
-        ident = set() if colstr.lower() == "colorless" else \
-            {ch for ch in colstr.upper() if ch in "WUBRG"}
+        ident = card_colors(cd["colors"] if cd else "")
         stray = sorted(ident - declared)
         if stray:
             off_ident.append((n, "identity has " + "/".join(stray)))
@@ -653,7 +655,8 @@ def load_card_data():
             for r in csv.DictReader(fh):
                 n = (r.get("Card Name") or "").strip().lower()
                 if n and n not in data:
-                    data[n] = {"type": r.get("Type") or "", "text": r.get("Card Text") or "",
+                    data[n] = {"name": (r.get("Card Name") or "").strip(),
+                               "type": r.get("Type") or "", "text": r.get("Card Text") or "",
                                "colors": r.get("Color(s)") or ""}
                     data.setdefault(n.split(" // ")[0], data[n])
     return data
@@ -857,12 +860,18 @@ def role_coverage_flags(cards, carddata):
         fires but classify_roles tagged no matching role (a likely under-read).
     Neither changes any count — both are review prompts (grade from full text via
     card.py / deck.py text)."""
-    unclassified, under_read = [], []
+    unclassified, under_read, no_data = [], [], []
     for q, n, s, c in cards:
         if n.lower() in BASICS:
             continue
         cd = carddata.get(n.lower())
-        if not cd or "Land" in _primary_type(cd.get("type") or ""):
+        if not cd:
+            # No library/pool row at all (e.g. a WIP craft target): role_tally can't
+            # read its text, so it silently contributes 0 interaction/card-advantage.
+            # Surface it so the under-count is explicit, not invisible (audit F14).
+            no_data.append(n)
+            continue
+        if "Land" in _primary_type(cd.get("type") or ""):
             continue
         text = cd.get("text") or ""
         roles = set(classify_roles(text))
@@ -875,7 +884,7 @@ def role_coverage_flags(cards, carddata):
             under_read.append((n, "/".join(missed)))
         elif not roles and "Creature" not in (cd.get("type") or ""):
             unclassified.append(n)
-    return unclassified, under_read
+    return unclassified, under_read, no_data
 
 
 def classify_roles(text):
@@ -895,14 +904,251 @@ IMPACT_ROLES = {"Removal (spot)", "Sweeper", "Counter", "Card advantage",
                 "Reanimation", "Burn / drain"}
 
 
-def _role_credit(roles):
+def _role_credit(roles, saturation=None):
     """Keep-score credit for a card's functional roles: base 3 each, +6 more for each
     IMPACT role, so a card that does a high-value job clears the no-role 'filler' band
     (theme-fit only, ~0–8) and doesn't rank as a top cut. It can't fully offset a large
     theme-fit gap — an off-theme power card (Cosmic Cube, The Ten Rings) still sorts
     low in a tuned deck, which is inherent to a synergy model and exactly why `cuts`
-    prints full oracle text and wishlist ranking pairs fit with a hand-graded Power."""
-    return 3 * len(roles) + 6 * len(set(roles) & IMPACT_ROLES)
+    prints full oracle text and wishlist ranking pairs fit with a hand-graded Power.
+
+    When `saturation` (role → how many copies the deck ALREADY runs of that role) is
+    passed, the +6 IMPACT bonus DIMINISHES with saturation — the 1st removal spell is
+    worth the full bonus, the 8th very little (diminishing returns, improvement #1). So
+    `suggest` stops over-valuing the Nth copy of an effect the deck is already deep in,
+    and `cuts` ranks a redundant piece as more cuttable while protecting a scarce one
+    (the deck's only counterspell keeps its full credit). With no `saturation` the
+    credit is the original flat value (unchanged for any caller that doesn't opt in)."""
+    base = 3 * len(roles)
+    impact_roles = set(roles) & IMPACT_ROLES
+    if saturation is None:
+        return base + 6 * len(impact_roles)
+    bonus = 0.0
+    for r in impact_roles:
+        have = max(0, saturation.get(r, 0))
+        bonus += 6.0 / (1 + 0.5 * have)   # have 0→6, 1→4, 2→3, 3→2.4, 6→~1.5
+    return base + bonus
+
+
+def _curve_gap_factor(mv, curve):
+    """A bounded (0.85–1.15) multiplier on a candidate's `suggest` score by how its mana
+    value fits the deck's CURVE (improvement #2). Archetype-agnostic and deliberately
+    gentle so it re-ranks near-ties without overriding a clear theme-fit winner:
+
+      • an OVER-FULL bucket (more copies than the deck's average slot) is gently
+        penalized at ANY cost — you don't need the 9th three-drop;
+      • a THIN CHEAP bucket (MV ≤ 3, below average) is gently boosted — nearly every
+        deck wants its early plays filled;
+      • a thin EXPENSIVE bucket is left alone (factor 1.0) — boosting top-end would be
+        archetype-wrong for an aggro deck, so the curve signal never does it.
+
+    `curve` is the deck's nonland MV histogram (bucket → copies). Returns 1.0 when the
+    card's MV or the curve is unknown, so a missing mana row never distorts the score."""
+    if mv is None or not curve:
+        return 1.0
+    b = min(int(mv), 7)
+    avg = sum(curve.get(i, 0) for i in range(1, 8)) / 7.0
+    if avg <= 0:
+        return 1.0
+    ratio = curve.get(b, 0) / avg
+    if ratio > 1.0:
+        return max(0.85, 1.0 - 0.15 * (ratio - 1.0))
+    # Boost a thin CHEAP spell slot (MV 1–3) only; MV 0 (lands / free spells) isn't a
+    # curve slot — the deck curve counts nonland cards, so a land would else read as a
+    # perpetually-thin "0-drop" and get an unearned boost.
+    if 1 <= b <= 3 and ratio < 1.0:
+        return min(1.15, 1.0 + 0.15 * (1.0 - ratio))
+    return 1.0
+
+
+# Weight of the power co-signal in `suggest` (#6): power is 0–10, so at 1.0 a bomb adds
+# up to ~10 — comparable to a strong role bonus, enough to lift a modest-fit bomb above a
+# same-fit vanilla, but small next to a strongly-on-theme card's theme_w. Never dominant.
+_SUGGEST_POWER_W = 1.0
+
+
+def _power_seed(row):
+    """A card's heuristic power (0–10) for suggest's card-quality co-signal (#6) — the
+    same rarity+role estimate the wishlist seeds Power with, so an owned/craftable bomb
+    surfaces even on a modest theme fit. Lazy-imports wishlist (which itself lazy-imports
+    deck) to avoid a load cycle; returns 0.0 if unavailable, so power just drops out."""
+    try:
+        import wishlist
+        return wishlist._seed_power(row)
+    except Exception:
+        return 0.0
+
+
+# --------------------------------------------------------------------------- #
+# Engine roles — enabler vs payoff WITHIN a theme (improvement #3)
+# --------------------------------------------------------------------------- #
+# A synergy tag says "sacrifice" appears in the deck; it does NOT say which cards
+# FEED the engine (sac outlets / fodder) and which cards PAY IT OFF (death triggers).
+# The most common real deckbuilding flaw — payoffs with no enablers (or vice versa) —
+# is invisible to a bag-of-tags model. For the handful of themes that are actual
+# two-sided engines, classify each card's oracle text as ENABLER (produces/enables the
+# resource) and/or PAYOFF (rewards/consumes it), so `engine_balance` can flag a
+# lopsided engine. Heuristic and text-based (so it catches an untagged outlet too);
+# the `engines` command prints the card lists for a human read, like `cuts`/`tribes`.
+ENGINE_THEMES = {
+    "counters": {
+        "enabler": [
+            r"put (a|one|two|three|four|x|that many|another|\d+)[^.]*\+1/\+1 counter",
+            r"enters[^.]*with[^.]*\+1/\+1 counter", r"\bproliferate\b", r"\badapt\b",
+            r"\bbolster\b", r"\bsupport \d", r"\bmonstrosity\b", r"\btraining\b",
+        ],
+        "payoff": [
+            r"for each \+1/\+1 counter",
+            r"\+1/\+1 counter[^.]*(among (creatures|permanents) you control|on creatures you control)",
+            r"whenever[^.]*\+1/\+1 counter is (put|placed)",
+            r"if[^.]*would[^.]*\+1/\+1 counter[^.]*instead", r"twice that many \+1/\+1",
+            r"remove (a|one|x|\d+)[^.]*\+1/\+1 counter", r"move (a|one|any number of)[^.]*\+1/\+1 counter",
+        ],
+    },
+    "tokens": {
+        "enabler": [r"create[s]? [^.]*\btoken", r"\bpopulate\b", r"\bfabricate\b"],
+        "payoff": [
+            r"for each (creature|token|artifact) you control", r"creatures you control get \+",
+            r"whenever a[^.]*token[^.]*enters", r"creatures you control (have|gain)",
+            r"each creature you control", r"sacrifice (a|another|\w+)[^.]*token",
+        ],
+    },
+    "sacrifice": {   # aristocrats: outlets/fodder vs death & sacrifice triggers
+        # A "whenever ~ dies" trigger ('death') fires on ANY death — combat included — so
+        # it is NOT sac-outlet-dependent the way a "whenever you sacrifice" payoff is.
+        # engine_balance keeps them apart: only sac-triggers "sit dead" without an outlet;
+        # death triggers are combat-fed when the deck has a real creature base (F-engines).
+        "enabler": [r"\bsacrifice (a|an|another|two|three|\d+|x|it|them)\b", r"you may sacrifice"],
+        "payoff": [r"whenever you sacrifice", r"whenever[^.]*is sacrificed"],
+        "death": [r"whenever[^.]*\bdies\b"],
+    },
+    "graveyard": {   # fill the yard vs use the yard (reanimator / recursion)
+        # Self-recursion mechanics (flashback / escape / harmonize / …) put the card into
+        # the yard THEMSELVES, so a card that plays them is its own enabler — counted on
+        # BOTH sides so a graveyard full of flashback spells doesn't read as "unenabled".
+        "enabler": [r"\bmill\b", r"\bsurveil\b", r"discard[^.]*card", r"put[^.]*(from|into)[^.]*graveyard",
+                    r"into your graveyard", r"\bdredge\b",
+                    r"\bflashback\b", r"\bescape\b", r"\bdisturb\b", r"\bunearth\b", r"\bharmonize\b",
+                    r"\bjump-start\b", r"\bretrace\b", r"\baftermath\b", r"cast [^.]*from (your )?graveyard"],
+        "payoff": [r"return[^.]*from (your )?graveyard to the battlefield", r"from your graveyard",
+                   r"for each[^.]*in your graveyard", r"\bescape\b", r"\bflashback\b", r"\bdelve\b",
+                   r"\bdisturb\b", r"\bunearth\b", r"cards? in your graveyard"],
+    },
+    "lifegain": {
+        "enabler": [r"gain (\d+|x|that much) life", r"gains? \d+ life", r"\blifelink\b"],
+        "payoff": [r"whenever you gain life", r"for each[^.]*life[^.]*gained",
+                   r"if you (gained|would gain)[^.]*life", r"(the amount of )?life you gained"],
+    },
+    "food": {
+        "enabler": [r"create[s]? [^.]*food"],
+        "payoff": [r"sacrifice a food", r"for each food", r"food[^.]*you control"],
+    },
+}
+_ENGINE_COMPILED = {
+    theme: {role: [re.compile(p) for p in pats] for role, pats in sides.items()}
+    for theme, sides in ENGINE_THEMES.items()
+}
+
+# A deck fielding this many creatures trades in combat often enough that a "whenever ~
+# dies" death trigger is fed without any sac outlet — so combat-fed death triggers are
+# exempt from the sacrifice dead-payoff flag at/above this creature count.
+_COMBAT_FED_MIN = 6
+
+
+def engine_roles(text):
+    """{theme: {roles}} — for each engine theme, which side(s) of its two-sided engine a
+    card's oracle text plays: 'enabler' (feeds the engine) and/or 'payoff' (rewards it).
+    A card can be both (a sac outlet that also triggers on death) or neither. Text-based,
+    so an untagged piece is still caught. `− → -` normalized like classify_roles."""
+    t = (text or "").lower().replace("−", "-")
+    out = {}
+    for theme, sides in _ENGINE_COMPILED.items():
+        hit = {role for role, pats in sides.items() if any(p.search(t) for p in pats)}
+        if hit:
+            out[theme] = hit
+    return out
+
+
+def engine_balance(cards, carddata, central, signature=frozenset()):
+    """For each engine theme CENTRAL to the deck, tally enabler vs payoff copies and a
+    verdict. Only reports themes that are (a) real two-sided engines (in ENGINE_THEMES)
+    and (b) central to THIS deck — so an incidental one-off doesn't raise a flag.
+
+    `signature` (the deck's built-around themes, from `_signature_themes`) gates the
+    NOISY verdicts: 'payoffs with no enablers' (dead payoffs) is a hard flag for ANY
+    central engine, but 'enablers with no payoff' / a skew is only flagged for a
+    SIGNATURE engine — a deck naturally has incidental lifegain/counters enablers it
+    doesn't need to pay off, so those must not cry wolf.
+
+    Returns {theme: {'enablers': [(name,q)], 'payoffs': [(name,q)], 'en': n, 'pay': n,
+    'verdict': str, 'flag': bool}} ordered by the deck's theme centrality."""
+    sig = {t.lower() for t in signature}
+    central_engines = [t for t in central if t.lower() in _ENGINE_COMPILED]
+    result = {}
+    seen = set()
+    creatures = 0
+    for theme in central_engines:
+        result[theme] = {"enablers": [], "payoffs": [], "deaths": [],
+                         "en": 0, "pay": 0, "death": 0}
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl in seen:
+            continue
+        seen.add(nl)
+        cd = carddata.get(nl)
+        if not cd:
+            continue
+        if "creature" in (cd.get("type") or "").lower():
+            creatures += q
+        roles = engine_roles(cd.get("text") or "")
+        for theme in central_engines:
+            r = roles.get(theme.lower(), set())
+            if "enabler" in r:
+                result[theme]["enablers"].append((n, q)); result[theme]["en"] += q
+            if "payoff" in r:
+                result[theme]["payoffs"].append((n, q)); result[theme]["pay"] += q
+            if "death" in r:
+                result[theme]["deaths"].append((n, q)); result[theme]["death"] += q
+    # Flags fire only off the PAYOFF side. Payoff cues ("whenever you gain life", "for
+    # each +1/+1 counter") are specific, so a payoff gap is trustworthy; enabler cues
+    # ("gain N life", "sacrifice a …") are broad and match incidental cards, so an
+    # enabler-heavy count is NOISE — reported for the human read, never a ⚠.
+    #
+    # DEATH TRIGGERS ("whenever ~ dies") are combat-fed: with a real creature base they
+    # never "sit dead" for lack of a sac outlet, so they count toward the payoff readout
+    # but are EXEMPT from the dead-payoff flag once the deck fields ≥ _COMBAT_FED_MIN
+    # creatures (fixes the go-wide/deathtouch false positive). Only genuine sac-trigger
+    # payoffs ("whenever you sacrifice") stay outlet-dependent.
+    for theme, d in result.items():
+        en, pay, death = d["en"], d["pay"], d["death"]
+        is_sig = theme.lower() in sig
+        combat_fed = theme.lower() == "sacrifice" and creatures >= _COMBAT_FED_MIN
+        total_pay = pay + death                          # payoffs for the readout
+        dead_pay = pay + (0 if combat_fed else death)    # payoffs that truly need an enabler
+        note = ""
+        if death:
+            note = (f", {death} combat-fed" if combat_fed
+                    else f", {death} death-trigger/{creatures} creatures")
+        if dead_pay >= 2 and en == 0:
+            d["verdict"], d["flag"] = "payoffs but NO enablers — the payoffs sit dead", True
+        elif total_pay >= 3 and en * 3 <= total_pay and dead_pay > 0:
+            d["verdict"], d["flag"] = (f"payoff-heavy ({en} enabler / {total_pay} payoff{note}) — "
+                                       "thin on enablers to turn the payoffs on"), True
+        elif en and total_pay:
+            d["verdict"], d["flag"] = f"balanced ({en} enabler / {total_pay} payoff{note})", False
+        elif en >= 2 and total_pay == 0:
+            d["verdict"] = (f"{en} enablers, no payoff — your engine has no reward"
+                            if is_sig else f"{en} enablers, no payoff (incidental)")
+            d["flag"] = False   # broad enabler side — inform, don't cry wolf
+        elif total_pay and en == 0 and combat_fed:
+            d["verdict"], d["flag"] = (f"death-fed ({total_pay} death-trigger payoff(s), "
+                                       f"combat-fed by {creatures} creatures — no sac outlet "
+                                       "needed)"), False
+        elif en or total_pay:
+            d["verdict"], d["flag"] = f"({en} enabler / {total_pay} payoff)", False
+        else:
+            d["verdict"], d["flag"] = "no enabler/payoff cards detected", False
+    return result
 
 
 def context_flags(text, mana_cost):
@@ -1001,7 +1247,7 @@ def cmd_stats(args):
         eprint(f"No deck with id {args.id!r}.")
         return 1
     carddata = load_card_data()
-    _, cards = parse_deck_file(d["path"])
+    meta, cards = parse_deck_file(d["path"])
 
     colors, types, total = {}, {}, 0
     nonland_names = []
@@ -1097,10 +1343,27 @@ def cmd_stats(args):
         print(f"  {'interaction total':20} {role_counts['interaction']:3}  "
               "(distinct removal/sweeper/counter cards)")
 
+    # Interaction profile (#5): the raw count treats all interaction alike, but a suite
+    # that's all sorcery-speed and creature-only has real gaps. Break it down by speed
+    # and by whether it can answer a NONCREATURE permanent (planeswalker / enchantment /
+    # artifact), and flag the gaps — measured, not eyeballed.
+    ip = interaction_profile(cards, carddata)
+    if ip["total"]:
+        print(f"\n  Interaction profile: {ip['total']} piece(s) — {ip['instant']} instant-speed"
+              f" / {ip['sorcery']} sorcery-speed · {ip['noncreature']} can answer a noncreature "
+              "permanent (pw/ench/artifact)")
+        for f in ip["flags"]:
+            print(f"    ⚠ {f}")
+
     # Coverage self-audit (F15): the classifier is precise but misses phrasings, so a
     # count can silently UNDER-read. Surface the cards whose text reads like a role it
     # didn't tag, so the miss becomes an explicit "verify" instead of a silent gap.
-    unclassified, under_read = role_coverage_flags(cards, carddata)
+    unclassified, under_read, no_data = role_coverage_flags(cards, carddata)
+    if no_data:
+        print(f"\n⚠ {len(no_data)} card(s) not in library/pool — no oracle text on file, so"
+              " the interaction / card-advantage counts are a FLOOR (they contribute 0):")
+        print(f"    {', '.join(no_data[:8])}{'…' if len(no_data) > 8 else ''}"
+              "  — enrich them (build_pool.py) for a real count")
     if under_read:
         print("\n⚠ Possible UNDER-COUNT — text reads like a role the classifier didn't tag;"
               " verify from full text (card.py):")
@@ -1109,6 +1372,27 @@ def cmd_stats(args):
     if unclassified:
         print(f"\n  (classifier found no role for {len(unclassified)} noncreature spell(s): "
               f"{', '.join(unclassified[:6])}{'…' if len(unclassified) > 6 else ''} — read if grading)")
+
+    # Engine balance (#3): flag a lopsided two-sided engine (payoffs with no enablers,
+    # or a lopsided signature engine) among the deck's CENTRAL themes — the detail and
+    # card lists are in `deck.py engines`.
+    cardmeta = load_card_meta()
+    theme_w = {}
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        m = cardmeta.get(n.lower())
+        if m:
+            for t in m["synergies"]:
+                theme_w[t] = theme_w.get(t, 0) + q
+    signature = _signature_themes(meta, cards, cardmeta)
+    flagged = [(t, info) for t, info in
+               engine_balance(cards, carddata, _central_themes(theme_w), signature).items()
+               if info["flag"]]
+    if flagged:
+        print(f"\n⚠ Engine balance (detail: `deck.py engines {d['id']}`):")
+        for t, info in flagged:
+            print(f"    {t}: {info['verdict']}")
     return 0
 
 
@@ -1175,7 +1459,7 @@ def load_card_meta():
                 nl = (r.get("Card Name") or "").strip().lower()
                 if not nl or nl in meta:
                     continue
-                cols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+                cols = card_colors(r.get("Color(s)"))
                 tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
                 meta[nl] = {"colors": cols, "synergies": tags}
                 meta.setdefault(nl.split(" // ")[0], meta[nl])
@@ -1234,6 +1518,63 @@ def role_tally(cards, carddata):
     per_role["interaction"] = interaction
     per_role["card_advantage"] = ca
     return per_role
+
+
+# Text cues that an interaction spell can hit a NONCREATURE permanent (planeswalker /
+# enchantment / artifact) or any target — the "reach past creatures" test for #5.
+_NONCREATURE_ANSWER_CUES = [re.compile(p) for p in [
+    r"destroy target permanent", r"exile target permanent", r"return target permanent",
+    r"destroy target (artifact|enchantment)", r"destroy target artifact or enchantment",
+    r"exile target (artifact|enchantment)", r"target permanent you don't control",
+    r"destroy target[^.]*planeswalker", r"destroy target[^.]*or planeswalker",
+    r"exile target[^.]*planeswalker", r"destroy all permanents", r"destroy each",
+    r"any target",  # burn to any target answers a planeswalker (and the opponent)
+    r"deals? \d+ damage to any target", r"destroy target nonland permanent",
+]]
+
+
+def interaction_profile(cards, carddata):
+    """Qualitative interaction breakdown (#5): beyond the raw count, how much of a deck's
+    interaction is INSTANT-speed vs sorcery-speed, and how much can answer a NONCREATURE
+    permanent (planeswalker / enchantment / artifact) — so 'thin against planeswalkers /
+    all sorcery-speed' is measured, not eyeballed. Quantity-weighted, once per card.
+
+    Returns {total, instant, sorcery, noncreature, flags:[…]}. Heuristic: instant-speed =
+    an Instant, a card with Flash, or a Counter (counters resolve at instant speed);
+    noncreature-answer = a Counter (answers any spell) or a removal cue that reaches past
+    creatures."""
+    total = instant = sorcery = noncreature = 0
+    seen = set()
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl in seen:
+            continue
+        seen.add(nl)
+        cd = carddata.get(nl)
+        if not cd:
+            continue
+        text = cd.get("text") or ""
+        roles = classify_roles(text)
+        if not (roles & _INTERACTION_ROLES):
+            continue
+        total += q
+        tl = (cd.get("type") or "").lower()
+        tx = text.lower()
+        is_counter = "Counter" in roles
+        if "instant" in tl or "flash" in tx or is_counter:
+            instant += q
+        else:
+            sorcery += q
+        if is_counter or any(p.search(tx) for p in _NONCREATURE_ANSWER_CUES):
+            noncreature += q
+    flags = []
+    if total >= 3 and instant == 0:
+        flags.append("all sorcery-speed — no instant-speed answers (you can't react)")
+    if total >= 3 and noncreature == 0:
+        flags.append("no answer to a noncreature permanent (planeswalkers / enchantments / "
+                     "artifacts slip through)")
+    return {"total": total, "instant": instant, "sorcery": sorcery,
+            "noncreature": noncreature, "flags": flags}
 
 
 def deck_role_counts(cards, carddata):
@@ -1382,16 +1723,34 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         res["reason"] = "no-themes"
         return res
 
+    # Deck function + curve profile for the gap-aware scoring below (improvements
+    # #1/#2): how many of each functional role the deck ALREADY runs, and its nonland
+    # mana curve, so a candidate is weighted by what the deck NEEDS, not just theme fit.
+    carddata = load_card_data()
+    mana_map = load_mana()
+    deck_roles = role_tally(cards, carddata)   # role → copies already in the deck
+    deck_curve = {}                            # nonland MV bucket → copies
+    for q, n, s, c in cards:
+        nl2 = n.lower()
+        if nl2 in BASICS:
+            continue
+        cd2 = carddata.get(nl2)
+        if cd2 and "Land" in _primary_type(cd2.get("type") or ""):
+            continue
+        e = mana_map.get(nl2)
+        if e and e[1] is not None:
+            b = min(int(e[1]), 7)
+            deck_curve[b] = deck_curve.get(b, 0) + q
+
     # Deck colors = the colors the deck can actually CAST. Prefer the declared
     # `#: colors:`; else derive from mana COSTS — never color identity, so a card's
     # off-color activated abilities don't widen the deck and surface uncastable picks.
     deck_colors = _declared_colors(dmeta)
     if not deck_colors:
-        dm = load_mana()
         for q, n, s, c in cards:
             if n.lower() in BASICS:
                 continue
-            entry = dm.get(n.lower())
+            entry = mana_map.get(n.lower())
             if entry and entry[0]:
                 strict, hybrid = parse_pips(entry[0])
                 # Only a TRUE multicolor hybrid ({W/U}) constrains castable colors;
@@ -1412,7 +1771,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         nl = name.lower()
         if not name or nl in deck_names or nl in BASICS:
             continue
-        ccolors = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+        ccolors = card_colors(r.get("Color(s)"))
         if not ccolors.issubset(deck_colors):
             continue  # off-color for this deck
         if apply_fmt and fmt not in {x.strip() for x in
@@ -1423,15 +1782,29 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         if not shared:
             continue
         shared = [t.strip() for t in shared]
-        # Theme fit + impact-role credit: among on-theme picks, a card that also fills
-        # a high-value functional role (removal / card advantage / ramp / cost-reduction
-        # / a payoff engine) outranks a same-theme vanilla body — the mirror of the
-        # `cuts` fix, so a strong-but-thinly-tagged upgrade isn't buried. Reads the
-        # pool's Card Text; a text-less row just gets no bonus.
-        score = sum(theme_w[t] for t in shared) + _role_credit(classify_roles(r.get("Card Text") or ""))
+        # Theme fit + gap-aware role credit + curve fit. Among on-theme picks, a card
+        # that fills a high-value functional role the deck is THIN on (removal / card
+        # advantage / ramp / cost-reduction / payoff) outranks a same-theme vanilla body
+        # — but that role bonus DIMINISHES if the deck already runs plenty of it (#1), so
+        # `suggest` stops recommending the 9th removal spell. The whole score is then
+        # nudged by how the card's MV fits the deck's curve (#2) — bounded ±15%, so it
+        # re-ranks near-ties without overriding a clear theme-fit winner. Reads the
+        # pool's Card Text; a text-less / mana-less row just gets no bonus / factor 1.0.
+        roles = classify_roles(r.get("Card Text") or "")
+        base = sum(theme_w[t] for t in shared) + _role_credit(roles, deck_roles)
+        cand_mv = (mana_map.get(nl) or (None, None))[1]
+        # Card-quality (power) co-signal (#6): a heuristic 1–10 power seed (rarity floor +
+        # roles + planeswalker/legendary), added modestly so an owned/craftable BOMB with
+        # only MODEST theme overlap isn't buried under a well-tagged vanilla body. It can't
+        # pull in off-theme junk — only cards already sharing ≥1 theme are scored here — so
+        # it re-ranks WITHIN the on-theme set, the way wishlist --rank pairs fit with power.
+        score = round(base * _curve_gap_factor(cand_mv, deck_curve) + _SUGGEST_POWER_W * _power_seed(r), 2)
         suggestions.append((score, name, r, shared))
 
-    owned_of = lambda nl: by_name_qty.get(nl, 0)
+    # Ownership is keyed by the LIBRARY name (DFCs stored under their front face), but
+    # pool card names are the full "Front // Back" — the shared lib.owned_qty falls
+    # back to the front so an owned DFC isn't mis-surfaced as a craft target (audit F6).
+    owned_of = lambda nl: owned_qty(by_name_qty, nl)
     if unowned:
         suggestions = [x for x in suggestions if owned_of(x[1].lower()) == 0]
     if owned:
@@ -1444,7 +1817,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
     picks, hi_reuse = [], []
     for score, name, r, shared in top:
         h = owned_of(name.lower())
-        card_cols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+        card_cols = card_colors(r.get("Color(s)"))
         card_themes = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
         fits = sum(1 for _id, dc, dt in fps if card_cols <= dc and (card_themes & dt))
         if h == 0 and fits >= 3:
@@ -1645,7 +2018,7 @@ def cmd_mana(args):
         land, colid = _is_land(nl, s, c)
         if land:
             nlands += q
-            for col in {ch for ch in (colid or "").upper() if ch in "WUBRG"}:
+            for col in card_colors(colid):
                 sources[col] += q
     active = [c for c in "WUBRG" if sources[c] or cards_need[c]]
     if active:
@@ -2253,7 +2626,8 @@ def cmd_cuts(args):
                 theme_w[t] = theme_w.get(t, 0) + q
     central = _central_themes(theme_w)
     signature = _signature_themes(meta, cards, cardmeta)   # #: protect: spine (F#3)
-    deck_int = role_tally(cards, carddata)["interaction"]  # for the F#1 interaction guard
+    deck_tally = role_tally(cards, carddata)               # role → copies the deck runs
+    deck_int = deck_tally["interaction"]                   # for the F#1 interaction guard
 
     # Deck creature subtypes (for the tribal-contribution signal).
     sub_count = {}
@@ -2295,10 +2669,13 @@ def cmd_cuts(args):
 
         # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
         # Role credit is impact-weighted (see _role_credit) so a strong-but-off-theme
-        # card (removal/engine/cost-reducer) isn't mis-ranked as a top cut. A card on
-        # the deck's #: protect: signature theme gets a further keep-boost (F#3) so a
-        # generic-tagged-but-central theme (e.g. counters) isn't mistaken for filler.
-        keep = (fit + _role_credit(roles) + (1 if hit_central else 0)
+        # card (removal/engine/cost-reducer) isn't mis-ranked as a top cut. Passing the
+        # deck's role tally makes that credit SATURATION-aware (#1): a redundant piece
+        # (the 8th removal spell) loses most of its bonus and sorts UP the cut list,
+        # while the deck's ONLY counterspell keeps full credit and stays protected. A
+        # card on the deck's #: protect: signature theme gets a further keep-boost (F#3)
+        # so a generic-tagged-but-central theme (e.g. counters) isn't mistaken for filler.
+        keep = (fit + _role_credit(roles, deck_tally) + (1 if hit_central else 0)
                 + (2 if sig_hit else 0) + min(tribal, 6))
         reasons = []
         if tags and not hit_central:
@@ -2634,7 +3011,7 @@ def cmd_suggest_homes(args):
     if not cd:
         eprint(f"{card!r} not found in card-library.csv or card-pool.csv — check spelling.")
         return 1
-    ccols = {ch for ch in (cd.get("colors") or "").upper() if ch in "WUBRG"}
+    ccols = card_colors(cd.get("colors"))
     ctags = set(cardmeta.get(card.lower(), {}).get("synergies", []))
 
     print(f"Card: {card}  [{'/'.join(sorted(ccols)) or 'Colorless'}]  ({cd['type']})")
@@ -2699,6 +3076,7 @@ def deck_quality_vector(d):
     _, _, qty = load_collection()
     missing = short = 0
     theme_w, mvs, early = {}, [], 0
+    creatures = reach = 0
     for q, n, s, c in cards:
         nl = n.lower()
         if nl in BASICS:
@@ -2709,23 +3087,42 @@ def deck_quality_vector(d):
         elif have < q:
             short += 1
         cd = carddata.get(nl)
-        if cd and "Land" not in _primary_type(cd.get("type") or ""):
+        tline = (cd.get("type") if cd else "") or ""
+        m = cardmeta.get(nl)
+        tags = set(m["synergies"]) if m else set()
+        if cd and "Land" not in _primary_type(tline):
             entry = mana.get(nl)
             if entry and entry[1] is not None:
                 mvs += [entry[1]] * q
                 if entry[1] <= 2:
                     early += q
-        m = cardmeta.get(nl)
+        if "Creature" in _primary_type(tline):
+            creatures += q
+        # Reach = ability to CLOSE a game (the aggro axis): burn/drain reach, or an
+        # evasive body that keeps connecting. Used only by the archetype-aware floor.
+        if ("Burn / drain" in classify_roles((cd.get("text") if cd else "") or "")
+                or (tags & _EVASION_TAGS)):
+            reach += q
         if m:
             for t in m["synergies"]:
                 theme_w[t] = theme_w.get(t, 0) + q
-    declared = _declared_colors(dmeta) or _deck_castable_colors(dmeta, cards, mana)
+    declared_hdr = _declared_colors(dmeta)
+    declared = declared_hdr or _deck_castable_colors(dmeta, cards, mana)
     uncast, _off = _castability(cards, declared, mana, carddata)
     d_int, d_ca = deck_role_counts(cards, carddata)
     return {
         "buildable": missing == 0 and short == 0, "missing": missing, "short": short,
+        # Whether castability was audited against a DECLARED identity. Without a
+        # `#: colors:` header, `declared` is derived from the deck's own cards, so
+        # uncastable is 0 by construction (unverified, not a clean bill) — audit F16.
+        "colors_declared": bool(declared_hdr),
         "uncastable": len(uncast), "interaction": d_int, "card_advantage": d_ca,
         "avg_mv": round(sum(mvs) / len(mvs), 2) if mvs else 0.0, "early_drops": early,
+        "creatures": creatures, "reach": reach,
+        # The deck's game PLAN drives which axes its tier floor weights (#4): an aggro
+        # deck is graded on its clock, not an interaction suite it doesn't want.
+        "plan": deck_plan(dmeta, avg_mv=(round(sum(mvs) / len(mvs), 2) if mvs else 0.0),
+                          interaction=d_int, early=early),
         "central_themes": len(_central_themes(theme_w)),
         "central": sorted(_central_themes(theme_w)),
         # Full per-theme copy counts — lets the F10 guard tell a theme that truly LEFT
@@ -2870,6 +3267,51 @@ def cmd_quality(args):
 TIER_RANK = {"S": 5, "A": 4, "B": 3, "C": 2, "D": 1}
 
 
+# Evasion tags that let a creature keep connecting — the "reach" the aggro floor credits.
+_EVASION_TAGS = {"evasion", "flying", "menace", "trample", "fear", "intimidate",
+                 "shadow", "skulk", "horsemanship", "unblockable", "double strike"}
+_AGGRO_WORDS = ("aggro", "aggressive", "hyper-aggressive", "burn")
+
+
+def deck_plan(meta, avg_mv=None, interaction=None, early=None):
+    """The deck's game PLAN — 'aggro' | 'control' | 'combo' | 'midrange' — which decides
+    the axes its tier floor weights (#4). Source order: an explicit `#: plan:` header,
+    then keywords in `#: archetype:`, then a conservative metric inference. Defaults to
+    'midrange' (the current interaction+card-advantage floor), so anything not clearly
+    aggro/control/combo is graded exactly as before."""
+    explicit = (meta.get("plan") or "").strip().lower()
+    if explicit in ("aggro", "control", "combo", "midrange"):
+        return explicit
+    arc = (meta.get("archetype") or "").lower()
+    if any(w in arc for w in _AGGRO_WORDS):
+        return "aggro"
+    if "control" in arc:
+        return "control"
+    if "combo" in arc:
+        return "combo"
+    if any(w in arc for w in ("midrange", "ramp", "value", "goodstuff", "tempo")):
+        return "midrange"
+    # Inference (only when nothing is declared): a clearly fast, cheap, low-interaction
+    # deck reads aggro. Deliberately strict so it never surprises a non-aggro deck.
+    if (avg_mv is not None and avg_mv <= 2.4 and (interaction or 0) < 4
+            and (early or 0) >= 8):
+        return "aggro"
+    return "midrange"
+
+
+def _clock_score(vec):
+    """Aggressive 'clock' proxy (0–7): a low curve + cheap threats + reach to close.
+    Substitutes for interaction in `tier_band` ONLY for an aggro plan — a fast deck's
+    resilience is its speed, not its removal count. Bounded so it can't wildly inflate."""
+    mv = vec.get("avg_mv") or 99.0
+    early = vec.get("early_drops", 0)
+    reach = vec.get("reach", 0)
+    c = 3 if mv <= 2.2 else 2 if mv <= 2.6 else 1 if mv <= 3.0 else 0
+    c += 2 if early >= 12 else 1 if early >= 8 else 0
+    c += 2 if reach >= 8 else 1 if reach >= 4 else 0
+    return c
+
+
 def tier_band(vec):
     """The tier FLOOR (S/A/B/C/D) a deck's measurable quality vector supports.
     Metrics-only and blind to bombs/meta, so it under-rates by design — used to flag
@@ -2882,10 +3324,17 @@ def tier_band(vec):
     if vec["uncastable"] > 0:
         return "C"                        # castability strays cap the floor
     inter, ca = vec["interaction"], vec["card_advantage"]
-    resil = inter + ca                    # interaction + card advantage = grind / resilience
-    if inter >= 5 and resil >= 7:
+    # An AGGRO deck closes on a fast clock, not an interaction suite — so for an aggro
+    # plan a strong clock (low curve + cheap threats + reach) substitutes for the
+    # interaction the resilience floor otherwise demands, and a genuinely fast deck
+    # isn't floored at C just for running light removal (#4). Every other plan keeps
+    # the exact interaction+card-advantage floor (clock = 0), so nothing else regrades.
+    clock = _clock_score(vec) if vec.get("plan") == "aggro" else 0
+    ir = inter + clock                    # effective pressure/interaction axis
+    resil = inter + ca + clock            # grind / resilience / closing speed
+    if ir >= 5 and resil >= 7:
         return "A"                        # measurable ceiling; S is a human call on top
-    if inter >= 3 and resil >= 4:
+    if ir >= 3 and resil >= 4:
         return "B"
     if resil >= 2:
         return "C"
@@ -2910,20 +3359,29 @@ def tier_gap(vec, target):
         return None
     need_i, need_r = TIER_FLOOR_REQ[target]
     inter, ca = vec["interaction"], vec["card_advantage"]
+    # For an aggro plan the clock already counts toward the floor (see tier_band), so
+    # the interaction the deck still needs is measured against interaction + clock (#4).
+    clock = _clock_score(vec) if vec.get("plan") == "aggro" else 0
+    inter_eff = inter + clock
     parts = []
     # Any target above C requires 0 castability strays (a stray caps the floor at C).
     fix_unc = vec["uncastable"] if (TIER_RANK[target] > TIER_RANK["C"] and vec["uncastable"]) else 0
     if fix_unc:
         parts.append(f"clear {fix_unc} uncastable stray(s) — they cap the floor at C")
-    add_i = max(0, need_i - inter)
+    add_i = max(0, need_i - inter_eff)
     # Interaction adds also raise the resilience sum; only the remainder needs card advantage.
-    add_ca = max(0, need_r - (inter + ca + add_i))
+    add_ca = max(0, need_r - (inter_eff + ca + add_i))
     if add_i:
-        parts.append(f"+{add_i} interaction ({inter}→{inter + add_i})")
+        label = "interaction or clock" if clock or vec.get("plan") == "aggro" else "interaction"
+        parts.append(f"+{add_i} {label} ({inter_eff}→{inter_eff + add_i})")
     if add_ca:
         parts.append(f"+{add_ca} card advantage ({ca}→{ca + add_ca})")
+    if vec.get("plan") == "aggro" and add_i:
+        parts.append("(aggro: raise the clock — lower the curve / add cheap threats / add "
+                     "reach — or add interaction)")
     return {"target": target, "add_interaction": add_i, "add_card_advantage": add_ca,
-            "fix_uncastable": fix_unc, "met": not parts, "summary": parts}
+            "fix_uncastable": fix_unc,
+            "met": not [p for p in parts if not p.startswith("(aggro:")], "summary": parts}
 
 
 def owned_role_fillers(d, roles, *, limit=10):
@@ -2946,7 +3404,7 @@ def owned_role_fillers(d, roles, *, limit=10):
         have, found = owned(qty, name)
         if not found or have < 1:
             continue
-        ident = set((cd.get("colors") or "").replace(" ", ""))
+        ident = card_colors(cd.get("colors"))
         if not ident <= declared:
             continue
         hit = set(classify_roles(cd.get("text") or "")) & set(roles)
@@ -2986,7 +3444,7 @@ def craft_role_fillers(d, roles, *, limit=8):
             have, found = owned(qty, name)
             if found and have > 0:              # want CRAFT targets — skip owned
                 continue
-            ident = set((r.get("Color(s)") or "").replace(" ", ""))
+            ident = card_colors(r.get("Color(s)"))
             if not ident <= declared:
                 continue
             legs = {x.strip().lower() for x in (r.get("Legalities") or "").split(";") if x.strip()}
@@ -3021,6 +3479,8 @@ def tier_consistency(d):
         if vec["uncastable"]:
             why.append(f"{vec['uncastable']} uncastable")
         why.append(f"interaction {vec['interaction']}, card-adv {vec['card_advantage']}")
+        if vec.get("plan") == "aggro":
+            why.append(f"aggro clock {_clock_score(vec)}/7")
         return claimed, implied, True, (
             f"tier {claimed} sits {gap} bands above the metrics floor (~{implied}): "
             + "; ".join(why))
@@ -3055,16 +3515,29 @@ def cmd_tier(args):
     print(f"Tier — deck {d['id']}: {d['name'] or d['path']}")
     print(f"  claimed tier  : {claimed or '(untiered)'}")
     print(f"  metrics floor : {implied}   (measurable-only — blind to bombs/meta, so it under-rates)")
+    print(f"  plan          : {vec.get('plan', 'midrange')}"
+          + (f"  ·  clock {_clock_score(vec)}/7 (curve/threats/reach substitutes for interaction)"
+             if vec.get('plan') == 'aggro' else "  (floor weights interaction + card advantage)"))
     print(f"  vector        : buildable {vec['buildable']} · uncastable {vec['uncastable']} · "
           f"interaction {vec['interaction']} · card-adv {vec['card_advantage']} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
+    # The floor caps at C on any uncastable stray; without a #: colors: header that
+    # count is derived from the deck's own cards, so it's 0 by construction — say so
+    # rather than imply a verified-clean castability (audit F16).
+    if not vec.get("colors_declared"):
+        print("  ⚠ castability UNVERIFIED — no `#: colors:` header, so uncastable=0 is "
+              "self-derived; add a colors header for the floor's stray-cap to mean anything.")
     # F15: warn if the count may be under-read, since the floor grades on it.
     _meta2, _cards2 = parse_deck_file(d["path"])
-    _unc, _under = role_coverage_flags(_cards2, load_card_data())
+    _unc, _under, _nodata = role_coverage_flags(_cards2, load_card_data())
     if _under:
         names = ", ".join(f"{n} ({a})" for n, a in _under[:4])
         print(f"  ⚠ count may under-read {len(_under)} card(s) — verify via `deck.py stats {d['id']}`: {names}"
               + ("…" if len(_under) > 4 else ""))
+    if _nodata:
+        print(f"  ⚠ {len(_nodata)} card(s) have no oracle text on file — the floor grades on a "
+              f"partial count; enrich via build_pool.py ({', '.join(_nodata[:4])}"
+              + ("…" if len(_nodata) > 4 else "") + ")")
     if not claimed:
         print("\n  (untiered — add a `#: tier: X — rationale` header; see the tier rubric in CLAUDE.md)")
         return 0
@@ -3215,6 +3688,57 @@ def cmd_preflight(args):
     return 1 if hard else 0
 
 
+def cmd_engines(args):
+    """Engine analysis: for each two-sided engine theme the deck is built on, show its
+    ENABLERS (feed the engine) vs PAYOFFS (reward it) and flag a lopsided engine —
+    payoffs with no enablers, or enablers with no reward — the flaw a bag-of-tags model
+    can't see. Heuristic + text-based; prints the card lists so you grade the balance."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    meta, cards = parse_deck_file(d["path"])
+    cardmeta = load_card_meta()
+    carddata = load_card_data()
+    theme_w = {}
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        m = cardmeta.get(n.lower())
+        if m:
+            for t in m["synergies"]:
+                theme_w[t] = theme_w.get(t, 0) + q
+    central = _central_themes(theme_w)
+    signature = _signature_themes(meta, cards, cardmeta)
+    bal = engine_balance(cards, carddata, central, signature)
+
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — engine analysis (enabler ↔ payoff)")
+    if not bal:
+        print("\nNo two-sided engine themes are central to this deck. Engines covered: "
+              + ", ".join(sorted(ENGINE_THEMES)) + ".")
+        return 0
+
+    def fmt(pairs):
+        return ", ".join(f"{n}×{q}" if q > 1 else n for n, q in pairs)
+
+    flagged = 0
+    for theme, info in bal.items():
+        mark = "⚠ " if info["flag"] else "  "
+        print(f"\n{mark}{theme}: {info['verdict']}")
+        if info["enablers"]:
+            print(f"    enablers ({info['en']}): {fmt(info['enablers'])}")
+        if info["payoffs"]:
+            print(f"    payoffs  ({info['pay']}): {fmt(info['payoffs'])}")
+        if info.get("deaths"):
+            print(f"    death-triggers ({info['death']}, combat-fed): {fmt(info['deaths'])}")
+        flagged += 1 if info["flag"] else 0
+
+    print("\nHeuristic + text-based — a card can play both sides, and the classifier can "
+          "miss an unusual phrasing, so read the lists. Fix a ⚠ by adding the short side "
+          "(`deck.py suggest`) or trimming dead payoffs (`deck.py cuts`).")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="Manage decks and variations.")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -3236,6 +3760,8 @@ def main():
     p = sub.add_parser("mana", help="hybrid-aware color requirements")
     p.add_argument("id")
     p = sub.add_parser("tribes", help="creature-subtype breakdown + type-matters synergies")
+    p.add_argument("id")
+    p = sub.add_parser("engines", help="enabler vs payoff balance for the deck's engine themes")
     p.add_argument("id")
     p = sub.add_parser("suggest", help="recommend pool cards that fit a deck's colors + themes")
     p.add_argument("id")
@@ -3303,7 +3829,7 @@ def main():
     return {
         "list": cmd_list, "wildcards": cmd_wildcards, "audit": cmd_audit, "check": cmd_check,
         "diff": cmd_diff, "arena": cmd_arena, "stats": cmd_stats,
-        "mana": cmd_mana, "tribes": cmd_tribes, "suggest": cmd_suggest,
+        "mana": cmd_mana, "tribes": cmd_tribes, "engines": cmd_engines, "suggest": cmd_suggest,
         "legal": cmd_legal, "cuts": cmd_cuts,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
         "verify": cmd_verify, "text": cmd_text, "suggest-homes": cmd_suggest_homes,

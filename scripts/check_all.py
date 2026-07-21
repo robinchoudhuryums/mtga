@@ -119,6 +119,39 @@ def main():
     except Exception as e:
         hard.append(f"ranking model sanity check errored: {e}")
 
+    # Color-identity parsing sanity — guards the F1/F2 regression (a colorless card
+    # read as red; a slash-gold failing the subset test) that mis-routed suggest.
+    try:
+        from check_colors import check as check_colors
+        hard += check_colors()
+    except Exception as e:
+        hard.append(f"color parsing sanity check errored: {e}")
+
+    # Suggest/cuts gap-aware scoring sanity — keeps the diminishing-returns role credit
+    # and the curve factor as BOUNDED modifiers (they can't silently reorder a tuned
+    # deck's recommendations by overriding theme fit).
+    try:
+        from check_suggest import check as check_suggest
+        hard += check_suggest()
+    except Exception as e:
+        hard.append(f"suggest scoring sanity check errored: {e}")
+
+    # Engine-role classifier sanity — locks the enabler/payoff detection (#3) on
+    # canonical cards so a regex edit can't silently break the imbalance flag.
+    try:
+        from check_engines import check as check_engines
+        hard += check_engines()
+    except Exception as e:
+        hard.append(f"engine classifier sanity check errored: {e}")
+
+    # Archetype-aware tier floor sanity (#4) — non-aggro decks grade exactly as before,
+    # and the aggro clock only ever raises a band (never lowers or mis-grades one).
+    try:
+        from check_tier import check as check_tier
+        hard += check_tier()
+    except Exception as e:
+        hard.append(f"tier floor sanity check errored: {e}")
+
     # Soft: wishlist target drift — a target deck that can no longer cast its card
     # after a retune (e.g. deck 14 Mardu->Rakdos orphaned Neriv). Informational
     # only; never fails the build.
@@ -137,8 +170,26 @@ def main():
         for kw, ex, _sig in ck.check():
             soft.append(f"unindexed mechanic '{kw}' (e.g. {ex}) — add to tag_synergies "
                         "KEYWORD_THEMES/FLAVOR_KEYWORDS or run check_keywords.py --update-baseline")
+        # Denylist overreach — a flavor keyword that may actually be a real mechanic.
+        for kw, _n, note in ck.flavor_overreach():
+            soft.append(f"FLAVOR_KEYWORDS overreach: '{kw}' — {note}")
     except Exception as e:
         soft.append(f"keyword radar skipped ({e})")
+
+    # Soft: THEME coverage — owned cards whose text plays a theme they aren't tagged with
+    # (the theme analog of role_coverage_flags); distorts every tag-based recommendation.
+    # Summarized to one line so a batch of mis-tags doesn't flood the soft section.
+    try:
+        import check_themes as ct
+        tflags = ct.flags()
+        if tflags:
+            ex = ", ".join(f"{n} ({t})" for n, t, _ in tflags[:4])
+            soft.append(f"theme coverage: {len(tflags)} owned card(s) may be missing a synergy "
+                        f"tag their text implies (e.g. {ex}"
+                        + (", …" if len(tflags) > 4 else "")
+                        + ") — run `check_themes.py`, then tag_synergies.py --merge")
+    except Exception as e:
+        soft.append(f"theme coverage check skipped ({e})")
 
     # Soft: tier robustness — a deck whose claimed #: tier: sits ≥2 bands above the
     # tier its measurable quality vector supports (inflated or stale). Never gating —

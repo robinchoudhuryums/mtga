@@ -120,6 +120,40 @@ def _signal_b(known, owned, min_cards=3):
     return {k: example[k] for k, c in counts.items() if c >= min_cards}
 
 
+def flavor_overreach(threshold=3):
+    """Guard the FLAVOR_KEYWORDS denylist against over-suppression (audit F24).
+
+    Two signals, both returned as (keyword, count, note):
+      • a word in BOTH FLAVOR_KEYWORDS and KEYWORD_THEMES (count -1) — a
+        contradiction: it's denylisted yet mapped to a theme.
+      • a denylisted word on >= `threshold` OWNED cards (count = N) — flavor names
+        are card-UNIQUE, so a denylisted word shared by several cards is likely a
+        real mechanic being silently suppressed (e.g. a future set ships "Trance").
+    Empty == healthy.
+    """
+    import tag_synergies as ts
+    flavor = {k.lower() for k in ts.FLAVOR_KEYWORDS}
+    themed = {k.lower() for k in ts.KEYWORD_THEMES}
+    out = [(k, -1, "denylisted AND mapped in KEYWORD_THEMES — resolve the contradiction")
+           for k in sorted(flavor & themed)]
+    if not os.path.exists(MANA_CSV):
+        return out
+    owned = _owned_names()
+    counts, example = {}, {}
+    with open(MANA_CSV, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            if (r.get("Card Name") or "").strip().lower() not in owned:
+                continue
+            for k in (r.get("Keywords") or "").split(";"):
+                k = k.strip().lower()
+                if k in flavor:
+                    counts[k] = counts.get(k, 0) + 1
+                    example.setdefault(k, (r.get("Card Name") or "").strip())
+    out += [(k, c, f"denylisted but on {c} owned cards, e.g. {example[k]} — real mechanic?")
+            for k, c in sorted(counts.items()) if c >= threshold]
+    return out
+
+
 def check(text_shape=False, include_baselined=False):
     """[(mechanic, example, signal)] of unindexed mechanics on owned cards. By
     default only those NOT in the baseline (genuinely new); empty == healthy."""
