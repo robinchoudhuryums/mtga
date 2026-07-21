@@ -24,14 +24,14 @@
 1 Jeskai Devotee (TDM) 110
 1 Balmor, Battlemage Captain (FDN) 237
 1 Hawkeye, Master Marksman (MSH) 130
-1 Loki Laufeyson (MSH) 143
-1 Colorstorm Stallion (SOS) 180
+1 Loki, God of Mischief (MSH) 65
+1 Seifer Almasy (FIN) 156
 1 Null Group Biological Assets (TMT) 98
 1 Charging Strifeknight (SOS) 110
 1 War Machine, Legacy of Iron (MSH) 238
 1 Speedball, New Warrior (MSH) 227
 1 Iron Fist, Living Weapon (MSH) 138
-1 Giant Cindermaw (FDN) 624
+1 Spinerock Tyrant (ECL) 159
 1 Raph & Leo, Sibling Rivals (TMT) 166
 1 Raphael, the Nightwatcher (TMT) 103
 1 Enduring Courage (DSK) 133
@@ -63,4 +63,4 @@
 # Flex — unowned Standard-legal Izzet-aggro upgrades (craft targets). See: deck.py suggest 33 --unowned
 #~ +Slickshot Show-Off | CRAFT (R): {1}{R} flying + haste, +2/+0 per noncreature spell, Plot {1}{R}. Premier evasive prowess finisher; Plot dodges sorcery-speed removal. High reuse across UR/Izzet shells.
 #~ +Emberheart Challenger | CRAFT (R): {1}{R} haste + prowess + Valiant — impulse-draws whenever you target it, and this deck is full of pump/target spells. Card advantage stapled to an aggressive body.
-#~ +Kitsa, Otterball Elite | CRAFT (M): {1}{U} vigilance + prowess + {T} loot + {2}{T} copy an instant/sorcery you control (power>=3, trivial with prowess + 20 noncreature spells). Also a KEY fit in deck 25 (over Loki Laufeyson) — serves multiple decks. Consider over Loki Laufeyson here too.
+#~ +Kitsa, Otterball Elite | CRAFT (M): {1}{U} vigilance + prowess + {T} loot + {2}{T} copy an instant/sorcery you control (power>=3, trivial with prowess + noncreature spells). Also a KEY fit in deck 25 — serves multiple decks. If crafted, comes in here over Loki, God of Mischief (the current placeholder in that slot).
