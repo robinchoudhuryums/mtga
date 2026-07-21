@@ -904,14 +904,61 @@ IMPACT_ROLES = {"Removal (spot)", "Sweeper", "Counter", "Card advantage",
                 "Reanimation", "Burn / drain"}
 
 
-def _role_credit(roles):
+def _role_credit(roles, saturation=None):
     """Keep-score credit for a card's functional roles: base 3 each, +6 more for each
     IMPACT role, so a card that does a high-value job clears the no-role 'filler' band
     (theme-fit only, ~0–8) and doesn't rank as a top cut. It can't fully offset a large
     theme-fit gap — an off-theme power card (Cosmic Cube, The Ten Rings) still sorts
     low in a tuned deck, which is inherent to a synergy model and exactly why `cuts`
-    prints full oracle text and wishlist ranking pairs fit with a hand-graded Power."""
-    return 3 * len(roles) + 6 * len(set(roles) & IMPACT_ROLES)
+    prints full oracle text and wishlist ranking pairs fit with a hand-graded Power.
+
+    When `saturation` (role → how many copies the deck ALREADY runs of that role) is
+    passed, the +6 IMPACT bonus DIMINISHES with saturation — the 1st removal spell is
+    worth the full bonus, the 8th very little (diminishing returns, improvement #1). So
+    `suggest` stops over-valuing the Nth copy of an effect the deck is already deep in,
+    and `cuts` ranks a redundant piece as more cuttable while protecting a scarce one
+    (the deck's only counterspell keeps its full credit). With no `saturation` the
+    credit is the original flat value (unchanged for any caller that doesn't opt in)."""
+    base = 3 * len(roles)
+    impact_roles = set(roles) & IMPACT_ROLES
+    if saturation is None:
+        return base + 6 * len(impact_roles)
+    bonus = 0.0
+    for r in impact_roles:
+        have = max(0, saturation.get(r, 0))
+        bonus += 6.0 / (1 + 0.5 * have)   # have 0→6, 1→4, 2→3, 3→2.4, 6→~1.5
+    return base + bonus
+
+
+def _curve_gap_factor(mv, curve):
+    """A bounded (0.85–1.15) multiplier on a candidate's `suggest` score by how its mana
+    value fits the deck's CURVE (improvement #2). Archetype-agnostic and deliberately
+    gentle so it re-ranks near-ties without overriding a clear theme-fit winner:
+
+      • an OVER-FULL bucket (more copies than the deck's average slot) is gently
+        penalized at ANY cost — you don't need the 9th three-drop;
+      • a THIN CHEAP bucket (MV ≤ 3, below average) is gently boosted — nearly every
+        deck wants its early plays filled;
+      • a thin EXPENSIVE bucket is left alone (factor 1.0) — boosting top-end would be
+        archetype-wrong for an aggro deck, so the curve signal never does it.
+
+    `curve` is the deck's nonland MV histogram (bucket → copies). Returns 1.0 when the
+    card's MV or the curve is unknown, so a missing mana row never distorts the score."""
+    if mv is None or not curve:
+        return 1.0
+    b = min(int(mv), 7)
+    avg = sum(curve.get(i, 0) for i in range(1, 8)) / 7.0
+    if avg <= 0:
+        return 1.0
+    ratio = curve.get(b, 0) / avg
+    if ratio > 1.0:
+        return max(0.85, 1.0 - 0.15 * (ratio - 1.0))
+    # Boost a thin CHEAP spell slot (MV 1–3) only; MV 0 (lands / free spells) isn't a
+    # curve slot — the deck curve counts nonland cards, so a land would else read as a
+    # perpetually-thin "0-drop" and get an unearned boost.
+    if 1 <= b <= 3 and ratio < 1.0:
+        return min(1.15, 1.0 + 0.15 * (1.0 - ratio))
+    return 1.0
 
 
 def context_flags(text, mana_cost):
@@ -1396,16 +1443,34 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         res["reason"] = "no-themes"
         return res
 
+    # Deck function + curve profile for the gap-aware scoring below (improvements
+    # #1/#2): how many of each functional role the deck ALREADY runs, and its nonland
+    # mana curve, so a candidate is weighted by what the deck NEEDS, not just theme fit.
+    carddata = load_card_data()
+    mana_map = load_mana()
+    deck_roles = role_tally(cards, carddata)   # role → copies already in the deck
+    deck_curve = {}                            # nonland MV bucket → copies
+    for q, n, s, c in cards:
+        nl2 = n.lower()
+        if nl2 in BASICS:
+            continue
+        cd2 = carddata.get(nl2)
+        if cd2 and "Land" in _primary_type(cd2.get("type") or ""):
+            continue
+        e = mana_map.get(nl2)
+        if e and e[1] is not None:
+            b = min(int(e[1]), 7)
+            deck_curve[b] = deck_curve.get(b, 0) + q
+
     # Deck colors = the colors the deck can actually CAST. Prefer the declared
     # `#: colors:`; else derive from mana COSTS — never color identity, so a card's
     # off-color activated abilities don't widen the deck and surface uncastable picks.
     deck_colors = _declared_colors(dmeta)
     if not deck_colors:
-        dm = load_mana()
         for q, n, s, c in cards:
             if n.lower() in BASICS:
                 continue
-            entry = dm.get(n.lower())
+            entry = mana_map.get(n.lower())
             if entry and entry[0]:
                 strict, hybrid = parse_pips(entry[0])
                 # Only a TRUE multicolor hybrid ({W/U}) constrains castable colors;
@@ -1437,12 +1502,18 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         if not shared:
             continue
         shared = [t.strip() for t in shared]
-        # Theme fit + impact-role credit: among on-theme picks, a card that also fills
-        # a high-value functional role (removal / card advantage / ramp / cost-reduction
-        # / a payoff engine) outranks a same-theme vanilla body — the mirror of the
-        # `cuts` fix, so a strong-but-thinly-tagged upgrade isn't buried. Reads the
-        # pool's Card Text; a text-less row just gets no bonus.
-        score = sum(theme_w[t] for t in shared) + _role_credit(classify_roles(r.get("Card Text") or ""))
+        # Theme fit + gap-aware role credit + curve fit. Among on-theme picks, a card
+        # that fills a high-value functional role the deck is THIN on (removal / card
+        # advantage / ramp / cost-reduction / payoff) outranks a same-theme vanilla body
+        # — but that role bonus DIMINISHES if the deck already runs plenty of it (#1), so
+        # `suggest` stops recommending the 9th removal spell. The whole score is then
+        # nudged by how the card's MV fits the deck's curve (#2) — bounded ±15%, so it
+        # re-ranks near-ties without overriding a clear theme-fit winner. Reads the
+        # pool's Card Text; a text-less / mana-less row just gets no bonus / factor 1.0.
+        roles = classify_roles(r.get("Card Text") or "")
+        base = sum(theme_w[t] for t in shared) + _role_credit(roles, deck_roles)
+        cand_mv = (mana_map.get(nl) or (None, None))[1]
+        score = round(base * _curve_gap_factor(cand_mv, deck_curve), 2)
         suggestions.append((score, name, r, shared))
 
     # Ownership is keyed by the LIBRARY name (DFCs stored under their front face), but
@@ -2270,7 +2341,8 @@ def cmd_cuts(args):
                 theme_w[t] = theme_w.get(t, 0) + q
     central = _central_themes(theme_w)
     signature = _signature_themes(meta, cards, cardmeta)   # #: protect: spine (F#3)
-    deck_int = role_tally(cards, carddata)["interaction"]  # for the F#1 interaction guard
+    deck_tally = role_tally(cards, carddata)               # role → copies the deck runs
+    deck_int = deck_tally["interaction"]                   # for the F#1 interaction guard
 
     # Deck creature subtypes (for the tribal-contribution signal).
     sub_count = {}
@@ -2312,10 +2384,13 @@ def cmd_cuts(args):
 
         # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
         # Role credit is impact-weighted (see _role_credit) so a strong-but-off-theme
-        # card (removal/engine/cost-reducer) isn't mis-ranked as a top cut. A card on
-        # the deck's #: protect: signature theme gets a further keep-boost (F#3) so a
-        # generic-tagged-but-central theme (e.g. counters) isn't mistaken for filler.
-        keep = (fit + _role_credit(roles) + (1 if hit_central else 0)
+        # card (removal/engine/cost-reducer) isn't mis-ranked as a top cut. Passing the
+        # deck's role tally makes that credit SATURATION-aware (#1): a redundant piece
+        # (the 8th removal spell) loses most of its bonus and sorts UP the cut list,
+        # while the deck's ONLY counterspell keeps full credit and stays protected. A
+        # card on the deck's #: protect: signature theme gets a further keep-boost (F#3)
+        # so a generic-tagged-but-central theme (e.g. counters) isn't mistaken for filler.
+        keep = (fit + _role_credit(roles, deck_tally) + (1 if hit_central else 0)
                 + (2 if sig_hit else 0) + min(tribal, 6))
         reasons = []
         if tags and not hit_central:
