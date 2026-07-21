@@ -536,6 +536,12 @@ basic-land art treated as fungible — the **same rules as `deck.py verify`**, r
 entirely client-side (nothing is uploaded). Use it to spot which decks you've edited
 in Arena but not yet updated in the repo (or vice-versa).
 
+A **"Find a card"** search box (top of the page) is the dashboard mirror of
+`card.py`'s *in decks* line: type any card name and it lists every deck **including
+variants** that runs it (with the copy count), each a click-through chip that
+filters the deck list to that deck. It searches the same per-deck card multisets the
+stale-deck compare uses, entirely in-browser.
+
 The build is **offline** — it disables `deck.py`'s live-Scryfall fallbacks and reads
 only committed data (`card-*.csv` + `decks/`), so it never touches the network and
 runs in CI.

@@ -397,6 +397,16 @@ TEMPLATE = r"""<!DOCTYPE html>
   .difflist { font-family:ui-monospace,monospace; font-size:12px; margin:6px 0 0; }
   .diffadd { color:var(--ok); } .diffrem { color:var(--bad); }
   .staletot { font-size:13px; margin:2px 0 10px; }
+  #cardfindout { margin-top:10px; }
+  .cardfind-row { border-top:1px solid var(--line); padding:9px 2px; }
+  .cardfind-row:first-child { border-top:none; }
+  .cardfind-name { font-weight:600; font-size:14px; }
+  .cardfind-count { font-weight:400; font-size:12px; color:var(--muted); margin-left:6px; }
+  .cardfind-decks { margin-top:6px; display:flex; flex-wrap:wrap; gap:6px; }
+  .deckchip { font-size:12px; padding:3px 9px; border:1px solid var(--line); border-radius:12px;
+              cursor:pointer; background:var(--bg); color:var(--ink); }
+  .deckchip:hover { border-color:var(--accent); color:var(--accent); }
+  .deckchip b { font-variant-numeric:tabular-nums; }
 </style>
 </head>
 <body>
@@ -406,6 +416,11 @@ TEMPLATE = r"""<!DOCTYPE html>
   <div class="kpis" id="kpis"></div>
 </header>
 <main>
+  <section id="cardfind-sec">
+    <h2>Find a card — which decks run it</h2>
+    <input class="filter" id="cardfind" placeholder="type a card name (incl. variants)…" autocomplete="off" spellcheck="false">
+    <div id="cardfindout"></div>
+  </section>
   <section id="audit-sec">
     <h2>Roster triage — which decks need a tune</h2>
     <div class="auditsummary" id="auditsummary"></div>
@@ -686,6 +701,45 @@ TEMPLATE = r"""<!DOCTYPE html>
     render(D.decks.filter(d => !q ||
       (d.id+' '+d.name+' '+d.colors+' '+d.format+' '+d.archetype).toLowerCase().includes(q)));
   });
+
+  // Card finder — search a card name, list every deck (incl. variants) that runs
+  // it. Built from the same D.decks[].cards multisets the stale-deck compare uses
+  // (keyed by lowercased name; printings/basic art already collapsed), so it's the
+  // dashboard mirror of `card.py`'s "in decks:" line. Runs entirely in-browser.
+  (function(){
+    const idx = new Map();  // nl -> {disp, decks:[{id,name,qty}]}
+    for (const d of D.decks) {
+      for (const nl in (d.cards||{})) {
+        const [disp, qty] = d.cards[nl];
+        let e = idx.get(nl);
+        if (!e) { e = {disp, decks:[]}; idx.set(nl, e); }
+        e.decks.push({id:d.id, name:d.name, qty});
+      }
+    }
+    const entries = [...idx.values()].sort((a,b)=>a.disp.localeCompare(b.disp));
+    const out = document.getElementById('cardfindout');
+    const inp = document.getElementById('cardfind');
+    function draw(q){
+      q = (q||'').trim().toLowerCase();
+      if (!q) { out.innerHTML = `<p class="auditnote">Searches ${entries.length} distinct cards across every deck and variant. Click a deck to jump to it.</p>`; return; }
+      if (q.length < 2) { out.innerHTML = ''; return; }
+      const hits = entries.filter(e => e.disp.toLowerCase().includes(q)).slice(0, 50);
+      if (!hits.length) { out.innerHTML = `<p class="auditnote">No card matching “${esc(q)}” in any deck.</p>`; return; }
+      out.innerHTML = hits.map(e => {
+        const decks = e.decks.slice().sort((a,b)=>(''+a.id).localeCompare(''+b.id, undefined, {numeric:true}));
+        const chips = decks.map(d =>
+          `<span class="deckchip" data-id="${esc(d.id)}"><b>${esc(d.id)}</b>${d.qty>1?` ×${d.qty}`:''} · ${esc(d.name||d.id)}</span>`).join('');
+        return `<div class="cardfind-row"><div class="cardfind-name">${esc(e.disp)}<span class="cardfind-count">in ${decks.length} deck${decks.length>1?'s':''}</span></div><div class="cardfind-decks">${chips}</div></div>`;
+      }).join('');
+      out.querySelectorAll('.deckchip').forEach(ch => ch.addEventListener('click', () => {
+        const f = document.getElementById('filter');
+        f.value = ch.dataset.id; f.dispatchEvent(new Event('input'));
+        document.getElementById('decks').scrollIntoView({behavior:'smooth', block:'start'});
+      }));
+    }
+    draw('');
+    inp.addEventListener('input', e => draw(e.target.value));
+  })();
 
   // Roster triage table — one row per deck from the SAME audit_deck() scorer the
   // `deck.py audit` CLI uses. Sorted worst-first; click a row to filter the decks
