@@ -142,7 +142,15 @@ from your owned inventory. `card-library.csv` stays exactly your collection.
 ```
 python3 scripts/build_pool.py            # (re)build card-pool.csv — Standard-legal Arena cards
 python3 scripts/build_pool.py --all      # every Arena-craftable card (~15.8k) instead
+python3 scripts/build_pool.py --allow-shrink   # permit an empty / far-smaller result to overwrite
 ```
+
+`build_pool.py` refuses to overwrite an existing pool with an **empty** result (a
+query typo, or Scryfall's zero-match 404) or one **less than half** the current row
+count — so a mistaken query, or a plain Standard rebuild run over a full `--all`
+pool, can't silently destroy the reference. Pass `--allow-shrink` when the shrink
+is intentional. (The write itself is atomic, so an interrupted build leaves the
+existing pool intact.)
 
 `card-pool.csv` carries a **Rarity** column (= Arena wildcard cost) and a
 **`Released`** column (each card's set release date). `build_pool.py` also writes
@@ -261,12 +269,17 @@ python3 scripts/reconcile_crafts.py crafts.txt --apply   # write, with .bak back
 When you craft (or discover you already own) cards, paste them as an Arena export
 (`1 Doctor Doom (MSH) 95`). This adds each to `card-library.csv` (a double-faced
 card under its **front** name, matching the library convention), adds the matching
-`card-mana.csv` row so INV-02 keeps holding, drops it from `card-wishlist.csv`, and
-lists the decks that reference it so you can re-check buildability. The line's
-quantity becomes the owned count (so `4 Scoured Barrens (FDN) 266` sets it to 4).
-Dry-run by default; after `--apply`, run `build_gallery.py` + `check_all.py` (or
-`/refresh`). This is the fast fix for the **"not in library" undercount symptom**
-— a card you own that `deck.py check` still lists as a craft target.
+`card-mana.csv` row so INV-02 keeps holding (a **blank** row when the card has no
+source mana row yet — a later `build_mana.py`/`/refresh` fills the cost), drops it
+from `card-wishlist.csv`, and lists the decks that reference it so you can re-check
+buildability. For a **new** card the line's quantity is the owned count; for a card
+**already** in the library it takes `max(existing, line)`, so pasting a deck-dump
+slice (each line a lower bound) can't silently drop a real count — pass
+`--set-exact` to set the count exactly (allowing a deliberate decrease). Lines that
+look like a card but don't parse are reported (not silently skipped). Dry-run by
+default; after `--apply`, run `build_gallery.py` + `check_all.py` (or `/refresh`).
+This is the fast fix for the **"not in library" undercount symptom** — a card you
+own that `deck.py check` still lists as a craft target.
 
 ### Deck — manage decks and variations
 

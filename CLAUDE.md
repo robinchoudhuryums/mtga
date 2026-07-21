@@ -20,6 +20,21 @@ docs. This file is the source of truth for the workflow commands in
 - **`Color(s)` is color IDENTITY, not mana cost.** For anything mana-related
   (castability, hybrids, pip counts) use `card-mana.csv` / `deck.py mana`
   (hybrid-aware). Never infer mana requirements from `Color(s)`.
+- **Parse a `Color(s)` cell with `lib.card_colors()`, never inline.** The naive
+  `{ch for ch in s.upper() if ch in "WUBRG"}` reads the literal string `"Colorless"`
+  as `{R}` (the word contains an R), so a colorless card was mis-routed as red by
+  `suggest`/`suggest-homes`/fingerprints; a `.replace(" ", "")` variant kept the `/`
+  and broke gold cards (audit F1/F2). `card_colors()` handles both — route every new
+  color-parse site through it. `scripts/check_colors.py` (a hard `check_all` gate,
+  like `check_rankings`) locks this in: a colorless card must not read as colored.
+- **Write canonical files through `lib.atomic_write()` (+ `lib.backup_path()`).**
+  Every mutation of `card-library.csv` / `card-mana.csv` / `card-pool.csv` /
+  `card-wishlist.csv` goes temp-file → timestamped `.bak` → atomic `os.replace`, so
+  an interrupted or empty-result write can't truncate the source of truth (audit
+  F3/F5). `.bak` names come from one collision-free, sort-safe helper so "newest"
+  is unambiguous (audit F22); readers that need the latest (e.g. `app.py revert`)
+  select by mtime. Pass `backup=False` only when writing a scratch temp the caller
+  promotes itself.
 - **`card-library.csv` is the owned inventory** and stays compatible with the
   companion Google Sheet (fixed 8-column header). Derived/reference data lives
   in separate files (`card-mana.csv`, `card-pool.csv`) so the CSV isn't polluted.
@@ -31,6 +46,9 @@ docs. This file is the source of truth for the workflow commands in
 - **Owned copies are fungible across printings.** For buildability, `deck.py`
   and `pool.py` both sum a card's `Quantity Owned` across every printing (a card
   owned 1× in two sets counts as 2) — never count a single printing in isolation.
+  The pool-facing ownership joins (`pool.py`, `deck.py suggest`) fall back to a
+  DFC's **front** face, since the pool keys the full `Front // Back` name but the
+  library stores the front only — else an owned DFC would read as `craft` (audit F6).
 - **Decks share the collection — a card is NOT consumed by a deck.** In MTG Arena
   the whole collection is available to every deck at once, so one owned copy can
   sit in any number of decks *simultaneously*; owning N copies lets each deck run
@@ -208,10 +226,14 @@ castability · curve · central-theme density), with the intangibles moving a de
   check` reports it as a craft target even though you own it. Fastest fix:
   `reconcile_crafts.py <arena-export>` — paste the crafted/owned cards as an Arena
   export ("1 Doctor Doom (MSH) 95"), and it adds each to `card-library.csv` (DFC
-  stored under its **front** name), adds the matching `card-mana.csv` row, drops it
-  from `card-wishlist.csv`, and lists the decks to re-check. Dry-run by default;
-  `--apply` writes with `.bak`s; then run `build_gallery.py` + `check_all.py` (or
-  `/refresh`). (The DFC front-vs-full name handling — pool/mana key `A // B`, the
+  stored under its **front** name), adds the matching `card-mana.csv` row — a
+  **blank** one when the card has no source mana row yet, so INV-02 always holds
+  and `build_mana.py`/`/refresh` fills the cost later (audit F8) — drops it
+  from `card-wishlist.csv`, and lists the decks to re-check. For a card already in
+  the library it takes `max(existing, line)` so a deck-dump slice can't drop a real
+  count (`--set-exact` forces the exact/lower value, audit F17); unparseable lines
+  are reported, not skipped silently. Dry-run by default; `--apply` writes with
+  `.bak`s; then run `build_gallery.py` + `check_all.py` (or `/refresh`). (The DFC front-vs-full name handling — pool/mana key `A // B`, the
   library keys `A` — was the most error-prone part when done by hand.) Alternatives:
   `import_arena.py <deck> --skip-basics` (trues up from a built deck), or append the
   `card-pool.csv` row manually. Hit repeatedly in practice (Primeval Bounty, Cat
@@ -426,8 +448,11 @@ castability · curve · central-theme density), with the intangibles moving a de
 INV-01…04 plus a **ranking-model sanity check** (`check_rankings.py`) that guards
 the Doctor-Doom-class regression: a scoring change that silently reclassifies a
 real tribal theme as "generic". The ranking check is distribution-based, so it
-survives cards being crafted off the wishlist. It also emits **soft, non-gating
-warnings**: wishlist target drift — a card whose Target deck can no longer cast it
+survives cards being crafted off the wishlist. A **color-parsing sanity check**
+(`check_colors.py`) is also hard-gated — it locks in the F1/F2 fix (a colorless
+card must not read as red; a slash-gold must pass the subset test). It also emits
+**soft, non-gating warnings**: wishlist target drift — a card whose Target deck can
+no longer cast it
 after a retune — via `wishlist.py --audit-targets`; and **new unindexed mechanics**
 — `check_keywords.py` flags a keyword on an owned card that isn't in
 `tag_synergies.py`'s map yet (a new set's mechanic), baselined in
@@ -448,7 +473,7 @@ letter — see the Competitive Tiering rubric). Soft warnings never fail the bui
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
-- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py
+- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`)
 - Decks: decks/
 
