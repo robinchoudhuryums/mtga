@@ -1,4 +1,4 @@
-#: name: Temur Fractals
+#: name: Fractalandtastic
 #: format: Standard
 #: tier: A — Temur Fractals counters/ramp; powerful engine + card advantage + ramp, now with adequate interaction. The interaction package (+Spell Pierce / +Plasma Bolt / +Shock, cutting redundant card-selection) took interaction 2→5 and resil 4→7, lifting the measurable floor to A while keeping the 10 payoffs + 4 ramp intact (curve improved 3.40→3.23). Held at A (not an S conversation) by the 3-color GUR mana. Earlier B was correct pre-package; re-graded B→A once the metrics floor reached A.
 #: colors: GUR
@@ -45,7 +45,7 @@
 
 # Interaction / red value
 1 Tablet of Discovery (SOS) 132
-1 Garrison Excavator (SOS) 116
+1 Zimone, Paradox Sculptor (FDN) 126
 1 She-Hulk, Jade Defender (MSH) 188
 1 Wistfulness (ECL) 252
 1 Origin of Metalbending (TLA) 187
@@ -75,10 +75,11 @@
 1 Wind-Scarred Crag (FDN) 271
 1 Abraded Bluffs (OTJ) 251
 1 Terramorphic Expanse (MSC) 828
-5 Forest
+6 Forest
 4 Island
-3 Mountain
+2 Mountain
 
 # Flex — craft upgrades that supercharge the counters plan. See: deck.py flex 30
 #~ note: applied — Germination Practicum in for Heroic Feast.
 #~ note: applied — Tatyova, Benthic Druid in for Super Intelligence.
+#~ +Quandrix, the Proof | OWNED alt (not a craft): {4}{G}{U} flying + trample + cascade Elder Dragon; also gives your instants/sorceries cascade. A ramp top-end with immediate cascade value, but the spellslinger payoff is off this counters plan and it's redundant with Lumra / World War Hulk / Terra — parked as an optional extra top-end (Zimone, Paradox Sculptor now maindecked, in over Garrison Excavator).

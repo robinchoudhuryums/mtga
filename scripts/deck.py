@@ -1244,20 +1244,27 @@ def deck_role_counts(cards, carddata):
     return t["interaction"], t["card_advantage"]
 
 
-def fit_strength(shared, theme_w, card_text, deck_int, deck_ca):
+def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozenset()):
     """Classify a card→deck fit as KEY / role-player / tangential (F04).
 
-      KEY          – shares the deck's SIGNATURE (top central theme) on a specific
-                     theme, OR fills a role the deck is short on (interaction < 5 /
+      KEY          – shares the deck's SIGNATURE (top central theme, OR a theme
+                     carried by the deck's `#: protect:` cards) on a specific theme,
+                     OR fills a role the deck is short on (interaction < 5 /
                      card advantage < 3).
       tangential   – shares only GENERIC themes (etb/tokens/…): low real signal.
       role-player  – shares a specific central theme, but not the signature.
+
+    `signature` (from `_signature_themes`) corrects the idf blind spot: a theme in
+    GENERIC_THEMES is still SPECIFIC-for-this-deck if the deck protects cards built
+    on it — so a counter-doubler in a counters deck reads KEY, not tangential.
     """
-    specific = [t for t in shared if t.lower() not in GENERIC_THEMES]
+    specific = [t for t in shared if t.lower() not in GENERIC_THEMES or t in signature]
     roles = set(classify_roles(card_text or ""))
     gap = (bool(roles & _INTERACTION_ROLES) and deck_int < 5) or \
           ("Card advantage" in roles and deck_ca < 3)
     if gap:
+        return "KEY"
+    if signature and any(t in signature for t in shared):
         return "KEY"
     if not specific:
         return "tangential"
@@ -2198,6 +2205,25 @@ def _protected(meta):
     return {p.strip().lower() for p in raw.split(";") if p.strip()}
 
 
+def _signature_themes(meta, cards, cardmeta):
+    """The themes carried by a deck's `#: protect:` cards — the human-designated
+    SPINE. A theme here counts as the deck's signature even when it's otherwise
+    'generic' (idf-low): a counters deck that protects two counter-doublers IS a
+    counters deck, so a counter card is a KEY fit, not tangential. Corrects the idf
+    blind spot where a broadly-common theme (counters/tokens/…) is THIS deck's actual
+    plan. Empty when no `#: protect:` header is set (falls back to pure idf)."""
+    prot = _protected(meta)
+    if not prot:
+        return frozenset()
+    sig = set()
+    for q, n, s, c in cards:
+        if n.lower() in prot:
+            m = cardmeta.get(n.lower())
+            if m:
+                sig.update(m["synergies"])
+    return frozenset(sig)
+
+
 def cmd_cuts(args):
     """Rank the deck's nonland cards from most to least cuttable — the counterpart
     to `suggest` (which proposes adds). Heuristic from data the rest of the tooling
@@ -2226,6 +2252,8 @@ def cmd_cuts(args):
             for t in m["synergies"]:
                 theme_w[t] = theme_w.get(t, 0) + q
     central = _central_themes(theme_w)
+    signature = _signature_themes(meta, cards, cardmeta)   # #: protect: spine (F#3)
+    deck_int = role_tally(cards, carddata)["interaction"]  # for the F#1 interaction guard
 
     # Deck creature subtypes (for the tribal-contribution signal).
     sub_count = {}
@@ -2262,11 +2290,16 @@ def cmd_cuts(args):
         tribal = sum(sub_count.get(st, 0) for st in subs)  # includes own copies
         cost, mv = (mana.get(nl) or (None, None))
         ctx = context_flags(text, cost)
+        sig_hit = bool(set(tags) & signature)          # shares the deck's protected spine
+        is_int = bool(set(roles) & _INTERACTION_ROLES)  # removal / sweeper / counter
 
         # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
         # Role credit is impact-weighted (see _role_credit) so a strong-but-off-theme
-        # card (removal/engine/cost-reducer) isn't mis-ranked as a top cut.
-        keep = fit + _role_credit(roles) + (1 if hit_central else 0) + min(tribal, 6)
+        # card (removal/engine/cost-reducer) isn't mis-ranked as a top cut. A card on
+        # the deck's #: protect: signature theme gets a further keep-boost (F#3) so a
+        # generic-tagged-but-central theme (e.g. counters) isn't mistaken for filler.
+        keep = (fit + _role_credit(roles) + (1 if hit_central else 0)
+                + (2 if sig_hit else 0) + min(tribal, 6))
         reasons = []
         if tags and not hit_central:
             reasons.append("off the deck's central themes")
@@ -2276,7 +2309,7 @@ def cmd_cuts(args):
             reasons.append("role not auto-detected — read text")
         if subs and tribal <= q:
             reasons.append("off-tribe")
-        rows.append((keep, n, mv, sorted(roles), fit, reasons, ctx, text))
+        rows.append((keep, n, mv, sorted(roles), fit, reasons, ctx, text, is_int))
 
     if not rows:
         print(f"Deck {d['id']}: no nonland cards to evaluate.")
@@ -2290,13 +2323,18 @@ def cmd_cuts(args):
         print(f"Protected (kept OFF the cut list via #: protect:): {'; '.join(prot_present)}")
     print("Heuristic shortlist — read the text; it can't see spice/signature cards "
           "beyond the #: protect: header.\n")
+    if deck_int < 5:
+        print(f"⚠ deck runs only {deck_int} interaction piece(s) — rows tagged "
+              f"⚠interaction are your removal/counters; cutting them lowers resilience.")
     print(f"  {'Card':30} {'MV':>3}  {'Fit':>4}  Roles / why-cuttable")
     print("-" * 74)
-    for keep, n, mv, roles, fit, reasons, ctx, text in rows[:limit]:
+    for keep, n, mv, roles, fit, reasons, ctx, text, is_int in rows[:limit]:
         mvs = str(mv) if mv is not None else "?"
         tail = ", ".join(roles) if roles else ("; ".join(reasons) if reasons else "—")
         if ctx:
             tail += f"   ⚠ context: {'/'.join(ctx)}"
+        if is_int:
+            tail += f"   ⚠interaction (deck runs {deck_int})"
         print(f"  {n[:30]:30} {mvs:>3}  {fit:>4}  {tail}")
 
     # Surface the actual oracle text so a cut is graded from what the card DOES,
@@ -2305,8 +2343,10 @@ def cmd_cuts(args):
     text_n = args.limit if getattr(args, "limit", 0) and args.limit > 0 else min(12, len(rows))
     print(f"\n── Oracle text of the top {min(text_n, len(rows))} cut candidates "
           f"(grade from THIS, not the label) ──")
-    for keep, n, mv, roles, fit, reasons, ctx, text in rows[:text_n]:
+    for keep, n, mv, roles, fit, reasons, ctx, text, is_int in rows[:text_n]:
         warn = f"   ⚠ context: {'/'.join(ctx)} — value depends on this deck" if ctx else ""
+        if is_int:
+            warn += f"   ⚠interaction — 1 of the deck's {deck_int}"
         print(f"\n• {n}{warn}")
         for para in (text or "(no oracle text on file)").split("\n"):
             for line in (textwrap.wrap(para, width=86) or [""]):
@@ -2619,7 +2659,8 @@ def cmd_suggest_homes(args):
         already = card.lower() in {n.lower() for _, n, _, _ in cards}
         fit = sum(theme_w.get(t, 0) for t in shared)
         d_int, d_ca = deck_role_counts(cards, carddata)
-        strength = fit_strength(shared, theme_w, cd.get("text") or "", d_int, d_ca)
+        sig = _signature_themes(dmeta, cards, cardmeta)
+        strength = fit_strength(shared, theme_w, cd.get("text") or "", d_int, d_ca, sig)
         cut = None if already else _weakest_cut(dmeta, cards, cardmeta, carddata)
         results.append((fit, dd["id"], already, shared, cut, strength))
 
@@ -2687,6 +2728,9 @@ def deck_quality_vector(d):
         "avg_mv": round(sum(mvs) / len(mvs), 2) if mvs else 0.0, "early_drops": early,
         "central_themes": len(_central_themes(theme_w)),
         "central": sorted(_central_themes(theme_w)),
+        # Full per-theme copy counts — lets the F10 guard tell a theme that truly LEFT
+        # the deck (0 copies) from one merely demoted below the centrality cutoff (F#2).
+        "theme_copies": dict(theme_w),
     }
 
 
@@ -2764,9 +2808,18 @@ def cmd_quality(args):
             regressions.append(f"interaction dropped ({before['interaction']}→{vec['interaction']})")
         if vec["card_advantage"] < before.get("card_advantage", 0):
             regressions.append(f"card advantage dropped ({before['card_advantage']}→{vec['card_advantage']})")
-        if vec["central_themes"] < before.get("central_themes", 0):
-            lost = set(before.get("central", [])) - set(vec["central"])
-            regressions.append(f"lost central theme(s): {', '.join(sorted(lost)) or '?'}")
+        # A central theme dropping out of the set is only a REAL regression if the
+        # theme's cards actually left the deck (0 copies now). A theme that merely fell
+        # below the 25% centrality cutoff because a strongly on-theme add concentrated
+        # the top theme is a benign reclassification, not a loss (F#2 — this used to
+        # false-alarm, e.g. adding Zimone flagged Druid/mill/selection as "lost" while
+        # their cards were still in the deck).
+        tc = vec.get("theme_copies", {})
+        demoted = set(before.get("central", [])) - set(vec["central"])
+        truly_lost = {t for t in demoted if tc.get(t, 0) == 0}
+        if truly_lost:
+            regressions.append(
+                f"lost central theme(s) — 0 copies remain: {', '.join(sorted(truly_lost))}")
         if vec["avg_mv"] - before.get("avg_mv", 0) > 0.3:
             regressions.append(f"curve heavier (avg MV {before['avg_mv']}→{vec['avg_mv']})")
 
@@ -2786,7 +2839,8 @@ def cmd_quality(args):
         ctags = set(cardmeta.get(args.add.lower(), {}).get("synergies", []))
         shared = sorted(ctags & _central_themes(theme_w))
         d_int, d_ca = deck_role_counts(cards, carddata)
-        strength = fit_strength(shared, theme_w, (cd or {}).get("text") or "", d_int, d_ca)
+        sig = _signature_themes(dmeta, cards, cardmeta)
+        strength = fit_strength(shared, theme_w, (cd or {}).get("text") or "", d_int, d_ca, sig)
         if strength == "tangential":
             weak_add = f"add {args.add!r} is only a TANGENTIAL fit (generic themes only)"
 
