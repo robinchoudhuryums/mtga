@@ -205,7 +205,15 @@ castability · curve · central-theme density), with the intangibles moving a de
   each nonbasic's legality in the deck's `#: format:` (from the pool's `Legalities`
   column; `--format` overrides). It exits non-zero on a real violation but treats a
   pool-absent card as *unverified*, not illegal (so WIP/older-print decks aren't
-  false-flagged). `deck.py cuts <id>` is the counterpart to `suggest` (adds): it
+  false-flagged). It's **format-aware for Alchemy and Brawl**: a Standard card that
+  isn't Alchemy-legal is *rebalanced* (plays as its `A-` version), so `--format alchemy`
+  notes it rather than flagging it illegal; and a **Brawl/Commander** deck (a singleton
+  format) enforces the 1-of limit AND validates the `#: commander:` header — it must be
+  a legendary creature/planeswalker in the deck, and every card's **color identity** must
+  sit within the commander's (Brawl's defining rule, which is stricter than Standard's
+  castability check — a `W/R`-identity card is fine in a mono-W Standard deck but illegal
+  under a mono-W commander). Game-type variants are organized as `<core>-<format>` decks
+  (e.g. `3-brawl`) — see `decks/README.md`. `deck.py cuts <id>` is the counterpart to `suggest` (adds): it
   ranks nonland cards weakest-fit first (central-theme fit + **impact-weighted**
   functional role + tribal contribution) **and prints the full oracle text of the top
   candidates plus a `⚠ context` flag on deck-dependent mechanics (converge / devotion /

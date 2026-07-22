@@ -1,0 +1,76 @@
+#: name: Bloodbending — Brawl
+#: format: Brawl
+#: colors: UB
+#: based-on: deck.txt
+#: commander: Hama, the Bloodbender
+#: archetype: Brawl conversion of the Dimir (U/B) mill / graveyard deck (deck 22). The
+#: archetype: Standard list was already 60-card singleton and built AROUND Hama, so she
+#: archetype: is the natural commander — every card sits within her U/B color identity.
+#: notes: Faithful game-type conversion: same mill + graveyard-payoff + waterbend plan,
+#: notes: now with Hama, the Bloodbender leading from the command zone (always available,
+#: notes: which the singleton mill plan appreciates). Brawl is a slower, grindier format
+#: notes: than Bo1 Standard, which actually SUITS this deck's card-advantage/control
+#: notes: angle better than the ladder did. Bloodchief Ascension (owned) is a strong add
+#: notes: for a repeatable drain kill — slot it when tuning. A starting point, not final.
+
+# Commander (leads from the command zone; also one of the 60)
+1 Hama, the Bloodbender (TLA) 224
+
+# Nonland — mill / graveyard payoffs
+1 Consuming Aberration (FDN) 238
+1 Emet-Selch, Unsundered (FIN) 218
+1 Uchbenbak, the Great Mistake (LCI) 242
+1 Portent of Calamity (BLB) 66
+
+# Nonland — card-advantage engines
+1 Wan Shi Tong, Librarian (TLA) 78
+1 Kang, Temporal Tyrant (MSH) 217
+1 Gran-Gran (TLA) 54
+1 Silvergill Peddler (ECL) 70
+1 Cryogen Relic (EOE) 52
+1 The Everflowing Well (LCI) 56
+1 Leader, Super-Genius (MSH) 64
+1 Mister Fantastic, Reed Richards (MSH) 66
+1 Madame Web, Clairvoyant (SPM) 36
+1 Secret of Bloodbending (TLA) 69
+1 Inspiration from Beyond (FDN) 43
+1 Waterbending Lesson (TLA) 80
+1 Spirit Water Revival (TLA) 73
+
+# Nonland — "draw your second card" payoffs
+1 Kid Loki (MSH) 63
+1 Kaito, Bane of Nightmares (DSK) 220
+1 Foggy Swamp Spirit Keeper (TLA) 222
+1 Super Intelligence (MSH) 77
+
+# Nonland — interaction / tempo
+1 Sokka's Haiku (TLA) 71
+1 Ruinous Waterbending (TLA) 118
+1 Boomerang Basics (TLA) 46
+1 Crashing Wave (TLA) 47
+1 Madame Masque (MSH) 104
+1 Watery Grasp (TLA) 82
+1 Kitsune's Technique (TMT) 42
+1 Katara, Bending Prodigy (TLA) 59
+
+# Nonland — bodies / value
+1 Yue, the Moon Spirit (TLA) 83
+1 Master Pakku (TLA) 63
+1 North Pole Patrol (TLA) 65
+1 Symbiote Spider-Man (SPM) 156
+1 Taskmaster, Mercenary Mimic (MSH) 232
+1 The Legend of Kuruk (TLA) 61
+
+# Lands
+1 Agna Qel'a (TLA) 264
+1 Dismal Backwater (FDN) 261
+1 Gloomlake Verge (DSK) 260
+1 Soured Springs (OTJ) 264
+1 Treno, Dark City (FIN) 290
+1 Hidden Lair (MSH) 269
+1 Serpent's Pass (TLA) 279
+13 Island (MSH) 290
+4 Swamp (MSH) 292
+
+# Flex — Brawl notes (comments; not part of the 60)
+#~ note: Color-identity swaps vs the Standard list: −Professor Zei, Anthropologist / −Abandon Attachments (both U/R identity → illegal under U/B Hama) → +Kang, Temporal Tyrant / +Madame Masque (U/B, owned, on the Villain/card-draw plan). `deck.py legal 22-brawl` confirms clean.

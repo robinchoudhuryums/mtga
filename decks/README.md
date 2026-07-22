@@ -11,16 +11,30 @@ One folder per **core deck**, with **variations** as sibling files:
 ```
 decks/
   01-avatar-tempo/
-    deck.txt              # the base deck        -> id "1"
-    1a-counter-heavy.txt  # a variation          -> id "1a"
-    1b-aggro-splash.txt   # another variation    -> id "1b"
-    notes.md              # optional free-form notes
+    deck.txt               # the base deck (Standard) -> id "1"
+    1a-counter-heavy.txt   # a Standard variation     -> id "1a"
+    1b-aggro-splash.txt    # another Standard variation-> id "1b"
+    1-brawl-avatar.txt     # a Brawl adaptation        -> id "1-brawl"
+    1-alchemy-avatar.txt   # an Alchemy adaptation      -> id "1-alchemy"
+    notes.md               # optional free-form notes
 ```
 
 - The folder name is `NN-slug` (e.g. `01-avatar-tempo`); its number is the core
   deck's id.
-- `deck.txt` is the base build. Variant files are named `<id>-slug.txt` where the
-  id is the core number plus a letter (`1a`, `1b`, …).
+- `deck.txt` is the base build. **Standard sub-variants** are named `<id>-slug.txt`
+  where the id is the core number plus a letter (`1a`, `1b`, …).
+- **Game-type (format) variants** — an Alchemy or Brawl adaptation of a core deck is
+  named `<core>-<format>[-slug].txt` and gets the id `<core>-<format>` (e.g.
+  `3-brawl-knights-edge.txt` → id `3-brawl`), so it reads as *that deck's* Brawl/Alchemy
+  version, **not** as another Standard sub-variant like `3a`. Recognized format tokens:
+  `alchemy`, `brawl`, `historic-brawl`, `timeless`, `explorer`, `pioneer`, `modern`,
+  `pauper`, `historic`. The token is only for the id — the deck's `#: format:` header
+  is the authoritative format the tooling checks. A **Brawl** deck adds a
+  `#: commander:` header (a legendary creature/planeswalker); `deck.py legal` then
+  enforces singleton (1-of) **and** that every card sits within the commander's color
+  identity. (Alchemy needs no separate file unless you want to tune it apart — a
+  Standard deck is already Alchemy-legal; `deck.py legal <id> --format alchemy` confirms
+  it and notes any Alchemy-rebalanced cards, which play as their `A-` version.)
 - Loose `decks/<name>.txt` files (no folder) also work, using the filename as id.
 
 ## Deck file format

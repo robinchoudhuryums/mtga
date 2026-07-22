@@ -80,6 +80,15 @@ WC_NAMES = [("M", "Mythic"), ("R", "Rare"), ("U", "Uncommon"),
 LINE_RE = re.compile(r"^\s*(\d+)\s*[xX]?\s+(.+?)\s*(?:\(([^)]+)\)\s*([^\s]+)?)?\s*$")
 META_RE = re.compile(r"^#:\s*([A-Za-z_]+)\s*:\s*(.*)$")
 
+# Game-type (format) variant filenames: `<core>-<format>[-slug].txt`. These get the
+# id `<core>-<format>` so a Brawl/Alchemy adaptation of a core deck reads as *that
+# deck's* Brawl/Alchemy version, distinct from a Standard sub-variant (3a). The format
+# token here is only for the id/organization; the deck's `#: format:` header remains the
+# authoritative format for the legality/rotation tooling.
+_FORMAT_SLUGS = ("alchemy", "historic-brawl", "brawl", "timeless", "explorer",
+                 "pioneer", "modern", "pauper", "historic")
+FORMAT_VARIANT_RE = re.compile(r"^(\d+)-(" + "|".join(_FORMAT_SLUGS) + r")(?:[-.])", re.I)
+
 
 # --------------------------------------------------------------------------- #
 # Deck discovery + parsing
@@ -129,8 +138,16 @@ def discover_decks():
                 if fn == "deck.txt":
                     decks.append(_record(core, core, p, core, False))
                 else:
-                    vm = re.match(r"^(\d+[a-z]+)-", fn)
-                    did = vm.group(1) if vm else os.path.splitext(fn)[0]
+                    # A GAME-TYPE variant — `<core>-<format>[-slug].txt` (e.g.
+                    # 3-brawl-knights-edge.txt) gets the id `<core>-<format>` (e.g.
+                    # `3-brawl`), so an Alchemy/Brawl adaptation of core deck 3 reads as
+                    # deck 3's Brawl version, NOT as another Standard sub-variant like 3a.
+                    fmv = FORMAT_VARIANT_RE.match(fn)
+                    if fmv:
+                        did = f"{int(fmv.group(1))}-{fmv.group(2).lower()}"
+                    else:
+                        vm = re.match(r"^(\d+[a-z]+)-", fn)
+                        did = vm.group(1) if vm else os.path.splitext(fn)[0]
                     decks.append(_record(did, core, p, core, True))
         elif entry.endswith(".txt"):
             did = os.path.splitext(entry)[0]
@@ -2579,6 +2596,9 @@ def cmd_apply_flex(args):
 # larger minimum size than the 60-card constructed default.
 SINGLETON_FORMATS = {"brawl", "historic brawl", "commander", "oathbreaker", "duel"}
 BIG_DECK_FORMATS = {"commander", "historic brawl", "oathbreaker"}
+# Formats led by a legendary creature/planeswalker commander with a color-identity lock
+# (Oathbreaker's PW-commander + signature-spell rules differ, so it's excluded here).
+_COMMANDER_FORMATS = {"brawl", "historic brawl", "commander", "duel"}
 
 
 def load_legalities():
@@ -2599,13 +2619,21 @@ def load_legalities():
     return out
 
 
-def legality_report(meta, cards, fmt, leg):
+def legality_report(meta, cards, fmt, leg, carddata=None):
     """Pure legality computation shared by `legal` (verbose, one deck) and `audit`
     (one line per deck) so both apply IDENTICAL size/copy/format rules. Returns a
     dict: problems (list of strings), unknown (pool-absent card names), notes
     (informational lines about untracked formats / missing legality data), plus
     total / min_size / copy_limit / singleton for the caller to render. Offline —
-    `leg` is a pre-loaded load_legalities() map (pass {} to skip the format check)."""
+    `leg` is a pre-loaded load_legalities() map (pass {} to skip the format check).
+
+    Format-aware extras:
+      • Singleton formats (Brawl/Commander) enforce the 1-copy limit (already), and
+        when `carddata` is supplied ALSO validate the `#: commander:` — it must be a
+        legendary creature/planeswalker in the deck, and every nonbasic card's color
+        identity must sit within the commander's (Brawl's defining rule).
+      • Alchemy: a card that's Standard-legal but not Alchemy-legal is REBALANCED, not
+        illegal — Arena plays its A- version — so it's a note, not a problem."""
     counts, order, disp, total = {}, [], {}, 0
     for q, n, s, c in cards:
         total += q
@@ -2631,21 +2659,63 @@ def legality_report(meta, cards, fmt, leg):
                             + (", singleton format" if singleton else "") + ")")
 
     if fmt and fmt in POOL_FORMATS and leg:
-        illegal = []
+        illegal, rebalanced = [], []
         for nl in order:
             card_leg = leg.get(nl)
             if card_leg is None:
                 unknown.append(disp[nl])
             elif fmt not in card_leg:
-                illegal.append(disp[nl])
+                # A Standard card that isn't Alchemy-legal is rebalanced (A- version),
+                # not illegal — it's still playable in Alchemy.
+                if fmt == "alchemy" and "standard" in card_leg:
+                    rebalanced.append(disp[nl])
+                else:
+                    illegal.append(disp[nl])
         for name in illegal:
             problems.append(f"{name}: not legal in {fmt}")
+        if rebalanced:
+            notes.append(f"{len(rebalanced)} card(s) are Alchemy-rebalanced — they play as "
+                         f"their A- version in Alchemy (still legal): "
+                         + ", ".join(rebalanced[:8]) + (" …" if len(rebalanced) > 8 else ""))
     elif fmt and fmt not in POOL_FORMATS:
         notes.append(f"Format '{fmt}' isn't tracked for legality "
                      f"(known: {', '.join(sorted(POOL_FORMATS))}) — checking size/copies only.")
     elif fmt and not leg:
         notes.append("card-pool.csv has no legality data (rebuild with build_pool.py) — "
                      "checking size/copies only.")
+
+    # Commander rules (Brawl / Commander) — needs card types + identities.
+    if singleton and fmt in _COMMANDER_FORMATS and carddata is not None:
+        cmd_name = (meta.get("commander") or "").strip()
+        if not cmd_name:
+            problems.append(f"{fmt} needs a `#: commander:` header — a legendary creature "
+                            "or planeswalker in the deck (it leads from the command zone)")
+        else:
+            cnl = cmd_name.lower()
+            ccd = carddata.get(cnl) or carddata.get(cnl.split(" // ")[0])
+            cident = None
+            if ccd is None:
+                notes.append(f"commander {cmd_name!r} not in card data — can't verify its "
+                             "type/identity (check spelling, or rebuild the pool)")
+            else:
+                ctype = ccd.get("type", "") or ""
+                if not ("Legendary" in ctype and ("Creature" in ctype or "Planeswalker" in ctype)):
+                    problems.append(f"commander {cmd_name}: must be a legendary creature or "
+                                    f"planeswalker (is {ctype or '?'})")
+                cident = card_colors(ccd.get("colors", ""))
+                if cnl not in counts:
+                    notes.append(f"commander {cmd_name} isn't listed in the deck — add it "
+                                 f"(it counts as one of the {min_size})")
+            if cident is not None:
+                strays = []
+                for nl in order:
+                    cd2 = carddata.get(nl) or carddata.get(nl.split(" // ")[0])
+                    if cd2 and not card_colors(cd2.get("colors", "")) <= cident:
+                        strays.append(disp[nl])
+                if strays:
+                    ident_s = "".join(sorted(cident)) or "C"
+                    problems.append(f"outside commander's color identity ({ident_s}): "
+                                    + ", ".join(strays[:8]) + (" …" if len(strays) > 8 else ""))
 
     return {"problems": problems, "unknown": unknown, "notes": notes,
             "total": total, "min_size": min_size, "copy_limit": copy_limit,
@@ -2664,7 +2734,7 @@ def cmd_legal(args):
     meta, cards = parse_deck_file(d["path"])
     fmt = (getattr(args, "fmt", None) or meta.get("format") or "").strip().lower()
 
-    rep = legality_report(meta, cards, fmt, load_legalities())
+    rep = legality_report(meta, cards, fmt, load_legalities(), carddata=load_card_data())
     problems, unknown, total, min_size = (rep["problems"], rep["unknown"],
                                           rep["total"], rep["min_size"])
 
@@ -2956,7 +3026,7 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta):
         if not found or have < req:
             short += 1
 
-    rep = legality_report(meta, cards, fmt, leg)
+    rep = legality_report(meta, cards, fmt, leg, carddata=carddata)
     n_illegal = len(rep["problems"])
 
     declared = _declared_colors(meta)
