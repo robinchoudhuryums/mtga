@@ -16,7 +16,7 @@
 # Nonland — changeling / type-matters core
 1 Diligent Zookeeper (TLA) 171
 1 Vizier of the Menagerie (FDN) 649
-1 Leyline of Transformation (DSK) 63
+1 The Goose Mother (WOE) 204
 1 Oko, Lorwyn Liege (ECL) 61
 1 Omni-Changeling (ECL) 62
 1 Mutable Explorer (ECL) 186
@@ -41,7 +41,7 @@
 1 Stalactite Dagger (ECL) 261
 1 Chronicle of Victory (ECL) 253
 1 Earth's Mightiest Heroes (MSH) 165
-1 Seismic Sense (TLA) 195
+1 Wan Shi Tong, Librarian (TLA) 78
 1 Enter the Enigma (DSK) 52
 
 # Nonland — interaction / protection (owned, added)
