@@ -153,11 +153,23 @@ MECHANIC_RULES = [
         r"whenever you gain life|(amount of )?life you gained|if you('ve| have)? gained", x)),
     ("card draw", lambda t, x: re.search(
         r"draw (a|two|three|four|five|six|seven|x|that many|\d+) cards?", x) is not None),
+    # Repeatable topdeck advantage — casting/playing off the top of your library is
+    # continuous extra cards, a value engine the earlier "selection" ("look at the top")
+    # rule alone under-read (Vizier of the Menagerie, Realmwalker, Bolas's Citadel,
+    # Oracle of Mul Daya, Future Sight).
+    ("card advantage", lambda t, x: "from the top of your library" in x
+        and ("cast" in x or "play" in x)),
     ("sacrifice", lambda t, x: "sacrifice" in x),
     ("tokens", lambda t, x: "create" in x and "token" in x),
     ("removal", lambda t, x: "destroy target" in x or "exile target" in x),
     ("burn", lambda t, x: re.search(r"deals? \d+ damage|deals x damage", x) is not None),
     ("ramp", lambda t, x: "search your library for a" in x and "land" in x),
+    # Color fixing — "spend mana of any type / as though it were any color" lets a deck
+    # cast off-color cards, a ramp-adjacent value that scales with a deck's color count
+    # (Vizier of the Menagerie, Fist of Suns, Jodah). Untagged before, so fixing engines
+    # read as pure "selection" and hid from ramp/multicolor decks in suggest/suggest-homes.
+    ("ramp", lambda t, x: "spend mana of any type" in x
+        or "as though it were mana of any color" in x),
     ("mana", lambda t, x: re.search(r"\{t\}: add", x) is not None),
     ("etb", lambda t, x: re.search(r"when [^.]*enters", x) is not None),
     ("landfall", lambda t, x: "landfall" in x or "whenever a land enters" in x),
