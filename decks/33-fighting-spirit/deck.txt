@@ -1,7 +1,7 @@
 #: name: Fighting Spirit
 #: format: Standard
 #: colors: UR
-#: tier: A — Izzet (UR) aggro-tempo. A-floor: interaction 6 on a coherent haste / double-strike / spell-payoff engine with a tight 2.44 curve (22 early drops) on a clean R-primary base. Real interaction — Heartfire sac-removal + Artistic Process + Impractical Joke, plus a soft counter suite (We Say Thee Nay, Redirect Lightning). Held out of any S conversation by two honest gaps: card advantage runs thin (measured 1; ~4 real via Enduring Curiosity / Null Group / loot / Clues, but the deck still dumps its hand and can flood out against removal-heavy control) and raw power sits below tuned Standard staples — this is a creative UB brew, and the premier upgrades (Slickshot Show-Off, Emberheart Challenger) are still unowned in flex. Low-end A / defensible B; re-grade toward S only after crafting the flex staples and proving it closes fast.
+#: tier: A — Izzet (UR) aggro-tempo. A-floor: interaction 6 on a coherent haste / double-strike / spell-payoff engine with a tight 2.44 curve (22 early drops) on a clean R-primary base. Real interaction — Heartfire sac-removal + Artistic Process + Impractical Joke, plus flexible interaction (We Say Thee Nay soft counter + Untimely Malfunction — redirect / can't-block / artifact). Held out of any S conversation by two honest gaps: card advantage runs thin (measured 1; ~4 real via Enduring Curiosity / Null Group / loot / Clues, but the deck still dumps its hand and can flood out against removal-heavy control) and raw power sits below tuned Standard staples — this is a creative UB brew, and the premier upgrades (Slickshot Show-Off, Emberheart Challenger) are still unowned in flex. Low-end A / defensible B; re-grade toward S only after crafting the flex staples and proving it closes fast.
 #: archetype: Izzet (UR) aggro-tempo — haste, double strike, pump, aggressive damage.
 #: notes: Trimmed 58-card brew to a legal 60 (22 creatures + 14 noncreature spells + 24
 #: notes: lands). R-primary / U-secondary: blue is a light splash (We Say Thee Nay counter +
@@ -43,7 +43,7 @@
 1 Felonious Rage (MKM) 125
 1 Impractical Joke (SOS) 119
 1 Jet's Brainwashing (TLA) 143
-1 Redirect Lightning (TLA) 151
+1 Untimely Malfunction (DSK) 161
 1 Haste Magic (FIN) 140
 1 Cunning Maneuver (TLA) 130
 1 We Say Thee Nay! (MSH) 82
@@ -68,3 +68,4 @@
 #~ +Malcolm, the Eyes | CRAFT (R): {U}{R} flying + haste; investigate on your 2nd spell each turn. Best same-slot upgrade over a marginal 2-drop — evasive pressure + a Clue every turn patches the thin card-advantage gap.
 #~ +Frostcliff Siege | CRAFT (R): {1}{U}{R} enchantment; choose Jeskai (creatures connect -> draw a card, a resilient card-advantage engine) or Temur (team +1/+0, trample, haste anthem). Highest value ceiling; bodiless 3-drop, choose mode per matchup.
 #~ +Pym Particles | OWNED alt (not a craft): {U} sorcery — cantrip that makes a creature unblockable + vigilance and draws a card; triggers spell payoffs. Considered over Felonious Rage / Cunning Maneuver but overlaps Jet's Brainwashing's push-through role, so held as a flex alt rather than maindecked.
+#~ +Catharsis | OWNED alt (spicy splash): {4}{R/W}{R/W} Elemental Incarnation, Evoke {R/W}{R/W} — pay the hybrids all-red. RR mode = "creatures you control get +1/+1 and gain haste" so evoke {R}{R} is a one-shot alpha-strike anthem (Boros-Charm-style). CAVEAT: only half the card works here (WW Kithkin-token mode is dead with no white), the 6-mana body is off-curve for aggro, and its W identity trips the castability △. Fun finisher, not a priority — Untimely Malfunction is the cleaner add.

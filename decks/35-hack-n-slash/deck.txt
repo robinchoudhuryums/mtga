@@ -1,0 +1,70 @@
+#: name: Hack n Slash
+#: format: Standard
+#: colors: GUR
+#: archetype: Temur (U/R/G) "connect-and-trigger" tempo — evasive threats trigger a pile of combat-damage payoffs, cheat threats ahead of curve (Michelangelo, Improviser), and close with any-target burn.
+#: notes: Route A — the focused Temur cut of the 5-color Hack n Slash pile (5c version kept as
+#: notes: the 35a variant). The real engine is ~15 "whenever ~ deals combat damage to a player"
+#: notes: payoffs (cheat / draw / burn / extra combat / copy), guaranteed by an evasion package
+#: notes: (unblockable / menace / can't-block) and closed with any-target damage. Cut the W/B
+#: notes: fringe (Absolute Virtue, Lightning Army of One, Lorehold, Karai, Storm, Ghost, Nashi,
+#: notes: Bullseye, Sawblade) for a clean 3-color base, plus the slowest cards (Dawnsire, Kitsune,
+#: notes: Worlds Within Worlds, Hidetsugu's, Redshift, Avatar Destiny). Top-end is still a touch
+#: notes: heavy (Krang/Bahamut/Dawning Archaic) — trim more toward the tempo plan if it clunks.
+
+# Cheat enablers + top-end payoffs (worth cheating)
+1 Michelangelo, Improviser (TMT) 119
+1 Krang, Utrom Warlord (TMT) 175
+1 Summon: Bahamut (FIN) 1
+1 The Dawning Archaic (SOS) 1
+1 The Legend of Kyoshi (TLA) 186
+
+# Connect creatures (combat-damage-to-player payoffs)
+1 Bruce Banner (MSH) 49
+1 Kaito, Cunning Infiltrator (FDN) 44
+1 Ty Lee, Artful Acrobat (TLA) 158
+1 Michelangelo, Mutant BFF (TMT) 120
+1 Electro, Assaulting Battery (SPM) 76
+1 Lightning, Security Sergeant (FIN) 560
+1 Eager Trufflesnout (FDN) 102
+1 The Thing, Ben Grimm (MSH) 190
+1 Bumi, Unleashed (TLA) 211
+1 Beast, Erudite Aerialist (MSH) 206
+1 Mistway Spy (MKM) 65
+1 Drake Hatcher (FDN) 35
+1 Mondo Gecko (TMT) 46
+1 Hawkeye, Master Marksman (MSH) 130
+1 Ashroot Animist (FDN) 117
+1 Giant Koi (TLA) 53
+
+# Engines / enchantments
+1 Impostor Syndrome (SPM) 34
+1 Gossip's Talent (BLB) 51
+1 Waterbender Ascension (TLA) 79
+1 Zimone's Experiment (SOS) 169
+1 Buster Sword (FIN) 255
+1 Goldvein Pick (FDN) 253
+
+# Push-through / evasion + burn spells
+1 Pym Particles (MSH) 70
+1 War Squeak (BLB) 160
+1 Untimely Malfunction (DSK) 161
+1 How to Start a Riot (TLA) 140
+1 Team Tactics (MSH) 155
+1 Biosynthic Burst (EOE) 173
+1 Blitzball Shot (FIN) 176
+1 Burst Lightning (SOA) 41
+1 Vibrant Outburst (SOS) 240
+
+# Lands (24) — Temur fixing
+1 Riverpyre Verge (DFT) 260
+1 Willowrush Verge (DFT) 270
+1 Thornspire Verge (DSK) 270
+1 Breeding Pool (EOE) 251
+1 Izzet Guildgate (FDN) 691
+1 Gruul Guildgate (FDN) 690
+1 Temple of Epiphany (FDN) 699
+1 Restless Ridgeline (LCI) 283
+1 Guadosalam, Farplane Gateway (FIN) 281
+5 Mountain (MSH) 294
+5 Island (MSH) 290
+5 Forest (MSH) 296

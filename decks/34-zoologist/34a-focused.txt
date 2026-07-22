@@ -1,5 +1,6 @@
 #: name: Zoologist — Focused (interaction build)
 #: format: Standard
+#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; metrics floor B (interaction ~8 counting bounces + real card advantage from Vizier/Goose Mother/Wan Shi Tong, under-read as 0). A single-payoff glass cannon (lives/dies on Zookeeper) defended by scaling removal (Bite Down/Rabid Bite) + bounce + Spell Pierce; held below A by that fragility and rainbow-singleton variance. Aspirational — 11 craft targets.
 #: colors: GU
 #: based-on: deck.txt
 #: archetype: 34 variant — the focused, resilient cut of Zoologist: trims the off-plan
