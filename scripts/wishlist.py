@@ -617,6 +617,18 @@ def _rank_scores(rows):
     fps, idf, spec_idf = _theme_model()
     status_map = _deck_status()
     deck_colors = _deck_colors_map()
+    # Rotation guard: join each craft target to the pool's Released date so a card whose
+    # Standard-legal set rotates this year or next is flagged ⚠rot — don't spend a
+    # wildcard on a card about to leave the format. Uses the shared deck.rotation_year
+    # primitive; empty (no flags) when the pool lacks the Released column.
+    pool_rot, _has_rel, _rot_soon_year = {}, False, None
+    try:
+        import deck as dk
+        import datetime
+        pool_rot, _has_rel = dk._pool_rotation_index()
+        _rot_soon_year = datetime.date.today().year + 1
+    except Exception:
+        pass
     out = []
     for r in rows:
         ccols = card_colors(r.get("Color(s)"))
@@ -674,6 +686,14 @@ def _rank_scores(rows):
                     dcols = deck_colors[t]
                     break
             land_val = _land_value(r, dcols)
+        # ⚠rot: flag a craft target whose Standard-legal set rotates this year or next.
+        rot, rot_year = False, None
+        if _rot_soon_year is not None:
+            nm = (r.get("Card Name") or "").strip().lower()
+            info = pool_rot.get(nm) or pool_rot.get(nm.split(" // ")[0])
+            if info and "standard" in info[1]:
+                rot_year = dk.rotation_year(info[0])
+                rot = rot_year is not None and rot_year <= _rot_soon_year
         out.append({
             "name": r.get("Card Name", ""), "rarity": (r.get("Rarity") or "").capitalize(),
             "target": target,
@@ -682,7 +702,7 @@ def _rank_scores(rows):
             "state": _status_label(target, status_map),
             "blank_power": not raw_power,
             "bad_power": bad_power, "raw_power": raw_power,
-            "land_val": land_val,
+            "land_val": land_val, "rot": rot, "rot_year": rot_year,
             "sig": "/".join(best_specific[:2]) or ("generic/no-theme" if conf == "review" else ""),
         })
     # Normalize fit (pri) to 0-10 and blend 50/50 with the hand-graded power
@@ -739,8 +759,9 @@ def cmd_rank(rows):
         wc = (s["rarity"] or "?")[:1] or "?"
         pw = f"{s['power']:>4.1f}" + ("?" if s["blank_power"] else "!" if s["bad_power"] else " ")
         use = f"{s['reuse']}★" if s["reuse"] >= 3 else str(s["reuse"])
+        sig = s["sig"][:22] + (f"  ⚠rot~{s['rot_year']}" if s.get("rot") else "")
         print(f"  {i:>3} {s['name'][:28]:28} {wc:3} {s['target']:6} {s['state']:6} "
-              f"{s['fitN']:>4.1f} {pw} {use:>3} {s['combined']:>5.1f}  {s['sig'][:28]}")
+              f"{s['fitN']:>4.1f} {pw} {use:>3} {s['combined']:>5.1f}  {sig}")
     print("\n" + "=" * 60)
     print("Wildcard cost by tier (you spend that rarity's wildcards):")
     for t in ("A", "B", "C"):
@@ -768,6 +789,14 @@ def cmd_rank(rows):
         print(f"⚠ {len(bad)} card(s) have a NON-NUMERIC Power (shown as 'pow!', scored 0.0): "
               f"{', '.join(f'{n} ({v!r})' for n, v in bad[:6])}"
               f"{' …' if len(bad) > 6 else ''}. Fix the cell to a 1–10 number.")
+    rot = [s for s in scored if s.get("rot")]
+    if rot:
+        # A wildcard on a card leaving Standard this year/next is poor value.
+        names = ", ".join(f"{s['name']} (~{s['rot_year']})" for s in rot[:6])
+        print(f"⚠ {len(rot)} craft target(s) are on a set ROTATING soon (⚠rot~YEAR) — a "
+              f"wildcard there won't last: {names}"
+              f"{' …' if len(rot) > 6 else ''}. Verify against the official schedule (a "
+              "reprint can read early).")
     if owned_skipped:
         print(f"({owned_skipped} already-owned card(s) excluded from the ranking — "
               "prune them with `--owned` / reconcile_crafts.py.)")

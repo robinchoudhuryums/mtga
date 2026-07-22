@@ -1701,6 +1701,17 @@ def rotation_risk(released, years=3):
         return False
 
 
+def rotation_year(released, years=3):
+    """The year a set rotates out of Standard — its release year + `years` (Standard's
+    ~3-year window) — or None if the date is blank/unparseable. The single primitive
+    behind both `rotation_sweep` and the wishlist ⚠rot flag, so 'when does this rotate'
+    is computed one way everywhere."""
+    try:
+        return int((released or "")[:4]) + years
+    except (ValueError, TypeError):
+        return None
+
+
 def _pool_rotation_index():
     """name_lower (full AND DFC front) -> (released, {legalities}, set_code) from the pool.
     Returns (index, has_released). `has_released` is False for a pool built before the
@@ -1767,9 +1778,8 @@ def rotation_sweep(fmt="standard", years=3, within=2):
             released, legals, setc = info
             if fmt and legals and fmt not in legals:
                 continue  # not legal in this format anyway — it can't "rotate out" of it
-            try:
-                rotates = int(released[:4]) + years
-            except (ValueError, TypeError):
+            rotates = rotation_year(released, years)
+            if rotates is None:
                 continue  # no usable release date — can't place it on the timeline
             if rotates > this_year + within:
                 continue  # not rotating within the horizon
@@ -3801,39 +3811,81 @@ def deck_recent_card_delta(path):
     its previous committed version (printing- and case-fungible via `_multiset`). None
     when there's no prior version (a brand-new deck) or git is unavailable — so the
     'recently edited' panel can show WHAT changed, not just when."""
-    import subprocess
-    import tempfile
     rel = os.path.relpath(path, REPO_ROOT)
-    try:
-        r = subprocess.run(["git", "log", "--follow", "--format=%H", "--", rel],
-                           capture_output=True, text=True, cwd=REPO_ROOT)
-    except Exception:
-        return None
-    if r.returncode != 0:
-        return None
-    hashes = [h for h in r.stdout.split() if h]
+    hashes = _deck_commit_hashes(rel)
     if len(hashes) < 2:
         return None  # no prior committed version to diff against
-    prev = hashes[1]
-    pr = subprocess.run(["git", "show", f"{prev}:{rel}"], capture_output=True, text=True,
-                        cwd=REPO_ROOT)
-    if pr.returncode != 0:
+    prev_ms = _deck_ms_at_ref(rel, hashes[1])
+    if prev_ms is None:
+        return None
+    added, removed = _ms_delta(prev_ms, _multiset(parse_deck_file(path)[1]))
+    return {"added": added, "removed": removed, "prev": hashes[1][:9]}
+
+
+def _deck_commit_hashes(rel, before=None):
+    """Full commit hashes touching a deck file, newest first; with `before` (an ISO
+    date) only those at/before it. [] on any git failure. Shared by the card-delta
+    helpers so the git plumbing lives in one place."""
+    import subprocess
+    args = ["git", "log", "--follow", "--format=%H"]
+    if before:
+        args.append(f"--before={before}")
+    args += ["--", rel]
+    try:
+        r = subprocess.run(args, capture_output=True, text=True, cwd=REPO_ROOT)
+    except Exception:
+        return []
+    return [h for h in r.stdout.split() if h] if r.returncode == 0 else []
+
+
+def _deck_ms_at_ref(rel, ref):
+    """The card multiset of a deck file AS OF a git ref, or None on failure."""
+    import subprocess
+    import tempfile
+    r = subprocess.run(["git", "show", f"{ref}:{rel}"], capture_output=True, text=True,
+                       cwd=REPO_ROOT)
+    if r.returncode != 0:
         return None
     fd, tmp = tempfile.mkstemp(suffix=".txt")
     try:
         with os.fdopen(fd, "w", encoding="utf-8") as fh:
-            fh.write(pr.stdout)
-        prev_ms = _multiset(parse_deck_file(tmp)[1])
+            fh.write(r.stdout)
+        return _multiset(parse_deck_file(tmp)[1])
     except Exception:
         return None
     finally:
         os.remove(tmp)
-    cur_ms = _multiset(parse_deck_file(path)[1])
+
+
+def _ms_delta(prev_ms, cur_ms):
+    """(added, removed) as sorted [(display, qty)] between two card multisets."""
     added = sorted((disp, q - prev_ms.get(nl, (disp, 0))[1])
                    for nl, (disp, q) in cur_ms.items() if q > prev_ms.get(nl, (disp, 0))[1])
     removed = sorted((disp, q - cur_ms.get(nl, (disp, 0))[1])
                      for nl, (disp, q) in prev_ms.items() if q > cur_ms.get(nl, (disp, 0))[1])
-    return {"added": added, "removed": removed, "prev": prev[:9]}
+    return added, removed
+
+
+def deck_card_delta_since(path, since):
+    """Cumulative card-level delta between a deck's current list and its state AS OF an
+    ISO date `since` — {added, removed, base, base_date} or None when there's no
+    committed version at/before that date or git is unavailable. 'What have I NET-changed
+    since date X (and still need to push to Arena)', vs `deck_recent_card_delta`'s single
+    most-recent edit. Printing/case-fungible via `_multiset`."""
+    import subprocess
+    rel = os.path.relpath(path, REPO_ROOT)
+    hashes = _deck_commit_hashes(rel, before=since)
+    if not hashes:
+        return None  # deck had no committed version at/before that date
+    base = hashes[0]
+    base_ms = _deck_ms_at_ref(rel, base)
+    if base_ms is None:
+        return None
+    added, removed = _ms_delta(base_ms, _multiset(parse_deck_file(path)[1]))
+    bd = subprocess.run(["git", "show", "-s", "--format=%ad", "--date=short", base],
+                        capture_output=True, text=True, cwd=REPO_ROOT)
+    return {"added": added, "removed": removed, "base": base[:9],
+            "base_date": bd.stdout.strip() if bd.returncode == 0 else ""}
 
 
 def cmd_history(args):
@@ -3847,10 +3899,28 @@ def cmd_history(args):
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
     rel = os.path.relpath(d["path"], REPO_ROOT)
+    since = getattr(args, "since", None)
     hist = deck_git_history(d["path"])
-    print(f"History — deck {d['id']}: {d['name'] or rel}  ({len(hist)} commit(s))")
+    if since:
+        hist = [h for h in hist if h["date"] >= since]
+    scope = f" since {since}" if since else ""
+    print(f"History — deck {d['id']}: {d['name'] or rel}{scope}  ({len(hist)} commit(s))")
     for h in hist:
         print(f"  {h['hash']}  {h['date']}  {h['subject']}")
+    if since:
+        # The cumulative card-level net change since that date — 'what do I still need to
+        # push to Arena', printing/case-fungible.
+        delta = deck_card_delta_since(d["path"], since)
+        if delta and (delta["added"] or delta["removed"]):
+            print(f"\n  Net card change since {delta['base_date'] or since} "
+                  f"(base {delta['base']}):")
+            for nm, q in delta["added"]:
+                print(f"    + {q}× {nm}")
+            for nm, q in delta["removed"]:
+                print(f"    − {q}× {nm}")
+        elif delta:
+            print(f"\n  No net card change since {delta['base_date'] or since} "
+                  "(edits may have cancelled out, or only metadata changed).")
     if hist:
         print(f"\n  full text of any version:   git show <hash>:{rel}"
               f"\n  compare a version's metrics: deck.py quality {d['id']} --at <hash>")
@@ -4080,6 +4150,9 @@ def main():
     p.add_argument("--strict", action="store_true", help="exit non-zero on any regression/weak-add (default: warn only)")
     p = sub.add_parser("history", help="show a deck file's git change history (its changelog)")
     p.add_argument("id")
+    p.add_argument("--since", metavar="YYYY-MM-DD",
+                   help="only commits on/after this date, plus the cumulative card-level "
+                        "net change since then (what you still need to push to Arena)")
     p = sub.add_parser("tier", help="check a deck's claimed tier against its measurable quality floor")
     p.add_argument("id")
     p.add_argument("--strict", action="store_true", help="exit non-zero on a tier mismatch (default: warn only)")
