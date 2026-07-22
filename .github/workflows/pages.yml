@@ -30,6 +30,12 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        # Full history (not a shallow clone) so build_dashboard.py can read each deck
+        # file's git log for the "Recently edited" panel (last-edit date + changelog +
+        # the most-recent card-level delta). A depth-1 checkout would date every deck to
+        # the latest push.
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"

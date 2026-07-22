@@ -187,6 +187,15 @@ def collect():
     leg = deckmod.load_legalities()
     cmeta = deckmod.load_card_meta()
 
+    # "Since date X" windows for the recently-edited panel — cumulative net card change
+    # over the last 7 / 30 days, computed at build time from git (the static page can't
+    # run git, so a few windows are precomputed and toggled client-side; the CLI
+    # `deck.py history <id> --since <date>` covers arbitrary dates).
+    import datetime
+    _today = datetime.date.today()
+    _win = {"7": (_today - datetime.timedelta(days=7)).isoformat(),
+            "30": (_today - datetime.timedelta(days=30)).isoformat()}
+
     decks, buildable = [], 0
     for d in deckmod.discover_decks():
         meta, cards = deckmod.parse_deck_file(d["path"])
@@ -235,6 +244,18 @@ def collect():
             # quantities summed, printings/basics fungible), so the browser diff and
             # the CLI can't disagree. Stored as {name_lower: [display, qty]}.
             "cards": {nl: [disp, q] for nl, (disp, q) in deckmod._multiset(cards).items()},
+            # "Recently edited" panel — the repo→Arena sync direction (which decks I've
+            # changed and need to re-import), the mirror of the paste-based stale-deck
+            # compare (Arena→repo). All from git via the SAME helpers deck.py history
+            # uses: last_edited + recent commit subjects (the changelog), and the
+            # card-level delta of the most recent edit. Empty/None when git history is
+            # unavailable (e.g. a shallow CI checkout — pages.yml sets fetch-depth: 0).
+            "last_edited": (hist[0]["date"] if (hist := deckmod.deck_git_history(d["path"], limit=6)) else None),
+            "recent_changes": [{"date": h["date"], "subject": h["subject"]} for h in hist[:5]],
+            "recent_delta": deckmod.deck_recent_card_delta(d["path"]),
+            # cumulative net change over each window (for the panel's "since" toggle)
+            "delta_windows": {k: deckmod.deck_card_delta_since(d["path"], since)
+                              for k, since in _win.items()},
         })
 
     # Wishlist wildcard-priority tiers (structured, from the real _rank_scores).
@@ -250,6 +271,23 @@ def collect():
     except Exception as e:
         eprint(f"WARN: wishlist ranking unavailable ({e})")
 
+    # Rotation exposure — what rotates next and which decks it hits (serialized from
+    # deckmod.rotation_sweep; the rollup's sets become counts for JSON). Degrades to
+    # available:False when the pool lacks the Released column.
+    try:
+        rdecks, rrollup, rmeta = deckmod.rotation_sweep("standard", years=3, within=2)
+        rotation = {
+            "available": bool(rmeta["has_released"]),
+            "this_year": rmeta["this_year"], "within": rmeta["within"],
+            "by_year": [{"year": y, "slots": rrollup[y]["slots"],
+                         "cards": len(rrollup[y]["cards"]), "decks": len(rrollup[y]["decks"])}
+                        for y in sorted(rrollup)],
+            "by_deck": [{"id": d["id"], "name": d["name"], "n": d["n_slots"], "cards": d["atrisk"]}
+                        for d in rdecks if d["n_slots"]],
+        }
+    except Exception as e:
+        rotation = {"available": False, "error": str(e)}
+
     return {
         "generated": time.strftime("%Y-%m-%d %H:%M"),
         "totals": {"printings": len(rows), "decks": len(decks), "buildable": buildable},
@@ -257,6 +295,7 @@ def collect():
         "decks": decks,
         "wishlist": tiers,
         "wishlist_rollup": rollup,
+        "rotation": rotation,
     }
 
 
@@ -562,6 +601,28 @@ TEMPLATE = r"""<!DOCTYPE html>
   .stalecard h4 { margin:0 0 4px; font-size:14px; color:var(--ink-bright); }
   .stalecard .sub2 { font-size:12px; color:var(--ink2); margin-bottom:6px; }
   .stale-sync { color:#4bbd83; font-weight:600; } .stale-drift { color:#c68b18; font-weight:600; } .stale-nomatch { color:#dd6a4d; font-weight:600; }
+  /* recently-edited panel */
+  .recdelta { display:flex; flex-wrap:wrap; gap:5px; margin:5px 0 8px; }
+  .recdelta span { font-size:11.5px; font-weight:600; padding:1px 8px; border-radius:999px; font-family:var(--font-mono); }
+  .radd { color:var(--ok); background:rgba(75,189,131,.12); }
+  .rrem { color:var(--bad); background:rgba(221,106,77,.12); }
+  .reclog { margin:2px 0 9px; padding:0; list-style:none; }
+  .reclog li { font-size:12px; color:var(--ink2); padding:1px 0; }
+  .reclog .recdate { color:var(--ink3); font-family:var(--font-mono); font-size:11px; margin-right:7px; }
+  .winseg { display:inline-flex; border:1px solid var(--line2); border-radius:8px; overflow:hidden; margin:0 0 13px; }
+  .winseg span { font-size:11px; font-weight:600; padding:4px 11px; cursor:pointer; color:var(--ink2); background:var(--fill2); border-left:1px solid var(--line2); }
+  .winseg span:first-child { border-left:0; } .winseg span.on { background:var(--accent-bg); color:var(--accent-ink); }
+  /* rotation panel */
+  .rotyear { display:flex; flex-wrap:wrap; gap:8px; margin:4px 0 15px; }
+  .rotyearchip { border:1px solid var(--line2); border-radius:10px; padding:7px 13px; background:var(--fill2); font-size:12px; color:var(--ink2); }
+  .rotyearchip b { font-size:15px; color:var(--ink-bright); font-family:var(--font-mono); margin-right:6px; }
+  .rotyearchip.soon { border-color:var(--warn); color:var(--warn); } .rotyearchip.soon b { color:var(--warn); }
+  .rotdeck { border:1px solid var(--line); border-radius:10px; padding:8px 14px; margin:8px 0; background:linear-gradient(180deg,var(--elev),var(--elev2)); }
+  .rotdeck h4 { margin:0 0 6px; font-size:13.5px; color:var(--ink-bright); }
+  .rotcards { display:flex; flex-wrap:wrap; gap:5px; }
+  .rotcards span { font-size:11px; font-family:var(--font-mono); color:var(--ink2); background:var(--fill); border-radius:999px; padding:1px 8px; }
+  .rotcards span.soon { color:var(--warn); }
+  .rotwl { color:var(--warn); font-weight:700; font-size:10.5px; font-family:var(--font-mono); }
   .difflist { font-family:var(--font-mono); font-size:12px; margin:6px 0 0; }
   .diffadd { color:#4bbd83; } .diffrem { color:#dd6a4d; }
   .staletot { font-size:13px; margin:2px 0 10px; }
@@ -672,12 +733,24 @@ TEMPLATE = r"""<!DOCTYPE html>
     <p class="auditnote" id="auditnote"></p>
   </section>
 
+  <section id="sec-recent">
+    <h2 class="sec"><span class="tick"></span>Recently edited decks — push your repo changes back to Arena</h2>
+    <p class="auditnote">The decks you've changed most recently in the repo (from git history), newest first — the <b>repo&nbsp;&rarr;&nbsp;Arena</b> direction. After editing a list here, copy its Arena import block and re-import it in the app so the two stay in sync. The mirror of the stale-deck check below (Arena&nbsp;&rarr;&nbsp;repo). Shows the card-level change of the most recent edit plus the commit changelog.</p>
+    <div id="recentout"></div>
+  </section>
+
   <section id="sec-stale">
     <h2 class="sec"><span class="tick"></span>Check for stale decks — paste your Arena export(s)</h2>
     <p class="auditnote" id="stalenote">Paste one deck's Arena export to see if it drifted from the stored list, or paste several <code>Deck</code> blocks at once for a roster staleness report. Each block is auto-matched to its closest stored deck (variants included) — Arena exports don't carry a deck name. Compared by card name + quantity; printings and basic-land art are treated as the same card (same rules as <code>deck.py verify</code>). Nothing is uploaded — the compare runs entirely in your browser.</p>
     <textarea id="staletext" class="staletext" placeholder="Deck&#10;1 Y'shtola Rhul (FIN) 86&#10;…"></textarea>
     <div class="staleactions"><button class="cta" id="stalego">Compare</button><button class="ghostbtn" id="staleclear">Clear</button></div>
     <div id="staleout"></div>
+  </section>
+
+  <section id="sec-rotation">
+    <h2 class="sec"><span class="tick"></span>Standard rotation — what rotates next, and which decks it hits</h2>
+    <p class="auditnote">Cards in your Standard decks whose set is closest to rotating out (release year + ~3). A wildcard on a soon-rotating card won't last — this is <code>deck.py rotation</code> on the dashboard. Timing is a heuristic from set release (the pool keys one printing per card, so a reprint can read early) — verify against the official schedule before disenchanting.</p>
+    <div id="rotationout"></div>
   </section>
 
   <section id="sec-decks">
@@ -1150,6 +1223,97 @@ $('viewCompact').onclick = () => { STATE.viewMode = 'compact'; persist(); $('vie
 $('copyall').onclick = () => { const list = filteredDecks(); const text = list.map(d => '// #' + d.id + ' ' + d.name + '\n' + ((d.detail&&d.detail.arena)||'')).join('\n\n'); writeClip(text, () => toast(list.length + ' deck imports copied')); };
 renderDecks();
 
+// ---------- recently edited (repo -> Arena sync) ----------
+function relDays(dateStr){
+  if (!dateStr) return '';
+  const then = new Date(dateStr + 'T00:00:00').getTime();
+  if (isNaN(then)) return dateStr;
+  const days = Math.floor((Date.now() - then) / 86400000);
+  if (days <= 0) return 'today';
+  if (days === 1) return 'yesterday';
+  if (days < 30) return days + 'd ago';
+  if (days < 365) return Math.floor(days / 30) + 'mo ago';
+  return Math.floor(days / 365) + 'y ago';
+}
+function deltaOf(d, win){ return win === 'last' ? d.recent_delta : ((d.delta_windows||{})[win] || null); }
+function renderRecent(){
+  const host = $('recentout'); if (!host) return; host.innerHTML = '';
+  const TCLS = {S:'t-s', A:'t-a', B:'t-b', C:'t-c', D:'t-d'};
+  const list = D.decks.filter(d => d.last_edited).slice()
+    .sort((a,b) => (b.last_edited||'').localeCompare(a.last_edited||'') || (a.id < b.id ? -1 : 1));
+  if (!list.length){ host.appendChild(el('p','auditnote','No git edit history in this build — a shallow checkout hides edit dates (the deployed page uses fetch-depth: 0).')); return; }
+  const win = STATE.recentWin || 'last';
+  const seg = el('div','winseg');
+  [['last','last edit'],['7','net · 7d'],['30','net · 30d']].forEach(([k,label]) => {
+    const s = el('span', k===win?'on':null, label);
+    s.onclick = () => { STATE.recentWin = k; renderRecent(); };
+    seg.appendChild(s);
+  });
+  host.appendChild(seg);
+  const shown = STATE.recentAll ? list : list.slice(0, 15);
+  shown.forEach(d => {
+    const card = el('div','stalecard');
+    const h = el('h4'); h.innerHTML = esc(d.name) + ' <span class="id">#' + esc(d.id) + '</span>';
+    const tier = d.audit && d.audit.tier;
+    if (tier && TCLS[tier]) h.insertAdjacentHTML('beforeend', ' <span class="tierpill ' + TCLS[tier] + '">' + tier + '</span>');
+    card.appendChild(h);
+    const dl = deltaOf(d, win);
+    const cap = win === 'last'
+      ? ('edited ' + relDays(d.last_edited) + ' · ' + d.last_edited)
+      : ('net change since ' + ((dl && dl.base_date) || (win + 'd ago')));
+    card.appendChild(el('div','sub2', cap));
+    if (dl && (((dl.added||[]).length) || ((dl.removed||[]).length))){
+      const dv = el('div','recdelta');
+      (dl.added||[]).forEach(a => dv.appendChild(el('span','radd', '+' + (a[1] > 1 ? a[1] + '× ' : '') + a[0])));
+      (dl.removed||[]).forEach(a => dv.appendChild(el('span','rrem', '−' + (a[1] > 1 ? a[1] + '× ' : '') + a[0])));
+      card.appendChild(dv);
+    } else if (win !== 'last'){
+      card.appendChild(el('div','sub2', dl ? 'no net change in this window' : 'created within this window — entirely new'));
+    }
+    if (d.recent_changes && d.recent_changes.length){
+      const ul = el('ul','reclog');
+      d.recent_changes.forEach(c => { const li = el('li'); li.innerHTML = '<span class="recdate">' + esc(c.date) + '</span>' + esc(c.subject); ul.appendChild(li); });
+      card.appendChild(ul);
+    }
+    const bar = el('div','staleactions');
+    const imp = el('button','cta','⧉ Copy Arena import');
+    imp.onclick = () => writeClip((d.detail && d.detail.arena) || '', () => toast('#' + d.id + ' import copied — paste into Arena'));
+    bar.appendChild(imp);
+    card.appendChild(bar);
+    host.appendChild(card);
+  });
+  if (list.length > 15){
+    const t = el('button','ghostbtn', STATE.recentAll ? '▴ show top 15' : '▾ show all ' + list.length);
+    t.onclick = () => { STATE.recentAll = !STATE.recentAll; renderRecent(); };
+    host.appendChild(t);
+  }
+}
+function renderRotation(){
+  const host = $('rotationout'); if (!host) return; host.innerHTML = '';
+  const R = D.rotation || {available:false};
+  if (!R.available){ host.appendChild(el('p','auditnote','Rotation dates unavailable — rebuild the pool (build_pool.py --all) so card-pool.csv carries the Released column.')); return; }
+  if (!R.by_deck || !R.by_deck.length){ host.appendChild(el('p','auditnote','No cards rotating within the next ' + (R.within||2) + ' year(s). ✓')); return; }
+  const soonYear = (R.this_year || 0) + 1;
+  const yr = el('div','rotyear');
+  (R.by_year||[]).forEach(b => {
+    const chip = el('div','rotyearchip' + (b.year <= soonYear ? ' soon' : ''));
+    chip.appendChild(el('b', null, '~' + b.year));
+    chip.appendChild(document.createTextNode(b.slots + ' slots · ' + b.cards + ' cards · ' + b.decks + ' decks' + (b.year <= soonYear ? ' ⚠' : '')));
+    yr.appendChild(chip);
+  });
+  host.appendChild(yr);
+  R.by_deck.forEach(d => {
+    const card = el('div','rotdeck');
+    card.appendChild(el('h4', null, d.name + '  #' + d.id + '  ·  ' + d.n + ' rotating'));
+    const cc = el('div','rotcards');
+    d.cards.forEach(c => cc.appendChild(el('span', c.rotates <= soonYear ? 'soon' : null,
+      '~' + c.rotates + ' ' + (c.qty > 1 ? c.qty + '× ' : '') + c.name)));
+    card.appendChild(cc);
+    host.appendChild(card);
+  });
+}
+renderRecent(); renderRotation();
+
 // ---------- leverage ----------
 (function(){
   const map = {};
@@ -1193,7 +1357,7 @@ function renderWishlist(){
     hdr.innerHTML = '<h3><span class="tierdot" style="background:' + TIERDOT[tier] + ';box-shadow:0 0 8px ' + TIERDOT[tier] + '"></span>' + WL_LABELS[tier] + '</h3><span class="roll">' + rows.length + ' cards · ' + esc(rollStr(D.wishlist_rollup[tier])) + '</span>';
     host.appendChild(hdr);
     const cols = [
-      {key:'name', label:'Card', node:r => { const s = el('span'); const nm = el('span','wlname', r.name); nm.onclick = () => { STATE.impactCard = STATE.impactCard===r.name ? '' : r.name; renderDecks(); const sec = $('sec-decks'); if (sec) window.scrollTo({top:sec.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); }; attachHover(nm, r.name); s.appendChild(nm); s.appendChild(document.createTextNode(' ')); const a = el('a','scry','↗'); a.href = scryUrl(r.name); a.target='_blank'; a.rel='noopener'; s.appendChild(a); return s; }},
+      {key:'name', label:'Card', node:r => { const s = el('span'); const nm = el('span','wlname', r.name); nm.onclick = () => { STATE.impactCard = STATE.impactCard===r.name ? '' : r.name; renderDecks(); const sec = $('sec-decks'); if (sec) window.scrollTo({top:sec.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); }; attachHover(nm, r.name); s.appendChild(nm); s.appendChild(document.createTextNode(' ')); const a = el('a','scry','↗'); a.href = scryUrl(r.name); a.target='_blank'; a.rel='noopener'; s.appendChild(a); if (r.rot){ s.appendChild(document.createTextNode(' ')); const w = el('span','rotwl','⚠rot~'+r.rot_year); w.title = 'Set rotates ~'+r.rot_year+' — a wildcard here won\'t last long'; s.appendChild(w); } return s; }},
       {key:'_rank', label:'WC', num:true, node:r => wcPill(r.rarity)},
       {key:'target', label:'Target', cls:'tg', get:r => r.target},
       {key:'reuse', label:'reuse', num:true, cls:'re', get:r => r.reuse},
@@ -1287,7 +1451,7 @@ function modalDeckObj(id){ return D.decks.find(d => d.id === id); }
 function openModal(id){ STATE.modalDeck = id; renderOverlays(); }
 function closeModal(){ STATE.modalDeck = ''; renderOverlays(); }
 function printDeck(d){
-  const escp = t => (t||'').replace(/</g,'&lt;');
+  const escp = t => (t||'').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
   const rows = (d.craft||[]).map(c => '<tr><td>' + escp(c.name) + '</td><td>' + c.rarity + '</td><td>' + (c.decks||0) + '</td><td>' + escp((c.matches||[]).join(', ')) + '</td></tr>').join('');
   const css = 'body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#111;margin:32px;max-width:640px}h1{font-size:20px;margin:0 0 2px}.sub{color:#666;font-size:13px;margin-bottom:18px}table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 22px}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid #ddd}th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#666}pre{background:#f4f4f6;padding:12px;border-radius:8px;font-size:12px;white-space:pre-wrap}h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#666;margin:20px 0 6px}';
   const table = rows ? '<table><thead><tr><th>Card</th><th>WC</th><th>reuse</th><th>matches</th></tr></thead><tbody>' + rows + '</tbody></table>' : '<p>No craft picks.</p>';
@@ -1333,7 +1497,9 @@ function paletteItems(){
     {title:'Wildcard priority', sub:'wishlist', tag:'§', act:() => jumpTo('sec-wishlist')},
     {title:'Craft plan', sub:'whole roster', tag:'§', act:() => jumpTo('sec-plan')},
     {title:'Crafting leverage', sub:'most-shared cards', tag:'§', act:() => jumpTo('sec-leverage')},
-    {title:'Roster triage', sub:'which decks need a tune', tag:'§', act:() => jumpTo('sec-triage')} ];
+    {title:'Roster triage', sub:'which decks need a tune', tag:'§', act:() => jumpTo('sec-triage')},
+    {title:'Recently edited', sub:'push repo changes to Arena', tag:'§', act:() => jumpTo('sec-recent')},
+    {title:'Standard rotation', sub:'what rotates next', tag:'§', act:() => jumpTo('sec-rotation')} ];
   const decks = D.decks.map(d => ({title:d.name + '  #' + d.id, sub:(d.format?d.format+' · ':'') + (d.colors||'—') + ' · ' + (d.buildable?'buildable':(d.wc||'')), tag:'deck', act:() => { STATE.open[d.id] = true; persist(); renderDecks(); setTimeout(() => { const e2 = $('deck-'+d.id); if (e2) window.scrollTo({top:e2.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); }, 40); }}));
   let items = secs.concat(decks);
   if (q) items = items.filter(it => (it.title + ' ' + it.sub).toLowerCase().includes(q));
@@ -1433,6 +1599,23 @@ def main():
     t = payload["totals"]
     print(f"Wrote {args.out}: {t['decks']} decks ({t['buildable']} buildable), "
           f"{t['printings']} printings.")
+
+    # Aggregate self-check (audit A6): per-deck analysis errors are tolerated — one
+    # bad card must not fail the whole build (that's why _capture swallows them) — but
+    # a WHOLESALE failure (analysis erroring for a majority of decks, i.e. a real
+    # deck.py cmd_* regression) must NOT deploy as a green success. Mirror
+    # build_gallery.py: the file is still written for inspection, but say so plainly
+    # and exit non-zero so CI/Pages doesn't publish a page of "[analysis error]" panels.
+    MARK = "[analysis error"
+    err_decks = [d["id"] for d in payload["decks"]
+                 if any(MARK in (d.get("detail", {}).get(k) or "")
+                        for k in ("legal", "cuts", "arena"))]
+    ndecks = len(payload["decks"])
+    if ndecks and len(err_decks) * 2 >= ndecks:
+        eprint(f"WARN:  deck analysis failed for {len(err_decks)}/{ndecks} decks "
+               f"(e.g. {', '.join(err_decks[:6])}) — a deck.py command likely regressed. "
+               f"The dashboard was written but is DEGRADED; refusing to report success.")
+        return 1
     return 0
 
 

@@ -38,10 +38,11 @@ Set a card's Target/Note by editing card-wishlist.csv directly (it's a plain CSV
 
 import argparse
 import csv
+import math
 import os
 import sys
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty, card_colors
 from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
@@ -443,7 +444,7 @@ def cmd_suggest_targets(rows, write=False, overwrite=False):
     print(f"  {'Card':30} {'Conf':6} {'Target':9} Signal")
     print("  " + "-" * 84)
     for r in rows:
-        ccols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+        ccols = card_colors(r.get("Color(s)"))
         ctags = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
         fits = []
         for did, dcols, central, twn in fps:
@@ -498,10 +499,13 @@ def _deck_colors_map():
     """deck_id(lower) -> declared color set, for land manabase scoring."""
     try:
         import deck as dk
-        return {d["id"].lower(): {c for c in (d["meta"].get("colors") or "").upper()
-                                  if c in "WUBRG"}
+        return {d["id"].lower(): card_colors(d["meta"].get("colors"))
                 for d in dk.discover_decks()}
-    except Exception:
+    except Exception as e:
+        # Degrade (lands score neutral) but don't do it silently — a broken deck load
+        # would quietly drop the land manabase axis from --rank (audit A14).
+        eprint(f"WARN:  deck colors unavailable for land manabase scoring "
+               f"({type(e).__name__}: {e}); lands will score neutral.")
         return {}
 
 
@@ -516,7 +520,7 @@ def _land_value(row, deck_colors):
     require the deck to span >=2 of the land's colors for a dual to matter, and
     prize untapped fixing. Colorless/utility or unknown-deck lands score neutral."""
     txt = (row.get("Card Text") or "")
-    prod = {c for c in (row.get("Color(s)") or "").upper() if c in "WUBRG"}
+    prod = card_colors(row.get("Color(s)"))
     for c in "WUBRG":
         if "{" + c + "}" in txt:
             prod.add(c)
@@ -541,7 +545,10 @@ def _deck_status():
     """
     try:
         import deck as dk
-    except Exception:
+    except Exception as e:
+        # Degrade (the --rank 'state' column blanks out) but surface it (audit A14).
+        eprint(f"WARN:  deck build-state unavailable ({type(e).__name__}: {e}); "
+               "the --rank 'state' column will be blank.")
         return {}
     _bk, _bn, by_name_qty = dk.load_collection()
     out = {}
@@ -574,14 +581,35 @@ def _status_label(target, status_map):
     return f"{tier}·{rem}{star}"
 
 
+# Cross-deck reuse (breadth) as an explicit, BOUNDED contributor to the combined
+# value-per-wildcard score: a craft that fits several of your decks is worth more per
+# wildcard than a one-deck sidegrade ("craft this — it helps 4 decks"). Bounded so
+# breadth NUDGES the ranking without ever overriding a real fit+power gap — the same
+# discipline check_suggest applies to its co-signals. Guarded by check_rankings.
+_REUSE_BONUS_W = 0.6      # per EXTRA deck the card fits (beyond the first)
+_REUSE_BONUS_CAP = 1.8    # capped (~a 4-home card) — small next to the 0–10 fit+power blend
+
+
+def _reuse_bonus(reuse):
+    """Bounded breadth bonus added to `combined`: 0 for a 0/1-home card, non-decreasing
+    in `reuse`, capped at _REUSE_BONUS_CAP."""
+    try:
+        r = int(reuse)
+    except (TypeError, ValueError):
+        return 0.0
+    return round(min(_REUSE_BONUS_CAP, _REUSE_BONUS_W * max(0, r - 1)), 2)
+
+
 def _rank_scores(rows):
     """Score every wishlist card for wildcard-spend priority. Reuses the idf theme
     model (so it stays consistent with --suggest-targets):
 
-      fit    – idf-weighted theme fit to the card's best-matching deck.
+      fit    – idf-weighted theme fit to the card's best-matching deck (→ pri, fitN).
       reuse  – # decks the card is castable in AND shares a SPECIFIC (idf-signal)
-               theme with — real cross-deck breadth, not generic overlap.
-      pri    – fit + 0.6 * max(0, reuse - 1)   (home-run fit + a breadth bonus).
+               theme with — real cross-deck breadth, not generic overlap. A FIRST-CLASS
+               axis: it adds a bounded `_reuse_bonus` directly to `combined`, so a
+               multi-home craft outranks an equal fit+power one-deck sidegrade.
+      pri    – the home-run single-deck fit (breadth now lives in combined, not here).
 
     Tiers: A = confident theme home (fit>=1.5 on a specific theme) OR breadth>=3;
     B = a specific-theme fit / castable-on-theme in >=1 deck; C = generic/none.
@@ -589,9 +617,21 @@ def _rank_scores(rows):
     fps, idf, spec_idf = _theme_model()
     status_map = _deck_status()
     deck_colors = _deck_colors_map()
+    # Rotation guard: join each craft target to the pool's Released date so a card whose
+    # Standard-legal set rotates this year or next is flagged ⚠rot — don't spend a
+    # wildcard on a card about to leave the format. Uses the shared deck.rotation_year
+    # primitive; empty (no flags) when the pool lacks the Released column.
+    pool_rot, _has_rel, _rot_soon_year = {}, False, None
+    try:
+        import deck as dk
+        import datetime
+        pool_rot, _has_rel = dk._pool_rotation_index()
+        _rot_soon_year = datetime.date.today().year + 1
+    except Exception:
+        pass
     out = []
     for r in rows:
-        ccols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+        ccols = card_colors(r.get("Color(s)"))
         ctags = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
         best, best_specific, reuse = 0.0, [], 0
         for did, dcols, central, twn in fps:
@@ -614,13 +654,21 @@ def _rank_scores(rows):
             conf = "ok"
         else:
             conf = "review"
-        pri = best + 0.6 * max(0, reuse - 1)
+        # pri is the home-run single-deck fit; breadth is applied as a bounded bonus to
+        # `combined` below (was `best + 0.6*(reuse-1)` — moved out so fit and breadth are
+        # separate, legible axes and reuse can't be double-counted).
+        pri = best
         tier = "A" if (conf == "STRONG" or reuse >= 3) else \
                "B" if (best_specific or reuse >= 1) else "C"
         raw_power = (r.get("Power") or "").strip()
         try:
             power = float(raw_power) if raw_power else 0.0
             bad_power = False
+            # float() accepts "nan"/"inf"/"-inf" — a non-finite Power would escape the
+            # bad-value flag and poison the `combined` score (nan scrambles the sort,
+            # inf pins to the top), audit A10. Treat it like a non-numeric typo.
+            if not math.isfinite(power):
+                power, bad_power = 0.0, True
         except ValueError:
             # A non-numeric typo ("~9", "4,5", "TBD") must NOT silently score 0.0 and
             # sink a bomb without a flag (audit F9) — surface it like a blank cell.
@@ -638,6 +686,14 @@ def _rank_scores(rows):
                     dcols = deck_colors[t]
                     break
             land_val = _land_value(r, dcols)
+        # ⚠rot: flag a craft target whose Standard-legal set rotates this year or next.
+        rot, rot_year = False, None
+        if _rot_soon_year is not None:
+            nm = (r.get("Card Name") or "").strip().lower()
+            info = pool_rot.get(nm) or pool_rot.get(nm.split(" // ")[0])
+            if info and "standard" in info[1]:
+                rot_year = dk.rotation_year(info[0])
+                rot = rot_year is not None and rot_year <= _rot_soon_year
         out.append({
             "name": r.get("Card Name", ""), "rarity": (r.get("Rarity") or "").capitalize(),
             "target": target,
@@ -646,7 +702,7 @@ def _rank_scores(rows):
             "state": _status_label(target, status_map),
             "blank_power": not raw_power,
             "bad_power": bad_power, "raw_power": raw_power,
-            "land_val": land_val,
+            "land_val": land_val, "rot": rot, "rot_year": rot_year,
             "sig": "/".join(best_specific[:2]) or ("generic/no-theme" if conf == "review" else ""),
         })
     # Normalize fit (pri) to 0-10 and blend 50/50 with the hand-graded power
@@ -666,7 +722,10 @@ def _rank_scores(rows):
             s["sig"] = "manabase (land)"
         else:
             s["fitN"] = round(s["pri"] / mx * 10, 2)
-            s["combined"] = round(0.5 * s["fitN"] + 0.5 * s["power"], 2)
+            # Breadth is a first-class, bounded term in the value-per-wildcard score: a
+            # card that fits several decks outranks an equal fit+power one-deck sidegrade.
+            s["combined"] = round(0.5 * s["fitN"] + 0.5 * s["power"]
+                                  + _reuse_bonus(s["reuse"]), 2)
     order = {"A": 0, "B": 1, "C": 2}
     out.sort(key=lambda s: (order[s["tier"]], -s["pri"], -_WC_RANK.get(s["rarity"], 0), s["name"]))
     return out
@@ -693,14 +752,16 @@ def cmd_rank(rows):
             n = sum(1 for x in scored if x["tier"] == cur)
             print(f"\n{labels[cur]}  ({n} cards)")
             print(f"  {'#':>3} {'Card':28} {'WC':3} {'Deck':6} {'state':6} {'fit':>4} "
-                  f"{'pow':>4} {'comb':>5}  signal")
-            print("  " + "-" * 94)
+                  f"{'pow':>4} {'use':>3} {'comb':>5}  signal")
+            print("  " + "-" * 98)
             i = 0
         i += 1
         wc = (s["rarity"] or "?")[:1] or "?"
         pw = f"{s['power']:>4.1f}" + ("?" if s["blank_power"] else "!" if s["bad_power"] else " ")
+        use = f"{s['reuse']}★" if s["reuse"] >= 3 else str(s["reuse"])
+        sig = s["sig"][:22] + (f"  ⚠rot~{s['rot_year']}" if s.get("rot") else "")
         print(f"  {i:>3} {s['name'][:28]:28} {wc:3} {s['target']:6} {s['state']:6} "
-              f"{s['fitN']:>4.1f} {pw} {s['combined']:>5.1f}  {s['sig'][:28]}")
+              f"{s['fitN']:>4.1f} {pw} {use:>3} {s['combined']:>5.1f}  {sig}")
     print("\n" + "=" * 60)
     print("Wildcard cost by tier (you spend that rarity's wildcards):")
     for t in ("A", "B", "C"):
@@ -711,10 +772,13 @@ def cmd_rank(rows):
         line = ", ".join(f"{by[k]} {k}" for k in ("Mythic", "Rare", "Uncommon", "Common") if by.get(k))
         print(f"  Tier {t}: {line}")
     blanks = [s["name"] for s in scored if s["blank_power"]]
-    print("\ncomb = 50/50 blend of theme fit (fit, 0–10) and hand-graded power (pow). "
-          "state = target deck's tier·remaining-crafts (★ = this card helps FINISH a "
-          "near-complete deck; '—' = general/concept). A high-value wildcard upgrades a "
-          "BUILT deck (low remaining) — a big remaining count is a build PROJECT.")
+    print("\ncomb = 50/50 blend of theme fit (fit, 0–10) and hand-graded power (pow), "
+          "plus a bounded breadth bonus. use = cross-deck reuse: # of your decks the card "
+          "is castable in AND shares a central theme with (★ = fits ≥3 — craft once, play "
+          "everywhere; copies are fungible). state = target deck's tier·remaining-crafts "
+          "(★ = this card helps FINISH a near-complete deck; '—' = general/concept). A "
+          "high-value wildcard upgrades a BUILT deck (low remaining) — a big remaining "
+          "count is a build PROJECT.")
     if blanks:
         print(f"⚠ {len(blanks)} card(s) have BLANK Power (shown as 'pow?', ranked low until "
               f"graded): {', '.join(blanks[:8])}{' …' if len(blanks) > 8 else ''}. "
@@ -725,6 +789,14 @@ def cmd_rank(rows):
         print(f"⚠ {len(bad)} card(s) have a NON-NUMERIC Power (shown as 'pow!', scored 0.0): "
               f"{', '.join(f'{n} ({v!r})' for n, v in bad[:6])}"
               f"{' …' if len(bad) > 6 else ''}. Fix the cell to a 1–10 number.")
+    rot = [s for s in scored if s.get("rot")]
+    if rot:
+        # A wildcard on a card leaving Standard this year/next is poor value.
+        names = ", ".join(f"{s['name']} (~{s['rot_year']})" for s in rot[:6])
+        print(f"⚠ {len(rot)} craft target(s) are on a set ROTATING soon (⚠rot~YEAR) — a "
+              f"wildcard there won't last: {names}"
+              f"{' …' if len(rot) > 6 else ''}. Verify against the official schedule (a "
+              "reprint can read early).")
     if owned_skipped:
         print(f"({owned_skipped} already-owned card(s) excluded from the ranking — "
               "prune them with `--owned` / reconcile_crafts.py.)")
@@ -847,7 +919,7 @@ def cmd_seed_power(rows, write=False):
 def print_table(hits, owned):
     cols = ["Have", "Card Name", "Type", "Color(s)", "Set", "Rarity", "Target"]
     def have_of(c):
-        return "own" if owned.get((c.get("Card Name") or "").strip().lower(), 0) > 0 else ""
+        return "own" if _owned_of(owned, c.get("Card Name")) > 0 else ""
     data = []
     for c in hits:
         data.append({"Have": have_of(c), "Card Name": c.get("Card Name", ""),
@@ -882,15 +954,14 @@ def _audit_target_issues(color_only=False):
         import deck as dk
         for d in dk.discover_decks():
             deck_ids.add(d["id"].lower())
-            deck_cols[d["id"].lower()] = {c for c in (d["meta"].get("colors") or "").upper()
-                                          if c in "WUBRG"}
+            deck_cols[d["id"].lower()] = card_colors(d["meta"].get("colors"))
     except Exception:
         pass
     for r in rows:
         name = (r.get("Card Name") or "").strip()
         if not color_only and not (r.get("Power") or "").strip():
             issues.append(("power", name, "blank Power (ranks low until graded)"))
-        ident = {c for c in (r.get("Color(s)") or "").upper() if c in "WUBRG"}
+        ident = card_colors(r.get("Color(s)"))
         for tok in re.split(r"[;,]", (r.get("Target") or "")):
             tok = tok.strip().lower()
             if not tok or tok in ("—", "general") or tok.startswith("concept"):
@@ -988,7 +1059,7 @@ def main():
 
     hits = [c for c in rows if _match(c, args)]
     if args.owned:
-        hits = [c for c in hits if owned.get((c.get("Card Name") or "").strip().lower(), 0) > 0]
+        hits = [c for c in hits if _owned_of(owned, c.get("Card Name")) > 0]
 
     if args.count:
         print(len(hits))
@@ -999,10 +1070,10 @@ def main():
 
     print_table(hits, owned)
     still = sum(1 for c in hits
-                if owned.get((c.get("Card Name") or "").strip().lower(), 0) == 0)
+                if _owned_of(owned, c.get("Card Name")) == 0)
     from collections import Counter
     by_r = Counter((c.get("Rarity") or "?").capitalize() for c in hits
-                   if owned.get((c.get("Card Name") or "").strip().lower(), 0) == 0)
+                   if _owned_of(owned, c.get("Card Name")) == 0)
     tail = ", ".join(f"{by_r[x]} {x}" for x in ("Mythic", "Rare", "Uncommon", "Common", "?")
                      if by_r[x])
     print(f"\n{len(hits)} card(s) — {still} to craft" + (f" ({tail})" if tail else ""))

@@ -16,6 +16,7 @@ guards the Doctor-Doom scoring regression.
 Run standalone (`python3 scripts/check_colors.py`) or via check_all.py.
 Returns a list of human-readable error strings; empty == healthy.
 """
+import ast
 import csv
 import os
 import sys
@@ -25,6 +26,82 @@ from lib import REPO_ROOT, card_colors  # noqa: E402
 
 LIB_CSV = os.path.join(REPO_ROOT, "card-library.csv")
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
+SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Sites that legitimately extract WUBRG letters from a string that is NOT a Color(s)
+# identity cell, so card_colors() (which special-cases the literal "Colorless") does
+# not apply. Keyed (filename, function). Keep this list SHORT and justified — every
+# entry is a place the static scan below would otherwise flag.
+_INLINE_PARSE_ALLOW = {
+    # parse_pips extracts the colored pips of a single MANA-COST symbol (e.g. "{W}{U}"),
+    # not a color-identity cell — there is no "Colorless" string to mishandle.
+    ("deck.py", "parse_pips"),
+}
+
+
+def _is_wubrg_identity_comprehension(node):
+    """True iff `node` is a set/list/gen/dict comprehension that filters ``x in "WUBRG"``
+    over an iterable that is NOT the literal ``"WUBRG"`` — i.e. the naive
+    ``{ch for ch in <some string> if ch in "WUBRG"}`` identity-extraction idiom that
+    reads the literal ``"Colorless"`` as ``{'R'}`` (audit F1/F2). Iterating the constant
+    ``"WUBRG"`` itself (``for c in "WUBRG"``) is a different, safe shape and is excluded."""
+    if not isinstance(node, (ast.SetComp, ast.ListComp, ast.GeneratorExp, ast.DictComp)):
+        return False
+    has_membership = False
+    for cmp in ast.walk(node):
+        if isinstance(cmp, ast.Compare) and any(isinstance(o, ast.In) for o in cmp.ops):
+            if any(isinstance(c, ast.Constant) and c.value == "WUBRG" for c in cmp.comparators):
+                has_membership = True
+                break
+    if not has_membership:
+        return False
+    # At least one generator must iterate something OTHER than the "WUBRG" literal.
+    return any(not (isinstance(g.iter, ast.Constant) and g.iter.value == "WUBRG")
+               for g in node.generators)
+
+
+def _scan_inline_color_parses():
+    """Static call-site guard: fail if any script outside lib.py re-implements color-
+    identity extraction with the naive ``if ch in "WUBRG"`` comprehension instead of
+    ``lib.card_colors()``. This is the coverage gap that let the F1 bug regress into
+    wishlist.py / app.py undetected — the behavioral checks below only exercised
+    lib.card_colors and one deck.py call site. A comprehension whose ENCLOSING function
+    already special-cases ``"colorless"`` is exempt (it handles the trap explicitly), as
+    are the few non-identity sites in _INLINE_PARSE_ALLOW (mana-symbol parsing)."""
+    errs = []
+    for fn in sorted(f for f in os.listdir(SCRIPTS_DIR) if f.endswith(".py")):
+        if fn == "lib.py":
+            continue
+        path = os.path.join(SCRIPTS_DIR, fn)
+        try:
+            src = open(path, encoding="utf-8").read()
+            tree = ast.parse(src)
+        except (OSError, SyntaxError) as e:
+            errs.append(f"color call-site scan: could not parse {fn} ({e})")
+            continue
+        funcs = [n for n in ast.walk(tree)
+                 if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))]
+        for node in ast.walk(tree):
+            if not _is_wubrg_identity_comprehension(node):
+                continue
+            enc = None
+            for f in funcs:
+                if f.lineno <= node.lineno <= (getattr(f, "end_lineno", None) or node.lineno):
+                    if enc is None or f.lineno > enc.lineno:  # innermost wins
+                        enc = f
+            fname = enc.name if enc else "<module>"
+            if (fn, fname) in _INLINE_PARSE_ALLOW:
+                continue
+            enc_src = (ast.get_source_segment(src, enc) or "") if enc else src
+            if "colorless" in enc_src.lower():
+                continue  # the function guards the "Colorless" trap explicitly
+            errs.append(
+                f"inline color parse in {fn}:{node.lineno} (function {fname!r}) — the naive "
+                f"`{{x for x in … if x in \"WUBRG\"}}` idiom reads \"Colorless\" as {{'R'}} "
+                f"(audit F1). Route it through lib.card_colors(), or (if it parses a mana "
+                f"symbol / non-identity string) add ({fn!r}, {fname!r}) to "
+                f"_INLINE_PARSE_ALLOW in check_colors.py.")
+    return errs
 
 
 def check():
@@ -72,6 +149,10 @@ def check():
                         "call site regressed).")
     except Exception as e:  # pragma: no cover - import/deck guard
         errs.append(f"color call-site check skipped ({type(e).__name__}: {e})")
+
+    # (4) STATIC call-site scan: no script may re-implement the naive WUBRG parse
+    #     instead of card_colors() (the gap that let F1 regress into wishlist.py/app.py).
+    errs += _scan_inline_color_parses()
 
     return errs
 

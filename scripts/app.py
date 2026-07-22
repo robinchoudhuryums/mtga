@@ -61,7 +61,7 @@ except ModuleNotFoundError:
     raise SystemExit(1)
 
 import deck as deckmod
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, write_rows, atomic_write, backup_path
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, write_rows, atomic_write, backup_path, card_colors
 from validate import validate
 
 MANIFEST_PATH = os.path.join(REPO_ROOT, "image-manifest.json")
@@ -109,7 +109,10 @@ def build_cards():
         if not name:
             continue
         color_str = (r.get("Color(s)") or "").strip()
-        letters = [c for c in color_str.upper() if c in "WUBRG"] or ["C"]
+        # Route through lib.card_colors so the literal "Colorless" reads as no colors,
+        # not {'R'} (the word contains an R — audit F1); the CLI/dashboard already guard
+        # this, and the editor grid must agree.
+        letters = sorted(card_colors(color_str)) or ["C"]
         cards.append({
             "name": name,
             "type": (r.get("Type") or "").strip(),
@@ -207,7 +210,10 @@ def _append_mana(name, cost, mv, keywords):
     if not rows:
         rows = [["Card Name", "Mana Cost", "Mana Value", "Keywords"]]
     rows.append([name, cost or "", mv if isinstance(mv, int) else "", keywords or ""])
-    atomic_write(MANA_CSV, lambda fh: csv.writer(fh).writerows(rows), backup=False)
+    # Back the mana file up to a timestamped .bak like every other canonical-CSV
+    # mutation (CLAUDE.md's atomic_write + backup invariant); the previous backup=False
+    # skipped it (audit A12). backup=True is atomic_write's default.
+    atomic_write(MANA_CSV, lambda fh: csv.writer(fh).writerows(rows))
 
 
 def _lookup_card(name):
@@ -343,7 +349,11 @@ def add():
     if info:
         from enrich import SET_ALIASES
         from tag_synergies import tags_for
-        stored = info["name"]
+        # The library keys a double-faced card under its FRONT name only (matching
+        # reconcile_crafts.py and deck.py's owned() join); Scryfall returns the full
+        # "Front // Back". Store the front face so ownership joins resolve and the
+        # appended card-mana.csv row shares the same key (audit F6).
+        stored = (info["name"] or "").split(" // ")[0]
         row_set = SET_ALIASES.get(set_code.lower(), set_code.lower()) if set_code else ""
         coll = collector or (info["collector"] if (row_set and info["set"] == row_set) else "")
         synergies = "; ".join(tags_for({"Type": info["type"], "Card Text": info["text"]},
@@ -455,7 +465,9 @@ def revert():
     finally:
         if tmp and os.path.exists(tmp):
             os.remove(tmp)
-    return jsonify(ok=True, restored=baks[-1])
+    # Report the file actually restored (newest by mtime), not the lexically-last
+    # name — they can differ under legacy/mixed .bak naming (audit A13).
+    return jsonify(ok=True, restored=newest_base)
 
 
 # --------------------------------------------------------------------------- #

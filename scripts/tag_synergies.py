@@ -106,6 +106,10 @@ KEYWORD_THEMES = {
     # Alternative / additional cost & tempo
     "warp": ["tempo", "cost-reduction"], "sneak": ["tempo", "cost-reduction"],
     "plot": ["tempo", "cost-reduction"], "evoke": ["value", "sacrifice"],
+    # Impending (Duskmourn): cast for a cheaper impending cost, enters with time
+    # counters and isn't a creature until the last is removed — a discounted early
+    # drop with a delay, like warp/sneak/plot.
+    "impending": ["tempo", "cost-reduction"],
     "kicker": ["value"], "multikicker": ["value"], "bargain": ["sacrifice", "value"],
     "gift": ["value"], "spree": ["value"], "disguise": ["tempo"], "boast": ["payoff"],
     "exhaust": ["payoff"], "suspect": ["aristocrats"], "gates": ["lands"],
@@ -128,7 +132,7 @@ KEYWORD_THEMES = {
 # denylist so new *real* keywords still tag automatically; extend it as new
 # flavor-heavy sets land. Compare against the keyword lowercased.
 FLAVOR_KEYWORDS = {
-    "ability", "angelo cannon", "attack", "blue magic", "bring down",
+    "ability", "angelo cannon", "animal may-ham", "attack", "blue magic", "bring down",
     "death gigas", "dinosaur formula", "double overdrive", "dragonfire dive",
     "echo of the lost", "find new host", "fira", "firaga", "fire", "fire cross",
     "galian beast", "harmonize", "heal", "hellmasker", "item", "look around",

@@ -127,6 +127,16 @@ def main():
     except Exception as e:
         hard.append(f"color parsing sanity check errored: {e}")
 
+    # DFC ownership-join sanity — guards the A3/A4/F6 class: an ownership lookup that
+    # bypasses lib.owned_qty (front-face fallback) and reads an owned double-faced card
+    # as unowned. Behavioral anchor on the primitive + wrappers, plus a static scan for
+    # the raw-access bypass shape.
+    try:
+        from check_dfc import check as check_dfc
+        hard += check_dfc()
+    except Exception as e:
+        hard.append(f"DFC ownership-join sanity check errored: {e}")
+
     # Suggest/cuts gap-aware scoring sanity — keeps the diminishing-returns role credit
     # and the curve factor as BOUNDED modifiers (they can't silently reorder a tuned
     # deck's recommendations by overriding theme fit).

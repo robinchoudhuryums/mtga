@@ -228,15 +228,19 @@ manufacture a false-confident match. The intended loop for a new batch:
 
 `--by-set` is the gem-spending view: it ranks the sets by how many wishlist cards
 each pack could net you (broken down by rarity), so you open the highest-value
-packs first. `--rank` is the **wildcard-spend order**. It scores each card on two
+packs first. `--rank` is the **wildcard-spend order**. It scores each card on three
 independent axes and blends them:
 
-- **Fit** — theme fit (the same idf model as `--suggest-targets`) plus *cross-deck
-  breadth* (how many decks it's castable in **and** shares a *specific* theme with;
-  generic overlap doesn't count). This is a synergy signal, **not** raw power — an
-  idf model can't tell that a generic-tagged planeswalker is a bomb.
+- **Fit** — theme fit (the same idf model as `--suggest-targets`). This is a synergy
+  signal, **not** raw power — an idf model can't tell that a generic-tagged
+  planeswalker is a bomb.
 - **Power** — the hand-graded 1–10 `Power` column (constructed impact), so those
   bombs aren't buried by a low fit score.
+- **Breadth** — cross-deck reuse (the `use` column, ★ at ≥3): how many decks the card
+  is castable in **and** shares a *specific* theme with (generic overlap doesn't
+  count). A **bounded** bonus to the blend, so a multi-home craft outranks an equal
+  fit+power one-deck sidegrade without ever dominating — craft once, play it
+  everywhere (copies are fungible across decks).
 
 **Lands are scored on a different axis.** A land has no synergy themes, so theme
 fit would sink it to ~0; instead `--rank` rates a land on **manabase value** for
@@ -245,6 +249,10 @@ a mono-W deck is half-dead), with a bonus for entering untapped — on the same
 0–10 scale, then blends that with `Power`. So a dual or verge that fixes a
 two-color deck ranks as the real upgrade it is (`sig: manabase (land)`), instead
 of being buried under spells.
+
+A craft target whose Standard-legal set rotates this year or next is flagged
+**`⚠rot~YEAR`** — a wildcard there won't last, so verify before spending (the timing
+is a heuristic from set release; a reprint can read early).
 
 The two are normalized and blended 50/50 into a `combined` score; the list still
 groups into fit tiers (A = confident home / real breadth, B = one clear deck,
@@ -312,11 +320,12 @@ pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export agains
 python3 scripts/deck.py text 1a              # full oracle text of every card (read before grading)
 python3 scripts/deck.py suggest 1a --unowned --full  # picks WITH full text + keywords + flags
 python3 scripts/deck.py suggest-homes "Crib Swap"    # which decks a card fits, with a fit-strength label
+python3 scripts/deck.py rotation             # roster-wide: which Standard decks run cards aging out (what rotates next); --within N, --years N, --format
 python3 scripts/deck.py preflight 1a         # one-call verify: legal + owned + castable + integrity
 python3 scripts/deck.py quality 1a --json    # deck-quality vector; --vs FILE diffs a before-snapshot
 python3 scripts/deck.py tier 1a              # claimed #: tier: vs the tier its metrics support
 python3 scripts/deck.py tier 1a --to A       # gap to A + owned fillers AND craft targets for the short axis
-python3 scripts/deck.py history 1a           # the deck's git change history (its changelog)
+python3 scripts/deck.py history 1a           # the deck's git change history (its changelog); --since YYYY-MM-DD adds the net card change since then
 python3 scripts/deck.py quality 1a --at HASH # compare this deck's list at a past commit vs now
 ```
 
@@ -600,6 +609,15 @@ basic-land art treated as fungible — the **same rules as `deck.py verify`**, r
 entirely client-side (nothing is uploaded). Use it to spot which decks you've edited
 in Arena but not yet updated in the repo (or vice-versa).
 
+Its mirror is the **"Recently edited decks"** panel — the *repo→Arena* direction: the
+decks you've changed most recently (from git history), newest first, each showing the
+edit date, the card-level change of the most recent edit (with a *last edit / net·7d /
+net·30d* "since" toggle), the commit changelog, and a **⧉ Copy Arena import** button to
+re-import into Arena. A **"Standard rotation"** panel shows what rotates next (by year,
+⚠ SOON) and which decks it hits — the dashboard view of `deck.py rotation`. (Both need
+the pool's `Released` column: `build_pool.py --all`; the recently-edited dates need
+git history, so `pages.yml` checks out with `fetch-depth: 0`.)
+
 A **"Find a card"** search box (top of the page) is the dashboard mirror of
 `card.py`'s *in decks* line: type any card name and it lists every deck **including
 variants** that runs it (with the copy count), each a click-through chip that
@@ -731,13 +749,16 @@ Import applies Sheets' own formula parsing, which this RAW guard can't cover.)
 
 `python3 scripts/check_all.py` is the project's integrity gate — it verifies the
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
-derived files present, decks parse) plus five **model-sanity checks** that keep the
+derived files present, decks parse) plus six **model-sanity checks** that keep the
 grading/ranking models from silently drifting: the **ranking model**
-(`check_rankings.py`), **color parsing** (`check_colors.py`), the needs-aware
-**suggest/cuts scoring** (`check_suggest.py` — bounded modifiers, power never
-overrides theme fit), the **engine classifier** (`check_engines.py`), and the
-archetype-aware **tier floor** (`check_tier.py` — non-aggro grades unchanged, the
-aggro clock only ever raises a band). It exits non-zero on any hard break. It also
+(`check_rankings.py`), **color parsing** (`check_colors.py` — also a static scan
+banning the naive inline `WUBRG` parse outside `lib.py`), the **DFC ownership-join**
+convention (`check_dfc.py` — an owned double-faced card must resolve by its front
+face), the needs-aware **suggest/cuts scoring** (`check_suggest.py` — bounded
+modifiers, power never overrides theme fit), the **engine classifier**
+(`check_engines.py`), and the archetype-aware **tier floor** (`check_tier.py` —
+non-aggro grades unchanged, the aggro clock only ever raises a band). It exits
+non-zero on any hard break. It also
 emits **soft warnings** (never gating): wishlist target drift (a card whose target
 deck can no longer cast it); **new unindexed card mechanics** (`check_keywords.py`);
 **theme coverage** — `check_themes.py` flags an owned card whose text plays a theme
@@ -745,6 +766,12 @@ it isn't tagged with (a stale tag distorts every recommendation), summarized to 
 line; and **tier mismatch** — a deck whose claimed `#: tier:` sits ≥2 bands above its
 measurable floor. A SessionStart hook runs the gate (quiet) so drift surfaces
 immediately.
+
+A **pytest unit layer** (`tests/`) complements the gate — fast, isolated tests that
+pin the pure helper functions (color/DFC parsing, mana pips, role tally, tier floor,
+engine roles, rotation math, ingest/tagging). It's dev-only: `pip install -r
+requirements-dev.txt` then `pytest` (or `make test-units`); the core tooling and
+`check_all.py` stay pure standard library. Both run in CI (`.github/workflows/tests.yml`).
 
 Claude Code slash commands live in `.claude/commands/`:
 

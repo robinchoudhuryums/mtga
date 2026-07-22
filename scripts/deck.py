@@ -967,6 +967,9 @@ def _curve_gap_factor(mv, curve):
 _SUGGEST_POWER_W = 1.0
 
 
+_power_seed_warned = False  # one-time guard for the A14 degradation warning
+
+
 def _power_seed(row):
     """A card's heuristic power (0–10) for suggest's card-quality co-signal (#6) — the
     same rarity+role estimate the wishlist seeds Power with, so an owned/craftable bomb
@@ -975,7 +978,15 @@ def _power_seed(row):
     try:
         import wishlist
         return wishlist._seed_power(row)
-    except Exception:
+    except Exception as e:
+        # Degrade (power drops out of the ranking) but say so ONCE — this runs per
+        # candidate in a hot loop, so a silent 0.0 for every card would hide a real
+        # regression in the power seed (audit A14).
+        global _power_seed_warned
+        if not _power_seed_warned:
+            _power_seed_warned = True
+            eprint(f"WARN:  power co-signal unavailable ({type(e).__name__}: {e}); "
+                   "suggest ranking proceeds without the power dimension.")
         return 0.0
 
 
@@ -1085,19 +1096,24 @@ def engine_balance(cards, carddata, central, signature=frozenset()):
     sig = {t.lower() for t in signature}
     central_engines = [t for t in central if t.lower() in _ENGINE_COMPILED]
     result = {}
-    seen = set()
     creatures = 0
     for theme in central_engines:
         result[theme] = {"enablers": [], "payoffs": [], "deaths": [],
                          "en": 0, "pay": 0, "death": 0}
+    # Quantity-weighted per card, summed ACROSS lines (matching the canonical role_tally;
+    # a `seen`-set + first-line q under-counted a card split over two lines, audit A11).
+    qty_by_name, disp = {}, {}
     for q, n, s, c in cards:
         nl = n.lower()
-        if nl in BASICS or nl in seen:
+        if nl in BASICS:
             continue
-        seen.add(nl)
+        qty_by_name[nl] = qty_by_name.get(nl, 0) + q
+        disp.setdefault(nl, n)
+    for nl, q in qty_by_name.items():
         cd = carddata.get(nl)
         if not cd:
             continue
+        n = disp[nl]
         if "creature" in (cd.get("type") or "").lower():
             creatures += q
         roles = engine_roles(cd.get("text") or "")
@@ -1544,12 +1560,16 @@ def interaction_profile(cards, carddata):
     noncreature-answer = a Counter (answers any spell) or a removal cue that reaches past
     creatures."""
     total = instant = sorcery = noncreature = 0
-    seen = set()
+    # Quantity-weighted per card, summed ACROSS lines: a card split over two lines
+    # (e.g. two printings) must count its full quantity, matching the canonical
+    # role_tally — a `seen`-set + first-line q under-counted it (audit A11).
+    qty_by_name = {}
     for q, n, s, c in cards:
         nl = n.lower()
-        if nl in BASICS or nl in seen:
+        if nl in BASICS:
             continue
-        seen.add(nl)
+        qty_by_name[nl] = qty_by_name.get(nl, 0) + q
+    for nl, q in qty_by_name.items():
         cd = carddata.get(nl)
         if not cd:
             continue
@@ -1561,7 +1581,9 @@ def interaction_profile(cards, carddata):
         tl = (cd.get("type") or "").lower()
         tx = text.lower()
         is_counter = "Counter" in roles
-        if "instant" in tl or "flash" in tx or is_counter:
+        # `\bflash\b` matches the Flash keyword but NOT "flashback" — a sorcery-speed
+        # flashback recast is not instant-speed interaction (audit A7).
+        if "instant" in tl or re.search(r"\bflash\b", tx) or is_counter:
             instant += q
         else:
             sorcery += q
@@ -1679,6 +1701,103 @@ def rotation_risk(released, years=3):
         return False
 
 
+def rotation_year(released, years=3):
+    """The year a set rotates out of Standard — its release year + `years` (Standard's
+    ~3-year window) — or None if the date is blank/unparseable. The single primitive
+    behind both `rotation_sweep` and the wishlist ⚠rot flag, so 'when does this rotate'
+    is computed one way everywhere."""
+    try:
+        return int((released or "")[:4]) + years
+    except (ValueError, TypeError):
+        return None
+
+
+def _pool_rotation_index():
+    """name_lower (full AND DFC front) -> (released, {legalities}, set_code) from the pool.
+    Returns (index, has_released). `has_released` is False for a pool built before the
+    Released column existed — callers then warn instead of silently reporting nothing."""
+    idx, has_released = {}, False
+    if not os.path.exists(POOL_CSV):
+        return idx, has_released
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        rdr = csv.DictReader(fh)
+        has_released = "Released" in (rdr.fieldnames or [])
+        for r in rdr:
+            nl = (r.get("Card Name") or "").strip().lower()
+            if not nl:
+                continue
+            info = ((r.get("Released") or "").strip(),
+                    {x.strip().lower() for x in (r.get("Legalities") or "").split(";") if x.strip()},
+                    (r.get("Set Code") or "").strip())
+            idx.setdefault(nl, info)
+            idx.setdefault(nl.split(" // ")[0], info)  # DFC front-face fallback
+    return idx, has_released
+
+
+def rotation_sweep(fmt="standard", years=3, within=2):
+    """Roster-wide rotation exposure for `fmt` (default Standard): which cards each deck
+    runs are CLOSEST to rotating, so you can see what rotates NEXT and which decks it
+    hits. A card's rotation year is its set's release year + `years` (Standard's ~3-year
+    window); a card is surfaced when that year is within `within` years of now — i.e. it
+    rotates this year, soon, or is already past-due (a stale-pool signal). Reads the
+    pool's Released/Legalities snapshot (the same data `suggest`'s ⚠rot flag uses). Note:
+    gating on release-age here (rather than `rotation_risk`'s strict >years boolean) is
+    deliberate — on a freshly-built pool every still-legal card is BY DEFINITION inside
+    the window, so the >years test would report nothing; the point is what rotates *next*.
+    Offline.
+
+    Returns (decks, rollup, meta):
+      decks  = [{id, name, atrisk:[{name,set,rotates,qty}], n_slots}] for `fmt` decks,
+               most-exposed first (each at-risk list sorted soonest-rotating first).
+      rollup = {rotates_year: {'slots':n, 'cards':set, 'decks':set}} (a card counted per
+               deck it appears in — "deck-slots" — since the point is roster exposure).
+      meta   = {has_released, stale_days, unverified, n_decks, this_year, within}.
+
+    Caveat: the pool keys one representative printing per card, so a card reprinted into a
+    newer Standard set may carry an OLDER printing's Released — its rotation year can read
+    earlier than reality. Verify against the official schedule before disenchanting.
+    """
+    import datetime
+    this_year = datetime.date.today().year
+    pool, has_released = _pool_rotation_index()
+    fmt = (fmt or "").strip().lower()
+    decks_out, rollup, unverified = [], {}, 0
+    for d in discover_decks():
+        dm, cards = parse_deck_file(d["path"])
+        if fmt and (dm.get("format") or "").strip().lower() != fmt:
+            continue
+        atrisk = []
+        for q, n, s, c in cards:
+            nl = n.lower()
+            if nl in BASICS:
+                continue
+            info = pool.get(nl) or pool.get(nl.split(" // ")[0])
+            if not info:
+                unverified += 1
+                continue
+            released, legals, setc = info
+            if fmt and legals and fmt not in legals:
+                continue  # not legal in this format anyway — it can't "rotate out" of it
+            rotates = rotation_year(released, years)
+            if rotates is None:
+                continue  # no usable release date — can't place it on the timeline
+            if rotates > this_year + within:
+                continue  # not rotating within the horizon
+            atrisk.append({"name": n, "set": setc or s, "rotates": rotates, "qty": q})
+            rr = rollup.setdefault(rotates, {"slots": 0, "cards": set(), "decks": set()})
+            rr["slots"] += 1
+            rr["cards"].add(n)
+            rr["decks"].add(d["id"])
+        atrisk.sort(key=lambda x: (x["rotates"], x["name"]))
+        decks_out.append({"id": d["id"], "name": d["name"] or d["id"],
+                          "atrisk": atrisk, "n_slots": len(atrisk)})
+    decks_out.sort(key=lambda x: (-x["n_slots"], x["id"]))
+    meta = {"has_released": has_released, "stale_days": pool_staleness_days(),
+            "unverified": unverified, "n_decks": len(decks_out),
+            "this_year": this_year, "within": within}
+    return decks_out, rollup, meta
+
+
 def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_format=False):
     """Structured core of `suggest` — returns the scored, sorted, limited picks as
     plain dicts so both `cmd_suggest` (renders below) and build_dashboard.py (craft
@@ -1709,7 +1828,10 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
     fmt = "" if any_format else (fmt or dmeta.get("format") or "").strip().lower()
 
     # Deck fingerprint: theme weights from synergy tags (copies carrying each tag).
-    deck_names = {n.lower() for _, n, _, _ in cards}
+    # Front-face normalized: deck files store a DFC under its FRONT name while the pool
+    # keys the full "Front // Back", so normalizing both sides to the front lets the
+    # "already in deck" filter below catch a DFC that's already maindecked (audit A8/F6).
+    deck_names = {n.lower().split(" // ")[0] for _, n, _, _ in cards}
     theme_w = {}
     for q, n, s, c in cards:
         if n.lower() in BASICS:
@@ -1769,7 +1891,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
     for r in pool:
         name = (r.get("Card Name") or "").strip()
         nl = name.lower()
-        if not name or nl in deck_names or nl in BASICS:
+        if not name or nl.split(" // ")[0] in deck_names or nl in BASICS:
             continue
         ccolors = card_colors(r.get("Color(s)"))
         if not ccolors.issubset(deck_colors):
@@ -3267,8 +3389,13 @@ def cmd_quality(args):
         if truly_lost:
             regressions.append(
                 f"lost central theme(s) — 0 copies remain: {', '.join(sorted(truly_lost))}")
-        if vec["avg_mv"] - before.get("avg_mv", 0) > 0.3:
-            regressions.append(f"curve heavier (avg MV {before['avg_mv']}→{vec['avg_mv']})")
+        # Guard the direct index: a hand-written / schema-drifted --vs snapshot may lack
+        # avg_mv. With .get(...,0) the comparison fires for any real curve, then
+        # before['avg_mv'] would KeyError (audit A9). Skip the check when it's absent
+        # rather than crash or print a misleading "0→X".
+        b_mv = before.get("avg_mv")
+        if b_mv is not None and vec["avg_mv"] - b_mv > 0.3:
+            regressions.append(f"curve heavier (avg MV {b_mv}→{vec['avg_mv']})")
 
     weak_add = None
     if getattr(args, "add", None):
@@ -3491,8 +3618,11 @@ def craft_role_fillers(d, roles, *, limit=8):
                 continue
             if "Land" in _primary_type(r.get("Type") or ""):
                 continue
-            have, found = owned(qty, name)
-            if found and have > 0:              # want CRAFT targets — skip owned
+            # want CRAFT targets — skip owned. Pool names are the full "Front // Back";
+            # owned_qty falls back to the DFC front face so an owned DFC isn't listed as
+            # a craft target (audit F6/F19), unlike the local owned() which needs an
+            # exact key. Mirrors suggest_scored.
+            if owned_qty(qty, name) > 0:
                 continue
             ident = card_colors(r.get("Color(s)"))
             if not ident <= declared:
@@ -3648,29 +3778,150 @@ def cmd_tier(args):
     return 0
 
 
+def deck_git_history(path, limit=None):
+    """[{hash, date, subject}] for a deck file, newest first, from `git log --follow`.
+    The commit messages ARE the deck's changelog (they state the thematic + technical
+    why). Empty list if git is unavailable / the file is untracked — the CLI and the
+    dashboard 'recently edited' panel both read THIS one helper so they can't drift."""
+    import subprocess
+    rel = os.path.relpath(path, REPO_ROOT)
+    args = ["git", "log", "--follow", "--date=short", "--format=%h\t%ad\t%s"]
+    if limit:
+        args.append(f"-n{int(limit)}")
+    args += ["--", rel]
+    try:
+        r = subprocess.run(args, capture_output=True, text=True, cwd=REPO_ROOT)
+    except Exception:
+        return []
+    if r.returncode != 0:
+        return []
+    out = []
+    for ln in r.stdout.splitlines():
+        if not ln.strip():
+            continue
+        parts = ln.split("\t", 2)
+        if len(parts) == 3:
+            out.append({"hash": parts[0], "date": parts[1], "subject": parts[2]})
+    return out
+
+
+def deck_recent_card_delta(path):
+    """Card-level diff of the MOST RECENT edit to a deck file: {added, removed, prev}
+    where added/removed are [(display_name, qty)] between the deck's current list and
+    its previous committed version (printing- and case-fungible via `_multiset`). None
+    when there's no prior version (a brand-new deck) or git is unavailable — so the
+    'recently edited' panel can show WHAT changed, not just when."""
+    rel = os.path.relpath(path, REPO_ROOT)
+    hashes = _deck_commit_hashes(rel)
+    if len(hashes) < 2:
+        return None  # no prior committed version to diff against
+    prev_ms = _deck_ms_at_ref(rel, hashes[1])
+    if prev_ms is None:
+        return None
+    added, removed = _ms_delta(prev_ms, _multiset(parse_deck_file(path)[1]))
+    return {"added": added, "removed": removed, "prev": hashes[1][:9]}
+
+
+def _deck_commit_hashes(rel, before=None):
+    """Full commit hashes touching a deck file, newest first; with `before` (an ISO
+    date) only those at/before it. [] on any git failure. Shared by the card-delta
+    helpers so the git plumbing lives in one place."""
+    import subprocess
+    args = ["git", "log", "--follow", "--format=%H"]
+    if before:
+        args.append(f"--before={before}")
+    args += ["--", rel]
+    try:
+        r = subprocess.run(args, capture_output=True, text=True, cwd=REPO_ROOT)
+    except Exception:
+        return []
+    return [h for h in r.stdout.split() if h] if r.returncode == 0 else []
+
+
+def _deck_ms_at_ref(rel, ref):
+    """The card multiset of a deck file AS OF a git ref, or None on failure."""
+    import subprocess
+    import tempfile
+    r = subprocess.run(["git", "show", f"{ref}:{rel}"], capture_output=True, text=True,
+                       cwd=REPO_ROOT)
+    if r.returncode != 0:
+        return None
+    fd, tmp = tempfile.mkstemp(suffix=".txt")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            fh.write(r.stdout)
+        return _multiset(parse_deck_file(tmp)[1])
+    except Exception:
+        return None
+    finally:
+        os.remove(tmp)
+
+
+def _ms_delta(prev_ms, cur_ms):
+    """(added, removed) as sorted [(display, qty)] between two card multisets."""
+    added = sorted((disp, q - prev_ms.get(nl, (disp, 0))[1])
+                   for nl, (disp, q) in cur_ms.items() if q > prev_ms.get(nl, (disp, 0))[1])
+    removed = sorted((disp, q - cur_ms.get(nl, (disp, 0))[1])
+                     for nl, (disp, q) in prev_ms.items() if q > cur_ms.get(nl, (disp, 0))[1])
+    return added, removed
+
+
+def deck_card_delta_since(path, since):
+    """Cumulative card-level delta between a deck's current list and its state AS OF an
+    ISO date `since` — {added, removed, base, base_date} or None when there's no
+    committed version at/before that date or git is unavailable. 'What have I NET-changed
+    since date X (and still need to push to Arena)', vs `deck_recent_card_delta`'s single
+    most-recent edit. Printing/case-fungible via `_multiset`."""
+    import subprocess
+    rel = os.path.relpath(path, REPO_ROOT)
+    hashes = _deck_commit_hashes(rel, before=since)
+    if not hashes:
+        return None  # deck had no committed version at/before that date
+    base = hashes[0]
+    base_ms = _deck_ms_at_ref(rel, base)
+    if base_ms is None:
+        return None
+    added, removed = _ms_delta(base_ms, _multiset(parse_deck_file(path)[1]))
+    bd = subprocess.run(["git", "show", "-s", "--format=%ad", "--date=short", base],
+                        capture_output=True, text=True, cwd=REPO_ROOT)
+    return {"added": added, "removed": removed, "base": base[:9],
+            "base_date": bd.stdout.strip() if bd.returncode == 0 else ""}
+
+
 def cmd_history(args):
     """Show a deck file's git change history — the accurate, complete record of how
     the deck evolved (each commit message states the thematic + technical why). This
     is the deck's changelog; it lives in git rather than in-file so it can't get
     unwieldy or drift. Pair with `deck.py quality <id> --at <hash>` to compare a past
     version's measurable vector (interaction / curve / themes) against now."""
-    import subprocess
     d = find_deck(args.id)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
     rel = os.path.relpath(d["path"], REPO_ROOT)
-    r = subprocess.run(["git", "log", "--follow", "--date=short",
-                        "--format=%h  %ad  %s", "--", rel],
-                       capture_output=True, text=True, cwd=REPO_ROOT)
-    if r.returncode != 0:
-        eprint(f"git log failed: {r.stderr.strip()}")
-        return 1
-    lines = [ln for ln in r.stdout.splitlines() if ln.strip()]
-    print(f"History — deck {d['id']}: {d['name'] or rel}  ({len(lines)} commit(s))")
-    for ln in lines:
-        print(f"  {ln}")
-    if lines:
+    since = getattr(args, "since", None)
+    hist = deck_git_history(d["path"])
+    if since:
+        hist = [h for h in hist if h["date"] >= since]
+    scope = f" since {since}" if since else ""
+    print(f"History — deck {d['id']}: {d['name'] or rel}{scope}  ({len(hist)} commit(s))")
+    for h in hist:
+        print(f"  {h['hash']}  {h['date']}  {h['subject']}")
+    if since:
+        # The cumulative card-level net change since that date — 'what do I still need to
+        # push to Arena', printing/case-fungible.
+        delta = deck_card_delta_since(d["path"], since)
+        if delta and (delta["added"] or delta["removed"]):
+            print(f"\n  Net card change since {delta['base_date'] or since} "
+                  f"(base {delta['base']}):")
+            for nm, q in delta["added"]:
+                print(f"    + {q}× {nm}")
+            for nm, q in delta["removed"]:
+                print(f"    − {q}× {nm}")
+        elif delta:
+            print(f"\n  No net card change since {delta['base_date'] or since} "
+                  "(edits may have cancelled out, or only metadata changed).")
+    if hist:
         print(f"\n  full text of any version:   git show <hash>:{rel}"
               f"\n  compare a version's metrics: deck.py quality {d['id']} --at <hash>")
     return 0
@@ -3789,6 +4040,54 @@ def cmd_engines(args):
     return 0
 
 
+def cmd_rotation(args):
+    """Roster-wide Standard-rotation exposure — which of your decks run cards closest to
+    rotating, and what rotates next. Offline: reads the pool's Released/Legalities
+    snapshot. A card's rotation year is its set's release + `--years` (Standard's ~3y
+    window); `--within` sets how far ahead to look (default 2). Scope with --format."""
+    fmt = (args.fmt or "standard").strip().lower()
+    decks, rollup, meta = rotation_sweep(fmt, years=args.years, within=args.within)
+    if not meta["has_released"]:
+        eprint("card-pool.csv has no Released column — rebuild it (build_pool.py --all) so "
+               "rotation dates are available. Nothing to report until then.")
+        return 1
+    if meta["stale_days"] is not None and meta["stale_days"] > 120:
+        eprint(f"⚠ card-pool.csv is {meta['stale_days']} days old — its legality/rotation "
+               "snapshot may lag the current Standard; rebuild with build_pool.py --all.")
+    this_year = meta["this_year"]
+    total = sum(d["n_slots"] for d in decks)
+    print(f"Rotation sweep ({fmt}, ~{args.years}y window, next {args.within}y) — "
+          f"{meta['n_decks']} deck(s), {total} rotating card-slot(s).")
+    if not total:
+        print(f"No cards rotating within {args.within} year(s). ✓ "
+              "(widen with --within, or rebuild the pool if it's stale.)")
+        return 0
+
+    print("\nRotates by year (deck-slots · distinct cards · decks) — soonest first:")
+    for ry in sorted(rollup):
+        rr = rollup[ry]
+        soon = "  ⚠ SOON" if ry <= this_year + 1 else ""
+        past = "  (past-due — pool may be stale)" if ry < this_year else ""
+        print(f"  ~{ry:>7}: {rr['slots']:>3} slot(s) · {len(rr['cards']):>3} card(s) · "
+              f"{len(rr['decks']):>2} deck(s){soon}{past}")
+
+    print("\nBy deck (most-exposed first):")
+    for d in decks:
+        if not d["n_slots"]:
+            continue
+        print(f"\n  deck {d['id']:>4}  {d['name'][:34]:34} {d['n_slots']} rotating")
+        for c in d["atrisk"]:
+            print(f"       ~{c['rotates']:>4}  {c['qty']}× {c['name']} ({c['set']})")
+
+    if meta["unverified"]:
+        print(f"\n({meta['unverified']} card-slot(s) not found in the pool — unverified, "
+              "skipped; rebuild the pool if they're recent.)")
+    print("\nTiming is a ~%d-year heuristic from set release, not the official schedule, and "
+          "the pool keys one printing per card (a reprint can read early) — verify before "
+          "disenchanting." % args.years)
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="Manage decks and variations.")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -3813,6 +4112,13 @@ def main():
     p.add_argument("id")
     p = sub.add_parser("engines", help="enabler vs payoff balance for the deck's engine themes")
     p.add_argument("id")
+    p = sub.add_parser("rotation", help="roster-wide Standard-rotation exposure — which decks run aging-out cards")
+    p.add_argument("--format", dest="fmt", default="standard",
+                   help="format to check rotation for (default: standard)")
+    p.add_argument("--years", type=int, default=3,
+                   help="rotation window in years (default: 3, Standard's rough window)")
+    p.add_argument("--within", type=int, default=2,
+                   help="how many years ahead to surface (default: 2 — what rotates next)")
     p = sub.add_parser("suggest", help="recommend pool cards that fit a deck's colors + themes")
     p.add_argument("id")
     p.add_argument("--limit", type=int, default=20,
@@ -3844,6 +4150,9 @@ def main():
     p.add_argument("--strict", action="store_true", help="exit non-zero on any regression/weak-add (default: warn only)")
     p = sub.add_parser("history", help="show a deck file's git change history (its changelog)")
     p.add_argument("id")
+    p.add_argument("--since", metavar="YYYY-MM-DD",
+                   help="only commits on/after this date, plus the cumulative card-level "
+                        "net change since then (what you still need to push to Arena)")
     p = sub.add_parser("tier", help="check a deck's claimed tier against its measurable quality floor")
     p.add_argument("id")
     p.add_argument("--strict", action="store_true", help="exit non-zero on a tier mismatch (default: warn only)")
@@ -3880,6 +4189,7 @@ def main():
         "list": cmd_list, "wildcards": cmd_wildcards, "audit": cmd_audit, "check": cmd_check,
         "diff": cmd_diff, "arena": cmd_arena, "stats": cmd_stats,
         "mana": cmd_mana, "tribes": cmd_tribes, "engines": cmd_engines, "suggest": cmd_suggest,
+        "rotation": cmd_rotation,
         "legal": cmd_legal, "cuts": cmd_cuts,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
         "verify": cmd_verify, "text": cmd_text, "suggest-homes": cmd_suggest_homes,

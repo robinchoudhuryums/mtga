@@ -26,7 +26,10 @@ docs. This file is the source of truth for the workflow commands in
   `suggest`/`suggest-homes`/fingerprints; a `.replace(" ", "")` variant kept the `/`
   and broke gold cards (audit F1/F2). `card_colors()` handles both — route every new
   color-parse site through it. `scripts/check_colors.py` (a hard `check_all` gate,
-  like `check_rankings`) locks this in: a colorless card must not read as colored.
+  like `check_rankings`) locks this in: a colorless card must not read as colored,
+  AND a static AST scan fails the build if any script re-implements the naive
+  `{x for x in … if x in "WUBRG"}` idiom instead of `card_colors()` — the coverage
+  gap that once let the bug regress into `wishlist.py`/`app.py` undetected.
 - **Write canonical files through `lib.atomic_write()` (+ `lib.backup_path()`).**
   Every mutation of `card-library.csv` / `card-mana.csv` / `card-pool.csv` /
   `card-wishlist.csv` goes temp-file → timestamped `.bak` → atomic `os.replace`, so
@@ -49,6 +52,8 @@ docs. This file is the source of truth for the workflow commands in
   The pool-facing ownership joins (`pool.py`, `deck.py suggest`) fall back to a
   DFC's **front** face, since the pool keys the full `Front // Back` name but the
   library stores the front only — else an owned DFC would read as `craft` (audit F6).
+  Route every such join through `lib.owned_qty` (front-face aware); `check_dfc.py`
+  hard-gates this (behavioral anchor + a static scan for raw lookups that bypass it).
 - **Decks share the collection — a card is NOT consumed by a deck.** In MTG Arena
   the whole collection is available to every deck at once, so one owned copy can
   sit in any number of decks *simultaneously*; owning N copies lets each deck run
@@ -312,13 +317,17 @@ castability · curve · central-theme density), with the intangibles moving a de
   *finish* a near-complete deck) so "upgrade a BUILT deck" reads apart from "build an
   UNBUILT one" — the strategic overlay the raw score can't show. `--rank` and
   `--budget` **exclude cards you already own** (DFC front-name aware) so a craft plan
-  never tells you to craft what you have (audit F19); a **non-numeric** `Power` typo is
-  flagged `pow!` (scored 0.0 but surfaced, not silently sunk — audit F9); and
+  never tells you to craft what you have (audit F19); a **non-numeric or non-finite**
+  (`nan`/`inf`) `Power` is flagged `pow!` (scored 0.0 but surfaced, not silently sunk —
+  audit F9/A10); and
   re-running `--add` on a batch **re-enriches** rows that were added name-only during
   an earlier Scryfall outage instead of skipping them as dupes (audit F20).
   `Target`/`Note`/`Power` are hand-annotated: `Target` is a
   deck id / `general` / `concept: …`; **`Power` is a 1–10 hand-graded constructed-
-  power score** that `--rank` blends 50/50 with theme fit into a `combined` score
+  power score** that `--rank` blends 50/50 with theme fit — plus a **bounded
+  cross-deck reuse (breadth) bonus** (the `use` column, ★ at ≥3; guarded as
+  bounded/capped by `check_rankings` anchor 5) so a multi-home craft outranks an equal
+  fit+power one-deck sidegrade — into a `combined` score
   (an idf theme model can't see raw power, so bombs like Doctor Doom get buried
   without it — the Power column is the fix; the artifact exposes a live fit↔power
   slider). **Lands rank on a different axis:** a land has no synergy themes, so
@@ -414,7 +423,18 @@ castability · curve · central-theme density), with the intangibles moving a de
   (`build_pool.py --all`, per `/refresh`) to refresh both the legality snapshot and
   the date stamp. `rotation_risk()` returns False on a blank `Released` (graceful
   before a pool rebuild adds the column), so the flag only fires once the data
-  supports it.
+  supports it. The **roster-wide counterpart is `deck.py rotation`**: for each
+  Standard deck it lists the cards past the ~3-year window (same `rotation_risk`
+  primitive), a rollup by rotation year (soonest first, `⚠ SOON` for this/next year),
+  and the most-exposed decks — *what rotates next and which decks it hits*. It reads
+  the pool's `Released` column (rebuild `build_pool.py --all`, else it prints a
+  rebuild prompt) and scopes with `--format` / `--years` / `--within` (how many years
+  ahead to surface — since a freshly-built pool holds only currently-legal cards, it
+  ranks by each card's rotation YEAR rather than a strict >years boolean). It's also a
+  **dashboard panel** (Standard rotation), and `wishlist.py --rank` flags a craft target
+  whose Standard-legal set rotates this year/next as **`⚠rot~YEAR`** (don't spend a
+  wildcard on a card about to leave the format). Caveat: the pool keys one printing per
+  card, so a reprint can read early — verify against the official schedule.
 - **`deck.py suggest-homes <card>` automates the "which of my decks does this new
   card improve" fit pass** (the manual dance repeated every craft this session —
   Doctor Doom, Elspeth, Wan Shi Tong, Shark Shredder). It scans EVERY deck and
@@ -524,9 +544,14 @@ castability · curve · central-theme density), with the intangibles moving a de
 INV-01…04 plus a **ranking-model sanity check** (`check_rankings.py`) that guards
 the Doctor-Doom-class regression: a scoring change that silently reclassifies a
 real tribal theme as "generic". The ranking check is distribution-based, so it
-survives cards being crafted off the wishlist. Four more model-sanity checks are
+survives cards being crafted off the wishlist. Five more model-sanity checks are
 also hard-gated: **color-parsing** (`check_colors.py`) locks in the F1/F2 fix (a
-colorless card must not read as red; a slash-gold must pass the subset test);
+colorless card must not read as red; a slash-gold must pass the subset test) and a
+static scan bans the naive inline `if ch in "WUBRG"` parse outside `lib.py`;
+**DFC ownership-join** (`check_dfc.py`) guards the front/full-name convention — a
+behavioral anchor that `lib.owned_qty` and its wrappers (`wishlist._owned_of`,
+`pool.owned_of`) resolve an owned double-faced card by its front face, plus a static
+scan that flags a raw ownership lookup bypassing `owned_qty` (the A3/A4/F6 class);
 **suggest scoring** (`check_suggest.py`) keeps the needs-aware suggest/cuts terms
 BOUNDED — the diminishing-returns role credit and the curve-gap factor can't
 silently reorder a tuned deck (#1/#2), the power co-signal never overrides
@@ -553,6 +578,11 @@ recommendation), summarized to one line (#7); and **tier mismatch**
 bands above the tier its measurable quality vector supports (an inflated/stale
 letter — see the Competitive Tiering rubric). Soft warnings never fail the build.)
 
+A **pytest unit layer** (`tests/`, run with `pytest` or `make test-units`, deps in
+`requirements-dev.txt`) COMPLEMENTS this gate — fast, isolated tests that pin the
+edge-case behaviour of the pure helper functions. It is NOT part of the Test Command
+above (check_all stays zero-dependency); both run in CI via `.github/workflows/tests.yml`.
+
 **Health Dimensions:**
 - Data Integrity — CSV structure, no drift between library and derived files
 - Enrichment & Tagging Accuracy — Scryfall-sourced fields and synergy tags
@@ -564,8 +594,9 @@ letter — see the Competitive Tiering rubric). Soft warnings never fail the bui
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
-- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
-- Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`)
+- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
+- Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel.
+- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/
 
 **Invariant Library:**
@@ -580,7 +611,7 @@ letter — see the Competitive Tiering rubric). Soft warnings never fail the bui
 
 **Regression Scenarios** (manual walks; the Test Command above is the primary gate):
 1. Ingest a batch — `import_arena.py <file>` → `enrich.py` → `validate.py` → `build_gallery.py`. Expect: validate clean, gallery card count == library row count.
-2. Analyze a deck — `deck.py check|mana|tribes|stats|legal|cuts|text|verify <id>` and roster-wide `deck.py audit` / `deck.py suggest-homes <card>`. Expect: no traceback; mana is hybrid-aware; tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts/text print full oracle text; audit scores every deck TUNE/craft/review/ok; verify diffs a pasted Arena export against the stored deck.
+2. Analyze a deck — `deck.py check|mana|tribes|stats|legal|cuts|text|verify <id>` and roster-wide `deck.py audit` / `deck.py suggest-homes <card>` / `deck.py rotation`. Expect: no traceback; mana is hybrid-aware; tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts/text print full oracle text; audit scores every deck TUNE/craft/review/ok; verify diffs a pasted Arena export against the stored deck.
 3. Refresh derived data — `build_mana.py` → `tag_synergies.py --merge` → `build_pool.py` → `build_gallery.py` → `check_all.py`. Expect: check_all reports all invariants hold.
 4. Edit via the app — start `scripts/app.py`, change a quantity and Save, add a card, then open a deck (Decks →), change a card's quantity and Save; run `check_all.py`. Expect: CSV + deck file updated, `.bak`s written, and all invariants hold (INV-02 since add appends a card-mana.csv row; INV-04 since deck save re-parses cleanly).
 
