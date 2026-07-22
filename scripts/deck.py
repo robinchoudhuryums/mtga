@@ -2999,6 +2999,40 @@ def _weakest_cut(dmeta, cards, cardmeta, carddata):
     return best[1] if best else None
 
 
+_FIXER_TAGS = {"ramp", "mana"}
+_FIXER_CUES = (
+    "any color", "any type", "every basic land type", "all basic land types",
+    "each basic land type", "mana of any", "as though it were mana of any color",
+    "spend mana of any type",
+)
+
+
+def _fixer_boost(ncolors, per_color=4, cap=5):
+    """Bounded fit bump for a rainbow fixer in an `ncolors`-color deck — grows with
+    the color count (a fixer earns more in a 5-color deck than a 3-color one) but is
+    CAPPED (at `cap` colors) so it nudges ordering among fixer-eligible decks without
+    ever dwarfing a genuine theme match. Returns 0 below 3 colors (mono/two-color
+    decks don't need the fixing)."""
+    if ncolors < 3:
+        return 0
+    return min(ncolors, cap) * per_color
+
+
+def _is_color_fixer(ctags, text):
+    """True when a card's value is multi-color mana FIXING whose worth SCALES with a
+    deck's color count — a rainbow fixer (Overlord's every-basic-land-type token,
+    Vizier's 'spend mana as though any color', a Triome-maker). A theme-overlap model
+    can't see fixing (it isn't a 'theme'), and its value is proportional to how many
+    colors the target deck must cast — so `suggest-homes` under-rates it in exactly
+    the 3+-color decks that want it most (the Overlord → decks 17/21a miss). Gated on
+    BOTH a fixing tag (ramp/mana) AND explicit rainbow text, so a mono-color ramp
+    spell ('add {G}{G}') never qualifies."""
+    if not ({t.lower() for t in ctags} & _FIXER_TAGS):
+        return False
+    t = (text or "").lower()
+    return any(cue in t for cue in _FIXER_CUES)
+
+
 def cmd_suggest_homes(args):
     """For a card you own, scan EVERY deck: where is it both castable and on-theme,
     is it already there, and what's the weakest card it could replace? Automates
@@ -3013,14 +3047,17 @@ def cmd_suggest_homes(args):
         return 1
     ccols = card_colors(cd.get("colors"))
     ctags = set(cardmeta.get(card.lower(), {}).get("synergies", []))
+    is_fixer = _is_color_fixer(ctags, cd.get("text") or "")
 
     print(f"Card: {card}  [{'/'.join(sorted(ccols)) or 'Colorless'}]  ({cd['type']})")
-    print(f"Themes: {', '.join(sorted(ctags)) or '(none)'}\n")
+    print(f"Themes: {', '.join(sorted(ctags)) or '(none)'}"
+          f"{'   [rainbow fixer — value scales with a deck’s color count]' if is_fixer else ''}\n")
 
     results = []
     for dd in discover_decks():
         dmeta, cards = parse_deck_file(dd["path"])
-        if not ccols.issubset(_deck_castable_colors(dmeta, cards, mana)):
+        castable = _deck_castable_colors(dmeta, cards, mana)
+        if not ccols.issubset(castable):
             continue
         theme_w = {}
         for q, n, s, c in cards:
@@ -3038,6 +3075,19 @@ def cmd_suggest_homes(args):
         d_int, d_ca = deck_role_counts(cards, carddata)
         sig = _signature_themes(dmeta, cards, cardmeta)
         strength = fit_strength(shared, theme_w, cd.get("text") or "", d_int, d_ca, sig)
+        # Color-fixer overlay: a rainbow fixer's worth scales with the deck's color
+        # count, which theme-overlap can't see. In a 3+-color deck it's at least a
+        # role-player manabase upgrade; in a 4+-color deck it's a KEY one (the fixing
+        # is doing real work every game). The fit bump is BOUNDED (fixer_boost) so it
+        # nudges ordering among fixer-eligible decks without dwarfing a real theme
+        # match; the strength promotion never DEMOTES a fit fit_strength already rated
+        # KEY. This closes the Overlord → 17/21a miss without touching mono-color decks.
+        if is_fixer and len(castable) >= 3:
+            fit += _fixer_boost(len(castable))
+            if len(castable) >= 4:
+                strength = "KEY"
+            elif strength == "tangential":
+                strength = "role-player"
         cut = None if already else _weakest_cut(dmeta, cards, cardmeta, carddata)
         results.append((fit, dd["id"], already, shared, cut, strength))
 

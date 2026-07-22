@@ -99,6 +99,33 @@ def check():
                     "contribution should stay a modest co-signal (≤ ~role-credit scale), "
                     "not override theme fit.")
 
+    # (6) color-fixer overlay (suggest-homes): the fixer boost must be 0 below 3
+    #     colors (mono/two-color decks don't want rainbow fixing), non-decreasing in
+    #     color count, and CAPPED — so it re-ranks fixer-eligible decks without ever
+    #     dwarfing a genuine theme match. And `_is_color_fixer` must require BOTH a
+    #     fixing tag AND rainbow text, so a mono-color ramp spell never qualifies.
+    fb = deck._fixer_boost
+    boosts = [fb(n) for n in range(1, 7)]
+    if not (fb(0) == 0 and fb(1) == 0 and fb(2) == 0):
+        errs.append(f"_fixer_boost must be 0 below 3 colors; got {boosts[:2]} for 1–2 colors "
+                    "— a mono/two-color deck must not get a rainbow-fixer bump.")
+    if not all(a <= b for a, b in zip(boosts, boosts[1:])):
+        errs.append(f"_fixer_boost not non-decreasing in color count: {boosts} "
+                    "— a fixer must be worth at least as much in a wider deck.")
+    if fb(5) != fb(6) or fb(6) != fb(20):
+        errs.append(f"_fixer_boost is not CAPPED (fb(5)={fb(5)}, fb(6)={fb(6)}, fb(20)={fb(20)}) "
+                    "— an uncapped bump could dwarf theme fit.")
+    isf = deck._is_color_fixer
+    if isf({"ramp"}, "Add {G}{G}."):
+        errs.append("_is_color_fixer flagged a mono-color ramp spell (tag but no rainbow text) "
+                    "— it must require explicit any-color/every-basic-land-type text.")
+    if isf({"tokens"}, "create a land token that is every basic land type"):
+        errs.append("_is_color_fixer flagged a card with rainbow text but NO fixing tag "
+                    "— it must require both a ramp/mana tag and the text cue.")
+    if not isf({"ramp", "mana"}, "create a tapped land token that is every basic land type"):
+        errs.append("_is_color_fixer failed to flag a canonical rainbow fixer "
+                    "(ramp/mana tag + every-basic-land-type) — the Overlord anchor.")
+
     return errs
 
 

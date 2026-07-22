@@ -171,6 +171,13 @@ MECHANIC_RULES = [
     ("ramp", lambda t, x: "spend mana of any type" in x
         or "as though it were mana of any color" in x),
     ("mana", lambda t, x: re.search(r"\{t\}: add", x) is not None),
+    # Land-token ramp + rainbow fixing — a card that makes a LAND token, or turns lands
+    # into "every/all basic land type(s)", is ramp AND color fixing whose value scales with
+    # a deck's color count (Overlord of the Hauntwoods' Everywhere token, Energybending).
+    # The theme model missed these (tagged only tokens/etb), so rainbow fixers hid from
+    # multicolor decks in suggest/suggest-homes/cuts, same blind spot as the Vizier case.
+    ("ramp", lambda t, x: re.search(r"create[s]?\b[^.]*\bland tokens?\b", x) is not None),
+    ("mana", lambda t, x: re.search(r"(every|all|each) basic land type", x) is not None),
     ("etb", lambda t, x: re.search(r"when [^.]*enters", x) is not None),
     ("landfall", lambda t, x: "landfall" in x or "whenever a land enters" in x),
     ("scry", lambda t, x: "scry" in x),
