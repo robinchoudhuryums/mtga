@@ -1,7 +1,7 @@
 #: name: Fighting Spirit
 #: format: Standard
 #: colors: UR
-#: tier: A — Izzet (UR) aggro-tempo. A-floor: interaction 6 on a coherent haste / double-strike / spell-payoff engine with a tight 2.44 curve (22 early drops) on a clean R-primary base. Real interaction — Heartfire sac-removal + Artistic Process + Impractical Joke, plus a soft counter suite (We Say Thee Nay, Redirect Lightning). Held out of any S conversation by two honest gaps: card advantage runs thin (measured 1; ~4 real via Enduring Curiosity / Null Group / loot / Clues, but the deck still dumps its hand and can flood out against removal-heavy control) and raw power sits below tuned Standard staples — this is a creative UB brew, and the premier upgrades (Slickshot Show-Off, Emberheart Challenger) are still unowned in flex. Low-end A / defensible B; re-grade toward S only after crafting the flex staples and proving it closes fast.
+#: tier: A — Izzet (UR) aggro-tempo. A-floor: interaction 6 on a coherent haste / double-strike / spell-payoff engine with a tight 2.44 curve (22 early drops) on a clean R-primary base. Real interaction — Heartfire sac-removal + Artistic Process + Impractical Joke, plus flexible interaction (We Say Thee Nay soft counter + Untimely Malfunction — redirect / can't-block / artifact). Held out of any S conversation by two honest gaps: card advantage runs thin (measured 1; ~4 real via Enduring Curiosity / Null Group / loot / Clues, but the deck still dumps its hand and can flood out against removal-heavy control) and raw power sits below tuned Standard staples — this is a creative UB brew, and the premier upgrades (Slickshot Show-Off, Emberheart Challenger) are still unowned in flex. Low-end A / defensible B; re-grade toward S only after crafting the flex staples and proving it closes fast.
 #: archetype: Izzet (UR) aggro-tempo — haste, double strike, pump, aggressive damage.
 #: notes: Trimmed 58-card brew to a legal 60 (22 creatures + 14 noncreature spells + 24
 #: notes: lands). R-primary / U-secondary: blue is a light splash (We Say Thee Nay counter +
@@ -43,7 +43,7 @@
 1 Felonious Rage (MKM) 125
 1 Impractical Joke (SOS) 119
 1 Jet's Brainwashing (TLA) 143
-1 Redirect Lightning (TLA) 151
+1 Untimely Malfunction (DSK) 161
 1 Haste Magic (FIN) 140
 1 Cunning Maneuver (TLA) 130
 1 We Say Thee Nay! (MSH) 82
