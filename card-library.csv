@@ -3484,3 +3484,11 @@ Animal May-Ham — Other Spiders, Boars, Bats, Bears, Birds, Cats, Dogs, Frogs, 
 Vizier of the Menagerie,Creature — Snake Cleric,"You may look at the top card of your library any time.
 You may cast creature spells from the top of your library.
 You can spend mana of any type to cast creature spells.",G,Snake; Cleric; selection; card advantage; ramp,FDN,649,1
+Soul Immolation,Sorcery,"As an additional cost to cast this spell, blight X. X can't be greater than the greatest toughness among creatures you control. (Put X -1/-1 counters on a creature you control.)
+Soul Immolation deals X damage to each opponent and each creature they control.",R,counters; burn,ECL,156,1
+Blood Crypt,Land — Swamp Mountain,"({T}: Add {B} or {R}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",B/R,Swamp; Mountain; mana,ECL,262,1
+Sapling Nursery,Enchantment,"Affinity for Forests (This spell costs {1} less to cast for each Forest you control.)
+Landfall — Whenever a land you control enters, create a 3/4 green Treefolk creature token with reach.
+{1}{G}, Exile this enchantment: Treefolk and Forests you control gain indestructible until end of turn.",G,tokens; landfall; affinity; artifacts; cost-reduction; lands; ramp,ECL,192,1
+Lasting Tarfire,Enchantment,"At the beginning of each end step, if you put a counter on a creature this turn, this enchantment deals 2 damage to each opponent.",R,counters; burn,ECL,149,1
