@@ -1709,7 +1709,10 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
     fmt = "" if any_format else (fmt or dmeta.get("format") or "").strip().lower()
 
     # Deck fingerprint: theme weights from synergy tags (copies carrying each tag).
-    deck_names = {n.lower() for _, n, _, _ in cards}
+    # Front-face normalized: deck files store a DFC under its FRONT name while the pool
+    # keys the full "Front // Back", so normalizing both sides to the front lets the
+    # "already in deck" filter below catch a DFC that's already maindecked (audit A8/F6).
+    deck_names = {n.lower().split(" // ")[0] for _, n, _, _ in cards}
     theme_w = {}
     for q, n, s, c in cards:
         if n.lower() in BASICS:
@@ -1769,7 +1772,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
     for r in pool:
         name = (r.get("Card Name") or "").strip()
         nl = name.lower()
-        if not name or nl in deck_names or nl in BASICS:
+        if not name or nl.split(" // ")[0] in deck_names or nl in BASICS:
             continue
         ccolors = card_colors(r.get("Color(s)"))
         if not ccolors.issubset(deck_colors):
