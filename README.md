@@ -250,6 +250,10 @@ a mono-W deck is half-dead), with a bonus for entering untapped — on the same
 two-color deck ranks as the real upgrade it is (`sig: manabase (land)`), instead
 of being buried under spells.
 
+A craft target whose Standard-legal set rotates this year or next is flagged
+**`⚠rot~YEAR`** — a wildcard there won't last, so verify before spending (the timing
+is a heuristic from set release; a reprint can read early).
+
 The two are normalized and blended 50/50 into a `combined` score; the list still
 groups into fit tiers (A = confident home / real breadth, B = one clear deck,
 C = situational). A **`state`** column shows each card's target deck as
@@ -316,12 +320,12 @@ pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export agains
 python3 scripts/deck.py text 1a              # full oracle text of every card (read before grading)
 python3 scripts/deck.py suggest 1a --unowned --full  # picks WITH full text + keywords + flags
 python3 scripts/deck.py suggest-homes "Crib Swap"    # which decks a card fits, with a fit-strength label
-python3 scripts/deck.py rotation             # roster-wide: which Standard decks run cards aging out (what rotates next)
+python3 scripts/deck.py rotation             # roster-wide: which Standard decks run cards aging out (what rotates next); --within N, --years N, --format
 python3 scripts/deck.py preflight 1a         # one-call verify: legal + owned + castable + integrity
 python3 scripts/deck.py quality 1a --json    # deck-quality vector; --vs FILE diffs a before-snapshot
 python3 scripts/deck.py tier 1a              # claimed #: tier: vs the tier its metrics support
 python3 scripts/deck.py tier 1a --to A       # gap to A + owned fillers AND craft targets for the short axis
-python3 scripts/deck.py history 1a           # the deck's git change history (its changelog)
+python3 scripts/deck.py history 1a           # the deck's git change history (its changelog); --since YYYY-MM-DD adds the net card change since then
 python3 scripts/deck.py quality 1a --at HASH # compare this deck's list at a past commit vs now
 ```
 
@@ -605,6 +609,15 @@ basic-land art treated as fungible — the **same rules as `deck.py verify`**, r
 entirely client-side (nothing is uploaded). Use it to spot which decks you've edited
 in Arena but not yet updated in the repo (or vice-versa).
 
+Its mirror is the **"Recently edited decks"** panel — the *repo→Arena* direction: the
+decks you've changed most recently (from git history), newest first, each showing the
+edit date, the card-level change of the most recent edit (with a *last edit / net·7d /
+net·30d* "since" toggle), the commit changelog, and a **⧉ Copy Arena import** button to
+re-import into Arena. A **"Standard rotation"** panel shows what rotates next (by year,
+⚠ SOON) and which decks it hits — the dashboard view of `deck.py rotation`. (Both need
+the pool's `Released` column: `build_pool.py --all`; the recently-edited dates need
+git history, so `pages.yml` checks out with `fetch-depth: 0`.)
+
 A **"Find a card"** search box (top of the page) is the dashboard mirror of
 `card.py`'s *in decks* line: type any card name and it lists every deck **including
 variants** that runs it (with the copy count), each a click-through chip that
@@ -753,6 +766,12 @@ it isn't tagged with (a stale tag distorts every recommendation), summarized to 
 line; and **tier mismatch** — a deck whose claimed `#: tier:` sits ≥2 bands above its
 measurable floor. A SessionStart hook runs the gate (quiet) so drift surfaces
 immediately.
+
+A **pytest unit layer** (`tests/`) complements the gate — fast, isolated tests that
+pin the pure helper functions (color/DFC parsing, mana pips, role tally, tier floor,
+engine roles, rotation math, ingest/tagging). It's dev-only: `pip install -r
+requirements-dev.txt` then `pytest` (or `make test-units`); the core tooling and
+`check_all.py` stay pure standard library. Both run in CI (`.github/workflows/tests.yml`).
 
 Claude Code slash commands live in `.claude/commands/`:
 

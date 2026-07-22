@@ -428,7 +428,13 @@ castability · curve · central-theme density), with the intangibles moving a de
   primitive), a rollup by rotation year (soonest first, `⚠ SOON` for this/next year),
   and the most-exposed decks — *what rotates next and which decks it hits*. It reads
   the pool's `Released` column (rebuild `build_pool.py --all`, else it prints a
-  rebuild prompt) and scopes with `--format` / `--years`.
+  rebuild prompt) and scopes with `--format` / `--years` / `--within` (how many years
+  ahead to surface — since a freshly-built pool holds only currently-legal cards, it
+  ranks by each card's rotation YEAR rather than a strict >years boolean). It's also a
+  **dashboard panel** (Standard rotation), and `wishlist.py --rank` flags a craft target
+  whose Standard-legal set rotates this year/next as **`⚠rot~YEAR`** (don't spend a
+  wildcard on a card about to leave the format). Caveat: the pool keys one printing per
+  card, so a reprint can read early — verify against the official schedule.
 - **`deck.py suggest-homes <card>` automates the "which of my decks does this new
   card improve" fit pass** (the manual dance repeated every craft this session —
   Doctor Doom, Elspeth, Wan Shi Tong, Shark Shredder). It scans EVERY deck and
@@ -572,6 +578,11 @@ recommendation), summarized to one line (#7); and **tier mismatch**
 bands above the tier its measurable quality vector supports (an inflated/stale
 letter — see the Competitive Tiering rubric). Soft warnings never fail the build.)
 
+A **pytest unit layer** (`tests/`, run with `pytest` or `make test-units`, deps in
+`requirements-dev.txt`) COMPLEMENTS this gate — fast, isolated tests that pin the
+edge-case behaviour of the pure helper functions. It is NOT part of the Test Command
+above (check_all stays zero-dependency); both run in CI via `.github/workflows/tests.yml`.
+
 **Health Dimensions:**
 - Data Integrity — CSV structure, no drift between library and derived files
 - Enrichment & Tagging Accuracy — Scryfall-sourced fields and synergy tags
@@ -584,7 +595,8 @@ letter — see the Competitive Tiering rubric). Soft warnings never fail the bui
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
-- Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`)
+- Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel.
+- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/
 
 **Invariant Library:**
