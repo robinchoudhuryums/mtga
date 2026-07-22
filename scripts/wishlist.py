@@ -41,7 +41,7 @@ import csv
 import os
 import sys
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty, card_colors
 from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
@@ -443,7 +443,7 @@ def cmd_suggest_targets(rows, write=False, overwrite=False):
     print(f"  {'Card':30} {'Conf':6} {'Target':9} Signal")
     print("  " + "-" * 84)
     for r in rows:
-        ccols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+        ccols = card_colors(r.get("Color(s)"))
         ctags = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
         fits = []
         for did, dcols, central, twn in fps:
@@ -498,8 +498,7 @@ def _deck_colors_map():
     """deck_id(lower) -> declared color set, for land manabase scoring."""
     try:
         import deck as dk
-        return {d["id"].lower(): {c for c in (d["meta"].get("colors") or "").upper()
-                                  if c in "WUBRG"}
+        return {d["id"].lower(): card_colors(d["meta"].get("colors"))
                 for d in dk.discover_decks()}
     except Exception:
         return {}
@@ -516,7 +515,7 @@ def _land_value(row, deck_colors):
     require the deck to span >=2 of the land's colors for a dual to matter, and
     prize untapped fixing. Colorless/utility or unknown-deck lands score neutral."""
     txt = (row.get("Card Text") or "")
-    prod = {c for c in (row.get("Color(s)") or "").upper() if c in "WUBRG"}
+    prod = card_colors(row.get("Color(s)"))
     for c in "WUBRG":
         if "{" + c + "}" in txt:
             prod.add(c)
@@ -591,7 +590,7 @@ def _rank_scores(rows):
     deck_colors = _deck_colors_map()
     out = []
     for r in rows:
-        ccols = {ch for ch in (r.get("Color(s)") or "").upper() if ch in "WUBRG"}
+        ccols = card_colors(r.get("Color(s)"))
         ctags = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
         best, best_specific, reuse = 0.0, [], 0
         for did, dcols, central, twn in fps:
@@ -847,7 +846,7 @@ def cmd_seed_power(rows, write=False):
 def print_table(hits, owned):
     cols = ["Have", "Card Name", "Type", "Color(s)", "Set", "Rarity", "Target"]
     def have_of(c):
-        return "own" if owned.get((c.get("Card Name") or "").strip().lower(), 0) > 0 else ""
+        return "own" if _owned_of(owned, c.get("Card Name")) > 0 else ""
     data = []
     for c in hits:
         data.append({"Have": have_of(c), "Card Name": c.get("Card Name", ""),
@@ -882,15 +881,14 @@ def _audit_target_issues(color_only=False):
         import deck as dk
         for d in dk.discover_decks():
             deck_ids.add(d["id"].lower())
-            deck_cols[d["id"].lower()] = {c for c in (d["meta"].get("colors") or "").upper()
-                                          if c in "WUBRG"}
+            deck_cols[d["id"].lower()] = card_colors(d["meta"].get("colors"))
     except Exception:
         pass
     for r in rows:
         name = (r.get("Card Name") or "").strip()
         if not color_only and not (r.get("Power") or "").strip():
             issues.append(("power", name, "blank Power (ranks low until graded)"))
-        ident = {c for c in (r.get("Color(s)") or "").upper() if c in "WUBRG"}
+        ident = card_colors(r.get("Color(s)"))
         for tok in re.split(r"[;,]", (r.get("Target") or "")):
             tok = tok.strip().lower()
             if not tok or tok in ("—", "general") or tok.startswith("concept"):
@@ -988,7 +986,7 @@ def main():
 
     hits = [c for c in rows if _match(c, args)]
     if args.owned:
-        hits = [c for c in hits if owned.get((c.get("Card Name") or "").strip().lower(), 0) > 0]
+        hits = [c for c in hits if _owned_of(owned, c.get("Card Name")) > 0]
 
     if args.count:
         print(len(hits))
@@ -999,10 +997,10 @@ def main():
 
     print_table(hits, owned)
     still = sum(1 for c in hits
-                if owned.get((c.get("Card Name") or "").strip().lower(), 0) == 0)
+                if _owned_of(owned, c.get("Card Name")) == 0)
     from collections import Counter
     by_r = Counter((c.get("Rarity") or "?").capitalize() for c in hits
-                   if owned.get((c.get("Card Name") or "").strip().lower(), 0) == 0)
+                   if _owned_of(owned, c.get("Card Name")) == 0)
     tail = ", ".join(f"{by_r[x]} {x}" for x in ("Mythic", "Rare", "Uncommon", "Common", "?")
                      if by_r[x])
     print(f"\n{len(hits)} card(s) — {still} to craft" + (f" ({tail})" if tail else ""))

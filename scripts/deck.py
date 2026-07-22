@@ -3491,8 +3491,11 @@ def craft_role_fillers(d, roles, *, limit=8):
                 continue
             if "Land" in _primary_type(r.get("Type") or ""):
                 continue
-            have, found = owned(qty, name)
-            if found and have > 0:              # want CRAFT targets — skip owned
+            # want CRAFT targets — skip owned. Pool names are the full "Front // Back";
+            # owned_qty falls back to the DFC front face so an owned DFC isn't listed as
+            # a craft target (audit F6/F19), unlike the local owned() which needs an
+            # exact key. Mirrors suggest_scored.
+            if owned_qty(qty, name) > 0:
                 continue
             ident = card_colors(r.get("Color(s)"))
             if not ident <= declared:

@@ -1433,6 +1433,23 @@ def main():
     t = payload["totals"]
     print(f"Wrote {args.out}: {t['decks']} decks ({t['buildable']} buildable), "
           f"{t['printings']} printings.")
+
+    # Aggregate self-check (audit A6): per-deck analysis errors are tolerated — one
+    # bad card must not fail the whole build (that's why _capture swallows them) — but
+    # a WHOLESALE failure (analysis erroring for a majority of decks, i.e. a real
+    # deck.py cmd_* regression) must NOT deploy as a green success. Mirror
+    # build_gallery.py: the file is still written for inspection, but say so plainly
+    # and exit non-zero so CI/Pages doesn't publish a page of "[analysis error]" panels.
+    MARK = "[analysis error"
+    err_decks = [d["id"] for d in payload["decks"]
+                 if any(MARK in (d.get("detail", {}).get(k) or "")
+                        for k in ("legal", "cuts", "arena"))]
+    ndecks = len(payload["decks"])
+    if ndecks and len(err_decks) * 2 >= ndecks:
+        eprint(f"WARN:  deck analysis failed for {len(err_decks)}/{ndecks} decks "
+               f"(e.g. {', '.join(err_decks[:6])}) — a deck.py command likely regressed. "
+               f"The dashboard was written but is DEGRADED; refusing to report success.")
+        return 1
     return 0
 
 
