@@ -37,7 +37,7 @@
 1 Nashi, Searcher in the Dark (DSK) 223
 1 Ghost, Spectral Saboteur (MSH) 214
 1 Lorehold, the Historian (SOS) 201
-1 Storm, Windrider (MSH) 230
+1 The Vision (MSH) 255
 
 # Engines + any-target damage
 1 Impostor Syndrome (SPM) 34
