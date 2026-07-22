@@ -50,7 +50,7 @@
 1 Pym Particles (MSH) 70
 1 Untimely Malfunction (DSK) 161
 1 How to Start a Riot (TLA) 140
-1 Team Tactics (MSH) 155
+1 Mona Lisa, Science Geek (TMT) 123
 1 Biosynthic Burst (EOE) 173
 1 Burst Lightning (SOA) 41
 1 Vibrant Outburst (SOS) 240
@@ -72,5 +72,5 @@
 3 Island (MSH) 290
 3 Mountain (MSH) 294
 3 Forest (MSH) 296
-1 Plains (MSH) 288
-1 Swamp (MSH) 292
+1 Great Divide Guide (TLA) 181
+1 Bloom Tender (ECL) 166
