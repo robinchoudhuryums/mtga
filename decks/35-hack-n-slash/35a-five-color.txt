@@ -1,5 +1,6 @@
 #: name: Hack n Slash — 5-Color (Route B)
 #: format: Standard
+#: tier: C — the greedy 5-color variant of the Temur primary (35, tier B). Same connect engine, but the 5-color manabase is a real consistency tax even with the 3-dork fixing package (Great Divide Guide / Bloom Tender / Mona Lisa): color-screw when you miss the dorks, and card advantage is thinner (3). Per the rubric, that heavy variance caps it at C; the off-color bombs (Absolute Virtue, Lightning Army of One's Stagger) are the payoff for the risk — a defensible B on a good draw, but the honest "play the bombs for fun" grade is C. Metrics floor A can't see the 5c variance. (Guard will soft-flag under-graded; intentional.)
 #: colors: WUBRG
 #: based-on: deck.txt
 #: archetype: 35 variant — the greedy 5-color build: keeps the W/B bombs (Absolute Virtue, Lightning Army of One, Karai, Bullseye, Sawblade…) that the Temur primary cuts, on a dual-heavy rainbow base.
@@ -37,7 +38,7 @@
 1 Nashi, Searcher in the Dark (DSK) 223
 1 Ghost, Spectral Saboteur (MSH) 214
 1 Lorehold, the Historian (SOS) 201
-1 Storm, Windrider (MSH) 230
+1 The Vision (MSH) 255
 
 # Engines + any-target damage
 1 Impostor Syndrome (SPM) 34
@@ -50,7 +51,7 @@
 1 Pym Particles (MSH) 70
 1 Untimely Malfunction (DSK) 161
 1 How to Start a Riot (TLA) 140
-1 Team Tactics (MSH) 155
+1 Mona Lisa, Science Geek (TMT) 123
 1 Biosynthic Burst (EOE) 173
 1 Burst Lightning (SOA) 41
 1 Vibrant Outburst (SOS) 240
@@ -72,5 +73,5 @@
 3 Island (MSH) 290
 3 Mountain (MSH) 294
 3 Forest (MSH) 296
-1 Plains (MSH) 288
-1 Swamp (MSH) 292
+1 Great Divide Guide (TLA) 181
+1 Bloom Tender (ECL) 166

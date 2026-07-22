@@ -1,5 +1,6 @@
 #: name: Hack n Slash
 #: format: Standard
+#: tier: B — Temur connect-and-trigger tempo. Metrics floor A (aggro clock 4/7 + card advantage 4 + interaction ~6 with the under-read bounces), but graded down: the floor can't see that this is a singleton creative brew with a scattered plan (19 central themes, no redundant threat), a still-top-heavy curve (Krang/Bahamut/Dawning Archaic lean on ~3 cheat enablers), and raw power below tuned Standard staples. More than the "≤1 weakness" an A allows — a genuinely fun, functional B, not a competitive A. (The tier guard will soft-flag "under-graded" vs the A floor; that's the deliberate below-floor call, justified here.)
 #: colors: GUR
 #: archetype: Temur (U/R/G) "connect-and-trigger" tempo — evasive threats trigger a pile of combat-damage payoffs, cheat threats ahead of curve (Michelangelo, Improviser), and close with any-target burn.
 #: notes: Route A — the focused Temur cut of the 5-color Hack n Slash pile (5c version kept as
@@ -16,7 +17,7 @@
 1 Krang, Utrom Warlord (TMT) 175
 1 Summon: Bahamut (FIN) 1
 1 The Dawning Archaic (SOS) 1
-1 The Legend of Kyoshi (TLA) 186
+1 The Vision (MSH) 255
 
 # Connect creatures (combat-damage-to-player payoffs)
 1 Bruce Banner (MSH) 49
@@ -34,7 +35,7 @@
 1 Mondo Gecko (TMT) 46
 1 Hawkeye, Master Marksman (MSH) 130
 1 Ashroot Animist (FDN) 117
-1 Giant Koi (TLA) 53
+1 Human Torch, Johnny Storm (MSH) 136
 
 # Engines / enchantments
 1 Impostor Syndrome (SPM) 34

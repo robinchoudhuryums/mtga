@@ -465,6 +465,16 @@ castability · curve · central-theme density), with the intangibles moving a de
   verbatim. Card-*unique* flavor ability names (Firaga, Wave Cannon, Murasame, …), which
   Scryfall also reports as keywords, are dropped via the `FLAVOR_KEYWORDS`
   denylist so they don't pollute the tags.
+- **`tag_synergies.py` text-tags fixing + topdeck-value engines** so they stop
+  hiding under `selection`: "cast/play … from the top of your library" → `card
+  advantage` (Vizier of the Menagerie, Realmwalker, Bolas's Citadel), and "spend
+  mana of any type / as though it were any color" → `ramp` (Vizier, Fist of Suns) —
+  so these surface on ramp/value in `suggest` / `suggest-homes` / `cuts`. **The
+  residual is inherent:** a card whose fixing value SCALES with the target deck's
+  color count (great in a 4-color deck, filler in a mono-color one) still can't be
+  fully valued by a theme-fit model, so `suggest-homes` may call it a *role-player*
+  when it's really KEY — grade from full text (why the shortlists print "grade
+  from text"; the Vizier→deck-13 case).
 - A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
   warning (expected, not an error).
 - The **functional-role** breakdown (`deck.py stats`) and **castability lint**
