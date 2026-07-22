@@ -1,5 +1,6 @@
 #: name: Hack n Slash — 5-Color (Route B)
 #: format: Standard
+#: tier: C — the greedy 5-color variant of the Temur primary (35, tier B). Same connect engine, but the 5-color manabase is a real consistency tax even with the 3-dork fixing package (Great Divide Guide / Bloom Tender / Mona Lisa): color-screw when you miss the dorks, and card advantage is thinner (3). Per the rubric, that heavy variance caps it at C; the off-color bombs (Absolute Virtue, Lightning Army of One's Stagger) are the payoff for the risk — a defensible B on a good draw, but the honest "play the bombs for fun" grade is C. Metrics floor A can't see the 5c variance. (Guard will soft-flag under-graded; intentional.)
 #: colors: WUBRG
 #: based-on: deck.txt
 #: archetype: 35 variant — the greedy 5-color build: keeps the W/B bombs (Absolute Virtue, Lightning Army of One, Karai, Bullseye, Sawblade…) that the Temur primary cuts, on a dual-heavy rainbow base.
