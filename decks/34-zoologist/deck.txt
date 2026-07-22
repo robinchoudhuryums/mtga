@@ -1,0 +1,52 @@
+#: name: Zoologist
+#: format: Standard
+#: colors: GU
+#: archetype: Simic (G/U) changeling / creature-type-matters — pile the board with all-types creatures, then Diligent Zookeeper & co. make them enormous.
+#: notes: WIP build (58 cards) around Diligent Zookeeper ("each non-Human creature gets
+#: notes: +1/+1 for EACH of its creature types, max 10") — so a changeling (all types) becomes
+#: notes: a +10/+10 threat. Enablers: Leyline of Transformation, Omni-Changeling, Three Tree
+#: notes: Mascot, Mutable Explorer, Cat-Owl, Glamer Gifter, Oko. Vizier of the Menagerie for
+#: notes: ramp/castability. Needs +2 cards to reach 60 and a tuning pass; many cards unowned
+#: notes: (aspirational — check shows craft targets). Gangly Stompling ({2}{R/G}) and Cat-Owl
+#: notes: ({3}{W/U}) are hybrids paid on-color (G/U) — the mana △ flag is expected, not a stray.
+
+# Nonland
+1 Diligent Zookeeper (TLA) 171
+1 Vizier of the Menagerie (FDN) 649
+1 Leyline of Transformation (DSK) 63
+1 Oko, Lorwyn Liege (ECL) 61
+1 Omni-Changeling (ECL) 62
+1 Mutable Explorer (ECL) 186
+1 Three Tree Mascot (FDN) 682
+1 Cat-Owl (TLA) 212
+1 Glamer Gifter (ECL) 49
+1 Undercover Skrull (MSH) 194
+1 Absorbing Man (MSH) 199
+1 Ultron, Artificial Malevolence (MSH) 252
+1 Patchwork Beastie (DSK) 195
+1 Wickerfolk Thresher (DSK) 207
+1 Overlord of the Hauntwoods (DSK) 194
+1 Gangly Stompling (ECL) 226
+1 Iguana Parrot (TLA) 56
+1 Turtle-Duck (TLA) 200
+1 Badgermole Cub (TLA) 167
+1 Badgermole (TLA) 166
+1 Flopsie, Bumi's Buddy (TLA) 179
+1 Ember Island Production (TLA) 48
+1 Avatar Destiny (TLA) 165
+1 March of the World Ooze (DFT) 169
+1 Applied Geometry (SOS) 172
+1 Spider-Suit (SPM) 176
+1 Stalactite Dagger (ECL) 261
+1 Diamond Weapon (FIN) 183
+1 Chronicle of Victory (ECL) 253
+1 Enter the Enigma (DSK) 52
+1 Earth's Mightiest Heroes (MSH) 165
+1 Pull Through the Weft (EOE) 202
+1 Zoetic Glyph (LCI) 86
+1 Seismic Sense (TLA) 195
+
+# Lands
+1 Lilypad Village (BLB) 255
+13 Forest (MSH) 296
+10 Island (MSH) 290

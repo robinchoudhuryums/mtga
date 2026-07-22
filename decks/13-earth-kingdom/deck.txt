@@ -1,6 +1,6 @@
 #: name: Earth Kingdom
 #: format: Standard
-#: tier: C — 4-color Earthbend ramp; big payoffs undercut by clunky 4-color mana
+#: tier: B — 4-color Earthbend ramp; metrics floor B (interaction 4 + card advantage 1). The clunky 4-color mana that capped it at C is now shored up by real fixing — Vizier of the Menagerie (spend any mana on creatures) + Prismatic Undercurrents (Vivid fetch = color count) + New Generation's Technique — so the big earthbend payoffs cast reliably. Held below A by thin hard interaction (4) and singleton variance across the rainbow splash.
 #: colors: GWBR
 #: archetype: Green-base 4-color Avatar Earthbend ramp — rainbow-fixed W/B/R splashes into big earthbenders.
 #: notes: Green-base Avatar Earth Kingdom / Earthbend ramp deck (green-primary), light
@@ -34,7 +34,7 @@
 1 Loot, Exuberant Explorer (FDN) 106
 1 Mole Man, Moloid Master (MSH) 177
 1 Ostrich-Horse (TLA) 188
-1 Restorative Technique (MSH) 183
+1 Vizier of the Menagerie (FDN) 649
 1 Sandman, Shifting Scoundrel (SPM) 112
 1 The Walls of Ba Sing Se (TLA) 261
 1 Prismatic Undercurrents (ECL) 189
