@@ -38,6 +38,7 @@ Set a card's Target/Note by editing card-wishlist.csv directly (it's a plain CSV
 
 import argparse
 import csv
+import math
 import os
 import sys
 
@@ -620,6 +621,11 @@ def _rank_scores(rows):
         try:
             power = float(raw_power) if raw_power else 0.0
             bad_power = False
+            # float() accepts "nan"/"inf"/"-inf" — a non-finite Power would escape the
+            # bad-value flag and poison the `combined` score (nan scrambles the sort,
+            # inf pins to the top), audit A10. Treat it like a non-numeric typo.
+            if not math.isfinite(power):
+                power, bad_power = 0.0, True
         except ValueError:
             # A non-numeric typo ("~9", "4,5", "TBD") must NOT silently score 0.0 and
             # sink a bomb without a flag (audit F9) — surface it like a blank cell.

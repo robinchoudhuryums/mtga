@@ -1085,19 +1085,24 @@ def engine_balance(cards, carddata, central, signature=frozenset()):
     sig = {t.lower() for t in signature}
     central_engines = [t for t in central if t.lower() in _ENGINE_COMPILED]
     result = {}
-    seen = set()
     creatures = 0
     for theme in central_engines:
         result[theme] = {"enablers": [], "payoffs": [], "deaths": [],
                          "en": 0, "pay": 0, "death": 0}
+    # Quantity-weighted per card, summed ACROSS lines (matching the canonical role_tally;
+    # a `seen`-set + first-line q under-counted a card split over two lines, audit A11).
+    qty_by_name, disp = {}, {}
     for q, n, s, c in cards:
         nl = n.lower()
-        if nl in BASICS or nl in seen:
+        if nl in BASICS:
             continue
-        seen.add(nl)
+        qty_by_name[nl] = qty_by_name.get(nl, 0) + q
+        disp.setdefault(nl, n)
+    for nl, q in qty_by_name.items():
         cd = carddata.get(nl)
         if not cd:
             continue
+        n = disp[nl]
         if "creature" in (cd.get("type") or "").lower():
             creatures += q
         roles = engine_roles(cd.get("text") or "")
@@ -1544,12 +1549,16 @@ def interaction_profile(cards, carddata):
     noncreature-answer = a Counter (answers any spell) or a removal cue that reaches past
     creatures."""
     total = instant = sorcery = noncreature = 0
-    seen = set()
+    # Quantity-weighted per card, summed ACROSS lines: a card split over two lines
+    # (e.g. two printings) must count its full quantity, matching the canonical
+    # role_tally — a `seen`-set + first-line q under-counted it (audit A11).
+    qty_by_name = {}
     for q, n, s, c in cards:
         nl = n.lower()
-        if nl in BASICS or nl in seen:
+        if nl in BASICS:
             continue
-        seen.add(nl)
+        qty_by_name[nl] = qty_by_name.get(nl, 0) + q
+    for nl, q in qty_by_name.items():
         cd = carddata.get(nl)
         if not cd:
             continue
@@ -1561,7 +1570,9 @@ def interaction_profile(cards, carddata):
         tl = (cd.get("type") or "").lower()
         tx = text.lower()
         is_counter = "Counter" in roles
-        if "instant" in tl or "flash" in tx or is_counter:
+        # `\bflash\b` matches the Flash keyword but NOT "flashback" — a sorcery-speed
+        # flashback recast is not instant-speed interaction (audit A7).
+        if "instant" in tl or re.search(r"\bflash\b", tx) or is_counter:
             instant += q
         else:
             sorcery += q
@@ -3270,8 +3281,13 @@ def cmd_quality(args):
         if truly_lost:
             regressions.append(
                 f"lost central theme(s) — 0 copies remain: {', '.join(sorted(truly_lost))}")
-        if vec["avg_mv"] - before.get("avg_mv", 0) > 0.3:
-            regressions.append(f"curve heavier (avg MV {before['avg_mv']}→{vec['avg_mv']})")
+        # Guard the direct index: a hand-written / schema-drifted --vs snapshot may lack
+        # avg_mv. With .get(...,0) the comparison fires for any real curve, then
+        # before['avg_mv'] would KeyError (audit A9). Skip the check when it's absent
+        # rather than crash or print a misleading "0→X".
+        b_mv = before.get("avg_mv")
+        if b_mv is not None and vec["avg_mv"] - b_mv > 0.3:
+            regressions.append(f"curve heavier (avg MV {b_mv}→{vec['avg_mv']})")
 
     weak_add = None
     if getattr(args, "add", None):

@@ -78,8 +78,9 @@ def check():
         }
         dead = deck.engine_balance([(2, "Blood Artist", "", ""), (2, "Blood Artist", "", "")],
                                    cd, ["sacrifice"])
-        # 2 creatures (< _COMBAT_FED_MIN) → death triggers can't be combat-fed, no outlet
-        # → still a dead engine, must flag.
+        # Blood Artist ×4 (quantity-weighted, summed across both lines — audit A11) is
+        # still < _COMBAT_FED_MIN creatures → death triggers can't be combat-fed, no
+        # outlet → still a dead engine, must flag.
         if not dead.get("sacrifice", {}).get("flag"):
             errs.append("engine_balance: death-trigger sacrifice engine with almost no board "
                         "(2 creatures, no outlet) should FLAG as lopsided, but didn't.")
