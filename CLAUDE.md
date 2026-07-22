@@ -324,7 +324,10 @@ castability · curve · central-theme density), with the intangibles moving a de
   an earlier Scryfall outage instead of skipping them as dupes (audit F20).
   `Target`/`Note`/`Power` are hand-annotated: `Target` is a
   deck id / `general` / `concept: …`; **`Power` is a 1–10 hand-graded constructed-
-  power score** that `--rank` blends 50/50 with theme fit into a `combined` score
+  power score** that `--rank` blends 50/50 with theme fit — plus a **bounded
+  cross-deck reuse (breadth) bonus** (the `use` column, ★ at ≥3; guarded as
+  bounded/capped by `check_rankings` anchor 5) so a multi-home craft outranks an equal
+  fit+power one-deck sidegrade — into a `combined` score
   (an idf theme model can't see raw power, so bombs like Doctor Doom get buried
   without it — the Power column is the fix; the artifact exposes a live fit↔power
   slider). **Lands rank on a different axis:** a land has no synergy themes, so
@@ -420,7 +423,12 @@ castability · curve · central-theme density), with the intangibles moving a de
   (`build_pool.py --all`, per `/refresh`) to refresh both the legality snapshot and
   the date stamp. `rotation_risk()` returns False on a blank `Released` (graceful
   before a pool rebuild adds the column), so the flag only fires once the data
-  supports it.
+  supports it. The **roster-wide counterpart is `deck.py rotation`**: for each
+  Standard deck it lists the cards past the ~3-year window (same `rotation_risk`
+  primitive), a rollup by rotation year (soonest first, `⚠ SOON` for this/next year),
+  and the most-exposed decks — *what rotates next and which decks it hits*. It reads
+  the pool's `Released` column (rebuild `build_pool.py --all`, else it prints a
+  rebuild prompt) and scopes with `--format` / `--years`.
 - **`deck.py suggest-homes <card>` automates the "which of my decks does this new
   card improve" fit pass** (the manual dance repeated every craft this session —
   Doctor Doom, Elspeth, Wan Shi Tong, Shark Shredder). It scans EVERY deck and
@@ -591,7 +599,7 @@ letter — see the Competitive Tiering rubric). Soft warnings never fail the bui
 
 **Regression Scenarios** (manual walks; the Test Command above is the primary gate):
 1. Ingest a batch — `import_arena.py <file>` → `enrich.py` → `validate.py` → `build_gallery.py`. Expect: validate clean, gallery card count == library row count.
-2. Analyze a deck — `deck.py check|mana|tribes|stats|legal|cuts|text|verify <id>` and roster-wide `deck.py audit` / `deck.py suggest-homes <card>`. Expect: no traceback; mana is hybrid-aware; tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts/text print full oracle text; audit scores every deck TUNE/craft/review/ok; verify diffs a pasted Arena export against the stored deck.
+2. Analyze a deck — `deck.py check|mana|tribes|stats|legal|cuts|text|verify <id>` and roster-wide `deck.py audit` / `deck.py suggest-homes <card>` / `deck.py rotation`. Expect: no traceback; mana is hybrid-aware; tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts/text print full oracle text; audit scores every deck TUNE/craft/review/ok; verify diffs a pasted Arena export against the stored deck.
 3. Refresh derived data — `build_mana.py` → `tag_synergies.py --merge` → `build_pool.py` → `build_gallery.py` → `check_all.py`. Expect: check_all reports all invariants hold.
 4. Edit via the app — start `scripts/app.py`, change a quantity and Save, add a card, then open a deck (Decks →), change a card's quantity and Save; run `check_all.py`. Expect: CSV + deck file updated, `.bak`s written, and all invariants hold (INV-02 since add appends a card-mana.csv row; INV-04 since deck save re-parses cleanly).
 

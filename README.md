@@ -228,15 +228,19 @@ manufacture a false-confident match. The intended loop for a new batch:
 
 `--by-set` is the gem-spending view: it ranks the sets by how many wishlist cards
 each pack could net you (broken down by rarity), so you open the highest-value
-packs first. `--rank` is the **wildcard-spend order**. It scores each card on two
+packs first. `--rank` is the **wildcard-spend order**. It scores each card on three
 independent axes and blends them:
 
-- **Fit** — theme fit (the same idf model as `--suggest-targets`) plus *cross-deck
-  breadth* (how many decks it's castable in **and** shares a *specific* theme with;
-  generic overlap doesn't count). This is a synergy signal, **not** raw power — an
-  idf model can't tell that a generic-tagged planeswalker is a bomb.
+- **Fit** — theme fit (the same idf model as `--suggest-targets`). This is a synergy
+  signal, **not** raw power — an idf model can't tell that a generic-tagged
+  planeswalker is a bomb.
 - **Power** — the hand-graded 1–10 `Power` column (constructed impact), so those
   bombs aren't buried by a low fit score.
+- **Breadth** — cross-deck reuse (the `use` column, ★ at ≥3): how many decks the card
+  is castable in **and** shares a *specific* theme with (generic overlap doesn't
+  count). A **bounded** bonus to the blend, so a multi-home craft outranks an equal
+  fit+power one-deck sidegrade without ever dominating — craft once, play it
+  everywhere (copies are fungible across decks).
 
 **Lands are scored on a different axis.** A land has no synergy themes, so theme
 fit would sink it to ~0; instead `--rank` rates a land on **manabase value** for
@@ -312,6 +316,7 @@ pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export agains
 python3 scripts/deck.py text 1a              # full oracle text of every card (read before grading)
 python3 scripts/deck.py suggest 1a --unowned --full  # picks WITH full text + keywords + flags
 python3 scripts/deck.py suggest-homes "Crib Swap"    # which decks a card fits, with a fit-strength label
+python3 scripts/deck.py rotation             # roster-wide: which Standard decks run cards aging out (what rotates next)
 python3 scripts/deck.py preflight 1a         # one-call verify: legal + owned + castable + integrity
 python3 scripts/deck.py quality 1a --json    # deck-quality vector; --vs FILE diffs a before-snapshot
 python3 scripts/deck.py tier 1a              # claimed #: tier: vs the tier its metrics support
