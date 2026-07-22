@@ -2871,7 +2871,7 @@ Foraging Wickermaw,Artifact Creature — Scarecrow,"When this creature enters, s
 Chrome Companion,Artifact Creature — Dog,"Whenever this creature becomes tapped, you gain 1 life.
 {2}, {T}: Put target card from a graveyard on the bottom of its owner's library.",Colorless,Dog; graveyard; lifegain,EOE,236,1
 Energybending,Instant — Lesson,"Lands you control gain all basic land types until end of turn.
-Draw a card.",Colorless,Lesson; card draw,TLA,2,1
+Draw a card.",Colorless,Lesson; card draw; mana,TLA,2,1
 Bumbleflower's Sharepot,Artifact,"When this artifact enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
 {5}, {T}, Sacrifice this artifact: Destroy target nonland permanent. Activate only as a sorcery.",Colorless,lifegain; sacrifice; tokens; removal; etb; food,BLB,244,1
 Captain America's Shield,Legendary Artifact — Equipment,"Indestructible
@@ -3484,3 +3484,36 @@ Animal May-Ham — Other Spiders, Boars, Bats, Bears, Birds, Cats, Dogs, Frogs, 
 Vizier of the Menagerie,Creature — Snake Cleric,"You may look at the top card of your library any time.
 You may cast creature spells from the top of your library.
 You can spend mana of any type to cast creature spells.",G,Snake; Cleric; selection; card advantage; ramp,FDN,649,1
+Soul Immolation,Sorcery,"As an additional cost to cast this spell, blight X. X can't be greater than the greatest toughness among creatures you control. (Put X -1/-1 counters on a creature you control.)
+Soul Immolation deals X damage to each opponent and each creature they control.",R,counters; burn,ECL,156,1
+Blood Crypt,Land — Swamp Mountain,"({T}: Add {B} or {R}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",B/R,Swamp; Mountain; mana,ECL,262,1
+Sapling Nursery,Enchantment,"Affinity for Forests (This spell costs {1} less to cast for each Forest you control.)
+Landfall — Whenever a land you control enters, create a 3/4 green Treefolk creature token with reach.
+{1}{G}, Exile this enchantment: Treefolk and Forests you control gain indestructible until end of turn.",G,tokens; landfall; affinity; artifacts; cost-reduction; lands; ramp,ECL,192,1
+Lasting Tarfire,Enchantment,"At the beginning of each end step, if you put a counter on a creature this turn, this enchantment deals 2 damage to each opponent.",R,counters; burn,ECL,149,1
+Diligent Zookeeper,Creature — Human Citizen Ally,"Each non-Human creature you control gets +1/+1 for each of its creature types, to a maximum of 10.",G,Human; Citizen; Ally; pump,TLA,171,1
+"Oko, Lorwyn Liege",Legendary Planeswalker — Oko // Legendary Planeswalker — Oko,"At the beginning of your first main phase, you may pay {G}. If you do, transform Oko.
++2: Up to one target creature gains all creature types. (This effect doesn't end.)
++1: Target creature gets -2/-0 until your next turn. // At the beginning of your first main phase, you may pay {U}. If you do, transform Oko.
+−1: Mill three cards. You may put a permanent card from among them into your hand.
+−3: Create two 3/3 green Elk creature tokens.
+−6: Choose a creature type. You get an emblem with ""Creatures you control of the chosen type get +3/+3 and have vigilance and hexproof.""",U/G,Oko; Planeswalker; mill; tokens; planeswalker; pump; removal; transform; graveyard,ECL,61,1
+Omni-Changeling,Creature — Shapeshifter,"Changeling (This card is every creature type.)
+Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
+You may have this creature enter as a copy of any creature on the battlefield, except it has changeling.",U,Shapeshifter; convoke; go-wide; ramp; changeling; tribal,ECL,62,1
+Three Tree Mascot,Artifact Creature — Shapeshifter,"Changeling (This card is every creature type.)
+{1}: Add one mana of any color. Activate only once each turn.",Colorless,Shapeshifter; changeling; tribal,FDN,682,1
+Turtle-Duck,Creature — Turtle Bird,"{3}: Until end of turn, this creature has base power 4 and gains trample.",G,Turtle; Bird,TLA,200,1
+March of the World Ooze,Enchantment,"Creatures you control have base power and toughness 6/6 and are Oozes in addition to their other types.
+Whenever an opponent casts a spell, if it's not their turn, you create a 3/3 green Elephant creature token.",G,tokens,DFT,169,1
+Applied Geometry,Sorcery,"Create a token that's a copy of target non-Aura permanent you control, except it's a 0/0 Fractal creature in addition to its other types. Put six +1/+1 counters on it.",U/G,counters; tokens,SOS,172,1
+Spider-Suit,Artifact — Equipment,"Equipped creature gets +2/+2 and is a Spider Hero in addition to its other types.
+Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; equipment; pump; equip,SPM,176,1
+Enter the Enigma,Sorcery,"Target creature can't be blocked this turn.
+Draw a card.",U,card draw,DSK,52,1
+Lilypad Village,Land,"{T}: Add {C}.
+{T}: Add {U}. Spend this mana only to cast a creature spell.
+{U}, {T}: Surveil 2. Activate only if a Bird, Frog, Otter, or Rat entered the battlefield under your control this turn.",U,mana; surveil; graveyard,BLB,255,1
+Overlord of the Hauntwoods,Enchantment Creature — Avatar Horror,"Impending 4—{1}{G}{G} (If you cast this spell for its impending cost, it enters with four time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
+Whenever this permanent enters or attacks, create a tapped colorless land token named Everywhere that is every basic land type.",G,Avatar; Horror; tokens; impending; ramp; mana,DSK,194,1

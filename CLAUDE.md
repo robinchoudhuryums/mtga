@@ -435,7 +435,15 @@ castability · curve · central-theme density), with the intangibles moving a de
   tangential = generic overlap only (etb/tokens/lifegain/…). Rows sort
   strongest-first — trust KEY, judge role-player, and read a tangential fit as
   "probably not for this deck." The same `fit_strength` classifier flags a
-  merely-tangential add in `deck.py quality --add`.
+  merely-tangential add in `deck.py quality --add`. **A rainbow fixer gets a
+  color-count-aware overlay** on top of `fit_strength`: a card whose value is
+  multi-color fixing (a `ramp`/`mana` tag *and* explicit any-color / every-basic-
+  land-type text — `_is_color_fixer`) is promoted to **KEY in a 4+-color deck /
+  role-player in a 3-color one** (and gets a bounded fit bump, `_fixer_boost`),
+  because fixing value scales with the deck's color count — something a theme-overlap
+  model can't see. It never demotes a fit `fit_strength` already rated KEY, and does
+  nothing below 3 colors (mono/two-color decks don't want the fixing). This closed the
+  Overlord → decks 17/21a miss.
 - **Before committing a deck edit, run `deck.py preflight <id>` — and grade a
   cut/swap with `deck.py quality`.** `preflight` is the one-call gate the editing
   skills use: it folds `legal` + owned/buildable + castability + a full `check_all`
@@ -466,15 +474,24 @@ castability · curve · central-theme density), with the intangibles moving a de
   Scryfall also reports as keywords, are dropped via the `FLAVOR_KEYWORDS`
   denylist so they don't pollute the tags.
 - **`tag_synergies.py` text-tags fixing + topdeck-value engines** so they stop
-  hiding under `selection`: "cast/play … from the top of your library" → `card
-  advantage` (Vizier of the Menagerie, Realmwalker, Bolas's Citadel), and "spend
-  mana of any type / as though it were any color" → `ramp` (Vizier, Fist of Suns) —
-  so these surface on ramp/value in `suggest` / `suggest-homes` / `cuts`. **The
-  residual is inherent:** a card whose fixing value SCALES with the target deck's
-  color count (great in a 4-color deck, filler in a mono-color one) still can't be
-  fully valued by a theme-fit model, so `suggest-homes` may call it a *role-player*
-  when it's really KEY — grade from full text (why the shortlists print "grade
-  from text"; the Vizier→deck-13 case).
+  hiding under `selection`/`tokens`: "cast/play … from the top of your library" →
+  `card advantage` (Vizier of the Menagerie, Realmwalker, Bolas's Citadel); "spend
+  mana of any type / as though it were any color" → `ramp` (Vizier, Fist of Suns);
+  a card that makes a **`land token`** → `ramp` (the regex requires the phrase *land
+  token* directly, so a creature token whose ability merely mentions "land" — Gysahl
+  Greens, Fat Chocobo — isn't mis-tagged); and a card that turns lands into **"every/
+  all/each basic land type"** → `mana` (rainbow fixing: Overlord of the Hauntwoods'
+  Everywhere token, Energybending) — so these surface on ramp/value in `suggest` /
+  `suggest-homes` / `cuts` instead of hiding under `tokens`. **The residual is now
+  mostly closed for detectable fixers:** a card whose fixing value SCALES with the
+  target deck's color count used to mis-grade as *role-player* when it was really
+  KEY, so `suggest-homes` now applies a **color-count-aware fixer overlay**
+  (`_is_color_fixer` + `_fixer_boost`, guarded by `check_suggest` anchor 6) — a
+  rainbow fixer reads **KEY in a 4+-color deck / role-player in a 3-color one**
+  (Overlord → decks 17/21a, previously role-player/tangential). The remaining
+  residual is only a fixer whose value scales with color count but whose text lacks
+  an explicit any-color / basic-land-type cue (so `_is_color_fixer` can't see it) —
+  grade those from full text (why the shortlists print "grade from text").
 - A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
   warning (expected, not an error).
 - The **functional-role** breakdown (`deck.py stats`) and **castability lint**
@@ -512,8 +529,10 @@ also hard-gated: **color-parsing** (`check_colors.py`) locks in the F1/F2 fix (a
 colorless card must not read as red; a slash-gold must pass the subset test);
 **suggest scoring** (`check_suggest.py`) keeps the needs-aware suggest/cuts terms
 BOUNDED — the diminishing-returns role credit and the curve-gap factor can't
-silently reorder a tuned deck (#1/#2), and the power co-signal never overrides
-theme fit (#6); **engine classifier** (`check_engines.py`) anchors the enabler/
+silently reorder a tuned deck (#1/#2), the power co-signal never overrides
+theme fit (#6), and the `suggest-homes` rainbow-fixer boost stays bounded/capped
+and zero below 3 colors while `_is_color_fixer` requires both a fixing tag and
+rainbow text (anchor 6); **engine classifier** (`check_engines.py`) anchors the enabler/
 payoff detection on canonical cards (#3); **tier floor** (`check_tier.py`) proves
 the archetype-aware floor grades non-aggro decks identically to before and only
 ever raises an aggro band (#4). It also emits **soft, non-gating warnings**:

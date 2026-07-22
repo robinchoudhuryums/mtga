@@ -465,9 +465,12 @@ it scans every deck for the ones where the card is *castable* and shares a
 *central* theme, and tags each fit with a **strength** label: **KEY** (it fills an
 interaction / card-advantage gap the deck is short on, or shares the deck's
 signature theme), **role-player** (a secondary central theme), or **tangential**
-(only generic overlap — etb/tokens/lifegain/…). Rows sort strongest-fit first and
-name the single weakest nonland cut candidate per deck. Because copies are
-fungible, slot a card into *every* deck it earns, not one.
+(only generic overlap — etb/tokens/lifegain/…). A **rainbow mana fixer** (one that
+makes an any-color land or gives lands every basic land type) gets a color-count
+overlay — it reads KEY in a 4+-color deck and role-player in a 3-color one — since
+its fixing value scales with the deck's colors, which theme overlap alone can't see.
+Rows sort strongest-fit first and name the single weakest nonland cut candidate per
+deck. Because copies are fungible, slot a card into *every* deck it earns, not one.
 
 `preflight <id>` is the one-call gate the editing skills run before committing: it
 folds `legal` (construction) + owned/buildable + castability + a full `check_all`

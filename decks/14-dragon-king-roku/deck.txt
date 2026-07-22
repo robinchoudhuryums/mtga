@@ -48,7 +48,7 @@
 # Lands (pure-Rakdos re-fix: −Sun-Blessed Peak (W/R tapland) & −2 Plains → +2 Mountain
 # for the 37-pip red primary + Razortrap Gorge (owned, untapped-cond B/R). White cut with Sun Warriors.)
 2 Fire Nation Palace (TLA) 268
-1 Bloodfell Caves (TDM) 250
+1 Blood Crypt (ECL) 262
 1 Blazemire Verge (DSK) 256
 2 Boiling Rock Prison (TLA) 267
 1 Dark Fortress (MSH) 264

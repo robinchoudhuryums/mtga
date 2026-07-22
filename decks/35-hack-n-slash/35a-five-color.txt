@@ -75,3 +75,6 @@
 3 Forest (MSH) 296
 1 Great Divide Guide (TLA) 181
 1 Bloom Tender (ECL) 166
+
+# Flex — craft upgrade for the manabase. See: deck.py flex 35a
+#~ -How to Start a Riot | +Overlord of the Hauntwoods | OWNED (crafted): its "Everywhere" token (every basic land type) is repeatable 5-color fixing + ramp on ETB and each attack, plus a 5/5 impending body — the single best fixer for this greedy WUBRG base, stacking with the Great Divide Guide / Bloom Tender / Mona Lisa dorks. (Fungible with decks 17 / 21a.) Comes in over a redundant combat trick (the deck keeps Pym/Untimely/Gossip's for push-through), keeping The Legend of Kyoshi's card draw + fixing. Alt cut: Biosynthic Burst.

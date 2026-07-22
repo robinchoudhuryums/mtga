@@ -33,7 +33,7 @@
 
 # Card advantage / dig
 1 Mind into Matter (SOS) 202
-1 Zimone's Experiment (SOS) 169
+1 Lasting Tarfire (ECL) 149
 1 Shock (ANB) 84
 1 Garruk's Uprising (FDN) 220
 1 Plasma Bolt (EOE) 152
@@ -47,7 +47,7 @@
 1 Tablet of Discovery (SOS) 132
 1 Zimone, Paradox Sculptor (FDN) 126
 1 She-Hulk, Jade Defender (MSH) 188
-1 Wistfulness (ECL) 252
+1 Soul Immolation (ECL) 156
 1 Origin of Metalbending (TLA) 187
 1 World War Hulk (MSH) 197
 1 Sokka's Haiku (TLA) 71
@@ -83,3 +83,5 @@
 #~ note: applied — Germination Practicum in for Heroic Feast.
 #~ note: applied — Tatyova, Benthic Druid in for Super Intelligence.
 #~ +Quandrix, the Proof | OWNED alt (not a craft): {4}{G}{U} flying + trample + cascade Elder Dragon; also gives your instants/sorceries cascade. A ramp top-end with immediate cascade value, but the spellslinger payoff is off this counters plan and it's redundant with Lumra / World War Hulk / Terra — parked as an optional extra top-end (Zimone, Paradox Sculptor now maindecked, in over Garrison Excavator).
+#~ note: applied — Lasting Tarfire in for Zimone's Experiment: {1}{R} enchantment that deals 2 to each opponent each end step you put a counter on a creature (i.e. most turns here) — recurring reach the counters plan wanted, over a one-shot dig.
+#~ note: applied — Soul Immolation in for Wistfulness: {3}{R}{R} blight-X sweep + reach (X<=greatest toughness), fueled by the deck's big Fractals; the deck's only board wipe. Blight shrinks your own creature, so it's a reset/finisher, not a first-play. Traded Wistfulness's flexible artifact/ench removal + loot (card adv 2->1, acceptable — plenty of other card advantage).
