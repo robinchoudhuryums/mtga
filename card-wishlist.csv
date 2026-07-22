@@ -12,9 +12,16 @@ Whenever Dragonhawk enters or attacks, exile the top X cards of your library, wh
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
 When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)",5.5
+Lilypad Village,Land,"{T}: Add {C}.
+{T}: Add {U}. Spend this mana only to cast a creature spell.
+{U}, {T}: Surveil 2. Activate only if a Bird, Frog, Otter, or Rat entered the battlefield under your control this turn.",U,mana; surveil; graveyard,BLB,255,Uncommon,34a,Utility land: U for creatures + surveil; minor manabase upgrade.,5
+March of the World Ooze,Enchantment,"Creatures you control have base power and toughness 6/6 and are Oozes in addition to their other types.
+Whenever an opponent casts a spell, if it's not their turn, you create a 3/3 green Elephant creature token.",G,tokens,DFT,169,Mythic,34a,Backup payoff/anthem: all your creatures become 6/6 Oozes.,6
 Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,6.0
 Overlord of the Balemurk,Enchantment Creature — Avatar Horror,"Impending 5—{1}{B} (If you cast this spell for its impending cost, it enters with five time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
 Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.",B,Avatar; Horror; graveyard; mill; impending,DSK,113,Mythic,5; 11,"Impending {1}{B} graveyard value-bomb for Coming of Galactus (5): mills + recurs a creature — a real engine | Also deck 11 (Villainous, mono-B): the recurring, no-strings card-advantage + reanimation engine it lacks — mill 4 + recur a creature on enter AND attack.",8.5
+Overlord of the Hauntwoods,Enchantment Creature — Avatar Horror,"Impending 4—{1}{G}{G} (If you cast this spell for its impending cost, it enters with four time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
+Whenever this permanent enters or attacks, create a tapped colorless land token named Everywhere that is every basic land type.",G,Avatar; Horror; tokens; impending,DSK,194,Mythic,34a,Ramp (land token) + body; impending flexibility.,6
 Chainsaw,Artifact — Equipment,"When this Equipment enters, it deals 3 damage to up to one target creature.
 Whenever one or more creatures die, put a rev counter on this Equipment.
 Equipped creature gets +X/+0, where X is the number of rev counters on this Equipment.
@@ -22,7 +29,18 @@ Equip {3}",R,Equipment; counters; burn; etb; equipment; pump; equip,DSK,128,Rare
 Enduring Vitality,Enchantment Creature — Elk Glimmer,"Vigilance
 Creatures you control have ""{T}: Add one mana of any color.""
 When Enduring Vitality dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",G,Elk; Glimmer; mana; vigilance; combat,DSK,176,Rare,29,,6.5
+Enter the Enigma,Sorcery,"Target creature can't be blocked this turn.
+Draw a card.",U,card draw,DSK,52,Common,34a,Cantrip + finisher enabler (unblockable on a fatty).,3
+"Oko, Lorwyn Liege // Oko, Shadowmoor Scion",Legendary Planeswalker — Oko // Legendary Planeswalker — Oko,"At the beginning of your first main phase, you may pay {G}. If you do, transform Oko.
++2: Up to one target creature gains all creature types. (This effect doesn't end.)
++1: Target creature gets -2/-0 until your next turn. // At the beginning of your first main phase, you may pay {U}. If you do, transform Oko.
+−1: Mill three cards. You may put a permanent card from among them into your hand.
+−3: Create two 3/3 green Elk creature tokens.
+−6: Choose a creature type. You get an emblem with ""Creatures you control of the chosen type get +3/+3 and have vigilance and hexproof.""",U/G,Oko; Planeswalker; mill; tokens; planeswalker; pump; removal; transform; graveyard,ECL,61,Mythic,34a,Payoff + type-granter (+2: all types) + removal + emblem. Flexible bomb.,7
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.5
+Omni-Changeling,Creature — Shapeshifter,"Changeling (This card is every creature type.)
+Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
+You may have this creature enter as a copy of any creature on the battlefield, except it has changeling.",U,Shapeshifter; convoke; go-wide; ramp; changeling; tribal,ECL,62,Uncommon,34a,Top changeling: all types + convoke + enter as a copy. Best Zookeeper target.,7
 Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19,,5.0
 "Ramos, Dragon Engine",Legendary Artifact Creature — Dragon,"Flying
@@ -43,6 +61,8 @@ Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, if it was kicked, return target creature card from your graveyard to the battlefield.",B,Vampire; Cleric; reanimator; graveyard; lifegain; etb; lifelink; menace; evasion; kicker; value,FDN,611,Rare,11,,6.0
 Rite of Replication,Sorcery,"Kicker {5} (You may pay an additional {5} as you cast this spell.)
 Create a token that's a copy of target creature. If this spell was kicked, create five of those tokens instead.",U,tokens; kicker; value,FDN,711,Rare,25,Copy engine for Spellstorm (25): clone your best creature (kicker = 5 copies) — payoff redundancy,6
+Three Tree Mascot,Artifact Creature — Shapeshifter,"Changeling (This card is every creature type.)
+{1}: Add one mana of any color. Activate only once each turn.",Colorless,Shapeshifter; changeling; tribal,FDN,682,Common,34a,Cheap 2-mana changeling + any-color fixing. Great value enabler.,6
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +2/+2 for each artifact you control and is an Artificer in addition to its other types.
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell",4.5
@@ -106,6 +126,7 @@ Concealed Courtyard,Land,"This land enters tapped unless you control two or fewe
 Whenever you cast a multicolored instant or sorcery spell from your hand, exile that spell instead of putting it into your graveyard as it resolves. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/R,Human; Rogue; graveyard; pump; plot; tempo; cost-reduction; prowess; spellslinger,OTJ,217,Rare,25,prowess 3-drop that impulses off your spells,6.0
 "Malcolm, the Eyes",Legendary Creature — Siren Pirate,"Flying, haste
 Whenever you cast your second spell each turn, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U/R,Siren; Pirate; card draw; sacrifice; tokens; clue; flying; evasion; investigate; haste; aggro,OTJ,219,Rare,25,2-drop: second spell -> investigate,6.0
+Applied Geometry,Sorcery,"Create a token that's a copy of target non-Aura permanent you control, except it's a 0/0 Fractal creature in addition to its other types. Put six +1/+1 counters on it.",U/G,counters; tokens,SOS,172,Rare,34a,Copy a permanent as a 0/0 Fractal +6 (a 6/6); copy subtheme.,4
 "Aziza, Mage Tower Captain",Legendary Creature — Djinn Sorcerer,"Whenever you cast an instant or sorcery spell, you may tap three untapped creatures you control. If you do, copy that spell. You may choose new targets for the copy.",W/R,Djinn; Sorcerer; spellslinger,SOS,174,Rare,concept,RW spells/magecraft (Strixhaven-style),6.0
 Comforting Counsel,Enchantment,"Whenever you gain life, put a growth counter on this enchantment.
 As long as there are five or more growth counters on this enchantment, creatures you control get +3/+3.",G,counters; pump,SOS,143,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 9,19b,19a",4.5
@@ -161,6 +182,8 @@ Interdimensional Web Watch,Artifact,"When this artifact enters, exile the top tw
 Multiversal Passage,Land,"As this land enters, choose a basic land type. Then you may pay 2 life. If you don't, it enters tapped.
 This land is the chosen type.",Colorless,,SPM,180,Rare,general,basic-type fixing land — any deck,6.5
 Strength of Will,Instant,"Until end of turn, target creature you control gains indestructible and ""Whenever this creature is dealt damage, put that many +1/+1 counters on it.""",G,counters,SPM,118,Rare,general,green protect + damage->counters combat trick — any green deck,4.0
+Spider-Suit,Artifact — Equipment,"Equipped creature gets +2/+2 and is a Spider Hero in addition to its other types.
+Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; equipment; pump; equip,SPM,176,Uncommon,34a,"Cheap type-granter equipment (+2/+2, Spider Hero type).",4
 "Neriv, Heart of the Storm",Legendary Creature — Spirit Dragon,"Flying
 If a creature you control that entered this turn would deal damage, it deals twice that much damage instead.",W/B/R,Spirit; Dragon; flying; evasion,TDM,210,Mythic,concept: Mardu,Lost its home when deck 14 converted Mardu->Rakdos (BR) for consistency; needs a Mardu (WBR) shell — no current deck. Build-around concept.,6.5
 Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
@@ -178,7 +201,7 @@ White Lotus Tile,Artifact,"This artifact enters tapped.
 "Azula, Cunning Usurper",Legendary Creature — Human Noble Rogue,"Firebending 2 (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)
 When Azula enters, target opponent exiles a nontoken creature they control, then they exile a nonland card from their graveyard.
 During your turn, you may cast cards exiled with Azula and you may cast them as though they had flash. Mana of any type can be spent to cast those spells.",U/B,Human; Noble; Rogue; graveyard; etb; firebending; bending,TLA,208,Rare,22,"best 22 (Bloodbending); also 17,12",6.0
-Diligent Zookeeper,Creature — Human Citizen Ally,"Each non-Human creature you control gets +1/+1 for each of its creature types, to a maximum of 10.",G,Human; Citizen; Ally; pump,TLA,171,Rare,17,typal anthem: non-Humans get +1/+1 per creature type — ideal on Spectrum's max-diversity board,4.5
+Diligent Zookeeper,Creature — Human Citizen Ally,"Each non-Human creature you control gets +1/+1 for each of its creature types, to a maximum of 10.",G,Human; Citizen; Ally; pump,TLA,171,Rare,34a,"THE payoff, deck-34a-defining: each non-Human creature +1/+1 per creature type (max 10) -> a changeling = +10/+10. Craft FIRST. (Also speculatively wanted in 17; fungible.)",8
 Earth King's Lieutenant,Creature — Human Soldier Ally,"Trample
 When this creature enters, put a +1/+1 counter on each other Ally creature you control.
 Whenever another Ally you control enters, put a +1/+1 counter on this creature.",W/G,Human; Soldier; Ally; counters; etb; trample; evasion,TLA,217,Rare,13,Ally +1/+1 anthem — Earth Kingdom flavor + its Ally/counters theme,5.0
@@ -198,6 +221,7 @@ At the beginning of your end step, earthbend 2. (Target land you control becomes
 Nonbasic lands enter tapped.
 {7}: Put a conqueror counter on Zhao.
 As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17",4.5
+Turtle-Duck,Creature — Turtle Bird,"{3}: Until end of turn, this creature has base power 4 and gains trample.",G,Turtle; Bird,TLA,200,Common,34a,"Filler body (Turtle Bird, mana-sink 4/x trample).",2
 Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,8,"best 8 (Sacrifices); also 21,21a,5",4.5
 Cool but Rude,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
 Whenever you attack, you may discard a card. If you do, draw a card.
