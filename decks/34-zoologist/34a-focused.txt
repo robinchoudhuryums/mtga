@@ -1,0 +1,59 @@
+#: name: Zoologist — Focused (interaction build)
+#: format: Standard
+#: colors: GU
+#: based-on: deck.txt
+#: archetype: 34 variant — the focused, resilient cut of Zoologist: trims the off-plan
+#: archetype: graveyard/copy chaff for a real interaction suite so the deck isn't a one-card combo.
+#: notes: Same changeling/Diligent-Zookeeper core as base 34, tightened. CUT the off-plan
+#: notes: graveyard/delirium + narrow cards (Patchwork Beastie, Wickerfolk Thresher, Diamond
+#: notes: Weapon, Pull Through the Weft, Zoetic Glyph). ADDED an owned 7-card interaction/
+#: notes: protection package: Bite Down + Rabid Bite are removal that SCALES with your fatties
+#: notes: (a +10/+10 changeling kills anything), Into the Flood Maw / Bounce Off bounce,
+#: notes: Spell Pierce protects the Zookeeper payoff, Bushwhack fetch-or-fight, Unforgiving Aim
+#: notes: flyer removal. Still aspirational (Zookeeper + top changelings are craft targets).
+#: notes: Gangly Stompling ({2}{R/G}) / Cat-Owl ({3}{W/U}) are hybrids paid on-color.
+
+# Nonland — changeling / type-matters core
+1 Diligent Zookeeper (TLA) 171
+1 Vizier of the Menagerie (FDN) 649
+1 Leyline of Transformation (DSK) 63
+1 Oko, Lorwyn Liege (ECL) 61
+1 Omni-Changeling (ECL) 62
+1 Mutable Explorer (ECL) 186
+1 Three Tree Mascot (FDN) 682
+1 Cat-Owl (TLA) 212
+1 Glamer Gifter (ECL) 49
+1 Undercover Skrull (MSH) 194
+1 Absorbing Man (MSH) 199
+1 Ultron, Artificial Malevolence (MSH) 252
+1 Overlord of the Hauntwoods (DSK) 194
+1 Gangly Stompling (ECL) 226
+1 Iguana Parrot (TLA) 56
+1 Turtle-Duck (TLA) 200
+1 Badgermole Cub (TLA) 167
+1 Badgermole (TLA) 166
+1 Flopsie, Bumi's Buddy (TLA) 179
+1 Ember Island Production (TLA) 48
+1 Avatar Destiny (TLA) 165
+1 March of the World Ooze (DFT) 169
+1 Applied Geometry (SOS) 172
+1 Spider-Suit (SPM) 176
+1 Stalactite Dagger (ECL) 261
+1 Chronicle of Victory (ECL) 253
+1 Earth's Mightiest Heroes (MSH) 165
+1 Seismic Sense (TLA) 195
+1 Enter the Enigma (DSK) 52
+
+# Nonland — interaction / protection (owned, added)
+1 Bite Down (FDN) 212
+1 Rabid Bite (ANB) 101
+1 Into the Flood Maw (BLB) 52
+1 Bounce Off (DFT) 39
+1 Spell Pierce (SOA) 23
+1 Bushwhack (BRO) 174
+1 Unforgiving Aim (ECL) 200
+
+# Lands
+1 Lilypad Village (BLB) 255
+13 Forest (MSH) 296
+10 Island (MSH) 290
