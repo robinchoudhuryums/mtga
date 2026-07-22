@@ -235,6 +235,15 @@ def collect():
             # quantities summed, printings/basics fungible), so the browser diff and
             # the CLI can't disagree. Stored as {name_lower: [display, qty]}.
             "cards": {nl: [disp, q] for nl, (disp, q) in deckmod._multiset(cards).items()},
+            # "Recently edited" panel — the repo→Arena sync direction (which decks I've
+            # changed and need to re-import), the mirror of the paste-based stale-deck
+            # compare (Arena→repo). All from git via the SAME helpers deck.py history
+            # uses: last_edited + recent commit subjects (the changelog), and the
+            # card-level delta of the most recent edit. Empty/None when git history is
+            # unavailable (e.g. a shallow CI checkout — pages.yml sets fetch-depth: 0).
+            "last_edited": (hist[0]["date"] if (hist := deckmod.deck_git_history(d["path"], limit=6)) else None),
+            "recent_changes": [{"date": h["date"], "subject": h["subject"]} for h in hist[:5]],
+            "recent_delta": deckmod.deck_recent_card_delta(d["path"]),
         })
 
     # Wishlist wildcard-priority tiers (structured, from the real _rank_scores).
@@ -562,6 +571,14 @@ TEMPLATE = r"""<!DOCTYPE html>
   .stalecard h4 { margin:0 0 4px; font-size:14px; color:var(--ink-bright); }
   .stalecard .sub2 { font-size:12px; color:var(--ink2); margin-bottom:6px; }
   .stale-sync { color:#4bbd83; font-weight:600; } .stale-drift { color:#c68b18; font-weight:600; } .stale-nomatch { color:#dd6a4d; font-weight:600; }
+  /* recently-edited panel */
+  .recdelta { display:flex; flex-wrap:wrap; gap:5px; margin:5px 0 8px; }
+  .recdelta span { font-size:11.5px; font-weight:600; padding:1px 8px; border-radius:999px; font-family:var(--font-mono); }
+  .radd { color:var(--ok); background:rgba(75,189,131,.12); }
+  .rrem { color:var(--bad); background:rgba(221,106,77,.12); }
+  .reclog { margin:2px 0 9px; padding:0; list-style:none; }
+  .reclog li { font-size:12px; color:var(--ink2); padding:1px 0; }
+  .reclog .recdate { color:var(--ink3); font-family:var(--font-mono); font-size:11px; margin-right:7px; }
   .difflist { font-family:var(--font-mono); font-size:12px; margin:6px 0 0; }
   .diffadd { color:#4bbd83; } .diffrem { color:#dd6a4d; }
   .staletot { font-size:13px; margin:2px 0 10px; }
@@ -670,6 +687,12 @@ TEMPLATE = r"""<!DOCTYPE html>
     <div class="auditsummary" id="auditsummary"></div>
     <div id="audit"></div>
     <p class="auditnote" id="auditnote"></p>
+  </section>
+
+  <section id="sec-recent">
+    <h2 class="sec"><span class="tick"></span>Recently edited decks — push your repo changes back to Arena</h2>
+    <p class="auditnote">The decks you've changed most recently in the repo (from git history), newest first — the <b>repo&nbsp;&rarr;&nbsp;Arena</b> direction. After editing a list here, copy its Arena import block and re-import it in the app so the two stay in sync. The mirror of the stale-deck check below (Arena&nbsp;&rarr;&nbsp;repo). Shows the card-level change of the most recent edit plus the commit changelog.</p>
+    <div id="recentout"></div>
   </section>
 
   <section id="sec-stale">
@@ -1150,6 +1173,59 @@ $('viewCompact').onclick = () => { STATE.viewMode = 'compact'; persist(); $('vie
 $('copyall').onclick = () => { const list = filteredDecks(); const text = list.map(d => '// #' + d.id + ' ' + d.name + '\n' + ((d.detail&&d.detail.arena)||'')).join('\n\n'); writeClip(text, () => toast(list.length + ' deck imports copied')); };
 renderDecks();
 
+// ---------- recently edited (repo -> Arena sync) ----------
+function relDays(dateStr){
+  if (!dateStr) return '';
+  const then = new Date(dateStr + 'T00:00:00').getTime();
+  if (isNaN(then)) return dateStr;
+  const days = Math.floor((Date.now() - then) / 86400000);
+  if (days <= 0) return 'today';
+  if (days === 1) return 'yesterday';
+  if (days < 30) return days + 'd ago';
+  if (days < 365) return Math.floor(days / 30) + 'mo ago';
+  return Math.floor(days / 365) + 'y ago';
+}
+function renderRecent(){
+  const host = $('recentout'); if (!host) return; host.innerHTML = '';
+  const TCLS = {S:'t-s', A:'t-a', B:'t-b', C:'t-c', D:'t-d'};
+  const list = D.decks.filter(d => d.last_edited).slice()
+    .sort((a,b) => (b.last_edited||'').localeCompare(a.last_edited||'') || (a.id < b.id ? -1 : 1));
+  if (!list.length){ host.appendChild(el('p','auditnote','No git edit history in this build — a shallow checkout hides edit dates (the deployed page uses fetch-depth: 0).')); return; }
+  const shown = STATE.recentAll ? list : list.slice(0, 15);
+  shown.forEach(d => {
+    const card = el('div','stalecard');
+    const h = el('h4'); h.innerHTML = esc(d.name) + ' <span class="id">#' + esc(d.id) + '</span>';
+    const tier = d.audit && d.audit.tier;
+    if (tier && TCLS[tier]) h.insertAdjacentHTML('beforeend', ' <span class="tierpill ' + TCLS[tier] + '">' + tier + '</span>');
+    card.appendChild(h);
+    const sub = el('div','sub2'); sub.innerHTML = 'edited <b>' + esc(relDays(d.last_edited)) + '</b> · ' + esc(d.last_edited); card.appendChild(sub);
+    const rd = d.recent_delta;
+    if (rd && (((rd.added||[]).length) || ((rd.removed||[]).length))){
+      const dv = el('div','recdelta');
+      (rd.added||[]).forEach(a => dv.appendChild(el('span','radd', '+' + (a[1] > 1 ? a[1] + '× ' : '') + a[0])));
+      (rd.removed||[]).forEach(a => dv.appendChild(el('span','rrem', '−' + (a[1] > 1 ? a[1] + '× ' : '') + a[0])));
+      card.appendChild(dv);
+    }
+    if (d.recent_changes && d.recent_changes.length){
+      const ul = el('ul','reclog');
+      d.recent_changes.forEach(c => { const li = el('li'); li.innerHTML = '<span class="recdate">' + esc(c.date) + '</span>' + esc(c.subject); ul.appendChild(li); });
+      card.appendChild(ul);
+    }
+    const bar = el('div','staleactions');
+    const imp = el('button','cta','⧉ Copy Arena import');
+    imp.onclick = () => writeClip((d.detail && d.detail.arena) || '', () => toast('#' + d.id + ' import copied — paste into Arena'));
+    bar.appendChild(imp);
+    card.appendChild(bar);
+    host.appendChild(card);
+  });
+  if (list.length > 15){
+    const t = el('button','ghostbtn', STATE.recentAll ? '▴ show top 15' : '▾ show all ' + list.length);
+    t.onclick = () => { STATE.recentAll = !STATE.recentAll; renderRecent(); };
+    host.appendChild(t);
+  }
+}
+renderRecent();
+
 // ---------- leverage ----------
 (function(){
   const map = {};
@@ -1333,7 +1409,8 @@ function paletteItems(){
     {title:'Wildcard priority', sub:'wishlist', tag:'§', act:() => jumpTo('sec-wishlist')},
     {title:'Craft plan', sub:'whole roster', tag:'§', act:() => jumpTo('sec-plan')},
     {title:'Crafting leverage', sub:'most-shared cards', tag:'§', act:() => jumpTo('sec-leverage')},
-    {title:'Roster triage', sub:'which decks need a tune', tag:'§', act:() => jumpTo('sec-triage')} ];
+    {title:'Roster triage', sub:'which decks need a tune', tag:'§', act:() => jumpTo('sec-triage')},
+    {title:'Recently edited', sub:'push repo changes to Arena', tag:'§', act:() => jumpTo('sec-recent')} ];
   const decks = D.decks.map(d => ({title:d.name + '  #' + d.id, sub:(d.format?d.format+' · ':'') + (d.colors||'—') + ' · ' + (d.buildable?'buildable':(d.wc||'')), tag:'deck', act:() => { STATE.open[d.id] = true; persist(); renderDecks(); setTimeout(() => { const e2 = $('deck-'+d.id); if (e2) window.scrollTo({top:e2.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); }, 40); }}));
   let items = secs.concat(decks);
   if (q) items = items.filter(it => (it.title + ' ' + it.sub).toLowerCase().includes(q));

@@ -1723,20 +1723,31 @@ def _pool_rotation_index():
     return idx, has_released
 
 
-def rotation_sweep(fmt="standard", years=3):
-    """Roster-wide rotation exposure for `fmt` (default Standard): the cards each deck
-    runs whose set is past the ~`years`-year rotation window, so you can see what
-    rotates NEXT and which decks it hits. Reuses the pool's Released/Legalities snapshot
-    and the shared `rotation_risk` primitive (the same one `suggest`'s ⚠rot flag uses),
-    so this can't drift from the per-card signal. Offline.
+def rotation_sweep(fmt="standard", years=3, within=2):
+    """Roster-wide rotation exposure for `fmt` (default Standard): which cards each deck
+    runs are CLOSEST to rotating, so you can see what rotates NEXT and which decks it
+    hits. A card's rotation year is its set's release year + `years` (Standard's ~3-year
+    window); a card is surfaced when that year is within `within` years of now — i.e. it
+    rotates this year, soon, or is already past-due (a stale-pool signal). Reads the
+    pool's Released/Legalities snapshot (the same data `suggest`'s ⚠rot flag uses). Note:
+    gating on release-age here (rather than `rotation_risk`'s strict >years boolean) is
+    deliberate — on a freshly-built pool every still-legal card is BY DEFINITION inside
+    the window, so the >years test would report nothing; the point is what rotates *next*.
+    Offline.
 
     Returns (decks, rollup, meta):
       decks  = [{id, name, atrisk:[{name,set,rotates,qty}], n_slots}] for `fmt` decks,
                most-exposed first (each at-risk list sorted soonest-rotating first).
       rollup = {rotates_year: {'slots':n, 'cards':set, 'decks':set}} (a card counted per
                deck it appears in — "deck-slots" — since the point is roster exposure).
-      meta   = {has_released, stale_days, unverified, n_decks}.
+      meta   = {has_released, stale_days, unverified, n_decks, this_year, within}.
+
+    Caveat: the pool keys one representative printing per card, so a card reprinted into a
+    newer Standard set may carry an OLDER printing's Released — its rotation year can read
+    earlier than reality. Verify against the official schedule before disenchanting.
     """
+    import datetime
+    this_year = datetime.date.today().year
     pool, has_released = _pool_rotation_index()
     fmt = (fmt or "").strip().lower()
     decks_out, rollup, unverified = [], {}, 0
@@ -1756,24 +1767,24 @@ def rotation_sweep(fmt="standard", years=3):
             released, legals, setc = info
             if fmt and legals and fmt not in legals:
                 continue  # not legal in this format anyway — it can't "rotate out" of it
-            if not rotation_risk(released, years):
-                continue
             try:
                 rotates = int(released[:4]) + years
             except (ValueError, TypeError):
-                rotates = None
+                continue  # no usable release date — can't place it on the timeline
+            if rotates > this_year + within:
+                continue  # not rotating within the horizon
             atrisk.append({"name": n, "set": setc or s, "rotates": rotates, "qty": q})
-            rk = rotates if rotates is not None else 0
-            rr = rollup.setdefault(rk, {"slots": 0, "cards": set(), "decks": set()})
+            rr = rollup.setdefault(rotates, {"slots": 0, "cards": set(), "decks": set()})
             rr["slots"] += 1
             rr["cards"].add(n)
             rr["decks"].add(d["id"])
-        atrisk.sort(key=lambda x: (x["rotates"] or 9999, x["name"]))
+        atrisk.sort(key=lambda x: (x["rotates"], x["name"]))
         decks_out.append({"id": d["id"], "name": d["name"] or d["id"],
                           "atrisk": atrisk, "n_slots": len(atrisk)})
     decks_out.sort(key=lambda x: (-x["n_slots"], x["id"]))
     meta = {"has_released": has_released, "stale_days": pool_staleness_days(),
-            "unverified": unverified, "n_decks": len(decks_out)}
+            "unverified": unverified, "n_decks": len(decks_out),
+            "this_year": this_year, "within": within}
     return decks_out, rollup, meta
 
 
@@ -3757,29 +3768,90 @@ def cmd_tier(args):
     return 0
 
 
+def deck_git_history(path, limit=None):
+    """[{hash, date, subject}] for a deck file, newest first, from `git log --follow`.
+    The commit messages ARE the deck's changelog (they state the thematic + technical
+    why). Empty list if git is unavailable / the file is untracked — the CLI and the
+    dashboard 'recently edited' panel both read THIS one helper so they can't drift."""
+    import subprocess
+    rel = os.path.relpath(path, REPO_ROOT)
+    args = ["git", "log", "--follow", "--date=short", "--format=%h\t%ad\t%s"]
+    if limit:
+        args.append(f"-n{int(limit)}")
+    args += ["--", rel]
+    try:
+        r = subprocess.run(args, capture_output=True, text=True, cwd=REPO_ROOT)
+    except Exception:
+        return []
+    if r.returncode != 0:
+        return []
+    out = []
+    for ln in r.stdout.splitlines():
+        if not ln.strip():
+            continue
+        parts = ln.split("\t", 2)
+        if len(parts) == 3:
+            out.append({"hash": parts[0], "date": parts[1], "subject": parts[2]})
+    return out
+
+
+def deck_recent_card_delta(path):
+    """Card-level diff of the MOST RECENT edit to a deck file: {added, removed, prev}
+    where added/removed are [(display_name, qty)] between the deck's current list and
+    its previous committed version (printing- and case-fungible via `_multiset`). None
+    when there's no prior version (a brand-new deck) or git is unavailable — so the
+    'recently edited' panel can show WHAT changed, not just when."""
+    import subprocess
+    import tempfile
+    rel = os.path.relpath(path, REPO_ROOT)
+    try:
+        r = subprocess.run(["git", "log", "--follow", "--format=%H", "--", rel],
+                           capture_output=True, text=True, cwd=REPO_ROOT)
+    except Exception:
+        return None
+    if r.returncode != 0:
+        return None
+    hashes = [h for h in r.stdout.split() if h]
+    if len(hashes) < 2:
+        return None  # no prior committed version to diff against
+    prev = hashes[1]
+    pr = subprocess.run(["git", "show", f"{prev}:{rel}"], capture_output=True, text=True,
+                        cwd=REPO_ROOT)
+    if pr.returncode != 0:
+        return None
+    fd, tmp = tempfile.mkstemp(suffix=".txt")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            fh.write(pr.stdout)
+        prev_ms = _multiset(parse_deck_file(tmp)[1])
+    except Exception:
+        return None
+    finally:
+        os.remove(tmp)
+    cur_ms = _multiset(parse_deck_file(path)[1])
+    added = sorted((disp, q - prev_ms.get(nl, (disp, 0))[1])
+                   for nl, (disp, q) in cur_ms.items() if q > prev_ms.get(nl, (disp, 0))[1])
+    removed = sorted((disp, q - cur_ms.get(nl, (disp, 0))[1])
+                     for nl, (disp, q) in prev_ms.items() if q > cur_ms.get(nl, (disp, 0))[1])
+    return {"added": added, "removed": removed, "prev": prev[:9]}
+
+
 def cmd_history(args):
     """Show a deck file's git change history — the accurate, complete record of how
     the deck evolved (each commit message states the thematic + technical why). This
     is the deck's changelog; it lives in git rather than in-file so it can't get
     unwieldy or drift. Pair with `deck.py quality <id> --at <hash>` to compare a past
     version's measurable vector (interaction / curve / themes) against now."""
-    import subprocess
     d = find_deck(args.id)
     if not d:
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
     rel = os.path.relpath(d["path"], REPO_ROOT)
-    r = subprocess.run(["git", "log", "--follow", "--date=short",
-                        "--format=%h  %ad  %s", "--", rel],
-                       capture_output=True, text=True, cwd=REPO_ROOT)
-    if r.returncode != 0:
-        eprint(f"git log failed: {r.stderr.strip()}")
-        return 1
-    lines = [ln for ln in r.stdout.splitlines() if ln.strip()]
-    print(f"History — deck {d['id']}: {d['name'] or rel}  ({len(lines)} commit(s))")
-    for ln in lines:
-        print(f"  {ln}")
-    if lines:
+    hist = deck_git_history(d["path"])
+    print(f"History — deck {d['id']}: {d['name'] or rel}  ({len(hist)} commit(s))")
+    for h in hist:
+        print(f"  {h['hash']}  {h['date']}  {h['subject']}")
+    if hist:
         print(f"\n  full text of any version:   git show <hash>:{rel}"
               f"\n  compare a version's metrics: deck.py quality {d['id']} --at <hash>")
     return 0
@@ -3899,13 +3971,12 @@ def cmd_engines(args):
 
 
 def cmd_rotation(args):
-    """Roster-wide Standard-rotation exposure — which of your decks run cards aging out
-    of the format, and what rotates next. Offline: reads the pool's Released/Legalities
-    snapshot and the same `rotation_risk` window `suggest`'s ⚠rot flag uses. Scope it to
-    another format or window with --format / --years."""
-    import datetime
+    """Roster-wide Standard-rotation exposure — which of your decks run cards closest to
+    rotating, and what rotates next. Offline: reads the pool's Released/Legalities
+    snapshot. A card's rotation year is its set's release + `--years` (Standard's ~3y
+    window); `--within` sets how far ahead to look (default 2). Scope with --format."""
     fmt = (args.fmt or "standard").strip().lower()
-    decks, rollup, meta = rotation_sweep(fmt, years=args.years)
+    decks, rollup, meta = rotation_sweep(fmt, years=args.years, within=args.within)
     if not meta["has_released"]:
         eprint("card-pool.csv has no Released column — rebuild it (build_pool.py --all) so "
                "rotation dates are available. Nothing to report until then.")
@@ -3913,36 +3984,37 @@ def cmd_rotation(args):
     if meta["stale_days"] is not None and meta["stale_days"] > 120:
         eprint(f"⚠ card-pool.csv is {meta['stale_days']} days old — its legality/rotation "
                "snapshot may lag the current Standard; rebuild with build_pool.py --all.")
+    this_year = meta["this_year"]
     total = sum(d["n_slots"] for d in decks)
-    print(f"Rotation sweep ({fmt}, ~{args.years}y window) — {meta['n_decks']} deck(s), "
-          f"{total} at-risk card-slot(s).")
+    print(f"Rotation sweep ({fmt}, ~{args.years}y window, next {args.within}y) — "
+          f"{meta['n_decks']} deck(s), {total} rotating card-slot(s).")
     if not total:
-        print("No cards past the rotation window. ✓")
+        print(f"No cards rotating within {args.within} year(s). ✓ "
+              "(widen with --within, or rebuild the pool if it's stale.)")
         return 0
 
-    this_year = datetime.date.today().year
     print("\nRotates by year (deck-slots · distinct cards · decks) — soonest first:")
     for ry in sorted(rollup):
         rr = rollup[ry]
-        label = str(ry) if ry else "unknown"
-        soon = "  ⚠ SOON" if ry and ry <= this_year + 1 else ""
-        print(f"  ~{label:>7}: {rr['slots']:>3} slot(s) · {len(rr['cards']):>3} card(s) · "
-              f"{len(rr['decks']):>2} deck(s){soon}")
+        soon = "  ⚠ SOON" if ry <= this_year + 1 else ""
+        past = "  (past-due — pool may be stale)" if ry < this_year else ""
+        print(f"  ~{ry:>7}: {rr['slots']:>3} slot(s) · {len(rr['cards']):>3} card(s) · "
+              f"{len(rr['decks']):>2} deck(s){soon}{past}")
 
     print("\nBy deck (most-exposed first):")
     for d in decks:
         if not d["n_slots"]:
             continue
-        print(f"\n  deck {d['id']:>4}  {d['name'][:34]:34} {d['n_slots']} at-risk")
+        print(f"\n  deck {d['id']:>4}  {d['name'][:34]:34} {d['n_slots']} rotating")
         for c in d["atrisk"]:
-            ry = f"~{c['rotates']}" if c["rotates"] else "?"
-            print(f"       {ry:>6}  {c['qty']}× {c['name']} ({c['set']})")
+            print(f"       ~{c['rotates']:>4}  {c['qty']}× {c['name']} ({c['set']})")
 
     if meta["unverified"]:
         print(f"\n({meta['unverified']} card-slot(s) not found in the pool — unverified, "
               "skipped; rebuild the pool if they're recent.)")
-    print("\nTiming is a ~%d-year heuristic from set release, not the official schedule — "
-          "verify a set's exact rotation date before disenchanting its cards." % args.years)
+    print("\nTiming is a ~%d-year heuristic from set release, not the official schedule, and "
+          "the pool keys one printing per card (a reprint can read early) — verify before "
+          "disenchanting." % args.years)
     return 0
 
 
@@ -3975,6 +4047,8 @@ def main():
                    help="format to check rotation for (default: standard)")
     p.add_argument("--years", type=int, default=3,
                    help="rotation window in years (default: 3, Standard's rough window)")
+    p.add_argument("--within", type=int, default=2,
+                   help="how many years ahead to surface (default: 2 — what rotates next)")
     p = sub.add_parser("suggest", help="recommend pool cards that fit a deck's colors + themes")
     p.add_argument("id")
     p.add_argument("--limit", type=int, default=20,
