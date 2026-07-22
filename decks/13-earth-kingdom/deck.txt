@@ -34,7 +34,7 @@
 1 Loot, Exuberant Explorer (FDN) 106
 1 Mole Man, Moloid Master (MSH) 177
 1 Ostrich-Horse (TLA) 188
-1 Restorative Technique (MSH) 183
+1 Vizier of the Menagerie (FDN) 649
 1 Sandman, Shifting Scoundrel (SPM) 112
 1 The Walls of Ba Sing Se (TLA) 261
 1 Prismatic Undercurrents (ECL) 189
