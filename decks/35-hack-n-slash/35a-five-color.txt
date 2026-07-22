@@ -1,0 +1,76 @@
+#: name: Hack n Slash — 5-Color (Route B)
+#: format: Standard
+#: colors: WUBRG
+#: based-on: deck.txt
+#: archetype: 35 variant — the greedy 5-color build: keeps the W/B bombs (Absolute Virtue, Lightning Army of One, Karai, Bullseye, Sawblade…) that the Temur primary cuts, on a dual-heavy rainbow base.
+#: notes: Route B — same connect-and-trigger + cheat + burn plan as the primary, but WUBRG so
+#: notes: the off-color bombs stay in: Absolute Virtue (unkillable evasive finisher), Lightning
+#: notes: Army of One (Stagger doubles all damage), Lorehold, Karai (W/B sneak-reanimator),
+#: notes: Storm, Ghost, Nashi, Bullseye, Sawblade. Cut 9 URG filler from the primary to make
+#: notes: room. LESS CONSISTENT by design — leans on 13 owned duals (all Verges + Breeding Pool
+#: notes: + Hallowed Fountain + gates); the Verges untap conditionally, so expect some tapped/
+#: notes: color-screw variance. Craft rainbow fixing (Triomes / any-color lands) to firm it up.
+
+# Cheat enablers + top-end payoffs
+1 Michelangelo, Improviser (TMT) 119
+1 Krang, Utrom Warlord (TMT) 175
+1 Summon: Bahamut (FIN) 1
+1 The Dawning Archaic (SOS) 1
+1 The Legend of Kyoshi (TLA) 186
+1 Absolute Virtue (FIN) 212
+1 Karai, Future of the Foot (TMT) 151
+
+# Connect creatures (combat-damage payoffs)
+1 Bruce Banner (MSH) 49
+1 Kaito, Cunning Infiltrator (FDN) 44
+1 Ty Lee, Artful Acrobat (TLA) 158
+1 Michelangelo, Mutant BFF (TMT) 120
+1 Electro, Assaulting Battery (SPM) 76
+1 Lightning, Army of One (FIN) 233
+1 Lightning, Security Sergeant (FIN) 560
+1 Eager Trufflesnout (FDN) 102
+1 The Thing, Ben Grimm (MSH) 190
+1 Bumi, Unleashed (TLA) 211
+1 Beast, Erudite Aerialist (MSH) 206
+1 Drake Hatcher (FDN) 35
+1 Hawkeye, Master Marksman (MSH) 130
+1 Nashi, Searcher in the Dark (DSK) 223
+1 Ghost, Spectral Saboteur (MSH) 214
+1 Lorehold, the Historian (SOS) 201
+1 Storm, Windrider (MSH) 230
+
+# Engines + any-target damage
+1 Impostor Syndrome (SPM) 34
+1 Gossip's Talent (BLB) 51
+1 Buster Sword (FIN) 255
+1 Bullseye, Death Dealer (MSH) 209
+1 Sawblade Skinripper (DSK) 231
+
+# Push-through / evasion + burn spells
+1 Pym Particles (MSH) 70
+1 Untimely Malfunction (DSK) 161
+1 How to Start a Riot (TLA) 140
+1 Team Tactics (MSH) 155
+1 Biosynthic Burst (EOE) 173
+1 Burst Lightning (SOA) 41
+1 Vibrant Outburst (SOS) 240
+
+# Lands (24) — dual-heavy WUBRG (all owned Verges + shocks + gates)
+1 Riverpyre Verge (DFT) 260
+1 Willowrush Verge (DFT) 270
+1 Thornspire Verge (DSK) 270
+1 Floodfarm Verge (DSK) 259
+1 Gloomlake Verge (DSK) 260
+1 Sunbillow Verge (DFT) 264
+1 Blazemire Verge (DSK) 256
+1 Hushwood Verge (DSK) 261
+1 Wastewood Verge (DFT) 268
+1 Breeding Pool (EOE) 251
+1 Hallowed Fountain (ECL) 265
+1 Izzet Guildgate (FDN) 691
+1 Gruul Guildgate (FDN) 690
+3 Island (MSH) 290
+3 Mountain (MSH) 294
+3 Forest (MSH) 296
+1 Plains (MSH) 288
+1 Swamp (MSH) 292
