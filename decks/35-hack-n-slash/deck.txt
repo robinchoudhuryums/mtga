@@ -1,0 +1,69 @@
+#: name: Hack n Slash
+#: format: Standard
+#: colors: WUBRG
+#: archetype: 5-color experimental "cheats + reach" brew — put big creatures into play without paying (Michelangelo, Improviser & co.), then close with direct damage + evasion/push-through.
+#: notes: EXPERIMENTAL 75-card pile (needs trim to 60 + a real manabase — currently 24 basics
+#: notes: across all 5 colors with no fixing). Premise: "cheat" creatures into play (key card
+#: notes: Michelangelo, Improviser) + burn/any-target damage + disable-blockers / menace /
+#: notes: trample to push damage through. Won't be graded well by the synergy tooling (no tag
+#: notes: captures "cheat into play" or "direct damage as a plan") — hand-reviewed.
+
+# Nonland
+1 Bruce Banner (MSH) 49
+1 Michelangelo, Improviser (TMT) 119
+1 Absolute Virtue (FIN) 212
+1 Lightning, Army of One (FIN) 233
+1 Lorehold, the Historian (SOS) 201
+1 Buster Sword (FIN) 255
+1 Dawnsire, Sunstar Dreadnought (EOE) 238
+1 Krang, Utrom Warlord (TMT) 175
+1 The Dawning Archaic (SOS) 1
+1 Summon: Bahamut (FIN) 1
+1 The Legend of Kyoshi (TLA) 186
+1 Avatar Destiny (TLA) 165
+1 Zimone's Experiment (SOS) 169
+1 Redshift, Rocketeer Chief (DFT) 218
+1 Karai, Future of the Foot (TMT) 151
+1 Worlds Within Worlds (MSH) 241
+1 Pym Particles (MSH) 70
+1 Kaito, Cunning Infiltrator (FDN) 44
+1 Waterbender Ascension (TLA) 79
+1 Giant Koi (TLA) 53
+1 War Squeak (BLB) 160
+1 Untimely Malfunction (DSK) 161
+1 Ty Lee, Artful Acrobat (TLA) 158
+1 Michelangelo, Mutant BFF (TMT) 120
+1 Storm, Windrider (MSH) 230
+1 Ghost, Spectral Saboteur (MSH) 214
+1 Kitsune, Dragon's Daughter (TMT) 41
+1 Impostor Syndrome (SPM) 34
+1 Electro, Assaulting Battery (SPM) 76
+1 Hidetsugu's Second Rite (FDN) 202
+1 Lightning, Security Sergeant (FIN) 560
+1 Eager Trufflesnout (FDN) 102
+1 The Thing, Ben Grimm (MSH) 190
+1 Bumi, Unleashed (TLA) 211
+1 Goldvein Pick (FDN) 253
+1 Beast, Erudite Aerialist (MSH) 206
+1 Mistway Spy (MKM) 65
+1 Drake Hatcher (FDN) 35
+1 Gossip's Talent (BLB) 51
+1 Mondo Gecko (TMT) 46
+1 Hawkeye, Master Marksman (MSH) 130
+1 How to Start a Riot (TLA) 140
+1 Nashi, Searcher in the Dark (DSK) 223
+1 Burst Lightning (SOA) 41
+1 Vibrant Outburst (SOS) 240
+1 Bullseye, Death Dealer (MSH) 209
+1 Sawblade Skinripper (DSK) 231
+1 Team Tactics (MSH) 155
+1 Biosynthic Burst (EOE) 173
+1 Blitzball Shot (FIN) 176
+1 Ashroot Animist (FDN) 117
+
+# Lands
+8 Island (MSH) 290
+7 Mountain (MSH) 294
+7 Forest (MSH) 296
+1 Swamp (MSH) 292
+1 Plains (MSH) 288
