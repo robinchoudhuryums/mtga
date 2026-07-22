@@ -1,0 +1,25 @@
+name: Tests
+
+# Runs the project's checks on every push to main and every PR: the pytest unit layer
+# (tests/) plus the deterministic integrity + model-sanity gate (scripts/check_all.py).
+# Both are OFFLINE — they use only committed data and pure functions, no Scryfall — so
+# nothing here can hang on the network (same reason the Pages build disables it).
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install test deps
+        run: pip install -r requirements-dev.txt
+      - name: Unit tests (pytest)
+        run: pytest
+      - name: Integrity gate (check_all)
+        run: python3 scripts/check_all.py

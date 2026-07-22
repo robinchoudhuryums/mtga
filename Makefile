@@ -6,12 +6,13 @@ VENV  := .venv
 PYBIN := $(VENV)/bin/python
 ARGS  ?=
 
-.PHONY: help app check clean-venv
+.PHONY: help app check test-units clean-venv
 
 help:
 	@echo "make app             set up a local venv, install Flask, and launch the editor"
 	@echo "make app ARGS=...    pass args through, e.g. make app ARGS='--port 8000 --no-browser'"
 	@echo "make check           run the integrity gate (no dependencies)"
+	@echo "make test-units      run the pytest unit layer (installs requirements-dev.txt)"
 	@echo "make clean-venv      remove the local .venv"
 
 # Launch the editor. Depends on the venv sentinel so deps install on first run
@@ -27,6 +28,11 @@ $(VENV)/.installed: requirements-app.txt
 
 check:
 	python3 scripts/check_all.py
+
+# Fast, isolated unit tests for the pure helper functions (complements `make check`).
+test-units:
+	python3 -m pip install --quiet -r requirements-dev.txt
+	python3 -m pytest
 
 clean-venv:
 	rm -rf $(VENV)

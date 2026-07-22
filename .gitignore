@@ -21,3 +21,6 @@ credentials*.json
 
 # Personal Claude Code settings (permissions etc.) — not shared
 .claude/settings.local.json
+
+# pytest cache (unit-test layer)
+.pytest_cache/

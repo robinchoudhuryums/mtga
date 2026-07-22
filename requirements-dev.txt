@@ -1,0 +1,11 @@
+# Development-only dependency for the unit-test layer under tests/.
+#
+# The CORE tooling and the primary integrity gate (scripts/check_all.py) remain PURE
+# standard library — pytest is NOT needed to run them. Install this only to run the
+# fast, isolated unit tests that pin the pure helper functions:
+#
+#     pip install -r requirements-dev.txt
+#     pytest
+#
+# pytest is pure-Python (no compiled extensions), so it installs cleanly anywhere.
+pytest>=8.0
