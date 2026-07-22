@@ -1,19 +1,20 @@
 #: name: Zoologist
 #: format: Standard
+#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; metrics floor B (interaction ~8 counting bounces + real card advantage from Vizier/Goose Mother/Wan Shi Tong, under-read as 0). A single-payoff glass cannon (lives/dies on Zookeeper) defended by scaling removal (Bite Down/Rabid Bite) + bounce + Spell Pierce; held below A by that fragility and rainbow-singleton variance. Now fully owned.
 #: colors: GU
-#: archetype: Simic (G/U) changeling / creature-type-matters — pile the board with all-types creatures, then Diligent Zookeeper & co. make them enormous.
-#: notes: WIP build (58 cards) around Diligent Zookeeper ("each non-Human creature gets
-#: notes: +1/+1 for EACH of its creature types, max 10") — so a changeling (all types) becomes
-#: notes: a +10/+10 threat. Enablers: Leyline of Transformation, Omni-Changeling, Three Tree
-#: notes: Mascot, Mutable Explorer, Cat-Owl, Glamer Gifter, Oko. Vizier of the Menagerie for
-#: notes: ramp/castability. Needs +2 cards to reach 60 and a tuning pass; many cards unowned
-#: notes: (aspirational — check shows craft targets). Gangly Stompling ({2}{R/G}) and Cat-Owl
-#: notes: ({3}{W/U}) are hybrids paid on-color (G/U) — the mana △ flag is expected, not a stray.
+#: archetype: Simic (G/U) changeling / creature-type-count — flood the board with all-types creatures, then Diligent Zookeeper makes them enormous; a scaling-removal interaction suite keeps it from being a one-card combo.
+#: notes: The focused, resilient build (promoted from the old 34a variant; the original undirected
+#: notes: 58-card pile was retired). Core: changelings (Omni-Changeling, Mutable Explorer, Three
+#: notes: Tree Mascot, Gangly Stompling) + all-types granters (Glamer Gifter, Oko, Stalactite
+#: notes: Dagger) → Diligent Zookeeper (+1/+1 per creature type, max 10). Card advantage from
+#: notes: Vizier / Goose Mother / Wan Shi Tong / Ray Fillet; interaction from Bite Down + Rabid
+#: notes: Bite (a +10/+10 changeling kills anything), bounces, Spell Pierce, Bushwhack, Unforgiving
+#: notes: Aim. Gangly Stompling ({2}{R/G}) / Cat-Owl ({3}{W/U}) are hybrids paid on-color.
 
-# Nonland
+# Nonland — changeling / type-matters core
 1 Diligent Zookeeper (TLA) 171
 1 Vizier of the Menagerie (FDN) 649
-1 Leyline of Transformation (DSK) 63
+1 The Goose Mother (WOE) 204
 1 Oko, Lorwyn Liege (ECL) 61
 1 Omni-Changeling (ECL) 62
 1 Mutable Explorer (ECL) 186
@@ -23,9 +24,7 @@
 1 Undercover Skrull (MSH) 194
 1 Absorbing Man (MSH) 199
 1 Ultron, Artificial Malevolence (MSH) 252
-1 Patchwork Beastie (DSK) 195
-1 Wickerfolk Thresher (DSK) 207
-1 Overlord of the Hauntwoods (DSK) 194
+1 Ray Fillet, Man Ray (TMT) 49
 1 Gangly Stompling (ECL) 226
 1 Iguana Parrot (TLA) 56
 1 Turtle-Duck (TLA) 200
@@ -38,13 +37,19 @@
 1 Applied Geometry (SOS) 172
 1 Spider-Suit (SPM) 176
 1 Stalactite Dagger (ECL) 261
-1 Diamond Weapon (FIN) 183
 1 Chronicle of Victory (ECL) 253
-1 Enter the Enigma (DSK) 52
 1 Earth's Mightiest Heroes (MSH) 165
-1 Pull Through the Weft (EOE) 202
-1 Zoetic Glyph (LCI) 86
-1 Seismic Sense (TLA) 195
+1 Wan Shi Tong, Librarian (TLA) 78
+1 Enter the Enigma (DSK) 52
+
+# Nonland — interaction / protection
+1 Bite Down (FDN) 212
+1 Rabid Bite (ANB) 101
+1 Into the Flood Maw (BLB) 52
+1 Bounce Off (DFT) 39
+1 Spell Pierce (SOA) 23
+1 Bushwhack (BRO) 174
+1 Unforgiving Aim (ECL) 200
 
 # Lands
 1 Lilypad Village (BLB) 255
