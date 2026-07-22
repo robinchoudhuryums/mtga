@@ -581,14 +581,35 @@ def _status_label(target, status_map):
     return f"{tier}·{rem}{star}"
 
 
+# Cross-deck reuse (breadth) as an explicit, BOUNDED contributor to the combined
+# value-per-wildcard score: a craft that fits several of your decks is worth more per
+# wildcard than a one-deck sidegrade ("craft this — it helps 4 decks"). Bounded so
+# breadth NUDGES the ranking without ever overriding a real fit+power gap — the same
+# discipline check_suggest applies to its co-signals. Guarded by check_rankings.
+_REUSE_BONUS_W = 0.6      # per EXTRA deck the card fits (beyond the first)
+_REUSE_BONUS_CAP = 1.8    # capped (~a 4-home card) — small next to the 0–10 fit+power blend
+
+
+def _reuse_bonus(reuse):
+    """Bounded breadth bonus added to `combined`: 0 for a 0/1-home card, non-decreasing
+    in `reuse`, capped at _REUSE_BONUS_CAP."""
+    try:
+        r = int(reuse)
+    except (TypeError, ValueError):
+        return 0.0
+    return round(min(_REUSE_BONUS_CAP, _REUSE_BONUS_W * max(0, r - 1)), 2)
+
+
 def _rank_scores(rows):
     """Score every wishlist card for wildcard-spend priority. Reuses the idf theme
     model (so it stays consistent with --suggest-targets):
 
-      fit    – idf-weighted theme fit to the card's best-matching deck.
+      fit    – idf-weighted theme fit to the card's best-matching deck (→ pri, fitN).
       reuse  – # decks the card is castable in AND shares a SPECIFIC (idf-signal)
-               theme with — real cross-deck breadth, not generic overlap.
-      pri    – fit + 0.6 * max(0, reuse - 1)   (home-run fit + a breadth bonus).
+               theme with — real cross-deck breadth, not generic overlap. A FIRST-CLASS
+               axis: it adds a bounded `_reuse_bonus` directly to `combined`, so a
+               multi-home craft outranks an equal fit+power one-deck sidegrade.
+      pri    – the home-run single-deck fit (breadth now lives in combined, not here).
 
     Tiers: A = confident theme home (fit>=1.5 on a specific theme) OR breadth>=3;
     B = a specific-theme fit / castable-on-theme in >=1 deck; C = generic/none.
@@ -621,7 +642,10 @@ def _rank_scores(rows):
             conf = "ok"
         else:
             conf = "review"
-        pri = best + 0.6 * max(0, reuse - 1)
+        # pri is the home-run single-deck fit; breadth is applied as a bounded bonus to
+        # `combined` below (was `best + 0.6*(reuse-1)` — moved out so fit and breadth are
+        # separate, legible axes and reuse can't be double-counted).
+        pri = best
         tier = "A" if (conf == "STRONG" or reuse >= 3) else \
                "B" if (best_specific or reuse >= 1) else "C"
         raw_power = (r.get("Power") or "").strip()
@@ -678,7 +702,10 @@ def _rank_scores(rows):
             s["sig"] = "manabase (land)"
         else:
             s["fitN"] = round(s["pri"] / mx * 10, 2)
-            s["combined"] = round(0.5 * s["fitN"] + 0.5 * s["power"], 2)
+            # Breadth is a first-class, bounded term in the value-per-wildcard score: a
+            # card that fits several decks outranks an equal fit+power one-deck sidegrade.
+            s["combined"] = round(0.5 * s["fitN"] + 0.5 * s["power"]
+                                  + _reuse_bonus(s["reuse"]), 2)
     order = {"A": 0, "B": 1, "C": 2}
     out.sort(key=lambda s: (order[s["tier"]], -s["pri"], -_WC_RANK.get(s["rarity"], 0), s["name"]))
     return out
@@ -705,14 +732,15 @@ def cmd_rank(rows):
             n = sum(1 for x in scored if x["tier"] == cur)
             print(f"\n{labels[cur]}  ({n} cards)")
             print(f"  {'#':>3} {'Card':28} {'WC':3} {'Deck':6} {'state':6} {'fit':>4} "
-                  f"{'pow':>4} {'comb':>5}  signal")
-            print("  " + "-" * 94)
+                  f"{'pow':>4} {'use':>3} {'comb':>5}  signal")
+            print("  " + "-" * 98)
             i = 0
         i += 1
         wc = (s["rarity"] or "?")[:1] or "?"
         pw = f"{s['power']:>4.1f}" + ("?" if s["blank_power"] else "!" if s["bad_power"] else " ")
+        use = f"{s['reuse']}★" if s["reuse"] >= 3 else str(s["reuse"])
         print(f"  {i:>3} {s['name'][:28]:28} {wc:3} {s['target']:6} {s['state']:6} "
-              f"{s['fitN']:>4.1f} {pw} {s['combined']:>5.1f}  {s['sig'][:28]}")
+              f"{s['fitN']:>4.1f} {pw} {use:>3} {s['combined']:>5.1f}  {s['sig'][:28]}")
     print("\n" + "=" * 60)
     print("Wildcard cost by tier (you spend that rarity's wildcards):")
     for t in ("A", "B", "C"):
@@ -723,10 +751,13 @@ def cmd_rank(rows):
         line = ", ".join(f"{by[k]} {k}" for k in ("Mythic", "Rare", "Uncommon", "Common") if by.get(k))
         print(f"  Tier {t}: {line}")
     blanks = [s["name"] for s in scored if s["blank_power"]]
-    print("\ncomb = 50/50 blend of theme fit (fit, 0–10) and hand-graded power (pow). "
-          "state = target deck's tier·remaining-crafts (★ = this card helps FINISH a "
-          "near-complete deck; '—' = general/concept). A high-value wildcard upgrades a "
-          "BUILT deck (low remaining) — a big remaining count is a build PROJECT.")
+    print("\ncomb = 50/50 blend of theme fit (fit, 0–10) and hand-graded power (pow), "
+          "plus a bounded breadth bonus. use = cross-deck reuse: # of your decks the card "
+          "is castable in AND shares a central theme with (★ = fits ≥3 — craft once, play "
+          "everywhere; copies are fungible). state = target deck's tier·remaining-crafts "
+          "(★ = this card helps FINISH a near-complete deck; '—' = general/concept). A "
+          "high-value wildcard upgrades a BUILT deck (low remaining) — a big remaining "
+          "count is a build PROJECT.")
     if blanks:
         print(f"⚠ {len(blanks)} card(s) have BLANK Power (shown as 'pow?', ranked low until "
               f"graded): {', '.join(blanks[:8])}{' …' if len(blanks) > 8 else ''}. "

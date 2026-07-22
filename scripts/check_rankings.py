@@ -97,6 +97,23 @@ def check():
     except Exception as e:
         errs.append(f"ranking model: _rank_scores() raised {type(e).__name__}: {e}")
 
+    # (5) the cross-deck reuse (breadth) bonus is a BOUNDED, first-class contributor to
+    #     `combined` — it rewards a multi-home craft but must never dwarf a real fit+power
+    #     gap (same discipline check_suggest applies to its co-signals).
+    rb = getattr(wishlist, "_reuse_bonus", None)
+    if rb is None:
+        errs.append("ranking model: wishlist._reuse_bonus missing — the reuse signal isn't wired.")
+    else:
+        if rb(0) != 0 or rb(1) != 0:
+            errs.append(f"ranking model: reuse bonus must be 0 for a 0/1-home card "
+                        f"(got {rb(0)}, {rb(1)}) — a one-deck sidegrade earns no breadth credit.")
+        seq = [rb(k) for k in (1, 2, 3, 4, 8, 20)]
+        if not all(a <= b for a, b in zip(seq, seq[1:])):
+            errs.append(f"ranking model: reuse bonus must be non-decreasing in breadth: {seq}.")
+        if not (rb(8) == rb(20) and rb(20) <= 2.0):
+            errs.append(f"ranking model: reuse bonus must be CAPPED (≤2.0) so breadth can't "
+                        f"dwarf the 0–10 fit+power blend; rb(8)={rb(8)}, rb(20)={rb(20)}.")
+
     return errs
 
 

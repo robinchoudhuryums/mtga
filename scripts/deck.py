@@ -1701,6 +1701,82 @@ def rotation_risk(released, years=3):
         return False
 
 
+def _pool_rotation_index():
+    """name_lower (full AND DFC front) -> (released, {legalities}, set_code) from the pool.
+    Returns (index, has_released). `has_released` is False for a pool built before the
+    Released column existed — callers then warn instead of silently reporting nothing."""
+    idx, has_released = {}, False
+    if not os.path.exists(POOL_CSV):
+        return idx, has_released
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        rdr = csv.DictReader(fh)
+        has_released = "Released" in (rdr.fieldnames or [])
+        for r in rdr:
+            nl = (r.get("Card Name") or "").strip().lower()
+            if not nl:
+                continue
+            info = ((r.get("Released") or "").strip(),
+                    {x.strip().lower() for x in (r.get("Legalities") or "").split(";") if x.strip()},
+                    (r.get("Set Code") or "").strip())
+            idx.setdefault(nl, info)
+            idx.setdefault(nl.split(" // ")[0], info)  # DFC front-face fallback
+    return idx, has_released
+
+
+def rotation_sweep(fmt="standard", years=3):
+    """Roster-wide rotation exposure for `fmt` (default Standard): the cards each deck
+    runs whose set is past the ~`years`-year rotation window, so you can see what
+    rotates NEXT and which decks it hits. Reuses the pool's Released/Legalities snapshot
+    and the shared `rotation_risk` primitive (the same one `suggest`'s ⚠rot flag uses),
+    so this can't drift from the per-card signal. Offline.
+
+    Returns (decks, rollup, meta):
+      decks  = [{id, name, atrisk:[{name,set,rotates,qty}], n_slots}] for `fmt` decks,
+               most-exposed first (each at-risk list sorted soonest-rotating first).
+      rollup = {rotates_year: {'slots':n, 'cards':set, 'decks':set}} (a card counted per
+               deck it appears in — "deck-slots" — since the point is roster exposure).
+      meta   = {has_released, stale_days, unverified, n_decks}.
+    """
+    pool, has_released = _pool_rotation_index()
+    fmt = (fmt or "").strip().lower()
+    decks_out, rollup, unverified = [], {}, 0
+    for d in discover_decks():
+        dm, cards = parse_deck_file(d["path"])
+        if fmt and (dm.get("format") or "").strip().lower() != fmt:
+            continue
+        atrisk = []
+        for q, n, s, c in cards:
+            nl = n.lower()
+            if nl in BASICS:
+                continue
+            info = pool.get(nl) or pool.get(nl.split(" // ")[0])
+            if not info:
+                unverified += 1
+                continue
+            released, legals, setc = info
+            if fmt and legals and fmt not in legals:
+                continue  # not legal in this format anyway — it can't "rotate out" of it
+            if not rotation_risk(released, years):
+                continue
+            try:
+                rotates = int(released[:4]) + years
+            except (ValueError, TypeError):
+                rotates = None
+            atrisk.append({"name": n, "set": setc or s, "rotates": rotates, "qty": q})
+            rk = rotates if rotates is not None else 0
+            rr = rollup.setdefault(rk, {"slots": 0, "cards": set(), "decks": set()})
+            rr["slots"] += 1
+            rr["cards"].add(n)
+            rr["decks"].add(d["id"])
+        atrisk.sort(key=lambda x: (x["rotates"] or 9999, x["name"]))
+        decks_out.append({"id": d["id"], "name": d["name"] or d["id"],
+                          "atrisk": atrisk, "n_slots": len(atrisk)})
+    decks_out.sort(key=lambda x: (-x["n_slots"], x["id"]))
+    meta = {"has_released": has_released, "stale_days": pool_staleness_days(),
+            "unverified": unverified, "n_decks": len(decks_out)}
+    return decks_out, rollup, meta
+
+
 def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_format=False):
     """Structured core of `suggest` — returns the scored, sorted, limited picks as
     plain dicts so both `cmd_suggest` (renders below) and build_dashboard.py (craft
@@ -3822,6 +3898,54 @@ def cmd_engines(args):
     return 0
 
 
+def cmd_rotation(args):
+    """Roster-wide Standard-rotation exposure — which of your decks run cards aging out
+    of the format, and what rotates next. Offline: reads the pool's Released/Legalities
+    snapshot and the same `rotation_risk` window `suggest`'s ⚠rot flag uses. Scope it to
+    another format or window with --format / --years."""
+    import datetime
+    fmt = (args.fmt or "standard").strip().lower()
+    decks, rollup, meta = rotation_sweep(fmt, years=args.years)
+    if not meta["has_released"]:
+        eprint("card-pool.csv has no Released column — rebuild it (build_pool.py --all) so "
+               "rotation dates are available. Nothing to report until then.")
+        return 1
+    if meta["stale_days"] is not None and meta["stale_days"] > 120:
+        eprint(f"⚠ card-pool.csv is {meta['stale_days']} days old — its legality/rotation "
+               "snapshot may lag the current Standard; rebuild with build_pool.py --all.")
+    total = sum(d["n_slots"] for d in decks)
+    print(f"Rotation sweep ({fmt}, ~{args.years}y window) — {meta['n_decks']} deck(s), "
+          f"{total} at-risk card-slot(s).")
+    if not total:
+        print("No cards past the rotation window. ✓")
+        return 0
+
+    this_year = datetime.date.today().year
+    print("\nRotates by year (deck-slots · distinct cards · decks) — soonest first:")
+    for ry in sorted(rollup):
+        rr = rollup[ry]
+        label = str(ry) if ry else "unknown"
+        soon = "  ⚠ SOON" if ry and ry <= this_year + 1 else ""
+        print(f"  ~{label:>7}: {rr['slots']:>3} slot(s) · {len(rr['cards']):>3} card(s) · "
+              f"{len(rr['decks']):>2} deck(s){soon}")
+
+    print("\nBy deck (most-exposed first):")
+    for d in decks:
+        if not d["n_slots"]:
+            continue
+        print(f"\n  deck {d['id']:>4}  {d['name'][:34]:34} {d['n_slots']} at-risk")
+        for c in d["atrisk"]:
+            ry = f"~{c['rotates']}" if c["rotates"] else "?"
+            print(f"       {ry:>6}  {c['qty']}× {c['name']} ({c['set']})")
+
+    if meta["unverified"]:
+        print(f"\n({meta['unverified']} card-slot(s) not found in the pool — unverified, "
+              "skipped; rebuild the pool if they're recent.)")
+    print("\nTiming is a ~%d-year heuristic from set release, not the official schedule — "
+          "verify a set's exact rotation date before disenchanting its cards." % args.years)
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="Manage decks and variations.")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -3846,6 +3970,11 @@ def main():
     p.add_argument("id")
     p = sub.add_parser("engines", help="enabler vs payoff balance for the deck's engine themes")
     p.add_argument("id")
+    p = sub.add_parser("rotation", help="roster-wide Standard-rotation exposure — which decks run aging-out cards")
+    p.add_argument("--format", dest="fmt", default="standard",
+                   help="format to check rotation for (default: standard)")
+    p.add_argument("--years", type=int, default=3,
+                   help="rotation window in years (default: 3, Standard's rough window)")
     p = sub.add_parser("suggest", help="recommend pool cards that fit a deck's colors + themes")
     p.add_argument("id")
     p.add_argument("--limit", type=int, default=20,
@@ -3913,6 +4042,7 @@ def main():
         "list": cmd_list, "wildcards": cmd_wildcards, "audit": cmd_audit, "check": cmd_check,
         "diff": cmd_diff, "arena": cmd_arena, "stats": cmd_stats,
         "mana": cmd_mana, "tribes": cmd_tribes, "engines": cmd_engines, "suggest": cmd_suggest,
+        "rotation": cmd_rotation,
         "legal": cmd_legal, "cuts": cmd_cuts,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
         "verify": cmd_verify, "text": cmd_text, "suggest-homes": cmd_suggest_homes,
