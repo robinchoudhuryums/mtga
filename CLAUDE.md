@@ -26,7 +26,10 @@ docs. This file is the source of truth for the workflow commands in
   `suggest`/`suggest-homes`/fingerprints; a `.replace(" ", "")` variant kept the `/`
   and broke gold cards (audit F1/F2). `card_colors()` handles both — route every new
   color-parse site through it. `scripts/check_colors.py` (a hard `check_all` gate,
-  like `check_rankings`) locks this in: a colorless card must not read as colored.
+  like `check_rankings`) locks this in: a colorless card must not read as colored,
+  AND a static AST scan fails the build if any script re-implements the naive
+  `{x for x in … if x in "WUBRG"}` idiom instead of `card_colors()` — the coverage
+  gap that once let the bug regress into `wishlist.py`/`app.py` undetected.
 - **Write canonical files through `lib.atomic_write()` (+ `lib.backup_path()`).**
   Every mutation of `card-library.csv` / `card-mana.csv` / `card-pool.csv` /
   `card-wishlist.csv` goes temp-file → timestamped `.bak` → atomic `os.replace`, so
@@ -49,6 +52,8 @@ docs. This file is the source of truth for the workflow commands in
   The pool-facing ownership joins (`pool.py`, `deck.py suggest`) fall back to a
   DFC's **front** face, since the pool keys the full `Front // Back` name but the
   library stores the front only — else an owned DFC would read as `craft` (audit F6).
+  Route every such join through `lib.owned_qty` (front-face aware); `check_dfc.py`
+  hard-gates this (behavioral anchor + a static scan for raw lookups that bypass it).
 - **Decks share the collection — a card is NOT consumed by a deck.** In MTG Arena
   the whole collection is available to every deck at once, so one owned copy can
   sit in any number of decks *simultaneously*; owning N copies lets each deck run
@@ -524,9 +529,14 @@ castability · curve · central-theme density), with the intangibles moving a de
 INV-01…04 plus a **ranking-model sanity check** (`check_rankings.py`) that guards
 the Doctor-Doom-class regression: a scoring change that silently reclassifies a
 real tribal theme as "generic". The ranking check is distribution-based, so it
-survives cards being crafted off the wishlist. Four more model-sanity checks are
+survives cards being crafted off the wishlist. Five more model-sanity checks are
 also hard-gated: **color-parsing** (`check_colors.py`) locks in the F1/F2 fix (a
-colorless card must not read as red; a slash-gold must pass the subset test);
+colorless card must not read as red; a slash-gold must pass the subset test) and a
+static scan bans the naive inline `if ch in "WUBRG"` parse outside `lib.py`;
+**DFC ownership-join** (`check_dfc.py`) guards the front/full-name convention — a
+behavioral anchor that `lib.owned_qty` and its wrappers (`wishlist._owned_of`,
+`pool.owned_of`) resolve an owned double-faced card by its front face, plus a static
+scan that flags a raw ownership lookup bypassing `owned_qty` (the A3/A4/F6 class);
 **suggest scoring** (`check_suggest.py`) keeps the needs-aware suggest/cuts terms
 BOUNDED — the diminishing-returns role credit and the curve-gap factor can't
 silently reorder a tuned deck (#1/#2), the power co-signal never overrides
@@ -564,7 +574,7 @@ letter — see the Competitive Tiering rubric). Soft warnings never fail the bui
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
-- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
+- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`)
 - Decks: decks/
 

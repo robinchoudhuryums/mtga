@@ -3480,7 +3480,7 @@ Reverberating Summons,Enchantment,"At the beginning of each combat, if you've ca
 Heartfire Immolator,Creature — Human Wizard,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 {R}, Sacrifice this creature: It deals damage equal to its power to target creature or planeswalker.",R,Human; Wizard; sacrifice; pump; removal; prowess; spellslinger; tempo,FDN,201,1
 "Spider-Ham, Peter Porker",Legendary Creature — Spider Boar Hero,"When Spider-Ham enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
-Animal May-Ham — Other Spiders, Boars, Bats, Bears, Birds, Cats, Dogs, Frogs, Jackals, Lizards, Mice, Otters, Rabbits, Raccoons, Rats, Squirrels, Turtles, and Wolves you control get +1/+1.",G,Spider; Boar; Hero; lifegain; sacrifice; tokens; etb; food; pump; animal may-ham,SPM,114,1
+Animal May-Ham — Other Spiders, Boars, Bats, Bears, Birds, Cats, Dogs, Frogs, Jackals, Lizards, Mice, Otters, Rabbits, Raccoons, Rats, Squirrels, Turtles, and Wolves you control get +1/+1.",G,Spider; Boar; Hero; lifegain; sacrifice; tokens; etb; food; pump,SPM,114,1
 Vizier of the Menagerie,Creature — Snake Cleric,"You may look at the top card of your library any time.
 You may cast creature spells from the top of your library.
 You can spend mana of any type to cast creature spells.",G,Snake; Cleric; selection; card advantage; ramp,FDN,649,1
@@ -3516,4 +3516,4 @@ Lilypad Village,Land,"{T}: Add {C}.
 {T}: Add {U}. Spend this mana only to cast a creature spell.
 {U}, {T}: Surveil 2. Activate only if a Bird, Frog, Otter, or Rat entered the battlefield under your control this turn.",U,mana; surveil; graveyard,BLB,255,1
 Overlord of the Hauntwoods,Enchantment Creature — Avatar Horror,"Impending 4—{1}{G}{G} (If you cast this spell for its impending cost, it enters with four time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
-Whenever this permanent enters or attacks, create a tapped colorless land token named Everywhere that is every basic land type.",G,Avatar; Horror; tokens; impending; ramp; mana,DSK,194,1
+Whenever this permanent enters or attacks, create a tapped colorless land token named Everywhere that is every basic land type.",G,Avatar; Horror; tokens; impending; ramp; mana; tempo; cost-reduction,DSK,194,1
