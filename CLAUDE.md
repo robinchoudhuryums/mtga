@@ -317,8 +317,9 @@ castability · curve · central-theme density), with the intangibles moving a de
   *finish* a near-complete deck) so "upgrade a BUILT deck" reads apart from "build an
   UNBUILT one" — the strategic overlay the raw score can't show. `--rank` and
   `--budget` **exclude cards you already own** (DFC front-name aware) so a craft plan
-  never tells you to craft what you have (audit F19); a **non-numeric** `Power` typo is
-  flagged `pow!` (scored 0.0 but surfaced, not silently sunk — audit F9); and
+  never tells you to craft what you have (audit F19); a **non-numeric or non-finite**
+  (`nan`/`inf`) `Power` is flagged `pow!` (scored 0.0 but surfaced, not silently sunk —
+  audit F9/A10); and
   re-running `--add` on a batch **re-enriches** rows that were added name-only during
   an earlier Scryfall outage instead of skipping them as dupes (audit F20).
   `Target`/`Note`/`Power` are hand-annotated: `Target` is a

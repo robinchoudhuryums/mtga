@@ -731,13 +731,16 @@ Import applies Sheets' own formula parsing, which this RAW guard can't cover.)
 
 `python3 scripts/check_all.py` is the project's integrity gate — it verifies the
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
-derived files present, decks parse) plus five **model-sanity checks** that keep the
+derived files present, decks parse) plus six **model-sanity checks** that keep the
 grading/ranking models from silently drifting: the **ranking model**
-(`check_rankings.py`), **color parsing** (`check_colors.py`), the needs-aware
-**suggest/cuts scoring** (`check_suggest.py` — bounded modifiers, power never
-overrides theme fit), the **engine classifier** (`check_engines.py`), and the
-archetype-aware **tier floor** (`check_tier.py` — non-aggro grades unchanged, the
-aggro clock only ever raises a band). It exits non-zero on any hard break. It also
+(`check_rankings.py`), **color parsing** (`check_colors.py` — also a static scan
+banning the naive inline `WUBRG` parse outside `lib.py`), the **DFC ownership-join**
+convention (`check_dfc.py` — an owned double-faced card must resolve by its front
+face), the needs-aware **suggest/cuts scoring** (`check_suggest.py` — bounded
+modifiers, power never overrides theme fit), the **engine classifier**
+(`check_engines.py`), and the archetype-aware **tier floor** (`check_tier.py` —
+non-aggro grades unchanged, the aggro clock only ever raises a band). It exits
+non-zero on any hard break. It also
 emits **soft warnings** (never gating): wishlist target drift (a card whose target
 deck can no longer cast it); **new unindexed card mechanics** (`check_keywords.py`);
 **theme coverage** — `check_themes.py` flags an owned card whose text plays a theme
