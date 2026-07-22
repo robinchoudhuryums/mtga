@@ -967,6 +967,9 @@ def _curve_gap_factor(mv, curve):
 _SUGGEST_POWER_W = 1.0
 
 
+_power_seed_warned = False  # one-time guard for the A14 degradation warning
+
+
 def _power_seed(row):
     """A card's heuristic power (0–10) for suggest's card-quality co-signal (#6) — the
     same rarity+role estimate the wishlist seeds Power with, so an owned/craftable bomb
@@ -975,7 +978,15 @@ def _power_seed(row):
     try:
         import wishlist
         return wishlist._seed_power(row)
-    except Exception:
+    except Exception as e:
+        # Degrade (power drops out of the ranking) but say so ONCE — this runs per
+        # candidate in a hot loop, so a silent 0.0 for every card would hide a real
+        # regression in the power seed (audit A14).
+        global _power_seed_warned
+        if not _power_seed_warned:
+            _power_seed_warned = True
+            eprint(f"WARN:  power co-signal unavailable ({type(e).__name__}: {e}); "
+                   "suggest ranking proceeds without the power dimension.")
         return 0.0
 
 

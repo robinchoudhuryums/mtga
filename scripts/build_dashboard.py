@@ -1287,7 +1287,7 @@ function modalDeckObj(id){ return D.decks.find(d => d.id === id); }
 function openModal(id){ STATE.modalDeck = id; renderOverlays(); }
 function closeModal(){ STATE.modalDeck = ''; renderOverlays(); }
 function printDeck(d){
-  const escp = t => (t||'').replace(/</g,'&lt;');
+  const escp = t => (t||'').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
   const rows = (d.craft||[]).map(c => '<tr><td>' + escp(c.name) + '</td><td>' + c.rarity + '</td><td>' + (c.decks||0) + '</td><td>' + escp((c.matches||[]).join(', ')) + '</td></tr>').join('');
   const css = 'body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#111;margin:32px;max-width:640px}h1{font-size:20px;margin:0 0 2px}.sub{color:#666;font-size:13px;margin-bottom:18px}table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 22px}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid #ddd}th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#666}pre{background:#f4f4f6;padding:12px;border-radius:8px;font-size:12px;white-space:pre-wrap}h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#666;margin:20px 0 6px}';
   const table = rows ? '<table><thead><tr><th>Card</th><th>WC</th><th>reuse</th><th>matches</th></tr></thead><tbody>' + rows + '</tbody></table>' : '<p>No craft picks.</p>';

@@ -501,7 +501,11 @@ def _deck_colors_map():
         import deck as dk
         return {d["id"].lower(): card_colors(d["meta"].get("colors"))
                 for d in dk.discover_decks()}
-    except Exception:
+    except Exception as e:
+        # Degrade (lands score neutral) but don't do it silently — a broken deck load
+        # would quietly drop the land manabase axis from --rank (audit A14).
+        eprint(f"WARN:  deck colors unavailable for land manabase scoring "
+               f"({type(e).__name__}: {e}); lands will score neutral.")
         return {}
 
 
@@ -541,7 +545,10 @@ def _deck_status():
     """
     try:
         import deck as dk
-    except Exception:
+    except Exception as e:
+        # Degrade (the --rank 'state' column blanks out) but surface it (audit A14).
+        eprint(f"WARN:  deck build-state unavailable ({type(e).__name__}: {e}); "
+               "the --rank 'state' column will be blank.")
         return {}
     _bk, _bn, by_name_qty = dk.load_collection()
     out = {}

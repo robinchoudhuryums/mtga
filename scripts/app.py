@@ -210,7 +210,10 @@ def _append_mana(name, cost, mv, keywords):
     if not rows:
         rows = [["Card Name", "Mana Cost", "Mana Value", "Keywords"]]
     rows.append([name, cost or "", mv if isinstance(mv, int) else "", keywords or ""])
-    atomic_write(MANA_CSV, lambda fh: csv.writer(fh).writerows(rows), backup=False)
+    # Back the mana file up to a timestamped .bak like every other canonical-CSV
+    # mutation (CLAUDE.md's atomic_write + backup invariant); the previous backup=False
+    # skipped it (audit A12). backup=True is atomic_write's default.
+    atomic_write(MANA_CSV, lambda fh: csv.writer(fh).writerows(rows))
 
 
 def _lookup_card(name):
@@ -462,7 +465,9 @@ def revert():
     finally:
         if tmp and os.path.exists(tmp):
             os.remove(tmp)
-    return jsonify(ok=True, restored=baks[-1])
+    # Report the file actually restored (newest by mtime), not the lexically-last
+    # name — they can differ under legacy/mixed .bak naming (audit A13).
+    return jsonify(ok=True, restored=newest_base)
 
 
 # --------------------------------------------------------------------------- #
