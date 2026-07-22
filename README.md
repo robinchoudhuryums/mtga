@@ -579,6 +579,18 @@ gives sortable **Craft picks** and a **Wishlist priority** table (the `wishlist.
 numbers come from the same `audit_deck()` / `suggest_scored()` the CLI renders, so
 the dashboard can't drift from the commands.
 
+The page is a **premium dark / light theme** (violet accent; toggle with the ◐ button
+or `t`, remembered across visits). Up top, an **analytics band** shows the buildable-ready
+%, wildcards-needed by rarity, and color / format / mana-curve distributions across the
+whole roster. The deck grid filters by **color pips** or quick filters (Buildable / Needs
+mythic / Needs work) and switches to a **Compact** table. A **Crafting-leverage** section
+ranks the cards shared by the most decks' craft lists — click one to highlight every deck
+it advances — and a **payoff simulator** projects how many more decks become buildable if
+you craft each wishlist tier. A **⌘K command palette** (plus `g d`/`g w`/`g p` jumps and
+`/` to focus the filter) navigates; hovering a craft- or wishlist-card name shows its
+**Scryfall image**; **⤢** opens a per-deck detail modal and **🖨** prints its craft plan.
+The 🔗 button copies a deep-link that restores the current filters / view.
+
 It also has a **"Check for stale decks"** panel: paste one deck's Arena export to see
 whether it drifted from the stored list, or paste several `Deck` blocks at once for a
 roster staleness report (*N in sync · M drifted*, naming the decks to update). Each
@@ -594,9 +606,12 @@ variants** that runs it (with the copy count), each a click-through chip that
 filters the deck list to that deck. It searches the same per-deck card multisets the
 stale-deck compare uses, entirely in-browser.
 
-The build is **offline** — it disables `deck.py`'s live-Scryfall fallbacks and reads
-only committed data (`card-*.csv` + `decks/`), so it never touches the network and
-runs in CI.
+The **build** is **offline** — it disables `deck.py`'s live-Scryfall fallbacks and reads
+only committed data (`card-*.csv` + `decks/`), so it never touches the network and runs
+in CI. The **page** stays self-contained (data embedded, system-font stack, no CDN) and
+works fully offline; its only online touches are **optional and non-blocking** — Scryfall
+hover images, and a **⟳ live re-sync** that pulls the latest published snapshot from Pages
+— each falling back to the embedded data if the network is unavailable.
 
 **Hosting it (GitHub Pages).** `.github/workflows/pages.yml` rebuilds the dashboard
 and publishes it on every push to `main`, so it stays current at a permanent,

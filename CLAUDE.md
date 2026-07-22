@@ -589,16 +589,32 @@ letter — see the Competitive Tiering rubric). Soft warnings never fail the bui
 **Deploy Command:** Data + local tooling ship by commit/push (no build/release step). The
 one deployed artifact is the **roster dashboard**: `.github/workflows/pages.yml` rebuilds
 `build_dashboard.py` offline and publishes it to **GitHub Pages on every push to `main`**
-(no manual step). Everything else is read/run locally.
+(no manual step). Everything else is read/run locally. The generated page is a themed
+(dark/light) self-contained view: the BUILD stays offline (embedded data, system fonts,
+no CDN), and the page's only online touches are optional/non-blocking — Scryfall hover
+images and a ⟳ live re-sync from the Pages URL — always falling back to the embedded
+snapshot. `build_dashboard.py` restyles are **template-only**: the data pipeline
+(`collect`/`deck_viz`/`craft_rows` → the `#data` island) is the source of truth and must
+stay untouched by any restyle (the payload shape is what `deck.py`/`wishlist.py` produce).
 
 ## Command provenance
 
-`broad-scan`, `broad-implement`, `sync-docs`, `health-pulse`, and `roadmap` in
-`.claude/commands/` are copied **verbatim** from
+`broad-scan`, `broad-implement`, `test-sync`, `sync-docs`, `health-pulse`,
+`roadmap`, `sync-commands`, `targeted-audit`, `targeted-implement`, and
+`pr-review` in `.claude/commands/` are copied **verbatim** from
 [claude-workflow-tools](https://github.com/robinchoudhuryums/claude-workflow-tools);
 they stay project-agnostic and read everything from the Cycle Workflow Config
-above. To update them, re-copy the files when that repo bumps them — don't edit
-them here. `check`, `refresh`, `add-deck`, `tune-deck`, `add-cards`, and
+above. To update them, run **`/sync-commands`** with a path/URL to that repo (it
+reports the template VERSION + CHANGELOG and diffs each file) and re-copy any it
+flags OUTDATED — don't edit them here. They span the **Tier-1 loop** the project
+runs (`broad-scan` → `broad-implement` → `test-sync` → `sync-docs`) plus **Tier-2
+depth** (`targeted-audit`/`targeted-implement` for a single subsystem, `pr-review`
+for per-change health) and the meta commands (`health-pulse`, `roadmap`,
+`sync-commands`). The **Tier-3 full-cycle** commands (`audit`, `plan`, `implement`,
+`regression`, `reflect`, `systems-map`, `cycle-*`, `setup-cycle`) are deliberately
+NOT vendored — that ceremony (two-axis scoring + a `.cycle/` state dir) outweighs
+its benefit at this project's size; adopt them only if you later want benchmarkable
+scoring. `check`, `refresh`, `add-deck`, `tune-deck`, `add-cards`, and
 `apply-changes` are project-specific. `add-cards` (catalog newly-owned cards +
 find their homes) and `apply-changes` (apply confirmed swaps, run the F10 quality
 guard, verify + commit) **orchestrate the scripts, never re-implement them** — the
