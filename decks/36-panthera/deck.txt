@@ -19,12 +19,23 @@
 #: notes:    on an aggressive go-wide curve). Kept Divine Resilience (kicker = mass
 #: notes:    indestructible, the anti-board-wipe out a wide deck needs) and Vizier (top-of-
 #: notes:    library creature-cast engine — real card advantage the role classifier misses).
-#: notes: KNOWN WEAKNESS: interaction is 6 fight/combat-only pieces with ZERO answers to a
-#: notes: noncreature permanent (planeswalker / enchantment / artifact). Acceptable for a
-#: notes: creative go-wide race; craft a flexible answer if the meta demands it.
-#: notes: Ice Cream Kitty reads a stray B identity (castable colorless artifact — harmless in
-#: notes: Standard where color identity doesn't gate deck legality).
-#: protect: Arahbo, the First Fang; Ka-Zar of the Savage Land; White Tiger, Ava Ayala; Ice Cream Kitty; Divine Resilience
+#: notes: TUNE v3 (power-first sweep of the whole GW pool — flavor set aside): patched the
+#: notes: interaction gap (was 6 fight/combat-only pieces, ZERO noncreature answers) and
+#: notes: raised the payoff ceiling, all with owned cards (0 wildcards):
+#: notes:  · −Ice Cream Kitty / −Emeritus of Truce / −Infirmary Healer / −Spiritcall
+#: notes:    Enthusiast / −Daydream (low-impact filler / prepare bodies).
+#: notes:  · +Banishing Light (exile any nonland permanent) / +Crib Swap (exile a creature,
+#: notes:    and it's a Changeling so it stays a Cat for the lords + Claws Out affinity) /
+#: notes:    +Erode (1-mana kill creature or planeswalker) → 3 real answers, incl. the first
+#: notes:    noncreature removal. +Anthem of Champions (permanent go-wide +1/+1). +Beza, the
+#: notes:    Bounding Spring (4-mana value bomb — its life/token ETB feeds the lifegain→Cat
+#: notes:    loop; chosen over Elspeth, Storm Slayer, which is used across other decks).
+#: notes: Cutting Ice Cream Kitty also cleared the deck's only stray B identity → clean GW.
+#: notes: Note: no true token-doubler is Standard-legal now (Mondrak/Anointed Procession/
+#: notes: Cathars' Crusade/Adeline all rotated) — Elspeth is the format's only one, so Beza
+#: notes: fills the payoff slot instead. Craft option if wanted: Good-Fortune Unicorn (U —
+#: notes: every creature/token enters with a +1/+1 counter, the closest token amplifier).
+#: protect: Arahbo, the First Fang; Ka-Zar of the Savage Land; White Tiger, Ava Ayala; Divine Resilience
 
 # Nonland — Cat lords / payoffs / tribal core
 1 Arahbo, the First Fang (FDN) 2
@@ -39,28 +50,28 @@
 1 White Tiger, Ava Ayala (MSH) 196
 1 Tigra, Feline Fury (MSH) 191
 1 Ka-Zar of the Savage Land (MSH) 174
-1 Ice Cream Kitty (TMT) 150
+1 Crib Swap (ECL) 11
 1 Spider-Ham, Peter Porker (SPM) 114
 1 Knight of Wundagore (MSH) 175
 1 Jennifer Walters (MSH) 18
-1 Emeritus of Truce (SOS) 13
+1 Beza, the Bounding Spring (BLB) 2
 1 Dawnwing Marshal (FDN) 570
-1 Spiritcall Enthusiast (SOS) 33
-1 Infirmary Healer (SOS) 152
 1 Sovereign Okinec Ahau (LCI) 240
 1 Kutzil, Malamet Exemplar (LCI) 232
 1 Suki, Kyoshi Warrior (TLA) 243
 1 Vizier of the Menagerie (FDN) 649
 
-# Nonland — planeswalker / enchantments / spells
+# Nonland — planeswalker / enchantments / removal
 1 Ajani, Caller of the Pride (FDN) 134
 1 Primeval Bounty (FDN) 644
 1 Pride of the Road (DFT) 24
 1 Claws Out (FDN) 6
+1 Anthem of Champions (FDN) 116
+1 Banishing Light (EOE) 6
+1 Erode (SOS) 15
 1 Tenderize (TMT) 133
 1 Epic Fight (MSH) 166
 1 Divine Resilience (FDN) 10
-1 Daydream (SOS) 9
 1 Battle Menu (FIN) 9
 1 Bushwhack (BRO) 174
 1 United Front (TLA) 39
@@ -75,5 +86,6 @@
 9 Forest (MSH) 296
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 36
-#~ -Sovereign Okinec Ahau | +Kutzil's Flanker | craft Cat Warrior (R): flanker + counters payoff, on-tribe; if you'd rather a Cat than the non-Cat Okinec
-#~ -Daydream | +Longstalk Brawl | owned common: fight-based removal that scales with your big Cats — adds a noncreature-adjacent answer to the interaction suite
+#~ -Suki, Kyoshi Warrior | +Elspeth, Storm Slayer | owned M: token DOUBLER — the format's only one; slot her here too if you decide the shared copy is fine (copies are fungible across decks)
+#~ -Pride of the Road | +Good-Fortune Unicorn | craft U: every creature/token enters with a +1/+1 counter — the closest token amplifier, cheap and on-curve
+#~ -Tenderize | +Stroke of Midnight | owned: instant-speed destroy ANY nonland permanent — a 4th flexible answer if the meta is heavy on planeswalkers/enchantments
