@@ -1,0 +1,65 @@
+#: name: Panthera
+#: format: Standard
+#: colors: GW
+#: archetype: Selesnya (G/W) Cats — a go-wide tribal deck built around Cat lords / payoffs
+#: archetype: (Arahbo, Leonin Warleader, Regal Caracal, Jazal Goldmane, Sally Pride) with token
+#: archetype: generation and combat pumps. Aspirational build — contains unowned craft targets.
+#: notes: Ingested from an Arena export as a build target (13 cards unowned). FORMAT LEAN:
+#: notes: STANDARD — only ONE card (Leonin Warleader, ANB/Historic-only) blocks Standard;
+#: notes: everything else is Standard-legal. Alchemy would be fully legal but only swaps in
+#: notes: rebalanced (A-) Sovereign Okinec Ahau / Kutzil, no upside — so Standard is stronger.
+#: notes: Engine: Cat lords (Arahbo/Regal Caracal/Jazal/Sally Pride) + Cat-token generators →
+#: notes: go-wide, with a lifegain→Cat-token loop (Cat Collector/Tigra) and a +1/+1 counter
+#: notes: sub-theme (Knight of Wundagore/Okinec Ahau/Kutzil/Graduation Day/United Front).
+#: notes: WEAKNESSES read from text: (1) interaction is 6 fight/combat-only pieces — ZERO
+#: notes: answers to a noncreature permanent (pw/ench/artifact); (2) manabase is 24 all-basic
+#: notes: lands split 13W/11G in a 62-card pile — many {W}{W} costs cast well below curve
+#: notes: (United Front 54% on T2). Tune priorities: trim to 60, add GW fixing, cut Leonin
+#: notes: Warleader for a Standard Cat. Ice Cream Kitty reads a stray B identity (castable —
+#: notes: colorless artifact abilities — harmless in Standard where identity doesn't gate).
+
+# Nonland — Cat lords / payoffs / tribal core
+1 Arahbo, the First Fang (FDN) 2
+1 Leonin Warleader (ANB) 13
+1 Regal Caracal (FDN) 579
+1 Jazal Goldmane (FDN) 497
+1 Sally Pride, Lioness Leader (TMT) 24
+1 Cat Collector (FDN) 4
+1 Prideful Parent (FDN) 21
+1 Felidar Savior (FDN) 12
+1 Felidar Retreat (FDN) 574
+1 Ingenious Leonin (FDN) 495
+1 White Tiger, Ava Ayala (MSH) 196
+1 Tigra, Feline Fury (MSH) 191
+1 Ka-Zar of the Savage Land (MSH) 174
+1 West Wind Avatar (TMT) 137
+1 Ice Cream Kitty (TMT) 150
+1 Spider-Ham, Peter Porker (SPM) 114
+1 Knight of Wundagore (MSH) 175
+1 Jennifer Walters (MSH) 18
+1 Emeritus of Truce (SOS) 13
+1 Dawnwing Marshal (FDN) 570
+1 Spiritcall Enthusiast (SOS) 33
+1 Infirmary Healer (SOS) 152
+1 Sovereign Okinec Ahau (LCI) 240
+1 Kutzil, Malamet Exemplar (LCI) 232
+1 Suki, Kyoshi Warrior (TLA) 243
+1 Vizier of the Menagerie (FDN) 649
+
+# Nonland — planeswalker / enchantments / spells
+1 Ajani, Caller of the Pride (FDN) 134
+1 Primeval Bounty (FDN) 644
+1 Pride of the Road (DFT) 24
+1 Claws Out (FDN) 6
+1 Graduation Day (SOS) 16
+1 Tenderize (TMT) 133
+1 Epic Fight (MSH) 166
+1 Divine Resilience (FDN) 10
+1 Daydream (SOS) 9
+1 Battle Menu (FIN) 9
+1 Bushwhack (BRO) 174
+1 United Front (TLA) 39
+
+# Lands
+11 Forest (MSH) 296
+13 Plains (MSH) 288
