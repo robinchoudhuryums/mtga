@@ -172,6 +172,16 @@ honesty of the data (always still report the by-the-numbers pick).
     more your style"), and lead with fit/fun in the two-axis verdict.
 - **Competitive-leaning**: flip it — prioritize power, recommend the staples,
   minimal fun budget, lead with the power axis.
+  - **Optimize consistency the "virtual copies first" way.** A singleton/highlander
+    list draws a random slice of its plan; competitive quality wants redundancy. Run
+    **`deck.py redundancy <id>`** — it flags the deck's *thin* effects and proposes
+    **functional (virtual) copies FIRST** (distinct similar-but-different cards that do
+    the same job, keeping the singleton feel), falling back to true **4-of duplicates**
+    only when there aren't enough of acceptable quality. Prefer the functional fills;
+    settle for duplicates only where the tool says a specific effect can't be
+    diversified at comparable power. This is what lets a functionally-dense singleton
+    grade A (the tier floor counts effects, not distinct cards) without losing its
+    variety — grade the virtual copies from full text like any other add.
 - **Balanced**: in between — surface both the staple and the spicy option and let
   the user pick.
 

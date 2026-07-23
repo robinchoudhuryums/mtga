@@ -6,7 +6,7 @@
 #: tier: noncreature spell) backed by prowess payoffs, deep card advantage (Kefka/Niv-Mizzet/
 #: tier: Archmage) and a real removal suite. Floor is B-to-A on interaction+card-advantage;
 #: tier: held at B by three-color singleton variance and a fragile go-wide board (a sweeper
-#: tier: from the opponent hurts). Plays up as it gains redundancy (see 37a idea).
+#: tier: from the opponent hurts). Plays up as it gains redundancy (see the competitive 37b).
 #: archetype: Grixis (U/B/R, U-primary) Wizard tribal spellslinger. Cast cheap noncreature
 #: archetype: spells to trigger a board of "whenever you cast a noncreature spell" pingers
 #: archetype: (Coruscation Mage, Black Waltz No. 3, the 0/1 black Wizard tokens) and prowess
@@ -23,7 +23,8 @@
 #: notes: creature) — both KILL YOUR OWN 0/1 Wizard tokens, nuking the go-wide plan. Cut.
 #: notes: KNOWN WEAKNESS: like a highlander it's all 1-ofs (draw variance) and the go-wide
 #: notes: board folds to an opposing sweeper. Redundancy (4× the best pingers/payoffs) is the
-#: notes: path up — a competitive 37a variant would do that, same as Panthera 36→36a.
+#: notes: path up — the competitive 37b variant does that via functional redundancy
+#: notes: (`deck.py redundancy 37`), and 37a is a distinct value/storm take on the core.
 #: notes: 11 cards are unowned craft targets (incl. Coruscation Mage / Black Waltz No. 3 — the
 #: notes: engine's core), so this is a WIP build target.
 #: protect: Coruscation Mage; Black Waltz No. 3; Queen Brahne; Balmor, Battlemage Captain; Kefka, Court Mage
@@ -90,5 +91,5 @@
 # Flex — options (comments; not part of the 60). See: deck.py flex 37
 #~ -Tribute to Hunger | +Fire Magic | ONLY if the meta is aggro-go-wide: Fire Magic is a tiered mini-wrath, but it kills your OWN 0/1 tokens — sideboard tech, not maindeck
 #~ -Harmonized Trio | +We Say Thee Nay! | if you want a hard-ish counter over the draw-body; Trio's teamwork tap competes with attacking
-#~ note: Taigam copies your 2nd spell each turn AND suspends the original back — the one copy effect that adds real future CASTS (which re-trigger the pings). Copies themselves don't trigger "cast" pings/prowess. For a copy/draw-two-leaning build see variant 37a.
-#~ -Quistis Trepe | +Tempest Angler(2nd) | if built as a redundant 37a: run multiples of the cheap prowess payoffs instead of 1-of legends
+#~ note: Taigam copies your 2nd spell each turn AND suspends the original back — the one copy effect that adds real future CASTS (which re-trigger the pings). Copies themselves don't trigger "cast" pings/prowess. Variants: 37a = value/storm take; 37b = competitive functional-redundancy A build (`deck.py redundancy 37`).
+#~ note: For a more consistent build without 4-ofs, add virtual copies of the thin effects — `deck.py redundancy 37` names them (e.g. counters: Spell Pierce / Divert Disaster).

@@ -327,6 +327,7 @@ python3 scripts/deck.py preflight 1a         # one-call verify: legal + owned + 
 python3 scripts/deck.py quality 1a --json    # deck-quality vector; --vs FILE diffs a before-snapshot
 python3 scripts/deck.py tier 1a              # claimed #: tier: vs the tier its metrics support
 python3 scripts/deck.py tier 1a --to A       # gap to A + owned fillers AND craft targets for the short axis
+python3 scripts/deck.py redundancy 1a        # competitive consistency: virtual (functional) copies first, duplicates as fallback
 python3 scripts/deck.py history 1a           # the deck's git change history (its changelog); --since YYYY-MM-DD adds the net card change since then
 python3 scripts/deck.py quality 1a --at HASH # compare this deck's list at a past commit vs now
 ```

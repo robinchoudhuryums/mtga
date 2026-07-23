@@ -253,6 +253,41 @@ class TestProducesMana:
         assert not deck._produces_mana("")
 
 
+class TestRedundancyPlanner:
+    """The 'virtual copies first, duplicates as fallback' decision helper."""
+
+    def test_already_deep(self):
+        p = deck.plan_redundancy_fill(4, 5.0, [(5.0, "X")], target=4)
+        assert p["need"] == 0 and p["functional"] == [] and p["duplicates"] == 0
+
+    def test_functional_covers_stays_singleton(self):
+        opts = [(5.0, "A"), (4.5, "B"), (4.0, "C"), (4.0, "D")]
+        p = deck.plan_redundancy_fill(1, 5.0, opts, target=4)  # need 3, all within tol
+        assert p["duplicates"] == 0
+        assert [n for _, n in p["functional"]] == ["A", "B", "C"]
+
+    def test_no_options_falls_back_to_duplicates(self):
+        p = deck.plan_redundancy_fill(1, 5.0, [], target=4)
+        assert p["functional"] == [] and p["duplicates"] == 3
+        assert "only option" in p["reason"]
+
+    def test_much_weaker_options_duplicate_instead(self):
+        # best existing is 6.0; the only virtual copy is 3.0 (>1.5 below) -> duplicate.
+        p = deck.plan_redundancy_fill(2, 6.0, [(3.0, "weak")], target=4)
+        assert p["functional"] == [] and p["duplicates"] == 2
+        assert "weaker" in p["reason"]
+
+    def test_partial_functional_then_duplicate(self):
+        # one acceptable virtual copy, still short -> mix.
+        p = deck.plan_redundancy_fill(1, 5.0, [(5.0, "A")], target=4)
+        assert [n for _, n in p["functional"]] == ["A"] and p["duplicates"] == 2
+
+    def test_tolerance_boundary_inclusive(self):
+        # exactly tol below the best is still acceptable (>=).
+        p = deck.plan_redundancy_fill(3, 5.0, [(3.5, "edge")], target=4)  # 5.0-1.5==3.5
+        assert [n for _, n in p["functional"]] == ["edge"] and p["duplicates"] == 0
+
+
 class TestEngineRoles:
     def test_sac_outlet_is_enabler(self):
         assert "enabler" in deck.engine_roles("Sacrifice a creature: Draw a card.").get("sacrifice", set())
