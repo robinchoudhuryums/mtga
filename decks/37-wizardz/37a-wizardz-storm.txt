@@ -1,0 +1,91 @@
+#: name: Wizardz — Value/Storm (copy + draw-two)
+#: format: Standard
+#: colors: UBR
+#: tier: B — a grindier, value-leaning cousin of the aggressive base (37). Same Grixis Wizard
+#: tier: spellslinger spine, but tilted toward card advantage and spell-copy payoffs: draw a
+#: tier: pile (Phyrexian Arena / Super Intelligence / cantrips), turn "draw your second card"
+#: tier: into board (Erudite Wizard, Clinquant Skymage, Construct a Cosmic Cube), and blow
+#: tier: out with copiers (Thousand-Year Storm, Kitsa, Taigam) on a high-value spell. Floor
+#: tier: is B-to-A on card advantage + interaction; held at B by singleton variance and the
+#: tier: copy-payoff caveat below (copies don't fire the pings). A distinct build to compare.
+#: based-on: deck.txt
+#: archetype: Grixis (U-primary) Wizard VALUE/STORM. The base 37 races with ping triggers; this
+#: archetype: variant grinds: heavy card draw feeds "draw your second card" payoffs and fuels a
+#: archetype: spell chain that copiers (Thousand-Year Storm scaling per spell, Kitsa/Taigam per
+#: archetype: turn) turn into blowouts. Niv-Mizzet + the pingers are still the kill.
+#: notes: RULES CAVEAT that shapes this build: a COPY is put on the stack, not CAST — so copies
+#: notes: do NOT trigger "whenever you cast a noncreature spell" (Coruscation Mage / Black Waltz
+#: notes: / the 0/1 tokens) or prowess. Copiers here DOUBLE THE EFFECT (removal, burn, draw),
+#: notes: they don't storm the pings. Taigam is the exception that helps the ping plan: it
+#: notes: suspends the original spell back, giving a real future CAST. So this build leans on
+#: notes: copy-for-VALUE + the draw-two engine, not a ping-storm.
+#: notes: vs base 37: +Thousand-Year Storm, +Kitsa (craft), +Taigam, +Return the Favor (copiers);
+#: notes: +Super Intelligence, +Construct a Cosmic Cube, +Clinquant Skymage (craft) (draw-two);
+#: notes: -the most aggressive one-of bodies (Razzle-Dazzler, Harbinger) and a little cheap burn.
+#: notes: 25 lands for the heavier curve. Copies are fungible, so the shared single-copy duals
+#: notes: overlap with base 37 at no cost. WIP — several craft targets (Kitsa, Clinquant, etc.).
+#: protect: Coruscation Mage; Niv-Mizzet, Visionary; Thousand-Year Storm; Taigam, Master Opportunist; Kefka, Court Mage
+
+# Creatures — Wizard pingers / copiers / draw payoffs / engines
+1 The Emperor of Palamecia (FIN) 219
+1 Stormcatch Mentor (BLB) 234
+1 Coruscation Mage (BLB) 131
+1 Kitsa, Otterball Elite (BLB) 54
+1 Taigam, Master Opportunist (TDM) 60
+1 Balmor, Battlemage Captain (FDN) 237
+1 Hydro-Channeler (SOS) 54
+1 Queen Brahne (FIN) 149
+1 Mysidian Elder (FIN) 145
+1 Crackling Cyclops (FDN) 83
+1 Tempest Angler (BLB) 235
+1 Harnesser of Storms (BLB) 137
+1 Erudite Wizard (FDN) 37
+1 Tishana's Tidebinder (LCI) 81
+1 Clinquant Skymage (FDN) 33
+1 Black Waltz No. 3 (FIN) 214
+1 Archmage of Runes (FDN) 30
+1 Kefka, Court Mage (FIN) 231
+1 Niv-Mizzet, Visionary (FDN) 123
+
+# Noncreature — copiers (double the EFFECT of a high-value spell)
+1 Thousand-Year Storm (FDN) 248
+1 Return the Favor (SOA) 47
+
+# Noncreature — card draw / draw-two engine + payoffs
+1 Phyrexian Arena (FDN) 180
+1 Super Intelligence (MSH) 77
+1 Construct a Cosmic Cube (MSH) 90
+1 Circle of Power (FIN) 92
+
+# Noncreature — token / ping enablers + cantrips
+1 Cornered by Black Mages (FIN) 93
+1 Lasting Tarfire (ECL) 149
+1 Enter the Enigma (DSK) 52
+1 Boomerang Basics (TLA) 46
+1 Portent of Calamity (BLB) 66
+
+# Noncreature — removal / interaction
+1 Thunder Magic (FIN) 165
+1 Bitter Triumph (SOA) 26
+1 Dark Deed (MSH) 93
+1 Heartless Act (TLA) 103
+1 Mana Sculpt (SOS) 57
+
+# Lands — 25, U-weighted Grixis (owned duals + basics; fungible with 37)
+1 Gloomlake Verge (DSK) 260
+1 Riverpyre Verge (DFT) 260
+1 Blazemire Verge (DSK) 256
+1 Blood Crypt (ECL) 262
+1 Spectacle Summit (SOS) 262
+1 Temple of Epiphany (FDN) 699
+1 Temple of Malice (FDN) 701
+2 Dismal Backwater (FDN) 261
+2 Swiftwater Cliffs (MOM) 273
+2 Bloodfell Caves (TDM) 250
+7 Island (MSH) 290
+3 Swamp (MSH) 292
+2 Mountain (MSH) 294
+
+# Flex — options (comments; not part of the 60). See: deck.py flex 37a
+#~ -Return the Favor | +Sorceress's Schemes | owned: recur an instant/sorcery from the yard (+R) — more grind/recursion for the value plan
+#~ -Circle of Power | +Daring Waverider | owned: a 6-drop that free-casts an instant/sorcery from your graveyard — big value swing if the curve can support it

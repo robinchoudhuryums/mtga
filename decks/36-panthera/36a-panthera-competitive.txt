@@ -1,0 +1,66 @@
+#: name: Panthera — Competitive (redundant A build)
+#: format: Standard
+#: colors: GW
+#: tier: A — the competitive, REDUNDANT rebuild of Panthera (deck 36). Where the base is a
+#: tier: singleton highlander graded B for draw variance, this is a focused ~14-unique list
+#: tier: running 3–4 of its best engine pieces, so it draws its plan every game — the exact
+#: tier: consistency axis that separates B from A. Meets the A metrics floor (interaction 7:
+#: tier: Banishing Light / Crib Swap / Get Lost, all flexible incl. noncreature answers),
+#: tier: with a coherent go-wide anthem engine, a tight 2–3 curve, real card advantage the
+#: tier: classifier misses (Cat Collector loop + Ajani), and Divine Resilience for anti-
+#: tier: sweeper insurance. Held out of S by no format-warping bomb and a modest top-end.
+#: tier: ASPIRATIONAL (a wildcard-spend target), graded on its own list per the rubric —
+#: tier: variant decks exist for exactly this (owned playable base + aspirational competitive).
+#: based-on: deck.txt
+#: archetype: Selesnya (G/W) go-wide Cats, white-leaning — a redundant aggressive token build.
+#: archetype: Cheap Cat token-makers (Prideful Parent, Cat Collector) + counter-anthems
+#: archetype: (Good-Fortune Unicorn, Anthem of Champions) go wide and grow; Arahbo / Regal
+#: archetype: Caracal lords + Ajani close; Banishing Light / Crib Swap / Get Lost answer
+#: archetype: anything, including the planeswalkers/enchantments the base couldn't touch.
+#: notes: THE POINT of this variant: consistency. Base deck 36 is ~35 one-of cards; this is
+#: notes: ~14 uniques at 3–4 copies. Green is a light SPLASH (Anthem / Good-Fortune Unicorn
+#: notes: want {G}); manabase is white-heavy (19 W / 10 G sources). vs the base I cut the
+#: notes: singleton legends (Ka-Zar, Suki, Jennifer Walters, Sovereign Okinec Ahau, Kutzil,
+#: notes: Spider-Ham, White Tiger, Beza) and the conditional fights (Tenderize/Epic Fight/
+#: notes: Bushwhack/Battle Menu) for redundant copies + premium removal — that is the trade
+#: notes: that buys the A.
+#: notes: WILDCARD COST vs your collection (run `deck.py check 36a` for the exact tally): the
+#: notes: bulk is cheap Commons/Uncommons (Prideful Parent, Cat Collector, Good-Fortune
+#: notes: Unicorn, Crib Swap); the real spend is Rares — 4× Regal Caracal, 4× Anthem of
+#: notes: Champions, 3× Arahbo, 1× Get Lost — plus Mythic Ajani ×2.
+#: notes: PATH TO S (optional): Elspeth, Storm Slayer (token DOUBLER — you own one; copies are
+#: notes: fungible, so sharing across decks costs nothing) over a lord slot lifts the ceiling.
+#: notes: Left out by request. See the flex block.
+#: protect: Arahbo, the First Fang; Regal Caracal; Anthem of Champions; Good-Fortune Unicorn
+
+# Creatures — cheap Cat token core (redundant spine)
+4 Prideful Parent (FDN) 21
+4 Cat Collector (FDN) 4
+4 Good-Fortune Unicorn (FDN) 240
+3 Arahbo, the First Fang (FDN) 2
+3 Regal Caracal (FDN) 579
+3 Felidar Savior (FDN) 12
+
+# Payoffs / finishers
+4 Anthem of Champions (FDN) 116
+2 Ajani, Caller of the Pride (FDN) 134
+1 Jazal Goldmane (FDN) 497
+
+# Interaction / protection (flexible — incl. noncreature answers)
+3 Banishing Light (EOE) 6
+3 Crib Swap (ECL) 11
+1 Get Lost (LCI) 14
+1 Divine Resilience (FDN) 10
+
+# Lands — 24, white-heavy GW (5 owned duals + basics)
+1 Hushwood Verge (DSK) 261
+1 Gathering Place (MSH) 266
+1 Blossoming Sands (TDM) 251
+1 Birnin Zana Plaza (MSH) 262
+1 Kyoshi Village (TLA) 271
+14 Plains (MSH) 288
+5 Forest (MSH) 296
+
+# Flex — competitive options (comments; not part of the 60). See: deck.py flex 36a
+#~ -Jazal Goldmane | +Elspeth, Storm Slayer | owned M token-doubler — the highest-ceiling add; costs nothing to share across decks (fungible). Path-to-S.
+#~ -1 Felidar Savior | +Moonshaker Cavalry | owned M finisher — a one-card alpha strike if you want a real top-end over a 3rd counter-body
