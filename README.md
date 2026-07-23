@@ -203,7 +203,7 @@ python3 scripts/wishlist.py --rank             # WILDCARD PRIORITY: theme fit + 
 python3 scripts/wishlist.py --budget "9M 10R 38U 48C"   # optimal craft plan within a wildcard budget
 python3 scripts/wishlist.py --seed-power       # first-pass heuristic estimate for BLANK Power cells (+ --write)
 python3 scripts/wishlist.py --owned            # cards you've since acquired — prune these
-python3 scripts/wishlist.py --audit-targets    # flag cards whose Target deck can't cast them (color drift)
+python3 scripts/wishlist.py --audit-targets    # flag cards whose Target deck can't cast them (hybrid-aware color drift)
 python3 scripts/wishlist.py --suggest-targets  # propose a Target per card (confidence-flagged)
 python3 scripts/wishlist.py --suggest-targets --write   # auto-fill the confident picks
 ```
@@ -474,10 +474,14 @@ around so the tooling never proposes cutting them.
 
 `suggest-homes <card>` answers "which of my decks does this new card improve" —
 it scans every deck for the ones where the card is *castable* and shares a
-*central* theme, and tags each fit with a **strength** label: **KEY** (it fills an
-interaction / card-advantage gap the deck is short on, or shares the deck's
-signature theme), **role-player** (a secondary central theme), or **tangential**
-(only generic overlap — etb/tokens/lifegain/…). A **rainbow mana fixer** (one that
+*central* theme, and tags each fit with a **strength** label: **KEY** (shares the
+deck's *signature* theme, OR shares a **specific** non-generic theme AND fills an
+interaction / card-advantage gap the deck is short on), **role-player** (a secondary
+specific theme), or **tangential** (only generic overlap — etb/tokens/lifegain/…).
+The role-gap KEY is gated on a specific-theme match, so a generically-good removal
+or card-advantage card no longer reads KEY in every low-interaction deck it merely
+shares an etb/tokens tag with — its broad utility shows up in the wishlist `--rank`
+`use` (breadth) column instead. A **rainbow mana fixer** (one that
 makes an any-color land or gives lands every basic land type) gets a color-count
 overlay — it reads KEY in a 4+-color deck and role-player in a 3-color one — since
 its fixing value scales with the deck's colors, which theme overlap alone can't see.
@@ -782,8 +786,10 @@ Claude Code slash commands live in `.claude/commands/`:
 
 - **Project:** `/check` (integrity), `/refresh` (rebuild derived data),
   `/add-deck` (ingest a pasted deck), `/tune-deck` (deck-building analysis),
-  `/add-cards` (catalog newly-owned cards + find their homes), `/apply-changes`
-  (apply confirmed swaps, run the quality guard, verify + commit).
+  `/add-cards` (catalog newly-owned cards + find their homes), `/add-wishlist`
+  (intake unowned craft targets to the wishlist — enrich, set the home Target, do
+  the cross-deck fit review), `/apply-changes` (apply confirmed swaps, run the
+  quality guard, verify + commit).
 - **Audit (from claude-workflow-tools):** `/broad-scan`, `/broad-implement`,
   `/sync-docs`, `/health-pulse` (quick directional read), `/roadmap` —
   project-agnostic; they read the **Cycle Workflow Config** in `CLAUDE.md` (Test
