@@ -497,6 +497,36 @@ castability · curve · central-theme density), with the intangibles moving a de
   really a U-splash" problem the castability lint (which only checks identity ⊆
   declared colors) can't see — e.g. a 3-source green splash flagging GG cards. A
   heuristic review signal, not a hard fail; it doesn't gate `check_all.py`.
+- **`deck.py consistency <id>` is the PROBABILITY layer `mana` lacks.** `mana` diagnoses
+  ("wants UU, only 6 U sources — thin"); `consistency` puts numbers on it via an exact
+  hypergeometric model: opening-hand **keepable %** (2–5 lands in 7), **screw/flood %**,
+  **land-drop consistency** (P of ≥N lands by turn N), and — per colored card — **P(casting
+  on curve)** at turn = its mana value (capped at 5), with a **Karsten-style source
+  recommendation** for the ones that come up short ("62% on T3 → want +2 R sources"). This
+  is what caught deck 8's 1-red-source splash reading 12% on turn 2 (The Ruinous Wrecking
+  Crew) — the "is this splash even castable" question the source-count lint only hand-waves.
+  Strict pips only (hybrids are strictly easier — excluded, same rule `mana` uses);
+  multi-color costs use per-color independence (a mild over-estimate). `--on-draw` models
+  the extra card; `--target P` sets the cast-probability bar (default 0.90). A planning
+  aid, not a guarantee (mulligans/scry/draw shift the real numbers) — it doesn't gate
+  `check_all.py`. Pure math helpers (`hypergeom_at_least`, `cards_seen`, `cast_probability`,
+  `min_sources_for`, `opening_land_stats`) are unit-tested in `tests/test_deck.py`.
+- **`deck.py cuts` folds a card-QUALITY (power) co-signal into the ranking (#3).** Theme
+  fit alone can't tell a vanilla body from a bomb that share one tag, so cuts blends the
+  wishlist's rarity+role **Power** estimate into the keep-score: an on-theme-but-WEAK card
+  sorts UP the cut list (flagged "on-theme but low power") and an on-theme BOMB is
+  protected. It's a **bounded** nudge (`_cuts_power_adj`, ±`_CUTS_POWER_CAP`, neutral at
+  power 5) — it only breaks near-ties, never overrides theme fit — and is gated by
+  `check_suggest.py` anchor 7 (mirrors the suggest power co-signal, anchor 5). A `Pw`
+  column shows each card's power; still grade from the printed oracle text, not the number.
+- **`deck.py tier <id> --to <TIER>` now assembles a concrete CUT→ADD tune package (#4).**
+  Past the measurable gap + owned/craft fillers, it pairs each filler that closes the gap
+  with a weakest-fit cut from the SAME ranking `deck.py cuts` prints (so the two can't
+  disagree), then **projects the resulting quality vector and floor** ("interaction 2→5 ⇒
+  floor C→A ✓"). It flags a cut that itself feeds interaction/card-advantage ("⚠ pick
+  another cut") and notes when the cut list is exhausted before the gap closes. It's a
+  STARTING plan that PRINTS, never writes — the card selection stays a human call (protect
+  signature/spice — that's `/tune-deck`); preview any line with `deck.py swap`.
 
 ## Known Issues
 
@@ -566,10 +596,11 @@ behavioral anchor that `lib.owned_qty` and its wrappers (`wishlist._owned_of`,
 scan that flags a raw ownership lookup bypassing `owned_qty` (the A3/A4/F6 class);
 **suggest scoring** (`check_suggest.py`) keeps the needs-aware suggest/cuts terms
 BOUNDED — the diminishing-returns role credit and the curve-gap factor can't
-silently reorder a tuned deck (#1/#2), the power co-signal never overrides
-theme fit (#6), and the `suggest-homes` rainbow-fixer boost stays bounded/capped
+silently reorder a tuned deck (#1/#2), the suggest power co-signal never overrides
+theme fit (#6), the `suggest-homes` rainbow-fixer boost stays bounded/capped
 and zero below 3 colors while `_is_color_fixer` requires both a fixing tag and
-rainbow text (anchor 6); **engine classifier** (`check_engines.py`) anchors the enabler/
+rainbow text (anchor 6), and the CUTS power co-signal stays bounded/neutral-centered/
+monotonic so it only breaks near-ties in the cut ranking (anchor 7); **engine classifier** (`check_engines.py`) anchors the enabler/
 payoff detection on canonical cards (#3); **tier floor** (`check_tier.py`) proves
 the archetype-aware floor grades non-aggro decks identically to before and only
 ever raises an aggro band (#4). It also emits **soft, non-gating warnings**:
@@ -608,7 +639,7 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format.
-- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
+- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/
 
 **Invariant Library:**

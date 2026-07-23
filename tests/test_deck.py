@@ -166,6 +166,72 @@ class TestScoringTermsBounded:
                 assert 0.85 <= deck._curve_gap_factor(mv, cv) <= 1.15
 
 
+class TestConsistencyMath:
+    """The hypergeometric manabase/opening-hand model behind `deck.py consistency`."""
+
+    def test_hypergeom_bounds(self):
+        # k=0 is certain; wanting more successes than exist is impossible.
+        assert deck.hypergeom_at_least(60, 24, 7, 0) == 1.0
+        assert deck.hypergeom_at_least(60, 3, 7, 4) == 0.0   # only 3 successes, want 4
+        assert deck.hypergeom_at_least(60, 24, 0, 1) == 0.0  # draw nothing, want 1
+
+    def test_hypergeom_monotonic_in_sources(self):
+        # More sources in the deck -> higher P of hitting the pip requirement.
+        seq = [deck.hypergeom_at_least(60, k, 9, 2) for k in (4, 8, 12, 16, 20)]
+        assert all(a < b for a, b in zip(seq, seq[1:]))
+
+    def test_hypergeom_matches_known_value(self):
+        # P(>=1 of 24 lands in the opening 7 of 60) = 1 - C(36,7)/C(60,7) ≈ 0.978.
+        import math
+        p = deck.hypergeom_at_least(60, 24, 7, 1)
+        assert abs(p - (1 - math.comb(36, 7) / math.comb(60, 7))) < 1e-9
+        assert 0.97 < p < 0.99
+
+    def test_cards_seen_play_vs_draw(self):
+        assert deck.cards_seen(1, on_play=True) == 7     # opening, no turn-1 draw
+        assert deck.cards_seen(1, on_play=False) == 8    # on the draw, +1
+        assert deck.cards_seen(3, on_play=True) == 9
+
+    def test_cast_probability_multicolor_is_product(self):
+        srcs = {"B": 16, "R": 1, "W": 0, "U": 0, "G": 0}
+        # A {B}{R} card on turn 2 with a single red source should be dismal.
+        p = deck.cast_probability(60, srcs, 2, {"B": 1, "R": 1})
+        assert 0.0 < p < 0.3
+        # An empty pip demand is always castable.
+        assert deck.cast_probability(60, srcs, 2, {}) == 1.0
+
+    def test_min_sources_for_increases_with_pip_count(self):
+        one = deck.min_sources_for(60, 3, 1, target=0.90)
+        two = deck.min_sources_for(60, 3, 2, target=0.90)
+        assert two > one > 0
+
+    def test_opening_land_stats_partition(self):
+        st = deck.opening_land_stats(60, 24)
+        # keepable + screw + flood covers 0..7 lands exactly (a partition).
+        assert abs(st["keepable"] + st["screw"] + st["flood"] - 1.0) < 1e-9
+        assert 0.0 <= st["hit2"] <= 1.0 and st["hit3"] < st["hit2"]
+
+    def test_more_lands_fewer_screw(self):
+        assert deck.opening_land_stats(60, 26)["screw"] < deck.opening_land_stats(60, 20)["screw"]
+
+
+class TestCutsPowerAdj:
+    """The bounded card-quality co-signal folded into the cut ranking (#3)."""
+
+    def test_bounded_both_directions(self):
+        for p in (0, 2.5, 5, 7.5, 10):
+            assert -deck._CUTS_POWER_CAP <= deck._cuts_power_adj(p) <= deck._CUTS_POWER_CAP
+        # The clamp is a safety rail for out-of-range power (seed is always 0–10).
+        assert deck._cuts_power_adj(100) == deck._CUTS_POWER_CAP
+        assert deck._cuts_power_adj(-100) == -deck._CUTS_POWER_CAP
+
+    def test_neutral_at_center(self):
+        assert deck._cuts_power_adj(deck._CUTS_POWER_NEUTRAL) == 0.0
+
+    def test_monotonic_bomb_beats_weak(self):
+        assert deck._cuts_power_adj(9) > deck._cuts_power_adj(3)
+
+
 class TestEngineRoles:
     def test_sac_outlet_is_enabler(self):
         assert "enabler" in deck.engine_roles("Sacrifice a creature: Draw a card.").get("sacrifice", set())

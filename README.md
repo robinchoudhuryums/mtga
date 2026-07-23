@@ -308,6 +308,7 @@ python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
 python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
 python3 scripts/deck.py stats 1a      # curve, colors, types, cost flags, roles + interaction profile
 python3 scripts/deck.py mana 1a       # hybrid-aware color requirements + castability lint
+python3 scripts/deck.py consistency 1a # opening-hand keepable %, land drops, P(cast on curve) + source fix
 python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
 python3 scripts/deck.py engines 1a    # enabler ↔ payoff balance for the deck's engine themes
 python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
