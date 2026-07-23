@@ -1,6 +1,6 @@
 #: name: Spellstorm
 #: format: Standard
-#: tier: A — Izzet (UR) spells-matter/storm; elite interaction (11 = 9 removal + 2 sweepers), tight low curve (13 two-drops), coherent spells-matter engine with a Thousand Year Storm finisher. Promoted from B: interaction density + 2-color consistency + focused plan outweigh the singleton knock.
+#: tier: A — Izzet (UR) spells-matter/storm; elite interaction (11 = 9 removal + 2 sweepers, 4 of which answer a noncreature permanent, half instant-speed), tight low curve, coherent spells-matter engine with a Thousand Year Storm finisher. Metric floor is now A on its own (interaction 9 + card-adv 3, under-reads Tolarian Terror/Dragonfly Swarm), so the A no longer leans on intangibles. The "singleton knock" is quantifiably SMALL: `deck.py redundancy 25` shows the pile is functionally redundant — a virtual ~14-of spellslinger / 11-of burn / 9-of removal / 13-of payoff — so it draws its plan every game despite being all 1-ofs. Held out of S by no format-warping bomb (Thousand-Year Storm is a value finisher, not a proven top-meta engine). The only thin effects are incidental (ramp/sweeper/reanimation), not plan-critical.
 #: colors: UR
 #: notes: Izzet (U/R) storm / spells-matter. Cost reduction (Scarlet Witch,
 #: notes: Stormcatch Mentor, Tolarian Terror, Emperor of Palamecia, Electro) into
