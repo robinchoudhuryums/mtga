@@ -623,6 +623,10 @@ TEMPLATE = r"""<!DOCTYPE html>
   .rotcards span { font-size:11px; font-family:var(--font-mono); color:var(--ink2); background:var(--fill); border-radius:999px; padding:1px 8px; }
   .rotcards span.soon { color:var(--warn); }
   .rotwl { color:var(--warn); font-weight:700; font-size:10.5px; font-family:var(--font-mono); }
+  /* format shelves in the deck grid */
+  .fmtgroup { font-size:12.5px; font-weight:700; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.06em; margin:20px 0 11px; padding-bottom:6px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:9px; }
+  .fmtgroup:first-child { margin-top:2px; }
+  .fmtcount { font-size:11px; font-weight:600; color:var(--ink2); background:var(--fill2); border:1px solid var(--line2); border-radius:999px; padding:1px 8px; letter-spacing:0; text-transform:none; }
   .difflist { font-family:var(--font-mono); font-size:12px; margin:6px 0 0; }
   .diffadd { color:#4bbd83; } .diffrem { color:#dd6a4d; }
   .staletot { font-size:13px; margin:2px 0 10px; }
@@ -1197,7 +1201,27 @@ function renderDecks(){
   }
   $('copyall').textContent = '⧉ Copy all imports (' + list.length + ')';
   if (!list.length){ host.appendChild(el('div','emptymsg','No decks match the current filters.')); return; }
-  if (STATE.viewMode === 'grid'){ const g = el('div','grid'); list.forEach(d => g.appendChild(deckCard(d))); host.appendChild(g); }
+  if (STATE.viewMode === 'grid'){
+    // Group into per-format "shelves" (Standard / Alchemy / Brawl / …) when the filtered
+    // set spans more than one format; otherwise a single flat grid. Template-only — reads
+    // d.format straight from the payload.
+    const FMT_ORDER = ['Standard','Alchemy','Brawl','Historic','Historic Brawl','Timeless','Explorer','Pioneer','Pauper','Unspecified'];
+    const groups = {};
+    list.forEach(d => { const k = d.format || 'Unspecified'; (groups[k] = groups[k] || []).push(d); });
+    const keys = Object.keys(groups).sort((a,b) => {
+      const ia = FMT_ORDER.indexOf(a), ib = FMT_ORDER.indexOf(b);
+      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
+    });
+    if (keys.length <= 1){
+      const g = el('div','grid'); list.forEach(d => g.appendChild(deckCard(d))); host.appendChild(g);
+    } else {
+      keys.forEach(k => {
+        const hdr = el('div','fmtgroup'); hdr.appendChild(document.createTextNode(k));
+        hdr.appendChild(el('span','fmtcount', groups[k].length)); host.appendChild(hdr);
+        const g = el('div','grid'); groups[k].forEach(d => g.appendChild(deckCard(d))); host.appendChild(g);
+      });
+    }
+  }
   else host.appendChild(compactTable(list));
 }
 // controls wiring

@@ -48,6 +48,7 @@ hybrid {W/U} pips are counted as flexible rather than demanding both colors.
 import argparse
 import csv
 import json
+import math
 import os
 import re
 import shutil
@@ -79,6 +80,15 @@ WC_NAMES = [("M", "Mythic"), ("R", "Rare"), ("U", "Uncommon"),
 # "4 Card Name" / "4x Card Name", optional "(SET)" and collector number.
 LINE_RE = re.compile(r"^\s*(\d+)\s*[xX]?\s+(.+?)\s*(?:\(([^)]+)\)\s*([^\s]+)?)?\s*$")
 META_RE = re.compile(r"^#:\s*([A-Za-z_]+)\s*:\s*(.*)$")
+
+# Game-type (format) variant filenames: `<core>-<format>[-slug].txt`. These get the
+# id `<core>-<format>` so a Brawl/Alchemy adaptation of a core deck reads as *that
+# deck's* Brawl/Alchemy version, distinct from a Standard sub-variant (3a). The format
+# token here is only for the id/organization; the deck's `#: format:` header remains the
+# authoritative format for the legality/rotation tooling.
+_FORMAT_SLUGS = ("alchemy", "historic-brawl", "brawl", "timeless", "explorer",
+                 "pioneer", "modern", "pauper", "historic")
+FORMAT_VARIANT_RE = re.compile(r"^(\d+)-(" + "|".join(_FORMAT_SLUGS) + r")(?:[-.])", re.I)
 
 
 # --------------------------------------------------------------------------- #
@@ -129,8 +139,16 @@ def discover_decks():
                 if fn == "deck.txt":
                     decks.append(_record(core, core, p, core, False))
                 else:
-                    vm = re.match(r"^(\d+[a-z]+)-", fn)
-                    did = vm.group(1) if vm else os.path.splitext(fn)[0]
+                    # A GAME-TYPE variant — `<core>-<format>[-slug].txt` (e.g.
+                    # 3-brawl-knights-edge.txt) gets the id `<core>-<format>` (e.g.
+                    # `3-brawl`), so an Alchemy/Brawl adaptation of core deck 3 reads as
+                    # deck 3's Brawl version, NOT as another Standard sub-variant like 3a.
+                    fmv = FORMAT_VARIANT_RE.match(fn)
+                    if fmv:
+                        did = f"{int(fmv.group(1))}-{fmv.group(2).lower()}"
+                    else:
+                        vm = re.match(r"^(\d+[a-z]+)-", fn)
+                        did = vm.group(1) if vm else os.path.splitext(fn)[0]
                     decks.append(_record(did, core, p, core, True))
         elif entry.endswith(".txt"):
             did = os.path.splitext(entry)[0]
@@ -893,6 +911,23 @@ def classify_roles(text):
     return {label for label, pats in _ROLE_COMPILED if any(p.search(t) for p in pats)}
 
 
+# Mana production, detected broadly enough to catch dorks the "Ramp / fixing" role
+# misses: that role keys on the "{T}: add {SYM}" template, but a flavor-keyword dork
+# (Bloom Tender's "Vivid — {T}: … add one mana …") phrases it as "add one mana" and
+# slips through. Used by the tier tune plan to warn when a proposed cut is a mana
+# source (losing it hurts the manabase) — a heuristic flag, not a role reclassification.
+_MANA_PRODUCE_RE = re.compile(
+    r"\badd\s+\{[wubrgcpx0-9/]"        # "add {G}", "add {C}{C}", "add {W/U}"
+    r"|\badd\b[^.\n]{0,40}?\bmana\b",  # "add one mana", "add two mana of any color"
+    re.IGNORECASE)
+
+
+def _produces_mana(text):
+    """True if a card's text taps for / produces mana (a dork, rock, or ramp spell) —
+    broader than the 'Ramp / fixing' role so an 'add one mana' phrasing still counts."""
+    return bool(text and _MANA_PRODUCE_RE.search(text))
+
+
 # The roles that make a card a keeper almost regardless of theme fit — a removal
 # spell, a card-advantage engine, ramp, a cost-reducer, a payoff. `cuts`/`suggest-homes`
 # weight these extra so a strong-but-off-tribe card (Cosmic Cube, Shuri, Mjölnir) stops
@@ -965,6 +1000,24 @@ def _curve_gap_factor(mv, curve):
 # up to ~10 — comparable to a strong role bonus, enough to lift a modest-fit bomb above a
 # same-fit vanilla, but small next to a strongly-on-theme card's theme_w. Never dominant.
 _SUGGEST_POWER_W = 1.0
+
+
+# Cuts power co-signal (#3): fold the wishlist power model into the cut RANKING so an
+# on-theme-but-WEAK card can surface as cuttable and an on-theme BOMB is protected — the
+# thing pure theme-fit can't see (a vanilla body and a bomb that share one tag look
+# identical to a synergy model). Centered so an average card (~5) is neutral; BOUNDED so
+# it only re-ranks near-ties (theme fit stays dominant — guarded by check_suggest #7).
+_CUTS_POWER_NEUTRAL = 5.0
+_CUTS_POWER_W = 0.35
+_CUTS_POWER_CAP = 2.5
+
+
+def _cuts_power_adj(power):
+    """Bounded keep-score nudge from a card's 0–10 power: >0 protects a bomb (harder to
+    cut), <0 makes a weak card more cuttable. Clamped to ±_CUTS_POWER_CAP so it can only
+    break near-ties, never override theme fit."""
+    adj = _CUTS_POWER_W * (power - _CUTS_POWER_NEUTRAL)
+    return max(-_CUTS_POWER_CAP, min(_CUTS_POWER_CAP, adj))
 
 
 _power_seed_warned = False  # one-time guard for the A14 degradation warning
@@ -1798,6 +1851,83 @@ def rotation_sweep(fmt="standard", years=3, within=2):
     return decks_out, rollup, meta
 
 
+def _brawl_commanders(cards, carddata):
+    """[(name, identity_set)] for each legendary creature/planeswalker in the deck —
+    the candidate commanders. Deduped, basics/non-carddata skipped."""
+    out, seen = [], set()
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in seen or nl in BASICS:
+            continue
+        seen.add(nl)
+        cd = carddata.get(nl) or carddata.get(nl.split(" // ")[0])
+        if not cd:
+            continue
+        t = cd.get("type", "") or ""
+        if "Legendary" in t and ("Creature" in t or "Planeswalker" in t):
+            out.append((n, card_colors(cd.get("colors", ""))))
+    return out
+
+
+def brawl_readiness(fmt_filter="standard"):
+    """Roster-wide 'distance to a legal Brawl conversion' per deck (#2). For each deck in
+    `fmt_filter`, pick the best in-deck commander (the legendary creature/PW whose color
+    identity leaves the FEWEST cards stray), then measure how far the deck is from a legal
+    Brawl build: cards to de-duplicate to singleton + cards outside that commander's
+    identity + any Brawl-illegal cards. Reuses the same identity/commander rules
+    `deck.py legal` enforces, so the estimate can't drift from the actual check. Offline.
+
+    Returns rows sorted closest-first: [{id, name, colors, commander, cmd_ident, dup,
+    stray, notlegal, distance, no_commander, converted}], plus a `converted` flag when a
+    `<core>-brawl` variant already exists."""
+    carddata = load_card_data()
+    leg = load_legalities()
+    # cores that already have a Brawl variant (so we can mark them done)
+    converted = {d["core"] for d in discover_decks()
+                 if str(d["id"]).endswith("-brawl")}
+    fmt_filter = (fmt_filter or "").strip().lower()
+    rows = []
+    for d in discover_decks():
+        meta, cards = parse_deck_file(d["path"])
+        if fmt_filter and (meta.get("format") or "").strip().lower() != fmt_filter:
+            continue
+        declared = _declared_colors(meta)
+        tot, disp = {}, {}
+        for q, n, s, c in cards:
+            nl = n.lower()
+            if nl in BASICS:
+                continue
+            tot[nl] = tot.get(nl, 0) + q
+            disp.setdefault(nl, n)
+        dup = sum(1 for nl, q in tot.items() if q > 1)
+        notlegal = sum(1 for nl in tot
+                       if leg.get(nl) is not None and "brawl" not in leg[nl])
+        idents = {nl: card_colors((carddata.get(nl) or carddata.get(nl.split(" // ")[0])
+                                   or {}).get("colors", "")) for nl in tot}
+
+        best = None  # (name, ident, strays)
+        for name, ident in _brawl_commanders(cards, carddata):
+            strays = sum(1 for nl, ci in idents.items() if not ci <= ident)
+            # Prefer fewest strays; tiebreak an exact deck-color match, then broader ident.
+            key = (strays, ident != declared, -len(ident), name)
+            if best is None or key < best[0]:
+                best = (key, name, ident, strays)
+        no_commander = best is None
+        stray = best[3] if best else len(tot)
+        distance = dup + stray  # card-swaps to reach a legal Brawl 60 (basics refill)
+        rows.append({
+            "id": d["id"], "name": d["name"] or d["id"],
+            "colors": (meta.get("colors") or "").strip().upper(),
+            "commander": best[1] if best else None,
+            "cmd_ident": "".join(sorted(best[2])) or "C" if best else "",
+            "dup": dup, "stray": stray, "notlegal": notlegal,
+            "distance": distance, "no_commander": no_commander,
+            "converted": d["core"] in converted,
+        })
+    rows.sort(key=lambda r: (r["no_commander"], r["distance"], r["id"]))
+    return rows
+
+
 def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_format=False):
     """Structured core of `suggest` — returns the scored, sorted, limited picks as
     plain dicts so both `cmd_suggest` (renders below) and build_dashboard.py (craft
@@ -2057,6 +2187,84 @@ def cmd_suggest(args):
     return 0
 
 
+# --- consistency / manabase probability model (hypergeometric) ------------- #
+# Pure, deck-agnostic helpers behind `deck.py consistency`. They answer the two
+# questions the diagnosis-only `mana` command couldn't: "how often do I actually
+# cast this on curve" (#1, a Karsten-style cast-probability model) and "how often
+# is my opening hand keepable / do I hit my land drops" (#2, a hypergeometric
+# land model). Kept separate from any deck I/O so they're unit-testable.
+
+def hypergeom_at_least(N, K, n, k):
+    """P(drawing AT LEAST k of the K 'successes' when drawing n from a deck of N).
+    N deck size, K successes in deck, n cards drawn, k successes wanted. Exact —
+    sums the hypergeometric PMF over j∈[k, min(K,n)]."""
+    if k <= 0:
+        return 1.0
+    if N <= 0 or K < k or n < k:
+        return 0.0
+    n = min(n, N)
+    total = math.comb(N, n)
+    if total == 0:
+        return 0.0
+    s = 0
+    for j in range(k, min(K, n) + 1):
+        s += math.comb(K, j) * math.comb(N - K, n - j)
+    return s / total
+
+
+def cards_seen(turn, on_play=True):
+    """Cards seen by the START of your `turn` (after that turn's draw). Opening 7,
+    +1 per turn drawn: on the play you skip turn 1's draw (7+turn-1), on the draw
+    you don't (7+turn)."""
+    return 7 + (turn - 1) + (0 if on_play else 1)
+
+
+def cast_probability(N, sources, turn, pips, on_play=True):
+    """P(having enough colored sources to pay `pips` by `turn`). `pips` is a strict
+    {color: count} demand; `sources` is {color: land count producing it}. Per-color
+    hypergeometric, multiplied across colors (Karsten's independence approximation).
+    Hybrid pips are excluded by the caller — they're strictly easier, so the strict
+    demand is the binding constraint."""
+    seen = cards_seen(turn, on_play)
+    p = 1.0
+    for col, cnt in pips.items():
+        if cnt <= 0:
+            continue
+        p *= hypergeom_at_least(N, sources.get(col, 0), seen, cnt)
+    return p
+
+
+def min_sources_for(N, turn, pip_count, target=0.90, on_play=True):
+    """Fewest sources of ONE color to hit `target` P of having `pip_count` of them by
+    `turn` — the Karsten "how many sources do I need" number. Returns N if even a full
+    deck of them can't (impossible target)."""
+    seen = cards_seen(turn, on_play)
+    for src in range(0, N + 1):
+        if hypergeom_at_least(N, src, seen, pip_count) >= target:
+            return src
+    return N
+
+
+def opening_land_stats(N, lands, on_play=True):
+    """Opening-hand + land-drop consistency for a deck of N with `lands` lands:
+    keepable (2–5 lands in the opening 7), screw (0–1), flood (6–7), and P(≥n lands
+    by turn n) for n=2,3,4 (land-drop consistency). All exact hypergeometric."""
+    seven = math.comb(N, 7) if N >= 7 else 0
+
+    def p7(k):  # P(exactly k lands in the opening 7)
+        if not seven or lands < k or N - lands < 7 - k:
+            return 0.0
+        return math.comb(lands, k) * math.comb(N - lands, 7 - k) / seven
+
+    keepable = sum(p7(k) for k in range(2, 6))
+    screw = sum(p7(k) for k in range(0, 2))
+    flood = sum(p7(k) for k in range(6, 8))
+    return {"keepable": keepable, "screw": screw, "flood": flood,
+            "hit2": hypergeom_at_least(N, lands, cards_seen(2, on_play), 2),
+            "hit3": hypergeom_at_least(N, lands, cards_seen(3, on_play), 3),
+            "hit4": hypergeom_at_least(N, lands, cards_seen(4, on_play), 4)}
+
+
 def cmd_mana(args):
     """Hybrid-aware color requirements: which colors a deck STRICTLY needs."""
     d = find_deck(args.id)
@@ -2197,6 +2405,167 @@ def _commitment(n):
     if n <= 8:
         return "<- secondary color"
     return "<- primary color"
+
+
+def _deck_source_counts(cards, by_key, by_name, carddata):
+    """(sources{WUBRG:count}, nlands, total) for a cards list — the manabase side of
+    the consistency model. Basics by name, nonbasic lands by color identity (mana
+    dorks aren't counted as sources; they're not lands). Shared by `mana` /
+    `consistency` so the two can't disagree on what a 'source' is."""
+    sources = {c: 0 for c in "WUBRG"}
+    nlands = total = 0
+    for q, n, s, c in cards:
+        total += q
+        nl = n.lower()
+        if nl in BASICS:
+            col = BASIC_COLOR.get(nl)
+            if col:
+                sources[col] += q
+            nlands += q
+            continue
+        row = by_key.get((nl, s.lower(), c.lower())) or by_name.get(nl)
+        cd = carddata.get(nl)
+        tline = (row.get("Type") if row else "") or (cd["type"] if cd else "")
+        if "Land" in _primary_type(tline):
+            nlands += q
+            colid = (row.get("Color(s)") if row else "") or (cd.get("colors") if cd else "")
+            for col in card_colors(colid):
+                sources[col] += q
+    return sources, nlands, total
+
+
+def cmd_consistency(args):
+    """Manabase + opening-hand CONSISTENCY (#1/#2): the probability layer `mana` lacks.
+    Given the deck's land count and per-color sources, model P(keepable opening hand),
+    screw/flood, land-drop consistency, and — per card — P(casting on curve) with a
+    Karsten-style source recommendation for the ones that come up short. Diagnosis with
+    numbers, not vibes: `mana` says 'thin', this says '62% on turn 3, want +2 sources'."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    by_key, by_name, _ = load_collection()
+    meta, cards = parse_deck_file(d["path"])
+    mana = load_mana()
+    if not mana:
+        eprint("No card-mana.csv found. Build it: python3 scripts/build_mana.py")
+        return 1
+    carddata = load_card_data()
+    nonland = [n for q, n, s, c in cards if n.lower() not in BASICS]
+    fetch_missing_mana(sorted(set(nonland)), mana)
+
+    sources, nlands, total = _deck_source_counts(cards, by_key, by_name, carddata)
+    on_play = not getattr(args, "on_draw", False)
+    target = getattr(args, "target", None) or 0.90
+    N = total or 60
+    coin = "on the play" if on_play else "on the draw"
+
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — consistency ({N}-card deck, {coin})\n")
+
+    # #2 — opening hand + land drops.
+    ls = opening_land_stats(N, nlands, on_play)
+    print(f"Lands: {nlands}/{N}  ({100*nlands/N:.0f}% of the deck)")
+    print("Opening hand (7 cards):")
+    print(f"  keepable (2–5 lands) : {100*ls['keepable']:5.1f}%")
+    print(f"  mana screw (0–1)     : {100*ls['screw']:5.1f}%     "
+          f"flood (6–7): {100*ls['flood']:4.1f}%")
+    print("Land-drop consistency (P of ≥N lands by turn N):")
+    print(f"  turn 2: {100*ls['hit2']:5.1f}%   turn 3: {100*ls['hit3']:5.1f}%   "
+          f"turn 4: {100*ls['hit4']:5.1f}%")
+    # A gentle land-count read — the classic 17-source floor is deck-dependent, so flag
+    # only clear extremes rather than prescribe a number.
+    if ls["keepable"] < 0.85:
+        want = "more" if nlands < N * 0.40 else "fewer"
+        print(f"  △ keepable {100*ls['keepable']:.0f}% is low — consider {want} lands "
+              f"(most 60-card decks run 23–26).")
+
+    # Color sources.
+    active = [c for c in "WUBRG" if sources[c]]
+    # A "splash" color has so few sources that a card demanding it on curve is
+    # effectively a late-game card, not an on-curve one — so the per-card
+    # recommendation below reframes as "cast later or cut" instead of printing an
+    # impractical land count (a {B}{R} 2-drop off 1 red source wants ~15 R sources).
+    SPLASH_MAX = 3
+    splash = [c for c in active if sources[c] <= SPLASH_MAX]
+    if active:
+        print("\nColor sources (lands producing each color):")
+        print("  " + "   ".join(f"{c} {sources[c]}" for c in active))
+        if splash:
+            print("  splash (≤%d sources): " % SPLASH_MAX
+                  + ", ".join(f"{c} ({sources[c]})" for c in splash)
+                  + " — a card needing one of these on curve reads low below; treat it as a "
+                    "late-game splash (cast when you've drawn the source), not a curve play.")
+
+    # #1 — per-card cast probability on curve. Cast turn = the card's MV (min 1),
+    # capped so a 7-drop isn't judged as if cast on turn 7 verbatim (you've usually
+    # stabilized your colors by ~turn 5). Strict pips only; hybrids are easier and
+    # excluded (they don't demand their own sources — same rule `mana` uses).
+    CAST_CAP = 5
+    rows = []
+    seen = set()
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl in seen:
+            continue
+        row = by_key.get((nl, s.lower(), c.lower())) or by_name.get(nl)
+        if row and "Land" in _primary_type((row.get("Type") or "")):
+            continue
+        entry = mana.get(nl)
+        if not entry or not entry[0]:
+            continue
+        strict, _hy = parse_pips(entry[0])
+        if not strict:
+            continue
+        seen.add(nl)
+        mv = entry[1] if entry[1] is not None else sum(strict.values())
+        turn = max(1, min(int(mv) if mv else 1, CAST_CAP))
+        p = cast_probability(N, sources, turn, strict, on_play)
+        # The tightest single-color demand drives the fix recommendation.
+        worst_col = max(strict, key=lambda col: (strict[col], -sources.get(col, 0)))
+        need = min_sources_for(N, turn, strict[worst_col], target, on_play)
+        rows.append((p, n, turn, strict, worst_col, need))
+
+    rows.sort(key=lambda r: r[0])
+    below = [r for r in rows if r[0] < target]
+    print(f"\nCast-on-curve probability (turn = mana value, capped at {CAST_CAP}; "
+          f"target {100*target:.0f}%):")
+    if not rows:
+        print("  (no colored-pip cards with cost data)")
+    else:
+        show = below if below else rows[:5]
+        if not below:
+            print(f"  ✓ every colored card casts on curve at ≥{100*target:.0f}% — "
+                  "manabase supports the deck. Lowest 5:")
+        for p, n, turn, strict, worst_col, need in show:
+            pipstr = "".join(f"{{{col}}}" * cnt for col, cnt in sorted(strict.items()))
+            have_col = sources.get(worst_col, 0)
+            flag = ""
+            if p < target and need > have_col:
+                if have_col <= SPLASH_MAX:
+                    # Genuine splash: too few sources to ever be on-curve at this turn.
+                    # Reframe as cast-late/cut rather than print an absurd land count
+                    # (a {B}{R} 2-drop off 1 red source "wanting" 15 R sources).
+                    flag = (f"   → {worst_col} is a {have_col}-source splash — cast it late "
+                            f"(once you've drawn a source) or cut it; don't chase "
+                            f"{100*target:.0f}% on curve")
+                elif need > nlands:
+                    # A main color, but a color-hungry EARLY cost (e.g. {B}{B} on T2) that no
+                    # realistic land base guarantees on time — say so instead of "+N sources".
+                    flag = (f"   → color-hungry: {100*target:.0f}% at T{turn} would need {need} "
+                            f"{worst_col} sources (> the deck's {nlands} lands) — expect it a "
+                            f"turn or two later than T{turn}")
+                else:
+                    flag = (f"   → want {need} {worst_col} sources "
+                            f"(have {have_col}, +{need - have_col})")
+            print(f"  {100*p:5.1f}%  T{turn}  {pipstr:10} {n[:30]:30}{flag}")
+        if below:
+            print(f"\n  {len(below)} card(s) below {100*target:.0f}% on curve — the → note is the "
+                  "Karsten source count to reach target, a splash flag for a thin (≤%d-source) "
+                  "color (cast late or cut), or a color-hungry flag for an early double pip." % SPLASH_MAX)
+    print("\nModel: hypergeometric (exact); per-color independence for multi-color costs "
+          "(a mild over-estimate), hybrids excluded as non-binding. A planning aid, not a "
+          "guarantee — mulligans, scry, and card draw all shift the real numbers.")
+    return 0
 
 
 # --- flex / suggested swaps ------------------------------------------------- #
@@ -2579,6 +2948,9 @@ def cmd_apply_flex(args):
 # larger minimum size than the 60-card constructed default.
 SINGLETON_FORMATS = {"brawl", "historic brawl", "commander", "oathbreaker", "duel"}
 BIG_DECK_FORMATS = {"commander", "historic brawl", "oathbreaker"}
+# Formats led by a legendary creature/planeswalker commander with a color-identity lock
+# (Oathbreaker's PW-commander + signature-spell rules differ, so it's excluded here).
+_COMMANDER_FORMATS = {"brawl", "historic brawl", "commander", "duel"}
 
 
 def load_legalities():
@@ -2599,13 +2971,21 @@ def load_legalities():
     return out
 
 
-def legality_report(meta, cards, fmt, leg):
+def legality_report(meta, cards, fmt, leg, carddata=None):
     """Pure legality computation shared by `legal` (verbose, one deck) and `audit`
     (one line per deck) so both apply IDENTICAL size/copy/format rules. Returns a
     dict: problems (list of strings), unknown (pool-absent card names), notes
     (informational lines about untracked formats / missing legality data), plus
     total / min_size / copy_limit / singleton for the caller to render. Offline —
-    `leg` is a pre-loaded load_legalities() map (pass {} to skip the format check)."""
+    `leg` is a pre-loaded load_legalities() map (pass {} to skip the format check).
+
+    Format-aware extras:
+      • Singleton formats (Brawl/Commander) enforce the 1-copy limit (already), and
+        when `carddata` is supplied ALSO validate the `#: commander:` — it must be a
+        legendary creature/planeswalker in the deck, and every nonbasic card's color
+        identity must sit within the commander's (Brawl's defining rule).
+      • Alchemy: a card that's Standard-legal but not Alchemy-legal is REBALANCED, not
+        illegal — Arena plays its A- version — so it's a note, not a problem."""
     counts, order, disp, total = {}, [], {}, 0
     for q, n, s, c in cards:
         total += q
@@ -2631,21 +3011,63 @@ def legality_report(meta, cards, fmt, leg):
                             + (", singleton format" if singleton else "") + ")")
 
     if fmt and fmt in POOL_FORMATS and leg:
-        illegal = []
+        illegal, rebalanced = [], []
         for nl in order:
             card_leg = leg.get(nl)
             if card_leg is None:
                 unknown.append(disp[nl])
             elif fmt not in card_leg:
-                illegal.append(disp[nl])
+                # A Standard card that isn't Alchemy-legal is rebalanced (A- version),
+                # not illegal — it's still playable in Alchemy.
+                if fmt == "alchemy" and "standard" in card_leg:
+                    rebalanced.append(disp[nl])
+                else:
+                    illegal.append(disp[nl])
         for name in illegal:
             problems.append(f"{name}: not legal in {fmt}")
+        if rebalanced:
+            notes.append(f"{len(rebalanced)} card(s) are Alchemy-rebalanced — they play as "
+                         f"their A- version in Alchemy (still legal): "
+                         + ", ".join(rebalanced[:8]) + (" …" if len(rebalanced) > 8 else ""))
     elif fmt and fmt not in POOL_FORMATS:
         notes.append(f"Format '{fmt}' isn't tracked for legality "
                      f"(known: {', '.join(sorted(POOL_FORMATS))}) — checking size/copies only.")
     elif fmt and not leg:
         notes.append("card-pool.csv has no legality data (rebuild with build_pool.py) — "
                      "checking size/copies only.")
+
+    # Commander rules (Brawl / Commander) — needs card types + identities.
+    if singleton and fmt in _COMMANDER_FORMATS and carddata is not None:
+        cmd_name = (meta.get("commander") or "").strip()
+        if not cmd_name:
+            problems.append(f"{fmt} needs a `#: commander:` header — a legendary creature "
+                            "or planeswalker in the deck (it leads from the command zone)")
+        else:
+            cnl = cmd_name.lower()
+            ccd = carddata.get(cnl) or carddata.get(cnl.split(" // ")[0])
+            cident = None
+            if ccd is None:
+                notes.append(f"commander {cmd_name!r} not in card data — can't verify its "
+                             "type/identity (check spelling, or rebuild the pool)")
+            else:
+                ctype = ccd.get("type", "") or ""
+                if not ("Legendary" in ctype and ("Creature" in ctype or "Planeswalker" in ctype)):
+                    problems.append(f"commander {cmd_name}: must be a legendary creature or "
+                                    f"planeswalker (is {ctype or '?'})")
+                cident = card_colors(ccd.get("colors", ""))
+                if cnl not in counts:
+                    notes.append(f"commander {cmd_name} isn't listed in the deck — add it "
+                                 f"(it counts as one of the {min_size})")
+            if cident is not None:
+                strays = []
+                for nl in order:
+                    cd2 = carddata.get(nl) or carddata.get(nl.split(" // ")[0])
+                    if cd2 and not card_colors(cd2.get("colors", "")) <= cident:
+                        strays.append(disp[nl])
+                if strays:
+                    ident_s = "".join(sorted(cident)) or "C"
+                    problems.append(f"outside commander's color identity ({ident_s}): "
+                                    + ", ".join(strays[:8]) + (" …" if len(strays) > 8 else ""))
 
     return {"problems": problems, "unknown": unknown, "notes": notes,
             "total": total, "min_size": min_size, "copy_limit": copy_limit,
@@ -2664,7 +3086,7 @@ def cmd_legal(args):
     meta, cards = parse_deck_file(d["path"])
     fmt = (getattr(args, "fmt", None) or meta.get("format") or "").strip().lower()
 
-    rep = legality_report(meta, cards, fmt, load_legalities())
+    rep = legality_report(meta, cards, fmt, load_legalities(), carddata=load_card_data())
     problems, unknown, total, min_size = (rep["problems"], rep["unknown"],
                                           rep["total"], rep["min_size"])
 
@@ -2719,23 +3141,19 @@ def _signature_themes(meta, cards, cardmeta):
     return frozenset(sig)
 
 
-def cmd_cuts(args):
-    """Rank the deck's nonland cards from most to least cuttable — the counterpart
-    to `suggest` (which proposes adds). Heuristic from data the rest of the tooling
-    already computes: a card is more cuttable when it sits OFF the deck's central
-    themes, fills no functional role, and (in a tribal deck) shares no creature type
-    the deck runs in numbers. Transparent by design — it shows the components so you
-    judge, and it does NOT know your spice/signature cards, so read it as a
-    shortlist, not a verdict."""
-    d = find_deck(args.id)
-    if not d:
-        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
-        return 1
+def rank_cut_candidates(d):
+    """Rank a deck's nonland cards most→least cuttable and return
+    (rows_sorted, central, prot_present, deck_int). Each row is
+    (keep, name, mv, roles, fit, reasons, ctx, text, is_int, power) — the shared
+    ranking behind both `cmd_cuts` (which prints it) and the tier `--to` tune plan
+    (which pairs the weakest cuts with the fillers that close a tier gap). Higher
+    `keep` = keep; lower sorts to the top of the cut list."""
     meta, cards = parse_deck_file(d["path"])
     protected = _protected(meta)
     cardmeta = load_card_meta()
     carddata = load_card_data()
     mana = load_mana()
+    rar = load_rarities()
 
     # Deck theme weights (by copies) — the same fingerprint `suggest` uses.
     theme_w = {}
@@ -2789,6 +3207,14 @@ def cmd_cuts(args):
         sig_hit = bool(set(tags) & signature)          # shares the deck's protected spine
         is_int = bool(set(roles) & _INTERACTION_ROLES)  # removal / sweeper / counter
 
+        # Card-quality co-signal (#3): the wishlist's rarity+role power estimate, so an
+        # on-theme-but-WEAK card sorts UP the cut list and an on-theme BOMB is protected —
+        # something pure theme-fit can't distinguish (a vanilla and a bomb sharing one tag
+        # look equal). Bounded (±_CUTS_POWER_CAP), so it only breaks near-ties (see
+        # _cuts_power_adj / check_suggest #7); it never overrides theme fit.
+        power = _power_seed({"Rarity": rar.get(nl, ""), "Card Text": text, "Type": tline})
+        pow_adj = _cuts_power_adj(power)
+
         # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
         # Role credit is impact-weighted (see _role_credit) so a strong-but-off-theme
         # card (removal/engine/cost-reducer) isn't mis-ranked as a top cut. Passing the
@@ -2798,7 +3224,7 @@ def cmd_cuts(args):
         # card on the deck's #: protect: signature theme gets a further keep-boost (F#3)
         # so a generic-tagged-but-central theme (e.g. counters) isn't mistaken for filler.
         keep = (fit + _role_credit(roles, deck_tally) + (1 if hit_central else 0)
-                + (2 if sig_hit else 0) + min(tribal, 6))
+                + (2 if sig_hit else 0) + min(tribal, 6) + pow_adj)
         reasons = []
         if tags and not hit_central:
             reasons.append("off the deck's central themes")
@@ -2808,12 +3234,30 @@ def cmd_cuts(args):
             reasons.append("role not auto-detected — read text")
         if subs and tribal <= q:
             reasons.append("off-tribe")
-        rows.append((keep, n, mv, sorted(roles), fit, reasons, ctx, text, is_int))
+        if power <= 3.0 and (hit_central or sig_hit):
+            reasons.append(f"on-theme but low power (~{power:.1f})")
+        rows.append((keep, n, mv, sorted(roles), fit, reasons, ctx, text, is_int, power))
 
+    rows.sort(key=lambda r: (r[0], r[1].lower()))
+    return rows, central, prot_present, deck_int
+
+
+def cmd_cuts(args):
+    """Rank the deck's nonland cards from most to least cuttable — the counterpart
+    to `suggest` (which proposes adds). Heuristic from data the rest of the tooling
+    already computes: a card is more cuttable when it sits OFF the deck's central
+    themes, fills no functional role, and (in a tribal deck) shares no creature type
+    the deck runs in numbers. Transparent by design — it shows the components so you
+    judge, and it does NOT know your spice/signature cards, so read it as a
+    shortlist, not a verdict."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    rows, central, prot_present, deck_int = rank_cut_candidates(d)
     if not rows:
         print(f"Deck {d['id']}: no nonland cards to evaluate.")
         return 0
-    rows.sort(key=lambda r: (r[0], r[1].lower()))
     limit = args.limit if getattr(args, "limit", 0) and args.limit > 0 else len(rows)
 
     print(f"Deck {d['id']}: {d['name'] or d['path']} — cut candidates (weakest fit first)")
@@ -2825,16 +3269,19 @@ def cmd_cuts(args):
     if deck_int < 5:
         print(f"⚠ deck runs only {deck_int} interaction piece(s) — rows tagged "
               f"⚠interaction are your removal/counters; cutting them lowers resilience.")
-    print(f"  {'Card':30} {'MV':>3}  {'Fit':>4}  Roles / why-cuttable")
-    print("-" * 74)
-    for keep, n, mv, roles, fit, reasons, ctx, text, is_int in rows[:limit]:
+    print(f"  {'Card':30} {'MV':>3}  {'Fit':>4}  {'Pw':>3}  Roles / why-cuttable")
+    print("-" * 78)
+    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power in rows[:limit]:
         mvs = str(mv) if mv is not None else "?"
         tail = ", ".join(roles) if roles else ("; ".join(reasons) if reasons else "—")
+        low_pow = [r for r in reasons if r.startswith("on-theme but low power")]
+        if roles and low_pow:  # a detected-role card can still be a weak body — say so
+            tail += "  ·  " + low_pow[0]
         if ctx:
             tail += f"   ⚠ context: {'/'.join(ctx)}"
         if is_int:
             tail += f"   ⚠interaction (deck runs {deck_int})"
-        print(f"  {n[:30]:30} {mvs:>3}  {fit:>4}  {tail}")
+        print(f"  {n[:30]:30} {mvs:>3}  {fit:>4}  {power:>3.0f}  {tail}")
 
     # Surface the actual oracle text so a cut is graded from what the card DOES,
     # never from the label above (the role map is a shortlist, not a verdict).
@@ -2842,7 +3289,7 @@ def cmd_cuts(args):
     text_n = args.limit if getattr(args, "limit", 0) and args.limit > 0 else min(12, len(rows))
     print(f"\n── Oracle text of the top {min(text_n, len(rows))} cut candidates "
           f"(grade from THIS, not the label) ──")
-    for keep, n, mv, roles, fit, reasons, ctx, text, is_int in rows[:text_n]:
+    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power in rows[:text_n]:
         warn = f"   ⚠ context: {'/'.join(ctx)} — value depends on this deck" if ctx else ""
         if is_int:
             warn += f"   ⚠interaction — 1 of the deck's {deck_int}"
@@ -2956,7 +3403,7 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta):
         if not found or have < req:
             short += 1
 
-    rep = legality_report(meta, cards, fmt, leg)
+    rep = legality_report(meta, cards, fmt, leg, carddata=carddata)
     n_illegal = len(rep["problems"])
 
     declared = _declared_colors(meta)
@@ -3753,6 +4200,11 @@ def cmd_tier(args):
             return 0
         print("  measurable gap: " + "; ".join(gapinfo["summary"]))
 
+        # `adds` accumulates the fillers that close the gap, in the order we'll pair
+        # them with cuts: owned (0-wildcard) first, then craft targets. Each entry is
+        # (axis, kind, mv, name, ident, note).
+        adds = []
+
         def _axis(role_set, add_flag, label):
             if not add_flag:
                 return
@@ -3769,12 +4221,77 @@ def cmd_tier(args):
                 print(f"  craft targets ({label}, format-legal, cheaper wildcard first):")
                 for rk, mv, name, ident, rar, txt in craft:
                     print(f"    {rar[:1] or '?'} MV{mv:>2} {name:28} [{ident:4}] {txt}")
+            # Reserve `add_flag` fillers for the assembled plan — owned before craft.
+            picks = [(label, "owned", mv, name, ident, "0 WC") for mv, name, ident, _h, _t in owned_f]
+            picks += [(label, "craft", mv, name, ident, f"{rar[:1] or '?'} craft")
+                      for _rk, mv, name, ident, rar, _t in craft]
+            adds.extend(picks[:add_flag])
 
         _axis(_INTERACTION_ROLES, gapinfo["add_interaction"], "interaction")
         _axis({"Card advantage"}, gapinfo["add_card_advantage"], "card advantage")
-        print("\n  → make room with `deck.py cuts %s` (grade cuts from full text); the card"
-              " SELECTION\n    is a judgment call — protect signature/spice (that's /tune-deck)."
-              % d["id"])
+
+        # #4 — assemble the concrete before/after tune package: pair each filler with a
+        # weakest-fit cut (from the SAME cut ranking `deck.py cuts` prints, so the two
+        # can't disagree), then project the resulting quality vector and floor. It's a
+        # STARTING plan, not an auto-apply: the card selection stays a human call
+        # (protect signature/spice — that's /tune-deck), so it prints, never writes.
+        cut_rows, _c, _pp, _di = rank_cut_candidates(d)
+        # Don't propose cutting a card we're also adding (a filler already in the 60
+        # would be surfaced as a cut otherwise).
+        add_names = {a[3].lower() for a in adds}
+        cut_pool = [r for r in cut_rows if r[1].lower() not in add_names]
+        pairs = list(zip(adds, cut_pool))
+        if pairs:
+            print(f"\n── Assembled tune plan → {gapinfo['target']} (starting point; grade & "
+                  "protect signature/spice) ──")
+            int_gain = ca_gain = 0
+            for (axis, kind, mv, name, ident), cut in ((a[:5], c) for a, c in pairs):
+                cut_name, cut_mv, cut_roles, cut_text, cut_is_int = (
+                    cut[1], cut[2], cut[3], cut[7], cut[8])
+                cut_ca = "Card advantage" in cut_roles
+                # A mana source: the Ramp/fixing role, OR a dork whose "add one mana"
+                # phrasing (a flavor-keyword ability) the role classifier misses.
+                cut_ramp = "Ramp / fixing" in cut_roles or _produces_mana(cut_text)
+                # Net axis change: +1 for the add's axis, −1 if the cut fed that axis.
+                if axis == "interaction":
+                    int_gain += 1
+                else:
+                    ca_gain += 1
+                if cut_is_int:
+                    int_gain -= 1
+                if cut_ca:
+                    ca_gain -= 1
+                mvs = f"MV{mv:>2}" if isinstance(mv, int) else "MV ?"
+                cmvs = f"MV{cut_mv:>2}" if isinstance(cut_mv, int) else "MV ?"
+                warn = ""
+                if cut_is_int:
+                    warn = "  ⚠ cut feeds interaction — pick another cut"
+                elif cut_ca:
+                    warn = "  ⚠ cut feeds card advantage — pick another cut"
+                elif cut_ramp:
+                    warn = "  ⚠ cut is a ramp/fixing source — losing it may hurt the manabase"
+                print(f"  − {cut_name[:28]:28} {cmvs}   →   + {name[:26]:26} {mvs} "
+                      f"[{ident:4}] ({axis}, {kind}){warn}")
+            if len(adds) > len(cut_pool):
+                print(f"  … {len(adds) - len(cut_pool)} more add(s) needed but the cut list is "
+                      "exhausted — the deck may already be tight; loosen a #: protect: card.")
+            # Projected floor: apply the net axis changes to the vector, re-band.
+            proj = dict(vec)
+            proj["interaction"] = max(0, vec["interaction"] + int_gain)
+            proj["card_advantage"] = max(0, vec["card_advantage"] + ca_gain)
+            proj_band = tier_band(proj)
+            print(f"\n  projected: interaction {vec['interaction']}→{proj['interaction']}, "
+                  f"card-adv {vec['card_advantage']}→{proj['card_advantage']}  "
+                  f"⇒ metrics floor {implied}→{proj_band}"
+                  + (f"  ✓ meets {gapinfo['target']} floor" if TIER_RANK.get(proj_band, 0)
+                     >= TIER_RANK.get(gapinfo['target'], 9) else
+                     f"  (still short of {gapinfo['target']} — more adds or a heavier tune)"))
+            print("  Preview any line with `deck.py swap %s --cut <A> --add <B>` "
+                  "(shows full text of both)." % d["id"])
+        else:
+            print("\n  → make room with `deck.py cuts %s` (grade cuts from full text); the card"
+                  " SELECTION\n    is a judgment call — protect signature/spice (that's /tune-deck)."
+                  % d["id"])
     return 0
 
 
@@ -4088,6 +4605,43 @@ def cmd_rotation(args):
     return 0
 
 
+def cmd_brawl(args):
+    """Roster-wide Brawl-readiness — which of your decks are closest to a legal Brawl
+    conversion, and the best commander for each. Offline. `distance` = cards to change:
+    duplicates to trim to singleton + cards outside the best commander's color identity
+    (basics refill the freed slots). A deck at distance 0 with a commander is Brawl-ready
+    as-is; pick the commander, add `#: commander:` + `#: format: Brawl`."""
+    rows = brawl_readiness(fmt_filter=args.fmt)
+    if not rows:
+        print(f"No {args.fmt} decks to assess.")
+        return 0
+    ready = [r for r in rows if not r["no_commander"] and r["distance"] == 0 and not r["converted"]]
+    done = [r for r in rows if r["converted"]]
+    print(f"Brawl-readiness — {len(rows)} {args.fmt} deck(s), closest to a legal Brawl "
+          f"conversion first. distance = duplicates-to-singleton + off-identity cards.")
+    if done:
+        print(f"Already converted (a *-brawl variant exists): "
+              + ", ".join(f"{r['id']}" for r in done))
+    print(f"\n  {'dist':>4} {'deck':>5} {'name':24} {'col':5} {'commander (identity)':34} {'dup':>3} {'stray':>5}")
+    print("  " + "-" * 92)
+    for r in rows:
+        if r["no_commander"]:
+            continue
+        tag = " ✓" if r["converted"] else ""
+        cmd = (f"{r['commander'][:26]} ({r['cmd_ident']})") if r["commander"] else "—"
+        print(f"  {r['distance']:>4} {r['id']:>5} {r['name'][:24]:24} {r['colors']:5} "
+              f"{cmd:34} {r['dup']:>3} {r['stray']:>5}{tag}")
+    nocmd = [r for r in rows if r["no_commander"]]
+    if nocmd:
+        print(f"\n  No in-deck commander (needs a legendary creature/planeswalker added): "
+              + ", ".join(f"{r['id']} {r['name'][:18]}" for r in nocmd[:10]))
+    print("\nRead it like `rotation`/`audit` — a shortlist. distance 0 (+ commander) = "
+          "ready as-is; a few strays = swap those for on-identity cards (deck.py legal "
+          "<id> --format brawl names them). Copies are fungible, so a Brawl build costs "
+          "no extra owned cards. Grade the commander from full text (deck.py text / card.py).")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="Manage decks and variations.")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -4108,10 +4662,20 @@ def main():
     p.add_argument("id")
     p = sub.add_parser("mana", help="hybrid-aware color requirements")
     p.add_argument("id")
+    p = sub.add_parser("consistency",
+                       help="manabase + opening-hand probability (keepable %, land drops, cast-on-curve)")
+    p.add_argument("id")
+    p.add_argument("--on-draw", action="store_true",
+                   help="model on the draw (extra card) instead of on the play")
+    p.add_argument("--target", type=float, metavar="P",
+                   help="cast-probability target as a fraction (default 0.90)")
     p = sub.add_parser("tribes", help="creature-subtype breakdown + type-matters synergies")
     p.add_argument("id")
     p = sub.add_parser("engines", help="enabler vs payoff balance for the deck's engine themes")
     p.add_argument("id")
+    p = sub.add_parser("brawl", help="roster-wide Brawl-readiness — which decks are closest to a legal Brawl conversion")
+    p.add_argument("--format", dest="fmt", default="standard",
+                   help="which decks to assess (default: standard)")
     p = sub.add_parser("rotation", help="roster-wide Standard-rotation exposure — which decks run aging-out cards")
     p.add_argument("--format", dest="fmt", default="standard",
                    help="format to check rotation for (default: standard)")
@@ -4188,8 +4752,9 @@ def main():
     return {
         "list": cmd_list, "wildcards": cmd_wildcards, "audit": cmd_audit, "check": cmd_check,
         "diff": cmd_diff, "arena": cmd_arena, "stats": cmd_stats,
-        "mana": cmd_mana, "tribes": cmd_tribes, "engines": cmd_engines, "suggest": cmd_suggest,
-        "rotation": cmd_rotation,
+        "mana": cmd_mana, "consistency": cmd_consistency,
+        "tribes": cmd_tribes, "engines": cmd_engines, "suggest": cmd_suggest,
+        "rotation": cmd_rotation, "brawl": cmd_brawl,
         "legal": cmd_legal, "cuts": cmd_cuts,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
         "verify": cmd_verify, "text": cmd_text, "suggest-homes": cmd_suggest_homes,

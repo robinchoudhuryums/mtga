@@ -308,6 +308,7 @@ python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
 python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
 python3 scripts/deck.py stats 1a      # curve, colors, types, cost flags, roles + interaction profile
 python3 scripts/deck.py mana 1a       # hybrid-aware color requirements + castability lint
+python3 scripts/deck.py consistency 1a # opening-hand keepable %, land drops, P(cast on curve) + source fix
 python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
 python3 scripts/deck.py engines 1a    # enabler ↔ payoff balance for the deck's engine themes
 python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
@@ -321,6 +322,7 @@ python3 scripts/deck.py text 1a              # full oracle text of every card (r
 python3 scripts/deck.py suggest 1a --unowned --full  # picks WITH full text + keywords + flags
 python3 scripts/deck.py suggest-homes "Crib Swap"    # which decks a card fits, with a fit-strength label
 python3 scripts/deck.py rotation             # roster-wide: which Standard decks run cards aging out (what rotates next); --within N, --years N, --format
+python3 scripts/deck.py brawl                 # roster-wide: which decks are closest to a legal Brawl conversion + the best commander for each
 python3 scripts/deck.py preflight 1a         # one-call verify: legal + owned + castable + integrity
 python3 scripts/deck.py quality 1a --json    # deck-quality vector; --vs FILE diffs a before-snapshot
 python3 scripts/deck.py tier 1a              # claimed #: tier: vs the tier its metrics support
@@ -616,7 +618,9 @@ net·30d* "since" toggle), the commit changelog, and a **⧉ Copy Arena import**
 re-import into Arena. A **"Standard rotation"** panel shows what rotates next (by year,
 ⚠ SOON) and which decks it hits — the dashboard view of `deck.py rotation`. (Both need
 the pool's `Released` column: `build_pool.py --all`; the recently-edited dates need
-git history, so `pages.yml` checks out with `fetch-depth: 0`.)
+git history, so `pages.yml` checks out with `fetch-depth: 0`.) When your roster spans
+more than one format, the **Decks & variants** grid splits into per-format shelves
+(Standard / Brawl / Alchemy / …) so each game-type reads separately.
 
 A **"Find a card"** search box (top of the page) is the dashboard mirror of
 `card.py`'s *in decks* line: type any card name and it lists every deck **including

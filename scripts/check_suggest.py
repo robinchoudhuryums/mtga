@@ -126,6 +126,28 @@ def check():
         errs.append("_is_color_fixer failed to flag a canonical rainbow fixer "
                     "(ramp/mana tag + every-basic-land-type) — the Overlord anchor.")
 
+    # (7) cuts power co-signal (#3): the keep-score nudge from a card's 0–10 power must
+    #     be BOUNDED (±cap), neutral at the center, and monotonic (a bomb is protected,
+    #     a weak on-theme body sorts up) — so it only breaks near-ties in the cut ranking
+    #     and never overrides theme fit (mirrors the suggest power co-signal, anchor 5).
+    cpa = deck._cuts_power_adj
+    cap = deck._CUTS_POWER_CAP
+    if not all(abs(cpa(p)) <= cap for p in (0, 1, 2.5, 5, 7.5, 10)):
+        errs.append(f"_cuts_power_adj escapes ±{cap} for an in-range power (0–10): "
+                    f"{[cpa(p) for p in (0, 5, 10)]}.")
+    if not (cpa(100) == cap and cpa(-100) == -cap):
+        errs.append(f"_cuts_power_adj clamp doesn't engage on an out-of-range power: "
+                    f"cpa(100)={cpa(100)}, cpa(-100)={cpa(-100)} (want ±{cap}).")
+    if cpa(deck._CUTS_POWER_NEUTRAL) != 0.0:
+        errs.append(f"_cuts_power_adj not neutral at center {deck._CUTS_POWER_NEUTRAL}: "
+                    f"got {cpa(deck._CUTS_POWER_NEUTRAL)}.")
+    if not (cpa(9) > cpa(5) > cpa(1)):
+        errs.append(f"_cuts_power_adj not monotonic in power: {[cpa(1), cpa(5), cpa(9)]} "
+                    "— a bomb must be protected and a weak card made more cuttable.")
+    if cap > 3.0:
+        errs.append(f"_CUTS_POWER_CAP too large ({cap}): the power nudge must stay a "
+                    "tie-breaker next to theme fit, not a lever.")
+
     return errs
 
 
