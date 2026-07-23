@@ -2560,8 +2560,8 @@ def cmd_consistency(args):
             print(f"  {100*p:5.1f}%  T{turn}  {pipstr:10} {n[:30]:30}{flag}")
         if below:
             print(f"\n  {len(below)} card(s) below {100*target:.0f}% on curve — the → note is the "
-                  "Karsten source count to reach target, a splash flag for a thin (≤%d-source) "
-                  "color (cast late or cut), or a color-hungry flag for an early double pip." % SPLASH_MAX)
+                  f"Karsten source count to reach target, a splash flag for a thin (≤{SPLASH_MAX}-source) "
+                  "color (cast late or cut), or a color-hungry flag for an early double pip.")
     print("\nModel: hypergeometric (exact); per-color independence for multi-color costs "
           "(a mild over-estimate), hybrids excluded as non-binding. A planning aid, not a "
           "guarantee — mulligans, scry, and card draw all shift the real numbers.")
