@@ -1,50 +1,84 @@
 #: name: Armory
 #: format: Standard
 #: colors: WB
-#: archetype: Orzhov (W/B) Equipment — a pile of equipment + equipped-creature payoffs and
-#: archetype: carriers, direction TBD (voltron vs. go-wide equipment midrange). Ingested as-is.
-#: notes: Ingested from an Arena export as a build target — pasted at ~62 cards (equipment-
-#: notes: heavy WB), so it needs a trim to a legal 60 and a chosen direction. Tune to follow.
+#: tier: B — Orzhov (W-primary) Equipment midrange that can go WIDE or go TALL. A resilient
+#: tier: equipment deck (the auto-attach / Job-select package means gear never strands), with
+#: tier: real card advantage (Cloud's trigger-doubling, Swordsman's connive, Weapons Vendor,
+#: tier: Buster Sword) and a B splash for removal (Ronin, Meteor Sword, Deconstruction Hammer)
+#: tier: + recursion (Winter Soldier). Held at B by a lean creature base (leans on token-
+#: tier: making equipment for bodies) and voltron-style fragility when it does go tall.
+#: archetype: Orzhov (W/B) Equipment midrange. Suit up a board of creatures (many equipment
+#: archetype: bring their own body via Job select / ETB-attach), grind card advantage off
+#: archetype: equipped-creature triggers — DOUBLED by Cloud, Midgar Mercenary — and close
+#: archetype: either wide or by going tall (Winter Soldier / Whiplash / With Great Power /
+#: archetype: Aettir). B splash adds the removal + recursion pure-white voltron lacks.
+#: notes: ROUTE B (chosen): the flexible go-wide-OR-tall midrange — the most resilient use of
+#: notes: this pool. Cloud + combat-damage equipment (Buster Sword / Goldvein Pick / Ninja's
+#: notes: Blades) is the value spine; the Job-select equipment (Kyoshi Fan, Dragoon's Lance,
+#: notes: Machinist's Arsenal, Ninja's Blades) + U.S.Agent / Honored Knight-Captain provide
+#: notes: bodies so gear never strands. Refined from the 62-card pile: -Bark of Doran (pure
+#: notes: defense, off-plan), -Crystal Fragments (slow saga), -Adventuring Gear (weak landfall
+#: notes: pump, no lands-matter). Sun-Spider stays ({3}{W/U} — white-castable hybrid tutor).
+#: notes: KEPT the clunky top-end (Aettir 6, Meteor Sword 7, Machinist's Arsenal 5) per your
+#: notes: "cheat equipment into play" idea — BUT the only real cheat-into-play enabler is
+#: notes: Honored Knight-Captain (1 card, {4}{W}{W}+sac, slow). Meteor Sword earns its slot on
+#: notes: its own (ETB destroy target permanent = removal, and a great Honored target); Aettir
+#: notes: is the one I'd cut first if the deck plays clunky — it's a pure finisher with no
+#: notes: value. If you want a tighter curve, -Aettir -Machinist's Arsenal for 2 cheap carriers.
+#: notes: DIRECTION NOTE: creature-light for a midrange deck; the auto-attach package carries
+#: notes: it, but 2-3 cheap owned equipment-carriers would firm the early game.
 
-# Nonland — as pasted (equipment + carriers/payoffs)
+# Creatures — carriers / payoffs / engines
+1 Healer's Hawk (FDN) 142
 1 Cloud, Midgar Mercenary (FIN) 10
-1 Super-Soldier Serum (MSH) 38
-1 Web-Shooters (SPM) 22
-1 Celestial Armor (FDN) 5
-1 Glider Staff (TLA) 22
-2 Weapons Vendor (FIN) 40
+1 Zack Fair (FIN) 45
+1 Whiplash, Vengeful Engineer (MSH) 121
 1 Winter Soldier, Icy Assassin (MSH) 239
+1 Swordsman, Sharp Scoundrel (MSH) 116
+1 Honored Knight-Captain (EOE) 22
+2 Weapons Vendor (FIN) 40
+1 Ronin, Shadow Stalker (MSH) 112
 1 U.S.Agent, John Walker (MSH) 236
-1 Adventuring Gear (FDN) 249
-1 Vibranium Energy Daggers (MSH) 254
-1 Trusty Boomerang (TLA) 260
-1 Captain America's Shield (MSH) 244
-1 Kyoshi Battle Fan (TLA) 257
-1 Goldvein Pick (FDN) 253
+1 Sun-Spider, Nimble Webber (SPM) 154
+
+# Equipment — value / combat-damage triggers (Cloud doubles these)
 1 Buster Sword (FIN) 255
+1 Goldvein Pick (FDN) 253
+1 S.H.I.E.L.D. Spy Kit (MSH) 36
+1 Ninja's Blades (FIN) 108
+1 Wrench (MKM) 37
+1 Web-Shooters (SPM) 22
+1 Quintessential Katana (TMT) 23
+
+# Equipment — evasion / protection (resilience)
+1 Celestial Armor (FDN) 5
+1 Iron Man Armor (MSH) 248
+1 Glider Staff (TLA) 22
+1 Stolen Stark Tech (MSH) 114
+1 Vibranium Energy Daggers (MSH) 254
+1 Captain America's Shield (MSH) 244
+
+# Equipment — Job-select bodies / removal / voltron scalers
+1 Kyoshi Battle Fan (TLA) 257
+1 Dragoon's Lance (FIN) 17
+1 Machinist's Arsenal (FIN) 23
+1 Deconstruction Hammer (LCI) 9
+1 Meteor Sword (TLA) 258
+1 Trusty Boomerang (TLA) 260
+1 Super-Soldier Serum (MSH) 38
+1 With Great Power . . . (SPM) 24
 1 Mirrormind Crown (ECL) 258
 1 Aettir and Priwen (FIN) 253
-1 Iron Man Armor (MSH) 248
-1 Whiplash, Vengeful Engineer (MSH) 121
-1 Stolen Stark Tech (MSH) 114
-1 Shredder's Armor (TMT) 75
-1 Swordsman, Sharp Scoundrel (MSH) 116
-1 Ronin, Shadow Stalker (MSH) 112
-1 Quintessential Katana (TMT) 23
-1 Wrench (MKM) 37
-1 Dragoon's Lance (FIN) 17
-1 S.H.I.E.L.D. Spy Kit (MSH) 36
-1 Crystal Fragments (FIN) 13
-1 Deconstruction Hammer (LCI) 9
-1 Zack Fair (FIN) 45
-1 Bark of Doran (ECL) 6
-1 Honored Knight-Captain (EOE) 22
-1 With Great Power . . . (SPM) 24
-1 Machinist's Arsenal (FIN) 23
-1 Ninja's Blades (FIN) 108
-1 Sun-Spider, Nimble Webber (SPM) 154
-1 Meteor Sword (TLA) 258
 
-# Lands
+# Lands — 25, W-weighted Orzhov (owned WB duals + basics)
+1 Bleachbone Verge (DFT) 250
+1 Temple of Silence (FDN) 704
+2 Scoured Barrens (M21) 250
+1 Insomnia, Crown City (FIN) 282
 15 Plains (MSH) 288
-9 Swamp (MSH) 292
+5 Swamp (MSH) 292
+
+# Flex — options (comments; not part of the 60). See: deck.py flex 38
+#~ -Aettir and Priwen | +<cheap carrier> | trim the pure-finisher top-end for an early equipment-carrier if the deck plays clunky
+#~ -Machinist's Arsenal | +<cheap carrier> | same — the 5-drop Job-select body is the slower of the auto-attach package
+#~ note: ROUTE C (Cloud value-combo) would instead go ALL-IN on Cloud: +more combat-damage equipment & evasion, +redundant hexproof-able carriers, -the go-wide/voltron scalers (Mirrormind Crown / With Great Power / Aettir) and -Machinist's. Spicier + more explosive, but fragile (leans on Cloud).
