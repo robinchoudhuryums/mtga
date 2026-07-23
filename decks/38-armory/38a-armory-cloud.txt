@@ -1,0 +1,85 @@
+#: name: Armory — Cloud Value-Combo (Route C)
+#: format: Standard
+#: colors: WB
+#: tier: B — the focused, spicier take on the Equipment core (deck 38): all-in on Cloud,
+#: tier: Midgar Mercenary's trigger-DOUBLING + combat-damage equipment. A cheap, evasive
+#: tier: tempo shell suits up a flyer with a value equipment (Buster Sword / Ninja's Blades /
+#: tier: Goldvein Pick / Spy Kit), connects, and Cloud doubles the payoff — snowballing card
+#: tier: advantage and tempo. Higher ceiling than route B, LOWER floor: it leans on Cloud, so
+#: tier: a well-timed removal spell hurts far more. Held at B by that fragility + a light
+#: tier: creature-quality floor (many 1-drop flyers).
+#: based-on: deck.txt
+#: archetype: Orzhov (W-primary) Cloud value-combo. Flood the board with cheap EVASIVE carriers
+#: archetype: (1-drop flyers), stick Cloud, and pile combat-damage-trigger equipment on an
+#: archetype: unblocked attacker — Cloud makes every one of those triggers fire twice (Buster
+#: archetype: Sword = draw 2 + cast 2 free; Ninja's Blades = double loot+drain; Goldvein = 2
+#: archetype: Treasures). Super-Soldier Serum vacuums all your gear onto the carrier on attack.
+#: notes: ROUTE C vs base 38 (route B): the same value spine, refocused into a tempo COMBO.
+#: notes:  · +Ruin-Lurker Bat / +Momo, Playful Pet / +Featherbrained Filcher / +Dream Beavers —
+#: notes:    a wall of cheap evasive carriers so you ALWAYS have a flyer to suit up AND Cloud
+#: notes:    has redundancy (losing Cloud to removal doesn't strand you). Evasion = the gear
+#: notes:    connects, which is the whole combo.
+#: notes:  · -Mirrormind Crown / -With Great Power (go-wide / go-tall scalers that don't care
+#: notes:    about Cloud) and -Honored Knight-Captain / -U.S.Agent (slower 2-4 drop bodies) —
+#: notes:    route C wants speed + evasion, not grind.
+#: notes:  · KEPT the combat-damage equipment (the payoffs Cloud doubles), the evasion/
+#: notes:    protection suite (Celestial hexproof, Stolen Stark, Vibranium), Meteor Sword
+#: notes:    (removal), and Super-Soldier Serum (loads the carrier + first strike to connect).
+#: notes: THE RISK: it's a one-engine deck — protect Cloud (Celestial Armor hexproof, Stolen
+#: notes: Stark indestructible, Zack Fair sac-to-save) and keep a backup carrier in reserve.
+#: notes: Play B for resilience, C for the explosive spice. Lands fungible with base 38.
+#: protect: Cloud, Midgar Mercenary; Buster Sword; Ninja's Blades; Celestial Armor; Whiplash, Vengeful Engineer
+
+# Creatures — cheap evasive carriers + the engine
+1 Healer's Hawk (FDN) 142
+1 Miner's Guidewing (LCI) 24
+1 Ruin-Lurker Bat (LCI) 33
+1 Momo, Playful Pet (TLA) 30
+1 Featherbrained Filcher (TMT) 6
+1 Dream Beavers (TMT) 62
+1 Zack Fair (FIN) 45
+1 Whiplash, Vengeful Engineer (MSH) 121
+1 Cloud, Midgar Mercenary (FIN) 10
+1 Abigale, Eloquent First-Year (ECL) 204
+1 Swordsman, Sharp Scoundrel (MSH) 116
+1 Winter Soldier, Icy Assassin (MSH) 239
+1 Ronin, Shadow Stalker (MSH) 112
+1 Sun-Spider, Nimble Webber (SPM) 154
+2 Weapons Vendor (FIN) 40
+
+# Equipment — combat-damage triggers (Cloud DOUBLES these)
+1 Buster Sword (FIN) 255
+1 Goldvein Pick (FDN) 253
+1 S.H.I.E.L.D. Spy Kit (MSH) 36
+1 Ninja's Blades (FIN) 108
+1 Wrench (MKM) 37
+1 Web-Shooters (SPM) 22
+1 Quintessential Katana (TMT) 23
+
+# Equipment — evasion / protection (connect + protect Cloud) + amp
+1 Celestial Armor (FDN) 5
+1 Iron Man Armor (MSH) 248
+1 Glider Staff (TLA) 22
+1 Stolen Stark Tech (MSH) 114
+1 Vibranium Energy Daggers (MSH) 254
+1 Captain America's Shield (MSH) 244
+1 Super-Soldier Serum (MSH) 38
+
+# Equipment — Job-select body / removal / utility
+1 Kyoshi Battle Fan (TLA) 257
+1 Dragoon's Lance (FIN) 17
+1 Deconstruction Hammer (LCI) 9
+1 Meteor Sword (TLA) 258
+1 Trusty Boomerang (TLA) 260
+
+# Lands — 25, W-weighted Orzhov (owned WB duals + basics; fungible with 38)
+1 Bleachbone Verge (DFT) 250
+1 Temple of Silence (FDN) 704
+2 Scoured Barrens (M21) 250
+1 Insomnia, Crown City (FIN) 282
+15 Plains (MSH) 288
+5 Swamp (MSH) 292
+
+# Flex — options (comments; not part of the 60). See: deck.py flex 38a
+#~ -Dream Beavers | +2nd protection piece | if Cloud keeps dying, add more hexproof/indestructible over a body
+#~ -Trusty Boomerang | +another combat-damage equipment | the Boomerang is the weakest of the equipment; any value equipment Cloud doubles is better

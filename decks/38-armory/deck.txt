@@ -19,17 +19,19 @@
 #: notes: bodies so gear never strands. Refined from the 62-card pile: -Bark of Doran (pure
 #: notes: defense, off-plan), -Crystal Fragments (slow saga), -Adventuring Gear (weak landfall
 #: notes: pump, no lands-matter). Sun-Spider stays ({3}{W/U} — white-castable hybrid tutor).
-#: notes: KEPT the clunky top-end (Aettir 6, Meteor Sword 7, Machinist's Arsenal 5) per your
-#: notes: "cheat equipment into play" idea — BUT the only real cheat-into-play enabler is
-#: notes: Honored Knight-Captain (1 card, {4}{W}{W}+sac, slow). Meteor Sword earns its slot on
-#: notes: its own (ETB destroy target permanent = removal, and a great Honored target); Aettir
-#: notes: is the one I'd cut first if the deck plays clunky — it's a pure finisher with no
-#: notes: value. If you want a tighter curve, -Aettir -Machinist's Arsenal for 2 cheap carriers.
-#: notes: DIRECTION NOTE: creature-light for a midrange deck; the auto-attach package carries
-#: notes: it, but 2-3 cheap owned equipment-carriers would firm the early game.
+#: notes: CHEAT-IN NOTE: the pool's only real cheat-equipment-into-play enabler is Honored
+#: notes: Knight-Captain (1 card, {4}{W}{W}+sac, slow), so hard-cast heavy-hitters weren't
+#: notes: pulling weight. Kept Meteor Sword (7) — its ETB destroy target permanent is removal
+#: notes: you want anyway, and it's the best Honored target — but cut -Aettir and Priwen (pure
+#: notes: 6-mana finisher, no value) and -Machinist's Arsenal (slow 5-drop) for +Abigale,
+#: notes: Eloquent First-Year (WB flyer/first-strike/lifelink that also makes a 2nd carrier
+#: notes: evasive) and +Miner's Guidewing (1-drop flyer) — firming the thin creature base and
+#: notes: tightening the curve. With Healer's Hawk that's 3 cheap evasive carriers added.
 
 # Creatures — carriers / payoffs / engines
 1 Healer's Hawk (FDN) 142
+1 Miner's Guidewing (LCI) 24
+1 Abigale, Eloquent First-Year (ECL) 204
 1 Cloud, Midgar Mercenary (FIN) 10
 1 Zack Fair (FIN) 45
 1 Whiplash, Vengeful Engineer (MSH) 121
@@ -61,14 +63,12 @@
 # Equipment — Job-select bodies / removal / voltron scalers
 1 Kyoshi Battle Fan (TLA) 257
 1 Dragoon's Lance (FIN) 17
-1 Machinist's Arsenal (FIN) 23
 1 Deconstruction Hammer (LCI) 9
 1 Meteor Sword (TLA) 258
 1 Trusty Boomerang (TLA) 260
 1 Super-Soldier Serum (MSH) 38
 1 With Great Power . . . (SPM) 24
 1 Mirrormind Crown (ECL) 258
-1 Aettir and Priwen (FIN) 253
 
 # Lands — 25, W-weighted Orzhov (owned WB duals + basics)
 1 Bleachbone Verge (DFT) 250
@@ -79,6 +79,5 @@
 5 Swamp (MSH) 292
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 38
-#~ -Aettir and Priwen | +<cheap carrier> | trim the pure-finisher top-end for an early equipment-carrier if the deck plays clunky
-#~ -Machinist's Arsenal | +<cheap carrier> | same — the 5-drop Job-select body is the slower of the auto-attach package
-#~ note: ROUTE C (Cloud value-combo) would instead go ALL-IN on Cloud: +more combat-damage equipment & evasion, +redundant hexproof-able carriers, -the go-wide/voltron scalers (Mirrormind Crown / With Great Power / Aettir) and -Machinist's. Spicier + more explosive, but fragile (leans on Cloud).
+#~ note: ROUTE C is built out as variant 38a (Cloud value-combo) — all-in on Cloud's trigger-doubling: more combat-damage equipment + evasion + redundant carriers, minus the go-wide/voltron scalers. Spicier + more explosive, but fragile (leans on Cloud).
+#~ -Trusty Boomerang | +2nd cheap carrier | if you want even more bodies, the Boomerang is the weakest equipment slot
