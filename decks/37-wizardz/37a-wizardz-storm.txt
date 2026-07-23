@@ -1,13 +1,18 @@
 #: name: Wizardz — Value/Storm (copy + draw-two)
 #: format: Standard
 #: colors: UBR
-#: tier: B — a grindier, value-leaning cousin of the aggressive base (37). Same Grixis Wizard
-#: tier: spellslinger spine, but tilted toward card advantage and spell-copy payoffs: draw a
-#: tier: pile (Phyrexian Arena / Super Intelligence / cantrips), turn "draw your second card"
-#: tier: into board (Erudite Wizard, Clinquant Skymage, Construct a Cosmic Cube), and blow
-#: tier: out with copiers (Thousand-Year Storm, Kitsa, Taigam) on a high-value spell. Floor
-#: tier: is B-to-A on card advantage + interaction; held at B by singleton variance and the
-#: tier: copy-payoff caveat below (copies don't fire the pings). A distinct build to compare.
+#: tier: A — earned via FUNCTIONAL REDUNDANCY, not 4-ofs. This stays a singleton (highlander)
+#: tier: list, but its core effects run as VIRTUAL copies under different names, so it draws
+#: tier: its plan reliably — the consistency that separates B from A, without giving up the
+#: tier: singleton variety. The win-condition ping ("deal damage to each opponent when you
+#: tier: cast a noncreature spell") is a virtual ~8-of: Coruscation Mage + Firebrand Archer +
+#: tier: Thunderdrum Soloist + Black Waltz No. 3, plus the 0/1-Wizard-token makers (Queen
+#: tier: Brahne, Mysidian Elder, Cornered, Circle) + Lasting Tarfire. Card draw is a virtual
+#: tier: 9-of; counters are now 2. Metrics floor A (interaction 6, card-adv 3 under-read).
+#: tier: A NOTCH BELOW 36a's true-4-of A on raw consistency (functional redundancy carries a
+#: tier: quality tax — the virtual copies aren't identical — and can't STACK a keystone), and
+#: tier: it still runs three colors; but the plan hinges on no single card, so it's a
+#: tier: defensible A. Held out of S by no format-warping bomb.
 #: based-on: deck.txt
 #: archetype: Grixis (U-primary) Wizard VALUE/STORM. The base 37 races with ping triggers; this
 #: archetype: variant grinds: heavy card draw feeds "draw your second card" payoffs and fuels a
@@ -19,11 +24,15 @@
 #: notes: they don't storm the pings. Taigam is the exception that helps the ping plan: it
 #: notes: suspends the original spell back, giving a real future CAST. So this build leans on
 #: notes: copy-for-VALUE + the draw-two engine, not a ping-storm.
-#: notes: vs base 37: +Thousand-Year Storm, +Kitsa (craft), +Taigam, +Return the Favor (copiers);
-#: notes: +Super Intelligence, +Construct a Cosmic Cube, +Clinquant Skymage (craft) (draw-two);
-#: notes: -the most aggressive one-of bodies (Razzle-Dazzler, Harbinger) and a little cheap burn.
-#: notes: 25 lands for the heavier curve. Copies are fungible, so the shared single-copy duals
-#: notes: overlap with base 37 at no cost. WIP — several craft targets (Kitsa, Clinquant, etc.).
+#: notes: vs base 37: +Thousand-Year Storm, +Kitsa (craft), +Taigam (copiers); +Construct a
+#: notes: Cosmic Cube, +Clinquant Skymage (craft) (draw-two); 25 lands for the heavier curve.
+#: notes: FUNCTIONAL-REDUNDANCY pass (the "virtual copies" technique — shore up thin effects
+#: notes: with similar-but-different cards, staying singleton): +Firebrand Archer +Thunderdrum
+#: notes: Soloist (both are near-reprints of Coruscation Mage → the ping win-con becomes a
+#: notes: virtual ~8-of) and +Spell Pierce (a 2nd counter), cutting the fragile/weakest slots
+#: notes: (-Super Intelligence aura, -Return the Favor the weakest copier, -Boomerang Basics).
+#: notes: This is what re-grounds the tier at A. Copies are fungible, so the shared single-copy
+#: notes: duals overlap with base 37 at no cost. WIP — a few craft targets (Kitsa, Clinquant).
 #: protect: Coruscation Mage; Niv-Mizzet, Visionary; Thousand-Year Storm; Taigam, Master Opportunist; Kefka, Court Mage
 
 # Creatures — Wizard pingers / copiers / draw payoffs / engines
@@ -41,6 +50,8 @@
 1 Harnesser of Storms (BLB) 137
 1 Erudite Wizard (FDN) 37
 1 Tishana's Tidebinder (LCI) 81
+1 Firebrand Archer (FDN) 196
+1 Thunderdrum Soloist (SOS) 134
 1 Clinquant Skymage (FDN) 33
 1 Black Waltz No. 3 (FIN) 214
 1 Archmage of Runes (FDN) 30
@@ -49,19 +60,17 @@
 
 # Noncreature — copiers (double the EFFECT of a high-value spell)
 1 Thousand-Year Storm (FDN) 248
-1 Return the Favor (SOA) 47
 
 # Noncreature — card draw / draw-two engine + payoffs
 1 Phyrexian Arena (FDN) 180
-1 Super Intelligence (MSH) 77
 1 Construct a Cosmic Cube (MSH) 90
 1 Circle of Power (FIN) 92
 
-# Noncreature — token / ping enablers + cantrips
+# Noncreature — token / ping enablers + cantrips + a counter
 1 Cornered by Black Mages (FIN) 93
 1 Lasting Tarfire (ECL) 149
 1 Enter the Enigma (DSK) 52
-1 Boomerang Basics (TLA) 46
+1 Spell Pierce (SOA) 23
 1 Portent of Calamity (BLB) 66
 
 # Noncreature — removal / interaction
@@ -87,5 +96,5 @@
 2 Mountain (MSH) 294
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 37a
-#~ -Return the Favor | +Sorceress's Schemes | owned: recur an instant/sorcery from the yard (+R) — more grind/recursion for the value plan
 #~ -Circle of Power | +Daring Waverider | owned: a 6-drop that free-casts an instant/sorcery from your graveyard — big value swing if the curve can support it
+#~ note: more virtual copies if you want them — of the ping payoff: Sabotender (landfall ping); of counters: Disdainful Stroke / Negate / Don't Make a Sound; of reach/removal: Lightning Strike / Shock / Plasma Bolt. All owned, all keep it singleton.
