@@ -533,6 +533,28 @@ castability · curve · central-theme density), with the intangibles moving a de
   misses still flags) and notes when the cut list is exhausted before the gap closes. It's a
   STARTING plan that PRINTS, never writes — the card selection stays a human call (protect
   signature/spice — that's `/tune-deck`); preview any line with `deck.py swap`.
+- **`deck.py redundancy <id>` plans competitive CONSISTENCY the "virtual copies first" way.**
+  A singleton/highlander deck draws a random slice of its plan; the fix for competitive
+  quality is redundancy — but the *first* lever is **functional redundancy** (distinct,
+  similar-but-different cards that do the same job — "virtual copies"), which raises
+  consistency while keeping the singleton feel, and only THEN true 4-of duplicates. The
+  command buckets the deck's cards by EFFECT (functional roles + specific non-generic
+  synergy themes), prints each effect's **depth** (distinct cards providing it = its
+  virtual-copy count), flags the **thin** ones (≤`_REDUNDANCY_THIN`), and for each proposes
+  how to firm it to `--target` (default `_REDUNDANCY_TARGET`=4): **functional copies FIRST**
+  (owned/craft distinct cards via `owned/craft_role_fillers` for a role, `functional_theme_
+  options` for a theme), with **true duplicates only as a FALLBACK** when there aren't enough
+  of acceptable quality. The decision is the pure, unit-tested `plan_redundancy_fill` — it
+  prefers a virtual copy unless it's >`_REDUNDANCY_QUALITY_TOL` (1.5 on the 0–10 power scale)
+  below your best existing copy, else recommends duplicating the strongest existing card.
+  This is why a functionally-dense singleton (e.g. Wizardz 37b's ping win-con as a virtual
+  ~10-of: Coruscation Mage + Firebrand Archer + Thunderdrum Soloist + Black Waltz + the token
+  makers) can defensibly grade A: **the tier floor counts effects, not distinct cards**, so
+  virtual copies score the same floor while dodging singleton variance — a notch below a
+  true-4-of build (the copies aren't identical — a quality tax — and can't STACK a keystone),
+  but a real A when the plan hinges on no single card. `/tune-deck` runs it in the competitive
+  flow (semi-singleton first, duplicates as fallback). It PRINTS a shortlist — grade the
+  virtual copies from full text like any other add.
 
 ## Known Issues
 
@@ -645,7 +667,7 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format.
-- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _produces_mana, import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
+- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _produces_mana, plan_redundancy_fill (virtual-copies-first), import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/
 
 **Invariant Library:**
@@ -660,7 +682,7 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 
 **Regression Scenarios** (manual walks; the Test Command above is the primary gate):
 1. Ingest a batch — `import_arena.py <file>` → `enrich.py` → `validate.py` → `build_gallery.py`. Expect: validate clean, gallery card count == library row count.
-2. Analyze a deck — `deck.py check|mana|tribes|stats|legal|cuts|text|verify <id>` and roster-wide `deck.py audit` / `deck.py suggest-homes <card>` / `deck.py rotation`. Expect: no traceback; mana is hybrid-aware; tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts/text print full oracle text; audit scores every deck TUNE/craft/review/ok; verify diffs a pasted Arena export against the stored deck.
+2. Analyze a deck — `deck.py check|mana|consistency|tribes|stats|legal|cuts|tier|redundancy|text|verify <id>` and roster-wide `deck.py audit` / `deck.py suggest-homes <card>` / `deck.py rotation`. Expect: no traceback; mana is hybrid-aware; consistency reports keepable %/land-drops/cast-on-curve (with the splash / color-hungry fix notes); tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts/text print full oracle text; tier shows claimed-vs-floor; redundancy buckets effects by virtual-copy depth and proposes functional copies first, duplicates as fallback; audit scores every deck TUNE/craft/review/ok; verify diffs a pasted Arena export against the stored deck.
 3. Refresh derived data — `build_mana.py` → `tag_synergies.py --merge` → `build_pool.py` → `build_gallery.py` → `check_all.py`. Expect: check_all reports all invariants hold.
 4. Edit via the app — start `scripts/app.py`, change a quantity and Save, add a card, then open a deck (Decks →), change a card's quantity and Save; run `check_all.py`. Expect: CSV + deck file updated, `.bak`s written, and all invariants hold (INV-02 since add appends a card-mana.csv row; INV-04 since deck save re-parses cleanly).
 

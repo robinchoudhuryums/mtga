@@ -4089,6 +4089,199 @@ def craft_role_fillers(d, roles, *, limit=8):
     return out[:limit]
 
 
+# --- redundancy / functional-copies planner ("virtual copies first") ---------- #
+# A competitive deck needs to draw its plan reliably. The blunt way is 4-ofs; the
+# subtler way is FUNCTIONAL REDUNDANCY — running distinct, similar-but-different cards
+# that do the same job ("virtual copies"), which keeps a singleton/highlander feel while
+# still drawing the EFFECT every game. This planner encodes the user's preference: when
+# firming up a thin effect, try distinct virtual copies FIRST, and fall back to true
+# duplicates only when there aren't enough of acceptable quality.
+_REDUNDANCY_TARGET = 4          # a plan-critical effect wants ~this many (virtual) copies
+_REDUNDANCY_THIN = 2            # depth ≤ this = a consistency risk worth firming up
+_REDUNDANCY_QUALITY_TOL = 1.5   # a virtual copy >this far below your best is "much weaker"
+
+
+def plan_redundancy_fill(depth, best_power, functional_options, *,
+                         target=_REDUNDANCY_TARGET, tol=_REDUNDANCY_QUALITY_TOL):
+    """Decide how to firm up an effect the deck runs `depth` distinct copies of.
+
+    `functional_options` = [(power, name), …] distinct cards (NOT in the deck) that do the
+    same job, best-power first. `best_power` = the deck's strongest existing copy of the
+    effect. Prefer functional (virtual) copies as long as they're within `tol` of your
+    best — that keeps the deck semi-singleton; only when functional copies run out (or the
+    remaining ones are significantly weaker) fall back to running true DUPLICATES of the
+    best existing card. Pure/deterministic — unit-tested.
+
+    Returns {need, functional:[(power,name)…], duplicates:int, reason}."""
+    need = max(0, target - depth)
+    if need == 0:
+        return {"need": 0, "functional": [], "duplicates": 0, "reason": "already deep enough"}
+    picks = []
+    for pw, nm in functional_options:
+        if len(picks) >= need:
+            break
+        if pw >= best_power - tol:            # acceptable quality → prefer the virtual copy
+            picks.append((pw, nm))
+    dup = max(0, need - len(picks))
+    if dup == 0:
+        reason = "functional copies cover it — stays singleton"
+    elif not picks and not functional_options:
+        reason = "no functional copies exist — duplicates are the only option"
+    elif dup and picks:
+        reason = "functional copies as far as they go, then duplicates for the rest"
+    else:
+        reason = "remaining functional copies are much weaker — duplicate instead"
+    return {"need": need, "functional": picks, "duplicates": dup, "reason": reason}
+
+
+def _card_power(nl, carddata, rar):
+    """Heuristic 0–10 power of a card (by lowercase name) via the shared wishlist seed."""
+    cd = carddata.get(nl) or {}
+    return _power_seed({"Rarity": rar.get(nl, ""), "Card Text": cd.get("text", "") or "",
+                        "Type": cd.get("type", "") or ""})
+
+
+def functional_theme_options(d, theme, *, limit=8):
+    """Distinct owned+craft cards (NOT in deck d) that carry synergy `theme`, on-color and
+    format-legal — functional (virtual) copies of a THEME effect (e.g. the deck's ping
+    payoff via the shared 'burn' tag). Returns [(power, name, owned_bool, mv, rarity)]
+    best-power first. The theme analog of owned/craft_role_fillers."""
+    meta, cards = parse_deck_file(d["path"])
+    cardmeta = load_card_meta()
+    carddata = load_card_data()
+    mana = load_mana()
+    rar = load_rarities()
+    leg = load_legalities()
+    _, _, qty = load_collection()
+    in_deck = {n.lower() for q, n, s, c in cards}
+    declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
+    fmt = (meta.get("format") or "").strip().lower()
+    out, seen = [], set()
+    for nl, m in cardmeta.items():
+        if nl in seen or nl in in_deck or nl in BASICS:
+            continue
+        if theme not in m.get("synergies", []):
+            continue
+        cd = carddata.get(nl)
+        if not cd or "Land" in _primary_type(cd.get("type") or ""):
+            continue
+        name = cd.get("name") or nl
+        if not (card_colors(cd.get("colors")) <= declared):
+            continue
+        legs = leg.get(nl)
+        if fmt and legs is not None and fmt not in legs:
+            continue
+        seen.add(nl)
+        entry = mana.get(nl)
+        mv = entry[1] if entry and entry[1] is not None else 99
+        out.append((_card_power(nl, carddata, rar), name, owned_qty(qty, name) > 0, mv,
+                    (rar.get(nl) or "?")))
+    out.sort(key=lambda r: (-r[0], r[3], r[1]))
+    return out[:limit]
+
+
+def effect_redundancy(d):
+    """Bucket a deck's nonland cards by the EFFECTS they provide — functional roles
+    (Removal/Counter/Card advantage/…) and specific (non-generic) synergy themes — and
+    return {effect: {"kind": "role"|"theme", "cards": [names], "depth": n}}. Depth is the
+    count of DISTINCT cards providing the effect = its virtual-copy count."""
+    meta, cards = parse_deck_file(d["path"])
+    cardmeta = load_card_meta()
+    carddata = load_card_data()
+    theme_w = {}
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        for t in cardmeta.get(n.lower(), {}).get("synergies", []):
+            theme_w[t] = theme_w.get(t, 0) + q
+    central = _central_themes(theme_w)
+    buckets = {}
+    seen = set()
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl in seen:
+            continue
+        cd = carddata.get(nl)
+        if cd and "Land" in _primary_type(cd.get("type") or ""):
+            continue
+        seen.add(nl)
+        effects = set()
+        for r in classify_roles(cd["text"] if cd else ""):
+            if r in IMPACT_ROLES:
+                effects.add(("role", r))
+        for t in cardmeta.get(nl, {}).get("synergies", []):
+            if t in central and t not in GENERIC_THEMES:   # specific, plan-relevant themes
+                effects.add(("theme", t))
+        for kind, name in effects:
+            b = buckets.setdefault(name, {"kind": kind, "cards": []})
+            b["cards"].append(n)
+    for b in buckets.values():
+        b["depth"] = len(b["cards"])
+    return buckets
+
+
+def cmd_redundancy(args):
+    """Competitive-consistency planner (virtual copies first). Shows each plan-effect's
+    depth (distinct cards providing it), flags the THIN ones, and for each proposes how to
+    firm it up — functional (virtual) copies FIRST so the deck stays semi-singleton, with
+    true duplicates only as a fallback when there aren't enough of acceptable quality."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    carddata = load_card_data()
+    rar = load_rarities()
+    target = getattr(args, "target", None) or _REDUNDANCY_TARGET
+    buckets = effect_redundancy(d)
+    if not buckets:
+        print(f"Deck {d['id']}: no plan-effects to analyze.")
+        return 0
+    print(f"Redundancy — deck {d['id']}: {d['name'] or d['path']}  "
+          f"(competitive consistency; virtual copies first, target {target})")
+    print("\nEffect depth (distinct cards = virtual-copy count; higher = drawn more reliably):")
+    for name, b in sorted(buckets.items(), key=lambda kv: (-kv[1]["depth"], kv[0])):
+        mark = "✓ deep" if b["depth"] >= target else ("~ ok" if b["depth"] > _REDUNDANCY_THIN else "△ THIN")
+        print(f"  {name:22} {b['depth']:>2}  {mark}   ({b['kind']})")
+
+    thin = {n: b for n, b in buckets.items() if b["depth"] <= _REDUNDANCY_THIN}
+    if not thin:
+        print(f"\n✓ every plan-effect runs >{_REDUNDANCY_THIN} virtual copies — already consistent.")
+        return 0
+    print(f"\nThin effects (≤{_REDUNDANCY_THIN} copies = the real singleton variance) — "
+          "firm up FUNCTIONALLY first, duplicate only as fallback:")
+    for name, b in sorted(thin.items(), key=lambda kv: kv[1]["depth"]):
+        best = max((_card_power(c.lower(), carddata, rar) for c in b["cards"]), default=0.0)
+        if b["kind"] == "role":
+            owned_f = owned_role_fillers(d, {name}, limit=8)
+            craft_f = craft_role_fillers(d, {name}, limit=8)
+            opts = [(_card_power(nm.lower(), carddata, rar), nm, True) for _mv, nm, *_ in owned_f]
+            opts += [(_card_power(nm.lower(), carddata, rar), nm, False)
+                     for _rk, _mv, nm, *_ in craft_f]
+            opts.sort(key=lambda r: -r[0])
+        else:
+            opts = [(pw, nm, own) for pw, nm, own, _mv, _r in functional_theme_options(d, name, limit=10)]
+        plan = plan_redundancy_fill(b["depth"], best, [(p, n) for p, n, *_ in opts], target=target)
+        own_of = {n: o for p, n, o in opts}
+        print(f"\n  {name}  ({b['depth']} now: {', '.join(b['cards'])}):")
+        if plan["functional"]:
+            print("    ✓ add virtual copies (distinct cards — keeps it singleton):")
+            for pw, nm in plan["functional"]:
+                tag = "owned" if own_of.get(nm) else "craft"
+                print(f"        + {nm[:34]:34} [{tag}]  pw~{pw:.1f}")
+        if plan["duplicates"]:
+            strongest = max(b["cards"], key=lambda c: _card_power(c.lower(), carddata, rar))
+            print(f"    ⚠ then run {plan['duplicates']} true duplicate(s) — {plan['reason']}:")
+            print(f"        run {plan['duplicates']}× more {strongest} (pw~{best:.1f})")
+        elif not plan["functional"]:
+            print(f"    (already at target, or nothing to add)")
+        else:
+            print(f"    → {plan['reason']}")
+    print("\nVirtual copies keep the highlander feel and score the SAME tier floor (the floor "
+          "counts effects, not distinct cards); duplicates are the fallback when a specific "
+          "effect can't be diversified at comparable power.")
+    return 0
+
+
 def tier_consistency(d):
     """(claimed, implied, mismatch, msg) for a deck's claimed tier vs its metrics
     floor. `mismatch` is True only when a claimed tier sits ≥2 bands ABOVE the floor
@@ -4721,6 +4914,11 @@ def main():
     p.add_argument("id")
     p.add_argument("--strict", action="store_true", help="exit non-zero on a tier mismatch (default: warn only)")
     p.add_argument("--to", metavar="TIER", help="show the measurable gap + owned fillers to reach TIER's floor (S/A/B/C/D)")
+    p = sub.add_parser("redundancy",
+                       help="competitive-consistency planner: virtual (functional) copies first, duplicates as fallback")
+    p.add_argument("id")
+    p.add_argument("--target", type=int, metavar="N",
+                   help=f"virtual-copy depth to aim each plan-effect at (default {_REDUNDANCY_TARGET})")
     p = sub.add_parser("cuts", help="rank the deck's weakest-fit cards as cut candidates")
     p.add_argument("id")
     p.add_argument("--limit", type=int, default=8,
@@ -4759,7 +4957,7 @@ def main():
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
         "verify": cmd_verify, "text": cmd_text, "suggest-homes": cmd_suggest_homes,
         "preflight": cmd_preflight, "quality": cmd_quality, "tier": cmd_tier,
-        "history": cmd_history,
+        "redundancy": cmd_redundancy, "history": cmd_history,
     }[args.cmd](args)
 
 
