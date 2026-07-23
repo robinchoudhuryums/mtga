@@ -1815,6 +1815,83 @@ def rotation_sweep(fmt="standard", years=3, within=2):
     return decks_out, rollup, meta
 
 
+def _brawl_commanders(cards, carddata):
+    """[(name, identity_set)] for each legendary creature/planeswalker in the deck —
+    the candidate commanders. Deduped, basics/non-carddata skipped."""
+    out, seen = [], set()
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in seen or nl in BASICS:
+            continue
+        seen.add(nl)
+        cd = carddata.get(nl) or carddata.get(nl.split(" // ")[0])
+        if not cd:
+            continue
+        t = cd.get("type", "") or ""
+        if "Legendary" in t and ("Creature" in t or "Planeswalker" in t):
+            out.append((n, card_colors(cd.get("colors", ""))))
+    return out
+
+
+def brawl_readiness(fmt_filter="standard"):
+    """Roster-wide 'distance to a legal Brawl conversion' per deck (#2). For each deck in
+    `fmt_filter`, pick the best in-deck commander (the legendary creature/PW whose color
+    identity leaves the FEWEST cards stray), then measure how far the deck is from a legal
+    Brawl build: cards to de-duplicate to singleton + cards outside that commander's
+    identity + any Brawl-illegal cards. Reuses the same identity/commander rules
+    `deck.py legal` enforces, so the estimate can't drift from the actual check. Offline.
+
+    Returns rows sorted closest-first: [{id, name, colors, commander, cmd_ident, dup,
+    stray, notlegal, distance, no_commander, converted}], plus a `converted` flag when a
+    `<core>-brawl` variant already exists."""
+    carddata = load_card_data()
+    leg = load_legalities()
+    # cores that already have a Brawl variant (so we can mark them done)
+    converted = {d["core"] for d in discover_decks()
+                 if str(d["id"]).endswith("-brawl")}
+    fmt_filter = (fmt_filter or "").strip().lower()
+    rows = []
+    for d in discover_decks():
+        meta, cards = parse_deck_file(d["path"])
+        if fmt_filter and (meta.get("format") or "").strip().lower() != fmt_filter:
+            continue
+        declared = _declared_colors(meta)
+        tot, disp = {}, {}
+        for q, n, s, c in cards:
+            nl = n.lower()
+            if nl in BASICS:
+                continue
+            tot[nl] = tot.get(nl, 0) + q
+            disp.setdefault(nl, n)
+        dup = sum(1 for nl, q in tot.items() if q > 1)
+        notlegal = sum(1 for nl in tot
+                       if leg.get(nl) is not None and "brawl" not in leg[nl])
+        idents = {nl: card_colors((carddata.get(nl) or carddata.get(nl.split(" // ")[0])
+                                   or {}).get("colors", "")) for nl in tot}
+
+        best = None  # (name, ident, strays)
+        for name, ident in _brawl_commanders(cards, carddata):
+            strays = sum(1 for nl, ci in idents.items() if not ci <= ident)
+            # Prefer fewest strays; tiebreak an exact deck-color match, then broader ident.
+            key = (strays, ident != declared, -len(ident), name)
+            if best is None or key < best[0]:
+                best = (key, name, ident, strays)
+        no_commander = best is None
+        stray = best[3] if best else len(tot)
+        distance = dup + stray  # card-swaps to reach a legal Brawl 60 (basics refill)
+        rows.append({
+            "id": d["id"], "name": d["name"] or d["id"],
+            "colors": (meta.get("colors") or "").strip().upper(),
+            "commander": best[1] if best else None,
+            "cmd_ident": "".join(sorted(best[2])) or "C" if best else "",
+            "dup": dup, "stray": stray, "notlegal": notlegal,
+            "distance": distance, "no_commander": no_commander,
+            "converted": d["core"] in converted,
+        })
+    rows.sort(key=lambda r: (r["no_commander"], r["distance"], r["id"]))
+    return rows
+
+
 def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_format=False):
     """Structured core of `suggest` — returns the scored, sorted, limited picks as
     plain dicts so both `cmd_suggest` (renders below) and build_dashboard.py (craft
@@ -4158,6 +4235,43 @@ def cmd_rotation(args):
     return 0
 
 
+def cmd_brawl(args):
+    """Roster-wide Brawl-readiness — which of your decks are closest to a legal Brawl
+    conversion, and the best commander for each. Offline. `distance` = cards to change:
+    duplicates to trim to singleton + cards outside the best commander's color identity
+    (basics refill the freed slots). A deck at distance 0 with a commander is Brawl-ready
+    as-is; pick the commander, add `#: commander:` + `#: format: Brawl`."""
+    rows = brawl_readiness(fmt_filter=args.fmt)
+    if not rows:
+        print(f"No {args.fmt} decks to assess.")
+        return 0
+    ready = [r for r in rows if not r["no_commander"] and r["distance"] == 0 and not r["converted"]]
+    done = [r for r in rows if r["converted"]]
+    print(f"Brawl-readiness — {len(rows)} {args.fmt} deck(s), closest to a legal Brawl "
+          f"conversion first. distance = duplicates-to-singleton + off-identity cards.")
+    if done:
+        print(f"Already converted (a *-brawl variant exists): "
+              + ", ".join(f"{r['id']}" for r in done))
+    print(f"\n  {'dist':>4} {'deck':>5} {'name':24} {'col':5} {'commander (identity)':34} {'dup':>3} {'stray':>5}")
+    print("  " + "-" * 92)
+    for r in rows:
+        if r["no_commander"]:
+            continue
+        tag = " ✓" if r["converted"] else ""
+        cmd = (f"{r['commander'][:26]} ({r['cmd_ident']})") if r["commander"] else "—"
+        print(f"  {r['distance']:>4} {r['id']:>5} {r['name'][:24]:24} {r['colors']:5} "
+              f"{cmd:34} {r['dup']:>3} {r['stray']:>5}{tag}")
+    nocmd = [r for r in rows if r["no_commander"]]
+    if nocmd:
+        print(f"\n  No in-deck commander (needs a legendary creature/planeswalker added): "
+              + ", ".join(f"{r['id']} {r['name'][:18]}" for r in nocmd[:10]))
+    print("\nRead it like `rotation`/`audit` — a shortlist. distance 0 (+ commander) = "
+          "ready as-is; a few strays = swap those for on-identity cards (deck.py legal "
+          "<id> --format brawl names them). Copies are fungible, so a Brawl build costs "
+          "no extra owned cards. Grade the commander from full text (deck.py text / card.py).")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="Manage decks and variations.")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -4182,6 +4296,9 @@ def main():
     p.add_argument("id")
     p = sub.add_parser("engines", help="enabler vs payoff balance for the deck's engine themes")
     p.add_argument("id")
+    p = sub.add_parser("brawl", help="roster-wide Brawl-readiness — which decks are closest to a legal Brawl conversion")
+    p.add_argument("--format", dest="fmt", default="standard",
+                   help="which decks to assess (default: standard)")
     p = sub.add_parser("rotation", help="roster-wide Standard-rotation exposure — which decks run aging-out cards")
     p.add_argument("--format", dest="fmt", default="standard",
                    help="format to check rotation for (default: standard)")
@@ -4259,7 +4376,7 @@ def main():
         "list": cmd_list, "wildcards": cmd_wildcards, "audit": cmd_audit, "check": cmd_check,
         "diff": cmd_diff, "arena": cmd_arena, "stats": cmd_stats,
         "mana": cmd_mana, "tribes": cmd_tribes, "engines": cmd_engines, "suggest": cmd_suggest,
-        "rotation": cmd_rotation,
+        "rotation": cmd_rotation, "brawl": cmd_brawl,
         "legal": cmd_legal, "cuts": cmd_cuts,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
         "verify": cmd_verify, "text": cmd_text, "suggest-homes": cmd_suggest_homes,

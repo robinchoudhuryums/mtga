@@ -213,7 +213,11 @@ castability · curve · central-theme density), with the intangibles moving a de
   sit within the commander's (Brawl's defining rule, which is stricter than Standard's
   castability check — a `W/R`-identity card is fine in a mono-W Standard deck but illegal
   under a mono-W commander). Game-type variants are organized as `<core>-<format>` decks
-  (e.g. `3-brawl`) — see `decks/README.md`. `deck.py cuts <id>` is the counterpart to `suggest` (adds): it
+  (e.g. `3-brawl`) — see `decks/README.md`. **`deck.py brawl`** is the roster-wide
+  counterpart: it ranks every deck by *distance to a legal Brawl conversion* (duplicates
+  to trim to singleton + cards outside the best in-deck commander's color identity) and
+  names that commander, so you can see which decks convert cleanest — a shortlist like
+  `audit`/`rotation`, marking cores that already have a `*-brawl` variant. `deck.py cuts <id>` is the counterpart to `suggest` (adds): it
   ranks nonland cards weakest-fit first (central-theme fit + **impact-weighted**
   functional role + tribal contribution) **and prints the full oracle text of the top
   candidates plus a `⚠ context` flag on deck-dependent mechanics (converge / devotion /
@@ -603,7 +607,7 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
-- Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel.
+- Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format.
 - Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/
 
