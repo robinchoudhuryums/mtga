@@ -1,7 +1,7 @@
 #: name: Panthera
 #: format: Standard
 #: colors: GW
-#: tier: B — Selesnya go-wide Cat tribal; metrics floor B (interaction ~6 fight/combat-only + real card advantage from Vizier/Ka-Zar/Kutzil the classifier under-reads as 0). A wide, resilient board (19 Cats, lord stack, lifegain→token loop) with an anti-wrath out (Divine Resilience), held below A by singleton variance and zero answers to noncreature permanents.
+#: tier: B — Selesnya go-wide Cat tribal. Measurable floor reads A, but that A is thin and generous: it rests on interaction=7 that includes conditional fights (Tenderize/Epic Fight/Bushwhack), while measured card-advantage=0 badly under-reads the real engines (Vizier/Ka-Zar top-of-library, Beza, Kutzil). Held one band BELOW the floor at B for two things the metrics can't see: (1) it's a heavily SINGLETON highlander — almost no redundancy of its lords/payoffs, so draws swing hard; (2) as a go-wide board its only anti-sweeper insurance is a single Divine Resilience, and its interaction is moderate-quality (fights + O-rings, no premium counter/sweeper) with no format-warping bomb. Coherent engine, tight curve, and — post-tune — real noncreature answers (Banishing Light/Erode), a permanent anthem, and a value bomb (Beza): a strong B that plays UP toward A once it gains redundancy (4-ofs of the best lords) or a premium answer. Path to A: trade singleton variance for consistency.
 #: archetype: Selesnya (G/W) Cats — go-wide tribal built around Cat lords (Arahbo, Regal
 #: archetype: Caracal, Jazal Goldmane, Sally Pride) + a Cat-token engine, a lifegain→Cat-token
 #: archetype: loop (Cat Collector / Tigra), and a +1/+1 counter sub-theme (Knight of Wundagore,
