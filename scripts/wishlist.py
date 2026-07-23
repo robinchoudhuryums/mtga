@@ -941,6 +941,17 @@ def print_table(hits, owned):
         print(fmt(d))
 
 
+def _pips_castable(strict, hybrid, deck_colors):
+    """True if a cost with these STRICT color pips (dict color->count) and HYBRID pips
+    (list of color-sets) is castable by a deck producing `deck_colors` — every strict
+    color must be in the deck, and each hybrid pip is payable with EITHER of its colors.
+    Pure/deterministic (unit-tested); the hybrid-aware core of the target audit so a
+    {W/U} card isn't flagged 'off-color' in a mono-W deck (matches deck castability)."""
+    if not set(strict).issubset(deck_colors):
+        return False
+    return all((set(h) & set(deck_colors)) for h in hybrid)
+
+
 def _audit_target_issues(color_only=False):
     """Return [(severity, card, message)] for wishlist-target problems, checked
     against the CURRENT decks: 'color' = the target deck can't cast the card (the
@@ -950,13 +961,31 @@ def _audit_target_issues(color_only=False):
     rows = load_wishlist()
     issues = []
     deck_cols, deck_ids = {}, set()
+    dk = None
+    mana = {}
     try:
         import deck as dk
         for d in dk.discover_decks():
             deck_ids.add(d["id"].lower())
             deck_cols[d["id"].lower()] = card_colors(d["meta"].get("colors"))
+        mana = dk.load_mana()
     except Exception:
         pass
+
+    def _castable_in(name, ident, dc):
+        """Can a deck of colors `dc` cast this card? Hybrid-aware: a hybrid pip is
+        payable with EITHER of its colors, so identity over-states the requirement
+        (a {W/U} card is castable in a mono-W deck). Use the mana cost's STRICT pips
+        + per-hybrid 'any of these colors' when a cost is on file; fall back to the
+        identity-subset test otherwise. Mirrors deck.py's castability logic so the
+        audit doesn't flag a hybrid the deck itself plays fine (e.g. Sun-Spider
+        {3}{W/U} in a W/B deck)."""
+        entry = mana.get(name.lower()) if mana else None
+        if dk is not None and entry and entry[0]:
+            strict, hybrid = dk.parse_pips(entry[0])
+            return _pips_castable(strict, hybrid, dc)
+        return ident.issubset(dc)          # no cost data -> identity fallback
+
     for r in rows:
         name = (r.get("Card Name") or "").strip()
         if not color_only and not (r.get("Power") or "").strip():
@@ -970,7 +999,7 @@ def _audit_target_issues(color_only=False):
                 issues.append(("target", name, f"target '{tok}' is not a known deck id"))
                 continue
             dc = deck_cols.get(tok)
-            if dc and ident and not ident.issubset(dc):
+            if dc and ident and not _castable_in(name, ident, dc):
                 issues.append(("color", name, f"identity {''.join(sorted(ident)) or 'C'} "
                                f"can't be cast in deck {tok} ({''.join(sorted(dc)) or 'C'})"))
     return issues

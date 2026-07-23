@@ -324,7 +324,11 @@ castability · curve · central-theme density), with the intangibles moving a de
   sank until graded; review the estimate and hand-adjust the bombs). `--audit-targets`
   flags any card whose **Target deck can no longer cast it** (color/theme drift after
   a retune — e.g. Neriv orphaned when deck 14 went Mardu→Rakdos) or has blank Power;
-  it's also folded into `check_all` as a **soft, non-gating warning**. `--rank` shows
+  it's also folded into `check_all` as a **soft, non-gating warning**. The castability
+  check is **hybrid-aware** (`_pips_castable`, unit-tested): it reads the card's mana
+  cost and treats a hybrid pip as payable by either color, so a `{W/U}` card (Sun-Spider)
+  isn't false-flagged as off-color in a W/B deck — matching deck.py's own castability
+  lint rather than the raw color-identity subset. `--rank` shows
   a **`state`** column (target deck's tier·remaining-crafts, ★ = this card helps
   *finish* a near-complete deck) so "upgrade a BUILT deck" reads apart from "build an
   UNBUILT one" — the strategic overlay the raw score can't show. `--rank` and
@@ -667,7 +671,7 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format.
-- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _produces_mana, plan_redundancy_fill (virtual-copies-first), import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
+- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/
 
 **Invariant Library:**
