@@ -728,11 +728,15 @@ for per-change health) and the meta commands (`health-pulse`, `roadmap`,
 `regression`, `reflect`, `systems-map`, `cycle-*`, `setup-cycle`) are deliberately
 NOT vendored — that ceremony (two-axis scoring + a `.cycle/` state dir) outweighs
 its benefit at this project's size; adopt them only if you later want benchmarkable
-scoring. `check`, `refresh`, `add-deck`, `tune-deck`, `add-cards`, and
-`apply-changes` are project-specific. `add-cards` (catalog newly-owned cards +
-find their homes) and `apply-changes` (apply confirmed swaps, run the F10 quality
-guard, verify + commit) **orchestrate the scripts, never re-implement them** — the
-scripts stay the single source of truth so the skills can't drift. Both end with
-the shared verify+commit tail in `docs/verify-commit-tail.md` (check_all-first,
-the Co-Authored-By/Claude-Session trailer, no model ID, branch-restart on a merged
-PR) — edit that one file to change the commit discipline for both.
+scoring. `check`, `refresh`, `add-deck`, `tune-deck`, `add-cards`, `add-wishlist`,
+and `apply-changes` are project-specific. `add-cards` (catalog newly-owned cards +
+find their homes), `add-wishlist` (intake UNOWNED craft targets to the wishlist —
+add+enrich+Power-seed, set the home Target, do the cross-deck fit review via the
+specific-theme-gated `suggest-homes`, audit), and `apply-changes` (apply confirmed
+swaps, run the F10 quality guard, verify + commit) **orchestrate the scripts, never
+re-implement them** — the scripts stay the single source of truth so the skills
+can't drift. `add-cards` is the OWNED-card counterpart to `add-wishlist`'s unowned
+craft-target intake. All end with the shared verify+commit tail in
+`docs/verify-commit-tail.md` (check_all-first, the Co-Authored-By/Claude-Session
+trailer, no model ID, branch-restart on a merged PR) — edit that one file to change
+the commit discipline for all.
