@@ -1548,10 +1548,18 @@ def _central_themes(theme_w, frac=0.25):
 
 # Themes carried by nearly every deck — low signal for how KEY a fit is (mirrors
 # wishlist.NON_SIGNAL_TAGS's intent, kept local so deck.py has no wishlist import).
+# Covers the broad "matters" generics (etb/tokens/counters/…), generic card-quality
+# themes (selection/value — most decks scry/dig), AND the evergreen combat keywords
+# (a card sharing only "flying" or "ward" with a deck is not a synergy fit). Keeping
+# these out of the "specific" set is what stops a generically-good removal or card-
+# advantage card reading KEY in every deck it merely shares an incidental tag with.
 GENERIC_THEMES = {
     "etb", "tokens", "counters", "lifegain", "sacrifice", "card draw", "graveyard",
     "mana", "ramp", "combat", "aggro", "tempo", "pump", "removal", "evasion",
     "flying", "trample", "menace", "deathtouch", "lifelink", "vigilance",
+    "selection", "value", "first strike", "double strike", "haste", "reach",
+    "prowess", "ward", "hexproof", "indestructible", "protection", "defense",
+    "defender", "resilience", "shroud", "fear", "intimidate",
 }
 _INTERACTION_ROLES = {"Removal (spot)", "Sweeper", "Counter"}
 
@@ -1663,27 +1671,40 @@ def deck_role_counts(cards, carddata):
 def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozenset()):
     """Classify a card→deck fit as KEY / role-player / tangential (F04).
 
-      KEY          – shares the deck's SIGNATURE (top central theme, OR a theme
-                     carried by the deck's `#: protect:` cards) on a specific theme,
-                     OR fills a role the deck is short on (interaction < 5 /
-                     card advantage < 3).
-      tangential   – shares only GENERIC themes (etb/tokens/…): low real signal.
+      KEY          – shares the deck's SIGNATURE theme (top central theme, OR a theme
+                     carried by the deck's `#: protect:` cards), OR shares a SPECIFIC
+                     (non-generic) theme AND fills a role the deck is short on
+                     (interaction < 5 / card advantage < 3), OR shares the deck's most-
+                     common specific theme.
       role-player  – shares a specific central theme, but not the signature.
+      tangential   – shares only GENERIC themes (etb/tokens/…): broadly playable, not a
+                     specific home.
 
     `signature` (from `_signature_themes`) corrects the idf blind spot: a theme in
     GENERIC_THEMES is still SPECIFIC-for-this-deck if the deck protects cards built
     on it — so a counter-doubler in a counters deck reads KEY, not tangential.
+
+    The role-gap KEY is gated on a SPECIFIC-theme match (checked AFTER the `not
+    specific` short-circuit below): a generically-good removal / card-advantage card
+    would otherwise read KEY in every low-interaction deck it merely shares an
+    etb/tokens tag with (the Get-Lost-"KEY"-in-15-decks over-assignment). Its broad
+    utility is real, but it belongs to the cross-deck BREADTH signal (wishlist `use`
+    column), not a specific home — so a fit resting only on generic themes stays
+    tangential even when the deck happens to be short on that role.
     """
     specific = [t for t in shared if t.lower() not in GENERIC_THEMES or t in signature]
+    # A signature-theme match is always a genuine home (the deck's spine).
+    if signature and any(t in signature for t in shared):
+        return "KEY"
+    # No SPECIFIC shared theme -> at most GENERICALLY playable here, not a synergy home.
+    # Checked BEFORE the role-gap branch on purpose (see docstring).
+    if not specific:
+        return "tangential"
     roles = set(classify_roles(card_text or ""))
     gap = (bool(roles & _INTERACTION_ROLES) and deck_int < 5) or \
           ("Card advantage" in roles and deck_ca < 3)
-    if gap:
+    if gap:                       # on a specific theme AND fills a role the deck lacks
         return "KEY"
-    if signature and any(t in signature for t in shared):
-        return "KEY"
-    if not specific:
-        return "tangential"
     top = max(theme_w.values()) if theme_w else 0
     if top and any(theme_w.get(t, 0) >= top for t in specific):
         return "KEY"

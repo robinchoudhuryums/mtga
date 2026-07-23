@@ -49,3 +49,25 @@ class TestRankScoresPowerParsing:
     def test_garbage_flagged(self):
         s = self._score("~9")
         assert s["power"] == 0.0 and s["bad_power"] is True
+
+
+class TestPipsCastable:
+    """Hybrid-aware castability behind the wishlist target audit (Sun-Spider fix)."""
+
+    def test_hybrid_castable_in_one_color(self):
+        # {3}{W/U} -> strict {}, hybrid [{'W','U'}] -> castable in a W/B deck (pay W).
+        assert wishlist._pips_castable({}, [frozenset({"W", "U"})], {"W", "B"})
+
+    def test_strict_offcolor_not_castable(self):
+        # {3}{U} -> strict {'U':1} -> NOT castable in a W/B deck.
+        assert not wishlist._pips_castable({"U": 1}, [], {"W", "B"})
+
+    def test_hybrid_needs_at_least_one_color(self):
+        # {U/R} in a mono-W deck: neither color available -> not castable.
+        assert not wishlist._pips_castable({}, [frozenset({"U", "R"})], {"W"})
+
+    def test_strict_oncolor_castable(self):
+        assert wishlist._pips_castable({"W": 2, "B": 1}, [], {"W", "B"})
+
+    def test_no_pips_castable_anywhere(self):
+        assert wishlist._pips_castable({}, [], {"W"})

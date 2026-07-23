@@ -324,7 +324,11 @@ castability · curve · central-theme density), with the intangibles moving a de
   sank until graded; review the estimate and hand-adjust the bombs). `--audit-targets`
   flags any card whose **Target deck can no longer cast it** (color/theme drift after
   a retune — e.g. Neriv orphaned when deck 14 went Mardu→Rakdos) or has blank Power;
-  it's also folded into `check_all` as a **soft, non-gating warning**. `--rank` shows
+  it's also folded into `check_all` as a **soft, non-gating warning**. The castability
+  check is **hybrid-aware** (`_pips_castable`, unit-tested): it reads the card's mana
+  cost and treats a hybrid pip as payable by either color, so a `{W/U}` card (Sun-Spider)
+  isn't false-flagged as off-color in a W/B deck — matching deck.py's own castability
+  lint rather than the raw color-identity subset. `--rank` shows
   a **`state`** column (target deck's tier·remaining-crafts, ★ = this card helps
   *finish* a near-complete deck) so "upgrade a BUILT deck" reads apart from "build an
   UNBUILT one" — the strategic overlay the raw score can't show. `--rank` and
@@ -459,15 +463,23 @@ castability · curve · central-theme density), with the intangibles moving a de
   preview with `deck.py swap` before applying. Because copies are fungible, it
   reminds you to slot a card into *all* decks that earn it, not pick one home. Each
   fit row now carries a **strength label** (`KEY` / `role-player` / `tangential`):
-  KEY = it fills an interaction/card-advantage gap the deck is short on or shares
-  the deck's *signature* theme (the top central theme, **or any theme carried by the
-  deck's `#: protect:` cards** — so a counter-doubler reads KEY in a counters deck even
-  though "counters" is idf-generic, correcting a blind spot where the deck's actual
-  spine looked tangential); role-player = a secondary central theme;
-  tangential = generic overlap only (etb/tokens/lifegain/…). Rows sort
-  strongest-first — trust KEY, judge role-player, and read a tangential fit as
-  "probably not for this deck." The same `fit_strength` classifier flags a
-  merely-tangential add in `deck.py quality --add`. **A rainbow fixer gets a
+  KEY = it shares the deck's *signature* theme (the top central theme, **or any theme
+  carried by the deck's `#: protect:` cards** — so a counter-doubler reads KEY in a
+  counters deck even though "counters" is idf-generic, correcting a blind spot where the
+  deck's actual spine looked tangential), OR it shares a **specific** (non-generic) theme
+  AND fills an interaction/card-advantage gap the deck is short on; role-player = a
+  secondary specific central theme; tangential = generic overlap only
+  (etb/tokens/lifegain/…). **The role-gap KEY is gated on a specific-theme match**
+  (`fit_strength` checks generic-only → tangential BEFORE the gap branch): otherwise a
+  generically-good removal / card-advantage card read KEY in *every* low-interaction deck
+  it merely shared an etb/tokens tag with (Get Lost "KEY" in 15 decks). Its broad utility
+  is real, but it belongs to the cross-deck **breadth** signal (wishlist `--rank` `use`
+  column), not a specific home — so `suggest-homes` no longer inflates it. `GENERIC_THEMES`
+  (the low-signal denylist behind "specific") covers the broad matters-generics PLUS
+  card-selection/value and the evergreen combat keywords (flying/ward/first strike/…), so
+  a keyword-only overlap never fakes a specific fit. Rows sort strongest-first — trust KEY,
+  judge role-player, and read a tangential fit as "probably not for this deck" (fit_strength
+  is unit-tested). The same classifier flags a merely-tangential add in `deck.py quality --add`. **A rainbow fixer gets a
   color-count-aware overlay** on top of `fit_strength`: a card whose value is
   multi-color fixing (a `ramp`/`mana` tag *and* explicit any-color / every-basic-
   land-type text — `_is_color_fixer`) is promoted to **KEY in a 4+-color deck /
@@ -667,7 +679,7 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format.
-- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _produces_mana, plan_redundancy_fill (virtual-copies-first), import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
+- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), fit_strength (specific-theme-gated KEY), import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/
 
 **Invariant Library:**
@@ -716,11 +728,15 @@ for per-change health) and the meta commands (`health-pulse`, `roadmap`,
 `regression`, `reflect`, `systems-map`, `cycle-*`, `setup-cycle`) are deliberately
 NOT vendored — that ceremony (two-axis scoring + a `.cycle/` state dir) outweighs
 its benefit at this project's size; adopt them only if you later want benchmarkable
-scoring. `check`, `refresh`, `add-deck`, `tune-deck`, `add-cards`, and
-`apply-changes` are project-specific. `add-cards` (catalog newly-owned cards +
-find their homes) and `apply-changes` (apply confirmed swaps, run the F10 quality
-guard, verify + commit) **orchestrate the scripts, never re-implement them** — the
-scripts stay the single source of truth so the skills can't drift. Both end with
-the shared verify+commit tail in `docs/verify-commit-tail.md` (check_all-first,
-the Co-Authored-By/Claude-Session trailer, no model ID, branch-restart on a merged
-PR) — edit that one file to change the commit discipline for both.
+scoring. `check`, `refresh`, `add-deck`, `tune-deck`, `add-cards`, `add-wishlist`,
+and `apply-changes` are project-specific. `add-cards` (catalog newly-owned cards +
+find their homes), `add-wishlist` (intake UNOWNED craft targets to the wishlist —
+add+enrich+Power-seed, set the home Target, do the cross-deck fit review via the
+specific-theme-gated `suggest-homes`, audit), and `apply-changes` (apply confirmed
+swaps, run the F10 quality guard, verify + commit) **orchestrate the scripts, never
+re-implement them** — the scripts stay the single source of truth so the skills
+can't drift. `add-cards` is the OWNED-card counterpart to `add-wishlist`'s unowned
+craft-target intake. All end with the shared verify+commit tail in
+`docs/verify-commit-tail.md` (check_all-first, the Co-Authored-By/Claude-Session
+trailer, no model ID, branch-restart on a merged PR) — edit that one file to change
+the commit discipline for all.

@@ -253,6 +253,37 @@ class TestProducesMana:
         assert not deck._produces_mana("")
 
 
+class TestFitStrength:
+    """card→deck fit labels — the fix that stops a generically-good card reading KEY
+    in every low-interaction deck it merely shares a generic tag with."""
+
+    def test_generic_only_plus_role_gap_is_tangential(self):
+        # A removal card sharing ONLY generic themes with a low-interaction deck must
+        # NOT read KEY just because the deck is short on interaction (the Get Lost bug).
+        s = deck.fit_strength(["etb", "tokens"], {"etb": 5, "tokens": 5, "Cat": 10},
+                              "Destroy target creature.", deck_int=2, deck_ca=0)
+        assert s == "tangential"
+
+    def test_specific_theme_plus_role_gap_is_key(self):
+        s = deck.fit_strength(["Wizard"], {"Wizard": 10},
+                              "Destroy target creature.", deck_int=2, deck_ca=0)
+        assert s == "KEY"
+
+    def test_signature_match_is_key(self):
+        s = deck.fit_strength(["counters"], {"counters": 10}, "", 8, 8,
+                              signature={"counters"})
+        assert s == "KEY"
+
+    def test_specific_top_theme_is_key(self):
+        assert deck.fit_strength(["Cat"], {"Cat": 10}, "", 8, 8) == "KEY"
+
+    def test_specific_secondary_theme_is_role_player(self):
+        assert deck.fit_strength(["Cat"], {"Cat": 2, "tokens": 10}, "", 8, 8) == "role-player"
+
+    def test_generic_only_no_gap_is_tangential(self):
+        assert deck.fit_strength(["tokens"], {"tokens": 10}, "", 8, 8) == "tangential"
+
+
 class TestRedundancyPlanner:
     """The 'virtual copies first, duplicates as fallback' decision helper."""
 

@@ -1,0 +1,83 @@
+#: name: Armory
+#: format: Standard
+#: colors: WB
+#: tier: B — Orzhov (W-primary) Equipment midrange that can go WIDE or go TALL. A resilient
+#: tier: equipment deck (the auto-attach / Job-select package means gear never strands), with
+#: tier: real card advantage (Cloud's trigger-doubling, Swordsman's connive, Weapons Vendor,
+#: tier: Buster Sword) and a B splash for removal (Ronin, Meteor Sword, Deconstruction Hammer)
+#: tier: + recursion (Winter Soldier). Held at B by a lean creature base (leans on token-
+#: tier: making equipment for bodies) and voltron-style fragility when it does go tall.
+#: archetype: Orzhov (W/B) Equipment midrange. Suit up a board of creatures (many equipment
+#: archetype: bring their own body via Job select / ETB-attach), grind card advantage off
+#: archetype: equipped-creature triggers — DOUBLED by Cloud, Midgar Mercenary — and close
+#: archetype: either wide or by going tall (Winter Soldier / Whiplash / With Great Power /
+#: archetype: Aettir). B splash adds the removal + recursion pure-white voltron lacks.
+#: notes: ROUTE B (chosen): the flexible go-wide-OR-tall midrange — the most resilient use of
+#: notes: this pool. Cloud + combat-damage equipment (Buster Sword / Goldvein Pick / Ninja's
+#: notes: Blades) is the value spine; the Job-select equipment (Kyoshi Fan, Dragoon's Lance,
+#: notes: Machinist's Arsenal, Ninja's Blades) + U.S.Agent / Honored Knight-Captain provide
+#: notes: bodies so gear never strands. Refined from the 62-card pile: -Bark of Doran (pure
+#: notes: defense, off-plan), -Crystal Fragments (slow saga), -Adventuring Gear (weak landfall
+#: notes: pump, no lands-matter). Sun-Spider stays ({3}{W/U} — white-castable hybrid tutor).
+#: notes: CHEAT-IN NOTE: the pool's only real cheat-equipment-into-play enabler is Honored
+#: notes: Knight-Captain (1 card, {4}{W}{W}+sac, slow), so hard-cast heavy-hitters weren't
+#: notes: pulling weight. Kept Meteor Sword (7) — its ETB destroy target permanent is removal
+#: notes: you want anyway, and it's the best Honored target — but cut -Aettir and Priwen (pure
+#: notes: 6-mana finisher, no value) and -Machinist's Arsenal (slow 5-drop) for +Abigale,
+#: notes: Eloquent First-Year (WB flyer/first-strike/lifelink that also makes a 2nd carrier
+#: notes: evasive) and +Miner's Guidewing (1-drop flyer) — firming the thin creature base and
+#: notes: tightening the curve. With Healer's Hawk that's 3 cheap evasive carriers added.
+
+# Creatures — carriers / payoffs / engines
+1 Healer's Hawk (FDN) 142
+1 Miner's Guidewing (LCI) 24
+1 Abigale, Eloquent First-Year (ECL) 204
+1 Cloud, Midgar Mercenary (FIN) 10
+1 Zack Fair (FIN) 45
+1 Whiplash, Vengeful Engineer (MSH) 121
+1 Winter Soldier, Icy Assassin (MSH) 239
+1 Swordsman, Sharp Scoundrel (MSH) 116
+1 Honored Knight-Captain (EOE) 22
+2 Weapons Vendor (FIN) 40
+1 Ronin, Shadow Stalker (MSH) 112
+1 U.S.Agent, John Walker (MSH) 236
+1 Sun-Spider, Nimble Webber (SPM) 154
+
+# Equipment — value / combat-damage triggers (Cloud doubles these)
+1 Buster Sword (FIN) 255
+1 Goldvein Pick (FDN) 253
+1 S.H.I.E.L.D. Spy Kit (MSH) 36
+1 Ninja's Blades (FIN) 108
+1 Wrench (MKM) 37
+1 Web-Shooters (SPM) 22
+1 Quintessential Katana (TMT) 23
+
+# Equipment — evasion / protection (resilience)
+1 Celestial Armor (FDN) 5
+1 Iron Man Armor (MSH) 248
+1 Glider Staff (TLA) 22
+1 Stolen Stark Tech (MSH) 114
+1 Vibranium Energy Daggers (MSH) 254
+1 Captain America's Shield (MSH) 244
+
+# Equipment — Job-select bodies / removal / voltron scalers
+1 Kyoshi Battle Fan (TLA) 257
+1 Dragoon's Lance (FIN) 17
+1 Deconstruction Hammer (LCI) 9
+1 Meteor Sword (TLA) 258
+1 Trusty Boomerang (TLA) 260
+1 Super-Soldier Serum (MSH) 38
+1 With Great Power . . . (SPM) 24
+1 Mirrormind Crown (ECL) 258
+
+# Lands — 25, W-weighted Orzhov (owned WB duals + basics)
+1 Bleachbone Verge (DFT) 250
+1 Temple of Silence (FDN) 704
+2 Scoured Barrens (M21) 250
+1 Insomnia, Crown City (FIN) 282
+15 Plains (MSH) 288
+5 Swamp (MSH) 292
+
+# Flex — options (comments; not part of the 60). See: deck.py flex 38
+#~ note: ROUTE C is built out as variant 38a (Cloud value-combo) — all-in on Cloud's trigger-doubling: more combat-damage equipment + evasion + redundant carriers, minus the go-wide/voltron scalers. Spicier + more explosive, but fragile (leans on Cloud).
+#~ -Trusty Boomerang | +2nd cheap carrier | if you want even more bodies, the Boomerang is the weakest equipment slot
