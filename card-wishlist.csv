@@ -72,7 +72,7 @@ Create a token that's a copy of target creature. If this spell was kicked, creat
 Claws Out,Instant,"Affinity for Cats (This spell costs {1} less to cast for each Cat you control.)
 Creatures you control get +2/+2 until end of turn.",W,pump; affinity; artifacts; cost-reduction,FDN,6,Uncommon,36,,4.0
 Clinquant Skymage,Creature — Bird Wizard,"Flying
-Whenever you draw a card, put a +1/+1 counter on this creature.",U,Bird; Wizard; counters; card draw; flying; evasion,FDN,33,Uncommon,37a,,3.5
+Whenever you draw a card, put a +1/+1 counter on this creature.",U,Bird; Wizard; counters; card draw; flying; evasion,FDN,33,Uncommon,37a; 19,,3.5
 Good-Fortune Unicorn,Creature — Unicorn,"Whenever another creature you control enters, put a +1/+1 counter on that creature.",W/G,Unicorn; counters,FDN,240,Uncommon,36a,,3.5
 Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
