@@ -911,6 +911,23 @@ def classify_roles(text):
     return {label for label, pats in _ROLE_COMPILED if any(p.search(t) for p in pats)}
 
 
+# Mana production, detected broadly enough to catch dorks the "Ramp / fixing" role
+# misses: that role keys on the "{T}: add {SYM}" template, but a flavor-keyword dork
+# (Bloom Tender's "Vivid — {T}: … add one mana …") phrases it as "add one mana" and
+# slips through. Used by the tier tune plan to warn when a proposed cut is a mana
+# source (losing it hurts the manabase) — a heuristic flag, not a role reclassification.
+_MANA_PRODUCE_RE = re.compile(
+    r"\badd\s+\{[wubrgcpx0-9/]"        # "add {G}", "add {C}{C}", "add {W/U}"
+    r"|\badd\b[^.\n]{0,40}?\bmana\b",  # "add one mana", "add two mana of any color"
+    re.IGNORECASE)
+
+
+def _produces_mana(text):
+    """True if a card's text taps for / produces mana (a dork, rock, or ramp spell) —
+    broader than the 'Ramp / fixing' role so an 'add one mana' phrasing still counts."""
+    return bool(text and _MANA_PRODUCE_RE.search(text))
+
+
 # The roles that make a card a keeper almost regardless of theme fit — a removal
 # spell, a card-advantage engine, ramp, a cost-reducer, a payoff. `cuts`/`suggest-homes`
 # weight these extra so a strong-but-off-tribe card (Cosmic Cube, Shuri, Mjölnir) stops
@@ -2464,9 +2481,20 @@ def cmd_consistency(args):
 
     # Color sources.
     active = [c for c in "WUBRG" if sources[c]]
+    # A "splash" color has so few sources that a card demanding it on curve is
+    # effectively a late-game card, not an on-curve one — so the per-card
+    # recommendation below reframes as "cast later or cut" instead of printing an
+    # impractical land count (a {B}{R} 2-drop off 1 red source wants ~15 R sources).
+    SPLASH_MAX = 3
+    splash = [c for c in active if sources[c] <= SPLASH_MAX]
     if active:
         print("\nColor sources (lands producing each color):")
         print("  " + "   ".join(f"{c} {sources[c]}" for c in active))
+        if splash:
+            print("  splash (≤%d sources): " % SPLASH_MAX
+                  + ", ".join(f"{c} ({sources[c]})" for c in splash)
+                  + " — a card needing one of these on curve reads low below; treat it as a "
+                    "late-game splash (cast when you've drawn the source), not a curve play.")
 
     # #1 — per-card cast probability on curve. Cast turn = the card's MV (min 1),
     # capped so a 7-drop isn't judged as if cast on turn 7 verbatim (you've usually
@@ -2510,14 +2538,30 @@ def cmd_consistency(args):
                   "manabase supports the deck. Lowest 5:")
         for p, n, turn, strict, worst_col, need in show:
             pipstr = "".join(f"{{{col}}}" * cnt for col, cnt in sorted(strict.items()))
+            have_col = sources.get(worst_col, 0)
             flag = ""
-            if p < target and need > sources.get(worst_col, 0):
-                flag = (f"   → want {need} {worst_col} sources "
-                        f"(have {sources.get(worst_col, 0)}, +{need - sources.get(worst_col, 0)})")
+            if p < target and need > have_col:
+                if have_col <= SPLASH_MAX:
+                    # Genuine splash: too few sources to ever be on-curve at this turn.
+                    # Reframe as cast-late/cut rather than print an absurd land count
+                    # (a {B}{R} 2-drop off 1 red source "wanting" 15 R sources).
+                    flag = (f"   → {worst_col} is a {have_col}-source splash — cast it late "
+                            f"(once you've drawn a source) or cut it; don't chase "
+                            f"{100*target:.0f}% on curve")
+                elif need > nlands:
+                    # A main color, but a color-hungry EARLY cost (e.g. {B}{B} on T2) that no
+                    # realistic land base guarantees on time — say so instead of "+N sources".
+                    flag = (f"   → color-hungry: {100*target:.0f}% at T{turn} would need {need} "
+                            f"{worst_col} sources (> the deck's {nlands} lands) — expect it a "
+                            f"turn or two later than T{turn}")
+                else:
+                    flag = (f"   → want {need} {worst_col} sources "
+                            f"(have {have_col}, +{need - have_col})")
             print(f"  {100*p:5.1f}%  T{turn}  {pipstr:10} {n[:30]:30}{flag}")
         if below:
-            print(f"\n  {len(below)} card(s) below {100*target:.0f}% on curve — the "
-                  "→ note is the Karsten source count to reach target for the tight color.")
+            print(f"\n  {len(below)} card(s) below {100*target:.0f}% on curve — the → note is the "
+                  "Karsten source count to reach target, a splash flag for a thin (≤%d-source) "
+                  "color (cast late or cut), or a color-hungry flag for an early double pip." % SPLASH_MAX)
     print("\nModel: hypergeometric (exact); per-color independence for multi-color costs "
           "(a mild over-estimate), hybrids excluded as non-binding. A planning aid, not a "
           "guarantee — mulligans, scry, and card draw all shift the real numbers.")
@@ -4202,8 +4246,12 @@ def cmd_tier(args):
                   "protect signature/spice) ──")
             int_gain = ca_gain = 0
             for (axis, kind, mv, name, ident), cut in ((a[:5], c) for a, c in pairs):
-                cut_name, cut_mv, cut_roles, cut_is_int = cut[1], cut[2], cut[3], cut[8]
+                cut_name, cut_mv, cut_roles, cut_text, cut_is_int = (
+                    cut[1], cut[2], cut[3], cut[7], cut[8])
                 cut_ca = "Card advantage" in cut_roles
+                # A mana source: the Ramp/fixing role, OR a dork whose "add one mana"
+                # phrasing (a flavor-keyword ability) the role classifier misses.
+                cut_ramp = "Ramp / fixing" in cut_roles or _produces_mana(cut_text)
                 # Net axis change: +1 for the add's axis, −1 if the cut fed that axis.
                 if axis == "interaction":
                     int_gain += 1
@@ -4219,7 +4267,9 @@ def cmd_tier(args):
                 if cut_is_int:
                     warn = "  ⚠ cut feeds interaction — pick another cut"
                 elif cut_ca:
-                    warn = "  ⚠ cut feeds card advantage"
+                    warn = "  ⚠ cut feeds card advantage — pick another cut"
+                elif cut_ramp:
+                    warn = "  ⚠ cut is a ramp/fixing source — losing it may hurt the manabase"
                 print(f"  − {cut_name[:28]:28} {cmvs}   →   + {name[:26]:26} {mvs} "
                       f"[{ident:4}] ({axis}, {kind}){warn}")
             if len(adds) > len(cut_pool):

@@ -232,6 +232,27 @@ class TestCutsPowerAdj:
         assert deck._cuts_power_adj(9) > deck._cuts_power_adj(3)
 
 
+class TestProducesMana:
+    """The broad mana-source detector behind the tier tune plan's ramp-loss flag —
+    catches dorks the 'Ramp / fixing' role misses (the 'add one mana' phrasing)."""
+
+    def test_symbol_tap_dork(self):
+        assert deck._produces_mana("{T}: Add {G}.")
+        assert deck._produces_mana("{T}: Add {C}{C}.")
+
+    def test_add_one_mana_phrasing(self):
+        # Bloom Tender's Vivid ability — no "{T}: add {SYM}" template.
+        assert deck._produces_mana(
+            "Vivid — {T}: For each color among permanents you control, add one mana of that color.")
+        assert deck._produces_mana("{T}: Add one mana of any color.")
+
+    def test_not_a_mana_source(self):
+        assert not deck._produces_mana("Converge — deals X damage, where X is the number of "
+                                       "colors of mana spent to cast this spell.")
+        assert not deck._produces_mana("Put a +1/+1 counter on target creature.")
+        assert not deck._produces_mana("")
+
+
 class TestEngineRoles:
     def test_sac_outlet_is_enabler(self):
         assert "enabler" in deck.engine_roles("Sacrifice a creature: Draw a card.").get("sacrifice", set())

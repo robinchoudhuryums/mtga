@@ -505,6 +505,10 @@ castability · curve · central-theme density), with the intangibles moving a de
   recommendation** for the ones that come up short ("62% on T3 → want +2 R sources"). This
   is what caught deck 8's 1-red-source splash reading 12% on turn 2 (The Ruinous Wrecking
   Crew) — the "is this splash even castable" question the source-count lint only hand-waves.
+  The fix note is source-count-aware: a **thin (≤3-source) splash** color is reframed as
+  "cast late or cut, don't chase it on curve" rather than printing an impractical land
+  count (15 R sources), and an **early double pip in a MAIN color** ({B}{B} on T2) reads
+  "color-hungry — expect it a turn or two later" instead of being mislabeled a splash.
   Strict pips only (hybrids are strictly easier — excluded, same rule `mana` uses);
   multi-color costs use per-color independence (a mild over-estimate). `--on-draw` models
   the extra card; `--target P` sets the cast-probability bar (default 0.90). A planning
@@ -524,7 +528,9 @@ castability · curve · central-theme density), with the intangibles moving a de
   with a weakest-fit cut from the SAME ranking `deck.py cuts` prints (so the two can't
   disagree), then **projects the resulting quality vector and floor** ("interaction 2→5 ⇒
   floor C→A ✓"). It flags a cut that itself feeds interaction/card-advantage ("⚠ pick
-  another cut") and notes when the cut list is exhausted before the gap closes. It's a
+  another cut") **or is a mana source** (a dork/rock/ramp spell — "⚠ losing it may hurt
+  the manabase", caught via `_produces_mana` so an "add one mana" dork the role classifier
+  misses still flags) and notes when the cut list is exhausted before the gap closes. It's a
   STARTING plan that PRINTS, never writes — the card selection stays a human call (protect
   signature/spice — that's `/tune-deck`); preview any line with `deck.py swap`.
 
@@ -639,7 +645,7 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format.
-- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
+- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _produces_mana, import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/
 
 **Invariant Library:**
