@@ -7,7 +7,7 @@ Whenever Dragonhawk enters or attacks, exile the top X cards of your library, wh
 "Kitsa, Otterball Elite",Legendary Creature — Otter Wizard,"Vigilance
 Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 {T}: Draw a card, then discard a card.
-{2}, {T}: Copy target instant or sorcery spell you control. You may choose new targets for the copy. Activate only if Kitsa's power is 3 or greater.",U,Otter; Wizard; card draw; pump; prowess; spellslinger; tempo; vigilance; combat,BLB,54,Mythic,37a,,6.5
+{2}, {T}: Copy target instant or sorcery spell you control. You may choose new targets for the copy. Activate only if Kitsa's power is 3 or greater.",U,Otter; Wizard; card draw; pump; prowess; spellslinger; tempo; vigilance; combat,BLB,54,Mythic,37a,,7.5
 "Ral, Crackling Wit",Legendary Planeswalker — Ral,"Whenever you cast a noncreature spell, put a loyalty counter on Ral.
 +1: Create a 1/1 blue and red Otter creature token with prowess.
 −3: Draw three cards, then discard two cards.
@@ -17,9 +17,9 @@ Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn
 Whenever you gain life, put a +1/+1 counter on this creature.
 When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)",5.5
 Coruscation Mage,Creature — Otter Wizard,"Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
-Whenever you cast a noncreature spell, this creature deals 1 damage to each opponent.",R,Otter; Wizard; tokens; burn; etb; offspring; go-wide,BLB,131,Uncommon,37,,3.5
-Harnesser of Storms,Creature — Otter Wizard,"Whenever you cast a noncreature or Otter spell, you may exile the top card of your library. Until end of turn, you may play that card. This ability triggers only once each turn.",R,Otter; Wizard; impulse,BLB,137,Uncommon,37,,3.5
-Tempest Angler,Creature — Otter Wizard,"Whenever you cast a noncreature spell, put a +1/+1 counter on this creature.",U/R,Otter; Wizard; counters,BLB,235,Common,37,,2.5
+Whenever you cast a noncreature spell, this creature deals 1 damage to each opponent.",R,Otter; Wizard; tokens; burn; etb; offspring; go-wide,BLB,131,Uncommon,37,,4.0
+Harnesser of Storms,Creature — Otter Wizard,"Whenever you cast a noncreature or Otter spell, you may exile the top card of your library. Until end of turn, you may play that card. This ability triggers only once each turn.",R,Otter; Wizard; impulse,BLB,137,Uncommon,37,,4.0
+Tempest Angler,Creature — Otter Wizard,"Whenever you cast a noncreature spell, put a +1/+1 counter on this creature.",U/R,Otter; Wizard; counters,BLB,235,Common,37,,3.0
 Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,6.0
 Pride of the Road,Creature — Zombie Cat Warrior,"Vigilance
 Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
@@ -48,14 +48,14 @@ Rite of the Dragoncaller,Enchantment,"Whenever you cast an instant or sorcery sp
 Twinflame Tyrant,Creature — Dragon,"Flying
 If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals double that damage instead.",R,Dragon; flying; evasion; double,FDN,97,Mythic,14,,7.5
 "Arahbo, the First Fang",Legendary Creature — Cat Avatar,"Other Cats you control get +1/+1.
-Whenever Arahbo or another nontoken Cat you control enters, create a 1/1 white Cat creature token.",W,Cat; Avatar; tokens; pump,FDN,2,Rare,36,,5.0
+Whenever Arahbo or another nontoken Cat you control enters, create a 1/1 white Cat creature token.",W,Cat; Avatar; tokens; pump,FDN,2,Rare,36,,5.5
 Desecration Demon,Creature — Demon,"Flying
 At the beginning of each combat, any opponent may sacrifice a creature of their choice. If a player does, tap this creature and put a +1/+1 counter on it.",B,Demon; counters; sacrifice; flying; evasion,FDN,603,Rare,general,efficient 6/6 flying B beater (opp-sac edict) — any black midrange,6.5
 "Drakuseth, Maw of Flames",Legendary Creature — Dragon,"Flying
 Whenever Drakuseth attacks, it deals 4 damage to any target and 3 damage to each of up to two other targets.",R,Dragon; burn; flying; evasion,FDN,193,Rare,14,,7.5
 Felidar Retreat,Enchantment,"Landfall — Whenever a land you control enters, choose one —
 • Create a 2/2 white Cat Beast creature token.
-• Put a +1/+1 counter on each creature you control. Those creatures gain vigilance until end of turn.",W,counters; tokens; landfall; lands; ramp,FDN,574,Rare,36,,4.5
+• Put a +1/+1 counter on each creature you control. Those creatures gain vigilance until end of turn.",W,counters; tokens; landfall; lands; ramp,FDN,574,Rare,36,,5.5
 "Ghalta, Primal Hunger",Legendary Creature — Elder Dinosaur,"This spell costs {X} less to cast, where X is the total power of creatures you control.
 Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",G,Elder; Dinosaur; trample; evasion,FDN,222,Rare,28,,7.0
 Jazal Goldmane,Legendary Creature — Cat Warrior,"First strike (This creature deals combat damage before creatures without first strike.)
@@ -72,22 +72,22 @@ Create a token that's a copy of target creature. If this spell was kicked, creat
 Claws Out,Instant,"Affinity for Cats (This spell costs {1} less to cast for each Cat you control.)
 Creatures you control get +2/+2 until end of turn.",W,pump; affinity; artifacts; cost-reduction,FDN,6,Uncommon,36,,4.0
 Clinquant Skymage,Creature — Bird Wizard,"Flying
-Whenever you draw a card, put a +1/+1 counter on this creature.",U,Bird; Wizard; counters; card draw; flying; evasion,FDN,33,Uncommon,37a; 19,,3.5
-Good-Fortune Unicorn,Creature — Unicorn,"Whenever another creature you control enters, put a +1/+1 counter on that creature.",W/G,Unicorn; counters,FDN,240,Uncommon,36a,,3.5
+Whenever you draw a card, put a +1/+1 counter on this creature.",U,Bird; Wizard; counters; card draw; flying; evasion,FDN,33,Uncommon,37a; 19,,4.0
+Good-Fortune Unicorn,Creature — Unicorn,"Whenever another creature you control enters, put a +1/+1 counter on that creature.",W/G,Unicorn; counters,FDN,240,Uncommon,36a,,4.0
 Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +2/+2 for each artifact you control and is an Artificer in addition to its other types.
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell",4.5
 Ninja's Blades,Artifact — Equipment,"Job select
 Equipped creature gets +1/+1, is a Ninja in addition to its other types, and has ""Whenever this creature deals combat damage to a player, draw a card, then discard a card. That player loses life equal to the discarded card's mana value.""
-Mutsunokami — Equip {2}",B,Equipment; card draw; equipment; pump; job select; equip; mutsunokami,FIN,108,Rare,38,,6.0
+Mutsunokami — Equip {2}",B,Equipment; card draw; equipment; pump; job select; equip; mutsunokami,FIN,108,Rare,38,,6.5
 Summon: Titan,Enchantment Creature — Saga Giant,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Mill five cards.
 II — Return all land cards from your graveyard to the battlefield tapped.
 III — Until end of turn, another target creature you control gains trample and gets +X/+X, where X is the number of lands you control.
 Reach, trample",G,Saga; Giant; reanimator; graveyard; mill; sacrifice; saga; pump; reach; defense; trample; evasion,FIN,204,Rare,29,,5.5
 Black Waltz No. 3,Legendary Creature — Wizard,"Flying, deathtouch
-Whenever you cast a noncreature spell, Black Waltz No. 3 deals 2 damage to each opponent.",B/R,Wizard; burn; deathtouch; combat; removal; flying; evasion,FIN,214,Uncommon,37,,4.0
+Whenever you cast a noncreature spell, Black Waltz No. 3 deals 2 damage to each opponent.",B/R,Wizard; burn; deathtouch; combat; removal; flying; evasion,FIN,214,Uncommon,37,,4.5
 Circle of Power,Sorcery,"You draw two cards and you lose 2 life. Create a 0/1 black Wizard creature token with ""Whenever you cast a noncreature spell, this token deals 1 damage to each opponent.""
 Wizards you control get +1/+0 and gain lifelink until end of turn.",B,lifegain; card draw; tokens; burn; pump,FIN,92,Uncommon,37,,5.0
 Dragoon's Lance,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
@@ -124,7 +124,7 @@ At the beginning of combat on your turn, if you control one or more Eggs, sacrif
 Whenever one or more creatures you control each with power greater than its base power deals combat damage to a player, draw a card.",W/G,Cat; Warrior; card draw,LCI,232,Uncommon,36,,2.5
 Rampaging Ceratops,Creature — Dinosaur,This creature can't be blocked except by three or more creatures.,R,Dinosaur,LCI,162,Uncommon,28,,4.5
 Deconstruction Hammer,Artifact — Equipment,"Equipped creature gets +1/+1 and has ""{3}, {T}, Sacrifice Deconstruction Hammer: Destroy target artifact or enchantment.""
-Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; sacrifice; removal; equipment; pump; equip,LCI,9,Common,38,,1.0
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; sacrifice; removal; equipment; pump; equip,LCI,9,Common,38,,2.0
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
@@ -160,7 +160,7 @@ Concealed Courtyard,Land,"This land enters tapped unless you control two or fewe
 Whenever you cast a multicolored instant or sorcery spell from your hand, exile that spell instead of putting it into your graveyard as it resolves. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/R,Human; Rogue; graveyard; pump; plot; tempo; cost-reduction; prowess; spellslinger,OTJ,217,Rare,25,prowess 3-drop that impulses off your spells,6.0
 "Malcolm, the Eyes",Legendary Creature — Siren Pirate,"Flying, haste
 Whenever you cast your second spell each turn, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U/R,Siren; Pirate; card draw; sacrifice; tokens; clue; flying; evasion; investigate; haste; aggro,OTJ,219,Rare,25,2-drop: second spell -> investigate,6.0
-Razzle-Dazzler,Creature — Human Wizard,"Whenever you cast your second spell each turn, put a +1/+1 counter on this creature. It can't be blocked this turn.",U,Human; Wizard; counters,OTJ,63,Common,37,,2.5
+Razzle-Dazzler,Creature — Human Wizard,"Whenever you cast your second spell each turn, put a +1/+1 counter on this creature. It can't be blocked this turn.",U,Human; Wizard; counters,OTJ,63,Common,37,,3.0
 "Aziza, Mage Tower Captain",Legendary Creature — Djinn Sorcerer,"Whenever you cast an instant or sorcery spell, you may tap three untapped creatures you control. If you do, copy that spell. You may choose new targets for the copy.",W/R,Djinn; Sorcerer; spellslinger,SOS,174,Rare,concept,RW spells/magecraft (Strixhaven-style),6.0
 Comforting Counsel,Enchantment,"Whenever you gain life, put a growth counter on this enchantment.
 As long as there are five or more growth counters on this enchantment, creatures you control get +3/+3.",G,counters; pump,SOS,143,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 9,19b,19a",4.5
@@ -259,7 +259,7 @@ Nonbasic lands enter tapped.
 As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17",4.5
 Meteor Sword,Artifact — Equipment,"When this Equipment enters, destroy target permanent.
 Equipped creature gets +3/+3.
-Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; removal; etb; equipment; pump; equip,TLA,258,Uncommon,38,,3.0
+Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; removal; etb; equipment; pump; equip,TLA,258,Uncommon,38,,4.5
 Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,8,"best 8 (Sacrifices); also 21,21a,5",4.5
 Cool but Rude,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
 Whenever you attack, you may discard a card. If you do, draw a card.
@@ -302,7 +302,7 @@ Each player may discard their hand and draw seven cards.",R,card draw; sneak; te
 "Rat King, Verminister",Legendary Creature — Rat Avatar,"Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, create a 1/1 black Rat creature token and put a +1/+1 counter on Rat King.
 {T}, Sacrifice three Rats: Return target creature card and all other cards with the same name as that card from your graveyard to the battlefield tapped.",B,Rat; Avatar; counters; reanimator; graveyard; sacrifice; tokens; disappear,TMT,71,Rare,11,Rat Avatar — reanimator/sacrifice payoff; grindy mono-black value,5.5
 "Sally Pride, Lioness Leader",Legendary Creature — Cat Mutant Rebel,"When Sally Pride enters, create X 2/2 red Mutant creature tokens, where X is the number of nontoken creatures you control.
-Whenever Sally Pride attacks, put a +1/+1 counter on each creature you control.",W,Cat; Mutant; Rebel; counters; tokens; etb,TMT,24,Rare,36,,5.0
+Whenever Sally Pride attacks, put a +1/+1 counter on each creature you control.",W,Cat; Mutant; Rebel; counters; tokens; etb,TMT,24,Rare,36,,5.5
 "Slash, Reptile Rampager",Legendary Creature — Mutant Berserker Turtle,"Alliance — Whenever another creature you control enters, Slash deals 2 damage to each opponent.
 Whenever Slash attacks, create a 2/2 red Mutant creature token.",R,Mutant; Berserker; Turtle; tokens; burn; alliance; aggro; value,TMT,108,Rare,1,"Rakdos aggro/burn/tokens; also 10 | fits: 10,9",6.0
 Splinter's Technique,Sorcery,"Sneak {1}{B} (You may cast this spell for {1}{B} if you also return an unblocked attacker you control to hand during the declare blockers step.)
