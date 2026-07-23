@@ -25,9 +25,22 @@
 #: notes:  · KEPT the combat-damage equipment (the payoffs Cloud doubles), the evasion/
 #: notes:    protection suite (Celestial hexproof, Stolen Stark, Vibranium), Meteor Sword
 #: notes:    (removal), and Super-Soldier Serum (loads the carrier + first strike to connect).
-#: notes: THE RISK: it's a one-engine deck — protect Cloud (Celestial Armor hexproof, Stolen
-#: notes: Stark indestructible, Zack Fair sac-to-save) and keep a backup carrier in reserve.
-#: notes: Play B for resilience, C for the explosive spice. Lands fungible with base 38.
+#: notes: LEAN-HARDER pass (`deck.py redundancy 38a` said the combat-damage equipment is
+#: notes: already maxed — 0 more owned — so the lever is a MULTIPLIER): +Shrike Force (flying/
+#: notes: double strike/vigilance — a dream carrier), +Omenport Vigilante ({1}{W}, double
+#: notes: strike whenever you've committed a crime — trivially on via your targeted removal),
+#: notes: +Dual-Sun Adepts (double strike body), cutting the two weakest vanilla flyers (Dream
+#: notes: Beavers / Featherbrained Filcher) + the weakest equipment (Trusty Boomerang). Double
+#: notes: strike is a SECOND multiplier: an equipped double-striker deals combat damage twice,
+#: notes: so each combat-damage equipment triggers TWICE — and it doesn't need Cloud, so it
+#: notes: also cushions the one-engine fragility (now two independent value engines).
+#: notes: THE 4x: Cloud only doubles gear attached to CLOUD, so double strike ON Cloud would
+#: notes: stack to 4× triggers — but that needs a double-strike EQUIPMENT/aura, none owned in
+#: notes: WB (a craft target if you want the nut draw). The double-strike CREATURES are the
+#: notes: realistic amplifier: each doubles its own gear (2×), a parallel engine to Cloud.
+#: notes: THE RISK: still protect Cloud (Celestial Armor hexproof, Stolen Stark indestructible,
+#: notes: Zack Fair sac-to-save). Play B for resilience, C for the explosive spice. Lands
+#: notes: fungible with base 38.
 #: protect: Cloud, Midgar Mercenary; Buster Sword; Ninja's Blades; Celestial Armor; Whiplash, Vengeful Engineer
 
 # Creatures — cheap evasive carriers + the engine
@@ -35,8 +48,9 @@
 1 Miner's Guidewing (LCI) 24
 1 Ruin-Lurker Bat (LCI) 33
 1 Momo, Playful Pet (TLA) 30
-1 Featherbrained Filcher (TMT) 6
-1 Dream Beavers (TMT) 62
+1 Shrike Force (BLB) 31
+1 Omenport Vigilante (OTJ) 21
+1 Dual-Sun Adepts (EOE) 12
 1 Zack Fair (FIN) 45
 1 Whiplash, Vengeful Engineer (MSH) 121
 1 Cloud, Midgar Mercenary (FIN) 10
@@ -70,7 +84,6 @@
 1 Dragoon's Lance (FIN) 17
 1 Deconstruction Hammer (LCI) 9
 1 Meteor Sword (TLA) 258
-1 Trusty Boomerang (TLA) 260
 
 # Lands — 25, W-weighted Orzhov (owned WB duals + basics; fungible with 38)
 1 Bleachbone Verge (DFT) 250
