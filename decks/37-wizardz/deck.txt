@@ -42,7 +42,7 @@
 1 Harnesser of Storms (BLB) 137
 1 Erudite Wizard (FDN) 37
 1 Tishana's Tidebinder (LCI) 81
-1 Quistis Trepe (FIN) 66
+1 Taigam, Master Opportunist (TDM) 60
 1 Hydro-Channeler (SOS) 54
 1 Harmonized Trio (SOS) 52
 1 Black Waltz No. 3 (FIN) 214
@@ -90,4 +90,5 @@
 # Flex — options (comments; not part of the 60). See: deck.py flex 37
 #~ -Tribute to Hunger | +Fire Magic | ONLY if the meta is aggro-go-wide: Fire Magic is a tiered mini-wrath, but it kills your OWN 0/1 tokens — sideboard tech, not maindeck
 #~ -Harmonized Trio | +We Say Thee Nay! | if you want a hard-ish counter over the draw-body; Trio's teamwork tap competes with attacking
+#~ note: Taigam copies your 2nd spell each turn AND suspends the original back — the one copy effect that adds real future CASTS (which re-trigger the pings). Copies themselves don't trigger "cast" pings/prowess. For a copy/draw-two-leaning build see variant 37a.
 #~ -Quistis Trepe | +Tempest Angler(2nd) | if built as a redundant 37a: run multiples of the cheap prowess payoffs instead of 1-of legends
