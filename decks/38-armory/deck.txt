@@ -1,0 +1,50 @@
+#: name: Armory
+#: format: Standard
+#: colors: WB
+#: archetype: Orzhov (W/B) Equipment — a pile of equipment + equipped-creature payoffs and
+#: archetype: carriers, direction TBD (voltron vs. go-wide equipment midrange). Ingested as-is.
+#: notes: Ingested from an Arena export as a build target — pasted at ~62 cards (equipment-
+#: notes: heavy WB), so it needs a trim to a legal 60 and a chosen direction. Tune to follow.
+
+# Nonland — as pasted (equipment + carriers/payoffs)
+1 Cloud, Midgar Mercenary (FIN) 10
+1 Super-Soldier Serum (MSH) 38
+1 Web-Shooters (SPM) 22
+1 Celestial Armor (FDN) 5
+1 Glider Staff (TLA) 22
+2 Weapons Vendor (FIN) 40
+1 Winter Soldier, Icy Assassin (MSH) 239
+1 U.S.Agent, John Walker (MSH) 236
+1 Adventuring Gear (FDN) 249
+1 Vibranium Energy Daggers (MSH) 254
+1 Trusty Boomerang (TLA) 260
+1 Captain America's Shield (MSH) 244
+1 Kyoshi Battle Fan (TLA) 257
+1 Goldvein Pick (FDN) 253
+1 Buster Sword (FIN) 255
+1 Mirrormind Crown (ECL) 258
+1 Aettir and Priwen (FIN) 253
+1 Iron Man Armor (MSH) 248
+1 Whiplash, Vengeful Engineer (MSH) 121
+1 Stolen Stark Tech (MSH) 114
+1 Shredder's Armor (TMT) 75
+1 Swordsman, Sharp Scoundrel (MSH) 116
+1 Ronin, Shadow Stalker (MSH) 112
+1 Quintessential Katana (TMT) 23
+1 Wrench (MKM) 37
+1 Dragoon's Lance (FIN) 17
+1 S.H.I.E.L.D. Spy Kit (MSH) 36
+1 Crystal Fragments (FIN) 13
+1 Deconstruction Hammer (LCI) 9
+1 Zack Fair (FIN) 45
+1 Bark of Doran (ECL) 6
+1 Honored Knight-Captain (EOE) 22
+1 With Great Power . . . (SPM) 24
+1 Machinist's Arsenal (FIN) 23
+1 Ninja's Blades (FIN) 108
+1 Sun-Spider, Nimble Webber (SPM) 154
+1 Meteor Sword (TLA) 258
+
+# Lands
+15 Plains (MSH) 288
+9 Swamp (MSH) 292
