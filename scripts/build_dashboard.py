@@ -679,6 +679,24 @@ TEMPLATE = r"""<!DOCTYPE html>
   .foot { color:var(--ink3); font-size:11.5px; margin-top:18px; border-top:1px solid var(--line); padding-top:14px; line-height:1.55; }
   .foot code { font-family:var(--font-mono); color:var(--ink2b); }
 
+  /* ── Progressive disclosure: collapsible sections, section nav, capped lists ── */
+  h2.sec.clik { cursor:pointer; }
+  h2.sec .caret { margin-left:auto; font-size:11px; color:var(--ink3); font-family:var(--font-mono); font-weight:400; transition:color .15s; }
+  h2.sec.clik:hover .caret { color:var(--accent-ink); }
+  section.collapsed > *:not(h2.sec) { display:none; }
+  section.collapsed h2.sec { margin-bottom:0; border-bottom-color:transparent; }
+  /* sticky section-nav strip inside the header */
+  .secnav { max-width:1180px; margin:12px auto 0; display:flex; gap:7px; overflow-x:auto; scrollbar-width:none; padding-bottom:1px; }
+  .secnav::-webkit-scrollbar { display:none; }
+  .navchip { flex:0 0 auto; font-size:11.5px; font-weight:600; padding:4px 11px; border-radius:999px; border:1px solid var(--line2); background:var(--fill2); color:var(--ink2); cursor:pointer; white-space:nowrap; transition:color .15s,border-color .15s,background .15s,opacity .15s; }
+  .navchip:hover { color:var(--accent-ink); border-color:var(--accent-line); }
+  .navchip.active { background:var(--accent-bg); border-color:var(--accent-line); color:var(--accent-ink); }
+  .navchip.col { opacity:.5; }
+  .navchip.col::before { content:'▸ '; color:var(--ink3); }
+  /* "show all / show fewer" row inside a capped sortable table */
+  tr.morerow td { cursor:pointer; text-align:center; color:var(--accent-ink); font-size:12px; font-weight:600; padding:10px; background:var(--fill2); border-bottom:none; letter-spacing:.02em; }
+  tr.morerow td:hover { background:var(--accent-bg); }
+
   /* ── Mobile / narrow viewports ─────────────────────────────────────────────
      Template-only responsive layer (the #data island / pipeline is untouched).
      Two jobs: (1) collapse the multi-column grids to one column and tighten the
@@ -738,6 +756,7 @@ TEMPLATE = r"""<!DOCTYPE html>
       <div class="kpi hot"><div class="n" id="kpiBuild">0</div><div class="lbl">buildable now</div></div>
     </div>
   </div>
+  <nav class="secnav" id="secnav" aria-label="Jump to section"></nav>
 </header>
 
 <main>
@@ -884,6 +903,7 @@ function restorePrefs(){
   let p = {}; try { p = JSON.parse(localStorage.getItem('mtga-prefs')||'{}')||{}; } catch(e){}
   STATE.theme = p.theme || 'dark'; STATE.viewMode = p.viewMode || 'grid'; STATE.quickFilter = p.quickFilter || 'all';
   STATE.activeColors = p.activeColors || {}; STATE.open = p.open || {}; STATE.pinned = p.pinned || {};
+  STATE.secCollapsed = p.secCollapsed || {};
   const h = parseHash();
   if (h.v) STATE.viewMode = h.v;
   if (h.f) STATE.quickFilter = h.f;
@@ -905,7 +925,7 @@ function buildHash(){
 }
 function persist(){
   try { history.replaceState(null,'',buildHash()); } catch(e){}
-  try { localStorage.setItem('mtga-prefs', JSON.stringify({theme:STATE.theme, viewMode:STATE.viewMode, quickFilter:STATE.quickFilter, activeColors:STATE.activeColors, open:STATE.open, pinned:STATE.pinned})); } catch(e){}
+  try { localStorage.setItem('mtga-prefs', JSON.stringify({theme:STATE.theme, viewMode:STATE.viewMode, quickFilter:STATE.quickFilter, activeColors:STATE.activeColors, open:STATE.open, pinned:STATE.pinned, secCollapsed:STATE.secCollapsed})); } catch(e){}
 }
 // Restore prefs + deep-link BEFORE anything renders, so control highlights (color
 // chips, quick pills, view toggle) and the deck/wishlist views all reflect saved state.
@@ -1046,7 +1066,10 @@ function attachHover(node, name){
 }
 
 // ---------- generic sortable table ----------
-function sortableTable(cls, cols, rows, sortState, onRowExtra){
+// opts.limit (optional): show only the first N rows (after sorting) with a "show all"
+// toggle row — the progressive-disclosure cap for long lists (wishlist / triage).
+function sortableTable(cls, cols, rows, sortState, onRowExtra, opts){
+  opts = opts || {};
   const tbl = el('table', cls);
   const thead = el('thead'), htr = el('tr');
   cols.forEach(c => {
@@ -1060,13 +1083,22 @@ function sortableTable(cls, cols, rows, sortState, onRowExtra){
   function redraw(){
     let rs = rows.slice();
     if (sortState.key){ const {key,dir} = sortState; rs.sort((a,b) => { const va=a[key], vb=b[key]; const cmp = (typeof va==='number'&&typeof vb==='number') ? va-vb : (''+va).localeCompare(''+vb); return cmp*dir; }); }
+    const capped = opts.limit && !opts._exp && rs.length > opts.limit;
+    const shown = capped ? rs.slice(0, opts.limit) : rs;
     tb.innerHTML = '';
-    rs.forEach(r => {
+    shown.forEach(r => {
       const tr = el('tr');
       cols.forEach(c => { const td = el('td', (c.num?'num ':'') + (c.cls||'')); if (c.node) td.appendChild(c.node(r)); else if (c.html) td.innerHTML = c.html(r); else td.textContent = c.get(r); tr.appendChild(td); });
       if (onRowExtra) onRowExtra(tr, r);
       tb.appendChild(tr);
     });
+    // progressive-disclosure toggle row (only when the list is longer than the cap)
+    if (opts.limit && rs.length > opts.limit){
+      const tr = el('tr','morerow'); const td = el('td'); td.colSpan = cols.length;
+      td.textContent = opts._exp ? ('▴ show top ' + opts.limit) : ('▾ show all ' + rs.length + '  (+' + (rs.length - opts.limit) + ')');
+      td.onclick = () => { opts._exp = !opts._exp; redraw(); };
+      tr.appendChild(td); tb.appendChild(tr);
+    }
     // rebuild header arrows
     [...htr.children].forEach((th,i) => { const c = cols[i]; th.className = (c.num?'num':'') + (sortState.key===c.key?' on':''); th.textContent = c.label + (sortState.key===c.key ? (sortState.dir>0?' ▲':' ▼') : ''); });
   }
@@ -1383,26 +1415,40 @@ renderRecent(); renderRotation();
   const list = Object.values(map).filter(x => x.decks.length >= 2).sort((a,b) => b.decks.length - a.decks.length || (RANK[b.rarity]||0) - (RANK[a.rarity]||0) || a.name.localeCompare(b.name));
   const host = $('leverage');
   if (!list.length){ host.appendChild(el('div','emptymsg','No cards are shared across multiple decks yet.')); return; }
-  const g = el('div','levgrid');
-  list.forEach(lv => {
-    const card = el('div','lev' + (STATE.impactCard===lv.name?' on':''));
-    const cnt = el('div','cnt', lv.decks.length); card.appendChild(cnt);
-    const body = el('div','body');
-    const nmrow = el('div'); nmrow.style.display='flex'; nmrow.style.alignItems='center'; nmrow.style.gap='6px';
-    const nm = el('span','nm', lv.name); attachHover(nm, lv.name); nmrow.appendChild(nm);
-    nmrow.appendChild(wcPill(lv.rarity));
-    const a = el('a','scry','↗'); a.href = scryUrl(lv.name); a.target='_blank'; a.rel='noopener'; nmrow.appendChild(a);
-    body.appendChild(nmrow);
-    body.appendChild(el('div','ds', lv.decks.join(', ')));
-    card.appendChild(body);
-    card.onclick = e => { if (e.target.tagName === 'A') return; STATE.impactCard = STATE.impactCard===lv.name ? '' : lv.name; renderDecks(); [...g.children].forEach(x => x.classList.remove('on')); if (STATE.impactCard) card.classList.add('on'); const s = $('sec-decks'); if (s) window.scrollTo({top:s.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); };
-    g.appendChild(card);
-  });
-  host.appendChild(g);
+  const CAP = 12;
+  let levAll = false;
+  function drawLev(){
+    host.innerHTML = '';
+    const g = el('div','levgrid');
+    const shown = levAll ? list : list.slice(0, CAP);
+    shown.forEach(lv => {
+      const card = el('div','lev' + (STATE.impactCard===lv.name?' on':''));
+      const cnt = el('div','cnt', lv.decks.length); card.appendChild(cnt);
+      const body = el('div','body');
+      const nmrow = el('div'); nmrow.style.display='flex'; nmrow.style.alignItems='center'; nmrow.style.gap='6px';
+      const nm = el('span','nm', lv.name); attachHover(nm, lv.name); nmrow.appendChild(nm);
+      nmrow.appendChild(wcPill(lv.rarity));
+      const a = el('a','scry','↗'); a.href = scryUrl(lv.name); a.target='_blank'; a.rel='noopener'; nmrow.appendChild(a);
+      body.appendChild(nmrow);
+      body.appendChild(el('div','ds', lv.decks.join(', ')));
+      card.appendChild(body);
+      card.onclick = e => { if (e.target.tagName === 'A') return; STATE.impactCard = STATE.impactCard===lv.name ? '' : lv.name; renderDecks(); [...g.children].forEach(x => x.classList.remove('on')); if (STATE.impactCard) card.classList.add('on'); const s = $('sec-decks'); if (s) window.scrollTo({top:s.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); };
+      g.appendChild(card);
+    });
+    host.appendChild(g);
+    if (list.length > CAP){
+      const t = el('button','ghostbtn', levAll ? ('▴ show top ' + CAP) : ('▾ show all ' + list.length + '  (+' + (list.length - CAP) + ')'));
+      t.style.marginTop = '12px';
+      t.onclick = () => { levAll = !levAll; drawLev(); };
+      host.appendChild(t);
+    }
+  }
+  drawLev();
 })();
 
 // ---------- wishlist + simulator ----------
 const wlSort = {};
+const wlOpts = {};   // per-tier show-all state for the progressive-disclosure cap
 const WL_LABELS = {A:'Tier A — craft first', B:'Tier B — targeted upgrade', C:'Tier C — situational'};
 const TIERDOT = {A:'#f4a03a', B:'var(--accent)', C:'#7d8595'};
 function rollStr(o){ return ['Mythic','Rare','Uncommon','Common'].filter(k => o && o[k]).map(k => o[k] + ' ' + k).join(' · '); }
@@ -1427,7 +1473,9 @@ function renderWishlist(){
       {key:'sig', label:'signal', cls:'sg', get:r => r.sig},
     ];
     if (!(tier in wlSort)) wlSort[tier] = {key:null,dir:1};
-    const box = el('div','wltable'); box.appendChild(sortableTable('wt', cols, rows, wlSort[tier])); host.appendChild(box);
+    if (!(tier in wlOpts)) wlOpts[tier] = {limit:12};
+    wlOpts[tier].limit = q ? 0 : 12;   // when filtering, show every match; else cap at 12
+    const box = el('div','wltable'); box.appendChild(sortableTable('wt', cols, rows, wlSort[tier], null, wlOpts[tier])); host.appendChild(box);
   });
 }
 $('wlfilter').addEventListener('input', e => { STATE.wlFilter = e.target.value; renderWishlist(); });
@@ -1467,8 +1515,23 @@ renderWishlist(); renderSim();
     {key:'_sev', label:'Verdict', num:true, html:r => '<span class="vpill ' + VCLS[r.verdict] + '">' + VLAB[r.verdict] + '</span>' + (r.why ? ' <span class="why">' + esc(r.why) + '</span>' : '')},
   ];
   const sort = {key:null,dir:1};
-  const tbl = sortableTable('at', cols, rows, sort, (tr) => tr.classList.add('clk'));
-  $('audit').appendChild(tbl);
+  // Progressive disclosure: default to the ACTIONABLE decks (tune/craft/review); the
+  // "ok" decks are the bulk and the least interesting, so they hide behind a toggle.
+  const flagged = rows.filter(r => r.verdict !== 'ok');
+  const okN = rows.length - flagged.length;
+  let showAllDecks = flagged.length === 0;  // if nothing's flagged, just show all
+  const host = $('audit');
+  function drawAudit(){
+    host.innerHTML = '';
+    host.appendChild(sortableTable('at', cols, showAllDecks ? rows : flagged, sort, (tr) => tr.classList.add('clk')));
+    if (okN > 0 && flagged.length > 0){
+      const t = el('button','ghostbtn', showAllDecks ? ('▴ hide ' + okN + ' ok deck' + (okN===1?'':'s')) : ('▾ show all ' + rows.length + '  (+' + okN + ' ok)'));
+      t.style.marginTop = '11px';
+      t.onclick = () => { showAllDecks = !showAllDecks; drawAudit(); };
+      host.appendChild(t);
+    }
+  }
+  drawAudit();
   const c = {TUNE:0,craft:0,review:0,ok:0}; rows.forEach(r => c[r.verdict]++);
   $('auditsummary').innerHTML = '<span class="chip"><b>' + c.TUNE + '</b> to tune</span><span class="chip"><b>' + c.craft + '</b> to craft</span><span class="chip"><b>' + c.review + '</b> to review</span><span class="chip"><b>' + c.ok + '</b> ok</span>';
   $('auditnote').textContent = 'Offline triage — same numbers as deck.py audit. Tier = competitive grade (S→D, · = ungraded) from each deck’s #: tier: header; click the Tier header to sort. Own/Legal/Cast ✓ = clean; Cast Nu = uncastable, Ns = off-identity stray. ★ tune = a hard problem; craft = unbuilt; review = a soft flag. Click a deck to filter the list below.';
@@ -1636,6 +1699,50 @@ function syncLive(silent){
 (function(){ const ts = Date.parse((D.generated||'').replace(' ','T')); if (!isNaN(ts) && (Date.now() - ts) > STALE_DAYS*864e5){ const chip = document.createElement('span'); chip.className = 'stalechip'; chip.textContent = 'stale · sync ⟳'; chip.title = 'Snapshot is over a week old — click to sync'; chip.onclick = () => syncLive(false); $('hsub').appendChild(document.createTextNode(' · ')); $('hsub').appendChild(chip); } })();
 
 $('foot').innerHTML = 'Live snapshot from committed data — hit ⟳ to re-sync from GitHub Pages, or regenerate with <code>python3 scripts/build_dashboard.py</code>. Card previews &amp; links via Scryfall. The judgment calls (craft X or Y, tuning) still live in the chat — this shows state, not decisions.';
+
+// ---------- collapsible sections + section-nav strip (progressive disclosure) ----------
+// DOM order; 3rd field = default-collapsed. The utility/lookup sections start CLOSED so
+// the page opens on the planning views, not a wall of every tool at once.
+const SECTIONS = [
+  ['sec-find','Finder',true], ['sec-triage','Triage',false], ['sec-recent','Recent',true],
+  ['sec-stale','Stale',true], ['sec-rotation','Rotation',true], ['sec-decks','Decks',false],
+  ['sec-leverage','Leverage',false], ['sec-wishlist','Wishlist',false], ['sec-plan','Craft plan',false],
+];
+function secIsCollapsed(id, def){ return (STATE.secCollapsed && id in STATE.secCollapsed) ? !!STATE.secCollapsed[id] : def; }
+function applyCollapsed(id, collapsed){
+  const sec = $(id); if (!sec) return;
+  sec.classList.toggle('collapsed', collapsed);
+  const car = sec.querySelector('h2.sec .caret'); if (car) car.textContent = collapsed ? '▸' : '▾';
+  const chip = document.querySelector('.navchip[data-nav="' + id + '"]'); if (chip) chip.classList.toggle('col', collapsed);
+}
+(function initSections(){
+  const nav = $('secnav');
+  STATE.secCollapsed = STATE.secCollapsed || {};
+  SECTIONS.forEach(([id,label,def]) => {
+    const sec = $(id); if (!sec || sec.style.display === 'none') return;  // skip hidden (e.g. empty wishlist)
+    if (nav){
+      const chip = el('span','navchip', label); chip.dataset.nav = id;
+      chip.onclick = () => { if (sec.classList.contains('collapsed')){ STATE.secCollapsed[id] = false; applyCollapsed(id, false); persist(); } window.scrollTo({top:sec.getBoundingClientRect().top + window.scrollY - 70, behavior:'smooth'}); };
+      nav.appendChild(chip);
+    }
+    const h = sec.querySelector('h2.sec'); if (!h) return;
+    h.classList.add('clik');
+    if (!h.querySelector('.caret')) h.appendChild(el('span','caret'));
+    const collapsed = secIsCollapsed(id, def);
+    STATE.secCollapsed[id] = collapsed;
+    applyCollapsed(id, collapsed);
+    h.onclick = () => { const c = !sec.classList.contains('collapsed'); STATE.secCollapsed[id] = c; applyCollapsed(id, c); persist(); };
+  });
+  // scroll-spy: highlight the nav chip of the last section scrolled past
+  const ids = SECTIONS.map(s => s[0]).filter(id => { const e = $(id); return e && e.style.display !== 'none'; });
+  function spy(){
+    let cur = ids[0];
+    ids.forEach(id => { if ($(id).getBoundingClientRect().top - 88 <= 0) cur = id; });
+    document.querySelectorAll('.navchip').forEach(c => c.classList.toggle('active', c.dataset.nav === cur));
+  }
+  window.addEventListener('scroll', () => { if (window._spyRAF) return; window._spyRAF = requestAnimationFrame(() => { window._spyRAF = 0; spy(); }); }, {passive:true});
+  spy();
+})();
 
 // ---------- init ----------
 // (Prefs were restored at the top, so every section above already rendered with saved
