@@ -647,6 +647,17 @@ variants** that runs it (with the copy count), each a click-through chip that
 filters the deck list to that deck. It searches the same per-deck card multisets the
 stale-deck compare uses, entirely in-browser.
 
+**Progressive disclosure** keeps the page from reading as a wall: every section
+**collapses** (the utility ones — card finder, stale-check, recently-edited, rotation —
+start closed), a **section-nav strip** in the header jumps to any section (auto-expanding
+it) with a scroll-spy highlight, and the long lists (wishlist tiers, crafting leverage)
+**cap at a dozen rows** with a *show all* toggle. The roster-triage table defaults to the
+**actionable** decks (the dashboard analog of `deck.py audit --flagged`). The **wishlist**
+filters by free text (card / target / signal) **and by wildcard rarity** — click the
+`M`/`R`/`U`/`C` chips (multi-select; empty = all) to scope the craft list to the wildcards
+you're spending, the dashboard mirror of `wishlist.py --rarity`. All of this persists in
+the same `localStorage` prefs as the theme/filters.
+
 The **build** is **offline** — it disables `deck.py`'s live-Scryfall fallbacks and reads
 only committed data (`card-*.csv` + `decks/`), so it never touches the network and runs
 in CI. The **page** stays self-contained (data embedded, system-font stack, no CDN) and

@@ -540,6 +540,10 @@ TEMPLATE = r"""<!DOCTYPE html>
   /* wishlist */
   .wltop { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
   #wlfilter { width:340px; max-width:100%; }
+  .wlrar { display:flex; gap:6px; flex-wrap:wrap; }
+  .rchip { font-family:var(--font-mono); font-size:12px; font-weight:800; min-width:26px; text-align:center; padding:4px 9px; border-radius:8px; border:1px solid var(--line2); background:var(--fill2); color:var(--ink2); cursor:pointer; user-select:none; transition:color .15s,border-color .15s,background .15s; }
+  .rchip:hover { border-color:var(--accent-line); color:var(--accent-ink); }
+  .rchip.on { background:var(--accent-bg); border-color:var(--accent-line); color:var(--accent-ink); }
   .wltip { font-size:11px; color:var(--ink3); }
   .simbar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:8px; padding:12px 15px; border-radius:12px; background:linear-gradient(180deg,var(--elev),var(--elev2)); border:1px solid var(--line); }
   .simbar .st { font-family:var(--font-display); font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--ink2); }
@@ -845,6 +849,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     <h2 class="sec"><span class="tick"></span>Wildcard priority — wishlist</h2>
     <div class="wltop">
       <input class="filter" id="wlfilter" placeholder="filter wishlist by card, target, or signal…">
+      <div class="wlrar" id="wlrar" aria-label="Filter by wildcard rarity"></div>
       <span class="grow"></span>
       <span class="wltip">tip: click a card to see which decks it unlocks</span>
       <span class="ghostbtn" id="exportwl">⧉ Export wishlist</span>
@@ -893,7 +898,7 @@ const scryUrl = name => 'https://scryfall.com/search?q=' + encodeURIComponent('!
 
 // ---------- prefs + deep-link ----------
 const STATE = { theme:'dark', viewMode:'grid', quickFilter:'all', activeColors:{}, open:{}, pinned:{},
-  deckFilter:'', wlFilter:'', simMode:'off', impactCard:'', modalDeck:'', paletteOpen:false, paletteQuery:'', paletteIndex:0, gPrefix:false };
+  deckFilter:'', wlFilter:'', wlRarity:{}, simMode:'off', impactCard:'', modalDeck:'', paletteOpen:false, paletteQuery:'', paletteIndex:0, gPrefix:false };
 function parseHash(){
   const raw = (location.hash||'').replace(/^#/,''); if (!raw) return {};
   if (raw.startsWith('deck-')) return {d:raw.slice(5)};
@@ -903,7 +908,7 @@ function restorePrefs(){
   let p = {}; try { p = JSON.parse(localStorage.getItem('mtga-prefs')||'{}')||{}; } catch(e){}
   STATE.theme = p.theme || 'dark'; STATE.viewMode = p.viewMode || 'grid'; STATE.quickFilter = p.quickFilter || 'all';
   STATE.activeColors = p.activeColors || {}; STATE.open = p.open || {}; STATE.pinned = p.pinned || {};
-  STATE.secCollapsed = p.secCollapsed || {};
+  STATE.secCollapsed = p.secCollapsed || {}; STATE.wlRarity = p.wlRarity || {};
   const h = parseHash();
   if (h.v) STATE.viewMode = h.v;
   if (h.f) STATE.quickFilter = h.f;
@@ -925,7 +930,7 @@ function buildHash(){
 }
 function persist(){
   try { history.replaceState(null,'',buildHash()); } catch(e){}
-  try { localStorage.setItem('mtga-prefs', JSON.stringify({theme:STATE.theme, viewMode:STATE.viewMode, quickFilter:STATE.quickFilter, activeColors:STATE.activeColors, open:STATE.open, pinned:STATE.pinned, secCollapsed:STATE.secCollapsed})); } catch(e){}
+  try { localStorage.setItem('mtga-prefs', JSON.stringify({theme:STATE.theme, viewMode:STATE.viewMode, quickFilter:STATE.quickFilter, activeColors:STATE.activeColors, open:STATE.open, pinned:STATE.pinned, secCollapsed:STATE.secCollapsed, wlRarity:STATE.wlRarity})); } catch(e){}
 }
 // Restore prefs + deep-link BEFORE anything renders, so control highlights (color
 // chips, quick pills, view toggle) and the deck/wishlist views all reflect saved state.
@@ -1457,12 +1462,20 @@ function renderWishlist(){
   const host = $('wishlist'); host.innerHTML = '';
   if (!anyWl){ $('sec-wishlist').style.display = 'none'; return; }
   const q = (STATE.wlFilter||'').toLowerCase().trim();
+  const rarSel = Object.keys(STATE.wlRarity||{}).filter(k => STATE.wlRarity[k]);  // empty = all rarities
+  const filtering = !!q || rarSel.length > 0;
+  let anyShown = false;
   ['A','B','C'].forEach(tier => {
     let rows = (D.wishlist[tier]||[]).map(r => ({...r, _rank:rankOf(r.rarity), priNum:(typeof r.pri==='number'?r.pri:parseFloat(r.pri)||0), target:(r.target||'').toString(), sig:r.sig||''}));
     if (q) rows = rows.filter(r => (r.name+' '+r.target+' '+r.sig).toLowerCase().includes(q));
+    if (rarSel.length) rows = rows.filter(r => STATE.wlRarity[r.rarity]);
     if (!rows.length) return;
+    anyShown = true;
+    // Rollup reflects what's SHOWN (so a rarity/text filter keeps the header honest),
+    // computed from the filtered rows rather than the static full-tier composition.
+    const roll = {}; rows.forEach(r => { roll[r.rarity] = (roll[r.rarity]||0) + 1; });
     const hdr = el('div','tierhdr');
-    hdr.innerHTML = '<h3><span class="tierdot" style="background:' + TIERDOT[tier] + ';box-shadow:0 0 8px ' + TIERDOT[tier] + '"></span>' + WL_LABELS[tier] + '</h3><span class="roll">' + rows.length + ' cards · ' + esc(rollStr(D.wishlist_rollup[tier])) + '</span>';
+    hdr.innerHTML = '<h3><span class="tierdot" style="background:' + TIERDOT[tier] + ';box-shadow:0 0 8px ' + TIERDOT[tier] + '"></span>' + WL_LABELS[tier] + '</h3><span class="roll">' + rows.length + ' cards · ' + esc(rollStr(roll)) + '</span>';
     host.appendChild(hdr);
     const cols = [
       {key:'name', label:'Card', node:r => { const s = el('span'); const nm = el('span','wlname', r.name); nm.onclick = () => { STATE.impactCard = STATE.impactCard===r.name ? '' : r.name; renderDecks(); const sec = $('sec-decks'); if (sec) window.scrollTo({top:sec.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); }; attachHover(nm, r.name); s.appendChild(nm); s.appendChild(document.createTextNode(' ')); const a = el('a','scry','↗'); a.href = scryUrl(r.name); a.target='_blank'; a.rel='noopener'; s.appendChild(a); if (r.rot){ s.appendChild(document.createTextNode(' ')); const w = el('span','rotwl','⚠rot~'+r.rot_year); w.title = 'Set rotates ~'+r.rot_year+' — a wildcard here won\'t last long'; s.appendChild(w); } return s; }},
@@ -1474,11 +1487,22 @@ function renderWishlist(){
     ];
     if (!(tier in wlSort)) wlSort[tier] = {key:null,dir:1};
     if (!(tier in wlOpts)) wlOpts[tier] = {limit:12};
-    wlOpts[tier].limit = q ? 0 : 12;   // when filtering, show every match; else cap at 12
+    wlOpts[tier].limit = filtering ? 0 : 12;   // an explicit filter shows every match; else cap at 12
     const box = el('div','wltable'); box.appendChild(sortableTable('wt', cols, rows, wlSort[tier], null, wlOpts[tier])); host.appendChild(box);
   });
+  if (!anyShown) host.appendChild(el('div','auditnote', 'No wishlist cards match this filter.'));
 }
 $('wlfilter').addEventListener('input', e => { STATE.wlFilter = e.target.value; renderWishlist(); });
+// rarity filter chips (M/R/U/C) — multi-select, empty = all rarities (mirrors the deck color chips)
+(function(){
+  const host = $('wlrar'); if (!host) return;
+  ['Mythic','Rare','Uncommon','Common'].forEach(rar => {
+    const c = el('span','rchip' + (STATE.wlRarity[rar] ? ' on' : ''), WC[rar]);
+    c.title = 'Show ' + rar + ' only (toggle; combine several)';
+    c.onclick = () => { STATE.wlRarity[rar] = !STATE.wlRarity[rar]; c.classList.toggle('on', !!STATE.wlRarity[rar]); persist(); renderWishlist(); };
+    host.appendChild(c);
+  });
+})();
 $('exportwl').onclick = () => { const lines = ['MTGA WILDCARD WISHLIST']; ['A','B','C'].forEach(k => { const rows = D.wishlist[k]||[]; if (!rows.length) return; lines.push('', WL_LABELS[k]); rows.forEach(r => lines.push('  [' + (WC[r.rarity]||'?') + '] ' + r.name + ' — ' + (r.target||'') + ' (pri ' + (typeof r.pri==='number'?r.pri.toFixed(2):r.pri) + ')')); }); writeClip(lines.join('\n'), () => toast('Wishlist copied to clipboard')); };
 // simulator
 const SIM = [['off','Off'],['A','+ Tier A'],['AB','+ Tier A & B'],['all','+ All tiers']];
