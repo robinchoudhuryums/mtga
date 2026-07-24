@@ -41,7 +41,7 @@
 #: notes: THE RISK: still protect Cloud (Celestial Armor hexproof, Stolen Stark indestructible,
 #: notes: Zack Fair sac-to-save). Play B for resilience, C for the explosive spice. Lands
 #: notes: fungible with base 38.
-#: protect: Cloud, Midgar Mercenary; Buster Sword; Ninja's Blades; Celestial Armor; Whiplash, Vengeful Engineer
+#: protect: Cloud, Midgar Mercenary; Buster Sword; Celestial Armor; Whiplash, Vengeful Engineer
 
 # Creatures — cheap evasive carriers + the engine
 1 Quill-Blade Laureate
@@ -65,7 +65,7 @@
 1 Buster Sword (FIN) 255
 1 Goldvein Pick (FDN) 253
 1 S.H.I.E.L.D. Spy Kit (MSH) 36
-1 Ninja's Blades (FIN) 108
+1 Dragonfire Blade (TDM) 240
 1 Wrench (MKM) 37
 1 Web-Shooters (SPM) 22
 1 Quintessential Katana (TMT) 23
@@ -94,5 +94,6 @@
 5 Swamp (MSH) 292
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 38a
+#~ -Dragonfire Blade | +Ninja's Blades | RARE craft — the higher-ceiling payoff (combat-damage loot+discard + drain by discarded MV, doubled to 2× on Cloud). Swapped OUT for owned Dragonfire Blade to save the rare wildcard and protect Cloud (hexproof from monocolored); swap back when you have a rare to spare.
 #~ -Dream Beavers | +2nd protection piece | if Cloud keeps dying, add more hexproof/indestructible over a body
 #~ -Trusty Boomerang | +another combat-damage equipment | the Boomerang is the weakest of the equipment; any value equipment Cloud doubles is better
