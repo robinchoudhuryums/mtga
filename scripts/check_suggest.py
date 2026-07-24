@@ -185,6 +185,36 @@ def check():
         errs.append(f"distinctiveness_score: a rare mechanic ({rare}) must outscore a generic "
                     f"tag ({generic}); both in [0,10].")
 
+    # Structural signal (oracle-text shape): a vanilla / plain-ETB / bare-mana body must read
+    # LOW; an unusual dies-trigger-that-recurs must read high; and card_distinctiveness must
+    # take the MAX so a generically-TAGGED but structurally-rich card is RESCUED, never a
+    # generic one inflated (structural only ever raises).
+    sd = lib.structural_distinctiveness
+    sd_vanilla = sd("Trample")
+    sd_etb = sd("When this creature enters, create a 1/1 white Soldier creature token.")
+    sd_mana = sd("{T}: Add {G}.")
+    sd_rich = sd("When this creature dies, destroy target permanent and return target "
+                 "nonlegendary permanent card from your graveyard to the battlefield.")
+    if not all(0.0 <= v <= 10.0 for v in (sd_vanilla, sd_etb, sd_mana, sd_rich)):
+        errs.append(f"structural_distinctiveness out of [0,10]: "
+                    f"{sd_vanilla}, {sd_etb}, {sd_mana}, {sd_rich}.")
+    if not (sd_vanilla <= 1.0 and sd_mana <= 1.0 and sd_etb <= 2.0):
+        errs.append(f"structural_distinctiveness must read a vanilla/plain-ETB/bare-mana card "
+                    f"LOW (vanilla {sd_vanilla}, ETB {sd_etb}, mana {sd_mana}).")
+    if not (sd_rich > sd_etb):
+        errs.append(f"structural_distinctiveness: an unusual dies-trigger ({sd_rich}) must "
+                    f"outscore a plain ETB token-maker ({sd_etb}).")
+    # The MAX combine: a generically-tagged card with rich structure is rescued (uses the
+    # real pool model for the tag term; structural is pure).
+    rescue_text = ("When this creature dies, destroy target permanent and return target card "
+                   "from your graveyard to the battlefield.")
+    if lib.card_distinctiveness(["etb", "tokens"], rescue_text) < 4.0:
+        errs.append("card_distinctiveness: the structural signal must RESCUE a mis-tagged "
+                    "distinctive card (etb/tokens tags + a rich dies-trigger) above generic.")
+    if lib.card_distinctiveness(["etb", "tokens"], "") > lib.card_distinctiveness(["etb", "tokens"], rescue_text):
+        errs.append("card_distinctiveness: structural must only ever RAISE (max), never lower, "
+                    "the tag-only score.")
+
     return errs
 
 

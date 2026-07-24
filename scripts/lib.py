@@ -6,6 +6,7 @@ definition and the load/save logic live here in one place.
 
 import csv
 import os
+import re
 import shutil
 import sys
 import tempfile
@@ -245,11 +246,74 @@ def distinctiveness_score(tags, idf, tribe_tags, n, *, k=2):
     return round(min(10.0, 10.0 * (sum(top) / len(top)) / ceil), 1)
 
 
-def card_distinctiveness(tags):
-    """0–10 ability-distinctiveness for a card's synergy tags, via the cached pool model.
-    Returns 0.0 if the pool is unavailable (neutral — never crashes a caller)."""
+# ── Structural distinctiveness (oracle-text shape) ──────────────────────────
+# The tag-rarity metric above is bounded by tag QUALITY: a distinctive card mis-tagged
+# etb/tokens still reads generic (Ragnarok's dies-trigger, Thousand-Year Storm's copy
+# payoff). This complementary signal reads the oracle TEXT's STRUCTURE — an unusual
+# (non-ETB) trigger, an activated ability, rule-bending / replacement language,
+# modality — to catch "this card does something the tags didn't capture," with NO
+# corpus / build artifact / normalization pipeline (the cheap alternative to a text
+# TF-IDF model). card_distinctiveness takes the MAX of the two signals, so a
+# mis-calibration here can RESCUE a mis-tagged card but never scramble the ranking.
+_STRUCT_REMINDER_RE = re.compile(r"\([^)]*\)")  # parenthetical reminder text — not an ability
+# A triggered ability on an event OTHER than a plain ETB — the distinctive shape a
+# generic "when this enters" token/lifegain body lacks. (Conservative: a combined
+# "enters or attacks" trigger is skipped by the enters-lookahead — safe, it only
+# under-fires, and the metric only ever RAISES.)
+_STRUCT_NONETB_TRIGGER_RE = re.compile(
+    r"when(?:ever)?\b(?![^.]*\benters\b)[^.]*?\b("
+    r"dies|attacks?|blocks?|deals? (?:combat )?damage|leaves the battlefield|"
+    r"you (?:cast|draw|gain|sacrifice|discard|cycle)|is (?:dealt|put into)|"
+    r"an? (?:opponent|player)|beginning of|end step|upkeep|becomes)\b", re.I)
+# An activated ability whose effect is NOT a bare mana ability ("{T}: Add …", generic).
+_STRUCT_ACTIVATED_RE = re.compile(r"(?mi)^\s*[^:\n]{1,60}:\s*(?!add\b)\S")
+# Rule-bending / replacement / asymmetric / recursion / free-cast language.
+_STRUCT_RULEBEND_RE = re.compile(
+    r"\b(instead|rather than|if you would|as though|can't be|without paying|"
+    r"any number of|additional|extra turn|double|for each|as long as|"
+    r"each (?:opponent|player)|from (?:your |a )?(?:graveyard|exile)|"
+    r"search your library|copy)\b", re.I)
+_STRUCT_MODAL_RE = re.compile(
+    r"(choose (?:one|two|up to)|\bkicker\b|•|escape|adventure|foretell|"
+    r"\bmodal\b|\bconvoke\b)", re.I)
+
+
+def structural_distinctiveness(text):
+    """0–10 heuristic for how much a card's oracle TEXT does BEYOND a plain body, from
+    structural cues (an unusual non-ETB trigger, a non-mana activated ability, rule-
+    bending / replacement language, modality, clause depth). Complements the tag-rarity
+    metric for cards whose distinctive ability was tagged generically. Pure (regex only)
+    — no corpus, no I/O, no normalization pipeline. A vanilla / french-vanilla / plain-
+    ETB body reads low; a dies-trigger-that-recurs or a copy engine reads high."""
+    t = _STRUCT_REMINDER_RE.sub(" ", text or "")
+    if not t.strip():
+        return 0.0
+    score = 0.0
+    if _STRUCT_NONETB_TRIGGER_RE.search(t):
+        score += 4.0
+    if _STRUCT_ACTIVATED_RE.search(t):
+        score += 3.0
+    if _STRUCT_RULEBEND_RE.search(t):
+        score += 3.0
+    if _STRUCT_MODAL_RE.search(t):
+        score += 2.0
+    # Clause depth, LIGHTLY: extra sentences beyond the first, capped low — a wordy
+    # card isn't thereby distinctive, so verbosity can never carry the score alone.
+    clauses = [c for c in re.split(r"[.\n]", t) if c.strip()]
+    score += min(max(len(clauses) - 1, 0), 2) * 0.5
+    return round(min(10.0, score), 1)
+
+
+def card_distinctiveness(tags, text=""):
+    """0–10 ability-distinctiveness for a card — the MAX of two complementary signals:
+    tag-rarity (pool tag-idf) and structural (oracle-text shape). A distinctive card
+    mis-tagged generically is still caught by its text structure, while a truly generic
+    card (low on both) stays ~0. Structural only ever RAISES the score, so it can
+    rescue a mis-tag but never scramble the ranking. Pool unavailable → tag term 0;
+    text omitted → tag-only (backward-compatible with the tag-only call)."""
     idf, tribes, n = pool_ability_model()
-    return distinctiveness_score(tags, idf, tribes, n)
+    tag_score = distinctiveness_score(tags, idf, tribes, n)
+    return max(tag_score, structural_distinctiveness(text))
 
 
 def eprint(*args, **kwargs):

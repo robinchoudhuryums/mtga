@@ -145,6 +145,70 @@ class TestDistinctiveness:
         assert lib.distinctiveness_score(["landcycling"], {}, set(), 0) == 0.0
 
 
+class TestStructuralDistinctiveness:
+    """The oracle-text-shape signal that rescues cards the tag metric mis-reads."""
+
+    def test_vanilla_and_keyword_only_low(self):
+        assert lib.structural_distinctiveness("") == 0.0
+        assert lib.structural_distinctiveness("Trample") <= 1.0
+
+    def test_plain_etb_stays_low(self):
+        # A plain ETB token/lifegain body is generic — the enters-lookahead skips it.
+        assert lib.structural_distinctiveness(
+            "When this creature enters, create a 1/1 white Soldier creature token.") <= 2.0
+        assert lib.structural_distinctiveness(
+            "When this creature enters, you gain 3 life.") <= 2.0
+
+    def test_bare_mana_ability_excluded(self):
+        # A mana dork's "{T}: Add {G}" is generic, not a distinctive activated ability.
+        assert lib.structural_distinctiveness("{T}: Add {G}.") <= 1.0
+
+    def test_unusual_trigger_scores_high(self):
+        rich = lib.structural_distinctiveness(
+            "When this creature dies, destroy target permanent and return target "
+            "nonlegendary permanent card from your graveyard to the battlefield.")
+        plain = lib.structural_distinctiveness(
+            "When this creature enters, create a 1/1 token.")
+        assert rich > plain and rich >= 4.0
+
+    def test_copy_engine_scores_high(self):
+        # Thousand-Year Storm's shape: a "whenever you cast" trigger + a copy effect.
+        assert lib.structural_distinctiveness(
+            "Whenever you cast an instant or sorcery spell, copy it for each spell "
+            "cast before it this turn.") >= 4.0
+
+    def test_real_activated_ability_counts(self):
+        assert lib.structural_distinctiveness(
+            "{2}, {T}, Sacrifice this artifact: Draw a card.") >= 3.0
+
+    def test_bounds(self):
+        for txt in ("", "Flying", "{T}: Add {C}.",
+                    "Whenever you cast a spell, draw a card. Choose one — instead you may "
+                    "search your library. As long as you control it, spells cost less."):
+            assert 0.0 <= lib.structural_distinctiveness(txt) <= 10.0
+
+
+class TestCardDistinctivenessMax:
+    """card_distinctiveness takes the MAX of tag-rarity and structural — only RAISES."""
+
+    def test_text_omitted_is_tag_only(self):
+        # Backward-compatible: no text → tag-only score (structural term is 0).
+        assert lib.card_distinctiveness(["Bear"]) == lib.card_distinctiveness(["Bear"], "")
+
+    def test_structural_rescues_mistagged(self):
+        rescue_text = ("When this creature dies, destroy target permanent and return "
+                       "target card from your graveyard to the battlefield.")
+        tag_only = lib.card_distinctiveness(["etb", "tokens"], "")
+        combined = lib.card_distinctiveness(["etb", "tokens"], rescue_text)
+        assert combined >= 4.0 and combined >= tag_only
+
+    def test_never_lowers(self):
+        # Whatever the structure, the combined score is >= the tag-only score.
+        for text in ("", "Flying", "{T}: Add {G}."):
+            assert (lib.card_distinctiveness(["landcycling", "etb"], text)
+                    >= lib.card_distinctiveness(["landcycling", "etb"], ""))
+
+
 class TestCreatureSubtypes:
     def test_creature_line_yields_tribes(self):
         assert lib._creature_subtypes("Creature — Human Warrior") == {"Human", "Warrior"}

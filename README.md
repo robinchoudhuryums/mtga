@@ -243,13 +243,18 @@ independent axes and blends them:
   everywhere (copies are fungible across decks).
 
 A fourth column, **`uq` (ability-distinctiveness, 0–10)**, is *diagnostic* (it does
-**not** feed the blend): how rare a card's own abilities are across the pool — ~0 is
-generic templating (`etb`/`tokens`/`sacrifice`, the overlap that trips broad synergy
-checks), high is a distinctive mechanic. A low `uq` on a `review` card confirms it's
-filler; a high `uq` says the tags under-read it (grade from text). The same metric
-feeds a **bounded** nudge in `deck.py cuts` (its `Uq` column) — a generic-ability body
-sorts up the cut list, a distinctive card is protected — orthogonal to Power (a vanilla
-6/6 is high power, low distinctiveness).
+**not** feed the blend): how distinctive a card's abilities are — ~0 is generic
+templating (`etb`/`tokens`/`sacrifice`, the overlap that trips broad synergy checks),
+high is a distinctive mechanic. It's the **max of two signals**: **tag-rarity** (how
+rare the card's synergy tags are across the pool) and a **structural** read of the
+oracle text's shape (an unusual non-ETB trigger, a non-mana activated ability, rule-
+bending/replacement language, modality) — so a distinctive card whose ability was
+*tagged* generically is still caught by its text (Ragnarok's dies-trigger, a copy
+engine), while a truly generic card (low on both) stays ~0. A low `uq` on a `review`
+card confirms it's filler; a high `uq` says the tags under-read it (grade from text).
+The same metric feeds a **bounded** nudge in `deck.py cuts` (its `Uq` column) — a
+generic-ability body sorts up the cut list, a distinctive card is protected —
+orthogonal to Power (a vanilla 6/6 is high power, low distinctiveness).
 
 **Lands are scored on a different axis.** A land has no synergy themes, so theme
 fit would sink it to ~0; instead `--rank` rates a land on **manabase value** for

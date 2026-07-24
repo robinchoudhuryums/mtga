@@ -550,12 +550,23 @@ castability · curve · central-theme density), with the intangibles moving a de
   cut list (flagged "generic ability — trips broad synergy checks"), a distinctive card is
   mildly protected; gated by `check_suggest.py` anchor 8. It's **orthogonal to power** on
   purpose (a vanilla 6/6 is high power, low distinctiveness), so it earns its own small term.
-  The CAVEAT is inherent: tags are a lossy projection — a distinctive card mis-tagged
-  `etb; tokens` still reads generic (Ragnarok's dies-trigger, Thousand-Year Storm's storm
-  payoff both under-read), so `Uq` is a shortlist signal, not a verdict; the fully-robust
-  version would measure oracle-TEXT rarity. `wishlist.py --rank` shows the same metric as a
-  **`uq` diagnostic column** (display-only there — it does NOT feed `combined`): a low `uq`
-  on a `review` card confirms filler, a high `uq` says the tags under-read it — grade from text.
+  Tags are a lossy projection, so a **second, complementary signal** closes the residual:
+  `lib.structural_distinctiveness` reads the oracle TEXT's SHAPE — an unusual (non-ETB)
+  trigger, a non-mana activated ability, rule-bending / replacement language, modality,
+  clause depth — to catch "this card does something the tags didn't capture," with NO
+  corpus / build artifact / normalization pipeline (the cheap alternative to a text
+  TF-IDF model; option 2 of the two follow-ups). `card_distinctiveness(tags, text)` returns
+  the **MAX** of the tag-rarity and structural signals, so the structural term only ever
+  RAISES a score — it RESCUES a mis-tagged distinctive card (Ragnarok's dies-trigger 2.1→7.5,
+  Thousand-Year Storm's copy engine 3.6→7.5) but can never inflate a truly generic one
+  (vanilla / plain-ETB / bare-mana all stay low; the mana-dork activated ability is excluded).
+  Both callers pass the card's text; omitting it is tag-only (backward-compatible). The
+  RESIDUAL caveat is now small but real: a distinctive card with *neither* a rare tag *nor*
+  an unusual text shape still reads generic — so `Uq` remains a shortlist signal, not a
+  verdict (a full oracle-TEXT-rarity model is the heavier follow-up if this ever misfires).
+  `wishlist.py --rank` shows the metric as a **`uq` diagnostic column** (display-only there —
+  it does NOT feed `combined`): a low `uq` on a `review` card confirms filler, a high `uq`
+  says the tags under-read it — grade from text.
 - **`deck.py tier <id> --to <TIER>` now assembles a concrete CUT→ADD tune package (#4).**
   Past the measurable gap + owned/craft fillers, it pairs each filler that closes the gap
   with a weakest-fit cut from the SAME ranking `deck.py cuts` prints (so the two can't
@@ -663,8 +674,10 @@ and zero below 3 colors while `_is_color_fixer` requires both a fixing tag and
 rainbow text (anchor 6), the CUTS power co-signal stays bounded/neutral-centered/
 monotonic so it only breaks near-ties in the cut ranking (anchor 7), and the CUTS
 ability-distinctiveness co-signal stays bounded/neutral-centered/monotonic (anchor 8,
-which also proves the distinctiveness metric itself reads a vanilla card as ~0 and a
-rare mechanic above a generic one); **engine classifier** (`check_engines.py`) anchors the enabler/
+which also proves the tag-rarity metric reads a vanilla card as ~0 and a rare mechanic
+above a generic one, AND that the structural-text signal reads vanilla/plain-ETB/bare-mana
+low while rescuing an unusual trigger, `card_distinctiveness` taking the max so structural
+only ever raises); **engine classifier** (`check_engines.py`) anchors the enabler/
 payoff detection on canonical cards (#3); **tier floor** (`check_tier.py`) proves
 the archetype-aware floor grades non-aggro decks identically to before and only
 ever raises an aggro band (#4). It also emits **soft, non-gating warnings**:
@@ -703,7 +716,7 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format.
-- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _cuts_uniq_adj, distinctiveness_score (ability-rarity, tribe/evergreen-excluded), _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), fit_strength (specific-theme-gated KEY), import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
+- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _cuts_uniq_adj, distinctiveness_score (tag-rarity, tribe/evergreen-excluded), structural_distinctiveness (oracle-text-shape rescue), card_distinctiveness (max-combine), _creature_subtypes, _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), fit_strength (specific-theme-gated KEY), import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/
 
 **Invariant Library:**

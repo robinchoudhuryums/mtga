@@ -1024,8 +1024,10 @@ def _cuts_power_adj(power):
 # Ability-distinctiveness co-signal: theme fit and power both miss a distinct question —
 # is this card's ability set GENERIC TEMPLATING (the etb/tokens/sacrifice body that trips
 # broad synergy-overlap everywhere) or a distinctive mechanic? `lib.card_distinctiveness`
-# scores that from pool tag-rarity. A generic-ability filler is more cuttable; a
-# distinctive card is mildly protected. Centered at _CUTS_UNIQ_NEUTRAL, BOUNDED to ±cap so
+# scores that as the max of pool tag-rarity and a structural read of the oracle text (so a
+# mis-tagged distinctive card is still caught by its text shape). A generic-ability filler
+# is more cuttable; a distinctive card is mildly protected. Centered at _CUTS_UNIQ_NEUTRAL,
+# BOUNDED to ±cap so
 # it only breaks near-ties (theme fit stays dominant — guarded by check_suggest #8). It is
 # ORTHOGONAL to power (a vanilla 6/6 is high power, low distinctiveness), so it earns its
 # own small term rather than folding into the power adj.
@@ -3261,7 +3263,7 @@ def rank_cut_candidates(d):
         # Ability-distinctiveness co-signal: a generic-ability body (low pool tag-rarity)
         # sorts UP the cut list; a distinctive-mechanic card is mildly protected. Bounded
         # (±_CUTS_UNIQ_CAP) and orthogonal to power (see _cuts_uniq_adj / check_suggest #8).
-        uniq = card_distinctiveness(tags)
+        uniq = card_distinctiveness(tags, text)
         uniq_adj = _cuts_uniq_adj(uniq)
 
         # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
