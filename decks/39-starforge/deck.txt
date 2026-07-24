@@ -49,7 +49,7 @@ Deck
 # Creatures / walkers
 1 Mardu Devotee (TDM) 16
 1 Freya Crescent (FIN) 138
-1 Firion, Wild Rose Warrior (FIN) 137
+1 Silver Sable, Mercenary Leader (SPM) 13
 1 Barret Wallace (FIN) 129
 1 Thor, God of Thunder (MSH) 156
 1 Cloud, Planet's Champion (FIN) 552
@@ -79,3 +79,4 @@ Deck
 # Flex — options (comments; not part of the 60). See: deck.py flex 39
 #~ +Purple Dragon Punks | OWNED ramp — a 2nd equipment-mana dork (like Freya) if you want to lean harder into ramp-into-bombs; swap in for the weakest remaining filler (e.g. Honored Knight-Captain)
 #~ +Duty Beyond Death | U CRAFT spice — sac a creature: your team gains indestructible + a +1/+1 counter each. A wrath-blowout / combat trick; the only wildcard-costing option, hold unless you want the protection
+#~ -Silver Sable, Mercenary Leader | +Firion, Wild Rose Warrior | RARE craft upgrade — equipment payoff: team haste + a free temporary copy (equip {2} cheaper) of each nontoken Equipment you play. Silver Sable is the owned 0-wildcard stand-in; craft Firion when a rare is spare. (Genji Glove — double strike + extra combat, colorless rare — is the higher-priority equipment craft; grade a cut for it separately.)
