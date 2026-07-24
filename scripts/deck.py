@@ -58,7 +58,8 @@ import time
 import urllib.error
 import urllib.request
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty
+from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty,
+                 card_distinctiveness)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -1018,6 +1019,27 @@ def _cuts_power_adj(power):
     break near-ties, never override theme fit."""
     adj = _CUTS_POWER_W * (power - _CUTS_POWER_NEUTRAL)
     return max(-_CUTS_POWER_CAP, min(_CUTS_POWER_CAP, adj))
+
+
+# Ability-distinctiveness co-signal: theme fit and power both miss a distinct question —
+# is this card's ability set GENERIC TEMPLATING (the etb/tokens/sacrifice body that trips
+# broad synergy-overlap everywhere) or a distinctive mechanic? `lib.card_distinctiveness`
+# scores that from pool tag-rarity. A generic-ability filler is more cuttable; a
+# distinctive card is mildly protected. Centered at _CUTS_UNIQ_NEUTRAL, BOUNDED to ±cap so
+# it only breaks near-ties (theme fit stays dominant — guarded by check_suggest #8). It is
+# ORTHOGONAL to power (a vanilla 6/6 is high power, low distinctiveness), so it earns its
+# own small term rather than folding into the power adj.
+_CUTS_UNIQ_NEUTRAL = 4.0
+_CUTS_UNIQ_W = 0.30
+_CUTS_UNIQ_CAP = 1.5
+
+
+def _cuts_uniq_adj(uniq):
+    """Bounded keep-score nudge from a card's 0–10 ability-distinctiveness: >0 protects a
+    distinctive-mechanic card, <0 makes a generic-ability filler more cuttable. Clamped to
+    ±_CUTS_UNIQ_CAP so it only breaks near-ties, never overrides theme fit."""
+    adj = _CUTS_UNIQ_W * (uniq - _CUTS_UNIQ_NEUTRAL)
+    return max(-_CUTS_UNIQ_CAP, min(_CUTS_UNIQ_CAP, adj))
 
 
 _power_seed_warned = False  # one-time guard for the A14 degradation warning
@@ -3236,6 +3258,12 @@ def rank_cut_candidates(d):
         power = _power_seed({"Rarity": rar.get(nl, ""), "Card Text": text, "Type": tline})
         pow_adj = _cuts_power_adj(power)
 
+        # Ability-distinctiveness co-signal: a generic-ability body (low pool tag-rarity)
+        # sorts UP the cut list; a distinctive-mechanic card is mildly protected. Bounded
+        # (±_CUTS_UNIQ_CAP) and orthogonal to power (see _cuts_uniq_adj / check_suggest #8).
+        uniq = card_distinctiveness(tags)
+        uniq_adj = _cuts_uniq_adj(uniq)
+
         # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
         # Role credit is impact-weighted (see _role_credit) so a strong-but-off-theme
         # card (removal/engine/cost-reducer) isn't mis-ranked as a top cut. Passing the
@@ -3245,7 +3273,7 @@ def rank_cut_candidates(d):
         # card on the deck's #: protect: signature theme gets a further keep-boost (F#3)
         # so a generic-tagged-but-central theme (e.g. counters) isn't mistaken for filler.
         keep = (fit + _role_credit(roles, deck_tally) + (1 if hit_central else 0)
-                + (2 if sig_hit else 0) + min(tribal, 6) + pow_adj)
+                + (2 if sig_hit else 0) + min(tribal, 6) + pow_adj + uniq_adj)
         reasons = []
         if tags and not hit_central:
             reasons.append("off the deck's central themes")
@@ -3257,7 +3285,9 @@ def rank_cut_candidates(d):
             reasons.append("off-tribe")
         if power <= 3.0 and (hit_central or sig_hit):
             reasons.append(f"on-theme but low power (~{power:.1f})")
-        rows.append((keep, n, mv, sorted(roles), fit, reasons, ctx, text, is_int, power))
+        if uniq <= 1.5 and not sig_hit:
+            reasons.append("generic ability — trips broad synergy checks")
+        rows.append((keep, n, mv, sorted(roles), fit, reasons, ctx, text, is_int, power, uniq))
 
     rows.sort(key=lambda r: (r[0], r[1].lower()))
     return rows, central, prot_present, deck_int
@@ -3290,19 +3320,22 @@ def cmd_cuts(args):
     if deck_int < 5:
         print(f"⚠ deck runs only {deck_int} interaction piece(s) — rows tagged "
               f"⚠interaction are your removal/counters; cutting them lowers resilience.")
-    print(f"  {'Card':30} {'MV':>3}  {'Fit':>4}  {'Pw':>3}  Roles / why-cuttable")
-    print("-" * 78)
-    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power in rows[:limit]:
+    print(f"  {'Card':30} {'MV':>3}  {'Fit':>4}  {'Pw':>3}  {'Uq':>3}  Roles / why-cuttable")
+    print("-" * 82)
+    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq in rows[:limit]:
         mvs = str(mv) if mv is not None else "?"
         tail = ", ".join(roles) if roles else ("; ".join(reasons) if reasons else "—")
         low_pow = [r for r in reasons if r.startswith("on-theme but low power")]
         if roles and low_pow:  # a detected-role card can still be a weak body — say so
             tail += "  ·  " + low_pow[0]
+        gen = [r for r in reasons if r.startswith("generic ability")]
+        if roles and gen:  # a detected-role card can still be generic templating — say so
+            tail += "  ·  " + gen[0]
         if ctx:
             tail += f"   ⚠ context: {'/'.join(ctx)}"
         if is_int:
             tail += f"   ⚠interaction (deck runs {deck_int})"
-        print(f"  {n[:30]:30} {mvs:>3}  {fit:>4}  {power:>3.0f}  {tail}")
+        print(f"  {n[:30]:30} {mvs:>3}  {fit:>4}  {power:>3.0f}  {uniq:>3.0f}  {tail}")
 
     # Surface the actual oracle text so a cut is graded from what the card DOES,
     # never from the label above (the role map is a shortlist, not a verdict).
@@ -3310,7 +3343,7 @@ def cmd_cuts(args):
     text_n = args.limit if getattr(args, "limit", 0) and args.limit > 0 else min(12, len(rows))
     print(f"\n── Oracle text of the top {min(text_n, len(rows))} cut candidates "
           f"(grade from THIS, not the label) ──")
-    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power in rows[:text_n]:
+    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq in rows[:text_n]:
         warn = f"   ⚠ context: {'/'.join(ctx)} — value depends on this deck" if ctx else ""
         if is_int:
             warn += f"   ⚠interaction — 1 of the deck's {deck_int}"

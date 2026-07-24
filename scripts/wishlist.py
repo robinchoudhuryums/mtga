@@ -42,7 +42,8 @@ import math
 import os
 import sys
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty, card_colors
+from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty,
+                 card_colors, card_distinctiveness)
 from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
@@ -711,6 +712,7 @@ def _rank_scores(rows):
             "blank_power": not raw_power,
             "bad_power": bad_power, "raw_power": raw_power,
             "land_val": land_val, "rot": rot, "rot_year": rot_year,
+            "uniq": card_distinctiveness(ctags),
             "sig": "/".join(best_specific[:2]) or ("generic/no-theme" if conf == "review" else ""),
         })
     # Normalize fit (pri) to 0-10 and blend 50/50 with the hand-graded power
@@ -764,8 +766,8 @@ def cmd_rank(rows):
             n = sum(1 for x in scored if x["tier"] == cur)
             print(f"\n{labels[cur]}  ({n} cards)")
             print(f"  {'#':>3} {'Card':28} {'WC':3} {'Deck':6} {'state':6} {'fit':>4} "
-                  f"{'pow':>4} {'use':>3} {'comb':>5}  signal")
-            print("  " + "-" * 98)
+                  f"{'pow':>4} {'uq':>3} {'use':>3} {'comb':>5}  signal")
+            print("  " + "-" * 102)
             i = 0
         i += 1
         wc = (s["rarity"] or "?")[:1] or "?"
@@ -773,7 +775,7 @@ def cmd_rank(rows):
         use = f"{s['reuse']}★" if s["reuse"] >= 3 else str(s["reuse"])
         sig = s["sig"][:22] + (f"  ⚠rot~{s['rot_year']}" if s.get("rot") else "")
         print(f"  {i:>3} {s['name'][:28]:28} {wc:3} {s['target']:6} {s['state']:6} "
-              f"{s['fitN']:>4.1f} {pw} {use:>3} {s['combined']:>5.1f}  {sig}")
+              f"{s['fitN']:>4.1f} {pw} {s['uniq']:>3.0f} {use:>3} {s['combined']:>5.1f}  {sig}")
     print("\n" + "=" * 60)
     print("Wildcard cost by tier (you spend that rarity's wildcards):")
     for t in ("A", "B", "C"):
@@ -785,7 +787,12 @@ def cmd_rank(rows):
         print(f"  Tier {t}: {line}")
     blanks = [s["name"] for s in scored if s["blank_power"]]
     print("\ncomb = 50/50 blend of theme fit (fit, 0–10) and hand-graded power (pow), "
-          "plus a bounded breadth bonus. use = cross-deck reuse: # of your decks the card "
+          "plus a bounded breadth bonus. uq = ability-distinctiveness (0–10): how rare "
+          "this card's ABILITIES are across the pool — ~0 is generic templating (etb/"
+          "tokens/sacrifice, the overlap that trips broad synergy checks), high is a "
+          "distinctive mechanic. Diagnostic here (it does not feed comb); a low uq on a "
+          "'review' card confirms filler, a high uq says the tags under-read it — grade "
+          "from text. use = cross-deck reuse: # of your decks the card "
           "is castable in AND shares a central theme with (★ = fits ≥3 — craft once, play "
           "everywhere; copies are fungible). state = target deck's tier·remaining-crafts "
           "(★ = this card helps FINISH a near-complete deck; '—' = general/concept). A "

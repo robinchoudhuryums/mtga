@@ -148,6 +148,43 @@ def check():
         errs.append(f"_CUTS_POWER_CAP too large ({cap}): the power nudge must stay a "
                     "tie-breaker next to theme fit, not a lever.")
 
+    # (8) cuts ability-distinctiveness co-signal: the keep-score nudge from a card's 0–10
+    #     distinctiveness must be BOUNDED (±cap), neutral at the center, and monotonic (a
+    #     distinctive-mechanic card is protected, a generic-ability filler sorts up) — so it
+    #     only breaks near-ties and never overrides theme fit. Mirrors anchor 7; also proves
+    #     it stays ORTHOGONAL to power (its own bounded term, not folded into the power adj).
+    cua = deck._cuts_uniq_adj
+    ucap = deck._CUTS_UNIQ_CAP
+    if not all(abs(cua(u)) <= ucap for u in (0, 1.5, 4, 6, 8, 10)):
+        errs.append(f"_cuts_uniq_adj escapes ±{ucap} for an in-range distinctiveness (0–10): "
+                    f"{[cua(u) for u in (0, 4, 10)]}.")
+    if not (cua(100) == ucap and cua(-100) == -ucap):
+        errs.append(f"_cuts_uniq_adj clamp doesn't engage out-of-range: "
+                    f"cua(100)={cua(100)}, cua(-100)={cua(-100)} (want ±{ucap}).")
+    if cua(deck._CUTS_UNIQ_NEUTRAL) != 0.0:
+        errs.append(f"_cuts_uniq_adj not neutral at center {deck._CUTS_UNIQ_NEUTRAL}: "
+                    f"got {cua(deck._CUTS_UNIQ_NEUTRAL)}.")
+    if not (cua(9) > cua(4) > cua(1)):
+        errs.append(f"_cuts_uniq_adj not monotonic in distinctiveness: {[cua(1), cua(4), cua(9)]} "
+                    "— a distinctive card must be protected and a generic-ability filler cut.")
+    if ucap > 3.0:
+        errs.append(f"_CUTS_UNIQ_CAP too large ({ucap}): the distinctiveness nudge must stay a "
+                    "tie-breaker next to theme fit, not a lever.")
+
+    # The distinctiveness metric itself: a vanilla card (only a tribe tag) must read ~0, a
+    # rare-mechanic tag must outscore a generic one, and everything stays in [0, 10].
+    import lib
+    idf = {"etb": 1.6, "landcycling": 7.0, "Bear": 6.0}
+    n = 15000
+    vanilla = lib.distinctiveness_score(["Bear"], idf, {"Bear"}, n)
+    generic = lib.distinctiveness_score(["etb"], idf, {"Bear"}, n)
+    rare = lib.distinctiveness_score(["landcycling", "etb"], idf, {"Bear"}, n)
+    if not (0.0 <= vanilla <= 0.0):
+        errs.append(f"distinctiveness_score: a vanilla card (tribe tag only) must be 0.0, got {vanilla}.")
+    if not (0.0 <= generic < rare <= 10.0):
+        errs.append(f"distinctiveness_score: a rare mechanic ({rare}) must outscore a generic "
+                    f"tag ({generic}); both in [0,10].")
+
     return errs
 
 

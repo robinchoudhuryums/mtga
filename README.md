@@ -242,6 +242,15 @@ independent axes and blends them:
   fit+power one-deck sidegrade without ever dominating — craft once, play it
   everywhere (copies are fungible across decks).
 
+A fourth column, **`uq` (ability-distinctiveness, 0–10)**, is *diagnostic* (it does
+**not** feed the blend): how rare a card's own abilities are across the pool — ~0 is
+generic templating (`etb`/`tokens`/`sacrifice`, the overlap that trips broad synergy
+checks), high is a distinctive mechanic. A low `uq` on a `review` card confirms it's
+filler; a high `uq` says the tags under-read it (grade from text). The same metric
+feeds a **bounded** nudge in `deck.py cuts` (its `Uq` column) — a generic-ability body
+sorts up the cut list, a distinctive card is protected — orthogonal to Power (a vanilla
+6/6 is high power, low distinctiveness).
+
 **Lands are scored on a different axis.** A land has no synergy themes, so theme
 fit would sink it to ~0; instead `--rank` rates a land on **manabase value** for
 its target deck — how much of the deck's colors it actually produces (a WB dual in

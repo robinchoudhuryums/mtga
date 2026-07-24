@@ -100,6 +100,66 @@ class TestAtomicWrite:
         assert not list(tmp_path.glob("*.tmp"))  # temp cleaned up
 
 
+class TestDistinctiveness:
+    # A small hand-built pool model: idf per tag, the tribe-tag set, and pool size.
+    IDF = {"etb": 1.6, "tokens": 1.7, "sacrifice": 2.0, "landcycling": 7.0,
+           "Case": 7.2, "Human": 1.9, "Bear": 6.0}
+    TRIBES = {"Human", "Bear"}
+    N = 15000
+
+    def score(self, tags):
+        return lib.distinctiveness_score(tags, self.IDF, self.TRIBES, self.N)
+
+    def test_vanilla_tribe_only_is_zero(self):
+        # Grizzly Bears: a bare creature type is identity, not a distinctive ability.
+        assert self.score(["Bear"]) == 0.0
+
+    def test_evergreen_only_is_zero(self):
+        # A french-vanilla body (only an evergreen keyword) has no distinctive ability.
+        assert self.score(["flying", "trample"]) == 0.0
+
+    def test_empty_is_zero(self):
+        assert self.score([]) == 0.0
+
+    def test_rare_mechanic_outscores_generic(self):
+        generic = self.score(["etb", "tokens"])
+        rare = self.score(["landcycling", "etb"])
+        assert 0.0 < generic < rare <= 10.0
+
+    def test_rarest_two_drive_the_score(self):
+        # Adding a common tag to a card that already has a rare one shouldn't dilute it
+        # much — the top-2 mean is driven by the rarest abilities, not the average.
+        just_rare = self.score(["landcycling", "Case"])
+        with_filler = self.score(["landcycling", "Case", "etb", "tokens", "sacrifice"])
+        assert with_filler == just_rare  # top-2 unchanged by generic filler
+
+    def test_tribe_excluded_from_ability_score(self):
+        # A rare TRIBE (Bear idf 6.0) must NOT count as a distinctive ability — only the
+        # mechanic tags do, so this scores off 'etb' alone, not off 'Bear'.
+        assert self.score(["Bear", "etb"]) == self.score(["etb"])
+
+    def test_bounds_and_empty_model(self):
+        for tags in (["landcycling"], ["Case", "etb"], ["etb"]):
+            assert 0.0 <= self.score(tags) <= 10.0
+        # No pool model → neutral 0.0, never a crash.
+        assert lib.distinctiveness_score(["landcycling"], {}, set(), 0) == 0.0
+
+
+class TestCreatureSubtypes:
+    def test_creature_line_yields_tribes(self):
+        assert lib._creature_subtypes("Creature — Human Warrior") == {"Human", "Warrior"}
+
+    def test_noncreature_subtype_excluded(self):
+        # Equipment/Aura are mechanics we WANT to keep as ability tags, so the tribe set
+        # must not swallow them (only Creature-line subtypes are tribes).
+        assert lib._creature_subtypes("Artifact — Equipment") == set()
+        assert lib._creature_subtypes("Enchantment — Aura") == set()
+
+    def test_dfc_both_faces(self):
+        got = lib._creature_subtypes("Creature — Elf Druid // Creature — Beast")
+        assert got == {"Elf", "Druid", "Beast"}
+
+
 class TestWriteRows:
     def test_roundtrip_canonical_header(self, tmp_path):
         p = tmp_path / "lib.csv"
