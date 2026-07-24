@@ -1,0 +1,60 @@
+#: name: Starforge
+#: format: Standard
+#: colors: WR
+#: archetype: Boros (W/R) equipment — a different flavor from the Orzhov Armory
+#: archetype: decks (38/38a): aggressive white-red suit-up with a Thor / God-Squad
+#: archetype: top-end and a Cloud equipment package. Aspirational build target.
+#: notes: Ingested via /add-deck as a WIP — NOT yet fully owned, so `deck.py check`
+#: notes: shows craft targets. Currently 61 cards (37 nonland + 24 lands) — 1 OVER
+#: notes: the 60 limit; trim in the /tune-deck pass. Shares much of its equipment /
+#: notes: carrier package with decks 38/38a (Cloud, Zack Fair, Weapons Vendor,
+#: notes: Super-Soldier Serum, Celestial Armor, Web-Shooters, Quintessential Katana,
+#: notes: Wrench, Stormbeacon Blade) — copies are fungible across all of them.
+
+Deck
+# Equipment
+1 Diamond Pick-Axe (LCI) 143
+1 Hard-Won Jitte (TMT) 91
+1 Hawkeye's Bow (MSH) 132
+1 Samurai's Katana (FIN) 154
+1 Knife (MKM) 134
+1 Twin Blades (TLA) 157
+1 Mjölnir, Hammer of Thor (MSH) 146
+1 Warrior's Sword (FIN) 169
+1 Coral Sword (FIN) 134
+1 Quintessential Katana (TMT) 23
+1 Wrench (MKM) 37
+1 Stormbeacon Blade (TDM) 27
+1 Celestial Armor (FDN) 5
+1 Web-Shooters (SPM) 22
+1 Super-Soldier Serum (MSH) 38
+
+# Creatures / walkers
+1 Freya Crescent (FIN) 138
+1 Firion, Wild Rose Warrior (FIN) 137
+1 Barret Wallace (FIN) 129
+1 Thor, God of Thunder (MSH) 156
+1 Cloud, Planet's Champion (FIN) 552
+1 Seedglaive Mentor (BLB) 231
+1 Thor Odinson (MSH) 234
+1 Aurelia, the Warleader (FDN) 651
+1 Sami, Wildcat Captain (EOE) 226
+1 Zack Fair (FIN) 45
+1 Cloud, Midgar Mercenary (FIN) 10
+1 Honored Knight-Captain (EOE) 22
+1 Weapons Vendor (FIN) 40
+1 Raphael, the Nightwatcher (TMT) 103
+1 Raph & Leo, Sibling Rivals (TMT) 166
+
+# Other spells / enchantments
+1 Blacksmith's Talent (BLB) 125
+1 Idol of the Deep King (LCI) 155
+1 Unexpected Request (FIN) 167
+1 Slash of Light (FIN) 32
+1 Dig Site Inventory (SOS) 10
+1 Go Ninja Go (TMT) 149
+1 The Super Hero Civil War (MSH) 231
+
+# Lands
+12 Plains (MSH) 288
+12 Mountain (MSH) 294
