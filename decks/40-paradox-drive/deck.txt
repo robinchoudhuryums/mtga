@@ -1,0 +1,76 @@
+#: name: Paradox Drive
+#: format: Standard
+#: colors: GU
+#: archetype: Simic (G/U) big-mana ramp-CONTROL — ramp + a counter/removal shell into a
+#: archetype: game-ending X-spell (Finale of Revelation / Doppelgang / Mind Spring), with
+#: archetype: Taigam copying the payoff and Paradox Surveyor smoothing land/X-spell draws.
+#: archetype: Built to be DISTINCT from the Simic counters decks (04 Quantum Realm) and the
+#: archetype: Temur Fractals/counters ramp deck (30 Fractalandtastic): this wins TALL with
+#: archetype: one huge spell + card advantage, NOT a wide +1/+1-counter board — so it
+#: archetype: deliberately skips the Fractal / counter-doubler package they own.
+#: tier: A — Simic ramp-control (PROVISIONAL — confirm per the rubric). Metrics floor is A:
+#: tier: interaction 10 (6 hard counters + Syncopate + ~4 removal/tempo) + card-advantage 5
+#: tier: on a tight 2.27 curve = a strong resilience axis, coherent control engine. Held from
+#: tier: S by singleton variance and a diffuse (good-stuff) theme spine; the one clear
+#: tier: weakness is leaning on resolving a big X-spell. Aspirational WIP (4 craft targets).
+#: protect: Taigam, Master Opportunist; Paradox Surveyor; Finale of Revelation
+#: notes: DISTINCTIVENESS is the design goal — see archetype. The counter-Hydra finishers
+#: notes: (Wildwood Scourge, The Goose Mother) are kept as fungible X-payoff FINISHERS, not
+#: notes: as a counters engine; if `counters` reads as a central theme, trim them for more
+#: notes: non-counter X-spells to stay clear of decks 04/30. Craft targets: Paradox
+#: notes: Surveyor, Mind Spring, Doppelgang, Finale of Revelation.
+
+Deck
+# Ramp / dorks
+1 Bloom Tender (ECL) 166
+1 Druid of the Cowl (FDN) 554
+1 Great Divide Guide (TLA) 181
+1 Environmental Scientist (SOS) 147
+
+# Engine + payoff creatures / finishers
+1 Paradox Surveyor (SOS) 208
+1 Taigam, Master Opportunist (TDM) 60
+1 Mindspring Merfolk (DFT) 51
+1 Bold Biochemist (MSH) 48
+1 Floodpits Drowner (DSK) 59
+1 Absorbing Man (MSH) 199
+1 Emeritus of Abundance (SOS) 145
+1 Y'shtola Rhul (FIN) 86
+1 Wan Shi Tong, Librarian (TLA) 78
+1 Wildwood Scourge (FDN) 236
+1 The Goose Mother (WOE) 204
+1 Namor the Sub-Mariner (MSH) 69
+
+# X-spell payoffs / card advantage
+1 Mind into Matter (SOS) 202
+1 Mind Spring (BLB) 389
+1 Portent of Calamity (BLB) 66
+1 Finale of Revelation (FDN) 589
+1 Doppelgang (MKM) 198
+1 Ignis Scientia (FIN) 227
+1 Kiora, the Rising Tide (FDN) 45
+
+# Interaction — counters
+1 Syncopate (FIN) 80
+1 Essence Scatter (SOS) 47
+1 Negate (TMT) 47
+1 Disdainful Stroke (WOE) 47
+1 Reasonable Doubt (MKM) 69
+1 Mana Sculpt (SOS) 57
+
+# Interaction — removal / tempo
+1 Epic Fight (MSH) 166
+1 Broken Wings (DFT) 156
+1 Procrastinate (SOS) 64
+1 Chelonian Tackle (SOS) 142
+1 Unforgiving Aim (ECL) 200
+
+# Lands — 25, Simic; owned untapped duals over straight basics
+1 Breeding Pool (TRK) 279
+1 Willowrush Verge (DFT) 270
+1 Dreamroot Cascade (SOS) 254
+1 Thornwood Falls (TDM) 269
+1 Opulent Palace (TDM) 264
+1 Meditation Pools (TLA) 272
+10 Island (MSH) 289
+10 Forest (MSH) 295
