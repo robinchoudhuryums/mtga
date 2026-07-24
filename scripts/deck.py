@@ -1807,6 +1807,17 @@ GENERIC_THEMES = {
     "prowess", "ward", "hexproof", "indestructible", "protection", "defense",
     "defender", "resilience", "shroud", "fear", "intimidate",
 }
+# Creature tribes so broad they carry no HOME signal — nearly every creature in a
+# superhero/anime multiverse is a Human and a Hero or Villain, so sharing one is not a
+# synergy. Treated as generic by `fit_strength` (the tribal analog of GENERIC_THEMES) so a
+# card doesn't read KEY in a deck merely for sharing a background tribe (the Hawkeye-"KEY"-
+# in-every-Hero/Human-deck over-assignment). Narrow, build-around tribes (Ninja, Cat,
+# Dinosaur, Knight, Wizard, Merfolk, …) are deliberately NOT here — those ARE real
+# signature themes. A genuine broad-tribe payoff (a "Heroes you control get +1/+1" lord)
+# can still read KEY via the deck's `#: protect:` signature; this only stops a BARE shared
+# tribe from carrying a home by itself. Kept separate from GENERIC_THEMES so other
+# consumers (which compare Title-case) are unaffected — fit_strength lowercases.
+_GENERIC_TRIBES = {"human", "hero", "villain"}
 _INTERACTION_ROLES = {"Removal (spot)", "Sweeper", "Counter"}
 
 
@@ -1923,8 +1934,8 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
                      (interaction < 5 / card advantage < 3), OR shares the deck's most-
                      common specific theme.
       role-player  – shares a specific central theme, but not the signature.
-      tangential   – shares only GENERIC themes (etb/tokens/…): broadly playable, not a
-                     specific home.
+      tangential   – shares only GENERIC themes (etb/tokens/…) or broad background tribes
+                     (_GENERIC_TRIBES: Human/Hero/Villain): broadly playable, not a home.
 
     `signature` (from `_signature_themes`) corrects the idf blind spot: a theme in
     GENERIC_THEMES is still SPECIFIC-for-this-deck if the deck protects cards built
@@ -1938,9 +1949,14 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
     column), not a specific home — so a fit resting only on generic themes stays
     tangential even when the deck happens to be short on that role.
     """
-    specific = [t for t in shared if t.lower() not in GENERIC_THEMES or t in signature]
-    # A signature-theme match is always a genuine home (the deck's spine).
-    if signature and any(t in signature for t in shared):
+    specific = [t for t in shared
+                if (t.lower() not in GENERIC_THEMES or t in signature)
+                and t.lower() not in _GENERIC_TRIBES]
+    # A signature-theme match is a genuine home (the deck's spine) — but a broad
+    # background tribe (Human/Hero/Villain) is NOT a signature even when a protected card
+    # happens to carry it, so it can't mint a KEY by itself (tagging-misreads #4).
+    if signature and any(t in signature and t.lower() not in _GENERIC_TRIBES
+                         for t in shared):
         return "KEY"
     # No SPECIFIC shared theme -> at most GENERICALLY playable here, not a synergy home.
     # Checked BEFORE the role-gap branch on purpose (see docstring).
@@ -4262,8 +4278,29 @@ def cmd_suggest_homes(args):
     mana = load_mana()
     cd = carddata.get(card.lower())
     if not cd:
+        # Resolve a partial name the way card.py does. Exact + DFC front are already keyed
+        # in carddata; this adds UNIQUE-substring matching so 'Ojer Taq' resolves to
+        # 'Ojer Taq, Deepest Foundation // …' (a God//Land DFC) instead of "not found".
+        ql = card.strip().lower()
+        subs = sorted({c0["name"] for k, c0 in carddata.items() if ql in k}, key=len)
+        if len(subs) == 1:
+            card = subs[0]
+            cd = carddata.get(card.lower())
+        elif len(subs) > 1:
+            eprint(f"{args.card!r} is ambiguous — matches: " + "; ".join(subs[:8])
+                   + (" …" if len(subs) > 8 else "") + "\nUse a more specific name.")
+            return 1
+    if not cd:
         eprint(f"{card!r} not found in card-library.csv or card-pool.csv — check spelling.")
         return 1
+    # Format-legality: a card can only be a "home" for a deck it's LEGAL in that deck's
+    # format (Triumph of the Hordes is not Standard-legal, so it isn't a Standard home).
+    # Reuses the pool's Legalities snapshot; unverified (pool-absent) legalities are
+    # treated as legal, matching `suggest`/`legal`. `--any-format` disables the filter.
+    any_format = getattr(args, "any_format", False)
+    _pool_idx, _ = _pool_rotation_index()
+    _cinfo = _pool_idx.get(card.lower()) or _pool_idx.get(card.split(" // ")[0].lower())
+    card_legals = _cinfo[1] if _cinfo else None
     ccols = card_colors(cd.get("colors"))
     ctags = set(cardmeta.get(card.lower(), {}).get("synergies", []))
     is_fixer = _is_color_fixer(ctags, cd.get("text") or "")
@@ -4273,11 +4310,18 @@ def cmd_suggest_homes(args):
           f"{'   [rainbow fixer — value scales with a deck’s color count]' if is_fixer else ''}\n")
 
     results = []
+    skipped_illegal = 0
     for dd in discover_decks():
         dmeta, cards = parse_deck_file(dd["path"])
         castable = _deck_castable_colors(dmeta, cards, mana)
         if not ccols.issubset(castable):
             continue
+        # Skip a deck whose format the card isn't legal in (see card_legals above).
+        if not any_format and card_legals:
+            dfmt = (dmeta.get("format") or "").strip().lower()
+            if dfmt and dfmt not in card_legals:
+                skipped_illegal += 1
+                continue
         theme_w = {}
         for q, n, s, c in cards:
             if n.lower() in BASICS:
@@ -4289,7 +4333,8 @@ def cmd_suggest_homes(args):
         shared = sorted(ctags & _central_themes(theme_w))
         if not shared:
             continue
-        already = card.lower() in {n.lower() for _, n, _, _ in cards}
+        already = bool({card.lower(), card.split(" // ")[0].lower()}
+                       & {n.lower() for _, n, _, _ in cards})
         fit = sum(theme_w.get(t, 0) for t in shared)
         d_int, d_ca = deck_role_counts(cards, carddata)
         sig = _signature_themes(dmeta, cards, cardmeta)
@@ -4310,10 +4355,13 @@ def cmd_suggest_homes(args):
         cut = None if already else _weakest_cut(dmeta, cards, cardmeta, carddata)
         results.append((fit, dd["id"], already, shared, cut, strength))
 
+    if skipped_illegal:
+        print(f"({skipped_illegal} castable deck(s) skipped — the card isn't legal in "
+              f"their format; use --any-format to include them.)\n")
     if not results:
         print("No deck is both castable and shares a central theme with this card.\n"
-              "(Off-color everywhere, or its themes are too generic — try "
-              "`deck.py suggest <id>` from a specific deck instead.)")
+              "(Off-color everywhere, its themes are too generic, or it's format-illegal "
+              "everywhere — try `deck.py suggest <id>` from a specific deck instead.)")
         return 0
     # Sort KEY fits first (then role-player, then tangential), then by fit weight —
     # so the decks the card most belongs in lead, differentiating a key from a
@@ -5606,6 +5654,8 @@ def main():
     p = sub.add_parser("suggest-homes",
                        help="find which decks a card fits (castable + shared theme), with a cut")
     p.add_argument("card", help="card name to place across your decks")
+    p.add_argument("--any-format", action="store_true",
+                   help="don't filter to decks whose format the card is legal in")
     args = ap.parse_args()
 
     return {

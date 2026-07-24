@@ -268,6 +268,24 @@ def check():
     if any(c > 3.0 for c in (deck._RAMP_ACCEL_CAP, cap, scap)):
         errs.append("needs-model caps too large: they must stay bounded tie-breakers.")
 
+    # (11) fit_strength must NOT credit a bare BROAD-TRIBE overlap as a home (the
+    #      Hawkeye-"KEY"-in-every-Hero/Human-deck over-assignment, tagging-misreads #4):
+    #      a broad background tribe (_GENERIC_TRIBES) can't mint KEY even as the top theme
+    #      or via a #: protect: signature — while a NARROW tribe and a specific theme still
+    #      do. This keeps the tribe demotion from silently regressing into a false KEY.
+    fs = deck.fit_strength
+    if fs(["Human", "Hero"], {"Human": 19, "Hero": 15}, "", 8, 8) != "tangential":
+        errs.append("fit_strength: a bare broad-tribe overlap must be tangential, not KEY.")
+    if fs(["Human"], {"Human": 19}, "", 8, 8, signature={"Human"}) != "tangential":
+        errs.append("fit_strength: a broad tribe must not mint KEY via a #: protect: signature.")
+    if fs(["Ninja"], {"Ninja": 10}, "", 8, 8) != "KEY":
+        errs.append("fit_strength: a narrow build-around tribe must still read KEY.")
+    if fs(["Human", "Dinosaur"], {"Human": 5, "Dinosaur": 10}, "", 8, 8) != "KEY":
+        errs.append("fit_strength: a specific theme alongside a broad tribe must still read KEY.")
+    if not deck._GENERIC_TRIBES or "wizard" in deck._GENERIC_TRIBES:
+        errs.append("_GENERIC_TRIBES must be non-empty and must NOT include real tribal "
+                    "signatures (e.g. Wizard).")
+
     return errs
 
 

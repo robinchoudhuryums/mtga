@@ -383,6 +383,32 @@ class TestFitStrength:
     def test_generic_only_no_gap_is_tangential(self):
         assert deck.fit_strength(["tokens"], {"tokens": 10}, "", 8, 8) == "tangential"
 
+    # --- broad background tribes never mint a KEY by themselves (tagging-misreads #4) ---
+    def test_broad_tribe_top_theme_is_not_key(self):
+        # Hawkeye sharing only Human/Hero with a mono-Human deck must NOT read KEY even
+        # though Human is the deck's most-common theme (the KEY-in-every-Hero-deck fix).
+        assert deck.fit_strength(["Human", "Hero"], {"Human": 19, "Hero": 15},
+                                 "", 8, 8) == "tangential"
+
+    def test_broad_tribe_not_key_via_signature(self):
+        # A broad tribe can't mint KEY even when a protected card carries it.
+        assert deck.fit_strength(["Human"], {"Human": 19}, "", 8, 8,
+                                 signature={"Human"}) == "tangential"
+
+    def test_broad_tribe_plus_role_gap_is_not_key(self):
+        # A removal card sharing only a broad tribe stays out of KEY on a low-int deck.
+        assert deck.fit_strength(["Human"], {"Human": 19}, "Destroy target creature.",
+                                 deck_int=2, deck_ca=0) == "tangential"
+
+    def test_narrow_tribe_still_key(self):
+        # Narrow, build-around tribes remain real signals.
+        assert deck.fit_strength(["Ninja"], {"Ninja": 10}, "", 8, 8) == "KEY"
+
+    def test_specific_theme_survives_alongside_broad_tribe(self):
+        # A card sharing a broad tribe AND a specific theme is graded on the specific one.
+        assert deck.fit_strength(["Human", "Dinosaur"], {"Human": 5, "Dinosaur": 10},
+                                 "", 8, 8) == "KEY"
+
 
 class TestRedundancyPlanner:
     """The 'virtual copies first, duplicates as fallback' decision helper."""
