@@ -29,7 +29,7 @@ Deck
 # Equipment
 1 Diamond Pick-Axe (LCI) 143
 1 Hard-Won Jitte (TMT) 91
-1 Hawkeye's Bow (MSH) 132
+1 Iron Man Armor (MSH) 248
 1 Samurai's Katana (FIN) 154
 1 Twin Blades (TLA) 157
 1 Mjölnir, Hammer of Thor (MSH) 146
