@@ -450,6 +450,28 @@ class TestDeckSimilarity:
         s = deck._theme_cosine({"Ninja": 5, "etb": 9}, {"Ninja": 5, "etb": 2}, specific_only=True)
         assert abs(s - 1.0) < 1e-9
 
+    def test_sim_specific_signature_rescues_generic(self):
+        assert not deck._sim_specific("counters", frozenset())          # generic by default
+        assert deck._sim_specific("counters", frozenset({"counters"}))  # rescued as a spine
+        assert deck._sim_specific("Ninja", frozenset())                 # specific always
+
+    def test_keep_rescues_generic_in_cosine(self):
+        # Rescuing a shared generic SPINE (a counters-doubler deck) makes the pair read as
+        # MORE similar than treating counters as damped value overlap.
+        a, b = {"counters": 10, "Ninja": 1}, {"counters": 10, "Cat": 1}
+        assert deck._theme_cosine(a, b, keep=frozenset({"counters"})) > deck._theme_cosine(a, b)
+
+    def test_strong_signature_needs_multiple_protected_cards(self):
+        # A theme is a real spine only if >=2 protected cards carry it — a lone protected
+        # bomb's incidental tag (card draw) must NOT be rescued.
+        meta = {"protect": "A; B; C"}
+        cards = [(1, "A", "", ""), (1, "B", "", ""), (1, "C", "", "")]
+        cardmeta = {"a": {"synergies": ["counters", "flying"]},
+                    "b": {"synergies": ["counters", "haste"]},
+                    "c": {"synergies": ["card draw"]}}
+        sig = deck._strong_signature_themes(meta, cards, cardmeta)
+        assert "counters" in sig and "card draw" not in sig and "flying" not in sig
+
 
 class TestHomeCurveFit:
     """suggest-homes curve co-signal (#5): a bounded, never-boosting SORT nudge that

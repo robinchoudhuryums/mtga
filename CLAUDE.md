@@ -658,8 +658,12 @@ castability · curve · central-theme density), with the intangibles moving a de
   theme `✦` when SPECIFIC (an identity theme) and splits the verdict: a `⚠ overlap` (≥60% AND
   shares a specific theme — a real duplicate-identity signal) from a softer `· value overlap`
   (high sim on generic value themes only — both are value decks, not the same deck), so a
-  diffuse good-stuff deck doesn't false-alarm as a duplicate. `--specific-only` scores identity
-  themes alone (a diffuse deck then honestly reads as sharing nothing specific). The roster "is
+  diffuse good-stuff deck doesn't false-alarm as a duplicate. A generic-by-idf theme is
+  RESCUED to specific (✦) when it's a deck's real BUILD-AROUND spine — carried by ≥2 of its
+  `#: protect:` cards (`_strong_signature_themes`), so a counters-doubler deck reads counters
+  as its identity (30↔04 flags ⚠), while a lone protected bomb's incidental card-draw/etb tag
+  can't promote a diffuse deck's generic overlap into a false match. `--specific-only` scores
+  identity themes alone (a diffuse deck then honestly reads as sharing nothing specific). The roster "is
   this deck distinct or a duplicate?" check (answers the question a from-scratch build always
   raises; it's a SHORTLIST — grade the DOMINANT theme + win-con from `deck.py text`, not the
   number — a shared tribe can be incidental, e.g. Druid mana dorks). **`deck.py resolve <names…>`** turns card names into

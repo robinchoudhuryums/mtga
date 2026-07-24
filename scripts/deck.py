@@ -4325,27 +4325,56 @@ def _theme_is_generic(t):
     return t.lower() in GENERIC_THEMES or t.lower() in _GENERIC_TRIBES
 
 
-def _sim_weights(vec, specific_only=False):
+def _strong_signature_themes(meta, cards, cardmeta, min_cards=2):
+    """Signature themes carried by ≥`min_cards` of the deck's `#: protect:` cards — a real
+    BUILD-AROUND spine (a counters deck that protects several counter-doublers), NOT a generic
+    theme incidental to one protected bomb. Stricter than `_signature_themes` (which unions
+    ALL protected cards' tags): used by `similar`'s generic-rescue so a lone protected card's
+    card-draw/etb tag can't promote a diffuse value deck's generic overlap into a false
+    identity match (a counters spine spans multiple protected cards; Finale's card-draw doesn't)."""
+    prot = _protected(meta)
+    if not prot:
+        return frozenset()
+    counts = {}
+    for q, n, s, c in cards:
+        if n.lower() in prot:
+            m = cardmeta.get(n.lower())
+            if m:
+                for t in set(m["synergies"]):
+                    counts[t] = counts.get(t, 0) + 1
+    return frozenset(t for t, k in counts.items() if k >= min_cards)
+
+
+def _sim_specific(t, keep):
+    """Is theme `t` SPECIFIC for a similarity comparison? Non-generic themes always are; a
+    generic-by-idf theme counts as specific when it's a deck's `#: protect:` SIGNATURE
+    (in `keep`) — so a counters-doubler deck whose spine IS counters reads counters as an
+    identity theme, not generic value overlap (the same signature rescue `fit_strength` uses)."""
+    return (not _theme_is_generic(t)) or t in keep
+
+
+def _sim_weights(vec, specific_only=False, keep=frozenset()):
     """Down-weight GENERIC themes/tribes in a central-theme vector for the similarity cosine:
     two decks sharing a SPECIFIC theme (a tribe, a build-around mechanic) are far more alike
     than two that merely both run card-draw/etb — otherwise every diffuse value deck reads as
-    a near-duplicate of every other. `specific_only` DROPS generics entirely (a pure-identity
-    lens), so a diffuse good-stuff deck honestly reads as sharing nothing specific."""
+    a near-duplicate of every other. `keep` (the pair's signature themes) rescues a generic
+    theme that IS a deck's spine. `specific_only` DROPS the remaining generics entirely (a
+    pure-identity lens), so a diffuse good-stuff deck honestly reads as sharing nothing specific."""
     out = {}
     for t, w in vec.items():
-        g = _theme_is_generic(t)
-        if g and specific_only:
+        spec = _sim_specific(t, keep)
+        if not spec and specific_only:
             continue
-        out[t] = w * (_SIM_GENERIC_DAMP if g else 1.0)
+        out[t] = w * (1.0 if spec else _SIM_GENERIC_DAMP)
     return out
 
 
-def _theme_cosine(a, b, specific_only=False):
+def _theme_cosine(a, b, specific_only=False, keep=frozenset()):
     """Cosine similarity of two {theme: weight} vectors (generic-damped via `_sim_weights`,
-    or generic-EXCLUDED when specific_only). A shared SPECIFIC dominant theme drives the score
-    far more than an incidental etb overlap — the 'do these two decks do the same thing'
-    signal, not 'are they both value decks'."""
-    a, b = _sim_weights(a, specific_only), _sim_weights(b, specific_only)
+    or generic-EXCLUDED when specific_only; `keep` = the pair's signature themes). A shared
+    SPECIFIC dominant theme drives the score far more than an incidental etb overlap — the
+    'do these two decks do the same thing' signal, not 'are they both value decks'."""
+    a, b = _sim_weights(a, specific_only, keep), _sim_weights(b, specific_only, keep)
     shared = set(a) & set(b)
     if not shared:
         return 0.0
@@ -4372,7 +4401,8 @@ def cmd_similar(args):
     if not aw:
         print(f"Deck {d['id']} has no central themes to compare (too few tagged cards).")
         return 0
-    a_specific = [t for t in aw if not _theme_is_generic(t)]
+    sig_a = _strong_signature_themes(meta, cards, cardmeta)   # multi-card spine — rescues a
+    a_specific = [t for t in aw if _sim_specific(t, sig_a)]   # generic theme that's the identity
     if spec_only and not a_specific:
         print(f"Deck {d['id']}: {d.get('name') or d['id']} has NO specific central themes — "
               "it's a diffuse good-stuff/value deck, so it's distinct BY IDENTITY from every\n"
@@ -4384,13 +4414,14 @@ def cmd_similar(args):
             continue
         m2, c2 = parse_deck_file(dd["path"])
         bw = _deck_central_weights(m2, c2, cardmeta)
-        sim = _theme_cosine(aw, bw, spec_only)
+        keep = sig_a | _strong_signature_themes(m2, c2, cardmeta)   # EITHER deck's spine counts
+        sim = _theme_cosine(aw, bw, spec_only, keep)
         if sim <= 0:
             continue
         bcols = _declared_colors(m2) or _deck_castable_colors(m2, c2, mana)
         colj = len(acols & bcols) / len(acols | bcols) if (acols | bcols) else 0.0
         shared = sorted(set(aw) & set(bw), key=lambda t: -(min(aw[t], bw[t])))
-        spec = [t for t in shared if not _theme_is_generic(t)]
+        spec = [t for t in shared if _sim_specific(t, keep)]
         rows.append((sim, colj, dd["id"], dd.get("name") or dd["id"], shared, spec))
     rows.sort(key=lambda r: (-r[0], -r[1], r[2]))
     limit = getattr(args, "limit", 8) or 8
@@ -4411,7 +4442,8 @@ def cmd_similar(args):
             flag = ""
         else:
             flag = " · distinct"
-        disp = ", ".join((("✦" + t) if not _theme_is_generic(t) else t) for t in shared[:5])
+        specset = set(spec)
+        disp = ", ".join((("✦" + t) if t in specset else t) for t in shared[:5])
         print(f"  {sim*100:>3.0f}% {colj*100:>3.0f}%  {did:6} {disp}{flag}")
     top = rows[0] if rows else None
     if top and top[0] >= 0.60 and top[5]:
