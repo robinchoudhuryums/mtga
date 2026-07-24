@@ -242,6 +242,20 @@ independent axes and blends them:
   fit+power one-deck sidegrade without ever dominating — craft once, play it
   everywhere (copies are fungible across decks).
 
+A fourth column, **`uq` (ability-distinctiveness, 0–10)**, is *diagnostic* (it does
+**not** feed the blend): how distinctive a card's abilities are — ~0 is generic
+templating (`etb`/`tokens`/`sacrifice`, the overlap that trips broad synergy checks),
+high is a distinctive mechanic. It's the **max of two signals**: **tag-rarity** (how
+rare the card's synergy tags are across the pool) and a **structural** read of the
+oracle text's shape (an unusual non-ETB trigger, a non-mana activated ability, rule-
+bending/replacement language, modality) — so a distinctive card whose ability was
+*tagged* generically is still caught by its text (Ragnarok's dies-trigger, a copy
+engine), while a truly generic card (low on both) stays ~0. A low `uq` on a `review`
+card confirms it's filler; a high `uq` says the tags under-read it (grade from text).
+The same metric feeds a **bounded** nudge in `deck.py cuts` (its `Uq` column) — a
+generic-ability body sorts up the cut list, a distinctive card is protected —
+orthogonal to Power (a vanilla 6/6 is high power, low distinctiveness).
+
 **Lands are scored on a different axis.** A land has no synergy themes, so theme
 fit would sink it to ~0; instead `--rank` rates a land on **manabase value** for
 its target deck — how much of the deck's colors it actually produces (a WB dual in
@@ -632,6 +646,19 @@ A **"Find a card"** search box (top of the page) is the dashboard mirror of
 variants** that runs it (with the copy count), each a click-through chip that
 filters the deck list to that deck. It searches the same per-deck card multisets the
 stale-deck compare uses, entirely in-browser.
+
+**Progressive disclosure** keeps the page from reading as a wall: every section
+**collapses** (the utility ones — card finder, stale-check, recently-edited, rotation —
+start closed), a **section-nav strip** in the header jumps to any section (auto-expanding
+it) with a scroll-spy highlight, and the long lists (wishlist tiers, crafting leverage)
+**cap at a dozen rows** with a *show all* toggle. The roster-triage table defaults to the
+**actionable** decks (the dashboard analog of `deck.py audit --flagged`). The **wishlist**
+filters by free text (card / target / signal) **and by wildcard rarity** — click the
+`M`/`R`/`U`/`C` chips (multi-select; empty = all) to scope the craft list to the wildcards
+you're spending, the dashboard mirror of `wishlist.py --rarity`. All of this persists in
+the same `localStorage` prefs as the theme/filters. The layout is **responsive down to
+phone widths** — grids collapse to one column, wide tables scroll inside their own box,
+and the section-nav scrolls horizontally.
 
 The **build** is **offline** — it disables `deck.py`'s live-Scryfall fallbacks and reads
 only committed data (`card-*.csv` + `decks/`), so it never touches the network and runs

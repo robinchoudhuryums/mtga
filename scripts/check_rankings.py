@@ -114,6 +114,31 @@ def check():
             errs.append(f"ranking model: reuse bonus must be CAPPED (≤2.0) so breadth can't "
                         f"dwarf the 0–10 fit+power blend; rb(8)={rb(8)}, rb(20)={rb(20)}.")
 
+    # (6) rotation penalty is a BOUNDED deprioritization (0, 2] — a soon-to-rotate Standard
+    #     card sinks WITHIN its tier without being dwarfed/erased from the ranking.
+    rp = getattr(wishlist, "_ROT_PENALTY", None)
+    if rp is None or not (0 < rp <= 2.0):
+        errs.append(f"ranking model: _ROT_PENALTY must be a bounded (0, 2] deprioritization "
+                    f"(got {rp}) — a rotating card should sink within its tier, not vanish.")
+
+    # (7) seed-power bonuses stay bounded and keep the seed in [0, 10]; a flexible removal
+    #     on a PERMANENT (Meteor Sword) must outscore a common vanilla but not blow past a
+    #     mythic bomb — the fix must nudge, not dominate.
+    sp = getattr(wishlist, "_seed_power", None)
+    if sp is not None:
+        meteor = sp({"Rarity": "Uncommon", "Type": "Artifact — Equipment",
+                     "Card Text": "When this Equipment enters, destroy target permanent. "
+                                  "Equipped creature gets +3/+3."})
+        vanilla = sp({"Rarity": "Common", "Type": "Creature — Bear", "Card Text": ""})
+        bomb = sp({"Rarity": "Mythic", "Type": "Legendary Planeswalker",
+                   "Card Text": "Destroy target permanent. Draw two cards."})
+        if not (0.0 <= vanilla < meteor <= 10.0):
+            errs.append(f"ranking model: _seed_power must credit flexible-removal-on-a-permanent "
+                        f"above a vanilla common (Meteor {meteor} vs vanilla {vanilla}).")
+        if not (meteor <= bomb <= 10.0):
+            errs.append(f"ranking model: _seed_power bonuses must not push a 2-for-1 above a "
+                        f"mythic bomb (Meteor {meteor}, bomb {bomb}) — they nudge, not dominate.")
+
     return errs
 
 

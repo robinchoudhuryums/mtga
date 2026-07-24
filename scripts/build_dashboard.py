@@ -471,7 +471,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .b-missing { background:rgba(236,110,90,.16); color:#dd6a4d; border:1px solid rgba(240,138,114,.3); }
   .b-short { background:rgba(214,150,40,.16); color:#c68b18; border:1px solid rgba(230,177,60,.3); }
   .deck .arch { color:var(--ink2); font-size:12.5px; margin:7px 0 9px; line-height:1.45; min-height:2.6em; }
-  .deck .metaline { display:flex; gap:9px; align-items:center; flex-wrap:wrap; font-size:11.5px; color:var(--ink2); }
+  .deck .metaline, .modal .metaline { display:flex; gap:9px; align-items:center; flex-wrap:wrap; font-size:11.5px; color:var(--ink2); }
   .vtag { border:1px dashed var(--line2); border-radius:999px; padding:1px 9px; color:var(--ink2b); }
   .pips { display:inline-flex; gap:4px; }
   .pip { width:16px; height:16px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:9px; font-weight:800; border:1px solid rgba(0,0,0,.28); }
@@ -540,6 +540,10 @@ TEMPLATE = r"""<!DOCTYPE html>
   /* wishlist */
   .wltop { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
   #wlfilter { width:340px; max-width:100%; }
+  .wlrar { display:flex; gap:6px; flex-wrap:wrap; }
+  .rchip { font-family:var(--font-mono); font-size:12px; font-weight:800; min-width:26px; text-align:center; padding:4px 9px; border-radius:8px; border:1px solid var(--line2); background:var(--fill2); color:var(--ink2); cursor:pointer; user-select:none; transition:color .15s,border-color .15s,background .15s; }
+  .rchip:hover { border-color:var(--accent-line); color:var(--accent-ink); }
+  .rchip.on { background:var(--accent-bg); border-color:var(--accent-line); color:var(--accent-ink); }
   .wltip { font-size:11px; color:var(--ink3); }
   .simbar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:8px; padding:12px 15px; border-radius:12px; background:linear-gradient(180deg,var(--elev),var(--elev2)); border:1px solid var(--line); }
   .simbar .st { font-family:var(--font-display); font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--ink2); }
@@ -678,6 +682,62 @@ TEMPLATE = r"""<!DOCTYPE html>
   .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
   .foot { color:var(--ink3); font-size:11.5px; margin-top:18px; border-top:1px solid var(--line); padding-top:14px; line-height:1.55; }
   .foot code { font-family:var(--font-mono); color:var(--ink2b); }
+
+  /* ── Progressive disclosure: collapsible sections, section nav, capped lists ── */
+  h2.sec.clik { cursor:pointer; }
+  h2.sec .caret { margin-left:auto; font-size:11px; color:var(--ink3); font-family:var(--font-mono); font-weight:400; transition:color .15s; }
+  h2.sec.clik:hover .caret { color:var(--accent-ink); }
+  section.collapsed > *:not(h2.sec) { display:none; }
+  section.collapsed h2.sec { margin-bottom:0; border-bottom-color:transparent; }
+  /* sticky section-nav strip inside the header */
+  .secnav { max-width:1180px; margin:12px auto 0; display:flex; gap:7px; overflow-x:auto; scrollbar-width:none; padding-bottom:1px; }
+  .secnav::-webkit-scrollbar { display:none; }
+  .navchip { flex:0 0 auto; font-size:11.5px; font-weight:600; padding:4px 11px; border-radius:999px; border:1px solid var(--line2); background:var(--fill2); color:var(--ink2); cursor:pointer; white-space:nowrap; transition:color .15s,border-color .15s,background .15s,opacity .15s; }
+  .navchip:hover { color:var(--accent-ink); border-color:var(--accent-line); }
+  .navchip.active { background:var(--accent-bg); border-color:var(--accent-line); color:var(--accent-ink); }
+  .navchip.col { opacity:.5; }
+  .navchip.col::before { content:'▸ '; color:var(--ink3); }
+  /* "show all / show fewer" row inside a capped sortable table */
+  tr.morerow td { cursor:pointer; text-align:center; color:var(--accent-ink); font-size:12px; font-weight:600; padding:10px; background:var(--fill2); border-bottom:none; letter-spacing:.02em; }
+  tr.morerow td:hover { background:var(--accent-bg); }
+
+  /* ── Mobile / narrow viewports ─────────────────────────────────────────────
+     Template-only responsive layer (the #data island / pipeline is untouched).
+     Two jobs: (1) collapse the multi-column grids to one column and tighten the
+     chrome so nothing is cramped, and (2) keep the WIDE data tables scrolling
+     INSIDE their own box so the page body never scrolls sideways on a phone. */
+  @media (max-width:720px){
+    header{ padding:12px 13px; }
+    .hwrap{ gap:12px; }
+    h1{ font-size:19px; }
+    .hsub{ font-size:11.5px; }
+    .hactions{ gap:8px; }
+    .kpi{ padding:7px 11px; min-width:0; flex:1 1 auto; }
+    .kpi .n{ font-size:20px; }
+    .kpi .n small{ font-size:13px; }
+    main{ padding:20px 13px 52px; }
+    section{ margin-bottom:30px; scroll-margin-top:74px; }
+    h2.sec{ letter-spacing:.1em; }
+    /* one column for every multi-column grid. minmax(0,1fr) — NOT 1fr — so a card
+       with a nowrap/ellipsis line can't force its track past the viewport (1fr keeps a
+       min-content floor, which blew the leverage cards out to ~2700px). */
+    .grid, .distgrid, .levgrid{ grid-template-columns:minmax(0,1fr); }
+    /* wide data tables scroll within their own container, NOT the page */
+    #audit, .wltable, .compact{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    table.at, table.wt{ min-width:560px; }
+    .modal .mbody{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    /* filter inputs span the row instead of overflowing it */
+    #deckfilter, #wlfilter, #cardfind{ width:100%; }
+    .wltop, .ctl-left{ width:100%; }
+  }
+  @media (max-width:430px){
+    main{ padding:16px 10px 46px; }
+    header{ padding:10px; }
+    h1{ font-size:17px; }
+    h1 .dim{ display:none; }   /* keep the title on one line on the smallest screens */
+    .kpi .n{ font-size:18px; }
+    .kpi .lbl{ font-size:9px; }
+  }
 </style>
 </head>
 <body>
@@ -700,6 +760,7 @@ TEMPLATE = r"""<!DOCTYPE html>
       <div class="kpi hot"><div class="n" id="kpiBuild">0</div><div class="lbl">buildable now</div></div>
     </div>
   </div>
+  <nav class="secnav" id="secnav" aria-label="Jump to section"></nav>
 </header>
 
 <main>
@@ -788,6 +849,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     <h2 class="sec"><span class="tick"></span>Wildcard priority — wishlist</h2>
     <div class="wltop">
       <input class="filter" id="wlfilter" placeholder="filter wishlist by card, target, or signal…">
+      <div class="wlrar" id="wlrar" aria-label="Filter by wildcard rarity"></div>
       <span class="grow"></span>
       <span class="wltip">tip: click a card to see which decks it unlocks</span>
       <span class="ghostbtn" id="exportwl">⧉ Export wishlist</span>
@@ -836,7 +898,7 @@ const scryUrl = name => 'https://scryfall.com/search?q=' + encodeURIComponent('!
 
 // ---------- prefs + deep-link ----------
 const STATE = { theme:'dark', viewMode:'grid', quickFilter:'all', activeColors:{}, open:{}, pinned:{},
-  deckFilter:'', wlFilter:'', simMode:'off', impactCard:'', modalDeck:'', paletteOpen:false, paletteQuery:'', paletteIndex:0, gPrefix:false };
+  deckFilter:'', wlFilter:'', wlRarity:{}, simMode:'off', impactCard:'', modalDeck:'', paletteOpen:false, paletteQuery:'', paletteIndex:0, gPrefix:false };
 function parseHash(){
   const raw = (location.hash||'').replace(/^#/,''); if (!raw) return {};
   if (raw.startsWith('deck-')) return {d:raw.slice(5)};
@@ -846,6 +908,7 @@ function restorePrefs(){
   let p = {}; try { p = JSON.parse(localStorage.getItem('mtga-prefs')||'{}')||{}; } catch(e){}
   STATE.theme = p.theme || 'dark'; STATE.viewMode = p.viewMode || 'grid'; STATE.quickFilter = p.quickFilter || 'all';
   STATE.activeColors = p.activeColors || {}; STATE.open = p.open || {}; STATE.pinned = p.pinned || {};
+  STATE.secCollapsed = p.secCollapsed || {}; STATE.wlRarity = p.wlRarity || {};
   const h = parseHash();
   if (h.v) STATE.viewMode = h.v;
   if (h.f) STATE.quickFilter = h.f;
@@ -867,7 +930,7 @@ function buildHash(){
 }
 function persist(){
   try { history.replaceState(null,'',buildHash()); } catch(e){}
-  try { localStorage.setItem('mtga-prefs', JSON.stringify({theme:STATE.theme, viewMode:STATE.viewMode, quickFilter:STATE.quickFilter, activeColors:STATE.activeColors, open:STATE.open, pinned:STATE.pinned})); } catch(e){}
+  try { localStorage.setItem('mtga-prefs', JSON.stringify({theme:STATE.theme, viewMode:STATE.viewMode, quickFilter:STATE.quickFilter, activeColors:STATE.activeColors, open:STATE.open, pinned:STATE.pinned, secCollapsed:STATE.secCollapsed, wlRarity:STATE.wlRarity})); } catch(e){}
 }
 // Restore prefs + deep-link BEFORE anything renders, so control highlights (color
 // chips, quick pills, view toggle) and the deck/wishlist views all reflect saved state.
@@ -1008,7 +1071,10 @@ function attachHover(node, name){
 }
 
 // ---------- generic sortable table ----------
-function sortableTable(cls, cols, rows, sortState, onRowExtra){
+// opts.limit (optional): show only the first N rows (after sorting) with a "show all"
+// toggle row — the progressive-disclosure cap for long lists (wishlist / triage).
+function sortableTable(cls, cols, rows, sortState, onRowExtra, opts){
+  opts = opts || {};
   const tbl = el('table', cls);
   const thead = el('thead'), htr = el('tr');
   cols.forEach(c => {
@@ -1022,13 +1088,22 @@ function sortableTable(cls, cols, rows, sortState, onRowExtra){
   function redraw(){
     let rs = rows.slice();
     if (sortState.key){ const {key,dir} = sortState; rs.sort((a,b) => { const va=a[key], vb=b[key]; const cmp = (typeof va==='number'&&typeof vb==='number') ? va-vb : (''+va).localeCompare(''+vb); return cmp*dir; }); }
+    const capped = opts.limit && !opts._exp && rs.length > opts.limit;
+    const shown = capped ? rs.slice(0, opts.limit) : rs;
     tb.innerHTML = '';
-    rs.forEach(r => {
+    shown.forEach(r => {
       const tr = el('tr');
       cols.forEach(c => { const td = el('td', (c.num?'num ':'') + (c.cls||'')); if (c.node) td.appendChild(c.node(r)); else if (c.html) td.innerHTML = c.html(r); else td.textContent = c.get(r); tr.appendChild(td); });
       if (onRowExtra) onRowExtra(tr, r);
       tb.appendChild(tr);
     });
+    // progressive-disclosure toggle row (only when the list is longer than the cap)
+    if (opts.limit && rs.length > opts.limit){
+      const tr = el('tr','morerow'); const td = el('td'); td.colSpan = cols.length;
+      td.textContent = opts._exp ? ('▴ show top ' + opts.limit) : ('▾ show all ' + rs.length + '  (+' + (rs.length - opts.limit) + ')');
+      td.onclick = () => { opts._exp = !opts._exp; redraw(); };
+      tr.appendChild(td); tb.appendChild(tr);
+    }
     // rebuild header arrows
     [...htr.children].forEach((th,i) => { const c = cols[i]; th.className = (c.num?'num':'') + (sortState.key===c.key?' on':''); th.textContent = c.label + (sortState.key===c.key ? (sortState.dir>0?' ▲':' ▼') : ''); });
   }
@@ -1345,26 +1420,40 @@ renderRecent(); renderRotation();
   const list = Object.values(map).filter(x => x.decks.length >= 2).sort((a,b) => b.decks.length - a.decks.length || (RANK[b.rarity]||0) - (RANK[a.rarity]||0) || a.name.localeCompare(b.name));
   const host = $('leverage');
   if (!list.length){ host.appendChild(el('div','emptymsg','No cards are shared across multiple decks yet.')); return; }
-  const g = el('div','levgrid');
-  list.forEach(lv => {
-    const card = el('div','lev' + (STATE.impactCard===lv.name?' on':''));
-    const cnt = el('div','cnt', lv.decks.length); card.appendChild(cnt);
-    const body = el('div','body');
-    const nmrow = el('div'); nmrow.style.display='flex'; nmrow.style.alignItems='center'; nmrow.style.gap='6px';
-    const nm = el('span','nm', lv.name); attachHover(nm, lv.name); nmrow.appendChild(nm);
-    nmrow.appendChild(wcPill(lv.rarity));
-    const a = el('a','scry','↗'); a.href = scryUrl(lv.name); a.target='_blank'; a.rel='noopener'; nmrow.appendChild(a);
-    body.appendChild(nmrow);
-    body.appendChild(el('div','ds', lv.decks.join(', ')));
-    card.appendChild(body);
-    card.onclick = e => { if (e.target.tagName === 'A') return; STATE.impactCard = STATE.impactCard===lv.name ? '' : lv.name; renderDecks(); [...g.children].forEach(x => x.classList.remove('on')); if (STATE.impactCard) card.classList.add('on'); const s = $('sec-decks'); if (s) window.scrollTo({top:s.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); };
-    g.appendChild(card);
-  });
-  host.appendChild(g);
+  const CAP = 12;
+  let levAll = false;
+  function drawLev(){
+    host.innerHTML = '';
+    const g = el('div','levgrid');
+    const shown = levAll ? list : list.slice(0, CAP);
+    shown.forEach(lv => {
+      const card = el('div','lev' + (STATE.impactCard===lv.name?' on':''));
+      const cnt = el('div','cnt', lv.decks.length); card.appendChild(cnt);
+      const body = el('div','body');
+      const nmrow = el('div'); nmrow.style.display='flex'; nmrow.style.alignItems='center'; nmrow.style.gap='6px';
+      const nm = el('span','nm', lv.name); attachHover(nm, lv.name); nmrow.appendChild(nm);
+      nmrow.appendChild(wcPill(lv.rarity));
+      const a = el('a','scry','↗'); a.href = scryUrl(lv.name); a.target='_blank'; a.rel='noopener'; nmrow.appendChild(a);
+      body.appendChild(nmrow);
+      body.appendChild(el('div','ds', lv.decks.join(', ')));
+      card.appendChild(body);
+      card.onclick = e => { if (e.target.tagName === 'A') return; STATE.impactCard = STATE.impactCard===lv.name ? '' : lv.name; renderDecks(); [...g.children].forEach(x => x.classList.remove('on')); if (STATE.impactCard) card.classList.add('on'); const s = $('sec-decks'); if (s) window.scrollTo({top:s.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); };
+      g.appendChild(card);
+    });
+    host.appendChild(g);
+    if (list.length > CAP){
+      const t = el('button','ghostbtn', levAll ? ('▴ show top ' + CAP) : ('▾ show all ' + list.length + '  (+' + (list.length - CAP) + ')'));
+      t.style.marginTop = '12px';
+      t.onclick = () => { levAll = !levAll; drawLev(); };
+      host.appendChild(t);
+    }
+  }
+  drawLev();
 })();
 
 // ---------- wishlist + simulator ----------
 const wlSort = {};
+const wlOpts = {};   // per-tier show-all state for the progressive-disclosure cap
 const WL_LABELS = {A:'Tier A — craft first', B:'Tier B — targeted upgrade', C:'Tier C — situational'};
 const TIERDOT = {A:'#f4a03a', B:'var(--accent)', C:'#7d8595'};
 function rollStr(o){ return ['Mythic','Rare','Uncommon','Common'].filter(k => o && o[k]).map(k => o[k] + ' ' + k).join(' · '); }
@@ -1373,12 +1462,20 @@ function renderWishlist(){
   const host = $('wishlist'); host.innerHTML = '';
   if (!anyWl){ $('sec-wishlist').style.display = 'none'; return; }
   const q = (STATE.wlFilter||'').toLowerCase().trim();
+  const rarSel = Object.keys(STATE.wlRarity||{}).filter(k => STATE.wlRarity[k]);  // empty = all rarities
+  const filtering = !!q || rarSel.length > 0;
+  let anyShown = false;
   ['A','B','C'].forEach(tier => {
     let rows = (D.wishlist[tier]||[]).map(r => ({...r, _rank:rankOf(r.rarity), priNum:(typeof r.pri==='number'?r.pri:parseFloat(r.pri)||0), target:(r.target||'').toString(), sig:r.sig||''}));
     if (q) rows = rows.filter(r => (r.name+' '+r.target+' '+r.sig).toLowerCase().includes(q));
+    if (rarSel.length) rows = rows.filter(r => STATE.wlRarity[r.rarity]);
     if (!rows.length) return;
+    anyShown = true;
+    // Rollup reflects what's SHOWN (so a rarity/text filter keeps the header honest),
+    // computed from the filtered rows rather than the static full-tier composition.
+    const roll = {}; rows.forEach(r => { roll[r.rarity] = (roll[r.rarity]||0) + 1; });
     const hdr = el('div','tierhdr');
-    hdr.innerHTML = '<h3><span class="tierdot" style="background:' + TIERDOT[tier] + ';box-shadow:0 0 8px ' + TIERDOT[tier] + '"></span>' + WL_LABELS[tier] + '</h3><span class="roll">' + rows.length + ' cards · ' + esc(rollStr(D.wishlist_rollup[tier])) + '</span>';
+    hdr.innerHTML = '<h3><span class="tierdot" style="background:' + TIERDOT[tier] + ';box-shadow:0 0 8px ' + TIERDOT[tier] + '"></span>' + WL_LABELS[tier] + '</h3><span class="roll">' + rows.length + ' cards · ' + esc(rollStr(roll)) + '</span>';
     host.appendChild(hdr);
     const cols = [
       {key:'name', label:'Card', node:r => { const s = el('span'); const nm = el('span','wlname', r.name); nm.onclick = () => { STATE.impactCard = STATE.impactCard===r.name ? '' : r.name; renderDecks(); const sec = $('sec-decks'); if (sec) window.scrollTo({top:sec.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); }; attachHover(nm, r.name); s.appendChild(nm); s.appendChild(document.createTextNode(' ')); const a = el('a','scry','↗'); a.href = scryUrl(r.name); a.target='_blank'; a.rel='noopener'; s.appendChild(a); if (r.rot){ s.appendChild(document.createTextNode(' ')); const w = el('span','rotwl','⚠rot~'+r.rot_year); w.title = 'Set rotates ~'+r.rot_year+' — a wildcard here won\'t last long'; s.appendChild(w); } return s; }},
@@ -1389,10 +1486,23 @@ function renderWishlist(){
       {key:'sig', label:'signal', cls:'sg', get:r => r.sig},
     ];
     if (!(tier in wlSort)) wlSort[tier] = {key:null,dir:1};
-    const box = el('div','wltable'); box.appendChild(sortableTable('wt', cols, rows, wlSort[tier])); host.appendChild(box);
+    if (!(tier in wlOpts)) wlOpts[tier] = {limit:12};
+    wlOpts[tier].limit = filtering ? 0 : 12;   // an explicit filter shows every match; else cap at 12
+    const box = el('div','wltable'); box.appendChild(sortableTable('wt', cols, rows, wlSort[tier], null, wlOpts[tier])); host.appendChild(box);
   });
+  if (!anyShown) host.appendChild(el('div','auditnote', 'No wishlist cards match this filter.'));
 }
 $('wlfilter').addEventListener('input', e => { STATE.wlFilter = e.target.value; renderWishlist(); });
+// rarity filter chips (M/R/U/C) — multi-select, empty = all rarities (mirrors the deck color chips)
+(function(){
+  const host = $('wlrar'); if (!host) return;
+  ['Mythic','Rare','Uncommon','Common'].forEach(rar => {
+    const c = el('span','rchip' + (STATE.wlRarity[rar] ? ' on' : ''), WC[rar]);
+    c.title = 'Show ' + rar + ' only (toggle; combine several)';
+    c.onclick = () => { STATE.wlRarity[rar] = !STATE.wlRarity[rar]; c.classList.toggle('on', !!STATE.wlRarity[rar]); persist(); renderWishlist(); };
+    host.appendChild(c);
+  });
+})();
 $('exportwl').onclick = () => { const lines = ['MTGA WILDCARD WISHLIST']; ['A','B','C'].forEach(k => { const rows = D.wishlist[k]||[]; if (!rows.length) return; lines.push('', WL_LABELS[k]); rows.forEach(r => lines.push('  [' + (WC[r.rarity]||'?') + '] ' + r.name + ' — ' + (r.target||'') + ' (pri ' + (typeof r.pri==='number'?r.pri.toFixed(2):r.pri) + ')')); }); writeClip(lines.join('\n'), () => toast('Wishlist copied to clipboard')); };
 // simulator
 const SIM = [['off','Off'],['A','+ Tier A'],['AB','+ Tier A & B'],['all','+ All tiers']];
@@ -1429,8 +1539,23 @@ renderWishlist(); renderSim();
     {key:'_sev', label:'Verdict', num:true, html:r => '<span class="vpill ' + VCLS[r.verdict] + '">' + VLAB[r.verdict] + '</span>' + (r.why ? ' <span class="why">' + esc(r.why) + '</span>' : '')},
   ];
   const sort = {key:null,dir:1};
-  const tbl = sortableTable('at', cols, rows, sort, (tr) => tr.classList.add('clk'));
-  $('audit').appendChild(tbl);
+  // Progressive disclosure: default to the ACTIONABLE decks (tune/craft/review); the
+  // "ok" decks are the bulk and the least interesting, so they hide behind a toggle.
+  const flagged = rows.filter(r => r.verdict !== 'ok');
+  const okN = rows.length - flagged.length;
+  let showAllDecks = flagged.length === 0;  // if nothing's flagged, just show all
+  const host = $('audit');
+  function drawAudit(){
+    host.innerHTML = '';
+    host.appendChild(sortableTable('at', cols, showAllDecks ? rows : flagged, sort, (tr) => tr.classList.add('clk')));
+    if (okN > 0 && flagged.length > 0){
+      const t = el('button','ghostbtn', showAllDecks ? ('▴ hide ' + okN + ' ok deck' + (okN===1?'':'s')) : ('▾ show all ' + rows.length + '  (+' + okN + ' ok)'));
+      t.style.marginTop = '11px';
+      t.onclick = () => { showAllDecks = !showAllDecks; drawAudit(); };
+      host.appendChild(t);
+    }
+  }
+  drawAudit();
   const c = {TUNE:0,craft:0,review:0,ok:0}; rows.forEach(r => c[r.verdict]++);
   $('auditsummary').innerHTML = '<span class="chip"><b>' + c.TUNE + '</b> to tune</span><span class="chip"><b>' + c.craft + '</b> to craft</span><span class="chip"><b>' + c.review + '</b> to review</span><span class="chip"><b>' + c.ok + '</b> ok</span>';
   $('auditnote').textContent = 'Offline triage — same numbers as deck.py audit. Tier = competitive grade (S→D, · = ungraded) from each deck’s #: tier: header; click the Tier header to sort. Own/Legal/Cast ✓ = clean; Cast Nu = uncastable, Ns = off-identity stray. ★ tune = a hard problem; craft = unbuilt; review = a soft flag. Click a deck to filter the list below.';
@@ -1598,6 +1723,50 @@ function syncLive(silent){
 (function(){ const ts = Date.parse((D.generated||'').replace(' ','T')); if (!isNaN(ts) && (Date.now() - ts) > STALE_DAYS*864e5){ const chip = document.createElement('span'); chip.className = 'stalechip'; chip.textContent = 'stale · sync ⟳'; chip.title = 'Snapshot is over a week old — click to sync'; chip.onclick = () => syncLive(false); $('hsub').appendChild(document.createTextNode(' · ')); $('hsub').appendChild(chip); } })();
 
 $('foot').innerHTML = 'Live snapshot from committed data — hit ⟳ to re-sync from GitHub Pages, or regenerate with <code>python3 scripts/build_dashboard.py</code>. Card previews &amp; links via Scryfall. The judgment calls (craft X or Y, tuning) still live in the chat — this shows state, not decisions.';
+
+// ---------- collapsible sections + section-nav strip (progressive disclosure) ----------
+// DOM order; 3rd field = default-collapsed. The utility/lookup sections start CLOSED so
+// the page opens on the planning views, not a wall of every tool at once.
+const SECTIONS = [
+  ['sec-find','Finder',true], ['sec-triage','Triage',false], ['sec-recent','Recent',true],
+  ['sec-stale','Stale',true], ['sec-rotation','Rotation',true], ['sec-decks','Decks',false],
+  ['sec-leverage','Leverage',false], ['sec-wishlist','Wishlist',false], ['sec-plan','Craft plan',false],
+];
+function secIsCollapsed(id, def){ return (STATE.secCollapsed && id in STATE.secCollapsed) ? !!STATE.secCollapsed[id] : def; }
+function applyCollapsed(id, collapsed){
+  const sec = $(id); if (!sec) return;
+  sec.classList.toggle('collapsed', collapsed);
+  const car = sec.querySelector('h2.sec .caret'); if (car) car.textContent = collapsed ? '▸' : '▾';
+  const chip = document.querySelector('.navchip[data-nav="' + id + '"]'); if (chip) chip.classList.toggle('col', collapsed);
+}
+(function initSections(){
+  const nav = $('secnav');
+  STATE.secCollapsed = STATE.secCollapsed || {};
+  SECTIONS.forEach(([id,label,def]) => {
+    const sec = $(id); if (!sec || sec.style.display === 'none') return;  // skip hidden (e.g. empty wishlist)
+    if (nav){
+      const chip = el('span','navchip', label); chip.dataset.nav = id;
+      chip.onclick = () => { if (sec.classList.contains('collapsed')){ STATE.secCollapsed[id] = false; applyCollapsed(id, false); persist(); } window.scrollTo({top:sec.getBoundingClientRect().top + window.scrollY - 70, behavior:'smooth'}); };
+      nav.appendChild(chip);
+    }
+    const h = sec.querySelector('h2.sec'); if (!h) return;
+    h.classList.add('clik');
+    if (!h.querySelector('.caret')) h.appendChild(el('span','caret'));
+    const collapsed = secIsCollapsed(id, def);
+    STATE.secCollapsed[id] = collapsed;
+    applyCollapsed(id, collapsed);
+    h.onclick = () => { const c = !sec.classList.contains('collapsed'); STATE.secCollapsed[id] = c; applyCollapsed(id, c); persist(); };
+  });
+  // scroll-spy: highlight the nav chip of the last section scrolled past
+  const ids = SECTIONS.map(s => s[0]).filter(id => { const e = $(id); return e && e.style.display !== 'none'; });
+  function spy(){
+    let cur = ids[0];
+    ids.forEach(id => { if ($(id).getBoundingClientRect().top - 88 <= 0) cur = id; });
+    document.querySelectorAll('.navchip').forEach(c => c.classList.toggle('active', c.dataset.nav === cur));
+  }
+  window.addEventListener('scroll', () => { if (window._spyRAF) return; window._spyRAF = requestAnimationFrame(() => { window._spyRAF = 0; spy(); }); }, {passive:true});
+  spy();
+})();
 
 // ---------- init ----------
 // (Prefs were restored at the top, so every section above already rendered with saved

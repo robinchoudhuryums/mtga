@@ -42,7 +42,8 @@ import math
 import os
 import sys
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty, card_colors
+from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty,
+                 card_colors, card_distinctiveness)
 from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
@@ -590,6 +591,14 @@ _REUSE_BONUS_W = 0.6      # per EXTRA deck the card fits (beyond the first)
 _REUSE_BONUS_CAP = 1.8    # capped (~a 4-home card) — small next to the 0–10 fit+power blend
 
 
+# A soon-to-rotate Standard card is a worse wildcard investment, so deprioritize it in
+# the craft ranking — a BOUNDED nudge (it sinks WITHIN its tier, never crosses tiers,
+# so a genuinely great rotating card is still visible, just lower). Guarded by
+# check_rankings. Only fires for a Standard-legal set rotating this year/next (the same
+# `rot` flag that prints ⚠rot).
+_ROT_PENALTY = 1.25
+
+
 def _reuse_bonus(reuse):
     """Bounded breadth bonus added to `combined`: 0 for a 0/1-home card, non-decreasing
     in `reuse`, capped at _REUSE_BONUS_CAP."""
@@ -703,6 +712,7 @@ def _rank_scores(rows):
             "blank_power": not raw_power,
             "bad_power": bad_power, "raw_power": raw_power,
             "land_val": land_val, "rot": rot, "rot_year": rot_year,
+            "uniq": card_distinctiveness(ctags, r.get("Card Text") or ""),
             "sig": "/".join(best_specific[:2]) or ("generic/no-theme" if conf == "review" else ""),
         })
     # Normalize fit (pri) to 0-10 and blend 50/50 with the hand-graded power
@@ -726,6 +736,10 @@ def _rank_scores(rows):
             # card that fits several decks outranks an equal fit+power one-deck sidegrade.
             s["combined"] = round(0.5 * s["fitN"] + 0.5 * s["power"]
                                   + _reuse_bonus(s["reuse"]), 2)
+        # Rotation deprioritization: a bounded nudge so a soon-to-rotate Standard card
+        # sinks within its tier (don't burn a wildcard on a card about to leave the format).
+        if s.get("rot"):
+            s["combined"] = round(max(0.0, s["combined"] - _ROT_PENALTY), 2)
     order = {"A": 0, "B": 1, "C": 2}
     out.sort(key=lambda s: (order[s["tier"]], -s["pri"], -_WC_RANK.get(s["rarity"], 0), s["name"]))
     return out
@@ -752,8 +766,8 @@ def cmd_rank(rows):
             n = sum(1 for x in scored if x["tier"] == cur)
             print(f"\n{labels[cur]}  ({n} cards)")
             print(f"  {'#':>3} {'Card':28} {'WC':3} {'Deck':6} {'state':6} {'fit':>4} "
-                  f"{'pow':>4} {'use':>3} {'comb':>5}  signal")
-            print("  " + "-" * 98)
+                  f"{'pow':>4} {'uq':>3} {'use':>3} {'comb':>5}  signal")
+            print("  " + "-" * 102)
             i = 0
         i += 1
         wc = (s["rarity"] or "?")[:1] or "?"
@@ -761,7 +775,7 @@ def cmd_rank(rows):
         use = f"{s['reuse']}★" if s["reuse"] >= 3 else str(s["reuse"])
         sig = s["sig"][:22] + (f"  ⚠rot~{s['rot_year']}" if s.get("rot") else "")
         print(f"  {i:>3} {s['name'][:28]:28} {wc:3} {s['target']:6} {s['state']:6} "
-              f"{s['fitN']:>4.1f} {pw} {use:>3} {s['combined']:>5.1f}  {sig}")
+              f"{s['fitN']:>4.1f} {pw} {s['uniq']:>3.0f} {use:>3} {s['combined']:>5.1f}  {sig}")
     print("\n" + "=" * 60)
     print("Wildcard cost by tier (you spend that rarity's wildcards):")
     for t in ("A", "B", "C"):
@@ -773,7 +787,12 @@ def cmd_rank(rows):
         print(f"  Tier {t}: {line}")
     blanks = [s["name"] for s in scored if s["blank_power"]]
     print("\ncomb = 50/50 blend of theme fit (fit, 0–10) and hand-graded power (pow), "
-          "plus a bounded breadth bonus. use = cross-deck reuse: # of your decks the card "
+          "plus a bounded breadth bonus. uq = ability-distinctiveness (0–10): how rare "
+          "this card's ABILITIES are across the pool — ~0 is generic templating (etb/"
+          "tokens/sacrifice, the overlap that trips broad synergy checks), high is a "
+          "distinctive mechanic. Diagnostic here (it does not feed comb); a low uq on a "
+          "'review' card confirms filler, a high uq says the tags under-read it — grade "
+          "from text. use = cross-deck reuse: # of your decks the card "
           "is castable in AND shares a central theme with (★ = fits ≥3 — craft once, play "
           "everywhere; copies are fungible). state = target deck's tier·remaining-crafts "
           "(★ = this card helps FINISH a near-complete deck; '—' = general/concept). A "
@@ -876,17 +895,43 @@ _SEED_ROLE = {"Sweeper": 2.0, "Reanimation": 1.6, "Cost reduction / cheat": 1.6,
               "Payoff / engine": 1.5, "Card advantage": 1.3, "Removal (spot)": 1.1,
               "Burn / drain": 1.1, "Counter": 0.8, "Recursion": 0.7, "Ramp / fixing": 0.6,
               "Team pump / anthem": 0.6, "Protection / trick": 0.4, "Lifegain": 0.3}
+# Two bounded bonuses that correct the seed's biggest under-reads (the Meteor-Sword miss):
+_SEED_FLEX_REMOVAL = 0.8   # removal that answers MORE than creatures (any permanent / pw)
+_SEED_PERMANENT_VALUE = 0.6  # an impact effect STAPLED to a permanent — a 2-for-1 vs a spell
+_FLEX_REMOVAL_RE = re.compile(
+    r"(destroy|exile) (target |up to \w+ target |all )?"
+    r"(nonland permanent|permanent|creature or planeswalker|planeswalker|"
+    r"artifact or enchantment|enchantment or artifact|artifact, creature, or enchantment)",
+    re.I)
+# Impact roles worth a 2-for-1 bump when they ride on a permanent (not a one-shot spell).
+_IMPACT_SEED_ROLES = {"Removal (spot)", "Sweeper", "Card advantage", "Payoff / engine",
+                      "Reanimation", "Cost reduction / cheat"}
 
 
 def _seed_power(r):
+    """Heuristic 0–10 power for a wishlist card (rarity floor + functional roles + a few
+    bounded bombs the role map can't see). REVIEW it — it undersells unique bombs; this
+    just gets a fresh card off a 0.0 blank. The two extra bonuses credit what the flat
+    role map missed: FLEXIBLE removal (destroy any permanent, not just a creature) and an
+    impact effect on a PERMANENT (a body/equipment that also removes is a 2-for-1)."""
     import deck as dk
-    p = _SEED_RARITY.get((r.get("Rarity") or "").capitalize(), 2.0)
-    p += sum(_SEED_ROLE.get(x, 0) for x in dk.classify_roles(r.get("Card Text") or ""))
+    text = r.get("Card Text") or ""
     ty = (r.get("Type") or "").lower()
+    roles = set(dk.classify_roles(text))
+    p = _SEED_RARITY.get((r.get("Rarity") or "").capitalize(), 2.0)
+    p += sum(_SEED_ROLE.get(x, 0) for x in roles)
     if "planeswalker" in ty:
         p += 2.0
     if "legendary" in ty:
         p += 0.3
+    if _FLEX_REMOVAL_RE.search(text):
+        p += _SEED_FLEX_REMOVAL
+    # A permanent = anything that isn't a one-shot instant/sorcery. An impact effect that
+    # stays on the board (equipment/creature/artifact/enchantment) beats the same effect
+    # as a spell — Meteor Sword ("destroy target permanent" on a +3/+3 equipment) is the
+    # canonical miss the flat Removal(1.1) credit under-read.
+    if not any(k in ty for k in ("instant", "sorcery")) and (roles & _IMPACT_SEED_ROLES):
+        p += _SEED_PERMANENT_VALUE
     return min(10.0, round(p * 2) / 2)  # nearest 0.5
 
 

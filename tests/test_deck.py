@@ -232,6 +232,27 @@ class TestCutsPowerAdj:
         assert deck._cuts_power_adj(9) > deck._cuts_power_adj(3)
 
 
+class TestCutsUniqAdj:
+    """The bounded ability-distinctiveness co-signal folded into the cut ranking."""
+
+    def test_bounded_both_directions(self):
+        for u in (0, 1.5, 4, 6, 8, 10):
+            assert -deck._CUTS_UNIQ_CAP <= deck._cuts_uniq_adj(u) <= deck._CUTS_UNIQ_CAP
+        assert deck._cuts_uniq_adj(100) == deck._CUTS_UNIQ_CAP
+        assert deck._cuts_uniq_adj(-100) == -deck._CUTS_UNIQ_CAP
+
+    def test_neutral_at_center(self):
+        assert deck._cuts_uniq_adj(deck._CUTS_UNIQ_NEUTRAL) == 0.0
+
+    def test_monotonic_distinctive_beats_generic(self):
+        # A distinctive-mechanic card is protected; a generic-ability filler sorts up.
+        assert deck._cuts_uniq_adj(9) > deck._cuts_uniq_adj(1)
+
+    def test_cap_stays_a_tiebreaker(self):
+        # Smaller than the theme-fit scale — it can't override a real fit gap.
+        assert deck._CUTS_UNIQ_CAP <= 3.0
+
+
 class TestProducesMana:
     """The broad mana-source detector behind the tier tune plan's ramp-loss flag —
     catches dorks the 'Ramp / fixing' role misses (the 'add one mana' phrasing)."""

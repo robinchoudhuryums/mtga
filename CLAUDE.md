@@ -535,6 +535,38 @@ castability · curve · central-theme density), with the intangibles moving a de
   power 5) — it only breaks near-ties, never overrides theme fit — and is gated by
   `check_suggest.py` anchor 7 (mirrors the suggest power co-signal, anchor 5). A `Pw`
   column shows each card's power; still grade from the printed oracle text, not the number.
+- **`deck.py cuts` also folds an ability-DISTINCTIVENESS co-signal — the card-level analog
+  of the deck-idf theme model.** The deck theme model weights how rare a theme is across
+  *decks*; nothing measured how generic a *card's own abilities* are, so a body carrying
+  five common tags (`etb; tokens; sacrifice; lifegain; pump`) tripped broad synergy-overlap
+  everywhere, indistinguishable from a distinctive-mechanic card. `lib.card_distinctiveness`
+  scores that from **pool tag-rarity**: a card's ability tags mapped to pool-idf, evergreen
+  keywords and bare creature TRIBES excluded (identity, not ability — a niche tribe isn't a
+  distinctive *mechanic*; noncreature subtypes like Equipment/Aura/Case are kept), scored on
+  its *rarest* couple of tags (top-2 mean, so a standout ability isn't diluted by also
+  carrying etb) normalized to 0–10. A vanilla card reads ~0; a rare mechanic reads high.
+  cuts shows a **`Uq`** column and blends it as a **bounded, orthogonal-to-power** keep nudge
+  (`_cuts_uniq_adj`, ±`_CUTS_UNIQ_CAP`, neutral at 4) — a generic-ability filler sorts UP the
+  cut list (flagged "generic ability — trips broad synergy checks"), a distinctive card is
+  mildly protected; gated by `check_suggest.py` anchor 8. It's **orthogonal to power** on
+  purpose (a vanilla 6/6 is high power, low distinctiveness), so it earns its own small term.
+  Tags are a lossy projection, so a **second, complementary signal** closes the residual:
+  `lib.structural_distinctiveness` reads the oracle TEXT's SHAPE — an unusual (non-ETB)
+  trigger, a non-mana activated ability, rule-bending / replacement language, modality,
+  clause depth — to catch "this card does something the tags didn't capture," with NO
+  corpus / build artifact / normalization pipeline (the cheap alternative to a text
+  TF-IDF model; option 2 of the two follow-ups). `card_distinctiveness(tags, text)` returns
+  the **MAX** of the tag-rarity and structural signals, so the structural term only ever
+  RAISES a score — it RESCUES a mis-tagged distinctive card (Ragnarok's dies-trigger 2.1→7.5,
+  Thousand-Year Storm's copy engine 3.6→7.5) but can never inflate a truly generic one
+  (vanilla / plain-ETB / bare-mana all stay low; the mana-dork activated ability is excluded).
+  Both callers pass the card's text; omitting it is tag-only (backward-compatible). The
+  RESIDUAL caveat is now small but real: a distinctive card with *neither* a rare tag *nor*
+  an unusual text shape still reads generic — so `Uq` remains a shortlist signal, not a
+  verdict (a full oracle-TEXT-rarity model is the heavier follow-up if this ever misfires).
+  `wishlist.py --rank` shows the metric as a **`uq` diagnostic column** (display-only there —
+  it does NOT feed `combined`): a low `uq` on a `review` card confirms filler, a high `uq`
+  says the tags under-read it — grade from text.
 - **`deck.py tier <id> --to <TIER>` now assembles a concrete CUT→ADD tune package (#4).**
   Past the measurable gap + owned/craft fillers, it pairs each filler that closes the gap
   with a weakest-fit cut from the SAME ranking `deck.py cuts` prints (so the two can't
@@ -639,8 +671,13 @@ BOUNDED — the diminishing-returns role credit and the curve-gap factor can't
 silently reorder a tuned deck (#1/#2), the suggest power co-signal never overrides
 theme fit (#6), the `suggest-homes` rainbow-fixer boost stays bounded/capped
 and zero below 3 colors while `_is_color_fixer` requires both a fixing tag and
-rainbow text (anchor 6), and the CUTS power co-signal stays bounded/neutral-centered/
-monotonic so it only breaks near-ties in the cut ranking (anchor 7); **engine classifier** (`check_engines.py`) anchors the enabler/
+rainbow text (anchor 6), the CUTS power co-signal stays bounded/neutral-centered/
+monotonic so it only breaks near-ties in the cut ranking (anchor 7), and the CUTS
+ability-distinctiveness co-signal stays bounded/neutral-centered/monotonic (anchor 8,
+which also proves the tag-rarity metric reads a vanilla card as ~0 and a rare mechanic
+above a generic one, AND that the structural-text signal reads vanilla/plain-ETB/bare-mana
+low while rescuing an unusual trigger, `card_distinctiveness` taking the max so structural
+only ever raises); **engine classifier** (`check_engines.py`) anchors the enabler/
 payoff detection on canonical cards (#3); **tier floor** (`check_tier.py`) proves
 the archetype-aware floor grades non-aggro decks identically to before and only
 ever raises an aggro band (#4). It also emits **soft, non-gating warnings**:
@@ -678,8 +715,8 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
-- Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format.
-- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), fit_strength (specific-theme-gated KEY), import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
+- Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format. The page is **mobile-responsive** (single-column grids, wide data tables scroll in-box, a horizontally-scrollable section-nav) and uses **progressive disclosure**: every section collapses — the utility ones (card finder / stale-check / recently-edited / rotation) default CLOSED — a sticky **section-nav strip** jumps to and auto-expands a section with a scroll-spy highlight, and the long lists (wishlist tiers, crafting leverage) cap at ~12 rows with a *show all* toggle while the roster-triage table defaults to the ACTIONABLE decks (the page analog of `deck.py audit --flagged`). The **wishlist** filters by free text (card/target/signal) AND by **wildcard rarity** (M/R/U/C chips, multi-select, mirroring `wishlist.py --rarity`). All of this is template-only (the `#data` island is untouched) and persists in `localStorage`.
+- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _cuts_uniq_adj, distinctiveness_score (tag-rarity, tribe/evergreen-excluded), structural_distinctiveness (oracle-text-shape rescue), card_distinctiveness (max-combine), _creature_subtypes, _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), fit_strength (specific-theme-gated KEY), import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/
 
 **Invariant Library:**

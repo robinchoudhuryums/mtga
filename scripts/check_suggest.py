@@ -148,6 +148,73 @@ def check():
         errs.append(f"_CUTS_POWER_CAP too large ({cap}): the power nudge must stay a "
                     "tie-breaker next to theme fit, not a lever.")
 
+    # (8) cuts ability-distinctiveness co-signal: the keep-score nudge from a card's 0–10
+    #     distinctiveness must be BOUNDED (±cap), neutral at the center, and monotonic (a
+    #     distinctive-mechanic card is protected, a generic-ability filler sorts up) — so it
+    #     only breaks near-ties and never overrides theme fit. Mirrors anchor 7; also proves
+    #     it stays ORTHOGONAL to power (its own bounded term, not folded into the power adj).
+    cua = deck._cuts_uniq_adj
+    ucap = deck._CUTS_UNIQ_CAP
+    if not all(abs(cua(u)) <= ucap for u in (0, 1.5, 4, 6, 8, 10)):
+        errs.append(f"_cuts_uniq_adj escapes ±{ucap} for an in-range distinctiveness (0–10): "
+                    f"{[cua(u) for u in (0, 4, 10)]}.")
+    if not (cua(100) == ucap and cua(-100) == -ucap):
+        errs.append(f"_cuts_uniq_adj clamp doesn't engage out-of-range: "
+                    f"cua(100)={cua(100)}, cua(-100)={cua(-100)} (want ±{ucap}).")
+    if cua(deck._CUTS_UNIQ_NEUTRAL) != 0.0:
+        errs.append(f"_cuts_uniq_adj not neutral at center {deck._CUTS_UNIQ_NEUTRAL}: "
+                    f"got {cua(deck._CUTS_UNIQ_NEUTRAL)}.")
+    if not (cua(9) > cua(4) > cua(1)):
+        errs.append(f"_cuts_uniq_adj not monotonic in distinctiveness: {[cua(1), cua(4), cua(9)]} "
+                    "— a distinctive card must be protected and a generic-ability filler cut.")
+    if ucap > 3.0:
+        errs.append(f"_CUTS_UNIQ_CAP too large ({ucap}): the distinctiveness nudge must stay a "
+                    "tie-breaker next to theme fit, not a lever.")
+
+    # The distinctiveness metric itself: a vanilla card (only a tribe tag) must read ~0, a
+    # rare-mechanic tag must outscore a generic one, and everything stays in [0, 10].
+    import lib
+    idf = {"etb": 1.6, "landcycling": 7.0, "Bear": 6.0}
+    n = 15000
+    vanilla = lib.distinctiveness_score(["Bear"], idf, {"Bear"}, n)
+    generic = lib.distinctiveness_score(["etb"], idf, {"Bear"}, n)
+    rare = lib.distinctiveness_score(["landcycling", "etb"], idf, {"Bear"}, n)
+    if not (0.0 <= vanilla <= 0.0):
+        errs.append(f"distinctiveness_score: a vanilla card (tribe tag only) must be 0.0, got {vanilla}.")
+    if not (0.0 <= generic < rare <= 10.0):
+        errs.append(f"distinctiveness_score: a rare mechanic ({rare}) must outscore a generic "
+                    f"tag ({generic}); both in [0,10].")
+
+    # Structural signal (oracle-text shape): a vanilla / plain-ETB / bare-mana body must read
+    # LOW; an unusual dies-trigger-that-recurs must read high; and card_distinctiveness must
+    # take the MAX so a generically-TAGGED but structurally-rich card is RESCUED, never a
+    # generic one inflated (structural only ever raises).
+    sd = lib.structural_distinctiveness
+    sd_vanilla = sd("Trample")
+    sd_etb = sd("When this creature enters, create a 1/1 white Soldier creature token.")
+    sd_mana = sd("{T}: Add {G}.")
+    sd_rich = sd("When this creature dies, destroy target permanent and return target "
+                 "nonlegendary permanent card from your graveyard to the battlefield.")
+    if not all(0.0 <= v <= 10.0 for v in (sd_vanilla, sd_etb, sd_mana, sd_rich)):
+        errs.append(f"structural_distinctiveness out of [0,10]: "
+                    f"{sd_vanilla}, {sd_etb}, {sd_mana}, {sd_rich}.")
+    if not (sd_vanilla <= 1.0 and sd_mana <= 1.0 and sd_etb <= 2.0):
+        errs.append(f"structural_distinctiveness must read a vanilla/plain-ETB/bare-mana card "
+                    f"LOW (vanilla {sd_vanilla}, ETB {sd_etb}, mana {sd_mana}).")
+    if not (sd_rich > sd_etb):
+        errs.append(f"structural_distinctiveness: an unusual dies-trigger ({sd_rich}) must "
+                    f"outscore a plain ETB token-maker ({sd_etb}).")
+    # The MAX combine: a generically-tagged card with rich structure is rescued (uses the
+    # real pool model for the tag term; structural is pure).
+    rescue_text = ("When this creature dies, destroy target permanent and return target card "
+                   "from your graveyard to the battlefield.")
+    if lib.card_distinctiveness(["etb", "tokens"], rescue_text) < 4.0:
+        errs.append("card_distinctiveness: the structural signal must RESCUE a mis-tagged "
+                    "distinctive card (etb/tokens tags + a rich dies-trigger) above generic.")
+    if lib.card_distinctiveness(["etb", "tokens"], "") > lib.card_distinctiveness(["etb", "tokens"], rescue_text):
+        errs.append("card_distinctiveness: structural must only ever RAISE (max), never lower, "
+                    "the tag-only score.")
+
     return errs
 
 

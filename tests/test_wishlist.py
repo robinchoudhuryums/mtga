@@ -71,3 +71,40 @@ class TestPipsCastable:
 
     def test_no_pips_castable_anywhere(self):
         assert wishlist._pips_castable({}, [], {"W"})
+
+
+class TestSeedPowerBonuses:
+    """The two bounded seed bonuses that fixed the Meteor-Sword under-read."""
+
+    def _p(self, rarity, ty, text):
+        return wishlist._seed_power({"Rarity": rarity, "Type": ty, "Card Text": text})
+
+    def test_flexible_removal_beats_creature_only(self):
+        flex = self._p("Uncommon", "Instant", "Destroy target permanent.")
+        crea = self._p("Uncommon", "Instant", "Destroy target creature.")
+        assert flex > crea
+
+    def test_removal_on_a_permanent_is_a_two_for_one(self):
+        # Same removal, but stapled to an equipment (stays on board) -> higher.
+        equip = self._p("Uncommon", "Artifact — Equipment",
+                        "When this Equipment enters, destroy target permanent. "
+                        "Equipped creature gets +3/+3.")
+        spell = self._p("Uncommon", "Sorcery", "Destroy target permanent.")
+        assert equip > spell
+
+    def test_meteor_sword_no_longer_underseeded(self):
+        meteor = self._p("Uncommon", "Artifact — Equipment",
+                         "When this Equipment enters, destroy target permanent. "
+                         "Equipped creature gets +3/+3.")
+        assert meteor >= 4.0            # was 3.0 before the fix
+
+    def test_bonuses_stay_in_range_and_below_a_bomb(self):
+        vanilla = self._p("Common", "Creature — Bear", "")
+        meteor = self._p("Uncommon", "Artifact — Equipment",
+                         "When this Equipment enters, destroy target permanent.")
+        bomb = self._p("Mythic", "Legendary Planeswalker",
+                       "Destroy target permanent. Draw two cards.")
+        assert 0.0 <= vanilla < meteor <= bomb <= 10.0
+
+    def test_rot_penalty_bounded(self):
+        assert 0 < wishlist._ROT_PENALTY <= 2.0
