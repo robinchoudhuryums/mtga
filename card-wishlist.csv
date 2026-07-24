@@ -4,10 +4,6 @@ Other creatures you control have prowess. (If a creature has multiple instances 
 Whenever you cast a noncreature spell, target creature you control can't be blocked this turn.",U/R,Otter; Rogue; pump; prowess; spellslinger; tempo,BLB,379,Mythic,25,prowess + gives your team menace/evasion,7.0
 "Dragonhawk, Fate's Tempest",Legendary Creature — Bird Dragon,"Flying
 Whenever Dragonhawk enters or attacks, exile the top X cards of your library, where X is the number of creatures you control with power 4 or greater. You may play those cards until your next end step. At the beginning of your next end step, Dragonhawk deals 2 damage to each opponent for each of those cards that are still exiled.",R,Bird; Dragon; burn; impulse; flying; evasion,BLB,132,Mythic,24,impulse + burn payoff,7.5
-"Kitsa, Otterball Elite",Legendary Creature — Otter Wizard,"Vigilance
-Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
-{T}: Draw a card, then discard a card.
-{2}, {T}: Copy target instant or sorcery spell you control. You may choose new targets for the copy. Activate only if Kitsa's power is 3 or greater.",U,Otter; Wizard; card draw; pump; prowess; spellslinger; tempo; vigilance; combat,BLB,54,Mythic,37a,,7.5
 "Ral, Crackling Wit",Legendary Planeswalker — Ral,"Whenever you cast a noncreature spell, put a loyalty counter on Ral.
 +1: Create a 1/1 blue and red Otter creature token with prowess.
 −3: Draw three cards, then discard two cards.
@@ -22,14 +18,10 @@ When this Class enters, create a 0/4 white Wall creature token with defender.
 Whenever one or more noncreature, nonland permanents you control enter, put a +1/+1 counter on target creature you control.
 {4}{W}: Level 3
 When this Class becomes level 3, return target noncreature, nonland permanent card from your graveyard to the battlefield.",W,Class; counters; reanimator; graveyard; tokens; etb,BLB,5,Uncommon,29,,6.5
-Coruscation Mage,Creature — Otter Wizard,"Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
-Whenever you cast a noncreature spell, this creature deals 1 damage to each opponent.",R,Otter; Wizard; tokens; burn; etb; offspring; go-wide,BLB,131,Uncommon,37,,4.0
-Harnesser of Storms,Creature — Otter Wizard,"Whenever you cast a noncreature or Otter spell, you may exile the top card of your library. Until end of turn, you may play that card. This ability triggers only once each turn.",R,Otter; Wizard; impulse,BLB,137,Uncommon,37,,4.0
 Starforged Sword,Artifact — Equipment,"Gift a tapped Fish (You may promise an opponent a gift as you cast this spell. If you do, when it enters, they create a tapped 1/1 blue Fish creature token.)
 When this Equipment enters, if the gift was promised, attach this Equipment to target creature you control.
 Equipped creature gets +3/+3 and loses flying.
 Equip {3}",Colorless,Equipment; tokens; etb; equipment; pump; gift; value; equip,BLB,249,Uncommon,38,,2.5
-Tempest Angler,Creature — Otter Wizard,"Whenever you cast a noncreature spell, put a +1/+1 counter on this creature.",U/R,Otter; Wizard; counters,BLB,235,Common,37,,3.0
 Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,6.0
 Pride of the Road,Creature — Zombie Cat Warrior,"Vigilance
 Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
@@ -51,7 +43,6 @@ Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.5
 Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19,,5.0
-Dual-Sun Technique,Instant,"Target creature you control gains double strike until end of turn. If it has a +1/+1 counter on it, draw a card.",W,counters; card draw,EOE,13,Uncommon,38a,,4.5
 Dubious Delicacy,Artifact — Food,"Flash
 When this artifact enters, up to one target creature gets -3/-3 until end of turn.
 {2}, {T}, Sacrifice this artifact: You gain 3 life.
@@ -86,15 +77,12 @@ Nullpriest of Oblivion,Creature — Vampire Cleric,"Kicker {3}{B} (You may pay a
 Lifelink
 Menace (This creature can't be blocked except by two or more creatures.)
 When this creature enters, if it was kicked, return target creature card from your graveyard to the battlefield.",B,Vampire; Cleric; reanimator; graveyard; lifegain; etb; lifelink; menace; evasion; kicker; value,FDN,611,Rare,11,,6.0
-Phyrexian Arena,Enchantment,"At the beginning of your upkeep, you draw a card and you lose 1 life.",B,card draw,FDN,180,Rare,37,,3.0
 Regal Caracal,Creature — Cat,"Other Cats you control get +1/+1 and have lifelink. (Damage dealt by those creatures also causes you to gain that much life.)
 When this creature enters, create two 1/1 white Cat creature tokens with lifelink.",W,Cat; lifegain; tokens; etb; pump,FDN,579,Rare,36,,3.5
 Rite of Replication,Sorcery,"Kicker {5} (You may pay an additional {5} as you cast this spell.)
 Create a token that's a copy of target creature. If this spell was kicked, create five of those tokens instead.",U,tokens; kicker; value,FDN,711,Rare,25,Copy engine for Spellstorm (25): clone your best creature (kicker = 5 copies) — payoff redundancy,6
 Claws Out,Instant,"Affinity for Cats (This spell costs {1} less to cast for each Cat you control.)
 Creatures you control get +2/+2 until end of turn.",W,pump; affinity; artifacts; cost-reduction,FDN,6,Uncommon,36,,4.0
-Clinquant Skymage,Creature — Bird Wizard,"Flying
-Whenever you draw a card, put a +1/+1 counter on this creature.",U,Bird; Wizard; counters; card draw; flying; evasion,FDN,33,Uncommon,37a; 19,,4.0
 Good-Fortune Unicorn,Creature — Unicorn,"Whenever another creature you control enters, put a +1/+1 counter on that creature.",W/G,Unicorn; counters,FDN,240,Uncommon,36a,,4.0
 Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0
 Lightshell Duo,Creature — Rat Otter,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
@@ -110,17 +98,9 @@ I — Mill five cards.
 II — Return all land cards from your graveyard to the battlefield tapped.
 III — Until end of turn, another target creature you control gains trample and gets +X/+X, where X is the number of lands you control.
 Reach, trample",G,Saga; Giant; reanimator; graveyard; mill; sacrifice; saga; pump; reach; defense; trample; evasion,FIN,204,Rare,29,,5.5
-Black Waltz No. 3,Legendary Creature — Wizard,"Flying, deathtouch
-Whenever you cast a noncreature spell, Black Waltz No. 3 deals 2 damage to each opponent.",B/R,Wizard; burn; deathtouch; combat; removal; flying; evasion,FIN,214,Uncommon,37,,4.5
-Circle of Power,Sorcery,"You draw two cards and you lose 2 life. Create a 0/1 black Wizard creature token with ""Whenever you cast a noncreature spell, this token deals 1 damage to each opponent.""
-Wizards you control get +1/+0 and gain lifelink until end of turn.",B,lifegain; card draw; tokens; burn; pump,FIN,92,Uncommon,37,,5.0
 Dark Knight's Greatsword,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +3/+0 and is a Knight in addition to its other types.
 Chaosbringer — Equip—Pay 3 life. Activate only once each turn.",B,Equipment; tokens; etb; equipment; pump; chaosbringer; job select; equip,FIN,95,Uncommon,38,,3.0
-Dragoon's Lance,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
-Equipped creature gets +1/+0 and is a Knight in addition to its other types.
-During your turn, equipped creature has flying.
-Gae Bolg — Equip {4}",W,Equipment; tokens; etb; equipment; pump; gae bolg; job select; equip,FIN,17,Uncommon,38,,2.0
 Lion Heart,Artifact — Equipment,"When this Equipment enters, it deals 2 damage to any target.
 Equipped creature gets +2/+1.
 Equip {2}",Colorless,Equipment; burn; etb; equipment; pump; equip,FIN,261,Uncommon,38,,4.5
@@ -130,13 +110,9 @@ Summon: Fenrir,Enchantment Creature — Saga Wolf,"(As this Saga enters and afte
 I — Crescent Fang — Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
 II — Heavenward Howl — When you next cast a creature spell this turn, that creature enters with an additional +1/+1 counter on it.
 III — Ecliptic Growl — Draw a card if you control the creature with the greatest power or tied for the greatest power.",G,Saga; Wolf; counters; card draw; sacrifice; ramp; etb; saga,FIN,203,Uncommon,29,,5.5
-Zack Fair,Legendary Creature — Human Soldier,"Zack Fair enters with a +1/+1 counter on it.
-{1}, Sacrifice Zack Fair: Target creature you control gains indestructible until end of turn. Put Zack Fair's counters on that creature and attach an Equipment that was attached to Zack Fair to that creature.",W,Human; Soldier; counters; sacrifice,FIN,45,Uncommon,38,,2.5
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,1.5
-Weapons Vendor,Creature — Human Artificer,"When this creature enters, draw a card.
-At the beginning of combat on your turn, if you control an Equipment, you may pay {1}. When you do, attach target Equipment you control to target creature you control.",W,Human; Artificer; card draw; etb,FIN,40,Common,38,,1.0
 "Gishath, Sun's Avatar",Legendary Creature — Dinosaur Avatar,"Vigilance, trample, haste
 Whenever Gishath deals combat damage to a player, reveal that many cards from the top of your library. Put any number of Dinosaur creature cards from among them onto the battlefield and the rest on the bottom of your library in a random order.",W/R/G,Dinosaur; Avatar; vigilance; combat; haste; aggro; trample; evasion,LCI,229,Mythic,28,,7.0
 "Saheeli, the Sun's Brilliance",Legendary Creature — Human Artificer,"{U}{R}, {T}: Create a token that's a copy of another target creature or artifact you control, except it's an artifact in addition to its other types. It gains haste. Sacrifice it at the beginning of the next end step.",U/R,Human; Artificer; sacrifice; tokens,LCI,239,Mythic,25,"2-mana PW, copy a creature/artifact each turn",7.5
@@ -160,8 +136,6 @@ Whenever one or more creatures you control each with power greater than its base
 Rampaging Ceratops,Creature — Dinosaur,This creature can't be blocked except by three or more creatures.,R,Dinosaur,LCI,162,Uncommon,28,,4.5
 Spyglass Siren,Creature — Siren Pirate,"Flying
 When this creature enters, create a Map token. (It's an artifact with ""{1}, {T}, Sacrifice this token: Target creature you control explores. Activate only as a sorcery."")",U,Siren; Pirate; sacrifice; tokens; etb; explore; flying; evasion; counters; selection,LCI,78,Uncommon,27,,3.0
-Deconstruction Hammer,Artifact — Equipment,"Equipped creature gets +1/+1 and has ""{3}, {T}, Sacrifice Deconstruction Hammer: Destroy target artifact or enchantment.""
-Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; sacrifice; removal; equipment; pump; equip,LCI,9,Common,38,,2.0
 Soaring Sandwing,Creature — Dinosaur,"Flying
 When this creature enters, you gain 3 life.
 Plainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, put it into your hand, then shuffle.)",W,Dinosaur; lifegain; etb; flying; evasion; plainscycling; card draw; lands; landcycling; typecycling; cycling,LCI,35,Common,28,,1.5
@@ -224,7 +198,6 @@ Thunder Lasso,Artifact — Equipment,"When this Equipment enters, attach it to t
 Equipped creature gets +1/+1.
 Whenever equipped creature attacks, tap target creature defending player controls.
 Equip {2}",W,Equipment; etb; equipment; pump; equip,OTJ,35,Uncommon,38,,2.0
-Razzle-Dazzler,Creature — Human Wizard,"Whenever you cast your second spell each turn, put a +1/+1 counter on this creature. It can't be blocked this turn.",U,Human; Wizard; counters,OTJ,63,Common,37,,3.0
 Rooftop Assassin,Creature — Vampire Assassin,"Flash
 Flying, lifelink
 When this creature enters, destroy target creature an opponent controls that was dealt damage this turn.",B,Vampire; Assassin; lifegain; removal; etb; flying; evasion; lifelink; flash; tempo,OTJ,103,Common,20,,3.0
@@ -262,8 +235,6 @@ Vastlands Scavenger // Bind to Life,Creature — Bear Druid // Instant,"Deathtou
 This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Mill seven cards. Then put a creature card from among them onto the battlefield.",G,Bear; Druid; mill; prepared; spellslinger; tempo; graveyard; deathtouch; combat; removal,SOS,166,Rare,6; 31,"best 6 (Dead or Alive); also 5,20b,8 | Also deck 31 (Pox) — 10-Druid go-wide shell; strong Druid fit.",5.5
 Vicious Rivalry,Sorcery,"As an additional cost to cast this spell, pay X life.
 Destroy all artifacts and creatures with mana value X or less.",B/G,,SOS,241,Rare,general,BG fight/removal,6.0
-Quill-Blade Laureate // Twofold Intent,Creature — Human Cleric // Sorcery,"Double strike
-This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Target creature gets +1/+0 and gains double strike until end of turn.",W,Human; Cleric; pump; prepared; spellslinger; tempo; double strike; combat; aggro,SOS,27,Uncommon,38a,,5.0
 "Anti-Venom, Horrifying Healer",Legendary Creature — Symbiote Hero,"When Anti-Venom enters, if he was cast, return target creature card from your graveyard to the battlefield.
 If damage would be dealt to Anti-Venom, prevent that damage and put that many +1/+1 counters on him.",W,Symbiote; Hero; counters; reanimator; graveyard; etb,SPM,1,Mythic,6,,6.5
 Mister Negative,Legendary Creature — Human Villain,"Vigilance, lifelink
@@ -290,8 +261,6 @@ Enchanted creature gets +2/+2 for each Aura and Equipment attached to it.
 All damage that would be dealt to you is dealt to enchanted creature instead.",W,Aura; aura; pump; enchant,SPM,24,Rare,38,,3.0
 "Green Goblin, Revenant",Legendary Creature — Goblin Human Villain,"Flying, deathtouch
 Whenever Green Goblin attacks, discard a card. Then draw a card for each card you've discarded this turn.",B/R,Goblin; Human; Villain; card draw; deathtouch; combat; removal; flying; evasion,SPM,130,Uncommon,10,,4.5
-"Sun-Spider, Nimble Webber",Legendary Creature — Spider Human Hero,"During your turn, Sun-Spider has flying.
-When Sun-Spider enters, search your library for an Aura or Equipment card, reveal it, put it into your hand, then shuffle.",W/U,Spider; Human; Hero; etb,SPM,154,Uncommon,38,,2.5
 "Neriv, Heart of the Storm",Legendary Creature — Spirit Dragon,"Flying
 If a creature you control that entered this turn would deal damage, it deals twice that much damage instead.",W/B/R,Spirit; Dragon; flying; evasion,TDM,210,Mythic,concept: Mardu,Lost its home when deck 14 converted Mardu->Rakdos (BR) for consistency; needs a Mardu (WBR) shell — no current deck. Build-around concept.,6.5
 Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
@@ -328,9 +297,6 @@ At the beginning of your end step, earthbend 2. (Target land you control becomes
 Nonbasic lands enter tapped.
 {7}: Put a conqueror counter on Zhao.
 As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17",4.5
-Meteor Sword,Artifact — Equipment,"When this Equipment enters, destroy target permanent.
-Equipped creature gets +3/+3.
-Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; removal; etb; equipment; pump; equip,TLA,258,Uncommon,38,,4.5
 Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,8,"best 8 (Sacrifices); also 21,21a,5",4.5
 Cool but Rude,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
 Whenever you attack, you may discard a card. If you do, draw a card.

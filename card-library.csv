@@ -3517,3 +3517,37 @@ Lilypad Village,Land,"{T}: Add {C}.
 {U}, {T}: Surveil 2. Activate only if a Bird, Frog, Otter, or Rat entered the battlefield under your control this turn.",U,mana; surveil; graveyard,BLB,255,1
 Overlord of the Hauntwoods,Enchantment Creature — Avatar Horror,"Impending 4—{1}{G}{G} (If you cast this spell for its impending cost, it enters with four time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
 Whenever this permanent enters or attacks, create a tapped colorless land token named Everywhere that is every basic land type.",G,Avatar; Horror; tokens; impending; ramp; mana; tempo; cost-reduction,DSK,194,1
+Coruscation Mage,Creature — Otter Wizard,"Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
+Whenever you cast a noncreature spell, this creature deals 1 damage to each opponent.",R,Otter; Wizard; tokens; burn; etb; offspring; go-wide,BLB,131,1
+Razzle-Dazzler,Creature — Human Wizard,"Whenever you cast your second spell each turn, put a +1/+1 counter on this creature. It can't be blocked this turn.",U,Human; Wizard; counters,OTJ,63,1
+Tempest Angler,Creature — Otter Wizard,"Whenever you cast a noncreature spell, put a +1/+1 counter on this creature.",U/R,Otter; Wizard; counters,BLB,235,1
+Harnesser of Storms,Creature — Otter Wizard,"Whenever you cast a noncreature or Otter spell, you may exile the top card of your library. Until end of turn, you may play that card. This ability triggers only once each turn.",R,Otter; Wizard; impulse,BLB,137,1
+Black Waltz No. 3,Legendary Creature — Wizard,"Flying, deathtouch
+Whenever you cast a noncreature spell, Black Waltz No. 3 deals 2 damage to each opponent.",B/R,Wizard; burn; deathtouch; combat; removal; flying; evasion,FIN,214,1
+Circle of Power,Sorcery,"You draw two cards and you lose 2 life. Create a 0/1 black Wizard creature token with ""Whenever you cast a noncreature spell, this token deals 1 damage to each opponent.""
+Wizards you control get +1/+0 and gain lifelink until end of turn.",B,lifegain; card draw; tokens; burn; pump,FIN,92,1
+Phyrexian Arena,Enchantment,"At the beginning of your upkeep, you draw a card and you lose 1 life.",B,card draw,FDN,180,1
+"Kitsa, Otterball Elite",Legendary Creature — Otter Wizard,"Vigilance
+Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+{T}: Draw a card, then discard a card.
+{2}, {T}: Copy target instant or sorcery spell you control. You may choose new targets for the copy. Activate only if Kitsa's power is 3 or greater.",U,Otter; Wizard; card draw; pump; prowess; spellslinger; tempo; vigilance; combat,BLB,54,1
+Clinquant Skymage,Creature — Bird Wizard,"Flying
+Whenever you draw a card, put a +1/+1 counter on this creature.",U,Bird; Wizard; counters; card draw; flying; evasion,FDN,33,1
+Quill-Blade Laureate,Creature — Human Cleric // Sorcery,"Double strike
+This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Target creature gets +1/+0 and gains double strike until end of turn.",W,Human; Cleric; pump; prepared; spellslinger; tempo; double strike; combat; aggro,SOS,27,1
+Zack Fair,Legendary Creature — Human Soldier,"Zack Fair enters with a +1/+1 counter on it.
+{1}, Sacrifice Zack Fair: Target creature you control gains indestructible until end of turn. Put Zack Fair's counters on that creature and attach an Equipment that was attached to Zack Fair to that creature.",W,Human; Soldier; counters; sacrifice,FIN,45,1
+"Sun-Spider, Nimble Webber",Legendary Creature — Spider Human Hero,"During your turn, Sun-Spider has flying.
+When Sun-Spider enters, search your library for an Aura or Equipment card, reveal it, put it into your hand, then shuffle.",W/U,Spider; Human; Hero; etb,SPM,154,1
+Weapons Vendor,Creature — Human Artificer,"When this creature enters, draw a card.
+At the beginning of combat on your turn, if you control an Equipment, you may pay {1}. When you do, attach target Equipment you control to target creature you control.",W,Human; Artificer; card draw; etb,FIN,40,2
+Dual-Sun Technique,Instant,"Target creature you control gains double strike until end of turn. If it has a +1/+1 counter on it, draw a card.",W,counters; card draw,EOE,13,1
+Dragoon's Lance,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
+Equipped creature gets +1/+0 and is a Knight in addition to its other types.
+During your turn, equipped creature has flying.
+Gae Bolg — Equip {4}",W,Equipment; tokens; etb; equipment; pump; gae bolg; job select; equip,FIN,17,1
+Deconstruction Hammer,Artifact — Equipment,"Equipped creature gets +1/+1 and has ""{3}, {T}, Sacrifice Deconstruction Hammer: Destroy target artifact or enchantment.""
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; sacrifice; removal; equipment; pump; equip,LCI,9,1
+Meteor Sword,Artifact — Equipment,"When this Equipment enters, destroy target permanent.
+Equipped creature gets +3/+3.
+Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; removal; etb; equipment; pump; equip,TLA,258,1
