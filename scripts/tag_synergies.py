@@ -64,6 +64,12 @@ KEYWORD_THEMES = {
     "collect evidence": ["graveyard"], "void": ["graveyard", "payoff"],
     "flashback": ["graveyard", "recursion", "spellslinger"],
     "escape": ["graveyard", "recursion"], "disturb": ["graveyard", "recursion"],
+    # Harmonize ("cast this from your graveyard for its harmonize cost") is graveyard
+    # self-recursion like flashback/escape — deck.py's engine classifier already counts
+    # it as a graveyard ENABLER. It was wrongly in FLAVOR_KEYWORDS because the collection
+    # holds a single Harmonize card, which made the card-uniqueness test read it as a
+    # one-off flavor name (broad-scan follow-on).
+    "harmonize": ["graveyard", "recursion"],
     "unearth": ["graveyard", "recursion"], "embalm": ["graveyard", "tokens"],
     "eternalize": ["graveyard", "tokens"], "jump-start": ["graveyard", "spellslinger"],
     "aftermath": ["graveyard", "recursion"], "dredge": ["graveyard", "self-mill"],
@@ -144,7 +150,7 @@ FLAVOR_KEYWORDS = {
     "ability", "angelo cannon", "animal may-ham", "attack", "blue magic", "bring down",
     "death gigas", "dinosaur formula", "double overdrive", "dragonfire dive",
     "echo of the lost", "find new host", "fira", "firaga", "fire", "fire cross",
-    "galian beast", "harmonize", "heal", "hellmasker", "item", "look around",
+    "galian beast", "heal", "hellmasker", "item", "look around",
     "magic", "murasame", "particle beam", "rat tail", "stagger", "starfall", "super nova",
     "take 59 flights of stairs", "take the elevator", "the allagan eye",
     "trance", "wave cannon",

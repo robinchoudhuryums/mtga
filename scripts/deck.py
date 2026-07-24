@@ -170,6 +170,37 @@ def find_deck(deck_id):
     return None
 
 
+# Decks that exist as documentation/placeholders rather than lists you'd sleeve up.
+# A `#: status:` header naming one of these keeps the deck fully addressable by id —
+# `check`, `stats`, `cuts`, the editor all still work on it — while dropping it from
+# ROSTER-WIDE views, where it is pure noise. The example deck is a 26-card illustration
+# of the file format, so it is permanently illegal: it sat at the top of `deck.py audit`
+# occupying BOTH ★ TUNE slots, making the triage's most actionable output ("Full-tune
+# candidates: 0, 0a") 100% false positive and permanently un-actionable (broad-scan
+# F-06). It also counted as a deck a card could be "reused" in. `wishlist._theme_model`
+# already excluded it by a card-count heuristic; this makes the intent explicit and
+# shared, so every roster view agrees on what counts as part of the roster.
+NONROSTER_STATUSES = {"example", "template", "placeholder", "retired", "archived"}
+
+
+def deck_status(meta):
+    """The `#: status:` keyword (lowercased first word), or '' when unset."""
+    raw = (meta or {}).get("status", "") or ""
+    return raw.strip().split()[0].strip().lower() if raw.strip() else ""
+
+
+def is_roster_deck(d):
+    """True when a deck should COUNT toward roster-wide views (audit / rotation / brawl /
+    wildcards / cross-deck reuse / tier sweep). False for a documentation placeholder or a
+    retired list. Never affects addressing a deck directly by id."""
+    return deck_status(d.get("meta") or {}) not in NONROSTER_STATUSES
+
+
+def roster_decks():
+    """`discover_decks()` narrowed to the decks that are really part of the roster."""
+    return [d for d in discover_decks() if is_roster_deck(d)]
+
+
 # --------------------------------------------------------------------------- #
 # Collection lookup
 # --------------------------------------------------------------------------- #
@@ -249,7 +280,12 @@ def cmd_list(_args):
             status = "OK " if short == 0 else f"{short} short"
             label = d["name"] or os.path.basename(os.path.dirname(d["path"])) or d["id"]
             tag = "  └─ variant" if d["variant"] else "CORE"
-            print(f"  [{d['id']:>4}] {tag:12} {label:28} {total:3} cards  {status}")
+            # `list` shows EVERY deck (it's the index), but marks the ones roster-wide
+            # views skip so their absence from `audit`/`rotation`/`wildcards` isn't a
+            # mystery.
+            st = deck_status(d["meta"])
+            mark = f"  [{st}]" if st in NONROSTER_STATUSES else ""
+            print(f"  [{d['id']:>4}] {tag:12} {label:28} {total:3} cards  {status}{mark}")
             ident = _deck_identity(d["meta"])
             if ident:
                 print(f"          {ident}")
@@ -311,7 +347,7 @@ def cmd_wildcards(_args):
     """Roster-wide crafting plan: what to craft, and which crafts unlock the most
     decks. Owned copies are shared across decks and summed across printings, so a
     card is only ever short by (max any deck needs − total owned)."""
-    decks = discover_decks()
+    decks = roster_decks()   # a documentation placeholder must not demand wildcards
     if not decks:
         print("No decks yet. Add one under decks/<NN-name>/deck.txt.")
         return 0
@@ -2008,6 +2044,26 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
     return "role-player"
 
 
+def cross_deck_breadth(card_colors, card_themes, fps):
+    """How many decks a card is BOTH castable in AND shares ≥1 SPECIFIC theme with —
+    the single definition of "cross-deck breadth" in this toolkit.
+
+    `fps` is [(deck_id, castable_colors:set, specific_themes:set), …]. Callers supply
+    their own per-deck specific-theme set, because the two ranking models legitimately
+    decide "specific" differently and that difference is deliberate:
+      • `deck.suggest_scored` uses the GENERIC_THEMES/_GENERIC_TRIBES denylist plus the
+        `#: protect:` signature rescue (`_sim_specific`), the same test `similar` uses;
+      • `wishlist._rank_scores` uses the idf threshold (`spec_idf`) + NON_SIGNAL_TAGS,
+        which self-calibrates to the deck count.
+    What must NOT differ is the COUNTING RULE, and it used to: two hand-written copies
+    drifted until one required a specific theme and the other accepted any central one,
+    so `suggest`'s column saturated at 99% while the wishlist's stayed meaningful
+    (broad-scan F-04). Routing both through here makes that impossible; `check_suggest`
+    anchor 13 asserts the two agree on a synthetic card."""
+    return sum(1 for _id, dcols, dthemes in fps
+               if card_colors <= dcols and (card_themes & dthemes))
+
+
 def _deck_fingerprints(meta, exclude_id=None):
     """[(id, colors:set, specific_central_themes:set), ...] for every deck — used to
     score a craft target's cross-deck reuse (a card that fits several of your decks is
@@ -2025,12 +2081,25 @@ def _deck_fingerprints(meta, exclude_id=None):
     the gate `wishlist._rank_scores` already applies to its own breadth column; the
     two now measure the same thing.
 
+    VARIANTS ARE COLLAPSED to their core deck. A variant is an alternate build of the
+    same archetype, so counting 19, 19b and 19c as three homes triple-counts one deck's
+    worth of value — the second inflation source in this signal, and the same reasoning
+    `wishlist._theme_model` documents for its own idf/breadth model. Excluding a deck by
+    `exclude_id` therefore excludes its whole family, so analyzing 19b can't count 19.
+
     `exclude_id` drops one deck from the roster (the deck being analyzed), so a
     suggestion's reuse count is 'how many OTHER decks it fits' — otherwise the
     current deck always counts itself and inflates every score by one."""
     fps = []
-    for dd in discover_decks():
-        if exclude_id is not None and dd["id"].lower() == exclude_id.lower():
+    skip_core = None
+    if exclude_id is not None:
+        skip_core = next((d["core"] for d in roster_decks()
+                          if d["id"].lower() == exclude_id.lower()), None)
+    for dd in roster_decks():
+        if dd["variant"]:
+            continue                      # an alternate build of a core already counted
+        if exclude_id is not None and (dd["id"].lower() == exclude_id.lower()
+                                       or (skip_core is not None and dd["core"] == skip_core)):
             continue
         dm, cards = parse_deck_file(dd["path"])
         colors, ident, theme_w = _declared_colors(dm), set(), {}
@@ -2146,7 +2215,7 @@ def rotation_sweep(fmt="standard", years=3, within=2):
     pool, has_released = _pool_rotation_index()
     fmt = (fmt or "").strip().lower()
     decks_out, rollup, unverified = [], {}, 0
-    for d in discover_decks():
+    for d in roster_decks():
         dm, cards = parse_deck_file(d["path"])
         if fmt and (dm.get("format") or "").strip().lower() != fmt:
             continue
@@ -2214,11 +2283,11 @@ def brawl_readiness(fmt_filter="standard"):
     carddata = load_card_data()
     leg = load_legalities()
     # cores that already have a Brawl variant (so we can mark them done)
-    converted = {d["core"] for d in discover_decks()
+    converted = {d["core"] for d in roster_decks()
                  if str(d["id"]).endswith("-brawl")}
     fmt_filter = (fmt_filter or "").strip().lower()
     rows = []
-    for d in discover_decks():
+    for d in roster_decks():
         meta, cards = parse_deck_file(d["path"])
         if fmt_filter and (meta.get("format") or "").strip().lower() != fmt_filter:
             continue
@@ -2404,7 +2473,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         h = owned_of(name.lower())
         card_cols = card_colors(r.get("Color(s)"))
         card_themes = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
-        fits = sum(1 for _id, dc, dt in fps if card_cols <= dc and (card_themes & dt))
+        fits = cross_deck_breadth(card_cols, card_themes, fps)
         if h == 0 and fits >= 3:
             hi_reuse.append((name, fits))
         picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(),
@@ -4190,7 +4259,7 @@ def audit_roster():
     """Score every deck for the roster triage — loads each reference CSV once, then
     runs audit_deck per deck. Returns the list of row dicts (unsorted, discovery
     order). Shared by the CLI and the dashboard."""
-    decks = discover_decks()
+    decks = roster_decks()
     refs = dict(by_name_qty=load_collection()[2], carddata=load_card_data(),
                 mana=load_mana(), leg=load_legalities(), cmeta=load_card_meta())
     return [audit_deck(d, **refs) for d in decks]
@@ -5319,7 +5388,7 @@ def tier_consistency_issues():
     """Roster-wide (id, claimed, implied, msg) for decks whose claimed tier is
     indefensibly high vs its metrics — folded into check_all as a soft warning."""
     out = []
-    for d in discover_decks():
+    for d in roster_decks():
         claimed, implied, mismatch, msg = tier_consistency(d)
         if mismatch:
             out.append((d["id"], claimed, implied, msg))

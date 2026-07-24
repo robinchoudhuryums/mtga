@@ -1916,7 +1916,7 @@ Surly Farrier,Creature — Kithkin Citizen,{T}: Target creature you control gets
 Sparring Dummy,Artifact Creature — Scarecrow,"Defender
 {T}: Mill a card. You may put a land card milled this way into your hand. You gain 2 life if a Lesson card is milled this way. (To mill a card, put the top card of your library into your graveyard.)",G,Scarecrow; graveyard; mill; lifegain; defender; defense,TLA,197,1
 Synchronized Charge,Sorcery,"Distribute two +1/+1 counters among one or two target creatures you control. Creatures you control with counters on them gain vigilance and trample until end of turn.
-Harmonize {4}{G} (You may cast this card from your graveyard for its harmonize cost. You may tap a creature you control to reduce that cost by {X}, where X is its power. Then exile this spell.)",G,counters; graveyard,TDM,162,1
+Harmonize {4}{G} (You may cast this card from your graveyard for its harmonize cost. You may tap a creature you control to reduce that cost by {X}, where X is its power. Then exile this spell.)",G,counters; graveyard; harmonize; recursion,TDM,162,1
 Tenderize,Instant,Target creature you control deals damage equal to its power to target creature an opponent controls.,G,removal,TMT,133,1
 Town Greeter,Creature — Human Citizen,"When this creature enters, mill four cards. You may put a land card from among them into your hand. If you put a Town card into your hand this way, you gain 2 life. (To mill four cards, a player puts the top four cards of their library into their graveyard.)",G,Human; Citizen; graveyard; mill; lifegain; etb,FIN,209,1
 "Tigra, Feline Fury",Legendary Creature — Cat Human Hero,"Flash

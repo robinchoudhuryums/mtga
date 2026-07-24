@@ -74,6 +74,16 @@ clock (curve + cheap threats + reach) instead of the interaction suite it doesn'
 Without it the plan is read from `#: archetype:` keywords, else inferred, else midrange
 (the default interaction+card-advantage floor).
 
+`#: status:` (optional — `example` | `template` | `placeholder` | `retired` | `archived`)
+marks a file that is **not part of the playable roster**. The deck stays fully
+addressable by id — `check`, `stats`, `cuts`, `text` and the editor all still work on it,
+and `deck.py list` shows it tagged `[example]` — but roster-WIDE views skip it:
+`audit`, `rotation`, `brawl`, `wildcards`, the tier sweep, cross-deck reuse counts, and
+the dashboard. Use it for the `00-example-avatar` illustration or a deck you've retired
+but want to keep. Without it, a permanently-illegal 26-card demo sits at the top of
+`deck.py audit` as a `★ TUNE` candidate forever, which is how the triage's most
+actionable output became 100% false positive.
+
 Variations are **full lists too** (not diffs) — so every file is robust and
 independently checkable. Use `deck.py diff` to see what a variation changes; git
 history tracks how each iteration evolves. (A `#: based-on:` line is just a note

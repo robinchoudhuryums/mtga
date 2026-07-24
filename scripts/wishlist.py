@@ -380,6 +380,12 @@ def _theme_model():
         # (the 26-card example placeholder, an 83-card raw pile, an 86-card pool).
         if dd["variant"]:
             continue
+        # Explicit roster membership (a `#: status: example` placeholder is not a deck),
+        # sharing deck.py's predicate so the two agree on what the roster IS. The card-
+        # count filter below still stands: it also catches untuned piles that carry no
+        # status header.
+        if not dk.is_roster_deck(dd):
+            continue
         dm, cards = dk.parse_deck_file(dd["path"])
         if not (55 <= sum(q for q, _n, _s, _c in cards) <= 70):
             continue
@@ -609,6 +615,28 @@ def _reuse_bonus(reuse):
     return round(min(_REUSE_BONUS_CAP, _REUSE_BONUS_W * max(0, r - 1)), 2)
 
 
+def _specific_themes_of(central, idf, spec_idf):
+    """This model's notion of a deck's SPECIFIC (identity-carrying) themes: central
+    themes that are rare enough across the roster (idf >= the self-calibrating
+    `spec_idf` cutoff) and aren't evergreen keywords. Deliberately different from
+    deck.py's denylist-based test — see `deck.cross_deck_breadth`."""
+    return {t for t in central
+            if idf.get(t, 0) >= spec_idf and t.lower() not in NON_SIGNAL_TAGS}
+
+
+def _breadth_of(ccols, ctags, fps, idf, spec_idf):
+    """Cross-deck breadth for one card, via the SHARED rule in deck.cross_deck_breadth
+    (castable in the deck AND shares >=1 specific theme). Falls back to a local count
+    only if deck.py can't be imported, so the column degrades rather than vanishing."""
+    trimmed = [(did, dcols, _specific_themes_of(central, idf, spec_idf))
+               for did, dcols, central, _twn in fps]
+    try:
+        import deck as dk
+        return dk.cross_deck_breadth(ccols, ctags, trimmed)
+    except Exception:
+        return sum(1 for _d, dc, dt in trimmed if ccols <= dc and (ctags & dt))
+
+
 def _rank_scores(rows):
     """Score every wishlist card for wildcard-spend priority. Reuses the idf theme
     model (so it stays consistent with --suggest-targets):
@@ -652,11 +680,14 @@ def _rank_scores(rows):
             specific = sorted((t for t in shared if idf.get(t, 0) >= spec_idf
                                and t.lower() not in NON_SIGNAL_TAGS),
                               key=lambda t: -idf[t])
-            if specific:
-                reuse += 1
             score = sum(idf.get(t, 0) * twn[t] for t in shared)
             if score > best:
                 best, best_specific = score, specific
+        # Breadth via the SHARED counting rule (deck.cross_deck_breadth), fed this
+        # model's own idf-based notion of a specific theme. It used to be an inline
+        # `reuse += 1` in the loop above — a second hand-written copy of the rule, which
+        # is exactly how the two breadth signals drifted apart (broad-scan F-04).
+        reuse = _breadth_of(ccols, ctags, fps, idf, spec_idf)
         if best_specific and best >= 1.5:
             conf = "STRONG"
         elif best_specific:

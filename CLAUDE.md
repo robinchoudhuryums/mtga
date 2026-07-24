@@ -156,11 +156,15 @@ castability · curve · central-theme density), with the intangibles moving a de
   is NOT "it's Standard-legal." **In code, never slice a card's text to
   grade/classify/rank it** — the rule holds today because every evaluator reads a
   whole `Card Text` cell off `load_card_data()` (library→pool) or a pool row, and
-  truncation appears only in DISPLAY (a first-line preview in a filler list). Note
-  the accessor `lib.full_card_text(name)` exists for this but currently has **no
-  callers** — it is available for new code, not an enforced funnel, so the
-  no-truncation rule is a convention each evaluator upholds rather than something
-  a single choke point guarantees (broad-scan F-07). Prefer it in anything new.
+  truncation appears only in DISPLAY (a first-line preview in a filler list).
+  `load_card_data()` is the ONE name→card accessor; a `lib.full_card_text()` was once
+  added as a dedicated funnel but never acquired a caller (every evaluator already
+  holds a carddata dict, and a second cache of the same column is worse than one), so
+  it was removed rather than left as dead code the docs pointed at (broad-scan F-07).
+  Note `load_card_data` resolves library-first, so a library row with BLANK text would
+  shadow a populated pool row — harmless today (all 6 blank-text rows are genuinely
+  vanilla in both files) but the thing to check if an evaluator ever reads a card as
+  text-less.
 - **Don't judge a card by printed mana value or a single subtype.** `deck.py
   stats` flags cost flexibility (`◊` cheaper / `△` added cost), buckets spells
   into functional roles (removal / card advantage / ramp / …, heuristic from
@@ -442,9 +446,14 @@ castability · curve · central-theme density), with the intangibles moving a de
   spine (≥2 protected cards). That gate is load-bearing: centrality alone left the
   count saturated — nearly every deck is central on the same handful of generic
   themes, so 99% of a deck's picks scored ≥3 and the median pick "fit" 31 of 56 other
-  decks, i.e. the column carried no information (audit F-04). It is the same gate
-  `wishlist.py --rank`'s `use` column applies, so the two breadth signals now measure
-  the same thing. Read it as a rough "value per wildcard": a craft that fits several
+  decks, i.e. the column carried no information (audit F-04). **VARIANTS are collapsed to
+  their core deck** and `#: status:` placeholders are excluded — 19/19b/19c are one
+  archetype's worth of value, not three homes (the second inflation source). Median reuse
+  is now ~1–2 of 41 core decks, spread 0–19. Both models route the counting rule through
+  **`deck.cross_deck_breadth`**, each supplying its own notion of a "specific" theme
+  (deck.py's denylist vs the wishlist's idf cutoff — a deliberate difference), so the RULE
+  can't drift apart again the way it did; `check_suggest` anchor 13 asserts the two agree
+  on a synthetic card. Read it as a rough "value per wildcard": a craft that fits several
   decks outranks a one-deck sidegrade — still breadth, not curated fit. A "High
   cross-deck reuse" line summarizes the top fits≥3. Factor it into a craft's ★/~/·
   weight in a flex block.
@@ -718,7 +727,12 @@ castability · curve · central-theme density), with the intangibles moving a de
   so it is a real mechanic and belongs in the baseline, NOT the denylist. Both
   directions are guarded — `check_keywords.check()` flags an unindexed keyword,
   `check_keywords.flavor_overreach()` flags a denylisted word that turns up on ≥3
-  owned cards (a real mechanic being suppressed).
+  owned cards, is ALSO mapped in `KEYWORD_THEMES`, or is named in `deck.ENGINE_THEMES`
+  as a real engine mechanic. That last cross-check exists because `harmonize` — a
+  graveyard self-recursion keyword deck.py counts as a graveyard ENABLER — sat
+  denylisted for a full cycle: the collection holds exactly ONE Harmonize card, so the
+  owned-count signal could never reach the threshold. **Card-uniqueness is judged across
+  the POOL, and a keyword another subsystem already treats as a mechanic is never flavor.**
 - **`tag_synergies.py` text-tags fixing + topdeck-value engines** so they stop
   hiding under `selection`/`tokens`: "cast/play … from the top of your library" →
   `card advantage` (Vizier of the Menagerie, Realmwalker, Bolas's Citadel); "spend
@@ -839,7 +853,13 @@ top theme nor via a `#: protect:` signature — while a narrow tribe and a speci
 still read KEY (anchor 11, the Hawkeye-"KEY"-in-every-Hero-deck fix), and the suggest-homes
 curve co-signal (`_home_curve_fit`) stays a bounded/never-boosting SORT nudge while
 `_central_themes` admits a curated mechanical sub-theme at floor 2 yet still gates a generic
-theme (anchor 12, finding #5 + the secondary-payoff centrality fix);
+theme (anchor 12, finding #5 + the secondary-payoff centrality fix), and — unlike every other
+check in this suite — **anchor 13 runs the real ENTRY POINTS end-to-end** over a synthetic
+deck+pool and asserts the OUTPUT ORDER (a mythic and a common differing ONLY in rarity must
+not score the same power; an off-theme card must not be suggested; both breadth models must
+agree). Pure-function anchors cannot see WIRING — F-01 shipped past eleven green gates
+because `_cuts_power_adj` was provably bounded/monotonic while its CALLER handed the seed the
+wrong rarity shape, so a model correct in every part was still wired up wrong (F-18);
 **engine classifier** (`check_engines.py`) anchors the enabler/
 payoff detection on canonical cards (#3); **tier floor** (`check_tier.py`) proves
 the archetype-aware floor grades non-aggro decks identically to before and only

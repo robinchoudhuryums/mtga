@@ -1,5 +1,6 @@
 #: name: Example Avatar WU
 #: format: Standard
+#: status: example   (documentation placeholder — excluded from roster-wide views)
 #: colors: WU
 #: archetype: Azorius (W/U) tempo — illustrative example deck; replace with your real lists.
 #: notes: Illustrative example showing the deck format. Replace with your real decks.
