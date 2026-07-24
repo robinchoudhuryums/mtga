@@ -656,7 +656,9 @@ it) with a scroll-spy highlight, and the long lists (wishlist tiers, crafting le
 filters by free text (card / target / signal) **and by wildcard rarity** — click the
 `M`/`R`/`U`/`C` chips (multi-select; empty = all) to scope the craft list to the wildcards
 you're spending, the dashboard mirror of `wishlist.py --rarity`. All of this persists in
-the same `localStorage` prefs as the theme/filters.
+the same `localStorage` prefs as the theme/filters. The layout is **responsive down to
+phone widths** — grids collapse to one column, wide tables scroll inside their own box,
+and the section-nav scrolls horizontally.
 
 The **build** is **offline** — it disables `deck.py`'s live-Scryfall fallbacks and reads
 only committed data (`card-*.csv` + `decks/`), so it never touches the network and runs
