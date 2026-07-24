@@ -139,7 +139,7 @@ Whenever you gain life, put a +1/+1 counter on Leonardo.",W,Mutant; Ninja; Turtl
 Murdock's Crusade,Sorcery,"Teamwork 4 (As an additional cost to cast this spell, you may tap any number of creatures you control with total power 4 or more.)
 Choose one. If this spell was cast using teamwork, choose both instead.
 • Street Justice — Exile target creature with toughness 4 or greater.
-• Legal Justice — Exile target enchantment with mana value 4 or greater.",W,removal; teamwork; go-wide; combat,MSH,24,1
+• Legal Justice — Exile target enchantment with mana value 4 or greater.",W,removal; teamwork; go-wide; combat; street justice; legal justice,MSH,24,1
 "Night Nurse, Healer of Heroes",Legendary Creature — Human Doctor Hero,"Flash
 Lifelink
 When Night Nurse enters, choose target permanent card in your graveyard that was put there from anywhere this turn. Return it to your hand.",W,Human; Doctor; Hero; graveyard; lifegain; etb; lifelink; flash; tempo,MSH,26,1
@@ -283,7 +283,7 @@ Pyrrhic Strike,Instant,"As an additional cost to cast this spell, you may blight
 Choose one. If this spell's additional cost was paid, choose both instead.
 • Destroy target artifact or enchantment.
 • Destroy target creature with mana value 3 or greater.",W,counters; removal; blight; graveyard,ECL,30,1
-"Quake, Agent of S.H.I.E.L.D.",Legendary Creature — Inhuman Spy Hero,"Seismic Takedown — Whenever you cast a noncreature spell, tap target creature or land.",W,Inhuman; Spy; Hero,MSH,32,1
+"Quake, Agent of S.H.I.E.L.D.",Legendary Creature — Inhuman Spy Hero,"Seismic Takedown — Whenever you cast a noncreature spell, tap target creature or land.",W,Inhuman; Spy; Hero; seismic takedown,MSH,32,1
 "Red Guardian, Super-Soldier",Legendary Creature — Human Soldier Villain,"Flash
 When Red Guardian enters, destroy target creature an opponent controls that dealt damage this turn.",W,Human; Soldier; Villain; removal; etb; flash; tempo,MSH,34,1
 Reluctant Dounguard,Creature — Kithkin Soldier,"This creature enters with two -1/-1 counters on it.
@@ -353,7 +353,7 @@ Kyoshi Warriors,Creature — Human Warrior Ally,"When this creature enters, crea
 Double strike
 During your turn, you may cast creature spells with power or toughness 1 or less from your graveyard. If you cast a spell this way, that creature enters with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)",W,Mutant; Ninja; Turtle; Samurai; counters; graveyard; double strike; combat; aggro; sneak; tempo; cost-reduction,TMT,17,1
 Liminal Hold,Enchantment,"When this enchantment enters, exile up to one target nonland permanent an opponent controls until this enchantment leaves the battlefield. You gain 2 life.",W,lifegain; etb,ECL,24,1
-"Luke Cage, Power Man",Legendary Creature — Human Hero,"Unbreakable Skin — Whenever Luke Cage attacks alone, he gets +2/+0 and gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy him.)",W,Human; Hero; pump,MSH,20,1
+"Luke Cage, Power Man",Legendary Creature — Human Hero,"Unbreakable Skin — Whenever Luke Cage attacks alone, he gets +2/+0 and gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy him.)",W,Human; Hero; pump; unbreakable skin,MSH,20,1
 Luxknight Breacher,Creature — Human Knight,This creature enters with a +1/+1 counter on it for each other creature and/or artifact you control.,W,Human; Knight; counters,EOE,26,1
 Mighty Mutanimals,Creature — Mutant Rebel,"When this creature enters, create a 2/2 red Mutant creature token.
 Alliance — Whenever another creature you control enters, put a +1/+1 counter on target creature you control.",W,Mutant; Rebel; counters; tokens; etb; alliance; aggro; value,TMT,21,1
@@ -404,7 +404,7 @@ Basic landcycling {2} ({2}, Discard this card: Search your library for a basic l
 Flying, lifelink
 Power-up — {5}{W}{W}: Put a +1/+1 counter and an indestructible counter on Captain Marvel. (Activate each power-up ability only once. Reduce the cost by her mana cost if she entered this turn.)",W,Human; Kree; Hero; counters; lifegain; flying; evasion; power-up; payoff; lifelink; flash; tempo,MSH,11,1
 "Captain Mar-Vell, Space-Born",Legendary Creature — Kree Soldier Hero,"Flying, vigilance
-Cosmic Awareness — As long as an opponent has cast a spell this turn, you may cast spells as though they had flash.",W,Kree; Soldier; Hero; flying; evasion; vigilance; combat,MSH,12,1
+Cosmic Awareness — As long as an opponent has cast a spell this turn, you may cast spells as though they had flash.",W,Kree; Soldier; Hero; flying; evasion; vigilance; combat; cosmic awareness,MSH,12,1
 Cloudbound Moogle,Creature — Moogle,"Flying
 When this creature enters, put a +1/+1 counter on target creature.
 Plainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, put it into your hand, then shuffle.)",W,Moogle; counters; etb; flying; evasion; plainscycling; card draw; lands; landcycling; typecycling; cycling,FIN,11,1
@@ -591,7 +591,7 @@ Illusion Spinners,Creature — Faerie Wizard,"You may cast this spell as though 
 Flying
 This creature has hexproof as long as it's untapped. (It can't be the target of spells or abilities your opponents control.)",U,Faerie; Wizard; flying; evasion,ECL,55,1
 "Falcon, Winged Wonder",Legendary Creature — Human Hero,"Flying
-Avian Telepathy — When Falcon enters, create Redwing, a legendary 1/1 blue Bird Scout creature token with flying and ""Whenever Redwing attacks, surveil 1."" (Look at the top card of your library. You may put it into your graveyard.)",U,Human; Hero; graveyard; tokens; etb; selection; flying; evasion; surveil,MSH,52,1
+Avian Telepathy — When Falcon enters, create Redwing, a legendary 1/1 blue Bird Scout creature token with flying and ""Whenever Redwing attacks, surveil 1."" (Look at the top card of your library. You may put it into your graveyard.)",U,Human; Hero; graveyard; tokens; etb; selection; flying; evasion; surveil; avian telepathy,MSH,52,1
 Ember Island Production,Sorcery,"Choose one —
 • Create a token that's a copy of target creature you control, except it's not legendary and it's a 4/4 Hero in addition to its other types.
 • Create a token that's a copy of target creature an opponent controls, except it's not legendary and it's a 2/2 Coward in addition to its other types.",U,tokens,TLA,48,1
@@ -718,7 +718,7 @@ Mondo Gecko,Legendary Creature — Lizard Mutant,"{1}, Discard a card: Until end
 Whenever Mondo Gecko deals combat damage to a player, draw a card for each color among permanents you control.",U,Lizard; Mutant; card draw,TMT,46,1
 "Ms. Marvel, Kamala Khan",Legendary Creature — Mutant Inhuman Hero,"Vigilance, reach
 You have no maximum hand size.
-Embiggen Fist — Whenever you cast a spell that targets a creature you control, draw a card. Until end of turn, Ms. Marvel gains ""Ms. Marvel's base power is equal to the number of cards in your hand.""",U,Mutant; Inhuman; Hero; card draw; reach; defense; vigilance; combat,MSH,67,1
+Embiggen Fist — Whenever you cast a spell that targets a creature you control, draw a card. Until end of turn, Ms. Marvel gains ""Ms. Marvel's base power is equal to the number of cards in your hand.""",U,Mutant; Inhuman; Hero; card draw; reach; defense; vigilance; combat; embiggen fist,MSH,67,1
 Mind Transfer Protocol,Instant,"Until end of turn, target artifact or creature becomes an artifact creature with base power and toughness 4/5.
 Draw a card.",U,card draw,TMT,45,1
 Mana Sculpt,Instant,"Counter target spell. If you control a Wizard, add an amount of {C} equal to the amount of mana spent to cast that spell at the beginning of your next main phase.",U,counterspell,SOS,57,1
@@ -767,7 +767,7 @@ Draw a card.",U,card draw; removal,MSH,50,1
 Combat Tutorial,Sorcery,Target player draws two cards. Put a +1/+1 counter on up to one target creature you control.,U,counters,FIN,48,1
 Braided Net,Artifact // Artifact,"This artifact enters with three net counters on it.
 {T}, Remove a net counter from this artifact: Tap another target nonland permanent. Its activated abilities can't be activated for as long as it remains tapped.
-Craft with artifact {1}{U} // {3}{U}, {T}: Draw a card for each artifact you control, then put this artifact into its owner's library third from the top.",U,card draw; craft; artifacts; graveyard,LCI,47,1
+Craft with artifact {1}{U} // {3}{U}, {T}: Draw a card for each artifact you control, then put this artifact into its owner's library third from the top.",U,card draw; craft; artifacts; graveyard; transform,LCI,47,1
 Atlantean Cavalry,Creature — Merfolk Soldier,"Vigilance
 Whenever you draw your second card each turn, put a +1/+1 counter on this creature.",U,Merfolk; Soldier; counters; vigilance; combat,MSH,45,2
 Bespoke Bō,Artifact — Equipment,"When this Equipment enters, return up to one other target nonland permanent to its owner's hand.
@@ -798,7 +798,7 @@ Tony Stark,Legendary Creature — Human Artificer Hero // Legendary Artifact Cre
 At the beginning of combat on your turn, you may put an artifact card from your hand onto the battlefield. If it's an Equipment, attach it to The Invincible Iron Man.",U/R,Human; Artificer; Hero; selection; flying; evasion; transform; haste; aggro,MSH,80,1
 The Wondrous Wasp,Legendary Creature — Human Hero,"Flash
 Flying
-Wasp's Sting — When The Wondrous Wasp enters, tap up to one target creature. It loses all abilities for as long as The Wondrous Wasp remains on the battlefield.",U,Human; Hero; etb; flying; evasion; flash; tempo,MSH,84,1
+Wasp's Sting — When The Wondrous Wasp enters, tap up to one target creature. It loses all abilities for as long as The Wondrous Wasp remains on the battlefield.",U,Human; Hero; etb; flying; evasion; flash; tempo; wasp's sting,MSH,84,1
 Tester of the Tangential,Creature — Djinn Wizard,"Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)
 At the beginning of combat on your turn, you may pay {X}. When you do, move X +1/+1 counters from this creature onto another target creature.",U,Djinn; Wizard; counters; increment,SOS,69,1
 Steelswarm Operator,Artifact Creature — Robot Soldier,"Flying
@@ -1175,7 +1175,7 @@ Insatiable Skittermaw,Creature — Insect Horror,"Menace (This creature can't be
 Void — At the beginning of your end step, if a nonland permanent left the battlefield this turn or a spell was warped this turn, put a +1/+1 counter on this creature.",B,Insect; Horror; counters; menace; evasion; void; graveyard; payoff,EOE,108,1
 Kingpin's Enforcers,Creature — Human Villain,"Lifelink
 {2}{B}, Sacrifice an artifact or creature: Draw a card.",B,Human; Villain; lifegain; card draw; sacrifice; lifelink,MSH,102,1
-"Klaw, Sonic Subjugator",Legendary Creature — Human Rogue Villain,"Sonic Attack — When Klaw enters, target player reveals a number of cards from their hand equal to one plus the number of creature cards in your graveyard. You choose one of them. That player discards that card.",B,Human; Rogue; Villain; graveyard; etb; discard,MSH,103,1
+"Klaw, Sonic Subjugator",Legendary Creature — Human Rogue Villain,"Sonic Attack — When Klaw enters, target player reveals a number of cards from their hand equal to one plus the number of creature cards in your graveyard. You choose one of them. That player discards that card.",B,Human; Rogue; Villain; graveyard; etb; discard; sonic attack,MSH,103,1
 Ninja of the Hand,Creature — Human Ninja Villain,"Deathtouch
 Power-up — {4}{B}: Each opponent discards a card. Put a +1/+1 counter on this creature. (Activate each power-up ability only once. Reduce the cost by its mana cost if it entered this turn.)",B,Human; Ninja; Villain; counters; discard; power-up; payoff; deathtouch; combat; removal,MSH,108,1
 Murder,Instant,Destroy target creature.,B,removal,MKM,95,1
@@ -1330,7 +1330,7 @@ Madame Masque,Legendary Creature — Human Villain,"When Madame Masque enters, s
 Whenever you draw your second card each turn, create a 2/1 black Villain creature token with menace. (It can't be blocked except by two or more creatures.)",B,Human; Villain; counters; card draw; tokens; etb; connive; graveyard,MSH,104,1
 M.O.D.O.K.,Legendary Artifact Creature — Villain,"Flying, lifelink
 Mental Organism — Pay 3 life: M.O.D.O.K. connives. Activate only during your turn. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)
-Designed Only for Killing — Creatures your opponents control get -1/-1.",B,Villain; counters; lifegain; card draw; flying; evasion; lifelink; connive; graveyard,MSH,106,1
+Designed Only for Killing — Creatures your opponents control get -1/-1.",B,Villain; counters; lifegain; card draw; flying; evasion; lifelink; connive; graveyard; mental organism,MSH,106,1
 Painful Quandary,Enchantment,"Whenever an opponent casts a spell, that player loses 5 life unless they discard a card.",B,discard,FDN,179,1
 Prison Break,Sorcery,"Return target creature card from your graveyard to the battlefield with an additional +1/+1 counter on it.
 Mayhem {3}{B} (You may cast this card from your graveyard for {3}{B} if you discarded it this turn. Timing rules still apply.)",B,counters; reanimator; graveyard; mayhem; aggro,SPM,61,1
@@ -1488,7 +1488,7 @@ Haste Magic,Instant,Target creature gets +3/+1 and gains haste until end of turn
 Trick Arrows — Whenever Hawkeye becomes tapped, you may pay {1} up to three times. When you do, choose up to that many.
 • Net — Target creature can't block this turn.
 • Explosive — Hawkeye deals 2 damage to target player.
-• Boomerang — Discard a card, then draw a card.",R,Human; Archer; Hero; card draw; burn; reach; defense; first strike; combat,MSH,130,1
+• Boomerang — Discard a card, then draw a card.",R,Human; Archer; Hero; card draw; burn; reach; defense; first strike; combat; explosive; trick arrows; boomerang; net,MSH,130,1
 "Hazoret, Godseeker",Legendary Creature — God,"Indestructible, haste
 Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
 {1}, {T}: Target creature with power 2 or less can't be blocked this turn.
@@ -1832,7 +1832,7 @@ Pick Your Poison,Sorcery,"Choose one —
 • Each opponent sacrifices a creature with flying of their choice.",G,sacrifice,SOA,55,1
 Pillar Launch,Instant,Target creature gets +2/+2 and gains reach until end of turn. Untap it.,G,pump,TLA,189,1
 "Reptil, Dinomorpher",Legendary Creature — Human Hero,"Brontosaurus — {3}: Until end of turn, Reptil becomes a Dinosaur Hero with base power and toughness 3/5 and gains vigilance and reach.
-Tyrannosaurus Rex — {6}: Until end of turn, Reptil becomes a Dinosaur Hero with base power and toughness 6/6 and gains trample.",G,Human; Hero,MSH,182,1
+Tyrannosaurus Rex — {6}: Until end of turn, Reptil becomes a Dinosaur Hero with base power and toughness 6/6 and gains trample.",G,Human; Hero; brontosaurus; tyrannosaurus rex,MSH,182,1
 Rapid Rescue,Instant,"Mill two cards. You may put a permanent card from among the milled cards into your hand. You gain 2 life. (To mill two cards, put the top two cards of your library into your graveyard.)",G,graveyard; mill; lifegain,MSH,181,1
 "Rick Jones, Destined Sidekick",Legendary Creature — Human Advisor,"{3}, {T}: Mill four cards. You may put a Hero or enchantment card from among those cards into your hand. (To mill four cards, put the top four cards of your library into your graveyard.)",G,Human; Advisor; graveyard; mill,MSH,184,1
 Seismic Sense,Sorcery — Lesson,"Look at the top X cards of your library, where X is the number of lands you control. You may reveal a creature or land card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",G,Lesson; selection,TLA,195,1
@@ -2076,7 +2076,7 @@ Terrific Team-Up,Instant,"This spell costs {2} less to cast if you control a per
 One or two target creatures you control each get +1/+0 until end of turn. They each deal damage equal to their power to target creature an opponent controls.",G,pump,MSC,819,1
 "The Boulder, Ready to Rumble",Legendary Creature — Human Warrior Performer,"Whenever The Boulder attacks, earthbend X, where X is the number of creatures you control with power 4 or greater. (Target land you control becomes a 0/0 creature with haste that's still a land. Put X +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",G,Human; Warrior; Performer; counters; blink; earthbend; bending,TLA,168,1
 The Unbeatable Squirrel Girl,Legendary Creature — Squirrel Human Hero,"Do You Like Squirrels? — Whenever The Unbeatable Squirrel Girl enters or attacks, create a 1/1 green Squirrel creature token.
-I LOVE Squirrels! — {1}{G}{G}{G}: Create X 1/1 green Squirrel creature tokens, where X is the number of Squirrels you control.",G,Squirrel; Human; Hero; tokens,MSH,193,1
+I LOVE Squirrels! — {1}{G}{G}{G}: Create X 1/1 green Squirrel creature tokens, where X is the number of Squirrels you control.",G,Squirrel; Human; Hero; tokens; i love squirrels!,MSH,193,1
 The Earth King,Legendary Creature — Human Noble Ally,"When The Earth King enters, create a 4/4 green Bear creature token.
 Whenever one or more creatures you control with power 4 or greater attack, search your library for up to that many basic land cards, put them onto the battlefield tapped, then shuffle.",G,Human; Noble; Ally; tokens; etb,TLA,172,1
 Training Regimen,Enchantment,"Creatures you control with +1/+1 counters on them have trample.
@@ -2329,7 +2329,7 @@ Find New Host — {2}{U/B}, Exile this card from your graveyard: Put a +1/+1 cou
 Whenever you draw your second card each turn, each opponent loses 1 life and you gain 1 life.",U/B,Human; Villain; counters; lifegain; card draw; connive; graveyard,MSH,217,1
 Voracious Tome-Skimmer,Creature — Faerie Rogue,"Flying
 Whenever you cast a spell during an opponent's turn, you may pay 1 life. If you do, draw a card.",U/B,Faerie; Rogue; card draw; flying; evasion,ECL,250,1
-"Taskmaster, Mercenary Mimic",Legendary Creature — Human Mercenary Villain,"Photographic Reflexes — At the beginning of your first main phase, until your next turn, Taskmaster becomes a copy of up to one target creature on the battlefield or creature card in a graveyard, except his name is Taskmaster, Mercenary Mimic and he's a legendary Human Mercenary Villain creature.",U/B,Human; Mercenary; Villain; graveyard,MSH,232,1
+"Taskmaster, Mercenary Mimic",Legendary Creature — Human Mercenary Villain,"Photographic Reflexes — At the beginning of your first main phase, until your next turn, Taskmaster becomes a copy of up to one target creature on the battlefield or creature card in a graveyard, except his name is Taskmaster, Mercenary Mimic and he's a legendary Human Mercenary Villain creature.",U/B,Human; Mercenary; Villain; graveyard; photographic reflexes,MSH,232,1
 "Vren, the Relentless",Legendary Creature — Rat Rogue,"Ward {2}
 If a creature an opponent controls would die, exile it instead.
 At the beginning of each end step, create X 1/1 black Rat creature tokens with ""This token gets +1/+1 for each other Rat you control,"" where X is the number of creatures that were exiled under your opponents' control this turn.",U/B,Rat; Rogue; tokens; pump; ward; protection,BLB,239,1
@@ -2575,7 +2575,7 @@ At the beginning of your end step, if you gained life this turn, exile cards fro
 At the beginning of combat on your turn, another target creature you control gets +X/+0 until end of turn, where X is War Machine's power.",W/R,Human; Hero; pump; flying; evasion,MSH,238,1
 "Daredevil, Man Without Fear",Legendary Creature — Human Hero,"Vigilance, haste
 Radar Sense — You may look at the top card of your library any time.
-Whenever you attack, you may exile the top card of your library. If that card is a Hero card, Daredevil gets +2/+1 until end of turn. You may play that card this turn.",W/R,Human; Hero; pump; selection; impulse; vigilance; combat; haste; aggro,MSH,213,1
+Whenever you attack, you may exile the top card of your library. If that card is a Hero card, Daredevil gets +2/+1 until end of turn. You may play that card this turn.",W/R,Human; Hero; pump; selection; impulse; vigilance; combat; haste; aggro; radar sense,MSH,213,1
 Heroic Reinforcements,Sorcery,"Create two 1/1 white Soldier creature tokens. Until end of turn, creatures you control get +1/+1 and gain haste. (They can attack and {T} this turn.)",W/R,tokens; pump,FDN,241,1
 Sun Warriors,Creature — Human Warrior Ally,"Firebending X, where X is the number of creatures you control. (Whenever this creature attacks, add X {R}. This mana lasts until end of combat.)
 {5}: Create a 1/1 white Ally creature token.",W/R,Human; Warrior; Ally; tokens; firebending; bending,TLA,244,1
@@ -2622,7 +2622,7 @@ White Lotus Reinforcements,Creature — Human Soldier Ally,"Vigilance
 Other Allies you control get +1/+1.",W/G,Human; Soldier; Ally; pump; vigilance; combat,TLA,251,1
 "Spider-Man, To the Rescue",Legendary Creature — Spider Human Hero,"Flash
 Vigilance, reach
-No One Dies! — When Spider-Man enters, you may tap him. When you do, another target nonattacking creature you control gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)",W/G,Spider; Human; Hero; etb; reach; defense; vigilance; combat; flash; tempo,MSH,228,1
+No One Dies! — When Spider-Man enters, you may tap him. When you do, another target nonattacking creature you control gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)",W/G,Spider; Human; Hero; etb; reach; defense; vigilance; combat; flash; tempo; no one dies!,MSH,228,1
 "Black Panther, Vanguard",Legendary Creature — Human Warrior Hero,"Whenever another nontoken Hero you control enters, choose one —
 • Create a 1/1 white Soldier creature token.
 • Creatures you control get +1/+1 until end of turn.",W/G,Human; Warrior; Hero; tokens; pump,MSH,207,1
@@ -2765,7 +2765,7 @@ Biblioplex Tomekeeper,Artifact Creature — Construct,"When this creature enters
 • Target creature becomes unprepared.",Colorless,Construct; etb; prepared; spellslinger; tempo,SOS,247,1
 "Viv Vision, Teen Synthezoid",Legendary Artifact Creature — Robot Hero,"Flying
 Cybernetic Senses — Whenever Viv Vision attacks, draw a card if her power is 4 or greater.
-Power-up — {7}: Put two +1/+1 counters on Viv Vision. (Activate each power-up ability only once. Reduce the cost by her mana cost if she entered this turn.)",Colorless,Robot; Hero; counters; card draw; flying; evasion; power-up; payoff,MSH,256,1
+Power-up — {7}: Put two +1/+1 counters on Viv Vision. (Activate each power-up ability only once. Reduce the cost by her mana cost if she entered this turn.)",Colorless,Robot; Hero; counters; card draw; flying; evasion; power-up; payoff; cybernetic senses,MSH,256,1
 Strixhaven Skycoach,Artifact — Vehicle,"Flying
 When this Vehicle enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.
 Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,Vehicle; ramp; etb; vehicle; flying; evasion; crew; vehicles,SOS,252,1
@@ -2945,7 +2945,7 @@ The Vision,Legendary Artifact Creature — Robot Hero,"Flying, vigilance
 Whenever you cast a noncreature spell, choose one that hasn't been chosen this turn —
 • Solar Beam — The Vision gains double strike until end of turn.
 • Density Control — The Vision gains indestructible until end of turn.
-• Technopathy — Draw a card.",Colorless,Robot; Hero; card draw; flying; evasion; vigilance; combat,MSH,255,1
+• Technopathy — Draw a card.",Colorless,Robot; Hero; card draw; flying; evasion; vigilance; combat; density control; technopathy; solar beam,MSH,255,1
 H.E.R.B.I.E. Scout Unit,Artifact Creature — Robot Scout,"Flying
 When this creature enters, draw a card, then you may put a land card from your hand onto the battlefield tapped.",Colorless,Robot; Scout; card draw; etb; flying; evasion,MSH,247,1
 S.H.I.E.L.D. Helicarrier,Artifact — Vehicle,"Flying
@@ -3126,7 +3126,7 @@ When this creature enters, look at target opponent's hand. You may exile a nonla
 Death to Our Enemies,Enchantment — Plan,"Whenever you cast a noncreature spell, create a tapped Treasure token and put a plan counter on this enchantment.
 When the fourth plan counter is put on this enchantment, sacrifice it. When you do, it deals 7 damage divided as you choose among one or two targets.",R,Plan; counters; sacrifice; tokens; burn; treasure,MSH,127,1
 "Ghost, Spectral Saboteur",Legendary Creature — Human Rogue Villain,"Flash
-Intangibility — Ghost can't be blocked.",U/B,Human; Rogue; Villain; flash; tempo,MSH,214,1
+Intangibility — Ghost can't be blocked.",U/B,Human; Rogue; Villain; flash; tempo; intangibility,MSH,214,1
 "Mister Hyde, Monster Within",Legendary Creature — Human Villain,"At the beginning of your upkeep, choose one —
 • Put a +1/+1 counter on Mister Hyde.
 • Remove a counter from a creature you control. If you do, draw a card.",G,Human; Villain; counters; card draw,MSH,176,1
@@ -3551,3 +3551,32 @@ Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)
 Meteor Sword,Artifact — Equipment,"When this Equipment enters, destroy target permanent.
 Equipped creature gets +3/+3.
 Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; removal; etb; equipment; pump; equip,TLA,258,1
+Twin Blades,Artifact — Equipment,"Flash
+When this Equipment enters, attach it to target creature you control. That creature gains double strike until end of turn.
+Equipped creature gets +1/+1.
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",R,Equipment; etb; equipment; pump; equip; flash; tempo,TLA,157,1
+Genji Glove,Artifact — Equipment,"Equipped creature has double strike.
+Whenever equipped creature attacks, if it's the first combat phase of the turn, untap it. After this phase, there is an additional combat phase.
+Equip {3}",Colorless,Equipment; equipment; equip,FIN,258,1
+Idol of the Deep King,Artifact // Artifact — Equipment,"Flash
+When this artifact enters, it deals 2 damage to any target.
+Craft with artifact {2}{R} ({2}{R}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.) // When this Equipment enters, attach it to target creature you control.
+Equipped creature gets +2/+0.
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",R,Equipment; graveyard; burn; etb; equipment; pump; craft; artifacts; transform; equip; flash; tempo,LCI,155,1
+Blacksmith's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+When this Class enters, create a colorless Equipment artifact token named Sword with ""Equipped creature gets +1/+1"" and equip {2}.
+{2}{R}: Level 2
+At the beginning of combat on your turn, attach target Equipment you control to up to one target creature you control.
+{3}{R}: Level 3
+During your turn, equipped creatures you control have double strike and haste.",R,Class; tokens; etb; equipment; pump,BLB,125,1
+Freya Crescent,Legendary Creature — Rat Knight,"Jump — During your turn, Freya Crescent has flying.
+{T}: Add {R}. Spend this mana only to cast an Equipment spell or activate an equip ability.",R,Rat; Knight; mana; equipment; jump,FIN,138,1
+Barret Wallace,Legendary Creature — Human Rebel,"Reach
+Whenever Barret Wallace attacks, it deals damage equal to the number of equipped creatures you control to defending player.",R,Human; Rebel; reach; defense,FIN,129,1
+"Cloud, Planet's Champion",Legendary Creature — Human Soldier Mercenary,"During your turn, as long as Cloud is equipped, it has double strike and indestructible. (This creature deals both first-strike and regular combat damage. Damage and effects that say ""destroy"" don't destroy this creature.)
+Equip abilities you activate that target Cloud cost {2} less to activate.",W/R,Human; Soldier; Mercenary; equipment,FIN,552,1
+Seedglaive Mentor,Creature — Mouse Soldier,"Vigilance, haste
+Valiant — Whenever this creature becomes the target of a spell or ability you control for the first time each turn, put a +1/+1 counter on it.",W/R,Mouse; Soldier; counters; vigilance; combat; valiant; haste; aggro,BLB,231,1
+Honored Knight-Captain,Creature — Human Advisor Knight,"When this creature enters, create a 1/1 white Human Soldier creature token.
+{4}{W}{W}, Sacrifice this creature: Search your library for an Equipment card, put it onto the battlefield, then shuffle.",W,Human; Advisor; Knight; sacrifice; tokens; etb,EOE,22,1
+Slash of Light,Instant,Slash of Light deals damage equal to the number of creatures you control plus the number of Equipment you control to target creature.,W,,FIN,32,1
