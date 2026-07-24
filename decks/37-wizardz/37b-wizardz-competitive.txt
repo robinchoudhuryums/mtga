@@ -62,7 +62,7 @@
 1 Enter the Enigma (DSK) 52
 1 Boomerang Basics (TLA) 46
 1 Portent of Calamity (BLB) 66
-1 Phyrexian Arena (FDN) 180
+1 Hawkeye, Young Avenger (MSH) 131
 
 # Noncreature — removal / counters (light interaction package)
 1 Thunder Magic (FIN) 165

@@ -16,7 +16,7 @@
 # Nonland — centerpiece & tools
 1 The Kingpin of Crime (MSH) 220
 1 Koh, the Face Stealer (TLA) 107
-1 Aettir and Priwen (FIN) 253
+1 Bark of Doran (ECL) 6
 
 # Nonland — high-toughness beaters (deathtouch / evasion / vigilance)
 1 Vampire Nighthawk (FDN) 186
