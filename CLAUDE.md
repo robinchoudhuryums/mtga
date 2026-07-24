@@ -654,10 +654,15 @@ castability · curve · central-theme density), with the intangibles moving a de
   strong at ANALYZING/tuning a list but these close the gap at CREATING one. **`deck.py
   similar <id>`** ranks the decks most alike by central-theme overlap (cosine over the
   weight vectors, GENERIC themes/tribes DAMPED via `_SIM_GENERIC_DAMP` so a shared SPECIFIC
-  theme drives the score, not "we both draw cards") + a color-overlap %, flagging `⚠ overlap`
-  at ≥60% — the roster "is this deck distinct or a duplicate?" check (answers the question a
-  from-scratch build always raises; it's a SHORTLIST — grade the DOMINANT theme + win-con
-  from `deck.py text`, not the number). **`deck.py resolve <names…>`** turns card names into
+  theme drives the score, not "we both draw cards") + a color-overlap %. It marks each shared
+  theme `✦` when SPECIFIC (an identity theme) and splits the verdict: a `⚠ overlap` (≥60% AND
+  shares a specific theme — a real duplicate-identity signal) from a softer `· value overlap`
+  (high sim on generic value themes only — both are value decks, not the same deck), so a
+  diffuse good-stuff deck doesn't false-alarm as a duplicate. `--specific-only` scores identity
+  themes alone (a diffuse deck then honestly reads as sharing nothing specific). The roster "is
+  this deck distinct or a duplicate?" check (answers the question a from-scratch build always
+  raises; it's a SHORTLIST — grade the DOMINANT theme + win-con from `deck.py text`, not the
+  number — a shared tribe can be incidental, e.g. Druid mana dorks). **`deck.py resolve <names…>`** turns card names into
   ready-to-paste deck lines `<qty> Name (SET) #` with a valid printing (exact → DFC front →
   unique-substring, OWNED printing preferred; reads args or stdin, optional leading qty),
   reporting unresolved/ambiguous names instead of guessing — removes the hand printing-lookup
@@ -870,8 +875,12 @@ for per-change health) and the meta commands (`health-pulse`, `roadmap`,
 `regression`, `reflect`, `systems-map`, `cycle-*`, `setup-cycle`) are deliberately
 NOT vendored — that ceremony (two-axis scoring + a `.cycle/` state dir) outweighs
 its benefit at this project's size; adopt them only if you later want benchmarkable
-scoring. `check`, `refresh`, `add-deck`, `tune-deck`, `add-cards`, `add-wishlist`,
-and `apply-changes` are project-specific. `add-cards` (catalog newly-owned cards +
+scoring. `check`, `refresh`, `add-deck`, `draft-deck`, `tune-deck`, `add-cards`,
+`add-wishlist`, and `apply-changes` are project-specific. `draft-deck` (BUILD a new
+deck from scratch around a concept — survey the owned pool by role via `pool.py --role`,
+scaffold the lines with `deck.py resolve`, then validate + tune for distinctiveness via
+`deck.py similar`; the create-a-list counterpart to `/add-deck`, which INGESTS a pasted
+list), `add-cards` (catalog newly-owned cards +
 find their homes), `add-wishlist` (intake UNOWNED craft targets to the wishlist —
 add+enrich+Power-seed, set the home Target, do the cross-deck fit review via the
 specific-theme-gated `suggest-homes`, audit), and `apply-changes` (apply confirmed

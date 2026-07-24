@@ -4321,20 +4321,31 @@ _SIM_GENERIC_DAMP = 0.35   # generic themes are shared by nearly every value dec
                            # signal little about IDENTITY overlap — damp them in the cosine.
 
 
-def _sim_weights(vec):
+def _theme_is_generic(t):
+    return t.lower() in GENERIC_THEMES or t.lower() in _GENERIC_TRIBES
+
+
+def _sim_weights(vec, specific_only=False):
     """Down-weight GENERIC themes/tribes in a central-theme vector for the similarity cosine:
     two decks sharing a SPECIFIC theme (a tribe, a build-around mechanic) are far more alike
     than two that merely both run card-draw/etb — otherwise every diffuse value deck reads as
-    a near-duplicate of every other."""
-    return {t: w * (_SIM_GENERIC_DAMP if (t.lower() in GENERIC_THEMES or t.lower() in _GENERIC_TRIBES)
-                    else 1.0) for t, w in vec.items()}
+    a near-duplicate of every other. `specific_only` DROPS generics entirely (a pure-identity
+    lens), so a diffuse good-stuff deck honestly reads as sharing nothing specific."""
+    out = {}
+    for t, w in vec.items():
+        g = _theme_is_generic(t)
+        if g and specific_only:
+            continue
+        out[t] = w * (_SIM_GENERIC_DAMP if g else 1.0)
+    return out
 
 
-def _theme_cosine(a, b):
-    """Cosine similarity of two {theme: weight} vectors (generic-damped via `_sim_weights`).
-    A shared SPECIFIC dominant theme drives the score far more than an incidental etb overlap
-    — the 'do these two decks do the same thing' signal, not 'are they both value decks'."""
-    a, b = _sim_weights(a), _sim_weights(b)
+def _theme_cosine(a, b, specific_only=False):
+    """Cosine similarity of two {theme: weight} vectors (generic-damped via `_sim_weights`,
+    or generic-EXCLUDED when specific_only). A shared SPECIFIC dominant theme drives the score
+    far more than an incidental etb overlap — the 'do these two decks do the same thing'
+    signal, not 'are they both value decks'."""
+    a, b = _sim_weights(a, specific_only), _sim_weights(b, specific_only)
     shared = set(a) & set(b)
     if not shared:
         return 0.0
@@ -4354,45 +4365,66 @@ def cmd_similar(args):
         eprint(f"No deck with id {args.id!r}. Try: deck.py list")
         return 1
     cardmeta, mana = load_card_meta(), load_mana()
+    spec_only = getattr(args, "specific_only", False)
     meta, cards = parse_deck_file(d["path"])
     aw = _deck_central_weights(meta, cards, cardmeta)
     acols = _declared_colors(meta) or _deck_castable_colors(meta, cards, mana)
     if not aw:
         print(f"Deck {d['id']} has no central themes to compare (too few tagged cards).")
         return 0
+    a_specific = [t for t in aw if not _theme_is_generic(t)]
+    if spec_only and not a_specific:
+        print(f"Deck {d['id']}: {d.get('name') or d['id']} has NO specific central themes — "
+              "it's a diffuse good-stuff/value deck, so it's distinct BY IDENTITY from every\n"
+              "deck (nothing specific to duplicate). Drop --specific-only for a value-overlap view.")
+        return 0
     rows = []
     for dd in discover_decks():
         if dd["id"].lower() == d["id"].lower():
             continue
         m2, c2 = parse_deck_file(dd["path"])
-        sim = _theme_cosine(aw, _deck_central_weights(m2, c2, cardmeta))
+        bw = _deck_central_weights(m2, c2, cardmeta)
+        sim = _theme_cosine(aw, bw, spec_only)
         if sim <= 0:
             continue
         bcols = _declared_colors(m2) or _deck_castable_colors(m2, c2, mana)
         colj = len(acols & bcols) / len(acols | bcols) if (acols | bcols) else 0.0
-        bw = _deck_central_weights(m2, c2, cardmeta)
         shared = sorted(set(aw) & set(bw), key=lambda t: -(min(aw[t], bw[t])))
-        rows.append((sim, colj, dd["id"], dd.get("name") or dd["id"], shared,
-                     (m2.get("format") or "").strip()))
+        spec = [t for t in shared if not _theme_is_generic(t)]
+        rows.append((sim, colj, dd["id"], dd.get("name") or dd["id"], shared, spec))
     rows.sort(key=lambda r: (-r[0], -r[1], r[2]))
     limit = getattr(args, "limit", 8) or 8
-    print(f"Deck {d['id']}: {d.get('name') or d['id']} — most similar decks "
-          f"(central-theme overlap)\n"
+    lens = "SPECIFIC-theme overlap only" if spec_only else "central-theme overlap"
+    print(f"Deck {d['id']}: {d.get('name') or d['id']} — most similar decks ({lens})\n"
           f"Your colors: {'/'.join(sorted(acols)) or '—'}  ·  top themes: "
           f"{', '.join(f'{t}({aw[t]})' for t in sorted(aw, key=lambda t: -aw[t])[:6])}\n")
-    print(f"  {'sim':>4} {'col':>4}  {'deck':6} {'shared central themes (strongest first)'}")
+    print(f"  {'sim':>4} {'col':>4}  {'deck':6} shared themes (✦ = a SPECIFIC identity theme)")
     print("  " + "-" * 78)
-    for sim, colj, did, name, shared, fmt in rows[:limit]:
-        flag = " ⚠ overlap" if sim >= 0.60 else ("" if sim >= 0.30 else "  · distinct")
-        print(f"  {sim*100:>3.0f}% {colj*100:>3.0f}%  {did:6} {', '.join(shared[:5])}{flag}")
+    for sim, colj, did, name, shared, spec in rows[:limit]:
+        # A shared SPECIFIC theme = a real identity match ⇒ ⚠ overlap. High sim on GENERIC
+        # themes only = both are value decks, not a duplicate ⇒ the softer '· value overlap'.
+        if sim >= 0.60 and spec:
+            flag = " ⚠ overlap"
+        elif sim >= 0.60:
+            flag = " · value overlap"
+        elif sim >= 0.30:
+            flag = ""
+        else:
+            flag = " · distinct"
+        disp = ", ".join((("✦" + t) if not _theme_is_generic(t) else t) for t in shared[:5])
+        print(f"  {sim*100:>3.0f}% {colj*100:>3.0f}%  {did:6} {disp}{flag}")
     top = rows[0] if rows else None
-    if top and top[0] >= 0.60:
-        print(f"\n⚠ Closest is #{top[2]} {top[3]} at {top[0]*100:.0f}% — verify the two play "
-              "differently (dominant theme / win-con), or you may be duplicating it.")
+    if top and top[0] >= 0.60 and top[5]:
+        print(f"\n⚠ Closest is #{top[2]} {top[3]} at {top[0]*100:.0f}% and shares a SPECIFIC theme "
+              f"({', '.join(top[5][:3])}) — verify the win-cons differ or you may be duplicating it.")
+    elif top and top[0] >= 0.60:
+        print(f"\nClosest is #{top[2]} {top[3]} at {top[0]*100:.0f}%, but only on GENERIC value "
+              "themes — a loose 'both value decks' overlap, not a duplicate identity.")
     elif top:
         print(f"\nClosest is #{top[2]} {top[3]} at {top[0]*100:.0f}% — comfortably distinct.")
-    print("\nHigh sim = shares your central themes AND their weight; grade the DOMINANT theme "
-          "+ win-con from `deck.py text`, not the overlap number alone.")
+    print("\n✦ marks a SPECIFIC (identity) theme; plain = generic value overlap. A SHORTLIST — "
+          "grade the DOMINANT theme + win-con from `deck.py text`, not the number. "
+          "`--specific-only` scores identity themes alone.")
     return 0
 
 
@@ -5877,6 +5909,8 @@ def main():
     p = sub.add_parser("similar", help="rank the decks most similar to <id> (is it distinct?)")
     p.add_argument("id")
     p.add_argument("--limit", type=int, default=8, help="how many similar decks to show (default 8)")
+    p.add_argument("--specific-only", action="store_true",
+                   help="score SPECIFIC (identity) themes only — drop generic value overlap")
     p = sub.add_parser("resolve",
                        help="turn card names into deck lines `<qty> Name (SET) #` (from args or stdin)")
     p.add_argument("names", nargs="*",

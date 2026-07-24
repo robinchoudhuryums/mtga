@@ -434,6 +434,22 @@ class TestDeckSimilarity:
         s = deck._theme_cosine({"card draw": 5}, {"card draw": 5})
         assert 0 < s <= 1.0
 
+    def test_theme_is_generic(self):
+        assert deck._theme_is_generic("etb") and deck._theme_is_generic("card draw")
+        assert deck._theme_is_generic("Human")          # broad tribe
+        assert not deck._theme_is_generic("Dinosaur") and not deck._theme_is_generic("Ninja")
+
+    def test_specific_only_drops_generic_overlap(self):
+        # A generic-only overlap scores 0 under the pure-identity lens.
+        assert deck._theme_cosine({"etb": 5, "Ninja": 1}, {"etb": 5, "Cat": 1},
+                                  specific_only=True) == 0.0
+
+    def test_specific_only_keeps_specific_overlap(self):
+        # Sharing a SPECIFIC theme still scores 1.0 under the identity lens (generics ignored,
+        # so only the shared Ninja axis remains for both vectors).
+        s = deck._theme_cosine({"Ninja": 5, "etb": 9}, {"Ninja": 5, "etb": 2}, specific_only=True)
+        assert abs(s - 1.0) < 1e-9
+
 
 class TestHomeCurveFit:
     """suggest-homes curve co-signal (#5): a bounded, never-boosting SORT nudge that
