@@ -51,3 +51,4 @@
 #~ -Divine Resilience | +Flowerfoot Swordmaster | CRAFT (U): a {W} Soldier that makes a token copy (Offspring) — cheap go-wide + Valiant
 #~ -Requisition Raid | +Rayblade Trooper | CRAFT (U): +1/+1 counter on ETB + a death payoff — on the counters/go-wide plan
 #~ note: all three are CRAFT targets (not owned) and Standard-legal. Priority: Kutzil's Flanker (adds the flexible removal the deck is thin on).
+#~ -Ancestor Dragon | +Archangel of Tithes | CRAFT (M, OTJ ⚠rot-soon): {1}{W}{W} flyer whose tax (opponents pay {1} per attacker vs you / per blocker of your attack) is a finisher for a wide Knights board and protects you. Cut the clunky 6-mana lifegain flyer (off the aggressive go-wide plan). One copy also serves deck 23.
