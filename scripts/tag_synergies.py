@@ -170,6 +170,98 @@ FLAVOR_KEYWORDS = {
     "wasp's sting",
 }
 
+# ── One-card keyword suppression (replaces hand-maintaining the denylist) ───────
+# FLAVOR_KEYWORDS above is a hand-kept list, and it went stale twice: once when Final
+# Fantasy landed, again when Marvel shipped 27 signature moves that spent a cycle
+# polluting the tag vocabulary and drowning the keyword radar (audit F-05). Derive the
+# rule instead — but state it accurately, because the obvious phrasing is subtly wrong.
+#
+# The tempting rule is "a keyword on exactly one card is a FLAVOR name". Measured against
+# the pool that mostly holds (every Marvel signature move sits at 1; Flashback 110,
+# Escape 26, Vivid 17, Jump 13, Harmonize 11), but it also catches `forestwalk`,
+# `sunburst`, `melee`, `eminence` — real MTG mechanics that simply appear on one Arena
+# card each. So the rule is NOT about flavor. It is:
+#
+#     a keyword carried by exactly ONE card in the corpus cannot match any other card,
+#     so as a tag it carries no cross-card synergy signal — and it actively HURTS,
+#     because lib.pool_ability_model scores tag rarity, where a 1-card tag reads as a
+#     near-maximally distinctive mechanic and inflates that card's `Uq`.
+#
+# On that basis suppressing `forestwalk` is as correct as suppressing `Trick Arrows`:
+# neither can ever pair with another card. A keyword that DOES carry signal is protected
+# by the guards below, since a mapped keyword contributes its THEMES (flashback ->
+# graveyard; recursion) even when the verbatim tag would be lonely.
+#
+# Guards, because suppressing a real mechanic is the expensive mistake:
+#   * a keyword mapped in KEYWORD_THEMES is a declared mechanic — never suppressed;
+#   * a keyword deck.py names in ENGINE_THEMES is one another subsystem already treats
+#     as real (exactly how `harmonize` got mis-filed) — never suppressed;
+#   * the heuristic engages only when the corpus is big enough to mean anything.
+#     card-mana.csv defaults to LIBRARY-ONLY scope, where a pool-wide mechanic can sit
+#     on one owned card — `harmonize` did. Below the floor we fall back to the explicit
+#     list, so a small corpus degrades to today's behaviour, never a confident wrong one.
+# The explicit list stays as an override for anything the corpus can't settle.
+_NOISE_MAX_CARDS = 1         # on exactly one card => no cross-card signal
+_NOISE_MIN_CORPUS = 5000     # trust the count only when card-mana.csv covers the pool
+_freq_cache = {}
+
+
+def keyword_frequencies(path=None):
+    """{keyword_lower: number of distinct cards carrying it} from card-mana.csv's
+    Keywords column, plus the corpus size. Cached; returns ({}, 0) if unavailable."""
+    path = path or MANA_CSV
+    if path in _freq_cache:
+        return _freq_cache[path]
+    freq, n = {}, 0
+    if os.path.exists(path):
+        with open(path, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                if not (r.get("Card Name") or "").strip():
+                    continue
+                n += 1
+                for k in (r.get("Keywords") or "").split(";"):
+                    k = k.strip().lower()
+                    if k:
+                        freq[k] = freq.get(k, 0) + 1
+    _freq_cache[path] = (freq, n)
+    return freq, n
+
+
+def _engine_keywords():
+    """Keywords deck.py's ENGINE_THEMES patterns name as real engine mechanics."""
+    if "engine" not in _freq_cache:
+        words = set()
+        try:
+            import deck as _dk
+            for _t, sides in getattr(_dk, "ENGINE_THEMES", {}).items():
+                for _role, pats in sides.items():
+                    for p in pats:
+                        words |= {m.lower() for m in re.findall(r"\\b([a-z][a-z'\- ]+)\\b", p)}
+        except Exception:
+            words = set()
+        _freq_cache["engine"] = words
+    return _freq_cache["engine"]
+
+
+def is_noise_keyword(kw, freq=None, corpus=None):
+    """Should `kw` be dropped as a tag that carries no cross-card synergy signal? See the
+    block above — this is one-card suppression, NOT flavor detection, and it deliberately
+    catches genuinely rare real mechanics too. Pass `freq`/`corpus` to score against a
+    specific corpus (the tests and the keyword radar do); both default to card-mana.csv."""
+    k = (kw or "").strip().lower()
+    if not k:
+        return False
+    if k in {x.lower() for x in FLAVOR_KEYWORDS}:
+        return True                                   # explicit override
+    if k in {x.lower() for x in KEYWORD_THEMES} or k in _engine_keywords():
+        return False                                  # a declared/real mechanic
+    if freq is None or corpus is None:
+        freq, corpus = keyword_frequencies()
+    if corpus < _NOISE_MIN_CORPUS:
+        return False                                  # corpus too small to judge
+    return 0 < freq.get(k, 0) <= _NOISE_MAX_CARDS
+
+
 # (tag, predicate(type_line_lower, text_lower)) — order defines output order.
 MECHANIC_RULES = [
     ("counters", lambda t, x: "+1/+1 counter" in x or "-1/-1 counter" in x
@@ -341,7 +433,7 @@ def tags_for(row, keywords=None):
     # Skip Universe-Beyond flavor ability names (see FLAVOR_KEYWORDS).
     for kw in (keywords or []):
         k = kw.strip().lower()
-        if not k or k in FLAVOR_KEYWORDS:
+        if not k or is_noise_keyword(k):
             continue
         if k not in tags:
             tags.append(k)

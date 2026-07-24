@@ -50,10 +50,17 @@ _LINE_RE = re.compile(r"^([A-Z][A-Za-z'’]+(?: [A-Z][A-Za-z'’]+){0,2})\s+—"
 
 
 def known_keywords():
-    """Lowercased set of every keyword the tagger already understands."""
+    """Lowercased set of every keyword the tagger already understands — mapped to a
+    theme, on the explicit flavor denylist, or dropped by one-card suppression
+    (`tag_synergies.is_noise_keyword`). That set has to be included here or the
+    radar would report every keyword it silently drops as a "new unindexed mechanic",
+    re-flooding the channel F-05 cleared."""
     import tag_synergies as ts
-    return ({k.lower() for k in ts.KEYWORD_THEMES}
-            | {x.lower() for x in ts.FLAVOR_KEYWORDS})
+    known = ({k.lower() for k in ts.KEYWORD_THEMES}
+             | {x.lower() for x in ts.FLAVOR_KEYWORDS})
+    freq, corpus = ts.keyword_frequencies()
+    known |= {k for k in freq if ts.is_noise_keyword(k, freq, corpus)}
+    return known
 
 
 def _owned_names():

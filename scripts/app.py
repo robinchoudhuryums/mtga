@@ -258,6 +258,52 @@ def _mana_has(name):
                    for r in csv.DictReader(fh))
 
 
+def _pool_has(name):
+    """True if `name` is a card-pool.csv row (full name or DFC front). A mana row for a
+    POOL card is legitimate even with nothing in the library — `build_mana.py --pool`
+    covers the whole pool — so pruning must never touch one."""
+    pool = os.path.join(REPO_ROOT, "card-pool.csv")
+    if not os.path.exists(pool):
+        return False
+    nl = name.strip().lower()
+    with open(pool, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            n = (r.get("Card Name") or "").strip().lower()
+            if n == nl or n.split(" // ")[0] == nl:
+                return True
+    return False
+
+
+def _prune_mana(name, rows):
+    """Drop `name`'s card-mana.csv row after its LAST library printing was removed.
+
+    `remove()` used to leave the row behind, reasoning that a spare row is harmless
+    (INV-02 only requires library names to be PRESENT in the mana file). True for the
+    invariant, but repeated add/remove cycles accumulate orphans, and a stale row is
+    worse than untidy: `add()` skips writing a mana row when `_mana_has()` is true, so
+    a BLANK row left by an offline add suppresses the real one on a later re-add.
+
+    Two guards keep this conservative — prune only when the name is gone from the
+    library (`rows` is the post-removal set) AND is not a pool card, since a pool-scoped
+    mana file legitimately carries rows no library card references. Returns True if a
+    row was dropped."""
+    nl = name.strip().lower()
+    if any((r.get("Card Name") or "").strip().lower() == nl for r in rows):
+        return False                      # another printing still needs it (INV-02)
+    if not os.path.exists(MANA_CSV) or _pool_has(name):
+        return False
+    with open(MANA_CSV, newline="", encoding="utf-8") as fh:
+        mana = [r for r in csv.reader(fh)]
+    if not mana:
+        return False
+    header, body = mana[0], mana[1:]
+    kept = [r for r in body if not (r and (r[0] or "").strip().lower() == nl)]
+    if len(kept) == len(body):
+        return False
+    atomic_write(MANA_CSV, lambda fh: csv.writer(fh).writerows([header] + kept))
+    return True
+
+
 def _append_mana(name, cost, mv, keywords):
     """Append a card-mana.csv row so INV-02 (every library name has a mana row)
     holds after an add — even if enrichment was offline (then cost/kw are blank,
@@ -477,8 +523,9 @@ def add():
 def remove():
     """Remove a single printing (by name/set/collector key) from the collection.
 
-    Leaves card-mana.csv untouched — an extra mana row is harmless (INV-02 only
-    requires library names to be present in it), and a later refresh prunes it.
+    When that was the card's LAST printing, its card-mana.csv row is pruned too (see
+    `_prune_mana`) — but only if the card isn't in the pool, since a pool-scoped mana
+    file legitimately carries rows the library doesn't reference.
     """
     data = request.get_json(silent=True) or {}
     key = data.get("key") or {}
@@ -501,7 +548,10 @@ def remove():
     ok, backup, errors = _safe_write(kept)
     if not ok:
         return jsonify(ok=False, errors=errors), 400
-    return jsonify(ok=True, backup=backup, removed=key.get("name"))
+    # Only AFTER the library write lands, so a rejected removal can't strand the mana
+    # file out of step with it (the ordering `add()` uses for the same reason).
+    pruned = _prune_mana((key.get("name") or ""), kept)
+    return jsonify(ok=True, backup=backup, removed=key.get("name"), mana_pruned=pruned)
 
 
 @app.route("/api/revert", methods=["POST"])

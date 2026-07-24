@@ -565,3 +565,75 @@ class TestEngineRoles:
     def test_flashback_self_enables_graveyard(self):
         got = deck.engine_roles("Lightning deals 3 damage to any target. Flashback {4}{R}.").get("graveyard", set())
         assert "enabler" in got
+
+
+class TestSyncPaste:
+    """The pure pieces behind `deck.py sync` — splitting a multi-deck paste, matching a
+    block to its stored deck, and rewriting a deck file's lines to a target list."""
+
+    def _ms(self, **kw):
+        return {k.lower(): (k, v) for k, v in kw.items()}
+
+    def _d(self, i):
+        return {"id": i, "name": f"deck{i}", "path": ""}
+
+    def test_split_multi_deck_paste(self):
+        segs = deck.split_paste("Deck\n1 A\n2 B\n\nDeck\n3 C\n")
+        assert len(segs) == 2
+        assert [l for l in segs[0] if l.strip()] == ["1 A", "2 B"]
+
+    def test_split_without_a_deck_marker(self):
+        # A bare paste (no "Deck" header) is still one block.
+        assert len(deck.split_paste("1 A\n2 B\n")) == 1
+
+    def test_split_ignores_empty_blocks(self):
+        assert deck.split_paste("Deck\n\nDeck\n1 A\n") == [["1 A"]]
+
+    def test_diff_direction(self):
+        added, removed, diffs = deck._ms_diff(self._ms(A=3, B=1), self._ms(A=1, C=2))
+        assert (added, removed) == (2 + 1, 2)          # +2 A, +1 B, -2 C
+        assert ("+", 2, "A") in diffs and ("-", 2, "C") in diffs
+
+    def test_matches_closest_deck(self):
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._d("1"), self._ms(A=4, B=4, C=4)),
+                              (self._d("2"), self._ms(A=4, B=4, Z=4))])
+        assert m["deck"]["id"] == "1" and m["sync"] is True
+
+    def test_unrelated_paste_is_unmatched(self):
+        m = deck.match_paste(self._ms(Q=4, R=4, S=4, T=4),
+                             [(self._d("1"), self._ms(A=4, B=4, C=4))])
+        assert m.get("unmatched") is True
+
+    def test_low_confidence_between_siblings(self):
+        m = deck.match_paste(self._ms(A=4, B=4, C=4, D=4, E=1),
+                             [(self._d("1"), self._ms(A=4, B=4, C=4, D=4, E=2)),
+                              (self._d("1a"), self._ms(A=4, B=4, C=4, D=4, E=1, F=1))])
+        assert m["lowconf"] is True and m["runner_up"] is not None
+
+    def test_clear_winner_is_not_flagged(self):
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._d("1"), self._ms(A=4, B=4, C=4)),
+                              (self._d("2"), self._ms(X=4, Y=4, Z=4))])
+        assert m["lowconf"] is False
+
+    def test_reconcile_preserves_structure_and_applies_target(self):
+        lines = ["#: name: T", "", "# Creatures", "4 Foo (SET) 1", "1 Bar (SET) 2",
+                 "# Lands", "20 Island", "#~ -Bar | +Baz | flex note"]
+        out = deck.reconcile_lines(lines, self._ms(Foo=2, Baz=1, Island=20),
+                                   {"baz": ("Baz", "NEW", "9")})
+        assert "#: name: T" in out and "# Creatures" in out and "# Lands" in out
+        assert "#~ -Bar | +Baz | flex note" in out          # comments/flex survive
+        assert "4 Foo (SET) 1" not in out and "2 Foo (SET) 1" in out   # qty rewritten
+        assert not any(l.startswith("1 Bar") for l in out)  # dropped card
+        assert "1 Baz (NEW) 9" in out                       # new card, resolved printing
+
+    def test_reconcile_new_card_without_a_known_printing(self):
+        out = deck.reconcile_lines(["1 Foo (S) 1"], self._ms(Foo=1, Mystery=2), {})
+        assert "2 Mystery" in out                            # bare line still parses
+
+    def test_reconcile_totals_match_the_target(self):
+        target = self._ms(Foo=3, Island=20)
+        out = deck.reconcile_lines(["# c", "1 Foo (S) 1", "24 Island"], target, {})
+        parsed = [deck.LINE_RE.match(l) for l in out if deck._card_line_name(l)]
+        assert sum(int(m.group(1)) for m in parsed) == sum(q for _d, q in target.values())

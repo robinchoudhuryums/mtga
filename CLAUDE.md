@@ -220,8 +220,17 @@ castability · curve · central-theme density), with the intangibles moving a de
   <id>`** (pipe/paste an Arena export — reports *identical* or a `+/−` diff, printing- and
   basic-fungible) or the dashboard's **"Check for stale decks"** panel (paste one or many
   `Deck` blocks; it auto-matches each to its closest stored deck — variants included — and
-  flags the drifted ones). When a drift is confirmed, reconcile the deck file to match Arena
-  (a `swap --apply` or a hand-edit) so the repo is the source of truth again.
+  flags the drifted ones). **Then repair it with `deck.py sync`** — the WRITE half of
+  `verify`: pipe or pass an export containing ONE OR MANY `Deck` blocks and it matches each
+  to its closest stored deck (same rule as the dashboard panel) and rewrites the drifted
+  files to match. Dry-run by default; `--apply` writes each with a `.bak` and the INV-04
+  re-check. Line-level editing, so an existing card keeps its printing and section position
+  and only its QUANTITY changes, dropped cards lose their line, new cards are appended after
+  the last card line, and the `#:` header / `# Creatures` comments / `#~` flex lines all
+  survive. A block matching two variants nearly equally is reported LOW CONFIDENCE and
+  SKIPPED on `--apply` (rewriting the wrong sibling is the one expensive mistake here) —
+  re-paste that deck alone, or pass `--force`. Previously the only repair was reading a diff
+  and hand-editing each file.
 - **Legality lint and cut candidates are separate from ownership.** `deck.py check`
   answers "do I own this deck"; `deck.py legal <id>` answers "is it a *legal* deck"
   — size vs the format minimum, the copy limit (4, or 1 in singleton formats), and
@@ -738,6 +747,15 @@ castability · curve · central-theme density), with the intangibles moving a de
   denylisted for a full cycle: the collection holds exactly ONE Harmonize card, so the
   owned-count signal could never reach the threshold. **Card-uniqueness is judged across
   the POOL, and a keyword another subsystem already treats as a mechanic is never flavor.**
+  That rule is now MECHANICAL rather than hand-kept: `tag_synergies.is_noise_keyword`
+  drops a keyword carried by exactly ONE card in the corpus, so a new set's signature moves
+  are suppressed with no code change. It engages only when `card-mana.csv` is POOL-scoped
+  (`build_mana.py --pool`) — at library scope a pool-wide mechanic can sit on one owned
+  card (harmonize did), so below the corpus floor it falls back to the explicit list rather
+  than guess. A keyword in `KEYWORD_THEMES` or named in `deck.ENGINE_THEMES` is never
+  suppressed. `FLAVOR_KEYWORDS` remains an override for what the corpus can't settle, and
+  `check_keywords.known_keywords()` counts the heuristic's drops as known so the radar
+  doesn't re-report them as new mechanics.
 - **`tag_synergies.py` text-tags fixing + topdeck-value engines** so they stop
   hiding under `selection`/`tokens`: "cast/play … from the top of your library" →
   `card advantage` (Vizier of the Menagerie, Realmwalker, Bolas's Citadel); "spend

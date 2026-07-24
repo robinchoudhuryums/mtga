@@ -4153,6 +4153,197 @@ def cmd_verify(args):
     return 1
 
 
+# --- sync: reconcile stored decks FROM a multi-deck Arena paste -------------- #
+# `verify` answers "did deck N drift?" for ONE deck you already identified, and the
+# dashboard's stale-check answers it for many — but neither WRITES, so the actual repair
+# was always "read a diff, then hand-edit N files". `sync` closes that loop: paste
+# everything you exported from Arena, and it matches each block to its stored deck and
+# reconciles the files. The matching rule is deliberately identical to the dashboard
+# panel's (closest by total drift, with a shared-card floor and a low-confidence flag),
+# since the two answer the same question; that JS copy can't share this code, so any
+# change here belongs there too (build_dashboard.py, the stale-deck compare block).
+_DECK_MARKER_RE = re.compile(r"^deck\s*$", re.I)
+
+
+def split_paste(text):
+    """An Arena paste containing one or MANY decks -> a list of line-blocks. Arena
+    exports start each deck with a bare `Deck` line; text before the first one is
+    treated as its own block, so a single-deck paste with no marker still works."""
+    segs, cur = [], None
+    for ln in (text or "").splitlines():
+        if _DECK_MARKER_RE.match(ln.strip()):
+            cur = []
+            segs.append(cur)
+            continue
+        if cur is None:
+            cur = []
+            segs.append(cur)
+        cur.append(ln)
+    return [s for s in segs if any(x.strip() for x in s)]
+
+
+def _ms_diff(pasted, stored):
+    """(added, removed, diffs) between two `_multiset`s — `+` = the paste has more."""
+    added = removed = 0
+    diffs = []
+    for nl in sorted(set(pasted) | set(stored)):
+        p = pasted.get(nl, (None, 0))[1]
+        s = stored.get(nl, (None, 0))[1]
+        disp = pasted.get(nl, (None, 0))[0] or stored.get(nl, (None, 0))[0] or nl
+        if p > s:
+            added += p - s
+            diffs.append(("+", p - s, disp))
+        elif s > p:
+            removed += s - p
+            diffs.append(("-", s - p, disp))
+    return added, removed, diffs
+
+
+def match_paste(pasted, decks):
+    """Best stored deck for one pasted block (Arena exports carry no deck name).
+
+    `decks` is [(deck_record, multiset)]. Returns a dict describing the match, or
+    ``{'unmatched': True}`` when nothing is close enough. Same rule as the dashboard:
+    minimise total drift; require the block to share at least max(3, 30% of its distinct
+    cards) with the deck, so an unrelated paste doesn't get force-fitted; flag LOW
+    CONFIDENCE when the runner-up is within 2 drift and nearly as many shared cards
+    (variants of one core deck look alike, and picking the wrong sibling would rewrite
+    the wrong file)."""
+    uniq = len(pasted)
+    ranked = []
+    for d, ms in decks:
+        added, removed, diffs = _ms_diff(pasted, ms)
+        shared = sum(1 for nl in pasted if nl in ms)
+        ranked.append({"deck": d, "drift": added + removed, "shared": shared,
+                       "added": added, "removed": removed, "diffs": diffs})
+    if not ranked:
+        return {"unmatched": True, "uniq": uniq}
+    ranked.sort(key=lambda r: (r["drift"], -r["shared"], r["deck"]["id"]))
+    best = ranked[0]
+    if best["shared"] < max(3, uniq * 0.3):
+        return {"unmatched": True, "uniq": uniq}
+    runner = ranked[1] if len(ranked) > 1 else None
+    best["lowconf"] = bool(runner and runner["drift"] - best["drift"] <= 2
+                           and runner["shared"] >= best["shared"] * 0.8)
+    best["runner_up"] = runner["deck"] if (runner and best["lowconf"]) else None
+    best["sync"] = best["drift"] == 0
+    best["uniq"] = uniq
+    return best
+
+
+def reconcile_lines(lines, target, printings):
+    """Rewrite a deck file's raw lines so its card list becomes `target` (a `_multiset`).
+
+    Line-level editing, like `_swap_edit_lines`: an existing card line keeps its printing
+    and section position and only its QUANTITY changes, a card no longer in the list has
+    its line dropped, and genuinely new cards are appended after the last card line — so
+    `# Creatures` / `# Lands` comments, the `#:` header and `#~` flex lines all survive.
+    A card split across two printing lines has its whole quantity assigned to the first
+    and the rest dropped, matching `_multiset`'s printing-fungible view."""
+    remaining = {nl: q for nl, (_disp, q) in target.items()}
+    out, last_card = [], -1
+    for ln in lines:
+        nm = _card_line_name(ln)
+        if nm is None:
+            out.append(ln)
+            continue
+        nl = nm.lower()
+        want = remaining.pop(nl, None)
+        if not want:
+            continue                      # dropped from the deck (or a consumed 2nd line)
+        m = LINE_RE.match(ln.split("#", 1)[0].strip())
+        indent = ln[:len(ln) - len(ln.lstrip())]
+        rebuilt = f"{indent}{want} {m.group(2).strip()}"
+        if m.group(3):
+            rebuilt += f" ({m.group(3).strip()})" + (f" {m.group(4).strip()}" if m.group(4) else "")
+        out.append(rebuilt)
+        last_card = len(out) - 1
+    new = []
+    for nl, q in remaining.items():
+        if not q:
+            continue
+        disp, setc, coll = printings.get(nl, (target[nl][0], "", ""))
+        line = f"{q} {disp}"
+        if setc:
+            line += f" ({setc})" + (f" {coll}" if coll else "")
+        new.append(line)
+    at = last_card + 1 if last_card >= 0 else len(out)
+    return out[:at] + sorted(new) + out[at:]
+
+
+def cmd_sync(args):
+    """Reconcile stored deck files FROM a pasted Arena export — the write half of
+    `verify`. Dry-run by default; `--apply` writes each drifted deck with a `.bak` and
+    the INV-04 re-check."""
+    try:
+        text = sys.stdin.read() if args.source == "-" else open(args.source, encoding="utf-8").read()
+    except OSError as e:
+        eprint(f"Could not read {args.source!r}: {e}")
+        return 1
+    from import_arena import parse as parse_arena
+    blocks = split_paste(text)
+    if not blocks:
+        eprint("No deck blocks found in the paste.")
+        return 1
+
+    decks = [(d, _multiset(parse_deck_file(d["path"])[1])) for d in discover_decks()]
+    printings = _printing_index()
+    results, rc = [], 0
+    print(f"Sync — {len(blocks)} pasted deck block(s) vs {len(decks)} stored decks\n")
+    for i, block in enumerate(blocks, 1):
+        entries, warnings = parse_arena("\n".join(block))
+        for w in warnings:
+            eprint(f"WARN:  block {i}: {w}")
+        if not entries:
+            continue
+        pasted = _multiset(entries)
+        m = match_paste(pasted, decks)
+        if m.get("unmatched"):
+            n = sum(q for q, *_ in entries)
+            print(f"  ? block {i}: {n} cards, {m['uniq']} unique — no close stored deck "
+                  "(a new deck? add it with /add-deck).")
+            rc = 1
+            continue
+        d = m["deck"]
+        label = f"#{d['id']} {d['name'] or d['id']}"
+        if m["sync"]:
+            print(f"  ✓ {label} — in sync")
+            continue
+        rc = 1
+        conf = (f"   ⚠ low confidence — #{m['runner_up']['id']} is nearly as close"
+                if m.get("runner_up") else "")
+        print(f"  ⟳ {label} — drifted: {m['added']} added / {m['removed']} removed{conf}")
+        for sign, qty, nm in m["diffs"]:
+            print(f"        {sign}{qty}  {nm}")
+        results.append((d, pasted, m))
+
+    if not results:
+        print("\nEvery matched deck is already in sync. ✓")
+        return rc
+    if not getattr(args, "apply", False):
+        print(f"\n(dry run — {len(results)} deck file(s) would be rewritten to match the "
+              "paste; pass --apply to write, each with a .bak)")
+        return rc
+    for d, pasted, m in results:
+        if m.get("lowconf") and not getattr(args, "force", False):
+            eprint(f"  ✗ #{d['id']}: skipped — low-confidence match (#{m['runner_up']['id']} "
+                   "is nearly as close). Re-paste that deck alone, or pass --force.")
+            continue
+        with open(d["path"], encoding="utf-8") as fh:
+            lines = fh.read().split("\n")
+        try:
+            new_lines = reconcile_lines(lines, pasted, printings)
+            bak = _safe_write_lines(d["path"], new_lines,
+                                    sum(q for _disp, q in pasted.values()))
+        except ValueError as e:
+            eprint(f"  ✗ #{d['id']}: not saved — {e}")
+            continue
+        print(f"  ✓ #{d['id']}: wrote {os.path.relpath(d['path'], REPO_ROOT)} "
+              f"(backup: {os.path.basename(bak)})")
+    print("\nRe-check with `deck.py check <id>` / `deck.py preflight <id>`.")
+    return rc
+
+
 def _interaction_count(cards, carddata):
     """Copies of nonland spells that do removal / sweeping / countering — the same
     'interaction total' cmd_stats reports and the same number the quality/tier vector
@@ -6028,6 +6219,14 @@ def main():
     p.add_argument("id")
     p.add_argument("source", nargs="?", default="-",
                    help="path to an export file, or '-' / omitted to read stdin")
+    p = sub.add_parser("sync", help="reconcile stored deck files FROM a pasted Arena export (many decks at once)")
+    p.add_argument("source", nargs="?", default="-",
+                   help="path to an export file, or '-' / omitted to read stdin")
+    p.add_argument("--apply", action="store_true",
+                   help="write the drifted deck files (with .bak); default is a dry run")
+    p.add_argument("--force", action="store_true",
+                   help="also write decks whose match was low-confidence (a variant sibling "
+                        "was nearly as close) — check the diff first")
     p = sub.add_parser("text", help="dump every card's FULL oracle text (read before grading cuts/swaps)")
     p.add_argument("id")
     p = sub.add_parser("suggest-homes",
@@ -6054,7 +6253,8 @@ def main():
         "rotation": cmd_rotation, "brawl": cmd_brawl,
         "legal": cmd_legal, "cuts": cmd_cuts,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
-        "verify": cmd_verify, "text": cmd_text, "suggest-homes": cmd_suggest_homes,
+        "verify": cmd_verify, "sync": cmd_sync, "text": cmd_text,
+        "suggest-homes": cmd_suggest_homes,
         "similar": cmd_similar, "resolve": cmd_resolve,
         "preflight": cmd_preflight, "quality": cmd_quality, "tier": cmd_tier,
         "redundancy": cmd_redundancy, "history": cmd_history,

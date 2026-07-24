@@ -344,6 +344,7 @@ python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~
 python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
 pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export against the stored deck
+pbpaste | python3 scripts/deck.py sync        # reconcile MANY decks from one Arena paste (--apply to write)
 python3 scripts/deck.py text 1a              # full oracle text of every card (read before grading)
 python3 scripts/deck.py suggest 1a --unowned --full  # picks WITH full text + keywords + flags
 python3 scripts/deck.py suggest-homes "Crib Swap"    # which decks a card fits, with a fit-strength label
@@ -381,6 +382,17 @@ add/craft picks respectively, so both sides of a swap are graded from text. The
 keyword line means a named mechanic (Warp, Increment, …) is surfaced explicitly
 rather than skimmed as an ordinary word. `query.py --full` / `pool.py --full` do
 the same for a themed deep-read of your owned library or the whole pool.
+
+`sync` is `verify`'s write half, for many decks at once: pipe an export containing one
+or many `Deck` blocks and it matches each block to its closest stored deck (the same
+auto-match the dashboard's stale-check uses) and **rewrites the drifted files to match
+Arena**. Dry-run by default — `--apply` writes each with a `.bak` and the INV-04
+re-check. Edits are line-level, so an existing card keeps its printing and its place in
+the file and only its quantity changes; the `#:` header, `# Creatures` section comments
+and `#~` flex lines survive. If a block matches two variants nearly equally it's flagged
+**low confidence** and skipped on `--apply` (re-paste that deck alone, or `--force`).
+Before this, spotting drift and repairing it were separate jobs: you read a diff, then
+hand-edited each file.
 
 `verify` reconciles a decklist you've edited in Arena against the repo: pipe or pass
 its **Arena export** (`<qty> <Name> (SET) <#>`) and it reports **identical** or a

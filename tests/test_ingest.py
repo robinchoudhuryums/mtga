@@ -132,3 +132,44 @@ class TestTagsFor:
         tags = ts.tags_for({"Type": "Enchantment", "Card Text":
             "Creatures you control get +1/+1. Lands you control have vigilance."}, [])
         assert "Creature" not in tags and "Land" not in tags
+
+
+class TestFlavorKeywordHeuristic:
+    """The card-uniqueness rule that replaces hand-maintaining FLAVOR_KEYWORDS: a
+    keyword on exactly one card in a pool-sized corpus is a flavor name; a mechanic
+    recurs. Guards matter more than the rule — suppressing a real mechanic is the
+    expensive mistake (that is how `harmonize` went missing for a cycle)."""
+
+    BIG = 15000
+    FREQ = {"trick arrows": 1, "harmonize": 11, "jump": 13, "flashback": 111,
+            "newflavor": 1, "newmechanic": 9}
+
+    def _f(self, kw, corpus=None):
+        return ts.is_noise_keyword(kw, self.FREQ, self.BIG if corpus is None else corpus)
+
+    def test_card_unique_name_is_flavor(self):
+        assert self._f("trick arrows")
+
+    def test_new_flavor_name_needs_no_code_change(self):
+        assert self._f("newflavor")
+
+    def test_recurring_keyword_is_kept(self):
+        assert not self._f("newmechanic")
+        assert not self._f("jump")
+
+    def test_mapped_theme_is_never_suppressed(self):
+        assert not self._f("flashback")
+
+    def test_engine_mechanic_is_never_suppressed(self):
+        # deck.ENGINE_THEMES names harmonize as a graveyard enabler.
+        assert not self._f("harmonize")
+
+    def test_small_corpus_disables_the_heuristic(self):
+        # A library-only card-mana.csv can't distinguish "rare" from "card-unique".
+        assert not self._f("newflavor", corpus=1695)
+
+    def test_explicit_denylist_wins_regardless_of_corpus(self):
+        assert ts.is_noise_keyword("firaga", {}, 10)
+
+    def test_unknown_keyword_is_not_flavor_when_absent_from_the_corpus(self):
+        assert not self._f("nevermentioned")
