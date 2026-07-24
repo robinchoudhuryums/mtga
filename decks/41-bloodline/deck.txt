@@ -1,0 +1,63 @@
+#: name: Bloodline
+#: format: Standard
+#: colors: B
+#: archetype: Mono-black VAMPIRE tribal aggro-midrange — deliberately built to be the MOST
+#: archetype: DISTINCT deck in the roster (a `deck.py similar` test): an absent tribe as the
+#: archetype: dominant identity theme + a rare mono-B color. Evasive/deathtouch Vampires
+#: archetype: (Nighthawk, Stromkirk) into a lifedrain payoff (Bloodthirsty Conqueror, Vengeful
+#: archetype: Bloodwitch), a deep mono-B removal suite, and Bringer of the Last Gift as a
+#: archetype: reanimator top-end. NOT the Orzhov (W/B) lifegain-drain of deck 20 — mono-B,
+#: archetype: tribe-first, so its ✦Vampire spine matches nothing else in the roster.
+#: tier: B — mono-B Vampire midrange (PROVISIONAL — confirm per the rubric). Metrics floor is A
+#: tier: (interaction 12 + card-adv 7 + an aggro clock), but held to B by the one clear gap: a
+#: tier: singleton good-stuff pile with NO Vampire lord/anthem and no card-advantage engine
+#: tier: beyond value creatures — a tune would craft a lord + a draw engine to reach the floor.
+#: protect: Vampire Nighthawk; Bloodthirsty Conqueror; Stromkirk Bloodthief
+#: notes: Built from OWNED mono-B Vampires (the two W/B ones — Elenda, Sanguine Savior — were
+#: notes: excluded to keep the color identity pure mono-B for maximum distinctness). A `/draft-deck`
+#: notes: distinctiveness test: run `deck.py similar 41` — the ✦Vampire identity should match
+#: notes: no other deck. Tune targets: a Vampire lord/anthem and a card-advantage engine.
+
+Deck
+# Vampires
+1 Vampire Nighthawk (FDN) 757
+1 Gas Guzzler (DFT) 85
+1 Bloodthirsty Conqueror (FDN) 58
+1 High-Society Hunter (FDN) 61
+1 Sanguine Syphoner (FDN) 68
+1 Vampire Gourmand (FDN) 74
+1 Vengeful Bloodwitch (FDN) 76
+1 Stromkirk Bloodthief (FDN) 185
+1 Vito's Inquisitor (LCI) 130
+1 Alley Assailant (MKM) 76
+1 Unliving Legionnaire (MSH) 119
+1 Arnyn, Deathbloom Botanist (SOS) 74
+1 Emeritus of Woe (SOS) 80
+1 Morlun, Devourer of Spiders (SPM) 59
+1 Bringer of the Last Gift (LCI) 94
+
+# Removal / interaction
+1 Murder (MKM) 95
+1 Stab (FDN) 71
+1 Auntie's Sentence (ECL) 85
+1 Requiting Hex (ECL) 116
+1 Gravkill (EOE) 103
+1 Locust Spray (SOA) 31
+1 Embrace Oblivion (EOE) 98
+1 Bogslither's Embrace (ECL) 94
+1 Vote Out (EOE) 126
+1 Depressurize (EOE) 95
+1 Wick's Patrol (BLB) 121
+1 Gloom Ripper (ECL) 102
+
+# Card advantage / payoffs
+1 Season of Loss (BLB) 112
+1 Sephiroth, Fabled SOLDIER (FIN) 115
+1 Visions of Villainy (MSH) 120
+1 Cost of Brilliance (SOS) 77
+1 Circle of Power (FIN) 92
+1 Risky Shortcut (DFT) 103
+1 Decode Transmissions (EOE) 94
+
+# Lands — mono-black
+26 Swamp (MSH) 292

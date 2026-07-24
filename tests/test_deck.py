@@ -410,6 +410,69 @@ class TestFitStrength:
                                  "", 8, 8) == "KEY"
 
 
+class TestDeckSimilarity:
+    """deck.py similar — cosine over central-theme weights with generic themes damped so
+    IDENTITY overlap (a shared specific theme) drives the score, not shared value generics."""
+
+    def test_identical_vectors_are_one(self):
+        v = {"Dinosaur": 10, "ramp": 4}
+        assert abs(deck._theme_cosine(v, dict(v)) - 1.0) < 1e-9
+
+    def test_disjoint_is_zero(self):
+        assert deck._theme_cosine({"Ninja": 5}, {"Dinosaur": 5}) == 0.0
+
+    def test_specific_overlap_beats_generic_overlap(self):
+        # Two decks sharing a SPECIFIC theme are more similar than two sharing only a
+        # generic one at the same raw weight.
+        specific = deck._theme_cosine({"Dinosaur": 8, "x": 1}, {"Dinosaur": 8, "y": 1})
+        generic = deck._theme_cosine({"etb": 8, "x": 1}, {"etb": 8, "y": 1})
+        assert specific > generic
+
+    def test_generic_is_damped_not_removed(self):
+        # A generic-only shared theme still yields SOME similarity (decks that both draw
+        # cards are loosely alike), just less than the raw weight would imply.
+        s = deck._theme_cosine({"card draw": 5}, {"card draw": 5})
+        assert 0 < s <= 1.0
+
+    def test_theme_is_generic(self):
+        assert deck._theme_is_generic("etb") and deck._theme_is_generic("card draw")
+        assert deck._theme_is_generic("Human")          # broad tribe
+        assert not deck._theme_is_generic("Dinosaur") and not deck._theme_is_generic("Ninja")
+
+    def test_specific_only_drops_generic_overlap(self):
+        # A generic-only overlap scores 0 under the pure-identity lens.
+        assert deck._theme_cosine({"etb": 5, "Ninja": 1}, {"etb": 5, "Cat": 1},
+                                  specific_only=True) == 0.0
+
+    def test_specific_only_keeps_specific_overlap(self):
+        # Sharing a SPECIFIC theme still scores 1.0 under the identity lens (generics ignored,
+        # so only the shared Ninja axis remains for both vectors).
+        s = deck._theme_cosine({"Ninja": 5, "etb": 9}, {"Ninja": 5, "etb": 2}, specific_only=True)
+        assert abs(s - 1.0) < 1e-9
+
+    def test_sim_specific_signature_rescues_generic(self):
+        assert not deck._sim_specific("counters", frozenset())          # generic by default
+        assert deck._sim_specific("counters", frozenset({"counters"}))  # rescued as a spine
+        assert deck._sim_specific("Ninja", frozenset())                 # specific always
+
+    def test_keep_rescues_generic_in_cosine(self):
+        # Rescuing a shared generic SPINE (a counters-doubler deck) makes the pair read as
+        # MORE similar than treating counters as damped value overlap.
+        a, b = {"counters": 10, "Ninja": 1}, {"counters": 10, "Cat": 1}
+        assert deck._theme_cosine(a, b, keep=frozenset({"counters"})) > deck._theme_cosine(a, b)
+
+    def test_strong_signature_needs_multiple_protected_cards(self):
+        # A theme is a real spine only if >=2 protected cards carry it — a lone protected
+        # bomb's incidental tag (card draw) must NOT be rescued.
+        meta = {"protect": "A; B; C"}
+        cards = [(1, "A", "", ""), (1, "B", "", ""), (1, "C", "", "")]
+        cardmeta = {"a": {"synergies": ["counters", "flying"]},
+                    "b": {"synergies": ["counters", "haste"]},
+                    "c": {"synergies": ["card draw"]}}
+        sig = deck._strong_signature_themes(meta, cards, cardmeta)
+        assert "counters" in sig and "card draw" not in sig and "flying" not in sig
+
+
 class TestHomeCurveFit:
     """suggest-homes curve co-signal (#5): a bounded, never-boosting SORT nudge that
     penalizes a top-heavy / win-more card in a low-curve deck."""
