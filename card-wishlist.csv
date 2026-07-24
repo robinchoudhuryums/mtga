@@ -51,6 +51,7 @@ Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.5
 Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19,,5.0
+Dual-Sun Technique,Instant,"Target creature you control gains double strike until end of turn. If it has a +1/+1 counter on it, draw a card.",W,counters; card draw,EOE,13,Uncommon,38a,,4.5
 Dubious Delicacy,Artifact — Food,"Flash
 When this artifact enters, up to one target creature gets -3/-3 until end of turn.
 {2}, {T}, Sacrifice this artifact: You gain 3 life.
@@ -261,6 +262,8 @@ Vastlands Scavenger // Bind to Life,Creature — Bear Druid // Instant,"Deathtou
 This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Mill seven cards. Then put a creature card from among them onto the battlefield.",G,Bear; Druid; mill; prepared; spellslinger; tempo; graveyard; deathtouch; combat; removal,SOS,166,Rare,6; 31,"best 6 (Dead or Alive); also 5,20b,8 | Also deck 31 (Pox) — 10-Druid go-wide shell; strong Druid fit.",5.5
 Vicious Rivalry,Sorcery,"As an additional cost to cast this spell, pay X life.
 Destroy all artifacts and creatures with mana value X or less.",B/G,,SOS,241,Rare,general,BG fight/removal,6.0
+Quill-Blade Laureate // Twofold Intent,Creature — Human Cleric // Sorcery,"Double strike
+This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Target creature gets +1/+0 and gains double strike until end of turn.",W,Human; Cleric; pump; prepared; spellslinger; tempo; double strike; combat; aggro,SOS,27,Uncommon,38a,,5.0
 "Anti-Venom, Horrifying Healer",Legendary Creature — Symbiote Hero,"When Anti-Venom enters, if he was cast, return target creature card from your graveyard to the battlefield.
 If damage would be dealt to Anti-Venom, prevent that damage and put that many +1/+1 counters on him.",W,Symbiote; Hero; counters; reanimator; graveyard; etb,SPM,1,Mythic,6,,6.5
 Mister Negative,Legendary Creature — Human Villain,"Vigilance, lifelink

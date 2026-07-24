@@ -44,7 +44,7 @@
 #: protect: Cloud, Midgar Mercenary; Buster Sword; Ninja's Blades; Celestial Armor; Whiplash, Vengeful Engineer
 
 # Creatures — cheap evasive carriers + the engine
-1 Healer's Hawk (FDN) 142
+1 Quill-Blade Laureate
 1 Miner's Guidewing (LCI) 24
 1 Ruin-Lurker Bat (LCI) 33
 1 Momo, Playful Pet (TLA) 30
@@ -80,7 +80,7 @@
 1 Super-Soldier Serum (MSH) 38
 
 # Equipment — Job-select body / removal / utility
-1 Kyoshi Battle Fan (TLA) 257
+1 Dual-Sun Technique (EOE) 13
 1 Dragoon's Lance (FIN) 17
 1 Deconstruction Hammer (LCI) 9
 1 Meteor Sword (TLA) 258
