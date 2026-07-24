@@ -67,7 +67,7 @@
 1 Meteor Sword (TLA) 258
 1 Trusty Boomerang (TLA) 260
 1 Super-Soldier Serum (MSH) 38
-1 With Great Power . . . (SPM) 24
+1 Aettir and Priwen (FIN) 253
 1 Mirrormind Crown (ECL) 258
 
 # Lands — 25, W-weighted Orzhov (owned WB duals + basics)
@@ -81,3 +81,4 @@
 # Flex — options (comments; not part of the 60). See: deck.py flex 38
 #~ note: ROUTE C is built out as variant 38a (Cloud value-combo) — all-in on Cloud's trigger-doubling: more combat-damage equipment + evasion + redundant carriers, minus the go-wide/voltron scalers. Spicier + more explosive, but fragile (leans on Cloud).
 #~ -Trusty Boomerang | +2nd cheap carrier | if you want even more bodies, the Boomerang is the weakest equipment slot
+#~ -Aettir and Priwen | +With Great Power . . . | RARE craft (go-tall voltron) — enchanted creature gets +2/+2 per Aura/Equipment attached and redirects your damage to it. A spicier, faster "make one creature huge" payoff than the ~11-mana Aettir; craft it if you'd rather that finisher.
