@@ -286,6 +286,37 @@ def check():
         errs.append("_GENERIC_TRIBES must be non-empty and must NOT include real tribal "
                     "signatures (e.g. Wizard).")
 
+    # (12a) the suggest-homes curve co-signal `_home_curve_fit` stays a bounded, never-
+    #       boosting SORT nudge: 1.0 within ~2 MV of a deck's average, penalized beyond,
+    #       capped at _HOME_CURVE_CAP, and 1.0 on an unknown MV — so it can only reorder
+    #       same-strength fits, never relabel or override theme fit (finding #5).
+    hcf = deck._home_curve_fit
+    if hcf(None, 3.0) != 1.0 or hcf(5.0, 0.0) != 1.0:
+        errs.append("_home_curve_fit must be 1.0 when a MV is unknown.")
+    if hcf(4.0, 2.5) != 1.0:
+        errs.append("_home_curve_fit must not penalize a card within ~2 MV of the average.")
+    heavy = hcf(6.0, 2.4)
+    if not (1.0 - deck._HOME_CURVE_CAP <= heavy < 1.0):
+        errs.append(f"_home_curve_fit must penalize a top-heavy card within [1-cap,1) (got {heavy}).")
+    if hcf(11.0, 2.0) < 1.0 - deck._HOME_CURVE_CAP:
+        errs.append("_home_curve_fit must never exceed the _HOME_CURVE_CAP penalty.")
+    if deck._HOME_CURVE_CAP > 0.25:
+        errs.append("_HOME_CURVE_CAP too large: the curve nudge must stay a bounded tie-breaker.")
+
+    # (12b) `_central_themes` admits a curated high-precision mechanical sub-theme
+    #       (_MECHANIC_SUBTHEMES) at a flat floor of 2 so a secondary payoff surfaces, but a
+    #       GENERIC theme at the same low weight STAYS gated behind the 25% cutoff (the
+    #       relaxation can't fake a generic overlap into a home) — centrality residual fix.
+    mech = next(iter(deck._MECHANIC_SUBTHEMES))
+    tw = {"tokens": 20, mech: 2}                 # mech at wt 2, cutoff = 0.25*20 = 5
+    cen = deck._central_themes(tw)
+    if mech not in cen:
+        errs.append(f"_central_themes must admit a mechanical sub-theme ({mech}) at floor 2.")
+    if "counters" in deck._central_themes({"tokens": 20, "counters": 2}):
+        errs.append("_central_themes must still gate a GENERIC theme at low weight (no free pass).")
+    if not deck._MECHANIC_SUBTHEMES or deck._MECHANIC_SUBTHEMES & deck.GENERIC_THEMES:
+        errs.append("_MECHANIC_SUBTHEMES must be non-empty and disjoint from GENERIC_THEMES.")
+
     return errs
 
 

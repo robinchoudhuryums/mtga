@@ -410,6 +410,46 @@ class TestFitStrength:
                                  "", 8, 8) == "KEY"
 
 
+class TestHomeCurveFit:
+    """suggest-homes curve co-signal (#5): a bounded, never-boosting SORT nudge that
+    penalizes a top-heavy / win-more card in a low-curve deck."""
+
+    def test_unknown_mv_is_neutral(self):
+        assert deck._home_curve_fit(None, 3.0) == 1.0
+        assert deck._home_curve_fit(5.0, 0.0) == 1.0
+
+    def test_within_two_mv_no_penalty(self):
+        assert deck._home_curve_fit(4.0, 2.5) == 1.0
+        assert deck._home_curve_fit(2.0, 2.4) == 1.0
+
+    def test_top_heavy_penalized_but_bounded(self):
+        m = deck._home_curve_fit(6.0, 2.4)          # excess 3.6
+        assert 1.0 - deck._HOME_CURVE_CAP <= m < 1.0
+
+    def test_never_boosts(self):
+        # A cheap card in a heavy deck must NOT be boosted (curve nudge is one-sided).
+        assert deck._home_curve_fit(2.0, 5.0) == 1.0
+
+    def test_penalty_capped(self):
+        assert deck._home_curve_fit(15.0, 2.0) == 1.0 - deck._HOME_CURVE_CAP
+
+
+class TestCentralThemesMechanicSubtheme:
+    """centrality residual fix: a curated mechanical sub-theme surfaces at a flat floor
+    of 2 even below the 25% cutoff, but a generic theme stays gated."""
+
+    def test_mechanic_subtheme_admitted_at_floor_two(self):
+        mech = next(iter(deck._MECHANIC_SUBTHEMES))
+        assert mech in deck._central_themes({"tokens": 20, mech: 2})
+
+    def test_generic_theme_still_gated_at_low_weight(self):
+        assert "counters" not in deck._central_themes({"tokens": 20, "counters": 2})
+
+    def test_mechanic_subtheme_below_floor_excluded(self):
+        mech = next(iter(deck._MECHANIC_SUBTHEMES))
+        assert mech not in deck._central_themes({"tokens": 20, mech: 1})
+
+
 class TestRedundancyPlanner:
     """The 'virtual copies first, duplicates as fallback' decision helper."""
 

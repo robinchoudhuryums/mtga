@@ -466,7 +466,12 @@ castability · curve · central-theme density), with the intangibles moving a de
   resolves instead of "not found". It's a SHORTLIST, not a verdict — the cut is one
   heuristic pick, so still grade from full oracle text via `deck.py cuts <id>` and
   preview with `deck.py swap` before applying. Because copies are fungible, it
-  reminds you to slot a card into *all* decks that earn it, not pick one home. Each
+  reminds you to slot a card into *all* decks that earn it, not pick one home. A
+  **bounded curve co-signal** (`_home_curve_fit`, capped at `_HOME_CURVE_CAP`) gently sorts
+  a top-heavy / win-more card (an ~11-mana Aettir and Priwen, MV well above a deck's average
+  nonland MV) BELOW efficient fits in a low-curve deck and flags the row `⚠ top-heavy for
+  this curve` — a one-sided nudge that never boosts, never relabels the KEY/role-player/
+  tangential verdict, and only reorders same-strength fits (finding #5; anchor 12). Each
   fit row now carries a **strength label** (`KEY` / `role-player` / `tangential`):
   KEY = it shares the deck's *signature* theme (the top central theme, **or any theme
   carried by the deck's `#: protect:` cards** — so a counter-doubler reads KEY in a
@@ -684,12 +689,16 @@ castability · curve · central-theme density), with the intangibles moving a de
   `Dinosaur`, so Huatli reads KEY in a Dino deck, not role-player). The tribal scan runs on
   ORIGINAL-case text (MTG capitalizes real tribes but lower-cases generic "creatures/lands",
   a strong natural filter) with a `_NON_TRIBE_WORDS` denylist for sentence-initial capitals.
-  **Residual (by design):** these tags are CORRECT but only surface a fit once the mechanic
-  is a *central* theme (the 25%-of-top-theme, floor-2 cutoff). A 2–3-card sub-synergy in a
-  deck with a dominant theme (toughness-swap with only Kingpin+Bark; noncombat-damage with
-  2 cards under a heavy Wizard theme) stays below "central", so `suggest-homes` won't
-  auto-surface it — the tag is right, the centrality gate is the limiter; grade from text.
-  A tribal payoff clears easily (a Dino deck runs ~19 Dinosaurs). After editing these
+  **These sub-themes surface even as a SECONDARY payoff:** they'd otherwise sit below the
+  25%-of-top-theme centrality cutoff in a deck with a dominant theme (toughness-swap with
+  only Kingpin+Bark; noncombat-damage with 2 cards under a heavy Wizard theme), so
+  `_central_themes` admits the curated `_MECHANIC_SUBTHEMES` set (`toughness matters` /
+  `noncombat damage` / `spell copy`) at a **flat floor of 2** — the specific-effect analog
+  of the `#: protect:` signature rescue (a real 2-card payoff sub-synergy reads central,
+  while a GENERIC theme at the same low weight STAYS gated behind the 25% cutoff, so the
+  relaxation can't fake a generic overlap into a home; guarded by `check_suggest` anchor 12).
+  So Bark → 20a/20b and Hawkeye → the ping decks now auto-surface. A tribal payoff clears
+  the plain cutoff easily (a Dino deck runs ~19 Dinosaurs). After editing these
   patterns, regenerate BOTH derived tag stores: `tag_synergies.py --merge` (library) and a
   merge re-tag of `card-pool.csv`'s `Synergies` (or `build_pool.py`), else UNOWNED craft
   candidates read stale pool tags.
@@ -750,7 +759,10 @@ and the NEEDS-model nudges (`--ramp` accel-want / restriction-fit, `--interactio
 boost) stay bounded/rising-with-support (anchor 10), and `fit_strength` never credits a
 bare BROAD-TRIBE overlap (`_GENERIC_TRIBES`: Human/Hero/Villain) as a KEY home — not as the
 top theme nor via a `#: protect:` signature — while a narrow tribe and a specific theme
-still read KEY (anchor 11, the Hawkeye-"KEY"-in-every-Hero-deck fix);
+still read KEY (anchor 11, the Hawkeye-"KEY"-in-every-Hero-deck fix), and the suggest-homes
+curve co-signal (`_home_curve_fit`) stays a bounded/never-boosting SORT nudge while
+`_central_themes` admits a curated mechanical sub-theme at floor 2 yet still gates a generic
+theme (anchor 12, finding #5 + the secondary-payoff centrality fix);
 **engine classifier** (`check_engines.py`) anchors the enabler/
 payoff detection on canonical cards (#3); **tier floor** (`check_tier.py`) proves
 the archetype-aware floor grades non-aggro decks identically to before and only
@@ -790,7 +802,7 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format. The page is **mobile-responsive** (single-column grids, wide data tables scroll in-box, a horizontally-scrollable section-nav) and uses **progressive disclosure**: every section collapses — the utility ones (card finder / stale-check / recently-edited / rotation) default CLOSED — a sticky **section-nav strip** jumps to and auto-expands a section with a scroll-spy highlight, and the long lists (wishlist tiers, crafting leverage) cap at ~12 rows with a *show all* toggle while the roster-triage table defaults to the ACTIONABLE decks (the page analog of `deck.py audit --flagged`). The **wishlist** filters by free text (card/target/signal) AND by **wildcard rarity** (M/R/U/C chips, multi-select, mirroring `wishlist.py --rarity`). All of this is template-only (the `#data` island is untouched) and persists in `localStorage`.
-- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _cuts_uniq_adj, distinctiveness_score (tag-rarity, tribe/evergreen-excluded), structural_distinctiveness (oracle-text-shape rescue), card_distinctiveness (max-combine), _creature_subtypes, _land_synergy_bonus / _land_shortfall_bonus (bounded manabase-recommender nudges), _accel_want / _ramp_restriction_fit / _int_scaling / _int_scaling_boost (needs-model signals), _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), fit_strength (specific-theme-gated KEY + broad-tribe demotion), import_arena, tags_for (incl. the toughness-matters / noncombat-damage / spell-copy / tribal-payoff mechanical-synergy tags)), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
+- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _cuts_uniq_adj, distinctiveness_score (tag-rarity, tribe/evergreen-excluded), structural_distinctiveness (oracle-text-shape rescue), card_distinctiveness (max-combine), _creature_subtypes, _land_synergy_bonus / _land_shortfall_bonus (bounded manabase-recommender nudges), _accel_want / _ramp_restriction_fit / _int_scaling / _int_scaling_boost (needs-model signals), _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), fit_strength (specific-theme-gated KEY + broad-tribe demotion), _home_curve_fit (bounded suggest-homes curve nudge), _central_themes (mechanical sub-theme floor-2 admission), import_arena, tags_for (incl. the toughness-matters / noncombat-damage / spell-copy / tribal-payoff mechanical-synergy tags)), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/
 
 **Invariant Library:**
