@@ -31,6 +31,19 @@ import sys
 import textwrap
 
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty
+from deck import classify_roles   # functional-role classifier (removal/ramp/draw/…)
+
+# Friendly --role aliases → the canonical labels classify_roles emits, so you can survey
+# the collection by what a card DOES (the axis you deckbuild on), not just its synergy tags.
+_ROLE_ALIASES = {
+    "removal": "Removal (spot)", "spot-removal": "Removal (spot)",
+    "sweeper": "Sweeper", "wrath": "Sweeper",
+    "counter": "Counter", "counterspell": "Counter",
+    "draw": "Card advantage", "card-advantage": "Card advantage", "cardadvantage": "Card advantage",
+    "ramp": "Ramp / fixing", "fixing": "Ramp / fixing",
+    "cheat": "Cost reduction / cheat", "cost-reduction": "Cost reduction / cheat",
+    "payoff": "Payoff / engine", "engine": "Payoff / engine",
+}
 
 POOL_PATH = os.path.join(REPO_ROOT, "card-pool.csv")
 MANA_PATH = os.path.join(REPO_ROOT, "card-mana.csv")
@@ -111,6 +124,10 @@ def matches(card, args, owned):
         legal = {x.strip() for x in (card.get("Legalities") or "").split(";") if x.strip()}
         if args.legal.lower() not in legal:
             return False
+    if args.role:
+        want = {_ROLE_ALIASES.get(r.strip().lower(), r.strip()) for r in args.role.split(",")}
+        if not (want & classify_roles(card.get("Card Text") or "")):
+            return False
     have = owned_of(owned, card.get("Card Name"))
     if args.owned and have <= 0:
         return False
@@ -148,6 +165,8 @@ def main():
     ap.add_argument("--pool", default=POOL_PATH)
     ap.add_argument("--name"); ap.add_argument("--type"); ap.add_argument("--text")
     ap.add_argument("--color"); ap.add_argument("--synergy")
+    ap.add_argument("--role", help="functional role(s), comma-separated: removal, sweeper, "
+                    "counter, draw, ramp, cheat, payoff (survey the pool by what a card DOES)")
     ap.add_argument("--rarity", help="comma-separated: common,uncommon,rare,mythic")
     ap.add_argument("--legal", metavar="FMT",
                     help="only cards legal in FMT (e.g. standard, historic) — "

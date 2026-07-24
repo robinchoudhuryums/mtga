@@ -410,6 +410,31 @@ class TestFitStrength:
                                  "", 8, 8) == "KEY"
 
 
+class TestDeckSimilarity:
+    """deck.py similar — cosine over central-theme weights with generic themes damped so
+    IDENTITY overlap (a shared specific theme) drives the score, not shared value generics."""
+
+    def test_identical_vectors_are_one(self):
+        v = {"Dinosaur": 10, "ramp": 4}
+        assert abs(deck._theme_cosine(v, dict(v)) - 1.0) < 1e-9
+
+    def test_disjoint_is_zero(self):
+        assert deck._theme_cosine({"Ninja": 5}, {"Dinosaur": 5}) == 0.0
+
+    def test_specific_overlap_beats_generic_overlap(self):
+        # Two decks sharing a SPECIFIC theme are more similar than two sharing only a
+        # generic one at the same raw weight.
+        specific = deck._theme_cosine({"Dinosaur": 8, "x": 1}, {"Dinosaur": 8, "y": 1})
+        generic = deck._theme_cosine({"etb": 8, "x": 1}, {"etb": 8, "y": 1})
+        assert specific > generic
+
+    def test_generic_is_damped_not_removed(self):
+        # A generic-only shared theme still yields SOME similarity (decks that both draw
+        # cards are loosely alike), just less than the raw weight would imply.
+        s = deck._theme_cosine({"card draw": 5}, {"card draw": 5})
+        assert 0 < s <= 1.0
+
+
 class TestHomeCurveFit:
     """suggest-homes curve co-signal (#5): a bounded, never-boosting SORT nudge that
     penalizes a top-heavy / win-more card in a low-curve deck."""

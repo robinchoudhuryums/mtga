@@ -4303,6 +4303,167 @@ def _is_color_fixer(ctags, text):
     return any(cue in t for cue in _FIXER_CUES)
 
 
+def _deck_central_weights(meta, cards, cardmeta):
+    """A deck's CENTRAL themes as a {theme: copies} weight vector — the same `_central_themes`
+    set the roster tools share, kept weighted so a dominant theme counts for more."""
+    tw = {}
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        m = cardmeta.get(n.lower())
+        if m:
+            for t in m["synergies"]:
+                tw[t] = tw.get(t, 0) + q
+    return {t: tw[t] for t in _central_themes(tw)}
+
+
+_SIM_GENERIC_DAMP = 0.35   # generic themes are shared by nearly every value deck, so they
+                           # signal little about IDENTITY overlap — damp them in the cosine.
+
+
+def _sim_weights(vec):
+    """Down-weight GENERIC themes/tribes in a central-theme vector for the similarity cosine:
+    two decks sharing a SPECIFIC theme (a tribe, a build-around mechanic) are far more alike
+    than two that merely both run card-draw/etb — otherwise every diffuse value deck reads as
+    a near-duplicate of every other."""
+    return {t: w * (_SIM_GENERIC_DAMP if (t.lower() in GENERIC_THEMES or t.lower() in _GENERIC_TRIBES)
+                    else 1.0) for t, w in vec.items()}
+
+
+def _theme_cosine(a, b):
+    """Cosine similarity of two {theme: weight} vectors (generic-damped via `_sim_weights`).
+    A shared SPECIFIC dominant theme drives the score far more than an incidental etb overlap
+    — the 'do these two decks do the same thing' signal, not 'are they both value decks'."""
+    a, b = _sim_weights(a), _sim_weights(b)
+    shared = set(a) & set(b)
+    if not shared:
+        return 0.0
+    dot = sum(a[t] * b[t] for t in shared)
+    na = math.sqrt(sum(w * w for w in a.values()))
+    nb = math.sqrt(sum(w * w for w in b.values()))
+    return dot / (na * nb) if na and nb else 0.0
+
+
+def cmd_similar(args):
+    """Rank the decks most SIMILAR to <id> by shared central-theme overlap — the roster
+    'is this deck distinct, or does it duplicate an existing one?' check (the question a
+    from-scratch build always raises). Cosine over the central-theme WEIGHT vectors, so a
+    shared dominant theme dominates the score; a color-overlap % is shown alongside."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    cardmeta, mana = load_card_meta(), load_mana()
+    meta, cards = parse_deck_file(d["path"])
+    aw = _deck_central_weights(meta, cards, cardmeta)
+    acols = _declared_colors(meta) or _deck_castable_colors(meta, cards, mana)
+    if not aw:
+        print(f"Deck {d['id']} has no central themes to compare (too few tagged cards).")
+        return 0
+    rows = []
+    for dd in discover_decks():
+        if dd["id"].lower() == d["id"].lower():
+            continue
+        m2, c2 = parse_deck_file(dd["path"])
+        sim = _theme_cosine(aw, _deck_central_weights(m2, c2, cardmeta))
+        if sim <= 0:
+            continue
+        bcols = _declared_colors(m2) or _deck_castable_colors(m2, c2, mana)
+        colj = len(acols & bcols) / len(acols | bcols) if (acols | bcols) else 0.0
+        bw = _deck_central_weights(m2, c2, cardmeta)
+        shared = sorted(set(aw) & set(bw), key=lambda t: -(min(aw[t], bw[t])))
+        rows.append((sim, colj, dd["id"], dd.get("name") or dd["id"], shared,
+                     (m2.get("format") or "").strip()))
+    rows.sort(key=lambda r: (-r[0], -r[1], r[2]))
+    limit = getattr(args, "limit", 8) or 8
+    print(f"Deck {d['id']}: {d.get('name') or d['id']} — most similar decks "
+          f"(central-theme overlap)\n"
+          f"Your colors: {'/'.join(sorted(acols)) or '—'}  ·  top themes: "
+          f"{', '.join(f'{t}({aw[t]})' for t in sorted(aw, key=lambda t: -aw[t])[:6])}\n")
+    print(f"  {'sim':>4} {'col':>4}  {'deck':6} {'shared central themes (strongest first)'}")
+    print("  " + "-" * 78)
+    for sim, colj, did, name, shared, fmt in rows[:limit]:
+        flag = " ⚠ overlap" if sim >= 0.60 else ("" if sim >= 0.30 else "  · distinct")
+        print(f"  {sim*100:>3.0f}% {colj*100:>3.0f}%  {did:6} {', '.join(shared[:5])}{flag}")
+    top = rows[0] if rows else None
+    if top and top[0] >= 0.60:
+        print(f"\n⚠ Closest is #{top[2]} {top[3]} at {top[0]*100:.0f}% — verify the two play "
+              "differently (dominant theme / win-con), or you may be duplicating it.")
+    elif top:
+        print(f"\nClosest is #{top[2]} {top[3]} at {top[0]*100:.0f}% — comfortably distinct.")
+    print("\nHigh sim = shares your central themes AND their weight; grade the DOMINANT theme "
+          "+ win-con from `deck.py text`, not the overlap number alone.")
+    return 0
+
+
+def _printing_index():
+    """name_lower (full AND DFC front) -> (display, set_code, collector). The OWNED printing
+    (card-library.csv) wins over the pool's representative printing, so a resolved line
+    matches what you actually have. Used by `deck.py resolve`."""
+    idx = {}
+    for path in (POOL_CSV, DEFAULT_CSV):        # library LAST so it overrides the pool
+        if not os.path.exists(path):
+            continue
+        with open(path, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                disp = (r.get("Card Name") or "").strip()
+                nl = disp.lower()
+                if not nl:
+                    continue
+                info = (disp, (r.get("Set Code") or "").strip(), (r.get("Collector #") or "").strip())
+                idx[nl] = info
+                idx.setdefault(nl.split(" // ")[0], info)   # DFC front fallback (don't clobber a full name)
+    return idx
+
+
+def cmd_resolve(args):
+    """Turn card NAMES into ready-to-paste deck lines `<qty> <Name> (<SET>) <#>` with a valid
+    printing (exact → DFC front → unique substring; owned printing preferred, else the pool's).
+    Reads names from args or stdin (one per line, optional leading quantity). Reports
+    unresolved / ambiguous names instead of guessing — the scaffolding step a from-scratch
+    build otherwise does by hand."""
+    idx = _printing_index()
+    if not idx:
+        eprint("No card data — build card-pool.csv (build_pool.py) / card-library.csv first.")
+        return 1
+    raw = list(args.names or [])
+    if not raw or raw == ["-"]:
+        raw = [ln for ln in sys.stdin.read().splitlines()]
+    lines, unresolved, ambiguous = [], [], []
+    for ln in raw:
+        ln = ln.strip()
+        if not ln or ln.lstrip().startswith("#"):
+            continue
+        m = re.match(r"^\s*(\d+)\s+(.*)$", ln)          # optional leading quantity
+        qty, query = (m.group(1), m.group(2)) if m else ("1", ln)
+        ql = query.strip().lower()
+        key = ql if ql in idx else None
+        if not key:
+            subs = sorted((k for k in idx if ql in k), key=len)
+            disp = {idx[k][0] for k in subs}        # dedup by display: a DFC's front+full
+            if len(disp) == 1:                       #   name are two keys but ONE card
+                key = subs[0]
+            elif len(disp) > 1:
+                ambiguous.append((query, sorted(disp)[:6]))
+                continue
+        if not key:
+            unresolved.append(query)
+            continue
+        disp, setc, coll = idx[key]
+        lines.append(f"{qty} {disp} ({setc}) {coll}".rstrip())
+    for ln in lines:
+        print(ln)
+    if ambiguous:
+        eprint("\n⚠ ambiguous (be more specific):")
+        for q, opts in ambiguous:
+            eprint(f"    {q!r} → {'; '.join(opts)}")
+    if unresolved:
+        eprint("\n⚠ not found:")
+        for q in unresolved:
+            eprint(f"    {q!r}")
+    return 1 if (unresolved or ambiguous) else 0
+
+
 def cmd_suggest_homes(args):
     """For a card you own, scan EVERY deck: where is it both castable and on-theme,
     is it already there, and what's the weakest card it could replace? Automates
@@ -5713,6 +5874,13 @@ def main():
     p.add_argument("card", help="card name to place across your decks")
     p.add_argument("--any-format", action="store_true",
                    help="don't filter to decks whose format the card is legal in")
+    p = sub.add_parser("similar", help="rank the decks most similar to <id> (is it distinct?)")
+    p.add_argument("id")
+    p.add_argument("--limit", type=int, default=8, help="how many similar decks to show (default 8)")
+    p = sub.add_parser("resolve",
+                       help="turn card names into deck lines `<qty> Name (SET) #` (from args or stdin)")
+    p.add_argument("names", nargs="*",
+                   help="card names (optional leading qty); omit or '-' to read stdin")
     args = ap.parse_args()
 
     return {
@@ -5724,6 +5892,7 @@ def main():
         "legal": cmd_legal, "cuts": cmd_cuts,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
         "verify": cmd_verify, "text": cmd_text, "suggest-homes": cmd_suggest_homes,
+        "similar": cmd_similar, "resolve": cmd_resolve,
         "preflight": cmd_preflight, "quality": cmd_quality, "tier": cmd_tier,
         "redundancy": cmd_redundancy, "history": cmd_history,
     }[args.cmd](args)

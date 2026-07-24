@@ -317,6 +317,8 @@ own that `deck.py check` still lists as a craft target.
 python3 scripts/deck.py list          # every deck + variant, with buildable status
 python3 scripts/deck.py wildcards     # roster-wide crafting plan (wildcards to finish decks)
 python3 scripts/deck.py audit         # roster triage: one line per deck — which decks need a tune
+python3 scripts/deck.py similar 40    # decks most alike by central-theme overlap (is it distinct?)
+python3 scripts/deck.py resolve "Bloom Tender" "2 Island"   # names → deck lines `<qty> Name (SET) #`
 python3 scripts/deck.py check 1a      # owned vs needed + a castability lint (off-color cards)
 python3 scripts/deck.py diff 1 1a     # what variant 1a changes vs base deck 1
 python3 scripts/deck.py arena 1a      # emit an Arena-importable decklist to paste back
