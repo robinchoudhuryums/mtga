@@ -253,6 +253,85 @@ class TestCutsUniqAdj:
         assert deck._CUTS_UNIQ_CAP <= 3.0
 
 
+class TestLandSuggestBonuses:
+    """The bounded synergy + shortfall co-signals of the manabase recommender."""
+    THEMES = {"equipment": 17, "counters": 3, "pump": 15}
+    DEFICIT = {"W": 0.30, "R": 0.05}
+
+    def test_synergy_zero_without_overlap(self):
+        assert deck._land_synergy_bonus([], self.THEMES) == 0.0
+        assert deck._land_synergy_bonus(["landfall"], self.THEMES) == 0.0
+        assert deck._land_synergy_bonus(["counters"], {}) == 0.0
+
+    def test_synergy_bounded_and_scaled(self):
+        for tags in ([], ["counters"], ["equipment"], ["equipment", "pump"]):
+            assert 0.0 <= deck._land_synergy_bonus(tags, self.THEMES) <= deck._LAND_SYN_CAP
+        # a land on the deck's TOP theme beats one on a minor theme
+        assert (deck._land_synergy_bonus(["equipment"], self.THEMES)
+                > deck._land_synergy_bonus(["counters"], self.THEMES))
+
+    def test_shortfall_bounded(self):
+        for cols in ([], ["W"], ["R"], ["W", "R"]):
+            assert 0.0 <= deck._land_shortfall_bonus(cols, self.DEFICIT) <= deck._LAND_SHORT_CAP
+
+    def test_shortfall_favors_scarce_color(self):
+        assert (deck._land_shortfall_bonus(["W"], self.DEFICIT)
+                > deck._land_shortfall_bonus(["R"], self.DEFICIT))
+        # a land covering the scarce color scores == the scarce single, via max()
+        assert (deck._land_shortfall_bonus(["W", "R"], self.DEFICIT)
+                == deck._land_shortfall_bonus(["W"], self.DEFICIT))
+
+    def test_shortfall_zero_when_nothing_scarce(self):
+        assert deck._land_shortfall_bonus(["W"], {}) == 0.0
+        assert deck._land_shortfall_bonus(["W"], {"W": 0.0, "R": 0.0}) == 0.0
+
+    def test_caps_keep_fixing_dominant(self):
+        # Both nudges must be small next to the 0–10 fixing axis.
+        assert deck._LAND_SYN_CAP <= 3.0 and deck._LAND_SHORT_CAP <= 3.0
+
+
+class TestNeedsModelSignals:
+    """The bounded co-signals of the --ramp / --interaction needs-aware recommenders."""
+
+    def test_accel_want_lean_curve_is_zero(self):
+        assert deck._accel_want(2.0, 0.0) == 0.0
+        assert deck._accel_want(2.2, 0.1) == 0.0
+
+    def test_accel_want_bounded_and_rising(self):
+        for mv, h in ((2.0, 0.0), (3.0, 0.3), (3.8, 0.5), (6.0, 0.9)):
+            assert 0.0 <= deck._accel_want(mv, h) <= 1.0
+        assert deck._accel_want(4.0, 0.6) > deck._accel_want(3.0, 0.3)
+
+    def test_restriction_fit_unrestricted_is_zero(self):
+        assert deck._ramp_restriction_fit("{T}: Add {G}.", {"equipment": 0.4}) == 0.0
+
+    def test_restriction_fit_match_vs_mismatch(self):
+        hi = deck._ramp_restriction_fit(
+            "Spend this mana only to cast an Equipment spell.", {"equipment": 0.5})
+        lo = deck._ramp_restriction_fit(
+            "Spend this mana only to cast an Equipment spell.", {"equipment": 0.0})
+        assert 0 < hi <= deck._RAMP_RESTRICT_CAP
+        assert -deck._RAMP_RESTRICT_CAP <= lo < 0
+
+    def test_scaling_axis_detection(self):
+        assert deck._int_scaling("Target creature you control fights target creature.") == "fight"
+        assert deck._int_scaling(
+            "deals damage equal to the number of creatures you control") == "creatures"
+        assert deck._int_scaling("Deal {X} damage") == "x-cost"
+        assert deck._int_scaling("Destroy target creature.") is None
+
+    def test_scaling_boost_bounded_and_rising(self):
+        assert deck._int_scaling_boost(None, 1.0) == 0.0
+        for m in (0.0, 0.3, 0.7, 1.0):
+            assert 0.0 <= deck._int_scaling_boost("fight", m) <= deck._INT_SCALE_CAP
+        assert deck._int_scaling_boost("fight", 0.9) > deck._int_scaling_boost("fight", 0.1)
+
+    def test_caps_stay_tiebreakers(self):
+        assert deck._RAMP_ACCEL_CAP <= 3.0
+        assert deck._RAMP_RESTRICT_CAP <= 3.0
+        assert deck._INT_SCALE_CAP <= 3.0
+
+
 class TestProducesMana:
     """The broad mana-source detector behind the tier tune plan's ramp-loss flag —
     catches dorks the 'Ramp / fixing' role misses (the 'add one mana' phrasing)."""

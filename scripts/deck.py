@@ -1044,6 +1044,228 @@ def _cuts_uniq_adj(uniq):
     return max(-_CUTS_UNIQ_CAP, min(_CUTS_UNIQ_CAP, adj))
 
 
+# `suggest --lands` co-signals. A land's dominant value is FIXING (wishlist._land_value,
+# 0–10), but a land's ABILITY can also play the deck (Abandoned Air Temple's team-pump in a
+# go-wide deck, Fire Nation Palace's firebending ramp) — so a bounded SYNERGY term lifts a
+# land whose text matches the deck's central themes, and a bounded SHORTFALL term favors a
+# land producing the color the deck is scarcest on. Both are CAPPED so fixing stays dominant
+# (a land is chosen for its mana first) — guarded by check_suggest anchor 9.
+_LAND_SYN_CAP = 2.0
+_LAND_SHORT_CAP = 1.5
+
+
+def _land_synergy_bonus(land_tags, theme_w):
+    """Bounded [0, _LAND_SYN_CAP] nudge: a land whose synergy tags hit the deck's central
+    themes ranks above a vanilla dual. Scaled by the land's STRONGEST shared theme relative
+    to the deck's top theme, so a land on the deck's spine gets the full cap and an incidental
+    overlap gets little. 0 when the land shares nothing (a plain dual) — fixing then decides."""
+    if not theme_w or not land_tags:
+        return 0.0
+    shared = [theme_w[t] for t in land_tags if t in theme_w]
+    if not shared:
+        return 0.0
+    mx = max(theme_w.values()) or 1
+    return round(min(_LAND_SYN_CAP, _LAND_SYN_CAP * (max(shared) / mx)), 2)
+
+
+def _land_shortfall_bonus(land_colors, deficit):
+    """Bounded [0, _LAND_SHORT_CAP] nudge toward the color the deck is SHORTEST on. `deficit`
+    is {color: >=0 scarcity} (pip-demand share minus source share); a land producing the
+    scarcest color it covers gets the most. 0 when it produces no under-served color."""
+    if not deficit or not land_colors:
+        return 0.0
+    mx = max(deficit.values()) or 0.0
+    if mx <= 0:
+        return 0.0
+    best = max((deficit.get(c, 0.0) for c in land_colors), default=0.0)
+    return round(min(_LAND_SHORT_CAP, _LAND_SHORT_CAP * best / mx), 2)
+
+
+# ── The "needs model": suggest --ramp / --interaction / --needs ──────────────────────────
+# suggest_scored answers "what SYNERGIZES with my themes"; these answer "what my deck
+# structurally LACKS" (fixing, acceleration, interaction) — the axes a theme model can't see
+# by design (the idf model was BUILT to reject catch-alls, so we never weaken its filter; we
+# add a parallel needs-aware path instead). Every nudge below is BOUNDED so it re-ranks within
+# a needs-filtered candidate set and can't manufacture a catch-all pick (check_suggest #10).
+_RAMP_ACCEL_CAP = 2.0       # a top-heavy deck wants acceleration; a low-curve deck wants none
+_RAMP_RESTRICT_CAP = 1.5    # a restricted-mana dork ('add R only for Equipment') matching the deck
+_INT_SCALE_CAP = 1.5        # a board-scaling removal spell the deck's board actually supports
+
+
+def _accel_want(avg_mv, heavy_share):
+    """0–1 'this deck wants acceleration', from curve top-heaviness: a high average MV and a
+    large share of 4+-drops => wants ramp; a lean aggro curve => ~0. Bounded [0, 1]."""
+    a = (avg_mv - 2.3) / 1.2           # 2.3 avg -> 0, 3.5 avg -> 1
+    h = (heavy_share - 0.15) / 0.30    # 15% at 4+ -> 0, 45% -> 1
+    return round(max(0.0, min(1.0, 0.5 * max(0.0, a) + 0.5 * max(0.0, h))), 2)
+
+
+_RESTRICT_RE = re.compile(
+    r"spend this mana only to (?:cast|activate)[^.\n]*?\b"
+    r"(equipment|artifact|instant|sorcery|creature|enchantment)", re.I)
+
+
+def _ramp_restriction_fit(text, type_share):
+    """Bounded ± nudge for a RESTRICTED mana source ('add R, spend only to cast an Equipment
+    spell'): + when that type is well-represented in the deck, − when it's scarce (a spell-only
+    dork in a creature deck is near-dead), 0 for unrestricted mana. `type_share` maps a type
+    word -> fraction of the deck's nonland cards of that type. Centered at ~20% representation."""
+    m = _RESTRICT_RE.search(text or "")
+    if not m:
+        return 0.0
+    kind = m.group(1).lower()
+    share = (type_share.get("instant", 0) + type_share.get("sorcery", 0)
+             if kind in ("instant", "sorcery") else type_share.get(kind, 0))
+    val = _RAMP_RESTRICT_CAP * (share - 0.20) / 0.20
+    return round(max(-_RAMP_RESTRICT_CAP, min(_RAMP_RESTRICT_CAP, val)), 2)
+
+
+_INT_FIGHT_RE = re.compile(r"\bfights?\b[^.\n]*?target creature", re.I)
+_INT_COUNT_RE = re.compile(
+    r"number of (?:\w+ )?(creatures|artifacts|equipment|permanents|lands) you control", re.I)
+
+
+def _int_scaling(text):
+    """The deck-STATE axis a removal card scales with, or None. 'fight' scales with YOUR
+    creatures' power; 'damage = number of X you control' scales with that count; an {X} deal/
+    destroy scales with mana. These are the deck-dependent removal cards a tag model can't grade
+    in the abstract — surface them and FLAG the axis for a human read (never silently boost)."""
+    t = text or ""
+    if _INT_FIGHT_RE.search(t):
+        return "fight"
+    m = _INT_COUNT_RE.search(t)
+    if m:
+        return m.group(1).lower()
+    if "{X}" in t and re.search(r"\b(deal|destroy|damage)\b", t, re.I):
+        return "x-cost"
+    return None
+
+
+def _int_scaling_boost(axis, deck_metric):
+    """Bounded [0, _INT_SCALE_CAP] boost for a board-scaling removal spell the deck actually
+    supports. `deck_metric` is a 0–1 strength on the card's axis (avg creature power for fight,
+    board density for a count-based card). Modest by design — the human confirms from the flag;
+    0 for a non-scaling card or a deck that can't turn the scaling on."""
+    if not axis:
+        return 0.0
+    m = max(0.0, min(1.0, deck_metric))
+    return round(min(_INT_SCALE_CAP, _INT_SCALE_CAP * m), 2)
+
+
+def deck_needs(d):
+    """The deck's STRUCTURAL profile — the axes suggest_scored's theme model can't see.
+    Returns {colors, sources, deficit, avg_mv, accel, interaction, int_target, int_short,
+    type_share, creature_power, board_density, central, names}. Shared by --ramp / --interaction
+    / --needs so they can't drift. Pure read (no writes)."""
+    meta = load_card_meta()
+    dmeta, cards = parse_deck_file(d["path"])
+    mana_map, carddata = load_mana(), load_card_data()
+    deck_colors = _declared_colors(dmeta)
+    if not deck_colors:
+        for _q, n, _s, _c in cards:
+            m = meta.get(n.lower())
+            if n.lower() not in BASICS and m:
+                deck_colors |= (m["colors"] & set("WUBRG"))
+
+    theme_w, names = {}, set()
+    sources = {c: 0 for c in deck_colors}
+    demand = {c: 0 for c in deck_colors}
+    nonland = mv_sum = mv_n = heavy = cre = equip = arti = inst = sorc = ench = 0
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        names.add(nl.split(" // ")[0])
+        if nl in BASICS:
+            col = BASIC_COLOR.get(nl)
+            if col in sources:
+                sources[col] += q
+            continue
+        m = meta.get(nl)
+        cd = carddata.get(nl)
+        tline = (cd["type"] if cd else "") or ""
+        if "Land" in _primary_type(tline):
+            for col in (m["colors"] if m else set()):
+                if col in sources:
+                    sources[col] += q
+            continue
+        if m:
+            for t in m["synergies"]:
+                theme_w[t] = theme_w.get(t, 0) + q
+        entry = mana_map.get(nl)
+        mv = entry[1] if (entry and entry[1] is not None) else None
+        nonland += q
+        if mv is not None:
+            mv_sum += mv * q
+            mv_n += q
+            if mv >= 4:
+                heavy += q
+        if entry and entry[0]:
+            strict, _hy = parse_pips(entry[0])
+            for col, cnt in strict.items():
+                if col in demand:
+                    demand[col] += cnt * q
+        pt = _primary_type(tline)
+        low = tline.lower()
+        if "Creature" in pt:
+            cre += q
+        if "artifact" in low:
+            arti += q
+        if "equipment" in low:
+            equip += q
+        if "Instant" in pt:
+            inst += q
+        if "Sorcery" in pt:
+            sorc += q
+        if "Enchantment" in pt:
+            ench += q
+
+    tot_d = sum(demand.values()) or 1
+    tot_s = sum(sources.values()) or 1
+    deficit = {c: max(0.0, demand[c] / tot_d - sources[c] / tot_s) for c in deck_colors}
+    avg_mv = round(mv_sum / mv_n, 2) if mv_n else 0.0
+    heavy_share = heavy / mv_n if mv_n else 0.0
+    tally = role_tally(cards, carddata)
+    ts = (lambda x: round(x / nonland, 2) if nonland else 0.0)
+    central = _central_themes(theme_w)
+    return {
+        "colors": deck_colors, "sources": sources, "deficit": deficit, "avg_mv": avg_mv,
+        "accel": _accel_want(avg_mv, heavy_share),
+        "interaction": tally.get("interaction", 0), "int_target": 5,
+        "int_short": tally.get("interaction", 0) < 5,
+        "type_share": {"creature": ts(cre), "artifact": ts(arti), "equipment": ts(equip),
+                       "instant": ts(inst), "sorcery": ts(sorc), "enchantment": ts(ench)},
+        "board_density": round(min(1.0, (cre + equip) / max(1, nonland)), 2),
+        "central": central, "central_w": {t: theme_w[t] for t in central},
+        "names": names, "theme_w": theme_w,
+        "format": (dmeta.get("format") or "").strip().lower(),
+    }
+
+
+def _scaling_metric(axis, needs):
+    """Map a removal card's scaling AXIS (_int_scaling) to the deck's 0–1 strength on it:
+    a FIGHT card wants a deck that makes big creatures (equipment/creature density); a
+    'number of X you control' card wants that permanent to be dense; an {X} card wants ramp."""
+    ts = needs["type_share"]
+    if axis == "fight":
+        return min(1.0, ts.get("creature", 0) + ts.get("equipment", 0))
+    if axis in ("creatures", "permanents"):
+        return needs["board_density"]
+    if axis in ("equipment", "artifacts"):
+        return min(1.0, ts.get("equipment", 0) + ts.get("artifact", 0)) if axis == "artifacts" \
+            else ts.get("equipment", 0)
+    if axis == "x-cost":
+        return needs["accel"]
+    return needs["board_density"]
+
+
+def _produced_colors(text, deck_colors):
+    """The colors a mana source can make, scoped to the deck: an 'any color / any type' dork
+    reads as all the deck's colors; else the explicit `{W}`… symbols in its text."""
+    t = text or ""
+    if re.search(r"any color|any type|mana of any", t, re.I):
+        return set(deck_colors)
+    return {c for c in "WUBRG" if "{" + c + "}" in t}
+
+
 _power_seed_warned = False  # one-time guard for the A14 degradation warning
 
 
@@ -2130,6 +2352,369 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
     return res
 
 
+def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=False):
+    """Recommend LANDS for a deck's manabase — the axis theme-based `suggest` is blind to
+    (it filters candidates to cards sharing a synergy theme, and lands rarely do, so it can
+    never surface a manabase upgrade). Scores each on-color land by FIXING value
+    (`wishlist._land_value`: produces the deck's colors, untapped premium — the DOMINANT
+    axis) PLUS a bounded SYNERGY nudge (a land whose ability plays the deck's central themes
+    — Air Temple's team-pump in a go-wide deck) and a bounded SHORTFALL nudge (favor the
+    color the deck is scarcest on, from pip-demand vs current sources)."""
+    import wishlist
+    meta = load_card_meta()
+    dmeta, cards = parse_deck_file(d["path"])
+    mana_map = load_mana()
+    carddata = load_card_data()
+
+    deck_colors = _declared_colors(dmeta)
+    if not deck_colors:
+        for _q, n, _s, _c in cards:
+            if n.lower() in BASICS:
+                continue
+            m = meta.get(n.lower())
+            if m:
+                deck_colors |= (m["colors"] & set("WUBRG"))
+
+    # central themes (for the synergy nudge) + names already in the deck
+    theme_w, deck_names = {}, set()
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        deck_names.add(nl.split(" // ")[0])
+        if nl in BASICS:
+            continue
+        m = meta.get(nl)
+        if m:
+            for t in m["synergies"]:
+                theme_w[t] = theme_w.get(t, 0) + q
+    central = _central_themes(theme_w)
+    central_w = {t: theme_w[t] for t in central}
+
+    # current color sources (lands) + strict pip demand -> per-color scarcity (deficit)
+    sources = {c: 0 for c in deck_colors}
+    demand = {c: 0 for c in deck_colors}
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            col = BASIC_COLOR.get(nl)
+            if col in sources:
+                sources[col] += q
+            continue
+        cd = carddata.get(nl)
+        if "Land" in _primary_type((cd["type"] if cd else "") or ""):
+            m = meta.get(nl)
+            for col in (m["colors"] if m else set()):
+                if col in sources:
+                    sources[col] += q
+            continue
+        entry = mana_map.get(nl)
+        if entry and entry[0]:
+            strict, _hy = parse_pips(entry[0])
+            for col, cnt in strict.items():
+                if col in demand:
+                    demand[col] += cnt * q
+    tot_d = sum(demand.values()) or 1
+    tot_s = sum(sources.values()) or 1
+    deficit = {c: max(0.0, demand[c] / tot_d - sources[c] / tot_s) for c in deck_colors}
+
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        pool = list(csv.DictReader(fh))
+    has_leg = bool(pool) and "Legalities" in pool[0]
+    apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
+    _, _, by_name_qty = load_collection()
+    owned_of = lambda nl: owned_qty(by_name_qty, nl)
+
+    picks = []
+    for r in pool:
+        name = (r.get("Card Name") or "").strip()
+        nl = name.lower()
+        if not name or nl.split(" // ")[0] in deck_names or nl in BASICS:
+            continue
+        if "land" not in (r.get("Type") or "").lower():
+            continue
+        if apply_fmt and fmt not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
+            continue
+        prod = card_colors(r.get("Color(s)"))
+        txt = (r.get("Card Text") or "")
+        for c in "WUBRG":
+            if "{" + c + "}" in txt:
+                prod.add(c)
+        on_color = prod & deck_colors
+        if not on_color:
+            continue  # off-color / colorless-only: doesn't fix THIS deck's manabase
+        h = owned_of(nl)
+        if unowned and h > 0:
+            continue
+        if owned and h == 0:
+            continue
+        fix = wishlist._land_value(r, deck_colors)
+        tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
+        syn = _land_synergy_bonus(tags, central_w)
+        short = _land_shortfall_bonus(on_color, deficit)
+        tapped = ("enters tapped" in txt.lower()
+                  or "enters the battlefield tapped" in txt.lower())
+        picks.append({
+            "name": name, "rarity": (r.get("Rarity") or "").strip(), "owned": h,
+            "fix": fix, "syn": syn, "short": short, "score": round(fix + syn + short, 2),
+            "produces": "".join(c for c in "WUBRG" if c in on_color),
+            "tapped": tapped, "text": txt, "matches": sorted(set(tags) & central),
+        })
+    picks.sort(key=lambda p: (-p["score"], -min(p["owned"], 1), p["name"].lower()))
+    if limit and limit > 0:
+        picks = picks[:limit]
+    return {"ok": True, "colors": deck_colors, "picks": picks, "fmt": fmt,
+            "apply_fmt": apply_fmt, "has_leg": has_leg, "sources": sources, "deficit": deficit}
+
+
+def cmd_suggest_lands(args, d):
+    """Render suggest_lands (the manabase recommender)."""
+    res = suggest_lands(d, unowned=args.unowned, owned=getattr(args, "owned", False),
+                        limit=args.limit, fmt=getattr(args, "fmt", None),
+                        any_format=getattr(args, "any_format", False))
+    dc = res["colors"]
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — LAND suggestions (manabase)\n")
+    print("Colors: " + ("/".join(sorted(dc)) or "Colorless") + "  ·  current sources: "
+          + ", ".join(f"{c} {res['sources'].get(c, 0)}" for c in sorted(dc)))
+    scarce = sorted(res["deficit"].items(), key=lambda kv: -kv[1])
+    if scarce and scarce[0][1] > 0:
+        print(f"Scarcest color (strict pip-demand vs sources): {scarce[0][0]} "
+              "— lands producing it get the shortfall nudge.")
+    if res["apply_fmt"]:
+        print(f"Format: {res['fmt']}-legal only  (override with --format / --any-format)")
+    if not res["picks"]:
+        print("\nNo on-color lands to suggest (rebuild card-pool.csv with build_pool.py --all?).")
+        return 0
+    print(f"\n  {'Have':5} {'Land':30} {'Rarity':8} {'Prod':4} {'Fix':>4} {'Syn':>4} "
+          f"{'Sh':>4} {'Score':>5}")
+    print("-" * 78)
+    for p in res["picks"]:
+        have = f"×{p['owned']}" if p["owned"] else "craft"
+        tap = " ·tapped" if p["tapped"] else ""
+        print(f"  {have:5} {p['name'][:30]:30} {(p['rarity'] or '?')[:8]:8} "
+              f"{p['produces']:4} {p['fix']:>4.1f} {p['syn']:>4.1f} {p['short']:>4.1f} "
+              f"{p['score']:>5.1f}{tap}")
+    if getattr(args, "full", False):
+        import textwrap
+        print("\n── Oracle text of the top picks (grade the ability, not just the fixing) ──")
+        for p in res["picks"][:min(8, len(res["picks"]))]:
+            print(f"\n• {p['name']}"
+                  + (f"   synergy: {', '.join(p['matches'])}" if p["matches"] else ""))
+            for para in (p["text"] or "(no oracle text)").split("\n"):
+                for line in (textwrap.wrap(para, width=86) or [""]):
+                    print(f"    {line}")
+    print("\nScore = FIXING value (0–10, dominant: produces your colors, untapped premium) "
+          "+ bounded SYNERGY (land ability hits a deck theme) + bounded SHORTFALL (produces "
+          "the scarce color). Owned first — a 0-wildcard fixer usually beats a craft.")
+    return 0
+
+
+def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
+    """Recommend nonland MANA SOURCES (dorks / rocks / ramp) — the structural need theme-based
+    suggest can't see (a fixer shares no synergy theme). Per-card rank = FIXING (produces the
+    deck's / scarce colors) + RESTRICTION-fit (a restricted-mana dork matching the deck's
+    dominant type) + a small power tiebreak. Whether the deck WANTS ramp at all is the deck-
+    level `needs['accel']`, shown in the header — not a per-card term (it'd just scale the list).
+    """
+    dc, deficit, ts = needs["colors"], needs["deficit"], needs["type_share"]
+    mana_map = load_mana()
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        pool = list(csv.DictReader(fh))
+    has_leg = bool(pool) and "Legalities" in pool[0]
+    apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
+    _, _, by_name_qty = load_collection()
+    owned_of = lambda nl: owned_qty(by_name_qty, nl)
+    picks = []
+    for r in pool:
+        name = (r.get("Card Name") or "").strip()
+        nl = name.lower()
+        if not name or nl.split(" // ")[0] in needs["names"] or nl in BASICS:
+            continue
+        tline = r.get("Type") or ""
+        pt = _primary_type(tline)
+        if pt in ("Land", "Instant", "Sorcery"):
+            continue  # lands are --lands' job; instants/sorceries are one-shot rituals, not ramp
+        txt = r.get("Card Text") or ""
+        # a REPEATABLE mana source: an activated mana ability (":" before "add"), so an
+        # ETB-treasure body or a vanilla creature that merely mentions mana doesn't qualify.
+        if not (_produces_mana(txt) and re.search(r":[^.\n]{0,40}\badd\b", txt, re.I)):
+            continue
+        if not card_colors(r.get("Color(s)")).issubset(dc):
+            continue  # off-color / uncastable for this deck
+        if apply_fmt and fmt not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
+            continue
+        h = owned_of(nl)
+        if (unowned and h > 0) or (owned and h == 0):
+            continue
+        # Ramp is about ACCELERATION, not fixing (a 2-color deck's fixing is nearly solved) —
+        # so the dominant axis is CHEAPNESS × the deck's accel-want (a 1-drop dork ramps a
+        # top-heavy deck; a 4-mana rainbow rock barely helps). Fixing enters only as the
+        # bounded scarce-color bonus (reused from --lands), and restriction-fit + power tiebreak.
+        prod = _produced_colors(txt, dc)
+        mv = (mana_map.get(nl) or (None, None))[1]
+        cheap = max(0.0, (5 - (mv if mv is not None else 3))) / 4.0   # 1-drop→1.0, 5-drop→0.0
+        accel_c = round(_RAMP_ACCEL_CAP * needs["accel"] * min(1.0, cheap), 2)
+        fixb = _land_shortfall_bonus(prod & dc, deficit)
+        restr = _ramp_restriction_fit(txt, ts)
+        power = _power_seed(r)
+        score = round(accel_c + fixb + restr + max(0.0, min(1.0, 0.2 * (power - 4))), 2)
+        picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(), "owned": h,
+                      "fix": fixb, "accel": accel_c, "restr": restr, "power": round(power, 1),
+                      "score": score, "mv": mv if mv is not None else "?",
+                      "produces": "".join(c for c in "WUBRG" if c in prod) or "?",
+                      "restricted": _RESTRICT_RE.search(txt) is not None, "text": txt})
+    picks.sort(key=lambda p: (-p["score"], -min(p["owned"], 1), p["name"].lower()))
+    return picks[:limit] if limit and limit > 0 else picks
+
+
+def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None):
+    """Recommend INTERACTION (removal / sweeper / counter) — including OFF-THEME cards that
+    theme-suggest filters out. Per-card rank = impact role credit + a bounded SCALING boost for
+    a board-dependent removal spell the deck's board supports (fight in an equipment deck,
+    'damage = creatures you control' in a go-wide deck) + a small power tiebreak. The scaling is
+    FLAGGED with the deck metric so the human confirms — it's never a silent boost."""
+    dc = needs["colors"]
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        pool = list(csv.DictReader(fh))
+    has_leg = bool(pool) and "Legalities" in pool[0]
+    apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
+    _, _, by_name_qty = load_collection()
+    owned_of = lambda nl: owned_qty(by_name_qty, nl)
+    picks = []
+    for r in pool:
+        name = (r.get("Card Name") or "").strip()
+        nl = name.lower()
+        if not name or nl.split(" // ")[0] in needs["names"] or nl in BASICS:
+            continue
+        if "land" in (r.get("Type") or "").lower():
+            continue
+        txt = r.get("Card Text") or ""
+        roles = set(classify_roles(txt))
+        if not (roles & _INTERACTION_ROLES):
+            continue  # not interaction
+        if not card_colors(r.get("Color(s)")).issubset(dc):
+            continue
+        if apply_fmt and fmt not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
+            continue
+        h = owned_of(nl)
+        if (unowned and h > 0) or (owned and h == 0):
+            continue
+        axis = _int_scaling(txt)
+        boost = _int_scaling_boost(axis, _scaling_metric(axis, needs)) if axis else 0.0
+        power = _power_seed(r)
+        # Rank on card QUALITY (power, 0–10) + the board-scaling boost + a small flex credit
+        # for answering more than one thing (modal / covers a noncreature permanent).
+        flex = 0.5 if len(roles & _INTERACTION_ROLES) > 1 else 0.0
+        score = round(power + boost + flex, 2)
+        picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(), "owned": h,
+                      "roles": sorted(roles & _INTERACTION_ROLES), "axis": axis, "boost": boost,
+                      "power": round(power, 1), "score": score, "text": txt})
+    picks.sort(key=lambda p: (-p["score"], -min(p["owned"], 1), p["name"].lower()))
+    return picks[:limit] if limit and limit > 0 else picks
+
+
+def cmd_suggest_ramp(args, d):
+    needs = deck_needs(d)
+    fmt = getattr(args, "fmt", None) or needs["format"]
+    picks = suggest_mana(d, needs, unowned=args.unowned, owned=getattr(args, "owned", False),
+                         limit=args.limit, fmt=fmt)
+    accel = needs["accel"]
+    band = "HIGH" if accel >= 0.5 else "moderate" if accel >= 0.2 else "LOW"
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — MANA-SOURCE suggestions (dorks/rocks)\n")
+    print(f"Colors: {'/'.join(sorted(needs['colors'])) or 'Colorless'}  ·  avg MV {needs['avg_mv']}"
+          f"  ·  acceleration want: {band} ({accel})")
+    if band == "LOW":
+        print("  (a lean curve — you may not want dorks at all; ranked on FIXING value.)")
+    if not picks:
+        print("\nNo on-color mana sources to suggest.")
+        return 0
+    print(f"\n  {'Have':5} {'Card':28} {'MV':>2} {'Prod':4} {'Acl':>4} {'Fix':>4} {'Rstr':>5} "
+          f"{'Pw':>3} {'Score':>5}")
+    print("-" * 74)
+    for p in picks:
+        have = f"×{p['owned']}" if p["owned"] else "craft"
+        tag = " ·restricted" if p["restricted"] else ""
+        print(f"  {have:5} {p['name'][:28]:28} {str(p['mv']):>2} {p['produces']:4} "
+              f"{p['accel']:>4.1f} {p['fix']:>4.1f} {p['restr']:>5.1f} {p['power']:>3.0f} "
+              f"{p['score']:>5.1f}{tag}")
+    print("\nScore = ACCELERATION (cheapness × the deck's accel-want — a cheap dork ramps a "
+          "top-heavy deck) + bounded FIXING (scarce color) + RESTRICTION-fit (a restricted dork "
+          "matching your deck type; − if mismatched) + power tiebreak. Grade ETB value from text.")
+    return 0
+
+
+def cmd_suggest_interaction(args, d):
+    needs = deck_needs(d)
+    fmt = getattr(args, "fmt", None) or needs["format"]
+    picks = suggest_interaction(d, needs, unowned=args.unowned, owned=getattr(args, "owned", False),
+                                limit=args.limit, fmt=fmt)
+    it, tgt = needs["interaction"], needs["int_target"]
+    state = f"SHORT ({it} < {tgt})" if needs["int_short"] else f"adequate ({it})"
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — INTERACTION suggestions (incl. off-theme)\n")
+    print(f"Colors: {'/'.join(sorted(needs['colors'])) or 'Colorless'}  ·  "
+          f"current interaction: {state}")
+    if not needs["int_short"]:
+        print("  (already at target — showing anyway; a board-scaling pick may still upgrade.)")
+    if not picks:
+        print("\nNo on-color interaction to suggest.")
+        return 0
+    print(f"\n  {'Have':5} {'Card':28} {'Rarity':8} {'Role':16} {'Pw':>3} {'Score':>5}  Scaling")
+    print("-" * 86)
+    for p in picks:
+        have = f"×{p['owned']}" if p["owned"] else "craft"
+        role = "/".join(x.split()[0] for x in p["roles"])[:16]
+        scale = ""
+        if p["axis"]:
+            metric = _scaling_metric(p["axis"], needs)
+            scale = f"⚠ scales w/ {p['axis']} (deck {metric:.0%}, +{p['boost']:.1f})"
+        print(f"  {have:5} {p['name'][:28]:28} {(p['rarity'] or '?')[:8]:8} {role:16} "
+              f"{p['power']:>3.0f} {p['score']:>5.1f}  {scale}")
+    print("\nScore = impact role credit + a bounded SCALING boost (a board-dependent removal "
+          "spell your board supports) + power tiebreak. ⚠ scaling cards are FLAGGED with your "
+          "deck's strength on that axis — grade them for THIS board from full text.")
+    return 0
+
+
+def cmd_suggest_needs(args, d):
+    """Unified structural-needs view: fixing (lands + dorks), acceleration (dorks), interaction —
+    the one-stop 'what does my deck LACK' report, composing the three needs-aware recommenders."""
+    needs = deck_needs(d)
+    fmt = getattr(args, "fmt", None) or needs["format"]
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — STRUCTURAL NEEDS\n")
+    dc = needs["colors"]
+    scarce = sorted(needs["deficit"].items(), key=lambda kv: -kv[1])
+    scarce_c = scarce[0][0] if scarce and scarce[0][1] > 0 else None
+    print(f"Colors {'/'.join(sorted(dc)) or 'Colorless'} · sources "
+          + ", ".join(f"{c} {needs['sources'].get(c, 0)}" for c in sorted(dc))
+          + (f" · scarcest {scarce_c}" if scarce_c else " · balanced"))
+    accel = needs["accel"]
+    aband = "HIGH" if accel >= 0.5 else "moderate" if accel >= 0.2 else "LOW"
+    print(f"Acceleration want: {aband} (avg MV {needs['avg_mv']}) · "
+          f"Interaction: {needs['interaction']}/{needs['int_target']}"
+          + ("  ⚠ short" if needs["int_short"] else "  ok"))
+
+    def _top(title, rows, fmt_row, n=4):
+        print(f"\n── {title} ──")
+        if not rows:
+            print("  (nothing to suggest)")
+            return
+        for p in rows[:n]:
+            print("  " + fmt_row(p))
+
+    lands = suggest_lands(d, owned=True, limit=4, fmt=fmt)["picks"]
+    _top("Fixing · owned lands", lands,
+         lambda p: f"×{p['owned']} {p['name'][:34]:34} {p['produces']:4} score {p['score']:.1f}")
+    dorks = suggest_mana(d, needs, owned=True, limit=4, fmt=fmt)
+    _top("Fixing / acceleration · owned mana sources", dorks,
+         lambda p: f"×{p['owned']} {p['name'][:34]:34} {p['produces']:4} score {p['score']:.1f}"
+                   + (" ·restricted" if p["restricted"] else ""))
+    inter = suggest_interaction(d, needs, owned=True, limit=4, fmt=fmt)
+    _top("Interaction · owned" + ("  (deck is SHORT)" if needs["int_short"] else ""), inter,
+         lambda p: f"×{p['owned']} {p['name'][:30]:30} {('/'.join(x.split()[0] for x in p['roles']))[:14]:14}"
+                   + (f"  ⚠{p['axis']}" if p["axis"] else "") + f"  score {p['score']:.1f}")
+    print("\n(owned/0-wildcard picks shown; add --unowned to any single mode for craft targets. "
+          "These are STRUCTURAL fills the theme-based `suggest` can't see — grade from text.)")
+    return 0
+
+
 def cmd_suggest(args):
     """Recommend pool cards that fit a deck's color identity and synergy themes.
 
@@ -2138,6 +2723,7 @@ def cmd_suggest(args):
     colors, and flags owned vs. craftable with wildcard rarity. Composes
     card-pool.csv + the synergy tags + tribes-style theme matching. Rendering only —
     the scoring lives in suggest_scored() so the dashboard shares it verbatim.
+    With --lands, defers to the manabase recommender (cmd_suggest_lands) instead.
     """
     d = find_deck(args.id)
     if not d:
@@ -2146,6 +2732,14 @@ def cmd_suggest(args):
     if not os.path.exists(POOL_CSV):
         eprint("No card-pool.csv. Build it: python3 scripts/build_pool.py")
         return 1
+    if getattr(args, "lands", False):
+        return cmd_suggest_lands(args, d)
+    if getattr(args, "ramp", False):
+        return cmd_suggest_ramp(args, d)
+    if getattr(args, "interaction", False):
+        return cmd_suggest_interaction(args, d)
+    if getattr(args, "needs", False):
+        return cmd_suggest_needs(args, d)
 
     res = suggest_scored(d, unowned=args.unowned, owned=getattr(args, "owned", False),
                          limit=args.limit, fmt=getattr(args, "fmt", None),
@@ -4944,6 +5538,17 @@ def main():
     p.add_argument("--full", action="store_true",
                    help="also print full oracle text + keywords/flags of the picks "
                         "(grade adds from text, not the tag-match line)")
+    p.add_argument("--lands", action="store_true",
+                   help="recommend LANDS for the manabase (fixing value + a bounded "
+                        "synergy/shortfall nudge) — the axis theme-based suggest is blind to")
+    p.add_argument("--ramp", action="store_true",
+                   help="recommend nonland MANA SOURCES (dorks/rocks) — fixing + acceleration "
+                        "+ restriction-fit; the structural need theme-suggest can't see")
+    p.add_argument("--interaction", action="store_true",
+                   help="recommend INTERACTION incl. off-theme removal, with a bounded "
+                        "board-scaling boost (fight/'damage = creatures you control'), flagged")
+    p.add_argument("--needs", action="store_true",
+                   help="unified STRUCTURAL-NEEDS view: fixing · acceleration · interaction")
     g = p.add_mutually_exclusive_group()
     g.add_argument("--unowned", action="store_true", help="only craftable suggestions")
     g.add_argument("--owned", action="store_true",

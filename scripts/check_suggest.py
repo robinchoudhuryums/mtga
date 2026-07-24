@@ -215,6 +215,59 @@ def check():
         errs.append("card_distinctiveness: structural must only ever RAISE (max), never lower, "
                     "the tag-only score.")
 
+    # (9) `suggest --lands` co-signals: the SYNERGY and SHORTFALL nudges must stay BOUNDED and
+    #     non-negative, so a land is chosen for FIXING first and the ability/scarcity terms
+    #     only re-rank near-ties (fixing is 0–10; these caps are ≤2). A land sharing nothing /
+    #     producing no scarce color reads 0.
+    lsb = deck._land_synergy_bonus
+    lfb = deck._land_shortfall_bonus
+    themes = {"equipment": 17, "counters": 3, "pump": 15}
+    if lsb([], themes) != 0.0 or lsb(["counters"], {}) != 0.0:
+        errs.append("_land_synergy_bonus must be 0 with no tags or no themes.")
+    if not all(0.0 <= lsb(t, themes) <= deck._LAND_SYN_CAP
+               for t in ([], ["counters"], ["equipment"], ["equipment", "pump"])):
+        errs.append(f"_land_synergy_bonus escapes [0, {deck._LAND_SYN_CAP}].")
+    if not (lsb(["equipment"], themes) > lsb(["counters"], themes)):
+        errs.append("_land_synergy_bonus: a land on the deck's TOP theme must beat one on a "
+                    "minor theme.")
+    deficit = {"W": 0.30, "R": 0.05}
+    if not all(0.0 <= lfb(c, deficit) <= deck._LAND_SHORT_CAP
+               for c in ([], ["W"], ["R"], ["W", "R"])):
+        errs.append(f"_land_shortfall_bonus escapes [0, {deck._LAND_SHORT_CAP}].")
+    if not (lfb(["W"], deficit) > lfb(["R"], deficit)):
+        errs.append("_land_shortfall_bonus: producing the SCARCER color (W) must beat the "
+                    "well-served one (R).")
+    if lfb(["W"], {}) != 0.0 or lfb(["W"], {"W": 0.0, "R": 0.0}) != 0.0:
+        errs.append("_land_shortfall_bonus must be 0 when nothing is scarce.")
+    if deck._LAND_SYN_CAP > 3.0 or deck._LAND_SHORT_CAP > 3.0:
+        errs.append("land co-signal caps too large: fixing (0–10) must stay dominant.")
+
+    # (10) the NEEDS-model co-signals (--ramp / --interaction) stay bounded: accel-want in
+    #      [0,1] and rising with curve; restriction-fit centered/bounded (± for match/mismatch,
+    #      0 unrestricted); scaling-boost bounded/non-negative and rising with deck support.
+    aw = deck._accel_want
+    if not (aw(2.0, 0.0) == 0.0 and 0.0 <= aw(3.0, 0.3) <= 1.0 and aw(4.0, 0.6) >= aw(3.0, 0.3)):
+        errs.append(f"_accel_want must be 0 for a lean curve, ≤1, and rise with top-heaviness "
+                    f"(got {aw(2.0, 0.0)}, {aw(3.0, 0.3)}, {aw(4.0, 0.6)}).")
+    rf = deck._ramp_restriction_fit
+    cap = deck._RAMP_RESTRICT_CAP
+    if rf("no restriction here", {"equipment": 0.4}) != 0.0:
+        errs.append("_ramp_restriction_fit must be 0 for unrestricted mana.")
+    hi = rf("Spend this mana only to cast an Equipment spell.", {"equipment": 0.5})
+    lo = rf("Spend this mana only to cast an Equipment spell.", {"equipment": 0.0})
+    if not (0 < hi <= cap and -cap <= lo < 0):
+        errs.append(f"_ramp_restriction_fit: + when the type is dense, − when scarce, ±{cap} "
+                    f"(got hi {hi}, lo {lo}).")
+    sb = deck._int_scaling_boost
+    scap = deck._INT_SCALE_CAP
+    if sb(None, 1.0) != 0.0:
+        errs.append("_int_scaling_boost must be 0 for a non-scaling card.")
+    if not (0.0 <= sb("fight", 0.9) <= scap and sb("fight", 0.9) > sb("fight", 0.1)):
+        errs.append(f"_int_scaling_boost must be [0,{scap}] and rise with deck support "
+                    f"(got {sb('fight', 0.9)} vs {sb('fight', 0.1)}).")
+    if any(c > 3.0 for c in (deck._RAMP_ACCEL_CAP, cap, scap)):
+        errs.append("needs-model caps too large: they must stay bounded tie-breakers.")
+
     return errs
 
 
