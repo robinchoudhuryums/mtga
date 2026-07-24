@@ -59,7 +59,7 @@ import urllib.error
 import urllib.request
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty,
-                 card_distinctiveness)
+                 card_distinctiveness, backup_path)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -2009,13 +2009,21 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
 
 
 def _deck_fingerprints(meta, exclude_id=None):
-    """[(id, colors:set, central_themes:set), ...] for every deck — used to score a
-    craft target's cross-deck reuse (a card that fits several of your decks is worth
-    more per wildcard). Colors are the deck's declared `#: colors:` (else the union
-    of its cards' identities); themes are the deck's CENTRAL synergy tags (weighted
-    by copies, then thresholded via _central_themes) rather than every tag that
-    appears once — so reuse counts a deck only when the card is genuinely on-theme
-    for it, not merely sharing an incidental keyword.
+    """[(id, colors:set, specific_central_themes:set), ...] for every deck — used to
+    score a craft target's cross-deck reuse (a card that fits several of your decks is
+    worth more per wildcard). Colors are the deck's declared `#: colors:` (else the
+    union of its cards' identities).
+
+    Themes are the deck's central synergy tags NARROWED TO THE SPECIFIC ones — the
+    same `_sim_specific` test `similar` uses, so a GENERIC theme (etb / tokens /
+    counters / lifegain …) or a broad background tribe can't carry a home, while a
+    generic theme that IS this deck's `#: protect:` spine still counts. Centrality
+    alone was not enough: nearly every deck is central on the same handful of generic
+    themes, so the reuse count saturated — 99% of a deck's picks scored >=3 and the
+    median pick "fit" 31 of 56 other decks, which made the ★ high-reuse callout and
+    the per-wildcard signal it feeds carry no information at all (audit F-04). This is
+    the gate `wishlist._rank_scores` already applies to its own breadth column; the
+    two now measure the same thing.
 
     `exclude_id` drops one deck from the roster (the deck being analyzed), so a
     suggestion's reuse count is 'how many OTHER decks it fits' — otherwise the
@@ -2035,7 +2043,12 @@ def _deck_fingerprints(meta, exclude_id=None):
             ident |= m["colors"]
             for t in m["synergies"]:
                 theme_w[t] = theme_w.get(t, 0) + q
-        fps.append((dd["id"], colors or ident, _central_themes(theme_w)))
+        # A generic theme is rescued only when it's a real BUILD-AROUND spine (carried
+        # by >=2 `#: protect:` cards) — the stricter signature test, so a lone protected
+        # bomb's incidental etb/card-draw tag can't re-open the saturation it closes.
+        sig = _strong_signature_themes(dm, cards, meta)
+        specific = {t for t in _central_themes(theme_w) if _sim_specific(t, sig)}
+        fps.append((dd["id"], colors or ident, specific))
     return fps
 
 
@@ -2259,6 +2272,8 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
       themes     – top-6 [(theme, weight)] for the header line.
       fmt/apply_fmt/has_leg – format-filter state for the header messages.
       picks      – [{name, rarity, owned, decks, score, matches:[themes]}], ranked.
+                   `decks` = cross-deck reuse: other decks the card is castable in AND
+                   shares a SPECIFIC central theme with (see `_deck_fingerprints`).
       total      – len(picks) (== the shown count).
       hi_reuse   – [(name, decks)] for craftable picks that fit >=3 other decks.
     """
@@ -2843,7 +2858,8 @@ def cmd_suggest(args):
           + (f" ({', '.join(f'{n} {r}' for r, n in sorted(craftby.items()))})"
              if ncraft else ""))
     print("Decks = how many of your OTHER decks the card is castable in + shares a "
-          "CENTRAL theme with (higher = more value per wildcard).")
+          "SPECIFIC central theme with — generic overlap (etb/tokens/counters/…) and "
+          "broad tribes don't count (higher = more value per wildcard).")
     if res["hi_reuse"]:
         print("High cross-deck reuse: "
               + ", ".join(f"{n} ({k})" for n, k in sorted(res["hi_reuse"], key=lambda x: -x[1])[:6]))
@@ -3494,7 +3510,13 @@ def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
 
 def _safe_write_lines(path, lines, expected_total):
     """temp write -> INV-04 parse-check (parses cleanly AND total copies ==
-    expected) -> timestamped .bak -> atomic replace. Returns the .bak path."""
+    expected) -> timestamped .bak -> atomic replace. Returns the .bak path.
+
+    The .bak name comes from the shared `lib.backup_path` (microsecond stamp +
+    collision counter), like every other backup in the toolkit. A local
+    second-precision name meant two writes in the same second — e.g. a skill applying
+    a set of swaps in sequence — silently overwrote the pre-edit snapshot (audit F-03,
+    the F22 fix that never reached deck.py)."""
     target = os.path.abspath(path)
     text = "\n".join(lines).rstrip("\n") + "\n"
     fd, tmp = tempfile.mkstemp(suffix=".txt", dir=os.path.dirname(target))
@@ -3507,7 +3529,7 @@ def _safe_write_lines(path, lines, expected_total):
         if got != expected_total:
             raise ValueError(f"post-write copy count {got} != expected "
                              f"{expected_total}; not saved.")
-        bak = f"{target}.{time.strftime('%Y%m%d-%H%M%S')}.bak"
+        bak = backup_path(target)
         shutil.copy2(target, bak)
         os.replace(tmp, target)
         tmp = None
@@ -3902,6 +3924,9 @@ def rank_cut_candidates(d):
         # something pure theme-fit can't distinguish (a vanilla and a bomb sharing one tag
         # look equal). Bounded (±_CUTS_POWER_CAP), so it only breaks near-ties (see
         # _cuts_power_adj / check_suggest #7); it never overrides theme fit.
+        # NOTE: `rar` is load_rarities() — Arena wildcard LETTERS ("M"/"R"/"U"/"C"), not
+        # rarity words. wishlist._norm_rarity accepts both shapes; before it did, every
+        # rare/mythic fell through to the default floor and seeded as an uncommon (F-01).
         power = _power_seed({"Rarity": rar.get(nl, ""), "Card Text": text, "Type": tline})
         pow_adj = _cuts_power_adj(power)
 
@@ -5115,7 +5140,10 @@ def plan_redundancy_fill(depth, best_power, functional_options, *,
 
 
 def _card_power(nl, carddata, rar):
-    """Heuristic 0–10 power of a card (by lowercase name) via the shared wishlist seed."""
+    """Heuristic 0–10 power of a card (by lowercase name) via the shared wishlist seed.
+
+    `rar` is a load_rarities() map — Arena wildcard LETTERS, which the seed normalizes
+    (wishlist._norm_rarity); passing a letter used to silently score as an uncommon (F-01)."""
     cd = carddata.get(nl) or {}
     return _power_seed({"Rarity": rar.get(nl, ""), "Card Text": cd.get("text", "") or "",
                         "Type": cd.get("type", "") or ""})

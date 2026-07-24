@@ -106,5 +106,23 @@ class TestSeedPowerBonuses:
                        "Destroy target permanent. Draw two cards.")
         assert 0.0 <= vanilla < meteor <= bomb <= 10.0
 
+    def test_wildcard_letter_rarity_matches_the_word(self):
+        # deck.rank_cut_candidates / deck._card_power pass load_rarities() values, which
+        # are Arena wildcard LETTERS. A letter used to miss _SEED_RARITY and default to
+        # 2.0, seeding every rare/mythic as an uncommon (audit F-01).
+        for letter, word in (("M", "Mythic"), ("R", "Rare"),
+                             ("U", "Uncommon"), ("C", "Common")):
+            assert self._p(letter, "Creature — Bear", "") == self._p(word, "Creature — Bear", "")
+
+    def test_mythic_floor_outranks_common_floor(self):
+        assert self._p("M", "Creature — Bear", "") > self._p("C", "Creature — Bear", "")
+
+    def test_unknown_rarity_falls_back_to_neutral(self):
+        # '?' (rarity unresolved) and a blank cell must both take the neutral default,
+        # not a wrong floor.
+        neutral = self._p("", "Creature — Bear", "")
+        assert self._p("?", "Creature — Bear", "") == neutral
+        assert self._p("Nonsense", "Creature — Bear", "") == neutral
+
     def test_rot_penalty_bounded(self):
         assert 0 < wishlist._ROT_PENALTY <= 2.0

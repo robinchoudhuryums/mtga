@@ -118,6 +118,41 @@ def owned_qty(index, name):
     return index.get(nl) or index.get(nl.split(" // ")[0], 0)
 
 
+class WrongSchema(Exception):
+    """Refused to write a CSV that isn't the card library (see ``csv_schema_error``)."""
+
+
+def csv_schema_error(path, header=None):
+    """Why ``path`` must NOT be written with the canonical library ``header``, or None.
+
+    ``write_rows`` emits exactly ``HEADER``, so pointing a library writer at a DERIVED
+    file silently drops every extra column. ``tag_synergies.py`` / ``enrich.py`` take a
+    ``path`` argument, and CLAUDE.md tells you to re-tag ``card-pool.csv`` — which used
+    to rewrite the pool with the 8 library columns, destroying ``Rarity`` /
+    ``Legalities`` / ``Released`` and silently breaking every format filter, rotation
+    flag and wildcard price (audit F-02). ``check_all`` couldn't catch it: INV-03 only
+    checks that the derived files EXIST.
+
+    A missing or empty file is fine (a fresh temp, or a first write); a file whose
+    header already matches is fine. Anything else is refused by name.
+    """
+    header = header or HEADER
+    if not os.path.exists(path) or os.path.getsize(path) == 0:
+        return None
+    try:
+        with open(path, newline="", encoding="utf-8") as fh:
+            existing = next(csv.reader(fh), None)
+    except OSError as e:
+        return f"could not read the existing header of {os.path.basename(path)}: {e}"
+    if existing is None or existing == header:
+        return None
+    lost = [c for c in existing if c not in header]
+    return (f"{os.path.basename(path)} is not the card library — its header is "
+            f"{existing}, not the canonical {header}. Writing it with the library "
+            f"header would DROP {lost or 'columns'}. Refusing (audit F-02); rebuild "
+            f"derived files with their own builder (build_pool.py / build_mana.py).")
+
+
 def write_rows(rows, path=DEFAULT_CSV, *, backup=True):
     """Write rows (list of dicts) back to the CSV using the canonical header.
 
@@ -126,7 +161,15 @@ def write_rows(rows, path=DEFAULT_CSV, *, backup=True):
     write goes through ``atomic_write`` (temp file + timestamped ``.bak`` + atomic
     replace), so an interrupted write can't truncate the canonical inventory. Pass
     ``backup=False`` when writing to a scratch temp the caller will promote itself.
+
+    Raises ``WrongSchema`` if ``path`` is an existing CSV with a DIFFERENT header —
+    the writer emits only ``HEADER``, so that would silently destroy a derived file's
+    extra columns (audit F-02). See ``csv_schema_error``.
     """
+    problem = csv_schema_error(path)
+    if problem:
+        raise WrongSchema(problem)
+
     def _write(fh):
         writer = csv.DictWriter(fh, fieldnames=HEADER, quoting=csv.QUOTE_MINIMAL)
         writer.writeheader()

@@ -404,13 +404,17 @@ gated so a weighting change can't silently reorder a tuned deck.
 
 Each pick also carries a **`Decks` column** — a cross-deck reuse count of how many
 of your *other* decks the card is *castable* (its identity ⊆ the deck's colors)
-**and** shares a **central** theme with (the deck being analyzed is excluded, so it
-can't inflate its own picks). "Central" means a theme carried by at least a quarter
-of that deck's most-common theme's copies — so a card that merely grazes a deck on
-one incidental tag no longer counts, and the number tracks genuine fit rather than
-any single-tag overlap. It's still a rough value-per-wildcard signal (a craft that
-fits several decks outranks a one-deck sidegrade) — read it as breadth, not curated
-fit. A "High cross-deck reuse" line summarizes the top picks.
+**and** shares a **specific central** theme with (the deck being analyzed is excluded,
+so it can't inflate its own picks). "Central" means a theme carried by at least a
+quarter of that deck's most-common theme's copies; "**specific**" means it isn't one of
+the generic themes nearly every deck shares (`etb`, `tokens`, `counters`, `lifegain`, …)
+or a broad background tribe — unless it's that deck's `#: protect:` build-around spine.
+Centrality alone wasn't enough: it left the count saturated (99% of a deck's picks
+scored ≥3, and the median pick "fit" 31 of 56 other decks), so the column said nothing.
+It's the same gate the wishlist's `use` column applies, so the two breadth signals
+agree. Read it as a rough value-per-wildcard signal (a craft that fits several decks
+outranks a one-deck sidegrade) — breadth, not curated fit. A "High cross-deck reuse"
+line summarizes the top picks.
 
 By default `suggest` also **filters to the deck's `#: format:`** (using the
 `Legalities` column `build_pool.py` writes), so it won't recommend a card you

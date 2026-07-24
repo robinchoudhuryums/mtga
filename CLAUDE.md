@@ -417,14 +417,18 @@ castability · curve · central-theme density), with the intangibles moving a de
   pick it counts how many of your OTHER decks (the deck being analyzed is excluded,
   so it can't inflate its own picks) the card is *castable* (its identity ⊆ the
   deck's declared/derived colors) **and** shares ≥1 *central* theme with (a theme
-  carried by ≥25% of that deck's most-common theme's copies, floor 2) — a rough
-  "value per wildcard" signal, so a craft that fits several decks outranks a
-  one-deck sidegrade. It weights by theme centrality rather than any single-tag
-  overlap, so a card that only grazes a deck on one incidental tag no longer
-  counts — but it's still broad (a generic sac/tokens card that's genuinely
-  central to many decks scores high), so read it as breadth, not curated fit. A
-  "High cross-deck reuse" line summarizes the top fits≥3. Factor it into a craft's
-  ★/~/· weight in a flex block.
+  carried by ≥25% of that deck's most-common theme's copies, floor 2) that is also
+  **SPECIFIC** — a generic theme (etb/tokens/counters/lifegain/…) or a broad
+  background tribe doesn't count, unless it's that deck's `#: protect:` build-around
+  spine (≥2 protected cards). That gate is load-bearing: centrality alone left the
+  count saturated — nearly every deck is central on the same handful of generic
+  themes, so 99% of a deck's picks scored ≥3 and the median pick "fit" 31 of 56 other
+  decks, i.e. the column carried no information (audit F-04). It is the same gate
+  `wishlist.py --rank`'s `use` column applies, so the two breadth signals now measure
+  the same thing. Read it as a rough "value per wildcard": a craft that fits several
+  decks outranks a one-deck sidegrade — still breadth, not curated fit. A "High
+  cross-deck reuse" line summarizes the top fits≥3. Factor it into a craft's ★/~/·
+  weight in a flex block.
 - **Flex-block craftables are format-scoped.** When a deck's `#: format:` changes,
   re-check its `#~` craft suggestions — a craftable legal under the old format may
   have rotated (hit moving decks 1/2 Historic→Standard). `deck.py flex <id>` plus
@@ -727,9 +731,15 @@ castability · curve · central-theme density), with the intangibles moving a de
   relaxation can't fake a generic overlap into a home; guarded by `check_suggest` anchor 12).
   So Bark → 20a/20b and Hawkeye → the ping decks now auto-surface. A tribal payoff clears
   the plain cutoff easily (a Dino deck runs ~19 Dinosaurs). After editing these
-  patterns, regenerate BOTH derived tag stores: `tag_synergies.py --merge` (library) and a
-  merge re-tag of `card-pool.csv`'s `Synergies` (or `build_pool.py`), else UNOWNED craft
-  candidates read stale pool tags.
+  patterns, regenerate BOTH derived tag stores: `tag_synergies.py --merge` for the
+  LIBRARY, and **`build_pool.py --all` for the pool** — which re-derives every pool row's
+  `Synergies` through the same `tags_for()`. Do NOT point `tag_synergies.py` (or
+  `enrich.py`) at `card-pool.csv`: both write through `lib.write_rows`, which emits only
+  the canonical 8 LIBRARY columns, so it silently dropped the pool's `Rarity` /
+  `Legalities` / `Released` and broke every format filter, rotation flag and wildcard
+  price (audit F-02). Both now refuse a non-library target up front
+  (`lib.csv_schema_error`), and `check_all` fails if a derived file loses its own
+  columns. Skip the pool rebuild and UNOWNED craft candidates read stale pool tags.
 - A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
   warning (expected, not an error).
 - The **functional-role** breakdown (`deck.py stats`) and **castability lint**
@@ -836,7 +846,7 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 **Invariant Library:**
 - INV-01 | card-library.csv has the canonical 8-column header, every row has 8 fields, no duplicate (Card Name, Set Code, Collector #) printing, and Quantity Owned is blank or a non-negative integer | Subsystem: Data | Verify: scripts/check_all.py (via validate.py)
 - INV-02 | Every Card Name in card-library.csv has a row in card-mana.csv | Subsystem: Data | Verify: scripts/check_all.py
-- INV-03 | Derived reference files exist: card-mana.csv, card-pool.csv, gallery.html | Subsystem: Data/Presentation | Verify: scripts/check_all.py
+- INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released warn if absent), gallery.html | Subsystem: Data/Presentation | Verify: scripts/check_all.py
 - INV-04 | Every deck file under decks/ parses with no malformed card lines | Subsystem: Decks | Verify: scripts/check_all.py
 - INV-05 | Color(s) stores color identity; actual mana cost lives only in card-mana.csv | Subsystem: Data | Verify: design/manual
 - INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --merge after imports (--merge preserves hand-curated tags; --force replaces them) | Subsystem: Ingest | Verify: manual

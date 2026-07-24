@@ -6,6 +6,8 @@ without a red test (the static/behavioural check_* gates cover the same ground a
 the integration level; this is the fast, isolated layer)."""
 import csv
 
+import pytest
+
 import lib
 
 
@@ -236,3 +238,26 @@ class TestWriteRows:
         assert got[0]["Card Name"] == "Shock"
         assert "StrayKey" not in got[0]  # only canonical columns emitted
         assert list(got[0].keys()) == lib.HEADER
+
+    def test_refuses_a_derived_file(self, tmp_path):
+        # A pool-shaped CSV must not be rewritten with the 8 library columns — that
+        # silently drops Rarity / Legalities / Released (audit F-02).
+        p = tmp_path / "card-pool.csv"
+        p.write_text("Card Name,Type,Card Text,Color(s),Synergies,Set Code,"
+                     "Collector #,Rarity,Legalities,Released\nShock,Instant,,R,burn,"
+                     "M19,156,Common,standard,2018-07-13\n", encoding="utf-8")
+        assert lib.csv_schema_error(str(p))
+        with pytest.raises(lib.WrongSchema):
+            lib.write_rows([{"Card Name": "Shock"}], str(p))
+        # ...and the file is untouched.
+        assert "Legalities" in p.read_text(encoding="utf-8").splitlines()[0]
+
+    def test_allows_missing_empty_and_matching_targets(self, tmp_path):
+        missing = tmp_path / "new.csv"
+        assert lib.csv_schema_error(str(missing)) is None
+        empty = tmp_path / "empty.csv"
+        empty.write_text("", encoding="utf-8")
+        assert lib.csv_schema_error(str(empty)) is None      # a fresh mkstemp target
+        matching = tmp_path / "lib.csv"
+        matching.write_text(",".join(lib.HEADER) + "\n", encoding="utf-8")
+        assert lib.csv_schema_error(str(matching)) is None

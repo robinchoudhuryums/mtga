@@ -49,14 +49,55 @@ def check_mana_coverage():
             + ("…" if len(missing) > 8 else "")] if missing else [], len(names), len(missing)
 
 
+# INV-03's SCHEMA half. Existence alone was never enough: a derived CSV rewritten with
+# the library's 8-column header keeps its name and its Card Name column but loses
+# everything that makes it useful, and every format filter / rotation flag / wildcard
+# price silently degrades (audit F-02). These are the columns without which the file is
+# no longer that file. Legalities/Released are deliberately NOT here — a pool built
+# before those columns existed is a documented graceful-degradation case, so they warn.
+_REQUIRED_COLUMNS = {
+    "card-mana.csv": ["Card Name", "Mana Cost", "Mana Value", "Keywords"],
+    "card-pool.csv": ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
+                      "Set Code", "Rarity"],
+}
+_OPTIONAL_COLUMNS = {"card-pool.csv": ["Legalities", "Released"]}
+
+
+def _header_of(path):
+    """The CSV header row on disk, or None if unreadable/empty."""
+    try:
+        with open(path, newline="", encoding="utf-8") as fh:
+            return next(csv.reader(fh), None)
+    except OSError:
+        return None
+
+
 def check_derived_files():
-    """INV-03: derived reference files exist."""
-    errs = []
+    """INV-03: derived reference files exist AND still carry their own columns.
+
+    Returns (hard_errors, soft_warnings)."""
+    errs, warns = [], []
     for path, name in [(MANA_CSV, "card-mana.csv"), (POOL_CSV, "card-pool.csv"),
                        (GALLERY, "gallery.html")]:
         if not os.path.exists(path):
             errs.append(f"{name} missing")
-    return errs
+            continue
+        required = _REQUIRED_COLUMNS.get(name)
+        if not required:
+            continue
+        header = _header_of(path) or []
+        missing = [c for c in required if c not in header]
+        if missing:
+            errs.append(f"{name} lost column(s) {missing} — it has {header}. A derived file "
+                        f"rewritten with another file's header silently breaks every lookup "
+                        f"built on it (audit F-02); restore its .bak or rebuild it "
+                        f"({'build_mana.py' if 'mana' in name else 'build_pool.py --all'}).")
+            continue
+        absent = [c for c in _OPTIONAL_COLUMNS.get(name, []) if c not in header]
+        if absent:
+            warns.append(f"{name} predates column(s) {absent} — format/rotation checks "
+                         f"degrade until you rebuild (build_pool.py --all).")
+    return errs, warns
 
 
 def check_decks():
@@ -104,8 +145,9 @@ def main():
     mana_errs, ncards, nmiss = check_mana_coverage()
     hard += mana_errs
 
-    # INV-03
-    hard += check_derived_files()
+    # INV-03 — existence + schema (a derived file must keep its own columns).
+    derived_errs, derived_warns = check_derived_files()
+    hard += derived_errs
 
     # INV-04 / INV-05
     deck_errs, deck_info, ndecks = check_decks()
@@ -165,7 +207,7 @@ def main():
     # Soft: wishlist target drift — a target deck that can no longer cast its card
     # after a retune (e.g. deck 14 Mardu->Rakdos orphaned Neriv). Informational
     # only; never fails the build.
-    soft = []
+    soft = list(derived_warns)
     try:
         import wishlist as wl
         for _sev, name, msg in wl._audit_target_issues(color_only=True):

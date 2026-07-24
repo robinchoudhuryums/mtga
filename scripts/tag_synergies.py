@@ -25,7 +25,7 @@ import os
 import re
 import sys
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, write_rows
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, write_rows, csv_schema_error, eprint
 
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
 
@@ -131,6 +131,15 @@ KEYWORD_THEMES = {
 # genuine keywords that merely look unusual (Eerie, Survival). This is a
 # denylist so new *real* keywords still tag automatically; extend it as new
 # flavor-heavy sets land. Compare against the keyword lowercased.
+#
+# The Marvel (MSH) block below was the second lapse of exactly this kind (audit
+# F-05): the set shipped and its signature moves went unindexed, so check_all
+# emitted 27 soft warnings on EVERY run — burying the one signal the radar
+# exists to raise — and 11 of them leaked into the Synergies vocabulary as
+# one-card tags, which the pool tag-rarity model then scored as near-maximally
+# distinctive. Each entry below was verified to sit on exactly ONE owned card;
+# `check_keywords.flavor_overreach()` guards the reverse mistake, flagging any
+# denylisted word that later turns up on >=3 owned cards (a real mechanic).
 FLAVOR_KEYWORDS = {
     "ability", "angelo cannon", "animal may-ham", "attack", "blue magic", "bring down",
     "death gigas", "dinosaur formula", "double overdrive", "dragonfire dive",
@@ -139,6 +148,20 @@ FLAVOR_KEYWORDS = {
     "magic", "murasame", "particle beam", "rat tail", "stagger", "starfall", "super nova",
     "take 59 flights of stairs", "take the elevator", "the allagan eye",
     "trance", "wave cannon",
+    # Final Fantasy — a remaining card-unique weapon name. ("Jump" is deliberately NOT
+    # here: Scryfall lists it as a keyword on one card, but it's a real recurring FF
+    # ability — Kain and Freya both read "Jump — During your turn, ~ has flying" — so it
+    # belongs in keyword_baseline.txt as an unindexed MECHANIC to theme, not suppressed.)
+    "gae bolg",
+    # Marvel (MSH) signature moves — each on a single card (Hawkeye's four arrow
+    # types, The Vision's three abilities, Reptil's two dino forms, …).
+    "avian telepathy", "boomerang", "brontosaurus", "cosmic awareness",
+    "cybernetic senses", "density control", "embiggen fist", "explosive",
+    "i love squirrels!", "intangibility", "legal justice", "mental organism",
+    "net", "no one dies!", "photographic reflexes", "radar sense",
+    "seismic takedown", "solar beam", "sonic attack", "street justice",
+    "technopathy", "trick arrows", "tyrannosaurus rex", "unbreakable skin",
+    "wasp's sting",
 }
 
 # (tag, predicate(type_line_lower, text_lower)) — order defines output order.
@@ -346,6 +369,17 @@ def main():
                          "existing/hand-curated ones — the safe refresh mode (audit F10)")
     ap.add_argument("--dry-run", action="store_true", help="preview a sample, write nothing")
     args = ap.parse_args()
+
+    # This writer emits ONLY the canonical library columns, so it must never be pointed
+    # at a derived file (card-pool.csv / card-mana.csv) — that would drop Rarity /
+    # Legalities / Released and break every format, rotation and wildcard lookup
+    # (audit F-02). Refuse up front, before any work.
+    problem = csv_schema_error(args.path)
+    if problem:
+        eprint(f"ERROR: {problem}\n"
+               "       To refresh a DERIVED file's synergy tags, rebuild it with its own "
+               "builder (build_pool.py), which re-derives tags via tags_for().")
+        return 1
 
     _, rows = load_rows(args.path)
     kw_map = load_keywords(MANA_CSV)

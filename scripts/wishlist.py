@@ -907,18 +907,42 @@ _FLEX_REMOVAL_RE = re.compile(
 _IMPACT_SEED_ROLES = {"Removal (spot)", "Sweeper", "Card advantage", "Payoff / engine",
                       "Reanimation", "Cost reduction / cheat"}
 
+# Rarity reaches this seed in TWO shapes across the toolkit: the pool/wishlist store the
+# WORD ("Mythic"), while `deck.load_rarities()` maps a card to its Arena WILDCARD LETTER
+# ("M") — and that is the shape `deck.rank_cut_candidates` / `deck._card_power` hand us.
+# A bare letter fell through `.capitalize()` to the 2.0 default, so EVERY rare and mythic
+# seeded as an uncommon: the cuts power co-signal was pinned negative for exactly the
+# bombs it exists to protect, and `cuts` tagged them "on-theme but low power" (audit F-01).
+# Normalize both shapes here, at the single consumer, so no caller can get it wrong.
+_RARITY_FROM_LETTER = {"M": "Mythic", "R": "Rare", "U": "Uncommon", "C": "Common"}
+
+
+def _norm_rarity(value):
+    """Canonical rarity WORD from either a word ('mythic', 'Rare') or an Arena wildcard
+    LETTER ('M', 'r'). Returns '' when it is neither — an unresolved '?' or a blank cell —
+    which the caller turns into the neutral default floor rather than a wrong one."""
+    s = (value or "").strip()
+    if not s:
+        return ""
+    if len(s) == 1:
+        return _RARITY_FROM_LETTER.get(s.upper(), "")
+    w = s.capitalize()
+    return w if w in _SEED_RARITY else ""
+
 
 def _seed_power(r):
     """Heuristic 0–10 power for a wishlist card (rarity floor + functional roles + a few
     bounded bombs the role map can't see). REVIEW it — it undersells unique bombs; this
     just gets a fresh card off a 0.0 blank. The two extra bonuses credit what the flat
     role map missed: FLEXIBLE removal (destroy any permanent, not just a creature) and an
-    impact effect on a PERMANENT (a body/equipment that also removes is a 2-for-1)."""
+    impact effect on a PERMANENT (a body/equipment that also removes is a 2-for-1).
+
+    `Rarity` may be a word OR an Arena wildcard letter — see `_norm_rarity` (audit F-01)."""
     import deck as dk
     text = r.get("Card Text") or ""
     ty = (r.get("Type") or "").lower()
     roles = set(dk.classify_roles(text))
-    p = _SEED_RARITY.get((r.get("Rarity") or "").capitalize(), 2.0)
+    p = _SEED_RARITY.get(_norm_rarity(r.get("Rarity")), 2.0)
     p += sum(_SEED_ROLE.get(x, 0) for x in roles)
     if "planeswalker" in ty:
         p += 2.0
