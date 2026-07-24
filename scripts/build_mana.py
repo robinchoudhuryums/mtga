@@ -93,6 +93,15 @@ def main():
                f"card-mana.csv was left unchanged. Rerun where it's reachable.")
         return 1
 
+    # A name Scryfall's batch didn't return gets a BLANK row. That is the right value
+    # (we must not invent a cost), but it must not be SILENT: this file is rewritten
+    # whole, so a card that stops resolving quietly loses a cost/keywords it previously
+    # had, and every downstream reader — `deck.py mana`, the curve, keyword-aware
+    # tagging — just reports "unknown" with no hint that anything regressed. enrich.py
+    # already warns per unmatched name; this does the same (audit F-12). Note a land
+    # legitimately has an empty cost but IS returned, so it never lands here.
+    unresolved = [n for n in names if n.lower() not in data]
+
     def _write(fh):
         w = csv.writer(fh)
         w.writerow(["Card Name", "Mana Cost", "Mana Value", "Keywords"])
@@ -100,7 +109,15 @@ def main():
             cost, mv, kw = data.get(n.lower(), ("", "", ""))
             w.writerow([n, cost, int(mv) if isinstance(mv, (int, float)) else "", kw])
     atomic_write(args.out, _write)
-    print(f"Wrote {args.out}: {len(names)} cards.")
+    print(f"Wrote {args.out}: {len(names)} cards"
+          + (f", {len(unresolved)} unresolved (blank rows)." if unresolved else "."))
+    if unresolved:
+        shown = ", ".join(unresolved[:8]) + ("…" if len(unresolved) > 8 else "")
+        eprint(f"WARN:  {len(unresolved)} name(s) had no Scryfall match and were written "
+               f"with a BLANK mana cost/keywords: {shown}\n"
+               f"       They will read as 'unknown cost' in deck.py mana/stats and get "
+               f"keyword-less synergy tags. Check spelling, or an Arena-only card may "
+               f"need its row hand-filled.")
     return 0
 
 

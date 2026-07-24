@@ -6,13 +6,14 @@ VENV  := .venv
 PYBIN := $(VENV)/bin/python
 ARGS  ?=
 
-.PHONY: help app check test-units clean-venv
+.PHONY: help app check test-units verify clean-venv
 
 help:
 	@echo "make app             set up a local venv, install Flask, and launch the editor"
 	@echo "make app ARGS=...    pass args through, e.g. make app ARGS='--port 8000 --no-browser'"
 	@echo "make check           run the integrity gate (no dependencies)"
 	@echo "make test-units      run the pytest unit layer (installs requirements-dev.txt)"
+	@echo "make verify          BOTH gates: integrity + unit tests (run before committing)"
 	@echo "make clean-venv      remove the local .venv"
 
 # Launch the editor. Depends on the venv sentinel so deps install on first run
@@ -33,6 +34,11 @@ check:
 test-units:
 	python3 -m pip install --quiet -r requirements-dev.txt
 	python3 -m pytest
+
+# The pre-commit gate. `make check` alone passes while a unit test is red — the unit
+# layer used to run ONLY in CI, so a local cycle could land a change that broke it and
+# not find out until push (audit F-16). Run this instead.
+verify: check test-units
 
 clean-venv:
 	rm -rf $(VENV)

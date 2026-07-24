@@ -49,6 +49,27 @@ def _read(path):
         return list(csv.DictReader(fh))
 
 
+def _wishlist_hit(row, full, front, rec_set, rec_coll):
+    """Does this wishlist row describe the card we just reconciled?
+
+    Matching ONLY on (Set Code, Collector #) — as this did — misses two real cases, so
+    a crafted card silently stays on the wishlist forever (audit F-13):
+      * the wishlist row records a DIFFERENT printing of the same card, and
+      * a row added NAME-ONLY during a Scryfall outage has no set/collector at all.
+    So match the NAME too. The wishlist stores a double-faced card under its full
+    ``Front // Back`` name while the library/export use the front, so compare both
+    (the CLAUDE.md DFC convention). A blank Set Code can't false-match, because an
+    Arena export line always carries ``(SET) #``."""
+    nm = (row.get("Card Name") or "").strip().lower()
+    if nm and nm in {full.strip().lower(), front.strip().lower()}:
+        return True
+    if nm and nm.split(" // ")[0] == front.strip().lower():
+        return True
+    rs = (row.get("Set Code") or "").strip()
+    rc = str(row.get("Collector #") or "").strip()
+    return bool(rs) and rs.upper() == rec_set.upper() and rc == str(rec_coll)
+
+
 def _bak_write(path, fieldnames, rows):
     # Atomic temp+replace with a shared-scheme timestamped .bak (audit F22), so an
     # interrupted write can't truncate the canonical file in place.
@@ -149,11 +170,11 @@ def reconcile(export_lines, apply=False, set_exact=False):
                 mana_names.add(front.lower())
                 mana_added.append(front + "  (blank — run build_mana.py to fill cost/keywords)")
 
-        # wishlist: drop by the RECORDED set+collector (what the user pasted; matches
-        # the full-name DFC row too), consistent with the library row above.
+        # wishlist: drop the card by NAME (full or DFC front) or by the recorded
+        # set+collector — see _wishlist_hit. Name matching is what lets a differently-
+        # printed or name-only row go too (audit F-13).
         before = len(wish)
-        wish = [r for r in wish if not (r["Set Code"].upper() == rec_set.upper()
-                                         and str(r["Collector #"]) == str(rec_coll))]
+        wish = [r for r in wish if not _wishlist_hit(r, full, front, rec_set, rec_coll)]
         if len(wish) != before:
             wish_removed.append(full)
 

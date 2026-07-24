@@ -311,8 +311,13 @@ castability · curve · central-theme density), with the intangibles moving a de
   real 404 to `NotFound`, so the **interactive tools degrade instead of crashing**:
   `deck.py mana/stats/wildcards/swap` show `?`/unknown, `build_gallery.py` flags
   missing art and exits non-zero (instead of reporting an imageless gallery as
-  success), and `wishlist.py --add` marks rows added name-only-due-to-outage
-  distinctly from a genuine no-match. The rebuild scripts (`enrich.py` /
+  success), `wishlist.py --add` marks rows added name-only-due-to-outage
+  distinctly from a genuine no-match, and the editor's `/api/add` returns an
+  `enrich_status` of `ok`/`miss`/`offline` instead of 500-ing — it used to hand-roll
+  its own urllib call catching only `URLError`, so a READ timeout (a `TimeoutError`,
+  which is NOT a URLError subclass) escaped and crashed the request (audit F-09).
+  **Every** Scryfall call goes through the shared client; a new one that doesn't will
+  hit this same class of bug. The rebuild scripts (`enrich.py` /
   `build_mana.py` / `build_pool.py`) also fail cleanly on an outage — a clear error
   and a non-zero exit that leaves the existing derived file unchanged, rather than
   crashing or writing a partial-blank file over good data.

@@ -193,7 +193,7 @@
       return `<div class="card${noimg}${isDirty}" data-key="${esc(c._key)}">
         <button class="rm" title="Remove this printing">✕</button>
         <div class="art">
-          <img loading="lazy" src="${c.img}" alt="${esc(c.name)}"
+          <img loading="lazy" src="${esc(c.img)}" alt="${esc(c.name)}"
                onerror="this.closest('.card').classList.add('noimg')">
           <div class="fallback"><div class="fname">${esc(c.name)}</div>
             <div class="ftype">${esc(c.type)}</div></div>
@@ -295,7 +295,10 @@
         quantity: document.getElementById('aQty').value.trim()});
       if (d.ok) {
         sessionStorage.setItem('flash',
-          `Added ${d.name}` + (d.enriched ? '' : ' (offline — run enrich.py/refresh to fill details)'));
+          `Added ${d.name}` + (d.enriched ? '' :
+            d.enrich_status === 'miss'
+              ? ' (no Scryfall match — check the spelling; details left blank)'
+              : ' (Scryfall unreachable — run enrich.py / refresh to fill details)'));
         location.reload();
       } else { toast('Add failed: ' + (d.errors || ['unknown']).join('  |  ')); }
     } catch (err) { toast('Add failed (is the server running?): ' + err.message); }

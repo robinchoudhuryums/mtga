@@ -742,6 +742,16 @@ code-execution console) and prints a loud warning on any non-local bind. Its wri
 endpoints are serialized behind a single lock, so two overlapping requests can't
 lose an edit.
 
+"No auth" still shouldn't mean "any website can drive it", so every request passes a
+small guard: a state-changing request carrying a cross-site `Origin` is rejected
+(**CSRF** — most endpoints were only accidentally safe, because a form post can't set
+`Content-Type: application/json`, but `/api/revert` takes no body at all, so any page
+you visited while the editor was running could have rolled your collection back), and
+while bound to loopback the `Host` header must be a loopback name (**DNS rebinding** —
+otherwise a hostile hostname resolving to 127.0.0.1 can script the editor and read the
+whole collection). Same-origin traffic from the editor's own page, and non-browser
+clients like `curl` that send no `Origin`, are unaffected.
+
 **Every change is safe by construction:** the new rows are written to a temp file
 and run through `validate.py` first; only if that passes is the current CSV backed
 up to a timestamped `.bak` (gitignored) and then atomically replaced. Bad input —
@@ -822,13 +832,14 @@ deck can no longer cast it); **new unindexed card mechanics** (`check_keywords.p
 **theme coverage** — `check_themes.py` flags an owned card whose text plays a theme
 it isn't tagged with (a stale tag distorts every recommendation), summarized to one
 line; and **tier mismatch** — a deck whose claimed `#: tier:` sits ≥2 bands above its
-measurable floor. A SessionStart hook runs the gate (quiet) so drift surfaces
-immediately.
+measurable floor. A SessionStart hook runs the gate (quiet) **and the unit layer** so
+drift in either surfaces immediately; `make verify` runs both before you commit.
 
 A **pytest unit layer** (`tests/`) complements the gate — fast, isolated tests that
 pin the pure helper functions (color/DFC parsing, mana pips, role tally, tier floor,
 engine roles, rotation math, ingest/tagging). It's dev-only: `pip install -r
-requirements-dev.txt` then `pytest` (or `make test-units`); the core tooling and
+requirements-dev.txt` then `pytest` (or `make test-units`, or `make verify` for both
+gates at once — the integrity check alone passes while a unit test is red); the core tooling and
 `check_all.py` stay pure standard library. Both run in CI (`.github/workflows/tests.yml`).
 
 Claude Code slash commands live in `.claude/commands/`:
