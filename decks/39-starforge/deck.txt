@@ -1,15 +1,29 @@
 #: name: Starforge
 #: format: Standard
+#: tier: A — Boros (W/R) equipment aggro-midrange. Metrics floor is A on the aggro
+#: tier: plan (clock + interaction, ~5 with Agni Kai): a coherent double-strike /
+#: tier: extra-combat engine (Hard-Won Jitte, Twin Blades, Cloud Planet's Champion,
+#: tier: Raphael, Blacksmith's Talent, Sami; Aurelia + Raph & Leo add combat phases),
+#: tier: a huge legendary count that turns on Mjölnir's `worthy {1}`, and real bombs
+#: tier: (Thor, Mjölnir, Aurelia). Held here, not S, by a top-heavy curve and a
+#: tier: singleton-variance build. Aspirational WIP — a legal 60 with 14 craft
+#: tier: targets still to build; graded on the list's merits per the rubric.
 #: colors: WR
-#: archetype: Boros (W/R) equipment — a different flavor from the Orzhov Armory
-#: archetype: decks (38/38a): aggressive white-red suit-up with a Thor / God-Squad
-#: archetype: top-end and a Cloud equipment package. Aspirational build target.
-#: notes: Ingested via /add-deck as a WIP — NOT yet fully owned, so `deck.py check`
-#: notes: shows craft targets. Currently 61 cards (37 nonland + 24 lands) — 1 OVER
-#: notes: the 60 limit; trim in the /tune-deck pass. Shares much of its equipment /
-#: notes: carrier package with decks 38/38a (Cloud, Zack Fair, Weapons Vendor,
-#: notes: Super-Soldier Serum, Celestial Armor, Web-Shooters, Quintessential Katana,
-#: notes: Wrench, Stormbeacon Blade) — copies are fungible across all of them.
+#: archetype: Boros (W/R) equipment — a different flavor from the Orzhov Armory decks
+#: archetype: (38/38a): aggressive white-red suit-up with a Thor / God-Squad top-end
+#: archetype: and a shared Cloud equipment package.
+#: notes: /tune-deck pass — fixed the manabase with OWNED untapped-with-basic lands
+#: notes: (−1 Plains +Abandoned Air Temple; −2 Mountain +2 Fire Nation Palace;
+#: notes: +Sunbillow Verge) → 25 lands, W 12→14 / R 12→16 sources, so double-white
+#: notes: Cloud MM and Aurelia cast on curve far more often, near-zero tapland tempo
+#: notes: loss. Added Buster Sword (combat-damage card advantage), Mardu Devotee
+#: notes: (1-drop fix + scry 2 + a cheap carrier), and The Last Agni Kai (fight
+#: notes: removal that scales with equipment and ramps off overkill). Cut the weakest
+#: notes: filler: Dig Site Inventory, Quintessential Katana, Coral Sword, Knife,
+#: notes: Unexpected Request. Shares its equipment/carrier package with 38/38a —
+#: notes: copies fungible. NOTE: Mardu Devotee reads as a B "stray" in the castability
+#: notes: lint (its `{1}: add B` ability) but is cast for {W} — ignore the flag.
+#: protect: Thor, God of Thunder; Thor Odinson; Mjölnir, Hammer of Thor; Aurelia, the Warleader; Cloud, Midgar Mercenary; Cloud, Planet's Champion
 
 Deck
 # Equipment
@@ -17,19 +31,23 @@ Deck
 1 Hard-Won Jitte (TMT) 91
 1 Hawkeye's Bow (MSH) 132
 1 Samurai's Katana (FIN) 154
-1 Knife (MKM) 134
 1 Twin Blades (TLA) 157
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 Warrior's Sword (FIN) 169
-1 Coral Sword (FIN) 134
-1 Quintessential Katana (TMT) 23
+1 Buster Sword (FIN) 255
 1 Wrench (MKM) 37
 1 Stormbeacon Blade (TDM) 27
 1 Celestial Armor (FDN) 5
 1 Web-Shooters (SPM) 22
+1 Idol of the Deep King (LCI) 155
+
+# Enchantments (Aura / Class / Saga)
 1 Super-Soldier Serum (MSH) 38
+1 Blacksmith's Talent (BLB) 125
+1 The Super Hero Civil War (MSH) 231
 
 # Creatures / walkers
+1 Mardu Devotee (TDM) 16
 1 Freya Crescent (FIN) 138
 1 Firion, Wild Rose Warrior (FIN) 137
 1 Barret Wallace (FIN) 129
@@ -46,15 +64,18 @@ Deck
 1 Raphael, the Nightwatcher (TMT) 103
 1 Raph & Leo, Sibling Rivals (TMT) 166
 
-# Other spells / enchantments
-1 Blacksmith's Talent (BLB) 125
-1 Idol of the Deep King (LCI) 155
-1 Unexpected Request (FIN) 167
+# Spells
+1 The Last Agni Kai (TLA) 144
 1 Slash of Light (FIN) 32
-1 Dig Site Inventory (SOS) 10
 1 Go Ninja Go (TMT) 149
-1 The Super Hero Civil War (MSH) 231
 
-# Lands
-12 Plains (MSH) 288
-12 Mountain (MSH) 294
+# Lands — 25, Boros; owned untapped-with-basic duals/utility over straight basics
+11 Plains (MSH) 288
+10 Mountain (MSH) 294
+1 Abandoned Air Temple (TLA) 263
+2 Fire Nation Palace (TLA) 268
+1 Sunbillow Verge (DFT) 264
+
+# Flex — options (comments; not part of the 60). See: deck.py flex 39
+#~ +Purple Dragon Punks | OWNED ramp — a 2nd equipment-mana dork (like Freya) if you want to lean harder into ramp-into-bombs; swap in for the weakest remaining filler (e.g. Honored Knight-Captain)
+#~ +Duty Beyond Death | U CRAFT spice — sac a creature: your team gains indestructible + a +1/+1 counter each. A wrath-blowout / combat trick; the only wildcard-costing option, hold unless you want the protection
