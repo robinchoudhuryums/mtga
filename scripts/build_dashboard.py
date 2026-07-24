@@ -471,7 +471,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .b-missing { background:rgba(236,110,90,.16); color:#dd6a4d; border:1px solid rgba(240,138,114,.3); }
   .b-short { background:rgba(214,150,40,.16); color:#c68b18; border:1px solid rgba(230,177,60,.3); }
   .deck .arch { color:var(--ink2); font-size:12.5px; margin:7px 0 9px; line-height:1.45; min-height:2.6em; }
-  .deck .metaline { display:flex; gap:9px; align-items:center; flex-wrap:wrap; font-size:11.5px; color:var(--ink2); }
+  .deck .metaline, .modal .metaline { display:flex; gap:9px; align-items:center; flex-wrap:wrap; font-size:11.5px; color:var(--ink2); }
   .vtag { border:1px dashed var(--line2); border-radius:999px; padding:1px 9px; color:var(--ink2b); }
   .pips { display:inline-flex; gap:4px; }
   .pip { width:16px; height:16px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:9px; font-weight:800; border:1px solid rgba(0,0,0,.28); }
@@ -678,6 +678,44 @@ TEMPLATE = r"""<!DOCTYPE html>
   .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
   .foot { color:var(--ink3); font-size:11.5px; margin-top:18px; border-top:1px solid var(--line); padding-top:14px; line-height:1.55; }
   .foot code { font-family:var(--font-mono); color:var(--ink2b); }
+
+  /* ── Mobile / narrow viewports ─────────────────────────────────────────────
+     Template-only responsive layer (the #data island / pipeline is untouched).
+     Two jobs: (1) collapse the multi-column grids to one column and tighten the
+     chrome so nothing is cramped, and (2) keep the WIDE data tables scrolling
+     INSIDE their own box so the page body never scrolls sideways on a phone. */
+  @media (max-width:720px){
+    header{ padding:12px 13px; }
+    .hwrap{ gap:12px; }
+    h1{ font-size:19px; }
+    .hsub{ font-size:11.5px; }
+    .hactions{ gap:8px; }
+    .kpi{ padding:7px 11px; min-width:0; flex:1 1 auto; }
+    .kpi .n{ font-size:20px; }
+    .kpi .n small{ font-size:13px; }
+    main{ padding:20px 13px 52px; }
+    section{ margin-bottom:30px; scroll-margin-top:74px; }
+    h2.sec{ letter-spacing:.1em; }
+    /* one column for every multi-column grid. minmax(0,1fr) — NOT 1fr — so a card
+       with a nowrap/ellipsis line can't force its track past the viewport (1fr keeps a
+       min-content floor, which blew the leverage cards out to ~2700px). */
+    .grid, .distgrid, .levgrid{ grid-template-columns:minmax(0,1fr); }
+    /* wide data tables scroll within their own container, NOT the page */
+    #audit, .wltable, .compact{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    table.at, table.wt{ min-width:560px; }
+    .modal .mbody{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    /* filter inputs span the row instead of overflowing it */
+    #deckfilter, #wlfilter, #cardfind{ width:100%; }
+    .wltop, .ctl-left{ width:100%; }
+  }
+  @media (max-width:430px){
+    main{ padding:16px 10px 46px; }
+    header{ padding:10px; }
+    h1{ font-size:17px; }
+    h1 .dim{ display:none; }   /* keep the title on one line on the smallest screens */
+    .kpi .n{ font-size:18px; }
+    .kpi .lbl{ font-size:9px; }
+  }
 </style>
 </head>
 <body>
