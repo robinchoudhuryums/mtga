@@ -41,6 +41,20 @@ docs. This file is the source of truth for the workflow commands in
 - **`card-library.csv` is the owned inventory** and stays compatible with the
   companion Google Sheet (fixed 8-column header). Derived/reference data lives
   in separate files (`card-mana.csv`, `card-pool.csv`) so the CSV isn't polluted.
+- **NEVER point a library writer at a derived CSV.** `lib.write_rows` emits exactly
+  the canonical 8 LIBRARY columns, so running `tag_synergies.py` or `enrich.py`
+  against `card-pool.csv` (both take a `path` argument, and this file used to tell
+  you to re-tag the pool that way) silently rewrote it with the library header —
+  destroying `Rarity` / `Legalities` / `Released` and breaking every format filter,
+  rotation flag and wildcard price, with `check_all` still green because INV-03 only
+  checked that the file EXISTED (audit F-02). Both CLIs now refuse a non-library
+  target up front via `lib.csv_schema_error()`, `write_rows` raises `lib.WrongSchema`
+  as the backstop, and INV-03 verifies each derived file still carries its own
+  columns. **To refresh a derived file, use its own builder** — `build_pool.py --all`
+  re-derives pool `Synergies` through the same `tags_for()`; `build_mana.py` rebuilds
+  costs/keywords. A new writer for a differently-shaped CSV needs its own
+  `atomic_write` + `DictWriter` on that file's real fieldnames (see
+  `reconcile_crafts._bak_write`), never `write_rows`.
 - **Deck-dump imports undercount quantities** (each line is a lower bound). True
   up owned counts by reconciling from a built deck: `import_arena.py <deck>
   --skip-basics`.
@@ -139,9 +153,14 @@ castability · curve · central-theme density), with the intangibles moving a de
   of Calling read as green cheat enablers but are Historic-only, not Standard;
   Heartfire Hero likewise). Before grading or recommending ANY card in chat, run
   `card.py` — the pool's `Legalities` column is authoritative, so "it's in the pool"
-  is NOT "it's Standard-legal." **In code, any card-evaluation path reads the
-  COMPLETE text by default** — use `lib.full_card_text(name)` (library→pool,
-  never truncated); never slice a card's text to grade/classify/rank it.
+  is NOT "it's Standard-legal." **In code, never slice a card's text to
+  grade/classify/rank it** — the rule holds today because every evaluator reads a
+  whole `Card Text` cell off `load_card_data()` (library→pool) or a pool row, and
+  truncation appears only in DISPLAY (a first-line preview in a filler list). Note
+  the accessor `lib.full_card_text(name)` exists for this but currently has **no
+  callers** — it is available for new code, not an enforced funnel, so the
+  no-truncation rule is a convention each evaluator upholds rather than something
+  a single choke point guarantees (broad-scan F-07). Prefer it in anything new.
 - **Don't judge a card by printed mana value or a single subtype.** `deck.py
   stats` flags cost flexibility (`◊` cheaper / `△` added cost), buckets spells
   into functional roles (removal / card advantage / ramp / …, heuristic from
@@ -682,10 +701,24 @@ castability · curve · central-theme density), with the intangibles moving a de
 ## Known Issues
 
 - A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select,
-  Opus, …) aren't in `tag_synergies.py`'s keyword→theme map, so they're tagged
-  verbatim. Card-*unique* flavor ability names (Firaga, Wave Cannon, Murasame, …), which
-  Scryfall also reports as keywords, are dropped via the `FLAVOR_KEYWORDS`
-  denylist so they don't pollute the tags.
+  Opus, Increment, Infusion, Paradigm, Disappear, Tiered, **Jump**) aren't in
+  `tag_synergies.py`'s keyword→theme map, so they're tagged verbatim. They live in
+  `scripts/keyword_baseline.txt` — the acknowledged-but-unindexed list — so the radar
+  stays quiet about them; theming them is ROADMAP Tier 1. Card-*unique* flavor ability
+  names (Firaga, Wave Cannon, Murasame, and the Marvel signature moves — Trick Arrows,
+  Radar Sense, Technopathy, …), which Scryfall also reports as keywords, are dropped
+  via the `FLAVOR_KEYWORDS` denylist so they don't pollute the tags.
+  **Triage a new set's keywords promptly, and triage on the right axis.** When MSH
+  shipped, its 27 signature moves went unindexed: `check_all` emitted 27 soft warnings
+  on EVERY run — saturating the one channel the radar exists to use — and 11 leaked
+  into the Synergies vocabulary, where `lib.pool_ability_model`'s tag-idf scored a
+  one-card tag as near-maximally distinctive and inflated those cards' `Uq`. The test
+  is **card-uniqueness across the POOL, not the collection**: `jump` reads as one
+  *owned* card but Kain and Freya both carry "Jump — During your turn, ~ has flying",
+  so it is a real mechanic and belongs in the baseline, NOT the denylist. Both
+  directions are guarded — `check_keywords.check()` flags an unindexed keyword,
+  `check_keywords.flavor_overreach()` flags a denylisted word that turns up on ≥3
+  owned cards (a real mechanic being suppressed).
 - **`tag_synergies.py` text-tags fixing + topdeck-value engines** so they stop
   hiding under `selection`/`tokens`: "cast/play … from the top of your library" →
   `card advantage` (Vizier of the Menagerie, Realmwalker, Bolas's Citadel); "spend
@@ -772,7 +805,13 @@ castability · curve · central-theme density), with the intangibles moving a de
 INV-01…04 plus a **ranking-model sanity check** (`check_rankings.py`) that guards
 the Doctor-Doom-class regression: a scoring change that silently reclassifies a
 real tribal theme as "generic". The ranking check is distribution-based, so it
-survives cards being crafted off the wishlist. Five more model-sanity checks are
+survives cards being crafted off the wishlist; it also carries a **wiring** anchor
+asserting `_seed_power` reads an Arena wildcard LETTER and the matching rarity WORD
+identically — deck.py's `cuts`/`redundancy` pass letters, and a mismatch silently
+seeded every rare and mythic as an uncommon (audit F-01). Note INV-03 is now
+existence **and schema**: a derived file that loses its own columns (a pool without
+`Rarity`, a mana file without `Mana Cost`) is a HARD failure, since the old
+existence-only check let a library-header rewrite pass green. Five more model-sanity checks are
 also hard-gated: **color-parsing** (`check_colors.py`) locks in the F1/F2 fix (a
 colorless card must not read as red; a slash-gold must pass the subset test) and a
 static scan bans the naive inline `if ch in "WUBRG"` parse outside `lib.py`;
@@ -838,7 +877,7 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
-- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
+- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py, scripts/keyword_baseline.txt (acknowledged-but-unindexed mechanics, read by check_keywords.py)
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format, and **nests variant decks under their core** — a core deck's same-format variants render as an always-visible `↳ Variants (N)` strip inside its card (id + name + build-status per row, click opens the variant's modal), so they're clearly grouped yet never hidden; searching a variant still surfaces it as its own card, and a cross-format variant (e.g. `3-brawl`) stays standalone in its own format shelf (families are built per shelf). The page is **mobile-responsive** (single-column grids, wide data tables scroll in-box, a horizontally-scrollable section-nav) and uses **progressive disclosure**: every section collapses — the utility ones (card finder / stale-check / recently-edited / rotation) default CLOSED — a sticky **section-nav strip** jumps to and auto-expands a section with a scroll-spy highlight, and the long lists (wishlist tiers, crafting leverage) cap at ~12 rows with a *show all* toggle while the roster-triage table defaults to the ACTIONABLE decks (the page analog of `deck.py audit --flagged`). The **wishlist** filters by free text (card/target/signal) AND by **wildcard rarity** (M/R/U/C chips, multi-select, mirroring `wishlist.py --rarity`). All of this is template-only (the `#data` island is untouched) and persists in `localStorage`.
 - Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _cuts_uniq_adj, distinctiveness_score (tag-rarity, tribe/evergreen-excluded), structural_distinctiveness (oracle-text-shape rescue), card_distinctiveness (max-combine), _creature_subtypes, _land_synergy_bonus / _land_shortfall_bonus (bounded manabase-recommender nudges), _accel_want / _ramp_restriction_fit / _int_scaling / _int_scaling_boost (needs-model signals), _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), fit_strength (specific-theme-gated KEY + broad-tribe demotion), _home_curve_fit (bounded suggest-homes curve nudge), _central_themes (mechanical sub-theme floor-2 admission), _theme_cosine (generic-damped deck-similarity), import_arena, tags_for (incl. the toughness-matters / noncombat-damage / spell-copy / tribal-payoff mechanical-synergy tags)), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/

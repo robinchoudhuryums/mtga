@@ -16,17 +16,25 @@ mechanics) do **not** block, but note any that are new.
 ## 2. Commit with the required trailer
 
 Stage only the files the skill actually changed. Write a clear, specific message
-(what changed and why), and end **every** commit with exactly these two trailer
-lines:
+(what changed and why), and end **every** commit with the two trailer lines the
+**CURRENT session** supplies — its co-author line and its own session URL:
 
 ```
-Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_017XhPAKK9NnBZes71C5FJTB
+Co-Authored-By: <the co-author line this session was given> <noreply@anthropic.com>
+Claude-Session: <this session's claude.ai/code URL>
 ```
+
+**Take both values from the session you are running in — never copy a literal URL
+out of this file.** This document used to hardcode one session's trailer and tell
+you to paste it "verbatim", so every commit any skill produced carried a link to
+an unrelated, long-finished session (broad-scan F-08). The trailer's whole purpose
+is to make a commit traceable back to the conversation that produced it; a
+copied-forward URL silently defeats that.
 
 **Never** put the model identifier (the `claude-…` model ID) in the commit
 message, code comments, deck files, or any other pushed artifact — it belongs in
-chat only.
+chat only. (The co-author line's display name is not the model ID; use whatever
+the session specifies.)
 
 ## 3. Push to the working branch
 

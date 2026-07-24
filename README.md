@@ -100,9 +100,17 @@ has been built — **Scryfall's authoritative keyword list** mapped to
 deck-building themes (Surveil → `surveil; graveyard`, Convoke → `convoke;
 go-wide; ramp`, Escape → `graveyard; recursion`, …). Using Scryfall's per-card
 keywords means real-keyword coverage is complete and maintained, not a hand-kept
-list; a small `FLAVOR_KEYWORDS` denylist drops Universe-Beyond flavor ability
-names (Firaga, Wave Cannon, …) that Scryfall also reports as keywords, so they
-don't pollute the tags. Fills only blank cells by default; **`--merge`** adds
+list; a `FLAVOR_KEYWORDS` denylist drops card-*unique* Universe-Beyond flavor
+ability names (Firaga, Wave Cannon, and the Marvel signature moves — Trick Arrows,
+Radar Sense, Technopathy, …) that Scryfall also reports as keywords, so they don't
+pollute the tags. The denylist is guarded in both directions: `check_keywords.py`
+flags a new set's keyword that isn't indexed yet, and its `flavor_overreach()`
+flags a denylisted word that shows up on several cards — i.e. a *real* mechanic
+being suppressed. A recurring mechanic that just isn't themed yet (Vivid, Opus,
+Jump, …) belongs in `scripts/keyword_baseline.txt`, not the denylist.
+Note the writer emits only the canonical 8 library columns, so point it at
+`card-library.csv` only — it refuses any other CSV; refresh the pool's tags with
+`build_pool.py --all`. Fills only blank cells by default; **`--merge`** adds
 newly-derived tags to non-blank cells while KEEPING existing/hand-curated ones (the
 safe refresh mode), and `--force` REPLACES every cell (use it only for a deliberate
 destructive regenerate). It also warns when `card-mana.csv` is older than the
@@ -797,7 +805,9 @@ Import applies Sheets' own formula parsing, which this RAW guard can't cover.)
 
 `python3 scripts/check_all.py` is the project's integrity gate — it verifies the
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
-derived files present, decks parse) plus six **model-sanity checks** that keep the
+derived files present **and still carrying their own columns** — a pool that lost
+its `Rarity`/`Legalities` is a hard failure, not a silent degrade — decks parse)
+plus six **model-sanity checks** that keep the
 grading/ranking models from silently drifting: the **ranking model**
 (`check_rankings.py`), **color parsing** (`check_colors.py` — also a static scan
 banning the naive inline `WUBRG` parse outside `lib.py`), the **DFC ownership-join**

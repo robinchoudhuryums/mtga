@@ -301,8 +301,14 @@ def collect():
 
 # --------------------------------------------------------------------------- #
 # Rendering — a single self-contained page. Data is embedded as JSON and drawn
-# client-side; all card text goes into the DOM via textContent, so no field can
-# inject markup. "<" in the JSON is escaped so it can't close the <script> block.
+# client-side. Two DIFFERENT escaping rules apply, and the difference matters:
+#   * `el(tag, cls, txt)` and `preOf()` set .textContent — inherently inject-proof.
+#   * the ~30 `innerHTML` sites build markup by concatenation, so every interpolated
+#     value MUST go through `esc()` (escapes & < > "), including inside a quoted
+#     attribute. That is the rule to keep when editing them; this comment used to
+#     claim the page was textContent-only, which would have made an unescaped
+#     `innerHTML` interpolation look safe (broad-scan F-15).
+# "<" in the JSON is escaped so it can't close the <script> block.
 # --------------------------------------------------------------------------- #
 TEMPLATE = r"""<!DOCTYPE html>
 <html lang="en">
