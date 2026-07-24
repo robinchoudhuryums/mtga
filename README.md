@@ -326,6 +326,7 @@ python3 scripts/deck.py consistency 1a # opening-hand keepable %, land drops, P(
 python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
 python3 scripts/deck.py engines 1a    # enabler ↔ payoff balance for the deck's engine themes
 python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
+python3 scripts/deck.py suggest 1a --lands --owned  # MANABASE recommender: owned lands that fix your colors (fixing + synergy + scarce-color nudges)
 python3 scripts/deck.py legal 1a      # construction lint: deck size, copy limits, format legality
 python3 scripts/deck.py cuts 1a       # rank the deck's weakest-fit cards as cut candidates
 python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~ lines)

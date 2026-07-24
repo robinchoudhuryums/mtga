@@ -215,6 +215,33 @@ def check():
         errs.append("card_distinctiveness: structural must only ever RAISE (max), never lower, "
                     "the tag-only score.")
 
+    # (9) `suggest --lands` co-signals: the SYNERGY and SHORTFALL nudges must stay BOUNDED and
+    #     non-negative, so a land is chosen for FIXING first and the ability/scarcity terms
+    #     only re-rank near-ties (fixing is 0–10; these caps are ≤2). A land sharing nothing /
+    #     producing no scarce color reads 0.
+    lsb = deck._land_synergy_bonus
+    lfb = deck._land_shortfall_bonus
+    themes = {"equipment": 17, "counters": 3, "pump": 15}
+    if lsb([], themes) != 0.0 or lsb(["counters"], {}) != 0.0:
+        errs.append("_land_synergy_bonus must be 0 with no tags or no themes.")
+    if not all(0.0 <= lsb(t, themes) <= deck._LAND_SYN_CAP
+               for t in ([], ["counters"], ["equipment"], ["equipment", "pump"])):
+        errs.append(f"_land_synergy_bonus escapes [0, {deck._LAND_SYN_CAP}].")
+    if not (lsb(["equipment"], themes) > lsb(["counters"], themes)):
+        errs.append("_land_synergy_bonus: a land on the deck's TOP theme must beat one on a "
+                    "minor theme.")
+    deficit = {"W": 0.30, "R": 0.05}
+    if not all(0.0 <= lfb(c, deficit) <= deck._LAND_SHORT_CAP
+               for c in ([], ["W"], ["R"], ["W", "R"])):
+        errs.append(f"_land_shortfall_bonus escapes [0, {deck._LAND_SHORT_CAP}].")
+    if not (lfb(["W"], deficit) > lfb(["R"], deficit)):
+        errs.append("_land_shortfall_bonus: producing the SCARCER color (W) must beat the "
+                    "well-served one (R).")
+    if lfb(["W"], {}) != 0.0 or lfb(["W"], {"W": 0.0, "R": 0.0}) != 0.0:
+        errs.append("_land_shortfall_bonus must be 0 when nothing is scarce.")
+    if deck._LAND_SYN_CAP > 3.0 or deck._LAND_SHORT_CAP > 3.0:
+        errs.append("land co-signal caps too large: fixing (0–10) must stay dominant.")
+
     return errs
 
 

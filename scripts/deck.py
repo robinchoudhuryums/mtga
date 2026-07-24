@@ -1044,6 +1044,43 @@ def _cuts_uniq_adj(uniq):
     return max(-_CUTS_UNIQ_CAP, min(_CUTS_UNIQ_CAP, adj))
 
 
+# `suggest --lands` co-signals. A land's dominant value is FIXING (wishlist._land_value,
+# 0–10), but a land's ABILITY can also play the deck (Abandoned Air Temple's team-pump in a
+# go-wide deck, Fire Nation Palace's firebending ramp) — so a bounded SYNERGY term lifts a
+# land whose text matches the deck's central themes, and a bounded SHORTFALL term favors a
+# land producing the color the deck is scarcest on. Both are CAPPED so fixing stays dominant
+# (a land is chosen for its mana first) — guarded by check_suggest anchor 9.
+_LAND_SYN_CAP = 2.0
+_LAND_SHORT_CAP = 1.5
+
+
+def _land_synergy_bonus(land_tags, theme_w):
+    """Bounded [0, _LAND_SYN_CAP] nudge: a land whose synergy tags hit the deck's central
+    themes ranks above a vanilla dual. Scaled by the land's STRONGEST shared theme relative
+    to the deck's top theme, so a land on the deck's spine gets the full cap and an incidental
+    overlap gets little. 0 when the land shares nothing (a plain dual) — fixing then decides."""
+    if not theme_w or not land_tags:
+        return 0.0
+    shared = [theme_w[t] for t in land_tags if t in theme_w]
+    if not shared:
+        return 0.0
+    mx = max(theme_w.values()) or 1
+    return round(min(_LAND_SYN_CAP, _LAND_SYN_CAP * (max(shared) / mx)), 2)
+
+
+def _land_shortfall_bonus(land_colors, deficit):
+    """Bounded [0, _LAND_SHORT_CAP] nudge toward the color the deck is SHORTEST on. `deficit`
+    is {color: >=0 scarcity} (pip-demand share minus source share); a land producing the
+    scarcest color it covers gets the most. 0 when it produces no under-served color."""
+    if not deficit or not land_colors:
+        return 0.0
+    mx = max(deficit.values()) or 0.0
+    if mx <= 0:
+        return 0.0
+    best = max((deficit.get(c, 0.0) for c in land_colors), default=0.0)
+    return round(min(_LAND_SHORT_CAP, _LAND_SHORT_CAP * best / mx), 2)
+
+
 _power_seed_warned = False  # one-time guard for the A14 degradation warning
 
 
@@ -2130,6 +2167,161 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
     return res
 
 
+def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=False):
+    """Recommend LANDS for a deck's manabase — the axis theme-based `suggest` is blind to
+    (it filters candidates to cards sharing a synergy theme, and lands rarely do, so it can
+    never surface a manabase upgrade). Scores each on-color land by FIXING value
+    (`wishlist._land_value`: produces the deck's colors, untapped premium — the DOMINANT
+    axis) PLUS a bounded SYNERGY nudge (a land whose ability plays the deck's central themes
+    — Air Temple's team-pump in a go-wide deck) and a bounded SHORTFALL nudge (favor the
+    color the deck is scarcest on, from pip-demand vs current sources)."""
+    import wishlist
+    meta = load_card_meta()
+    dmeta, cards = parse_deck_file(d["path"])
+    mana_map = load_mana()
+    carddata = load_card_data()
+
+    deck_colors = _declared_colors(dmeta)
+    if not deck_colors:
+        for _q, n, _s, _c in cards:
+            if n.lower() in BASICS:
+                continue
+            m = meta.get(n.lower())
+            if m:
+                deck_colors |= (m["colors"] & set("WUBRG"))
+
+    # central themes (for the synergy nudge) + names already in the deck
+    theme_w, deck_names = {}, set()
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        deck_names.add(nl.split(" // ")[0])
+        if nl in BASICS:
+            continue
+        m = meta.get(nl)
+        if m:
+            for t in m["synergies"]:
+                theme_w[t] = theme_w.get(t, 0) + q
+    central = _central_themes(theme_w)
+    central_w = {t: theme_w[t] for t in central}
+
+    # current color sources (lands) + strict pip demand -> per-color scarcity (deficit)
+    sources = {c: 0 for c in deck_colors}
+    demand = {c: 0 for c in deck_colors}
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            col = BASIC_COLOR.get(nl)
+            if col in sources:
+                sources[col] += q
+            continue
+        cd = carddata.get(nl)
+        if "Land" in _primary_type((cd["type"] if cd else "") or ""):
+            m = meta.get(nl)
+            for col in (m["colors"] if m else set()):
+                if col in sources:
+                    sources[col] += q
+            continue
+        entry = mana_map.get(nl)
+        if entry and entry[0]:
+            strict, _hy = parse_pips(entry[0])
+            for col, cnt in strict.items():
+                if col in demand:
+                    demand[col] += cnt * q
+    tot_d = sum(demand.values()) or 1
+    tot_s = sum(sources.values()) or 1
+    deficit = {c: max(0.0, demand[c] / tot_d - sources[c] / tot_s) for c in deck_colors}
+
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        pool = list(csv.DictReader(fh))
+    has_leg = bool(pool) and "Legalities" in pool[0]
+    apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
+    _, _, by_name_qty = load_collection()
+    owned_of = lambda nl: owned_qty(by_name_qty, nl)
+
+    picks = []
+    for r in pool:
+        name = (r.get("Card Name") or "").strip()
+        nl = name.lower()
+        if not name or nl.split(" // ")[0] in deck_names or nl in BASICS:
+            continue
+        if "land" not in (r.get("Type") or "").lower():
+            continue
+        if apply_fmt and fmt not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
+            continue
+        prod = card_colors(r.get("Color(s)"))
+        txt = (r.get("Card Text") or "")
+        for c in "WUBRG":
+            if "{" + c + "}" in txt:
+                prod.add(c)
+        on_color = prod & deck_colors
+        if not on_color:
+            continue  # off-color / colorless-only: doesn't fix THIS deck's manabase
+        h = owned_of(nl)
+        if unowned and h > 0:
+            continue
+        if owned and h == 0:
+            continue
+        fix = wishlist._land_value(r, deck_colors)
+        tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
+        syn = _land_synergy_bonus(tags, central_w)
+        short = _land_shortfall_bonus(on_color, deficit)
+        tapped = ("enters tapped" in txt.lower()
+                  or "enters the battlefield tapped" in txt.lower())
+        picks.append({
+            "name": name, "rarity": (r.get("Rarity") or "").strip(), "owned": h,
+            "fix": fix, "syn": syn, "short": short, "score": round(fix + syn + short, 2),
+            "produces": "".join(c for c in "WUBRG" if c in on_color),
+            "tapped": tapped, "text": txt, "matches": sorted(set(tags) & central),
+        })
+    picks.sort(key=lambda p: (-p["score"], -min(p["owned"], 1), p["name"].lower()))
+    if limit and limit > 0:
+        picks = picks[:limit]
+    return {"ok": True, "colors": deck_colors, "picks": picks, "fmt": fmt,
+            "apply_fmt": apply_fmt, "has_leg": has_leg, "sources": sources, "deficit": deficit}
+
+
+def cmd_suggest_lands(args, d):
+    """Render suggest_lands (the manabase recommender)."""
+    res = suggest_lands(d, unowned=args.unowned, owned=getattr(args, "owned", False),
+                        limit=args.limit, fmt=getattr(args, "fmt", None),
+                        any_format=getattr(args, "any_format", False))
+    dc = res["colors"]
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — LAND suggestions (manabase)\n")
+    print("Colors: " + ("/".join(sorted(dc)) or "Colorless") + "  ·  current sources: "
+          + ", ".join(f"{c} {res['sources'].get(c, 0)}" for c in sorted(dc)))
+    scarce = sorted(res["deficit"].items(), key=lambda kv: -kv[1])
+    if scarce and scarce[0][1] > 0:
+        print(f"Scarcest color (strict pip-demand vs sources): {scarce[0][0]} "
+              "— lands producing it get the shortfall nudge.")
+    if res["apply_fmt"]:
+        print(f"Format: {res['fmt']}-legal only  (override with --format / --any-format)")
+    if not res["picks"]:
+        print("\nNo on-color lands to suggest (rebuild card-pool.csv with build_pool.py --all?).")
+        return 0
+    print(f"\n  {'Have':5} {'Land':30} {'Rarity':8} {'Prod':4} {'Fix':>4} {'Syn':>4} "
+          f"{'Sh':>4} {'Score':>5}")
+    print("-" * 78)
+    for p in res["picks"]:
+        have = f"×{p['owned']}" if p["owned"] else "craft"
+        tap = " ·tapped" if p["tapped"] else ""
+        print(f"  {have:5} {p['name'][:30]:30} {(p['rarity'] or '?')[:8]:8} "
+              f"{p['produces']:4} {p['fix']:>4.1f} {p['syn']:>4.1f} {p['short']:>4.1f} "
+              f"{p['score']:>5.1f}{tap}")
+    if getattr(args, "full", False):
+        import textwrap
+        print("\n── Oracle text of the top picks (grade the ability, not just the fixing) ──")
+        for p in res["picks"][:min(8, len(res["picks"]))]:
+            print(f"\n• {p['name']}"
+                  + (f"   synergy: {', '.join(p['matches'])}" if p["matches"] else ""))
+            for para in (p["text"] or "(no oracle text)").split("\n"):
+                for line in (textwrap.wrap(para, width=86) or [""]):
+                    print(f"    {line}")
+    print("\nScore = FIXING value (0–10, dominant: produces your colors, untapped premium) "
+          "+ bounded SYNERGY (land ability hits a deck theme) + bounded SHORTFALL (produces "
+          "the scarce color). Owned first — a 0-wildcard fixer usually beats a craft.")
+    return 0
+
+
 def cmd_suggest(args):
     """Recommend pool cards that fit a deck's color identity and synergy themes.
 
@@ -2138,6 +2330,7 @@ def cmd_suggest(args):
     colors, and flags owned vs. craftable with wildcard rarity. Composes
     card-pool.csv + the synergy tags + tribes-style theme matching. Rendering only —
     the scoring lives in suggest_scored() so the dashboard shares it verbatim.
+    With --lands, defers to the manabase recommender (cmd_suggest_lands) instead.
     """
     d = find_deck(args.id)
     if not d:
@@ -2146,6 +2339,8 @@ def cmd_suggest(args):
     if not os.path.exists(POOL_CSV):
         eprint("No card-pool.csv. Build it: python3 scripts/build_pool.py")
         return 1
+    if getattr(args, "lands", False):
+        return cmd_suggest_lands(args, d)
 
     res = suggest_scored(d, unowned=args.unowned, owned=getattr(args, "owned", False),
                          limit=args.limit, fmt=getattr(args, "fmt", None),
@@ -4944,6 +5139,9 @@ def main():
     p.add_argument("--full", action="store_true",
                    help="also print full oracle text + keywords/flags of the picks "
                         "(grade adds from text, not the tag-match line)")
+    p.add_argument("--lands", action="store_true",
+                   help="recommend LANDS for the manabase (fixing value + a bounded "
+                        "synergy/shortfall nudge) — the axis theme-based suggest is blind to")
     g = p.add_mutually_exclusive_group()
     g.add_argument("--unowned", action="store_true", help="only craftable suggestions")
     g.add_argument("--owned", action="store_true",

@@ -253,6 +253,43 @@ class TestCutsUniqAdj:
         assert deck._CUTS_UNIQ_CAP <= 3.0
 
 
+class TestLandSuggestBonuses:
+    """The bounded synergy + shortfall co-signals of the manabase recommender."""
+    THEMES = {"equipment": 17, "counters": 3, "pump": 15}
+    DEFICIT = {"W": 0.30, "R": 0.05}
+
+    def test_synergy_zero_without_overlap(self):
+        assert deck._land_synergy_bonus([], self.THEMES) == 0.0
+        assert deck._land_synergy_bonus(["landfall"], self.THEMES) == 0.0
+        assert deck._land_synergy_bonus(["counters"], {}) == 0.0
+
+    def test_synergy_bounded_and_scaled(self):
+        for tags in ([], ["counters"], ["equipment"], ["equipment", "pump"]):
+            assert 0.0 <= deck._land_synergy_bonus(tags, self.THEMES) <= deck._LAND_SYN_CAP
+        # a land on the deck's TOP theme beats one on a minor theme
+        assert (deck._land_synergy_bonus(["equipment"], self.THEMES)
+                > deck._land_synergy_bonus(["counters"], self.THEMES))
+
+    def test_shortfall_bounded(self):
+        for cols in ([], ["W"], ["R"], ["W", "R"]):
+            assert 0.0 <= deck._land_shortfall_bonus(cols, self.DEFICIT) <= deck._LAND_SHORT_CAP
+
+    def test_shortfall_favors_scarce_color(self):
+        assert (deck._land_shortfall_bonus(["W"], self.DEFICIT)
+                > deck._land_shortfall_bonus(["R"], self.DEFICIT))
+        # a land covering the scarce color scores == the scarce single, via max()
+        assert (deck._land_shortfall_bonus(["W", "R"], self.DEFICIT)
+                == deck._land_shortfall_bonus(["W"], self.DEFICIT))
+
+    def test_shortfall_zero_when_nothing_scarce(self):
+        assert deck._land_shortfall_bonus(["W"], {}) == 0.0
+        assert deck._land_shortfall_bonus(["W"], {"W": 0.0, "R": 0.0}) == 0.0
+
+    def test_caps_keep_fixing_dominant(self):
+        # Both nudges must be small next to the 0–10 fixing axis.
+        assert deck._LAND_SYN_CAP <= 3.0 and deck._LAND_SHORT_CAP <= 3.0
+
+
 class TestProducesMana:
     """The broad mana-source detector behind the tier tune plan's ramp-loss flag —
     catches dorks the 'Ramp / fixing' role misses (the 'add one mana' phrasing)."""
