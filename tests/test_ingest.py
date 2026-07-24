@@ -89,11 +89,30 @@ class TestTagsFor:
             "assigns combat damage equal to its toughness rather than its power."}, [])
         assert "toughness matters" in tags
 
-    def test_noncombat_damage_tag(self):
+    def test_noncombat_damage_tag_amplifier(self):
         tags = ts.tags_for({"Type": "Creature", "Card Text":
             "If a source you control would deal noncombat damage to an opponent, "
             "instead it deals that much damage plus 2."}, [])
         assert "noncombat damage" in tags
+
+    def test_noncombat_damage_tag_repeatable_pinger(self):
+        # A pinger PERMANENT (deals ability damage to opponents) reaches the theme.
+        tags = ts.tags_for({"Type": "Creature — Human Wizard", "Card Text":
+            "Whenever you cast a noncreature spell, this creature deals 1 damage "
+            "to each opponent."}, [])
+        assert "noncombat damage" in tags
+
+    def test_noncombat_damage_excludes_burn_spell(self):
+        # A one-shot burn SPELL must NOT get the theme (else 2 burn spells fake a
+        # ping deck); it's already covered by the "burn" tag.
+        tags = ts.tags_for({"Type": "Instant", "Card Text":
+            "Lightning Strike deals 3 damage to any target."}, [])
+        assert "noncombat damage" not in tags
+
+    def test_noncombat_damage_excludes_combat_trigger(self):
+        tags = ts.tags_for({"Type": "Creature — Beast", "Card Text":
+            "Whenever this creature deals combat damage to a player, draw a card."}, [])
+        assert "noncombat damage" not in tags
 
     def test_spell_copy_tag(self):
         tags = ts.tags_for({"Type": "Artifact", "Card Text":

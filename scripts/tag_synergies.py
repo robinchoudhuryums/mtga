@@ -222,11 +222,18 @@ MECHANIC_RULES = [
     ("toughness matters", lambda t, x: re.search(
         r"damage equal to its toughness|toughness rather than (its )?power|"
         r"assigns? combat damage equal to (its|their) toughness", x) is not None),
-    # Noncombat-damage payoff/amplifier: "noncombat damage" is a precise phrase — the
-    # amplifiers (Hawkeye, Ojer Axonil) and the "whenever a source you control deals
-    # noncombat damage" draw engine all carry it, so a ping deck's payoffs share a theme
-    # the raw one-shot "burn" tag couldn't tie together.
-    ("noncombat damage", lambda t, x: "noncombat damage" in x),
+    # Noncombat-damage payoff/amplifier + repeatable PINGERS. The literal phrase catches
+    # the amplifiers (Hawkeye, Ojer Axonil) and the "whenever a source you control deals
+    # noncombat damage" draw engine. The second clause tags a repeatable pinger — a
+    # PERMANENT (not a one-shot instant/sorcery burn spell) whose ability deals damage to a
+    # player / any target / each opponent — so a ping-ENGINE deck reaches critical mass on
+    # the theme and its amplifiers read KEY, WITHOUT a couple of burn SPELLS faking the
+    # theme into any aggressive deck. Combat-damage triggers ("deals combat damage to a
+    # player") don't match: "a player" isn't one of the targeted phrases.
+    ("noncombat damage", lambda t, x: "noncombat damage" in x or (
+        "instant" not in t and "sorcery" not in t and re.search(
+            r"deals?\b[^.]{0,40}\bdamage to (any target|each opponent|target player|"
+            r"target opponent|that player|each of (your opponents|them))", x) is not None)),
     # Spell-copy: a mana source / effect that copies an instant or sorcery — a
     # spellslinger payoff (Pyromancer's Goggles) that carried only a "mana" tag before.
     ("spell copy", lambda t, x: "copy that spell" in x

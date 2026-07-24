@@ -682,8 +682,12 @@ castability · curve · central-theme density), with the intangibles moving a de
   card's own keywords/subtypes but not what its TEXT rewards: **`toughness matters`**
   ("assigns/deals combat damage equal to its toughness", Doran-style — Bark of Doran +
   Kingpin, so a toughness-swap payoff isn't a bare `equipment/pump` body); **`noncombat
-  damage`** (the precise phrase — Hawkeye/Ojer Axonil amplifiers + the "whenever a source
-  deals noncombat damage" draw engine); **`spell copy`** (Pyromancer's Goggles); and a
+  damage`** (the literal phrase — Hawkeye/Ojer Axonil amplifiers + the "whenever a source
+  deals noncombat damage" draw engine — PLUS a repeatable **pinger**: a PERMANENT, not a
+  one-shot instant/sorcery burn spell, whose ability deals damage to a player / any target
+  / each opponent, so a ping-ENGINE deck reaches critical mass on the theme while a couple
+  of burn SPELLS can't fake it into any aggressive deck; combat-damage triggers excluded);
+  **`spell copy`** (Pyromancer's Goggles); and a
   **tribal-matters PAYOFF** tag — a lord/tutor gets the creature TYPE it rewards even when
   it isn't that type itself ("Dinosaurs you control" / "search for a Dinosaur card" →
   `Dinosaur`, so Huatli reads KEY in a Dino deck, not role-player). The tribal scan runs on
