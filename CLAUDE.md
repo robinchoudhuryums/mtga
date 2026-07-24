@@ -543,6 +543,25 @@ castability · curve · central-theme density), with the intangibles moving a de
   duals); `--unowned` ranks craft targets (untapped premium duals first); `--full` prints the
   land's oracle text so you grade the ability, not just the fixing. It excludes lands already
   in the deck and off-color/colorless-only lands (they don't fix THIS deck).
+- **`deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural
+  axes theme-`suggest` is blind to.** The theme model answers "what SYNERGIZES"; a mana dork,
+  a fixer, or a board-dependent removal spell fills a STRUCTURAL need (fixing / acceleration /
+  interaction) it can't see — so these opt-in modes score against a shared **`deck_needs(d)`**
+  profile (per-color source deficit, curve top-heaviness → accel-want, interaction count vs
+  target) instead of themes. Never weaken the gated theme filter to surface them (the idf model
+  was BUILT to reject catch-alls); add a parallel path. **`--ramp`** ranks repeatable mana
+  sources (dorks/rocks; instants/sorceries excluded as one-shot rituals) by CHEAPNESS × the
+  deck's accel-want (a cheap dork ramps a top-heavy deck; a 2-color deck's fixing is nearly
+  solved, so fixing is only the bounded scarce-color bonus) + **restriction-fit** (a restricted
+  dork — "add R only for Equipment spells" — is boosted in a matching deck, penalized in a
+  mismatched one; `_ramp_restriction_fit`) + a power tiebreak — surfaces Purple Dragon Punks
+  atop deck 39. **`--interaction`** surfaces removal INCLUDING off-theme (the fix — theme-suggest
+  filters it out), ranked by power + a bounded **scaling boost** for a board-dependent spell the
+  deck supports (`_int_scaling` detects fight / "damage = N you control" / X-cost; `_scaling_
+  metric` reads the deck's strength on that axis) and FLAGS it `⚠ scales w/ <axis>` for a human
+  read — never a silent boost (the honest stance for a fuzzy signal). **`--needs`** is the
+  one-stop view composing all three (fixing · acceleration · interaction). All nudges bounded,
+  gated by `check_suggest` anchor 10.
 - **`deck.py cuts` folds a card-QUALITY (power) co-signal into the ranking (#3).** Theme
   fit alone can't tell a vanilla body from a bomb that share one tag, so cuts blends the
   wishlist's rarity+role **Power** estimate into the keep-score: an on-theme-but-WEAK card
@@ -694,7 +713,9 @@ which also proves the tag-rarity metric reads a vanilla card as ~0 and a rare me
 above a generic one, AND that the structural-text signal reads vanilla/plain-ETB/bare-mana
 low while rescuing an unusual trigger, `card_distinctiveness` taking the max so structural
 only ever raises), and the `suggest --lands` synergy + shortfall nudges stay bounded/
-non-negative and fixing-dominant, favoring the deck's top theme / scarcest color (anchor 9);
+non-negative and fixing-dominant, favoring the deck's top theme / scarcest color (anchor 9),
+and the NEEDS-model nudges (`--ramp` accel-want / restriction-fit, `--interaction` scaling
+boost) stay bounded/rising-with-support (anchor 10);
 **engine classifier** (`check_engines.py`) anchors the enabler/
 payoff detection on canonical cards (#3); **tier floor** (`check_tier.py`) proves
 the archetype-aware floor grades non-aggro decks identically to before and only
@@ -734,7 +755,7 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format. The page is **mobile-responsive** (single-column grids, wide data tables scroll in-box, a horizontally-scrollable section-nav) and uses **progressive disclosure**: every section collapses — the utility ones (card finder / stale-check / recently-edited / rotation) default CLOSED — a sticky **section-nav strip** jumps to and auto-expands a section with a scroll-spy highlight, and the long lists (wishlist tiers, crafting leverage) cap at ~12 rows with a *show all* toggle while the roster-triage table defaults to the ACTIONABLE decks (the page analog of `deck.py audit --flagged`). The **wishlist** filters by free text (card/target/signal) AND by **wildcard rarity** (M/R/U/C chips, multi-select, mirroring `wishlist.py --rarity`). All of this is template-only (the `#data` island is untouched) and persists in `localStorage`.
-- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _cuts_uniq_adj, distinctiveness_score (tag-rarity, tribe/evergreen-excluded), structural_distinctiveness (oracle-text-shape rescue), card_distinctiveness (max-combine), _creature_subtypes, _land_synergy_bonus / _land_shortfall_bonus (bounded manabase-recommender nudges), _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), fit_strength (specific-theme-gated KEY), import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
+- Testing: tests/ (pytest unit layer over the pure helpers — card_colors, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _cuts_uniq_adj, distinctiveness_score (tag-rarity, tribe/evergreen-excluded), structural_distinctiveness (oracle-text-shape rescue), card_distinctiveness (max-combine), _creature_subtypes, _land_synergy_bonus / _land_shortfall_bonus (bounded manabase-recommender nudges), _accel_want / _ramp_restriction_fit / _int_scaling / _int_scaling_boost (needs-model signals), _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), fit_strength (specific-theme-gated KEY), import_arena, tags_for), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/
 
 **Invariant Library:**
