@@ -58,3 +58,6 @@ Deck
 2 Avengers Tower (MSH) 260
 1 Surveillance Room (MSH) 274
 1 Urban Retreat (SPM) 187
+
+# Flex — options (comments; not part of the 60). See: deck.py flex 23
+#~ -Captain America's Shield | +Archangel of Tithes | CRAFT (M, OTJ ⚠rot-soon): {1}{W}{W} flyer whose tax (opponents pay {1} per attacker vs you / per blocker of your attack) protects you AND pushes a wide Human/Hero board through. Cut the single-target defensive equipment; keeps bodies for the tax. One copy also serves deck 3.

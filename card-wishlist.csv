@@ -47,8 +47,6 @@ Dubious Delicacy,Artifact — Food,"Flash
 When this artifact enters, up to one target creature gets -3/-3 until end of turn.
 {2}, {T}, Sacrifice this artifact: You gain 3 life.
 {2}, {T}, Sacrifice this artifact: Target opponent loses 3 life.",B,Food; lifegain; sacrifice; etb; removal; flash; tempo,EOE,96,Uncommon,21; 20,,4.5
-Honored Knight-Captain,Creature — Human Advisor Knight,"When this creature enters, create a 1/1 white Human Soldier creature token.
-{4}{W}{W}, Sacrifice this creature: Search your library for an Equipment card, put it onto the battlefield, then shuffle.",W,Human; Advisor; Knight; sacrifice; tokens; etb,EOE,22,Uncommon,38,,2.0
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",W,Human; Knight; sacrifice; tokens; ramp; etb; landfall; pump; lands,EOE,41,Uncommon,36,,3.0
 "Ajani, Caller of the Pride",Legendary Planeswalker — Ajani,"+1: Put a +1/+1 counter on up to one target creature.
@@ -184,6 +182,9 @@ Double strike
 Prevent all damage that would be dealt to Black Panther.
 Whenever Black Panther deals combat damage to a player, draw a card.",W/U,Human; Noble; Hero; Warrior; card draw; transform; double strike; combat; aggro; flash; tempo,MSH,219,Mythic,19,"best 19 (Bird Brain); also 15,17,16",7.5
 Vision Quest,Sorcery,"Search your library and/or graveyard for an artifact creature card with mana value X or less and put it onto the battlefield with X additional +1/+1 counters on it. If X is 4 or greater, it gains haste until end of turn. If you search your library this way, shuffle.",U/R,counters; reanimator; graveyard,MSH,237,Rare,general,UR artifact-creature cheat/reanimator — wants a dedicated artifacts shell,5.5
+Archangel of Tithes,Creature — Angel,"Flying
+As long as this creature is untapped, creatures can't attack you or planeswalkers you control unless their controller pays {1} for each of those creatures.
+As long as this creature is attacking, creatures can't block unless their controller pays {1} for each of those creatures.",W,Angel; flying; evasion,OTJ,2,Mythic,3,"Go-wide tax (protects you + pushes a wide board through); also fits deck 23 — one copy serves both. Mythic craft, OTJ rotation-soon.",6.5
 Blooming Marsh,Land,"This land enters tapped unless you control two or fewer other lands.
 {T}: Add {B} or {G}.",B/G,mana,OTJ,266,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6
 Concealed Courtyard,Land,"This land enters tapped unless you control two or fewer other lands.

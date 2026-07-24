@@ -493,11 +493,15 @@ it scans every deck for the ones where the card is *castable* and shares a
 *central* theme, and tags each fit with a **strength** label: **KEY** (shares the
 deck's *signature* theme, OR shares a **specific** non-generic theme AND fills an
 interaction / card-advantage gap the deck is short on), **role-player** (a secondary
-specific theme), or **tangential** (only generic overlap — etb/tokens/lifegain/…).
+specific theme), or **tangential** (only generic overlap — etb/tokens/lifegain/…,
+or a broad background tribe like Human/Hero/Villain, which carry no home signal).
 The role-gap KEY is gated on a specific-theme match, so a generically-good removal
 or card-advantage card no longer reads KEY in every low-interaction deck it merely
 shares an etb/tokens tag with — its broad utility shows up in the wishlist `--rank`
-`use` (breadth) column instead. A **rainbow mana fixer** (one that
+`use` (breadth) column instead. Fits are scoped to decks where the card is **legal
+in that deck's `#: format:`** (`--any-format` to disable), the card name resolves
+like `card.py` (exact → DFC front → unique substring), and a bounded curve nudge
+flags a top-heavy / win-more card as `⚠ top-heavy for this curve` in a low-curve deck. A **rainbow mana fixer** (one that
 makes an any-color land or gives lands every basic land type) gets a color-count
 overlay — it reads KEY in a 4+-color deck and role-player in a 3-color one — since
 its fixing value scales with the deck's colors, which theme overlap alone can't see.

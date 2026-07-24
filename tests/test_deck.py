@@ -383,6 +383,72 @@ class TestFitStrength:
     def test_generic_only_no_gap_is_tangential(self):
         assert deck.fit_strength(["tokens"], {"tokens": 10}, "", 8, 8) == "tangential"
 
+    # --- broad background tribes never mint a KEY by themselves (tagging-misreads #4) ---
+    def test_broad_tribe_top_theme_is_not_key(self):
+        # Hawkeye sharing only Human/Hero with a mono-Human deck must NOT read KEY even
+        # though Human is the deck's most-common theme (the KEY-in-every-Hero-deck fix).
+        assert deck.fit_strength(["Human", "Hero"], {"Human": 19, "Hero": 15},
+                                 "", 8, 8) == "tangential"
+
+    def test_broad_tribe_not_key_via_signature(self):
+        # A broad tribe can't mint KEY even when a protected card carries it.
+        assert deck.fit_strength(["Human"], {"Human": 19}, "", 8, 8,
+                                 signature={"Human"}) == "tangential"
+
+    def test_broad_tribe_plus_role_gap_is_not_key(self):
+        # A removal card sharing only a broad tribe stays out of KEY on a low-int deck.
+        assert deck.fit_strength(["Human"], {"Human": 19}, "Destroy target creature.",
+                                 deck_int=2, deck_ca=0) == "tangential"
+
+    def test_narrow_tribe_still_key(self):
+        # Narrow, build-around tribes remain real signals.
+        assert deck.fit_strength(["Ninja"], {"Ninja": 10}, "", 8, 8) == "KEY"
+
+    def test_specific_theme_survives_alongside_broad_tribe(self):
+        # A card sharing a broad tribe AND a specific theme is graded on the specific one.
+        assert deck.fit_strength(["Human", "Dinosaur"], {"Human": 5, "Dinosaur": 10},
+                                 "", 8, 8) == "KEY"
+
+
+class TestHomeCurveFit:
+    """suggest-homes curve co-signal (#5): a bounded, never-boosting SORT nudge that
+    penalizes a top-heavy / win-more card in a low-curve deck."""
+
+    def test_unknown_mv_is_neutral(self):
+        assert deck._home_curve_fit(None, 3.0) == 1.0
+        assert deck._home_curve_fit(5.0, 0.0) == 1.0
+
+    def test_within_two_mv_no_penalty(self):
+        assert deck._home_curve_fit(4.0, 2.5) == 1.0
+        assert deck._home_curve_fit(2.0, 2.4) == 1.0
+
+    def test_top_heavy_penalized_but_bounded(self):
+        m = deck._home_curve_fit(6.0, 2.4)          # excess 3.6
+        assert 1.0 - deck._HOME_CURVE_CAP <= m < 1.0
+
+    def test_never_boosts(self):
+        # A cheap card in a heavy deck must NOT be boosted (curve nudge is one-sided).
+        assert deck._home_curve_fit(2.0, 5.0) == 1.0
+
+    def test_penalty_capped(self):
+        assert deck._home_curve_fit(15.0, 2.0) == 1.0 - deck._HOME_CURVE_CAP
+
+
+class TestCentralThemesMechanicSubtheme:
+    """centrality residual fix: a curated mechanical sub-theme surfaces at a flat floor
+    of 2 even below the 25% cutoff, but a generic theme stays gated."""
+
+    def test_mechanic_subtheme_admitted_at_floor_two(self):
+        mech = next(iter(deck._MECHANIC_SUBTHEMES))
+        assert mech in deck._central_themes({"tokens": 20, mech: 2})
+
+    def test_generic_theme_still_gated_at_low_weight(self):
+        assert "counters" not in deck._central_themes({"tokens": 20, "counters": 2})
+
+    def test_mechanic_subtheme_below_floor_excluded(self):
+        mech = next(iter(deck._MECHANIC_SUBTHEMES))
+        assert mech not in deck._central_themes({"tokens": 20, mech: 1})
+
 
 class TestRedundancyPlanner:
     """The 'virtual copies first, duplicates as fallback' decision helper."""

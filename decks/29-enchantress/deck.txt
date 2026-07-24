@@ -32,7 +32,6 @@
 1 Garruk's Uprising (FDN) 220
 1 Heroic Feast (MSH) 172
 1 Sylvan Scavenging (FDN) 113
-1 Loading Zone (EOE) 196
 1 Additive Evolution (SOS) 139
 1 Eusocial Engineering (EOE) 181
 1 World War Hulk (MSH) 197
@@ -50,7 +49,7 @@
 1 Unflinching Courage (FDN) 722
 1 Pain for All (EOE) 151
 1 Stasis Snare (FDN) 581
-1 Angelic Destiny (FDN) 565
+2 Angelic Destiny (FDN) 565
 1 Spiral into Solitude (ECL) 36
 1 Avatar Destiny (TLA) 165
 

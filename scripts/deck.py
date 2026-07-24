@@ -997,6 +997,27 @@ def _curve_gap_factor(mv, curve):
     return 1.0
 
 
+_HOME_CURVE_CAP = 0.15  # ±15%, matching _curve_gap_factor's bound
+
+
+def _home_curve_fit(card_mv, deck_avg_mv):
+    """A bounded (0.85–1.0) SORT multiplier for `suggest-homes` (finding #5): gently
+    penalize placing a card whose mana value sits well ABOVE a deck's average nonland MV —
+    a top-heavy / win-more add (an ~11-mana Aettir and Priwen) fits an aggressive low-curve
+    deck worse than a midrange one, which pure theme-overlap can't see. Unlike
+    `_curve_gap_factor` this is keyed to the DECK'S average (constant per card in a
+    suggest-homes run, so a card-MV signal alone couldn't reorder decks). It NEVER boosts
+    and is capped at _HOME_CURVE_CAP, so it only reorders same-strength fits — it can't
+    relabel a KEY/role-player/tangential verdict or override theme fit. Returns 1.0 when a
+    MV is unknown or the card is within ~a turn of the deck's average."""
+    if not card_mv or not deck_avg_mv:
+        return 1.0
+    excess = card_mv - deck_avg_mv
+    if excess <= 2.0:                      # within ~2 MV of the average — a normal top-end,
+        return 1.0                         # not a win-more; only flag genuinely heavy cards
+    return max(1.0 - _HOME_CURVE_CAP, 1.0 - 0.05 * (excess - 2.0))
+
+
 # Weight of the power co-signal in `suggest` (#6): power is 0–10, so at 1.0 a bomb adds
 # up to ~10 — comparable to a strong role bonus, enough to lift a modest-fit bomb above a
 # same-fit vanilla, but small next to a strongly-on-theme card's theme_w. Never dominant.
@@ -1781,15 +1802,29 @@ def load_card_meta():
     return meta
 
 
+# High-confidence, high-precision mechanical SUB-themes (the tag-synergy payoffs added
+# for the tagging-misreads fix): a card carrying one is a deliberate build piece even at a
+# small count. They sit BELOW the 25% relative centrality cutoff in a deck with a dominant
+# theme, so a secondary payoff (Bark of Doran in a toughness-swap deck, Hawkeye in a ping
+# deck) never surfaced — `_central_themes` admits them at a flat floor of 2 instead. Kept
+# small + specific so they can't fake a generic overlap into a home (unlike the broad
+# GENERIC_THEMES, which STAY gated behind the 25% cutoff).
+_MECHANIC_SUBTHEMES = {"toughness matters", "noncombat damage", "spell copy"}
+
+
 def _central_themes(theme_w, frac=0.25):
     """The themes that are actually CENTRAL to a deck: those carried by at least a
     quarter of the deck's most-common theme's copies (floor of 2 copies). Filters
     out one-off tag overlaps so a generic sac/tokens card doesn't read as fitting a
-    deck it only grazes."""
+    deck it only grazes. Curated high-precision mechanical sub-themes
+    (`_MECHANIC_SUBTHEMES`) are also admitted at a flat floor of 2, so a real 2-card
+    payoff sub-synergy reads central even under a heavier dominant theme (the
+    specific-effect analog of the `#: protect:` signature rescue)."""
     if not theme_w:
         return set()
     cutoff = max(2, frac * max(theme_w.values()))
-    return {t for t, w in theme_w.items() if w >= cutoff}
+    return {t for t, w in theme_w.items()
+            if w >= cutoff or (t in _MECHANIC_SUBTHEMES and w >= 2)}
 
 
 # Themes carried by nearly every deck — low signal for how KEY a fit is (mirrors
@@ -1807,6 +1842,17 @@ GENERIC_THEMES = {
     "prowess", "ward", "hexproof", "indestructible", "protection", "defense",
     "defender", "resilience", "shroud", "fear", "intimidate",
 }
+# Creature tribes so broad they carry no HOME signal — nearly every creature in a
+# superhero/anime multiverse is a Human and a Hero or Villain, so sharing one is not a
+# synergy. Treated as generic by `fit_strength` (the tribal analog of GENERIC_THEMES) so a
+# card doesn't read KEY in a deck merely for sharing a background tribe (the Hawkeye-"KEY"-
+# in-every-Hero/Human-deck over-assignment). Narrow, build-around tribes (Ninja, Cat,
+# Dinosaur, Knight, Wizard, Merfolk, …) are deliberately NOT here — those ARE real
+# signature themes. A genuine broad-tribe payoff (a "Heroes you control get +1/+1" lord)
+# can still read KEY via the deck's `#: protect:` signature; this only stops a BARE shared
+# tribe from carrying a home by itself. Kept separate from GENERIC_THEMES so other
+# consumers (which compare Title-case) are unaffected — fit_strength lowercases.
+_GENERIC_TRIBES = {"human", "hero", "villain"}
 _INTERACTION_ROLES = {"Removal (spot)", "Sweeper", "Counter"}
 
 
@@ -1923,8 +1969,8 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
                      (interaction < 5 / card advantage < 3), OR shares the deck's most-
                      common specific theme.
       role-player  – shares a specific central theme, but not the signature.
-      tangential   – shares only GENERIC themes (etb/tokens/…): broadly playable, not a
-                     specific home.
+      tangential   – shares only GENERIC themes (etb/tokens/…) or broad background tribes
+                     (_GENERIC_TRIBES: Human/Hero/Villain): broadly playable, not a home.
 
     `signature` (from `_signature_themes`) corrects the idf blind spot: a theme in
     GENERIC_THEMES is still SPECIFIC-for-this-deck if the deck protects cards built
@@ -1938,9 +1984,14 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
     column), not a specific home — so a fit resting only on generic themes stays
     tangential even when the deck happens to be short on that role.
     """
-    specific = [t for t in shared if t.lower() not in GENERIC_THEMES or t in signature]
-    # A signature-theme match is always a genuine home (the deck's spine).
-    if signature and any(t in signature for t in shared):
+    specific = [t for t in shared
+                if (t.lower() not in GENERIC_THEMES or t in signature)
+                and t.lower() not in _GENERIC_TRIBES]
+    # A signature-theme match is a genuine home (the deck's spine) — but a broad
+    # background tribe (Human/Hero/Villain) is NOT a signature even when a protected card
+    # happens to carry it, so it can't mint a KEY by itself (tagging-misreads #4).
+    if signature and any(t in signature and t.lower() not in _GENERIC_TRIBES
+                         for t in shared):
         return "KEY"
     # No SPECIFIC shared theme -> at most GENERICALLY playable here, not a synergy home.
     # Checked BEFORE the role-gap branch on purpose (see docstring).
@@ -4262,23 +4313,56 @@ def cmd_suggest_homes(args):
     mana = load_mana()
     cd = carddata.get(card.lower())
     if not cd:
+        # Resolve a partial name the way card.py does. Exact + DFC front are already keyed
+        # in carddata; this adds UNIQUE-substring matching so 'Ojer Taq' resolves to
+        # 'Ojer Taq, Deepest Foundation // …' (a God//Land DFC) instead of "not found".
+        ql = card.strip().lower()
+        subs = sorted({c0["name"] for k, c0 in carddata.items() if ql in k}, key=len)
+        if len(subs) == 1:
+            card = subs[0]
+            cd = carddata.get(card.lower())
+        elif len(subs) > 1:
+            eprint(f"{args.card!r} is ambiguous — matches: " + "; ".join(subs[:8])
+                   + (" …" if len(subs) > 8 else "") + "\nUse a more specific name.")
+            return 1
+    if not cd:
         eprint(f"{card!r} not found in card-library.csv or card-pool.csv — check spelling.")
         return 1
+    # Format-legality: a card can only be a "home" for a deck it's LEGAL in that deck's
+    # format (Triumph of the Hordes is not Standard-legal, so it isn't a Standard home).
+    # Reuses the pool's Legalities snapshot; unverified (pool-absent) legalities are
+    # treated as legal, matching `suggest`/`legal`. `--any-format` disables the filter.
+    any_format = getattr(args, "any_format", False)
+    _pool_idx, _ = _pool_rotation_index()
+    _cinfo = _pool_idx.get(card.lower()) or _pool_idx.get(card.split(" // ")[0].lower())
+    card_legals = _cinfo[1] if _cinfo else None
     ccols = card_colors(cd.get("colors"))
     ctags = set(cardmeta.get(card.lower(), {}).get("synergies", []))
     is_fixer = _is_color_fixer(ctags, cd.get("text") or "")
+    # Card MV for the curve co-signal (#5): a top-heavy card is a worse home for a
+    # low-curve deck than a midrange one — see _home_curve_fit.
+    _cmv = mana.get(card.lower()) or mana.get(card.split(" // ")[0].lower())
+    card_mv = _cmv[1] if _cmv and _cmv[1] is not None else None
 
     print(f"Card: {card}  [{'/'.join(sorted(ccols)) or 'Colorless'}]  ({cd['type']})")
     print(f"Themes: {', '.join(sorted(ctags)) or '(none)'}"
           f"{'   [rainbow fixer — value scales with a deck’s color count]' if is_fixer else ''}\n")
 
     results = []
+    skipped_illegal = 0
     for dd in discover_decks():
         dmeta, cards = parse_deck_file(dd["path"])
         castable = _deck_castable_colors(dmeta, cards, mana)
         if not ccols.issubset(castable):
             continue
+        # Skip a deck whose format the card isn't legal in (see card_legals above).
+        if not any_format and card_legals:
+            dfmt = (dmeta.get("format") or "").strip().lower()
+            if dfmt and dfmt not in card_legals:
+                skipped_illegal += 1
+                continue
         theme_w = {}
+        d_mvs = []
         for q, n, s, c in cards:
             if n.lower() in BASICS:
                 continue
@@ -4286,10 +4370,17 @@ def cmd_suggest_homes(args):
             if m:
                 for t in m["synergies"]:
                     theme_w[t] = theme_w.get(t, 0) + q
+            cdn = carddata.get(n.lower())
+            if cdn and "Land" not in _primary_type(cdn.get("type") or ""):
+                e = mana.get(n.lower())
+                if e and e[1] is not None:
+                    d_mvs += [e[1]] * q
         shared = sorted(ctags & _central_themes(theme_w))
         if not shared:
             continue
-        already = card.lower() in {n.lower() for _, n, _, _ in cards}
+        deck_avg_mv = sum(d_mvs) / len(d_mvs) if d_mvs else 0.0
+        already = bool({card.lower(), card.split(" // ")[0].lower()}
+                       & {n.lower() for _, n, _, _ in cards})
         fit = sum(theme_w.get(t, 0) for t in shared)
         d_int, d_ca = deck_role_counts(cards, carddata)
         sig = _signature_themes(dmeta, cards, cardmeta)
@@ -4307,13 +4398,22 @@ def cmd_suggest_homes(args):
                 strength = "KEY"
             elif strength == "tangential":
                 strength = "role-player"
+        # Bounded curve co-signal (#5): gently sort a top-heavy card BELOW efficient fits
+        # in an aggressive low-curve deck (never boosts, never relabels — see
+        # _home_curve_fit). `top_heavy` flags the row so the clunk is visible, not silent.
+        curve_mult = _home_curve_fit(card_mv, deck_avg_mv)
+        fit *= curve_mult
+        top_heavy = curve_mult < 1.0
         cut = None if already else _weakest_cut(dmeta, cards, cardmeta, carddata)
-        results.append((fit, dd["id"], already, shared, cut, strength))
+        results.append((fit, dd["id"], already, shared, cut, strength, top_heavy))
 
+    if skipped_illegal:
+        print(f"({skipped_illegal} castable deck(s) skipped — the card isn't legal in "
+              f"their format; use --any-format to include them.)\n")
     if not results:
         print("No deck is both castable and shares a central theme with this card.\n"
-              "(Off-color everywhere, or its themes are too generic — try "
-              "`deck.py suggest <id>` from a specific deck instead.)")
+              "(Off-color everywhere, its themes are too generic, or it's format-illegal "
+              "everywhere — try `deck.py suggest <id>` from a specific deck instead.)")
         return 0
     # Sort KEY fits first (then role-player, then tangential), then by fit weight —
     # so the decks the card most belongs in lead, differentiating a key from a
@@ -4322,10 +4422,15 @@ def cmd_suggest_homes(args):
     results.sort(key=lambda r: (_srank.get(r[5], 3), -r[0], r[1]))
     print(f"  {'deck':5} {'strength':11} {'fit':>4}  {'in?':3}  shared themes  ·  suggested cut")
     print("  " + "-" * 82)
-    for fit, did, already, shared, cut, strength in results:
+    for fit, did, already, shared, cut, strength, top_heavy in results:
         tag = "yes" if already else "no"
         hint = "already maindecked" if already else (f"cut ~ {cut}" if cut else "")
-        print(f"  {did:5} {strength:11} {fit:>4}  {tag:3}  {', '.join(shared[:3]):28}  {hint}")
+        if top_heavy:
+            hint = (hint + "  " if hint else "") + "⚠ top-heavy for this curve"
+        print(f"  {did:5} {strength:11} {fit:>4.0f}  {tag:3}  {', '.join(shared[:3]):28}  {hint}")
+    if any(r[6] for r in results):
+        print(f"\n⚠ = the card (MV {card_mv}) sits well above that deck's average curve — a "
+              "win-more/top-heavy add there; grade it from text.")
     strong = [r for r in results if not r[2]]
     if len(strong) >= 2:
         print(f"\nCastable + on-theme in {len(strong)} decks it's not already in — one owned "
@@ -5606,6 +5711,8 @@ def main():
     p = sub.add_parser("suggest-homes",
                        help="find which decks a card fits (castable + shared theme), with a cut")
     p.add_argument("card", help="card name to place across your decks")
+    p.add_argument("--any-format", action="store_true",
+                   help="don't filter to decks whose format the card is legal in")
     args = ap.parse_args()
 
     return {

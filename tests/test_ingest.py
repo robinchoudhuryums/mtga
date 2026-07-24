@@ -80,3 +80,55 @@ class TestTagsFor:
         # Surveil (a Scryfall keyword) implies the graveyard theme.
         tags = ts.tags_for({"Type": "Creature", "Card Text": ""}, ["Surveil"])
         assert "graveyard" in tags
+
+    # --- Mechanical-synergy PAYOFF tags (tagging-misreads #3) ---
+    def test_toughness_matters_tag(self):
+        # Doran-style payoff — shares a theme with a toughness-swap deck.
+        tags = ts.tags_for({"Type": "Artifact — Equipment", "Card Text":
+            "As long as equipped creature's toughness is greater than its power, it "
+            "assigns combat damage equal to its toughness rather than its power."}, [])
+        assert "toughness matters" in tags
+
+    def test_noncombat_damage_tag_amplifier(self):
+        tags = ts.tags_for({"Type": "Creature", "Card Text":
+            "If a source you control would deal noncombat damage to an opponent, "
+            "instead it deals that much damage plus 2."}, [])
+        assert "noncombat damage" in tags
+
+    def test_noncombat_damage_tag_repeatable_pinger(self):
+        # A pinger PERMANENT (deals ability damage to opponents) reaches the theme.
+        tags = ts.tags_for({"Type": "Creature — Human Wizard", "Card Text":
+            "Whenever you cast a noncreature spell, this creature deals 1 damage "
+            "to each opponent."}, [])
+        assert "noncombat damage" in tags
+
+    def test_noncombat_damage_excludes_burn_spell(self):
+        # A one-shot burn SPELL must NOT get the theme (else 2 burn spells fake a
+        # ping deck); it's already covered by the "burn" tag.
+        tags = ts.tags_for({"Type": "Instant", "Card Text":
+            "Lightning Strike deals 3 damage to any target."}, [])
+        assert "noncombat damage" not in tags
+
+    def test_noncombat_damage_excludes_combat_trigger(self):
+        tags = ts.tags_for({"Type": "Creature — Beast", "Card Text":
+            "Whenever this creature deals combat damage to a player, draw a card."}, [])
+        assert "noncombat damage" not in tags
+
+    def test_spell_copy_tag(self):
+        tags = ts.tags_for({"Type": "Artifact", "Card Text":
+            "{T}: Add {R}. When that mana is spent to cast a red instant or sorcery "
+            "spell, copy that spell and you may choose new targets for the copy."}, [])
+        assert "spell copy" in tags
+
+    def test_tribal_payoff_captures_referenced_tribe(self):
+        # A lord/tutor gets the tribe it REWARDS even if it isn't that tribe itself.
+        tags = ts.tags_for({"Type": "Legendary Creature — Human Warrior", "Card Text":
+            "Search your library for a Dinosaur card. Dinosaurs you control gain "
+            "double strike."}, [])
+        assert "Dinosaur" in tags
+
+    def test_tribal_payoff_ignores_generic_nouns(self):
+        # 'Creatures/Lands you control' must NOT mint a bogus tribe tag.
+        tags = ts.tags_for({"Type": "Enchantment", "Card Text":
+            "Creatures you control get +1/+1. Lands you control have vigilance."}, [])
+        assert "Creature" not in tags and "Land" not in tags

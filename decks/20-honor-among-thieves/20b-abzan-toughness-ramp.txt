@@ -17,7 +17,7 @@
 # Nonland — payoffs & flavor
 1 The Kingpin of Crime (MSH) 220
 1 Tapestry Warden (EOE) 209
-1 Aettir and Priwen (FIN) 253
+1 Bark of Doran (ECL) 6
 1 Koh, the Face Stealer (TLA) 107
 
 # Nonland — ramp (dorks double as high-toughness bodies)

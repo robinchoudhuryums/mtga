@@ -268,6 +268,55 @@ def check():
     if any(c > 3.0 for c in (deck._RAMP_ACCEL_CAP, cap, scap)):
         errs.append("needs-model caps too large: they must stay bounded tie-breakers.")
 
+    # (11) fit_strength must NOT credit a bare BROAD-TRIBE overlap as a home (the
+    #      Hawkeye-"KEY"-in-every-Hero/Human-deck over-assignment, tagging-misreads #4):
+    #      a broad background tribe (_GENERIC_TRIBES) can't mint KEY even as the top theme
+    #      or via a #: protect: signature — while a NARROW tribe and a specific theme still
+    #      do. This keeps the tribe demotion from silently regressing into a false KEY.
+    fs = deck.fit_strength
+    if fs(["Human", "Hero"], {"Human": 19, "Hero": 15}, "", 8, 8) != "tangential":
+        errs.append("fit_strength: a bare broad-tribe overlap must be tangential, not KEY.")
+    if fs(["Human"], {"Human": 19}, "", 8, 8, signature={"Human"}) != "tangential":
+        errs.append("fit_strength: a broad tribe must not mint KEY via a #: protect: signature.")
+    if fs(["Ninja"], {"Ninja": 10}, "", 8, 8) != "KEY":
+        errs.append("fit_strength: a narrow build-around tribe must still read KEY.")
+    if fs(["Human", "Dinosaur"], {"Human": 5, "Dinosaur": 10}, "", 8, 8) != "KEY":
+        errs.append("fit_strength: a specific theme alongside a broad tribe must still read KEY.")
+    if not deck._GENERIC_TRIBES or "wizard" in deck._GENERIC_TRIBES:
+        errs.append("_GENERIC_TRIBES must be non-empty and must NOT include real tribal "
+                    "signatures (e.g. Wizard).")
+
+    # (12a) the suggest-homes curve co-signal `_home_curve_fit` stays a bounded, never-
+    #       boosting SORT nudge: 1.0 within ~2 MV of a deck's average, penalized beyond,
+    #       capped at _HOME_CURVE_CAP, and 1.0 on an unknown MV — so it can only reorder
+    #       same-strength fits, never relabel or override theme fit (finding #5).
+    hcf = deck._home_curve_fit
+    if hcf(None, 3.0) != 1.0 or hcf(5.0, 0.0) != 1.0:
+        errs.append("_home_curve_fit must be 1.0 when a MV is unknown.")
+    if hcf(4.0, 2.5) != 1.0:
+        errs.append("_home_curve_fit must not penalize a card within ~2 MV of the average.")
+    heavy = hcf(6.0, 2.4)
+    if not (1.0 - deck._HOME_CURVE_CAP <= heavy < 1.0):
+        errs.append(f"_home_curve_fit must penalize a top-heavy card within [1-cap,1) (got {heavy}).")
+    if hcf(11.0, 2.0) < 1.0 - deck._HOME_CURVE_CAP:
+        errs.append("_home_curve_fit must never exceed the _HOME_CURVE_CAP penalty.")
+    if deck._HOME_CURVE_CAP > 0.25:
+        errs.append("_HOME_CURVE_CAP too large: the curve nudge must stay a bounded tie-breaker.")
+
+    # (12b) `_central_themes` admits a curated high-precision mechanical sub-theme
+    #       (_MECHANIC_SUBTHEMES) at a flat floor of 2 so a secondary payoff surfaces, but a
+    #       GENERIC theme at the same low weight STAYS gated behind the 25% cutoff (the
+    #       relaxation can't fake a generic overlap into a home) — centrality residual fix.
+    mech = next(iter(deck._MECHANIC_SUBTHEMES))
+    tw = {"tokens": 20, mech: 2}                 # mech at wt 2, cutoff = 0.25*20 = 5
+    cen = deck._central_themes(tw)
+    if mech not in cen:
+        errs.append(f"_central_themes must admit a mechanical sub-theme ({mech}) at floor 2.")
+    if "counters" in deck._central_themes({"tokens": 20, "counters": 2}):
+        errs.append("_central_themes must still gate a GENERIC theme at low weight (no free pass).")
+    if not deck._MECHANIC_SUBTHEMES or deck._MECHANIC_SUBTHEMES & deck.GENERIC_THEMES:
+        errs.append("_MECHANIC_SUBTHEMES must be non-empty and disjoint from GENERIC_THEMES.")
+
     return errs
 
 

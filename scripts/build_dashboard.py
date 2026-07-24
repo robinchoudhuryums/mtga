@@ -497,6 +497,22 @@ TEMPLATE = r"""<!DOCTYPE html>
   .iconlink { cursor:pointer; font-size:13px; color:var(--ink3); padding:2px 4px; }
   .iconlink:hover { color:var(--accent-ink); }
   .detail { margin-top:13px; border-top:1px solid var(--line); padding-top:12px; }
+  /* Nested variant decks — a core deck's variants render as a clearly-labelled, always-
+     visible strip inside its card (never collapsed away, so they can't be missed), each
+     row opening the full variant in the detail modal. Template-only; reads d.core/variant. */
+  .variants { margin-top:12px; border-top:1px dashed var(--line2); padding-top:9px; }
+  .vhdr { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); display:flex; align-items:center; gap:7px; margin-bottom:7px; }
+  .vhdr .vn { font-variant-numeric:tabular-nums; background:var(--fill2); border:1px solid var(--line2); border-radius:999px; padding:0 7px; color:var(--ink2); font-weight:600; }
+  .vrow { display:flex; align-items:center; gap:8px; width:100%; text-align:left; font-family:inherit; cursor:pointer; padding:7px 9px; margin-left:10px; border:1px solid var(--line); border-left:3px solid var(--accent-line); border-radius:9px; background:var(--fill); color:var(--ink); transition:border-color .15s,background .15s,transform .1s; }
+  .vrow + .vrow { margin-top:6px; }
+  .vrow:hover { border-color:var(--accent); background:var(--accent-bg); transform:translateX(2px); }
+  .vrow.impacted { border-left-color:var(--accent); animation:impactPulse 1.6s ease-in-out infinite; }
+  .vrow .vid { font-size:11.5px; font-weight:600; color:var(--ink3); font-variant-numeric:tabular-nums; }
+  .vrow .vname { font-size:12.5px; font-weight:600; color:var(--ink-bright); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .vrow .vgrow { flex:1 1 auto; }
+  .vrow .badges { justify-content:flex-end; }
+  .vrow .vopen { color:var(--ink3); font-size:13px; }
+  .vrow:hover .vopen { color:var(--accent-ink); }
   .tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; align-items:center; }
   .tab { font-size:12px; padding:5px 11px; border-radius:8px; cursor:pointer; transition:all .15s; font-family:inherit; border:1px solid var(--line2); background:var(--fill2); color:var(--ink2); }
   .tab.on { border-color:var(--accent); background:var(--accent-bg); color:var(--accent-ink); box-shadow:0 0 14px -3px var(--accent-line); }
@@ -1195,8 +1211,9 @@ function pipsRow(colors){
   [...(colors||'')].filter(c => 'WUBRGC'.includes(c)).forEach(c => s.appendChild(el('span','pip ' + c, c)));
   return s;
 }
-function deckCard(d){
-  const card = el('div','deck' + (STATE.impactCard && (d.craft||[]).some(c => c.name === STATE.impactCard) ? ' impacted' : ''));
+function isImpacted(d){ return STATE.impactCard && (d.craft||[]).some(c => c.name === STATE.impactCard); }
+function deckCard(d, variants){
+  const card = el('div','deck' + (isImpacted(d) ? ' impacted' : ''));
   card.id = 'deck-' + d.id;
   const top = el('div','dtop');
   const h = el('h3');
@@ -1244,6 +1261,24 @@ function deckCard(d){
     TABS.forEach(([k,label]) => { const tb = el('span','tab' + (k===curTab?' on':''), label); tb.onclick = () => { STATE._tab = STATE._tab||{}; STATE._tab[d.id] = k; body.innerHTML=''; body.appendChild(detailBody(d,k)); [...tabs.children].forEach(x => x.classList.remove('on')); tb.classList.add('on'); }; tabs.appendChild(tb); });
     det.appendChild(tabs); body.appendChild(detailBody(d, curTab)); det.appendChild(body); card.appendChild(det);
   }
+  // Nested variants — a labelled, always-visible strip; each row opens the full variant.
+  if (variants && variants.length){
+    const vs = el('div','variants');
+    const vh = el('div','vhdr'); vh.appendChild(document.createTextNode('↳ Variants'));
+    vh.appendChild(el('span','vn', variants.length)); vs.appendChild(vh);
+    variants.forEach(v => {
+      const row = el('button','vrow' + (isImpacted(v) ? ' impacted' : ''));
+      row.appendChild(el('span','vid','#' + v.id));
+      row.appendChild(el('span','vname', v.name));
+      row.appendChild(el('span','vgrow'));
+      row.appendChild(deckBadges(v));
+      row.appendChild(el('span','vopen','⤢'));
+      row.title = 'Open ' + v.name + ' (#' + v.id + ')';
+      row.onclick = () => openModal(v.id);
+      vs.appendChild(row);
+    });
+    card.appendChild(vs);
+  }
   return card;
 }
 function compactTable(list){
@@ -1261,6 +1296,23 @@ function compactTable(list){
   wrap.appendChild(sortableTable('ct', cols, rows, compactSort));
   return wrap;
 }
+// Group a shelf's decks into families: a core deck + its SAME-shelf variants nested under
+// it. First-appearance order is preserved (so it tracks the pinned-first list order), then
+// pinned families float to the top. A variant whose core isn't in this shelf (a Brawl
+// variant of a Standard deck) becomes its own anchor — cross-format families never merge.
+function buildFamilies(list){
+  const idx = {}, fams = [];
+  list.forEach(d => { const k = d.core || d.id; if (!(k in idx)){ idx[k] = fams.length; fams.push([]); } fams[idx[k]].push(d); });
+  const out = fams.map(members => {
+    const ms = members.slice().sort((a,b) => (''+a.id).localeCompare(''+b.id, undefined, {numeric:true}));
+    let ai = ms.findIndex(d => !d.variant); if (ai < 0) ai = 0;
+    return { anchor: ms[ai], variants: ms.filter((_,i) => i !== ai) };
+  });
+  const pinned = f => (STATE.pinned[f.anchor.id] || f.variants.some(v => STATE.pinned[v.id])) ? 1 : 0;
+  out.sort((a,b) => pinned(b) - pinned(a));
+  return out;
+}
+function renderShelf(arr, g){ buildFamilies(arr).forEach(f => g.appendChild(deckCard(f.anchor, f.variants))); }
 function renderDecks(){
   const list = filteredDecks();
   const host = $('deckview'); host.innerHTML = '';
@@ -1288,12 +1340,12 @@ function renderDecks(){
       return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
     });
     if (keys.length <= 1){
-      const g = el('div','grid'); list.forEach(d => g.appendChild(deckCard(d))); host.appendChild(g);
+      const g = el('div','grid'); renderShelf(list, g); host.appendChild(g);
     } else {
       keys.forEach(k => {
         const hdr = el('div','fmtgroup'); hdr.appendChild(document.createTextNode(k));
         hdr.appendChild(el('span','fmtcount', groups[k].length)); host.appendChild(hdr);
-        const g = el('div','grid'); groups[k].forEach(d => g.appendChild(deckCard(d))); host.appendChild(g);
+        const g = el('div','grid'); renderShelf(groups[k], g); host.appendChild(g);
       });
     }
   }
@@ -1771,7 +1823,13 @@ function applyCollapsed(id, collapsed){
 // ---------- init ----------
 // (Prefs were restored at the top, so every section above already rendered with saved
 // state.) Deep-link: scroll to a linked deck once the grid is in the DOM.
-if (STATE._jump){ setTimeout(() => { const e2 = $('deck-' + STATE._jump); if (e2) window.scrollTo({top:e2.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); }, 150); }
+if (STATE._jump){ setTimeout(() => {
+  let e2 = $('deck-' + STATE._jump);
+  const jd = (D.decks||[]).find(d => d.id === STATE._jump);
+  if (!e2 && jd && jd.core) e2 = $('deck-' + jd.core);          // a nested variant → its family card
+  if (e2) window.scrollTo({top:e2.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'});
+  if (jd && jd.variant) openModal(jd.id);                        // open the variant's full detail
+}, 150); }
 </script>
 </body>
 </html>

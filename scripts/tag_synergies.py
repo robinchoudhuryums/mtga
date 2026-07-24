@@ -214,6 +214,56 @@ MECHANIC_RULES = [
         and "to the battlefield" in x and "graveyard" not in x),
     ("spellslinger", lambda t, x: "whenever you cast an instant or sorcery" in x
         or "instant and sorcery spell" in x),
+    # --- Mechanical-synergy PAYOFFS the tag model missed (tagging-misreads fix) ---
+    # Toughness-matters (Doran-style): a card that assigns/deals combat damage by
+    # TOUGHNESS instead of power — the payoff a "toughness swap" deck is built on
+    # (Kingpin of Crime, Bark of Doran). Tagged so it shares a theme with those decks
+    # instead of reading as a bare equipment/pump body (Bark → 20a/20b was invisible).
+    ("toughness matters", lambda t, x: re.search(
+        r"damage equal to its toughness|toughness rather than (its )?power|"
+        r"assigns? combat damage equal to (its|their) toughness", x) is not None),
+    # Noncombat-damage payoff/amplifier + repeatable PINGERS. The literal phrase catches
+    # the amplifiers (Hawkeye, Ojer Axonil) and the "whenever a source you control deals
+    # noncombat damage" draw engine. The second clause tags a repeatable pinger — a
+    # PERMANENT (not a one-shot instant/sorcery burn spell) whose ability deals damage to a
+    # player / any target / each opponent — so a ping-ENGINE deck reaches critical mass on
+    # the theme and its amplifiers read KEY, WITHOUT a couple of burn SPELLS faking the
+    # theme into any aggressive deck. Combat-damage triggers ("deals combat damage to a
+    # player") don't match: "a player" isn't one of the targeted phrases.
+    ("noncombat damage", lambda t, x: "noncombat damage" in x or (
+        "instant" not in t and "sorcery" not in t and re.search(
+            r"deals?\b[^.]{0,40}\bdamage to (any target|each opponent|target player|"
+            r"target opponent|that player|each of (your opponents|them))", x) is not None)),
+    # Spell-copy: a mana source / effect that copies an instant or sorcery — a
+    # spellslinger payoff (Pyromancer's Goggles) that carried only a "mana" tag before.
+    ("spell copy", lambda t, x: "copy that spell" in x
+        or re.search(r"copy target (instant|sorcery|instant or sorcery)", x) is not None),
+]
+
+# Capitalized nouns that show up in the tribal-payoff templates below but are NOT
+# creature types — kept out of the tribal tag so a sentence-initial "Creatures you
+# control get…" or "search for a Basic land card" can't mint a bogus tribe tag. (Oracle
+# text lower-cases generic "creatures/lands/tokens" mid-sentence, so the Title-case
+# requirement already filters most of these; this backstops sentence-initial capitals.)
+_NON_TRIBE_WORDS = {
+    "Creature", "Creatures", "Land", "Lands", "Card", "Cards", "Basic", "Artifact",
+    "Artifacts", "Enchantment", "Enchantments", "Instant", "Sorcery", "Planeswalker",
+    "Permanent", "Permanents", "Token", "Tokens", "Spell", "Spells", "Aura", "Auras",
+    "Equipment", "Vehicle", "Saga", "Legendary", "Snow", "Attacking", "Blocking",
+    "Tapped", "Untapped", "Target", "Nonland", "Colored", "Colorless", "Opponent",
+    "Opponents", "Player", "Players", "Modified", "Another", "Other",
+}
+# Templates where a SPECIFIC creature type is a payoff subject the card may not itself be
+# — a tribal lord / tutor (Huatli searching for and pumping Dinosaurs). Capturing the
+# type lets a tribal PAYOFF share its tribe's theme, so it reads KEY in that tribal deck
+# instead of merely role-player (Huatli → 28/28a was under-read). Matched on ORIGINAL-case
+# text: MTG oracle text capitalizes real tribes ("Dinosaurs you control") but lower-cases
+# the generic "creatures you control", so `[A-Z][a-z]+` is itself a strong tribe filter.
+_TRIBAL_PAYOFF_RES = [
+    re.compile(r"\b([A-Z][a-z]+)s you control\b"),
+    re.compile(r"\bsearch your library for (?:a|an) ([A-Z][a-z]+) card\b"),
+    re.compile(r"\bother ([A-Z][a-z]+)s?\b"),
+    re.compile(r"\b([A-Z][a-z]+) creatures you control\b"),
 ]
 
 # Card types that make useful tags on their own.
@@ -239,6 +289,14 @@ def tags_for(row, keywords=None):
     for sub in type_subtypes(type_line):
         if sub not in tags:
             tags.append(sub)
+    # Tribal-matters PAYOFF: add the creature type a lord/tutor REWARDS (which it may not
+    # itself be) so it shares that tribe's theme — see _TRIBAL_PAYOFF_RES. Scanned on the
+    # original-case text (Title-case = a real tribe); _NON_TRIBE_WORDS drops false hits.
+    for rx in _TRIBAL_PAYOFF_RES:
+        for m in rx.finditer(text):
+            typ = m.group(1)
+            if typ and typ not in _NON_TRIBE_WORDS and typ not in tags:
+                tags.append(typ)
     # Notable card types.
     for tt in TYPE_TAGS:
         if tt.lower() in t_low and tt not in tags:
