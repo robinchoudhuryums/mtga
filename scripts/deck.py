@@ -931,8 +931,15 @@ _ROLE_PATTERNS = {
     # Cost reducers / free-cast enablers — the value that makes a nominally
     # expensive card cheap (Diamond Weapon, affinity/convoke, cascade cheats).
     "Cost reduction / cheat": [
+        # Magic writes "This spell costs {1} less TO CAST for each artifact you
+        # control", so a `costs {1} less for each` pattern (the words adjacent)
+        # matched zero of 15.8k pool cards — the third instance of this project's
+        # signature bug: a regex that compiles fine and can never fire. Found by
+        # `check_patterns.py` on its first run. Harmless in effect (the general
+        # pattern below already covers every one of the 155 cards it was meant
+        # for), which is exactly why it survived: a dead pattern hiding behind a
+        # live one changes no count and shows up in no diff.
         r"costs? \{[0-9x]+\} less",
-        r"costs? \{1\} less for each",
         r"\baffinity\b", r"\bconvoke\b", r"\bimprovise\b", r"\bcascade\b",
         r"without paying its mana cost",
     ],

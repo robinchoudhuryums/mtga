@@ -15,15 +15,15 @@
 #: archetype: build an evasive board while Bloodchief Ascension and Mai turn every
 #: archetype: exchange into life loss; (2) pure CARD-ADVANTAGE attrition — ten removal
 #: archetype: spells backed by six draw effects simply out-resources a fair deck.
-#: archetype: DISTINCTNESS vs 42 Darkforce Inversion, the other Mister Negative deck:
-#: archetype: 42 is a BLINK deck that re-triggers his ETB to convert a life gap into
+#: archetype: DISTINCTNESS vs 41 Darkforce Inversion, the other Mister Negative deck:
+#: archetype: 41 is a BLINK deck that re-triggers his ETB to convert a life gap into
 #: archetype: cards while keeping its own total high. This one never blinks, runs almost
 #: archetype: no ETB-value creatures, and deliberately drives its OWN total DOWN — the
 #: archetype: swap is a one-shot refund and stabiliser, not a repeatable draw engine.
 #: archetype: Opposite life postures, opposite creature bases, same finisher.
 #: tier: B — Orzhov life-as-currency attrition, one band BELOW the A metrics floor,
 #: tier: PROVISIONAL (unplayed brew). The floor reads A on interaction 13 (11 of it
-#: tier: instant-speed) plus card advantage 6 over a 2.37 curve, and unlike deck 42 that
+#: tier: instant-speed) plus card advantage 6 over a 2.37 curve, and unlike deck 41 that
 #: tier: card-advantage number is REAL — Cruel Truths, Circle of Power, Decode
 #: tier: Transmissions and Visions of Villainy each draw two, so this is an engine, not
 #: tier: a pile of cantrips. Held at B by two structural risks the floor cannot see:

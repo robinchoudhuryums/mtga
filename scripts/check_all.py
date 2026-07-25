@@ -204,6 +204,20 @@ def main():
     except Exception as e:
         hard.append(f"tier floor sanity check errored: {e}")
 
+    # DEAD-PATTERN gate — every card-text classifier pattern must match at least one
+    # card in the Arena pool, and no pattern source may contain a Python tuple repr.
+    # This project's signature bug is a regex that COMPILES FINE and matches nothing:
+    # a bare {0,2} inside an f-string became the literal "(0, 2)" (46 decks lost their
+    # interaction count), and `(?:owner|their) hand` required the text "owner hand"
+    # while Magic writes "owner's hand" (every bounce spell scored zero roles). Unit
+    # tests can't catch these — each pattern was tested against a string written to
+    # match it — and a roster diff only catches them if you remember to run one.
+    try:
+        from check_patterns import check as check_patterns
+        hard += check_patterns()
+    except Exception as e:
+        hard.append(f"dead-pattern check errored: {e}")
+
     # Soft: wishlist target drift — a target deck that can no longer cast its card
     # after a retune (e.g. deck 14 Mardu->Rakdos orphaned Neriv). Informational
     # only; never fails the build.

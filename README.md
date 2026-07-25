@@ -496,7 +496,7 @@ enchantment / artifact), flagging "all sorcery-speed" or "no noncreature answer"
 Every role **count carries its own uncertainty**. A heuristic classifier reports a
 false negative as a fact — a card it can't parse contributes 0, and `0` reads as
 "none" rather than "not detected". So counts render as `7`, `3 +2?` (two more cards
-read like that role but couldn't be tagged), or `8 +4? (3 unclassified)`. 52 of 58
+read like that role but couldn't be tagged), or `8 +4? (3 unclassified)`. 52 of 57
 decks show uncertainty inline; one of them was graded on interaction 3 when a hand
 count said 7.
 
@@ -890,15 +890,23 @@ Import applies Sheets' own formula parsing, which this RAW guard can't cover.)
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
 derived files present **and still carrying their own columns** — a pool that lost
 its `Rarity`/`Legalities` is a hard failure, not a silent degrade — decks parse)
-plus six **model-sanity checks** that keep the
+plus seven **model-sanity checks** that keep the
 grading/ranking models from silently drifting: the **ranking model**
 (`check_rankings.py`), **color parsing** (`check_colors.py` — also a static scan
 banning the naive inline `WUBRG` parse outside `lib.py`), the **DFC ownership-join**
 convention (`check_dfc.py` — an owned double-faced card must resolve by its front
 face), the needs-aware **suggest/cuts scoring** (`check_suggest.py` — bounded
 modifiers, power never overrides theme fit), the **engine classifier**
-(`check_engines.py`), and the archetype-aware **tier floor** (`check_tier.py` —
-non-aggro grades unchanged, the aggro clock only ever raises a band). It exits
+(`check_engines.py`), the archetype-aware **tier floor** (`check_tier.py` —
+non-aggro grades unchanged, the aggro clock only ever raises a band), and
+**dead patterns** (`check_patterns.py`). That last one guards this project's
+signature bug: a regex that *compiles fine and can never fire*. Every card-text
+pattern must match at least one card in the ~15.8k-card pool, and no pattern source
+may contain a Python tuple repr like `(0, 2)` — which is what a `{0,2}` quantifier
+becomes when an f-string eats it. Both historical instances of that bug (the `{0,2}`
+one, and `(?:owner|their) hand` demanding the text "owner hand" while Magic writes
+"owner's hand") were invisible to unit tests, because each pattern had been tested
+against a string written to match it. The gate found a third on its first run. It exits
 non-zero on any hard break. It also
 emits **soft warnings** (never gating): wishlist target drift (a card whose target
 deck can no longer cast it); **new unindexed card mechanics** (`check_keywords.py`);
