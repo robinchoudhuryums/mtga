@@ -485,6 +485,13 @@ count treats all removal alike, so it breaks interaction down by **speed** (inst
 vs sorcery) and by whether it can answer a **noncreature permanent** (planeswalker /
 enchantment / artifact), flagging "all sorcery-speed" or "no noncreature answer".
 
+`stats` also runs a **power-threshold check**. A payoff that keys on "power 4 or
+greater" reads unconditional to a synergy model, but only fires off bodies that meet
+the bar on their **printed** stats — and a counters deck full of X-creatures printed
+0/0 meets it far less often than it looks. The pool now stores Power/Toughness, so
+this is measurable: in deck 40a, Garruk's Uprising sees only 2 of 23 creature copies.
+(A creature that grows *after* it enters still won't satisfy an *enters* trigger.)
+
 `stats` (and `tier`) also report a **protection** count — real ward / hexproof /
 indestructible / protection-from effects, deliberately narrower than the broad
 "Protection / trick" role, which lumps a combat pump in with an actual answer to

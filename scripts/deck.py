@@ -59,7 +59,7 @@ import urllib.error
 import urllib.request
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty,
-                 card_distinctiveness, backup_path)
+                 card_distinctiveness, backup_path, card_power)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -697,10 +697,13 @@ def _primary_type(type_line):
 
 # --- card data (type + text) for synergy / cost analysis -------------------- #
 def load_card_data():
-    """name_lower -> {'type', 'text'} from card-library.csv then card-pool.csv.
+    """name_lower -> {'name','type','text','colors','power','toughness'} from
+    card-library.csv then card-pool.csv.
 
     The pool fills in oracle text/type for unowned WIP cards so analysis works on
-    decks that aren't fully owned yet.
+    decks that aren't fully owned yet. `power`/`toughness` are RAW strings (Magic
+    prints `*`, `1+*`, `X`), only present on pool rows — the library CSV has no such
+    columns — and are '' when unknown. Parse via `lib.card_power`, never int() them.
     """
     data = {}
     for path in (DEFAULT_CSV, POOL_CSV):
@@ -709,11 +712,24 @@ def load_card_data():
         with open(path, newline="", encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
                 n = (r.get("Card Name") or "").strip().lower()
-                if n and n not in data:
+                if not n:
+                    continue
+                if n not in data:
                     data[n] = {"name": (r.get("Card Name") or "").strip(),
                                "type": r.get("Type") or "", "text": r.get("Card Text") or "",
-                               "colors": r.get("Color(s)") or ""}
+                               "colors": r.get("Color(s)") or "",
+                               "power": r.get("Power") or "",
+                               "toughness": r.get("Toughness") or ""}
                     data.setdefault(n.split(" // ")[0], data[n])
+                elif not data[n]["power"] and (r.get("Power") or r.get("Toughness")):
+                    # P/T is a POOL-only column — card-library.csv has no such fields.
+                    # Because the library is read FIRST and wins, every card you OWN
+                    # would otherwise read as unknown-P/T, i.e. the new data would be
+                    # missing on exactly the cards most likely to be graded. Backfill
+                    # from the pool without disturbing the library's type/text/colors,
+                    # which stay authoritative.
+                    data[n]["power"] = r.get("Power") or ""
+                    data[n]["toughness"] = r.get("Toughness") or ""
     return data
 
 
@@ -938,6 +954,53 @@ _PROTECTION_RE = re.compile(
     r"|can'?t be the target of (?:spells|abilities)"
     r"|counter target spell that targets"
     r"|\bphases? out\b")
+
+
+# "power 4 or greater" style conditions — the class of card that was ungradeable while
+# the repo stored no P/T. The payoff reads unconditional in a synergy model ("draws you
+# cards!") but only fires off bodies that actually meet the bar ON ENTRY, and a counters
+# deck full of X-creatures printed 0/0 meets it far less often than it looks.
+_POWER_THRESHOLD_RE = re.compile(
+    r"\b(power|toughness) (\d+) or (?:greater|more)\b", re.I)
+_POWER_THRESHOLD_THIN = 0.30       # <30% of creatures qualifying = worth flagging
+
+
+def power_threshold_flags(cards, carddata):
+    """[(payoff_name, attr, N, qualifying_copies, creature_copies)] for each card whose
+    text keys on "power/toughness N or greater", with how many of the deck's creatures
+    meet that bar on their PRINTED stats. Only flags a payoff the deck under-supports.
+
+    Printed P/T only — a card that grows after it enters (counters, anthems, an equip)
+    still reads by its printed value, which is exactly right for an ENTERS trigger and
+    conservative for anything else. Creatures whose P/T isn't a number (`*`, `X`) are
+    counted as NOT qualifying and reported separately by the caller if needed, since
+    guessing would re-introduce the invented-fact problem `lib.card_power` avoids."""
+    creatures = []
+    for q, n, _s, _c in cards:
+        cd = carddata.get(n.lower())
+        if not cd or "Creature" not in _primary_type(cd.get("type") or ""):
+            continue
+        creatures.append((q, cd))
+    total = sum(q for q, _ in creatures)
+    out = []
+    if not total:
+        return out
+    seen = set()
+    for q, n, _s, _c in cards:
+        cd = carddata.get(n.lower())
+        if not cd:
+            continue
+        for m in _POWER_THRESHOLD_RE.finditer(cd.get("text") or ""):
+            attr, bar = m.group(1).lower(), int(m.group(2))
+            key = (cd["name"], attr, bar)
+            if key in seen:
+                continue
+            seen.add(key)
+            qualify = sum(cq for cq, ccd in creatures
+                          if (card_power(ccd.get(attr)) or -1) >= bar)
+            if qualify / total < _POWER_THRESHOLD_THIN:
+                out.append((cd["name"], attr, bar, qualify, total))
+    return out
 
 
 def protection_effects(text):
@@ -1928,6 +1991,16 @@ def cmd_stats(args):
         else:
             print("    ⚠ ZERO protection — nothing here answers targeted removal on a key "
                   "permanent; fine for a spell-based deck, a real gap for a threat-based one.")
+
+    # Power-threshold payoffs. A "power 4 or greater" trigger reads unconditional to a
+    # synergy model, but only fires off bodies that meet the bar on their PRINTED stats —
+    # and an X-creature or a counters payoff is very often printed 0/0. This is measurable
+    # only since card-pool.csv started carrying Power/Toughness.
+    for name, attr, bar, qualify, total in power_threshold_flags(cards, carddata):
+        print(f"\n  ⚠ {name} keys on {attr} {bar}+, but only {qualify} of {total} creature "
+              f"copies are printed at {attr} {bar}+ — the trigger is far more conditional "
+              f"than the card reads. (Printed stats: a body that GROWS after it enters "
+              f"still won't satisfy an ENTERS trigger.)")
 
     # Interaction profile (#5): the raw count treats all interaction alike, but a suite
     # that's all sorcery-speed and creature-only has real gaps. Break it down by speed

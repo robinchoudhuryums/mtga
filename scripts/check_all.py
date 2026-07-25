@@ -60,7 +60,7 @@ _REQUIRED_COLUMNS = {
     "card-pool.csv": ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
                       "Set Code", "Rarity"],
 }
-_OPTIONAL_COLUMNS = {"card-pool.csv": ["Legalities", "Released"]}
+_OPTIONAL_COLUMNS = {"card-pool.csv": ["Legalities", "Released", "Power", "Toughness"]}
 
 
 def _header_of(path):

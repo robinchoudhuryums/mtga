@@ -261,3 +261,19 @@ class TestWriteRows:
         matching = tmp_path / "lib.csv"
         matching.write_text(",".join(lib.HEADER) + "\n", encoding="utf-8")
         assert lib.csv_schema_error(str(matching)) is None
+
+
+class TestCardPower:
+    """Magic prints `*`, `1+*`, `X` as often as `4`; coercing those would invent facts."""
+
+    def test_numeric(self):
+        assert lib.card_power("4") == 4
+        assert lib.card_power(0) == 0
+        assert lib.card_power(" 7 ") == 7
+
+    def test_non_numeric_is_none(self):
+        for v in ("*", "1+*", "X", "∞", "*+1", ""):
+            assert lib.card_power(v) is None, v
+
+    def test_none_and_missing(self):
+        assert lib.card_power(None) is None

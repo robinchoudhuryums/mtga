@@ -50,7 +50,27 @@ WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
 
 HEADER = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
-          "Set Code", "Collector #", "Rarity", "Target", "Note", "Power"]
+          "Set Code", "Collector #", "Rarity", "Target", "Note", "Power", "Power Source"]
+
+# PROVENANCE for the Power column. Both `--add` and `--seed-power` write a heuristic
+# estimate into the same cell a hand grade goes in, so nothing could tell an auto-seed
+# from a human judgment — which meant "verify this number" had to be said about EVERY
+# row, including the ones already graded. Written as "seed" by the estimators; anything
+# else (including blank, for rows that predate this column) is treated as hand-graded.
+POWER_SEEDED = "seed"       # written by --add / --seed-power
+POWER_HAND = "hand"         # a human graded it; trust the number
+POWER_UNKNOWN = "unknown"   # predates this column — provenance genuinely not recorded
+
+
+def power_is_seeded(row):
+    """True when this row's Power should NOT be trusted as a human judgment — either a
+    heuristic seed, or a row from before provenance was recorded.
+
+    `unknown` is a deliberate third value rather than a guess. Rows predating the column
+    were mostly `--add` auto-seeds but some were hand-graded, and forcing either default
+    would be wrong in one direction: marking them all `seed` re-flags real judgments,
+    marking them all `hand` silently blesses estimates. Unknown says so."""
+    return (row.get("Power Source") or "").strip().lower() in (POWER_SEEDED, POWER_UNKNOWN, "")
 RARITY_RANK = {"Mythic": 0, "Rare": 1, "Uncommon": 2, "Common": 3, "": 4, "?": 5}
 
 # "<qty> <Name>" with optional "(SET)" + collector number — mirrors deck.py/import_arena.
@@ -278,6 +298,7 @@ def cmd_add(path):
     for row in new_rows:
         if not (row.get("Power") or "").strip():
             row["Power"] = str(_seed_power(row))
+            row["Power Source"] = POWER_SEEDED
             seeded += 1
 
     write_wishlist(existing)
@@ -745,12 +766,12 @@ def _rank_scores(rows):
             "blank_power": not raw_power,
             "bad_power": bad_power, "raw_power": raw_power,
             "land_val": land_val, "rot": rot, "rot_year": rot_year,
-            # A conditional card's Power can't be estimated in isolation. Flagged even
-            # when Power is filled: the CSV records no PROVENANCE, so a value may be a
-            # `--add` auto-seed rather than a hand grade, and this session had to
-            # hand-correct several of exactly this class (Repulsive Mutation, Genesis
-            # Wave, Mona Lisa, Procrastinate). The flag says "verify", not "wrong".
-            "cond_power": is_conditional_power(r),
+            # A conditional card's Power can't be estimated in isolation. Now that the
+            # `Power Source` column records PROVENANCE, this fires only where the number
+            # is still a heuristic SEED (or blank) — a hand grade on a conditional card
+            # is precisely what the flag was asking for, so re-flagging it was noise.
+            "cond_power": is_conditional_power(r)
+                          and (power_is_seeded(r) or not raw_power),
             "uniq": card_distinctiveness(ctags, r.get("Card Text") or ""),
             "sig": "/".join(best_specific[:2]) or ("generic/no-theme" if conf == "review" else ""),
         })
@@ -847,8 +868,8 @@ def cmd_rank(rows):
         print(f"~ {len(cond)} card(s) have a CONDITIONAL power (X-cost / kicker / landfall / "
               f"'equal to …'), shown as 'pow~'. The heuristic grades a card in ISOLATION, so "
               f"it structurally can't price one that scales with YOUR deck — and the CSV "
-              f"doesn't record whether a Power was hand-graded or auto-seeded. Verify these "
-              f"from full text: " + ", ".join(cond[:6]) + ("…" if len(cond) > 6 else ""))
+              f"their Power is not a recorded hand grade (`Power Source` is seed/unknown). "
+              f"Verify from full text and hand-grade, then set Power Source=hand: " + ", ".join(cond[:6]) + ("…" if len(cond) > 6 else ""))
     bad = [(s["name"], s["raw_power"]) for s in scored if s["bad_power"]]
     if bad:
         # A malformed Power scored 0.0 and would otherwise sink silently (F9).
@@ -1048,6 +1069,7 @@ def cmd_seed_power(rows, write=False):
         est = _seed_power(r)
         if write:
             r["Power"] = str(est)
+            r["Power Source"] = POWER_SEEDED
         wc = (r.get("Rarity") or "?")[:1]
         print(f"  {est:>4.1f}  {wc:3} {r.get('Card Name', '')[:44]}")
     if write:

@@ -42,7 +42,8 @@ POOL_PATH = os.path.join(REPO_ROOT, "card-pool.csv")
 # Standard legality may be stale (cards rotate on a schedule) and prompt a rebuild.
 POOL_BUILD_STAMP = os.path.join(REPO_ROOT, "card-pool.build")
 POOL_HEADER = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
-               "Set Code", "Collector #", "Rarity", "Legalities", "Released"]
+               "Set Code", "Collector #", "Rarity", "Legalities", "Released",
+               "Power", "Toughness"]
 SEARCH_URL = "https://api.scryfall.com/cards/search"
 
 # Formats worth tracking for deck-building (Arena formats + the major paper
@@ -93,7 +94,30 @@ def row_for(card):
         # Set release date (YYYY-MM-DD) — feeds deck.py suggest's rotation-risk flag
         # (Standard holds ~the last 3 years of sets).
         "Released": card.get("released_at", ""),
+        # Base printed power/toughness, front face for a DFC. Kept as the RAW string,
+        # never coerced to an int: Magic prints `*`, `1+*`, `X` and `∞`, and rounding
+        # those to a number would invent a fact. `lib.card_power()` parses it and
+        # returns None for anything non-numeric, so a caller has to handle "unknown".
+        #
+        # Why this exists: nothing in the repo stored P/T, so a whole class of card was
+        # ungradeable by ANY tool — "whenever a creature with power 4 or greater enters,
+        # draw a card" (Garruk's Uprising), Doran-style toughness-matters payoffs, and
+        # "power 4 or greater" conditions generally. Grading those had to be done by
+        # hand, and it produced a real mis-read: Mossborn Hydra looks like a big body but
+        # is printed 0/0 and enters with one counter, so it does NOT trigger Garruk.
+        **_pt_fields(card),
     }
+
+
+def _pt_fields(card):
+    """{'Power': str, 'Toughness': str} for a card, using the FRONT face of a DFC (the
+    same convention build_mana.py uses for mana cost). Empty strings for a noncreature."""
+    p, t = card.get("power"), card.get("toughness")
+    if p is None and t is None:
+        faces = card.get("card_faces") or []
+        if faces:
+            p, t = faces[0].get("power"), faces[0].get("toughness")
+    return {"Power": "" if p is None else str(p), "Toughness": "" if t is None else str(t)}
 
 
 def main():

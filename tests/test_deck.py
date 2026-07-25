@@ -838,3 +838,40 @@ class TestSyncPaste:
         out = deck.reconcile_lines(["# c", "1 Foo (S) 1", "24 Island"], target, {})
         parsed = [deck.LINE_RE.match(l) for l in out if deck._card_line_name(l)]
         assert sum(int(m.group(1)) for m in parsed) == sum(q for _d, q in target.values())
+
+
+class TestPowerThresholdFlags:
+    """A "power 4 or greater" payoff reads unconditional to a synergy model but only
+    fires off bodies that meet the bar on their PRINTED stats — measurable only since
+    card-pool.csv started carrying Power/Toughness."""
+    CD = {
+        "garruk's uprising": {"name": "Garruk's Uprising", "type": "Enchantment",
+                              "text": "Whenever a creature you control with power 4 or "
+                                      "greater enters, draw a card.",
+                              "power": "", "toughness": ""},
+        "x hydra": {"name": "X Hydra", "type": "Creature — Hydra",
+                    "text": "This creature enters with X +1/+1 counters on it.",
+                    "power": "0", "toughness": "0"},
+        "big beater": {"name": "Big Beater", "type": "Creature — Beast",
+                       "text": "Trample.", "power": "6", "toughness": "6"},
+        "star creature": {"name": "Star Creature", "type": "Creature — Avatar",
+                          "text": "Power equal to cards in your graveyard.",
+                          "power": "*", "toughness": "*"},
+    }
+
+    def test_flags_a_payoff_the_creatures_dont_support(self):
+        cards = [(1, "Garruk's Uprising", "", ""), (8, "X Hydra", "", "")]
+        flags = deck.power_threshold_flags(cards, self.CD)
+        assert flags == [("Garruk's Uprising", "power", 4, 0, 8)]
+
+    def test_silent_when_the_deck_supports_it(self):
+        cards = [(1, "Garruk's Uprising", "", ""), (8, "Big Beater", "", "")]
+        assert deck.power_threshold_flags(cards, self.CD) == []
+
+    def test_star_power_counts_as_not_qualifying(self):
+        # `*` is unknowable from printed stats; guessing would invent a fact.
+        cards = [(1, "Garruk's Uprising", "", ""), (8, "Star Creature", "", "")]
+        assert deck.power_threshold_flags(cards, self.CD)[0][3] == 0
+
+    def test_no_creatures_is_not_an_error(self):
+        assert deck.power_threshold_flags([(1, "Garruk's Uprising", "", "")], self.CD) == []

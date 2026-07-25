@@ -15,10 +15,18 @@
 #: tier: after the Divergent Equation / Matterbending Mage / Agna Qel'a swaps and the
 #: tier: Ooze Spill / Amazing Acrobatics counter upgrade (two conditional counters — Essence
 #: tier: Scatter's creatures-only and Reasonable Doubt's pay-{2} — became hard counters, so
-#: tier: 5 of the 6 counters are no longer situational). Metrics floor is A: interaction 10
+#: tier: 5 of the 6 counters are no longer situational). Metrics floor is A: interaction 11
 #: tier: + card advantage 6 on a tight 2.32 curve. The interaction is well SHAPED, not just
-#: tier: numerous — 7 of 10 at instant speed and 7 able to answer a
-#: tier: noncreature permanent, so a resolved planeswalker or enchantment isn't a blank.
+#: tier: numerous — most of it is instant-speed and most can answer a noncreature
+#: tier: permanent, so a resolved planeswalker or enchantment isn't a blank. (The count
+#: tier: reads 11 since the role classifier was fixed to credit artifact/enchantment
+#: tier: destruction and library-tuck removal; run `deck.py stats 40` for the live
+#: tier: split rather than trusting a figure quoted here.)
+#: tier: NOTE: protection is 0 — nothing in the 60 answers targeted removal on Taigam or
+#: tier: Paradox Surveyor, the two `#: protect:` engine pieces. Acceptable for a deck that
+#: tier: wins with a SPELL rather than a permanent (its counterspells protect the plan
+#: tier: instead), but it is the first thing to revisit if the engine keeps getting picked
+#: tier: off.
 #: tier: What carries it past floor-consistency into a real A is FUNCTIONAL REDUNDANCY, the
 #: tier: same argument that grades Wizardz 37b an A: `deck.py redundancy 40` reads a virtual
 #: tier: 6-of counterspell, 6-of card advantage, 7-of payoff and 4-of removal, so singleton
