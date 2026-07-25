@@ -11,11 +11,21 @@
 #: archetype: in the sibling variant 40a Exponential Drive, which shares this ramp shell
 #: archetype: but wins through one exponentially doubled creature instead. Keep them
 #: archetype: apart: 40 holds up counterspells, 40a commits a threat on turn 2-3.
-#: tier: A — Simic ramp-control (PROVISIONAL — confirm per the rubric). Metrics floor is A:
-#: tier: interaction 10 (6 hard counters + Syncopate + ~4 removal/tempo) + card-advantage 5
-#: tier: on a tight 2.27 curve = a strong resilience axis, coherent control engine. Held from
-#: tier: S by singleton variance and a diffuse (good-stuff) theme spine; the one clear
-#: tier: weakness is leaning on resolving a big X-spell. Aspirational WIP (4 craft targets).
+#: tier: A — Simic ramp-control. CONFIRMED against the rubric (was PROVISIONAL), re-checked
+#: tier: after the Divergent Equation / Matterbending Mage / Agna Qel'a swaps. Metrics floor
+#: tier: is A: interaction 10 + card advantage 6 on a tight 2.26 curve. The interaction is
+#: tier: well SHAPED, not just numerous — 7 of 10 at instant speed and 7 able to answer a
+#: tier: noncreature permanent, so a resolved planeswalker or enchantment isn't a blank.
+#: tier: What carries it past floor-consistency into a real A is FUNCTIONAL REDUNDANCY, the
+#: tier: same argument that grades Wizardz 37b an A: `deck.py redundancy 40` reads a virtual
+#: tier: 6-of counterspell, 6-of card advantage, 7-of payoff and 4-of removal, so singleton
+#: tier: variance barely bites — only cost-reduction and reanimation are thin (2 each).
+#: tier: Manabase is clean: 26 lands, 87% keepable openers, 0 uncastable, no color stray
+#: tier: since Opulent Palace left. The one clear weakness A allows is spent on the win-con:
+#: tier: the deck leans on resolving a big X-spell behind a diffuse (good-stuff) 17-theme
+#: tier: spine. Held from S by that slow clock and the absence of a format-warping bomb —
+#: tier: it out-resources opponents rather than closing fast. Aspirational WIP (5 craft
+#: tier: targets); per the rubric that doesn't affect the letter, only `check`/`audit`.
 #: protect: Taigam, Master Opportunist; Paradox Surveyor; Finale of Revelation
 #: notes: DISTINCTIVENESS is the design goal — see archetype. The counter-Hydra finishers
 #: notes: (Wildwood Scourge, The Goose Mother) are kept as fungible X-payoff FINISHERS, not

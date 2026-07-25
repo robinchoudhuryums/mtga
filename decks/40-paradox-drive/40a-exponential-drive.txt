@@ -14,8 +14,24 @@
 #: archetype: 30 Fractalandtastic explicitly "goes wide" on Fractal tokens in Temur. This
 #: archetype: one runs NO creature-token ENGINE on purpose — every counter is aimed at one
 #: archetype: body. (Emil is here for its trample line, not its Fractal mana sink.)
-#: notes: TIER: ungraded — needs a human call per the CLAUDE.md rubric (run
-#: notes: `deck.py tier 40a`). This is the TALL sibling of 40; keep the two apart by
+#: tier: B — Simic landfall counters-midrange. The metrics floor reads A, but only just and
+#: tier: on a shape that doesn't hold up: interaction is exactly 5, the A-floor MINIMUM, and
+#: tier: only 3 of those are instant-speed with 3 able to answer a noncreature permanent, so
+#: tier: a resolved planeswalker or enchantment often sits there. Counters are THIN at 2
+#: tier: (`deck.py redundancy 40a`). More decisive: this is an ALL-IN SINGLE-THREAT deck with
+#: tier: NO protection — zero ward / hexproof / indestructible anywhere in the 60, and the
+#: tier: two "protection" cards are pump tricks (Tifa's Limit Break, Chelonian Tackle) that
+#: tier: don't answer a destroy or an exile. One removal spell on the doubled body resets the
+#: tier: whole plan and strands the doublers as blanks. That is TWO clear weaknesses where an
+#: tier: A tolerates one, so it is graded one band BELOW the floor — deliberately, like 35a
+#: tier: and 21a. What it does have is a genuinely deep spine: `redundancy` reads a virtual
+#: tier: 8-of counter-DOUBLER, 5-of landfall, 5-of lands and 9-of payoff, and the manabase is
+#: tier: clean (26 lands, 87% keepable, 0 uncastable), so the engine itself is consistent —
+#: tier: it is the fragility of the win-con, not variance, that caps this.
+#: tier: PATH TO A: add real protection for the threat (a ward/indestructible effect or a
+#: tier: counterspell held for removal) and lift interaction above the floor minimum with
+#: tier: instant-speed noncreature answers. Do NOT fix it by adding more doublers.
+#: notes: This is the TALL sibling of 40; keep the two apart by
 #: notes: rule: 40 holds up counterspells and wins with one huge X-spell, 40a commits a
 #: notes: threat on turn 2-3 and doubles it. Do NOT migrate the doubler package back
 #: notes: into 40 — the two plans want the same mana on the same turns.
