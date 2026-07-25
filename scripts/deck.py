@@ -783,15 +783,35 @@ ROLE_ORDER = ["Removal (spot)", "Sweeper", "Counter", "Card advantage",
               "Ramp / fixing", "Reanimation", "Payoff / engine", "Burn / drain",
               "Lifegain", "Cost reduction / cheat", "Team pump / anthem",
               "Protection / trick", "Recursion"]
+# A permanent-type LIST as MTG templates it: "creature", "artifact or enchantment",
+# "artifact, enchantment, or creature with flying". The removal patterns used to spell
+# out a handful of fixed combinations by hand, so anything outside that list matched
+# NOTHING and the card read as having no removal role at all. Verified misses:
+#   Origin of Metalbending / Seedship Impact — "Destroy target artifact or enchantment"
+#   Broken Wings                             — "Destroy target artifact, enchantment,
+#                                               or creature with flying"  → zero roles
+# Those three all count toward `_NONCREATURE_ANSWER_CUES` (the "can it answer a
+# planeswalker/enchantment/artifact" test) already, so the codebase treated them as
+# answers everywhere EXCEPT the count the tier floor grades on. One list-aware pattern
+# replaces the hand-kept combinations, so a new templating can't slip through again.
+_PERM_TYPE = (r"(?:nonland permanent|artifact creature|artifact|enchantment|creature|"
+              r"permanent|planeswalker|land)")
+_PERM_TYPE_LIST = rf"{_PERM_TYPE}s?(?:,? (?:or |and )?{_PERM_TYPE}s?)*"
+
 _ROLE_PATTERNS = {
     "Removal (spot)": [
-        r"destroy target (?:creature|permanent|nonland permanent|artifact or creature|"
-        r"tapped creature|attacking creature|creature or planeswalker|creature with)",
-        r"exile target (?:creature|permanent|nonland permanent|attacking|tapped)",
-        # "destroy/exile up to one/two target ..." — the fixed "target" patterns above
-        # miss the up-to-N wording (She-Hulk's power-up, Mutant Chain Reaction).
-        r"(?:destroy|exile) up to \w+ target (?:creature|permanent|nonland permanent|"
-        r"artifact|enchantment|planeswalker|artifact or|artifact, enchantment)",
+        # destroy / exile a targeted permanent, including a comma-or list of types, and
+        # allowing the adjectives MTG puts before the type ("target ATTACKING creature",
+        # "target TAPPED creature") — the old hand-kept alternation listed some of those
+        # spellings explicitly, so the list-aware rewrite has to keep them or it would
+        # LOSE coverage it previously had (caught by a roster-wide before/after diff:
+        # decks 15 and 16 each dropped an interaction piece on the first draft).
+        # NOTE the doubled braces: this is an f-string, so a bare {0,2} is parsed as a
+        # replacement field and silently compiles to the literal text "(0, 2)". That is
+        # exactly what happened on the first draft — every "destroy target creature" in
+        # the collection stopped matching and 46 decks lost interaction. Caught only by
+        # the roster-wide before/after diff, which is why that diff is worth running.
+        rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+ ){{0,2}}?{_PERM_TYPE_LIST}",
         r"deals? \d+ damage to (?:target|any target|another target)",
         r"deals? \d+ damage to up to \w+ target",
         # any "fight" is removal (Novel Nunchaku "fights up to one target", Longstalk
@@ -804,6 +824,14 @@ _ROLE_PATTERNS = {
         r"creature an opponent controls gets -[0-9x]",
         r"return target creature.{0,40}?(?:owner|their) hand",
         r"enchanted creature can't attack or block",
+        # Removal by TUCKING a creature into a library. It leaves the battlefield, so
+        # it is a real answer, but no destroy/exile/damage/-N-N pattern saw it:
+        # Floodpits Drowner's "{1}{U}, {T}: Shuffle this creature and target creature
+        # with a stun counter on it into their owners' libraries" scored ZERO roles,
+        # which is why an earlier tier note wrongly wrote it off as "taps and stuns
+        # rather than answers" (session finding — the same card twice).
+        r"shuffle[^.]{0,80}?target (?:creature|permanent)[^.]{0,60}?librar",
+        r"target creature[^.]{0,80}?into (?:their|its) (?:owner'?s? )?librar",
     ],
     "Sweeper": [r"destroy all", r"exile all", r"all creatures get -",
                 r"each (?:other )?creature (?:gets|deals|is|you don't control)",
@@ -814,8 +842,16 @@ _ROLE_PATTERNS = {
                 r"creature with mana value.{0,20}?or less.{0,40}?destroy",
                 r"destroy those creatures",
                 r"deals? \d+ damage to each (?:other )?creature"],
-    "Counter": [r"counter target"],
-    "Card advantage": [r"draws? (?:two|three|four|x|that many) cards?",
+    # "counter up to one target spell unless…" (Repulsive Mutation) matched neither
+    # this pattern NOR the broad coverage net below, so it scored zero roles AND was
+    # never flagged as an under-read — the worst case, a miss invisible to the very
+    # audit that exists to catch misses (session finding).
+    "Counter": [r"counter (?:up to \w+ )?target", r"counter (?:that|the chosen) spell"],
+    # Surfaced while testing the lexicon unification: "five" and "half X" were in
+    # neither the role pattern nor the audit cue, so Wan Shi Tong, Librarian ("draw
+    # half X cards, rounded down") was uncounted AND unflagged — the same
+    # missed-by-both hole as Repulsive Mutation, on the card-advantage axis.
+    "Card advantage": [r"draws? (?:two|three|four|five|half x|x|that many) cards?",
                        r"draw a card for each", r"draws? cards? equal to",
                        r"\binvestigate\b"],
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
@@ -865,6 +901,52 @@ _ROLE_PATTERNS = {
 }
 _ROLE_COMPILED = [(label, [re.compile(p) for p in _ROLE_PATTERNS[label]])
                   for label in ROLE_ORDER]
+_ROLE_COMPILED_MAP = dict(_ROLE_COMPILED)
+
+# The roles that make a card "interaction" for the resilience axis the tier floor
+# grades on. Defined HERE, next to the patterns, because the coverage-audit net below
+# is built from them — it used to sit ~1000 lines later, which is how the net and the
+# classifier drifted apart in the first place.
+_INTERACTION_ROLES = {"Removal (spot)", "Sweeper", "Counter"}
+
+# "draw N, then discard N" is a LOOT — card-NEUTRAL filtering, not card advantage, for
+# exactly the reason a single-draw cantrip isn't counted (see ROLE_ORDER's note). Kiora,
+# the Rising Tide's "draw two cards, then discard two cards" used to score +1 card
+# advantage, which both inflated her value when the deck was graded and made cutting her
+# register as a regression the quality guard reported but that wasn't real (session
+# finding). Only an EQUAL, adjacent draw/discard pair is filtered — a genuinely
+# net-positive "draw three cards. Discard a card." is untouched, and connive (draw 1,
+# discard 1) never counted in the first place.
+_LOOT_RE = re.compile(
+    r"draws? (two|three|four|five|x|that many) cards?,? (?:then )?"
+    r"discards? (?:\1|that many) cards?")
+
+# Real PROTECTION for a permanent you control — deliberately NARROWER than the
+# "Protection / trick" role, which lumps a combat pump ("gets +2/+2 until end of turn")
+# in with an actual answer to removal.
+#
+# This axis exists because its absence was the single biggest weakness of an all-in
+# single-threat deck and NO view could see it: `stats`, `quality` and `tier` all count
+# interaction and card advantage, and nothing asked "can I protect the thing I win
+# with?" It was found by an ad-hoc grep, not by any tool (session finding).
+#
+# `regenerate` is deliberately absent: "It can't be regenerated" is boilerplate on
+# removal spells, so keying on the word would score half the removal in the format as
+# protection. Prefer under-counting to a wrong count on a measured axis.
+_PROTECTION_RE = re.compile(
+    r"\bhexproof\b|\bindestructible\b|\bward\b|protection from"
+    r"|can'?t be the target of (?:spells|abilities)"
+    r"|counter target spell that targets"
+    r"|\bphases? out\b")
+
+
+def protection_effects(text):
+    """True if a card grants/has a real protection effect (ward, hexproof,
+    indestructible, protection from, untargetable, a counter-that-targets). Counts the
+    CARD, not its reach — a self-only ward on an irrelevant body still counts, which is
+    why the deck-level check below only flags an outright ZERO rather than scoring a
+    thin count as adequate."""
+    return bool(_PROTECTION_RE.search(_norm_role_text(text)))
 
 # Mechanics whose value depends on the DECK (colors of mana available, board
 # state), not the card in isolation — the cuts/grade step must check them against
@@ -904,6 +986,17 @@ _CA_CUES = re.compile(
     r"|\binvestigate\b",
     re.I)
 
+# The audit net MUST be a SUPERSET of what the precise classifier can match, or a
+# phrasing can be missed by BOTH — which is exactly what happened to Repulsive
+# Mutation ("counter up to one target spell unless…"): too narrow for the Counter
+# pattern AND absent from the broad cue, so the under-read wasn't even flagged.
+# Unioning the precise interaction/card-advantage patterns in makes that structurally
+# impossible: anything the classifier CAN see, the net also sees, and the flag still
+# only fires when the classifier tagged no matching role.
+_INT_CUE_PATS = [_INT_CUES] + [p for lbl in sorted(_INTERACTION_ROLES)
+                               for p in _ROLE_COMPILED_MAP[lbl]]
+_CA_CUE_PATS = [_CA_CUES] + _ROLE_COMPILED_MAP["Card advantage"]
+
 
 def role_coverage_flags(cards, carddata):
     """Cards whose oracle text likely holds a role the precise classifier MISSED — a
@@ -930,10 +1023,17 @@ def role_coverage_flags(cards, carddata):
             continue
         text = cd.get("text") or ""
         roles = set(classify_roles(text))
+        # Match the cues against the SAME normalized form classify_roles uses, and
+        # against the superset net, so the audit can't be blind where the classifier is.
+        t = _norm_role_text(text)
         missed = []
-        if _INT_CUES.search(text) and not (roles & _INTERACTION_ROLES):
+        if any(p.search(t) for p in _INT_CUE_PATS) and not (roles & _INTERACTION_ROLES):
             missed.append("interaction")
-        if _CA_CUES.search(text) and "Card advantage" not in roles:
+        # A loot is deliberately NOT card advantage, so strip it before testing the
+        # card-advantage cue — otherwise every looter would be reported as an
+        # under-read of the very rule that excludes it.
+        if (any(p.search(_LOOT_RE.sub(" ", t)) for p in _CA_CUE_PATS)
+                and "Card advantage" not in roles):
             missed.append("card advantage")
         if missed:
             under_read.append((n, "/".join(missed)))
@@ -942,10 +1042,24 @@ def role_coverage_flags(cards, carddata):
     return unclassified, under_read, no_data
 
 
+def _norm_role_text(text):
+    """Lowercased, unicode-minus-normalized oracle text — the one form every role
+    pattern and coverage cue is matched against, so the precise classifier and its
+    audit net can't disagree about the input either."""
+    return (text or "").lower().replace("−", "-")
+
+
 def classify_roles(text):
     """Return the set of functional-role labels a card's oracle text matches."""
-    t = (text or "").lower().replace("−", "-")  # normalize unicode minus
-    return {label for label, pats in _ROLE_COMPILED if any(p.search(t) for p in pats)}
+    t = _norm_role_text(text)
+    roles = {label for label, pats in _ROLE_COMPILED if any(p.search(t) for p in pats)}
+    if "Card advantage" in roles and _LOOT_RE.search(t):
+        # Blank the loot clause(s) and re-test: only drop the role when nothing ELSE
+        # in the text is a real net-positive draw (a card can loot AND draw).
+        stripped = _LOOT_RE.sub(" ", t)
+        if not any(p.search(stripped) for p in _ROLE_COMPILED_MAP["Card advantage"]):
+            roles.discard("Card advantage")
+    return roles
 
 
 # Mana production, detected broadly enough to catch dorks the "Ramp / fixing" role
@@ -1715,6 +1829,26 @@ def cmd_stats(args):
         print(f"  {'interaction total':20} {role_counts['interaction']:3}  "
               "(distinct removal/sweeper/counter cards)")
 
+    # PROTECTION axis. The role table's "Protection / trick" bucket mixes combat pumps
+    # in with real answers to removal, so a deck could show a healthy trick count while
+    # having no way at all to keep its key permanent alive. Report the narrow measure,
+    # and say so loudly at zero — especially when a `#: protect:` header names cards the
+    # deck is built around, which is the case where a single removal spell ends the game
+    # plan. (Found by hand-grepping a deck, not by any tool — that gap is the point.)
+    prot = role_counts.get("protection", 0)
+    print(f"  {'protection':20} {prot:3}  (ward/hexproof/indestructible-class — real "
+          "answers to removal, not combat pumps)")
+    if not prot:
+        signature = _protected(meta)
+        if signature:
+            print(f"    ⚠ ZERO protection, but `#: protect:` names {len(signature)} "
+                  f"build-around card(s) ({', '.join(sorted(signature)[:3])}"
+                  + ("…" if len(signature) > 3 else "")
+                  + ") — one removal spell undoes the plan.")
+        else:
+            print("    ⚠ ZERO protection — nothing here answers targeted removal on a key "
+                  "permanent; fine for a spell-based deck, a real gap for a threat-based one.")
+
     # Interaction profile (#5): the raw count treats all interaction alike, but a suite
     # that's all sorcery-speed and creature-only has real gaps. Break it down by speed
     # and by whether it can answer a NONCREATURE permanent (planeswalker / enchantment /
@@ -1889,7 +2023,6 @@ GENERIC_THEMES = {
 # tribe from carrying a home by itself. Kept separate from GENERIC_THEMES so other
 # consumers (which compare Title-case) are unaffected — fit_strength lowercases.
 _GENERIC_TRIBES = {"human", "hero", "villain"}
-_INTERACTION_ROLES = {"Removal (spot)", "Sweeper", "Counter"}
 
 
 def role_tally(cards, carddata):
@@ -1904,9 +2037,10 @@ def role_tally(cards, carddata):
         two — the per-role buckets still credit each role for the stats display),
       • basics and nonbasic lands are skipped.
     Returns a dict: each role → weighted count, plus 'interaction' (once-per-card
-    union of Removal/Sweeper/Counter) and 'card_advantage'."""
+    union of Removal/Sweeper/Counter), 'card_advantage', and 'protection' (real
+    ward/hexproof/indestructible-class effects — see `protection_effects`)."""
     per_role = {}
-    interaction = ca = 0
+    interaction = ca = prot = 0
     for q, n, s, c in cards:
         if n.lower() in BASICS:
             continue
@@ -1920,8 +2054,11 @@ def role_tally(cards, carddata):
             interaction += q
         if "Card advantage" in roles:
             ca += q
+        if protection_effects(cd["text"]):
+            prot += q
     per_role["interaction"] = interaction
     per_role["card_advantage"] = ca
+    per_role["protection"] = prot
     return per_role
 
 
@@ -4993,7 +5130,8 @@ def deck_quality_vector(d):
     declared_hdr = _declared_colors(dmeta)
     declared = declared_hdr or _deck_castable_colors(dmeta, cards, mana)
     uncast, _off = _castability(cards, declared, mana, carddata)
-    d_int, d_ca = deck_role_counts(cards, carddata)
+    _tally = role_tally(cards, carddata)
+    d_int, d_ca = _tally["interaction"], _tally["card_advantage"]
     return {
         "buildable": missing == 0 and short == 0, "missing": missing, "short": short,
         # Whether castability was audited against a DECLARED identity. Without a
@@ -5001,6 +5139,10 @@ def deck_quality_vector(d):
         # uncastable is 0 by construction (unverified, not a clean bill) — audit F16.
         "colors_declared": bool(declared_hdr),
         "uncastable": len(uncast), "interaction": d_int, "card_advantage": d_ca,
+        # Real ward/hexproof/indestructible-class effects. Reported, NOT fed into
+        # `tier_band` — the floor's formula is anchored by check_tier.py and a new term
+        # would silently re-grade the whole roster. Surfaced so a human sees a zero.
+        "protection": _tally["protection"],
         "avg_mv": round(sum(mvs) / len(mvs), 2) if mvs else 0.0, "early_drops": early,
         "creatures": creatures, "reach": reach,
         # The deck's game PLAN drives which axes its tier floor weights (#4): an aggro
@@ -5586,6 +5728,108 @@ def tier_consistency_issues():
     return out
 
 
+# A deck's `#: tier:` rationale is prose, so nothing kept it honest as the list changed
+# underneath it — and it went stale twice in one session: 40a's rationale still argued
+# from Chelonian Tackle and Unforgiving Aim after both were cut, and deck 40's cited a
+# 2.26 curve after a swap moved it to 2.32. A *defensible* grade rotting into an
+# indefensible one is the exact failure the tier guard exists to prevent, but the guard
+# only compares the LETTER to the floor — it never reads the argument. This does.
+#
+# Figures worth checking are the ones a rationale actually quotes. Each maps to a live
+# vector key; a mismatch is reported, never rewritten (the prose is a human argument).
+_RATIONALE_FIGURES = [
+    (re.compile(r"interaction[  ]+(\d+)", re.I), "interaction"),
+    (re.compile(r"card[- ]adv(?:antage)?[  ]+(\d+)", re.I), "card_advantage"),
+    (re.compile(r"(?:avg (?:nonland )?MV|curve(?: of)?)[  ]+(\d+\.\d+)", re.I), "avg_mv"),
+    (re.compile(r"(\d+)[- ]theme", re.I), "central_themes"),
+    (re.compile(r"(\d+) central themes", re.I), "central_themes"),
+    (re.compile(r"protection[  ]+(\d+)", re.I), "protection"),
+]
+# Words that are also real card names ("Negate", "Rest in Peace", …). Requiring a
+# multi-word name or a long single word keeps the scan quiet; a citation of a one-word
+# card is rare in prose and not worth a false positive on every "Opt" or "Duress".
+_RATIONALE_MIN_LEN = 9
+
+# A rationale legitimately names cards that AREN'T in the deck: it documents the swap
+# that removed one ("Essence Scatter's creatures-only … became hard counters"), notes a
+# land that left, or points at a flex/craft option deliberately held out of the 60
+# (Genesis Wave). Flagging those would make the audit noise, and a noisy audit gets
+# ignored — which is worse than no audit. So a citation sitting next to change- or
+# flex-language is treated as history, not as a live argument. The cost is a real miss
+# when someone writes "held from A by <cut card>" right after the word "replaced"; the
+# figure check below is the independent backstop for that.
+_HISTORY_CUES = re.compile(
+    r"\b(?:was|were|became|becomes|replac\w*|swap\w*|cut\w*|remov\w*|left|leaves|"
+    r"instead|no longer|previously|earlier|former\w*|over|queued|flex|craft target|"
+    r"alternative|revisit|option|skipped|held out)\b", re.I)
+_HISTORY_WINDOW = 140
+
+
+def _cites_as_history(prose, pos, length):
+    """True when a card citation sits near change-/flex-language, i.e. the prose is
+    DESCRIBING a card that left (or one deliberately not included) rather than arguing
+    from it. Window is generous on purpose — see _HISTORY_CUES."""
+    lo = max(0, pos - _HISTORY_WINDOW)
+    hi = min(len(prose), pos + length + _HISTORY_WINDOW)
+    return bool(_HISTORY_CUES.search(prose[lo:hi]))
+
+
+def rationale_staleness(d, carddata=None):
+    """(stale_cards, stale_figures) for a deck's `#: tier:` / `#: notes:` prose.
+
+      stale_cards   — [(name, header)] the rationale names that are NOT in the deck
+                      any more (a cut card the argument still leans on),
+      stale_figures — [(key, quoted, actual)] a figure the prose quotes that no longer
+                      matches `deck_quality_vector`.
+
+    Report-only: the prose is a human argument and this never edits it. Names are
+    matched against known cards so ordinary English can't trip it."""
+    carddata = carddata if carddata is not None else load_card_data()
+    meta, cards = parse_deck_file(d["path"])
+    in_deck = {n for _q, n, _s, _c in cards}
+    in_deck |= {n.split(" // ")[0] for n in list(in_deck)}
+    stale_cards, stale_figures = [], []
+    for header in ("tier",):
+        prose = (meta or {}).get(header, "") or ""
+        if not prose:
+            continue
+        # Mask every card the deck DOES run before scanning, longest name first. Without
+        # this, a shorter card name nested inside a longer one reads as a stale citation:
+        # "the Ooze Spill / Amazing Acrobatics upgrade" reported the card *The Ooze*.
+        masked = prose
+        for nm in sorted(in_deck, key=len, reverse=True):
+            masked = masked.replace(nm, " " * len(nm))
+        for name, row in carddata.items():
+            disp = row.get("name") or name
+            if len(disp) < _RATIONALE_MIN_LEN and " " not in disp:
+                continue
+            if disp in in_deck or name in BASICS or disp.split(" // ")[0] in in_deck:
+                continue
+            # CASE-SENSITIVE: prose capitalizes a card citation, so this is what keeps
+            # ordinary vocabulary out. A lowercase "counterspell"/"food"/"negate" in a
+            # sentence is not a reference to the card of that name.
+            pos = masked.find(disp)
+            if pos < 0:
+                continue
+            if _cites_as_history(masked, pos, len(disp)):
+                continue
+            stale_cards.append((disp, header))
+    if stale_cards:
+        stale_cards = sorted(set(stale_cards))
+    vec = deck_quality_vector(d)
+    tier_prose = (meta or {}).get("tier", "") or ""
+    for rx, key in _RATIONALE_FIGURES:
+        for m in rx.finditer(tier_prose):
+            quoted, actual = m.group(1), vec.get(key)
+            if actual is None:
+                continue
+            same = (abs(float(quoted) - float(actual)) < 0.005 if "." in quoted
+                    else int(quoted) == int(actual))
+            if not same and (key, quoted, actual) not in stale_figures:
+                stale_figures.append((key, quoted, actual))
+    return stale_cards, stale_figures
+
+
 def cmd_tier(args):
     """Tier robustness (F12): show a deck's claimed tier next to the tier FLOOR its
     measurable quality vector supports, and flag an indefensible/stale letter. It
@@ -5600,6 +5844,21 @@ def cmd_tier(args):
     claimed = _deck_tier(meta)
     vec = deck_quality_vector(d)
     implied = tier_band(vec)
+    if getattr(args, "audit_rationale", False):
+        cards_stale, figs = rationale_staleness(d)
+        print(f"Rationale audit — deck {d['id']}: {d['name'] or d['path']}")
+        if not cards_stale and not figs:
+            print("  ✓ rationale is current — every card it cites is still in the deck and "
+                  "every figure matches the live vector.")
+            return 0
+        for nm, hdr in cards_stale:
+            print(f"  ⚠ `#: {hdr}:` argues from {nm}, which is NO LONGER in the deck.")
+        for key, quoted, actual in figs:
+            print(f"  ⚠ `#: tier:` quotes {key.replace('_', ' ')} {quoted}, "
+                  f"but the live vector says {actual}.")
+        print("  Rewrite the prose (or re-grade) — a stale argument is how a defensible "
+              "letter turns into an indefensible one. Nothing was changed.")
+        return 0
     print(f"Tier — deck {d['id']}: {d['name'] or d['path']}")
     print(f"  claimed tier  : {claimed or '(untiered)'}")
     print(f"  metrics floor : {implied}   (measurable-only — blind to bombs/meta, so it under-rates)")
@@ -5608,7 +5867,15 @@ def cmd_tier(args):
              if vec.get('plan') == 'aggro' else "  (floor weights interaction + card advantage)"))
     print(f"  vector        : buildable {vec['buildable']} · uncastable {vec['uncastable']} · "
           f"interaction {vec['interaction']} · card-adv {vec['card_advantage']} · "
+          f"protection {vec.get('protection', 0)} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
+    # Protection is REPORTED, never fed into tier_band (the floor formula is anchored by
+    # check_tier.py). A zero here is a judgment prompt, not a band change.
+    if not vec.get("protection"):
+        sig = _protected(meta)
+        print("  ⚠ ZERO protection (no ward/hexproof/indestructible-class effect)"
+              + (f" while `#: protect:` names {len(sig)} build-around card(s)" if sig else "")
+              + " — weigh this before granting a band the metrics floor allows.")
     # The floor caps at C on any uncastable stray; without a #: colors: header that
     # count is derived from the deck's own cards, so it's 0 by construction — say so
     # rather than imply a verified-clean castability (audit F16).
@@ -6193,6 +6460,10 @@ def main():
     p.add_argument("id")
     p.add_argument("--strict", action="store_true", help="exit non-zero on a tier mismatch (default: warn only)")
     p.add_argument("--to", metavar="TIER", help="show the measurable gap + owned fillers to reach TIER's floor (S/A/B/C/D)")
+    p.add_argument("--audit-rationale", action="store_true",
+                   help="flag `#: tier:`/`#: notes:` prose that has gone stale — cards it "
+                        "cites that are no longer in the deck, and figures that no longer "
+                        "match the live quality vector")
     p = sub.add_parser("redundancy",
                        help="competitive-consistency planner: virtual (functional) copies first, duplicates as fallback")
     p.add_argument("id")

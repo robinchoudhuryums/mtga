@@ -51,6 +51,110 @@ class TestClassifyRoles:
         assert not (roles & deck._INTERACTION_ROLES)
         assert "Card advantage" not in roles
 
+    # --- Under-count fixes. Each string below scored ZERO roles before the list-aware
+    # removal pattern / widened Counter pattern / library-tuck pattern went in, so the
+    # cards read as having no interaction at all and the tier floor graded on that.
+    NONCREATURE_REMOVAL = [
+        # Origin of Metalbending, Seedship Impact — a two-type "or" list.
+        "Destroy target artifact or enchantment.",
+        # Broken Wings, Shattered Wings, Spider Food — a comma list ending in a creature.
+        "Destroy target artifact, enchantment, or creature with flying.",
+    ]
+    ADJECTIVE_REMOVAL = [
+        # The hand-kept alternation spelled these out; the rewrite must not lose them.
+        "Destroy target creature.", "Exile target attacking creature.",
+        "Destroy target tapped creature.", "Destroy target nonland permanent.",
+        "Exile target creature or planeswalker.",
+    ]
+
+    def test_noncreature_permanent_removal_counts(self):
+        for text in self.NONCREATURE_REMOVAL:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_adjective_and_plain_removal_still_counts(self):
+        for text in self.ADJECTIVE_REMOVAL:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_counter_up_to_n_target_counts(self):
+        # Repulsive Mutation. Missed by the Counter pattern AND by the coverage net,
+        # so the under-read was invisible to the audit meant to catch it.
+        assert "Counter" in deck.classify_roles(
+            "Put X +1/+1 counters on target creature you control. Then counter up to one "
+            "target spell unless its controller pays mana equal to the greatest power "
+            "among creatures you control.")
+
+    def test_library_tuck_is_removal(self):
+        # Floodpits Drowner's activated ability — the creature leaves the battlefield.
+        assert "Removal (spot)" in deck.classify_roles(
+            "{1}{U}, {T}: Shuffle this creature and target creature with a stun counter "
+            "on it into their owners' libraries.")
+
+    def test_equal_draw_discard_loot_is_not_card_advantage(self):
+        # Kiora, the Rising Tide: net zero cards, so not advantage — the same rule that
+        # excludes a single-draw cantrip.
+        assert "Card advantage" not in deck.classify_roles(
+            "When Kiora enters, draw two cards, then discard two cards.")
+
+    def test_net_positive_draw_survives_the_loot_filter(self):
+        # Draw 3 / discard 1 is +2 cards: the loot filter must not swallow it.
+        assert "Card advantage" in deck.classify_roles("Draw three cards. Discard a card.")
+        # And a loot alongside a real draw keeps the role.
+        assert "Card advantage" in deck.classify_roles(
+            "Draw two cards, then discard two cards. Then draw three cards.")
+
+    def test_half_x_draw_counts(self):
+        # Wan Shi Tong, Librarian — "draw half X cards" was in neither the role pattern
+        # nor the audit cue, so it was uncounted AND unflagged.
+        assert "Card advantage" in deck.classify_roles(
+            "When this creature enters, put X +1/+1 counters on him. Then draw half X "
+            "cards, rounded down.")
+
+
+class TestCoverageNetIsSuperset:
+    """The audit net must see everything the precise classifier can, or a phrasing is
+    missed by BOTH — the hole that hid Repulsive Mutation's counter."""
+
+    def test_interaction_net_covers_every_precise_pattern(self):
+        for label in deck._INTERACTION_ROLES:
+            for pat in deck._ROLE_COMPILED_MAP[label]:
+                assert pat in deck._INT_CUE_PATS, f"{label}: {pat.pattern}"
+
+    def test_card_advantage_net_covers_every_precise_pattern(self):
+        for pat in deck._ROLE_COMPILED_MAP["Card advantage"]:
+            assert pat in deck._CA_CUE_PATS, pat.pattern
+
+
+class TestProtectionAxis:
+    def test_real_protection_detected(self):
+        for text in ("Enchanted creature has ward {2}.",
+                     "Target creature you control gains hexproof until end of turn.",
+                     "It gains indestructible until end of turn.",
+                     "Creatures you control have protection from red."):
+            assert deck.protection_effects(text), text
+
+    def test_combat_pump_is_not_protection(self):
+        # The broad "Protection / trick" role counts these; this axis must not.
+        for text in ("Target creature gets +2/+2 until end of turn.",
+                     "Double target creature's power and toughness until end of turn.",
+                     "Target creature you control gets +0/+10 until end of turn."):
+            assert not deck.protection_effects(text), text
+
+    def test_cant_be_regenerated_boilerplate_is_not_protection(self):
+        # "It can't be regenerated" rides along on removal spells, so keying on the word
+        # would score half the format's removal as protection.
+        assert not deck.protection_effects(
+            "Destroy target creature. It can't be regenerated.")
+
+    def test_role_tally_reports_protection_quantity_weighted(self):
+        cd = {"snakeskin veil": {"type": "Instant", "colors": "G",
+                                 "text": "Put a +1/+1 counter on target creature you "
+                                         "control. It gains hexproof until end of turn."},
+              "shock": {"type": "Instant", "text": "Shock deals 2 damage to any target.",
+                        "colors": "R"}}
+        t = deck.role_tally([(2, "Snakeskin Veil", "", ""), (1, "Shock", "", "")], cd)
+        assert t["protection"] == 2
+        assert t["interaction"] == 1
+
 
 class TestRoleTally:
     CD = {
