@@ -4,6 +4,14 @@
 #: colors: R
 #: archetype: Mono-red Thor-themed aggro / burn.
 #: notes: Mono-red, Thor-themed aggro.
+#: notes: PROTECTION: `deck.py stats` flags protection 0, and that is CORRECT AND FINE
+#: notes: here — checked, not waved away. Protection matters when a plan hangs on one
+#: notes: permanent; this deck's resilience is threat DENSITY. 26 creatures, `redundancy`
+#: notes: reads burn as a virtual 12-of and spot removal 10 deep, and there is no
+#: notes: `#: protect:` build-around to defend. Losing any single body costs a turn of
+#: notes: clock, not the game. Spending slots on ward/hexproof would dilute the clock,
+#: notes: which IS the plan. The real thin axes are card advantage 1 and a sweeper count
+#: notes: of 1 — that is where to look if it underperforms, not protection.
 
 # Nonland
 1 J. Jonah Jameson (SPM) 81

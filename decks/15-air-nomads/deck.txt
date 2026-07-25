@@ -1,6 +1,12 @@
 #: name: Air Nomads
 #: format: Standard
-#: tier: B — Azorius fliers tempo (strong B); airbend/waterbend tempo + a counter (It'll Quench Ya!) + Wan Shi Tong card advantage. Strict interaction metric (3) undersells it — airbend exile / waterbend / Watery Grasp lockdown aren't tallied. Flavor-first singleton build caps it short of A.
+#: tier: B — Azorius fliers tempo (strong B); airbend/waterbend tempo + a counter (It'll Quench Ya!) + Wan Shi Tong card advantage. The interaction metric now reads 5 (the classifier was fixed to
+#: tier: credit artifact/enchantment removal and library-tuck answers), and airbend
+#: tier: exile / waterbend / Watery Grasp lockdown still aren't tallied on top of that —
+#: tier: so the real figure is higher again. Kept at B anyway, one band below the floor:
+#: tier: this is a flavour-first singleton build with a DIFFUSE spine (19 central themes)
+#: tier: and only 1 protection effect, which is more than the single weakness an A
+#: tier: tolerates. A deliberate below-floor call, like 35a and 21a.
 #: colors: WU
 #: archetype: Azorius (W/U) Air Nomads fliers / airbend + waterbend tempo.
 #: notes: Azorius (W/U) — Air Nomads fliers / tempo. A-track pass: +Wan Shi Tong (owned card-advantage

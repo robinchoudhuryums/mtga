@@ -875,3 +875,36 @@ class TestPowerThresholdFlags:
 
     def test_no_creatures_is_not_an_error(self):
         assert deck.power_threshold_flags([(1, "Garruk's Uprising", "", "")], self.CD) == []
+
+
+class TestRationaleStaleness:
+    """The audit must flag a stale CLAIM without flagging accurate HISTORY — a rationale
+    legitimately documents the change that produced the current list."""
+
+    def _deck(self, tmp_path, tier_lines, cards=("1 Shock (M21) 159",)):
+        p = tmp_path / "d.txt"
+        p.write_text("\n".join([f"#: tier: {ln}" for ln in tier_lines]
+                                + ["#: colors: R", "", "Deck", *cards]) + "\n")
+        return {"id": "t", "name": "t", "path": str(p)}
+
+    def test_flags_a_cut_card_the_argument_leans_on(self, tmp_path):
+        d = self._deck(tmp_path, ["B — held to B because Lightning Bolt is the only answer."])
+        cards, _figs = deck.rationale_staleness(d)
+        assert "Lightning Bolt" in [c for c, _h in cards]
+
+    def test_history_citation_is_suppressed(self, tmp_path):
+        d = self._deck(tmp_path, ["B — re-graded after Lightning Bolt was cut for Shock."])
+        cards, _figs = deck.rationale_staleness(d)
+        assert cards == []
+
+    def test_lowercase_common_noun_is_not_a_citation(self, tmp_path):
+        # "Counterspell" is a real card name; the lowercase word is not a reference.
+        d = self._deck(tmp_path, ["B — light on counterspell effects."])
+        cards, _figs = deck.rationale_staleness(d)
+        assert cards == []
+
+    def test_historical_figure_is_suppressed(self, tmp_path):
+        # "took interaction 1->4" describes a past change, not the current state.
+        d = self._deck(tmp_path, ["A — the package took interaction 1 to 4."])
+        _cards, figs = deck.rationale_staleness(d)
+        assert figs == []

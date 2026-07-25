@@ -1,6 +1,12 @@
 #: name: Earth's Mightiest
 #: format: Standard
-#: tier: B — Selesnya go-wide heroes; fast clock but thin interaction (3)
+#: tier: B — Selesnya go-wide heroes. The old one-line reason ("fast clock but thin
+#: tier: interaction (3)") is no longer true on either count: the classifier fix reads
+#: tier: interaction 7, and the plan infers as MIDRANGE, not aggro, on a 3.14 curve. The
+#: tier: letter still stands, but on a different axis — CARD ADVANTAGE is 0. A go-wide
+#: tier: board with no refuel folds to a single sweeper, and that is the one clear
+#: tier: weakness plus a thin 8-theme spine. Path to A: a repeatable draw engine that
+#: tier: scales off the wide board, not more interaction.
 #: colors: GW
 #: archetype: Selesnya (G/W) Avengers heroes go-wide.
 #: notes: Selesnya (G/W) — Avengers heroes go-wide.

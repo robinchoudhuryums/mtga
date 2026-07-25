@@ -6065,6 +6065,14 @@ def rationale_staleness(d, carddata=None):
             quoted, actual = m.group(1), vec.get(key)
             if actual is None:
                 continue
+            # Same history suppression the card-citation scan uses, and for the same
+            # reason. A rationale legitimately quotes PAST figures when it documents a
+            # change — "took interaction 1→4", "Re-graded B→A after the interaction
+            # package" — and flagging those made the check cry wolf on 9 decks, which
+            # is how a check gets ignored. Only a figure presented as the CURRENT state
+            # is worth reporting.
+            if _cites_as_history(tier_prose, m.start(), len(m.group(0))):
+                continue
             same = (abs(float(quoted) - float(actual)) < 0.005 if "." in quoted
                     else int(quoted) == int(actual))
             if not same and (key, quoted, actual) not in stale_figures:

@@ -1,6 +1,11 @@
 #: name: Blink
 #: format: Standard
-#: tier: B — Azorius blink value (strong B); strong ETB engine, now with repeatable tempo interaction the engine abuses (Floodpits Drowner tap+shuffle-away, Sharae tap-lockdown-that-draws) + a card-advantage engine (Cloudblazer draw-2 on every blink). NOTE: the heuristic "interaction total (3)" undercounts this — it only tallies destroy/exile/counter, not tap/stun/shuffle. Residual: still a slow value deck by design.
+#: tier: B — Azorius blink value (strong B); strong ETB engine, now with repeatable tempo interaction the engine abuses (Floodpits Drowner tap+shuffle-away, Sharae tap-lockdown-that-draws) + a card-advantage engine (Cloudblazer draw-2 on every blink). NOTE: the old "interaction total (3)" figure is stale — the count now
+#: tier: reads 6, and library-tuck answers (Floodpits Drowner's shuffle-away) are
+#: tier: credited since the classifier fix, so tap/stun tempo is no longer invisible.
+#: tier: Kept at B one band below the floor: card advantage is 1, the curve is heavy at
+#: tier: 3.59, and protection is 1 — a slow value deck by design, and two thin axes are
+#: tier: more than an A's single allowed weakness.
 #: colors: WU
 #: archetype: Azorius (W/U) blink / "creatures-entering-matters" value — repeatable blink engines (Y'shtola, Don & Leo, Wiccan) re-trigger both ETB value creatures AND enter-matters payoffs (Serra Redeemer, Mighty Mutanimals, East Wind Avatar). A Sneak tempo package doubles as bounce-to-recast ETB recursion.
 #: notes: Tuned from the 44-card brew. All hybrids kept — {W/B}/{U/B}/{R/W}/{G/W}
