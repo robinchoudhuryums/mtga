@@ -481,7 +481,14 @@ that regex read can silently **under**-count a phrasing it doesn't recognize,
 any card whose text *reads like* interaction / card advantage the classifier didn't
 tag ("⚠ Possible UNDER-COUNT — verify"), so a miss becomes an explicit prompt to
 read the card rather than a silent gap in the count. It never changes a count — it
-tells you where to look. `stats` also prints an **interaction profile**: the raw
+tells you where to look. (Working that list is worth the time: the second pass
+through it found that the bounce pattern required the literal text "owner hand"
+while Magic writes "to its *owner's* hand", so every unconditional bounce spell in
+the collection had been scoring zero roles. Fixing that plus six other templatings
+moved 34 of 58 decks, all upward. Parenthetical **reminder text** is stripped before
+the net runs, because Ward's reminder — "…counter it unless that player pays {2}" —
+was reporting every warded creature as a missed answer.) `stats` also prints an
+**interaction profile**: the raw
 count treats all removal alike, so it breaks interaction down by **speed** (instant
 vs sorcery) and by whether it can answer a **noncreature permanent** (planeswalker /
 enchantment / artifact), flagging "all sorcery-speed" or "no noncreature answer".
@@ -489,7 +496,7 @@ enchantment / artifact), flagging "all sorcery-speed" or "no noncreature answer"
 Every role **count carries its own uncertainty**. A heuristic classifier reports a
 false negative as a fact — a card it can't parse contributes 0, and `0` reads as
 "none" rather than "not detected". So counts render as `7`, `3 +2?` (two more cards
-read like that role but couldn't be tagged), or `8 +4? (3 unclassified)`. 26 of 58
+read like that role but couldn't be tagged), or `8 +4? (3 unclassified)`. 52 of 58
 decks show uncertainty inline; one of them was graded on interaction 3 when a hand
 count said 7.
 
