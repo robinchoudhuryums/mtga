@@ -38,9 +38,9 @@
 #: notes: rule: 40 holds up counterspells and wins with one huge X-spell, 40a commits a
 #: notes: threat on turn 2-3 and doubles it. Do NOT migrate the doubler package back
 #: notes: into 40 — the two plans want the same mana on the same turns.
-#: notes: Aspirational WIP. Craft targets (9 — 1 mythic, 1 rare, 7 uncommon):
+#: notes: Aspirational WIP. Craft targets (10 — 1 mythic, 1 rare, 8 uncommon):
 #: notes: Mossborn Hydra (M-tier payoff, the centerpiece), Bristly Bill Spine Sower,
-#: notes: Biogenic Upgrade, Sage of the Fang, Seedship Agrarian,
+#: notes: Biogenic Upgrade, Sage of the Fang, Seedship Agrarian, Hemosymbic Mite,
 #: notes: Tifa's Limit Break, Greenbelt Guardian, Grappling Kraken, Tam Observant
 #: notes: Sequencer. Zimone / Growth Curve / Emil are OWNED singles also run in deck 30
 #: notes: — Arena copies are shared across decks, so no craft is needed for them.
@@ -71,7 +71,7 @@ Deck
 1 The Goose Mother (WOE) 204
 1 Greenbelt Guardian (DFT) 164
 1 Kid Loki (MSH) 63
-1 Bold Biochemist (MSH) 48
+1 Hemosymbic Mite (EOE) 190
 1 Wan Shi Tong, Librarian (TLA) 78
 
 # Finishers / pump
