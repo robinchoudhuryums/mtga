@@ -21,7 +21,8 @@
 #: notes: (Wildwood Scourge, The Goose Mother) are kept as fungible X-payoff FINISHERS, not
 #: notes: as a counters engine; if `counters` reads as a central theme, trim them for more
 #: notes: non-counter X-spells to stay clear of decks 04/30/40a. Craft targets: Paradox
-#: notes: Surveyor, Mind Spring, Doppelgang, Finale of Revelation.
+#: notes: Surveyor, Mind Spring, Finale of Revelation, Divergent Equation, Matterbending
+#: notes: Mage.
 
 Deck
 # Ramp / dorks
@@ -49,7 +50,7 @@ Deck
 1 Mind Spring (BLB) 389
 1 Portent of Calamity (BLB) 66
 1 Finale of Revelation (FDN) 589
-1 Doppelgang (MKM) 198
+1 Divergent Equation (SOS) 43
 1 Ignis Scientia (FIN) 227
 1 Kiora, the Rising Tide (FDN) 45
 
@@ -63,17 +64,18 @@ Deck
 
 # Interaction — removal / tempo
 1 Epic Fight (MSH) 166
-1 Broken Wings (DFT) 156
+1 Matterbending Mage (SOS) 59
 1 Procrastinate (SOS) 64
 1 Chelonian Tackle (SOS) 142
 1 Unforgiving Aim (ECL) 200
 
-# Lands — 25, Simic; owned untapped duals over straight basics
+# Lands — 26, Simic; owned untapped duals over straight basics (Opulent Palace cut —
+# it always entered tapped and its {B} was a dead color here)
 1 Breeding Pool (TRK) 279
 1 Willowrush Verge (DFT) 270
 1 Dreamroot Cascade (SOS) 254
 1 Thornwood Falls (TDM) 269
-1 Opulent Palace (TDM) 264
+1 Agna Qel'a (TLA) 264
 1 Meditation Pools (TLA) 272
 10 Island (MSH) 289
 10 Forest (MSH) 295
