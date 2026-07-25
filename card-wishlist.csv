@@ -111,32 +111,6 @@ III — Ecliptic Growl — Draw a card if you control the creature with the grea
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,1.5
-"Gishath, Sun's Avatar",Legendary Creature — Dinosaur Avatar,"Vigilance, trample, haste
-Whenever Gishath deals combat damage to a player, reveal that many cards from the top of your library. Put any number of Dinosaur creature cards from among them onto the battlefield and the rest on the bottom of your library in a random order.",W/R/G,Dinosaur; Avatar; vigilance; combat; haste; aggro; trample; evasion,LCI,229,Mythic,28,,7.0
-"Saheeli, the Sun's Brilliance",Legendary Creature — Human Artificer,"{U}{R}, {T}: Create a token that's a copy of another target creature or artifact you control, except it's an artifact in addition to its other types. It gains haste. Sacrifice it at the beginning of the next end step.",U/R,Human; Artificer; sacrifice; tokens,LCI,239,Mythic,25,"2-mana PW, copy a creature/artifact each turn",7.5
-Sovereign Okinec Ahau,Legendary Creature — Cat Noble,"Ward {2}
-Whenever Sovereign Okinec Ahau attacks, for each creature you control with power greater than that creature's base power, put a number of +1/+1 counters on that creature equal to the difference.",W/G,Cat; Noble; counters; ward; protection,LCI,240,Mythic,36,,5.0
-Bedrock Tortoise,Creature — Turtle,"During your turn, creatures you control have hexproof.
-Each creature you control with toughness greater than its power assigns combat damage equal to its toughness rather than its power.",G,Turtle,LCI,176,Rare,20b,toughness-matters payoff (Doran: assigns dmg = toughness) + team hexproof — exactly 20b's plan,6.5
-Get Lost,Instant,"Destroy target creature, enchantment, or planeswalker. Its controller creates two Map tokens. (They're artifacts with ""{1}, {T}, Sacrifice this token: Target creature you control explores. Activate only as a sorcery."")",W,sacrifice; tokens; removal; explore; counters; selection,LCI,14,Rare,36a,,4.5
-Hulking Raptor,Creature — Dinosaur,"Ward {2}
-At the beginning of your first main phase, add {G}{G}.",G,Dinosaur; ward; protection,LCI,191,Rare,28,,6.0
-Kutzil's Flanker,Creature — Cat Warrior,"Flash
-When this creature enters, choose one —
-• Put a +1/+1 counter on this creature for each creature that left the battlefield under your control this turn.
-• You gain 2 life and scry 2.
-• Exile target player's graveyard.",W,Cat; Warrior; counters; reanimator; graveyard; lifegain; removal; etb; scry; flash; tempo; selection,LCI,20,Rare,7,"Flash G flyer, big counters OR removal — the flexible instant-speed interaction Earth's Mightiest (7) lacks",6
-Palani's Hatcher,Creature — Dinosaur,"Other Dinosaurs you control have haste.
-When this creature enters, create two 0/1 green Dinosaur Egg creature tokens.
-At the beginning of combat on your turn, if you control one or more Eggs, sacrifice an Egg, then create a 3/3 green Dinosaur creature token.",R/G,Dinosaur; sacrifice; tokens; etb,LCI,237,Rare,28,,6.0
-"Kutzil, Malamet Exemplar",Legendary Creature — Cat Warrior,"Your opponents can't cast spells during your turn.
-Whenever one or more creatures you control each with power greater than its base power deals combat damage to a player, draw a card.",W/G,Cat; Warrior; card draw,LCI,232,Uncommon,36,,2.5
-Rampaging Ceratops,Creature — Dinosaur,This creature can't be blocked except by three or more creatures.,R,Dinosaur,LCI,162,Uncommon,28,,4.5
-Spyglass Siren,Creature — Siren Pirate,"Flying
-When this creature enters, create a Map token. (It's an artifact with ""{1}, {T}, Sacrifice this token: Target creature you control explores. Activate only as a sorcery."")",U,Siren; Pirate; sacrifice; tokens; etb; explore; flying; evasion; counters; selection,LCI,78,Uncommon,27,,3.0
-Soaring Sandwing,Creature — Dinosaur,"Flying
-When this creature enters, you gain 3 life.
-Plainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, put it into your hand, then shuffle.)",W,Dinosaur; lifegain; etb; flying; evasion; plainscycling; card draw; lands; landcycling; typecycling; cycling,LCI,35,Common,28,,1.5
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
@@ -360,26 +334,3 @@ Weather Maker,Artifact,"Landfall — Whenever a land you control enters, put a c
 {T}: Add one mana of any color.
 {T}, Remove two charge counters from this artifact: Add {C}{C}.
 {T}, Remove three charge counters from this artifact: It deals 3 damage to any target.",Colorless,counters; burn; mana; landfall; lands; ramp,TMT,182,Rare,general,landfall any-color ramp rock — flexible fixing/ramp (also 13/19a landfall),5.5
-Realm-Scorcher Hellkite,Creature — Dragon,"Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)
-Flying, haste
-When this creature enters, if it was bargained, add four mana in any combination of colors.
-{1}{R}: This creature deals 1 damage to any target.",R,Dragon; sacrifice; burn; etb; flying; evasion; haste; aggro; bargain; value,WOE,145,Mythic,14,,7.5
-Restless Cottage,Land,"This land enters tapped.
-{T}: Add {B} or {G}.
-{2}{B}{G}: This land becomes a 4/4 black and green Horror creature until end of turn. It's still a land.
-Whenever this land attacks, create a Food token and exile up to one target card from a graveyard.",B/G,graveyard; tokens; mana; food,WOE,258,Rare,5,"B/G creature-land for Coming of Galactus (5): permanent fixing, never a dead draw, a 4/4 inevitability threat — the A-lever manland",6.0
-Faerie Dreamthief,Creature — Faerie Warlock,"Flying
-When this creature enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
-{2}{B}, Exile this card from your graveyard: You draw a card and you lose 1 life.",B,Faerie; Warlock; graveyard; card draw; etb; selection; flying; evasion; surveil,WOE,89,Uncommon,22,,3.5
-Food Coma,Enchantment,"When this enchantment enters, exile target creature an opponent controls until this enchantment leaves the battlefield. Create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",W,lifegain; sacrifice; tokens; removal; etb; food,WOE,308,Uncommon,36; 29,,5.0
-Intrepid Trufflesnout // Go Hog Wild,Creature — Boar // Instant — Adventure,"Whenever this creature attacks alone, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."") // Target creature gets +2/+2 until end of turn. (Then exile this card. You may cast the creature later from exile.)",G,Boar; Adventure; lifegain; sacrifice; tokens; food; pump,WOE,320,Uncommon,36,,4.0
-Night of the Sweets' Revenge,Enchantment,"When this enchantment enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
-Foods you control have ""{T}: Add {G}.""
-{5}{G}{G}, Sacrifice this enchantment: Creatures you control get +X/+X until end of turn, where X is the number of Foods you control. Activate only as a sorcery.",G,lifegain; sacrifice; tokens; mana; etb; food; pump,WOE,178,Uncommon,29; 36,,3.5
-Old Flitterfang,Legendary Creature — Rat Faerie,"Flying
-At the beginning of each end step, if a creature died this turn, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
-{2}{B}, Sacrifice another creature or artifact: Old Flitterfang gets +2/+2 until end of turn.",B,Rat; Faerie; lifegain; sacrifice; tokens; food; pump; flying; evasion,WOE,316,Uncommon,21,,4.0
-Provisions Merchant,Creature — Beast Peasant,"When this creature enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
-Whenever this creature attacks, you may sacrifice a Food. If you do, attacking creatures get +1/+1 and gain trample until end of turn.",G,Beast; Peasant; lifegain; sacrifice; tokens; etb; food; pump,WOE,321,Uncommon,36a,,3.0
-Scream Puff,Creature — Horror,"Deathtouch
-Whenever this creature deals combat damage to a player, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",B,Horror; lifegain; sacrifice; tokens; food; deathtouch; combat; removal,WOE,105,Common,21,,2.5
