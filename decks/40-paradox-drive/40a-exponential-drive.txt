@@ -14,30 +14,33 @@
 #: archetype: 30 Fractalandtastic explicitly "goes wide" on Fractal tokens in Temur. This
 #: archetype: one runs NO creature-token ENGINE on purpose — every counter is aimed at one
 #: archetype: body. (Emil is here for its trample line, not its Fractal mana sink.)
-#: tier: B — Simic landfall counters-midrange. The metrics floor reads A, but only just and
-#: tier: on a shape that doesn't hold up: interaction is exactly 5, the A-floor MINIMUM, and
-#: tier: only 3 of those are instant-speed with 3 able to answer a noncreature permanent, so
-#: tier: a resolved planeswalker or enchantment often sits there. Counters are THIN at 2
-#: tier: (`deck.py redundancy 40a`). More decisive: this is an ALL-IN SINGLE-THREAT deck with
-#: tier: NO protection — zero ward / hexproof / indestructible anywhere in the 60, and the
-#: tier: two "protection" cards are pump tricks (Tifa's Limit Break, Chelonian Tackle) that
-#: tier: don't answer a destroy or an exile. One removal spell on the doubled body resets the
-#: tier: whole plan and strands the doublers as blanks. That is TWO clear weaknesses where an
-#: tier: A tolerates one, so it is graded one band BELOW the floor — deliberately, like 35a
-#: tier: and 21a. What it does have is a genuinely deep spine: `redundancy` reads a virtual
-#: tier: 8-of counter-DOUBLER, 5-of landfall, 5-of lands and 9-of payoff, and the manabase is
-#: tier: clean (26 lands, 87% keepable, 0 uncastable), so the engine itself is consistent —
-#: tier: it is the fragility of the win-con, not variance, that caps this.
-#: tier: PATH TO A: add real protection for the threat (a ward/indestructible effect or a
-#: tier: counterspell held for removal) and lift interaction above the floor minimum with
-#: tier: instant-speed noncreature answers. Do NOT fix it by adding more doublers.
+#: tier: B — Simic landfall counters-midrange, matching the metrics floor. The engine itself
+#: tier: is strong and consistent: `deck.py redundancy 40a` reads a virtual 8-of counter-
+#: tier: DOUBLER, 5-of landfall, 5-of lands and 9-of payoff, on a clean manabase (26 lands,
+#: tier: 87% keepable openers, 0 uncastable) — so nothing here is capped by singleton
+#: tier: variance. The earlier grade was capped by TWO weaknesses; one is now fixed:
+#: tier: FIXED — win-con fragility. This was an all-in single-threat deck with zero ward /
+#: tier: hexproof / indestructible in the 60, so one removal spell reset the plan and
+#: tier: stranded every doubler. Kid Loki now gives standing HEXPROOF to any creature that
+#: tier: got a counter this turn — which, in a deck that puts or doubles counters on every
+#: tier: land drop, is most turns from ~T3 — and Origin of Metalbending adds instant-speed
+#: tier: indestructible. Both are owned, so this cost no wildcards.
+#: tier: REMAINING CAP — creature removal. Measured interaction is 4, below the A-floor's 5.
+#: tier: The real figure is ~6 (the classifier under-reads Origin of Metalbending and Broken
+#: tier: Wings, which destroy artifacts/enchantments rather than creatures), but the honest
+#: tier: gap is narrower than that: only Epic Fight's fight mode and Unforgiving Aim can
+#: tier: actually kill a creature, and Unforgiving Aim only hits fliers. Grappling Kraken and
+#: tier: Floodpits Drowner tap and stun rather than answer. So a large opposing GROUND
+#: tier: creature has no clean answer — mitigated by trample on the payoff, not solved.
+#: tier: PATH TO A: add 1-2 instant-speed unconditional creature removal spells. Do NOT fix
+#: tier: it by adding more doublers, and do not trade away the protection just added.
 #: notes: This is the TALL sibling of 40; keep the two apart by
 #: notes: rule: 40 holds up counterspells and wins with one huge X-spell, 40a commits a
 #: notes: threat on turn 2-3 and doubles it. Do NOT migrate the doubler package back
 #: notes: into 40 — the two plans want the same mana on the same turns.
-#: notes: Aspirational WIP. Craft targets (10 — 1 mythic, 1 rare, 8 uncommon):
+#: notes: Aspirational WIP. Craft targets (9 — 1 mythic, 1 rare, 7 uncommon):
 #: notes: Mossborn Hydra (M-tier payoff, the centerpiece), Bristly Bill Spine Sower,
-#: notes: Biogenic Upgrade, Sage of the Fang, Seedship Agrarian, Hemosymbic Mite,
+#: notes: Biogenic Upgrade, Sage of the Fang, Seedship Agrarian,
 #: notes: Tifa's Limit Break, Greenbelt Guardian, Grappling Kraken, Tam Observant
 #: notes: Sequencer. Zimone / Growth Curve / Emil are OWNED singles also run in deck 30
 #: notes: — Arena copies are shared across decks, so no craft is needed for them.
@@ -67,14 +70,14 @@ Deck
 1 Wildwood Scourge (FDN) 236
 1 The Goose Mother (WOE) 204
 1 Greenbelt Guardian (DFT) 164
-1 Hemosymbic Mite (EOE) 190
+1 Kid Loki (MSH) 63
 1 Bold Biochemist (MSH) 48
 1 Wan Shi Tong, Librarian (TLA) 78
 
 # Finishers / pump
 1 Tifa's Limit Break (FIN) 207
 1 Epic Fight (MSH) 166
-1 Chelonian Tackle (SOS) 142
+1 Origin of Metalbending (TLA) 187
 
 # Interaction
 1 Grappling Kraken (FDN) 39
