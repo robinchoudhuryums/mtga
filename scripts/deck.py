@@ -1003,6 +1003,93 @@ def power_threshold_flags(cards, carddata):
     return out
 
 
+# DECK SHAPE. The single question this toolkit could never answer: "does this deck win
+# WIDE or TALL, FAST or SLOW, on one threat or many?" Every distinctness call needs it,
+# and answering it by reading `#: archetype:` headers produced the worst misread of the
+# session — deck 30 was called a wide deck from its header while the question was
+# whether a TALL counters plan duplicated it. Themes can't answer this: "counters" is
+# the same tag whether they all go on one creature or spread across twelve.
+_WIDE_CUES = [re.compile(p, re.I) for p in [
+    r"create (?:a|an|two|three|four|five|\w+|x) .{0,60}?creature tokens?",
+    r"creatures you control get \+", r"for each creature you control",
+    r"creatures you control have", r"populate\b", r"\bconvoke\b",
+    r"whenever (?:another )?(?:a )?creature you control enters",
+]]
+# TALL is about CONCENTRATION, not counters. The first draft keyed on "put a +1/+1
+# counter on target creature" and "target creature gets +N/+N" — which read deck 4
+# (27 creatures, a WIDE value board) as tall, because a single counter is a wide
+# deck's glue too. Only AMPLIFIERS count: effects that make one body disproportionate.
+_TALL_CUES = [re.compile(p, re.I) for p in [
+    r"double (?:the number of )?.{0,30}?(?:\+1/\+1 counters?|counters|power)",
+    r"twice (?:that much|that many|its power)",
+    r"triple .{0,20}?power",
+    r"equipped creature gets \+", r"enchanted creature gets \+",
+    r"gets \+x/\+x", r"where x is (?:the number of|its|this creature'?s) ",
+    r"base power and toughness \d+/\d+",
+]]
+
+
+def deck_shape(cards, carddata, mana=None):
+    """Structural shape of a deck, measured from oracle text rather than tags.
+
+    Returns a dict with WIDE / TALL scores (quantity-weighted card counts), creature
+    and token counts, evasion, curve, and a plain-English verdict. It is a SHAPE read,
+    not a quality read — a wide deck is not better or worse than a tall one; the point
+    is that two decks sharing every theme tag can be opposite decks."""
+    wide = tall = creatures = evasive = 0
+    mvs, wide_cards, tall_cards = [], [], []
+    for q, n, _s, _c in cards:
+        if n.lower() in BASICS:
+            continue
+        cd = carddata.get(n.lower())
+        if not cd:
+            continue
+        tline = cd.get("type") or ""
+        if "Land" in _primary_type(tline):
+            continue
+        text = cd.get("text") or ""
+        if "Creature" in _primary_type(tline):
+            creatures += q
+        if re.search(r"\bflying\b|\bmenace\b|can't be blocked|\btrample\b|\bfear\b|\bshadow\b",
+                     text, re.I):
+            evasive += q
+        if any(p.search(text) for p in _WIDE_CUES):
+            wide += q
+            wide_cards.append(cd.get("name") or n)
+        if any(p.search(text) for p in _TALL_CUES):
+            tall += q
+            tall_cards.append(cd.get("name") or n)
+        if mana:
+            e = mana.get(n.lower())
+            if e and e[1] is not None:
+                mvs += [e[1]] * q
+    avg_mv = round(sum(mvs) / len(mvs), 2) if mvs else 0.0
+    # A verdict only when one axis clearly leads — a deck can legitimately be neither.
+    # Creature DENSITY is its own signal: a deck fielding 25+ creature copies is wide
+    # almost by construction, and one fielding under ~14 cannot go wide whatever its
+    # text says. Fold it in rather than trusting the text scan alone.
+    if creatures >= 22:
+        wide += 2
+    elif creatures <= 14:
+        tall += 2
+    lead = abs(wide - tall)
+    if lead < 2:
+        axis = "BALANCED / neither" if (wide or tall) else "no board-growth axis"
+    elif wide > tall:
+        axis = "WIDE — many bodies, effects that scale with creature COUNT"
+    else:
+        axis = "TALL — few bodies, effects that scale one creature UP"
+    if avg_mv and avg_mv <= 2.5:
+        speed = "FAST curve"
+    elif avg_mv >= 3.3:
+        speed = "SLOW curve"
+    else:
+        speed = "MIDRANGE curve"
+    return {"wide": wide, "tall": tall, "creatures": creatures, "evasive": evasive,
+            "avg_mv": avg_mv, "axis": axis, "speed": speed,
+            "wide_cards": sorted(set(wide_cards)), "tall_cards": sorted(set(tall_cards))}
+
+
 def protection_effects(text):
     """True if a card grants/has a real protection effect (ward, hexproof,
     indestructible, protection from, untargetable, a counter-that-targets). Counts the
@@ -1969,8 +2056,10 @@ def cmd_stats(args):
                 print(f"  {label:20} {cnt:3}  {'#' * cnt}")
         # Once-per-card union (a modal removal+counter card counts once), matching the
         # audit and quality/tier vectors — NOT the sum of the buckets above.
-        print(f"  {'interaction total':20} {role_counts['interaction']:3}  "
-              "(distinct removal/sweeper/counter cards)")
+        print(f"  {'interaction total':20} {count_conf(role_counts, 'interaction'):>7}  "
+              "(distinct removal/sweeper/counter cards; +N? = cards whose text reads like "
+              "interaction the classifier could NOT tag)")
+        print(f"  {'card advantage':20} {count_conf(role_counts, 'card_advantage'):>7}")
 
     # PROTECTION axis. The role table's "Protection / trick" bucket mixes combat pumps
     # in with real answers to removal, so a deck could show a healthy trick count while
@@ -2212,7 +2301,45 @@ def role_tally(cards, carddata):
     per_role["interaction"] = interaction
     per_role["card_advantage"] = ca
     per_role["protection"] = prot
+    # CONFIDENCE, carried WITH the count. The classifier reports a false negative as a
+    # fact: a card it can't parse contributes 0, and `0` reads as "none" rather than
+    # "not detected". That is the single most damaging failure this toolkit has had — a
+    # deck graded on interaction 3 when a hand count said 7, because three cards that
+    # unambiguously interact scored zero roles. `role_coverage_flags` already computed
+    # this, but printed it as a separate warning several lines away, so the NUMBER still
+    # read as fact. Attaching the remainder to the tally means every consumer gets it.
+    unclassified, under_read, no_data = role_coverage_flags(cards, carddata)
+    per_role["interaction_unread"] = sum(1 for _n, ax in under_read if "interaction" in ax)
+    per_role["card_advantage_unread"] = sum(1 for _n, ax in under_read if "card advantage" in ax)
+    # `unclassified` is the WORSE case and must not be invisible: a noncreature spell that
+    # matched no role AND tripped no broad cue. That is exactly Broken Wings and Repulsive
+    # Mutation — cards that unambiguously interact and scored zero. It can't be attributed
+    # to a single axis, so it is reported globally rather than folded into one count.
+    per_role["unclassified"] = len(unclassified)
+    per_role["unreadable"] = len(no_data)
     return per_role
+
+
+def count_conf(tally, key):
+    """A measured count rendered with its uncertainty: `7`, or `3 +2?` when 2 more cards
+    read like that role but the classifier couldn't tag them. Use this ANYWHERE a role
+    count is shown to a human — a bare number invites exactly the over-trust that a
+    heuristic classifier doesn't deserve."""
+    n = tally.get(key, 0)
+    unread = tally.get(f"{key}_unread", 0)
+    unclass = tally.get("unclassified", 0)
+    bad = tally.get("unreadable", 0)
+    out = str(n)
+    if unread:
+        out += f" +{unread}?"
+    notes = []
+    if unclass:
+        notes.append(f"{unclass} unclassified")
+    if bad:
+        notes.append(f"{bad} unreadable")
+    if notes:
+        out += f" ({', '.join(notes)})"
+    return out
 
 
 # Text cues that an interaction spell can hit a NONCREATURE permanent (planeswalker /
@@ -5120,6 +5247,10 @@ def cmd_similar(args):
         specset = set(spec)
         disp = ", ".join((("✦" + t) if t in specset else t) for t in shared[:5])
         print(f"  {sim*100:>3.0f}% {colj*100:>3.0f}% {ncards:>5}  {did:6} {disp}{flag}")
+    if getattr(args, "full", False):
+        print("\n  Shared nonland cards — the concrete evidence the cosine cannot show:")
+        for sim, colj, did, name, shared, spec, ncards, cardnames in rows[:limit]:
+            print(f"    {did:6} ({ncards}) {', '.join(cardnames) if cardnames else '—'}")
     top = rows[0] if rows else None
     if top and top[0] >= 0.60 and top[5]:
         # Temper the warning with the card count: a high cosine on few shared CARDS is a
@@ -5161,6 +5292,23 @@ def _printing_index():
     return idx
 
 
+def _legality_of(names):
+    """name_lower -> set(formats) from the pool, for a legality warning on any surface
+    that hands back card names. Empty dict if the pool has no Legalities column."""
+    out = {}
+    if not os.path.exists(POOL_CSV):
+        return out
+    want = {n.lower() for n in names} | {n.split(" // ")[0].lower() for n in names}
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            n = (r.get("Card Name") or "").strip().lower()
+            if n in want or n.split(" // ")[0] in want:
+                legs = {x.strip() for x in (r.get("Legalities") or "").split(";") if x.strip()}
+                out[n] = legs
+                out.setdefault(n.split(" // ")[0], legs)
+    return out
+
+
 def cmd_resolve(args):
     """Turn card NAMES into ready-to-paste deck lines `<qty> <Name> (<SET>) <#>` with a valid
     printing (exact → DFC front → unique substring; owned printing preferred, else the pool's).
@@ -5198,6 +5346,22 @@ def cmd_resolve(args):
         lines.append(f"{qty} {disp} ({setc}) {coll}".rstrip())
     for ln in lines:
         print(ln)
+    # LEGALITY WARNING. `resolve` is the scaffolding step for a from-scratch deck, and it
+    # used to hand back any card it could find a printing for — which is how Bloodchief
+    # Ascension, a TLE supplemental card, reached a finished 60 and was only caught two
+    # validation steps later by `deck.py legal`. Surfacing it here means the name list is
+    # checked at the moment it becomes deck lines.
+    fmt = (getattr(args, "format", None) or "standard").strip().lower()
+    if fmt and fmt != "any":
+        resolved = [_card_line_name(ln) or "" for ln in lines]
+        legal = _legality_of([n for n in resolved if n])
+        illegal = [n for n in resolved
+                   if n and legal.get(n.lower()) is not None
+                   and fmt not in legal.get(n.lower(), set())]
+        if illegal:
+            eprint(f"\n⚠ NOT legal in {fmt} ({len(illegal)}): {', '.join(illegal)}")
+            eprint("   Resolving a printing is not a legality check — pass --format any to "
+                   "silence, or pick a different card.")
     if ambiguous:
         eprint("\n⚠ ambiguous (be more specific):")
         for q, opts in ambiguous:
@@ -5252,7 +5416,18 @@ def cmd_suggest_homes(args):
 
     print(f"Card: {card}  [{'/'.join(sorted(ccols)) or 'Colorless'}]  ({cd['type']})")
     print(f"Themes: {', '.join(sorted(ctags)) or '(none)'}"
-          f"{'   [rainbow fixer — value scales with a deck’s color count]' if is_fixer else ''}\n")
+          f"{'   [rainbow fixer — value scales with a deck’s color count]' if is_fixer else ''}")
+    # The VERDICT surfaces are where the misreads clustered this cycle. `cuts` and `swap`
+    # print full oracle text and produced the fewest bad calls; suggest-homes hands out
+    # KEY / role-player / tangential labels with NO text, which is how Genesis Wave was
+    # rated KEY for a deck whose engine it mills away. One card, one text block, always
+    # printed: six lines of cost so the label is never the only evidence.
+    import textwrap as _tw
+    print()
+    for _para in (cd.get("text") or "(no oracle text on file)").split("\n"):
+        for _ln in (_tw.wrap(_para, width=84) or [""]):
+            print(f"    {_ln}")
+    print()
 
     results = []
     skipped_illegal = 0
@@ -5403,6 +5578,11 @@ def deck_quality_vector(d):
         # `tier_band` — the floor's formula is anchored by check_tier.py and a new term
         # would silently re-grade the whole roster. Surfaced so a human sees a zero.
         "protection": _tally["protection"],
+        # The counts again, rendered WITH their uncertainty (see count_conf). The bare
+        # ints stay for the tier floor and the F10 guard, which need numbers to compare;
+        # these are what a human should read.
+        "interaction_conf": count_conf(_tally, "interaction"),
+        "card_advantage_conf": count_conf(_tally, "card_advantage"),
         "avg_mv": round(sum(mvs) / len(mvs), 2) if mvs else 0.0, "early_drops": early,
         "creatures": creatures, "reach": reach,
         # The deck's game PLAN drives which axes its tier floor weights (#4): an aggro
@@ -5890,6 +6070,99 @@ def effect_redundancy(d):
     return buckets
 
 
+def near_duplicates(cards, carddata, mana=None):
+    """[(role_tuple, [card names])] — GROUPS of nonland cards that do the same job in this
+    deck: identical non-empty functional-role sets, within a 1-mana band of each other.
+
+    `redundancy` buckets by EFFECT and answers "how many virtual copies of this effect do
+    I have"; nothing answered "which of my specific cards are interchangeable". That gap
+    produced a real bad recommendation: cutting Chelonian Tackle was proposed without
+    noticing Epic Fight already provided the fight mode, so the deck would have kept the
+    weaker of two near-identical cards. Reported as GROUPS, not pairs — a 6-card removal
+    suite is 15 pairs and one useful fact. Redundancy is often DESIRABLE; this reports,
+    it does not judge."""
+    buckets = {}
+    for q, n, _s, _c in cards:
+        if n.lower() in BASICS:
+            continue
+        cd = carddata.get(n.lower())
+        if not cd or "Land" in _primary_type(cd.get("type") or ""):
+            continue
+        roles = tuple(sorted(classify_roles(cd.get("text") or "")))
+        if not roles:
+            continue                     # no signal — saying nothing beats guessing
+        mv = None
+        if mana:
+            e = mana.get(n.lower())
+            mv = e[1] if e and e[1] is not None else None
+        buckets.setdefault(roles, []).append((cd.get("name") or n, mv))
+    out = []
+    for roles, members in buckets.items():
+        if len(members) < 2:
+            continue
+        # Split a bucket into cost BANDS so a 1-drop and a 6-drop with the same role
+        # aren't called interchangeable — cost is most of what makes two answers differ.
+        known = sorted((m for m in members if m[1] is not None), key=lambda x: x[1])
+        unknown = [m for m in members if m[1] is None]
+        bands, cur = [], []
+        for name, mv in known:
+            if cur and mv - cur[0][1] > 1:
+                bands.append(cur)
+                cur = []
+            cur.append((name, mv))
+        if cur:
+            bands.append(cur)
+        if unknown:
+            bands.append(unknown)
+        for band in bands:
+            if len(band) >= 2:
+                out.append((roles, sorted(n for n, _mv in band)))
+    out.sort(key=lambda r: (-len(r[1]), r[0]))
+    return out
+
+
+def cmd_shape(args):
+    """Report a deck's structural SHAPE — wide/tall, fast/slow — from oracle text."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    meta, cards = parse_deck_file(d["path"])
+    carddata, mana = load_card_data(), load_mana()
+    sh = deck_shape(cards, carddata, mana)
+    print(f"Shape — deck {d['id']}: {d['name'] or d['path']}\n")
+    print(f"  axis          : {sh['axis']}")
+    print(f"  speed         : {sh['speed']}  (avg nonland MV {sh['avg_mv']})")
+    print(f"  wide score    : {sh['wide']:>3}   creature copies {sh['creatures']}, "
+          f"evasive {sh['evasive']}")
+    print(f"  tall score    : {sh['tall']:>3}")
+    if sh["wide_cards"]:
+        print(f"\n  WIDE effects ({len(sh['wide_cards'])}): {', '.join(sh['wide_cards'][:10])}"
+              + ("…" if len(sh['wide_cards']) > 10 else ""))
+    if sh["tall_cards"]:
+        print(f"  TALL effects ({len(sh['tall_cards'])}): {', '.join(sh['tall_cards'][:10])}"
+              + ("…" if len(sh['tall_cards']) > 10 else ""))
+    print("\n  Shape is not quality — a wide deck is not better than a tall one. This "
+          "answers the\n  question themes cannot: two decks sharing every tag can be "
+          "opposite decks, and a\n  `#: archetype:` header is prose that can go stale. "
+          "Read the effect lists, not just\n  the verdict — the scores are a text scan.")
+    return 0
+
+
+def _print_near_duplicates(cards, carddata, mana):
+    groups = near_duplicates(cards, carddata, mana)
+    if not groups:
+        return
+    print("\nINTERCHANGEABLE cards (same functional roles, same cost band) — these do the "
+          "same job\nin this deck. Often deliberate redundancy; the point is to SEE the "
+          "group before cutting\none at random, or before adding an eighth copy of an "
+          "effect you are already deep in:")
+    for roles, names in groups[:8]:
+        print(f"  [{', '.join(roles)}] ×{len(names)}: {', '.join(names)}")
+    if len(groups) > 8:
+        print(f"  … and {len(groups) - 8} more group(s)")
+
+
 def cmd_redundancy(args):
     """Competitive-consistency planner (virtual copies first). Shows each plan-effect's
     depth (distinct cards providing it), flags the THIN ones, and for each proposes how to
@@ -5949,6 +6222,8 @@ def cmd_redundancy(args):
     print("\nVirtual copies keep the highlander feel and score the SAME tier floor (the floor "
           "counts effects, not distinct cards); duplicates are the fallback when a specific "
           "effect can't be diversified at comparable power.")
+    _meta_r, _cards_r = parse_deck_file(d["path"])
+    _print_near_duplicates(_cards_r, carddata, load_mana())
     return 0
 
 
@@ -6155,7 +6430,8 @@ def cmd_tier(args):
           + (f"  ·  clock {_clock_score(vec)}/7 (curve/threats/reach substitutes for interaction)"
              if vec.get('plan') == 'aggro' else "  (floor weights interaction + card advantage)"))
     print(f"  vector        : buildable {vec['buildable']} · uncastable {vec['uncastable']} · "
-          f"interaction {vec['interaction']} · card-adv {vec['card_advantage']} · "
+          f"interaction {vec.get('interaction_conf') or vec['interaction']} · "
+          f"card-adv {vec.get('card_advantage_conf') or vec['card_advantage']} · "
           f"protection {vec.get('protection', 0)} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
     # Protection is REPORTED, never fed into tier_band (the floor formula is anchored by
@@ -6753,6 +7029,8 @@ def main():
                    help="flag `#: tier:`/`#: notes:` prose that has gone stale — cards it "
                         "cites that are no longer in the deck, and figures that no longer "
                         "match the live quality vector")
+    p = sub.add_parser("shape", help="wide vs tall, fast vs slow — the structural read themes can't give")
+    p.add_argument("id")
     p = sub.add_parser("redundancy",
                        help="competitive-consistency planner: virtual (functional) copies first, duplicates as fallback")
     p.add_argument("id")
@@ -6799,10 +7077,16 @@ def main():
     p.add_argument("--limit", type=int, default=8, help="how many similar decks to show (default 8)")
     p.add_argument("--specific-only", action="store_true",
                    help="score SPECIFIC (identity) themes only — drop generic value overlap")
+    p.add_argument("--full", action="store_true",
+                   help="list the shared nonland CARD names — the concrete evidence behind "
+                        "the theme cosine")
     p = sub.add_parser("resolve",
                        help="turn card names into deck lines `<qty> Name (SET) #` (from args or stdin)")
     p.add_argument("names", nargs="*",
                    help="card names (optional leading qty); omit or '-' to read stdin")
+    p.add_argument("--format", default="standard",
+                   help="warn about names not legal in this format (default standard; "
+                        "'any' disables the check)")
     args = ap.parse_args()
 
     return {
@@ -6812,6 +7096,7 @@ def main():
         "tribes": cmd_tribes, "engines": cmd_engines, "suggest": cmd_suggest,
         "rotation": cmd_rotation, "brawl": cmd_brawl,
         "legal": cmd_legal, "cuts": cmd_cuts,
+        "shape": cmd_shape,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
         "verify": cmd_verify, "sync": cmd_sync, "text": cmd_text,
         "suggest-homes": cmd_suggest_homes,

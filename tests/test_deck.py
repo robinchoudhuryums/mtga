@@ -928,3 +928,93 @@ class TestRationaleWordBoundary:
         d = self._deck(tmp_path, "archetype", "Built around Lightning Bolt as the finisher.")
         cards, _figs = deck.rationale_staleness(d)
         assert "Lightning Bolt" in [c for c, _h in cards]
+
+
+class TestCountConfidence:
+    """A classifier reports a false negative as a fact: `0` reads as "none" rather than
+    "not detected". The count must carry its own uncertainty."""
+    CD = {
+        "shock": {"name": "Shock", "type": "Instant", "colors": "R",
+                  "text": "Shock deals 2 damage to any target.", "power": "", "toughness": ""},
+        "odd answer": {"name": "Odd Answer", "type": "Instant", "colors": "B",
+                       "text": "Its controller sacrifices a creature of their choice.",
+                       "power": "", "toughness": ""},
+    }
+
+    def test_clean_count_has_no_suffix(self):
+        t = deck.role_tally([(2, "Shock", "", "")], self.CD)
+        assert deck.count_conf(t, "interaction") == "2"
+
+    def test_unclassified_card_is_reported_inline(self):
+        # "Odd Answer" matches no role AND trips no broad cue — the Broken Wings case,
+        # the one that did the most damage. It must not read as a clean count of 1.
+        t = deck.role_tally([(1, "Shock", "", ""), (1, "Odd Answer", "", "")], self.CD)
+        assert deck.count_conf(t, "interaction") == "1 (1 unclassified)"
+
+    def test_missing_card_data_is_reported(self):
+        t = deck.role_tally([(1, "Shock", "", ""), (1, "Unknown Card", "", "")], self.CD)
+        assert "unreadable" in deck.count_conf(t, "interaction")
+
+
+class TestDeckShape:
+    """Themes cannot answer wide-vs-tall: "counters" is the same tag whether they all go
+    on one creature or spread across twelve."""
+    CD = {
+        "token maker": {"name": "Token Maker", "type": "Creature", "colors": "W",
+                        "text": "When this creature enters, create two 1/1 white Soldier "
+                                "creature tokens.", "power": "2", "toughness": "2"},
+        "doubler": {"name": "Doubler", "type": "Sorcery", "colors": "G",
+                    "text": "Double the number of +1/+1 counters on target creature.",
+                    "power": "", "toughness": ""},
+        "bear": {"name": "Bear", "type": "Creature", "colors": "G", "text": "Vanilla.",
+                 "power": "2", "toughness": "2"},
+    }
+
+    def test_token_makers_read_wide(self):
+        sh = deck.deck_shape([(6, "Token Maker", "", "")], self.CD)
+        assert sh["wide"] > sh["tall"]
+
+    def test_amplifiers_read_tall(self):
+        sh = deck.deck_shape([(6, "Doubler", "", "")], self.CD)
+        assert sh["tall"] > sh["wide"]
+
+    def test_a_single_counter_is_not_a_tall_signal(self):
+        # The first draft counted "put a +1/+1 counter on target creature" as TALL, which
+        # read a 27-creature WIDE value board as tall — a single counter is wide glue too.
+        assert not any(p.search("Put a +1/+1 counter on target creature.")
+                       for p in deck._TALL_CUES)
+
+    def test_creature_density_pushes_wide(self):
+        # 24 vanilla bears have no wide TEXT at all, but cannot be a tall deck.
+        sh = deck.deck_shape([(24, "Bear", "", "")], self.CD)
+        assert sh["wide"] > sh["tall"]
+
+
+class TestNearDuplicates:
+    CD = {
+        "epic fight": {"name": "Epic Fight", "type": "Sorcery", "colors": "G",
+                       "text": "Target creature you control fights target creature an "
+                               "opponent controls.", "power": "", "toughness": ""},
+        "chelonian tackle": {"name": "Chelonian Tackle", "type": "Sorcery", "colors": "G",
+                             "text": "Target creature you control gets +0/+10, then it "
+                                     "fights target creature an opponent controls.",
+                             "power": "", "toughness": ""},
+        "vanilla": {"name": "Vanilla", "type": "Creature", "colors": "G", "text": "Flying.",
+                    "power": "2", "toughness": "2"},
+    }
+    MANA = {"epic fight": ("{2}{G}", 3, ""), "chelonian tackle": ("{2}{G}", 3, ""),
+            "vanilla": ("{1}{G}", 2, "")}
+
+    def test_same_job_same_cost_groups(self):
+        groups = deck.near_duplicates(
+            [(1, "Epic Fight", "", ""), (1, "Chelonian Tackle", "", "")], self.CD, self.MANA)
+        assert groups and set(groups[0][1]) == {"Epic Fight", "Chelonian Tackle"}
+
+    def test_roleless_cards_are_never_grouped(self):
+        # No signal beats a guess: a card the classifier can't read isn't a duplicate.
+        assert deck.near_duplicates([(2, "Vanilla", "", "")], self.CD, self.MANA) == []
+
+    def test_far_apart_costs_are_not_interchangeable(self):
+        mana = dict(self.MANA, **{"chelonian tackle": ("{6}{G}", 7, "")})
+        assert deck.near_duplicates(
+            [(1, "Epic Fight", "", ""), (1, "Chelonian Tackle", "", "")], self.CD, mana) == []
