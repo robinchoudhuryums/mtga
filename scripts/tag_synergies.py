@@ -272,12 +272,36 @@ MECHANIC_RULES = [
     ("graveyard", lambda t, x: "graveyard" in x),
     ("mill", lambda t, x: "mill" in x),
     ("lifegain", lambda t, x: "lifelink" in x or re.search(
+        # `gain life equal to ...` (Exsanguinate) is lifegain by any reading, but the
+        # fixed-number alternation missed it and the card carried NO tags at all.
+        r"gains? life equal to|"
         r"gain \d+ life|gain x life|gain that much life|"
         # also the PAYOFF side — cards that care about lifegain without gaining it
         # themselves (Ajani's Pridemate, Starscape Cleric) belong to the theme too.
         r"whenever you gain life|(amount of )?life you gained|if you('ve| have)? gained", x)),
+    # LIFE AS A COST — the resource axis a whole deck can be built on, and the tag model
+    # was blind to it. 351 pool cards (2.2%) spend YOUR life for an effect and none
+    # carried a tag for it, so Dark Confidant — the single most on-thesis card for an
+    # Orzhov life-as-currency deck — read `tangential / Human` in `suggest-homes`, its
+    # only shared theme being a creature type. Deliberately scoped to YOU losing life:
+    # "each opponent loses 2 life" is a DRAIN effect, which is the opposite card and
+    # already covered by `drain`. The last three alternatives are the PAYOFF side, the
+    # same way `lifegain` also tags cards that only CARE about life being gained.
+    ("pay life", lambda t, x: re.search(
+        r"(?:^|[,.:;(]\s*|\byou (?:may )?)pay (?:\d+|x) life"
+        r"|\bpay life equal to"
+        r"|you lose (?:\d+|x) life|you lose life equal to|you lose that much life"
+        r"|\byou [^.]{0,60}?\band lose (?:\d+|x) life"
+        r"|whenever you lose life|if you(?:'ve| have) lost life|life you(?:'ve| have) lost",
+        x) is not None),
+    # `draw cards equal to ...` is the one phrase where this model and deck.py's
+    # `classify_roles` disagreed: the role classifier already read it as Card advantage,
+    # the tag model did not, so The Ten Rings ("draw cards equal to the difference") sat
+    # in the deck with a COMPLETELY BLANK Synergies cell — invisible to every tag-based
+    # recommendation. Eight more pool cards had the same hole.
     ("card draw", lambda t, x: re.search(
-        r"draw (a|two|three|four|five|six|seven|x|that many|\d+) cards?", x) is not None),
+        r"draw (a|two|three|four|five|six|seven|x|that many|\d+) cards?"
+        r"|draws? cards? equal to", x) is not None),
     # Repeatable topdeck advantage — casting/playing off the top of your library is
     # continuous extra cards, a value engine the earlier "selection" ("look at the top")
     # rule alone under-read (Vizier of the Menagerie, Realmwalker, Bolas's Citadel,

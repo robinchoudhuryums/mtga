@@ -146,6 +146,51 @@ def card_power(value):
         return None
 
 
+_MANA_SYMBOL_RE = re.compile(r"\{([^}]+)\}")
+# Scryfall joins the two castable halves of a split / Room / Adventure card with " // ".
+_COST_SPLIT = " // "
+
+
+def front_face_cost(cost):
+    """The half of a mana cost you actually pay — the FRONT face.
+
+    Scryfall stores a split, Room or Adventure card's cost as ``A // B`` (e.g. Funeral
+    Room's ``{2}{B} // {6}{B}{B}``), and you never pay both. Reading the merged string
+    over-counts pips for EVERY such card — 292 of them in the pool, 15 across the deck
+    roster — so a two-half card looked far more colour-hungry than it is: Funeral Room
+    read as a ``{B}{B}{B}`` turn-5 play when the door this deck casts is ``{2}{B}``,
+    one black pip on turn 3.
+
+    FRONT is the convention, matching ``owned_qty``'s front-face rule for DFCs: it is
+    the creature on an Adventure card and the cheap door on a Room. The residual is a
+    deck that plays a split card mainly for its BACK half, which then reads cheaper
+    than it plays — grade that from the printed card, as with any front-face read.
+    """
+    return (cost or "").split(_COST_SPLIT, 1)[0]
+
+
+def mana_value(cost):
+    """Mana value of ONE cost string: generic numbers plus one per non-generic symbol.
+
+    ``X`` counts 0 (as the rules do off the stack). Pass a single face — split costs
+    should go through ``front_face_cost`` first, since a split card's *rules* mana
+    value is the combined total and that is NOT the number a curve or a
+    cast-on-curve probability wants.
+    """
+    total = 0
+    for sym in _MANA_SYMBOL_RE.findall(cost or ""):
+        s = sym.strip().upper()
+        if s.isdigit():
+            total += int(s)
+        elif s in ("X", "Y", "Z"):
+            continue
+        else:
+            # A colored, hybrid, phyrexian or snow symbol is worth 1 regardless of
+            # how many colours it offers ({W/U} is one mana, not two).
+            total += 1
+    return total
+
+
 class WrongSchema(Exception):
     """Refused to write a CSV that isn't the card library (see ``csv_schema_error``)."""
 

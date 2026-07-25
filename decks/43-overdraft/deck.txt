@@ -51,7 +51,7 @@
 #: tier:    (one double pip in the whole deck; 86% keepable; the worst cast-on-curve is
 #: tier:    Spirit Water Revival at 68%, and it is happy to be cast late) — but three
 #: tier:    colors of singletons is variance the floor does not price.
-#: tier: NOTE ON `deck.py similar`: this reads 91% against deck 42, its highest
+#: tier: NOTE ON `deck.py similar`: this reads 91% against 42 Blood Price, its highest
 #: tier: overlap. That number is the tag model hitting its limit, not a duplicate deck —
 #: tier: only FIVE nonland cards are shared (Erode, Healer's Hawk, Starscape Cleric,
 #: tier: Stroke of Midnight and Mister Negative, three of them commodity removal), and

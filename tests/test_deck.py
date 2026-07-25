@@ -7,6 +7,7 @@ same models at the integration level; these pin the isolated edge cases fast."""
 from datetime import date, timedelta
 
 import deck
+import lib
 
 
 class TestParsePips:
@@ -32,6 +33,53 @@ class TestParsePips:
 
     def test_empty(self):
         assert deck.parse_pips("") == ({}, [])
+
+    def test_split_cost_reads_only_the_front_face(self):
+        """Funeral Room's `{2}{B} // {6}{B}{B}`. You never pay both halves, so the
+        merged string wanted three black pips where the door you cast wants one."""
+        strict, _hybrid = deck.parse_pips("{2}{B} // {6}{B}{B}")
+        assert strict == {"B": 1}
+
+    def test_adventure_cost_reads_only_the_creature_half(self):
+        # Emeritus of Abundance `{2}{G} // {1}{G}` — one green pip, not two.
+        strict, _hybrid = deck.parse_pips("{2}{G} // {1}{G}")
+        assert strict == {"G": 1}
+
+    def test_single_face_cost_is_unchanged(self):
+        assert deck.parse_pips("{5}{W}{B}")[0] == {"W": 1, "B": 1}
+
+
+class TestSplitCostMana:
+    """A split / Room / Adventure card stores both halves joined by ' // '. The RULES
+    mana value is the combined total, which is not what a curve or a cast-on-curve
+    probability wants — Funeral Room came through as MV 11."""
+
+    def test_front_face_cost(self):
+        assert lib.front_face_cost("{2}{B} // {6}{B}{B}") == "{2}{B}"
+        assert lib.front_face_cost("{5}{W}{B}") == "{5}{W}{B}"
+        assert lib.front_face_cost("") == ""
+        assert lib.front_face_cost(None) == ""
+
+    def test_mana_value_counts_generic_plus_one_per_symbol(self):
+        assert lib.mana_value("{2}{B}") == 3
+        assert lib.mana_value("{5}{W}{B}") == 7
+        assert lib.mana_value("{W/U}{2}") == 3       # a hybrid symbol is ONE mana
+        assert lib.mana_value("{W/P}") == 1
+        assert lib.mana_value("") == 0
+
+    def test_x_counts_zero(self):
+        # Off the stack, X is 0 — the same rule the stored values follow.
+        assert lib.mana_value("{X}{B}{B}") == 2
+
+    def test_room_mana_value_is_the_front_door(self):
+        assert lib.mana_value(lib.front_face_cost("{2}{B} // {6}{B}{B}")) == 3
+
+    def test_adventure_value_agrees_with_the_stored_one(self):
+        # Scryfall already stores the front-face value for Adventure cards, so
+        # recomputing must AGREE with them and only correct the split/Room shape.
+        for cost, stored in (("{2}{G} // {1}{G}", 3), ("{U} // {U}", 1),
+                             ("{4}{W} // {1}{W}", 5), ("{2}{G}{U} // {G}{U}", 4)):
+            assert lib.mana_value(lib.front_face_cost(cost)) == stored, cost
 
 
 class TestClassifyRoles:

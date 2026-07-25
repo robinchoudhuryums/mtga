@@ -53,11 +53,12 @@
 #: tier:    without Eirdu, and a board wipe is strictly worse for this deck than for the
 #: tier:    core — it takes the fodder and the payoffs in the same breath, where the core
 #: tier:    42 survives a wipe on its card engine.
-#: tier: NOTE ON THE MEASURED CURVE: `stats` reports avg MV 2.8, which OVERSTATES it.
-#: tier: Funeral Room is a Room card and `card-mana.csv` stores the merged cost
-#: tier: `{2}{B} // {6}{B}{B}` at MV 11, so `consistency` also reads it as a {B}{B}{B}
-#: tier: turn-5 play. The half this deck casts is `{2}{B}`, one black pip on turn 3. The
-#: tier: real curve is ~2.6.
+#: tier: NOTE ON THE CURVE: this deck is what surfaced the split-cost bug. Funeral Room
+#: tier: is a Room, and its stored cost is the MERGED `{2}{B} // {6}{B}{B}` at MV 11, so
+#: tier: `stats` read the curve as 2.8 and `consistency` read the card as a {B}{B}{B}
+#: tier: turn-5 play — when the door this deck casts is `{2}{B}`, one black pip on turn
+#: tier: 3. `parse_pips` and `load_mana` now read the FRONT face, so the reported 2.57
+#: tier: is the real number and Funeral Room no longer shows up as a castability risk.
 #: tier: PATH TO A: Eirdu is the single biggest lever — persist turns a 12-turn drain
 #: tier: into a 6-turn one — followed by a second protection effect for the payoff
 #: tier: enchantments.

@@ -59,7 +59,8 @@ import urllib.error
 import urllib.request
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty,
-                 card_distinctiveness, backup_path, card_power)
+                 card_distinctiveness, backup_path, card_power, front_face_cost,
+                 mana_value)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -634,8 +635,18 @@ def load_mana():
             n = (r.get("Card Name") or "").strip().lower()
             if not n:
                 continue
+            cost = r.get("Mana Cost") or ""
             mv = (r.get("Mana Value") or "").strip()
-            out[n] = (r.get("Mana Cost") or "", int(mv) if mv.isdigit() else None)
+            mv = int(mv) if mv.isdigit() else None
+            if " // " in cost:
+                # A split / Room card's RULES mana value is the combined total, which
+                # is what Scryfall stores — and it is not the number a curve or a
+                # cast-on-curve probability wants. Funeral Room came through as MV 11
+                # and inflated deck 42a's average; the door you cast costs 3. Adventure
+                # cards already store the front-face value, so recomputing agrees with
+                # them and only corrects the split/Room shape.
+                mv = mana_value(front_face_cost(cost))
+            out[n] = (cost, mv)
             out.setdefault(n.split(" // ")[0], out[n])
     return out
 
@@ -673,9 +684,15 @@ def parse_pips(cost):
     hybrid: list of frozensets of colors a symbol accepts (e.g. {'W','U'}) — each
             payable with ANY one of them (hybrid {W/U}, monocolor hybrid {2/W},
             or phyrexian {W/P}).
+
+    Reads only the FRONT FACE (``lib.front_face_cost``). A split / Room / Adventure
+    card's stored cost is ``A // B`` and you never pay both halves, so the merged
+    string double-counted pips for all 292 such cards in the pool — Funeral Room's
+    ``{2}{B} // {6}{B}{B}`` read as wanting three black pips when the door you cast
+    wants one.
     """
     strict, hybrid = {}, []
-    for sym in SYMBOL_RE.findall(cost or ""):
+    for sym in SYMBOL_RE.findall(front_face_cost(cost)):
         colors = set(ch for ch in sym.upper() if ch in "WUBRG")
         if "/" in sym:
             if colors:
@@ -6343,14 +6360,57 @@ _HISTORY_CUES = re.compile(
     r"alternative|revisit|option|skipped|held out)\b", re.I)
 _HISTORY_WINDOW = 140
 
+# The SECOND way a citation is not a claim about the current list: it is about ANOTHER
+# DECK, or about a change you have not made yet. Three real false positives drove this,
+# all from rationales written the same week:
+#   • "DISTINCTNESS vs deck 8 … that one is built on Bloodthirsty Conqueror" — naming a
+#     card in the deck being compared AGAINST.
+#   • "PATH TO A: a second copy of the payoff axis (a Drogskol Reaver …)" — naming a
+#     card to ADD.
+#   • "`similar` reads 91% against 42 Blood Price" — naming another DECK whose name is
+#     also a card (Blood Price, ZNR). That one is fixed exactly, by masking roster deck
+#     names; these cues cover the other two, which are prose shapes rather than names.
+# Kept narrow deliberately: a rationale's own argument is written in the present tense
+# about this deck, so comparative and prescriptive language is a reliable signal that
+# the sentence has changed subject.
+_COMPARISON_CUES = re.compile(
+    r"\b(?:path to|vs\.?|versus|unlike|compared|comparison|distinctness|roster'?s|"
+    r"another deck|other deck|that deck|that one|elsewhere|would be|would need|"
+    r"consider|candidate|upgrade to|next add|instead of)\b", re.I)
+
 
 def _cites_as_history(prose, pos, length):
-    """True when a card citation sits near change-/flex-language, i.e. the prose is
-    DESCRIBING a card that left (or one deliberately not included) rather than arguing
-    from it. Window is generous on purpose — see _HISTORY_CUES."""
+    """True when a card citation is NOT an argument that this deck runs the card.
+
+    Two families: change-/flex-language (the card left, or was deliberately held out —
+    see _HISTORY_CUES) and comparative/prescriptive language (the sentence is about a
+    different deck, or about a card to add — see _COMPARISON_CUES). Window is generous
+    on purpose; a noisy audit gets ignored, which is worse than no audit."""
     lo = max(0, pos - _HISTORY_WINDOW)
     hi = min(len(prose), pos + length + _HISTORY_WINDOW)
-    return bool(_HISTORY_CUES.search(prose[lo:hi]))
+    window = prose[lo:hi]
+    return bool(_HISTORY_CUES.search(window) or _COMPARISON_CUES.search(window))
+
+
+def _roster_deck_names(_cache={}):
+    """Every deck's `#: name:`, longest first — masked out of a rationale before the
+    card scan. A deck name that is ALSO a card name ("Blood Price", "Sacrifices") read
+    as a stale citation whenever one deck's rationale named another for contrast, which
+    is exactly what the distinctness prose is FOR. Exact, not heuristic."""
+    if not _cache:
+        names = set()
+        for rec in discover_decks():
+            nm = (rec.get("name") or "").strip()
+            # Split a decorated title ("Blood Price — Orzhov Aristocrats") so the core
+            # name masks too; drop short fragments that would mask real prose.
+            for part in re.split(r"\s+[—–-]\s+", nm):
+                part = part.strip()
+                if len(part) >= _RATIONALE_MIN_LEN or " " in part:
+                    names.add(part)
+            if nm:
+                names.add(nm)
+        _cache["names"] = sorted(names, key=len, reverse=True)
+    return _cache["names"]
 
 
 def rationale_staleness(d, carddata=None):
@@ -6383,6 +6443,9 @@ def rationale_staleness(d, carddata=None):
         # "the Ooze Spill / Amazing Acrobatics upgrade" reported the card *The Ooze*.
         masked = prose
         for nm in sorted(in_deck, key=len, reverse=True):
+            masked = masked.replace(nm, " " * len(nm))
+        # ...and mask roster DECK names, which the distinctness prose names on purpose.
+        for nm in _roster_deck_names():
             masked = masked.replace(nm, " " * len(nm))
         for name, row in carddata.items():
             disp = row.get("name") or name
