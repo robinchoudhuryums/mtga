@@ -341,10 +341,18 @@ castability · curve · central-theme density), with the intangibles moving a de
 - **`card-pool.csv` now holds the full Arena pool** (`build_pool.py --all`,
   ~15.8k cards) and **`card-mana.csv` covers it** (`build_mana.py --pool`), so
   unowned cards have real costs/tags. Both tools DEFAULT to the smaller scope
-  (Standard pool / library-only mana), so a plain rebuild SHRINKS coverage back —
-  pass `--all` / `--pool` (as `/refresh` now does) to keep full coverage. The
-  full-pool mana build is slow (Scryfall rate limits ~15.8k cards); the pool
-  build itself is fast (paginated search, ~90 requests).
+  (Standard pool / library-only mana), so a plain rebuild would SHRINK coverage back —
+  pass `--all` / `--pool` (as `/refresh` does) to keep full coverage. **Both now REFUSE
+  a >50% shrink** (`--allow-shrink` to force): `build_pool.py` always did, and
+  `build_mana.py` gained the same guard after the file was found at 1,695 rows against a
+  15,850-card pool — this exact mistake, which had also silently disabled the one-card
+  keyword heuristic that needs a pool-sized corpus. The full-pool mana build is slow
+  (Scryfall rate limits ~15.9k cards, plus a front-face pass); the pool build itself is
+  fast (paginated search, ~90 requests). `build_mana.py` falls back to a **front-face
+  `/cards/named` lookup** for names the batch endpoint won't match — SPLIT and room cards
+  (`Life // Death`), ~630 of them — and accepts the result only when the resolved card IS
+  the one asked for, since a bare front name can be a different card and a wrong cost is
+  worse than a blank one.
 - **`card-wishlist.csv` is UNOWNED craft targets**, separate from the owned library
   and the full pool. `wishlist.py --add <arena-export>` appends a batch, enriching
   each card (Rarity/Color/Type/text/Synergies) from `card-pool.csv` with a Scryfall

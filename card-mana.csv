@@ -259,12 +259,12 @@ Echocasting Symposium,{4}{U}{U},6,Paradigm
 Giant Koi,{4}{U}{U},6,Islandcycling;Landcycling;Typecycling;Waterbend;Cycling
 Dirgur Island Dragon,{5}{U} // {1}{U},6,Flying;Ward
 Daring Waverider,{4}{U}{U},6,
-Bottomless Pool // Locker Room,,,
+Bottomless Pool // Locker Room,{U} // {4}{U},6,
 Curator of Destinies,{4}{U}{U},6,Flying
 "Wiccan, Rising Magician",{4}{U},5,Flying
 Unexpected Assistance,{3}{U}{U},5,Convoke
 This Town Ain't Big Enough,{4}{U},5,
-Underwater Tunnel // Slimy Aquarium,,,
+Underwater Tunnel // Slimy Aquarium,{U} // {3}{U},5,Surveil;Manifest;Manifest dread
 Stratosoarer,{4}{U},5,Flying;Landcycling;Basic landcycling;Typecycling;Cycling
 "Stockman, Mad Fly-entist",{4}{U},5,Flying;Islandcycling;Landcycling;Typecycling;Cycling
 Sokka's Haiku,{3}{U}{U},5,Mill
@@ -674,8 +674,8 @@ The Cloning of Shredder,{4}{B}{B},6,
 The Masters of Evil,{5}{B},6,
 Wick's Patrol,{4}{B}{B},6,Mill
 Cat-Gator,{6}{B},7,Lifelink
-Funeral Room // Awakening Hall,,,
-Derelict Attic // Widow's Walk,,,
+Funeral Room // Awakening Hall,{2}{B} // {6}{B}{B},11,
+Derelict Attic // Widow's Walk,{2}{B} // {3}{B},7,
 Faerie Fencing,{X}{B},1,
 Day of Black Sun,{X}{B}{B},2,
 "Morlun, Devourer of Spiders",{X}{B}{B},2,Lifelink
@@ -886,7 +886,7 @@ Red Hulk,{4}{R}{R},6,Reach;Enrage;Trample
 Territorial Bruntar,{4}{R}{R},6,Reach;Landfall
 Zealous Lorecaster,{5}{R},6,
 Nebula Dragon,{6}{R},7,Flying
-Glassworks // Shattered Yard,,,
+Glassworks // Shattered Yard,{2}{R} // {4}{R},8,
 Devastating Onslaught,{X}{X}{R},1,
 Hell to Pay,{X}{R},1,Treasure
 Photon Blast Barrage,{X}{R}{R},2,
@@ -1186,7 +1186,7 @@ Metalhead,{4}{U},5,
 Baxter Stockman,{3}{U}{R},5,
 North Wind Avatar,{2}{U}{U}{R},5,Flying
 Stress Dream,{3}{U}{R},5,
-Roaring Furnace // Steaming Sauna,,,
+Roaring Furnace // Steaming Sauna,{1}{R} // {3}{U}{U},7,
 Thousand-Year Storm,{4}{U}{R},6,
 Visionary's Dance,{5}{U}{R},7,
 Airship Engine Room,,0,
@@ -1736,7 +1736,7 @@ Eternal Witness,{1}{G}{G},3,
 Ignoble Hierarch,{G},1,Exalted
 "Rofellos, Llanowar Emissary",{G}{G},2,
 "Grist, the Hunger Tide",{1}{B}{G},3,Mill
-Life // Death,,,
+Life // Death,{G} // {1}{B},3,
 Wrenn and Six,{R}{G},2,
 Currency Converter,{1},1,Treasure
 Mox Opal,{0},0,Metalcraft
@@ -2087,7 +2087,7 @@ Dauntless Aven,{2}{W},3,Flying
 Desert's Hold,{2}{W},3,Enchant
 Disposal Mummy,{2}{W},3,
 Djeru's Resolve,{W},1,Cycling
-Dusk // Dawn,,,
+Dusk // Dawn,{2}{W}{W} // {3}{W}{W},9,Aftermath
 Fan Bearer,{W},1,
 Forsake the Worldly,{2}{W},3,Cycling
 Gideon of the Trials,{1}{W}{W},3,
@@ -2118,7 +2118,7 @@ Ancient Crab,{1}{U}{U},3,
 Aven Initiate,{3}{U},4,Flying;Embalm
 Censor,{1}{U},2,Cycling
 Champion of Wits,{2}{U},3,Eternalize
-Commit // Memory,,,
+Commit // Memory,{3}{U} // {4}{U}{U},10,Aftermath
 Compelling Argument,{1}{U},2,Mill;Cycling
 Countervailing Winds,{2}{U},3,Cycling
 Curator of Mysteries,{2}{U}{U},4,Scry;Flying;Cycling
@@ -2167,7 +2167,7 @@ Liliana's Mastery,{3}{B}{B},5,
 Lord of the Accursed,{2}{B},3,
 Marauding Boneslasher,{2}{B},3,
 Nest of Scarabs,{2}{B},3,
-Never // Return,,,
+Never // Return,{1}{B}{B} // {3}{B},7,Aftermath
 Pitiless Vizier,{3}{B},4,
 "Razaketh, the Foulblooded",{5}{B}{B}{B},8,Flying;Trample
 Ruthless Sniper,{B},1,
@@ -2200,7 +2200,7 @@ Harsh Mentor,{1}{R},2,
 Hazoret the Fervent,{3}{R},4,Indestructible;Haste
 Hour of Devastation,{3}{R}{R},5,
 Imminent Doom,{2}{R},3,
-Insult // Injury,,,
+Insult // Injury,{2}{R} // {2}{R},6,Double;Aftermath
 Khenra Scrapper,{2}{R},3,Menace;Exert
 Magma Spray,{R},1,
 Magmaroth,{3}{R},4,
@@ -2229,7 +2229,7 @@ Hornet Queen,{4}{G}{G}{G},7,Deathtouch;Flying
 Hour of Promise,{4}{G},5,
 Majestic Myriarch,{4}{G},5,
 Manglehorn,{2}{G},3,
-Mouth // Feed,,,
+Mouth // Feed,{2}{G} // {3}{G},7,Aftermath
 Naga Vitalist,{1}{G},2,
 Oashra Cultivator,{G},1,
 Oasis Ritualist,{3}{G},4,Exert
@@ -2252,20 +2252,20 @@ Synchronized Strike,{2}{G},3,
 Trial of Strength,{2}{G},3,
 Watchful Naga,{2}{G},3,Exert
 Ahn-Crop Champion,{2}{G}{W},4,Exert
-Appeal // Authority,,,
+Appeal // Authority,{G} // {1}{W},3,Aftermath
 Aven Wind Guide,{2}{W}{U},4,Flying;Vigilance;Embalm
-Claim // Fame,,,
-Cut // Ribbons,,,
-Destined // Lead,,,
-Driven // Despair,,,
-Failure // Comply,,,
-Farm // Market,,,
-Grind // Dust,,,
+Claim // Fame,{B} // {1}{R},3,Aftermath
+Cut // Ribbons,{1}{R} // {X}{B}{B},4,Aftermath
+Destined // Lead,{1}{B} // {3}{G},6,Aftermath
+Driven // Despair,{1}{G} // {1}{B},4,Aftermath
+Failure // Comply,{1}{U} // {W},3,Aftermath
+Farm // Market,{2}{W} // {2}{U},6,Aftermath
+Grind // Dust,{1}{B} // {3}{W},6,Aftermath
 "Hapatra, Vizier of Poisons",{B}{G},2,
-Heaven // Earth,,,
+Heaven // Earth,{X}{G} // {X}{R}{R},3,Aftermath
 Honored Crop-Captain,{R}{W},2,
 Khenra Charioteer,{1}{R}{G},3,Trample
-Leave // Chance,,,
+Leave // Chance,{1}{W} // {3}{R},6,Aftermath
 The Locust God,{4}{U}{R},6,Flying
 Lord of Extinction,{3}{B}{G},5,
 Merciless Javelineer,{2}{B}{R},4,
@@ -2273,12 +2273,12 @@ Merciless Javelineer,{2}{B}{R},4,
 "Nicol Bolas, God-Pharaoh",{4}{U}{B}{R},7,
 "Nissa, Steward of Elements",{X}{G}{U},2,Scry
 Obelisk Spider,{1}{B}{G},3,Reach
-Onward // Victory,,,
-Prepare // Fight,,,
-Rags // Riches,,,
-Reason // Believe,,,
-Reduce // Rubble,,,
-Refuse // Cooperate,,,
+Onward // Victory,{2}{R} // {2}{W},6,Aftermath
+Prepare // Fight,{1}{W} // {3}{G},6,Fight;Aftermath
+Rags // Riches,{2}{B}{B} // {5}{U}{U},11,Aftermath
+Reason // Believe,{U} // {4}{G},6,Aftermath;Scry
+Reduce // Rubble,{2}{U} // {2}{R},6,Aftermath
+Refuse // Cooperate,{3}{R} // {2}{U},7,Aftermath
 River Hoopoe,{G}{U},2,Flying
 "Samut, the Tested",{2}{R}{G},4,
 "Samut, Voice of Dissent",{3}{R}{G},5,Vigilance;Haste;Double strike;Flash
@@ -2286,9 +2286,9 @@ The Scarab God,{3}{U}{B},5,Scry
 The Scorpion God,{3}{B}{R},5,
 Shadowstorm Vizier,{U}{B},2,Flying
 Sphinx's Revelation,{X}{W}{U}{U},3,
-Spring // Mind,,,
-Start // Finish,,,
-Struggle // Survive,,,
+Spring // Mind,{2}{G} // {4}{U}{U},9,Aftermath
+Start // Finish,{2}{W} // {2}{B},6,Aftermath
+Struggle // Survive,{2}{R} // {1}{G},5,Aftermath
 "Temmet, Vizier of Naktamun",{W}{U},2,Embalm
 Wayward Servant,{W}{B},2,
 Abandoned Sarcophagus,{3},3,
@@ -3651,8 +3651,8 @@ A-Leyline of Resonance,{2}{R}{R},4,
 "A-Kona, Rescue Beastie",{4}{G},5,Survival
 Acrobatic Cheerleader,{1}{W},2,Survival
 Cult Healer,{2}{W},3,Eerie
-Dazzling Theater // Prop Room,,,
-Dollmaker's Shop // Porcelain Gallery,,,
+Dazzling Theater // Prop Room,{3}{W} // {2}{W},7,
+Dollmaker's Shop // Porcelain Gallery,{1}{W} // {4}{W}{W},8,
 Emerge from the Cocoon,{4}{W},5,
 Enduring Innocence,{1}{W}{W},3,Lifelink
 Ethereal Armor,{W},1,Enchant
@@ -3663,7 +3663,7 @@ Fear of Surveillance,{1}{W},2,Surveil;Vigilance
 Friendly Ghost,{3}{W},4,Flying
 Ghostly Dancers,{3}{W}{W},5,Flying;Eerie
 Glimmer Seeker,{2}{W},3,Survival
-Grand Entryway // Elegant Rotunda,,,
+Grand Entryway // Elegant Rotunda,{1}{W} // {2}{W},5,
 Hardened Escort,{2}{W},3,
 Jump Scare,{W},1,
 Leyline of Hope,{2}{W}{W},4,
@@ -3681,7 +3681,7 @@ Sheltered by Ghosts,{1}{W},2,Enchant
 Shepherding Spirits,{4}{W}{W},6,Flying;Plainscycling;Landcycling;Typecycling;Cycling
 Split Up,{1}{W}{W},3,
 Splitskin Doll,{1}{W},2,
-Surgical Suite // Hospital Room,,,
+Surgical Suite // Hospital Room,{1}{W} // {3}{W},6,
 "Toby, Beastie Befriender",{2}{W},3,
 Trapped in the Screen,{2}{W},3,Ward
 Unidentified Hovership,{1}{W}{W},3,Flying;Crew
@@ -3689,7 +3689,7 @@ Unwanted Remake,{W},1,
 Veteran Survivor,{W},1,Survival
 The Wandering Rescuer,{3}{W}{W},5,Double strike;Flash;Convoke
 Abhorrent Oculus,{2}{U},3,Flying;Manifest;Manifest dread
-Central Elevator // Promising Stairs,,,
+Central Elevator // Promising Stairs,{3}{U} // {2}{U},7,Surveil
 Clammy Prowler,{3}{U},4,
 Creeping Peeper,{1}{U},2,
 Cursed Windbreaker,{2}{U},3,Manifest;Manifest dread;Equip
@@ -3705,9 +3705,9 @@ Get Out,{U}{U},2,
 Ghostly Keybearer,{3}{U},4,Flying
 Glimmerburst,{3}{U},4,
 Marina Vendrell's Grimoire,{5}{U},6,
-Meat Locker // Drowned Diner,,,
+Meat Locker // Drowned Diner,{2}{U} // {3}{U}{U},8,
 The Mindskinner,{U}{U}{U},3,Mill
-Mirror Room // Fractured Realm,,,
+Mirror Room // Fractured Realm,{2}{U} // {5}{U}{U},10,
 Overlord of the Floodpits,{3}{U}{U},5,Flying;Impending
 Paranormal Analyst,{1}{U},2,Manifest;Manifest dread
 Piranha Fly,{1}{U},2,Flying
@@ -3728,7 +3728,7 @@ Commune with Evil,{2}{B},3,
 Cracked Skull,{2}{B},3,Enchant
 Cynical Loner,{1}{B},2,Survival
 Dashing Bloodsucker,{3}{B},4,Eerie
-Defiled Crypt // Cadaver Lab,,,
+Defiled Crypt // Cadaver Lab,{3}{B} // {B},5,
 Demonic Counsel,{1}{B},2,Delirium
 Doomsday Excruciator,{B}{B}{B}{B}{B}{B},6,Flying
 Enduring Tenacity,{2}{B}{B},4,
@@ -3751,7 +3751,7 @@ Overlord of the Balemurk,{3}{B}{B},5,Impending;Mill
 Popular Egotist,{2}{B},3,
 Resurrected Cultist,{2}{B},3,Delirium
 Spectral Snatcher,{4}{B}{B},6,Landcycling;Ward;Typecycling;Cycling;Swampcycling
-Unholy Annex // Ritual Chamber,,,
+Unholy Annex // Ritual Chamber,{2}{B} // {3}{B}{B},8,
 Unstoppable Slasher,{2}{B},3,Deathtouch
 "Valgavoth, Terror Eater",{6}{B}{B}{B},9,Flying;Lifelink;Ward
 Valgavoth's Faithful,{B},1,
@@ -3762,7 +3762,7 @@ Bedhead Beastie,{4}{R}{R},6,Mountaincycling;Landcycling;Menace;Typecycling;Cycli
 Betrayer's Bargain,{1}{R},2,
 Boilerbilges Ripper,{4}{R},5,
 Chainsaw,{1}{R},2,Equip
-Charred Foyer // Warped Space,,,
+Charred Foyer // Warped Space,{3}{R} // {4}{R}{R},10,
 Cursed Recording,{2}{R}{R},4,
 Diversion Specialist,{3}{R},4,Menace
 Fear of Being Hunted,{1}{R}{R},3,Haste
@@ -3777,7 +3777,7 @@ Leyline of Resonance,{2}{R}{R},4,
 Most Valuable Slayer,{3}{R},4,
 "Norin, Swift Survivalist",{R},1,
 Overlord of the Boilerbilges,{4}{R}{R},6,Impending
-Painter's Studio // Defaced Gallery,,,
+Painter's Studio // Defaced Gallery,{2}{R} // {1}{R},5,
 Piggy Bank,{1}{R},2,Treasure
 Pyroclasm,{1}{R},2,
 Ragged Playmate,{1}{R},2,
@@ -3787,7 +3787,7 @@ Razorkin Needlehead,{R}{R},2,
 Ripchain Razorkin,{3}{R},4,Reach
 The Rollercrusher Ride,{X}{2}{R},3,Delirium;Double
 Screaming Nemesis,{2}{R},3,Haste
-Ticket Booth // Tunnel of Hate,,,
+Ticket Booth // Tunnel of Hate,{2}{R} // {4}{R}{R},9,Manifest;Manifest dread
 Trial of Agony,{R},1,
 Turn Inside Out,{R},1,Manifest;Manifest dread
 Vengeful Possession,{2}{R},3,
@@ -3806,7 +3806,7 @@ Cryptid Inspector,{2}{G},3,Vigilance
 Enduring Vitality,{1}{G}{G},3,Vigilance
 Fear of Exposure,{2}{G},3,Trample
 Grasping Longneck,{2}{G},3,Reach
-Greenhouse // Rickety Gazebo,,,
+Greenhouse // Rickety Gazebo,{2}{G} // {3}{G},7,Mill
 Hauntwoods Shrieker,{1}{G}{G},3,Manifest;Manifest dread
 Hedge Shredder,{2}{G}{G},4,Crew;Mill
 Horrid Vigor,{1}{G},2,
@@ -3815,7 +3815,7 @@ Insidious Fungus,{G},1,
 "Kona, Rescue Beastie",{3}{G},4,Survival
 Leyline of Mutation,{2}{G}{G},4,
 Manifest Dread,{1}{G},2,Manifest;Manifest dread
-Moldering Gym // Weight Room,,,
+Moldering Gym // Weight Room,{2}{G} // {5}{G},9,Manifest;Manifest dread
 Monstrous Emergence,{1}{G},2,
 Omnivorous Flytrap,{2}{G},3,Delirium;Double
 Overgrown Zealot,{1}{G},2,
@@ -3829,7 +3829,7 @@ Twitching Doll,{1}{G},2,
 "Tyvar, the Pummeler",{1}{G}{G},3,
 Under the Skin,{2}{G},3,Manifest;Manifest dread
 Valgavoth's Onslaught,{X}{X}{G},1,Manifest;Manifest dread
-Walk-In Closet // Forgotten Cellar,,,
+Walk-In Closet // Forgotten Cellar,{2}{G} // {3}{G}{G},8,
 Wickerfolk Thresher,{3}{G},4,Delirium
 "Arabella, Abandoned Doll",{R}{W},2,
 Baseball Bat,{G}{W},2,Equip
@@ -3847,13 +3847,13 @@ Midnight Mayhem,{2}{R}{W},4,
 "Niko, Light of Hope",{2}{W}{U},4,Scry
 Oblivious Bookworm,{G}{U},2,
 Peer Past the Veil,{2}{R}{G},4,
-Restricted Office // Lecture Hall,,,
+Restricted Office // Lecture Hall,{2}{W}{W} // {5}{U}{U},11,
 "Rip, Spawn Hunter",{2}{G}{W},4,Survival
 Rite of the Moth,{1}{W}{B}{B},4,Flashback
 Shrewd Storyteller,{1}{G}{W},3,Survival
 Shroudstomper,{3}{W}{W}{B}{B},7,Deathtouch
 Skullsnap Nuisance,{U}{B},2,Flying;Surveil;Eerie
-Smoky Lounge // Misty Salon,,,
+Smoky Lounge // Misty Salon,{2}{R} // {3}{U},7,
 The Swarmweaver,{2}{B}{G},4,Delirium
 Undead Sprinter,{B}{R},2,Haste;Trample
 "Victor, Valgavoth's Seneschal",{1}{W}{B},3,Surveil;Eerie
@@ -3941,11 +3941,11 @@ Rooftop Percher,{5},5,Changeling;Flying
 Adept Watershaper,{2}{W},3,
 Appeal to Eirdu,{3}{W},4,Convoke
 Bark of Doran,{1}{W},2,Equip
-"Brigid, Clachan's Heart // Brigid, Doun's Mind",,,
+"Brigid, Clachan's Heart // Brigid, Doun's Mind",{2}{W},3,Transform
 Burdened Stoneback,{1}{W},2,
 Champion of the Clachan,{3}{W},4,Behold;Flash
 Curious Colossus,{5}{W}{W},7,
-"Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight",,,
+"Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight",{3}{W}{W},5,Flying;Lifelink;Transform
 Evershrike's Gift,{W},1,Blight;Enchant
 Flock Impostor,{2}{W},3,Changeling;Flying;Flash
 Gallant Fowlknight,{3}{W},4,
@@ -3978,7 +3978,7 @@ Spell Snare,{U},1,
 Summit Sentinel,{1}{U},2,
 Sunderflock,{7}{U}{U},9,Flying
 Swat Away,{2}{U}{U},4,
-"Sygg, Wanderwine Wisdom // Sygg, Wanderbrine Shield",,,
+"Sygg, Wanderwine Wisdom // Sygg, Wanderbrine Shield",{1}{U},2,Transform
 Tanufel Rimespeaker,{3}{U},4,
 Thirst for Identity,{2}{U},3,
 Wanderwine Distracter,{3}{U},4,
@@ -4047,7 +4047,7 @@ Shimmerwilds Growth,{1}{G},2,Enchant
 Spry and Mighty,{4}{G},5,
 Tend the Sprigs,{2}{G},3,
 Thoughtweft Charge,{1}{G},2,
-"Trystan, Callous Cultivator // Trystan, Penitent Culler",,,
+"Trystan, Callous Cultivator // Trystan, Penitent Culler",{2}{G},3,Transform;Mill;Deathtouch
 Virulent Emissary,{G},1,Deathtouch
 Ashling's Command,{3}{U}{R},5,Treasure
 Boggart Cursecrafter,{B}{R},2,Deathtouch
@@ -4085,56 +4085,56 @@ Acclaimed Contender,{2}{W},3,
 All That Glitters,{1}{W},2,Enchant
 Archon of Absolution,{3}{W},4,Flying;Protection
 Ardenvale Paladin,{3}{W},4,Adamant
-Ardenvale Tactician // Dizzying Swoop,,,
+Ardenvale Tactician // Dizzying Swoop,{1}{W}{W} // {1}{W},3,Flying
 Bartered Cow,{3}{W},4,Food
 Beloved Princess,{W},1,Lifelink
 The Circle of Loyalty,{4}{W}{W},6,Affinity
 Deafening Silence,{W},1,
-Faerie Guidemother // Gift of the Fae,,,
+Faerie Guidemother // Gift of the Fae,{W} // {1}{W},1,Flying
 Flutterfox,{1}{W},2,
 Fortifying Provisions,{2}{W},3,Food
-Giant Killer // Chop Down,,,
+Giant Killer // Chop Down,{W} // {2}{W},1,
 Happily Ever After,{2}{W},3,
 Harmonious Archon,{4}{W}{W},6,Flying
 Hushbringer,{1}{W},2,Flying;Lifelink
 Knight of the Keep,{2}{W},3,
-Lonesome Unicorn // Rider in Need,,,
+Lonesome Unicorn // Rider in Need,{4}{W} // {2}{W},5,Vigilance
 Mysterious Pathlighter,{2}{W},3,Flying
 Outflank,{W},1,
 Prized Griffin,{4}{W},5,Flying
 Rally for the Throne,{2}{W},3,Adamant
-Realm-Cloaked Giant // Cast Off,,,
+Realm-Cloaked Giant // Cast Off,{5}{W}{W} // {3}{W}{W},7,Vigilance
 Righteousness,{W},1,
-Shepherd of the Flock // Usher to Safety,,,
+Shepherd of the Flock // Usher to Safety,{1}{W} // {W},2,
 Shining Armor,{1}{W},2,Equip;Flash
 Silverflame Ritual,{3}{W},4,Adamant
-Silverflame Squire // On Alert,,,
+Silverflame Squire // On Alert,{1}{W} // {2}{W},2,
 Trapped in the Tower,{1}{W},2,Enchant
 True Love's Kiss,{2}{W}{W},4,
 Venerable Knight,{W},1,
 Worthy Knight,{1}{W},2,
 Youthful Knight,{1}{W},2,First strike
-Animating Faerie // Bring to Life,,,
-Brazen Borrower // Petty Theft,,,
+Animating Faerie // Bring to Life,{2}{U} // {2}{U},3,Flying
+Brazen Borrower // Petty Theft,{1}{U}{U} // {1}{U},3,Flying;Flash
 Corridor Monitor,{1}{U},2,
 Didn't Say Please,{1}{U}{U},3,Mill
 "Emry, Lurker of the Loch",{2}{U},3,Affinity;Mill
-Fae of Wishes // Granted,,,
+Fae of Wishes // Granted,{1}{U} // {3}{U},2,Flying
 Folio of Fancies,{1}{U},2,Mill
 Frogify,{1}{U},2,Enchant
 "Gadwick, the Wizened",{X}{U}{U}{U},3,
-Hypnotic Sprite // Mesmeric Glare,,,
+Hypnotic Sprite // Mesmeric Glare,{U}{U} // {2}{U},2,Flying
 Into the Story,{5}{U}{U},7,
 The Magic Mirror,{6}{U}{U}{U},9,
 Mantle of Tides,{U},1,Equip
-Merfolk Secretkeeper // Venture Deeper,,,
+Merfolk Secretkeeper // Venture Deeper,{U} // {U},1,Mill
 Midnight Clock,{2}{U},3,
 Mirrormade,{1}{U}{U},3,
 Mistford River Turtle,{3}{U},4,
 Moonlit Scavengers,{5}{U},6,
 Mystical Dispute,{2}{U},3,
 Overwhelmed Apprentice,{U},1,Mill;Scry
-Queen of Ice // Rage of Winter,,,
+Queen of Ice // Rage of Winter,{2}{U} // {1}{U},3,
 Sage of the Falls,{4}{U},5,
 So Tiny,{U},1,Enchant;Flash
 Steelgaze Griffin,{4}{U},5,Flying
@@ -4158,22 +4158,22 @@ Eye Collector,{B},1,Flying;Mill
 Festive Funeral,{4}{B},5,
 Foreboding Fruit,{2}{B},3,Adamant;Food
 Forever Young,{1}{B},2,
-Foulmire Knight // Profane Insight,,,
+Foulmire Knight // Profane Insight,{B} // {2}{B},1,Deathtouch
 Giant's Skewer,{1}{B},2,Food;Equip
 Lash of Thorns,{B},1,
 Locthwain Paladin,{3}{B},4,Adamant;Menace
 Lost Legion,{1}{B}{B},3,Scry
 Malevolent Noble,{1}{B},2,
 Memory Theft,{2}{B},3,
-Murderous Rider // Swift End,,,
+Murderous Rider // Swift End,{1}{B}{B} // {1}{B}{B},3,Lifelink
 Oathsworn Knight,{1}{B}{B},3,
-Order of Midnight // Alter Fate,,,
+Order of Midnight // Alter Fate,{1}{B} // {1}{B},2,Flying
 Piper of the Swarm,{1}{B},2,
 "Rankle, Master of Pranks",{2}{B}{B},4,Flying;Haste
-Reaper of Night // Harvest Fear,,,
+Reaper of Night // Harvest Fear,{5}{B}{B} // {3}{B},7,
 Reave Soul,{1}{B},2,
 Revenge of Ravens,{3}{B},4,
-Smitten Swordmaster // Curry Favor,,,
+Smitten Swordmaster // Curry Favor,{1}{B} // {B},2,Lifelink
 Specter's Shriek,{B},1,
 "Syr Konrad, the Grim",{3}{B}{B},5,Mill
 Wicked Guardian,{3}{B},4,
@@ -4181,14 +4181,14 @@ Witch's Vengeance,{1}{B}{B},3,
 Barge In,{R},1,
 Bloodhaze Wolverine,{1}{R},2,
 Blow Your House Down,{2}{R},3,
-Bonecrusher Giant // Stomp,,,
+Bonecrusher Giant // Stomp,{2}{R} // {1}{R},3,
 Brimstone Trebuchet,{2}{R},3,Reach;Defender
 Burning-Yard Trainer,{4}{R},5,Haste;Trample
 Claim the Firstborn,{R},1,
 Crystal Slipper,{1}{R},2,Equip
 Embercleave,{4}{R}{R},6,Equip;Flash
 Embereth Paladin,{3}{R},4,Adamant;Haste
-Embereth Shieldbreaker // Battle Display,,,
+Embereth Shieldbreaker // Battle Display,{1}{R} // {R},2,
 Ferocity of the Wilds,{2}{R},3,
 Fervent Champion,{R},1,First strike;Haste
 Fires of Invention,{3}{R},4,
@@ -4196,12 +4196,12 @@ Irencrag Feat,{1}{R}{R}{R},4,
 Irencrag Pyromancer,{2}{R},3,
 Joust,{1}{R},2,Fight
 Mad Ratter,{3}{R},4,
-Merchant of the Vale // Haggle,,,
+Merchant of the Vale // Haggle,{2}{R} // {R},3,
 Ogre Errant,{3}{R},4,
 Opportunistic Dragon,{2}{R}{R},4,Flying
 Redcap Melee,{R},1,
 Redcap Raiders,{2}{R},3,
-Rimrock Knight // Boulder Rush,,,
+Rimrock Knight // Boulder Rush,{1}{R} // {R},2,
 Robber of the Rich,{1}{R},2,Reach;Haste
 Searing Barrage,{4}{R},5,Adamant
 Seven Dwarves,{1}{R},2,
@@ -4211,14 +4211,14 @@ Sundering Stroke,{6}{R},7,
 "Syr Carah, the Bold",{3}{R}{R},5,
 "Torbran, Thane of Red Fell",{1}{R}{R}{R},4,
 Weaselback Redcap,{R},1,
-Beanstalk Giant // Fertile Footsteps,,,
-Curious Pair // Treats to Share,,,
+Beanstalk Giant // Fertile Footsteps,{6}{G} // {2}{G},7,
+Curious Pair // Treats to Share,{1}{G} // {G},2,Food
 Edgewall Innkeeper,{G},1,
 Feasting Troll King,{2}{G}{G}{G}{G},6,Vigilance;Food;Trample
 Fell the Pheasant,{1}{G},2,Food
 Fierce Witchstalker,{2}{G}{G},4,Food;Trample
-Flaxen Intruder // Welcome Home,,,
-Garenbrig Carver // Shield's Might,,,
+Flaxen Intruder // Welcome Home,{G} // {5}{G}{G},1,
+Garenbrig Carver // Shield's Might,{3}{G} // {1}{G},4,
 Garenbrig Paladin,{4}{G},5,Adamant
 Garenbrig Squire,{1}{G},2,
 Giant Opportunity,{2}{G},3,Food
@@ -4226,7 +4226,7 @@ Gilded Goose,{G},1,Flying;Food
 The Great Henge,{7}{G}{G},9,
 Insatiable Appetite,{1}{G},2,
 Kenrith's Transformation,{1}{G},2,Enchant
-Lovestruck Beast // Heart's Desire,,,
+Lovestruck Beast // Heart's Desire,{2}{G} // {G},3,
 Maraleaf Rider,{1}{G},2,
 Oakhame Adversary,{3}{G},4,Deathtouch
 Once and Future,{3}{G},4,Adamant
@@ -4234,13 +4234,13 @@ Once Upon a Time,{1}{G},2,
 Outmuscle,{3}{G},4,Adamant;Fight
 Questing Beast,{2}{G}{G},4,Vigilance;Haste;Deathtouch
 Return of the Wildspeaker,{4}{G},5,
-Rosethorn Acolyte // Seasonal Ritual,,,
+Rosethorn Acolyte // Seasonal Ritual,{2}{G} // {G},3,
 Rosethorn Halberd,{G},1,Equip
 Sporecap Spider,{2}{G},3,Reach
 "Syr Faren, the Hengehammer",{G}{G},2,
 Tall as a Beanstalk,{3}{G},4,Enchant
 Trail of Crumbs,{1}{G},2,Food
-Tuinvale Treefolk // Oaken Boon,,,
+Tuinvale Treefolk // Oaken Boon,{5}{G} // {3}{G},6,
 Wicked Wolf,{2}{G}{G},4,Fight
 Wildwood Tracker,{G},1,
 Wolf's Quarry,{4}{G}{G},6,Food
@@ -4271,7 +4271,7 @@ Deathless Knight,{B/G}{B/G}{B/G}{B/G},4,Haste
 Elite Headhunter,{B/R}{B/R}{B/R}{B/R},4,Menace
 Fireborn Knight,{R/W}{R/W}{R/W}{R/W},4,Double strike
 Loch Dragon,{U/R}{U/R}{U/R}{U/R},4,Flying
-Oakhame Ranger // Bring Back,,,
+Oakhame Ranger // Bring Back,{G/W}{G/W}{G/W}{G/W} // {G/W}{G/W}{G/W}{G/W},4,
 Rampart Smasher,{R/G}{R/G}{R/G}{R/G},4,
 Resolute Rider,{W/B}{W/B}{W/B}{W/B},4,
 Thunderous Snapper,{G/U}{G/U}{G/U}{G/U},4,
@@ -4880,7 +4880,7 @@ A-Vivi Ornitier,{1}{U}{R},3,
 Adelbert Steiner,{1}{W},2,Lifelink
 Aerith Gainsborough,{2}{W},3,Lifelink
 "Ashe, Princess of Dalmasca",{2}{W},3,
-Crystal Fragments // Summon: Alexander,,,
+Crystal Fragments // Summon: Alexander,{W},1,Flying;Transform;Equip
 The Crystal's Chosen,{5}{W}{W},7,
 Delivery Moogle,{3}{W},4,Flying
 "Dion, Bahamut's Dominant // Bahamut, Warden of Light",{3}{W},4,Dragonfire Dive;Flying;Transform
@@ -4895,7 +4895,7 @@ Sidequest: Catch a Fish // Cooking Campsite,{2}{W},3,Transform;Food
 Snow Villiers,{2}{W},3,Vigilance
 "Stiltzkin, Moogle Merchant",{W},1,Lifelink
 Summon: Primal Garuda,{3}{W},4,Flying
-"Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",,,
+"Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",{1}{W}{W},3,Blessing of Light;Indestructible;Transform
 The Wind Crystal,{2}{W}{W},4,
 Astrologian's Planisphere,{1}{U},2,Job select;Diana;Equip
 Cargo Ship,{1}{U},2,Flying;Vigilance;Crew
@@ -4903,7 +4903,7 @@ Cargo Ship,{1}{U},2,Flying;Vigilance;Crew
 Ether,{3}{U},4,
 Ice Magic,{1}{U},2,Blizzard;Blizzara;Blizzaga;Tiered
 Il Mheg Pixie,{1}{U},2,Flying;Surveil
-"Jill, Shiva's Dominant // Shiva, Warden of Ice",,,
+"Jill, Shiva's Dominant // Shiva, Warden of Ice",{2}{U},3,Transform
 Louisoix's Sacrifice,{U},1,
 The Lunar Whale,{3}{U},4,Flying;Crew
 "Matoya, Archon Elder",{2}{U},3,
@@ -4911,7 +4911,7 @@ Memories Returning,{2}{U}{U},4,Flashback
 The Prima Vista,{4}{U},5,Flying;Crew
 Qiqirn Merchant,{2}{U},3,
 Sage's Nouliths,{1}{U},2,Hagneia;Job select;Equip
-Sidequest: Card Collection // Magicked Card,,,
+Sidequest: Card Collection // Magicked Card,{3}{U},4,Flying;Transform;Crew
 Sleep Magic,{U},1,Enchant
 Stolen Uniform,{U},1,
 Stuck in Summoner's Sanctum,{2}{U},3,Enchant;Flash
@@ -4923,7 +4923,7 @@ Valkyrie Aerial Unit,{5}{U}{U},7,Flying;Surveil;Affinity
 The Water Crystal,{2}{U}{U},4,Mill
 Al Bhed Salvagers,{2}{B},3,
 "Ardyn, the Usurper",{5}{B}{B}{B},8,Starscourge
-"Cecil, Dark Knight // Cecil, Redeemed Paladin",,,
+"Cecil, Dark Knight // Cecil, Redeemed Paladin",{B},1,Lifelink;Protect;Transform;Darkness;Deathtouch
 Dark Knight's Greatsword,{2}{B},3,Chaosbringer;Job select;Equip
 The Darkness Crystal,{2}{B}{B},4,
 Evil Reawakened,{4}{B},5,
@@ -4941,8 +4941,8 @@ Reno and Rude,{1}{B},2,Menace
 Summon: Anima,{4}{B}{B},6,Menace
 Summon: Primal Odin,{4}{B}{B},6,
 Tonberry,{B},1,Chef's Knife
-Vincent Valentine // Galian Beast,,,
-"Zenos yae Galvus // Shinryu, Transcendent Rival",,,
+Vincent Valentine // Galian Beast,{2}{B}{B},4,Lifelink;Transform;Trample
+"Zenos yae Galvus // Shinryu, Transcendent Rival",{3}{B}{B},5,Flying;Transform;My First Friend;Burning Chains
 "Zodiark, Umbral God",{B}{B}{B}{B}{B},5,Indestructible
 Blazing Bomb,{R},1,Blow Up
 Call the Mountain Chocobo,{3}{R},4,Flashback
@@ -4975,7 +4975,7 @@ Bartz and Boko,{3}{G}{G},5,Affinity
 Cactuar,{G},1,Trample
 Coliseum Behemoth,{5}{G}{G},7,Trample
 The Earth Crystal,{2}{G}{G},4,
-Esper Origins // Summon: Esper Maduin,,,
+Esper Origins // Summon: Esper Maduin,{1}{G},2,Surveil;Transform;Flashback
 Galuf's Final Act,{1}{G},2,
 Gigantoad,{3}{G},4,
 Jumbo Cactuar,{5}{G}{G},7,"10,000 Needles"
@@ -5003,21 +5003,21 @@ Gladiolus Amicitia,{4}{R}{G},6,Landfall
 "Golbez, Crystal Collector",{U}{B},2,Surveil
 Hope Estheim,{W}{U},2,Lifelink;Mill
 "Jenova, Ancient Calamity",{2}{B}{G},4,
-"Joshua, Phoenix's Dominant // Phoenix, Warden of Fire",,,
+"Joshua, Phoenix's Dominant // Phoenix, Warden of Fire",{1}{R}{W},3,Flying;Lifelink;Transform
 "Kefka, Court Mage // Kefka, Ruler of Ruin",{2}{U}{B}{R},5,Flying;Transform
-"Kuja, Genome Sorcerer // Trance Kuja, Fate Defied",,,
+"Kuja, Genome Sorcerer // Trance Kuja, Fate Defied",{2}{B}{R},4,Transform;Flare Star;Double
 Locke Cole,{1}{U}{B},3,Lifelink;Deathtouch
 "Noctis, Prince of Lucis",{1}{W}{U}{B},4,Lifelink
 Rufus Shinra,{1}{W}{B},3,
 "Rydia, Summoner of Mist",{R}{G},2,Summon;Landfall
-Serah Farron // Crystallized Serah,,,
+Serah Farron // Crystallized Serah,{1}{G}{W},3,Transform
 "Shantotto, Tactician Magician",{1}{U}{R},3,
 "Sin, Spira's Punishment",{4}{B}{G}{U},7,Flying
 "Squall, SeeD Mercenary",{2}{W}{B},4,Rough Divide
 "Tellah, Great Sage",{3}{U}{R},5,
 "Terra, Magical Adept // Esper Terra",{1}{R}{G},3,Flying;Transform;Mill;Trance
 "Tidus, Blitzball Star",{1}{W}{U},3,
-"Ultimecia, Time Sorceress // Ultimecia, Omnipotent",,,
+"Ultimecia, Time Sorceress // Ultimecia, Omnipotent",{3}{U}{B},5,Surveil;Transform;Menace;Time Compression
 The Wandering Minstrel,{G}{U},2,
 "Zidane, Tantalus Thief",{3}{R}{W},5,Treasure
 Blitzball,{3},3,GOOOOAAAALLL!
@@ -5035,15 +5035,15 @@ World Map,{1},1,
 "Balamb Garden, SeeD Academy // Balamb Garden, Airborne",,,
 Clive's Hideaway,,0,Hideaway
 "Gohn, Town of Ruin",,0,
-"Ishgard, the Holy See // Faith & Grief",,,
-"Jidoor, Aristocratic Capital // Overture",,,
-"Lindblum, Industrial Regency // Mage Siege",,,
-"Midgar, City of Mako // Reactor Raid",,,
+"Ishgard, the Holy See // Faith & Grief",{3}{W}{W},,
+"Jidoor, Aristocratic Capital // Overture",{4}{U}{U},,Mill
+"Lindblum, Industrial Regency // Mage Siege",{2}{R},,
+"Midgar, City of Mako // Reactor Raid",{2}{B},,
 "Rabanastre, Royal City",,0,
 "Sharlayan, Nation of Scholars",,0,
 "Vector, Imperial Capital",,0,
 "Windurst, Federation Center",,0,
-"Zanarkand, Ancient Metropolis // Lasting Fayth",,,
+"Zanarkand, Ancient Metropolis // Lasting Fayth",{4}{G}{G},,
 Wastes,,0,
 "Sephiroth, Planet's Heir",{4}{U}{B},6,Vigilance
 "Beatrix, Loyal General",{4}{W}{W},6,Vigilance
@@ -5057,14 +5057,14 @@ Magitek Scythe,{4},4,Equip;A Test of Your Reflexes!
 Ultima Weapon,{7},7,Equip
 Enlightened Confidant,{1}{W},2,Surveil;Lifelink
 "The Theorist, Jace Beleren",{2}{U}{U},4,
-Bloodline Recollector // Ancestral Craving,,,
+Bloodline Recollector // Ancestral Craving,{1}{B} // {B},2,Prepared
 Craterclaw Colossus,{4}{R}{R}{R},7,Haste
 Stingcaster Mage,{1}{R},2,Haste
-Paradox Shaper // Omit Variables,,,
-Prudent Fateseer // Peer Review,,,
-Stingerquill Voxmancer // Vicious Verse,,,
-Vigorbloom Vanguard // Seed Suture,,,
-Woodwork Prodigy // Soul Tether,,,
+Paradox Shaper // Omit Variables,{1}{U/B} // {U/B},2,Prepared;Mill
+Prudent Fateseer // Peer Review,{1}{W/U}{W/U} // {2}{W/U},3,Surveil;Prepared
+Stingerquill Voxmancer // Vicious Verse,{B/R} // {B/R},1,Prepared
+Vigorbloom Vanguard // Seed Suture,{1}{G/W} // {G/W},2,Prepared
+Woodwork Prodigy // Soul Tether,{2}{R/G} // {2}{R/G},3,Prepared
 Ajani Resolute,{1}{W},2,
 Liliana the Faultless,{W},1,
 "Chandra, Chill of Compliance",{1}{U}{U},3,Surveil
@@ -5272,16 +5272,16 @@ Piston-Fist Cyclops,{1}{U/R}{U/R},3,Defender
 Pitiless Gorgon,{1}{B/G}{B/G},3,Deathtouch
 Vernadi Shieldmate,{1}{G/W},2,Vigilance
 Whisper Agent,{1}{U/B}{U/B},3,Surveil;Flash
-Assure // Assemble,,,
-Connive // Concoct,,,
-Discovery // Dispersal,,,
-Expansion // Explosion,,,
-Find // Finality,,,
-Flower // Flourish,,,
-Integrity // Intervention,,,
-Invert // Invent,,,
-Response // Resurgence,,,
-Status // Statue,,,
+Assure // Assemble,{G/W}{G/W} // {4}{G}{W},8,
+Connive // Concoct,{2}{U/B}{U/B} // {3}{U}{B},9,Surveil
+Discovery // Dispersal,{1}{U/B} // {3}{U}{B},7,Surveil
+Expansion // Explosion,{U/R}{U/R} // {X}{U}{U}{R}{R},6,
+Find // Finality,{B/G}{B/G} // {4}{B}{G},8,
+Flower // Flourish,{G/W} // {4}{G}{W},7,
+Integrity // Intervention,{R/W} // {2}{R}{W},5,
+Invert // Invent,{U/R} // {4}{U}{R},7,
+Response // Resurgence,{R/W}{R/W} // {3}{R}{W},7,
+Status // Statue,{B/G} // {2}{B}{G},5,
 Boros Locket,{3},3,
 Chromatic Lantern,{3},3,
 Dimir Locket,{3},3,
@@ -5426,24 +5426,24 @@ A-Kenku Artificer,{2}{U},3,Homunculus Servant
 A-Lapis Orb of Dragonkind,{2}{U},3,Scry
 A-Pseudodragon Familiar,{2}{U},3,Flying
 A-You Come to a River,{2}{U},3,
-A-Young Blue Dragon // A-Sand Augury,,,
+A-Young Blue Dragon // A-Sand Augury,{4}{U} // {1}{U},5,Scry;Flying
 A-Baleful Beholder,{4}{B}{B},6,
 A-Eyes of the Beholder,{3}{B}{B},5,
 A-Guildsworn Prowler,{1}{B},2,Deathtouch
 A-Manticore,{3}{B},4,Flying;Flash
 A-Sigil of Myrkul,{1}{B},2,Mill
 A-Carnelian Orb of Dragonkind,{2}{R},3,
-A-Young Red Dragon // A-Bathe in Gold,,,
+A-Young Red Dragon // A-Bathe in Gold,{3}{R} // {1}{R},4,Flying;Treasure
 A-Circle of the Land Druid,{1}{G},2,Natural Recovery;Mill
 A-Druidic Ritual,{2}{G},3,Mill
 A-Earthquake Dragon,{14}{G},15,Flying;Trample
-A-Emerald Dragon // A-Dissonant Wave,,,
+A-Emerald Dragon // A-Dissonant Wave,{4}{G}{G} // {2}{G},6,Flying;Ward
 A-Jade Orb of Dragonkind,{2}{G},3,
 A-Split the Spoils,{1}{G},2,
 "A-Minsc & Boo, Timeless Heroes",{3}{R}{G},5,
 A-Lantern of Revealing,{3},3,
 A-Navigation Orb,{3},3,
-A-Blessed Hippogriff // A-Tyr's Blessing,,,
+A-Blessed Hippogriff // A-Tyr's Blessing,{3}{W} // {1}{W},4,Flying
 "Klement, Novice Acolyte",{1}{W},2,Specialize
 "Lae'zel, Githyanki Warrior",{3}{W},4,Double strike;Specialize
 "Lulu, Forgetful Hollyphant",{2}{W},3,Specialize;Flying
@@ -5528,14 +5528,14 @@ Gate to Tumbledown,,0,Seek
 Ancient Gold Dragon,{5}{W}{W},7,Flying
 Archivist of Oghma,{1}{W},2,Flash
 Ascend from Avernus,{X}{W}{W}{W},3,
-Blessed Hippogriff // Tyr's Blessing,,,
+Blessed Hippogriff // Tyr's Blessing,{3}{W} // {W},4,Flying
 Flaming Fist Officer,{2}{W},3,
-Guardian Naga // Banishing Coils,,,
+Guardian Naga // Banishing Coils,{5}{W}{W} // {2}{W},7,Vigilance
 Guiding Bolt,{2}{W},3,Scry
-Horn of Valhalla // Ysgard's Call,,,
+Horn of Valhalla // Ysgard's Call,{1}{W} // {X}{W}{W},2,Equip
 Icewind Stalwart,{3}{W},4,Protection Fighting Style
 Lae'zel's Acrobatics,{3}{W},4,
-Pegasus Guardian // Rescue the Foal,,,
+Pegasus Guardian // Rescue the Foal,{5}{W} // {1}{W},6,Flying
 Rescuer Chwinga,{1}{W},2,Flash;Natural Shelter
 Scouting Hawk,{2}{W},3,Flying;Keen Sight
 Stick Together,{3}{W}{W},5,
@@ -5547,17 +5547,17 @@ Draconic Lore,{5}{U},6,
 Dragonborn Looter,{1}{U},2,
 Gale's Redirection,{3}{U}{U},5,
 Goggles of Night,{1}{U},2,Equip;Scry
-Illithid Harvester // Plant Tadpoles,,,
+Illithid Harvester // Plant Tadpoles,{4}{U} // {X}{U}{U},5,Ceremorphosis
 Irenicus's Vile Duplication,{3}{U},4,
 Juvenile Mist Dragon,{3}{U}{U},5,Flying;Confounding Clouds
 Kenku Artificer,{2}{U},3,Homunculus Servant
 Lapis Orb of Dragonkind,{2}{U},3,Scry
 Pseudodragon Familiar,{2}{U},3,Flying
 Robe of the Archmagi,{2}{U},3,Equip
-Sword Coast Serpent // Capsizing Wave,,,
+Sword Coast Serpent // Capsizing Wave,{5}{U}{U} // {1}{U},7,
 Tymora's Invoker,{1}{U},2,Sleight of Hand
-Young Blue Dragon // Sand Augury,,,
-Altar of Bhaal // Bone Offering,,,
+Young Blue Dragon // Sand Augury,{4}{U} // {1}{U},5,Scry;Flying
+Altar of Bhaal // Bone Offering,{1}{B} // {2}{B},2,
 Ambition's Cost,{3}{B},4,
 Ancient Brass Dragon,{5}{B}{B},7,Flying
 Armor of Shadows,{B},1,
@@ -5565,8 +5565,8 @@ Black Market Connections,{2}{B},3,Hire a Mercenary;Treasure;Sell Contraband;Buy 
 Blood Money,{5}{B}{B},7,Treasure
 Chain Devil,{3}{B},4,Animate Chains
 Eldritch Pact,{6}{B},7,
-Ghost Lantern // Bind Spirit,,,
-Gray Slaad // Entropic Decay,,,
+Ghost Lantern // Bind Spirit,{B} // {1}{B},1,Equip
+Gray Slaad // Entropic Decay,{2}{B} // {1}{B},3,Mill
 Grim Hireling,{3}{B},4,Treasure
 Guildsworn Prowler,{1}{B},2,Deathtouch
 Intellect Devourer,{3}{B},4,Devour Intellect;Body Thief
@@ -5581,22 +5581,22 @@ Nalfeshnee,{5}{R},6,Flying
 Reckless Barbarian,{1}{R},2,
 Storm King's Thunder,{X}{R}{R}{R},3,
 Swashbuckler Extraordinaire,{2}{R},3,Treasure
-Two-Handed Axe // Sweeping Cleave,,,
+Two-Handed Axe // Sweeping Cleave,{2}{R} // {1}{R},3,Equip;Double
 Wrathful Red Dragon,{3}{R}{R},5,Flying
-Young Red Dragon // Bathe in Gold,,,
+Young Red Dragon // Bathe in Gold,{3}{R} // {1}{R},4,Flying;Treasure
 Ambitious Dragonborn,{3}{G},4,
 Ancient Bronze Dragon,{5}{G}{G},7,Flying
 Belt of Giant Strength,{1}{G},2,Equip
 Circle of the Land Druid,{1}{G},2,Natural Recovery;Mill
 Draconic Muralists,{3}{G},4,
-Dread Linnorm // Scale Deflection,,,
+Dread Linnorm // Scale Deflection,{6}{G} // {3}{G},7,
 Druid of the Emerald Grove,{3}{G},4,
 Druidic Ritual,{2}{G},3,Mill
 Earthquake Dragon,{14}{G},15,Flying;Trample
-Emerald Dragon // Dissonant Wave,,,
-Ettercap // Web Shot,,,
+Emerald Dragon // Dissonant Wave,{4}{G}{G} // {2}{G},6,Flying;Trample
+Ettercap // Web Shot,{4}{G} // {2}{G},5,Reach
 Jade Orb of Dragonkind,{2}{G},3,
-Monster Manual // Zoological Study,,,
+Monster Manual // Zoological Study,{3}{G} // {2}{G},4,Mill
 Owlbear Shepherd,{2}{G},3,
 Poison the Blade,{1}{G},2,
 Scaled Nurturer,{1}{G},2,
@@ -5636,8 +5636,8 @@ The Mountain-king's Return,{2}{W},3,
 The Queen of Dale,{1}{W},2,
 "Roads Go Ever, Ever On",{1}{W},2,
 Stone by Sunlight,{1}{W},2,
-An Unexpected Party // At the Door,,,
-"Bilbo, Luckwearer // Burglar's Plot",,,
+An Unexpected Party // At the Door,{2}{W}{W} // {X}{2}{W},4,
+"Bilbo, Luckwearer // Burglar's Plot",{1}{U} // {4}{U},2,
 "Bilbo, Thief in the Night",{1}{U},2,
 "Elrond, Moon-Reader",{2}{U},3,
 Elven Raft-Steerer,{2}{U},3,Landfall
@@ -5650,7 +5650,7 @@ The Master of Lake-town,{1}{B}{B},3,Mill;Deathtouch
 Supper for Spiders,{1}{B},2,
 "Burn, Burn, Tree and Fern",{3}{R},4,
 Desolation of Smaug,{2}{R}{R},4,
-"Gandalf, Goblins' Bane // Flameshape",,,
+"Gandalf, Goblins' Bane // Flameshape",{2}{R} // {1}{R},3,
 Last Light of Durin's Day,{1}{R},2,Mountaincycling;Landcycling;Typecycling;Cycling
 The Misty Mountains Cold,{2}{R},3,Treasure
 Smaug the Magnificent,{2}{R}{R},4,Flying;Treasure;Haste
@@ -5668,8 +5668,8 @@ Silvan Reveler,{2}{G}{U},4,Landfall
 Thorin Oakenshield,{R}{W},2,Trample
 "Thranduil, the Elvenking",{2}{B}{G}{U},5,
 "Tom, Bert, and William",{3}{B}{G},5,
-The Arkenstone // Seek the Heart,,,
-My Precious // Allure of Power,,,
+The Arkenstone // Seek the Heart,{5} // {2}{W},5,
+My Precious // Allure of Power,{3} // {1}{B},3,Equip
 "Orcrist, Goblin-cleaver",{3},3,Treasure;Equip
 "Sting, Bilbo's Sword",{2},2,Equip;Flash
 The Lonely Mountain,,0,
@@ -5701,7 +5701,7 @@ Delighted Halfling,{G},1,
 Dwarven Warriors,{2}{R},3,
 The Reaver Cleaver,{2}{R},3,Treasure;Equip
 Nissa's Defeat,{2}{G},3,
-Consign // Oblivion,,,
+Consign // Oblivion,{1}{U} // {4}{B},7,Aftermath
 Fire Covenant,{1}{B}{R},3,
 "A-Winota, Joiner of Forces",{2}{R}{W},4,
 Adaptive Shimmerer,{5},5,Flash
@@ -5989,7 +5989,7 @@ Fairgrounds Patrol,{1}{W},2,
 First Sliver's Chosen,{4}{W},5,
 Gilded Light,{1}{W},2,Cycling
 Glorious Enforcer,{5}{W}{W},7,Flying;Lifelink
-Hanweir Militia Captain // Westvale Cult Leader,,,
+Hanweir Militia Captain // Westvale Cult Leader,{1}{W},2,Transform
 Healer's Flock,{W}{W}{W},3,Flying;Lifelink
 Hive Stirrings,{2}{W},3,
 Impostor of the Sixth Pride,{1}{W},2,Changeling
@@ -6077,7 +6077,7 @@ Facevaulter,{B},1,
 First-Sphere Gargantua,{4}{B}{B},6,Unearth
 Fleshbag Marauder,{2}{B},3,
 Gilt-Blade Prowler,{2}{B},3,
-Heir of Falkenrath // Heir to the Night,,,
+Heir of Falkenrath // Heir to the Night,{1}{B},2,Flying;Transform
 Hell Mongrel,{3}{B},4,Madness
 Kitchen Imp,{3}{B},4,Flying;Madness;Haste
 Leeching Sliver,{1}{B},2,
@@ -6230,7 +6230,7 @@ Territorial Kavu,{R}{G},2,Domain
 Thundering Djinn,{3}{U}{R},5,Flying
 Wavesifter,{3}{G}{U},5,Flying;Investigate;Evoke
 Ravenous Squirrel,{B/G},1,
-Fast // Furious,,,
+Fast // Furious,{2}{R} // {3}{R}{R},8,
 Altar of the Goyf,{5},5,
 Amorphous Axe,{2},2,Equip
 Batterbone,{2},2,Equip;Living weapon
@@ -6901,7 +6901,7 @@ A-Skemfar Elderhall,,0,
 A-Canopy Tactician,{3}{G},4,
 A-Elderfang Ritualist,{1}{B},2,
 A-Thornmantle Striker,{3}{B},4,
-"A-Alrund, God of the Cosmos // A-Hakka, Whispering Raven",,,
+"A-Alrund, God of the Cosmos // A-Hakka, Whispering Raven",{3}{U}{U},5,Scry;Flying
 A-Cosmos Charger,{2}{U},3,Flying;Flash;Foretell
 Axgard Braggart,{3}{W},4,Boast
 Battershield Warrior,{2}{W},3,Boast
@@ -6917,13 +6917,13 @@ Giant Ox,{1}{W},2,
 Glorious Protector,{2}{W}{W},4,Flying;Flash;Foretell
 Gods' Hall Guardian,{5}{W},6,Vigilance;Foretell
 Goldmaw Champion,{2}{W},3,Boast
-"Halvar, God of Battle // Sword of the Realms",,,
+"Halvar, God of Battle // Sword of the Realms",{2}{W}{W},4,Equip
 Invoke the Divine,{2}{W},3,
 Iron Verdict,{2}{W},3,Foretell
 Kaya's Onslaught,{2}{W},3,Foretell
 Master Skald,{4}{W},5,
 Rally the Ranks,{1}{W},2,
-"Reidane, God of the Worthy // Valkmira, Protector's Shield",,,
+"Reidane, God of the Worthy // Valkmira, Protector's Shield",{2}{W},3,Flying;Vigilance
 Resplendent Marshal,{1}{W}{W},3,Flying
 Revitalize,{1}{W},2,
 Righteous Valkyrie,{2}{W},3,Flying
@@ -6942,7 +6942,7 @@ Valkyrie's Sword,{1}{W},2,Equip
 Valor of the Worthy,{W},1,Enchant
 Warhorn Blast,{4}{W},5,Foretell
 Wings of the Cosmos,{W},1,
-"Alrund, God of the Cosmos // Hakka, Whispering Raven",,,
+"Alrund, God of the Cosmos // Hakka, Whispering Raven",{3}{U}{U},5,Scry;Flying
 Alrund's Epiphany,{5}{U}{U},7,Foretell
 Ascendant Spirit,{U},1,
 Augury Raven,{3}{U},4,Flying;Foretell
@@ -6951,7 +6951,7 @@ Behold the Multiverse,{3}{U},4,Foretell;Scry
 Berg Strider,{4}{U},5,
 Bind the Monster,{U},1,Enchant
 Brinebarrow Intruder,{U},1,Flash
-"Cosima, God of the Voyage // The Omenkeel",,,
+"Cosima, God of the Voyage // The Omenkeel",{2}{U},3,Crew
 Cosmos Charger,{3}{U},4,Flying;Flash;Foretell
 Cyclone Summoner,{5}{U}{U},7,
 Depart the Realm,{1}{U},2,Foretell
@@ -6992,7 +6992,7 @@ Draugr's Helm,{1}{B},2,Equip
 Dread Rider,{5}{B},6,
 Dream Devourer,{1}{B},2,
 Duskwielder,{B},1,Boast
-"Egon, God of Death // Throne of Death",,,
+"Egon, God of Death // Throne of Death",{2}{B},3,Mill;Deathtouch
 Elderfang Disciple,{1}{B},2,
 Eradicator Valkyrie,{2}{B}{B},4,Flying;Lifelink;Hexproof from;Hexproof;Boast
 Feed the Serpent,{2}{B}{B},4,
@@ -7012,9 +7012,9 @@ Rune of Mortality,{1}{B},2,Enchant
 Skemfar Avenger,{1}{B},2,
 Skemfar Shadowsage,{3}{B},4,
 Skull Raid,{3}{B},4,Foretell
-"Tergrid, God of Fright // Tergrid's Lantern",,,
+"Tergrid, God of Fright // Tergrid's Lantern",{3}{B}{B},5,Menace
 Tergrid's Shadow,{3}{B}{B},5,Foretell
-"Valki, God of Lies // Tibalt, Cosmic Impostor",,,
+"Valki, God of Lies // Tibalt, Cosmic Impostor",{1}{B},2,
 "Varragoth, Bloodsky Sire",{2}{B},3,Boast;Deathtouch
 Vengeful Reaper,{3}{B},4,Foretell;Deathtouch;Flying;Haste
 Village Rites,{B},1,
@@ -7022,7 +7022,7 @@ Weigh Down,{B},1,
 Withercrown,{1}{B},2,Enchant
 Arni Brokenbrow,{2}{R},3,Boast;Haste
 Basalt Ravager,{3}{R},4,
-"Birgi, God of Storytelling // Harnfel, Horn of Bounty",,,
+"Birgi, God of Storytelling // Harnfel, Horn of Bounty",{2}{R},3,
 Breakneck Berserker,{2}{R},3,Haste
 Calamity Bearer,{2}{R}{R},4,Double
 Cinderheart Giant,{5}{R}{R},7,Trample
@@ -7051,7 +7051,7 @@ Shackles of Treachery,{2}{R},3,
 Smashing Success,{3}{R},4,Treasure
 Squash,{4}{R},5,
 Tibalt's Trickery,{1}{R},2,Mill
-"Toralf, God of Fury // Toralf's Hammer",,,
+"Toralf, God of Fury // Toralf's Hammer",{2}{R}{R},4,Trample;Equip
 Tormentor's Helm,{R},1,Equip
 Tundra Fumarole,{1}{R}{R},3,
 Tuskeri Firewalker,{2}{R},3,Boast
@@ -7064,7 +7064,7 @@ Boreal Outrider,{2}{G},3,
 Elderleaf Mentor,{3}{G},4,
 Elven Bow,{G},1,Equip
 Elvish Warmaster,{1}{G},2,
-"Esika, God of the Tree // The Prismatic Bridge",,,
+"Esika, God of the Tree // The Prismatic Bridge",{1}{G}{G},3,Vigilance
 Esika's Chariot,{3}{G},4,Crew
 Glittering Frost,{2}{G},3,Enchant
 Gnottvold Recluse,{2}{G},3,Reach
@@ -7074,9 +7074,9 @@ Horizon Seeker,{2}{G},3,Boast
 Icehide Troll,{2}{G},3,
 In Search of Greatness,{G}{G},2,Scry
 Jaspera Sentinel,{G},1,Reach
-"Jorn, God of Winter // Kaldring, the Rimestaff",,,
+"Jorn, God of Winter // Kaldring, the Rimestaff",{2}{G},3,
 King Harald's Revenge,{2}{G},3,
-"Kolvori, God of Kinship // The Ringhart Crest",,,
+"Kolvori, God of Kinship // The Ringhart Crest",{2}{G}{G},4,
 Littjara Glade-Warden,{3}{G},4,Changeling
 Mammoth Growth,{2}{G},3,Foretell
 Masked Vandal,{1}{G},2,Changeling
@@ -7641,7 +7641,7 @@ Abuelo's Awakening,{X}{3}{W},4,
 Adaptive Gemguard,{3}{W},4,
 Attentive Sunscribe,{1}{W},2,Scry
 Bat Colony,{2}{W},3,
-Clay-Fired Bricks // Cosmium Kiln,,,
+Clay-Fired Bricks // Cosmium Kiln,{1}{W},2,Craft;Transform
 Cosmium Blast,{1}{W},2,
 Dauntless Dismantler,{1}{W},2,
 Dusk Rose Reliquary,{W},1,Ward
@@ -7656,20 +7656,20 @@ Kutzil's Flanker,{2}{W},3,Flash;Scry
 Malamet War Scribe,{3}{W}{W},5,
 Market Gnome,{W},1,
 Might of the Ancestors,{2}{W},3,
-"Ojer Taq, Deepest Foundation // Temple of Civilization",,,
+"Ojer Taq, Deepest Foundation // Temple of Civilization",{4}{W}{W},6,Vigilance;Transform
 Oltec Archaeologists,{4}{W},5,Scry
 Oltec Cloud Guard,{3}{W},4,Flying
-Oteclan Landmark // Oteclan Levitator,,,
+Oteclan Landmark // Oteclan Levitator,{W},1,Scry;Flying;Craft;Transform
 Petrify,{1}{W},2,Enchant
 Quicksand Whirlpool,{5}{W},6,
 Resplendent Angel,{1}{W}{W},3,Flying
 Sanguine Evangelist,{2}{W},3,Battle Cry
 Soaring Sandwing,{4}{W}{W},6,Flying;Plainscycling;Landcycling;Typecycling;Cycling
-Spring-Loaded Sawblades // Bladewheel Chariot,,,
+Spring-Loaded Sawblades // Bladewheel Chariot,{1}{W},2,Craft;Transform;Crew;Flash
 Thousand Moons Crackshot,{1}{W},2,
-Thousand Moons Smithy // Barracks of the Thousand,,,
+Thousand Moons Smithy // Barracks of the Thousand,{2}{W}{W},4,Transform
 Tinker's Tote,{2}{W},3,
-Unstable Glyphbridge // Sandswirl Wanderglyph,,,
+Unstable Glyphbridge // Sandswirl Wanderglyph,{3}{W}{W},5,Flying;Craft;Transform
 Vanguard of the Rose,{1}{W},2,
 Warden of the Inner Sky,{W},1,Scry
 "Akal Pakal, First Among Equals",{2}{U},3,
@@ -7679,19 +7679,19 @@ Cogwork Wrestler,{U},1,Flash
 Confounding Riddle,{2}{U},3,
 Council of Echoes,{4}{U}{U},6,Flying;Descend
 Didact Echo,{4}{U},5,Descend
-The Enigma Jewel // Locus of Enlightenment,,,
+The Enigma Jewel // Locus of Enlightenment,{U},1,Craft;Transform
 The Everflowing Well // The Myriad Pools,{2}{U},3,Transform;Descend;Mill
 Frilled Cave-Wurm,{3}{U},4,Descend
 Hermitic Nautilus,{1}{U},2,Vigilance
 Hurl into History,{3}{U}{U},5,Discover
-Inverted Iceberg // Iceberg Titan,,,
+Inverted Iceberg // Iceberg Titan,{1}{U},2,Craft;Transform;Mill
 Kitesail Larcenist,{2}{U},3,Flying;Ward
-Lodestone Needle // Guidestone Compass,,,
+Lodestone Needle // Guidestone Compass,{1}{U},2,Craft;Transform;Explore;Flash
 "Malcolm, Alluring Scoundrel",{1}{U},2,Flying;Flash
 Marauding Brinefang,{5}{U}{U},7,Islandcycling;Landcycling;Ward;Typecycling;Cycling
 Merfolk Cave-Diver,{2}{U},3,Explore
 Oaken Siren,{1}{U},2,Flying;Vigilance
-"Ojer Pakpatiq, Deepest Epoch // Temple of Cyclical Time",,,
+"Ojer Pakpatiq, Deepest Epoch // Temple of Cyclical Time",{2}{U}{U},4,Flying;Transform
 Orazca Puzzle-Door,{U},1,
 Out of Air,{2}{U}{U},4,
 Relic's Roar,{U},1,
@@ -7703,11 +7703,11 @@ Spyglass Siren,{U},1,Flying;Explore
 Staunch Crewmate,{1}{U},2,
 Subterranean Schooner,{1}{U},2,Crew;Explore
 Unlucky Drop,{3}{U},4,
-Waterlogged Hulk // Watertight Gondola,,,
+Waterlogged Hulk // Watertight Gondola,{U},1,Craft;Vigilance;Transform;Descend;Crew;Mill
 Waylaying Pirates,{3}{U},4,
 Zoetic Glyph,{2}{U},3,Discover;Enchant
 Abyssal Gorestalker,{4}{B}{B},6,
-"Aclazotz, Deepest Betrayal // Temple of the Dead",,,
+"Aclazotz, Deepest Betrayal // Temple of the Dead",{3}{B}{B},5,Flying;Lifelink;Transform
 Acolyte of Aclazotz,{2}{B},3,
 Another Chance,{2}{B},3,Mill
 Bloodletter of Aclazotz,{1}{B}{B}{B},4,Flying
@@ -7724,7 +7724,7 @@ Echo of Dusk,{1}{B},2,Descend
 Fanatical Offering,{1}{B},2,Explore
 Fungal Fortitude,{1}{B},2,Enchant;Flash
 Gargantuan Leech,{7}{B},8,Lifelink
-Grasping Shadows // Shadows' Lair,,,
+Grasping Shadows // Shadows' Lair,{3}{B},4,Transform
 Greedy Freebooter,{B},1,Treasure;Scry
 Join the Dead,{1}{B}{B},3,Descend
 Malicious Eclipse,{1}{B}{B},3,
@@ -7742,13 +7742,13 @@ Stalactite Stalker,{B},1,Menace
 Starving Revenant,{2}{B}{B},4,Surveil;Descend
 Stinging Cave Crawler,{2}{B},3,Descend;Deathtouch
 Synapse Necromage,{2}{B},3,
-Tarrian's Journal // The Tomb of Aclazotz,,,
+Tarrian's Journal // The Tomb of Aclazotz,{1}{B},2,Transform
 Terror Tide,{2}{B}{B},4,Fathomless descent
-Tithing Blade // Consuming Sepulcher,,,
-Visage of Dread // Dread Osseosaur,,,
+Tithing Blade // Consuming Sepulcher,{1}{B},2,Craft;Transform
+Visage of Dread // Dread Osseosaur,{1}{B},2,Craft;Transform;Menace;Mill
 Ancestors' Aid,{1}{R},2,Treasure
 Bonehoard Dracosaur,{3}{R}{R},5,Flying;First strike;Treasure
-"Brass's Tunnel-Grinder // Tecutlan, the Searing Rift",,,
+"Brass's Tunnel-Grinder // Tecutlan, the Searing Rift",{2}{R},3,Transform;Discover
 Brazen Blademaster,{2}{R},3,
 "Breeches, Eager Pillager",{2}{R},3,First strike;Treasure
 Burning Sun Cavalry,{1}{R},2,
@@ -7756,8 +7756,8 @@ Calamitous Cave-In,{3}{R},4,
 Curator of Sun's Creation,{3}{R},4,
 Daring Discovery,{4}{R},5,Discover
 Dinotomaton,{3}{R},4,Menace
-Dire Flail // Dire Blunderbuss,,,
-Dowsing Device // Geode Grotto,,,
+Dire Flail // Dire Blunderbuss,{R},1,Craft;Transform;Equip
+Dowsing Device // Geode Grotto,{1}{R},2,Transform
 Dreadmaw's Ire,{R},1,
 Enterprising Scallywag,{1}{R},2,Treasure
 Etali's Favor,{2}{R},3,Discover;Enchant
@@ -7767,13 +7767,13 @@ Hit the Mother Lode,{4}{R}{R}{R},7,Treasure;Discover
 Idol of the Deep King // Sovereign's Macuahuitl,{2}{R},3,Craft;Transform;Equip;Flash
 "Inti, Seneschal of the Sun",{1}{R},2,
 Magmatic Galleon,{3}{R}{R},5,Treasure;Crew
-"Ojer Axonil, Deepest Might // Temple of Power",,,
+"Ojer Axonil, Deepest Might // Temple of Power",{2}{R}{R},4,Transform;Trample
 Panicked Altisaur,{4}{R},5,Reach
 Plundering Pirate,{2}{R},3,Treasure
 Poetic Ingenuity,{2}{R},3,Treasure
 Rampaging Ceratops,{4}{R},5,
 Rumbling Rockslide,{3}{R},4,
-Saheeli's Lattice // Mastercraft Raptor,,,
+Saheeli's Lattice // Mastercraft Raptor,{1}{R},2,Craft;Transform
 Scytheclaw Raptor,{2}{R},3,
 Seismic Monstrosaur,{4}{R}{R},6,Mountaincycling;Landcycling;Trample;Typecycling;Cycling
 Sunshot Militia,{1}{R},2,
@@ -7794,21 +7794,21 @@ Explorer's Cache,{1}{G},2,
 "Ghalta, Stampede Tyrant",{5}{G}{G}{G},8,Trample
 Glimpse the Core,{1}{G},2,
 Glowcap Lantern,{G},1,Explore;Equip
-"Growing Rites of Itlimoc // Itlimoc, Cradle of the Sun",,,
-"Huatli, Poet of Unity // Roar of the Fifth People",,,
+"Growing Rites of Itlimoc // Itlimoc, Cradle of the Sun",{2}{G},3,Transform
+"Huatli, Poet of Unity // Roar of the Fifth People",{2}{G},3,Transform
 Huatli's Final Strike,{2}{G},3,
 Hulking Raptor,{2}{G}{G},4,Ward
 In the Presence of Ages,{2}{G},3,
 Intrepid Paleontologist,{1}{G},2,
 Ixalli's Lorekeeper,{G},1,
-Jade Seedstones // Jadeheart Attendant,,,
+Jade Seedstones // Jadeheart Attendant,{3}{G},4,Craft;Transform
 Kaslem's Stonetree // Kaslem's Strider,{2}{G},3,Craft;Transform
 Malamet Battle Glyph,{G},1,Fight
 Malamet Brawler,{1}{G},2,
 Malamet Scythe,{2}{G},3,Equip;Flash
 Malamet Veteran,{4}{G},5,Descend;Trample
 Mineshaft Spider,{3}{G},4,Reach;Mill
-"Ojer Kaslem, Deepest Growth // Temple of Cultivation",,,
+"Ojer Kaslem, Deepest Growth // Temple of Cultivation",{3}{G}{G},5,Transform;Trample
 Over the Edge,{1}{G},2,Explore
 Pathfinding Axejaw,{3}{G},4,Explore
 Poison Dart Frog,{1}{G},2,Reach
@@ -7820,7 +7820,7 @@ The Skullspore Nexus,{6}{G}{G},8,Double
 Spelunking,{2}{G},3,
 Staggering Size,{1}{G},2,
 Tendril of the Mycotyrant,{1}{G},2,
-Twists and Turns // Mycoid Maze,,,
+Twists and Turns // Mycoid Maze,{G},1,Transform;Explore;Scry
 Walk with the Ancestors,{4}{G},5,Discover
 "Abuelo, Ancestral Echo",{1}{W}{U},3,Flying;Ward
 "Akawalli, the Seething Tower",{1}{B}{G},3,Descend
@@ -7833,9 +7833,9 @@ Caparocti Sunborn,{2}{R}{W},4,Discover
 "Captain Storm, Cosmium Raider",{U}{R},2,
 Deepfathom Echo,{2}{G}{U},4,Explore
 "Gishath, Sun's Avatar",{5}{R}{G}{W},8,Vigilance;Haste;Trample
-"Kellan, Daring Traveler // Journey On",,,
+"Kellan, Daring Traveler // Journey On",{1}{W} // {G},2,
 "Kutzil, Malamet Exemplar",{1}{G}{W},3,
-Master's Guide-Mural // Master's Manufactory,,,
+Master's Guide-Mural // Master's Manufactory,{3}{W}{U},5,Craft;Transform
 Molten Collapse,{B}{R},2,
 The Mycotyrant,{1}{B}{G},3,Trample
 "Nicanzil, Current Conductor",{G}{U},2,Explore
@@ -7856,7 +7856,7 @@ Digsite Conservator,{2},2,Discover
 Disruptor Wanderglyph,{4},4,
 Hoverstone Pilgrim,{5},5,Flying;Ward
 Hunter's Blowgun,{1},1,Equip
-"Matzalantli, the Great Door // The Core",,,
+"Matzalantli, the Great Door // The Core",{3},3,Transform;Fathomless descent
 The Millennium Calendar,{1},1,Double
 Roaming Throne,{4},4,Ward
 Runaway Boulder,{6},6,Flash;Cycling
@@ -7865,8 +7865,8 @@ Sunbird Standard // Sunbird Effigy,{3},3,Flying;Craft;Vigilance;Transform;Haste
 Swashbuckler's Whip,{1},1,Discover;Equip
 Tarrian's Soulcleaver,{1},1,Equip
 Threefold Thunderhulk,{7},7,
-Throne of the Grim Captain // The Grim Captain,,,
-Treasure Map // Treasure Cove,,,
+Throne of the Grim Captain // The Grim Captain,{2},2,Lifelink;Craft;Transform;Hexproof;Trample;Menace;Mill
+Treasure Map // Treasure Cove,{2},2,Transform;Treasure;Scry
 Cavern of Souls,,0,
 Cavernous Maw,,0,
 Echoing Deeps,,0,
@@ -8304,7 +8304,7 @@ Aerial Engineer,{2}{W}{U},4,
 Brawl-Bash Ogre,{2}{B}{R},4,Menace
 "Chromium, the Mutable",{4}{W}{U}{B},7,Flying;Flash
 Draconic Disciple,{1}{R}{G},3,
-"Nicol Bolas, the Ravager // Nicol Bolas, the Arisen",,,
+"Nicol Bolas, the Ravager // Nicol Bolas, the Arisen",{1}{U}{B}{R},4,Flying;Transform
 "Palladia-Mors, the Ruiner",{3}{R}{G}{W},6,Flying;Vigilance;Trample
 Poison-Tip Archer,{2}{B}{G},4,Reach;Deathtouch
 Psychic Symbiont,{4}{U}{B},6,Flying
@@ -9180,7 +9180,7 @@ Izzet Generatorium,{U}{R},2,
 "Nadu, Winged Wisdom",{1}{G}{U},3,Flying
 The Necrobloom,{1}{W}{B}{G},4,Mill;Landfall
 Obstinate Gargoyle,{1}{W}{B},3,Persist
-Ondu Knotmaster // Throw a Line,,,
+Ondu Knotmaster // Throw a Line,{2}{W}{B} // {W}{B},4,Lifelink
 "Phlage, Titan of Fire's Fury",{1}{R}{W},3,Escape
 Planar Genesis,{G}{U},2,
 Psychic Frog,{U}{B},2,
@@ -9221,31 +9221,31 @@ Ugin's Labyrinth,,0,Imprint
 Urza's Cave,,0,
 Windswept Heath,,0,
 Wooded Foothills,,0,
-"Ajani, Nacatl Pariah // Ajani, Nacatl Avenger",,,
-Razorgrass Ambush // Razorgrass Field,,,
-Witch Enchanter // Witch-Blessed Meadow,,,
-Hydroelectric Specimen // Hydroelectric Laboratory,,,
-Sink into Stupor // Soporific Springs,,,
-"Tamiyo, Inquisitive Student // Tamiyo, Seasoned Scholar",,,
-Boggart Trawler // Boggart Bog,,,
-Fell the Profane // Fell Mire,,,
-"Sorin of House Markov // Sorin, Ravenous Neonate",,,
-Pinnacle Monk // Mystic Peak,,,
-"Ral, Monsoon Mage // Ral, Leyline Prodigy",,,
-Sundering Eruption // Volcanic Fissure,,,
-Bridgeworks Battle // Tanglespan Bridgeworks,,,
-Disciple of Freyalise // Garden of Freyalise,,,
-"Grist, Voracious Larva // Grist, the Plague Swarm",,,
-Bloodsoaked Insight // Sanguine Morass,,,
-Drowner of Truth // Drowned Jungle,,,
-Glasswing Grace // Age-Graced Chapel,,,
-Legion Leadership // Legion Stronghold,,,
-Revitalizing Repast // Old-Growth Grove,,,
-Rush of Inspiration // Crackling Falls,,,
-Strength of the Harvest // Haven of the Harvest,,,
-Stump Stomp // Burnwillow Clearing,,,
-Suppression Ray // Orderly Plaza,,,
-Waterlogged Teachings // Inundated Archive,,,
+"Ajani, Nacatl Pariah // Ajani, Nacatl Avenger",{1}{W},2,Transform
+Razorgrass Ambush // Razorgrass Field,{1}{W},2,
+Witch Enchanter // Witch-Blessed Meadow,{3}{W},4,
+Hydroelectric Specimen // Hydroelectric Laboratory,{2}{U},3,Flash
+Sink into Stupor // Soporific Springs,{1}{U}{U},3,
+"Tamiyo, Inquisitive Student // Tamiyo, Seasoned Scholar",{U},1,Flying;Investigate;Transform
+Boggart Trawler // Boggart Bog,{2}{B},3,
+Fell the Profane // Fell Mire,{2}{B}{B},4,
+"Sorin of House Markov // Sorin, Ravenous Neonate",{1}{B},2,Lifelink;Extort;Transform;Food
+Pinnacle Monk // Mystic Peak,{3}{R}{R},5,Prowess
+"Ral, Monsoon Mage // Ral, Leyline Prodigy",{1}{R},2,Transform
+Sundering Eruption // Volcanic Fissure,{2}{R},3,
+Bridgeworks Battle // Tanglespan Bridgeworks,{2}{G},3,Fight
+Disciple of Freyalise // Garden of Freyalise,{3}{G}{G}{G},6,
+"Grist, Voracious Larva // Grist, the Plague Swarm",{G},1,Transform;Mill;Deathtouch
+Bloodsoaked Insight // Sanguine Morass,{5}{B/R}{B/R},7,
+Drowner of Truth // Drowned Jungle,{5}{G/U}{G/U},7,Devoid
+Glasswing Grace // Age-Graced Chapel,{3}{W/B}{W/B},5,Enchant
+Legion Leadership // Legion Stronghold,{1}{R/W},2,Double
+Revitalizing Repast // Old-Growth Grove,{B/G},1,
+Rush of Inspiration // Crackling Falls,{1}{U/R}{U/R},3,
+Strength of the Harvest // Haven of the Harvest,{2}{G/W},3,Enchant
+Stump Stomp // Burnwillow Clearing,{1}{R/G},2,
+Suppression Ray // Orderly Plaza,{3}{W/U}{W/U},5,
+Waterlogged Teachings // Inundated Archive,{3}{U/B},4,
 Angel of the Ruins,{5}{W}{W},7,Flying;Plainscycling;Landcycling;Typecycling;Cycling
 Decree of Justice,{X}{X}{2}{W}{W},4,Cycling
 Distinguished Conjurer,{1}{W},2,
@@ -9289,28 +9289,28 @@ Deserted Temple,,0,
 Nesting Grounds,,0,
 Phyrexian Tower,,0,
 A-Hobbling Zombie,{1}{B},2,Deathtouch
-A-Devoted Grafkeeper // A-Departed Soulkeeper,,,
+A-Devoted Grafkeeper // A-Departed Soulkeeper,{W}{U},2,Flying;Transform;Mill;Disturb
 A-Falcon Abomination,{2}{U},3,Flying;Flash
 "A-Lier, Disciple of the Drowned",{3}{U}{U},5,
 A-Patrician Geist,{2}{U},3,Flying
 A-Phantom Carriage,{2}{U}{U},4,Flying
 A-Shipwreck Sifters,{1}{U},2,
 "Adeline, Resplendent Cathar",{1}{W}{W},3,Vigilance
-Ambitious Farmhand // Seasoned Cathar,,,
-Beloved Beggar // Generous Soul,,,
-Bereaved Survivor // Dauntless Avenger,,,
+Ambitious Farmhand // Seasoned Cathar,{1}{W},2,Lifelink;Transform;Coven
+Beloved Beggar // Generous Soul,{1}{W},2,Flying;Vigilance;Transform;Disturb
+Bereaved Survivor // Dauntless Avenger,{2}{W},3,Transform
 Blessed Defiance,{W},1,
 Borrowed Time,{2}{W},3,
-Brutal Cathar // Moonrage Brute,,,
+Brutal Cathar // Moonrage Brute,{2}{W},3,Transform;Daybound;First strike;Ward;Nightbound
 Candlegrove Witch,{1}{W},2,Coven
 Candletrap,{W},1,Enchant;Coven
 Cathar's Call,{2}{W},3,Enchant
 Celestus Sanctifier,{2}{W},3,
-Chaplain of Alms // Chapel Shieldgeist,,,
+Chaplain of Alms // Chapel Shieldgeist,{W},1,Flying;Transform;First strike;Ward;Disturb
 Clarion Cathars,{3}{W},4,
 Curse of Silence,{W},1,Enchant
 Duelcraft Trainer,{3}{W},4,First strike;Coven
-Enduring Angel // Angelic Enforcer,,,
+Enduring Angel // Angelic Enforcer,{2}{W}{W}{W},5,Flying;Transform;Double strike;Double
 Fateful Absence,{1}{W},2,Investigate
 Flare of Faith,{1}{W},2,
 Gavony Dawnguard,{1}{W}{W},3,Ward
@@ -9320,8 +9320,8 @@ Hedgewitch's Mask,{W},1,Equip
 Homestead Courage,{W},1,Flashback
 Intrepid Adversary,{1}{W},2,Lifelink
 Loyal Gryff,{2}{W},3,Flying;Flash
-Lunarch Veteran // Luminous Phantom,,,
-Mourning Patrol // Morning Apparition,,,
+Lunarch Veteran // Luminous Phantom,{W},1,Flying;Transform;Disturb
+Mourning Patrol // Morning Apparition,{2}{W},3,Flying;Vigilance;Transform;Disturb
 Odric's Outrider,{3}{W},4,
 Ritual Guardian,{2}{W},3,Coven
 Ritual of Hope,{1}{W},2,Coven
@@ -9335,11 +9335,11 @@ Sunset Revelry,{1}{W},2,
 Thraben Exorcism,{1}{W},2,
 Unruly Mob,{1}{W},2,
 Vanquish the Horde,{6}{W}{W},8,
-Baithook Angler // Hook-Haunt Drifter,,,
+Baithook Angler // Hook-Haunt Drifter,{1}{U},2,Flying;Transform;Disturb
 Component Collector,{2}{U},3,
-Covetous Castaway // Ghostly Castigator,,,
+Covetous Castaway // Ghostly Castigator,{1}{U},2,Flying;Transform;Mill;Disturb
 Curse of Surveillance,{4}{U},5,Enchant
-Delver of Secrets // Insectile Aberration,,,
+Delver of Secrets // Insectile Aberration,{U},1,Flying;Transform
 Devious Cover-Up,{2}{U}{U},4,
 Dissipate,{1}{U}{U},3,
 Drownyard Amalgam,{4}{U},5,Mill
@@ -9347,23 +9347,23 @@ Fading Hope,{U},1,Scry
 Falcon Abomination,{2}{U},3,Flying
 Firmament Sage,{3}{U},4,
 Flip the Switch,{2}{U},3,
-Galedrifter // Waildrifter,,,
+Galedrifter // Waildrifter,{3}{U},4,Flying;Transform;Disturb
 Geistwave,{1}{U},2,
 Grafted Identity,{2}{U}{U},4,Enchant
 Larder Zombie,{U},1,Surveil;Defender
 "Lier, Disciple of the Drowned",{3}{U}{U},5,
 Locked in the Cemetery,{1}{U},2,Enchant
-Malevolent Hermit // Benevolent Geist,,,
+Malevolent Hermit // Benevolent Geist,{1}{U},2,Flying;Transform;Disturb
 Memory Deluge,{2}{U}{U},4,Flashback
-Mysterious Tome // Chilling Chronicle,,,
+Mysterious Tome // Chilling Chronicle,{2}{U},3,Transform
 Nebelgast Intruder,{2}{U},3,Flying;Flash
 Ominous Roost,{2}{U},3,
 Organ Hoarder,{3}{U},4,
 Otherworldly Gaze,{U},1,Surveil;Flashback
-Overwhelmed Archivist // Archive Haunt,,,
+Overwhelmed Archivist // Archive Haunt,{2}{U},3,Flying;Transform;Disturb
 Patrician Geist,{2}{U},3,Flying
 Phantom Carriage,{4}{U}{U},6,Flying
-Poppet Stitcher // Poppet Factory,,,
+Poppet Stitcher // Poppet Factory,{2}{U},3,Transform
 Revenge of the Drowned,{3}{U},4,
 Secrets of the Key,{U},1,Investigate;Flashback
 Shipwreck Sifters,{1}{U},2,
@@ -9372,33 +9372,33 @@ Sludge Monster,{3}{U}{U},5,
 Spectral Adversary,{1}{U},2,Flying;Flash
 Startle,{1}{U},2,
 Stormrider Spirit,{4}{U},5,Flying;Flash
-Suspicious Stowaway // Seafaring Werewolf,,,
+Suspicious Stowaway // Seafaring Werewolf,{1}{U},2,Transform;Daybound;Nightbound
 Triskaidekaphile,{1}{U},2,
 Unblinking Observer,{1}{U},2,
 Vivisection,{3}{U},4,
 Arrogant Outlaw,{2}{B},3,
-Baneblade Scoundrel // Baneclaw Marauder,,,
+Baneblade Scoundrel // Baneclaw Marauder,{3}{B},4,Transform;Daybound;Nightbound
 Bat Whisperer,{3}{B},4,
 Bladebrand,{1}{B},2,
 Blood Pact,{2}{B},3,
 Bloodline Culling,{1}{B}{B},3,
 Champion of the Perished,{B},1,
-Covert Cutpurse // Covetous Geist,,,
+Covert Cutpurse // Covetous Geist,{2}{B},3,Deathtouch;Flying;Transform;Disturb
 Crawl from the Cellar,{B},1,Flashback
-Curse of Leeches // Leeching Lurker,,,
+Curse of Leeches // Leeching Lurker,{2}{B},3,Lifelink;Transform;Daybound;Enchant;Nightbound
 Defenestrate,{2}{B},3,
 Diregraf Horde,{4}{B},5,
 Dreadhound,{4}{B}{B},6,Mill
-Ecstatic Awakener // Awoken Demon,,,
+Ecstatic Awakener // Awoken Demon,{B},1,Transform
 Foul Play,{1}{B},2,Investigate
 Ghoulish Procession,{1}{B},2,
 "Gisa, Glorious Resurrector",{2}{B}{B},4,
-Graveyard Trespasser // Graveyard Glutton,,,
-Heirloom Mirror // Inherited Fiend,,,
+Graveyard Trespasser // Graveyard Glutton,{2}{B},3,Transform;Daybound;Ward;Nightbound
+Heirloom Mirror // Inherited Fiend,{1}{B},2,Flying;Transform;Mill
 Hobbling Zombie,{2}{B},3,Deathtouch
 Infernal Grasp,{1}{B},2,
 "Jadar, Ghoulcaller of Nephalia",{1}{B},2,
-"Jerren, Corrupted Bishop // Ormendahl, the Corrupter",,,
+"Jerren, Corrupted Bishop // Ormendahl, the Corrupter",{2}{B},3,Flying;Lifelink;Transform;Trample
 Lord of the Forsaken,{4}{B}{B},6,Flying;Trample;Mill
 Mask of Griselbrand,{1}{B}{B},3,Equip
 The Meathook Massacre,{X}{B}{B},2,
@@ -9409,11 +9409,11 @@ No Way Out,,0,Manifest;Manifest dread
 Novice Occultist,{1}{B},2,
 Olivia's Midnight Ambush,{1}{B},2,
 Rotten Reunion,{B},1,Flashback
-Shady Traveler // Stalking Predator,,,
+Shady Traveler // Stalking Predator,{2}{B},3,Transform;Daybound;Menace;Nightbound
 Siege Zombie,{1}{B},2,
 Slaughter Specialist,{1}{B},2,
 Tainted Adversary,{1}{B},2,Deathtouch
-Vengeful Strangler // Strangling Grasp,,,
+Vengeful Strangler // Strangling Grasp,{1}{B},2,Transform;Enchant
 Abandon the Post,{1}{R},2,Flashback
 Ardent Elementalist,{3}{R},4,
 Bloodthirsty Adversary,{1}{R},2,Haste
@@ -9426,11 +9426,11 @@ Electric Revelation,{2}{R},3,Flashback
 Falkenrath Perforator,{1}{R},2,
 Falkenrath Pit Fighter,{R},1,
 Famished Foragers,{3}{R},4,
-Fangblade Brigand // Fangblade Eviscerator,,,
+Fangblade Brigand // Fangblade Eviscerator,{3}{R},4,Transform;Daybound;Nightbound
 Festival Crasher,{1}{R},2,
-Flame Channeler // Embodiment of Flame,,,
+Flame Channeler // Embodiment of Flame,{1}{R},2,Transform
 Geistflame Reservoir,{2}{R},3,
-Harvesttide Infiltrator // Harvesttide Assailant,,,
+Harvesttide Infiltrator // Harvesttide Assailant,{2}{R},3,Transform;Daybound;Trample;Nightbound
 Immolation,{R},1,Enchant
 Lambholt Harrier,{1}{R},2,
 Light Up the Night,{X}{R},1,Flashback
@@ -9444,39 +9444,39 @@ Pack's Betrayal,{2}{R},3,Scry
 Play with Fire,{R},1,Scry
 Purifying Dragon,{3}{R}{R},5,Flying
 Raze the Effigy,{R},1,
-Reckless Stormseeker // Storm-Charged Slasher,,,
+Reckless Stormseeker // Storm-Charged Slasher,{2}{R},3,Transform;Daybound;Nightbound
 Seize the Storm,{4}{R},5,Flashback
-Smoldering Egg // Ashmouth Dragon,,,
-Spellrune Painter // Spellrune Howler,,,
+Smoldering Egg // Ashmouth Dragon,{1}{R},2,Flying;Transform;Defender
+Spellrune Painter // Spellrune Howler,{2}{R},3,Transform;Daybound;Nightbound
 Stolen Vitality,{1}{R},2,
 Sunstreak Phoenix,{2}{R}{R},4,Flying
-Tavern Ruffian // Tavern Smasher,,,
+Tavern Ruffian // Tavern Smasher,{3}{R},4,Transform;Daybound;Nightbound
 Thermo-Alchemist,{1}{R},2,Defender
-Village Watch // Village Reavers,,,
+Village Watch // Village Reavers,{4}{R},5,Transform;Daybound;Haste;Nightbound
 Voldaren Ambusher,{2}{R},3,
 Voldaren Stinger,{R},1,
 Augur of Autumn,{1}{G}{G},3,Coven
-Bird Admirer // Wing Shredder,,,
+Bird Admirer // Wing Shredder,{2}{G},3,Reach;Transform;Daybound;Nightbound
 Bounding Wolf,{2}{G},3,Reach;Flash
 Briarbridge Tracker,{2}{G},3,Investigate;Vigilance
 Brood Weaver,{3}{G},4,Reach
-Burly Breaker // Dire-Strain Demolisher,,,
+Burly Breaker // Dire-Strain Demolisher,{3}{G}{G},5,Transform;Daybound;Ward;Nightbound
 Candlelit Cavalry,{4}{G},5,Coven
 Clear Shot,{2}{G},3,
 Consuming Blob,{3}{G}{G},5,
 Contortionist Troupe,{X}{G},1,Coven
 Dawnhart Mentor,{2}{G},3,Coven
 Dawnhart Rejuvenator,{3}{G},4,
-Deathbonnet Sprout // Deathbonnet Hulk,,,
+Deathbonnet Sprout // Deathbonnet Hulk,{G},1,Transform;Mill
 Defend the Celestus,{2}{G}{G},4,
 Dryad's Revival,{2}{G},3,Flashback
 Duel for Dominance,{1}{G},2,Fight;Coven
 Eccentric Farmer,{2}{G},3,Mill
 Harvesttide Sentry,{1}{G},2,Coven
-Hound Tamer // Untamed Pup,,,
+Hound Tamer // Untamed Pup,{2}{G},3,Transform;Daybound;Trample;Nightbound
 Howl of the Hunt,{2}{G},3,Enchant;Flash
 Might of the Old Ways,{1}{G},2,Coven
-Outland Liberator // Frenzied Trapbreaker,,,
+Outland Liberator // Frenzied Trapbreaker,{1}{G},2,Transform;Daybound;Nightbound
 Path to the Festival,{2}{G},3,Flashback;Scry
 Pestilent Wolf,{1}{G},2,
 Plummet,{1}{G},2,
@@ -9488,22 +9488,22 @@ Shadowbeast Sighting,{3}{G},4,Flashback
 Storm the Festival,{3}{G}{G}{G},6,Flashback
 Tapping at the Window,{1}{G},2,Flashback
 Timberland Guide,{1}{G},2,
-Tireless Hauler // Dire-Strain Brawler,,,
-Tovolar's Huntmaster // Tovolar's Packleader,,,
+Tireless Hauler // Dire-Strain Brawler,{4}{G},5,Vigilance;Transform;Daybound;Nightbound
+Tovolar's Huntmaster // Tovolar's Packleader,{4}{G}{G},6,Transform;Daybound;Fight;Nightbound
 Turn the Earth,{G},1,Flashback
 Unnatural Growth,{1}{G}{G}{G}{G},5,Double
 Willow Geist,{G},1,Trample
 Wrenn and Seven,{3}{G}{G},5,
 Angelfire Ignition,{1}{R}{W},3,Flashback
 Arcane Infusion,{U}{R},2,Flashback
-"Arlinn, the Pack's Hope // Arlinn, the Moon's Fury",,,
+"Arlinn, the Pack's Hope // Arlinn, the Moon's Fury",{2}{R}{G},4,Transform;Daybound;Nightbound
 Bladestitched Skaab,{U}{B},2,
 Can't Stay Away,{W}{B},2,Flashback
 Corpse Cobble,{U}{B},2,Flashback
 Croaking Counterpart,{1}{G}{U},3,Flashback
 Dawnhart Wardens,{1}{G}{W},3,Vigilance;Coven
-"Dennick, Pious Apprentice // Dennick, Pious Apparition",,,
-Devoted Grafkeeper // Departed Soulkeeper,,,
+"Dennick, Pious Apprentice // Dennick, Pious Apparition",{W}{U},2,Flying;Lifelink;Investigate;Transform;Disturb
+Devoted Grafkeeper // Departed Soulkeeper,{W}{U},2,Flying;Transform;Mill;Disturb
 Dire-Strain Rampage,{1}{R}{G},3,Flashback
 Diregraf Rebirth,{3}{B}{G},5,Flashback
 Faithful Mending,{W}{U},2,Flashback
@@ -9516,9 +9516,9 @@ Hallowed Respite,{W}{U},2,Flashback
 Hungry for More,{B}{R},2,Lifelink;Flashback
 Join the Dance,{G}{W},2,Flashback
 "Katilda, Dawnhart Prime",{G}{W},2,Protection
-Kessig Naturalist // Lord of the Ulvenwald,,,
+Kessig Naturalist // Lord of the Ulvenwald,{R}{G},2,Transform;Daybound;Nightbound
 "Liesa, Forgotten Archangel",{2}{W}{W}{B},5,Flying;Lifelink
-"Ludevic, Necrogenius // Olag, Ludevic's Hubris",,,
+"Ludevic, Necrogenius // Olag, Ludevic's Hubris",{U}{B},2,Transform;Mill
 Old Stickfingers,{X}{B}{G},2,
 "Rem Karolus, Stalwart Slayer",{1}{R}{W},3,Flying;Haste
 Rite of Harmony,{G}{W},2,Flashback
@@ -9531,7 +9531,7 @@ Siphon Insight,{U}{B},2,Flashback
 Storm Skreelix,{3}{U}{R},5,Flying
 Sunrise Cavalier,{1}{R}{W},3,Haste;Trample
 "Teferi, Who Slows the Sunset",{2}{W}{U},4,
-"Tovolar, Dire Overlord // Tovolar, the Midnight Scourge",,,
+"Tovolar, Dire Overlord // Tovolar, the Midnight Scourge",{1}{R}{G},3,Daybound;Transform;Nightbound
 Unnatural Moonrise,{R}{G},2,Flashback
 "Vadrik, Astral Archmage",{1}{U}{R},3,
 Vampire Socialite,{B}{R},2,Menace
@@ -9541,7 +9541,7 @@ The Celestus,{3},3,
 Crossroads Candleguide,{4},4,
 Jack-o'-Lantern,{1},1,
 Moonsilver Key,{2},2,
-Mystic Skull // Mystic Monstrosity,,,
+Mystic Skull // Mystic Monstrosity,{2},2,Transform
 Pithing Needle,{1},1,
 Silver Bolt,{1},1,
 Stuffed Bear,{2},2,
@@ -9739,7 +9739,7 @@ Insidious Roots,{B}{G},2,
 "Izoni, Center of the Web",{4}{B}{G},6,Collect evidence;Surveil;Menace
 "Judith, Carnage Connoisseur",{3}{B}{R},5,
 "Kaya, Spirits' Justice",{2}{W}{B},4,Surveil
-"Kellan, Inquisitive Prodigy // Tail the Suspect",,,
+"Kellan, Inquisitive Prodigy // Tail the Suspect",{2}{G}{U} // {G}{U},4,Flying;Investigate;Vigilance
 Kraul Whipcracker,{B}{G},2,Reach
 "Kylox, Visionary Inventor",{5}{U}{R},7,Haste;Menace;Ward
 Kylox's Voltstrider,{1}{U}{R},3,Collect evidence;Crew
@@ -9770,11 +9770,11 @@ Warleader's Call,{1}{R}{W},3,
 Wispdrinker Vampire,{2}{W}{B},4,Flying
 Worldsoul's Rage,{X}{R}{G},2,
 "Yarus, Roar of the Old Gods",{2}{R}{G},4,
-Cease // Desist,,,
-Flotsam // Jetsam,,,
-Fuss // Bother,,,
-Hustle // Bustle,,,
-Push // Pull,,,
+Cease // Desist,{1}{B/G} // {4}{G/W}{G/W},8,
+Flotsam // Jetsam,{1}{G/U} // {4}{U/B}{U/B},8,Investigate;Mill
+Fuss // Bother,{2}{R/W} // {4}{W/U}{W/U},9,Surveil
+Hustle // Bustle,{U/R} // {4}{R/G}{R/G},7,
+Push // Pull,{1}{W/B} // {4}{B/R}{B/R},8,
 Cryptex,{2},2,Collect evidence;Surveil
 Gravestone Strider,{2},2,
 Lumbering Laundry,{5},5,Disguise
@@ -9800,7 +9800,7 @@ Death-Greeter's Champion,{2}{R},3,Backup;Double strike;Dash
 Goro-Goro and Satoru,{U}{B}{R},3,
 Katilda and Lier,{G}{W}{U},3,
 Slimefoot and Squee,{B}{R}{G},3,
-Invasion of Ravnica // Guildpact Paragon,,,
+Invasion of Ravnica // Guildpact Paragon,{5},5,Transform
 Aerial Boost,{1}{W},2,Convoke
 Alabaster Host Intercessor,{5}{W},6,Plainscycling;Landcycling;Typecycling;Cycling
 Alabaster Host Sanctifier,{1}{W},2,Lifelink
@@ -9811,18 +9811,18 @@ Bola Slinger,{3}{W},4,Backup
 Boon-Bringer Valkyrie,{3}{W}{W},5,Flying;Lifelink;Backup;First strike
 Cut Short,{2}{W},3,Convoke
 Dusk Legion Duelist,{1}{W},2,Vigilance
-Elesh Norn // The Argent Etchings,,,
+Elesh Norn // The Argent Etchings,{2}{W}{W},4,Incubate;Vigilance;Transform
 Elspeth's Smite,{W},1,
 Enduring Bondwarden,{W},1,Backup
 Golden-Scale Aeronaut,{4}{W},5,Flying;Backup
 Guardian of Ghirapur,{2}{W},3,Flying
-"Heliod, the Radiant Dawn // Heliod, the Warped Eclipse",,,
+"Heliod, the Radiant Dawn // Heliod, the Warped Eclipse",{2}{W}{W},4,Transform
 Infected Defector,{4}{W},5,Incubate;Transform
 Inspired Charge,{2}{W}{W},4,
-Invasion of Belenon // Belenon War Anthem,,,
-Invasion of Dominaria // Serra Faithkeeper,,,
-Invasion of Gobakhan // Lightshield Array,,,
-"Invasion of Theros // Ephara, Ever-Sheltering",,,
+Invasion of Belenon // Belenon War Anthem,{2}{W},3,Transform
+Invasion of Dominaria // Serra Faithkeeper,{2}{W},3,Flying;Vigilance;Transform
+Invasion of Gobakhan // Lightshield Array,{1}{W},2,Transform
+"Invasion of Theros // Ephara, Ever-Sheltering",{2}{W},3,Transform
 Kithkin Billyrider,{2}{W},3,Double strike
 Knight of the New Coalition,{3}{W},4,Vigilance
 Knight-Errant of Eos,{4}{W},5,Convoke
@@ -9835,20 +9835,20 @@ Progenitor Exarch,{X}{X}{W},1,Incubate;Transform
 Realmbreaker's Grasp,{1}{W},2,Enchant
 Scrollshift,{2}{W},3,
 Seal from Existence,{1}{W}{W},3,Ward
-Seraph of New Capenna // Seraph of New Phyrexia,,,
+Seraph of New Capenna // Seraph of New Phyrexia,{2}{W},3,Flying;Transform
 Sigiled Sentinel,{2}{W},3,Vigilance;Backup
-Sun-Blessed Guardian // Furnace-Blessed Conqueror,,,
+Sun-Blessed Guardian // Furnace-Blessed Conqueror,{1}{W},2,Transform
 Sunder the Gateway,{1}{W},2,Incubate;Transform
 Sunfall,{3}{W}{W},5,Incubate;Transform
 Surge of Salvation,{W},1,
 Swordsworn Cavalier,{1}{W},2,
-Tarkir Duneshaper // Burnished Dunestomper,,,
+Tarkir Duneshaper // Burnished Dunestomper,{W},1,Transform;Trample
 Tiller of Flesh,{3}{W},4,Incubate;Transform
 Zhalfirin Lancer,{2}{W},3,
 Artistic Refusal,{4}{U}{U},6,Convoke
 Assimilate Essence,{1}{U},2,Incubate;Transform
 Astral Wingspan,{4}{U},5,Enchant;Convoke
-Captive Weird // Compleated Conjurer,,,
+Captive Weird // Compleated Conjurer,{U},1,Transform;Defender
 Change the Equation,{1}{U},2,
 Chrome Host Seedshark,{2}{U},3,Flying;Incubate;Transform
 Complete the Circuit,{5}{U},6,Convoke
@@ -9860,23 +9860,23 @@ Eyes of Gitaxias,{2}{U},3,Incubate;Transform
 Faerie Mastermind,{1}{U},2,Flying;Flash
 Furtive Analyst,{2}{U},3,Vigilance
 Halo-Charged Skaab,{4}{U},5,Mill
-Invasion of Arcavios // Invocation of the Founders,,,
-Invasion of Kamigawa // Rooftop Saboteurs,,,
-"Invasion of Segovia // Caetus, Sea Tyrant of Segovia",,,
-Invasion of Vryn // Overloaded Mage-Ring,,,
-Jin-Gitaxias // The Great Synthesis,,,
+Invasion of Arcavios // Invocation of the Founders,{3}{U}{U},5,Transform
+Invasion of Kamigawa // Rooftop Saboteurs,{3}{U},4,Flying;Transform
+"Invasion of Segovia // Caetus, Sea Tyrant of Segovia",{2}{U},3,Transform
+Invasion of Vryn // Overloaded Mage-Ring,{3}{U},4,Transform
+Jin-Gitaxias // The Great Synthesis,{3}{U}{U},5,Transform;Ward
 Meeting of Minds,{3}{U},4,Convoke
 Moment of Truth,{1}{U},2,
 Oculus Whelp,{3}{U},4,Flying;Transform
 Omen Hawker,{U},1,
 Oracle of Tragedy,{1}{U},2,
-Order of the Mirror // Order of the Alabaster Host,,,
+Order of the Mirror // Order of the Alabaster Host,{1}{U},2,Transform
 Preening Champion,{2}{U},3,Flying
 Protocol Knight,{3}{U},4,
-"Rona, Herald of Invasion // Rona, Tolarian Obliterator",,,
+"Rona, Herald of Invasion // Rona, Tolarian Obliterator",{1}{U},2,Transform;Trample
 Saiba Cryptomancer,{1}{U},2,Backup;Hexproof;Flash
 See Double,{2}{U}{U},4,
-Skyclave Aerialist // Skyclave Invader,,,
+Skyclave Aerialist // Skyclave Invader,{1}{U},2,Flying;Transform
 Stasis Field,{1}{U},2,Enchant
 Thunderhead Squadron,{5}{U},6,Flying;Convoke
 Tidal Terror,{4}{U}{U},6,Islandcycling;Landcycling;Typecycling;Cycling
@@ -9885,11 +9885,11 @@ Wicked Slumber,{3}{U},4,Convoke
 Xerex Strobe-Knight,{2}{U},3,Flying;Vigilance
 Zephyr Singer,{2}{U}{U},4,Flying;Vigilance;Convoke
 Zhalfirin Shapecraft,{1}{U},2,
-Aetherblade Agent // Gitaxian Mindstinger,,,
+Aetherblade Agent // Gitaxian Mindstinger,{1}{B},2,Transform;Deathtouch
 Archpriest of Shadows,{3}{B}{B},5,Backup;Deathtouch
-"Ayara, Widow of the Realm // Ayara, Furnace Queen",,,
+"Ayara, Widow of the Realm // Ayara, Furnace Queen",{1}{B}{B},3,Transform
 Bladed Battle-Fan,{1}{B},2,Equip;Flash
-Blightreaper Thallid // Blightsower Thallid,,,
+Blightreaper Thallid // Blightsower Thallid,{1}{B},2,Transform
 Bloated Processor,{2}{B},3,Incubate;Transform
 Breach the Multiverse,{5}{B}{B},7,Mill
 Collective Nightmare,{2}{B},3,Convoke
@@ -9909,19 +9909,19 @@ Grafted Butcher,{1}{B},2,
 Hoarding Broodlord,{5}{B}{B}{B},8,Flying;Convoke
 Ichor Drinker,{B},1,Lifelink;Incubate;Transform
 Ichor Shade,{2}{B},3,
-Invasion of Eldraine // Prickle Faeries,,,
-"Invasion of Fiora // Marchesa, Resolute Monarch",,,
-Invasion of Innistrad // Deluge of the Dead,,,
-Invasion of Ulgrotha // Grandmother Ravi Sengir,,,
+Invasion of Eldraine // Prickle Faeries,{3}{B},4,Flying;Transform
+"Invasion of Fiora // Marchesa, Resolute Monarch",{4}{B}{B},6,Transform;Menace;Deathtouch
+Invasion of Innistrad // Deluge of the Dead,{2}{B}{B},4,Transform;Flash
+Invasion of Ulgrotha // Grandmother Ravi Sengir,{4}{B},5,Flying;Transform
 Merciless Repurposing,{4}{B}{B},6,Incubate;Transform
 Mirrodin Avenged,{B},1,
-Nezumi Freewheeler // Hideous Fleshwheeler,,,
+Nezumi Freewheeler // Hideous Fleshwheeler,{3}{B},4,Transform;Menace;Mill
 Nezumi Informant,{1}{B},2,
 Phyrexian Gargantua,{4}{B}{B},6,
 Pile On,{3}{B},4,Surveil;Convoke
 Render Inert,{2}{B},3,
 Scorn-Blade Berserker,{B},1,Backup
-Sheoldred // The True Scriptures,,,
+Sheoldred // The True Scriptures,{3}{B}{B},5,Transform;Menace;Mill
 Tenured Oilcaster,{3}{B},4,Menace;Mill
 Traumatic Revelation,{1}{B},2,Incubate;Transform
 Unseal the Necropolis,{2}{B},3,Mill
@@ -9933,27 +9933,27 @@ Burning Sun's Fury,{1}{R},2,Convoke
 "Chandra, Hope's Beacon",{4}{R}{R},6,
 City on Fire,{5}{R}{R}{R},8,Triple;Convoke
 Coming In Hot,{R},1,Scry
-"Etali, Primal Conqueror // Etali, Primal Sickness",,,
+"Etali, Primal Conqueror // Etali, Primal Sickness",{5}{R}{R},7,Indestructible;Transform;Trample
 Fearless Skald,{4}{R},5,Backup;Double strike
 Furnace Gremlin,{1}{R},2,Incubate;Transform
 Furnace Host Charger,{5}{R},6,Mountaincycling;Landcycling;Haste;Typecycling;Cycling
 Furnace Reins,{2}{R},3,Treasure
 Hangar Scrounger,{2}{R},3,Backup
-Harried Artisan // Phyrexian Skyflayer,,,
+Harried Artisan // Phyrexian Skyflayer,{2}{R},3,Flying;Transform;Haste
 Into the Fire,{2}{R},3,
-Invasion of Kaldheim // Pyre of the World Tree,,,
-Invasion of Karsus // Refraction Elemental,,,
-Invasion of Mercadia // Kyren Flamewright,,,
-Invasion of Regatha // Disciples of the Inferno,,,
-Invasion of Tarkir // Defiant Thundermaw,,,
+Invasion of Kaldheim // Pyre of the World Tree,{3}{R},4,Transform
+Invasion of Karsus // Refraction Elemental,{2}{R}{R},4,Transform;Ward
+Invasion of Mercadia // Kyren Flamewright,{1}{R},2,Transform
+Invasion of Regatha // Disciples of the Inferno,{2}{R},3,Prowess;Transform
+Invasion of Tarkir // Defiant Thundermaw,{1}{R},2,Flying;Transform;Trample
 Karsus Depthguard,{2}{R},3,Defender
-Khenra Spellspear // Gitaxian Spellstalker,,,
+Khenra Spellspear // Gitaxian Spellstalker,{1}{R},2,Prowess;Transform;Trample;Ward
 Lithomantic Barrage,{R},1,
 Marauding Dreadship,{2}{R},3,Incubate;Transform;Haste;Crew
 Mirran Banesplitter,{R},1,Equip;Flash
 Nahiri's Warcrafting,{1}{R}{R},3,
 Onakke Javelineer,{4}{R},5,Reach
-Pyretic Prankster // Glistening Goremonger,,,
+Pyretic Prankster // Glistening Goremonger,{1}{R},2,Transform
 Ral's Reinforcements,{1}{R},2,
 Ramosian Greatsword,{4}{R},5,Equip;Convoke
 Rampaging Raptor,{2}{R}{R},4,Haste;Trample
@@ -9965,7 +9965,7 @@ Shivan Branch-Burner,{5}{R}{R},7,Flying;Haste;Convoke
 Stoke the Flames,{2}{R}{R},4,Convoke
 Thrashing Frontliner,{1}{R},2,Trample
 Trailblazing Historian,{1}{R},2,Haste
-Urabrask // The Great Work,,,
+Urabrask // The Great Work,{2}{R}{R},4,Transform;First strike;Treasure
 Volcanic Spite,{1}{R},2,
 Voldaren Thrillseeker,{2}{R},3,Backup
 War-Trained Slasher,{3}{R},4,Menace;Double
@@ -9974,7 +9974,7 @@ Ancient Imperiosaur,{5}{G}{G},7,Trample;Ward;Convoke
 Arachnoid Adaptation,{G},1,
 Atraxa's Fall,{1}{G},2,
 Blighted Burgeoning,{2}{G},3,Incubate;Transform;Enchant
-Bonded Herdbeast // Plated Kilnbeast,,,
+Bonded Herdbeast // Plated Kilnbeast,{4}{G},5,Transform;Menace
 Chomping Kavu,{3}{G},4,Backup
 Converter Beast,{3}{G},4,Incubate;Transform
 Copper Host Crusher,{6}{G}{G},8,Hexproof;Trample
@@ -9984,19 +9984,19 @@ Deeproot Wayfinder,{1}{G},2,Surveil
 Doomskar Warrior,{2}{G}{G},4,Backup;Trample
 Fertilid's Favor,{3}{G},4,
 Glistening Dawn,{2}{G}{G},4,Incubate;Transform
-Gnottvold Hermit // Chrome Host Hulk,,,
-Herbology Instructor // Malady Invoker,,,
-"Invasion of Ikoria // Zilortha, Apex of Ikoria",,,
-Invasion of Ixalan // Belligerent Regisaur,,,
-Invasion of Muraganda // Primordial Plasm,,,
-Invasion of Shandalar // Leyline Surge,,,
-Invasion of Zendikar // Awakened Skyclave,,,
+Gnottvold Hermit // Chrome Host Hulk,{3}{G},4,Transform
+Herbology Instructor // Malady Invoker,{1}{G},2,Transform
+"Invasion of Ikoria // Zilortha, Apex of Ikoria",{X}{G}{G},2,Reach;Transform
+Invasion of Ixalan // Belligerent Regisaur,{1}{G},2,Transform;Trample
+Invasion of Muraganda // Primordial Plasm,{4}{G},5,Transform;Fight
+Invasion of Shandalar // Leyline Surge,{3}{G}{G},5,Transform
+Invasion of Zendikar // Awakened Skyclave,{3}{G},4,Vigilance;Transform;Haste
 Iridescent Blademaster,{1}{G},2,
 Kami of Whispered Hopes,{2}{G},3,
 Overgrown Pest,{2}{G},3,
 "Ozolith, the Shattered Spire",{1}{G},2,Cycling
 Placid Rottentail,{G},1,Vigilance
-"Polukranos Reborn // Polukranos, Engine of Ruin",,,
+"Polukranos Reborn // Polukranos, Engine of Ruin",{G}{G}{G},3,Lifelink;Reach;Transform
 Portent Tracker,{1}{G},2,
 Ravenous Sailback,{4}{G},5,
 Sandstalker Moloch,{1}{G}{G},3,Flash
@@ -10009,7 +10009,7 @@ Tangled Skyline,{4}{G},5,Incubate;Transform
 Timberland Ancient,{4}{G}{G},6,Reach;Landcycling;Trample;Forestcycling;Typecycling;Cycling
 Tribute to the World Tree,{G}{G}{G},3,
 Vengeant Earth,{1}{G},2,
-Vorinclex // The Grand Evolution,,,
+Vorinclex // The Grand Evolution,{3}{G}{G},5,Reach;Transform;Trample;Fight;Mill
 War Historian,{2}{G},3,Reach
 Wildwood Escort,{4}{G},5,
 Wrenn and Realmbreaker,{1}{G}{G},3,Mill
@@ -10025,19 +10025,19 @@ Ghalta and Mavren,{3}{G}{G}{W}{W},7,Trample
 Halo Forager,{1}{U}{B},3,Flying
 Hidetsugu and Kairi,{2}{U}{U}{B},5,Flying
 Inga and Esika,{2}{G}{U},4,
-Invasion of Alara // Awaken the Maelstrom,,,
-Invasion of Amonkhet // Lazotep Convert,,,
-Invasion of Azgol // Ashen Reaper,,,
-Invasion of Ergamon // Truga Cliffcharger,,,
-"Invasion of Kaladesh // Aetherwing, Golden-Scale Flagship",,,
-Invasion of Kylem // Valor's Reach Tag Team,,,
-Invasion of Lorwyn // Winnowing Forces,,,
-Invasion of Moag // Bloomwielder Dryads,,,
-Invasion of New Capenna // Holy Frazzle-Cannon,,,
-Invasion of New Phyrexia // Teferi Akosa of Zhalfir,,,
-Invasion of Pyrulea // Gargantuan Slabhorn,,,
-Invasion of Tolvada // The Broken Sky,,,
-Invasion of Xerex // Vertex Paladin,,,
+Invasion of Alara // Awaken the Maelstrom,{W}{U}{B}{R}{G},5,Transform
+Invasion of Amonkhet // Lazotep Convert,{1}{U}{B},3,Transform;Mill
+Invasion of Azgol // Ashen Reaper,{B}{R},2,Transform;Menace
+Invasion of Ergamon // Truga Cliffcharger,{R}{G},2,Transform;Treasure;Trample
+"Invasion of Kaladesh // Aetherwing, Golden-Scale Flagship",{U}{R},2,Flying;Transform;Crew
+Invasion of Kylem // Valor's Reach Tag Team,{2}{R}{W},4,Transform
+Invasion of Lorwyn // Winnowing Forces,{4}{B}{G},6,Transform
+Invasion of Moag // Bloomwielder Dryads,{2}{G}{W},4,Transform;Ward
+Invasion of New Capenna // Holy Frazzle-Cannon,{W}{B},2,Transform;Equip
+Invasion of New Phyrexia // Teferi Akosa of Zhalfir,{X}{W}{U},2,Transform
+Invasion of Pyrulea // Gargantuan Slabhorn,{G}{U},2,Transform;Trample;Ward;Scry
+Invasion of Tolvada // The Broken Sky,{3}{W}{B},5,Transform
+Invasion of Xerex // Vertex Paladin,{2}{W}{U},4,Flying;Transform
 Joyful Stormsculptor,{3}{U}{R},5,
 Kogla and Yidaro,{2}{R}{R}{G}{G},6,Fight
 Kroxa and Kunoros,{3}{R}{W}{B},6,Lifelink;Vigilance;Menace
@@ -10420,7 +10420,7 @@ S.H.I.E.L.D. Flying Car,{2}{U},3,Flying;Crew;Flash
 Tony Stark // The Invincible Iron Man,{1}{U},2,Flying;Transform;Haste
 "Misty Knight, Hero for Hire",{1}{R},2,
 "Black Widow, Double Agent",{1}{W}{B},3,Deathtouch
-"King T'Challa // Black Panther, Hope Enduring",,,
+"King T'Challa // Black Panther, Hope Enduring",{1}{W}{U},3,Transform;Double strike;Flash
 Vision Quest,{X}{U}{R},2,
 A.I.M. Labs,,0,
 Asgardian Citadel,,0,
@@ -10476,15 +10476,15 @@ A-Dokuchi Silencer,{1}{B},2,Ninjutsu
 Ancestral Katana,{1}{W},2,Equip
 "Ao, the Dawn Sky",{3}{W}{W},5,Flying;Vigilance
 Banishing Slash,{W}{W},2,
-Befriending the Moths // Imperial Moth,,,
+Befriending the Moths // Imperial Moth,{3}{W},4,Flying;Transform
 Blade-Blizzard Kitsune,{2}{W},3,Ninjutsu;Double strike
 Born to Drive,{2}{W},3,Enchant;Channel
 Brilliant Restoration,{3}{W}{W}{W}{W},7,
 Cloudsteel Kirin,{2}{W},3,Reconfigure;Flying
 Dragonfly Suit,{2}{W},3,Flying;Crew
 Eiganjo Exemplar,{1}{W},2,
-Era of Enlightenment // Hand of Enlightenment,,,
-The Fall of Lord Konda // Fragment of Konda,,,
+Era of Enlightenment // Hand of Enlightenment,{1}{W},2,Transform;First strike;Scry
+The Fall of Lord Konda // Fragment of Konda,{2}{W},3,Transform;Defender
 Farewell,{4}{W}{W},6,
 Go-Shintai of Shared Purpose,{3}{W},4,Vigilance
 Golden-Tail Disciple,{2}{W},3,Lifelink
@@ -10501,12 +10501,12 @@ Light the Way,{W},1,
 Lion Sash,{1}{W},2,Reconfigure
 Lucky Offering,{W},1,
 March of Otherworldly Light,{X}{W},1,
-Michiko's Reign of Truth // Portrait of Michiko,,,
+Michiko's Reign of Truth // Portrait of Michiko,{1}{W},2,Transform
 Mothrider Patrol,{W},1,Flying
 "Norika Yamazaki, the Poet",{2}{W},3,Vigilance
 Regent's Authority,{W},1,
 Repel the Vile,{3}{W},4,
-The Restoration of Eiganjo // Architect of Restoration,,,
+The Restoration of Eiganjo // Architect of Restoration,{2}{W},3,Vigilance;Transform
 Selfless Samurai,{1}{W},2,
 Seven-Tail Mentor,{3}{W},4,
 Sky-Blessed Samurai,{6}{W},7,Flying;Affinity
@@ -10520,7 +10520,7 @@ Acquisition Octopus,{2}{U},3,Reconfigure
 Anchor to Reality,{2}{U}{U},4,Scry
 Armguard Familiar,{1}{U},2,Ward;Reconfigure
 Awakened Awareness,{X}{U}{U},2,Enchant
-Behold the Unspeakable // Vision of the Unspeakable,,,
+Behold the Unspeakable // Vision of the Unspeakable,{3}{U}{U},5,Scry;Flying;Transform;Trample
 Covert Technician,{2}{U},3,Ninjutsu
 Discover the Impossible,{2}{U},3,
 Disruption Protocol,{U}{U},2,
@@ -10529,7 +10529,7 @@ Futurist Operative,{3}{U},4,
 Futurist Sentinel,{3}{U},4,Crew
 Go-Shintai of Lost Wisdom,{1}{U},2,Flying;Mill
 Guardians of Oboro,{2}{U},3,Defender
-Inventive Iteration // Living Breakthrough,,,
+Inventive Iteration // Living Breakthrough,{3}{U},4,Flying;Transform
 Invoke the Winds,{1}{U}{U}{U}{U},5,
 "Jin-Gitaxias, Progress Tyrant",{5}{U}{U},7,
 "Kairi, the Swirling Sky",{4}{U}{U},6,Flying;Ward;Mill
@@ -10538,7 +10538,7 @@ Mindlink Mech,{2}{U},3,Flying;Crew
 Mirrorshell Crab,{5}{U}{U},7,Ward;Channel
 Mnemonic Sphere,{1}{U},2,Channel
 Mobilizer Mech,{1}{U},2,Flying;Crew
-The Modern Age // Vector Glider,,,
+The Modern Age // Vector Glider,{1}{U},2,Flying;Transform
 Moon-Circuit Hacker,{1}{U},2,Ninjutsu
 Moonfolk Puzzlemaker,{2}{U},3,Scry;Flying
 Moonsnare Prototype,{U},1,Channel
@@ -10578,8 +10578,8 @@ Kami of Restless Shadows,{4}{B},5,
 Kami of Terrible Secrets,{3}{B},4,
 Leech Gauntlet,{1}{B},2,Lifelink;Reconfigure
 Lethal Exploit,{1}{B},2,
-Life of Toshiro Umezawa // Memory of Toshiro,,,
-The Long Reach of Night // Animus of Night's Reach,,,
+Life of Toshiro Umezawa // Memory of Toshiro,{1}{B},2,Transform
+The Long Reach of Night // Animus of Night's Reach,{3}{B},4,Transform;Menace
 Malicious Malfunction,{1}{B}{B},3,
 March of Wretched Sorrow,{X}{B},1,
 Mukotai Ambusher,{3}{B},4,Lifelink;Ninjutsu
@@ -10587,14 +10587,14 @@ Mukotai Soulripper,{1}{B},2,Crew
 "Nashi, Moon Sage's Scion",{1}{B}{B},3,Ninjutsu
 Nezumi Bladeblesser,{2}{B},3,
 Nezumi Prowler,{1}{B},2,Ninjutsu
-Okiba Reckoner Raid // Nezumi Road Captain,,,
+Okiba Reckoner Raid // Nezumi Road Captain,{B},1,Transform;Menace
 Okiba Salvage,{4}{B},5,
 Reckoner Shakedown,{2}{B},3,
 Reckoner's Bargain,{1}{B},2,
 Return to Action,{1}{B},2,
 Soul Transfer,{1}{B}{B},3,
 "Tatsunari, Toad Rider",{2}{B},3,
-Tribute to Horobi // Echo of Death's Wail,,,
+Tribute to Horobi // Echo of Death's Wail,{1}{B},2,Flying;Transform;Haste
 Twisted Embrace,{2}{B}{B},4,Enchant
 Undercity Scrounger,{2}{B},3,Treasure
 Unforgiving One,{2}{B},3,Menace
@@ -10610,7 +10610,7 @@ Dragonspark Reactor,{1}{R},2,
 Experimental Synthesizer,{R},1,
 Explosive Entry,{1}{R},2,
 Explosive Singularity,{8}{R}{R},10,
-Fable of the Mirror-Breaker // Reflection of Kiki-Jiki,,,
+Fable of the Mirror-Breaker // Reflection of Kiki-Jiki,{2}{R},3,Transform;Treasure
 Flame Discharge,{X}{R},1,
 Gift of Wrath,{3}{R},4,Enchant
 Go-Shintai of Ancient Wars,{2}{R},3,First strike
@@ -10620,7 +10620,7 @@ Invoke Calamity,{1}{R}{R}{R}{R},5,
 Ironhoof Boar,{5}{R},6,Haste;Trample;Channel
 Kami of Industry,{4}{R},5,
 Kami's Flare,{1}{R},2,
-Kumano Faces Kakkazan // Etching of Kumano,,,
+Kumano Faces Kakkazan // Etching of Kumano,{R},1,Transform;Haste
 Lizard Blades,{1}{R},2,Double strike;Reconfigure
 March of Reckless Joy,{X}{R},1,
 Ogre-Head Helm,{1}{R},2,Reconfigure
@@ -10630,7 +10630,7 @@ Reinforced Ronin,{R},1,Haste;Channel
 Scrap Welder,{2}{R},3,
 Scrapyard Steelbreaker,{3}{R},4,
 Seismic Wave,{2}{R},3,
-The Shattered States Era // Nameless Conqueror,,,
+The Shattered States Era // Nameless Conqueror,{4}{R},5,Transform;Haste;Trample
 Simian Sling,{R},1,Reconfigure
 Sokenzan Smelter,{1}{R},2,
 Tempered in Solitude,{1}{R},2,
@@ -10640,16 +10640,16 @@ Twinshot Sniper,{3}{R},4,Reach;Channel
 Unstoppable Ogre,{2}{R},3,
 Upriser Renegade,{1}{R},2,
 Voltage Surge,{R},1,
-Azusa's Many Journeys // Likeness of the Seeker,,,
+Azusa's Many Journeys // Likeness of the Seeker,{1}{G},2,Transform
 Bamboo Grove Archer,{1}{G},2,Reach;Defender;Channel
 Bearer of Memory,{2}{G},3,
 Blossom Prancer,{3}{G}{G},5,Reach
 Boon of Boseiju,{1}{G},2,
-Boseiju Reaches Skyward // Branch of Boseiju,,,
+Boseiju Reaches Skyward // Branch of Boseiju,{3}{G},4,Reach;Transform
 Careful Cultivation,{2}{G},3,Enchant;Channel
 Coiling Stalker,{1}{G},2,Ninjutsu
 Commune with Spirits,{G},1,
-The Dragon-Kami Reborn // Dragon-Kami's Egg,,,
+The Dragon-Kami Reborn // Dragon-Kami's Egg,{2}{G},3,Transform
 Fade into Antiquity,{2}{G},3,
 Fang of Shigeki,{G},1,Deathtouch
 Favor of Jukai,{3}{G},4,Enchant;Channel
@@ -10662,7 +10662,7 @@ Harmonious Emergence,{3}{G},4,Enchant
 Heir of the Ancient Fang,{2}{G},3,
 Historian's Wisdom,{2}{G},3,Enchant
 Invoke the Ancients,{1}{G}{G}{G}{G},5,
-Jugan Defends the Temple // Remnant of the Rising Star,,,
+Jugan Defends the Temple // Remnant of the Rising Star,{2}{G},3,Flying;Transform
 Jukai Preserver,{3}{G},4,Channel
 Jukai Trainee,{1}{G},2,
 Kami of Transience,{1}{G},2,Trample
@@ -10678,9 +10678,9 @@ Season of Renewal,{2}{G},3,
 Spinning Wheel Kick,{X}{X}{G}{G},2,
 Spring-Leaf Avenger,{3}{G}{G},5,Ninjutsu
 Storyweave,{2}{G},3,
-Tales of Master Seshiro // Seshiro's Living Legacy,,,
+Tales of Master Seshiro // Seshiro's Living Legacy,{4}{G},5,Vigilance;Transform;Haste
 Tamiyo's Safekeeping,{G},1,
-Teachings of the Kirin // Kirin-Touched Orochi,,,
+Teachings of the Kirin // Kirin-Touched Orochi,{1}{G},2,Transform;Mill
 Weaver of Harmony,{1}{G},2,
 Webspinner Cuff,{2}{G},3,Reach;Reconfigure
 Asari Captain,{3}{R}{W},5,Haste
@@ -10689,13 +10689,13 @@ Eiganjo Uprising,{X}{R}{W},2,
 Enthusiastic Mechanaut,{U}{R},2,Flying
 Gloomshrieker,{1}{B}{G},3,Menace
 "Greasefang, Okiba Boss",{1}{W}{B},3,
-Hidetsugu Consumes All // Vessel of the All-Consuming,,,
+Hidetsugu Consumes All // Vessel of the All-Consuming,{1}{B}{R},3,Transform;Trample
 "Hinata, Dawn-Crowned",{1}{U}{R}{W},4,Flying;Trample
 Invigorating Hot Spring,{1}{R}{G},3,
 "Isshin, Two Heavens as One",{R}{W}{B},3,
 Jukai Naturalist,{G}{W},2,Lifelink
 Kaito Shizuki,{1}{U}{B},3,
-The Kami War // O-Kagachi Made Manifest,,,
+The Kami War // O-Kagachi Made Manifest,{1}{W}{U}{B}{R}{G},6,Flying;Transform;Trample
 "Kotose, the Silent Spider",{3}{U}{B},5,
 "Naomi, Pillar of Order",{3}{W}{B},5,
 Oni-Cult Anvil,{B}{R},2,
@@ -11285,7 +11285,7 @@ Pest Infestation,{X}{X}{G},1,
 Thornado,{2}{G},3,Cycling
 Abrupt Decay,{B}{G},2,
 Anguished Unmaking,{1}{W}{B},3,
-Crime // Punishment,,,
+Crime // Punishment,{3}{W}{B} // {X}{B}{G},7,
 Cruel Ultimatum,{U}{U}{B}{B}{B}{R}{R},7,
 Decimate,{2}{R}{G},4,
 Detention Sphere,{1}{W}{U},3,
@@ -11309,7 +11309,7 @@ Celestial Archon,{3}{W}{W},5,Flying;First strike;Bestow
 Chained to the Rocks,{W},1,Enchant
 Compulsory Rest,{1}{W},2,Enchant
 Dictate of Heliod,{3}{W}{W},5,Flash
-Extricator of Sin // Extricator of Flesh,,,
+Extricator of Sin // Extricator of Flesh,{2}{W},3,Delirium;Transform
 Ghostblade Eidolon,{2}{W},3,Bestow;Double strike
 "Gideon, Ally of Zendikar",{2}{W}{W},4,
 Hero of Iroas,{1}{W},2,Heroic
@@ -11317,7 +11317,7 @@ Hopeful Eidolon,{W},1,Lifelink;Bestow
 Imposing Sovereign,{1}{W},2,
 Keening Apparition,{1}{W},2,
 Knight of the White Orchid,{W}{W},2,First strike
-"Kytheon, Hero of Akros // Gideon, Battle-Forged",,,
+"Kytheon, Hero of Akros // Gideon, Battle-Forged",{W},1,Transform
 Lagonna-Band Trailblazer,{W},1,Heroic
 "Linvala, the Preserver",{4}{W}{W},6,Flying
 Lotus-Eye Mystics,{3}{W},4,Prowess
@@ -11343,7 +11343,7 @@ Crush of Tentacles,{4}{U}{U},6,Surge
 Day's Undoing,{2}{U},3,
 Illusory Angel,{2}{U},3,Flying
 Ingenious Skaab,{2}{U},3,Prowess
-"Jace, Vryn's Prodigy // Jace, Telepath Unbound",,,
+"Jace, Vryn's Prodigy // Jace, Telepath Unbound",{1}{U},2,Transform;Mill
 Jhessian Thief,{2}{U},3,Prowess
 Master of Waves,{3}{U},4,Protection
 Mizzium Skin,{U},1,Overload
@@ -11370,7 +11370,7 @@ Devour Flesh,{1}{B},2,
 Dictate of Erebos,{3}{B}{B},5,Flash
 Gurmag Angler,{6}{B},7,Delve
 Lifebane Zombie,{1}{B}{B},3,Intimidate
-"Liliana, Heretical Healer // Liliana, Defiant Necromancer",,,
+"Liliana, Heretical Healer // Liliana, Defiant Necromancer",{1}{B}{B},3,Lifelink;Transform
 Nantuko Husk,{2}{B},3,
 Nighthowler,{1}{B}{B},3,Bestow
 Ob Nixilis Reignited,{3}{B}{B},5,
@@ -11434,7 +11434,7 @@ Leafcrown Dryad,{1}{G},2,Reach;Bestow
 Mistcutter Hydra,{X}{G},1,Protection;Haste
 Nemesis of Mortals,{4}{G}{G},6,Monstrosity
 Nessian Asp,{4}{G},5,Reach;Monstrosity
-"Nissa, Vastwood Seer // Nissa, Sage Animist",,,
+"Nissa, Vastwood Seer // Nissa, Sage Animist",{2}{G},3,Transform
 "Nissa, Voice of Zendikar",{1}{G}{G},3,
 Oath of Nissa,{G},1,
 "Polukranos, World Eater",{2}{G}{G},4,Monstrosity
@@ -11596,21 +11596,21 @@ The Great Aurora,{6}{G}{G}{G},9,
 Hunter's Prowess,{4}{G},5,
 Miming Slime,{2}{G},3,
 Natural State,{G},1,
-Alive // Well,,,
+Alive // Well,{3}{G} // {W},5,Fuse
 Armed // Dangerous,,,
 Aurelia's Fury,{X}{R}{W},2,
-Down // Dirty,,,
-Far // Away,,,
-Give // Take,,,
+Down // Dirty,{3}{B} // {2}{G},7,Fuse
+Far // Away,{1}{U} // {2}{B},5,Fuse
+Give // Take,{2}{G} // {2}{U},6,Fuse
 Jarad's Orders,{2}{B}{G},4,
-Profit // Loss,,,
-Protect // Serve,,,
+Profit // Loss,{1}{W} // {2}{B},5,Fuse
+Protect // Serve,{2}{W} // {1}{U},5,Fuse
 Rakdos's Return,{X}{B}{R},2,
 Render Silent,{W}{U}{U},3,
-Toil // Trouble,,,
-Turn // Burn,,,
+Toil // Trouble,{2}{B} // {2}{R},6,Fuse
+Turn // Burn,{2}{U} // {1}{R},5,Fuse
 Unexpected Results,{2}{G}{U},4,
-Wear // Tear,,,
+Wear // Tear,{1}{R} // {W},3,Fuse
 Echo of Eons,{4}{U}{U},6,Flashback
 Trouble in Pairs,{2}{W}{W},4,
 Cytoplast Manipulator,{2}{U}{U},4,Graft
@@ -11758,26 +11758,26 @@ Atzocan Seer,{1}{G}{W},3,
 Deadeye Brawler,{2}{U}{B},4,Ascend;Deathtouch
 Dire Fleet Neckbreaker,{2}{B}{R},4,
 "Elenda, the Dusk Rose",{2}{W}{B},4,Lifelink
-Hadana's Climb // Winged Temple of Orazca,,,
+Hadana's Climb // Winged Temple of Orazca,{1}{G}{U},3,Transform
 "Huatli, Radiant Champion",{2}{G}{W},4,
-"Journey to Eternity // Atzal, Cave of Eternity",,,
+"Journey to Eternity // Atzal, Cave of Eternity",{1}{B}{G},3,Transform;Enchant
 Jungle Creeper,{1}{B}{G},3,
 "Kumena, Tyrant of Orazca",{1}{G}{U},3,
 Legion Lieutenant,{W}{B},2,
 Merfolk Mistbinder,{G}{U},2,
-"Path of Mettle // Metzali, Tower of Triumph",,,
-Profane Procession // Tomb of the Dusk Rose,,,
+"Path of Mettle // Metzali, Tower of Triumph",{R}{W},2,Transform
+Profane Procession // Tomb of the Dusk Rose,{1}{W}{B},3,Transform
 Protean Raider,{1}{U}{R},3,Raid
 Relentless Raptor,{R}{W},2,Vigilance
 Resplendent Griffin,{1}{W}{U},3,Flying;Ascend
 Siegehorn Ceratops,{G}{W},2,Enrage
 Storm Fleet Sprinter,{1}{U}{R},3,Haste
-Storm the Vault // Vault of Catlacan,,,
+Storm the Vault // Vault of Catlacan,{2}{U}{R},4,Transform;Treasure
 "Zacama, Primal Calamity",{6}{R}{G}{W},9,Reach;Vigilance;Trample
 Awakened Amalgam,{4},4,
-Azor's Gateway // Sanctum of the Sun,,,
+Azor's Gateway // Sanctum of the Sun,{2},2,Transform
 Captain's Hook,{3},3,Equip
-Golden Guardian // Gold-Forge Garrison,,,
+Golden Guardian // Gold-Forge Garrison,{4},4,Transform;Fight;Defender
 The Immortal Sun,{6},6,
 Orazca Relic,{3},3,Ascend
 Silent Gravestone,{1},1,
@@ -11986,16 +11986,16 @@ Rubble Slinger,{2}{R/G},3,Reach
 Scuttlegator,{4}{G/U}{G/U},6,Adapt;Defender
 Senate Griffin,{2}{W/U}{W/U},4,Scry;Flying
 Vizkopa Vampire,{2}{W/B},3,Lifelink
-Bedeck // Bedazzle,,,
-Carnival // Carnage,,,
-Collision // Colossus,,,
-Consecrate // Consume,,,
-Depose // Deploy,,,
-Incubation // Incongruity,,,
-Repudiate // Replicate,,,
-Revival // Revenge,,,
-Thrash // Threat,,,
-Warrant // Warden,,,
+Bedeck // Bedazzle,{B/R}{B/R} // {4}{B}{R},8,
+Carnival // Carnage,{B/R} // {2}{B}{R},5,
+Collision // Colossus,{1}{R/G} // {R}{G},4,
+Consecrate // Consume,{1}{W/B} // {2}{W}{B},6,
+Depose // Deploy,{1}{W/U} // {2}{W}{U},6,
+Incubation // Incongruity,{G/U} // {1}{G}{U},4,
+Repudiate // Replicate,{G/U}{G/U} // {1}{G}{U},5,
+Revival // Revenge,{W/B}{W/B} // {4}{W}{B},8,Double
+Thrash // Threat,{R/G}{R/G} // {2}{R}{G},6,
+Warrant // Warden,{W/U}{W/U} // {3}{W}{U},7,
 Azorius Locket,{3},3,
 Glass of the Guildpact,{2},2,
 Gruul Locket,{3},3,
@@ -12043,7 +12043,7 @@ Wretched Gryff,{7},7,Flying;Emerge
 Always Watching,{1}{W}{W},3,
 Angelic Purge,{2}{W},3,
 Apothecary Geist,{3}{W},4,Flying
-"Archangel Avacyn // Avacyn, the Purifier",,,
+"Archangel Avacyn // Avacyn, the Purifier",{3}{W}{W},5,Flying;Vigilance;Transform;Flash
 Blessed Alliance,{1}{W},2,Escalate
 Borrowed Grace,{2}{W},3,Escalate
 Bound by Moonsilver,{2}{W},3,Transform;Enchant
@@ -12066,7 +12066,7 @@ Guardian of Pilgrims,{1}{W},2,
 Hope Against Hope,{2}{W},3,Enchant
 Humble the Brute,{4}{W},5,Investigate
 Ironclad Slayer,{2}{W},3,
-Lone Rider // It That Rides as One,,,
+Lone Rider // It That Rides as One,{1}{W},2,Lifelink;Transform;First strike;Trample
 Lunarch Mantle,{1}{W},2,Enchant
 Nearheath Chaplain,{3}{W},4,Lifelink
 "Odric, Lunarch Marshal",{3}{W},4,
@@ -12083,14 +12083,14 @@ Subjugator Angel,{4}{W}{W},6,Flying
 Thalia's Lancers,{3}{W}{W},5,First strike
 Thraben Inspector,{W},1,Investigate
 Topplegeist,{W},1,Flying;Delirium
-Town Gossipmonger // Incited Rabble,,,
+Town Gossipmonger // Incited Rabble,{W},1,Transform
 Advanced Stitchwing,{3}{U}{U},5,Flying
 Compelling Deterrence,{1}{U},2,
 Confirm Suspicions,{3}{U}{U},5,Investigate
-Curious Homunculus // Voracious Reader,,,
-Daring Sleuth // Bearer of Overwhelming Truths,,,
+Curious Homunculus // Voracious Reader,{1}{U},2,Prowess;Transform
+Daring Sleuth // Bearer of Overwhelming Truths,{1}{U},2,Prowess;Investigate;Transform
 Deny Existence,{2}{U},3,
-Docent of Perfection // Final Iteration,,,
+Docent of Perfection // Final Iteration,{3}{U}{U},5,Flying;Transform
 Drownyard Explorers,{3}{U},4,Investigate
 Drunau Corpse Trawler,{3}{U},4,
 Epiphany at the Drownyard,{X}{U},1,
@@ -12113,13 +12113,13 @@ Pieces of the Puzzle,{2}{U},3,
 Pore Over the Pages,{3}{U}{U},5,
 Rise from the Tides,{5}{U},6,
 Spontaneous Mutation,{U},1,Enchant;Flash
-Startled Awake // Persistent Nightmare,,,
+Startled Awake // Persistent Nightmare,{2}{U}{U},4,Skulk;Transform;Mill
 Summary Dismissal,{2}{U}{U},4,
 Take Inventory,{1}{U},2,
 Tattered Haunter,{1}{U},2,Flying
-Thing in the Ice // Awoken Horror,,,
+Thing in the Ice // Awoken Horror,{1}{U},2,Transform;Defender
 Wharf Infiltrator,{1}{U},2,Skulk
-Accursed Witch // Infectious Curse,,,
+Accursed Witch // Infectious Curse,{3}{B},4,Transform;Enchant
 Alms of the Vein,{2}{B},3,Madness
 Biting Rain,{2}{B}{B},4,Madness
 Borrowed Malevolence,{B},1,Escalate
@@ -12127,7 +12127,7 @@ Call the Bloodline,{1}{B},2,
 Certain Death,{5}{B},6,
 Collective Brutality,{1}{B},2,Escalate
 Dark Salvation,{X}{X}{B},1,
-Kindly Stranger // Demon-Possessed Witch,,,
+Kindly Stranger // Demon-Possessed Witch,{2}{B},3,Delirium;Transform
 Diregraf Colossus,{2}{B},3,
 Dusk Feaster,{5}{B}{B},7,Flying;Delirium
 Ever After,{4}{B}{B},6,
@@ -12152,7 +12152,7 @@ Stromkirk Condemned,{B}{B},2,
 Thraben Foulbloods,{2}{B},3,Delirium
 Tree of Perdition,{3}{B},4,Defender
 Triskaidekaphobia,{3}{B},4,
-Voldaren Pariah // Abolisher of Bloodlines,,,
+Voldaren Pariah // Abolisher of Bloodlines,{3}{B}{B},5,Flying;Transform;Madness
 Weirded Vampire,{3}{B},4,Madness
 Alchemist's Greeting,{4}{R},5,Madness
 Assembled Alphas,{5}{R},6,
@@ -12162,7 +12162,7 @@ Blood Mist,{3}{R},4,
 Bloodmad Vampire,{2}{R},3,Madness
 Borrowed Hostility,{R},1,Escalate
 Burn from Within,{X}{R},1,
-Conduit of Storms // Conduit of Emrakul,,,
+Conduit of Storms // Conduit of Emrakul,{2}{R},3,Transform
 Deranged Whelp,{1}{R},2,Menace
 Devils' Playground,{4}{R}{R},6,
 Ember-Eye Wolf,{1}{R},2,Haste
@@ -12171,8 +12171,8 @@ Fiery Temper,{1}{R}{R},3,Madness
 Flameblade Angel,{4}{R}{R},6,Flying
 Furyblade Vampire,{1}{R},2,Trample
 Galvanic Bombardment,{R},1,
-Gatstaf Arsonists // Gatstaf Ravagers,,,
-Geier Reach Bandit // Vildin-Pack Alpha,,,
+Gatstaf Arsonists // Gatstaf Ravagers,{4}{R},5,Transform;Menace
+Geier Reach Bandit // Vildin-Pack Alpha,{2}{R},3,Transform;Haste
 Goldnight Castigator,{2}{R}{R},4,Flying;Haste;Double
 Hanweir Garrison,{2}{R},3,
 Howlpack Wolf,{2}{R},3,
@@ -12190,7 +12190,7 @@ Shreds of Sanity,{2}{R},3,
 Stensia Masquerade,{2}{R},3,Madness
 Stromkirk Occultist,{2}{R},3,Madness;Trample
 Ulrich's Kindred,{2}{R},3,Trample
-Village Messenger // Moonrise Intruder,,,
+Village Messenger // Moonrise Intruder,{R},1,Transform;Haste;Menace
 Aim High,{1}{G},2,
 Bloodbriar,{2}{G},3,
 Briarbridge Patrol,{3}{G},4,Investigate
@@ -12198,14 +12198,14 @@ Confront the Unknown,{G},1,Investigate
 Crawling Sensation,{2}{G},3,Mill
 Cryptolith Rite,{1}{G},2,
 Deathcap Cultivator,{1}{G},2,Delirium
-Duskwatch Recruiter // Krallenhorde Howler,,,
+Duskwatch Recruiter // Krallenhorde Howler,{1}{G},2,Transform
 Eldritch Evolution,{1}{G}{G},3,
 Gnarlwood Dryad,{G},1,Deathtouch;Delirium
 Graf Mole,{2}{G},3,
 Grapple with the Past,{1}{G},2,Mill
 Groundskeeper,{G},1,
 Hamlet Captain,{1}{G},2,
-Hinterland Logger // Timber Shredder,,,
+Hinterland Logger // Timber Shredder,{1}{G},2,Transform;Trample
 Howlpack Resurgence,{2}{G},3,Flash
 Intrepid Provisioner,{3}{G},4,Trample
 "Ishkanah, Grafwidow",{4}{G},5,Delirium;Reach
@@ -12214,19 +12214,19 @@ Noose Constrictor,{1}{G},2,Reach
 Obsessive Skinner,{1}{G},2,Delirium
 Pack Guardian,{2}{G}{G},4,Flash
 Permeating Mass,{G},1,
-Sage of Ancient Lore // Werewolf of Ancient Hunger,,,
+Sage of Ancient Lore // Werewolf of Ancient Hunger,{4}{G},5,Vigilance;Transform;Trample
 Seasons Past,{4}{G}{G},6,
 Second Harvest,{2}{G}{G},4,
-Shrill Howler // Howling Chorus,,,
+Shrill Howler // Howling Chorus,{2}{G},3,Transform
 Spirit of the Hunt,{1}{G}{G},3,Flash
 Swift Spinner,{3}{G},4,Reach;Flash
 Traverse the Ulvenwald,{G},1,Delirium
-Ulvenwald Captive // Ulvenwald Abomination,,,
+Ulvenwald Captive // Ulvenwald Abomination,{1}{G},2,Transform;Defender
 Vessel of Nascency,{G},1,
 Veteran Cathar,{1}{G},2,
 Weirding Wood,{2}{G},3,Investigate;Enchant
 Altered Ego,{X}{2}{G}{U},4,
-"Arlinn Kord // Arlinn, Embraced by the Moon",,,
+"Arlinn Kord // Arlinn, Embraced by the Moon",{2}{R}{G},4,Transform
 Bloodhall Priest,{2}{B}{R},4,Madness
 Gisa and Geralf,{2}{U}{B},4,Mill
 Grim Flayer,{B}{G},2,Delirium;Surveil;Trample
@@ -12239,13 +12239,13 @@ Prized Amalgam,{1}{U}{B},3,
 "Sigarda, Heron's Grace",{3}{G}{W},5,Flying
 "Sorin, Grim Nemesis",{4}{W}{B},6,
 Spell Queller,{1}{W}{U},3,Flying;Flash
-"Ulrich of the Krallenhorde // Ulrich, Uncontested Alpha",,,
+"Ulrich of the Krallenhorde // Ulrich, Uncontested Alpha",{3}{R}{G},5,Transform;Fight
 Brain in a Jar,{2},2,Scry
-Cryptolith Fragment // Aurora of Emrakul,,,
-Harvest Hand // Scrounged Scythe,,,
+Cryptolith Fragment // Aurora of Emrakul,{3},3,Deathtouch;Flying;Transform
+Harvest Hand // Scrounged Scythe,{3},3,Transform;Equip
 Lupine Prototype,{2},2,
 Murderer's Axe,{4},4,Equip
-Neglected Heirloom // Ashmouth Blade,,,
+Neglected Heirloom // Ashmouth Blade,{1},1,Transform;Equip
 Slayer's Plate,{3},3,Equip
 Soul Separator,{3},3,
 Stitcher's Graft,{1},1,Equip
@@ -12281,7 +12281,7 @@ Mystic Retrieval,{3}{U},4,Flashback
 Snapcaster Mage,{1}{U},2,Flash
 Stitcher's Apprentice,{1}{U},2,
 Bloodflow Connoisseur,{2}{B},3,
-Bloodline Keeper // Lord of Lineage,,,
+Bloodline Keeper // Lord of Lineage,{2}{B}{B},4,Flying;Transform
 Bump in the Night,{B},1,Flashback
 Griselbrand,{4}{B}{B}{B}{B},8,Flying;Lifelink
 Increasing Ambition,{4}{B},5,Flashback
@@ -12292,15 +12292,15 @@ Balefire Dragon,{5}{R}{R},7,Flying
 Brimstone Volley,{2}{R},3,Morbid
 Devil's Play,{X}{R},1,Flashback
 Faithless Looting,{R},1,Flashback
-Kruin Outlaw // Terror of Kruin Pass,,,
+Kruin Outlaw // Terror of Kruin Pass,{1}{R}{R},3,Transform;First strike;Double strike
 Past in Flames,{3}{R},4,Flashback
 Skirsdag Cultist,{2}{R}{R},4,
 Traitorous Blood,{1}{R}{R},3,
 Avacyn's Pilgrim,{G},1,
-"Garruk Relentless // Garruk, the Veil-Cursed",,,
+"Garruk Relentless // Garruk, the Veil-Cursed",{3}{G},4,Transform
 Gutter Grime,{4}{G},5,
 Hollowhenge Scavenger,{3}{G}{G},5,Morbid
-Mayor of Avabruck // Howlpack Alpha,,,
+Mayor of Avabruck // Howlpack Alpha,{1}{G},2,Transform
 Moonmist,{1}{G},2,Transform
 Somberwald Sage,{2}{G},3,
 Spider Spawning,{4}{G},5,Flashback
@@ -12311,7 +12311,7 @@ Drogskol Captain,{1}{W}{U},3,Flying
 Falkenrath Aristocrat,{2}{B}{R},4,Flying;Haste
 Geist of Saint Traft,{1}{W}{U},3,Hexproof
 Havengul Lich,{3}{U}{B},5,
-Huntmaster of the Fells // Ravager of the Fells,,,
+Huntmaster of the Fells // Ravager of the Fells,{2}{R}{G},4,Transform;Trample
 Immerwolf,{1}{R}{G},3,Transform;Intimidate
 "Sigarda, Host of Herons",{2}{G}{W}{W},5,Flying;Hexproof
 Avacyn's Collar,{1},1,Equip
@@ -12657,12 +12657,12 @@ Ascendant Dustspeaker,{4}{W},5,Flying
 Dig Site Inventory,{W},1,Flashback
 Eager Glyphmage,{3}{W},4,
 Elite Interceptor // Rejoinder,{W} // {1}{W},1,Prepared
-Emeritus of Truce // Swords to Plowshares,,,
+Emeritus of Truce // Swords to Plowshares,{1}{W}{W} // {W},3,Prepared
 Group Project,{1}{W},2,Flashback
-Honorbound Page // Forum's Favor,,,
+Honorbound Page // Forum's Favor,{3}{W} // {W},4,First strike;Prepared
 Informed Inkwright,{1}{W},2,Vigilance;Repartee
 Interjection,{W},1,
-Joined Researchers // Secret Rendezvous,,,
+Joined Researchers // Secret Rendezvous,{1}{W} // {1}{W}{W},2,First strike;Prepared
 Practiced Offense,{2}{W},3,Flashback
 Quill-Blade Laureate // Twofold Intent,{1}{W} // {1}{W},2,Prepared;Double strike
 Rapier Wit,{1}{W},2,
@@ -12670,22 +12670,22 @@ Rehearsed Debater,{2}{W},3,Vigilance;Repartee
 Shattered Acolyte,{1}{W},2,Lifelink
 Spiritcall Enthusiast // Scrollboost,{2}{W} // {1}{W},3,Prepared
 Brush Off,{2}{U}{U},4,
-Campus Composer // Aqueous Aria,,,
+Campus Composer // Aqueous Aria,{3}{U} // {4}{U},4,Prepared;Ward
 Divergent Equation,{X}{X}{U},1,
 Emeritus of Ideation // Ancestral Recall,{3}{U}{U} // {U},5,Flying;Prepared;Ward
-Encouraging Aviator // Jump,,,
+Encouraging Aviator // Jump,{2}{U} // {U},3,Flying;Prepared
 Exhibition Tidecaller,{U},1,Mill;Opus
 Flow State,{1}{U},2,
 Fractal Anomaly,{U},1,
 Fractalize,{X}{U},1,
 Harmonized Trio // Brainstorm,{U} // {U},1,Prepared
-"Jadzi, Steward of Fate // Oracle's Gift",,,
+"Jadzi, Steward of Fate // Oracle's Gift",{2}{U} // {X}{X}{U},3,Prepared
 Landscape Painter // Vibrant Idea,{1}{U} // {4}{U},2,Prepared
 Mathemagics,{X}{X}{U}{U},2,
 Matterbending Mage,{2}{U},3,
 "Orysa, Tide Choreographer",{4}{U},5,
 Pensive Professor,{1}{U}{U},3,Increment
-Skycoach Conductor // All Aboard,,,
+Skycoach Conductor // All Aboard,{2}{U} // {U},3,Flying;Vigilance;Prepared;Flash
 Spellbook Seeker // Careful Study,{3}{U} // {U},4,Flying;Prepared
 Adventurous Eater // Have a Bite,{2}{B} // {B},3,Prepared
 Arcane Omens,{4}{B},5,Converge
@@ -12701,8 +12701,8 @@ Masterful Flourish,{B},1,
 "Moseo, Vein's New Dean",{2}{B},3,Infusion;Flying
 Postmortem Professor,{1}{B},2,
 Pox Plague,{B}{B}{B}{B}{B},5,
-Scathing Shadelock // Venomous Words,,,
-Scheming Silvertongue // Sign in Blood,,,
+Scathing Shadelock // Venomous Words,{4}{B} // {B},5,Prepared
+Scheming Silvertongue // Sign in Blood,{1}{B} // {B}{B},2,Flying;Lifelink;Prepared
 Send in the Pest,{1}{B},2,
 Sneering Shadewriter,{4}{B},5,Flying
 Blazing Firesinger // Seething Song,{2}{R} // {2}{R},3,Prepared
@@ -12712,11 +12712,11 @@ Emeritus of Conflict // Lightning Bolt,{1}{R} // {R},2,First strike;Prepared
 Flashback,{R},1,
 Goblin Glasswright // Craft with Pride,{1}{R} // {R},2,Treasure;Prepared
 Living History,{1}{R},2,
-Maelstrom Artisan // Rocket Volley,,,
+Maelstrom Artisan // Rocket Volley,{1}{R}{R} // {1}{R},3,Haste;Prepared
 Magmablood Archaic,{2/R}{2/R}{2/R},6,Reach;Converge;Trample
 "Mica, Reader of Ruins",{3}{R},4,Ward
 Molten-Core Maestro,{1}{R},2,Menace;Opus
-Pigment Wrangler // Striking Palette,,,
+Pigment Wrangler // Striking Palette,{4}{R} // {R},5,Flying;Prepared
 Steal the Show,{2}{R},3,
 Strife Scholar // Awaken the Ages,{2}{R} // {5}{R},3,Prepared;Ward
 Tackle Artist,{3}{R},4,Trample;Opus
@@ -12730,8 +12730,8 @@ Oracle's Restoration,{G},1,
 Planar Engineering,{3}{G},4,
 Slumbering Trudge,{X}{G},1,
 Studious First-Year // Rampant Growth,{G} // {1}{G},1,Prepared
-Vastlands Scavenger // Bind to Life,,,
-"Abigale, Poet Laureate // Heroic Stanza",,,
+Vastlands Scavenger // Bind to Life,{1}{G}{G} // {4}{G},3,Prepared;Mill;Deathtouch
+"Abigale, Poet Laureate // Heroic Stanza",{1}{W}{B} // {1}{W/B},3,Flying;Prepared
 Abstract Paintmage,{U}{U/R}{R},3,
 Ark of Hunger,{2}{R}{W},4,Mill
 "Aziza, Mage Tower Captain",{R}{W},2,
@@ -12743,7 +12743,7 @@ Dina's Guidance,{1}{B}{G},3,
 Embrace the Paradox,{3}{G}{U},5,
 Fix What's Broken,{2}{W}{B},4,
 Geometer's Arthropod,{G}{U},2,
-"Kirol, History Buff // Pack a Punch",,,
+"Kirol, History Buff // Pack a Punch",{R}{W} // {1}{R}{W},2,Prepared;Mill
 "Lluwen, Exchange Student // Pest Friend",{2}{B}{G} // {B/G},4,Prepared
 Lorehold Charm,{R}{W},2,
 Mind Roots,{1}{B}{G},3,
@@ -12755,14 +12755,14 @@ Paradox Surveyor,{G}{G/U}{U},3,Reach
 Prismari Charm,{U}{R},2,Surveil
 Rapturous Moment,{4}{U}{R},6,
 Resonating Lute,{2}{U}{R},4,
-"Sanar, Unfinished Genius // Wild Idea",,,
+"Sanar, Unfinished Genius // Wild Idea",{U}{R} // {3}{U}{R},2,Treasure;Prepared
 Scolding Administrator,{W}{B},2,Menace;Repartee
 Silverquill Charm,{W}{B},2,
 Snooping Page,{1}{W}{B},3,Repartee
 Splatter Technique,{1}{U}{U}{R}{R},5,
 Stirring Honormancer,{2}{W}{W/B}{B},5,
 Suspend Aggression,{1}{R}{W},3,
-"Tam, Observant Sequencer // Deep Sight",,,
+"Tam, Observant Sequencer // Deep Sight",{2}{G}{U} // {G}{U},4,Prepared;Landfall
 Traumatic Critique,{X}{U}{R},2,
 Vicious Rivalry,{2}{B}{G},4,
 Zaffai and the Tempests,{5}{U}{R},7,
@@ -12839,7 +12839,7 @@ Sylvan Library,{1}{G},2,
 "Anti-Venom, Horrifying Healer",{W}{W}{W}{W}{W},5,
 "Arachne, Psionic Weaver",{2}{W},3,Web-slinging
 Origin of Spider-Man,{1}{W},2,
-Peter Parker // Amazing Spider-Man,,,
+Peter Parker // Amazing Spider-Man,{1}{W},2,Reach;Vigilance;Transform
 Rent Is Due,{W},1,
 Spectacular Spider-Man,{1}{W},2,Flash
 With Great Power . . .,{3}{W},4,Enchant
@@ -12849,7 +12849,7 @@ Hide on the Ceiling,{X}{U},1,
 "Lady Octopus, Inspired Inventor",{U},1,
 "Mysterio, Master of Illusion",{3}{U},4,
 Mysterio's Phantasm,{1}{U},2,Flying;Vigilance;Mill
-Norman Osborn // Green Goblin,,,
+Norman Osborn // Green Goblin,{1}{U},2,Flying;Goblin Formula;Transform;Menace;Connive
 Oscorp Research Team,{3}{U},4,
 School Daze,{3}{U}{U},5,Do Homework;Fight Crime
 Secret Identity,{U},1,Conceal
@@ -12859,7 +12859,7 @@ Agent Venom,{2}{B},3,Menace;Flash
 Behold the Sinister Six!,{6}{B},7,
 "Black Cat, Cunning Thief",{3}{B}{B},5,
 The Death of Gwen Stacy,{2}{B},3,
-"Eddie Brock // Venom, Lethal Protector",,,
+"Eddie Brock // Venom, Lethal Protector",{2}{B},3,Transform;Haste;Trample;Menace
 "Gwenom, Remorseless",{3}{B}{B},5,Lifelink;Deathtouch
 Merciless Enforcers,{1}{B},2,Lifelink
 Parker Luck,{2}{B},3,
@@ -12868,7 +12868,7 @@ Risky Research,{2}{B},3,Surveil
 Scorpion's Sting,{1}{B},2,
 The Soul Stone,{1}{B},2,Indestructible
 Angry Rabble,{1}{R},2,Trample
-Gwen Stacy // Ghost-Spider,,,
+Gwen Stacy // Ghost-Spider,{1}{R},2,Flying;Vigilance;Transform;Haste
 Maximum Carnage,{4}{R},5,
 Shadow of the Goblin,{1}{R},2,Undying;Unreliable Visions;Undying Vengeance
 "Shocker, Unshakable",{4}{R}{R},6,Vibro-Shock Gauntlets
@@ -12883,7 +12883,7 @@ Guy in the Chair,{2}{G},3,Web Support
 Kraven's Cats,{1}{G},2,
 Kraven's Last Hunt,{3}{G},4,Mill
 "Lizard, Connors's Curse",{2}{G}{G},4,Lizard Formula;Trample
-Miles Morales // Ultimate Spider-Man,,,
+Miles Morales // Ultimate Spider-Man,{1}{G},2,Camouflage;Transform;First strike;Haste;Double
 Pictures of Spider-Man,{2}{G},3,Treasure
 Professional Wrestler,{3}{G},4,Treasure
 Radioactive Spider,{G},1,Reach;Fateful Bite;Deathtouch
@@ -12972,7 +12972,7 @@ Electrolyze,{1}{U}{R},3,
 Putrefy,{1}{B}{G},3,
 A-Tome Shredder,{1}{R},2,Haste
 A-Dueling Coach,{3}{W},4,
-"A-Rowan, Scholar of Sparks // A-Will, Scholar of Frost",,,
+"A-Rowan, Scholar of Sparks // A-Will, Scholar of Frost",{2}{R},3,
 A-Maelstrom Muse,{U}{U/R}{R},3,Flying
 A-Tanazir Quandrix,{3}{G}{U},5,Flying;Trample;Double
 A-Spell Satchel,{2},2,Magecraft
@@ -12985,7 +12985,7 @@ Expanded Anatomy,{3},3,
 Introduction to Annihilation,{5},5,
 Introduction to Prophecy,{3},3,Scry
 Mascot Exhibition,{7},7,
-Wandering Archaic // Explore the Vastlands,,,
+Wandering Archaic // Explore the Vastlands,{5},5,
 Academic Probation,{1}{W},2,
 Ageless Guardian,{1}{W},2,
 Beaming Defiance,{1}{W},2,
@@ -13124,21 +13124,21 @@ Spined Karok,{2}{G},3,
 Springmane Cervin,{2}{G},3,
 Tangletrap,{1}{G},2,
 Verdant Mastery,{5}{G},6,
-Augmenter Pugilist // Echoing Equation,,,
-"Blex, Vexing Pest // Search for Blex",,,
-"Extus, Oriq Overlord // Awaken the Blood Avatar",,,
-Flamescroll Celebrant // Revel in Silence,,,
-"Jadzi, Oracle of Arcavios // Journey to the Oracle",,,
-"Kianne, Dean of Substance // Imbraham, Dean of Theory",,,
-"Mila, Crafty Companion // Lukka, Wayward Bonder",,,
-Pestilent Cauldron // Restorative Burst,,,
-"Plargg, Dean of Chaos // Augusta, Dean of Order",,,
-"Rowan, Scholar of Sparks // Will, Scholar of Frost",,,
-Selfless Glyphweaver // Deadly Vanity,,,
-"Shaile, Dean of Radiance // Embrose, Dean of Shadow",,,
-Torrent Sculptor // Flamethrower Sonata,,,
-"Uvilda, Dean of Perfection // Nassari, Dean of Expression",,,
-"Valentin, Dean of the Vein // Lisette, Dean of the Root",,,
+Augmenter Pugilist // Echoing Equation,{1}{G}{G},3,Trample
+"Blex, Vexing Pest // Search for Blex",{2}{G},3,
+"Extus, Oriq Overlord // Awaken the Blood Avatar",{1}{W}{B}{B},4,Magecraft;Double strike
+Flamescroll Celebrant // Revel in Silence,{1}{R},2,
+"Jadzi, Oracle of Arcavios // Journey to the Oracle",{6}{U}{U},8,Magecraft
+"Kianne, Dean of Substance // Imbraham, Dean of Theory",{2}{G},3,Flying
+"Mila, Crafty Companion // Lukka, Wayward Bonder",{1}{W}{W},3,
+Pestilent Cauldron // Restorative Burst,{2}{B},3,Mill
+"Plargg, Dean of Chaos // Augusta, Dean of Order",{1}{R},2,
+"Rowan, Scholar of Sparks // Will, Scholar of Frost",{2}{R},3,
+Selfless Glyphweaver // Deadly Vanity,{2}{W},3,
+"Shaile, Dean of Radiance // Embrose, Dean of Shadow",{1}{W},2,Flying;Vigilance
+Torrent Sculptor // Flamethrower Sonata,{2}{U}{U},4,Ward
+"Uvilda, Dean of Perfection // Nassari, Dean of Expression",{2}{U},3,
+"Valentin, Dean of the Vein // Lisette, Dean of the Root",{B},1,Lifelink;Menace
 Aether Helix,{3}{G}{U},5,
 Beledros Witherbloom,{5}{B}{G},7,Flying
 Biomathematician,{1}{G}{U},3,
@@ -13326,7 +13326,7 @@ Caustic Exhale,{B},1,Behold
 Delta Bloodflies,{1}{B},2,Flying
 Desperate Measures,{B},1,
 Dragon's Prey,{2}{B},3,
-Feral Deathgorger // Dusk Sight,,,
+Feral Deathgorger // Dusk Sight,{5}{B} // {1}{B},6,Deathtouch;Flying
 Gurmag Rakshasa,{4}{B}{B},6,Menace
 Hundred-Battle Veteran,{3}{B},4,
 Kin-Tree Nurturer,{2}{B},3,Lifelink;Endure
@@ -13336,7 +13336,7 @@ Qarsi Revenant,{1}{B}{B},3,Deathtouch;Flying;Lifelink;Renew
 Rot-Curse Rakshasa,{1}{B},2,Renew;Trample;Decayed
 Salt Road Skirmish,{3}{B},4,
 Sandskitter Outrider,{3}{B},4,Menace;Endure
-Scavenger Regent // Exude Toxin,,,
+Scavenger Regent // Exude Toxin,{3}{B} // {X}{B}{B},4,Flying;Ward
 The Sibsig Ceremony,{B}{B}{B},3,
 Sinkhole Surveyor,{1}{B},2,Endure;Flying
 Strategic Betrayal,{1}{B},2,
@@ -13377,7 +13377,7 @@ Wild Ride,{R},1,Harmonize
 Zurgo's Vanguard,{2}{R},3,Mobilize
 Ainok Wayfarer,{1}{G},2,Mill
 Attuned Hunter,{2}{G},3,Trample
-Bloomvine Regent // Claim Territory,,,
+Bloomvine Regent // Claim Territory,{3}{G}{G} // {2}{G},5,Flying
 Champion of Dusan,{2}{G},3,Renew;Trample
 Craterhoof Behemoth,{5}{G}{G}{G},8,Haste
 Dragon Sniper,{G},1,Reach;Vigilance;Deathtouch
@@ -13395,7 +13395,7 @@ Rite of Renewal,{3}{G},4,
 Roamer's Routine,{2}{G},3,Harmonize
 Sage of the Fang,{2}{G},3,Renew;Double
 Sagu Pummeler,{3}{G},4,Reach;Renew
-Sagu Wildling // Roost Seek,,,
+Sagu Wildling // Roost Seek,{4}{G} // {G},5,Flying
 Sarkhan's Resolve,{1}{G},2,
 Snakeskin Veil,{G},1,
 Trade Route Envoy,{3}{G},4,
@@ -13411,7 +13411,7 @@ Bone-Cairn Butcher,{1}{R}{W}{B},4,Mobilize
 Cori Mountain Stalwart,{1}{R}{W},3,Flurry
 Death Begets Life,{5}{B}{G}{U},8,
 Defibrillating Current,{2/R}{2/W}{2/B},6,
-Disruptive Stormbrood // Petty Revenge,,,
+Disruptive Stormbrood // Petty Revenge,{4}{G} // {1}{B},5,Flying
 Dragonback Assault,{3}{G}{U}{R},6,Landfall
 Effortless Master,{2}{U}{R},4,Vigilance;Menace
 Eshki Dragonclaw,{1}{G}{U}{R},4,Vigilance;Trample;Ward
@@ -13441,7 +13441,7 @@ Monastery Messenger,{2/U}{2/R}{2/W},6,Flying;Vigilance
 "Neriv, Heart of the Storm",{1}{R}{W}{B},4,Flying
 New Way Forward,{2}{U}{R}{W},5,
 Perennation,{3}{W}{B}{G},6,
-Purging Stormbrood // Absorb Essence,,,
+Purging Stormbrood // Absorb Essence,{4}{B} // {1}{W},5,Flying;Ward
 Rakshasa's Bargain,{2/B}{2/G}{2/U},6,
 Rediscover the Way,{U}{R}{W},3,
 Reigning Victor,{2/R}{2/W}{2/B},6,Mobilize
@@ -13449,7 +13449,7 @@ Reputable Merchant,{2/W}{2/B}{2/G},6,
 Revival of the Ancestors,{1}{W}{B}{G},4,
 Riverwheel Sweep,{2/U}{2/R}{2/W},6,
 Roar of Endless Song,{2}{G}{U}{R},5,Double
-Runescale Stormbrood // Chilling Screech,,,
+Runescale Stormbrood // Chilling Screech,{3}{R} // {1}{U},4,Flying
 Severance Priest,{W}{B}{G},3,Deathtouch
 "Shiko, Paragon of the Way",{2}{U}{R}{W},5,Flying;Vigilance
 Songcrafter Mage,{G}{U}{R},3,Flash
@@ -13458,9 +13458,9 @@ Stalwart Successor,{1}{B}{G},3,Menace
 Temur Battlecrier,{G}{U}{R},3,
 "Teval, Arbiter of Virtue",{2}{B}{G}{U},5,Flying;Lifelink
 Thunder of Unity,{R}{W}{B},3,
-Twinmaw Stormbrood // Charring Bite,,,
+Twinmaw Stormbrood // Charring Bite,{5}{W} // {1}{R},6,Flying
 "Ureni, the Song Unending",{5}{G}{U}{R},8,Flying;Protection
-Whirlwing Stormbrood // Dynamic Soar,,,
+Whirlwing Stormbrood // Dynamic Soar,{4}{U} // {2}{G},5,Flying;Flash
 Windcrag Siege,{1}{R}{W},3,
 Yathan Roadwatcher,{1}{W}{B}{G},4,Mill
 "Zurgo, Thunder's Decree",{R}{W}{B},3,Mobilize
@@ -14102,16 +14102,16 @@ Fireblast,{4}{R}{R},6,
 Dack Fayden,{1}{U}{R},3,
 Library of Alexandria,,0,
 Strip Mine,,0,
-A-Brine Comber // A-Brinebound Gift,,,
-"A-Dorothea, Vengeful Victim // A-Dorothea's Retribution",,,
+A-Brine Comber // A-Brinebound Gift,{1}{W}{U},3,Transform;Enchant;Disturb
+"A-Dorothea, Vengeful Victim // A-Dorothea's Retribution",{W}{U},2,Flying;Transform;Enchant;Disturb
 A-Sigardian Paladin,{1}{G}{W},3,
 A-Skull Skaab,{U}{B},2,Exploit
-A-Binding Geist // A-Spectral Binding,,,
+A-Binding Geist // A-Spectral Binding,{1}{U},2,Transform;Enchant;Disturb
 A-Cobbled Lancer,{U},1,
 A-Dreamshackle Geist,{1}{U}{U},3,Flying
-A-Gutter Skulker // A-Gutter Shortcut,,,
-A-Lantern Bearer // A-Lanterns' Lift,,,
-A-Mischievous Catgeist // A-Catlike Curiosity,,,
+A-Gutter Skulker // A-Gutter Shortcut,{2}{U},3,Transform;Enchant;Disturb
+A-Lantern Bearer // A-Lanterns' Lift,{U},1,Flying;Transform;Enchant;Disturb
+A-Mischievous Catgeist // A-Catlike Curiosity,{1}{U},2,Transform;Enchant;Disturb
 A-Stitched Assistant,{1}{U},2,Exploit;Scry
 Angelic Quartermaster,{3}{W}{W},5,Flying
 Arm the Cathars,{1}{W}{W},3,
@@ -14120,10 +14120,10 @@ By Invitation Only,{3}{W}{W},5,
 Cemetery Protector,{2}{W}{W},4,Flash
 Circle of Confinement,{1}{W},2,
 Dawnhart Geist,{1}{W},2,
-Distracting Geist // Clever Distraction,,,
-Drogskol Infantry // Drogskol Armaments,,,
+Distracting Geist // Clever Distraction,{2}{W},3,Transform;Enchant;Disturb
+Drogskol Infantry // Drogskol Armaments,{1}{W},2,Transform;Enchant;Disturb
 Estwald Shieldbasher,{3}{W},4,
-Faithbound Judge // Sinner's Judgment,,,
+Faithbound Judge // Sinner's Judgment,{1}{W}{W},3,Flying;Vigilance;Transform;Enchant;Defender;Disturb
 Fierce Retribution,{1}{W},2,Cleave
 Fleeting Spirit,{1}{W},2,
 Gryff Rider,{2}{W},3,Flying;Training
@@ -14132,17 +14132,17 @@ Hallowed Haunting,{2}{W}{W},4,
 Heron of Hope,{3}{W},4,Flying
 Heron-Blessed Geist,{4}{W},5,Flying
 Hopeful Initiate,{W},1,Training
-"Katilda, Dawnhart Martyr // Katilda's Rising Dawn",,,
-Kindly Ancestor // Ancestor's Embrace,,,
+"Katilda, Dawnhart Martyr // Katilda's Rising Dawn",{1}{W}{W},3,Flying;Lifelink;Transform;Protection;Enchant;Disturb
+Kindly Ancestor // Ancestor's Embrace,{2}{W},3,Lifelink;Transform;Enchant;Disturb
 Lantern Flare,{1}{W},2,Cleave
 Militia Rallier,{2}{W},3,
 Nebelgast Beguiler,{4}{W},5,
 Nurturing Presence,{1}{W},2,Enchant
 Ollenbock Escort,{W},1,Vigilance
-Panicked Bystander // Cackling Culprit,,,
+Panicked Bystander // Cackling Culprit,{1}{W},2,Transform
 Parish-Blade Trainee,{1}{W},2,Training
 Piercing Light,{W},1,Scry
-Radiant Grace // Radiant Restraints,,,
+Radiant Grace // Radiant Restraints,{W},1,Transform;Enchant
 Resistance Squad,{2}{W},3,
 Sanctify,{1}{W},2,
 Savior of Ollenbock,{1}{W}{W},3,Training
@@ -14151,15 +14151,15 @@ Sigarda's Summons,{4}{W}{W},6,
 Supernatural Rescue,{3}{W},4,Enchant
 "Thalia, Guardian of Thraben",{1}{W},2,First strike
 Traveling Minister,{W},1,
-Twinblade Geist // Twinblade Invocation,,,
+Twinblade Geist // Twinblade Invocation,{1}{W},2,Transform;Enchant;Double strike;Disturb
 Unholy Officiant,{W},1,Vigilance
 Vampire Slayer,{1}{W},2,
 Voice of the Blessed,{W}{W},2,
-Wedding Announcement // Wedding Festivity,,,
+Wedding Announcement // Wedding Festivity,{2}{W},3,Transform
 Welcoming Vampire,{2}{W},3,Flying
 Alchemist's Retrieval,{U},1,Cleave
-Binding Geist // Spectral Binding,,,
-Biolume Egg // Biolume Serpent,,,
+Binding Geist // Spectral Binding,{2}{U},3,Transform;Enchant;Disturb
+Biolume Egg // Biolume Serpent,{2}{U},3,Transform;Defender;Scry
 Cemetery Illuminator,{1}{U}{U},3,Flying
 Chill of the Grave,{2}{U},3,
 Cobbled Lancer,{U},1,
@@ -14172,14 +14172,14 @@ Dreamshackle Geist,{1}{U}{U},3,Flying
 Fear of Death,{1}{U},2,Enchant;Mill
 Geistlight Snare,{2}{U},3,
 "Geralf, Visionary Stitcher",{2}{U},3,
-Gutter Skulker // Gutter Shortcut,,,
+Gutter Skulker // Gutter Shortcut,{3}{U},4,Transform;Enchant;Disturb
 Hullbreaker Horror,{5}{U}{U},7,Flash
 Inspired Idea,{2}{U},3,Cleave
-"Jacob Hauken, Inspector // Hauken's Insight",,,
-Lantern Bearer // Lanterns' Lift,,,
+"Jacob Hauken, Inspector // Hauken's Insight",{1}{U},2,Transform
+Lantern Bearer // Lanterns' Lift,{U},1,Flying;Transform;Enchant;Disturb
 Lunar Rejection,{1}{U},2,Cleave
-Mirrorhall Mimic // Ghastly Mimicry,,,
-Mischievous Catgeist // Catlike Curiosity,,,
+Mirrorhall Mimic // Ghastly Mimicry,{3}{U},4,Transform;Enchant;Disturb
+Mischievous Catgeist // Catlike Curiosity,{1}{U},2,Transform;Enchant;Disturb
 Necroduality,{3}{U},4,
 Overcharged Amalgam,{2}{U}{U},4,Flying;Flash;Exploit
 Patchwork Crawler,{1}{U},2,
@@ -14189,7 +14189,7 @@ Screaming Swarm,{5}{U},6,Flying;Mill
 Selhoff Entomber,{1}{U},2,
 Serpentine Ambush,{1}{U},2,
 Skywarp Skaab,{3}{U}{U},5,Flying
-Soulcipher Board // Cipherbound Spirit,,,
+Soulcipher Board // Cipherbound Spirit,{1}{U},2,Flying;Transform
 Steelclad Spirit,{1}{U},2,Defender
 Stitched Assistant,{2}{U},3,Exploit;Scry
 Stormchaser Drake,{1}{U},2,Flying
@@ -14206,14 +14206,14 @@ Archghoul of Thraben,{2}{B},3,
 Bleed Dry,{2}{B}{B},4,
 Blood Fountain,{B},1,
 Bloodcrazed Socialite,{3}{B},4,Menace
-Bloodsworn Squire // Bloodsworn Knight,,,
+Bloodsworn Squire // Bloodsworn Knight,{3}{B},4,Transform
 Bloodvial Purveyor,{2}{B}{B},4,Flying;Trample
-Catapult Fodder // Catapult Captain,,,
+Catapult Fodder // Catapult Captain,{2}{B},3,Transform
 Cemetery Desecrator,{4}{B}{B},6,Menace
-Concealing Curtains // Revealing Eye,,,
+Concealing Curtains // Revealing Eye,{B},1,Transform;Menace;Defender
 Courier Bat,{2}{B},3,Flying
 Demonic Bargain,{2}{B},3,
-Desperate Farmer // Depraved Harvester,,,
+Desperate Farmer // Depraved Harvester,{2}{B},3,Lifelink;Transform
 Diregraf Scavenger,{3}{B},4,Deathtouch
 Doomed Dissenter,{1}{B},2,
 Dread Fugue,{B},1,Cleave
@@ -14228,15 +14228,15 @@ Graf Reaver,{1}{B},2,Exploit
 Grisly Ritual,{5}{B},6,
 Groom's Finery,{1}{B},2,Equip
 Headless Rider,{2}{B},3,
-"Henrika Domnathi // Henrika, Infernal Seer",,,
-Innocent Traveler // Malicious Invader,,,
+"Henrika Domnathi // Henrika, Infernal Seer",{2}{B}{B},4,Deathtouch;Flying;Lifelink;Transform
+Innocent Traveler // Malicious Invader,{2}{B}{B},4,Flying;Transform
 Mindleech Ghoul,{1}{B},2,Exploit
 Parasitic Grasp,{1}{B},2,Cleave
 Path of Peril,{1}{B}{B},3,Cleave
 Persistent Specimen,{B},1,
 Pointed Discussion,{2}{B},3,
-Ragged Recluse // Odious Witch,,,
-Restless Bloodseeker // Bloodsoaked Reveler,,,
+Ragged Recluse // Odious Witch,{1}{B},2,Transform
+Restless Bloodseeker // Bloodsoaked Reveler,{1}{B},2,Transform
 Rot-Tide Gargantua,{3}{B}{B},5,Exploit
 Skulking Killer,{3}{B},4,
 Sorin the Mirthless,{2}{B}{B},4,
@@ -14244,11 +14244,11 @@ Sorin the Mirthless,{2}{B}{B},4,
 Undead Butler,{1}{B},2,Mill
 Unhallowed Phalanx,{4}{B},5,
 Vampire's Kiss,{1}{B},2,
-Voldaren Bloodcaster // Bloodbat Summoner,,,
+Voldaren Bloodcaster // Bloodbat Summoner,{1}{B},2,Flying;Transform
 Wedding Security,{3}{B}{B},5,
 Alchemist's Gambit,{1}{R}{R},3,Cleave
-Alluring Suitor // Deadly Dancer,,,
-Ballista Watcher // Ballista Wielder,,,
+Alluring Suitor // Deadly Dancer,{2}{R},3,Transform;Trample
+Ballista Watcher // Ballista Wielder,{2}{R}{R},4,Transform;Daybound;Nightbound
 Belligerent Guest,{2}{R},3,Trample
 Blood Hypnotist,{2}{R},3,
 Blood Petal Celebrant,{1}{R},2,
@@ -14262,17 +14262,17 @@ Daybreak Combatants,{2}{R},3,Haste
 Dominating Vampire,{1}{R}{R},3,
 End the Festivities,{R},1,
 Falkenrath Celebrants,{4}{R},5,Menace
-Fearful Villager // Fearsome Werewolf,,,
+Fearful Villager // Fearsome Werewolf,{2}{R},3,Transform;Daybound;Menace;Nightbound
 Flame-Blessed Bolt,{R},1,
 Frenzied Devils,{4}{R},5,Haste
 Honeymoon Hearse,{2}{R},3,Trample
 Hungry Ridgewolf,{1}{R},2,
-Ill-Tempered Loner // Howlpack Avenger,,,
+Ill-Tempered Loner // Howlpack Avenger,{2}{R}{R},4,Transform;Daybound;Nightbound
 Into the Night,{3}{R},4,
 Kessig Flamebreather,{1}{R},2,
 Kessig Wolfrider,{R},1,Menace
 Lacerate Flesh,{4}{R},5,
-Lambholt Raconteur // Lambholt Ravager,,,
+Lambholt Raconteur // Lambholt Ravager,{3}{R},4,Transform;Daybound;Nightbound
 Lightning Wolf,{3}{R},4,
 Magma Pummeler,{X}{R}{R},2,
 Manaform Hellkite,{2}{R}{R},4,Flying
@@ -14285,13 +14285,13 @@ Runebound Wolf,{1}{R},2,
 Sanguine Statuette,{1}{R},2,
 Stensia Uprising,{2}{R}{R},4,
 Vampires' Vengeance,{2}{R},3,
-Volatile Arsonist // Dire-Strain Anarchist,,,
+Volatile Arsonist // Dire-Strain Anarchist,{3}{R}{R},5,Transform;Daybound;Haste;Menace;Nightbound
 Voldaren Epicure,{R},1,
-Voltaic Visionary // Volt-Charged Berserker,,,
-Weary Prisoner // Wrathful Jailbreaker,,,
+Voltaic Visionary // Volt-Charged Berserker,{1}{R},2,Transform
+Weary Prisoner // Wrathful Jailbreaker,{3}{R},4,Transform;Daybound;Nightbound;Defender
 Apprentice Sharpshooter,{2}{G},3,Reach;Training
 Ascendant Packleader,{G},1,
-Avabruck Caretaker // Hollowhenge Huntmaster,,,
+Avabruck Caretaker // Hollowhenge Huntmaster,{4}{G}{G},6,Transform;Daybound;Hexproof;Nightbound
 Bramble Armor,{1}{G},2,Equip
 Bramble Wurm,{6}{G},7,Reach;Trample
 Cartographer's Survey,{3}{G},4,
@@ -14302,21 +14302,21 @@ Crushing Canopy,{2}{G},3,
 Cultivator Colossus,{4}{G}{G}{G},7,Trample
 Dawnhart Disciple,{1}{G},2,
 Dig Up,{G},1,Cleave
-Dormant Grove // Gnarled Grovestrider,,,
+Dormant Grove // Gnarled Grovestrider,{3}{G},4,Vigilance;Transform
 Flourishing Hunter,{4}{G}{G},6,
 Glorious Sunrise,{3}{G}{G},5,
 Hamlet Vanguard,{2}{G},3,Ward
 Hiveheart Shaman,{3}{G},4,
-Hookhand Mariner // Riphook Raider,,,
+Hookhand Mariner // Riphook Raider,{3}{G},4,Transform;Daybound;Nightbound
 Howling Moon,{2}{G},3,
-Howlpack Piper // Wildsong Howler,,,
-Infestation Expert // Infested Werewolf,,,
+Howlpack Piper // Wildsong Howler,{3}{G},4,Transform;Daybound;Nightbound
+Infestation Expert // Infested Werewolf,{4}{G},5,Transform;Daybound;Nightbound
 Laid to Rest,{3}{G},4,
 Massive Might,{G},1,
 Moldgraf Millipede,{4}{G},5,Mill
 Mulch,{1}{G},2,
 Nature's Embrace,{2}{G},3,Enchant
-Oakshade Stalker // Moonlit Ambusher,,,
+Oakshade Stalker // Moonlit Ambusher,{2}{G},3,Transform;Daybound;Nightbound
 Packsong Pup,{1}{G},2,
 Reclusive Taxidermist,{1}{G},2,
 Retrieve,{2}{G},3,
@@ -14329,18 +14329,18 @@ Splendid Reclamation,{3}{G},4,
 Spore Crawler,{2}{G},3,
 Sporeback Wolf,{1}{G},2,
 Toxic Scorpion,{1}{G},2,Deathtouch
-Ulvenwald Oddity // Ulvenwald Behemoth,,,
-Weaver of Blossoms // Blossom-Clad Werewolf,,,
+Ulvenwald Oddity // Ulvenwald Behemoth,{2}{G}{G},4,Transform;Haste;Trample
+Weaver of Blossoms // Blossom-Clad Werewolf,{2}{G},3,Transform;Daybound;Nightbound
 Witch's Web,{1}{G},2,
 Wolf Strike,{2}{G},3,
-Wolfkin Outcast // Wedding Crasher,,,
+Wolfkin Outcast // Wedding Crasher,{5}{G},6,Transform;Daybound;Nightbound
 Ancient Lumberknot,{2}{B}{G},4,
 "Anje, Maid of Dishonor",{2}{B}{R},4,
 Bloodtithe Harvester,{B}{R},2,
-Brine Comber // Brinebound Gift,,,
-Child of the Pack // Savage Packmate,,,
-"Dorothea, Vengeful Victim // Dorothea's Retribution",,,
-"Edgar, Charmed Groom // Edgar Markov's Coffin",,,
+Brine Comber // Brinebound Gift,{1}{W}{U},3,Transform;Enchant;Disturb
+Child of the Pack // Savage Packmate,{2}{R}{G},4,Transform;Daybound;Trample;Nightbound
+"Dorothea, Vengeful Victim // Dorothea's Retribution",{W}{U},2,Flying;Transform;Enchant;Disturb
+"Edgar, Charmed Groom // Edgar Markov's Coffin",{2}{W}{B},4,Transform
 "Eruth, Tormented Prophet",{1}{U}{R},3,
 "Grolnok, the Omnivore",{2}{G}{U},4,Mill
 "Kaya, Geist Hunter",{1}{W}{B},3,
@@ -14349,7 +14349,7 @@ Markov Waltzer,{2}{R}{W},4,Flying;Haste
 "Odric, Blood-Cursed",{1}{R}{W},3,Deathtouch;Lifelink;Reach;Indestructible;Hexproof;First strike;Haste;Trample;Menace;Double strike
 Old Rutstein,{1}{B}{G},3,Treasure;Mill
 "Olivia, Crimson Bride",{4}{B}{R},6,Flying;Haste
-"Runo Stromkirk // Krothuss, Lord of the Deep",,,
+"Runo Stromkirk // Krothuss, Lord of the Deep",{1}{U}{B},3,Flying;Transform
 Sigardian Paladin,{2}{G}{W},4,
 Skull Skaab,{U}{B},2,Exploit
 "Torens, Fist of the Angels",{1}{G}{W},3,Training
@@ -14359,7 +14359,7 @@ Blood Servitor,{3},3,
 Boarded Window,{3},3,
 Ceremonial Knife,{1},1,Equip
 Dollhouse of Horrors,{5},5,
-Foreboding Statue // Forsaken Thresher,,,
+Foreboding Statue // Forsaken Thresher,{3},3,Transform
 Honored Heirloom,{3},3,
 Investigator's Journal,{2},2,
 Lantern of the Lost,{1},1,
@@ -14595,10 +14595,10 @@ Jace's Ruse,{3}{U}{U},5,
 "Tezzeret, Master of the Bridge",{4}{U}{B},6,
 Archon of the Wild Rose,{2}{W}{W},4,Flying
 Armory Mice,{1}{W},2,Celebration
-Besotted Knight // Betroth the Beast,,,
+Besotted Knight // Betroth the Beast,{3}{W} // {W},4,Role token
 Break the Spell,{W},1,
 Charmed Clothier,{4}{W},5,Flying;Role token
-Cheeky House-Mouse // Squeak By,,,
+Cheeky House-Mouse // Squeak By,{W} // {W},1,
 Cooped Up,{1}{W},2,Enchant
 Discerning Financier,{2}{W},3,Treasure
 Dutiful Griffin,{3}{W}{W},5,Flying
@@ -14623,20 +14623,20 @@ A Tale for the Ages,{1}{W},2,
 Three Blind Mice,{2}{W},3,
 Tuinvale Guide,{3}{W},4,Flying;Celebration
 Unassuming Sage,{1}{W},2,Role token;Scry
-Virtue of Loyalty // Ardenvale Fealty,,,
+Virtue of Loyalty // Ardenvale Fealty,{3}{W}{W} // {1}{W},5,
 Werefox Bodyguard,{1}{W}{W},3,Flash
-Aquatic Alchemist // Bubble Up,,,
+Aquatic Alchemist // Bubble Up,{1}{U} // {2}{U},2,
 Archive Dragon,{4}{U}{U},6,Scry;Flying;Ward
 Asinine Antics,{2}{U}{U},4,Role token
-Beluna's Gatekeeper // Entry Denied,,,
+Beluna's Gatekeeper // Entry Denied,{5}{U} // {1}{U},6,
 Bitter Chill,{1}{U},2,Enchant;Scry
 Chancellor of Tales,{3}{U},4,Flying
 Diminisher Witch,{2}{U},3,Role token;Bargain
 Extraordinary Journey,{X}{X}{U}{U},2,
 Farsight Ritual,{2}{U}{U},4,Bargain
 Freeze in Place,{1}{U},2,Scry
-Galvanic Giant // Storm Reading,,,
-Horned Loch-Whale // Lagoon Breach,,,
+Galvanic Giant // Storm Reading,{3}{U} // {5}{U}{U},4,
+Horned Loch-Whale // Lagoon Breach,{4}{U}{U} // {1}{U},6,Ward;Flash
 Ice Out,{1}{U}{U},3,Bargain
 Icewrought Sentry,{2}{U},3,Vigilance
 Ingenious Prodigy,{X}{U},1,Skulk
@@ -14645,8 +14645,8 @@ Johann's Stopgap,{3}{U},4,Bargain
 Living Lectern,{1}{U},2,Role token;Scry
 Merfolk Coralsmith,{2}{U},3,Scry
 Misleading Motes,{3}{U},4,
-Obyra's Attendants // Desperate Parry,,,
-Picklock Prankster // Free the Fae,,,
+Obyra's Attendants // Desperate Parry,{4}{U} // {1}{U},5,Flying
+Picklock Prankster // Free the Fae,{1}{U} // {1}{U},2,Flying;Vigilance;Mill
 Sleep-Cursed Faerie,{U},1,Flying;Ward
 Sleight of Hand,{U},1,
 Snaremaster Sprite,{U},1,Flying
@@ -14656,8 +14656,8 @@ Stormkeld Prowler,{1}{U},2,
 Succumb to the Cold,{2}{U},3,
 Talion's Messenger,{2}{U},3,Flying
 Tenacious Tomeseeker,{2}{U},3,Bargain
-Vantress Transmuter // Croaking Curse,,,
-Virtue of Knowledge // Vantress Visions,,,
+Vantress Transmuter // Croaking Curse,{3}{U} // {1}{U},4,Role token
+Virtue of Knowledge // Vantress Visions,{4}{U} // {1}{U},5,
 Water Wings,{1}{U},2,
 "Ashiok, Wicked Manipulator",{3}{B}{B},5,
 Ashiok's Reaper,{3}{B},4,
@@ -14665,12 +14665,12 @@ Back for Seconds,{2}{B},3,Bargain
 Barrow Naughty,{1}{B},2,Flying
 Beseech the Mirror,{1}{B}{B}{B},4,Bargain
 Candy Grapple,{1}{B},2,Bargain
-Conceited Witch // Price of Beauty,,,
+Conceited Witch // Price of Beauty,{2}{B} // {B},3,Role token;Menace
 Dream Spoilers,{3}{B},4,Flying
 Eriette's Whisper,{3}{B},4,Role token
 Faerie Dreamthief,{B},1,Flying;Surveil
 Fell Horseman // Deathly Ride,{3}{B} // {1}{B},4,
-Gumdrop Poisoner // Tempt with Treats,,,
+Gumdrop Poisoner // Tempt with Treats,{2}{B} // {B},3,Lifelink;Food
 High Fae Negotiator,{3}{B}{B},5,Flying;Bargain
 Hopeless Nightmare,{B},1,Scry
 Lich-Knights' Conquest,{4}{B},5,
@@ -14690,7 +14690,7 @@ Sugar Rush,{1}{B},2,
 Taken by Nightmares,{2}{B}{B},4,Scry
 Tangled Colony,{1}{B},2,
 Twisted Sewer-Witch,{3}{B}{B},5,Role token
-Virtue of Persistence // Locthwain Scorn,,,
+Virtue of Persistence // Locthwain Scorn,{5}{B}{B} // {1}{B},7,
 Voracious Vermin,{2}{B},3,
 Warehouse Tabby,{B},1,
 Wicked Visitor,{1}{B},2,
@@ -14707,10 +14707,10 @@ Flick a Coin,{2}{R},3,Treasure
 Frantic Firebolt,{2}{R},3,
 Gnawing Crescendo,{2}{R},3,
 "Goddric, Cloaked Reveler",{1}{R}{R},3,Flying;Celebration;Haste
-Grabby Giant // That's Mine,,,
+Grabby Giant // That's Mine,{3}{R} // {1}{R},4,Reach;Treasure
 Grand Ball Guest,{1}{R},2,Celebration
 Harried Spearguard,{R},1,Haste
-Hearth Elemental // Stoke Genius,,,
+Hearth Elemental // Stoke Genius,{5}{R} // {1}{R},6,
 "Imodane, the Pyrohammer",{2}{R}{R},4,
 Kindled Heroism,{R},1,Scry
 Merry Bards,{2}{R},3,Role token
@@ -14726,26 +14726,26 @@ Stonesplitter Bolt,{X}{R},1,Bargain
 Tattered Ratter,{1}{R},2,
 Torch the Tower,{R},1,Bargain;Scry
 Twisted Fealty,{2}{R},3,Role token
-Two-Headed Hunter // Twice the Rage,,,
+Two-Headed Hunter // Twice the Rage,{4}{R} // {1}{R},5,Menace
 Unruly Catapult,{2}{R},3,Defender
-Virtue of Courage // Embereth Blaze,,,
+Virtue of Courage // Embereth Blaze,{3}{R}{R} // {1}{R},5,
 Witch's Mark,{1}{R},2,Role token
 Witchstalker Frenzy,{3}{R},4,
 Agatha's Champion,{4}{G},5,Trample;Fight;Bargain
-Beanstalk Wurm // Plant Beans,,,
+Beanstalk Wurm // Plant Beans,{4}{G} // {1}{G},5,Reach
 Bestial Bloodline,{1}{G},2,Enchant
 Blossoming Tortoise,{2}{G}{G},4,Mill
-Bramble Familiar // Fetch Quest,,,
+Bramble Familiar // Fetch Quest,{1}{G} // {5}{G}{G},2,Mill
 Brave the Wilds,{G},1,Bargain
 Commune with Nature,{G},1,
 Curse of the Werefox,{2}{G},3,Role token;Fight
 Elvish Archivist,{1}{G},2,
 Feral Encounter,{G}{G},2,
-Ferocious Werefox // Guard Change,,,
+Ferocious Werefox // Guard Change,{3}{G} // {1}{G},4,Role token;Trample
 Graceful Takedown,{1}{G},2,
 Gruff Triplets,{3}{G}{G}{G},6,Trample
 Hamlet Glutton,{5}{G}{G},7,Trample;Bargain
-Hollow Scavenger // Bakery Raid,,,
+Hollow Scavenger // Bakery Raid,{2}{G} // {G},3,Food
 Howling Galefang,{2}{G}{G},4,Vigilance
 The Huntsman's Redemption,{2}{G},3,
 Leaping Ambush,{G},1,
@@ -14758,7 +14758,7 @@ Royal Treatment,{G},1,Role token
 Sentinel of Lost Lore,{1}{G}{G},3,
 Skybeast Tracker,{3}{G},4,Reach;Food
 Spider Food,{2}{G},3,Food
-Stormkeld Vanguard // Bear Down,,,
+Stormkeld Vanguard // Bear Down,{4}{G}{G} // {1}{G},6,
 Tanglespan Lookout,{2}{G},3,
 Territorial Witchstalker,{1}{G},2,Defender
 Thunderous Debut,{6}{G}{G},8,Bargain
@@ -14768,7 +14768,7 @@ Tough Cookie,{1}{G},2,Food
 Troublemaker Ouphe,{1}{G},2,Bargain
 Up the Beanstalk,{1}{G},2,
 Verdant Outrider,{2}{G},3,
-Virtue of Strength // Garenbrig Growth,,,
+Virtue of Strength // Garenbrig Growth,{5}{G}{G} // {G},7,
 Agatha of the Vile Cauldron,{R}{G},2,
 The Apprentice's Folly,{2}{U}{R},4,
 "Ash, Party Crasher",{R}{W},2,Celebration;Haste
@@ -14787,28 +14787,28 @@ Likeness Looter,{U}{B},2,Flying
 "Troyan, Gutsy Explorer",{1}{G}{U},3,
 "Will, Scion of Peace",{1}{W}{U},3,Vigilance
 "Yenna, Redtooth Regent",{2}{G}{W},4,Scry
-Beluna Grandsquall // Seek Thrills,,,
-Callous Sell-Sword // Burn Together,,,
-Cruel Somnophage // Can't Wake Up,,,
-Decadent Dragon // Expensive Taste,,,
-Devouring Sugarmaw // Have for Dinner,,,
-Elusive Otter // Grove's Bounty,,,
+Beluna Grandsquall // Seek Thrills,{G}{U}{R} // {2}{G}{U}{R},3,Trample;Mill
+Callous Sell-Sword // Burn Together,{1}{B} // {R},2,
+Cruel Somnophage // Can't Wake Up,{1}{B} // {1}{U},2,Mill
+Decadent Dragon // Expensive Taste,{2}{R}{R} // {2}{B},4,Flying;Treasure;Trample
+Devouring Sugarmaw // Have for Dinner,{2}{B}{B} // {1}{W},4,Food;Trample;Menace
+Elusive Otter // Grove's Bounty,{U} // {X}{G},1,Prowess
 Frolicking Familiar // Blow Off Steam,{2}{U} // {R},3,Flying
 Gingerbread Hunter // Puny Snack,{4}{G} // {2}{B},5,Food
-Heartflame Duelist // Heartflame Slash,,,
-Imodane's Recruiter // Train Troops,,,
-"Kellan, the Fae-Blooded // Birthright Boon",,,
-Mosswood Dreadknight // Dread Whispers,,,
-Picnic Ruiner // Stolen Goodies,,,
-Pollen-Shield Hare // Hare Raising,,,
-Questing Druid // Seek the Beast,,,
-Scalding Viper // Steam Clean,,,
-Shrouded Shepherd // Cleave Shadows,,,
-Spellscorn Coven // Take It Back,,,
-Tempest Hart // Scan the Clouds,,,
-Threadbind Clique // Rip the Seams,,,
-Twining Twins // Swift Spiral,,,
-Woodland Acolyte // Mend the Wilds,,,
+Heartflame Duelist // Heartflame Slash,{1}{W} // {2}{R},2,
+Imodane's Recruiter // Train Troops,{2}{R} // {4}{W},3,
+"Kellan, the Fae-Blooded // Birthright Boon",{2}{R} // {1}{W},3,Double strike
+Mosswood Dreadknight // Dread Whispers,{1}{G} // {1}{B},2,Trample
+Picnic Ruiner // Stolen Goodies,{1}{R} // {3}{G},2,
+Pollen-Shield Hare // Hare Raising,{1}{W} // {G},2,
+Questing Druid // Seek the Beast,{1}{G} // {1}{R},2,
+Scalding Viper // Steam Clean,{1}{R} // {1}{U},2,
+Shrouded Shepherd // Cleave Shadows,{1}{W} // {1}{B},2,
+Spellscorn Coven // Take It Back,{3}{B} // {2}{U},4,Flying
+Tempest Hart // Scan the Clouds,{3}{G} // {1}{U},4,Trample
+Threadbind Clique // Rip the Seams,{3}{U} // {2}{W},4,Flying
+Twining Twins // Swift Spiral,{2}{U}{U} // {1}{W},4,Flying;Vigilance;Ward
+Woodland Acolyte // Mend the Wilds,{2}{W} // {G},3,
 Agatha's Soul Cauldron,{2},2,
 Candy Trail,{1},1,Scry
 Collector's Vault,{2},2,Treasure
@@ -14838,7 +14838,7 @@ Old Flitterfang,{4}{B},5,Flying;Food
 Become Brutes,{1}{R},2,Role token
 Charging Hooligan,{3}{R},4,
 Ogre Chitterlord,{4}{R}{R},6,Menace
-Intrepid Trufflesnout // Go Hog Wild,,,
+Intrepid Trufflesnout // Go Hog Wild,{1}{G} // {1}{G},2,Food
 Provisions Merchant,{2}{G}{G},4,Food
 Wildwood Mentor,{2}{G},3,
 Blind Obedience,{1}{W},2,Extort
@@ -14894,7 +14894,7 @@ Inspiring Cleric,{2}{W},3,
 Ixalan's Binding,{3}{W},4,
 Kinjalli's Caller,{W},1,
 Kinjalli's Sunwing,{2}{W},3,Flying
-"Legion's Landing // Adanto, the First Fort",,,
+"Legion's Landing // Adanto, the First Fort",{W},1,Transform
 Looming Altisaur,{3}{W},4,
 "Mavren Fein, Dusk Apostle",{2}{W},3,
 Paladin of the Bloodstained,{3}{W},4,
@@ -14937,7 +14937,7 @@ Perilous Voyage,{1}{U},2,Scry
 Pirate's Prize,{3}{U},4,Treasure
 River Sneak,{1}{U},2,
 Run Aground,{3}{U},4,
-"Search for Azcanta // Azcanta, the Sunken Ruin",,,
+"Search for Azcanta // Azcanta, the Sunken Ruin",{1}{U},2,Surveil;Transform
 Shaper Apprentice,{1}{U},2,
 Shipwreck Looter,{1}{U},2,Raid
 Shore Keeper,{U},1,
@@ -14950,7 +14950,7 @@ Tempest Caller,{2}{U}{U},4,
 Watertrap Weaver,{2}{U},3,
 Wind Strider,{4}{U},5,Flying;Flash
 Anointed Deacon,{4}{B},5,
-Arguel's Blood Fast // Temple of Aclazotz,,,
+Arguel's Blood Fast // Temple of Aclazotz,{1}{B},2,Transform
 Bishop of the Bloodstained,{3}{B}{B},5,
 Blight Keeper,{B},1,Flying
 Bloodcrazed Paladin,{1}{B},2,Flash
@@ -15021,7 +15021,7 @@ Tilonalli's Knight,{1}{R},2,
 Tilonalli's Skinshifter,{2}{R},3,Haste
 Trove of Temptation,{3}{R},4,Treasure
 Unfriendly Fire,{4}{R},5,
-Vance's Blasting Cannons // Spitfire Bastion,,,
+Vance's Blasting Cannons // Spitfire Bastion,{3}{R},4,Transform
 Wily Goblin,{R}{R},2,Treasure
 Ancient Brontodon,{6}{G}{G},8,
 Atzocan Archer,{2}{G},3,Reach;Fight
@@ -15073,20 +15073,20 @@ Sky Terror,{R}{W},2,Flying;Menace
 "Vona, Butcher of Magan",{3}{W}{B},5,Lifelink;Vigilance
 "Vraska, Relic Seeker",{4}{B}{G},6,Treasure
 Cobbled Wings,{2},2,Equip
-Conqueror's Galleon // Conqueror's Foothold,,,
-Dowsing Dagger // Lost Vale,,,
+Conqueror's Galleon // Conqueror's Foothold,{4},4,Transform;Crew
+Dowsing Dagger // Lost Vale,{2},2,Transform;Equip
 Dusk Legion Dreadnought,{5},5,Vigilance;Crew
 Elaborate Firecannon,{2},2,
 Fell Flagship,{3},3,Crew
 Gilded Sentinel,{4},4,
 Hierophant's Chalice,{3},3,
 Pillar of Origins,{2},2,
-Primal Amulet // Primal Wellspring,,,
+Primal Amulet // Primal Wellspring,{4},4,Transform
 Prying Blade,{1},1,Treasure;Equip
 Sentinel Totem,{1},1,Scry
 Shadowed Caravel,{2},2,Crew;Explore
 Sleek Schooner,{3},3,Crew
-Thaumatic Compass // Spires of Orazca,,,
+Thaumatic Compass // Spires of Orazca,{2},2,Transform
 Vanquisher's Banner,{5},5,
 Dragonskull Summit,,0,
 Drowned Catacomb,,0,
@@ -15225,7 +15225,7 @@ Coalition Construct,{3},3,
 "Ethrimik, Imagined Fiend",{1}{W}{W},3,Manifest;Manifest dread
 Improvising Aerialist,{1}{W},2,Survival
 Mothlight Processionist,{1}{W},2,Conjure;Eerie
-Solitary Study // Endless Corridor,,,
+Solitary Study // Endless Corridor,{1}{W} // {1}{W},4,Conjure
 Housemeld,{2}{U}{U},4,
 Lurker in the Deep,{3}{U}{U}{U},6,Impending;Seek;Manifest;Conjure
 Fear of Ridicule,{1}{B}{B},3,
@@ -15234,7 +15234,7 @@ Razor Demon,{1}{B}{B},3,Flying;Draft from a spellbook;Ward
 Replicating Terror,{1}{B},2,Conjure
 Welcome the Darkness,{X}{B},1,
 Anguished Recollection,{1}{R},2,Seek
-Crude Abattoir // Unsavory Kitchen,,,
+Crude Abattoir // Unsavory Kitchen,{R} // {2}{R},4,
 Eager Flameguide,{2}{R},3,
 Chittering Illuminator,{G}{G},2,
 Harrowing Swarm,{1}{G},2,Manifest;Manifest dread
@@ -15383,7 +15383,7 @@ Conductive Current,{R}{R}{R},3,
 Electrostatic Blast,{1}{R},2,
 Fearsome Whelp,{1}{R},2,Flying
 Frenzied Geistblaster,{1}{R},2,Prowess;Seek
-"Rahilda, Wanted Cutthroat // Rahilda, Feral Outlaw",,,
+"Rahilda, Wanted Cutthroat // Rahilda, Feral Outlaw",{1}{R},2,Transform;Daybound;First strike;Double strike;Nightbound
 "Tibalt, Wicked Tormentor",{3}{R}{R},5,Draft from a spellbook
 Toralf's Disciple,{2}{R},3,Haste;Conjure
 Town-Razer Tyrant,{2}{R}{R},4,Flying
@@ -15513,7 +15513,7 @@ Wagon Wrecker,{1}{R},2,Menace
 Blooming Cactusfolk,{3}{G}{G},5,Trample
 "Jessie Zane, Fangbringer",{1}{G}{G},3,Conjure;Deathtouch
 Jet Collector,{1}{G},2,Conjure
-"Albiorix, Goose Tyrant // Wild Goose Chase",,,
+"Albiorix, Goose Tyrant // Wild Goose Chase",{1}{G}{U} // {G}{U},3,Flying;Food;Trample;Ward
 Cathartic Operation,{3}{U}{B},5,Seek
 Emperor Apatzec Intli IV,{R}{G}{W},3,Seek
 "Grenzo, Crooked Jailer",{4}{B}{R},6,Heist
@@ -15557,15 +15557,15 @@ Spelldrain Assassin,{U}{B}{R},3,
 Syndicate Recruiter,{2}{U}{B},4,Flying;Ward;Mill;Conjure
 Honor the Past,{2}{W},3,
 Unbreakable Remnant,{W},1,Escape
-Galathul Galecaller // Corvid Squall,,,
+Galathul Galecaller // Corvid Squall,{1}{U} // {1}{U},2,Flying;Storm;Prepared;Flash;Conjure
 Interdisciplinary Studies,{2}{U},3,Seek;Learn
 Corpseweaver Prodigy,{2}{B},3,Deathtouch;Infusion;Conjure
 Feed the Bog,{1}{B},2,Replicate
 Impose Hierarchy,{1}{B},2,
 Consumed by History,{1}{R},2,
-Crescendo Conductor // Boltwave,,,
+Crescendo Conductor // Boltwave,{1}{R} // {R},2,Reach;Prepared;Conjure
 Algorithmic Ferocity,{G},1,Fight
-Ursine Guide // Ranger's Merit,,,
+Ursine Guide // Ranger's Merit,{2}{G} // {3}{G}{G},3,Prepared;Conjure
 Variable Solutions,{X}{G},1,Seek;Conjure
 Advanced Floral Invocations,{B/G},1,Mill;Landfall
 "Anina, Natural Parallelist",{1}{G}{U},3,Conjure
@@ -15588,8 +15588,8 @@ The Mystical Archive,,0,Draft from a spellbook
 "Lam, Storm Crane Elder",{2}{W}{W},4,Prowess;Conjure
 Thunderbond Vanguard,{2}{W},3,
 Waystone's Guidance,{1}{W},2,
-Cunning Azurescale // Divining Dive,,,
-Pearl Lake Warden // Nesting Instinct,,,
+Cunning Azurescale // Divining Dive,{5}{U} // {1}{U},6,Flying;Seek;Flash
+Pearl Lake Warden // Nesting Instinct,{3}{U} // {2}{G},4,Flying;Seek
 Ureni's Counsel,{6}{U},7,Seek;Harmonize
 Draconic Fealty,{B},1,Behold
 Runeblade Raiser,{B},1,
@@ -15610,7 +15610,7 @@ Illuminating Lash,{U}{R},2,
 Mardu Thunderkite,{R}{W}{B},3,Flying;Lifelink;Mobilize
 Oasis of Renewal,{B}{G}{U},3,Seek
 Song of Seasons,{1}{R}{G},3,Seek
-Stonehide Ancient // Warning Tremor,,,
+Stonehide Ancient // Warning Tremor,{3}{G}{U}{R} // {2}{R},6,Flying;Vigilance
 Territorial Strike,{1}{B}{G},3,Behold
 "Xho Cai, Flickering Talon",{U}{R}{W},3,Flying;Flurry;Vigilance;Haste
 Dragonweave Tapestry,{4},4,Conjure
@@ -15630,17 +15630,17 @@ Victory of the Pyrohammer,{3}{R}{R},5,
 A Golden Opportunity,{2}{G},3,Conjure
 "Hex, Kellan's Companion",{1}{G},2,Haste
 Swine Rebellion,{2}{G},3,Conjure
-Accident-Prone Apprentice // Amphibian Accident,,,
+Accident-Prone Apprentice // Amphibian Accident,{1}{R} // {1}{U},2,
 Drover of the Swine,{2}{W}{B}{G},5,Conjure
 First Little Pig,{1}{G/W},2,
 Grow Old Together,{1}{G}{U},3,Seek
 High Fae Prankster,{2}{U}{B},4,Deathtouch;Flying
 Jewel Mine Overseer,{1}{R}{W},3,Conjure
 Outfitted Jouster,{2}{B}{R},4,Conjure
-Porcine Portent // Lend a Ham,,,
+Porcine Portent // Lend a Ham,{3}{W} // {2}{B},4,Conjure
 Second Little Pig,{1}{W/B},2,
-Steady Tortoise // Harried Dash,,,
-Stormkeld Curator // Giant Secrets,,,
+Steady Tortoise // Harried Dash,{4}{G} // {R},5,Ward
+Stormkeld Curator // Giant Secrets,{4}{W}{W} // {X}{U}{U},6,Conjure
 Syr Joshua and Syr Saxon,{G}{W},2,Double team
 Third Little Pig,{1}{B/G},2,Conjure
 Captivating Crossroads,,0,
@@ -15671,40 +15671,40 @@ Canyon Jerboa,{2}{W},3,Landfall
 Cliffhaven Sell-Sword,{1}{W},2,
 Dauntless Unity,{1}{W},2,Kicker
 Emeria Captain,{3}{W},4,Flying;Vigilance
-"Emeria's Call // Emeria, Shattered Skyclave",,,
+"Emeria's Call // Emeria, Shattered Skyclave",{4}{W}{W}{W},7,
 Expedition Healer,{1}{W},2,Vigilance
 Farsight Adept,{2}{W},3,
 Fearless Fledgling,{1}{W},2,Landfall
 Journey to Oblivion,{4}{W},5,
 Kabira Outrider,{3}{W},4,
-Kabira Takedown // Kabira Plateau,,,
+Kabira Takedown // Kabira Plateau,{1}{W},2,
 Kitesail Cleric,{W},1,Kicker;Flying
 Kor Blademaster,{1}{W},2,Double strike
 Kor Celebrant,{2}{W},3,
 Legion Angel,{2}{W}{W},4,Flying
 Luminarch Aspirant,{1}{W},2,
 Makindi Ox,{4}{W},5,Landfall
-Makindi Stampede // Makindi Mesas,,,
+Makindi Stampede // Makindi Mesas,{3}{W}{W},5,
 Maul of the Skyclaves,{2}{W},3,Equip
 Mesa Lynx,{1}{W},2,
 Nahiri's Binding,{1}{W}{W},3,Enchant
-Ondu Inversion // Ondu Skyruins,,,
+Ondu Inversion // Ondu Skyruins,{6}{W}{W},8,
 Paired Tactician,{2}{W},3,
 Practiced Tactics,{W},1,
 Pressure Point,{1}{W},2,
 Prowling Felidar,{3}{W},4,Vigilance;Landfall
 Resolute Strike,{W},1,
 Sea Gate Banneret,{W},1,
-Sejiri Shelter // Sejiri Glacier,,,
+Sejiri Shelter // Sejiri Glacier,{1}{W},2,
 Shepherd of Heroes,{4}{W},5,Flying
 Skyclave Apparition,{1}{W}{W},3,
-Skyclave Cleric // Skyclave Basilica,,,
+Skyclave Cleric // Skyclave Basilica,{1}{W},2,
 Squad Commander,{3}{W},4,
 Smite the Monstrous,{3}{W},4,
 Tazeem Raptor,{2}{W},3,Flying
 "Tazri, Beacon of Unity",{4}{W},5,
 Anticognition,{1}{U},2,Scry
-Beyeen Veil // Beyeen Coast,,,
+Beyeen Veil // Beyeen Coast,{1}{U},2,
 Bubble Snare,{U},1,Enchant;Kicker
 Cascade Seer,{3}{U},4,Scry
 "Charix, the Raging Isle",{2}{U}{U},4,
@@ -15718,10 +15718,10 @@ Deliberate,{1}{U},2,Scry
 Expedition Diviner,{3}{U},4,Flying
 Field Research,{2}{U},3,Kicker
 Glacial Grasp,{2}{U},3,Mill
-Glasspool Mimic // Glasspool Shore,,,
+Glasspool Mimic // Glasspool Shore,{2}{U},3,
 Inscription of Insight,{3}{U},4,Kicker;Scry
 "Jace, Mirror Mage",{1}{U}{U},3,Kicker;Scry
-Jwari Disruption // Jwari Ruins,,,
+Jwari Disruption // Jwari Ruins,{1}{U},2,
 Living Tempest,{4}{U},5,Flying;Flash
 Lullmage's Domination,{X}{U}{U}{U},3,
 Maddening Cacophony,{1}{U},2,Mill;Kicker
@@ -15732,22 +15732,22 @@ Nimble Trapfinder,{1}{U},2,
 Risen Riptide,{2}{U},3,
 Roost of Drakes,{U},1,Kicker
 Ruin Crab,{U},1,Mill;Landfall
-"Sea Gate Restoration // Sea Gate, Reborn",,,
+"Sea Gate Restoration // Sea Gate, Reborn",{4}{U}{U}{U},7,
 Sea Gate Stormcaller,{1}{U},2,Kicker
 Seafloor Stalker,{2}{U},3,
 Shell Shield,{U},1,Kicker
-Silundi Vision // Silundi Isle,,,
+Silundi Vision // Silundi Isle,{2}{U},3,
 Skyclave Plunder,{4}{U},5,
 Skyclave Squid,{1}{U},2,Defender;Landfall
 Sure-Footed Infiltrator,{3}{U},4,
 Tazeem Roilmage,{1}{U},2,Kicker
 Thieving Skydiver,{1}{U},2,Kicker;Flying
-Umara Wizard // Umara Skyfalls,,,
+Umara Wizard // Umara Skyfalls,{4}{U},5,
 Windrider Wizard,{2}{U},3,Flying
 Zulaport Duelist,{U},1,Flash;Mill
 Acquisitions Expert,{1}{B},2,
-"Agadeem's Awakening // Agadeem, the Undercrypt",,,
-Blackbloom Rogue // Blackbloom Bog,,,
+"Agadeem's Awakening // Agadeem, the Undercrypt",{X}{B}{B}{B},3,
+Blackbloom Rogue // Blackbloom Bog,{2}{B},3,Menace
 Blood Beckoning,{B},1,Kicker
 Blood Price,{3}{B},4,
 Bloodchief's Thirst,{B},1,Kicker
@@ -15761,19 +15761,19 @@ Expedition Skulker,{1}{B},2,
 Ghastly Gloomhunter,{1}{B},2,Kicker;Flying;Lifelink
 Guul Draz Mucklord,{2}{B},3,
 Hagra Constrictor,{2}{B},3,
-Hagra Mauling // Hagra Broodpit,,,
+Hagra Mauling // Hagra Broodpit,{2}{B}{B},4,
 Highborn Vampire,{3}{B},4,
 Inscription of Ruin,{2}{B},3,Kicker
 Lithoform Blight,{1}{B},2,Enchant
 Malakir Blood-Priest,{1}{B},2,
-Malakir Rebirth // Malakir Mire,,,
+Malakir Rebirth // Malakir Mire,{B},1,
 Mind Carver,{B},1,Equip
 Mind Drain,{2}{B},3,Mill
 Nighthawk Scavenger,{1}{B}{B},3,Deathtouch;Flying;Lifelink
 Nimana Skitter-Sneak,{3}{B},4,
 Nimana Skydancer,{2}{B},3,Flying;Flash;Mill
 Oblivion's Hunger,{1}{B},2,
-Pelakka Predation // Pelakka Caverns,,,
+Pelakka Predation // Pelakka Caverns,{2}{B},3,
 Scion of the Swarm,{3}{B}{B},5,Flying
 Scourge of the Skyclaves,{1}{B},2,Kicker
 Shadow Stinger,{2}{B},3,Mill
@@ -15784,9 +15784,9 @@ Soul Shatter,{2}{B},3,
 Subtle Strike,{1}{B},2,
 "Taborax, Hope's Demise",{2}{B},3,Flying
 Thwart the Grave,{4}{B}{B},6,
-Zof Consumption // Zof Bloodbog,,,
+Zof Consumption // Zof Bloodbog,{4}{B}{B},6,
 Akoum Hellhound,{R},1,Landfall
-Akoum Warrior // Akoum Teeth,,,
+Akoum Warrior // Akoum Teeth,{5}{R},6,Trample
 Ardent Electromancer,{2}{R},3,
 Cinderclasm,{1}{R},2,Kicker
 Cleansing Wildfire,{1}{R},2,
@@ -15798,7 +15798,7 @@ Grotag Bug-Catcher,{1}{R},2,Trample
 Grotag Night-Runner,{2}{R},3,
 Inordinate Rage,{1}{R},2,Scry
 Kargan Intimidator,{1}{R},2,
-Kazuul's Fury // Kazuul's Cliffs,,,
+Kazuul's Fury // Kazuul's Cliffs,{2}{R},3,
 Leyline Tyrant,{2}{R}{R},4,Flying
 Magmatic Channeler,{1}{R},2,
 Molten Blast,{2}{R},3,
@@ -15813,35 +15813,35 @@ Scavenged Blade,{1}{R},2,Equip
 Scorch Rider,{3}{R},4,Kicker
 Shatterskull Charger,{1}{R}{R},3,Haste;Trample;Kicker
 Shatterskull Minotaur,{4}{R}{R},6,Haste
-"Shatterskull Smashing // Shatterskull, the Hammer Pass",,,
+"Shatterskull Smashing // Shatterskull, the Hammer Pass",{X}{R}{R},2,
 Sizzling Barrage,{1}{R},2,
 Skyclave Geopede,{2}{R},3,Trample;Landfall
 Sneaking Guide,{R},1,
-Song-Mad Treachery // Song-Mad Ruins,,,
-Spikefield Hazard // Spikefield Cave,,,
+Song-Mad Treachery // Song-Mad Ruins,{3}{R}{R},5,
+Spikefield Hazard // Spikefield Cave,{R},1,
 Synchronized Spellcraft,{4}{R},5,
 Teeterpeak Ambusher,{1}{R},2,
 Thundering Rebuke,{1}{R},2,
 Thundering Sparkmage,{3}{R},4,
 Tormenting Voice,{1}{R},2,
 Tuktuk Rubblefort,{2}{R},3,Reach;Defender
-Valakut Awakening // Valakut Stoneforge,,,
+Valakut Awakening // Valakut Stoneforge,{2}{R},3,
 Valakut Exploration,{2}{R},3,Landfall
 Wayward Guide-Beast,{R},1,Haste;Trample
 Adventure Awaits,{1}{G},2,
 Ancient Greenwarden,{4}{G}{G},6,Reach
 "Ashaya, Soul of the Wild",{3}{G}{G},5,
-Bala Ged Recovery // Bala Ged Sanctuary,,,
+Bala Ged Recovery // Bala Ged Sanctuary,{2}{G},3,
 Canopy Baloth,{3}{G},4,Landfall
 Cragplate Baloth,{5}{G}{G},7,Hexproof;Haste;Kicker
 Dauntless Survivor,{1}{G},2,
 Inscription of Abundance,{1}{G},2,Fight;Kicker
 Iridescent Hornbeetle,{4}{G},5,
 Joraga Visionary,{3}{G},4,
-Kazandu Mammoth // Kazandu Valley,,,
+Kazandu Mammoth // Kazandu Valley,{1}{G}{G},3,Landfall
 Kazandu Nectarpot,{1}{G},2,Landfall
 Kazandu Stomper,{5}{G},6,Trample
-Khalni Ambush // Khalni Territory,,,
+Khalni Ambush // Khalni Territory,{2}{G},3,Fight
 Lotus Cobra,{1}{G},2,Landfall
 Might of Murasa,{1}{G},2,Kicker
 Murasa Brute,{2}{G},3,
@@ -15859,12 +15859,12 @@ Swarm Shambler,{G},1,
 Tajuru Blightblade,{G},1,Deathtouch
 Tajuru Paragon,{1}{G},2,Kicker
 Tajuru Snarecaster,{2}{G},3,Reach
-Tangled Florahedron // Tangled Vale,,,
+Tangled Florahedron // Tangled Vale,{1}{G},2,
 Taunting Arbormage,{2}{G},3,Kicker
 Territorial Scythecat,{2}{G},3,Trample;Landfall
 Turntimber Ascetic,{4}{G},5,
-"Turntimber Symbiosis // Turntimber, Serpentine Wood",,,
-Vastwood Fortification // Vastwood Thicket,,,
+"Turntimber Symbiosis // Turntimber, Serpentine Wood",{4}{G}{G}{G},7,
+Vastwood Fortification // Vastwood Thicket,{G},1,
 Vastwood Surge,{3}{G},4,Kicker
 Veteran Adventurer,{5}{G},6,Vigilance
 Vine Gecko,{1}{G},2,

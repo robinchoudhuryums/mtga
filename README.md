@@ -596,7 +596,15 @@ answer. Rebuild the data after importing new cards:
 ```
 python3 scripts/build_mana.py          # refresh card-mana.csv from card-library.csv
 python3 scripts/build_mana.py --pool   # also cover card-pool.csv names
+python3 scripts/build_mana.py --allow-shrink   # permit a deliberate narrowing of scope
 ```
+
+Like `build_pool.py`, it **refuses to shrink the file by more than half** — this tool
+defaults to library-only, so a plain rerun over a pool-scoped file would silently discard
+~14k rows (and disable the one-card keyword heuristic, which needs a pool-sized corpus).
+Names the batch endpoint can't match — split and room cards like `Life // Death` — get a
+front-face `/cards/named` fallback, accepted only when the resolved card is the one asked
+for; anything still unmatched is written blank **and reported**, never silently.
 
 ### Gallery — a visual, filterable view of the collection
 
