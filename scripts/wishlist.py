@@ -732,7 +732,9 @@ def _rank_scores(rows):
             nm = (r.get("Card Name") or "").strip().lower()
             info = pool_rot.get(nm) or pool_rot.get(nm.split(" // ")[0])
             if info and "standard" in info[1]:
-                rot_year = dk.rotation_year(info[0])
+                # info = (released, legalities, set_code) — pass the set so an
+                # announced long-legality reprint (Foundations) isn't false-flagged.
+                rot_year = dk.rotation_year(info[0], set_code=info[2])
                 rot = rot_year is not None and rot_year <= _rot_soon_year
         out.append({
             "name": r.get("Card Name", ""), "rarity": (r.get("Rarity") or "").capitalize(),
@@ -743,6 +745,12 @@ def _rank_scores(rows):
             "blank_power": not raw_power,
             "bad_power": bad_power, "raw_power": raw_power,
             "land_val": land_val, "rot": rot, "rot_year": rot_year,
+            # A conditional card's Power can't be estimated in isolation. Flagged even
+            # when Power is filled: the CSV records no PROVENANCE, so a value may be a
+            # `--add` auto-seed rather than a hand grade, and this session had to
+            # hand-correct several of exactly this class (Repulsive Mutation, Genesis
+            # Wave, Mona Lisa, Procrastinate). The flag says "verify", not "wrong".
+            "cond_power": is_conditional_power(r),
             "uniq": card_distinctiveness(ctags, r.get("Card Text") or ""),
             "sig": "/".join(best_specific[:2]) or ("generic/no-theme" if conf == "review" else ""),
         })
@@ -802,7 +810,8 @@ def cmd_rank(rows):
             i = 0
         i += 1
         wc = (s["rarity"] or "?")[:1] or "?"
-        pw = f"{s['power']:>4.1f}" + ("?" if s["blank_power"] else "!" if s["bad_power"] else " ")
+        pw = f"{s['power']:>4.1f}" + ("?" if s["blank_power"] else "!" if s["bad_power"]
+                                      else "~" if s.get("cond_power") else " ")
         use = f"{s['reuse']}★" if s["reuse"] >= 3 else str(s["reuse"])
         sig = s["sig"][:22] + (f"  ⚠rot~{s['rot_year']}" if s.get("rot") else "")
         print(f"  {i:>3} {s['name'][:28]:28} {wc:3} {s['target']:6} {s['state']:6} "
@@ -833,6 +842,13 @@ def cmd_rank(rows):
         print(f"⚠ {len(blanks)} card(s) have BLANK Power (shown as 'pow?', ranked low until "
               f"graded): {', '.join(blanks[:8])}{' …' if len(blanks) > 8 else ''}. "
               "Run `--seed-power --write` then hand-adjust the bombs.")
+    cond = [s["name"] for s in scored if s.get("cond_power")]
+    if cond:
+        print(f"~ {len(cond)} card(s) have a CONDITIONAL power (X-cost / kicker / landfall / "
+              f"'equal to …'), shown as 'pow~'. The heuristic grades a card in ISOLATION, so "
+              f"it structurally can't price one that scales with YOUR deck — and the CSV "
+              f"doesn't record whether a Power was hand-graded or auto-seeded. Verify these "
+              f"from full text: " + ", ".join(cond[:6]) + ("…" if len(cond) > 6 else ""))
     bad = [(s["name"], s["raw_power"]) for s in scored if s["bad_power"]]
     if bad:
         # A malformed Power scored 0.0 and would otherwise sink silently (F9).
@@ -959,6 +975,33 @@ def _norm_rarity(value):
         return _RARITY_FROM_LETTER.get(s.upper(), "")
     w = s.capitalize()
     return w if w in _SEED_RARITY else ""
+
+
+# Cards whose power is CONDITIONAL ON THE DECK, so a single number is the wrong shape of
+# answer. The seed grades a card in isolation; these scale with something it can't see —
+# your board, your land drops, your mana, your greatest creature. Every miss this session
+# was one of these: Repulsive Mutation seeded near-zero (its counter is unconditional
+# once the threat is big), Mona Lisa at 2.5 (a 3-mana rock that taps for 3), Procrastinate
+# at 1.0 (twice-X stun counters locks a creature for four untaps), Genesis Wave and The
+# Legend of Kyoshi both scale off the board.
+#
+# The fix is NOT a better number — a synergy/rarity model structurally cannot price these.
+# It's to say so, so the reader grades from text instead of trusting a confident 2.0.
+_CONDITIONAL_POWER_RE = re.compile(
+    r"\{x\}"
+    r"|\bkicker\b|\bexhaust\b|\bwarp\b|\blandfall\b"
+    r"|equal to (?:the )?(?:number|greatest|its|that|twice)"
+    r"|for each \w+ you control"
+    r"|where x is",
+    re.I)
+
+
+def is_conditional_power(row):
+    """True when a card's power depends on the DECK it's in (X-cost, kicker, landfall,
+    'equal to …', 'for each … you control'), so its heuristic Power is a placeholder to
+    grade from text rather than a usable estimate."""
+    blob = f"{row.get('Card Text') or ''}\n{row.get('Mana Cost') or ''}"
+    return bool(_CONDITIONAL_POWER_RE.search(blob))
 
 
 def _seed_power(r):

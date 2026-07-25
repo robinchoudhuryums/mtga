@@ -961,6 +961,86 @@ _CONTEXT_PATTERNS = {
 }
 _CONTEXT_COMPILED = {k: [re.compile(p) for p in v] for k, v in _CONTEXT_PATTERNS.items()}
 
+# COST-AS-UPSIDE. A card's additional cost or drawback reads as a downside in isolation
+# and every scoring model here grades cards in isolation — but in the matching deck the
+# same clause is an ENGINE TRIGGER. CLAUDE.md warns humans about this in prose ("ask what
+# does this do *here*"); nothing detected it, so a card whose cost is secretly an upside
+# sorted like a card with a real drawback. Observed cases:
+#   • Chocobo Kick's "Kicker — Return a land you control to its owner's hand" in a
+#     LANDFALL deck: replaying the land re-triggers every landfall payoff, so paying the
+#     kicker is pure profit.
+#   • Broodguard Elite's Warp (self-exile at end of turn) in a COUNTERS deck: leaving the
+#     battlefield is what moves its counters onto your threat.
+#   • A "sacrifice a creature/artifact" cost in a sacrifice/aristocrats deck.
+# Each entry maps a cost pattern → the deck themes that turn it into an upside. This is a
+# FLAG for a human read, never a score change — the same posture as `⚠ scales w/`, and
+# for the same reason: the signal is real but too fuzzy to move a ranking on its own.
+_COST_UPSIDE = [
+    (re.compile(r"return a land you control to its owner'?s hand", re.I),
+     {"landfall", "lands", "ramp"}, "kicker returns a land → re-triggers landfall"),
+    (re.compile(r"\bwarp\b|exile this creature at the beginning of the next end step", re.I),
+     {"counters", "etb", "blink"}, "warp self-exile → leaves-play / re-ETB value"),
+    (re.compile(r"when this .{0,30}?leaves the battlefield", re.I),
+     {"counters", "sacrifice", "blink"}, "leaves-play trigger → the 'drawback' is the payoff"),
+    (re.compile(r"as an additional cost.{0,60}?sacrifice", re.I),
+     {"sacrifice", "food", "tokens", "aristocrats"}, "sacrifice cost → feeds your outlets"),
+    (re.compile(r"\bdiscard (?:a|one|two|that) card", re.I),
+     {"graveyard", "reanimator", "recursion", "madness"}, "discard cost → fills the yard"),
+]
+
+
+# Themes that are only a BENEFIT when the deck is built to reward them; otherwise the
+# same interaction is a COST. Filling your graveyard is value in a reanimator deck and
+# pure damage in a control deck that needs its counterspells in the library — but a
+# theme-overlap model sees one tag either way.
+#
+# The observed miss: Genesis Wave read KEY for deck 40 (Simic ramp-CONTROL) purely on a
+# `graveyard` match — i.e. it scored highly BECAUSE it mills you, which there is the
+# reason not to play it (15 of 34 nonlands, including Finale of Revelation and the whole
+# counterspell suite, get binned). The fix reuses machinery that already exists rather
+# than adding a model: `engine_roles` knows which cards are graveyard PAYOFFS, so the
+# theme only counts as a fit when the deck actually fields some.
+_COST_THEMES = {
+    "graveyard": "graveyard",
+    "mill": "graveyard",
+    "discard": "graveyard",
+    "self-mill": "graveyard",
+}
+_COST_THEME_MIN_PAYOFFS = 2
+
+
+def _drop_cost_themes(shared, cards, carddata):
+    """Remove cost-shaped themes from a shared-theme list unless the deck fields at least
+    `_COST_THEME_MIN_PAYOFFS` cards that PAY THEM OFF. Themes with no cost interpretation
+    pass through untouched."""
+    risky = {t for t in shared if t.lower() in _COST_THEMES}
+    if not risky:
+        return shared
+    payoffs = {}
+    for q, n, _s, _c in cards:
+        cd = carddata.get(n.lower())
+        if not cd:
+            continue
+        for theme, sides in engine_roles(cd.get("text") or "").items():
+            if "payoff" in sides:
+                payoffs[theme] = payoffs.get(theme, 0) + q
+    keep = []
+    for t in shared:
+        engine = _COST_THEMES.get(t.lower())
+        if engine and payoffs.get(engine, 0) < _COST_THEME_MIN_PAYOFFS:
+            continue      # the deck pays the cost but collects no reward — not a fit
+        keep.append(t)
+    return keep
+
+
+def cost_upside_flags(text, deck_themes):
+    """['<why>'] for each additional cost / drawback in `text` that this deck's themes
+    turn into an UPSIDE. Empty when the deck doesn't support it — the point is that the
+    same clause is a downside elsewhere."""
+    t = _norm_role_text(text)
+    themes = {str(x).lower() for x in (deck_themes or ())}
+    return [why for rx, want, why in _COST_UPSIDE if rx.search(t) and (want & themes)]
+
 # Coverage self-audit (F15). The role classifier above is PRECISE (low false
 # positives) but inevitably misses phrasings, silently UNDER-counting — the recurring
 # failure only a hands-on read used to catch (a creature-ETB kill, an edict, a -1/-1,
@@ -2276,30 +2356,43 @@ def pool_staleness_days():
         return None
 
 
-def rotation_risk(released, years=3):
-    """True if a set released more than ~`years` ago — Standard's rough rotation
-    window — so a still-`standard`-marked pick may have rotated (stale pool) or
-    rotates soon. Empty/absent `released` → False (graceful before a pool rebuild
-    captures the Released column)."""
-    if not released:
-        return False
-    try:
-        import datetime
-        rel = datetime.date.fromisoformat(released[:10])
-        return (datetime.date.today() - rel).days > 365 * years
-    except Exception:
-        return False
+# Sets whose Standard legality does NOT follow the release-date + 3 years rule, keyed
+# by Arena set code → the year they actually leave Standard.
+#
+# FOUNDATIONS is the case that matters: it is deliberately Standard-legal for FIVE years
+# (through 2029), not three. Because the pool keys ONE printing per card, a card whose
+# newest printing is in FDN inherits FDN's 2024 release date and read "⚠rot~2027" — so
+# Genesis Wave, legal for another four years, was flagged as "don't spend a wildcard on
+# a card about to leave the format." CLAUDE.md documented the reprint caveat in prose;
+# this encodes it. Add a row here whenever a set gets an announced non-standard window.
+_SET_ROTATION_OVERRIDE = {
+    "FDN": 2029,   # Foundations — announced Standard-legal through 2029
+}
 
 
-def rotation_year(released, years=3):
+def rotation_year(released, years=3, set_code=""):
     """The year a set rotates out of Standard — its release year + `years` (Standard's
-    ~3-year window) — or None if the date is blank/unparseable. The single primitive
-    behind both `rotation_sweep` and the wishlist ⚠rot flag, so 'when does this rotate'
-    is computed one way everywhere."""
+    ~3-year window), or an announced date from `_SET_ROTATION_OVERRIDE`. None if the
+    date is blank/unparseable. The single primitive behind `rotation_sweep`, the
+    wishlist ⚠rot flag and `rotation_risk`, so 'when does this rotate' is computed one
+    way everywhere."""
+    override = _SET_ROTATION_OVERRIDE.get((set_code or "").strip().upper())
+    if override:
+        return override
     try:
         return int((released or "")[:4]) + years
     except (ValueError, TypeError):
         return None
+
+
+def rotation_risk(released, years=3, set_code=""):
+    """True if a card is past ~`years` of Standard life — so a still-`standard`-marked
+    pick may have rotated (stale pool) or rotates soon. Routed through `rotation_year`
+    so an announced long-legality set (Foundations) can't be false-flagged. Empty or
+    unparseable `released` → False (graceful before a pool rebuild captures the column)."""
+    import datetime
+    yr = rotation_year(released, years, set_code)
+    return bool(yr) and yr <= datetime.date.today().year
 
 
 def _pool_rotation_index():
@@ -2368,7 +2461,7 @@ def rotation_sweep(fmt="standard", years=3, within=2):
             released, legals, setc = info
             if fmt and legals and fmt not in legals:
                 continue  # not legal in this format anyway — it can't "rotate out" of it
-            rotates = rotation_year(released, years)
+            rotates = rotation_year(released, years, setc)
             if rotates is None:
                 continue  # no usable release date — can't place it on the timeline
             if rotates > this_year + within:
@@ -2615,7 +2708,7 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
             hi_reuse.append((name, fits))
         picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(),
                       "owned": h, "decks": fits, "score": score, "matches": shared,
-                      "rotates": rotation_risk(r.get("Released") or "")})
+                      "rotates": rotation_risk(r.get("Released") or "", set_code=r.get("Set Code") or "")})
 
     res.update(ok=True, colors=deck_colors,
                themes=sorted(theme_w.items(), key=lambda kv: -kv[1])[:6],
@@ -3639,6 +3732,63 @@ def _cards_after_swap(cards, cut, add, add_printing):
     return out
 
 
+# Section comments a swap can INHERIT and thereby falsify. The add takes the cut's line
+# slot, so it lands under whatever `# ...` header preceded the cut — which is how
+# Broodguard Elite (a counter battery) ended up filed under `# Card advantage`, the
+# section Kiora had occupied. Harmless to the tooling, but the file then lies to the
+# next reader, and these files are read far more often than they're parsed.
+#
+# Only sections whose meaning is UNAMBIGUOUS are checked. "# Counter DOUBLERS" means
+# +1/+1 counters, not counterspells, and "# Threats" / "# Creatures" / "# Payoff" are
+# too broad to contradict — a false warning on every swap would train the reader to
+# ignore the real ones.
+_SECTION_EXPECTATIONS = [
+    (re.compile(r"card advantage|card draw", re.I), {"Card advantage"}),
+    (re.compile(r"\bremoval\b|\binteraction\b|counterspell", re.I),
+     {"Removal (spot)", "Sweeper", "Counter"}),
+    (re.compile(r"\bramp\b|\bfixing\b|\bdorks?\b", re.I), {"Ramp / fixing"}),
+]
+
+
+def section_mismatch(lines, idx, add_name, carddata):
+    """A warning string when the card now sitting at `lines[idx]` doesn't do what its
+    enclosing `# section` comment claims, else None. Advisory only — it never edits the
+    file, and it stays silent for ambiguous or absent section headers."""
+    header = None
+    for j in range(idx - 1, -1, -1):
+        ln = lines[j].strip()
+        if _card_line_name(lines[j]):
+            continue                      # another card in the same section
+        if ln.startswith("#:") or ln.startswith("#~") or not ln:
+            continue                      # metadata / flex / blank
+        if ln.startswith("#"):
+            header = ln.lstrip("# ").strip()
+            break
+    if not header:
+        return None
+    cd = carddata.get((add_name or "").strip().lower())
+    if not cd:
+        return None
+    roles = classify_roles(cd.get("text") or "")
+    for rx, expected in _SECTION_EXPECTATIONS:
+        if not rx.search(header):
+            continue
+        if roles & expected:
+            return None
+        if roles:
+            # High confidence: we know what the card does, and it isn't this.
+            return (f"{add_name} now sits under `# {header}` (inherited from the cut "
+                    f"card's slot) but classifies as {', '.join(sorted(roles))} — move "
+                    f"the line or retitle the section so the file doesn't mislead.")
+        # Low confidence: the classifier found NO role. This session established that
+        # "no role" often means a lexicon gap rather than a weak card, so this is
+        # phrased as a prompt to look, not as an assertion that the card is misfiled.
+        return (f"{add_name} now sits under `# {header}` (inherited from the cut card's "
+                f"slot); nothing in its text matched a functional role, so verify the "
+                f"section still describes it.")
+    return None
+
+
 def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
     """Apply the swap to raw file lines: -1 copy of `cut` (removed if it was a
     singleton, else decremented) with the `add` line taking its slot; optionally
@@ -3830,6 +3980,15 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
           f"(backup: {os.path.basename(bak)}).")
     if flex_entry is not None:
         print("Removed the consumed flex line.")
+    # The add inherits the cut's line slot, and therefore the cut's `# section` comment.
+    # Warn when that makes the file lie (advisory — the swap is already written, and
+    # moving a line is a human editorial call, not something to do automatically).
+    ai = next((i for i, ln in enumerate(new_lines)
+               if (_card_line_name(ln) or "").lower() == add.strip().lower()), None)
+    if ai is not None:
+        warn = section_mismatch(new_lines, ai, add.strip(), load_card_data())
+        if warn:
+            print(f"  ⚠ section comment: {warn}")
     return 0
 
 
@@ -4122,6 +4281,8 @@ def rank_cut_candidates(d):
         tribal = sum(sub_count.get(st, 0) for st in subs)  # includes own copies
         cost, mv = (mana.get(nl) or (None, None))
         ctx = context_flags(text, cost)
+        # Cost-as-upside: does this card's 'drawback' actually feed THIS deck?
+        upside = cost_upside_flags(text, central)
         sig_hit = bool(set(tags) & signature)          # shares the deck's protected spine
         is_int = bool(set(roles) & _INTERACTION_ROLES)  # removal / sweeper / counter
 
@@ -4165,7 +4326,8 @@ def rank_cut_candidates(d):
             reasons.append(f"on-theme but low power (~{power:.1f})")
         if uniq <= 1.5 and not sig_hit:
             reasons.append("generic ability — trips broad synergy checks")
-        rows.append((keep, n, mv, sorted(roles), fit, reasons, ctx, text, is_int, power, uniq))
+        rows.append((keep, n, mv, sorted(roles), fit, reasons, ctx, text, is_int, power,
+                     uniq, upside))
 
     rows.sort(key=lambda r: (r[0], r[1].lower()))
     return rows, central, prot_present, deck_int
@@ -4200,7 +4362,7 @@ def cmd_cuts(args):
               f"⚠interaction are your removal/counters; cutting them lowers resilience.")
     print(f"  {'Card':30} {'MV':>3}  {'Fit':>4}  {'Pw':>3}  {'Uq':>3}  Roles / why-cuttable")
     print("-" * 82)
-    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq in rows[:limit]:
+    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq, upside in rows[:limit]:
         mvs = str(mv) if mv is not None else "?"
         tail = ", ".join(roles) if roles else ("; ".join(reasons) if reasons else "—")
         low_pow = [r for r in reasons if r.startswith("on-theme but low power")]
@@ -4213,6 +4375,10 @@ def cmd_cuts(args):
             tail += f"   ⚠ context: {'/'.join(ctx)}"
         if is_int:
             tail += f"   ⚠interaction (deck runs {deck_int})"
+        # A card whose COST this deck turns into an upside is easy to mis-cut: every
+        # model here grades it in isolation, where the cost reads as a drawback.
+        if upside:
+            tail += f"   ⚡cost-as-upside HERE ({upside[0]})"
         print(f"  {n[:30]:30} {mvs:>3}  {fit:>4}  {power:>3.0f}  {uniq:>3.0f}  {tail}")
 
     # Surface the actual oracle text so a cut is graded from what the card DOES,
@@ -4221,10 +4387,12 @@ def cmd_cuts(args):
     text_n = args.limit if getattr(args, "limit", 0) and args.limit > 0 else min(12, len(rows))
     print(f"\n── Oracle text of the top {min(text_n, len(rows))} cut candidates "
           f"(grade from THIS, not the label) ──")
-    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq in rows[:text_n]:
+    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq, upside in rows[:text_n]:
         warn = f"   ⚠ context: {'/'.join(ctx)} — value depends on this deck" if ctx else ""
         if is_int:
             warn += f"   ⚠interaction — 1 of the deck's {deck_int}"
+        for u in upside:
+            warn += f"\n    ⚡ cost-as-upside in THIS deck: {u}"
         print(f"\n• {n}{warn}")
         for para in (text or "(no oracle text on file)").split("\n"):
             for line in (textwrap.wrap(para, width=86) or [""]):
@@ -5023,6 +5191,7 @@ def cmd_suggest_homes(args):
                 if e and e[1] is not None:
                     d_mvs += [e[1]] * q
         shared = sorted(ctags & _central_themes(theme_w))
+        shared = _drop_cost_themes(shared, cards, carddata)
         if not shared:
             continue
         deck_avg_mv = sum(d_mvs) / len(d_mvs) if d_mvs else 0.0

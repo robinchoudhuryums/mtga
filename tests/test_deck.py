@@ -124,6 +124,103 @@ class TestCoverageNetIsSuperset:
             assert pat in deck._CA_CUE_PATS, pat.pattern
 
 
+class TestRotationOverride:
+    """A reprint inherits the newest printing's date, so a card reprinted into a set with
+    an announced LONG Standard legality read as rotating in three years."""
+
+    def test_foundations_uses_its_announced_window(self):
+        # Genesis Wave (FDN, 2024-11-15): 2029, not 2027.
+        assert deck.rotation_year("2024-11-15", set_code="FDN") == 2029
+        assert deck.rotation_risk("2024-11-15", set_code="FDN") is False
+
+    def test_ordinary_set_still_uses_release_plus_three(self):
+        assert deck.rotation_year("2024-02-09", set_code="MKM") == 2027
+        assert deck.rotation_year("2023-09-08", set_code="WOE") == 2026
+
+    def test_blank_release_is_graceful(self):
+        assert deck.rotation_year("") is None
+        assert deck.rotation_risk("") is False
+
+    def test_risk_is_calendar_year_based(self):
+        # Rotation happens at a fall rotation, not on a card's 3rd birthday: a 2023 set
+        # rotates during 2026, so it is at risk for all of 2026.
+        import datetime
+        y = datetime.date.today().year
+        assert deck.rotation_risk(f"{y - 3}-09-01") is True
+        assert deck.rotation_risk(f"{y - 1}-09-01") is False
+
+
+class TestCostAsUpside:
+    def test_kicker_land_bounce_flags_in_a_landfall_deck(self):
+        text = ("Kicker—Return a land you control to its owner's hand. Target creature "
+                "you control deals damage equal to its power to target creature.")
+        assert deck.cost_upside_flags(text, {"landfall", "counters"})
+
+    def test_same_card_is_silent_without_the_theme(self):
+        text = "Kicker—Return a land you control to its owner's hand."
+        assert deck.cost_upside_flags(text, {"lifegain", "flying"}) == []
+
+    def test_leaves_play_trigger_flags_in_a_counters_deck(self):
+        text = ("This creature enters with X +1/+1 counters on it. When this creature "
+                "leaves the battlefield, put its counters on target creature you control.")
+        assert deck.cost_upside_flags(text, {"counters"})
+
+    def test_plain_card_never_flags(self):
+        assert deck.cost_upside_flags("Flying. Vigilance.", {"counters", "landfall"}) == []
+
+
+class TestCostThemes:
+    """`graveyard` is a benefit only where the deck pays it off; elsewhere it's a cost."""
+    CD = {
+        "escape artist": {"type": "Creature", "colors": "U",
+                          "text": "Escape—{2}{U}, Exile four other cards from your graveyard."},
+        "vanilla": {"type": "Creature", "colors": "G", "text": "Flying."},
+    }
+
+    def test_theme_dropped_without_payoffs(self):
+        cards = [(1, "Vanilla", "", "")]
+        assert deck._drop_cost_themes(["graveyard", "counters"], cards, self.CD) == ["counters"]
+
+    def test_theme_kept_with_enough_payoffs(self):
+        cards = [(2, "Escape Artist", "", "")]
+        assert "graveyard" in deck._drop_cost_themes(["graveyard"], cards, self.CD)
+
+    def test_non_cost_themes_pass_through(self):
+        cards = [(1, "Vanilla", "", "")]
+        assert deck._drop_cost_themes(["counters", "landfall"], cards, self.CD) == \
+            ["counters", "landfall"]
+
+
+class TestSectionMismatch:
+    CD = {
+        "broodguard elite": {"type": "Creature", "colors": "G",
+                             "text": "This creature enters with X +1/+1 counters on it."},
+        "divination": {"type": "Sorcery", "colors": "U", "text": "Draw two cards."},
+        "shock": {"type": "Instant", "colors": "R", "text": "Shock deals 2 damage to any target."},
+    }
+
+    def test_wrong_section_warns(self):
+        lines = ["Deck", "# Card advantage", "1 Shock (M21) 159"]
+        assert "Card advantage" in (deck.section_mismatch(lines, 2, "Shock", self.CD) or "")
+
+    def test_matching_section_is_silent(self):
+        lines = ["Deck", "# Card advantage", "1 Divination (M21) 56"]
+        assert deck.section_mismatch(lines, 2, "Divination", self.CD) is None
+
+    def test_ambiguous_section_is_silent(self):
+        # "Counter DOUBLERS" means +1/+1 counters, not counterspells.
+        lines = ["Deck", "# Counter DOUBLERS — the engine", "1 Broodguard Elite (EOE) 175"]
+        assert deck.section_mismatch(lines, 2, "Broodguard Elite", self.CD) is None
+
+    def test_no_header_is_silent(self):
+        assert deck.section_mismatch(["Deck", "1 Shock (M21) 159"], 1, "Shock", self.CD) is None
+
+    def test_unclassified_card_gets_the_softer_wording(self):
+        lines = ["Deck", "# Card advantage", "1 Broodguard Elite (EOE) 175"]
+        msg = deck.section_mismatch(lines, 2, "Broodguard Elite", self.CD) or ""
+        assert "verify" in msg  # a prompt, not an assertion that it's misfiled
+
+
 class TestProtectionAxis:
     def test_real_protection_detected(self):
         for text in ("Enchanted creature has ward {2}.",
