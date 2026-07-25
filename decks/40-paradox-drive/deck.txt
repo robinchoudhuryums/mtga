@@ -5,9 +5,12 @@
 #: archetype: game-ending X-spell (Finale of Revelation / Doppelgang / Mind Spring), with
 #: archetype: Taigam copying the payoff and Paradox Surveyor smoothing land/X-spell draws.
 #: archetype: Built to be DISTINCT from the Simic counters decks (04 Quantum Realm) and the
-#: archetype: Temur Fractals/counters ramp deck (30 Fractalandtastic): this wins TALL with
-#: archetype: one huge spell + card advantage, NOT a wide +1/+1-counter board — so it
-#: archetype: deliberately skips the Fractal / counter-doubler package they own.
+#: archetype: Temur Fractals/counters ramp deck (30 Fractalandtastic): this wins with one
+#: archetype: huge SPELL + card advantage, NOT a +1/+1-counter board — so it deliberately
+#: archetype: skips the Fractal / counter-doubler package. The counter-doubler build lives
+#: archetype: in the sibling variant 40a Exponential Drive, which shares this ramp shell
+#: archetype: but wins through one exponentially doubled creature instead. Keep them
+#: archetype: apart: 40 holds up counterspells, 40a commits a threat on turn 2-3.
 #: tier: A — Simic ramp-control (PROVISIONAL — confirm per the rubric). Metrics floor is A:
 #: tier: interaction 10 (6 hard counters + Syncopate + ~4 removal/tempo) + card-advantage 5
 #: tier: on a tight 2.27 curve = a strong resilience axis, coherent control engine. Held from
@@ -17,7 +20,7 @@
 #: notes: DISTINCTIVENESS is the design goal — see archetype. The counter-Hydra finishers
 #: notes: (Wildwood Scourge, The Goose Mother) are kept as fungible X-payoff FINISHERS, not
 #: notes: as a counters engine; if `counters` reads as a central theme, trim them for more
-#: notes: non-counter X-spells to stay clear of decks 04/30. Craft targets: Paradox
+#: notes: non-counter X-spells to stay clear of decks 04/30/40a. Craft targets: Paradox
 #: notes: Surveyor, Mind Spring, Doppelgang, Finale of Revelation.
 
 Deck

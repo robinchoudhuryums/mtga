@@ -1,0 +1,85 @@
+#: name: Exponential Drive
+#: format: Standard
+#: colors: GU
+#: archetype: Simic (G/U) landfall counters-MIDRANGE — the TALL variant of 40 Paradox
+#: archetype: Drive. Shares 40's Simic ramp/lands shell, but replaces the draw-go
+#: archetype: counterspell suite and the big X-spell finish with a single exponentially
+#: archetype: growing threat: a landfall counter-carrier (Mossborn Hydra, Wildwood
+#: archetype: Scourge, The Goose Mother) multiplied by the counter-DOUBLERS (Bristly
+#: archetype: Bill, Zimone, Growth Curve, Biogenic Upgrade, Sage of the Fang), pushed
+#: archetype: through with trample (Emil, Greenbelt Guardian) and finished by a P/T
+#: archetype: doubler (Tifa's Limit Break, Epic Fight).
+#: archetype: DISTINCTNESS: this is the roster's only TALL counters deck. 04 Quantum
+#: archetype: Realm is a WIDE Simic counters-value board (27 creatures, Insect tokens);
+#: archetype: 30 Fractalandtastic explicitly "goes wide" on Fractal tokens in Temur. This
+#: archetype: one runs NO creature-token ENGINE on purpose — every counter is aimed at one
+#: archetype: body. (Emil is here for its trample line, not its Fractal mana sink.)
+#: notes: TIER: ungraded — needs a human call per the CLAUDE.md rubric (run
+#: notes: `deck.py tier 40a`). This is the TALL sibling of 40; keep the two apart by
+#: notes: rule: 40 holds up counterspells and wins with one huge X-spell, 40a commits a
+#: notes: threat on turn 2-3 and doubles it. Do NOT migrate the doubler package back
+#: notes: into 40 — the two plans want the same mana on the same turns.
+#: notes: Aspirational WIP. Craft targets (10 — 1 mythic, 1 rare, 8 uncommon):
+#: notes: Mossborn Hydra (M-tier payoff, the centerpiece), Bristly Bill Spine Sower,
+#: notes: Biogenic Upgrade, Sage of the Fang, Seedship Agrarian, Hemosymbic Mite,
+#: notes: Tifa's Limit Break, Greenbelt Guardian, Grappling Kraken, Tam Observant
+#: notes: Sequencer. Zimone / Growth Curve / Emil are OWNED singles also run in deck 30
+#: notes: — Arena copies are shared across decks, so no craft is needed for them.
+#: protect: Mossborn Hydra; Bristly Bill, Spine Sower; Zimone, Paradox Sculptor; Tifa's Limit Break
+
+Deck
+# Ramp / fixing / lands-matter
+1 Bloom Tender (ECL) 166
+1 Druid of the Cowl (M19) 177
+1 Environmental Scientist (SOS) 147
+1 Great Divide Guide (TLA) 181
+1 Mona Lisa, Science Geek (TMT) 123
+1 Seedship Agrarian (EOE) 204
+1 Tam, Observant Sequencer // Deep Sight (SOS) 237
+1 Emeritus of Abundance (SOS) 145
+
+# Counter DOUBLERS — the engine
+1 Bristly Bill, Spine Sower (OTJ) 157
+1 Zimone, Paradox Sculptor (FDN) 126
+1 Growth Curve (SOS) 193
+1 Biogenic Upgrade (FDN) 553
+1 Sage of the Fang (TDM) 155
+1 Emil, Vastlands Roamer (SOS) 146
+
+# Threats — the one body the counters go on
+1 Mossborn Hydra (FDN) 107
+1 Wildwood Scourge (FDN) 236
+1 The Goose Mother (WOE) 204
+1 Greenbelt Guardian (DFT) 164
+1 Hemosymbic Mite (EOE) 190
+1 Bold Biochemist (MSH) 48
+1 Wan Shi Tong, Librarian (TLA) 78
+
+# Finishers / pump
+1 Tifa's Limit Break (FIN) 207
+1 Epic Fight (MSH) 166
+1 Chelonian Tackle (SOS) 142
+
+# Interaction
+1 Grappling Kraken (FDN) 39
+1 Floodpits Drowner (DSK) 59
+1 Broken Wings (FDN) 214
+1 Unforgiving Aim (ECL) 200
+1 Essence Scatter (SOS) 47
+1 Syncopate (FIN) 80
+
+# Card advantage
+1 Kiora, the Rising Tide (FDN) 45
+1 Mindspring Merfolk (DFT) 51
+1 Portent of Calamity (BLB) 66
+1 Ignis Scientia (FIN) 227
+
+# Lands — 26, Simic; land count pushed up for the landfall package
+1 Breeding Pool (EOE) 251
+1 Willowrush Verge (DFT) 270
+1 Dreamroot Cascade (SOS) 254
+1 Thornwood Falls (FDN) 269
+1 Meditation Pools (TLA) 272
+1 Agna Qel'a (TLA) 264
+11 Forest (MSH) 295
+9 Island (MSH) 289
