@@ -106,5 +106,46 @@ class TestSeedPowerBonuses:
                        "Destroy target permanent. Draw two cards.")
         assert 0.0 <= vanilla < meteor <= bomb <= 10.0
 
+    def test_wildcard_letter_rarity_matches_the_word(self):
+        # deck.rank_cut_candidates / deck._card_power pass load_rarities() values, which
+        # are Arena wildcard LETTERS. A letter used to miss _SEED_RARITY and default to
+        # 2.0, seeding every rare/mythic as an uncommon (audit F-01).
+        for letter, word in (("M", "Mythic"), ("R", "Rare"),
+                             ("U", "Uncommon"), ("C", "Common")):
+            assert self._p(letter, "Creature — Bear", "") == self._p(word, "Creature — Bear", "")
+
+    def test_mythic_floor_outranks_common_floor(self):
+        assert self._p("M", "Creature — Bear", "") > self._p("C", "Creature — Bear", "")
+
+    def test_unknown_rarity_falls_back_to_neutral(self):
+        # '?' (rarity unresolved) and a blank cell must both take the neutral default,
+        # not a wrong floor.
+        neutral = self._p("", "Creature — Bear", "")
+        assert self._p("?", "Creature — Bear", "") == neutral
+        assert self._p("Nonsense", "Creature — Bear", "") == neutral
+
     def test_rot_penalty_bounded(self):
         assert 0 < wishlist._ROT_PENALTY <= 2.0
+
+
+class TestConditionalPower:
+    """A card whose power scales with the DECK can't be priced by a rarity+role seed
+    graded in isolation — every Power this session had to hand-correct was one of these
+    (Repulsive Mutation, Genesis Wave, Mona Lisa, Procrastinate)."""
+
+    def test_x_cost_is_conditional(self):
+        assert wishlist.is_conditional_power(
+            {"Card Text": "Counter up to one target spell unless its controller pays "
+                          "mana equal to the greatest power among creatures you control.",
+             "Mana Cost": "{X}{G}{U}"})
+
+    def test_kicker_landfall_and_equal_to_are_conditional(self):
+        for text in ("Kicker—Return a land you control to its owner's hand.",
+                     "Landfall — Whenever a land you control enters, draw a card.",
+                     "Draw cards equal to the greatest power among creatures you control.",
+                     "This creature gets +1/+1 for each Elf you control."):
+            assert wishlist.is_conditional_power({"Card Text": text, "Mana Cost": "{2}{G}"}), text
+
+    def test_plain_cards_are_not_conditional(self):
+        for text in ("Destroy target creature.", "Draw two cards.", "Flying. Vigilance."):
+            assert not wishlist.is_conditional_power({"Card Text": text, "Mana Cost": "{1}{B}"}), text

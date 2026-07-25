@@ -197,7 +197,10 @@ def collect():
             "30": (_today - datetime.timedelta(days=30)).isoformat()}
 
     decks, buildable = [], 0
-    for d in deckmod.discover_decks():
+    # Roster-wide page, so it shows the ROSTER: a `#: status: example` placeholder is
+    # excluded here exactly as it is from `deck.py audit`, whose scorer this shares —
+    # otherwise the triage table leads with the same permanent false positives (F-06).
+    for d in deckmod.roster_decks():
         meta, cards = deckmod.parse_deck_file(d["path"])
         need, total = {}, 0
         for q, n, s, c in cards:
@@ -301,8 +304,14 @@ def collect():
 
 # --------------------------------------------------------------------------- #
 # Rendering — a single self-contained page. Data is embedded as JSON and drawn
-# client-side; all card text goes into the DOM via textContent, so no field can
-# inject markup. "<" in the JSON is escaped so it can't close the <script> block.
+# client-side. Two DIFFERENT escaping rules apply, and the difference matters:
+#   * `el(tag, cls, txt)` and `preOf()` set .textContent — inherently inject-proof.
+#   * the ~30 `innerHTML` sites build markup by concatenation, so every interpolated
+#     value MUST go through `esc()` (escapes & < > "), including inside a quoted
+#     attribute. That is the rule to keep when editing them; this comment used to
+#     claim the page was textContent-only, which would have made an unescaped
+#     `innerHTML` interpolation look safe (broad-scan F-15).
+# "<" in the JSON is escaped so it can't close the <script> block.
 # --------------------------------------------------------------------------- #
 TEMPLATE = r"""<!DOCTYPE html>
 <html lang="en">
@@ -1634,8 +1643,18 @@ renderWishlist(); renderSim();
 
 // ---------- stale-deck compare (preserved) ----------
 (function(){
-  const SECTION = /^(sideboard|commander|companion|maybeboard)\b/i;
-  function parseLine(raw){ const line = raw.trim(); if (!line) return null; const m = line.match(/^(\d+)\s+(.+?)(?:\s+\(([^)]+)\)(?:\s+\S+)?)?$/); if (!m) return null; const name = m[2].trim(); if (!name) return null; return {nl:name.toLowerCase(), disp:name, qty:parseInt(m[1],10)}; }
+  // Kept deliberately in lockstep with the PYTHON side (import_arena.LINE_RE / SECTIONS,
+  // which `deck.py verify` uses), because the docs promise this panel applies "the same
+  // rules". It had drifted on three points, so the browser and the CLI could return
+  // different sync verdicts for the same paste (broad-scan F-17): the `4x Name` form was
+  // rejected, `#` / `//` comment lines were parsed as cards, and `about` was missing from
+  // the section list. Any change here needs the same change in import_arena.py.
+  const SECTION = /^(sideboard|commander|companion|maybeboard|about)\b/i;
+  function parseLine(raw){ const line = raw.trim(); if (!line) return null;
+    if (line.startsWith('#') || line.startsWith('//')) return null;   // comment, not a card
+    const m = line.match(/^(\d+)\s*[xX]?\s+(.+?)(?:\s+\(([^)]+)\)(?:\s+\S+)?)?$/);
+    if (!m) return null; const name = m[2].trim(); if (!name) return null;
+    return {nl:name.toLowerCase(), disp:name, qty:parseInt(m[1],10)}; }
   function splitDecks(text){ const segs = []; let cur = null, started = false; for (const ln of text.split(/\r?\n/)){ const t = ln.trim(); if (/^deck\s*$/i.test(t)){ cur = []; segs.push(cur); started = true; continue; } if (SECTION.test(t)) continue; if (!started){ cur = []; segs.push(cur); started = true; } cur.push(ln); } return segs.filter(s => s.length); }
   function multiset(lines){ const m = {}; for (const ln of lines){ const p = parseLine(ln); if (!p) continue; if (m[p.nl]) m[p.nl][1] += p.qty; else m[p.nl] = [p.disp, p.qty]; } return m; }
   function diffSets(pasted, stored){ const names = new Set([...Object.keys(pasted), ...Object.keys(stored)]); let added = 0, removed = 0; const diffs = []; for (const nl of names){ const p = pasted[nl]?pasted[nl][1]:0, s = stored[nl]?stored[nl][1]:0; const disp = (pasted[nl]&&pasted[nl][0]) || (stored[nl]&&stored[nl][0]) || nl; if (p > s){ added += p-s; diffs.push({sign:'+', qty:p-s, name:disp}); } else if (s > p){ removed += s-p; diffs.push({sign:'-', qty:s-p, name:disp}); } } diffs.sort((a,b) => a.sign===b.sign ? a.name.localeCompare(b.name) : (a.sign==='-'?-1:1)); return {added, removed, diffs}; }

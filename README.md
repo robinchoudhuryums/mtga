@@ -100,9 +100,17 @@ has been built — **Scryfall's authoritative keyword list** mapped to
 deck-building themes (Surveil → `surveil; graveyard`, Convoke → `convoke;
 go-wide; ramp`, Escape → `graveyard; recursion`, …). Using Scryfall's per-card
 keywords means real-keyword coverage is complete and maintained, not a hand-kept
-list; a small `FLAVOR_KEYWORDS` denylist drops Universe-Beyond flavor ability
-names (Firaga, Wave Cannon, …) that Scryfall also reports as keywords, so they
-don't pollute the tags. Fills only blank cells by default; **`--merge`** adds
+list; a `FLAVOR_KEYWORDS` denylist drops card-*unique* Universe-Beyond flavor
+ability names (Firaga, Wave Cannon, and the Marvel signature moves — Trick Arrows,
+Radar Sense, Technopathy, …) that Scryfall also reports as keywords, so they don't
+pollute the tags. The denylist is guarded in both directions: `check_keywords.py`
+flags a new set's keyword that isn't indexed yet, and its `flavor_overreach()`
+flags a denylisted word that shows up on several cards — i.e. a *real* mechanic
+being suppressed. A recurring mechanic that just isn't themed yet (Vivid, Opus,
+Jump, …) belongs in `scripts/keyword_baseline.txt`, not the denylist.
+Note the writer emits only the canonical 8 library columns, so point it at
+`card-library.csv` only — it refuses any other CSV; refresh the pool's tags with
+`build_pool.py --all`. Fills only blank cells by default; **`--merge`** adds
 newly-derived tags to non-blank cells while KEEPING existing/hand-curated ones (the
 safe refresh mode), and `--force` REPLACES every cell (use it only for a deliberate
 destructive regenerate). It also warns when `card-mana.csv` is older than the
@@ -336,6 +344,7 @@ python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~
 python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
 pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export against the stored deck
+pbpaste | python3 scripts/deck.py sync        # reconcile MANY decks from one Arena paste (--apply to write)
 python3 scripts/deck.py text 1a              # full oracle text of every card (read before grading)
 python3 scripts/deck.py suggest 1a --unowned --full  # picks WITH full text + keywords + flags
 python3 scripts/deck.py suggest-homes "Crib Swap"    # which decks a card fits, with a fit-strength label
@@ -345,6 +354,7 @@ python3 scripts/deck.py preflight 1a         # one-call verify: legal + owned + 
 python3 scripts/deck.py quality 1a --json    # deck-quality vector; --vs FILE diffs a before-snapshot
 python3 scripts/deck.py tier 1a              # claimed #: tier: vs the tier its metrics support
 python3 scripts/deck.py tier 1a --to A       # gap to A + owned fillers AND craft targets for the short axis
+python3 scripts/deck.py tier 1a --audit-rationale  # is the #: tier: argument still true? (cut cards, stale figures)
 python3 scripts/deck.py redundancy 1a        # competitive consistency: virtual (functional) copies first, duplicates as fallback
 python3 scripts/deck.py history 1a           # the deck's git change history (its changelog); --since YYYY-MM-DD adds the net card change since then
 python3 scripts/deck.py quality 1a --at HASH # compare this deck's list at a past commit vs now
@@ -373,6 +383,25 @@ add/craft picks respectively, so both sides of a swap are graded from text. The
 keyword line means a named mechanic (Warp, Increment, …) is surfaced explicitly
 rather than skimmed as an ordinary word. `query.py --full` / `pool.py --full` do
 the same for a themed deep-read of your owned library or the whole pool.
+
+`cuts` also marks **`⚡ cost-as-upside`**: a card's additional cost reads as a
+drawback to every model here, because they all grade a card *in isolation* — but in
+the matching deck the same clause is an engine trigger. A kicker that returns a land
+re-triggers landfall; a Warp / "when this leaves the battlefield" clause is what moves
+its counters onto your threat; a sacrifice cost feeds your outlets. The flag fires only
+when the deck's own themes invert the cost, and it never changes the ranking — it tells
+you to read the card in context before cutting it.
+
+`sync` is `verify`'s write half, for many decks at once: pipe an export containing one
+or many `Deck` blocks and it matches each block to its closest stored deck (the same
+auto-match the dashboard's stale-check uses) and **rewrites the drifted files to match
+Arena**. Dry-run by default — `--apply` writes each with a `.bak` and the INV-04
+re-check. Edits are line-level, so an existing card keeps its printing and its place in
+the file and only its quantity changes; the `#:` header, `# Creatures` section comments
+and `#~` flex lines survive. If a block matches two variants nearly equally it's flagged
+**low confidence** and skipped on `--apply` (re-paste that deck alone, or `--force`).
+Before this, spotting drift and repairing it were separate jobs: you read a diff, then
+hand-edited each file.
 
 `verify` reconciles a decklist you've edited in Arena against the repo: pipe or pass
 its **Arena export** (`<qty> <Name> (SET) <#>`) and it reports **identical** or a
@@ -404,13 +433,17 @@ gated so a weighting change can't silently reorder a tuned deck.
 
 Each pick also carries a **`Decks` column** — a cross-deck reuse count of how many
 of your *other* decks the card is *castable* (its identity ⊆ the deck's colors)
-**and** shares a **central** theme with (the deck being analyzed is excluded, so it
-can't inflate its own picks). "Central" means a theme carried by at least a quarter
-of that deck's most-common theme's copies — so a card that merely grazes a deck on
-one incidental tag no longer counts, and the number tracks genuine fit rather than
-any single-tag overlap. It's still a rough value-per-wildcard signal (a craft that
-fits several decks outranks a one-deck sidegrade) — read it as breadth, not curated
-fit. A "High cross-deck reuse" line summarizes the top picks.
+**and** shares a **specific central** theme with (the deck being analyzed is excluded,
+so it can't inflate its own picks). "Central" means a theme carried by at least a
+quarter of that deck's most-common theme's copies; "**specific**" means it isn't one of
+the generic themes nearly every deck shares (`etb`, `tokens`, `counters`, `lifegain`, …)
+or a broad background tribe — unless it's that deck's `#: protect:` build-around spine.
+Centrality alone wasn't enough: it left the count saturated (99% of a deck's picks
+scored ≥3, and the median pick "fit" 31 of 56 other decks), so the column said nothing.
+It's the same gate the wishlist's `use` column applies, so the two breadth signals
+agree. Read it as a rough value-per-wildcard signal (a craft that fits several decks
+outranks a one-deck sidegrade) — breadth, not curated fit. A "High cross-deck reuse"
+line summarizes the top picks.
 
 By default `suggest` also **filters to the deck's `#: format:`** (using the
 `Legalities` column `build_pool.py` writes), so it won't recommend a card you
@@ -451,6 +484,14 @@ tells you where to look. `stats` also prints an **interaction profile**: the raw
 count treats all removal alike, so it breaks interaction down by **speed** (instant
 vs sorcery) and by whether it can answer a **noncreature permanent** (planeswalker /
 enchantment / artifact), flagging "all sorcery-speed" or "no noncreature answer".
+
+`stats` (and `tier`) also report a **protection** count — real ward / hexproof /
+indestructible / protection-from effects, deliberately narrower than the broad
+"Protection / trick" role, which lumps a combat pump in with an actual answer to
+removal. It answers a question nothing else measured: *can this deck protect the
+permanent it wins with?* A **zero** is flagged, naming the `#: protect:`
+build-arounds at risk — an all-in single-threat deck with no ward/hexproof anywhere
+in 60 cards used to look perfectly healthy on every view.
 
 `engines <id>` grades the deck's two-sided **engines**: a synergy tag says "sacrifice"
 is in the deck but not which cards FEED the engine (outlets/fodder) vs PAY IT OFF
@@ -540,6 +581,14 @@ every other plan grades exactly as before. Set the plan with a **`#: plan:
 aggro|control|combo|midrange`** header (else it's read from `#: archetype:` or
 inferred). See the tier **rubric** in [`CLAUDE.md`](CLAUDE.md).
 
+Add **`--audit-rationale`** to check the *argument*, not just the letter. A
+`#: tier:` rationale is prose, so nothing kept it honest as the list changed
+underneath it — it can end up arguing from cards that were cut, or quoting figures
+the deck no longer has. `deck.py tier <id> --audit-rationale` flags both, and
+reports nothing when the rationale is current. It never edits the prose; a stale
+argument is how a defensible letter quietly becomes an indefensible one, so run it
+after any deck edit.
+
 Add **`--to <TIER>`** (e.g. `deck.py tier 30 --to A`) for a **tier-gap diagnostic**:
 it reports the exact measurable work to reach that band's floor ("+3 interaction")
 and lists the owned, on-color, **0-wildcard** cards that fill the short axis, plus a
@@ -572,7 +621,15 @@ answer. Rebuild the data after importing new cards:
 ```
 python3 scripts/build_mana.py          # refresh card-mana.csv from card-library.csv
 python3 scripts/build_mana.py --pool   # also cover card-pool.csv names
+python3 scripts/build_mana.py --allow-shrink   # permit a deliberate narrowing of scope
 ```
+
+Like `build_pool.py`, it **refuses to shrink the file by more than half** — this tool
+defaults to library-only, so a plain rerun over a pool-scoped file would silently discard
+~14k rows (and disable the one-card keyword heuristic, which needs a pool-sized corpus).
+Names the batch endpoint can't match — split and room cards like `Life // Death` — get a
+front-face `/cards/named` fallback, accepted only when the resolved card is the one asked
+for; anything still unmatched is written blank **and reported**, never silently.
 
 ### Gallery — a visual, filterable view of the collection
 
@@ -730,6 +787,16 @@ code-execution console) and prints a loud warning on any non-local bind. Its wri
 endpoints are serialized behind a single lock, so two overlapping requests can't
 lose an edit.
 
+"No auth" still shouldn't mean "any website can drive it", so every request passes a
+small guard: a state-changing request carrying a cross-site `Origin` is rejected
+(**CSRF** — most endpoints were only accidentally safe, because a form post can't set
+`Content-Type: application/json`, but `/api/revert` takes no body at all, so any page
+you visited while the editor was running could have rolled your collection back), and
+while bound to loopback the `Host` header must be a loopback name (**DNS rebinding** —
+otherwise a hostile hostname resolving to 127.0.0.1 can script the editor and read the
+whole collection). Same-origin traffic from the editor's own page, and non-browser
+clients like `curl` that send no `Origin`, are unaffected.
+
 **Every change is safe by construction:** the new rows are written to a temp file
 and run through `validate.py` first; only if that passes is the current CSV backed
 up to a timestamped `.bak` (gitignored) and then atomically replaced. Bad input —
@@ -793,7 +860,9 @@ Import applies Sheets' own formula parsing, which this RAW guard can't cover.)
 
 `python3 scripts/check_all.py` is the project's integrity gate — it verifies the
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
-derived files present, decks parse) plus six **model-sanity checks** that keep the
+derived files present **and still carrying their own columns** — a pool that lost
+its `Rarity`/`Legalities` is a hard failure, not a silent degrade — decks parse)
+plus six **model-sanity checks** that keep the
 grading/ranking models from silently drifting: the **ranking model**
 (`check_rankings.py`), **color parsing** (`check_colors.py` — also a static scan
 banning the naive inline `WUBRG` parse outside `lib.py`), the **DFC ownership-join**
@@ -808,13 +877,14 @@ deck can no longer cast it); **new unindexed card mechanics** (`check_keywords.p
 **theme coverage** — `check_themes.py` flags an owned card whose text plays a theme
 it isn't tagged with (a stale tag distorts every recommendation), summarized to one
 line; and **tier mismatch** — a deck whose claimed `#: tier:` sits ≥2 bands above its
-measurable floor. A SessionStart hook runs the gate (quiet) so drift surfaces
-immediately.
+measurable floor. A SessionStart hook runs the gate (quiet) **and the unit layer** so
+drift in either surfaces immediately; `make verify` runs both before you commit.
 
 A **pytest unit layer** (`tests/`) complements the gate — fast, isolated tests that
 pin the pure helper functions (color/DFC parsing, mana pips, role tally, tier floor,
 engine roles, rotation math, ingest/tagging). It's dev-only: `pip install -r
-requirements-dev.txt` then `pytest` (or `make test-units`); the core tooling and
+requirements-dev.txt` then `pytest` (or `make test-units`, or `make verify` for both
+gates at once — the integrity check alone passes while a unit test is red); the core tooling and
 `check_all.py` stay pure standard library. Both run in CI (`.github/workflows/tests.yml`).
 
 Claude Code slash commands live in `.claude/commands/`:

@@ -317,6 +317,165 @@ def check():
     if not deck._MECHANIC_SUBTHEMES or deck._MECHANIC_SUBTHEMES & deck.GENERIC_THEMES:
         errs.append("_MECHANIC_SUBTHEMES must be non-empty and disjoint from GENERIC_THEMES.")
 
+    # (13) END-TO-END WIRING anchors. Every check above — here and in the sibling gates —
+    #      exercises a PURE FUNCTION in isolation. That is why F-01 shipped past eleven
+    #      green checks: `_cuts_power_adj` was provably bounded, monotonic and
+    #      neutral-centred, but its CALLER handed the power seed an Arena wildcard letter
+    #      where a rarity word was expected, so every rare and mythic scored as an
+    #      uncommon and real bombs sorted to the top of the cut list. A model can be
+    #      correct in every part and still be wired up wrong. These anchors therefore run
+    #      the real ENTRY POINTS over a synthetic, fully-controlled deck + pool and assert
+    #      on the OUTPUT ORDER, which is what a user actually sees.
+    errs += _wiring_flags()
+
+    return errs
+
+
+# --------------------------------------------------------------------------- #
+# (13) end-to-end wiring anchors
+# --------------------------------------------------------------------------- #
+_SYN_POOL_HEADER = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
+                    "Set Code", "Collector #", "Rarity", "Legalities", "Released"]
+# A deliberately minimal world: one deck, one theme, and cards that differ ONLY on the
+# axis under test, so an assertion can't pass for the wrong reason.
+#
+# The two bodies below are byte-identical apart from RARITY — same type, same (empty)
+# text, same tribe — which isolates the rarity floor from every other term in the
+# keep-score. An earlier draft used a mythic BOMB with real removal/draw text: it passed
+# even with the F-01 defect reintroduced, because the role credit alone kept it above the
+# fillers. An anchor that cannot fail on the bug it names is worse than no anchor, so the
+# cards are chosen to make the rarity term the ONLY thing that can separate them.
+#
+# The names matter too. `rank_cut_candidates` breaks ties alphabetically, so "Alpha"
+# (mythic) / "Zeta" (common) means a TIE — which is exactly what a broken rarity floor
+# produces — sorts the mythic to the top of the cut list, failing the assertion. Naming
+# them the other way round would make a tie look correct and hide the regression.
+_SYN_CARDS = [
+    # name,                type,                text, tags,     rarity
+    ("Alpha Mythic Body",  "Creature — Wizard",  "",   "Wizard", "Mythic"),
+    ("Zeta Common Body",   "Creature — Wizard",  "",   "Wizard", "Common"),
+    ("Omega Wizard Pick",  "Creature — Wizard",  "",   "Wizard", "Uncommon"),   # pool-only
+    ("Zeta Offtheme Body", "Creature — Bear",    "",   "Bear",   "Common"),     # pool-only
+]
+_SYN_IN_DECK = ("Alpha Mythic Body", "Zeta Common Body")
+
+
+def _syn_world(tmp):
+    """Write a synthetic pool CSV + deck file; return (pool_path, deck_dir)."""
+    import csv as _csv
+    pool = os.path.join(tmp, "pool.csv")
+    with open(pool, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=_SYN_POOL_HEADER)
+        w.writeheader()
+        for i, (n, ty, tx, tags, rar) in enumerate(_SYN_CARDS):
+            w.writerow({"Card Name": n, "Type": ty, "Card Text": tx, "Color(s)": "U",
+                        "Synergies": tags, "Set Code": "SYN", "Collector #": str(i),
+                        "Rarity": rar, "Legalities": "standard", "Released": "2024-01-01"})
+    dpath = os.path.join(tmp, "90-synthetic")
+    os.makedirs(dpath, exist_ok=True)
+    with open(os.path.join(dpath, "deck.txt"), "w", encoding="utf-8") as fh:
+        fh.write("#: name: Synthetic\n#: format: Standard\n#: colors: U\n\n")
+        for n in _SYN_IN_DECK:
+            fh.write(f"1 {n} (SYN) 0\n")
+        fh.write("58 Island\n")
+    return pool, dpath
+
+
+def _wiring_flags():
+    """Run the real ranking ENTRY POINTS over a synthetic world and assert output order.
+    Distribution-independent (nothing depends on the real collection), and it exercises
+    the row-building glue the pure-function checks can't see."""
+    import tempfile
+    import shutil
+    try:
+        import deck
+    except Exception as e:  # pragma: no cover - import guard
+        return [f"wiring anchors: could not import deck.py ({e})"]
+
+    errs = []
+    tmp = tempfile.mkdtemp(prefix="mtga-wiring-")
+    saved = {k: getattr(deck, k) for k in
+             ("POOL_CSV", "DECKS_DIR", "load_card_data", "load_card_meta", "load_mana",
+              "load_rarities", "load_collection", "load_legalities", "_power_seed")}
+    try:
+        pool, _ = _syn_world(tmp)
+        carddata = {n.lower(): {"name": n, "type": ty, "text": tx, "colors": "U"}
+                    for n, ty, tx, _tg, _r in _SYN_CARDS}
+        cardmeta = {n.lower(): {"colors": {"U"}, "synergies": [t for t in tg.split(";") if t]}
+                    for n, _ty, _tx, tg, _r in _SYN_CARDS}
+        rar = {n.lower(): deck.WC_LETTER[r.lower()] for n, _ty, _tx, _tg, r in _SYN_CARDS}
+        deck.POOL_CSV = pool
+        deck.DECKS_DIR = tmp
+        deck.load_card_data = lambda: dict(carddata)
+        deck.load_card_meta = lambda: dict(cardmeta)
+        deck.load_mana = lambda: {n.lower(): ("{2}{U}", 3) for n, *_ in _SYN_CARDS}
+        deck.load_rarities = lambda: dict(rar)
+        deck.load_legalities = lambda: {n.lower(): {"standard"} for n, *_ in _SYN_CARDS}
+        deck.load_collection = lambda: ({}, {}, {n.lower(): 4 for n, *_ in _SYN_CARDS})
+
+        d = deck.find_deck("90")
+        if d is None:
+            return ["wiring anchors: synthetic deck did not resolve — harness broken, "
+                    "not a product failure."]
+
+        # (13a) `rank_cut_candidates`: a MYTHIC bomb that shares the deck's only theme
+        #       must not be its most-cuttable card. Under F-01 the mythic seeded as an
+        #       uncommon, its power nudge went NEGATIVE, and it outranked vanilla commons
+        #       on the cut list — visible only end-to-end, since the pure power function
+        #       was (and is) correct.
+        rows, _central, _prot, _int = deck.rank_cut_candidates(d)
+        order = [r[1] for r in rows]              # most-cuttable first
+        pw = {r[1]: r[9] for r in rows}
+        if pw.get("Alpha Mythic Body", 0) <= pw.get("Zeta Common Body", 0):
+            errs.append(
+                f"wiring: two IDENTICAL vanilla bodies scored the same power "
+                f"(mythic {pw.get('Alpha Mythic Body')} vs common "
+                f"{pw.get('Zeta Common Body')}) — they differ only in rarity, so the "
+                "rarity floor is not reaching the ranking. deck.py passes "
+                "load_rarities() WILDCARD LETTERS ('M'), which the seed must normalize "
+                "(audit F-01).")
+        if order and order[0] == "Alpha Mythic Body":
+            errs.append(
+                f"wiring: rank_cut_candidates ranks the MYTHIC of two otherwise-identical "
+                f"bodies as the MOST cuttable (order: {order}) — the power co-signal is "
+                "absent from the keep-score, so the tie fell through to alphabetical.")
+
+        # (13b) `suggest_scored`: the off-theme card must not be suggested (the idf theme
+        #       filter still gates the candidate set), and the on-theme, on-color, legal
+        #       one that ISN'T in the deck must be.
+        res = deck.suggest_scored(d, limit=0)
+        names = [p["name"] for p in res.get("picks", [])]
+        if "Zeta Offtheme Body" in names:
+            errs.append("wiring: suggest_scored surfaced an OFF-THEME card — the theme "
+                        "filter is not gating the candidate set.")
+        if res.get("ok") and "Omega Wizard Pick" not in names:
+            errs.append(f"wiring: suggest_scored dropped an on-theme, on-color, "
+                        f"format-legal pick that isn't in the deck (got {names}).")
+
+        # (13c) the SHARED breadth rule is what both models call.
+        fps = [("a", {"U"}, {"Wizard"}), ("b", {"U"}, {"Bear"}), ("c", {"B"}, {"Wizard"})]
+        got = deck.cross_deck_breadth({"U"}, {"Wizard"}, fps)
+        if got != 1:
+            errs.append(f"wiring: cross_deck_breadth counted {got}, expected 1 (castable "
+                        "AND shares a specific theme — 'b' shares none, 'c' is off-color).")
+        try:
+            import wishlist as wl
+            wgot = wl._breadth_of({"U"}, {"Wizard"},
+                                  [("a", {"U"}, {"Wizard"}, {}), ("b", {"U"}, {"Bear"}, {}),
+                                   ("c", {"B"}, {"Wizard"}, {})],
+                                  {"Wizard": 9.0, "Bear": 9.0}, 1.0)
+            if wgot != got:
+                errs.append(f"wiring: wishlist breadth ({wgot}) disagrees with "
+                            f"deck.cross_deck_breadth ({got}) on identical input — the two "
+                            "breadth signals have drifted apart again (audit F-04).")
+        except Exception as e:
+            errs.append(f"wiring: wishlist breadth helper unavailable ({type(e).__name__}: {e})")
+    except Exception as e:  # pragma: no cover - harness guard
+        errs.append(f"wiring anchors errored ({type(e).__name__}: {e})")
+    finally:
+        for k, v in saved.items():
+            setattr(deck, k, v)
+        shutil.rmtree(tmp, ignore_errors=True)
     return errs
 
 

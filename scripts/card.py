@@ -39,16 +39,47 @@ def _front(name):
     return name.split(" // ")[0].strip().lower()
 
 
+def _distinct(rows):
+    """Rows deduped by card NAME, first spelling kept. card-library.csv holds one row per
+    PRINTING, so a card owned in three sets is three rows — counting those as three
+    "cards match" over-reported the ambiguity it was warning about (audit F-14)."""
+    out, seen = [], set()
+    for r in rows:
+        nl = (r.get("Card Name") or "").strip().lower()
+        if nl and nl not in seen:
+            seen.add(nl)
+            out.append(r)
+    return out
+
+
+def _rank(query, rows):
+    """Substring matches, genuinely CLOSEST first. The caller prints "showing the
+    closest", but this used to return whatever came first in CSV order — so
+    `card.py "bolt"` could lead with a card whose name merely contains the query deep
+    inside it (audit F-14). Rank: a name that STARTS with the query, then a word-start
+    match, then the shortest name (the least padded around the query), then
+    alphabetical for stability. Mirrors how `deck.py resolve` / `suggest-homes`
+    disambiguate."""
+    q = query.strip().lower()
+
+    def key(r):
+        n = (r.get("Card Name") or "").strip().lower()
+        return (0 if n.startswith(q) else 1 if re.search(rf"\b{re.escape(q)}", n) else 2,
+                len(n), n)
+    return sorted(rows, key=key)
+
+
 def _find(query, rows):
-    """(best_row, all_substring_matches). Exact (case-insensitive, incl. DFC
-    front) wins; otherwise the substring matches are returned for disambiguation."""
+    """(best_row, distinct_matches). An exact hit (case-insensitive, including a DFC
+    front face) wins outright; otherwise substring matches are ranked closest-first and
+    deduped by name, so both the pick and the "N cards match" count are honest."""
     nl = query.strip().lower()
     exact = [r for r in rows if (r.get("Card Name") or "").strip().lower() == nl
              or _front(r.get("Card Name") or "") == nl]
     if exact:
-        return exact[0], exact
-    subs = [r for r in rows if nl in (r.get("Card Name") or "").lower()]
-    return (subs[0] if subs else None), subs
+        return exact[0], _distinct(exact)
+    subs = _rank(query, [r for r in rows if nl in (r.get("Card Name") or "").lower()])
+    return (subs[0] if subs else None), _distinct(subs)
 
 
 def _decks_using(name):

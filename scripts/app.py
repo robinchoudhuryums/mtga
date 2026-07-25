@@ -61,6 +61,8 @@ except ModuleNotFoundError:
     raise SystemExit(1)
 
 import deck as deckmod
+import scryfall
+from scryfall import ScryfallUnavailable
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, write_rows, atomic_write, backup_path, card_colors
 from validate import validate
 
@@ -86,6 +88,68 @@ def _serialized(fn):
         with _WRITE_LOCK:
             return fn(*a, **k)
     return wrapper
+
+
+# ── Request guard: same-origin + loopback-Host (audit F-10) ─────────────────────
+# This editor has no auth by design (personal, localhost). That is fine for someone
+# who can already reach the port, but it left two browser-driven holes open:
+#
+#   * CSRF. Most endpoints are accidentally safe because `request.get_json(silent=True)`
+#     returns None for the content types an HTML form can send, so they 400. But
+#     `/api/revert` reads no body at all — a plain cross-origin
+#     `<form method="POST" action="http://127.0.0.1:5000/api/revert">` on ANY page
+#     visited while the editor is running would roll the collection back.
+#   * DNS rebinding. With no Host check, a hostile name resolving to 127.0.0.1 can
+#     script the editor (and read the whole collection) from a page the user visits.
+#
+# Both are closed here rather than per-endpoint, so a future route can't forget.
+_LOCAL_HOSTNAMES = {"127.0.0.1", "localhost", "::1"}
+_SAFE_METHODS = {"GET", "HEAD", "OPTIONS"}
+_bind_host = "127.0.0.1"   # set by main(); a deliberate non-local bind relaxes the Host check
+
+
+def _hostname_of(netloc):
+    """Bare hostname from a `host[:port]` / `[v6]:port` string ('' if unparseable)."""
+    return (urllib.parse.urlsplit("//" + (netloc or "")).hostname or "").lower()
+
+
+def _authority(netloc):
+    """(hostname, port) from a `host[:port]` string — the comparable identity of an
+    origin. Split out so the same-origin test reads as one comparison."""
+    parts = urllib.parse.urlsplit("//" + (netloc or ""))
+    return ((parts.hostname or "").lower(), parts.port)
+
+
+def _same_origin(origin, host):
+    """True when an `Origin` header denotes the same host:port we're serving on.
+    `Origin: null` (a file:// or sandboxed page) parses to an empty authority and is
+    correctly rejected."""
+    o = urllib.parse.urlsplit(origin or "")
+    return bool(o.hostname) and _authority(o.netloc) == _authority(host)
+
+
+@app.before_request
+def _guard_request():
+    # (1) Host must be a loopback name when we're bound to loopback. A rebinding
+    #     attack arrives with an attacker-controlled Host, so this rejects it while
+    #     leaving normal 127.0.0.1 / localhost use untouched.
+    if _hostname_of(_bind_host) in _LOCAL_HOSTNAMES:
+        if _hostname_of(request.host) not in _LOCAL_HOSTNAMES:
+            return jsonify(ok=False, errors=[
+                f"Refused: unexpected Host {request.host!r}. This editor only serves "
+                "loopback hosts (127.0.0.1 / localhost) — see DNS-rebinding note in "
+                "app.py."]), 403
+    # (2) A state-changing request must be same-origin. Browsers send `Origin` on every
+    #     cross-site POST, including form posts, and `Origin: null` from a file:// or
+    #     sandboxed page — both fail this check. A request with NO Origin at all is a
+    #     non-browser client (curl, a script), which CSRF doesn't apply to.
+    if request.method not in _SAFE_METHODS:
+        origin = request.headers.get("Origin")
+        if origin is not None and not _same_origin(origin, request.host):
+            return jsonify(ok=False, errors=[
+                f"Refused: cross-origin {request.method} from {origin!r}. Use the editor "
+                "in its own tab; another site cannot post to it."]), 403
+    return None
 
 
 def load_manifest():
@@ -194,6 +258,52 @@ def _mana_has(name):
                    for r in csv.DictReader(fh))
 
 
+def _pool_has(name):
+    """True if `name` is a card-pool.csv row (full name or DFC front). A mana row for a
+    POOL card is legitimate even with nothing in the library — `build_mana.py --pool`
+    covers the whole pool — so pruning must never touch one."""
+    pool = os.path.join(REPO_ROOT, "card-pool.csv")
+    if not os.path.exists(pool):
+        return False
+    nl = name.strip().lower()
+    with open(pool, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            n = (r.get("Card Name") or "").strip().lower()
+            if n == nl or n.split(" // ")[0] == nl:
+                return True
+    return False
+
+
+def _prune_mana(name, rows):
+    """Drop `name`'s card-mana.csv row after its LAST library printing was removed.
+
+    `remove()` used to leave the row behind, reasoning that a spare row is harmless
+    (INV-02 only requires library names to be PRESENT in the mana file). True for the
+    invariant, but repeated add/remove cycles accumulate orphans, and a stale row is
+    worse than untidy: `add()` skips writing a mana row when `_mana_has()` is true, so
+    a BLANK row left by an offline add suppresses the real one on a later re-add.
+
+    Two guards keep this conservative — prune only when the name is gone from the
+    library (`rows` is the post-removal set) AND is not a pool card, since a pool-scoped
+    mana file legitimately carries rows no library card references. Returns True if a
+    row was dropped."""
+    nl = name.strip().lower()
+    if any((r.get("Card Name") or "").strip().lower() == nl for r in rows):
+        return False                      # another printing still needs it (INV-02)
+    if not os.path.exists(MANA_CSV) or _pool_has(name):
+        return False
+    with open(MANA_CSV, newline="", encoding="utf-8") as fh:
+        mana = [r for r in csv.reader(fh)]
+    if not mana:
+        return False
+    header, body = mana[0], mana[1:]
+    kept = [r for r in body if not (r and (r[0] or "").strip().lower() == nl)]
+    if len(kept) == len(body):
+        return False
+    atomic_write(MANA_CSV, lambda fh: csv.writer(fh).writerows([header] + kept))
+    return True
+
+
 def _append_mana(name, cost, mv, keywords):
     """Append a card-mana.csv row so INV-02 (every library name has a mana row)
     holds after an add — even if enrichment was offline (then cost/kw are blank,
@@ -218,17 +328,25 @@ def _append_mana(name, cost, mv, keywords):
 
 def _lookup_card(name):
     """One-shot, best-effort Scryfall lookup for a single card (exact name, short
-    timeout, no long retry — keeps 'add' snappy). Returns a field dict or None if
-    unreachable / not found. Never raises."""
+    timeout, minimal retry — keeps 'add' snappy). Returns (fields|None, status) where
+    status is 'ok' | 'miss' (no such card) | 'offline' (Scryfall unreachable). Never
+    raises.
+
+    Goes through the shared `scryfall` client. The hand-rolled urllib call this
+    replaces caught only ``(URLError, ValueError)``, but a READ timeout — the common
+    slow-Scryfall case — raises ``TimeoutError``/``socket.timeout``, an OSError that is
+    NOT a URLError subclass. So it escaped the handler and turned /api/add into a 500
+    instead of the name-only add the endpoint advertises: precisely the failure class
+    scryfall.py's docstring says it exists to eliminate (audit F-09). `retries=1,
+    timeout=10` preserves the original snappiness rather than inheriting the client's
+    6-retry rebuild defaults."""
     from enrich import oracle_fields, color_shorthand
     try:
-        url = "https://api.scryfall.com/cards/named?" + urllib.parse.urlencode({"exact": name})
-        req = urllib.request.Request(
-            url, headers={"User-Agent": "mtga-card-library/1.0", "Accept": "application/json"})
-        with urllib.request.urlopen(req, timeout=10) as resp:
-            card = json.load(resp)
-    except (urllib.error.URLError, ValueError):
-        return None
+        card = scryfall.named({"exact": name}, retries=1, timeout=10)
+    except scryfall.NotFound:
+        return None, "miss"
+    except ScryfallUnavailable:
+        return None, "offline"
     type_line, text = oracle_fields(card)
     mc = card.get("mana_cost")
     if not mc and card.get("card_faces"):
@@ -241,7 +359,7 @@ def _lookup_card(name):
         "collector": str(card.get("collector_number") or ""),
         "mana_cost": mc or "", "mv": int(mv) if isinstance(mv, (int, float)) else "",
         "keywords": ";".join(card.get("keywords") or []),
-    }
+    }, "ok"
 
 
 def _list_of_objs(x):
@@ -344,7 +462,7 @@ def add():
             return jsonify(ok=False, errors=[f"That printing already exists: "
                                              f"{name} ({set_code or '—'}) {collector}."]), 409
 
-    info = _lookup_card(name)
+    info, enrich_status = _lookup_card(name)
     enriched = info is not None
     if info:
         from enrich import SET_ALIASES
@@ -393,7 +511,11 @@ def add():
             return jsonify(ok=False, errors=[
                 f"Card written but its card-mana.csv row failed ({e}); rolled the "
                 "library add back to keep INV-02. Try again."]), 500
-    return jsonify(ok=True, backup=backup, enriched=enriched, name=stored)
+    # `enrich_status` distinguishes a real miss (check the spelling) from a transient
+    # outage (the blanks will fill in on a later build_mana/refresh) — the same
+    # distinction wishlist.py draws, rather than reporting both as "not enriched".
+    return jsonify(ok=True, backup=backup, enriched=enriched, name=stored,
+                   enrich_status=enrich_status)
 
 
 @app.route("/api/remove", methods=["POST"])
@@ -401,8 +523,9 @@ def add():
 def remove():
     """Remove a single printing (by name/set/collector key) from the collection.
 
-    Leaves card-mana.csv untouched — an extra mana row is harmless (INV-02 only
-    requires library names to be present in it), and a later refresh prunes it.
+    When that was the card's LAST printing, its card-mana.csv row is pruned too (see
+    `_prune_mana`) — but only if the card isn't in the pool, since a pool-scoped mana
+    file legitimately carries rows the library doesn't reference.
     """
     data = request.get_json(silent=True) or {}
     key = data.get("key") or {}
@@ -425,7 +548,10 @@ def remove():
     ok, backup, errors = _safe_write(kept)
     if not ok:
         return jsonify(ok=False, errors=errors), 400
-    return jsonify(ok=True, backup=backup, removed=key.get("name"))
+    # Only AFTER the library write lands, so a rejected removal can't strand the mana
+    # file out of step with it (the ordering `add()` uses for the same reason).
+    pruned = _prune_mana((key.get("name") or ""), kept)
+    return jsonify(ok=True, backup=backup, removed=key.get("name"), mana_pruned=pruned)
 
 
 @app.route("/api/revert", methods=["POST"])
@@ -768,6 +894,8 @@ def main():
     #    arbitrary code — exposing that on a non-local bind is a remote-code-exec
     #    hole, so refuse the combination outright.
     #  • Any non-local bind exposes the auth-less editor; warn loudly.
+    global _bind_host
+    _bind_host = args.host          # the request guard relaxes its Host check off-loopback
     local = args.host in ("127.0.0.1", "localhost", "::1")
     if args.debug and not local:
         ap.error(f"refusing --debug on non-local host {args.host!r}: the Werkzeug debugger "

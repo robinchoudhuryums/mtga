@@ -50,10 +50,17 @@ _LINE_RE = re.compile(r"^([A-Z][A-Za-z'’]+(?: [A-Z][A-Za-z'’]+){0,2})\s+—"
 
 
 def known_keywords():
-    """Lowercased set of every keyword the tagger already understands."""
+    """Lowercased set of every keyword the tagger already understands — mapped to a
+    theme, on the explicit flavor denylist, or dropped by one-card suppression
+    (`tag_synergies.is_noise_keyword`). That set has to be included here or the
+    radar would report every keyword it silently drops as a "new unindexed mechanic",
+    re-flooding the channel F-05 cleared."""
     import tag_synergies as ts
-    return ({k.lower() for k in ts.KEYWORD_THEMES}
-            | {x.lower() for x in ts.FLAVOR_KEYWORDS})
+    known = ({k.lower() for k in ts.KEYWORD_THEMES}
+             | {x.lower() for x in ts.FLAVOR_KEYWORDS})
+    freq, corpus = ts.keyword_frequencies()
+    known |= {k for k in freq if ts.is_noise_keyword(k, freq, corpus)}
+    return known
 
 
 def _owned_names():
@@ -123,9 +130,16 @@ def _signal_b(known, owned, min_cards=3):
 def flavor_overreach(threshold=3):
     """Guard the FLAVOR_KEYWORDS denylist against over-suppression (audit F24).
 
-    Two signals, both returned as (keyword, count, note):
+    Three signals, all returned as (keyword, count, note):
       • a word in BOTH FLAVOR_KEYWORDS and KEYWORD_THEMES (count -1) — a
         contradiction: it's denylisted yet mapped to a theme.
+      • a word denylisted BUT named in deck.py's ENGINE_THEMES patterns (count -2) —
+        the engine classifier treats it as a real two-sided-engine mechanic while the
+        tagger suppresses it. This is the blind spot that let `harmonize` sit
+        denylisted for a full cycle: it's a graveyard self-recursion keyword
+        ("cast this from your graveyard for its harmonize cost") that deck.py counts
+        as a graveyard ENABLER, but the collection holds exactly ONE such card, so the
+        owned-count signal below could never reach `threshold` and flag it.
       • a denylisted word on >= `threshold` OWNED cards (count = N) — flavor names
         are card-UNIQUE, so a denylisted word shared by several cards is likely a
         real mechanic being silently suppressed (e.g. a future set ships "Trance").
@@ -136,6 +150,20 @@ def flavor_overreach(threshold=3):
     themed = {k.lower() for k in ts.KEYWORD_THEMES}
     out = [(k, -1, "denylisted AND mapped in KEYWORD_THEMES — resolve the contradiction")
            for k in sorted(flavor & themed)]
+    # Cross-check the ENGINE_THEMES regexes: a `\bword\b` pattern naming a denylisted
+    # keyword means two subsystems disagree about whether it's a real mechanic.
+    try:
+        import deck as _dk
+        engine_words = set()
+        for _theme, _sides in getattr(_dk, "ENGINE_THEMES", {}).items():
+            for _role, _pats in _sides.items():
+                for _p in _pats:
+                    engine_words |= {m.lower() for m in re.findall(r"\\b([a-z][a-z'\- ]+)\\b", _p)}
+        out += [(k, -2, "denylisted but named in deck.ENGINE_THEMES as a real engine "
+                        "mechanic — the tagger suppresses what the engine classifier counts")
+                for k in sorted(flavor & engine_words)]
+    except Exception:
+        pass  # deck.py unavailable — the other two signals still run
     if not os.path.exists(MANA_CSV):
         return out
     owned = _owned_names()

@@ -12,6 +12,7 @@ hexproof from
 increment
 infusion
 job select
+jump
 meld
 opus
 paradigm

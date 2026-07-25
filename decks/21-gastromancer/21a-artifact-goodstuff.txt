@@ -1,6 +1,13 @@
 #: name: Gastromancer — 4-Color Artifact Goodstuff
 #: format: Standard
-#: tier: B — Gastromancer 4-color artifact goodstuff; colorless bombs + heavy fixing, capped by 4-color consistency
+#: tier: B — Gastromancer 4-color artifact goodstuff; colorless bombs + heavy fixing. The
+#: tier: metrics floor reads A on interaction 9 (plus an under-read Season of Loss), and
+#: tier: the deck is fully BUILT with 0 uncastable — but it is deliberately held one band
+#: tier: BELOW the floor, because the floor is blind to the manabase: `deck.py mana 21a`
+#: tier: shows W 3 / U 1 / B 5 / R 3 / G 6 across 24 lands, i.e. a 4-color deck resting on
+#: tier: a ONE-source blue, and `consistency` puts keepable openers at only 84%. Add
+#: tier: card advantage 1, and that is two clear weaknesses where A allows one. Path to A:
+#: tier: fix or cut the blue, then add a draw engine — not more interaction.
 #: colors: WBRG
 #: based-on: deck.txt
 #: archetype: 21 variant — 4-color (WBRG) big-artifact goodstuff; colorless bombs + heavy any-color fixing; least consistent of the three.

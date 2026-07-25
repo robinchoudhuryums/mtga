@@ -37,7 +37,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-from lib import DEFAULT_CSV, load_rows, write_rows, eprint
+from lib import DEFAULT_CSV, load_rows, write_rows, eprint, csv_schema_error
 import scryfall
 from scryfall import NotFound, ScryfallUnavailable
 
@@ -126,6 +126,13 @@ def resolve_cards(names):
 
 
 def enrich(path, dry_run=False, force=False, only=None):
+    # write_rows emits ONLY the canonical library columns, so enriching a DERIVED file
+    # in place would silently drop its extra columns (audit F-02). Refuse before any
+    # Scryfall traffic rather than after.
+    problem = csv_schema_error(path)
+    if problem:
+        eprint(f"ERROR: {problem}")
+        return 1
     _, rows = load_rows(path)
 
     def needs(r):

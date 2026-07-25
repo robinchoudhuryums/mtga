@@ -25,7 +25,7 @@ import os
 import re
 import sys
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, write_rows
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, write_rows, csv_schema_error, eprint
 
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
 
@@ -64,6 +64,12 @@ KEYWORD_THEMES = {
     "collect evidence": ["graveyard"], "void": ["graveyard", "payoff"],
     "flashback": ["graveyard", "recursion", "spellslinger"],
     "escape": ["graveyard", "recursion"], "disturb": ["graveyard", "recursion"],
+    # Harmonize ("cast this from your graveyard for its harmonize cost") is graveyard
+    # self-recursion like flashback/escape — deck.py's engine classifier already counts
+    # it as a graveyard ENABLER. It was wrongly in FLAVOR_KEYWORDS because the collection
+    # holds a single Harmonize card, which made the card-uniqueness test read it as a
+    # one-off flavor name (broad-scan follow-on).
+    "harmonize": ["graveyard", "recursion"],
     "unearth": ["graveyard", "recursion"], "embalm": ["graveyard", "tokens"],
     "eternalize": ["graveyard", "tokens"], "jump-start": ["graveyard", "spellslinger"],
     "aftermath": ["graveyard", "recursion"], "dredge": ["graveyard", "self-mill"],
@@ -131,15 +137,130 @@ KEYWORD_THEMES = {
 # genuine keywords that merely look unusual (Eerie, Survival). This is a
 # denylist so new *real* keywords still tag automatically; extend it as new
 # flavor-heavy sets land. Compare against the keyword lowercased.
+#
+# The Marvel (MSH) block below was the second lapse of exactly this kind (audit
+# F-05): the set shipped and its signature moves went unindexed, so check_all
+# emitted 27 soft warnings on EVERY run — burying the one signal the radar
+# exists to raise — and 11 of them leaked into the Synergies vocabulary as
+# one-card tags, which the pool tag-rarity model then scored as near-maximally
+# distinctive. Each entry below was verified to sit on exactly ONE owned card;
+# `check_keywords.flavor_overreach()` guards the reverse mistake, flagging any
+# denylisted word that later turns up on >=3 owned cards (a real mechanic).
 FLAVOR_KEYWORDS = {
     "ability", "angelo cannon", "animal may-ham", "attack", "blue magic", "bring down",
     "death gigas", "dinosaur formula", "double overdrive", "dragonfire dive",
     "echo of the lost", "find new host", "fira", "firaga", "fire", "fire cross",
-    "galian beast", "harmonize", "heal", "hellmasker", "item", "look around",
+    "galian beast", "heal", "hellmasker", "item", "look around",
     "magic", "murasame", "particle beam", "rat tail", "stagger", "starfall", "super nova",
     "take 59 flights of stairs", "take the elevator", "the allagan eye",
     "trance", "wave cannon",
+    # Final Fantasy — a remaining card-unique weapon name. ("Jump" is deliberately NOT
+    # here: Scryfall lists it as a keyword on one card, but it's a real recurring FF
+    # ability — Kain and Freya both read "Jump — During your turn, ~ has flying" — so it
+    # belongs in keyword_baseline.txt as an unindexed MECHANIC to theme, not suppressed.)
+    "gae bolg",
+    # Marvel (MSH) signature moves — each on a single card (Hawkeye's four arrow
+    # types, The Vision's three abilities, Reptil's two dino forms, …).
+    "avian telepathy", "boomerang", "brontosaurus", "cosmic awareness",
+    "cybernetic senses", "density control", "embiggen fist", "explosive",
+    "i love squirrels!", "intangibility", "legal justice", "mental organism",
+    "net", "no one dies!", "photographic reflexes", "radar sense",
+    "seismic takedown", "solar beam", "sonic attack", "street justice",
+    "technopathy", "trick arrows", "tyrannosaurus rex", "unbreakable skin",
+    "wasp's sting",
 }
+
+# ── One-card keyword suppression (replaces hand-maintaining the denylist) ───────
+# FLAVOR_KEYWORDS above is a hand-kept list, and it went stale twice: once when Final
+# Fantasy landed, again when Marvel shipped 27 signature moves that spent a cycle
+# polluting the tag vocabulary and drowning the keyword radar (audit F-05). Derive the
+# rule instead — but state it accurately, because the obvious phrasing is subtly wrong.
+#
+# The tempting rule is "a keyword on exactly one card is a FLAVOR name". Measured against
+# the pool that mostly holds (every Marvel signature move sits at 1; Flashback 110,
+# Escape 26, Vivid 17, Jump 13, Harmonize 11), but it also catches `forestwalk`,
+# `sunburst`, `melee`, `eminence` — real MTG mechanics that simply appear on one Arena
+# card each. So the rule is NOT about flavor. It is:
+#
+#     a keyword carried by exactly ONE card in the corpus cannot match any other card,
+#     so as a tag it carries no cross-card synergy signal — and it actively HURTS,
+#     because lib.pool_ability_model scores tag rarity, where a 1-card tag reads as a
+#     near-maximally distinctive mechanic and inflates that card's `Uq`.
+#
+# On that basis suppressing `forestwalk` is as correct as suppressing `Trick Arrows`:
+# neither can ever pair with another card. A keyword that DOES carry signal is protected
+# by the guards below, since a mapped keyword contributes its THEMES (flashback ->
+# graveyard; recursion) even when the verbatim tag would be lonely.
+#
+# Guards, because suppressing a real mechanic is the expensive mistake:
+#   * a keyword mapped in KEYWORD_THEMES is a declared mechanic — never suppressed;
+#   * a keyword deck.py names in ENGINE_THEMES is one another subsystem already treats
+#     as real (exactly how `harmonize` got mis-filed) — never suppressed;
+#   * the heuristic engages only when the corpus is big enough to mean anything.
+#     card-mana.csv defaults to LIBRARY-ONLY scope, where a pool-wide mechanic can sit
+#     on one owned card — `harmonize` did. Below the floor we fall back to the explicit
+#     list, so a small corpus degrades to today's behaviour, never a confident wrong one.
+# The explicit list stays as an override for anything the corpus can't settle.
+_NOISE_MAX_CARDS = 1         # on exactly one card => no cross-card signal
+_NOISE_MIN_CORPUS = 5000     # trust the count only when card-mana.csv covers the pool
+_freq_cache = {}
+
+
+def keyword_frequencies(path=None):
+    """{keyword_lower: number of distinct cards carrying it} from card-mana.csv's
+    Keywords column, plus the corpus size. Cached; returns ({}, 0) if unavailable."""
+    path = path or MANA_CSV
+    if path in _freq_cache:
+        return _freq_cache[path]
+    freq, n = {}, 0
+    if os.path.exists(path):
+        with open(path, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                if not (r.get("Card Name") or "").strip():
+                    continue
+                n += 1
+                for k in (r.get("Keywords") or "").split(";"):
+                    k = k.strip().lower()
+                    if k:
+                        freq[k] = freq.get(k, 0) + 1
+    _freq_cache[path] = (freq, n)
+    return freq, n
+
+
+def _engine_keywords():
+    """Keywords deck.py's ENGINE_THEMES patterns name as real engine mechanics."""
+    if "engine" not in _freq_cache:
+        words = set()
+        try:
+            import deck as _dk
+            for _t, sides in getattr(_dk, "ENGINE_THEMES", {}).items():
+                for _role, pats in sides.items():
+                    for p in pats:
+                        words |= {m.lower() for m in re.findall(r"\\b([a-z][a-z'\- ]+)\\b", p)}
+        except Exception:
+            words = set()
+        _freq_cache["engine"] = words
+    return _freq_cache["engine"]
+
+
+def is_noise_keyword(kw, freq=None, corpus=None):
+    """Should `kw` be dropped as a tag that carries no cross-card synergy signal? See the
+    block above — this is one-card suppression, NOT flavor detection, and it deliberately
+    catches genuinely rare real mechanics too. Pass `freq`/`corpus` to score against a
+    specific corpus (the tests and the keyword radar do); both default to card-mana.csv."""
+    k = (kw or "").strip().lower()
+    if not k:
+        return False
+    if k in {x.lower() for x in FLAVOR_KEYWORDS}:
+        return True                                   # explicit override
+    if k in {x.lower() for x in KEYWORD_THEMES} or k in _engine_keywords():
+        return False                                  # a declared/real mechanic
+    if freq is None or corpus is None:
+        freq, corpus = keyword_frequencies()
+    if corpus < _NOISE_MIN_CORPUS:
+        return False                                  # corpus too small to judge
+    return 0 < freq.get(k, 0) <= _NOISE_MAX_CARDS
+
 
 # (tag, predicate(type_line_lower, text_lower)) — order defines output order.
 MECHANIC_RULES = [
@@ -312,7 +433,7 @@ def tags_for(row, keywords=None):
     # Skip Universe-Beyond flavor ability names (see FLAVOR_KEYWORDS).
     for kw in (keywords or []):
         k = kw.strip().lower()
-        if not k or k in FLAVOR_KEYWORDS:
+        if not k or is_noise_keyword(k):
             continue
         if k not in tags:
             tags.append(k)
@@ -346,6 +467,17 @@ def main():
                          "existing/hand-curated ones — the safe refresh mode (audit F10)")
     ap.add_argument("--dry-run", action="store_true", help="preview a sample, write nothing")
     args = ap.parse_args()
+
+    # This writer emits ONLY the canonical library columns, so it must never be pointed
+    # at a derived file (card-pool.csv / card-mana.csv) — that would drop Rarity /
+    # Legalities / Released and break every format, rotation and wildcard lookup
+    # (audit F-02). Refuse up front, before any work.
+    problem = csv_schema_error(args.path)
+    if problem:
+        eprint(f"ERROR: {problem}\n"
+               "       To refresh a DERIVED file's synergy tags, rebuild it with its own "
+               "builder (build_pool.py), which re-derives tags via tags_for().")
+        return 1
 
     _, rows = load_rows(args.path)
     kw_map = load_keywords(MANA_CSV)

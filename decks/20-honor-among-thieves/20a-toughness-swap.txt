@@ -1,6 +1,11 @@
 #: name: Honor Among Thieves — Toughness Swap
 #: format: Standard
-#: tier: C — Honor Among Thieves P/T-swap novelty; combo-reliant (Kingpin + high toughness), less consistent than base 20 (B)
+#: tier: B — Honor Among Thieves P/T-swap. Re-graded C->B: the old C read the deck as a
+#: tier: combo novelty, but the measurable spine doesn't support a hard cap — interaction 4
+#: tier: (and the classifier under-reads 3 more: Inkshape Demonstrator / Tribute to Hunger /
+#: tier: Social Snub) over 11 central themes is a coherent toughness-matters engine, not
+#: tier: near-zero interaction on a thin theme. Metrics floor is B. Held at B, not A, by the
+#: tier: real gap: card advantage 0 and a 3.64 curve, plus reliance on Kingpin to convert.
 #: colors: WB
 #: based-on: deck.txt
 #: archetype: 20 variant — P/T-swap novelty: high-toughness bodies deal damage via Kingpin (leans on drawing him).

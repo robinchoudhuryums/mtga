@@ -139,6 +139,26 @@ def check():
             errs.append(f"ranking model: _seed_power bonuses must not push a 2-for-1 above a "
                         f"mythic bomb (Meteor {meteor}, bomb {bomb}) — they nudge, not dominate.")
 
+        # (7b) WIRING guard (audit F-01). deck.rank_cut_candidates / deck._card_power feed
+        #      the seed a load_rarities() value, which is an Arena wildcard LETTER ("M"),
+        #      not a word. That fell through to the 2.0 default, so every rare and mythic
+        #      seeded as an uncommon and `cuts` tagged real bombs "on-theme but low power".
+        #      Assert the two shapes agree, and that the rarity floor still separates them.
+        for letter, word in (("M", "Mythic"), ("R", "Rare"),
+                             ("U", "Uncommon"), ("C", "Common")):
+            body = {"Type": "Creature — Bear", "Card Text": ""}
+            by_letter = sp({"Rarity": letter, **body})
+            by_word = sp({"Rarity": word, **body})
+            if by_letter != by_word:
+                errs.append(f"ranking model: _seed_power reads wildcard letter {letter!r} as "
+                            f"{by_letter} but rarity word {word!r} as {by_word} — deck.py's "
+                            f"cuts/redundancy pass LETTERS, so a mismatch under-rates every "
+                            f"{word} (audit F-01).")
+        plain = {"Type": "Creature — Bear", "Card Text": ""}
+        if not sp({"Rarity": "M", **plain}) > sp({"Rarity": "C", **plain}):
+            errs.append("ranking model: _seed_power must rank a mythic above a common of the "
+                        "same body — the rarity floor is the seed's objective anchor.")
+
     return errs
 
 

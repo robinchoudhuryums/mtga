@@ -51,6 +51,207 @@ class TestClassifyRoles:
         assert not (roles & deck._INTERACTION_ROLES)
         assert "Card advantage" not in roles
 
+    # --- Under-count fixes. Each string below scored ZERO roles before the list-aware
+    # removal pattern / widened Counter pattern / library-tuck pattern went in, so the
+    # cards read as having no interaction at all and the tier floor graded on that.
+    NONCREATURE_REMOVAL = [
+        # Origin of Metalbending, Seedship Impact — a two-type "or" list.
+        "Destroy target artifact or enchantment.",
+        # Broken Wings, Shattered Wings, Spider Food — a comma list ending in a creature.
+        "Destroy target artifact, enchantment, or creature with flying.",
+    ]
+    ADJECTIVE_REMOVAL = [
+        # The hand-kept alternation spelled these out; the rewrite must not lose them.
+        "Destroy target creature.", "Exile target attacking creature.",
+        "Destroy target tapped creature.", "Destroy target nonland permanent.",
+        "Exile target creature or planeswalker.",
+    ]
+
+    def test_noncreature_permanent_removal_counts(self):
+        for text in self.NONCREATURE_REMOVAL:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_adjective_and_plain_removal_still_counts(self):
+        for text in self.ADJECTIVE_REMOVAL:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_counter_up_to_n_target_counts(self):
+        # Repulsive Mutation. Missed by the Counter pattern AND by the coverage net,
+        # so the under-read was invisible to the audit meant to catch it.
+        assert "Counter" in deck.classify_roles(
+            "Put X +1/+1 counters on target creature you control. Then counter up to one "
+            "target spell unless its controller pays mana equal to the greatest power "
+            "among creatures you control.")
+
+    def test_library_tuck_is_removal(self):
+        # Floodpits Drowner's activated ability — the creature leaves the battlefield.
+        assert "Removal (spot)" in deck.classify_roles(
+            "{1}{U}, {T}: Shuffle this creature and target creature with a stun counter "
+            "on it into their owners' libraries.")
+
+    def test_equal_draw_discard_loot_is_not_card_advantage(self):
+        # Kiora, the Rising Tide: net zero cards, so not advantage — the same rule that
+        # excludes a single-draw cantrip.
+        assert "Card advantage" not in deck.classify_roles(
+            "When Kiora enters, draw two cards, then discard two cards.")
+
+    def test_net_positive_draw_survives_the_loot_filter(self):
+        # Draw 3 / discard 1 is +2 cards: the loot filter must not swallow it.
+        assert "Card advantage" in deck.classify_roles("Draw three cards. Discard a card.")
+        # And a loot alongside a real draw keeps the role.
+        assert "Card advantage" in deck.classify_roles(
+            "Draw two cards, then discard two cards. Then draw three cards.")
+
+    def test_half_x_draw_counts(self):
+        # Wan Shi Tong, Librarian — "draw half X cards" was in neither the role pattern
+        # nor the audit cue, so it was uncounted AND unflagged.
+        assert "Card advantage" in deck.classify_roles(
+            "When this creature enters, put X +1/+1 counters on him. Then draw half X "
+            "cards, rounded down.")
+
+
+class TestCoverageNetIsSuperset:
+    """The audit net must see everything the precise classifier can, or a phrasing is
+    missed by BOTH — the hole that hid Repulsive Mutation's counter."""
+
+    def test_interaction_net_covers_every_precise_pattern(self):
+        for label in deck._INTERACTION_ROLES:
+            for pat in deck._ROLE_COMPILED_MAP[label]:
+                assert pat in deck._INT_CUE_PATS, f"{label}: {pat.pattern}"
+
+    def test_card_advantage_net_covers_every_precise_pattern(self):
+        for pat in deck._ROLE_COMPILED_MAP["Card advantage"]:
+            assert pat in deck._CA_CUE_PATS, pat.pattern
+
+
+class TestRotationOverride:
+    """A reprint inherits the newest printing's date, so a card reprinted into a set with
+    an announced LONG Standard legality read as rotating in three years."""
+
+    def test_foundations_uses_its_announced_window(self):
+        # Genesis Wave (FDN, 2024-11-15): 2029, not 2027.
+        assert deck.rotation_year("2024-11-15", set_code="FDN") == 2029
+        assert deck.rotation_risk("2024-11-15", set_code="FDN") is False
+
+    def test_ordinary_set_still_uses_release_plus_three(self):
+        assert deck.rotation_year("2024-02-09", set_code="MKM") == 2027
+        assert deck.rotation_year("2023-09-08", set_code="WOE") == 2026
+
+    def test_blank_release_is_graceful(self):
+        assert deck.rotation_year("") is None
+        assert deck.rotation_risk("") is False
+
+    def test_risk_is_calendar_year_based(self):
+        # Rotation happens at a fall rotation, not on a card's 3rd birthday: a 2023 set
+        # rotates during 2026, so it is at risk for all of 2026.
+        import datetime
+        y = datetime.date.today().year
+        assert deck.rotation_risk(f"{y - 3}-09-01") is True
+        assert deck.rotation_risk(f"{y - 1}-09-01") is False
+
+
+class TestCostAsUpside:
+    def test_kicker_land_bounce_flags_in_a_landfall_deck(self):
+        text = ("Kicker—Return a land you control to its owner's hand. Target creature "
+                "you control deals damage equal to its power to target creature.")
+        assert deck.cost_upside_flags(text, {"landfall", "counters"})
+
+    def test_same_card_is_silent_without_the_theme(self):
+        text = "Kicker—Return a land you control to its owner's hand."
+        assert deck.cost_upside_flags(text, {"lifegain", "flying"}) == []
+
+    def test_leaves_play_trigger_flags_in_a_counters_deck(self):
+        text = ("This creature enters with X +1/+1 counters on it. When this creature "
+                "leaves the battlefield, put its counters on target creature you control.")
+        assert deck.cost_upside_flags(text, {"counters"})
+
+    def test_plain_card_never_flags(self):
+        assert deck.cost_upside_flags("Flying. Vigilance.", {"counters", "landfall"}) == []
+
+
+class TestCostThemes:
+    """`graveyard` is a benefit only where the deck pays it off; elsewhere it's a cost."""
+    CD = {
+        "escape artist": {"type": "Creature", "colors": "U",
+                          "text": "Escape—{2}{U}, Exile four other cards from your graveyard."},
+        "vanilla": {"type": "Creature", "colors": "G", "text": "Flying."},
+    }
+
+    def test_theme_dropped_without_payoffs(self):
+        cards = [(1, "Vanilla", "", "")]
+        assert deck._drop_cost_themes(["graveyard", "counters"], cards, self.CD) == ["counters"]
+
+    def test_theme_kept_with_enough_payoffs(self):
+        cards = [(2, "Escape Artist", "", "")]
+        assert "graveyard" in deck._drop_cost_themes(["graveyard"], cards, self.CD)
+
+    def test_non_cost_themes_pass_through(self):
+        cards = [(1, "Vanilla", "", "")]
+        assert deck._drop_cost_themes(["counters", "landfall"], cards, self.CD) == \
+            ["counters", "landfall"]
+
+
+class TestSectionMismatch:
+    CD = {
+        "broodguard elite": {"type": "Creature", "colors": "G",
+                             "text": "This creature enters with X +1/+1 counters on it."},
+        "divination": {"type": "Sorcery", "colors": "U", "text": "Draw two cards."},
+        "shock": {"type": "Instant", "colors": "R", "text": "Shock deals 2 damage to any target."},
+    }
+
+    def test_wrong_section_warns(self):
+        lines = ["Deck", "# Card advantage", "1 Shock (M21) 159"]
+        assert "Card advantage" in (deck.section_mismatch(lines, 2, "Shock", self.CD) or "")
+
+    def test_matching_section_is_silent(self):
+        lines = ["Deck", "# Card advantage", "1 Divination (M21) 56"]
+        assert deck.section_mismatch(lines, 2, "Divination", self.CD) is None
+
+    def test_ambiguous_section_is_silent(self):
+        # "Counter DOUBLERS" means +1/+1 counters, not counterspells.
+        lines = ["Deck", "# Counter DOUBLERS — the engine", "1 Broodguard Elite (EOE) 175"]
+        assert deck.section_mismatch(lines, 2, "Broodguard Elite", self.CD) is None
+
+    def test_no_header_is_silent(self):
+        assert deck.section_mismatch(["Deck", "1 Shock (M21) 159"], 1, "Shock", self.CD) is None
+
+    def test_unclassified_card_gets_the_softer_wording(self):
+        lines = ["Deck", "# Card advantage", "1 Broodguard Elite (EOE) 175"]
+        msg = deck.section_mismatch(lines, 2, "Broodguard Elite", self.CD) or ""
+        assert "verify" in msg  # a prompt, not an assertion that it's misfiled
+
+
+class TestProtectionAxis:
+    def test_real_protection_detected(self):
+        for text in ("Enchanted creature has ward {2}.",
+                     "Target creature you control gains hexproof until end of turn.",
+                     "It gains indestructible until end of turn.",
+                     "Creatures you control have protection from red."):
+            assert deck.protection_effects(text), text
+
+    def test_combat_pump_is_not_protection(self):
+        # The broad "Protection / trick" role counts these; this axis must not.
+        for text in ("Target creature gets +2/+2 until end of turn.",
+                     "Double target creature's power and toughness until end of turn.",
+                     "Target creature you control gets +0/+10 until end of turn."):
+            assert not deck.protection_effects(text), text
+
+    def test_cant_be_regenerated_boilerplate_is_not_protection(self):
+        # "It can't be regenerated" rides along on removal spells, so keying on the word
+        # would score half the format's removal as protection.
+        assert not deck.protection_effects(
+            "Destroy target creature. It can't be regenerated.")
+
+    def test_role_tally_reports_protection_quantity_weighted(self):
+        cd = {"snakeskin veil": {"type": "Instant", "colors": "G",
+                                 "text": "Put a +1/+1 counter on target creature you "
+                                         "control. It gains hexproof until end of turn."},
+              "shock": {"type": "Instant", "text": "Shock deals 2 damage to any target.",
+                        "colors": "R"}}
+        t = deck.role_tally([(2, "Snakeskin Veil", "", ""), (1, "Shock", "", "")], cd)
+        assert t["protection"] == 2
+        assert t["interaction"] == 1
+
 
 class TestRoleTally:
     CD = {
@@ -565,3 +766,75 @@ class TestEngineRoles:
     def test_flashback_self_enables_graveyard(self):
         got = deck.engine_roles("Lightning deals 3 damage to any target. Flashback {4}{R}.").get("graveyard", set())
         assert "enabler" in got
+
+
+class TestSyncPaste:
+    """The pure pieces behind `deck.py sync` — splitting a multi-deck paste, matching a
+    block to its stored deck, and rewriting a deck file's lines to a target list."""
+
+    def _ms(self, **kw):
+        return {k.lower(): (k, v) for k, v in kw.items()}
+
+    def _d(self, i):
+        return {"id": i, "name": f"deck{i}", "path": ""}
+
+    def test_split_multi_deck_paste(self):
+        segs = deck.split_paste("Deck\n1 A\n2 B\n\nDeck\n3 C\n")
+        assert len(segs) == 2
+        assert [l for l in segs[0] if l.strip()] == ["1 A", "2 B"]
+
+    def test_split_without_a_deck_marker(self):
+        # A bare paste (no "Deck" header) is still one block.
+        assert len(deck.split_paste("1 A\n2 B\n")) == 1
+
+    def test_split_ignores_empty_blocks(self):
+        assert deck.split_paste("Deck\n\nDeck\n1 A\n") == [["1 A"]]
+
+    def test_diff_direction(self):
+        added, removed, diffs = deck._ms_diff(self._ms(A=3, B=1), self._ms(A=1, C=2))
+        assert (added, removed) == (2 + 1, 2)          # +2 A, +1 B, -2 C
+        assert ("+", 2, "A") in diffs and ("-", 2, "C") in diffs
+
+    def test_matches_closest_deck(self):
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._d("1"), self._ms(A=4, B=4, C=4)),
+                              (self._d("2"), self._ms(A=4, B=4, Z=4))])
+        assert m["deck"]["id"] == "1" and m["sync"] is True
+
+    def test_unrelated_paste_is_unmatched(self):
+        m = deck.match_paste(self._ms(Q=4, R=4, S=4, T=4),
+                             [(self._d("1"), self._ms(A=4, B=4, C=4))])
+        assert m.get("unmatched") is True
+
+    def test_low_confidence_between_siblings(self):
+        m = deck.match_paste(self._ms(A=4, B=4, C=4, D=4, E=1),
+                             [(self._d("1"), self._ms(A=4, B=4, C=4, D=4, E=2)),
+                              (self._d("1a"), self._ms(A=4, B=4, C=4, D=4, E=1, F=1))])
+        assert m["lowconf"] is True and m["runner_up"] is not None
+
+    def test_clear_winner_is_not_flagged(self):
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._d("1"), self._ms(A=4, B=4, C=4)),
+                              (self._d("2"), self._ms(X=4, Y=4, Z=4))])
+        assert m["lowconf"] is False
+
+    def test_reconcile_preserves_structure_and_applies_target(self):
+        lines = ["#: name: T", "", "# Creatures", "4 Foo (SET) 1", "1 Bar (SET) 2",
+                 "# Lands", "20 Island", "#~ -Bar | +Baz | flex note"]
+        out = deck.reconcile_lines(lines, self._ms(Foo=2, Baz=1, Island=20),
+                                   {"baz": ("Baz", "NEW", "9")})
+        assert "#: name: T" in out and "# Creatures" in out and "# Lands" in out
+        assert "#~ -Bar | +Baz | flex note" in out          # comments/flex survive
+        assert "4 Foo (SET) 1" not in out and "2 Foo (SET) 1" in out   # qty rewritten
+        assert not any(l.startswith("1 Bar") for l in out)  # dropped card
+        assert "1 Baz (NEW) 9" in out                       # new card, resolved printing
+
+    def test_reconcile_new_card_without_a_known_printing(self):
+        out = deck.reconcile_lines(["1 Foo (S) 1"], self._ms(Foo=1, Mystery=2), {})
+        assert "2 Mystery" in out                            # bare line still parses
+
+    def test_reconcile_totals_match_the_target(self):
+        target = self._ms(Foo=3, Island=20)
+        out = deck.reconcile_lines(["# c", "1 Foo (S) 1", "24 Island"], target, {})
+        parsed = [deck.LINE_RE.match(l) for l in out if deck._card_line_name(l)]
+        assert sum(int(m.group(1)) for m in parsed) == sum(q for _d, q in target.values())

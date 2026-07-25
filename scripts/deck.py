@@ -59,7 +59,7 @@ import urllib.error
 import urllib.request
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty,
-                 card_distinctiveness)
+                 card_distinctiveness, backup_path)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -170,6 +170,37 @@ def find_deck(deck_id):
     return None
 
 
+# Decks that exist as documentation/placeholders rather than lists you'd sleeve up.
+# A `#: status:` header naming one of these keeps the deck fully addressable by id —
+# `check`, `stats`, `cuts`, the editor all still work on it — while dropping it from
+# ROSTER-WIDE views, where it is pure noise. The example deck is a 26-card illustration
+# of the file format, so it is permanently illegal: it sat at the top of `deck.py audit`
+# occupying BOTH ★ TUNE slots, making the triage's most actionable output ("Full-tune
+# candidates: 0, 0a") 100% false positive and permanently un-actionable (broad-scan
+# F-06). It also counted as a deck a card could be "reused" in. `wishlist._theme_model`
+# already excluded it by a card-count heuristic; this makes the intent explicit and
+# shared, so every roster view agrees on what counts as part of the roster.
+NONROSTER_STATUSES = {"example", "template", "placeholder", "retired", "archived"}
+
+
+def deck_status(meta):
+    """The `#: status:` keyword (lowercased first word), or '' when unset."""
+    raw = (meta or {}).get("status", "") or ""
+    return raw.strip().split()[0].strip().lower() if raw.strip() else ""
+
+
+def is_roster_deck(d):
+    """True when a deck should COUNT toward roster-wide views (audit / rotation / brawl /
+    wildcards / cross-deck reuse / tier sweep). False for a documentation placeholder or a
+    retired list. Never affects addressing a deck directly by id."""
+    return deck_status(d.get("meta") or {}) not in NONROSTER_STATUSES
+
+
+def roster_decks():
+    """`discover_decks()` narrowed to the decks that are really part of the roster."""
+    return [d for d in discover_decks() if is_roster_deck(d)]
+
+
 # --------------------------------------------------------------------------- #
 # Collection lookup
 # --------------------------------------------------------------------------- #
@@ -249,7 +280,12 @@ def cmd_list(_args):
             status = "OK " if short == 0 else f"{short} short"
             label = d["name"] or os.path.basename(os.path.dirname(d["path"])) or d["id"]
             tag = "  └─ variant" if d["variant"] else "CORE"
-            print(f"  [{d['id']:>4}] {tag:12} {label:28} {total:3} cards  {status}")
+            # `list` shows EVERY deck (it's the index), but marks the ones roster-wide
+            # views skip so their absence from `audit`/`rotation`/`wildcards` isn't a
+            # mystery.
+            st = deck_status(d["meta"])
+            mark = f"  [{st}]" if st in NONROSTER_STATUSES else ""
+            print(f"  [{d['id']:>4}] {tag:12} {label:28} {total:3} cards  {status}{mark}")
             ident = _deck_identity(d["meta"])
             if ident:
                 print(f"          {ident}")
@@ -311,7 +347,7 @@ def cmd_wildcards(_args):
     """Roster-wide crafting plan: what to craft, and which crafts unlock the most
     decks. Owned copies are shared across decks and summed across printings, so a
     card is only ever short by (max any deck needs − total owned)."""
-    decks = discover_decks()
+    decks = roster_decks()   # a documentation placeholder must not demand wildcards
     if not decks:
         print("No decks yet. Add one under decks/<NN-name>/deck.txt.")
         return 0
@@ -747,15 +783,35 @@ ROLE_ORDER = ["Removal (spot)", "Sweeper", "Counter", "Card advantage",
               "Ramp / fixing", "Reanimation", "Payoff / engine", "Burn / drain",
               "Lifegain", "Cost reduction / cheat", "Team pump / anthem",
               "Protection / trick", "Recursion"]
+# A permanent-type LIST as MTG templates it: "creature", "artifact or enchantment",
+# "artifact, enchantment, or creature with flying". The removal patterns used to spell
+# out a handful of fixed combinations by hand, so anything outside that list matched
+# NOTHING and the card read as having no removal role at all. Verified misses:
+#   Origin of Metalbending / Seedship Impact — "Destroy target artifact or enchantment"
+#   Broken Wings                             — "Destroy target artifact, enchantment,
+#                                               or creature with flying"  → zero roles
+# Those three all count toward `_NONCREATURE_ANSWER_CUES` (the "can it answer a
+# planeswalker/enchantment/artifact" test) already, so the codebase treated them as
+# answers everywhere EXCEPT the count the tier floor grades on. One list-aware pattern
+# replaces the hand-kept combinations, so a new templating can't slip through again.
+_PERM_TYPE = (r"(?:nonland permanent|artifact creature|artifact|enchantment|creature|"
+              r"permanent|planeswalker|land)")
+_PERM_TYPE_LIST = rf"{_PERM_TYPE}s?(?:,? (?:or |and )?{_PERM_TYPE}s?)*"
+
 _ROLE_PATTERNS = {
     "Removal (spot)": [
-        r"destroy target (?:creature|permanent|nonland permanent|artifact or creature|"
-        r"tapped creature|attacking creature|creature or planeswalker|creature with)",
-        r"exile target (?:creature|permanent|nonland permanent|attacking|tapped)",
-        # "destroy/exile up to one/two target ..." — the fixed "target" patterns above
-        # miss the up-to-N wording (She-Hulk's power-up, Mutant Chain Reaction).
-        r"(?:destroy|exile) up to \w+ target (?:creature|permanent|nonland permanent|"
-        r"artifact|enchantment|planeswalker|artifact or|artifact, enchantment)",
+        # destroy / exile a targeted permanent, including a comma-or list of types, and
+        # allowing the adjectives MTG puts before the type ("target ATTACKING creature",
+        # "target TAPPED creature") — the old hand-kept alternation listed some of those
+        # spellings explicitly, so the list-aware rewrite has to keep them or it would
+        # LOSE coverage it previously had (caught by a roster-wide before/after diff:
+        # decks 15 and 16 each dropped an interaction piece on the first draft).
+        # NOTE the doubled braces: this is an f-string, so a bare {0,2} is parsed as a
+        # replacement field and silently compiles to the literal text "(0, 2)". That is
+        # exactly what happened on the first draft — every "destroy target creature" in
+        # the collection stopped matching and 46 decks lost interaction. Caught only by
+        # the roster-wide before/after diff, which is why that diff is worth running.
+        rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+ ){{0,2}}?{_PERM_TYPE_LIST}",
         r"deals? \d+ damage to (?:target|any target|another target)",
         r"deals? \d+ damage to up to \w+ target",
         # any "fight" is removal (Novel Nunchaku "fights up to one target", Longstalk
@@ -768,6 +824,14 @@ _ROLE_PATTERNS = {
         r"creature an opponent controls gets -[0-9x]",
         r"return target creature.{0,40}?(?:owner|their) hand",
         r"enchanted creature can't attack or block",
+        # Removal by TUCKING a creature into a library. It leaves the battlefield, so
+        # it is a real answer, but no destroy/exile/damage/-N-N pattern saw it:
+        # Floodpits Drowner's "{1}{U}, {T}: Shuffle this creature and target creature
+        # with a stun counter on it into their owners' libraries" scored ZERO roles,
+        # which is why an earlier tier note wrongly wrote it off as "taps and stuns
+        # rather than answers" (session finding — the same card twice).
+        r"shuffle[^.]{0,80}?target (?:creature|permanent)[^.]{0,60}?librar",
+        r"target creature[^.]{0,80}?into (?:their|its) (?:owner'?s? )?librar",
     ],
     "Sweeper": [r"destroy all", r"exile all", r"all creatures get -",
                 r"each (?:other )?creature (?:gets|deals|is|you don't control)",
@@ -778,8 +842,16 @@ _ROLE_PATTERNS = {
                 r"creature with mana value.{0,20}?or less.{0,40}?destroy",
                 r"destroy those creatures",
                 r"deals? \d+ damage to each (?:other )?creature"],
-    "Counter": [r"counter target"],
-    "Card advantage": [r"draws? (?:two|three|four|x|that many) cards?",
+    # "counter up to one target spell unless…" (Repulsive Mutation) matched neither
+    # this pattern NOR the broad coverage net below, so it scored zero roles AND was
+    # never flagged as an under-read — the worst case, a miss invisible to the very
+    # audit that exists to catch misses (session finding).
+    "Counter": [r"counter (?:up to \w+ )?target", r"counter (?:that|the chosen) spell"],
+    # Surfaced while testing the lexicon unification: "five" and "half X" were in
+    # neither the role pattern nor the audit cue, so Wan Shi Tong, Librarian ("draw
+    # half X cards, rounded down") was uncounted AND unflagged — the same
+    # missed-by-both hole as Repulsive Mutation, on the card-advantage axis.
+    "Card advantage": [r"draws? (?:two|three|four|five|half x|x|that many) cards?",
                        r"draw a card for each", r"draws? cards? equal to",
                        r"\binvestigate\b"],
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
@@ -829,6 +901,52 @@ _ROLE_PATTERNS = {
 }
 _ROLE_COMPILED = [(label, [re.compile(p) for p in _ROLE_PATTERNS[label]])
                   for label in ROLE_ORDER]
+_ROLE_COMPILED_MAP = dict(_ROLE_COMPILED)
+
+# The roles that make a card "interaction" for the resilience axis the tier floor
+# grades on. Defined HERE, next to the patterns, because the coverage-audit net below
+# is built from them — it used to sit ~1000 lines later, which is how the net and the
+# classifier drifted apart in the first place.
+_INTERACTION_ROLES = {"Removal (spot)", "Sweeper", "Counter"}
+
+# "draw N, then discard N" is a LOOT — card-NEUTRAL filtering, not card advantage, for
+# exactly the reason a single-draw cantrip isn't counted (see ROLE_ORDER's note). Kiora,
+# the Rising Tide's "draw two cards, then discard two cards" used to score +1 card
+# advantage, which both inflated her value when the deck was graded and made cutting her
+# register as a regression the quality guard reported but that wasn't real (session
+# finding). Only an EQUAL, adjacent draw/discard pair is filtered — a genuinely
+# net-positive "draw three cards. Discard a card." is untouched, and connive (draw 1,
+# discard 1) never counted in the first place.
+_LOOT_RE = re.compile(
+    r"draws? (two|three|four|five|x|that many) cards?,? (?:then )?"
+    r"discards? (?:\1|that many) cards?")
+
+# Real PROTECTION for a permanent you control — deliberately NARROWER than the
+# "Protection / trick" role, which lumps a combat pump ("gets +2/+2 until end of turn")
+# in with an actual answer to removal.
+#
+# This axis exists because its absence was the single biggest weakness of an all-in
+# single-threat deck and NO view could see it: `stats`, `quality` and `tier` all count
+# interaction and card advantage, and nothing asked "can I protect the thing I win
+# with?" It was found by an ad-hoc grep, not by any tool (session finding).
+#
+# `regenerate` is deliberately absent: "It can't be regenerated" is boilerplate on
+# removal spells, so keying on the word would score half the removal in the format as
+# protection. Prefer under-counting to a wrong count on a measured axis.
+_PROTECTION_RE = re.compile(
+    r"\bhexproof\b|\bindestructible\b|\bward\b|protection from"
+    r"|can'?t be the target of (?:spells|abilities)"
+    r"|counter target spell that targets"
+    r"|\bphases? out\b")
+
+
+def protection_effects(text):
+    """True if a card grants/has a real protection effect (ward, hexproof,
+    indestructible, protection from, untargetable, a counter-that-targets). Counts the
+    CARD, not its reach — a self-only ward on an irrelevant body still counts, which is
+    why the deck-level check below only flags an outright ZERO rather than scoring a
+    thin count as adequate."""
+    return bool(_PROTECTION_RE.search(_norm_role_text(text)))
 
 # Mechanics whose value depends on the DECK (colors of mana available, board
 # state), not the card in isolation — the cuts/grade step must check them against
@@ -842,6 +960,86 @@ _CONTEXT_PATTERNS = {
     "improvise": [r"\bimprovise\b"],
 }
 _CONTEXT_COMPILED = {k: [re.compile(p) for p in v] for k, v in _CONTEXT_PATTERNS.items()}
+
+# COST-AS-UPSIDE. A card's additional cost or drawback reads as a downside in isolation
+# and every scoring model here grades cards in isolation — but in the matching deck the
+# same clause is an ENGINE TRIGGER. CLAUDE.md warns humans about this in prose ("ask what
+# does this do *here*"); nothing detected it, so a card whose cost is secretly an upside
+# sorted like a card with a real drawback. Observed cases:
+#   • Chocobo Kick's "Kicker — Return a land you control to its owner's hand" in a
+#     LANDFALL deck: replaying the land re-triggers every landfall payoff, so paying the
+#     kicker is pure profit.
+#   • Broodguard Elite's Warp (self-exile at end of turn) in a COUNTERS deck: leaving the
+#     battlefield is what moves its counters onto your threat.
+#   • A "sacrifice a creature/artifact" cost in a sacrifice/aristocrats deck.
+# Each entry maps a cost pattern → the deck themes that turn it into an upside. This is a
+# FLAG for a human read, never a score change — the same posture as `⚠ scales w/`, and
+# for the same reason: the signal is real but too fuzzy to move a ranking on its own.
+_COST_UPSIDE = [
+    (re.compile(r"return a land you control to its owner'?s hand", re.I),
+     {"landfall", "lands", "ramp"}, "kicker returns a land → re-triggers landfall"),
+    (re.compile(r"\bwarp\b|exile this creature at the beginning of the next end step", re.I),
+     {"counters", "etb", "blink"}, "warp self-exile → leaves-play / re-ETB value"),
+    (re.compile(r"when this .{0,30}?leaves the battlefield", re.I),
+     {"counters", "sacrifice", "blink"}, "leaves-play trigger → the 'drawback' is the payoff"),
+    (re.compile(r"as an additional cost.{0,60}?sacrifice", re.I),
+     {"sacrifice", "food", "tokens", "aristocrats"}, "sacrifice cost → feeds your outlets"),
+    (re.compile(r"\bdiscard (?:a|one|two|that) card", re.I),
+     {"graveyard", "reanimator", "recursion", "madness"}, "discard cost → fills the yard"),
+]
+
+
+# Themes that are only a BENEFIT when the deck is built to reward them; otherwise the
+# same interaction is a COST. Filling your graveyard is value in a reanimator deck and
+# pure damage in a control deck that needs its counterspells in the library — but a
+# theme-overlap model sees one tag either way.
+#
+# The observed miss: Genesis Wave read KEY for deck 40 (Simic ramp-CONTROL) purely on a
+# `graveyard` match — i.e. it scored highly BECAUSE it mills you, which there is the
+# reason not to play it (15 of 34 nonlands, including Finale of Revelation and the whole
+# counterspell suite, get binned). The fix reuses machinery that already exists rather
+# than adding a model: `engine_roles` knows which cards are graveyard PAYOFFS, so the
+# theme only counts as a fit when the deck actually fields some.
+_COST_THEMES = {
+    "graveyard": "graveyard",
+    "mill": "graveyard",
+    "discard": "graveyard",
+    "self-mill": "graveyard",
+}
+_COST_THEME_MIN_PAYOFFS = 2
+
+
+def _drop_cost_themes(shared, cards, carddata):
+    """Remove cost-shaped themes from a shared-theme list unless the deck fields at least
+    `_COST_THEME_MIN_PAYOFFS` cards that PAY THEM OFF. Themes with no cost interpretation
+    pass through untouched."""
+    risky = {t for t in shared if t.lower() in _COST_THEMES}
+    if not risky:
+        return shared
+    payoffs = {}
+    for q, n, _s, _c in cards:
+        cd = carddata.get(n.lower())
+        if not cd:
+            continue
+        for theme, sides in engine_roles(cd.get("text") or "").items():
+            if "payoff" in sides:
+                payoffs[theme] = payoffs.get(theme, 0) + q
+    keep = []
+    for t in shared:
+        engine = _COST_THEMES.get(t.lower())
+        if engine and payoffs.get(engine, 0) < _COST_THEME_MIN_PAYOFFS:
+            continue      # the deck pays the cost but collects no reward — not a fit
+        keep.append(t)
+    return keep
+
+
+def cost_upside_flags(text, deck_themes):
+    """['<why>'] for each additional cost / drawback in `text` that this deck's themes
+    turn into an UPSIDE. Empty when the deck doesn't support it — the point is that the
+    same clause is a downside elsewhere."""
+    t = _norm_role_text(text)
+    themes = {str(x).lower() for x in (deck_themes or ())}
+    return [why for rx, want, why in _COST_UPSIDE if rx.search(t) and (want & themes)]
 
 # Coverage self-audit (F15). The role classifier above is PRECISE (low false
 # positives) but inevitably misses phrasings, silently UNDER-counting — the recurring
@@ -867,6 +1065,17 @@ _CA_CUES = re.compile(
     r"|draw cards? equal to|draw a card for each"
     r"|\binvestigate\b",
     re.I)
+
+# The audit net MUST be a SUPERSET of what the precise classifier can match, or a
+# phrasing can be missed by BOTH — which is exactly what happened to Repulsive
+# Mutation ("counter up to one target spell unless…"): too narrow for the Counter
+# pattern AND absent from the broad cue, so the under-read wasn't even flagged.
+# Unioning the precise interaction/card-advantage patterns in makes that structurally
+# impossible: anything the classifier CAN see, the net also sees, and the flag still
+# only fires when the classifier tagged no matching role.
+_INT_CUE_PATS = [_INT_CUES] + [p for lbl in sorted(_INTERACTION_ROLES)
+                               for p in _ROLE_COMPILED_MAP[lbl]]
+_CA_CUE_PATS = [_CA_CUES] + _ROLE_COMPILED_MAP["Card advantage"]
 
 
 def role_coverage_flags(cards, carddata):
@@ -894,10 +1103,17 @@ def role_coverage_flags(cards, carddata):
             continue
         text = cd.get("text") or ""
         roles = set(classify_roles(text))
+        # Match the cues against the SAME normalized form classify_roles uses, and
+        # against the superset net, so the audit can't be blind where the classifier is.
+        t = _norm_role_text(text)
         missed = []
-        if _INT_CUES.search(text) and not (roles & _INTERACTION_ROLES):
+        if any(p.search(t) for p in _INT_CUE_PATS) and not (roles & _INTERACTION_ROLES):
             missed.append("interaction")
-        if _CA_CUES.search(text) and "Card advantage" not in roles:
+        # A loot is deliberately NOT card advantage, so strip it before testing the
+        # card-advantage cue — otherwise every looter would be reported as an
+        # under-read of the very rule that excludes it.
+        if (any(p.search(_LOOT_RE.sub(" ", t)) for p in _CA_CUE_PATS)
+                and "Card advantage" not in roles):
             missed.append("card advantage")
         if missed:
             under_read.append((n, "/".join(missed)))
@@ -906,10 +1122,24 @@ def role_coverage_flags(cards, carddata):
     return unclassified, under_read, no_data
 
 
+def _norm_role_text(text):
+    """Lowercased, unicode-minus-normalized oracle text — the one form every role
+    pattern and coverage cue is matched against, so the precise classifier and its
+    audit net can't disagree about the input either."""
+    return (text or "").lower().replace("−", "-")
+
+
 def classify_roles(text):
     """Return the set of functional-role labels a card's oracle text matches."""
-    t = (text or "").lower().replace("−", "-")  # normalize unicode minus
-    return {label for label, pats in _ROLE_COMPILED if any(p.search(t) for p in pats)}
+    t = _norm_role_text(text)
+    roles = {label for label, pats in _ROLE_COMPILED if any(p.search(t) for p in pats)}
+    if "Card advantage" in roles and _LOOT_RE.search(t):
+        # Blank the loot clause(s) and re-test: only drop the role when nothing ELSE
+        # in the text is a real net-positive draw (a card can loot AND draw).
+        stripped = _LOOT_RE.sub(" ", t)
+        if not any(p.search(stripped) for p in _ROLE_COMPILED_MAP["Card advantage"]):
+            roles.discard("Card advantage")
+    return roles
 
 
 # Mana production, detected broadly enough to catch dorks the "Ramp / fixing" role
@@ -1679,6 +1909,26 @@ def cmd_stats(args):
         print(f"  {'interaction total':20} {role_counts['interaction']:3}  "
               "(distinct removal/sweeper/counter cards)")
 
+    # PROTECTION axis. The role table's "Protection / trick" bucket mixes combat pumps
+    # in with real answers to removal, so a deck could show a healthy trick count while
+    # having no way at all to keep its key permanent alive. Report the narrow measure,
+    # and say so loudly at zero — especially when a `#: protect:` header names cards the
+    # deck is built around, which is the case where a single removal spell ends the game
+    # plan. (Found by hand-grepping a deck, not by any tool — that gap is the point.)
+    prot = role_counts.get("protection", 0)
+    print(f"  {'protection':20} {prot:3}  (ward/hexproof/indestructible-class — real "
+          "answers to removal, not combat pumps)")
+    if not prot:
+        signature = _protected(meta)
+        if signature:
+            print(f"    ⚠ ZERO protection, but `#: protect:` names {len(signature)} "
+                  f"build-around card(s) ({', '.join(sorted(signature)[:3])}"
+                  + ("…" if len(signature) > 3 else "")
+                  + ") — one removal spell undoes the plan.")
+        else:
+            print("    ⚠ ZERO protection — nothing here answers targeted removal on a key "
+                  "permanent; fine for a spell-based deck, a real gap for a threat-based one.")
+
     # Interaction profile (#5): the raw count treats all interaction alike, but a suite
     # that's all sorcery-speed and creature-only has real gaps. Break it down by speed
     # and by whether it can answer a NONCREATURE permanent (planeswalker / enchantment /
@@ -1853,7 +2103,6 @@ GENERIC_THEMES = {
 # tribe from carrying a home by itself. Kept separate from GENERIC_THEMES so other
 # consumers (which compare Title-case) are unaffected — fit_strength lowercases.
 _GENERIC_TRIBES = {"human", "hero", "villain"}
-_INTERACTION_ROLES = {"Removal (spot)", "Sweeper", "Counter"}
 
 
 def role_tally(cards, carddata):
@@ -1868,9 +2117,10 @@ def role_tally(cards, carddata):
         two — the per-role buckets still credit each role for the stats display),
       • basics and nonbasic lands are skipped.
     Returns a dict: each role → weighted count, plus 'interaction' (once-per-card
-    union of Removal/Sweeper/Counter) and 'card_advantage'."""
+    union of Removal/Sweeper/Counter), 'card_advantage', and 'protection' (real
+    ward/hexproof/indestructible-class effects — see `protection_effects`)."""
     per_role = {}
-    interaction = ca = 0
+    interaction = ca = prot = 0
     for q, n, s, c in cards:
         if n.lower() in BASICS:
             continue
@@ -1884,8 +2134,11 @@ def role_tally(cards, carddata):
             interaction += q
         if "Card advantage" in roles:
             ca += q
+        if protection_effects(cd["text"]):
+            prot += q
     per_role["interaction"] = interaction
     per_role["card_advantage"] = ca
+    per_role["protection"] = prot
     return per_role
 
 
@@ -2008,21 +2261,62 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
     return "role-player"
 
 
+def cross_deck_breadth(card_colors, card_themes, fps):
+    """How many decks a card is BOTH castable in AND shares ≥1 SPECIFIC theme with —
+    the single definition of "cross-deck breadth" in this toolkit.
+
+    `fps` is [(deck_id, castable_colors:set, specific_themes:set), …]. Callers supply
+    their own per-deck specific-theme set, because the two ranking models legitimately
+    decide "specific" differently and that difference is deliberate:
+      • `deck.suggest_scored` uses the GENERIC_THEMES/_GENERIC_TRIBES denylist plus the
+        `#: protect:` signature rescue (`_sim_specific`), the same test `similar` uses;
+      • `wishlist._rank_scores` uses the idf threshold (`spec_idf`) + NON_SIGNAL_TAGS,
+        which self-calibrates to the deck count.
+    What must NOT differ is the COUNTING RULE, and it used to: two hand-written copies
+    drifted until one required a specific theme and the other accepted any central one,
+    so `suggest`'s column saturated at 99% while the wishlist's stayed meaningful
+    (broad-scan F-04). Routing both through here makes that impossible; `check_suggest`
+    anchor 13 asserts the two agree on a synthetic card."""
+    return sum(1 for _id, dcols, dthemes in fps
+               if card_colors <= dcols and (card_themes & dthemes))
+
+
 def _deck_fingerprints(meta, exclude_id=None):
-    """[(id, colors:set, central_themes:set), ...] for every deck — used to score a
-    craft target's cross-deck reuse (a card that fits several of your decks is worth
-    more per wildcard). Colors are the deck's declared `#: colors:` (else the union
-    of its cards' identities); themes are the deck's CENTRAL synergy tags (weighted
-    by copies, then thresholded via _central_themes) rather than every tag that
-    appears once — so reuse counts a deck only when the card is genuinely on-theme
-    for it, not merely sharing an incidental keyword.
+    """[(id, colors:set, specific_central_themes:set), ...] for every deck — used to
+    score a craft target's cross-deck reuse (a card that fits several of your decks is
+    worth more per wildcard). Colors are the deck's declared `#: colors:` (else the
+    union of its cards' identities).
+
+    Themes are the deck's central synergy tags NARROWED TO THE SPECIFIC ones — the
+    same `_sim_specific` test `similar` uses, so a GENERIC theme (etb / tokens /
+    counters / lifegain …) or a broad background tribe can't carry a home, while a
+    generic theme that IS this deck's `#: protect:` spine still counts. Centrality
+    alone was not enough: nearly every deck is central on the same handful of generic
+    themes, so the reuse count saturated — 99% of a deck's picks scored >=3 and the
+    median pick "fit" 31 of 56 other decks, which made the ★ high-reuse callout and
+    the per-wildcard signal it feeds carry no information at all (audit F-04). This is
+    the gate `wishlist._rank_scores` already applies to its own breadth column; the
+    two now measure the same thing.
+
+    VARIANTS ARE COLLAPSED to their core deck. A variant is an alternate build of the
+    same archetype, so counting 19, 19b and 19c as three homes triple-counts one deck's
+    worth of value — the second inflation source in this signal, and the same reasoning
+    `wishlist._theme_model` documents for its own idf/breadth model. Excluding a deck by
+    `exclude_id` therefore excludes its whole family, so analyzing 19b can't count 19.
 
     `exclude_id` drops one deck from the roster (the deck being analyzed), so a
     suggestion's reuse count is 'how many OTHER decks it fits' — otherwise the
     current deck always counts itself and inflates every score by one."""
     fps = []
-    for dd in discover_decks():
-        if exclude_id is not None and dd["id"].lower() == exclude_id.lower():
+    skip_core = None
+    if exclude_id is not None:
+        skip_core = next((d["core"] for d in roster_decks()
+                          if d["id"].lower() == exclude_id.lower()), None)
+    for dd in roster_decks():
+        if dd["variant"]:
+            continue                      # an alternate build of a core already counted
+        if exclude_id is not None and (dd["id"].lower() == exclude_id.lower()
+                                       or (skip_core is not None and dd["core"] == skip_core)):
             continue
         dm, cards = parse_deck_file(dd["path"])
         colors, ident, theme_w = _declared_colors(dm), set(), {}
@@ -2035,7 +2329,12 @@ def _deck_fingerprints(meta, exclude_id=None):
             ident |= m["colors"]
             for t in m["synergies"]:
                 theme_w[t] = theme_w.get(t, 0) + q
-        fps.append((dd["id"], colors or ident, _central_themes(theme_w)))
+        # A generic theme is rescued only when it's a real BUILD-AROUND spine (carried
+        # by >=2 `#: protect:` cards) — the stricter signature test, so a lone protected
+        # bomb's incidental etb/card-draw tag can't re-open the saturation it closes.
+        sig = _strong_signature_themes(dm, cards, meta)
+        specific = {t for t in _central_themes(theme_w) if _sim_specific(t, sig)}
+        fps.append((dd["id"], colors or ident, specific))
     return fps
 
 
@@ -2057,30 +2356,43 @@ def pool_staleness_days():
         return None
 
 
-def rotation_risk(released, years=3):
-    """True if a set released more than ~`years` ago — Standard's rough rotation
-    window — so a still-`standard`-marked pick may have rotated (stale pool) or
-    rotates soon. Empty/absent `released` → False (graceful before a pool rebuild
-    captures the Released column)."""
-    if not released:
-        return False
-    try:
-        import datetime
-        rel = datetime.date.fromisoformat(released[:10])
-        return (datetime.date.today() - rel).days > 365 * years
-    except Exception:
-        return False
+# Sets whose Standard legality does NOT follow the release-date + 3 years rule, keyed
+# by Arena set code → the year they actually leave Standard.
+#
+# FOUNDATIONS is the case that matters: it is deliberately Standard-legal for FIVE years
+# (through 2029), not three. Because the pool keys ONE printing per card, a card whose
+# newest printing is in FDN inherits FDN's 2024 release date and read "⚠rot~2027" — so
+# Genesis Wave, legal for another four years, was flagged as "don't spend a wildcard on
+# a card about to leave the format." CLAUDE.md documented the reprint caveat in prose;
+# this encodes it. Add a row here whenever a set gets an announced non-standard window.
+_SET_ROTATION_OVERRIDE = {
+    "FDN": 2029,   # Foundations — announced Standard-legal through 2029
+}
 
 
-def rotation_year(released, years=3):
+def rotation_year(released, years=3, set_code=""):
     """The year a set rotates out of Standard — its release year + `years` (Standard's
-    ~3-year window) — or None if the date is blank/unparseable. The single primitive
-    behind both `rotation_sweep` and the wishlist ⚠rot flag, so 'when does this rotate'
-    is computed one way everywhere."""
+    ~3-year window), or an announced date from `_SET_ROTATION_OVERRIDE`. None if the
+    date is blank/unparseable. The single primitive behind `rotation_sweep`, the
+    wishlist ⚠rot flag and `rotation_risk`, so 'when does this rotate' is computed one
+    way everywhere."""
+    override = _SET_ROTATION_OVERRIDE.get((set_code or "").strip().upper())
+    if override:
+        return override
     try:
         return int((released or "")[:4]) + years
     except (ValueError, TypeError):
         return None
+
+
+def rotation_risk(released, years=3, set_code=""):
+    """True if a card is past ~`years` of Standard life — so a still-`standard`-marked
+    pick may have rotated (stale pool) or rotates soon. Routed through `rotation_year`
+    so an announced long-legality set (Foundations) can't be false-flagged. Empty or
+    unparseable `released` → False (graceful before a pool rebuild captures the column)."""
+    import datetime
+    yr = rotation_year(released, years, set_code)
+    return bool(yr) and yr <= datetime.date.today().year
 
 
 def _pool_rotation_index():
@@ -2133,7 +2445,7 @@ def rotation_sweep(fmt="standard", years=3, within=2):
     pool, has_released = _pool_rotation_index()
     fmt = (fmt or "").strip().lower()
     decks_out, rollup, unverified = [], {}, 0
-    for d in discover_decks():
+    for d in roster_decks():
         dm, cards = parse_deck_file(d["path"])
         if fmt and (dm.get("format") or "").strip().lower() != fmt:
             continue
@@ -2149,7 +2461,7 @@ def rotation_sweep(fmt="standard", years=3, within=2):
             released, legals, setc = info
             if fmt and legals and fmt not in legals:
                 continue  # not legal in this format anyway — it can't "rotate out" of it
-            rotates = rotation_year(released, years)
+            rotates = rotation_year(released, years, setc)
             if rotates is None:
                 continue  # no usable release date — can't place it on the timeline
             if rotates > this_year + within:
@@ -2201,11 +2513,11 @@ def brawl_readiness(fmt_filter="standard"):
     carddata = load_card_data()
     leg = load_legalities()
     # cores that already have a Brawl variant (so we can mark them done)
-    converted = {d["core"] for d in discover_decks()
+    converted = {d["core"] for d in roster_decks()
                  if str(d["id"]).endswith("-brawl")}
     fmt_filter = (fmt_filter or "").strip().lower()
     rows = []
-    for d in discover_decks():
+    for d in roster_decks():
         meta, cards = parse_deck_file(d["path"])
         if fmt_filter and (meta.get("format") or "").strip().lower() != fmt_filter:
             continue
@@ -2259,6 +2571,8 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
       themes     – top-6 [(theme, weight)] for the header line.
       fmt/apply_fmt/has_leg – format-filter state for the header messages.
       picks      – [{name, rarity, owned, decks, score, matches:[themes]}], ranked.
+                   `decks` = cross-deck reuse: other decks the card is castable in AND
+                   shares a SPECIFIC central theme with (see `_deck_fingerprints`).
       total      – len(picks) (== the shown count).
       hi_reuse   – [(name, decks)] for craftable picks that fit >=3 other decks.
     """
@@ -2389,12 +2703,12 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         h = owned_of(name.lower())
         card_cols = card_colors(r.get("Color(s)"))
         card_themes = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
-        fits = sum(1 for _id, dc, dt in fps if card_cols <= dc and (card_themes & dt))
+        fits = cross_deck_breadth(card_cols, card_themes, fps)
         if h == 0 and fits >= 3:
             hi_reuse.append((name, fits))
         picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(),
                       "owned": h, "decks": fits, "score": score, "matches": shared,
-                      "rotates": rotation_risk(r.get("Released") or "")})
+                      "rotates": rotation_risk(r.get("Released") or "", set_code=r.get("Set Code") or "")})
 
     res.update(ok=True, colors=deck_colors,
                themes=sorted(theme_w.items(), key=lambda kv: -kv[1])[:6],
@@ -2843,7 +3157,8 @@ def cmd_suggest(args):
           + (f" ({', '.join(f'{n} {r}' for r, n in sorted(craftby.items()))})"
              if ncraft else ""))
     print("Decks = how many of your OTHER decks the card is castable in + shares a "
-          "CENTRAL theme with (higher = more value per wildcard).")
+          "SPECIFIC central theme with — generic overlap (etb/tokens/counters/…) and "
+          "broad tribes don't count (higher = more value per wildcard).")
     if res["hi_reuse"]:
         print("High cross-deck reuse: "
               + ", ".join(f"{n} ({k})" for n, k in sorted(res["hi_reuse"], key=lambda x: -x[1])[:6]))
@@ -3417,6 +3732,63 @@ def _cards_after_swap(cards, cut, add, add_printing):
     return out
 
 
+# Section comments a swap can INHERIT and thereby falsify. The add takes the cut's line
+# slot, so it lands under whatever `# ...` header preceded the cut — which is how
+# Broodguard Elite (a counter battery) ended up filed under `# Card advantage`, the
+# section Kiora had occupied. Harmless to the tooling, but the file then lies to the
+# next reader, and these files are read far more often than they're parsed.
+#
+# Only sections whose meaning is UNAMBIGUOUS are checked. "# Counter DOUBLERS" means
+# +1/+1 counters, not counterspells, and "# Threats" / "# Creatures" / "# Payoff" are
+# too broad to contradict — a false warning on every swap would train the reader to
+# ignore the real ones.
+_SECTION_EXPECTATIONS = [
+    (re.compile(r"card advantage|card draw", re.I), {"Card advantage"}),
+    (re.compile(r"\bremoval\b|\binteraction\b|counterspell", re.I),
+     {"Removal (spot)", "Sweeper", "Counter"}),
+    (re.compile(r"\bramp\b|\bfixing\b|\bdorks?\b", re.I), {"Ramp / fixing"}),
+]
+
+
+def section_mismatch(lines, idx, add_name, carddata):
+    """A warning string when the card now sitting at `lines[idx]` doesn't do what its
+    enclosing `# section` comment claims, else None. Advisory only — it never edits the
+    file, and it stays silent for ambiguous or absent section headers."""
+    header = None
+    for j in range(idx - 1, -1, -1):
+        ln = lines[j].strip()
+        if _card_line_name(lines[j]):
+            continue                      # another card in the same section
+        if ln.startswith("#:") or ln.startswith("#~") or not ln:
+            continue                      # metadata / flex / blank
+        if ln.startswith("#"):
+            header = ln.lstrip("# ").strip()
+            break
+    if not header:
+        return None
+    cd = carddata.get((add_name or "").strip().lower())
+    if not cd:
+        return None
+    roles = classify_roles(cd.get("text") or "")
+    for rx, expected in _SECTION_EXPECTATIONS:
+        if not rx.search(header):
+            continue
+        if roles & expected:
+            return None
+        if roles:
+            # High confidence: we know what the card does, and it isn't this.
+            return (f"{add_name} now sits under `# {header}` (inherited from the cut "
+                    f"card's slot) but classifies as {', '.join(sorted(roles))} — move "
+                    f"the line or retitle the section so the file doesn't mislead.")
+        # Low confidence: the classifier found NO role. This session established that
+        # "no role" often means a lexicon gap rather than a weak card, so this is
+        # phrased as a prompt to look, not as an assertion that the card is misfiled.
+        return (f"{add_name} now sits under `# {header}` (inherited from the cut card's "
+                f"slot); nothing in its text matched a functional role, so verify the "
+                f"section still describes it.")
+    return None
+
+
 def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
     """Apply the swap to raw file lines: -1 copy of `cut` (removed if it was a
     singleton, else decremented) with the `add` line taking its slot; optionally
@@ -3494,7 +3866,13 @@ def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
 
 def _safe_write_lines(path, lines, expected_total):
     """temp write -> INV-04 parse-check (parses cleanly AND total copies ==
-    expected) -> timestamped .bak -> atomic replace. Returns the .bak path."""
+    expected) -> timestamped .bak -> atomic replace. Returns the .bak path.
+
+    The .bak name comes from the shared `lib.backup_path` (microsecond stamp +
+    collision counter), like every other backup in the toolkit. A local
+    second-precision name meant two writes in the same second — e.g. a skill applying
+    a set of swaps in sequence — silently overwrote the pre-edit snapshot (audit F-03,
+    the F22 fix that never reached deck.py)."""
     target = os.path.abspath(path)
     text = "\n".join(lines).rstrip("\n") + "\n"
     fd, tmp = tempfile.mkstemp(suffix=".txt", dir=os.path.dirname(target))
@@ -3507,7 +3885,7 @@ def _safe_write_lines(path, lines, expected_total):
         if got != expected_total:
             raise ValueError(f"post-write copy count {got} != expected "
                              f"{expected_total}; not saved.")
-        bak = f"{target}.{time.strftime('%Y%m%d-%H%M%S')}.bak"
+        bak = backup_path(target)
         shutil.copy2(target, bak)
         os.replace(tmp, target)
         tmp = None
@@ -3602,6 +3980,15 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
           f"(backup: {os.path.basename(bak)}).")
     if flex_entry is not None:
         print("Removed the consumed flex line.")
+    # The add inherits the cut's line slot, and therefore the cut's `# section` comment.
+    # Warn when that makes the file lie (advisory — the swap is already written, and
+    # moving a line is a human editorial call, not something to do automatically).
+    ai = next((i for i, ln in enumerate(new_lines)
+               if (_card_line_name(ln) or "").lower() == add.strip().lower()), None)
+    if ai is not None:
+        warn = section_mismatch(new_lines, ai, add.strip(), load_card_data())
+        if warn:
+            print(f"  ⚠ section comment: {warn}")
     return 0
 
 
@@ -3894,6 +4281,8 @@ def rank_cut_candidates(d):
         tribal = sum(sub_count.get(st, 0) for st in subs)  # includes own copies
         cost, mv = (mana.get(nl) or (None, None))
         ctx = context_flags(text, cost)
+        # Cost-as-upside: does this card's 'drawback' actually feed THIS deck?
+        upside = cost_upside_flags(text, central)
         sig_hit = bool(set(tags) & signature)          # shares the deck's protected spine
         is_int = bool(set(roles) & _INTERACTION_ROLES)  # removal / sweeper / counter
 
@@ -3902,6 +4291,9 @@ def rank_cut_candidates(d):
         # something pure theme-fit can't distinguish (a vanilla and a bomb sharing one tag
         # look equal). Bounded (±_CUTS_POWER_CAP), so it only breaks near-ties (see
         # _cuts_power_adj / check_suggest #7); it never overrides theme fit.
+        # NOTE: `rar` is load_rarities() — Arena wildcard LETTERS ("M"/"R"/"U"/"C"), not
+        # rarity words. wishlist._norm_rarity accepts both shapes; before it did, every
+        # rare/mythic fell through to the default floor and seeded as an uncommon (F-01).
         power = _power_seed({"Rarity": rar.get(nl, ""), "Card Text": text, "Type": tline})
         pow_adj = _cuts_power_adj(power)
 
@@ -3934,7 +4326,8 @@ def rank_cut_candidates(d):
             reasons.append(f"on-theme but low power (~{power:.1f})")
         if uniq <= 1.5 and not sig_hit:
             reasons.append("generic ability — trips broad synergy checks")
-        rows.append((keep, n, mv, sorted(roles), fit, reasons, ctx, text, is_int, power, uniq))
+        rows.append((keep, n, mv, sorted(roles), fit, reasons, ctx, text, is_int, power,
+                     uniq, upside))
 
     rows.sort(key=lambda r: (r[0], r[1].lower()))
     return rows, central, prot_present, deck_int
@@ -3969,7 +4362,7 @@ def cmd_cuts(args):
               f"⚠interaction are your removal/counters; cutting them lowers resilience.")
     print(f"  {'Card':30} {'MV':>3}  {'Fit':>4}  {'Pw':>3}  {'Uq':>3}  Roles / why-cuttable")
     print("-" * 82)
-    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq in rows[:limit]:
+    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq, upside in rows[:limit]:
         mvs = str(mv) if mv is not None else "?"
         tail = ", ".join(roles) if roles else ("; ".join(reasons) if reasons else "—")
         low_pow = [r for r in reasons if r.startswith("on-theme but low power")]
@@ -3982,6 +4375,10 @@ def cmd_cuts(args):
             tail += f"   ⚠ context: {'/'.join(ctx)}"
         if is_int:
             tail += f"   ⚠interaction (deck runs {deck_int})"
+        # A card whose COST this deck turns into an upside is easy to mis-cut: every
+        # model here grades it in isolation, where the cost reads as a drawback.
+        if upside:
+            tail += f"   ⚡cost-as-upside HERE ({upside[0]})"
         print(f"  {n[:30]:30} {mvs:>3}  {fit:>4}  {power:>3.0f}  {uniq:>3.0f}  {tail}")
 
     # Surface the actual oracle text so a cut is graded from what the card DOES,
@@ -3990,10 +4387,12 @@ def cmd_cuts(args):
     text_n = args.limit if getattr(args, "limit", 0) and args.limit > 0 else min(12, len(rows))
     print(f"\n── Oracle text of the top {min(text_n, len(rows))} cut candidates "
           f"(grade from THIS, not the label) ──")
-    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq in rows[:text_n]:
+    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq, upside in rows[:text_n]:
         warn = f"   ⚠ context: {'/'.join(ctx)} — value depends on this deck" if ctx else ""
         if is_int:
             warn += f"   ⚠interaction — 1 of the deck's {deck_int}"
+        for u in upside:
+            warn += f"\n    ⚡ cost-as-upside in THIS deck: {u}"
         print(f"\n• {n}{warn}")
         for para in (text or "(no oracle text on file)").split("\n"):
             for line in (textwrap.wrap(para, width=86) or [""]):
@@ -4057,6 +4456,197 @@ def cmd_verify(args):
     print("  (+ = the paste has more, − = the repo has more; compared by card name/qty "
           "— printings & basic-land art are the same card.)")
     return 1
+
+
+# --- sync: reconcile stored decks FROM a multi-deck Arena paste -------------- #
+# `verify` answers "did deck N drift?" for ONE deck you already identified, and the
+# dashboard's stale-check answers it for many — but neither WRITES, so the actual repair
+# was always "read a diff, then hand-edit N files". `sync` closes that loop: paste
+# everything you exported from Arena, and it matches each block to its stored deck and
+# reconciles the files. The matching rule is deliberately identical to the dashboard
+# panel's (closest by total drift, with a shared-card floor and a low-confidence flag),
+# since the two answer the same question; that JS copy can't share this code, so any
+# change here belongs there too (build_dashboard.py, the stale-deck compare block).
+_DECK_MARKER_RE = re.compile(r"^deck\s*$", re.I)
+
+
+def split_paste(text):
+    """An Arena paste containing one or MANY decks -> a list of line-blocks. Arena
+    exports start each deck with a bare `Deck` line; text before the first one is
+    treated as its own block, so a single-deck paste with no marker still works."""
+    segs, cur = [], None
+    for ln in (text or "").splitlines():
+        if _DECK_MARKER_RE.match(ln.strip()):
+            cur = []
+            segs.append(cur)
+            continue
+        if cur is None:
+            cur = []
+            segs.append(cur)
+        cur.append(ln)
+    return [s for s in segs if any(x.strip() for x in s)]
+
+
+def _ms_diff(pasted, stored):
+    """(added, removed, diffs) between two `_multiset`s — `+` = the paste has more."""
+    added = removed = 0
+    diffs = []
+    for nl in sorted(set(pasted) | set(stored)):
+        p = pasted.get(nl, (None, 0))[1]
+        s = stored.get(nl, (None, 0))[1]
+        disp = pasted.get(nl, (None, 0))[0] or stored.get(nl, (None, 0))[0] or nl
+        if p > s:
+            added += p - s
+            diffs.append(("+", p - s, disp))
+        elif s > p:
+            removed += s - p
+            diffs.append(("-", s - p, disp))
+    return added, removed, diffs
+
+
+def match_paste(pasted, decks):
+    """Best stored deck for one pasted block (Arena exports carry no deck name).
+
+    `decks` is [(deck_record, multiset)]. Returns a dict describing the match, or
+    ``{'unmatched': True}`` when nothing is close enough. Same rule as the dashboard:
+    minimise total drift; require the block to share at least max(3, 30% of its distinct
+    cards) with the deck, so an unrelated paste doesn't get force-fitted; flag LOW
+    CONFIDENCE when the runner-up is within 2 drift and nearly as many shared cards
+    (variants of one core deck look alike, and picking the wrong sibling would rewrite
+    the wrong file)."""
+    uniq = len(pasted)
+    ranked = []
+    for d, ms in decks:
+        added, removed, diffs = _ms_diff(pasted, ms)
+        shared = sum(1 for nl in pasted if nl in ms)
+        ranked.append({"deck": d, "drift": added + removed, "shared": shared,
+                       "added": added, "removed": removed, "diffs": diffs})
+    if not ranked:
+        return {"unmatched": True, "uniq": uniq}
+    ranked.sort(key=lambda r: (r["drift"], -r["shared"], r["deck"]["id"]))
+    best = ranked[0]
+    if best["shared"] < max(3, uniq * 0.3):
+        return {"unmatched": True, "uniq": uniq}
+    runner = ranked[1] if len(ranked) > 1 else None
+    best["lowconf"] = bool(runner and runner["drift"] - best["drift"] <= 2
+                           and runner["shared"] >= best["shared"] * 0.8)
+    best["runner_up"] = runner["deck"] if (runner and best["lowconf"]) else None
+    best["sync"] = best["drift"] == 0
+    best["uniq"] = uniq
+    return best
+
+
+def reconcile_lines(lines, target, printings):
+    """Rewrite a deck file's raw lines so its card list becomes `target` (a `_multiset`).
+
+    Line-level editing, like `_swap_edit_lines`: an existing card line keeps its printing
+    and section position and only its QUANTITY changes, a card no longer in the list has
+    its line dropped, and genuinely new cards are appended after the last card line — so
+    `# Creatures` / `# Lands` comments, the `#:` header and `#~` flex lines all survive.
+    A card split across two printing lines has its whole quantity assigned to the first
+    and the rest dropped, matching `_multiset`'s printing-fungible view."""
+    remaining = {nl: q for nl, (_disp, q) in target.items()}
+    out, last_card = [], -1
+    for ln in lines:
+        nm = _card_line_name(ln)
+        if nm is None:
+            out.append(ln)
+            continue
+        nl = nm.lower()
+        want = remaining.pop(nl, None)
+        if not want:
+            continue                      # dropped from the deck (or a consumed 2nd line)
+        m = LINE_RE.match(ln.split("#", 1)[0].strip())
+        indent = ln[:len(ln) - len(ln.lstrip())]
+        rebuilt = f"{indent}{want} {m.group(2).strip()}"
+        if m.group(3):
+            rebuilt += f" ({m.group(3).strip()})" + (f" {m.group(4).strip()}" if m.group(4) else "")
+        out.append(rebuilt)
+        last_card = len(out) - 1
+    new = []
+    for nl, q in remaining.items():
+        if not q:
+            continue
+        disp, setc, coll = printings.get(nl, (target[nl][0], "", ""))
+        line = f"{q} {disp}"
+        if setc:
+            line += f" ({setc})" + (f" {coll}" if coll else "")
+        new.append(line)
+    at = last_card + 1 if last_card >= 0 else len(out)
+    return out[:at] + sorted(new) + out[at:]
+
+
+def cmd_sync(args):
+    """Reconcile stored deck files FROM a pasted Arena export — the write half of
+    `verify`. Dry-run by default; `--apply` writes each drifted deck with a `.bak` and
+    the INV-04 re-check."""
+    try:
+        text = sys.stdin.read() if args.source == "-" else open(args.source, encoding="utf-8").read()
+    except OSError as e:
+        eprint(f"Could not read {args.source!r}: {e}")
+        return 1
+    from import_arena import parse as parse_arena
+    blocks = split_paste(text)
+    if not blocks:
+        eprint("No deck blocks found in the paste.")
+        return 1
+
+    decks = [(d, _multiset(parse_deck_file(d["path"])[1])) for d in discover_decks()]
+    printings = _printing_index()
+    results, rc = [], 0
+    print(f"Sync — {len(blocks)} pasted deck block(s) vs {len(decks)} stored decks\n")
+    for i, block in enumerate(blocks, 1):
+        entries, warnings = parse_arena("\n".join(block))
+        for w in warnings:
+            eprint(f"WARN:  block {i}: {w}")
+        if not entries:
+            continue
+        pasted = _multiset(entries)
+        m = match_paste(pasted, decks)
+        if m.get("unmatched"):
+            n = sum(q for q, *_ in entries)
+            print(f"  ? block {i}: {n} cards, {m['uniq']} unique — no close stored deck "
+                  "(a new deck? add it with /add-deck).")
+            rc = 1
+            continue
+        d = m["deck"]
+        label = f"#{d['id']} {d['name'] or d['id']}"
+        if m["sync"]:
+            print(f"  ✓ {label} — in sync")
+            continue
+        rc = 1
+        conf = (f"   ⚠ low confidence — #{m['runner_up']['id']} is nearly as close"
+                if m.get("runner_up") else "")
+        print(f"  ⟳ {label} — drifted: {m['added']} added / {m['removed']} removed{conf}")
+        for sign, qty, nm in m["diffs"]:
+            print(f"        {sign}{qty}  {nm}")
+        results.append((d, pasted, m))
+
+    if not results:
+        print("\nEvery matched deck is already in sync. ✓")
+        return rc
+    if not getattr(args, "apply", False):
+        print(f"\n(dry run — {len(results)} deck file(s) would be rewritten to match the "
+              "paste; pass --apply to write, each with a .bak)")
+        return rc
+    for d, pasted, m in results:
+        if m.get("lowconf") and not getattr(args, "force", False):
+            eprint(f"  ✗ #{d['id']}: skipped — low-confidence match (#{m['runner_up']['id']} "
+                   "is nearly as close). Re-paste that deck alone, or pass --force.")
+            continue
+        with open(d["path"], encoding="utf-8") as fh:
+            lines = fh.read().split("\n")
+        try:
+            new_lines = reconcile_lines(lines, pasted, printings)
+            bak = _safe_write_lines(d["path"], new_lines,
+                                    sum(q for _disp, q in pasted.values()))
+        except ValueError as e:
+            eprint(f"  ✗ #{d['id']}: not saved — {e}")
+            continue
+        print(f"  ✓ #{d['id']}: wrote {os.path.relpath(d['path'], REPO_ROOT)} "
+              f"(backup: {os.path.basename(bak)})")
+    print("\nRe-check with `deck.py check <id>` / `deck.py preflight <id>`.")
+    return rc
 
 
 def _interaction_count(cards, carddata):
@@ -4165,7 +4755,7 @@ def audit_roster():
     """Score every deck for the roster triage — loads each reference CSV once, then
     runs audit_deck per deck. Returns the list of row dicts (unsorted, discovery
     order). Shared by the CLI and the dashboard."""
-    decks = discover_decks()
+    decks = roster_decks()
     refs = dict(by_name_qty=load_collection()[2], carddata=load_card_data(),
                 mana=load_mana(), leg=load_legalities(), cmeta=load_card_meta())
     return [audit_deck(d, **refs) for d in decks]
@@ -4601,6 +5191,7 @@ def cmd_suggest_homes(args):
                 if e and e[1] is not None:
                     d_mvs += [e[1]] * q
         shared = sorted(ctags & _central_themes(theme_w))
+        shared = _drop_cost_themes(shared, cards, carddata)
         if not shared:
             continue
         deck_avg_mv = sum(d_mvs) / len(d_mvs) if d_mvs else 0.0
@@ -4708,7 +5299,8 @@ def deck_quality_vector(d):
     declared_hdr = _declared_colors(dmeta)
     declared = declared_hdr or _deck_castable_colors(dmeta, cards, mana)
     uncast, _off = _castability(cards, declared, mana, carddata)
-    d_int, d_ca = deck_role_counts(cards, carddata)
+    _tally = role_tally(cards, carddata)
+    d_int, d_ca = _tally["interaction"], _tally["card_advantage"]
     return {
         "buildable": missing == 0 and short == 0, "missing": missing, "short": short,
         # Whether castability was audited against a DECLARED identity. Without a
@@ -4716,6 +5308,10 @@ def deck_quality_vector(d):
         # uncastable is 0 by construction (unverified, not a clean bill) — audit F16.
         "colors_declared": bool(declared_hdr),
         "uncastable": len(uncast), "interaction": d_int, "card_advantage": d_ca,
+        # Real ward/hexproof/indestructible-class effects. Reported, NOT fed into
+        # `tier_band` — the floor's formula is anchored by check_tier.py and a new term
+        # would silently re-grade the whole roster. Surfaced so a human sees a zero.
+        "protection": _tally["protection"],
         "avg_mv": round(sum(mvs) / len(mvs), 2) if mvs else 0.0, "early_drops": early,
         "creatures": creatures, "reach": reach,
         # The deck's game PLAN drives which axes its tier floor weights (#4): an aggro
@@ -5115,7 +5711,10 @@ def plan_redundancy_fill(depth, best_power, functional_options, *,
 
 
 def _card_power(nl, carddata, rar):
-    """Heuristic 0–10 power of a card (by lowercase name) via the shared wishlist seed."""
+    """Heuristic 0–10 power of a card (by lowercase name) via the shared wishlist seed.
+
+    `rar` is a load_rarities() map — Arena wildcard LETTERS, which the seed normalizes
+    (wishlist._norm_rarity); passing a letter used to silently score as an uncommon (F-01)."""
     cd = carddata.get(nl) or {}
     return _power_seed({"Rarity": rar.get(nl, ""), "Card Text": cd.get("text", "") or "",
                         "Type": cd.get("type", "") or ""})
@@ -5291,11 +5890,113 @@ def tier_consistency_issues():
     """Roster-wide (id, claimed, implied, msg) for decks whose claimed tier is
     indefensibly high vs its metrics — folded into check_all as a soft warning."""
     out = []
-    for d in discover_decks():
+    for d in roster_decks():
         claimed, implied, mismatch, msg = tier_consistency(d)
         if mismatch:
             out.append((d["id"], claimed, implied, msg))
     return out
+
+
+# A deck's `#: tier:` rationale is prose, so nothing kept it honest as the list changed
+# underneath it — and it went stale twice in one session: 40a's rationale still argued
+# from Chelonian Tackle and Unforgiving Aim after both were cut, and deck 40's cited a
+# 2.26 curve after a swap moved it to 2.32. A *defensible* grade rotting into an
+# indefensible one is the exact failure the tier guard exists to prevent, but the guard
+# only compares the LETTER to the floor — it never reads the argument. This does.
+#
+# Figures worth checking are the ones a rationale actually quotes. Each maps to a live
+# vector key; a mismatch is reported, never rewritten (the prose is a human argument).
+_RATIONALE_FIGURES = [
+    (re.compile(r"interaction[  ]+(\d+)", re.I), "interaction"),
+    (re.compile(r"card[- ]adv(?:antage)?[  ]+(\d+)", re.I), "card_advantage"),
+    (re.compile(r"(?:avg (?:nonland )?MV|curve(?: of)?)[  ]+(\d+\.\d+)", re.I), "avg_mv"),
+    (re.compile(r"(\d+)[- ]theme", re.I), "central_themes"),
+    (re.compile(r"(\d+) central themes", re.I), "central_themes"),
+    (re.compile(r"protection[  ]+(\d+)", re.I), "protection"),
+]
+# Words that are also real card names ("Negate", "Rest in Peace", …). Requiring a
+# multi-word name or a long single word keeps the scan quiet; a citation of a one-word
+# card is rare in prose and not worth a false positive on every "Opt" or "Duress".
+_RATIONALE_MIN_LEN = 9
+
+# A rationale legitimately names cards that AREN'T in the deck: it documents the swap
+# that removed one ("Essence Scatter's creatures-only … became hard counters"), notes a
+# land that left, or points at a flex/craft option deliberately held out of the 60
+# (Genesis Wave). Flagging those would make the audit noise, and a noisy audit gets
+# ignored — which is worse than no audit. So a citation sitting next to change- or
+# flex-language is treated as history, not as a live argument. The cost is a real miss
+# when someone writes "held from A by <cut card>" right after the word "replaced"; the
+# figure check below is the independent backstop for that.
+_HISTORY_CUES = re.compile(
+    r"\b(?:was|were|became|becomes|replac\w*|swap\w*|cut\w*|remov\w*|left|leaves|"
+    r"instead|no longer|previously|earlier|former\w*|over|queued|flex|craft target|"
+    r"alternative|revisit|option|skipped|held out)\b", re.I)
+_HISTORY_WINDOW = 140
+
+
+def _cites_as_history(prose, pos, length):
+    """True when a card citation sits near change-/flex-language, i.e. the prose is
+    DESCRIBING a card that left (or one deliberately not included) rather than arguing
+    from it. Window is generous on purpose — see _HISTORY_CUES."""
+    lo = max(0, pos - _HISTORY_WINDOW)
+    hi = min(len(prose), pos + length + _HISTORY_WINDOW)
+    return bool(_HISTORY_CUES.search(prose[lo:hi]))
+
+
+def rationale_staleness(d, carddata=None):
+    """(stale_cards, stale_figures) for a deck's `#: tier:` / `#: notes:` prose.
+
+      stale_cards   — [(name, header)] the rationale names that are NOT in the deck
+                      any more (a cut card the argument still leans on),
+      stale_figures — [(key, quoted, actual)] a figure the prose quotes that no longer
+                      matches `deck_quality_vector`.
+
+    Report-only: the prose is a human argument and this never edits it. Names are
+    matched against known cards so ordinary English can't trip it."""
+    carddata = carddata if carddata is not None else load_card_data()
+    meta, cards = parse_deck_file(d["path"])
+    in_deck = {n for _q, n, _s, _c in cards}
+    in_deck |= {n.split(" // ")[0] for n in list(in_deck)}
+    stale_cards, stale_figures = [], []
+    for header in ("tier",):
+        prose = (meta or {}).get(header, "") or ""
+        if not prose:
+            continue
+        # Mask every card the deck DOES run before scanning, longest name first. Without
+        # this, a shorter card name nested inside a longer one reads as a stale citation:
+        # "the Ooze Spill / Amazing Acrobatics upgrade" reported the card *The Ooze*.
+        masked = prose
+        for nm in sorted(in_deck, key=len, reverse=True):
+            masked = masked.replace(nm, " " * len(nm))
+        for name, row in carddata.items():
+            disp = row.get("name") or name
+            if len(disp) < _RATIONALE_MIN_LEN and " " not in disp:
+                continue
+            if disp in in_deck or name in BASICS or disp.split(" // ")[0] in in_deck:
+                continue
+            # CASE-SENSITIVE: prose capitalizes a card citation, so this is what keeps
+            # ordinary vocabulary out. A lowercase "counterspell"/"food"/"negate" in a
+            # sentence is not a reference to the card of that name.
+            pos = masked.find(disp)
+            if pos < 0:
+                continue
+            if _cites_as_history(masked, pos, len(disp)):
+                continue
+            stale_cards.append((disp, header))
+    if stale_cards:
+        stale_cards = sorted(set(stale_cards))
+    vec = deck_quality_vector(d)
+    tier_prose = (meta or {}).get("tier", "") or ""
+    for rx, key in _RATIONALE_FIGURES:
+        for m in rx.finditer(tier_prose):
+            quoted, actual = m.group(1), vec.get(key)
+            if actual is None:
+                continue
+            same = (abs(float(quoted) - float(actual)) < 0.005 if "." in quoted
+                    else int(quoted) == int(actual))
+            if not same and (key, quoted, actual) not in stale_figures:
+                stale_figures.append((key, quoted, actual))
+    return stale_cards, stale_figures
 
 
 def cmd_tier(args):
@@ -5312,6 +6013,21 @@ def cmd_tier(args):
     claimed = _deck_tier(meta)
     vec = deck_quality_vector(d)
     implied = tier_band(vec)
+    if getattr(args, "audit_rationale", False):
+        cards_stale, figs = rationale_staleness(d)
+        print(f"Rationale audit — deck {d['id']}: {d['name'] or d['path']}")
+        if not cards_stale and not figs:
+            print("  ✓ rationale is current — every card it cites is still in the deck and "
+                  "every figure matches the live vector.")
+            return 0
+        for nm, hdr in cards_stale:
+            print(f"  ⚠ `#: {hdr}:` argues from {nm}, which is NO LONGER in the deck.")
+        for key, quoted, actual in figs:
+            print(f"  ⚠ `#: tier:` quotes {key.replace('_', ' ')} {quoted}, "
+                  f"but the live vector says {actual}.")
+        print("  Rewrite the prose (or re-grade) — a stale argument is how a defensible "
+              "letter turns into an indefensible one. Nothing was changed.")
+        return 0
     print(f"Tier — deck {d['id']}: {d['name'] or d['path']}")
     print(f"  claimed tier  : {claimed or '(untiered)'}")
     print(f"  metrics floor : {implied}   (measurable-only — blind to bombs/meta, so it under-rates)")
@@ -5320,7 +6036,15 @@ def cmd_tier(args):
              if vec.get('plan') == 'aggro' else "  (floor weights interaction + card advantage)"))
     print(f"  vector        : buildable {vec['buildable']} · uncastable {vec['uncastable']} · "
           f"interaction {vec['interaction']} · card-adv {vec['card_advantage']} · "
+          f"protection {vec.get('protection', 0)} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
+    # Protection is REPORTED, never fed into tier_band (the floor formula is anchored by
+    # check_tier.py). A zero here is a judgment prompt, not a band change.
+    if not vec.get("protection"):
+        sig = _protected(meta)
+        print("  ⚠ ZERO protection (no ward/hexproof/indestructible-class effect)"
+              + (f" while `#: protect:` names {len(sig)} build-around card(s)" if sig else "")
+              + " — weigh this before granting a band the metrics floor allows.")
     # The floor caps at C on any uncastable stray; without a #: colors: header that
     # count is derived from the deck's own cards, so it's 0 by construction — say so
     # rather than imply a verified-clean castability (audit F16).
@@ -5905,6 +6629,10 @@ def main():
     p.add_argument("id")
     p.add_argument("--strict", action="store_true", help="exit non-zero on a tier mismatch (default: warn only)")
     p.add_argument("--to", metavar="TIER", help="show the measurable gap + owned fillers to reach TIER's floor (S/A/B/C/D)")
+    p.add_argument("--audit-rationale", action="store_true",
+                   help="flag `#: tier:`/`#: notes:` prose that has gone stale — cards it "
+                        "cites that are no longer in the deck, and figures that no longer "
+                        "match the live quality vector")
     p = sub.add_parser("redundancy",
                        help="competitive-consistency planner: virtual (functional) copies first, duplicates as fallback")
     p.add_argument("id")
@@ -5931,6 +6659,14 @@ def main():
     p.add_argument("id")
     p.add_argument("source", nargs="?", default="-",
                    help="path to an export file, or '-' / omitted to read stdin")
+    p = sub.add_parser("sync", help="reconcile stored deck files FROM a pasted Arena export (many decks at once)")
+    p.add_argument("source", nargs="?", default="-",
+                   help="path to an export file, or '-' / omitted to read stdin")
+    p.add_argument("--apply", action="store_true",
+                   help="write the drifted deck files (with .bak); default is a dry run")
+    p.add_argument("--force", action="store_true",
+                   help="also write decks whose match was low-confidence (a variant sibling "
+                        "was nearly as close) — check the diff first")
     p = sub.add_parser("text", help="dump every card's FULL oracle text (read before grading cuts/swaps)")
     p.add_argument("id")
     p = sub.add_parser("suggest-homes",
@@ -5957,7 +6693,8 @@ def main():
         "rotation": cmd_rotation, "brawl": cmd_brawl,
         "legal": cmd_legal, "cuts": cmd_cuts,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
-        "verify": cmd_verify, "text": cmd_text, "suggest-homes": cmd_suggest_homes,
+        "verify": cmd_verify, "sync": cmd_sync, "text": cmd_text,
+        "suggest-homes": cmd_suggest_homes,
         "similar": cmd_similar, "resolve": cmd_resolve,
         "preflight": cmd_preflight, "quality": cmd_quality, "tier": cmd_tier,
         "redundancy": cmd_redundancy, "history": cmd_history,

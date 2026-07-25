@@ -380,6 +380,12 @@ def _theme_model():
         # (the 26-card example placeholder, an 83-card raw pile, an 86-card pool).
         if dd["variant"]:
             continue
+        # Explicit roster membership (a `#: status: example` placeholder is not a deck),
+        # sharing deck.py's predicate so the two agree on what the roster IS. The card-
+        # count filter below still stands: it also catches untuned piles that carry no
+        # status header.
+        if not dk.is_roster_deck(dd):
+            continue
         dm, cards = dk.parse_deck_file(dd["path"])
         if not (55 <= sum(q for q, _n, _s, _c in cards) <= 70):
             continue
@@ -609,6 +615,28 @@ def _reuse_bonus(reuse):
     return round(min(_REUSE_BONUS_CAP, _REUSE_BONUS_W * max(0, r - 1)), 2)
 
 
+def _specific_themes_of(central, idf, spec_idf):
+    """This model's notion of a deck's SPECIFIC (identity-carrying) themes: central
+    themes that are rare enough across the roster (idf >= the self-calibrating
+    `spec_idf` cutoff) and aren't evergreen keywords. Deliberately different from
+    deck.py's denylist-based test — see `deck.cross_deck_breadth`."""
+    return {t for t in central
+            if idf.get(t, 0) >= spec_idf and t.lower() not in NON_SIGNAL_TAGS}
+
+
+def _breadth_of(ccols, ctags, fps, idf, spec_idf):
+    """Cross-deck breadth for one card, via the SHARED rule in deck.cross_deck_breadth
+    (castable in the deck AND shares >=1 specific theme). Falls back to a local count
+    only if deck.py can't be imported, so the column degrades rather than vanishing."""
+    trimmed = [(did, dcols, _specific_themes_of(central, idf, spec_idf))
+               for did, dcols, central, _twn in fps]
+    try:
+        import deck as dk
+        return dk.cross_deck_breadth(ccols, ctags, trimmed)
+    except Exception:
+        return sum(1 for _d, dc, dt in trimmed if ccols <= dc and (ctags & dt))
+
+
 def _rank_scores(rows):
     """Score every wishlist card for wildcard-spend priority. Reuses the idf theme
     model (so it stays consistent with --suggest-targets):
@@ -652,11 +680,14 @@ def _rank_scores(rows):
             specific = sorted((t for t in shared if idf.get(t, 0) >= spec_idf
                                and t.lower() not in NON_SIGNAL_TAGS),
                               key=lambda t: -idf[t])
-            if specific:
-                reuse += 1
             score = sum(idf.get(t, 0) * twn[t] for t in shared)
             if score > best:
                 best, best_specific = score, specific
+        # Breadth via the SHARED counting rule (deck.cross_deck_breadth), fed this
+        # model's own idf-based notion of a specific theme. It used to be an inline
+        # `reuse += 1` in the loop above — a second hand-written copy of the rule, which
+        # is exactly how the two breadth signals drifted apart (broad-scan F-04).
+        reuse = _breadth_of(ccols, ctags, fps, idf, spec_idf)
         if best_specific and best >= 1.5:
             conf = "STRONG"
         elif best_specific:
@@ -701,7 +732,9 @@ def _rank_scores(rows):
             nm = (r.get("Card Name") or "").strip().lower()
             info = pool_rot.get(nm) or pool_rot.get(nm.split(" // ")[0])
             if info and "standard" in info[1]:
-                rot_year = dk.rotation_year(info[0])
+                # info = (released, legalities, set_code) — pass the set so an
+                # announced long-legality reprint (Foundations) isn't false-flagged.
+                rot_year = dk.rotation_year(info[0], set_code=info[2])
                 rot = rot_year is not None and rot_year <= _rot_soon_year
         out.append({
             "name": r.get("Card Name", ""), "rarity": (r.get("Rarity") or "").capitalize(),
@@ -712,6 +745,12 @@ def _rank_scores(rows):
             "blank_power": not raw_power,
             "bad_power": bad_power, "raw_power": raw_power,
             "land_val": land_val, "rot": rot, "rot_year": rot_year,
+            # A conditional card's Power can't be estimated in isolation. Flagged even
+            # when Power is filled: the CSV records no PROVENANCE, so a value may be a
+            # `--add` auto-seed rather than a hand grade, and this session had to
+            # hand-correct several of exactly this class (Repulsive Mutation, Genesis
+            # Wave, Mona Lisa, Procrastinate). The flag says "verify", not "wrong".
+            "cond_power": is_conditional_power(r),
             "uniq": card_distinctiveness(ctags, r.get("Card Text") or ""),
             "sig": "/".join(best_specific[:2]) or ("generic/no-theme" if conf == "review" else ""),
         })
@@ -771,7 +810,8 @@ def cmd_rank(rows):
             i = 0
         i += 1
         wc = (s["rarity"] or "?")[:1] or "?"
-        pw = f"{s['power']:>4.1f}" + ("?" if s["blank_power"] else "!" if s["bad_power"] else " ")
+        pw = f"{s['power']:>4.1f}" + ("?" if s["blank_power"] else "!" if s["bad_power"]
+                                      else "~" if s.get("cond_power") else " ")
         use = f"{s['reuse']}★" if s["reuse"] >= 3 else str(s["reuse"])
         sig = s["sig"][:22] + (f"  ⚠rot~{s['rot_year']}" if s.get("rot") else "")
         print(f"  {i:>3} {s['name'][:28]:28} {wc:3} {s['target']:6} {s['state']:6} "
@@ -802,6 +842,13 @@ def cmd_rank(rows):
         print(f"⚠ {len(blanks)} card(s) have BLANK Power (shown as 'pow?', ranked low until "
               f"graded): {', '.join(blanks[:8])}{' …' if len(blanks) > 8 else ''}. "
               "Run `--seed-power --write` then hand-adjust the bombs.")
+    cond = [s["name"] for s in scored if s.get("cond_power")]
+    if cond:
+        print(f"~ {len(cond)} card(s) have a CONDITIONAL power (X-cost / kicker / landfall / "
+              f"'equal to …'), shown as 'pow~'. The heuristic grades a card in ISOLATION, so "
+              f"it structurally can't price one that scales with YOUR deck — and the CSV "
+              f"doesn't record whether a Power was hand-graded or auto-seeded. Verify these "
+              f"from full text: " + ", ".join(cond[:6]) + ("…" if len(cond) > 6 else ""))
     bad = [(s["name"], s["raw_power"]) for s in scored if s["bad_power"]]
     if bad:
         # A malformed Power scored 0.0 and would otherwise sink silently (F9).
@@ -907,18 +954,69 @@ _FLEX_REMOVAL_RE = re.compile(
 _IMPACT_SEED_ROLES = {"Removal (spot)", "Sweeper", "Card advantage", "Payoff / engine",
                       "Reanimation", "Cost reduction / cheat"}
 
+# Rarity reaches this seed in TWO shapes across the toolkit: the pool/wishlist store the
+# WORD ("Mythic"), while `deck.load_rarities()` maps a card to its Arena WILDCARD LETTER
+# ("M") — and that is the shape `deck.rank_cut_candidates` / `deck._card_power` hand us.
+# A bare letter fell through `.capitalize()` to the 2.0 default, so EVERY rare and mythic
+# seeded as an uncommon: the cuts power co-signal was pinned negative for exactly the
+# bombs it exists to protect, and `cuts` tagged them "on-theme but low power" (audit F-01).
+# Normalize both shapes here, at the single consumer, so no caller can get it wrong.
+_RARITY_FROM_LETTER = {"M": "Mythic", "R": "Rare", "U": "Uncommon", "C": "Common"}
+
+
+def _norm_rarity(value):
+    """Canonical rarity WORD from either a word ('mythic', 'Rare') or an Arena wildcard
+    LETTER ('M', 'r'). Returns '' when it is neither — an unresolved '?' or a blank cell —
+    which the caller turns into the neutral default floor rather than a wrong one."""
+    s = (value or "").strip()
+    if not s:
+        return ""
+    if len(s) == 1:
+        return _RARITY_FROM_LETTER.get(s.upper(), "")
+    w = s.capitalize()
+    return w if w in _SEED_RARITY else ""
+
+
+# Cards whose power is CONDITIONAL ON THE DECK, so a single number is the wrong shape of
+# answer. The seed grades a card in isolation; these scale with something it can't see —
+# your board, your land drops, your mana, your greatest creature. Every miss this session
+# was one of these: Repulsive Mutation seeded near-zero (its counter is unconditional
+# once the threat is big), Mona Lisa at 2.5 (a 3-mana rock that taps for 3), Procrastinate
+# at 1.0 (twice-X stun counters locks a creature for four untaps), Genesis Wave and The
+# Legend of Kyoshi both scale off the board.
+#
+# The fix is NOT a better number — a synergy/rarity model structurally cannot price these.
+# It's to say so, so the reader grades from text instead of trusting a confident 2.0.
+_CONDITIONAL_POWER_RE = re.compile(
+    r"\{x\}"
+    r"|\bkicker\b|\bexhaust\b|\bwarp\b|\blandfall\b"
+    r"|equal to (?:the )?(?:number|greatest|its|that|twice)"
+    r"|for each \w+ you control"
+    r"|where x is",
+    re.I)
+
+
+def is_conditional_power(row):
+    """True when a card's power depends on the DECK it's in (X-cost, kicker, landfall,
+    'equal to …', 'for each … you control'), so its heuristic Power is a placeholder to
+    grade from text rather than a usable estimate."""
+    blob = f"{row.get('Card Text') or ''}\n{row.get('Mana Cost') or ''}"
+    return bool(_CONDITIONAL_POWER_RE.search(blob))
+
 
 def _seed_power(r):
     """Heuristic 0–10 power for a wishlist card (rarity floor + functional roles + a few
     bounded bombs the role map can't see). REVIEW it — it undersells unique bombs; this
     just gets a fresh card off a 0.0 blank. The two extra bonuses credit what the flat
     role map missed: FLEXIBLE removal (destroy any permanent, not just a creature) and an
-    impact effect on a PERMANENT (a body/equipment that also removes is a 2-for-1)."""
+    impact effect on a PERMANENT (a body/equipment that also removes is a 2-for-1).
+
+    `Rarity` may be a word OR an Arena wildcard letter — see `_norm_rarity` (audit F-01)."""
     import deck as dk
     text = r.get("Card Text") or ""
     ty = (r.get("Type") or "").lower()
     roles = set(dk.classify_roles(text))
-    p = _SEED_RARITY.get((r.get("Rarity") or "").capitalize(), 2.0)
+    p = _SEED_RARITY.get(_norm_rarity(r.get("Rarity")), 2.0)
     p += sum(_SEED_ROLE.get(x, 0) for x in roles)
     if "planeswalker" in ty:
         p += 2.0
