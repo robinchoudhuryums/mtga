@@ -14,54 +14,62 @@
 #: archetype: 30 Fractalandtastic explicitly "goes wide" on Fractal tokens in Temur. This
 #: archetype: one runs NO creature-token ENGINE on purpose — every counter is aimed at one
 #: archetype: body. (Emil is here for its trample line, not its Fractal mana sink.)
-#: tier: B — Simic landfall counters-midrange, matching the metrics floor (interaction 3 +
-#: tier: card-adv 1). Re-graded after the Seedship Impact / Repulsive Mutation / Chocobo
-#: tier: Kick / Broodguard Elite / Amazing Acrobatics pass. The ENGINE is the deck's
-#: tier: strength and is not what caps it: `deck.py redundancy 40a` reads a virtual 8-of
-#: tier: counter-DOUBLER plus 5-of landfall / 5-of lands / 9-of payoff / 5-of ramp, on a
-#: tier: clean manabase (26 lands, 87% keepable openers, 0 uncastable), so singleton
-#: tier: variance is not the problem here.
-#: tier: FIXED — win-con fragility. Was zero ward/hexproof/indestructible in the 60, so one
-#: tier: removal spell reset the plan. Kid Loki now grants standing HEXPROOF to anything
-#: tier: that got a counter this turn (most turns from ~T3 in a deck that counters or
-#: tier: doubles on every land drop); Origin of Metalbending adds instant indestructible.
-#: tier: FIXED — creature removal. Chocobo Kick is ONE-SIDED damage equal to your creature's
-#: tier: power (doubled if kicked), so a huge body answers anything without trading; and
-#: tier: Floodpits Drowner's second ability (`{1}{U},{T}`: shuffle it and a stunned creature
-#: tier: into their libraries) IS an unconditional answer, not merely a tap — an earlier
-#: tier: version of this note under-read it. With Repulsive Mutation and Amazing Acrobatics
-#: tier: as counters that leaves ~7 real interaction pieces and 3 unconditional creature
-#: tier: answers, against the 2 (one flier-only) it had before.
-#: tier: MEASUREMENT CAVEAT: the counted interaction of 3 UNDER-reads the deck — `role_tally`
-#: tier: does not credit artifact/enchantment destruction as removal (Seedship Impact,
-#: tier: Origin of Metalbending — both flagged by the coverage self-audit) and misses
-#: tier: Repulsive Mutation's "counter up to one target spell unless…" phrasing entirely.
-#: tier: The letter is graded on the hand count, not the classifier's.
-#: tier: REMAINING CAP — CARD ADVANTAGE, the axis that replaced removal. Measured 1, and
-#: tier: `redundancy` reads it THIN: Kiora left for Broodguard Elite, and what remains is
-#: tier: Tam's landfall draw, Wan Shi Tong's draw-X/2, Mindspring Merfolk's one-shot Exhaust
-#: tier: and Portent of Calamity. Against a deck that trades resources this runs out of gas
-#: tier: before the doubled threat closes. (Cutting Kiora cost less than the -1 suggests —
-#: tier: her ETB is draw-two-DISCARD-two, a loot with no net cards — but the axis is thin.)
-#: tier: PATH TO A: firm card advantage, ideally with a repeatable engine that scales off the
-#: tier: big body rather than another one-shot. Genesis Wave is queued in the flex block as
-#: tier: the alternative route (an explosive finisher instead of a longer game). Do NOT fix
-#: tier: it by adding more doublers, and do not trade away the protection or the removal.
+#: tier: A — Simic landfall counters-midrange. Re-graded B->A after the Garruk's Uprising
+#: tier: / The Legend of Kyoshi pass, which closed the last of the three caps the B was
+#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 2 on a 2.65 curve).
+#: tier: The ENGINE was never the problem: `deck.py redundancy 40a` reads a virtual 8-of
+#: tier: counter-DOUBLER plus 5-of landfall / 5-of lands / 9-of payoff / 4-of ramp, on a
+#: tier: clean manabase (26 lands, 87% keepable openers, 0 uncastable). What kept it at B
+#: tier: was three named weaknesses, all now addressed:
+#: tier: 1. FRAGILITY (fixed). Was zero ward/hexproof/indestructible in the 60, so one
+#: tier:    removal spell reset the plan. `deck.py stats` now measures protection 3 — Kid
+#: tier:    Loki's standing hexproof for anything that got a counter this turn (most turns
+#: tier:    from ~T3 here), Origin of Metalbending's instant indestructible, and Kyoshi's
+#: tier:    back face giving lands trample and hexproof.
+#: tier: 2. CREATURE REMOVAL (fixed). Chocobo Kick is ONE-SIDED damage equal to your
+#: tier:    creature's power, doubled if kicked, so a huge body answers anything without
+#: tier:    trading; Floodpits Drowner's `{1}{U},{T}` shuffles a stunned creature into its
+#: tier:    owner's library, an unconditional answer an earlier note wrongly dismissed as
+#: tier:    "taps and stuns". 7 interaction pieces, 5 at instant speed, 4 answering a
+#: tier:    noncreature permanent, 3 of them unconditional creature answers.
+#: tier: 3. CARD ADVANTAGE (addressed). Garruk's Uprising is the key add and does two jobs:
+#: tier:    it grants the whole team TRAMPLE — previously dependent on keeping Emil or
+#: tier:    Greenbelt Guardian alive — and draws off power-4+ creatures entering, which the
+#: tier:    X-cost bodies (Wildwood Scourge, The Goose Mother, Broodguard Elite, Wan Shi
+#: tier:    Tong) do routinely on a ramp base. Kyoshi chapter I draws cards equal to the
+#: tier:    greatest power among your creatures — double digits off a doubled threat — then
+#: tier:    earthbends a land for another landfall trigger. Tam draws on every land drop.
+#: tier: MEASUREMENT CAVEATS, so the letter stays auditable: the counted card advantage of
+#: tier: 2 understates this, because a single-card draw is deliberately not counted and
+#: tier: Garruk's triggers draw one at a time. Conversely, do NOT read Garruk as an
+#: tier: unconditional draw engine — the trigger needs power 4+ ON ENTRY, and the repo
+#: tier: stores no power/toughness data, so no tool can verify which bodies qualify.
+#: tier: THE ONE REMAINING WEAKNESS an A tolerates: the deck is threat-centric, and its
+#: tier: best draws all want a big creature already on board — a sweeper on an empty-ish
+#: tier: board leaves it casting doublers with nothing to double. Held from S by that, by
+#: tier: the 2.65 curve, and by having no format-warping bomb. Aspirational WIP (12 craft
+#: tier: targets); per the rubric that doesn't affect the letter, only `check`/`audit`.
 #: notes: This is the TALL sibling of 40; keep the two apart by
 #: notes: rule: 40 holds up counterspells and wins with one huge X-spell, 40a commits a
 #: notes: threat on turn 2-3 and doubles it. Do NOT migrate the doubler package back
 #: notes: into 40 — the two plans want the same mana on the same turns.
-#: notes: Aspirational WIP. Craft targets (10 — 1 mythic, 1 rare, 8 uncommon):
+#: notes: Aspirational WIP. Craft targets (12 — 1 mythic, 1 rare, 10 uncommon):
 #: notes: Mossborn Hydra (M-tier payoff, the centerpiece), Bristly Bill Spine Sower,
 #: notes: Biogenic Upgrade, Sage of the Fang, Seedship Agrarian, Hemosymbic Mite,
 #: notes: Tifa's Limit Break, Greenbelt Guardian, Grappling Kraken, Tam Observant
-#: notes: Sequencer. Zimone / Growth Curve / Emil are OWNED singles also run in deck 30
+#: notes: Sequencer, Seedship Impact, Repulsive Mutation. Zimone / Growth Curve / Emil /
+#: notes: Garruk's Uprising / The Legend of Kyoshi / Kid Loki are OWNED singles also run
+#: notes: in other decks
 #: notes: — Arena copies are shared across decks, so no craft is needed for them.
+#: notes: Bloom Tender was cut over Greenbelt Guardian for Garruk's Uprising: LANDS ARE
+#: notes: COLORLESS permanents, so Islands don't switch on its blue half — with only 8
+#: notes: blue-colored permanents in the 60 it usually taps for a single {G}, i.e. a
+#: notes: 2-mana dork producing 1, strictly worse than the Druid of the Cowl already here.
 #: protect: Mossborn Hydra; Bristly Bill, Spine Sower; Zimone, Paradox Sculptor; Tifa's Limit Break
 
 Deck
 # Ramp / fixing / lands-matter
-1 Bloom Tender (ECL) 166
+1 Garruk's Uprising (M21) 186
 1 Druid of the Cowl (M19) 177
 1 Environmental Scientist (SOS) 147
 1 Great Divide Guide (TLA) 181
@@ -102,7 +110,7 @@ Deck
 1 Amazing Acrobatics (SPM) 25
 
 # Card advantage
-1 Mindspring Merfolk (DFT) 51
+1 The Legend of Kyoshi (TLA) 186
 1 Portent of Calamity (BLB) 66
 1 Ignis Scientia (FIN) 227
 
