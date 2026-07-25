@@ -4,7 +4,9 @@
 #: tier: B — Grixis Wizard spellslinger; a coherent go-wide ping engine (Coruscation Mage /
 #: tier: Black Waltz / the 0/1 black-Wizard-token makers all deal noncombat damage on every
 #: tier: noncreature spell) backed by prowess payoffs, deep card advantage (Kefka/Niv-Mizzet/
-#: tier: Archmage) and a real removal suite. Floor is B-to-A on interaction+card-advantage;
+#: tier: Archmage) and a real removal suite. The floor is A and not marginally so —
+#: tier: interaction 13 against card advantage 5, once the bounce/edict/X-damage lines the
+#: tier: old classifier could not read are counted;
 #: tier: held at B by three-color singleton variance and a fragile go-wide board (a sweeper
 #: tier: from the opponent hurts). Plays up as it gains redundancy (see the competitive 37b).
 #: archetype: Grixis (U/B/R, U-primary) Wizard tribal spellslinger. Cast cheap noncreature
@@ -28,6 +30,19 @@
 #: notes: 11 cards are unowned craft targets (incl. Coruscation Mage / Black Waltz No. 3 — the
 #: notes: engine's core), so this is a WIP build target.
 #: protect: Coruscation Mage; Black Waltz No. 3; Queen Brahne; Balmor, Battlemage Captain; Kefka, Court Mage
+#: notes: PROTECTION: `deck.py stats` flags protection 0 against 5 `#: protect:` cards,
+#: notes: which reads alarming and is mostly a FALSE ALARM — the protect header marks
+#: notes: cards worth keeping, not single points of failure. `redundancy 37` shows the
+#: notes: ping engine is functionally an 8-of (noncombat damage, 8 distinct cards) on 18
+#: notes: payoff pieces and 4 card-advantage sources, so a removal spell on Coruscation
+#: notes: Mage costs a pinger, not the deck. The exposure this list actually has is the
+#: notes: one its tier rationale already names: an opposing SWEEPER, and ward/hexproof
+#: notes: does nothing against a wrath. The only owned answers that would help are
+#: notes: indestructible tricks (Stolen Stark Tech, Unlikely Aid, Dark Endurance), and
+#: notes: each saves ONE creature — near-worthless to a go-wide board. VERDICT: do not
+#: notes: add protection. If sweeper resilience becomes the priority, the lever is
+#: notes: rebuilding speed (flash threats / a recursion engine), not protection spells.
+#: notes: The same reasoning covers 37a and 37b, whose engines are equally redundant.
 
 # Creatures — Wizard pingers / prowess payoffs / engines
 1 The Emperor of Palamecia (FIN) 219

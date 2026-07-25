@@ -1,339 +1,339 @@
-Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,Note,Power
+Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,Note,Power,Power Source
 "Bria, Riptide Rogue",Legendary Creature — Otter Rogue,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 Other creatures you control have prowess. (If a creature has multiple instances of prowess, each triggers separately.)
-Whenever you cast a noncreature spell, target creature you control can't be blocked this turn.",U/R,Otter; Rogue; pump; prowess; spellslinger; tempo,BLB,379,Mythic,25,prowess + gives your team menace/evasion,7.0
+Whenever you cast a noncreature spell, target creature you control can't be blocked this turn.",U/R,Otter; Rogue; pump; prowess; spellslinger; tempo,BLB,379,Mythic,25,prowess + gives your team menace/evasion,6.5,hand
 "Dragonhawk, Fate's Tempest",Legendary Creature — Bird Dragon,"Flying
-Whenever Dragonhawk enters or attacks, exile the top X cards of your library, where X is the number of creatures you control with power 4 or greater. You may play those cards until your next end step. At the beginning of your next end step, Dragonhawk deals 2 damage to each opponent for each of those cards that are still exiled.",R,Bird; Dragon; burn; impulse; flying; evasion,BLB,132,Mythic,24,impulse + burn payoff,7.5
+Whenever Dragonhawk enters or attacks, exile the top X cards of your library, where X is the number of creatures you control with power 4 or greater. You may play those cards until your next end step. At the beginning of your next end step, Dragonhawk deals 2 damage to each opponent for each of those cards that are still exiled.",R,Bird; Dragon; burn; impulse; flying; evasion,BLB,132,Mythic,24,impulse + burn payoff,6.5,hand
 "Ral, Crackling Wit",Legendary Planeswalker — Ral,"Whenever you cast a noncreature spell, put a loyalty counter on Ral.
 +1: Create a 1/1 blue and red Otter creature token with prowess.
 −3: Draw three cards, then discard two cards.
-−10: Draw three cards. You get an emblem with ""Instant and sorcery spells you cast have storm."" (Whenever you cast an instant or sorcery spell, copy it for each spell cast before it this turn.)",U/R,Ral; Planeswalker; counters; card draw; tokens; planeswalker; spellslinger,BLB,230,Mythic,25,UR spellslinger planeswalker — tokens + copy your spells,8.0
-"Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,7.0
+−10: Draw three cards. You get an emblem with ""Instant and sorcery spells you cast have storm."" (Whenever you cast an instant or sorcery spell, copy it for each spell cast before it this turn.)",U/R,Ral; Planeswalker; counters; card draw; tokens; planeswalker; spellslinger,BLB,230,Mythic,25,UR spellslinger planeswalker — tokens + copy your spells,7.5,hand
+"Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,6.0,hand
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
-When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)",5.5
+When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)",5.0,hand
 Builder's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
 When this Class enters, create a 0/4 white Wall creature token with defender.
 {W}: Level 2
 Whenever one or more noncreature, nonland permanents you control enter, put a +1/+1 counter on target creature you control.
 {4}{W}: Level 3
-When this Class becomes level 3, return target noncreature, nonland permanent card from your graveyard to the battlefield.",W,Class; counters; reanimator; graveyard; tokens; etb,BLB,5,Uncommon,29,,6.5
+When this Class becomes level 3, return target noncreature, nonland permanent card from your graveyard to the battlefield.",W,Class; counters; reanimator; graveyard; tokens; etb,BLB,5,Uncommon,29,,5.5,hand
 Starforged Sword,Artifact — Equipment,"Gift a tapped Fish (You may promise an opponent a gift as you cast this spell. If you do, when it enters, they create a tapped 1/1 blue Fish creature token.)
 When this Equipment enters, if the gift was promised, attach this Equipment to target creature you control.
 Equipped creature gets +3/+3 and loses flying.
-Equip {3}",Colorless,Equipment; tokens; etb; equipment; pump; gift; value; equip,BLB,249,Uncommon,38,,2.5
-Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,6.0
+Equip {3}",Colorless,Equipment; tokens; etb; equipment; pump; gift; value; equip,BLB,249,Uncommon,38,,3.0,hand
+Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,5.5,hand
 Pride of the Road,Creature — Zombie Cat Warrior,"Vigilance
 Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
-Max speed — At the beginning of combat on your turn, target creature or Vehicle you control gains double strike until end of turn.",W,Zombie; Cat; Warrior; max speed; speed; aggro; vigilance; combat; start your engines!,DFT,24,Uncommon,36,,2.0
+Max speed — At the beginning of combat on your turn, target creature or Vehicle you control gains double strike until end of turn.",W,Zombie; Cat; Warrior; max speed; speed; aggro; vigilance; combat; start your engines!,DFT,24,Uncommon,36,,2.5,hand
 Overlord of the Balemurk,Enchantment Creature — Avatar Horror,"Impending 5—{1}{B} (If you cast this spell for its impending cost, it enters with five time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
-Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.",B,Avatar; Horror; graveyard; mill; impending,DSK,113,Mythic,5; 11,"Impending {1}{B} graveyard value-bomb for Coming of Galactus (5): mills + recurs a creature — a real engine | Also deck 11 (Villainous, mono-B): the recurring, no-strings card-advantage + reanimation engine it lacks — mill 4 + recur a creature on enter AND attack.",8.5
+Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.",B,Avatar; Horror; graveyard; mill; impending,DSK,113,Mythic,5; 11,"Impending {1}{B} graveyard value-bomb for Coming of Galactus (5): mills + recurs a creature — a real engine | Also deck 11 (Villainous, mono-B): the recurring, no-strings card-advantage + reanimation engine it lacks — mill 4 + recur a creature on enter AND attack.",8.0,hand
 Chainsaw,Artifact — Equipment,"When this Equipment enters, it deals 3 damage to up to one target creature.
 Whenever one or more creatures die, put a rev counter on this Equipment.
 Equipped creature gets +X/+0, where X is the number of rev counters on this Equipment.
-Equip {3}",R,Equipment; counters; burn; etb; equipment; pump; equip,DSK,128,Rare,26,"On-theme R removal for Iron Forge (26): ETB deal 3, grows with deaths — the interaction upgrade over War Machine",6
+Equip {3}",R,Equipment; counters; burn; etb; equipment; pump; equip,DSK,128,Rare,26,"On-theme R removal for Iron Forge (26): ETB deal 3, grows with deaths — the interaction upgrade over War Machine",6.0,hand
 Enduring Vitality,Enchantment Creature — Elk Glimmer,"Vigilance
 Creatures you control have ""{T}: Add one mana of any color.""
-When Enduring Vitality dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",G,Elk; Glimmer; mana; vigilance; combat,DSK,176,Rare,29,,6.5
+When Enduring Vitality dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",G,Elk; Glimmer; mana; vigilance; combat,DSK,176,Rare,29,,6.5,hand
 Conductive Machete,Artifact — Equipment,"When this Equipment enters, manifest dread, then attach this Equipment to that creature. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)
 Equipped creature gets +2/+1.
-Equip {4}",Colorless,Equipment; reanimator; graveyard; etb; equipment; pump; selection; manifest; tokens; manifest dread; equip,DSK,244,Uncommon,38,,3.5
+Equip {4}",Colorless,Equipment; reanimator; graveyard; etb; equipment; pump; selection; manifest; tokens; manifest dread; equip,DSK,244,Uncommon,38,,4.5,hand
 Shroudstomper,Creature — Elemental,"Deathtouch
-Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.",W/B,Elemental; lifegain; card draw; deathtouch; combat; removal,DSK,233,Uncommon,20,,5.0
-End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.5
+Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.",W/B,Elemental; lifegain; card draw; deathtouch; combat; removal,DSK,233,Uncommon,20,,5.0,hand
+End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
 Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
-Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19,,5.0
+Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19,,4.5,hand
 Dubious Delicacy,Artifact — Food,"Flash
 When this artifact enters, up to one target creature gets -3/-3 until end of turn.
 {2}, {T}, Sacrifice this artifact: You gain 3 life.
-{2}, {T}, Sacrifice this artifact: Target opponent loses 3 life.",B,Food; lifegain; sacrifice; etb; removal; flash; tempo,EOE,96,Uncommon,21; 20,,4.5
-Seedship Impact,Instant,"Destroy target artifact or enchantment. If its mana value was 2 or less, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",G,sacrifice; tokens; removal; ramp,EOE,205,Uncommon,40a,Instant artifact/ench removal + a Lander token = a LANDFALL trigger. Replaced Broken Wings.,5.5
+{2}, {T}, Sacrifice this artifact: Target opponent loses 3 life.",B,Food; lifegain; sacrifice; etb; removal; flash; tempo,EOE,96,Uncommon,21; 20,,4.5,hand
+Seedship Impact,Instant,"Destroy target artifact or enchantment. If its mana value was 2 or less, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",G,sacrifice; tokens; removal; ramp,EOE,205,Uncommon,40a,Instant artifact/ench removal + a Lander token = a LANDFALL trigger. Replaced Broken Wings.,5.5,hand
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
-Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",W,Human; Knight; sacrifice; tokens; ramp; etb; landfall; pump; lands,EOE,41,Uncommon,36,,3.0
+Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",W,Human; Knight; sacrifice; tokens; ramp; etb; landfall; pump; lands,EOE,41,Uncommon,36,,3.0,hand
 "Ajani, Caller of the Pride",Legendary Planeswalker — Ajani,"+1: Put a +1/+1 counter on up to one target creature.
 −3: Target creature gains flying and double strike until end of turn.
-−8: Create X 2/2 white Cat creature tokens, where X is your life total.",W,Ajani; Planeswalker; counters; tokens; planeswalker,FDN,134,Mythic,36,,7.0
+−8: Create X 2/2 white Cat creature tokens, where X is your life total.",W,Ajani; Planeswalker; counters; tokens; planeswalker,FDN,134,Mythic,36,,6.5,hand
 "Ramos, Dragon Engine",Legendary Artifact Creature — Dragon,"Flying
 Whenever you cast a spell, put a +1/+1 counter on Ramos for each of that spell's colors.
-Remove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activate only once each turn.",W/U/B/R/G,Dragon; counters; flying; evasion,FDN,678,Mythic,17,5-color mana-engine/ramp payoff — the Spectrum rainbow home,6.5
-Rite of the Dragoncaller,Enchantment,"Whenever you cast an instant or sorcery spell, create a 5/5 red Dragon creature token with flying.",R,tokens; spellslinger,FDN,92,Mythic,2,,7.5
+Remove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activate only once each turn.",W/U/B/R/G,Dragon; counters; flying; evasion,FDN,678,Mythic,17,5-color mana-engine/ramp payoff — the Spectrum rainbow home,5.5,hand
+Rite of the Dragoncaller,Enchantment,"Whenever you cast an instant or sorcery spell, create a 5/5 red Dragon creature token with flying.",R,tokens; spellslinger,FDN,92,Mythic,2,,7.0,hand
 Twinflame Tyrant,Creature — Dragon,"Flying
-If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals double that damage instead.",R,Dragon; flying; evasion; double,FDN,97,Mythic,14,,7.5
+If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals double that damage instead.",R,Dragon; flying; evasion; double,FDN,97,Mythic,14,,7.0,hand
 "Arahbo, the First Fang",Legendary Creature — Cat Avatar,"Other Cats you control get +1/+1.
-Whenever Arahbo or another nontoken Cat you control enters, create a 1/1 white Cat creature token.",W,Cat; Avatar; tokens; pump,FDN,2,Rare,36,,5.5
+Whenever Arahbo or another nontoken Cat you control enters, create a 1/1 white Cat creature token.",W,Cat; Avatar; tokens; pump,FDN,2,Rare,36,,5.5,hand
 Desecration Demon,Creature — Demon,"Flying
-At the beginning of each combat, any opponent may sacrifice a creature of their choice. If a player does, tap this creature and put a +1/+1 counter on it.",B,Demon; counters; sacrifice; flying; evasion,FDN,603,Rare,general,efficient 6/6 flying B beater (opp-sac edict) — any black midrange,6.5
+At the beginning of each combat, any opponent may sacrifice a creature of their choice. If a player does, tap this creature and put a +1/+1 counter on it.",B,Demon; counters; sacrifice; flying; evasion,FDN,603,Rare,general,efficient 6/6 flying B beater (opp-sac edict) — any black midrange,5.5,hand
 "Drakuseth, Maw of Flames",Legendary Creature — Dragon,"Flying
-Whenever Drakuseth attacks, it deals 4 damage to any target and 3 damage to each of up to two other targets.",R,Dragon; burn; flying; evasion,FDN,193,Rare,14,,7.5
+Whenever Drakuseth attacks, it deals 4 damage to any target and 3 damage to each of up to two other targets.",R,Dragon; burn; flying; evasion,FDN,193,Rare,14,,7.0,hand
 Felidar Retreat,Enchantment,"Landfall — Whenever a land you control enters, choose one —
 • Create a 2/2 white Cat Beast creature token.
-• Put a +1/+1 counter on each creature you control. Those creatures gain vigilance until end of turn.",W,counters; tokens; landfall; lands; ramp,FDN,574,Rare,36,,5.5
-Genesis Wave,Sorcery,Reveal the top X cards of your library. You may put any number of permanent cards with mana value X or less from among them onto the battlefield. Then put all cards revealed this way that weren't put onto the battlefield into your graveyard.,G,graveyard,FDN,165,Rare,40a,"FLEX (see 40a #~). 83% permanents here; each land it drops re-triggers landfall, so X=6 with 3 lands doubles Mossborn Hydra x8. GGG is castable off G-primary mana + Great Divide Guide.",7.5
+• Put a +1/+1 counter on each creature you control. Those creatures gain vigilance until end of turn.",W,counters; tokens; landfall; lands; ramp,FDN,574,Rare,36,,6.0,hand
+Genesis Wave,Sorcery,Reveal the top X cards of your library. You may put any number of permanent cards with mana value X or less from among them onto the battlefield. Then put all cards revealed this way that weren't put onto the battlefield into your graveyard.,G,graveyard,FDN,165,Rare,40a,"FLEX (see 40a #~). 83% permanents here; each land it drops re-triggers landfall, so X=6 with 3 lands doubles Mossborn Hydra x8. GGG is castable off G-primary mana + Great Divide Guide.",7.5,hand
 "Ghalta, Primal Hunger",Legendary Creature — Elder Dinosaur,"This spell costs {X} less to cast, where X is the total power of creatures you control.
-Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",G,Elder; Dinosaur; trample; evasion,FDN,222,Rare,28,,7.0
+Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",G,Elder; Dinosaur; trample; evasion,FDN,222,Rare,28,,6.5,hand
 Jazal Goldmane,Legendary Creature — Cat Warrior,"First strike (This creature deals combat damage before creatures without first strike.)
-{3}{W}{W}: Attacking creatures you control get +X/+X until end of turn, where X is the number of attacking creatures.",W,Cat; Warrior; pump; first strike; combat,FDN,497,Rare,36,,4.0
+{3}{W}{W}: Attacking creatures you control get +X/+X until end of turn, where X is the number of attacking creatures.",W,Cat; Warrior; pump; first strike; combat,FDN,497,Rare,36,,4.5,hand
 Nullpriest of Oblivion,Creature — Vampire Cleric,"Kicker {3}{B} (You may pay an additional {3}{B} as you cast this spell.)
 Lifelink
 Menace (This creature can't be blocked except by two or more creatures.)
-When this creature enters, if it was kicked, return target creature card from your graveyard to the battlefield.",B,Vampire; Cleric; reanimator; graveyard; lifegain; etb; lifelink; menace; evasion; kicker; value,FDN,611,Rare,11,,6.0
+When this creature enters, if it was kicked, return target creature card from your graveyard to the battlefield.",B,Vampire; Cleric; reanimator; graveyard; lifegain; etb; lifelink; menace; evasion; kicker; value,FDN,611,Rare,11,,6.0,hand
 Regal Caracal,Creature — Cat,"Other Cats you control get +1/+1 and have lifelink. (Damage dealt by those creatures also causes you to gain that much life.)
-When this creature enters, create two 1/1 white Cat creature tokens with lifelink.",W,Cat; lifegain; tokens; etb; pump,FDN,579,Rare,36,,3.5
+When this creature enters, create two 1/1 white Cat creature tokens with lifelink.",W,Cat; lifegain; tokens; etb; pump,FDN,579,Rare,36,,5.0,hand
 Rite of Replication,Sorcery,"Kicker {5} (You may pay an additional {5} as you cast this spell.)
-Create a token that's a copy of target creature. If this spell was kicked, create five of those tokens instead.",U,tokens; kicker; value,FDN,711,Rare,25,Copy engine for Spellstorm (25): clone your best creature (kicker = 5 copies) — payoff redundancy,6
+Create a token that's a copy of target creature. If this spell was kicked, create five of those tokens instead.",U,tokens; kicker; value,FDN,711,Rare,25,Copy engine for Spellstorm (25): clone your best creature (kicker = 5 copies) — payoff redundancy,6.5,hand
 Claws Out,Instant,"Affinity for Cats (This spell costs {1} less to cast for each Cat you control.)
-Creatures you control get +2/+2 until end of turn.",W,pump; affinity; artifacts; cost-reduction,FDN,6,Uncommon,36,,4.0
-Good-Fortune Unicorn,Creature — Unicorn,"Whenever another creature you control enters, put a +1/+1 counter on that creature.",W/G,Unicorn; counters,FDN,240,Uncommon,36a,,4.0
-Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0
+Creatures you control get +2/+2 until end of turn.",W,pump; affinity; artifacts; cost-reduction,FDN,6,Uncommon,36,,4.0,hand
+Good-Fortune Unicorn,Creature — Unicorn,"Whenever another creature you control enters, put a +1/+1 counter on that creature.",W/G,Unicorn; counters,FDN,240,Uncommon,36a,,5.0,hand
+Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0,hand
 Lightshell Duo,Creature — Rat Otter,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
-When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,Rat; Otter; graveyard; etb; pump; selection; surveil; prowess; spellslinger; tempo,FDN,157,Common,37,,3.5
+When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,Rat; Otter; graveyard; etb; pump; selection; surveil; prowess; spellslinger; tempo,FDN,157,Common,37,,3.0,hand
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +2/+2 for each artifact you control and is an Artificer in addition to its other types.
-Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell",4.5
+Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell",5.0,hand
 Ninja's Blades,Artifact — Equipment,"Job select
 Equipped creature gets +1/+1, is a Ninja in addition to its other types, and has ""Whenever this creature deals combat damage to a player, draw a card, then discard a card. That player loses life equal to the discarded card's mana value.""
-Mutsunokami — Equip {2}",B,Equipment; card draw; equipment; pump; job select; equip; mutsunokami,FIN,108,Rare,38,,6.5
+Mutsunokami — Equip {2}",B,Equipment; card draw; equipment; pump; job select; equip; mutsunokami,FIN,108,Rare,38,,6.0,hand
 Summon: Titan,Enchantment Creature — Saga Giant,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Mill five cards.
 II — Return all land cards from your graveyard to the battlefield tapped.
 III — Until end of turn, another target creature you control gains trample and gets +X/+X, where X is the number of lands you control.
-Reach, trample",G,Saga; Giant; reanimator; graveyard; mill; sacrifice; saga; pump; reach; defense; trample; evasion,FIN,204,Rare,29,,5.5
+Reach, trample",G,Saga; Giant; reanimator; graveyard; mill; sacrifice; saga; pump; reach; defense; trample; evasion,FIN,204,Rare,29,,5.5,hand
 Dark Knight's Greatsword,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +3/+0 and is a Knight in addition to its other types.
-Chaosbringer — Equip—Pay 3 life. Activate only once each turn.",B,Equipment; tokens; etb; equipment; pump; chaosbringer; job select; equip,FIN,95,Uncommon,38,,3.0
+Chaosbringer — Equip—Pay 3 life. Activate only once each turn.",B,Equipment; tokens; etb; equipment; pump; chaosbringer; job select; equip,FIN,95,Uncommon,38,,4.0,hand
 Lion Heart,Artifact — Equipment,"When this Equipment enters, it deals 2 damage to any target.
 Equipped creature gets +2/+1.
-Equip {2}",Colorless,Equipment; burn; etb; equipment; pump; equip,FIN,261,Uncommon,38,,4.5
+Equip {2}",Colorless,Equipment; burn; etb; equipment; pump; equip,FIN,261,Uncommon,38,,4.5,hand
 "Ragnarok, Divine Deliverance",Legendary Creature — Beast Avatar,"Vigilance, menace, trample, reach, haste
-When Ragnarok dies, destroy target permanent and return target nonlegendary permanent card from your graveyard to the battlefield.",B/G,Beast; Avatar; graveyard; removal; reach; defense; vigilance; combat; haste; aggro; trample; evasion; menace,FIN,99b,Uncommon,31,,5.5
+When Ragnarok dies, destroy target permanent and return target nonlegendary permanent card from your graveyard to the battlefield.",B/G,Beast; Avatar; graveyard; removal; reach; defense; vigilance; combat; haste; aggro; trample; evasion; menace,FIN,99b,Uncommon,31,,6.0,hand
 Summon: Fenrir,Enchantment Creature — Saga Wolf,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Crescent Fang — Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
 II — Heavenward Howl — When you next cast a creature spell this turn, that creature enters with an additional +1/+1 counter on it.
-III — Ecliptic Growl — Draw a card if you control the creature with the greatest power or tied for the greatest power.",G,Saga; Wolf; counters; card draw; sacrifice; ramp; etb; saga,FIN,203,Uncommon,29,,5.5
+III — Ecliptic Growl — Draw a card if you control the creature with the greatest power or tied for the greatest power.",G,Saga; Wolf; counters; card draw; sacrifice; ramp; etb; saga,FIN,203,Uncommon,29,,5.5,hand
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
-Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,1.5
-Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0
+Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
+Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
-Sacrifice four tokens: Surveil 2, then draw two cards. You gain 2 life.",B/G,Elf; Detective; lifegain; card draw; sacrifice; tokens; collect evidence; graveyard; surveil; menace; evasion,MKM,209,Rare,31,"Card-advantage engine for deck 31 (Golgari Elf/poison) — Elf Detective, collect evidence -> Spider tokens, sac 4 tokens: surveil 2, draw 2, gain 2. Fills the deck-31 card-advantage gap (was 1) + on-theme tokens/graveyard/sac.",7
+Sacrifice four tokens: Surveil 2, then draw two cards. You gain 2 life.",B/G,Elf; Detective; lifegain; card draw; sacrifice; tokens; collect evidence; graveyard; surveil; menace; evasion,MKM,209,Rare,31,"Card-advantage engine for deck 31 (Golgari Elf/poison) — Elf Detective, collect evidence -> Spider tokens, sac 4 tokens: surveil 2, draw 2, gain 2. Fills the deck-31 card-advantage gap (was 1) + on-theme tokens/graveyard/sac.",6.5,hand
 "Krenko, Baron of Tin Street",Legendary Creature — Goblin,"Haste
 {T}, Sacrifice an artifact: Put a +1/+1 counter on each Goblin you control.
-Whenever an artifact is put into a graveyard from the battlefield, you may pay {R}. If you do, create a 1/1 red Goblin creature token. It gains haste until end of turn.",R,Goblin; counters; reanimator; graveyard; sacrifice; tokens; haste; aggro,MKM,135,Rare,10,Goblin/artifact-aristocrats engine (sac artifact -> pump; artifact death -> Goblin) — fits Mad Villainy BR artifacts,6.5
+Whenever an artifact is put into a graveyard from the battlefield, you may pay {R}. If you do, create a 1/1 red Goblin creature token. It gains haste until end of turn.",R,Goblin; counters; reanimator; graveyard; sacrifice; tokens; haste; aggro,MKM,135,Rare,10,Goblin/artifact-aristocrats engine (sac artifact -> pump; artifact death -> Goblin) — fits Mad Villainy BR artifacts,6.0,hand
 Lush Portico,Land — Forest Plains,"({T}: Add {G} or {W}.)
 This land enters tapped.
-When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W/G,Forest; Plains; graveyard; mana; etb; selection; surveil,MKM,263,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6
+When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W/G,Forest; Plains; graveyard; mana; etb; selection; surveil,MKM,263,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,5.5,hand
 Shadowy Backstreet,Land — Plains Swamp,"({T}: Add {W} or {B}.)
 This land enters tapped.
-When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W/B,Plains; Swamp; graveyard; mana; etb; selection; surveil,MKM,268,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also de-taplands + firms black in deck 20 (Honor Among Thieves) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6
+When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W/B,Plains; Swamp; graveyard; mana; etb; selection; surveil,MKM,268,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also de-taplands + firms black in deck 20 (Honor Among Thieves) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,5.5,hand
 Sharp-Eyed Rookie,Creature — Human Detective,"Vigilance
-Whenever a creature you control enters, if its power is greater than this creature's power or its toughness is greater than this creature's toughness, put a +1/+1 counter on this creature and investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",G,Human; Detective; counters; card draw; sacrifice; tokens; clue; investigate; vigilance; combat,MKM,176,Rare,13,grows + investigates when a bigger creature enters — its own flex-noted home (counters/value). Also a ★ card-advantage engine for deck 9 (Gruul counters/smash) — every bigger creature entering = counter + Clue.,5.5
+Whenever a creature you control enters, if its power is greater than this creature's power or its toughness is greater than this creature's toughness, put a +1/+1 counter on this creature and investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",G,Human; Detective; counters; card draw; sacrifice; tokens; clue; investigate; vigilance; combat,MKM,176,Rare,13,grows + investigates when a bigger creature enters — its own flex-noted home (counters/value). Also a ★ card-advantage engine for deck 9 (Gruul counters/smash) — every bigger creature entering = counter + Clue.,5.0,hand
 Underground Mortuary,Land — Swamp Forest,"({T}: Add {B} or {G}.)
 This land enters tapped.
-When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",B/G,Swamp; Forest; graveyard; mana; etb; selection; surveil,MKM,271,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6
+When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",B/G,Swamp; Forest; graveyard; mana; etb; selection; surveil,MKM,271,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,5.5,hand
 Case of the Filched Falcon,Enchantment — Case,"When this Case enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
 To solve — You control three or more artifacts. (If unsolved, solve at the beginning of your end step.)
-Solved — {2}{U}, Sacrifice this Case: Put four +1/+1 counters on target noncreature artifact. It becomes a 0/0 Bird creature with flying in addition to its other types.",U,Case; counters; card draw; sacrifice; tokens; etb; clue; investigate; solved,MKM,44,Uncommon,26,,3.5
+Solved — {2}{U}, Sacrifice this Case: Put four +1/+1 counters on target noncreature artifact. It becomes a 0/0 Bird creature with flying in addition to its other types.",U,Case; counters; card draw; sacrifice; tokens; etb; clue; investigate; solved,MKM,44,Uncommon,26,,3.5,hand
 Gleaming Geardrake,Artifact Creature — Drake,"Flying
 When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
-Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",U/R,Drake; counters; card draw; sacrifice; tokens; etb; clue; flying; evasion; investigate,MKM,205,Uncommon,35,,5.5
+Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",U/R,Drake; counters; card draw; sacrifice; tokens; etb; clue; flying; evasion; investigate,MKM,205,Uncommon,35,,5.0,hand
 Magnetic Snuffler,Artifact Creature — Construct,"When this creature enters, return target Equipment card from your graveyard to the battlefield attached to this creature.
-Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",Colorless,Construct; counters; reanimator; graveyard; sacrifice; etb,MKM,254,Uncommon,38,,4.0
-Repulsive Mutation,Instant,Put X +1/+1 counters on target creature you control. Then counter up to one target spell unless its controller pays mana equal to the greatest power among creatures you control.,U/G,counters,MKM,227,Uncommon,40a,Counter taxed at your greatest creature power (unconditional with the Hydra out) AND puts X counters on it. Interaction + protection + engine in one instant.,7.0
+Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",Colorless,Construct; counters; reanimator; graveyard; sacrifice; etb,MKM,254,Uncommon,38,,4.0,hand
+Repulsive Mutation,Instant,Put X +1/+1 counters on target creature you control. Then counter up to one target spell unless its controller pays mana equal to the greatest power among creatures you control.,U/G,counters,MKM,227,Uncommon,40a,Counter taxed at your greatest creature power (unconditional with the Hydra out) AND puts X counters on it. Interaction + protection + engine in one instant.,7.0,hand
 Soul Enervation,Enchantment,"Flash
 When this enchantment enters, target creature gets -4/-4 until end of turn.
-Whenever one or more creature cards leave your graveyard, each opponent loses 1 life and you gain 1 life.",B,graveyard; lifegain; etb; removal; flash; tempo,MKM,106,Uncommon,37,,6.5
+Whenever one or more creature cards leave your graveyard, each opponent loses 1 life and you gain 1 life.",B,graveyard; lifegain; etb; removal; flash; tempo,MKM,106,Uncommon,37,,5.5,hand
 Cold Case Cracker,Creature — Spirit Detective,"Flying
-When this creature dies, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U,Spirit; Detective; card draw; sacrifice; tokens; clue; flying; evasion; investigate,MKM,46,Common,26,,2.5
+When this creature dies, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U,Spirit; Detective; card draw; sacrifice; tokens; clue; flying; evasion; investigate,MKM,46,Common,26,,2.5,hand
 Loxodon Eavesdropper,Creature — Elephant Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
-Whenever you draw your second card each turn, this creature gets +1/+1 and gains vigilance until end of turn.",G,Elephant; Detective; card draw; sacrifice; tokens; etb; clue; pump; investigate,MKM,168,Common,34,,2.5
-Novice Inspector,Creature — Human Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",W,Human; Detective; card draw; sacrifice; tokens; etb; clue; investigate,MKM,29,Common,36a,,3.0
+Whenever you draw your second card each turn, this creature gets +1/+1 and gains vigilance until end of turn.",G,Elephant; Detective; card draw; sacrifice; tokens; etb; clue; pump; investigate,MKM,168,Common,34,,2.5,hand
+Novice Inspector,Creature — Human Detective,"When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",W,Human; Detective; card draw; sacrifice; tokens; etb; clue; investigate,MKM,29,Common,36a,,3.5,hand
 Spider-UK,Legendary Creature — Spider Human Hero,"Web-slinging {2}{W} (You may cast this spell for {2}{W} if you also return a tapped creature you control to its owner's hand.)
-At the beginning of your end step, if two or more creatures entered the battlefield under your control this turn, you draw a card and gain 2 life.",W,Spider; Human; Hero; lifegain; card draw; bounce; web-slinging; evasion; tempo,MSC,777,Uncommon,23,,3.5
+At the beginning of your end step, if two or more creatures entered the battlefield under your control this turn, you draw a card and gain 2 life.",W,Spider; Human; Hero; lifegain; card draw; bounce; web-slinging; evasion; tempo,MSC,777,Uncommon,23,,3.5,hand
 Kang the Conqueror,Legendary Creature — Human Villain,"Flying
-Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after this one. During that turn, power-up abilities can't be activated. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",U,Human; Villain; counters; flying; evasion; power-up; payoff,MSH,62,Mythic,12,blue control finisher — evasive body + extra-turn power-up; UUU castable in Dimir,7.0
+Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after this one. During that turn, power-up abilities can't be activated. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",U,Human; Villain; counters; flying; evasion; power-up; payoff,MSH,62,Mythic,12,blue control finisher — evasive body + extra-turn power-up; UUU castable in Dimir,6.5,hand
 "King T'Challa // Black Panther, Hope Enduring",Legendary Creature — Human Noble Hero // Legendary Creature — Human Warrior Hero,"Flash
 Whenever a player draws their second card each turn, you draw a card.
 {4}{W}{U}: Transform King T'Challa. Activate only as a sorcery. // Flash
 Double strike
 Prevent all damage that would be dealt to Black Panther.
-Whenever Black Panther deals combat damage to a player, draw a card.",W/U,Human; Noble; Hero; Warrior; card draw; transform; double strike; combat; aggro; flash; tempo,MSH,219,Mythic,19,"best 19 (Bird Brain); also 15,17,16",7.5
-Vision Quest,Sorcery,"Search your library and/or graveyard for an artifact creature card with mana value X or less and put it onto the battlefield with X additional +1/+1 counters on it. If X is 4 or greater, it gains haste until end of turn. If you search your library this way, shuffle.",U/R,counters; reanimator; graveyard,MSH,237,Rare,general,UR artifact-creature cheat/reanimator — wants a dedicated artifacts shell,5.5
+Whenever Black Panther deals combat damage to a player, draw a card.",W/U,Human; Noble; Hero; Warrior; card draw; transform; double strike; combat; aggro; flash; tempo,MSH,219,Mythic,19,"best 19 (Bird Brain); also 15,17,16",7.5,hand
+Vision Quest,Sorcery,"Search your library and/or graveyard for an artifact creature card with mana value X or less and put it onto the battlefield with X additional +1/+1 counters on it. If X is 4 or greater, it gains haste until end of turn. If you search your library this way, shuffle.",U/R,counters; reanimator; graveyard,MSH,237,Rare,general,UR artifact-creature cheat/reanimator — wants a dedicated artifacts shell,5.0,hand
 Archangel of Tithes,Creature — Angel,"Flying
 As long as this creature is untapped, creatures can't attack you or planeswalkers you control unless their controller pays {1} for each of those creatures.
-As long as this creature is attacking, creatures can't block unless their controller pays {1} for each of those creatures.",W,Angel; flying; evasion,OTJ,2,Mythic,3,"Go-wide tax (protects you + pushes a wide board through); also fits deck 23 — one copy serves both. Mythic craft, OTJ rotation-soon.",6.5
+As long as this creature is attacking, creatures can't block unless their controller pays {1} for each of those creatures.",W,Angel; flying; evasion,OTJ,2,Mythic,3,"Go-wide tax (protects you + pushes a wide board through); also fits deck 23 — one copy serves both. Mythic craft, OTJ rotation-soon.",6.5,hand
 Blooming Marsh,Land,"This land enters tapped unless you control two or fewer other lands.
-{T}: Add {B} or {G}.",B/G,mana,OTJ,266,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6
+{T}: Add {B} or {G}.",B/G,mana,OTJ,266,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6.5,hand
 Concealed Courtyard,Land,"This land enters tapped unless you control two or fewer other lands.
-{T}: Add {W} or {B}.",W/B,mana,OTJ,268,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also de-taplands + firms black in deck 20 (Honor Among Thieves) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6
+{T}: Add {W} or {B}.",W/B,mana,OTJ,268,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also de-taplands + firms black in deck 20 (Honor Among Thieves) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6.5,hand
 "Lilah, Undefeated Slickshot",Legendary Creature — Human Rogue,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
-Whenever you cast a multicolored instant or sorcery spell from your hand, exile that spell instead of putting it into your graveyard as it resolves. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/R,Human; Rogue; graveyard; pump; plot; tempo; cost-reduction; prowess; spellslinger,OTJ,217,Rare,25,prowess 3-drop that impulses off your spells,6.0
+Whenever you cast a multicolored instant or sorcery spell from your hand, exile that spell instead of putting it into your graveyard as it resolves. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/R,Human; Rogue; graveyard; pump; plot; tempo; cost-reduction; prowess; spellslinger,OTJ,217,Rare,25,prowess 3-drop that impulses off your spells,6.5,hand
 "Malcolm, the Eyes",Legendary Creature — Siren Pirate,"Flying, haste
-Whenever you cast your second spell each turn, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U/R,Siren; Pirate; card draw; sacrifice; tokens; clue; flying; evasion; investigate; haste; aggro,OTJ,219,Rare,25,2-drop: second spell -> investigate,6.0
+Whenever you cast your second spell each turn, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U/R,Siren; Pirate; card draw; sacrifice; tokens; clue; flying; evasion; investigate; haste; aggro,OTJ,219,Rare,25,2-drop: second spell -> investigate,5.5,hand
 Lassoed by the Law,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.
-When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W,tokens; removal; etb; pump,OTJ,18,Uncommon,3; 36a,,5.0
+When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W,tokens; removal; etb; pump,OTJ,18,Uncommon,3; 36a,,5.5,hand
 Thunder Lasso,Artifact — Equipment,"When this Equipment enters, attach it to target creature you control.
 Equipped creature gets +1/+1.
 Whenever equipped creature attacks, tap target creature defending player controls.
-Equip {2}",W,Equipment; etb; equipment; pump; equip,OTJ,35,Uncommon,38,,2.0
+Equip {2}",W,Equipment; etb; equipment; pump; equip,OTJ,35,Uncommon,38,,2.5,hand
 Rooftop Assassin,Creature — Vampire Assassin,"Flash
 Flying, lifelink
-When this creature enters, destroy target creature an opponent controls that was dealt damage this turn.",B,Vampire; Assassin; lifegain; removal; etb; flying; evasion; lifelink; flash; tempo,OTJ,103,Common,20,,3.0
-"Aziza, Mage Tower Captain",Legendary Creature — Djinn Sorcerer,"Whenever you cast an instant or sorcery spell, you may tap three untapped creatures you control. If you do, copy that spell. You may choose new targets for the copy.",W/R,Djinn; Sorcerer; spellslinger,SOS,174,Rare,concept,RW spells/magecraft (Strixhaven-style),6.0
+When this creature enters, destroy target creature an opponent controls that was dealt damage this turn.",B,Vampire; Assassin; lifegain; removal; etb; flying; evasion; lifelink; flash; tempo,OTJ,103,Common,20,,3.5,hand
+"Aziza, Mage Tower Captain",Legendary Creature — Djinn Sorcerer,"Whenever you cast an instant or sorcery spell, you may tap three untapped creatures you control. If you do, copy that spell. You may choose new targets for the copy.",W/R,Djinn; Sorcerer; spellslinger,SOS,174,Rare,concept,RW spells/magecraft (Strixhaven-style),6.5,hand
 Comforting Counsel,Enchantment,"Whenever you gain life, put a growth counter on this enchantment.
-As long as there are five or more growth counters on this enchantment, creatures you control get +3/+3.",G,counters; pump,SOS,143,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 9,19b,19a",4.5
+As long as there are five or more growth counters on this enchantment, creatures you control get +3/+3.",G,counters; pump,SOS,143,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 9,19b,19a",4.0,hand
 Deathcap Glade,Land,"This land enters tapped unless you control two or more other lands.
-{T}: Add {B} or {G}.",B/G,mana,SOS,253,Rare,20b,"broadly useful — best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 13,21,21a",5.5
-Exhibition Tidecaller,Creature — Djinn Wizard,"Opus — Whenever you cast an instant or sorcery spell, target player mills three cards. If five or more mana was spent to cast that spell, that player mills ten cards instead.",U,Djinn; Wizard; mill; spellslinger; graveyard; opus,SOS,48,Rare,22,mill/spellslinger Djinn — feeds the Dimir graveyard/card-advantage plan,6.0
+{T}: Add {B} or {G}.",B/G,mana,SOS,253,Rare,20b,"broadly useful — best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 13,21,21a",5.0,hand
+Exhibition Tidecaller,Creature — Djinn Wizard,"Opus — Whenever you cast an instant or sorcery spell, target player mills three cards. If five or more mana was spent to cast that spell, that player mills ten cards instead.",U,Djinn; Wizard; mill; spellslinger; graveyard; opus,SOS,48,Rare,22,mill/spellslinger Djinn — feeds the Dimir graveyard/card-advantage plan,4.5,hand
 Magmablood Archaic,Creature — Avatar,"Trample, reach
 Converge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.
-Whenever you cast an instant or sorcery spell, creatures you control get +1/+0 until end of turn for each color of mana spent to cast that spell.",R,Avatar; counters; pump; spellslinger; reach; defense; converge; multicolor; trample; evasion,SOS,123,Rare,25,Repeatable spellslinger payoff for Spellstorm (25) — the flex block's craft target,5.0
+Whenever you cast an instant or sorcery spell, creatures you control get +1/+0 until end of turn for each color of mana spent to cast that spell.",R,Avatar; counters; pump; spellslinger; reach; defense; converge; multicolor; trample; evasion,SOS,123,Rare,25,Repeatable spellslinger payoff for Spellstorm (25) — the flex block's craft target,5.0,hand
 Moment of Reckoning,Sorcery,"Choose up to four. You may choose the same mode more than once.
 • Destroy target nonland permanent.
-• Return target nonland permanent card from your graveyard to the battlefield.",W/B,graveyard; removal,SOS,205,Rare,6,"best 6 (Dead or Alive); also 20b,20a,20",6.5
+• Return target nonland permanent card from your graveyard to the battlefield.",W/B,graveyard; removal,SOS,205,Rare,6,"best 6 (Dead or Alive); also 20b,20a,20",6.5,hand
 "Moseo, Vein's New Dean",Legendary Creature — Bird Skeleton Warlock,"Flying
 When Moseo enters, create a 1/1 black and green Pest creature token with ""Whenever this token attacks, you gain 1 life.""
-Infusion — At the beginning of your end step, if you gained life this turn, return up to one target creature card with mana value X or less from your graveyard to the battlefield, where X is the amount of life you gained this turn.",B,Bird; Skeleton; Warlock; reanimator; graveyard; lifegain; tokens; etb; infusion; flying; evasion,SOS,91,Rare,6,Infusion: gain life -> reanimate a creature + a lifegain Pest — core Dead or Alive engine,5.5
+Infusion — At the beginning of your end step, if you gained life this turn, return up to one target creature card with mana value X or less from your graveyard to the battlefield, where X is the amount of life you gained this turn.",B,Bird; Skeleton; Warlock; reanimator; graveyard; lifegain; tokens; etb; infusion; flying; evasion,SOS,91,Rare,6,Infusion: gain life -> reanimate a creature + a lifegain Pest — core Dead or Alive engine,5.0,hand
 "Nita, Forum Conciliator",Legendary Creature — Human Advisor,"Whenever you cast a spell you don't own, put a +1/+1 counter on each creature you control.
-{2}, Sacrifice another creature: Exile target instant or sorcery card from an opponent's graveyard. You may cast it this turn, and mana of any type can be spent to cast that spell. If that spell would be put into a graveyard, exile it instead. Activate only as a sorcery.",W/B,Human; Advisor; counters; graveyard; sacrifice; removal,SOS,206,Rare,21,sac outlet + counters-on-cast; looser fit — a WB value/theft engine,4.5
-Planar Engineering,Sorcery,"Sacrifice two lands. Search your library for four basic land cards, put them onto the battlefield tapped, then shuffle.",G,sacrifice,SOS,158,Rare,13,"ramp: sac 2 lands -> fetch 4 basics — feeds Earth Kingdom's ramp ('sacrifice' tag was a red herring, not aristocrats)",4.5
+{2}, Sacrifice another creature: Exile target instant or sorcery card from an opponent's graveyard. You may cast it this turn, and mana of any type can be spent to cast that spell. If that spell would be put into a graveyard, exile it instead. Activate only as a sorcery.",W/B,Human; Advisor; counters; graveyard; sacrifice; removal,SOS,206,Rare,21,sac outlet + counters-on-cast; looser fit — a WB value/theft engine,4.0,hand
+Planar Engineering,Sorcery,"Sacrifice two lands. Search your library for four basic land cards, put them onto the battlefield tapped, then shuffle.",G,sacrifice,SOS,158,Rare,13,"ramp: sac 2 lands -> fetch 4 basics — feeds Earth Kingdom's ramp ('sacrifice' tag was a red herring, not aristocrats)",4.0,hand
 Postmortem Professor,Creature — Zombie Warlock,"This creature can't block.
 Whenever this creature attacks, each opponent loses 1 life and you gain 1 life.
-{1}{B}, Exile an instant or sorcery card from your graveyard: Return this card from your graveyard to the battlefield.",B,Zombie; Warlock; reanimator; graveyard; lifegain,SOS,93,Rare,11,reanimator Zombie — recurs creatures for the mono-black graveyard engine,5.5
-Pox Plague,Sorcery,"Each player loses half their life, then discards half the cards in their hand, then sacrifices half the permanents they control of their choice. Round down each time.",B,sacrifice,SOS,94,Rare,11,symmetric pox — mono-black control rebuilds from the wreckage via tokens/reanimation,5.0
-Slumbering Trudge,Creature — Plant Beast,"This creature enters with a number of stun counters on it equal to three minus X. If X is 2 or less, it enters tapped. (If a permanent with a stun counter would become untapped, remove one from it instead.)",G,Plant; Beast; counters,SOS,160,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 4,13,9",4.5
+{1}{B}, Exile an instant or sorcery card from your graveyard: Return this card from your graveyard to the battlefield.",B,Zombie; Warlock; reanimator; graveyard; lifegain,SOS,93,Rare,11,reanimator Zombie — recurs creatures for the mono-black graveyard engine,5.0,hand
+Pox Plague,Sorcery,"Each player loses half their life, then discards half the cards in their hand, then sacrifices half the permanents they control of their choice. Round down each time.",B,sacrifice,SOS,94,Rare,11,symmetric pox — mono-black control rebuilds from the wreckage via tokens/reanimation,5.0,hand
+Slumbering Trudge,Creature — Plant Beast,"This creature enters with a number of stun counters on it equal to three minus X. If X is 2 or less, it enters tapped. (If a permanent with a stun counter would become untapped, remove one from it instead.)",G,Plant; Beast; counters,SOS,160,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 4,13,9",4.0,hand
 Splatter Technique,Sorcery,"Choose one —
 • Draw four cards.
-• Splatter Technique deals 4 damage to each creature and planeswalker.",U/R,card draw; burn,SOS,231,Rare,general,flexible UR: draw 4 OR sweep 4 to each creature/PW — role-player in any UR/grixis shell,6.5
+• Splatter Technique deals 4 damage to each creature and planeswalker.",U/R,card draw; burn,SOS,231,Rare,general,flexible UR: draw 4 OR sweep 4 to each creature/PW — role-player in any UR/grixis shell,6.5,hand
 Sundown Pass,Land,"This land enters tapped unless you control two or more other lands.
-{T}: Add {R} or {W}.",W/R,mana,SOS,264,Rare,general,"WR fixing land — generic fixing, not earthbend-specific",5.5
-Together as One,Sorcery,"Converge — Target player draws X cards, Together as One deals X damage to any target, and you gain X life, where X is the number of colors of mana spent to cast this spell.",Colorless,burn; converge; multicolor,SOS,4,Rare,17,Converge payoff (draw/burn/gain X = colors spent) — rewards the 5-color manabase,5.0
-Traumatic Critique,Instant,"Traumatic Critique deals X damage to any target. Draw two cards, then discard a card.",U/R,card draw; burn,SOS,239,Rare,general,UR X-burn + card advantage — good in any UR/spellslinger shell (cf. Prismari concept),6.0
+{T}: Add {R} or {W}.",W/R,mana,SOS,264,Rare,general,"WR fixing land — generic fixing, not earthbend-specific",5.0,hand
+Together as One,Sorcery,"Converge — Target player draws X cards, Together as One deals X damage to any target, and you gain X life, where X is the number of colors of mana spent to cast this spell.",Colorless,burn; converge; multicolor,SOS,4,Rare,17,Converge payoff (draw/burn/gain X = colors spent) — rewards the 5-color manabase,4.5,hand
+Traumatic Critique,Instant,"Traumatic Critique deals X damage to any target. Draw two cards, then discard a card.",U/R,card draw; burn,SOS,239,Rare,general,UR X-burn + card advantage — good in any UR/spellslinger shell (cf. Prismari concept),5.5,hand
 Vastlands Scavenger // Bind to Life,Creature — Bear Druid // Instant,"Deathtouch
-This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Mill seven cards. Then put a creature card from among them onto the battlefield.",G,Bear; Druid; mill; prepared; spellslinger; tempo; graveyard; deathtouch; combat; removal,SOS,166,Rare,6; 31,"best 6 (Dead or Alive); also 5,20b,8 | Also deck 31 (Pox) — 10-Druid go-wide shell; strong Druid fit.",5.5
+This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Mill seven cards. Then put a creature card from among them onto the battlefield.",G,Bear; Druid; mill; prepared; spellslinger; tempo; graveyard; deathtouch; combat; removal,SOS,166,Rare,6; 31,"best 6 (Dead or Alive); also 5,20b,8 | Also deck 31 (Pox) — 10-Druid go-wide shell; strong Druid fit.",5.5,hand
 Vicious Rivalry,Sorcery,"As an additional cost to cast this spell, pay X life.
-Destroy all artifacts and creatures with mana value X or less.",B/G,,SOS,241,Rare,general,BG fight/removal,6.0
+Destroy all artifacts and creatures with mana value X or less.",B/G,,SOS,241,Rare,general,BG fight/removal,5.5,hand
 "Anti-Venom, Horrifying Healer",Legendary Creature — Symbiote Hero,"When Anti-Venom enters, if he was cast, return target creature card from your graveyard to the battlefield.
-If damage would be dealt to Anti-Venom, prevent that damage and put that many +1/+1 counters on him.",W,Symbiote; Hero; counters; reanimator; graveyard; etb,SPM,1,Mythic,6,,6.5
+If damage would be dealt to Anti-Venom, prevent that damage and put that many +1/+1 counters on him.",W,Symbiote; Hero; counters; reanimator; graveyard; etb,SPM,1,Mythic,6,,6.0,hand
 Mister Negative,Legendary Creature — Human Villain,"Vigilance, lifelink
-Darkforce Inversion — When Mister Negative enters, you may exchange life totals with target opponent. If you lost life this way, draw that many cards.",W/B,Human; Villain; lifegain; card draw; etb; lifelink; vigilance; combat; darkforce inversion,SPM,135,Mythic,20,WB life-swap + draw swing — fits Orzhov lifegain-drain (20),7.0
+Darkforce Inversion — When Mister Negative enters, you may exchange life totals with target opponent. If you lost life this way, draw that many cards.",W/B,Human; Villain; lifegain; card draw; etb; lifelink; vigilance; combat; darkforce inversion,SPM,135,Mythic,concept: life-swap,"7-mana 5/5 vigilance lifelink. DO NOT slot into 20 — the old note had this backwards. The draw half only fires when YOUR life is higher, and the price is handing the opponent that total; deck 20 is a lifegain-drain deck that sits high while grinding them low, i.e. exactly the state where swapping undoes the game. The good mode (you low, them high) draws ZERO cards and arrives at 7 mana, too late to stabilise. Self-cancelling as a build-around: the payoff needs a life gap that only exists when you are already winning. Revisit only with an Orzhov BLINK shell to re-trigger the ETB, or a deck that wins the turn it draws 20.",5.0,hand
 Spider-Verse,Enchantment,"The ""legend rule"" doesn't apply to Spiders you control.
-Whenever you cast a spell from anywhere other than your hand, you may copy it. If you do, you may choose new targets for the copy. If the copy is a permanent spell, it gains haste. Do this only once each turn.",R,,SPM,93,Mythic,concept,Spider-Man tribal + spell-copy build-around (Spiders ignore legend rule),6.5
+Whenever you cast a spell from anywhere other than your hand, you may copy it. If you do, you may choose new targets for the copy. If the copy is a permanent spell, it gains haste. Do this only once each turn.",R,,SPM,93,Mythic,concept,Spider-Man tribal + spell-copy build-around (Spiders ignore legend rule),5.5,hand
 The Soul Stone,Legendary Artifact — Infinity Stone,"Indestructible
 {T}: Add {B}.
 {6}{B}, {T}, Exile a creature you control: Harness The Soul Stone. (Once harnessed, its ∞ ability is active.)
-∞ — At the beginning of your upkeep, return target creature card from your graveyard to the battlefield.",B,Infinity; Stone; reanimator; graveyard; mana; indestructible; resilience,SPM,66,Mythic,6,,6.0
+∞ — At the beginning of your upkeep, return target creature card from your graveyard to the battlefield.",B,Infinity; Stone; reanimator; graveyard; mana; indestructible; resilience,SPM,66,Mythic,6,,5.5,hand
 "Carnage, Crimson Chaos",Legendary Creature — Symbiote Villain,"Trample
 When Carnage enters, return target creature card with mana value 3 or less from your graveyard to the battlefield. It gains ""This creature attacks each combat if able"" and ""When this creature deals combat damage to a player, sacrifice it.""
-Mayhem {B}{R}",B/R,Symbiote; Villain; reanimator; graveyard; sacrifice; etb; mayhem; aggro; trample; evasion,SPM,125,Rare,10,,6.5
+Mayhem {B}{R}",B/R,Symbiote; Villain; reanimator; graveyard; sacrifice; etb; mayhem; aggro; trample; evasion,SPM,125,Rare,10,,6.0,hand
 Interdimensional Web Watch,Artifact,"When this artifact enters, exile the top two cards of your library. Until the end of your next turn, you may play those cards.
-{T}: Add two mana in any combination of colors. Spend this mana only to cast spells from exile.",Colorless,mana; etb; impulse,SPM,165,Rare,24,artifact: exile 2 + mana to cast from exile,4.5
+{T}: Add two mana in any combination of colors. Spend this mana only to cast spells from exile.",Colorless,mana; etb; impulse,SPM,165,Rare,24,artifact: exile 2 + mana to cast from exile,4.5,hand
 "Iron Spider, Stark Upgrade",Legendary Artifact Creature — Spider Hero,"Vigilance
 {T}: Put a +1/+1 counter on each artifact creature and/or Vehicle you control.
-{2}, Remove two +1/+1 counters from among artifacts you control: Draw a card.",Colorless,Spider; Hero; counters; card draw; vigilance; combat,SPM,166,Rare,17,,5.5
+{2}, Remove two +1/+1 counters from among artifacts you control: Draw a card.",Colorless,Spider; Hero; counters; card draw; vigilance; combat,SPM,166,Rare,17,,5.0,hand
 Multiversal Passage,Land,"As this land enters, choose a basic land type. Then you may pay 2 life. If you don't, it enters tapped.
-This land is the chosen type.",Colorless,,SPM,180,Rare,general,basic-type fixing land — any deck,6.5
-Strength of Will,Instant,"Until end of turn, target creature you control gains indestructible and ""Whenever this creature is dealt damage, put that many +1/+1 counters on it.""",G,counters,SPM,118,Rare,general,green protect + damage->counters combat trick — any green deck,4.0
+This land is the chosen type.",Colorless,,SPM,180,Rare,general,basic-type fixing land — any deck,6.0,hand
+Strength of Will,Instant,"Until end of turn, target creature you control gains indestructible and ""Whenever this creature is dealt damage, put that many +1/+1 counters on it.""",G,counters,SPM,118,Rare,general,green protect + damage->counters combat trick — any green deck,4.0,hand
 With Great Power . . .,Enchantment — Aura,"Enchant creature you control
 Enchanted creature gets +2/+2 for each Aura and Equipment attached to it.
-All damage that would be dealt to you is dealt to enchanted creature instead.",W,Aura; aura; pump; enchant,SPM,24,Rare,38,,3.0
+All damage that would be dealt to you is dealt to enchanted creature instead.",W,Aura; aura; pump; enchant,SPM,24,Rare,38,,3.5,hand
 "Green Goblin, Revenant",Legendary Creature — Goblin Human Villain,"Flying, deathtouch
-Whenever Green Goblin attacks, discard a card. Then draw a card for each card you've discarded this turn.",B/R,Goblin; Human; Villain; card draw; deathtouch; combat; removal; flying; evasion,SPM,130,Uncommon,10,,4.5
+Whenever Green Goblin attacks, discard a card. Then draw a card for each card you've discarded this turn.",B/R,Goblin; Human; Villain; card draw; deathtouch; combat; removal; flying; evasion,SPM,130,Uncommon,10,,4.5,hand
 "Neriv, Heart of the Storm",Legendary Creature — Spirit Dragon,"Flying
-If a creature you control that entered this turn would deal damage, it deals twice that much damage instead.",W/B/R,Spirit; Dragon; flying; evasion,TDM,210,Mythic,concept: Mardu,Lost its home when deck 14 converted Mardu->Rakdos (BR) for consistency; needs a Mardu (WBR) shell — no current deck. Build-around concept.,6.5
+If a creature you control that entered this turn would deal damage, it deals twice that much damage instead.",W/B/R,Spirit; Dragon; flying; evasion,TDM,210,Mythic,concept: Mardu,Lost its home when deck 14 converted Mardu->Rakdos (BR) for consistency; needs a Mardu (WBR) shell — no current deck. Build-around concept.,6.5,hand
 Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I, II — Create a 5/5 green Elephant creature token.
-III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,6.0
+III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,5.5,hand
 Fated Firepower,Enchantment,"Flash
 This enchantment enters with X fire counters on it.
-If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus an amount of damage equal to the number of fire counters on this enchantment instead.",R,flash; tempo,TLA,132,Mythic,concept,mono-R firebending/burn payoff; try 2/14,5.5
+If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus an amount of damage equal to the number of fire counters on this enchantment instead.",R,flash; tempo,TLA,132,Mythic,concept,mono-R firebending/burn payoff; try 2/14,5.5,hand
 Phoenix Fleet Airship,Artifact — Vehicle,"Flying
 At the beginning of your end step, if you sacrificed a permanent this turn, create a token that's a copy of this Vehicle.
 As long as you control eight or more permanents named Phoenix Fleet Airship, this Vehicle is an artifact creature.
-Crew 1",B,Vehicle; sacrifice; tokens; vehicle; flying; evasion; crew; vehicles,TLA,114,Mythic,21,sacrifice-matters: copies itself when you sac a permanent (quirky build-around),5.5
+Crew 1",B,Vehicle; sacrifice; tokens; vehicle; flying; evasion; crew; vehicles,TLA,114,Mythic,21,sacrifice-matters: copies itself when you sac a permanent (quirky build-around),5.0,hand
 White Lotus Tile,Artifact,"This artifact enters tapped.
-{T}: Add X mana of any one color, where X is the greatest number of creatures you control that have a creature type in common.",Colorless,mana,TLA,262,Mythic,general,tribal ramp rock (X any-color = creatures sharing a type) — go-wide/tribal decks,5.0
+{T}: Add X mana of any one color, where X is the greatest number of creatures you control that have a creature type in common.",Colorless,mana,TLA,262,Mythic,general,tribal ramp rock (X any-color = creatures sharing a type) — go-wide/tribal decks,4.5,hand
 "Azula, Cunning Usurper",Legendary Creature — Human Noble Rogue,"Firebending 2 (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)
 When Azula enters, target opponent exiles a nontoken creature they control, then they exile a nonland card from their graveyard.
-During your turn, you may cast cards exiled with Azula and you may cast them as though they had flash. Mana of any type can be spent to cast those spells.",U/B,Human; Noble; Rogue; graveyard; etb; firebending; bending,TLA,208,Rare,22,"best 22 (Bloodbending); also 17,12",6.0
+During your turn, you may cast cards exiled with Azula and you may cast them as though they had flash. Mana of any type can be spent to cast those spells.",U/B,Human; Noble; Rogue; graveyard; etb; firebending; bending,TLA,208,Rare,22,"best 22 (Bloodbending); also 17,12",6.0,hand
 Earth King's Lieutenant,Creature — Human Soldier Ally,"Trample
 When this creature enters, put a +1/+1 counter on each other Ally creature you control.
-Whenever another Ally you control enters, put a +1/+1 counter on this creature.",W/G,Human; Soldier; Ally; counters; etb; trample; evasion,TLA,217,Rare,13,Ally +1/+1 anthem — Earth Kingdom flavor + its Ally/counters theme,5.0
+Whenever another Ally you control enters, put a +1/+1 counter on this creature.",W/G,Human; Soldier; Ally; counters; etb; trample; evasion,TLA,217,Rare,13,Ally +1/+1 anthem — Earth Kingdom flavor + its Ally/counters theme,4.5,hand
 "Sokka, Bold Boomeranger",Legendary Creature — Human Warrior Ally,"When Sokka enters, discard up to two cards, then draw that many cards.
-Whenever you cast an artifact or Lesson spell, put a +1/+1 counter on Sokka.",U/R,Human; Warrior; Ally; counters; card draw; etb,TLA,240,Rare,17,UR loot + grows on artifact/Lesson casts; only strong home is 5-color Spectrum,5.5
+Whenever you cast an artifact or Lesson spell, put a +1/+1 counter on Sokka.",U/R,Human; Warrior; Ally; counters; card draw; etb,TLA,240,Rare,17,UR loot + grows on artifact/Lesson casts; only strong home is 5-color Spectrum,5.0,hand
 The Fire Nation Drill,Legendary Artifact — Vehicle,"Trample
 When The Fire Nation Drill enters, you may tap it. When you do, destroy target creature with power 4 or less.
 {1}: Permanents your opponents control lose hexproof and indestructible until end of turn.
-Crew 2",B,Vehicle; removal; etb; vehicle; crew; vehicles; trample; evasion,TLA,98,Rare,14,removal vehicle (ETB kill pow<=4; strip hexproof/indestructible) — Fire Nation flavor; generic B removal otherwise,6.0
+Crew 2",B,Vehicle; removal; etb; vehicle; crew; vehicles; trample; evasion,TLA,98,Rare,14,removal vehicle (ETB kill pow<=4; strip hexproof/indestructible) — Fire Nation flavor; generic B removal otherwise,5.5,hand
 The Lion-Turtle,Legendary Creature — Elder Cat Turtle,"Vigilance, reach
 When The Lion-Turtle enters, you gain 3 life.
 The Lion-Turtle can't attack or block unless there are three or more Lesson cards in your graveyard.
-{T}: Add one mana of any color.",U/G,Elder; Cat; Turtle; graveyard; lifegain; mana; etb; reach; defense; vigilance; combat,TLA,232,Rare,concept: Turtle,"best 19a (Bird Brain — Bant Tokens); also 17,4",4.5
+{T}: Add one mana of any color.",U/G,Elder; Cat; Turtle; graveyard; lifegain; mana; etb; reach; defense; vigilance; combat,TLA,232,Rare,concept: Turtle,"best 19a (Bird Brain — Bant Tokens); also 17,4",4.0,hand
 "Toph, the First Metalbender",Legendary Creature — Human Warrior Ally,"Nontoken artifacts you control are lands in addition to their other types. (They don't gain the ability to {T} for mana.)
-At the beginning of your end step, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",W/R/G,Human; Warrior; Ally; counters; blink; earthbend; bending,TLA,247,Rare,13,,6.0
+At the beginning of your end step, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",W/R/G,Human; Warrior; Ally; counters; blink; earthbend; bending,TLA,247,Rare,13,,6.0,hand
 "Zhao, the Moon Slayer",Legendary Creature — Human Soldier,"Menace
 Nonbasic lands enter tapped.
 {7}: Put a conqueror counter on Zhao.
-As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17",4.5
-Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,8,"best 8 (Sacrifices); also 21,21a,5",4.5
+As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17",4.0,hand
+Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,8,"best 8 (Sacrifices); also 21,21a,5",3.5,hand
 Cool but Rude,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
 Whenever you attack, you may discard a card. If you do, draw a card.
 {1}{R}: Level 2
 Whenever you discard a card, this Class deals 2 damage to each opponent.
 {1}{R}: Level 3
-When this Class becomes level 3, search your library for a card, put it into your hand, shuffle, then discard a card at random.",R,Class; card draw; burn,TMT,89,Rare,2,"best 2 (Thundergod); also 8,1,21a",4.5
+When this Class becomes level 3, search your library for a card, put it into your hand, shuffle, then discard a card at random.",R,Class; card draw; burn,TMT,89,Rare,2,"best 2 (Thundergod); also 8,1,21a",4.0,hand
 "Don & Raph, Hard Science",Legendary Creature — Mutant Ninja Turtle,"Menace
-Whenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)",U/R,Mutant; Ninja; Turtle; menace; evasion,TMT,144,Rare,concept,TMNT UR-artifacts legend — new-deck focal point (menace + artifact-affinity payoff),5.5
+Whenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)",U/R,Mutant; Ninja; Turtle; menace; evasion,TMT,144,Rare,concept,TMNT UR-artifacts legend — new-deck focal point (menace + artifact-affinity payoff),5.0,hand
 "Donatello, Gadget Master",Legendary Creature — Mutant Ninja Turtle,"Sneak {1}{U} (You may cast this spell for {1}{U} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)
-Whenever Donatello deals combat damage to a player, create a token that's a copy of target artifact you control.",U,Mutant; Ninja; Turtle; tokens; sneak; tempo; cost-reduction,TMT,35,Rare,19,Mutant Ninja Turtle — sneak/tempo token-maker for the Turtle shell,5.5
+Whenever Donatello deals combat damage to a player, create a token that's a copy of target artifact you control.",U,Mutant; Ninja; Turtle; tokens; sneak; tempo; cost-reduction,TMT,35,Rare,19,Mutant Ninja Turtle — sneak/tempo token-maker for the Turtle shell,5.0,hand
 Groundchuck & Dirtbag,Legendary Creature — Ox Mole Mutant,"Trample
-Whenever you tap a land for mana, add {G}.",G,Ox; Mole; Mutant; trample; evasion,TMT,115,Rare,13,mono-G ramp payoff: tap a land adds an extra {G}; accelerates Earth Kingdom's ramp (TMNT flavor),5.5
+Whenever you tap a land for mana, add {G}.",G,Ox; Mole; Mutant; trample; evasion,TMT,115,Rare,13,mono-G ramp payoff: tap a land adds an extra {G}; accelerates Earth Kingdom's ramp (TMNT flavor),4.5,hand
 Improvised Arsenal,Artifact — Equipment,"Equipped creature gets +1/+0 for each artifact you control.
 {4}{R}: Create a token that's a copy of this Equipment.
-Equip {R}",R,Equipment; tokens; equipment; pump; equip,TMT,92,Rare,10,"broadly useful — best 10 (Mad Villainy); also 9,1,21",4.5
+Equip {R}",R,Equipment; tokens; equipment; pump; equip,TMT,92,Rare,10,"broadly useful — best 10 (Mad Villainy); also 9,1,21",5.0,hand
 Krang & Shredder,Legendary Creature — Utrom Human Ninja,"Whenever Krang & Shredder enter or attack, each opponent exiles cards from the top of their library until they exile a nonland card.
-Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, you may cast a card exiled with Krang & Shredder without paying its mana cost.",U/B,Utrom; Human; Ninja; disappear,TMT,153,Rare,22,UB exile-and-cast value + mill; fits Bloodbending's UB control (TMNT flavor),6.5
+Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, you may cast a card exiled with Krang & Shredder without paying its mana cost.",U/B,Utrom; Human; Ninja; disappear,TMT,153,Rare,22,UB exile-and-cast value + mill; fits Bloodbending's UB control (TMNT flavor),6.0,hand
 "Madame Null, Power Broker",Legendary Creature — Demon Advisor,"Deathtouch
-Whenever another creature you control enters, you may pay life equal to its power. If you do, put that many +1/+1 counters on it.",B,Demon; Advisor; counters; deathtouch; combat; removal,TMT,66,Rare,20b,"broadly useful — best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 11,8,21",5.5
+Whenever another creature you control enters, you may pay life equal to its power. If you do, put that many +1/+1 counters on it.",B,Demon; Advisor; counters; deathtouch; combat; removal,TMT,66,Rare,20b,"broadly useful — best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 11,8,21",5.5,hand
 Michelangelo's Technique,Sorcery,"Sneak {3}{G} (You may cast this spell for {3}{G} if you also return an unblocked attacker you control to hand during the declare blockers step.)
-Look at the top eight cards of your library. Put up to two creature cards with total mana value 6 or less from among them onto the battlefield and the rest on the bottom of your library in a random order.",G,selection; sneak; tempo; cost-reduction,TMT,122,Rare,concept: Turtle,"best 19a (Bird Brain — Bant Tokens); also 13,5,17",4.5
+Look at the top eight cards of your library. Put up to two creature cards with total mana value 6 or less from among them onto the battlefield and the rest on the bottom of your library in a random order.",G,selection; sneak; tempo; cost-reduction,TMT,122,Rare,concept: Turtle,"best 19a (Bird Brain — Bant Tokens); also 13,5,17",4.0,hand
 "Mikey & Don, Party Planners",Legendary Creature — Mutant Ninja Turtle,"Ward {2}
 You may look at the top card of your library any time.
-You may play lands and cast Mutant, Ninja, or Turtle spells from the top of your library. If you cast a creature spell this way, that creature enters with an additional +1/+1 counter on it.",U/G,Mutant; Ninja; Turtle; counters; selection; ward; protection,TMT,157,Rare,4,"best 4 (Quantum Realm); also 19a,17",5.5
+You may play lands and cast Mutant, Ninja, or Turtle spells from the top of your library. If you cast a creature spell this way, that creature enters with an additional +1/+1 counter on it.",U/G,Mutant; Ninja; Turtle; counters; selection; ward; protection,TMT,157,Rare,4,"best 4 (Quantum Realm); also 19a,17",5.5,hand
 "Mutagen Man, Living Ooze",Legendary Creature — Ooze Mutant,"Trample
 Activated abilities of artifact tokens you control cost {1} less to activate.
-When Mutagen Man enters, create X Mutagen tokens. (They're artifacts with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",G,Ooze; Mutant; counters; sacrifice; tokens; etb; trample; evasion,TMT,124,Rare,4,+1/+1 counters + artifact-token sac engine — Quantum Realm's counters core; also 21/21a artifact-tokens,5.0
+When Mutagen Man enters, create X Mutagen tokens. (They're artifacts with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",G,Ooze; Mutant; counters; sacrifice; tokens; etb; trample; evasion,TMT,124,Rare,4,+1/+1 counters + artifact-token sac engine — Quantum Realm's counters core; also 21/21a artifact-tokens,5.0,hand
 Ninja Teen,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
 Whenever a creature you control leaves the battlefield, each opponent loses 1 life.
 {1}{B}: Level 2
 Creatures you control get +1/+0 and have menace.
 {B}: Level 3
 Creature cards in your graveyard have sneak {3}{B}.
-You may cast creature spells from your graveyard using their sneak abilities.",B,Class; graveyard; pump,TMT,67,Rare,20,"Ninja flavor (heuristic top 6 graveyard) | fits: 6,5,22",4.5
+You may cast creature spells from your graveyard using their sneak abilities.",B,Class; graveyard; pump,TMT,67,Rare,20,"Ninja flavor (heuristic top 6 graveyard) | fits: 6,5,22",4.5,hand
 "Raph & Mikey, Troublemakers",Legendary Creature — Mutant Ninja Turtle,"Trample, haste
-Whenever Raph & Mikey attack, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.",R/G,Mutant; Ninja; Turtle; haste; aggro; trample; evasion,TMT,167,Rare,9,"RG aggro: on attack, cheat a creature into play attacking — fits Hulk Smash (TMNT flavor)",6.0
+Whenever Raph & Mikey attack, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.",R/G,Mutant; Ninja; Turtle; haste; aggro; trample; evasion,TMT,167,Rare,9,"RG aggro: on attack, cheat a creature into play attacking — fits Hulk Smash (TMNT flavor)",5.5,hand
 Raphael's Technique,Instant,"Sneak {2}{R} (You may cast this spell for {2}{R} if you also return an unblocked attacker you control to hand during the declare blockers step.)
-Each player may discard their hand and draw seven cards.",R,card draw; sneak; tempo; cost-reduction,TMT,105,Rare,general,"symmetric red wheel (each player may draw 7) — niche refuel, no sacrifice synergy",4.0
+Each player may discard their hand and draw seven cards.",R,card draw; sneak; tempo; cost-reduction,TMT,105,Rare,general,"symmetric red wheel (each player may draw 7) — niche refuel, no sacrifice synergy",3.5,hand
 "Rat King, Verminister",Legendary Creature — Rat Avatar,"Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, create a 1/1 black Rat creature token and put a +1/+1 counter on Rat King.
-{T}, Sacrifice three Rats: Return target creature card and all other cards with the same name as that card from your graveyard to the battlefield tapped.",B,Rat; Avatar; counters; reanimator; graveyard; sacrifice; tokens; disappear,TMT,71,Rare,11,Rat Avatar — reanimator/sacrifice payoff; grindy mono-black value,5.5
+{T}, Sacrifice three Rats: Return target creature card and all other cards with the same name as that card from your graveyard to the battlefield tapped.",B,Rat; Avatar; counters; reanimator; graveyard; sacrifice; tokens; disappear,TMT,71,Rare,11,Rat Avatar — reanimator/sacrifice payoff; grindy mono-black value,5.0,hand
 "Sally Pride, Lioness Leader",Legendary Creature — Cat Mutant Rebel,"When Sally Pride enters, create X 2/2 red Mutant creature tokens, where X is the number of nontoken creatures you control.
-Whenever Sally Pride attacks, put a +1/+1 counter on each creature you control.",W,Cat; Mutant; Rebel; counters; tokens; etb,TMT,24,Rare,36,,5.5
+Whenever Sally Pride attacks, put a +1/+1 counter on each creature you control.",W,Cat; Mutant; Rebel; counters; tokens; etb,TMT,24,Rare,36,,5.5,hand
 "Slash, Reptile Rampager",Legendary Creature — Mutant Berserker Turtle,"Alliance — Whenever another creature you control enters, Slash deals 2 damage to each opponent.
-Whenever Slash attacks, create a 2/2 red Mutant creature token.",R,Mutant; Berserker; Turtle; tokens; burn; alliance; aggro; value,TMT,108,Rare,1,"Rakdos aggro/burn/tokens; also 10 | fits: 10,9",6.0
+Whenever Slash attacks, create a 2/2 red Mutant creature token.",R,Mutant; Berserker; Turtle; tokens; burn; alliance; aggro; value,TMT,108,Rare,1,"Rakdos aggro/burn/tokens; also 10 | fits: 10,9",6.0,hand
 Splinter's Technique,Sorcery,"Sneak {1}{B} (You may cast this spell for {1}{B} if you also return an unblocked attacker you control to hand during the declare blockers step.)
-Search your library for a card, put that card into your hand, then shuffle.",B,sneak; tempo; cost-reduction,TMT,80,Rare,20,Ninja sneak tempo,4.5
+Search your library for a card, put that card into your hand, then shuffle.",B,sneak; tempo; cost-reduction,TMT,80,Rare,20,Ninja sneak tempo,5.0,hand
 "Splinter, Radical Rat",Legendary Creature — Mutant Ninja Rat,"If a triggered ability of a Ninja creature you control triggers, that ability triggers an additional time.
-{1}{U}: Target Ninja can't be blocked this turn.",W/U/B,Mutant; Ninja; Rat,TMT,169,Rare,concept,WUB TMNT legends/tokens — new-deck focal point,5.5
+{1}{U}: Target Ninja can't be blocked this turn.",W/U/B,Mutant; Ninja; Rat,TMT,169,Rare,concept,WUB TMNT legends/tokens — new-deck focal point,5.5,hand
 The Ooze,Legendary Artifact,"Whenever a creature you control with a +1/+1 counter on it leaves the battlefield, create a Mutagen token for each +1/+1 counter on it. (A Mutagen token is an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")
-{T}: Exile target card from a graveyard. Create a Mutagen token.",Colorless,counters; reanimator; graveyard; sacrifice; tokens; removal,TMT,177,Rare,general,counters payoff: +1/+1-counter creature dies -> Mutagen counter-tokens — fits Quantum Realm,4.5
+{T}: Exile target card from a graveyard. Create a Mutagen token.",Colorless,counters; reanimator; graveyard; sacrifice; tokens; removal,TMT,177,Rare,general,counters payoff: +1/+1-counter creature dies -> Mutagen counter-tokens — fits Quantum Realm,4.5,hand
 Transdimensional Bovine,Creature — Ox Avatar,"Flying
-{T}: Add two mana of any one color.",G,Ox; Avatar; mana; flying; evasion,TMT,134,Rare,17,"best 19a (Bird Brain — Bant Tokens); also 17,19b,20b",5.0
+{T}: Add two mana of any one color.",G,Ox; Avatar; mana; flying; evasion,TMT,134,Rare,17,"best 19a (Bird Brain — Bant Tokens); also 17,19b,20b",4.5,hand
 Turtle Power!,Enchantment,"Flash
-Turtles you control get +2/+2.",G,pump; flash; tempo,TMT,135,Rare,concept: Turtle,"best 19a (Bird Brain — Bant Tokens); also 19b,17,9",4.0
+Turtles you control get +2/+2.",G,pump; flash; tempo,TMT,135,Rare,concept: Turtle,"best 19a (Bird Brain — Bant Tokens); also 19b,17,9",3.0,hand
 Turtle Van,Artifact — Vehicle,"Whenever this Vehicle attacks, put a +1/+1 counter on target creature that crewed it this turn. Then if that creature is a Mutant, Ninja, or Turtle, double the number of +1/+1 counters on it.
-Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,Vehicle; counters; vehicle; crew; vehicles; double,TMT,181,Rare,concept,"TMNT payoff: crew -> counters, doubled for Mutant/Ninja/Turtle — a TMNT-tribal build-around",4.5
-Turtles Forever,Instant,"Search your library and/or outside the game for exactly four legendary creature cards you own with different names, then reveal those cards. An opponent chooses two of them. Put the chosen cards into your hand and shuffle the rest into your library.",W,,TMT,27,Rare,general,legendary toolbox — needs a legend-dense white shell; niche build-around,4.0
+Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",Colorless,Vehicle; counters; vehicle; crew; vehicles; double,TMT,181,Rare,concept,"TMNT payoff: crew -> counters, doubled for Mutant/Ninja/Turtle — a TMNT-tribal build-around",4.5,hand
+Turtles Forever,Instant,"Search your library and/or outside the game for exactly four legendary creature cards you own with different names, then reveal those cards. An opponent chooses two of them. Put the chosen cards into your hand and shuffle the rest into your library.",W,,TMT,27,Rare,general,legendary toolbox — needs a legend-dense white shell; niche build-around,3.0,hand
 Weather Maker,Artifact,"Landfall — Whenever a land you control enters, put a charge counter on this artifact.
 {T}: Add one mana of any color.
 {T}, Remove two charge counters from this artifact: Add {C}{C}.
-{T}, Remove three charge counters from this artifact: It deals 3 damage to any target.",Colorless,counters; burn; mana; landfall; lands; ramp,TMT,182,Rare,general,landfall any-color ramp rock — flexible fixing/ramp (also 13/19a landfall),5.5
+{T}, Remove three charge counters from this artifact: It deals 3 damage to any target.",Colorless,counters; burn; mana; landfall; lands; ramp,TMT,182,Rare,general,landfall any-color ramp rock — flexible fixing/ramp (also 13/19a landfall),5.5,hand

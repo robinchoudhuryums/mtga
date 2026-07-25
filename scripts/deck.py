@@ -59,7 +59,7 @@ import urllib.error
 import urllib.request
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty,
-                 card_distinctiveness, backup_path)
+                 card_distinctiveness, backup_path, card_power)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -697,10 +697,13 @@ def _primary_type(type_line):
 
 # --- card data (type + text) for synergy / cost analysis -------------------- #
 def load_card_data():
-    """name_lower -> {'type', 'text'} from card-library.csv then card-pool.csv.
+    """name_lower -> {'name','type','text','colors','power','toughness'} from
+    card-library.csv then card-pool.csv.
 
     The pool fills in oracle text/type for unowned WIP cards so analysis works on
-    decks that aren't fully owned yet.
+    decks that aren't fully owned yet. `power`/`toughness` are RAW strings (Magic
+    prints `*`, `1+*`, `X`), only present on pool rows — the library CSV has no such
+    columns — and are '' when unknown. Parse via `lib.card_power`, never int() them.
     """
     data = {}
     for path in (DEFAULT_CSV, POOL_CSV):
@@ -709,11 +712,24 @@ def load_card_data():
         with open(path, newline="", encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
                 n = (r.get("Card Name") or "").strip().lower()
-                if n and n not in data:
+                if not n:
+                    continue
+                if n not in data:
                     data[n] = {"name": (r.get("Card Name") or "").strip(),
                                "type": r.get("Type") or "", "text": r.get("Card Text") or "",
-                               "colors": r.get("Color(s)") or ""}
+                               "colors": r.get("Color(s)") or "",
+                               "power": r.get("Power") or "",
+                               "toughness": r.get("Toughness") or ""}
                     data.setdefault(n.split(" // ")[0], data[n])
+                elif not data[n]["power"] and (r.get("Power") or r.get("Toughness")):
+                    # P/T is a POOL-only column — card-library.csv has no such fields.
+                    # Because the library is read FIRST and wins, every card you OWN
+                    # would otherwise read as unknown-P/T, i.e. the new data would be
+                    # missing on exactly the cards most likely to be graded. Backfill
+                    # from the pool without disturbing the library's type/text/colors,
+                    # which stay authoritative.
+                    data[n]["power"] = r.get("Power") or ""
+                    data[n]["toughness"] = r.get("Toughness") or ""
     return data
 
 
@@ -822,7 +838,25 @@ _ROLE_PATTERNS = {
         # controls gets -X/-X" — Cloud of Darkness, Wick's Patrol).
         r"target creature (?:an opponent controls )?gets -[0-9x]",
         r"creature an opponent controls gets -[0-9x]",
-        r"return target creature.{0,40}?(?:owner|their) hand",
+        # BOUNCE. Note `owner'?s?` — MTG templates this as "to its OWNER'S hand", and the
+        # original pattern spelled the alternation `(?:owner|their) hand`, which requires
+        # the literal text "owner hand". So it matched NOTHING: every unconditional bounce
+        # spell in the collection (Boomerang Basics, Into the Flood Maw, ...) scored zero
+        # roles for the entire life of the pattern, while the broad audit cue DID fire —
+        # which is why bounce dominated the roster-wide "possible under-count" list. The
+        # type is a full `_PERM_TYPE_LIST` so "nonland permanent" is covered alongside
+        # "creature", and `[^.]` keeps the span inside one sentence.
+        rf"return (?:up to \w+ )?target (?:[a-z-]+ ){{0,2}}?{_PERM_TYPE_LIST}"
+        rf"[^.]{{0,60}}?(?:owner'?s?|their) hand",
+        # EDICT. Sacrifice-a-creature-of-their-choice is removal (it answers hexproof),
+        # and it sat in the broad audit cue while missing from this list entirely.
+        r"(?:target|each) (?:player|opponent) sacrifices a creature",
+        r"(?:target|each) (?:player|opponent) sacrifices a permanent",
+        # X-damage: the fixed patterns above require a DIGIT, so "deals X damage to target
+        # creature" scored nothing (Hell to Pay).
+        r"deals? x damage to (?:target|any target|up to \w+ target)",
+        # Tuck via an Aura — same class as the activated-ability tuck already covered.
+        r"enchanted creature'?s owner shuffles it into their library",
         r"enchanted creature can't attack or block",
         # Removal by TUCKING a creature into a library. It leaves the battlefield, so
         # it is a real answer, but no destroy/exile/damage/-N-N pattern saw it:
@@ -841,7 +875,10 @@ _ROLE_PATTERNS = {
                 # scalable / conditional wipes the fixed patterns above miss
                 r"creature with mana value.{0,20}?or less.{0,40}?destroy",
                 r"destroy those creatures",
-                r"deals? \d+ damage to each (?:other )?creature"],
+                r"deals? \d+ damage to each (?:other )?creature",
+                # "each player sacrifices all other creatures they control" (Bringer of
+                # the Last Gift) is a wrath by another name.
+                r"each player sacrifices all (?:other )?creatures"],
     # "counter up to one target spell unless…" (Repulsive Mutation) matched neither
     # this pattern NOR the broad coverage net below, so it scored zero roles AND was
     # never flagged as an under-read — the worst case, a miss invisible to the very
@@ -853,6 +890,11 @@ _ROLE_PATTERNS = {
     # missed-by-both hole as Repulsive Mutation, on the card-advantage axis.
     "Card advantage": [r"draws? (?:two|three|four|five|half x|x|that many) cards?",
                        r"draw a card for each", r"draws? cards? equal to",
+                       # A REPEATABLE single draw accrues advantage; the cantrip rule is
+                       # about ONE-SHOT single draws. Phyrexian Arena reads as a cantrip
+                       # to a pattern that only counts how many cards one resolution
+                       # draws, which is why deck 42's card-advantage line said 1.
+                       r"at the beginning of (?:your|each|the) upkeep[^.]{0,60}?draws? a card",
                        r"\binvestigate\b"],
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
                       r"\{t\}: add \{",
@@ -882,6 +924,7 @@ _ROLE_PATTERNS = {
     "Burn / drain": [
         r"deals damage equal to .{0,60}?(?:any target|a player|target player|each opponent|that player)",
         r"(?:each opponent|target opponent|any opponent|that player|each player) loses \d",
+        r"deals? \d+ damage to each opponent",
         r"loses life equal to",
     ],
     "Lifegain": [r"\blifelink\b", r"you gain \d+ life", r"gain \d+ life"],
@@ -938,6 +981,140 @@ _PROTECTION_RE = re.compile(
     r"|can'?t be the target of (?:spells|abilities)"
     r"|counter target spell that targets"
     r"|\bphases? out\b")
+
+
+# "power 4 or greater" style conditions — the class of card that was ungradeable while
+# the repo stored no P/T. The payoff reads unconditional in a synergy model ("draws you
+# cards!") but only fires off bodies that actually meet the bar ON ENTRY, and a counters
+# deck full of X-creatures printed 0/0 meets it far less often than it looks.
+_POWER_THRESHOLD_RE = re.compile(
+    r"\b(power|toughness) (\d+) or (?:greater|more)\b", re.I)
+_POWER_THRESHOLD_THIN = 0.30       # <30% of creatures qualifying = worth flagging
+
+
+def power_threshold_flags(cards, carddata):
+    """[(payoff_name, attr, N, qualifying_copies, creature_copies)] for each card whose
+    text keys on "power/toughness N or greater", with how many of the deck's creatures
+    meet that bar on their PRINTED stats. Only flags a payoff the deck under-supports.
+
+    Printed P/T only — a card that grows after it enters (counters, anthems, an equip)
+    still reads by its printed value, which is exactly right for an ENTERS trigger and
+    conservative for anything else. Creatures whose P/T isn't a number (`*`, `X`) are
+    counted as NOT qualifying and reported separately by the caller if needed, since
+    guessing would re-introduce the invented-fact problem `lib.card_power` avoids."""
+    creatures = []
+    for q, n, _s, _c in cards:
+        cd = carddata.get(n.lower())
+        if not cd or "Creature" not in _primary_type(cd.get("type") or ""):
+            continue
+        creatures.append((q, cd))
+    total = sum(q for q, _ in creatures)
+    out = []
+    if not total:
+        return out
+    seen = set()
+    for q, n, _s, _c in cards:
+        cd = carddata.get(n.lower())
+        if not cd:
+            continue
+        for m in _POWER_THRESHOLD_RE.finditer(cd.get("text") or ""):
+            attr, bar = m.group(1).lower(), int(m.group(2))
+            key = (cd["name"], attr, bar)
+            if key in seen:
+                continue
+            seen.add(key)
+            qualify = sum(cq for cq, ccd in creatures
+                          if (card_power(ccd.get(attr)) or -1) >= bar)
+            if qualify / total < _POWER_THRESHOLD_THIN:
+                out.append((cd["name"], attr, bar, qualify, total))
+    return out
+
+
+# DECK SHAPE. The single question this toolkit could never answer: "does this deck win
+# WIDE or TALL, FAST or SLOW, on one threat or many?" Every distinctness call needs it,
+# and answering it by reading `#: archetype:` headers produced the worst misread of the
+# session — deck 30 was called a wide deck from its header while the question was
+# whether a TALL counters plan duplicated it. Themes can't answer this: "counters" is
+# the same tag whether they all go on one creature or spread across twelve.
+_WIDE_CUES = [re.compile(p, re.I) for p in [
+    r"create (?:a|an|two|three|four|five|\w+|x) .{0,60}?creature tokens?",
+    r"creatures you control get \+", r"for each creature you control",
+    r"creatures you control have", r"populate\b", r"\bconvoke\b",
+    r"whenever (?:another )?(?:a )?creature you control enters",
+]]
+# TALL is about CONCENTRATION, not counters. The first draft keyed on "put a +1/+1
+# counter on target creature" and "target creature gets +N/+N" — which read deck 4
+# (27 creatures, a WIDE value board) as tall, because a single counter is a wide
+# deck's glue too. Only AMPLIFIERS count: effects that make one body disproportionate.
+_TALL_CUES = [re.compile(p, re.I) for p in [
+    r"double (?:the number of )?.{0,30}?(?:\+1/\+1 counters?|counters|power)",
+    r"twice (?:that much|that many|its power)",
+    r"triple .{0,20}?power",
+    r"equipped creature gets \+", r"enchanted creature gets \+",
+    r"gets \+x/\+x", r"where x is (?:the number of|its|this creature'?s) ",
+    r"base power and toughness \d+/\d+",
+]]
+
+
+def deck_shape(cards, carddata, mana=None):
+    """Structural shape of a deck, measured from oracle text rather than tags.
+
+    Returns a dict with WIDE / TALL scores (quantity-weighted card counts), creature
+    and token counts, evasion, curve, and a plain-English verdict. It is a SHAPE read,
+    not a quality read — a wide deck is not better or worse than a tall one; the point
+    is that two decks sharing every theme tag can be opposite decks."""
+    wide = tall = creatures = evasive = 0
+    mvs, wide_cards, tall_cards = [], [], []
+    for q, n, _s, _c in cards:
+        if n.lower() in BASICS:
+            continue
+        cd = carddata.get(n.lower())
+        if not cd:
+            continue
+        tline = cd.get("type") or ""
+        if "Land" in _primary_type(tline):
+            continue
+        text = cd.get("text") or ""
+        if "Creature" in _primary_type(tline):
+            creatures += q
+        if re.search(r"\bflying\b|\bmenace\b|can't be blocked|\btrample\b|\bfear\b|\bshadow\b",
+                     text, re.I):
+            evasive += q
+        if any(p.search(text) for p in _WIDE_CUES):
+            wide += q
+            wide_cards.append(cd.get("name") or n)
+        if any(p.search(text) for p in _TALL_CUES):
+            tall += q
+            tall_cards.append(cd.get("name") or n)
+        if mana:
+            e = mana.get(n.lower())
+            if e and e[1] is not None:
+                mvs += [e[1]] * q
+    avg_mv = round(sum(mvs) / len(mvs), 2) if mvs else 0.0
+    # A verdict only when one axis clearly leads — a deck can legitimately be neither.
+    # Creature DENSITY is its own signal: a deck fielding 25+ creature copies is wide
+    # almost by construction, and one fielding under ~14 cannot go wide whatever its
+    # text says. Fold it in rather than trusting the text scan alone.
+    if creatures >= 22:
+        wide += 2
+    elif creatures <= 14:
+        tall += 2
+    lead = abs(wide - tall)
+    if lead < 2:
+        axis = "BALANCED / neither" if (wide or tall) else "no board-growth axis"
+    elif wide > tall:
+        axis = "WIDE — many bodies, effects that scale with creature COUNT"
+    else:
+        axis = "TALL — few bodies, effects that scale one creature UP"
+    if avg_mv and avg_mv <= 2.5:
+        speed = "FAST curve"
+    elif avg_mv >= 3.3:
+        speed = "SLOW curve"
+    else:
+        speed = "MIDRANGE curve"
+    return {"wide": wide, "tall": tall, "creatures": creatures, "evasive": evasive,
+            "avg_mv": avg_mv, "axis": axis, "speed": speed,
+            "wide_cards": sorted(set(wide_cards)), "tall_cards": sorted(set(tall_cards))}
 
 
 def protection_effects(text):
@@ -1073,6 +1250,9 @@ _CA_CUES = re.compile(
 # Unioning the precise interaction/card-advantage patterns in makes that structurally
 # impossible: anything the classifier CAN see, the net also sees, and the flag still
 # only fires when the classifier tagged no matching role.
+# Parenthetical REMINDER text. Non-nested is enough — MTG never nests reminders.
+_REMINDER_RE = re.compile(r"\([^()]*\)")
+
 _INT_CUE_PATS = [_INT_CUES] + [p for lbl in sorted(_INTERACTION_ROLES)
                                for p in _ROLE_COMPILED_MAP[lbl]]
 _CA_CUE_PATS = [_CA_CUES] + _ROLE_COMPILED_MAP["Card advantage"]
@@ -1104,8 +1284,15 @@ def role_coverage_flags(cards, carddata):
         text = cd.get("text") or ""
         roles = set(classify_roles(text))
         # Match the cues against the SAME normalized form classify_roles uses, and
-        # against the superset net, so the audit can't be blind where the classifier is.
-        t = _norm_role_text(text)
+        # against the superset net, so the audit can't be blind where the classifier is
+        # — minus REMINDER TEXT. Ward's reminder ("…counter it unless that player pays
+        # {2}.") tripped the Counter cue, so every warded creature in the collection was
+        # reported as a missed interaction piece: a false cue, which is the one thing
+        # that degrades this list (it exists to be read card-by-card, so noise in it is
+        # expensive). Stripping reminders can't create a blind spot, because the net
+        # includes the precise patterns and the flag only fires when NO role was tagged
+        # — anything a role pattern sees in reminder text is already a tagged role.
+        t = _REMINDER_RE.sub(" ", _norm_role_text(text))
         missed = []
         if any(p.search(t) for p in _INT_CUE_PATS) and not (roles & _INTERACTION_ROLES):
             missed.append("interaction")
@@ -1906,8 +2093,10 @@ def cmd_stats(args):
                 print(f"  {label:20} {cnt:3}  {'#' * cnt}")
         # Once-per-card union (a modal removal+counter card counts once), matching the
         # audit and quality/tier vectors — NOT the sum of the buckets above.
-        print(f"  {'interaction total':20} {role_counts['interaction']:3}  "
-              "(distinct removal/sweeper/counter cards)")
+        print(f"  {'interaction total':20} {count_conf(role_counts, 'interaction'):>7}  "
+              "(distinct removal/sweeper/counter cards; +N? = cards whose text reads like "
+              "interaction the classifier could NOT tag)")
+        print(f"  {'card advantage':20} {count_conf(role_counts, 'card_advantage'):>7}")
 
     # PROTECTION axis. The role table's "Protection / trick" bucket mixes combat pumps
     # in with real answers to removal, so a deck could show a healthy trick count while
@@ -1928,6 +2117,16 @@ def cmd_stats(args):
         else:
             print("    ⚠ ZERO protection — nothing here answers targeted removal on a key "
                   "permanent; fine for a spell-based deck, a real gap for a threat-based one.")
+
+    # Power-threshold payoffs. A "power 4 or greater" trigger reads unconditional to a
+    # synergy model, but only fires off bodies that meet the bar on their PRINTED stats —
+    # and an X-creature or a counters payoff is very often printed 0/0. This is measurable
+    # only since card-pool.csv started carrying Power/Toughness.
+    for name, attr, bar, qualify, total in power_threshold_flags(cards, carddata):
+        print(f"\n  ⚠ {name} keys on {attr} {bar}+, but only {qualify} of {total} creature "
+              f"copies are printed at {attr} {bar}+ — the trigger is far more conditional "
+              f"than the card reads. (Printed stats: a body that GROWS after it enters "
+              f"still won't satisfy an ENTERS trigger.)")
 
     # Interaction profile (#5): the raw count treats all interaction alike, but a suite
     # that's all sorcery-speed and creature-only has real gaps. Break it down by speed
@@ -2139,7 +2338,45 @@ def role_tally(cards, carddata):
     per_role["interaction"] = interaction
     per_role["card_advantage"] = ca
     per_role["protection"] = prot
+    # CONFIDENCE, carried WITH the count. The classifier reports a false negative as a
+    # fact: a card it can't parse contributes 0, and `0` reads as "none" rather than
+    # "not detected". That is the single most damaging failure this toolkit has had — a
+    # deck graded on interaction 3 when a hand count said 7, because three cards that
+    # unambiguously interact scored zero roles. `role_coverage_flags` already computed
+    # this, but printed it as a separate warning several lines away, so the NUMBER still
+    # read as fact. Attaching the remainder to the tally means every consumer gets it.
+    unclassified, under_read, no_data = role_coverage_flags(cards, carddata)
+    per_role["interaction_unread"] = sum(1 for _n, ax in under_read if "interaction" in ax)
+    per_role["card_advantage_unread"] = sum(1 for _n, ax in under_read if "card advantage" in ax)
+    # `unclassified` is the WORSE case and must not be invisible: a noncreature spell that
+    # matched no role AND tripped no broad cue. That is exactly Broken Wings and Repulsive
+    # Mutation — cards that unambiguously interact and scored zero. It can't be attributed
+    # to a single axis, so it is reported globally rather than folded into one count.
+    per_role["unclassified"] = len(unclassified)
+    per_role["unreadable"] = len(no_data)
     return per_role
+
+
+def count_conf(tally, key):
+    """A measured count rendered with its uncertainty: `7`, or `3 +2?` when 2 more cards
+    read like that role but the classifier couldn't tag them. Use this ANYWHERE a role
+    count is shown to a human — a bare number invites exactly the over-trust that a
+    heuristic classifier doesn't deserve."""
+    n = tally.get(key, 0)
+    unread = tally.get(f"{key}_unread", 0)
+    unclass = tally.get("unclassified", 0)
+    bad = tally.get("unreadable", 0)
+    out = str(n)
+    if unread:
+        out += f" +{unread}?"
+    notes = []
+    if unclass:
+        notes.append(f"{unclass} unclassified")
+    if bad:
+        notes.append(f"{bad} unreadable")
+    if notes:
+        out += f" ({', '.join(notes)})"
+    return out
 
 
 # Text cues that an interaction spell can hit a NONCREATURE permanent (planeswalker /
@@ -4998,6 +5235,9 @@ def cmd_similar(args):
               "it's a diffuse good-stuff/value deck, so it's distinct BY IDENTITY from every\n"
               "deck (nothing specific to duplicate). Drop --specific-only for a value-overlap view.")
         return 0
+    carddata = load_card_data()
+    anames = {n for _q, n, _s, _c in cards if n.lower() not in BASICS
+              and "Land" not in _primary_type((carddata.get(n.lower()) or {}).get("type") or "")}
     rows = []
     for dd in discover_decks():
         if dd["id"].lower() == d["id"].lower():
@@ -5012,16 +5252,25 @@ def cmd_similar(args):
         colj = len(acols & bcols) / len(acols | bcols) if (acols | bcols) else 0.0
         shared = sorted(set(aw) & set(bw), key=lambda t: -(min(aw[t], bw[t])))
         spec = [t for t in shared if _sim_specific(t, keep)]
-        rows.append((sim, colj, dd["id"], dd.get("name") or dd["id"], shared, spec))
+        # CARD overlap, the thing the theme cosine cannot see. This model compares
+        # {theme: weight} vectors, so two decks can read 84% similar while sharing five
+        # card names — four of them lands. Without this column the score reads as "these
+        # are the same deck" when it often means "these are both Orzhov value decks".
+        # Lands are excluded: a shared manabase is not a shared identity.
+        bnames = {n for _q, n, _s, _c in c2 if n.lower() not in BASICS
+                  and "Land" not in _primary_type((carddata.get(n.lower()) or {}).get("type") or "")}
+        both = anames & bnames
+        rows.append((sim, colj, dd["id"], dd.get("name") or dd["id"], shared, spec,
+                     len(both), sorted(both)))
     rows.sort(key=lambda r: (-r[0], -r[1], r[2]))
     limit = getattr(args, "limit", 8) or 8
     lens = "SPECIFIC-theme overlap only" if spec_only else "central-theme overlap"
     print(f"Deck {d['id']}: {d.get('name') or d['id']} — most similar decks ({lens})\n"
           f"Your colors: {'/'.join(sorted(acols)) or '—'}  ·  top themes: "
           f"{', '.join(f'{t}({aw[t]})' for t in sorted(aw, key=lambda t: -aw[t])[:6])}\n")
-    print(f"  {'sim':>4} {'col':>4}  {'deck':6} shared themes (✦ = a SPECIFIC identity theme)")
-    print("  " + "-" * 78)
-    for sim, colj, did, name, shared, spec in rows[:limit]:
+    print(f"  {'sim':>4} {'col':>4} {'cards':>5}  {'deck':6} shared themes (✦ = a SPECIFIC identity theme)")
+    print("  " + "-" * 84)
+    for sim, colj, did, name, shared, spec, ncards, cardnames in rows[:limit]:
         # A shared SPECIFIC theme = a real identity match ⇒ ⚠ overlap. High sim on GENERIC
         # themes only = both are value decks, not a duplicate ⇒ the softer '· value overlap'.
         if sim >= 0.60 and spec:
@@ -5034,11 +5283,21 @@ def cmd_similar(args):
             flag = " · distinct"
         specset = set(spec)
         disp = ", ".join((("✦" + t) if t in specset else t) for t in shared[:5])
-        print(f"  {sim*100:>3.0f}% {colj*100:>3.0f}%  {did:6} {disp}{flag}")
+        print(f"  {sim*100:>3.0f}% {colj*100:>3.0f}% {ncards:>5}  {did:6} {disp}{flag}")
+    if getattr(args, "full", False):
+        print("\n  Shared nonland cards — the concrete evidence the cosine cannot show:")
+        for sim, colj, did, name, shared, spec, ncards, cardnames in rows[:limit]:
+            print(f"    {did:6} ({ncards}) {', '.join(cardnames) if cardnames else '—'}")
     top = rows[0] if rows else None
     if top and top[0] >= 0.60 and top[5]:
+        # Temper the warning with the card count: a high cosine on few shared CARDS is a
+        # both-are-value-decks signal, not a duplicate.
+        tail = (f" But they share only {top[6]} nonland card(s), so the overlap is in what "
+                f"the decks TAG as, not what they play — grade the win-cons from "
+                f"`deck.py text`." if top[6] <= 5 else
+                f" They also share {top[6]} nonland cards — check that list first.")
         print(f"\n⚠ Closest is #{top[2]} {top[3]} at {top[0]*100:.0f}% and shares a SPECIFIC theme "
-              f"({', '.join(top[5][:3])}) — verify the win-cons differ or you may be duplicating it.")
+              f"({', '.join(top[5][:3])}).{tail}")
     elif top and top[0] >= 0.60:
         print(f"\nClosest is #{top[2]} {top[3]} at {top[0]*100:.0f}%, but only on GENERIC value "
               "themes — a loose 'both value decks' overlap, not a duplicate identity.")
@@ -5068,6 +5327,23 @@ def _printing_index():
                 idx[nl] = info
                 idx.setdefault(nl.split(" // ")[0], info)   # DFC front fallback (don't clobber a full name)
     return idx
+
+
+def _legality_of(names):
+    """name_lower -> set(formats) from the pool, for a legality warning on any surface
+    that hands back card names. Empty dict if the pool has no Legalities column."""
+    out = {}
+    if not os.path.exists(POOL_CSV):
+        return out
+    want = {n.lower() for n in names} | {n.split(" // ")[0].lower() for n in names}
+    with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            n = (r.get("Card Name") or "").strip().lower()
+            if n in want or n.split(" // ")[0] in want:
+                legs = {x.strip() for x in (r.get("Legalities") or "").split(";") if x.strip()}
+                out[n] = legs
+                out.setdefault(n.split(" // ")[0], legs)
+    return out
 
 
 def cmd_resolve(args):
@@ -5107,6 +5383,22 @@ def cmd_resolve(args):
         lines.append(f"{qty} {disp} ({setc}) {coll}".rstrip())
     for ln in lines:
         print(ln)
+    # LEGALITY WARNING. `resolve` is the scaffolding step for a from-scratch deck, and it
+    # used to hand back any card it could find a printing for — which is how Bloodchief
+    # Ascension, a TLE supplemental card, reached a finished 60 and was only caught two
+    # validation steps later by `deck.py legal`. Surfacing it here means the name list is
+    # checked at the moment it becomes deck lines.
+    fmt = (getattr(args, "format", None) or "standard").strip().lower()
+    if fmt and fmt != "any":
+        resolved = [_card_line_name(ln) or "" for ln in lines]
+        legal = _legality_of([n for n in resolved if n])
+        illegal = [n for n in resolved
+                   if n and legal.get(n.lower()) is not None
+                   and fmt not in legal.get(n.lower(), set())]
+        if illegal:
+            eprint(f"\n⚠ NOT legal in {fmt} ({len(illegal)}): {', '.join(illegal)}")
+            eprint("   Resolving a printing is not a legality check — pass --format any to "
+                   "silence, or pick a different card.")
     if ambiguous:
         eprint("\n⚠ ambiguous (be more specific):")
         for q, opts in ambiguous:
@@ -5161,7 +5453,18 @@ def cmd_suggest_homes(args):
 
     print(f"Card: {card}  [{'/'.join(sorted(ccols)) or 'Colorless'}]  ({cd['type']})")
     print(f"Themes: {', '.join(sorted(ctags)) or '(none)'}"
-          f"{'   [rainbow fixer — value scales with a deck’s color count]' if is_fixer else ''}\n")
+          f"{'   [rainbow fixer — value scales with a deck’s color count]' if is_fixer else ''}")
+    # The VERDICT surfaces are where the misreads clustered this cycle. `cuts` and `swap`
+    # print full oracle text and produced the fewest bad calls; suggest-homes hands out
+    # KEY / role-player / tangential labels with NO text, which is how Genesis Wave was
+    # rated KEY for a deck whose engine it mills away. One card, one text block, always
+    # printed: six lines of cost so the label is never the only evidence.
+    import textwrap as _tw
+    print()
+    for _para in (cd.get("text") or "(no oracle text on file)").split("\n"):
+        for _ln in (_tw.wrap(_para, width=84) or [""]):
+            print(f"    {_ln}")
+    print()
 
     results = []
     skipped_illegal = 0
@@ -5312,6 +5615,11 @@ def deck_quality_vector(d):
         # `tier_band` — the floor's formula is anchored by check_tier.py and a new term
         # would silently re-grade the whole roster. Surfaced so a human sees a zero.
         "protection": _tally["protection"],
+        # The counts again, rendered WITH their uncertainty (see count_conf). The bare
+        # ints stay for the tier floor and the F10 guard, which need numbers to compare;
+        # these are what a human should read.
+        "interaction_conf": count_conf(_tally, "interaction"),
+        "card_advantage_conf": count_conf(_tally, "card_advantage"),
         "avg_mv": round(sum(mvs) / len(mvs), 2) if mvs else 0.0, "early_drops": early,
         "creatures": creatures, "reach": reach,
         # The deck's game PLAN drives which axes its tier floor weights (#4): an aggro
@@ -5799,6 +6107,99 @@ def effect_redundancy(d):
     return buckets
 
 
+def near_duplicates(cards, carddata, mana=None):
+    """[(role_tuple, [card names])] — GROUPS of nonland cards that do the same job in this
+    deck: identical non-empty functional-role sets, within a 1-mana band of each other.
+
+    `redundancy` buckets by EFFECT and answers "how many virtual copies of this effect do
+    I have"; nothing answered "which of my specific cards are interchangeable". That gap
+    produced a real bad recommendation: cutting Chelonian Tackle was proposed without
+    noticing Epic Fight already provided the fight mode, so the deck would have kept the
+    weaker of two near-identical cards. Reported as GROUPS, not pairs — a 6-card removal
+    suite is 15 pairs and one useful fact. Redundancy is often DESIRABLE; this reports,
+    it does not judge."""
+    buckets = {}
+    for q, n, _s, _c in cards:
+        if n.lower() in BASICS:
+            continue
+        cd = carddata.get(n.lower())
+        if not cd or "Land" in _primary_type(cd.get("type") or ""):
+            continue
+        roles = tuple(sorted(classify_roles(cd.get("text") or "")))
+        if not roles:
+            continue                     # no signal — saying nothing beats guessing
+        mv = None
+        if mana:
+            e = mana.get(n.lower())
+            mv = e[1] if e and e[1] is not None else None
+        buckets.setdefault(roles, []).append((cd.get("name") or n, mv))
+    out = []
+    for roles, members in buckets.items():
+        if len(members) < 2:
+            continue
+        # Split a bucket into cost BANDS so a 1-drop and a 6-drop with the same role
+        # aren't called interchangeable — cost is most of what makes two answers differ.
+        known = sorted((m for m in members if m[1] is not None), key=lambda x: x[1])
+        unknown = [m for m in members if m[1] is None]
+        bands, cur = [], []
+        for name, mv in known:
+            if cur and mv - cur[0][1] > 1:
+                bands.append(cur)
+                cur = []
+            cur.append((name, mv))
+        if cur:
+            bands.append(cur)
+        if unknown:
+            bands.append(unknown)
+        for band in bands:
+            if len(band) >= 2:
+                out.append((roles, sorted(n for n, _mv in band)))
+    out.sort(key=lambda r: (-len(r[1]), r[0]))
+    return out
+
+
+def cmd_shape(args):
+    """Report a deck's structural SHAPE — wide/tall, fast/slow — from oracle text."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    meta, cards = parse_deck_file(d["path"])
+    carddata, mana = load_card_data(), load_mana()
+    sh = deck_shape(cards, carddata, mana)
+    print(f"Shape — deck {d['id']}: {d['name'] or d['path']}\n")
+    print(f"  axis          : {sh['axis']}")
+    print(f"  speed         : {sh['speed']}  (avg nonland MV {sh['avg_mv']})")
+    print(f"  wide score    : {sh['wide']:>3}   creature copies {sh['creatures']}, "
+          f"evasive {sh['evasive']}")
+    print(f"  tall score    : {sh['tall']:>3}")
+    if sh["wide_cards"]:
+        print(f"\n  WIDE effects ({len(sh['wide_cards'])}): {', '.join(sh['wide_cards'][:10])}"
+              + ("…" if len(sh['wide_cards']) > 10 else ""))
+    if sh["tall_cards"]:
+        print(f"  TALL effects ({len(sh['tall_cards'])}): {', '.join(sh['tall_cards'][:10])}"
+              + ("…" if len(sh['tall_cards']) > 10 else ""))
+    print("\n  Shape is not quality — a wide deck is not better than a tall one. This "
+          "answers the\n  question themes cannot: two decks sharing every tag can be "
+          "opposite decks, and a\n  `#: archetype:` header is prose that can go stale. "
+          "Read the effect lists, not just\n  the verdict — the scores are a text scan.")
+    return 0
+
+
+def _print_near_duplicates(cards, carddata, mana):
+    groups = near_duplicates(cards, carddata, mana)
+    if not groups:
+        return
+    print("\nINTERCHANGEABLE cards (same functional roles, same cost band) — these do the "
+          "same job\nin this deck. Often deliberate redundancy; the point is to SEE the "
+          "group before cutting\none at random, or before adding an eighth copy of an "
+          "effect you are already deep in:")
+    for roles, names in groups[:8]:
+        print(f"  [{', '.join(roles)}] ×{len(names)}: {', '.join(names)}")
+    if len(groups) > 8:
+        print(f"  … and {len(groups) - 8} more group(s)")
+
+
 def cmd_redundancy(args):
     """Competitive-consistency planner (virtual copies first). Shows each plan-effect's
     depth (distinct cards providing it), flags the THIN ones, and for each proposes how to
@@ -5858,6 +6259,8 @@ def cmd_redundancy(args):
     print("\nVirtual copies keep the highlander feel and score the SAME tier floor (the floor "
           "counts effects, not distinct cards); duplicates are the fallback when a specific "
           "effect can't be diversified at comparable power.")
+    _meta_r, _cards_r = parse_deck_file(d["path"])
+    _print_near_duplicates(_cards_r, carddata, load_mana())
     return 0
 
 
@@ -5958,7 +6361,13 @@ def rationale_staleness(d, carddata=None):
     in_deck = {n for _q, n, _s, _c in cards}
     in_deck |= {n.split(" // ")[0] for n in list(in_deck)}
     stale_cards, stale_figures = [], []
-    for header in ("tier",):
+    # `#: archetype:` is scanned alongside `#: tier:` because it is equally a CLAIM
+    # about the current deck — "these cards push your life total up" is false once those
+    # cards are cut, and the header is what a reader trusts first. (Found by this deck's
+    # own archetype text surviving three rounds of swaps that removed every card it
+    # named.) `#: notes:` stays out: it is a free-form build log where naming an absent
+    # card is correct.
+    for header in ("tier", "archetype"):
         prose = (meta or {}).get(header, "") or ""
         if not prose:
             continue
@@ -5977,7 +6386,22 @@ def rationale_staleness(d, carddata=None):
             # CASE-SENSITIVE: prose capitalizes a card citation, so this is what keeps
             # ordinary vocabulary out. A lowercase "counterspell"/"food"/"negate" in a
             # sentence is not a reference to the card of that name.
-            pos = masked.find(disp)
+            # Word-boundary match. A bare substring search reported the card
+            # *Deliberate* inside the word "Deliberately" — and card names are common
+            # enough English that this class of hit is frequent, not exotic.
+            pos = -1
+            start = 0
+            while True:
+                i = masked.find(disp, start)
+                if i < 0:
+                    break
+                before_ok = i == 0 or not (masked[i - 1].isalnum() or masked[i - 1] in "'-")
+                j = i + len(disp)
+                after_ok = j >= len(masked) or not (masked[j].isalnum() or masked[j] in "'-")
+                if before_ok and after_ok:
+                    pos = i
+                    break
+                start = i + 1
             if pos < 0:
                 continue
             if _cites_as_history(masked, pos, len(disp)):
@@ -5991,6 +6415,14 @@ def rationale_staleness(d, carddata=None):
         for m in rx.finditer(tier_prose):
             quoted, actual = m.group(1), vec.get(key)
             if actual is None:
+                continue
+            # Same history suppression the card-citation scan uses, and for the same
+            # reason. A rationale legitimately quotes PAST figures when it documents a
+            # change — "took interaction 1→4", "Re-graded B→A after the interaction
+            # package" — and flagging those made the check cry wolf on 9 decks, which
+            # is how a check gets ignored. Only a figure presented as the CURRENT state
+            # is worth reporting.
+            if _cites_as_history(tier_prose, m.start(), len(m.group(0))):
                 continue
             same = (abs(float(quoted) - float(actual)) < 0.005 if "." in quoted
                     else int(quoted) == int(actual))
@@ -6035,7 +6467,8 @@ def cmd_tier(args):
           + (f"  ·  clock {_clock_score(vec)}/7 (curve/threats/reach substitutes for interaction)"
              if vec.get('plan') == 'aggro' else "  (floor weights interaction + card advantage)"))
     print(f"  vector        : buildable {vec['buildable']} · uncastable {vec['uncastable']} · "
-          f"interaction {vec['interaction']} · card-adv {vec['card_advantage']} · "
+          f"interaction {vec.get('interaction_conf') or vec['interaction']} · "
+          f"card-adv {vec.get('card_advantage_conf') or vec['card_advantage']} · "
           f"protection {vec.get('protection', 0)} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
     # Protection is REPORTED, never fed into tier_band (the floor formula is anchored by
@@ -6633,6 +7066,8 @@ def main():
                    help="flag `#: tier:`/`#: notes:` prose that has gone stale — cards it "
                         "cites that are no longer in the deck, and figures that no longer "
                         "match the live quality vector")
+    p = sub.add_parser("shape", help="wide vs tall, fast vs slow — the structural read themes can't give")
+    p.add_argument("id")
     p = sub.add_parser("redundancy",
                        help="competitive-consistency planner: virtual (functional) copies first, duplicates as fallback")
     p.add_argument("id")
@@ -6679,10 +7114,16 @@ def main():
     p.add_argument("--limit", type=int, default=8, help="how many similar decks to show (default 8)")
     p.add_argument("--specific-only", action="store_true",
                    help="score SPECIFIC (identity) themes only — drop generic value overlap")
+    p.add_argument("--full", action="store_true",
+                   help="list the shared nonland CARD names — the concrete evidence behind "
+                        "the theme cosine")
     p = sub.add_parser("resolve",
                        help="turn card names into deck lines `<qty> Name (SET) #` (from args or stdin)")
     p.add_argument("names", nargs="*",
                    help="card names (optional leading qty); omit or '-' to read stdin")
+    p.add_argument("--format", default="standard",
+                   help="warn about names not legal in this format (default standard; "
+                        "'any' disables the check)")
     args = ap.parse_args()
 
     return {
@@ -6692,6 +7133,7 @@ def main():
         "tribes": cmd_tribes, "engines": cmd_engines, "suggest": cmd_suggest,
         "rotation": cmd_rotation, "brawl": cmd_brawl,
         "legal": cmd_legal, "cuts": cmd_cuts,
+        "shape": cmd_shape,
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
         "verify": cmd_verify, "sync": cmd_sync, "text": cmd_text,
         "suggest-homes": cmd_suggest_homes,

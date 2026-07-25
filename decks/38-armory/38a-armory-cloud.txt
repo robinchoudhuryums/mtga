@@ -3,8 +3,8 @@
 #: colors: WB
 #: tier: B — the focused, spicier take on the Equipment core (deck 38): all-in on Cloud,
 #: tier: Midgar Mercenary's trigger-DOUBLING + combat-damage equipment. A cheap, evasive
-#: tier: tempo shell suits up a flyer with a value equipment (Buster Sword / Ninja's Blades /
-#: tier: Goldvein Pick / Spy Kit), connects, and Cloud doubles the payoff — snowballing card
+#: tier: tempo shell suits up a flyer with a value equipment (Buster Sword / Goldvein Pick /
+#: tier: Vibranium Energy Daggers / S.H.I.E.L.D. Spy Kit), connects, and Cloud doubles the payoff — snowballing card
 #: tier: advantage and tempo. Higher ceiling than route B, LOWER floor: it leans on Cloud, so
 #: tier: a well-timed removal spell hurts far more. Held at B by that fragility + a light
 #: tier: creature-quality floor (many 1-drop flyers).
@@ -12,8 +12,8 @@
 #: archetype: Orzhov (W-primary) Cloud value-combo. Flood the board with cheap EVASIVE carriers
 #: archetype: (1-drop flyers), stick Cloud, and pile combat-damage-trigger equipment on an
 #: archetype: unblocked attacker — Cloud makes every one of those triggers fire twice (Buster
-#: archetype: Sword = draw 2 + cast 2 free; Ninja's Blades = double loot+drain; Goldvein = 2
-#: archetype: Treasures). Super-Soldier Serum vacuums all your gear onto the carrier on attack.
+#: archetype: Sword = draw 2 + cast 2 free; Goldvein = 2 Treasures; Dragonfire Blade = 2
+#: archetype: damage). Super-Soldier Serum vacuums all your gear onto the carrier on attack.
 #: notes: ROUTE C vs base 38 (route B): the same value spine, refocused into a tempo COMBO.
 #: notes:  · +Ruin-Lurker Bat / +Momo, Playful Pet / +Featherbrained Filcher / +Dream Beavers —
 #: notes:    a wall of cheap evasive carriers so you ALWAYS have a flyer to suit up AND Cloud

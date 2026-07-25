@@ -118,6 +118,34 @@ def owned_qty(index, name):
     return index.get(nl) or index.get(nl.split(" // ")[0], 0)
 
 
+def card_power(value):
+    """A card's printed power/toughness as an int, or ``None`` when it isn't a number.
+
+    Magic prints ``*``, ``1+*``, ``X`` and ``∞`` as often as it prints ``4``, so this
+    NEVER coerces — a caller that needs "power 4 or greater" gets ``None`` and must
+    decide what unknown means, rather than silently treating a ``*`` as 0. A leading
+    sign is accepted because a few cards print negative toughness.
+
+    Nothing in the repo stored P/T before, which left a whole class of card
+    ungradeable by any tool: "whenever a creature with power 4 or greater enters"
+    (Garruk's Uprising), Doran-style toughness-matters payoffs, and every "power N or
+    greater" condition. It also produced a real mis-read — Mossborn Hydra reads like a
+    big body but is printed 0/0 and enters with a single counter, so it does not
+    trigger Garruk on entry.
+    """
+    if value is None:
+        return None
+    # NOTE `str(value or "")` would be wrong here: a printed power of 0 is real and
+    # common (every X-creature is 0/0), and `0 or ""` collapses it to unknown.
+    s = str(value).strip()
+    if not s:
+        return None
+    try:
+        return int(s)
+    except ValueError:
+        return None
+
+
 class WrongSchema(Exception):
     """Refused to write a CSV that isn't the card library (see ``csv_schema_error``)."""
 

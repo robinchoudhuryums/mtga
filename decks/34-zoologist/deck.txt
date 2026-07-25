@@ -1,6 +1,8 @@
 #: name: Zoologist
 #: format: Standard
-#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; metrics floor B (interaction ~8 counting bounces + real card advantage from Vizier/Goose Mother/Wan Shi Tong, under-read as 0). A single-payoff glass cannon (lives/dies on Zookeeper) defended by scaling removal (Bite Down/Rabid Bite) + bounce + Spell Pierce; held below A by that fragility and rainbow-singleton variance. Now fully owned.
+#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor now reads A, not B (interaction 8, card advantage 1
+#: tier: — the old note claimed card advantage was "under-read as 0", which is no longer
+#: tier: the shape of the problem; it is genuinely thin rather than mis-counted). A single-payoff glass cannon (lives/dies on Zookeeper) defended by scaling removal (Bite Down/Rabid Bite) + bounce + Spell Pierce; held below A by that fragility and rainbow-singleton variance. Now fully owned.
 #: colors: GU
 #: archetype: Simic (G/U) changeling / creature-type-count — flood the board with all-types creatures, then Diligent Zookeeper makes them enormous; a scaling-removal interaction suite keeps it from being a one-card combo.
 #: notes: The focused, resilient build (promoted from the old 34a variant; the original undirected

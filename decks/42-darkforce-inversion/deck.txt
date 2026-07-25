@@ -1,0 +1,116 @@
+#: name: Darkforce Inversion
+#: format: Standard
+#: colors: WB
+#: plan: control
+#: archetype: Orzhov (W/B) BLINK-VALUE control. The plan is a life-total DIFFERENTIAL
+#: archetype: turned into cards. Cheap value-ETB creatures are re-bought with flicker,
+#: archetype: which also digs (Eerie Gravestone, Red Room Recruit, A.I.M. Synthoids) and
+#: archetype: strips their hand (Deep-Cavern Bat, Virus Beetle, Corrupt Court Official);
+#: archetype: lifelink bodies and a deep removal suite keep your total high while theirs
+#: archetype: erodes. Mister Negative then exchanges totals — and because a blink is a
+#: archetype: RE-ENTRY, flickering him TWICE draws you the whole gap and puts the life
+#: archetype: totals back where they started (swap, draw the difference, swap back).
+#: archetype: Another Round is the one card that does it alone: at X=1 it blinks your
+#: archetype: board twice for {1}{1}{2}{W}.
+#: archetype: DISTINCTNESS vs 20 Honor Among Thieves, the roster's other Orzhov deck:
+#: archetype: 20 is a lifegain-drain AGGRO deck — evasive Ninjas on a clock, using life
+#: archetype: as a Kingpin win-con. This is a CONTROL deck that treats life as a
+#: archetype: RESOURCE to convert into cards, and wins by out-carding you. Deliberately
+#: archetype: runs no Ninjas and no sneak/clock package; the creature base is chosen for
+#: archetype: ETB text, not evasion.
+#: tier: B — Orzhov blink-value control, one band BELOW the metrics floor of A, and
+#: tier: deliberately so. The floor reads A on interaction 14 (11 of it instant-speed)
+#: tier: over a 2.42 curve, and the interaction really is that deep — but the floor is
+#: tier: blind to two things this deck genuinely lacks.
+#: tier: 1. CARD ADVANTAGE reads 2 (Phyrexian Arena now counts — a repeatable upkeep
+#: tier:    draw accrues advantage, which the one-shot cantrip rule was wrongly
+#: tier:    suppressing). The rest still UNDER-states the deck — Enduring Innocence,
+#: tier:    Tolls of War's Clue, Eerie Gravestone's ETB draw and Red Room Recruit's
+#: tier:    connive each draw ONE card at a time, deliberately not counted — but a
+#: tier:    pile of one-card draws is not
+#: tier:    the same as a real engine. The deck out-values rather than out-draws until
+#: tier:    Mister Negative lands.
+#: tier: 2. RELIABILITY. The marquee payoff is a SINGLE copy of a 7-drop: ~22% to have
+#: tier:    seen it by turn 7. The build is deliberately arranged so that is fine — every
+#: tier:    blink target is a value ETB that stands on its own, so a Negative-less draw is
+#: tier:    a normal Orzhov value deck rather than a dead hand — but a deck whose ceiling
+#: tier:    shows up one game in five is not an A.
+#: tier: Protection is 1 (Stolen Stark Tech) against 4 `#: protect:` build-arounds; the
+#: tier: engine pieces are exposed, which is the standing risk of an enchantment/sorcery
+#: tier: engine. PROVISIONAL — this is a fresh brew and has not been played; re-grade
+#: tier: after some games. PATH TO A: a real card-advantage engine (something that draws
+#: tier: 2+ at once), and a second copy of Another Round or Mister Negative to take the
+#: tier: turn-7 hit rate from 22% to ~39%.
+#: protect: Mister Negative; Another Round; Enduring Innocence; Salvation Swan
+#: notes: WHY THE ENGINE WORKS — Mister Negative's ETB is a "may", and the draw clause
+#: notes: fires only when YOUR life was higher. So: blink 1 swaps (you take their low
+#: notes: total, draw the gap), blink 2 swaps back (you regain your high total, draw 0).
+#: notes: Net across the pair: the whole differential in cards, life unchanged. From a
+#: notes: LOW total the order inverts — blink 1 is a huge stabiliser, blink 2 buys the
+#: notes: cards — so the engine works from either side; being high is just safer.
+#: notes: The deck must FUNCTION WITHOUT HIM: every blink target is a value ETB that is
+#: notes: fine on its own, so a Mister-Negative-less draw is a normal Orzhov value deck,
+#: notes: not a dead hand. That is the difference between a build-around and a one-piece
+#: notes: combo (he is a single copy of a 7-drop — ~22% to see him by turn 7).
+#: notes: ROTATION: Deep-Cavern Bat (LCI) leaves Standard this fall. It is the single
+#: notes: best blink target here, so it is in for now — replace it rather than rebuild.
+#: notes: Craft targets: Mister Negative (M), Enduring Innocence (R), Case of the Uneaten
+#: notes: Feast (R), Personify (U), Parting Gust (U), Getaway Glamer (U), Lifecreed Duo (C).
+
+Deck
+# Blink — the engine
+1 Another Round (OTJ) 1
+1 Daydream (SOS) 9
+1 Personify (ECL) 28
+1 Parting Gust (BLB) 24
+1 Getaway Glamer (OTJ) 14
+1 Ennis, Debate Moderator (SOS) 14
+1 Salvation Swan (BLB) 28
+
+# Payoffs
+1 Mister Negative (SPM) 135
+1 Enduring Innocence (DSK) 6
+1 Jackdaw Savior (BLB) 18
+
+# Blink support / extra answers
+1 Airbender Ascension (TLA) 6
+1 Stolen Stark Tech (MSH) 114
+1 Wander Off (SOS) 104
+
+# Value ETB creatures — the blink targets
+1 Deep-Cavern Bat (LCI) 102
+1 Dream Beavers (TMT) 62
+1 Starscape Cleric (BLB) 116
+1 Red Room Recruit (MSH) 110
+1 Virus Beetle (EOE) 124
+1 Corrupt Court Official (TLA) 92
+1 Hecteyes (FIN) 103
+1 A.I.M. Synthoids (MSH) 242
+1 Fortress Kin-Guard (TDM) 12
+1 Honored Knight-Captain (EOE) 22
+1 Invasion Reinforcements (TLA) 24
+
+# Drain — pushes their total down
+1 Imperious Inkmage (SOS) 195
+1 Phyrexian Arena (FDN) 180
+1 Foraging Wickermaw (ECL) 256
+1 Eerie Gravestone (SPM) 163
+
+# Removal
+1 Hero's Downfall (FDN) 175
+1 Harsh Annotation (SOS) 18
+1 Stroke of Midnight (FDN) 148
+1 Crib Swap (ECL) 11
+1 Tolls of War (TLA) 245
+1 Erode (SOS) 15
+1 Feed the Swarm (SOA) 29
+1 Sephiroth's Intervention (FIN) 116
+
+# Lands — 24, Orzhov
+1 Bleachbone Verge (DFT) 250
+1 Insomnia, Crown City (FIN) 282
+1 Scoured Barrens (M21) 250
+1 Misty Palms Oasis (TLA) 273
+1 Temple of Silence (FDN) 704
+10 Plains (MSH) 285
+9 Swamp (MSH) 287

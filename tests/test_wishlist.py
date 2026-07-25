@@ -149,3 +149,23 @@ class TestConditionalPower:
     def test_plain_cards_are_not_conditional(self):
         for text in ("Destroy target creature.", "Draw two cards.", "Flying. Vigilance."):
             assert not wishlist.is_conditional_power({"Card Text": text, "Mana Cost": "{1}{B}"}), text
+
+
+class TestPowerProvenance:
+    """`--add` and `--seed-power` write an estimate into the same cell a hand grade goes
+    in, so nothing could tell them apart — which forced "verify this" onto every row."""
+
+    def test_seeded_is_not_trusted(self):
+        assert wishlist.power_is_seeded({"Power": "4.5", "Power Source": wishlist.POWER_SEEDED})
+
+    def test_hand_grade_is_trusted(self):
+        assert not wishlist.power_is_seeded({"Power": "7.0", "Power Source": wishlist.POWER_HAND})
+
+    def test_unknown_and_blank_are_not_trusted(self):
+        # A row predating the column: provenance is genuinely unrecorded, so it must not
+        # be silently blessed as a human judgment.
+        assert wishlist.power_is_seeded({"Power": "5.0", "Power Source": wishlist.POWER_UNKNOWN})
+        assert wishlist.power_is_seeded({"Power": "5.0", "Power Source": ""})
+
+    def test_case_insensitive(self):
+        assert not wishlist.power_is_seeded({"Power": "7.0", "Power Source": "Hand"})

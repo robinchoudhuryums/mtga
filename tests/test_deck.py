@@ -109,6 +109,70 @@ class TestClassifyRoles:
             "When this creature enters, put X +1/+1 counters on him. Then draw half X "
             "cards, rounded down.")
 
+    # --- Second under-count sweep. Driven by the roster-wide coverage audit itself: the
+    # `role_coverage_flags` lists named 26 distinct under-read and 98 unclassified cards,
+    # and reading their oracle text turned up these seven templatings. Each scored ZERO
+    # matching roles before, so the tier floor graded 34 of 58 decks on a low number.
+    BOUNCE = [
+        # THE BIG ONE. The pattern read `(?:owner|their) hand`, which requires the literal
+        # text "owner hand" — but MTG writes "to its OWNER'S hand". So every unconditional
+        # bounce spell in the collection scored nothing, for the whole life of the pattern.
+        "Return target nonland permanent to its owner's hand. If you controlled that "
+        "permanent, draw a card.",
+        "Return target creature an opponent controls to its owner's hand.",
+        "Return target creature to its owner's hand.",
+        "Return up to one target artifact or enchantment to its owner's hand.",
+        "Return target permanent to their owner's hand.",
+    ]
+    EDICTS = [
+        # Tribute to Hunger / Cornered by Black Mages. An edict answers hexproof, and it
+        # sat in the broad audit cue while missing from the role list entirely.
+        "Target opponent sacrifices a creature of their choice.",
+        "Each player sacrifices a creature of their choice.",
+        "Each opponent sacrifices a permanent of their choice.",
+    ]
+
+    def test_bounce_to_owners_hand_is_removal(self):
+        for text in self.BOUNCE:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_edict_is_removal(self):
+        for text in self.EDICTS:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_x_damage_is_removal(self):
+        # Hell to Pay. The fixed-damage patterns all require a DIGIT.
+        assert "Removal (spot)" in deck.classify_roles(
+            "Hell to Pay deals X damage to target creature. Create a number of tapped "
+            "Treasure tokens equal to the amount of excess damage dealt to that creature.")
+
+    def test_aura_library_tuck_is_removal(self):
+        # Watery Grasp — the Aura form of the tuck already covered as an activated ability.
+        assert "Removal (spot)" in deck.classify_roles(
+            "Enchant creature\nWaterbend {5}: Enchanted creature's owner shuffles it into "
+            "their library.")
+
+    def test_mass_edict_is_a_sweeper(self):
+        # Bringer of the Last Gift is a wrath by another name.
+        assert "Sweeper" in deck.classify_roles(
+            "When this creature enters, if you cast it, each player sacrifices all other "
+            "creatures they control.")
+
+    def test_repeatable_upkeep_draw_is_card_advantage(self):
+        # Phyrexian Arena. A REPEATABLE single draw accrues advantage — the cantrip
+        # exclusion is about ONE-SHOT single draws, and reading Arena as a cantrip is why
+        # deck 42's card-advantage line said 1.
+        assert "Card advantage" in deck.classify_roles(
+            "At the beginning of your upkeep, you draw a card and you lose 1 life.")
+        # ...and a one-shot single draw is still not advantage.
+        assert "Card advantage" not in deck.classify_roles(
+            "When this creature enters, draw a card.")
+
+    def test_fixed_damage_to_each_opponent_is_burn(self):
+        assert "Burn / drain" in deck.classify_roles(
+            "At the beginning of each end step, if you put a counter on a creature this "
+            "turn, this enchantment deals 2 damage to each opponent.")
+
 
 class TestCoverageNetIsSuperset:
     """The audit net must see everything the precise classifier can, or a phrasing is
@@ -122,6 +186,32 @@ class TestCoverageNetIsSuperset:
     def test_card_advantage_net_covers_every_precise_pattern(self):
         for pat in deck._ROLE_COMPILED_MAP["Card advantage"]:
             assert pat in deck._CA_CUE_PATS, pat.pattern
+
+    def test_reminder_text_does_not_fake_a_missed_role(self):
+        """Ward's reminder text ends '…counter it unless that player pays {2}.', which
+        tripped the Counter cue — so every warded creature was reported as a missed
+        interaction piece. The list exists to be read card-by-card, so a false cue is the
+        one thing that degrades it."""
+        warded = {"name": "Warded Body", "type": "Creature — Human",
+                  "text": ("Ward {2} (Whenever this creature becomes the target of a "
+                           "spell or ability an opponent controls, counter it unless "
+                           "that player pays {2}.)"),
+                  "colors": "W", "power": "2", "toughness": "2"}
+        carddata = {"warded body": warded}
+        cards = [(1, "Warded Body", None, None)]
+        _unclassified, under_read, _no_data = deck.role_coverage_flags(cards, carddata)
+        assert under_read == [], under_read
+
+    def test_reminder_stripping_does_not_hide_a_real_miss(self):
+        """The strip only applies to the audit net, and the net includes the precise
+        patterns — so a genuine under-read outside reminder text is still reported."""
+        carddata = {"odd answer": {
+            "name": "Odd Answer", "type": "Instant",
+            "text": "Target player sacrifices a nonland permanent of their choice.",
+            "colors": "B", "power": "", "toughness": ""}}
+        _unclassified, under_read, _no_data = deck.role_coverage_flags(
+            [(1, "Odd Answer", None, None)], carddata)
+        assert [n for n, _axis in under_read] == ["Odd Answer"]
 
 
 class TestRotationOverride:
@@ -838,3 +928,183 @@ class TestSyncPaste:
         out = deck.reconcile_lines(["# c", "1 Foo (S) 1", "24 Island"], target, {})
         parsed = [deck.LINE_RE.match(l) for l in out if deck._card_line_name(l)]
         assert sum(int(m.group(1)) for m in parsed) == sum(q for _d, q in target.values())
+
+
+class TestPowerThresholdFlags:
+    """A "power 4 or greater" payoff reads unconditional to a synergy model but only
+    fires off bodies that meet the bar on their PRINTED stats — measurable only since
+    card-pool.csv started carrying Power/Toughness."""
+    CD = {
+        "garruk's uprising": {"name": "Garruk's Uprising", "type": "Enchantment",
+                              "text": "Whenever a creature you control with power 4 or "
+                                      "greater enters, draw a card.",
+                              "power": "", "toughness": ""},
+        "x hydra": {"name": "X Hydra", "type": "Creature — Hydra",
+                    "text": "This creature enters with X +1/+1 counters on it.",
+                    "power": "0", "toughness": "0"},
+        "big beater": {"name": "Big Beater", "type": "Creature — Beast",
+                       "text": "Trample.", "power": "6", "toughness": "6"},
+        "star creature": {"name": "Star Creature", "type": "Creature — Avatar",
+                          "text": "Power equal to cards in your graveyard.",
+                          "power": "*", "toughness": "*"},
+    }
+
+    def test_flags_a_payoff_the_creatures_dont_support(self):
+        cards = [(1, "Garruk's Uprising", "", ""), (8, "X Hydra", "", "")]
+        flags = deck.power_threshold_flags(cards, self.CD)
+        assert flags == [("Garruk's Uprising", "power", 4, 0, 8)]
+
+    def test_silent_when_the_deck_supports_it(self):
+        cards = [(1, "Garruk's Uprising", "", ""), (8, "Big Beater", "", "")]
+        assert deck.power_threshold_flags(cards, self.CD) == []
+
+    def test_star_power_counts_as_not_qualifying(self):
+        # `*` is unknowable from printed stats; guessing would invent a fact.
+        cards = [(1, "Garruk's Uprising", "", ""), (8, "Star Creature", "", "")]
+        assert deck.power_threshold_flags(cards, self.CD)[0][3] == 0
+
+    def test_no_creatures_is_not_an_error(self):
+        assert deck.power_threshold_flags([(1, "Garruk's Uprising", "", "")], self.CD) == []
+
+
+class TestRationaleStaleness:
+    """The audit must flag a stale CLAIM without flagging accurate HISTORY — a rationale
+    legitimately documents the change that produced the current list."""
+
+    def _deck(self, tmp_path, tier_lines, cards=("1 Shock (M21) 159",)):
+        p = tmp_path / "d.txt"
+        p.write_text("\n".join([f"#: tier: {ln}" for ln in tier_lines]
+                                + ["#: colors: R", "", "Deck", *cards]) + "\n")
+        return {"id": "t", "name": "t", "path": str(p)}
+
+    def test_flags_a_cut_card_the_argument_leans_on(self, tmp_path):
+        d = self._deck(tmp_path, ["B — held to B because Lightning Bolt is the only answer."])
+        cards, _figs = deck.rationale_staleness(d)
+        assert "Lightning Bolt" in [c for c, _h in cards]
+
+    def test_history_citation_is_suppressed(self, tmp_path):
+        d = self._deck(tmp_path, ["B — re-graded after Lightning Bolt was cut for Shock."])
+        cards, _figs = deck.rationale_staleness(d)
+        assert cards == []
+
+    def test_lowercase_common_noun_is_not_a_citation(self, tmp_path):
+        # "Counterspell" is a real card name; the lowercase word is not a reference.
+        d = self._deck(tmp_path, ["B — light on counterspell effects."])
+        cards, _figs = deck.rationale_staleness(d)
+        assert cards == []
+
+    def test_historical_figure_is_suppressed(self, tmp_path):
+        # "took interaction 1->4" describes a past change, not the current state.
+        d = self._deck(tmp_path, ["A — the package took interaction 1 to 4."])
+        _cards, figs = deck.rationale_staleness(d)
+        assert figs == []
+
+
+class TestRationaleWordBoundary:
+    """Card names are ordinary English often enough that a bare substring search
+    misfires — it reported the card *Deliberate* inside the word "Deliberately"."""
+
+    def _deck(self, tmp_path, header, text):
+        p = tmp_path / "d.txt"
+        p.write_text(f"#: {header}: {text}\n#: colors: R\n\nDeck\n1 Shock (M21) 159\n")
+        return {"id": "t", "name": "t", "path": str(p)}
+
+    def test_substring_inside_a_longer_word_is_not_a_citation(self, tmp_path):
+        d = self._deck(tmp_path, "archetype", "Deliberately runs no Ninjas.")
+        cards, _figs = deck.rationale_staleness(d)
+        assert cards == []
+
+    def test_archetype_header_is_scanned(self, tmp_path):
+        d = self._deck(tmp_path, "archetype", "Built around Lightning Bolt as the finisher.")
+        cards, _figs = deck.rationale_staleness(d)
+        assert "Lightning Bolt" in [c for c, _h in cards]
+
+
+class TestCountConfidence:
+    """A classifier reports a false negative as a fact: `0` reads as "none" rather than
+    "not detected". The count must carry its own uncertainty."""
+    CD = {
+        "shock": {"name": "Shock", "type": "Instant", "colors": "R",
+                  "text": "Shock deals 2 damage to any target.", "power": "", "toughness": ""},
+        "odd answer": {"name": "Odd Answer", "type": "Instant", "colors": "B",
+                       "text": "Its controller sacrifices a creature of their choice.",
+                       "power": "", "toughness": ""},
+    }
+
+    def test_clean_count_has_no_suffix(self):
+        t = deck.role_tally([(2, "Shock", "", "")], self.CD)
+        assert deck.count_conf(t, "interaction") == "2"
+
+    def test_unclassified_card_is_reported_inline(self):
+        # "Odd Answer" matches no role AND trips no broad cue — the Broken Wings case,
+        # the one that did the most damage. It must not read as a clean count of 1.
+        t = deck.role_tally([(1, "Shock", "", ""), (1, "Odd Answer", "", "")], self.CD)
+        assert deck.count_conf(t, "interaction") == "1 (1 unclassified)"
+
+    def test_missing_card_data_is_reported(self):
+        t = deck.role_tally([(1, "Shock", "", ""), (1, "Unknown Card", "", "")], self.CD)
+        assert "unreadable" in deck.count_conf(t, "interaction")
+
+
+class TestDeckShape:
+    """Themes cannot answer wide-vs-tall: "counters" is the same tag whether they all go
+    on one creature or spread across twelve."""
+    CD = {
+        "token maker": {"name": "Token Maker", "type": "Creature", "colors": "W",
+                        "text": "When this creature enters, create two 1/1 white Soldier "
+                                "creature tokens.", "power": "2", "toughness": "2"},
+        "doubler": {"name": "Doubler", "type": "Sorcery", "colors": "G",
+                    "text": "Double the number of +1/+1 counters on target creature.",
+                    "power": "", "toughness": ""},
+        "bear": {"name": "Bear", "type": "Creature", "colors": "G", "text": "Vanilla.",
+                 "power": "2", "toughness": "2"},
+    }
+
+    def test_token_makers_read_wide(self):
+        sh = deck.deck_shape([(6, "Token Maker", "", "")], self.CD)
+        assert sh["wide"] > sh["tall"]
+
+    def test_amplifiers_read_tall(self):
+        sh = deck.deck_shape([(6, "Doubler", "", "")], self.CD)
+        assert sh["tall"] > sh["wide"]
+
+    def test_a_single_counter_is_not_a_tall_signal(self):
+        # The first draft counted "put a +1/+1 counter on target creature" as TALL, which
+        # read a 27-creature WIDE value board as tall — a single counter is wide glue too.
+        assert not any(p.search("Put a +1/+1 counter on target creature.")
+                       for p in deck._TALL_CUES)
+
+    def test_creature_density_pushes_wide(self):
+        # 24 vanilla bears have no wide TEXT at all, but cannot be a tall deck.
+        sh = deck.deck_shape([(24, "Bear", "", "")], self.CD)
+        assert sh["wide"] > sh["tall"]
+
+
+class TestNearDuplicates:
+    CD = {
+        "epic fight": {"name": "Epic Fight", "type": "Sorcery", "colors": "G",
+                       "text": "Target creature you control fights target creature an "
+                               "opponent controls.", "power": "", "toughness": ""},
+        "chelonian tackle": {"name": "Chelonian Tackle", "type": "Sorcery", "colors": "G",
+                             "text": "Target creature you control gets +0/+10, then it "
+                                     "fights target creature an opponent controls.",
+                             "power": "", "toughness": ""},
+        "vanilla": {"name": "Vanilla", "type": "Creature", "colors": "G", "text": "Flying.",
+                    "power": "2", "toughness": "2"},
+    }
+    MANA = {"epic fight": ("{2}{G}", 3, ""), "chelonian tackle": ("{2}{G}", 3, ""),
+            "vanilla": ("{1}{G}", 2, "")}
+
+    def test_same_job_same_cost_groups(self):
+        groups = deck.near_duplicates(
+            [(1, "Epic Fight", "", ""), (1, "Chelonian Tackle", "", "")], self.CD, self.MANA)
+        assert groups and set(groups[0][1]) == {"Epic Fight", "Chelonian Tackle"}
+
+    def test_roleless_cards_are_never_grouped(self):
+        # No signal beats a guess: a card the classifier can't read isn't a duplicate.
+        assert deck.near_duplicates([(2, "Vanilla", "", "")], self.CD, self.MANA) == []
+
+    def test_far_apart_costs_are_not_interchangeable(self):
+        mana = dict(self.MANA, **{"chelonian tackle": ("{6}{G}", 7, "")})
+        assert deck.near_duplicates(
+            [(1, "Epic Fight", "", ""), (1, "Chelonian Tackle", "", "")], self.CD, mana) == []

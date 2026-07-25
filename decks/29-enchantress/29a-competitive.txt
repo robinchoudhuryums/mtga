@@ -3,7 +3,7 @@
 #: tier: A — Enchantress competitive (GWR). Re-graded B->A for consistency with the primary
 #: tier: 29, which is already A: this variant runs the SAME uncounted draw engine (Garruk's
 #: tier: Uprising — draw on each power-4+ creature) that made 29 airtight, and beats it on
-#: tier: every measurable axis — interaction 11 vs 6, 22 central themes, avg MV 3.08, 0
+#: tier: every measurable axis — interaction 12 vs 6, 22 central themes, avg MV 3.08, 0
 #: tier: uncastable. Metrics floor is A. The old B cited 'a thin owned threat base', but
 #: tier: tier rates the LIST, not build-state (that's `check`/`audit`). Held from S by
 #: tier: singleton variance and card advantage that leans on one enchantment engine.

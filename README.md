@@ -339,6 +339,7 @@ python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-
 python3 scripts/deck.py suggest 1a --lands --owned  # MANABASE recommender: owned lands that fix your colors (fixing + synergy + scarce-color nudges)
 python3 scripts/deck.py suggest 1a --needs   # STRUCTURAL needs the theme model can't see: fixing · acceleration (--ramp) · interaction (--interaction, board-scalers flagged)
 python3 scripts/deck.py legal 1a      # construction lint: deck size, copy limits, format legality
+python3 scripts/deck.py shape 1a      # wide vs tall, fast vs slow — the structural read themes can't give
 python3 scripts/deck.py cuts 1a       # rank the deck's weakest-fit cards as cut candidates
 python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~ lines)
 python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
@@ -480,10 +481,37 @@ that regex read can silently **under**-count a phrasing it doesn't recognize,
 any card whose text *reads like* interaction / card advantage the classifier didn't
 tag ("⚠ Possible UNDER-COUNT — verify"), so a miss becomes an explicit prompt to
 read the card rather than a silent gap in the count. It never changes a count — it
-tells you where to look. `stats` also prints an **interaction profile**: the raw
+tells you where to look. (Working that list is worth the time: the second pass
+through it found that the bounce pattern required the literal text "owner hand"
+while Magic writes "to its *owner's* hand", so every unconditional bounce spell in
+the collection had been scoring zero roles. Fixing that plus six other templatings
+moved 34 of 58 decks, all upward. Parenthetical **reminder text** is stripped before
+the net runs, because Ward's reminder — "…counter it unless that player pays {2}" —
+was reporting every warded creature as a missed answer.) `stats` also prints an
+**interaction profile**: the raw
 count treats all removal alike, so it breaks interaction down by **speed** (instant
 vs sorcery) and by whether it can answer a **noncreature permanent** (planeswalker /
 enchantment / artifact), flagging "all sorcery-speed" or "no noncreature answer".
+
+Every role **count carries its own uncertainty**. A heuristic classifier reports a
+false negative as a fact — a card it can't parse contributes 0, and `0` reads as
+"none" rather than "not detected". So counts render as `7`, `3 +2?` (two more cards
+read like that role but couldn't be tagged), or `8 +4? (3 unclassified)`. 52 of 58
+decks show uncertainty inline; one of them was graded on interaction 3 when a hand
+count said 7.
+
+**`deck.py shape <id>`** answers the structural question themes cannot: **wide or
+tall, fast or slow?** `counters` is the same tag whether they all go on one creature
+or spread across twelve. It scores token-creation and count-scaling against
+*amplifiers* (doubling, equipment pump, "where X is its power") and folds in creature
+density, then prints the effect lists — not just the verdict.
+
+`stats` also runs a **power-threshold check**. A payoff that keys on "power 4 or
+greater" reads unconditional to a synergy model, but only fires off bodies that meet
+the bar on their **printed** stats — and a counters deck full of X-creatures printed
+0/0 meets it far less often than it looks. The pool now stores Power/Toughness, so
+this is measurable: in deck 40a, Garruk's Uprising sees only 2 of 23 creature copies.
+(A creature that grows *after* it enters still won't satisfy an *enters* trigger.)
 
 `stats` (and `tier`) also report a **protection** count — real ward / hexproof /
 indestructible / protection-from effects, deliberately narrower than the broad

@@ -1,6 +1,17 @@
 #: name: Honor Among Thieves — Abzan Toughness Ramp
 #: format: Standard
-#: tier: C — Honor Among Thieves Abzan toughness-ramp; ambitious 3-color combo-ramp, thin interaction (3)
+#: tier: C — Honor Among Thieves Abzan toughness-ramp. The old rationale capped this on
+#: tier: "thin interaction (3)"; that figure was a classifier under-read and the live
+#: tier: count is 4, a B floor. The letter STAYS at C on the two things the floor misses:
+#: tier: 1. CARD ADVANTAGE 0. Nothing in the 60 refuels. A ramp deck that spends its
+#: tier:    first four turns developing and then draws one card a turn loses every long
+#: tier:    game it was building toward, and 4 removal spells do not substitute.
+#: tier: 2. The payoff is not reliably castable. `consistency 20b` puts {G}{G}{G} Ancient
+#: tier:    Adamantoise at 44% on turn 5 (13 green sources against a want of 24), on a
+#: tier:    4.0 average mana value, with a ONE-source blue splash. The deck's plan is to
+#: tier:    resolve a specific expensive card on time and it does that half the time.
+#: tier: Two clear weaknesses is past what B tolerates. PATH TO B: a draw engine (this is
+#: tier: the bigger of the two), then more green sources or a cheaper top end.
 #: colors: WBG
 #: based-on: deck.txt
 #: archetype: 20 variant — Abzan (W/B/G) toughness-swap RAMP into Adamantoise; two swap payoffs (Kingpin + Tapestry Warden).
