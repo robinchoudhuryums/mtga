@@ -354,6 +354,7 @@ python3 scripts/deck.py preflight 1a         # one-call verify: legal + owned + 
 python3 scripts/deck.py quality 1a --json    # deck-quality vector; --vs FILE diffs a before-snapshot
 python3 scripts/deck.py tier 1a              # claimed #: tier: vs the tier its metrics support
 python3 scripts/deck.py tier 1a --to A       # gap to A + owned fillers AND craft targets for the short axis
+python3 scripts/deck.py tier 1a --audit-rationale  # is the #: tier: argument still true? (cut cards, stale figures)
 python3 scripts/deck.py redundancy 1a        # competitive consistency: virtual (functional) copies first, duplicates as fallback
 python3 scripts/deck.py history 1a           # the deck's git change history (its changelog); --since YYYY-MM-DD adds the net card change since then
 python3 scripts/deck.py quality 1a --at HASH # compare this deck's list at a past commit vs now
@@ -382,6 +383,14 @@ add/craft picks respectively, so both sides of a swap are graded from text. The
 keyword line means a named mechanic (Warp, Increment, …) is surfaced explicitly
 rather than skimmed as an ordinary word. `query.py --full` / `pool.py --full` do
 the same for a themed deep-read of your owned library or the whole pool.
+
+`cuts` also marks **`⚡ cost-as-upside`**: a card's additional cost reads as a
+drawback to every model here, because they all grade a card *in isolation* — but in
+the matching deck the same clause is an engine trigger. A kicker that returns a land
+re-triggers landfall; a Warp / "when this leaves the battlefield" clause is what moves
+its counters onto your threat; a sacrifice cost feeds your outlets. The flag fires only
+when the deck's own themes invert the cost, and it never changes the ranking — it tells
+you to read the card in context before cutting it.
 
 `sync` is `verify`'s write half, for many decks at once: pipe an export containing one
 or many `Deck` blocks and it matches each block to its closest stored deck (the same
@@ -476,6 +485,14 @@ count treats all removal alike, so it breaks interaction down by **speed** (inst
 vs sorcery) and by whether it can answer a **noncreature permanent** (planeswalker /
 enchantment / artifact), flagging "all sorcery-speed" or "no noncreature answer".
 
+`stats` (and `tier`) also report a **protection** count — real ward / hexproof /
+indestructible / protection-from effects, deliberately narrower than the broad
+"Protection / trick" role, which lumps a combat pump in with an actual answer to
+removal. It answers a question nothing else measured: *can this deck protect the
+permanent it wins with?* A **zero** is flagged, naming the `#: protect:`
+build-arounds at risk — an all-in single-threat deck with no ward/hexproof anywhere
+in 60 cards used to look perfectly healthy on every view.
+
 `engines <id>` grades the deck's two-sided **engines**: a synergy tag says "sacrifice"
 is in the deck but not which cards FEED the engine (outlets/fodder) vs PAY IT OFF
 (death triggers). It classifies each card as an **enabler** and/or **payoff** for the
@@ -563,6 +580,14 @@ otherwise demands — a fast burn deck isn't floored at C for light removal — 
 every other plan grades exactly as before. Set the plan with a **`#: plan:
 aggro|control|combo|midrange`** header (else it's read from `#: archetype:` or
 inferred). See the tier **rubric** in [`CLAUDE.md`](CLAUDE.md).
+
+Add **`--audit-rationale`** to check the *argument*, not just the letter. A
+`#: tier:` rationale is prose, so nothing kept it honest as the list changed
+underneath it — it can end up arguing from cards that were cut, or quoting figures
+the deck no longer has. `deck.py tier <id> --audit-rationale` flags both, and
+reports nothing when the rationale is current. It never edits the prose; a stale
+argument is how a defensible letter quietly becomes an indefensible one, so run it
+after any deck edit.
 
 Add **`--to <TIER>`** (e.g. `deck.py tier 30 --to A`) for a **tier-gap diagnostic**:
 it reports the exact measurable work to reach that band's floor ("+3 interaction")
