@@ -47,6 +47,7 @@ Dubious Delicacy,Artifact — Food,"Flash
 When this artifact enters, up to one target creature gets -3/-3 until end of turn.
 {2}, {T}, Sacrifice this artifact: You gain 3 life.
 {2}, {T}, Sacrifice this artifact: Target opponent loses 3 life.",B,Food; lifegain; sacrifice; etb; removal; flash; tempo,EOE,96,Uncommon,21; 20,,4.5
+Seedship Impact,Instant,"Destroy target artifact or enchantment. If its mana value was 2 or less, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",G,sacrifice; tokens; removal; ramp,EOE,205,Uncommon,40a,Instant artifact/ench removal + a Lander token = a LANDFALL trigger. Replaced Broken Wings.,5.5
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",W,Human; Knight; sacrifice; tokens; ramp; etb; landfall; pump; lands,EOE,41,Uncommon,36,,3.0
 "Ajani, Caller of the Pride",Legendary Planeswalker — Ajani,"+1: Put a +1/+1 counter on up to one target creature.
@@ -67,6 +68,7 @@ Whenever Drakuseth attacks, it deals 4 damage to any target and 3 damage to each
 Felidar Retreat,Enchantment,"Landfall — Whenever a land you control enters, choose one —
 • Create a 2/2 white Cat Beast creature token.
 • Put a +1/+1 counter on each creature you control. Those creatures gain vigilance until end of turn.",W,counters; tokens; landfall; lands; ramp,FDN,574,Rare,36,,5.5
+Genesis Wave,Sorcery,Reveal the top X cards of your library. You may put any number of permanent cards with mana value X or less from among them onto the battlefield. Then put all cards revealed this way that weren't put onto the battlefield into your graveyard.,G,graveyard,FDN,165,Rare,40a,"FLEX (see 40a #~). 83% permanents here; each land it drops re-triggers landfall, so X=6 with 3 lands doubles Mossborn Hydra x8. GGG is castable off G-primary mana + Great Divide Guide.",7.5
 "Ghalta, Primal Hunger",Legendary Creature — Elder Dinosaur,"This spell costs {X} less to cast, where X is the total power of creatures you control.
 Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",G,Elder; Dinosaur; trample; evasion,FDN,222,Rare,28,,7.0
 Jazal Goldmane,Legendary Creature — Cat Warrior,"First strike (This creature deals combat damage before creatures without first strike.)
@@ -137,6 +139,7 @@ When this creature enters, investigate. (Create a Clue token. It's an artifact w
 Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",U/R,Drake; counters; card draw; sacrifice; tokens; etb; clue; flying; evasion; investigate,MKM,205,Uncommon,35,,5.5
 Magnetic Snuffler,Artifact Creature — Construct,"When this creature enters, return target Equipment card from your graveyard to the battlefield attached to this creature.
 Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",Colorless,Construct; counters; reanimator; graveyard; sacrifice; etb,MKM,254,Uncommon,38,,4.0
+Repulsive Mutation,Instant,Put X +1/+1 counters on target creature you control. Then counter up to one target spell unless its controller pays mana equal to the greatest power among creatures you control.,U/G,counters,MKM,227,Uncommon,40a,Counter taxed at your greatest creature power (unconditional with the Hydra out) AND puts X counters on it. Interaction + protection + engine in one instant.,7.0
 Soul Enervation,Enchantment,"Flash
 When this enchantment enters, target creature gets -4/-4 until end of turn.
 Whenever one or more creature cards leave your graveyard, each opponent loses 1 life and you gain 1 life.",B,graveyard; lifegain; etb; removal; flash; tempo,MKM,106,Uncommon,37,,6.5

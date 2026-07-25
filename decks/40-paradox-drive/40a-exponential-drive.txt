@@ -14,26 +14,39 @@
 #: archetype: 30 Fractalandtastic explicitly "goes wide" on Fractal tokens in Temur. This
 #: archetype: one runs NO creature-token ENGINE on purpose — every counter is aimed at one
 #: archetype: body. (Emil is here for its trample line, not its Fractal mana sink.)
-#: tier: B — Simic landfall counters-midrange, matching the metrics floor. The engine itself
-#: tier: is strong and consistent: `deck.py redundancy 40a` reads a virtual 8-of counter-
-#: tier: DOUBLER, 5-of landfall, 5-of lands and 9-of payoff, on a clean manabase (26 lands,
-#: tier: 87% keepable openers, 0 uncastable) — so nothing here is capped by singleton
-#: tier: variance. The earlier grade was capped by TWO weaknesses; one is now fixed:
-#: tier: FIXED — win-con fragility. This was an all-in single-threat deck with zero ward /
-#: tier: hexproof / indestructible in the 60, so one removal spell reset the plan and
-#: tier: stranded every doubler. Kid Loki now gives standing HEXPROOF to any creature that
-#: tier: got a counter this turn — which, in a deck that puts or doubles counters on every
-#: tier: land drop, is most turns from ~T3 — and Origin of Metalbending adds instant-speed
-#: tier: indestructible. Both are owned, so this cost no wildcards.
-#: tier: REMAINING CAP — creature removal. Measured interaction is 4, below the A-floor's 5.
-#: tier: The real figure is ~6 (the classifier under-reads Origin of Metalbending and Broken
-#: tier: Wings, which destroy artifacts/enchantments rather than creatures), but the honest
-#: tier: gap is narrower than that: only Epic Fight's fight mode and Unforgiving Aim can
-#: tier: actually kill a creature, and Unforgiving Aim only hits fliers. Grappling Kraken and
-#: tier: Floodpits Drowner tap and stun rather than answer. So a large opposing GROUND
-#: tier: creature has no clean answer — mitigated by trample on the payoff, not solved.
-#: tier: PATH TO A: add 1-2 instant-speed unconditional creature removal spells. Do NOT fix
-#: tier: it by adding more doublers, and do not trade away the protection just added.
+#: tier: B — Simic landfall counters-midrange, matching the metrics floor (interaction 3 +
+#: tier: card-adv 1). Re-graded after the Seedship Impact / Repulsive Mutation / Chocobo
+#: tier: Kick / Broodguard Elite / Amazing Acrobatics pass. The ENGINE is the deck's
+#: tier: strength and is not what caps it: `deck.py redundancy 40a` reads a virtual 8-of
+#: tier: counter-DOUBLER plus 5-of landfall / 5-of lands / 9-of payoff / 5-of ramp, on a
+#: tier: clean manabase (26 lands, 87% keepable openers, 0 uncastable), so singleton
+#: tier: variance is not the problem here.
+#: tier: FIXED — win-con fragility. Was zero ward/hexproof/indestructible in the 60, so one
+#: tier: removal spell reset the plan. Kid Loki now grants standing HEXPROOF to anything
+#: tier: that got a counter this turn (most turns from ~T3 in a deck that counters or
+#: tier: doubles on every land drop); Origin of Metalbending adds instant indestructible.
+#: tier: FIXED — creature removal. Chocobo Kick is ONE-SIDED damage equal to your creature's
+#: tier: power (doubled if kicked), so a huge body answers anything without trading; and
+#: tier: Floodpits Drowner's second ability (`{1}{U},{T}`: shuffle it and a stunned creature
+#: tier: into their libraries) IS an unconditional answer, not merely a tap — an earlier
+#: tier: version of this note under-read it. With Repulsive Mutation and Amazing Acrobatics
+#: tier: as counters that leaves ~7 real interaction pieces and 3 unconditional creature
+#: tier: answers, against the 2 (one flier-only) it had before.
+#: tier: MEASUREMENT CAVEAT: the counted interaction of 3 UNDER-reads the deck — `role_tally`
+#: tier: does not credit artifact/enchantment destruction as removal (Seedship Impact,
+#: tier: Origin of Metalbending — both flagged by the coverage self-audit) and misses
+#: tier: Repulsive Mutation's "counter up to one target spell unless…" phrasing entirely.
+#: tier: The letter is graded on the hand count, not the classifier's.
+#: tier: REMAINING CAP — CARD ADVANTAGE, the axis that replaced removal. Measured 1, and
+#: tier: `redundancy` reads it THIN: Kiora left for Broodguard Elite, and what remains is
+#: tier: Tam's landfall draw, Wan Shi Tong's draw-X/2, Mindspring Merfolk's one-shot Exhaust
+#: tier: and Portent of Calamity. Against a deck that trades resources this runs out of gas
+#: tier: before the doubled threat closes. (Cutting Kiora cost less than the -1 suggests —
+#: tier: her ETB is draw-two-DISCARD-two, a loot with no net cards — but the axis is thin.)
+#: tier: PATH TO A: firm card advantage, ideally with a repeatable engine that scales off the
+#: tier: big body rather than another one-shot. Genesis Wave is queued in the flex block as
+#: tier: the alternative route (an explosive finisher instead of a longer game). Do NOT fix
+#: tier: it by adding more doublers, and do not trade away the protection or the removal.
 #: notes: This is the TALL sibling of 40; keep the two apart by
 #: notes: rule: 40 holds up counterspells and wins with one huge X-spell, 40a commits a
 #: notes: threat on turn 2-3 and doubles it. Do NOT migrate the doubler package back
@@ -73,6 +86,7 @@ Deck
 1 Kid Loki (MSH) 63
 1 Hemosymbic Mite (EOE) 190
 1 Wan Shi Tong, Librarian (TLA) 78
+1 Broodguard Elite (EOE) 175
 
 # Finishers / pump
 1 Tifa's Limit Break (FIN) 207
@@ -82,13 +96,12 @@ Deck
 # Interaction
 1 Grappling Kraken (FDN) 39
 1 Floodpits Drowner (DSK) 59
-1 Broken Wings (FDN) 214
-1 Unforgiving Aim (ECL) 200
-1 Essence Scatter (SOS) 47
-1 Syncopate (FIN) 80
+1 Seedship Impact (EOE) 205
+1 Chocobo Kick (FIN) 178
+1 Repulsive Mutation (MKM) 227
+1 Amazing Acrobatics (SPM) 25
 
 # Card advantage
-1 Kiora, the Rising Tide (FDN) 45
 1 Mindspring Merfolk (DFT) 51
 1 Portent of Calamity (BLB) 66
 1 Ignis Scientia (FIN) 227
@@ -102,3 +115,23 @@ Deck
 1 Agna Qel'a (TLA) 264
 11 Forest (MSH) 295
 9 Island (MSH) 289
+
+#~ -Portent of Calamity | +Genesis Wave | RARE craft ({X}{G}{G}{G}) — the deck's best
+#~   potential finisher, held OUT of the 60 by choice. 83% of the nonlands here are
+#~   permanents and green is the primary colour (16 G sources, and Great Divide Guide
+#~   makes every land any colour), so GGG is castable. The real payoff is that every
+#~   land it puts onto the battlefield triggers LANDFALL: X=6 dropping three lands
+#~   doubles Mossborn Hydra three times (x8) and fires Bristly Bill, Seedship Agrarian,
+#~   Grappling Kraken and Tam. Portent of Calamity is deliberately KEPT for now (user
+#~   call); swap it out if you want the explosive top end instead of the value X-spell.
+#~ -Repulsive Mutation | +Ooze Spill | OWNED, 0 WC ({1}{U}{U}) — a clean hard counter
+#~   that leaves a Mutagen token ({1},{T},sac: a +1/+1 counter). Skipped for now only
+#~   because Repulsive Mutation counters just as hard here (the tax is your greatest
+#~   creature's power) while ALSO growing the threat. Take Ooze Spill if you'd rather
+#~   not pay a wildcard, or as a fourth counter in a grindier build.
+#~ -Amazing Acrobatics | +Quandrix Charm | OWNED, 0 WC ({G}{U}) — three modes: soft
+#~   counter / destroy enchantment / set a creature's BASE P/T to 5/5 (counters stack on
+#~   top, so it is safe on your own Hydra and shrinks an opposing bomb). Weaker here now
+#~   that Seedship Impact covers artifacts + enchantments, and Acrobatics' hard counter
+#~   plus tap-two-blockers does more for a trampling win-con. Revisit if you face more
+#~   enchantment-based decks.
