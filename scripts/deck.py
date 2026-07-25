@@ -5071,6 +5071,9 @@ def cmd_similar(args):
               "it's a diffuse good-stuff/value deck, so it's distinct BY IDENTITY from every\n"
               "deck (nothing specific to duplicate). Drop --specific-only for a value-overlap view.")
         return 0
+    carddata = load_card_data()
+    anames = {n for _q, n, _s, _c in cards if n.lower() not in BASICS
+              and "Land" not in _primary_type((carddata.get(n.lower()) or {}).get("type") or "")}
     rows = []
     for dd in discover_decks():
         if dd["id"].lower() == d["id"].lower():
@@ -5085,16 +5088,25 @@ def cmd_similar(args):
         colj = len(acols & bcols) / len(acols | bcols) if (acols | bcols) else 0.0
         shared = sorted(set(aw) & set(bw), key=lambda t: -(min(aw[t], bw[t])))
         spec = [t for t in shared if _sim_specific(t, keep)]
-        rows.append((sim, colj, dd["id"], dd.get("name") or dd["id"], shared, spec))
+        # CARD overlap, the thing the theme cosine cannot see. This model compares
+        # {theme: weight} vectors, so two decks can read 84% similar while sharing five
+        # card names — four of them lands. Without this column the score reads as "these
+        # are the same deck" when it often means "these are both Orzhov value decks".
+        # Lands are excluded: a shared manabase is not a shared identity.
+        bnames = {n for _q, n, _s, _c in c2 if n.lower() not in BASICS
+                  and "Land" not in _primary_type((carddata.get(n.lower()) or {}).get("type") or "")}
+        both = anames & bnames
+        rows.append((sim, colj, dd["id"], dd.get("name") or dd["id"], shared, spec,
+                     len(both), sorted(both)))
     rows.sort(key=lambda r: (-r[0], -r[1], r[2]))
     limit = getattr(args, "limit", 8) or 8
     lens = "SPECIFIC-theme overlap only" if spec_only else "central-theme overlap"
     print(f"Deck {d['id']}: {d.get('name') or d['id']} — most similar decks ({lens})\n"
           f"Your colors: {'/'.join(sorted(acols)) or '—'}  ·  top themes: "
           f"{', '.join(f'{t}({aw[t]})' for t in sorted(aw, key=lambda t: -aw[t])[:6])}\n")
-    print(f"  {'sim':>4} {'col':>4}  {'deck':6} shared themes (✦ = a SPECIFIC identity theme)")
-    print("  " + "-" * 78)
-    for sim, colj, did, name, shared, spec in rows[:limit]:
+    print(f"  {'sim':>4} {'col':>4} {'cards':>5}  {'deck':6} shared themes (✦ = a SPECIFIC identity theme)")
+    print("  " + "-" * 84)
+    for sim, colj, did, name, shared, spec, ncards, cardnames in rows[:limit]:
         # A shared SPECIFIC theme = a real identity match ⇒ ⚠ overlap. High sim on GENERIC
         # themes only = both are value decks, not a duplicate ⇒ the softer '· value overlap'.
         if sim >= 0.60 and spec:
@@ -5107,11 +5119,17 @@ def cmd_similar(args):
             flag = " · distinct"
         specset = set(spec)
         disp = ", ".join((("✦" + t) if t in specset else t) for t in shared[:5])
-        print(f"  {sim*100:>3.0f}% {colj*100:>3.0f}%  {did:6} {disp}{flag}")
+        print(f"  {sim*100:>3.0f}% {colj*100:>3.0f}% {ncards:>5}  {did:6} {disp}{flag}")
     top = rows[0] if rows else None
     if top and top[0] >= 0.60 and top[5]:
+        # Temper the warning with the card count: a high cosine on few shared CARDS is a
+        # both-are-value-decks signal, not a duplicate.
+        tail = (f" But they share only {top[6]} nonland card(s), so the overlap is in what "
+                f"the decks TAG as, not what they play — grade the win-cons from "
+                f"`deck.py text`." if top[6] <= 5 else
+                f" They also share {top[6]} nonland cards — check that list first.")
         print(f"\n⚠ Closest is #{top[2]} {top[3]} at {top[0]*100:.0f}% and shares a SPECIFIC theme "
-              f"({', '.join(top[5][:3])}) — verify the win-cons differ or you may be duplicating it.")
+              f"({', '.join(top[5][:3])}).{tail}")
     elif top and top[0] >= 0.60:
         print(f"\nClosest is #{top[2]} {top[3]} at {top[0]*100:.0f}%, but only on GENERIC value "
               "themes — a loose 'both value decks' overlap, not a duplicate identity.")
@@ -6031,7 +6049,13 @@ def rationale_staleness(d, carddata=None):
     in_deck = {n for _q, n, _s, _c in cards}
     in_deck |= {n.split(" // ")[0] for n in list(in_deck)}
     stale_cards, stale_figures = [], []
-    for header in ("tier",):
+    # `#: archetype:` is scanned alongside `#: tier:` because it is equally a CLAIM
+    # about the current deck — "these cards push your life total up" is false once those
+    # cards are cut, and the header is what a reader trusts first. (Found by this deck's
+    # own archetype text surviving three rounds of swaps that removed every card it
+    # named.) `#: notes:` stays out: it is a free-form build log where naming an absent
+    # card is correct.
+    for header in ("tier", "archetype"):
         prose = (meta or {}).get(header, "") or ""
         if not prose:
             continue
@@ -6050,7 +6074,22 @@ def rationale_staleness(d, carddata=None):
             # CASE-SENSITIVE: prose capitalizes a card citation, so this is what keeps
             # ordinary vocabulary out. A lowercase "counterspell"/"food"/"negate" in a
             # sentence is not a reference to the card of that name.
-            pos = masked.find(disp)
+            # Word-boundary match. A bare substring search reported the card
+            # *Deliberate* inside the word "Deliberately" — and card names are common
+            # enough English that this class of hit is frequent, not exotic.
+            pos = -1
+            start = 0
+            while True:
+                i = masked.find(disp, start)
+                if i < 0:
+                    break
+                before_ok = i == 0 or not (masked[i - 1].isalnum() or masked[i - 1] in "'-")
+                j = i + len(disp)
+                after_ok = j >= len(masked) or not (masked[j].isalnum() or masked[j] in "'-")
+                if before_ok and after_ok:
+                    pos = i
+                    break
+                start = i + 1
             if pos < 0:
                 continue
             if _cites_as_history(masked, pos, len(disp)):

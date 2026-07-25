@@ -908,3 +908,23 @@ class TestRationaleStaleness:
         d = self._deck(tmp_path, ["A — the package took interaction 1 to 4."])
         _cards, figs = deck.rationale_staleness(d)
         assert figs == []
+
+
+class TestRationaleWordBoundary:
+    """Card names are ordinary English often enough that a bare substring search
+    misfires — it reported the card *Deliberate* inside the word "Deliberately"."""
+
+    def _deck(self, tmp_path, header, text):
+        p = tmp_path / "d.txt"
+        p.write_text(f"#: {header}: {text}\n#: colors: R\n\nDeck\n1 Shock (M21) 159\n")
+        return {"id": "t", "name": "t", "path": str(p)}
+
+    def test_substring_inside_a_longer_word_is_not_a_citation(self, tmp_path):
+        d = self._deck(tmp_path, "archetype", "Deliberately runs no Ninjas.")
+        cards, _figs = deck.rationale_staleness(d)
+        assert cards == []
+
+    def test_archetype_header_is_scanned(self, tmp_path):
+        d = self._deck(tmp_path, "archetype", "Built around Lightning Bolt as the finisher.")
+        cards, _figs = deck.rationale_staleness(d)
+        assert "Lightning Bolt" in [c for c, _h in cards]

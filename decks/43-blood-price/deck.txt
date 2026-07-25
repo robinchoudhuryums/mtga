@@ -1,0 +1,110 @@
+#: name: Blood Price
+#: format: Standard
+#: colors: WB
+#: plan: control
+#: archetype: Orzhov (W/B) LIFE-AS-CURRENCY attrition. The premise: cards whose strong
+#: archetype: effect is bought with life are themselves the payoff, because the cost is
+#: archetype: refundable. Pay life freely for cards (Lunar Convocation's repeatable
+#: archetype: {1}{B} pay-2-draw, Phyrexian Arena, Visions of Villainy, Cruel Truths,
+#: archetype: Circle of Power, Decode Transmissions), grind them out with a deep removal
+#: archetype: suite, then hand the accumulated debt to the opponent with Mister Negative
+#: archetype: — exchanging totals refunds every point you spent and drops them to yours.
+#: archetype: TWO PLANS THAT WIN WITHOUT HIM, by design, because he is a single mythic:
+#: archetype: (1) TOKEN DRAIN — Bitterbloom Bearer, Lunar Convocation's Bats and the
+#: archetype: death-triggers (Vengeful Bloodwitch, Agents of HYDRA, Infestation Sage)
+#: archetype: build an evasive board while Bloodchief Ascension and Mai turn every
+#: archetype: exchange into life loss; (2) pure CARD-ADVANTAGE attrition — ten removal
+#: archetype: spells backed by six draw effects simply out-resources a fair deck.
+#: archetype: DISTINCTNESS vs 42 Darkforce Inversion, the other Mister Negative deck:
+#: archetype: 42 is a BLINK deck that re-triggers his ETB to convert a life gap into
+#: archetype: cards while keeping its own total high. This one never blinks, runs almost
+#: archetype: no ETB-value creatures, and deliberately drives its OWN total DOWN — the
+#: archetype: swap is a one-shot refund and stabiliser, not a repeatable draw engine.
+#: archetype: Opposite life postures, opposite creature bases, same finisher.
+#: tier: B — Orzhov life-as-currency attrition, one band BELOW the A metrics floor,
+#: tier: PROVISIONAL (unplayed brew). The floor reads A on interaction 13 (11 of it
+#: tier: instant-speed) plus card advantage 5 over a 2.37 curve, and unlike deck 42 that
+#: tier: card-advantage number is REAL — Cruel Truths, Circle of Power, Decode
+#: tier: Transmissions and Visions of Villainy each draw two, so this is an engine, not
+#: tier: a pile of cantrips. Held at B by two structural risks the floor cannot see:
+#: tier: 1. The deck lowers its OWN life total as a core mechanic while running ZERO
+#: tier:    protection, so it is spending the exact resource that keeps it alive. Against
+#: tier:    an aggro deck the pay-life draws are a liability, and the Mister Negative
+#: tier:    refund is SMALLEST in that matchup — the swap scales with the opponent's
+#: tier:    total, so it pays most against the control decks that were never racing you.
+#: tier: 2. The clock is slow. Three drain permanents and a few evasive bodies is a real
+#: tier:    plan B, but it wins on turn 12, not turn 6, which gives the life payments a
+#: tier:    long time to matter.
+#: tier: PATH TO A: cheap lifelink or a protection effect for the engine pieces, and a
+#: tier: faster drain finish so plan B closes before the life debt does.
+#: protect: Mister Negative; Lunar Convocation; Phyrexian Arena
+#: notes: HOW THE REFUND WORKS — exchanging totals only draws cards when YOUR life was
+#: notes: higher, which is not this deck's situation. Here the swap is the good half:
+#: notes: you are low, they are high, so you take their total and drop them to yours.
+#: notes: Zero cards, a huge swing, and every point spent on draw comes back at once.
+#: notes: RELIABILITY, stated honestly: one copy of a 7-drop is ~22% to be seen by turn
+#: notes: 7. That is WHY the two backup plans exist — the pay-life cards are individually
+#: notes: worth playing at full price, so a Negative-less game is a normal attrition deck
+#: notes: rather than a deck that killed itself. Do not add more life payment than the
+#: notes: backup plans can survive on their own.
+#: notes: The refund also scales with THEIR total, so it is largest against control and
+#: notes: smallest against the aggro decks that punish a low life total — Healer's Hawk,
+#: notes: Sephiroth's Intervention and the removal suite are the hedge for that matchup.
+#: notes: Craft targets: Mister Negative (M) only — everything else is owned.
+#: notes: Bloodchief Ascension was the first-draft drain win-con; it is a TLE
+#: notes: supplemental card and NOT Standard-legal, caught by `deck.py legal`.
+#: notes: Corroding Dragonstorm / Doom Reigns Supreme / Sanguine Syphoner replace it.
+
+Deck
+# Life into cards — the engine
+1 Lunar Convocation (BLB) 223
+1 Phyrexian Arena (FDN) 180
+1 Visions of Villainy (MSH) 120
+1 Cruel Truths (TDM) 76
+1 Decode Transmissions (EOE) 94
+1 Circle of Power (FIN) 92
+1 Obsessive Pursuit (TLA) 112
+1 Dissection Practice (SOS) 79
+
+# The refund + alternate win-cons
+1 Mister Negative (SPM) 135
+1 Corroding Dragonstorm (TLA) 96
+1 Mai, Scornful Striker (TLA) 109
+1 Doom Reigns Supreme (MSH) 95
+
+# Evasive / token drain — plan B
+1 Bitterbloom Bearer (ECL) 88
+1 Black Widow, Super Spy (MSH) 89
+1 Healer's Hawk (FDN) 142
+1 Vengeful Bloodwitch (FDN) 76
+1 Agents of HYDRA (MSH) 85
+1 Infestation Sage (FDN) 64
+1 Callous Inspector (TLA) 89
+1 Snarling Gorehound (MKM) 105
+1 Sanguine Syphoner (ECL) 118
+1 Dream Beavers (TMT) 62
+1 Starscape Cleric (BLB) 116
+
+# Removal
+1 Hero's Downfall (FDN) 175
+1 Harsh Annotation (SOS) 18
+1 Stroke of Midnight (FDN) 148
+1 Last Gasp (SOS) 86
+1 Dark Deed (MSH) 93
+1 Feed the Swarm (SOA) 29
+1 Sephiroth's Intervention (FIN) 116
+1 Hour of Defeat (MSH) 99
+1 Wander Off (SOS) 104
+1 Auntie's Sentence (ECL) 85
+1 Heartless Act (TLA) 103
+1 Erode (SOS) 15
+
+# Lands — 24, Orzhov
+1 Bleachbone Verge (DFT) 250
+1 Insomnia, Crown City (FIN) 282
+1 Scoured Barrens (M21) 250
+1 Misty Palms Oasis (TLA) 273
+1 Temple of Silence (FDN) 704
+1 Fountainport (BLB) 253
+9 Plains (MSH) 285
+10 Swamp (MSH) 287

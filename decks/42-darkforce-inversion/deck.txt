@@ -3,10 +3,11 @@
 #: colors: WB
 #: plan: control
 #: archetype: Orzhov (W/B) BLINK-VALUE control. The plan is a life-total DIFFERENTIAL
-#: archetype: turned into cards. Cheap value-ETB creatures are re-bought with flicker;
-#: archetype: life-per-ETB effects (Hinterland Sanctifier, Lifecreed Duo, Case of the
-#: archetype: Uneaten Feast) push your total up while extort and drain ETBs push theirs
-#: archetype: down. Mister Negative then exchanges totals — and because a blink is a
+#: archetype: turned into cards. Cheap value-ETB creatures are re-bought with flicker,
+#: archetype: which also digs (Eerie Gravestone, Red Room Recruit, A.I.M. Synthoids) and
+#: archetype: strips their hand (Deep-Cavern Bat, Virus Beetle, Corrupt Court Official);
+#: archetype: lifelink bodies and a deep removal suite keep your total high while theirs
+#: archetype: erodes. Mister Negative then exchanges totals — and because a blink is a
 #: archetype: RE-ENTRY, flickering him TWICE draws you the whole gap and puts the life
 #: archetype: totals back where they started (swap, draw the difference, swap back).
 #: archetype: Another Round is the one card that does it alone: at X=1 it blinks your
