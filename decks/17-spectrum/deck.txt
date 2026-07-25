@@ -1,6 +1,21 @@
 #: name: Spectrum
 #: format: Standard
-#: tier: C — 5-color goodstuff; bombs but inconsistent mana + thin interaction (2)
+#: tier: C — 5-color superhero goodstuff. The old rationale capped this on "thin
+#: tier: interaction (2)"; that figure was a classifier under-read and the live vector is
+#: tier: interaction 3 / card advantage 4 / protection 3, a B floor. The letter STAYS at
+#: tier: C anyway, because the cap here was never really the interaction count — it is
+#: tier: MANA and SPINE, the two things the floor cannot see:
+#: tier: 1. The manabase. `consistency 17` reads keepable 84%, land-drop 63% by turn 4,
+#: tier:    and a 3-source red splash — so Cosmic Spider-Man casts on curve 6% of the
+#: tier:    time, Avatar Aang 8%, Thanos 9%, and {B}{B}{B} Super-Skrull 1%. A deck whose
+#: tier:    marquee cards are single-digit percentages to be castable when they are
+#: tier:    supposed to be castable is capped regardless of how good those cards are.
+#: tier: 2. No spine. 20 central themes across a rainbow singleton pile is the textbook
+#: tier:    "thin themes / heavy variance" C, not a coherent engine with one weakness.
+#: tier: The bombs are real and this deck wins games off them — that is the point of the
+#: tier: build — but they win by drawing well, which is what a C grade describes.
+#: tier: PATH TO B: cut to 3–4 colors so the splashes are castable on curve, or add real
+#: tier: fixing; the interaction count is not what is holding it back.
 #: colors: WUBRG
 #: archetype: Five-color rainbow good-stuff / superheroes.
 #: notes: Five-color rainbow good-stuff / superheroes.

@@ -1,6 +1,18 @@
 #: name: Bloodbending
 #: format: Standard
-#: tier: C — Dimir mill; mill is a weak Bo1 ladder plan + thin interaction (2)
+#: tier: B — Dimir mill / graveyard-value control. RE-GRADED UP from C: the C rested on
+#: tier: "thin interaction (2)", and that 2 was a classifier under-read, not the deck —
+#: tier: the bounce and edict patterns were broken, so the live count is interaction 4
+#: tier: against card advantage 6, which is the B floor rather than the near-zero
+#: tier: interaction C is meant to cap. The card advantage is a real engine, not a pile
+#: tier: of cantrips (Portent of Calamity, Inspiration from Beyond, the draw-two
+#: tier: waterbenders), and it feeds the graveyard payoffs directly, so the mill plan and
+#: tier: the value plan are the same cards.
+#: tier: HELD AT B by one real gap, per the rubric: the interaction is 4 pieces and only
+#: tier: ONE of them is instant-speed, so a resolved threat is usually a resolved threat.
+#: tier: Mill also remains a slow Bo1 ladder plan — Consuming Aberration and Uchbenbak
+#: tier: are the actual clock, and mill is what makes them big. PATH TO A: two more
+#: tier: instant-speed answers, which also fixes the "all sorcery-speed" profile flag.
 #: colors: UB
 #: archetype: Dimir (U/B) mill / card-advantage control — Hama + waterbend, graveyard payoffs.
 #: notes: Dimir (U/B) mill / card-advantage control, built around Hama, the Bloodbender

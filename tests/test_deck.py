@@ -109,6 +109,70 @@ class TestClassifyRoles:
             "When this creature enters, put X +1/+1 counters on him. Then draw half X "
             "cards, rounded down.")
 
+    # --- Second under-count sweep. Driven by the roster-wide coverage audit itself: the
+    # `role_coverage_flags` lists named 26 distinct under-read and 98 unclassified cards,
+    # and reading their oracle text turned up these seven templatings. Each scored ZERO
+    # matching roles before, so the tier floor graded 34 of 58 decks on a low number.
+    BOUNCE = [
+        # THE BIG ONE. The pattern read `(?:owner|their) hand`, which requires the literal
+        # text "owner hand" — but MTG writes "to its OWNER'S hand". So every unconditional
+        # bounce spell in the collection scored nothing, for the whole life of the pattern.
+        "Return target nonland permanent to its owner's hand. If you controlled that "
+        "permanent, draw a card.",
+        "Return target creature an opponent controls to its owner's hand.",
+        "Return target creature to its owner's hand.",
+        "Return up to one target artifact or enchantment to its owner's hand.",
+        "Return target permanent to their owner's hand.",
+    ]
+    EDICTS = [
+        # Tribute to Hunger / Cornered by Black Mages. An edict answers hexproof, and it
+        # sat in the broad audit cue while missing from the role list entirely.
+        "Target opponent sacrifices a creature of their choice.",
+        "Each player sacrifices a creature of their choice.",
+        "Each opponent sacrifices a permanent of their choice.",
+    ]
+
+    def test_bounce_to_owners_hand_is_removal(self):
+        for text in self.BOUNCE:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_edict_is_removal(self):
+        for text in self.EDICTS:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_x_damage_is_removal(self):
+        # Hell to Pay. The fixed-damage patterns all require a DIGIT.
+        assert "Removal (spot)" in deck.classify_roles(
+            "Hell to Pay deals X damage to target creature. Create a number of tapped "
+            "Treasure tokens equal to the amount of excess damage dealt to that creature.")
+
+    def test_aura_library_tuck_is_removal(self):
+        # Watery Grasp — the Aura form of the tuck already covered as an activated ability.
+        assert "Removal (spot)" in deck.classify_roles(
+            "Enchant creature\nWaterbend {5}: Enchanted creature's owner shuffles it into "
+            "their library.")
+
+    def test_mass_edict_is_a_sweeper(self):
+        # Bringer of the Last Gift is a wrath by another name.
+        assert "Sweeper" in deck.classify_roles(
+            "When this creature enters, if you cast it, each player sacrifices all other "
+            "creatures they control.")
+
+    def test_repeatable_upkeep_draw_is_card_advantage(self):
+        # Phyrexian Arena. A REPEATABLE single draw accrues advantage — the cantrip
+        # exclusion is about ONE-SHOT single draws, and reading Arena as a cantrip is why
+        # deck 42's card-advantage line said 1.
+        assert "Card advantage" in deck.classify_roles(
+            "At the beginning of your upkeep, you draw a card and you lose 1 life.")
+        # ...and a one-shot single draw is still not advantage.
+        assert "Card advantage" not in deck.classify_roles(
+            "When this creature enters, draw a card.")
+
+    def test_fixed_damage_to_each_opponent_is_burn(self):
+        assert "Burn / drain" in deck.classify_roles(
+            "At the beginning of each end step, if you put a counter on a creature this "
+            "turn, this enchantment deals 2 damage to each opponent.")
+
 
 class TestCoverageNetIsSuperset:
     """The audit net must see everything the precise classifier can, or a phrasing is
@@ -122,6 +186,32 @@ class TestCoverageNetIsSuperset:
     def test_card_advantage_net_covers_every_precise_pattern(self):
         for pat in deck._ROLE_COMPILED_MAP["Card advantage"]:
             assert pat in deck._CA_CUE_PATS, pat.pattern
+
+    def test_reminder_text_does_not_fake_a_missed_role(self):
+        """Ward's reminder text ends '…counter it unless that player pays {2}.', which
+        tripped the Counter cue — so every warded creature was reported as a missed
+        interaction piece. The list exists to be read card-by-card, so a false cue is the
+        one thing that degrades it."""
+        warded = {"name": "Warded Body", "type": "Creature — Human",
+                  "text": ("Ward {2} (Whenever this creature becomes the target of a "
+                           "spell or ability an opponent controls, counter it unless "
+                           "that player pays {2}.)"),
+                  "colors": "W", "power": "2", "toughness": "2"}
+        carddata = {"warded body": warded}
+        cards = [(1, "Warded Body", None, None)]
+        _unclassified, under_read, _no_data = deck.role_coverage_flags(cards, carddata)
+        assert under_read == [], under_read
+
+    def test_reminder_stripping_does_not_hide_a_real_miss(self):
+        """The strip only applies to the audit net, and the net includes the precise
+        patterns — so a genuine under-read outside reminder text is still reported."""
+        carddata = {"odd answer": {
+            "name": "Odd Answer", "type": "Instant",
+            "text": "Target player sacrifices a nonland permanent of their choice.",
+            "colors": "B", "power": "", "toughness": ""}}
+        _unclassified, under_read, _no_data = deck.role_coverage_flags(
+            [(1, "Odd Answer", None, None)], carddata)
+        assert [n for n, _axis in under_read] == ["Odd Answer"]
 
 
 class TestRotationOverride:

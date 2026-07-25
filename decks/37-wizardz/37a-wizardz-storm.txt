@@ -6,7 +6,8 @@
 #: tier: pile (Phyrexian Arena / Super Intelligence / cantrips), turn "draw your second card"
 #: tier: into board (Erudite Wizard, Clinquant Skymage, Construct a Cosmic Cube), and blow
 #: tier: out with copiers (Thousand-Year Storm, Kitsa, Taigam) on a high-value spell. Floor
-#: tier: is B-to-A on card advantage + interaction; held at B by singleton variance and the
+#: tier: is A on card advantage 5 + interaction 9 (up from a mis-read 6); held at B by the
+#: tier: ZERO protection against 5 `#: protect:` build-arounds, singleton variance, and the
 #: tier: copy-payoff caveat below (copies don't fire the pings). A distinct build to compare.
 #: based-on: deck.txt
 #: archetype: Grixis (U-primary) Wizard VALUE/STORM. The base 37 races with ping triggers; this

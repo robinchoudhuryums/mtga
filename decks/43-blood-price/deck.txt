@@ -23,7 +23,7 @@
 #: archetype: Opposite life postures, opposite creature bases, same finisher.
 #: tier: B — Orzhov life-as-currency attrition, one band BELOW the A metrics floor,
 #: tier: PROVISIONAL (unplayed brew). The floor reads A on interaction 13 (11 of it
-#: tier: instant-speed) plus card advantage 5 over a 2.37 curve, and unlike deck 42 that
+#: tier: instant-speed) plus card advantage 6 over a 2.37 curve, and unlike deck 42 that
 #: tier: card-advantage number is REAL — Cruel Truths, Circle of Power, Decode
 #: tier: Transmissions and Visions of Villainy each draw two, so this is an engine, not
 #: tier: a pile of cantrips. Held at B by two structural risks the floor cannot see:

@@ -19,13 +19,15 @@
 #: archetype: runs no Ninjas and no sneak/clock package; the creature base is chosen for
 #: archetype: ETB text, not evasion.
 #: tier: B — Orzhov blink-value control, one band BELOW the metrics floor of A, and
-#: tier: deliberately so. The floor reads A on interaction 14 (12 of it instant-speed)
+#: tier: deliberately so. The floor reads A on interaction 14 (11 of it instant-speed)
 #: tier: over a 2.42 curve, and the interaction really is that deep — but the floor is
 #: tier: blind to two things this deck genuinely lacks.
-#: tier: 1. CARD ADVANTAGE reads 1, and while that UNDER-states the deck (Phyrexian
-#: tier:    Arena, Enduring Innocence, Tolls of War's Clue, Eerie Gravestone's ETB draw
-#: tier:    and Red Room Recruit's connive all draw ONE card at a
-#: tier:    time, which is deliberately not counted), a pile of one-card draws is not
+#: tier: 1. CARD ADVANTAGE reads 2 (Phyrexian Arena now counts — a repeatable upkeep
+#: tier:    draw accrues advantage, which the one-shot cantrip rule was wrongly
+#: tier:    suppressing). The rest still UNDER-states the deck — Enduring Innocence,
+#: tier:    Tolls of War's Clue, Eerie Gravestone's ETB draw and Red Room Recruit's
+#: tier:    connive each draw ONE card at a time, deliberately not counted — but a
+#: tier:    pile of one-card draws is not
 #: tier:    the same as a real engine. The deck out-values rather than out-draws until
 #: tier:    Mister Negative lands.
 #: tier: 2. RELIABILITY. The marquee payoff is a SINGLE copy of a 7-drop: ~22% to have

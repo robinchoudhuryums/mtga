@@ -1,7 +1,7 @@
 #: name: Gastromancer — 4-Color Artifact Goodstuff
 #: format: Standard
 #: tier: B — Gastromancer 4-color artifact goodstuff; colorless bombs + heavy fixing. The
-#: tier: metrics floor reads A on interaction 9 (plus an under-read Season of Loss), and
+#: tier: metrics floor reads A on interaction 10 (Season of Loss's edict mode is now counted), and
 #: tier: the deck is fully BUILT with 0 uncastable — but it is deliberately held one band
 #: tier: BELOW the floor, because the floor is blind to the manabase: `deck.py mana 21a`
 #: tier: shows W 3 / U 1 / B 5 / R 3 / G 6 across 24 lands, i.e. a 4-color deck resting on

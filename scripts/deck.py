@@ -838,7 +838,25 @@ _ROLE_PATTERNS = {
         # controls gets -X/-X" — Cloud of Darkness, Wick's Patrol).
         r"target creature (?:an opponent controls )?gets -[0-9x]",
         r"creature an opponent controls gets -[0-9x]",
-        r"return target creature.{0,40}?(?:owner|their) hand",
+        # BOUNCE. Note `owner'?s?` — MTG templates this as "to its OWNER'S hand", and the
+        # original pattern spelled the alternation `(?:owner|their) hand`, which requires
+        # the literal text "owner hand". So it matched NOTHING: every unconditional bounce
+        # spell in the collection (Boomerang Basics, Into the Flood Maw, ...) scored zero
+        # roles for the entire life of the pattern, while the broad audit cue DID fire —
+        # which is why bounce dominated the roster-wide "possible under-count" list. The
+        # type is a full `_PERM_TYPE_LIST` so "nonland permanent" is covered alongside
+        # "creature", and `[^.]` keeps the span inside one sentence.
+        rf"return (?:up to \w+ )?target (?:[a-z-]+ ){{0,2}}?{_PERM_TYPE_LIST}"
+        rf"[^.]{{0,60}}?(?:owner'?s?|their) hand",
+        # EDICT. Sacrifice-a-creature-of-their-choice is removal (it answers hexproof),
+        # and it sat in the broad audit cue while missing from this list entirely.
+        r"(?:target|each) (?:player|opponent) sacrifices a creature",
+        r"(?:target|each) (?:player|opponent) sacrifices a permanent",
+        # X-damage: the fixed patterns above require a DIGIT, so "deals X damage to target
+        # creature" scored nothing (Hell to Pay).
+        r"deals? x damage to (?:target|any target|up to \w+ target)",
+        # Tuck via an Aura — same class as the activated-ability tuck already covered.
+        r"enchanted creature'?s owner shuffles it into their library",
         r"enchanted creature can't attack or block",
         # Removal by TUCKING a creature into a library. It leaves the battlefield, so
         # it is a real answer, but no destroy/exile/damage/-N-N pattern saw it:
@@ -857,7 +875,10 @@ _ROLE_PATTERNS = {
                 # scalable / conditional wipes the fixed patterns above miss
                 r"creature with mana value.{0,20}?or less.{0,40}?destroy",
                 r"destroy those creatures",
-                r"deals? \d+ damage to each (?:other )?creature"],
+                r"deals? \d+ damage to each (?:other )?creature",
+                # "each player sacrifices all other creatures they control" (Bringer of
+                # the Last Gift) is a wrath by another name.
+                r"each player sacrifices all (?:other )?creatures"],
     # "counter up to one target spell unless…" (Repulsive Mutation) matched neither
     # this pattern NOR the broad coverage net below, so it scored zero roles AND was
     # never flagged as an under-read — the worst case, a miss invisible to the very
@@ -869,6 +890,11 @@ _ROLE_PATTERNS = {
     # missed-by-both hole as Repulsive Mutation, on the card-advantage axis.
     "Card advantage": [r"draws? (?:two|three|four|five|half x|x|that many) cards?",
                        r"draw a card for each", r"draws? cards? equal to",
+                       # A REPEATABLE single draw accrues advantage; the cantrip rule is
+                       # about ONE-SHOT single draws. Phyrexian Arena reads as a cantrip
+                       # to a pattern that only counts how many cards one resolution
+                       # draws, which is why deck 42's card-advantage line said 1.
+                       r"at the beginning of (?:your|each|the) upkeep[^.]{0,60}?draws? a card",
                        r"\binvestigate\b"],
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
                       r"\{t\}: add \{",
@@ -898,6 +924,7 @@ _ROLE_PATTERNS = {
     "Burn / drain": [
         r"deals damage equal to .{0,60}?(?:any target|a player|target player|each opponent|that player)",
         r"(?:each opponent|target opponent|any opponent|that player|each player) loses \d",
+        r"deals? \d+ damage to each opponent",
         r"loses life equal to",
     ],
     "Lifegain": [r"\blifelink\b", r"you gain \d+ life", r"gain \d+ life"],
@@ -1223,6 +1250,9 @@ _CA_CUES = re.compile(
 # Unioning the precise interaction/card-advantage patterns in makes that structurally
 # impossible: anything the classifier CAN see, the net also sees, and the flag still
 # only fires when the classifier tagged no matching role.
+# Parenthetical REMINDER text. Non-nested is enough — MTG never nests reminders.
+_REMINDER_RE = re.compile(r"\([^()]*\)")
+
 _INT_CUE_PATS = [_INT_CUES] + [p for lbl in sorted(_INTERACTION_ROLES)
                                for p in _ROLE_COMPILED_MAP[lbl]]
 _CA_CUE_PATS = [_CA_CUES] + _ROLE_COMPILED_MAP["Card advantage"]
@@ -1254,8 +1284,15 @@ def role_coverage_flags(cards, carddata):
         text = cd.get("text") or ""
         roles = set(classify_roles(text))
         # Match the cues against the SAME normalized form classify_roles uses, and
-        # against the superset net, so the audit can't be blind where the classifier is.
-        t = _norm_role_text(text)
+        # against the superset net, so the audit can't be blind where the classifier is
+        # — minus REMINDER TEXT. Ward's reminder ("…counter it unless that player pays
+        # {2}.") tripped the Counter cue, so every warded creature in the collection was
+        # reported as a missed interaction piece: a false cue, which is the one thing
+        # that degrades this list (it exists to be read card-by-card, so noise in it is
+        # expensive). Stripping reminders can't create a blind spot, because the net
+        # includes the precise patterns and the flag only fires when NO role was tagged
+        # — anything a role pattern sees in reminder text is already a tagged role.
+        t = _REMINDER_RE.sub(" ", _norm_role_text(text))
         missed = []
         if any(p.search(t) for p in _INT_CUE_PATS) and not (roles & _INTERACTION_ROLES):
             missed.append("interaction")
