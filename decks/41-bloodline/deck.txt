@@ -8,10 +8,15 @@
 #: archetype: Bloodwitch), a deep mono-B removal suite, and Bringer of the Last Gift as a
 #: archetype: reanimator top-end. NOT the Orzhov (W/B) lifegain-drain of deck 20 — mono-B,
 #: archetype: tribe-first, so its ✦Vampire spine matches nothing else in the roster.
-#: tier: B — mono-B Vampire midrange (PROVISIONAL — confirm per the rubric). Metrics floor is A
-#: tier: (interaction 12 + card-adv 7 + an aggro clock), but held to B by the one clear gap: a
-#: tier: singleton good-stuff pile with NO Vampire lord/anthem and no card-advantage engine
-#: tier: beyond value creatures — a tune would craft a lord + a draw engine to reach the floor.
+#: tier: A — mono-B Vampire aggro-midrange. Confirmed against the rubric (was a PROVISIONAL
+#: tier: B): interaction 12 + card advantage 7 is the strongest measured vector on the
+#: tier: roster, the deck is fully BUILT with 0 uncastable, and mono-black gives it the
+#: tier: cleanest manabase here — the consistency problem that caps the multicolor decks
+#: tier: (21a at U=1 source, 35a at 22 lands over five colors) simply doesn't exist. The
+#: tier: earlier B cited 'no card-advantage engine beyond value creatures', but the measured
+#: tier: card advantage is 7; the real remaining gap is the missing Vampire lord/anthem, and
+#: tier: A tolerates exactly one clear weakness. Held from S by singleton variance and an
+#: tier: aggro clock of only 4/7 — it grinds rather than closing fast.
 #: protect: Vampire Nighthawk; Bloodthirsty Conqueror; Stromkirk Bloodthief
 #: notes: Built from OWNED mono-B Vampires (the two W/B ones — Elenda, Sanguine Savior — were
 #: notes: excluded to keep the color identity pure mono-B for maximum distinctness). A `/draft-deck`
