@@ -79,7 +79,8 @@ def _pattern_groups():
         out += [(f"context:{label}", p, "norm") for p in pats]
     out += [("tag_synergies._TRIBAL_PAYOFF_RES", p, "raw")
             for p in tag_synergies._TRIBAL_PAYOFF_RES]
-    for name in ("_HEIST_CAST_LOOSE", "_HEIST_CAST_STRICT", "_HEIST_OPP_ZONE"):
+    for name in ("_HEIST_CAST_LOOSE", "_HEIST_CAST_STRICT", "_HEIST_OPP_ZONE",
+                 "_EXILE_CAST_ENABLE", "_EXILE_CAST_PAYOFF"):
         out.append((f"tag_synergies.{name}", getattr(tag_synergies, name), "norm"))
     return out
 

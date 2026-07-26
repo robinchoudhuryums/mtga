@@ -212,17 +212,29 @@ def keyword_frequencies(path=None):
     path = path or MANA_CSV
     if path in _freq_cache:
         return _freq_cache[path]
-    freq, n = {}, 0
+    # Count DISTINCT CARDS, which for a DFC means collapsing its two rows. card-mana.csv
+    # keys a double-faced card BOTH ways — under the front name and under the full
+    # `Front // Back` name — so a tally by row reads a card-UNIQUE keyword on a DFC as
+    # frequency 2 and it escapes the `<= _NOISE_MAX_CARDS` (1) noise filter. That is
+    # exactly how "Goblin Formula" (on Norman Osborn alone) reached the check_keywords
+    # radar as an unindexed mechanic: the docstring already said "distinct cards", the
+    # implementation counted rows, and only a DFC could show the difference.
+    freq, seen, n = {}, {}, 0
     if os.path.exists(path):
         with open(path, newline="", encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
-                if not (r.get("Card Name") or "").strip():
+                name = (r.get("Card Name") or "").strip()
+                if not name:
                     continue
-                n += 1
+                card = name.split(" // ")[0].lower()
+                if card not in seen:
+                    seen[card] = True
+                    n += 1
                 for k in (r.get("Keywords") or "").split(";"):
                     k = k.strip().lower()
                     if k:
-                        freq[k] = freq.get(k, 0) + 1
+                        freq.setdefault(k, set()).add(card)
+    freq = {k: len(v) for k, v in freq.items()}
     _freq_cache[path] = (freq, n)
     return freq, n
 
@@ -304,6 +316,10 @@ MECHANIC_RULES = [
         r"|\byou [^.]{0,60}?\band lose (?:\d+|x) life"
         r"|whenever you lose life|if you(?:'ve| have) lost life|life you(?:'ve| have) lost",
         x) is not None),
+    # EXILE CAST — the card is cast FROM EXILE (warp / plot / foretell / Adventure), or it
+    # pays off casting from outside your hand. See `is_exile_cast_text` for why the
+    # graveyard half is deliberately excluded.
+    ("exile cast", lambda t, x: is_exile_cast_text(t, x)),
     # HEIST — cast an opponent's card yourself (distinct from `theft` = gain control).
     # See `is_heist_text` for the scoping
     # rationale and why the match needs a proximity window rather than one regex.
@@ -475,6 +491,45 @@ _HEIST_OPP_ZONE = re.compile(
     r"|top of (?:their|that player's|target player's|target opponent's|an opponent's) library"
     r"|(?:their|that player's|target player's) (?:library|hand|graveyard)"
     r"|put into an opponent's graveyard|defending player", re.I)
+
+
+# EXILE CAST — the card is cast from EXILE rather than from hand, or it PAYS OFF doing so.
+# 266 pool cards (1.68%), in the same band as `pay life` (2.2%).
+#
+# The gap this closes: warp / plot / foretell / Adventure all put the card in EXILE and cast
+# it from there on a later turn, but the keyword map sent them to `tempo` / `cost-reduction`
+# — which describe the DISCOUNT and say nothing about the ZONE. So the axis three decks are
+# built on (24 Eternal Flame, 45 Exile Dividend, 45a) had no tag, and three cards in a row
+# failed to surface for them: Spider-Verse ("whenever you cast a spell from anywhere other
+# than your hand, copy it") returned NO fits at all because its only tag was `Spider`;
+# Virtue of Loyalty pointed at counters decks instead of 45, whose payoffs its Adventure
+# half would trigger; and Norman Osborn read as a generic graveyard card.
+#
+# ENABLER and PAYOFF share one tag, the way `lifegain` tags both the card that gains life
+# and the card that merely cares — a deck wants both halves and the idf model wants them on
+# the same axis.
+#
+# SCOPED TO EXILE. The graveyard half (flashback / escape / disturb / unearth / mayhem …)
+# is deliberately NOT included: the keyword map already routes those to `recursion` +
+# `graveyard`, so they are covered, and folding them in would take the theme to 613 cards
+# (3.86%) — past the point where it still identifies an archetype. `impulse` likewise stays
+# separate: that tags exiling from your own library to PLAY the exiled card (Light Up the
+# Stage), which is a different action from the card itself being cast out of exile.
+_EXILE_CAST_ENABLE = re.compile(r"\bWarp\b|\bPlot\b|\bForetell\b", re.I)
+_EXILE_CAST_PAYOFF = re.compile(
+    r"whenever you cast[^.]{0,80}?from (?:exile|your graveyard|anywhere other than your hand)"
+    r"|spells? you cast from (?:exile|your graveyard)[^.]{0,40}?cost"
+    r"|permanent[^.]{0,40}?enters from exile"
+    r"|cast a spell from anywhere other than your hand", re.I)
+
+
+def is_exile_cast_text(type_line, x):
+    """True when the card is cast FROM EXILE, or rewards casting from outside your hand."""
+    if "adventure" in (type_line or "").lower():
+        return True          # the Adventure half exiles, then you cast the creature from exile
+    if not x:
+        return False
+    return bool(_EXILE_CAST_ENABLE.search(x) or _EXILE_CAST_PAYOFF.search(x))
 
 
 def is_heist_text(x):
