@@ -304,6 +304,10 @@ MECHANIC_RULES = [
         r"|\byou [^.]{0,60}?\band lose (?:\d+|x) life"
         r"|whenever you lose life|if you(?:'ve| have) lost life|life you(?:'ve| have) lost",
         x) is not None),
+    # HEIST — cast an opponent's card yourself (distinct from `theft` = gain control).
+    # See `is_heist_text` for the scoping
+    # rationale and why the match needs a proximity window rather than one regex.
+    ("heist", lambda t, x: is_heist_text(x)),
     # `draw cards equal to ...` is the one phrase where this model and deck.py's
     # `classify_roles` disagreed: the role classifier already read it as Card advantage,
     # the tag model did not, so The Ten Rings ("draw cards equal to the difference") sat
@@ -420,6 +424,68 @@ _TRIBAL_PAYOFF_RES = [
     re.compile(r"\bother ([A-Z][a-z]+)s?\b"),
     re.compile(r"\b([A-Z][a-z]+) creatures you control\b"),
 ]
+
+# HEIST — casting cards you don't own. A whole archetype (exile an opponent's card, then
+# cast or play it yourself) had NO tag: Dream Harvest, Outrageous Robbery, Kotis, Laughing
+# Jasper Flint and Rakdos, the Muscle carried a BLANK or near-blank Synergies cell, so the
+# spine of a heist deck was invisible to `suggest` / `suggest-homes` / `cuts`. 81 pool cards
+# (0.51%), which reads as maximally SPECIFIC to the idf model — correct for a build-around,
+# and well clear of the 4-card floor that got a `clone` tag rejected as not-a-theme.
+#
+# NAMED `heist`, NOT `theft`, because **`theft` was already taken** — see the "gain control
+# of" rule in MECHANIC_RULES, which covers stealing a permanent already on the battlefield
+# (Act of Treason, Agent of Treachery, Mind Control). Reusing the name silently UNIONED the
+# two: 93 gain-control cards merged into this theme, taking it from 81 cards to 174 and
+# destroying exactly the specificity that makes an idf theme useful — while `check_all`
+# stayed green, because a tag collision breaks no invariant. The two effects are
+# mechanically different and a deck built on one is not automatically helped by the other,
+# so they stay separate tags. Check MECHANIC_RULES for the name before adding a theme.
+#
+# Two-part match, because the cast clause and the opponent's zone usually sit in DIFFERENT
+# SENTENCES ("…exiles the top card of their library. You may cast it"), so a same-sentence
+# test structurally cannot see the most common templating. The loose form therefore gets a
+# BACKWARD PROXIMITY window, the technique deck.py's rationale audit already uses. Both
+# halves are required so the large self-exile families — impulse draw ("exile the top card
+# of YOUR library, you may play it"), foretell, adventure — stay out.
+_HEIST_WINDOW = 240
+_HEIST_CAST_LOOSE = re.compile(
+    r"you may (?:\w+ ){0,3}?\b(?:cast|play)\b "
+    r"(?:it|that|those|them|the exiled|spells?|cards?|up to \w+|any number of)", re.I)
+_HEIST_CAST_STRICT = re.compile(
+    r"you may (?:\w+ ){0,3}?\b(?:cast|play)\b[^.]{0,90}?exiled"
+    # \b is load-bearing: without it the `play` inside "each PLAYer … from their graveyard"
+    # matched 13 graveyard-HATE cards (Relic of Progenitus, Endurance, Gaea's Blessing) —
+    # this project's signature bug, a pattern firing on text nobody meant it to read.
+    r"|\b(?:cast|play)\b[^.]{0,70}?from (?:\w+ ){0,2}?(?:opponent|player|their)(?:'s)? graveyard"
+    r"|from among (?:them|those cards|cards exiled|the exiled cards)[^.]{0,60}?without paying"
+    # reanimating out of THEIR graveyard is theft too (Scion of Darkness, Zareth San)
+    r"|(?:card|permanent)[^.]{0,60}?from that player's graveyard onto the battlefield under your control"
+    r"|exiled with (?:it|\w+)[^.]{0,60}?onto the battlefield under your control", re.I)
+_HEIST_OPP_ZONE = re.compile(
+    r"opponent(?:s)?(?:'s)? (?:library|hand|graveyard)"
+    # The opponent must be the SUBJECT of the exile ("each opponent chooses a creature they
+    # control and exiles it"). Commas are excluded from the gap because a comma means a new
+    # clause and the subject has changed: Fireglass Mentor's "if an opponent lost life this
+    # turn, exile the top two cards of YOUR library" is self-impulse, and a gap that crossed
+    # the comma read it as a heist.
+    r"|opponent(?:s)? [^.,]{0,45}?\b(?:exiles?|mills?|reveals?)\b"
+    # both word orders: "the top X CARDS OF target opponent's library" (Black Cat) and
+    # "cards … from THE TOP OF target player's library" (Rakdos, the Muscle).
+    r"|top (?:\w+ |\{?[Xx]\}? )?cards? of (?:the )?(?:their|that|target|an|each) ?(?:player's|opponent's)? ?library"
+    r"|top of (?:their|that player's|target player's|target opponent's|an opponent's) library"
+    r"|(?:their|that player's|target player's) (?:library|hand|graveyard)"
+    r"|put into an opponent's graveyard|defending player", re.I)
+
+
+def is_heist_text(x):
+    """True when the card lets YOU cast/play a card out of an OPPONENT's zone."""
+    if not x:
+        return False
+    if _HEIST_CAST_STRICT.search(x) and _HEIST_OPP_ZONE.search(x):
+        return True
+    return any(_HEIST_OPP_ZONE.search(x[max(0, m.start() - _HEIST_WINDOW):m.start()])
+               for m in _HEIST_CAST_LOOSE.finditer(x))
+
 
 # Card types that make useful tags on their own.
 TYPE_TAGS = ["Planeswalker", "Battle", "Saga", "Vehicle", "Equipment"]

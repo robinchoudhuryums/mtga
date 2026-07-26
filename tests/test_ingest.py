@@ -69,6 +69,105 @@ class TestTagsFor:
     def test_removal_from_text(self):
         assert "removal" in ts.tags_for({"Type": "Instant", "Card Text": "Destroy target creature."}, [])
 
+
+class TestHeistTheme:
+    """`heist` = you cast a card out of an OPPONENT's zone.
+
+    Distinct from the pre-existing `theft` tag, which means "gain control of" — stealing
+    a permanent already on the battlefield. Two different mechanics; a deck built on one
+    is not automatically helped by the other, so they stay separate tags.
+
+    The scoping is the whole difficulty: the huge self-exile families (impulse draw,
+    foretell, adventure) use nearly identical wording, and the cast clause usually sits
+    in a DIFFERENT SENTENCE from the zone it came out of.
+    """
+
+    def _t(self, text):
+        return ts.is_heist_text(text.lower())
+
+    def test_same_sentence_form(self):
+        assert self._t("Target opponent exiles the top four cards of their library. "
+                       "You may cast those cards for as long as they remain exiled.")
+
+    def test_cross_sentence_form(self):
+        # The common templating: the exile and the permission are separate sentences,
+        # which a single same-sentence regex structurally cannot connect.
+        assert self._t("Whenever this creature deals combat damage to a player, exile "
+                       "the top card of their library. You may play it this turn.")
+
+    def test_cast_straight_from_their_graveyard(self):
+        assert self._t("Cast target nonland card from an opponent's graveyard without "
+                       "paying its mana cost.")
+        assert self._t("Each opponent mills three cards, then you may cast a spell from "
+                       "each opponent's graveyard without paying its mana cost.")
+
+    def test_reanimating_their_creature_is_heist(self):
+        assert self._t("Whenever this creature deals combat damage to a player, you may "
+                       "put target creature card from that player's graveyard onto the "
+                       "battlefield under your control.")
+
+    def test_impulse_draw_is_not_heist(self):
+        # Exiling from YOUR OWN library and playing it is the single biggest false-positive
+        # family; the opponent-zone half of the match is what excludes it.
+        assert not self._t("Exile the top two cards of your library. Until the end of your "
+                           "next turn, you may play those cards.")
+
+    def test_graveyard_hate_is_not_heist(self):
+        # Regression: `(?:cast|play)` without \b matches the `play` inside "each PLAYer",
+        # which tagged 13 graveyard-hate cards as heists.
+        assert not self._t("Each player exiles a card from their graveyard.")
+        assert not self._t("Each player shuffles up to three target cards from their "
+                           "graveyard into their library.")
+
+    def test_each_opponent_phrasing_matches(self):
+        # Regression: the alternation `(?:an?|each|that )?` carried a trailing space on
+        # `that ` but not on `each`, so "from EACH opponent's graveyard" never matched.
+        assert self._t("You may cast a spell from each opponent's graveyard.")
+        assert self._t("You may cast a spell from an opponent's graveyard.")
+        assert self._t("You may cast a spell from that player's graveyard.")
+
+    def test_from_among_those_cards(self):
+        # Laughing Jasper Flint — a REPEATABLE heist engine that read as `Lizard; Rogue`
+        # only, because the permission is "cast spells from among those cards" rather than
+        # the "cast it/that" the first draft keyed on.
+        assert self._t("At the beginning of your upkeep, exile the top X cards of target "
+                       "opponent's library, where X is the number of outlaws you control. "
+                       "Until end of turn, you may cast spells from among those cards.")
+
+    def test_top_of_their_library_word_order(self):
+        # Rakdos, the Muscle — "cards … from THE TOP OF target player's library" inverts
+        # the "top X CARDS OF … library" order the zone pattern assumed, and says "target
+        # player's" where the pattern only listed "that player's".
+        assert self._t("Whenever you sacrifice another creature, exile cards equal to its "
+                       "mana value from the top of target player's library. Until your "
+                       "next end step, you may play those cards.")
+
+    def test_opponent_must_own_the_exiled_zone(self):
+        # Fireglass Mentor: the opponent appears only in a CONDITION, and the exile is from
+        # YOUR library. A gap that crossed the comma read this as a heist.
+        assert not self._t("At the beginning of your second main phase, if an opponent lost "
+                           "life this turn, exile the top two cards of your library. Choose "
+                           "one of them. Until end of turn, you may play that card.")
+        # …while the opponent as the actual SUBJECT of the exile still matches.
+        assert self._t("Each opponent chooses a creature they control and exiles it. Then "
+                       "put a creature card exiled with it onto the battlefield under your "
+                       "control.")
+
+    def test_tag_reaches_tags_for(self):
+        tags = ts.tags_for({"Type": "Sorcery", "Card Text":
+                            "Target opponent exiles the top X cards of their library face "
+                            "down. You may look at and play those cards for as long as "
+                            "they remain exiled."}, [])
+        assert "heist" in tags
+
+    def test_does_not_collide_with_gain_control_theft(self):
+        # `theft` (gain control of a permanent) and `heist` (cast their card) must stay
+        # separate: a naming collision silently merged 93 gain-control cards into the
+        # new theme, doubling its size and destroying its specificity.
+        gain = ts.tags_for({"Type": "Sorcery", "Card Text":
+                            "Gain control of target creature until end of turn."}, [])
+        assert "theft" in gain and "heist" not in gain
+
     def test_food_theme(self):
         assert "food" in ts.tags_for({"Type": "Artifact — Food", "Card Text": "Create a Food token."}, [])
 

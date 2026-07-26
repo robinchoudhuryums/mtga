@@ -1018,7 +1018,7 @@ At the beginning of your upkeep, you lose 1 life and create a 1/1 blue and black
 Bitter Triumph,Instant,"As an additional cost to cast this spell, discard a card or pay 3 life.
 Destroy target creature or planeswalker.",B,removal,SOA,26,1
 "Black Widow, Super Spy",Legendary Creature — Human Spy Hero,"Menace
-Whenever Black Widow deals combat damage to a player, that player exiles cards from the top of their library until they exile a nonland card. You may put a +1/+1 counter on Black Widow. If you don't, you may cast the exiled nonland card until end of turn and mana of any type can be spent to cast that spell.",B,Human; Spy; Hero; counters; menace; evasion,MSH,89,1
+Whenever Black Widow deals combat damage to a player, that player exiles cards from the top of their library until they exile a nonland card. You may put a +1/+1 counter on Black Widow. If you don't, you may cast the exiled nonland card until end of turn and mana of any type can be spent to cast that spell.",B,Human; Spy; Hero; counters; menace; evasion; heist,MSH,89,1
 Black Mage's Rod,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +1/+0, has ""Whenever you cast a noncreature spell, this creature deals 1 damage to each opponent,"" and is a Wizard in addition to its other types.
 Equip {3}",B,Equipment; tokens; burn; etb; equipment; pump; job select; equip; noncombat damage,FIN,90,1
@@ -1046,7 +1046,7 @@ Menace (This creature can't be blocked except by two or more creatures.)
 As long as this creature has a counter on it, it can attack as though it didn't have defender.
 {5}{B}: Put two +1/+1 counters on this creature.",B,Demon; Wall; counters; menace; evasion; defender; defense,FIN,97,1
 Doom Reigns Supreme,Enchantment — Plan,"Whenever a Villain you control enters, each opponent loses 1 life and you gain 1 life. Put a plan counter on this enchantment.
-When the fifth plan counter is put on this enchantment, sacrifice it. When you do, target opponent exiles the top five cards of their library. You may cast up to two spells from among the exiled cards without paying their mana costs.",B,Plan; counters; lifegain; sacrifice,MSH,96,1
+When the fifth plan counter is put on this enchantment, sacrifice it. When you do, target opponent exiles the top five cards of their library. You may cast up to two spells from among the exiled cards without paying their mana costs.",B,Plan; counters; lifegain; sacrifice; heist,MSH,96,1
 Eerie Gravestone,Artifact,"When this artifact enters, draw a card.
 {1}{B}, Sacrifice this artifact: Mill four cards. You may put a creature card from among them into your hand. (To mill four cards, put the top four cards of your library into your graveyard.)",B,graveyard; mill; card draw; sacrifice; etb,SPM,163,1
 Fatal Fissure,Instant,"Choose target creature. When that creature dies this turn, you earthbend 4. (Target land you control becomes a 0/0 creature with haste that's still a land. Put four +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",B,counters; blink; earthbend; bending,TLA,97,1
@@ -1755,7 +1755,7 @@ Power-up — {5}{R}{R}: Put two +1/+1 counters on Wonder Man. (Activate each pow
 {4}{R}{R}, {T}: Exile Clive, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery. // (As this Saga enters and after your draw step, add a lore counter.)
 I — Lunge — Ifrit fights up to one other target creature.
 II, III — Brimstone — Add {R}{R}{R}{R}. If Ifrit has three or more lore counters on it, exile it, then return it to the battlefield (front face up).",R,Human; Noble; Warrior; Saga; Demon; etb; saga; blink; transform; fight; removal; combat; card draw,FIN,133,1
-"Etali, Primal Storm",Legendary Creature — Elder Dinosaur,"Whenever Etali attacks, exile the top card of each player's library, then you may cast any number of spells from among those cards without paying their mana costs.",R,Elder; Dinosaur,FDN,194,1
+"Etali, Primal Storm",Legendary Creature — Elder Dinosaur,"Whenever Etali attacks, exile the top card of each player's library, then you may cast any number of spells from among those cards without paying their mana costs.",R,Elder; Dinosaur; heist,FDN,194,1
 Hill Gigas,Creature — Giant,"Trample, haste
 Mountaincycling {2} ({2}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)",R,Giant; mountaincycling; card draw; lands; landcycling; haste; aggro; trample; evasion; typecycling; cycling,FIN,141,1
 Kulrath Zealot,Creature — Elemental Warrior,"When this creature enters, exile the top card of your library. Until the end of your next turn, you may play that card.
@@ -2333,7 +2333,7 @@ Whenever you cast a spell during an opponent's turn, you may pay 1 life. If you 
 "Vren, the Relentless",Legendary Creature — Rat Rogue,"Ward {2}
 If a creature an opponent controls would die, exile it instead.
 At the beginning of each end step, create X 1/1 black Rat creature tokens with ""This token gets +1/+1 for each other Rat you control,"" where X is the number of creatures that were exiled under your opponents' control this turn.",U/B,Rat; Rogue; tokens; pump; ward; protection,BLB,239,1
-"Hama, the Bloodbender",Legendary Creature — Human Warlock,"When Hama enters, target opponent mills three cards. Exile up to one noncreature, nonland card from that player's graveyard. For as long as you control Hama, you may cast the exiled card during your turn by waterbending {X} rather than paying its mana cost, where X is its mana value. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",U/B,Human; Warlock; graveyard; mill; etb; waterbend; bending,TLA,224,1
+"Hama, the Bloodbender",Legendary Creature — Human Warlock,"When Hama enters, target opponent mills three cards. Exile up to one noncreature, nonland card from that player's graveyard. For as long as you control Hama, you may cast the exiled card during your turn by waterbending {X} rather than paying its mana cost, where X is its mana value. (While paying a waterbend cost, you can tap your artifacts and creatures to help. Each one pays for {1}.)",U/B,Human; Warlock; graveyard; mill; etb; waterbend; bending; heist,TLA,224,1
 Consuming Aberration,Creature — Horror,"Consuming Aberration's power and toughness are each equal to the number of cards in your opponents' graveyards.
 Whenever you cast a spell, each opponent reveals cards from the top of their library until they reveal a land card, then puts those cards into their graveyard.",U/B,Horror; graveyard,FDN,238,1
 "Uchbenbak, the Great Mistake",Legendary Creature — Skeleton Horror,"Vigilance, menace
@@ -2976,7 +2976,7 @@ Stormclaw Rager,Creature — Ogre Warrior,"{1}, Sacrifice another creature or ar
 When Spider-Man enters, target creature with power 2 or less can't be blocked this turn.",R,Spider; Human; Hero; etb; reach; defense,MSC,556,1
 Dauthi Voidwalker,Creature — Dauthi Rogue,"Shadow (This creature can block or be blocked by only creatures with shadow.)
 If a card would be put into an opponent's graveyard from anywhere, instead exile it with a void counter on it.
-{T}, Sacrifice this creature: Choose an exiled card an opponent owns with a void counter on it. You may play it this turn without paying its mana cost.",B,Dauthi; Rogue; counters; graveyard; sacrifice; shadow; evasion,MAR,63,1
+{T}, Sacrifice this creature: Choose an exiled card an opponent owns with a void counter on it. You may play it this turn without paying its mana cost.",B,Dauthi; Rogue; counters; graveyard; sacrifice; shadow; evasion; heist,MAR,63,1
 "She-Hulk, Jennifer Walters",Legendary Creature — Gamma Berserker Hero,"Trample (This creature can deal excess combat damage to the player she's attacking.)
 {2}{R}, Sacrifice a land: Draw a card and put a +1/+1 counter on She-Hulk.",R,Gamma; Berserker; Hero; counters; card draw; sacrifice; trample; evasion,MSC,554,1
 Unlikely Aid,Instant,"Target creature gets +2/+0 and gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)",B,pump,ANB,64,1
@@ -3185,7 +3185,7 @@ Frolicking Familiar,Creature — Otter Wizard // Instant — Adventure,"Flying
 Whenever you cast an instant or sorcery spell, this creature gets +1/+1 until end of turn. // Blow Off Steam deals 1 damage to any target. (Then exile this card. You may cast the creature later from exile.)",U/R,Otter; Wizard; Adventure; burn; pump; spellslinger; flying; evasion,WOE,226,1
 Korvold and the Noble Thief,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I, II — Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
-III — Exile the top three cards of target opponent's library. You may play those cards this turn.",R,Saga; sacrifice; tokens; treasure; saga; impulse,WOE,139,1
+III — Exile the top three cards of target opponent's library. You may play those cards this turn.",R,Saga; sacrifice; tokens; treasure; saga; impulse; heist,WOE,139,1
 "Kiora, the Rising Tide",Legendary Creature — Merfolk Noble,"When Kiora enters, draw two cards, then discard two cards.
 Threshold — Whenever Kiora attacks, if there are seven or more cards in your graveyard, you may create Scion of the Deep, a legendary 8/8 blue Octopus creature token.",U,Merfolk; Noble; graveyard; card draw; tokens; etb; threshold,FDN,45,1
 Waterwind Scout,Creature — Merfolk Scout,"Flying
@@ -3266,7 +3266,7 @@ The Rise of Sozin,Enchantment — Saga // Legendary Creature — Human Noble,"(A
 I — Destroy all creatures.
 II — Choose a card name. Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them. Then that player shuffles.
 III — Exile this Saga, then return it to the battlefield transformed under your control. // Menace, firebending 3 (Whenever this creature attacks, add {R}{R}{R}. This mana lasts until end of combat.)
-Whenever Fire Lord Sozin deals combat damage to a player, you may pay {X}. When you do, put any number of target creature cards with total mana value X or less from that player's graveyard onto the battlefield under your control.",B,Saga; Human; Noble; reanimator; graveyard; saga; transform; firebending; bending; menace; evasion,TLA,117,1
+Whenever Fire Lord Sozin deals combat damage to a player, you may pay {X}. When you do, put any number of target creature cards with total mana value X or less from that player's graveyard onto the battlefield under your control.",B,Saga; Human; Noble; reanimator; graveyard; saga; transform; firebending; bending; menace; evasion; heist,TLA,117,1
 "Wan Shi Tong, Librarian",Legendary Creature — Bird Spirit,"Flash
 Flying, vigilance
 When Wan Shi Tong enters, put X +1/+1 counters on him. Then draw half X cards, rounded down.
@@ -3275,7 +3275,7 @@ Whenever an opponent searches their library, put a +1/+1 counter on Wan Shi Tong
 When Armaggon enters, destroy up to three target creatures.",B,Shark; Horror; Mutant; etb; flash; tempo,TMT,58,1
 "Shark Shredder, Killer Clone",Legendary Creature — Shark Octopus Ninja,"Sneak {3}{B}{B}
 First strike
-Whenever Shark Shredder deals combat damage to a player, put up to one target creature card from that player's graveyard onto the battlefield under your control. It enters tapped and attacking that player.",B,Shark; Octopus; Ninja; reanimator; graveyard; first strike; combat; sneak; tempo; cost-reduction,TMT,73,1
+Whenever Shark Shredder deals combat damage to a player, put up to one target creature card from that player's graveyard onto the battlefield under your control. It enters tapped and attacking that player.",B,Shark; Octopus; Ninja; reanimator; graveyard; first strike; combat; sneak; tempo; cost-reduction; heist,TMT,73,1
 South Wind Avatar,Creature — Snake Spirit Avatar,"Deathtouch
 Whenever another creature you control dies, you gain life equal to its toughness.
 Whenever you gain life, each opponent loses 1 life.",B,Snake; Spirit; Avatar; deathtouch; combat; removal; lifegain,TMT,78,1
