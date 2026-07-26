@@ -91,14 +91,14 @@
 1 Epic Downfall (TLA) 96
 1 Long Goodbye (MKM) 92
 1 Bitter Triumph (SOA) 26
-1 Last Gasp (SOS) 86
 1 Feed the Swarm (SOA) 29
 1 Hero's Downfall (FDN) 175
 1 Cruel Alliance (MSH) 92
 1 Nowhere to Run (DSK) 111
 
-# Card advantage
+# Card advantage / mana for stolen spells
 1 Phyrexian Arena (FDN) 180
+1 Interdimensional Web Watch (SPM) 165
 
 # Lands
 1 Blazemire Verge (DSK) 256
@@ -125,3 +125,19 @@
 #~ want creatures dying, and the deck now fields four enablers but few expendable bodies —
 #~ every creature here is doing a job. A token-maker would serve both better than a fourth
 #~ outlet; none of the on-color ones surveyed were worth a maindeck slot yet.
+#~ -Ozai's Cruelty | +Superior Foes of Spider-Man | CRAFT (U): the best of the SELF-impulse
+#~ cards for this deck specifically, and not for its impulse — it is a Human Rogue Villain,
+#~ i.e. an OUTLAW, so it feeds Laughing Jasper Flint's count on a 3-mana trample body. Its
+#~ own trigger ("cast a spell with mana value 4 or greater") fires on only 8 of 36 nonlands
+#~ here, so grade it as an outlaw that sometimes impulses, not as a card-advantage engine.
+#~ note: SELF-EXILE vs HEIST — they do NOT combine, they COMPETE, and the pool says so.
+#~ Exactly ONE Standard card treats "a card in exile you may cast" as one resource
+#~ regardless of whose it is: Interdimensional Web Watch, whose restricted mana is now
+#~ maindecked in both 44 and 44a. The real "cast from exile matters" PAYOFFS exist but are
+#~ off-color for a black deck — Quintorius Kand (W/R, owned: 2 damage whenever you cast a
+#~ spell from exile) and Doc Aurlock, Grizzled Genius (U/G: those spells cost {2} less).
+#~ That is a Boros or Simic deck, not this one. Within these colors, heist beats self-
+#~ impulse for the same slot on three counts: nearly every heist card says "mana of any
+#~ type", so a stolen spell costs no color commitment; it is disruption as well as a card;
+#~ and it spends THEIR card quality instead of thinning your own library.
+
