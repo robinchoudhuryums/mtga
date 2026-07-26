@@ -944,7 +944,11 @@ _ROLE_PATTERNS = {
         r"deals? \d+ damage to each opponent",
         r"loses life equal to",
     ],
-    "Lifegain": [r"\blifelink\b", r"you gain \d+ life", r"gain \d+ life"],
+    # `gain(s) life equal to ...` (Exsanguinate, Corrupt, Sifter Wurm — 68 pool cards)
+    # was in neither this pattern nor the tag model; the tag half was fixed with the
+    # `pay life` work and this is the role half, so the two agree on the phrase.
+    "Lifegain": [r"\blifelink\b", r"you gain \d+ life", r"gain \d+ life",
+                 r"gains? life equal to"],
     # Cost reducers / free-cast enablers — the value that makes a nominally
     # expensive card cheap (Diamond Weapon, affinity/convoke, cascade cheats).
     "Cost reduction / cheat": [
@@ -2486,9 +2490,16 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
       tangential   – shares only GENERIC themes (etb/tokens/…) or broad background tribes
                      (_GENERIC_TRIBES: Human/Hero/Villain): broadly playable, not a home.
 
-    `signature` (from `_signature_themes`) corrects the idf blind spot: a theme in
-    GENERIC_THEMES is still SPECIFIC-for-this-deck if the deck protects cards built
-    on it — so a counter-doubler in a counters deck reads KEY, not tangential.
+    `signature` corrects the idf blind spot: a theme in GENERIC_THEMES is still
+    SPECIFIC-for-this-deck if the deck protects cards built on it — so a counter-doubler
+    in a counters deck reads KEY, not tangential. Callers must pass the STRICT
+    `_strong_signature_themes` (a theme carried by >=2 `#: protect:` cards), NOT the
+    loose `_signature_themes` that unions every protected card's tags. With the loose
+    set, deck 37's signature held 25 themes including etb / removal / sacrifice /
+    combat / tempo, so almost any card sharing any of them read KEY — Azula, Cunning
+    Usurper (a Human Noble Rogue) read KEY for three WIZARD-tribal decks on `Human, etb`
+    alone. `similar` already used the strict set for exactly this reason. The motivating
+    rescue is unaffected: deck 30's strict signature is precisely {counters}.
 
     The role-gap KEY is gated on a SPECIFIC-theme match (checked AFTER the `not
     specific` short-circuit below): a generically-good removal / card-advantage card
@@ -3867,6 +3878,33 @@ def parse_flex(path):
     return entries
 
 
+def flex_staleness(path):
+    """Flex lines whose `-Out` card is NOT in the deck any more → [(out, in, why)].
+
+    A `#~` line rots silently. `swap --apply` retires only the lines invalidated by
+    the swap it is PERFORMING, and `tier --audit-rationale` reads `#: tier:` /
+    `#: archetype:` prose, never the flex block — so a line can sit for rounds
+    proposing a cut that already happened. Found in practice on deck 42a, where an
+    Azula line still named Prideful Parent two swaps after it left, and again where an
+    interaction fix pointed at a card three swaps stale.
+
+    A line with no `-Out` (a pure note, or an add-only suggestion) is never stale —
+    there is nothing to check it against.
+    """
+    _, cards = parse_deck_file(path)
+    have = {n for _q, n, _s, _c in cards}
+    have |= {n.split(" // ")[0] for n in list(have)}
+    out = []
+    for e in parse_flex(path):
+        cut = (e.get("out") or "").strip()
+        if not cut:
+            continue
+        if cut not in have and cut.split(" // ")[0] not in have:
+            out.append((cut, (e.get("in") or "").strip(),
+                        "the -Out card is no longer in the deck"))
+    return out
+
+
 def cmd_flex(args):
     """Show a deck's flex suggestions, enriching the +In card with cost / owned /
     rarity so you can see what each swap would take."""
@@ -3899,6 +3937,12 @@ def cmd_flex(args):
             print(f"  {left or right}")
         if e["note"]:
             print(f"      {e['note']}")
+    stale = flex_staleness(d["path"])
+    if stale:
+        print("\n  \u26a0 STALE flex line(s) — the card they propose cutting is already gone:")
+        for cut, add, _why in stale:
+            print(f"      \u2212{cut}" + (f"  \u2192  +{add}" if add else "")
+                  + "   (retarget or retire the line)")
     return 0
 
 
@@ -5526,7 +5570,9 @@ def cmd_suggest_homes(args):
                        & {n.lower() for _, n, _, _ in cards})
         fit = sum(theme_w.get(t, 0) for t in shared)
         d_int, d_ca = deck_role_counts(cards, carddata)
-        sig = _signature_themes(dmeta, cards, cardmeta)
+        # STRICT (>=2 protected cards) — see fit_strength's docstring: the loose
+        # union made a generic theme a signature and minted KEY nearly everywhere.
+        sig = _strong_signature_themes(dmeta, cards, cardmeta)
         strength = fit_strength(shared, theme_w, cd.get("text") or "", d_int, d_ca, sig)
         # Color-fixer overlay: a rainbow fixer's worth scales with the deck's color
         # count, which theme-overlap can't see. In a 3+-color deck it's at least a
@@ -5768,7 +5814,9 @@ def cmd_quality(args):
         ctags = set(cardmeta.get(args.add.lower(), {}).get("synergies", []))
         shared = sorted(ctags & _central_themes(theme_w))
         d_int, d_ca = deck_role_counts(cards, carddata)
-        sig = _signature_themes(dmeta, cards, cardmeta)
+        # STRICT (>=2 protected cards) — see fit_strength's docstring: the loose
+        # union made a generic theme a signature and minted KEY nearly everywhere.
+        sig = _strong_signature_themes(dmeta, cards, cardmeta)
         strength = fit_strength(shared, theme_w, (cd or {}).get("text") or "", d_int, d_ca, sig)
         if strength == "tangential":
             weak_add = f"add {args.add!r} is only a TANGENTIAL fit (generic themes only)"

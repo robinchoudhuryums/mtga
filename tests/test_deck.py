@@ -262,6 +262,68 @@ class TestCoverageNetIsSuperset:
         assert [n for n, _axis in under_read] == ["Odd Answer"]
 
 
+class TestFlexStaleness:
+    """A `#~` flex line rots silently: `swap --apply` retires only the lines invalidated
+    by the swap it is performing, and the rationale audit reads `#: tier:` / `#:
+    archetype:` prose and never the flex block. Five stale lines were sitting on the
+    roster when this check was added."""
+
+    DECK = """#: name: Probe
+#: format: Standard
+#: colors: B
+
+Deck
+4 Swamp (MSH) 291
+1 Vengeful Bloodwitch (FDN) 76
+
+#~ -Vengeful Bloodwitch | +Agent Venom | a live line: the cut card IS in the deck
+#~ -Prideful Parent | +Azula, On the Hunt | STALE: the cut card already left
+#~ note: a bare note has no -Out and can never be stale
+#~ +Restoration Magic | | an add-only line has nothing to check against
+"""
+
+    def _write(self, tmp_path):
+        p = tmp_path / "deck.txt"
+        p.write_text(self.DECK, encoding="utf-8")
+        return str(p)
+
+    def test_flags_only_the_line_whose_cut_card_is_gone(self, tmp_path):
+        stale = deck.flex_staleness(self._write(tmp_path))
+        assert [c for c, _a, _w in stale] == ["Prideful Parent"]
+
+    def test_reports_the_paired_add_so_the_line_is_identifiable(self, tmp_path):
+        stale = deck.flex_staleness(self._write(tmp_path))
+        assert stale[0][1] == "Azula, On the Hunt"
+
+    def test_a_note_or_add_only_line_is_never_stale(self, tmp_path):
+        # Nothing to check a line against when it names no -Out card.
+        outs = [c for c, _a, _w in deck.flex_staleness(self._write(tmp_path))]
+        assert "Restoration Magic" not in outs
+
+    def test_clean_deck_reports_nothing(self, tmp_path):
+        p = tmp_path / "deck.txt"
+        p.write_text("#: name: Probe\n#: colors: B\n\nDeck\n4 Swamp (MSH) 291\n"
+                     "#~ -Swamp | +Bloodfell Caves | live\n", encoding="utf-8")
+        assert deck.flex_staleness(str(p)) == []
+
+
+class TestLifegainRoleAlignment:
+    """`gain(s) life equal to` (Exsanguinate, Corrupt, Sifter Wurm — 68 pool cards) was in
+    neither the role classifier nor the tag model. The tag half went in with the `pay
+    life` work; this is the role half, so the two agree on the phrase."""
+
+    def test_gain_life_equal_to_is_lifegain(self):
+        assert "Lifegain" in deck.classify_roles(
+            "Each opponent loses X life. You gain life equal to the life lost this way.")
+
+    def test_fixed_number_lifegain_still_counts(self):
+        assert "Lifegain" in deck.classify_roles("You gain 3 life.")
+        assert "Lifegain" in deck.classify_roles("Flying, lifelink")
+
+    def test_opponent_losing_life_is_not_lifegain(self):
+        assert "Lifegain" not in deck.classify_roles("Each opponent loses 2 life.")
+
+
 class TestRationaleFigureAudit:
     """The FIGURE half of `rationale_staleness` was silently disabled roster-wide by one
     over-broad history cue, and the arrow notation it accidentally covered then needed

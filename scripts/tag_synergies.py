@@ -287,6 +287,16 @@ MECHANIC_RULES = [
     # "each opponent loses 2 life" is a DRAIN effect, which is the opposite card and
     # already covered by `drain`. The last three alternatives are the PAYOFF side, the
     # same way `lifegain` also tags cards that only CARE about life being gained.
+    # COST REDUCTION without a named keyword. `cost-reduction` already exists as a tag
+    # (167 pool cards) but only ever arrived via the KEYWORD map (affinity, delve, warp,
+    # sneak, plot, impending, …), so a card that plainly says it costs less — Hour of
+    # Revelation, Stratadon's domain clause — carried no tag at all. `classify_roles`
+    # already read these as "Cost reduction / cheat"; this is the tag model catching up so
+    # the two agree on the phrase, the same alignment the `draw cards equal to` and
+    # `gain life equal to` fixes made.
+    ("cost-reduction", lambda t, x: re.search(
+        r"costs? \{[0-9x]+\} less|costs? \{[0-9x]+\} less to cast"
+        r"|costs? up to \{[0-9x]+\} less", x) is not None),
     ("pay life", lambda t, x: re.search(
         r"(?:^|[,.:;(]\s*|\byou (?:may )?)pay (?:\d+|x) life"
         r"|\bpay life equal to"

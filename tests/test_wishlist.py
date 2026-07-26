@@ -1,6 +1,7 @@
 """Unit tests for pure scoring helpers in scripts/wishlist.py."""
 import math
 
+import tag_synergies
 import wishlist
 
 
@@ -169,3 +170,36 @@ class TestPowerProvenance:
 
     def test_case_insensitive(self):
         assert not wishlist.power_is_seeded({"Power": "7.0", "Power Source": "Hand"})
+
+class TestTagModelAlignment:
+    """Three phrases where `tags_for` disagreed with `classify_roles` on the same text.
+    Each left a card with a completely blank Synergies cell, invisible to every
+    tag-based recommendation."""
+
+    def test_draw_cards_equal_to(self):
+        # The Ten Rings sat in a deck with no tags at all.
+        assert "card draw" in tag_synergies.tags_for(
+            {"Type": "Legendary Artifact",
+             "Card Text": "At the beginning of your end step, if you have fewer than ten "
+                          "cards in hand, draw cards equal to the difference."})
+
+    def test_gain_life_equal_to(self):
+        assert "lifegain" in tag_synergies.tags_for(
+            {"Type": "Sorcery",
+             "Card Text": "Each opponent loses X life. You gain life equal to the life "
+                          "lost this way."})
+
+    def test_costs_n_less_without_a_named_keyword(self):
+        # `cost-reduction` existed on 167 pool cards but only ever via the KEYWORD map,
+        # so a card that plainly SAYS it costs less carried no tag.
+        assert "cost-reduction" in tag_synergies.tags_for(
+            {"Type": "Sorcery",
+             "Card Text": "This spell costs {3} less to cast if there are ten or more "
+                          "nonland permanents on the battlefield.\nDestroy all enchantments."})
+
+    def test_pay_life_is_scoped_to_you(self):
+        # "each opponent loses 2 life" is a DRAIN effect, the opposite card.
+        assert "pay life" in tag_synergies.tags_for(
+            {"Type": "Creature", "Card Text": "You lose life equal to its mana value."})
+        assert "pay life" not in tag_synergies.tags_for(
+            {"Type": "Sorcery", "Card Text": "Each opponent loses 2 life."})

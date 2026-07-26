@@ -25,6 +25,8 @@ list of human-readable error strings; empty == healthy.
 """
 import os
 import sys
+import re
+import inspect
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -285,6 +287,30 @@ def check():
     if not deck._GENERIC_TRIBES or "wizard" in deck._GENERIC_TRIBES:
         errs.append("_GENERIC_TRIBES must be non-empty and must NOT include real tribal "
                     "signatures (e.g. Wizard).")
+
+    # (11b) THE SIGNATURE PASSED TO fit_strength MUST BE THE STRICT ONE. Anchor 11 closed
+    #       the broad-TRIBE route to a false KEY; the same hole stayed open one category
+    #       over, for a GENERIC THEME. `_signature_themes` unions every `#: protect:`
+    #       card's tags, so deck 37's signature held 25 themes (etb, removal, sacrifice,
+    #       combat, tempo, …) and Azula, Cunning Usurper — a Human Noble Rogue — read KEY
+    #       for three WIZARD-tribal decks on `Human, etb` alone. Roster-wide the loose set
+    #       produced 99 KEYs across a 14-card sample where the strict set produces 54, and
+    #       every one of the 45 differences was KEY -> tangential.
+    #       This is a WIRING anchor, not a pure-function one, and deliberately so — the
+    #       F-18 lesson. `fit_strength` is RIGHT to mint KEY from any signature theme it
+    #       is handed: the whole point of the rescue is that a generic theme IS a
+    #       signature when it is genuinely the spine (`counters` is in GENERIC_THEMES).
+    #       So the strictness cannot live in the function; it lives in which signature the
+    #       CALLER builds, and only reading the call site can catch that. Asserting
+    #       fit_strength(signature={"etb"}) == tangential would contradict the rescue.
+    if fs(["counters"], {"counters": 12}, "", 8, 8, signature={"counters"}) != "KEY":
+        errs.append("fit_strength: the #: protect: rescue must still promote a deck's real "
+                    "build-around spine (a counters deck protecting counter-doublers).")
+    src = inspect.getsource(deck.cmd_suggest_homes)
+    if "_strong_signature_themes" not in src or re.search(
+            r"[^_]_signature_themes\(", src):
+        errs.append("cmd_suggest_homes must build its fit_strength signature from "
+                    "_strong_signature_themes (>=2 protected cards), not the loose union.")
 
     # (12a) the suggest-homes curve co-signal `_home_curve_fit` stays a bounded, never-
     #       boosting SORT nudge: 1.0 within ~2 MV of a deck's average, penalized beyond,
