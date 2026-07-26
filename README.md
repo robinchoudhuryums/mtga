@@ -118,7 +118,12 @@ library, since new cards would otherwise get keyword-less tags. One theme worth 
 effect (351 pool cards). It's scoped to you — "each opponent loses 2 life" is a drain
 effect, the opposite card — and it exists because an entire archetype was invisible
 without it: Dark Confidant read as a *tangential* fit for the deck built around paying
-life, on a shared creature type. These make `query.py
+life, on a shared creature type. **`heist`** is the other one to know: it tags a card that
+lets you CAST a card out of an opponent's zone (82 pool cards, 0.52%). Keep it distinct from
+the older **`theft`** tag, which means "gain control of" — stealing a permanent already on
+the battlefield. They are different mechanics, and naming a new theme after an existing one
+merges the two silently, since a tag collision breaks no invariant and `check_all` stays
+green. Check `MECHANIC_RULES` for the name before adding a theme. These make `query.py
 --synergy` / `pool.py --synergy` and the gallery filters useful; tags are
 hand-editable. Rerun `build_mana.py` then `tag_synergies.py --merge` after
 importing new cards to refresh keyword-aware tags without losing curation.

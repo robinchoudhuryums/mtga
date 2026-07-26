@@ -29,10 +29,13 @@
 #: archetype: Treasures make the board wide, and one Zuko trigger pumps all of it. The
 #: archetype: plan is go-wide midrange, not durdle.
 #: archetype: DISTINCTNESS — READ THIS BEFORE INVESTING WILDCARDS. `deck.py similar` reads
-#: archetype: 79% against 24 Eternal Flame with a ⚠ overlap flag, 67% color overlap, the
+#: archetype: 76% against 24 Eternal Flame with a ⚠ overlap flag, 67% color overlap, the
 #: archetype: same dominant SPECIFIC theme (impulse), the same payoff (Quintorius Kand) and
-#: archetype: TWELVE shared nonland cards — which are precisely 24's whole red impulse
-#: archetype: core. That is not a number to argue past. The genuine difference is narrow:
+#: archetype: TEN shared nonland cards. A de-duplication pass got it down from 79%/twelve
+#: archetype: and stopped there: the ten that remain are simply the only cheap impulse
+#: archetype: cards in the collection, and every unused alternate is either {R}{R}{R} /
+#: archetype: {W}{W} / {B}{B} mana this deck cannot support or a six-drop. That is not a
+#: archetype: number to argue past. The genuine difference is narrow:
 #: archetype: Fire Lord Zuko is the one card 24 structurally cannot run (it needs black),
 #: archetype: and Zuko + Appa turn the exile triggers into a GO-WIDE COUNTERS plan (tokens
 #: archetype: from Appa/Dragon Fodder/Mechanized Ninja Cavalry/Quintorius, all pumped by
@@ -45,8 +48,8 @@
 #: tier: across a 2.69 curve, eight of it able to answer a noncreature permanent, and the
 #: tier: deck is FULLY OWNED — zero craft targets, unusual for a from-scratch build. Held
 #: tier: a band below the floor by three things the floor cannot see:
-#: tier: 1. THE 79% OVERLAP WITH 24. A deck that measurably duplicates an existing A-tier
-#: tier:    deck on twelve cards and its dominant theme has to earn its slot in play
+#: tier: 1. THE 76% OVERLAP WITH 24. A deck that measurably duplicates an existing A-tier
+#: tier:    deck on ten cards and its dominant theme has to earn its slot in play
 #: tier:    before it earns a letter. See the distinctness note above.
 #: tier: 2. THREE COLORS, AND APPA IS THE STRESS POINT. Appa wants {W}{W} on turn four at
 #: tier:    69.6% against 13 white sources. It has FLASH, which is the real mitigation —
@@ -66,7 +69,6 @@
 1 Quintorius Kand (LCI) 238
 
 # Impulse enablers — exile off your own library
-1 Clockwork Percussionist (DSK) 130
 1 Kellan, Planar Trailblazer (FDN) 91
 1 Fanatical Firebrand (FDN) 195
 1 Dragon Fodder (FDN) 535
@@ -90,6 +92,7 @@
 # Warp / plot — cast from exile on a later turn
 1 Weftstalker Ardent (EOE) 169
 1 Rayblade Trooper (EOE) 30
+1 Weftblade Enhancer (EOE) 44
 1 Sheriff of Safe Passage (OTJ) 29
 1 Stagecoach Security (OTJ) 30
 
@@ -97,10 +100,10 @@
 1 Shock (ANB) 84
 1 Plasma Bolt (EOE) 152
 1 Burst Lightning (DMU) 132
-1 Lightning Strike (FDN) 205
 1 Erode (TLA) 15
 1 Valorous Stance (FDN) 40
 1 Long Goodbye (MKM) 92
+1 Dark Deed (MSH) 93
 1 Bitter Triumph (SOA) 26
 1 Feed the Swarm (SOA) 29
 1 Cruel Alliance (MSH) 92
