@@ -11,7 +11,7 @@
 #: archetype: — exchanging totals refunds every point you spent and drops them to yours.
 #: archetype: TWO PLANS THAT WIN WITHOUT HIM, by design, because he is a single mythic:
 #: archetype: (1) TOKEN DRAIN — Bitterbloom Bearer, Lunar Convocation's Bats and the
-#: archetype: death-triggers (Vengeful Bloodwitch, Agents of HYDRA, Infestation Sage)
+#: archetype: death-triggers (Vengeful Bloodwitch, Agents of HYDRA, Callous Inspector)
 #: archetype: build an evasive board while Bloodchief Ascension and Mai turn every
 #: archetype: exchange into life loss; (2) pure CARD-ADVANTAGE attrition — ten removal
 #: archetype: spells backed by six draw effects simply out-resources a fair deck.
@@ -79,14 +79,14 @@ Deck
 1 Healer's Hawk (FDN) 142
 1 Vengeful Bloodwitch (FDN) 76
 1 Agents of HYDRA (MSH) 85
-1 Infestation Sage (FDN) 64
 1 Callous Inspector (TLA) 89
-1 Snarling Gorehound (MKM) 105
 1 Sanguine Syphoner (ECL) 118
 1 Dream Beavers (TMT) 62
 1 Starscape Cleric (BLB) 116
 
 # Life into cards — repeatable, on a body
+1 Grave Researcher (SOS) 85
+1 Stargaze (SOA) 34
 1 Dark Confidant (FIN) 94
 1 Darkstar Augur (BLB) 90
 1 Koh, the Face Stealer (TLA) 107
@@ -114,8 +114,8 @@ Deck
 9 Plains (MSH) 285
 10 Swamp (MSH) 287
 
-#~ +Grave Researcher | -Snarling Gorehound | Reanimation that COSTS LIFE — pure thesis — and it steals from ANY graveyard, so every creature the removal suite killed is a target. Upkeep surveil 1 also digs. The tax is that "prepared" needs three CREATURE cards in your own yard, so it is a mid-game card in a deck with no self-mill. Cut candidates, weakest first: Snarling Gorehound (a 1-drop whose surveil trigger needs power-2-or-less creatures ENTERING, which this build does less of after the swaps), Infestation Sage (a 1/1 that replaces itself but feeds no sacrifice outlet here), Callous Inspector. Owned.
-#~ +Stargaze | -Infestation Sage | Pay X life, look at 2X, keep X — scalable draw at exactly the rate the deck wants, and the discarded half stocks the yard for Grave Researcher above. Cut candidates, weakest first: Infestation Sage, Callous Inspector (1 damage on death is the smallest effect in the deck), Black Widow, Super Spy (its mill-and-exile payoff wants combat damage this deck rarely deals). Do NOT cut removal for either of these — interaction is 8 after the swaps, down from 13. Owned.
+#~ note: applied — Grave Researcher in for Snarling Gorehound.
+#~ note: applied — Stargaze in for Infestation Sage.
 #~ +Silverquill Charm | -Hour of Defeat | Two-mana modal instant: two counters, exile a power-2-or-less creature, or drain 3 and gain 3. Never dead, and cheaper than the four-drop removal it would replace. Craft (U).
 #~ +Exsanguinate | -Erode | {X}{B}{B} scalable drain-and-gain — the finisher the deck's PATH TO A asks for. Caveat that keeps it in flex rather than the 60: it pushes THEIR total down, which shrinks the Mister Negative refund, so it is plan-B support that mildly undercuts plan A. Craft (U).
 #~ +Starseer Mentor | -Hour of Defeat | "Gained OR LOST life this turn" is met every turn here without trying, so it is a repeatable lose-3-or-sacrifice-or-discard clock on a flier. Held out on curve: MV 5 against a 2.37 average. Craft (U).

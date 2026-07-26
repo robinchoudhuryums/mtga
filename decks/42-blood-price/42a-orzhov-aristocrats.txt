@@ -15,9 +15,8 @@
 #: archetype: nontoken deaths into cards, and Judge Magister Gabranth / Sandbender
 #: archetype: Scavengers grow on every one.
 #: archetype: THE OUTLETS ARE THE POINT. The core deck already fielded Vengeful
-#: archetype: Bloodwitch, Agents of HYDRA and Infestation Sage — three death triggers
-#: archetype: with NOTHING to feed them on demand, so they only fired when the opponent
-#: archetype: obliged. Baron Bertram Graywater (a token engine that is also a
+#: archetype: Bloodwitch and Agents of HYDRA — death triggers with NOTHING to feed them
+#: archetype: on demand, so they only fired when the opponent obliged. Baron Bertram Graywater (a token engine that is also a
 #: archetype: sacrifice-for-draw outlet), Umbral Collar Zealot (a FREE outlet — no mana),
 #: archetype: Vampiric Rites, Ahriman and Kingpin's Enforcers are what convert those
 #: archetype: passive triggers into an engine you control.
@@ -41,8 +40,10 @@
 #: tier: removal spell in the cut list. `cuts` flags Liliana's -4 double edict as a likely
 #: tier: under-read, so the true figure is nearer 6-7 — but that is a reason to verify,
 #: tier: not a reason to claim the number. THE FIX IS ONE LINE: restore Harsh Annotation
-#: tier: over Dwarven Castle Guard (see the flex block) and interaction returns to 6 with
-#: tier: the engine untouched. Held at B by three further things the floor cannot price:
+#: tier: over Agents of HYDRA (see the flex block) and interaction returns to 6. That cut
+#: tier: target moved once already — the original was Dwarven Castle Guard, which has
+#: tier: since become Treasure Dredger — and Agents of HYDRA is now the weakest remaining
+#: tier: body at fit 28 / power 1. Held at B by three further things the floor cannot see:
 #: tier: 1. MEASURED CARD ADVANTAGE IS ZERO, and that number is defensible rather than a
 #: tier:    classifier miss. Vampiric Rites, Ahriman, Kingpin's Enforcers, Baron Bertram
 #: tier:    and Agent Venom each draw exactly ONE card, which the role model excludes as
@@ -78,9 +79,12 @@
 #: notes: mostly do not use here.
 #: notes: FODDER QUALITY MATTERS MORE THAN FODDER COUNT. The token makers are chosen to
 #: notes: be RECURRING (Lunar Convocation every end step, Bitterbloom Bearer every
-#: notes: upkeep, Fountainport on demand, Scavenger's Talent once per turn) or to replace
-#: notes: themselves on death (Infestation Sage, Agents of HYDRA, Dwarven Castle Guard),
-#: notes: because a one-shot token is one sacrifice and a recurring one is an engine.
+#: notes: upkeep, Fountainport on demand, Scavenger's Talent once per turn, Treasure
+#: notes: Dredger and Krumar Initiate on demand) or to replace themselves on death (Agents
+#: notes: of HYDRA), because a one-shot token is one sacrifice and a recurring one is an
+#: notes: engine. That principle is why Infestation Sage and Dwarven Castle Guard were the
+#: notes: two cut for Krumar Initiate and Treasure Dredger: both were self-replacing but
+#: notes: ONE-SHOT, where the replacements make a body every turn you have mana spare.
 #: notes: Anafenza is the odd one out and earns it: every NONTOKEN death endures 2, which
 #: notes: is itself either a counter or another 1/1 to sacrifice.
 #: notes: WATCH THE ARTIFACT CLAUSES. Al Bhed Salvagers, Ahriman, Umbral Collar Zealot
@@ -122,9 +126,9 @@ Deck
 # Fodder — recurring or self-replacing
 1 Lunar Convocation (BLB) 223
 1 Bitterbloom Bearer (ECL) 88
-1 Infestation Sage (FDN) 64
+1 Krumar Initiate (TDM) 84
 1 Agents of HYDRA (MSH) 85
-1 Dwarven Castle Guard (FIN) 18
+1 Treasure Dredger (OTJ) 110
 1 Jecht, Reluctant Guardian (FIN) 104
 1 Resolute Reinforcements (FDN) 145
 
@@ -156,11 +160,12 @@ Deck
 9 Swamp (MSH) 291
 7 Plains (MSH) 287
 
-#~ +Treasure Dredger | -Dwarven Castle Guard | {1}, {T}, Pay 1 life: create a Treasure — a REPEATABLE artifact-fodder engine, and six of this deck's outlets/payoffs read "creature OR artifact" (Umbral Collar Zealot, Ahriman, Kingpin's Enforcers, Baron Bertram, Al Bhed Salvagers, Scavenger's Talent). Cut candidates, weakest first: Dwarven Castle Guard (a ONE-SHOT body that leaves one token, where the Dredger makes fodder every turn), Infestation Sage (same shape), Agents of HYDRA. Craft (U).
-#~ +Krumar Initiate | -Infestation Sage | {X}{B}, {T}, Pay X life: endure X — a mana sink that makes a token (fodder) or grows, and pay-X-life is on-thesis. Held out because a control-ish deck wants its mana for outlets and answers, and this competes directly. Cut candidates, weakest first: Infestation Sage, Agents of HYDRA, Anafenza, Unyielding Lineage (the flashiest of the three, but its endure trigger needs NONTOKEN deaths, which are the deaths you least want to spend). Craft (U).
-#~ +Krovod Haunch | -Infestation Sage | RE-GRADED after this deck existed. It is a Food ARTIFACT, so it is fodder for the six creature-or-artifact outlets — and "when this Equipment is put into a graveyard from the battlefield, you may pay {1}{W}: create two 1/1 Dogs" fires exactly WHEN YOU SACRIFICE IT. One mana turns into an artifact you sacrifice into two more bodies. Passed on for 41/42 (correctly — neither is a sacrifice deck); this is its home. Craft (U).
-#~ +Midnight Snack | -Agents of HYDRA | RE-GRADED for the same reason: raid needs you to ATTACK, which a 20-creature token deck does and the two control decks do not. It makes a Food (artifact fodder) every turn you attacked, and its sacrifice mode drains for the life you gained this turn — which is a lot, since Bloodwitch / Arnyn / Al Bhed / Funeral Room all gain life on every death. Craft (U).
-#~ +Azula, On the Hunt | -Prideful Parent | RE-GRADED, with a caveat. Attacks for a Clue (artifact fodder) and a self-inflicted 1 life (on-thesis), and Firebending's {R}{R} is NOT dead — red mana pays GENERIC costs, so it funds Ahriman's {3} sacrifice-draw during combat. The caveat is real though: 4 mana, must attack, and the mana only lasts until end of combat. Craft (U).
+#~ note: applied — Treasure Dredger in for Dwarven Castle Guard.
+#~ note: applied — Krumar Initiate in for Infestation Sage.
 #~ +Social Snub | -Last Gasp | A symmetric edict that COPIES itself if you control a creature — asymmetric in practice because you always have a spare Bat — plus a drain-and-gain rider. It also ADDS interaction, which this deck is short on. Owned.
 
-#~ +Harsh Annotation | -Dwarven Castle Guard | THE INTERACTION FIX, and the first flex line to apply. Fix What's Broken earned its slot but was cut FROM a removal spell, dropping interaction 7 -> 5 and the metrics floor A -> B. Re-sourcing that cut from the weakest fodder instead (a one-shot body that leaves one token) puts a two-mana unconditional kill back in and costs the engine almost nothing. Owned.
+#~ +Harsh Annotation | -Agents of HYDRA | THE INTERACTION FIX, and still the first flex line to apply. Fix What's Broken earned its slot but was cut FROM a removal spell, dropping interaction 7 -> 5 and the metrics floor A -> B. Its cut target has moved once (Dwarven Castle Guard became Treasure Dredger), so it now points at Agents of HYDRA — the weakest remaining body at fit 28 / power 1, and a ONE-SHOT replace-itself token in a deck that has deliberately moved to recurring generators. Owned.
+#~ +Krovod Haunch | -Resolute Reinforcements | RE-GRADED after this deck existed, and the cheapest of the three. It is a Food ARTIFACT, so it is fodder for the six creature-or-artifact outlets — and "when this Equipment is put into a graveyard from the battlefield, you may pay {1}{W}: create two 1/1 Dogs" fires exactly WHEN YOU SACRIFICE IT. One mana becomes an artifact you sac into two more bodies. Cut candidates, weakest first: Resolute Reinforcements (flash plus one Soldier token is two bodies for two mana ONE TIME; Krovod Haunch is one mana for an artifact plus two Dogs, so it is strictly more fodder per card), Agents of HYDRA, Anafenza, Unyielding Lineage. Craft (U).
+#~ +Midnight Snack | -Robot Domination | RE-GRADED for the same reason: raid needs you to ATTACK, which a 21-creature token deck does and the two control decks do not. A Food (artifact fodder) every turn you attacked, and its sacrifice mode drains for the life gained that turn — a lot, since Bloodwitch, Arnyn, Al Bhed and Funeral Room all gain on every death. Cut candidates, weakest first: Robot Domination (the other slow value enchantment, MV 4, and its plan counters need creature CARDS in the yard, which competes with Fix What's Broken wanting them there), Agents of HYDRA, Fiendish Panda. Craft (U).
+#~ +Azula, On the Hunt | -Fiendish Panda | RE-GRADED, and the WEAKEST of the three — take it last. Attacks for a Clue (artifact fodder) and a self-inflicted 1 life (on-thesis), and Firebending's {R}{R} is NOT dead, because red mana pays GENERIC costs, so it funds Ahriman's {3} sacrifice-draw during combat. The caveats are real: 4 mana, it must attack, and the mana evaporates at end of combat. Cut candidates, weakest first: Fiendish Panda (the other 4-drop whose payoff is conditional — it needs you to gain life for counters and a death to reanimate), Robot Domination, Anafenza, Unyielding Lineage. Craft (U).
+#~ note: SLOT MATH — the four lines above want four slots and this deck has about three defensible ones (Agents of HYDRA, Resolute Reinforcements, Robot Domination), because interaction is 5 and no removal spell can be the cut. They compete with each other. Order: Harsh Annotation first (it fixes a measured floor drop), then Krovod Haunch, then Midnight Snack, then Azula.
