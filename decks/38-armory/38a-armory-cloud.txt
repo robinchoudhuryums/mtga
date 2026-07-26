@@ -95,5 +95,4 @@
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 38a
 #~ -Dragonfire Blade | +Ninja's Blades | RARE craft — the higher-ceiling payoff (combat-damage loot+discard + drain by discarded MV, doubled to 2× on Cloud). Swapped OUT for owned Dragonfire Blade to save the rare wildcard and protect Cloud (hexproof from monocolored); swap back when you have a rare to spare.
-#~ -Dream Beavers | +2nd protection piece | if Cloud keeps dying, add more hexproof/indestructible over a body
-#~ -Trusty Boomerang | +another combat-damage equipment | the Boomerang is the weakest of the equipment; any value equipment Cloud doubles is better
+#~ note: RETIRED two flex lines, both OBSOLETE rather than mis-aimed. "-Dream Beavers | +2nd protection piece" was written when protection was thin; `stats` now counts SIX (Zack Fair, Dragonfire Blade, Celestial Armor, Stolen Stark Tech, Vibranium Energy Daggers, Captain America's Shield), so the ask is satisfied. "-Trusty Boomerang | +another combat-damage equipment" is moot at 16 equipment — the deck is saturated, and both named cut cards had left anyway.

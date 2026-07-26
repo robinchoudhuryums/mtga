@@ -114,7 +114,11 @@ Note the writer emits only the canonical 8 library columns, so point it at
 newly-derived tags to non-blank cells while KEEPING existing/hand-curated ones (the
 safe refresh mode), and `--force` REPLACES every cell (use it only for a deliberate
 destructive regenerate). It also warns when `card-mana.csv` is older than the
-library, since new cards would otherwise get keyword-less tags. These make `query.py
+library, since new cards would otherwise get keyword-less tags. One theme worth knowing about: **`pay life`** tags a card that spends *your* life for an
+effect (351 pool cards). It's scoped to you — "each opponent loses 2 life" is a drain
+effect, the opposite card — and it exists because an entire archetype was invisible
+without it: Dark Confidant read as a *tangential* fit for the deck built around paying
+life, on a shared creature type. These make `query.py
 --synergy` / `pool.py --synergy` and the gallery filters useful; tags are
 hand-editable. Rerun `build_mana.py` then `tag_synergies.py --merge` after
 importing new cards to refresh keyword-aware tags without losing curation.
@@ -469,6 +473,14 @@ finish (closest-to-done first), the **highest-leverage crafts** (one card that
 unblocks multiple decks), and the total wildcards to make the *whole* roster
 buildable — deduplicated, since one shared collection means a card is only ever
 short by `max(any deck needs) − total owned`.
+
+**Split, Room and Adventure cards are read on their FRONT face.** Scryfall stores both
+halves joined by `" // "` (Funeral Room is `{2}{B} // {6}{B}{B}`) and you never pay both,
+so the merged string over-counts pips — and a split card's *rules* mana value is the
+combined total, which is correct but useless for a curve: Funeral Room arrived at **MV
+11** and read as a `{B}{B}{B}` turn-5 play when the door you cast is one black pip on
+turn 3. `lib.front_face_cost` / `lib.mana_value` fix both, matching the front-face
+convention already used for double-faced card ownership.
 
 `stats` also flags **cost nature** — `◊` for cards whose text reduces their cost
 or grants flash (convoke/delve/"costs {1} less", so the printed mana value doesn't
@@ -912,8 +924,9 @@ emits **soft warnings** (never gating): wishlist target drift (a card whose targ
 deck can no longer cast it); **new unindexed card mechanics** (`check_keywords.py`);
 **theme coverage** — `check_themes.py` flags an owned card whose text plays a theme
 it isn't tagged with (a stale tag distorts every recommendation), summarized to one
-line; and **tier mismatch** — a deck whose claimed `#: tier:` sits ≥2 bands above its
-measurable floor. A SessionStart hook runs the gate (quiet) **and the unit layer** so
+line; **tier mismatch** — a deck whose claimed `#: tier:` sits ≥2 bands above its
+measurable floor; and **stale flex lines** — a `#~ -Out | +In` suggestion whose cut card
+already left the deck, which nothing else covered (it found five sitting on the roster). A SessionStart hook runs the gate (quiet) **and the unit layer** so
 drift in either surfaces immediately; `make verify` runs both before you commit.
 
 A **pytest unit layer** (`tests/`) complements the gate — fast, isolated tests that
