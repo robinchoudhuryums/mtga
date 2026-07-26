@@ -3634,3 +3634,80 @@ Whenever you cast an artifact or Lesson spell, put a +1/+1 counter on Sokka.",U/
 Angry Rabble,Creature — Human Citizen,"Trample
 Whenever you cast a spell with mana value 4 or greater, this creature deals 1 damage to each opponent.
 {5}{R}: Put two +1/+1 counters on this creature. Activate only as a sorcery.",R,Human; Citizen; counters; burn; noncombat damage; trample; evasion,SPM,75,1
+University Campus,Land,"This land enters tapped.
+{T}: Add {W} or {U}.
+{4}, {T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W/U,graveyard; mana; selection; surveil,SPM,186,2
+Suburban Sanctuary,Land,"This land enters tapped.
+{T}: Add {G} or {W}.
+{4}, {T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W/G,graveyard; mana; selection; surveil,SPM,185,1
+Ominous Asylum,Land,"This land enters tapped.
+{T}: Add {B} or {R}.
+{4}, {T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",B/R,graveyard; mana; selection; surveil,SPM,181,1
+Scorpion's Sting,Instant,Target creature gets -3/-3 until end of turn.,B,removal,SPM,65,1
+Kraven's Cats,Creature — Cat Villain,{2}{G}: This creature gets +2/+2 until end of turn. Activate only once each turn.,G,Cat; Villain; pump,SPM,104,1
+Hot Dog Cart,Artifact,"When this artifact enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+{T}: Add one mana of any color.",Colorless,lifegain; sacrifice; tokens; mana; etb; food,SPM,164,1
+News Helicopter,Artifact Creature — Construct,"Flying
+When this creature enters, create a 1/1 green and white Human Citizen creature token.",Colorless,Construct; tokens; etb; flying; evasion,SPM,169,1
+Web Up,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.",W,removal; etb,MSH,41,1
+Risky Research,Sorcery,"Surveil 2, then draw two cards. You lose 2 life. (To surveil 2, look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",B,graveyard; pay life; card draw; selection; surveil,SPM,62,1
+Gallant Citizen,Creature — Human Citizen,"When this creature enters, draw a card.",W/G,Human; Citizen; card draw; etb,MSC,820,1
+"Beetle, Legacy Criminal",Legendary Creature — Human Rogue Villain,"Flying
+{1}{U}, Exile this card from your graveyard: Put a +1/+1 counter on target creature. It gains flying until end of turn. Activate only as a sorcery.",U,Human; Rogue; Villain; counters; graveyard; flying; evasion,SPM,26,1
+Whoosh!,Instant,"Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)
+Return target nonland permanent to its owner's hand. If this spell was kicked, draw a card.",U,card draw; bounce; kicker; value,MSC,790,1
+Skyward Spider,Creature — Spider Human Hero,"Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
+This creature has flying as long as it's modified. (Equipment, Auras you control, and counters are modifications.)",W/U,Spider; Human; Hero; ward; protection,SPM,146,1
+City Pigeon,Creature — Bird,"Flying
+When this creature leaves the battlefield, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",W,Bird; lifegain; sacrifice; tokens; food; flying; evasion,MSC,769,1
+Lurking Lizards,Creature — Lizard Villain,"Trample
+Whenever you cast a spell with mana value 4 or greater, put a +1/+1 counter on this creature.",G,Lizard; Villain; counters; trample; evasion,MSC,816,1
+"Spider-Girl, Legacy Hero",Legendary Creature — Spider Human Hero,"During your turn, Spider-Girl has flying.
+When Spider-Girl leaves the battlefield, create a 1/1 green and white Human Citizen creature token.",W/G,Spider; Human; Hero; tokens,SPM,149,1
+Grow Extra Arms,Instant,"This spell costs {1} less to cast if it targets a Spider.
+Target creature gets +4/+4 until end of turn.",G,cost-reduction; pump,SPM,101,1
+Taxi Driver,Creature — Human Pilot,"{1}, {T}: Target creature gains haste until end of turn.",R,Human; Pilot,MSC,811,1
+"Spider-Man, Web-Slinger",Legendary Creature — Spider Human Hero,Web-slinging {W} (You may cast this spell for {W} if you also return a tapped creature you control to its owner's hand.),W,Spider; Human; Hero; bounce; web-slinging; evasion; tempo,MSC,776,1
+Mysterio's Phantasm,Creature — Illusion Villain,"Flying, vigilance
+Whenever this creature attacks, mill a card. (Put the top card of your library into your graveyard.)",U,Illusion; Villain; graveyard; mill; flying; evasion; vigilance; combat,SPM,38,1
+Common Crook,Creature — Human Rogue Villain,"When this creature dies, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",B,Human; Rogue; Villain; sacrifice; tokens; treasure,MSC,792,1
+"Wraith, Vicious Vigilante",Legendary Creature — Human Detective Hero,"Double strike
+Fear Gas — Wraith can't be blocked.",W/U,Human; Detective; Hero; fear; evasion; double strike; combat; aggro,SPM,160,1
+Alien Symbiosis,Enchantment — Aura,"Enchant creature
+Enchanted creature gets +1/+1, has menace, and is a Symbiote in addition to its other types.
+You may cast this card from your graveyard by discarding a card in addition to paying its other costs.",B,Aura; graveyard; aura; pump; enchant,MSC,791,1
+Spider-Man India,Legendary Creature — Spider Human Hero,"Web-slinging {1}{G}{W} (You may cast this spell for {1}{G}{W} if you also return a tapped creature you control to its owner's hand.)
+Pavitr's Sevā — Whenever you cast a creature spell, put a +1/+1 counter on target creature you control. It gains flying until end of turn.",W/G,Spider; Human; Hero; counters; bounce; web-slinging; evasion; tempo,SPM,151,1
+Rhino's Rampage,Sorcery,"Target creature you control gets +1/+0 until end of turn. It fights target creature an opponent controls. When excess damage is dealt to the creature an opponent controls this way, destroy up to one target noncreature artifact with mana value 3 or less.",R/G,pump; fight; removal; combat,MSC,823,1
+Sudden Strike,Instant,Destroy target attacking or blocking creature.,W,removal,MSC,779,1
+"Spiders-Man, Heroic Horde",Legendary Creature — Spider Hero,"Web-slinging {4}{G}{G} (You may cast this spell for {4}{G}{G} if you also return a tapped creature you control to its owner's hand.)
+When Spiders-Man enters, if they were cast using web-slinging, you gain 3 life and create two 2/1 green Spider creature tokens with reach.",G,Spider; Hero; lifegain; tokens; etb; bounce; web-slinging; evasion; tempo,SPM,117,1
+Behold the Sinister Six!,Sorcery,Return up to six target creature cards with different names from your graveyard to the battlefield.,B,reanimator; graveyard,SPM,51,1
+"Doctor Octopus, Master Planner",Legendary Creature — Human Scientist Villain,"Other Villains you control get +2/+2.
+Your maximum hand size is eight.
+At the beginning of your end step, if you have fewer than eight cards in hand, draw cards equal to the difference.",U/B,Human; Scientist; Villain; card draw; pump,SPM,128,1
+"Shriek, Treblemaker",Legendary Creature — Mutant Villain,"At the beginning of your first main phase, you may discard a card. When you do, target creature can't block this turn.
+Sonic Blast — Whenever a creature an opponent controls dies, Shriek deals 1 damage to that player.",B/R,Mutant; Villain; burn; noncombat damage,SPM,144,1
+"Ezekiel Sims, Spider-Totem",Legendary Creature — Spider Human Advisor,"Reach
+At the beginning of combat on your turn, target Spider you control gets +2/+2 until end of turn.",G,Spider; Human; Advisor; pump; reach; defense,SPM,100,1
+King T'Challa,Legendary Creature — Human Noble Hero // Legendary Creature — Human Warrior Hero,"Flash
+Whenever a player draws their second card each turn, you draw a card.
+{4}{W}{U}: Transform King T'Challa. Activate only as a sorcery. // Flash
+Double strike
+Prevent all damage that would be dealt to Black Panther.
+Whenever Black Panther deals combat damage to a player, draw a card.",W/U,Human; Noble; Hero; Warrior; card draw; transform; double strike; combat; aggro; flash; tempo,MSH,219,1
+Dracogenesis,Enchantment,You may cast Dragon spells without paying their mana costs.,R,,TDM,105,1
+Festival of Embers,Enchantment,"During your turn, you may cast instant and sorcery spells from your graveyard by paying 1 life in addition to their other costs.
+If a card or token would be put into your graveyard from anywhere, exile it instead.
+{1}{R}: Sacrifice this enchantment.",R,graveyard; sacrifice; spellslinger,BLB,134,1
+"Delney, Streetwise Lookout",Legendary Creature — Human Scout,"Creatures you control with power 2 or less can't be blocked by creatures with power 3 or greater.
+If a triggered ability of a creature you control with power 2 or less triggers, that ability triggers an additional time.",W,Human; Scout,MKM,12,1
+Virtue of Loyalty,Enchantment // Instant — Adventure,"At the beginning of your end step, put a +1/+1 counter on each creature you control. Untap those creatures. // Create a 2/2 white Knight creature token with vigilance. (Then exile this card. You may cast the enchantment later from exile.)",W,Adventure; counters; tokens,WOE,38,1
+Agatha's Soul Cauldron,Legendary Artifact,"You may spend mana as though it were mana of any color to activate abilities of creatures you control.
+Creatures you control with +1/+1 counters on them have all activated abilities of all creature cards exiled with Agatha's Soul Cauldron.
+{T}: Exile target card from a graveyard. When a creature card is exiled this way, put a +1/+1 counter on target creature you control.",Colorless,counters; graveyard; removal; ramp,WOE,242,1
+Day of Judgment,Sorcery,Destroy all creatures.,W,,FDN,140,1
+Enduring Tenacity,Enchantment Creature — Snake Glimmer,"Whenever you gain life, target opponent loses that much life.
+When Enduring Tenacity dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",B,Snake; Glimmer; lifegain,DSK,95,1
+Adelbert Steiner,Legendary Creature — Human Knight,"Lifelink
+Adelbert Steiner gets +1/+1 for each Equipment you control.",W,Human; Knight; lifegain; pump; lifelink,FIN,3,1

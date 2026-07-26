@@ -1717,6 +1717,46 @@ Ponder,{U},1,
 Exalted Sunborn,{3}{W}{W},5,Flying;Lifelink;Warp
 "Sokka, Bold Boomeranger",{U}{R},2,
 Angry Rabble,{1}{R},2,Trample
+University Campus,,0,Surveil
+Suburban Sanctuary,,0,Surveil
+Ominous Asylum,,0,Surveil
+Scorpion's Sting,{1}{B},2,
+Kraven's Cats,{1}{G},2,
+Hot Dog Cart,{3},3,Food
+News Helicopter,{3},3,Flying
+Web Up,{2}{W},3,
+Risky Research,{2}{B},3,Surveil
+Gallant Citizen,{G/W}{G/W},2,
+"Beetle, Legacy Criminal",{3}{U},4,Flying
+Whoosh!,{1}{U},2,Kicker
+Skyward Spider,{W/U}{W/U},2,Ward
+City Pigeon,{W},1,Flying;Food
+Lurking Lizards,{1}{G},2,Trample
+"Spider-Girl, Legacy Hero",{G}{W},2,
+Grow Extra Arms,{1}{G},2,
+Taxi Driver,{1}{R},2,
+"Spider-Man, Web-Slinger",{2}{W},3,Web-slinging
+Mysterio's Phantasm,{1}{U},2,Flying;Vigilance;Mill
+Common Crook,{1}{B},2,Treasure
+"Wraith, Vicious Vigilante",{1}{W}{U},3,Fear Gas;Fear;Double strike
+Alien Symbiosis,{1}{B},2,Enchant
+Spider-Man India,{3}{G}{W},5,Web-slinging;Pavitr's Sevā
+Rhino's Rampage,{R/G},1,Fight
+Sudden Strike,{1}{W},2,
+"Spiders-Man, Heroic Horde",{1}{G},2,Web-slinging
+Behold the Sinister Six!,{6}{B},7,
+"Doctor Octopus, Master Planner",{5}{U}{B},7,
+"Shriek, Treblemaker",{2}{B/R},3,Sonic Blast
+"Ezekiel Sims, Spider-Totem",{4}{G},5,Reach
+King T'Challa,{1}{W}{U},3,Transform;Double strike;Flash
+Dracogenesis,{6}{R}{R},8,
+Festival of Embers,{4}{R},5,
+"Delney, Streetwise Lookout",{2}{W},3,
+Virtue of Loyalty,{3}{W}{W} // {1}{W},5,
+Agatha's Soul Cauldron,{2},2,
+Day of Judgment,{2}{W}{W},4,
+Enduring Tenacity,{2}{B}{B},4,
+Adelbert Steiner,{1}{W},2,Lifelink
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -2501,7 +2541,6 @@ Brazen Collector,{1}{R},2,First strike
 Byway Barterer,{2}{R},3,Menace
 "Dragonhawk, Fate's Tempest",{3}{R}{R},5,Flying
 Emberheart Challenger,{1}{R},2,Prowess;Valiant;Haste
-Festival of Embers,{4}{R},5,
 Flamecache Gecko,{1}{R},2,
 Frilled Sparkshooter,{3}{R},4,Reach;Menace
 Hearthborn Battler,{2}{R},3,Haste
@@ -3754,7 +3793,6 @@ Dashing Bloodsucker,{3}{B},4,Eerie
 Defiled Crypt // Cadaver Lab,{3}{B} // {B},5,
 Demonic Counsel,{1}{B},2,Delirium
 Doomsday Excruciator,{B}{B}{B}{B}{B}{B},6,Flying
-Enduring Tenacity,{2}{B}{B},4,
 Fanatic of the Harrowing,{3}{B},4,
 Fear of Lost Teeth,{B},1,
 Fear of the Dark,{4}{B},5,
@@ -4647,7 +4685,6 @@ Soulstone Sanctuary,,0,
 Angel of Finality,{3}{W},4,Flying
 Authority of the Consuls,{W},1,
 Cathar Commando,{1}{W},2,Flash
-Day of Judgment,{2}{W}{W},4,
 Savannah Lions,{W},1,
 Extravagant Replication,{4}{U}{U},6,
 Lightshell Duo,{3}{U},4,Surveil;Prowess
@@ -4899,7 +4936,6 @@ Estinien Varlineau,{2}{W}{B},4,
 "Ragnarok, Divine Deliverance",,7,Reach;Vigilance;Haste;Trample;Menace
 A-Vivi Ornitier,{1}{U}{R},3,
 "Ultima, Origin of Oblivion",{5},5,Flying
-Adelbert Steiner,{1}{W},2,Lifelink
 Aerith Gainsborough,{2}{W},3,Lifelink
 "Ashe, Princess of Dalmasca",{2}{W},3,
 Crystal Fragments // Summon: Alexander,{W},1,Flying;Transform;Equip
@@ -9609,7 +9645,6 @@ Call a Surprise Witness,{1}{W},2,
 Case of the Gateway Express,{1}{W},2,Solved
 Case of the Pilfered Proof,{1}{W},2,Solved
 Case of the Uneaten Feast,{W},1,Solved
-"Delney, Streetwise Lookout",{2}{W},3,
 Doorkeeper Thrull,{1}{W},2,Flying;Flash
 Due Diligence,{2}{W},3,Enchant
 Essence of Antiquity,{3}{W}{W},5,Disguise
@@ -10397,19 +10432,13 @@ Sif's Spearmaster,{2}{R},3,
 "Goliath, Mass Manipulator",{1}{G},2,Power-up;Reach
 "Wolfsbane, Highland Hero",{1}{G},2,Trample
 Aunt May,{W},1,
-City Pigeon,{W},1,Flying;Food
 "MJ, Rising Star",{2}{W},3,Vigilance
 Selfless Police Captain,{1}{W},2,
-"Spider-Man, Web-Slinger",{2}{W},3,Web-slinging
 Spider-UK,{3}{W},4,Web-slinging
 "Starling, Aerial Ally",{4}{W},5,Flying
-Sudden Strike,{1}{W},2,
 Wild Pack Squad,{2}{W},3,
 The Clone Saga,{3}{U},4,Surveil
 Time Warp,{3}{U}{U},5,
-Whoosh!,{1}{U},2,Kicker
-Alien Symbiosis,{1}{B},2,Enchant
-Common Crook,{1}{B},2,Treasure
 Dark Ritual,{B},1,
 Deadly Dispute,{1}{B},2,Treasure
 Doomfall,{2}{B},3,
@@ -10419,13 +10448,9 @@ The Spot's Portal,{2}{B},3,
 Big Score,{3}{R},4,Treasure
 Grapeshot,{1}{R},2,Storm
 Lightning Bolt,{R},1,
-Taxi Driver,{1}{R},2,
 Unlucky Witness,{R},1,
 Commune with Dinosaurs,{G},1,
 Farseek,{1}{G},2,
-Lurking Lizards,{1}{G},2,Trample
-Gallant Citizen,{G/W}{G/W},2,
-Rhino's Rampage,{R/G},1,Fight
 Rocket-Powered Goblin Glider,{3},3,Mayhem;Equip
 Spider-Mobile,{3},3,Crew;Trample
 Savage Lands,,0,
@@ -10454,7 +10479,6 @@ Repulsor Rays,{R},1,
 Jennifer Walters // The Sensational She-Hulk,{1}{W},2,Reach;Transform;Trample
 "Monica Rambeau // Photon, Living Light",{2}{W},3,Flying;Prowess;Transform;Hexproof
 "Patriot, Shield Wielder",{1}{W},2,
-Web Up,{2}{W},3,
 Bruce Banner // The Incredible Hulk,{U},1,Reach;Enrage;Transform;Trample
 "Iron Lad, Diverging Destiny",{2}{U},3,Flying;Vigilance
 Kang the Conqueror,{2}{U}{U},4,Flying;Power-up
@@ -12884,27 +12908,22 @@ Peter Parker // Amazing Spider-Man,{1}{W},2,Reach;Vigilance;Transform
 Rent Is Due,{W},1,
 Spectacular Spider-Man,{1}{W},2,Flash
 With Great Power . . .,{3}{W},4,Enchant
-"Beetle, Legacy Criminal",{3}{U},4,Flying
 Hide on the Ceiling,{X}{U},1,
 "Hydro-Man, Fluid Felon",{U}{U},2,
 "Lady Octopus, Inspired Inventor",{U},1,
 "Mysterio, Master of Illusion",{3}{U},4,
-Mysterio's Phantasm,{1}{U},2,Flying;Vigilance;Mill
 Norman Osborn // Green Goblin,{1}{U},2,Flying;Goblin Formula;Transform;Menace;Connive
 Oscorp Research Team,{3}{U},4,
 School Daze,{3}{U}{U},5,Do Homework;Fight Crime
 Secret Identity,{U},1,Conceal
 Spider-Sense,{1}{U},2,Web-slinging
 Agent Venom,{2}{B},3,Menace;Flash
-Behold the Sinister Six!,{6}{B},7,
 "Black Cat, Cunning Thief",{3}{B}{B},5,
 The Death of Gwen Stacy,{2}{B},3,
 "Eddie Brock // Venom, Lethal Protector",{2}{B},3,Transform;Haste;Trample;Menace
 Merciless Enforcers,{1}{B},2,Lifelink
 Parker Luck,{2}{B},3,
-Risky Research,{2}{B},3,Surveil
 "Scorpion, Seething Striker",{3}{B},4,Connive;Deathtouch
-Scorpion's Sting,{1}{B},2,
 The Soul Stone,{1}{B},2,Indestructible
 Gwen Stacy // Ghost-Spider,{1}{R},2,Flying;Vigilance;Transform;Haste
 Maximum Carnage,{4}{R},5,
@@ -12914,23 +12933,18 @@ Spider-Punk,{1}{R},2,Riot
 Spinneret and Spiderling,{R},1,
 Superior Foes of Spider-Man,{2}{R},3,Trample
 Damage Control Crew,{3}{G},4,Repair;Impound
-"Ezekiel Sims, Spider-Totem",{4}{G},5,Reach
-Grow Extra Arms,{1}{G},2,
 Guy in the Chair,{2}{G},3,Web Support
-Kraven's Cats,{1}{G},2,
 Kraven's Last Hunt,{3}{G},4,Mill
 "Lizard, Connors's Curse",{2}{G}{G},4,Lizard Formula;Trample
 Miles Morales // Ultimate Spider-Man,{1}{G},2,Camouflage;Transform;First strike;Haste;Double
 Professional Wrestler,{3}{G},4,Treasure
 Radioactive Spider,{G},1,Reach;Fateful Bite;Deathtouch
-"Spiders-Man, Heroic Horde",{1}{G},2,Web-slinging
 Strength of Will,{1}{G},2,
 Supportive Parents,{2}{G},3,
 "Araña, Heart of the Spider",{1}{R}{W},3,
 Biorganic Carapace,{2}{W}{U},4,Equip
 "Carnage, Crimson Chaos",{2}{B}{R},4,Mayhem;Trample
 Cheering Crowd,{1}{R/G},2,
-"Doctor Octopus, Master Planner",{5}{U}{B},7,
 "Green Goblin, Revenant",{3}{B}{R},5,Deathtouch;Flying
 "Jackal, Genius Geneticist",{G}{U},2,Trample
 "Kraven, Proud Predator",{1}{R}{G},3,Vigilance;Top of the Food Chain
@@ -12940,38 +12954,28 @@ Morbius the Living Vampire,{2}{U}{B},4,Flying;Lifelink;Vigilance
 "Prowler, Clawed Thief",{1}{U}{B},3,Menace;Connive
 "Scarlet Spider, Ben Reilly",{1}{R}{G},3,Trample;Web-slinging;Sensational Save
 "Scarlet Spider, Kaine",{B}{R},2,Mayhem;Menace
-"Shriek, Treblemaker",{2}{B/R},3,Sonic Blast
 "Silk, Web Weaver",{2}{G}{W},4,Web-slinging
-Skyward Spider,{W/U}{W/U},2,Ward
 Spider Manifestation,{1}{R/G},2,Reach
-"Spider-Girl, Legacy Hero",{G}{W},2,
 Spider-Man 2099,{U}{R},2,Vigilance;From the Future;Double strike
-Spider-Man India,{3}{G}{W},5,Web-slinging;Pavitr's Sevā
 "Spider-Woman, Stunning Savior",{1}{W/U},2,Flying;Venom Blast
 "The Spot, Living Portal",{3}{W}{B},5,
 Superior Spider-Man,{2}{U}{B},4,Mind Swap
 "Vulture, Scheming Scavenger",{5}{U/B},6,Flying
 Web-Warriors,{4}{G/W},5,
-"Wraith, Vicious Vigilante",{1}{W}{U},3,Fear Gas;Fear;Double strike
 Bagel and Schmear,{1},1,Nosh;Share
 Doc Ock's Tentacles,{1},1,Equip
-Hot Dog Cart,{3},3,Food
 Interdimensional Web Watch,{4},4,
 "Iron Spider, Stark Upgrade",{3},3,Vigilance
 "Living Brain, Mechanical Marvel",{4},4,
-News Helicopter,{3},3,Flying
 Passenger Ferry,{3},3,Crew
 Peter Parker's Camera,{1},1,
 Spider-Bot,{2},2,Reach
 "Spider-Slayer, Hatred Honed",{2},2,
 Subway Train,{2},2,Crew
 Multiversal Passage,,0,
-Ominous Asylum,,0,Surveil
 Oscorp Industries,,0,Mayhem
 Savage Mansion,,0,Surveil
 Sinister Hideout,,0,Surveil
-Suburban Sanctuary,,0,Surveil
-University Campus,,0,Surveil
 Approach of the Second Sun,{6}{W},7,
 Gift of Estates,{1}{W},2,
 Mana Tithe,{W},1,
@@ -13378,7 +13382,6 @@ Breaching Dragonstorm,{4}{R},5,
 Channeled Dragonfire,{R},1,Harmonize
 Cori-Steel Cutter,{1}{R},2,Flurry;Equip
 Devoted Duelist,{1}{R},2,Flurry;Haste
-Dracogenesis,{6}{R}{R},8,
 Equilibrium Adept,{3}{R},4,Flurry
 Fire-Rim Form,{1}{R},2,Enchant;Flash
 Fleeting Effigy,{R},1,Haste
@@ -14836,7 +14839,6 @@ Tempest Hart // Scan the Clouds,{3}{G} // {1}{U},4,Trample
 Threadbind Clique // Rip the Seams,{3}{U} // {2}{W},4,Flying
 Twining Twins // Swift Spiral,{2}{U}{U} // {1}{W},4,Flying;Vigilance;Ward
 Woodland Acolyte // Mend the Wilds,{2}{W} // {G},3,
-Agatha's Soul Cauldron,{2},2,
 Candy Trail,{1},1,Scry
 Collector's Vault,{2},2,Treasure
 Eriette's Tempting Apple,{4},4,
