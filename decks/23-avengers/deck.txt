@@ -29,6 +29,7 @@ Deck
 1 The Sentry, Golden Guardian (MSH) 35
 
 # Go-wide / anthems / tokens
+1 Exalted Sunborn (EOE) 15
 1 Moonshaker Cavalry (WOE) 21
 1 Dauntless Veteran (FDN) 8
 1 Stagecoach Security (OTJ) 30
@@ -46,7 +47,6 @@ Deck
 
 # Interaction
 1 Stasis Snare (FDN) 581
-1 Pacifism (ANB) 16
 1 Elspeth, Storm Slayer (TDM) 11
 1 Jennifer Walters (MSH) 18
 1 Red Guardian, Super-Soldier (MSH) 34

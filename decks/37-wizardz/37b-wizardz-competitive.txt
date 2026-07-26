@@ -8,8 +8,10 @@
 #: tier: `deck.py redundancy 37` named the two thin effects; this firms them up. The win-con
 #: tier: ping ("deal damage to each opponent when you cast a noncreature spell") is a virtual
 #: tier: ~10-of (Coruscation Mage + Firebrand Archer + Thunderdrum Soloist + Black Waltz +
-#: tier: the 0/1-token makers + Lasting Tarfire); counters went 1→2 (Mana Sculpt + Spell
-#: tier: Pierce). Metrics floor A (interaction/card-adv). A NOTCH below a true-4-of A on raw
+#: tier: the 0/1-token makers + Lasting Tarfire); counters stand at 2 (Mana Sculpt +
+#: tier: Tishana's Tidebinder — Spell Pierce was CUT for Shriek, Treblemaker, which keeps
+#: tier: the counter pair intact while adding a free repeatable discard outlet and a second
+#: tier: ping source). Metrics floor A (interaction/card-adv). A NOTCH below a true-4-of A on raw
 #: tier: consistency (the virtual copies aren't identical — a quality tax — and can't STACK a
 #: tier: keystone), but the plan hinges on no single card, so it's a defensible A. Out of S:
 #: tier: no format-warping bomb.
@@ -22,7 +24,7 @@
 #: notes: This is the COMPETITIVE variant (sibling to 37a's creative value/storm take), built
 #: notes: by analyzing the core (37) with `deck.py redundancy` and applying its "virtual copies
 #: notes: first" plan. vs core 37: +Firebrand Archer +Thunderdrum Soloist (near-reprints of
-#: notes: Coruscation Mage — deepen the ping win-con to a virtual ~10-of) +Spell Pierce (2nd
+#: notes: Coruscation Mage — deepen the ping win-con to a virtual ~10-of) +Mana Sculpt (2nd
 #: notes: counter); -Harmonized Trio (clunky teamwork draw-body) -Harbinger of the Tides (tempo,
 #: notes: less needed) -Tribute to Hunger (redundant edict with Cornered). Singleton throughout.
 #: notes: More owned virtual copies on tap (see `deck.py redundancy 37b`): counters —
@@ -31,6 +33,7 @@
 #: protect: Coruscation Mage; Black Waltz No. 3; Balmor, Battlemage Captain; Kefka, Court Mage; Niv-Mizzet, Visionary
 
 # Creatures — Wizard pingers (virtual copies of the win-con) / prowess payoffs / engines
+1 Shriek, Treblemaker (SPM) 144
 1 The Emperor of Palamecia (FIN) 219
 1 Stormcatch Mentor (BLB) 234
 1 Coruscation Mage (BLB) 131
@@ -71,7 +74,6 @@
 1 Bitter Triumph (SOA) 26
 1 Dark Deed (MSH) 93
 1 Heartless Act (TLA) 103
-1 Spell Pierce (SOA) 23
 1 Mana Sculpt (SOS) 57
 
 # Lands — 24, U-weighted Grixis (owned duals + basics; fungible with 37/37a)

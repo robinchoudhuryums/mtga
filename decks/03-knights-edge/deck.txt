@@ -13,7 +13,7 @@
 1 Summon: Bahamut (FIN) 1
 1 Divine Resilience (FDN) 10
 1 Stasis Snare (FDN) 581
-1 Crib Swap (ECL) 11
+1 Exalted Sunborn (EOE) 15
 1 Hinterland Sanctifier (FDN) 730
 1 Leonardo, Leader in Blue (TMT) 16
 1 Political Triumph (MSH) 31

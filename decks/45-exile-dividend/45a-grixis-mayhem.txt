@@ -88,7 +88,7 @@
 1 Sinister Cryologist (EOE) 75
 
 # Removal
-1 Shock (ANB) 84
+1 Pumpkin Bombardment (MSC) 822
 1 Plasma Bolt (EOE) 152
 1 Lightning Strike (TLA) 146
 1 Long Goodbye (MKM) 92

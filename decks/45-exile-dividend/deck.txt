@@ -84,7 +84,7 @@
 1 Fanatical Firebrand (FDN) 195
 1 Mechanized Ninja Cavalry (TMT) 156
 1 Blazing Crescendo (MSH) 125
-1 Haste Magic (FIN) 140
+1 Exalted Sunborn (EOE) 15
 1 Burning Curiosity (ECL) 129
 1 Jessica Jones, Private Eye (MSH) 139
 1 Lightning, Security Sergeant (FIN) 560
