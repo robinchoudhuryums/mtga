@@ -22,8 +22,9 @@
 #: archetype: swap is a one-shot refund and stabiliser, not a repeatable draw engine.
 #: archetype: Opposite life postures, opposite creature bases, same finisher.
 #: tier: B — Orzhov life-as-currency attrition, one band BELOW the A metrics floor,
-#: tier: PROVISIONAL (unplayed brew). The floor reads A on interaction 13 (11 of it
-#: tier: instant-speed) plus card advantage 6 over a 2.37 curve, and unlike deck 41 that
+#: tier: PROVISIONAL (unplayed brew). The floor reads A on interaction 8 (SEVEN of it
+#: tier: instant-speed) plus card advantage 6 over a 2.49 curve — five surplus removal
+#: tier: spells became the pay-life engine and the drain clock — and unlike deck 41 that
 #: tier: card-advantage number is REAL — Cruel Truths, Circle of Power, Decode
 #: tier: Transmissions and Visions of Villainy each draw two, so this is an engine, not
 #: tier: a pile of cantrips. Held at B by two structural risks the floor cannot see:
@@ -85,18 +86,22 @@ Deck
 1 Dream Beavers (TMT) 62
 1 Starscape Cleric (BLB) 116
 
+# Life into cards — repeatable, on a body
+1 Dark Confidant (FIN) 94
+1 Darkstar Augur (BLB) 90
+1 Koh, the Face Stealer (TLA) 107
+
+# Drain finish
+1 Arnyn, Deathbloom Botanist (SOS) 74
+1 Leech Collector (SOS) 88
+
 # Removal
 1 Hero's Downfall (FDN) 175
 1 Harsh Annotation (SOS) 18
 1 Stroke of Midnight (FDN) 148
-1 Last Gasp (SOS) 86
-1 Dark Deed (MSH) 93
 1 Feed the Swarm (SOA) 29
 1 Sephiroth's Intervention (FIN) 116
 1 Hour of Defeat (MSH) 99
-1 Wander Off (SOS) 104
-1 Auntie's Sentence (ECL) 85
-1 Heartless Act (TLA) 103
 1 Erode (SOS) 15
 
 # Lands — 24, Orzhov
@@ -108,3 +113,11 @@ Deck
 1 Fountainport (BLB) 253
 9 Plains (MSH) 285
 10 Swamp (MSH) 287
+
+#~ +Grave Researcher | -Snarling Gorehound | Reanimation that COSTS LIFE — pure thesis — and it steals from ANY graveyard, so every creature the removal suite killed is a target. Upkeep surveil 1 also digs. The tax is that "prepared" needs three CREATURE cards in your own yard, so it is a mid-game card in a deck with no self-mill. Cut candidates, weakest first: Snarling Gorehound (a 1-drop whose surveil trigger needs power-2-or-less creatures ENTERING, which this build does less of after the swaps), Infestation Sage (a 1/1 that replaces itself but feeds no sacrifice outlet here), Callous Inspector. Owned.
+#~ +Stargaze | -Infestation Sage | Pay X life, look at 2X, keep X — scalable draw at exactly the rate the deck wants, and the discarded half stocks the yard for Grave Researcher above. Cut candidates, weakest first: Infestation Sage, Callous Inspector (1 damage on death is the smallest effect in the deck), Black Widow, Super Spy (its mill-and-exile payoff wants combat damage this deck rarely deals). Do NOT cut removal for either of these — interaction is 8 after the swaps, down from 13. Owned.
+#~ +Silverquill Charm | -Hour of Defeat | Two-mana modal instant: two counters, exile a power-2-or-less creature, or drain 3 and gain 3. Never dead, and cheaper than the four-drop removal it would replace. Craft (U).
+#~ +Exsanguinate | -Erode | {X}{B}{B} scalable drain-and-gain — the finisher the deck's PATH TO A asks for. Caveat that keeps it in flex rather than the 60: it pushes THEIR total down, which shrinks the Mister Negative refund, so it is plan-B support that mildly undercuts plan A. Craft (U).
+#~ +Starseer Mentor | -Hour of Defeat | "Gained OR LOST life this turn" is met every turn here without trying, so it is a repeatable lose-3-or-sacrifice-or-discard clock on a flier. Held out on curve: MV 5 against a 2.37 average. Craft (U).
+#~ +The Spot's Portal | -Harsh Annotation | Instant-speed bottom-of-library removal, which beats exile against recursion, and the 2-life rider is on-thesis (waived while you control a Villain — Agents of HYDRA makes one). An UPGRADE OVER an existing removal spell, not an add. Craft (U).
+#~ +Foolish Fate | -Harsh Annotation | Instant removal with an Infusion rider that drains 3 if you gained life this turn, which this deck does constantly. Same note as above: swap for a removal spell, do not add. Craft (U).

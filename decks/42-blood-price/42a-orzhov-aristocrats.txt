@@ -32,11 +32,17 @@
 #: archetype: THREE nonland cards are shared. vs the core 42: opposite
 #: archetype: resource. 42 spends life and holds creatures; this spends creatures and
 #: archetype: gains life.
-#: tier: B — Orzhov aristocrats, PROVISIONAL (unplayed brew), deliberately held one band
-#: tier: BELOW the A metrics floor. The floor reads A on interaction 7 (six of it
-#: tier: instant-speed) — eight really, since `stats` flags Liliana's -4 double edict as a
-#: tier: likely under-read. Held at B by three things the floor cannot price, which is
-#: tier: two more than an A tolerates:
+#: tier: B — Orzhov aristocrats, PROVISIONAL (unplayed brew). The metrics floor is now B
+#: tier: and the claimed letter sits AT it rather than one band above, which is a real
+#: tier: change: interaction fell 7 -> 5 when Harsh Annotation and Sephiroth's
+#: tier: Intervention became Fix What's Broken and Starseer Mentor. Five answers (all
+#: tier: instant-speed, three able to hit a noncreature permanent) is thin even for a
+#: tier: deck whose plan is attrition rather than answers, and `stats` now warns on every
+#: tier: removal spell in the cut list. `cuts` flags Liliana's -4 double edict as a likely
+#: tier: under-read, so the true figure is nearer 6-7 — but that is a reason to verify,
+#: tier: not a reason to claim the number. THE FIX IS ONE LINE: restore Harsh Annotation
+#: tier: over Dwarven Castle Guard (see the flex block) and interaction returns to 6 with
+#: tier: the engine untouched. Held at B by three further things the floor cannot price:
 #: tier: 1. MEASURED CARD ADVANTAGE IS ZERO, and that number is defensible rather than a
 #: tier:    classifier miss. Vampiric Rites, Ahriman, Kingpin's Enforcers, Baron Bertram
 #: tier:    and Agent Venom each draw exactly ONE card, which the role model excludes as
@@ -119,22 +125,26 @@ Deck
 1 Infestation Sage (FDN) 64
 1 Agents of HYDRA (MSH) 85
 1 Dwarven Castle Guard (FIN) 18
-1 Prideful Parent (FDN) 21
+1 Jecht, Reluctant Guardian (FIN) 104
 1 Resolute Reinforcements (FDN) 145
 
 # Value
 1 Starscape Cleric (BLB) 116
 1 Robot Domination (MSH) 111
 
+# Rebuild / protect the engine
+1 Fix What's Broken (SOS) 188
+1 Restoration Magic (FIN) 30
+
+# Drain clock
+1 Starseer Mentor (BLB) 233
+
 # Removal
 1 Erode (SOS) 15
-1 Harsh Annotation (SOS) 18
 1 Last Gasp (SOS) 86
 1 Heartless Act (TLA) 103
 1 Hero's Downfall (FDN) 175
 1 Stroke of Midnight (FDN) 148
-1 Restoration Magic (FIN) 30
-1 Sephiroth's Intervention (FIN) 116
 
 # Lands — 25, Orzhov
 1 Bleachbone Verge (DFT) 250
@@ -145,3 +155,12 @@ Deck
 1 Fountainport (BLB) 253
 9 Swamp (MSH) 291
 7 Plains (MSH) 287
+
+#~ +Treasure Dredger | -Dwarven Castle Guard | {1}, {T}, Pay 1 life: create a Treasure — a REPEATABLE artifact-fodder engine, and six of this deck's outlets/payoffs read "creature OR artifact" (Umbral Collar Zealot, Ahriman, Kingpin's Enforcers, Baron Bertram, Al Bhed Salvagers, Scavenger's Talent). Cut candidates, weakest first: Dwarven Castle Guard (a ONE-SHOT body that leaves one token, where the Dredger makes fodder every turn), Infestation Sage (same shape), Agents of HYDRA. Craft (U).
+#~ +Krumar Initiate | -Infestation Sage | {X}{B}, {T}, Pay X life: endure X — a mana sink that makes a token (fodder) or grows, and pay-X-life is on-thesis. Held out because a control-ish deck wants its mana for outlets and answers, and this competes directly. Cut candidates, weakest first: Infestation Sage, Agents of HYDRA, Anafenza, Unyielding Lineage (the flashiest of the three, but its endure trigger needs NONTOKEN deaths, which are the deaths you least want to spend). Craft (U).
+#~ +Krovod Haunch | -Infestation Sage | RE-GRADED after this deck existed. It is a Food ARTIFACT, so it is fodder for the six creature-or-artifact outlets — and "when this Equipment is put into a graveyard from the battlefield, you may pay {1}{W}: create two 1/1 Dogs" fires exactly WHEN YOU SACRIFICE IT. One mana turns into an artifact you sacrifice into two more bodies. Passed on for 41/42 (correctly — neither is a sacrifice deck); this is its home. Craft (U).
+#~ +Midnight Snack | -Agents of HYDRA | RE-GRADED for the same reason: raid needs you to ATTACK, which a 20-creature token deck does and the two control decks do not. It makes a Food (artifact fodder) every turn you attacked, and its sacrifice mode drains for the life you gained this turn — which is a lot, since Bloodwitch / Arnyn / Al Bhed / Funeral Room all gain life on every death. Craft (U).
+#~ +Azula, On the Hunt | -Prideful Parent | RE-GRADED, with a caveat. Attacks for a Clue (artifact fodder) and a self-inflicted 1 life (on-thesis), and Firebending's {R}{R} is NOT dead — red mana pays GENERIC costs, so it funds Ahriman's {3} sacrifice-draw during combat. The caveat is real though: 4 mana, must attack, and the mana only lasts until end of combat. Craft (U).
+#~ +Social Snub | -Last Gasp | A symmetric edict that COPIES itself if you control a creature — asymmetric in practice because you always have a spare Bat — plus a drain-and-gain rider. It also ADDS interaction, which this deck is short on. Owned.
+
+#~ +Harsh Annotation | -Dwarven Castle Guard | THE INTERACTION FIX, and the first flex line to apply. Fix What's Broken earned its slot but was cut FROM a removal spell, dropping interaction 7 -> 5 and the metrics floor A -> B. Re-sourcing that cut from the weakest fodder instead (a one-shot body that leaves one token) puts a two-mana unconditional kill back in and costs the engine almost nothing. Owned.

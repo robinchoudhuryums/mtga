@@ -19,17 +19,14 @@
 #: archetype: runs no Ninjas and no sneak/clock package; the creature base is chosen for
 #: archetype: ETB text, not evasion.
 #: tier: B — Orzhov blink-value control, one band BELOW the metrics floor of A, and
-#: tier: deliberately so. The floor reads A on interaction 14 (11 of it instant-speed)
-#: tier: over a 2.42 curve, and the interaction really is that deep — but the floor is
-#: tier: blind to two things this deck genuinely lacks.
-#: tier: 1. CARD ADVANTAGE reads 2 (Phyrexian Arena now counts — a repeatable upkeep
-#: tier:    draw accrues advantage, which the one-shot cantrip rule was wrongly
-#: tier:    suppressing). The rest still UNDER-states the deck — Enduring Innocence,
-#: tier:    Tolls of War's Clue, Eerie Gravestone's ETB draw and Red Room Recruit's
-#: tier:    connive each draw ONE card at a time, deliberately not counted — but a
-#: tier:    pile of one-card draws is not
-#: tier:    the same as a real engine. The deck out-values rather than out-draws until
-#: tier:    Mister Negative lands.
+#: tier: deliberately so. The floor reads A on interaction 9 (seven of it instant-speed)
+#: tier: over a 2.56 curve — five surplus removal spells were traded for the card
+#: tier: advantage below, and 9 answers is still deep for a control deck.
+#: tier: 1. CARD ADVANTAGE was the standing weakness and is now HALF-FIXED: the measured
+#: tier:    figure is 4, up from 2, on Circle of Power and Visions of Villainy (both real
+#: tier:    draw-twos) plus Inspiring Overseer and Raven Eagle, whose single draws the
+#: tier:    metric deliberately excludes but which BLINK for value every turn. Still not
+#: tier:    an engine that draws 2+ at once repeatedly, which is what an A wants.
 #: tier: 2. RELIABILITY. The marquee payoff is a SINGLE copy of a 7-drop: ~22% to have
 #: tier:    seen it by turn 7. The build is deliberately arranged so that is fine — every
 #: tier:    blink target is a value ETB that stands on its own, so a Negative-less draw is
@@ -75,7 +72,7 @@ Deck
 # Blink support / extra answers
 1 Airbender Ascension (TLA) 6
 1 Stolen Stark Tech (MSH) 114
-1 Wander Off (SOS) 104
+1 Visions of Villainy (MSH) 120
 
 # Value ETB creatures — the blink targets
 1 Deep-Cavern Bat (LCI) 102
@@ -96,14 +93,16 @@ Deck
 1 Foraging Wickermaw (ECL) 256
 1 Eerie Gravestone (SPM) 163
 
+# Card advantage — the stated path to A
+1 Circle of Power (FIN) 92
+1 Inspiring Overseer (FDN) 496
+1 Raven Eagle (TLA) 116
+
 # Removal
-1 Hero's Downfall (FDN) 175
-1 Harsh Annotation (SOS) 18
+1 Morningtide's Light (ECL) 27
 1 Stroke of Midnight (FDN) 148
 1 Crib Swap (ECL) 11
 1 Tolls of War (TLA) 245
-1 Erode (SOS) 15
-1 Feed the Swarm (SOA) 29
 1 Sephiroth's Intervention (FIN) 116
 
 # Lands — 24, Orzhov
@@ -114,3 +113,10 @@ Deck
 1 Temple of Silence (FDN) 704
 10 Plains (MSH) 285
 9 Swamp (MSH) 287
+
+#~ +Painful Quandary | -Stroke of Midnight | PRO-synergy here in a way its black flavour hides: it is the one taxer on the list that is NOT symmetric (it triggers only on OPPONENTS' spells and costs you nothing), and pushing their total DOWN widens the exact gap Mister Negative converts into cards. Held out of the 60 only on curve — MV 5 against a 2.42 average, and it does nothing on an empty board. Owned.
+#~ +The Mind Stone | -Airbender Ascension | The ONLY way to re-trigger a noncreature ETB in this deck: all six blink spells read "exile target CREATURE you control", while the Mind Stone's harnessed ability blinks any nonland permanent — so it is what unlocks Airbender Ascension, Stolen Stark Tech, Eerie Gravestone and Foraging Wickermaw. Indestructible, so it survives the removal that answers the rest of the engine. Slow: {5}{W} plus a tap to harness, and a plain mana rock before that. Owned.
+#~ +Aang, the Last Airbender | -Hecteyes | A value ETB that is also interaction, on a flier — airbend exiles a nonland permanent, and blinking Aang repeats it. Not an ANSWER, though: airbend lets them recast it for {2}, so it buys tempo rather than removing a card. Owned.
+#~ +Ajani, Outland Chaperone | -Fortress Kin-Guard | Makes blockers, has removal, and is inherently hard for a creature deck to attack through. The ultimate looks at the top X cards where X is your LIFE TOTAL — which is this deck's posture exactly, and the reason it reads better here than in 42 or 43. Capped by a -2 that only hits TAPPED creatures. Owned.
+#~ +Stirring Hopesinger | -Honored Knight-Captain | Flying lifelink (right posture) and repartee fires off BOTH the removal and the blink spells, since this deck's blinks target a creature. It is a payoff rather than a blink target, though — no ETB of its own. Owned.
+#~ +Silver Sable, Mercenary Leader | -Invasion Reinforcements | Blinkable (it has an ETB), but the ETB is only a +1/+1 counter in a deck that does not care about counters. The weakest of the six sidegrades; listed for completeness. Owned.
