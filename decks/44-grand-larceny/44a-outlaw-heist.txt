@@ -9,17 +9,14 @@
 #: archetype: opponent's library EVERY UPKEEP, scaling with the number of outlaws you
 #: archetype: control, and Rakdos, the Muscle steals every time you sacrifice a creature.
 #: archetype: THE OUTLAW COUNT IS THE POINT. Jasper scales on Assassins, Mercenaries,
-#: archetype: Pirates, Rogues and Warlocks, and eleven of this deck's creatures are
-#: archetype: outlaws: both Tinybones and Black Cat, Cunning Thief (Rogue), Reno and Rude,
-#: archetype: Raven Eagle and Sawblade Skinripper (Assassin), Ghost, Spectral Saboteur
-#: archetype: (Rogue), Hama (Warlock), Laughing Jasper Flint himself (Rogue), Rakdos, the
-#: archetype: Muscle and The Infamous Cruelclaw (Mercenary). Better still, Jasper's first
+#: archetype: Pirates, Rogues and Warlocks, and ten of this deck's creatures are outlaws:
+#: archetype: both Tinybones and Black Cat, Cunning Thief (Rogue), Reno and Rude, Raven
+#: archetype: Eagle and Sawblade Skinripper (Assassin), Hama (Warlock), Laughing Jasper
+#: archetype: Flint himself (Rogue), Rakdos, the Muscle and The Infamous Cruelclaw
+#: archetype: (Mercenary). Better still, Jasper's first
 #: archetype: line — "creatures you control but don't own are Mercenaries" — means every
 #: archetype: creature this deck STEALS becomes an outlaw and grows the next trigger. The
 #: archetype: engine feeds itself, which is the thing 44 cannot do.
-#: archetype: Ghost, Spectral Saboteur earns a slot here that it did not earn in 44: it
-#: archetype: heists nothing, but an unblockable body is an outlaw that always connects,
-#: archetype: and outlaw COUNT is a resource in this list.
 #: archetype: RAKDOS NEEDS OUTLETS, which the first draft did not give him. His trigger is
 #: archetype: "whenever you SACRIFICE another creature", and the only non-combat outlet in
 #: archetype: the deck was his own once-per-turn ability — a protected build-around
@@ -64,7 +61,6 @@
 1 Corrupt Court Official (TLA) 92
 1 Umbral Collar Zealot (EOE) 123
 1 Sawblade Skinripper (DSK) 231
-1 Ghost, Spectral Saboteur (MSH) 214
 1 Raven Eagle (TLA) 116
 1 Ninja of the Hand (MSH) 108
 1 The Infamous Cruelclaw (BLB) 219
@@ -79,6 +75,7 @@
 # Heist spells and permanents
 1 Cruelclaw's Heist (BLB) 88
 1 Outrageous Robbery (MKM) 97
+1 Dream Harvest (ECL) 216
 1 Korvold and the Noble Thief (WOE) 139
 
 # Discard / graveyard disruption — heist enablers under Bauble Burglar
@@ -111,7 +108,7 @@
 1 Temple of Malice (FDN) 701
 14 Swamp (MSH) 291
 
-#~ -Ghost, Spectral Saboteur | +Etali, Primal Storm | CRAFT (R): Etali attacks and casts
+#~ note: applied — Dream Harvest in for Ghost, Spectral Saboteur.
 #~ the top of EVERY opponent's library free — the biggest repeatable heist in red, and a
 #~ real threat rather than an outlaw-counter body. Ghost's only job here is being an
 #~ unblockable outlaw, which is the softest slot in the deck.
@@ -140,4 +137,3 @@
 #~ impulse for the same slot on three counts: nearly every heist card says "mana of any
 #~ type", so a stolen spell costs no color commitment; it is disruption as well as a card;
 #~ and it spends THEIR card quality instead of thinning your own library.
-

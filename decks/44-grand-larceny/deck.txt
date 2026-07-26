@@ -40,10 +40,10 @@
 #: archetype: Villainous is the mono-black control-midrange deck this would collide with
 #: archetype: if it dropped the splash. Here the resource is the OPPONENT's library,
 #: archetype: hand and graveyard. The `heist` theme (82 pool cards, 0.52%) is carried by
-#: archetype: 13 cards here and by no other deck on the roster.
+#: archetype: 14 cards here and by no other deck on the roster.
 #: tier: B — Dimir heist tempo-attrition, one band BELOW the A metrics floor, and
-#: tier: PROVISIONAL (unplayed brew, 19 craft targets). The floor reads A on interaction
-#: tier: 12 +1? across a 2.81 curve — seven of it instant-speed, three able to answer a
+#: tier: PROVISIONAL (unplayed brew, 18 craft targets). The floor reads A on interaction
+#: tier: 11 +1? across a 2.94 curve — six of it instant-speed, three able to answer a
 #: tier: noncreature permanent — and if anything the floor UNDER-states the deck: card
 #: tier: advantage scores 1 only because the classifier finds no role for the heist
 #: tier: package (Cruelclaw's Heist, Outrageous Robbery, Psychic Whorl, End of the
@@ -51,7 +51,7 @@
 #: tier: unclassified), when stealing an opponent's card is card advantage by any
 #: tier: reading. Held at B by four structural risks the metrics cannot see, which is
 #: tier: three more than an A tolerates:
-#: tier: 1. THE ENGINE MUST CONNECT. Five of the thirteen heist cards trigger on combat
+#: tier: 1. THE ENGINE MUST CONNECT. Five of the fourteen heist cards trigger on combat
 #: tier:    damage. Against a deck that blocks well, or any sweeper, they do nothing at
 #: tier:    all — this is a real matchup cliff, not a curve problem, and it is why the
 #: tier:    removal suite is sized at eleven and why Nowhere to Run is maindecked.
@@ -91,6 +91,7 @@
 # Heist spells and permanents
 1 Cruelclaw's Heist (BLB) 88
 1 Outrageous Robbery (MKM) 97
+1 Dream Harvest (ECL) 216
 1 Sothera, the Supervoid (EOE) 115
 
 # Discard / graveyard disruption — heist enablers under Bauble Burglar
@@ -104,7 +105,6 @@
 1 End of the Hunt (SOS) 81
 1 Long Goodbye (MKM) 92
 1 Bitter Triumph (SOA) 26
-1 Last Gasp (SOS) 86
 1 Feed the Swarm (SOA) 29
 1 Hero's Downfall (FDN) 175
 1 Cruel Alliance (MSH) 92
@@ -127,7 +127,7 @@
 1 Soured Springs (OTJ) 264
 14 Swamp (MSH) 291
 
-#~ -Sothera, the Supervoid | +Dream Harvest | CRAFT (R): the biggest single heist in the
+#~ note: applied — Dream Harvest in for Last Gasp.
 #~ colors — steal MV5+ worth of their library, free. Cut from the first draft only for
 #~ costing 7 in a deck that already tops out at Krang's 6; re-add if play proves the deck
 #~ grindier than it looks on paper, and take the 4-drop enchantment out for it.

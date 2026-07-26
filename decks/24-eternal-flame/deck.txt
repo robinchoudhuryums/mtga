@@ -16,6 +16,7 @@ Deck
 1 Ennis, Debate Moderator (SOS) 14
 1 Etali, Primal Storm (FDN) 194
 # Impulse enablers
+1 Superior Foes of Spider-Man (SPM) 96
 1 Practiced Scrollsmith (SOS) 210
 1 Daredevil, Man Without Fear (MSH) 213
 1 Jessica Jones, Private Eye (MSH) 139
@@ -48,7 +49,6 @@ Deck
 1 Lightning Strike (MSH) 142
 1 Abrade (FDN) 188
 1 Valorous Stance (FDN) 583
-1 Bombard (EOE) 129
 1 Lightning, Security Sergeant (FIN) 560
 
 # Lands
