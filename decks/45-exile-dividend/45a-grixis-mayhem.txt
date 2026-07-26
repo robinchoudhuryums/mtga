@@ -1,0 +1,110 @@
+#: name: Exile Dividend — Grixis Mayhem
+#: format: standard
+#: colors: UBR
+#: plan: midrange
+#: archetype: Grixis (U/B/R) variant of 45 — the OTHER zone. Where 45 casts from EXILE and
+#: archetype: gets paid for it, this deck casts from the GRAVEYARD, which is a genuinely
+#: archetype: different engine rather than a recolour: flashback and mayhem both put the
+#: archetype: card in the yard first, and none of 45's three payoffs (Quintorius, Fire Lord
+#: archetype: Zuko, Appa) trigger on a graveyard cast at all. Fire Lord Zuko was EXCLUDED
+#: archetype: for a hard reason rather than a judgment call — {R}{W}{B} needs a white pip,
+#: archetype: so he is uncastable in these colours, and that is what forced the fork.
+#: archetype: MAYHEM IS THE SPINE: "cast this from your graveyard if you DISCARDED it this
+#: archetype: turn." Seven owned mayhem cards plus a discard package to switch them on, and
+#: archetype: Ultimate Green Goblin does both halves by itself (upkeep: discard a card, make
+#: archetype: a Treasure — which is discard outlet, mayhem enabler and ramp in one line).
+#: archetype: NORMAN OSBORN IS THE PAYOFF and the deck's one craft target. His back face
+#: archetype: grants mayhem to EVERY nonland card in the graveyard and makes graveyard casts
+#: archetype: cost {2} less — so he converts the whole flashback half and every discarded
+#: archetype: card into the same engine. The front face is an unblockable 2-drop that
+#: archetype: connives, which fills the yard he later cashes in.
+#: archetype: DISTINCTNESS: 45 is exile, this is graveyard. Against 22 Bloodbending (UB
+#: archetype: graveyard) the difference is direction — 22 MILLS to fuel its own payoffs and
+#: archetype: wins by decking; this discards to re-CAST, and the graveyard is a second hand
+#: archetype: rather than a resource to grow. Against 37 Wizardz (also UBR) the spine is
+#: archetype: different: 37 is Wizard tribal with noncombat-damage pingers.
+#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 13
+#: tier: across a 2.72 curve, but three things hold it a band below:
+#: tier: 1. THE PAYOFF IS THE ONE CRAFT TARGET. Norman Osborn // Green Goblin is a single
+#: tier:    unowned mythic, ~22% to be seen by turn seven, and he is what converts the
+#: tier:    flashback half into the mayhem engine. Without him the deck is a competent
+#: tier:    Grixis graveyard-value pile — the seven owned mayhem cards still work off the
+#: tier:    discard package — but it is not the deck the header describes.
+#: tier: 2. MAYHEM IS CONDITIONAL ON A SAME-TURN DISCARD. Every mayhem cast needs the card
+#: tier:    discarded THAT turn, so the engine is gated on drawing an outlet; Ultimate
+#: tier:    Green Goblin is the only one that supplies discard for free every upkeep.
+#: tier: 3. PROTECTION 1 against three `#: protect:` build-arounds.
+#: tier: NOTE ON DISTINCTNESS: unlike its core deck this one measures CLEAN. `deck.py
+#: tier: similar` tops out at 73% against deck 6 on a single shared card and 71% against
+#: tier: 25 on four — diffuse graveyard/value overlap, not a duplicated identity. Compare
+#: tier: deck 45, which reads 79% against 24 on TWELVE shared cards. On the numbers this
+#: tier: variant has a better claim to being a standalone deck than its own core does.
+#: tier: PATH TO A: a second protection effect, and a second discard outlet that works
+#: tier: without costing a card, so mayhem is not gated on drawing Ultimate Green Goblin.
+#: protect: Norman Osborn // Green Goblin; Ultimate Green Goblin; Baron Helmut Zemo
+
+# Engine — discard outlets that are also graveyard payoffs
+1 Norman Osborn // Green Goblin (SPM) 39
+1 Ultimate Green Goblin (SPM) 157
+1 Baron Helmut Zemo (MSH) 87
+1 Emet-Selch, Unsundered (FIN) 218
+
+# Mayhem — cast from the graveyard if discarded this turn
+1 Sandman's Quicksand (SPM) 63
+1 Electro's Bolt (SPM) 77
+1 Spider-Islanders (SPM) 91
+1 Chameleon, Master of Disguise (SPM) 27
+1 Prison Break (SPM) 61
+1 Raging Goblinoids (SPM) 85
+
+# Flashback / recursion — the other half of the graveyard plan
+1 Think Twice (FDN) 165
+1 Dreams of Laguna (FIN) 50
+1 Tome Blast (SOS) 135
+1 Bulk Up (SOA) 40
+1 Resentful Revelation (FIN) 114
+1 Inspiration from Beyond (FDN) 43
+1 Solstice Revelations (TLA) 153
+1 Timeline Culler (EOE) 121
+
+# Discard / loot — switches mayhem on
+1 Kang, Temporal Tyrant (MSH) 217
+1 Kitsa, Otterball Elite (BLB) 54
+1 Mob Lookout (MSC) 821
+1 Hawkeye, Master Marksman (MSH) 130
+1 Unstable Experiment (SPM) 47
+
+# Value
+1 Nibelheim Aflame (FIN) 146
+1 Kindle the Inner Flame (ECL) 147
+1 Retrieve the Esper (FIN) 68
+1 Sinister Cryologist (EOE) 75
+
+# Removal
+1 Shock (ANB) 84
+1 Plasma Bolt (EOE) 152
+1 Lightning Strike (TLA) 146
+1 Long Goodbye (MKM) 92
+1 Bitter Triumph (SOA) 26
+1 Feed the Swarm (SOA) 29
+1 Last Gasp (SOS) 86
+1 Hero's Downfall (FDN) 175
+1 Weftstalker Ardent (EOE) 169
+
+# Lands
+1 Blazemire Verge (DSK) 256
+1 Dark Fortress (MSH) 264
+1 Blood Crypt (ECL) 262
+2 Bloodfell Caves (TDM) 250
+1 Gloomlake Verge (DSK) 260
+1 Hidden Lair (MSH) 269
+2 Dismal Backwater (FDN) 261
+1 Undercity Sewers (PZA) 0
+1 Riverpyre Verge (DFT) 260
+4 Swiftwater Cliffs (MOM) 273
+1 Temple of Epiphany (FDN) 699
+1 Spectacle Summit (SOS) 262
+2 Stark Industries (MSH) 272
+1 Island (MSH) 289
+2 Mountain (MSH) 293
+2 Swamp (MSH) 291
