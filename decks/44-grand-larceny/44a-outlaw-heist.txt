@@ -9,17 +9,29 @@
 #: archetype: opponent's library EVERY UPKEEP, scaling with the number of outlaws you
 #: archetype: control, and Rakdos, the Muscle steals every time you sacrifice a creature.
 #: archetype: THE OUTLAW COUNT IS THE POINT. Jasper scales on Assassins, Mercenaries,
-#: archetype: Pirates, Rogues and Warlocks, and ten of this deck's creatures are
-#: archetype: outlaws: both Tinybones and Black Cat, Cunning Thief (Rogue), Reno and Rude
-#: archetype: and Raven Eagle (Assassin), Ghost, Spectral Saboteur (Rogue), Hama (Warlock),
-#: archetype: Laughing Jasper Flint himself (Rogue), Rakdos, the Muscle and The Infamous
-#: archetype: Cruelclaw (Mercenary). Better still, Jasper's first
+#: archetype: Pirates, Rogues and Warlocks, and eleven of this deck's creatures are
+#: archetype: outlaws: both Tinybones and Black Cat, Cunning Thief (Rogue), Reno and Rude,
+#: archetype: Raven Eagle and Sawblade Skinripper (Assassin), Ghost, Spectral Saboteur
+#: archetype: (Rogue), Hama (Warlock), Laughing Jasper Flint himself (Rogue), Rakdos, the
+#: archetype: Muscle and The Infamous Cruelclaw (Mercenary). Better still, Jasper's first
 #: archetype: line — "creatures you control but don't own are Mercenaries" — means every
 #: archetype: creature this deck STEALS becomes an outlaw and grows the next trigger. The
 #: archetype: engine feeds itself, which is the thing 44 cannot do.
 #: archetype: Ghost, Spectral Saboteur earns a slot here that it did not earn in 44: it
 #: archetype: heists nothing, but an unblockable body is an outlaw that always connects,
 #: archetype: and outlaw COUNT is a resource in this list.
+#: archetype: RAKDOS NEEDS OUTLETS, which the first draft did not give him. His trigger is
+#: archetype: "whenever you SACRIFICE another creature", and the only non-combat outlet in
+#: archetype: the deck was his own once-per-turn ability — a protected build-around
+#: archetype: enabled by itself. Umbral Collar Zealot (free, repeatable) and Sawblade
+#: archetype: Skinripper ({2}, and itself an Assassin with menace that PAYS OFF the
+#: archetype: sacrifices with damage) fix that; `deck.py engines` now reads four sacrifice
+#: archetype: enablers rather than two.
+#: archetype: NO GRAVEYARD HATE. Strategic Betrayal and Pit of Offerings were both cut for
+#: archetype: the same reason, which is easy to miss because both read as fine cards on
+#: archetype: their own: they EXILE an opponent's graveyard, and four of this deck's heist
+#: archetype: cards — Tinybones the Pickpocket, Shark Shredder, Hama and Rakdos — need that
+#: archetype: graveyard FULL. The discard package fills it; nothing here should empty it.
 #: archetype: RED IS A REAL SECOND COLOR, NOT A SPLASH — Jasper, Rakdos, Cruelclaw and
 #: archetype: Korvold each want a hard {R}, so the manabase runs ten owned B/R duals
 #: archetype: rather than 44's ten blue sources for two cards. Every red card is a SINGLE
@@ -50,6 +62,8 @@
 1 Deep-Cavern Bat (LCI) 102
 1 Virus Beetle (EOE) 124
 1 Corrupt Court Official (TLA) 92
+1 Umbral Collar Zealot (EOE) 123
+1 Sawblade Skinripper (DSK) 231
 1 Ghost, Spectral Saboteur (MSH) 214
 1 Raven Eagle (TLA) 116
 1 Ninja of the Hand (MSH) 108
@@ -68,7 +82,6 @@
 1 Korvold and the Noble Thief (WOE) 139
 
 # Discard / graveyard disruption — heist enablers under Bauble Burglar
-1 Strategic Betrayal (TDM) 94
 1 Auntie's Sentence (ECL) 85
 1 Psychic Whorl (BLB) 105
 1 Ozai's Cruelty (TLA) 113
@@ -76,7 +89,6 @@
 # Removal
 1 Death in the Family (TMT) 61
 1 Epic Downfall (TLA) 96
-1 End of the Hunt (SOS) 81
 1 Long Goodbye (MKM) 92
 1 Bitter Triumph (SOA) 26
 1 Last Gasp (SOS) 86
@@ -97,5 +109,19 @@
 1 Rakdos Guildgate (FDN) 693
 1 Razortrap Gorge (DSK) 267
 1 Temple of Malice (FDN) 701
-1 Pit of Offerings (LCI) 278
-13 Swamp (MSH) 291
+14 Swamp (MSH) 291
+
+#~ -Ghost, Spectral Saboteur | +Etali, Primal Storm | CRAFT (R): Etali attacks and casts
+#~ the top of EVERY opponent's library free — the biggest repeatable heist in red, and a
+#~ real threat rather than an outlaw-counter body. Ghost's only job here is being an
+#~ unblockable outlaw, which is the softest slot in the deck.
+#~ -Raven Eagle | +Vaan, Street Thief | CRAFT (R): Raven Eagle's "whenever you draw your
+#~ second card each turn" clause is near-dead here (Phyrexian Arena is the only repeatable
+#~ draw), so it does half a card's work. Vaan is a red heist body on the same axis.
+#~ -Corrupt Court Official | +Fireglass Mentor | CRAFT (U): a B/R two-drop that impulses
+#~ every turn an opponent lost life — note it exiles from YOUR library, so it is card
+#~ advantage, NOT a heist, and it does not feed Tinybones, Bauble Burglar.
+#~ note: the open question is the SACRIFICE density. Rakdos, the Muscle and Sothera both
+#~ want creatures dying, and the deck now fields four enablers but few expendable bodies —
+#~ every creature here is doing a job. A token-maker would serve both better than a fourth
+#~ outlet; none of the on-color ones surveyed were worth a maindeck slot yet.

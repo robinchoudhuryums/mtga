@@ -22,6 +22,12 @@
 #: archetype: turn into thefts with Burglar out and are fine disruption without him.
 #: archetype: Exile-from-hand effects were deliberately NOT included for this reason:
 #: archetype: they put the card beyond everyone's reach, which is off-thesis here.
+#: archetype: NO GRAVEYARD HATE, for the mirror-image reason. Strategic Betrayal and Pit of
+#: archetype: Offerings were both CUT after the full-text read — they read as fine cards
+#: archetype: alone, but they EXILE an opponent's graveyard, and four heist cards here
+#: archetype: (Tinybones the Pickpocket, Shark Shredder, Hama and Azula) need it FULL.
+#: archetype: Hecteyes took the slot, which is the inversion: discard FILLS the graveyard
+#: archetype: those four steal from.
 #: archetype: BLUE IS A DELIBERATE TWO-CARD SPLASH — only Azula and Etrata need a real
 #: archetype: {U} pip. Hama, Krang & Shredder and Ghost are U/B HYBRIDS castable off
 #: archetype: black alone, so a blue source is never a dead draw even when neither blue
@@ -34,18 +40,18 @@
 #: archetype: Villainous is the mono-black control-midrange deck this would collide with
 #: archetype: if it dropped the splash. Here the resource is the OPPONENT's library,
 #: archetype: hand and graveyard. The `heist` theme (82 pool cards, 0.52%) is carried by
-#: archetype: 12 cards here and by no other deck on the roster.
+#: archetype: 13 cards here and by no other deck on the roster.
 #: tier: B — Dimir heist tempo-attrition, one band BELOW the A metrics floor, and
 #: tier: PROVISIONAL (unplayed brew, 19 craft targets). The floor reads A on interaction
 #: tier: 12 +1? across a 2.81 curve — seven of it instant-speed, three able to answer a
 #: tier: noncreature permanent — and if anything the floor UNDER-states the deck: card
 #: tier: advantage scores 1 only because the classifier finds no role for the heist
-#: tier: package (Cruelclaw's Heist, Outrageous Robbery, Strategic Betrayal, Psychic
-#: tier: Whorl, End of the Hunt and Interdimensional Web Watch are all reported
+#: tier: package (Cruelclaw's Heist, Outrageous Robbery, Psychic Whorl, End of the
+#: tier: Hunt and Interdimensional Web Watch are all reported
 #: tier: unclassified), when stealing an opponent's card is card advantage by any
 #: tier: reading. Held at B by four structural risks the metrics cannot see, which is
 #: tier: three more than an A tolerates:
-#: tier: 1. THE ENGINE MUST CONNECT. Five of the twelve heist cards trigger on combat
+#: tier: 1. THE ENGINE MUST CONNECT. Five of the thirteen heist cards trigger on combat
 #: tier:    damage. Against a deck that blocks well, or any sweeper, they do nothing at
 #: tier:    all — this is a real matchup cliff, not a curve problem, and it is why the
 #: tier:    removal suite is sized at eleven and why Nowhere to Run is maindecked.
@@ -71,6 +77,7 @@
 1 Deep-Cavern Bat (LCI) 102
 1 Virus Beetle (EOE) 124
 1 Corrupt Court Official (TLA) 92
+1 Hecteyes (FIN) 103
 1 Etrata, Deadly Fugitive (MKM) 200
 1 Raven Eagle (TLA) 116
 1 Ninja of the Hand (MSH) 108
@@ -87,7 +94,6 @@
 1 Sothera, the Supervoid (EOE) 115
 
 # Discard / graveyard disruption — heist enablers under Bauble Burglar
-1 Strategic Betrayal (TDM) 94
 1 Auntie's Sentence (ECL) 85
 1 Psychic Whorl (BLB) 105
 1 Ozai's Cruelty (TLA) 113
@@ -119,8 +125,7 @@
 1 Serpent's Pass (TLA) 279
 2 Dismal Backwater (FDN) 261
 1 Soured Springs (OTJ) 264
-1 Pit of Offerings (LCI) 278
-13 Swamp (MSH) 291
+14 Swamp (MSH) 291
 
 #~ -Sothera, the Supervoid | +Dream Harvest | CRAFT (R): the biggest single heist in the
 #~ colors — steal MV5+ worth of their library, free. Cut from the first draft only for
