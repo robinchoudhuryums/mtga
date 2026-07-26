@@ -7,6 +7,7 @@ same models at the integration level; these pin the isolated edge cases fast."""
 from datetime import date, timedelta
 
 import deck
+import lib
 
 
 class TestParsePips:
@@ -32,6 +33,53 @@ class TestParsePips:
 
     def test_empty(self):
         assert deck.parse_pips("") == ({}, [])
+
+    def test_split_cost_reads_only_the_front_face(self):
+        """Funeral Room's `{2}{B} // {6}{B}{B}`. You never pay both halves, so the
+        merged string wanted three black pips where the door you cast wants one."""
+        strict, _hybrid = deck.parse_pips("{2}{B} // {6}{B}{B}")
+        assert strict == {"B": 1}
+
+    def test_adventure_cost_reads_only_the_creature_half(self):
+        # Emeritus of Abundance `{2}{G} // {1}{G}` — one green pip, not two.
+        strict, _hybrid = deck.parse_pips("{2}{G} // {1}{G}")
+        assert strict == {"G": 1}
+
+    def test_single_face_cost_is_unchanged(self):
+        assert deck.parse_pips("{5}{W}{B}")[0] == {"W": 1, "B": 1}
+
+
+class TestSplitCostMana:
+    """A split / Room / Adventure card stores both halves joined by ' // '. The RULES
+    mana value is the combined total, which is not what a curve or a cast-on-curve
+    probability wants — Funeral Room came through as MV 11."""
+
+    def test_front_face_cost(self):
+        assert lib.front_face_cost("{2}{B} // {6}{B}{B}") == "{2}{B}"
+        assert lib.front_face_cost("{5}{W}{B}") == "{5}{W}{B}"
+        assert lib.front_face_cost("") == ""
+        assert lib.front_face_cost(None) == ""
+
+    def test_mana_value_counts_generic_plus_one_per_symbol(self):
+        assert lib.mana_value("{2}{B}") == 3
+        assert lib.mana_value("{5}{W}{B}") == 7
+        assert lib.mana_value("{W/U}{2}") == 3       # a hybrid symbol is ONE mana
+        assert lib.mana_value("{W/P}") == 1
+        assert lib.mana_value("") == 0
+
+    def test_x_counts_zero(self):
+        # Off the stack, X is 0 — the same rule the stored values follow.
+        assert lib.mana_value("{X}{B}{B}") == 2
+
+    def test_room_mana_value_is_the_front_door(self):
+        assert lib.mana_value(lib.front_face_cost("{2}{B} // {6}{B}{B}")) == 3
+
+    def test_adventure_value_agrees_with_the_stored_one(self):
+        # Scryfall already stores the front-face value for Adventure cards, so
+        # recomputing must AGREE with them and only correct the split/Room shape.
+        for cost, stored in (("{2}{G} // {1}{G}", 3), ("{U} // {U}", 1),
+                             ("{4}{W} // {1}{W}", 5), ("{2}{G}{U} // {G}{U}", 4)):
+            assert lib.mana_value(lib.front_face_cost(cost)) == stored, cost
 
 
 class TestClassifyRoles:
@@ -212,6 +260,96 @@ class TestCoverageNetIsSuperset:
         _unclassified, under_read, _no_data = deck.role_coverage_flags(
             [(1, "Odd Answer", None, None)], carddata)
         assert [n for n, _axis in under_read] == ["Odd Answer"]
+
+
+class TestFlexStaleness:
+    """A `#~` flex line rots silently: `swap --apply` retires only the lines invalidated
+    by the swap it is performing, and the rationale audit reads `#: tier:` / `#:
+    archetype:` prose and never the flex block. Five stale lines were sitting on the
+    roster when this check was added."""
+
+    DECK = """#: name: Probe
+#: format: Standard
+#: colors: B
+
+Deck
+4 Swamp (MSH) 291
+1 Vengeful Bloodwitch (FDN) 76
+
+#~ -Vengeful Bloodwitch | +Agent Venom | a live line: the cut card IS in the deck
+#~ -Prideful Parent | +Azula, On the Hunt | STALE: the cut card already left
+#~ note: a bare note has no -Out and can never be stale
+#~ +Restoration Magic | | an add-only line has nothing to check against
+"""
+
+    def _write(self, tmp_path):
+        p = tmp_path / "deck.txt"
+        p.write_text(self.DECK, encoding="utf-8")
+        return str(p)
+
+    def test_flags_only_the_line_whose_cut_card_is_gone(self, tmp_path):
+        stale = deck.flex_staleness(self._write(tmp_path))
+        assert [c for c, _a, _w in stale] == ["Prideful Parent"]
+
+    def test_reports_the_paired_add_so_the_line_is_identifiable(self, tmp_path):
+        stale = deck.flex_staleness(self._write(tmp_path))
+        assert stale[0][1] == "Azula, On the Hunt"
+
+    def test_a_note_or_add_only_line_is_never_stale(self, tmp_path):
+        # Nothing to check a line against when it names no -Out card.
+        outs = [c for c, _a, _w in deck.flex_staleness(self._write(tmp_path))]
+        assert "Restoration Magic" not in outs
+
+    def test_clean_deck_reports_nothing(self, tmp_path):
+        p = tmp_path / "deck.txt"
+        p.write_text("#: name: Probe\n#: colors: B\n\nDeck\n4 Swamp (MSH) 291\n"
+                     "#~ -Swamp | +Bloodfell Caves | live\n", encoding="utf-8")
+        assert deck.flex_staleness(str(p)) == []
+
+
+class TestLifegainRoleAlignment:
+    """`gain(s) life equal to` (Exsanguinate, Corrupt, Sifter Wurm — 68 pool cards) was in
+    neither the role classifier nor the tag model. The tag half went in with the `pay
+    life` work; this is the role half, so the two agree on the phrase."""
+
+    def test_gain_life_equal_to_is_lifegain(self):
+        assert "Lifegain" in deck.classify_roles(
+            "Each opponent loses X life. You gain life equal to the life lost this way.")
+
+    def test_fixed_number_lifegain_still_counts(self):
+        assert "Lifegain" in deck.classify_roles("You gain 3 life.")
+        assert "Lifegain" in deck.classify_roles("Flying, lifelink")
+
+    def test_opponent_losing_life_is_not_lifegain(self):
+        assert "Lifegain" not in deck.classify_roles("Each opponent loses 2 life.")
+
+
+class TestRationaleFigureAudit:
+    """The FIGURE half of `rationale_staleness` was silently disabled roster-wide by one
+    over-broad history cue, and the arrow notation it accidentally covered then needed
+    handling on its own."""
+
+    def test_bare_over_is_not_a_history_cue(self):
+        """"card advantage 9 OVER a 2.91 curve" is the house phrasing for a quality
+        vector, so a bare "over" suppressed the very sentence that states the CURRENT
+        figure. Deck 43 quoted interaction 10 against a live 8 and read clean."""
+        assert not deck._HISTORY_CUES.search("card advantage 9 over a 2.91 curve")
+
+    def test_real_history_words_still_suppress(self):
+        for phrase in ("interaction was 4", "Bite Down replaced Shock",
+                       "no longer in the deck", "held out of the 60",
+                       "queued as a craft target"):
+            assert deck._HISTORY_CUES.search(phrase), phrase
+
+    def test_arrow_notation_marks_the_from_side_as_history(self):
+        # "card advantage 0→1" states the OLD value first; only the second is current.
+        for arrow in ("→", "->"):
+            assert deck._ARROW_AFTER.match(f"{arrow}1")
+            assert deck._ARROW_AFTER.match(f" {arrow} 1")
+
+    def test_a_plain_figure_is_not_treated_as_an_arrow(self):
+        assert not deck._ARROW_AFTER.match(" (seven of it instant-speed)")
+        assert not deck._ARROW_AFTER.match(" plus card advantage 9")
 
 
 class TestRotationOverride:

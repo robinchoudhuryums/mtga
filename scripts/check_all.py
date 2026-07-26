@@ -204,6 +204,20 @@ def main():
     except Exception as e:
         hard.append(f"tier floor sanity check errored: {e}")
 
+    # DEAD-PATTERN gate — every card-text classifier pattern must match at least one
+    # card in the Arena pool, and no pattern source may contain a Python tuple repr.
+    # This project's signature bug is a regex that COMPILES FINE and matches nothing:
+    # a bare {0,2} inside an f-string became the literal "(0, 2)" (46 decks lost their
+    # interaction count), and `(?:owner|their) hand` required the text "owner hand"
+    # while Magic writes "owner's hand" (every bounce spell scored zero roles). Unit
+    # tests can't catch these — each pattern was tested against a string written to
+    # match it — and a roster diff only catches them if you remember to run one.
+    try:
+        from check_patterns import check as check_patterns
+        hard += check_patterns()
+    except Exception as e:
+        hard.append(f"dead-pattern check errored: {e}")
+
     # Soft: wishlist target drift — a target deck that can no longer cast its card
     # after a retune (e.g. deck 14 Mardu->Rakdos orphaned Neriv). Informational
     # only; never fails the build.
@@ -242,6 +256,24 @@ def main():
                         + ") — run `check_themes.py`, then tag_synergies.py --merge")
     except Exception as e:
         soft.append(f"theme coverage check skipped ({e})")
+
+    # Soft: STALE FLEX LINES — a `#~ -Out | +In` line whose -Out card already left the
+    # deck. `swap --apply` retires only the lines its own swap invalidated, and the
+    # rationale audit reads `#: tier:` / `#: archetype:` prose and never the flex block,
+    # so these rot silently — five were sitting on the roster undetected when this check
+    # was added. Advisory: a flex line is a human note, so this never edits or gates.
+    try:
+        flex_stale = []
+        for d in deckmod.roster_decks():
+            for cut, add, _why in deckmod.flex_staleness(d["path"]):
+                flex_stale.append(f"deck {d['id']}: −{cut}" + (f" / +{add}" if add else ""))
+        if flex_stale:
+            soft.append(f"stale flex line(s): {len(flex_stale)} propose cutting a card the "
+                        f"deck no longer runs — {'; '.join(flex_stale[:3])}"
+                        + (" …" if len(flex_stale) > 3 else "")
+                        + " (retarget or retire; see `deck.py flex <id>`)")
+    except Exception as e:
+        soft.append(f"stale-flex check skipped ({e})")
 
     # Soft: tier robustness — a deck whose claimed #: tier: sits ≥2 bands above the
     # tier its measurable quality vector supports (inflated or stale). Never gating —

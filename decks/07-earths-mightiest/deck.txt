@@ -60,5 +60,5 @@
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 7
 #~ -Requisition Raid | +Kutzil's Flanker | CRAFT (R) ★ MARKED UPGRADE: flash — big counters OR removal; the flexible interaction the deck genuinely lacks
-#~ -Foggy Swamp Vinebender | +Silver Sable | CRAFT (U) · MINOR: another on-tribe counter body — lateral; don't spend a wildcard here
+#~ note: RETIRED — the Silver Sable line proposed cutting Foggy Swamp Vinebender, which left the deck rounds ago, and its own text already read "MINOR: lateral; don't spend a wildcard here". A suggestion that argues against itself is not worth retargeting.
 #~ note: card advantage already handled — Mikey & Leo (drew off counters) is now maindeck over Graduation Day. Sharp-Eyed Rookie would be a redundant sidegrade; skip it.

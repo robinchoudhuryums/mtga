@@ -1,0 +1,139 @@
+#: name: Grand Larceny — Outlaw Heist
+#: format: standard
+#: colors: BR
+#: plan: midrange
+#: archetype: Rakdos (B/R) variant of 44 — the same mono-black heist spine, taking the
+#: archetype: RED side of the fork instead of the blue one. Where 44 spends its splash
+#: archetype: on two one-shot ETB thefts (Azula, Etrata), this deck spends it on
+#: archetype: REPEATABLE ENGINES: Laughing Jasper Flint steals off the top of an
+#: archetype: opponent's library EVERY UPKEEP, scaling with the number of outlaws you
+#: archetype: control, and Rakdos, the Muscle steals every time you sacrifice a creature.
+#: archetype: THE OUTLAW COUNT IS THE POINT. Jasper scales on Assassins, Mercenaries,
+#: archetype: Pirates, Rogues and Warlocks, and ten of this deck's creatures are outlaws:
+#: archetype: both Tinybones and Black Cat, Cunning Thief (Rogue), Reno and Rude, Raven
+#: archetype: Eagle and Sawblade Skinripper (Assassin), Hama (Warlock), Laughing Jasper
+#: archetype: Flint himself (Rogue), Rakdos, the Muscle and The Infamous Cruelclaw
+#: archetype: (Mercenary). Better still, Jasper's first
+#: archetype: line — "creatures you control but don't own are Mercenaries" — means every
+#: archetype: creature this deck STEALS becomes an outlaw and grows the next trigger. The
+#: archetype: engine feeds itself, which is the thing 44 cannot do.
+#: archetype: RAKDOS NEEDS OUTLETS, which the first draft did not give him. His trigger is
+#: archetype: "whenever you SACRIFICE another creature", and the only non-combat outlet in
+#: archetype: the deck was his own once-per-turn ability — a protected build-around
+#: archetype: enabled by itself. Umbral Collar Zealot (free, repeatable) and Sawblade
+#: archetype: Skinripper ({2}, and itself an Assassin with menace that PAYS OFF the
+#: archetype: sacrifices with damage) fix that; `deck.py engines` now reads four sacrifice
+#: archetype: enablers rather than two.
+#: archetype: NO GRAVEYARD HATE. Strategic Betrayal and Pit of Offerings were both cut for
+#: archetype: the same reason, which is easy to miss because both read as fine cards on
+#: archetype: their own: they EXILE an opponent's graveyard, and four of this deck's heist
+#: archetype: cards — Tinybones the Pickpocket, Shark Shredder, Hama and Rakdos — need that
+#: archetype: graveyard FULL. The discard package fills it; nothing here should empty it.
+#: archetype: RED IS A REAL SECOND COLOR, NOT A SPLASH — Jasper, Rakdos, Cruelclaw and
+#: archetype: Korvold each want a hard {R}, so the manabase runs ten owned B/R duals
+#: archetype: rather than 44's ten blue sources for two cards. Every red card is a SINGLE
+#: archetype: {R} pip by design: Decadent Dragon was drafted here for its {2}{B} adventure
+#: archetype: half and cut again once `consistency` priced its {2}{R}{R} front face at
+#: archetype: 53% on turn four — the deck cannot support a double-red card, and grading
+#: archetype: the card by the half you want rather than the face you cast is exactly the
+#: archetype: rationalization the front-face costing rule exists to prevent.
+#: archetype: DISTINCTNESS vs 1 Black Sun, the roster's other Rakdos deck: Black Sun is
+#: archetype: aggro-sacrifice with a 5/7 clock and card advantage 0 — it wins by racing.
+#: archetype: This is a midrange attrition deck that wins by spending the opponent's
+#: archetype: cards. They share the sacrifice tag and nothing else structural.
+#: tier: B — PROVISIONAL, unplayed and craft-heavy like its core deck. Graded from the
+#: tier: same rubric as 44 and held at the same letter for the same reasons: the engine
+#: tier: is combat- and sacrifice-triggered so it must connect, the heist package reads
+#: tier: as unclassified to the role model so the measurable card advantage understates
+#: tier: it, and every effect is a singleton. The variant's specific argument for being
+#: tier: worth its own list rather than a merge into 44 is that its two red cards are
+#: tier: REPEATABLE where 44's two blue cards are one-shot, which is a different deck
+#: tier: rather than a different five cards. Re-grade once both have been played.
+#: protect: Laughing Jasper Flint; Rakdos, the Muscle; Tinybones, Bauble Burglar; Tinybones, the Pickpocket; Black Widow, Super Spy; Cruelclaw's Heist
+
+# Creatures — outlaws and the heist engine
+1 Tinybones, the Pickpocket (OTJ) 109
+1 Black Widow, Super Spy (MSH) 89
+1 Reno and Rude (FIN) 113
+1 Tinybones, Bauble Burglar (FDN) 72
+1 Deep-Cavern Bat (LCI) 102
+1 Virus Beetle (EOE) 124
+1 Corrupt Court Official (TLA) 92
+1 Umbral Collar Zealot (EOE) 123
+1 Sawblade Skinripper (DSK) 231
+1 Raven Eagle (TLA) 116
+1 Ninja of the Hand (MSH) 108
+1 The Infamous Cruelclaw (BLB) 219
+1 Laughing Jasper Flint (OTJ) 215
+1 Shark Shredder, Killer Clone (TMT) 73
+1 Jecht, Reluctant Guardian (FIN) 104
+1 Sothera, the Supervoid (EOE) 115
+1 Black Cat, Cunning Thief (SPM) 52
+1 Rakdos, the Muscle (OTJ) 226
+1 Hama, the Bloodbender (TLA) 224
+
+# Heist spells and permanents
+1 Cruelclaw's Heist (BLB) 88
+1 Outrageous Robbery (MKM) 97
+1 Dream Harvest (ECL) 216
+1 Korvold and the Noble Thief (WOE) 139
+
+# Discard / graveyard disruption — heist enablers under Bauble Burglar
+1 Auntie's Sentence (ECL) 85
+1 Psychic Whorl (BLB) 105
+1 Ozai's Cruelty (TLA) 113
+
+# Removal
+1 Death in the Family (TMT) 61
+1 Epic Downfall (TLA) 96
+1 Long Goodbye (MKM) 92
+1 Bitter Triumph (SOA) 26
+1 Feed the Swarm (SOA) 29
+1 Hero's Downfall (FDN) 175
+1 Cruel Alliance (MSH) 92
+1 Nowhere to Run (DSK) 111
+
+# Card advantage / mana for stolen spells
+1 Phyrexian Arena (FDN) 180
+1 Interdimensional Web Watch (SPM) 165
+
+# Lands
+1 Blazemire Verge (DSK) 256
+1 Blood Crypt (ECL) 262
+1 Dark Fortress (MSH) 264
+2 Bloodfell Caves (TDM) 250
+2 Boiling Rock Prison (TLA) 267
+1 Rakdos Guildgate (FDN) 693
+1 Razortrap Gorge (DSK) 267
+1 Temple of Malice (FDN) 701
+14 Swamp (MSH) 291
+
+#~ note: applied — Dream Harvest in for Ghost, Spectral Saboteur.
+#~ the top of EVERY opponent's library free — the biggest repeatable heist in red, and a
+#~ real threat rather than an outlaw-counter body. Ghost's only job here is being an
+#~ unblockable outlaw, which is the softest slot in the deck.
+#~ -Raven Eagle | +Vaan, Street Thief | CRAFT (R): Raven Eagle's "whenever you draw your
+#~ second card each turn" clause is near-dead here (Phyrexian Arena is the only repeatable
+#~ draw), so it does half a card's work. Vaan is a red heist body on the same axis.
+#~ -Corrupt Court Official | +Fireglass Mentor | CRAFT (U): a B/R two-drop that impulses
+#~ every turn an opponent lost life — note it exiles from YOUR library, so it is card
+#~ advantage, NOT a heist, and it does not feed Tinybones, Bauble Burglar.
+#~ note: the open question is the SACRIFICE density. Rakdos, the Muscle and Sothera both
+#~ want creatures dying, and the deck now fields four enablers but few expendable bodies —
+#~ every creature here is doing a job. A token-maker would serve both better than a fourth
+#~ outlet; none of the on-color ones surveyed were worth a maindeck slot yet.
+#~ -Ozai's Cruelty | +Superior Foes of Spider-Man | CRAFT (U): the best of the SELF-impulse
+#~ cards for this deck specifically, and not for its impulse — it is a Human Rogue Villain,
+#~ i.e. an OUTLAW, so it feeds Laughing Jasper Flint's count on a 3-mana trample body. Its
+#~ own trigger ("cast a spell with mana value 4 or greater") fires on only 8 of 36 nonlands
+#~ here, so grade it as an outlaw that sometimes impulses, not as a card-advantage engine.
+#~ note: SELF-EXILE vs HEIST — they do NOT combine, they COMPETE, and the pool says so.
+#~ Exactly ONE Standard card treats "a card in exile you may cast" as one resource
+#~ regardless of whose it is: Interdimensional Web Watch, whose restricted mana is now
+#~ maindecked in both 44 and 44a. The real "cast from exile matters" PAYOFFS exist but are
+#~ off-color for a black deck — Quintorius Kand (W/R, owned: 2 damage whenever you cast a
+#~ spell from exile) and Doc Aurlock, Grizzled Genius (U/G: those spells cost {2} less).
+#~ That is a Boros or Simic deck, not this one. Within these colors, heist beats self-
+#~ impulse for the same slot on three counts: nearly every heist card says "mana of any
+#~ type", so a stolen spell costs no color commitment; it is disruption as well as a card;
+#~ and it spends THEIR card quality instead of thinning your own library.

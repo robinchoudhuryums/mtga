@@ -1,0 +1,158 @@
+#: name: Overdraft
+#: format: Standard
+#: colors: WUB
+#: plan: control
+#: archetype: Esper (W/U/B, U-primary) HAND-SIZE control — the deck where your life
+#: archetype: total IS your hand size. Marina Vendrell's Grimoire rewrites both
+#: archetype: resources into one: every point of life gained draws a card, every point
+#: archetype: lost discards one, you have no maximum hand size, and you DON'T LOSE THE
+#: archetype: GAME at 0 or less life. You only lose with an empty hand. So the deck
+#: archetype: plays lifelink and incidental lifegain as CARD DRAW (Healer's Hawk is a
+#: archetype: repeatable cantrip; Cloudblazer draws four; the gain-1 lands cantrip), and
+#: archetype: hoards the result behind Ms. Marvel / Vnwxt / The Ten Rings, whose
+#: archetype: no-maximum-hand-size clauses are what keep the hand deep enough to absorb
+#: archetype: the Grimoire's discards. Ms. Marvel's power equals cards in hand, so the
+#: archetype: hoard is also the win-con.
+#: archetype: THE DECK MUST FUNCTION WITHOUT THE GRIMOIRE — it is one unowned rare, ~22%
+#: archetype: to be seen by turn 7 — so the second engine is the "whenever you draw your
+#: archetype: SECOND card each turn" cluster (King T'Challa, Kang, Raven Eagle, Foggy
+#: archetype: Swamp Spirit Keeper, Mischievous Mystic, Knowledge Seeker, Wolfbat), turned
+#: archetype: on every turn by Kitsa's free loot and a pile of cheap draw. That plan wins
+#: archetype: by chip drain and evasive bodies with no Grimoire in sight.
+#: archetype: Mister Negative is the haymaker and is deliberately pointed the ONE way
+#: archetype: that works here: swapping from BEHIND. His own draw clause needs you to
+#: archetype: have LOST life, so under the Grimoire swapping while ahead draws N and
+#: archetype: discards N for nothing. Swapping while behind gains the whole gap, and the
+#: archetype: Grimoire converts that gain into that many cards.
+#: archetype: DISTINCTNESS: deck 41 blinks Mister Negative for re-entry value and needs a
+#: archetype: HIGH life total; deck 42 spends life for cards and
+#: archetype: refunds once. This deck does neither — it treats life and cards as the same
+#: archetype: resource and is happy at any total, including below zero. Against the Dimir
+#: archetype: draw decks: 12 Drawn Conclusions is a UB control deck that draws to find
+#: archetype: answers, 22 Bloodbending mills; here the drawing IS the deck and white is a
+#: archetype: real color rather than a splash. It is the roster's only Esper deck.
+#: tier: B — Esper hand-size control, one band BELOW the A metrics floor, PROVISIONAL
+#: tier: (unplayed brew). The floor reads A on interaction 7 (six of it instant-speed,
+#: tier: three able to answer a noncreature permanent) plus card advantage 9 on a 2.86
+#: tier: curve, and that card-advantage number is real rather than a pile of cantrips —
+#: tier: Cloudblazer draws two, Chart a Course draws two, Spirit Water Revival draws
+#: tier: seven when waterbent, and the Grimoire draws five on cast. Held at B by three
+#: tier: structural risks the floor cannot see, which is one more than an A tolerates:
+#: tier: 1. RELIABILITY OF THE NAMED ENGINE. Marina Vendrell's Grimoire is a single
+#: tier:    unowned rare (~22% to be seen by turn 7), and Mister Negative and King
+#: tier:    T'Challa are single mythics. The build is arranged so a Grimoire-less draw is
+#: tier:    still a functional Esper draw-control deck — that is what the second-card
+#: tier:    cluster is for — but a deck whose identity shows up one game in five is not
+#: tier:    an A on its identity, only on its floor.
+#: tier: 2. PROTECTION 1 against four `#: protect:` build-arounds. Restoration Magic is
+#: tier:    the only answer to removal in the deck, and every one of the protected cards
+#: tier:    is a must-kill the moment it resolves.
+#: tier: 3. THREE COLORS, SINGLETON. The manabase is deliberately built to survive it
+#: tier:    (one double pip in the whole deck; 86% keepable; the worst cast-on-curve is
+#: tier:    Spirit Water Revival at 68%, and it is happy to be cast late) — but three
+#: tier:    colors of singletons is variance the floor does not price.
+#: tier: NOTE ON `deck.py similar`: this reads 91% against 42 Blood Price, its highest
+#: tier: overlap. That number is the tag model hitting its limit, not a duplicate deck —
+#: tier: only FIVE nonland cards are shared (Erode, Healer's Hawk, Starscape Cleric,
+#: tier: Stroke of Midnight and Mister Negative, three of them commodity removal), and
+#: tier: the shared themes are `lifegain` and `card draw`, which cannot distinguish a
+#: tier: deck that gains life AND draws cards from one where gaining life IS drawing
+#: tier: cards. The engines are opposite: 42's pay-life package is net-NEGATIVE here.
+#: tier: PATH TO A: add a second protection effect, and a second card on the payoff axis
+#: tier: (the flex block names two candidates) so the deck's ceiling shows up more than
+#: tier: one game in five.
+#: protect: Marina Vendrell's Grimoire; Ms. Marvel, Kamala Khan; King T'Challa // Black Panther, Hope Enduring; Vnwxt, Verbose Host
+#: notes: WHY NO PAY-LIFE DRAW. Deck 42's package is actively ANTI-synergistic here.
+#: notes: Under the Grimoire, Lunar Convocation's "pay 2 life: draw a card" is lose 2 ->
+#: notes: discard 2, draw 1 = NET MINUS ONE CARD; Dark Confidant is net -1; Phyrexian
+#: notes: Arena is net 0. Every one of them was cut for that reason, not on power. The
+#: notes: draw here is unconditional (Cloudblazer, Quick Study, Chart a Course, Deduce,
+#: notes: Thirst for Knowledge) or life-POSITIVE.
+#: notes: MANABASE. Deliberately built with ONE double pip in the whole deck (Spirit
+#: notes: Water Revival's {1}{U}{U}, in the primary color). Phyrexian Arena {1}{B}{B},
+#: notes: Hero's Downfall {1}{B}{B}, Beza {2}{W}{W} and Lyra {3}{W}{W} were all cut
+#: notes: purely on pips — a third color cannot support a double pip, and deck 17
+#: notes: Spectrum is the roster's standing example of what happens when it tries.
+#: notes: Kitsa replaces Phyrexian Arena as the second-card enabler for the same reason:
+#: notes: a free repeatable loot in the PRIMARY color does the same job off one {U}.
+#: notes: THE LOSS CONDITION IS INVERTED, so play accordingly: you are not racing their
+#: notes: damage, you are protecting your hand size. A big life swing with a small hand
+#: notes: is the way this deck dies. Restoration Magic is the answer to that as well as
+#: notes: to removal — Cura gains 3 (draw 3) while making a permanent hexproof and
+#: notes: indestructible, Curaga gains 6 (draw 6) and protects the whole board.
+#: notes: Craft targets: Marina Vendrell's Grimoire (R), Mister Negative (M), King
+#: notes: T'Challa (M), Restoration Magic (U), Wolfbat (U). Everything else is owned.
+#: notes: The gain-1 lands (Tranquil Cove, Scoured Barrens, Dismal Backwater) are
+#: notes: cantrips once the Grimoire is out — that is why they beat the untapped duals
+#: notes: they would otherwise lose to.
+
+Deck
+# Hand size — the spine
+1 Marina Vendrell's Grimoire (DSK) 64
+1 Ms. Marvel, Kamala Khan (MSH) 67
+1 Vnwxt, Verbose Host (DFT) 73
+1 Spirit Water Revival (TLA) 73
+1 The Ten Rings (MSH) 251
+
+# Second card each turn — the engine that works without the Grimoire
+1 King T'Challa // Black Panther, Hope Enduring (MSH) 219
+1 Kang, Temporal Tyrant (MSH) 217
+1 Raven Eagle (TLA) 116
+1 Foggy Swamp Spirit Keeper (TLA) 222
+1 Mischievous Mystic (FDN) 47
+1 Knowledge Seeker (TLA) 60
+1 Wolfbat (TLA) 122
+
+# Draw / second-card enablers
+1 Kitsa, Otterball Elite (BLB) 54
+1 Cloudblazer (FDN) 653
+1 Deduce (SOA) 16
+1 Chart a Course (FDN) 586
+1 Thirst for Knowledge (MSH) 79
+
+# Lifegain = card draw
+1 Healer's Hawk (FDN) 142
+1 Ruin-Lurker Bat (LCI) 33
+1 Night Nurse, Healer of Heroes (MSH) 26
+1 Inspiring Overseer (FDN) 496
+1 Starscape Cleric (BLB) 116
+1 Marauding Blight-Priest (FDN) 178
+1 Osseous Sticktwister (DSK) 112
+1 Restoration Magic (FIN) 30
+
+# Top end
+1 Mister Negative (SPM) 135
+
+# Lifegain = card draw (cont.)
+1 Stirring Hopesinger (SOS) 35
+1 Leech Collector (SOS) 88
+
+# Removal
+1 Into the Flood Maw (BLB) 52
+1 Essence Scatter (SOS) 47
+1 Tishana's Tidebinder (LCI) 81
+1 Floodpits Drowner (DSK) 59
+1 Exclusion Mage (FDN) 508
+1 Stroke of Midnight (FDN) 148
+1 Feed the Cauldron (WOE) 91
+
+# Lands — 25, Esper
+1 Hallowed Fountain (ECL) 265
+1 Floodfarm Verge (DSK) 259
+1 Bleachbone Verge (DFT) 250
+1 Gloomlake Verge (DSK) 260
+1 Temple of Enlightenment (FDN) 698
+1 Tranquil Cove (TDM) 270
+1 Azorius Guildgate (FDN) 683
+1 Scoured Barrens (M21) 250
+1 Insomnia, Crown City (FIN) 282
+1 Temple of Silence (FDN) 704
+2 Dismal Backwater (FDN) 261
+1 Treno, Dark City (FIN) 290
+1 Serpent's Pass (TLA) 279
+4 Island (MSH) 289
+4 Plains (MSH) 287
+3 Swamp (MSH) 291
+
+#~ -The Ten Rings | +Drogskol Reaver | The Ten Rings is the deliberate spice and the flagship hand-size card, but `cuts` ranks it the deck's weakest fit (MV 8, fit 0) and it is the third card above five mana. If the curve plays too heavy, this is the first cut. Drogskol Reaver (craft, R) is a second Grimoire on a body — flying/double strike/lifelink plus "whenever you gain life, draw a card" — but it costs 7, so swapping one 8-drop for one 7-drop only helps if you also want the lifelink clock.
+#~ note: applied — Osseous Sticktwister in for Radiant Strike.

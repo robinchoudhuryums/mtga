@@ -114,7 +114,16 @@ Note the writer emits only the canonical 8 library columns, so point it at
 newly-derived tags to non-blank cells while KEEPING existing/hand-curated ones (the
 safe refresh mode), and `--force` REPLACES every cell (use it only for a deliberate
 destructive regenerate). It also warns when `card-mana.csv` is older than the
-library, since new cards would otherwise get keyword-less tags. These make `query.py
+library, since new cards would otherwise get keyword-less tags. One theme worth knowing about: **`pay life`** tags a card that spends *your* life for an
+effect (351 pool cards). It's scoped to you — "each opponent loses 2 life" is a drain
+effect, the opposite card — and it exists because an entire archetype was invisible
+without it: Dark Confidant read as a *tangential* fit for the deck built around paying
+life, on a shared creature type. **`heist`** is the other one to know: it tags a card that
+lets you CAST a card out of an opponent's zone (82 pool cards, 0.52%). Keep it distinct from
+the older **`theft`** tag, which means "gain control of" — stealing a permanent already on
+the battlefield. They are different mechanics, and naming a new theme after an existing one
+merges the two silently, since a tag collision breaks no invariant and `check_all` stays
+green. Check `MECHANIC_RULES` for the name before adding a theme. These make `query.py
 --synergy` / `pool.py --synergy` and the gallery filters useful; tags are
 hand-editable. Rerun `build_mana.py` then `tag_synergies.py --merge` after
 importing new cards to refresh keyword-aware tags without losing curation.
@@ -470,6 +479,14 @@ unblocks multiple decks), and the total wildcards to make the *whole* roster
 buildable — deduplicated, since one shared collection means a card is only ever
 short by `max(any deck needs) − total owned`.
 
+**Split, Room and Adventure cards are read on their FRONT face.** Scryfall stores both
+halves joined by `" // "` (Funeral Room is `{2}{B} // {6}{B}{B}`) and you never pay both,
+so the merged string over-counts pips — and a split card's *rules* mana value is the
+combined total, which is correct but useless for a curve: Funeral Room arrived at **MV
+11** and read as a `{B}{B}{B}` turn-5 play when the door you cast is one black pip on
+turn 3. `lib.front_face_cost` / `lib.mana_value` fix both, matching the front-face
+convention already used for double-faced card ownership.
+
 `stats` also flags **cost nature** — `◊` for cards whose text reduces their cost
 or grants flash (convoke/delve/"costs {1} less", so the printed mana value doesn't
 mislead), `△` for abilities/modes that carry an added or conditional cost — and
@@ -496,7 +513,7 @@ enchantment / artifact), flagging "all sorcery-speed" or "no noncreature answer"
 Every role **count carries its own uncertainty**. A heuristic classifier reports a
 false negative as a fact — a card it can't parse contributes 0, and `0` reads as
 "none" rather than "not detected". So counts render as `7`, `3 +2?` (two more cards
-read like that role but couldn't be tagged), or `8 +4? (3 unclassified)`. 52 of 58
+read like that role but couldn't be tagged), or `8 +4? (3 unclassified)`. 52 of 57
 decks show uncertainty inline; one of them was graded on interaction 3 when a hand
 count said 7.
 
@@ -890,22 +907,31 @@ Import applies Sheets' own formula parsing, which this RAW guard can't cover.)
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
 derived files present **and still carrying their own columns** — a pool that lost
 its `Rarity`/`Legalities` is a hard failure, not a silent degrade — decks parse)
-plus six **model-sanity checks** that keep the
+plus seven **model-sanity checks** that keep the
 grading/ranking models from silently drifting: the **ranking model**
 (`check_rankings.py`), **color parsing** (`check_colors.py` — also a static scan
 banning the naive inline `WUBRG` parse outside `lib.py`), the **DFC ownership-join**
 convention (`check_dfc.py` — an owned double-faced card must resolve by its front
 face), the needs-aware **suggest/cuts scoring** (`check_suggest.py` — bounded
 modifiers, power never overrides theme fit), the **engine classifier**
-(`check_engines.py`), and the archetype-aware **tier floor** (`check_tier.py` —
-non-aggro grades unchanged, the aggro clock only ever raises a band). It exits
+(`check_engines.py`), the archetype-aware **tier floor** (`check_tier.py` —
+non-aggro grades unchanged, the aggro clock only ever raises a band), and
+**dead patterns** (`check_patterns.py`). That last one guards this project's
+signature bug: a regex that *compiles fine and can never fire*. Every card-text
+pattern must match at least one card in the ~15.8k-card pool, and no pattern source
+may contain a Python tuple repr like `(0, 2)` — which is what a `{0,2}` quantifier
+becomes when an f-string eats it. Both historical instances of that bug (the `{0,2}`
+one, and `(?:owner|their) hand` demanding the text "owner hand" while Magic writes
+"owner's hand") were invisible to unit tests, because each pattern had been tested
+against a string written to match it. The gate found a third on its first run. It exits
 non-zero on any hard break. It also
 emits **soft warnings** (never gating): wishlist target drift (a card whose target
 deck can no longer cast it); **new unindexed card mechanics** (`check_keywords.py`);
 **theme coverage** — `check_themes.py` flags an owned card whose text plays a theme
 it isn't tagged with (a stale tag distorts every recommendation), summarized to one
-line; and **tier mismatch** — a deck whose claimed `#: tier:` sits ≥2 bands above its
-measurable floor. A SessionStart hook runs the gate (quiet) **and the unit layer** so
+line; **tier mismatch** — a deck whose claimed `#: tier:` sits ≥2 bands above its
+measurable floor; and **stale flex lines** — a `#~ -Out | +In` suggestion whose cut card
+already left the deck, which nothing else covered (it found five sitting on the roster). A SessionStart hook runs the gate (quiet) **and the unit layer** so
 drift in either surfaces immediately; `make verify` runs both before you commit.
 
 A **pytest unit layer** (`tests/`) complements the gate — fast, isolated tests that

@@ -1,0 +1,142 @@
+#: name: Grand Larceny
+#: format: standard
+#: colors: UB
+#: plan: midrange
+#: archetype: Dimir (U/B, black-primary) HEIST — the deck whose card advantage is
+#: archetype: entirely the opponent's. It draws almost nothing of its own; it exiles
+#: archetype: their cards and casts them, and nearly every heist card lets mana of any
+#: archetype: type pay for the stolen spell, so their colors are never a problem.
+#: archetype: THE ENGINE IS COMBAT-TRIGGERED, which sets the whole shape. Tinybones the
+#: archetype: Pickpocket, Black Widow, Reno and Rude, Shark Shredder and Etrata all
+#: archetype: steal only when they CONNECT, so this is tempo-attrition midrange rather
+#: archetype: than a durdling control deck: the creatures are cheap and hard to block
+#: archetype: (deathtouch ×3, menace ×3, flying ×2, first strike) and the eleven removal
+#: archetype: spells exist as much to CLEAR BLOCKERS as to answer threats. Nowhere to
+#: archetype: Run does double duty — the -3/-3 kills a blocker and the static turns off
+#: archetype: hexproof AND ward, so a warded blocker can't wall the engine.
+#: archetype: Tinybones, Bauble Burglar is the second engine, and note the precise
+#: archetype: wording: it steals what an opponent DISCARDS, not what they exile. So the
+#: archetype: disruption package is built from real discard — Virus Beetle, Corrupt
+#: archetype: Court Official, Ninja of the Hand's power-up, Psychic Whorl, Ozai's
+#: archetype: Cruelty, Auntie's Sentence and both Jecht chapters — seven sources that
+#: archetype: turn into thefts with Burglar out and are fine disruption without him.
+#: archetype: Exile-from-hand effects were deliberately NOT included for this reason:
+#: archetype: they put the card beyond everyone's reach, which is off-thesis here.
+#: archetype: NO GRAVEYARD HATE, for the mirror-image reason. Strategic Betrayal and Pit of
+#: archetype: Offerings were both CUT after the full-text read — they read as fine cards
+#: archetype: alone, but they EXILE an opponent's graveyard, and four heist cards here
+#: archetype: (Tinybones the Pickpocket, Shark Shredder, Hama and Azula) need it FULL.
+#: archetype: Hecteyes took the slot, which is the inversion: discard FILLS the graveyard
+#: archetype: those four steal from.
+#: archetype: BLUE IS A DELIBERATE TWO-CARD SPLASH — only Azula and Etrata need a real
+#: archetype: {U} pip. Hama, Krang & Shredder and Ghost are U/B HYBRIDS castable off
+#: archetype: black alone, so a blue source is never a dead draw even when neither blue
+#: archetype: card is in hand. That is the argument for this second color over a red
+#: archetype: one, where Laughing Jasper Flint and Rakdos, the Muscle would each demand
+#: archetype: a hard {R}. See variant 44a for the deck that takes the red side instead.
+#: archetype: DISTINCTNESS: the roster's three other Dimir decks all spend their OWN
+#: archetype: resources — 12 Drawn Conclusions draws its own cards, 22 Bloodbending
+#: archetype: mills to feed its own graveyard payoffs, 32 Mimicry copies creatures. 11
+#: archetype: Villainous is the mono-black control-midrange deck this would collide with
+#: archetype: if it dropped the splash. Here the resource is the OPPONENT's library,
+#: archetype: hand and graveyard. The `heist` theme (82 pool cards, 0.52%) is carried by
+#: archetype: 14 cards here and by no other deck on the roster.
+#: tier: B — Dimir heist tempo-attrition, one band BELOW the A metrics floor, and
+#: tier: PROVISIONAL (unplayed brew, 18 craft targets). The floor reads A on interaction
+#: tier: 11 +1? across a 2.94 curve — six of it instant-speed, three able to answer a
+#: tier: noncreature permanent — and if anything the floor UNDER-states the deck: card
+#: tier: advantage scores 1 only because the classifier finds no role for the heist
+#: tier: package (Cruelclaw's Heist, Outrageous Robbery, Psychic Whorl, End of the
+#: tier: Hunt and Interdimensional Web Watch are all reported
+#: tier: unclassified), when stealing an opponent's card is card advantage by any
+#: tier: reading. Held at B by four structural risks the metrics cannot see, which is
+#: tier: three more than an A tolerates:
+#: tier: 1. THE ENGINE MUST CONNECT. Five of the fourteen heist cards trigger on combat
+#: tier:    damage. Against a deck that blocks well, or any sweeper, they do nothing at
+#: tier:    all — this is a real matchup cliff, not a curve problem, and it is why the
+#: tier:    removal suite is sized at eleven and why Nowhere to Run is maindecked.
+#: tier: 2. NINETEEN CRAFT TARGETS, including the two Tinybones, Azula and Etrata. The
+#: tier:    deck as owned today is a shell; graded here on its list, per the rubric.
+#: tier: 3. A TWO-CARD BLUE SPLASH. Azula casts at 86.8% on turn 5 and is happy late, but
+#: tier:    Etrata reads 82.4% on turn 3 and her {2}{U}{B} activation is simply not
+#: tier:    supported by 10 blue sources — treat that ability as a late-game luxury. The
+#: tier:    flex block carries the mono-black fallback if the splash disappoints.
+#: tier: 4. SINGLETON THROUGHOUT. Every heist effect is a one-of, so the draw decides
+#: tier:    which axis (library / hand / graveyard) the deck actually attacks that game.
+#: tier: PATH TO A: functional redundancy on the combat-heist axis (`deck.py redundancy`)
+#: tier: so the plan does not hinge on drawing one of five connectors, plus a second
+#: tier: protection effect — protection is 2 against six `#: protect:` build-arounds,
+#: tier: every one of which is a must-kill the moment it resolves.
+#: protect: Azula, Cunning Usurper; Tinybones, Bauble Burglar; Tinybones, the Pickpocket; Black Widow, Super Spy; Etrata, Deadly Fugitive; Cruelclaw's Heist
+
+# Creatures — the combat-triggered heist engine
+1 Tinybones, the Pickpocket (OTJ) 109
+1 Black Widow, Super Spy (MSH) 89
+1 Reno and Rude (FIN) 113
+1 Tinybones, Bauble Burglar (FDN) 72
+1 Deep-Cavern Bat (LCI) 102
+1 Virus Beetle (EOE) 124
+1 Corrupt Court Official (TLA) 92
+1 Hecteyes (FIN) 103
+1 Etrata, Deadly Fugitive (MKM) 200
+1 Raven Eagle (TLA) 116
+1 Ninja of the Hand (MSH) 108
+1 Shark Shredder, Killer Clone (TMT) 73
+1 Jecht, Reluctant Guardian (FIN) 104
+1 Black Cat, Cunning Thief (SPM) 52
+1 Azula, Cunning Usurper (TLA) 208
+1 Hama, the Bloodbender (TLA) 224
+1 Krang & Shredder (TMT) 153
+
+# Heist spells and permanents
+1 Cruelclaw's Heist (BLB) 88
+1 Outrageous Robbery (MKM) 97
+1 Dream Harvest (ECL) 216
+1 Sothera, the Supervoid (EOE) 115
+
+# Discard / graveyard disruption — heist enablers under Bauble Burglar
+1 Auntie's Sentence (ECL) 85
+1 Psychic Whorl (BLB) 105
+1 Ozai's Cruelty (TLA) 113
+
+# Removal — clears blockers as much as it answers threats
+1 Death in the Family (TMT) 61
+1 Epic Downfall (TLA) 96
+1 End of the Hunt (SOS) 81
+1 Long Goodbye (MKM) 92
+1 Bitter Triumph (SOA) 26
+1 Feed the Swarm (SOA) 29
+1 Hero's Downfall (FDN) 175
+1 Cruel Alliance (MSH) 92
+1 Tribute to Hunger (FDN) 614
+1 Nowhere to Run (DSK) 111
+
+# Card advantage / mana for stolen spells
+1 Phyrexian Arena (FDN) 180
+1 Interdimensional Web Watch (SPM) 165
+
+# Lands
+1 Gloomlake Verge (DSK) 260
+1 Hidden Lair (MSH) 269
+1 Watery Grave (TRK) 306
+1 Undercity Sewers (MKM) 270
+1 Temple of Deceit (FDN) 697
+1 Treno, Dark City (FIN) 290
+1 Serpent's Pass (TLA) 279
+2 Dismal Backwater (FDN) 261
+1 Soured Springs (OTJ) 264
+14 Swamp (MSH) 291
+
+#~ note: applied — Dream Harvest in for Last Gasp.
+#~ colors — steal MV5+ worth of their library, free. Cut from the first draft only for
+#~ costing 7 in a deck that already tops out at Krang's 6; re-add if play proves the deck
+#~ grindier than it looks on paper, and take the 4-drop enchantment out for it.
+#~ -Raven Eagle | +Etali, Primal Storm | CRAFT (R): Raven Eagle's "whenever you draw your
+#~ second card each turn" clause is near-dead here (Phyrexian Arena and one Clue are the
+#~ only draw), so it is a 3-mana flier doing half a card's work. Etali is off-color for
+#~ 44 — this line belongs to variant 44a. Listed here only so the weak slot is on record.
+#~ note: the MONO-BLACK FALLBACK is the real open question, not a single swap. Blue exists
+#~ for exactly two cards (Azula, Cunning Usurper and Etrata, Deadly Fugitive), and Etrata's
+#~ {2}{U}{B} activation is not supported at 10 sources. If the splash disappoints, cut both
+#~ for mono-B cards and drop the blue duals — but run `deck.py similar` against 11
+#~ Villainous first, since the splash is part of what keeps this deck distinct from it.

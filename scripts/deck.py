@@ -59,7 +59,8 @@ import urllib.error
 import urllib.request
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty,
-                 card_distinctiveness, backup_path, card_power)
+                 card_distinctiveness, backup_path, card_power, front_face_cost,
+                 mana_value)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -634,8 +635,18 @@ def load_mana():
             n = (r.get("Card Name") or "").strip().lower()
             if not n:
                 continue
+            cost = r.get("Mana Cost") or ""
             mv = (r.get("Mana Value") or "").strip()
-            out[n] = (r.get("Mana Cost") or "", int(mv) if mv.isdigit() else None)
+            mv = int(mv) if mv.isdigit() else None
+            if " // " in cost:
+                # A split / Room card's RULES mana value is the combined total, which
+                # is what Scryfall stores — and it is not the number a curve or a
+                # cast-on-curve probability wants. Funeral Room came through as MV 11
+                # and inflated deck 42a's average; the door you cast costs 3. Adventure
+                # cards already store the front-face value, so recomputing agrees with
+                # them and only corrects the split/Room shape.
+                mv = mana_value(front_face_cost(cost))
+            out[n] = (cost, mv)
             out.setdefault(n.split(" // ")[0], out[n])
     return out
 
@@ -673,9 +684,15 @@ def parse_pips(cost):
     hybrid: list of frozensets of colors a symbol accepts (e.g. {'W','U'}) — each
             payable with ANY one of them (hybrid {W/U}, monocolor hybrid {2/W},
             or phyrexian {W/P}).
+
+    Reads only the FRONT FACE (``lib.front_face_cost``). A split / Room / Adventure
+    card's stored cost is ``A // B`` and you never pay both halves, so the merged
+    string double-counted pips for all 292 such cards in the pool — Funeral Room's
+    ``{2}{B} // {6}{B}{B}`` read as wanting three black pips when the door you cast
+    wants one.
     """
     strict, hybrid = {}, []
-    for sym in SYMBOL_RE.findall(cost or ""):
+    for sym in SYMBOL_RE.findall(front_face_cost(cost)):
         colors = set(ch for ch in sym.upper() if ch in "WUBRG")
         if "/" in sym:
             if colors:
@@ -927,12 +944,23 @@ _ROLE_PATTERNS = {
         r"deals? \d+ damage to each opponent",
         r"loses life equal to",
     ],
-    "Lifegain": [r"\blifelink\b", r"you gain \d+ life", r"gain \d+ life"],
+    # `gain(s) life equal to ...` (Exsanguinate, Corrupt, Sifter Wurm — 68 pool cards)
+    # was in neither this pattern nor the tag model; the tag half was fixed with the
+    # `pay life` work and this is the role half, so the two agree on the phrase.
+    "Lifegain": [r"\blifelink\b", r"you gain \d+ life", r"gain \d+ life",
+                 r"gains? life equal to"],
     # Cost reducers / free-cast enablers — the value that makes a nominally
     # expensive card cheap (Diamond Weapon, affinity/convoke, cascade cheats).
     "Cost reduction / cheat": [
+        # Magic writes "This spell costs {1} less TO CAST for each artifact you
+        # control", so a `costs {1} less for each` pattern (the words adjacent)
+        # matched zero of 15.8k pool cards — the third instance of this project's
+        # signature bug: a regex that compiles fine and can never fire. Found by
+        # `check_patterns.py` on its first run. Harmless in effect (the general
+        # pattern below already covers every one of the 155 cards it was meant
+        # for), which is exactly why it survived: a dead pattern hiding behind a
+        # live one changes no count and shows up in no diff.
         r"costs? \{[0-9x]+\} less",
-        r"costs? \{1\} less for each",
         r"\baffinity\b", r"\bconvoke\b", r"\bimprovise\b", r"\bcascade\b",
         r"without paying its mana cost",
     ],
@@ -2462,9 +2490,16 @@ def fit_strength(shared, theme_w, card_text, deck_int, deck_ca, signature=frozen
       tangential   – shares only GENERIC themes (etb/tokens/…) or broad background tribes
                      (_GENERIC_TRIBES: Human/Hero/Villain): broadly playable, not a home.
 
-    `signature` (from `_signature_themes`) corrects the idf blind spot: a theme in
-    GENERIC_THEMES is still SPECIFIC-for-this-deck if the deck protects cards built
-    on it — so a counter-doubler in a counters deck reads KEY, not tangential.
+    `signature` corrects the idf blind spot: a theme in GENERIC_THEMES is still
+    SPECIFIC-for-this-deck if the deck protects cards built on it — so a counter-doubler
+    in a counters deck reads KEY, not tangential. Callers must pass the STRICT
+    `_strong_signature_themes` (a theme carried by >=2 `#: protect:` cards), NOT the
+    loose `_signature_themes` that unions every protected card's tags. With the loose
+    set, deck 37's signature held 25 themes including etb / removal / sacrifice /
+    combat / tempo, so almost any card sharing any of them read KEY — Azula, Cunning
+    Usurper (a Human Noble Rogue) read KEY for three WIZARD-tribal decks on `Human, etb`
+    alone. `similar` already used the strict set for exactly this reason. The motivating
+    rescue is unaffected: deck 30's strict signature is precisely {counters}.
 
     The role-gap KEY is gated on a SPECIFIC-theme match (checked AFTER the `not
     specific` short-circuit below): a generically-good removal / card-advantage card
@@ -3021,6 +3056,15 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
         pool = list(csv.DictReader(fh))
     has_leg = bool(pool) and "Legalities" in pool[0]
+    # Default to the deck's own `#: format:`, exactly as the card-facing `suggest` does
+    # (--format overrides, --any-format disables). Without this line the land recommender
+    # only filtered when someone passed --format explicitly, so a plain
+    # `suggest --lands <id>` on a Standard deck offered Underground River and Duskmantle,
+    # House of Shadow as craft targets — neither is Standard-legal. This is a
+    # WILDCARD-SPEND recommender, so an unfiltered pick costs real resources, and it is
+    # exactly the "recommending a craft without a legality check" failure CLAUDE.md warns
+    # about. Found by USING the tool to build a deck, not by any test.
+    fmt = "" if any_format else (fmt or dmeta.get("format") or "").strip().lower()
     apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
     _, _, by_name_qty = load_collection()
     owned_of = lambda nl: owned_qty(by_name_qty, nl)
@@ -3843,6 +3887,33 @@ def parse_flex(path):
     return entries
 
 
+def flex_staleness(path):
+    """Flex lines whose `-Out` card is NOT in the deck any more → [(out, in, why)].
+
+    A `#~` line rots silently. `swap --apply` retires only the lines invalidated by
+    the swap it is PERFORMING, and `tier --audit-rationale` reads `#: tier:` /
+    `#: archetype:` prose, never the flex block — so a line can sit for rounds
+    proposing a cut that already happened. Found in practice on deck 42a, where an
+    Azula line still named Prideful Parent two swaps after it left, and again where an
+    interaction fix pointed at a card three swaps stale.
+
+    A line with no `-Out` (a pure note, or an add-only suggestion) is never stale —
+    there is nothing to check it against.
+    """
+    _, cards = parse_deck_file(path)
+    have = {n for _q, n, _s, _c in cards}
+    have |= {n.split(" // ")[0] for n in list(have)}
+    out = []
+    for e in parse_flex(path):
+        cut = (e.get("out") or "").strip()
+        if not cut:
+            continue
+        if cut not in have and cut.split(" // ")[0] not in have:
+            out.append((cut, (e.get("in") or "").strip(),
+                        "the -Out card is no longer in the deck"))
+    return out
+
+
 def cmd_flex(args):
     """Show a deck's flex suggestions, enriching the +In card with cost / owned /
     rarity so you can see what each swap would take."""
@@ -3875,6 +3946,12 @@ def cmd_flex(args):
             print(f"  {left or right}")
         if e["note"]:
             print(f"      {e['note']}")
+    stale = flex_staleness(d["path"])
+    if stale:
+        print("\n  \u26a0 STALE flex line(s) — the card they propose cutting is already gone:")
+        for cut, add, _why in stale:
+            print(f"      \u2212{cut}" + (f"  \u2192  +{add}" if add else "")
+                  + "   (retarget or retire the line)")
     return 0
 
 
@@ -5502,7 +5579,9 @@ def cmd_suggest_homes(args):
                        & {n.lower() for _, n, _, _ in cards})
         fit = sum(theme_w.get(t, 0) for t in shared)
         d_int, d_ca = deck_role_counts(cards, carddata)
-        sig = _signature_themes(dmeta, cards, cardmeta)
+        # STRICT (>=2 protected cards) — see fit_strength's docstring: the loose
+        # union made a generic theme a signature and minted KEY nearly everywhere.
+        sig = _strong_signature_themes(dmeta, cards, cardmeta)
         strength = fit_strength(shared, theme_w, cd.get("text") or "", d_int, d_ca, sig)
         # Color-fixer overlay: a rainbow fixer's worth scales with the deck's color
         # count, which theme-overlap can't see. In a 3+-color deck it's at least a
@@ -5744,7 +5823,9 @@ def cmd_quality(args):
         ctags = set(cardmeta.get(args.add.lower(), {}).get("synergies", []))
         shared = sorted(ctags & _central_themes(theme_w))
         d_int, d_ca = deck_role_counts(cards, carddata)
-        sig = _signature_themes(dmeta, cards, cardmeta)
+        # STRICT (>=2 protected cards) — see fit_strength's docstring: the loose
+        # union made a generic theme a signature and minted KEY nearly everywhere.
+        sig = _strong_signature_themes(dmeta, cards, cardmeta)
         strength = fit_strength(shared, theme_w, (cd or {}).get("text") or "", d_int, d_ca, sig)
         if strength == "tangential":
             weak_add = f"add {args.add!r} is only a TANGENTIAL fit (generic themes only)"
@@ -6330,20 +6411,72 @@ _RATIONALE_MIN_LEN = 9
 # flex-language is treated as history, not as a live argument. The cost is a real miss
 # when someone writes "held from A by <cut card>" right after the word "replaced"; the
 # figure check below is the independent backstop for that.
+# NOTE what is NOT here: a bare "over". It was, and it silently disabled the FIGURE
+# half of this audit across the roster, because "card advantage 9 OVER a 2.86 curve" is
+# the house phrasing for a quality vector — so the one cue meant to catch a rationale
+# describing a PAST figure was matching the sentence that states the CURRENT one. Deck
+# 43 quoted interaction 10 against a live 8 and the audit reported clean. Every other
+# cue here is a word that only appears when prose is describing a change; "over" is
+# ordinary English and was far too broad to earn a place among them.
 _HISTORY_CUES = re.compile(
     r"\b(?:was|were|became|becomes|replac\w*|swap\w*|cut\w*|remov\w*|left|leaves|"
-    r"instead|no longer|previously|earlier|former\w*|over|queued|flex|craft target|"
+    r"instead|no longer|previously|earlier|former\w*|queued|flex|craft target|"
     r"alternative|revisit|option|skipped|held out)\b", re.I)
 _HISTORY_WINDOW = 140
+# `0→1` / `1->4`: the matched number is the FROM side of a stated change.
+_ARROW_AFTER = re.compile(r"\s*(?:→|->|—>|–>)")
+
+# The SECOND way a citation is not a claim about the current list: it is about ANOTHER
+# DECK, or about a change you have not made yet. Three real false positives drove this,
+# all from rationales written the same week:
+#   • "DISTINCTNESS vs deck 8 … that one is built on Bloodthirsty Conqueror" — naming a
+#     card in the deck being compared AGAINST.
+#   • "PATH TO A: a second copy of the payoff axis (a Drogskol Reaver …)" — naming a
+#     card to ADD.
+#   • "`similar` reads 91% against 42 Blood Price" — naming another DECK whose name is
+#     also a card (Blood Price, ZNR). That one is fixed exactly, by masking roster deck
+#     names; these cues cover the other two, which are prose shapes rather than names.
+# Kept narrow deliberately: a rationale's own argument is written in the present tense
+# about this deck, so comparative and prescriptive language is a reliable signal that
+# the sentence has changed subject.
+_COMPARISON_CUES = re.compile(
+    r"\b(?:path to|vs\.?|versus|unlike|compared|comparison|distinctness|roster'?s|"
+    r"another deck|other deck|that deck|that one|elsewhere|would be|would need|"
+    r"consider|candidate|upgrade to|next add|instead of)\b", re.I)
 
 
 def _cites_as_history(prose, pos, length):
-    """True when a card citation sits near change-/flex-language, i.e. the prose is
-    DESCRIBING a card that left (or one deliberately not included) rather than arguing
-    from it. Window is generous on purpose — see _HISTORY_CUES."""
+    """True when a card citation is NOT an argument that this deck runs the card.
+
+    Two families: change-/flex-language (the card left, or was deliberately held out —
+    see _HISTORY_CUES) and comparative/prescriptive language (the sentence is about a
+    different deck, or about a card to add — see _COMPARISON_CUES). Window is generous
+    on purpose; a noisy audit gets ignored, which is worse than no audit."""
     lo = max(0, pos - _HISTORY_WINDOW)
     hi = min(len(prose), pos + length + _HISTORY_WINDOW)
-    return bool(_HISTORY_CUES.search(prose[lo:hi]))
+    window = prose[lo:hi]
+    return bool(_HISTORY_CUES.search(window) or _COMPARISON_CUES.search(window))
+
+
+def _roster_deck_names(_cache={}):
+    """Every deck's `#: name:`, longest first — masked out of a rationale before the
+    card scan. A deck name that is ALSO a card name ("Blood Price", "Sacrifices") read
+    as a stale citation whenever one deck's rationale named another for contrast, which
+    is exactly what the distinctness prose is FOR. Exact, not heuristic."""
+    if not _cache:
+        names = set()
+        for rec in discover_decks():
+            nm = (rec.get("name") or "").strip()
+            # Split a decorated title ("Blood Price — Orzhov Aristocrats") so the core
+            # name masks too; drop short fragments that would mask real prose.
+            for part in re.split(r"\s+[—–-]\s+", nm):
+                part = part.strip()
+                if len(part) >= _RATIONALE_MIN_LEN or " " in part:
+                    names.add(part)
+            if nm:
+                names.add(nm)
+        _cache["names"] = sorted(names, key=len, reverse=True)
+    return _cache["names"]
 
 
 def rationale_staleness(d, carddata=None):
@@ -6376,6 +6509,9 @@ def rationale_staleness(d, carddata=None):
         # "the Ooze Spill / Amazing Acrobatics upgrade" reported the card *The Ooze*.
         masked = prose
         for nm in sorted(in_deck, key=len, reverse=True):
+            masked = masked.replace(nm, " " * len(nm))
+        # ...and mask roster DECK names, which the distinctness prose names on purpose.
+        for nm in _roster_deck_names():
             masked = masked.replace(nm, " " * len(nm))
         for name, row in carddata.items():
             disp = row.get("name") or name
@@ -6423,6 +6559,14 @@ def rationale_staleness(d, carddata=None):
             # is how a check gets ignored. Only a figure presented as the CURRENT state
             # is worth reporting.
             if _cites_as_history(tier_prose, m.start(), len(m.group(0))):
+                continue
+            # A figure written as a TRANSITION ("card advantage 0→1", "interaction 1->4")
+            # states the OLD value first and the current one second, so the first number
+            # is history by construction. This used to be caught only accidentally, by a
+            # bare "over" sitting elsewhere in the sentence; that cue had to go because it
+            # was suppressing real staleness roster-wide, which left the arrow notation
+            # exposed. Handled explicitly now rather than by luck.
+            if _ARROW_AFTER.match(tier_prose, m.end()):
                 continue
             same = (abs(float(quoted) - float(actual)) < 0.005 if "." in quoted
                     else int(quoted) == int(actual))

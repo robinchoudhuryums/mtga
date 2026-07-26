@@ -38,6 +38,8 @@ When Enduring Vitality dies, if it was a creature, return it to the battlefield 
 Conductive Machete,Artifact — Equipment,"When this Equipment enters, manifest dread, then attach this Equipment to that creature. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)
 Equipped creature gets +2/+1.
 Equip {4}",Colorless,Equipment; reanimator; graveyard; etb; equipment; pump; selection; manifest; tokens; manifest dread; equip,DSK,244,Uncommon,38,,4.5,hand
+Osseous Sticktwister,Artifact Creature — Scarecrow,"Lifelink
+Delirium — At the beginning of your end step, if there are four or more card types among cards in your graveyard, each opponent may sacrifice a nonland permanent of their choice or discard a card. Then this creature deals damage equal to its power to each opponent who didn't sacrifice a permanent or discard a card this way.",B,Scarecrow; graveyard; lifegain; sacrifice; delirium; lifelink,DSK,112,Uncommon,43,Lifelink = repeatable draw under deck 43's Grimoire; delirium is live there via LAND hitting the yard from the Grimoire's discards.,3.5,seed
 Shroudstomper,Creature — Elemental,"Deathtouch
 Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.",W/B,Elemental; lifegain; card draw; deathtouch; combat; removal,DSK,233,Uncommon,20,,5.0,hand
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
@@ -85,6 +87,8 @@ Claws Out,Instant,"Affinity for Cats (This spell costs {1} less to cast for each
 Creatures you control get +2/+2 until end of turn.",W,pump; affinity; artifacts; cost-reduction,FDN,6,Uncommon,36,,4.0,hand
 Good-Fortune Unicorn,Creature — Unicorn,"Whenever another creature you control enters, put a +1/+1 counter on that creature.",W/G,Unicorn; counters,FDN,240,Uncommon,36a,,5.0,hand
 Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0,hand
+Midnight Snack,Enchantment,"Raid — At the beginning of your end step, if you attacked this turn, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+{2}{B}, Sacrifice this enchantment: Target opponent loses X life, where X is the amount of life you gained this turn.",B,lifegain; sacrifice; tokens; food; raid; aggro,FDN,65,Uncommon,42a,Raid Food every turn you attacked (artifact fodder) + a sac drain scaling with the life 42a gains on every death.,2.5,seed
 Lightshell Duo,Creature — Rat Otter,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,Rat; Otter; graveyard; etb; pump; selection; surveil; prowess; spellslinger; tempo,FDN,157,Common,37,,3.0,hand
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
@@ -137,6 +141,10 @@ Solved — {2}{U}, Sacrifice this Case: Put four +1/+1 counters on target noncre
 Gleaming Geardrake,Artifact Creature — Drake,"Flying
 When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
 Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",U/R,Drake; counters; card draw; sacrifice; tokens; etb; clue; flying; evasion; investigate,MKM,205,Uncommon,35,,5.0,hand
+Krovod Haunch,Artifact — Food Equipment,"Equipped creature gets +2/+0.
+{2}, {T}, Sacrifice this Equipment: You gain 3 life.
+When this Equipment is put into a graveyard from the battlefield, you may pay {1}{W}. If you do, create two 1/1 white Dog creature tokens.
+Equip {2}",W,Food; Equipment; reanimator; graveyard; lifegain; sacrifice; tokens; equipment; pump; equip,MKM,21,Uncommon,42a,Food ARTIFACT = fodder for 42a's six creature-or-artifact outlets; sacrificing it pays {1}{W} for two Dogs.,2.5,seed
 Magnetic Snuffler,Artifact Creature — Construct,"When this creature enters, return target Equipment card from your graveyard to the battlefield attached to this creature.
 Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",Colorless,Construct; counters; reanimator; graveyard; sacrifice; etb,MKM,254,Uncommon,38,,4.0,hand
 Repulsive Mutation,Instant,Put X +1/+1 counters on target creature you control. Then counter up to one target spell unless its controller pays mana equal to the greatest power among creatures you control.,U/G,counters,MKM,227,Uncommon,40a,Counter taxed at your greatest creature power (unconditional with the Hydra out) AND puts X counters on it. Interaction + protection + engine in one instant.,7.0,hand

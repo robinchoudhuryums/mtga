@@ -59,7 +59,7 @@
 1 Jungle Hollow (M21) 247
 
 # Flex — STANDARD-LEGAL craftable reanimator upgrades. See: deck.py flex 6
-#~ -Helping Hand | +Nullpriest of Oblivion | CRAFT (R): a reanimation creature — curves early as an evasive body OR kicker-reanimates a bomb
+#~ -Emeritus of Woe | +Nullpriest of Oblivion | CRAFT (R): a reanimation creature — curves early as an evasive body OR kicker-reanimates a bomb
 #~ -Stone Docent | +Neva, Stalked by Nightmares | CRAFT (U): cheap recursion/graveyard value that fits the self-mill plan
 #~ -Owlin Historian | +Ygra, Eater of All | CRAFT (M): an Elemental bomb that snowballs off every creature that dies — a reanimation target that also wins on its own
 #~ note: all three are CRAFT targets (not owned) and Standard-legal. Priority: Nullpriest of Oblivion.

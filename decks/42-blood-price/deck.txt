@@ -11,19 +11,20 @@
 #: archetype: — exchanging totals refunds every point you spent and drops them to yours.
 #: archetype: TWO PLANS THAT WIN WITHOUT HIM, by design, because he is a single mythic:
 #: archetype: (1) TOKEN DRAIN — Bitterbloom Bearer, Lunar Convocation's Bats and the
-#: archetype: death-triggers (Vengeful Bloodwitch, Agents of HYDRA, Infestation Sage)
+#: archetype: death-triggers (Vengeful Bloodwitch, Agents of HYDRA, Callous Inspector)
 #: archetype: build an evasive board while Bloodchief Ascension and Mai turn every
 #: archetype: exchange into life loss; (2) pure CARD-ADVANTAGE attrition — ten removal
 #: archetype: spells backed by six draw effects simply out-resources a fair deck.
-#: archetype: DISTINCTNESS vs 42 Darkforce Inversion, the other Mister Negative deck:
-#: archetype: 42 is a BLINK deck that re-triggers his ETB to convert a life gap into
+#: archetype: DISTINCTNESS vs 41 Darkforce Inversion, the other Mister Negative deck:
+#: archetype: 41 is a BLINK deck that re-triggers his ETB to convert a life gap into
 #: archetype: cards while keeping its own total high. This one never blinks, runs almost
 #: archetype: no ETB-value creatures, and deliberately drives its OWN total DOWN — the
 #: archetype: swap is a one-shot refund and stabiliser, not a repeatable draw engine.
 #: archetype: Opposite life postures, opposite creature bases, same finisher.
 #: tier: B — Orzhov life-as-currency attrition, one band BELOW the A metrics floor,
-#: tier: PROVISIONAL (unplayed brew). The floor reads A on interaction 13 (11 of it
-#: tier: instant-speed) plus card advantage 6 over a 2.37 curve, and unlike deck 42 that
+#: tier: PROVISIONAL (unplayed brew). The floor reads A on interaction 8 (SEVEN of it
+#: tier: instant-speed) plus card advantage 6 over a 2.49 curve — five surplus removal
+#: tier: spells became the pay-life engine and the drain clock — and unlike deck 41 that
 #: tier: card-advantage number is REAL — Cruel Truths, Circle of Power, Decode
 #: tier: Transmissions and Visions of Villainy each draw two, so this is an engine, not
 #: tier: a pile of cantrips. Held at B by two structural risks the floor cannot see:
@@ -78,25 +79,29 @@ Deck
 1 Healer's Hawk (FDN) 142
 1 Vengeful Bloodwitch (FDN) 76
 1 Agents of HYDRA (MSH) 85
-1 Infestation Sage (FDN) 64
 1 Callous Inspector (TLA) 89
-1 Snarling Gorehound (MKM) 105
 1 Sanguine Syphoner (ECL) 118
 1 Dream Beavers (TMT) 62
 1 Starscape Cleric (BLB) 116
+
+# Life into cards — repeatable, on a body
+1 Grave Researcher (SOS) 85
+1 Stargaze (SOA) 34
+1 Dark Confidant (FIN) 94
+1 Darkstar Augur (BLB) 90
+1 Koh, the Face Stealer (TLA) 107
+
+# Drain finish
+1 Arnyn, Deathbloom Botanist (SOS) 74
+1 Leech Collector (SOS) 88
 
 # Removal
 1 Hero's Downfall (FDN) 175
 1 Harsh Annotation (SOS) 18
 1 Stroke of Midnight (FDN) 148
-1 Last Gasp (SOS) 86
-1 Dark Deed (MSH) 93
 1 Feed the Swarm (SOA) 29
 1 Sephiroth's Intervention (FIN) 116
 1 Hour of Defeat (MSH) 99
-1 Wander Off (SOS) 104
-1 Auntie's Sentence (ECL) 85
-1 Heartless Act (TLA) 103
 1 Erode (SOS) 15
 
 # Lands — 24, Orzhov
@@ -108,3 +113,11 @@ Deck
 1 Fountainport (BLB) 253
 9 Plains (MSH) 285
 10 Swamp (MSH) 287
+
+#~ note: applied — Grave Researcher in for Snarling Gorehound.
+#~ note: applied — Stargaze in for Infestation Sage.
+#~ +Silverquill Charm | -Hour of Defeat | Two-mana modal instant: two counters, exile a power-2-or-less creature, or drain 3 and gain 3. Never dead, and cheaper than the four-drop removal it would replace. Craft (U).
+#~ +Exsanguinate | -Erode | {X}{B}{B} scalable drain-and-gain — the finisher the deck's PATH TO A asks for. Caveat that keeps it in flex rather than the 60: it pushes THEIR total down, which shrinks the Mister Negative refund, so it is plan-B support that mildly undercuts plan A. Craft (U).
+#~ +Starseer Mentor | -Hour of Defeat | "Gained OR LOST life this turn" is met every turn here without trying, so it is a repeatable lose-3-or-sacrifice-or-discard clock on a flier. Held out on curve: MV 5 against a 2.37 average. Craft (U).
+#~ +The Spot's Portal | -Harsh Annotation | Instant-speed bottom-of-library removal, which beats exile against recursion, and the 2-life rider is on-thesis (waived while you control a Villain — Agents of HYDRA makes one). An UPGRADE OVER an existing removal spell, not an add. Craft (U).
+#~ +Foolish Fate | -Harsh Annotation | Instant removal with an Infusion rider that drains 3 if you gained life this turn, which this deck does constantly. Same note as above: swap for a removal spell, do not add. Craft (U).
