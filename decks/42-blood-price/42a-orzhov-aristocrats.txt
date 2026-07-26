@@ -31,20 +31,19 @@
 #: archetype: THREE nonland cards are shared. vs the core 42: opposite
 #: archetype: resource. 42 spends life and holds creatures; this spends creatures and
 #: archetype: gains life.
-#: tier: B — Orzhov aristocrats, PROVISIONAL (unplayed brew). The metrics floor is now B
-#: tier: and the claimed letter sits AT it rather than one band above, which is a real
-#: tier: change: interaction fell 7 -> 5 when Harsh Annotation and Sephiroth's
-#: tier: Intervention became Fix What's Broken and Starseer Mentor. Five answers (all
-#: tier: instant-speed, three able to hit a noncreature permanent) is thin even for a
-#: tier: deck whose plan is attrition rather than answers, and `stats` now warns on every
-#: tier: removal spell in the cut list. `cuts` flags Liliana's -4 double edict as a likely
-#: tier: under-read, so the true figure is nearer 6-7 — but that is a reason to verify,
-#: tier: not a reason to claim the number. THE FIX IS ONE LINE and it is in the flex
-#: tier: block: restore Harsh Annotation over Anafenza, Unyielding Lineage, and
-#: tier: interaction returns to 6. That cut target has now moved TWICE — Dwarven Castle
-#: tier: Guard became Treasure Dredger, then Agents of HYDRA became Midnight Snack — which
-#: tier: is the honest cost of filling every flex slot before fixing the floor: each add
-#: tier: consumed the body the fix wanted, so the fix now has to take a real card.
+#: tier: B — Orzhov aristocrats, PROVISIONAL (unplayed brew). The claimed letter sits AT
+#: tier: the metrics floor rather than one band above it. Interaction fell 7 -> 5 when
+#: tier: Harsh Annotation and Sephiroth's Intervention became Fix What's Broken and
+#: tier: Starseer Mentor, and Social Snub (over Anafenza) has brought it back to 6 — an
+#: tier: edict that COPIES itself, so it answers two creatures and drains twice while you
+#: tier: feed it a spare token. `cuts` also flags Liliana's -4 double edict and Jecht's
+#: tier: sacrifice trigger as likely under-reads, so the true figure is nearer 8; that is
+#: tier: a reason to verify, not a reason to claim the number.
+#: tier: BE PRECISE ABOUT THE FLOOR, because "restore the interaction" was not the whole
+#: tier: fix: the A floor wants interaction >=5 AND interaction+card-advantage >=7. At
+#: tier: interaction 6 and card advantage 0 the sum is 6, so the floor is B and ONE more
+#: tier: point on either axis flips it. Card advantage is the easier axis to move here —
+#: tier: see risk 1 below for why the measured 0 is defensible but beatable.
 #: tier: Held at B by three further things the floor cannot see:
 #: tier: 1. MEASURED CARD ADVANTAGE IS ZERO, and that number is defensible rather than a
 #: tier:    classifier miss. Vampiric Rites, Ahriman, Kingpin's Enforcers, Baron Bertram
@@ -88,8 +87,12 @@
 #: notes: cut: Infestation Sage, Dwarven Castle Guard, Resolute Reinforcements and Agents
 #: notes: of HYDRA were all self-replacing but ONE-SHOT, and each replacement makes a body
 #: notes: repeatedly. The deck now runs NO one-shot fodder at all.
-#: notes: Anafenza is the odd one out and earns it: every NONTOKEN death endures 2, which
-#: notes: is itself either a counter or another 1/1 to sacrifice.
+#: notes: WHY ANAFENZA WAS CUT even though `cuts` rated her fit 40 / power 6, near the
+#: notes: top of the deck: her trigger is "whenever another NONTOKEN creature you control
+#: notes: dies", and the fodder base is now almost entirely TOKENS. She rewarded exactly
+#: notes: the deaths this deck stopped having once every one-shot body became a recurring
+#: notes: token generator. A fit score cannot see that the fodder changed underneath it —
+#: notes: this is the grade-against-THIS-deck's-engine rule cutting the other way.
 #: notes: WATCH THE ARTIFACT CLAUSES. Al Bhed Salvagers, Ahriman, Umbral Collar Zealot
 #: notes: and Kingpin's Enforcers all read "creature OR artifact", so Clue tokens
 #: notes: (Obsessive Pursuit), Food (Scavenger's Talent) and Treasure (Fountainport) are
@@ -121,7 +124,7 @@ Deck
 1 Agent Venom (SPM) 49
 1 Fiendish Panda (FDN) 120
 1 Obsessive Pursuit (TLA) 112
-1 Anafenza, Unyielding Lineage (TDM) 2
+1 Social Snub (SOS) 228
 
 # The multiplier — persist makes every death happen twice
 1 Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight (ECL) 13
@@ -165,9 +168,9 @@ Deck
 
 #~ note: applied — Treasure Dredger in for Dwarven Castle Guard.
 #~ note: applied — Krumar Initiate in for Infestation Sage.
-#~ +Social Snub | -Last Gasp | A symmetric edict that COPIES itself if you control a creature — asymmetric in practice because you always have a spare Bat — plus a drain-and-gain rider. It also ADDS interaction, which this deck is short on. Owned.
+#~ note: applied — Social Snub in for Anafenza, Unyielding Lineage.
 
 #~ note: applied — Midnight Snack in for Agents of HYDRA.
 #~ note: applied — Krovod Haunch in for Resolute Reinforcements.
-#~ +Azula, On the Hunt | -Fiendish Panda | RE-GRADED, and the WEAKEST of the three — take it last. Attacks for a Clue (artifact fodder) and a self-inflicted 1 life (on-thesis), and Firebending's {R}{R} is NOT dead, because red mana pays GENERIC costs, so it funds Ahriman's {3} sacrifice-draw during combat. The caveats are real: 4 mana, it must attack, and the mana evaporates at end of combat. Cut candidates, weakest first: Fiendish Panda (the other 4-drop whose payoff is conditional — it needs you to gain life for counters and a death to reanimate), Robot Domination, Anafenza, Unyielding Lineage. Craft (U).
-#~ note: SLOT MATH, resolved — Krovod Haunch, Midnight Snack and Azula's slots were taken from Resolute Reinforcements, Agents of HYDRA and (pending) Fiendish Panda. That used the three cheap bodies, so the Harsh Annotation interaction fix above now has to cut a REAL card (Anafenza). Interaction stays at 5 until that trade is made; the floor stays B.
+#~ +Azula, On the Hunt | -Robot Domination | PARKED, not pending — retargeted because Fiendish Panda was deliberately KEPT (its death trigger reanimates a creature up to its power, and it grows on every lifegain, so both of its conditions are things this deck does automatically). Robot Domination is the only remaining defensible cut and it is a genuine engine, so the honest read is that this deck no longer has room: 35 nonlands all doing a job. Azula is a 4-mana 4/3 that must attack and whose Firebending mana evaporates at end of combat; the Clue (artifact fodder) and the self-inflicted 1 life are on-theme but do not beat an engine card. Keep this line as a note-to-self, not a plan. Craft (U).
+#~ note: SLOT MATH, closed — the three cheap bodies (Resolute Reinforcements, Agents of HYDRA, and Anafenza for the interaction fix) are spent, and Fiendish Panda was kept on a re-read. The deck is now 35 nonlands with no filler, which is the good version of 'no room': any further add has to beat an engine card, not a spare one.
