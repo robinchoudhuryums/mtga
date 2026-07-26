@@ -3056,6 +3056,15 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
         pool = list(csv.DictReader(fh))
     has_leg = bool(pool) and "Legalities" in pool[0]
+    # Default to the deck's own `#: format:`, exactly as the card-facing `suggest` does
+    # (--format overrides, --any-format disables). Without this line the land recommender
+    # only filtered when someone passed --format explicitly, so a plain
+    # `suggest --lands <id>` on a Standard deck offered Underground River and Duskmantle,
+    # House of Shadow as craft targets — neither is Standard-legal. This is a
+    # WILDCARD-SPEND recommender, so an unfiltered pick costs real resources, and it is
+    # exactly the "recommending a craft without a legality check" failure CLAUDE.md warns
+    # about. Found by USING the tool to build a deck, not by any test.
+    fmt = "" if any_format else (fmt or dmeta.get("format") or "").strip().lower()
     apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
     _, _, by_name_qty = load_collection()
     owned_of = lambda nl: owned_qty(by_name_qty, nl)
