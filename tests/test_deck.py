@@ -262,6 +262,34 @@ class TestCoverageNetIsSuperset:
         assert [n for n, _axis in under_read] == ["Odd Answer"]
 
 
+class TestRationaleFigureAudit:
+    """The FIGURE half of `rationale_staleness` was silently disabled roster-wide by one
+    over-broad history cue, and the arrow notation it accidentally covered then needed
+    handling on its own."""
+
+    def test_bare_over_is_not_a_history_cue(self):
+        """"card advantage 9 OVER a 2.91 curve" is the house phrasing for a quality
+        vector, so a bare "over" suppressed the very sentence that states the CURRENT
+        figure. Deck 43 quoted interaction 10 against a live 8 and read clean."""
+        assert not deck._HISTORY_CUES.search("card advantage 9 over a 2.91 curve")
+
+    def test_real_history_words_still_suppress(self):
+        for phrase in ("interaction was 4", "Bite Down replaced Shock",
+                       "no longer in the deck", "held out of the 60",
+                       "queued as a craft target"):
+            assert deck._HISTORY_CUES.search(phrase), phrase
+
+    def test_arrow_notation_marks_the_from_side_as_history(self):
+        # "card advantage 0→1" states the OLD value first; only the second is current.
+        for arrow in ("→", "->"):
+            assert deck._ARROW_AFTER.match(f"{arrow}1")
+            assert deck._ARROW_AFTER.match(f" {arrow} 1")
+
+    def test_a_plain_figure_is_not_treated_as_an_arrow(self):
+        assert not deck._ARROW_AFTER.match(" (seven of it instant-speed)")
+        assert not deck._ARROW_AFTER.match(" plus card advantage 9")
+
+
 class TestRotationOverride:
     """A reprint inherits the newest printing's date, so a card reprinted into a set with
     an announced LONG Standard legality read as rotating in three years."""

@@ -6354,11 +6354,20 @@ _RATIONALE_MIN_LEN = 9
 # flex-language is treated as history, not as a live argument. The cost is a real miss
 # when someone writes "held from A by <cut card>" right after the word "replaced"; the
 # figure check below is the independent backstop for that.
+# NOTE what is NOT here: a bare "over". It was, and it silently disabled the FIGURE
+# half of this audit across the roster, because "card advantage 9 OVER a 2.86 curve" is
+# the house phrasing for a quality vector — so the one cue meant to catch a rationale
+# describing a PAST figure was matching the sentence that states the CURRENT one. Deck
+# 43 quoted interaction 10 against a live 8 and the audit reported clean. Every other
+# cue here is a word that only appears when prose is describing a change; "over" is
+# ordinary English and was far too broad to earn a place among them.
 _HISTORY_CUES = re.compile(
     r"\b(?:was|were|became|becomes|replac\w*|swap\w*|cut\w*|remov\w*|left|leaves|"
-    r"instead|no longer|previously|earlier|former\w*|over|queued|flex|craft target|"
+    r"instead|no longer|previously|earlier|former\w*|queued|flex|craft target|"
     r"alternative|revisit|option|skipped|held out)\b", re.I)
 _HISTORY_WINDOW = 140
+# `0→1` / `1->4`: the matched number is the FROM side of a stated change.
+_ARROW_AFTER = re.compile(r"\s*(?:→|->|—>|–>)")
 
 # The SECOND way a citation is not a claim about the current list: it is about ANOTHER
 # DECK, or about a change you have not made yet. Three real false positives drove this,
@@ -6493,6 +6502,14 @@ def rationale_staleness(d, carddata=None):
             # is how a check gets ignored. Only a figure presented as the CURRENT state
             # is worth reporting.
             if _cites_as_history(tier_prose, m.start(), len(m.group(0))):
+                continue
+            # A figure written as a TRANSITION ("card advantage 0→1", "interaction 1->4")
+            # states the OLD value first and the current one second, so the first number
+            # is history by construction. This used to be caught only accidentally, by a
+            # bare "over" sitting elsewhere in the sentence; that cue had to go because it
+            # was suppressing real staleness roster-wide, which left the arrow notation
+            # exposed. Handled explicitly now rather than by luck.
+            if _ARROW_AFTER.match(tier_prose, m.end()):
                 continue
             same = (abs(float(quoted) - float(actual)) < 0.005 if "." in quoted
                     else int(quoted) == int(actual))

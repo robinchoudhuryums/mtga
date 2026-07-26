@@ -32,8 +32,8 @@
 #: archetype: answers, 22 Bloodbending mills; here the drawing IS the deck and white is a
 #: archetype: real color rather than a splash. It is the roster's only Esper deck.
 #: tier: B — Esper hand-size control, one band BELOW the A metrics floor, PROVISIONAL
-#: tier: (unplayed brew). The floor reads A on interaction 10 (NINE of it instant-speed,
-#: tier: six able to answer a noncreature permanent) plus card advantage 9 over a 2.86
+#: tier: (unplayed brew). The floor reads A on interaction 8 (seven of it instant-speed,
+#: tier: four able to answer a noncreature permanent) plus card advantage 9 on a 2.91
 #: tier: curve, and that card-advantage number is real rather than a pile of cantrips —
 #: tier: Cloudblazer draws two, Chart a Course draws two, Spirit Water Revival draws
 #: tier: seven when waterbent, and the Grimoire draws five on cast. Held at B by three
@@ -122,10 +122,12 @@ Deck
 # Top end
 1 Mister Negative (SPM) 135
 
+# Lifegain = card draw (cont.)
+1 Stirring Hopesinger (SOS) 35
+1 Leech Collector (SOS) 88
+
 # Removal
 1 Into the Flood Maw (BLB) 52
-1 Erode (SOS) 15
-1 Dazzling Denial (BLB) 45
 1 Essence Scatter (SOS) 47
 1 Tishana's Tidebinder (LCI) 81
 1 Floodpits Drowner (DSK) 59
@@ -154,3 +156,5 @@ Deck
 
 #~ -The Ten Rings | +Drogskol Reaver | The Ten Rings is the deliberate spice and the flagship hand-size card, but `cuts` ranks it the deck's weakest fit (MV 8, fit 0) and it is the third card above five mana. If the curve plays too heavy, this is the first cut. Drogskol Reaver (craft, R) is a second Grimoire on a body — flying/double strike/lifelink plus "whenever you gain life, draw a card" — but it costs 7, so swapping one 8-drop for one 7-drop only helps if you also want the lifelink clock.
 #~ -Radiant Strike | +Restoration Magic #2 | Radiant Strike only answers an ARTIFACT or a TAPPED creature — the same conditional-removal shape this deck passed on elsewhere. It survives the cut only because gaining 3 draws 3 here. A second protection effect would be the better card if the wildcard is available.
+
+#~ +Osseous Sticktwister | -Radiant Strike | A lifelink 2-drop (so, a repeatable draw engine under the Grimoire) whose delirium is a recurring "each opponent sacrifices a nonland permanent, discards, or takes damage equal to its power". THIS IS THE ONE DECK ON THE ROSTER WHERE DELIRIUM IS LIVE, and for a non-obvious reason: LAND is a card type, and the Grimoire's "whenever you lose life, discard that many cards" is a repeatable, self-chosen way to put lands in the graveyard. So the four types are Creature + Instant + Land + Sorcery — not the artifact type, since the only two artifacts here are the Grimoire and The Ten Rings and you never want either in the yard. HONEST CAVEAT: Sorcery is the tight link — exactly two cards (Spirit Water Revival, Chart a Course) — so delirium arrives once one of them has been cast or pitched, which is likely over a long game but not early. Cut candidates, weakest first: Radiant Strike (conditional removal — it only answers an ARTIFACT or a TAPPED creature, and it survives in the 60 only on its gain-3 rider, which Sticktwister replaces with repeatable lifelink at half the cost), Feed the Cauldron (also conditional — caps at mana value 3), The Ten Rings (costs no interaction at all and is the biggest curve improvement at MV 8 -> 2, but it is the deck's hand-size identity card, so that one is a spice call rather than a power call). Note the classifier does NOT count Sticktwister as interaction (it reads Burn / drain + Lifegain), so cutting a removal spell for it shows as interaction 8 -> 7 even though the board pressure is real. Craft (U).
