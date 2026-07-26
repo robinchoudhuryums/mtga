@@ -9,6 +9,13 @@
 #: archetype: Zuko, Appa) trigger on a graveyard cast at all. Fire Lord Zuko was EXCLUDED
 #: archetype: for a hard reason rather than a judgment call — {R}{W}{B} needs a white pip,
 #: archetype: so he is uncastable in these colours, and that is what forced the fork.
+#: archetype: WARP DOES NOT BELONG HERE, which is worth stating because it looks like it
+#: archetype: should. Warp re-casts from EXILE and Norman Osborn discounts casts from the
+#: archetype: GRAVEYARD — different zones, no overlap — so the five warp cards that make
+#: archetype: deck 45 hum do nothing for this one's payoff. The exception is Timeline
+#: archetype: Culler, which explicitly warps FROM THE GRAVEYARD and is maindecked for that
+#: archetype: reason; Sinister Cryologist and Weftstalker Ardent are here on their bodies,
+#: archetype: not their warp. Same trap as grading a card by the half you want.
 #: archetype: MAYHEM IS THE SPINE: "cast this from your graveyard if you DISCARDED it this
 #: archetype: turn." Seven owned mayhem cards plus a discard package to switch them on, and
 #: archetype: Ultimate Green Goblin does both halves by itself (upkeep: discard a card, make
