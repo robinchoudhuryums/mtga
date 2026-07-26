@@ -3580,3 +3580,57 @@ Valiant — Whenever this creature becomes the target of a spell or ability you 
 Honored Knight-Captain,Creature — Human Advisor Knight,"When this creature enters, create a 1/1 white Human Soldier creature token.
 {4}{W}{W}, Sacrifice this creature: Search your library for an Equipment card, put it onto the battlefield, then shuffle.",W,Human; Advisor; Knight; sacrifice; tokens; etb,EOE,22,1
 Slash of Light,Instant,Slash of Light deals damage equal to the number of creatures you control plus the number of Equipment you control to target creature.,W,,FIN,32,1
+Spider-Man No More,Enchantment — Aura,"Enchant creature
+Enchanted creature is a Citizen with base power and toughness 1/1. It has defender and loses all other abilities. (It also loses all other creature types.)",U,Aura; aura; enchant,SPM,45,1
+Thwip!,Instant,"Target creature gets +2/+2 and gains flying until end of turn. If it's a Spider, you gain 2 life.",W,lifegain; pump,MSC,780,1
+Pumpkin Bombardment,Sorcery,"As an additional cost to cast this spell, discard a card or pay {2}.
+Pumpkin Bombardment deals 3 damage to target creature.",B/R,burn,MSC,822,1
+Mechanical Mobster,Artifact Creature — Human Robot Villain,"When this creature enters, exile up to one target card from a graveyard. Target creature you control connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",Colorless,Human; Robot; Villain; counters; graveyard; card draw; etb; connive,SPM,168,1
+Vibrant Cityscape,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,sacrifice; ramp,SPM,188,1
+Daily Bugle Reporters,Creature — Human Citizen,"When this creature enters, choose one —
+• Puff Piece — Put a +1/+1 counter on each of up to two target creatures.
+• Investigative Journalism — Return target creature card with mana value 2 or less from your graveyard to your hand.",W,Human; Citizen; counters; graveyard; etb,MSC,771,1
+"Rhino, Barreling Brute",Legendary Creature — Human Villain,"Vigilance, trample, haste
+Whenever Rhino attacks, if you've cast a spell with mana value 4 or greater this turn, draw a card.",R/G,Human; Villain; card draw; vigilance; combat; haste; aggro; trample; evasion,SPM,140,1
+Heroes' Hangout,Sorcery,"Choose one —
+• Date Night — Exile the top two cards of your library. Choose one of them. Until the end of your next turn, you may play that card.
+• Patrol Night — One or two target creatures each get +1/+0 and gain first strike until end of turn.",R,pump; impulse,MSC,804,1
+"SP//dr, Piloted by Peni",Legendary Artifact Creature — Spider Hero,"Vigilance
+When SP//dr enters, put a +1/+1 counter on target creature.
+Whenever a modified creature you control deals combat damage to a player, draw a card. (Equipment, Auras you control, and counters are modifications.)",W/U,Spider; Hero; counters; card draw; etb; vigilance; combat,SPM,147,1
+Mister Negative,Legendary Creature — Human Villain,"Vigilance, lifelink
+Darkforce Inversion — When Mister Negative enters, you may exchange life totals with target opponent. If you lost life this way, draw that many cards.",W/B,Human; Villain; lifegain; card draw; etb; lifelink; vigilance; combat,SPM,135,2
+Pictures of Spider-Man,Artifact,"When this artifact enters, look at the top five cards of your library. You may reveal up to two creature cards from among them and put them into your hand. Put the rest on the bottom of your library in a random order.
+{1}, {T}, Sacrifice this artifact: Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",G,sacrifice; tokens; etb; treasure; selection,SPM,109,1
+"Flash Thompson, Spider-Fan",Legendary Creature — Human Citizen,"Flash
+When Flash Thompson enters, choose one or both —
+• Heckle — Tap target creature.
+• Hero Worship — Untap target creature.",W,Human; Citizen; etb; flash; tempo,MSC,772,1
+Wall Crawl,Enchantment,"When this enchantment enters, create a 2/1 green Spider creature token with reach, then you gain 1 life for each Spider you control.
+Spiders you control get +1/+1 and can't be blocked by creatures with defender.",G,Spider; lifegain; tokens; etb; pump,SPM,121,1
+Daily Bugle Building,Land,"{T}: Add {C}.
+{1}, {T}: Add one mana of any color.
+Smear Campaign — {1}, {T}: Target legendary creature gains menace until end of turn. Activate only as a sorcery.",Colorless,mana,SPM,179,1
+"Anti-Venom, Horrifying Healer",Legendary Creature — Symbiote Hero,"When Anti-Venom enters, if he was cast, return target creature card from your graveyard to the battlefield.
+If damage would be dealt to Anti-Venom, prevent that damage and put that many +1/+1 counters on him.",W,Symbiote; Hero; counters; reanimator; graveyard; etb,SPM,1,1
+Web of Life and Destiny,Enchantment,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
+At the beginning of combat on your turn, look at the top five cards of your library. You may put a creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order.",G,selection; convoke; go-wide; ramp,SPM,122,1
+Spider-Verse,Enchantment,"The ""legend rule"" doesn't apply to Spiders you control.
+Whenever you cast a spell from anywhere other than your hand, you may copy it. If you do, you may choose new targets for the copy. If the copy is a permanent spell, it gains haste. Do this only once each turn.",R,Spider,SPM,93,1
+Norman Osborn,Legendary Creature — Human Scientist Villain // Legendary Creature — Goblin Human Villain,"Norman Osborn can't be blocked.
+Whenever Norman Osborn deals combat damage to a player, he connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)
+{1}{U}{B}{R}: Transform Norman Osborn. Activate only as a sorcery. // Flying, menace
+Spells you cast from your graveyard cost {2} less to cast.
+Goblin Formula — Each nonland card in your graveyard has mayhem. The mayhem cost is equal to its mana cost. (You may cast a card from your graveyard for its mayhem cost if you discarded it this turn. Timing rules still apply.)",U/B/R,Human; Scientist; Villain; Goblin; counters; graveyard; cost-reduction; card draw; flying; evasion; transform; menace; connive; goblin formula,SPM,39,1
+"Gwenom, Remorseless",Legendary Creature — Symbiote Spider Hero,"Deathtouch, lifelink
+Whenever Gwenom attacks, until end of turn, you may look at the top card of your library any time and you may play cards from the top of your library. If you cast a spell this way, pay life equal to its mana value rather than pay its mana cost.",B,Symbiote; Spider; Hero; lifegain; pay life; card advantage; selection; lifelink; deathtouch; combat; removal,SPM,56,1
+Ponder,Sorcery,"Look at the top three cards of your library, then put them back in any order. You may shuffle.
+Draw a card.",U,card draw; selection,LRW,79,1
+Exalted Sunborn,Creature — Angel Wizard,"Flying, lifelink
+If one or more tokens would be created under your control, twice that many of those tokens are created instead.
+Warp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,Angel; Wizard; lifegain; tokens; flying; evasion; lifelink; warp; tempo; cost-reduction,EOE,15,1
+"Sokka, Bold Boomeranger",Legendary Creature — Human Warrior Ally,"When Sokka enters, discard up to two cards, then draw that many cards.
+Whenever you cast an artifact or Lesson spell, put a +1/+1 counter on Sokka.",U/R,Human; Warrior; Ally; counters; card draw; etb,TLA,240,1
+Angry Rabble,Creature — Human Citizen,"Trample
+Whenever you cast a spell with mana value 4 or greater, this creature deals 1 damage to each opponent.
+{5}{R}: Put two +1/+1 counters on this creature. Activate only as a sorcery.",R,Human; Citizen; counters; burn; noncombat damage; trample; evasion,SPM,75,1

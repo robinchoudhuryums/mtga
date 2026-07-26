@@ -51,6 +51,23 @@ class TestOwnedQty:
     def test_case_insensitive(self):
         assert lib.owned_qty(self.IDX, "LLANOWAR ELVES") == 4
 
+    def test_deck_owned_helper_resolves_a_dfc_by_front_face(self):
+        """deck.owned() must resolve a FULL `A // B` deck line to the library's front name.
+
+        Regression: deck.owned() did a bare dict lookup and returned "not in library",
+        allow-listed in check_dfc.py on the claim that deck-file names are always
+        front-face. `deck.py resolve` falsifies that — it emits the full name, because
+        that is how the pool keys a DFC and how Arena exports one — so a deck built by
+        resolve reported its own OWNED double-faced card as missing (deck 45a said it
+        about Norman Osborn) while lib.owned_qty had it right all along.
+        """
+        import deck
+        qty, found = deck.owned(self.IDX, "Fable of the Mirror-Breaker // Reflection of Kiki-Rikki")
+        assert (qty, found) == (2, True)
+        # and the plain / unowned paths still behave
+        assert deck.owned(self.IDX, "Llanowar Elves") == (4, True)
+        assert deck.owned(self.IDX, "Nonexistent Card") == (0, False)
+
 
 class TestBackupPath:
     def test_sortable_and_unique(self):

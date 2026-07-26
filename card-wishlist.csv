@@ -221,12 +221,6 @@ Vastlands Scavenger // Bind to Life,Creature — Bear Druid // Instant,"Deathtou
 This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Mill seven cards. Then put a creature card from among them onto the battlefield.",G,Bear; Druid; mill; prepared; spellslinger; tempo; graveyard; deathtouch; combat; removal,SOS,166,Rare,6; 31,"best 6 (Dead or Alive); also 5,20b,8 | Also deck 31 (Pox) — 10-Druid go-wide shell; strong Druid fit.",5.5,hand
 Vicious Rivalry,Sorcery,"As an additional cost to cast this spell, pay X life.
 Destroy all artifacts and creatures with mana value X or less.",B/G,,SOS,241,Rare,general,BG fight/removal,5.5,hand
-"Anti-Venom, Horrifying Healer",Legendary Creature — Symbiote Hero,"When Anti-Venom enters, if he was cast, return target creature card from your graveyard to the battlefield.
-If damage would be dealt to Anti-Venom, prevent that damage and put that many +1/+1 counters on him.",W,Symbiote; Hero; counters; reanimator; graveyard; etb,SPM,1,Mythic,6,,6.0,hand
-Mister Negative,Legendary Creature — Human Villain,"Vigilance, lifelink
-Darkforce Inversion — When Mister Negative enters, you may exchange life totals with target opponent. If you lost life this way, draw that many cards.",W/B,Human; Villain; lifegain; card draw; etb; lifelink; vigilance; combat; darkforce inversion,SPM,135,Mythic,concept: life-swap,"7-mana 5/5 vigilance lifelink. DO NOT slot into 20 — the old note had this backwards. The draw half only fires when YOUR life is higher, and the price is handing the opponent that total; deck 20 is a lifegain-drain deck that sits high while grinding them low, i.e. exactly the state where swapping undoes the game. The good mode (you low, them high) draws ZERO cards and arrives at 7 mana, too late to stabilise. Self-cancelling as a build-around: the payoff needs a life gap that only exists when you are already winning. Revisit only with an Orzhov BLINK shell to re-trigger the ETB, or a deck that wins the turn it draws 20.",5.0,hand
-Spider-Verse,Enchantment,"The ""legend rule"" doesn't apply to Spiders you control.
-Whenever you cast a spell from anywhere other than your hand, you may copy it. If you do, you may choose new targets for the copy. If the copy is a permanent spell, it gains haste. Do this only once each turn.",R,,SPM,93,Mythic,concept,Spider-Man tribal + spell-copy build-around (Spiders ignore legend rule),5.5,hand
 The Soul Stone,Legendary Artifact — Infinity Stone,"Indestructible
 {T}: Add {B}.
 {6}{B}, {T}, Exile a creature you control: Harness The Soul Stone. (Once harnessed, its ∞ ability is active.)
@@ -267,8 +261,6 @@ During your turn, you may cast cards exiled with Azula and you may cast them as 
 Earth King's Lieutenant,Creature — Human Soldier Ally,"Trample
 When this creature enters, put a +1/+1 counter on each other Ally creature you control.
 Whenever another Ally you control enters, put a +1/+1 counter on this creature.",W/G,Human; Soldier; Ally; counters; etb; trample; evasion,TLA,217,Rare,13,Ally +1/+1 anthem — Earth Kingdom flavor + its Ally/counters theme,4.5,hand
-"Sokka, Bold Boomeranger",Legendary Creature — Human Warrior Ally,"When Sokka enters, discard up to two cards, then draw that many cards.
-Whenever you cast an artifact or Lesson spell, put a +1/+1 counter on Sokka.",U/R,Human; Warrior; Ally; counters; card draw; etb,TLA,240,Rare,17,UR loot + grows on artifact/Lesson casts; only strong home is 5-color Spectrum,5.0,hand
 The Fire Nation Drill,Legendary Artifact — Vehicle,"Trample
 When The Fire Nation Drill enters, you may tap it. When you do, destroy target creature with power 4 or less.
 {1}: Permanents your opponents control lose hexproof and indestructible until end of turn.

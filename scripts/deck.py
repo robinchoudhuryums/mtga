@@ -239,9 +239,18 @@ def owned(by_name_qty, name):
     if name.lower() in BASICS:
         return 99, True
     nl = name.lower()
-    if nl not in by_name_qty:
-        return 0, False
-    return by_name_qty[nl], True
+    if nl in by_name_qty:
+        return by_name_qty[nl], True
+    # DFC fallback. This used to be a bare `return 0, False`, on the documented
+    # assumption that deck-file names are always FRONT-face by convention — an
+    # assumption `deck.py resolve` falsifies, because it emits the full `A // B`
+    # name (that is how the pool keys a DFC, and how Arena exports one). So a deck
+    # built by `resolve` reported its own owned DFC as "NOT IN LIBRARY": deck 45a
+    # said that about Norman Osborn the moment it was opened, while `lib.owned_qty`
+    # resolved it correctly the whole time. Route through the shared helper rather
+    # than re-implement the split — that is the A3/A4/F6 rule.
+    qty = owned_qty(by_name_qty, name)
+    return (qty, True) if qty else (0, False)
 
 
 # --------------------------------------------------------------------------- #

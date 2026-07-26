@@ -45,9 +45,14 @@ _OWNERSHIP_VARS = {"owned", "by_name_qty"}
 
 # Sites that legitimately touch an ownership index directly, keyed (filename, function):
 #   * load_collection BUILDS the index (accumulating counts by library front-name).
-#   * owned() IS the deck-side lookup helper; its keys are deck-file names, which are
-#     already front-face by convention, so it deliberately needs no fallback. (The A4
-#     bug was CALLING owned() with a full pool name — not detectable here; use owned_qty.)
+#   * owned() IS the deck-side lookup helper. It used to be allow-listed on the claim that
+#     deck-file names are "already front-face by convention, so it needs no fallback" —
+#     WHICH WAS FALSE, and this file asserting it is what kept the bug alive. `deck.py
+#     resolve` emits the FULL `A // B` name for a DFC (that is how the pool keys one, and
+#     how Arena exports one), so any deck built by resolve reported its own owned DFC as
+#     "NOT IN LIBRARY". owned() now delegates its miss path to owned_qty; it stays on the
+#     allow-list because it still does a raw fast-path hit first. The lesson: an allow-list
+#     entry is an ASSERTION about the code, and this one was never tested.
 _ACCESS_ALLOW = {
     ("deck.py", "load_collection"),
     ("deck.py", "owned"),

@@ -1694,6 +1694,29 @@ Barret Wallace,{3}{R},4,Reach
 Seedglaive Mentor,{1}{R}{W},3,Vigilance;Valiant;Haste
 Honored Knight-Captain,{1}{W},2,
 Slash of Light,{1}{W},2,
+Spider-Man No More,{1}{U},2,Enchant
+Thwip!,{W},1,
+Pumpkin Bombardment,{B/R},1,
+Mechanical Mobster,{3},3,Connive
+Vibrant Cityscape,,0,
+Daily Bugle Reporters,{3}{W},4,Puff Piece;Investigative Journalism
+"Rhino, Barreling Brute",{3}{R}{R}{G}{G},7,Vigilance;Haste;Trample
+Heroes' Hangout,{R},1,Patrol Night;Date Night
+"SP//dr, Piloted by Peni",{3}{W}{U},5,Vigilance
+Mister Negative,{5}{W}{B},7,Lifelink;Vigilance;Darkforce Inversion
+Pictures of Spider-Man,{2}{G},3,Treasure
+"Flash Thompson, Spider-Fan",{1}{W},2,Hero Worship;Heckle;Flash
+Wall Crawl,{3}{G},4,
+Daily Bugle Building,,0,Smear Campaign
+"Anti-Venom, Horrifying Healer",{W}{W}{W}{W}{W},5,
+Web of Life and Destiny,{6}{G}{G},8,Convoke
+Spider-Verse,{3}{R}{R},5,
+Norman Osborn,{1}{U},2,Flying;Goblin Formula;Transform;Menace;Connive
+"Gwenom, Remorseless",{3}{B}{B},5,Lifelink;Deathtouch
+Ponder,{U},1,
+Exalted Sunborn,{3}{W}{W},5,Flying;Lifelink;Warp
+"Sokka, Bold Boomeranger",{U}{R},2,
+Angry Rabble,{1}{R},2,Trample
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -4343,7 +4366,6 @@ Auxiliary Boosters,{4}{W},5,Equip
 Beyond the Quiet,{3}{W}{W},5,
 Dockworker Drone,{1}{W},2,
 Emergency Eject,{2}{W},3,
-Exalted Sunborn,{3}{W}{W},5,Flying;Lifelink;Warp
 Exosuit Savior,{2}{W},3,Flying
 Flight-Deck Coordinator,{2}{W},3,
 "Haliya, Guided by Light",{2}{W},3,Warp
@@ -5032,18 +5054,18 @@ The Regalia,{4},4,Haste;Crew
 Relentless X-ATM092,{6},6,
 Ring of the Lucii,{4},4,
 World Map,{1},1,
-"Balamb Garden, SeeD Academy // Balamb Garden, Airborne",,,
+"Balamb Garden, SeeD Academy // Balamb Garden, Airborne",,0,Flying;Transform;Crew
 Clive's Hideaway,,0,Hideaway
 "Gohn, Town of Ruin",,0,
-"Ishgard, the Holy See // Faith & Grief",{3}{W}{W},,
-"Jidoor, Aristocratic Capital // Overture",{4}{U}{U},,Mill
-"Lindblum, Industrial Regency // Mage Siege",{2}{R},,
-"Midgar, City of Mako // Reactor Raid",{2}{B},,
+"Ishgard, the Holy See // Faith & Grief",{3}{W}{W},0,
+"Jidoor, Aristocratic Capital // Overture",{4}{U}{U},0,Mill
+"Lindblum, Industrial Regency // Mage Siege",{2}{R},0,
+"Midgar, City of Mako // Reactor Raid",{2}{B},0,
 "Rabanastre, Royal City",,0,
 "Sharlayan, Nation of Scholars",,0,
 "Vector, Imperial Capital",,0,
 "Windurst, Federation Center",,0,
-"Zanarkand, Ancient Metropolis // Lasting Fayth",{4}{G}{G},,
+"Zanarkand, Ancient Metropolis // Lasting Fayth",{4}{G}{G},0,
 Wastes,,0,
 "Sephiroth, Planet's Heir",{4}{U}{B},6,Vigilance
 "Beatrix, Loyal General",{4}{W}{W},6,Vigilance
@@ -5629,6 +5651,8 @@ Lantern of Revealing,{3},3,
 Mirror of Life Trapping,{4},4,
 Navigation Orb,{3},3,
 Baldur's Gate,,0,
+Belladonna Took,{1}{W},2,
+Bilbo's Gambit,{1}{W},2,Gift;Treasure
 Eagle of the Great Shelf,{4}{W},5,Flying
 The Eagles Are Coming!,{1}{W},2,Kicker
 Iron Hills Blacksmith,{1}{W},2,Double strike
@@ -5641,28 +5665,49 @@ An Unexpected Party // At the Door,{2}{W}{W} // {X}{2}{W},4,
 "Bilbo, Thief in the Night",{1}{U},2,
 "Elrond, Moon-Reader",{2}{U},3,
 Elven Raft-Steerer,{2}{U},3,Landfall
-"""Clown Boat""",,,
+Great Gilded Boat,{2}{U},3,Crew
 The Lord of the Eagles,{7}{U}{U},9,Flying;Flash
+Master's Councillors,{1}{U},2,Vigilance;Mill
+Ravenhill Flock,{3}{U},4,Flying
 Riddles in the Dark,{2}{U},3,
+Sound the Trumpets,{1}{U}{U},3,
+Thranduil's Decree,{4}{U}{U},6,
 "Azog, Moria's Ruin",{2}{B},3,Amass
+"Down, Down to Goblin-town",{2}{B},3,Amass
+Gathering of Darkness,{3}{B},4,Amass
+Gnashing of Teeth,{1}{B}{B},3,
 "Gollum, Riddle Master",{1}{B},2,
+Gollum the Abandoned,{1}{B},2,
 The Master of Lake-town,{1}{B}{B},3,Mill;Deathtouch
+Nighthowl Pursuer,{B},1,Ferocious;Menace
+The Sackville-Bagginses,{1}{B},2,Treasure
 Supper for Spiders,{1}{B},2,
+Bothersome Noisemaker,{1}{R},2,Amass
 "Burn, Burn, Tree and Fern",{3}{R},4,
+Desert Were-Worm,{4}{R}{R},6,
 Desolation of Smaug,{2}{R}{R},4,
+Dwarven Mauler,{R},1,
 "Gandalf, Goblins' Bane // Flameshape",{2}{R} // {1}{R},3,
+"Gandalf, Spark Starter",{4}{R}{R},6,Reach
 Last Light of Durin's Day,{1}{R},2,Mountaincycling;Landcycling;Typecycling;Cycling
 The Misty Mountains Cold,{2}{R},3,Treasure
+Misty Mountains Raider,{4}{R},5,Amass
 Smaug the Magnificent,{2}{R}{R},4,Flying;Treasure;Haste
 "Thorin, Mountain-king",{3}{R},4,Trample
 Beorn the Fierce,{3}{G}{G},5,Trample
+Beorn's Hospitality,{1}{G},2,Landfall
+Down in the Valley,{2}{G},3,
+"Galion, Elvenking's Butler",{2}{G}{G},4,
 Part in Friendship,{4}{G},5,
+Through the Forest Gate,{6}{G}{G},8,
 Wood Elves,{2}{G},3,
 "Bard, King of Dale",{4}{W}{U},6,Reach;Vigilance
 Bard the Bowman,{1}{W}{U},3,Reach
+Bard's Company,{2}{W}{U},4,
 "Bifur, Melodic Rider",{4}{R/W}{R/W},6,
 Bolg of the North,{3}{B}{R},5,Amass
 The Chief Warg,{2}{B}{G},4,Ferocious;Menace
+Chief Warg's Company,{1}{B}{G},3,Trample
 The Great Goblin,{1}{B/R}{B/R},3,
 Silvan Reveler,{2}{G}{U},4,Landfall
 Thorin Oakenshield,{R}{W},2,Trample
@@ -5685,14 +5730,27 @@ Smaug the Impenetrable,{5}{B}{R},7,Flying;Indestructible;Treasure;Haste
 Bilbo's Burglaring,{4}{U}{U},6,
 Dragon's Desire,{2}{R}{R},4,
 Necklace of Girion,{2}{G},3,
+The Gaffer,{2}{W},3,
 Galadriel's Dismissal,{W},1,Kicker
 Reprieve,{1}{W},2,
 Orcish Bowmasters,{1}{B},2,Amass;Flash
 "Witch-king, Bringer of Ruin",{4}{B}{B},6,Flying
 Call Forth the Tempest,{5}{R}{R}{R},8,Cascade
+Cavern-Hoard Dragon,{7}{R}{R},9,Flying;Treasure;Haste;Trample
+"Arwen, Weaver of Hope",{1}{G}{G},3,
+Elven Chorus,{3}{G},4,
+Last March of the Ents,{6}{G}{G},8,
+"Aragorn, the Uniter",{R}{G}{W}{U},4,Scry
+"Arwen, Mortal Queen",{1}{G}{W},3,
 Flame of Anor,{1}{U}{R},3,
+Saruman of Many Colors,{3}{W}{U}{B},6,Ward;Mill
+"Sauron, the Lidless Eye",{3}{B}{R},5,
+"Andúril, Flame of the West",{3},3,Equip
 "Andúril, Narsil Reforged",{2},2,Ascend;Equip
+Mithril Coat,{3},3,Indestructible;Equip;Flash
+Palantír of Orthanc,{3},3,Mill;Scry
 "Minas Morgul, Dark Fortress",,0,
+Minas Tirith,,0,
 Mount Doom,,0,
 Rivendell,,0,Scry
 The Shire,,0,Food
@@ -7143,16 +7201,16 @@ Weathered Runestone,{2},2,
 Alpine Meadow,,0,
 Arctic Treeline,,0,
 Axgard Armory,,0,
-Barkchannel Pathway // Tidechannel Pathway,,,
-Blightstep Pathway // Searstep Pathway,,,
+Barkchannel Pathway // Tidechannel Pathway,,0,
+Blightstep Pathway // Searstep Pathway,,0,
 Bretagard Stronghold,,0,
-Darkbore Pathway // Slitherbore Pathway,,,
+Darkbore Pathway // Slitherbore Pathway,,0,
 Faceless Haven,,0,
 Gates of Istfell,,0,
 Glacial Floodplain,,0,
 Gnottvold Slumbermound,,0,
 Great Hall of Starnheim,,0,
-Hengegate Pathway // Mistgate Pathway,,,
+Hengegate Pathway // Mistgate Pathway,,0,
 Highland Forest,,0,
 Ice Tunnel,,0,
 Immersturm Skullcairn,,0,
@@ -7885,7 +7943,6 @@ Sunken Citadel,,0,
 Volatile Fault,,0,Treasure
 Forced Fruition,{4}{U}{U},6,
 Mistbind Clique,{3}{U},4,Flying;Champion;Flash
-Ponder,{U},1,
 Wanderwine Prophets,{4}{U}{U},6,Champion
 Boggart Harbinger,{2}{B},3,
 Mad Auntie,{2}{B},3,Regenerate
@@ -8055,7 +8112,6 @@ Brandywine Farmer,{2}{G},3,Food
 Celeborn the Wise,{3}{G},4,Scry
 Chance-Met Elves,{2}{G},3,
 Dúnedain Rangers,{3}{G},4,Landfall
-Elven Chorus,{3}{G},4,
 Elven Farsight,{G},1,Scry
 Enraged Huorn,{4}{G},5,Trample
 Entish Restoration,{2}{G},3,
@@ -8067,7 +8123,6 @@ Galadhrim Guide,{3}{G},4,Scry
 Generous Ent,{5}{G},6,Reach;Landcycling;Food;Forestcycling;Typecycling;Cycling
 Gift of Strands,{3}{G},4,Enchant;Flash;Scry
 "Glorfindel, Dauntless Rescuer",{2}{G},3,
-Last March of the Ents,{6}{G}{G},8,
 "Legolas, Master Archer",{1}{G}{G},3,Reach
 Long List of the Ents,{G},1,
 Lothlórien Lookout,{1}{G},2,Scry
@@ -8086,8 +8141,6 @@ Shower of Arrows,{2}{G},3,Scry
 Stew the Coneys,{2}{G},3,Food
 Wose Pathfinder,{1}{G},2,
 "Aragorn, Company Leader",{1}{G}{W},3,Vigilance;Deathtouch
-"Aragorn, the Uniter",{R}{G}{W}{U},4,Scry
-"Arwen, Mortal Queen",{1}{G}{W},3,
 Arwen Undómiel,{G}{U},2,Scry
 "The Balrog, Durin's Bane",{5}{B}{R},7,Haste
 "Bilbo, Retired Burglar",{1}{U}{R},3,Treasure
@@ -8116,7 +8169,6 @@ Prince Imrahil the Fair,{W}{U},2,
 Ringsight,{1}{U}{B},3,
 Rise of the Witch-king,{2}{B}{G},4,
 Samwise Gamgee,{G}{W},2,Food
-Saruman of Many Colors,{3}{W}{U}{B},6,Ward;Mill
 "Sauron, the Dark Lord",{3}{U}{B}{R},6,Amass;Ward
 Sauron's Ransom,{1}{U}{B},3,
 Shadow Summoning,{W}{B},2,
@@ -8129,7 +8181,6 @@ Shadow Summoning,{W}{B},2,
 "Théoden, King of Rohan",{1}{R}{W},3,
 Tom Bombadil,{W}{U}{B}{R}{G},5,
 Uglúk of the White Hand,{2}{B}{R},4,
-"Andúril, Flame of the West",{3},3,Equip
 Barrow-Blade,{1},1,Equip
 Ent-Draught Basin,{2},2,
 Glamdring,{2},2,Equip
@@ -8138,9 +8189,7 @@ Horn of the Mark,{2},2,
 Inherited Envelope,{3},3,
 Lembas,{2},2,Scry
 Mirror of Galadriel,{2},2,Scry
-Mithril Coat,{3},3,Indestructible;Equip;Flash
 The One Ring,{4},4,Indestructible
-Palantír of Orthanc,{3},3,Mill;Scry
 Phial of Galadriel,{3},3,
 Shire Scarecrow,{2},2,Defender
 "Sting, the Glinting Dagger",{2},2,Equip
@@ -8149,7 +8198,6 @@ Wizard's Rockets,{1},1,
 Barad-dûr,,0,Amass
 Great Hall of the Citadel,,0,
 The Grey Havens,,0,Scry
-Minas Tirith,,0,
 Mines of Moria,,0,Treasure
 Shire Terrace,,0,
 "Saradoc, Master of Buckland",{3}{W},4,
@@ -8157,7 +8205,6 @@ Elvish Mariner,{2}{U},3,Scry
 Ringwraiths,{4}{B}{B},6,
 Assault on Osgiliath,{X}{R}{R}{R},3,Amass
 Elanor Gardner,{3}{G},4,Food
-"Sauron, the Lidless Eye",{3}{B}{R},5,
 "Frodo, Determined Hero",{1}{W},2,
 "Gandalf, White Rider",{3}{W},4,Vigilance;Scry
 "Gollum, Scheming Guide",{1}{B},2,
@@ -9548,7 +9595,7 @@ Stuffed Bear,{2},2,
 Deserted Beach,,0,
 Field of Ruin,,0,
 Haunted Ridge,,0,
-Hostile Hostel // Creeping Inn,,,
+Hostile Hostel // Creeping Inn,,0,Transform
 Overgrown Farmland,,0,
 Rockfall Vale,,0,
 Shipwreck Marsh,,0,
@@ -10351,15 +10398,12 @@ Sif's Spearmaster,{2}{R},3,
 "Wolfsbane, Highland Hero",{1}{G},2,Trample
 Aunt May,{W},1,
 City Pigeon,{W},1,Flying;Food
-Daily Bugle Reporters,{3}{W},4,Puff Piece;Investigative Journalism
-"Flash Thompson, Spider-Fan",{1}{W},2,Hero Worship;Heckle;Flash
 "MJ, Rising Star",{2}{W},3,Vigilance
 Selfless Police Captain,{1}{W},2,
 "Spider-Man, Web-Slinger",{2}{W},3,Web-slinging
 Spider-UK,{3}{W},4,Web-slinging
 "Starling, Aerial Ally",{4}{W},5,Flying
 Sudden Strike,{1}{W},2,
-Thwip!,{W},1,
 Wild Pack Squad,{2}{W},3,
 The Clone Saga,{3}{U},4,Surveil
 Time Warp,{3}{U}{U},5,
@@ -10374,7 +10418,6 @@ The Spot's Portal,{2}{B},3,
 "Swarm, Being of Bees",{2}{B},3,Flying;Mayhem;Flash
 Big Score,{3}{R},4,Treasure
 Grapeshot,{1}{R},2,Storm
-Heroes' Hangout,{R},1,Patrol Night;Date Night
 Lightning Bolt,{R},1,
 Taxi Driver,{1}{R},2,
 Unlucky Witness,{R},1,
@@ -10382,7 +10425,6 @@ Commune with Dinosaurs,{G},1,
 Farseek,{1}{G},2,
 Lurking Lizards,{1}{G},2,Trample
 Gallant Citizen,{G/W}{G/W},2,
-Pumpkin Bombardment,{B/R},1,
 Rhino's Rampage,{R/G},1,Fight
 Rocket-Powered Goblin Glider,{3},3,Mayhem;Equip
 Spider-Mobile,{3},3,Crew;Trample
@@ -12259,7 +12301,7 @@ Game Trail,,0,
 Geier Reach Sanitarium,,0,
 Hanweir Battlements,,0,Meld
 Port Town,,0,
-"Westvale Abbey // Ormendahl, Profane Prince",,,
+"Westvale Abbey // Ormendahl, Profane Prince",,0,Flying;Lifelink;Indestructible;Transform;Haste
 Angel of Flight Alabaster,{4}{W},5,Flying
 "Avacyn, Angel of Hope",{5}{W}{W}{W},8,Flying;Indestructible;Vigilance
 Bonds of Faith,{1}{W},2,Enchant
@@ -12836,7 +12878,6 @@ Grim Haruspex,{2}{B},3,Morph
 Magus of the Library,{G}{G},2,
 Sylvan Library,{1}{G},2,
 "Adrix and Nev, Twincasters",{2}{G}{U},4,Ward
-"Anti-Venom, Horrifying Healer",{W}{W}{W}{W}{W},5,
 "Arachne, Psionic Weaver",{2}{W},3,Web-slinging
 Origin of Spider-Man,{1}{W},2,
 Peter Parker // Amazing Spider-Man,{1}{W},2,Reach;Vigilance;Transform
@@ -12853,27 +12894,23 @@ Norman Osborn // Green Goblin,{1}{U},2,Flying;Goblin Formula;Transform;Menace;Co
 Oscorp Research Team,{3}{U},4,
 School Daze,{3}{U}{U},5,Do Homework;Fight Crime
 Secret Identity,{U},1,Conceal
-Spider-Man No More,{1}{U},2,Enchant
 Spider-Sense,{1}{U},2,Web-slinging
 Agent Venom,{2}{B},3,Menace;Flash
 Behold the Sinister Six!,{6}{B},7,
 "Black Cat, Cunning Thief",{3}{B}{B},5,
 The Death of Gwen Stacy,{2}{B},3,
 "Eddie Brock // Venom, Lethal Protector",{2}{B},3,Transform;Haste;Trample;Menace
-"Gwenom, Remorseless",{3}{B}{B},5,Lifelink;Deathtouch
 Merciless Enforcers,{1}{B},2,Lifelink
 Parker Luck,{2}{B},3,
 Risky Research,{2}{B},3,Surveil
 "Scorpion, Seething Striker",{3}{B},4,Connive;Deathtouch
 Scorpion's Sting,{1}{B},2,
 The Soul Stone,{1}{B},2,Indestructible
-Angry Rabble,{1}{R},2,Trample
 Gwen Stacy // Ghost-Spider,{1}{R},2,Flying;Vigilance;Transform;Haste
 Maximum Carnage,{4}{R},5,
 Shadow of the Goblin,{1}{R},2,Undying;Unreliable Visions;Undying Vengeance
 "Shocker, Unshakable",{4}{R}{R},6,Vibro-Shock Gauntlets
 Spider-Punk,{1}{R},2,Riot
-Spider-Verse,{3}{R}{R},5,
 Spinneret and Spiderling,{R},1,
 Superior Foes of Spider-Man,{2}{R},3,Trample
 Damage Control Crew,{3}{G},4,Repair;Impound
@@ -12884,14 +12921,11 @@ Kraven's Cats,{1}{G},2,
 Kraven's Last Hunt,{3}{G},4,Mill
 "Lizard, Connors's Curse",{2}{G}{G},4,Lizard Formula;Trample
 Miles Morales // Ultimate Spider-Man,{1}{G},2,Camouflage;Transform;First strike;Haste;Double
-Pictures of Spider-Man,{2}{G},3,Treasure
 Professional Wrestler,{3}{G},4,Treasure
 Radioactive Spider,{G},1,Reach;Fateful Bite;Deathtouch
 "Spiders-Man, Heroic Horde",{1}{G},2,Web-slinging
 Strength of Will,{1}{G},2,
 Supportive Parents,{2}{G},3,
-Wall Crawl,{3}{G},4,
-Web of Life and Destiny,{6}{G}{G},8,Convoke
 "Araña, Heart of the Spider",{1}{R}{W},3,
 Biorganic Carapace,{2}{W}{U},4,Equip
 "Carnage, Crimson Chaos",{2}{B}{R},4,Mayhem;Trample
@@ -12902,16 +12936,13 @@ Cheering Crowd,{1}{R/G},2,
 "Kraven, Proud Predator",{1}{R}{G},3,Vigilance;Top of the Food Chain
 Kraven the Hunter,{1}{B}{G},3,Trample
 Mary Jane Watson,{1}{G/W},2,
-Mister Negative,{5}{W}{B},7,Lifelink;Vigilance;Darkforce Inversion
 Morbius the Living Vampire,{2}{U}{B},4,Flying;Lifelink;Vigilance
 "Prowler, Clawed Thief",{1}{U}{B},3,Menace;Connive
-"Rhino, Barreling Brute",{3}{R}{R}{G}{G},7,Vigilance;Haste;Trample
 "Scarlet Spider, Ben Reilly",{1}{R}{G},3,Trample;Web-slinging;Sensational Save
 "Scarlet Spider, Kaine",{B}{R},2,Mayhem;Menace
 "Shriek, Treblemaker",{2}{B/R},3,Sonic Blast
 "Silk, Web Weaver",{2}{G}{W},4,Web-slinging
 Skyward Spider,{W/U}{W/U},2,Ward
-"SP//dr, Piloted by Peni",{3}{W}{U},5,Vigilance
 Spider Manifestation,{1}{R/G},2,Reach
 "Spider-Girl, Legacy Hero",{G}{W},2,
 Spider-Man 2099,{U}{R},2,Vigilance;From the Future;Double strike
@@ -12928,14 +12959,12 @@ Hot Dog Cart,{3},3,Food
 Interdimensional Web Watch,{4},4,
 "Iron Spider, Stark Upgrade",{3},3,Vigilance
 "Living Brain, Mechanical Marvel",{4},4,
-Mechanical Mobster,{3},3,Connive
 News Helicopter,{3},3,Flying
 Passenger Ferry,{3},3,Crew
 Peter Parker's Camera,{1},1,
 Spider-Bot,{2},2,Reach
 "Spider-Slayer, Hatred Honed",{2},2,
 Subway Train,{2},2,Crew
-Daily Bugle Building,,0,Smear Campaign
 Multiversal Passage,,0,
 Ominous Asylum,,0,Surveil
 Oscorp Industries,,0,Mayhem
@@ -12943,7 +12972,6 @@ Savage Mansion,,0,Surveil
 Sinister Hideout,,0,Surveil
 Suburban Sanctuary,,0,Surveil
 University Campus,,0,Surveil
-Vibrant Cityscape,,0,
 Approach of the Second Sun,{6}{W},7,
 Gift of Estates,{1}{W},2,
 Mana Tithe,{W},1,
@@ -13772,7 +13800,6 @@ Earth King's Lieutenant,{G}{W},2,Trample
 "Iroh, Tea Master",{1}{R}{W},3,Food
 "Jet, Freedom Fighter",{2}{R/W}{R/W}{R/W},5,
 The Lion-Turtle,{1}{G}{U},3,Reach;Vigilance
-"Sokka, Bold Boomeranger",{U}{R},2,
 "Toph, Hardheaded Teacher",{2}{R}{G},4,Earthbend
 "Toph, the First Metalbender",{1}{R}{G}{W},4,Earthbend
 Fire Nation Warship,{3},3,Reach;Crew
@@ -15906,10 +15933,10 @@ Spare Supplies,{2},2,
 Stonework Packbeast,{2},2,
 Utility Knife,{1},1,Equip
 Base Camp,,0,
-Branchloft Pathway // Boulderloft Pathway,,,
-Brightclimb Pathway // Grimclimb Pathway,,,
-Clearwater Pathway // Murkwater Pathway,,,
-Cragcrown Pathway // Timbercrown Pathway,,,
-Needleverge Pathway // Pillarverge Pathway,,,
-Riverglide Pathway // Lavaglide Pathway,,,
+Branchloft Pathway // Boulderloft Pathway,,0,
+Brightclimb Pathway // Grimclimb Pathway,,0,
+Clearwater Pathway // Murkwater Pathway,,0,
+Cragcrown Pathway // Timbercrown Pathway,,0,
+Needleverge Pathway // Pillarverge Pathway,,0,
+Riverglide Pathway // Lavaglide Pathway,,0,
 Throne of Makindi,,0,
