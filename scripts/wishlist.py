@@ -658,7 +658,16 @@ def _breadth_of(ccols, ctags, fps, idf, spec_idf):
         return sum(1 for _d, dc, dt in trimmed if ccols <= dc and (ctags & dt))
 
 
-def _rank_scores(rows):
+def _rank_scores(rows, keep=None):
+    """Score `rows`; if `keep` is given (a set of card names), score everything and
+    return only those — so a FILTERED view is normalized against the whole wishlist.
+
+    `fitN` is `pri` scaled to the maximum in the scored set, and `combined` blends it
+    50/50 with a power that is NOT rescaled. Scoring only the filtered subset therefore
+    inflates fit relative to power and can genuinely reorder the picks, so a
+    `--budget --set TMT` plan would not agree with the same cards' places in the full
+    `--rank`. The normalization denominator is a property of the CORPUS, not of the
+    view someone happens to be looking through."""
     """Score every wishlist card for wildcard-spend priority. Reuses the idf theme
     model (so it stays consistent with --suggest-targets):
 
@@ -802,10 +811,12 @@ def _rank_scores(rows):
             s["combined"] = round(max(0.0, s["combined"] - _ROT_PENALTY), 2)
     order = {"A": 0, "B": 1, "C": 2}
     out.sort(key=lambda s: (order[s["tier"]], -s["pri"], -_WC_RANK.get(s["rarity"], 0), s["name"]))
+    if keep is not None:
+        out = [s for s in out if s["name"] in keep]   # filter AFTER normalizing
     return out
 
 
-def cmd_rank(rows):
+def cmd_rank(rows, all_rows=None):
     """Rank the wishlist by wildcard-spend priority — theme fit + hand-graded power
     blended into a `combined` score — grouped by recommendation tier."""
     # Exclude cards already crafted — the wishlist keeps them until pruned, but a
@@ -813,7 +824,11 @@ def cmd_rank(rows):
     owned = owned_index()
     unowned = [r for r in rows if not _owned_of(owned, r.get("Card Name"))]
     owned_skipped = len(rows) - len(unowned)
-    scored = _rank_scores(unowned)
+    # Normalize against the WHOLE wishlist even when the view is filtered (see
+    # `_rank_scores`) — otherwise a --set/--rarity view rescales fit against its own
+    # subset and can reorder picks relative to the full ranking.
+    norm = [r for r in (all_rows or rows) if not _owned_of(owned, r.get("Card Name"))]
+    scored = _rank_scores(norm, keep={r.get("Card Name") for r in unowned})
     order = {"A": 0, "B": 1, "C": 2}
     scored.sort(key=lambda s: (order.get(s["tier"], 9), -s["combined"], s["name"]))
     labels = {"A": "TIER A — craft first (confident theme home and/or real cross-deck breadth)",
@@ -903,7 +918,7 @@ def _parse_budget(s):
     return caps
 
 
-def cmd_budget(rows, budget_str):
+def cmd_budget(rows, budget_str, all_rows=None):
     """Given a wildcard budget ('9M 10R 38U 48C'), pick the highest-`combined`
     cards affordable within each rarity's cap (it's separable per rarity, so the
     top-K-by-combined per rarity IS optimal), with 1-2 alternates each and an
@@ -915,7 +930,8 @@ def cmd_budget(rows, budget_str):
     # Don't spend the budget on cards already owned (audit F19).
     owned = owned_index()
     rows = [r for r in rows if not _owned_of(owned, r.get("Card Name"))]
-    scored = _rank_scores(rows)
+    norm = [r for r in (all_rows or rows) if not _owned_of(owned, r.get("Card Name"))]
+    scored = _rank_scores(norm, keep={r.get("Card Name") for r in rows})
     by_rar = {}
     for s in scored:
         by_rar.setdefault(s["rarity"], []).append(s)
@@ -925,8 +941,7 @@ def cmd_budget(rows, budget_str):
     print(f"Wildcard-spend plan for budget: "
           + ", ".join(f"{caps[r]} {r}" for r in ("Mythic", "Rare", "Uncommon", "Common") if caps.get(r)))
     print("(picks = highest combined fit+power within each cap; alts = next best)\n")
-    import_block = ["Deck"]
-    meta_by = {s["name"]: s for s in scored}
+    rotating = []
     for rar in ("Mythic", "Rare", "Uncommon", "Common"):
         cap = caps.get(rar, 0)
         if not cap:
@@ -936,11 +951,28 @@ def cmd_budget(rows, budget_str):
         print(f"=== {rar}  ({len(picks)} pick(s) of {cap} WC"
               + (f"; {cap - len(picks)} WC left over — wishlist has no more {rar}s)" if len(picks) < cap else ")"))
         for s in picks:
+            # ⚠rot on the SPEND view, not just on `--rank`. This is the command that
+            # says "craft these", so it is the one place the warning has to appear —
+            # it was computing `rot` in _rank_scores and discarding it, and a 3-slot
+            # uncommon budget came back with 2 cards leaving Standard.
+            flag = f"  ⚠rot~{s['rot_year']}" if s.get("rot") else ""
+            if s.get("rot"):
+                rotating.append((s["name"], s["rot_year"], rar))
             print(f"   {s['combined']:>4.1f}  {s['name'][:34]:34} "
-                  f"deck {s['target']:6}  (fit {s['fitN']:.1f} / pow {s['power']:.1f})")
+                  f"deck {s['target']:6}  (fit {s['fitN']:.1f} / pow {s['power']:.1f}){flag}")
         for s in alts:
-            print(f"    alt {s['combined']:>3.1f}  {s['name'][:32]:32} deck {s['target']}")
+            print(f"    alt {s['combined']:>3.1f}  {s['name'][:32]:32} deck {s['target']}"
+                  + (f"  ⚠rot~{s['rot_year']}" if s.get("rot") else ""))
         print()
+    if rotating:
+        print(f"⚠ {len(rotating)} of the picks sit on a set ROTATING soon — a wildcard "
+              f"there won't last: "
+              + "; ".join(f"{n} (~{y}, {r})" for n, y, r in rotating[:4])
+              + (" …" if len(rotating) > 4 else ""))
+        print(f"  These already carry the bounded -{_ROT_PENALTY} `combined` "
+              f"deprioritization and STILL rank top of their rarity, so the pick is "
+              f"defensible on value — but verify against the official rotation "
+              f"schedule before spending (a reprint can read early).\n")
 
     # Arena import block of the picks (front/full name is what the wishlist stores).
     wl_by = {(r.get("Card Name") or ""): r for r in rows}
@@ -1238,20 +1270,32 @@ def main():
         return 0
     owned = owned_index()
 
+    # The filter flags used to apply ONLY to the default browse, so `--budget "3R"
+    # --set TMT` silently planned against the whole wishlist and returned FIN cards.
+    # A flag the user passed must never be quietly dropped — that is a plan they
+    # believe is scoped. `_match` is a no-op when no filter is given, so unfiltered
+    # invocations are unchanged. The MAINTENANCE commands below (suggest-targets,
+    # audit-targets, seed-power) deliberately keep the FULL list: they exist to find
+    # gaps across everything, and auditing a filtered subset would report "clean"
+    # while leaving the rest unchecked.
+    planning = [c for c in rows if _match(c, args)]
+    if planning != rows and (args.rank or args.budget or args.by_set):
+        eprint(f"(filtered: {len(planning)} of {len(rows)} wishlist cards)")
+
     if args.by_set:
-        return cmd_by_set(rows, owned)
+        return cmd_by_set(planning, owned)
     if args.suggest_targets:
         return cmd_suggest_targets(rows, write=args.write, overwrite=args.overwrite)
     if args.rank:
-        return cmd_rank(rows)
+        return cmd_rank(planning, all_rows=rows)
     if args.audit_targets:
         return cmd_audit_targets(rows)
     if args.budget:
-        return cmd_budget(rows, args.budget)
+        return cmd_budget(planning, args.budget, all_rows=rows)
     if args.seed_power:
         return cmd_seed_power(rows, write=args.write)
 
-    hits = [c for c in rows if _match(c, args)]
+    hits = planning
     if args.owned:
         hits = [c for c in hits if _owned_of(owned, c.get("Card Name")) > 0]
 

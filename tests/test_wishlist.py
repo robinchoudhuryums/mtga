@@ -203,3 +203,54 @@ class TestTagModelAlignment:
             {"Type": "Creature", "Card Text": "You lose life equal to its mana value."})
         assert "pay life" not in tag_synergies.tags_for(
             {"Type": "Sorcery", "Card Text": "Each opponent loses 2 life."})
+
+
+class TestBudgetPlanner:
+    """`--budget` is THE wildcard-spend recommender, so a check its sibling `--rank`
+    performs must not be missing here — that is the same shape as the `suggest --lands`
+    bug where the spend view skipped the legality filter."""
+
+    def test_parses_any_order_and_spacing(self):
+        assert wishlist._parse_budget("9M 10R 38U 48C") == {
+            "Mythic": 9, "Rare": 10, "Uncommon": 38, "Common": 48}
+        assert wishlist._parse_budget("10r  2M") == {"Rare": 10, "Mythic": 2}
+        assert wishlist._parse_budget("3 rares") == {"Rare": 3}
+
+    def test_repeated_rarity_accumulates(self):
+        assert wishlist._parse_budget("2R 3R") == {"Rare": 5}
+
+    def test_garbage_parses_to_nothing(self):
+        assert wishlist._parse_budget("") == {}
+        assert wishlist._parse_budget("spend everything") == {}
+
+    def _rows(self, n=6):
+        # Distinct fit AND power so the fit/power blend is exercised, not a tie-break.
+        return [{"Card Name": f"C{i}", "Rarity": "Rare", "Color(s)": "",
+                 "Synergies": "etb; tokens" if i % 2 else "landfall",
+                 "Target": "", "Power": str(2 + i)} for i in range(n)]
+
+    def test_a_filtered_view_scores_identically_to_the_full_one(self):
+        """`fitN` is `pri` scaled to the max in the SCORED set, and `combined` blends it
+        with a power that is not rescaled — so scoring only a filtered subset inflates
+        fit relative to power and can reorder the picks. The normalization denominator
+        belongs to the corpus, not to the view."""
+        rows = self._rows()
+        full = {s["name"]: s["combined"] for s in wishlist._rank_scores(rows)}
+        # The subset must EXCLUDE the corpus max, or the denominator is unchanged and
+        # there is no drift to catch — which is exactly how this test first passed
+        # vacuously.
+        sel = {"C1", "C3"}
+        subset = [r for r in rows if r["Card Name"] in sel]
+        # Scored against the whole list, then filtered — the fix.
+        kept = wishlist._rank_scores(rows, keep=sel)
+        assert {s["name"] for s in kept} == sel
+        for s in kept:
+            assert s["combined"] == full[s["name"]], s["name"]
+        # ...and scoring the subset alone is what would have drifted.
+        alone = {s["name"]: s["combined"] for s in wishlist._rank_scores(subset)}
+        assert all(alone[n] > full[n] for n in sel), \
+            "rescaling against the subset max inflates fit relative to power"
+
+    def test_keep_is_optional_and_defaults_to_everything(self):
+        rows = self._rows(3)
+        assert len(wishlist._rank_scores(rows)) == 3
