@@ -1431,6 +1431,164 @@ def _drop_cost_themes(shared, cards, carddata):
     return keep
 
 
+# ── Zone conflicts: a fine card that fights your own engine ────────────────────────
+# The MIRROR of `cost_upside_flags` below. That flag catches a drawback that is secretly
+# an UPSIDE in this deck; nothing caught an upside that is secretly a DRAWBACK here, and
+# that shape shipped into two finished decks. Strategic Betrayal ("Target opponent exiles
+# a creature they control and their graveyard") and Pit of Offerings ("exile up to three
+# target cards from graveyards") both read as perfectly good cards — and both empty a
+# graveyard that four heist cards in the same deck need FULL. `cuts` ranked Strategic
+# Betrayal second-weakest, so the shortlist saw it; only a full-text read explained WHY.
+# A model that grades a card in isolation structurally cannot see this.
+#
+# CLAUDE.md states the rule for humans — "when a deck DEPENDS on a zone being populated,
+# audit every card that empties it" — and this detects that pairing.
+#
+# The patterns are built from the POOL's real phrasings, not from strings written to
+# match them (the lesson the `heist` tag's four pattern bugs taught). Two findings from
+# that survey shape the design:
+#   * `exile this card from YOUR graveyard` is on 90 pool cards and is escape / flashback
+#     / delve COST — a graveyard USER, the opposite of hate. Anything scoped to your own
+#     yard is excluded outright.
+#   * A heist card exiles an opponent's graveyard IN ORDER TO CAST FROM IT (Tinybones
+#     "exile it from their graveyard with a stash counter", Hama, Azula). Those are the
+#     deck's ENGINE, and a naive exile+graveyard rule flags them as hostile to
+#     themselves. `tag_synergies.is_heist_text` already separates "casts cards you don't
+#     own" from real hate, so the emptier test reuses it rather than adding a model.
+_ZONE_MIN_DEPENDENTS = 2   # one card is a singleton, not a plan worth protecting
+
+# Emptied scope = the OPPONENT's yard only.
+_GY_HATE_OPP_RE = re.compile(
+    # A GAP before "their graveyard" is required, not optional: Strategic Betrayal reads
+    # "Target opponent exiles a creature they control AND their graveyard", so the verb
+    # and the zone sit at opposite ends of the clause. Demanding them adjacent missed the
+    # single card this detector was built for — found by running it, not by reading it.
+    r"exiles?[^.]{0,60}?\b(?:their|his or her) graveyard"
+    r"|exile (?:target |each )?(?:player'?s?|opponent'?s?) graveyard"
+    # "that player's graveyard" (Hama) is as common as "target player's" and was absent.
+    r"|exile[^.]{0,50}?\bfrom (?:an? opponent'?s?|target player'?s?|that player'?s?|their) graveyard", re.I)
+# Emptied scope = EVERY yard at once, with no choice — the only shape that can hit YOUR
+# graveyard against your will.
+_GY_HATE_ALL_RE = re.compile(
+    r"exile (?:all|each) graveyards?"
+    r"|exile all cards? from (?:all|each) graveyards?"
+    r"|graveyards? (?:is|are) exiled", re.I)
+# TARGETED graveyard exile — "exile up to one target card from a graveyard". The
+# controller PICKS the yard, so in an own-graveyard deck you simply aim it at theirs and
+# there is no conflict; it only fights a plan that needs THEIR yard as a resource. Keeping
+# this apart from the mass shape is what turns the flag from noise into a shortlist: on
+# the roster it drops the count from 12 to the decks where it is actually a conflict.
+_GY_HATE_CHOOSE_RE = re.compile(
+    r"exile[^.]{0,50}?\bfrom (?:a|a single|each|target) graveyard\b"
+    r"|exile[^.]{0,50}?\bfrom graveyards\b", re.I)
+# The escape / delve / flashback COST family — a graveyard USER, never hate.
+_GY_OWN_SCOPE_RE = re.compile(r"\byour graveyard\b|\byour own graveyard\b", re.I)
+# Needs the OPPONENT's yard populated (casting or stealing from it).
+_GY_NEED_OPP_RE = re.compile(
+    r"(?:cast|play|return|exile)[^.]{0,60}?from (?:an? opponent'?s?|target player'?s?|that player'?s?|their) graveyard"
+    r"|in your opponents'? graveyards"
+    r"|cards? in (?:their|each opponent'?s?) graveyard", re.I)
+
+
+def graveyard_emptier(text):
+    """``'opponent'`` / ``'all'`` / ``None`` — which graveyards this card EMPTIES.
+
+    Three scopes, because they conflict with different plans:
+      ``all``      – untargeted mass exile; hits YOUR yard whether you like it or not.
+      ``opponent`` – scoped to their yard.
+      ``choose``   – targeted ("exile up to one target card from a graveyard"); you pick
+                     the yard, so it only fights a plan that needs THEIRS populated.
+
+    ``None`` for a card that only touches YOUR yard (escape/delve costs) and for any
+    card whose exile is a heist (it exiles in order to cast, so it needs the yard full —
+    it is the engine, not the hate)."""
+    t = _norm_role_text(text or "")
+    if not t:
+        return None
+    try:
+        from tag_synergies import is_heist_text
+        if is_heist_text(text or ""):
+            return None
+    except Exception:
+        pass                      # tag_synergies unavailable — fall through, over-report
+    if _GY_HATE_ALL_RE.search(t):
+        return "all"
+    if _GY_HATE_OPP_RE.search(t):
+        return "opponent"
+    if _GY_HATE_CHOOSE_RE.search(t):
+        return "choose"
+    # Left last on purpose: a card scoped ONLY to your own yard is a user, not an emptier.
+    return None
+
+
+def graveyard_dependent(text, type_line=""):
+    """``{'own'}`` / ``{'opponent'}`` / both / empty — which graveyards this card NEEDS
+    populated. Own-yard dependence reuses `engine_roles`' graveyard PAYOFF side (the
+    trustworthy half of that classifier) rather than adding a second model."""
+    t = text or ""
+    needs = set()
+    if _GY_NEED_OPP_RE.search(_norm_role_text(t)):
+        needs.add("opponent")
+    try:
+        if "payoff" in engine_roles(t).get("graveyard", set()):
+            needs.add("own")
+    except Exception:
+        pass
+    return needs
+
+
+def zone_conflict_flags(cards, carddata):
+    """[(card_name, scope, why, [dependent card names])] — cards that EMPTY a graveyard
+    this deck depends on being populated.
+
+    Fires only when the deck fields >= `_ZONE_MIN_DEPENDENTS` cards needing that yard, so
+    a lone graveyard payoff can't manufacture a conflict. A FLAG for a human read, never a
+    score change — the same posture as `cost_upside_flags` and `scales w/`, because the
+    signal is real but the judgement (is the hate worth it against this meta?) is not
+    mechanical."""
+    need_opp, need_own = [], []
+    seen = set()
+    for _q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl in seen:
+            continue
+        seen.add(nl)
+        cd = carddata.get(nl)
+        if not cd:
+            continue
+        needs = graveyard_dependent(cd.get("text") or "", cd.get("type") or "")
+        if "opponent" in needs:
+            need_opp.append(n)
+        if "own" in needs:
+            need_own.append(n)
+
+    out, seen = [], set()
+    for _q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl in seen:
+            continue
+        seen.add(nl)
+        cd = carddata.get(nl)
+        if not cd:
+            continue
+        scope = graveyard_emptier(cd.get("text") or "")
+        if not scope:
+            continue
+        # Only an untargeted mass exile can hurt your OWN yard; a targeted one you aim.
+        hit = list(need_opp)
+        if scope == "all":
+            hit += [x for x in need_own if x not in hit]
+        hit = [x for x in hit if x.lower() != nl]     # a card can't conflict with itself
+        if len(hit) < _ZONE_MIN_DEPENDENTS:
+            continue
+        where = {"all": "every graveyard, including your own",
+                 "opponent": "an opponent's graveyard",
+                 "choose": "a graveyard you target"}[scope]
+        out.append((n, scope,
+                    f"empties {where}, which {len(hit)} card(s) here need populated", hit))
+    return out
+
+
 def cost_upside_flags(text, deck_themes):
     """['<why>'] for each additional cost / drawback in `text` that this deck's themes
     turn into an UPSIDE. Empty when the deck doesn't support it — the point is that the
@@ -2399,6 +2557,19 @@ def cmd_stats(args):
         print(f"\n⚠ Engine balance (detail: `deck.py engines {d['id']}`):")
         for t, info in flagged:
             print(f"    {t}: {info['verdict']}")
+
+    # Zone conflicts — a card that EMPTIES a zone this deck needs populated. Engine
+    # balance above asks "are the two sides of the engine in proportion"; this asks the
+    # different question "is something here working AGAINST the engine", which no other
+    # view covers. Reported, never scored (see zone_conflict_flags).
+    zconf = zone_conflict_flags(cards, carddata)
+    if zconf:
+        print(f"\n⛔ Fights your own engine ({len(zconf)}) — grade from full text "
+              f"(`deck.py cuts {d['id']}`):")
+        for nm, _scope, why, hit in zconf:
+            print(f"    {nm}: {why}")
+            print(f"      needs it populated: {', '.join(hit[:4])}"
+                  + (f" … (+{len(hit) - 4})" if len(hit) > 4 else ""))
     return 0
 
 
@@ -4884,6 +5055,24 @@ def cmd_cuts(args):
     if deck_int < 5:
         print(f"⚠ deck runs only {deck_int} interaction piece(s) — rows tagged "
               f"⚠interaction are your removal/counters; cutting them lowers resilience.")
+    # Zone conflicts (the mirror of ⚡): a card that EMPTIES a graveyard this deck needs
+    # populated. Computed once for the deck and looked up by name, so the row tuple stays
+    # the shape every other reader expects.
+    _zmeta, _zcards = parse_deck_file(d["path"])
+    _zconf = {nm: (scope, why, hit) for nm, scope, why, hit
+              in zone_conflict_flags(_zcards, load_card_data())}
+    if _zconf:
+        # NAME them here rather than only tagging the row: `cuts` shows 8 rows by default
+        # and a conflicted card can rank anywhere, so a header that just says "1 card"
+        # can point below the fold — which is the same "the shortlist saw it but nobody
+        # could tell why" failure this flag exists to fix.
+        print(f"⛔ {len(_zconf)} card(s) FIGHT this deck's own engine — a good card that "
+              f"empties a zone your plan needs FULL:")
+        for _zn, (_sc, _why, _hit) in sorted(_zconf.items()):
+            print(f"     {_zn} — {_why}")
+            print(f"       needs it populated: {', '.join(_hit[:4])}"
+                  + (f" … (+{len(_hit) - 4})" if len(_hit) > 4 else ""))
+        print()
     print(f"  {'Card':30} {'MV':>3}  {'Fit':>4}  {'Pw':>3}  {'Uq':>3}  Roles / why-cuttable")
     print("-" * 82)
     for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq, upside in rows[:limit]:
@@ -4903,6 +5092,9 @@ def cmd_cuts(args):
         # model here grades it in isolation, where the cost reads as a drawback.
         if upside:
             tail += f"   ⚡cost-as-upside HERE ({upside[0]})"
+        # The MIRROR: a card that reads fine alone but works AGAINST this deck's plan.
+        if n in _zconf:
+            tail += f"   ⛔fights your engine ({_zconf[n][1]})"
         print(f"  {n[:30]:30} {mvs:>3}  {fit:>4}  {power:>3.0f}  {uniq:>3.0f}  {tail}")
 
     # Surface the actual oracle text so a cut is graded from what the card DOES,
@@ -4917,6 +5109,10 @@ def cmd_cuts(args):
             warn += f"   ⚠interaction — 1 of the deck's {deck_int}"
         for u in upside:
             warn += f"\n    ⚡ cost-as-upside in THIS deck: {u}"
+        if n in _zconf:
+            _sc, _why, _hit = _zconf[n]
+            warn += (f"\n    ⛔ FIGHTS YOUR ENGINE: {_why} — "
+                     f"{', '.join(_hit[:4])}{' …' if len(_hit) > 4 else ''}")
         print(f"\n• {n}{warn}")
         for para in (text or "(no oracle text on file)").split("\n"):
             for line in (textwrap.wrap(para, width=86) or [""]):

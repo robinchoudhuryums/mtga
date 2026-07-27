@@ -123,7 +123,14 @@ def _pattern_groups():
                  "_POWER_THRESHOLD_RE", "_MANA_PRODUCE_RE", "_RESTRICT_RE",
                  "_INT_COUNT_RE", "_INT_FIGHT_RE",
                  # Added by broad-scan F-04 — live, but previously uncovered.
-                 "_DOUBLER_POWER_RE", "_REMINDER_RE"):
+                 "_DOUBLER_POWER_RE", "_REMINDER_RE",
+                 # Zone-conflict detector (the mirror of cost_upside_flags): which
+                 # graveyards a card EMPTIES, and which it NEEDS populated. A dead
+                 # pattern here silently stops the flag firing — the failure this whole
+                 # gate exists for, and the reason the detector's own patterns were
+                 # built by surveying real pool text rather than invented strings.
+                 "_GY_HATE_OPP_RE", "_GY_HATE_ALL_RE", "_GY_HATE_CHOOSE_RE",
+                 "_GY_OWN_SCOPE_RE", "_GY_NEED_OPP_RE"):
         out.append((f"deck.{name}", getattr(deck, name), "norm"))
     for name in ("_NONCREATURE_ANSWER_CUES", "_WIDE_CUES", "_TALL_CUES"):
         out += [(f"deck.{name}", p, "norm") for p in getattr(deck, name)]
