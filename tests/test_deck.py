@@ -380,6 +380,41 @@ class TestRationaleFigureAudit:
     def test_a_prescriptive_figure_is_not_a_claim(self):
         assert self._fig("PATH TO A: this wants interaction 9 to clear the floor")
 
+    def _arriving(self, prose, needle):
+        return deck._cites_as_arriving(prose, prose.index(needle))
+
+    def test_the_arriving_side_of_a_replacement_is_a_live_claim(self):
+        """The residual left over from the figure fix: the audit could see an absent
+        card and a wrong number, but not a claim pointing the WRONG WAY. "Spell Pierce
+        was CUT for Shriek" names Shriek as the card that came IN — so once the swap was
+        reverted the sentence was false, yet "CUT" sat adjacent and silenced it."""
+        for prose, needle in (
+                ("Spell Pierce was CUT for Shriek, Treblemaker, which keeps", "Shriek"),
+                ("Harsh Annotation became Starseer Mentor last pass", "Starseer"),
+                ("Bite Down was replaced by Agatha's Soul Cauldron", "Agatha"),
+                ("Kapow! was swapped for Felling Blow", "Felling")):
+            assert self._arriving(prose, needle), prose
+
+    def test_the_departing_side_stays_suppressed(self):
+        # "+A (over B)" names both sides; B legitimately left.
+        assert not self._arriving("+The Legend of Kyoshi (over Squirrel Girl)", "Squirrel")
+        assert not self._arriving("took the slot instead of Dazzling Angel", "Dazzling")
+
+    def test_a_list_plus_is_not_a_swap_marker(self):
+        """`re.I` on the cue pattern defeated the capital-letter test that makes "+X"
+        mean a card name, so the "+" in "hard counters + a mythic finisher" read as a
+        swap and reported deck 12's queued craft target as stale."""
+        assert not self._arriving(
+            "QUALITY (hard counters + a mythic finisher) clears the bar. Disdainful "
+            "Stroke is the queued net-add", "Disdainful")
+
+    def test_cut_for_a_reason_is_not_cut_for_a_card(self):
+        """"Two heist cards were CUT for cause: Doom Reigns Supreme wants five Villains"
+        means cut for a REASON. The arriving card has to sit immediately after the cue."""
+        assert not self._arriving(
+            "Two more owned black heist cards were CUT for cause: Doom Reigns Supreme "
+            "wants five Villains", "Doom Reigns")
+
     def test_house_curve_phrasing_is_read(self):
         """The avg_mv pattern only read "curve of 2.44" / "avg MV 2.44"; the rationales
         write "a tight 2.44 curve" — 14 uses against 1, so the check was decorative."""
@@ -1139,6 +1174,66 @@ class TestPowerThresholdFlags:
 
     def test_no_creatures_is_not_an_error(self):
         assert deck.power_threshold_flags([(1, "Garruk's Uprising", "", "")], self.CD) == []
+
+    # ---- scope: 16 of the roster's 27 flags were false, in two distinct shapes ----
+
+    SCOPED = dict(CD, **{
+        "sandbenders' storm": {
+            "name": "Sandbenders' Storm", "type": "Instant", "power": "", "toughness": "",
+            "text": "Destroy target creature with power 4 or greater."},
+        "dusk": {
+            "name": "Dusk", "type": "Sorcery", "power": "", "toughness": "",
+            "text": "Destroy all creatures with power 3 or greater."},
+        "beloved princess": {
+            "name": "Beloved Princess", "type": "Creature — Human", "power": "1",
+            "toughness": "1",
+            "text": "Lifelink. This creature can't be blocked by creatures with "
+                    "power 3 or greater."},
+        "teamwork spell": {
+            "name": "Teamwork Spell", "type": "Sorcery", "power": "", "toughness": "",
+            "text": "Teamwork 4 (As an additional cost to cast this spell, you may tap "
+                    "any number of creatures you control with total power 4 or more.) "
+                    "Draw a card."},
+        "betor": {
+            "name": "Betor", "type": "Creature — Angel", "power": "4", "toughness": "4",
+            "text": "At the beginning of your end step, if creatures you control have "
+                    "total toughness 10 or greater, draw a card."},
+    })
+
+    def test_removal_targeting_their_creature_is_not_flagged(self):
+        """"Destroy target creature with power 4 or greater" measures the WRONG board —
+        the card wants THEIR creatures big. Deck 13 was warned that 6 of its 22
+        creatures met a bar its removal spell asks of the opponent."""
+        cards = [(1, "Sandbenders' Storm", "", ""), (8, "X Hydra", "", "")]
+        assert deck.power_threshold_flags(cards, self.SCOPED) == []
+
+    def test_a_sweeper_is_not_flagged_for_dodging_its_own_sweep(self):
+        # For Dusk, FEW of your own creatures qualifying is the point of the card.
+        cards = [(1, "Dusk", "", ""), (8, "X Hydra", "", "")]
+        assert deck.power_threshold_flags(cards, self.SCOPED) == []
+
+    def test_a_clause_about_their_blockers_is_not_flagged(self):
+        cards = [(1, "Beloved Princess", "", ""), (8, "X Hydra", "", "")]
+        assert deck.power_threshold_flags(cards, self.SCOPED) == []
+
+    def test_total_power_is_a_sum_not_a_per_creature_bar(self):
+        """Teamwork taps creatures with TOTAL power 4 — three 2/2s pay it. Counting
+        bodies at printed power >= 4 is the wrong arithmetic, not a conservative read
+        of the right one: deck 34 was told 0 of 19 creatures could pay a cost it pays
+        trivially. This one still says "you control", so the total-check is load-bearing
+        rather than incidentally covered by the scope test."""
+        cards = [(1, "Teamwork Spell", "", ""), (8, "X Hydra", "", "")]
+        assert deck.power_threshold_flags(cards, self.SCOPED) == []
+
+    def test_total_toughness_is_a_sum_too(self):
+        cards = [(1, "Betor", "", ""), (8, "X Hydra", "", "")]
+        assert deck.power_threshold_flags(cards, self.SCOPED) == []
+
+    def test_the_your_creatures_case_still_flags(self):
+        # The whole point of the check must survive the scoping.
+        cards = [(1, "Garruk's Uprising", "", ""), (8, "X Hydra", "", "")]
+        assert deck.power_threshold_flags(cards, self.SCOPED) == [
+            ("Garruk's Uprising", "power", 4, 0, 8)]
 
 
 class TestRationaleStaleness:
