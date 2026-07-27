@@ -271,10 +271,19 @@
     clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 4000);
   }
 
+  // Every endpoint answers JSON on both success and failure, so a body that won't
+  // parse means something OUTSIDE the app's own error handling went wrong (server
+  // stopped, an unhandled 500 rendering Flask's HTML page, a proxy). Turn that into
+  // a real Error with a readable message rather than letting a raw SyntaxError
+  // escape — the callers below report it to the user.
   async function postJSON(url, body) {
     const res = await fetch(url, {method: 'POST',
       headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
-    return res.json();
+    try {
+      return await res.json();
+    } catch (err) {
+      throw new Error(`server returned a non-JSON response (HTTP ${res.status})`);
+    }
   }
 
   // Add card — enrich + append server-side, then reload to pick up the new row.
@@ -310,17 +319,30 @@
     const rm = e.target.closest('.rm'); if (!rm) return;
     const c = CARDS.find(x => x._key === rm.closest('.card').dataset.key); if (!c) return;
     if (!confirm(`Remove ${c.name} (${c.set || '—'})? This deletes the printing from the collection.`)) return;
-    const d = await postJSON('/api/remove', {key: {name: c.name, set: c.set, collector: c.cn}});
-    if (d.ok) { sessionStorage.setItem('flash', `Removed ${c.name}`); location.reload(); }
-    else toast('Remove failed: ' + (d.errors || ['unknown']).join('  |  '));
+    // try/catch, like save/add: without it a rejected fetch (server stopped, bad
+    // response) escaped as an unhandled rejection and the click did NOTHING VISIBLE —
+    // right after the user confirmed a destructive dialog (broad-scan F-02).
+    try {
+      const d = await postJSON('/api/remove', {key: {name: c.name, set: c.set, collector: c.cn}});
+      if (d.ok) { sessionStorage.setItem('flash', `Removed ${c.name}`); location.reload(); }
+      else toast('Remove failed: ' + (d.errors || ['unknown']).join('  |  '));
+    } catch (err) {
+      toast('Remove failed (is the server running?): ' + err.message);
+    }
   });
 
   // Revert last save.
   document.getElementById('revert').addEventListener('click', async () => {
     if (!confirm('Revert the last save? Restores the most recent backup and discards changes since then.')) return;
-    const d = await postJSON('/api/revert', {});
-    if (d.ok) { sessionStorage.setItem('flash', `Reverted to ${d.restored}`); location.reload(); }
-    else toast('Revert failed: ' + (d.errors || ['unknown']).join('  |  '));
+    // Same guard as remove() above — this is the most destructive action in the app,
+    // and it was one of the two that failed silently (broad-scan F-02).
+    try {
+      const d = await postJSON('/api/revert', {});
+      if (d.ok) { sessionStorage.setItem('flash', `Reverted to ${d.restored}`); location.reload(); }
+      else toast('Revert failed: ' + (d.errors || ['unknown']).join('  |  '));
+    } catch (err) {
+      toast('Revert failed (is the server running?): ' + err.message);
+    }
   });
 
   // Surface a one-shot message across the reload that add/remove/revert trigger.

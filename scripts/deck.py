@@ -578,21 +578,37 @@ BASIC_COLOR = {"plains": "W", "island": "U", "swamp": "B", "mountain": "R", "for
 def _castability(cards, declared, mana, carddata):
     """Flag nonland cards whose color needs fall outside `declared` (a WUBRG set).
 
-    Returns (uncastable, off_identity):
+    Returns (uncastable, off_identity, off_ability):
       uncastable   – [(name, "needs X")] : a STRICT pip, or a true multicolor
                      hybrid with NO in-declared-color option, in a color the deck
                      can't produce. These genuinely can't be cast off the stated
                      colors. (Needs real mana costs — pass a populated `mana`.)
-      off_identity – [(name, "identity has X")] : castable as printed, but the
-                     card's color IDENTITY strays outside declared (an off-color
-                     ability, or a hybrid you'd pay on-color) — a softer heads-up.
+      off_identity – [(name, why)] : castable as printed, but the card's color
+                     IDENTITY strays outside declared — every stray, for display.
+      off_ability  – the SUBSET of off_identity whose stray is NOT explained by a
+                     hybrid pip in the mana cost, i.e. it comes from rules text (an
+                     activated ability you can't pay, another face). This is the
+                     only part that is ever actionable.
+
+    The two kinds were reported as one list, and the `why` string ("identity has R")
+    could not tell them apart — so `audit_deck` counted both and the roster triage's
+    `review` verdict fired on 22 of 63 decks with a measured 0% actionable rate
+    (broad-scan F-03). A hybrid you pay on-color costs you nothing: Knight's Edge is
+    mono-W and runs two R/W hybrids that are simply white cards in that deck. An
+    off-color ABILITY is different — Super-Skrull casts for {1}{B}{B}{B} but its
+    {4}{R} ability is dead in a deck with no red, and that is worth a look. Splitting
+    them turns a saturated flag back into a shortlist; the display keeps showing
+    both, since "this card's identity is wider than the deck" is still true and
+    useful to see, and only the VERDICT narrows.
 
     An empty `declared` disables the lint. With an empty `mana` dict the strict
     check is skipped and only the offline identity check runs (so `check` stays
-    network-free)."""
-    uncastable, off_ident = [], []
+    network-free) — note that with no costs to read, no stray can be shown to be
+    hybrid-explained, so every stray reads as an ability stray. That is the
+    conservative direction: it over-reports rather than silently clearing a deck."""
+    uncastable, off_ident, off_ability = [], [], []
     if not declared:
-        return uncastable, off_ident
+        return uncastable, off_ident, off_ability
     seen = set()
     for q, n, s, c in cards:
         nl = n.lower()
@@ -621,8 +637,28 @@ def _castability(cards, declared, mana, carddata):
         ident = card_colors(cd["colors"] if cd else "")
         stray = sorted(ident - declared)
         if stray:
-            off_ident.append((n, "identity has " + "/".join(stray)))
-    return uncastable, off_ident
+            # A stray colour that appears ONLY as a hybrid pip in the cost is one you
+            # pay on-colour — the card is a plain on-colour card in this deck. Anything
+            # else came from the rules text (an off-colour activated ability, another
+            # face), which is the part worth reviewing.
+            #
+            # Without a cost we cannot tell the two apart, and asserting either would be
+            # a claim we can't support: `cmd_check` deliberately passes an empty `mana`
+            # to stay offline, and every stray there would otherwise be labelled an
+            # off-colour ability — false for the R/W hybrids in a mono-W deck. So say
+            # "unknown" in the text, while still COUNTING it as actionable, which keeps
+            # the offline path over-reporting rather than silently clearing a deck.
+            hybrid_colors = set().union(*hybrid) if hybrid else set()
+            known_cost = bool(entry and entry[0])
+            by_hybrid = known_cost and set(stray) <= hybrid_colors
+            note = (" (hybrid — paid on-color)" if by_hybrid
+                    else " (off-color ability)" if known_cost
+                    else " (cost unknown — run `deck.py mana` to tell hybrid from ability)")
+            why = "identity has " + "/".join(stray) + note
+            off_ident.append((n, why))
+            if not by_hybrid:
+                off_ability.append((n, why))
+    return uncastable, off_ident, off_ability
 
 
 def cmd_check(args):
@@ -674,7 +710,7 @@ def cmd_check(args):
     # Castability lint (offline, identity-only — pass an empty mana dict). Flags
     # cards whose color identity strays outside the deck's declared colors.
     declared = _declared_colors(meta)
-    _, off_ident = _castability(cards, declared, {}, load_card_data())
+    _, off_ident, _ = _castability(cards, declared, {}, load_card_data())
     if declared and off_ident:
         cols = "".join(sorted(declared))
         print(f"\n⚠ {len(off_ident)} card(s) stray outside the deck's {cols} colors "
@@ -3826,7 +3862,7 @@ def cmd_mana(args):
     # declared colors (the `#: colors:` header). Only meaningful when declared.
     declared = _declared_colors(meta)
     if declared:
-        uncastable, off_ident = _castability(cards, declared, mana, load_card_data())
+        uncastable, off_ident, _ = _castability(cards, declared, mana, load_card_data())
         cols = "".join(sorted(declared))
         if uncastable:
             print(f"\n✗ Uncastable off the deck's {cols} colors "
@@ -5170,7 +5206,10 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta):
     n_illegal = len(rep["problems"])
 
     declared = _declared_colors(meta)
-    uncast, off_ident = _castability(cards, declared, mana, carddata)
+    # `off_ability` — NOT `off_ident` — drives the verdict. A stray explained by a
+    # hybrid pip is a card you pay on-color and never need to look at, and counting
+    # those fired `review` on 22 of 63 decks with a 0% actionable rate (F-03).
+    uncast, off_ident, off_ability = _castability(cards, declared, mana, carddata)
 
     interaction = _interaction_count(cards, carddata)
 
@@ -5197,10 +5236,10 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta):
     elif short:
         verdict = "craft"
         reasons.append(f"{short} to craft")
-    elif off_ident or thin:
+    elif off_ability or thin:
         verdict = "review"
-        if off_ident:
-            reasons.append(f"off-color ×{len(off_ident)}")
+        if off_ability:
+            reasons.append(f"off-color ability ×{len(off_ability)}")
         if thin:
             reasons.append(f"thin interaction ({interaction})")
     else:
@@ -5215,6 +5254,9 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta):
         "illegal": n_illegal,
         "uncast": len(uncast),
         "stray": len(off_ident),
+        # The actionable subset of `stray` — the only one that reaches the verdict.
+        # `stray` stays the TOTAL so the Cast column keeps agreeing with `deck.py mana`.
+        "stray_ability": len(off_ability),
         "int": interaction,
         "thm": n_themes,
         "thin": thin,
@@ -5258,9 +5300,13 @@ def cmd_audit(args):
 
     rows = []
     for r in scored:
+        # `Ns` is every identity stray (matching `deck.py mana`); `Na` marks the subset
+        # that is an off-color ABILITY rather than a hybrid you pay on-color — the only
+        # kind that reaches the verdict, so the column shows why a deck did or didn't.
         cast_cell = "✓" if not (r["uncast"] or r["stray"]) else \
             " ".join(([f"{r['uncast']}u"] if r["uncast"] else [])
-                     + ([f"{r['stray']}s"] if r["stray"] else []))
+                     + ([f"{r['stray']}s"] if r["stray"] else [])
+                     + ([f"{r['stray_ability']}a"] if r["stray_ability"] else []))
         rows.append({**r, "own": "✓" if r["short"] == 0 else f"{r['short']}✗",
                      "legal": "✓" if r["illegal"] == 0 else f"{r['illegal']}✗",
                      "cast": cast_cell})
@@ -5288,7 +5334,8 @@ def cmd_audit(args):
               f"{r['thm']:>3}  {action}")
 
     print(f"\nLegend: Tier S→D competitive/win-capability (· = ungraded) · "
-          f"Own/Legal ✓ clean · Cast Nu=uncastable Ns=off-identity stray · "
+          f"Own/Legal ✓ clean · Cast Nu=uncastable Ns=identity stray "
+          f"Na=of those, off-color ABILITY (the rest are hybrids you pay on-color) · "
           f"Int=removal+sweeper+counter · Thm=central themes")
     print(f"Summary: {len(tune)} to tune · {len(craft)} to craft · "
           f"{len(review)} to review · {len(scored) - len(tune) - len(craft) - len(review)} ok")
@@ -5982,7 +6029,7 @@ def deck_quality_vector(d):
                 theme_w[t] = theme_w.get(t, 0) + q
     declared_hdr = _declared_colors(dmeta)
     declared = declared_hdr or _deck_castable_colors(dmeta, cards, mana)
-    uncast, _off = _castability(cards, declared, mana, carddata)
+    uncast, _off, _off_ability = _castability(cards, declared, mana, carddata)
     _tally = role_tally(cards, carddata)
     d_int, d_ca = _tally["interaction"], _tally["card_advantage"]
     return {
@@ -7357,7 +7404,7 @@ def cmd_preflight(args):
     mana = load_mana()
     carddata = load_card_data()
     declared = _declared_colors(dmeta) or _deck_castable_colors(dmeta, cards, mana)
-    uncast, off_ident = _castability(cards, declared, mana, carddata)
+    uncast, off_ident, _ = _castability(cards, declared, mana, carddata)
 
     # Repo integrity — the deterministic gate, run out-of-process for a clean signal.
     integ = subprocess.run(
@@ -7540,7 +7587,10 @@ def main():
     p = sub.add_parser("mana", help="hybrid-aware color requirements")
     p.add_argument("id")
     p = sub.add_parser("consistency",
-                       help="manabase + opening-hand probability (keepable %, land drops, cast-on-curve)")
+                       # `%%`, not `%`: argparse renders a help string through
+                       # `help % params`, so a bare `%` raises ValueError and takes
+                       # the WHOLE top-level `--help` down with it (broad-scan F-01).
+                       help="manabase + opening-hand probability (keepable %%, land drops, cast-on-curve)")
     p.add_argument("id")
     p.add_argument("--on-draw", action="store_true",
                    help="model on the draw (extra card) instead of on the play")

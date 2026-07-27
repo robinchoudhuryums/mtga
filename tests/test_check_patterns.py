@@ -44,9 +44,66 @@ class TestLiveCorpus:
         # Feeding a pattern the wrong text form is the same class of mistake the
         # gate exists to catch — the case-sensitive tribal-payoff scan reads
         # ORIGINAL-case text and reported as dead against a lowercased corpus.
+        # "window" joined the set with F-04: a `$`-anchored pattern run against a
+        # short slice of a card's text matches 0 whole texts BY CONSTRUCTION.
         for label, pat, case in check_patterns._pattern_groups():
-            assert case in ("norm", "raw"), label
+            assert case in ("norm", "raw", "window"), label
             assert isinstance(pat, re.Pattern), label
+
+    def test_window_patterns_are_exempt_from_the_corpus_check(self):
+        """`_POWER_SCOPE_*` are `$`-anchored and run against text[start-25:start].
+        Registering them as whole-text patterns would fail the build on two healthy
+        regexes — the exact false-positive this gate must not produce."""
+        forms = check_patterns._pool_texts()
+        windowed = [(l, p) for l, p, c in check_patterns._pattern_groups()
+                    if c == "window"]
+        assert windowed, "the window case should have at least one member"
+        for label, pat in windowed:
+            # Zero whole-text hits is CORRECT for these...
+            assert not any(pat.search(t) for t in forms["norm"]), label
+        # ...and yet the gate is clean, because the corpus check skips them.
+        assert check_patterns.check() == []
+
+
+class TestCompleteness:
+    """The gate's coverage was a hand-maintained list, and the list fell 13 patterns
+    behind the code — including all of `lib.structural_distinctiveness`, whose failure
+    mode is invisible (`card_distinctiveness` takes max(), so a dead structural
+    pattern silently collapses to the tag score). A hand-kept registry grows holes;
+    this makes a new pattern fail the build until it is classified."""
+
+    def test_an_unregistered_pattern_is_reported(self, monkeypatch):
+        import deck
+        monkeypatch.setattr(deck, "_XX_NEW_CUE_RE",
+                            re.compile(r"whenever you cast a spell"), raising=False)
+        errors = check_patterns.check()
+        assert any("_XX_NEW_CUE_RE" in e for e in errors)
+
+    def test_structural_distinctiveness_is_covered(self):
+        """The specific 5-pattern hole F-04 found. `max(tag, structural)` means a dead
+        pattern here changes no visible number, so only this gate would catch it."""
+        import lib
+        registered = {id(p) for _l, p, _c in check_patterns._pattern_groups()}
+        for name in ("_STRUCT_NONETB_TRIGGER_RE", "_STRUCT_ACTIVATED_RE",
+                     "_STRUCT_RULEBEND_RE", "_STRUCT_MODAL_RE", "_STRUCT_REMINDER_RE"):
+            assert id(getattr(lib, name)) in registered, name
+
+    def test_doubler_axes_are_covered(self):
+        import deck
+        registered = {id(p) for _l, p, _c in check_patterns._pattern_groups()}
+        for axis, pats in deck._DOUBLER_AXES.items():
+            for p in pats:
+                assert id(p) in registered, axis
+        assert id(deck._DOUBLER_POWER_RE) in registered
+
+    def test_every_exclusion_names_a_real_attribute(self):
+        """A stale exclusion is a hole that looks like a decision."""
+        import deck, lib, tag_synergies  # noqa: F401
+        mods = {m.__name__: m for m in check_patterns._SCANNED_MODULES}
+        for (mod_name, attr), reason in check_patterns._EXCLUDED.items():
+            assert mod_name in mods, mod_name
+            assert hasattr(mods[mod_name], attr), f"{mod_name}.{attr}"
+            assert reason.strip(), f"{mod_name}.{attr} needs a reason"
 
     def test_pool_supplies_both_text_forms(self):
         forms = check_patterns._pool_texts()

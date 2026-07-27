@@ -132,7 +132,7 @@ def deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name):
             hyb[k] = hyb.get(k, 0) + q
         if hybrid and not strict:
             hybrid_only += q
-    uncastable, off_ident = deckmod._castability(cards, declared, mana, carddata)
+    uncastable, off_ident, _off_ability = deckmod._castability(cards, declared, mana, carddata)
 
     return {
         "types": [{"t": t, "n": types[t]} for t in sorted(types, key=lambda x: -types[x])],
@@ -1584,8 +1584,8 @@ renderWishlist(); renderSim();
   const VLAB = {TUNE:'★ tune', craft:'craft', review:'review', ok:'ok'};
   const VCLS = {TUNE:'v-tune', craft:'v-craft', review:'v-review', ok:'v-ok'};
   const TCLS = {S:'t-s', A:'t-a', B:'t-b', C:'t-c', D:'t-d'};
-  const rows = D.decks.map(d => { const a = d.audit; const cast = (!a.uncast && !a.stray) ? '✓' : [a.uncast?a.uncast+'u':'', a.stray?a.stray+'s':''].filter(Boolean).join(' ');
-    return { id:d.id, name:d.name, deck:'#'+d.id+' '+d.name, sz:a.sz, tier:a.tier||'', _tierord:({S:0,A:1,B:2,C:3,D:4})[a.tier] ?? 5, short:a.short, illegal:a.illegal, uncast:a.uncast, stray:a.stray, cast, _castsev:a.uncast*100+a.stray, int:a.int, thm:a.thm, verdict:a.verdict, why:a.why, _sev:SEV[a.verdict] }; });
+  const rows = D.decks.map(d => { const a = d.audit; const cast = (!a.uncast && !a.stray) ? '✓' : [a.uncast?a.uncast+'u':'', a.stray?a.stray+'s':'', a.stray_ability?a.stray_ability+'a':''].filter(Boolean).join(' ');
+    return { id:d.id, name:d.name, deck:'#'+d.id+' '+d.name, sz:a.sz, tier:a.tier||'', _tierord:({S:0,A:1,B:2,C:3,D:4})[a.tier] ?? 5, short:a.short, illegal:a.illegal, uncast:a.uncast, stray:a.stray, stray_ability:a.stray_ability||0, cast, _castsev:a.uncast*100+(a.stray_ability||0)*10+a.stray, int:a.int, thm:a.thm, verdict:a.verdict, why:a.why, _sev:SEV[a.verdict] }; });
   rows.sort((x,y) => x._sev - y._sev || (''+x.id).length - (''+y.id).length || (''+x.id).localeCompare(''+y.id));
   const flag = (n, sfx) => n ? '<span class="cell-flag">' + n + sfx + '</span>' : '<span class="cell-ok">✓</span>';
   const cols = [
