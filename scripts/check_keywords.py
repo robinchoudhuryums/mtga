@@ -236,3 +236,51 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+def stale_registry_entries():
+    """Hand-kept keyword registries whose entries no longer match any card in the corpus.
+
+    `FLAVOR_KEYWORDS` (the "this is card-unique flavour, not a mechanic" denylist) and
+    `keyword_baseline.txt` (the acknowledged-but-unindexed list) are both maintained by
+    hand, and both only ever grow — nothing prunes them when a set rotates out of the
+    pool or a keyword is renamed. A stale entry is a suppression with nothing behind it:
+    harmless in isolation, but it makes the registry look considered while covering
+    nothing, and it silently pre-suppresses the name if a FUTURE set reuses it for a real
+    mechanic. That is the same shape `check_patterns`' coverage list had before the
+    completeness check (broad-scan F-04), so it gets the same treatment: make it
+    falsifiable instead of trusting that someone pruned it.
+
+    SOFT by design — unlike a stale colour-parse exemption, a stale keyword entry breaks
+    no invariant and suppresses nothing real, so it is a tidy-up prompt, not a build
+    failure. Returns [(registry, keyword, note)]; empty == healthy. Never raises.
+    """
+    out = []
+    try:
+        # Lazy, matching this file's existing style (flavor_overreach imports deck the
+        # same way) so an import problem degrades to a skip rather than breaking the
+        # module for the checks that don't need it.
+        import tag_synergies
+        freq, corpus = tag_synergies.keyword_frequencies()
+    except Exception as e:                      # pragma: no cover - corpus unavailable
+        return [("(registry audit)", "-", f"skipped: {e}")]
+    # Below the corpus floor the frequency table is library-scoped, where a pool-wide
+    # mechanic can legitimately sit on zero owned cards (the `harmonize` case). Judging
+    # staleness there would produce exactly the false positives this check must not add.
+    if corpus < tag_synergies._NOISE_MIN_CORPUS:
+        return out
+    for kw in sorted(tag_synergies.FLAVOR_KEYWORDS):
+        if freq.get(kw.lower(), 0) == 0:
+            out.append(("FLAVOR_KEYWORDS", kw,
+                        "denylisted but on no card in the corpus — the set it came from "
+                        "is gone; drop it so the denylist keeps meaning something"))
+    try:
+        baseline = load_baseline()
+    except Exception:                           # pragma: no cover
+        baseline = set()
+    for kw in sorted(baseline):
+        if freq.get(kw.lower(), 0) == 0:
+            out.append(("keyword_baseline.txt", kw,
+                        "acknowledged-but-unindexed, yet on no card in the corpus — "
+                        "drop it (check_keywords.py --update-baseline rewrites the file)"))
+    return out

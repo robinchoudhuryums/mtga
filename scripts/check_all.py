@@ -239,6 +239,12 @@ def main():
         # Denylist overreach — a flavor keyword that may actually be a real mechanic.
         for kw, _n, note in ck.flavor_overreach():
             soft.append(f"FLAVOR_KEYWORDS overreach: '{kw}' — {note}")
+        # Registry staleness — an entry in a hand-kept keyword list that no longer
+        # matches any card. Suppresses nothing real, but a registry that looks
+        # considered while covering nothing is the shape F-04 found in check_patterns'
+        # coverage list. Soft: it breaks no invariant, it's a tidy-up prompt.
+        for reg, kw, note in ck.stale_registry_entries():
+            soft.append(f"stale {reg} entry '{kw}' — {note}")
     except Exception as e:
         soft.append(f"keyword radar skipped ({e})")
 

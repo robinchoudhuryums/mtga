@@ -2568,14 +2568,30 @@ def role_tally(cards, carddata):
     # this, but printed it as a separate warning several lines away, so the NUMBER still
     # read as fact. Attaching the remainder to the tally means every consumer gets it.
     unclassified, under_read, no_data = role_coverage_flags(cards, carddata)
-    per_role["interaction_unread"] = sum(1 for _n, ax in under_read if "interaction" in ax)
-    per_role["card_advantage_unread"] = sum(1 for _n, ax in under_read if "card advantage" in ax)
+    # Quantity-weight the uncertainty the SAME way the counts themselves are weighted.
+    # `interaction`/`card_advantage`/`protection` above are quantity-weighted (2 copies of
+    # a removal spell = 2), but these remainders were CARD counts — so `8 +4?` compared a
+    # weighted base against an unweighted remainder, and a deck running 4x of a card with
+    # no oracle text on file reported "+1?" when four copies were unread (broad-scan
+    # F-09). Understating uncertainty is the wrong direction for a signal whose entire
+    # job is to stop a heuristic count from reading as fact.
+    #
+    # Dedupe by name first: role_coverage_flags emits one entry per LINE, so a card split
+    # across two printing lines would otherwise be weighted by its full quantity twice.
+    # (No deck on the roster does that today; the guard is for when one does.)
+    _qty_of = {}
+    for _q, _n, _s, _c in cards:
+        _qty_of[(_n or "").lower()] = _qty_of.get((_n or "").lower(), 0) + _q
+    def _weigh(names):
+        return sum(_qty_of.get((n or "").lower(), 1) for n in dict.fromkeys(names))
+    per_role["interaction_unread"] = _weigh([n for n, ax in under_read if "interaction" in ax])
+    per_role["card_advantage_unread"] = _weigh([n for n, ax in under_read if "card advantage" in ax])
     # `unclassified` is the WORSE case and must not be invisible: a noncreature spell that
     # matched no role AND tripped no broad cue. That is exactly Broken Wings and Repulsive
     # Mutation — cards that unambiguously interact and scored zero. It can't be attributed
     # to a single axis, so it is reported globally rather than folded into one count.
-    per_role["unclassified"] = len(unclassified)
-    per_role["unreadable"] = len(no_data)
+    per_role["unclassified"] = _weigh(unclassified)
+    per_role["unreadable"] = _weigh(no_data)
     return per_role
 
 

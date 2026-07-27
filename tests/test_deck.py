@@ -1117,6 +1117,38 @@ class TestSyncPaste:
                               (self._d("2"), self._ms(X=4, Y=4, Z=4))])
         assert m["lowconf"] is False
 
+    # --- the tie-break rule, pinned (broad-scan F-08) ------------------------------
+    # `match_paste`'s docstring promises the dashboard's stale-check panel applies the
+    # same rule, and the JS copy had drifted: it compared drift alone with a strict `<`,
+    # so on an equal-drift tie the first deck in ITERATION order won, while Python
+    # preferred more shared cards and then the lower id. Same paste, two answers —
+    # exactly in the sibling-variant case low-confidence exists for. These pin the rule
+    # the JS mirrors; if you change either, change both.
+
+    def test_tie_on_drift_prefers_more_shared_cards(self):
+        # Both decks are 2 cards of drift away. Deck "2" shares three cards, deck "1"
+        # shares two, so "2" must win despite sorting later by id.
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._d("1"), self._ms(A=4, B=4, Z=2)),
+                              (self._d("2"), self._ms(A=4, B=4, C=2))])
+        assert m["deck"]["id"] == "2"
+
+    def test_tie_on_drift_and_shared_prefers_lower_id(self):
+        # Identical drift AND identical shared count: the id decides, by CODEPOINT order
+        # (the JS uses < / > rather than localeCompare for the same reason).
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._d("2"), self._ms(A=4, B=4, C=2)),
+                              (self._d("1"), self._ms(A=4, B=4, C=2))])
+        assert m["deck"]["id"] == "1"
+
+    def test_tie_break_is_independent_of_input_order(self):
+        # The bug's actual signature: reordering the candidate list changed the answer.
+        decks = [(self._d("1"), self._ms(A=4, B=4, C=2)),
+                 (self._d("2"), self._ms(A=4, B=4, C=2))]
+        a = deck.match_paste(self._ms(A=4, B=4, C=4), decks)
+        b = deck.match_paste(self._ms(A=4, B=4, C=4), list(reversed(decks)))
+        assert a["deck"]["id"] == b["deck"]["id"] == "1"
+
     def test_reconcile_preserves_structure_and_applies_target(self):
         lines = ["#: name: T", "", "# Creatures", "4 Foo (SET) 1", "1 Bar (SET) 2",
                  "# Lands", "20 Island", "#~ -Bar | +Baz | flex note"]
