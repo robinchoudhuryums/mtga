@@ -1139,6 +1139,33 @@ _POWER_THRESHOLD_RE = re.compile(
     r"\b(power|toughness) (\d+) or (?:greater|more)\b", re.I)
 _POWER_THRESHOLD_THIN = 0.30       # <30% of creatures qualifying = worth flagging
 
+# The flag counts YOUR creatures against the bar, so it only means anything when the
+# clause is about creatures YOU CONTROL *and* is a PER-CREATURE threshold. Two shapes
+# break that, and both were firing — 16 of the roster's 27 flags, 59%, were false:
+#
+#   * REMOVAL / opponent-facing (83 pool cards). "Destroy target creature with power 4
+#     or greater" (Sandbenders' Storm, Battle Menu, Valorous Stance) measures the wrong
+#     board entirely — the card wants THEIR creatures big. For a sweeper like Dusk
+#     ("destroy all creatures with power 3 or greater") few of your own qualifying is
+#     the whole POINT, so the warning inverted the card's reading. Same for "can't be
+#     blocked by creatures with power 3 or greater", which is about their blockers.
+#   * "TOTAL power/toughness N or greater" (153 pool cards). Teamwork ("tap any number
+#     of creatures you control with total power 4 or more") and Betor's "if creatures
+#     you control have total toughness 10 or greater" are SUMS: three 2/2s satisfy
+#     "total power 4". Counting creatures at printed power >= 4 is the wrong
+#     arithmetic, not a conservative read of the right one — deck 34 was told 0 of its
+#     19 creatures could pay a teamwork cost it can pay trivially.
+#
+# Opt IN on "you control" rather than blacklisting the bad shapes: Magic's templating
+# puts "you control" directly before "with power N", and an affirmative test can't be
+# silently widened by a phrasing nobody has written yet. The cost is losing a scope
+# spelled some other way (Gwenna's "whenever you cast a creature spell with power 5 or
+# greater"), which is the right direction to err — this list exists to be read
+# card-by-card, so a false cue is the expensive kind.
+_POWER_SCOPE_MINE_RE = re.compile(r"you control(?:[^.]{0,25})?$", re.I)
+_POWER_SCOPE_TOTAL_RE = re.compile(r"\btotal\s+$", re.I)
+_POWER_SCOPE_BACK = 40
+
 
 def power_threshold_flags(cards, carddata):
     """[(payoff_name, attr, N, qualifying_copies, creature_copies)] for each card whose
@@ -1149,7 +1176,11 @@ def power_threshold_flags(cards, carddata):
     still reads by its printed value, which is exactly right for an ENTERS trigger and
     conservative for anything else. Creatures whose P/T isn't a number (`*`, `X`) are
     counted as NOT qualifying and reported separately by the caller if needed, since
-    guessing would re-introduce the invented-fact problem `lib.card_power` avoids."""
+    guessing would re-introduce the invented-fact problem `lib.card_power` avoids.
+
+    Scoped: only a clause about creatures YOU CONTROL, and only a per-creature bar —
+    see `_POWER_SCOPE_MINE_RE` for the removal / "total power" shapes this used to
+    misread and why the test opts in rather than blacklisting."""
     creatures = []
     for q, n, _s, _c in cards:
         cd = carddata.get(n.lower())
@@ -1165,7 +1196,13 @@ def power_threshold_flags(cards, carddata):
         cd = carddata.get(n.lower())
         if not cd:
             continue
-        for m in _POWER_THRESHOLD_RE.finditer(cd.get("text") or ""):
+        text = cd.get("text") or ""
+        for m in _POWER_THRESHOLD_RE.finditer(text):
+            back = text[max(0, m.start() - _POWER_SCOPE_BACK):m.start()]
+            if _POWER_SCOPE_TOTAL_RE.search(back):
+                continue                      # a SUM across creatures, not a per-body bar
+            if not _POWER_SCOPE_MINE_RE.search(back):
+                continue                      # removal / opponent-facing — wrong board
             attr, bar = m.group(1).lower(), int(m.group(2))
             key = (cd["name"], attr, bar)
             if key in seen:
@@ -6776,6 +6813,58 @@ def _figure_is_history(prose, start, end):
     return bool(_COMPARISON_CUES.search(prose[lo:hi]))
 
 
+# A replacement claim has TWO sides, and only one of them may name an absent card.
+# `_cites_as_history` treats them alike: it sees change-language near the citation and
+# stays quiet. That is RIGHT for the DEPARTING card ("Essence Scatter became hard
+# counters" — Essence Scatter left, the sentence documents it) and WRONG for the
+# ARRIVING one. "Spell Pierce was CUT for Shriek, Treblemaker" names Shriek as the card
+# that came IN, so if Shriek is not in the deck the sentence isn't history — it is
+# REVERSED, and it asserts a swap that no longer exists.
+#
+# That is not hypothetical: the Shriek swap was applied and then undone, and the audit
+# reported deck 37b clean through both, because "CUT" sat adjacent to the name either
+# way. It is the residual left over from the figure fix — the audit could see an absent
+# card and a wrong number, but not a claim pointing the wrong way.
+#
+# The cue lists cover only the directional shapes the roster's prose actually uses
+# (surveyed across every `#: tier:` block, not guessed): "cut/traded/swapped/exchanged
+# … for X", "became X", "replaced by X", "in place of X", and the "+X" shorthand. A
+# DEPARTING marker between the cue and the citation closes the window, because "+A
+# (over B)" names both sides in one clause and B is legitimately gone.
+# Two of my own bugs, both caught by sweeping the roster rather than by reasoning:
+#   * the `+X` shorthand needs a CASE-SENSITIVE capital to mean "a card name", and the
+#     `re.I` on this pattern silently defeated it — so the `+` in "hard counters + a
+#     mythic finisher" read as a swap marker (deck 12). Hence the `(?-i:[A-Z])`.
+#   * "cut for" is not always a replacement: "two heist cards were CUT for cause: Doom
+#     Reigns Supreme wants five Villains" means cut for a REASON (deck 45). So the
+#     arriving card must sit IMMEDIATELY after the cue — a short gap with no sentence
+#     break in it, which "for cause:" fails and "for Shriek, Treblemaker" passes.
+_ARRIVING_CUES = re.compile(
+    r"\b(?:cut|traded|swapped|exchanged)\s+(?:it\s+)?for\b|\bbecames?\b"
+    r"|\breplaced by\b|\bin place of\b|(?<![\w])\+(?=\s?(?-i:[A-Z]))", re.I)
+_DEPARTING_CUES = re.compile(
+    r"\bover\b|\binstead of\b|\brather than\b|(?<![\w])-(?=\s?(?-i:[A-Z]))", re.I)
+_ARRIVING_WINDOW = 70
+_ARRIVING_GAP = 25                 # cue → citation; longer means the subject moved on
+_ARRIVING_BREAK = re.compile(r"[.;:—]")
+
+
+def _cites_as_arriving(prose, pos):
+    """True when a citation sits on the ARRIVING side of a stated replacement — i.e. the
+    prose claims this card came IN, so its absence makes the claim false, not historical.
+    """
+    back = prose[max(0, pos - _ARRIVING_WINDOW):pos]
+    cue = None
+    for m in _ARRIVING_CUES.finditer(back):
+        cue = m                                  # nearest cue before the citation
+    if cue is None:
+        return False
+    gap = back[cue.end():]
+    if len(gap) > _ARRIVING_GAP or _ARRIVING_BREAK.search(gap):
+        return False
+    return not _DEPARTING_CUES.search(gap)
+
+
 def _roster_deck_names(_cache={}):
     """Every deck's `#: name:`, longest first — masked out of a rationale before the
     card scan. A deck name that is ALSO a card name ("Blood Price", "Sacrifices") read
@@ -6858,7 +6947,11 @@ def rationale_staleness(d, carddata=None):
                 start = i + 1
             if pos < 0:
                 continue
-            if _cites_as_history(masked, pos, len(disp)):
+            # History suppression, EXCEPT on the arriving side of a stated replacement:
+            # a card the prose says came IN is a claim about the current list, and its
+            # absence means the sentence points the wrong way (see `_cites_as_arriving`).
+            if (_cites_as_history(masked, pos, len(disp))
+                    and not _cites_as_arriving(masked, pos)):
                 continue
             stale_cards.append((disp, header))
     if stale_cards:

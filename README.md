@@ -218,6 +218,7 @@ python3 scripts/wishlist.py --target 14        # what you've earmarked for a dec
 python3 scripts/wishlist.py --by-set           # PACK OPTIMIZATION: cards per set, by rarity
 python3 scripts/wishlist.py --rank             # WILDCARD PRIORITY: theme fit + hand-graded power, blended
 python3 scripts/wishlist.py --budget "9M 10R 38U 48C"   # optimal craft plan within a wildcard budget
+python3 scripts/wishlist.py --budget "3R" --set TMT     # ...scoped to one set (filters apply to --rank/--budget/--by-set)
 python3 scripts/wishlist.py --seed-power       # first-pass heuristic estimate for BLANK Power cells (+ --write)
 python3 scripts/wishlist.py --owned            # cards you've since acquired — prune these
 python3 scripts/wishlist.py --audit-targets    # flag cards whose Target deck can't cast them (hybrid-aware color drift)
