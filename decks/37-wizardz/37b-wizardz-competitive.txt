@@ -8,10 +8,12 @@
 #: tier: `deck.py redundancy 37` named the two thin effects; this firms them up. The win-con
 #: tier: ping ("deal damage to each opponent when you cast a noncreature spell") is a virtual
 #: tier: ~10-of (Coruscation Mage + Firebrand Archer + Thunderdrum Soloist + Black Waltz +
-#: tier: the 0/1-token makers + Lasting Tarfire); counters stand at 2 (Mana Sculpt +
-#: tier: Tishana's Tidebinder — Spell Pierce was CUT for Shriek, Treblemaker, which keeps
-#: tier: the counter pair intact while adding a free repeatable discard outlet and a second
-#: tier: ping source). Metrics floor A (interaction/card-adv). A NOTCH below a true-4-of A on raw
+#: tier: the 0/1-token makers + Lasting Tarfire); counters stand at 3 (Mana Sculpt +
+#: tier: Tishana's Tidebinder + Spell Pierce). A Shriek, Treblemaker swap over Spell Pierce
+#: tier: was tried and REVERTED: Shriek's main-phase ability is combat enablement bought
+#: tier: with a discard, and it traded an instant for a creature in a deck whose payoffs
+#: tier: (Thunderdrum Soloist, Balmor, Archmage of Runes) key on INSTANT AND SORCERY casts,
+#: tier: so spell density is the resource, not bodies. Metrics floor A (interaction/card-adv). A NOTCH below a true-4-of A on raw
 #: tier: consistency (the virtual copies aren't identical — a quality tax — and can't STACK a
 #: tier: keystone), but the plan hinges on no single card, so it's a defensible A. Out of S:
 #: tier: no format-warping bomb.
@@ -33,7 +35,7 @@
 #: protect: Coruscation Mage; Black Waltz No. 3; Balmor, Battlemage Captain; Kefka, Court Mage; Niv-Mizzet, Visionary
 
 # Creatures — Wizard pingers (virtual copies of the win-con) / prowess payoffs / engines
-1 Shriek, Treblemaker (SPM) 144
+1 Spell Pierce (SOA) 23
 1 The Emperor of Palamecia (FIN) 219
 1 Stormcatch Mentor (BLB) 234
 1 Coruscation Mage (BLB) 131
