@@ -137,6 +137,16 @@ def enrich(path, dry_run=False, force=False, only=None):
 
     def needs(r):
         cols = [c for c in FILLABLE if force or not (r.get(c) or "").strip()]
+        # A blank Card Text on a row that is OTHERWISE enriched (Type and Color(s)
+        # both present) is a genuinely vanilla creature — Aegis Turtle, Gigantosaurus
+        # — not a gap. Scryfall returns "" for those forever, so queueing them meant
+        # enrich.py could never report "Nothing to enrich" and re-fetched the same six
+        # cards on every run, leaving its own success signal permanently unreachable
+        # (broad-scan F-11). Type is never legitimately blank for a real card, so it is
+        # the reliable "has this row been enriched at all?" tell. --force still refetches.
+        if (not force and "Card Text" in cols
+                and (r.get("Type") or "").strip() and (r.get("Color(s)") or "").strip()):
+            cols.remove("Card Text")
         # Collector # is filled separately (only when the printing's set matches),
         # so also queue a row whose Collector # is blank but that carries a Set
         # Code to resolve against — otherwise a lone-missing Collector # would

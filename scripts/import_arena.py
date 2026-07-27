@@ -27,7 +27,17 @@ Usage:
     python3 scripts/import_arena.py batch.txt --dry-run # preview only
     python3 scripts/import_arena.py batch.txt --sum     # add quantities
 
-After importing, run:  python3 scripts/enrich.py   then   python3 scripts/validate.py
+After importing, regenerate the derived data — IN THIS ORDER, because a newly
+imported card has no card-mana.csv row and INV-02 requires one:
+
+    python3 scripts/enrich.py            # fill Type / Card Text / Color(s)
+    python3 scripts/build_mana.py --pool # cost + keywords  <- INV-02 needs this
+    python3 scripts/tag_synergies.py --merge
+    python3 scripts/build_pool.py --all
+    python3 scripts/build_gallery.py
+    python3 scripts/check_all.py
+
+or just run `/refresh`, which does exactly that.
 """
 
 import argparse
@@ -143,7 +153,22 @@ def main():
     write_rows(rows, args.library)
     print(f"Imported {len(entries)} card line(s): {added} added, {updated} updated. "
           f"Library now has {len(rows)} row(s). Wrote {args.library}.")
-    print("Next: python3 scripts/enrich.py   then   python3 scripts/validate.py")
+    # A NEW card has no card-mana.csv row, so INV-02 is broken until build_mana.py
+    # runs. This line used to say "enrich.py then validate.py", which leaves the
+    # integrity gate red and gives no hint why (broad-scan F-06) — and CLAUDE.md's
+    # Regression Scenario 1 repeated the same short recipe. Name the step that
+    # actually restores the invariant, and only when this run introduced a card.
+    if added:
+        print("\nNext — new cards need their derived data rebuilt, in this order:\n"
+              "  python3 scripts/enrich.py             # Type / Card Text / Color(s)\n"
+              "  python3 scripts/build_mana.py --pool  # cost + keywords  <- INV-02\n"
+              "  python3 scripts/tag_synergies.py --merge\n"
+              "  python3 scripts/build_pool.py --all\n"
+              "  python3 scripts/build_gallery.py\n"
+              "  python3 scripts/check_all.py\n"
+              "(or just run /refresh — check_all will fail INV-02 until build_mana runs)")
+    else:
+        print("Next: python3 scripts/enrich.py   then   python3 scripts/check_all.py")
     return 0
 
 

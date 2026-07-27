@@ -26,7 +26,7 @@ import os
 import time
 from types import SimpleNamespace
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write
 import deck as deckmod
 import wishlist
 
@@ -1864,8 +1864,11 @@ def main():
     payload = collect()
     data_json = json.dumps(payload, ensure_ascii=False).replace("<", "\\u003c")
     html = TEMPLATE.replace("__DATA__", data_json)
-    with open(args.out, "w", encoding="utf-8") as fh:
-        fh.write(html)
+    # atomic_write, not a plain open() — a crash mid-write would otherwise leave a
+    # truncated dashboard.html that still exists (broad-scan F-10). Matters more here
+    # than for the gallery: the Pages workflow writes this straight into _site/, and a
+    # half-written page would deploy. backup=False — fully derived and regenerable.
+    atomic_write(args.out, lambda fh: fh.write(html), backup=False)
     t = payload["totals"]
     print(f"Wrote {args.out}: {t['decks']} decks ({t['buildable']} buildable), "
           f"{t['printings']} printings.")

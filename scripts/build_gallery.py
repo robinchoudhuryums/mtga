@@ -491,8 +491,12 @@ def main():
     html = (HTML_TEMPLATE
             .replace("__STATS__", render_stats(compute_stats(cards)))
             .replace("__DATA__", data_json))
-    with open(args.out, "w", encoding="utf-8") as fh:
-        fh.write(html)
+    # atomic_write, not a plain open(): a crash mid-write leaves a TRUNCATED
+    # gallery.html that still EXISTS, and INV-03 checks existence for this file — so
+    # a corrupt artifact passes the integrity gate (broad-scan F-10). The cache and
+    # manifest beside it already write this way. backup=False because the file is
+    # fully derived and regenerable; the point here is atomicity, not history.
+    atomic_write(args.out, lambda fh: fh.write(html), backup=False)
     missing = len(cards) - with_img
     print(f"Wrote {args.out}: {len(cards)} cards, {with_img} with images.")
     # A Scryfall outage mid-run leaves cards without art. Say so plainly and exit
