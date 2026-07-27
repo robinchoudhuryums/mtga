@@ -390,7 +390,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .hsub .link { cursor:pointer; color:var(--accent-ink); }
   .kbd { font-family:var(--font-mono); border:1px solid var(--line2); border-radius:5px; padding:1px 6px; font-size:11px; }
   .stalechip { cursor:pointer; font-size:11px; font-weight:600; padding:1px 8px; border-radius:999px;
-    background:rgba(214,150,40,.16); color:#c68b18; border:1px solid rgba(230,177,60,.3); }
+    background:rgba(214,150,40,.16); color:var(--warn); border:1px solid rgba(230,177,60,.3); }
   .hactions { display:flex; gap:11px; flex-wrap:wrap; align-items:stretch; }
   .iconbtn { align-self:stretch; width:42px; border-radius:12px; border:1px solid var(--line); background:var(--fill);
     color:var(--ink2); font-size:15px; cursor:pointer; transition:all .15s; }
@@ -447,6 +447,11 @@ TEMPLATE = r"""<!DOCTYPE html>
   .ctl-left { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
   input.filter { padding:9px 13px; border:1px solid var(--line2); border-radius:9px; background:var(--fill2); color:var(--ink); font-size:13px; font-family:inherit; outline:none; }
   input.filter:focus { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-bg); }
+  /* Keyboard focus must be VISIBLE, or making the controls reachable (I-01) just moves
+     an invisible cursor around. :focus-visible, not :focus, so a mouse click doesn't
+     leave a ring behind. Uses the accent token so it tracks both themes. */
+  :focus-visible { outline:2px solid var(--accent); outline-offset:2px; border-radius:4px; }
+  [role="button"], [role="tab"], [role="option"] { cursor:pointer; }
   #deckfilter { width:250px; max-width:100%; }
   .colchips { display:flex; gap:5px; }
   .colchip { width:26px; height:26px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:12px; font-weight:700; cursor:pointer; user-select:none; transition:all .15s; background:var(--fill); color:var(--ink2); border:1px solid var(--line2); }
@@ -476,9 +481,9 @@ TEMPLATE = r"""<!DOCTYPE html>
   .pin.on { color:var(--accent-ink); }
   .badges { display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; }
   .badge { font-size:11px; font-weight:600; padding:2px 9px; border-radius:999px; white-space:nowrap; }
-  .b-ok { background:rgba(58,204,138,.14); color:#4bbd83; border:1px solid rgba(99,214,154,.28); }
-  .b-missing { background:rgba(236,110,90,.16); color:#dd6a4d; border:1px solid rgba(240,138,114,.3); }
-  .b-short { background:rgba(214,150,40,.16); color:#c68b18; border:1px solid rgba(230,177,60,.3); }
+  .b-ok { background:rgba(58,204,138,.14); color:var(--ok); border:1px solid rgba(99,214,154,.28); }
+  .b-missing { background:rgba(236,110,90,.16); color:var(--bad); border:1px solid rgba(240,138,114,.3); }
+  .b-short { background:rgba(214,150,40,.16); color:var(--warn); border:1px solid rgba(230,177,60,.3); }
   .deck .arch { color:var(--ink2); font-size:12.5px; margin:7px 0 9px; line-height:1.45; min-height:2.6em; }
   .deck .metaline, .modal .metaline { display:flex; gap:9px; align-items:center; flex-wrap:wrap; font-size:11.5px; color:var(--ink2); }
   .vtag { border:1px dashed var(--line2); border-radius:999px; padding:1px 9px; color:var(--ink2b); }
@@ -576,7 +581,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .simbar .sr b { font-family:var(--font-display); color:var(--accent-ink); font-size:16px; }
   .simbar .sr .slash { color:var(--ink3); }
   .simdelta { font-weight:700; font-size:12.5px; }
-  .simdelta.up { color:#4bbd83; } .simdelta.zero { color:var(--ink3); }
+  .simdelta.up { color:var(--ok); } .simdelta.zero { color:var(--ink3); }
   .tierhdr { display:flex; justify-content:space-between; align-items:baseline; margin:18px 0 6px; gap:12px; flex-wrap:wrap; }
   .tierhdr h3 { margin:0; font-size:14px; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:9px; }
   .tierdot { width:8px; height:8px; border-radius:50%; }
@@ -605,11 +610,11 @@ TEMPLATE = r"""<!DOCTYPE html>
   table.at tbody tr.clk:hover td { background:var(--accent-bg); }
   a.goto { color:var(--accent); cursor:pointer; }
   .vpill { font-size:11px; font-weight:700; padding:2px 9px; border-radius:999px; white-space:nowrap; text-transform:uppercase; letter-spacing:.03em; }
-  .v-tune { background:rgba(236,110,90,.16); color:#dd6a4d; } .v-craft { background:rgba(214,150,40,.16); color:#c68b18; }
-  .v-review { background:var(--accent-bg); color:var(--accent-ink); } .v-ok { background:rgba(58,204,138,.14); color:#4bbd83; }
+  .v-tune { background:rgba(236,110,90,.16); color:var(--bad); } .v-craft { background:rgba(214,150,40,.16); color:var(--warn); }
+  .v-review { background:var(--accent-bg); color:var(--accent-ink); } .v-ok { background:rgba(58,204,138,.14); color:var(--ok); }
   .tierpill { font-size:11px; font-weight:800; padding:2px 8px; border-radius:6px; min-width:20px; display:inline-block; text-align:center; }
-  .t-s { background:rgba(143,123,242,.28); color:var(--accent-ink); } .t-a { background:rgba(58,204,138,.2); color:#4bbd83; }
-  .t-b { background:rgba(214,150,40,.2); color:#c68b18; } .t-c { background:rgba(236,110,90,.16); color:#dd6a4d; }
+  .t-s { background:rgba(143,123,242,.28); color:var(--accent-ink); } .t-a { background:rgba(58,204,138,.2); color:var(--ok); }
+  .t-b { background:rgba(214,150,40,.2); color:var(--warn); } .t-c { background:rgba(236,110,90,.16); color:var(--bad); }
   .t-d { background:var(--line2); color:var(--ink2); }
   .cell-flag { color:var(--bad); font-weight:600; } .cell-ok { color:var(--ink3); } .cell-muted { color:var(--ink3); }
   .why { color:var(--ink2); font-size:11.5px; }
@@ -629,7 +634,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .stalecard { border:1px solid var(--line); border-radius:10px; padding:10px 14px; margin:10px 0; background:linear-gradient(180deg,var(--elev),var(--elev2)); }
   .stalecard h4 { margin:0 0 4px; font-size:14px; color:var(--ink-bright); }
   .stalecard .sub2 { font-size:12px; color:var(--ink2); margin-bottom:6px; }
-  .stale-sync { color:#4bbd83; font-weight:600; } .stale-drift { color:#c68b18; font-weight:600; } .stale-nomatch { color:#dd6a4d; font-weight:600; }
+  .stale-sync { color:var(--ok); font-weight:600; } .stale-drift { color:var(--warn); font-weight:600; } .stale-nomatch { color:var(--bad); font-weight:600; }
   /* recently-edited panel */
   .recdelta { display:flex; flex-wrap:wrap; gap:5px; margin:5px 0 8px; }
   .recdelta span { font-size:11.5px; font-weight:600; padding:1px 8px; border-radius:999px; font-family:var(--font-mono); }
@@ -657,7 +662,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fmtgroup:first-child { margin-top:2px; }
   .fmtcount { font-size:11px; font-weight:600; color:var(--ink2); background:var(--fill2); border:1px solid var(--line2); border-radius:999px; padding:1px 8px; letter-spacing:0; text-transform:none; }
   .difflist { font-family:var(--font-mono); font-size:12px; margin:6px 0 0; }
-  .diffadd { color:#4bbd83; } .diffrem { color:#dd6a4d; }
+  .diffadd { color:var(--ok); } .diffrem { color:var(--bad); }
   .staletot { font-size:13px; margin:2px 0 10px; }
 
   /* viz stats/mana (preserved, restyled) */
@@ -918,6 +923,35 @@ const LIVE_URL = 'https://robinchoudhuryums.github.io/mtga/';   // Pages serves 
 const STALE_DAYS = 7;
 const $ = id => document.getElementById(id);
 const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+// Keyboard + assistive access for controls built from <span>/<div>/<th>/<h2> (I-01).
+// 26 of 34 click handlers sat on non-interactive elements with no role, no tabindex and
+// no key handler, so everything below the three text inputs and the header buttons was
+// mouse-only: sort headers, section collapse, every filter chip, the detail tabs, the ⤢
+// modal opener. Wrapping at CONSTRUCTION rather than rewriting each handler keeps the
+// diff small and can't change click behaviour — the key handler just calls node.click(),
+// so whatever onclick is assigned afterwards runs unchanged.
+//
+// Deliberately NOT applied to the modal/palette BACKDROP or the stopPropagation guards:
+// a backdrop is not a control (Escape closes both, and the close ✕ is focusable), and
+// giving it role="button" would announce a control that isn't one.
+function a11y(node, opts){
+  const o = opts || {};
+  node.setAttribute('role', o.role || 'button');
+  node.tabIndex = 0;
+  if (o.label) node.setAttribute('aria-label', o.label);
+  if (o.pressed != null) node.setAttribute('aria-pressed', String(!!o.pressed));
+  if (o.expanded != null) node.setAttribute('aria-expanded', String(!!o.expanded));
+  if (o.selected != null) node.setAttribute('aria-selected', String(!!o.selected));
+  node.addEventListener('keydown', e => {
+    // Space scrolls the page by default, so both keys need preventDefault. Enter and
+    // Space are what a real <button> responds to.
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){
+      e.preventDefault();
+      node.click();
+    }
+  });
+  return node;
+}
 const preOf = txt => { const p = el('pre','code'); p.textContent = txt; return p; };
 const scryUrl = name => 'https://scryfall.com/search?q=' + encodeURIComponent('!"' + (name||'').split('//')[0].trim() + '"');
 
@@ -1103,7 +1137,9 @@ function sortableTable(cls, cols, rows, sortState, onRowExtra, opts){
   const tbl = el('table', cls);
   const thead = el('thead'), htr = el('tr');
   cols.forEach(c => {
-    const th = el('th', (c.num?'num':'') + (sortState.key===c.key?' on':''), '');
+    const th = a11y(el('th', (c.num?'num':'') + (sortState.key===c.key?' on':''), ''),
+                    {label:'Sort by ' + c.label});
+    if (sortState.key===c.key) th.setAttribute('aria-sort', sortState.dir>0?'ascending':'descending');
     th.textContent = c.label + (sortState.key===c.key ? (sortState.dir>0?' ▲':' ▼') : '');
     th.onclick = () => { if (sortState.key===c.key) sortState.dir = -sortState.dir; else { sortState.key = c.key; sortState.dir = c.num?-1:1; } redraw(); };
     htr.appendChild(th);
@@ -1124,7 +1160,7 @@ function sortableTable(cls, cols, rows, sortState, onRowExtra, opts){
     });
     // progressive-disclosure toggle row (only when the list is longer than the cap)
     if (opts.limit && rs.length > opts.limit){
-      const tr = el('tr','morerow'); const td = el('td'); td.colSpan = cols.length;
+      const tr = el('tr','morerow'); const td = a11y(el('td')); td.colSpan = cols.length;
       td.textContent = opts._exp ? ('▴ show top ' + opts.limit) : ('▾ show all ' + rs.length + '  (+' + (rs.length - opts.limit) + ')');
       td.onclick = () => { opts._exp = !opts._exp; redraw(); };
       tr.appendChild(td); tb.appendChild(tr);
@@ -1226,7 +1262,8 @@ function deckCard(d, variants){
   card.id = 'deck-' + d.id;
   const top = el('div','dtop');
   const h = el('h3');
-  const pin = el('span','pin' + (STATE.pinned[d.id]?' on':''), STATE.pinned[d.id]?'★':'☆'); pin.title = 'Pin to top';
+  const pin = a11y(el('span','pin' + (STATE.pinned[d.id]?' on':''), STATE.pinned[d.id]?'★':'☆'),
+                   {label:'Pin ' + d.name + ' to top', pressed:!!STATE.pinned[d.id]}); pin.title = 'Pin to top';
   pin.onclick = () => { STATE.pinned[d.id] = !STATE.pinned[d.id]; persist(); renderDecks(); };
   h.appendChild(pin); h.appendChild(document.createTextNode(d.name + ' ')); const ids = el('span','id','#' + d.id); h.appendChild(ids);
   top.appendChild(h); top.appendChild(deckBadges(d)); card.appendChild(top);
@@ -1255,19 +1292,20 @@ function deckCard(d, variants){
   const drow = el('div','drow');
   const copy = el('button','cta','⧉ Copy Arena import'); copy.onclick = () => writeClip((d.detail&&d.detail.arena)||'', () => toast('#' + d.id + ' ' + d.name + ' import copied'));
   drow.appendChild(copy);
-  const exp = el('span','expand', STATE.open[d.id] ? '▾ analysis' : '▸ analysis');
+  const exp = a11y(el('span','expand', STATE.open[d.id] ? '▾ analysis' : '▸ analysis'),
+                   {label:'Analysis for ' + d.name, expanded:!!STATE.open[d.id]});
   exp.onclick = () => { STATE.open[d.id] = !STATE.open[d.id]; persist(); renderDecks(); };
   drow.appendChild(exp);
   drow.appendChild(el('span','grow'));
-  const mod = el('span','iconlink','⤢'); mod.title = 'Open detail'; mod.onclick = () => openModal(d.id); drow.appendChild(mod);
-  const prn = el('span','iconlink','🖨'); prn.title = 'Print craft plan'; prn.onclick = () => printDeck(d); drow.appendChild(prn);
+  const mod = a11y(el('span','iconlink','⤢'), {label:'Open detail for ' + d.name}); mod.title = 'Open detail'; mod.onclick = () => openModal(d.id); drow.appendChild(mod);
+  const prn = a11y(el('span','iconlink','🖨'), {label:'Print craft plan for ' + d.name}); prn.title = 'Print craft plan'; prn.onclick = () => printDeck(d); drow.appendChild(prn);
   card.appendChild(drow);
   // detail
   if (STATE.open[d.id]){
     const det = el('div','detail'); const tabs = el('div','tabs');
     const curTab = (STATE._tab && STATE._tab[d.id]) || 'craft';
     const body = el('div');
-    TABS.forEach(([k,label]) => { const tb = el('span','tab' + (k===curTab?' on':''), label); tb.onclick = () => { STATE._tab = STATE._tab||{}; STATE._tab[d.id] = k; body.innerHTML=''; body.appendChild(detailBody(d,k)); [...tabs.children].forEach(x => x.classList.remove('on')); tb.classList.add('on'); }; tabs.appendChild(tb); });
+    TABS.forEach(([k,label]) => { const tb = a11y(el('span','tab' + (k===curTab?' on':''), label), {role:'tab', selected:k===curTab}); tb.onclick = () => { STATE._tab = STATE._tab||{}; STATE._tab[d.id] = k; body.innerHTML=''; body.appendChild(detailBody(d,k)); [...tabs.children].forEach(x => x.classList.remove('on')); tb.classList.add('on'); }; tabs.appendChild(tb); });
     det.appendChild(tabs); body.appendChild(detailBody(d, curTab)); det.appendChild(body); card.appendChild(det);
   }
   // Nested variants — a labelled, always-visible strip; each row opens the full variant.
@@ -1283,6 +1321,7 @@ function deckCard(d, variants){
       row.appendChild(deckBadges(v));
       row.appendChild(el('span','vopen','⤢'));
       row.title = 'Open ' + v.name + ' (#' + v.id + ')';
+      a11y(row, {label:'Open ' + v.name + ' (#' + v.id + ')'});
       row.onclick = () => openModal(v.id);
       vs.appendChild(row);
     });
@@ -1332,7 +1371,7 @@ function renderDecks(){
     const bn = el('div','impactbanner');
     bn.innerHTML = 'Crafting <strong class="c">' + esc(STATE.impactCard) + '</strong> advances <strong>' + n + '</strong> deck' + (n===1?'':'s') + ' — highlighted below.';
     bn.appendChild(el('span','grow'));
-    const x = el('span','x','clear ✕'); x.onclick = () => { STATE.impactCard = ''; renderDecks(); }; bn.appendChild(x);
+    const x = a11y(el('span','x','clear ✕'), {label:'Clear card filter'}); x.onclick = () => { STATE.impactCard = ''; renderDecks(); }; bn.appendChild(x);
     ib.appendChild(bn);
   }
   $('copyall').textContent = '⧉ Copy all imports (' + list.length + ')';
@@ -1366,15 +1405,15 @@ $('deckfilter').addEventListener('input', e => { STATE.deckFilter = e.target.val
 (function(){
   const wrap = $('colchips');
   ['W','U','B','R','G'].forEach(c => {
-    const chip = el('span','colchip', c); chip.title = c;
-    const paint = () => { const on = !!STATE.activeColors[c]; chip.style.background = on?COLBG[c]:'var(--fill)'; chip.style.color = on?COLFG[c]:'var(--ink2)'; chip.style.borderColor = on?COLBG[c]:'var(--line2)'; chip.style.boxShadow = on?('0 0 12px -2px '+COLBG[c]):'none'; };
+    const chip = a11y(el('span','colchip', c), {label:'Filter by ' + c, pressed:!!STATE.activeColors[c]}); chip.title = c;
+    const paint = () => { const on = !!STATE.activeColors[c]; chip.style.background = on?COLBG[c]:'var(--fill)'; chip.style.color = on?COLFG[c]:'var(--ink2)'; chip.style.borderColor = on?COLBG[c]:'var(--line2)'; chip.style.boxShadow = on?('0 0 12px -2px '+COLBG[c]):'none'; chip.setAttribute('aria-pressed', String(on)); };
     chip.onclick = () => { STATE.activeColors[c] = !STATE.activeColors[c]; persist(); paint(); renderDecks(); };
     paint(); wrap.appendChild(chip);
   });
 })();
 (function(){
   const wrap = $('quickpills');
-  QUICK.forEach(([k,label]) => { const p = el('span','pill' + (STATE.quickFilter===k?' on':''), label); p.onclick = () => { STATE.quickFilter = k; persist(); [...wrap.children].forEach(x => x.classList.remove('on')); p.classList.add('on'); renderDecks(); }; wrap.appendChild(p); });
+  QUICK.forEach(([k,label]) => { const p = a11y(el('span','pill' + (STATE.quickFilter===k?' on':''), label), {pressed:STATE.quickFilter===k}); p.onclick = () => { STATE.quickFilter = k; persist(); [...wrap.children].forEach(x => x.classList.remove('on')); p.classList.add('on'); renderDecks(); }; wrap.appendChild(p); });
 })();
 $('viewGrid').classList.toggle('on', STATE.viewMode==='grid');
 $('viewCompact').classList.toggle('on', STATE.viewMode==='compact');
@@ -1405,7 +1444,7 @@ function renderRecent(){
   const win = STATE.recentWin || 'last';
   const seg = el('div','winseg');
   [['last','last edit'],['7','net · 7d'],['30','net · 30d']].forEach(([k,label]) => {
-    const s = el('span', k===win?'on':null, label);
+    const s = a11y(el('span', k===win?'on':null, label), {pressed:k===win});
     s.onclick = () => { STATE.recentWin = k; renderRecent(); };
     seg.appendChild(s);
   });
@@ -1498,6 +1537,7 @@ renderRecent(); renderRotation();
       body.appendChild(nmrow);
       body.appendChild(el('div','ds', lv.decks.join(', ')));
       card.appendChild(body);
+      a11y(card, {label:'Show decks that ' + lv.name + ' advances', pressed:STATE.impactCard===lv.name});
       card.onclick = e => { if (e.target.tagName === 'A') return; STATE.impactCard = STATE.impactCard===lv.name ? '' : lv.name; renderDecks(); [...g.children].forEach(x => x.classList.remove('on')); if (STATE.impactCard) card.classList.add('on'); const s = $('sec-decks'); if (s) window.scrollTo({top:s.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); };
       g.appendChild(card);
     });
@@ -1539,7 +1579,7 @@ function renderWishlist(){
     hdr.innerHTML = '<h3><span class="tierdot" style="background:' + TIERDOT[tier] + ';box-shadow:0 0 8px ' + TIERDOT[tier] + '"></span>' + WL_LABELS[tier] + '</h3><span class="roll">' + rows.length + ' cards · ' + esc(rollStr(roll)) + '</span>';
     host.appendChild(hdr);
     const cols = [
-      {key:'name', label:'Card', node:r => { const s = el('span'); const nm = el('span','wlname', r.name); nm.onclick = () => { STATE.impactCard = STATE.impactCard===r.name ? '' : r.name; renderDecks(); const sec = $('sec-decks'); if (sec) window.scrollTo({top:sec.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); }; attachHover(nm, r.name); s.appendChild(nm); s.appendChild(document.createTextNode(' ')); const a = el('a','scry','↗'); a.href = scryUrl(r.name); a.target='_blank'; a.rel='noopener'; s.appendChild(a); if (r.rot){ s.appendChild(document.createTextNode(' ')); const w = el('span','rotwl','⚠rot~'+r.rot_year); w.title = 'Set rotates ~'+r.rot_year+' — a wildcard here won\'t last long'; s.appendChild(w); } return s; }},
+      {key:'name', label:'Card', node:r => { const s = el('span'); const nm = a11y(el('span','wlname', r.name), {label:'Show decks ' + r.name + ' advances'}); nm.onclick = () => { STATE.impactCard = STATE.impactCard===r.name ? '' : r.name; renderDecks(); const sec = $('sec-decks'); if (sec) window.scrollTo({top:sec.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); }; attachHover(nm, r.name); s.appendChild(nm); s.appendChild(document.createTextNode(' ')); const a = el('a','scry','↗'); a.href = scryUrl(r.name); a.target='_blank'; a.rel='noopener'; s.appendChild(a); if (r.rot){ s.appendChild(document.createTextNode(' ')); const w = el('span','rotwl','⚠rot~'+r.rot_year); w.title = 'Set rotates ~'+r.rot_year+' — a wildcard here won\'t last long'; s.appendChild(w); } return s; }},
       {key:'_rank', label:'WC', num:true, node:r => wcPill(r.rarity)},
       {key:'target', label:'Target', cls:'tg', get:r => r.target},
       {key:'reuse', label:'reuse', num:true, cls:'re', get:r => r.reuse},
@@ -1558,9 +1598,10 @@ $('wlfilter').addEventListener('input', e => { STATE.wlFilter = e.target.value; 
 (function(){
   const host = $('wlrar'); if (!host) return;
   ['Mythic','Rare','Uncommon','Common'].forEach(rar => {
-    const c = el('span','rchip' + (STATE.wlRarity[rar] ? ' on' : ''), WC[rar]);
+    const c = a11y(el('span','rchip' + (STATE.wlRarity[rar] ? ' on' : ''), WC[rar]),
+                   {label:rar + ' only', pressed:!!STATE.wlRarity[rar]});
     c.title = 'Show ' + rar + ' only (toggle; combine several)';
-    c.onclick = () => { STATE.wlRarity[rar] = !STATE.wlRarity[rar]; c.classList.toggle('on', !!STATE.wlRarity[rar]); persist(); renderWishlist(); };
+    c.onclick = () => { STATE.wlRarity[rar] = !STATE.wlRarity[rar]; c.classList.toggle('on', !!STATE.wlRarity[rar]); c.setAttribute('aria-pressed', String(!!STATE.wlRarity[rar])); persist(); renderWishlist(); };
     host.appendChild(c);
   });
 })();
@@ -1575,7 +1616,7 @@ function renderSim(){
   de.textContent = delta > 0 ? '▲ +' + delta : (delta === 0 ? '±0' : '' + delta);
   de.className = 'simdelta ' + (delta > 0 ? 'up' : 'zero');
 }
-(function(){ const wrap = $('simchips'); SIM.forEach(([k,label]) => { const c = el('span','simchip' + (STATE.simMode===k?' on':''), label); c.onclick = () => { STATE.simMode = k; [...wrap.children].forEach(x => x.classList.remove('on')); c.classList.add('on'); renderSim(); }; wrap.appendChild(c); }); })();
+(function(){ const wrap = $('simchips'); SIM.forEach(([k,label]) => { const c = a11y(el('span','simchip' + (STATE.simMode===k?' on':''), label), {pressed:STATE.simMode===k}); c.onclick = () => { STATE.simMode = k; [...wrap.children].forEach(x => x.classList.remove('on')); c.classList.add('on'); renderSim(); }; wrap.appendChild(c); }); })();
 renderWishlist(); renderSim();
 
 // ---------- roster triage (preserved) ----------
@@ -1668,8 +1709,54 @@ renderWishlist(); renderSim();
 
 // ---------- modal ----------
 function modalDeckObj(id){ return D.decks.find(d => d.id === id); }
-function openModal(id){ STATE.modalDeck = id; renderOverlays(); }
-function closeModal(){ STATE.modalDeck = ''; renderOverlays(); }
+// ---------- overlay focus management (I-04) ----------
+// Escape and the backdrop already closed both overlays, but focus was never moved in,
+// never trapped, and never restored — so a keyboard user who opened the modal was left
+// tabbing through the page BEHIND it, and on close landed back at the top of the
+// document. Now that the ⤢ opener is itself reachable (I-01), that gap is on the path.
+let _focusReturn = null;
+function _focusables(root){
+  return [...root.querySelectorAll(
+    'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"]), [role="button"], [role="tab"], [role="option"]')]
+    .filter(n => !n.disabled && n.offsetParent !== null);
+}
+function _trapFocus(e){
+  // Only while an overlay is up. Tab cycles within it; everything else is untouched.
+  if (e.key !== 'Tab') return;
+  const root = document.querySelector('.modal, .palette');
+  if (!root) return;
+  const items = _focusables(root);
+  if (!items.length) return;
+  const first = items[0], last = items[items.length - 1];
+  // If focus escaped the overlay entirely (it starts on <body> after a re-render),
+  // pull it back rather than letting Tab walk the page behind the backdrop.
+  if (!root.contains(document.activeElement)){ e.preventDefault(); first.focus(); return; }
+  if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+}
+window.addEventListener('keydown', _trapFocus, true);   // capture: run before the app's own keymap
+
+function openModal(id){
+  // Remember where focus came from BEFORE the overlay renders, so closing can put it
+  // back on the ⤢ (or table row) the user opened it from.
+  if (!STATE.modalDeck) _focusReturn = document.activeElement;
+  STATE.modalDeck = id;
+  renderOverlays();
+  const m = document.querySelector('.modal');
+  if (m){
+    m.setAttribute('role', 'dialog');
+    m.setAttribute('aria-modal', 'true');
+    const items = _focusables(m);
+    if (items.length) items[0].focus();
+  }
+}
+function closeModal(){
+  STATE.modalDeck = '';
+  renderOverlays();
+  // Restore only if the element is still in the document — a re-render can replace it.
+  if (_focusReturn && document.contains(_focusReturn)) _focusReturn.focus();
+  _focusReturn = null;
+}
 function printDeck(d){
   const escp = t => (t||'').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
   const rows = (d.craft||[]).map(c => '<tr><td>' + escp(c.name) + '</td><td>' + c.rarity + '</td><td>' + (c.decks||0) + '</td><td>' + escp((c.matches||[]).join(', ')) + '</td></tr>').join('');
@@ -1698,11 +1785,11 @@ function modalEl(d){
   meta.appendChild(pipsRow(d.colors)); meta.appendChild(el('span',null,d.total + ' cards'));
   const bg = deckBadges(d); [...bg.children].forEach(c => meta.appendChild(c));
   left.appendChild(meta); head.appendChild(left);
-  const x = el('span','mx','✕'); x.onclick = closeModal; head.appendChild(x); m.appendChild(head);
+  const x = a11y(el('span','mx','✕'), {label:'Close'}); x.onclick = closeModal; head.appendChild(x); m.appendChild(head);
   const body = el('div','mbody');
   const tabs = el('div','tabs'); const cur = {k:(STATE._mtab||'craft')}; const bodyIn = el('div');
   const bar = el('div'); bar.style.display='flex'; bar.style.gap='6px'; bar.style.flexWrap='wrap'; bar.style.alignItems='center'; bar.style.marginBottom='12px';
-  TABS.forEach(([k,label]) => { const tb = el('span','tab' + (k===cur.k?' on':''), label); tb.onclick = () => { STATE._mtab = k; cur.k = k; bodyIn.innerHTML=''; bodyIn.appendChild(detailBody(d,k)); [...tabs.children].forEach(z => z.classList.remove('on')); tb.classList.add('on'); }; tabs.appendChild(tb); });
+  TABS.forEach(([k,label]) => { const tb = a11y(el('span','tab' + (k===cur.k?' on':''), label), {role:'tab', selected:k===cur.k}); tb.onclick = () => { STATE._mtab = k; cur.k = k; bodyIn.innerHTML=''; bodyIn.appendChild(detailBody(d,k)); [...tabs.children].forEach(z => z.classList.remove('on')); tb.classList.add('on'); }; tabs.appendChild(tb); });
   bar.appendChild(tabs); bar.appendChild(el('span','grow'));
   const imp = el('button','miniimport','⧉ Import'); imp.onclick = () => writeClip((d.detail&&d.detail.arena)||'', () => toast('#'+d.id+' import copied')); bar.appendChild(imp);
   const prn = el('button','ghostbtn','🖨 Print'); prn.onclick = () => printDeck(d); bar.appendChild(prn);
@@ -1725,8 +1812,8 @@ function paletteItems(){
   if (q) items = items.filter(it => (it.title + ' ' + it.sub).toLowerCase().includes(q));
   return items;
 }
-function openPalette(){ STATE.paletteOpen = true; STATE.paletteQuery = ''; STATE.paletteIndex = 0; renderOverlays(); setTimeout(() => { const i = document.querySelector('.palette input'); if (i) i.focus(); }, 20); }
-function closePalette(){ STATE.paletteOpen = false; renderOverlays(); }
+function openPalette(){ if (!STATE.paletteOpen) _focusReturn = document.activeElement; STATE.paletteOpen = true; STATE.paletteQuery = ''; STATE.paletteIndex = 0; renderOverlays(); const p = document.querySelector('.palette'); if (p){ p.setAttribute('role','dialog'); p.setAttribute('aria-modal','true'); } setTimeout(() => { const i = document.querySelector('.palette input'); if (i) i.focus(); }, 20); }
+function closePalette(){ STATE.paletteOpen = false; renderOverlays(); if (_focusReturn && document.contains(_focusReturn)) _focusReturn.focus(); _focusReturn = null; }
 function paletteEl(){
   const ov = el('div','overlay'); ov.style.alignItems = 'flex-start'; ov.style.padding = '12vh 16px 16px'; ov.onclick = closePalette;
   const p = el('div','palette'); p.onclick = e => e.stopPropagation();
@@ -1738,7 +1825,7 @@ function paletteEl(){
   function drawItems(){
     const items = paletteItems(); body.innerHTML = '';
     if (!items.length){ body.appendChild(el('div',null,'No matches')).style.cssText = 'padding:18px;text-align:center;color:var(--ink2);font-size:13px'; return; }
-    items.forEach((it,i) => { const row = el('div','pitem' + (i===STATE.paletteIndex?' sel':'')); row.innerHTML = '<div style="display:flex;flex-direction:column;gap:1px"><span class="pt">' + esc(it.title) + '</span><span class="ps">' + esc(it.sub) + '</span></div><span class="tag">' + it.tag + '</span>'; row.onmouseenter = () => { STATE.paletteIndex = i; [...body.children].forEach(z => z.classList.remove('sel')); row.classList.add('sel'); }; row.onclick = () => { closePalette(); it.act(); }; body.appendChild(row); });
+    items.forEach((it,i) => { const row = a11y(el('div','pitem' + (i===STATE.paletteIndex?' sel':'')), {role:'option', selected:i===STATE.paletteIndex}); row.innerHTML = '<div style="display:flex;flex-direction:column;gap:1px"><span class="pt">' + esc(it.title) + '</span><span class="ps">' + esc(it.sub) + '</span></div><span class="tag">' + it.tag + '</span>'; row.onmouseenter = () => { STATE.paletteIndex = i; [...body.children].forEach(z => z.classList.remove('sel')); row.classList.add('sel'); }; row.onclick = () => { closePalette(); it.act(); }; body.appendChild(row); });
   }
   drawItems(); p._draw = drawItems;
   const foot = el('div','foot'); foot.innerHTML = '<span>↑↓ navigate</span><span>⏎ open</span><span>esc close</span>'; p.appendChild(foot);
@@ -1791,7 +1878,7 @@ function syncLive(silent){
   }).catch(e => { console.warn('live sync failed', e); syncing = false; if (!silent) toast('Live sync failed — showing last snapshot'); });
 }
 // Auto background-sync only when the snapshot is stale (>7 days).
-(function(){ const ts = Date.parse((D.generated||'').replace(' ','T')); if (!isNaN(ts) && (Date.now() - ts) > STALE_DAYS*864e5){ const chip = document.createElement('span'); chip.className = 'stalechip'; chip.textContent = 'stale · sync ⟳'; chip.title = 'Snapshot is over a week old — click to sync'; chip.onclick = () => syncLive(false); $('hsub').appendChild(document.createTextNode(' · ')); $('hsub').appendChild(chip); } })();
+(function(){ const ts = Date.parse((D.generated||'').replace(' ','T')); if (!isNaN(ts) && (Date.now() - ts) > STALE_DAYS*864e5){ const chip = a11y(document.createElement('span'), {label:'Sync from GitHub Pages'}); chip.className = 'stalechip'; chip.textContent = 'stale · sync ⟳'; chip.title = 'Snapshot is over a week old — click to sync'; chip.onclick = () => syncLive(false); $('hsub').appendChild(document.createTextNode(' · ')); $('hsub').appendChild(chip); } })();
 
 $('foot').innerHTML = 'Live snapshot from committed data — hit ⟳ to re-sync from GitHub Pages, or regenerate with <code>python3 scripts/build_dashboard.py</code>. Card previews &amp; links via Scryfall. The judgment calls (craft X or Y, tuning) still live in the chat — this shows state, not decisions.';
 
@@ -1816,7 +1903,7 @@ function applyCollapsed(id, collapsed){
   SECTIONS.forEach(([id,label,def]) => {
     const sec = $(id); if (!sec || sec.style.display === 'none') return;  // skip hidden (e.g. empty wishlist)
     if (nav){
-      const chip = el('span','navchip', label); chip.dataset.nav = id;
+      const chip = a11y(el('span','navchip', label), {label:'Jump to ' + label}); chip.dataset.nav = id;
       chip.onclick = () => { if (sec.classList.contains('collapsed')){ STATE.secCollapsed[id] = false; applyCollapsed(id, false); persist(); } window.scrollTo({top:sec.getBoundingClientRect().top + window.scrollY - 70, behavior:'smooth'}); };
       nav.appendChild(chip);
     }
@@ -1826,7 +1913,10 @@ function applyCollapsed(id, collapsed){
     const collapsed = secIsCollapsed(id, def);
     STATE.secCollapsed[id] = collapsed;
     applyCollapsed(id, collapsed);
-    h.onclick = () => { const c = !sec.classList.contains('collapsed'); STATE.secCollapsed[id] = c; applyCollapsed(id, c); persist(); };
+    // The section headers are the page's primary navigation — every section collapses
+    // through them — and they were <h2> with a bare onclick (I-01).
+    a11y(h, {label:label + ' section', expanded:!collapsed});
+    h.onclick = () => { const c = !sec.classList.contains('collapsed'); STATE.secCollapsed[id] = c; applyCollapsed(id, c); h.setAttribute('aria-expanded', String(!c)); persist(); };
   });
   // scroll-spy: highlight the nav chip of the last section scrolled past
   const ids = SECTIONS.map(s => s[0]).filter(id => { const e = $(id); return e && e.style.display !== 'none'; });

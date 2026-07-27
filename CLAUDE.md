@@ -1502,6 +1502,47 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 3. Refresh derived data — `build_mana.py` → `tag_synergies.py --merge` → `build_pool.py` → `build_gallery.py` → `check_all.py`. Expect: check_all reports all invariants hold.
 4. Edit via the app — start `scripts/app.py`, change a quantity and Save, add a card, then open a deck (Decks →), change a card's quantity and Save; run `check_all.py`. Expect: CSV + deck file updated, `.bak`s written, and all invariants hold (INV-02 since add appends a card-mana.csv row; INV-04 since deck save re-parses cleanly).
 
+The next four need **a person at a browser** — they are the PERCEPTUAL and interaction
+checks a code read structurally cannot make, which is exactly why they are written down
+rather than assumed. `/broad-scan` Stage 3 emits new ones in this format.
+
+5. Light-mode status colors | Subsystem: Presentation & Interface
+   Steps:
+     - Open `dashboard.html`, press `t` (or click the theme toggle) for light mode
+     - Look at the roster-triage Action pills (TUNE / craft / review / ok)
+     - Look at a deck card's build badge (buildable / N missing / N short)
+     - Expand "Recently edited" — the +added / −removed delta lines
+     - Paste any deck into the stale-deck panel — the in-sync / drifted text
+   Expected: green/amber/red read clearly against the LIGHT panel background and are
+   distinguishable from each other and from body text. All 16 of these sites were
+   hardcoded to the DARK-mode hexes until I-03; a washed-out or muddy pill means one
+   regressed back off `var(--ok)` / `var(--warn)` / `var(--bad)`.
+6. Dashboard at phone width | Subsystem: Presentation & Interface
+   Steps:
+     - Open `dashboard.html` at 390×844 (or a real phone); scroll top to bottom
+     - Open the roster-triage table and the wishlist table
+     - Open a deck modal from the section-nav and switch tabs
+   Expected: the page body NEVER scrolls sideways; the wide tables scroll inside their
+   own boxes; the section-nav strip scrolls horizontally; every grid is one column.
+7. Keyboard-only traversal | Subsystem: Presentation & Interface
+   Steps:
+     - In `dashboard.html`, using Tab / Shift-Tab only, reach in order: a color filter
+       chip, a quick-filter pill, a roster-table sort header, a section header (collapse
+       it with Enter or Space), and a deck's ⤢ detail opener
+     - Open the modal, Tab through it, press Escape
+   Expected: every one is reachable with a VISIBLE focus ring; Enter and Space both
+   activate; Tab inside the modal cycles within it and never reaches the page behind;
+   Escape closes it and returns focus to the ⤢ that opened it. This is the acceptance
+   test for I-01/I-04 — before those, nothing in that list was reachable at all.
+8. Editor failure feedback | Subsystem: Presentation & Interface
+   Steps:
+     - `make app`, open the editor, then STOP the server (Ctrl-C)
+     - In the still-open page: edit a quantity and Save; click a card's ✕ and confirm;
+       click Revert and confirm
+   Expected: all three show a toast naming the failure. Remove and Revert used to do
+   nothing at all — the rejected fetch died as an unhandled rejection right after a
+   destructive confirm (F-02). This is that fix's acceptance test.
+
 **Frozen Subsystems:** none.
 
 **Deploy Command:** Data + local tooling ship by commit/push (no build/release step). The

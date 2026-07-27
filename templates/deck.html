@@ -160,9 +160,9 @@
     META.forEach((p, i) => {
       const row = document.createElement('div');
       row.className = 'mrow';
-      row.innerHTML = `<input class="mkey" value="${esc(p.key)}" placeholder="field">` +
-        `<input class="mval" value="${esc(p.value)}" placeholder="value">` +
-        `<button class="rm" title="Remove field">✕</button>`;
+      row.innerHTML = `<input class="mkey" aria-label="Metadata field name" value="${esc(p.key)}" placeholder="field">` +
+        `<input class="mval" aria-label="Value for the ${esc(p.key) || 'new'} field" value="${esc(p.value)}" placeholder="value">` +
+        `<button class="rm" title="Remove field" aria-label="Remove the ${esc(p.key) || 'blank'} field">✕</button>`;
       const k = row.querySelector('.mkey'), v = row.querySelector('.mval');
       k.addEventListener('input', () => { p.key = k.value; refresh(); });
       v.addEventListener('input', () => { p.value = v.value; refresh(); });
@@ -183,11 +183,11 @@
       }
       row.className = 'row card';
       row.innerHTML =
-        `<input class="qty" type="number" min="1" value="${esc(t.qty)}">` +
-        `<input class="name" value="${esc(t.name)}" placeholder="Card name">` +
-        `<input class="set" value="${esc(t.set)}" placeholder="Set">` +
-        `<input class="cn" value="${esc(t.cn)}" placeholder="#">` +
-        `<span class="stat"></span><button class="rm" title="Remove line">✕</button>`;
+        `<input class="qty" type="number" min="1" aria-label="Quantity of ${esc(t.name) || 'this card'}" value="${esc(t.qty)}">` +
+        `<input class="name" aria-label="Card name" value="${esc(t.name)}" placeholder="Card name">` +
+        `<input class="set" aria-label="Set code for ${esc(t.name) || 'this card'}" value="${esc(t.set)}" placeholder="Set">` +
+        `<input class="cn" aria-label="Collector number for ${esc(t.name) || 'this card'}" value="${esc(t.cn)}" placeholder="#">` +
+        `<span class="stat"></span><button class="rm" title="Remove line" aria-label="Remove ${esc(t.name) || 'this line'}">✕</button>`;
       rowsEl.appendChild(row);
       const q=row.querySelector('.qty'), nm=row.querySelector('.name');
       const st=row.querySelector('.set'), cn=row.querySelector('.cn'), stat=row.querySelector('.stat');
