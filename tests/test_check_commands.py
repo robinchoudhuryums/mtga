@@ -1,0 +1,120 @@
+"""Unit tests for the workflow-coverage gate.
+
+The gate exists because correctness gates are blind to a capability that WORKS and is
+never REACHED. CLAUDE.md records the real instance: `/tune-deck` sat on the command set
+it shipped with while `consistency`, `engines`, `shape`, `cuts`, `flex` and the
+needs-aware `suggest --needs/--interaction/--ramp/--lands` were built around it. Every
+one of those was correct, gated and documented — and unused, because the workflow never
+learned they existed.
+
+These tests pin both halves: that an unreachable command is reported, and that the
+exemption registry can't rot into a list of decisions about things that are gone."""
+import check_commands as cc
+
+
+class TestSubcommandDiscovery:
+    def test_reads_subcommands_from_the_source(self):
+        """Static, so check_all stays in-process — no subprocess per gate. The CLI
+        surface itself is covered by tests/test_cli.py."""
+        subs = cc.deck_subcommands()
+        assert len(subs) > 25
+        for expected in ("audit", "stats", "cuts", "tier", "rotation", "sync"):
+            assert expected in subs
+
+    def test_runnable_scripts_excludes_libraries(self):
+        scripts = cc.runnable_scripts()
+        assert "deck.py" in scripts and "check_all.py" in scripts
+        # lib.py and scryfall.py are imported, never run.
+        assert "lib.py" not in scripts and "scryfall.py" not in scripts
+
+
+class TestTheRealGatePasses:
+    def test_the_repo_is_currently_covered(self):
+        assert cc.check() == []
+
+    def test_every_exemption_carries_a_reason(self):
+        for key, reason in cc.INTERACTIVE_ONLY.items():
+            assert str(reason).strip(), key
+
+    def test_every_exemption_names_something_real(self):
+        """A stale exemption is worse than none: it reads as a considered decision while
+        covering nothing, and pre-grants a pass to any future command reusing the name."""
+        subs = set(cc.deck_subcommands())
+        import os
+        for kind, name in cc.INTERACTIVE_ONLY:
+            if kind == "deck.py":
+                assert name in subs, name
+            else:
+                assert os.path.exists(os.path.join(cc.SCRIPTS_DIR, name)), name
+
+
+class TestGateFires:
+    """A gate that cannot fire is not a gate — this project's most-repeated lesson."""
+
+    def test_a_stale_subcommand_exemption_is_reported(self, monkeypatch):
+        reg = dict(cc.INTERACTIVE_ONLY)
+        reg[("deck.py", "no_such_command")] = "a reason"
+        monkeypatch.setattr(cc, "INTERACTIVE_ONLY", reg)
+        assert any("no_such_command" in e for e in cc.check())
+
+    def test_a_stale_script_exemption_is_reported(self, monkeypatch):
+        reg = dict(cc.INTERACTIVE_ONLY)
+        reg[("script", "gone.py")] = "a reason"
+        monkeypatch.setattr(cc, "INTERACTIVE_ONLY", reg)
+        assert any("gone.py" in e for e in cc.check())
+
+    def test_an_unexplained_exemption_is_reported(self, monkeypatch):
+        reg = dict(cc.INTERACTIVE_ONLY)
+        reg[("deck.py", "list")] = "   "
+        monkeypatch.setattr(cc, "INTERACTIVE_ONLY", reg)
+        assert any("no reason" in e for e in cc.check())
+
+    def test_an_unreachable_subcommand_is_reported(self, monkeypatch):
+        """The headline case: a command exists, works, and no workflow drives it."""
+        monkeypatch.setattr(cc, "deck_subcommands", lambda *a, **k: ["orphan_cmd"])
+        assert any("orphan_cmd" in e for e in cc.check())
+
+    def test_a_prose_mention_does_not_count_as_coverage(self, monkeypatch):
+        """The first draft matched the string "deck.py <name>" anywhere in scripts/, so a
+        docstring cross-reference counted as coverage — and every docstring in this repo
+        cross-references commands. Five genuinely unreachable commands passed. Coverage
+        now requires a real `cmd_*` call or a skill invocation."""
+        monkeypatch.setattr(cc, "deck_subcommands", lambda *a, **k: ["mentioned_only"])
+        monkeypatch.setattr(cc, "_script_text",
+                            lambda *a, **k: '# see `deck.py mentioned_only` for detail')
+        monkeypatch.setattr(cc, "_skill_text", lambda *a, **k: "")
+        assert any("mentioned_only" in e for e in cc.check())
+
+    def test_a_real_call_does_count_as_coverage(self, monkeypatch):
+        monkeypatch.setattr(cc, "deck_subcommands", lambda *a, **k: ["viz"])
+        monkeypatch.setattr(cc, "_script_text",
+                            lambda *a, **k: "out = deckmod.cmd_viz(ns)")
+        monkeypatch.setattr(cc, "_skill_text", lambda *a, **k: "")
+        assert not any("deck.py viz" in e for e in cc.check())
+
+    def test_a_hyphenated_subcommand_maps_to_its_underscored_function(self, monkeypatch):
+        monkeypatch.setattr(cc, "deck_subcommands", lambda *a, **k: ["suggest-homes"])
+        monkeypatch.setattr(cc, "_script_text",
+                            lambda *a, **k: "deckmod.cmd_suggest_homes(ns)")
+        monkeypatch.setattr(cc, "_skill_text", lambda *a, **k: "")
+        assert not any("suggest-homes" in e for e in cc.check())
+
+
+class TestRosterReviewSkillExists:
+    """The gate's first run flagged audit / brawl / rotation / sync / verify — all
+    roster-level. They weren't random: the per-deck loop had skills, the roster loop had
+    none. /roster-review is what closed it, so it is worth pinning that the skill both
+    exists and actually drives those commands."""
+
+    def _text(self):
+        import os
+        p = os.path.join(cc.SKILLS_DIR, "roster-review.md")
+        return open(p, encoding="utf-8").read() if os.path.exists(p) else ""
+
+    def test_the_skill_exists(self):
+        assert self._text().strip()
+
+    def test_it_drives_the_roster_commands(self):
+        t = self._text()
+        for cmd in ("audit", "rotation", "brawl", "verify", "sync", "wildcards"):
+            assert f"deck.py {cmd}" in t, cmd
