@@ -375,11 +375,15 @@ python3 scripts/deck.py quality 1a --at HASH # compare this deck's list at a pas
 decks at once. It prints one offline line per deck — competitive **`Tier`**
 (S/A/B/C/D win-capability, from the deck's `#: tier:` header; sort with
 `--by-tier`), ownership drift (`Own`), construction legality (`Legal`), color
-strays (`Cast`: `Nu` uncastable / `Ns` off-identity), interaction count (`Int`),
+strays (`Cast`: `Nu` uncastable / `Ns` identity stray / `Na` of those, an off-color
+ABILITY), interaction count (`Int`),
 and central-theme count (`Thm`) — then
 labels each deck **★ TUNE** (a hard problem: illegal or uncastable cards),
-**craft** (just unbuilt), **review** (a soft flag: off-color strays or thin
-interaction), or **ok**. It reuses the exact `check` / `legal` / `mana` / `stats`
+**craft** (just unbuilt), **review** (a soft flag: an off-color **ability** or thin
+interaction), or **ok**. Only `Na` reaches the `review` verdict: a stray explained by a
+hybrid pip is a card you simply pay on-color — two R/W hybrids in a mono-W deck are
+white cards there — whereas an off-color activated ability is dead mana you can't spend.
+Counting both had put 22 of 63 decks in `review` with nothing actionable in any of them. It reuses the exact `check` / `legal` / `mana` / `stats`
 primitives, so a flag means the same thing it does in those commands — but across
 the whole roster in one pass and with no Scryfall calls. Use it to pick the few
 decks worth the expensive `/tune-deck` read; `--flagged` hides the `ok` rows.
@@ -548,8 +552,10 @@ enablers" = dead payoffs; "payoff-heavy" = under-enabled). A shortlist that prin
 card lists to grade; `stats` surfaces the flag inline.
 `mana` and `check` add a **castability lint** that flags any card whose real color
 needs fall outside the deck's declared `#: colors:` — a strict off-color pip means
-uncastable, an off-color identity (a hybrid you'd pay on-color, or an off-color
-ability) is a softer heads-up. `tribes` reads oracle text to surface
+uncastable; an off-color *identity* is a softer heads-up, labelled with which kind it
+is: `(hybrid — paid on-color)`, `(off-color ability)`, or `(cost unknown — run deck.py
+mana …)`. `check` stays offline and reads no mana costs, so it reports the third rather
+than guessing; `mana` gives the definitive read. `tribes` reads oracle text to surface
 **type-matters payoffs** — e.g. a Saga that rewards Krakens/Leviathans/Merfolk/
 Octopuses/Serpents will list those types and how many of your creatures qualify —
 so cross-type tribal synergies aren't missed.
