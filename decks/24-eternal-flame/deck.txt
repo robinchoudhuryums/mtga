@@ -65,4 +65,5 @@ Deck
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 24
 #~ -Raph & Leo, Sibling Rivals | +Mardu Devotee | OWNED: a {W} 1-drop mana dork (taps W/B/R — fixes the thin red: ~15 R sources for 36 R pips) + scry 2 on ETB. Lowers the curve and smooths draws into the bombs; swap in over the off-theme Raph & Leo if you want more consistency.
+#~ -Lightning Strike | +Heroes' Hangout | OWNED (1×, and a copy in 45 doesn't consume it): a {R} MV-1 modal — Date Night exiles the top TWO and picks one (real selection, not the one-card impulse), Patrol Night is a combat trick for the go-wide turns. Top non-45 fit in suggest-homes (role-player, fit 19, shares impulse+pump). Lowers the curve where the deck is thinnest (only 2 one-drops). Cost: interaction 8→7, so Fiery Annihilation is the alternate cut if you'd rather keep the 3-damage reach. NOT Raph & Leo — that slot is already parked for Mardu Devotee above.
 #~ note: A-track curve-lowering applied — -Sozin's Comet/+Clockwork Percussionist, -Sami/+Kellan, -Brass's Bounty/+Zuko, -Thor Odinson/+Ennis (exile-grows). Kept Raph & Leo for now (Mardu Devotee parked above).
