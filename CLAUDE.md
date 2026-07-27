@@ -696,6 +696,38 @@ castability · curve · central-theme density), with the intangibles moving a de
   model can't see. It never demotes a fit `fit_strength` already rated KEY, and does
   nothing below 3 colors (mono/two-color decks don't want the fixing). This closed the
   Overlord → decks 17/21a miss.
+- **`suggest-homes` reads CASTABILITY as an identity SUBSET — which says nothing about
+  whether you can pay the pips.** A card is "castable" here when its color identity ⊆ the
+  deck's colors, so **Anti-Venom (`{W}{W}{W}{W}{W}`) was rated KEY for decks 29/29a**, where
+  10–11 white sources put it at roughly a **1%** chance of being castable on turn five. The
+  identity test is right for *routing* and structurally blind to *depth*. `deck.py
+  pip_depth_warning(cost, sources)` closes it with the same hypergeometric model
+  `consistency` uses: a cost demanding ≥`_PIP_DEPTH_MIN` (3) strict pips of one color is
+  priced against the deck's real sources (`deck_color_sources`) at turn `_PIP_DEPTH_TURN`
+  (5), and anything under `_PIP_DEPTH_TARGET` (70%) prints `⚠⚠ 5x{W} vs 10 sources` on the
+  fit row plus the source count that would clear the bar. It's a FLAG, never a score change
+  — a deck can legitimately want a color-hungry bomb and fix for it — but the number is now
+  on screen instead of implied by a subset test that can't see it.
+- **`suggest-homes` also weighs a DOUBLER against the deck's magnitude on its axis.** A
+  doubler (Exalted Sunborn, Delney, Anointed Procession, a counters doubler) is worth
+  roughly what it doubles, and theme overlap cannot see that: Exalted Sunborn shares
+  `tokens` with a deck that makes 14 tokens and with one that makes 6, and scored them the
+  same — which is how it read `role-player` for Knight's Edge (deck 3) while ranking a
+  6-token deck above it. `doubler_axis(text)` classifies the card on one of
+  `_DOUBLER_AXES` (tokens / counters / triggers), `doubler_support()` COUNTS the deck's
+  cards that feed that axis, and `doubler_boost()` turns the count into a bounded fit bump
+  (`_DOUBLER_PER_SOURCE` 1.2 per feeder, capped at `_DOUBLER_CAP` 18, zero below
+  `_DOUBLER_MIN_SOURCES` 5), promoting to **KEY** at `_DOUBLER_KEY_SOURCES` (10) the way
+  the fixer overlay promotes at 4 colors — necessary because the strength label sorts ahead
+  of raw fit. `doubler_restriction()` reads the doubler's OWN scope off its text
+  (`_DOUBLER_POWER_RE`, e.g. Delney's "power 2 or less") and filters the feeder count to
+  match; without it Delney's support in deck 24 read 24 instead of 4 — enough to flip it
+  over the KEY threshold, i.e. the restriction is load-bearing, not a nicety. The cap is set
+  at 18 rather than 12 so the term stays linear across the realistic 4–15 feeder range
+  instead of saturating at 10 and calling a 14-token deck the same as a 10-token one.
+  Bounded and gated by `check_suggest` anchor 14. Exalted Sunborn → deck 3 moves
+  role-player/51 → KEY/69; Delney goes tangential (a bare `Human` overlap) → KEY for the
+  decks it actually doubles.
 - **Before committing a deck edit, run `deck.py preflight <id>` — and grade a
   cut/swap with `deck.py quality`.** `preflight` is the one-call gate the editing
   skills use: it folds `legal` + owned/buildable + castability + a full `check_all`
@@ -1037,6 +1069,25 @@ castability · curve · central-theme density), with the intangibles moving a de
   order and missed "from THE TOP OF target player's library"; and the opponent-subject branch
   let its gap cross a comma, so "if an opponent lost life this turn, exile the top two cards of
   YOUR library" read as a heist. All three patterns are registered with `check_patterns.py`.
+- **`tag_synergies.py` text-tags SELF-EXILE CASTING (`exile cast`) — the sibling theme to
+  `heist`.** `heist` is deliberately narrow (cast a card that was THEIRS), and that
+  narrowness left a real archetype untagged: the impulse / Warp / Plot / Foretell / Adventure
+  family casts from exile too, and the payoffs ("whenever you cast a spell from exile",
+  "spells you cast from exile cost {1} less", "cast a spell from anywhere other than your
+  hand") reward BOTH halves. 266 pool cards, 1.68% — specific by the idf model, and it is
+  what makes decks 45/45a gradeable as a single archetype rather than a pile of unrelated
+  exile cards. `is_exile_cast_text(type_line, text)` treats an **Adventure type line** as an
+  automatic enabler (the mechanic IS cast-from-exile, and no oracle phrasing states it), then
+  matches `_EXILE_CAST_ENABLE` (the keyword family) or `_EXILE_CAST_PAYOFF`. Kept SEPARATE
+  from `heist` on purpose — the two only look alike; a deck built on casting your own exiled
+  cards gets nothing from an opponent's graveyard, which is exactly the mistake the
+  `theft`/`heist` collision taught.
+- **`keyword_frequencies()` counts DISTINCT CARDS, not rows.** It backs
+  `is_noise_keyword`'s one-card-in-the-corpus test, and the mana file stores a DFC under its
+  full `Front // Back` name while other tables key the front — so a two-faced card could
+  contribute two rows and clear the "carried by exactly one card" floor without a second
+  card existing. "Goblin Formula", a genuinely card-unique flavor keyword, escaped the noise
+  filter that way. Front-names are collapsed into a set before counting.
 
 - **Three phrases where `tags_for` and `classify_roles` disagreed on the SAME text**, each
   leaving a card with a completely blank Synergies cell and therefore invisible to every
@@ -1211,7 +1262,12 @@ deck+pool and asserts the OUTPUT ORDER (a mythic and a common differing ONLY in 
 not score the same power; an off-theme card must not be suggested; both breadth models must
 agree). Pure-function anchors cannot see WIRING — F-01 shipped past eleven green gates
 because `_cuts_power_adj` was provably bounded/monotonic while its CALLER handed the seed the
-wrong rarity shape, so a model correct in every part was still wired up wrong (F-18);
+wrong rarity shape, so a model correct in every part was still wired up wrong (F-18). And
+**anchor 14** keeps the suggest-homes DOUBLER term bounded — zero below
+`_DOUBLER_MIN_SOURCES`, never above `_DOUBLER_CAP`, monotonic in feeder count — and pins the
+two halves the term is worthless without: `doubler_axis` classifying tokens/counters/triggers,
+and `doubler_restriction` reading a doubler's own "power N or less" scope (unrestricted
+support over-counted Delney 6× and would have minted a false KEY);
 **engine classifier** (`check_engines.py`) anchors the enabler/
 payoff detection on canonical cards (#3); **tier floor** (`check_tier.py`) proves
 the archetype-aware floor grades non-aggro decks identically to before and only
@@ -1267,7 +1323,7 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 - Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py, scripts/check_patterns.py, scripts/keyword_baseline.txt (acknowledged-but-unindexed mechanics, read by check_keywords.py)
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format, and **nests variant decks under their core** — a core deck's same-format variants render as an always-visible `↳ Variants (N)` strip inside its card (id + name + build-status per row, click opens the variant's modal), so they're clearly grouped yet never hidden; searching a variant still surfaces it as its own card, and a cross-format variant (e.g. `3-brawl`) stays standalone in its own format shelf (families are built per shelf). The page is **mobile-responsive** (single-column grids, wide data tables scroll in-box, a horizontally-scrollable section-nav) and uses **progressive disclosure**: every section collapses — the utility ones (card finder / stale-check / recently-edited / rotation) default CLOSED — a sticky **section-nav strip** jumps to and auto-expands a section with a scroll-spy highlight, and the long lists (wishlist tiers, crafting leverage) cap at ~12 rows with a *show all* toggle while the roster-triage table defaults to the ACTIONABLE decks (the page analog of `deck.py audit --flagged`). The **wishlist** filters by free text (card/target/signal) AND by **wildcard rarity** (M/R/U/C chips, multi-select, mirroring `wishlist.py --rarity`). All of this is template-only (the `#data` island is untouched) and persists in `localStorage`.
-- Testing: tests/ (pytest unit layer over the pure helpers — tests/test_check_patterns.py pins the dead-pattern gate on both historical bug shapes; front_face_cost / mana_value (split-Room-Adventure front-face costs), flex_staleness, the rationale figure audit (the bare-`over` false negative and `_ARROW_AFTER` transition notation), the tag/role alignments (`draw cards equal to`, `gain life equal to`, `costs {N} less`, `pay life` scoping); card_colors, card_power, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _cuts_uniq_adj, distinctiveness_score (tag-rarity, tribe/evergreen-excluded), structural_distinctiveness (oracle-text-shape rescue), card_distinctiveness (max-combine), _creature_subtypes, _land_synergy_bonus / _land_shortfall_bonus (bounded manabase-recommender nudges), _accel_want / _ramp_restriction_fit / _int_scaling / _int_scaling_boost (needs-model signals), _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), fit_strength (specific-theme-gated KEY + broad-tribe demotion), _home_curve_fit (bounded suggest-homes curve nudge), _central_themes (mechanical sub-theme floor-2 admission), _theme_cosine (generic-damped deck-similarity), the role-classifier under-count fixes (permanent-type-list removal, `counter up to N target`, library-tuck removal, the draw-N/discard-N LOOT exclusion, `half X` draw, and the second sweep — bounce to `owner's` hand, edict, X-damage, Aura tuck, mass-edict sweeper, repeatable-upkeep-draw card advantage, damage to each opponent) plus a structural assertion that the coverage net is a SUPERSET of the precise patterns and that stripping reminder text kills the Ward false cue without hiding a real miss, protection_effects (real ward/hexproof/indestructible vs a combat pump), rotation_year/rotation_risk (`_SET_ROTATION_OVERRIDE`, calendar-year risk), cost_upside_flags, _drop_cost_themes, section_mismatch, power_threshold_flags, count_conf (role counts carry their own uncertainty), deck_shape (wide/tall from text, amplifiers-only), near_duplicates (interchangeable-card groups), wishlist.is_conditional_power, wishlist.power_is_seeded, import_arena, is_heist_text (TestHeistTheme: cross-sentence matching, the impulse/graveyard-hate exclusions, and the `theft`/`heist` name-collision regression), tags_for (incl. the toughness-matters / noncombat-damage / spell-copy / tribal-payoff mechanical-synergy tags)), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
+- Testing: tests/ (pytest unit layer over the pure helpers — tests/test_check_patterns.py pins the dead-pattern gate on both historical bug shapes; front_face_cost / mana_value (split-Room-Adventure front-face costs), flex_staleness, the rationale figure audit (the bare-`over` false negative and `_ARROW_AFTER` transition notation), the tag/role alignments (`draw cards equal to`, `gain life equal to`, `costs {N} less`, `pay life` scoping); card_colors, card_power, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _cuts_uniq_adj, distinctiveness_score (tag-rarity, tribe/evergreen-excluded), structural_distinctiveness (oracle-text-shape rescue), card_distinctiveness (max-combine), _creature_subtypes, _land_synergy_bonus / _land_shortfall_bonus (bounded manabase-recommender nudges), _accel_want / _ramp_restriction_fit / _int_scaling / _int_scaling_boost (needs-model signals), _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), fit_strength (specific-theme-gated KEY + broad-tribe demotion), _home_curve_fit (bounded suggest-homes curve nudge), pip_depth_warning / deck_color_sources (the colored-pip DEPTH flag the identity-subset castability test can't see), doubler_axis / doubler_restriction / doubler_support / doubler_boost (the bounded deck-magnitude co-signal for doublers), _central_themes (mechanical sub-theme floor-2 admission), _theme_cosine (generic-damped deck-similarity), the role-classifier under-count fixes (permanent-type-list removal, `counter up to N target`, library-tuck removal, the draw-N/discard-N LOOT exclusion, `half X` draw, and the second sweep — bounce to `owner's` hand, edict, X-damage, Aura tuck, mass-edict sweeper, repeatable-upkeep-draw card advantage, damage to each opponent) plus a structural assertion that the coverage net is a SUPERSET of the precise patterns and that stripping reminder text kills the Ward false cue without hiding a real miss, protection_effects (real ward/hexproof/indestructible vs a combat pump), rotation_year/rotation_risk (`_SET_ROTATION_OVERRIDE`, calendar-year risk), cost_upside_flags, _drop_cost_themes, section_mismatch, power_threshold_flags, count_conf (role counts carry their own uncertainty), deck_shape (wide/tall from text, amplifiers-only), near_duplicates (interchangeable-card groups), wishlist.is_conditional_power, wishlist.power_is_seeded, import_arena, is_heist_text (TestHeistTheme: cross-sentence matching, the impulse/graveyard-hate exclusions, and the `theft`/`heist` name-collision regression), is_exile_cast_text (TestExileCastTheme: the Adventure type-line enabler, the Warp/Plot/Foretell keyword family, and the cast-from-exile payoffs), keyword_frequencies (distinct cards, not rows — the DFC double-count that let a card-unique flavor keyword escape the noise filter), tags_for (incl. the toughness-matters / noncombat-damage / spell-copy / tribal-payoff mechanical-synergy tags)), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/
 
 **Invariant Library:**

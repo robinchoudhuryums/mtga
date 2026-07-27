@@ -5249,6 +5249,110 @@ _FIXER_CUES = (
 )
 
 
+# DOUBLERS — a card whose value scales with HOW MUCH of a thing the deck already does.
+# Theme overlap sees "this card mentions tokens" and stops there, so Exalted Sunborn ("if
+# one or more tokens would be created under your control, twice that many are created
+# instead") scored deck 45 at fit 52 over Knight's Edge at 46 — when 45 fields SIX
+# token-makers and Knight's Edge fields FOURTEEN. The tag model cannot see magnitude, only
+# membership, and a doubler is worth exactly the magnitude.
+#
+# A tag would NOT have fixed this: the card already shared `tokens` with those decks and
+# still lost the ranking. What is missing is a deck-side COUNT, so this is a scoring term
+# on the same bounded pattern as `_fixer_boost` (whose value likewise scales with a
+# deck-side quantity, the colour count).
+_DOUBLER_AXES = {
+    # axis -> (what the DOUBLER's text looks like, what a deck card that FEEDS it looks like)
+    "tokens": (
+        re.compile(r"if one or more[^.]{0,80}?tokens? would be created[^.]{0,80}?"
+                   r"(?:twice that many|instead)", re.I),
+        re.compile(r"creates? (?:a|an|two|three|four|\w+) [^.]{0,60}?token", re.I)),
+    "counters": (
+        re.compile(r"if one or more[^.]{0,80}?counters? would be put[^.]{0,80}?"
+                   r"(?:twice that many|instead)", re.I),
+        re.compile(r"put (?:a|an|two|three|\w+) \+1/\+1 counter", re.I)),
+    "triggers": (
+        re.compile(r"triggers? an additional time|that ability triggers? one more time", re.I),
+        re.compile(r"\bwhenever\b|\bwhen .{0,40}?enters\b", re.I)),
+}
+_DOUBLER_PER_SOURCE = 1.2   # fit points per feeding card
+# Ceiling chosen as a SAFETY rail, not an operating point: real decks feed an axis with
+# 4-15 cards, so at 1.2/source the term is effectively linear across that whole range and
+# the cap only bites past 15. Capping lower (12) made it saturate at 10 and stop
+# distinguishing Knight's Edge's 14 token-makers from Avengers' 10 — which is the exact
+# discrimination this term exists to provide. Comparable in size to `_fixer_boost` (max 20).
+_DOUBLER_CAP = 18
+_DOUBLER_MIN_SOURCES = 5    # below this the deck does not do the thing enough to matter
+_DOUBLER_KEY_SOURCES = 10   # at this density the doubler IS a key card (mirrors the
+                            # fixer overlay promoting at 4+ colours)
+
+
+def doubler_axis(text):
+    """Which quantity this card DOUBLES ('tokens' / 'counters' / 'triggers'), or None."""
+    if not text:
+        return None
+    for axis, (dbl, _feed) in _DOUBLER_AXES.items():
+        if dbl.search(text):
+            return axis
+    return None
+
+
+# Some doublers only apply to a SUBSET of the axis — Delney, Streetwise Lookout doubles
+# triggers of "creatures you control with power 2 or less". Counting every trigger in the
+# deck roughly DOUBLED the real support (deck 24 read 24 sources against a true 4, enough
+# to flip it over the KEY threshold on its own), so the restriction is parsed off the
+# doubler's own text rather than assumed away.
+_DOUBLER_POWER_RE = re.compile(r"power (\d+) or less", re.I)
+
+
+def doubler_restriction(text):
+    """Max creature power a doubler's effect applies to, or None for unrestricted."""
+    m = _DOUBLER_POWER_RE.search(text or "")
+    return int(m.group(1)) if m else None
+
+
+def doubler_support(axis, cards, carddata, max_power=None):
+    """How many copies in the deck FEED that axis — the magnitude a doubler multiplies.
+
+    `max_power` restricts the count to creatures at or below that printed power, for a
+    doubler whose text is scoped that way. Printed power is the correct read (a creature
+    that GROWS later still wasn't small when the doubler was evaluated), and
+    `lib.card_power` returns None for `*`/`X` rather than inventing a number — those are
+    excluded from a restricted count rather than assumed to qualify.
+    """
+    feed = _DOUBLER_AXES.get(axis, (None, None))[1]
+    if not feed:
+        return 0
+    n = 0
+    for q, name, _s, _c in cards:
+        nl = name.lower()
+        if nl in BASICS:
+            continue
+        cd = carddata.get(nl) or carddata.get(nl.split(" // ")[0])
+        if not cd or not feed.search(cd.get("text") or ""):
+            continue
+        if max_power is not None:
+            if "Creature" not in (cd.get("type") or ""):
+                continue
+            p = card_power(cd.get("power"))
+            if p is None or p > max_power:
+                continue
+        n += q
+    return n
+
+
+def doubler_boost(support, per=_DOUBLER_PER_SOURCE, cap=_DOUBLER_CAP,
+                  floor=_DOUBLER_MIN_SOURCES):
+    """Bounded fit bump for a doubler, growing with the deck's density of what it doubles.
+
+    Zero below `floor` (a deck making three tokens does not want a token doubler), linear
+    after, hard-capped at `cap` so it can reorder decks that are otherwise close without
+    ever overriding a genuine theme match — the same contract as `_fixer_boost`.
+    """
+    if support < floor:
+        return 0.0
+    return min(support * per, float(cap))
+
+
 def _fixer_boost(ncolors, per_color=4, cap=5):
     """Bounded fit bump for a rainbow fixer in an `ncolors`-color deck — grows with
     the color count (a fixer earns more in a 5-color deck than a 3-color one) but is
@@ -5611,6 +5715,10 @@ def cmd_suggest_homes(args):
             print(f"    {_ln}")
     print()
 
+    # Which quantity (if any) this card DOUBLES — computed once; the per-deck half is the
+    # density of that quantity, which is what the boost scales with.
+    _daxis = doubler_axis(cd.get("text") or "")
+    _drestrict = doubler_restriction(cd.get("text") or "") if _daxis else None
     results = []
     skipped_illegal = 0
     for dd in discover_decks():
@@ -5669,6 +5777,23 @@ def cmd_suggest_homes(args):
             if len(castable) >= 4:
                 strength = "KEY"
             elif strength == "tangential":
+                strength = "role-player"
+        # DOUBLER overlay, same shape as the fixer one: a card that doubles tokens /
+        # counters / triggers is worth the deck's DENSITY of that thing, which theme
+        # overlap cannot see (it reads membership, not magnitude). Bounded, and it only
+        # ever promotes a tangential fit one step — never demotes, never overrides a KEY.
+        dsupport = (doubler_support(_daxis, cards, carddata, _drestrict)
+                    if _daxis else 0)
+        if dsupport:
+            _dboost = doubler_boost(dsupport)
+            fit += _dboost
+            # Mirrors the fixer overlay's promotion rule. A doubler in a deck that really
+            # does the thing IS a key card, and the strength label sorts ahead of fit — so
+            # without this the boost could not reorder anything: Exalted Sunborn stayed
+            # behind every KEY row no matter how many token-makers the deck fielded.
+            if dsupport >= _DOUBLER_KEY_SOURCES:
+                strength = "KEY"
+            elif _dboost and strength == "tangential":
                 strength = "role-player"
         # Bounded curve co-signal (#5): gently sort a top-heavy card BELOW efficient fits
         # in an aggressive low-curve deck (never boosts, never relabels — see

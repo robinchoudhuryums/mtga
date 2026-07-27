@@ -1288,3 +1288,49 @@ class TestDeckColorSources:
         src = deck.deck_color_sources(cards, meta, cd)
         assert src["W"] == 6 and src["R"] == 2
         assert src["G"] == 0, "a mana dork is not a land source"
+
+
+class TestDoublerCoSignal:
+    """A doubler's worth scales with the deck's DENSITY of what it doubles — a magnitude
+    theme overlap cannot see. Exalted Sunborn scored deck 45 (6 token-makers) above
+    Knight's Edge (14) because both merely shared the `tokens` tag.
+    """
+
+    TOKEN_DBL = ("If one or more tokens would be created under your control, twice that "
+                 "many of those tokens are created instead.")
+    TRIG_DBL = ("If a triggered ability of a creature you control with power 2 or less "
+                "triggers, that ability triggers an additional time.")
+
+    def test_axis_detection(self):
+        assert deck.doubler_axis(self.TOKEN_DBL) == "tokens"
+        assert deck.doubler_axis(self.TRIG_DBL) == "triggers"
+        assert deck.doubler_axis("Shock deals 2 damage to any target.") is None
+        assert deck.doubler_axis("") is None
+
+    def test_boost_is_zero_below_the_floor_and_rises_then_caps(self):
+        assert deck.doubler_boost(0) == 0
+        assert deck.doubler_boost(deck._DOUBLER_MIN_SOURCES - 1) == 0
+        lo = deck.doubler_boost(deck._DOUBLER_MIN_SOURCES)
+        hi = deck.doubler_boost(deck._DOUBLER_MIN_SOURCES + 5)
+        assert 0 < lo < hi
+        assert deck.doubler_boost(9999) == deck._DOUBLER_CAP
+
+    def test_restriction_is_read_off_the_doublers_own_text(self):
+        assert deck.doubler_restriction(self.TRIG_DBL) == 2
+        assert deck.doubler_restriction(self.TOKEN_DBL) is None
+
+    def test_support_counts_feeding_cards(self):
+        cards = [(2, "Maker", "X", "1"), (1, "Bystander", "X", "2"), (7, "Plains", "X", "3")]
+        cd = {"maker": {"type": "Creature — Soldier", "text": "When this creature enters, "
+                        "create a 1/1 white Soldier creature token.", "power": "2"},
+              "bystander": {"type": "Creature — Human", "text": "Vigilance", "power": "1"}}
+        assert deck.doubler_support("tokens", cards, cd) == 2
+        assert deck.doubler_support("tokens", cards, cd, max_power=1) == 0, \
+            "a power restriction must exclude the 2-power maker"
+
+    def test_restricted_support_excludes_unknown_power(self):
+        # card_power returns None for */X — those must not be assumed to qualify.
+        cards = [(1, "Star", "X", "1")]
+        cd = {"star": {"type": "Creature — Elemental",
+                       "text": "Whenever this creature attacks, draw a card.", "power": "*"}}
+        assert deck.doubler_support("triggers", cards, cd, max_power=2) == 0
