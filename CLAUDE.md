@@ -1416,7 +1416,15 @@ for per-change health) and the meta commands (`health-pulse`, `roadmap`,
 NOT vendored — that ceremony (two-axis scoring + a `.cycle/` state dir) outweighs
 its benefit at this project's size; adopt them only if you later want benchmarkable
 scoring. `check`, `refresh`, `add-deck`, `draft-deck`, `tune-deck`, `add-cards`,
-`add-wishlist`, and `apply-changes` are project-specific. `draft-deck` (BUILD a new
+`add-wishlist`, and `apply-changes` are project-specific. **A skill drifts behind the
+tooling silently** — `/tune-deck` was still built around the command set it shipped with
+and had no step for `consistency` (the probability layer), `engines`, `shape`, `cuts`,
+`flex`, the protection axis, the role counts' own uncertainty, or the post-edit rationale
+re-grounding. The load-bearing omission was the needs-aware `suggest
+--needs/--interaction/--ramp/--lands`: plain `suggest` filters candidates to cards sharing
+a synergy THEME and so structurally CANNOT surface removal or a land, i.e. the one
+recommender a tune-for-interaction would reach for is blind to the fix. Re-read a skill
+against the tool list whenever a cycle adds a command. `draft-deck` (BUILD a new
 deck from scratch around a concept — survey the owned pool by role via `pool.py --role`,
 scaffold the lines with `deck.py resolve`, then validate + tune for distinctiveness via
 `deck.py similar`; the create-a-list counterpart to `/add-deck`, which INGESTS a pasted
@@ -1424,7 +1432,8 @@ list), `add-cards` (catalog newly-owned cards +
 find their homes), `add-wishlist` (intake UNOWNED craft targets to the wishlist —
 add+enrich+Power-seed, set the home Target, do the cross-deck fit review via the
 specific-theme-gated `suggest-homes`, audit), and `apply-changes` (apply confirmed
-swaps, run the F10 quality guard, verify + commit) **orchestrate the scripts, never
+swaps, run the F10 quality guard, re-ground the `#: tier:` prose via
+`--audit-rationale`, verify + commit) **orchestrate the scripts, never
 re-implement them** — the scripts stay the single source of truth so the skills
 can't drift. `add-cards` is the OWNED-card counterpart to `add-wishlist`'s unowned
 craft-target intake. All end with the shared verify+commit tail in

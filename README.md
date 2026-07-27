@@ -593,8 +593,20 @@ flags a top-heavy / win-more card as `⚠ top-heavy for this curve` in a low-cur
 makes an any-color land or gives lands every basic land type) gets a color-count
 overlay — it reads KEY in a 4+-color deck and role-player in a 3-color one — since
 its fixing value scales with the deck's colors, which theme overlap alone can't see.
-Rows sort strongest-fit first and name the single weakest nonland cut candidate per
-deck. Because copies are fungible, slot a card into *every* deck it earns, not one.
+A **doubler** (tokens / counters / triggers) is weighed against how much this deck
+actually has to double — Exalted Sunborn shares `tokens` with a 14-token deck and a
+6-token deck, and theme overlap scored them identically — so its feeder count drives a
+bounded fit bump and promotes it to KEY past a threshold. The doubler's own scope is
+read off its text, so Delney's "power 2 or less" filters the count rather than
+over-crediting it.
+Castability here is an **identity subset** test, which says nothing about whether you
+can pay the pips: Anti-Venom (`{W}{W}{W}{W}{W}`) read KEY for decks with 10 white
+sources, roughly 1% castable on turn five. A cost demanding 3+ strict pips of one
+colour is now priced against the deck's real sources and flagged `⚠⚠ 5x{W} vs 10
+sources`, with the count that would clear the bar. It's a flag, never a score change.
+Rows sort strongest-fit first, print the card's oracle text, and name the single
+weakest nonland cut candidate per deck. Because copies are fungible, slot a card into
+*every* deck it earns, not one.
 
 `preflight <id>` is the one-call gate the editing skills run before committing: it
 folds `legal` (construction) + owned/buildable + castability + a full `check_all`
@@ -631,8 +643,11 @@ Add **`--audit-rationale`** to check the *argument*, not just the letter. A
 underneath it — it can end up arguing from cards that were cut, or quoting figures
 the deck no longer has. `deck.py tier <id> --audit-rationale` flags both, and
 reports nothing when the rationale is current. It never edits the prose; a stale
-argument is how a defensible letter quietly becomes an indefensible one, so run it
-after any deck edit.
+argument is how a defensible letter quietly becomes an indefensible one. **You no
+longer have to remember to run it** — `check_all` sweeps the whole roster as a soft
+warning, and `/apply-changes` and `/tune-deck` run the per-deck form at the moment of
+the edit, where a human is present to fix the wording. Correcting a quoted figure to
+the live value is a factual correction; only the tier *letter* is a judgment call.
 
 Add **`--to <TIER>`** (e.g. `deck.py tier 30 --to A`) for a **tier-gap diagnostic**:
 it reports the exact measurable work to reach that band's floor ("+3 interaction")
@@ -930,8 +945,17 @@ deck can no longer cast it); **new unindexed card mechanics** (`check_keywords.p
 **theme coverage** — `check_themes.py` flags an owned card whose text plays a theme
 it isn't tagged with (a stale tag distorts every recommendation), summarized to one
 line; **tier mismatch** — a deck whose claimed `#: tier:` sits ≥2 bands above its
-measurable floor; and **stale flex lines** — a `#~ -Out | +In` suggestion whose cut card
-already left the deck, which nothing else covered (it found five sitting on the roster). A SessionStart hook runs the gate (quiet) **and the unit layer** so
+measurable floor; **stale flex lines** — a `#~ -Out | +In` suggestion whose cut card
+already left the deck, which nothing else covered (it found five sitting on the roster);
+and **stale tier rationales** — a `#: tier:` argument citing a card the deck no longer
+runs, or quoting a figure the live quality vector contradicts. That last one is the
+cautionary tale: the check EXISTED for a long time and nothing ran it. `deck.py tier
+<id> --audit-rationale` could always find these, but only one deck at a time, on
+demand, and the instruction to run it after every edit lived in prose no script
+executed — so its two siblings above swept the roster every run while it waited to be
+remembered, and 13 stale figures across 10 decks piled up with every gate green. Same
+shape as the dead-regex bugs it sits next to: a check that cannot fire is not a check.
+A SessionStart hook runs the gate (quiet) **and the unit layer** so
 drift in either surfaces immediately; `make verify` runs both before you commit.
 
 A **pytest unit layer** (`tests/`) complements the gate — fast, isolated tests that
