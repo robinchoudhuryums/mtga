@@ -3711,3 +3711,6 @@ Enduring Tenacity,Enchantment Creature — Snake Glimmer,"Whenever you gain life
 When Enduring Tenacity dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",B,Snake; Glimmer; lifegain,DSK,95,1
 Adelbert Steiner,Legendary Creature — Human Knight,"Lifelink
 Adelbert Steiner gets +1/+1 for each Equipment you control.",W,Human; Knight; lifegain; pump; lifelink,FIN,3,1
+The Earth Crystal,Legendary Artifact,"Green spells you cast cost {1} less to cast.
+If one or more +1/+1 counters would be put on a creature you control, twice that many +1/+1 counters are put on that creature instead.
+{4}{G}{G}, {T}: Distribute two +1/+1 counters among one or two target creatures you control.",G,counters; cost-reduction,FIN,184,1

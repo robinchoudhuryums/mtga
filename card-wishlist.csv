@@ -107,9 +107,6 @@ I — Mill five cards.
 II — Return all land cards from your graveyard to the battlefield tapped.
 III — Until end of turn, another target creature you control gains trample and gets +X/+X, where X is the number of lands you control.
 Reach, trample",G,Saga; Giant; reanimator; graveyard; mill; sacrifice; saga; pump; reach; defense; trample; evasion,FIN,204,Rare,29,,5.5,hand
-The Earth Crystal,Legendary Artifact,"Green spells you cast cost {1} less to cast.
-If one or more +1/+1 counters would be put on a creature you control, twice that many +1/+1 counters are put on that creature instead.
-{4}{G}{G}, {T}: Distribute two +1/+1 counters among one or two target creatures you control.",G,counters; cost-reduction,FIN,184,Rare,13,"Counters DOUBLER: earthbend makes a land a creature THEN puts counters on it, so it doubles every earthbend (2->4, 4->8) and Toph, whose power IS the counters on lands. doubler_support reads 21 feeders in deck 13. Also -{1} on green spells against a 3.75 curve. suggest-homes rates it KEY for 11 decks (4/7/13/30/29/9/...).",9,hand
 Dark Knight's Greatsword,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +3/+0 and is a Knight in addition to its other types.
 Chaosbringer — Equip—Pay 3 life. Activate only once each turn.",B,Equipment; tokens; etb; equipment; pump; chaosbringer; job select; equip,FIN,95,Uncommon,38,,4.0,hand
