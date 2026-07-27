@@ -1408,7 +1408,10 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 - Enrichment & Tagging Accuracy — Scryfall-sourced fields and synergy tags
 - Deck Tooling Correctness — deck.py / query.py / pool.py behavior
 - Deck-Building Insight — mana (hybrid-aware), tribes, cost-nature, pool value
-- Presentation — gallery correctness and freshness
+- Presentation & Interface — gallery/dashboard correctness and freshness, plus the
+  interface layer `/broad-scan` Stage 3 grades structurally (keyboard/assistive
+  access, empty-loading-error states, responsive posture, theme-token completeness,
+  feedback on failure) across dashboard.html, gallery.html, templates/ and app.py
 - Documentation Currency — README / CLAUDE.md match the code and data
 
 **Subsystems:**
@@ -1454,7 +1457,8 @@ stay untouched by any restyle (the payload shape is what `deck.py`/`wishlist.py`
 `broad-scan`, `broad-implement`, `test-sync`, `sync-docs`, `health-pulse`,
 `roadmap`, `sync-commands`, `targeted-audit`, `targeted-implement`, and
 `pr-review` in `.claude/commands/` are copied **verbatim** from
-[claude-workflow-tools](https://github.com/robinchoudhuryums/claude-workflow-tools);
+[claude-workflow-tools](https://github.com/robinchoudhuryums/claude-workflow-tools)
+— currently synced to template **v1.23.0**;
 they stay project-agnostic and read everything from the Cycle Workflow Config
 above. To update them, run **`/sync-commands`** with a path/URL to that repo (it
 reports the template VERSION + CHANGELOG and diffs each file) and re-copy any it
