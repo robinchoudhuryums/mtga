@@ -118,3 +118,35 @@ class TestRosterReviewSkillExists:
         t = self._text()
         for cmd in ("audit", "rotation", "brawl", "verify", "sync", "wildcards"):
             assert f"deck.py {cmd}" in t, cmd
+
+
+class TestIngestFrontDoorExists:
+    """Five tools write owned-card data and they disagree about what a quantity MEANS —
+    a deck dump is a LOWER BOUND, a tracker export is AUTHORITATIVE. Picking wrong either
+    undercounts the collection or overwrites it. /ingest is the router."""
+
+    def _text(self):
+        import os
+        p = os.path.join(cc.SKILLS_DIR, "ingest.md")
+        return open(p, encoding="utf-8").read() if os.path.exists(p) else ""
+
+    def test_the_skill_exists(self):
+        assert self._text().strip()
+
+    def test_it_routes_to_every_ingest_tool(self):
+        t = self._text()
+        for script in ("import_arena.py", "import_collection.py",
+                       "reconcile_crafts.py", "sheets_sync.py"):
+            assert script in t, script
+
+    def test_it_names_the_step_INV_02_depends_on(self):
+        """The shared tail is the part that gets skipped: a newly added card has no
+        card-mana.csv row, so INV-02 stays red until build_mana.py runs. Both ingest
+        recipes omitted it once (broad-scan F-06)."""
+        t = self._text()
+        assert "build_mana.py --pool" in t and "INV-02" in t
+
+    def test_it_distinguishes_lower_bound_from_authoritative(self):
+        """The one conceptual trap the router exists to prevent."""
+        t = self._text().lower()
+        assert "lower bound" in t and "authoritative" in t

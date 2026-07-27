@@ -62,13 +62,14 @@ INTERACTIVE_ONLY = {
     ("deck.py", "list"):
         "orientation command; every skill addresses decks by id directly",
     ("script", "app.py"):
-        "the optional Flask editor — a human-driven GUI, launched by `make app`",
-    ("script", "sheets_sync.py"):
-        "optional Google Sheets round-trip; needs credentials and is ROADMAP Tier 3",
-    ("script", "import_collection.py"):
-        "full-collection tracker ingest — driven by hand when you export from a tracker; "
-        "folding it into an ingest front door is a pending follow-on",
+        "the optional Flask editor — an interactive GUI launched by `make app`, not a "
+        "step any workflow drives (/ingest routes single-card fixes to it by name, but "
+        "the editing itself is a human at a browser)",
 }
+# NOTE: sheets_sync.py and import_collection.py were exempt here until /ingest existed.
+# Both are ingest routes, so the honest fix was to give them a workflow rather than a
+# standing exemption — which is the gate working as intended: an exemption should be a
+# statement that no workflow COULD drive a command, not a note that none does yet.
 
 # Scripts that are libraries or gates, not workflow steps: a library has no CLI, and a
 # gate runs inside check_all.py rather than being invoked by a skill.
