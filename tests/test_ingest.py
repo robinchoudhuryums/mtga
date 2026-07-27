@@ -70,6 +70,66 @@ class TestTagsFor:
         assert "removal" in ts.tags_for({"Type": "Instant", "Card Text": "Destroy target creature."}, [])
 
 
+class TestExileCastTheme:
+    """`exile cast` = the card is cast FROM EXILE, or pays off casting outside your hand.
+
+    Closes the gap that made Spider-Verse return no fits at all and pointed Virtue of
+    Loyalty at counters decks instead of the cast-from-exile deck its Adventure half feeds.
+    """
+
+    def _t(self, type_line, text):
+        return ts.is_exile_cast_text(type_line, text.lower())
+
+    def test_warp_plot_foretell_are_enablers(self):
+        assert self._t("Creature", "Warp {1}{W} (You may cast this card from your hand for "
+                                   "its warp cost...)")
+        assert self._t("Creature", "Plot {3}{R} (You may pay {3}{R} and exile this card...)")
+
+    def test_adventure_is_an_enabler_from_the_type_line(self):
+        # The Adventure half exiles the card; you then cast the other half FROM EXILE.
+        assert self._t("Enchantment // Instant — Adventure", "Create a 2/2 Knight token.")
+
+    def test_payoff_side_shares_the_tag(self):
+        assert self._t("Planeswalker", "Whenever you cast a spell from exile, this deals 2 "
+                                       "damage to each opponent.")
+        assert self._t("Enchantment", "Whenever you cast a spell from anywhere other than "
+                                      "your hand, you may copy it.")
+        assert self._t("Creature", "Whenever a permanent you control enters from exile, put "
+                                   "a +1/+1 counter on each creature you control.")
+
+    def test_plain_cards_are_not_tagged(self):
+        assert not self._t("Instant", "Shock deals 2 damage to any target.")
+        assert not self._t("Creature — Elf Druid", "{T}: Add {G}.")
+
+    def test_impulse_stays_a_separate_concept(self):
+        # Exiling from YOUR library to play the exiled card is `impulse`; the card itself
+        # is not being cast out of exile, so it must not pick up `exile cast`.
+        assert not self._t("Sorcery", "Exile the top two cards of your library. Until the "
+                                      "end of your next turn, you may play those cards.")
+
+    def test_tag_reaches_tags_for(self):
+        tags = ts.tags_for({"Type": "Creature — Angel", "Card Text":
+                            "Flying, lifelink\nWarp {1}{W} (You may cast this card from your "
+                            "hand for its warp cost.)"}, ["Warp"])
+        assert "exile cast" in tags
+
+
+class TestKeywordFrequencyCountsDistinctCards:
+    def test_a_dfc_counts_once(self, tmp_path):
+        """card-mana.csv keys a DFC twice (front name AND full name), so a row-tally read a
+        card-UNIQUE keyword as frequency 2 and it escaped the noise filter — which is how
+        'Goblin Formula' (Norman Osborn only) reached the unindexed-mechanic radar."""
+        p = tmp_path / "mana.csv"
+        p.write_text("Card Name,Mana Cost,Mana Value,Keywords\n"
+                     "Norman Osborn,{1}{U},2,Goblin Formula\n"
+                     "Norman Osborn // Green Goblin,{1}{U},2,Goblin Formula\n"
+                     "Shock,{R},1,\n", encoding="utf-8")
+        ts._freq_cache.pop(str(p), None)
+        freq, n = ts.keyword_frequencies(str(p))
+        assert freq["goblin formula"] == 1, "a DFC's two rows are ONE card"
+        assert n == 2
+
+
 class TestHeistTheme:
     """`heist` = you cast a card out of an OPPONENT's zone.
 

@@ -32,8 +32,8 @@
 #: archetype: answers, 22 Bloodbending mills; here the drawing IS the deck and white is a
 #: archetype: real color rather than a splash. It is the roster's only Esper deck.
 #: tier: B — Esper hand-size control, one band BELOW the A metrics floor, PROVISIONAL
-#: tier: (unplayed brew). The floor reads A on interaction 7 (six of it instant-speed,
-#: tier: three able to answer a noncreature permanent) plus card advantage 9 on a 2.86
+#: tier: (unplayed brew). The floor reads A on interaction 6 (five of it instant-speed,
+#: tier: three able to answer a noncreature permanent) plus card advantage 10 on a 3.00
 #: tier: curve, and that card-advantage number is real rather than a pile of cantrips —
 #: tier: Cloudblazer draws two, Chart a Course draws two, Spirit Water Revival draws
 #: tier: seven when waterbent, and the Grimoire draws five on cast. Held at B by three
@@ -88,6 +88,7 @@
 
 Deck
 # Hand size — the spine
+1 Doctor Octopus, Master Planner (SPM) 128
 1 Marina Vendrell's Grimoire (DSK) 64
 1 Ms. Marvel, Kamala Khan (MSH) 67
 1 Vnwxt, Verbose Host (DFT) 73
@@ -129,7 +130,6 @@ Deck
 
 # Removal
 1 Into the Flood Maw (BLB) 52
-1 Essence Scatter (SOS) 47
 1 Tishana's Tidebinder (LCI) 81
 1 Floodpits Drowner (DSK) 59
 1 Exclusion Mage (FDN) 508
@@ -150,8 +150,9 @@ Deck
 2 Dismal Backwater (FDN) 261
 1 Treno, Dark City (FIN) 290
 1 Serpent's Pass (TLA) 279
-4 Island (MSH) 289
-4 Plains (MSH) 287
+3 Island (MSH) 289
+2 University Campus (SPM) 186
+3 Plains (MSH) 287
 3 Swamp (MSH) 291
 
 #~ -The Ten Rings | +Drogskol Reaver | The Ten Rings is the deliberate spice and the flagship hand-size card, but `cuts` ranks it the deck's weakest fit (MV 8, fit 0) and it is the third card above five mana. If the curve plays too heavy, this is the first cut. Drogskol Reaver (craft, R) is a second Grimoire on a body — flying/double strike/lifelink plus "whenever you gain life, draw a card" — but it costs 7, so swapping one 8-drop for one 7-drop only helps if you also want the lifelink clock.

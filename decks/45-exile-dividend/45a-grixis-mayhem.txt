@@ -9,6 +9,13 @@
 #: archetype: Zuko, Appa) trigger on a graveyard cast at all. Fire Lord Zuko was EXCLUDED
 #: archetype: for a hard reason rather than a judgment call — {R}{W}{B} needs a white pip,
 #: archetype: so he is uncastable in these colours, and that is what forced the fork.
+#: archetype: WARP DOES NOT BELONG HERE, which is worth stating because it looks like it
+#: archetype: should. Warp re-casts from EXILE and Norman Osborn discounts casts from the
+#: archetype: GRAVEYARD — different zones, no overlap — so the five warp cards that make
+#: archetype: deck 45 hum do nothing for this one's payoff. The exception is Timeline
+#: archetype: Culler, which explicitly warps FROM THE GRAVEYARD and is maindecked for that
+#: archetype: reason; Sinister Cryologist and Weftstalker Ardent are here on their bodies,
+#: archetype: not their warp. Same trap as grading a card by the half you want.
 #: archetype: MAYHEM IS THE SPINE: "cast this from your graveyard if you DISCARDED it this
 #: archetype: turn." Seven owned mayhem cards plus a discard package to switch them on, and
 #: archetype: Ultimate Green Goblin does both halves by itself (upkeep: discard a card, make
@@ -68,6 +75,7 @@
 1 Timeline Culler (EOE) 121
 
 # Discard / loot — switches mayhem on
+1 Mechanical Mobster (SPM) 168
 1 Kang, Temporal Tyrant (MSH) 217
 1 Kitsa, Otterball Elite (BLB) 54
 1 Mob Lookout (MSC) 821
@@ -81,13 +89,12 @@
 1 Sinister Cryologist (EOE) 75
 
 # Removal
-1 Shock (ANB) 84
+1 Pumpkin Bombardment (MSC) 822
 1 Plasma Bolt (EOE) 152
 1 Lightning Strike (TLA) 146
 1 Long Goodbye (MKM) 92
 1 Bitter Triumph (SOA) 26
 1 Feed the Swarm (SOA) 29
-1 Last Gasp (SOS) 86
 1 Hero's Downfall (FDN) 175
 1 Weftstalker Ardent (EOE) 169
 
@@ -107,4 +114,5 @@
 2 Stark Industries (MSH) 272
 1 Island (MSH) 289
 2 Mountain (MSH) 293
-2 Swamp (MSH) 291
+1 Swamp (MSH) 291
+1 Ominous Asylum (SPM) 181

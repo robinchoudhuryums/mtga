@@ -228,6 +228,65 @@ def load_collection():
     return by_key, by_name, by_name_qty
 
 
+_PIP_DEPTH_MIN = 3          # only 3+ pips of ONE colour are worth checking
+_PIP_DEPTH_TURN = 5         # grade on-curve-ish, capped like `consistency` does
+_PIP_DEPTH_TARGET = 0.70    # below this, say so; deliberately looser than consistency's 0.90
+
+
+def deck_color_sources(cards, meta, carddata):
+    """{colour: number of LANDS in the deck producing it} — basics by name, nonbasics by
+    colour identity, mana dorks NOT counted (the same rule `deck.py mana` prints).
+
+    Needs BOTH maps: card-meta carries colours, card-data carries the type line.
+    """
+    src = {c: 0 for c in "WUBRG"}
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS:
+            col = BASIC_COLOR.get(nl)
+            if col:
+                src[col] += q
+            continue
+        cd = carddata.get(nl)
+        if not cd or "Land" not in _primary_type(cd.get("type") or ""):
+            continue
+        m = meta.get(nl)
+        for col in ((m or {}).get("colors") or set()):
+            if col in src:
+                src[col] += q
+    return src
+
+
+def pip_depth_warning(cost, sources):
+    """(colour, pips, have, want) when a card's DEEPEST single-colour pip demand is more
+    than the deck's sources realistically support — else None.
+
+    `suggest` / `suggest-homes` test castability as `card identity ⊆ deck colours`, which
+    is a set question and cannot see DEPTH. That is how Anti-Venom, Horrifying Healer
+    ({W}{W}{W}{W}{W}) was recommended as a KEY fit for two GWR decks holding 10 and 11
+    white sources — about a 1% chance of casting it on turn five. Identity said yes; the
+    arithmetic says never. Five pips wants roughly 33 sources for 85%, which no 60-card
+    deck can reach, so this is genuinely un-castable rather than merely greedy.
+
+    Reported as a FLAG, never a filter: a deep-pip card can still be a fine late-game
+    play in a deck that leans hard on its colour, and the caller prints the numbers so a
+    human decides. Hybrids are excluded (strictly easier), matching `parse_pips`.
+    """
+    strict, _hybrid = parse_pips(cost or "")
+    if not strict:
+        return None
+    col, pips = max(strict.items(), key=lambda kv: kv[1])
+    if pips < _PIP_DEPTH_MIN:
+        return None
+    have = sources.get(col, 0)
+    seen = cards_seen(_PIP_DEPTH_TURN)
+    if hypergeom_at_least(60, have, seen, pips) >= _PIP_DEPTH_TARGET:
+        return None
+    want = next((s for s in range(have + 1, 41)
+                 if hypergeom_at_least(60, s, seen, pips) >= _PIP_DEPTH_TARGET), None)
+    return (col, pips, have, want)
+
+
 def owned(by_name_qty, name):
     """(count_owned, in_library) for a deck card.
 
@@ -239,9 +298,18 @@ def owned(by_name_qty, name):
     if name.lower() in BASICS:
         return 99, True
     nl = name.lower()
-    if nl not in by_name_qty:
-        return 0, False
-    return by_name_qty[nl], True
+    if nl in by_name_qty:
+        return by_name_qty[nl], True
+    # DFC fallback. This used to be a bare `return 0, False`, on the documented
+    # assumption that deck-file names are always FRONT-face by convention — an
+    # assumption `deck.py resolve` falsifies, because it emits the full `A // B`
+    # name (that is how the pool keys a DFC, and how Arena exports one). So a deck
+    # built by `resolve` reported its own owned DFC as "NOT IN LIBRARY": deck 45a
+    # said that about Norman Osborn the moment it was opened, while `lib.owned_qty`
+    # resolved it correctly the whole time. Route through the shared helper rather
+    # than re-implement the split — that is the A3/A4/F6 rule.
+    qty = owned_qty(by_name_qty, name)
+    return (qty, True) if qty else (0, False)
 
 
 # --------------------------------------------------------------------------- #
@@ -5550,6 +5618,12 @@ def cmd_suggest_homes(args):
         castable = _deck_castable_colors(dmeta, cards, mana)
         if not ccols.issubset(castable):
             continue
+        # Castability above is a SET test (identity ⊆ deck colours) and cannot see pip
+        # DEPTH; pip_depth_warning supplies the arithmetic the set test is missing.
+        # load_mana values are (cost, mana_value) tuples, not dicts.
+        _ce = mana.get(card.lower()) or mana.get(card.split(" // ")[0].lower())
+        pipwarn = pip_depth_warning(_ce[0] if _ce else "",
+                                    deck_color_sources(cards, cardmeta, carddata))
         # Skip a deck whose format the card isn't legal in (see card_legals above).
         if not any_format and card_legals:
             dfmt = (dmeta.get("format") or "").strip().lower()
@@ -5603,7 +5677,7 @@ def cmd_suggest_homes(args):
         fit *= curve_mult
         top_heavy = curve_mult < 1.0
         cut = None if already else _weakest_cut(dmeta, cards, cardmeta, carddata)
-        results.append((fit, dd["id"], already, shared, cut, strength, top_heavy))
+        results.append((fit, dd["id"], already, shared, cut, strength, top_heavy, pipwarn))
 
     if skipped_illegal:
         print(f"({skipped_illegal} castable deck(s) skipped — the card isn't legal in "
@@ -5620,12 +5694,25 @@ def cmd_suggest_homes(args):
     results.sort(key=lambda r: (_srank.get(r[5], 3), -r[0], r[1]))
     print(f"  {'deck':5} {'strength':11} {'fit':>4}  {'in?':3}  shared themes  ·  suggested cut")
     print("  " + "-" * 82)
-    for fit, did, already, shared, cut, strength, top_heavy in results:
+    for fit, did, already, shared, cut, strength, top_heavy, pipwarn in results:
         tag = "yes" if already else "no"
         hint = "already maindecked" if already else (f"cut ~ {cut}" if cut else "")
         if top_heavy:
             hint = (hint + "  " if hint else "") + "⚠ top-heavy for this curve"
+        if pipwarn:
+            _col, _pips, _have, _want = pipwarn
+            hint = ((hint + "  " if hint else "")
+                    + f"⚠⚠ {_pips}x{{{_col}}} vs {_have} sources")
         print(f"  {did:5} {strength:11} {fit:>4.0f}  {tag:3}  {', '.join(shared[:3]):28}  {hint}")
+    _pw = [r for r in results if r[7]]
+    if _pw:
+        _col, _pips, _have, _want = _pw[0][7]
+        _need = f"~{_want}" if _want else "more than a 60-card deck can hold"
+        print(f"\n⚠⚠ = PIP DEPTH. Castability here is a SET test (the card's colours ⊆ the "
+              f"deck's), which cannot see that this card wants {_pips} {{{_col}}} in one cast. "
+              f"Those decks hold as few as {_have} {{{_col}}} sources; {_need} is what a 70% "
+              "turn-5 cast needs. Identity says yes, the arithmetic says no — verify before "
+              "spending a wildcard.")
     if any(r[6] for r in results):
         print(f"\n⚠ = the card (MV {card_mv}) sits well above that deck's average curve — a "
               "win-more/top-heavy add there; grade it from text.")

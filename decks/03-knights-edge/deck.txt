@@ -11,10 +11,10 @@
 1 Battle Menu (FIN) 9
 1 Cosmogrand Zenith (EOE) 9
 1 Summon: Bahamut (FIN) 1
-1 Divine Resilience (FDN) 10
+1 Anti-Venom, Horrifying Healer (SPM) 1
 1 Stasis Snare (FDN) 581
-1 Crib Swap (ECL) 11
-1 Hinterland Sanctifier (FDN) 730
+1 Exalted Sunborn (EOE) 15
+1 Virtue of Loyalty (WOE) 38
 1 Leonardo, Leader in Blue (TMT) 16
 1 Political Triumph (MSH) 31
 1 Quintessential Katana (TMT) 23
@@ -48,7 +48,7 @@
 
 # Flex — STANDARD-LEGAL craftable upgrades (interaction + go-wide). See: deck.py flex 3
 #~ -Team Avatar | +Kutzil's Flanker | CRAFT (R): flash — big counters OR removal; flexible interaction, and cuts the anti-synergy "attacks alone" card
-#~ -Divine Resilience | +Flowerfoot Swordmaster | CRAFT (U): a {W} Soldier that makes a token copy (Offspring) — cheap go-wide + Valiant
+#~ note: applied — Anti-Venom, Horrifying Healer in for Divine Resilience.
 #~ -Requisition Raid | +Rayblade Trooper | CRAFT (U): +1/+1 counter on ETB + a death payoff — on the counters/go-wide plan
 #~ note: all three are CRAFT targets (not owned) and Standard-legal. Priority: Kutzil's Flanker (adds the flexible removal the deck is thin on).
 #~ -Ancestor Dragon | +Archangel of Tithes | CRAFT (M, OTJ ⚠rot-soon): {1}{W}{W} flyer whose tax (opponents pay {1} per attacker vs you / per blocker of your attack) is a finisher for a wide Knights board and protects you. Cut the clunky 6-mana lifegain flyer (off the aggressive go-wide plan). One copy also serves deck 23.

@@ -65,7 +65,7 @@ Deck
 1 Salvation Swan (BLB) 28
 
 # Payoffs
-1 Mister Negative (SPM) 135
+2 Mister Negative (SPM) 135
 1 Enduring Innocence (DSK) 6
 1 Jackdaw Savior (BLB) 18
 
@@ -103,7 +103,6 @@ Deck
 1 Stroke of Midnight (FDN) 148
 1 Crib Swap (ECL) 11
 1 Tolls of War (TLA) 245
-1 Sephiroth's Intervention (FIN) 116
 
 # Lands — 24, Orzhov
 1 Bleachbone Verge (DFT) 250

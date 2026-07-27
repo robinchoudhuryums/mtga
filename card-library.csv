@@ -293,7 +293,7 @@ Flying, lifelink",W,Human; Monk; lifegain; flying; evasion; lifelink,TDM,22,1
 Savior of the Sleeping,Creature — Human Knight,"Vigilance
 Whenever an enchantment you control is put into a graveyard from the battlefield, put a +1/+1 counter on this creature.",W,Human; Knight; counters; reanimator; graveyard; vigilance; combat,WOE,28,1
 Sheriff of Safe Passage,Creature — Human Knight,"This creature enters with a +1/+1 counter on it plus an additional +1/+1 counter on it for each other creature you control.
-Plot {1}{W} (You may pay {1}{W} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",W,Human; Knight; counters; plot; tempo; cost-reduction,OTJ,29,1
+Plot {1}{W} (You may pay {1}{W} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",W,Human; Knight; counters; plot; tempo; cost-reduction; exile cast,OTJ,29,1
 Sidequest: Catch a Fish,Enchantment // Land,"At the beginning of your upkeep, look at the top card of your library. If it's an artifact or creature card, you may reveal it and put it into your hand. If you put a card into your hand this way, create a Food token and transform this enchantment. // {T}: Add {W}.
 {3}, {T}, Sacrifice an artifact: Put a +1/+1 counter on each creature you control. Activate only as a sorcery.",W,counters; sacrifice; tokens; mana; food; selection; transform,FIN,31,1
 Soaring Stoneglider,Creature — Elephant Cleric,"As an additional cost to cast this spell, exile two cards from your graveyard or pay {1}{W}.
@@ -324,7 +324,7 @@ Aerith Rescue Mission,Sorcery,"Choose one —
 "Appa, Steadfast Guardian",Legendary Creature — Bison Ally,"Flash
 Flying
 When Appa enters, airbend any number of other target nonland permanents you control. (Exile them. While each one is exiled, its owner may cast it for {2} rather than its mana cost.)
-Whenever you cast a spell from exile, create a 1/1 white Ally creature token.",W,Bison; Ally; tokens; etb; flying; evasion; airbend; bending; flash; tempo,TLA,10,1
+Whenever you cast a spell from exile, create a 1/1 white Ally creature token.",W,Bison; Ally; tokens; etb; flying; evasion; airbend; bending; flash; tempo; exile cast,TLA,10,1
 Avatar's Wrath,Sorcery,"Choose up to one target creature, then airbend all other creatures. (Exile them. While each one is exiled, its owner may cast it for {2} rather than its mana cost.)
 Until your next turn, your opponents can't cast spells from anywhere other than their hands.
 Exile Avatar's Wrath.",W,airbend; bending,TLA,12,1
@@ -440,12 +440,12 @@ Whenever another creature you control with power 2 or less enters, put two +1/+1
 Spectacular Pileup,Sorcery,"All creatures and Vehicles lose indestructible until end of turn, then destroy all creatures and Vehicles.
 Cycling {2} ({2}, Discard this card: Draw a card.)",W,card draw; cycling,DFT,29,1
 Stagecoach Security,Creature — Human Soldier,"When this creature enters, creatures you control get +1/+1 and gain vigilance until end of turn.
-Plot {3}{W} (You may pay {3}{W} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",W,Human; Soldier; etb; pump; plot; tempo; cost-reduction,OTJ,30,1
+Plot {3}{W} (You may pay {3}{W} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",W,Human; Soldier; etb; pump; plot; tempo; cost-reduction; exile cast,OTJ,30,1
 Starfall Invocation,Sorcery,"Gift a card (You may promise an opponent a gift as you cast this spell. If you do, they draw a card before its other effects.)
 Destroy all creatures. If the gift was promised, return a creature card put into your graveyard this way to the battlefield under your control.",W,reanimator; graveyard; card draw; gift; value,BLB,34,1
 Starfield Shepherd,Creature — Angel,"Flying
 When this creature enters, search your library for a basic Plains card or a creature card with mana value 1 or less, reveal it, put it into your hand, then shuffle.
-Warp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,Angel; etb; flying; evasion; warp; tempo; cost-reduction,EOE,37,1
+Warp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,Angel; etb; flying; evasion; warp; tempo; cost-reduction; exile cast,EOE,37,1
 The Legend of Yangchen,Enchantment — Saga // Legendary Creature — Avatar,"(As this Saga enters and after your draw step, add a lore counter.)
 I — Starting with you, each player chooses up to one permanent with mana value 3 or greater from among permanents your opponents control. Exile those permanents.
 II — You may have target opponent draw three cards. If you do, draw three cards.
@@ -465,7 +465,7 @@ Disguise {4}{W} (You may cast this card face down for {3} as a 2/2 creature with
 Sun-Dappled Celebrant,Creature — Treefolk Cleric,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
 Vigilance",W,Treefolk; Cleric; vigilance; combat; convoke; go-wide; ramp,ECL,37,1
 Weftblade Enhancer,Creature — Drix Artificer,"When this creature enters, put a +1/+1 counter on each of up to two target creatures.
-Warp {2}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,Drix; Artificer; counters; etb; warp; tempo; cost-reduction,EOE,44,1
+Warp {2}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,Drix; Artificer; counters; etb; warp; tempo; cost-reduction; exile cast,EOE,44,1
 Restoration Seminar,Sorcery — Lesson,"Return target nonland permanent card from your graveyard to the battlefield.
 Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",W,Lesson; graveyard; paradigm,SOS,30,1
 Valor's Flagship,Legendary Artifact — Vehicle,"Flying, first strike, lifelink
@@ -519,7 +519,7 @@ II, III — Until end of turn, whenever a Kraken, Leviathan, Merfolk, Octopus, o
 Ward {2}",U,Saga; Leviathan; card draw; sacrifice; saga; bounce; ward; protection,FIN,77,1
 Mirrorform,Instant,Each nonland permanent you control becomes a copy of target non-Aura permanent.,U,,ECL,59,1
 Mechanozoa,Artifact Creature — Robot Jellyfish,"When this creature enters, tap target artifact or creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
-Warp {2}{U} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",U,Robot; Jellyfish; counters; etb; warp; tempo; cost-reduction,EOE,66,1
+Warp {2}{U} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",U,Robot; Jellyfish; counters; etb; warp; tempo; cost-reduction; exile cast,EOE,66,1
 Marang River Regent,Creature — Dragon // Instant — Omen,"Flying
 When this creature enters, return up to two other target nonland permanents to their owners' hands. // Draw three cards, then discard a card. (Then shuffle this card into its owner's library.)",U,Dragon; Omen; card draw; etb; bounce; flying; evasion,TDM,51,1
 "Madame Web, Clairvoyant",Legendary Creature — Mutant Advisor,"You may look at the top card of your library any time.
@@ -565,7 +565,7 @@ Draw a card, then mill three cards.
 Untap target land.",U,Lesson; counterspell; mill; card draw; graveyard,TLA,71,1
 Starbreach Whale,Creature — Whale,"Flying
 When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)
-Warp {1}{U} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",U,Whale; graveyard; etb; selection; flying; evasion; surveil; warp; tempo; cost-reduction,EOE,77,1
+Warp {1}{U} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",U,Whale; graveyard; etb; selection; flying; evasion; surveil; warp; tempo; cost-reduction; exile cast,EOE,77,1
 Skyskipper Duo,Creature — Bird Frog,"Flying
 When this creature enters, exile up to one other target creature you control. Return it to the battlefield under its owner's control at the beginning of the next end step.",U,Bird; Frog; etb; blink; flying; evasion,BLB,71,1
 Robotics Mastery,Enchantment — Aura,"Flash
@@ -575,7 +575,7 @@ Enchanted creature gets +2/+2.",U,Aura; tokens; etb; aura; pump; enchant; flash;
 Quantum Riddler,Creature — Sphinx,"Flying
 When this creature enters, draw a card.
 As long as you have one or fewer cards in hand, if you would draw one or more cards, you draw that many cards plus one instead.
-Warp {1}{U}",U,Sphinx; card draw; etb; flying; evasion; warp; tempo; cost-reduction,EOE,72,1
+Warp {1}{U}",U,Sphinx; card draw; etb; flying; evasion; warp; tempo; cost-reduction; exile cast,EOE,72,1
 "Renet, Temporal Apprentice",Legendary Creature — Human Wizard,"Flash
 When Renet enters, return each other nonland permanent that entered this turn to its owner's hand.",U,Human; Wizard; etb; bounce; flash; tempo,TMT,50,1
 Muse's Encouragement,Instant,"Create a 3/3 blue and red Elemental creature token with flying.
@@ -686,7 +686,7 @@ Spirit Water Revival,Sorcery,"As an additional cost to cast this spell, you may 
 Draw two cards. If this spell's additional cost was paid, instead shuffle your graveyard into your library, draw seven cards, and you have no maximum hand size for the rest of the game.
 Exile Spirit Water Revival.",U,graveyard; card draw; waterbend; bending,TLA,73,1
 Sinister Cryologist,Creature — Jellyfish Wizard,"When this creature enters, target creature an opponent controls gets -3/-0 until end of turn.
-Warp {U} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",U,Jellyfish; Wizard; etb; removal; warp; tempo; cost-reduction,EOE,75,1
+Warp {U} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",U,Jellyfish; Wizard; etb; removal; warp; tempo; cost-reduction; exile cast,EOE,75,1
 "Spider-Byte, Web Warden",Legendary Creature — Spider Avatar Hero,"When Spider-Byte enters, return up to one target nonland permanent to its owner's hand.",U,Spider; Avatar; Hero; etb; bounce,SPM,44,1
 Silvergill Peddler,Creature — Merfolk Citizen,"Whenever this creature becomes tapped, draw a card, then discard a card.",U,Merfolk; Citizen; card draw,ECL,70,1
 Secret Invasion,Enchantment — Aura,"Enchant creature you control
@@ -1104,7 +1104,7 @@ Super Shredder,Legendary Creature — Mutant Ninja Human,"Menace
 Whenever another permanent leaves the battlefield, put a +1/+1 counter on Super Shredder.",B,Mutant; Ninja; Human; counters; menace; evasion,TMT,83,1
 Timeline Culler,Creature — Drix Warlock,"Haste
 You may cast this card from your graveyard using its warp ability.
-Warp—{B}, Pay 2 life. (You may cast this card from your hand or graveyard for its warp cost. If you do, exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",B,Drix; Warlock; graveyard; haste; aggro; warp; tempo; cost-reduction; pay life,EOE,121,1
+Warp—{B}, Pay 2 life. (You may cast this card from your hand or graveyard for its warp cost. If you do, exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",B,Drix; Warlock; graveyard; haste; aggro; warp; tempo; cost-reduction; pay life; exile cast,EOE,121,1
 "Swordsman, Sharp Scoundrel",Legendary Creature — Human Hero Villain,"Whenever another Villain you control enters, attach up to one target Equipment you control to target creature you control.
 Whenever an equipped creature you control attacks, it connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",B,Human; Hero; Villain; counters; card draw; connive; graveyard,MSH,116,1
 Tunnel Rats,Creature — Rat,{4}{B}: Return this card from your graveyard to the battlefield tapped.,B,Rat; graveyard,TMT,84,1
@@ -1242,7 +1242,7 @@ Anchovy & Banana Pizza,Artifact — Food,"When this artifact enters, destroy tar
 {2}, {T}, Sacrifice this artifact: You gain 3 life.",B,Food; lifegain; sacrifice; removal; etb,TMT,57,1
 Blade of the Swarm,Creature — Insect Assassin,"When this creature enters, choose one —
 • Put two +1/+1 counters on this creature.
-• Put target exiled card with warp on the bottom of its owner's library.",B,Insect; Assassin; counters; etb,EOE,90,1
+• Put target exiled card with warp on the bottom of its owner's library.",B,Insect; Assassin; counters; etb; exile cast,EOE,90,1
 Cheerful Osteomancer,Creature — Orc Warlock // Sorcery,"This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Return target creature card from your graveyard to your hand.",B,Orc; Warlock; graveyard; prepared; spellslinger; tempo,SOS,76,1
 Buzzard-Wasp Colony,Creature — Bird Insect,"Flying
 When this creature enters, you may sacrifice an artifact or creature. If you do, draw a card.
@@ -1261,7 +1261,7 @@ When Elektra enters, destroy target creature an opponent controls with power 3 o
 Dream Seizer,Creature — Faerie Rogue,"Flying
 When this creature enters, you may blight 1. If you do, each opponent discards a card. (To blight 1, put a -1/-1 counter on a creature you control.)",B,Faerie; Rogue; counters; etb; discard; blight; graveyard; flying; evasion,ECL,101,1
 Eternal Student,Creature — Zombie Warlock,"{1}{B}, Exile this card from your graveyard: Create two 1/1 white and black Inkling creature tokens with flying.",B,Zombie; Warlock; graveyard; tokens,SOS,82,1
-Fell Horseman,Creature — Zombie Knight // Sorcery — Adventure,"When this creature dies, put it on the bottom of its owner's library. // Return target creature card from your graveyard to your hand. (Then exile this card. You may cast the creature later from exile.)",B,Zombie; Knight; Adventure; graveyard,WOE,92,1
+Fell Horseman,Creature — Zombie Knight // Sorcery — Adventure,"When this creature dies, put it on the bottom of its owner's library. // Return target creature card from your graveyard to your hand. (Then exile this card. You may cast the creature later from exile.)",B,Zombie; Knight; Adventure; graveyard; exile cast,WOE,92,1
 Gaius van Baelsar,Legendary Creature — Human Soldier,"When Gaius van Baelsar enters, choose one —
 • Each player sacrifices a creature token of their choice.
 • Each player sacrifices a nontoken creature of their choice.
@@ -1519,7 +1519,7 @@ Draw a card.",R,Lesson; card draw; removal,TLA,149,1
 Oreplate Pangolin,Artifact Creature — Robot Pangolin,"Whenever another artifact you control enters, you may pay {1}. If you do, put a +1/+1 counter on this creature.",R,Robot; Pangolin; counters,EOE,150,1
 Purple Dragon Punks,Creature — Human Rogue,{T}: Add {R}. Spend this mana only to cast an artifact spell or to activate an ability.,R,Human; Rogue; mana,TMT,100,1
 "Raphael, Tough Turtle",Legendary Creature — Mutant Ninja Turtle,"Alliance — Whenever another creature you control enters, Raphael deals 1 damage to target opponent.",R,Mutant; Ninja; Turtle; burn; alliance; aggro; value; noncombat damage,TMT,104,1
-Ratcatcher Trainee,Creature — Human Peasant // Instant — Adventure,"During your turn, this creature has first strike. // Create two 1/1 black Rat creature tokens with ""This token can't block."" (Then exile this card. You may cast the creature later from exile.)",R,Human; Peasant; Adventure; tokens,WOE,144,1
+Ratcatcher Trainee,Creature — Human Peasant // Instant — Adventure,"During your turn, this creature has first strike. // Create two 1/1 black Rat creature tokens with ""This token can't block."" (Then exile this card. You may cast the creature later from exile.)",R,Human; Peasant; Adventure; tokens; exile cast,WOE,144,1
 Reckless Ransacking,Instant,"Target creature gets +3/+2 until end of turn. Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,sacrifice; tokens; treasure; pump,ECL,152,2
 Return the Favor,Instant,"Spree (Choose one or more additional costs.)
 + {1} — Copy target instant spell, sorcery spell, activated ability, or triggered ability. You may choose new targets for the copy.
@@ -1596,7 +1596,7 @@ Exhaust — {3}: Put a +1/+1 counter on Jeong Jeong. When you next cast a Lesson
 Machinesmith Automaton,Artifact Creature — Robot Villain,"Trample
 Whenever another artifact you control enters, put a +1/+1 counter on this creature.",R,Robot; Villain; counters; trample; evasion,MSH,144,1
 Kavaron Turbodrone,Artifact Creature — Robot Scout,{T}: Target creature you control gets +1/+1 and gains haste until end of turn. Activate only as a sorcery.,R,Robot; Scout; pump,EOE,141,1
-Minecart Daredevil,Creature — Dwarf Knight // Instant — Adventure, // Target creature gets +2/+1 until end of turn. (Then exile this card. You may cast the creature later from exile.),R,Dwarf; Knight; Adventure; pump,WOE,141,1
+Minecart Daredevil,Creature — Dwarf Knight // Instant — Adventure, // Target creature gets +2/+1 until end of turn. (Then exile this card. You may cast the creature later from exile.),R,Dwarf; Knight; Adventure; pump; exile cast,WOE,141,1
 Molecular Modifier,Creature — Kavu Artificer,"At the beginning of combat on your turn, target creature you control gets +1/+0 and gains first strike until end of turn.",R,Kavu; Artificer; pump,EOE,146,1
 Mutant Town Musicians,Creature — Mutant Bard Performer,"Trample
 Alliance — Whenever another creature you control enters, this creature gets +1/+0 until end of turn.",R,Mutant; Bard; Performer; pump; alliance; aggro; value; trample; evasion,TMT,97,1
@@ -1644,7 +1644,7 @@ War Balloon,Artifact — Vehicle,"Flying
 As long as this Vehicle has three or more fire counters on it, it's an artifact creature.
 Crew 3 (Tap any number of creatures you control with total power 3 or more: This Vehicle becomes an artifact creature until end of turn.)",R,Vehicle; counters; vehicle; flying; evasion; crew; vehicles,TLA,159,1
 Weftstalker Ardent,Creature — Drix Artificer,"Whenever another creature or artifact you control enters, this creature deals 1 damage to each opponent.
-Warp {R} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",R,Drix; Artificer; burn; warp; tempo; cost-reduction; noncombat damage,EOE,169,1
+Warp {R} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",R,Drix; Artificer; burn; warp; tempo; cost-reduction; noncombat damage; exile cast,EOE,169,1
 Wisecrack,Instant,"Target creature deals damage equal to its power to itself. If that creature is attacking, Wisecrack deals 2 damage to that creature's controller.",R,burn,MSC,813,1
 Battlesong Berserker,Creature — Human Berserker,"Whenever you attack, target creature you control gets +1/+0 and gains menace until end of turn. (It can't be blocked except by two or more creatures.)",R,Human; Berserker; pump,FDN,78,1
 Bot Bashing Time,Sorcery,"Bot Bashing Time deals 6 damage to target creature. If that creature would die this turn, exile it instead.",R,burn,TMT,85,2
@@ -1709,7 +1709,7 @@ Equipped creature gets +3/+2 and is a Warrior in addition to its other types.
 Equip {5} ({5}: Attach to target creature you control. Equip only as a sorcery.)",R,Equipment; tokens; etb; equipment; pump; job select; equip,FIN,169,1
 Wartime Protestors,Creature — Human Rebel Ally,"Haste
 Whenever another Ally you control enters, put a +1/+1 counter on that creature and it gains haste until end of turn.",R,Human; Rebel; Ally; counters; haste; aggro,TLA,160,1
-Bellowing Bruiser,Creature — Ogre // Sorcery — Adventure,Haste // Up to two target creatures can't block this turn. (Then exile this card. You may cast the creature later from exile.),R,Ogre; Adventure; haste; aggro,WOE,121,1
+Bellowing Bruiser,Creature — Ogre // Sorcery — Adventure,Haste // Up to two target creatures can't block this turn. (Then exile this card. You may cast the creature later from exile.),R,Ogre; Adventure; haste; aggro; exile cast,WOE,121,1
 Boldwyr Aggressor,Creature — Giant Warrior,"Double strike
 Other Giants you control have double strike.",R,Giant; Warrior; double strike; combat; aggro,ECL,125,1
 Broadcast Takeover,Sorcery,Gain control of all artifacts your opponents control until end of turn. Untap them. They gain haste until end of turn.,R,theft,TMT,86,1
@@ -1724,7 +1724,7 @@ Kavaron Skywarden,Creature — Kavu Soldier,"Reach
 Void — At the beginning of your end step, if a nonland permanent left the battlefield this turn or a spell was warped this turn, put a +1/+1 counter on this creature.",R,Kavu; Soldier; counters; reach; defense; void; graveyard; payoff,EOE,140,1
 Nova Hellkite,Creature — Dragon,"Flying, haste
 When this creature enters, it deals 1 damage to target creature an opponent controls.
-Warp {2}{R} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",R,Dragon; burn; etb; flying; evasion; haste; aggro; warp; tempo; cost-reduction,EOE,148,1
+Warp {2}{R} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",R,Dragon; burn; etb; flying; evasion; haste; aggro; warp; tempo; cost-reduction; exile cast,EOE,148,1
 Raging Goblinoids,Creature — Goblin Berserker Villain,"Haste
 Mayhem {2}{R} (You may cast this card from your graveyard for {2}{R} if you discarded it this turn. Timing rules still apply.)",R,Goblin; Berserker; Villain; graveyard; mayhem; aggro; haste,SPM,85,1
 Ran and Shaw,Legendary Creature — Dragon,"Flying, firebending 2
@@ -2038,7 +2038,7 @@ Morbid — At the beginning of your end step, if a creature died this turn, put 
 Earthbending Lesson,Sorcery — Lesson,"Earthbend 4. (Target land you control becomes a 0/0 creature with haste that's still a land. Put four +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",G,Lesson; counters; blink; earthbend; bending,TLA,176,1
 Drix Fatemaker,Creature — Drix Wizard,"When this creature enters, put a +1/+1 counter on target creature.
 Each creature you control with a +1/+1 counter on it has trample.
-Warp {1}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,Drix; Wizard; counters; etb; warp; tempo; cost-reduction,EOE,178,1
+Warp {1}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,Drix; Wizard; counters; etb; warp; tempo; cost-reduction; exile cast,EOE,178,1
 Earth Kingdom General,Creature — Human Soldier Ally,"When this creature enters, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)
 Whenever you put one or more +1/+1 counters on a creature, you may gain that much life. Do this only once each turn.",G,Human; Soldier; Ally; counters; lifegain; etb; blink; earthbend; bending,TLA,173,2
 Foggy Swamp Vinebender,Creature — Human Plant Ally,"This creature can't be blocked by creatures with power 2 or less.
@@ -2050,7 +2050,7 @@ Increment (Whenever you cast a spell, if the amount of mana you spent is greater
 Kyoshi Island Plaza,Legendary Enchantment — Shrine,"When Kyoshi Island Plaza enters, search your library for up to X basic land cards, where X is the number of Shrines you control. Put those cards onto the battlefield tapped, then shuffle.
 Whenever another Shrine you control enters, search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",G,Shrine; ramp; etb,TLA,184,1
 Loading Zone,Enchantment,"If one or more counters would be put on a creature, Spacecraft, or Planet you control, twice that many of each of those kinds of counters are put on it instead.
-Warp {G} (You may cast this card from your hand for its warp cost. Exile this enchantment at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,warp; tempo; cost-reduction,EOE,196,1
+Warp {G} (You may cast this card from your hand for its warp cost. Exile this enchantment at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,warp; tempo; cost-reduction; exile cast,EOE,196,1
 "Michelangelo, Mutant BFF",Legendary Creature — Mutant Ninja Turtle,"Each creature you control with a counter on it can't be blocked by more than one creature.
 Whenever Michelangelo enters or attacks, create a Mutagen token. (It's an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",G,Mutant; Ninja; Turtle; counters; sacrifice; tokens,TMT,120,1
 "Michelangelo, Improviser",Legendary Creature — Mutant Ninja Turtle,"Sneak {2}{G}{G} (You may cast this spell for {2}{G}{G} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)
@@ -2096,10 +2096,10 @@ Elemental Teachings,Instant — Lesson,"Search your library for up to four land 
 "Doc Samson, Super Psychiatrist",Legendary Creature — Gamma Doctor Hero,"If you would put one or more counters on a permanent you control, put that many plus one of each of those kinds of counters on that permanent instead.
 {T}: Add X mana of any one color, where X is Doc Samson's power.",G,Gamma; Doctor; Hero; mana,MSH,164,1
 Germinating Wurm,Creature — Plant Wurm,"When this creature enters, you gain 2 life.
-Warp {1}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,Plant; Wurm; lifegain; etb; warp; tempo; cost-reduction,EOE,187,1
+Warp {1}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,Plant; Wurm; lifegain; etb; warp; tempo; cost-reduction; exile cast,EOE,187,1
 Germination Practicum,Sorcery — Lesson,"Put two +1/+1 counters on each creature you control.
 Paradigm (Then exile this spell. After you first resolve a spell with this name, you may cast a copy of it from exile without paying its mana cost at the beginning of each of your first main phases.)",G,Lesson; counters; paradigm,SOS,149,1
-Gingerbread Hunter,Creature — Giant // Instant — Adventure,"When this creature enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."") // Target creature gets -2/-2 until end of turn. (Then exile this card. You may cast the creature later from exile.)",B/G,Giant; Adventure; lifegain; sacrifice; tokens; etb; food; removal,WOE,227,1
+Gingerbread Hunter,Creature — Giant // Instant — Adventure,"When this creature enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."") // Target creature gets -2/-2 until end of turn. (Then exile this card. You may cast the creature later from exile.)",B/G,Giant; Adventure; lifegain; sacrifice; tokens; etb; food; removal; exile cast,WOE,227,1
 Gigantosaurus,Creature — Dinosaur,,G,Dinosaur,ANB,96,1
 Invasion Tactics,Enchantment,"When this enchantment enters, creatures you control get +2/+2 until end of turn.
 Whenever one or more Allies you control deal combat damage to a player, draw a card.",G,card draw; etb; pump; Allie,TLA,183,1
@@ -2187,7 +2187,7 @@ Wild Hypothesis,Sorcery,"Create a 0/0 green and blue Fractal creature token. Put
 Surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",G,counters; graveyard; tokens; selection; surveil,SOS,167,1
 Broodguard Elite,Creature — Insect Knight,"This creature enters with X +1/+1 counters on it.
 When this creature leaves the battlefield, put its counters on target creature you control.
-Warp {X}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,Insect; Knight; counters; warp; tempo; cost-reduction,EOE,175,1
+Warp {X}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,Insect; Knight; counters; warp; tempo; cost-reduction; exile cast,EOE,175,1
 Ba Sing Se,Land,"This land enters tapped unless you control a basic land.
 {T}: Add {G}.
 {2}{G}, {T}: Earthbend 2. Activate only as a sorcery. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",G,counters; mana; blink; earthbend; bending,TLA,266,2
@@ -2592,7 +2592,7 @@ Wilt in the Heat deals 5 damage to target creature. If that creature would die t
 Quintorius Kand,Legendary Planeswalker — Quintorius,"Whenever you cast a spell from exile, Quintorius Kand deals 2 damage to each opponent and you gain 2 life.
 +1: Create a 3/2 red and white Spirit creature token.
 −3: Discover 4.
-−6: Exile any number of target cards from your graveyard. Add {R} for each card exiled this way. You may play those cards this turn.",W/R,Quintorius; Planeswalker; graveyard; lifegain; tokens; burn; planeswalker; discover; value; spellslinger; noncombat damage,LCI,238,1
+−6: Exile any number of target cards from your graveyard. Add {R} for each card exiled this way. You may play those cards this turn.",W/R,Quintorius; Planeswalker; graveyard; lifegain; tokens; burn; planeswalker; discover; value; spellslinger; noncombat damage; exile cast,LCI,238,1
 Thor Odinson,Legendary Creature — God Warrior Hero,"Flying, vigilance, prowess, prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn twice.)",W/R,God; Warrior; Hero; pump; flying; evasion; prowess; spellslinger; tempo; vigilance; combat,MSH,234,1
 Catharsis,Creature — Elemental Incarnation,"When this creature enters, if {W}{W} was spent to cast it, create two 1/1 green and white Kithkin creature tokens.
 When this creature enters, if {R}{R} was spent to cast it, creatures you control get +1/+1 and gain haste until end of turn.
@@ -2741,7 +2741,7 @@ Land creatures you control have vigilance.
 At the beginning of combat on your turn, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",W/U/G,Human; Avatar; Ally; counters; etb; selection; blink; flying; evasion; transform; earthbend; bending,TLA,203,1
 "Katara, the Fearless",Legendary Creature — Human Warrior Ally,"If a triggered ability of an Ally you control triggers, that ability triggers an additional time.",W/U/G,Human; Warrior; Ally,TLA,230,1
 Fire Lord Zuko,Legendary Creature — Human Noble Ally,"Firebending X, where X is Fire Lord Zuko's power. (Whenever this creature attacks, add X {R}. This mana lasts until end of combat.)
-Whenever you cast a spell from exile and whenever a permanent you control enters from exile, put a +1/+1 counter on each creature you control.",W/B/R,Human; Noble; Ally; counters; firebending; bending,TLA,221,1
+Whenever you cast a spell from exile and whenever a permanent you control enters from exile, put a +1/+1 counter on each creature you control.",W/B/R,Human; Noble; Ally; counters; firebending; bending; exile cast,TLA,221,1
 "Thanos, the Mad Titan",Legendary Creature — Eternal Villain,"Deathtouch, lifelink
 Power-up — {C}{W}{U}{B}{R}{G}: Put two +1/+1 counters on Thanos. Choose odd or even. Destroy each other creature with mana value of the chosen quality. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn. Zero is even.)",W/U/B/R/G,Eternal; Villain; counters; lifegain; deathtouch; combat; removal; power-up; payoff; lifelink,MSH,233,1
 "Iroh, Grand Lotus",Legendary Creature — Human Noble Ally,"Firebending 2
@@ -3024,7 +3024,7 @@ Season of Loss,Sorcery,"Choose up to five {P} worth of modes. You may choose the
 {P}{P}{P} — Each opponent loses X life, where X is the number of creature cards in your graveyard.",B,graveyard; card draw; sacrifice,BLB,112,1
 Conduct Electricity,Instant,Conduct Electricity deals 6 damage to target creature and 2 damage to up to one target creature token.,R,burn,BLB,130,1
 Sozin's Comet,Sorcery,"Each creature you control gains firebending 5 until end of turn. (Whenever it attacks, add {R}{R}{R}{R}{R}. This mana lasts until end of combat.)
-Foretell {2}{R} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)",R,foretell,TLA,154,1
+Foretell {2}{R} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)",R,foretell; exile cast,TLA,154,1
 "Ygra, Eater of All",Legendary Creature — Elemental Cat,"Ward—Sacrifice a Food.
 Other creatures are Food artifacts in addition to their other types and have ""{2}, {T}, Sacrifice this permanent: You gain 3 life.""
 Whenever a Food is put into a graveyard from the battlefield, put two +1/+1 counters on Ygra.",B/G,Elemental; Cat; counters; reanimator; graveyard; lifegain; sacrifice; food; ward; protection,BLB,241,1
@@ -3115,7 +3115,7 @@ Flowerfoot Swordmaster,Creature — Mouse Soldier,"Offspring {2} (You may pay an
 Valiant — Whenever this creature becomes the target of a spell or ability you control for the first time each turn, Mice you control get +1/+0 until end of turn.",W,Mouse; Soldier; tokens; etb; pump; offspring; go-wide; valiant; combat; counters,BLB,14,1
 Rayblade Trooper,Creature — Human Soldier,"When this creature enters, put a +1/+1 counter on target creature you control.
 Whenever a nontoken creature you control with a +1/+1 counter on it dies, create a 1/1 white Human Soldier creature token.
-Warp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,Human; Soldier; counters; tokens; etb; warp; tempo; cost-reduction,EOE,30,1
+Warp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,Human; Soldier; counters; tokens; etb; warp; tempo; cost-reduction; exile cast,EOE,30,1
 Terrapact Intimidator,Creature — Kavu Scout,"When this creature enters, target opponent may have you create two Lander tokens. If they don't, put two +1/+1 counters on this creature. (A Lander token is an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",R,Kavu; Scout; counters; sacrifice; tokens; ramp; etb,EOE,164,1
 Shipwreck Dowser,Creature — Merfolk Wizard,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 When this creature enters, return target instant or sorcery card from your graveyard to your hand.",U,Merfolk; Wizard; graveyard; etb; pump; prowess; spellslinger; tempo,FDN,596,1
@@ -3182,7 +3182,7 @@ Illegitimate Business,Land,"This land enters tapped.
 When this land enters, you gain 1 life.
 {T}: Add {B} or {G}.",B/G,lifegain; mana; etb,TMT,186,1
 Frolicking Familiar,Creature — Otter Wizard // Instant — Adventure,"Flying
-Whenever you cast an instant or sorcery spell, this creature gets +1/+1 until end of turn. // Blow Off Steam deals 1 damage to any target. (Then exile this card. You may cast the creature later from exile.)",U/R,Otter; Wizard; Adventure; burn; pump; spellslinger; flying; evasion,WOE,226,1
+Whenever you cast an instant or sorcery spell, this creature gets +1/+1 until end of turn. // Blow Off Steam deals 1 damage to any target. (Then exile this card. You may cast the creature later from exile.)",U/R,Otter; Wizard; Adventure; burn; pump; spellslinger; flying; evasion; exile cast,WOE,226,1
 Korvold and the Noble Thief,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I, II — Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
 III — Exile the top three cards of target opponent's library. You may play those cards this turn.",R,Saga; sacrifice; tokens; treasure; saga; impulse; heist,WOE,139,1
@@ -3405,7 +3405,7 @@ When this creature enters, exile target spell. It becomes plotted. (Its owner ma
 Spells your opponents cast from graveyards or from exile cost {2} more to cast.",W,Bird; Rogue; graveyard; removal; etb; flying; evasion; plot; tempo; cost-reduction; flash,OTJ,4,1
 Chocobo Racetrack,Artifact,"Landfall — Whenever a land you control enters, create a 2/2 green Bird creature token with ""Whenever a land you control enters, this token gets +1/+0 until end of turn.""",G,tokens; landfall; pump; lands; ramp,FIN,179,1
 Eusocial Engineering,Enchantment,"Landfall — Whenever a land you control enters, create a 2/2 colorless Robot artifact creature token.
-Warp {1}{G} (You may cast this card from your hand for its warp cost. Exile this enchantment at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,tokens; landfall; warp; tempo; cost-reduction; lands; ramp,EOE,181,1
+Warp {1}{G} (You may cast this card from your hand for its warp cost. Exile this enchantment at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,tokens; landfall; warp; tempo; cost-reduction; lands; ramp; exile cast,EOE,181,1
 Stirring Hopesinger,Creature — Bird Bard,"Flying, lifelink
 Repartee — Whenever you cast an instant or sorcery spell that targets a creature, put a +1/+1 counter on each creature you control.",W,Bird; Bard; counters; lifegain; spellslinger; flying; evasion; lifelink; repartee,SOS,35,1
 Shrike Force,Creature — Bird Knight,"Flying, double strike, vigilance",W,Bird; Knight; flying; evasion; vigilance; combat; double strike; aggro,BLB,31,1
@@ -3580,3 +3580,134 @@ Valiant — Whenever this creature becomes the target of a spell or ability you 
 Honored Knight-Captain,Creature — Human Advisor Knight,"When this creature enters, create a 1/1 white Human Soldier creature token.
 {4}{W}{W}, Sacrifice this creature: Search your library for an Equipment card, put it onto the battlefield, then shuffle.",W,Human; Advisor; Knight; sacrifice; tokens; etb,EOE,22,1
 Slash of Light,Instant,Slash of Light deals damage equal to the number of creatures you control plus the number of Equipment you control to target creature.,W,,FIN,32,1
+Spider-Man No More,Enchantment — Aura,"Enchant creature
+Enchanted creature is a Citizen with base power and toughness 1/1. It has defender and loses all other abilities. (It also loses all other creature types.)",U,Aura; aura; enchant,SPM,45,1
+Thwip!,Instant,"Target creature gets +2/+2 and gains flying until end of turn. If it's a Spider, you gain 2 life.",W,lifegain; pump,MSC,780,1
+Pumpkin Bombardment,Sorcery,"As an additional cost to cast this spell, discard a card or pay {2}.
+Pumpkin Bombardment deals 3 damage to target creature.",B/R,burn,MSC,822,1
+Mechanical Mobster,Artifact Creature — Human Robot Villain,"When this creature enters, exile up to one target card from a graveyard. Target creature you control connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",Colorless,Human; Robot; Villain; counters; graveyard; card draw; etb; connive,SPM,168,1
+Vibrant Cityscape,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",Colorless,sacrifice; ramp,SPM,188,1
+Daily Bugle Reporters,Creature — Human Citizen,"When this creature enters, choose one —
+• Puff Piece — Put a +1/+1 counter on each of up to two target creatures.
+• Investigative Journalism — Return target creature card with mana value 2 or less from your graveyard to your hand.",W,Human; Citizen; counters; graveyard; etb,MSC,771,1
+"Rhino, Barreling Brute",Legendary Creature — Human Villain,"Vigilance, trample, haste
+Whenever Rhino attacks, if you've cast a spell with mana value 4 or greater this turn, draw a card.",R/G,Human; Villain; card draw; vigilance; combat; haste; aggro; trample; evasion,SPM,140,1
+Heroes' Hangout,Sorcery,"Choose one —
+• Date Night — Exile the top two cards of your library. Choose one of them. Until the end of your next turn, you may play that card.
+• Patrol Night — One or two target creatures each get +1/+0 and gain first strike until end of turn.",R,pump; impulse,MSC,804,1
+"SP//dr, Piloted by Peni",Legendary Artifact Creature — Spider Hero,"Vigilance
+When SP//dr enters, put a +1/+1 counter on target creature.
+Whenever a modified creature you control deals combat damage to a player, draw a card. (Equipment, Auras you control, and counters are modifications.)",W/U,Spider; Hero; counters; card draw; etb; vigilance; combat,SPM,147,1
+Mister Negative,Legendary Creature — Human Villain,"Vigilance, lifelink
+Darkforce Inversion — When Mister Negative enters, you may exchange life totals with target opponent. If you lost life this way, draw that many cards.",W/B,Human; Villain; lifegain; card draw; etb; lifelink; vigilance; combat,SPM,135,2
+Pictures of Spider-Man,Artifact,"When this artifact enters, look at the top five cards of your library. You may reveal up to two creature cards from among them and put them into your hand. Put the rest on the bottom of your library in a random order.
+{1}, {T}, Sacrifice this artifact: Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",G,sacrifice; tokens; etb; treasure; selection,SPM,109,1
+"Flash Thompson, Spider-Fan",Legendary Creature — Human Citizen,"Flash
+When Flash Thompson enters, choose one or both —
+• Heckle — Tap target creature.
+• Hero Worship — Untap target creature.",W,Human; Citizen; etb; flash; tempo,MSC,772,1
+Wall Crawl,Enchantment,"When this enchantment enters, create a 2/1 green Spider creature token with reach, then you gain 1 life for each Spider you control.
+Spiders you control get +1/+1 and can't be blocked by creatures with defender.",G,Spider; lifegain; tokens; etb; pump,SPM,121,1
+Daily Bugle Building,Land,"{T}: Add {C}.
+{1}, {T}: Add one mana of any color.
+Smear Campaign — {1}, {T}: Target legendary creature gains menace until end of turn. Activate only as a sorcery.",Colorless,mana,SPM,179,1
+"Anti-Venom, Horrifying Healer",Legendary Creature — Symbiote Hero,"When Anti-Venom enters, if he was cast, return target creature card from your graveyard to the battlefield.
+If damage would be dealt to Anti-Venom, prevent that damage and put that many +1/+1 counters on him.",W,Symbiote; Hero; counters; reanimator; graveyard; etb,SPM,1,1
+Web of Life and Destiny,Enchantment,"Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)
+At the beginning of combat on your turn, look at the top five cards of your library. You may put a creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order.",G,selection; convoke; go-wide; ramp,SPM,122,1
+Spider-Verse,Enchantment,"The ""legend rule"" doesn't apply to Spiders you control.
+Whenever you cast a spell from anywhere other than your hand, you may copy it. If you do, you may choose new targets for the copy. If the copy is a permanent spell, it gains haste. Do this only once each turn.",R,Spider; exile cast,SPM,93,1
+Norman Osborn,Legendary Creature — Human Scientist Villain // Legendary Creature — Goblin Human Villain,"Norman Osborn can't be blocked.
+Whenever Norman Osborn deals combat damage to a player, he connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)
+{1}{U}{B}{R}: Transform Norman Osborn. Activate only as a sorcery. // Flying, menace
+Spells you cast from your graveyard cost {2} less to cast.
+Goblin Formula — Each nonland card in your graveyard has mayhem. The mayhem cost is equal to its mana cost. (You may cast a card from your graveyard for its mayhem cost if you discarded it this turn. Timing rules still apply.)",U/B/R,Human; Scientist; Villain; Goblin; counters; graveyard; cost-reduction; card draw; flying; evasion; transform; menace; connive; goblin formula; exile cast,SPM,39,1
+"Gwenom, Remorseless",Legendary Creature — Symbiote Spider Hero,"Deathtouch, lifelink
+Whenever Gwenom attacks, until end of turn, you may look at the top card of your library any time and you may play cards from the top of your library. If you cast a spell this way, pay life equal to its mana value rather than pay its mana cost.",B,Symbiote; Spider; Hero; lifegain; pay life; card advantage; selection; lifelink; deathtouch; combat; removal,SPM,56,1
+Ponder,Sorcery,"Look at the top three cards of your library, then put them back in any order. You may shuffle.
+Draw a card.",U,card draw; selection,LRW,79,1
+Exalted Sunborn,Creature — Angel Wizard,"Flying, lifelink
+If one or more tokens would be created under your control, twice that many of those tokens are created instead.
+Warp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,Angel; Wizard; lifegain; tokens; flying; evasion; lifelink; warp; tempo; cost-reduction; exile cast,EOE,15,1
+"Sokka, Bold Boomeranger",Legendary Creature — Human Warrior Ally,"When Sokka enters, discard up to two cards, then draw that many cards.
+Whenever you cast an artifact or Lesson spell, put a +1/+1 counter on Sokka.",U/R,Human; Warrior; Ally; counters; card draw; etb,TLA,240,1
+Angry Rabble,Creature — Human Citizen,"Trample
+Whenever you cast a spell with mana value 4 or greater, this creature deals 1 damage to each opponent.
+{5}{R}: Put two +1/+1 counters on this creature. Activate only as a sorcery.",R,Human; Citizen; counters; burn; noncombat damage; trample; evasion,SPM,75,1
+University Campus,Land,"This land enters tapped.
+{T}: Add {W} or {U}.
+{4}, {T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W/U,graveyard; mana; selection; surveil,SPM,186,2
+Suburban Sanctuary,Land,"This land enters tapped.
+{T}: Add {G} or {W}.
+{4}, {T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W/G,graveyard; mana; selection; surveil,SPM,185,1
+Ominous Asylum,Land,"This land enters tapped.
+{T}: Add {B} or {R}.
+{4}, {T}: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",B/R,graveyard; mana; selection; surveil,SPM,181,1
+Scorpion's Sting,Instant,Target creature gets -3/-3 until end of turn.,B,removal,SPM,65,1
+Kraven's Cats,Creature — Cat Villain,{2}{G}: This creature gets +2/+2 until end of turn. Activate only once each turn.,G,Cat; Villain; pump,SPM,104,1
+Hot Dog Cart,Artifact,"When this artifact enters, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+{T}: Add one mana of any color.",Colorless,lifegain; sacrifice; tokens; mana; etb; food,SPM,164,1
+News Helicopter,Artifact Creature — Construct,"Flying
+When this creature enters, create a 1/1 green and white Human Citizen creature token.",Colorless,Construct; tokens; etb; flying; evasion,SPM,169,1
+Web Up,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.",W,removal; etb,MSH,41,1
+Risky Research,Sorcery,"Surveil 2, then draw two cards. You lose 2 life. (To surveil 2, look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",B,graveyard; pay life; card draw; selection; surveil,SPM,62,1
+Gallant Citizen,Creature — Human Citizen,"When this creature enters, draw a card.",W/G,Human; Citizen; card draw; etb,MSC,820,1
+"Beetle, Legacy Criminal",Legendary Creature — Human Rogue Villain,"Flying
+{1}{U}, Exile this card from your graveyard: Put a +1/+1 counter on target creature. It gains flying until end of turn. Activate only as a sorcery.",U,Human; Rogue; Villain; counters; graveyard; flying; evasion,SPM,26,1
+Whoosh!,Instant,"Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)
+Return target nonland permanent to its owner's hand. If this spell was kicked, draw a card.",U,card draw; bounce; kicker; value,MSC,790,1
+Skyward Spider,Creature — Spider Human Hero,"Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
+This creature has flying as long as it's modified. (Equipment, Auras you control, and counters are modifications.)",W/U,Spider; Human; Hero; ward; protection,SPM,146,1
+City Pigeon,Creature — Bird,"Flying
+When this creature leaves the battlefield, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",W,Bird; lifegain; sacrifice; tokens; food; flying; evasion,MSC,769,1
+Lurking Lizards,Creature — Lizard Villain,"Trample
+Whenever you cast a spell with mana value 4 or greater, put a +1/+1 counter on this creature.",G,Lizard; Villain; counters; trample; evasion,MSC,816,1
+"Spider-Girl, Legacy Hero",Legendary Creature — Spider Human Hero,"During your turn, Spider-Girl has flying.
+When Spider-Girl leaves the battlefield, create a 1/1 green and white Human Citizen creature token.",W/G,Spider; Human; Hero; tokens,SPM,149,1
+Grow Extra Arms,Instant,"This spell costs {1} less to cast if it targets a Spider.
+Target creature gets +4/+4 until end of turn.",G,cost-reduction; pump,SPM,101,1
+Taxi Driver,Creature — Human Pilot,"{1}, {T}: Target creature gains haste until end of turn.",R,Human; Pilot,MSC,811,1
+"Spider-Man, Web-Slinger",Legendary Creature — Spider Human Hero,Web-slinging {W} (You may cast this spell for {W} if you also return a tapped creature you control to its owner's hand.),W,Spider; Human; Hero; bounce; web-slinging; evasion; tempo,MSC,776,1
+Mysterio's Phantasm,Creature — Illusion Villain,"Flying, vigilance
+Whenever this creature attacks, mill a card. (Put the top card of your library into your graveyard.)",U,Illusion; Villain; graveyard; mill; flying; evasion; vigilance; combat,SPM,38,1
+Common Crook,Creature — Human Rogue Villain,"When this creature dies, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",B,Human; Rogue; Villain; sacrifice; tokens; treasure,MSC,792,1
+"Wraith, Vicious Vigilante",Legendary Creature — Human Detective Hero,"Double strike
+Fear Gas — Wraith can't be blocked.",W/U,Human; Detective; Hero; fear; evasion; double strike; combat; aggro,SPM,160,1
+Alien Symbiosis,Enchantment — Aura,"Enchant creature
+Enchanted creature gets +1/+1, has menace, and is a Symbiote in addition to its other types.
+You may cast this card from your graveyard by discarding a card in addition to paying its other costs.",B,Aura; graveyard; aura; pump; enchant,MSC,791,1
+Spider-Man India,Legendary Creature — Spider Human Hero,"Web-slinging {1}{G}{W} (You may cast this spell for {1}{G}{W} if you also return a tapped creature you control to its owner's hand.)
+Pavitr's Sevā — Whenever you cast a creature spell, put a +1/+1 counter on target creature you control. It gains flying until end of turn.",W/G,Spider; Human; Hero; counters; bounce; web-slinging; evasion; tempo,SPM,151,1
+Rhino's Rampage,Sorcery,"Target creature you control gets +1/+0 until end of turn. It fights target creature an opponent controls. When excess damage is dealt to the creature an opponent controls this way, destroy up to one target noncreature artifact with mana value 3 or less.",R/G,pump; fight; removal; combat,MSC,823,1
+Sudden Strike,Instant,Destroy target attacking or blocking creature.,W,removal,MSC,779,1
+"Spiders-Man, Heroic Horde",Legendary Creature — Spider Hero,"Web-slinging {4}{G}{G} (You may cast this spell for {4}{G}{G} if you also return a tapped creature you control to its owner's hand.)
+When Spiders-Man enters, if they were cast using web-slinging, you gain 3 life and create two 2/1 green Spider creature tokens with reach.",G,Spider; Hero; lifegain; tokens; etb; bounce; web-slinging; evasion; tempo,SPM,117,1
+Behold the Sinister Six!,Sorcery,Return up to six target creature cards with different names from your graveyard to the battlefield.,B,reanimator; graveyard,SPM,51,1
+"Doctor Octopus, Master Planner",Legendary Creature — Human Scientist Villain,"Other Villains you control get +2/+2.
+Your maximum hand size is eight.
+At the beginning of your end step, if you have fewer than eight cards in hand, draw cards equal to the difference.",U/B,Human; Scientist; Villain; card draw; pump,SPM,128,1
+"Shriek, Treblemaker",Legendary Creature — Mutant Villain,"At the beginning of your first main phase, you may discard a card. When you do, target creature can't block this turn.
+Sonic Blast — Whenever a creature an opponent controls dies, Shriek deals 1 damage to that player.",B/R,Mutant; Villain; burn; noncombat damage,SPM,144,1
+"Ezekiel Sims, Spider-Totem",Legendary Creature — Spider Human Advisor,"Reach
+At the beginning of combat on your turn, target Spider you control gets +2/+2 until end of turn.",G,Spider; Human; Advisor; pump; reach; defense,SPM,100,1
+King T'Challa,Legendary Creature — Human Noble Hero // Legendary Creature — Human Warrior Hero,"Flash
+Whenever a player draws their second card each turn, you draw a card.
+{4}{W}{U}: Transform King T'Challa. Activate only as a sorcery. // Flash
+Double strike
+Prevent all damage that would be dealt to Black Panther.
+Whenever Black Panther deals combat damage to a player, draw a card.",W/U,Human; Noble; Hero; Warrior; card draw; transform; double strike; combat; aggro; flash; tempo,MSH,219,1
+Dracogenesis,Enchantment,You may cast Dragon spells without paying their mana costs.,R,,TDM,105,1
+Festival of Embers,Enchantment,"During your turn, you may cast instant and sorcery spells from your graveyard by paying 1 life in addition to their other costs.
+If a card or token would be put into your graveyard from anywhere, exile it instead.
+{1}{R}: Sacrifice this enchantment.",R,graveyard; sacrifice; spellslinger,BLB,134,1
+"Delney, Streetwise Lookout",Legendary Creature — Human Scout,"Creatures you control with power 2 or less can't be blocked by creatures with power 3 or greater.
+If a triggered ability of a creature you control with power 2 or less triggers, that ability triggers an additional time.",W,Human; Scout,MKM,12,1
+Virtue of Loyalty,Enchantment // Instant — Adventure,"At the beginning of your end step, put a +1/+1 counter on each creature you control. Untap those creatures. // Create a 2/2 white Knight creature token with vigilance. (Then exile this card. You may cast the enchantment later from exile.)",W,Adventure; counters; tokens; exile cast,WOE,38,1
+Agatha's Soul Cauldron,Legendary Artifact,"You may spend mana as though it were mana of any color to activate abilities of creatures you control.
+Creatures you control with +1/+1 counters on them have all activated abilities of all creature cards exiled with Agatha's Soul Cauldron.
+{T}: Exile target card from a graveyard. When a creature card is exiled this way, put a +1/+1 counter on target creature you control.",Colorless,counters; graveyard; removal; ramp,WOE,242,1
+Day of Judgment,Sorcery,Destroy all creatures.,W,,FDN,140,1
+Enduring Tenacity,Enchantment Creature — Snake Glimmer,"Whenever you gain life, target opponent loses that much life.
+When Enduring Tenacity dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",B,Snake; Glimmer; lifegain,DSK,95,1
+Adelbert Steiner,Legendary Creature — Human Knight,"Lifelink
+Adelbert Steiner gets +1/+1 for each Equipment you control.",W,Human; Knight; lifegain; pump; lifelink,FIN,3,1

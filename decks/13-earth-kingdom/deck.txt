@@ -1,6 +1,6 @@
 #: name: Earth Kingdom
 #: format: Standard
-#: tier: B — 4-color Earthbend ramp; metrics floor B (interaction 4 + card advantage 1). The clunky 4-color mana that capped it at C is now shored up by real fixing — Vizier of the Menagerie (spend any mana on creatures) + Prismatic Undercurrents (Vivid fetch = color count) + New Generation's Technique — so the big earthbend payoffs cast reliably. Held below A by thin hard interaction (4) and singleton variance across the rainbow splash.
+#: tier: B — 4-color Earthbend ramp; metrics floor B (interaction 3 + card advantage 1). The clunky 4-color mana that capped it at C is now shored up by real fixing — Vizier of the Menagerie (spend any mana on creatures) + Prismatic Undercurrents (Vivid fetch = color count) + New Generation's Technique — so the big earthbend payoffs cast reliably. Held below A by thin hard interaction — now 3, the lowest on the roster, after Bite Down was CUT for Agatha's Soul Cauldron; that trade bought a counters/graveyard engine and a mana-fixer for activated abilities, but the interaction floor is the axis to watch. Singleton variance across the rainbow splash also caps it.
 #: colors: GWBR
 #: archetype: Green-base 4-color Avatar Earthbend ramp — rainbow-fixed W/B/R splashes into big earthbenders.
 #: notes: Green-base Avatar Earth Kingdom / Earthbend ramp deck (green-primary), light
@@ -42,7 +42,7 @@
 1 Lumra, Bellow of the Woods (BLB) 183
 1 Spider-Man, Brooklyn Visionary (SPM) 115
 1 Ka-Zar of the Savage Land (MSH) 174
-1 Bite Down (FDN) 212
+1 Agatha's Soul Cauldron (WOE) 242
 
 # Lands
 2 Ba Sing Se (TLA) 266
