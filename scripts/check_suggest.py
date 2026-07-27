@@ -354,6 +354,37 @@ def check():
     #      on the OUTPUT ORDER, which is what a user actually sees.
     errs += _wiring_flags()
 
+    # 14. DOUBLER co-signal — bounded, floored, and RESTRICTION-AWARE.
+    #     A card that doubles tokens/counters/triggers is worth the deck's DENSITY of that
+    #     thing, which theme overlap cannot see (it reads membership, not magnitude): Exalted
+    #     Sunborn scored deck 45 over Knight's Edge while 45 fields 6 token-makers to
+    #     Knight's Edge's 14. The term must stay bounded so it re-orders near-ties without
+    #     overriding theme fit, must be ZERO for a deck that barely does the thing, and must
+    #     honour a doubler's own scope — Delney only doubles triggers of creatures with
+    #     "power 2 or less", and counting every trigger inflated one deck's support from 4
+    #     to 24, enough to flip it over the KEY threshold by itself.
+    if deck.doubler_boost(0) != 0 or deck.doubler_boost(deck._DOUBLER_MIN_SOURCES - 1) != 0:
+        errs.append("doubler_boost must be ZERO below _DOUBLER_MIN_SOURCES — a deck that "
+                    "barely makes tokens does not want a token doubler.")
+    if deck.doubler_boost(10_000) > deck._DOUBLER_CAP:
+        errs.append(f"doubler_boost must be capped at _DOUBLER_CAP "
+                    f"({deck._DOUBLER_CAP}); got {deck.doubler_boost(10_000)}.")
+    _lo = deck.doubler_boost(deck._DOUBLER_MIN_SOURCES)
+    _hi = deck.doubler_boost(deck._DOUBLER_MIN_SOURCES + 5)
+    if not (_lo < _hi):
+        errs.append("doubler_boost must RISE with support — otherwise it cannot "
+                    "distinguish a 14-token deck from a 6-token one, which is its purpose.")
+    if deck.doubler_axis("If one or more tokens would be created under your control, twice "
+                         "that many of those tokens are created instead.") != "tokens":
+        errs.append("doubler_axis no longer detects a token doubler (Exalted Sunborn).")
+    if deck.doubler_axis("Shock deals 2 damage to any target.") is not None:
+        errs.append("doubler_axis must return None for an ordinary card.")
+    if deck.doubler_restriction("a creature you control with power 2 or less") != 2:
+        errs.append("doubler_restriction must read a doubler's own power scope (Delney); "
+                    "without it a restricted doubler's support is roughly doubled.")
+    if deck.doubler_restriction("twice that many of those tokens") is not None:
+        errs.append("doubler_restriction must be None for an unrestricted doubler.")
+
     return errs
 
 

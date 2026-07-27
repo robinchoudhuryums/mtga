@@ -6,6 +6,8 @@ functions the whole grading/ranking stack is built on. The check_* gates assert 
 same models at the integration level; these pin the isolated edge cases fast."""
 from datetime import date, timedelta
 
+import pytest
+
 import deck
 import lib
 
@@ -350,6 +352,40 @@ class TestRationaleFigureAudit:
     def test_a_plain_figure_is_not_treated_as_an_arrow(self):
         assert not deck._ARROW_AFTER.match(" (seven of it instant-speed)")
         assert not deck._ARROW_AFTER.match(" plus card advantage 9")
+
+    def _fig(self, prose, needle="interaction 9"):
+        """_figure_is_history over the position of `needle` in `prose`."""
+        i = prose.index(needle)
+        return deck._figure_is_history(prose, i, i + len(needle))
+
+    def test_domain_vocabulary_does_not_suppress_a_current_figure(self):
+        """The second silent disabling, same shape as the bare `over`: the CARD scan's
+        cue list was reused for figures, and `remov\\w*` (meant for "removed") matches
+        "removal" — the commonest noun in a rationale that argues about interaction.
+        Four decks quoted a stale interaction count and the audit reported clean."""
+        assert not self._fig(
+            "The floor reads A on interaction 9 (seven of it instant-speed) over a "
+            "2.56 curve — five surplus removal spells were traded for card advantage")
+        assert not self._fig(
+            "The metrics floor reads A on interaction 9 across a 3.03 curve, and the "
+            "deck is FULLY OWNED — zero craft targets, unusual for a from-scratch build")
+
+    def test_a_figure_stated_as_past_is_still_suppressed(self):
+        for prose in ("interaction was 9 before the removal package",
+                      "card advantage is up from 9 at the last pass",
+                      "the old rationale cited a 2.65 curve; the list is now 3.0"):
+            i = next(k for k, ch in enumerate(prose) if ch.isdigit())
+            assert deck._figure_is_history(prose, i, i + 1), prose
+
+    def test_a_prescriptive_figure_is_not_a_claim(self):
+        assert self._fig("PATH TO A: this wants interaction 9 to clear the floor")
+
+    def test_house_curve_phrasing_is_read(self):
+        """The avg_mv pattern only read "curve of 2.44" / "avg MV 2.44"; the rationales
+        write "a tight 2.44 curve" — 14 uses against 1, so the check was decorative."""
+        pats = [rx for rx, key in deck._RATIONALE_FIGURES if key == "avg_mv"]
+        assert any(rx.search("a tight 2.44 curve") for rx in pats)
+        assert any(rx.search("a curve of 2.44") for rx in pats)
 
 
 class TestRotationOverride:
@@ -1288,3 +1324,100 @@ class TestDeckColorSources:
         src = deck.deck_color_sources(cards, meta, cd)
         assert src["W"] == 6 and src["R"] == 2
         assert src["G"] == 0, "a mana dork is not a land source"
+
+
+class TestDoublerCoSignal:
+    """A doubler's worth scales with the deck's DENSITY of what it doubles — a magnitude
+    theme overlap cannot see. Exalted Sunborn scored deck 45 (6 token-makers) above
+    Knight's Edge (14) because both merely shared the `tokens` tag.
+    """
+
+    TOKEN_DBL = ("If one or more tokens would be created under your control, twice that "
+                 "many of those tokens are created instead.")
+    TRIG_DBL = ("If a triggered ability of a creature you control with power 2 or less "
+                "triggers, that ability triggers an additional time.")
+
+    def test_axis_detection(self):
+        assert deck.doubler_axis(self.TOKEN_DBL) == "tokens"
+        assert deck.doubler_axis(self.TRIG_DBL) == "triggers"
+        assert deck.doubler_axis("Shock deals 2 damage to any target.") is None
+        assert deck.doubler_axis("") is None
+
+    def test_boost_is_zero_below_the_floor_and_rises_then_caps(self):
+        assert deck.doubler_boost(0) == 0
+        assert deck.doubler_boost(deck._DOUBLER_MIN_SOURCES - 1) == 0
+        lo = deck.doubler_boost(deck._DOUBLER_MIN_SOURCES)
+        hi = deck.doubler_boost(deck._DOUBLER_MIN_SOURCES + 5)
+        assert 0 < lo < hi
+        assert deck.doubler_boost(9999) == deck._DOUBLER_CAP
+
+    def test_restriction_is_read_off_the_doublers_own_text(self):
+        assert deck.doubler_restriction(self.TRIG_DBL) == 2
+        assert deck.doubler_restriction(self.TOKEN_DBL) is None
+
+    def test_support_counts_feeding_cards(self):
+        cards = [(2, "Maker", "X", "1"), (1, "Bystander", "X", "2"), (7, "Plains", "X", "3")]
+        cd = {"maker": {"type": "Creature — Soldier", "text": "When this creature enters, "
+                        "create a 1/1 white Soldier creature token.", "power": "2"},
+              "bystander": {"type": "Creature — Human", "text": "Vigilance", "power": "1"}}
+        assert deck.doubler_support("tokens", cards, cd) == 2
+        assert deck.doubler_support("tokens", cards, cd, max_power=1) == 0, \
+            "a power restriction must exclude the 2-power maker"
+
+    def test_restricted_support_excludes_unknown_power(self):
+        # card_power returns None for */X — those must not be assumed to qualify.
+        cards = [(1, "Star", "X", "1")]
+        cd = {"star": {"type": "Creature — Elemental",
+                       "text": "Whenever this creature attacks, draw a card.", "power": "*"}}
+        assert deck.doubler_support("triggers", cards, cd, max_power=2) == 0
+
+
+class TestReferenceTableMemo:
+    """The reference CSVs were re-parsed on every loader call — 65 decks x ~0.31s of
+    it in a roster pass, which is why the rationale sweep looked too expensive to run
+    automatically and therefore never ran. The memo makes it affordable; these pin the
+    two ways a file cache goes wrong: not noticing a rewrite, and not noticing that the
+    PATH moved (which is how `check_suggest`'s synthetic-pool anchor would break)."""
+
+    def _loader(self, tmp_path, monkeypatch):
+        src = tmp_path / "table.csv"
+        monkeypatch.setattr(deck, "_MEMO_TEST_CSV", str(src), raising=False)
+        calls = []
+
+        @deck._file_memo("_MEMO_TEST_CSV")
+        def load():
+            calls.append(1)
+            return open(deck._MEMO_TEST_CSV).read().strip()
+        return src, load, calls
+
+    def test_repeat_calls_do_not_reread(self, tmp_path, monkeypatch):
+        src, load, calls = self._loader(tmp_path, monkeypatch)
+        src.write_text("a\n")
+        assert load() == "a" and load() == "a"
+        assert len(calls) == 1
+
+    def test_a_rewrite_invalidates(self, tmp_path, monkeypatch):
+        src, load, calls = self._loader(tmp_path, monkeypatch)
+        src.write_text("a\n")
+        assert load() == "a"
+        src.write_text("b\n")           # same size, possibly the same mtime second
+        assert load() == "b", "a same-size rewrite must invalidate (hence mtime_ns)"
+        assert len(calls) == 2
+
+    def test_repointing_the_path_invalidates(self, tmp_path, monkeypatch):
+        """`check_suggest` sets `deck.POOL_CSV` to a synthetic pool. A path captured at
+        decoration time would key on the real file and serve its cached rows."""
+        src, load, _calls = self._loader(tmp_path, monkeypatch)
+        src.write_text("real\n")
+        assert load() == "real"
+        other = tmp_path / "synthetic.csv"
+        other.write_text("synthetic\n")
+        monkeypatch.setattr(deck, "_MEMO_TEST_CSV", str(other))
+        assert load() == "synthetic"
+
+    def test_a_missing_file_is_not_cached_as_present(self, tmp_path, monkeypatch):
+        src, load, _calls = self._loader(tmp_path, monkeypatch)
+        with pytest.raises(OSError):
+            load()
+        src.write_text("now here\n")
+        assert load() == "now here"

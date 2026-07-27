@@ -1,6 +1,6 @@
 #: name: Drawn Conclusions
 #: format: Standard
-#: tier: A — Dimir card-draw control; a Mythic finisher/engine (Kaito, Bane of Nightmares) + 5 interaction (hard counters + flexible removal like Sokka's Haiku / Bitter Triumph) + card advantage on a clean 2-color base. Re-graded B→A: measurable floor is A (interaction 5 + card advantage, coherent control engine) — the raw count is deliberately modest for draw-payoff density, but the interaction QUALITY (hard counters + a mythic finisher) clears the bar. Disdainful Stroke (for the 2nd Super Intelligence) is the queued net-add if more answers are wanted.
+#: tier: A — Dimir card-draw control; a Mythic finisher/engine (Kaito, Bane of Nightmares) + 6 interaction (hard counters + flexible removal like Sokka's Haiku / Bitter Triumph) + card advantage on a clean 2-color base. Re-graded B→A: measurable floor is A (interaction 6 + card advantage, coherent control engine) — the raw count is deliberately modest for draw-payoff density, but the interaction QUALITY (hard counters + a mythic finisher) clears the bar. Disdainful Stroke (for the 2nd Super Intelligence) is the queued net-add if more answers are wanted.
 #: colors: UB
 #: archetype: Dimir (U/B) card-draw control.
 #: notes: Dimir (U/B) — card draw / control.

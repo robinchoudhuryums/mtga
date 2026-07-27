@@ -275,6 +275,35 @@ def main():
     except Exception as e:
         soft.append(f"stale-flex check skipped ({e})")
 
+    # Soft: STALE TIER RATIONALE — a `#: tier:` argument citing a card the deck no
+    # longer runs, or a figure that no longer matches the live quality vector.
+    #
+    # This is the check that EXISTED and never ran. `deck.py tier <id>
+    # --audit-rationale` has always been able to find these, but only for one deck, on
+    # demand, and CLAUDE.md's instruction to run it after every deck edit lived in prose
+    # that nothing executed — so the sibling checks above (flex staleness, tier
+    # mismatch) swept the roster every run while this one waited to be remembered.
+    # Thirteen stale figures across ten decks accumulated behind that gap while every
+    # gate stayed green, which is the same shape as this project's dead-regex bugs: a
+    # check that cannot fire is not a check. Roster-wide and automatic now; the loaders
+    # are memoized, so the sweep costs ~1s rather than the ~30s that made it look
+    # unaffordable. Advisory, never gating — the prose is a human argument.
+    try:
+        rot = []
+        for d in deckmod.roster_decks():
+            cards, figs = deckmod.rationale_staleness(d)
+            for name, _hdr in cards:
+                rot.append(f"deck {d['id']}: cites {name!r}, not in the deck")
+            for key, quoted, actual in figs:
+                rot.append(f"deck {d['id']}: {key} {quoted} vs live {actual}")
+        if rot:
+            soft.append(f"stale tier rationale: {len(rot)} claim(s) the list no longer "
+                        f"supports — {'; '.join(rot[:3])}"
+                        + (" …" if len(rot) > 3 else "")
+                        + " (see `deck.py tier <id> --audit-rationale`)")
+    except Exception as e:
+        soft.append(f"tier-rationale check skipped ({e})")
+
     # Soft: tier robustness — a deck whose claimed #: tier: sits ≥2 bands above the
     # tier its measurable quality vector supports (inflated or stale). Never gating —
     # tier is a human judgment, this only flags an indefensible letter to re-grade.

@@ -41,8 +41,8 @@
 #: tier: a reason to verify, not a reason to claim the number.
 #: tier: BE PRECISE ABOUT THE FLOOR, because "restore the interaction" was not the whole
 #: tier: fix: the A floor wants interaction >=5 AND interaction+card-advantage >=7. At
-#: tier: interaction 6 and card advantage 0 the sum is 6, so the floor is B and ONE more
-#: tier: point on either axis flips it. Card advantage is the easier axis to move here —
+#: tier: interaction 5 and card advantage 0 the sum is 5, so the floor is B and TWO more
+#: tier: points across the two axes flip it. Card advantage is the easier axis to move here —
 #: tier: see risk 1 below for why the measured 0 is defensible but beatable.
 #: tier: Held at B by three further things the floor cannot see:
 #: tier: 1. MEASURED CARD ADVANTAGE IS ZERO, and that number is defensible rather than a
