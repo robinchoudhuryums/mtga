@@ -6606,6 +6606,12 @@ _RATIONALE_FIGURES = [
     (re.compile(r"interaction[  ]+(\d+)", re.I), "interaction"),
     (re.compile(r"card[- ]adv(?:antage)?[  ]+(\d+)", re.I), "card_advantage"),
     (re.compile(r"(?:avg (?:nonland )?MV|curve(?: of)?)[  ]+(\d+\.\d+)", re.I), "avg_mv"),
+    # …and the house phrasing, where the number comes FIRST ("a tight 2.44 curve").
+    # The pattern above only reads "curve of 2.44" / "avg MV 2.44", which the rationales
+    # essentially never use: roster-wide it matched ONE figure against fourteen written
+    # the other way round, so the avg_mv half of this audit was decorative. Six stale
+    # curve figures were sitting in the prose, invisible, when this was added.
+    (re.compile(r"(\d+\.\d+)[  ]+curve", re.I), "avg_mv"),
     (re.compile(r"(\d+)[- ]theme", re.I), "central_themes"),
     (re.compile(r"(\d+) central themes", re.I), "central_themes"),
     (re.compile(r"protection[  ]+(\d+)", re.I), "protection"),
@@ -6668,6 +6674,53 @@ def _cites_as_history(prose, pos, length):
     hi = min(len(prose), pos + length + _HISTORY_WINDOW)
     window = prose[lo:hi]
     return bool(_HISTORY_CUES.search(window) or _COMPARISON_CUES.search(window))
+
+
+# A FIGURE is history under much narrower conditions than a CARD citation, and reusing
+# the card rule for both is what silently disabled this half of the audit.
+#
+# `_cites_as_history` sweeps ±140 chars for any change-word, which is right for a card:
+# "Essence Scatter … became hard counters" is about a card that left, and the whole
+# sentence is history. A FIGURE is different — the number is history only when the
+# NUMBER ITSELF is stated as past. A rationale routinely states a CURRENT figure in a
+# sentence that also mentions a change, and the domain's ordinary vocabulary collides
+# with the cue list head-on:
+#
+#   deck 41  "The floor reads A on interaction 9 … five surplus REMOVAL spells WERE
+#             traded for the card advantage below"      → live interaction 8
+#   deck 42  "…interaction 8 … five surplus REMOVAL spells BECAME the pay-life engine"
+#                                                        → live interaction 6
+#   deck 45a "…interaction 13 … 1. THE PAYOFF IS THE ONE CRAFT TARGET"
+#                                                        → live interaction 12
+#   deck 42a "\"restore the interaction\" WAS not the whole fix … At interaction 6"
+#                                                        → live interaction 5
+#
+# `remov\w*` is the worst of them: it exists to catch "removed", and it matches
+# "removal" — the single most common noun in a rationale that argues about interaction.
+# This is the same shape as the bare `over` cue documented above: an ordinary word of
+# the domain sitting in a list meant for change-language, silently suppressing the
+# sentence it was supposed to check. Four stale interaction figures were hidden by it.
+#
+# So the figure test looks BACKWARD only, and only for past-tense language directly
+# governing this number ("was 4", "up from 2", "it cited a 2.65 curve"). Comparison
+# cues still apply — a prescriptive "path to A: +3 interaction" is not a claim — but on
+# a tight window, since those shapes sit next to the number too.
+_FIGURE_PAST = re.compile(
+    r"\b(?:was|were|had|up from|down from|previously|formerly|used to be|"
+    r"cited|quoted|read|stated|re-?graded|took it (?:from|to)|moved it (?:from|to))"
+    r"\b[^.;]{0,24}$", re.I)
+_FIGURE_BACK_WINDOW = 60
+_FIGURE_CMP_WINDOW = 60
+
+
+def _figure_is_history(prose, start, end):
+    """True when a quoted figure is presented as a PAST value, not a current claim."""
+    if _ARROW_AFTER.match(prose, end):
+        return True                       # "0→1" — the match is the FROM side.
+    if _FIGURE_PAST.search(prose[max(0, start - _FIGURE_BACK_WINDOW):start]):
+        return True
+    lo, hi = max(0, start - _FIGURE_CMP_WINDOW), min(len(prose), end + _FIGURE_CMP_WINDOW)
+    return bool(_COMPARISON_CUES.search(prose[lo:hi]))
 
 
 def _roster_deck_names(_cache={}):
@@ -6764,21 +6817,13 @@ def rationale_staleness(d, carddata=None):
             quoted, actual = m.group(1), vec.get(key)
             if actual is None:
                 continue
-            # Same history suppression the card-citation scan uses, and for the same
-            # reason. A rationale legitimately quotes PAST figures when it documents a
-            # change — "took interaction 1→4", "Re-graded B→A after the interaction
-            # package" — and flagging those made the check cry wolf on 9 decks, which
-            # is how a check gets ignored. Only a figure presented as the CURRENT state
-            # is worth reporting.
-            if _cites_as_history(tier_prose, m.start(), len(m.group(0))):
-                continue
-            # A figure written as a TRANSITION ("card advantage 0→1", "interaction 1->4")
-            # states the OLD value first and the current one second, so the first number
-            # is history by construction. This used to be caught only accidentally, by a
-            # bare "over" sitting elsewhere in the sentence; that cue had to go because it
-            # was suppressing real staleness roster-wide, which left the arrow notation
-            # exposed. Handled explicitly now rather than by luck.
-            if _ARROW_AFTER.match(tier_prose, m.end()):
+            # A rationale legitimately quotes PAST figures when it documents a change
+            # ("took interaction 1→4", "it cited a 2.65 curve; the list is now 3.0"), and
+            # flagging those makes the check cry wolf, which is how a check gets ignored.
+            # Only a figure presented as the CURRENT state is worth reporting. This used
+            # to reuse the CARD scan's `_cites_as_history`; see `_figure_is_history` for
+            # why that was wrong and what it hid.
+            if _figure_is_history(tier_prose, m.start(), m.end()):
                 continue
             same = (abs(float(quoted) - float(actual)) < 0.005 if "." in quoted
                     else int(quoted) == int(actual))

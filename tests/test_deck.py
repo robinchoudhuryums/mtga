@@ -351,6 +351,40 @@ class TestRationaleFigureAudit:
         assert not deck._ARROW_AFTER.match(" (seven of it instant-speed)")
         assert not deck._ARROW_AFTER.match(" plus card advantage 9")
 
+    def _fig(self, prose, needle="interaction 9"):
+        """_figure_is_history over the position of `needle` in `prose`."""
+        i = prose.index(needle)
+        return deck._figure_is_history(prose, i, i + len(needle))
+
+    def test_domain_vocabulary_does_not_suppress_a_current_figure(self):
+        """The second silent disabling, same shape as the bare `over`: the CARD scan's
+        cue list was reused for figures, and `remov\\w*` (meant for "removed") matches
+        "removal" — the commonest noun in a rationale that argues about interaction.
+        Four decks quoted a stale interaction count and the audit reported clean."""
+        assert not self._fig(
+            "The floor reads A on interaction 9 (seven of it instant-speed) over a "
+            "2.56 curve — five surplus removal spells were traded for card advantage")
+        assert not self._fig(
+            "The metrics floor reads A on interaction 9 across a 3.03 curve, and the "
+            "deck is FULLY OWNED — zero craft targets, unusual for a from-scratch build")
+
+    def test_a_figure_stated_as_past_is_still_suppressed(self):
+        for prose in ("interaction was 9 before the removal package",
+                      "card advantage is up from 9 at the last pass",
+                      "the old rationale cited a 2.65 curve; the list is now 3.0"):
+            i = next(k for k, ch in enumerate(prose) if ch.isdigit())
+            assert deck._figure_is_history(prose, i, i + 1), prose
+
+    def test_a_prescriptive_figure_is_not_a_claim(self):
+        assert self._fig("PATH TO A: this wants interaction 9 to clear the floor")
+
+    def test_house_curve_phrasing_is_read(self):
+        """The avg_mv pattern only read "curve of 2.44" / "avg MV 2.44"; the rationales
+        write "a tight 2.44 curve" — 14 uses against 1, so the check was decorative."""
+        pats = [rx for rx, key in deck._RATIONALE_FIGURES if key == "avg_mv"]
+        assert any(rx.search("a tight 2.44 curve") for rx in pats)
+        assert any(rx.search("a curve of 2.44") for rx in pats)
+
 
 class TestRotationOverride:
     """A reprint inherits the newest printing's date, so a card reprinted into a set with
