@@ -83,6 +83,18 @@ For each `−cut / +add`:
      metrics floor is now B — confirm and I'll update the header"). **Never
      auto-write a tier letter** — tier is a competitive judgment (design
      constraint).
+   - **Tier rationale (mandatory, not optional):** run `python3 scripts/deck.py
+     tier <id> --audit-rationale`. The guard above checks the LETTER; this checks
+     the ARGUMENT — cards the prose cites that the swap just cut, and figures
+     (interaction / card advantage / curve / protection) the swap just moved. A
+     swap changes those numbers *by construction*, so the rationale goes stale on
+     essentially every application of this skill, and nothing else in the pipeline
+     reads it. **Fix the prose in the same commit as the swap** — updating a
+     quoted figure to the live value is a factual correction, not a re-grade, so
+     do it directly; only the tier LETTER needs the user. If a cut card is still
+     cited, either rewrite the sentence or, when the rationale legitimately
+     documents the cut, put the change-cue ADJACENT to the name ("X was CUT
+     because …") so the audit reads it as history.
    - **Verification:** the preflight verdict.
    - **Arena block:** paste `python3 scripts/deck.py arena <id>` — the clean
      `Deck`-prefixed import block the user pastes into Arena on mobile (the raw

@@ -69,6 +69,54 @@ DECKS_DIR = os.path.join(REPO_ROOT, "decks")
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
 BASICS = {"plains", "island", "swamp", "mountain", "forest", "wastes"}
 
+
+def _file_memo(*path_names):
+    """Memoize a zero-arg reference-table loader on its source files' (mtime_ns, size).
+
+    The reference tables (mana / card data / collection / meta / keywords) were read
+    from CSV on EVERY call, and a roster-wide pass calls them once per deck: 65 decks
+    x ~0.31s of re-parsing was ~21s of the integrity gate's runtime, and it is why a
+    roster-wide rationale sweep looked too expensive to run automatically — which is
+    exactly the check that then never ran, and let 13 stale figures accumulate. With
+    this, check_all goes 23s -> 4s and the sweep becomes affordable.
+
+    Takes the module-global NAMES of the source files, not their values, and resolves
+    them per call. `check_suggest`'s wiring anchor repoints `deck.POOL_CSV` at a
+    synthetic pool, and a path captured at decoration time would key the cache on the
+    REAL file while the loader body read the synthetic one — a stale-cache bug in the
+    one check whose entire job is catching wiring mistakes. The resolved path is part
+    of the key, so repointing invalidates.
+
+    Keyed on (mtime_ns, size) rather than held forever, so a rebuild (`build_mana.py`,
+    an `app.py` write) invalidates it inside a long-running process. Safe because
+    every caller treats these tables as READ-ONLY — verified by scanning all of
+    scripts/ for external mutation of a loader's result; if you ever need to mutate
+    one, copy it first, since the dict is now shared.
+    """
+    def deco(fn):
+        cache = {}
+
+        def stamp(name):
+            path = globals().get(name)
+            try:
+                st = os.stat(path)
+            except (OSError, TypeError):
+                return (path, None)
+            # ns, not getmtime()'s float seconds: app.py can rewrite a CSV twice
+            # within one mtime tick, and a same-size rewrite would then serve stale.
+            return (path, st.st_mtime_ns, st.st_size)
+
+        def wrapped():
+            key = tuple(stamp(n) for n in path_names)
+            if cache.get("key") != key:
+                cache["key"], cache["val"] = key, fn()
+            return cache["val"]
+
+        wrapped.__name__, wrapped.__doc__ = fn.__name__, fn.__doc__
+        wrapped.cache_clear = cache.clear
+        return wrapped
+    return deco
+
 # Formats the pool's Legalities column can carry (mirrors build_pool.py). Used to
 # filter `suggest` to a deck's format so craft picks are legal to play/acquire.
 POOL_FORMATS = {"standard", "pioneer", "modern", "legacy", "vintage", "pauper",
@@ -205,6 +253,7 @@ def roster_decks():
 # --------------------------------------------------------------------------- #
 # Collection lookup
 # --------------------------------------------------------------------------- #
+@_file_memo("DEFAULT_CSV")
 def load_collection():
     """Return (by_key, by_name, by_name_qty).
 
@@ -692,6 +741,7 @@ def cmd_arena(args):
 
 
 # --- mana data: real costs from card-mana.csv, with a live fallback --------- #
+@_file_memo("MANA_CSV")
 def load_mana():
     """name_lower -> (mana_cost, mana_value) from card-mana.csv (built by build_mana.py)."""
     import csv as _csv
@@ -781,6 +831,7 @@ def _primary_type(type_line):
 
 
 # --- card data (type + text) for synergy / cost analysis -------------------- #
+@_file_memo("DEFAULT_CSV", "POOL_CSV")
 def load_card_data():
     """name_lower -> {'name','type','text','colors','power','toughness'} from
     card-library.csv then card-pool.csv.
@@ -827,6 +878,7 @@ def creature_subtypes(type_line):
     return subs
 
 
+@_file_memo("MANA_CSV")
 def load_keywords():
     """name_lower -> [keywords] from card-mana.csv (Scryfall's per-card list)."""
     kw = {}
@@ -2327,6 +2379,7 @@ def cmd_tribes(args):
 
 
 # --- deck suggestions from the pool ----------------------------------------- #
+@_file_memo("DEFAULT_CSV", "POOL_CSV")
 def load_card_meta():
     """name_lower -> {'colors': set(WUBRG), 'synergies': [tags]} from library then
     pool. Color(s) is color IDENTITY, which is exactly what we want for deck fit

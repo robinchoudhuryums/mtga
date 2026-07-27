@@ -6,6 +6,8 @@ functions the whole grading/ranking stack is built on. The check_* gates assert 
 same models at the integration level; these pin the isolated edge cases fast."""
 from datetime import date, timedelta
 
+import pytest
+
 import deck
 import lib
 
@@ -1368,3 +1370,54 @@ class TestDoublerCoSignal:
         cd = {"star": {"type": "Creature — Elemental",
                        "text": "Whenever this creature attacks, draw a card.", "power": "*"}}
         assert deck.doubler_support("triggers", cards, cd, max_power=2) == 0
+
+
+class TestReferenceTableMemo:
+    """The reference CSVs were re-parsed on every loader call — 65 decks x ~0.31s of
+    it in a roster pass, which is why the rationale sweep looked too expensive to run
+    automatically and therefore never ran. The memo makes it affordable; these pin the
+    two ways a file cache goes wrong: not noticing a rewrite, and not noticing that the
+    PATH moved (which is how `check_suggest`'s synthetic-pool anchor would break)."""
+
+    def _loader(self, tmp_path, monkeypatch):
+        src = tmp_path / "table.csv"
+        monkeypatch.setattr(deck, "_MEMO_TEST_CSV", str(src), raising=False)
+        calls = []
+
+        @deck._file_memo("_MEMO_TEST_CSV")
+        def load():
+            calls.append(1)
+            return open(deck._MEMO_TEST_CSV).read().strip()
+        return src, load, calls
+
+    def test_repeat_calls_do_not_reread(self, tmp_path, monkeypatch):
+        src, load, calls = self._loader(tmp_path, monkeypatch)
+        src.write_text("a\n")
+        assert load() == "a" and load() == "a"
+        assert len(calls) == 1
+
+    def test_a_rewrite_invalidates(self, tmp_path, monkeypatch):
+        src, load, calls = self._loader(tmp_path, monkeypatch)
+        src.write_text("a\n")
+        assert load() == "a"
+        src.write_text("b\n")           # same size, possibly the same mtime second
+        assert load() == "b", "a same-size rewrite must invalidate (hence mtime_ns)"
+        assert len(calls) == 2
+
+    def test_repointing_the_path_invalidates(self, tmp_path, monkeypatch):
+        """`check_suggest` sets `deck.POOL_CSV` to a synthetic pool. A path captured at
+        decoration time would key on the real file and serve its cached rows."""
+        src, load, _calls = self._loader(tmp_path, monkeypatch)
+        src.write_text("real\n")
+        assert load() == "real"
+        other = tmp_path / "synthetic.csv"
+        other.write_text("synthetic\n")
+        monkeypatch.setattr(deck, "_MEMO_TEST_CSV", str(other))
+        assert load() == "synthetic"
+
+    def test_a_missing_file_is_not_cached_as_present(self, tmp_path, monkeypatch):
+        src, load, _calls = self._loader(tmp_path, monkeypatch)
+        with pytest.raises(OSError):
+            load()
+        src.write_text("now here\n")
+        assert load() == "now here"
