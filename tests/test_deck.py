@@ -1246,3 +1246,45 @@ class TestNearDuplicates:
         mana = dict(self.MANA, **{"chelonian tackle": ("{6}{G}", 7, "")})
         assert deck.near_duplicates(
             [(1, "Epic Fight", "", ""), (1, "Chelonian Tackle", "", "")], self.CD, mana) == []
+
+
+class TestPipDepthWarning:
+    """Castability in suggest/suggest-homes is a SET test (card colours ⊆ deck colours),
+    which cannot see pip DEPTH. That is how Anti-Venom ({W}{W}{W}{W}{W}) was recommended
+    as a KEY fit for two GWR decks holding 10-11 white sources — ~1% to cast on turn five.
+    """
+
+    def test_five_pips_against_a_thin_colour_warns(self):
+        w = deck.pip_depth_warning("{W}{W}{W}{W}{W}", {"W": 10})
+        assert w is not None
+        col, pips, have, want = w
+        assert (col, pips, have) == ("W", 5, 10)
+        assert want is None or want > have
+
+    def test_deep_pips_with_deep_sources_do_not_warn(self):
+        assert deck.pip_depth_warning("{B}{B}{B}", {"B": 24}) is None
+
+    def test_two_pips_are_below_the_floor(self):
+        # 2 pips is ordinary; only 3+ of ONE colour is worth flagging.
+        assert deck.pip_depth_warning("{3}{W}{W}", {"W": 8}) is None
+
+    def test_hybrids_excluded(self):
+        # Hybrid pips are strictly easier to pay, matching parse_pips' rule.
+        assert deck.pip_depth_warning("{U/B}{U/B}{U/B}", {"U": 4, "B": 4}) is None
+
+    def test_no_cost_is_safe(self):
+        assert deck.pip_depth_warning("", {"W": 10}) is None
+        assert deck.pip_depth_warning("{4}", {"W": 10}) is None
+
+
+class TestDeckColorSources:
+    def test_counts_basics_and_nonbasic_lands_only(self):
+        cards = [(4, "Plains", "X", "1"), (2, "Sacred Foundry", "X", "2"),
+                 (1, "Llanowar Elves", "X", "3")]
+        meta = {"sacred foundry": {"colors": {"R", "W"}, "synergies": []},
+                "llanowar elves": {"colors": {"G"}, "synergies": []}}
+        cd = {"sacred foundry": {"type": "Land"},
+              "llanowar elves": {"type": "Creature — Elf Druid"}}
+        src = deck.deck_color_sources(cards, meta, cd)
+        assert src["W"] == 6 and src["R"] == 2
+        assert src["G"] == 0, "a mana dork is not a land source"
