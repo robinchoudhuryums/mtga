@@ -150,8 +150,9 @@ Deck
 2 Dismal Backwater (FDN) 261
 1 Treno, Dark City (FIN) 290
 1 Serpent's Pass (TLA) 279
-4 Island (MSH) 289
-4 Plains (MSH) 287
+3 Island (MSH) 289
+2 University Campus (SPM) 186
+3 Plains (MSH) 287
 3 Swamp (MSH) 291
 
 #~ -The Ten Rings | +Drogskol Reaver | The Ten Rings is the deliberate spice and the flagship hand-size card, but `cuts` ranks it the deck's weakest fit (MV 8, fit 0) and it is the third card above five mana. If the curve plays too heavy, this is the first cut. Drogskol Reaver (craft, R) is a second Grimoire on a body — flying/double strike/lifelink plus "whenever you gain life, draw a card" — but it costs 7, so swapping one 8-drop for one 7-drop only helps if you also want the lifelink clock.

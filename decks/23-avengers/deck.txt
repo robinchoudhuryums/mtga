@@ -43,7 +43,7 @@ Deck
 1 Lita, Little Orphan Amphibian (TMT) 19
 1 Don & Leo, Problem Solvers (TMT) 143
 1 Leonardo, Big Brother (TMT) 14
-1 The Last Ronin's Technique (TMT) 12
+1 Anti-Venom, Horrifying Healer (SPM) 1
 
 # Interaction
 1 Stasis Snare (FDN) 581

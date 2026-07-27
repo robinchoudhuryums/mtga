@@ -93,11 +93,11 @@ Deck
 1 Koh, the Face Stealer (TLA) 107
 
 # Drain finish
+1 Enduring Tenacity (DSK) 95
 1 Arnyn, Deathbloom Botanist (SOS) 74
 1 Leech Collector (SOS) 88
 
 # Removal
-1 Hero's Downfall (FDN) 175
 1 Stroke of Midnight (FDN) 148
 1 Feed the Swarm (SOA) 29
 1 Sephiroth's Intervention (FIN) 116

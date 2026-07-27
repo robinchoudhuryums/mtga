@@ -111,6 +111,7 @@ Deck
 1 Baron Bertram Graywater (OTJ) 195
 
 # Death-trigger drain — the tax on every sacrifice
+1 Enduring Tenacity (DSK) 95
 1 Funeral Room // Awakening Hall (DSK) 100
 1 Vengeful Bloodwitch (FDN) 76
 1 Arnyn, Deathbloom Botanist (SOS) 74
@@ -151,7 +152,6 @@ Deck
 
 # Removal
 1 Erode (SOS) 15
-1 Last Gasp (SOS) 86
 1 Heartless Act (TLA) 103
 1 Hero's Downfall (FDN) 175
 1 Stroke of Midnight (FDN) 148
