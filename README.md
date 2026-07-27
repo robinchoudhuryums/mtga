@@ -28,19 +28,41 @@ handle this automatically).
 All scripts live in `scripts/` and run on Python 3 with no dependencies, except
 `sheets_sync.py` (see below). Run them from the repo root.
 
-### Import — ingest an Arena export
+### Import — get card data into the library
+
+Five tools write owned-card data, and they are **not** interchangeable: they disagree
+about what a quantity means. A deck dump is a **lower bound** (it says what that deck
+plays, not what you own); a collection export is **authoritative**. Picking wrong either
+undercounts your collection or overwrites it, so `/ingest` exists to route the choice:
+
+| What you have | Tool | A quantity means |
+|---|---|---|
+| Cards you just crafted or opened | `reconcile_crafts.py` (via `/add-cards`) | lower bound — takes `max(existing, line)` |
+| A deck list you built in Arena | `import_arena.py --skip-basics` | lower bound |
+| A tracker's full-collection CSV/TSV | `import_collection.py` | **authoritative** — sets exact, including down |
+| The companion Google Sheet | `sheets_sync.py pull` | authoritative (needs credentials) |
+| One card to fix by hand | `make app` | interactive |
 
 ```
-python3 scripts/import_arena.py batch.txt          # merge a deck/collection export
-python3 scripts/import_arena.py deck.txt --skip-basics   # reconcile owned counts from a built deck
+python3 scripts/import_arena.py batch.txt                # merge a deck/collection export
+python3 scripts/import_arena.py deck.txt --skip-basics   # true up owned counts from a built deck
+python3 scripts/import_collection.py collection.csv      # dry run; --apply to write
 ```
 
-Parses MTG Arena's `<qty> <Name> (<SET>) <collector#>` export format and merges
-it into `card-library.csv`, keyed by Card Name + Set Code + Collector # (one row
-per printing). Re-imports take the **max** quantity seen (decks share one
-collection, so counts don't sum); `--skip-basics` ignores basic lands so a deck
-list can true up owned counts without polluting the collection. Follow with
-`enrich.py` to backfill new cards.
+`import_arena.py` parses MTG Arena's `<qty> <Name> (<SET>) <collector#>` format and
+merges into `card-library.csv`, keyed by Card Name + Set Code + Collector # (one row per
+printing). Re-imports take the **max** quantity seen (decks share one collection, so
+counts don't sum); `--skip-basics` ignores basic lands.
+
+`import_collection.py` is the counterpart for a full-collection export, and the only tool
+here that can **lower** a count — which is why it is dry-run by default, refuses an export
+covering under half the library, and leaves cards absent from the export alone unless you
+pass `--zero-missing`. Columns are matched by alias against the header (so most trackers
+work unchanged) and it stops rather than guessing if it can't identify one; map them with
+`--map name=Card,qty=Have`.
+
+**After any import, rebuild the derived data** — a new card has no `card-mana.csv` row,
+so INV-02 fails until `build_mana.py --pool` runs. `/refresh` runs the whole chain.
 
 ### Validate — catch problems early
 
@@ -975,11 +997,19 @@ gates at once — the integrity check alone passes while a unit test is red); th
 Claude Code slash commands live in `.claude/commands/`:
 
 - **Project:** `/check` (integrity), `/refresh` (rebuild derived data),
-  `/add-deck` (ingest a pasted deck), `/tune-deck` (deck-building analysis),
-  `/add-cards` (catalog newly-owned cards + find their homes), `/add-wishlist`
-  (intake unowned craft targets to the wishlist — enrich, set the home Target, do
-  the cross-deck fit review), `/apply-changes` (apply confirmed swaps, run the
-  quality guard, verify + commit).
+  `/ingest` (**start here for any incoming card data** — routes to the right one of the
+  five ingest tools, then runs the rebuild chain), `/add-deck` (ingest a pasted deck),
+  `/draft-deck` (build a new deck from scratch around a concept), `/tune-deck`
+  (deck-building analysis for ONE deck), `/roster-review` (the roster loop — triage,
+  rotation exposure, craft plan, Brawl conversions, Arena drift), `/add-cards` (catalog
+  newly-owned cards + find their homes), `/add-wishlist` (intake unowned craft targets to
+  the wishlist — enrich, set the home Target, do the cross-deck fit review),
+  `/apply-changes` (apply confirmed swaps, run the quality guard, verify + commit).
+
+  The per-deck loop is `/tune-deck` → `/apply-changes`; the roster loop is
+  `/roster-review` → pick a deck → the per-deck loop. `check_commands.py` fails the build
+  if a command exists that no workflow drives, so this list can't silently fall behind
+  the tooling again.
 - **Audit (from claude-workflow-tools):** `/broad-scan`, `/broad-implement`,
   `/sync-docs`, `/health-pulse` (quick directional read), `/roadmap` —
   project-agnostic; they read the **Cycle Workflow Config** in `CLAUDE.md` (Test
