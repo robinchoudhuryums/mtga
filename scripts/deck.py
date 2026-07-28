@@ -5787,10 +5787,28 @@ def cmd_audit(args):
     return 0
 
 
-def _weakest_cut(dmeta, cards, cardmeta, carddata):
+def _weakest_cut(dmeta, cards, cardmeta, carddata, add_is_fixer=False):
     """The single most-cuttable nonland card in a deck (lowest theme-fit + role
     score), skipping `#: protect:` cards — a hint for suggest-homes. Run
-    `deck.py cuts` for the full, oracle-text-graded shortlist."""
+    `deck.py cuts` for the full, oracle-text-graded shortlist.
+
+    `add_is_fixer` is the CARD BEING ADDED, and it is here because this hint used to be
+    computed BLIND to it: the caller asked only "what is this deck's weakest card", so
+    nothing stopped it proposing a cut that does the very job motivating the add. Mana
+    fixing is where that bites, because the keep-score is theme-fit + role credit and
+    NEITHER has a fixing term — a rainbow fixer carries almost no synergy tags and no
+    classified role, so it sorts to the TOP of the cut list in exactly the multi-colour
+    decks that need it. `suggest-homes "Guy in the Chair"` proposed cutting Prismatic
+    Undercurrents from deck 13 and Bloom Tender from deck 17 — each strictly better at
+    fixing than the card being added. So when the add is a fixer, incumbent fixers are
+    not cut candidates: swapping fixing for fixing is a wash at best, and the ranking
+    cannot see which one is better.
+
+    Deliberately NOT a general "same role" exclusion. Roles the classifier DOES score
+    (removal, card advantage) already reach the keep-score through `_role_credit`, so
+    excluding those too would double-count. Fixing is the resource the score is blind
+    to, which is precisely why it needs the guard.
+    """
     protected = _protected(dmeta)
     theme_w = {}
     for q, n, s, c in cards:
@@ -5811,19 +5829,63 @@ def _weakest_cut(dmeta, cards, cardmeta, carddata):
         if "Land" in _primary_type(tline):
             continue
         tags = cardmeta.get(nl, {}).get("synergies", [])
+        ctext = cd["text"] if cd else ""
+        if add_is_fixer and _is_color_fixer(tags, ctext):
+            continue
         fit = sum(theme_w.get(t, 0) for t in tags if t in central)
-        keep = fit + _role_credit(classify_roles(cd["text"] if cd else ""))
+        keep = fit + _role_credit(classify_roles(ctext))
         if best is None or keep < best[0]:
             best = (keep, n)
     return best[1] if best else None
 
 
 _FIXER_TAGS = {"ramp", "mana"}
-_FIXER_CUES = (
-    "any color", "any type", "every basic land type", "all basic land types",
-    "each basic land type", "mana of any", "as though it were mana of any color",
-    "spend mana of any type",
-)
+# A fixer is recognised from its TEXT, not from a synergy tag. The tag gate this
+# replaced (`ctags & {ramp, mana}` AND a loose cue) depended on `tag_synergies`'
+# hand-kept keyword map, so a fixer whose mechanic is UNINDEXED scored as a non-fixer:
+# Bloom Tender ("{T}: For each color among permanents you control, add one mana of that
+# color") and Prismatic Undercurrents (fetch X basics, X = your colour count) both key
+# off **Vivid**, which sits in `keyword_baseline.txt` as acknowledged-but-unmapped, so
+# they tag `vivid` — matching nothing — and read is_fixer=False. Meanwhile Guy in the
+# Chair ({2}{G}, taps for one any-colour) carried a `mana` tag and read True, took the
+# full boost and the automatic KEY, and `suggest-homes` proposed cutting each deck's
+# BETTER fixer to make room for it (decks 13 and 17). Reading the text directly makes
+# the predicate independent of which keywords happen to be indexed this cycle.
+#
+# BROAD = fixes several colours at once, or grants colour-agnostic permission. This is
+# the Overlord/Bloom Tender/Vizier shape and it is worth full value at any mana cost.
+_FIXER_BROAD_RE = re.compile(
+    # every/all/each basic land type (Overlord's token, a Triome-maker)
+    r"(?:every|all|each) basic land type"
+    # colour-agnostic SPENDING permission (Vizier: "spend mana of any type to cast")
+    r"|spend .{0,40}?mana (?:of any (?:color|type)|as though it were mana of any)"
+    r"|as though it were mana of any (?:color|type)"
+    # a MASS grant — every creature/land you control becomes a rainbow source
+    # (Enduring Vitality, Great Divide Guide). One card, many sources.
+    r"|you control ha(?:ve|s)[^.]{0,80}?add (?:one )?mana of any"
+    # production that SCALES with your colour count (Bloom Tender's Vivid)
+    r"|for each color among [^.]{0,60}?add (?:one|that much|x)? ?mana"
+    r"|add (?:one|two|three|x) mana of each color"
+    # a fetch whose count scales with your colour count (Prismatic Undercurrents)
+    r"|search .{0,60}?for (?:up to )?x basic land",
+    re.I)
+# SINGLE = you choose ONE colour per activation (a Command Tower, a rainbow dork, Gilded
+# Lotus' three-of-one-colour). Real fixing, but its worth is bounded by what it costs —
+# see `_fixer_rate`. `any one color` and Chrome Mox's `any of the exiled card's colors`
+# are the same class as `any color`; the first sweep omitted both and dropped 38 genuine
+# fixers, which only the roster-wide before/after diff surfaced.
+_FIXER_SINGLE_RE = re.compile(
+    r"add (?:\w+ )?mana of any(?: one)? (?:color|type)"
+    r"|mana of any of [^.]{0,50}?colors",
+    re.I)
+# Rate floor/ceiling for a SINGLE-source fixer: a 1–2 mana rainbow source is full value,
+# and each mana past that discounts it. `Guy in the Chair` at MV 3 lands at 0.67, below
+# `_FIXER_KEY_RATE`, so it stays a role-player instead of being auto-promoted to KEY.
+_FIXER_SINGLE_PAR = 2.0
+_FIXER_RATE_FLOOR = 0.25
+# A fixer must be at least this efficient before the colour-count overlay promotes it
+# straight to KEY. Broad fixers rate 1.0 and always clear it.
+_FIXER_KEY_RATE = 0.7
 
 
 # DOUBLERS — a card whose value scales with HOW MUCH of a thing the deck already does.
@@ -5930,15 +5992,49 @@ def doubler_boost(support, per=_DOUBLER_PER_SOURCE, cap=_DOUBLER_CAP,
     return min(support * per, float(cap))
 
 
-def _fixer_boost(ncolors, per_color=4, cap=5):
+def _fixer_boost(ncolors, per_color=4, cap=5, rate=1.0):
     """Bounded fit bump for a rainbow fixer in an `ncolors`-color deck — grows with
     the color count (a fixer earns more in a 5-color deck than a 3-color one) but is
     CAPPED (at `cap` colors) so it nudges ordering among fixer-eligible decks without
     ever dwarfing a genuine theme match. Returns 0 below 3 colors (mono/two-color
-    decks don't need the fixing)."""
+    decks don't need the fixing).
+
+    `rate` (0..1, from `_fixer_rate`) scales the bump by how much fixing the card
+    actually BUYS. Without it the term read only the deck's colour count, so Overlord
+    of the Hauntwoods (a permanent land token with every basic land type) and Guy in
+    the Chair ({2}{G}, taps for exactly one) collected the identical +16 and the
+    identical KEY — the term could not tell a manabase fix from a mediocre dork.
+    """
     if ncolors < 3:
         return 0
-    return min(ncolors, cap) * per_color
+    return min(ncolors, cap) * per_color * rate
+
+
+def _fixer_rate(text, mv=None):
+    """How much fixing a rainbow fixer actually buys, as a 0..1 multiplier on the
+    colour-count boost. BROAD fixers (several colours at once, or colour-agnostic
+    spending permission) rate 1.0 at any cost — that value does not decay with mana.
+    A SINGLE any-colour source rates by cost: full value at `_FIXER_SINGLE_PAR` mana
+    or less, discounted above it, floored at `_FIXER_RATE_FLOOR` so an expensive
+    rainbow source is still recognised as fixing rather than dropping to nothing.
+    Returns 0.0 for a non-fixer. Unknown MV is treated as par (no penalty), since
+    guessing against missing data should not manufacture a demotion.
+
+    Parenthetical REMINDER text is stripped first, and that single line is what keeps
+    this from saturating: a Treasure token's reminder is literally `(It's an artifact
+    with "{T}, Sacrifice this token: Add one mana of any color.")`, so without the strip
+    every Treasure-maker in the pool reads as a rainbow fixer — 150-odd cards, and a
+    signal that fires on everything carries nothing. A one-shot sacrificial token is
+    ramp, not a manabase. Chromatic Sphere states the same ability as REAL text rather
+    than a reminder, so it still qualifies, which is the right split."""
+    t = _REMINDER_RE.sub(" ", text or "")
+    if _FIXER_BROAD_RE.search(t):
+        return 1.0
+    if not _FIXER_SINGLE_RE.search(t):
+        return 0.0
+    if mv is None or mv <= _FIXER_SINGLE_PAR:
+        return 1.0
+    return max(_FIXER_RATE_FLOOR, _FIXER_SINGLE_PAR / float(mv))
 
 
 def _is_color_fixer(ctags, text):
@@ -5947,13 +6043,16 @@ def _is_color_fixer(ctags, text):
     Vizier's 'spend mana as though any color', a Triome-maker). A theme-overlap model
     can't see fixing (it isn't a 'theme'), and its value is proportional to how many
     colors the target deck must cast — so `suggest-homes` under-rates it in exactly
-    the 3+-color decks that want it most (the Overlord → decks 17/21a miss). Gated on
-    BOTH a fixing tag (ramp/mana) AND explicit rainbow text, so a mono-color ramp
-    spell ('add {G}{G}') never qualifies."""
-    if not ({t.lower() for t in ctags} & _FIXER_TAGS):
-        return False
-    t = (text or "").lower()
-    return any(cue in t for cue in _FIXER_CUES)
+    the 3+-color decks that want it most (the Overlord → decks 17/21a miss).
+
+    Read from TEXT alone, in explicit MANA/land-type context. `ctags` is accepted and
+    ignored: the previous tag gate (`ramp`/`mana` + a loose "any color" substring) made
+    the predicate a hostage of `tag_synergies`' keyword map, and every fixer built on an
+    UNINDEXED mechanic read False — see `_FIXER_BROAD_RE`. Requiring mana context is
+    what keeps the loose cue honest without the tag: "protection from the color of your
+    choice" says "color of your choice" and is not fixing, and a mono-color ramp spell
+    ('add {G}{G}') never matches either pattern."""
+    return bool(_fixer_rate(text))
 
 
 def _deck_central_weights(meta, cards, cardmeta):
@@ -6271,15 +6370,20 @@ def cmd_suggest_homes(args):
     card_legals = _cinfo[1] if _cinfo else None
     ccols = card_colors(cd.get("colors"))
     ctags = set(cardmeta.get(card.lower(), {}).get("synergies", []))
-    is_fixer = _is_color_fixer(ctags, cd.get("text") or "")
     # Card MV for the curve co-signal (#5): a top-heavy card is a worse home for a
-    # low-curve deck than a midrange one — see _home_curve_fit.
+    # low-curve deck than a midrange one — see _home_curve_fit. Also feeds the fixer
+    # RATE below, so `is_fixer` is derived after it.
     _cmv = mana.get(card.lower()) or mana.get(card.split(" // ")[0].lower())
     card_mv = _cmv[1] if _cmv and _cmv[1] is not None else None
+    fixer_rate = _fixer_rate(cd.get("text") or "", card_mv)
+    is_fixer = bool(fixer_rate)
 
     print(f"Card: {card}  [{'/'.join(sorted(ccols)) or 'Colorless'}]  ({cd['type']})")
+    _fixnote = ("   [rainbow fixer — value scales with a deck’s color count"
+                + ("" if fixer_rate >= _FIXER_KEY_RATE
+                   else f"; single source at MV {card_mv} — discounted") + "]")
     print(f"Themes: {', '.join(sorted(ctags)) or '(none)'}"
-          f"{'   [rainbow fixer — value scales with a deck’s color count]' if is_fixer else ''}")
+          f"{_fixnote if is_fixer else ''}")
     # The VERDICT surfaces are where the misreads clustered this cycle. `cuts` and `swap`
     # print full oracle text and produced the fewest bad calls; suggest-homes hands out
     # KEY / role-player / tangential labels with NO text, which is how Genesis Wave was
@@ -6349,9 +6453,14 @@ def cmd_suggest_homes(args):
         # nudges ordering among fixer-eligible decks without dwarfing a real theme
         # match; the strength promotion never DEMOTES a fit fit_strength already rated
         # KEY. This closes the Overlord → 17/21a miss without touching mono-color decks.
+        # The promotion is now rate-gated too: only a fixer that BUYS enough fixing
+        # (`_fixer_rate` >= _FIXER_KEY_RATE — broad, or a cheap single source) is worth
+        # an automatic KEY. A 3-mana one-mana-any-colour dork gets the role-player step
+        # instead, which is what it is. Without this, colour count alone minted KEY and
+        # the label sorts ahead of fit, so nothing downstream could correct it.
         if is_fixer and len(castable) >= 3:
-            fit += _fixer_boost(len(castable))
-            if len(castable) >= 4:
+            fit += _fixer_boost(len(castable), rate=fixer_rate)
+            if len(castable) >= 4 and fixer_rate >= _FIXER_KEY_RATE:
                 strength = "KEY"
             elif strength == "tangential":
                 strength = "role-player"
@@ -6378,7 +6487,8 @@ def cmd_suggest_homes(args):
         curve_mult = _home_curve_fit(card_mv, deck_avg_mv)
         fit *= curve_mult
         top_heavy = curve_mult < 1.0
-        cut = None if already else _weakest_cut(dmeta, cards, cardmeta, carddata)
+        cut = (None if already else
+               _weakest_cut(dmeta, cards, cardmeta, carddata, add_is_fixer=is_fixer))
         results.append((fit, dd["id"], already, shared, cut, strength, top_heavy, pipwarn))
 
     if skipped_illegal:

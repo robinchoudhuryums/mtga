@@ -1103,6 +1103,123 @@ class TestHomeCurveFit:
         assert deck._home_curve_fit(15.0, 2.0) == 1.0 - deck._HOME_CURVE_CAP
 
 
+class TestColorFixerOverlay:
+    """The rainbow-fixer overlay behind suggest-homes, and the cut-side guard that
+    pairs with it. Both halves shipped a real bad recommendation: `suggest-homes
+    "Guy in the Chair"` rated a {2}{G} one-mana-any-colour dork KEY for decks 13/17
+    and proposed cutting Prismatic Undercurrents / Bloom Tender — each strictly
+    better at the exact job motivating the add."""
+
+    # --- detection is TEXT-based, not tag-based -------------------------------------
+    def test_unindexed_mechanic_still_reads_as_a_fixer(self):
+        # Bloom Tender and Prismatic Undercurrents key off Vivid, which sits in
+        # keyword_baseline.txt and maps to NO theme — so the old `ctags & {ramp,mana}`
+        # gate read both as non-fixers. The predicate must not depend on which
+        # keywords tag_synergies happens to index this cycle.
+        assert deck._is_color_fixer(set(), "Vivid — {T}: For each color among "
+                                           "permanents you control, add one mana of "
+                                           "that color.")
+        assert deck._is_color_fixer({"etb", "vivid"},
+                                    "Vivid — When this enchantment enters, search your "
+                                    "library for up to X basic land cards, where X is "
+                                    "the number of colors among permanents you control.")
+
+    def test_mana_context_required(self):
+        # The strictness the tag gate used to supply now lives in requiring MANA or
+        # land-type context — "any color" alone is not fixing.
+        assert not deck._is_color_fixer({"ramp"}, "Add {G}{G}.")
+        assert not deck._is_color_fixer(
+            set(), "Target creature gains protection from the color of your choice.")
+        assert not deck._is_color_fixer(
+            set(), "Draw a card for each color among permanents you control.")
+
+    def test_mass_grant_and_spend_permission_are_broad(self):
+        # Enduring Vitality grants the ability to every creature; Vizier grants
+        # colour-agnostic SPENDING. Both are manabase fixes, not single sources.
+        assert deck._fixer_rate('Creatures you control have "{T}: Add one mana of any '
+                                'color."', 3) == 1.0
+        assert deck._fixer_rate("You can spend mana of any type to cast creature "
+                                "spells.", 4) == 1.0
+
+    def test_any_one_color_counts(self):
+        # `any one color` (Gilded Lotus) and Chrome Mox's `any of the exiled card's
+        # colors` are the same class as `any color`. The first sweep omitted both and
+        # silently dropped 38 real fixers — caught only by a roster-wide diff.
+        assert deck._is_color_fixer(set(), "{T}: Add three mana of any one color.")
+        assert deck._is_color_fixer(
+            set(), "{T}: Add one mana of any of the exiled card's colors.")
+
+    def test_treasure_reminder_text_does_not_count(self):
+        # A Treasure's reminder literally reads "Add one mana of any color". Counting
+        # it makes ~150 pool cards read as manabase fixers, and a signal that fires on
+        # everything carries none. The same ability as REAL text must still qualify.
+        assert not deck._is_color_fixer(
+            set(), 'When this creature enters, create a Treasure token. (It\'s an '
+                   'artifact with "{T}, Sacrifice this token: Add one mana of any '
+                   'color.")')
+        assert deck._is_color_fixer(
+            set(), "{1}, {T}, Sacrifice this artifact: Add one mana of any color. "
+                   "Draw a card.")
+
+    # --- rate: how much fixing the card actually buys --------------------------------
+    def test_broad_rate_does_not_decay_with_cost(self):
+        for mv in (1, 4, 9):
+            assert deck._fixer_rate("create a land token that is every basic land "
+                                    "type", mv) == 1.0
+
+    def test_single_source_discounted_by_cost_bounded_and_monotonic(self):
+        sing = "{T}: Add one mana of any color."
+        rates = [deck._fixer_rate(sing, m) for m in (1, 2, 3, 5, 9)]
+        assert all(a >= b for a, b in zip(rates, rates[1:]))
+        assert all(deck._FIXER_RATE_FLOOR <= r <= 1.0 for r in rates)
+        # Cheap fixing is full value; the 3-mana dork falls below the KEY bar.
+        assert rates[0] == rates[1] == 1.0
+        assert deck._fixer_rate(sing, 3) < deck._FIXER_KEY_RATE
+
+    def test_unknown_mv_is_not_penalized(self):
+        # Guessing against missing data must not manufacture a demotion.
+        assert deck._fixer_rate("{T}: Add one mana of any color.", None) == 1.0
+
+    def test_non_fixer_rates_zero(self):
+        assert deck._fixer_rate("Draw two cards.", 2) == 0.0
+
+    def test_boost_scales_with_rate_and_stays_bounded(self):
+        full = deck._fixer_boost(4, rate=1.0)
+        half = deck._fixer_boost(4, rate=0.5)
+        assert 0 < half < full
+        assert deck._fixer_boost(2, rate=1.0) == 0      # mono/two-colour: no bump
+        assert deck._fixer_boost(20, rate=1.0) == deck._fixer_boost(5, rate=1.0)
+
+    # --- the cut side must not be blind to the add -----------------------------------
+    def _fixture(self):
+        cards = [(1, "Rainbow Rock", "S", "1"), (1, "Filler Bear", "S", "2"),
+                 (4, "Mountain", "S", "3")]
+        cardmeta = {"rainbow rock": {"synergies": []},
+                    "filler bear": {"synergies": ["Bear"]}}
+        carddata = {
+            "rainbow rock": {"type": "Artifact",
+                             "text": "{T}: Add one mana of any color."},
+            "filler bear": {"type": "Creature — Bear", "text": "Vanilla."},
+            "mountain": {"type": "Basic Land — Mountain", "text": ""},
+        }
+        return {}, cards, cardmeta, carddata
+
+    def test_fixer_tops_the_cut_list_when_the_add_is_not_a_fixer(self):
+        # The baseline the guard exists to correct: a fixer carries no synergy tags and
+        # no classified role, so theme-fit + role-credit ranks it most-cuttable.
+        assert deck._weakest_cut(*self._fixture(), add_is_fixer=False) == "Rainbow Rock"
+
+    def test_fixer_excluded_when_the_add_is_a_fixer(self):
+        assert deck._weakest_cut(*self._fixture(), add_is_fixer=True) == "Filler Bear"
+
+    def test_protected_and_lands_still_skipped(self):
+        dmeta, cards, cardmeta, carddata = self._fixture()
+        dmeta = {"protect": "Filler Bear"}
+        # Only the fixer is left, and the add is a fixer → no honest hint to give.
+        assert deck._weakest_cut(dmeta, cards, cardmeta, carddata,
+                                 add_is_fixer=True) is None
+
+
 class TestCentralThemesMechanicSubtheme:
     """centrality residual fix: a curated mechanical sub-theme surfaces at a flat floor
     of 2 even below the 25% cutoff, but a generic theme stays gated."""
