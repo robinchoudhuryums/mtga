@@ -1757,6 +1757,55 @@ Agatha's Soul Cauldron,{2},2,
 Day of Judgment,{2}{W}{W},4,
 Enduring Tenacity,{2}{B}{B},4,
 Adelbert Steiner,{1}{W},2,Lifelink
+The Earth Crystal,{2}{G}{G},4,
+Omnivorous Flytrap,{2}{G},3,Delirium;Double
+Dollmaker's Shop,{1}{W} // {4}{W}{W},8,
+"Shantotto, Tactician Magician",{1}{U}{R},3,
+Snow Villiers,{2}{W},3,Vigilance
+Laboratory Maniac,{2}{U},3,
+"Zidane, Tantalus Thief",{3}{R}{W},5,Treasure
+Elixir,{1},1,
+Cargo Ship,{1}{U},2,Flying;Vigilance;Crew
+"Giott, King of the Dwarves",{R}{W},2,Double strike
+Magitek Armor,{3}{W},4,Crew
+"Cid, Timeless Artificer",{2}{W}{U},4,Cycling
+Galuf's Final Act,{1}{G},2,
+Summon: Shiva,{3}{U}{U},5,
+Malboro,{4}{B}{B},6,Landcycling;Bad Breath;Typecycling;Cycling;Swampcycling
+Deadly Dispute,{1}{B},2,Treasure
+Summon: Primal Odin,{4}{B}{B},6,
+"Lluwen, Imperfect Naturalist",{B/G}{B/G},2,Mill
+"Camellia, the Seedmiser",{1}{B}{G},3,Forage;Menace
+Sphinx of Forgotten Lore,{2}{U}{U},4,Flying;Flash
+Stadium Headliner,{R},1,Mobilize
+"Mabel, Heir to Cragflame",{1}{R}{W},3,
+"General Traag, Heart of Stone",{3}{R}{R},5,Trample
+Brilliance Unleashed,{4}{U}{R},6,
+Spinneret and Spiderling,{R},1,
+Pyrewood Gearhulk,{2}{R}{R}{G}{G},6,Vigilance;Menace
+Lifecraft Engine,{3},3,Crew
+Dovin's Veto,{W}{U},2,
+Summon: Anima,{4}{B}{B},6,Menace
+The Final Days,{2}{B}{B},4,Flashback
+Astrologian's Planisphere,{1}{U},2,Job select;Diana;Equip
+Restoration Magic,{W},1,Curaga;Cura;Tiered;Cure
+Osseous Sticktwister,{1}{B},2,Delirium;Lifelink
+Divergent Equation,{X}{X}{U},1,
+Finale of Revelation,{X}{U}{U},2,
+Mind Spring,{X}{U}{U},2,
+Getaway Glamer,{W},1,Spree
+Parting Gust,{W}{W},2,Gift
+Personify,{1}{W},2,
+Enduring Innocence,{1}{W}{W},3,Lifelink
+Gwen Stacy,{1}{R},2,Flying;Vigilance;Transform;Haste
+Miles Morales,{1}{G},2,Camouflage;Transform;First strike;Haste;Double
+Damage Control Crew,{3}{G},4,Repair;Impound
+Spider Manifestation,{1}{R/G},2,Reach
+"Prowler, Clawed Thief",{1}{U}{B},3,Menace;Connive
+Guy in the Chair,{2}{G},3,Web Support
+Peter Parker,{1}{W},2,Reach;Vigilance;Transform
+Absorbing Man and Titania,{3}{R}{G},5,Double
+"Leatherhead, Swamp Stalker",{2}{G}{G},4,Trample
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -2460,7 +2509,6 @@ Lifecreed Duo,{1}{W},2,Flying
 Mabel's Mettle,{1}{W},2,
 Mouse Trapper,{2}{W},3,Valiant;Flash
 Nettle Guard,{1}{W},2,Valiant
-Parting Gust,{W}{W},2,Gift
 Pileated Provisioner,{4}{W},5,Flying
 Rabbit Response,{2}{W}{W},4,Scry
 Repel Calamity,{1}{W},2,
@@ -2605,7 +2653,6 @@ Wear Down,{1}{G},2,Gift
 "Alania, Divergent Storm",{3}{U}{R},5,
 "Baylen, the Haymaker",{R}{G}{W},3,
 Burrowguard Mentor,{G}{W},2,Trample
-"Camellia, the Seedmiser",{1}{B}{G},3,Forage;Menace
 Cindering Cutthroat,{2}{B/R},3,
 "Clement, the Worrywort",{1}{G}{U},3,Vigilance
 Corpseberry Cultivator,{1}{B/G}{B/G},3,Forage
@@ -2617,7 +2664,6 @@ Head of the Homestead,{3}{G/W}{G/W},5,
 "Helga, Skittish Seer",{G}{W}{U},3,
 Junkblade Bruiser,{3}{R/G}{R/G},5,Trample
 Lilysplash Mentor,{2}{G}{U},4,Reach
-"Mabel, Heir to Cragflame",{1}{R}{W},3,
 Mind Drill Assailant,{2}{U/B}{U/B},4,Surveil;Threshold
 Moonrise Cleric,{1}{W/B}{W/B},3,Flying
 "Muerra, Trash Tactician",{1}{R}{G},3,
@@ -2647,7 +2693,6 @@ Three Tree City,,0,
 "Bria, Riptide Rogue",{2}{U}{R},4,Prowess
 "Byrke, Long Ear of the Law",{4}{G}{W},6,Vigilance;Double
 Charmed Sleep,{1}{U}{U},3,Enchant
-Mind Spring,{X}{U}{U},2,
 Thieving Otter,{2}{U},3,
 Flame Lash,{3}{R},4,
 Colossification,{5}{G}{G},7,Enchant
@@ -3178,7 +3223,6 @@ Haunted Hellride,{1}{U}{B},3,Crew
 "Mendicant Core, Guidelight",{W}{U},2,Max speed;Start your engines!
 "Mimeoplasm, Revered One",{X}{B}{G}{U},3,
 Oildeep Gearhulk,{U}{U}{B}{B},4,Lifelink;Ward
-Pyrewood Gearhulk,{2}{R}{R}{G}{G},6,Vigilance;Menace
 Rangers' Aetherhive,{1}{G}{U},3,Vigilance;Crew
 "Redshift, Rocketeer Chief",{R}{G},2,Vigilance;Exhaust
 Riptide Gearhulk,{1}{W}{W}{U}{U},5,Prowess;Double strike
@@ -3194,7 +3238,6 @@ Voyage Home,{5}{W}{U},7,Affinity
 Aetherjacket,{3},3,Flying;Vigilance
 The Aetherspark,{4},4,
 Camera Launcher,{3},3,Exhaust
-Lifecraft Engine,{3},3,Crew
 Marketback Walker,{X}{X},0,
 Marshals' Pathcruiser,{3},3,Crew;Exhaust
 Monument to Endurance,{3},3,Treasure
@@ -3654,7 +3697,6 @@ Grand Warlord Radha,{2}{R}{G},4,Haste
 "Jodah, Archmage Eternal",{1}{U}{R}{W},4,Flying
 Oath of Teferi,{3}{W}{U},5,
 Primevals' Glorious Rebirth,{5}{W}{B},7,
-"Raff Capashen, Ship's Mage",{2}{W}{U},4,Flying;Flash
 "Rona, Disciple of Gix",{1}{U}{B},3,
 "Shanna, Sisay's Legacy",{G}{W},2,
 "Slimefoot, the Stowaway",{1}{B}{G},3,
@@ -3716,7 +3758,6 @@ Cult Healer,{2}{W},3,Eerie
 Dazzling Theater // Prop Room,{3}{W} // {2}{W},7,
 Dollmaker's Shop // Porcelain Gallery,{1}{W} // {4}{W}{W},8,
 Emerge from the Cocoon,{4}{W},5,
-Enduring Innocence,{1}{W}{W},3,Lifelink
 Ethereal Armor,{W},1,Enchant
 Exorcise,{1}{W},2,
 Fear of Abduction,{4}{W}{W},6,Flying
@@ -3807,7 +3848,6 @@ Live or Die,{3}{B}{B},5,
 Meathook Massacre II,{X}{X}{B}{B}{B}{B},4,
 Miasma Demon,{4}{B}{B},6,Flying
 Nowhere to Run,{1}{B},2,Flash
-Osseous Sticktwister,{1}{B},2,Delirium;Lifelink
 Overlord of the Balemurk,{3}{B}{B},5,Impending;Mill
 Popular Egotist,{2}{B},3,
 Resurrected Cultist,{2}{B},3,Delirium
@@ -3878,7 +3918,6 @@ Leyline of Mutation,{2}{G}{G},4,
 Manifest Dread,{1}{G},2,Manifest;Manifest dread
 Moldering Gym // Weight Room,{2}{G} // {5}{G},9,Manifest;Manifest dread
 Monstrous Emergence,{1}{G},2,
-Omnivorous Flytrap,{2}{G},3,Delirium;Double
 Overgrown Zealot,{1}{G},2,
 Patchwork Beastie,{G},1,Delirium;Mill
 Rootwise Survivor,{3}{G}{G},5,Haste;Survival
@@ -4016,7 +4055,6 @@ Kinsbaile Aspirant,{W},1,Behold
 Kinscaer Sentry,{1}{W},2,Lifelink;First strike
 Kithkeeper,{6}{W},7,Vivid
 Meanders Guide,{2}{W},3,
-Personify,{1}{W},2,
 Protective Response,{2}{W},3,Convoke
 "Rhys, the Evermore",{1}{W},2,Flash
 Slumbering Walker,{3}{W}{W},5,
@@ -4125,7 +4163,6 @@ Figure of Fable,{G/W},1,
 Glister Bairn,{2}{G/U}{G/U}{G/U},5,Vivid
 Grub's Command,{3}{B}{R},5,Mill
 "Kirol, Attentive First-Year",{1}{R/W}{R/W},3,
-"Lluwen, Imperfect Naturalist",{B/G}{B/G},2,Mill
 "Maralen, Fae Ascendant",{2}{B}{G}{U},5,Flying
 Raiding Schemes,{3}{R}{G},5,
 Reaping Willow,{1}{W/B}{W/B}{W/B},4,Lifelink
@@ -4600,7 +4637,6 @@ Ancient Copper Dragon,{4}{R}{R},6,Flying;Treasure
 "Purphoros, God of the Forge",{3}{R},4,Indestructible
 Tymna the Weaver,{1}{W}{B},3,Lifelink;Partner
 Wall of Omens,{1}{W},2,Defender
-Laboratory Maniac,{2}{U},3,
 Rhystic Study,{2}{U},3,
 "Teferi, Mage of Zhalfir",{2}{U}{U}{U},5,Flash
 Mizzix's Mastery,{3}{R},4,Overload
@@ -4641,7 +4677,6 @@ Homunculus Horde,{3}{U},4,
 Lunar Insight,{2}{U},3,
 Refute,{1}{U}{U},3,
 Skyship Buccaneer,{3}{U}{U},5,Flying;Raid
-Sphinx of Forgotten Lore,{2}{U}{U},4,Flying;Flash
 Abyssal Harvester,{1}{B}{B},3,
 Arbiter of Woe,{4}{B}{B},6,Flying
 Billowing Shriekmass,{3}{B},4,Flying;Threshold;Mill
@@ -4794,7 +4829,6 @@ Regal Caracal,{3}{W}{W},5,
 "Zetalpa, Primal Dawn",{6}{W}{W},8,Flying;Indestructible;Vigilance;Trample;Double strike
 Dictate of Kruphix,{1}{U}{U},3,Flash
 Dive Down,{U},1,
-Finale of Revelation,{X}{U}{U},2,
 Flashfreeze,{1}{U},2,
 Gateway Sneak,{2}{U},3,
 Mystical Teachings,{3}{U},4,Flashback
@@ -4944,19 +4978,14 @@ Delivery Moogle,{3}{W},4,Flying
 "Dion, Bahamut's Dominant // Bahamut, Warden of Light",{3}{W},4,Dragonfire Dive;Flying;Transform
 From Father to Son,{1}{W},2,Flashback
 Machinist's Arsenal,{4}{W},5,Machina;Job select;Equip
-Magitek Armor,{3}{W},4,Crew
 "Minwu, White Mage",{3}{W}{W},5,Lifelink;Vigilance
 Moogles' Valor,{3}{W}{W},5,
 Phoenix Down,{W},1,
-Restoration Magic,{W},1,Curaga;Cura;Tiered;Cure
 Sidequest: Catch a Fish // Cooking Campsite,{2}{W},3,Transform;Food
-Snow Villiers,{2}{W},3,Vigilance
 "Stiltzkin, Moogle Merchant",{W},1,Lifelink
 Summon: Primal Garuda,{3}{W},4,Flying
 "Venat, Heart of Hydaelyn // Hydaelyn, the Mothercrystal",{1}{W}{W},3,Blessing of Light;Indestructible;Transform
 The Wind Crystal,{2}{W}{W},4,
-Astrologian's Planisphere,{1}{U},2,Job select;Diana;Equip
-Cargo Ship,{1}{U},2,Flying;Vigilance;Crew
 "Edgar, King of Figaro",{4}{U}{U},6,Two-Headed Coin
 Ether,{3}{U},4,
 Ice Magic,{1}{U},2,Blizzard;Blizzara;Blizzaga;Tiered
@@ -4973,7 +5002,6 @@ Sidequest: Card Collection // Magicked Card,{3}{U},4,Flying;Transform;Crew
 Sleep Magic,{U},1,Enchant
 Stolen Uniform,{U},1,
 Stuck in Summoner's Sanctum,{2}{U},3,Enchant;Flash
-Summon: Shiva,{3}{U}{U},5,
 Swallowed by Leviathan,{2}{U},3,Surveil
 Thief's Knife,{2}{U},3,Job select;Equip
 Travel the Overworld,{5}{U}{U},7,Affinity
@@ -4986,18 +5014,14 @@ Dark Knight's Greatsword,{2}{B},3,Chaosbringer;Job select;Equip
 The Darkness Crystal,{2}{B}{B},4,
 Evil Reawakened,{4}{B},5,
 "Fang, Fearless l'Cie",{2}{B},3,
-The Final Days,{2}{B}{B},4,Flashback
 "Jecht, Reluctant Guardian // Braska's Final Aeon",{3}{B},4,Transform;Menace
 "Kain, Traitorous Dragoon",{2}{B},3,Jump;Treasure
-Malboro,{4}{B}{B},6,Landcycling;Bad Breath;Typecycling;Cycling;Swampcycling
 Ninja's Blades,{2}{B},3,Job select;Equip;Mutsunokami
 Phantom Train,{3}{B},4,Trample
 Poison the Waters,{1}{B},2,
 Reno and Rude,{1}{B},2,Menace
 "Sephiroth, Fabled SOLDIER // Sephiroth, One-Winged Angel",{2}{B},3,Flying;Transform;Super Nova
 "Sidequest: Hunt the Mark // Yiazmat, Ultimate Mark",{3}{B}{B},5,Transform;Treasure
-Summon: Anima,{4}{B}{B},6,Menace
-Summon: Primal Odin,{4}{B}{B},6,
 Tonberry,{B},1,Chef's Knife
 Vincent Valentine // Galian Beast,{2}{B}{B},4,Lifelink;Transform;Trample
 "Zenos yae Galvus // Shinryu, Transcendent Rival",{3}{B}{B},5,Flying;Transform;My First Friend;Burning Chains
@@ -5032,9 +5056,7 @@ Balamb T-Rexaur,{4}{G}{G},6,Landcycling;Trample;Forestcycling;Typecycling;Cyclin
 Bartz and Boko,{3}{G}{G},5,Affinity
 Cactuar,{G},1,Trample
 Coliseum Behemoth,{5}{G}{G},7,Trample
-The Earth Crystal,{2}{G}{G},4,
 Esper Origins // Summon: Esper Maduin,{1}{G},2,Surveil;Transform;Flashback
-Galuf's Final Act,{1}{G},2,
 Gigantoad,{3}{G},4,
 Jumbo Cactuar,{5}{G}{G},7,"10,000 Needles"
 Loporrit Scout,{2}{G},3,
@@ -5051,12 +5073,10 @@ Tifa Lockhart,{1}{G},2,Trample;Double;Landfall
 Tifa's Limit Break,{G},1,Triple;Final Heaven;Meteor Strikes;Somersault;Tiered;Double
 "Torgal, A Fine Hound",{1}{G},2,
 Balthier and Fran,{1}{R}{G},3,Reach
-"Cid, Timeless Artificer",{2}{W}{U},4,Cycling
 "Emet-Selch, Unsundered // Hades, Sorcerer of Eld",{1}{U}{B},3,Vigilance;Echo of the Lost;Transform
 The Emperor of Palamecia // The Lord Master of Hell,{U}{R},2,Starfall;Transform
 "Exdeath, Void Warlock // Neo Exdeath, Dimension's End",{1}{B}{G},3,Transform;Trample
 "Garland, Knight of Cornelia // Chaos, the Endless",{B}{R},2,Flying;Surveil;Transform
-"Giott, King of the Dwarves",{R}{W},2,Double strike
 Gladiolus Amicitia,{4}{R}{G},6,Landfall
 "Golbez, Crystal Collector",{U}{B},2,Surveil
 Hope Estheim,{W}{U},2,Lifelink;Mill
@@ -5069,7 +5089,6 @@ Locke Cole,{1}{U}{B},3,Lifelink;Deathtouch
 Rufus Shinra,{1}{W}{B},3,
 "Rydia, Summoner of Mist",{R}{G},2,Summon;Landfall
 Serah Farron // Crystallized Serah,{1}{G}{W},3,Transform
-"Shantotto, Tactician Magician",{1}{U}{R},3,
 "Sin, Spira's Punishment",{4}{B}{G}{U},7,Flying
 "Squall, SeeD Mercenary",{2}{W}{B},4,Rough Divide
 "Tellah, Great Sage",{3}{U}{R},5,
@@ -5077,9 +5096,7 @@ Serah Farron // Crystallized Serah,{1}{G}{W},3,Transform
 "Tidus, Blitzball Star",{1}{W}{U},3,
 "Ultimecia, Time Sorceress // Ultimecia, Omnipotent",{3}{U}{B},5,Surveil;Transform;Menace;Time Compression
 The Wandering Minstrel,{G}{U},2,
-"Zidane, Tantalus Thief",{3}{R}{W},5,Treasure
 Blitzball,{3},3,GOOOOAAAALLL!
-Elixir,{1},1,
 Excalibur II,{1},1,Equip
 Instant Ramen,{2},2,Flash
 Iron Giant,{7},7,Reach;Vigilance;Trample
@@ -5180,7 +5197,6 @@ Nightveil Sprite,{1}{U},2,Flying;Surveil
 Omnispell Adept,{4}{U},5,
 Passwall Adept,{1}{U},2,
 Quasiduplicate,{1}{U}{U},3,Jump;Jump-start
-Radical Idea,{1}{U},2,Jump;Jump-start
 Selective Snare,{X}{U},1,
 Sinister Sabotage,{1}{U}{U},3,Surveil
 Thoughtbound Phantasm,{U},1,Defender
@@ -5736,6 +5752,7 @@ Down in the Valley,{2}{G},3,
 "Galion, Elvenking's Butler",{2}{G}{G},4,
 Part in Friendship,{4}{G},5,
 Through the Forest Gate,{6}{G}{G},8,
+"""Puppyyyy""",{4}{G},5,Ferocious
 Wood Elves,{2}{G},3,
 "Bard, King of Dale",{4}{W}{U},6,Reach;Vigilance
 Bard the Bowman,{1}{W}{U},3,Reach
@@ -10193,7 +10210,6 @@ Director Nick Fury,{U}{R}{W},3,
 "Ultron, Machine Overlord",{5},5,Flying
 "Thanos, Death's Consort",{2}{B}{B},4,Lifelink
 "M.O.D.O.K., Evil Intellect",{3}{B}{B},5,Flying
-Absorbing Man and Titania,{3}{R}{G},5,Double
 "Abomination, Irradiated Brute",{2}{G}{G},4,Trample
 "Loki, God of Lies",{1}{R}{R},3,
 Fall to Earth,{4}{W},5,Landcycling;Basic landcycling;Typecycling;Cycling
@@ -10328,7 +10344,6 @@ HYDRA Disintegrator,{4}{B},5,Equip
 "MACH-1, Swooping Scoundrel",{1}{B},2,Flying;Surveil
 Minion Missile,{1}{B},2,
 Origin of Black Widow,{2}{B},3,
-Radioactive Man,{4}{B},5,Deathtouch
 Sadistic Slash,{3}{B},4,Mayhem
 Titanium Man,{2}{B}{B},4,
 Ultron the Annihilator,{3}{B}{B},5,Flying
@@ -10440,7 +10455,6 @@ Wild Pack Squad,{2}{W},3,
 The Clone Saga,{3}{U},4,Surveil
 Time Warp,{3}{U}{U},5,
 Dark Ritual,{B},1,
-Deadly Dispute,{1}{B},2,Treasure
 Doomfall,{2}{B},3,
 Doomsday,{B}{B}{B},3,
 The Spot's Portal,{2}{B},3,
@@ -11100,7 +11114,6 @@ Eriette's Lullaby,{1}{W},2,
 Final Showdown,{W},1,Spree
 "Fortune, Loyal Steed",{2}{W},3,Saddle;Scry
 Frontier Seeker,{1}{W},2,
-Getaway Glamer,{W},1,Spree
 High Noon,{1}{W},2,
 Holy Cow,{2}{W},3,Scry;Flying;Flash
 Inventive Wingsmith,{2}{W},3,
@@ -12453,8 +12466,6 @@ Mage's Attendant,{2}{W},3,
 Mysterious Limousine,{3}{W}{W},5,Crew
 Patch Up,{2}{W},3,
 Rabble Rousing,{4}{W},5,Hideaway
-Raffine's Guidance,{W},1,Enchant
-Raffine's Informant,{1}{W},2,Connive
 Refuse to Yield,{1}{W},2,
 Revelation of Power,{1}{W},2,
 Rumor Gatherer,{1}{W}{W},3,Alliance;Scry
@@ -12512,7 +12523,6 @@ Join the Maestros,{4}{B},5,Casualty
 Maestros Initiate,{2}{B},3,
 Midnight Assassin,{2}{B},3,Deathtouch;Flying
 Night Clubber,{1}{B}{B},3,Blitz
-Raffine's Silencer,{2}{B},3,Connive
 Revel Ruiner,{3}{B},4,Menace;Connive
 Rogues' Gallery,{2}{B},3,
 Sanguine Spy,{2}{B},3,Surveil;Lifelink;Menace
@@ -12630,7 +12640,6 @@ Obscura Interceptor,{1}{W}{U}{B},4,Lifelink;Flash;Connive
 "Ognis, the Dragon's Lash",{1}{B/R}{R}{R/G},4,Treasure;Haste
 Park Heights Pegasus,{G}{W},2,Flying;Trample
 "Queza, Augur of Agonies",{1}{W}{U}{B},4,
-"Raffine, Scheming Seer",{W}{U}{B},3,Flying;Ward;Connive
 Rakish Revelers,{2}{R}{G}{W},5,
 "Rigo, Streetwise Mentor",{G/W}{W}{W/U},3,
 Riveteers Ascendancy,{B}{R}{G},3,
@@ -12737,7 +12746,6 @@ Shattered Acolyte,{1}{W},2,Lifelink
 Spiritcall Enthusiast // Scrollboost,{2}{W} // {1}{W},3,Prepared
 Brush Off,{2}{U}{U},4,
 Campus Composer // Aqueous Aria,{3}{U} // {4}{U},4,Prepared;Ward
-Divergent Equation,{X}{X}{U},1,
 Emeritus of Ideation // Ancestral Recall,{3}{U}{U} // {U},5,Flying;Prepared;Ward
 Encouraging Aviator // Jump,{2}{U} // {U},3,Flying;Prepared
 Exhibition Tidecaller,{U},1,Mill;Opus
@@ -12930,15 +12938,11 @@ Maximum Carnage,{4}{R},5,
 Shadow of the Goblin,{1}{R},2,Undying;Unreliable Visions;Undying Vengeance
 "Shocker, Unshakable",{4}{R}{R},6,Vibro-Shock Gauntlets
 Spider-Punk,{1}{R},2,Riot
-Spinneret and Spiderling,{R},1,
 Superior Foes of Spider-Man,{2}{R},3,Trample
-Damage Control Crew,{3}{G},4,Repair;Impound
-Guy in the Chair,{2}{G},3,Web Support
 Kraven's Last Hunt,{3}{G},4,Mill
 "Lizard, Connors's Curse",{2}{G}{G},4,Lizard Formula;Trample
 Miles Morales // Ultimate Spider-Man,{1}{G},2,Camouflage;Transform;First strike;Haste;Double
 Professional Wrestler,{3}{G},4,Treasure
-Radioactive Spider,{G},1,Reach;Fateful Bite;Deathtouch
 Strength of Will,{1}{G},2,
 Supportive Parents,{2}{G},3,
 "Araña, Heart of the Spider",{1}{R}{W},3,
@@ -12951,11 +12955,9 @@ Cheering Crowd,{1}{R/G},2,
 Kraven the Hunter,{1}{B}{G},3,Trample
 Mary Jane Watson,{1}{G/W},2,
 Morbius the Living Vampire,{2}{U}{B},4,Flying;Lifelink;Vigilance
-"Prowler, Clawed Thief",{1}{U}{B},3,Menace;Connive
 "Scarlet Spider, Ben Reilly",{1}{R}{G},3,Trample;Web-slinging;Sensational Save
 "Scarlet Spider, Kaine",{B}{R},2,Mayhem;Menace
 "Silk, Web Weaver",{2}{G}{W},4,Web-slinging
-Spider Manifestation,{1}{R/G},2,Reach
 Spider-Man 2099,{U}{R},2,Vigilance;From the Future;Double strike
 "Spider-Woman, Stunning Savior",{1}{W/U},2,Flying;Venom Blast
 "The Spot, Living Portal",{3}{W}{B},5,
@@ -13395,7 +13397,6 @@ Rescue Leopard,{2}{R},3,
 Seize Opportunity,{2}{R},3,
 Shock Brigade,{1}{R},2,Menace;Mobilize
 Shocking Sharpshooter,{1}{R},2,Reach
-Stadium Headliner,{R},1,Mobilize
 Stormscale Scion,{4}{R}{R},6,Flying;Storm
 Stormshriek Feral // Flush Out,{4}{R} // {1}{R},5,Flying;Haste
 Sunset Strikemaster,{1}{R},2,
@@ -14066,7 +14067,6 @@ Splinter's Technique,{3}{B},4,Sneak
 Squirrelanoids,{B},1,Deathtouch
 "Casey Jones, Vigilante",{1}{R}{R},3,
 Cool but Rude,{1}{R},2,
-"General Traag, Heart of Stone",{3}{R}{R},5,Trample
 Improvised Arsenal,{1}{R},2,Equip
 Mouser Attack!,{1}{R},2,
 Raphael's Technique,{4}{R}{R},6,Sneak
@@ -14074,14 +14074,12 @@ Ravenous Robots,{1}{R},2,
 "Slash, Reptile Rampager",{3}{R}{R},5,Alliance
 "Wingnut, Bat on the Belfry",{1}{R},2,Alliance
 Groundchuck & Dirtbag,{4}{G}{G},6,Trample
-"Leatherhead, Swamp Stalker",{2}{G}{G},4,Trample
 Michelangelo's Technique,{4}{G},5,Sneak
 "Mutagen Man, Living Ooze",{X}{G}{G},2,Trample
 Saved by the Shell,{1}{G},2,
 Transdimensional Bovine,{2}{G},3,Flying
 Turtle Power!,{2}{G},3,Flash
 Bebop & Rocksteady,{1}{B/G}{B/G},3,
-Brilliance Unleashed,{4}{U}{R},6,
 "Don & Raph, Hard Science",{1}{U/R}{U/R},3,Menace
 Krang & Shredder,{4}{U/B}{U/B},6,Disappear
 Lessons from Life,{2}{G}{U},4,
@@ -14560,7 +14558,6 @@ Deathsprout,{1}{B}{B}{G},4,
 Despark,{W}{B},2,
 "Domri, Anarch of Bolas",{1}{R}{G},3,Fight
 Domri's Ambush,{R}{G},2,
-Dovin's Veto,{W}{U},2,
 Dreadhorde Butcher,{B}{R},2,Haste
 Elite Guardmage,{2}{W}{U},4,Flying
 Enter the God-Eternals,{2}{U}{U}{B},5,Amass;Mill
@@ -15942,7 +15939,3 @@ Cragcrown Pathway // Timbercrown Pathway,,0,
 Needleverge Pathway // Pillarverge Pathway,,0,
 Riverglide Pathway // Lavaglide Pathway,,0,
 Throne of Makindi,,0,
-Dollmaker's Shop,{1}{W} // {4}{W}{W},8,
-Gwen Stacy,{1}{R},2,Flying;Vigilance;Transform;Haste
-Miles Morales,{1}{G},2,Camouflage;Transform;First strike;Haste;Double
-Peter Parker,{1}{W},2,Reach;Vigilance;Transform
