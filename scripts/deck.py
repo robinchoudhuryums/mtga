@@ -60,7 +60,7 @@ import urllib.request
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
-                 mana_value)
+                 mana_value, atomic_write)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -4590,6 +4590,211 @@ def _safe_write_lines(path, lines, expected_total):
             os.remove(tmp)
 
 
+RECS_CSV = os.path.join(REPO_ROOT, "recommendations.csv")
+RECS_HEADER = ["Date", "Deck", "Source", "Cut", "Add", "Cut Rank", "Cut Of",
+               "Cut Protected", "Add Surfaced", "Add Rank", "Add Of"]
+# `suggest`'s default display window — "surfaced" means "a human running the default
+# command would have SEEN it", not "it appears somewhere in 2,500 scored picks".
+_RECS_SUGGEST_WINDOW = 20
+# Below this many recorded swaps the report refuses to summarize, the same restraint
+# `parse_matches --report` and `count_conf` show. A hit rate over six swaps is noise.
+_RECS_MIN_SAMPLE = 20
+
+
+def recommendation_row(d, cut, add, source, today=None):
+    """Score an ACCEPTED swap against what the recommenders said at that moment.
+
+    `swap --apply` is the only place in this toolkit where a human's real add/cut
+    decision is observable, and nothing recorded it — so every ranking model here
+    (`cuts`, `suggest`, the bounded co-signals, the whole gated stack) has been graded
+    on argument and anchor tests, never against a single decision anyone actually made.
+    That is the same gap CLAUDE.md records for the `Decks` column: it read as working
+    right up until someone MEASURED it and found a 0% actionable rate.
+
+    Deliberately measurement ONLY — nothing here feeds back into a score. The scoring
+    terms are bounded and anchored by `check_suggest` precisely so they can't silently
+    reorder a tuned deck, and a feedback loop that quietly re-weighted them would defeat
+    that by construction. This writes a ledger a human reads.
+
+    Ranks are captured NOW, against the pre-swap deck, because that is the list the
+    decision was made against; re-deriving one later would score against a deck the swap
+    already changed.
+
+    Returns a row dict, or None if neither model could be computed."""
+    import datetime
+    row = {c: "" for c in RECS_HEADER}
+    row.update({"Date": today or datetime.date.today().isoformat(),
+                "Deck": d["id"], "Source": source, "Cut": cut, "Add": add})
+    got = False
+
+    # The cut side is the CLEAN measurement: `cuts` ranks the cards already in the deck,
+    # so the cut always has a well-defined position in a list that always contains it.
+    try:
+        rows, _central, prot_present, _int = rank_cut_candidates(d)
+        cl = cut.strip().lower()
+        idx = next((i for i, r in enumerate(rows) if r[1].strip().lower() == cl), None)
+        row["Cut Of"] = len(rows)
+        row["Cut Protected"] = "yes" if cl in {p.strip().lower() for p in prot_present} \
+            else "no"
+        if idx is not None:
+            row["Cut Rank"] = idx + 1          # 1 = the model's most-cuttable card
+        got = True
+    except Exception:
+        # Telemetry must never cost a swap. A model that raises here (missing pool,
+        # unreadable card data) loses its column, not the edit.
+        pass
+
+    # The add side is INCOMPLETE by construction and must be read as such: `suggest`
+    # filters candidates to cards sharing a synergy THEME, so it is structurally blind
+    # to lands and off-theme removal (that is what `--lands`/`--interaction`/`--ramp`
+    # exist for). "Not surfaced" is therefore common and is NOT on its own a model miss.
+    try:
+        res = suggest_scored(d, limit=0)
+        if res.get("ok"):
+            picks = res["picks"]
+            al = add.strip().lower()
+            ai = next((i for i, p in enumerate(picks)
+                       if p["name"].strip().lower() == al
+                       or p["name"].strip().lower().split(" // ")[0] == al), None)
+            row["Add Of"] = len(picks)
+            row["Add Surfaced"] = "yes" if ai is not None and ai < _RECS_SUGGEST_WINDOW \
+                else "no"
+            if ai is not None:
+                row["Add Rank"] = ai + 1
+            got = True
+    except Exception:
+        pass
+    return row if got else None
+
+
+def load_recommendations(path=None):
+    """Rows from the ledger, or [] if it doesn't exist yet. `path` resolves the module
+    global at CALL time — a default argument would bind the real file even when a test
+    repoints RECS_CSV, the stale-path bug `_file_memo` documents."""
+    path = path or RECS_CSV
+    if not os.path.exists(path):
+        return []
+    with open(path, newline="", encoding="utf-8") as fh:
+        return [dict(r) for r in csv.DictReader(fh)]
+
+
+def append_recommendation(row, path=None):
+    """Append one row, writing through the shared atomic path so an interrupted write
+    can't truncate the ledger. Its own DictWriter on its own fieldnames — never
+    `lib.write_rows`, which emits the canonical 8 LIBRARY columns and would rewrite this
+    file with the wrong header (audit F-02)."""
+    path = path or RECS_CSV
+    rows = load_recommendations(path) + [row]
+
+    def _w(fh):
+        w = csv.DictWriter(fh, fieldnames=RECS_HEADER, quoting=csv.QUOTE_MINIMAL)
+        w.writeheader()
+        for r in rows:
+            w.writerow({c: r.get(c, "") for c in RECS_HEADER})
+    atomic_write(path, _w, backup=False)
+    return len(rows)
+
+
+def _rec_percentile(row):
+    """Where the cut sat in the cut list, 0.0 = the model's top cut candidate and 1.0 =
+    the card it most wanted kept. None when unrankable."""
+    try:
+        rank, total = int(row.get("Cut Rank")), int(row.get("Cut Of"))
+    except (TypeError, ValueError):
+        return None
+    if total < 2:
+        return None
+    return (rank - 1) / (total - 1)
+
+
+def recommendation_summary(rows):
+    """Pure summary of the ledger: (n, agreed, disagreements, median_pct, unsurfaced).
+
+    `disagreements` are the swaps where the model wanted to KEEP the card the human
+    cut (upper half of the cut list) — the informative direction, and the reason this
+    report leads with them rather than with a hit rate. An AGREEMENT is contaminated by
+    the shortlist having been read before the decision; a DISAGREEMENT is a case the
+    model got wrong whether or not anyone read it."""
+    scored = [(r, _rec_percentile(r)) for r in rows]
+    scored = [(r, p) for r, p in scored if p is not None]
+    n = len(scored)
+    disagreements = sorted((r for r, p in scored if p > 0.5),
+                           key=lambda r: -(_rec_percentile(r) or 0))
+    agreed = n - len(disagreements)
+    pcts = sorted(p for _, p in scored)
+    median = None
+    if pcts:
+        mid = len(pcts) // 2
+        median = pcts[mid] if len(pcts) % 2 else (pcts[mid - 1] + pcts[mid]) / 2
+    unsurfaced = [r for r in rows if r.get("Add Surfaced") == "no"]
+    return n, agreed, disagreements, median, unsurfaced
+
+
+def cmd_feedback(args):
+    """Report how the recommenders scored against the swaps actually applied."""
+    rows = load_recommendations()
+    if getattr(args, "id", None):
+        rows = [r for r in rows if r.get("Deck") == args.id]
+    if not rows:
+        print("No recommendation outcomes recorded yet. They accrue automatically "
+              "every time `deck.py swap --apply` or `apply-flex --apply` runs.")
+        return 0
+
+    n, agreed, disagreements, median, unsurfaced = recommendation_summary(rows)
+    print(f"{len(rows)} applied swap(s) recorded"
+          + (f" for deck {args.id}" if getattr(args, "id", None) else "")
+          + f"; {n} with a usable cut ranking.\n")
+
+    # Lead with the misses. An agreement is partly the shortlist's own influence — the
+    # human read `cuts` before deciding — so it cannot validate the model. A
+    # disagreement is a case the model got wrong whichever way the decision was reached.
+    if disagreements:
+        print(f"⚠ {len(disagreements)} swap(s) where the model wanted to KEEP the card "
+              f"you cut (upper half of its own cut list).")
+        print("  These are the informative ones — read the card and ask what the "
+              "ranking couldn't see.\n")
+        for r in disagreements[:12]:
+            pct = _rec_percentile(r)
+            print(f"    {r.get('Date','')}  deck {r.get('Deck','')}: "
+                  f"−{r.get('Cut','')} → +{r.get('Add','')}")
+            print(f"        cuts ranked it {r.get('Cut Rank')}/{r.get('Cut Of')} "
+                  f"({pct:.0%} toward 'keep')"
+                  + ("   [was #: protect:]" if r.get("Cut Protected") == "yes" else ""))
+        if len(disagreements) > 12:
+            print(f"    … and {len(disagreements) - 12} more")
+        print()
+
+    if unsurfaced:
+        print(f"{len(unsurfaced)} add(s) that `suggest` did not surface in its default "
+              f"top {_RECS_SUGGEST_WINDOW}:")
+        for r in unsurfaced[:10]:
+            print(f"    +{r.get('Add','')}  (deck {r.get('Deck','')})")
+        if len(unsurfaced) > 10:
+            print(f"    … and {len(unsurfaced) - 10} more")
+        print("  EXPECTED to be high, and not on its own a model miss: `suggest` filters "
+              "to cards sharing a synergy THEME, so it is structurally blind to lands "
+              "and off-theme removal. That is what `suggest --lands/--interaction/--ramp` "
+              "are for. Read it as 'which fills the theme model can't reach'.\n")
+
+    if n < _RECS_MIN_SAMPLE:
+        tail = ("The rows above are worth reading individually"
+                if (disagreements or unsurfaced)
+                else "Nothing has diverged from the models yet")
+        print(f"n={n} — too few to summarize (need ~{_RECS_MIN_SAMPLE}). {tail}; "
+              f"a rate computed off {n} is noise.")
+    else:
+        print(f"Agreement: the cut sat in the model's cut half {agreed}/{n} times "
+              f"({100 * agreed / n:.0f}%); median position {median:.0%} toward 'keep' "
+              f"(0% = the model's top cut candidate).")
+        print("  Read with care: you saw the shortlist before deciding, so a high "
+              "agreement rate partly measures the list's INFLUENCE, not its accuracy. "
+              "The disagreements above are the part that doesn't suffer from that.")
+    print("\nThis ledger is REPORT-ONLY and never feeds back into a score — the ranking "
+          "terms are bounded and anchored by check_suggest so they can't silently "
+          "reorder a tuned deck, and an automatic re-weighting would defeat that.")
+    return 0
+
+
 def _do_swap(d, cut, add, apply, flex_entry=None):
     """Shared engine for `swap` and `apply-flex`: preview deltas, and on --apply
     perform the edit with a .bak + INV-04 re-check."""
@@ -4663,6 +4868,14 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
         print("\n(dry run — pass --apply to write the change with a .bak)")
         return 0
 
+    # Score the recommenders against this decision BEFORE the edit — the pre-swap deck
+    # is the list the human actually chose from. Never fatal: a swap must not fail
+    # because telemetry did.
+    try:
+        rec = recommendation_row(d, cut, add, "flex" if flex_entry is not None else "swap")
+    except Exception:
+        rec = None
+
     with open(d["path"], encoding="utf-8") as fh:
         lines = fh.read().split("\n")
     try:
@@ -4684,6 +4897,21 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
         warn = section_mismatch(new_lines, ai, add.strip(), load_card_data())
         if warn:
             print(f"  ⚠ section comment: {warn}")
+    # Record how the recommenders scored this decision. Written AFTER the edit lands, so
+    # a rejected write leaves no phantom row; announced rather than silent, because a
+    # command that writes a second file should say so.
+    if rec is not None:
+        try:
+            total = append_recommendation(rec)
+            bits = []
+            if rec.get("Cut Rank"):
+                bits.append(f"cuts ranked −{cut} {rec['Cut Rank']}/{rec['Cut Of']}")
+            if rec.get("Add Surfaced"):
+                bits.append(f"suggest surfaced +{add}: {rec['Add Surfaced']}")
+            print(f"  · recorded to {os.path.basename(RECS_CSV)} ({total} swap(s)): "
+                  + "; ".join(bits) + ".  Read it: deck.py feedback")
+        except OSError as e:
+            eprint(f"  · could not record the outcome ({e}) — the swap itself is saved.")
     return 0
 
 
@@ -7894,6 +8122,9 @@ def main():
     p.add_argument("--add", required=True, help="card to add")
     p.add_argument("--apply", action="store_true",
                    help="write the change (with a .bak); default is a dry-run preview")
+    p = sub.add_parser("feedback",
+                       help="how the recommenders scored against the swaps you applied")
+    p.add_argument("id", nargs="?", help="limit to one deck (default: the whole roster)")
     p = sub.add_parser("apply-flex", help="promote a flex swap (#~ line) into the maindeck")
     p.add_argument("id")
     p.add_argument("n", type=int, help="which flex swap (1-based; see deck.py flex <id>)")
@@ -7949,6 +8180,7 @@ def main():
         "similar": cmd_similar, "resolve": cmd_resolve,
         "preflight": cmd_preflight, "quality": cmd_quality, "tier": cmd_tier,
         "redundancy": cmd_redundancy, "history": cmd_history,
+        "feedback": cmd_feedback,
     }[args.cmd](args)
 
 

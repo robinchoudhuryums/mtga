@@ -376,6 +376,7 @@ python3 scripts/deck.py cuts 1a       # rank the deck's weakest-fit cards as cut
 python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~ lines)
 python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
+python3 scripts/deck.py feedback             # how cuts/suggest scored against the swaps you applied (report-only)
 pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export against the stored deck
 pbpaste | python3 scripts/deck.py sync        # reconcile MANY decks from one Arena paste (--apply to write)
 python3 scripts/deck.py text 1a              # full oracle text of every card (read before grading)
@@ -392,6 +393,21 @@ python3 scripts/deck.py redundancy 1a        # competitive consistency: virtual 
 python3 scripts/deck.py history 1a           # the deck's git change history (its changelog); --since YYYY-MM-DD adds the net card change since then
 python3 scripts/deck.py quality 1a --at HASH # compare this deck's list at a past commit vs now
 ```
+
+`feedback` closes the loop on the recommenders. Every ranking model here grades
+itself on its own argument; `swap --apply` is the only moment a real add/cut
+*decision* is observable, so it now appends a row to `recommendations.csv` recording
+where `cuts` ranked the card you cut and whether `suggest` surfaced the card you
+added. The report **leads with the disagreements** — swaps where the model wanted to
+keep the card you cut — because an *agreement* is contaminated: you read the shortlist
+before deciding, so a high agreement rate partly measures the list's influence rather
+than its accuracy. A disagreement is a case the model got wrong either way. Below ~20
+swaps it refuses to compute a rate at all. It is **report-only and never feeds back
+into a score** — the scoring terms are bounded and gated by `check_suggest` so they
+can't silently reorder a tuned deck, and an automatic re-weighting would defeat that
+invisibly. Note that "add not surfaced" is expected to be common: `suggest` filters to
+cards sharing a synergy theme, so it is structurally blind to lands and off-theme
+removal (that's what `--lands` / `--interaction` / `--ramp` are for).
 
 `audit` is the **roster triage** for when you don't want to full-tune all your
 decks at once. It prints one offline line per deck — competitive **`Tier`**
