@@ -33,7 +33,7 @@
 1 Crossbones, Malicious Mercenary (MSH) 91
 1 Doctor Doom (MSH) 95
 1 Tombstone, Career Criminal (SPM) 70
-1 Last Gasp (SOS) 86
+1 Super-Adaptoid (MSH) 250
 1 Lively Dirge (OTJ) 93
 1 Stomped by the Foot (TMT) 82
 1 Bullseye, Death Dealer (MSH) 209
