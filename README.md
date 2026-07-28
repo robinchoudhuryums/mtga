@@ -937,6 +937,39 @@ top of `scripts/sheets_sync.py`. (Since the CSV is the interchange format, you c
 also import/export manually in Sheets without this — note that a *manual* File →
 Import applies Sheets' own formula parsing, which this RAW guard can't cover.)
 
+### Matches — record what actually happened (optional)
+
+```
+python3 scripts/parse_matches.py session.log            # dry run
+python3 scripts/parse_matches.py session.log --apply    # write matches.csv
+python3 scripts/parse_matches.py --report               # win/loss per deck
+```
+
+Every other tool here grades a deck on its **list**. This one records **games**.
+Turn on Arena → Settings → Account → **Detailed Logs (Plugin Support)**, restart
+Arena, then extract the two relevant line shapes (`Player.log` is overwritten on
+every launch, so grab it before relaunching):
+
+```
+p=~/Library/Logs/"Wizards Of The Coast"/MTGA          # macOS
+grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"' "$p"/Player*.log
+```
+
+**Both shapes are required.** The JSON carries the result and both players' seats
+but not *which seat is yours* — that appears only in the `Match to <userId>:`
+header prefix — so a paste of the JSON alone is skipped with a warning rather than
+guessed at (`--me <userId>` overrides). Rows dedupe by Arena's match id, so
+re-pasting an overlapping log is safe. No userId or player name is ever stored.
+
+Arena's `courseId` has no derivable relationship to a repo deck id, so the mapping
+is learned: put `#: arena: <courseId>` in a deck file (the report lists the
+unmapped ones) or pass `--deck <id>` to tag one session. Unmapped matches are kept.
+
+`--report` shows W/L per deck and **refuses to print a percentage below ~20
+matches**, with a 95% Wilson interval above that. A win rate separates a broken
+deck from a fine one; it will not separate a 55% deck from a 45% one without
+hundreds of games. Read it for disasters, not for marginal swaps.
+
 ## Typical workflow
 
 1. Add rows to `card-library.csv` (Card Name + Set Code + Quantity is enough).
