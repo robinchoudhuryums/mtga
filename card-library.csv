@@ -3832,3 +3832,24 @@ Absorbing Man and Titania,Legendary Creature — Human Villain,Double all damage
 "Leatherhead, Swamp Stalker",Legendary Creature — Crocodile Mutant Rogue,"Trample
 Leatherhead enters with a hexproof counter on her.
 Whenever Leatherhead deals combat damage to a player, you may remove a counter from her. When you do, destroy target artifact or enchantment that player controls.",G,Crocodile; Mutant; Rogue; counters; removal; trample; evasion,TMT,117,1
+Seedship Agrarian,Creature — Insect Scientist,"Whenever this creature becomes tapped, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
+Landfall — Whenever a land you control enters, put a +1/+1 counter on this creature.",G,Insect; Scientist; counters; sacrifice; tokens; ramp; landfall; lands,EOE,204,1
+"Tam, Observant Sequencer // Deep Sight",Legendary Creature — Gorgon Wizard // Sorcery,"Landfall — Whenever a land you control enters, Tam becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // You draw a card and gain 1 life.",U/G,Gorgon; Wizard; lifegain; card draw; landfall; prepared; spellslinger; tempo; lands; ramp,SOS,237,1
+"Bristly Bill, Spine Sower",Legendary Creature — Plant Druid,"Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature.
+{3}{G}{G}: Double the number of +1/+1 counters on each creature you control.",G,Plant; Druid; counters; landfall; double; lands; ramp,OTJ,157,1
+Biogenic Upgrade,Sorcery,"Distribute three +1/+1 counters among one, two, or three target creatures, then double the number of +1/+1 counters on each of those creatures.",G,counters; double,FDN,553,1
+Sage of the Fang,Creature — Human Druid,"When this creature enters, put a +1/+1 counter on target creature.
+Renew — {3}{G}, Exile this card from your graveyard: Put a +1/+1 counter on target creature, then double the number of +1/+1 counters on that creature. Activate only as a sorcery.",G,Human; Druid; counters; graveyard; etb; renew; double,TDM,155,1
+Mossborn Hydra,Creature — Elemental Hydra,"Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)
+This creature enters with a +1/+1 counter on it.
+Landfall — Whenever a land you control enters, double the number of +1/+1 counters on this creature.",G,Elemental; Hydra; counters; landfall; trample; evasion; double; lands; ramp,FDN,107,1
+Greenbelt Guardian,Creature — Elf Ranger,"{G}: Target creature gains trample until end of turn.
+Exhaust — {3}{G}: Put three +1/+1 counters on this creature. (Activate each exhaust ability only once.)",G,Elf; Ranger; counters; exhaust; payoff,DFT,164,1
+Hemosymbic Mite,Creature — Mite,"Whenever this creature becomes tapped, another target creature you control gets +X/+X until end of turn, where X is this creature's power.",G,Mite; pump,EOE,190,1
+Tifa's Limit Break,Instant,"Tiered (Choose one additional cost.)
+• Somersault — {0} — Target creature gets +2/+2 until end of turn.
+• Meteor Strikes — {2} — Double target creature's power and toughness until end of turn.
+• Final Heaven — {6}{G} — Triple target creature's power and toughness until end of turn.",G,pump; triple; tiered; double,FIN,207,1
+Grappling Kraken,Creature — Kraken,"Landfall — Whenever a land you control enters, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,Kraken; counters; landfall; lands; ramp,FDN,39,1
+Seedship Impact,Instant,"Destroy target artifact or enchantment. If its mana value was 2 or less, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",G,sacrifice; tokens; removal; ramp,EOE,205,1
+Repulsive Mutation,Instant,Put X +1/+1 counters on target creature you control. Then counter up to one target spell unless its controller pays mana equal to the greatest power among creatures you control.,U/G,counters,MKM,227,1
