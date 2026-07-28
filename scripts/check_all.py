@@ -218,6 +218,20 @@ def main():
     except Exception as e:
         hard.append(f"dead-pattern check errored: {e}")
 
+    # WORKFLOW-COVERAGE gate — every deck.py subcommand and runnable script must be
+    # reachable from a skill, called by another module, or exempted with a reason. The
+    # correctness gates above all verify a capability WORKS; none of them can see a
+    # capability that works and is never reached. That is not hypothetical: CLAUDE.md
+    # records `/tune-deck` sitting on the command set it shipped with while `consistency`,
+    # `engines`, `shape`, `cuts`, `flex` and the needs-aware `suggest` were added around
+    # it — every one correct, gated and documented, and unused. Same hand-kept-registry
+    # shape as check_patterns' coverage list, so it gets the same treatment.
+    try:
+        from check_commands import check as check_commands
+        hard += check_commands()
+    except Exception as e:
+        hard.append(f"workflow coverage check errored: {e}")
+
     # Soft: wishlist target drift — a target deck that can no longer cast its card
     # after a retune (e.g. deck 14 Mardu->Rakdos orphaned Neriv). Informational
     # only; never fails the build.
@@ -239,6 +253,12 @@ def main():
         # Denylist overreach — a flavor keyword that may actually be a real mechanic.
         for kw, _n, note in ck.flavor_overreach():
             soft.append(f"FLAVOR_KEYWORDS overreach: '{kw}' — {note}")
+        # Registry staleness — an entry in a hand-kept keyword list that no longer
+        # matches any card. Suppresses nothing real, but a registry that looks
+        # considered while covering nothing is the shape F-04 found in check_patterns'
+        # coverage list. Soft: it breaks no invariant, it's a tidy-up prompt.
+        for reg, kw, note in ck.stale_registry_entries():
+            soft.append(f"stale {reg} entry '{kw}' — {note}")
     except Exception as e:
         soft.append(f"keyword radar skipped ({e})")
 

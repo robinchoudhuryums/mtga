@@ -482,9 +482,16 @@ def cmd_suggest_targets(rows, write=False, overwrite=False):
             if not shared:
                 continue
             score = sum(idf.get(t, 0) * twn[t] for t in shared)
+            # `(-idf, tag)`, not `-idf` alone: `shared` is a SET, so a tie in idf left
+            # the order to set iteration and the result changed between runs — Aura,
+            # aura and enchant all score 3.1135, and the displayed `sig` flipped among
+            # them on every build (PYTHONHASHSEED changes it too). That churned
+            # dashboard.html's #data island on every rebuild for no real change, and let
+            # the live ⟳ sync show different signals from the local snapshot. The tag
+            # itself is a total order, so ties now break alphabetically and stably.
             specific = sorted((t for t in shared if idf.get(t, 0) >= spec_idf
                                and t.lower() not in NON_SIGNAL_TAGS),
-                              key=lambda t: -idf[t])
+                              key=lambda t: (-idf[t], t))
             fits.append((round(score, 2), did, specific, sorted(shared)))
         fits.sort(reverse=True)
 
@@ -707,9 +714,16 @@ def _rank_scores(rows, keep=None):
             shared = ctags & central
             if not shared:
                 continue
+            # `(-idf, tag)`, not `-idf` alone: `shared` is a SET, so a tie in idf left
+            # the order to set iteration and the result changed between runs — Aura,
+            # aura and enchant all score 3.1135, and the displayed `sig` flipped among
+            # them on every build (PYTHONHASHSEED changes it too). That churned
+            # dashboard.html's #data island on every rebuild for no real change, and let
+            # the live ⟳ sync show different signals from the local snapshot. The tag
+            # itself is a total order, so ties now break alphabetically and stably.
             specific = sorted((t for t in shared if idf.get(t, 0) >= spec_idf
                                and t.lower() not in NON_SIGNAL_TAGS),
-                              key=lambda t: -idf[t])
+                              key=lambda t: (-idf[t], t))
             score = sum(idf.get(t, 0) * twn[t] for t in shared)
             if score > best:
                 best, best_specific = score, specific

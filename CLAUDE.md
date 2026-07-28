@@ -57,7 +57,13 @@ docs. This file is the source of truth for the workflow commands in
   `reconcile_crafts._bak_write`), never `write_rows`.
 - **Deck-dump imports undercount quantities** (each line is a lower bound). True
   up owned counts by reconciling from a built deck: `import_arena.py <deck>
-  --skip-basics`.
+  --skip-basics`. **The authoritative fix is `import_collection.py`** — a tracker's
+  full-collection CSV IS the truth, so it sets counts EXACTLY, including DOWN, which no
+  other tool here can do (`import_arena` takes `max()` by construction and can never
+  learn you own fewer). Five tools write owned-card data and they disagree about what a
+  quantity MEANS — lower bound vs authoritative — so route through **`/ingest`** rather
+  than picking one by hand; choosing wrong either undercounts the collection or
+  overwrites it.
 - **Basic lands are not in the collection** (unlimited in Arena). `deck.py`
   treats them as unlimited; imports skip them with `--skip-basics`.
 - **Owned copies are fungible across printings.** For buildability, `deck.py`
@@ -235,8 +241,8 @@ castability · curve · central-theme density), with the intangibles moving a de
   the same primitives the single-deck commands do — ownership drift (`check`),
   construction legality (`legal`), color strays (`mana`/`check` castability),
   interaction count and central-theme count (`stats`) — labelled **★ TUNE** (hard:
-  illegal / uncastable), **craft** (unbuilt), **review** (soft: off-color strays or
-  thin interaction), or **ok**. `--flagged` drops the ok rows. Each deck also
+  illegal / uncastable), **craft** (unbuilt), **review** (soft: an off-color ABILITY
+  or thin interaction), or **ok**. `--flagged` drops the ok rows. Each deck also
   carries a competitive **`Tier`** (S/A/B/C/D win-capability) read from its `#:
   tier:` header — shown as a column and sortable with `deck.py audit --by-tier`
   (and a color-coded pill on the dashboard). The dashboard opens
@@ -247,6 +253,18 @@ castability · curve · central-theme density), with the intangibles moving a de
   deck. (A stale `#: colors:` header inflates the `Cast` column — a deck whose header is
   narrower than the colors it actually casts shows spurious "uncastable" rows; fixing the
   header to the deck's real castable colors clears it, same as it does for `mana`/`check`.)
+  **The `review` verdict counts only an off-color ABILITY, never a hybrid you pay
+  on-color** — `_castability` returns `off_ability` as a subset of `off_identity`, and
+  `audit_deck` reads the subset. Counting every identity stray had saturated the flag:
+  it fired on 22 of 63 decks, and on ALL 26 flagged decks every flagged card's strict
+  pips were inside the declared colors, i.e. a measured 0% actionable rate (broad-scan
+  F-03). Knight's Edge is mono-W and runs two R/W hybrids that are simply white cards
+  there; Super-Skrull casts for `{1}{B}{B}{B}` but its `{4}{R}` ability is dead in a
+  deck with no red, and only the second is worth a look. Roster impact: review 22 → 6,
+  ok 22 → 38. Nothing became invisible — the `Cast` column still shows every stray as
+  `Ns` (matching `deck.py mana`) and marks the actionable subset `Na`, so the column
+  says WHY a deck did or didn't reach the verdict. Same saturation shape as audit F-04's
+  `Decks` column: a flag that always fires reads as working.
 - **Stored decks drift from the real Arena decks.** The user edits decks in the Arena
   app; the repo only updates when someone writes the deck file, so the two silently
   diverge (hit this session: deck `12` had been changed to 2× Super Intelligence / −Futurist
@@ -257,7 +275,14 @@ castability · curve · central-theme density), with the intangibles moving a de
   flags the drifted ones). **Then repair it with `deck.py sync`** — the WRITE half of
   `verify`: pipe or pass an export containing ONE OR MANY `Deck` blocks and it matches each
   to its closest stored deck (same rule as the dashboard panel) and rewrites the drifted
-  files to match. Dry-run by default; `--apply` writes each with a `.bak` and the INV-04
+  files to match. That "same rule" is now PINNED by tests rather than asserted in a
+  docstring: the JS copy had drifted on the TIE-BREAK, comparing drift alone with a strict
+  `<` so an equal-drift tie went to whichever deck came first in iteration order, while
+  Python preferred more shared cards then the lower id — same paste, two answers, in
+  exactly the sibling-variant case the low-confidence flag exists for (broad-scan F-08).
+  Both now sort by `(drift asc, shared desc, id asc)`, and the JS uses `<`/`>` on the id
+  rather than `localeCompare`, because Python compares CODEPOINTS and locale collation can
+  ignore the hyphen in an id like `3-brawl`. Dry-run by default; `--apply` writes each with a `.bak` and the INV-04
   re-check. Line-level editing, so an existing card keeps its printing and section position
   and only its QUANTITY changes, dropped cards lose their line, new cards are appended after
   the last card line, and the `#:` header / `# Creatures` comments / `#~` flex lines all
@@ -339,9 +364,26 @@ castability · curve · central-theme density), with the intangibles moving a de
   leaves Collector # blank.
 - **WIP decks legitimately show "missing" cards** in `check_all.py` — those are
   craft targets not yet owned (e.g. Atlantis Attacks 18/18a). Not a failure.
-- **Regenerate derived data after imports**, in order: `enrich.py` →
-  `tag_synergies.py --merge` (needs `build_mana.py` first for keyword tags) →
-  `build_pool.py` → `build_gallery.py`. Or run `/refresh`. Use **`--merge`** (adds
+- **Regenerate derived data with `make refresh` — never by hand.** The order is a real
+  dependency graph (`build_pool.py` is independent, taking keywords straight off the
+  Scryfall response; `build_mana.py --pool` READS `card-pool.csv`; `tag_synergies.py`
+  reads `card-mana.csv`'s keywords; `build_gallery.py` last), and it had been written out
+  in **eleven** places — this line, Regression Scenario 1, `/refresh`, `/ingest`,
+  `/add-cards`, and printed or docstring'd copies inside `import_arena.py` (×2),
+  `import_collection.py` (×2) and `reconcile_crafts.py` — of which only `/refresh` had it
+  right. The rest put `build_pool.py` AFTER `build_mana.py`, `/ingest` claimed it matched
+  `/refresh` while contradicting it, and `import_arena.py`'s docstring asserted "IN THIS
+  ORDER" over the wrong one. The first sweep found four and fixed five; the copies inside
+  SCRIPTS survived it, which is the worse half — a stale doc misleads a reader, a printed
+  recipe is an instruction someone follows. `tests/test_verify_ingest.py` now fails the
+  build on any new copy (`_restates_chain`, which distinguishes a RECIPE — both builders
+  as adjacent invocations or an arrow chain — from the many legitimate one-tool mentions
+  like "built by build_mana.py", because a check that flagged those would be deleted). Getting
+  it wrong is QUIET: a newly released set's pool cards get no `card-mana.csv` row until
+  the next cycle, so they rank with no cost and no keyword tags, and no invariant notices
+  (INV-02 covers the LIBRARY, not the pool). The Makefile target is now the one
+  executable definition; the correct order is `enrich` → `build_pool --all` →
+  `build_mana --pool` → `tag_synergies --merge` → `build_gallery` → `check_all`. Use **`--merge`** (adds
   newly-derived tags without removing existing/hand-curated ones), not `--force`,
   which REPLACES every cell and clobbers hand edits (audit F10). `tag_synergies`
   also warns when `card-mana.csv` is older than the library — rebuild it first or
@@ -1020,6 +1062,14 @@ castability · curve · central-theme density), with the intangibles moving a de
   inline — mostly the `unclassified` channel, which is exactly the queue the second
   under-count sweep was mined out of. The bare ints are unchanged for `tier_band` and the F10 guard, which compare
   numbers; the annotated string is what a human reads.
+  **The remainders are QUANTITY-WEIGHTED, like the counts they annotate.** They used to be
+  card counts, so `8 +4?` compared a weighted base against an unweighted remainder and a
+  deck running 4× of a card with no oracle text on file reported `+1?` for four unread
+  copies (broad-scan F-09) — understating uncertainty, which is the wrong direction for a
+  signal whose entire job is to stop a heuristic count reading as fact. They are deduped by
+  NAME first, because `role_coverage_flags` emits one entry per LINE and a card split
+  across two printing lines would otherwise be weighted twice. Only the annotation moved:
+  the bare ints feeding `tier_band` were verified unchanged on all 63 decks.
 - **`deck.py shape <id>` answers WIDE vs TALL, FAST vs SLOW** — the structural question
   themes structurally cannot: `counters` is the same tag whether they all go on one
   creature or spread across twelve. Reading `#: archetype:` prose instead produced the
@@ -1052,6 +1102,129 @@ castability · curve · central-theme density), with the intangibles moving a de
   card's oracle text, and `deck.py similar --full` lists the shared nonland CARD names —
   the concrete evidence behind a theme cosine that can read 84% on five shared cards,
   four of them lands.
+- **A CAPABILITY THAT WORKS AND IS NEVER REACHED is invisible to every correctness
+  gate.** Eleven gates verify that each model is right; not one can see a command nothing
+  runs. That is not hypothetical — it is written a few paragraphs down in this file:
+  `/tune-deck` sat on the command set it shipped with while `consistency`, `engines`,
+  `shape`, `cuts`, `flex` and the needs-aware `suggest --needs/--interaction/--ramp/
+  --lands` were built around it, and *"the one recommender a tune-for-interaction would
+  reach for is blind to the fix."* Every one of those was correct, gated, documented —
+  and unused. The SKILLS are the composition layer, and they were the last hand-kept
+  registry with no gate, exactly like `check_patterns`' coverage list (13 patterns
+  behind), `_INLINE_PARSE_ALLOW` (could name deleted code) and the argparse tree (no gate
+  ever built one). **`check_commands.py` closes it as a hard `check_all` gate**: every
+  `deck.py` subcommand and every runnable script must be invoked by a skill, called
+  programmatically by another module, or listed in `INTERACTIVE_ONLY` **with a reason** —
+  and a stale exemption naming a command that no longer exists is itself a failure.
+  Two design points worth keeping. Coverage requires a REAL call (`cmd_*`) or a skill
+  invocation, **not a prose mention**: the first draft matched the string `deck.py <name>`
+  anywhere under `scripts/`, and since every docstring here cross-references commands, it
+  passed five genuinely unreachable ones — a check that cannot fire, in the check written
+  to stop checks that cannot fire. And the first honest run flagged `audit`, `brawl`,
+  `rotation`, `sync`, `verify` — **all roster-level**, which is the actual finding: the
+  per-deck loop had `/tune-deck` and `/apply-changes`, and the roster loop had no workflow
+  at all. **`/roster-review`** is what closed it (triage → rotation → craft plan → Brawl
+  → Arena drift), so those five are now driven rather than remembered.
+- **A SET plus a sort key that can TIE is a nondeterministic output.** `wishlist`'s
+  displayed `sig` changed between runs of unchanged code: `shared = ctags & central` is a
+  SET, and `sorted(..., key=lambda t: -idf[t])` left tied themes in set-iteration order.
+  `Aura`, `aura` and `enchant` all score idf 3.1135, so the signal flipped among them on
+  every build — and `PYTHONHASHSEED` changed it too. Nothing was WRONG in any single run,
+  which is why it survived: the cost was that `dashboard.html`'s `#data` island churned on
+  every rebuild (every Pages deploy republished a payload differing from the last for no
+  real reason) and the live ⟳ sync could show different signals from the local snapshot.
+  The fix is to make the key a TOTAL order — `(-idf[t], t)` — so ties break alphabetically
+  and stably; the same bug sat at two sites (`_rank_scores` and `cmd_suggest_targets`).
+  **Before sorting anything derived from a set, ask what happens when the key ties.** This
+  was found by CHECKING the "restyle is template-only" claim (rebuild twice, diff the
+  payload) rather than asserting it — worth keeping as a habit for any dashboard change,
+  since a build-to-build diff is the only thing that makes this class visible.
+- **NO GATE BUILT AN ARGPARSE TREE, so a broken `--help` was invisible.** `check_all.py`
+  imports `deck` as a MODULE and calls `cmd_*` functions directly; `main()` and the
+  parser only exist under `__main__`, and nothing in `tests/` constructed an
+  `ArgumentParser`. So `deck.py --help` crashed for four days with three green workflows
+  (broad-scan F-01/F-12). The cause is a rule worth knowing before you touch any help
+  string: **argparse renders help through `help % params`, so a bare `%` raises
+  `ValueError: unsupported format character` — write `%%`.** Worse, the top-level help
+  EXPANDS EVERY SUBACTION, so one bad string among 31 subparsers takes the whole
+  `--help` down, i.e. the discovery surface for the project's main tool — the very
+  "tool list" CLAUDE.md tells you to re-read a skill against. Now covered twice:
+  `tests/test_cli.py` runs `--help` on all 28 scripts plus each deck.py subcommand in a
+  thread pool (~2s, asserting no traceback and that argparse scripts exit 0 with usage —
+  argparse use is detected from SOURCE, not a hardcoded list, so it can't go stale), and
+  a dependency-free shell mirror in `.github/workflows/integrity.yml`, which runs on
+  EVERY push rather than just main + PRs. Both were verified to fail on a reintroduced
+  bug. One trap found while writing the CI half: the first shell extraction of the
+  subcommand list silently yielded ZERO subcommands and still passed, because it guarded
+  on `[ -z "$subs" ]` and a whitespace-only capture is not empty — a check that covers
+  nothing while reporting success, which is the exact failure this whole family is about.
+  It now guards on the COUNT (`-lt 25`).
+- **`swap --apply` is the only moment a real add/cut DECISION is observable — it now
+  records one.** Every ranking model here (`cuts`, `suggest`, the bounded co-signals, the
+  whole gated stack) had been graded on argument and anchor tests and never against a
+  decision anyone actually made. That is the same gap CLAUDE.md records for the `Decks`
+  column: it read as working right up until someone MEASURED it and found a 0% actionable
+  rate. `deck.py swap --apply` / `apply-flex --apply` now append a row to
+  **`recommendations.csv`** — where `cuts` ranked the card you cut (rank/total, plus
+  whether it was `#: protect:`ed) and whether `suggest` surfaced the card you added in its
+  default top 20. Ranks are captured against the PRE-swap deck, because that is the list
+  the decision was made against; re-deriving one later would score against a deck the swap
+  already changed. `deck.py feedback [<id>]` reads it back.
+  **The report LEADS WITH DISAGREEMENTS, and that ordering is the whole design.** An
+  agreement is contaminated: you read `cuts` before deciding, so a high agreement rate
+  partly measures the shortlist's INFLUENCE rather than its accuracy — a metric that
+  cannot distinguish "the model is right" from "the model was persuasive" is the
+  saturation failure again. A DISAGREEMENT (you cut a card the model put in its keep half)
+  is a case the model got wrong whichever way the decision was reached, so it is the
+  informative direction. Below `_RECS_MIN_SAMPLE` (20) the report refuses to compute a
+  rate at all, the same restraint `parse_matches --report` and `count_conf` show.
+  **"Add not surfaced" is EXPECTED and is not on its own a model miss** — `suggest` filters
+  to cards sharing a synergy THEME and is structurally blind to lands and off-theme
+  removal (that is what `--lands`/`--interaction`/`--ramp` exist for), so read that count
+  as "which fills the theme model can't reach."
+  **It is REPORT-ONLY and must stay that way.** The scoring terms are bounded and anchored
+  by `check_suggest` precisely so they cannot silently reorder a tuned deck; a feedback
+  loop that quietly re-weighted them would defeat that by construction *and do it
+  invisibly*, since every pure-function anchor would still pass. `tests/test_recommendations.py`
+  pins this structurally — no function in the scoring stack may reference the ledger — so
+  wiring feedback into a score requires deleting a test, which is the point: it makes the
+  decision visible instead of incidental. Recording is also **never fatal to a swap**: each
+  model call sits in its own guard, a swap whose telemetry fails is still saved, and a row
+  is written only AFTER the edit lands (so a rejected write leaves no phantom row).
+- **Match results are FREE from `Player.log` — the header line is the load-bearing half.**
+  Arena's "Detailed Logs (Plugin Support)" setting writes match events locally; that is the
+  same feed every third-party tracker reads, and their subscriptions buy cloud analytics,
+  not log access. (COLLECTION data was locked down years ago, which is why ingestion has to
+  undercount — see the deck-dump gotcha. MATCH results were not.) `scripts/parse_matches.py`
+  (`/log-matches`) turns a paste into `matches.csv`. Two line shapes are needed and **both
+  are required**: the `finalMatchResult` JSON carries the outcome and both players' seats
+  but **NOT which seat is yours** — the local userId appears only in the `Match to <userId>:`
+  header prefix. A paste of the JSON alone is unparseable, so the parser SKIPS with an
+  actionable warning rather than guessing; a 50%-accurate record would be worse than an
+  empty one because it looks like data. (`--me <userId>` is the escape hatch.) Three more
+  things the real log settled, none of them guessable from the JSON alone: the log line's
+  LOCAL timestamp must beat the JSON's UTC epoch (an evening session otherwise files a day
+  late — the sample's own header said 7/27 while its epoch resolved to 7/28), the epoch is
+  still the right FALLBACK when no header date exists (a blank Date sorts to the top and
+  can't be scoped in time), and `courseId` is Arena's own deck identifier with **no
+  derivable relationship to a repo deck id** — so the mapping is LEARNED from a `#: arena:
+  <courseId>` deck header, and an unmapped match is kept and surfaced, never dropped.
+  Deliberately stores no userId and no playerName: neither is needed for a win rate, and a
+  match log is not a place to accumulate identity (opponent *deck* is kept — an archetype,
+  not a person). The scan keys on the EVENT rather than on `"finalMatchResult"`, because a
+  truncated paste is the expected failure and that marker sits LATE in the line, after both
+  seats — so any realistic width cap removed it and the match was dropped in **silence**
+  while the run reported success. Found by a test, and it is this project's signature bug
+  class one more time: the check keyed on the thing the failure destroys.
+  **Read the record with restraint.** Below `_MIN_SAMPLE` (20) matches `--report` refuses
+  to print a percentage at all, and above it prints a 95% **Wilson** interval (the naive
+  normal approximation is wrong at exactly these sample sizes). A win rate separates a
+  BROKEN deck from a fine one; it will not separate a 55% deck from a 45% one without
+  hundreds of games. Never write one into `#: tier:` — tier grades the LIST against the
+  rubric, and a small-sample rate is not evidence at that resolution, so citing one would
+  be precisely the stale-rationale failure `--audit-rationale` exists to catch. Same
+  restraint `count_conf` shows for role counts: a number that looks certain when it isn't
+  is the expensive kind of wrong.
 
 ## Known Issues
 
@@ -1273,11 +1446,23 @@ castability · curve · central-theme density), with the intangibles moving a de
   header to the deck's real castable colors clears the false positives (e.g. deck
   `13` was corrected `GR`→`GWBR`). Treat a flag as signal to review, not a hard
   failure — it doesn't gate `check_all.py`.
+  An identity stray now says WHICH KIND it is, in three cases: `(hybrid — paid
+  on-color)`, `(off-color ability)`, or `(cost unknown — run deck.py mana …)`. The third
+  exists because **`check` deliberately passes an EMPTY mana dict to stay offline**, and
+  with no cost to read nothing can be shown to be hybrid-explained — so `check` would
+  otherwise assert "off-color ability" for a card it cannot classify (false for deck 3's
+  two R/W hybrids). It still COUNTS an unknown as actionable, so the offline path
+  over-reports rather than silently clearing a deck; only the claim is softened to match
+  the evidence. Run `deck.py mana` (which loads real costs) for the definitive read.
 
 ## Cycle Workflow Config
 
 **Test Command:** `python3 scripts/check_all.py`
 (deterministic integrity gate; exits non-zero on any hard invariant break —
+NOTE it imports `deck` as a MODULE and calls `cmd_*` directly, so it never builds an
+argparse tree — the CLI surface is covered separately by `tests/test_cli.py` and a
+dependency-free smoke step in `.github/workflows/integrity.yml`; see the CLI gotcha
+above —
 INV-01…04 plus a **ranking-model sanity check** (`check_rankings.py`) that guards
 the Doctor-Doom-class regression: a scoring change that silently reclassifies a
 real tribal theme as "generic". The ranking check is distribution-based, so it
@@ -1290,7 +1475,14 @@ existence **and schema**: a derived file that loses its own columns (a pool with
 existence-only check let a library-header rewrite pass green. Five more model-sanity checks are
 also hard-gated: **color-parsing** (`check_colors.py`) locks in the F1/F2 fix (a
 colorless card must not read as red; a slash-gold must pass the subset test) and a
-static scan bans the naive inline `if ch in "WUBRG"` parse outside `lib.py`;
+static scan bans the naive inline `if ch in "WUBRG"` parse outside `lib.py` — in
+**BOTH** its shapes, the comprehension AND the equivalent `for` STATEMENT, since the
+scan originally tested only the comprehension node types and the same bug written as a
+loop passed green (broad-scan F-07). It also rejects a **stale `_INLINE_PARSE_ALLOW`
+entry** naming a file or function that no longer exists: an exemption for code that is
+gone reads as a considered decision while covering nothing, and silently pre-grants a
+pass to any future function that reuses the name — the same hand-kept-registry rot the
+`check_patterns` completeness check exists for;
 **DFC ownership-join** (`check_dfc.py`) guards the front/full-name convention — a
 behavioral anchor that `lib.owned_qty` and its wrappers (`wishlist._owned_of`,
 `pool.owned_of`) resolve an owned double-faced card by its front face, plus a static
@@ -1342,10 +1534,12 @@ support over-counted Delney 6× and would have minted a false KEY);
 **engine classifier** (`check_engines.py`) anchors the enabler/
 payoff detection on canonical cards (#3); **tier floor** (`check_tier.py`) proves
 the archetype-aware floor grades non-aggro decks identically to before and only
-ever raises an aggro band (#4); and **dead patterns** (`check_patterns.py`) — every
-card-text classifier regex must match ≥1 card in the ~15.8k-card pool, and no pattern
-source may contain a Python tuple repr like `(0, 2)`. This is the gate for THIS
-PROJECT'S SIGNATURE BUG: a regex that compiles fine and can never fire. Both historical
+ever raises an aggro band (#4); and **dead patterns** (`check_patterns.py`) — THREE
+checks over 134 registered patterns: every card-text classifier regex must match ≥1 card
+in the ~15.8k-card pool, no pattern source may contain a Python tuple repr like `(0, 2)`,
+and **every module-level compiled pattern in `deck`/`lib`/`tag_synergies` must be either
+REGISTERED or explicitly EXCLUDED with a reason** (the COMPLETENESS check). This is the
+gate for THIS PROJECT'S SIGNATURE BUG: a regex that compiles fine and can never fire. Both historical
 instances shipped past every other gate — the f-string `{0,2}` that became the literal
 `(0, 2)` (46 decks lost their interaction count) and `(?:owner|their) hand`, which
 demands the text "owner hand" while Magic writes "owner's hand" (every bounce spell
@@ -1355,14 +1549,38 @@ only when someone remembered to run one. It found a THIRD on its first run — `
 less for each`, where Magic writes "costs {1} less TO CAST for each" — which was invisible
 even to a diff, since a general pattern already covered those cards so no count ever
 moved. Note the check must feed each pattern the text form it really runs against
-(`norm` vs `raw`): the case-sensitive tribal-payoff scan reads ORIGINAL-case text and
-reads as dead against a lowercased corpus. It also emits **soft, non-gating warnings**:
+(`norm` / `raw` / `window`): the case-sensitive tribal-payoff scan reads ORIGINAL-case
+text and reads as dead against a lowercased corpus, while a **`window`** pattern is
+`$`-anchored and run against a SHORT SLICE (`_POWER_SCOPE_*` read
+`text[m.start()-25:m.start()]`), so it matches 0 of 15.8k WHOLE texts by construction —
+registering those two naively would have failed the build on two healthy regexes. They
+keep the corpus-free format-leak check and skip the live-corpus one.
+**The COMPLETENESS check exists because the coverage list was hand-kept and had fallen
+13 patterns behind the code** (broad-scan F-04): all five of `lib.structural_
+distinctiveness`, every `_DOUBLER_AXES` matcher, `_DOUBLER_POWER_RE` and `_REMINDER_RE`
+were uncovered. The structural-distinctiveness hole was the dangerous one —
+`card_distinctiveness` returns `max(tag_score, structural)`, so a dead pattern there
+silently collapses the structural signal to 0 and the `max()` HIDES it: no error, no
+visible count change, `cuts`' `Uq` column quietly reverting to tag-only. Anything
+deliberately left out is enumerated with a justification in `_EXCLUDED` (deck-file /
+mana-symbol SYNTAX, and the tier-RATIONALE prose patterns, which read a human argument
+rather than card text and are unit-tested in `tests/test_deck.py` instead). A new
+pattern now fails the build until someone says what corpus it runs against — the same
+lesson as the checks that could never fire: a hand-kept registry grows holes.
+It also emits **soft, non-gating warnings**:
 wishlist target drift — a card whose Target deck can no longer cast it
 after a retune — via `wishlist.py --audit-targets`; and **new unindexed mechanics**
 — `check_keywords.py` flags a keyword on an owned card that isn't in
 `tag_synergies.py`'s map yet (a new set's mechanic), baselined in
 `keyword_baseline.txt` so it stays quiet until something genuinely new appears
 (`check_keywords.py --update-baseline` to acknowledge one); **FLAVOR_KEYWORDS
+registry staleness** — `check_keywords.stale_registry_entries()` flags a
+`FLAVOR_KEYWORDS` or `keyword_baseline.txt` entry matching NO card in the corpus (a
+suppression with nothing behind it; both lists only ever grow, and nothing pruned them
+when a set left the pool). Soft on purpose — it breaks no invariant — and skipped below
+the corpus floor, where a pool-wide mechanic can legitimately sit on zero owned cards
+(the `harmonize` case). A stale `_INLINE_PARSE_ALLOW` entry is HARD by contrast, because
+it sits inside a hard gate; and **FLAVOR_KEYWORDS
 overreach** — `check_keywords.flavor_overreach()` flags a denylisted "flavor" word
 that's also theme-mapped, or one shared by several owned cards (likely a real
 mechanic being suppressed, audit F24); **theme coverage** — `check_themes.py` flags
@@ -1408,15 +1626,35 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 - Enrichment & Tagging Accuracy — Scryfall-sourced fields and synergy tags
 - Deck Tooling Correctness — deck.py / query.py / pool.py behavior
 - Deck-Building Insight — mana (hybrid-aware), tribes, cost-nature, pool value
-- Presentation — gallery correctness and freshness
+- Presentation & Interface — gallery/dashboard correctness and freshness, plus the
+  interface layer `/broad-scan` Stage 3 grades structurally (keyboard/assistive
+  access, empty-loading-error states, responsive posture, theme-token completeness,
+  feedback on failure) across dashboard.html, gallery.html, templates/ and app.py
 - Documentation Currency — README / CLAUDE.md match the code and data
 
 **Subsystems:**
-- Data: card-library.csv, card-pool.csv (+ Power/Toughness), card-mana.csv, card-wishlist.csv (+ Power Source provenance)
-- Ingest & Enrich: scripts/import_arena.py, scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
-- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py, scripts/check_patterns.py, scripts/keyword_baseline.txt (acknowledged-but-unindexed mechanics, read by check_keywords.py)
-- Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check`). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format, and **nests variant decks under their core** — a core deck's same-format variants render as an always-visible `↳ Variants (N)` strip inside its card (id + name + build-status per row, click opens the variant's modal), so they're clearly grouped yet never hidden; searching a variant still surfaces it as its own card, and a cross-format variant (e.g. `3-brawl`) stays standalone in its own format shelf (families are built per shelf). The page is **mobile-responsive** (single-column grids, wide data tables scroll in-box, a horizontally-scrollable section-nav) and uses **progressive disclosure**: every section collapses — the utility ones (card finder / stale-check / recently-edited / rotation) default CLOSED — a sticky **section-nav strip** jumps to and auto-expands a section with a scroll-spy highlight, and the long lists (wishlist tiers, crafting leverage) cap at ~12 rows with a *show all* toggle while the roster-triage table defaults to the ACTIONABLE decks (the page analog of `deck.py audit --flagged`). The **wishlist** filters by free text (card/target/signal) AND by **wildcard rarity** (M/R/U/C chips, multi-select, mirroring `wishlist.py --rarity`). All of this is template-only (the `#data` island is untouched) and persists in `localStorage`.
-- Testing: tests/ (pytest unit layer over the pure helpers — tests/test_check_patterns.py pins the dead-pattern gate on both historical bug shapes; front_face_cost / mana_value (split-Room-Adventure front-face costs), flex_staleness, the rationale figure audit (the bare-`over` false negative, `_ARROW_AFTER` transition notation, and `_figure_is_history` — the `removal`/`craft target` domain-vocabulary suppressions plus the `a 2.44 curve` house phrasing), the tag/role alignments (`draw cards equal to`, `gain life equal to`, `costs {N} less`, `pay life` scoping); card_colors, card_power, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _cuts_uniq_adj, distinctiveness_score (tag-rarity, tribe/evergreen-excluded), structural_distinctiveness (oracle-text-shape rescue), card_distinctiveness (max-combine), _creature_subtypes, _land_synergy_bonus / _land_shortfall_bonus (bounded manabase-recommender nudges), _accel_want / _ramp_restriction_fit / _int_scaling / _int_scaling_boost (needs-model signals), _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), fit_strength (specific-theme-gated KEY + broad-tribe demotion), _home_curve_fit (bounded suggest-homes curve nudge), pip_depth_warning / deck_color_sources (the colored-pip DEPTH flag the identity-subset castability test can't see), doubler_axis / doubler_restriction / doubler_support / doubler_boost (the bounded deck-magnitude co-signal for doublers), _central_themes (mechanical sub-theme floor-2 admission), _theme_cosine (generic-damped deck-similarity), the role-classifier under-count fixes (permanent-type-list removal, `counter up to N target`, library-tuck removal, the draw-N/discard-N LOOT exclusion, `half X` draw, and the second sweep — bounce to `owner's` hand, edict, X-damage, Aura tuck, mass-edict sweeper, repeatable-upkeep-draw card advantage, damage to each opponent) plus a structural assertion that the coverage net is a SUPERSET of the precise patterns and that stripping reminder text kills the Ward false cue without hiding a real miss, protection_effects (real ward/hexproof/indestructible vs a combat pump), rotation_year/rotation_risk (`_SET_ROTATION_OVERRIDE`, calendar-year risk), cost_upside_flags, _drop_cost_themes, section_mismatch, power_threshold_flags (incl. the SCOPE fix: removal/opponent-facing and `total power` sums must not flag), _cites_as_arriving (the reversed-replacement claim, plus the `re.I`-defeated `+X` capital and the "cut for cause" idiom), count_conf (role counts carry their own uncertainty), _file_memo (reference-table cache: a same-size rewrite and a REPOINTED path both invalidate), deck_shape (wide/tall from text, amplifiers-only), near_duplicates (interchangeable-card groups), wishlist.is_conditional_power, wishlist.power_is_seeded, wishlist._parse_budget / _rank_scores(keep=…) (the budget planner: spec parsing, and that a FILTERED view scores identically to the full one — the subset must exclude the corpus max or the test passes vacuously), import_arena, is_heist_text (TestHeistTheme: cross-sentence matching, the impulse/graveyard-hate exclusions, and the `theft`/`heist` name-collision regression), is_exile_cast_text (TestExileCastTheme: the Adventure type-line enabler, the Warp/Plot/Foretell keyword family, and the cast-from-exile payoffs), keyword_frequencies (distinct cards, not rows — the DFC double-count that let a card-unique flavor keyword escape the noise filter), tags_for (incl. the toughness-matters / noncombat-damage / spell-copy / tribal-payoff mechanical-synergy tags)), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
+- Data: card-library.csv, card-pool.csv (+ Power/Toughness), card-mana.csv, card-wishlist.csv (+ Power Source provenance), matches.csv (played-match record; created on first `/log-matches`, absent until then — deliberately NOT an invariant, since a repo with no logged games is healthy), recommendations.csv (recommendation-outcome ledger; same treatment — accrues from `swap --apply`, absent until the first swap)
+- Outcomes: scripts/parse_matches.py (Arena `Player.log` → matches.csv, `/log-matches`) — the ONLY subsystem that has seen a game; recommendations.csv + `deck.py feedback` (the recommendation ledger — how `cuts`/`suggest` scored against the swaps you actually applied; written by `swap --apply`, report-only, never fed back into a score). Every other model grades a deck on its LIST; `#: tier:` is a human competitive judgment with no outcome data behind it, which is why the rubric leans on measurable proxies.
+- Ingest & Enrich: scripts/import_arena.py, scripts/import_collection.py (authoritative full-collection tracker import — sets exact counts including DOWN), scripts/verify_ingest.py (reads a paste BACK against the library — present? at the expected count? covered by card-mana.csv? — because every failure mode here is a silent undercount and `check_all` structurally cannot see one: a card that never arrived breaks no invariant), scripts/enrich.py, scripts/tag_synergies.py, scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py, scripts/sheets_sync.py, scripts/scryfall.py (shared resilient Scryfall client), scripts/lib.py
+- Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py, scripts/check_patterns.py, scripts/check_commands.py, scripts/keyword_baseline.txt (acknowledged-but-unindexed mechanics, read by check_keywords.py)
+- Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json, scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml (Pages deploy), scripts/app.py (optional Flask editor), templates/, Makefile (`make app` launcher / `make check` / `make refresh` — the ONE executable definition of the derived-data rebuild order). The dashboard now also renders a **Recently edited** panel (repo→Arena sync: last-edit date + commit changelog + card-level delta, with a last-edit / net·7d / net·30d "since" toggle — from git, needs `pages.yml` fetch-depth: 0) and a **Standard rotation** panel. The deck grid groups into per-format shelves (Standard / Brawl / Alchemy / …) when the roster spans more than one format, and **nests variant decks under their core** — a core deck's same-format variants render as an always-visible `↳ Variants (N)` strip inside its card (id + name + build-status per row, click opens the variant's modal), so they're clearly grouped yet never hidden; searching a variant still surfaces it as its own card, and a cross-format variant (e.g. `3-brawl`) stays standalone in its own format shelf (families are built per shelf). The page is **mobile-responsive** (single-column grids, wide data tables scroll in-box, a horizontally-scrollable section-nav) and uses **progressive disclosure**: every section collapses — the utility ones (card finder / stale-check / recently-edited / rotation) default CLOSED — a sticky **section-nav strip** jumps to and auto-expands a section with a scroll-spy highlight, and the long lists (wishlist tiers, crafting leverage) cap at ~12 rows with a *show all* toggle while the roster-triage table defaults to the ACTIONABLE decks (the page analog of `deck.py audit --flagged`). The **wishlist** filters by free text (card/target/signal) AND by **wildcard rarity** (M/R/U/C chips, multi-select, mirroring `wishlist.py --rarity`). All of this is template-only (the `#data` island is untouched) and persists in `localStorage`.
+  The EDITOR's colour filter (`templates/collection.html`) follows the dashboard's chip
+  contract verbatim — `role="button"` + `tabindex` + `aria-pressed` + Enter/Space, per
+  `build_dashboard.py`'s `a11y()`. It is the same control, so a second interaction
+  contract would be a drift bug, not a style choice; the key handler routes through
+  `.click()` rather than re-implementing the toggle, for the same reason. Its focus ring
+  is an `outline`, never the border — `.pip.on` already uses border-color for the ACTIVE
+  state, so sharing it would make focused and selected the same pixel. Pinned by
+  `tests/test_templates.py`.
+  The DECK editor's analysis tabs (`templates/deck.html`) had the identical defect and
+  the identical fix — bare `<span class="tab">`s with a container click handler, so all
+  four were mouse-only — plus the ARIA structure the dashboard's own tabs still lack:
+  `role="tablist"` on the strip and `role="tabpanel"` on the output (a `role="tab"`
+  outside a tablist is invalid ARIA). The output `<pre>` is focusable because it
+  scrolls. Both editor pages carry a `<main>` landmark and a `:focus-visible` rule
+  wherever they style `:hover`. **Auditing the SIBLING templates is what found this** —
+  the pip fix named one file, and the same bug was sitting two files over.
+- Testing: tests/ (pytest unit layer over the pure helpers — tests/test_templates.py is the MARKUP-CONTRACT layer over `templates/`, stdlib-`html.parser` only and deliberately NOT a browser test: what a file CAN prove is whether a control is a control at all — role, tabindex, an accessible name, a key handler, `aria-pressed` kept in sync, and a focus ring that uses `outline` rather than the border `.pip.on` already claims. A `<div>` with a click handler and none of those is invisible to a keyboard and to assistive tech, which is how the editor's six colour pips stayed mouse-only through six deferrals of the I-01 fix with every gate green; the perceptual half stays a human walk (Regression Scenario 7); tests/test_cli.py is the CLI ENTRY-POINT layer, the one surface no other gate touches: `--help` on all 28 scripts plus every deck.py subcommand, asserting no traceback and that argparse scripts exit 0 with usage (F-01/F-12); tests/test_check_commands.py pins the workflow-coverage gate (an unreachable subcommand is reported; a prose mention does NOT count as coverage; a stale or unexplained INTERACTIVE_ONLY entry fails; /roster-review drives the five roster commands and /ingest routes all four ownership writers); tests/test_deck_models.py is the ANALYSIS-MODEL layer — deck_quality_vector (the F10 guard's core, which had no direct test at all), tier_gap, legality_report, interaction_profile, effect_redundancy, deck_needs, deck_role_counts, the pure helpers, and the eight POOL-backed models (owned/craft_role_fillers, functional_theme_options, suggest_lands/mana/interaction, audit_roster, brawl_readiness) — all against a SYNTHETIC card universe and a synthetic pool, so they assert the model's contract rather than the current roster's numbers. That closes the layer: 21 analysis functions had no direct test, now 0; tests/test_check_patterns.py pins the dead-pattern gate on both historical bug shapes, plus the COMPLETENESS check (an unregistered pattern is reported; structural_distinctiveness and the doubler axes are covered; every `_EXCLUDED` entry names a real attribute) and the `window` corpus form (a `$`-anchored slice pattern matches 0 whole texts and must be exempt); front_face_cost / mana_value (split-Room-Adventure front-face costs), flex_staleness, the rationale figure audit (the bare-`over` false negative, `_ARROW_AFTER` transition notation, and `_figure_is_history` — the `removal`/`craft target` domain-vocabulary suppressions plus the `a 2.44 curve` house phrasing), the tag/role alignments (`draw cards equal to`, `gain life equal to`, `costs {N} less`, `pay life` scoping); card_colors, card_power, owned_qty, parse_pips, role_tally, tier_band, engine_roles, rotation math, _reuse_bonus, hypergeometric consistency math, _cuts_power_adj, _cuts_uniq_adj, distinctiveness_score (tag-rarity, tribe/evergreen-excluded), structural_distinctiveness (oracle-text-shape rescue), card_distinctiveness (max-combine), _creature_subtypes, _land_synergy_bonus / _land_shortfall_bonus (bounded manabase-recommender nudges), _accel_want / _ramp_restriction_fit / _int_scaling / _int_scaling_boost (needs-model signals), _produces_mana, plan_redundancy_fill (virtual-copies-first), _pips_castable (hybrid-aware target audit), fit_strength (specific-theme-gated KEY + broad-tribe demotion), _home_curve_fit (bounded suggest-homes curve nudge), pip_depth_warning / deck_color_sources (the colored-pip DEPTH flag the identity-subset castability test can't see), doubler_axis / doubler_restriction / doubler_support / doubler_boost (the bounded deck-magnitude co-signal for doublers), _central_themes (mechanical sub-theme floor-2 admission), _theme_cosine (generic-damped deck-similarity), the role-classifier under-count fixes (permanent-type-list removal, `counter up to N target`, library-tuck removal, the draw-N/discard-N LOOT exclusion, `half X` draw, and the second sweep — bounce to `owner's` hand, edict, X-damage, Aura tuck, mass-edict sweeper, repeatable-upkeep-draw card advantage, damage to each opponent) plus a structural assertion that the coverage net is a SUPERSET of the precise patterns and that stripping reminder text kills the Ward false cue without hiding a real miss, protection_effects (real ward/hexproof/indestructible vs a combat pump), rotation_year/rotation_risk (`_SET_ROTATION_OVERRIDE`, calendar-year risk), cost_upside_flags, _drop_cost_themes, section_mismatch, power_threshold_flags (incl. the SCOPE fix: removal/opponent-facing and `total power` sums must not flag), _cites_as_arriving (the reversed-replacement claim, plus the `re.I`-defeated `+X` capital and the "cut for cause" idiom), count_conf (role counts carry their own uncertainty, quantity-weighted), match_paste's TIE-BREAK (drift, then more shared, then lower id — order-independent; the rule the dashboard's JS copy mirrors), _file_memo (reference-table cache: a same-size rewrite and a REPOINTED path both invalidate), deck_shape (wide/tall from text, amplifiers-only), near_duplicates (interchangeable-card groups), wishlist.is_conditional_power, wishlist.power_is_seeded, wishlist._parse_budget / _rank_scores(keep=…) (the budget planner: spec parsing, and that a FILTERED view scores identically to the full one — the subset must exclude the corpus max or the test passes vacuously), import_arena, is_heist_text (TestHeistTheme: cross-sentence matching, the impulse/graveyard-hate exclusions, and the `theft`/`heist` name-collision regression), is_exile_cast_text (TestExileCastTheme: the Adventure type-line enabler, the Warp/Plot/Foretell keyword family, and the cast-from-exile payoffs), keyword_frequencies (distinct cards, not rows — the DFC double-count that let a card-unique flavor keyword escape the noise filter), tags_for (incl. the toughness-matters / noncombat-damage / spell-copy / tribal-payoff mechanical-synergy tags); tests/test_parse_matches.py pins the match parser against the REAL log shape — the seat-derived W/L (and its mirror, so the outcome isn't hardcoded), the skip-and-warn when the `Match to` header is missing, the local-date-beats-UTC-epoch rule, dedup by matchId, `_wilson`'s bounds, the `_MIN_SAMPLE` refusal to print a percentage, and that no userId/playerName ever reaches a row); tests/test_verify_ingest.py pins the ingest verifier (lower-bound vs `--exact` authoritative quantities, the DFC front-face key shared by the quantity and INV-02 checks, basics skipped by design, an absent card-mana.csv not blamed on the ingest) AND the rebuild ORDER in the Makefile — asserting `build_pool` precedes `build_mana --pool`, `build_mana` precedes `tag_synergies`, the full-scope flags survive, `--merge` not `--force`, and that the three dependency CLAIMS the order rests on are still true in the code, so a future change fails the test instead of silently invalidating the order; tests/test_recommendations.py pins the recommendation ledger — the cut-percentile math, disagreements-worst-first, that an unrankable row is excluded from n rather than counted as agreement, the call-time path resolution, that a broken model loses its column and not the swap, and the STRUCTURAL guarantee that no scoring function reads the ledger (wiring feedback into a score has to delete a test)), requirements-dev.txt (pytest, dev-only), pytest.ini, .github/workflows/tests.yml (runs pytest + check_all on push/PR), Makefile (`make test-units`). COMPLEMENTS check_all.py — it stays the pure-stdlib gate; pytest is never required to run the core tooling.
 - Decks: decks/
 
 **Invariant Library:**
@@ -1430,11 +1668,71 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 **Policy Configuration:** threshold 6/10; 2 consecutive cycles below triggers a policy response.
 
 **Regression Scenarios** (manual walks; the Test Command above is the primary gate):
-1. Ingest a batch — `import_arena.py <file>` → `enrich.py` → `validate.py` → `build_gallery.py`. Expect: validate clean, gallery card count == library row count.
-2. Analyze a deck — `deck.py check|mana|consistency|tribes|stats|shape|legal|cuts|tier|tier --audit-rationale|redundancy|text|verify <id>`, the needs-aware recommenders `deck.py suggest <id> --lands|--ramp|--interaction|--needs`, and roster-wide `deck.py audit` / `deck.py suggest-homes <card>` / `deck.py similar <id>` / `deck.py resolve <names>` / `deck.py rotation` (+ `pool.py --role`). Expect: no traceback; mana is hybrid-aware; consistency reports keepable %/land-drops/cast-on-curve (with the splash / color-hungry fix notes); tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts/text print full oracle text; tier shows claimed-vs-floor (and `--audit-rationale` flags a tier rationale citing cut
-   cards or stale figures); stats reports the protection axis and flags a ZERO; redundancy buckets effects by virtual-copy depth and proposes functional copies first, duplicates as fallback; suggest `--lands`/`--needs` surface the STRUCTURAL fills (fixing · acceleration · interaction, with board-scalers flagged) the theme model can't; audit scores every deck TUNE/craft/review/ok; verify diffs a pasted Arena export against the stored deck.
+1. Ingest a batch — `import_arena.py <file>` → **`make refresh`** → `verify_ingest.py <file>`. Expect: check_all clean, gallery card count == library row count, and verify_ingest reporting every pasted card present at the expected count. **`build_mana.py` is not optional when the batch introduced a NEW card** — it has no `card-mana.csv` row until then, so INV-02 fails; this scenario used to omit it (and so did `import_arena.py`'s own "Next:" line), which left the gate red with no hint why (broad-scan F-06). It then carried the steps in the WRONG ORDER for a further cycle (`build_pool.py` after `build_mana.py`), which is why the chain now lives in the Makefile instead of in four disagreeing prose copies. **`verify_ingest.py` is the step nothing else covers:** check_all proves the library is self-consistent, not that it contains what you pasted — a card that never arrived breaks no invariant.
+2. Analyze a deck — `deck.py check|mana|consistency|tribes|stats|shape|legal|cuts|tier|tier --audit-rationale|redundancy|text|verify <id>`, plus `deck.py feedback` (the recommendation ledger; empty until a swap has been applied, and a dry-run `swap` must leave it untouched), the needs-aware recommenders `deck.py suggest <id> --lands|--ramp|--interaction|--needs`, and roster-wide `deck.py audit` / `deck.py suggest-homes <card>` / `deck.py similar <id>` / `deck.py resolve <names>` / `deck.py rotation` (+ `pool.py --role`). Expect: no traceback; mana is hybrid-aware; consistency reports keepable %/land-drops/cast-on-curve (with the splash / color-hungry fix notes); tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts/text print full oracle text; tier shows claimed-vs-floor (and `--audit-rationale` flags a tier rationale citing cut
+   cards or stale figures); stats reports the protection axis and flags a ZERO; redundancy buckets effects by virtual-copy depth and proposes functional copies first, duplicates as fallback; suggest `--lands`/`--needs` surface the STRUCTURAL fills (fixing · acceleration · interaction, with board-scalers flagged) the theme model can't; audit scores every deck TUNE/craft/review/ok, with `review` reserved for an off-color ABILITY or thin interaction (a hybrid you pay on-color shows as `Ns` in the Cast column but never reaches the verdict); verify diffs a pasted Arena export against the stored deck. Also `python3 scripts/deck.py --help` and one subcommand help — the CLI surface check_all cannot reach.
 3. Refresh derived data — `build_mana.py` → `tag_synergies.py --merge` → `build_pool.py` → `build_gallery.py` → `check_all.py`. Expect: check_all reports all invariants hold.
 4. Edit via the app — start `scripts/app.py`, change a quantity and Save, add a card, then open a deck (Decks →), change a card's quantity and Save; run `check_all.py`. Expect: CSV + deck file updated, `.bak`s written, and all invariants hold (INV-02 since add appends a card-mana.csv row; INV-04 since deck save re-parses cleanly).
+
+The next four need **a person at a browser** — they are the PERCEPTUAL and interaction
+checks a code read structurally cannot make, which is exactly why they are written down
+rather than assumed. `/broad-scan` Stage 3 emits new ones in this format.
+
+5. Light-mode status colors | Subsystem: Presentation & Interface
+   Steps:
+     - Open `dashboard.html`, press `t` (or click the theme toggle) for light mode
+     - Look at the roster-triage Action pills (TUNE / craft / review / ok)
+     - Look at a deck card's build badge (buildable / N missing / N short)
+     - Expand "Recently edited" — the +added / −removed delta lines
+     - Paste any deck into the stale-deck panel — the in-sync / drifted text
+   Expected: green/amber/red read clearly against the LIGHT panel background and are
+   distinguishable from each other and from body text. All 16 of these sites were
+   hardcoded to the DARK-mode hexes until I-03; a washed-out or muddy pill means one
+   regressed back off `var(--ok)` / `var(--warn)` / `var(--bad)`.
+6. Dashboard at phone width | Subsystem: Presentation & Interface
+   Steps:
+     - Open `dashboard.html` at 390×844 (or a real phone); scroll top to bottom
+     - Open the roster-triage table and the wishlist table
+     - Open a deck modal from the section-nav and switch tabs
+   Expected: the page body NEVER scrolls sideways; the wide tables scroll inside their
+   own boxes; the section-nav strip scrolls horizontally; every grid is one column.
+7. Keyboard-only traversal | Subsystem: Presentation & Interface
+   Steps:
+     - In `dashboard.html`, using Tab / Shift-Tab only, reach in order: a color filter
+       chip, a quick-filter pill, a roster-table sort header, a section header (collapse
+       it with Enter or Space), and a deck's ⤢ detail opener
+     - Open the modal, Tab through it, press Escape
+   Expected: every one is reachable with a VISIBLE focus ring; Enter and Space both
+   activate; Tab inside the modal cycles within it and never reaches the page behind;
+   Escape closes it and returns focus to the ⤢ that opened it. This is the acceptance
+   test for I-01/I-04 — before those, nothing in that list was reachable at all.
+   Then the EDITOR's half of the same fix (`make app`, `templates/collection.html`):
+     - Focus the search box, then Tab — the six colour pips must come next, in W U B R
+       G C order, each with a visible ring; Enter and Space both toggle one, Space must
+       not scroll the page; the card grid re-filters
+   Then the DECK editor (`/deck/<id>`, `templates/deck.html`):
+     - Tab to the Analysis strip — each of Stats / Mana / Tribes / Suggestions must take
+       focus with a visible ring; Enter and Space both run one; the output `<pre>` is
+       itself focusable, since it scrolls
+   Expected: the selected tab is the only one reporting `aria-selected="true"`, and a
+   save toast is announced (it is a `role="status"` live region). Note the SUCCESS toast
+   is cut short by the `location.reload()` that follows it — see the follow-on below;
+   the failure toasts are the readable ones.
+   Expected: identical behaviour to the dashboard's colour chips, because they are the
+   same control — `role="button"` + `aria-pressed`, per `build_dashboard.py`'s `a11y()`.
+   The pips were bare `<div>`s until this landed, so the editor's whole colour filter
+   was mouse-only. The MARKUP half of this is now pinned automatically by
+   `tests/test_templates.py` (attributes, key handler, `aria-pressed` sync, focus ring);
+   what still needs a person is the perceptual part — that the ring is actually visible
+   and the order actually matches what you see.
+8. Editor failure feedback | Subsystem: Presentation & Interface
+   Steps:
+     - `make app`, open the editor, then STOP the server (Ctrl-C)
+     - In the still-open page: edit a quantity and Save; click a card's ✕ and confirm;
+       click Revert and confirm
+   Expected: all three show a toast naming the failure. Remove and Revert used to do
+   nothing at all — the rejected fetch died as an unhandled rejection right after a
+   destructive confirm (F-02). This is that fix's acceptance test.
 
 **Frozen Subsystems:** none.
 
@@ -1454,7 +1752,8 @@ stay untouched by any restyle (the payload shape is what `deck.py`/`wishlist.py`
 `broad-scan`, `broad-implement`, `test-sync`, `sync-docs`, `health-pulse`,
 `roadmap`, `sync-commands`, `targeted-audit`, `targeted-implement`, and
 `pr-review` in `.claude/commands/` are copied **verbatim** from
-[claude-workflow-tools](https://github.com/robinchoudhuryums/claude-workflow-tools);
+[claude-workflow-tools](https://github.com/robinchoudhuryums/claude-workflow-tools)
+— currently synced to template **v1.23.0**;
 they stay project-agnostic and read everything from the Cycle Workflow Config
 above. To update them, run **`/sync-commands`** with a path/URL to that repo (it
 reports the template VERSION + CHANGELOG and diffs each file) and re-copy any it
@@ -1467,7 +1766,7 @@ for per-change health) and the meta commands (`health-pulse`, `roadmap`,
 NOT vendored — that ceremony (two-axis scoring + a `.cycle/` state dir) outweighs
 its benefit at this project's size; adopt them only if you later want benchmarkable
 scoring. `check`, `refresh`, `add-deck`, `draft-deck`, `tune-deck`, `add-cards`,
-`add-wishlist`, and `apply-changes` are project-specific. **A skill drifts behind the
+`add-wishlist`, `roster-review`, `ingest`, `log-matches`, and `apply-changes` are project-specific. **A skill drifts behind the
 tooling silently** — `/tune-deck` was still built around the command set it shipped with
 and had no step for `consistency` (the probability layer), `engines`, `shape`, `cuts`,
 `flex`, the protection axis, the role counts' own uncertainty, or the post-edit rationale
@@ -1479,10 +1778,15 @@ against the tool list whenever a cycle adds a command. `draft-deck` (BUILD a new
 deck from scratch around a concept — survey the owned pool by role via `pool.py --role`,
 scaffold the lines with `deck.py resolve`, then validate + tune for distinctiveness via
 `deck.py similar`; the create-a-list counterpart to `/add-deck`, which INGESTS a pasted
-list), `add-cards` (catalog newly-owned cards +
-find their homes), `add-wishlist` (intake UNOWNED craft targets to the wishlist —
+list), `add-cards` (the cross-deck FIT PASS for cards you already own — it used to
+catalog AND place, duplicating `/ingest`'s reconcile recipe and carrying its own copy of
+the rebuild chain; cataloging now has one definition in `/ingest`, which runs the fit
+pass itself whenever an ingest added NEW cards, so the half that actually decides
+something stopped being the optional half), `add-wishlist` (intake UNOWNED craft targets to the wishlist —
 add+enrich+Power-seed, set the home Target, do the cross-deck fit review via the
-specific-theme-gated `suggest-homes`, audit), and `apply-changes` (apply confirmed
+specific-theme-gated `suggest-homes`, audit), `log-matches` (record played matches from
+Arena's `Player.log` into `matches.csv` via `parse_matches.py`, then read the record with
+the restraint it needs — see the match-record gotcha below), and `apply-changes` (apply confirmed
 swaps, run the F10 quality guard, re-ground the `#: tier:` prose via
 `--audit-rationale`, verify + commit) **orchestrate the scripts, never
 re-implement them** — the scripts stay the single source of truth so the skills

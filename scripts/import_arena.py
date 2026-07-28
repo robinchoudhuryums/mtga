@@ -27,7 +27,16 @@ Usage:
     python3 scripts/import_arena.py batch.txt --dry-run # preview only
     python3 scripts/import_arena.py batch.txt --sum     # add quantities
 
-After importing, run:  python3 scripts/enrich.py   then   python3 scripts/validate.py
+After importing, regenerate the derived data — a newly imported card has no
+card-mana.csv row and INV-02 requires one:
+
+    make refresh
+    python3 scripts/verify_ingest.py batch.txt   # confirm the batch landed
+
+This used to spell the chain out here, and had it in the WRONG ORDER (build_mana
+ahead of build_pool, which build_mana reads) while asserting "IN THIS ORDER". The
+Makefile is the one executable definition; see its `refresh` target for why the
+order is what it is.
 """
 
 import argparse
@@ -143,7 +152,24 @@ def main():
     write_rows(rows, args.library)
     print(f"Imported {len(entries)} card line(s): {added} added, {updated} updated. "
           f"Library now has {len(rows)} row(s). Wrote {args.library}.")
-    print("Next: python3 scripts/enrich.py   then   python3 scripts/validate.py")
+    # A NEW card has no card-mana.csv row, so INV-02 is broken until build_mana.py
+    # runs. This line used to say "enrich.py then validate.py", which leaves the
+    # integrity gate red and gives no hint why (broad-scan F-06) — and CLAUDE.md's
+    # Regression Scenario 1 repeated the same short recipe. Name the step that
+    # actually restores the invariant, and only when this run introduced a card.
+    # Point at the Makefile rather than restating the chain. This message USED to spell
+    # it out, and had build_mana.py --pool ahead of build_pool.py --all — the wrong
+    # order, in executable code, telling people to make the exact mistake the Makefile
+    # comment documents. A rebuild chain written in a print statement is one more copy to
+    # keep in sync, and this one had already fallen out.
+    if added:
+        print("\nNext — new cards need their derived data rebuilt (check_all will fail "
+              "INV-02 until it runs):\n  make refresh\n"
+              "Then confirm the batch actually landed:\n"
+              f"  python3 scripts/verify_ingest.py <this file>")
+    else:
+        print("\nNext (no new cards, so nothing to rebuild):\n"
+              "  python3 scripts/check_all.py")
     return 0
 
 

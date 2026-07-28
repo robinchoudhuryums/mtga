@@ -18,7 +18,7 @@ author wrote to match it) nor by any invariant. Both were caught by a
 roster-wide before/after diff — which only works if you remember to run one, and
 only tells you that SOMETHING moved.
 
-Two mechanical checks close that gap:
+Three mechanical checks close that gap:
 
   1. LIVE-CORPUS — every classifier pattern must match at least one card in
      card-pool.csv (~15.8k cards). A pattern that matches nothing across the
@@ -30,6 +30,17 @@ Two mechanical checks close that gap:
      repr like `(0, 2)`. That is what a quantifier looks like AFTER an
      f-string ate it, so this catches the brace bug directly, at the point of
      the mistake, without needing a corpus at all.
+  3. COMPLETENESS — every module-level compiled pattern in deck / lib /
+     tag_synergies must be either REGISTERED above or explicitly EXCLUDED with
+     a reason. Checks 1 and 2 only ever saw a hand-maintained list, and the
+     list had silently fallen 13 patterns behind the code (broad-scan F-04):
+     the whole of `lib.structural_distinctiveness`, every `_DOUBLER_AXES`
+     matcher, `_DOUBLER_POWER_RE` and `_REMINDER_RE` were uncovered. The
+     structural-distinctiveness miss was the dangerous one — `card_distinctiveness`
+     returns `max(tag_score, structural)`, so a dead pattern there silently
+     collapses the structural signal to 0 and the `max()` hides it. A gate whose
+     coverage is hand-kept grows holes; this makes a new pattern fail the build
+     until someone says what corpus it runs against.
 
 Run standalone or via check_all.py.
 """
@@ -40,6 +51,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import deck  # noqa: E402
+import lib  # noqa: E402
 import tag_synergies  # noqa: E402
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -48,6 +60,34 @@ POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
 # A quantifier that has been through str.format / an f-string: `{0,2}` -> `(0, 2)`.
 _TUPLE_LEAK_RE = re.compile(r"\(\d+, \d+\)")
 
+# Modules whose module-level patterns the COMPLETENESS check enumerates.
+_SCANNED_MODULES = (deck, lib, tag_synergies)
+
+# Patterns that are NOT card-text classifiers, keyed (module, attribute) -> why.
+# Every entry is a deliberate statement that a live-corpus check is meaningless
+# here, not a place to park an inconvenient failure. Two families:
+#   * deck-file / mana-symbol SYNTAX — matches the repo's own file formats, not
+#     oracle text (the exclusion the original docstring already described).
+#   * tier-RATIONALE prose — `_HISTORY_CUES` and friends read the `#: tier:`
+#     argument a human wrote, so the Arena pool is the wrong corpus for them.
+#     They are covered by unit tests in tests/test_deck.py instead, which is
+#     where their documented false-negative history is pinned.
+_EXCLUDED = {
+    ("deck", "LINE_RE"): "deck-file card-line syntax, not card text",
+    ("deck", "META_RE"): "deck-file `#:` header syntax, not card text",
+    ("deck", "FORMAT_VARIANT_RE"): "deck-id/format syntax, not card text",
+    ("deck", "_DECK_MARKER_RE"): "Arena paste `Deck` marker, not card text",
+    ("deck", "SYMBOL_RE"): "mana-symbol syntax ({W}), not card text",
+    ("lib", "_MANA_SYMBOL_RE"): "mana-symbol syntax ({W}), not card text",
+    ("deck", "_HISTORY_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_COMPARISON_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_FIGURE_PAST"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_ARRIVING_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_ARRIVING_BREAK"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_DEPARTING_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_ARROW_AFTER"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+}
+
 
 def _pattern_groups():
     """(label, compiled, case) for every card-classifying pattern in the toolkit.
@@ -55,33 +95,85 @@ def _pattern_groups():
     Deliberately NOT every regex in the codebase — deck-file parsing patterns
     (LINE_RE, META_RE) match deck syntax, not card text, so a live-corpus check
     is meaningless for them. This is the set that reads ORACLE TEXT and whose
-    silent failure mode is an under-count nobody sees.
+    silent failure mode is an under-count nobody sees. Everything deliberately
+    left out is enumerated with a reason in `_EXCLUDED`, and the COMPLETENESS
+    check fails the build on any pattern that is in neither place — so "not
+    registered" can no longer mean "nobody noticed".
 
-    `case` is the text form the pattern is really run against: "norm" for the
-    lowercased/unicode-minus-normalized form `classify_roles` uses, "raw" for
-    the ones that read ORIGINAL-case text on purpose. The tribal-payoff scan is
-    the second kind — Magic capitalizes real creature types but lower-cases
-    generic "creatures"/"lands", which is the whole filter — so checking it
-    against lowercased text would report four working patterns as dead. Feeding
-    a pattern the wrong corpus is the same class of mistake this file exists to
-    catch, so the distinction is explicit rather than assumed.
+    `case` is the text form the pattern is really run against:
+      "norm"   – the lowercased / unicode-minus-normalized form `classify_roles` uses.
+      "raw"    – ORIGINAL-case text, on purpose. The tribal-payoff scan is this kind —
+                 Magic capitalizes real creature types but lower-cases generic
+                 "creatures"/"lands", which is the whole filter — so checking it
+                 against lowercased text would report four working patterns as dead.
+      "window" – run against a SHORT SLICE of a card's text, never the whole thing
+                 (`_POWER_SCOPE_*` read `text[m.start()-25:m.start()]` and are
+                 `$`-anchored). These match 0 of 15.8k whole texts BY CONSTRUCTION,
+                 so the live-corpus check must skip them — registering them naively
+                 would fail the build on two healthy patterns. They still get the
+                 format-leak check, which needs no corpus.
+
+    Feeding a pattern the wrong corpus is the same class of mistake this file exists
+    to catch, so the distinction is explicit rather than assumed.
     """
     out = []
     for label, pats in deck._ROLE_COMPILED_MAP.items():
         out += [(f"role:{label}", p, "norm") for p in pats]
     for name in ("_INT_CUES", "_CA_CUES", "_LOOT_RE", "_PROTECTION_RE",
                  "_POWER_THRESHOLD_RE", "_MANA_PRODUCE_RE", "_RESTRICT_RE",
-                 "_INT_COUNT_RE", "_INT_FIGHT_RE"):
+                 "_INT_COUNT_RE", "_INT_FIGHT_RE",
+                 # Added by broad-scan F-04 — live, but previously uncovered.
+                 "_DOUBLER_POWER_RE", "_REMINDER_RE",
+                 # Zone-conflict detector (the mirror of cost_upside_flags): which
+                 # graveyards a card EMPTIES, and which it NEEDS populated. A dead
+                 # pattern here silently stops the flag firing — the failure this whole
+                 # gate exists for, and the reason the detector's own patterns were
+                 # built by surveying real pool text rather than invented strings.
+                 "_GY_HATE_OPP_RE", "_GY_HATE_ALL_RE", "_GY_HATE_CHOOSE_RE",
+                 "_GY_OWN_SCOPE_RE", "_GY_NEED_OPP_RE"):
         out.append((f"deck.{name}", getattr(deck, name), "norm"))
     for name in ("_NONCREATURE_ANSWER_CUES", "_WIDE_CUES", "_TALL_CUES"):
         out += [(f"deck.{name}", p, "norm") for p in getattr(deck, name)]
     for label, pats in deck._CONTEXT_COMPILED.items():
         out += [(f"context:{label}", p, "norm") for p in pats]
+    # The doubler co-signal: axis classification + its feeder counting. CLAUDE.md
+    # calls the restriction half "load-bearing, not a nicety" (unrestricted support
+    # over-counted Delney 6x and would have minted a false KEY), so a dead pattern
+    # here mis-scores suggest-homes silently.
+    for axis, pats in deck._DOUBLER_AXES.items():
+        out += [(f"deck._DOUBLER_AXES[{axis}]", p, "norm") for p in pats]
+    # The whole of lib.structural_distinctiveness. card_distinctiveness returns
+    # max(tag_score, structural), so a dead pattern here drops the structural signal
+    # to 0 and the max() hides it — no error, no visible count change.
+    for name in ("_STRUCT_NONETB_TRIGGER_RE", "_STRUCT_ACTIVATED_RE",
+                 "_STRUCT_RULEBEND_RE", "_STRUCT_MODAL_RE", "_STRUCT_REMINDER_RE"):
+        out.append((f"lib.{name}", getattr(lib, name), "norm"))
     out += [("tag_synergies._TRIBAL_PAYOFF_RES", p, "raw")
             for p in tag_synergies._TRIBAL_PAYOFF_RES]
     for name in ("_HEIST_CAST_LOOSE", "_HEIST_CAST_STRICT", "_HEIST_OPP_ZONE",
                  "_EXILE_CAST_ENABLE", "_EXILE_CAST_PAYOFF"):
         out.append((f"tag_synergies.{name}", getattr(tag_synergies, name), "norm"))
+    for name in ("_POWER_SCOPE_MINE_RE", "_POWER_SCOPE_TOTAL_RE"):
+        out.append((f"deck.{name}", getattr(deck, name), "window"))
+    return out
+
+
+def _module_patterns():
+    """(module_name, attr_name, compiled) for every module-level pattern in the
+    scanned modules — including those nested one level inside a list/tuple/dict
+    value, which is where `_DOUBLER_AXES` and the role tables live."""
+    out = []
+    for mod in _SCANNED_MODULES:
+        for name, obj in sorted(vars(mod).items()):
+            if isinstance(obj, re.Pattern):
+                out.append((mod.__name__, name, obj))
+            elif isinstance(obj, (list, tuple)):
+                out += [(mod.__name__, name, p) for p in obj if isinstance(p, re.Pattern)]
+            elif isinstance(obj, dict):
+                for v in obj.values():
+                    for p in (v if isinstance(v, (list, tuple)) else [v]):
+                        if isinstance(p, re.Pattern):
+                            out.append((mod.__name__, name, p))
     return out
 
 
@@ -115,6 +207,21 @@ def check():
                 f"f-string is a replacement field. Double the braces: "
                 f"{{{{m,n}}}}.  /{pat.pattern[:90]}/")
 
+    # 3. COMPLETENESS — a pattern the registry never heard of is a pattern neither
+    #    check above can see. Compared by IDENTITY, not source text, so two patterns
+    #    that happen to share a source (deck.SYMBOL_RE / lib._MANA_SYMBOL_RE) can't
+    #    vouch for each other.
+    registered = {id(p) for _label, p, _case in groups}
+    for mod_name, attr, pat in _module_patterns():
+        if id(pat) in registered or (mod_name, attr) in _EXCLUDED:
+            continue
+        errors.append(
+            f"{mod_name}.{attr}: compiled pattern is neither registered in "
+            f"_pattern_groups() nor listed in _EXCLUDED — so neither the live-corpus "
+            f"nor the dead-pattern check covers it. Register it with the corpus form "
+            f"it runs against ('norm' / 'raw' / 'window'), or add "
+            f"({mod_name!r}, {attr!r}) to _EXCLUDED with a reason.  /{pat.pattern[:70]}/")
+
     # 1. LIVE-CORPUS.
     forms = _pool_texts()
     if not forms["norm"]:
@@ -123,6 +230,8 @@ def check():
         print("check_patterns: card-pool.csv unavailable — format-leak check only.")
         return errors
     for label, pat, case in groups:
+        if case == "window":
+            continue        # anchored to a text SLICE — see _pattern_groups' docstring
         texts = forms[case]
         if not any(pat.search(t) for t in texts):
             errors.append(

@@ -27,17 +27,56 @@ automates the round-trip.
 
 import argparse
 import contextlib
+import csv
 import io
 import os
 import shutil
 import sys
 import tempfile
-import time
 
-from lib import HEADER, DEFAULT_CSV, load_rows, write_rows, eprint, backup_path
+from lib import (HEADER, DEFAULT_CSV, REPO_ROOT, load_rows, write_rows, eprint,
+                 backup_path, atomic_write)
 from validate import validate
 
 SHEET_ID_ENV = "MTGA_SHEET_ID"
+MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
+MANA_HEADER = ["Card Name", "Mana Cost", "Mana Value", "Keywords"]
+
+
+def _ensure_mana_rows(rows):
+    """Append a BLANK card-mana.csv row for every library name that lacks one, so
+    INV-02 (every library Card Name has a mana row) survives a pull. Returns the
+    names added.
+
+    `pull()` overwrites the whole inventory and can therefore introduce cards the
+    mana file has never seen — and it was the ONE row-adding path that didn't
+    maintain INV-02, so the next `check_all` would fail with no hint that the pull
+    caused it (broad-scan F-05). Every sibling path already does this: `app.py add`
+    appends a row, and `reconcile_crafts.py` writes a deliberately BLANK one when it
+    has no cost to copy, on the reasoning that a blank row keeps the invariant while
+    `build_mana.py` / `/refresh` fills in the real cost later. Same reasoning here —
+    a blank row is honest (we have no cost from a spreadsheet) and repairable, where
+    a missing row is a hard failure.
+    """
+    have = set()
+    if os.path.exists(MANA_CSV):
+        with open(MANA_CSV, newline="", encoding="utf-8") as fh:
+            existing = list(csv.reader(fh))
+        header, body = (existing[0], existing[1:]) if existing else (MANA_HEADER, [])
+        have = {(r[0] or "").strip().lower() for r in body if r}
+    else:
+        header, body = MANA_HEADER, []
+    added = []
+    for r in rows:
+        name = (r.get("Card Name") or "").strip()
+        if name and name.lower() not in have:
+            have.add(name.lower())
+            body.append([name, "", "", ""])
+            added.append(name)
+    if added:
+        atomic_write(MANA_CSV,
+                     lambda fh: csv.writer(fh).writerows([header] + body))
+    return added
 
 
 def _client():
@@ -145,6 +184,14 @@ def pull(worksheet_name, dry_run):
         if tmp and os.path.exists(tmp):
             os.remove(tmp)
     print(f"Pulled {len(rows)} row(s) from Google Sheet into {DEFAULT_CSV}.")
+    # Only AFTER the library write lands, so a rejected pull can't strand the mana
+    # file out of step with it — the ordering app.py's add()/remove() use for the
+    # same reason.
+    added = _ensure_mana_rows(rows)
+    if added:
+        shown = ", ".join(added[:8]) + ("…" if len(added) > 8 else "")
+        print(f"Added {len(added)} BLANK card-mana.csv row(s) to keep INV-02: {shown}\n"
+              f"  Run build_mana.py (or /refresh) to fill in cost/keywords.")
     return 0
 
 

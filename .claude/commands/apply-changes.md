@@ -34,6 +34,15 @@ For each `−cut / +add`:
    existing line instead of duplicating if the add is already present, and
    **auto-retires `#~` flex lines** the swap made stale (a line proposing the
    card you just maindecked, or cutting one you just removed).
+
+   It also appends a row to `recommendations.csv` scoring the recommenders against
+   this decision — where `cuts` ranked the card you cut, and whether `suggest`
+   surfaced the card you added. **Report the line it prints** when the models
+   disagreed with the swap (a cut the model wanted to KEEP): that is not a reason
+   to reverse the swap, but it is worth a sentence on what the ranking couldn't
+   see. Read the accumulated ledger any time with
+   `python3 scripts/deck.py feedback [<id>]` — it leads with the disagreements,
+   refuses to summarize a small sample, and never feeds back into a score.
 4. **Handle the add's ownership:**
    - **Unowned add →** wishlist it targeted at this deck:
      `python3 scripts/wishlist.py --add -` with a one-line export (Target set to

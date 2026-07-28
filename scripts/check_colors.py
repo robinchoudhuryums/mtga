@@ -39,25 +39,83 @@ _INLINE_PARSE_ALLOW = {
 }
 
 
-def _is_wubrg_identity_comprehension(node):
-    """True iff `node` is a set/list/gen/dict comprehension that filters ``x in "WUBRG"``
-    over an iterable that is NOT the literal ``"WUBRG"`` — i.e. the naive
-    ``{ch for ch in <some string> if ch in "WUBRG"}`` identity-extraction idiom that
-    reads the literal ``"Colorless"`` as ``{'R'}`` (audit F1/F2). Iterating the constant
-    ``"WUBRG"`` itself (``for c in "WUBRG"``) is a different, safe shape and is excluded."""
-    if not isinstance(node, (ast.SetComp, ast.ListComp, ast.GeneratorExp, ast.DictComp)):
-        return False
-    has_membership = False
+def _has_wubrg_membership(node):
+    """True iff `node` contains a ``... in "WUBRG"`` membership test."""
     for cmp in ast.walk(node):
         if isinstance(cmp, ast.Compare) and any(isinstance(o, ast.In) for o in cmp.ops):
             if any(isinstance(c, ast.Constant) and c.value == "WUBRG" for c in cmp.comparators):
-                has_membership = True
-                break
-    if not has_membership:
-        return False
-    # At least one generator must iterate something OTHER than the "WUBRG" literal.
-    return any(not (isinstance(g.iter, ast.Constant) and g.iter.value == "WUBRG")
-               for g in node.generators)
+                return True
+    return False
+
+
+def _iterates_something_other_than_wubrg(iters):
+    """True iff any iterable here is NOT the literal ``"WUBRG"``. Iterating the constant
+    itself (``for c in "WUBRG"``) is the safe shape — building a per-color tally — and
+    must not be flagged."""
+    return any(not (isinstance(it, ast.Constant) and it.value == "WUBRG") for it in iters)
+
+
+def _is_wubrg_identity_comprehension(node):
+    """True iff `node` is the naive ``{ch for ch in <some string> if ch in "WUBRG"}``
+    identity-extraction idiom, in EITHER of its two shapes — a comprehension, or the
+    equivalent ``for`` STATEMENT:
+
+        colors = {ch for ch in col.upper() if ch in "WUBRG"}      # comprehension
+        for ch in col.upper():                                    # for-statement
+            if ch in "WUBRG": ...
+
+    Both read the literal ``"Colorless"`` as ``{'R'}`` — the word contains an R (audit
+    F1/F2). The scan originally tested ONLY the comprehension node types, so the
+    for-statement form was invisible to it and the same bug written that way would have
+    passed the gate green (broad-scan F-07). One such loop already exists in
+    build_dashboard.py; it is correct today because its enclosing function special-cases
+    "colorless", which is exactly the exemption below — but the gate could not see it
+    either way, which is the point. A gate that cannot fire is not a gate."""
+    if isinstance(node, (ast.SetComp, ast.ListComp, ast.GeneratorExp, ast.DictComp)):
+        return (_has_wubrg_membership(node)
+                and _iterates_something_other_than_wubrg([g.iter for g in node.generators]))
+    if isinstance(node, (ast.For, ast.AsyncFor)):
+        # Only the loop's own test matters; a nested comprehension is reported separately
+        # by its own node, so don't double-count it here.
+        body_tests = [n for n in ast.walk(node)
+                      if not isinstance(n, (ast.SetComp, ast.ListComp,
+                                            ast.GeneratorExp, ast.DictComp))]
+        if not any(_has_wubrg_membership(n) for n in body_tests
+                   if isinstance(n, (ast.If, ast.Compare, ast.BoolOp))):
+            return False
+        return _iterates_something_other_than_wubrg([node.iter])
+    return False
+
+
+def _scan_stale_allowlist():
+    """Fail if an ``_INLINE_PARSE_ALLOW`` entry names a file or function that no longer
+    exists.
+
+    The allowlist is hand-kept, and a stale entry is worse than an absent one: it is an
+    exemption for code that is gone, so it reads as a considered decision while covering
+    nothing — and if a function of that name is ever reintroduced, it inherits a blanket
+    pass nobody granted it. This is the same failure shape ``check_patterns``' coverage
+    list had (broad-scan F-04), applied to the other hand-kept registry in this file:
+    make the registry falsifiable rather than trusting that someone pruned it."""
+    errs = []
+    for fn, fname in sorted(_INLINE_PARSE_ALLOW):
+        path = os.path.join(SCRIPTS_DIR, fn)
+        if not os.path.exists(path):
+            errs.append(f"stale _INLINE_PARSE_ALLOW entry ({fn!r}, {fname!r}): "
+                        f"{fn} no longer exists. Remove the entry.")
+            continue
+        try:
+            tree = ast.parse(open(path, encoding="utf-8").read())
+        except (OSError, SyntaxError) as e:
+            errs.append(f"could not parse {fn} to verify _INLINE_PARSE_ALLOW ({e})")
+            continue
+        defined = {n.name for n in ast.walk(tree)
+                   if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))}
+        if fname not in defined:
+            errs.append(f"stale _INLINE_PARSE_ALLOW entry ({fn!r}, {fname!r}): "
+                        f"{fn} defines no function {fname!r}. Remove the entry, or fix "
+                        f"the name if it was renamed.")
+    return errs
 
 
 def _scan_inline_color_parses():
@@ -95,9 +153,11 @@ def _scan_inline_color_parses():
             enc_src = (ast.get_source_segment(src, enc) or "") if enc else src
             if "colorless" in enc_src.lower():
                 continue  # the function guards the "Colorless" trap explicitly
+            shape = ("for-statement" if isinstance(node, (ast.For, ast.AsyncFor))
+                     else "comprehension")
             errs.append(
-                f"inline color parse in {fn}:{node.lineno} (function {fname!r}) — the naive "
-                f"`{{x for x in … if x in \"WUBRG\"}}` idiom reads \"Colorless\" as {{'R'}} "
+                f"inline color parse in {fn}:{node.lineno} (function {fname!r}, {shape}) — "
+                f"the naive `x in \"WUBRG\"` idiom reads \"Colorless\" as {{'R'}} "
                 f"(audit F1). Route it through lib.card_colors(), or (if it parses a mana "
                 f"symbol / non-identity string) add ({fn!r}, {fname!r}) to "
                 f"_INLINE_PARSE_ALLOW in check_colors.py.")
@@ -153,6 +213,9 @@ def check():
     # (4) STATIC call-site scan: no script may re-implement the naive WUBRG parse
     #     instead of card_colors() (the gap that let F1 regress into wishlist.py/app.py).
     errs += _scan_inline_color_parses()
+
+    # (5) REGISTRY staleness: every exemption must still name a real call site.
+    errs += _scan_stale_allowlist()
 
     return errs
 

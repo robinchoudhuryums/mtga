@@ -22,6 +22,13 @@
   a.tool, button.tool { text-decoration:none; background:var(--panel2); color:var(--text);
     border:1px solid var(--line); border-radius:8px; padding:8px 12px; font-size:13px; cursor:pointer; }
   button.tool:hover, a.tool:hover { border-color:var(--accent); }
+  /* Every hover affordance needs a focus equivalent, or a keyboard user gets a weaker
+     signal than a mouse user for the same control. outline (not border-color) so the
+     ring is distinct from .tab.on / .rm:hover, which already claim the border. */
+  button.tool:focus-visible, a.tool:focus-visible, .rm:focus-visible, .tab:focus-visible,
+  .out:focus-visible {
+    outline:2px solid var(--accent); outline-offset:2px; }
+  .tab:focus-visible { color:var(--text); }
   #save { margin-left:auto; }
   #save.ready { background:var(--dirty); color:#0c130e; border-color:var(--dirty); font-weight:700; }
   .wrap { padding:16px 20px 60px; max-width:860px; margin:0 auto; }
@@ -81,7 +88,7 @@
   </div>
   <div class="summary" id="summary"></div>
 </header>
-<div class="wrap">
+<main class="wrap">
   <h2>Metadata</h2>
   <div class="meta" id="meta"></div>
   <button class="tool add" id="addMeta" style="margin-top:8px">＋ Add field</button>
@@ -92,8 +99,13 @@
 
   <div id="flex"></div>
   <div id="analysis"></div>
-</div>
-<div class="toast" id="toast"></div>
+</main>
+<!-- The toast is the ONLY report of a save succeeding or failing, and it was purely
+     visual: opacity 0 → 1 with nothing announced. A live region fixes that without
+     changing a pixel. `polite` rather than `assertive` — it reports a result, it does
+     not interrupt. opacity:0 (not display:none) keeps it in the a11y tree, so the
+     announcement fires on the text change. -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script id="data" type="application/json">__DATA__</script>
 <script>
   const DATA = JSON.parse(document.getElementById('data').textContent);
@@ -160,9 +172,9 @@
     META.forEach((p, i) => {
       const row = document.createElement('div');
       row.className = 'mrow';
-      row.innerHTML = `<input class="mkey" value="${esc(p.key)}" placeholder="field">` +
-        `<input class="mval" value="${esc(p.value)}" placeholder="value">` +
-        `<button class="rm" title="Remove field">✕</button>`;
+      row.innerHTML = `<input class="mkey" aria-label="Metadata field name" value="${esc(p.key)}" placeholder="field">` +
+        `<input class="mval" aria-label="Value for the ${esc(p.key) || 'new'} field" value="${esc(p.value)}" placeholder="value">` +
+        `<button class="rm" title="Remove field" aria-label="Remove the ${esc(p.key) || 'blank'} field">✕</button>`;
       const k = row.querySelector('.mkey'), v = row.querySelector('.mval');
       k.addEventListener('input', () => { p.key = k.value; refresh(); });
       v.addEventListener('input', () => { p.value = v.value; refresh(); });
@@ -183,11 +195,11 @@
       }
       row.className = 'row card';
       row.innerHTML =
-        `<input class="qty" type="number" min="1" value="${esc(t.qty)}">` +
-        `<input class="name" value="${esc(t.name)}" placeholder="Card name">` +
-        `<input class="set" value="${esc(t.set)}" placeholder="Set">` +
-        `<input class="cn" value="${esc(t.cn)}" placeholder="#">` +
-        `<span class="stat"></span><button class="rm" title="Remove line">✕</button>`;
+        `<input class="qty" type="number" min="1" aria-label="Quantity of ${esc(t.name) || 'this card'}" value="${esc(t.qty)}">` +
+        `<input class="name" aria-label="Card name" value="${esc(t.name)}" placeholder="Card name">` +
+        `<input class="set" aria-label="Set code for ${esc(t.name) || 'this card'}" value="${esc(t.set)}" placeholder="Set">` +
+        `<input class="cn" aria-label="Collector number for ${esc(t.name) || 'this card'}" value="${esc(t.cn)}" placeholder="#">` +
+        `<span class="stat"></span><button class="rm" title="Remove line" aria-label="Remove ${esc(t.name) || 'this line'}">✕</button>`;
       rowsEl.appendChild(row);
       const q=row.querySelector('.qty'), nm=row.querySelector('.name');
       const st=row.querySelector('.set'), cn=row.querySelector('.cn'), stat=row.querySelector('.stat');
@@ -229,15 +241,39 @@
   function buildAnalysis() {
     if (NEW) return;  // no saved file yet
     const el = document.getElementById('analysis');
-    el.innerHTML = `<h2>Analysis</h2><div class="tabs" id="tabs"></div>` +
-      `<div class="note" id="anote" style="display:none"></div><pre class="out" id="out">Pick a tab.</pre>`;
+    // role="tab" is only valid inside a tablist, and the <pre> the tabs drive is the
+    // panel. tabindex on the panel because it scrolls (overflow-x) — a scrollable region
+    // a keyboard can't reach is unreadable without a mouse.
+    el.innerHTML = `<h2>Analysis</h2><div class="tabs" id="tabs" role="tablist" `
+      + `aria-label="Deck analysis"></div>` +
+      `<div class="note" id="anote" style="display:none"></div>`
+      + `<pre class="out" id="out" role="tabpanel" tabindex="0" `
+      + `aria-label="Analysis output">Pick a tab.</pre>`;
     const tabs = document.getElementById('tabs');
-    tabs.innerHTML = KINDS.map(([k,l]) => `<span class="tab" data-k="${k}">${l}</span>`).join('');
+    // Same defect the collection editor's colour pips had (I-01): a <span> with a click
+    // handler is not a control — not focusable, not announced — so all four analysis
+    // tabs were mouse-only. role="tab" + aria-selected mirrors build_dashboard.py's
+    // a11y() vocabulary so the two tab strips share one interaction contract.
+    tabs.innerHTML = KINDS.map(([k,l]) =>
+      `<span class="tab" data-k="${k}" role="tab" tabindex="0" aria-selected="false" `
+      + `aria-controls="out">${l}</span>`).join('');
     tabs.addEventListener('click', e => { const t=e.target.closest('.tab'); if(t) showKind(t.dataset.k); });
+    // Routed through .click() so the handler above stays the single definition of what a
+    // tab does. Space scrolls the page by default, hence preventDefault.
+    tabs.addEventListener('keydown', e => {
+      const t = e.target.closest('.tab'); if (!t) return;
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); t.click(); }
+    });
   }
   async function showKind(kind) {
     curKind = kind;
-    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.dataset.k===kind));
+    // aria-selected must move with the `on` class: a state attribute set once at render
+    // and never updated is worse than none — it actively reports the wrong tab.
+    document.querySelectorAll('.tab').forEach(t => {
+      const on = t.dataset.k === kind;
+      t.classList.toggle('on', on);
+      t.setAttribute('aria-selected', String(on));
+    });
     const out = document.getElementById('out');
     if (cache[kind] !== undefined) { out.textContent = cache[kind]; return; }
     out.textContent = 'Running…';

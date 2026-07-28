@@ -28,19 +28,41 @@ handle this automatically).
 All scripts live in `scripts/` and run on Python 3 with no dependencies, except
 `sheets_sync.py` (see below). Run them from the repo root.
 
-### Import — ingest an Arena export
+### Import — get card data into the library
+
+Five tools write owned-card data, and they are **not** interchangeable: they disagree
+about what a quantity means. A deck dump is a **lower bound** (it says what that deck
+plays, not what you own); a collection export is **authoritative**. Picking wrong either
+undercounts your collection or overwrites it, so `/ingest` exists to route the choice:
+
+| What you have | Tool | A quantity means |
+|---|---|---|
+| Cards you just crafted or opened | `reconcile_crafts.py` (via `/add-cards`) | lower bound — takes `max(existing, line)` |
+| A deck list you built in Arena | `import_arena.py --skip-basics` | lower bound |
+| A tracker's full-collection CSV/TSV | `import_collection.py` | **authoritative** — sets exact, including down |
+| The companion Google Sheet | `sheets_sync.py pull` | authoritative (needs credentials) |
+| One card to fix by hand | `make app` | interactive |
 
 ```
-python3 scripts/import_arena.py batch.txt          # merge a deck/collection export
-python3 scripts/import_arena.py deck.txt --skip-basics   # reconcile owned counts from a built deck
+python3 scripts/import_arena.py batch.txt                # merge a deck/collection export
+python3 scripts/import_arena.py deck.txt --skip-basics   # true up owned counts from a built deck
+python3 scripts/import_collection.py collection.csv      # dry run; --apply to write
 ```
 
-Parses MTG Arena's `<qty> <Name> (<SET>) <collector#>` export format and merges
-it into `card-library.csv`, keyed by Card Name + Set Code + Collector # (one row
-per printing). Re-imports take the **max** quantity seen (decks share one
-collection, so counts don't sum); `--skip-basics` ignores basic lands so a deck
-list can true up owned counts without polluting the collection. Follow with
-`enrich.py` to backfill new cards.
+`import_arena.py` parses MTG Arena's `<qty> <Name> (<SET>) <collector#>` format and
+merges into `card-library.csv`, keyed by Card Name + Set Code + Collector # (one row per
+printing). Re-imports take the **max** quantity seen (decks share one collection, so
+counts don't sum); `--skip-basics` ignores basic lands.
+
+`import_collection.py` is the counterpart for a full-collection export, and the only tool
+here that can **lower** a count — which is why it is dry-run by default, refuses an export
+covering under half the library, and leaves cards absent from the export alone unless you
+pass `--zero-missing`. Columns are matched by alias against the header (so most trackers
+work unchanged) and it stops rather than guessing if it can't identify one; map them with
+`--map name=Card,qty=Have`.
+
+**After any import, rebuild the derived data** — a new card has no `card-mana.csv` row,
+so INV-02 fails until `build_mana.py --pool` runs. `/refresh` runs the whole chain.
 
 ### Validate — catch problems early
 
@@ -354,6 +376,7 @@ python3 scripts/deck.py cuts 1a       # rank the deck's weakest-fit cards as cut
 python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~ lines)
 python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
+python3 scripts/deck.py feedback             # how cuts/suggest scored against the swaps you applied (report-only)
 pbpaste | python3 scripts/deck.py verify 1a  # diff a pasted Arena export against the stored deck
 pbpaste | python3 scripts/deck.py sync        # reconcile MANY decks from one Arena paste (--apply to write)
 python3 scripts/deck.py text 1a              # full oracle text of every card (read before grading)
@@ -371,15 +394,34 @@ python3 scripts/deck.py history 1a           # the deck's git change history (it
 python3 scripts/deck.py quality 1a --at HASH # compare this deck's list at a past commit vs now
 ```
 
+`feedback` closes the loop on the recommenders. Every ranking model here grades
+itself on its own argument; `swap --apply` is the only moment a real add/cut
+*decision* is observable, so it now appends a row to `recommendations.csv` recording
+where `cuts` ranked the card you cut and whether `suggest` surfaced the card you
+added. The report **leads with the disagreements** — swaps where the model wanted to
+keep the card you cut — because an *agreement* is contaminated: you read the shortlist
+before deciding, so a high agreement rate partly measures the list's influence rather
+than its accuracy. A disagreement is a case the model got wrong either way. Below ~20
+swaps it refuses to compute a rate at all. It is **report-only and never feeds back
+into a score** — the scoring terms are bounded and gated by `check_suggest` so they
+can't silently reorder a tuned deck, and an automatic re-weighting would defeat that
+invisibly. Note that "add not surfaced" is expected to be common: `suggest` filters to
+cards sharing a synergy theme, so it is structurally blind to lands and off-theme
+removal (that's what `--lands` / `--interaction` / `--ramp` are for).
+
 `audit` is the **roster triage** for when you don't want to full-tune all your
 decks at once. It prints one offline line per deck — competitive **`Tier`**
 (S/A/B/C/D win-capability, from the deck's `#: tier:` header; sort with
 `--by-tier`), ownership drift (`Own`), construction legality (`Legal`), color
-strays (`Cast`: `Nu` uncastable / `Ns` off-identity), interaction count (`Int`),
+strays (`Cast`: `Nu` uncastable / `Ns` identity stray / `Na` of those, an off-color
+ABILITY), interaction count (`Int`),
 and central-theme count (`Thm`) — then
 labels each deck **★ TUNE** (a hard problem: illegal or uncastable cards),
-**craft** (just unbuilt), **review** (a soft flag: off-color strays or thin
-interaction), or **ok**. It reuses the exact `check` / `legal` / `mana` / `stats`
+**craft** (just unbuilt), **review** (a soft flag: an off-color **ability** or thin
+interaction), or **ok**. Only `Na` reaches the `review` verdict: a stray explained by a
+hybrid pip is a card you simply pay on-color — two R/W hybrids in a mono-W deck are
+white cards there — whereas an off-color activated ability is dead mana you can't spend.
+Counting both had put 22 of 63 decks in `review` with nothing actionable in any of them. It reuses the exact `check` / `legal` / `mana` / `stats`
 primitives, so a flag means the same thing it does in those commands — but across
 the whole roster in one pass and with no Scryfall calls. Use it to pick the few
 decks worth the expensive `/tune-deck` read; `--flagged` hides the `ok` rows.
@@ -548,8 +590,10 @@ enablers" = dead payoffs; "payoff-heavy" = under-enabled). A shortlist that prin
 card lists to grade; `stats` surfaces the flag inline.
 `mana` and `check` add a **castability lint** that flags any card whose real color
 needs fall outside the deck's declared `#: colors:` — a strict off-color pip means
-uncastable, an off-color identity (a hybrid you'd pay on-color, or an off-color
-ability) is a softer heads-up. `tribes` reads oracle text to surface
+uncastable; an off-color *identity* is a softer heads-up, labelled with which kind it
+is: `(hybrid — paid on-color)`, `(off-color ability)`, or `(cost unknown — run deck.py
+mana …)`. `check` stays offline and reads no mana costs, so it reports the third rather
+than guessing; `mana` gives the definitive read. `tribes` reads oracle text to surface
 **type-matters payoffs** — e.g. a Saga that rewards Krakens/Leviathans/Merfolk/
 Octopuses/Serpents will list those types and how many of your creatures qualify —
 so cross-type tribal synergies aren't missed.
@@ -909,6 +953,70 @@ top of `scripts/sheets_sync.py`. (Since the CSV is the interchange format, you c
 also import/export manually in Sheets without this — note that a *manual* File →
 Import applies Sheets' own formula parsing, which this RAW guard can't cover.)
 
+### Verify an ingest — did the cards you pasted actually land?
+
+```
+python3 scripts/verify_ingest.py cards.txt          # after importing
+python3 scripts/verify_ingest.py cards.txt --exact  # tracker-export route only
+```
+
+Every failure mode in the import path is a **silent undercount**, and `check_all`
+cannot see one — it proves the library is internally consistent, and a card that
+never arrived breaks no invariant. This reads the paste back and reports, per
+card, whether it is present, at the expected count, and covered by
+`card-mana.csv` (the INV-02 step that is easy to skip). Double-faced cards pasted
+under their full `Front // Back` name resolve to the library's front-name row, and
+basic lands are skipped — they are deliberately not in the collection.
+
+`--exact` requires `owned == pasted`; use it **only** for the authoritative
+`import_collection.py` route. Every other route treats a line as a lower bound.
+
+### Rebuilding derived data
+
+```
+make refresh
+```
+
+Runs the whole chain in dependency order: `enrich` → `build_pool --all` →
+`build_mana --pool` → `tag_synergies --merge` → `build_gallery` → `check_all`.
+The order is a real dependency graph (`build_mana --pool` reads `card-pool.csv`;
+`tag_synergies` reads `card-mana.csv`'s keywords), and getting it wrong is quiet
+rather than loud — a new set's pool cards end up with no mana row until the next
+cycle. The Makefile is the one place it is defined. Slow, and needs Scryfall.
+
+### Matches — record what actually happened (optional)
+
+```
+python3 scripts/parse_matches.py session.log            # dry run
+python3 scripts/parse_matches.py session.log --apply    # write matches.csv
+python3 scripts/parse_matches.py --report               # win/loss per deck
+```
+
+Every other tool here grades a deck on its **list**. This one records **games**.
+Turn on Arena → Settings → Account → **Detailed Logs (Plugin Support)**, restart
+Arena, then extract the two relevant line shapes (`Player.log` is overwritten on
+every launch, so grab it before relaunching):
+
+```
+p=~/Library/Logs/"Wizards Of The Coast"/MTGA          # macOS
+grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"' "$p"/Player*.log
+```
+
+**Both shapes are required.** The JSON carries the result and both players' seats
+but not *which seat is yours* — that appears only in the `Match to <userId>:`
+header prefix — so a paste of the JSON alone is skipped with a warning rather than
+guessed at (`--me <userId>` overrides). Rows dedupe by Arena's match id, so
+re-pasting an overlapping log is safe. No userId or player name is ever stored.
+
+Arena's `courseId` has no derivable relationship to a repo deck id, so the mapping
+is learned: put `#: arena: <courseId>` in a deck file (the report lists the
+unmapped ones) or pass `--deck <id>` to tag one session. Unmapped matches are kept.
+
+`--report` shows W/L per deck and **refuses to print a percentage below ~20
+matches**, with a 95% Wilson interval above that. A win rate separates a broken
+deck from a fine one; it will not separate a 55% deck from a 45% one without
+hundreds of games. Read it for disasters, not for marginal swaps.
+
 ## Typical workflow
 
 1. Add rows to `card-library.csv` (Card Name + Set Code + Quantity is enough).
@@ -969,11 +1077,19 @@ gates at once — the integrity check alone passes while a unit test is red); th
 Claude Code slash commands live in `.claude/commands/`:
 
 - **Project:** `/check` (integrity), `/refresh` (rebuild derived data),
-  `/add-deck` (ingest a pasted deck), `/tune-deck` (deck-building analysis),
-  `/add-cards` (catalog newly-owned cards + find their homes), `/add-wishlist`
-  (intake unowned craft targets to the wishlist — enrich, set the home Target, do
-  the cross-deck fit review), `/apply-changes` (apply confirmed swaps, run the
-  quality guard, verify + commit).
+  `/ingest` (**start here for any incoming card data** — routes to the right one of the
+  five ingest tools, then runs the rebuild chain), `/add-deck` (ingest a pasted deck),
+  `/draft-deck` (build a new deck from scratch around a concept), `/tune-deck`
+  (deck-building analysis for ONE deck), `/roster-review` (the roster loop — triage,
+  rotation exposure, craft plan, Brawl conversions, Arena drift), `/add-cards` (catalog
+  newly-owned cards + find their homes), `/add-wishlist` (intake unowned craft targets to
+  the wishlist — enrich, set the home Target, do the cross-deck fit review),
+  `/apply-changes` (apply confirmed swaps, run the quality guard, verify + commit).
+
+  The per-deck loop is `/tune-deck` → `/apply-changes`; the roster loop is
+  `/roster-review` → pick a deck → the per-deck loop. `check_commands.py` fails the build
+  if a command exists that no workflow drives, so this list can't silently fall behind
+  the tooling again.
 - **Audit (from claude-workflow-tools):** `/broad-scan`, `/broad-implement`,
   `/sync-docs`, `/health-pulse` (quick directional read), `/roadmap` —
   project-agnostic; they read the **Cycle Workflow Config** in `CLAUDE.md` (Test

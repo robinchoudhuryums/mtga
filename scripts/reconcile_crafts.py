@@ -222,7 +222,9 @@ def reconcile(export_lines, apply=False, set_exact=False):
         _bak_write(MANA, ["Card Name", "Mana Cost", "Mana Value", "Keywords"], mana)
     if wish_removed:
         _bak_write(WISH, wish_fields, wish)
-    print("\nApplied (with .bak backups). Next: build_gallery.py + check_all.py (or /refresh).")
+    print("\nApplied (with .bak backups). Next:\n"
+          "  make refresh                              # rebuild derived data\n"
+          "  python3 scripts/verify_ingest.py <export>  # confirm the batch landed")
     return 0
 
 

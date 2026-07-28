@@ -1,6 +1,9 @@
 """Unit tests for the ingest/tagging pure functions: import_arena parsing and the
 tag_synergies heuristics (the source of every synergy tag downstream code relies on)."""
+import pytest
+
 import import_arena
+import import_collection as ic
 import tag_synergies as ts
 
 
@@ -332,3 +335,133 @@ class TestFlavorKeywordHeuristic:
 
     def test_unknown_keyword_is_not_flavor_when_absent_from_the_corpus(self):
         assert not self._f("nevermentioned")
+
+
+class TestCollectionColumnDetection:
+    """Every tracker spells its columns differently, so they are matched by ALIAS. The
+    one thing this must never do is GUESS: a mis-identified quantity column would rewrite
+    every count in the inventory, and unlike import_arena this tool can lower them."""
+
+    def test_detects_the_common_spellings(self):
+        got = ic.detect_columns(["Card Name", "Set Code", "Collector Number", "Quantity"])
+        assert got["name"] == "Card Name" and got["qty"] == "Quantity"
+        assert got["set"] == "Set Code" and got["collector"] == "Collector Number"
+
+    def test_detection_ignores_case_and_punctuation(self):
+        got = ic.detect_columns(["  card_name ", "HAVE", "edition"])
+        assert got["name"] == "  card_name " and got["qty"] == "HAVE"
+        assert got["set"] == "edition"
+
+    def test_name_and_qty_are_required(self):
+        with pytest.raises(ValueError) as e:
+            ic.detect_columns(["thing", "howmany"])
+        # The message must show what it actually saw, or the operator can't fix it.
+        assert "thing" in str(e.value) and "--map" in str(e.value)
+
+    def test_map_override_wins(self):
+        got = ic.detect_columns(["thing", "howmany"],
+                                {"name": "thing", "qty": "howmany"})
+        assert got["name"] == "thing" and got["qty"] == "howmany"
+
+    def test_map_rejects_a_column_that_does_not_exist(self):
+        with pytest.raises(ValueError):
+            ic.detect_columns(["a", "b"], {"name": "nope", "qty": "b"})
+
+    def test_set_and_collector_are_optional(self):
+        got = ic.detect_columns(["Name", "Count"])
+        assert got["name"] == "Name" and "set" not in got
+
+
+class TestCollectionParse:
+    def test_reads_a_plain_csv(self):
+        entries, warn = ic.parse_export(
+            "Card Name,Set Code,Collector Number,Quantity\nShock,M21,159,4\n")
+        assert entries == [(4, "Shock", "M21", "159")] and warn == []
+
+    def test_sniffs_a_tab_separated_export(self):
+        entries, _ = ic.parse_export("Name\tEdition\tHave\nShock\tM21\t3\n")
+        assert entries == [(3, "Shock", "M21", "")]
+
+    def test_a_non_numeric_quantity_is_reported_not_zeroed(self):
+        """Silently reading a bad cell as 0 would DELETE that card's copies."""
+        entries, warn = ic.parse_export("Name,Count\nShock,\nBolt,two\n")
+        assert entries == []
+        assert len(warn) == 2 and "Shock" in warn[0]
+
+    def test_basics_are_skipped(self):
+        entries, _ = ic.parse_export("Name,Count\nForest,40\nShock,4\n")
+        assert [e[1] for e in entries] == ["Shock"]
+
+    def test_a_zero_count_is_kept(self):
+        """0 is a real, meaningful value here — it is how the export says 'disenchanted'."""
+        entries, _ = ic.parse_export("Name,Count\nShock,0\n")
+        assert entries == [(0, "Shock", "", "")]
+
+
+class TestCollectionPlan:
+    """`plan` is pure: it decides the changes without touching a file."""
+
+    def _row(self, name, setc="M21", coll="1", qty="4"):
+        return {"Card Name": name, "Type": "", "Card Text": "", "Color(s)": "",
+                "Synergies": "", "Set Code": setc, "Collector #": coll,
+                "Quantity Owned": qty}
+
+    def test_sets_a_quantity_DOWN(self):
+        """The whole reason this tool exists — import_arena takes max() and can never
+        learn that you own fewer."""
+        rows = [self._row("Shock", qty="4")]
+        r = ic.plan(rows, [(1, "Shock", "M21", "1")])
+        assert r["updated"] == [("Shock", "4", "1")]
+        assert rows[0]["Quantity Owned"] == "1"
+
+    def test_an_unknown_card_is_added(self):
+        r = ic.plan([], [(2, "Brand New", "XXX", "9")])
+        assert r["added"] == [("Brand New", "XXX", "9", 2)]
+
+    def test_a_new_dfc_is_stored_under_its_front_name(self):
+        r = ic.plan([], [(1, "Front // Back", "XXX", "1")])
+        assert r["added"][0][0] == "Front"
+
+    def test_a_row_stored_under_the_FULL_name_still_matches(self):
+        """The six DSK Room cards are stored as 'Bottomless Pool // Locker Room', not
+        under the front face — front-truncating every export name reported all six as
+        brand-new on the first real run."""
+        rows = [self._row("Bottomless Pool // Locker Room", "DSK", "43", "1")]
+        r = ic.plan(rows, [(2, "Bottomless Pool // Locker Room", "DSK", "43")])
+        assert r["added"] == [] and r["updated"] == [
+            ("Bottomless Pool // Locker Room", "1", "2")]
+
+    def test_an_export_naming_only_the_front_face_also_matches(self):
+        rows = [self._row("Bottomless Pool // Locker Room", "DSK", "43", "1")]
+        r = ic.plan(rows, [(2, "Bottomless Pool", "DSK", "43")])
+        assert r["added"] == [] and len(r["updated"]) == 1
+
+    def test_name_only_row_with_several_printings_is_ambiguous_not_guessed(self):
+        """The export says how many you own in total but not which printing to put them
+        on; picking one would silently zero the other."""
+        rows = [self._row("Shock", "M21", "159", "2"), self._row("Shock", "DAR", "12", "2")]
+        r = ic.plan(rows, [(3, "Shock", "", "")])
+        assert r["updated"] == [] and len(r["ambiguous"]) == 1
+        assert r["ambiguous"][0][0] == "Shock"
+
+    def test_ambiguous_names_are_reported_once(self):
+        rows = [self._row("Shock", "M21", "159", "2"), self._row("Shock", "DAR", "12", "2")]
+        r = ic.plan(rows, [(3, "Shock", "", ""), (3, "Shock", "", "")])
+        assert len(r["ambiguous"]) == 1
+
+    def test_absent_cards_are_left_alone_by_default(self):
+        """A filtered export must not be able to wipe the collection."""
+        rows = [self._row("Shock", qty="4")]
+        r = ic.plan(rows, [(1, "Other", "M21", "2")])
+        assert r["zeroed"] == [("Shock", "4")]
+        assert rows[0]["Quantity Owned"] == "4"      # untouched
+
+    def test_zero_missing_opts_in_to_zeroing_them(self):
+        rows = [self._row("Shock", qty="4")]
+        ic.plan(rows, [(1, "Other", "M21", "2")], zero_missing=True)
+        assert rows[0]["Quantity Owned"] == "0"
+
+    def test_an_ambiguous_card_is_not_also_reported_as_missing(self):
+        rows = [self._row("Shock", "M21", "159", "2"), self._row("Shock", "DAR", "12", "2")]
+        r = ic.plan(rows, [(3, "Shock", "", "")])
+        assert r["zeroed"] == []

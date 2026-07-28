@@ -27,6 +27,11 @@
     cursor: pointer; font-weight: 700; color: #1a1a1a; display: grid; place-items: center;
     font-size: 13px; opacity: .45; transition: opacity .12s, border-color .12s; user-select: none; }
   .pip.on { opacity: 1; border-color: var(--text); }
+  /* An OUTLINE, not the border: the border is what marks a pip as active, so reusing it
+     for focus would make "focused" and "selected" the same pixel. offset keeps the ring
+     clear of the circle, and full opacity stops a focused-but-inactive pip reading as
+     dimmed. Paired with :focus-visible so a mouse click doesn't leave a ring behind. */
+  .pip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; opacity: 1; }
   .pip.W{background:var(--W)} .pip.U{background:var(--U)} .pip.B{background:var(--B)}
   .pip.R{background:var(--R)} .pip.G{background:var(--G)} .pip.C{background:var(--C)}
   #save { margin-left: auto; background: var(--panel2); color: var(--muted);
@@ -87,17 +92,28 @@
     <button id="save" title="Save edits to card-library.csv (validated, with a .bak backup)">No changes</button>
   </div>
   <div class="controls">
-    <input type="search" id="q" placeholder="Search name, type, or text…" autocomplete="off">
-    <div class="pips" id="pips">
-      <div class="pip W" data-c="W" title="White">W</div>
-      <div class="pip U" data-c="U" title="Blue">U</div>
-      <div class="pip B" data-c="B" title="Black">B</div>
-      <div class="pip R" data-c="R" title="Red">R</div>
-      <div class="pip G" data-c="G" title="Green">G</div>
-      <div class="pip C" data-c="C" title="Colorless">C</div>
+    <input type="search" id="q" aria-label="Search the collection by name, type, or text" placeholder="Search name, type, or text…" autocomplete="off">
+    <!-- Color filter (I-01). Each pip is a <div>, so it needs role + tabindex + a key
+         handler to be a control at all: without them the whole filter was mouse-only,
+         and its visible text is a bare letter, so an aria-label supplies the real name.
+         role="button" + aria-pressed mirrors the dashboard's colour chips verbatim
+         (build_dashboard.py's a11y()) — same control, so the two must not drift. -->
+    <div class="pips" id="pips" role="group" aria-label="Filter by color">
+      <div class="pip W" data-c="W" title="White" role="button" tabindex="0"
+           aria-pressed="false" aria-label="Filter by White">W</div>
+      <div class="pip U" data-c="U" title="Blue" role="button" tabindex="0"
+           aria-pressed="false" aria-label="Filter by Blue">U</div>
+      <div class="pip B" data-c="B" title="Black" role="button" tabindex="0"
+           aria-pressed="false" aria-label="Filter by Black">B</div>
+      <div class="pip R" data-c="R" title="Red" role="button" tabindex="0"
+           aria-pressed="false" aria-label="Filter by Red">R</div>
+      <div class="pip G" data-c="G" title="Green" role="button" tabindex="0"
+           aria-pressed="false" aria-label="Filter by Green">G</div>
+      <div class="pip C" data-c="C" title="Colorless" role="button" tabindex="0"
+           aria-pressed="false" aria-label="Filter by Colorless">C</div>
     </div>
-    <select id="set"></select>
-    <select id="sort">
+    <select id="set" aria-label="Filter by set"></select>
+    <select id="sort" aria-label="Sort order">
       <option value="name">Sort: Name</option>
       <option value="set">Sort: Set</option>
       <option value="qty">Sort: Quantity</option>
@@ -106,10 +122,10 @@
     <button id="revert" class="tool" title="Undo the last save (restore the most recent backup)">⤺ Revert last save</button>
   </div>
   <div class="addpanel" id="addPanel" hidden>
-    <input id="aName" placeholder="Card name (exact)" size="26">
-    <input id="aSet" placeholder="Set" size="5">
-    <input id="aCn" placeholder="Coll #" size="5">
-    <input id="aQty" type="number" min="0" placeholder="Qty" style="width:70px">
+    <input id="aName" aria-label="Card name (exact)" placeholder="Card name (exact)" size="26">
+    <input id="aSet" aria-label="Set code" placeholder="Set" size="5">
+    <input id="aCn" aria-label="Collector number" placeholder="Coll #" size="5">
+    <input id="aQty" type="number" min="0" aria-label="Quantity owned" placeholder="Qty" style="width:70px">
     <button id="addBtn" class="tool go">Add</button>
     <span class="hint">An exact name auto-fills type/text/color/synergies from Scryfall.</span>
   </div>
@@ -137,12 +153,22 @@
   setSel.innerHTML = '<option value="">All sets</option>' +
     sets.map(s => `<option value="${s}">${s}</option>`).join('');
 
-  document.getElementById('pips').addEventListener('click', e => {
+  const pipsEl = document.getElementById('pips');
+  pipsEl.addEventListener('click', e => {
     const pip = e.target.closest('.pip'); if (!pip) return;
     const c = pip.dataset.c;
     if (activeColors.has(c)) { activeColors.delete(c); pip.classList.remove('on'); }
     else { activeColors.add(c); pip.classList.add('on'); }
+    pip.setAttribute('aria-pressed', String(activeColors.has(c)));
     render();
+  });
+  // Enter/Space activate, like a real <button>. Delegated on the container and routed
+  // through .click() so the handler above stays the single definition of what a pip
+  // does — a second copy of the toggle logic is how the two paths drift apart.
+  // Space scrolls the page by default, so both keys need preventDefault.
+  pipsEl.addEventListener('keydown', e => {
+    const pip = e.target.closest('.pip'); if (!pip) return;
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); pip.click(); }
   });
   q.addEventListener('input', render);
   setSel.addEventListener('change', render);
@@ -201,9 +227,9 @@
         </div>
         <div class="cname" title="${esc(c.name)}">${esc(c.name)}</div>
         <div class="edit">
-          <div class="qtyrow"><label>Owned ×</label>
-            <input class="qty" type="number" min="0" step="1" value="${esc(curQty)}"></div>
-          <input class="syn" type="text" value="${esc(curSyn)}" placeholder="synergies (semicolon-separated)">
+          <div class="qtyrow"><label>Owned ×
+            <input class="qty" type="number" min="0" step="1" aria-label="${esc(c.name)} — quantity owned" value="${esc(curQty)}"></label></div>
+          <input class="syn" type="text" aria-label="${esc(c.name)} — synergy tags, semicolon-separated" value="${esc(curSyn)}" placeholder="synergies (semicolon-separated)">
         </div>
       </div>`;
     }).join('');
@@ -271,10 +297,19 @@
     clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 4000);
   }
 
+  // Every endpoint answers JSON on both success and failure, so a body that won't
+  // parse means something OUTSIDE the app's own error handling went wrong (server
+  // stopped, an unhandled 500 rendering Flask's HTML page, a proxy). Turn that into
+  // a real Error with a readable message rather than letting a raw SyntaxError
+  // escape — the callers below report it to the user.
   async function postJSON(url, body) {
     const res = await fetch(url, {method: 'POST',
       headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
-    return res.json();
+    try {
+      return await res.json();
+    } catch (err) {
+      throw new Error(`server returned a non-JSON response (HTTP ${res.status})`);
+    }
   }
 
   // Add card — enrich + append server-side, then reload to pick up the new row.
@@ -310,17 +345,30 @@
     const rm = e.target.closest('.rm'); if (!rm) return;
     const c = CARDS.find(x => x._key === rm.closest('.card').dataset.key); if (!c) return;
     if (!confirm(`Remove ${c.name} (${c.set || '—'})? This deletes the printing from the collection.`)) return;
-    const d = await postJSON('/api/remove', {key: {name: c.name, set: c.set, collector: c.cn}});
-    if (d.ok) { sessionStorage.setItem('flash', `Removed ${c.name}`); location.reload(); }
-    else toast('Remove failed: ' + (d.errors || ['unknown']).join('  |  '));
+    // try/catch, like save/add: without it a rejected fetch (server stopped, bad
+    // response) escaped as an unhandled rejection and the click did NOTHING VISIBLE —
+    // right after the user confirmed a destructive dialog (broad-scan F-02).
+    try {
+      const d = await postJSON('/api/remove', {key: {name: c.name, set: c.set, collector: c.cn}});
+      if (d.ok) { sessionStorage.setItem('flash', `Removed ${c.name}`); location.reload(); }
+      else toast('Remove failed: ' + (d.errors || ['unknown']).join('  |  '));
+    } catch (err) {
+      toast('Remove failed (is the server running?): ' + err.message);
+    }
   });
 
   // Revert last save.
   document.getElementById('revert').addEventListener('click', async () => {
     if (!confirm('Revert the last save? Restores the most recent backup and discards changes since then.')) return;
-    const d = await postJSON('/api/revert', {});
-    if (d.ok) { sessionStorage.setItem('flash', `Reverted to ${d.restored}`); location.reload(); }
-    else toast('Revert failed: ' + (d.errors || ['unknown']).join('  |  '));
+    // Same guard as remove() above — this is the most destructive action in the app,
+    // and it was one of the two that failed silently (broad-scan F-02).
+    try {
+      const d = await postJSON('/api/revert', {});
+      if (d.ok) { sessionStorage.setItem('flash', `Reverted to ${d.restored}`); location.reload(); }
+      else toast('Revert failed: ' + (d.errors || ['unknown']).join('  |  '));
+    } catch (err) {
+      toast('Revert failed (is the server running?): ' + err.message);
+    }
   });
 
   // Surface a one-shot message across the reload that add/remove/revert trigger.

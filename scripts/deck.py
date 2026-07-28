@@ -60,7 +60,7 @@ import urllib.request
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
-                 mana_value)
+                 mana_value, atomic_write)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -578,21 +578,37 @@ BASIC_COLOR = {"plains": "W", "island": "U", "swamp": "B", "mountain": "R", "for
 def _castability(cards, declared, mana, carddata):
     """Flag nonland cards whose color needs fall outside `declared` (a WUBRG set).
 
-    Returns (uncastable, off_identity):
+    Returns (uncastable, off_identity, off_ability):
       uncastable   – [(name, "needs X")] : a STRICT pip, or a true multicolor
                      hybrid with NO in-declared-color option, in a color the deck
                      can't produce. These genuinely can't be cast off the stated
                      colors. (Needs real mana costs — pass a populated `mana`.)
-      off_identity – [(name, "identity has X")] : castable as printed, but the
-                     card's color IDENTITY strays outside declared (an off-color
-                     ability, or a hybrid you'd pay on-color) — a softer heads-up.
+      off_identity – [(name, why)] : castable as printed, but the card's color
+                     IDENTITY strays outside declared — every stray, for display.
+      off_ability  – the SUBSET of off_identity whose stray is NOT explained by a
+                     hybrid pip in the mana cost, i.e. it comes from rules text (an
+                     activated ability you can't pay, another face). This is the
+                     only part that is ever actionable.
+
+    The two kinds were reported as one list, and the `why` string ("identity has R")
+    could not tell them apart — so `audit_deck` counted both and the roster triage's
+    `review` verdict fired on 22 of 63 decks with a measured 0% actionable rate
+    (broad-scan F-03). A hybrid you pay on-color costs you nothing: Knight's Edge is
+    mono-W and runs two R/W hybrids that are simply white cards in that deck. An
+    off-color ABILITY is different — Super-Skrull casts for {1}{B}{B}{B} but its
+    {4}{R} ability is dead in a deck with no red, and that is worth a look. Splitting
+    them turns a saturated flag back into a shortlist; the display keeps showing
+    both, since "this card's identity is wider than the deck" is still true and
+    useful to see, and only the VERDICT narrows.
 
     An empty `declared` disables the lint. With an empty `mana` dict the strict
     check is skipped and only the offline identity check runs (so `check` stays
-    network-free)."""
-    uncastable, off_ident = [], []
+    network-free) — note that with no costs to read, no stray can be shown to be
+    hybrid-explained, so every stray reads as an ability stray. That is the
+    conservative direction: it over-reports rather than silently clearing a deck."""
+    uncastable, off_ident, off_ability = [], [], []
     if not declared:
-        return uncastable, off_ident
+        return uncastable, off_ident, off_ability
     seen = set()
     for q, n, s, c in cards:
         nl = n.lower()
@@ -621,8 +637,28 @@ def _castability(cards, declared, mana, carddata):
         ident = card_colors(cd["colors"] if cd else "")
         stray = sorted(ident - declared)
         if stray:
-            off_ident.append((n, "identity has " + "/".join(stray)))
-    return uncastable, off_ident
+            # A stray colour that appears ONLY as a hybrid pip in the cost is one you
+            # pay on-colour — the card is a plain on-colour card in this deck. Anything
+            # else came from the rules text (an off-colour activated ability, another
+            # face), which is the part worth reviewing.
+            #
+            # Without a cost we cannot tell the two apart, and asserting either would be
+            # a claim we can't support: `cmd_check` deliberately passes an empty `mana`
+            # to stay offline, and every stray there would otherwise be labelled an
+            # off-colour ability — false for the R/W hybrids in a mono-W deck. So say
+            # "unknown" in the text, while still COUNTING it as actionable, which keeps
+            # the offline path over-reporting rather than silently clearing a deck.
+            hybrid_colors = set().union(*hybrid) if hybrid else set()
+            known_cost = bool(entry and entry[0])
+            by_hybrid = known_cost and set(stray) <= hybrid_colors
+            note = (" (hybrid — paid on-color)" if by_hybrid
+                    else " (off-color ability)" if known_cost
+                    else " (cost unknown — run `deck.py mana` to tell hybrid from ability)")
+            why = "identity has " + "/".join(stray) + note
+            off_ident.append((n, why))
+            if not by_hybrid:
+                off_ability.append((n, why))
+    return uncastable, off_ident, off_ability
 
 
 def cmd_check(args):
@@ -674,7 +710,7 @@ def cmd_check(args):
     # Castability lint (offline, identity-only — pass an empty mana dict). Flags
     # cards whose color identity strays outside the deck's declared colors.
     declared = _declared_colors(meta)
-    _, off_ident = _castability(cards, declared, {}, load_card_data())
+    _, off_ident, _ = _castability(cards, declared, {}, load_card_data())
     if declared and off_ident:
         cols = "".join(sorted(declared))
         print(f"\n⚠ {len(off_ident)} card(s) stray outside the deck's {cols} colors "
@@ -1393,6 +1429,164 @@ def _drop_cost_themes(shared, cards, carddata):
             continue      # the deck pays the cost but collects no reward — not a fit
         keep.append(t)
     return keep
+
+
+# ── Zone conflicts: a fine card that fights your own engine ────────────────────────
+# The MIRROR of `cost_upside_flags` below. That flag catches a drawback that is secretly
+# an UPSIDE in this deck; nothing caught an upside that is secretly a DRAWBACK here, and
+# that shape shipped into two finished decks. Strategic Betrayal ("Target opponent exiles
+# a creature they control and their graveyard") and Pit of Offerings ("exile up to three
+# target cards from graveyards") both read as perfectly good cards — and both empty a
+# graveyard that four heist cards in the same deck need FULL. `cuts` ranked Strategic
+# Betrayal second-weakest, so the shortlist saw it; only a full-text read explained WHY.
+# A model that grades a card in isolation structurally cannot see this.
+#
+# CLAUDE.md states the rule for humans — "when a deck DEPENDS on a zone being populated,
+# audit every card that empties it" — and this detects that pairing.
+#
+# The patterns are built from the POOL's real phrasings, not from strings written to
+# match them (the lesson the `heist` tag's four pattern bugs taught). Two findings from
+# that survey shape the design:
+#   * `exile this card from YOUR graveyard` is on 90 pool cards and is escape / flashback
+#     / delve COST — a graveyard USER, the opposite of hate. Anything scoped to your own
+#     yard is excluded outright.
+#   * A heist card exiles an opponent's graveyard IN ORDER TO CAST FROM IT (Tinybones
+#     "exile it from their graveyard with a stash counter", Hama, Azula). Those are the
+#     deck's ENGINE, and a naive exile+graveyard rule flags them as hostile to
+#     themselves. `tag_synergies.is_heist_text` already separates "casts cards you don't
+#     own" from real hate, so the emptier test reuses it rather than adding a model.
+_ZONE_MIN_DEPENDENTS = 2   # one card is a singleton, not a plan worth protecting
+
+# Emptied scope = the OPPONENT's yard only.
+_GY_HATE_OPP_RE = re.compile(
+    # A GAP before "their graveyard" is required, not optional: Strategic Betrayal reads
+    # "Target opponent exiles a creature they control AND their graveyard", so the verb
+    # and the zone sit at opposite ends of the clause. Demanding them adjacent missed the
+    # single card this detector was built for — found by running it, not by reading it.
+    r"exiles?[^.]{0,60}?\b(?:their|his or her) graveyard"
+    r"|exile (?:target |each )?(?:player'?s?|opponent'?s?) graveyard"
+    # "that player's graveyard" (Hama) is as common as "target player's" and was absent.
+    r"|exile[^.]{0,50}?\bfrom (?:an? opponent'?s?|target player'?s?|that player'?s?|their) graveyard", re.I)
+# Emptied scope = EVERY yard at once, with no choice — the only shape that can hit YOUR
+# graveyard against your will.
+_GY_HATE_ALL_RE = re.compile(
+    r"exile (?:all|each) graveyards?"
+    r"|exile all cards? from (?:all|each) graveyards?"
+    r"|graveyards? (?:is|are) exiled", re.I)
+# TARGETED graveyard exile — "exile up to one target card from a graveyard". The
+# controller PICKS the yard, so in an own-graveyard deck you simply aim it at theirs and
+# there is no conflict; it only fights a plan that needs THEIR yard as a resource. Keeping
+# this apart from the mass shape is what turns the flag from noise into a shortlist: on
+# the roster it drops the count from 12 to the decks where it is actually a conflict.
+_GY_HATE_CHOOSE_RE = re.compile(
+    r"exile[^.]{0,50}?\bfrom (?:a|a single|each|target) graveyard\b"
+    r"|exile[^.]{0,50}?\bfrom graveyards\b", re.I)
+# The escape / delve / flashback COST family — a graveyard USER, never hate.
+_GY_OWN_SCOPE_RE = re.compile(r"\byour graveyard\b|\byour own graveyard\b", re.I)
+# Needs the OPPONENT's yard populated (casting or stealing from it).
+_GY_NEED_OPP_RE = re.compile(
+    r"(?:cast|play|return|exile)[^.]{0,60}?from (?:an? opponent'?s?|target player'?s?|that player'?s?|their) graveyard"
+    r"|in your opponents'? graveyards"
+    r"|cards? in (?:their|each opponent'?s?) graveyard", re.I)
+
+
+def graveyard_emptier(text):
+    """``'opponent'`` / ``'all'`` / ``None`` — which graveyards this card EMPTIES.
+
+    Three scopes, because they conflict with different plans:
+      ``all``      – untargeted mass exile; hits YOUR yard whether you like it or not.
+      ``opponent`` – scoped to their yard.
+      ``choose``   – targeted ("exile up to one target card from a graveyard"); you pick
+                     the yard, so it only fights a plan that needs THEIRS populated.
+
+    ``None`` for a card that only touches YOUR yard (escape/delve costs) and for any
+    card whose exile is a heist (it exiles in order to cast, so it needs the yard full —
+    it is the engine, not the hate)."""
+    t = _norm_role_text(text or "")
+    if not t:
+        return None
+    try:
+        from tag_synergies import is_heist_text
+        if is_heist_text(text or ""):
+            return None
+    except Exception:
+        pass                      # tag_synergies unavailable — fall through, over-report
+    if _GY_HATE_ALL_RE.search(t):
+        return "all"
+    if _GY_HATE_OPP_RE.search(t):
+        return "opponent"
+    if _GY_HATE_CHOOSE_RE.search(t):
+        return "choose"
+    # Left last on purpose: a card scoped ONLY to your own yard is a user, not an emptier.
+    return None
+
+
+def graveyard_dependent(text, type_line=""):
+    """``{'own'}`` / ``{'opponent'}`` / both / empty — which graveyards this card NEEDS
+    populated. Own-yard dependence reuses `engine_roles`' graveyard PAYOFF side (the
+    trustworthy half of that classifier) rather than adding a second model."""
+    t = text or ""
+    needs = set()
+    if _GY_NEED_OPP_RE.search(_norm_role_text(t)):
+        needs.add("opponent")
+    try:
+        if "payoff" in engine_roles(t).get("graveyard", set()):
+            needs.add("own")
+    except Exception:
+        pass
+    return needs
+
+
+def zone_conflict_flags(cards, carddata):
+    """[(card_name, scope, why, [dependent card names])] — cards that EMPTY a graveyard
+    this deck depends on being populated.
+
+    Fires only when the deck fields >= `_ZONE_MIN_DEPENDENTS` cards needing that yard, so
+    a lone graveyard payoff can't manufacture a conflict. A FLAG for a human read, never a
+    score change — the same posture as `cost_upside_flags` and `scales w/`, because the
+    signal is real but the judgement (is the hate worth it against this meta?) is not
+    mechanical."""
+    need_opp, need_own = [], []
+    seen = set()
+    for _q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl in seen:
+            continue
+        seen.add(nl)
+        cd = carddata.get(nl)
+        if not cd:
+            continue
+        needs = graveyard_dependent(cd.get("text") or "", cd.get("type") or "")
+        if "opponent" in needs:
+            need_opp.append(n)
+        if "own" in needs:
+            need_own.append(n)
+
+    out, seen = [], set()
+    for _q, n, _s, _c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl in seen:
+            continue
+        seen.add(nl)
+        cd = carddata.get(nl)
+        if not cd:
+            continue
+        scope = graveyard_emptier(cd.get("text") or "")
+        if not scope:
+            continue
+        # Only an untargeted mass exile can hurt your OWN yard; a targeted one you aim.
+        hit = list(need_opp)
+        if scope == "all":
+            hit += [x for x in need_own if x not in hit]
+        hit = [x for x in hit if x.lower() != nl]     # a card can't conflict with itself
+        if len(hit) < _ZONE_MIN_DEPENDENTS:
+            continue
+        where = {"all": "every graveyard, including your own",
+                 "opponent": "an opponent's graveyard",
+                 "choose": "a graveyard you target"}[scope]
+        out.append((n, scope,
+                    f"empties {where}, which {len(hit)} card(s) here need populated", hit))
+    return out
 
 
 def cost_upside_flags(text, deck_themes):
@@ -2363,6 +2557,19 @@ def cmd_stats(args):
         print(f"\n⚠ Engine balance (detail: `deck.py engines {d['id']}`):")
         for t, info in flagged:
             print(f"    {t}: {info['verdict']}")
+
+    # Zone conflicts — a card that EMPTIES a zone this deck needs populated. Engine
+    # balance above asks "are the two sides of the engine in proportion"; this asks the
+    # different question "is something here working AGAINST the engine", which no other
+    # view covers. Reported, never scored (see zone_conflict_flags).
+    zconf = zone_conflict_flags(cards, carddata)
+    if zconf:
+        print(f"\n⛔ Fights your own engine ({len(zconf)}) — grade from full text "
+              f"(`deck.py cuts {d['id']}`):")
+        for nm, _scope, why, hit in zconf:
+            print(f"    {nm}: {why}")
+            print(f"      needs it populated: {', '.join(hit[:4])}"
+                  + (f" … (+{len(hit) - 4})" if len(hit) > 4 else ""))
     return 0
 
 
@@ -2532,14 +2739,30 @@ def role_tally(cards, carddata):
     # this, but printed it as a separate warning several lines away, so the NUMBER still
     # read as fact. Attaching the remainder to the tally means every consumer gets it.
     unclassified, under_read, no_data = role_coverage_flags(cards, carddata)
-    per_role["interaction_unread"] = sum(1 for _n, ax in under_read if "interaction" in ax)
-    per_role["card_advantage_unread"] = sum(1 for _n, ax in under_read if "card advantage" in ax)
+    # Quantity-weight the uncertainty the SAME way the counts themselves are weighted.
+    # `interaction`/`card_advantage`/`protection` above are quantity-weighted (2 copies of
+    # a removal spell = 2), but these remainders were CARD counts — so `8 +4?` compared a
+    # weighted base against an unweighted remainder, and a deck running 4x of a card with
+    # no oracle text on file reported "+1?" when four copies were unread (broad-scan
+    # F-09). Understating uncertainty is the wrong direction for a signal whose entire
+    # job is to stop a heuristic count from reading as fact.
+    #
+    # Dedupe by name first: role_coverage_flags emits one entry per LINE, so a card split
+    # across two printing lines would otherwise be weighted by its full quantity twice.
+    # (No deck on the roster does that today; the guard is for when one does.)
+    _qty_of = {}
+    for _q, _n, _s, _c in cards:
+        _qty_of[(_n or "").lower()] = _qty_of.get((_n or "").lower(), 0) + _q
+    def _weigh(names):
+        return sum(_qty_of.get((n or "").lower(), 1) for n in dict.fromkeys(names))
+    per_role["interaction_unread"] = _weigh([n for n, ax in under_read if "interaction" in ax])
+    per_role["card_advantage_unread"] = _weigh([n for n, ax in under_read if "card advantage" in ax])
     # `unclassified` is the WORSE case and must not be invisible: a noncreature spell that
     # matched no role AND tripped no broad cue. That is exactly Broken Wings and Repulsive
     # Mutation — cards that unambiguously interact and scored zero. It can't be attributed
     # to a single axis, so it is reported globally rather than folded into one count.
-    per_role["unclassified"] = len(unclassified)
-    per_role["unreadable"] = len(no_data)
+    per_role["unclassified"] = _weigh(unclassified)
+    per_role["unreadable"] = _weigh(no_data)
     return per_role
 
 
@@ -3826,7 +4049,7 @@ def cmd_mana(args):
     # declared colors (the `#: colors:` header). Only meaningful when declared.
     declared = _declared_colors(meta)
     if declared:
-        uncastable, off_ident = _castability(cards, declared, mana, load_card_data())
+        uncastable, off_ident, _ = _castability(cards, declared, mana, load_card_data())
         cols = "".join(sorted(declared))
         if uncastable:
             print(f"\n✗ Uncastable off the deck's {cols} colors "
@@ -4367,6 +4590,211 @@ def _safe_write_lines(path, lines, expected_total):
             os.remove(tmp)
 
 
+RECS_CSV = os.path.join(REPO_ROOT, "recommendations.csv")
+RECS_HEADER = ["Date", "Deck", "Source", "Cut", "Add", "Cut Rank", "Cut Of",
+               "Cut Protected", "Add Surfaced", "Add Rank", "Add Of"]
+# `suggest`'s default display window — "surfaced" means "a human running the default
+# command would have SEEN it", not "it appears somewhere in 2,500 scored picks".
+_RECS_SUGGEST_WINDOW = 20
+# Below this many recorded swaps the report refuses to summarize, the same restraint
+# `parse_matches --report` and `count_conf` show. A hit rate over six swaps is noise.
+_RECS_MIN_SAMPLE = 20
+
+
+def recommendation_row(d, cut, add, source, today=None):
+    """Score an ACCEPTED swap against what the recommenders said at that moment.
+
+    `swap --apply` is the only place in this toolkit where a human's real add/cut
+    decision is observable, and nothing recorded it — so every ranking model here
+    (`cuts`, `suggest`, the bounded co-signals, the whole gated stack) has been graded
+    on argument and anchor tests, never against a single decision anyone actually made.
+    That is the same gap CLAUDE.md records for the `Decks` column: it read as working
+    right up until someone MEASURED it and found a 0% actionable rate.
+
+    Deliberately measurement ONLY — nothing here feeds back into a score. The scoring
+    terms are bounded and anchored by `check_suggest` precisely so they can't silently
+    reorder a tuned deck, and a feedback loop that quietly re-weighted them would defeat
+    that by construction. This writes a ledger a human reads.
+
+    Ranks are captured NOW, against the pre-swap deck, because that is the list the
+    decision was made against; re-deriving one later would score against a deck the swap
+    already changed.
+
+    Returns a row dict, or None if neither model could be computed."""
+    import datetime
+    row = {c: "" for c in RECS_HEADER}
+    row.update({"Date": today or datetime.date.today().isoformat(),
+                "Deck": d["id"], "Source": source, "Cut": cut, "Add": add})
+    got = False
+
+    # The cut side is the CLEAN measurement: `cuts` ranks the cards already in the deck,
+    # so the cut always has a well-defined position in a list that always contains it.
+    try:
+        rows, _central, prot_present, _int = rank_cut_candidates(d)
+        cl = cut.strip().lower()
+        idx = next((i for i, r in enumerate(rows) if r[1].strip().lower() == cl), None)
+        row["Cut Of"] = len(rows)
+        row["Cut Protected"] = "yes" if cl in {p.strip().lower() for p in prot_present} \
+            else "no"
+        if idx is not None:
+            row["Cut Rank"] = idx + 1          # 1 = the model's most-cuttable card
+        got = True
+    except Exception:
+        # Telemetry must never cost a swap. A model that raises here (missing pool,
+        # unreadable card data) loses its column, not the edit.
+        pass
+
+    # The add side is INCOMPLETE by construction and must be read as such: `suggest`
+    # filters candidates to cards sharing a synergy THEME, so it is structurally blind
+    # to lands and off-theme removal (that is what `--lands`/`--interaction`/`--ramp`
+    # exist for). "Not surfaced" is therefore common and is NOT on its own a model miss.
+    try:
+        res = suggest_scored(d, limit=0)
+        if res.get("ok"):
+            picks = res["picks"]
+            al = add.strip().lower()
+            ai = next((i for i, p in enumerate(picks)
+                       if p["name"].strip().lower() == al
+                       or p["name"].strip().lower().split(" // ")[0] == al), None)
+            row["Add Of"] = len(picks)
+            row["Add Surfaced"] = "yes" if ai is not None and ai < _RECS_SUGGEST_WINDOW \
+                else "no"
+            if ai is not None:
+                row["Add Rank"] = ai + 1
+            got = True
+    except Exception:
+        pass
+    return row if got else None
+
+
+def load_recommendations(path=None):
+    """Rows from the ledger, or [] if it doesn't exist yet. `path` resolves the module
+    global at CALL time — a default argument would bind the real file even when a test
+    repoints RECS_CSV, the stale-path bug `_file_memo` documents."""
+    path = path or RECS_CSV
+    if not os.path.exists(path):
+        return []
+    with open(path, newline="", encoding="utf-8") as fh:
+        return [dict(r) for r in csv.DictReader(fh)]
+
+
+def append_recommendation(row, path=None):
+    """Append one row, writing through the shared atomic path so an interrupted write
+    can't truncate the ledger. Its own DictWriter on its own fieldnames — never
+    `lib.write_rows`, which emits the canonical 8 LIBRARY columns and would rewrite this
+    file with the wrong header (audit F-02)."""
+    path = path or RECS_CSV
+    rows = load_recommendations(path) + [row]
+
+    def _w(fh):
+        w = csv.DictWriter(fh, fieldnames=RECS_HEADER, quoting=csv.QUOTE_MINIMAL)
+        w.writeheader()
+        for r in rows:
+            w.writerow({c: r.get(c, "") for c in RECS_HEADER})
+    atomic_write(path, _w, backup=False)
+    return len(rows)
+
+
+def _rec_percentile(row):
+    """Where the cut sat in the cut list, 0.0 = the model's top cut candidate and 1.0 =
+    the card it most wanted kept. None when unrankable."""
+    try:
+        rank, total = int(row.get("Cut Rank")), int(row.get("Cut Of"))
+    except (TypeError, ValueError):
+        return None
+    if total < 2:
+        return None
+    return (rank - 1) / (total - 1)
+
+
+def recommendation_summary(rows):
+    """Pure summary of the ledger: (n, agreed, disagreements, median_pct, unsurfaced).
+
+    `disagreements` are the swaps where the model wanted to KEEP the card the human
+    cut (upper half of the cut list) — the informative direction, and the reason this
+    report leads with them rather than with a hit rate. An AGREEMENT is contaminated by
+    the shortlist having been read before the decision; a DISAGREEMENT is a case the
+    model got wrong whether or not anyone read it."""
+    scored = [(r, _rec_percentile(r)) for r in rows]
+    scored = [(r, p) for r, p in scored if p is not None]
+    n = len(scored)
+    disagreements = sorted((r for r, p in scored if p > 0.5),
+                           key=lambda r: -(_rec_percentile(r) or 0))
+    agreed = n - len(disagreements)
+    pcts = sorted(p for _, p in scored)
+    median = None
+    if pcts:
+        mid = len(pcts) // 2
+        median = pcts[mid] if len(pcts) % 2 else (pcts[mid - 1] + pcts[mid]) / 2
+    unsurfaced = [r for r in rows if r.get("Add Surfaced") == "no"]
+    return n, agreed, disagreements, median, unsurfaced
+
+
+def cmd_feedback(args):
+    """Report how the recommenders scored against the swaps actually applied."""
+    rows = load_recommendations()
+    if getattr(args, "id", None):
+        rows = [r for r in rows if r.get("Deck") == args.id]
+    if not rows:
+        print("No recommendation outcomes recorded yet. They accrue automatically "
+              "every time `deck.py swap --apply` or `apply-flex --apply` runs.")
+        return 0
+
+    n, agreed, disagreements, median, unsurfaced = recommendation_summary(rows)
+    print(f"{len(rows)} applied swap(s) recorded"
+          + (f" for deck {args.id}" if getattr(args, "id", None) else "")
+          + f"; {n} with a usable cut ranking.\n")
+
+    # Lead with the misses. An agreement is partly the shortlist's own influence — the
+    # human read `cuts` before deciding — so it cannot validate the model. A
+    # disagreement is a case the model got wrong whichever way the decision was reached.
+    if disagreements:
+        print(f"⚠ {len(disagreements)} swap(s) where the model wanted to KEEP the card "
+              f"you cut (upper half of its own cut list).")
+        print("  These are the informative ones — read the card and ask what the "
+              "ranking couldn't see.\n")
+        for r in disagreements[:12]:
+            pct = _rec_percentile(r)
+            print(f"    {r.get('Date','')}  deck {r.get('Deck','')}: "
+                  f"−{r.get('Cut','')} → +{r.get('Add','')}")
+            print(f"        cuts ranked it {r.get('Cut Rank')}/{r.get('Cut Of')} "
+                  f"({pct:.0%} toward 'keep')"
+                  + ("   [was #: protect:]" if r.get("Cut Protected") == "yes" else ""))
+        if len(disagreements) > 12:
+            print(f"    … and {len(disagreements) - 12} more")
+        print()
+
+    if unsurfaced:
+        print(f"{len(unsurfaced)} add(s) that `suggest` did not surface in its default "
+              f"top {_RECS_SUGGEST_WINDOW}:")
+        for r in unsurfaced[:10]:
+            print(f"    +{r.get('Add','')}  (deck {r.get('Deck','')})")
+        if len(unsurfaced) > 10:
+            print(f"    … and {len(unsurfaced) - 10} more")
+        print("  EXPECTED to be high, and not on its own a model miss: `suggest` filters "
+              "to cards sharing a synergy THEME, so it is structurally blind to lands "
+              "and off-theme removal. That is what `suggest --lands/--interaction/--ramp` "
+              "are for. Read it as 'which fills the theme model can't reach'.\n")
+
+    if n < _RECS_MIN_SAMPLE:
+        tail = ("The rows above are worth reading individually"
+                if (disagreements or unsurfaced)
+                else "Nothing has diverged from the models yet")
+        print(f"n={n} — too few to summarize (need ~{_RECS_MIN_SAMPLE}). {tail}; "
+              f"a rate computed off {n} is noise.")
+    else:
+        print(f"Agreement: the cut sat in the model's cut half {agreed}/{n} times "
+              f"({100 * agreed / n:.0f}%); median position {median:.0%} toward 'keep' "
+              f"(0% = the model's top cut candidate).")
+        print("  Read with care: you saw the shortlist before deciding, so a high "
+              "agreement rate partly measures the list's INFLUENCE, not its accuracy. "
+              "The disagreements above are the part that doesn't suffer from that.")
+    print("\nThis ledger is REPORT-ONLY and never feeds back into a score — the ranking "
+          "terms are bounded and anchored by check_suggest so they can't silently "
+          "reorder a tuned deck, and an automatic re-weighting would defeat that.")
+    return 0
+
+
 def _do_swap(d, cut, add, apply, flex_entry=None):
     """Shared engine for `swap` and `apply-flex`: preview deltas, and on --apply
     perform the edit with a .bak + INV-04 re-check."""
@@ -4440,6 +4868,14 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
         print("\n(dry run — pass --apply to write the change with a .bak)")
         return 0
 
+    # Score the recommenders against this decision BEFORE the edit — the pre-swap deck
+    # is the list the human actually chose from. Never fatal: a swap must not fail
+    # because telemetry did.
+    try:
+        rec = recommendation_row(d, cut, add, "flex" if flex_entry is not None else "swap")
+    except Exception:
+        rec = None
+
     with open(d["path"], encoding="utf-8") as fh:
         lines = fh.read().split("\n")
     try:
@@ -4461,6 +4897,21 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
         warn = section_mismatch(new_lines, ai, add.strip(), load_card_data())
         if warn:
             print(f"  ⚠ section comment: {warn}")
+    # Record how the recommenders scored this decision. Written AFTER the edit lands, so
+    # a rejected write leaves no phantom row; announced rather than silent, because a
+    # command that writes a second file should say so.
+    if rec is not None:
+        try:
+            total = append_recommendation(rec)
+            bits = []
+            if rec.get("Cut Rank"):
+                bits.append(f"cuts ranked −{cut} {rec['Cut Rank']}/{rec['Cut Of']}")
+            if rec.get("Add Surfaced"):
+                bits.append(f"suggest surfaced +{add}: {rec['Add Surfaced']}")
+            print(f"  · recorded to {os.path.basename(RECS_CSV)} ({total} swap(s)): "
+                  + "; ".join(bits) + ".  Read it: deck.py feedback")
+        except OSError as e:
+            eprint(f"  · could not record the outcome ({e}) — the swap itself is saved.")
     return 0
 
 
@@ -4832,6 +5283,24 @@ def cmd_cuts(args):
     if deck_int < 5:
         print(f"⚠ deck runs only {deck_int} interaction piece(s) — rows tagged "
               f"⚠interaction are your removal/counters; cutting them lowers resilience.")
+    # Zone conflicts (the mirror of ⚡): a card that EMPTIES a graveyard this deck needs
+    # populated. Computed once for the deck and looked up by name, so the row tuple stays
+    # the shape every other reader expects.
+    _zmeta, _zcards = parse_deck_file(d["path"])
+    _zconf = {nm: (scope, why, hit) for nm, scope, why, hit
+              in zone_conflict_flags(_zcards, load_card_data())}
+    if _zconf:
+        # NAME them here rather than only tagging the row: `cuts` shows 8 rows by default
+        # and a conflicted card can rank anywhere, so a header that just says "1 card"
+        # can point below the fold — which is the same "the shortlist saw it but nobody
+        # could tell why" failure this flag exists to fix.
+        print(f"⛔ {len(_zconf)} card(s) FIGHT this deck's own engine — a good card that "
+              f"empties a zone your plan needs FULL:")
+        for _zn, (_sc, _why, _hit) in sorted(_zconf.items()):
+            print(f"     {_zn} — {_why}")
+            print(f"       needs it populated: {', '.join(_hit[:4])}"
+                  + (f" … (+{len(_hit) - 4})" if len(_hit) > 4 else ""))
+        print()
     print(f"  {'Card':30} {'MV':>3}  {'Fit':>4}  {'Pw':>3}  {'Uq':>3}  Roles / why-cuttable")
     print("-" * 82)
     for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq, upside in rows[:limit]:
@@ -4851,6 +5320,9 @@ def cmd_cuts(args):
         # model here grades it in isolation, where the cost reads as a drawback.
         if upside:
             tail += f"   ⚡cost-as-upside HERE ({upside[0]})"
+        # The MIRROR: a card that reads fine alone but works AGAINST this deck's plan.
+        if n in _zconf:
+            tail += f"   ⛔fights your engine ({_zconf[n][1]})"
         print(f"  {n[:30]:30} {mvs:>3}  {fit:>4}  {power:>3.0f}  {uniq:>3.0f}  {tail}")
 
     # Surface the actual oracle text so a cut is graded from what the card DOES,
@@ -4865,6 +5337,10 @@ def cmd_cuts(args):
             warn += f"   ⚠interaction — 1 of the deck's {deck_int}"
         for u in upside:
             warn += f"\n    ⚡ cost-as-upside in THIS deck: {u}"
+        if n in _zconf:
+            _sc, _why, _hit = _zconf[n]
+            warn += (f"\n    ⛔ FIGHTS YOUR ENGINE: {_why} — "
+                     f"{', '.join(_hit[:4])}{' …' if len(_hit) > 4 else ''}")
         print(f"\n• {n}{warn}")
         for para in (text or "(no oracle text on file)").split("\n"):
             for line in (textwrap.wrap(para, width=86) or [""]):
@@ -5170,7 +5646,10 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta):
     n_illegal = len(rep["problems"])
 
     declared = _declared_colors(meta)
-    uncast, off_ident = _castability(cards, declared, mana, carddata)
+    # `off_ability` — NOT `off_ident` — drives the verdict. A stray explained by a
+    # hybrid pip is a card you pay on-color and never need to look at, and counting
+    # those fired `review` on 22 of 63 decks with a 0% actionable rate (F-03).
+    uncast, off_ident, off_ability = _castability(cards, declared, mana, carddata)
 
     interaction = _interaction_count(cards, carddata)
 
@@ -5197,10 +5676,10 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta):
     elif short:
         verdict = "craft"
         reasons.append(f"{short} to craft")
-    elif off_ident or thin:
+    elif off_ability or thin:
         verdict = "review"
-        if off_ident:
-            reasons.append(f"off-color ×{len(off_ident)}")
+        if off_ability:
+            reasons.append(f"off-color ability ×{len(off_ability)}")
         if thin:
             reasons.append(f"thin interaction ({interaction})")
     else:
@@ -5215,6 +5694,9 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta):
         "illegal": n_illegal,
         "uncast": len(uncast),
         "stray": len(off_ident),
+        # The actionable subset of `stray` — the only one that reaches the verdict.
+        # `stray` stays the TOTAL so the Cast column keeps agreeing with `deck.py mana`.
+        "stray_ability": len(off_ability),
         "int": interaction,
         "thm": n_themes,
         "thin": thin,
@@ -5258,9 +5740,13 @@ def cmd_audit(args):
 
     rows = []
     for r in scored:
+        # `Ns` is every identity stray (matching `deck.py mana`); `Na` marks the subset
+        # that is an off-color ABILITY rather than a hybrid you pay on-color — the only
+        # kind that reaches the verdict, so the column shows why a deck did or didn't.
         cast_cell = "✓" if not (r["uncast"] or r["stray"]) else \
             " ".join(([f"{r['uncast']}u"] if r["uncast"] else [])
-                     + ([f"{r['stray']}s"] if r["stray"] else []))
+                     + ([f"{r['stray']}s"] if r["stray"] else [])
+                     + ([f"{r['stray_ability']}a"] if r["stray_ability"] else []))
         rows.append({**r, "own": "✓" if r["short"] == 0 else f"{r['short']}✗",
                      "legal": "✓" if r["illegal"] == 0 else f"{r['illegal']}✗",
                      "cast": cast_cell})
@@ -5288,7 +5774,8 @@ def cmd_audit(args):
               f"{r['thm']:>3}  {action}")
 
     print(f"\nLegend: Tier S→D competitive/win-capability (· = ungraded) · "
-          f"Own/Legal ✓ clean · Cast Nu=uncastable Ns=off-identity stray · "
+          f"Own/Legal ✓ clean · Cast Nu=uncastable Ns=identity stray "
+          f"Na=of those, off-color ABILITY (the rest are hybrids you pay on-color) · "
           f"Int=removal+sweeper+counter · Thm=central themes")
     print(f"Summary: {len(tune)} to tune · {len(craft)} to craft · "
           f"{len(review)} to review · {len(scored) - len(tune) - len(craft) - len(review)} ok")
@@ -5982,7 +6469,7 @@ def deck_quality_vector(d):
                 theme_w[t] = theme_w.get(t, 0) + q
     declared_hdr = _declared_colors(dmeta)
     declared = declared_hdr or _deck_castable_colors(dmeta, cards, mana)
-    uncast, _off = _castability(cards, declared, mana, carddata)
+    uncast, _off, _off_ability = _castability(cards, declared, mana, carddata)
     _tally = role_tally(cards, carddata)
     d_int, d_ca = _tally["interaction"], _tally["card_advantage"]
     return {
@@ -7357,7 +7844,7 @@ def cmd_preflight(args):
     mana = load_mana()
     carddata = load_card_data()
     declared = _declared_colors(dmeta) or _deck_castable_colors(dmeta, cards, mana)
-    uncast, off_ident = _castability(cards, declared, mana, carddata)
+    uncast, off_ident, _ = _castability(cards, declared, mana, carddata)
 
     # Repo integrity — the deterministic gate, run out-of-process for a clean signal.
     integ = subprocess.run(
@@ -7540,7 +8027,10 @@ def main():
     p = sub.add_parser("mana", help="hybrid-aware color requirements")
     p.add_argument("id")
     p = sub.add_parser("consistency",
-                       help="manabase + opening-hand probability (keepable %, land drops, cast-on-curve)")
+                       # `%%`, not `%`: argparse renders a help string through
+                       # `help % params`, so a bare `%` raises ValueError and takes
+                       # the WHOLE top-level `--help` down with it (broad-scan F-01).
+                       help="manabase + opening-hand probability (keepable %%, land drops, cast-on-curve)")
     p.add_argument("id")
     p.add_argument("--on-draw", action="store_true",
                    help="model on the draw (extra card) instead of on the play")
@@ -7632,6 +8122,9 @@ def main():
     p.add_argument("--add", required=True, help="card to add")
     p.add_argument("--apply", action="store_true",
                    help="write the change (with a .bak); default is a dry-run preview")
+    p = sub.add_parser("feedback",
+                       help="how the recommenders scored against the swaps you applied")
+    p.add_argument("id", nargs="?", help="limit to one deck (default: the whole roster)")
     p = sub.add_parser("apply-flex", help="promote a flex swap (#~ line) into the maindeck")
     p.add_argument("id")
     p.add_argument("n", type=int, help="which flex swap (1-based; see deck.py flex <id>)")
@@ -7687,6 +8180,7 @@ def main():
         "similar": cmd_similar, "resolve": cmd_resolve,
         "preflight": cmd_preflight, "quality": cmd_quality, "tier": cmd_tier,
         "redundancy": cmd_redundancy, "history": cmd_history,
+        "feedback": cmd_feedback,
     }[args.cmd](args)
 
 

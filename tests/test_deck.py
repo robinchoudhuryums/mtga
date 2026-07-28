@@ -264,6 +264,112 @@ class TestCoverageNetIsSuperset:
         assert [n for n, _axis in under_read] == ["Odd Answer"]
 
 
+class TestZoneConflict:
+    """The MIRROR of cost_upside_flags: a fine card that fights your own engine.
+
+    Every card in here is quoted from a REAL pool card, because the two bugs this
+    detector had on its first run were both invisible to invented strings — Strategic
+    Betrayal reads "exiles a creature they control AND their graveyard", so the verb and
+    the zone sit at opposite ends of the clause, and Hama says "that player's graveyard"
+    where the first draft only knew "target player's"."""
+
+    def _cd(self, name, text, type_line="Instant"):
+        return {name.lower(): {"name": name, "type": type_line, "text": text,
+                               "colors": "B", "power": "", "toughness": ""}}
+
+    # --- emptier scope -----------------------------------------------------------
+    def test_strategic_betrayal_is_opponent_scoped_hate(self):
+        assert deck.graveyard_emptier(
+            "Target opponent exiles a creature they control and their graveyard."
+        ) == "opponent"
+
+    def test_pit_of_offerings_is_a_targeted_exile(self):
+        assert deck.graveyard_emptier(
+            "When this land enters, exile up to three target cards from graveyards."
+        ) == "choose"
+
+    def test_mass_exile_is_scoped_all(self):
+        assert deck.graveyard_emptier("Exile all graveyards.") == "all"
+
+    def test_escape_cost_is_not_hate(self):
+        """90 pool cards say 'exile this card from your graveyard' — that is escape /
+        flashback COST, a graveyard USER. Reading it as hate would flag the entire
+        recursion family against its own deck."""
+        assert deck.graveyard_emptier(
+            "Escape—{3}{B}, Exile four other cards from your graveyard.") is None
+
+    def test_delve_style_own_yard_cost_is_not_hate(self):
+        assert deck.graveyard_emptier(
+            "As an additional cost to cast this spell, exile three cards from your "
+            "graveyard.") is None
+
+    def test_a_heist_card_that_exiles_their_yard_is_not_hate(self):
+        """Tinybones/Hama/Azula exile an opponent's graveyard IN ORDER TO CAST from it.
+        They are the engine; a naive exile+graveyard rule flags them against themselves."""
+        assert deck.graveyard_emptier(
+            "When this enters, target opponent mills three cards. Exile up to one "
+            "noncreature, nonland card from that player's graveyard. For as long as you "
+            "control this, you may cast the exiled card.") is None
+
+    # --- dependency side ---------------------------------------------------------
+    def test_casting_from_their_yard_needs_their_yard(self):
+        assert "opponent" in deck.graveyard_dependent(
+            "You may cast that card from that player's graveyard this turn.")
+
+    def test_a_graveyard_payoff_needs_your_own_yard(self):
+        assert "own" in deck.graveyard_dependent(
+            "Return target creature card from your graveyard to the battlefield.")
+
+    # --- the pairing -------------------------------------------------------------
+    def test_targeted_exile_does_not_fight_an_OWN_graveyard_deck(self):
+        """You pick the yard, so in a reanimator deck you simply aim it at theirs. This
+        is the discrimination that took the roster from 12 flags to 2."""
+        cards = [(1, "Picker", None, None), (1, "Reanimate A", None, None),
+                 (1, "Reanimate B", None, None)]
+        cd = {}
+        cd.update(self._cd("Picker", "Exile up to one target card from a graveyard."))
+        cd.update(self._cd("Reanimate A", "Return target creature card from your graveyard to the battlefield."))
+        cd.update(self._cd("Reanimate B", "Return target creature card from your graveyard to the battlefield."))
+        assert deck.zone_conflict_flags(cards, cd) == []
+
+    def test_targeted_exile_DOES_fight_a_heist_deck(self):
+        cards = [(1, "Picker", None, None), (1, "Thief A", None, None),
+                 (1, "Thief B", None, None)]
+        cd = {}
+        cd.update(self._cd("Picker", "Exile up to one target card from a graveyard."))
+        for nm in ("Thief A", "Thief B"):
+            cd.update(self._cd(nm, "You may cast that card from that player's graveyard this turn."))
+        flags = deck.zone_conflict_flags(cards, cd)
+        assert [f[0] for f in flags] == ["Picker"]
+        assert sorted(flags[0][3]) == ["Thief A", "Thief B"]
+
+    def test_mass_exile_fights_an_own_graveyard_deck(self):
+        cards = [(1, "Wiper", None, None), (1, "Reanimate A", None, None),
+                 (1, "Reanimate B", None, None)]
+        cd = {}
+        cd.update(self._cd("Wiper", "Exile all graveyards."))
+        for nm in ("Reanimate A", "Reanimate B"):
+            cd.update(self._cd(nm, "Return target creature card from your graveyard to the battlefield."))
+        assert [f[0] for f in deck.zone_conflict_flags(cards, cd)] == ["Wiper"]
+
+    def test_one_dependent_is_not_a_plan(self):
+        """_ZONE_MIN_DEPENDENTS guards against a lone payoff manufacturing a conflict."""
+        cards = [(1, "Wiper", None, None), (1, "Reanimate A", None, None)]
+        cd = {}
+        cd.update(self._cd("Wiper", "Exile all graveyards."))
+        cd.update(self._cd("Reanimate A", "Return target creature card from your graveyard to the battlefield."))
+        assert deck.zone_conflict_flags(cards, cd) == []
+
+    def test_a_card_cannot_conflict_with_itself(self):
+        cards = [(1, "Both", None, None), (1, "Thief", None, None)]
+        cd = {}
+        cd.update(self._cd("Both", "Exile all graveyards. You may cast that card from "
+                                   "that player's graveyard this turn."))
+        cd.update(self._cd("Thief", "You may cast that card from that player's graveyard this turn."))
+        # Only one OTHER dependent remains, below the floor -> no flag, not a self-flag.
+        assert deck.zone_conflict_flags(cards, cd) == []
+
+
 class TestFlexStaleness:
     """A `#~` flex line rots silently: `swap --apply` retires only the lines invalidated
     by the swap it is performing, and the rationale audit reads `#: tier:` / `#:
@@ -1116,6 +1222,38 @@ class TestSyncPaste:
                              [(self._d("1"), self._ms(A=4, B=4, C=4)),
                               (self._d("2"), self._ms(X=4, Y=4, Z=4))])
         assert m["lowconf"] is False
+
+    # --- the tie-break rule, pinned (broad-scan F-08) ------------------------------
+    # `match_paste`'s docstring promises the dashboard's stale-check panel applies the
+    # same rule, and the JS copy had drifted: it compared drift alone with a strict `<`,
+    # so on an equal-drift tie the first deck in ITERATION order won, while Python
+    # preferred more shared cards and then the lower id. Same paste, two answers —
+    # exactly in the sibling-variant case low-confidence exists for. These pin the rule
+    # the JS mirrors; if you change either, change both.
+
+    def test_tie_on_drift_prefers_more_shared_cards(self):
+        # Both decks are 2 cards of drift away. Deck "2" shares three cards, deck "1"
+        # shares two, so "2" must win despite sorting later by id.
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._d("1"), self._ms(A=4, B=4, Z=2)),
+                              (self._d("2"), self._ms(A=4, B=4, C=2))])
+        assert m["deck"]["id"] == "2"
+
+    def test_tie_on_drift_and_shared_prefers_lower_id(self):
+        # Identical drift AND identical shared count: the id decides, by CODEPOINT order
+        # (the JS uses < / > rather than localeCompare for the same reason).
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._d("2"), self._ms(A=4, B=4, C=2)),
+                              (self._d("1"), self._ms(A=4, B=4, C=2))])
+        assert m["deck"]["id"] == "1"
+
+    def test_tie_break_is_independent_of_input_order(self):
+        # The bug's actual signature: reordering the candidate list changed the answer.
+        decks = [(self._d("1"), self._ms(A=4, B=4, C=2)),
+                 (self._d("2"), self._ms(A=4, B=4, C=2))]
+        a = deck.match_paste(self._ms(A=4, B=4, C=4), decks)
+        b = deck.match_paste(self._ms(A=4, B=4, C=4), list(reversed(decks)))
+        assert a["deck"]["id"] == b["deck"]["id"] == "1"
 
     def test_reconcile_preserves_structure_and_applies_target(self):
         lines = ["#: name: T", "", "# Creatures", "4 Foo (SET) 1", "1 Bar (SET) 2",

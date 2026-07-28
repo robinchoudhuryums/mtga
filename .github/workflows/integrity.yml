@@ -20,3 +20,45 @@ jobs:
           python-version: "3.11"
       - name: Run integrity check (validate + invariants)
         run: python3 scripts/check_all.py
+      # CLI smoke test. check_all.py imports deck as a MODULE and calls cmd_* directly,
+      # so it never builds an argparse tree — which is how a bare `%` in one help string
+      # took `deck.py --help` down for four days with every workflow green (F-01/F-12).
+      # tests/test_cli.py covers this properly, but it needs pytest and this workflow is
+      # deliberately dependency-free and runs on EVERY push (not just main + PRs), so a
+      # stdlib-only check of the same contract belongs here too.
+      - name: Smoke-test the CLI entry points (no dependencies)
+        run: |
+          set -u
+          fail=0
+          for s in scripts/*.py; do
+            out="$(python3 "$s" --help 2>&1 || true)"
+            case "$out" in
+              *"Traceback (most recent call last)"*)
+                echo "::error file=$s::$s raised on --help"
+                printf '%s\n' "$out" | tail -5
+                fail=1 ;;
+            esac
+          done
+          # Every deck.py subcommand's own help must render too — 31 subparsers, each
+          # with its own help strings, and the command list a skill is re-read against.
+          subs="$(python3 scripts/deck.py --help 2>/dev/null \
+                  | grep -o '{[a-z0-9,-]*}' | head -1 | tr -d '{}' | tr ',' ' ')"
+          # Guard on the COUNT, not on emptiness: a whitespace-only capture is not
+          # empty, so `[ -z ]` passed while zero subcommands were checked — a check
+          # that silently covers nothing, which is the failure this file is about.
+          n_subs="$(printf '%s' "$subs" | wc -w)"
+          if [ "$n_subs" -lt 25 ]; then
+            echo "::error::read only $n_subs subcommand(s) from deck.py --help; expected 25+"
+            exit 1
+          fi
+          echo "checking $n_subs deck.py subcommands"
+          for c in $subs; do
+            out="$(python3 scripts/deck.py "$c" --help 2>&1 || true)"
+            case "$out" in
+              *"Traceback (most recent call last)"*)
+                echo "::error::deck.py $c --help raised"
+                printf '%s\n' "$out" | tail -5
+                fail=1 ;;
+            esac
+          done
+          [ "$fail" -eq 0 ] && echo "CLI entry points OK" || exit 1
