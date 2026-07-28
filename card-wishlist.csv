@@ -243,6 +243,9 @@ If a creature you control that entered this turn would deal damage, it deals twi
 Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I, II — Create a 5/5 green Elephant creature token.
 III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,5.5,hand
+Coordinated Maneuver,Instant,"Choose one —
+• Coordinated Maneuver deals damage equal to the number of creatures you control to target creature or planeswalker.
+• Destroy target enchantment.",W,removal,TDM,12,Common,23,"2-mana modal instant; damage mode scales with board (27 creatures in 23), or kills an enchantment",5.0,hand
 Fated Firepower,Enchantment,"Flash
 This enchantment enters with X fire counters on it.
 If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus an amount of damage equal to the number of fire counters on this enchantment instead.",R,flash; tempo,TLA,132,Mythic,concept,mono-R firebending/burn payoff; try 2/14,5.5,hand
