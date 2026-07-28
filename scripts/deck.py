@@ -7289,10 +7289,43 @@ def tier_consistency_issues():
 #
 # Figures worth checking are the ones a rationale actually quotes. Each maps to a live
 # vector key; a mismatch is reported, never rewritten (the prose is a human argument).
+# Between a label and its number the prose often puts a bracket, a qualifier, or both:
+# `interaction (3)`, `interaction total (3)`, `card advantage is thinner (3)`, `curve
+# (2.81)`. The original patterns demanded whitespace then digits, so EVERY parenthesised
+# figure was invisible — eight of them sat on the roster, and deck 23 reported "clean"
+# while quoting a curve of 3.6 against a live 3.47. Same silent-false-negative class as
+# the bare-`over` and `a 2.44 curve` misses recorded above; a figure the audit cannot see
+# is a figure that rots.
+#
+# The gap is bounded to two intervening lowercase words so a label cannot reach across a
+# clause and adopt an unrelated number — "interaction and card advantage 7" stays unmatched
+# for `interaction` (three words) and is picked up by the card-advantage pattern instead.
+#
+# The parenthesised form requires the bracket to close IMMEDIATELY after the digits, and
+# that is the load-bearing part. The roster's house style is a number-first claim followed
+# by a BREAKDOWN — "7 interaction (5 spot removal + 2 sweepers)", "8 interaction (6 removal
+# + 2 sweepers)" — where the parenthetical decomposes the figure instead of restating it.
+# A permissive `\((\d+)` read the first sub-count as the claim and reported four decks as
+# stale against numbers they never asserted. `\((\d+)\)` keeps the genuine cases
+# ("dense interaction (12)", "card advantage is thinner (3)") and drops every breakdown.
+_FIG_GAP = r"[  ]+(?:[a-z]+[  ]+){0,2}"
+_FIG_PAREN = _FIG_GAP + r"\((\d+)\)"
 _RATIONALE_FIGURES = [
     (re.compile(r"interaction[  ]+(\d+)", re.I), "interaction"),
+    (re.compile(r"interaction" + _FIG_PAREN, re.I), "interaction"),
     (re.compile(r"card[- ]adv(?:antage)?[  ]+(\d+)", re.I), "card_advantage"),
+    (re.compile(r"card[- ]adv(?:antage)?" + _FIG_PAREN, re.I), "card_advantage"),
     (re.compile(r"(?:avg (?:nonland )?MV|curve(?: of)?)[  ]+(\d+\.\d+)", re.I), "avg_mv"),
+    (re.compile(r"(?:avg (?:nonland )?MV|curve)" + _FIG_PAREN.replace(r"(\d+)",
+                                                                      r"(\d+\.\d+)"), re.I),
+     "avg_mv"),
+    # The roster writes these NUMBER-FIRST far more often than the label-first form the
+    # original patterns read — 13 interaction figures, 3 card-advantage, 1 protection,
+    # none of them ever audited. Exactly the miss already recorded for avg_mv below,
+    # repeated on the three axes the tier FLOOR is actually computed from.
+    (re.compile(r"(\d+)[  ]+interaction", re.I), "interaction"),
+    (re.compile(r"(\d+)[  ]+card[- ]adv(?:antage)?", re.I), "card_advantage"),
+    (re.compile(r"(\d+)[  ]+protection", re.I), "protection"),
     # …and the house phrasing, where the number comes FIRST ("a tight 2.44 curve").
     # The pattern above only reads "curve of 2.44" / "avg MV 2.44", which the rationales
     # essentially never use: roster-wide it matched ONE figure against fourteen written
@@ -7302,6 +7335,12 @@ _RATIONALE_FIGURES = [
     (re.compile(r"(\d+)[- ]theme", re.I), "central_themes"),
     (re.compile(r"(\d+) central themes", re.I), "central_themes"),
     (re.compile(r"protection[  ]+(\d+)", re.I), "protection"),
+    (re.compile(r"protection" + _FIG_PAREN, re.I), "protection"),
+    # EARLY DROPS were in the quality vector but never audited, so a count could go stale
+    # in total silence — deck 23 claimed "6 one-two-drops" against a live 11. Both
+    # phrasings below are taken from the roster's own prose rather than invented.
+    (re.compile(r"(\d+)[  ]+(?:early|cheap) drops?", re.I), "early_drops"),
+    (re.compile(r"(\d+)[- ]one[- ]two[- ]drops?", re.I), "early_drops"),
 ]
 # Words that are also real card names ("Negate", "Rest in Peace", …). Requiring a
 # multi-word name or a long single word keeps the scan quiet; a citation of a one-word
@@ -7404,6 +7443,14 @@ def _figure_is_history(prose, start, end):
     """True when a quoted figure is presented as a PAST value, not a current claim."""
     if _ARROW_AFTER.match(prose, end):
         return True                       # "0→1" — the match is the FROM side.
+    # A figure inside QUOTATION MARKS is a citation of earlier prose, not a live claim:
+    # deck 7 writes `The old one-line reason ("fast clock but thin interaction (3)") is no
+    # longer true`, which asserts the opposite of what the number says. `_FIGURE_PAST`
+    # cannot reach it — its cue must sit within 24 chars and "old" is 47 back — and
+    # widening that window to compensate would loosen every other suppression. An odd
+    # count of quote marks before the figure means we are inside a quoted span.
+    if prose.count('"', 0, start) % 2 == 1:
+        return True
     if _FIGURE_PAST.search(prose[max(0, start - _FIGURE_BACK_WINDOW):start]):
         return True
     lo, hi = max(0, start - _FIGURE_CMP_WINDOW), min(len(prose), end + _FIGURE_CMP_WINDOW)

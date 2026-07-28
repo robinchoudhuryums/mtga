@@ -528,6 +528,58 @@ class TestRationaleFigureAudit:
         assert any(rx.search("a tight 2.44 curve") for rx in pats)
         assert any(rx.search("a curve of 2.44") for rx in pats)
 
+    # --- the parenthesised / number-first / early-drop misses (roster sweep 0 -> 12) ---
+    def _read(self, key, text):
+        return [m.group(1)
+                for rx, k in deck._RATIONALE_FIGURES if k == key
+                for m in rx.finditer(text)]
+
+    def test_parenthesised_figure_is_read(self):
+        """`interaction (3)` put the digits behind a bracket, so the whitespace-then-digits
+        pattern saw nothing. Eight such figures sat on the roster; deck 23 reported clean
+        while quoting a 3.6 curve against a live 3.47."""
+        assert self._read("interaction", "dense interaction (12)") == ["12"]
+        assert self._read("interaction", "the interaction total (3)") == ["3"]
+        assert self._read("card_advantage", "card advantage is thinner (3)") == ["3"]
+        assert self._read("avg_mv", "a slow curve (2.81)") == ["2.81"]
+
+    def test_breakdown_subcount_is_not_read_as_the_claim(self):
+        """The house style is a number-first claim plus a BREAKDOWN — "7 interaction
+        (5 spot removal + 2 sweepers)". A permissive `\\((\\d+)` read the 5 as the figure
+        and reported four decks stale against numbers they never asserted, so the
+        parenthesised form must require the bracket to close on the digits."""
+        assert self._read("interaction", "7 interaction (5 spot removal + 2 sweepers)") == ["7"]
+        assert self._read("interaction", "deep interaction (6 removal + 3 sweepers)") == []
+
+    def test_number_first_figures_are_read(self):
+        """The roster writes these number-first far more often than label-first — 13
+        interaction figures, 3 card-advantage, 1 protection, none ever audited. Same
+        miss already recorded for avg_mv, on the axes the tier floor is computed from."""
+        assert self._read("interaction", "low curve + 7 interaction + reach") == ["7"]
+        assert self._read("card_advantage", "engine + 3 card advantage on a base") == ["3"]
+        assert self._read("protection", "and 2 protection pieces") == ["2"]
+
+    def test_early_drops_is_audited(self):
+        """early_drops was in the quality vector but had no pattern, so a count could go
+        stale in silence — deck 23 claimed "6 one-two-drops" against a live 11."""
+        assert self._read("early_drops", "a tight 2.53 curve (22 early drops)") == ["22"]
+        assert self._read("early_drops", "3.47 curve and 11 one-two-drops") == ["11"]
+
+    def test_quoted_figure_is_suppressed_as_history(self):
+        """A figure inside quotation marks cites earlier prose rather than claiming it:
+        deck 7 writes `The old one-line reason ("fast clock but thin interaction (3)") is
+        no longer true`. _FIGURE_PAST cannot reach it — its cue must sit within 24 chars
+        and "old" is 47 back — and widening that window would loosen every other
+        suppression."""
+        prose = ('The old one-line reason ("fast clock but thin interaction (3)") '
+                 'is no longer true')
+        i = prose.index("(3)")
+        assert deck._figure_is_history(prose, i, i + 3)
+        # …but an ordinary unquoted figure is still a live claim.
+        plain = "grindy value, 7 interaction and reach"
+        j = plain.index("7")
+        assert not deck._figure_is_history(plain, j, j + 1)
+
 
 class TestRotationOverride:
     """A reprint inherits the newest printing's date, so a card reprinted into a set with
