@@ -21,7 +21,7 @@ Deck
 1 White Widow, Free Agent (MSH) 42
 1 Mockingbird, Ace Agent (MSH) 22
 1 Spider-Woman, Secret Agent (MSH) 229
-1 Brave Brawler (MSH) 8
+1 Super-Adaptoid (MSH) 250
 1 Quake, Agent of S.H.I.E.L.D. (MSH) 32
 1 U.S.Agent, John Walker (MSH) 236
 1 Borough Backup (MSH) 7

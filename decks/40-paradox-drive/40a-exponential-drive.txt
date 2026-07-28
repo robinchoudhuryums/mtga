@@ -16,7 +16,7 @@
 #: archetype: body. (Emil is here for its trample line, not its Fractal mana sink.)
 #: tier: A — Simic landfall counters-midrange. Re-graded B->A after the Garruk's Uprising
 #: tier: / The Legend of Kyoshi pass, which closed the last of the three caps the B was
-#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 2 on a 2.71 curve).
+#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 2 on a 2.79 curve).
 #: tier: The ENGINE was never the problem: `deck.py redundancy 40a` reads a virtual 8-of
 #: tier: counter-DOUBLER plus 5-of landfall / 5-of lands / 9-of payoff / 4-of ramp, on a
 #: tier: clean manabase (26 lands, 87% keepable openers, 0 uncastable). What kept it at B
@@ -47,7 +47,7 @@
 #: tier: THE ONE REMAINING WEAKNESS an A tolerates: the deck is threat-centric, and its
 #: tier: best draws all want a big creature already on board — a sweeper on an empty-ish
 #: tier: board leaves it casting doublers with nothing to double. Held from S by that, by
-#: tier: the 2.71 curve, and by having no format-warping bomb. Now fully owned and
+#: tier: the 2.79 curve, and by having no format-warping bomb. Now fully owned and
 #: tier: buildable — the 12 outstanding craft targets were trued up from the built Arena
 #: tier: deck; per the rubric build-state never affected the letter, only `check`/`audit`.
 #: notes: This is the TALL sibling of 40; keep the two apart by
@@ -71,7 +71,6 @@
 Deck
 # Ramp / fixing / lands-matter
 1 Garruk's Uprising (M21) 186
-1 Druid of the Cowl (M19) 177
 1 Environmental Scientist (SOS) 147
 1 Great Divide Guide (TLA) 181
 1 Mona Lisa, Science Geek (TMT) 123
@@ -114,6 +113,7 @@ Deck
 1 The Legend of Kyoshi (TLA) 186
 1 Beast, Erudite Aerialist (MSH) 206
 1 Ignis Scientia (FIN) 227
+1 Venus, Torn Between Worlds (TMT) 136
 
 # Lands — 26, Simic; land count pushed up for the landfall package
 1 Breeding Pool (EOE) 251
