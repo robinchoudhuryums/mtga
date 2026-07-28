@@ -27,17 +27,16 @@ Usage:
     python3 scripts/import_arena.py batch.txt --dry-run # preview only
     python3 scripts/import_arena.py batch.txt --sum     # add quantities
 
-After importing, regenerate the derived data — IN THIS ORDER, because a newly
-imported card has no card-mana.csv row and INV-02 requires one:
+After importing, regenerate the derived data — a newly imported card has no
+card-mana.csv row and INV-02 requires one:
 
-    python3 scripts/enrich.py            # fill Type / Card Text / Color(s)
-    python3 scripts/build_mana.py --pool # cost + keywords  <- INV-02 needs this
-    python3 scripts/tag_synergies.py --merge
-    python3 scripts/build_pool.py --all
-    python3 scripts/build_gallery.py
-    python3 scripts/check_all.py
+    make refresh
+    python3 scripts/verify_ingest.py batch.txt   # confirm the batch landed
 
-or just run `/refresh`, which does exactly that.
+This used to spell the chain out here, and had it in the WRONG ORDER (build_mana
+ahead of build_pool, which build_mana reads) while asserting "IN THIS ORDER". The
+Makefile is the one executable definition; see its `refresh` target for why the
+order is what it is.
 """
 
 import argparse
@@ -158,17 +157,19 @@ def main():
     # integrity gate red and gives no hint why (broad-scan F-06) — and CLAUDE.md's
     # Regression Scenario 1 repeated the same short recipe. Name the step that
     # actually restores the invariant, and only when this run introduced a card.
+    # Point at the Makefile rather than restating the chain. This message USED to spell
+    # it out, and had build_mana.py --pool ahead of build_pool.py --all — the wrong
+    # order, in executable code, telling people to make the exact mistake the Makefile
+    # comment documents. A rebuild chain written in a print statement is one more copy to
+    # keep in sync, and this one had already fallen out.
     if added:
-        print("\nNext — new cards need their derived data rebuilt, in this order:\n"
-              "  python3 scripts/enrich.py             # Type / Card Text / Color(s)\n"
-              "  python3 scripts/build_mana.py --pool  # cost + keywords  <- INV-02\n"
-              "  python3 scripts/tag_synergies.py --merge\n"
-              "  python3 scripts/build_pool.py --all\n"
-              "  python3 scripts/build_gallery.py\n"
-              "  python3 scripts/check_all.py\n"
-              "(or just run /refresh — check_all will fail INV-02 until build_mana runs)")
+        print("\nNext — new cards need their derived data rebuilt (check_all will fail "
+              "INV-02 until it runs):\n  make refresh\n"
+              "Then confirm the batch actually landed:\n"
+              f"  python3 scripts/verify_ingest.py <this file>")
     else:
-        print("Next: python3 scripts/enrich.py   then   python3 scripts/check_all.py")
+        print("\nNext (no new cards, so nothing to rebuild):\n"
+              "  python3 scripts/check_all.py")
     return 0
 
 

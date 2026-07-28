@@ -43,8 +43,12 @@ Usage:
     python3 scripts/import_collection.py - --apply                   # from stdin
 
 After --apply, regenerate derived data (a new card has no mana cost or tags yet):
-    enrich.py -> build_mana.py --pool -> tag_synergies.py --merge -> build_pool.py --all
-    -> build_gallery.py -> check_all.py       (or just run /refresh)
+    make refresh
+    python3 scripts/verify_ingest.py export.tsv --exact   # authoritative route
+
+(This used to restate the chain, in the wrong order — the Makefile's `refresh`
+target is the one executable definition. `--exact` is right HERE and nowhere else:
+a tracker export is authoritative, so owned must equal pasted.)
 """
 
 import argparse
@@ -365,14 +369,10 @@ def main():
     print(f"\nApplied to {args.library} (with a .bak).")
     if mana_added:
         print(f"Added {len(mana_added)} blank card-mana.csv row(s) to keep INV-02.")
-    print("Next — new cards need their derived data rebuilt, in this order:\n"
-          "  python3 scripts/enrich.py\n"
-          "  python3 scripts/build_mana.py --pool   # cost + keywords  <- INV-02\n"
-          "  python3 scripts/tag_synergies.py --merge\n"
-          "  python3 scripts/build_pool.py --all\n"
-          "  python3 scripts/build_gallery.py\n"
-          "  python3 scripts/check_all.py\n"
-          "(or just run /refresh)")
+    print("Next — new cards need their derived data rebuilt (INV-02 stays red until "
+          "it runs):\n  make refresh\n"
+          "Then confirm the import landed, with the AUTHORITATIVE reading:\n"
+          f"  python3 scripts/verify_ingest.py {args.source} --exact")
     return 0
 
 

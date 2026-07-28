@@ -16,6 +16,31 @@ import verify_ingest as vi
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+def _restates_chain(src):
+    """Does this text spell out the rebuild chain as a RECIPE (rather than merely
+    mentioning a build tool)?
+
+    The distinction is load-bearing: half the toolkit legitimately says "built by
+    build_mana.py" or errors with "run build_pool.py --all", and flagging those would
+    make the check unusable and get it deleted. A recipe is the shape that goes stale —
+    both builders presented as steps to run in sequence, either as `python3 scripts/...`
+    invocations or joined by an arrow.
+
+    Proximity matters as much as shape. deck.py legitimately prints "No card-pool.csv.
+    Build it: python3 scripts/build_pool.py" in one place and the card-mana equivalent
+    200 lines away; those are two independent one-tool hints, not a chain. A recipe is
+    contiguous, so both invocations must sit within one window."""
+    WINDOW = 400
+    a = src.find("python3 scripts/build_mana")
+    while a != -1:
+        b = src.find("python3 scripts/build_pool", max(0, a - WINDOW), a + WINDOW)
+        if b != -1:
+            return True
+        a = src.find("python3 scripts/build_mana", a + 1)
+    return any("build_mana" in ln and "build_pool" in ln and ("->" in ln or "→" in ln)
+               for ln in src.splitlines())
+
+
 def _lib(pairs):
     """(quantities, names) in the shape library_index() returns."""
     qty = {n.lower(): q for n, q in pairs}
@@ -190,6 +215,37 @@ class TestRebuildOrderIsDefinedOnceAndCorrectly:
 
     def test_it_ends_on_the_integrity_gate(self):
         assert "check_all.py" in self._refresh_recipe()[-1]
+
+    def test_no_script_restates_the_chain(self):
+        """The Makefile was supposed to END the copies, and it did not go far enough:
+        `import_arena.py` still PRINTED the six steps, with build_mana ahead of
+        build_pool — the wrong order, in executable code, telling the user to make the
+        exact mistake the Makefile comment warns about. A prose copy is a stale doc; a
+        printed copy is instructions someone will follow.
+
+        The rule: no script may name both build tools as steps to run. Pointing at
+        `make refresh` is the supported way to tell someone to rebuild."""
+        import glob
+        offenders = [os.path.basename(p) for p in
+                     sorted(glob.glob(os.path.join(REPO, "scripts", "*.py")))
+                     if _restates_chain(open(p, encoding="utf-8").read())]
+        assert offenders == [], (
+            f"{offenders} restate the rebuild chain; point at `make refresh` instead")
+
+    def test_the_skills_defer_to_the_make_target(self):
+        """Same rule for the workflows. /refresh is the one exemption — it documents the
+        individual steps so you can deliberately skip one — and even it must lead with
+        the target."""
+        import glob
+        skills = os.path.join(REPO, ".claude", "commands")
+        for path in sorted(glob.glob(os.path.join(skills, "*.md"))):
+            name = os.path.basename(path)
+            src = open(path, encoding="utf-8").read()
+            if name == "refresh.md":
+                assert "make refresh" in src
+                continue
+            assert not _restates_chain(src), \
+                f"{name} restates the rebuild chain; point at `make refresh`"
 
     def test_the_dependency_claims_still_hold_in_the_code(self):
         """The order is only correct while these dependencies are real. If build_mana

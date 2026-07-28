@@ -88,6 +88,41 @@ Pass `--exact` **only** for the authoritative `import_collection.py` route — i
 route, where a line is a lower bound. A non-zero exit means the ingest is not finished:
 re-run it for the named cards, or run `make refresh` if the gap is the mana rows.
 
+## Stage 3c — Find homes for the NEW cards
+
+**Run this whenever the ingest added cards you did not previously own.** Cataloging is
+bookkeeping; placing the cards is the point, and it used to live in a separate command
+that was easy not to run. Skip it only when nothing was newly added — a deck-dump
+true-up or a tracker import that only adjusted counts has no new cards to place, and a
+full-collection import of a thousand rows must not trigger a thousand fit passes.
+
+You already know which cards are new: `reconcile_crafts.py` lists them under "Add to
+library" (a "Quantity bumped" row is NOT new). For each one, in this order — never grade
+from a tag or a role label, which is CLAUDE.md's recurring mis-grade:
+
+1. `python3 scripts/card.py "<name>"` — complete oracle text, mana cost, **format
+   legality**, owned quantity, and which decks already run it. A card that is not legal
+   in a format is not a candidate for a deck in that format; say so and stop offering it
+   there. Heed any `⚠ unindexed mechanic` line — that keyword is not in the synergy map,
+   so grade its effect from the text rather than the tags.
+2. `python3 scripts/deck.py suggest-homes "<name>"` — every deck the card is castable in
+   and shares a central theme with, each row labelled **KEY** / **role-player** /
+   **tangential**, with a suggested cut. Rows sort strongest-first. Costs ~2s per card.
+3. Grade each real fit from the Stage-1 text **against that deck's engine** — a clause
+   that reads as a drawback in isolation is often an upside in the matching deck (the
+   swap gotcha). Classify it:
+   - **key upgrade** — beats a current card on a real axis; name the cut and confirm it
+     from full text (`deck.py cuts <id>`).
+   - **sidegrade** — lateral; say *skip* unless the user wants it.
+   - **different-flavor** — not stronger, but changes how the deck plays; offer it as a
+     creative option (honor the Player Profile).
+4. **Copies are fungible — propose a card in EVERY deck it earns, never one.** One owned
+   copy plays in all of them simultaneously; never ask the user to pick a home or split
+   copies.
+
+**Propose, do not apply.** This command catalogs and recommends; `/apply-changes` performs
+the swaps once the user confirms.
+
 ## Stage 4 — Report
 
 - What was ingested, by which route, and what changed (added / bumped / zeroed).
@@ -95,8 +130,16 @@ re-run it for the named cards, or run `make refresh` if the gap is the mana rows
   name-only row is a card that did NOT get counted.
 - The `verify_ingest.py` verdict — say plainly whether every pasted card landed, and name
   any that did not. This is the answer to "did my ingest work", so do not bury it.
+- **Homes for the new cards** (Stage 3c): per card, the fit rows as
+  `card → deck (strength) — cut candidate — key upgrade / sidegrade / different-flavor`,
+  with the operative oracle clause quoted for each recommended swap. State the
+  **no-home** cards plainly too — owned, but nothing fits yet.
+- **Decks that became newly buildable.** An ingest is the one event that flips a deck
+  from "craft targets outstanding" to "ready to build", and nothing else in the workflow
+  reports it — `/roster-review` would, but that is a periodic survey nobody runs after a
+  pack. Check the decks `reconcile_crafts.py` listed under "Decks referencing a
+  reconciled card" with `deck.py check <id>` and name any that now own everything.
 - The `check_all` result.
-- Then suggest the natural follow-up: `/add-cards` finishes with a cross-deck fit pass
-  (`deck.py suggest-homes <card>`) for anything newly owned, and `/roster-review` if a
-  lot changed. Because owned copies are fungible across decks, a newly-owned card can go
-  into **every** deck that earns it — never ask the user to pick one home.
+- Then suggest the natural follow-up: `/apply-changes <id>` to perform any swap the user
+  confirms, or `/roster-review` if a lot changed (rotation exposure, craft plan, Arena
+  drift — the roster-level questions this command deliberately does not answer).

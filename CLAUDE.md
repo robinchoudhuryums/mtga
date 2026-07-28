@@ -368,9 +368,17 @@ castability · curve · central-theme density), with the intangibles moving a de
   dependency graph (`build_pool.py` is independent, taking keywords straight off the
   Scryfall response; `build_mana.py --pool` READS `card-pool.csv`; `tag_synergies.py`
   reads `card-mana.csv`'s keywords; `build_gallery.py` last), and it had been written out
-  in FOUR places — this line, Regression Scenario 1, `/refresh` and `/ingest` — of which
-  only `/refresh` had it right. The other three put `build_pool.py` AFTER `build_mana.py`,
-  and `/ingest` additionally claimed it matched `/refresh` while contradicting it. Getting
+  in **eleven** places — this line, Regression Scenario 1, `/refresh`, `/ingest`,
+  `/add-cards`, and printed or docstring'd copies inside `import_arena.py` (×2),
+  `import_collection.py` (×2) and `reconcile_crafts.py` — of which only `/refresh` had it
+  right. The rest put `build_pool.py` AFTER `build_mana.py`, `/ingest` claimed it matched
+  `/refresh` while contradicting it, and `import_arena.py`'s docstring asserted "IN THIS
+  ORDER" over the wrong one. The first sweep found four and fixed five; the copies inside
+  SCRIPTS survived it, which is the worse half — a stale doc misleads a reader, a printed
+  recipe is an instruction someone follows. `tests/test_verify_ingest.py` now fails the
+  build on any new copy (`_restates_chain`, which distinguishes a RECIPE — both builders
+  as adjacent invocations or an arrow chain — from the many legitimate one-tool mentions
+  like "built by build_mana.py", because a check that flagged those would be deleted). Getting
   it wrong is QUIET: a newly released set's pool cards get no `card-mana.csv` row until
   the next cycle, so they rank with no cost and no keyword tags, and no invariant notices
   (INV-02 covers the LIBRARY, not the pool). The Makefile target is now the one
@@ -1770,8 +1778,11 @@ against the tool list whenever a cycle adds a command. `draft-deck` (BUILD a new
 deck from scratch around a concept — survey the owned pool by role via `pool.py --role`,
 scaffold the lines with `deck.py resolve`, then validate + tune for distinctiveness via
 `deck.py similar`; the create-a-list counterpart to `/add-deck`, which INGESTS a pasted
-list), `add-cards` (catalog newly-owned cards +
-find their homes), `add-wishlist` (intake UNOWNED craft targets to the wishlist —
+list), `add-cards` (the cross-deck FIT PASS for cards you already own — it used to
+catalog AND place, duplicating `/ingest`'s reconcile recipe and carrying its own copy of
+the rebuild chain; cataloging now has one definition in `/ingest`, which runs the fit
+pass itself whenever an ingest added NEW cards, so the half that actually decides
+something stopped being the optional half), `add-wishlist` (intake UNOWNED craft targets to the wishlist —
 add+enrich+Power-seed, set the home Target, do the cross-deck fit review via the
 specific-theme-gated `suggest-homes`, audit), `log-matches` (record played matches from
 Arena's `Player.log` into `matches.csv` via `parse_matches.py`, then read the record with

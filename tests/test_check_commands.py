@@ -120,6 +120,30 @@ class TestRosterReviewSkillExists:
             assert f"deck.py {cmd}" in t, cmd
 
 
+class TestAddCardsDoesNotDuplicateTheIngest:
+    """/add-cards used to catalog AND place, re-stating /ingest's reconcile recipe and
+    carrying its own copy of the rebuild chain. Two definitions of cataloging is the
+    hand-kept-registry failure again; it is now the fit pass alone."""
+
+    def _text(self):
+        import os
+        p = os.path.join(cc.SKILLS_DIR, "add-cards.md")
+        return open(p, encoding="utf-8").read() if os.path.exists(p) else ""
+
+    def test_it_does_not_carry_its_own_catalog_step(self):
+        assert "reconcile_crafts.py <export> --apply" not in self._text()
+
+    def test_it_routes_uncatalogued_cards_to_the_front_door(self):
+        assert "/ingest" in self._text()
+
+    def test_it_keeps_the_fit_pass(self):
+        """The half worth keeping: the grading rubric a bare suggest-homes run lacks."""
+        t = self._text()
+        assert "suggest-homes" in t
+        for verdict in ("key upgrade", "sidegrade", "different-flavor"):
+            assert verdict in t, verdict
+
+
 class TestIngestFrontDoorExists:
     """Five tools write owned-card data and they disagree about what a quantity MEANS —
     a deck dump is a LOWER BOUND, a tracker export is AUTHORITATIVE. Picking wrong either
@@ -154,6 +178,23 @@ class TestIngestFrontDoorExists:
         t = self._text()
         assert "INV-02" in t and "build_mana.py" in t
         assert "make refresh" in t
+
+    def test_it_places_the_new_cards(self):
+        """Cataloging is bookkeeping; placing the cards is the point. The fit pass lived
+        in /add-cards, which meant the half that actually decides anything was the
+        optional half — a user who ran /ingest got their cards catalogued and no idea
+        where they go. It is conditional on cards being NEW: a full-collection import
+        must not trigger a thousand fit passes."""
+        t = self._text()
+        assert "deck.py suggest-homes" in t
+        assert "card.py" in t
+        assert "key upgrade" in t and "sidegrade" in t
+
+    def test_it_reports_decks_that_became_buildable(self):
+        """An ingest is the one event that flips a deck from 'craft targets outstanding'
+        to 'ready to build', and nothing else in the workflow reports it — /roster-review
+        would, but nobody runs a roster survey after opening a pack."""
+        assert "newly buildable" in self._text().lower()
 
     def test_it_verifies_the_ingest_landed(self):
         """check_all proves the library is self-consistent, not that it contains what
