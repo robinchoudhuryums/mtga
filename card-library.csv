@@ -3761,3 +3761,71 @@ Stadium Headliner,Creature — Goblin Warrior,"Mobilize 1 (Whenever this creatur
 {1}{R}, Sacrifice this creature: It deals damage equal to the number of creatures you control to target creature.",R,Goblin; Warrior; sacrifice; tokens; mobilize; go-wide; aggro,TDM,122,1
 "Mabel, Heir to Cragflame",Legendary Creature — Mouse Soldier,"Other Mice you control get +1/+1.
 When Mabel enters, create Cragflame, a legendary colorless Equipment artifact token with ""Equipped creature gets +1/+1 and has vigilance, trample, and haste"" and equip {2}.",W/R,Mouse; Soldier; tokens; etb; equipment; pump,BLB,224,1
+"General Traag, Heart of Stone",Legendary Artifact Creature — Elemental Soldier,"Trample
+When General Traag enters, you may sacrifice another artifact. When you do, General Traag deals 4 damage to target creature.",R,Elemental; Soldier; sacrifice; burn; etb; trample; evasion,TMT,90,1
+Brilliance Unleashed,Sorcery,"Choose one or both —
+• Brilliance Unleashed deals 5 damage to target creature.
+• Choose target artifact card in your graveyard. Return it to the battlefield if it's an artifact creature card. Otherwise, return it to the battlefield and it's a 3/3 Robot artifact creature with flying.",U/R,reanimator; graveyard; burn,TMT,141,1
+Spinneret and Spiderling,Legendary Creature — Spider Human Hero,"Whenever you attack with two or more Spiders, put a +1/+1 counter on Spinneret and Spiderling.
+Whenever Spinneret and Spiderling deals 4 or more damage, exile the top card of your library. Until the end of your next turn, you may play that card.",R,Spider; Human; Hero; counters; impulse,SPM,94,1
+Pyrewood Gearhulk,Artifact Creature — Construct,"Vigilance, menace
+When this creature enters, other creatures you control get +2/+2 and gain vigilance and menace until end of turn. Damage can't be prevented this turn.",R/G,Construct; etb; pump; vigilance; combat; menace; evasion,DFT,216,1
+Lifecraft Engine,Artifact — Vehicle,"As this Vehicle enters, choose a creature type.
+Vehicle creatures you control are the chosen creature type in addition to their other types.
+Each creature you control of the chosen type other than this Vehicle gets +1/+1.
+Crew 3",Colorless,Vehicle; vehicle; pump; crew; vehicles,DFT,234,1
+Dovin's Veto,Instant,"This spell can't be countered.
+Counter target noncreature spell.",W/U,counterspell,FCA,51,1
+Summon: Anima,Enchantment Creature — Saga Horror,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
+I, II, III — Pain — You draw a card and you lose 1 life.
+IV — Oblivion — Each opponent sacrifices a creature of their choice and loses 3 life.
+Menace",B,Saga; Horror; pay life; card draw; sacrifice; saga; menace; evasion,FIN,120,1
+The Final Days,Sorcery,"Create two tapped 2/2 black Horror creature tokens. If this spell was cast from a graveyard, instead create X of those tokens, where X is the number of creature cards in your graveyard.
+Flashback {4}{B}{B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",B,graveyard; tokens; flashback; recursion; spellslinger,FIN,101,1
+Astrologian's Planisphere,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
+Equipped creature is a Wizard in addition to its other types and has ""Whenever you cast a noncreature spell and whenever you draw your third card each turn, put a +1/+1 counter on this creature.""
+Diana — Equip {2}",U,Equipment; counters; tokens; etb; equipment; job select; equip,FIN,46,1
+Restoration Magic,Instant,"Tiered (Choose one additional cost.)
+• Cure — {0} — Target permanent gains hexproof and indestructible until end of turn.
+• Cura — {1} — Target permanent gains hexproof and indestructible until end of turn. You gain 3 life.
+• Curaga — {3}{W} — Permanents you control gain hexproof and indestructible until end of turn. You gain 6 life.",W,lifegain; tiered,FIN,30,1
+Osseous Sticktwister,Artifact Creature — Scarecrow,"Lifelink
+Delirium — At the beginning of your end step, if there are four or more card types among cards in your graveyard, each opponent may sacrifice a nonland permanent of their choice or discard a card. Then this creature deals damage equal to its power to each opponent who didn't sacrifice a permanent or discard a card this way.",B,Scarecrow; graveyard; lifegain; sacrifice; delirium; lifelink,DSK,112,1
+Divergent Equation,Instant,"Return up to X target instant and/or sorcery cards from your graveyard to your hand.
+Exile Divergent Equation.",U,graveyard,SOS,43,1
+Finale of Revelation,Sorcery,"Draw X cards. If X is 10 or more, instead shuffle your graveyard into your library, draw X cards, untap up to five lands, and you have no maximum hand size for the rest of the game.
+Exile Finale of Revelation.",U,graveyard; card draw,FDN,589,1
+Mind Spring,Sorcery,Draw X cards.,U,card draw,BLB,389,1
+Getaway Glamer,Instant,"Spree (Choose one or more additional costs.)
++ {1} — Exile target nontoken creature. Return it to the battlefield under its owner's control at the beginning of the next end step.
++ {2} — Destroy target creature if no other creature has greater power.",W,removal; blink; spree; value,OTJ,14,1
+Parting Gust,Instant,"Gift a tapped Fish (You may promise an opponent a gift as you cast this spell. If you do, they create a tapped 1/1 blue Fish creature token before its other effects.)
+Exile target nontoken creature. If the gift wasn't promised, return that card to the battlefield under its owner's control with a +1/+1 counter on it at the beginning of the next end step.",W,counters; tokens; removal; blink; gift; value,BLB,24,1
+Personify,Instant,"Exile target creature you control, then return that card to the battlefield under its owner's control. Create a 1/1 colorless Shapeshifter creature token with changeling. (It's every creature type.)",W,tokens; removal; blink,ECL,28,1
+Enduring Innocence,Enchantment Creature — Sheep Glimmer,"Lifelink
+Whenever one or more other creatures you control with power 2 or less enter, draw a card. This ability triggers only once each turn.
+When Enduring Innocence dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",W,Sheep; Glimmer; lifegain; card draw; lifelink,DSK,6,1
+Gwen Stacy,Legendary Creature — Human Performer Hero // Legendary Creature — Spider Human Hero,"When Gwen Stacy enters, exile the top card of your library. You may play that card for as long as you control this creature.
+{2}{U}{R}{W}: Transform Gwen Stacy. Activate only as a sorcery. // Flying, vigilance, haste
+Whenever you play a land from exile or cast a spell from exile, put a +1/+1 counter on Ghost-Spider.
+Remove two counters from Ghost-Spider: Exile the top card of your library. You may play that card this turn.",W/U/R,Human; Performer; Hero; Spider; counters; etb; impulse; flying; evasion; vigilance; combat; transform; haste; aggro,SPM,78,1
+Miles Morales,Legendary Creature — Human Citizen Hero // Legendary Creature — Spider Human Hero,"When Miles Morales enters, put a +1/+1 counter on each of up to two target creatures.
+{3}{R}{G}{W}: Transform Miles Morales. Activate only as a sorcery. // First strike, haste
+Camouflage — {2}: Put a +1/+1 counter on Ultimate Spider-Man. He gains hexproof and becomes colorless until end of turn.
+Whenever you attack, double the number of each kind of counter on each Spider and legendary creature you control.",W/R/G,Human; Citizen; Hero; Spider; counters; etb; transform; first strike; combat; haste; aggro; double,SPM,108,1
+Damage Control Crew,Creature — Human Citizen,"When this creature enters, choose one —
+• Repair — Return target card with mana value 4 or greater from your graveyard to your hand.
+• Impound — Exile target artifact or enchantment.",G,Human; Citizen; graveyard; removal; etb,SPM,99,1
+Spider Manifestation,Creature — Spider Avatar,"Reach
+{T}: Add {R} or {G}.
+Whenever you cast a spell with mana value 4 or greater, untap this creature.",R/G,Spider; Avatar; mana; reach; defense,SPM,148,1
+"Prowler, Clawed Thief",Legendary Creature — Human Rogue Villain,"Menace (This creature can't be blocked except by two or more creatures.)
+Whenever another Villain you control enters, Prowler connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)",U/B,Human; Rogue; Villain; counters; card draw; menace; evasion; connive; graveyard,SPM,138,1
+"Spider-Rex, Daring Dino",Legendary Creature — Spider Dinosaur Hero,"Reach, trample
+Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)",G,Spider; Dinosaur; Hero; reach; defense; trample; evasion; ward; protection,SPM,116,1
+Guy in the Chair,Creature — Human Advisor,"{T}: Add one mana of any color.
+Web Support — {2}{G}, {T}: Put a +1/+1 counter on target Spider. Activate only as a sorcery.",G,Human; Advisor; counters; mana,SPM,102,1
+Peter Parker,Legendary Creature — Human Scientist Hero // Legendary Creature — Spider Human Hero,"When Peter Parker enters, create a 2/1 green Spider creature token with reach.
+{1}{G}{W}{U}: Transform Peter Parker. Activate only as a sorcery. // Vigilance, reach
+Each legendary spell you cast that's one or more colors has web-slinging {G}{W}{U}. (You may cast a spell for its web-slinging cost if you also return a tapped creature you control to its owner's hand.)",W/U/G,Human; Scientist; Hero; Spider; tokens; etb; bounce; reach; defense; vigilance; combat; transform,SPM,10,1
+Absorbing Man and Titania,Legendary Creature — Human Villain,Double all damage that creature sources you control would deal.,R/G,Human; Villain; double,MSC,510,1
