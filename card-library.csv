@@ -3829,3 +3829,6 @@ Peter Parker,Legendary Creature — Human Scientist Hero // Legendary Creature �
 {1}{G}{W}{U}: Transform Peter Parker. Activate only as a sorcery. // Vigilance, reach
 Each legendary spell you cast that's one or more colors has web-slinging {G}{W}{U}. (You may cast a spell for its web-slinging cost if you also return a tapped creature you control to its owner's hand.)",W/U/G,Human; Scientist; Hero; Spider; tokens; etb; bounce; reach; defense; vigilance; combat; transform,SPM,10,1
 Absorbing Man and Titania,Legendary Creature — Human Villain,Double all damage that creature sources you control would deal.,R/G,Human; Villain; double,MSC,510,1
+"Leatherhead, Swamp Stalker",Legendary Creature — Crocodile Mutant Rogue,"Trample
+Leatherhead enters with a hexproof counter on her.
+Whenever Leatherhead deals combat damage to a player, you may remove a counter from her. When you do, destroy target artifact or enchantment that player controls.",G,Crocodile; Mutant; Rogue; counters; removal; trample; evasion,TMT,117,1
