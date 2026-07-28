@@ -41,6 +41,8 @@ Equip {4}",Colorless,Equipment; reanimator; graveyard; etb; equipment; pump; sel
 Shroudstomper,Creature — Elemental,"Deathtouch
 Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.",W/B,Elemental; lifegain; card draw; deathtouch; combat; removal,DSK,233,Uncommon,20,,5.0,hand
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
+Kinscaer Sentry,Creature — Kithkin Soldier,"First strike, lifelink
+Whenever this creature attacks, you may put a creature card with mana value X or less from your hand onto the battlefield tapped and attacking, where X is the number of attacking creatures you control.",W,Kithkin; Soldier; lifegain; lifelink; first strike; combat,ECL,22,Rare,23,2-drop first strike/lifelink that cheats a creature with MV <= attackers from hand into play attacking,6.0,hand
 Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19,,4.5,hand
 Dubious Delicacy,Artifact — Food,"Flash
@@ -243,6 +245,11 @@ If a creature you control that entered this turn would deal damage, it deals twi
 Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I, II — Create a 5/5 green Elephant creature token.
 III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,5.5,hand
+Duty Beyond Death,Instant,"As an additional cost to cast this spell, sacrifice a creature.
+Creatures you control gain indestructible until end of turn. Put a +1/+1 counter on each creature you control. (Damage and effects that say ""destroy"" don't destroy those creatures.)",W,counters; sacrifice,TDM,10,Uncommon,23,instant team indestructible + a permanent counter on every creature; sac cost is a token in a go-wide deck,6.0,hand
+Static Snare,Enchantment,"Flash
+This spell costs {1} less to cast for each attacking creature.
+When this enchantment enters, exile target artifact or creature an opponent controls until this enchantment leaves the battlefield.",W,cost-reduction; removal; etb; flash; tempo,TDM,26,Uncommon,23,"flash, costs {1} less per attacking creature — often 1-2 mana in a wide deck; exiles artifact or creature",5.5,hand
 Coordinated Maneuver,Instant,"Choose one —
 • Coordinated Maneuver deals damage equal to the number of creatures you control to target creature or planeswalker.
 • Destroy target enchantment.",W,removal,TDM,12,Common,23,"2-mana modal instant; damage mode scales with board (27 creatures in 23), or kills an enchantment",5.0,hand

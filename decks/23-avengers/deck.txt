@@ -1,13 +1,13 @@
 #: name: Avengers
 #: format: Standard
 #: tier: B — Mono-W go-wide/counters. The slow-curve argument this B rested on has
-#: tier: largely gone: curve 3.47 (was 3.6) and 11 one-two-drops (was 6) after Erode,
+#: tier: largely gone: curve 3.50 (was 3.6) and 11 one-two-drops (was 6) after Erode,
 #: tier: Curious Farm Animals and Coordinated Maneuver came in for Aerith Rescue
 #: tier: Mission, Dauntless Veteran and U.S.Agent. Interaction 4 -> 7 and the deck's
 #: tier: first three answers to a noncreature permanent (it had zero) put the metrics
 #: tier: floor at A. Letter HELD at B pending a human re-grade — the remaining case
 #: tier: for B is card advantage, which measures 0 (Avengers Assemble! is a real
-#: tier: repeatable draw the classifier misses, so call it ~1), and 22 central themes,
+#: tier: repeatable draw the classifier misses, so call it ~1), and 23 central themes,
 #: tier: the most diffuse deck on the roster.
 #: colors: W
 #: notes: Mono-white Hero go-wide/counters — Avengers Assemble + Captain America +
@@ -32,15 +32,16 @@ Deck
 1 Super-Adaptoid (MSH) 250
 1 Quake, Agent of S.H.I.E.L.D. (MSH) 32
 1 Coordinated Maneuver (TDM) 6
-1 Borough Backup (MSH) 7
+1 Delney, Streetwise Lookout (MKM) 12
 1 Origin of the Avengers (MSH) 28
 1 The Sentry, Golden Guardian (MSH) 35
 
 # Go-wide / anthems / tokens
 1 Exalted Sunborn (EOE) 15
 1 Moonshaker Cavalry (WOE) 21
-1 Curious Farm Animals (TLA) 14
-1 Stagecoach Security (OTJ) 30
+1 Duty Beyond Death (TDM) 10
+1 Virtue of Loyalty (WOE) 38
+1 Kinscaer Sentry (ECL) 22
 1 Resolute Reinforcements (FDN) 145
 1 Monica Rambeau (MSH) 23
 1 Erode (SOS) 15
@@ -54,12 +55,11 @@ Deck
 1 Anti-Venom, Horrifying Healer (SPM) 1
 
 # Interaction
-1 Stasis Snare (FDN) 581
+1 Static Snare (TDM) 26
 1 Elspeth, Storm Slayer (TDM) 11
 1 Jennifer Walters (MSH) 18
 1 Red Guardian, Super-Soldier (MSH) 34
 1 Cosmogrand Zenith (EOE) 9
-1 Captain America's Shield (MSH) 244
 
 # Lands
 20 Plains (MSH) 288
@@ -68,4 +68,4 @@ Deck
 1 Urban Retreat (SPM) 187
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 23
-#~ -Captain America's Shield | +Archangel of Tithes | CRAFT (M, OTJ ⚠rot-soon): {1}{W}{W} flyer whose tax (opponents pay {1} per attacker vs you / per blocker of your attack) protects you AND pushes a wide Human/Hero board through. Cut the single-target defensive equipment; keeps bodies for the tax. One copy also serves deck 3.
+#~ note: applied — Kinscaer Sentry in for Captain America's Shield.

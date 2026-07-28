@@ -1,6 +1,11 @@
 #: name: Knight's Edge
 #: format: Standard
-#: tier: A — Mono-W go-wide aggro; fast, anthems, 8 interaction
+#: tier: A — Mono-W go-wide aggro; fast, anthems, 7 interaction on a 3.57 curve.
+#: tier: Red Guardian was CUT for Delney (12 trigger feeders, 13 power-2-or-less
+#: tier: creatures); Resolute Reinforcements was CUT for Dollmaker's Shop, trading a
+#: tier: one-shot token for an every-attack one plus a board-scaling back door.
+#: tier: The one real weakness is protection 1 — nothing here saves the team from
+#: tier: a sweeper, which is what a 20-wide deck loses to.
 #: colors: W
 #: archetype: Mono-white go-wide Knights — tokens, counters, anthems.
 #: notes: Mono-white go-wide / knights.
@@ -19,12 +24,12 @@
 1 Political Triumph (MSH) 31
 1 Quintessential Katana (TMT) 23
 1 Requisition Raid (SOA) 10
-1 Red Guardian, Super-Soldier (MSH) 34
+1 Delney, Streetwise Lookout (MKM) 12
 1 Ajani's Pridemate (FDN) 135
 1 Colleen Wing, Street Samurai (MSH) 13
 1 Leader's Talent (TMT) 13
 1 Leonardo, Cutting Edge (TMT) 15
-1 Resolute Reinforcements (FDN) 145
+1 Dollmaker's Shop (DSK) 4
 1 Elspeth, Storm Slayer (TDM) 11
 1 White Mage's Staff (FIN) 42
 1 Ajani, Outland Chaperone (ECL) 4
