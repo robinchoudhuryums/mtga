@@ -17,9 +17,10 @@
 #: archetype: THE OUTLETS ARE THE POINT. The core deck fielded death triggers like
 #: archetype: Vengeful Bloodwitch with NOTHING to feed them on demand, so they only fired
 #: archetype: when the opponent obliged. Baron Bertram Graywater (a token engine that is also a
-#: archetype: sacrifice-for-draw outlet), Umbral Collar Zealot (a FREE outlet — no mana),
-#: archetype: Vampiric Rites, Ahriman and Kingpin's Enforcers are what convert those
-#: archetype: passive triggers into an engine you control.
+#: archetype: sacrifice-for-draw outlet), Vampiric Rites and Ahriman are what convert those
+#: archetype: passive triggers into an engine you control. Umbral Collar Zealot was CUT for
+#: archetype: Ayli, Eternal Pilgrim, a free-ish outlet that also blocks on deathtouch;
+#: archetype: Kingpin's Enforcers was CUT for Tragedy Feaster.
 #: archetype: EIRDU IS THE MULTIPLIER: once transformed, every other nontoken creature
 #: archetype: has persist, so each one dies TWICE — two Funeral Room drains, two Bloodwitch
 #: archetype: triggers, two Agent Venom draws — and comes back to be sacrificed again.
@@ -41,12 +42,13 @@
 #: tier: a reason to verify, not a reason to claim the number.
 #: tier: BE PRECISE ABOUT THE FLOOR, because "restore the interaction" was not the whole
 #: tier: fix: the A floor wants interaction >=5 AND interaction+card-advantage >=7. At
-#: tier: interaction 5 and card advantage 0 the sum is 5, so the floor is B and TWO more
+#: tier: interaction 5 and card advantage 1 the sum is 6, so the floor is B and ONE more
 #: tier: points across the two axes flip it. Card advantage is the easier axis to move here —
 #: tier: see risk 1 below for why the measured 0 is defensible but beatable.
 #: tier: Held at B by three further things the floor cannot see:
-#: tier: 1. MEASURED CARD ADVANTAGE IS ZERO, and that number is defensible rather than a
-#: tier:    classifier miss. Vampiric Rites, Ahriman, Kingpin's Enforcers, Baron Bertram
+#: tier: 1. MEASURED CARD ADVANTAGE IS ONE, and that number is defensible rather than a
+#: tier:    classifier miss — Treacherous Greed's draw-three is the single card that
+#: tier:    clears the bar. Vampiric Rites, Ahriman, Baron Bertram
 #: tier:    and Agent Venom each draw exactly ONE card, which the role model excludes as
 #: tier:    card-neutral — and in the abstract it is right, because sacrificing a CARD to
 #: tier:    draw a card is a wash. It is only advantage when the fodder is a TOKEN, which
@@ -104,10 +106,10 @@
 
 Deck
 # Sacrifice outlets — what makes the death triggers an engine
-1 Umbral Collar Zealot (EOE) 123
+1 Ayli, Eternal Pilgrim (FDN) 652
 1 Vampiric Rites (WOT) 37
 1 Ahriman (FIN) 87
-1 Kingpin's Enforcers (MSH) 102
+1 Tragedy Feaster (SOS) 102
 1 Baron Bertram Graywater (OTJ) 195
 
 # Death-trigger drain — the tax on every sacrifice
@@ -140,6 +142,7 @@ Deck
 1 Krovod Haunch (MKM) 21
 
 # Value
+1 Treacherous Greed (MKM) 237
 1 Starscape Cleric (BLB) 116
 1 Robot Domination (MSH) 111
 
@@ -154,7 +157,6 @@ Deck
 1 Erode (SOS) 15
 1 Heartless Act (TLA) 103
 1 Hero's Downfall (FDN) 175
-1 Stroke of Midnight (FDN) 148
 
 # Lands — 25, Orzhov
 1 Bleachbone Verge (DFT) 250

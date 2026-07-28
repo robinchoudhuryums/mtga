@@ -1,13 +1,13 @@
 #: name: Avengers
 #: format: Standard
 #: tier: B — Mono-W go-wide/counters. The slow-curve argument this B rested on has
-#: tier: largely gone: curve 3.50 (was 3.6) and 11 one-two-drops (was 6) after Erode,
+#: tier: largely gone: curve 3.42 (was 3.6) and 11 one-two-drops (was 6) after Erode,
 #: tier: Curious Farm Animals and Coordinated Maneuver came in for Aerith Rescue
 #: tier: Mission, Dauntless Veteran and U.S.Agent. Interaction 4 -> 7 and the deck's
 #: tier: first three answers to a noncreature permanent (it had zero) put the metrics
 #: tier: floor at A. Letter HELD at B pending a human re-grade — the remaining case
 #: tier: for B is card advantage, which measures 0 (Avengers Assemble! is a real
-#: tier: repeatable draw the classifier misses, so call it ~1), and 23 central themes,
+#: tier: repeatable draw the classifier misses, so call it ~1), and 24 central themes,
 #: tier: the most diffuse deck on the roster.
 #: colors: W
 #: notes: Mono-white Hero go-wide/counters — Avengers Assemble + Captain America +
@@ -38,7 +38,7 @@ Deck
 
 # Go-wide / anthems / tokens
 1 Exalted Sunborn (EOE) 15
-1 Moonshaker Cavalry (WOE) 21
+1 Captain Mar-Vell, Space-Born (MSH) 12
 1 Duty Beyond Death (TDM) 10
 1 Virtue of Loyalty (WOE) 38
 1 Kinscaer Sentry (ECL) 22
