@@ -1,5 +1,12 @@
 Rebuild the derived data artifacts after card/deck changes, then verify.
 
+**The whole chain is `make refresh`.** Run that rather than the steps below unless you
+genuinely need to skip one — the Makefile target is the single executable definition of
+the order, which previously lived in four prose copies of which three were wrong (they
+put `build_pool.py` after `build_mana.py`, leaving a new set's pool cards with no mana
+row until the next cycle). The steps are documented here so you can skip deliberately,
+not so you can retype them.
+
 Derived files depend on card-library.csv and can drift after imports or edits.
 Rebuild them in dependency order (all require Scryfall egress except the last
 two):

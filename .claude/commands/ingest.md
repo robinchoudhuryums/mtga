@@ -54,25 +54,47 @@ Apply with `--apply` (or, for `import_arena.py`, by dropping `--dry-run`).
 
 **This is the part that gets skipped, and skipping it leaves the integrity gate red with
 no hint why.** A newly added card has no `card-mana.csv` row, so INV-02 fails until
-`build_mana.py` runs. Run in this order — the dependencies are real:
+`build_mana.py` runs.
 
-1. `python3 scripts/enrich.py` — fill Type / Card Text / Color(s) / Collector #
-2. `python3 scripts/build_mana.py --pool` — cost + keywords **← INV-02 depends on this**
-3. `python3 scripts/tag_synergies.py --merge` — keyword-aware tags (needs step 2's data;
-   `--merge` adds without clobbering hand-curated cells)
-4. `python3 scripts/build_pool.py --all` — re-derive pool tags through the same `tags_for`
-5. `python3 scripts/build_gallery.py` — art for the new cards
-6. `python3 scripts/check_all.py` — confirm every invariant holds
+```
+make refresh
+```
 
-`/refresh` runs exactly this chain; prefer it unless you need to skip steps. Steps 1–4
-need Scryfall; if it is unreachable, say which steps were skipped and that INV-02 will
-stay red until they run.
+That is the whole tail, in the one place the order is defined. **Do not hand-run the
+steps** — the order is a real dependency graph (`build_mana --pool` READS
+`card-pool.csv`; `tag_synergies` reads `card-mana.csv`), it used to be written out in
+four places, and three of them — including this one — had `build_pool.py` in the wrong
+position. Getting it wrong is quiet: a newly released set's pool cards end up with no
+mana row until the next cycle, so they rank with no cost and no keyword tags. The
+Makefile target announces each step, so a failure is still attributable.
+
+It needs Scryfall and is slow (`build_mana --pool` prices ~15.9k cards against a rate
+limit). If Scryfall is unreachable, say which steps were skipped and that INV-02 stays
+red until they run.
+
+## Stage 3b — Verify the ingest actually landed
+
+```
+python3 scripts/verify_ingest.py <the same export>          # or --exact
+```
+
+Every failure mode in this subsystem is a SILENT UNDERCOUNT, and `check_all` cannot see
+one: a card that never arrived breaks no invariant, so the gate stays green. This reads
+the paste back against the library and reports, per card, whether it is present, at the
+expected count, and covered by `card-mana.csv`.
+
+Pass `--exact` **only** for the authoritative `import_collection.py` route — it requires
+`owned == pasted`, which is right for a full-collection export and wrong for every other
+route, where a line is a lower bound. A non-zero exit means the ingest is not finished:
+re-run it for the named cards, or run `make refresh` if the gap is the mana rows.
 
 ## Stage 4 — Report
 
 - What was ingested, by which route, and what changed (added / bumped / zeroed).
 - Anything the tool refused or flagged, verbatim — an unparseable line or an ambiguous
   name-only row is a card that did NOT get counted.
+- The `verify_ingest.py` verdict — say plainly whether every pasted card landed, and name
+  any that did not. This is the answer to "did my ingest work", so do not bury it.
 - The `check_all` result.
 - Then suggest the natural follow-up: `/add-cards` finishes with a cross-deck fit pass
   (`deck.py suggest-homes <card>`) for anything newly owned, and `/roster-review` if a

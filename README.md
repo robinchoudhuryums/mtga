@@ -953,6 +953,37 @@ top of `scripts/sheets_sync.py`. (Since the CSV is the interchange format, you c
 also import/export manually in Sheets without this — note that a *manual* File →
 Import applies Sheets' own formula parsing, which this RAW guard can't cover.)
 
+### Verify an ingest — did the cards you pasted actually land?
+
+```
+python3 scripts/verify_ingest.py cards.txt          # after importing
+python3 scripts/verify_ingest.py cards.txt --exact  # tracker-export route only
+```
+
+Every failure mode in the import path is a **silent undercount**, and `check_all`
+cannot see one — it proves the library is internally consistent, and a card that
+never arrived breaks no invariant. This reads the paste back and reports, per
+card, whether it is present, at the expected count, and covered by
+`card-mana.csv` (the INV-02 step that is easy to skip). Double-faced cards pasted
+under their full `Front // Back` name resolve to the library's front-name row, and
+basic lands are skipped — they are deliberately not in the collection.
+
+`--exact` requires `owned == pasted`; use it **only** for the authoritative
+`import_collection.py` route. Every other route treats a line as a lower bound.
+
+### Rebuilding derived data
+
+```
+make refresh
+```
+
+Runs the whole chain in dependency order: `enrich` → `build_pool --all` →
+`build_mana --pool` → `tag_synergies --merge` → `build_gallery` → `check_all`.
+The order is a real dependency graph (`build_mana --pool` reads `card-pool.csv`;
+`tag_synergies` reads `card-mana.csv`'s keywords), and getting it wrong is quiet
+rather than loud — a new set's pool cards end up with no mana row until the next
+cycle. The Makefile is the one place it is defined. Slow, and needs Scryfall.
+
 ### Matches — record what actually happened (optional)
 
 ```

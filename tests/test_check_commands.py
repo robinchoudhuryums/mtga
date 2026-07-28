@@ -142,9 +142,24 @@ class TestIngestFrontDoorExists:
     def test_it_names_the_step_INV_02_depends_on(self):
         """The shared tail is the part that gets skipped: a newly added card has no
         card-mana.csv row, so INV-02 stays red until build_mana.py runs. Both ingest
-        recipes omitted it once (broad-scan F-06)."""
+        recipes omitted it once (broad-scan F-06).
+
+        This used to assert the literal `build_mana.py --pool` in the skill. It no
+        longer appears there, and that is the fix rather than a regression: the skill
+        now routes to `make refresh`, because spelling the chain out here was the
+        SECOND bug — three of the four prose copies had build_pool.py in the wrong
+        position. So assert the guarantee (the skill explains INV-02 and sends you to
+        the one definition) and let tests/test_verify_ingest.py assert that the
+        definition contains the right step in the right order."""
         t = self._text()
-        assert "build_mana.py --pool" in t and "INV-02" in t
+        assert "INV-02" in t and "build_mana.py" in t
+        assert "make refresh" in t
+
+    def test_it_verifies_the_ingest_landed(self):
+        """check_all proves the library is self-consistent, not that it contains what
+        you pasted — a card that never arrived breaks no invariant, so every silent
+        undercount in this subsystem passes the gate. The router has to close that."""
+        assert "verify_ingest.py" in self._text()
 
     def test_it_distinguishes_lower_bound_from_authoritative(self):
         """The one conceptual trap the router exists to prevent."""
