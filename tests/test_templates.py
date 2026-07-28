@@ -140,6 +140,86 @@ class TestPipKeyboardAndFocusWiring:
         assert "opacity: 1" in m.group(1)
 
 
+class TestAnalysisTabsAreRealControls:
+    """The same defect the pips had, one template over: four `<span class="tab">`s with a
+    click handler on the container, so the whole analysis strip (Stats / Mana / Tribes /
+    Suggestions) was mouse-only. Found by auditing the sibling templates after the pip
+    fix — which is the argument for auditing siblings rather than the reported file."""
+
+    def setup_method(self):
+        self.src = _read("deck.html")
+
+    def test_each_tab_is_focusable_and_role_bearing(self):
+        m = re.search(r"KINDS\.map\(.*?\)\.join\('' *\)", self.src, re.S)
+        assert m, "tab construction not found"
+        for attr in ('role="tab"', 'tabindex="0"', 'aria-selected="false"'):
+            assert attr in m.group(0), attr
+
+    def test_the_strip_is_a_tablist(self):
+        """`role="tab"` outside a tablist is invalid ARIA — the container role is what
+        makes the individual roles mean anything."""
+        assert 'role="tablist"' in self.src
+        assert re.search(r'id="tabs"[^>]*aria-label=', self.src)
+
+    def test_the_output_is_the_tab_panel(self):
+        assert 'role="tabpanel"' in self.src
+
+    def test_the_scrollable_output_is_reachable(self):
+        """`pre.out` has overflow-x:auto; a scrollable region a keyboard can't focus
+        can't be scrolled without a mouse."""
+        m = re.search(r'id="out"[^>]*>', self.src)
+        assert m and 'tabindex="0"' in m.group(0)
+
+    def test_aria_selected_moves_with_the_active_tab(self):
+        block = self.src.split("function showKind")[1][:700]
+        assert "setAttribute('aria-selected'" in block
+
+    def test_enter_and_space_activate_a_tab(self):
+        block = self.src.split("tabs.addEventListener('keydown'")[1][:400]
+        assert "'Enter'" in block
+        assert "' '" in block or "'Spacebar'" in block
+        assert "preventDefault" in block
+        assert "t.click()" in block
+
+
+class TestToastIsAnnounced:
+    """The toast is the ONLY report that a save succeeded or failed. Without a live
+    region it is a purely visual event: nothing announces it, so a screen-reader user
+    gets no confirmation that their deck saved."""
+
+    def test_the_deck_editor_toast_is_a_live_region(self):
+        m = re.search(r'<div class="toast" id="toast"[^>]*>', _read("deck.html"))
+        assert m, "toast not found"
+        assert 'role="status"' in m.group(0)
+        assert 'aria-live="polite"' in m.group(0)
+
+
+class TestFocusIsVisibleWhereverHoverIs:
+    """A control that styles :hover and nothing else gives a keyboard user a weaker
+    signal than a mouse user for the same control."""
+
+    def test_deck_editor_controls_have_a_focus_ring(self):
+        src = _read("deck.html")
+        m = re.search(r"([^{}]*):focus-visible[^{]*\{([^}]*)\}", src)
+        assert m and "outline" in m.group(2)
+        for sel in (".rm", ".tab", "a.tool", "button.tool"):
+            assert f"{sel}:focus-visible" in src, sel
+
+    def test_deck_list_controls_have_a_focus_ring(self):
+        src = _read("decks.html")
+        for sel in ("a.tool", ".deck"):
+            assert f"{sel}:focus-visible" in src, sel
+
+
+class TestLandmarks:
+    """Without a <main>, "skip to content" and landmark navigation have nothing to aim
+    at — the whole page is one undifferentiated region."""
+
+    def test_each_page_has_a_main_landmark(self):
+        for name in ("deck.html", "decks.html"):
+            assert any(t == "main" for t, _ in _parse(name)), name
+
+
 class TestNoControlSilentlyLosesItsName:
     """The editor's other controls were already accessible (real <button>/<input>
     elements, or labelled). Pin that, so a future markup edit can't quietly turn one
