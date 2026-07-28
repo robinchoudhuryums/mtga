@@ -30323,7 +30323,7 @@ Whenever an opponent casts a noncreature spell, creature cards in your library p
 Fountainport Charmer,Creature — Frog Bard,"Offspring {2}
 When Fountainport Charmer enters, creature cards in your hand perpetually gain ""This spell costs {1} less to cast.""",G,Frog; Bard; cost-reduction; etb; offspring; tokens; go-wide,YBLB,17,Uncommon,historic;timeless;alchemy;brawl,2024-08-20,2,3
 Traverse Valley,Sorcery,"Kicker—Forage.
-Seek a nonbasic land card. If this spell was kicked, put that card onto the battlefield tapped.",G,forage; seek; kicker; value,YBLB,18,Uncommon,historic;timeless;alchemy;brawl,2024-08-20,,
+Seek a nonbasic land card. If this spell was kicked, put that card onto the battlefield tapped.",G,forage; graveyard; food; seek; kicker; value,YBLB,18,Uncommon,historic;timeless;alchemy;brawl,2024-08-20,,
 Vigorous Farming,Enchantment,"Lands you control enter the battlefield untapped.
 At the beginning of your end step, the topmost land card in your library perpetually gains ""Whenever this land is tapped for mana, add an additional {G}.""",G,,YBLB,19,Rare,historic;timeless;alchemy;brawl,2024-08-20,,
 Ace Flockbringer,Creature — Bird Scout,"Flying
@@ -30337,7 +30337,7 @@ Dazzling Flameweaver,Creature — Lizard Warlock,"Menace
 Ward—Pay 3 life.
 Whenever one or more creatures you control deal combat damage to a player, conjure a random card from Dazzling Flameweaver's spellbook into exile. You may play that card until the end of your next turn.",B/R,Lizard; Warlock; menace; evasion; ward; protection; conjure,YBLB,23,Rare,historic;timeless;alchemy;brawl,2024-08-20,3,3
 "Euru, Acorn Scrounger",Legendary Creature — Squirrel Soldier,"When Euru, Acorn Scrounger enters, you may forage. When you do, conjure a card named Chitterspitter onto the battlefield.
-Whenever one or more Squirrels you control deal combat damage to a player, you may sacrifice a token. If you do, put an acorn counter on each permanent you control named Chitterspitter.",B/G,Squirrel; Soldier; counters; sacrifice; etb; forage; conjure,YBLB,24,Mythic,historic;timeless;alchemy;brawl,2024-08-20,3,3
+Whenever one or more Squirrels you control deal combat damage to a player, you may sacrifice a token. If you do, put an acorn counter on each permanent you control named Chitterspitter.",B/G,Squirrel; Soldier; counters; sacrifice; etb; forage; graveyard; food; conjure,YBLB,24,Mythic,historic;timeless;alchemy;brawl,2024-08-20,3,3
 "Indris, the Hydrostatic Surge",Legendary Creature — Otter Incarnation,"When Indris, the Hydrostatic Surge enters, conjure four cards named Lightning Bolt into your library. They perpetually gain storm. Then shuffle.
 Whenever you cast an instant or sorcery spell, draw a card.",U/R,Otter; Incarnation; card draw; etb; spellslinger; conjure,YBLB,25,Mythic,historic;timeless;alchemy;brawl,2024-08-20,5,5
 Leaf-Leap Guide,Creature — Frog Scout,"Vigilance

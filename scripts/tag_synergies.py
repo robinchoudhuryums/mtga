@@ -75,6 +75,16 @@ KEYWORD_THEMES = {
     "aftermath": ["graveyard", "recursion"], "dredge": ["graveyard", "self-mill"],
     "scavenge": ["graveyard", "counters"], "exploit": ["sacrifice"],
     "blight": ["graveyard", "counters"],
+    # Forage is a COST — "exile three cards from your graveyard or sacrifice a Food" —
+    # so it consumes exactly two resources and a forage deck is built around both.
+    # NOT tagged `sacrifice`: 7 of the 9 forage cards already earn that from their own
+    # text, and the two that don't (Traverse Valley, a kicked land fetch; Euru) aren't
+    # sacrifice cards — the keyword only means they MAY pay with a Food. Note the
+    # graveyard side EMPTIES the yard, which the tag can't express in either direction;
+    # that asymmetry is the zone-conflict detector's job (_GY_HATE_* / _GY_NEED_*), not
+    # the tag model's, which has always read `graveyard` as "interacts with" and left
+    # direction to the reader.
+    "forage": ["graveyard", "food"],
     # Tokens / go-wide / sacrifice
     "convoke": ["go-wide", "ramp"], "amass": ["tokens", "go-wide"],
     "populate": ["tokens", "go-wide"], "fabricate": ["tokens", "counters"],

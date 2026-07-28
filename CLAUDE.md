@@ -1230,21 +1230,27 @@ castability · curve · central-theme density), with the intangibles moving a de
 ## Known Issues
 
 - A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select,
-  Opus, Increment, Infusion, Paradigm, Disappear, Tiered, **Jump**, **Forage**) aren't in
+  Opus, Increment, Infusion, Paradigm, Disappear, Tiered, **Jump**) aren't in
   `tag_synergies.py`'s keyword→theme map, so they're tagged verbatim. They live in
   `scripts/keyword_baseline.txt` — the acknowledged-but-unindexed list — so the radar
-  stays quiet about them; theming them is ROADMAP Tier 1. **`forage` is the one currently
-  UNBASELINED**, so it is the standing `check_all` soft warning rather than a silent
-  entry — 9 pool cards carry it (Camellia, the Seedmiser arrived with the SPM/FIN batch,
-  plus Bushy Bodyguard, Curious Forager, Thornvault Forager, Treetop Sentries,
-  Corpseberry Cultivator, Traverse Valley, Feed the Cycle), which by the pool-uniqueness
-  rule below makes it a REAL mechanic: it belongs in the baseline, never in
-  `FLAVOR_KEYWORDS`. It is also a candidate for real theming rather than mere
-  acknowledgement, since "exile three cards from your graveyard or sacrifice a Food" is
-  mechanically a graveyard/Food cost the tag model already has themes for.
+  stays quiet about them; theming them is ROADMAP Tier 1.
   **Vivid is the cautionary one on this list:** an unindexed keyword is not inert, it is a
   hole every tag-gated predicate inherits — `_is_color_fixer` gated on a `ramp`/`mana` tag
-  and so read the roster's two best fixers as non-fixers (see the fixer-overlay gotcha). Card-*unique* flavor ability
+  and so read the roster's two best fixers as non-fixers (see the fixer-overlay gotcha).
+- **`forage` was THEMED rather than baselined, and the 7-of-9 split is the lesson.**
+  It is a COST — "exile three cards from your graveyard or sacrifice a Food" — so it maps
+  to `["graveyard", "food"]`, the two resources it consumes. Deliberately NOT `sacrifice`:
+  the keyword only means the card MAY pay with a Food, and the cards that really do
+  sacrifice earn that tag from their own text. **Mapping it changed only 2 of the 9
+  forage cards**, because the other 7 quote the reminder text — which contains the words
+  "graveyard", "sacrifice" and "Food" — and so already earned the tags from the TEXT
+  rules. The two that changed (Traverse Valley, whose entire text is "Kicker—Forage.",
+  and Euru, Acorn Scrounger) carry the keyword with no reminder, and were tagged neither.
+  So a text-only tag model looks like it works on this mechanic right up until it meets a
+  card that states the keyword bare — the keyword map is what covers that tail, and the
+  gap is invisible unless you check the cards whose text OMITS the reminder. Note the
+  graveyard side EMPTIES the yard; the tag can't express direction, and that asymmetry is
+  the zone-conflict detector's job (`_GY_HATE_*` / `_GY_NEED_*`), not the tag model's. Card-*unique* flavor ability
   names (Firaga, Wave Cannon, Murasame, and the Marvel signature moves — Trick Arrows,
   Radar Sense, Technopathy, …), which Scryfall also reports as keywords, are dropped
   via the `FLAVOR_KEYWORDS` denylist so they don't pollute the tags.
