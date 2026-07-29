@@ -1067,7 +1067,39 @@ _ROLE_PATTERNS = {
                        # about ONE-SHOT single draws. Phyrexian Arena reads as a cantrip
                        # to a pattern that only counts how many cards one resolution
                        # draws, which is why deck 42's card-advantage line said 1.
-                       r"at the beginning of (?:your|each|the) upkeep[^.]{0,60}?draws? a card",
+                       #
+                       # Repeatability is the whole test, and it comes in two templatings
+                       # — the first version of this pattern only read ONE of them. A
+                       # PHASE trigger recurs every turn, and "upkeep" was hardcoded while
+                       # Magic puts the same effect on the end step, the draw step and
+                       # combat just as often (Haliya, Guided by Light draws at the
+                       # beginning of your END STEP). And a "WHENEVER" trigger recurs by
+                       # construction — Exemplar of Light draws every turn it gets a
+                       # counter. Neither was matched here NOR by the broad `_CA_CUES`
+                       # net, so both cards were the "missable by BOTH" failure the
+                       # superset comment below exists to prevent: they got a role
+                       # (Payoff, Lifegain), so they were not `unclassified` either, and
+                       # deck 46 reported card advantage 1 against a real 3 with the
+                       # uncertainty channel silent.
+                       #
+                       # "When" vs "WHENEVER" is the load-bearing distinction and it is
+                       # Magic's own templating rule: "When this creature enters, draw a
+                       # card" is a one-shot ETB cantrip (Inspiring Overseer) and stays
+                       # excluded; "Whenever X, draw a card" recurs. Matching a bare
+                       # "draw a card" would have swept every cantrip in the format into
+                       # card advantage and inverted the rule this pattern implements.
+                       r"at the beginning of (?:your|each|the) "
+                       r"(?:upkeep|end step|draw step|combat|precombat main phase)"
+                       r"[^.]{0,60}?draws? a card",
+                       # The draw must fall AFTER the trigger's comma. Magic templates a
+                       # triggered ability as "Whenever <condition>, <effect>", so the
+                       # comma is what separates a card that DRAWS from a card that CARES
+                       # about drawing: "Whenever you draw a card, this creature gets
+                       # +1/+1" (Chasm Skulker, Orcish Bowmasters, Queza — 45 of them on
+                       # the pool) puts "draw a card" in the CONDITION, and a naive
+                       # `whenever .* draw a card` swept every one into card advantage —
+                       # scoring a draw-payoff as a draw, which is backwards.
+                       r"\bwhenever\b[^.,]{0,80}?, [^.]{0,60}?draws? a card",
                        r"\binvestigate\b"],
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
                       r"\{t\}: add \{",

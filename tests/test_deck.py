@@ -218,6 +218,57 @@ class TestClassifyRoles:
         assert "Card advantage" not in deck.classify_roles(
             "When this creature enters, draw a card.")
 
+    def test_repeatable_draw_on_a_non_upkeep_phase_is_card_advantage(self):
+        """The phase was hardcoded to `upkeep` while Magic puts the same recurring draw
+        on the end step just as often. Haliya, Guided by Light drew every turn the deck
+        gained 3 life and scored zero card advantage for it."""
+        assert "Card advantage" in deck.classify_roles(
+            "Whenever Haliya or another creature or artifact you control enters, you gain "
+            "1 life.\nAt the beginning of your end step, draw a card if you've gained 3 or "
+            "more life this turn.")
+
+    def test_a_whenever_triggered_draw_is_card_advantage(self):
+        """`Whenever X, draw a card` recurs by construction. Exemplar of Light draws on
+        every turn it gets a counter; it was read as a cantrip."""
+        assert "Card advantage" in deck.classify_roles(
+            "Whenever you gain life, put a +1/+1 counter on this creature.\nWhenever you "
+            "put one or more +1/+1 counters on this creature, draw a card. This ability "
+            "triggers only once each turn.")
+
+    def test_a_draw_PAYOFF_is_not_card_advantage(self):
+        """The false-positive class the comma discriminator exists for, and the one that
+        makes this a discrimination problem rather than a widening one. `Whenever you
+        draw a card, <effect>` puts the draw in the CONDITION — the card CARES about
+        drawing, it does not draw. A naive `whenever .* draw a card` scored 45 pool cards
+        (Chasm Skulker, Orcish Bowmasters, Queza) as card advantage, which is backwards.
+        Magic templates a trigger as `Whenever <condition>, <effect>`, so requiring the
+        draw to fall after the comma separates the two."""
+        assert "Card advantage" not in deck.classify_roles(
+            "Whenever you draw a card, put a +1/+1 counter on this creature.")
+        assert "Card advantage" not in deck.classify_roles(
+            "Flash\nWhenever an opponent draws a card, this creature deals 1 damage to "
+            "that player.")
+        # A trigger whose CONDITION contains commas must still match on the effect side.
+        assert "Card advantage" in deck.classify_roles(
+            "Whenever a Cleric, Rogue, Warrior, or Wizard you control enters, draw a card.")
+
+    def test_the_under_read_channel_now_sees_these(self):
+        """The half that made the miss invisible: both cards got SOME role (Payoff,
+        Lifegain), so `unclassified` could never name them, and the broad `_CA_CUES` net
+        missed the same phrasing the precise pattern did — the 'missable by BOTH' failure
+        the superset property exists to prevent."""
+        exemplar = ("Whenever you gain life, put a +1/+1 counter on this creature.\n"
+                    "Whenever you put one or more +1/+1 counters on this creature, draw "
+                    "a card. This ability triggers only once each turn.")
+        cards = [(1, "Exemplar of Light", "FDN", "733")]
+        carddata = {"exemplar of light": {"name": "Exemplar of Light",
+                                          "type": "Creature — Angel", "text": exemplar}}
+        unclassified, under_read, _ = deck.role_coverage_flags(cards, carddata)
+        # Now that the pattern matches, it is a COUNTED role rather than a flagged one.
+        assert "Card advantage" in deck.classify_roles(exemplar)
+        assert not [a for n, a in under_read if "card advantage" in a]
+        assert "Exemplar of Light" not in unclassified
+
     def test_fixed_damage_to_each_opponent_is_burn(self):
         assert "Burn / drain" in deck.classify_roles(
             "At the beginning of each end step, if you put a counter on a creature this "

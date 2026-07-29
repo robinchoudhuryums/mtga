@@ -12,7 +12,7 @@
 #: archetype: counter" — that triggers once per EVENT regardless of size, so the deck is
 #: archetype: built to gain life OFTEN and cheaply: Diamond Mare (every white spell),
 #: archetype: Hinterland Sanctifier and Dazzling Angel (every creature), Haliya (every
-#: archetype: creature OR artifact), five lifelink bodies, and a land that gains 2 on
+#: archetype: creature OR artifact), six lifelink bodies, and a land that gains 2 on
 #: archetype: arrival. Exemplar turns that same trigger into a CARD, which is where the
 #: archetype: deck's card advantage comes from.
 #: archetype: THE LIFE TOTAL IS ALSO A PAYOFF, which is the half that makes it "maximize
@@ -36,17 +36,19 @@
 #: protect: Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Aettir and Priwen; The Wind Crystal; Angelic Destiny; Lyra Dawnbringer
 #: tier: A — PROVISIONAL (unplayed brew, and 9 cards short of buildable). The letter sits
 #: tier: AT the metrics floor rather than above it: interaction 7 clears the A bar of 5,
-#: tier: and 7 + card advantage 1 clears the sum of 7. Protection 5 is unusually high for
+#: tier: and 7 + card advantage 3 clears the sum of 7. Protection 5 is unusually high for
 #: tier: a midrange deck and is not decoration — it is what a one-big-creature plan needs
 #: tier: to survive, and it is the axis the floor cannot credit.
-#: tier: THE MEASURED CARD ADVANTAGE OF 1 UNDER-READS THIS DECK, and unlike most such
-#: tier: cases the uncertainty channel does NOT say so — `stats` names only Angelic Destiny
-#: tier: and Aettir and Priwen as unclassified. Exemplar of Light draws on every turn it
-#: tier: gets a counter and Haliya draws at end step whenever 3 life arrived; both are
-#: tier: REPEATABLE draws, and both were classified into a different role (Payoff, Lifegain)
-#: tier: rather than left unclassified, so the under-read is invisible to the very check
-#: tier: built to catch under-reads. Inspiring Overseer adds a body plus a card. Call the
-#: tier: real figure 3, which is thin but not the 1 the vector prints.
+#: tier: CARD ADVANTAGE 3 IS THE DECK'S THIN AXIS and it is worth recording how the number
+#: tier: got here, because drafting this deck is what exposed the bug. It read 1 at first,
+#: tier: and the uncertainty channel did NOT flag it: Exemplar of Light draws on every turn
+#: tier: it gets a counter and Haliya draws at end step whenever 3 life arrived, but both
+#: tier: had been sorted into a DIFFERENT role (Payoff, Lifegain), so `unclassified` — which
+#: tier: only names cards matching NOTHING — could never reach them, and the broad cue net
+#: tier: missed the same phrasing the precise pattern did. The classifier now reads a
+#: tier: repeatable draw on any phase and any `whenever` trigger, so 3 is the counted
+#: tier: figure. It is still THIN: three sources, and Inspiring Overseer's body-plus-a-card
+#: tier: is not one of them (a one-shot cantrip is correctly excluded).
 #: tier: WHY A SINGLETON LIST GRADES A HERE: the deck is functionally redundant on the axis
 #: tier: that matters. Three cards read "whenever you gain life, put a +1/+1 counter"
 #: tier: (Ajani's Pridemate, Twinblade Paladin, Exemplar of Light), four are dedicated
