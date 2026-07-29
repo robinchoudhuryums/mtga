@@ -1,5 +1,10 @@
 # Cycle state — 2026-07
 
+> **Starting fresh? Read `.cycle/NEXT-SESSION.md` first.** It carries the cycle's
+> diagnosis (cohesion, not correctness), the agreed next task (a TASK-FIRST systems
+> map), the measurements not to re-derive, and the traps. This file is the prose
+> record of what happened; that one is what to do.
+
 ## Where I left off
 Feedback segmentation is implemented, mutation-tested, gated and committed on
 `claude/add-cards-ingested-batch-cy2tdb`. Nothing is half-done. Block:
