@@ -98,7 +98,7 @@
 
 # Cheap trigger engines (power 2 or less — Delney doubles all of these)
 1 Haliya, Guided by Light (EOE) 19
-1 Healer's Hawk (FDN) 142
+1 Momo, Friendly Flier (TLA) 29
 1 Hinterland Sanctifier (FDN) 730
 1 Ajani's Pridemate (FDN) 135
 1 Giada, Font of Hope (FDN) 141
@@ -166,12 +166,12 @@
 #~ carries the counters. Starfield Shepherd — an Angel with warp, but its tutor puts the
 #~ Plains in HAND, so it is land-drop insurance rather than the ramp a 6-drop top end
 #~ actually wants, and 5 mana is the deck's most crowded slot.
-#~ note: CONSIDERED, close — Momo, Friendly Flier (owned, 1 mana). 13 of the deck's 22
-#~ creatures fly, so its discount is live most turns. Held out over Healer's Hawk only
-#~ because the Hawk's lifelink generates a lifegain EVENT every combat, and events are
-#~ what the counter payoffs read; Momo's discount saves mana but triggers nothing. Note
-#~ it discounts the first flying CREATURE SPELL each turn, not Angelic Destiny or
-#~ Valkyrie's Call.
+#~ note: applied — Momo, Friendly Flier in for Healer's Hawk. 13 of the deck's 23
+#~ creatures fly, so the discount is live most turns. The trade is explicit and worth
+#~ remembering: the Hawk's lifelink generated a lifegain EVENT every combat and Momo
+#~ triggers nothing, so this buys tempo at the cost of one recurring counter trigger.
+#~ Note the discount applies to the first flying CREATURE SPELL each turn — not Angelic
+#~ Destiny, The Wind Crystal or Valkyrie's Call.
 #~ note: CONSIDERED — Claim Jumper (3/3 vigilance) is the pile's only REAL ramp: it puts
 #~ Plains onto the BATTLEFIELD, unlike Gloryheath Lynx and Starfield Shepherd, which
 #~ tutor to hand. Held out because it is CATCH-UP ramp — it does nothing unless an
