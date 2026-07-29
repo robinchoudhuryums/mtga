@@ -121,10 +121,15 @@ decks 20 and 46) — a constant, not a signal. Strict fires on 66%. Roster diff:
 re-scored, 4 top-cut candidates moved, deck 30's motivating case intact (`{counters}`).
 Block: `.cycle/blocks/2026-07-pool-skip-signature-broad-implement.md`.
 
-**Where I left off:** committed and pushed, nothing half-done. Two deliberate loose ends —
-the derived-data drift is now deferred for a SECOND session (see follow-ons; each deferral
-grows the diff), and a stale `__pycache__` can silently defeat a same-size mutation test
-(`rm -rf scripts/__pycache__` between runs).
+**Where I left off:** committed and pushed, nothing half-done. The derived-data drift is
+now CLEARED (see follow-on 5). One standing hazard to know: a stale `__pycache__` can
+silently defeat a same-size mutation test — `rm -rf scripts/__pycache__` between runs.
+
+**Notable from the refresh:** 7 cards the decks play were previously absent from
+card-pool.csv altogether (Grimoire, Moonshaker Cavalry, Moonstone, Vampire Nighthawk,
+Vampire Gourmand, Tragedy Feaster, Hakoda), so those decks' metrics were computed with
+them partly invisible. Only deck 43 cited an affected figure in prose, and it is fixed;
+other decks' numbers moved without any written claim depending on them.
 
 ## Open follow-ons
 See FOLLOW-ON ITEMS in each block. Highest value now:
@@ -143,9 +148,12 @@ See FOLLOW-ON ITEMS in each block. Highest value now:
 3. ~~An incremental `make refresh`~~ — DONE: `build_mana.py` reuses already-resolved rows,
    so a no-change refresh is ~1s and offline. `make refresh REFETCH=1` forces a re-price.
 4. The reverse `screen` flag (a candidate strictly WORSE than an incumbent).
-5. **Commit the derived-data drift** — now deferred TWICE (card-pool.csv ~±190 lines / +95
-   cards, card-mana.csv +94 rows). Needs a deliberate `/refresh` commit plus deck 43's tier
-   rationale re-grounded. Escalating: each deferral makes the diff larger.
+5. ~~**Commit the derived-data drift**~~ — DONE via `/refresh`: pool 15,796 → 15,899
+   unique names (103 added, 0 removed), card-mana +94 rows, 0 legality changes, nothing a
+   deck plays left the pool. Deck 43's rationale re-grounded (card advantage 11 → 12,
+   curve 2.91 → 3.0) — both figures were understated because **Marina Vendrell's
+   Grimoire**, the deck's named engine, had been missing from card-pool.csv entirely and
+   so counted as free in the curve with no `card draw` role.
 6. ~~`build_pool.py --all` incremental~~ — DONE this session (freshness skip + `--refetch`).
 7. The 7-day pool window is a guess, not a measurement — no data informs the exact number.
 
