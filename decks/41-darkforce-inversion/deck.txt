@@ -23,7 +23,7 @@
 #: tier: over a 2.67 curve — five surplus removal spells were traded for the card
 #: tier: advantage below, and 8 answers is still deep for a control deck.
 #: tier: 1. CARD ADVANTAGE was the standing weakness and is now HALF-FIXED: the measured
-#: tier:    figure is 5, up from 2, on Circle of Power and Visions of Villainy (both real
+#: tier:    figure is 6, up from 2, on Circle of Power and Visions of Villainy (both real
 #: tier:    draw-twos) plus Inspiring Overseer and Raven Eagle, whose single draws the
 #: tier:    metric deliberately excludes but which BLINK for value every turn. Still not
 #: tier:    an engine that draws 2+ at once repeatedly, which is what an A wants.

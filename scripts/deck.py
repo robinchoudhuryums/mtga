@@ -4789,6 +4789,101 @@ def recommendation_summary(rows):
     return n, agreed, disagreements, median, unsurfaced
 
 
+def recommendation_segments(rows, is_creature):
+    """Split the ledger's cut ranking by whether the CUT card was a CREATURE.
+
+    Returns `{segment: (n, agreed, median_pct)}` keyed `creature` / `noncreature` /
+    `unknown`. Exists because ONE pooled agreement rate averages two regimes that
+    differ by a factor of two, and a single number over a healthy and a broken
+    channel reads as healthy — the same saturation failure as the `Decks` column at
+    99% and the `review` verdict at 22-of-63. `cuts` scores a card by summing theme
+    weights over its tags WITHOUT normalizing for tag count, and creatures carry far
+    more tags than noncreature spells (tribes + keywords + ability tags), so they are
+    systematically protected from the cut list.
+
+    `is_creature` is INJECTED (name -> True / False / None) to keep this pure and to
+    let a test supply a fake classifier. **A None is its own bucket, never folded into
+    `noncreature`**: a card missing from `load_card_data` is unknown, and defaulting an
+    unknown to "not a creature" would silently corrupt exactly the segment that reads
+    as well-calibrated. Same rule as `lib.card_power` returning None for `*`/`X` rather
+    than inventing a number.
+    """
+    buckets = {}
+    for r in rows:
+        pct = _rec_percentile(r)
+        if pct is None:
+            continue
+        v = is_creature(r.get("Cut", ""))
+        key = "unknown" if v is None else ("creature" if v else "noncreature")
+        buckets.setdefault(key, []).append(pct)
+    out = {}
+    for key, pcts in buckets.items():
+        pcts.sort()
+        mid = len(pcts) // 2
+        median = pcts[mid] if len(pcts) % 2 else (pcts[mid - 1] + pcts[mid]) / 2
+        # `agreed` mirrors recommendation_summary: a disagreement is pct > 0.5, so an
+        # agreement is everything at or below. Keep the two in step — they are the same
+        # question asked of the same rows.
+        out[key] = (len(pcts), sum(1 for p in pcts if p <= 0.5), median)
+    return out
+
+
+def cut_creature_classifier(carddata):
+    """name -> True (creature) / False (noncreature) / None (not on file), for
+    `recommendation_segments`. Resolves a DFC by its FRONT face the way every other
+    name join here does (`load_card_data` keys it under both, but a ledger row stores
+    whatever the deck line said)."""
+    def check(name):
+        nl = (name or "").strip().lower()
+        if not nl:
+            return None
+        cd = carddata.get(nl) or carddata.get(nl.split(" // ")[0])
+        if not cd:
+            return None
+        return "Creature" in (cd.get("type") or "")
+    return check
+
+
+_SEGMENT_LABEL = {"creature": "creature cuts", "noncreature": "noncreature cuts",
+                  "unknown": "cut card not on file"}
+
+
+def _print_recommendation_segments(rows):
+    """Print the agreement rate split by creature vs noncreature cut.
+
+    Each segment is held to the SAME `_RECS_MIN_SAMPLE` floor the pooled rate is: a
+    segment rate computed off six rows is exactly the noise the floor exists to refuse,
+    and splitting a sample is the moment that becomes easy to forget."""
+    segs = recommendation_segments(rows, cut_creature_classifier(load_card_data()))
+    shown = {k: v for k, v in segs.items()
+             if k != "unknown" and v[0] >= _RECS_MIN_SAMPLE}
+    if len(shown) < 2:
+        thin = [f"{_SEGMENT_LABEL[k]} n={v[0]}" for k, v in sorted(segs.items())
+                if k != "unknown" and v[0] < _RECS_MIN_SAMPLE]
+        if thin:
+            print(f"  (by segment: {', '.join(thin)} — under ~{_RECS_MIN_SAMPLE}, "
+                  f"so no split rate; the pooled figure is all this sample supports.)")
+        return
+    print("\n  By segment — the pooled rate above averages these, so read them instead:")
+    for key in ("creature", "noncreature"):
+        if key not in shown:
+            continue
+        n, agreed, median = shown[key]
+        print(f"    {_SEGMENT_LABEL[key]:18} {agreed}/{n} ({100 * agreed / n:.0f}%)"
+              f"   median {median:.0%} toward 'keep'")
+    unk = segs.get("unknown")
+    if unk:
+        print(f"    ({unk[0]} row(s) whose cut card is not in card-library/pool — "
+              f"excluded from both, not folded into either.)")
+    lo = min(shown.items(), key=lambda kv: kv[1][1] / kv[1][0])
+    if lo[1][1] / lo[1][0] < 0.55:
+        print(f"  ⚠ {_SEGMENT_LABEL[lo[0]]} sit near a coin flip — `cuts` scores a card "
+              f"by SUMMING theme weights over its tags with no normalization for tag "
+              f"count, and creatures carry roughly twice as many tags as noncreature "
+              f"spells, so they are systematically protected. Treat the cut ranking as "
+              f"a shortlist there, not a signal; grade from the printed oracle text.")
+
+
 def cmd_feedback(args):
     """Report how the recommenders scored against the swaps actually applied."""
     rows = load_recommendations()
@@ -4848,6 +4943,7 @@ def cmd_feedback(args):
         print("  Read with care: you saw the shortlist before deciding, so a high "
               "agreement rate partly measures the list's INFLUENCE, not its accuracy. "
               "The disagreements above are the part that doesn't suffer from that.")
+        _print_recommendation_segments(rows)
     print("\nThis ledger is REPORT-ONLY and never feeds back into a score — the ranking "
           "terms are bounded and anchored by check_suggest so they can't silently "
           "reorder a tuned deck, and an automatic re-weighting would defeat that.")

@@ -290,3 +290,96 @@ class TestReportOutput:
         deck.append_recommendation(_row(**{"Cut Rank": 1, "Cut Of": 36}))
         deck.cmd_feedback(type("A", (), {"id": None})())
         assert "never feeds back into a score" in capsys.readouterr().out
+
+
+class TestSegments:
+    """The pooled agreement rate averages two regimes that differ by ~2x. A single
+    number over a healthy and a broken channel reads as healthy — the saturation
+    failure this project keeps re-learning (the `Decks` column at 99%, the `review`
+    verdict at 22-of-63). These pin the split, not the current roster's numbers."""
+
+    @staticmethod
+    def _creatures(*names):
+        """A fake injected classifier: named cards are creatures, 'Mystery ...' is
+        unknown, everything else is a noncreature."""
+        want = {n.lower() for n in names}
+        def check(name):
+            nl = (name or "").strip().lower()
+            if nl.startswith("mystery"):
+                return None
+            return nl in want
+        return check
+
+    def test_it_splits_creature_from_noncreature(self):
+        rows = ([_row(Cut="Body", **{"Cut Rank": 30, "Cut Of": 36})] * 3
+                + [_row(Cut="Bolt", **{"Cut Rank": 2, "Cut Of": 36})] * 2)
+        segs = deck.recommendation_segments(rows, self._creatures("Body"))
+        assert segs["creature"][0] == 3 and segs["creature"][1] == 0
+        assert segs["noncreature"][0] == 2 and segs["noncreature"][1] == 2
+
+    def test_an_unknown_card_is_its_own_bucket_not_a_noncreature(self):
+        """The whole point of the split is that the noncreature rate reads as
+        well-calibrated. Folding a card we cannot classify into it would corrupt
+        exactly that number — same rule as lib.card_power returning None for `*`."""
+        rows = [_row(Cut="Mystery Thing", **{"Cut Rank": 30, "Cut Of": 36})]
+        segs = deck.recommendation_segments(rows, self._creatures())
+        assert segs["unknown"][0] == 1
+        assert "noncreature" not in segs and "creature" not in segs
+
+    def test_an_unrankable_row_is_excluded_entirely(self):
+        """Mirrors recommendation_summary: no position means no data point, never a
+        silent 0 that would read as agreement."""
+        rows = [_row(Cut="Body", **{"Cut Rank": "", "Cut Of": ""})]
+        assert deck.recommendation_segments(rows, self._creatures("Body")) == {}
+
+    def test_agreed_matches_the_summary_definition(self):
+        """Both answer the same question of the same rows; a disagreement is pct > 0.5,
+        so the boundary case at exactly 0.5 must count as agreement in BOTH."""
+        rows = [_row(Cut="Body", **{"Cut Rank": 6, "Cut Of": 11})]   # pct == 0.5
+        n, agreed, dis, _median, _uns = deck.recommendation_summary(rows)
+        segs = deck.recommendation_segments(rows, self._creatures("Body"))
+        assert agreed == 1 and dis == []
+        assert segs["creature"][1] == 1
+
+    # A SYNTHETIC card universe, injected via load_card_data. Without it the report
+    # path classifies every fixture name as `unknown` (they are not real cards), no
+    # split can ever print, and the two report tests below pass vacuously — verified
+    # by mutation: dropping the per-segment floor left them green.
+    _UNIVERSE = {"bolt": {"type": "Instant"}, "body": {"type": "Creature — Bear"}}
+
+    def _inject(self, monkeypatch, tmp_path):
+        monkeypatch.setattr(deck, "RECS_CSV", str(tmp_path / "recs.csv"))
+        monkeypatch.setattr(deck, "load_card_data", lambda *a, **k: dict(self._UNIVERSE))
+
+    def test_a_thin_segment_prints_no_split_rate(self, capsys, tmp_path, monkeypatch):
+        """Each segment is held to the same _RECS_MIN_SAMPLE floor as the pooled rate.
+        Splitting a sample is exactly when that restraint gets forgotten."""
+        self._inject(monkeypatch, tmp_path)
+        for _ in range(deck._RECS_MIN_SAMPLE):
+            deck.append_recommendation(_row(Cut="Bolt", **{"Cut Rank": 1, "Cut Of": 36}))
+        deck.append_recommendation(_row(Cut="Body", **{"Cut Rank": 30, "Cut Of": 36}))
+        deck.cmd_feedback(type("A", (), {"id": None})())
+        out = capsys.readouterr().out
+        assert "Agreement:" in out            # the pooled rate still prints
+        assert "By segment" not in out        # but no split off a 1-row segment
+        assert f"n={1}" in out                # and it SAYS why, rather than going quiet
+
+    def test_two_full_segments_print_both_rates(self, capsys, tmp_path, monkeypatch):
+        """The positive case the floor test cannot prove on its own."""
+        self._inject(monkeypatch, tmp_path)
+        for _ in range(deck._RECS_MIN_SAMPLE):
+            deck.append_recommendation(_row(Cut="Bolt", **{"Cut Rank": 1, "Cut Of": 36}))
+            deck.append_recommendation(_row(Cut="Body", **{"Cut Rank": 36, "Cut Of": 36}))
+        deck.cmd_feedback(type("A", (), {"id": None})())
+        out = capsys.readouterr().out
+        assert "By segment" in out
+        assert "noncreature cuts   20/20 (100%)" in out
+        assert "creature cuts      0/20 (0%)" in out
+        # The weak segment must carry the reason, not just a number.
+        assert "coin flip" in out and "no normalization for tag count" in out
+
+    def test_the_classifier_resolves_a_dfc_by_its_front_face(self):
+        check = deck.cut_creature_classifier({"front": {"type": "Creature — Bird"}})
+        assert check("Front // Back") is True
+        assert check("Front") is True
+        assert check("Absent Card") is None
