@@ -50,7 +50,8 @@
 1 Abandoned Air Temple (TLA) 263
 1 Realm of Koh (TLA) 276
 7 Plains (MSH) 288
-9 Swamp (MSH) 292
+8 Swamp (MSH) 292
+1 Turtle Lair (TMT) 190
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 20
 #~ +Judge Magister Gabranth | SIDEGRADE (owned): WB aristocrats 2-drop that grows on your creatures/artifacts dying, but this deck isn't sac-central — ~ here; a marked upgrade in 21 / 21a / 6.
