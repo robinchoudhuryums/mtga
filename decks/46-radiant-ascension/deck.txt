@@ -39,11 +39,20 @@
 #: archetype: non-Angel, adds a +1/+1 counter, and makes it an ANGEL — which turns on Lyra
 #: archetype: (+1/+1 and lifelink) and Giada. A deck with few, expensive bodies needs its
 #: archetype: threats to come back, and this one comes back bigger and with a keyword.
+#: archetype: THE WIND CRYSTAL IS THE PAYOFF FOR ALL OF IT, and its third ability is the
+#: archetype: reason — {4}{W}{W}, {T}: creatures you control gain flying AND LIFELINK until
+#: archetype: end of turn. In a board of grown bodies that is an alpha strike that also
+#: archetype: gains the whole attack back as life, which is what "enable several lifelink
+#: archetype: bodies" actually cashes out to. Its cost reduction touches 34 white cards.
+#: archetype: Its doubling clause is precise, though: it doubles the AMOUNT of a lifegain,
+#: archetype: not the NUMBER of events, so it does NOT add Ajani's Pridemate / Twinblade /
+#: archetype: Exemplar counters. What it doubles is the road to the 25-life thresholds that
+#: archetype: Angel of Vitality and Twinblade Paladin key on.
 #: archetype: THE TOP END IS DELIBERATE. Herald of Eternal Dawn is the over-the-top
 #: archetype: finisher — a 6/6 flash flier that, with Lyra out, is a 7/7 lifelinker, and
 #: archetype: whose "you can't lose the game" is the thematic end point of a deck about
-#: archetype: life totals. Ancestor Dragon and Dawnstrike Vanguard are the repeatable
-#: archetype: engines at 6. Aettir and Priwen was CUT from this slot: 6 to cast plus 5 to
+#: archetype: life totals. Ancestor Dragon is the repeatable
+#: archetype: engine at 6. Aettir and Priwen was CUT from this slot: 6 to cast plus 5 to
 #: archetype: equip is 11 mana, and it belongs to an earlier "one enormous body" version of
 #: archetype: this deck rather than to a plan that grows several.
 #: archetype: DISTINCTNESS vs 3 and 23: same color, opposite axis. Those decks scale with
@@ -51,7 +60,7 @@
 #: archetype: on individual bodies and recurs them. vs decks 20/41/42, the roster's other
 #: archetype: lifegain shells: all three are ORZHOV and convert life into DRAIN or into
 #: archetype: CARDS. This one converts it into creature size and never touches black.
-#: protect: Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Delney, Streetwise Lookout; Stirring Hopesinger; Graduation Day; Valkyrie's Call; Lyra Dawnbringer; Giada, Font of Hope; Angelic Destiny; Herald of Eternal Dawn; Silver Sable, Mercenary Leader; Rosa, Resolute White Mage
+#: protect: The Wind Crystal; Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Delney, Streetwise Lookout; Stirring Hopesinger; Graduation Day; Valkyrie's Call; Lyra Dawnbringer; Giada, Font of Hope; Angelic Destiny; Herald of Eternal Dawn; Silver Sable, Mercenary Leader; Rosa, Resolute White Mage
 #: tier: A — PROVISIONAL (unplayed brew, 11 cards short of buildable). The letter sits AT
 #: tier: the metrics floor: interaction 5 is exactly the A bar, and 5 + card advantage 2 is
 #: tier: exactly the sum of 7, and protection is 4. There is no slack on either axis of
@@ -73,8 +82,8 @@
 #: tier: excludes Inspiring Overseer as a one-shot cantrip, though a body plus a card for
 #: tier: three mana is real value, and with Delney out the Overseer draws TWO.
 #: tier: HELD AT A RATHER THAN S by four things. 1. THE CURVE IS STILL HEAVY at 3.11 with
-#: tier: only 12 early drops, though cutting Aettir and Priwen took the 6-plus slots from
-#: tier: four down to three. 2. IT NEEDS TWO
+#: tier: only 12 early drops, though cutting Aettir and Priwen and Dawnstrike Vanguard
+#: tier: took the 6-plus slots from four down to two. 2. IT NEEDS TWO
 #: tier: HALVES — an engine creature AND a payoff — and a singleton build draws one far
 #: tier: more often than both; the counter payoffs are three-deep and the trigger engines
 #: tier: six-deep, which is the virtual-copy answer, but virtual copies are not 4-ofs.
@@ -94,7 +103,7 @@
 1 Ajani's Pridemate (FDN) 135
 1 Giada, Font of Hope (FDN) 141
 1 Diamond Mare (FDN) 770
-1 Gloryheath Lynx (DFT) 14
+1 Lita, Little Orphan Amphibian (TMT) 19
 
 # Counter amplifiers and lifelink granters
 1 Linden, the Steadfast Queen (FDN) 737
@@ -119,11 +128,11 @@
 
 # Repeatable top end (not Angels — no Lyra bonus)
 1 Ancestor Dragon (FDN) 489
-1 Dawnstrike Vanguard (EOE) 10
 
 # Recursion and permanents
 1 Valkyrie's Call (FDN) 27
 1 Angelic Destiny (FDN) 565
+1 The Wind Crystal (FIN) 43
 1 Graduation Day (SOS) 16
 1 Sheltered by Ghosts (DSK) 30
 
@@ -157,3 +166,17 @@
 #~ carries the counters. Starfield Shepherd — an Angel with warp, but its tutor puts the
 #~ Plains in HAND, so it is land-drop insurance rather than the ramp a 6-drop top end
 #~ actually wants, and 5 mana is the deck's most crowded slot.
+#~ note: CONSIDERED, close — Momo, Friendly Flier (owned, 1 mana). 13 of the deck's 22
+#~ creatures fly, so its discount is live most turns. Held out over Healer's Hawk only
+#~ because the Hawk's lifelink generates a lifegain EVENT every combat, and events are
+#~ what the counter payoffs read; Momo's discount saves mana but triggers nothing. Note
+#~ it discounts the first flying CREATURE SPELL each turn, not Angelic Destiny or
+#~ Valkyrie's Call.
+#~ note: CONSIDERED — Claim Jumper (3/3 vigilance) is the pile's only REAL ramp: it puts
+#~ Plains onto the BATTLEFIELD, unlike Gloryheath Lynx and Starfield Shepherd, which
+#~ tutor to hand. Held out because it is CATCH-UP ramp — it does nothing unless an
+#~ opponent has more lands — and the 3-slot is the deck's most crowded.
+#~ note: CONSIDERED — Mighty Mutanimals. Its Alliance clause is a genuine repeatable
+#~ counter engine and Delney doubles it (power 2), so this is not a go-wide card. Held
+#~ out on stats and slot: a 2/1 for four mana, into a 4-slot already holding Twinblade
+#~ Paladin, Exemplar of Light, Mockingbird, Rosa and now The Wind Crystal.
