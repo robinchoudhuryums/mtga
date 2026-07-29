@@ -1,5 +1,17 @@
 # Tooling Improvement Plan
 
+> **STATUS: HISTORICAL — COMPLETED CYCLE. Do not follow this as a plan.**
+>
+> Every finding below (F01–F15) was implemented and has since been superseded by
+> later work. Kept as a record of why those primitives exist, not as instructions.
+>
+> **At least one instruction here is now WRONG:** F01 specifies adding
+> `lib.full_card_text()`. It was added, never acquired a caller (every evaluator
+> already holds a carddata dict off `load_card_data()`), and was **deleted** as
+> dead code — see CLAUDE.md's Common Gotchas, "Inspect one card with `card.py`".
+>
+> For current work start at `.cycle/NEXT-SESSION.md`; for the live rules, CLAUDE.md.
+
 A structured findings list for `/broad-implement`. Each finding is self-contained:
 **why**, **files**, **changes**, and **acceptance**. Implement in the phased order
 in **Suggested implementation sequence** at the bottom (not strict ID order) —
