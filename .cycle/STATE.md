@@ -62,22 +62,47 @@ because the test found the creature rate running 0%–100% per deck — the 45% 
 statement about which decks were edited. Block:
 `.cycle/blocks/2026-07-creature-cut-hypothesis-test.md`.
 
+## Session — CLAUDE.md split (2026-07-29, later still)
+
+**CLAUDE.md 2,219 → 956 lines, nothing deleted.** Each operative rule (plus any live
+residual) stays in the auto-loaded file with an anchor; the incident, measurement and
+reasoning moved VERBATIM to `docs/gotchas.md`. Gated by `scripts/check_docs.py`
+(anchor round-trip both ways, vendored section names, per-bullet line cap).
+Conservation proved 69/69 byte-identical and mutation-tested. Cycle Workflow Config
+deliberately deferred to a follow-up pass, agreed with the user.
+Block: `.cycle/blocks/2026-07-claude-md-split.md`.
+
 ## Open follow-ons
 See FOLLOW-ON ITEMS in each block. Highest value now:
-1. **`_signature_themes` saturates in `cuts`** — the +2 keep-boost fires on 86% of
+1. **Compress Cycle Workflow Config** (336 lines) — the agreed phase 2 of the doc
+   split. The `- Testing:` subsystem entry is a single 11,600-character bullet and the
+   `Test Command:` paragraph is 2,260 words; both are reference, not operative. Riskier
+   than phase 1 because the vendored workflow commands consume that section
+   structurally — but `check_docs` already asserts its field labels, so the safety net
+   exists.
+2. **`_signature_themes` saturates in `cuts`** — the +2 keep-boost fires on 86% of
    nonland cards across the 22 `#: protect:` decks (100% in decks 20 and 46), because
    `cuts` reads the LOOSE signature set while all three `fit_strength` callers read the
    STRICT one. Switching would unify them and de-saturate to 66%; the motivating case
    (deck 30's counter-doublers) survives. Needs a roster-wide before/after diff first.
    Measured in `docs/systems-map.md` §7.
-2. `tier --audit-rationale` false negative — a `_HISTORY_CUES` cue about one card
+3. `tier --audit-rationale` false negative — a `_HISTORY_CUES` cue about one card
    suppresses a citation of ANOTHER card in the same window, even when that
    clause says the card STAYS. Deck 42a asserted "Erode stay[s]" after Erode was
    cut and the audit reported clean. Fix is the mirror of `_cites_as_arriving`;
    needs a roster sweep before landing.
-3. An incremental `make refresh` — still ~10 min for a 4-card ingest, the largest
+4. An incremental `make refresh` — still ~10 min for a 4-card ingest, the largest
    single cost in the repo. Must not fork the rebuild order into a second recipe.
-4. The reverse `screen` flag (a candidate strictly WORSE than an incumbent).
+5. The reverse `screen` flag (a candidate strictly WORSE than an incumbent).
+
+## Decided AGAINST (2026-07-29, the split)
+- Reorganising CLAUDE.md by topic. The vendored workflow commands name its sections
+  verbatim and cannot be edited here, so a rename breaks a command with no local fix.
+- Deduping the gotchas against README (26 of 57 are about a subcommand README already
+  documents). That needs a second judgement per rule and a wrong call loses information
+  silently; one destination, one judgement.
+- Rewriting the evidence while moving it. Verbatim movement is what makes the
+  conservation check an exact-equality proof instead of a fuzzy overlap.
 
 ## Decided AGAINST (2026-07-29, later)
 - Shipping any body-quality term in the cut ranking. It failed its pre-registered test;

@@ -3,7 +3,12 @@
 Written 2026-07-29, for a session with none of this one's context.
 Read this before CLAUDE.md's Common Gotchas, not instead of them.
 
-**New this cycle: `docs/systems-map.md` is a LIVE reference.** Read it when you need
+**Read `docs/gotchas.md` when a CLAUDE.md rule's reasoning matters.** CLAUDE.md now
+carries the RULE and any live residual; the incident and measurement behind it live in
+`docs/gotchas.md` under the `[G-nn]` / `[K-nn]` anchor the rule ends with. Nothing was
+deleted — open the long form before deciding a rule looks arbitrary.
+
+**Also live: `docs/systems-map.md`.** Read it when you need
 to know which command answers a question, what a workflow's real command path is, or
 why two commands disagree. It replaces re-deriving that from 2,100 lines of prose.
 
@@ -14,9 +19,10 @@ why two commands disagree. It replaces re-deriving that from 2,100 lines of pros
 - Working branch `claude/project-development-continuation-3hnw5r`, based on `origin/main`
   at the squash-merge of PR #87. If its PR is merged, restart it from `main`
   (`docs/verify-commit-tail.md` §3).
-- Gates green at handoff: `check_all` all invariants hold (11.3s — up from 5.5s, the
-  cost of the new agreement gate); **673 pytest**; `check_patterns` 145 live;
-  `check_commands` OK (33 subcommands / 33 scripts).
+- Gates green at handoff: `check_all` all invariants hold (~11s); **686 pytest**;
+  `check_patterns` 145 live; `check_commands` OK (33 subcommands / 34 scripts).
+- **CLAUDE.md is 956 lines** (was 2,219). The evidence is in `docs/gotchas.md`, linked
+  by anchor and gated by `scripts/check_docs.py`.
 - Collection: 1,853 cards, 64 roster decks. Unchanged this session — no card or deck
   data was touched, only tooling.
 
@@ -40,34 +46,44 @@ Subcommand count: **33 → 33.** A duplicate model was deleted, not added.
 
 ## 3. The task for the next session
 
-**Pick from §5. There is no single blocking item.** Note §5.5 closed this session — the
+**Pick from §5. There is no single blocking item.** Note §5.6 closed this session — the
 P/T fix-hypothesis was tested and rejected, so the list is one speculative item shorter
 and the remaining work is ordinary. The diagnosis that opened this
 cycle — *the models are fine, the composition layer is where the friction is* — is now
 one gate and one map better, and the remaining items are ordinary work rather than a
 structural gap.
 
-If you want the highest-value one: **`_signature_themes` saturation in `cuts`**
-(§5.1). It is measured, the fix is a one-line caller change, and the only thing standing
-between it and landing is the roster-wide before/after diff the standing rule requires.
+If you want the highest-value one: **phase 2 of the doc split** (§5.1) — scoped, agreed
+and with the method already proven — or **`_signature_themes` saturation in `cuts`**
+(§5.2), which is measured and needs only the roster-wide diff the standing rule requires
+before its one-line caller change can land.
 
 ## 4. What NOT to do
 
 - **Do not re-weight `cuts`' fit sum.** Simulated across all 64 decks last cycle and
   rejected; also structurally forbidden by `tests/test_recommendations.py`.
-  (§5.1 is NOT this — it unifies two definitions of "signature", it does not tune fit.)
+  (§5.2 is NOT this — it unifies two definitions of "signature", it does not tune fit.)
 - **Do not add a 34th subcommand** without saying what it replaces.
 - **Do not trust a gate you have not watched fail.** See §6 — a new gate was vacuous on
   the pair it was written for, twice, and a first run of the creature experiment measured
   a miscalibrated signal rather than the hypothesis.
-- **Do not re-propose the P/T creature signal** (§5.5). It was pre-registered, tested and
+- **Do not re-propose the P/T creature signal** (§5.6). It was pre-registered, tested and
   rejected; re-running it without new data would just re-find the same null.
 - **`docs/tooling-improvement-plan.md` is HISTORICAL** (F01–F15, all landed). Its F01
   instructs adding `lib.full_card_text`, which was later deleted as dead code.
 
 ## 5. Open work, in rough value order
 
-1. **`_signature_themes` saturates in `cuts`.** `rank_cut_candidates` gives a +2
+1. **Compress `Cycle Workflow Config` — the agreed phase 2 of the doc split.** 336
+   lines, of which the `- Testing:` subsystem entry is a single 11,600-character bullet
+   (1,530 words) and the `Test Command:` paragraph is 2,260 words. Both are reference,
+   not operative. **Riskier than phase 1**: the vendored workflow commands consume that
+   section structurally (they read `Test Command`, `Subsystems`, `Invariant Library`,
+   `Health Dimensions`, `Regression Scenarios`), so the field STRUCTURE must survive even
+   as the prose inside it moves. `check_docs` already asserts those labels. Same method
+   as phase 1 — move verbatim, prove conservation, then compress.
+
+2. **`_signature_themes` saturates in `cuts`.** `rank_cut_candidates` gives a +2
    keep-boost off the LOOSE signature set (the union of every `#: protect:` card's tags);
    all three `fit_strength` callers use the STRICT set (a theme carried by ≥2 protected
    cards) precisely because the loose one saturated there (`check_suggest` anchor 11b).
@@ -83,25 +99,25 @@ between it and landing is the roster-wide before/after diff the standing rule re
    the harness for that is in the block, and it is the same one that proved the
    `cut_keep_score` extraction byte-identical. Details: `docs/systems-map.md` §7.
 
-2. **An incremental `make refresh`.** Still ~10 min for a 4-card ingest, re-pricing
+3. **An incremental `make refresh`.** Still ~10 min for a 4-card ingest, re-pricing
    ~15.9k cards through Scryfall's rate limit. The largest single cost in the repo and
    the clearest quality-of-life win. **The rebuild ORDER is load-bearing and pinned by
    `tests/test_verify_ingest.py` — an incremental path must not fork it into a second
    recipe.** The Makefile is deliberately the one executable definition.
 
-3. **`tier --audit-rationale` STAY-marker false negative.** A `_HISTORY_CUES` change-cue
+4. **`tier --audit-rationale` STAY-marker false negative.** A `_HISTORY_CUES` change-cue
    about one card suppresses a citation of ANOTHER card in the same ±140-char window,
    even when the clause says the card **stays**. Deck 42a asserted "Erode stay[s]" after
    Erode was cut and the audit reported clean. Fix is the mirror of `_cites_as_arriving`.
    **Needs a roster sweep before landing**, per the cue-list rule. Until then a "X stays"
    claim is not covered — check by hand after a swap.
 
-4. **`doubler_restriction` parses POWER scopes only.** A type-scoped doubler (Splinter,
+5. **`doubler_restriction` parses POWER scopes only.** A type-scoped doubler (Splinter,
    Radical Rat's Ninja clause) is counted against the whole deck — 27 feeders in deck 20
    against a correct 12. The `✱ multiplier` figure on a tribal doubler is an upper bound.
    Fix is a second scope pattern feeding the same filter, not a second model.
 
-5. **The creature cut-ranking regime — the P/T hypothesis is TESTED and REJECTED.**
+6. **The creature cut-ranking regime — the P/T hypothesis is TESTED and REJECTED.**
    Do not re-propose it. Pre-registered, scored against all 31 creature cuts on
    git-reconstructed pre-swap snapshots: as a bounded ±3 co-signal it changed nothing
    (4 up / 5 down, p=1.00, agreement 48% → 48%), which was *predicted* — `fit` has a
@@ -118,7 +134,7 @@ between it and landing is the roster-wide before/after diff the standing rule re
    subgroup here is 4–6 rows. A pre-registered re-test at ~100 swaps is the honest step.
    Full method and numbers: `.cycle/blocks/2026-07-creature-cut-hypothesis-test.md`.
 
-6. Smaller: the reverse `screen` flag (a candidate strictly WORSE than an incumbent);
+7. Smaller: the reverse `screen` flag (a candidate strictly WORSE than an incumbent);
    ROADMAP Tier 1 (theme the remaining UB flavor mechanics).
 
 ## 6. Measurements — do not re-derive
@@ -128,7 +144,7 @@ Each costs a roster sweep. All still current.
 **Cut-ranking agreement** (this session): `_weakest_cut` vs `rank_cut_candidates`
 **28/64 before → 64/64 after**.
 
-**Signature-boost saturation** (this session): 86% loose / 66% strict — table in §5.1.
+**Signature-boost saturation** (this session): 86% loose / 66% strict — table in §5.2.
 
 **`suggest` vs `suggest-homes`** (this session): they use different theme gates
 (`suggest` admits any theme the deck carries, `suggest-homes` requires a CENTRAL one),

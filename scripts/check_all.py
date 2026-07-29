@@ -244,6 +244,19 @@ def main():
     except Exception as e:
         hard.append(f"model agreement check errored: {e}")
 
+    # DOC-STRUCTURE gate — CLAUDE.md is the only file a fresh session loads
+    # automatically, and it had grown to 2,219 lines because every operative rule
+    # carried the incident that produced it. The rule now lives there and the evidence
+    # in docs/gotchas.md, linked by anchor. That is a hand-kept cross-reference, and
+    # this project's recurring lesson is that those rot — so the link is checked in
+    # BOTH directions, the section names the vendored commands depend on are asserted,
+    # and a per-bullet line cap stops the two files quietly re-fusing.
+    try:
+        from check_docs import check as check_docs
+        hard += check_docs()
+    except Exception as e:
+        hard.append(f"doc structure check errored: {e}")
+
     # Soft: wishlist target drift — a target deck that can no longer cast its card
     # after a retune (e.g. deck 14 Mardu->Rakdos orphaned Neriv). Informational
     # only; never fails the build.

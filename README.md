@@ -1097,7 +1097,7 @@ hundreds of games. Read it for disasters, not for marginal swaps.
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
 derived files present **and still carrying their own columns** — a pool that lost
 its `Rarity`/`Legalities` is a hard failure, not a silent degrade — decks parse)
-plus nine **model-sanity checks** that keep the
+plus ten **model-sanity checks** that keep the
 grading/ranking models from silently drifting: the **ranking model**
 (`check_rankings.py`), **color parsing** (`check_colors.py` — also a static scan
 banning the naive inline `WUBRG` parse outside `lib.py`), the **DFC ownership-join**
@@ -1125,7 +1125,14 @@ rank first on **36 of 64 decks**, with every gate green. It registers questions 
 implementations each (the most-cuttable card, a card's format legality, copies owned, the
 interaction count, the power seed, owned-vs-craft filler filters) and fails when they
 disagree — on the live roster, not a fixture, because a synthetic case only proves the
-pair agrees on the example its author wrote. It exits
+pair agrees on the example its author wrote. Finally **doc structure**
+(`check_docs.py`): CLAUDE.md is the only file a fresh session loads automatically, so
+each operative rule lives there and its evidence — the incident, the measurement, the
+reasoning — lives in `docs/gotchas.md` under an anchor. That is a hand-kept
+cross-reference, so the gate checks the link in BOTH directions (a dangling anchor loses
+the evidence; an orphaned section is evidence nothing can reach), asserts the section
+headings the vendored workflow commands name verbatim still exist, and caps a bullet's
+length so the two files cannot quietly re-fuse. It exits
 non-zero on any hard break. It also
 emits **soft warnings** (never gating): wishlist target drift (a card whose target
 deck can no longer cast it); **new unindexed card mechanics** (`check_keywords.py`);
