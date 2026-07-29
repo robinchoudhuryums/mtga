@@ -403,7 +403,17 @@ added. The report **leads with the disagreements** — swaps where the model wan
 keep the card you cut — because an *agreement* is contaminated: you read the shortlist
 before deciding, so a high agreement rate partly measures the list's influence rather
 than its accuracy. A disagreement is a case the model got wrong either way. Below ~20
-swaps it refuses to compute a rate at all. It is **report-only and never feeds back
+swaps it refuses to compute a rate at all.
+
+The rate is **split by creature vs noncreature cut**, because one pooled number hid a
+two-fold difference: at 52 swaps the pooled figure read 63%, while noncreature cuts
+agreed 90% and creature cuts sat at 45% — a coin flip. The cause is that `cuts` scores a
+card by *summing* theme weights over its tags with no normalization for tag count, and
+creatures carry roughly twice as many tags as noncreature spells (tribes, keywords and
+ability tags), so they are systematically protected from the cut list. Normalizing was
+simulated across all 64 decks and does not fix it, so this is reported rather than
+re-weighted: **on a creature-heavy deck, treat the cut ranking as a shortlist rather
+than a signal** and grade from the printed oracle text. It is **report-only and never feeds back
 into a score** — the scoring terms are bounded and gated by `check_suggest` so they
 can't silently reorder a tuned deck, and an automatic re-weighting would defeat that
 invisibly. Note that "add not surfaced" is expected to be common: `suggest` filters to
