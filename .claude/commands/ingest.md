@@ -68,9 +68,11 @@ position. Getting it wrong is quiet: a newly released set's pool cards end up wi
 mana row until the next cycle, so they rank with no cost and no keyword tags. The
 Makefile target announces each step, so a failure is still attributable.
 
-It needs Scryfall and is slow (`build_mana --pool` prices ~15.9k cards against a rate
-limit). If Scryfall is unreachable, say which steps were skipped and that INV-02 stays
-red until they run.
+It is INCREMENTAL — each step skips what it has already done, so a small ingest fetches
+only the cards it added and a no-change run needs no network at all. (`make refresh
+REFETCH=1` forces a full re-price, for an errata sweep.) If Scryfall is unreachable and
+the batch DID add cards, say which steps were skipped and that INV-02 stays red until
+they run.
 
 ## Stage 3b — Verify the ingest actually landed
 

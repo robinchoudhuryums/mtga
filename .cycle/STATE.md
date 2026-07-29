@@ -87,6 +87,24 @@ rebuild chain in the WRONG order, invisible because `_restates_chain` scanned
 `scripts/*.py` and `.claude/commands/*.md` but never CLAUDE.md. Both fixed and
 mutation-tested. Block: `.cycle/blocks/2026-07-cycle-config-split.md`.
 
+## Session — incremental `make refresh` (/broad-implement)
+
+`build_mana.py` was the only non-incremental step of the rebuild and re-priced all ~15.9k
+pool cards every run. It now reuses already-resolved rows and fetches only new/unresolved
+names; `make refresh REFETCH=1` forces the full re-price, as a FLAG on the one target
+rather than a second recipe. Live `make refresh`: **3m40s vs ~10 min**, the mana step
+**1.2s**, and the run modified 0 existing rows / lost 0 Mana Values while adding 94 real
+new cards. Fixed a latent write bug on the way: Mana Value arrives as a float when fetched
+and a string when reused, and the old `isinstance` check would have blanked every reused
+row — the whole file on the first incremental run.
+Block: `.cycle/blocks/2026-07-incremental-refresh-broad-implement.md`.
+
+**Where I left off:** committed and pushed; nothing half-done. The one loose end is
+DELIBERATE — the live refresh produced real derived-data drift (card-pool.csv +389 lines,
+card-mana.csv +94 rows) which I reverted to keep the commit scoped. Run `/refresh` and
+commit it deliberately; it will need deck 43's tier rationale re-grounded
+(`card_advantage 11 vs live 12`, `avg_mv 2.91 vs live 3.0`).
+
 ## Open follow-ons
 See FOLLOW-ON ITEMS in each block. Highest value now:
 1. **`_signature_themes` saturates in `cuts`** — the +2 keep-boost fires on 86% of
@@ -100,9 +118,13 @@ See FOLLOW-ON ITEMS in each block. Highest value now:
    clause says the card STAYS. Deck 42a asserted "Erode stay[s]" after Erode was
    cut and the audit reported clean. Fix is the mirror of `_cites_as_arriving`;
    needs a roster sweep before landing.
-3. An incremental `make refresh` — still ~10 min for a 4-card ingest, the largest
-   single cost in the repo. Must not fork the rebuild order into a second recipe.
+3. ~~An incremental `make refresh`~~ — DONE: `build_mana.py` reuses already-resolved rows,
+   so a no-change refresh is ~1s and offline. `make refresh REFETCH=1` forces a re-price.
 4. The reverse `screen` flag (a candidate strictly WORSE than an incumbent).
+5. Commit the derived-data drift the refresh surfaced (see "Where I left off"), and
+   re-ground deck 43's tier rationale with it.
+6. `build_pool.py --all` is now the bulk of `make refresh` (~90 paginated requests, the
+   whole pool rewritten from a full search). It could take the same incremental treatment.
 
 ## Decided AGAINST (2026-07-29, the split)
 - Reorganising CLAUDE.md by topic. The vendored workflow commands name its sections

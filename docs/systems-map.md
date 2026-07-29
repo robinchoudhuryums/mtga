@@ -32,7 +32,7 @@ resolve two answers by hand. Everything else is context for those.
 |---|---|---|---|
 | 1 | *route the paste* | which of 5 writers owns this data | — |
 | 2 | `reconcile_crafts.py <export>` / `import_arena.py` / `import_collection.py` | dry-run diff, then `--apply` | <1s |
-| 3 | `make refresh` | rebuilt derived data | **~10 min** |
+| 3 | `make refresh` | rebuilt derived data | seconds–minutes (incremental) |
 | 4 | `verify_ingest.py <export>` | per-card present / at count / mana-covered | <1s |
 | 5 | `card.py "<name>"` per new card | full text, legality, owned, decks | 0.3s |
 | 6 | `deck.py suggest-homes "<name>"` per new card | ranked homes + a cut hint | 3.1s |
@@ -45,10 +45,11 @@ resolve two answers by hand. Everything else is context for those.
   which is the only one that can lower a count). Nothing detects a wrong choice
   afterwards: both outcomes leave `check_all` green. The skill routes it; a human
   answering "is this a deck list or a collection export?" is the actual gate.
-- ⚖ **Step 3 costs the same for a 4-card ingest as for a full rebuild** — ~10 min,
-  re-pricing ~15.9k cards through Scryfall's rate limit. Nothing about the ingest loop
-  needs that. This is the largest single cost in the repo and the clearest
-  quality-of-life win outstanding (see §7).
+- **Step 3 used to cost the same for a 4-card ingest as for a full rebuild** — ~10 min,
+  re-pricing ~15.9k cards through Scryfall's rate limit. **Fixed:** every step now skips
+  work it has already done, so a no-change refresh takes seconds and needs no network,
+  and a four-card ingest fetches four cards. `make refresh REFETCH=1` forces the full
+  re-price. No longer a reconciliation point.
 - **Step 4 is the one nothing else covers.** `check_all` proves the library is
   self-consistent, not that it contains what you pasted; a card that never arrived
   breaks no invariant.
@@ -232,8 +233,11 @@ ordinary tune), and excluding deck 46 moves the segment only 45% → 56%. All ex
 - `doubler_restriction` parses POWER scopes only, so a type-scoped doubler (Splinter's
   Ninja clause) counts against the whole deck — 27 feeders in deck 20 against a
   correct 12. The `✱ multiplier` figure on a tribal doubler is an upper bound.
-- `make refresh` has no incremental path (§2). Any fix must not fork the rebuild order
-  into a second recipe — the Makefile is deliberately the one executable definition.
+- ~~`make refresh` has no incremental path~~ — **done.** Every step now skips work it has
+  already done; `build_mana.py` reuses its already-resolved rows instead of re-pricing all
+  ~15.9k pool cards. Implemented as a flag on the one target (`make refresh REFETCH=1`
+  forces the full re-price), never a second recipe — the order is the thing that must have
+  a single definition.
 
 ---
 
@@ -242,8 +246,8 @@ ordinary tune), and excluding deck 46 moves the segment only 45% → 56%. All ex
 - **33 `deck.py` subcommands.** No task uses more than ~14 of them; the roster-level
   five (`audit`, `rotation`, `brawl`, `sync`, `verify`) belong to `/roster-review`
   alone, which is why they were unreachable until that skill existed.
-- **Cost is not the constraint.** The entire tune-deck gather phase is ~10s. What is
-  expensive is `make refresh` (~10 min) and human attention.
+- **Cost is not the constraint.** The entire tune-deck gather phase is ~10s, and
+  `make refresh` is now incremental. What is expensive is human attention.
 - **The commands that print EVIDENCE produce the fewest bad calls.** `cuts` and `swap`
   print full oracle text; `suggest-homes` handed out KEY/role-player/tangential labels
   with no text at all and produced the worst misread of the cycle. Every verdict

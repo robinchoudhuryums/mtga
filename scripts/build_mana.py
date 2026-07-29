@@ -20,6 +20,7 @@ Usage:
 
 import argparse
 import csv
+import io
 import json
 import os
 import sys
@@ -112,6 +113,38 @@ def collect_names(paths):
     return names
 
 
+def load_existing(path):
+    """{name_lower: (cost, mv, keywords)} for the rows already RESOLVED in `path`.
+
+    A row counts as resolved when its **Mana Value** is non-blank. That is the load-
+    bearing distinction: an unmatched name is written cost/mv/keywords all blank, while
+    a LAND legitimately has a blank Mana Cost but a real Mana Value of 0 — 673 of them
+    in the current pool against 1 genuinely unresolved row. Keying "resolved" off the
+    cost would therefore re-fetch every land forever and, worse, would let a truly
+    unresolved row look settled.
+
+    Keyed by the row's exact Card Name only — deliberately NOT also under the DFC front
+    face the way `_store` indexes a fetched card. Reuse must never answer for a name it
+    was not written for: a wrong cost that persists across runs is far worse than a
+    redundant fetch, and an exact-match miss just costs one lookup.
+    """
+    out = {}
+    if not os.path.exists(path):
+        return out
+    try:
+        with open(path, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                name = (r.get("Card Name") or "").strip()
+                mv = (r.get("Mana Value") or "").strip()
+                if not name or not mv:
+                    continue
+                out[name.lower()] = ((r.get("Mana Cost") or "").strip(), mv,
+                                     (r.get("Keywords") or "").strip())
+    except OSError:
+        return {}
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser(description="Build card-mana.csv from Scryfall.")
     ap.add_argument("--pool", action="store_true", help="also include card-pool.csv names")
@@ -119,6 +152,9 @@ def main():
     ap.add_argument("--allow-shrink", action="store_true",
                     help="permit overwriting even when the new file would be far smaller "
                          "(a deliberate narrowing back to library-only scope)")
+    ap.add_argument("--refetch", action="store_true",
+                    help="re-fetch every name instead of reusing the rows already "
+                         "resolved in the output file (the slow, full rebuild)")
     args = ap.parse_args()
 
     paths = [DEFAULT_CSV] + ([POOL_CSV] if args.pool and os.path.exists(POOL_CSV) else [])
@@ -145,14 +181,38 @@ def main():
                f"run is library-only. Pass --pool to keep coverage, or --allow-shrink if the "
                f"narrowing is intended.")
         return 1
-    eprint(f"Fetching mana costs for {len(names)} card(s)...")
-    try:
-        data = fetch(names)
-    except ScryfallUnavailable as e:
-        eprint(f"ERROR: could not reach Scryfall: {e}\n"
-               f"       A slow/blocked Scryfall stopped the mana build; the existing "
-               f"card-mana.csv was left unchanged. Rerun where it's reachable.")
-        return 1
+    # INCREMENTAL by default: a card's printed mana cost and keywords do not change, so
+    # re-pricing all ~15.9k pool cards on every `make refresh` bought nothing and cost
+    # ~10 minutes against Scryfall's rate limit — the same for a four-card ingest as for
+    # a full rebuild, which is why the ingest loop was the most expensive thing here.
+    # Reuse the rows already resolved and fetch only what is NEW or still unresolved
+    # (a blank row is retried, so a name that failed last time gets another chance).
+    # `--refetch` restores the full rebuild for an errata/rebalance sweep.
+    #
+    # This does NOT fork the rebuild recipe. The Makefile step is still
+    # `build_mana.py --pool`; it simply stops doing work it already did. Adding a second
+    # "quick refresh" target was the obvious alternative and is exactly what CLAUDE.md
+    # forbids — the order is the one thing that must have a single definition.
+    reuse = {} if args.refetch else load_existing(args.out)
+    todo = [n for n in names if n.lower() not in reuse]
+    if reuse:
+        eprint(f"Reusing {len(names) - len(todo)} already-resolved row(s) from "
+               f"{os.path.basename(args.out)}; {len(todo)} to fetch. "
+               f"(--refetch for a full rebuild.)")
+    data = dict(reuse)
+    if todo:
+        eprint(f"Fetching mana costs for {len(todo)} card(s)...")
+        try:
+            data.update(fetch(todo))
+        except ScryfallUnavailable as e:
+            eprint(f"ERROR: could not reach Scryfall: {e}\n"
+                   f"       A slow/blocked Scryfall stopped the mana build; the existing "
+                   f"card-mana.csv was left unchanged. Rerun where it's reachable.")
+            return 1
+    else:
+        # Nothing to fetch means nothing to ask Scryfall for, so a no-change refresh now
+        # completes OFFLINE. Worth stating rather than leaving the reader to infer it.
+        eprint("Nothing new to fetch — every name already has a resolved row.")
 
     # A name Scryfall's batch didn't return gets a BLANK row. That is the right value
     # (we must not invent a cost), but it must not be SILENT: this file is rewritten
@@ -163,13 +223,38 @@ def main():
     # legitimately has an empty cost but IS returned, so it never lands here.
     unresolved = [n for n in names if n.lower() not in data]
 
-    def _write(fh):
-        w = csv.writer(fh)
-        w.writerow(["Card Name", "Mana Cost", "Mana Value", "Keywords"])
-        for n in names:
-            cost, mv, kw = data.get(n.lower(), ("", "", ""))
-            w.writerow([n, cost, int(mv) if isinstance(mv, (int, float)) else "", kw])
-    atomic_write(args.out, _write)
+    # Mana Value arrives in two shapes now and BOTH must render the same: Scryfall's
+    # `cmc` is a float, while a reused row carries the string already in the file. The
+    # original `int(mv) if isinstance(mv, (int, float)) else ""` silently blanked
+    # anything non-numeric — which with reuse would have wiped the Mana Value of every
+    # row it reused, i.e. the whole file on the first incremental run. A blank stays
+    # blank, because that is how an unresolved name is recorded.
+    def _mv_out(mv):
+        if isinstance(mv, (int, float)):
+            return int(mv)
+        return (mv or "").strip()
+
+    buf = io.StringIO()
+    w = csv.writer(buf)
+    w.writerow(["Card Name", "Mana Cost", "Mana Value", "Keywords"])
+    for n in names:
+        cost, mv, kw = data.get(n.lower(), ("", "", ""))
+        w.writerow([n, cost, _mv_out(mv), kw])
+    rendered = buf.getvalue()
+
+    # An unchanged refresh should be a no-op, not a rewrite: `atomic_write` takes a
+    # timestamped `.bak` every time, and now that a refresh is cheap enough to run often
+    # that would litter backups of a file that never changed.
+    if os.path.exists(args.out):
+        try:
+            with open(args.out, newline="", encoding="utf-8") as fh:
+                if fh.read() == rendered:
+                    print(f"{args.out} already up to date: {len(names)} cards, unchanged.")
+                    return 0
+        except OSError:
+            pass
+
+    atomic_write(args.out, lambda fh: fh.write(rendered))
     print(f"Wrote {args.out}: {len(names)} cards"
           + (f", {len(unresolved)} unresolved (blank rows)." if unresolved else "."))
     if unresolved:

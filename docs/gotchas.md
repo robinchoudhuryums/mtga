@@ -458,9 +458,12 @@ pass `--all` / `--pool` (as `/refresh` does) to keep full coverage. **Both now R
 a >50% shrink** (`--allow-shrink` to force): `build_pool.py` always did, and
 `build_mana.py` gained the same guard after the file was found at 1,695 rows against a
 15,850-card pool — this exact mistake, which had also silently disabled the one-card
-keyword heuristic that needs a pool-sized corpus. The full-pool mana build is slow
-(Scryfall rate limits ~15.9k cards, plus a front-face pass); the pool build itself is
-fast (paginated search, ~90 requests). `build_mana.py` falls back to a **front-face
+keyword heuristic that needs a pool-sized corpus. A FULL-refetch mana build is slow
+(Scryfall rate limits ~15.9k cards, plus a front-face pass), which is why
+`build_mana.py` is now INCREMENTAL by default — it reuses the rows already resolved and
+fetches only what is new or still unresolved, with `--refetch` (or
+`make refresh REFETCH=1`) for the full re-price. The pool build itself is fast
+(paginated search, ~90 requests). `build_mana.py` falls back to a **front-face
 `/cards/named` lookup** for names the batch endpoint won't match — SPLIT and room cards
 (`Life // Death`), ~630 of them — and accepts the result only when the resolved card IS
 the one asked for, since a bare front name can be a different card and a wrong cost is

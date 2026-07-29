@@ -92,11 +92,12 @@ one-line caller change can land. The doc split is finished; both phases are done
    the harness for that is in the block, and it is the same one that proved the
    `cut_keep_score` extraction byte-identical. Details: `docs/systems-map.md` §7.
 
-2. **An incremental `make refresh`.** Still ~10 min for a 4-card ingest, re-pricing
-   ~15.9k cards through Scryfall's rate limit. The largest single cost in the repo and
-   the clearest quality-of-life win. **The rebuild ORDER is load-bearing and pinned by
-   `tests/test_verify_ingest.py` — an incremental path must not fork it into a second
-   recipe.** The Makefile is deliberately the one executable definition.
+2. ~~**An incremental `make refresh`**~~ — **DONE.** `build_mana.py` was the only
+   non-incremental step (`enrich.py` already fills blanks only, `build_gallery.py` caches
+   images) and it re-priced all ~15.9k pool cards every run. It now reuses already-resolved
+   rows and fetches only new or unresolved names: a no-change refresh takes ~1s and needs
+   NO network; a four-card ingest fetches four cards. `make refresh REFETCH=1` forces the
+   full re-price. Implemented as a flag on the one target, not a second recipe.
 
 3. **`tier --audit-rationale` STAY-marker false negative.** A `_HISTORY_CUES` change-cue
    about one card suppresses a citation of ANOTHER card in the same ±140-char window,

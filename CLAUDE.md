@@ -243,7 +243,10 @@ directions.
   blank as untrusted; set `hand` when you grade one. [G-17]
 - **`build_pool.py --all` and `build_mana.py --pool` are the FULL-coverage scopes.** Both
   DEFAULT to something smaller, so a plain rebuild silently shrinks coverage back; both
-  now refuse a >50% shrink (`--allow-shrink` to force). [G-18]
+  now refuse a >50% shrink (`--allow-shrink` to force). `build_mana.py` is also
+  INCREMENTAL — it reuses already-resolved rows and re-fetches only new or unresolved
+  names, so `make refresh` is cheap; `--refetch` (`make refresh REFETCH=1`) forces the
+  full re-price after an errata or rebalance. [G-18]
 - **`card-wishlist.csv` is UNOWNED craft targets**, with DFCs under their full
   `Front // Back` name. `--rank` blends a hand-graded Power 50/50 with theme fit plus a
   bounded cross-deck breadth bonus; **lands rank on manabase value instead**, since theme
