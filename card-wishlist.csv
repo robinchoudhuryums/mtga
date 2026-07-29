@@ -74,6 +74,9 @@ Genesis Wave,Sorcery,Reveal the top X cards of your library. You may put any num
 Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)",G,Elder; Dinosaur; trample; evasion,FDN,222,Rare,28,,6.5,hand
 Jazal Goldmane,Legendary Creature — Cat Warrior,"First strike (This creature deals combat damage before creatures without first strike.)
 {3}{W}{W}: Attacking creatures you control get +X/+X until end of turn, where X is the number of attacking creatures.",W,Cat; Warrior; pump; first strike; combat,FDN,497,Rare,36,,4.5,hand
+Leyline Axe,Artifact — Equipment,"If this card is in your opening hand, you may begin the game with it on the battlefield.
+Equipped creature gets +1/+1 and has double strike and trample.
+Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; equipment; pump; equip,FDN,129,Rare,38a,"Double strike ON CLOUD is the 4x line: Cloud doubles triggers of gear attached to HIM, and he has no double strike natively, so each combat-damage equipment fires 4x (two damage steps, each doubled). May also START on the battlefield from the opening hand. Held out of the 60 only on the 17-equipment / 16-creature ratio; Fireshrieker is the owned-cost version already maindecked.",7.0,hand
 Nullpriest of Oblivion,Creature — Vampire Cleric,"Kicker {3}{B} (You may pay an additional {3}{B} as you cast this spell.)
 Lifelink
 Menace (This creature can't be blocked except by two or more creatures.)
