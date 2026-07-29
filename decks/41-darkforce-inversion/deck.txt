@@ -20,10 +20,10 @@
 #: archetype: ETB text, not evasion.
 #: tier: B — Orzhov blink-value control, one band BELOW the metrics floor of A, and
 #: tier: deliberately so. The floor reads A on interaction 8 (six of it instant-speed)
-#: tier: over a 2.64 curve — five surplus removal spells were traded for the card
+#: tier: over a 2.67 curve — five surplus removal spells were traded for the card
 #: tier: advantage below, and 8 answers is still deep for a control deck.
 #: tier: 1. CARD ADVANTAGE was the standing weakness and is now HALF-FIXED: the measured
-#: tier:    figure is 5, up from 2, on Circle of Power and Visions of Villainy (both real
+#: tier:    figure is 6, up from 2, on Circle of Power and Visions of Villainy (both real
 #: tier:    draw-twos) plus Inspiring Overseer and Raven Eagle, whose single draws the
 #: tier:    metric deliberately excludes but which BLINK for value every turn. Still not
 #: tier:    an engine that draws 2+ at once repeatedly, which is what an A wants.
@@ -81,7 +81,7 @@ Deck
 1 Red Room Recruit (MSH) 110
 1 Virus Beetle (EOE) 124
 1 Corrupt Court Official (TLA) 92
-1 Hecteyes (FIN) 103
+1 Koya, Death from Above (TMT) 11
 1 A.I.M. Synthoids (MSH) 242
 1 Fortress Kin-Guard (TDM) 12
 1 Honored Knight-Captain (EOE) 22
@@ -115,7 +115,7 @@ Deck
 
 #~ +Painful Quandary | -Stroke of Midnight | PRO-synergy here in a way its black flavour hides: it is the one taxer on the list that is NOT symmetric (it triggers only on OPPONENTS' spells and costs you nothing), and pushing their total DOWN widens the exact gap Mister Negative converts into cards. Held out of the 60 only on curve — MV 5 against a 2.42 average, and it does nothing on an empty board. Owned.
 #~ +The Mind Stone | -Airbender Ascension | The ONLY way to re-trigger a noncreature ETB in this deck: all six blink spells read "exile target CREATURE you control", while the Mind Stone's harnessed ability blinks any nonland permanent — so it is what unlocks Airbender Ascension, Stolen Stark Tech, Eerie Gravestone and Foraging Wickermaw. Indestructible, so it survives the removal that answers the rest of the engine. Slow: {5}{W} plus a tap to harness, and a plain mana rock before that. Owned.
-#~ +Aang, the Last Airbender | -Hecteyes | A value ETB that is also interaction, on a flier — airbend exiles a nonland permanent, and blinking Aang repeats it. Not an ANSWER, though: airbend lets them recast it for {2}, so it buys tempo rather than removing a card. Owned.
+#~ note: applied — Koya, Death from Above in for Hecteyes.
 #~ +Ajani, Outland Chaperone | -Fortress Kin-Guard | Makes blockers, has removal, and is inherently hard for a creature deck to attack through. The ultimate looks at the top X cards where X is your LIFE TOTAL — which is this deck's posture exactly, and the reason it reads better here than in 42 or 43. Capped by a -2 that only hits TAPPED creatures. Owned.
 #~ +Stirring Hopesinger | -Honored Knight-Captain | Flying lifelink (right posture) and repartee fires off BOTH the removal and the blink spells, since this deck's blinks target a creature. It is a payoff rather than a blink target, though — no ETB of its own. Owned.
 #~ +Silver Sable, Mercenary Leader | -Invasion Reinforcements | Blinkable (it has an ETB), but the ETB is only a +1/+1 counter in a deck that does not care about counters. The weakest of the six sidegrades; listed for completeness. Owned.

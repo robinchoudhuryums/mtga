@@ -56,7 +56,10 @@
 #: tier: when it trades. Call the real figure 7. Heartless Act was CUT on exactly that
 #: tier: reasoning — it was the one CONDITIONAL answer ("creature with no counters"), and
 #: tier: what the uncounted pieces cannot replace is a cheap unconditional answer on demand,
-#: tier: which is why Hero's Downfall and Erode stay.
+#: tier: which is why Hero's Downfall stays. Erode was CUT for Ruthless Lawbringer, which
+#: tier: answers ANY nonland permanent and pays its sacrifice cost into the engine instead
+#: tier: of ramping the opponent a basic — at the price of sorcery speed, taking the suite
+#: tier: to 1 instant against 4 sorcery.
 #: tier: Held at B by three further things the floor cannot see:
 #: tier: 1. CARD ADVANTAGE 3 IS REAL BUT CONDITIONAL, which is the part the number still
 #: tier:    cannot express. Treacherous Greed's draw-three clears the bar outright;
@@ -173,7 +176,7 @@ Deck
 1 Starseer Mentor (BLB) 233
 
 # Removal
-1 Erode (SOS) 15
+1 Ruthless Lawbringer (OTJ) 229
 1 Hero's Downfall (FDN) 175
 
 # Lands — 25, Orzhov
