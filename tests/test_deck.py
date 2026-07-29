@@ -1790,11 +1790,27 @@ class TestDoublerCoSignal:
     TRIG_DBL = ("If a triggered ability of a creature you control with power 2 or less "
                 "triggers, that ability triggers an additional time.")
 
+    LIFE_DBL = "If you would gain life, you gain twice that much life instead."
+    LIFE_PLUS1 = "If you would gain life, you gain that much life plus 1 instead."
+
     def test_axis_detection(self):
         assert deck.doubler_axis(self.TOKEN_DBL) == "tokens"
         assert deck.doubler_axis(self.TRIG_DBL) == "triggers"
         assert deck.doubler_axis("Shock deals 2 damage to any target.") is None
         assert deck.doubler_axis("") is None
+
+    def test_lifegain_is_an_axis(self):
+        """The Wind Crystal read as NO doubler at all because the axis list stopped at
+        tokens/counters/triggers, so it got no support, no fit bump, and `cuts` ranked it
+        as an ordinary artifact."""
+        assert deck.doubler_axis(self.LIFE_DBL) == "lifegain"
+
+    def test_a_plus_N_lifegain_replacement_is_not_a_doubler(self):
+        """The discriminator the lifegain axis needs: a replacement that is NOT a doubling
+        is templated identically. Angel of Vitality is +1, not x2, and would qualify on the
+        other axes' looser `instead` alternative."""
+        assert deck.doubler_axis(self.LIFE_PLUS1) != "lifegain"
+
 
     def test_boost_is_zero_below_the_floor_and_rises_then_caps(self):
         assert deck.doubler_boost(0) == 0
@@ -1823,6 +1839,86 @@ class TestDoublerCoSignal:
         cd = {"star": {"type": "Creature — Elemental",
                        "text": "Whenever this creature attacks, draw a card.", "power": "*"}}
         assert deck.doubler_support("triggers", cards, cd, max_power=2) == 0
+
+
+class TestCutsMultiplierCoSignal:
+    """A multiplier's value is in the REST of the deck, and both halves of the cut score
+    are blind to it: theme-fit sees few tags, `_role_credit` sees no role (doubling a
+    trigger is not a functional role). Delney ranked as the WEAKEST card in deck 46 while
+    `suggest-homes`, reading the SAME primitive, scored it correctly — the model was right
+    and one caller never asked."""
+
+    def test_zero_below_the_floor(self):
+        assert deck._cuts_multiplier_adj(0) == 0
+        assert deck._cuts_multiplier_adj(deck._CUTS_MULT_MIN_SOURCES - 1) == 0
+
+    def test_rises_with_support_then_caps(self):
+        lo = deck._cuts_multiplier_adj(deck._CUTS_MULT_MIN_SOURCES)
+        hi = deck._cuts_multiplier_adj(deck._CUTS_MULT_MIN_SOURCES + 4)
+        assert 0 < lo < hi <= deck._CUTS_MULT_CAP
+        assert deck._cuts_multiplier_adj(10_000) == deck._CUTS_MULT_CAP
+
+    def test_never_negative(self):
+        """It may only RAISE a keep-score. The no-support case is already handled by theme
+        fit, so subtracting there would punish the same card twice."""
+        assert min(deck._cuts_multiplier_adj(n) for n in range(0, 60)) >= 0
+
+
+class TestStrictUpgrades:
+    """`screen`'s answer to "you already run a worse version of this". Prayer of Binding is
+    Liminal Hold plus Flash -- identical cost, identical text -- and nothing noticed while
+    both sat in the same conversation."""
+
+    HOLD = ("When Liminal Hold enters, exile up to one target nonland permanent an "
+            "opponent controls until Liminal Hold leaves the battlefield. You gain 2 life.")
+    PRAYER = ("Flash\nWhen Prayer of Binding enters, exile up to one target nonland "
+              "permanent an opponent controls until Prayer of Binding leaves the "
+              "battlefield. You gain 2 life.")
+
+    def _world(self):
+        carddata = {"liminal hold": {"name": "Liminal Hold", "type": "Enchantment",
+                                     "text": self.HOLD},
+                    "prayer of binding": {"name": "Prayer of Binding", "type": "Enchantment",
+                                          "text": self.PRAYER},
+                    "bear": {"name": "Bear", "type": "Creature — Bear", "text": ""}}
+        mana = {"liminal hold": ("{3}{W}", 4), "prayer of binding": ("{3}{W}", 4),
+                "bear": ("{1}{G}", 2)}
+        return carddata, mana
+
+    def test_flags_the_extra_clause(self):
+        cd, mana = self._world()
+        cards = [(1, "Liminal Hold", "ECL", "24")]
+        assert deck.strict_upgrades("Prayer of Binding", self.PRAYER, 4,
+                                    cards, cd, mana) == ["Liminal Hold"]
+
+    def test_is_not_symmetric(self):
+        """The worse card must not read as an upgrade of the better one."""
+        cd, mana = self._world()
+        cards = [(1, "Prayer of Binding", "FDN", "739")]
+        assert deck.strict_upgrades("Liminal Hold", self.HOLD, 4, cards, cd, mana) == []
+
+    def test_identical_text_and_cost_is_redundancy_not_an_upgrade(self):
+        """Two copies of the same effect are often GOOD (virtual copies). Calling that an
+        upgrade would fire the flag on every deck's own redundancy."""
+        cd, mana = self._world()
+        cd["twin"] = {"name": "Twin", "type": "Enchantment", "text": self.HOLD}
+        mana["twin"] = ("{3}{W}", 4)
+        cards = [(1, "Liminal Hold", "ECL", "24")]
+        assert deck.strict_upgrades("Twin", self.HOLD, 4, cards, cd, mana) == []
+
+    def test_a_textless_incumbent_is_never_upgraded(self):
+        """A vanilla creature has an EMPTY clause set, which is a subset of everything —
+        so without a guard every card would 'strictly upgrade' every vanilla."""
+        cd, mana = self._world()
+        cards = [(1, "Bear", "XXX", "1")]
+        assert deck.strict_upgrades("Prayer of Binding", self.PRAYER, 4,
+                                    cards, cd, mana) == []
+
+    def test_a_more_expensive_card_is_not_an_upgrade(self):
+        cd, mana = self._world()
+        cards = [(1, "Liminal Hold", "ECL", "24")]
+        assert deck.strict_upgrades("Prayer of Binding", self.PRAYER, 9,
+                                    cards, cd, mana) == []
 
 
 class TestReferenceTableMemo:

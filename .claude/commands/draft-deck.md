@@ -54,10 +54,19 @@ Stage 5** — grade it from the floor, don't guess.
    pure-identity lens. If it duplicates a deck's *identity* (shared dominant specific
    theme + colors + win-con), pivot the plan (a different payoff/axis) before tuning
    further — that's how deck 40 avoided being "deck 30 minus red".
-2. `deck.py cuts NN` (weakest-fit, full text) + `deck.py suggest NN --owned` /
+2. **`python3 scripts/deck.py screen NN <the cards you did NOT use>`** — re-score the
+   REJECTED pile against the deck as it now stands. This is not optional bookkeeping:
+   a pile graded against the first draft's plan keeps those verdicts after the plan
+   changes, and re-reading only the cards the user re-raises leaves the rest stale
+   (deck 46 lost Shrike Force, Linden and The Wind Crystal that way, and kept an
+   exclusion note for Prayer of Binding that compared it to the wrong card). Run it
+   again after ANY change of plan, not just once. It also flags a candidate that is a
+   ★ STRICT UPGRADE of a card already in the 60, and a ✱ multiplier whose value is in
+   the rest of the deck rather than its own text.
+3. `deck.py cuts NN` (weakest-fit, full text) + `deck.py suggest NN --owned` /
    `--needs` — trim off-plan filler and slot owned upgrades. Honor the Player Profile
    (protect signature/spice, keep it flavorful). Preview any swap with `deck.py swap`.
-3. `python3 scripts/deck.py tier NN` — read the metrics floor and set `#: tier:` to a
+4. `python3 scripts/deck.py tier NN` — read the metrics floor and set `#: tier:` to a
    letter you can DEFEND (at most one band above the floor; never auto-inflate — it's
    a human competitive judgment). Add a rationale; mark PROVISIONAL if it's a WIP brew.
 

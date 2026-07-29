@@ -150,6 +150,12 @@ def _pattern_groups():
     # here mis-scores suggest-homes silently.
     for axis, pats in deck._DOUBLER_AXES.items():
         out += [(f"deck._DOUBLER_AXES[{axis}]", p, "norm") for p in pats]
+    # `screen`'s strict-upgrade test normalises a card's SELF-REFERENCE before comparing
+    # two cards' clauses. If this goes dead, modern "this creature"-templated cards stop
+    # matching their own older "<Name>"-templated equivalents and the upgrade flag simply
+    # never fires — a silent false negative in the one check built to catch a silent
+    # false negative.
+    out.append(("deck._UPGRADE_SELF_RE", deck._UPGRADE_SELF_RE, "norm"))
     # The whole of lib.structural_distinctiveness. card_distinctiveness returns
     # max(tag_score, structural), so a dead pattern here drops the structural signal
     # to 0 and the max() hides it — no error, no visible count change.

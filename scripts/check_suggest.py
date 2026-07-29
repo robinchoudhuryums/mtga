@@ -431,6 +431,40 @@ def check():
     if deck.doubler_restriction("twice that many of those tokens") is not None:
         errs.append("doubler_restriction must be None for an unrestricted doubler.")
 
+    # (16) The CUTS side of the same signal. A multiplier's worth is in the rest of the
+    #     deck, and BOTH halves of the cut score are blind to it: theme-fit sees few tags
+    #     and `_role_credit` sees no role, because "doubles a trigger" is not a role. So
+    #     Delney ranked as the WEAKEST card in deck 46 while `suggest-homes`, reading the
+    #     same primitive, scored it correctly — the model was right and one caller never
+    #     asked. Bounded and ZERO below the floor, because a doubler with nothing to
+    #     double genuinely is cuttable; it must never LOWER a keep-score, or the
+    #     no-support case gets punished twice (theme-fit already handles it).
+    if deck._cuts_multiplier_adj(0) != 0 or \
+            deck._cuts_multiplier_adj(deck._CUTS_MULT_MIN_SOURCES - 1) != 0:
+        errs.append("_cuts_multiplier_adj must be ZERO below _CUTS_MULT_MIN_SOURCES — a "
+                    "doubler with nothing to double is genuinely cuttable.")
+    if deck._cuts_multiplier_adj(10_000) > deck._CUTS_MULT_CAP:
+        errs.append(f"_cuts_multiplier_adj must be capped at _CUTS_MULT_CAP "
+                    f"({deck._CUTS_MULT_CAP}); got {deck._cuts_multiplier_adj(10_000)}.")
+    if min(deck._cuts_multiplier_adj(n) for n in range(0, 40)) < 0:
+        errs.append("_cuts_multiplier_adj must never be NEGATIVE — the no-support case is "
+                    "already handled by theme fit, and subtracting punishes it twice.")
+    _m_lo = deck._cuts_multiplier_adj(deck._CUTS_MULT_MIN_SOURCES)
+    _m_hi = deck._cuts_multiplier_adj(deck._CUTS_MULT_MIN_SOURCES + 4)
+    if not (_m_lo < _m_hi):
+        errs.append("_cuts_multiplier_adj must RISE with support — a doubler is worth "
+                    "what it doubles.")
+    # The LIFEGAIN axis, added because The Wind Crystal read as no doubler at all. The
+    # discriminator matters: a replacement effect that is not a DOUBLING is templated
+    # identically ("you gain that much life plus 1 instead" — Angel of Vitality).
+    if deck.doubler_axis("If you would gain life, you gain twice that much life "
+                         "instead.") != "lifegain":
+        errs.append("doubler_axis no longer detects a lifegain doubler (The Wind Crystal).")
+    if deck.doubler_axis("If you would gain life, you gain that much life plus 1 "
+                         "instead.") == "lifegain":
+        errs.append("doubler_axis must NOT read a plus-N lifegain replacement as a "
+                    "doubler (Angel of Vitality is +1, not x2).")
+
     return errs
 
 

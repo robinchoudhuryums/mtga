@@ -355,6 +355,14 @@ POOL_CARDS = [
     ("Pool Door // Pool Attic", "Enchantment — Room",
      "When you unlock this door, you draw two cards and you lose 2 life.",
      "B", "card draw", "Rare"),
+    # A MULTIPLIER, plus a body that FEEDS its axis. Needed for the cuts wiring test:
+    # a doubler carries no synergy tags and no functional role, so both halves of the
+    # cut score read it as filler unless the multiplier co-signal is actually consulted.
+    ("Pool Doubler", "Creature — Wizard",
+     "If a triggered ability of a creature you control triggers, that ability "
+     "triggers an additional time.", "B", "", "Rare"),
+    ("Pool Trigger Body", "Creature — Bear",
+     "Whenever this creature attacks, you gain 1 life.", "B", "lifegain", "Common"),
 ]
 
 # Per-card legality overrides; anything unlisted is Standard-legal.
@@ -467,6 +475,34 @@ class TestRoleFillers:
         d = world(["1 Bear", "20 Swamp"], owned=["Pool Door"])
         names = [r[1] for r in deck.owned_role_fillers(d, {"Card advantage"})]
         assert names.count("Pool Door // Pool Attic") == 1
+
+    def _doubler_keep(self, world, feeders):
+        """Pool Doubler's keep-score in a deck with `feeders` copies of a card that feeds
+        its axis. Isolates the multiplier term: the doubler carries no synergy tags, no
+        functional role, and no shared creature type with the feeders, so every OTHER
+        component of its keep-score is identical across the two decks."""
+        lines = ["1 Pool Doubler", "20 Swamp"]
+        if feeders:
+            lines.insert(1, f"{feeders} Pool Trigger Body")
+        rows, *_ = deck.rank_cut_candidates(world(lines))
+        return {r[1]: r[0] for r in rows}["Pool Doubler"]
+
+    def test_cuts_consults_the_multiplier_co_signal(self, world):
+        """WIRING anchor. `_cuts_multiplier_adj` being bounded and monotonic says nothing
+        about whether `rank_cut_candidates` ever CALLS it — and it did not, which is how
+        Delney (a doubler with 10 feeders) ranked as the WEAKEST card in deck 46 while
+        `suggest-homes`, reading the same primitive, scored it correctly. A doubler has no
+        synergy tags and no functional role, so both halves of the cut score read it as
+        filler; only the co-signal can tell it apart, and only if it is consulted."""
+        assert self._doubler_keep(world, 6) > self._doubler_keep(world, 0), (
+            "rank_cut_candidates is not consulting _cuts_multiplier_adj — a doubler must "
+            "be harder to cut in a deck that actually feeds its axis")
+
+    def test_a_doubler_with_nothing_to_double_gets_no_credit(self, world):
+        """The other half: ZERO below _CUTS_MULT_MIN_SOURCES, so a doubler in a deck that
+        barely feeds its axis stays genuinely cuttable."""
+        below = deck._CUTS_MULT_MIN_SOURCES - 1
+        assert self._doubler_keep(world, below) == self._doubler_keep(world, 0)
 
     def test_functional_theme_options_returns_cards_carrying_the_theme(self, world):
         d = world(["1 Bear", "20 Swamp"], owned=["Pool Counters Guy"])
