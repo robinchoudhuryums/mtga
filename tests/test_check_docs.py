@@ -8,6 +8,8 @@ project's recurring lesson is that those rot silently.
 These tests pin the four properties that make the arrangement survivable, and each was
 mutation-tested against the real gate.
 """
+import os
+
 import check_docs as cd
 import pytest
 
@@ -19,13 +21,46 @@ class TestLiveRepo:
     def test_every_anchor_resolves_both_ways(self):
         """The round-trip is the whole point: a dangling anchor loses the evidence, an
         orphaned section is evidence nothing can reach."""
-        claude = cd._read(cd.CLAUDE_MD)
-        gotchas = cd._read(cd.GOTCHAS_MD)
-        refs = set(cd.ANCHOR_RE.findall(claude))
-        defs = {m.group(1) for m in
-                (cd.HEADING_RE.match(l) for l in gotchas.split("\n")) if m}
+        refs = set(cd.ANCHOR_RE.findall(cd._read(cd.CLAUDE_MD)))
+        defs = set()
+        for path in set(cd.EVIDENCE.values()):
+            defs |= {m.group(1) for m in
+                     (cd.HEADING_RE.match(l) for l in cd._read(path).split("\n")) if m}
         assert refs == defs
-        assert len(refs) >= 60, "the split covers ~69 rules; a big drop means loss"
+        assert len(refs) >= 70, "the split covers ~80 rules; a big drop means loss"
+
+    def test_each_prefix_lives_in_its_own_file(self):
+        """A [C-nn] section in gotchas.md would resolve while pointing the reader at the
+        wrong document — as useless as no evidence at all."""
+        for path in set(cd.EVIDENCE.values()):
+            for l in cd._read(path).split("\n"):
+                m = cd.HEADING_RE.match(l)
+                if m:
+                    assert cd.EVIDENCE[m.group(1).split("-")[0]] == path, m.group(1)
+
+    def test_a_section_in_the_wrong_evidence_file_fails(self, tmp_path, monkeypatch):
+        c = tmp_path / "CLAUDE.md"
+        c.write_text(_claude_stub("Rule. [C-01]"))
+        g = tmp_path / "gotchas.md"
+        g.write_text("## [C-01] Misfiled\n\nbody\n")
+        y = tmp_path / "cycle.md"
+        y.write_text("placeholder\n")
+        monkeypatch.setattr(cd, "CLAUDE_MD", str(c))
+        monkeypatch.setattr(cd, "EVIDENCE", {"G": str(g), "K": str(g), "C": str(y)})
+        assert any("belongs to" in e for e in cd.check())
+
+    def test_a_shared_evidence_file_is_read_once(self, tmp_path, monkeypatch):
+        """G and K share gotchas.md. Iterating the PREFIX map read it twice and reported
+        every G/K anchor as a duplicate — a gate that fails on a healthy repo."""
+        c = tmp_path / "CLAUDE.md"
+        c.write_text(_claude_stub("A [G-01]") + "\n- B [K-01]\n")
+        g = tmp_path / "gotchas.md"
+        g.write_text("## [G-01] a\n\nx\n\n## [K-01] b\n\ny\n")
+        y = tmp_path / "cycle.md"
+        y.write_text("placeholder\n")
+        monkeypatch.setattr(cd, "CLAUDE_MD", str(c))
+        monkeypatch.setattr(cd, "EVIDENCE", {"G": str(g), "K": str(g), "C": str(y)})
+        assert not any("more than once" in e for e in cd.check())
 
 
 class TestAnchorRoundTrip:
@@ -35,7 +70,7 @@ class TestAnchorRoundTrip:
         g = tmp_path / "gotchas.md"
         g.write_text("## [G-01] One\n\nbody\n")
         monkeypatch.setattr(cd, "CLAUDE_MD", str(c))
-        monkeypatch.setattr(cd, "GOTCHAS_MD", str(g))
+        monkeypatch.setattr(cd, "EVIDENCE", {"G": str(g), "K": str(g), "C": str(g)})
         errs = cd.check()
         assert any("G-99" in e and "no such section" in e for e in errs)
 
@@ -47,7 +82,7 @@ class TestAnchorRoundTrip:
         g = tmp_path / "gotchas.md"
         g.write_text("## [G-01] One\n\nbody\n\n## [G-02] Stranded\n\nbody\n")
         monkeypatch.setattr(cd, "CLAUDE_MD", str(c))
-        monkeypatch.setattr(cd, "GOTCHAS_MD", str(g))
+        monkeypatch.setattr(cd, "EVIDENCE", {"G": str(g), "K": str(g), "C": str(g)})
         assert any("G-02" in e and "orphan" in e for e in cd.check())
 
     def test_a_duplicate_anchor_fails(self, tmp_path, monkeypatch):
@@ -56,7 +91,7 @@ class TestAnchorRoundTrip:
         g = tmp_path / "gotchas.md"
         g.write_text("## [G-01] One\n\nbody\n\n## [G-01] Again\n\nbody\n")
         monkeypatch.setattr(cd, "CLAUDE_MD", str(c))
-        monkeypatch.setattr(cd, "GOTCHAS_MD", str(g))
+        monkeypatch.setattr(cd, "EVIDENCE", {"G": str(g), "K": str(g), "C": str(g)})
         assert any("more than once" in e for e in cd.check())
 
 
@@ -76,7 +111,7 @@ class TestVendoredSectionNames:
         g = tmp_path / "gotchas.md"
         g.write_text("## [G-01] One\n\nbody\n")
         monkeypatch.setattr(cd, "CLAUDE_MD", str(c))
-        monkeypatch.setattr(cd, "GOTCHAS_MD", str(g))
+        monkeypatch.setattr(cd, "EVIDENCE", {"G": str(g), "K": str(g), "C": str(g)})
         assert any("Common Gotchas" in e and "vendored" in e for e in cd.check())
 
 
@@ -92,7 +127,7 @@ class TestLineCap:
         g = tmp_path / "gotchas.md"
         g.write_text("## [G-01] One\n\nbody\n")
         monkeypatch.setattr(cd, "CLAUDE_MD", str(c))
-        monkeypatch.setattr(cd, "GOTCHAS_MD", str(g))
+        monkeypatch.setattr(cd, "EVIDENCE", {"G": str(g), "K": str(g), "C": str(g)})
         assert any("cap" in e and "evidence has moved back in" in e for e in cd.check())
 
     def test_the_live_file_is_under_the_cap(self):

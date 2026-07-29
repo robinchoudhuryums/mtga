@@ -72,28 +72,37 @@ Conservation proved 69/69 byte-identical and mutation-tested. Cycle Workflow Con
 deliberately deferred to a follow-up pass, agreed with the user.
 Block: `.cycle/blocks/2026-07-claude-md-split.md`.
 
+## Session — Cycle Workflow Config, phase 2 of the split (2026-07-29, last)
+
+**CLAUDE.md 956 → 757 lines** (2,219 at the start of the day). The user supplied
+`setup-cycle.md`, the command that WRITES that section, which turned the work into
+restoring a specified format: Test Command is a single line (ours was 208), a Subsystem is
+a comma-separated file list (ours held 13.6k chars of prose), a Regression Scenario is
+Steps + Expected. Eleven `[C-nn]` blocks moved verbatim, 11/11 conserved.
+
+Two real findings: my compressed scenario 7 dropped a LIVE caveat (the editor's success
+toast is cut short by the `location.reload()` after it) — caught by a shingle check over
+the retyped half, and recovered as its own block; and Regression Scenario 3 carried the
+rebuild chain in the WRONG order, invisible because `_restates_chain` scanned
+`scripts/*.py` and `.claude/commands/*.md` but never CLAUDE.md. Both fixed and
+mutation-tested. Block: `.cycle/blocks/2026-07-cycle-config-split.md`.
+
 ## Open follow-ons
 See FOLLOW-ON ITEMS in each block. Highest value now:
-1. **Compress Cycle Workflow Config** (336 lines) — the agreed phase 2 of the doc
-   split. The `- Testing:` subsystem entry is a single 11,600-character bullet and the
-   `Test Command:` paragraph is 2,260 words; both are reference, not operative. Riskier
-   than phase 1 because the vendored workflow commands consume that section
-   structurally — but `check_docs` already asserts its field labels, so the safety net
-   exists.
-2. **`_signature_themes` saturates in `cuts`** — the +2 keep-boost fires on 86% of
+1. **`_signature_themes` saturates in `cuts`** — the +2 keep-boost fires on 86% of
    nonland cards across the 22 `#: protect:` decks (100% in decks 20 and 46), because
    `cuts` reads the LOOSE signature set while all three `fit_strength` callers read the
    STRICT one. Switching would unify them and de-saturate to 66%; the motivating case
    (deck 30's counter-doublers) survives. Needs a roster-wide before/after diff first.
    Measured in `docs/systems-map.md` §7.
-3. `tier --audit-rationale` false negative — a `_HISTORY_CUES` cue about one card
+2. `tier --audit-rationale` false negative — a `_HISTORY_CUES` cue about one card
    suppresses a citation of ANOTHER card in the same window, even when that
    clause says the card STAYS. Deck 42a asserted "Erode stay[s]" after Erode was
    cut and the audit reported clean. Fix is the mirror of `_cites_as_arriving`;
    needs a roster sweep before landing.
-4. An incremental `make refresh` — still ~10 min for a 4-card ingest, the largest
+3. An incremental `make refresh` — still ~10 min for a 4-card ingest, the largest
    single cost in the repo. Must not fork the rebuild order into a second recipe.
-5. The reverse `screen` flag (a candidate strictly WORSE than an incumbent).
+4. The reverse `screen` flag (a candidate strictly WORSE than an incumbent).
 
 ## Decided AGAINST (2026-07-29, the split)
 - Reorganising CLAUDE.md by topic. The vendored workflow commands name its sections

@@ -232,6 +232,24 @@ class TestRebuildOrderIsDefinedOnceAndCorrectly:
         assert offenders == [], (
             f"{offenders} restate the rebuild chain; point at `make refresh` instead")
 
+    def test_claude_md_defers_to_the_make_target(self):
+        """CLAUDE.md was NOT scanned, and that is where a wrong-order copy was hiding.
+
+        Regression Scenario 3 read `build_mana.py -> tag_synergies.py --merge ->
+        build_pool.py -> build_gallery.py` — build_pool AFTER build_mana, the exact
+        inversion the Makefile comment warns about and that this test exists to catch.
+        It survived the sweep that fixed the other copies because the scan covered
+        `scripts/*.py` and `.claude/commands/*.md` and never the one file every session
+        loads automatically. A check that cannot see the file with the bug is not a
+        check — the same shape as the dead regexes and the unreachable commands.
+
+        The `docs/` evidence files are deliberately NOT scanned: `[G-13]` has to state
+        the correct order to explain why the Makefile is the single definition, which is
+        the same one-place exemption `refresh.md` gets above."""
+        src = open(os.path.join(REPO, "CLAUDE.md"), encoding="utf-8").read()
+        assert not _restates_chain(src), \
+            "CLAUDE.md restates the rebuild chain; point at `make refresh` instead"
+
     def test_the_skills_defer_to_the_make_target(self):
         """Same rule for the workflows. /refresh is the one exemption — it documents the
         individual steps so you can deliberately skip one — and even it must lead with
