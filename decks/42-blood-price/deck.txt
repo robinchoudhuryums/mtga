@@ -11,7 +11,8 @@
 #: archetype: — exchanging totals refunds every point you spent and drops them to yours.
 #: archetype: TWO PLANS THAT WIN WITHOUT HIM, by design, because he is a single mythic:
 #: archetype: (1) TOKEN DRAIN — Bitterbloom Bearer, Lunar Convocation's Bats and the
-#: archetype: death-triggers (Vengeful Bloodwitch, Agents of HYDRA, Callous Inspector)
+#: archetype: death-triggers (Vengeful Bloodwitch, Callous Inspector; Agents of HYDRA was
+#: archetype: CUT for Cecil, Dark Knight, whose own life payments flip him)
 #: archetype: build an evasive board while Bloodchief Ascension and Mai turn every
 #: archetype: exchange into life loss; (2) pure CARD-ADVANTAGE attrition — ten removal
 #: archetype: spells backed by six draw effects simply out-resources a fair deck.
@@ -24,7 +25,7 @@
 #: tier: B — Orzhov life-as-currency attrition, one band BELOW the A metrics floor,
 #: tier: PROVISIONAL (unplayed brew). The floor reads A on interaction 6 (FIVE of it
 #: tier: instant-speed, two answering a noncreature permanent) plus card advantage 6 over
-#: tier: a 2.69 curve — five surplus removal spells became the pay-life engine and the
+#: tier: a 2.66 curve — five surplus removal spells became the pay-life engine and the
 #: tier: drain clock, and the Gwenom / Enduring Tenacity adds since cost two more
 #: tier: answers, so 6 is now the floor of comfortable rather than a surplus — and
 #: tier: unlike deck 41 that
@@ -81,7 +82,7 @@ Deck
 1 Black Widow, Super Spy (MSH) 89
 1 Healer's Hawk (FDN) 142
 1 Vengeful Bloodwitch (FDN) 76
-1 Agents of HYDRA (MSH) 85
+1 Cecil, Dark Knight
 1 Callous Inspector (TLA) 89
 1 Sanguine Syphoner (ECL) 118
 1 Dream Beavers (TMT) 62
