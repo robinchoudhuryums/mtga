@@ -33,7 +33,7 @@
 #: archetype: real color rather than a splash. It is the roster's only Esper deck.
 #: tier: B — Esper hand-size control, one band BELOW the A metrics floor, PROVISIONAL
 #: tier: (unplayed brew). The floor reads A on interaction 6 (five of it instant-speed,
-#: tier: three able to answer a noncreature permanent) plus card advantage 12 on a 3.00
+#: tier: three able to answer a noncreature permanent) plus card advantage 11 on a 2.91
 #: tier: curve, and that card-advantage number is real rather than a pile of cantrips —
 #: tier: Cloudblazer draws two, Chart a Course draws two, Spirit Water Revival draws
 #: tier: seven when waterbent, and the Grimoire draws five on cast. Held at B by three

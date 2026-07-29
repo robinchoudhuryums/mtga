@@ -68,7 +68,7 @@
 #: archetype: lifegain shells: all three are ORZHOV and convert life into DRAIN or into
 #: archetype: CARDS. This one converts it into creature size and never touches black.
 #: protect: The Wind Crystal; Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Delney, Streetwise Lookout; Stirring Hopesinger; Valkyrie's Call; Lyra Dawnbringer; Giada, Font of Hope; Angelic Destiny; Herald of Eternal Dawn; Silver Sable, Mercenary Leader; Rosa, Resolute White Mage
-#: tier: A — PROVISIONAL (unplayed brew, 11 cards short of buildable). The letter sits AT
+#: tier: A — PROVISIONAL (fully crafted and owned, but UNPLAYED). The letter sits AT
 #: tier: the metrics floor: interaction 5 is exactly the A bar, and 5 + card advantage 2 is
 #: tier: exactly the sum of 7, and protection is 4. There is no slack on either axis of
 #: tier: the floor, which is the honest
