@@ -1848,6 +1848,10 @@ Enter the Avatar State,{W},1,
 Practiced Offense,{2}{W},3,Flashback
 Rally the Monastery,{3}{W},4,
 Prayer of Binding,{3}{W},4,Flash
+"Koya, Death from Above",{2}{W},3,Flying
+Ruthless Lawbringer,{1}{W}{B},3,
+Ninja Teen,{2}{B},3,
+"Splinter, Radical Rat",{1}{W/B}{W/B},3,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -11280,7 +11284,6 @@ Rakdos Joins Up,{3}{B}{R},5,
 "Rakdos, the Muscle",{2}{B}{B}{R},5,Flying;Trample
 Riku of Many Paths,{G}{U}{R},3,
 "Roxanne, Starfall Savant",{3}{R}{G},5,
-Ruthless Lawbringer,{1}{W}{B},3,
 "Selvala, Eager Trailblazer",{2}{G}{W},4,Vigilance
 Seraphic Steed,{G}{W},2,Lifelink;Saddle;First strike
 Slick Sequence,{U}{R},2,
@@ -13990,7 +13993,6 @@ Commander's Plate,{1},1,Equip
 Sword of Hearth and Home,{3},3,Equip
 "Agent Bishop, Man in Black",{2}{W},3,
 Dimensional Exile,{1}{W},2,Enchant
-"Koya, Death from Above",{2}{W},3,Flying
 Leonardo's Technique,{3}{W},4,Sneak
 Make Your Move,{2}{W},3,
 Prehistoric Pet,{W},1,
@@ -14008,7 +14010,6 @@ Death in the Family,{1}{B},2,
 Foot Mystic,{3}{B},4,Disappear;Lifelink
 "Lord Dregg, Insect Invader",{3}{B},4,Flying;Disappear
 "Madame Null, Power Broker",{2}{B},3,Deathtouch
-Ninja Teen,{2}{B},3,
 "Rat King, Verminister",{1}{B},2,Disappear
 "Savanti Romero, Time's Exile",{3}{B}{B},5,Trample
 Splinter's Technique,{3}{B},4,Sneak
@@ -14033,7 +14034,6 @@ Krang & Shredder,{4}{U/B}{U/B},6,Disappear
 Lessons from Life,{2}{G}{U},4,
 "Mikey & Don, Party Planners",{2}{G/U}{G/U},4,Ward
 "Raph & Mikey, Troublemakers",{5}{R/G}{R/G},7,Haste;Trample
-"Splinter, Radical Rat",{1}{W/B}{W/B},3,
 "Tokka & Rahzar, Terrible Twos",{B/R}{B/R},2,Menace
 Chrome Dome,{2},2,
 Henchbots,{4},4,
