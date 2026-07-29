@@ -690,7 +690,10 @@ this deck actually has to double — Exalted Sunborn shares `tokens` with a 14-t
 and a 6-token deck, and theme overlap scored them identically — so its feeder count
 drives a bounded fit bump and promotes it to KEY past a threshold. The doubler's own
 scope is read off its text, so Delney's "power 2 or less" filters the count rather than
-over-crediting it. The **lifegain** axis was added last, because The Wind Crystal read
+over-crediting it — but only a *power* scope is parsed, so a doubler scoped by creature
+**type** is still counted against the whole deck (Splinter, Radical Rat's Ninja-only
+trigger doubling reads 27 feeders in deck 20 against a real 12). Treat a `✱ multiplier`
+figure on a tribal doubler as an upper bound. The **lifegain** axis was added last, because The Wind Crystal read
 as no doubler at all while the list stopped at three; it requires the literal "twice
 that much", since a replacement that is *not* a doubling is templated identically
 (Angel of Vitality's "plus 1 instead" is +1, not ×2).
