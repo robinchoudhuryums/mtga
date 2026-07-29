@@ -6876,10 +6876,22 @@ def owned_role_fillers(d, roles, *, limit=10):
     """Owned, on-color cards NOT already in deck d that fill any role in `roles`
     (e.g. `_INTERACTION_ROLES`, or {"Card advantage"}) — the 0-wildcard fillers that
     can close a tier gap, cheapest first. On-color = the card's identity ⊆ the deck's
-    declared/derived colors, so it won't surface an uncastable pick."""
+    declared/derived colors, so it won't surface an uncastable pick.
+
+    ALSO format-legal, on the same rule as `craft_role_fillers`. This half used to skip
+    the check its sibling applied, so `tier <id> --to A` printed the craft list as
+    "format-legal" and the owned list unfiltered right above it — and it offered Deadly
+    Dispute, an FCA card with no Standard legality, as a filler for Standard deck 42a.
+    Being owned is not a licence to play it: the recommendation costs no wildcard but it
+    still costs a DECK SLOT, and an illegal maindeck card is a worse outcome than a
+    wasted craft. Same failure CLAUDE.md records for `suggest --lands`, one command over.
+    A pool-absent / unverified legality is treated as legal, matching `legal`/`suggest`.
+    """
     meta, cards = parse_deck_file(d["path"])
     mana, carddata = load_mana(), load_card_data()
     _, _, qty = load_collection()
+    legalities = load_legalities()
+    fmt = (meta.get("format") or "").strip().lower()
     in_deck = {n.lower() for q, n, s, c in cards}
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
     out = []
@@ -6895,6 +6907,9 @@ def owned_role_fillers(d, roles, *, limit=10):
         ident = card_colors(cd.get("colors"))
         if not ident <= declared:
             continue
+        legs = legalities.get(nl) or legalities.get(nl.split(" // ")[0]) or set()
+        if fmt and legs and fmt not in legs:
+            continue
         hit = set(classify_roles(cd.get("text") or "")) & set(roles)
         if not hit:
             continue
@@ -6902,8 +6917,18 @@ def owned_role_fillers(d, roles, *, limit=10):
         mv = entry[1] if entry and entry[1] is not None else 99
         out.append((mv, name, "".join(sorted(ident)) or "C", sorted(hit),
                     (cd.get("text") or "").split("\n")[0][:64]))
+    # `carddata` keys a DFC under BOTH its full "Front // Back" name and its front face,
+    # and both rows carry the same display name — so a double-faced filler was printed
+    # twice, wasting a line of a six-line list. Dedupe on the display name, keeping the
+    # cheapest entry (the sort below is stable on mv, so first-seen wins after sorting).
     out.sort(key=lambda r: (r[0], r[1]))
-    return out[:limit]
+    seen, deduped = set(), []
+    for row in out:
+        if row[1] in seen:
+            continue
+        seen.add(row[1])
+        deduped.append(row)
+    return deduped[:limit]
 
 
 def craft_role_fillers(d, roles, *, limit=8):

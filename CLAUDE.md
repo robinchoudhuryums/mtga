@@ -1003,6 +1003,20 @@ castability · curve · central-theme density), with the intangibles moving a de
   misses still flags) and notes when the cut list is exhausted before the gap closes. It's a
   STARTING plan that PRINTS, never writes — the card selection stays a human call (protect
   signature/spice — that's `/tune-deck`); preview any line with `deck.py swap`.
+  **Its OWNED filler list used to skip the legality check its CRAFT sibling applied** —
+  so `--to A` printed one list headed "format-legal" and an unfiltered one directly above
+  it, and offered **Deadly Dispute** and **Dovin's Veto**, neither Standard-legal, to
+  Standard decks. Owning a card is not a licence to play it: the pick costs no wildcard
+  but it still costs a DECK SLOT, and an illegal maindeck card is a worse outcome than a
+  wasted craft. `owned_role_fillers` now filters on the deck's `#: format:` exactly as
+  `craft_role_fillers` does (pool-absent/unverified legality = legal, matching
+  `legal`/`suggest`). Same shape as the `suggest --lands` bug one command over, and the
+  same lesson: **when two functions answer the same question for owned vs unowned cards,
+  diff their filters** — one of them will be missing a check. Fixing it exposed a second,
+  older bug underneath: `load_card_data` keys a DFC under BOTH `Front // Back` and its
+  front face, and both rows carry the same display name, so a double-faced filler printed
+  **twice**, wasting a line of a six-line list. Deduped on the display name. Both are
+  pinned in `tests/test_deck_models.py` (verified to fail on the un-fixed code).
 - **`deck.py redundancy <id>` plans competitive CONSISTENCY the "virtual copies first" way.**
   A singleton/highlander deck draws a random slice of its plan; the fix for competitive
   quality is redundancy — but the *first* lever is **functional redundancy** (distinct,
