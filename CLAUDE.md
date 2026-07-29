@@ -1441,356 +1441,62 @@ castability · curve · central-theme density), with the intangibles moving a de
   is the expensive kind of wrong.
 
 ## Known Issues
-
-- A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select,
-  Opus, Increment, Infusion, Paradigm, Disappear, Tiered, **Jump**) aren't in
-  `tag_synergies.py`'s keyword→theme map, so they're tagged verbatim. They live in
-  `scripts/keyword_baseline.txt` — the acknowledged-but-unindexed list — so the radar
-  stays quiet about them; theming them is ROADMAP Tier 1.
-  **Vivid is the cautionary one on this list:** an unindexed keyword is not inert, it is a
-  hole every tag-gated predicate inherits — `_is_color_fixer` gated on a `ramp`/`mana` tag
-  and so read the roster's two best fixers as non-fixers (see the fixer-overlay gotcha).
-  **`renew` and `triple` were the standing pair, and they triaged in OPPOSITE
-  directions** — which is the argument for doing this per-keyword rather than in bulk.
-  `renew` (Tarkir: Dragonstorm, 14 pool cards, every one on the same template) is a real
-  mechanic of exactly the `forage` shape — a COST plus an EFFECT — so it maps to the two
-  resources it touches: **`["graveyard", "counters"]`**, since it is activated FROM your
-  graveyard and puts counters on a creature. Deliberately NOT `sacrifice` (nothing is
-  sacrificed) and NOT `recursion`: the card is EXILED to pay for the counters and never
-  comes back, so a renew card in the yard is a resource to spend, not a rebuy, and tagging
-  it recursion would point reanimator decks at cards that do not recur.
-  **The mapping changed ZERO stored tags, and that is the forage lesson at full strength.**
-  All 14 cards state the template without reminder text ("Exile this card from your
-  graveyard: Put a +1/+1 counter …"), so the TEXT rules already earned both tags —
-  `tag_synergies --merge` tagged 0 rows and no pool row would change. The mapping's real
-  job is to DECLARE the mechanic: that silences the radar, and it permanently exempts the
-  keyword from `is_noise_keyword`, which matters the day a set ships with only one renew
-  card. Note a mapped keyword KEEPS its literal tag (`forage` does too) — mapping adds the
-  themes, it does not replace the name.
-  **`triple` is not a mechanic at all** and must not be themed: Scryfall is surfacing the
-  ordinary WORD from "deals triple that damage" (Fiery Emancipation, City on Fire) and
-  "Triple target creature's power" (Tifa's Limit Break). Three unrelated cards, no shared
-  template. Its sibling **`double` appears on the very same card and was already in
-  `keyword_baseline.txt`**, so `triple` goes there beside it — following the precedent
-  rather than inventing a theme. It is baselined rather than denylisted because
-  FLAVOR_KEYWORDS is for card-UNIQUE flavor ability names, which a common English word is
-  not.
-  The lesson worth keeping: **a standing warning is a decision nobody has made yet.** These
-  two fired on every `check_all` run for several cycles, which is the saturation failure
-  this file documents elsewhere — a channel that always fires reads as working, and a
-  genuinely new mechanic arriving beside them would have been invisible.
-- **`forage` was THEMED rather than baselined, and the 7-of-9 split is the lesson.**
-  It is a COST — "exile three cards from your graveyard or sacrifice a Food" — so it maps
-  to `["graveyard", "food"]`, the two resources it consumes. Deliberately NOT `sacrifice`:
-  the keyword only means the card MAY pay with a Food, and the cards that really do
-  sacrifice earn that tag from their own text. **Mapping it changed only 2 of the 9
-  forage cards**, because the other 7 quote the reminder text — which contains the words
-  "graveyard", "sacrifice" and "Food" — and so already earned the tags from the TEXT
-  rules. The two that changed (Traverse Valley, whose entire text is "Kicker—Forage.",
-  and Euru, Acorn Scrounger) carry the keyword with no reminder, and were tagged neither.
-  So a text-only tag model looks like it works on this mechanic right up until it meets a
-  card that states the keyword bare — the keyword map is what covers that tail, and the
-  gap is invisible unless you check the cards whose text OMITS the reminder. Note the
-  graveyard side EMPTIES the yard; the tag can't express direction, and that asymmetry is
-  the zone-conflict detector's job (`_GY_HATE_*` / `_GY_NEED_*`), not the tag model's. Card-*unique* flavor ability
-  names (Firaga, Wave Cannon, Murasame, and the Marvel signature moves — Trick Arrows,
-  Radar Sense, Technopathy, …), which Scryfall also reports as keywords, are dropped
-  via the `FLAVOR_KEYWORDS` denylist so they don't pollute the tags.
-  **Triage a new set's keywords promptly, and triage on the right axis.** When MSH
-  shipped, its 27 signature moves went unindexed: `check_all` emitted 27 soft warnings
-  on EVERY run — saturating the one channel the radar exists to use — and 11 leaked
-  into the Synergies vocabulary, where `lib.pool_ability_model`'s tag-idf scored a
-  one-card tag as near-maximally distinctive and inflated those cards' `Uq`. The test
-  is **card-uniqueness across the POOL, not the collection**: `jump` reads as one
-  *owned* card but Kain and Freya both carry "Jump — During your turn, ~ has flying",
-  so it is a real mechanic and belongs in the baseline, NOT the denylist. Both
-  directions are guarded — `check_keywords.check()` flags an unindexed keyword,
-  `check_keywords.flavor_overreach()` flags a denylisted word that turns up on ≥3
-  owned cards, is ALSO mapped in `KEYWORD_THEMES`, or is named in `deck.ENGINE_THEMES`
-  as a real engine mechanic. That last cross-check exists because `harmonize` — a
-  graveyard self-recursion keyword deck.py counts as a graveyard ENABLER — sat
-  denylisted for a full cycle: the collection holds exactly ONE Harmonize card, so the
-  owned-count signal could never reach the threshold. **Card-uniqueness is judged across
-  the POOL, and a keyword another subsystem already treats as a mechanic is never flavor.**
-  That rule is now MECHANICAL rather than hand-kept: `tag_synergies.is_noise_keyword`
-  drops a keyword carried by exactly ONE card in the corpus, so a new set's signature moves
-  are suppressed with no code change. It engages only when `card-mana.csv` is POOL-scoped
-  (`build_mana.py --pool`) — at library scope a pool-wide mechanic can sit on one owned
-  card (harmonize did), so below the corpus floor it falls back to the explicit list rather
-  than guess. A keyword in `KEYWORD_THEMES` or named in `deck.ENGINE_THEMES` is never
-  suppressed. `FLAVOR_KEYWORDS` remains an override for what the corpus can't settle, and
-  `check_keywords.known_keywords()` counts the heuristic's drops as known so the radar
-  doesn't re-report them as new mechanics.
-- **`tag_synergies.py` text-tags fixing + topdeck-value engines** so they stop
-  hiding under `selection`/`tokens`: "cast/play … from the top of your library" →
-  `card advantage` (Vizier of the Menagerie, Realmwalker, Bolas's Citadel); "spend
-  mana of any type / as though it were any color" → `ramp` (Vizier, Fist of Suns);
-  a card that makes a **`land token`** → `ramp` (the regex requires the phrase *land
-  token* directly, so a creature token whose ability merely mentions "land" — Gysahl
-  Greens, Fat Chocobo — isn't mis-tagged); and a card that turns lands into **"every/
-  all/each basic land type"** → `mana` (rainbow fixing: Overlord of the Hauntwoods'
-  Everywhere token, Energybending) — so these surface on ramp/value in `suggest` /
-  `suggest-homes` / `cuts` instead of hiding under `tokens`. **The residual is now
-  mostly closed for detectable fixers:** a card whose fixing value SCALES with the
-  target deck's color count used to mis-grade as *role-player* when it was really
-  KEY, so `suggest-homes` now applies a **color-count-aware fixer overlay**
-  (`_is_color_fixer` + `_fixer_rate` + `_fixer_boost`, guarded by `check_suggest`
-  anchors 6 and 15) — a rainbow fixer reads **KEY in a 4+-color deck / role-player in a
-  3-color one** (Overlord → decks 17/21a, previously role-player/tangential). The
-  remaining residual is only a fixer whose value scales with color count but whose text
-  lacks an explicit any-color / basic-land-type cue (so `_is_color_fixer` can't see it)
-  — grade those from full text (why the shortlists print "grade from text").
-- **The fixer overlay recommended cutting the BETTER fixer, and it took three separate
-  blind spots to do it.** `suggest-homes "Guy in the Chair"` ({2}{G}, `{T}: Add one mana
-  of any color`) rated it **KEY at fit 70 for deck 13** and proposed cutting **Prismatic
-  Undercurrents**; for deck 17 it proposed cutting **Bloom Tender**. Both incumbents are
-  strictly better fixing than the card being added. Every gate was green throughout,
-  because each piece was individually correct.
-  (1) **A TAG GATE made the predicate a hostage of the keyword map.** `_is_color_fixer`
-  required `ctags & {ramp, mana}`. Bloom Tender (`{T}: For each color among permanents
-  you control, add one mana of that color`) and Prismatic Undercurrents (fetch X basics,
-  X = your colour count) both key off **Vivid** — which sits in `keyword_baseline.txt` as
-  acknowledged-but-unindexed and therefore tags `vivid`, matching nothing. So the two
-  best fixers on the roster read `is_fixer=False` while a mediocre dork read True. The
-  fix reads TEXT ONLY; the strictness the tag was standing in for now lives in requiring
-  **mana / land-type context**, so "protection from the color of your choice" still fails.
-  The general lesson: *a predicate gated on a derived tag inherits every hole in the
-  tagger* — and `keyword_baseline.txt` is a list of known holes.
-  (2) **The boost read only the deck's colour count, never what the fixer BUYS.**
-  Overlord of the Hauntwoods (a permanent land token with every basic land type) and Guy
-  in the Chair collected the identical +16 and the identical automatic KEY. `_fixer_rate`
-  splits **BROAD** (several colours at once, a mass grant, or colour-agnostic spending
-  permission — full value at any cost) from a **SINGLE** any-colour source (discounted by
-  mana cost, floored, never zero), and the KEY promotion is gated on `_FIXER_KEY_RATE`.
-  Guy in the Chair drops to role-player; Bloom Tender / Prismatic Undercurrents / Vizier /
-  Enduring Vitality all rate 1.0 and read KEY.
-  (3) **`_weakest_cut` was computed BLIND to the card being added** — the caller asked
-  only "what is this deck's weakest card". The keep-score is theme-fit + role credit and
-  NEITHER has a fixing term, so a fixer (few tags, no classified role) sorts to the TOP
-  of the cut list in exactly the multi-colour decks that need it. It now takes
-  `add_is_fixer` and excludes incumbent fixers when the add is one: swapping fixing for
-  fixing is a wash, and the ranking cannot see which is better. Deliberately NOT a
-  general same-role exclusion — removal and card advantage already reach the keep-score
-  through `_role_credit`, so excluding those would double-count. Fixing is the resource
-  the score is blind to, which is why it needs the guard.
-  **Two process notes worth keeping.** The roster-wide before/after diff (CLAUDE.md's
-  own rule for pattern edits) was load-bearing *twice*: the first sweep silently dropped
-  **38 real fixers** by omitting `any one color` / `any of the exiled card's colors`, and
-  it added **190** by counting a **Treasure token's parenthetical REMINDER text** ("It's
-  an artifact with `{T}, Sacrifice this token: Add one mana of any color.`") — which would
-  have made ~150 pool cards read as manabase fixers, the saturation failure again. Reusing
-  `_REMINDER_RE` fixes the second; Chromatic Sphere states the same ability as REAL text
-  and correctly survives. Net after both corrections: 304 → 377 recognised fixers, and
-  `check_all` output is byte-identical (the overlay is scoped to `suggest-homes`). And
-  **anchor 6 had to be rewritten, not extended** — it asserted that rainbow text with no
-  fixing tag must NOT qualify, using *Overlord's own ability* as the negative example. The
-  anchor was pinning the bug. When a gate blocks a fix, check whether it encodes the
-  intent or merely the old implementation.
-- **`tag_synergies.py` text-tags LIFE AS A COST (`pay life`) — an entire archetype the
-  tag model could not see.** 351 pool cards (2.2%) spend YOUR life for an effect and none
-  carried a tag for it, so deck 42's whole thesis was invisible: Dark Confidant, the most
-  on-thesis card available for an Orzhov life-as-currency deck, read `tangential` in
-  `suggest-homes` on a shared creature type. Scoped to YOU losing life — "each opponent
-  loses 2 life" is a DRAIN effect, the opposite card — with a payoff side ("whenever you
-  lose life", "if you've lost life") the way `lifegain` also tags cards that only CARE.
-  At 2.2% it reads as a SPECIFIC theme, which is the point: deck 42 now reads KEY.
-- **`tag_synergies.py` text-tags HEIST (`heist`) — casting cards you don't own.** 82 pool
-  cards (0.52%), so it reads as maximally SPECIFIC to the idf model: right for a build-around
-  and well clear of the 4-card floor that got a `clone` tag rejected. Before it existed, the
-  spine of a theft deck was invisible — Dream Harvest, Outrageous Robbery, Kotis, Laughing
-  Jasper Flint and Rakdos, the Muscle all carried a blank or near-blank Synergies cell.
-  **CHECK `MECHANIC_RULES` FOR THE NAME BEFORE ADDING A THEME.** The first draft was called
-  `theft` — which was already taken by the "gain control of" rule (Act of Treason, Agent of
-  Treachery, stealing a permanent already on the battlefield). Reusing the name silently
-  UNIONED the two: 93 gain-control cards merged in, taking the theme from 81 to 174 cards and
-  destroying exactly the specificity that makes an idf theme useful — **and `check_all` stayed
-  green throughout, because a tag collision breaks no invariant.** The two effects are
-  mechanically different and a deck built on one is not helped by the other, so they stay
-  separate tags (`heist` = cast their card, `theft` = gain control of their permanent).
-  Matching needs TWO parts with a BACKWARD PROXIMITY window, because the cast clause and the
-  opponent's zone usually sit in DIFFERENT SENTENCES ("…exiles the top card of their library.
-  You may cast it") — a same-sentence regex structurally cannot see the commonest templating.
-  Both halves are required so the large self-exile families (impulse, foretell, adventure,
-  plot) stay out. Four pattern bugs surfaced while building it, every one found by reading
-  real cards rather than testing the regex against strings written to match it: `(?:cast|play)`
-  without `\b` matched the `play` inside "each PLAYer … from their graveyard" (13 graveyard-HATE
-  cards tagged as heists); `(?:an?|each|that )?` carried a trailing space on `that ` but not
-  `each`, so "from EACH opponent's graveyard" never matched; the zone pattern assumed one word
-  order and missed "from THE TOP OF target player's library"; and the opponent-subject branch
-  let its gap cross a comma, so "if an opponent lost life this turn, exile the top two cards of
-  YOUR library" read as a heist. All three patterns are registered with `check_patterns.py`.
-- **`tag_synergies.py` text-tags SELF-EXILE CASTING (`exile cast`) — the sibling theme to
-  `heist`.** `heist` is deliberately narrow (cast a card that was THEIRS), and that
-  narrowness left a real archetype untagged: the impulse / Warp / Plot / Foretell / Adventure
-  family casts from exile too, and the payoffs ("whenever you cast a spell from exile",
-  "spells you cast from exile cost {1} less", "cast a spell from anywhere other than your
-  hand") reward BOTH halves. 266 pool cards, 1.68% — specific by the idf model, and it is
-  what makes decks 45/45a gradeable as a single archetype rather than a pile of unrelated
-  exile cards. `is_exile_cast_text(type_line, text)` treats an **Adventure type line** as an
-  automatic enabler (the mechanic IS cast-from-exile, and no oracle phrasing states it), then
-  matches `_EXILE_CAST_ENABLE` (the keyword family) or `_EXILE_CAST_PAYOFF`. Kept SEPARATE
-  from `heist` on purpose — the two only look alike; a deck built on casting your own exiled
-  cards gets nothing from an opponent's graveyard, which is exactly the mistake the
-  `theft`/`heist` collision taught.
-- **`keyword_frequencies()` counts DISTINCT CARDS, not rows.** It backs
-  `is_noise_keyword`'s one-card-in-the-corpus test, and the mana file stores a DFC under its
-  full `Front // Back` name while other tables key the front — so a two-faced card could
-  contribute two rows and clear the "carried by exactly one card" floor without a second
-  card existing. "Goblin Formula", a genuinely card-unique flavor keyword, escaped the noise
-  filter that way. Front-names are collapsed into a set before counting.
-
-- **Three phrases where `tags_for` and `classify_roles` disagreed on the SAME text**, each
-  leaving a card with a completely blank Synergies cell and therefore invisible to every
-  tag-based recommendation. All three are ALIGNMENT fixes, not new concepts: `draw cards
-  equal to` → `card draw` (The Ten Rings sat in a deck untagged), `gain(s) life equal to`
-  → `lifegain` **and** the Lifegain ROLE (Exsanguinate read no roles at all; 68 pool
-  cards), and `costs {N} less` → `cost-reduction`, which already existed on 167 pool cards
-  but only ever arrived via the KEYWORD map (affinity/delve/warp/sneak/plot), so a card
-  that plainly SAYS it costs less had nothing. Pool blanks 417 → 384. **Deliberately NOT
-  fixed:** a `clone` tag for the four remaining "becomes a copy of" cards — that would be
-  a new theme for four cards rather than an alignment. The residual 384 is a long tail of
-  genuinely un-themeable effects (Oust, Exploration, Wish).
-- **`tag_synergies.py` also text-tags MECHANICAL-SYNERGY payoffs the keyword map missed
-  (tagging-misreads fix)** — the class of fit the tag model was blind to because it saw a
-  card's own keywords/subtypes but not what its TEXT rewards: **`toughness matters`**
-  ("assigns/deals combat damage equal to its toughness", Doran-style — Bark of Doran +
-  Kingpin, so a toughness-swap payoff isn't a bare `equipment/pump` body); **`noncombat
-  damage`** (the literal phrase — Hawkeye/Ojer Axonil amplifiers + the "whenever a source
-  deals noncombat damage" draw engine — PLUS a repeatable **pinger**: a PERMANENT, not a
-  one-shot instant/sorcery burn spell, whose ability deals damage to a player / any target
-  / each opponent, so a ping-ENGINE deck reaches critical mass on the theme while a couple
-  of burn SPELLS can't fake it into any aggressive deck; combat-damage triggers excluded);
-  **`spell copy`** (Pyromancer's Goggles); and a
-  **tribal-matters PAYOFF** tag — a lord/tutor gets the creature TYPE it rewards even when
-  it isn't that type itself ("Dinosaurs you control" / "search for a Dinosaur card" →
-  `Dinosaur`, so Huatli reads KEY in a Dino deck, not role-player). The tribal scan runs on
-  ORIGINAL-case text (MTG capitalizes real tribes but lower-cases generic "creatures/lands",
-  a strong natural filter) with a `_NON_TRIBE_WORDS` denylist for sentence-initial capitals.
-  **These sub-themes surface even as a SECONDARY payoff:** they'd otherwise sit below the
-  25%-of-top-theme centrality cutoff in a deck with a dominant theme (toughness-swap with
-  only Kingpin+Bark; noncombat-damage with 2 cards under a heavy Wizard theme), so
-  `_central_themes` admits the curated `_MECHANIC_SUBTHEMES` set (`toughness matters` /
-  `noncombat damage` / `spell copy`) at a **flat floor of 2** — the specific-effect analog
-  of the `#: protect:` signature rescue (a real 2-card payoff sub-synergy reads central,
-  while a GENERIC theme at the same low weight STAYS gated behind the 25% cutoff, so the
-  relaxation can't fake a generic overlap into a home; guarded by `check_suggest` anchor 12).
-  So Bark → 20a/20b and Hawkeye → the ping decks now auto-surface. A tribal payoff clears
-  the plain cutoff easily (a Dino deck runs ~19 Dinosaurs). After editing these
-  patterns, regenerate BOTH derived tag stores: `tag_synergies.py --merge` for the
-  LIBRARY, and **`build_pool.py --all` for the pool** — which re-derives every pool row's
-  `Synergies` through the same `tags_for()`. Do NOT point `tag_synergies.py` (or
-  `enrich.py`) at `card-pool.csv`: both write through `lib.write_rows`, which emits only
-  the canonical 8 LIBRARY columns, so it silently dropped the pool's `Rarity` /
-  `Legalities` / `Released` and broke every format filter, rotation flag and wildcard
-  price (audit F-02). Both now refuse a non-library target up front
-  (`lib.csv_schema_error`), and `check_all` fails if a derived file loses its own
-  columns. Skip the pool rebuild and UNOWNED craft candidates read stale pool tags.
-- A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
-  warning (expected, not an error).
-- The **functional-role** breakdown (`deck.py stats`) and **castability lint**
-  (`deck.py mana` / `check`) are heuristic. Roles are matched from oracle text, so
-  modal cards land in several buckets and single-draw cantrips are deliberately
-  *not* counted as card advantage. Because regex matching inevitably misses
-  phrasings and silently *under*-counts, `stats` and `tier` run a **coverage
-  self-audit** (`role_coverage_flags`, F15): a broad lexical net flags any card
-  whose text reads like interaction / card advantage the classifier *didn't* tag,
-  printing a "⚠ Possible UNDER-COUNT — verify" list so a miss is explicit, never
-  silent. It only prompts a human read; it never changes a count. **That net is now
-  built as a strict SUPERSET of the precise patterns** (`_INT_CUE_PATS` /
-  `_CA_CUE_PATS` union the compiled role regexes in), because a phrasing used to be
-  missable by BOTH — Repulsive Mutation's "counter up to one target spell unless…"
-  was too narrow for the Counter pattern *and* absent from the net, so the
-  under-read was invisible to the audit that exists to catch under-reads.
-  **A hands-on session found the under-count was much larger than "a residual":**
-  three cards that unambiguously interact scored ZERO roles, and one deck read
-  interaction 3 against a hand count of 7. All are fixed and unit-tested — removal
-  now matches a permanent-type LIST (`destroy target artifact or enchantment`,
-  `destroy target artifact, enchantment, or creature with flying` — previously
-  unmatched by the hand-kept alternation), a counter accepts `up to N target`,
-  library-TUCK removal counts (`shuffle … target creature … into their owners'
-  libraries` — Floodpits Drowner leaves the battlefield, so it IS an answer), and
-  card advantage covers `five` / `half X`. Conversely a **LOOT** (`draw N, then
-  discard N`) is no longer card advantage: it's card-neutral, the same reason a
-  single-draw cantrip is excluded. Roster impact when this landed: 26 of 56 decks
-  gained interaction, 2 lost card advantage (both Kiora), 6 metrics floors moved
-  B→A. **When editing these patterns, run a roster-wide before/after diff** — a
-  bare `{0,2}` inside an `rf"…"` regex silently compiles to the literal `(0, 2)`,
-  and only that diff caught it (46 decks had lost all "destroy target creature").
-  **`check_patterns.py` now catches this class mechanically** (a hard `check_all` gate):
-  every card-text pattern must match ≥1 pool card, and no pattern source may hold a
-  tuple repr. Run the diff anyway for anything that changes a COUNT — the gate proves a
-  pattern is alive, not that it matches the right cards.
-  **A SECOND sweep, driven by reading the audit's own output, was larger still** —
-  proof the coverage list is worth actually working through rather than glancing at.
-  The big one: the bounce pattern spelled `(?:owner|their) hand`, which requires the
-  literal text "owner hand", while MTG writes "to its **owner's** hand" — so EVERY
-  unconditional bounce spell in the collection scored zero roles for the entire life
-  of the pattern (note `owner'?s?`; this is the same class of typo as the `{0,2}`
-  one). Six more templatings were missing: EDICT (`target opponent sacrifices a
-  creature of their choice` — it answers hexproof), X-damage removal (the fixed
-  patterns all demand a DIGIT), the Aura form of the library tuck, mass edict (`each
-  player sacrifices all other creatures`) → Sweeper, a REPEATABLE upkeep draw →
-  Card advantage (the cantrip exclusion is about ONE-SHOT single draws; Phyrexian
-  Arena accrues every turn), and fixed damage to each opponent → Burn/drain. Roster
-  impact: 34 of 58 decks moved, all upward — interaction 415→464, card advantage
-  104→112, unclassified 174→157, under-read 48→10. Deck 22 re-graded C→B on it, and
-  ten more decks had stale figures in their `#: tier:` prose corrected.
-  **A THIRD under-count sat in the CARD-ADVANTAGE half, and it is the one case so far
-  that NO uncertainty channel could reach.** The repeatable-draw rule above was added as
-  a single pattern keyed on the literal word **`upkeep`** — but repeatability comes in
-  two templatings, and that pattern read only one. A **PHASE** trigger recurs every turn
-  and Magic writes it on the end step, the draw step and combat as readily as the upkeep
-  (Haliya, Guided by Light draws at the beginning of your END STEP); and a **`WHENEVER`**
-  trigger recurs by construction (Exemplar of Light draws every turn it gets a counter).
-  Neither matched the precise pattern NOR the broad `_CA_CUES` net — the "missable by
-  BOTH" failure the superset property exists to prevent — so deck 46 reported card
-  advantage 1 against a real 3. **The reason it was invisible is worth keeping:** both
-  cards DID match a role (Payoff, Lifegain), so `unclassified` — which by definition only
-  names cards matching NOTHING — could never reach them, and `under_read` fires per-axis
-  but is driven by the same cue net that missed them. A card sorted into the *wrong*
-  bucket is therefore harder to detect than one sorted into no bucket at all. Found by
-  hand-counting a deck's draws while drafting it, not by any gate.
-  **The fix is a DISCRIMINATION problem, not a widening one, and the roster diff is what
-  proved it.** A naive `whenever .* draw a card` took the pool from 777 card-advantage
-  cards to 1200 — and **45 of those were the exact inverse of the role**: `Whenever you
-  draw a card, <effect>` (Chasm Skulker, Orcish Bowmasters, Queza) puts the draw in the
-  CONDITION, so the card CARES about drawing and does not draw. Scoring a draw-PAYOFF as
-  a draw is backwards, and it is the same shape as the `theft`/`heist` tag collision.
-  Magic templates a trigger as `Whenever <condition>, <effect>`, so requiring the draw to
-  fall AFTER the comma separates them; final count 1163. **`When` vs `Whenever` is the
-  other load-bearing distinction** — "When this creature enters, draw a card" is a
-  one-shot ETB cantrip (Inspiring Overseer) and stays excluded, which is the cantrip rule
-  this pattern implements rather than an oversight. Roster impact: 38 of 64 decks moved,
-  **all upward**, median card advantage 1→2.5 (not saturated — 5 decks still read 0 and
-  the max is 12); three metrics floors moved (38 and 38a C→B, 42a B→A); no deck landed
-  ≥2 bands off its claimed letter; and **15 decks had a stale card-advantage figure in
-  `#: tier:` prose**, every one an under-statement. Note 42a now sits one band BELOW its
-  floor by deliberate choice, which the guard permits and does not nag about.
-  The coverage net also **strips parenthetical REMINDER text** before matching, because
-  Ward's reminder ends "…counter it unless that player pays {2}" and was reporting every
-  warded creature as a missed interaction piece. A FALSE cue is the expensive kind of
-  error here — the list exists to be read card-by-card — and the strip cannot create a
-  blind spot, since the net contains the precise patterns and the flag only fires when
-  NO role was tagged.
-  The interaction / card-advantage counts are computed by ONE canonical
-  `role_tally` (F13) — quantity-weighted, a card counted once per axis, basics and
-  nonbasic lands skipped — that `stats`, `audit`, and the `quality`/`tier` vectors
-  all route through, so the number you eyeball in `stats` is the number the tier
-  floor grades on (three separate counters used to disagree by ±1). It also returns
-  **`protection`** (see below). The lint reads the deck's `#: colors:` header,
-  so a stale or intentionally-narrow header flags cards as off-color — a header
-  narrower than the deck's real card pool reads as multicolor strays. Fixing a stale
-  header to the deck's real castable colors clears the false positives (e.g. deck
-  `13` was corrected `GR`→`GWBR`). Treat a flag as signal to review, not a hard
-  failure — it doesn't gate `check_all.py`.
-  An identity stray now says WHICH KIND it is, in three cases: `(hybrid — paid
-  on-color)`, `(off-color ability)`, or `(cost unknown — run deck.py mana …)`. The third
-  exists because **`check` deliberately passes an EMPTY mana dict to stay offline**, and
-  with no cost to read nothing can be shown to be hybrid-explained — so `check` would
-  otherwise assert "off-color ability" for a card it cannot classify (false for deck 3's
-  two R/W hybrids). It still COUNTS an unknown as actionable, so the offline path
-  over-reports rather than silently clearing a deck; only the claim is softened to match
-  the evidence. Run `deck.py mana` (which loads real costs) for the definitive read.
+- **An unindexed keyword is a HOLE every tag-gated predicate inherits**, not an inert
+  gap. The acknowledged-but-unindexed list is `scripts/keyword_baseline.txt` (Vivid, Job
+  select, Opus, Increment, Infusion, Paradigm, Disappear, Tiered, Jump, triple); theming
+  them is ROADMAP Tier 1. Triage a new set's keywords PER KEYWORD, not in bulk — `renew`
+  and `triple` triaged in opposite directions. A standing warning is a decision nobody
+  has made yet. [K-01]
+- **A keyword maps to the resources it COSTS** — `forage` → `["graveyard", "food"]`, not
+  `sacrifice`. Mapping it changed only 2 of 9 cards because the rest quote reminder text
+  the TEXT rules already read; the keyword map exists for the cards that state a keyword
+  bare, and that tail is invisible unless you check them. [K-02]
+- **`tag_synergies.py` text-tags fixing + topdeck-value engines** so they stop hiding
+  under `selection`/`tokens` (cast-from-top → `card advantage`; spend-as-any-color and
+  `land token` → `ramp`; all-basic-land-types → `mana`). **Residual: a fixer whose value
+  scales with colour count but whose text carries no explicit any-colour / basic-land-type
+  cue is still invisible — grade those from full text.** [K-03]
+- **Never gate a predicate on a derived TAG — it inherits every hole in the tagger.**
+  `_is_color_fixer` did, so the roster's two best fixers (keying off unindexed Vivid) read
+  as non-fixers and `suggest-homes` proposed cutting the BETTER fixer. Read TEXT, in
+  mana/land-type context, and exclude reminder text. When a gate blocks a fix, check
+  whether it encodes the intent or merely the old implementation. [K-04]
+- **`pay life` is a tagged theme** (351 pool cards, 2.2% — specific enough to build
+  around): YOU losing life as a cost, plus the cards that only CARE. "Each opponent loses
+  2 life" is a DRAIN effect — the opposite card, deliberately not tagged. [K-05]
+- **CHECK `MECHANIC_RULES` FOR THE NAME BEFORE ADDING A THEME.** `heist` (cast a card
+  that was THEIRS) was first drafted as `theft`, a name already taken by the
+  "gain control of" rule — reusing it silently UNIONED two mechanically unrelated effects
+  and destroyed the specificity that makes an idf theme useful, **with `check_all` green
+  throughout, because a tag collision breaks no invariant.** [K-06]
+- **`exile cast` is the SIBLING of `heist` and stays separate** — casting your OWN exiled
+  cards (impulse / Warp / Plot / Foretell / Adventure, 266 pool cards). The two only look
+  alike; a deck built on one gets nothing from the other. [K-07]
+- **`keyword_frequencies()` counts DISTINCT CARDS, not rows** — the mana file keys a DFC
+  under its full `Front // Back` name, so a two-faced card could contribute two rows and
+  clear the one-card noise floor without a second card existing. [K-08]
+- **`tags_for` and `classify_roles` must agree on the same text.** Three phrases
+  disagreed, each leaving a card with a blank Synergies cell and therefore invisible to
+  every tag-based recommendation. **Residual: ~384 pool blanks remain — a genuine long
+  tail of un-themeable effects, and a new theme for four cards is not the fix.** [K-09]
+- **After editing a tag pattern, regenerate BOTH derived tag stores** —
+  `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
+  which re-derives every pool row's `Synergies` through the same `tags_for()`. Skip the
+  pool rebuild and unowned craft candidates rank on stale tags. Never point
+  `tag_synergies.py` or `enrich.py` at `card-pool.csv` — both write the library's 8
+  columns and would destroy the pool's own. [K-10]
+- **A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
+  warning** — expected, not an error. [K-11]
+- **The functional-role breakdown and the castability lint are HEURISTIC, and they
+  silently UNDER-count.** So every count carries its own uncertainty: `stats`/`tier`
+  print `7`, `3 +2?`, or `8 +4? (3 unclassified)` plus a "⚠ Possible UNDER-COUNT" list.
+  **Read the uncertainty, not just the number** — deck 40a was once graded on interaction
+  3 against a hand count of 7. `role_tally` is the ONE canonical counter, so the number
+  `stats` shows is the number the tier floor grades on. **When editing a role pattern,
+  run a roster-wide before/after diff**: three sweeps found large silent under-counts,
+  and a card sorted into the WRONG bucket is harder to detect than one in no bucket at
+  all. The castability lint reads the deck's `#: colors:` header, so a stale header
+  manufactures phantom strays — a flag is a review signal, not a hard failure. [K-12]
 
 ## Cycle Workflow Config
 
