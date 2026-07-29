@@ -1333,17 +1333,35 @@ castability · curve · central-theme density), with the intangibles moving a de
   **Vivid is the cautionary one on this list:** an unindexed keyword is not inert, it is a
   hole every tag-gated predicate inherits — `_is_color_fixer` gated on a `ramp`/`mana` tag
   and so read the roster's two best fixers as non-fixers (see the fixer-overlay gotcha).
-  **STANDING, and untriaged: `renew` and `triple`.** These two have warned on EVERY
-  `check_all` run for several cycles — they are in neither `KEYWORD_THEMES` nor
-  `keyword_baseline.txt`, so the radar reports them every time. That is the saturation
-  failure this file documents elsewhere: a channel that always fires reads as working, and
-  a genuinely new mechanic arriving next to them would be indistinguishable from the noise.
-  Both clear the card-uniqueness floor comfortably — `renew` appears on 16 distinct pool
-  cards and `triple` on 5 — so neither is flavor to be denylisted, and `is_noise_keyword`
-  will not suppress them. The triage is a real decision, not a rubber stamp: THEME them if
-  they map to resources the way `forage` did, or BASELINE them if they are unindexable, but
-  do it deliberately. Listing them here so the debt is visible in the doc rather than only
-  in a warning nobody reads any more.
+  **`renew` and `triple` were the standing pair, and they triaged in OPPOSITE
+  directions** — which is the argument for doing this per-keyword rather than in bulk.
+  `renew` (Tarkir: Dragonstorm, 14 pool cards, every one on the same template) is a real
+  mechanic of exactly the `forage` shape — a COST plus an EFFECT — so it maps to the two
+  resources it touches: **`["graveyard", "counters"]`**, since it is activated FROM your
+  graveyard and puts counters on a creature. Deliberately NOT `sacrifice` (nothing is
+  sacrificed) and NOT `recursion`: the card is EXILED to pay for the counters and never
+  comes back, so a renew card in the yard is a resource to spend, not a rebuy, and tagging
+  it recursion would point reanimator decks at cards that do not recur.
+  **The mapping changed ZERO stored tags, and that is the forage lesson at full strength.**
+  All 14 cards state the template without reminder text ("Exile this card from your
+  graveyard: Put a +1/+1 counter …"), so the TEXT rules already earned both tags —
+  `tag_synergies --merge` tagged 0 rows and no pool row would change. The mapping's real
+  job is to DECLARE the mechanic: that silences the radar, and it permanently exempts the
+  keyword from `is_noise_keyword`, which matters the day a set ships with only one renew
+  card. Note a mapped keyword KEEPS its literal tag (`forage` does too) — mapping adds the
+  themes, it does not replace the name.
+  **`triple` is not a mechanic at all** and must not be themed: Scryfall is surfacing the
+  ordinary WORD from "deals triple that damage" (Fiery Emancipation, City on Fire) and
+  "Triple target creature's power" (Tifa's Limit Break). Three unrelated cards, no shared
+  template. Its sibling **`double` appears on the very same card and was already in
+  `keyword_baseline.txt`**, so `triple` goes there beside it — following the precedent
+  rather than inventing a theme. It is baselined rather than denylisted because
+  FLAVOR_KEYWORDS is for card-UNIQUE flavor ability names, which a common English word is
+  not.
+  The lesson worth keeping: **a standing warning is a decision nobody has made yet.** These
+  two fired on every `check_all` run for several cycles, which is the saturation failure
+  this file documents elsewhere — a channel that always fires reads as working, and a
+  genuinely new mechanic arriving beside them would have been invisible.
 - **`forage` was THEMED rather than baselined, and the 7-of-9 split is the lesson.**
   It is a COST — "exile three cards from your graveyard or sacrifice a Food" — so it maps
   to `["graveyard", "food"]`, the two resources it consumes. Deliberately NOT `sacrifice`:

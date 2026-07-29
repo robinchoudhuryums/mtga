@@ -85,6 +85,16 @@ KEYWORD_THEMES = {
     # the tag model's, which has always read `graveyard` as "interacts with" and left
     # direction to the reader.
     "forage": ["graveyard", "food"],
+    # `renew` (Tarkir: Dragonstorm) is a COST + EFFECT like forage, and maps to the two
+    # resources it touches: it is activated FROM YOUR GRAVEYARD (exiling the card) and it
+    # puts COUNTERS on a creature — "Renew — {1}{G}, Exile this card from your graveyard:
+    # Put a +1/+1 counter on target creature." 14 pool cards, every one on that template,
+    # so this is a real mechanic rather than flavor: it sat unindexed and warned on every
+    # `check_all` run for several cycles, which is the saturation failure the radar exists
+    # to avoid. Deliberately NOT `sacrifice` (nothing is sacrificed) and NOT `recursion`
+    # (the card never returns — it is exiled to pay for the counters, so a renew card is a
+    # graveyard RESOURCE, not a rebuy).
+    "renew": ["graveyard", "counters"],
     # Tokens / go-wide / sacrifice
     "convoke": ["go-wide", "ramp"], "amass": ["tokens", "go-wide"],
     "populate": ["tokens", "go-wide"], "fabricate": ["tokens", "counters"],
