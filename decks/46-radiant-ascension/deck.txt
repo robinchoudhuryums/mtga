@@ -60,7 +60,7 @@
 #: archetype: on individual bodies and recurs them. vs decks 20/41/42, the roster's other
 #: archetype: lifegain shells: all three are ORZHOV and convert life into DRAIN or into
 #: archetype: CARDS. This one converts it into creature size and never touches black.
-#: protect: The Wind Crystal; Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Delney, Streetwise Lookout; Stirring Hopesinger; Graduation Day; Valkyrie's Call; Lyra Dawnbringer; Giada, Font of Hope; Angelic Destiny; Herald of Eternal Dawn; Silver Sable, Mercenary Leader; Rosa, Resolute White Mage
+#: protect: The Wind Crystal; Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Delney, Streetwise Lookout; Stirring Hopesinger; Valkyrie's Call; Lyra Dawnbringer; Giada, Font of Hope; Angelic Destiny; Herald of Eternal Dawn; Silver Sable, Mercenary Leader; Rosa, Resolute White Mage
 #: tier: A — PROVISIONAL (unplayed brew, 11 cards short of buildable). The letter sits AT
 #: tier: the metrics floor: interaction 5 is exactly the A bar, and 5 + card advantage 2 is
 #: tier: exactly the sum of 7, and protection is 4. There is no slack on either axis of
@@ -68,10 +68,9 @@
 #: tier: summary of this build — it spends its slots on ENGINE rather than on answers, and
 #: tier: one more cut to either axis drops it to B.
 #: tier: THE PROTECT LIST IS DOING REAL WORK HERE, more than on any other deck. `cuts`
-#: tier: ranks Delney, Graduation Day and Valkyrie's Call among the WEAKEST cards in the
-#: tier: 60, and all three are engine spine. The classifier reads Delney as "role not
-#: tier: auto-detected" because trigger-doubling is not a functional role it knows;
-#: tier: Graduation Day looks like a 1-mana enchantment that does nothing on arrival; and
+#: tier: ranks Delney and Valkyrie's Call among the WEAKEST cards in the 60, and both are
+#: tier: engine spine. The classifier reads Delney as "role not auto-detected" because
+#: tier: trigger-doubling is not a functional role it knows; and
 #: tier: Valkyrie's Call is scored as generic reanimation rather than as the card that
 #: tier: makes dead non-Angels into ANGELS and so turns on Lyra and Giada. A synergy model
 #: tier: cannot see a multiplier — it sees a card with no board impact.
@@ -180,3 +179,22 @@
 #~ counter engine and Delney doubles it (power 2), so this is not a go-wide card. Held
 #~ out on stats and slot: a 2/1 for four mana, into a 4-slot already holding Twinblade
 #~ Paladin, Exemplar of Light, Mockingbird, Rosa and now The Wind Crystal.
+#~ -Graduation Day | +Prayer of Binding — RECOMMENDED, costs one uncommon wildcard.
+#~ Prayer of Binding is Liminal Hold with FLASH: identical {3}{W}, and identical text down
+#~ to the word (exile a nonland permanent, gain 2 life). Running both gives two copies
+#~ and takes interaction 5 -> 6, which is the only way this deck gets any slack on the A
+#~ floor (it currently sits exactly on both clauses). The cut side is the honest part:
+#~ Graduation Day has only SIX instant/sorcery triggers in the whole 60, it does nothing on
+#~ arrival, and — unlike Stirring Hopesinger, which reads the same Repartee trigger — it is
+#~ an ENCHANTMENT, so Delney cannot double it and it counters one creature rather than all.
+#~ It was over-protected in an earlier round; the protect header no longer lists it.
+#~ note: HELD OUT — Due Diligence. Re-read confirms it is better than its reputation: a
+#~ permanent +2/+2 and vigilance for three mana, plus a one-shot +2/+2 and vigilance to a
+#~ SECOND creature on arrival, and it does trigger Mockingbird, Ace Agent (which reads "a
+#~ spell", not "an instant or sorcery" — an Aura spell targets). It does NOT trigger
+#~ Graduation Day or Stirring Hopesinger, whose Repartee needs an instant or sorcery.
+#~ Held out on AURA RISK rather than power: the deck already runs Angelic Destiny (which
+#~ returns to hand when the creature dies, so removal cannot two-for-one it) and Sheltered
+#~ by Ghosts (which brings ward 2 with it). Due Diligence has neither escape hatch, so it
+#~ is the third aura and the one that eats a removal spell for a clean card down. Swap it
+#~ in over Sheltered by Ghosts if the meta is light on removal and heavy on blockers.
