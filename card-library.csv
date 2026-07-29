@@ -3888,3 +3888,40 @@ Rottenmouth Viper,Creature — Elemental Snake,"As an additional cost to cast th
 Whenever this creature enters or attacks, put a blight counter on it. Then for each blight counter on it, each opponent loses 4 life unless that player sacrifices a nonland permanent of their choice or discards a card.",B,Elemental; Snake; counters; cost-reduction; sacrifice; discard,BLB,107,1
 Starseer Mentor,Creature — Bat Warlock,"Flying, vigilance
 At the beginning of your end step, if you gained or lost life this turn, target opponent loses 3 life unless they sacrifice a nonland permanent of their choice or discard a card.",W/B,Bat; Warlock; lifegain; sacrifice; discard; flying; evasion; vigilance; combat,BLB,233,1
+"Haliya, Guided by Light",Legendary Creature — Human Soldier,"Whenever Haliya or another creature or artifact you control enters, you gain 1 life.
+At the beginning of your end step, draw a card if you've gained 3 or more life this turn.
+Warp {W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,,EOE,19,1
+Diamond Mare,Artifact Creature — Horse,"As this creature enters, choose a color.
+Whenever you cast a spell of the chosen color, you gain 1 life.",Colorless,,FDN,770,1
+"Linden, the Steadfast Queen",Legendary Creature — Human Noble,"Vigilance (Attacking doesn't cause this creature to tap.)
+Whenever a white creature you control attacks, you gain 1 life.",W,,FDN,737,1
+"Rosa, Resolute White Mage",Legendary Creature — Human Noble Cleric,"Reach (This creature can block creatures with flying.)
+At the beginning of combat on your turn, put a +1/+1 counter on target creature you control. It gains lifelink until end of turn. (Damage dealt by the creature also causes you to gain that much life.)",W,,FIN,555,1
+Twinblade Paladin,Creature — Human Knight,"Whenever you gain life, put a +1/+1 counter on this creature.
+As long as you have 25 or more life, this creature has double strike. (It deals both first-strike and regular combat damage.)",W,,FDN,503,1
+Exemplar of Light,Creature — Angel,"Flying
+Whenever you gain life, put a +1/+1 counter on this creature.
+Whenever you put one or more +1/+1 counters on this creature, draw a card. This ability triggers only once each turn.",W,,FDN,733,1
+Resplendent Angel,Creature — Angel,"Flying
+At the beginning of each end step, if you gained 5 or more life this turn, create a 4/4 white Angel creature token with flying and vigilance.
+{3}{W}{W}{W}: Until end of turn, this creature gets +2/+2 and gains lifelink.",W,,LCI,32,1
+Herald of Eternal Dawn,Creature — Angel,"Flash (You may cast this spell any time you could cast an instant.)
+Flying
+You can't lose the game and your opponents can't win the game.",W,,FDN,17,1
+Valkyrie's Call,Enchantment,"Whenever a nontoken, non-Angel creature you control dies, return that card to the battlefield under its owner's control with a +1/+1 counter on it. It has flying and is an Angel in addition to its other types.",W,,FDN,27,1
+The Wind Crystal,Legendary Artifact,"White spells you cast cost {1} less to cast.
+If you would gain life, you gain twice that much life instead.
+{4}{W}{W}, {T}: Creatures you control gain flying and lifelink until end of turn.",W,,FIN,43,1
+Sheltered by Ghosts,Enchantment — Aura,"Enchant creature you control
+When this Aura enters, exile target nonland permanent an opponent controls until this Aura leaves the battlefield.
+Enchanted creature gets +1/+0 and has lifelink and ward {2}.",W,,DSK,30,1
+Enter the Avatar State,Instant — Lesson,"Until end of turn, target creature you control becomes an Avatar in addition to its other types and gains flying, first strike, lifelink, and hexproof. (A creature with hexproof can't be the target of spells or abilities your opponents control.)",W,,TLA,18,1
+Practiced Offense,Sorcery,"Put a +1/+1 counter on each creature target player controls. Target creature gains your choice of double strike or lifelink until end of turn.
+Flashback {1}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",W,,SOS,25,1
+Rally the Monastery,Instant,"This spell costs {2} less to cast if you've cast another spell this turn.
+Choose one —
+• Create two 1/1 white Monk creature tokens with prowess.
+• Up to two target creatures you control each get +2/+2 until end of turn.
+• Destroy target creature with power 4 or greater.",W,,TDM,19,1
+Prayer of Binding,Enchantment,"Flash
+When this enchantment enters, exile up to one target nonland permanent an opponent controls until this enchantment leaves the battlefield. You gain 2 life.",W,,FDN,739,1
