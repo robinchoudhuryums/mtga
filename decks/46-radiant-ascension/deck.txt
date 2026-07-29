@@ -32,8 +32,10 @@
 #: archetype: (two counters on every creature per trick), Mockingbird, Ace Agent, Silver Sable.
 #: archetype: THE TRICKS ARE ENGINE PIECES. Every instant here targets a creature on
 #: archetype: purpose, because that is the trigger condition for Stirring Hopesinger's
-#: archetype: Repartee, Graduation Day and Mockingbird, Ace Agent — so a protection spell is also a
-#: archetype: mass pump, and the deck is never holding a dead card.
+#: archetype: Repartee and Mockingbird, Ace Agent — so a protection spell is also a mass
+#: archetype: pump, and the deck is never holding a dead card. Note the two trigger on
+#: archetype: different things: Repartee needs an INSTANT OR SORCERY, while Ace Agent reads
+#: archetype: "a spell", so an Aura counts for it and not for Hopesinger.
 #: archetype: RECURSION IS THE THIRD LEG and the clearest break from decks 3 and 23, which
 #: archetype: have none. Valkyrie's Call does three jobs at once: it returns a dead
 #: archetype: non-Angel, adds a +1/+1 counter, and makes it an ANGEL — which turns on Lyra
@@ -81,7 +83,7 @@
 #: tier: excludes Inspiring Overseer as a one-shot cantrip, though a body plus a card for
 #: tier: three mana is real value, and with Delney out the Overseer draws TWO.
 #: tier: HELD AT A RATHER THAN S by four things. 1. THE CURVE IS STILL HEAVY at 3.11 with
-#: tier: only 12 early drops, though cutting Aettir and Priwen and Dawnstrike Vanguard
+#: tier: only 11 early drops, though cutting Aettir and Priwen and Dawnstrike Vanguard
 #: tier: took the 6-plus slots from four down to two. 2. IT NEEDS TWO
 #: tier: HALVES — an engine creature AND a payoff — and a singleton build draws one far
 #: tier: more often than both; the counter payoffs are three-deep and the trigger engines
@@ -132,7 +134,7 @@
 1 Valkyrie's Call (FDN) 27
 1 Angelic Destiny (FDN) 565
 1 The Wind Crystal (FIN) 43
-1 Graduation Day (SOS) 16
+1 Due Diligence (MKM) 14
 1 Sheltered by Ghosts (DSK) 30
 
 # Tricks — every one targets a creature, which is what Repartee and Ace Agent read
@@ -145,7 +147,7 @@
 1 Battle Menu (FIN) 9
 1 Rally the Monastery (TDM) 19
 1 Stasis Snare (FDN) 581
-1 Liminal Hold (ECL) 24
+1 Prayer of Binding (FDN) 739
 
 # Lands
 1 Adventurer's Inn (FIN) 271
@@ -179,7 +181,7 @@
 #~ counter engine and Delney doubles it (power 2), so this is not a go-wide card. Held
 #~ out on stats and slot: a 2/1 for four mana, into a 4-slot already holding Twinblade
 #~ Paladin, Exemplar of Light, Mockingbird, Rosa and now The Wind Crystal.
-#~ -Graduation Day | +Prayer of Binding — RECOMMENDED, costs one uncommon wildcard.
+#~ note: applied — Due Diligence in for Graduation Day.
 #~ Prayer of Binding is Liminal Hold with FLASH: identical {3}{W}, and identical text down
 #~ to the word (exile a nonland permanent, gain 2 life). Running both gives two copies
 #~ and takes interaction 5 -> 6, which is the only way this deck gets any slack on the A
@@ -188,13 +190,18 @@
 #~ arrival, and — unlike Stirring Hopesinger, which reads the same Repartee trigger — it is
 #~ an ENCHANTMENT, so Delney cannot double it and it counters one creature rather than all.
 #~ It was over-protected in an earlier round; the protect header no longer lists it.
-#~ note: HELD OUT — Due Diligence. Re-read confirms it is better than its reputation: a
-#~ permanent +2/+2 and vigilance for three mana, plus a one-shot +2/+2 and vigilance to a
-#~ SECOND creature on arrival, and it does trigger Mockingbird, Ace Agent (which reads "a
-#~ spell", not "an instant or sorcery" — an Aura spell targets). It does NOT trigger
-#~ Graduation Day or Stirring Hopesinger, whose Repartee needs an instant or sorcery.
-#~ Held out on AURA RISK rather than power: the deck already runs Angelic Destiny (which
-#~ returns to hand when the creature dies, so removal cannot two-for-one it) and Sheltered
-#~ by Ghosts (which brings ward 2 with it). Due Diligence has neither escape hatch, so it
-#~ is the third aura and the one that eats a removal spell for a clean card down. Swap it
-#~ in over Sheltered by Ghosts if the meta is light on removal and heavy on blockers.
+#~ -Due Diligence | +Liminal Hold — the INTERACTION hedge. Interaction sits at exactly 5,
+#~ the A floor's bar, with no slack, and Due Diligence took the slot a removal-adjacent
+#~ card used to hold. If games show the deck light on answers, Liminal Hold is the owned
+#~ one-for-one (exile a nonland permanent, gain 2 life — Prayer of Binding is the same
+#~ card with flash, so running both is two virtual copies of the effect). Any comparable
+#~ exile or destroy effect serves; the point is the COUNT, not the card.
+#~ note: Due Diligence went in over Graduation Day. Graduation Day had only SIX
+#~ instant/sorcery triggers in the 60, did nothing on arrival, and — unlike Stirring
+#~ Hopesinger, which reads the same Repartee trigger — is an ENCHANTMENT, so Delney could
+#~ not double it and it countered one creature rather than all. Due Diligence is a
+#~ permanent +2/+2 and vigilance plus a one-shot +2/+2 and vigilance on a second creature,
+#~ and it DOES trigger Mockingbird, Ace Agent (which reads "a spell", not "an instant or
+#~ sorcery" — an Aura spell targets). The risk it carries is AURA RISK: unlike Angelic
+#~ Destiny (returns to hand) and Sheltered by Ghosts (ward 2), it has no escape hatch, so
+#~ it is the card that trades one-for-one down against a removal spell.
