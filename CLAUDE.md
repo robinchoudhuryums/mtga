@@ -872,6 +872,21 @@ castability · curve · central-theme density), with the intangibles moving a de
   Bounded and gated by `check_suggest` anchor 14. Exalted Sunborn → deck 3 moves
   role-player/51 → KEY/69; Delney goes tangential (a bare `Human` overlap) → KEY for the
   decks it actually doubles.
+  **KNOWN GAP: `doubler_restriction` parses a POWER scope and nothing else, so a doubler
+  scoped by creature TYPE is counted against the whole deck.** Splinter, Radical Rat —
+  "If a triggered ability of a **Ninja** creature you control triggers, that ability
+  triggers an additional time" — scores support **27** in deck 20 against a correct
+  Ninja-restricted **12**, because `_DOUBLER_POWER_RE` sees no "power N or less" and
+  returns `None`, which `doubler_support` reads as unrestricted. It is the same defect the
+  Delney case above calls load-bearing, one scope-kind over: the restriction was built for
+  the shape that motivated it and the type shape was never asked about. Deck 20's LABEL
+  does not move (both counts clear `_DOUBLER_KEY_SOURCES`; the boost only goes 18.0 → 14.4,
+  and 18 is the cap), which is exactly why it survived — a wrong number that lands on the
+  right side of a threshold looks like a working model. It WILL mis-rank a tribal doubler
+  in a deck that fields few of its tribe, which is the case `suggest-homes` exists to
+  judge. Read a `✱ multiplier` figure on a type-scoped doubler as an upper bound until
+  this is fixed; the fix is a second scope pattern feeding the same filter, not a second
+  model.
 - **Before committing a deck edit, run `deck.py preflight <id>` — and grade a
   cut/swap with `deck.py quality`.** `preflight` is the one-call gate the editing
   skills use: it folds `legal` + owned/buildable + castability + a full `check_all`
@@ -1288,6 +1303,14 @@ castability · curve · central-theme density), with the intangibles moving a de
   decision visible instead of incidental. Recording is also **never fatal to a swap**: each
   model call sits in its own guard, a swap whose telemetry fails is still saved, and a row
   is written only AFTER the edit lands (so a rejected write leaves no phantom row).
+  **That guarantee covers a REJECTED write, not a REVERTED one, and the difference bites.**
+  A swap applied purely to MEASURE something — `cp` the deck file, `swap --apply`, read the
+  new vector, restore the file — leaves the ledger row behind, because the edit did land and
+  restoring a file is invisible to the ledger. It happened here: a Foot Elite → Requisition
+  Raid row recorded a decision nobody made, and the ledger's whole value is that a
+  disagreement is a case the model got wrong, so a fabricated row is worse than a missing
+  one. Prefer a `--dry-run` `swap` or a scratch COPY of the deck when you are only
+  measuring; if you do apply-and-revert, delete the trailing row in the same commit.
 - **Match results are FREE from `Player.log` — the header line is the load-bearing half.**
   Arena's "Detailed Logs (Plugin Support)" setting writes match events locally; that is the
   same feed every third-party tracker reads, and their subscriptions buy cloud analytics,
