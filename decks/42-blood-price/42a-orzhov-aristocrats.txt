@@ -42,9 +42,18 @@
 #: tier: a reason to verify, not a reason to claim the number.
 #: tier: BE PRECISE ABOUT THE FLOOR, because "restore the interaction" was not the whole
 #: tier: fix: the A floor wants interaction >=5 AND interaction+card-advantage >=7. At
-#: tier: interaction 5 and card advantage 1 the sum is 6, so the floor is B and ONE more
+#: tier: interaction 4 and card advantage 1 the sum is 5, so the floor is B and TWO more
 #: tier: points across the two axes flip it. Card advantage is the easier axis to move here —
-#: tier: see risk 1 below for why the measured 0 is defensible but beatable.
+#: tier: see risk 1 below for why the measured 1 is defensible but beatable.
+#: tier: THE MEASURED 4 UNDER-READS THIS DECK and `tier` says so itself, printing 4 +2?
+#: tier: and naming both misses. Liliana's -4 (each player sacrifices two creatures) and
+#: tier: Jecht's chapter III (each OPPONENT sacrifices two) are unambiguous interaction the
+#: tier: classifier cannot see, because loyalty abilities and Saga chapters are not in its
+#: tier: patterns; Arnyn's deathtouch is soft interaction that also feeds the death triggers
+#: tier: when it trades. Call the real figure 6. Heartless Act was CUT on exactly that
+#: tier: reasoning — it was the one CONDITIONAL answer ("creature with no counters"), and
+#: tier: what the uncounted pieces cannot replace is a cheap unconditional answer on demand,
+#: tier: which is why Hero's Downfall and Erode stay.
 #: tier: Held at B by three further things the floor cannot see:
 #: tier: 1. MEASURED CARD ADVANTAGE IS ONE, and that number is defensible rather than a
 #: tier:    classifier miss — Treacherous Greed's draw-three is the single card that
@@ -108,7 +117,7 @@ Deck
 # Sacrifice outlets — what makes the death triggers an engine
 1 Ayli, Eternal Pilgrim (FDN) 652
 1 Vampiric Rites (WOT) 37
-1 Ahriman (FIN) 87
+1 Ravenous Amulet (FDN) 131
 1 Tragedy Feaster (SOS) 102
 1 Baron Bertram Graywater (OTJ) 195
 
@@ -151,11 +160,11 @@ Deck
 1 Restoration Magic (FIN) 30
 
 # Drain clock
+1 Rottenmouth Viper (BLB) 107
 1 Starseer Mentor (BLB) 233
 
 # Removal
 1 Erode (SOS) 15
-1 Heartless Act (TLA) 103
 1 Hero's Downfall (FDN) 175
 
 # Lands — 25, Orzhov
