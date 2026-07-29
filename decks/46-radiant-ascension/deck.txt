@@ -43,17 +43,19 @@
 #: archetype: finisher — a 6/6 flash flier that, with Lyra out, is a 7/7 lifelinker, and
 #: archetype: whose "you can't lose the game" is the thematic end point of a deck about
 #: archetype: life totals. Ancestor Dragon and Dawnstrike Vanguard are the repeatable
-#: archetype: engines at 6, and Aettir and Priwen is the trump that reads the life total
-#: archetype: back as power.
+#: archetype: engines at 6. Aettir and Priwen was CUT from this slot: 6 to cast plus 5 to
+#: archetype: equip is 11 mana, and it belongs to an earlier "one enormous body" version of
+#: archetype: this deck rather than to a plan that grows several.
 #: archetype: DISTINCTNESS vs 3 and 23: same color, opposite axis. Those decks scale with
 #: archetype: creature COUNT (anthems, token makers, Elspeth); this one scales with counters
 #: archetype: on individual bodies and recurs them. vs decks 20/41/42, the roster's other
 #: archetype: lifegain shells: all three are ORZHOV and convert life into DRAIN or into
 #: archetype: CARDS. This one converts it into creature size and never touches black.
-#: protect: Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Delney, Streetwise Lookout; Stirring Hopesinger; Graduation Day; Valkyrie's Call; Lyra Dawnbringer; Giada, Font of Hope; Angelic Destiny; Aettir and Priwen; Herald of Eternal Dawn; Silver Sable, Mercenary Leader; Rosa, Resolute White Mage
+#: protect: Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Delney, Streetwise Lookout; Stirring Hopesinger; Graduation Day; Valkyrie's Call; Lyra Dawnbringer; Giada, Font of Hope; Angelic Destiny; Herald of Eternal Dawn; Silver Sable, Mercenary Leader; Rosa, Resolute White Mage
 #: tier: A — PROVISIONAL (unplayed brew, 11 cards short of buildable). The letter sits AT
 #: tier: the metrics floor: interaction 5 is exactly the A bar, and 5 + card advantage 2 is
-#: tier: exactly the sum of 7. There is no slack on either axis, which is the honest
+#: tier: exactly the sum of 7, and protection is 4. There is no slack on either axis of
+#: tier: the floor, which is the honest
 #: tier: summary of this build — it spends its slots on ENGINE rather than on answers, and
 #: tier: one more cut to either axis drops it to B.
 #: tier: THE PROTECT LIST IS DOING REAL WORK HERE, more than on any other deck. `cuts`
@@ -70,8 +72,9 @@
 #: tier: blowout. Card advantage 2 counts Exemplar of Light and Haliya; it correctly
 #: tier: excludes Inspiring Overseer as a one-shot cantrip, though a body plus a card for
 #: tier: three mana is real value, and with Delney out the Overseer draws TWO.
-#: tier: HELD AT A RATHER THAN S by four things. 1. THE CURVE IS HEAVY at 3.17 with only
-#: tier: 12 early drops, and the deck runs four cards at 6 mana or more. 2. IT NEEDS TWO
+#: tier: HELD AT A RATHER THAN S by four things. 1. THE CURVE IS STILL HEAVY at 3.11 with
+#: tier: only 12 early drops, though cutting Aettir and Priwen took the 6-plus slots from
+#: tier: four down to three. 2. IT NEEDS TWO
 #: tier: HALVES — an engine creature AND a payoff — and a singleton build draws one far
 #: tier: more often than both; the counter payoffs are three-deep and the trigger engines
 #: tier: six-deep, which is the virtual-copy answer, but virtual copies are not 4-ofs.
@@ -91,13 +94,15 @@
 1 Ajani's Pridemate (FDN) 135
 1 Giada, Font of Hope (FDN) 141
 1 Diamond Mare (FDN) 770
+1 Gloryheath Lynx (DFT) 14
 
 # Counter amplifiers and lifelink granters
+1 Linden, the Steadfast Queen (FDN) 737
 1 Angel of Vitality (ANB) 1
 1 Dazzling Angel (FDN) 9
 1 Delney, Streetwise Lookout (MKM) 12
 1 Stirring Hopesinger (SOS) 35
-1 Sage of the Skies (TDM) 22
+1 Shrike Force (BLB) 31
 1 Silver Sable, Mercenary Leader (SPM) 13
 1 Rosa, Resolute White Mage (FIN) 555
 
@@ -121,12 +126,10 @@
 1 Angelic Destiny (FDN) 565
 1 Graduation Day (SOS) 16
 1 Sheltered by Ghosts (DSK) 30
-1 Aettir and Priwen (FIN) 253
 
 # Tricks — every one targets a creature, which is what Repartee and Ace Agent read
 1 Take Up the Shield (MSH) 39
 1 Enter the Avatar State (TLA) 18
-1 Crumb and Get It (BLB) 8
 1 Restoration Magic (FIN) 30
 1 Practiced Offense (SOS) 25
 
@@ -143,7 +146,14 @@
 #~ -Adventurer's Inn | +Plains — `consistency` wants 24 white sources for Herald of
 #~ Eternal Dawn's {4}{W}{W}{W} and the deck has 23; the Inn is the only non-Plains. Costs
 #~ a free lifegain event (a Pridemate trigger) to buy ~2% on one 7-drop, so it is close.
-#~ -Sage of the Skies | +Astelli Reclaimer — if the recursion leg wants a second card. A
-#~ 5/4 flying ANGEL that returns a noncreature permanent (Angelic Destiny, Valkyrie's Call,
-#~ Graduation Day) is more on-plan than a conditional self-copy, and warp {2}{W} makes it
-#~ castable early. Costs a craft (R) and a point of curve.
+#~ note: applied — Shrike Force in for Sage of the Skies.
+#~ note: HELD OUT — Aettir and Priwen (owned). The purest "life total matters" card in
+#~ the pile: base P/T becomes X/X where X is your life total. Held out for CURVE (6 to
+#~ cast plus 5 to equip, with four cards already at 6+), not for power. Bring it back over
+#~ a 6-drop if the deck plays slower than modelled and wants a trump over a fourth engine.
+#~ Considered and REJECTED, recorded so they are not re-litigated: Crystal Barricade —
+#~ "you have hexproof" protects the PLAYER, and the prevention clause covers noncombat
+#~ DAMAGE only, so it stops pingers but not Go for the Throat; a 0/4 Defender also never
+#~ carries the counters. Starfield Shepherd — an Angel with warp, but its tutor puts the
+#~ Plains in HAND, so it is land-drop insurance rather than the ramp a 6-drop top end
+#~ actually wants, and 5 mana is the deck's most crowded slot.
