@@ -8,6 +8,8 @@ Whenever Dragonhawk enters or attacks, exile the top X cards of your library, wh
 +1: Create a 1/1 blue and red Otter creature token with prowess.
 −3: Draw three cards, then discard two cards.
 −10: Draw three cards. You get an emblem with ""Instant and sorcery spells you cast have storm."" (Whenever you cast an instant or sorcery spell, copy it for each spell cast before it this turn.)",U/R,Ral; Planeswalker; counters; card draw; tokens; planeswalker; spellslinger,BLB,230,Mythic,25,UR spellslinger planeswalker — tokens + copy your spells,7.5,hand
+Rottenmouth Viper,Creature — Elemental Snake,"As an additional cost to cast this spell, you may sacrifice any number of nonland permanents. This spell costs {1} less to cast for each permanent sacrificed this way.
+Whenever this creature enters or attacks, put a blight counter on it. Then for each blight counter on it, each opponent loses 4 life unless that player sacrifices a nonland permanent of their choice or discards a card.",B,Elemental; Snake; counters; cost-reduction; sacrifice; discard,BLB,107,Mythic,42a,sac-to-cast discount makes it a 3-4 drop here AND each sacrifice triggers the death payoffs; blight counters are a hard clock,7.5,hand
 "Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,6.0,hand
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
@@ -41,6 +43,8 @@ Equip {4}",Colorless,Equipment; reanimator; graveyard; etb; equipment; pump; sel
 Shroudstomper,Creature — Elemental,"Deathtouch
 Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.",W/B,Elemental; lifegain; card draw; deathtouch; combat; removal,DSK,233,Uncommon,20,,5.0,hand
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
+Kinscaer Sentry,Creature — Kithkin Soldier,"First strike, lifelink
+Whenever this creature attacks, you may put a creature card with mana value X or less from your hand onto the battlefield tapped and attacking, where X is the number of attacking creatures you control.",W,Kithkin; Soldier; lifegain; lifelink; first strike; combat,ECL,22,Rare,23,2-drop first strike/lifelink that cheats a creature with MV <= attackers from hand into play attacking,6.0,hand
 Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19,,4.5,hand
 Dubious Delicacy,Artifact — Food,"Flash
@@ -61,6 +65,9 @@ Twinflame Tyrant,Creature — Dragon,"Flying
 If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals double that damage instead.",R,Dragon; flying; evasion; double,FDN,97,Mythic,14,,7.0,hand
 "Arahbo, the First Fang",Legendary Creature — Cat Avatar,"Other Cats you control get +1/+1.
 Whenever Arahbo or another nontoken Cat you control enters, create a 1/1 white Cat creature token.",W,Cat; Avatar; tokens; pump,FDN,2,Rare,36,,5.5,hand
+"Ayli, Eternal Pilgrim",Legendary Creature — Kor Cleric,"Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)
+{1}, Sacrifice another creature: You gain life equal to the sacrificed creature's toughness.
+{1}{W}{B}, Sacrifice another creature: Exile target nonland permanent. Activate only if you have at least 10 life more than your starting life total.",W/B,Kor; Cleric; lifegain; sacrifice; removal; deathtouch; combat,FDN,205,Rare,42a,2-mana deathtouch body that is also a cheap repeatable sac outlet; exile mode live once the drain gets you to 30,6.5,hand
 Desecration Demon,Creature — Demon,"Flying
 At the beginning of each combat, any opponent may sacrifice a creature of their choice. If a player does, tap this creature and put a +1/+1 counter on it.",B,Demon; counters; sacrifice; flying; evasion,FDN,603,Rare,general,efficient 6/6 flying B beater (opp-sac edict) — any black midrange,5.5,hand
 "Drakuseth, Maw of Flames",Legendary Creature — Dragon,"Flying
@@ -87,8 +94,13 @@ Good-Fortune Unicorn,Creature — Unicorn,"Whenever another creature you control
 Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0,hand
 Midnight Snack,Enchantment,"Raid — At the beginning of your end step, if you attacked this turn, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
 {2}{B}, Sacrifice this enchantment: Target opponent loses X life, where X is the amount of life you gained this turn.",B,lifegain; sacrifice; tokens; food; raid; aggro,FDN,65,Uncommon,42a,"Food engine + a drain finisher that scales with the turn's lifegain, and 42a runs 17 lifegain enablers. Held at 5 by the RAID condition — it makes nothing on a turn you don't attack, which an attrition deck often can't.",5,hand
+Ravenous Amulet,Artifact,"{1}, {T}, Sacrifice a creature: Draw a card and put a soul counter on this artifact. Activate only as a sorcery.
+{4}, {T}, Sacrifice this artifact: Each opponent loses life equal to the number of soul counters on this artifact.",Colorless,counters; card draw; sacrifice,FDN,131,Uncommon,42a,"{1} sac-for-draw vs Ahriman's {3}, and the {4} sac-for-drain is the closer this deck otherwise lacks; also the 2nd artifact for Al Bhed Salvagers",6.5,hand
 Lightshell Duo,Creature — Rat Otter,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,Rat; Otter; graveyard; etb; pump; selection; surveil; prowess; spellslinger; tempo,FDN,157,Common,37,,3.0,hand
+"Cecil, Dark Knight // Cecil, Redeemed Paladin",Legendary Creature — Human Knight // Legendary Creature — Human Knight,"Deathtouch
+Darkness — Whenever Cecil deals damage, you lose that much life. Then if your life total is less than or equal to half your starting life total, untap Cecil and transform it. // Lifelink
+Protect — Whenever Cecil attacks, other attacking creatures gain indestructible until end of turn.",W/B,Human; Knight; lifegain; pay life; lifelink; transform; deathtouch; combat; removal,FIN,90,Rare,42,"1-mana deathtouch; deck 42 pays life 8 ways so the <=10 life transform is reachable, unlike 42a. Back face is lifelink + indestructible for other attackers",7.0,hand
 Esper Origins // Summon: Esper Maduin,Sorcery // Enchantment Creature — Saga Elemental,"Surveil 2. You gain 2 life. If this spell was cast from a graveyard, exile it, then put it onto the battlefield transformed under its owner's control with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)
 Flashback {3}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.) // (As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I — Reveal the top card of your library. If it's a permanent card, put it into your hand.
@@ -120,6 +132,9 @@ III — Ecliptic Growl — Draw a card if you control the creature with the grea
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
+Vein Ripper,Creature — Vampire Assassin,"Flying
+Ward—Sacrifice a creature.
+Whenever a creature dies, target opponent loses 2 life and you gain 2 life.",B,Vampire; Assassin; lifegain; sacrifice; flying; evasion; ward; protection,MKM,108,Mythic,42a,6/5 flier; drains 2 on ANY creature death incl. opponents killed by your removal; Ward-Sacrifice a creature is real protection in a deck at protection 1. {B}{B}{B} vs 17 sources = 73% on T6,8.0,hand
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
@@ -135,6 +150,8 @@ This land enters tapped.
 When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W/B,Plains; Swamp; graveyard; mana; etb; selection; surveil,MKM,268,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also de-taplands + firms black in deck 20 (Honor Among Thieves) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,5.5,hand
 Sharp-Eyed Rookie,Creature — Human Detective,"Vigilance
 Whenever a creature you control enters, if its power is greater than this creature's power or its toughness is greater than this creature's toughness, put a +1/+1 counter on this creature and investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",G,Human; Detective; counters; card draw; sacrifice; tokens; clue; investigate; vigilance; combat,MKM,176,Rare,13,grows + investigates when a bigger creature enters — its own flex-noted home (counters/value). Also a ★ card-advantage engine for deck 9 (Gruul counters/smash) — every bigger creature entering = counter + Clue.,5.0,hand
+Treacherous Greed,Instant,"As an additional cost to cast this spell, sacrifice a creature that dealt damage this turn.
+Draw three cards. Each opponent loses 3 life and you gain 3 life.",W/B,lifegain; card draw; sacrifice,MKM,219,Rare,42a,draw three + 6-point swing for 3; the sac is post-combat so it also triggers every death payoff,7.5,hand
 Underground Mortuary,Land — Swamp Forest,"({T}: Add {B} or {G}.)
 This land enters tapped.
 When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",B/G,Swamp; Forest; graveyard; mana; etb; selection; surveil,MKM,271,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,5.5,hand
@@ -243,6 +260,14 @@ If a creature you control that entered this turn would deal damage, it deals twi
 Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I, II — Create a 5/5 green Elephant creature token.
 III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,5.5,hand
+Duty Beyond Death,Instant,"As an additional cost to cast this spell, sacrifice a creature.
+Creatures you control gain indestructible until end of turn. Put a +1/+1 counter on each creature you control. (Damage and effects that say ""destroy"" don't destroy those creatures.)",W,counters; sacrifice,TDM,10,Uncommon,23; 3,instant team indestructible + a permanent counter on every creature; sac cost is a token in a go-wide deck,6.0,hand
+Static Snare,Enchantment,"Flash
+This spell costs {1} less to cast for each attacking creature.
+When this enchantment enters, exile target artifact or creature an opponent controls until this enchantment leaves the battlefield.",W,cost-reduction; removal; etb; flash; tempo,TDM,26,Uncommon,23,"flash, costs {1} less per attacking creature — often 1-2 mana in a wide deck; exiles artifact or creature",5.5,hand
+Coordinated Maneuver,Instant,"Choose one —
+• Coordinated Maneuver deals damage equal to the number of creatures you control to target creature or planeswalker.
+• Destroy target enchantment.",W,removal,TDM,12,Common,23,"2-mana modal instant; damage mode scales with board (27 creatures in 23), or kills an enchantment",5.0,hand
 Fated Firepower,Enchantment,"Flash
 This enchantment enters with X fire counters on it.
 If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus an amount of damage equal to the number of fire counters on this enchantment instead.",R,flash; tempo,TLA,132,Mythic,concept,mono-R firebending/burn payoff; try 2/14,5.5,hand
@@ -314,7 +339,9 @@ Each player may discard their hand and draw seven cards.",R,card draw; sneak; te
 "Rat King, Verminister",Legendary Creature — Rat Avatar,"Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, create a 1/1 black Rat creature token and put a +1/+1 counter on Rat King.
 {T}, Sacrifice three Rats: Return target creature card and all other cards with the same name as that card from your graveyard to the battlefield tapped.",B,Rat; Avatar; counters; reanimator; graveyard; sacrifice; tokens; disappear,TMT,71,Rare,11,Rat Avatar — reanimator/sacrifice payoff; grindy mono-black value,5.0,hand
 "Sally Pride, Lioness Leader",Legendary Creature — Cat Mutant Rebel,"When Sally Pride enters, create X 2/2 red Mutant creature tokens, where X is the number of nontoken creatures you control.
-Whenever Sally Pride attacks, put a +1/+1 counter on each creature you control.",W,Cat; Mutant; Rebel; counters; tokens; etb,TMT,24,Rare,36,,5.5,hand
+Whenever Sally Pride attacks, put a +1/+1 counter on each creature you control.",W,Cat; Mutant; Rebel; counters; tokens; etb,TMT,24,Rare,3,"X 2/2 tokens where X = nontoken creatures, plus attack-trigger counters on the team; a bomb in a 20-wide deck",7.5,hand
+"Sally Pride, Lioness Leader",Legendary Creature — Cat Mutant Rebel,"When Sally Pride enters, create X 2/2 red Mutant creature tokens, where X is the number of nontoken creatures you control.
+Whenever Sally Pride attacks, put a +1/+1 counter on each creature you control.",W,Cat; Mutant; Rebel; counters; tokens; etb,TMT,30,Rare,3,"X 2/2 tokens where X = nontoken creatures, plus attack-trigger counters on the team; a bomb in a 20-wide deck",7.5,hand
 "Slash, Reptile Rampager",Legendary Creature — Mutant Berserker Turtle,"Alliance — Whenever another creature you control enters, Slash deals 2 damage to each opponent.
 Whenever Slash attacks, create a 2/2 red Mutant creature token.",R,Mutant; Berserker; Turtle; tokens; burn; alliance; aggro; value,TMT,108,Rare,1,"Rakdos aggro/burn/tokens; also 10 | fits: 10,9",6.0,hand
 Splinter's Technique,Sorcery,"Sneak {1}{B} (You may cast this spell for {1}{B} if you also return an unblocked attacker you control to hand during the declare blockers step.)

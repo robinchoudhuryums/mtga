@@ -130,7 +130,15 @@ def _pattern_groups():
                  # gate exists for, and the reason the detector's own patterns were
                  # built by surveying real pool text rather than invented strings.
                  "_GY_HATE_OPP_RE", "_GY_HATE_ALL_RE", "_GY_HATE_CHOOSE_RE",
-                 "_GY_OWN_SCOPE_RE", "_GY_NEED_OPP_RE"):
+                 "_GY_OWN_SCOPE_RE", "_GY_NEED_OPP_RE",
+                 # The rainbow-fixer detector behind suggest-homes' colour-count
+                 # overlay. A dead pattern here is silent in BOTH directions: the
+                 # broad half going dead demotes every real manabase fixer to a
+                 # cost-discounted single source, and the single half going dead
+                 # makes `_is_color_fixer` return False, which switches off the
+                 # cut-side guard as well — so the tool resumes proposing that you
+                 # cut your best fixer. Nothing would error.
+                 "_FIXER_BROAD_RE", "_FIXER_SINGLE_RE"):
         out.append((f"deck.{name}", getattr(deck, name), "norm"))
     for name in ("_NONCREATURE_ANSWER_CUES", "_WIDE_CUES", "_TALL_CUES"):
         out += [(f"deck.{name}", p, "norm") for p in getattr(deck, name)]

@@ -104,8 +104,19 @@ def check():
     # (6) color-fixer overlay (suggest-homes): the fixer boost must be 0 below 3
     #     colors (mono/two-color decks don't want rainbow fixing), non-decreasing in
     #     color count, and CAPPED — so it re-ranks fixer-eligible decks without ever
-    #     dwarfing a genuine theme match. And `_is_color_fixer` must require BOTH a
-    #     fixing tag AND rainbow text, so a mono-color ramp spell never qualifies.
+    #     dwarfing a genuine theme match.
+    #
+    #     `_is_color_fixer` reads TEXT ONLY. This anchor used to assert the opposite —
+    #     that rainbow text with no `ramp`/`mana` tag must NOT qualify — and that
+    #     assertion was itself the bug: the tag comes from `tag_synergies`' hand-kept
+    #     keyword map, so every fixer built on an UNINDEXED mechanic read False. Bloom
+    #     Tender and Prismatic Undercurrents both key off Vivid (in keyword_baseline.txt,
+    #     mapped to nothing), so both scored as non-fixers while a 3-mana one-mana dork
+    #     scored as one, and suggest-homes proposed cutting them FOR it. The old anchor's
+    #     own example — "create a land token that is every basic land type" tagged only
+    #     `tokens` — is Overlord's ability, i.e. it asserted a real fixer must be
+    #     rejected. The strictness now lives in requiring MANA/land-type context, which
+    #     is what the tag was standing in for, so the guards below test that instead.
     fb = deck._fixer_boost
     boosts = [fb(n) for n in range(1, 7)]
     if not (fb(0) == 0 and fb(1) == 0 and fb(2) == 0):
@@ -117,16 +128,51 @@ def check():
     if fb(5) != fb(6) or fb(6) != fb(20):
         errs.append(f"_fixer_boost is not CAPPED (fb(5)={fb(5)}, fb(6)={fb(6)}, fb(20)={fb(20)}) "
                     "— an uncapped bump could dwarf theme fit.")
-    isf = deck._is_color_fixer
-    if isf({"ramp"}, "Add {G}{G}."):
-        errs.append("_is_color_fixer flagged a mono-color ramp spell (tag but no rainbow text) "
+    isf, frate = deck._is_color_fixer, deck._fixer_rate
+    if isf(set(), "Add {G}{G}."):
+        errs.append("_is_color_fixer flagged a mono-color ramp spell "
                     "— it must require explicit any-color/every-basic-land-type text.")
-    if isf({"tokens"}, "create a land token that is every basic land type"):
-        errs.append("_is_color_fixer flagged a card with rainbow text but NO fixing tag "
-                    "— it must require both a ramp/mana tag and the text cue.")
-    if not isf({"ramp", "mana"}, "create a tapped land token that is every basic land type"):
+    for _txt in ("Target creature gains protection from the color of your choice.",
+                 "Draw a card for each color among permanents you control."):
+        if isf(set(), _txt):
+            errs.append(f"_is_color_fixer flagged non-mana 'any color' text ({_txt!r}) "
+                        "— the cue must sit in MANA or land-type context.")
+    if not isf(set(), "create a tapped land token that is every basic land type"):
         errs.append("_is_color_fixer failed to flag a canonical rainbow fixer "
-                    "(ramp/mana tag + every-basic-land-type) — the Overlord anchor.")
+                    "(every-basic-land-type) — the Overlord anchor.")
+    if not isf(set(), "{T}: For each color among permanents you control, "
+                      "add one mana of that color."):
+        errs.append("_is_color_fixer failed to flag Bloom Tender's per-color production "
+                    "— the UNINDEXED-mechanic regression (Vivid tags to nothing).")
+    # A Treasure token's REMINDER text says 'Add one mana of any color'. Counting those
+    # would make ~150 pool cards read as manabase fixers — a signal that fires on
+    # everything carries none. The same ability as REAL text must still qualify.
+    if isf(set(), 'create a Treasure token. (It\'s an artifact with "{T}, Sacrifice '
+                  'this token: Add one mana of any color.")'):
+        errs.append("_is_color_fixer counted a Treasure token's parenthetical REMINDER "
+                    "text — reminder text must be stripped or the signal saturates.")
+    if not isf(set(), "{1}, {T}, Sacrifice this artifact: Add one mana of any color."):
+        errs.append("_is_color_fixer rejected a real (non-reminder) any-color ability "
+                    "— the reminder strip must not swallow stated abilities.")
+    # RATE: broad fixing is worth full value at any cost; a SINGLE any-color source is
+    # discounted by what it costs, bounded and monotonic, and never to zero.
+    if frate("create a land token that is every basic land type", 9) != 1.0:
+        errs.append("_fixer_rate must be 1.0 for a BROAD fixer regardless of MV "
+                    "— that value doesn't decay with mana cost.")
+    _sing = "{T}: Add one mana of any color."
+    _rates = [frate(_sing, m) for m in (1, 2, 3, 5, 9)]
+    if not all(a >= b for a, b in zip(_rates, _rates[1:])):
+        errs.append(f"_fixer_rate not non-increasing in MV for a single source: {_rates}")
+    if not all(deck._FIXER_RATE_FLOOR <= r <= 1.0 for r in _rates):
+        errs.append(f"_fixer_rate out of [floor,1] bounds for a single source: {_rates} "
+                    "— it is a bounded discount, never a veto.")
+    if frate(_sing, 3) >= deck._FIXER_KEY_RATE:
+        errs.append("a 3-mana single any-color source must fall BELOW _FIXER_KEY_RATE, so "
+                    "the colour-count overlay promotes it to role-player and not KEY "
+                    "(the Guy in the Chair regression).")
+    if frate(_sing, 1) < deck._FIXER_KEY_RATE:
+        errs.append("a 1-mana single any-color source must clear _FIXER_KEY_RATE "
+                    "— the discount must not punish efficient fixing.")
 
     # (7) cuts power co-signal (#3): the keep-score nudge from a card's 0–10 power must
     #     be BOUNDED (±cap), neutral at the center, and monotonic (a bomb is protected,
@@ -533,6 +579,36 @@ def _wiring_flags():
         for k, v in saved.items():
             setattr(deck, k, v)
         shutil.rmtree(tmp, ignore_errors=True)
+
+    # (15) `_weakest_cut` must not be chosen BLIND to the card being added. The hint
+    #      ranks on theme fit + role credit, and NEITHER has a fixing term, so a
+    #      rainbow fixer — few synergy tags, no classified role — sorts to the top of
+    #      the cut list in exactly the multi-colour decks that need it. Adding a fixer
+    #      therefore proposed cutting a BETTER fixer (Bloom Tender out of deck 17,
+    #      Prismatic Undercurrents out of deck 13). This has to be a WIRING anchor, in
+    #      the F-01/11b sense: `_fixer_rate` and `_fixer_boost` can each be provably
+    #      bounded and correct while the cut half stays blind, because they never meet.
+    _dmeta = {}
+    _cards = [(1, "Rainbow Rock", "SET", "1"), (1, "Filler Bear", "SET", "2"),
+              (4, "Mountain", "SET", "3")]
+    _cmeta = {"rainbow rock": {"synergies": []}, "filler bear": {"synergies": ["Bear"]}}
+    _cdata = {
+        "rainbow rock": {"type": "Artifact", "text": "{T}: Add one mana of any color."},
+        "filler bear": {"type": "Creature — Bear", "text": "Vanilla."},
+        "mountain": {"type": "Basic Land — Mountain", "text": ""},
+    }
+    blind = deck._weakest_cut(_dmeta, _cards, _cmeta, _cdata, add_is_fixer=False)
+    guarded = deck._weakest_cut(_dmeta, _cards, _cmeta, _cdata, add_is_fixer=True)
+    if blind != "Rainbow Rock":
+        errs.append(f"_weakest_cut baseline changed: expected the untagged, role-less "
+                    f"fixer to rank most-cuttable, got {blind!r} — the anchor below no "
+                    "longer tests what it claims.")
+    if guarded == "Rainbow Rock":
+        errs.append("_weakest_cut proposed cutting a rainbow fixer to make room for "
+                    "another fixer — the add-blind cut regression (decks 13/17).")
+    if guarded != "Filler Bear":
+        errs.append(f"_weakest_cut(add_is_fixer=True) should fall through to the next "
+                    f"candidate, got {guarded!r}.")
     return errs
 
 

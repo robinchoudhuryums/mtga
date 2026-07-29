@@ -37,7 +37,7 @@ undercounts your collection or overwrites it, so `/ingest` exists to route the c
 
 | What you have | Tool | A quantity means |
 |---|---|---|
-| Cards you just crafted or opened | `reconcile_crafts.py` (via `/add-cards`) | lower bound — takes `max(existing, line)` |
+| Cards you just crafted or opened | `reconcile_crafts.py` (via `/ingest`) | lower bound — takes `max(existing, line)` |
 | A deck list you built in Arena | `import_arena.py --skip-basics` | lower bound |
 | A tracker's full-collection CSV/TSV | `import_collection.py` | **authoritative** — sets exact, including down |
 | The companion Google Sheet | `sheets_sync.py pull` | authoritative (needs credentials) |
@@ -634,10 +634,28 @@ shares an etb/tokens tag with — its broad utility shows up in the wishlist `--
 `use` (breadth) column instead. Fits are scoped to decks where the card is **legal
 in that deck's `#: format:`** (`--any-format` to disable), the card name resolves
 like `card.py` (exact → DFC front → unique substring), and a bounded curve nudge
-flags a top-heavy / win-more card as `⚠ top-heavy for this curve` in a low-curve deck. A **rainbow mana fixer** (one that
-makes an any-color land or gives lands every basic land type) gets a color-count
-overlay — it reads KEY in a 4+-color deck and role-player in a 3-color one — since
-its fixing value scales with the deck's colors, which theme overlap alone can't see.
+flags a top-heavy / win-more card as `⚠ top-heavy for this curve` in a low-curve deck. A **rainbow mana fixer** gets a
+color-count overlay, since its fixing value scales with the deck's colors — something
+theme overlap alone can't see. Fixers are recognised from oracle **text** in explicit
+mana or basic-land-type context, deliberately not from a synergy tag: the tag comes from
+a hand-kept keyword map, so gating on it meant any fixer built on an *unindexed* mechanic
+read as a non-fixer. Bloom Tender and Prismatic Undercurrents both key off Vivid, which
+maps to no theme, and both scored as non-fixers while a mediocre 3-mana dork scored as
+one. The overlay covers any-color production, a mass grant ("creatures you control have
+`{T}: Add one mana of any color`"), color-agnostic spending permission, per-color
+production, and a basic-land fetch that scales with your colors. A Treasure token's
+parenthetical *reminder* text is excluded — counting it would make ~150 pool cards read
+as manabase fixers.
+
+How much the fixer **buys** is then priced in. Broad fixing (several colors at once, or a
+grant) is full value at any mana cost; a single any-color source is discounted by what it
+costs. So a fixer reads **KEY in a 4+-color deck** only if it clears that efficiency bar
+— a 3-mana one-mana-any-color dork gets **role-player** instead — and role-player in a
+3-color deck. And the **suggested cut is chosen with the add in view**: the cut ranking
+scores theme fit and role credit, neither of which has a fixing term, so a fixer (few
+tags, no classified role) used to sort straight to the top of the cut list in exactly the
+multi-color decks that need it. Adding a fixer therefore proposed cutting a *better* one.
+Incumbent fixers are now excluded when the add is itself a fixer.
 A **doubler** (tokens / counters / triggers) is weighed against how much this deck
 actually has to double — Exalted Sunborn shares `tokens` with a 14-token deck and a
 6-token deck, and theme overlap scored them identically — so its feeder count drives a
@@ -701,9 +719,12 @@ pointer to `cuts` for room. It does the *arithmetic*; the card **selection** —
 fillers preserve the engine/identity, what to cut — stays a `/tune-deck` judgment
 call (protect signature/spice). `/tune-deck` runs it so a tune aims at a concrete
 tier target instead of generic improvement. The gap list shows both **owned**
-fillers (0 wildcards) and **craft targets** (unowned, format-legal, cheaper
-wildcard first), so it doubles as a wildcard-spend planner for lifting a deck a
-tier.
+fillers (0 wildcards) and **craft targets** (unowned, cheaper wildcard first), so
+it doubles as a wildcard-spend planner for lifting a deck a tier. **Both lists are
+filtered to the deck's `#: format:`** — owning a card is not a licence to play it,
+since the pick costs no wildcard but still costs a deck slot. (Only the craft half
+checked that at first, which is how Deadly Dispute and Dovin's Veto, neither
+Standard-legal, were offered to Standard decks.)
 
 A deck's **change history is git** — no in-file changelog to go unwieldy or drift.
 `deck.py history <id>` prints the deck file's commit log (each message states the
@@ -1081,8 +1102,11 @@ Claude Code slash commands live in `.claude/commands/`:
   five ingest tools, then runs the rebuild chain), `/add-deck` (ingest a pasted deck),
   `/draft-deck` (build a new deck from scratch around a concept), `/tune-deck`
   (deck-building analysis for ONE deck), `/roster-review` (the roster loop — triage,
-  rotation exposure, craft plan, Brawl conversions, Arena drift), `/add-cards` (catalog
-  newly-owned cards + find their homes), `/add-wishlist` (intake unowned craft targets to
+  rotation exposure, craft plan, Brawl conversions, Arena drift), `/add-cards` (the
+  cross-deck FIT PASS for cards you ALREADY own — cataloguing lives in `/ingest`, which
+  runs this pass itself whenever an ingest added new cards; reach for it directly to
+  re-run placement after a retune, after `tag_synergies` gains a theme, or for a card
+  you have owned for months), `/add-wishlist` (intake unowned craft targets to
   the wishlist — enrich, set the home Target, do the cross-deck fit review),
   `/apply-changes` (apply confirmed swaps, run the quality guard, verify + commit).
 

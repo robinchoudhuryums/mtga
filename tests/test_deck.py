@@ -528,6 +528,58 @@ class TestRationaleFigureAudit:
         assert any(rx.search("a tight 2.44 curve") for rx in pats)
         assert any(rx.search("a curve of 2.44") for rx in pats)
 
+    # --- the parenthesised / number-first / early-drop misses (roster sweep 0 -> 12) ---
+    def _read(self, key, text):
+        return [m.group(1)
+                for rx, k in deck._RATIONALE_FIGURES if k == key
+                for m in rx.finditer(text)]
+
+    def test_parenthesised_figure_is_read(self):
+        """`interaction (3)` put the digits behind a bracket, so the whitespace-then-digits
+        pattern saw nothing. Eight such figures sat on the roster; deck 23 reported clean
+        while quoting a 3.6 curve against a live 3.47."""
+        assert self._read("interaction", "dense interaction (12)") == ["12"]
+        assert self._read("interaction", "the interaction total (3)") == ["3"]
+        assert self._read("card_advantage", "card advantage is thinner (3)") == ["3"]
+        assert self._read("avg_mv", "a slow curve (2.81)") == ["2.81"]
+
+    def test_breakdown_subcount_is_not_read_as_the_claim(self):
+        """The house style is a number-first claim plus a BREAKDOWN — "7 interaction
+        (5 spot removal + 2 sweepers)". A permissive `\\((\\d+)` read the 5 as the figure
+        and reported four decks stale against numbers they never asserted, so the
+        parenthesised form must require the bracket to close on the digits."""
+        assert self._read("interaction", "7 interaction (5 spot removal + 2 sweepers)") == ["7"]
+        assert self._read("interaction", "deep interaction (6 removal + 3 sweepers)") == []
+
+    def test_number_first_figures_are_read(self):
+        """The roster writes these number-first far more often than label-first — 13
+        interaction figures, 3 card-advantage, 1 protection, none ever audited. Same
+        miss already recorded for avg_mv, on the axes the tier floor is computed from."""
+        assert self._read("interaction", "low curve + 7 interaction + reach") == ["7"]
+        assert self._read("card_advantage", "engine + 3 card advantage on a base") == ["3"]
+        assert self._read("protection", "and 2 protection pieces") == ["2"]
+
+    def test_early_drops_is_audited(self):
+        """early_drops was in the quality vector but had no pattern, so a count could go
+        stale in silence — deck 23 claimed "6 one-two-drops" against a live 11."""
+        assert self._read("early_drops", "a tight 2.53 curve (22 early drops)") == ["22"]
+        assert self._read("early_drops", "3.47 curve and 11 one-two-drops") == ["11"]
+
+    def test_quoted_figure_is_suppressed_as_history(self):
+        """A figure inside quotation marks cites earlier prose rather than claiming it:
+        deck 7 writes `The old one-line reason ("fast clock but thin interaction (3)") is
+        no longer true`. _FIGURE_PAST cannot reach it — its cue must sit within 24 chars
+        and "old" is 47 back — and widening that window would loosen every other
+        suppression."""
+        prose = ('The old one-line reason ("fast clock but thin interaction (3)") '
+                 'is no longer true')
+        i = prose.index("(3)")
+        assert deck._figure_is_history(prose, i, i + 3)
+        # …but an ordinary unquoted figure is still a live claim.
+        plain = "grindy value, 7 interaction and reach"
+        j = plain.index("7")
+        assert not deck._figure_is_history(plain, j, j + 1)
+
 
 class TestRotationOverride:
     """A reprint inherits the newest printing's date, so a card reprinted into a set with
@@ -1101,6 +1153,123 @@ class TestHomeCurveFit:
 
     def test_penalty_capped(self):
         assert deck._home_curve_fit(15.0, 2.0) == 1.0 - deck._HOME_CURVE_CAP
+
+
+class TestColorFixerOverlay:
+    """The rainbow-fixer overlay behind suggest-homes, and the cut-side guard that
+    pairs with it. Both halves shipped a real bad recommendation: `suggest-homes
+    "Guy in the Chair"` rated a {2}{G} one-mana-any-colour dork KEY for decks 13/17
+    and proposed cutting Prismatic Undercurrents / Bloom Tender — each strictly
+    better at the exact job motivating the add."""
+
+    # --- detection is TEXT-based, not tag-based -------------------------------------
+    def test_unindexed_mechanic_still_reads_as_a_fixer(self):
+        # Bloom Tender and Prismatic Undercurrents key off Vivid, which sits in
+        # keyword_baseline.txt and maps to NO theme — so the old `ctags & {ramp,mana}`
+        # gate read both as non-fixers. The predicate must not depend on which
+        # keywords tag_synergies happens to index this cycle.
+        assert deck._is_color_fixer(set(), "Vivid — {T}: For each color among "
+                                           "permanents you control, add one mana of "
+                                           "that color.")
+        assert deck._is_color_fixer({"etb", "vivid"},
+                                    "Vivid — When this enchantment enters, search your "
+                                    "library for up to X basic land cards, where X is "
+                                    "the number of colors among permanents you control.")
+
+    def test_mana_context_required(self):
+        # The strictness the tag gate used to supply now lives in requiring MANA or
+        # land-type context — "any color" alone is not fixing.
+        assert not deck._is_color_fixer({"ramp"}, "Add {G}{G}.")
+        assert not deck._is_color_fixer(
+            set(), "Target creature gains protection from the color of your choice.")
+        assert not deck._is_color_fixer(
+            set(), "Draw a card for each color among permanents you control.")
+
+    def test_mass_grant_and_spend_permission_are_broad(self):
+        # Enduring Vitality grants the ability to every creature; Vizier grants
+        # colour-agnostic SPENDING. Both are manabase fixes, not single sources.
+        assert deck._fixer_rate('Creatures you control have "{T}: Add one mana of any '
+                                'color."', 3) == 1.0
+        assert deck._fixer_rate("You can spend mana of any type to cast creature "
+                                "spells.", 4) == 1.0
+
+    def test_any_one_color_counts(self):
+        # `any one color` (Gilded Lotus) and Chrome Mox's `any of the exiled card's
+        # colors` are the same class as `any color`. The first sweep omitted both and
+        # silently dropped 38 real fixers — caught only by a roster-wide diff.
+        assert deck._is_color_fixer(set(), "{T}: Add three mana of any one color.")
+        assert deck._is_color_fixer(
+            set(), "{T}: Add one mana of any of the exiled card's colors.")
+
+    def test_treasure_reminder_text_does_not_count(self):
+        # A Treasure's reminder literally reads "Add one mana of any color". Counting
+        # it makes ~150 pool cards read as manabase fixers, and a signal that fires on
+        # everything carries none. The same ability as REAL text must still qualify.
+        assert not deck._is_color_fixer(
+            set(), 'When this creature enters, create a Treasure token. (It\'s an '
+                   'artifact with "{T}, Sacrifice this token: Add one mana of any '
+                   'color.")')
+        assert deck._is_color_fixer(
+            set(), "{1}, {T}, Sacrifice this artifact: Add one mana of any color. "
+                   "Draw a card.")
+
+    # --- rate: how much fixing the card actually buys --------------------------------
+    def test_broad_rate_does_not_decay_with_cost(self):
+        for mv in (1, 4, 9):
+            assert deck._fixer_rate("create a land token that is every basic land "
+                                    "type", mv) == 1.0
+
+    def test_single_source_discounted_by_cost_bounded_and_monotonic(self):
+        sing = "{T}: Add one mana of any color."
+        rates = [deck._fixer_rate(sing, m) for m in (1, 2, 3, 5, 9)]
+        assert all(a >= b for a, b in zip(rates, rates[1:]))
+        assert all(deck._FIXER_RATE_FLOOR <= r <= 1.0 for r in rates)
+        # Cheap fixing is full value; the 3-mana dork falls below the KEY bar.
+        assert rates[0] == rates[1] == 1.0
+        assert deck._fixer_rate(sing, 3) < deck._FIXER_KEY_RATE
+
+    def test_unknown_mv_is_not_penalized(self):
+        # Guessing against missing data must not manufacture a demotion.
+        assert deck._fixer_rate("{T}: Add one mana of any color.", None) == 1.0
+
+    def test_non_fixer_rates_zero(self):
+        assert deck._fixer_rate("Draw two cards.", 2) == 0.0
+
+    def test_boost_scales_with_rate_and_stays_bounded(self):
+        full = deck._fixer_boost(4, rate=1.0)
+        half = deck._fixer_boost(4, rate=0.5)
+        assert 0 < half < full
+        assert deck._fixer_boost(2, rate=1.0) == 0      # mono/two-colour: no bump
+        assert deck._fixer_boost(20, rate=1.0) == deck._fixer_boost(5, rate=1.0)
+
+    # --- the cut side must not be blind to the add -----------------------------------
+    def _fixture(self):
+        cards = [(1, "Rainbow Rock", "S", "1"), (1, "Filler Bear", "S", "2"),
+                 (4, "Mountain", "S", "3")]
+        cardmeta = {"rainbow rock": {"synergies": []},
+                    "filler bear": {"synergies": ["Bear"]}}
+        carddata = {
+            "rainbow rock": {"type": "Artifact",
+                             "text": "{T}: Add one mana of any color."},
+            "filler bear": {"type": "Creature — Bear", "text": "Vanilla."},
+            "mountain": {"type": "Basic Land — Mountain", "text": ""},
+        }
+        return {}, cards, cardmeta, carddata
+
+    def test_fixer_tops_the_cut_list_when_the_add_is_not_a_fixer(self):
+        # The baseline the guard exists to correct: a fixer carries no synergy tags and
+        # no classified role, so theme-fit + role-credit ranks it most-cuttable.
+        assert deck._weakest_cut(*self._fixture(), add_is_fixer=False) == "Rainbow Rock"
+
+    def test_fixer_excluded_when_the_add_is_a_fixer(self):
+        assert deck._weakest_cut(*self._fixture(), add_is_fixer=True) == "Filler Bear"
+
+    def test_protected_and_lands_still_skipped(self):
+        dmeta, cards, cardmeta, carddata = self._fixture()
+        dmeta = {"protect": "Filler Bear"}
+        # Only the fixer is left, and the add is a fixer → no honest hint to give.
+        assert deck._weakest_cut(dmeta, cards, cardmeta, carddata,
+                                 add_is_fixer=True) is None
 
 
 class TestCentralThemesMechanicSubtheme:

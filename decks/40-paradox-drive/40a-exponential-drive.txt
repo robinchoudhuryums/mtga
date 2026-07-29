@@ -16,7 +16,7 @@
 #: archetype: body. (Emil is here for its trample line, not its Fractal mana sink.)
 #: tier: A — Simic landfall counters-midrange. Re-graded B->A after the Garruk's Uprising
 #: tier: / The Legend of Kyoshi pass, which closed the last of the three caps the B was
-#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 2 on a 2.65 curve).
+#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 2 on a 2.79 curve).
 #: tier: The ENGINE was never the problem: `deck.py redundancy 40a` reads a virtual 8-of
 #: tier: counter-DOUBLER plus 5-of landfall / 5-of lands / 9-of payoff / 4-of ramp, on a
 #: tier: clean manabase (26 lands, 87% keepable openers, 0 uncastable). What kept it at B
@@ -47,8 +47,9 @@
 #: tier: THE ONE REMAINING WEAKNESS an A tolerates: the deck is threat-centric, and its
 #: tier: best draws all want a big creature already on board — a sweeper on an empty-ish
 #: tier: board leaves it casting doublers with nothing to double. Held from S by that, by
-#: tier: the 2.65 curve, and by having no format-warping bomb. Aspirational WIP (12 craft
-#: tier: targets); per the rubric that doesn't affect the letter, only `check`/`audit`.
+#: tier: the 2.79 curve, and by having no format-warping bomb. Now fully owned and
+#: tier: buildable — the 12 outstanding craft targets were trued up from the built Arena
+#: tier: deck; per the rubric build-state never affected the letter, only `check`/`audit`.
 #: notes: This is the TALL sibling of 40; keep the two apart by
 #: notes: rule: 40 holds up counterspells and wins with one huge X-spell, 40a commits a
 #: notes: threat on turn 2-3 and doubles it. Do NOT migrate the doubler package back
@@ -70,7 +71,6 @@
 Deck
 # Ramp / fixing / lands-matter
 1 Garruk's Uprising (M21) 186
-1 Druid of the Cowl (M19) 177
 1 Environmental Scientist (SOS) 147
 1 Great Divide Guide (TLA) 181
 1 Mona Lisa, Science Geek (TMT) 123
@@ -103,7 +103,7 @@ Deck
 
 # Interaction
 1 Grappling Kraken (FDN) 39
-1 Floodpits Drowner (DSK) 59
+1 Bottomless Pool // Locker Room (DSK) 43
 1 Seedship Impact (EOE) 205
 1 Chocobo Kick (FIN) 178
 1 Repulsive Mutation (MKM) 227
@@ -111,8 +111,9 @@ Deck
 
 # Card advantage
 1 The Legend of Kyoshi (TLA) 186
-1 Portent of Calamity (BLB) 66
+1 Beast, Erudite Aerialist (MSH) 206
 1 Ignis Scientia (FIN) 227
+1 Venus, Torn Between Worlds (TMT) 136
 
 # Lands — 26, Simic; land count pushed up for the landfall package
 1 Breeding Pool (EOE) 251
@@ -124,7 +125,7 @@ Deck
 11 Forest (MSH) 295
 9 Island (MSH) 289
 
-#~ -Portent of Calamity | +Genesis Wave | RARE craft ({X}{G}{G}{G}) — the deck's best
+#~ note: applied — Beast, Erudite Aerialist in for Portent of Calamity.
 #~   potential finisher, held OUT of the 60 by choice. 83% of the nonlands here are
 #~   permanents and green is the primary colour (16 G sources, and Great Divide Guide
 #~   makes every land any colour), so GGG is castable. The real payoff is that every

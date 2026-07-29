@@ -347,7 +347,18 @@ POOL_CARDS = [
     ("Pool Bear", "Creature — Bear", "", "B", "Bear", "Common"),
     ("Pool Counters Guy", "Creature — Elf",
      "When this enters, put a +1/+1 counter on target creature.", "B", "counters", "Uncommon"),
+    # Spot removal that is NOT Standard-legal — owned_role_fillers used to offer this,
+    # because only its craft-side sibling applied the format check.
+    ("Pool Historic Zap", "Instant", "Destroy target creature.", "B", "removal", "Rare"),
+    # A double-faced card. `load_card_data` keys a DFC under BOTH its full name and its
+    # front face, and both rows carry the same display name — so it printed twice.
+    ("Pool Door // Pool Attic", "Enchantment — Room",
+     "When you unlock this door, you draw two cards and you lose 2 life.",
+     "B", "card draw", "Rare"),
 ]
+
+# Per-card legality overrides; anything unlisted is Standard-legal.
+POOL_LEGALITIES = {"pool historic zap": {"historic"}}
 
 
 @pytest.fixture
@@ -366,7 +377,9 @@ def world(tmp_path, monkeypatch):
                 w.writerow({"Card Name": n, "Type": ty, "Card Text": tx,
                             "Color(s)": col or "Colorless", "Synergies": tags,
                             "Set Code": "SYN", "Collector #": str(i), "Rarity": rar,
-                            "Legalities": "standard", "Released": "2024-01-01"})
+                            "Legalities": ";".join(
+                                sorted(POOL_LEGALITIES.get(n.lower(), {"standard"}))),
+                            "Released": "2024-01-01"})
         ddir = tmp_path / "90-synth"
         ddir.mkdir(exist_ok=True)
         (ddir / "deck.txt").write_text(
@@ -374,6 +387,11 @@ def world(tmp_path, monkeypatch):
             + "\n".join(deck_lines) + "\n", encoding="utf-8")
 
         carddata = {n.lower(): _card(n, ty, tx, col) for n, ty, tx, col, _t, _r in POOL_CARDS}
+        # Mirror load_card_data's DFC convention: the full "Front // Back" name AND the
+        # front face both resolve, to the SAME display name.
+        for n, ty, tx, col, _t, _r in POOL_CARDS:
+            if " // " in n:
+                carddata[n.split(" // ")[0].lower()] = _card(n, ty, tx, col)
         carddata.update(UNIVERSE)
         cardmeta = {n.lower(): {"colors": set(col) if col else set(),
                                 "synergies": [t for t in tags.split(";") if t]}
@@ -390,7 +408,8 @@ def world(tmp_path, monkeypatch):
         monkeypatch.setattr(deck, "load_mana", lambda: mana)
         monkeypatch.setattr(deck, "load_rarities", lambda: rar)
         monkeypatch.setattr(deck, "load_legalities",
-                            lambda: {n.lower(): {"standard"} for n, *_ in POOL_CARDS})
+                            lambda: {n.lower(): POOL_LEGALITIES.get(n.lower(), {"standard"})
+                                     for n, *_ in POOL_CARDS})
         monkeypatch.setattr(deck, "load_collection",
                             lambda: ({}, {}, {n.lower(): 4 for n in owned}))
         d = deck.find_deck("90")
@@ -430,6 +449,24 @@ class TestRoleFillers:
         d = world(["1 Pool Zap", "20 Swamp"], owned=["Pool Zap", "Pool Wrath"])
         names = [r[1] for r in deck.owned_role_fillers(d, {"Removal (spot)"})]
         assert "Pool Zap" not in names
+
+    def test_owned_fillers_exclude_a_card_illegal_in_the_deck_format(self, world):
+        """Owning a card is not a licence to play it. `craft_role_fillers` always applied
+        the format check and its owned sibling did not, so `tier --to A` printed one list
+        labelled format-legal and an unfiltered one directly above it — and offered Deadly
+        Dispute, with no Standard legality, to a Standard deck."""
+        d = world(["1 Bear", "20 Swamp"], owned=["Pool Zap", "Pool Historic Zap"])
+        names = [r[1] for r in deck.owned_role_fillers(d, {"Removal (spot)"})]
+        assert "Pool Zap" in names                # Standard-legal, and owned
+        assert "Pool Historic Zap" not in names   # owned, but not legal in this format
+
+    def test_owned_fillers_list_a_double_faced_card_once(self, world):
+        """`load_card_data` keys a DFC under both its full name and its front face, and
+        both rows carry the same display name — so it consumed two lines of a six-line
+        list. Exposed by the format filter, but present the whole time."""
+        d = world(["1 Bear", "20 Swamp"], owned=["Pool Door"])
+        names = [r[1] for r in deck.owned_role_fillers(d, {"Card advantage"})]
+        assert names.count("Pool Door // Pool Attic") == 1
 
     def test_functional_theme_options_returns_cards_carrying_the_theme(self, world):
         d = world(["1 Bear", "20 Swamp"], owned=["Pool Counters Guy"])

@@ -72,6 +72,23 @@ class TestTagsFor:
     def test_removal_from_text(self):
         assert "removal" in ts.tags_for({"Type": "Instant", "Card Text": "Destroy target creature."}, [])
 
+    def test_forage_maps_to_graveyard_and_food(self):
+        # Forage is a COST: "exile three cards from your graveyard or sacrifice a Food",
+        # so it consumes exactly those two resources. It matters ONLY on the cards whose
+        # text omits the reminder — 7 of the 9 forage cards quote it and already earn
+        # both tags from text, so a text-only model looked like it worked. Traverse
+        # Valley's whole text is "Kicker—Forage." and it was tagged neither.
+        tags = ts.tags_for({"Type": "Sorcery", "Card Text": "Kicker—Forage."}, ["Forage"])
+        assert "graveyard" in tags and "food" in tags
+
+    def test_forage_does_not_imply_sacrifice(self):
+        # Deliberately narrower than the reminder text reads: the keyword only means the
+        # card MAY pay with a Food. Traverse Valley is a kicked land fetch, not a
+        # sacrifice card, and cards that really do sacrifice earn the tag from their
+        # own text.
+        tags = ts.tags_for({"Type": "Sorcery", "Card Text": "Kicker—Forage."}, ["Forage"])
+        assert "sacrifice" not in tags
+
 
 class TestExileCastTheme:
     """`exile cast` = the card is cast FROM EXILE, or pays off casting outside your hand.

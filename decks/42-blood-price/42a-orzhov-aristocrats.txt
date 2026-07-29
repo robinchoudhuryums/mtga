@@ -9,20 +9,21 @@
 #: archetype: Convocation's Bats, Bitterbloom Bearer's Faeries, Fountainport's Fish,
 #: archetype: Scavenger's Talent's Food, the dies-into-a-body creatures) feed five
 #: archetype: sacrifice outlets, and every death is taxed by a drain or a draw: Funeral
-#: archetype: Room and Vengeful Bloodwitch drain 1 and gain 1 per creature, Arnyn drains
+#: archetype: Room drains 1 and gains 1 per creature, Arnyn drains
 #: archetype: 2 for a 1-power token, Al Bhed Salvagers counts artifacts too (so a
 #: archetype: sacrificed Clue, Food or Treasure drains), Agent Venom and Liliana turn
 #: archetype: nontoken deaths into cards, and Judge Magister Gabranth / Sandbender
 #: archetype: Scavengers grow on every one.
-#: archetype: THE OUTLETS ARE THE POINT. The core deck fielded death triggers like
-#: archetype: Vengeful Bloodwitch with NOTHING to feed them on demand, so they only fired
-#: archetype: when the opponent obliged. Baron Bertram Graywater (a token engine that is also a
-#: archetype: sacrifice-for-draw outlet), Umbral Collar Zealot (a FREE outlet — no mana),
-#: archetype: Vampiric Rites, Ahriman and Kingpin's Enforcers are what convert those
-#: archetype: passive triggers into an engine you control.
+#: archetype: THE OUTLETS ARE THE POINT — unlike the core 42, which still runs
+#: archetype: Vengeful Bloodwitch with NOTHING to feed it on demand, so it only fires
+#: archetype: when the opponent obliges. Baron Bertram Graywater (a token engine that is also a
+#: archetype: sacrifice-for-draw outlet), Vampiric Rites and Ahriman are what convert those
+#: archetype: passive triggers into an engine you control. Umbral Collar Zealot was CUT for
+#: archetype: Ayli, Eternal Pilgrim, a free-ish outlet that also blocks on deathtouch;
+#: archetype: Kingpin's Enforcers was CUT for Tragedy Feaster.
 #: archetype: EIRDU IS THE MULTIPLIER: once transformed, every other nontoken creature
-#: archetype: has persist, so each one dies TWICE — two Funeral Room drains, two Bloodwitch
-#: archetype: triggers, two Agent Venom draws — and comes back to be sacrificed again.
+#: archetype: has persist, so each one dies TWICE — two Funeral Room drains, two Arnyn
+#: archetype: drains, two Agent Venom draws — and comes back to be sacrificed again.
 #: archetype: DISTINCTNESS vs deck 8, the roster's other aristocrats deck: that one is
 #: archetype: RAKDOS (B/R with green) and closes with red reach and big black finishers.
 #: archetype: This is two-color Orzhov and wins on the LIFEGAIN-DRAIN axis rather than
@@ -32,21 +33,32 @@
 #: archetype: resource. 42 spends life and holds creatures; this spends creatures and
 #: archetype: gains life.
 #: tier: B — Orzhov aristocrats, PROVISIONAL (unplayed brew). The claimed letter sits AT
-#: tier: the metrics floor rather than one band above it. Interaction fell 7 -> 5 when
-#: tier: Harsh Annotation and Sephiroth's Intervention became Fix What's Broken and
-#: tier: Starseer Mentor, and Social Snub (over Anafenza) has brought it back to 6 — an
-#: tier: edict that COPIES itself, so it answers two creatures and drains twice while you
-#: tier: feed it a spare token. `cuts` also flags Liliana's -4 double edict and Jecht's
-#: tier: sacrifice trigger as likely under-reads, so the true figure is nearer 8; that is
-#: tier: a reason to verify, not a reason to claim the number.
+#: tier: the metrics floor rather than one band above it. The interaction suite is built
+#: tier: from cheap unconditional answers plus edicts that double as fodder sinks: Social
+#: tier: Snub COPIES itself, so it answers two creatures and drains twice while you feed
+#: tier: it a spare token. Vengeful Bloodwitch was CUT for Deadly Precision, a one-mana
+#: tier: unconditional kill whose additional cost — sacrifice a creature or artifact — is
+#: tier: an ENGINE TRIGGER here rather than a drawback, which is the whole reason it beat
+#: tier: a 2-drop drain payoff for the slot.
 #: tier: BE PRECISE ABOUT THE FLOOR, because "restore the interaction" was not the whole
-#: tier: fix: the A floor wants interaction >=5 AND interaction+card-advantage >=7. At
-#: tier: interaction 5 and card advantage 0 the sum is 5, so the floor is B and TWO more
-#: tier: points across the two axes flip it. Card advantage is the easier axis to move here —
-#: tier: see risk 1 below for why the measured 0 is defensible but beatable.
+#: tier: fix: the A floor wants interaction >=5 AND interaction+card-advantage >=7. Deadly
+#: tier: Precision (in, over Vengeful Bloodwitch) took interaction to 5, so the first
+#: tier: clause is now MET and the deck is held at B purely by the sum: 5 + card advantage
+#: tier: 1 is 6, one short of 7. Card advantage is therefore the ONLY axis that matters
+#: tier: now — see risk 1 below for why the measured 1 is defensible but beatable.
+#: tier: THE MEASURED 5 UNDER-READS THIS DECK and `tier` says so itself, printing 5 +2?
+#: tier: and naming both misses. Liliana's -4 (each player sacrifices two creatures) and
+#: tier: Jecht's chapter III (each OPPONENT sacrifices two) are unambiguous interaction the
+#: tier: classifier cannot see, because loyalty abilities and Saga chapters are not in its
+#: tier: patterns; Arnyn's deathtouch is soft interaction that also feeds the death triggers
+#: tier: when it trades. Call the real figure 7. Heartless Act was CUT on exactly that
+#: tier: reasoning — it was the one CONDITIONAL answer ("creature with no counters"), and
+#: tier: what the uncounted pieces cannot replace is a cheap unconditional answer on demand,
+#: tier: which is why Hero's Downfall and Erode stay.
 #: tier: Held at B by three further things the floor cannot see:
-#: tier: 1. MEASURED CARD ADVANTAGE IS ZERO, and that number is defensible rather than a
-#: tier:    classifier miss. Vampiric Rites, Ahriman, Kingpin's Enforcers, Baron Bertram
+#: tier: 1. MEASURED CARD ADVANTAGE IS ONE, and that number is defensible rather than a
+#: tier:    classifier miss — Treacherous Greed's draw-three is the single card that
+#: tier:    clears the bar. Vampiric Rites, Ahriman, Baron Bertram
 #: tier:    and Agent Venom each draw exactly ONE card, which the role model excludes as
 #: tier:    card-neutral — and in the abstract it is right, because sacrificing a CARD to
 #: tier:    draw a card is a wash. It is only advantage when the fodder is a TOKEN, which
@@ -55,8 +67,10 @@
 #: tier: 2. AN ARISTOCRATS DECK NEEDS TWO HALVES AT ONCE — an outlet AND a payoff on the
 #: tier:    battlefield — and a singleton build draws one half far more often than both.
 #: tier:    Five outlets against six drain payoffs is the virtual-redundancy answer, but
-#: tier:    virtual copies are not 4-ofs, and protection is 1 (Restoration Magic) against
-#: tier:    three `#: protect:` build-arounds.
+#: tier:    virtual copies are not 4-ofs, and the protection 3 is thinner than it reads:
+#: tier:    only Restoration Magic can be pointed at anything, while Tragedy Feaster's and
+#: tier:    Vein Ripper's ward defend those two bodies alone — so the three `#: protect:`
+#: tier:    build-arounds still have exactly ONE answer between them.
 #: tier: 3. THE CLOCK IS SLOW AND WIPE-FRAGILE. Drain 1 per death is a turn-12 kill
 #: tier:    without Eirdu, and a board wipe is strictly worse for this deck than for the
 #: tier:    core — it takes the fodder and the payoffs in the same breath, where the core
@@ -65,11 +79,14 @@
 #: tier: is a Room, and its stored cost is the MERGED `{2}{B} // {6}{B}{B}` at MV 11, so
 #: tier: `stats` read the curve as 2.8 and `consistency` read the card as a {B}{B}{B}
 #: tier: turn-5 play — when the door this deck casts is `{2}{B}`, one black pip on turn
-#: tier: 3. `parse_pips` and `load_mana` now read the FRONT face, so the reported 2.57
+#: tier: 3. `parse_pips` and `load_mana` now read the FRONT face, so the reported 2.91
 #: tier: is the real number and Funeral Room no longer shows up as a castability risk.
-#: tier: PATH TO A: Eirdu is the single biggest lever — persist turns a 12-turn drain
-#: tier: into a 6-turn one — followed by a second protection effect for the payoff
-#: tier: enchantments.
+#: tier: PATH TO A: the floor now needs exactly ONE more point of card advantage, and the
+#: tier: cheapest honest way to buy it is a repeatable draw the role model can actually
+#: tier: see. Leading candidate: Phyrexian Arena, owned and on-color. Beyond the floor, Eirdu is the
+#: tier: biggest real lever (persist turns a 12-turn drain into a 6-turn one), followed by
+#: tier: a second POINTABLE protection effect for the payoff enchantments, since the ward
+#: tier: on Tragedy Feaster and Vein Ripper does nothing for them.
 #: protect: Funeral Room // Awakening Hall; Baron Bertram Graywater; Scavenger's Talent
 #: notes: WHAT WAS CUT FROM THE CORE AND WHY. Mister Negative, Lunar Convocation's
 #: notes: pay-2-life-draw mode, Phyrexian Arena, Visions of Villainy, Cruel Truths,
@@ -104,16 +121,16 @@
 
 Deck
 # Sacrifice outlets — what makes the death triggers an engine
-1 Umbral Collar Zealot (EOE) 123
+1 Ayli, Eternal Pilgrim (FDN) 652
 1 Vampiric Rites (WOT) 37
-1 Ahriman (FIN) 87
-1 Kingpin's Enforcers (MSH) 102
+1 Ravenous Amulet (FDN) 131
+1 Tragedy Feaster (SOS) 102
 1 Baron Bertram Graywater (OTJ) 195
 
 # Death-trigger drain — the tax on every sacrifice
 1 Enduring Tenacity (DSK) 95
 1 Funeral Room // Awakening Hall (DSK) 100
-1 Vengeful Bloodwitch (FDN) 76
+1 Deadly Precision (TLA) 95
 1 Arnyn, Deathbloom Botanist (SOS) 74
 1 Al Bhed Salvagers (FIN) 88
 1 Judge Magister Gabranth (FIN) 230
@@ -140,21 +157,21 @@ Deck
 1 Krovod Haunch (MKM) 21
 
 # Value
+1 Treacherous Greed (MKM) 237
 1 Starscape Cleric (BLB) 116
-1 Robot Domination (MSH) 111
+1 Vein Ripper (MKM) 110
 
 # Rebuild / protect the engine
 1 Fix What's Broken (SOS) 188
 1 Restoration Magic (FIN) 30
 
 # Drain clock
+1 Rottenmouth Viper (BLB) 107
 1 Starseer Mentor (BLB) 233
 
 # Removal
 1 Erode (SOS) 15
-1 Heartless Act (TLA) 103
 1 Hero's Downfall (FDN) 175
-1 Stroke of Midnight (FDN) 148
 
 # Lands — 25, Orzhov
 1 Bleachbone Verge (DFT) 250
@@ -172,5 +189,5 @@ Deck
 
 #~ note: applied — Midnight Snack in for Agents of HYDRA.
 #~ note: applied — Krovod Haunch in for Resolute Reinforcements.
-#~ +Azula, On the Hunt | -Robot Domination | PARKED, not pending — retargeted because Fiendish Panda was deliberately KEPT (its death trigger reanimates a creature up to its power, and it grows on every lifegain, so both of its conditions are things this deck does automatically). Robot Domination is the only remaining defensible cut and it is a genuine engine, so the honest read is that this deck no longer has room: 35 nonlands all doing a job. Azula is a 4-mana 4/3 that must attack and whose Firebending mana evaporates at end of combat; the Clue (artifact fodder) and the self-inflicted 1 life are on-theme but do not beat an engine card. Keep this line as a note-to-self, not a plan. Craft (U).
+#~ note: applied — Vein Ripper in for Robot Domination.
 #~ note: SLOT MATH, closed — the three cheap bodies (Resolute Reinforcements, Agents of HYDRA, and Anafenza for the interaction fix) are spent, and Fiendish Panda was kept on a re-read. The deck is now 35 nonlands with no filler, which is the good version of 'no room': any further add has to beat an engine card, not a spare one.
