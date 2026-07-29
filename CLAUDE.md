@@ -205,7 +205,10 @@ directions.
   the roster-wide counterpart. **`deck.py cuts <id>` ranks weakest-fit cards and is a
   SHORTLIST, not a GRADE** — it cannot see raw power or spice, and on a creature-heavy
   deck it is close to a coin flip. Read the printed oracle text, preview with `swap`,
-  and hard-protect signature cards with a `#: protect:` header. [G-09]
+  and hard-protect signature cards with a `#: protect:` header. Its `#: protect:`
+  keep-boost reads the STRICT spine (a theme carried by ≥2 protected cards), like every
+  `fit_strength` caller: the loose union fired on 87% of nonland cards — 100% in two
+  decks — and a boost that applies to every card in a ranking is a constant. [G-09]
 - **"Not in library" for a card you own is the deck-dump undercount symptom.** Fastest
   fix: `reconcile_crafts.py <arena-export>` — it adds the library row, adds a blank
   `card-mana.csv` row so INV-02 always holds, drops the card from the wishlist, and
@@ -245,8 +248,11 @@ directions.
   DEFAULT to something smaller, so a plain rebuild silently shrinks coverage back; both
   now refuse a >50% shrink (`--allow-shrink` to force). `build_mana.py` is also
   INCREMENTAL — it reuses already-resolved rows and re-fetches only new or unresolved
-  names, so `make refresh` is cheap; `--refetch` (`make refresh REFETCH=1`) forces the
-  full re-price after an errata or rebalance. [G-18]
+  names, and `build_pool.py` REUSES a pool built within the last week for the same query
+  (99% of the old refresh cost was its 91 paginated pages). Skipping the pool is correct,
+  not just fast: it is the whole Arena pool and independent of what you OWN, so an ingest
+  cannot change it — what goes stale is `Legalities` and a new set's arrival, hence a
+  window. `--refetch` (`make refresh REFETCH=1`) forces both. [G-18]
 - **`card-wishlist.csv` is UNOWNED craft targets**, with DFCs under their full
   `Front // Back` name. `--rank` blends a hand-graded Power 50/50 with theme fit plus a
   bounded cross-deck breadth bonus; **lands rank on manabase value instead**, since theme

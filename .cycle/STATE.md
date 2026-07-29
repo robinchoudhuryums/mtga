@@ -105,9 +105,31 @@ card-mana.csv +94 rows) which I reverted to keep the commit scoped. Run `/refres
 commit it deliberately; it will need deck 43's tier rationale re-grounded
 (`card_advantage 11 vs live 12`, `avg_mv 2.91 vs live 3.0`).
 
+## Session — pool freshness skip + cuts signature de-saturation (/broad-implement)
+
+Two findings. **`build_pool.py --all` was 99% of `make refresh`** (222.5s of 224.3s, 91
+paginated pages at ~2.4s each, vs 1.8s to derive every row — measured, not assumed). It now
+reuses a pool built within 7 days FOR THE SAME QUERY; the sidecar records the query on a
+second line, with the date still on line 1 because `deck.pool_staleness_days` reads
+`stamp[:10]`. Skipping is correct, not just fast: the pool is the whole Arena pool and is
+independent of what you own, so an ingest cannot change it. `REFETCH=1` now propagates to
+both build steps. No-change refresh: **12.7s** (≈11s of it `check_all`) vs 5m3s full.
+
+**`cut_scoring_context` now reads the STRICT `#: protect:` spine.** The loose union fired
+the +2 keep-boost on 87% of nonland cards across the 22 protect-declaring decks (100% in
+decks 20 and 46) — a constant, not a signal. Strict fires on 66%. Roster diff: 14/64 decks
+re-scored, 4 top-cut candidates moved, deck 30's motivating case intact (`{counters}`).
+Block: `.cycle/blocks/2026-07-pool-skip-signature-broad-implement.md`.
+
+**Where I left off:** committed and pushed, nothing half-done. Two deliberate loose ends —
+the derived-data drift is now deferred for a SECOND session (see follow-ons; each deferral
+grows the diff), and a stale `__pycache__` can silently defeat a same-size mutation test
+(`rm -rf scripts/__pycache__` between runs).
+
 ## Open follow-ons
 See FOLLOW-ON ITEMS in each block. Highest value now:
-1. **`_signature_themes` saturates in `cuts`** — the +2 keep-boost fires on 86% of
+1. ~~**`_signature_themes` saturates in `cuts`**~~ — DONE this session (87% → 66%).
+   Superseded item, kept for the record: **`_signature_themes`** — the +2 keep-boost fires on 86% of
    nonland cards across the 22 `#: protect:` decks (100% in decks 20 and 46), because
    `cuts` reads the LOOSE signature set while all three `fit_strength` callers read the
    STRICT one. Switching would unify them and de-saturate to 66%; the motivating case
@@ -121,10 +143,11 @@ See FOLLOW-ON ITEMS in each block. Highest value now:
 3. ~~An incremental `make refresh`~~ — DONE: `build_mana.py` reuses already-resolved rows,
    so a no-change refresh is ~1s and offline. `make refresh REFETCH=1` forces a re-price.
 4. The reverse `screen` flag (a candidate strictly WORSE than an incumbent).
-5. Commit the derived-data drift the refresh surfaced (see "Where I left off"), and
-   re-ground deck 43's tier rationale with it.
-6. `build_pool.py --all` is now the bulk of `make refresh` (~90 paginated requests, the
-   whole pool rewritten from a full search). It could take the same incremental treatment.
+5. **Commit the derived-data drift** — now deferred TWICE (card-pool.csv ~±190 lines / +95
+   cards, card-mana.csv +94 rows). Needs a deliberate `/refresh` commit plus deck 43's tier
+   rationale re-grounded. Escalating: each deferral makes the diff larger.
+6. ~~`build_pool.py --all` incremental~~ — DONE this session (freshness skip + `--refetch`).
+7. The 7-day pool window is a guess, not a measurement — no data informs the exact number.
 
 ## Decided AGAINST (2026-07-29, the split)
 - Reorganising CLAUDE.md by topic. The vendored workflow commands name its sections

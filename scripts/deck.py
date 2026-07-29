@@ -5399,7 +5399,20 @@ def cut_scoring_context(meta, cards, cardmeta, carddata):
         "carddata": carddata,
         "theme_w": theme_w,
         "central": _central_themes(theme_w),
-        "signature": _signature_themes(meta, cards, cardmeta),
+        # The STRICT spine (a theme carried by >=2 `#: protect:` cards), not the loose
+        # union of every protected card's tags. Measured: the loose set fired the +2
+        # keep-boost on **86%** of nonland cards across the 22 decks that declare
+        # `#: protect:` — 100% in decks 20 and 46 — and a boost applied to every card in
+        # a ranking is a constant, carrying no information where it saturates and applied
+        # off a 25-theme union where it does not. The strict set fires on 66%.
+        #
+        # This is `check_suggest` anchor 11b's fix one caller over: that anchor forces
+        # `cmd_suggest_homes` to hand `fit_strength` the strict set for the same reason
+        # (the loose union gave 99 KEYs where the strict gives 54, every difference a
+        # false KEY). The rescue this term exists for survives — deck 30's protected
+        # counter-doublers give a strict signature of exactly `{counters}`, so a counters
+        # card in a counters deck is still boosted.
+        "signature": _strong_signature_themes(meta, cards, cardmeta),
         "deck_tally": role_tally(cards, carddata),
         "sub_count": sub_count,
     }

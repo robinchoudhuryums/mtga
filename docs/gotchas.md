@@ -293,6 +293,18 @@ them off the cut list and `swap --cut`-ing one warns. Set these for cards a deck
 is built around so the tooling never proposes cutting them.
 
 
+**The `#: protect:` keep-boost reads the STRICT spine, and the loose union saturated.**
+`rank_cut_candidates` gave a +2 keep-boost to any card sharing `_signature_themes` — the
+union of every `#: protect:` card's tags. Measured across the 22 decks that declare one, it
+fired on **87% of nonland cards, and 100% in decks 20 and 46**: a boost applied to every
+card in a ranking is a constant, carrying no information where it saturates and applied off
+a 25-theme union where it does not. It now reads `_strong_signature_themes` (≥2 protected
+cards), which fires on 66% — the same fix `check_suggest` anchor 11b forces on
+`cmd_suggest_homes`, one caller over, for the same reason. The rescue the term exists for
+survives: deck 30 protects counter-doublers and its strict signature is exactly
+`{counters}`. Roster diff: 14 of 64 decks re-scored, 4 top-cut candidates moved (deck 36a's
+moved OFF Vizier of the Menagerie, one of the fixers the tooling is meant to protect).
+
 ## [G-10] "Not in library" for a card you own is the deck-dump undercount symptom
 
 **"Not in library" for a card you own is the deck-dump undercount symptom.**

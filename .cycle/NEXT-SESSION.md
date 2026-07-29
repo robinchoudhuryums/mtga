@@ -76,28 +76,24 @@ one-line caller change can land. The doc split is finished; both phases are done
 
 ## 5. Open work, in rough value order
 
-1. **`_signature_themes` saturates in `cuts`.** `rank_cut_candidates` gives a +2
-   keep-boost off the LOOSE signature set (the union of every `#: protect:` card's tags);
-   all three `fit_strength` callers use the STRICT set (a theme carried by ≥2 protected
-   cards) precisely because the loose one saturated there (`check_suggest` anchor 11b).
+1. ~~**`_signature_themes` saturates in `cuts`**~~ — **DONE.** The +2 keep-boost read the
+   LOOSE union of every `#: protect:` card's tags and fired on **87% of nonland cards**
+   across the 22 decks that declare one (100% in decks 20 and 46). `cut_scoring_context`
+   now reads `_strong_signature_themes` (≥2 protected cards), firing on 66% — the same fix
+   `check_suggest` anchor 11b forces on `cmd_suggest_homes`, one caller over. Roster diff:
+   14 of 64 decks re-scored, 4 top-cut candidates moved, and deck 30's motivating case
+   survives (strict signature = `{counters}`).
 
-   | | fires on |
-   |---|---|
-   | loose (what `cuts` uses) | **86%** of nonland cards across the 22 `#: protect:` decks; **100%** in decks 20 and 46 |
-   | strict (what `fit_strength` uses) | 66% |
-
-   A boost applying to every card in a ranking is a constant. The motivating case
-   (deck 30's counter-doublers) survives the strict set — its strict signature is
-   exactly `{counters}`. **Needs a roster-wide before/after `cuts` diff before landing**;
-   the harness for that is in the block, and it is the same one that proved the
-   `cut_keep_score` extraction byte-identical. Details: `docs/systems-map.md` §7.
-
-2. ~~**An incremental `make refresh`**~~ — **DONE.** `build_mana.py` was the only
-   non-incremental step (`enrich.py` already fills blanks only, `build_gallery.py` caches
-   images) and it re-priced all ~15.9k pool cards every run. It now reuses already-resolved
+2. ~~**An incremental `make refresh`**~~ — **DONE, both halves.** `build_mana.py` reuses
+   already-resolved rows, and `build_pool.py` — which was **99% of the cost** (222.5s of a
+   224.3s run, 91 paginated pages at ~2.4s each) — now reuses a pool built within the last
+   week for the same query. Skipping the pool is correct, not just fast: it is the whole
+   Arena pool, independent of what you OWN, so an ingest cannot change it; what goes stale
+   is `Legalities` and a new set's arrival, hence a window. Originally: It now reuses already-resolved
    rows and fetches only new or unresolved names: a no-change refresh takes ~1s and needs
    NO network; a four-card ingest fetches four cards. `make refresh REFETCH=1` forces the
-   full re-price. Implemented as a flag on the one target, not a second recipe.
+   full re-price for BOTH steps. Implemented as a flag on the one target, not a second
+   recipe. A no-change `make refresh` is now **12.7s** (of which ~11s is `check_all` itself) against 5m3s for a full rebuild, and needs no network.
 
 3. **`tier --audit-rationale` STAY-marker false negative.** A `_HISTORY_CUES` change-cue
    about one card suppresses a citation of ANOTHER card in the same ±140-char window,

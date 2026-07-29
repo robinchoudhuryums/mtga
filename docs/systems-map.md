@@ -32,7 +32,7 @@ resolve two answers by hand. Everything else is context for those.
 |---|---|---|---|
 | 1 | *route the paste* | which of 5 writers owns this data | — |
 | 2 | `reconcile_crafts.py <export>` / `import_arena.py` / `import_collection.py` | dry-run diff, then `--apply` | <1s |
-| 3 | `make refresh` | rebuilt derived data | seconds–minutes (incremental) |
+| 3 | `make refresh` | rebuilt derived data | **13s** no-change / ~5 min full |
 | 4 | `verify_ingest.py <export>` | per-card present / at count / mana-covered | <1s |
 | 5 | `card.py "<name>"` per new card | full text, legality, owned, decks | 0.3s |
 | 6 | `deck.py suggest-homes "<name>"` per new card | ranked homes + a cut hint | 3.1s |
@@ -47,9 +47,9 @@ resolve two answers by hand. Everything else is context for those.
   answering "is this a deck list or a collection export?" is the actual gate.
 - **Step 3 used to cost the same for a 4-card ingest as for a full rebuild** — ~10 min,
   re-pricing ~15.9k cards through Scryfall's rate limit. **Fixed:** every step now skips
-  work it has already done, so a no-change refresh takes seconds and needs no network,
-  and a four-card ingest fetches four cards. `make refresh REFETCH=1` forces the full
-  re-price. No longer a reconciliation point.
+  work it has already done, so a no-change refresh is **13s** (nearly all of it the final
+  `check_all`) and needs no network, and a four-card ingest fetches four cards.
+  `make refresh REFETCH=1` forces the full rebuild. No longer a reconciliation point.
 - **Step 4 is the one nothing else covers.** `check_all` proves the library is
   self-consistent, not that it contains what you pasted; a card that never arrived
   breaks no invariant.
@@ -184,24 +184,11 @@ ranking — but not currently a problem either. (My first measurement of this sa
 
 ## 7. Open, measured
 
-**`_signature_themes` saturates in `cuts`.** `rank_cut_candidates` gives a +2 keep-boost
-to any card sharing the LOOSE signature set (the union of every `#: protect:` card's
-tags), while all three `fit_strength` callers use the STRICT set (a theme carried by ≥2
-protected cards) — precisely because the loose set saturated there (`check_suggest`
-anchor 11b). Measured across the 22 decks that declare `#: protect:`:
-
-| | fires on |
-|---|---|
-| loose set (what `cuts` uses) | **86%** of nonland cards — **100%** in decks 20 and 46 |
-| strict set (what `fit_strength` uses) | 66% |
-
-A boost that applies to every card in the ranking is a constant: it carries no
-information where it saturates, and where it is partial it is applied off a 25-theme
-union. This is the repo's own documented saturation failure (the `Decks` column at 99%,
-the `review` verdict on 22 of 63 decks) sitting in a third place. **Not fixed here**,
-because it changes the cut ranking and the standing rule is that a scoring change needs
-a roster-wide before/after diff first. The motivating case (deck 30's counter-doublers)
-survives the strict set — its strict signature is exactly `{counters}`.
+~~**`_signature_themes` saturates in `cuts`**~~ — **fixed.** The +2 keep-boost fired on
+87% of nonland cards across the 22 `#: protect:` decks (100% in decks 20 and 46). It now
+reads the STRICT spine (≥2 protected cards), firing on 66% — the same fix `check_suggest`
+anchor 11b forces on `cmd_suggest_homes`. Roster diff: 14 of 64 decks re-scored, 4 top-cut
+candidates moved. Deck 30's motivating case survives (strict signature = `{counters}`).
 
 **The creature cut-ranking hypothesis: TESTED, REJECTED.** The proposal on file — bodies
 compete on stats/evasion/curve slot, and `card-pool.csv` already carries `Power`/
@@ -234,8 +221,8 @@ ordinary tune), and excluding deck 46 moves the segment only 45% → 56%. All ex
   Ninja clause) counts against the whole deck — 27 feeders in deck 20 against a
   correct 12. The `✱ multiplier` figure on a tribal doubler is an upper bound.
 - ~~`make refresh` has no incremental path~~ — **done.** Every step now skips work it has
-  already done; `build_mana.py` reuses its already-resolved rows instead of re-pricing all
-  ~15.9k pool cards. Implemented as a flag on the one target (`make refresh REFETCH=1`
+  already done; `build_mana.py` reuses its already-resolved rows and `build_pool.py` reuses
+  a pool built within the last week for the same query (that fetch was 99% of the cost). Implemented as a flag on the one target (`make refresh REFETCH=1`
   forces the full re-price), never a second recipe — the order is the thing that must have
   a single definition.
 
