@@ -1067,7 +1067,39 @@ _ROLE_PATTERNS = {
                        # about ONE-SHOT single draws. Phyrexian Arena reads as a cantrip
                        # to a pattern that only counts how many cards one resolution
                        # draws, which is why deck 42's card-advantage line said 1.
-                       r"at the beginning of (?:your|each|the) upkeep[^.]{0,60}?draws? a card",
+                       #
+                       # Repeatability is the whole test, and it comes in two templatings
+                       # — the first version of this pattern only read ONE of them. A
+                       # PHASE trigger recurs every turn, and "upkeep" was hardcoded while
+                       # Magic puts the same effect on the end step, the draw step and
+                       # combat just as often (Haliya, Guided by Light draws at the
+                       # beginning of your END STEP). And a "WHENEVER" trigger recurs by
+                       # construction — Exemplar of Light draws every turn it gets a
+                       # counter. Neither was matched here NOR by the broad `_CA_CUES`
+                       # net, so both cards were the "missable by BOTH" failure the
+                       # superset comment below exists to prevent: they got a role
+                       # (Payoff, Lifegain), so they were not `unclassified` either, and
+                       # deck 46 reported card advantage 1 against a real 3 with the
+                       # uncertainty channel silent.
+                       #
+                       # "When" vs "WHENEVER" is the load-bearing distinction and it is
+                       # Magic's own templating rule: "When this creature enters, draw a
+                       # card" is a one-shot ETB cantrip (Inspiring Overseer) and stays
+                       # excluded; "Whenever X, draw a card" recurs. Matching a bare
+                       # "draw a card" would have swept every cantrip in the format into
+                       # card advantage and inverted the rule this pattern implements.
+                       r"at the beginning of (?:your|each|the) "
+                       r"(?:upkeep|end step|draw step|combat|precombat main phase)"
+                       r"[^.]{0,60}?draws? a card",
+                       # The draw must fall AFTER the trigger's comma. Magic templates a
+                       # triggered ability as "Whenever <condition>, <effect>", so the
+                       # comma is what separates a card that DRAWS from a card that CARES
+                       # about drawing: "Whenever you draw a card, this creature gets
+                       # +1/+1" (Chasm Skulker, Orcish Bowmasters, Queza — 45 of them on
+                       # the pool) puts "draw a card" in the CONDITION, and a naive
+                       # `whenever .* draw a card` swept every one into card advantage —
+                       # scoring a draw-payoff as a draw, which is backwards.
+                       r"\bwhenever\b[^.,]{0,80}?, [^.]{0,60}?draws? a card",
                        r"\binvestigate\b"],
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
                       r"\{t\}: add \{",
@@ -1859,6 +1891,33 @@ def _cuts_uniq_adj(uniq):
     ±_CUTS_UNIQ_CAP so it only breaks near-ties, never overrides theme fit."""
     adj = _CUTS_UNIQ_W * (uniq - _CUTS_UNIQ_NEUTRAL)
     return max(-_CUTS_UNIQ_CAP, min(_CUTS_UNIQ_CAP, adj))
+
+
+# A MULTIPLIER's value lives in what it does to the REST of the deck, and both halves of
+# the cut score are structurally blind to that: theme-fit sees a card with few tags, and
+# `_role_credit` sees no functional role, because "doubles a trigger" is not a role. So
+# Delney, Streetwise Lookout — which doubles the triggered ability of every creature in
+# deck 46's small-body engine layer — ranked as the WEAKEST card in the deck, and
+# Valkyrie's Call ranked near it. The information was already in the codebase: `doubler_
+# axis`/`doubler_support` were built for `suggest-homes` and score Delney correctly, but
+# `cuts` never asked. This routes the SAME primitives into the cut score rather than
+# adding a second model, so the two cannot disagree about what a doubler is worth.
+_CUTS_MULT_CAP = 3.0
+_CUTS_MULT_MIN_SOURCES = 4      # below this, a doubler genuinely has nothing to double
+_CUTS_MULT_PER_SOURCE = 0.35
+
+
+def _cuts_multiplier_adj(support):
+    """Keep-bias for a doubler, proportional to the magnitude it multiplies.
+
+    Bounded to 0…_CUTS_MULT_CAP and ZERO below _CUTS_MULT_MIN_SOURCES — a doubler in a
+    deck that does not feed its axis really is cuttable, which is why this only ever
+    RAISES a keep-score and never lowers one: the no-support case is already handled by
+    theme-fit, and subtracting there would punish the same card twice.
+    """
+    if support < _CUTS_MULT_MIN_SOURCES:
+        return 0.0
+    return min(_CUTS_MULT_CAP, support * _CUTS_MULT_PER_SOURCE)
 
 
 # `suggest --lands` co-signals. A land's dominant value is FIXING (wishlist._land_value,
@@ -5226,6 +5285,15 @@ def rank_cut_candidates(d):
         uniq = card_distinctiveness(tags, text)
         uniq_adj = _cuts_uniq_adj(uniq)
 
+        # Multiplier co-signal: a doubler is worth what it doubles, and neither theme-fit
+        # nor role-credit can see that. Routed through the SAME doubler primitives
+        # `suggest-homes` uses, so the two models can't disagree (see _cuts_multiplier_adj
+        # / check_suggest #16).
+        mult_axis = doubler_axis(text)
+        mult_support = (doubler_support(mult_axis, cards, carddata, doubler_restriction(text))
+                        if mult_axis else 0)
+        mult_adj = _cuts_multiplier_adj(mult_support)
+
         # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
         # Role credit is impact-weighted (see _role_credit) so a strong-but-off-theme
         # card (removal/engine/cost-reducer) isn't mis-ranked as a top cut. Passing the
@@ -5235,7 +5303,7 @@ def rank_cut_candidates(d):
         # card on the deck's #: protect: signature theme gets a further keep-boost (F#3)
         # so a generic-tagged-but-central theme (e.g. counters) isn't mistaken for filler.
         keep = (fit + _role_credit(roles, deck_tally) + (1 if hit_central else 0)
-                + (2 if sig_hit else 0) + min(tribal, 6) + pow_adj + uniq_adj)
+                + (2 if sig_hit else 0) + min(tribal, 6) + pow_adj + uniq_adj + mult_adj)
         reasons = []
         if tags and not hit_central:
             reasons.append("off the deck's central themes")
@@ -5250,7 +5318,7 @@ def rank_cut_candidates(d):
         if uniq <= 1.5 and not sig_hit:
             reasons.append("generic ability — trips broad synergy checks")
         rows.append((keep, n, mv, sorted(roles), fit, reasons, ctx, text, is_int, power,
-                     uniq, upside))
+                     uniq, upside, (mult_axis, mult_support)))
 
     rows.sort(key=lambda r: (r[0], r[1].lower()))
     return rows, central, prot_present, deck_int
@@ -5303,7 +5371,8 @@ def cmd_cuts(args):
         print()
     print(f"  {'Card':30} {'MV':>3}  {'Fit':>4}  {'Pw':>3}  {'Uq':>3}  Roles / why-cuttable")
     print("-" * 82)
-    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq, upside in rows[:limit]:
+    for (keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq, upside,
+         mult) in rows[:limit]:
         mvs = str(mv) if mv is not None else "?"
         tail = ", ".join(roles) if roles else ("; ".join(reasons) if reasons else "—")
         low_pow = [r for r in reasons if r.startswith("on-theme but low power")]
@@ -5323,6 +5392,11 @@ def cmd_cuts(args):
         # The MIRROR: a card that reads fine alone but works AGAINST this deck's plan.
         if n in _zconf:
             tail += f"   ⛔fights your engine ({_zconf[n][1]})"
+        # A MULTIPLIER: its value is in the rest of the deck, which is exactly what the
+        # fit and role columns cannot show. Named so a keep-reason is legible, not just
+        # baked into the score.
+        if mult[0] and mult[1]:
+            tail += f"   ✱multiplier — doubles {mult[0]} ({mult[1]} feeder(s) here)"
         print(f"  {n[:30]:30} {mvs:>3}  {fit:>4}  {power:>3.0f}  {uniq:>3.0f}  {tail}")
 
     # Surface the actual oracle text so a cut is graded from what the card DOES,
@@ -5331,7 +5405,8 @@ def cmd_cuts(args):
     text_n = args.limit if getattr(args, "limit", 0) and args.limit > 0 else min(12, len(rows))
     print(f"\n── Oracle text of the top {min(text_n, len(rows))} cut candidates "
           f"(grade from THIS, not the label) ──")
-    for keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq, upside in rows[:text_n]:
+    for (keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq, upside,
+         _mult) in rows[:text_n]:
         warn = f"   ⚠ context: {'/'.join(ctx)} — value depends on this deck" if ctx else ""
         if is_int:
             warn += f"   ⚠interaction — 1 of the deck's {deck_int}"
@@ -5912,6 +5987,17 @@ _DOUBLER_AXES = {
     "triggers": (
         re.compile(r"triggers? an additional time|that ability triggers? one more time", re.I),
         re.compile(r"\bwhenever\b|\bwhen .{0,40}?enters\b", re.I)),
+    # LIFEGAIN was the missing axis, and The Wind Crystal is why. A card that doubles every
+    # lifegain is a multiplier exactly the way a token or counter doubler is, but the axis
+    # list stopped at three and so it read `None` — no doubler support, no fit bump, and
+    # `cuts` ranked it as an ordinary artifact. Requires the literal "twice that much"
+    # rather than reusing the other axes' looser `instead` alternative, because a
+    # REPLACEMENT that is not a doubling is templated identically: Angel of Vitality's
+    # "you gain that much life plus 1 instead" is +1, not ×2, and would qualify on
+    # `instead` alone.
+    "lifegain": (
+        re.compile(r"if you would gain life[^.]{0,60}?twice that much", re.I),
+        re.compile(r"\bgains? \d+ life|\bgain that much life|\blifelink\b", re.I)),
 }
 _DOUBLER_PER_SOURCE = 1.2   # fit points per feeding card
 # Ceiling chosen as a SAFETY rail, not an operating point: real decks feed an axis with
@@ -6269,6 +6355,192 @@ def _legality_of(names):
                 out[n] = legs
                 out.setdefault(n.split(" // ")[0], legs)
     return out
+
+
+# A card's value can lie ENTIRELY in its relationship to a list you already have, and
+# every scoring model here grades a card on its own text. Two consequences drove this:
+#
+#  1. A pile graded ONCE against an early plan keeps those verdicts after the plan
+#     changes. Deck 46's 76-card pile was screened against a "one enormous body" plan;
+#     when the plan became "several growing lifelink bodies", only the cards the user
+#     re-raised were re-graded, and the rest carried stale reasoning forward. Shrike
+#     Force, Linden, The Wind Crystal and Prayer of Binding all sat in that bucket.
+#  2. Nothing asked whether a candidate is a STRICT UPGRADE of a card already in the
+#     deck. Prayer of Binding is Liminal Hold plus Flash — identical cost, identical
+#     text — and Liminal Hold was in the 60 while Prayer of Binding sat on the excluded
+#     list with a note comparing it to a different card entirely.
+#
+# `screen` answers both by re-scoring a whole candidate list against the deck AS IT IS
+# NOW, so the answer cannot be stale, and by naming the incumbents each candidate beats.
+_UPGRADE_SELF_RE = re.compile(r"\bthis (?:creature|permanent|enchantment|artifact|land|spell|card)\b", re.I)
+
+
+def _upgrade_clauses(name, text):
+    """A card's text as a set of comparable clauses: reminder text stripped, the card's
+    own name normalised to a placeholder (older templating self-references by name, newer
+    says "this creature"), split on sentence and line breaks.
+
+    Deliberately a TEXT-CONTAINMENT test with no judgment in it. That makes it blind to
+    most real upgrades — but its false-positive rate is near zero, which is the right
+    error direction for a flag whose whole claim is "you already run a worse version of
+    this card"."""
+    t = _REMINDER_RE.sub(" ", (text or "").lower())
+    for nm in filter(None, [(name or "").lower(), (name or "").lower().split(" // ")[0],
+                            (name or "").lower().split(",")[0]]):
+        t = t.replace(nm, "~")
+    t = _UPGRADE_SELF_RE.sub("~", t)
+    return {c.strip(" .;") for c in re.split(r"[\n.]", t) if c.strip(" .;")}
+
+
+def strict_upgrades(cand_name, cand_text, cand_mv, cards, carddata, mana):
+    """In-deck card names that `cand` STRICTLY upgrades — every clause of the incumbent's
+    text is present in the candidate's, at the same or lower mana value, AND the candidate
+    does strictly more (an extra clause, or the same text for less mana). Color identity
+    is deliberately NOT part of the test — `screen` flags off-color separately, and
+    folding it in here would make a text-containment result depend on the deck's colors.
+    Two cards with identical text and cost are
+    NOT an upgrade of each other — that is redundancy, which is a different (and often
+    good) thing."""
+    cc = _upgrade_clauses(cand_name, cand_text)
+    if not cc:
+        return []
+    out = []
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl == (cand_name or "").lower():
+            continue
+        cd = carddata.get(nl) or {}
+        if "Land" in _primary_type(cd.get("type") or ""):
+            continue
+        ic = _upgrade_clauses(n, cd.get("text") or "")
+        if not ic or not ic <= cc:
+            continue                                   # incumbent says something the candidate doesn't
+        imv = (mana.get(nl) or (None, None))[1]
+        if cand_mv is not None and imv is not None and cand_mv > imv:
+            continue                                   # costs more — not strict
+        strictly_more = len(cc) > len(ic) or (
+            cand_mv is not None and imv is not None and cand_mv < imv)
+        if strictly_more:
+            out.append(n)
+    return out
+
+
+def cmd_screen(args):
+    """Re-score a list of CANDIDATE cards against a deck as it stands right now — the
+    anti-staleness pass for a build that has changed plan since the pile was first graded,
+    and the one place that flags a candidate as a STRICT UPGRADE of a card already in the
+    60. Reads names from args or stdin (one per line, optional leading quantity, `#`
+    comments ignored). Prints full oracle text, because a verdict surface that hides the
+    evidence is how a card gets mis-graded twice."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    dmeta, cards = parse_deck_file(d["path"])
+    carddata, cardmeta, mana = load_card_data(), load_card_meta(), load_mana()
+    legal, rar = load_legalities(), load_rarities()
+    _, _, qty = load_collection()
+    fmt = (args.format or dmeta.get("format") or "").strip().lower()
+    if fmt in ("any", "all"):
+        fmt = ""
+
+    theme_w = {}
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        m = cardmeta.get(n.lower())
+        if m:
+            for t in m["synergies"]:
+                theme_w[t] = theme_w.get(t, 0) + q
+    central = _central_themes(theme_w)
+    d_int, d_ca = deck_role_counts(cards, carddata)
+    sig = _strong_signature_themes(dmeta, cards, cardmeta)
+    in_deck = {n.lower() for q, n, s, c in cards}
+    declared = set(_declared_colors(dmeta) or _deck_castable_colors(dmeta, cards, mana))
+
+    raw = list(args.names or [])
+    if not raw or raw == ["-"]:
+        raw = sys.stdin.read().splitlines()
+    queries = []
+    for ln in raw:
+        ln = ln.strip()
+        if not ln or ln.startswith("#"):
+            continue
+        m = re.match(r"^\s*\d+\s+(.*)$", ln)
+        queries.append((m.group(1) if m else ln).strip())
+
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — screening {len(queries)} candidate(s) "
+          f"against the CURRENT list")
+    print(f"Central themes: {', '.join(sorted(central)) or '(none)'}"
+          + (f"  ·  format {fmt}" if fmt else ""))
+    print("Re-scored now, so nothing here is carried over from an earlier plan.\n")
+
+    rows, unresolved = [], []
+    for qname in queries:
+        ql = qname.lower()
+        cd = carddata.get(ql) or carddata.get(ql.split(" // ")[0])
+        if not cd:
+            subs = sorted((k for k in carddata if ql in k), key=len)
+            disp = {(carddata[k].get("name") or k) for k in subs}
+            if len(disp) == 1:
+                cd = carddata[subs[0]]
+            else:
+                unresolved.append(qname)
+                continue
+        name = cd.get("name") or qname
+        nl = name.lower()
+        text = cd.get("text") or ""
+        cost, mv = (mana.get(nl) or mana.get(nl.split(" // ")[0]) or (None, None))
+        ident = card_colors(cd.get("colors"))
+        ctags = set(cardmeta.get(nl, {}).get("synergies", []))
+        shared = sorted(ctags & central)
+        strength = fit_strength(shared, theme_w, text, d_int, d_ca, sig)
+        roles = sorted(classify_roles(text))
+        ax = doubler_axis(text)
+        sup = doubler_support(ax, cards, carddata, doubler_restriction(text)) if ax else 0
+        ups = strict_upgrades(name, text, mv, cards, carddata, mana)
+        legs = legal.get(nl) or legal.get(nl.split(" // ")[0]) or set()
+        rows.append(dict(name=name, cost=cost, mv=mv, text=text, roles=roles,
+                         strength=strength, shared=shared, axis=ax, support=sup,
+                         upgrades=ups, ident=ident,
+                         owned=owned_qty(qty, name), rar=rar.get(nl, "?"),
+                         illegal=bool(fmt and legs and fmt not in legs),
+                         offcolor=not (ident <= declared),
+                         present=nl in in_deck))
+
+    order = {"KEY": 0, "role-player": 1, "tangential": 2}
+    rows.sort(key=lambda r: (bool(r["present"]), r["illegal"], order.get(r["strength"], 3),
+                             -r["support"], r["name"].lower()))
+    for r in rows:
+        flags = []
+        if r["present"]:
+            flags.append("already in the deck")
+        if r["illegal"]:
+            flags.append(f"⚠ NOT legal in {fmt}")
+        if r["offcolor"]:
+            flags.append("⚠ off-color")
+        if r["upgrades"]:
+            flags.append("★ STRICT UPGRADE of " + ", ".join(r["upgrades"]))
+        if r["axis"] and r["support"]:
+            flags.append(f"✱ multiplier — doubles {r['axis']} ({r['support']} feeder(s) here)")
+        own = f"×{r['owned']}" if r["owned"] else f"craft {r['rar']}"
+        print(f"  {r['strength']:<12} {r['name'][:34]:36} {(r['cost'] or '?'):12} "
+              f"{own:9} {', '.join(r['roles']) or '—'}")
+        if r["shared"]:
+            print(f"       shares: {', '.join(r['shared'])}")
+        for f in flags:
+            print(f"       {f}")
+        if getattr(args, "full", False):
+            for line in (r["text"] or "(no text)").split("\n"):
+                print(f"         {line}")
+        print()
+    if unresolved:
+        print("Unresolved / ambiguous (fix the name, don't guess): "
+              + ", ".join(unresolved))
+    print("Trust KEY, judge role-player, read tangential as 'probably not here'. A ★ strict "
+          "upgrade is a TEXT-CONTAINMENT test — it is deliberately conservative and misses "
+          "most real upgrades, so its silence is not a verdict.")
+    return 0
 
 
 def cmd_resolve(args):
@@ -8346,6 +8618,16 @@ def main():
     p.add_argument("--format", default="standard",
                    help="warn about names not legal in this format (default standard; "
                         "'any' disables the check)")
+    p = sub.add_parser("screen",
+                       help="re-score candidate cards against a deck's CURRENT list; "
+                            "flags strict upgrades of cards already in it")
+    p.add_argument("id", help="deck id")
+    p.add_argument("names", nargs="*",
+                   help="card names (optional leading qty); omit or '-' to read stdin")
+    p.add_argument("--format", default=None,
+                   help="legality format (default: the deck's own; 'any' disables)")
+    p.add_argument("--full", action="store_true",
+                   help="print each candidate's full oracle text")
     args = ap.parse_args()
 
     return {
@@ -8359,7 +8641,7 @@ def main():
         "flex": cmd_flex, "swap": cmd_swap, "apply-flex": cmd_apply_flex,
         "verify": cmd_verify, "sync": cmd_sync, "text": cmd_text,
         "suggest-homes": cmd_suggest_homes,
-        "similar": cmd_similar, "resolve": cmd_resolve,
+        "similar": cmd_similar, "resolve": cmd_resolve, "screen": cmd_screen,
         "preflight": cmd_preflight, "quality": cmd_quality, "tier": cmd_tier,
         "redundancy": cmd_redundancy, "history": cmd_history,
         "feedback": cmd_feedback,

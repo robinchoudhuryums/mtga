@@ -3,7 +3,7 @@
 #: tier: A — Mono-U Merfolk tempo. Re-graded B->A. The old B was written when the deck
 #: tier: was a WIP and rested on figures that have since moved (it cited a 2.65 curve;
 #: tier: the list is now 3.0 and fully BUILDABLE). On the current list every axis holds
-#: tier: up: interaction 7 + card advantage 3 clears the A-floor, protection 4 is the
+#: tier: up: interaction 7 + card advantage 7 clears the A-floor, protection 4 is the
 #: tier: healthiest of the 12 decks that were reading below their floor, and the theme
 #: tier: spine is the TIGHTEST on the roster at 7 central themes — this is a focused
 #: tier: tribal deck, not a good-stuff pile, so tribal redundancy does the work

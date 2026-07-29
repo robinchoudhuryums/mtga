@@ -1,0 +1,214 @@
+#: name: Lightwing
+#: format: Standard
+#: colors: W
+#: plan: midrange
+#: archetype: Mono-WHITE LIFEGAIN built on SEVERAL GROWING LIFELINK BODIES, with an ANGEL
+#: archetype: sub-theme and graveyard recursion. The roster's other two mono-white decks
+#: archetype: (3 Knight's Edge, 23 Avengers) both go WIDE — `deck.py shape` scores them
+#: archetype: 19/7 and 9/4 wide-over-tall — and win by adding a body and an anthem. This
+#: archetype: one grows the bodies it already has with counters instead of adding more.
+#: archetype: BE HONEST ABOUT THE BODY COUNT: at 24 creatures this is not a low-creature
+#: archetype: deck, and `deck.py shape` reads it WIDE 8/3. That verdict is mostly a
+#: archetype: measurement artifact — the wide cues it finds are the creature-ENTERS
+#: archetype: lifegain engines (Hinterland Sanctifier, Dazzling Angel), which are engine
+#: archetype: pieces rather than a go-wide plan — but the count is real, and the honest
+#: archetype: statement of the difference is the AXIS, not the body count: nothing here
+#: archetype: scales with how many creatures are on the board, and everything scales with
+#: archetype: how many counters are on one of them.
+#: archetype: LIFELINK IS THE ENGINE, NOT THE REWARD. Power on a lifelink body converts
+#: archetype: directly into life, and life converts back into counters, so the two halves
+#: archetype: feed each other: every "whenever you gain life" payoff (Ajani's Pridemate,
+#: archetype: Twinblade Paladin, Exemplar of Light) grows a creature, and a bigger creature
+#: archetype: with lifelink gains more. That is why lifelink is spread across so many
+#: archetype: bodies rather than concentrated, and why so much of the deck GRANTS it —
+#: archetype: Lyra to every other Angel, Silver Sable to any modified creature (counters
+#: archetype: are modifications, so effectively all of them), Rosa every combat, Enter the
+#: archetype: Avatar State and Take Up the Shield at instant speed.
+#: archetype: DELNEY IS A TRIGGER DOUBLER, NOT A GO-WIDE CARD. Its second ability doubles
+#: archetype: the triggered abilities of creatures with power 2 or less, and the deck's
+#: archetype: whole engine layer sits at or under that line: Diamond Mare (two lifegain
+#: archetype: events per white spell), Hinterland Sanctifier and Dazzling Angel (two per
+#: archetype: creature), Stirring Hopesinger (two counters on every creature per trick),
+#: archetype: Youthful Valkyrie (two counters per ANGEL that lands, and nine of them do),
+#: archetype: Mockingbird, Ace Agent, Silver Sable.
+#: archetype: SERRA REDEEMER IS THE OTHER HALF OF THAT LINE. Delney doubles the triggers of
+#: archetype: power-2-or-less creatures; Serra Redeemer PAYS OFF the same 15 bodies, putting
+#: archetype: TWO counters on each one as it enters. The two read the deck's engine layer
+#: archetype: from opposite ends, which is why both are worth their slots.
+#: archetype: THE TRICKS ARE ENGINE PIECES. Every instant here targets a creature on
+#: archetype: purpose, because that is the trigger condition for Stirring Hopesinger's
+#: archetype: Repartee and Mockingbird, Ace Agent — so a protection spell is also a mass
+#: archetype: pump, and the deck is never holding a dead card. Note the two trigger on
+#: archetype: different things: Repartee needs an INSTANT OR SORCERY, while Ace Agent reads
+#: archetype: "a spell", so an Aura counts for it and not for Hopesinger.
+#: archetype: RECURSION IS THE THIRD LEG and the clearest break from decks 3 and 23, which
+#: archetype: have none. Valkyrie's Call does three jobs at once: it returns a dead
+#: archetype: non-Angel, adds a +1/+1 counter, and makes it an ANGEL — which turns on Lyra
+#: archetype: (+1/+1 and lifelink) and Giada. A deck with few, expensive bodies needs its
+#: archetype: threats to come back, and this one comes back bigger and with a keyword.
+#: archetype: THE WIND CRYSTAL IS THE PAYOFF FOR ALL OF IT, and its third ability is the
+#: archetype: reason — {4}{W}{W}, {T}: creatures you control gain flying AND LIFELINK until
+#: archetype: end of turn. In a board of grown bodies that is an alpha strike that also
+#: archetype: gains the whole attack back as life, which is what "enable several lifelink
+#: archetype: bodies" actually cashes out to. Its cost reduction touches 34 white cards.
+#: archetype: Its doubling clause is precise, though: it doubles the AMOUNT of a lifegain,
+#: archetype: not the NUMBER of events, so it does NOT add Ajani's Pridemate / Twinblade /
+#: archetype: Exemplar counters. What it doubles is the road to the 25-life thresholds that
+#: archetype: Angel of Vitality and Twinblade Paladin key on.
+#: archetype: THE TOP END IS DELIBERATE. Herald of Eternal Dawn is the over-the-top
+#: archetype: finisher — a 6/6 flash flier that, with Lyra out, is a 7/7 lifelinker, and
+#: archetype: whose "you can't lose the game" is the thematic end point of a deck about
+#: archetype: life totals. Ancestor Dragon is the repeatable
+#: archetype: engine at 6. Aettir and Priwen was CUT from this slot: 6 to cast plus 5 to
+#: archetype: equip is 11 mana, and it belongs to an earlier "one enormous body" version of
+#: archetype: this deck rather than to a plan that grows several.
+#: archetype: DISTINCTNESS vs 3 and 23: same color, opposite axis. Those decks scale with
+#: archetype: creature COUNT (anthems, token makers, Elspeth); this one scales with counters
+#: archetype: on individual bodies and recurs them. vs decks 20/41/42, the roster's other
+#: archetype: lifegain shells: all three are ORZHOV and convert life into DRAIN or into
+#: archetype: CARDS. This one converts it into creature size and never touches black.
+#: protect: The Wind Crystal; Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Delney, Streetwise Lookout; Stirring Hopesinger; Valkyrie's Call; Lyra Dawnbringer; Giada, Font of Hope; Angelic Destiny; Herald of Eternal Dawn; Silver Sable, Mercenary Leader; Rosa, Resolute White Mage
+#: tier: A — PROVISIONAL (unplayed brew, 11 cards short of buildable). The letter sits AT
+#: tier: the metrics floor: interaction 5 is exactly the A bar, and 5 + card advantage 2 is
+#: tier: exactly the sum of 7, and protection is 4. There is no slack on either axis of
+#: tier: the floor, which is the honest
+#: tier: summary of this build — it spends its slots on ENGINE rather than on answers, and
+#: tier: one more cut to either axis drops it to B.
+#: tier: THE PROTECT LIST IS DOING REAL WORK HERE, more than on any other deck. `cuts`
+#: tier: ranks Delney and Valkyrie's Call among the WEAKEST cards in the 60, and both are
+#: tier: engine spine. The classifier reads Delney as "role not auto-detected" because
+#: tier: trigger-doubling is not a functional role it knows; and
+#: tier: Valkyrie's Call is scored as generic reanimation rather than as the card that
+#: tier: makes dead non-Angels into ANGELS and so turns on Lyra and Giada. A synergy model
+#: tier: cannot see a multiplier — it sees a card with no board impact.
+#: tier: WHY THE COUNTS UNDER-READ. Interaction 5 excludes Rally the Monastery's and
+#: tier: Battle Menu's destroy modes being conditional on power 4 or greater, which is
+#: tier: fair, but it also cannot see that Stirring Hopesinger plus any trick is a combat
+#: tier: blowout. Card advantage 2 counts Exemplar of Light and Haliya, and that is now the
+#: tier: WHOLE of the deck's card flow — the third source was traded for Youthful Valkyrie,
+#: tier: a deliberate choice of engine over replacement that the floor cannot see either
+#: tier: way (a one-shot ETB cantrip never counted). This is the axis to watch in play: if
+#: tier: the deck runs out of cards before it runs out of board, that trade is the reason.
+#: tier: HELD AT A RATHER THAN S by four things. 1. THE CURVE IS STILL HEAVY at 3.14 with
+#: tier: only 12 early drops, though cutting Aettir and Priwen and Dawnstrike Vanguard
+#: tier: took the 6-plus slots from four down to two. 2. IT NEEDS TWO
+#: tier: HALVES — an engine creature AND a payoff — and a singleton build draws one far
+#: tier: more often than both; the counter payoffs are three-deep and the trigger engines
+#: tier: six-deep, which is the virtual-copy answer, but virtual copies are not 4-ofs.
+#: tier: 3. DELNEY'S CEILING IS SELF-LIMITING on the payoffs it doubles: Ajani's Pridemate
+#: tier: is a 2/2, so Delney doubles its first lifegain trigger and then the Pridemate has
+#: tier: grown past power 2 and stops qualifying. The doubling is durable on the ENGINE
+#: tier: side (Diamond Mare, Hinterland Sanctifier, Dazzling Angel, Youthful Valkyrie,
+#: tier: Stirring Hopesinger all stay small) and transient on the payoff side, which is
+#: tier: worth knowing before counting on it. 4. Unplayed, so nothing is outcome-evidence.
+#: tier: Re-grade after games; a win rate is not admissible at this sample size and must
+#: tier: never be written into this header.
+
+# Cheap trigger engines (power 2 or less — Delney doubles all of these)
+1 Haliya, Guided by Light (EOE) 19
+1 Momo, Friendly Flier (TLA) 29
+1 Hinterland Sanctifier (FDN) 730
+1 Ajani's Pridemate (FDN) 135
+1 Giada, Font of Hope (FDN) 141
+1 Diamond Mare (FDN) 770
+1 Lita, Little Orphan Amphibian (TMT) 19
+
+# Counter amplifiers and lifelink granters
+1 Linden, the Steadfast Queen (FDN) 737
+1 Angel of Vitality (ANB) 1
+1 Dazzling Angel (FDN) 9
+1 Delney, Streetwise Lookout (MKM) 12
+1 Stirring Hopesinger (SOS) 35
+1 Shrike Force (BLB) 31
+1 Silver Sable, Mercenary Leader (SPM) 13
+1 Rosa, Resolute White Mage (FIN) 555
+
+# Bodies that grow
+1 Mockingbird, Ace Agent (MSH) 22
+1 Twinblade Paladin (FDN) 503
+1 Exemplar of Light (FDN) 733
+1 Resplendent Angel (LCI) 32
+
+# Angel core — Lyra makes every other Angel a lifelinker
+1 Youthful Valkyrie (FDN) 149
+1 Lyra Dawnbringer (FDN) 707
+1 Herald of Eternal Dawn (FDN) 17
+
+# Repeatable top end (not Angels — no Lyra bonus)
+1 Ancestor Dragon (FDN) 489
+
+# Recursion and permanents
+1 Valkyrie's Call (FDN) 27
+1 Angelic Destiny (FDN) 565
+1 The Wind Crystal (FIN) 43
+1 Serra Redeemer (BLB) 387
+1 Sheltered by Ghosts (DSK) 30
+
+# Tricks — every one targets a creature, which is what Repartee and Ace Agent read
+1 Take Up the Shield (MSH) 39
+1 Enter the Avatar State (TLA) 18
+1 Restoration Magic (FIN) 30
+1 Practiced Offense (SOS) 25
+
+# Interaction
+1 Battle Menu (FIN) 9
+1 Rally the Monastery (TDM) 19
+1 Stasis Snare (FDN) 581
+1 Prayer of Binding (FDN) 739
+
+# Lands
+1 Adventurer's Inn (FIN) 271
+23 Plains (FDN) 275
+
+#~ -Adventurer's Inn | +Plains — `consistency` wants 24 white sources for Herald of
+#~ Eternal Dawn's {4}{W}{W}{W} and the deck has 23; the Inn is the only non-Plains. Costs
+#~ a free lifegain event (a Pridemate trigger) to buy ~2% on one 7-drop, so it is close.
+#~ note: applied — Shrike Force in for Sage of the Skies.
+#~ note: HELD OUT — Aettir and Priwen (owned). The purest "life total matters" card in
+#~ the pile: base P/T becomes X/X where X is your life total. Held out for CURVE (6 to
+#~ cast plus 5 to equip, with four cards already at 6+), not for power. Bring it back over
+#~ a 6-drop if the deck plays slower than modelled and wants a trump over a fourth engine.
+#~ Considered and REJECTED, recorded so they are not re-litigated: Crystal Barricade —
+#~ "you have hexproof" protects the PLAYER, and the prevention clause covers noncombat
+#~ DAMAGE only, so it stops pingers but not Go for the Throat; a 0/4 Defender also never
+#~ carries the counters. Starfield Shepherd — an Angel with warp, but its tutor puts the
+#~ Plains in HAND, so it is land-drop insurance rather than the ramp a 6-drop top end
+#~ actually wants, and 5 mana is the deck's most crowded slot.
+#~ note: applied — Momo, Friendly Flier in for Healer's Hawk. 13 of the deck's 23
+#~ creatures fly, so the discount is live most turns. The trade is explicit and worth
+#~ remembering: the Hawk's lifelink generated a lifegain EVENT every combat and Momo
+#~ triggers nothing, so this buys tempo at the cost of one recurring counter trigger.
+#~ Note the discount applies to the first flying CREATURE SPELL each turn — not Angelic
+#~ Destiny, The Wind Crystal or Valkyrie's Call.
+#~ note: CONSIDERED — Claim Jumper (3/3 vigilance) is the pile's only REAL ramp: it puts
+#~ Plains onto the BATTLEFIELD, unlike Gloryheath Lynx and Starfield Shepherd, which
+#~ tutor to hand. Held out because it is CATCH-UP ramp — it does nothing unless an
+#~ opponent has more lands — and the 3-slot is the deck's most crowded.
+#~ note: CONSIDERED — Mighty Mutanimals. Its Alliance clause is a genuine repeatable
+#~ counter engine and Delney doubles it (power 2), so this is not a go-wide card. Held
+#~ out on stats and slot: a 2/1 for four mana, into a 4-slot already holding Twinblade
+#~ Paladin, Exemplar of Light, Mockingbird, Rosa and now The Wind Crystal.
+#~ note: applied — Due Diligence in for Graduation Day.
+#~ Prayer of Binding is Liminal Hold with FLASH: identical {3}{W}, and identical text down
+#~ to the word (exile a nonland permanent, gain 2 life). Running both gives two copies
+#~ and takes interaction 5 -> 6, which is the only way this deck gets any slack on the A
+#~ floor (it currently sits exactly on both clauses). The cut side is the honest part:
+#~ Graduation Day has only SIX instant/sorcery triggers in the whole 60, it does nothing on
+#~ arrival, and — unlike Stirring Hopesinger, which reads the same Repartee trigger — it is
+#~ an ENCHANTMENT, so Delney cannot double it and it counters one creature rather than all.
+#~ It was over-protected in an earlier round; the protect header no longer lists it.
+#~ note: applied — Serra Redeemer in for Due Diligence.
+#~ the A floor's bar, with no slack, and Due Diligence took the slot a removal-adjacent
+#~ card used to hold. If games show the deck light on answers, Liminal Hold is the owned
+#~ one-for-one (exile a nonland permanent, gain 2 life — Prayer of Binding is the same
+#~ card with flash, so running both is two virtual copies of the effect). Any comparable
+#~ exile or destroy effect serves; the point is the COUNT, not the card.
+#~ note: Due Diligence went in over Graduation Day. Graduation Day had only SIX
+#~ instant/sorcery triggers in the 60, did nothing on arrival, and — unlike Stirring
+#~ Hopesinger, which reads the same Repartee trigger — is an ENCHANTMENT, so Delney could
+#~ not double it and it countered one creature rather than all. Due Diligence is a
+#~ permanent +2/+2 and vigilance plus a one-shot +2/+2 and vigilance on a second creature,
+#~ and it DOES trigger Mockingbird, Ace Agent (which reads "a spell", not "an instant or
+#~ sorcery" — an Aura spell targets). The risk it carries is AURA RISK: unlike Angelic
+#~ Destiny (returns to hand) and Sheltered by Ghosts (ward 2), it has no escape hatch, so
+#~ it is the card that trades one-for-one down against a removal spell.

@@ -5,7 +5,7 @@
 #: tier: Black Waltz / the 0/1 black-Wizard-token makers all deal noncombat damage on every
 #: tier: noncreature spell) backed by prowess payoffs, deep card advantage (Kefka/Niv-Mizzet/
 #: tier: Archmage) and a real removal suite. The floor is A and not marginally so —
-#: tier: interaction 13 against card advantage 5, once the bounce/edict/X-damage lines the
+#: tier: interaction 13 against card advantage 6, once the bounce/edict/X-damage lines the
 #: tier: old classifier could not read are counted;
 #: tier: held at B by three-color singleton variance and a fragile go-wide board (a sweeper
 #: tier: from the opponent hurts). Plays up as it gains redundancy (see the competitive 37b).

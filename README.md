@@ -373,6 +373,7 @@ python3 scripts/deck.py suggest 1a --needs   # STRUCTURAL needs the theme model 
 python3 scripts/deck.py legal 1a      # construction lint: deck size, copy limits, format legality
 python3 scripts/deck.py shape 1a      # wide vs tall, fast vs slow — the structural read themes can't give
 python3 scripts/deck.py cuts 1a       # rank the deck's weakest-fit cards as cut candidates
+python3 scripts/deck.py screen 1a <names>    # re-score candidate cards against the deck AS IT IS NOW (★ strict upgrade, ✱ multiplier)
 python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~ lines)
 python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
@@ -444,6 +445,34 @@ re-triggers landfall; a Warp / "when this leaves the battlefield" clause is what
 its counters onto your threat; a sacrifice cost feeds your outlets. The flag fires only
 when the deck's own themes invert the cost, and it never changes the ranking — it tells
 you to read the card in context before cutting it.
+
+`cuts` also marks **`✱ multiplier`**, and the reason it had to is worth stating: a
+doubler's value lives in the *rest* of the deck, and **both** halves of the cut score
+are blind to that — theme fit sees a card with few tags, and role credit sees no
+functional role, because "doubles a trigger" is not a role. So Delney, Streetwise
+Lookout, which doubles the triggered ability of every creature in a deck's small-body
+engine layer, ranked as that deck's **weakest card**. The information was already in
+the toolkit: the doubler model was built for `suggest-homes` and scored Delney
+correctly, restriction and all. `cuts` simply never asked. It now routes the same
+primitives, bounded and worth zero when the deck doesn't feed the axis — a doubler with
+nothing to double genuinely *is* cuttable.
+
+**`deck.py screen <id> <names…>`** re-scores a list of candidate cards against the deck
+**as it currently stands**. That sounds like `suggest-homes` for a batch, but it exists
+for a different failure: a pile graded *once* keeps those verdicts after the plan
+changes. A 76-card pile screened against one plan, then re-read only for the cards
+someone happened to re-raise, carries expired reasoning forward on everything else —
+which is how four genuinely good cards stayed excluded for reasons that had stopped
+being true. Re-run it after **any** change of plan, not once.
+
+It also answers a question nothing else asked: is this candidate a **`★ STRICT
+UPGRADE`** of a card already in the 60? Prayer of Binding is Liminal Hold plus Flash —
+identical cost, identical text — and Liminal Hold was in the deck while Prayer of
+Binding sat on the excluded list. The test is deliberately conservative *text
+containment*: every clause of the incumbent present in the candidate, same or lower
+mana value, and the candidate doing strictly more. Identical text at identical cost is
+**redundancy, not an upgrade** — often a good thing. It misses most real upgrades by
+design, so its silence is not a verdict.
 
 `sync` is `verify`'s write half, for many decks at once: pipe an export containing one
 or many `Deck` blocks and it matches each block to its closest stored deck (the same
@@ -656,12 +685,15 @@ scores theme fit and role credit, neither of which has a fixing term, so a fixer
 tags, no classified role) used to sort straight to the top of the cut list in exactly the
 multi-color decks that need it. Adding a fixer therefore proposed cutting a *better* one.
 Incumbent fixers are now excluded when the add is itself a fixer.
-A **doubler** (tokens / counters / triggers) is weighed against how much this deck
-actually has to double — Exalted Sunborn shares `tokens` with a 14-token deck and a
-6-token deck, and theme overlap scored them identically — so its feeder count drives a
-bounded fit bump and promotes it to KEY past a threshold. The doubler's own scope is
-read off its text, so Delney's "power 2 or less" filters the count rather than
-over-crediting it.
+A **doubler** (tokens / counters / triggers / lifegain) is weighed against how much
+this deck actually has to double — Exalted Sunborn shares `tokens` with a 14-token deck
+and a 6-token deck, and theme overlap scored them identically — so its feeder count
+drives a bounded fit bump and promotes it to KEY past a threshold. The doubler's own
+scope is read off its text, so Delney's "power 2 or less" filters the count rather than
+over-crediting it. The **lifegain** axis was added last, because The Wind Crystal read
+as no doubler at all while the list stopped at three; it requires the literal "twice
+that much", since a replacement that is *not* a doubling is templated identically
+(Angel of Vitality's "plus 1 instead" is +1, not ×2).
 Castability here is an **identity subset** test, which says nothing about whether you
 can pay the pips: Anti-Venom (`{W}{W}{W}{W}{W}`) read KEY for decks with 10 white
 sources, roughly 1% castable on turn five. A cost demanding 3+ strict pips of one

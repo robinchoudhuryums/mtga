@@ -89,6 +89,39 @@ class TestTagsFor:
         tags = ts.tags_for({"Type": "Sorcery", "Card Text": "Kicker—Forage."}, ["Forage"])
         assert "sacrifice" not in tags
 
+    def test_renew_maps_to_graveyard_and_counters(self):
+        """`renew` is the same COST+EFFECT shape as forage and maps to the two resources
+        it touches: activated FROM YOUR GRAVEYARD, and it puts COUNTERS on a creature.
+
+        Like forage — only more so — the mapping changes no stored tag: all 14 pool cards
+        state the template without reminder text ("Exile this card from your graveyard:
+        Put a +1/+1 counter ..."), so the TEXT rules already earn both. The mapping's real
+        job is to DECLARE it a known mechanic, which is what stops it warning on every
+        check_all run and keeps `is_noise_keyword` from ever suppressing it."""
+        tags = ts.tags_for({"Type": "Creature — Human", "Card Text": "Renew"}, ["Renew"])
+        assert "graveyard" in tags and "counters" in tags
+
+    def test_renew_is_not_sacrifice_or_recursion(self):
+        """Nothing is sacrificed, and the card never comes BACK — it is exiled to pay for
+        the counters. A renew card in the yard is a resource to spend, not a rebuy, so
+        tagging it `recursion` would point reanimator decks at cards that do not recur."""
+        tags = ts.tags_for({"Type": "Creature — Human", "Card Text": "Renew"}, ["Renew"])
+        assert "sacrifice" not in tags and "recursion" not in tags
+
+    def test_triple_is_baselined_not_themed(self):
+        """`triple` is NOT a mechanic — Scryfall surfaces the ordinary word from "deals
+        triple that damage" / "Triple target creature's power". Its sibling `double`, which
+        appears on the very same card (Tifa's Limit Break), was already baselined, so this
+        matches the precedent rather than inventing a theme for three unrelated cards."""
+        import check_keywords
+        baseline = {ln.strip().lower() for ln in open(check_keywords.BASELINE,
+                                                      encoding="utf-8") if ln.strip()}
+        assert "triple" not in {k.lower() for k in ts.KEYWORD_THEMES}
+        assert "triple" in baseline
+        assert "double" in baseline, "the precedent this follows must still hold"
+        # And the radar must be quiet about it — that is the whole point of the triage.
+        assert not [k for k in check_keywords.check() if k[1].lower() == "triple"]
+
 
 class TestExileCastTheme:
     """`exile cast` = the card is cast FROM EXILE, or pays off casting outside your hand.

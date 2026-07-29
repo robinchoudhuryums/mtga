@@ -32,8 +32,8 @@
 #: archetype: THREE nonland cards are shared. vs the core 42: opposite
 #: archetype: resource. 42 spends life and holds creatures; this spends creatures and
 #: archetype: gains life.
-#: tier: B — Orzhov aristocrats, PROVISIONAL (unplayed brew). The claimed letter sits AT
-#: tier: the metrics floor rather than one band above it. The interaction suite is built
+#: tier: B — Orzhov aristocrats, PROVISIONAL (unplayed brew). The claimed letter now sits
+#: tier: one band BELOW the metrics floor, deliberately. The interaction suite is built
 #: tier: from cheap unconditional answers plus edicts that double as fodder sinks: Social
 #: tier: Snub COPIES itself, so it answers two creatures and drains twice while you feed
 #: tier: it a spare token. Vengeful Bloodwitch was CUT for Deadly Precision, a one-mana
@@ -41,11 +41,13 @@
 #: tier: an ENGINE TRIGGER here rather than a drawback, which is the whole reason it beat
 #: tier: a 2-drop drain payoff for the slot.
 #: tier: BE PRECISE ABOUT THE FLOOR, because "restore the interaction" was not the whole
-#: tier: fix: the A floor wants interaction >=5 AND interaction+card-advantage >=7. Deadly
-#: tier: Precision (in, over Vengeful Bloodwitch) took interaction to 5, so the first
-#: tier: clause is now MET and the deck is held at B purely by the sum: 5 + card advantage
-#: tier: 1 is 6, one short of 7. Card advantage is therefore the ONLY axis that matters
-#: tier: now — see risk 1 below for why the measured 1 is defensible but beatable.
+#: tier: fix: the A floor wants interaction >=5 AND interaction+card-advantage >=7. Both
+#: tier: clauses are now MET — interaction 5 and card advantage 3 — so the MEASURABLE
+#: tier: FLOOR IS A and the claimed B is a deliberate call one band BELOW it, on the three
+#: tier: risks listed further down that no metric can see. Note how the second clause was
+#: tier: cleared: not by a swap, but by a classifier fix. The card advantage here read 1
+#: tier: for as long as this deck existed because the role model matched a repeatable draw
+#: tier: only when it was templated on the UPKEEP, and this deck's draws are not.
 #: tier: THE MEASURED 5 UNDER-READS THIS DECK and `tier` says so itself, printing 5 +2?
 #: tier: and naming both misses. Liliana's -4 (each player sacrifices two creatures) and
 #: tier: Jecht's chapter III (each OPPONENT sacrifices two) are unambiguous interaction the
@@ -56,14 +58,14 @@
 #: tier: what the uncounted pieces cannot replace is a cheap unconditional answer on demand,
 #: tier: which is why Hero's Downfall and Erode stay.
 #: tier: Held at B by three further things the floor cannot see:
-#: tier: 1. MEASURED CARD ADVANTAGE IS ONE, and that number is defensible rather than a
-#: tier:    classifier miss — Treacherous Greed's draw-three is the single card that
-#: tier:    clears the bar. Vampiric Rites, Ahriman, Baron Bertram
-#: tier:    and Agent Venom each draw exactly ONE card, which the role model excludes as
-#: tier:    card-neutral — and in the abstract it is right, because sacrificing a CARD to
-#: tier:    draw a card is a wash. It is only advantage when the fodder is a TOKEN, which
-#: tier:    is why the token base is built to recur. So the deck's card advantage is real
-#: tier:    but CONDITIONAL on having a token engine online, and a metric cannot see that.
+#: tier: 1. CARD ADVANTAGE 3 IS REAL BUT CONDITIONAL, which is the part the number still
+#: tier:    cannot express. Treacherous Greed's draw-three clears the bar outright;
+#: tier:    Vampiric Rites, Ahriman, Baron Bertram and Agent Venom each draw exactly ONE
+#: tier:    card off a sacrifice, and that is a WASH when the fodder is a card from hand.
+#: tier:    It is advantage only when the fodder is a TOKEN, which is why the token base is
+#: tier:    built to recur. So the engine has to be online first — a metric cannot see that
+#: tier:    precondition, and it is why this axis is listed as a risk rather than a
+#: tier:    strength even now that it counts.
 #: tier: 2. AN ARISTOCRATS DECK NEEDS TWO HALVES AT ONCE — an outlet AND a payoff on the
 #: tier:    battlefield — and a singleton build draws one half far more often than both.
 #: tier:    Five outlets against six drain payoffs is the virtual-redundancy answer, but
@@ -81,12 +83,13 @@
 #: tier: turn-5 play — when the door this deck casts is `{2}{B}`, one black pip on turn
 #: tier: 3. `parse_pips` and `load_mana` now read the FRONT face, so the reported 2.91
 #: tier: is the real number and Funeral Room no longer shows up as a castability risk.
-#: tier: PATH TO A: the floor now needs exactly ONE more point of card advantage, and the
-#: tier: cheapest honest way to buy it is a repeatable draw the role model can actually
-#: tier: see. Leading candidate: Phyrexian Arena, owned and on-color. Beyond the floor, Eirdu is the
-#: tier: biggest real lever (persist turns a 12-turn drain into a 6-turn one), followed by
-#: tier: a second POINTABLE protection effect for the payoff enchantments, since the ward
-#: tier: on Tragedy Feaster and Vein Ripper does nothing for them.
+#: tier: PATH TO A: the MEASURABLE floor is already there, so the work left is the three
+#: tier: risks above rather than an axis. Eirdu is the biggest real lever (persist turns a
+#: tier: 12-turn drain into a 6-turn one); after that, a second POINTABLE protection effect
+#: tier: for the payoff enchantments, since the ward on Tragedy Feaster and Vein Ripper
+#: tier: does nothing for them. Promote the letter to A once it has been PLAYED and the
+#: tier: two-halves risk has either shown up or not — that is a question games answer and
+#: tier: a list cannot.
 #: protect: Funeral Room // Awakening Hall; Baron Bertram Graywater; Scavenger's Talent
 #: notes: WHAT WAS CUT FROM THE CORE AND WHY. Mister Negative, Lunar Convocation's
 #: notes: pay-2-life-draw mode, Phyrexian Arena, Visions of Villainy, Cruel Truths,

@@ -16,7 +16,7 @@
 #: archetype: body. (Emil is here for its trample line, not its Fractal mana sink.)
 #: tier: A — Simic landfall counters-midrange. Re-graded B->A after the Garruk's Uprising
 #: tier: / The Legend of Kyoshi pass, which closed the last of the three caps the B was
-#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 2 on a 2.79 curve).
+#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 5 on a 2.79 curve).
 #: tier: The ENGINE was never the problem: `deck.py redundancy 40a` reads a virtual 8-of
 #: tier: counter-DOUBLER plus 5-of landfall / 5-of lands / 9-of payoff / 4-of ramp, on a
 #: tier: clean manabase (26 lands, 87% keepable openers, 0 uncastable). What kept it at B

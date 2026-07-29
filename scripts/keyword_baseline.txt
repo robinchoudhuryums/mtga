@@ -4,6 +4,7 @@
 # `check_keywords.py --update-baseline` to acknowledge the current set.
 disappear
 double
+triple
 eerie
 enchant
 food

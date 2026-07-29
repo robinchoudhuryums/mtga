@@ -94,7 +94,17 @@ Read the actual card text — never judge by mana value or a single subtype:
    text, then preview with `deck.py swap` before recommending. Also check the
    MIRROR of `⚡`: a fine card that fights your own engine (graveyard hate in a
    graveyard deck, hand attack against a deck you want holding cards) — no flag
-   catches that, only a full-text read against the deck's plan.
+   catches that, only a full-text read against the deck's plan. `cuts` now folds in a
+   ✱ MULTIPLIER co-signal, because a doubler's value is in the rest of the deck and
+   both halves of the cut score were blind to it — Delney, which doubles the triggered
+   ability of every small creature in deck 46's engine layer, ranked as that deck's
+   WEAKEST card while `suggest-homes` scored it correctly off the same primitive.
+6a. **`python3 scripts/deck.py screen <id> <cards you are considering>`** — score a
+   batch of candidates against the deck AS IT IS NOW, rather than against whatever
+   plan it had when you last looked at them. Flags a ★ STRICT UPGRADE of a card
+   already in the 60 (Prayer of Binding is Liminal Hold plus Flash, and nothing
+   noticed while both sat in the same conversation) and a ✱ multiplier. Re-run it
+   after any change of plan — stale verdicts are the failure it exists to prevent.
 6b. `python3 scripts/deck.py flex <id>` — retire or retarget any `#~` line that is
    already stale before adding new ones, so the block doesn't accumulate two lines
    proposing the same cut.
