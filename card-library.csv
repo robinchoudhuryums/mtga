@@ -3925,3 +3925,15 @@ Choose one —
 • Destroy target creature with power 4 or greater.",W,cost-reduction; tokens; removal; pump,TDM,19,1
 Prayer of Binding,Enchantment,"Flash
 When this enchantment enters, exile up to one target nonland permanent an opponent controls until this enchantment leaves the battlefield. You gain 2 life.",W,lifegain; etb; flash; tempo,FDN,739,1
+"Koya, Death from Above",Legendary Creature — Mutant Ninja Bird,"Flying
+When Koya enters, exile up to one other target creature. At the beginning of the next end step, you may pay {3}{B}. If you don't, return that card to the battlefield under its owner's control.",W/B,Mutant; Ninja; Bird; etb; blink; flying; evasion,TMT,11,1
+Ruthless Lawbringer,Creature — Vampire Assassin,"When this creature enters, you may sacrifice another creature. When you do, destroy target nonland permanent.",W/B,Vampire; Assassin; sacrifice; removal; etb,OTJ,229,1
+Ninja Teen,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+Whenever a creature you control leaves the battlefield, each opponent loses 1 life.
+{1}{B}: Level 2
+Creatures you control get +1/+0 and have menace.
+{B}: Level 3
+Creature cards in your graveyard have sneak {3}{B}.
+You may cast creature spells from your graveyard using their sneak abilities.",B,Class; graveyard; pump,TMT,67,1
+"Splinter, Radical Rat",Legendary Creature — Mutant Ninja Rat,"If a triggered ability of a Ninja creature you control triggers, that ability triggers an additional time.
+{1}{U}: Target Ninja can't be blocked this turn.",W/U/B,Mutant; Ninja; Rat,TMT,169,1

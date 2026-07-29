@@ -308,13 +308,6 @@ You may play lands and cast Mutant, Ninja, or Turtle spells from the top of your
 "Mutagen Man, Living Ooze",Legendary Creature — Ooze Mutant,"Trample
 Activated abilities of artifact tokens you control cost {1} less to activate.
 When Mutagen Man enters, create X Mutagen tokens. (They're artifacts with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",G,Ooze; Mutant; counters; sacrifice; tokens; etb; trample; evasion,TMT,124,Rare,4,+1/+1 counters + artifact-token sac engine — Quantum Realm's counters core; also 21/21a artifact-tokens,5.0,hand
-Ninja Teen,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
-Whenever a creature you control leaves the battlefield, each opponent loses 1 life.
-{1}{B}: Level 2
-Creatures you control get +1/+0 and have menace.
-{B}: Level 3
-Creature cards in your graveyard have sneak {3}{B}.
-You may cast creature spells from your graveyard using their sneak abilities.",B,Class; graveyard; pump,TMT,67,Rare,20,"Ninja flavor (heuristic top 6 graveyard) | fits: 6,5,22",4.5,hand
 "Raph & Mikey, Troublemakers",Legendary Creature — Mutant Ninja Turtle,"Trample, haste
 Whenever Raph & Mikey attack, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.",R/G,Mutant; Ninja; Turtle; haste; aggro; trample; evasion,TMT,167,Rare,9,"RG aggro: on attack, cheat a creature into play attacking — fits Hulk Smash (TMNT flavor)",5.5,hand
 Raphael's Technique,Instant,"Sneak {2}{R} (You may cast this spell for {2}{R} if you also return an unblocked attacker you control to hand during the declare blockers step.)
@@ -329,8 +322,6 @@ Whenever Sally Pride attacks, put a +1/+1 counter on each creature you control."
 Whenever Slash attacks, create a 2/2 red Mutant creature token.",R,Mutant; Berserker; Turtle; tokens; burn; alliance; aggro; value,TMT,108,Rare,1,"Rakdos aggro/burn/tokens; also 10 | fits: 10,9",6.0,hand
 Splinter's Technique,Sorcery,"Sneak {1}{B} (You may cast this spell for {1}{B} if you also return an unblocked attacker you control to hand during the declare blockers step.)
 Search your library for a card, put that card into your hand, then shuffle.",B,sneak; tempo; cost-reduction,TMT,80,Rare,20,Ninja sneak tempo,5.0,hand
-"Splinter, Radical Rat",Legendary Creature — Mutant Ninja Rat,"If a triggered ability of a Ninja creature you control triggers, that ability triggers an additional time.
-{1}{U}: Target Ninja can't be blocked this turn.",W/U/B,Mutant; Ninja; Rat,TMT,169,Rare,concept,WUB TMNT legends/tokens — new-deck focal point,5.5,hand
 The Ooze,Legendary Artifact,"Whenever a creature you control with a +1/+1 counter on it leaves the battlefield, create a Mutagen token for each +1/+1 counter on it. (A Mutagen token is an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")
 {T}: Exile target card from a graveyard. Create a Mutagen token.",Colorless,counters; reanimator; graveyard; sacrifice; tokens; removal,TMT,177,Rare,general,counters payoff: +1/+1-counter creature dies -> Mutagen counter-tokens — fits Quantum Realm,4.5,hand
 Transdimensional Bovine,Creature — Ox Avatar,"Flying
