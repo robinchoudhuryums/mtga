@@ -144,7 +144,7 @@ Deck
 # Value
 1 Treacherous Greed (MKM) 237
 1 Starscape Cleric (BLB) 116
-1 Robot Domination (MSH) 111
+1 Vein Ripper (MKM) 110
 
 # Rebuild / protect the engine
 1 Fix What's Broken (SOS) 188
@@ -174,5 +174,5 @@ Deck
 
 #~ note: applied — Midnight Snack in for Agents of HYDRA.
 #~ note: applied — Krovod Haunch in for Resolute Reinforcements.
-#~ +Azula, On the Hunt | -Robot Domination | PARKED, not pending — retargeted because Fiendish Panda was deliberately KEPT (its death trigger reanimates a creature up to its power, and it grows on every lifegain, so both of its conditions are things this deck does automatically). Robot Domination is the only remaining defensible cut and it is a genuine engine, so the honest read is that this deck no longer has room: 35 nonlands all doing a job. Azula is a 4-mana 4/3 that must attack and whose Firebending mana evaporates at end of combat; the Clue (artifact fodder) and the self-inflicted 1 life are on-theme but do not beat an engine card. Keep this line as a note-to-self, not a plan. Craft (U).
+#~ note: applied — Vein Ripper in for Robot Domination.
 #~ note: SLOT MATH, closed — the three cheap bodies (Resolute Reinforcements, Agents of HYDRA, and Anafenza for the interaction fix) are spent, and Fiendish Panda was kept on a re-read. The deck is now 35 nonlands with no filler, which is the good version of 'no room': any further add has to beat an engine card, not a spare one.

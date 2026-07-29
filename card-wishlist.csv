@@ -125,6 +125,9 @@ III — Ecliptic Growl — Draw a card if you control the creature with the grea
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
+Vein Ripper,Creature — Vampire Assassin,"Flying
+Ward—Sacrifice a creature.
+Whenever a creature dies, target opponent loses 2 life and you gain 2 life.",B,Vampire; Assassin; lifegain; sacrifice; flying; evasion; ward; protection,MKM,108,Mythic,42a,6/5 flier; drains 2 on ANY creature death incl. opponents killed by your removal; Ward-Sacrifice a creature is real protection in a deck at protection 1. {B}{B}{B} vs 17 sources = 73% on T6,8.0,hand
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
