@@ -4855,6 +4855,62 @@ def cut_creature_classifier(carddata):
 _SEGMENT_LABEL = {"creature": "creature cuts", "noncreature": "noncreature cuts",
                   "unknown": "cut card not on file"}
 
+# A segment dominated by ONE deck is not a rate for that segment — it is a rate for
+# that deck wearing the segment's name. Decks with at least this many rows get their own
+# line; a rate under three rows is not a rate. There is deliberately NO share threshold —
+# see segment_concentration.
+_RECS_CONC_MIN_ROWS = 3
+
+
+def segment_concentration(rows, is_creature, segment="creature",
+                          min_rows=_RECS_CONC_MIN_ROWS):
+    """Per-deck breakdown of one segment, as (deck, n, agreed, share), worst-agreement
+    first, for every deck contributing at least `min_rows` rows.
+
+    Exists because testing the creature hypothesis turned up something the pooled
+    segment rate hid: **the creature agreement rate is not a property of creatures.**
+    Per deck it runs 0/6, 1/6, 3/6, 2/4, 4/4 — from 0% to 100% — so the 45% figure is
+    largely a statement about which decks happened to be edited in the ledger window,
+    not about how `cuts` grades bodies.
+
+    The tempting story is that deck 46 (0/6) was rebuilt from scratch during the
+    window, and a cut made while a deck is being BUILT means "this didn't make the 60",
+    which is not the question `cuts` ranks — it scores against a coherent list a
+    half-built deck does not yet have. That is a real mechanism and it fits deck 46.
+    **It does not fit deck 3 at 1/6**, which was an ordinary tune. So the rebuild
+    effect is at best partial, and the wider finding is the variance itself.
+
+    Disclosed, NOT corrected for: these are post-hoc subgroups of 4-6 rows, the
+    intervals are enormous and overlap everything, and excluding deck 46 moves the
+    segment only 45% → 56% — still under the noncreature 90%. The honest move is to
+    show the reader where the rows came from and let a pre-registered test on future
+    data settle it, the same restraint `_MIN_SAMPLE` and `count_conf` apply elsewhere.
+
+    **There is deliberately no SHARE threshold.** The first draft disclosed a deck
+    holding >20% of the segment, and deck 46 — the case that motivated the whole
+    function — sits at 6/31 = 19.4% and did not print. The fix is not a lower cutoff:
+    a threshold tuned until the finding you already believe appears is not a
+    threshold, it is the finding smuggled into a constant. Every deck with enough rows
+    for a rate gets a line, and the reader sees the concentration whatever it is.
+    """
+    per = {}
+    for r in rows:
+        pct = _rec_percentile(r)
+        if pct is None:
+            continue
+        v = is_creature(r.get("Cut", ""))
+        key = "unknown" if v is None else ("creature" if v else "noncreature")
+        if key != segment:
+            continue
+        d = r.get("Deck") or "?"
+        n, ok = per.get(d, (0, 0))
+        per[d] = (n + 1, ok + (1 if pct <= 0.5 else 0))
+    total = sum(n for n, _ in per.values())
+    if not total:
+        return []
+    out = [(d, n, ok, n / total) for d, (n, ok) in per.items() if n >= min_rows]
+    return sorted(out, key=lambda t: (t[2] / t[1], -t[1]))
+
 
 def _print_recommendation_segments(rows):
     """Print the agreement rate split by creature vs noncreature cut.
@@ -4890,6 +4946,21 @@ def _print_recommendation_segments(rows):
               f"count, and creatures carry roughly twice as many tags as noncreature "
               f"spells, so they are systematically protected. Treat the cut ranking as "
               f"a shortlist there, not a signal; grade from the printed oracle text.")
+        # Disclose a deck dominating the weak segment. One deck's rate wearing the
+        # segment's name is the same "a pooled number hides a split" failure the
+        # segmentation itself exists for, one level down (see segment_concentration).
+        conc = segment_concentration(rows, cut_creature_classifier(load_card_data()),
+                                     segment=lo[0])
+        if conc:
+            print(f"    Where these rows come from (≥{_RECS_CONC_MIN_ROWS} rows), "
+                  f"worst agreement first:")
+            for d, n, ok, share in conc:
+                print(f"      deck {d:<5} {ok}/{n} ({100 * ok / n:>3.0f}%)  "
+                      f"— {share:.0%} of the segment")
+            print("      A deck being BUILT contributes cuts meaning \"this didn't make "
+                  "the 60\", which is not the\n      question `cuts` ranks — it scores "
+                  "against a coherent list a half-built deck does not\n      yet have. "
+                  "Read a dominating deck's rows before trusting the segment rate.")
 
 
 def cmd_feedback(args):

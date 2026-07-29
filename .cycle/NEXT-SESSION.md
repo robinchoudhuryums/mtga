@@ -15,7 +15,7 @@ why two commands disagree. It replaces re-deriving that from 2,100 lines of pros
   at the squash-merge of PR #87. If its PR is merged, restart it from `main`
   (`docs/verify-commit-tail.md` §3).
 - Gates green at handoff: `check_all` all invariants hold (11.3s — up from 5.5s, the
-  cost of the new agreement gate); **668 pytest**; `check_patterns` 145 live;
+  cost of the new agreement gate); **673 pytest**; `check_patterns` 145 live;
   `check_commands` OK (33 subcommands / 33 scripts).
 - Collection: 1,853 cards, 64 roster decks. Unchanged this session — no card or deck
   data was touched, only tooling.
@@ -40,7 +40,9 @@ Subcommand count: **33 → 33.** A duplicate model was deleted, not added.
 
 ## 3. The task for the next session
 
-**Pick from §5. There is no single blocking item.** The diagnosis that opened this
+**Pick from §5. There is no single blocking item.** Note §5.5 closed this session — the
+P/T fix-hypothesis was tested and rejected, so the list is one speculative item shorter
+and the remaining work is ordinary. The diagnosis that opened this
 cycle — *the models are fine, the composition layer is where the friction is* — is now
 one gate and one map better, and the remaining items are ordinary work rather than a
 structural gap.
@@ -55,8 +57,11 @@ between it and landing is the roster-wide before/after diff the standing rule re
   rejected; also structurally forbidden by `tests/test_recommendations.py`.
   (§5.1 is NOT this — it unifies two definitions of "signature", it does not tune fit.)
 - **Do not add a 34th subcommand** without saying what it replaces.
-- **Do not trust a gate you have not watched fail.** See §6 — this session's own new
-  gate was vacuous on the pair it was written for, twice.
+- **Do not trust a gate you have not watched fail.** See §6 — a new gate was vacuous on
+  the pair it was written for, twice, and a first run of the creature experiment measured
+  a miscalibrated signal rather than the hypothesis.
+- **Do not re-propose the P/T creature signal** (§5.5). It was pre-registered, tested and
+  rejected; re-running it without new data would just re-find the same null.
 - **`docs/tooling-improvement-plan.md` is HISTORICAL** (F01–F15, all landed). Its F01
   instructs adding `lib.full_card_text`, which was later deleted as dead code.
 
@@ -96,11 +101,22 @@ between it and landing is the roster-wide before/after diff the standing rule re
    against a correct 12. The `✱ multiplier` figure on a tribal doubler is an upper bound.
    Fix is a second scope pattern feeding the same filter, not a second model.
 
-5. **The creature cut-ranking regime.** `cuts` is a 45% coin flip on creature cuts
-   against 90% on noncreature (n=52 ledger swaps) — and creature-heavy decks are where it
-   is used most. The standing hypothesis, still **untested**: bodies compete on stats,
-   evasion and curve slot, `card-pool.csv` already carries `Power`/`Toughness` (read via
-   `lib.card_power`), and nothing in the cut ranking reads them.
+5. **The creature cut-ranking regime — the P/T hypothesis is TESTED and REJECTED.**
+   Do not re-propose it. Pre-registered, scored against all 31 creature cuts on
+   git-reconstructed pre-swap snapshots: as a bounded ±3 co-signal it changed nothing
+   (4 up / 5 down, p=1.00, agreement 48% → 48%), which was *predicted* — `fit` has a
+   roster median of 44 (IQR 31–59), so a ±3 term cannot reorder anything. Scaled to span
+   that IQR it made agreement slightly worse (48% → 45%). Decisive: a cut creature's body
+   quality (mean 4.83) is indistinguishable from the median body of the creatures that
+   STAYED (5.00), and the cut card was the worse body only 17/31 times — chance, p=0.72.
+
+   **What replaced it:** the 45% is not a property of creatures. Per deck it runs 0/6,
+   1/6, 3/6, 2/4, 4/4 — 0% to 100% — so it is largely a statement about which decks were
+   edited. `deck.py feedback` now discloses that breakdown (`segment_concentration`).
+   The build-vs-tune story fits deck 46 (rebuilt mid-window, 0/6) but not deck 3 (1/6, an
+   ordinary tune). **The next move is MORE LEDGER DATA, not another signal** — every
+   subgroup here is 4–6 rows. A pre-registered re-test at ~100 swaps is the honest step.
+   Full method and numbers: `.cycle/blocks/2026-07-creature-cut-hypothesis-test.md`.
 
 6. Smaller: the reverse `screen` flag (a candidate strictly WORSE than an incumbent);
    ROADMAP Tier 1 (theme the remaining UB flavor mechanics).

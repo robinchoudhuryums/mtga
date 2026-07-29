@@ -115,7 +115,10 @@ The longest path, and the one that most needs a map.
   unnormalized sum, so tag count drives the keep-score and creatures carry ~5.7 tags
   against ~3.0 for spells. **This is the regime where `cuts` is used most.** Read it as
   a shortlist, never a signal, on a creature-heavy deck. Normalization was simulated
-  across all 64 decks and rejected (it moves 1% of shortlist slots).
+  across all 64 decks and rejected (it moves 1% of shortlist slots), and the standing
+  P/T fix-hypothesis was **tested and rejected** (§7). Two caveats now attach to the 45%
+  itself: per deck it runs 0% to 100%, so it is partly a statement about which decks were
+  edited; and `deck.py feedback` discloses that breakdown so you can see it.
 - ⚖ **`suggest` alone is blind to structural needs.** It filters to cards sharing a
   synergy theme, so a removal spell, a dork or a land can never surface through it.
   If the scorecard's deficit is interaction or mana, the fix comes from `--needs`,
@@ -198,6 +201,28 @@ the `review` verdict on 22 of 63 decks) sitting in a third place. **Not fixed he
 because it changes the cut ranking and the standing rule is that a scoring change needs
 a roster-wide before/after diff first. The motivating case (deck 30's counter-doublers)
 survives the strict set — its strict signature is exactly `{counters}`.
+
+**The creature cut-ranking hypothesis: TESTED, REJECTED.** The proposal on file — bodies
+compete on stats/evasion/curve slot, and `card-pool.csv` already carries `Power`/
+`Toughness` that nothing in the cut ranking reads — was pre-registered and scored against
+all 31 creature cuts on git-reconstructed pre-swap snapshots.
+
+| model | paired (up/down/tied) | sign test | creature agreement |
+|---|---|---|---|
+| body quality as a bounded ±3 co-signal | 4 / 5 / 22 | p=1.00 | 48% → 48% |
+| body quality scaled to the creature `fit` IQR | 11 / 16 / 4 | p=0.44 | 48% → **45%** |
+
+The bounded result was predicted: `fit` has a roster median of 44 (IQR 31–59), so a ±3
+term cannot reorder anything — the hypothesis is undeliverable as a bounded co-signal by
+construction. The decisive number is the separation check: a cut creature's body quality
+(mean 4.83) is indistinguishable from the median body of the creatures that STAYED (5.00),
+and the cut card was the worse body only **17 of 31** times — chance, p=0.72.
+
+What the test did find: the creature rate is **not a property of creatures**. Per deck it
+runs 0/6, 1/6, 3/6, 2/4, 4/4 — 0% to 100%. `deck.py feedback` now prints that breakdown.
+The build-vs-tune story fits deck 46 (0/6, rebuilt mid-window) but not deck 3 (1/6, an
+ordinary tune), and excluding deck 46 moves the segment only 45% → 56%. All exploratory —
+4–6-row subgroups. **The next move here is more ledger data, not another signal.**
 
 **Other live follow-ons** (carried forward, unchanged):
 

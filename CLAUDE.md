@@ -344,7 +344,38 @@ castability · curve · central-theme density), with the intangibles moving a de
   So this stays a documented property, reported by `deck.py feedback`, not a re-weighting
   — and re-weighting off the ledger is what `tests/test_recommendations.py` structurally
   forbids anyway. Practical consequence: **on a creature-heavy deck the cut ranking is a
-  shortlist, not a signal.** **Read the printed oracle text (and check any `⚠ context` mechanic
+  shortlist, not a signal.**
+  **The standing fix-hypothesis was TESTED and REJECTED.** The proposal on file was that
+  bodies compete on stats / evasion / curve slot, that theme-fit structurally cannot see
+  any of that, and that `card-pool.csv` already carries `Power`/`Toughness` which nothing
+  in the cut ranking reads — "the most promising unexplored direction." It was
+  pre-registered (signal defined from Magic first principles before any result was
+  computed; one evaluation; no coefficient tuned against the outcomes), then scored
+  against all 31 creature cuts in the ledger on git-reconstructed PRE-SWAP deck snapshots
+  so both models saw identical input. Results: as a bounded ±3 co-signal it moved 4 cuts
+  up and 5 down (p=1.00) and left agreement at 48% — **as predicted, because a ±3 term
+  provably cannot reach a `fit` whose roster median is 44 (IQR 31–59)**. Scaled up to
+  span that whole IQR it moved 11 up and 16 down (p=0.44) and made agreement slightly
+  WORSE (48% → 45%). The decisive measurement is the separation check: a cut creature's
+  body quality (mean 4.83) is indistinguishable from the median body of the creatures
+  that STAYED in the same deck (5.00), and the cut card was the worse body only 17 of 31
+  times — **chance, p=0.72**. The creatures you cut are simply not the worse bodies, so
+  P/T is not the missing signal. Note the first run of this test was itself invalid and
+  had to be thrown out: the hand-guessed vanilla benchmark `P+T ≈ 2·MV+1` measured 2
+  points too generous on this corpus and the raw curve-redundancy count punished every
+  creature in a 24-creature deck, so 14% of bodies clamped at 0 and the scale was
+  destroyed — recalibrating against the CORPUS (pool median P+T per MV; redundancy as a
+  SHARE of the deck's creatures) re-centred it at mean 5.21 before the single real run.
+  What the experiment DID find is that the 45% is not a property of creatures at all:
+  per deck it runs 0/6, 1/6, 3/6, 2/4, 4/4 — **0% to 100%** — so the figure says more
+  about which decks happened to be edited than about how `cuts` grades bodies.
+  `deck.py feedback` now discloses that per-deck breakdown under the weak segment
+  (`segment_concentration`). A tempting story — deck 46 was rebuilt from scratch during
+  the ledger window, and a cut during a BUILD means "this didn't make the 60", which is
+  not the question `cuts` ranks — fits deck 46 (0/6) but **not deck 3 at 1/6**, an
+  ordinary tune; excluding deck 46 moves the segment only 45% → 56%, still under the
+  noncreature 90%. Treat all of that as exploratory: 4–6-row subgroups with enormous
+  overlapping intervals. **The next real move is more ledger data, not another signal.** **Read the printed oracle text (and check any `⚠ context` mechanic
   against the deck's actual colors/board), then preview the swap with `swap`
   (which re-shows both cards' full text) before recommending or applying a cut.**
   Repeated cut mis-grades in past sessions traced to trusting the label instead

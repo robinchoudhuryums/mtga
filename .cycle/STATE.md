@@ -49,6 +49,19 @@ ingests (PR #85, merged). Prior block:
 - Anchor 16's WIRING half lives in tests/test_deck_models.py, since a pure-function
   anchor structurally cannot see whether a caller invokes the function.
 
+## Session — creature cut-ranking hypothesis (2026-07-29, later)
+
+Tested the standing P/T hypothesis and **rejected it**. Pre-registered, one evaluation,
+scored on git-reconstructed pre-swap snapshots across all 31 creature cuts. A bounded
+±3 body term changed nothing (predicted: `fit` median 44 vs a ±3 term); scaled to the fit
+IQR it made agreement slightly worse; and cut creatures are indistinguishable from kept
+creatures on body quality (17/31, p=0.72). Nothing shipped from the hypothesis.
+
+What did ship: `segment_concentration` + a per-deck breakdown in `deck.py feedback`,
+because the test found the creature rate running 0%–100% per deck — the 45% is largely a
+statement about which decks were edited. Block:
+`.cycle/blocks/2026-07-creature-cut-hypothesis-test.md`.
+
 ## Open follow-ons
 See FOLLOW-ON ITEMS in each block. Highest value now:
 1. **`_signature_themes` saturates in `cuts`** — the +2 keep-boost fires on 86% of
@@ -65,6 +78,17 @@ See FOLLOW-ON ITEMS in each block. Highest value now:
 3. An incremental `make refresh` — still ~10 min for a 4-card ingest, the largest
    single cost in the repo. Must not fork the rebuild order into a second recipe.
 4. The reverse `screen` flag (a candidate strictly WORSE than an incumbent).
+
+## Decided AGAINST (2026-07-29, later)
+- Shipping any body-quality term in the cut ranking. It failed its pre-registered test;
+  a term that fails and ships anyway is worse than no term.
+- Tuning the concentration report's share threshold until deck 46 appeared. The first
+  draft used >20% and deck 46 sits at 19.4%; the threshold was REMOVED rather than
+  lowered, because a cutoff tuned until the expected finding shows up is that finding
+  smuggled into a constant.
+- Recording BUILD-vs-TUNE context at `swap --apply`. It would separate the populations
+  properly, but it needs every skill to pass it — another hand-kept thing that rots — and
+  the split has not survived a large enough sample to earn that.
 
 ## Decided AGAINST (2026-07-29)
 - Vendoring the Tier-3 `systems-map` command. It produces a MODULE map, and the module
