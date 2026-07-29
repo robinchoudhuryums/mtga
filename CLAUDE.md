@@ -2062,9 +2062,16 @@ depth** (`targeted-audit`/`targeted-implement` for a single subsystem, `pr-revie
 for per-change health) and the meta commands (`health-pulse`, `roadmap`,
 `sync-commands`). The **Tier-3 full-cycle** commands (`audit`, `plan`, `implement`,
 `regression`, `reflect`, `systems-map`, `cycle-*`, `setup-cycle`) are deliberately
-NOT vendored — that ceremony (two-axis scoring + a `.cycle/` state dir) outweighs
-its benefit at this project's size; adopt them only if you later want benchmarkable
-scoring. `check`, `refresh`, `add-deck`, `draft-deck`, `tune-deck`, `add-cards`,
+NOT vendored — that two-axis-scoring ceremony outweighs its benefit at this project's
+size; adopt them only if you later want benchmarkable scoring. **Two corrections to
+that sentence, because it has aged.** The `.cycle/` state dir is NOT part of what was
+declined — this project uses one (see "Session state" below), and reading the
+un-vendoring as covering it would hide the handoff a fresh session is supposed to
+start from. And **`systems-map` specifically is being re-tested**: the "at this
+project's size" reasoning was written when the project was smaller, and at 33
+`deck.py` subcommands / 8.7k lines the next cycle's first task is a task-first
+systems map. If it lands, update this paragraph — it is a hand-kept registry, which
+is exactly the thing this file documents as prone to rot. `check`, `refresh`, `add-deck`, `draft-deck`, `tune-deck`, `add-cards`,
 `add-wishlist`, `roster-review`, `ingest`, `log-matches`, and `apply-changes` are project-specific. **A skill drifts behind the
 tooling silently** — `/tune-deck` was still built around the command set it shipped with
 and had no step for `consistency` (the probability layer), `engines`, `shape`, `cuts`,
@@ -2094,3 +2101,29 @@ craft-target intake. All end with the shared verify+commit tail in
 `docs/verify-commit-tail.md` (check_all-first, the Co-Authored-By/Claude-Session
 trailer, no model ID, branch-restart on a merged PR) — edit that one file to change
 the commit discipline for all.
+
+## Session state — where to look when resuming
+
+A fresh session loads THIS file automatically and nothing else, so anything a
+resuming session needs has to be named here or it is not found. That is not
+hypothetical: this file's own recurring lesson is that a capability nothing reaches
+is invisible, and a handoff nobody is told to read is the same failure one layer up.
+
+- **`.cycle/NEXT-SESSION.md` — read this FIRST when starting fresh.** The current
+  cycle's diagnosis, the agreed next task, the measurements not worth re-deriving,
+  and the traps. It is written for a session with no context and supersedes the
+  older blocks where they disagree.
+- **`.cycle/STATE.md`** — prose record: what was completed, decisions made, what was
+  decided AGAINST (worth reading before re-proposing a rejected fix), and where the
+  last session left off.
+- **`.cycle/blocks/*.md`** — one verbatim implementation summary per
+  `/broad-implement` run. `/broad-scan` and `/roadmap` consume these in a FRESH
+  session, which is why they live on disk rather than only in chat.
+- **`docs/verify-commit-tail.md`** — the commit discipline every writing skill ends
+  with. Live.
+- **`ROADMAP.md`** — long-range ideas; regenerate with `/roadmap`. Live.
+- **`docs/tooling-improvement-plan.md`** — **HISTORICAL, do not follow.** Findings
+  F01–F15 all landed cycles ago and it is referenced from nowhere, but it reads like
+  a live plan and one of its instructions is now WRONG (F01 specifies adding
+  `lib.full_card_text()`, which was added, never acquired a caller, and was deleted
+  as dead code). It carries a status header saying so.
