@@ -1,0 +1,128 @@
+#: name: Radiant Ascension
+#: format: Standard
+#: colors: W
+#: plan: midrange
+#: archetype: Mono-WHITE LIFEGAIN, built TALL. The roster's other two mono-white decks
+#: archetype: (3 Knight's Edge, 23 Avengers) both go WIDE — `deck.py shape` scores them
+#: archetype: 19/7 and 9/4 wide-over-tall — and win by adding a body and an anthem. This
+#: archetype: one wins by making ONE creature enormous, and it uses the life total as the
+#: archetype: fuel rather than as a cushion.
+#: archetype: THE ENGINE IS LIFEGAIN EVENTS, NOT LIFE POINTS. Ajani's Pridemate, Twinblade
+#: archetype: Paladin and Exemplar of Light each read "whenever you GAIN life, put a +1/+1
+#: archetype: counter" — that triggers once per EVENT regardless of size, so the deck is
+#: archetype: built to gain life OFTEN and cheaply: Diamond Mare (every white spell),
+#: archetype: Hinterland Sanctifier and Dazzling Angel (every creature), Haliya (every
+#: archetype: creature OR artifact), five lifelink bodies, and a land that gains 2 on
+#: archetype: arrival. Exemplar turns that same trigger into a CARD, which is where the
+#: archetype: deck's card advantage comes from.
+#: archetype: THE LIFE TOTAL IS ALSO A PAYOFF, which is the half that makes it "maximize
+#: archetype: life" rather than "gain incidental life". Angel of Vitality is +2/+2 at 25
+#: archetype: life, Twinblade Paladin gains double strike at 25, and Aettir and Priwen
+#: archetype: sets its bearer's base power and toughness to your LIFE TOTAL — so the
+#: archetype: number on the life pad is literally the size of the finisher. The Wind
+#: archetype: Crystal doubles every gain, which is what gets those thresholds online fast.
+#: archetype: TALL MEANS THE THREAT MUST SURVIVE. A deck that puts eight counters and an
+#: archetype: Aura on one body loses to a single removal spell, so the protection suite is
+#: archetype: deliberately oversized for a midrange deck: Restoration Magic (hexproof and
+#: archetype: indestructible, or all permanents on the Curaga tier), Enter the Avatar State,
+#: archetype: Take Up the Shield, Crumb and Get It, plus ward 2 from Sheltered by Ghosts.
+#: archetype: Angelic Destiny is the exception that proves it — it returns to hand when the
+#: archetype: creature dies, so it is the one pump effect removal cannot two-for-one.
+#: archetype: DISTINCTNESS vs 3 and 23: same color, opposite axis. Those decks scale with
+#: archetype: creature COUNT (anthems, token makers, Elspeth); nothing here reads the
+#: archetype: number of creatures. vs decks 20/41/42, the roster's other lifegain shells:
+#: archetype: all three are ORZHOV and convert life into DRAIN or into CARDS. This one
+#: archetype: converts it into a single lethal body and never touches black.
+#: protect: Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Aettir and Priwen; The Wind Crystal; Angelic Destiny; Lyra Dawnbringer
+#: tier: A — PROVISIONAL (unplayed brew, and 9 cards short of buildable). The letter sits
+#: tier: AT the metrics floor rather than above it: interaction 7 clears the A bar of 5,
+#: tier: and 7 + card advantage 1 clears the sum of 7. Protection 5 is unusually high for
+#: tier: a midrange deck and is not decoration — it is what a one-big-creature plan needs
+#: tier: to survive, and it is the axis the floor cannot credit.
+#: tier: THE MEASURED CARD ADVANTAGE OF 1 UNDER-READS THIS DECK, and unlike most such
+#: tier: cases the uncertainty channel does NOT say so — `stats` names only Angelic Destiny
+#: tier: and Aettir and Priwen as unclassified. Exemplar of Light draws on every turn it
+#: tier: gets a counter and Haliya draws at end step whenever 3 life arrived; both are
+#: tier: REPEATABLE draws, and both were classified into a different role (Payoff, Lifegain)
+#: tier: rather than left unclassified, so the under-read is invisible to the very check
+#: tier: built to catch under-reads. Inspiring Overseer adds a body plus a card. Call the
+#: tier: real figure 3, which is thin but not the 1 the vector prints.
+#: tier: WHY A SINGLETON LIST GRADES A HERE: the deck is functionally redundant on the axis
+#: tier: that matters. Three cards read "whenever you gain life, put a +1/+1 counter"
+#: tier: (Ajani's Pridemate, Twinblade Paladin, Exemplar of Light), four are dedicated
+#: tier: lifegain engines, six are lifelink bodies and five are protection. The tier floor
+#: tier: counts EFFECTS rather than distinct cards, so virtual copies score the floor while
+#: tier: dodging the variance a true singleton pays. It is a notch below a 4-of build — the
+#: tier: copies are not identical and no keystone can be stacked — but no single card is
+#: tier: load-bearing enough to make the draw a coin flip.
+#: tier: HELD AT A RATHER THAN S by three things. 1. The trump is SLOW: Aettir and Priwen
+#: tier: costs 6 to cast and 5 to equip, and being colorless it takes no discount from the
+#: tier: white cost reduction, so 11 mana is the real price of the biggest payoff. The
+#: tier: counters-plus-Aura clock is the actual win-con and the equipment is the trump. 2.
+#: tier: THE 25-LIFE THRESHOLDS ARE A SECOND RESOURCE TO ASSEMBLE — Angel of Vitality and
+#: tier: Twinblade Paladin both key on it, and a deck that gains life in ones can be held
+#: tier: under 25 by any clock. 3. Unplayed, so nothing here is outcome-evidence.
+#: tier: A tight 2.81 curve and 16 early drops mean it is not a durdle deck despite the
+#: tier: enchantment count. Re-grade after games; a win rate is not admissible at this
+#: tier: sample size and must never be written into this header.
+
+#~ -Crumb and Get It | +Linden, the Steadfast Queen — the strongest craft upgrade not in
+#~ the list (R). "Whenever a white creature you control attacks, you gain 1 life" is a
+#~ SEPARATE lifegain event per attacker, so a three-creature attack puts three counters on
+#~ each of the counter payoffs rather than one. The {W}{W}{W} cost is free in mono-white.
+#~ Weigh it against losing a protection spell, which is the resource this plan is least
+#~ able to spare.
+
+# Lifegain engines
+1 Hinterland Sanctifier (FDN) 730
+1 Diamond Mare (FDN) 770
+1 Dazzling Angel (FDN) 9
+1 Haliya, Guided by Light (EOE) 19
+1 Wanderbrine Preacher (ECL) 41
+
+# Lifegain payoffs — counters and thresholds
+1 Ajani's Pridemate (FDN) 135
+1 Angel of Vitality (ANB) 1
+1 Twinblade Paladin (FDN) 503
+1 Exemplar of Light (FDN) 733
+1 Resplendent Angel (LCI) 32
+
+# Lifelink bodies
+1 Healer's Hawk (FDN) 142
+1 Adelbert Steiner (FIN) 3
+1 Prideful Feastling (ECL) 238
+1 Felidar Savior (FDN) 12
+1 Exalted Sunborn (EOE) 15
+1 Lyra Dawnbringer (FDN) 707
+
+# Support creatures
+1 Giada, Font of Hope (FDN) 141
+1 Inspiring Overseer (FDN) 496
+1 Beza, the Bounding Spring (BLB) 2
+1 Agent 13, Sharon Carter (MSH) 1
+
+# Make it tall
+1 Quintessential Katana (TMT) 23
+1 White Mage's Staff (FIN) 42
+1 Sheltered by Ghosts (DSK) 30
+1 Angelic Destiny (FDN) 565
+1 The Wind Crystal (FIN) 43
+1 Aettir and Priwen (FIN) 253
+
+# Protection
+1 Restoration Magic (FIN) 30
+1 Enter the Avatar State (TLA) 18
+1 Crumb and Get It (BLB) 8
+1 Take Up the Shield (MSH) 39
+
+# Interaction
+1 Battle Menu (FIN) 9
+1 Razor Rings (TLA) 33
+1 Banishing Light (EOE) 6
+1 Stasis Snare (FDN) 581
+1 Liminal Hold (ECL) 24
+1 Radiant Strike (EOE) 29
+
+# Lands
+1 Adventurer's Inn (FIN) 271
+23 Plains (FDN) 275
