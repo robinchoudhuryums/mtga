@@ -719,9 +719,12 @@ pointer to `cuts` for room. It does the *arithmetic*; the card **selection** —
 fillers preserve the engine/identity, what to cut — stays a `/tune-deck` judgment
 call (protect signature/spice). `/tune-deck` runs it so a tune aims at a concrete
 tier target instead of generic improvement. The gap list shows both **owned**
-fillers (0 wildcards) and **craft targets** (unowned, format-legal, cheaper
-wildcard first), so it doubles as a wildcard-spend planner for lifting a deck a
-tier.
+fillers (0 wildcards) and **craft targets** (unowned, cheaper wildcard first), so
+it doubles as a wildcard-spend planner for lifting a deck a tier. **Both lists are
+filtered to the deck's `#: format:`** — owning a card is not a licence to play it,
+since the pick costs no wildcard but still costs a deck slot. (Only the craft half
+checked that at first, which is how Deadly Dispute and Dovin's Veto, neither
+Standard-legal, were offered to Standard decks.)
 
 A deck's **change history is git** — no in-file changelog to go unwieldy or drift.
 `deck.py history <id>` prints the deck file's commit log (each message states the
