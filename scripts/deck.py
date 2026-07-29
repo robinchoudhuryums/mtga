@@ -411,8 +411,16 @@ def cmd_list(_args):
 
 
 # --- wildcard (crafting) planning ------------------------------------------- #
+@_file_memo("POOL_CSV")
 def load_rarities():
-    """name_lower -> wildcard letter (C/U/R/M) from card-pool.csv's Rarity."""
+    """name_lower -> wildcard letter (C/U/R/M) from card-pool.csv's Rarity.
+
+    Memoized like every other reference-table loader. It was the ONE left out when
+    `_file_memo` landed, and it is read per CARD-SCORING PASS rather than per command:
+    `rank_cut_candidates` calls it for the power co-signal, so a full-pool re-parse ran
+    for every deck a roster sweep touched. It was **85% of `deck.py cuts`' runtime**
+    (0.69s of 0.81s) and, being invisible in any single command's wall clock, it only
+    surfaced when a roster-wide gate made the per-deck cost add up."""
     out = {}
     if not os.path.exists(POOL_CSV):
         return out
@@ -5296,21 +5304,11 @@ def _signature_themes(meta, cards, cardmeta):
     return frozenset(sig)
 
 
-def rank_cut_candidates(d):
-    """Rank a deck's nonland cards most→least cuttable and return
-    (rows_sorted, central, prot_present, deck_int). Each row is
-    (keep, name, mv, roles, fit, reasons, ctx, text, is_int, power) — the shared
-    ranking behind both `cmd_cuts` (which prints it) and the tier `--to` tune plan
-    (which pairs the weakest cuts with the fillers that close a tier gap). Higher
-    `keep` = keep; lower sorts to the top of the cut list."""
-    meta, cards = parse_deck_file(d["path"])
-    protected = _protected(meta)
-    cardmeta = load_card_meta()
-    carddata = load_card_data()
-    mana = load_mana()
-    rar = load_rarities()
-
-    # Deck theme weights (by copies) — the same fingerprint `suggest` uses.
+def cut_scoring_context(meta, cards, cardmeta, carddata):
+    """The deck-level inputs a cut keep-score reads: theme weights, the central
+    themes, the `#: protect:` spine, the deck's role tally (for saturation) and its
+    creature-subtype counts. Split out so `rank_cut_candidates` and `_weakest_cut`
+    build the SAME context from the same cards — see `cut_keep_score`."""
     theme_w = {}
     for q, n, s, c in cards:
         if n.lower() in BASICS:
@@ -5319,18 +5317,136 @@ def rank_cut_candidates(d):
         if m:
             for t in m["synergies"]:
                 theme_w[t] = theme_w.get(t, 0) + q
-    central = _central_themes(theme_w)
-    signature = _signature_themes(meta, cards, cardmeta)   # #: protect: spine (F#3)
-    deck_tally = role_tally(cards, carddata)               # role → copies the deck runs
-    deck_int = deck_tally["interaction"]                   # for the F#1 interaction guard
-
-    # Deck creature subtypes (for the tribal-contribution signal).
     sub_count = {}
     for q, n, s, c in cards:
         cd = carddata.get(n.lower())
         if cd:
             for st in creature_subtypes(cd["type"]):
                 sub_count[st] = sub_count.get(st, 0) + q
+    return {
+        "cards": cards,
+        "carddata": carddata,
+        "theme_w": theme_w,
+        "central": _central_themes(theme_w),
+        "signature": _signature_themes(meta, cards, cardmeta),
+        "deck_tally": role_tally(cards, carddata),
+        "sub_count": sub_count,
+    }
+
+
+def cut_keep_score(ctx, tline, text, tags, rarity="", qty=1):
+    """THE keep-score for "how cuttable is this card in this deck" — higher = keep.
+
+    ONE definition, because there used to be two. `rank_cut_candidates` (what
+    `deck.py cuts` prints, what `tier --to` pairs its adds against, and what the
+    recommendation ledger scores a swap by) summed nine terms; `_weakest_cut` — the
+    cut hint `suggest-homes` prints on every fit row — summed three of them, and
+    matched none of the co-signals added since. They disagreed on **36 of 64 decks**,
+    and the disagreements were not cosmetic: `suggest-homes` proposed cutting Bloom
+    Tender from deck 17 and Vizier of the Menagerie from decks 34/36 — the roster's
+    best fixers, and the exact cards the `_is_color_fixer` work was done to protect.
+
+    This is the F-01 shape one more time, and the reason a pure-function anchor could
+    not see it: every co-signal here (`_cuts_power_adj` / `_cuts_uniq_adj` /
+    `_cuts_multiplier_adj`) is provably bounded and monotonic, and each is gated by a
+    `check_suggest` anchor — but a second caller that never calls them is invisible to
+    all of that. `check_agreement.py` now holds the two answers together on the live
+    roster, which is the only place the divergence was ever visible.
+
+    Returns (keep, parts) — `parts` carries the display pieces the cut table shows
+    (fit, roles, power, uniq, the multiplier axis/support, the cost-as-upside flags)
+    so the caller never recomputes one and drifts again."""
+    theme_w, central = ctx["theme_w"], ctx["central"]
+    fit, hit_central = 0, False
+    for t in tags:
+        if t in theme_w:
+            fit += theme_w[t]
+            if t in central:
+                hit_central = True
+    roles = classify_roles(text)
+    subs = set(creature_subtypes(tline))
+    tribal = sum(ctx["sub_count"].get(st, 0) for st in subs)
+    upside = cost_upside_flags(text, central)
+    sig_hit = bool(set(tags) & ctx["signature"])
+
+    # Card-quality co-signal (#3): the wishlist's rarity+role power estimate, so an
+    # on-theme-but-WEAK card sorts UP the cut list and an on-theme BOMB is protected —
+    # something pure theme-fit can't distinguish (a vanilla and a bomb sharing one tag
+    # look equal). Bounded (±_CUTS_POWER_CAP), so it only breaks near-ties (see
+    # _cuts_power_adj / check_suggest #7); it never overrides theme fit.
+    # NOTE: `rarity` comes from load_rarities() — Arena wildcard LETTERS ("M"/"R"/"U"/
+    # "C"), not rarity words. wishlist._norm_rarity accepts both shapes; before it did,
+    # every rare/mythic fell through to the default floor and seeded as an uncommon (F-01).
+    power = _power_seed({"Rarity": rarity, "Card Text": text, "Type": tline})
+
+    # Ability-distinctiveness co-signal: a generic-ability body (low pool tag-rarity)
+    # sorts UP the cut list; a distinctive-mechanic card is mildly protected. Bounded
+    # (±_CUTS_UNIQ_CAP) and orthogonal to power (see _cuts_uniq_adj / check_suggest #8).
+    uniq = card_distinctiveness(tags, text)
+
+    # Multiplier co-signal: a doubler is worth what it doubles, and neither theme-fit
+    # nor role-credit can see that. Routed through the SAME doubler primitives
+    # `suggest-homes` uses, so the two models can't disagree (see _cuts_multiplier_adj
+    # / check_suggest #16).
+    mult_axis = doubler_axis(text)
+    mult_support = (doubler_support(mult_axis, ctx["cards"], ctx["carddata"],
+                                    doubler_restriction(text))
+                    if mult_axis else 0)
+
+    # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
+    # Role credit is impact-weighted (see _role_credit) so a strong-but-off-theme
+    # card (removal/engine/cost-reducer) isn't mis-ranked as a top cut. Passing the
+    # deck's role tally makes that credit SATURATION-aware (#1): a redundant piece
+    # (the 8th removal spell) loses most of its bonus and sorts UP the cut list,
+    # while the deck's ONLY counterspell keeps full credit and stays protected. A
+    # card on the deck's #: protect: signature theme gets a further keep-boost (F#3)
+    # so a generic-tagged-but-central theme (e.g. counters) isn't mistaken for filler.
+    keep = (fit + _role_credit(roles, ctx["deck_tally"]) + (1 if hit_central else 0)
+            + (2 if sig_hit else 0) + min(tribal, 6)
+            + _cuts_power_adj(power) + _cuts_uniq_adj(uniq)
+            + _cuts_multiplier_adj(mult_support))
+
+    reasons = []
+    if tags and not hit_central:
+        reasons.append("off the deck's central themes")
+    elif not tags:
+        reasons.append("no synergy tags")
+    if not roles:
+        reasons.append("role not auto-detected — read text")
+    if subs and tribal <= qty:
+        reasons.append("off-tribe")
+    if power <= 3.0 and (hit_central or sig_hit):
+        reasons.append(f"on-theme but low power (~{power:.1f})")
+    if uniq <= 1.5 and not sig_hit:
+        reasons.append("generic ability — trips broad synergy checks")
+
+    return keep, {"fit": fit, "roles": roles, "power": power, "uniq": uniq,
+                  "upside": upside, "reasons": reasons, "tribal": tribal,
+                  "is_int": bool(set(roles) & _INTERACTION_ROLES),
+                  "mult": (mult_axis, mult_support)}
+
+
+def rank_cut_candidates(d):
+    """Rank a deck's nonland cards most→least cuttable and return
+    (rows_sorted, central, prot_present, deck_int). Each row is
+    (keep, name, mv, roles, fit, reasons, ctx, text, is_int, power) — the shared
+    ranking behind both `cmd_cuts` (which prints it) and the tier `--to` tune plan
+    (which pairs the weakest cuts with the fillers that close a tier gap). Higher
+    `keep` = keep; lower sorts to the top of the cut list.
+
+    Scores each card through the shared `cut_keep_score`, which `_weakest_cut` also
+    uses — the two answers to "this deck's most-cuttable card" used to be computed by
+    separate formulas and disagreed on 36 of 64 decks."""
+    meta, cards = parse_deck_file(d["path"])
+    protected = _protected(meta)
+    cardmeta = load_card_meta()
+    carddata = load_card_data()
+    mana = load_mana()
+    rar = load_rarities()
+
+    sctx = cut_scoring_context(meta, cards, cardmeta, carddata)
+    central = sctx["central"]
+    deck_int = sctx["deck_tally"]["interaction"]           # for the F#1 interaction guard
 
     rows, seen, prot_present = [], set(), []
     for q, n, s, c in cards:
@@ -5347,74 +5463,12 @@ def rank_cut_candidates(d):
             continue
         seen.add(nl)
         tags = cardmeta.get(nl, {}).get("synergies", [])
-        fit, hit_central = 0, False
-        for t in tags:
-            if t in theme_w:
-                fit += theme_w[t]
-                if t in central:
-                    hit_central = True
         text = cd["text"] if cd else ""
-        roles = classify_roles(text)
-        subs = set(creature_subtypes(tline))
-        tribal = sum(sub_count.get(st, 0) for st in subs)  # includes own copies
         cost, mv = (mana.get(nl) or (None, None))
         ctx = context_flags(text, cost)
-        # Cost-as-upside: does this card's 'drawback' actually feed THIS deck?
-        upside = cost_upside_flags(text, central)
-        sig_hit = bool(set(tags) & signature)          # shares the deck's protected spine
-        is_int = bool(set(roles) & _INTERACTION_ROLES)  # removal / sweeper / counter
-
-        # Card-quality co-signal (#3): the wishlist's rarity+role power estimate, so an
-        # on-theme-but-WEAK card sorts UP the cut list and an on-theme BOMB is protected —
-        # something pure theme-fit can't distinguish (a vanilla and a bomb sharing one tag
-        # look equal). Bounded (±_CUTS_POWER_CAP), so it only breaks near-ties (see
-        # _cuts_power_adj / check_suggest #7); it never overrides theme fit.
-        # NOTE: `rar` is load_rarities() — Arena wildcard LETTERS ("M"/"R"/"U"/"C"), not
-        # rarity words. wishlist._norm_rarity accepts both shapes; before it did, every
-        # rare/mythic fell through to the default floor and seeded as an uncommon (F-01).
-        power = _power_seed({"Rarity": rar.get(nl, ""), "Card Text": text, "Type": tline})
-        pow_adj = _cuts_power_adj(power)
-
-        # Ability-distinctiveness co-signal: a generic-ability body (low pool tag-rarity)
-        # sorts UP the cut list; a distinctive-mechanic card is mildly protected. Bounded
-        # (±_CUTS_UNIQ_CAP) and orthogonal to power (see _cuts_uniq_adj / check_suggest #8).
-        uniq = card_distinctiveness(tags, text)
-        uniq_adj = _cuts_uniq_adj(uniq)
-
-        # Multiplier co-signal: a doubler is worth what it doubles, and neither theme-fit
-        # nor role-credit can see that. Routed through the SAME doubler primitives
-        # `suggest-homes` uses, so the two models can't disagree (see _cuts_multiplier_adj
-        # / check_suggest #16).
-        mult_axis = doubler_axis(text)
-        mult_support = (doubler_support(mult_axis, cards, carddata, doubler_restriction(text))
-                        if mult_axis else 0)
-        mult_adj = _cuts_multiplier_adj(mult_support)
-
-        # keep-score: higher = keep; cut candidates sort to the top (lowest keep).
-        # Role credit is impact-weighted (see _role_credit) so a strong-but-off-theme
-        # card (removal/engine/cost-reducer) isn't mis-ranked as a top cut. Passing the
-        # deck's role tally makes that credit SATURATION-aware (#1): a redundant piece
-        # (the 8th removal spell) loses most of its bonus and sorts UP the cut list,
-        # while the deck's ONLY counterspell keeps full credit and stays protected. A
-        # card on the deck's #: protect: signature theme gets a further keep-boost (F#3)
-        # so a generic-tagged-but-central theme (e.g. counters) isn't mistaken for filler.
-        keep = (fit + _role_credit(roles, deck_tally) + (1 if hit_central else 0)
-                + (2 if sig_hit else 0) + min(tribal, 6) + pow_adj + uniq_adj + mult_adj)
-        reasons = []
-        if tags and not hit_central:
-            reasons.append("off the deck's central themes")
-        elif not tags:
-            reasons.append("no synergy tags")
-        if not roles:
-            reasons.append("role not auto-detected — read text")
-        if subs and tribal <= q:
-            reasons.append("off-tribe")
-        if power <= 3.0 and (hit_central or sig_hit):
-            reasons.append(f"on-theme but low power (~{power:.1f})")
-        if uniq <= 1.5 and not sig_hit:
-            reasons.append("generic ability — trips broad synergy checks")
-        rows.append((keep, n, mv, sorted(roles), fit, reasons, ctx, text, is_int, power,
-                     uniq, upside, (mult_axis, mult_support)))
+        keep, p = cut_keep_score(sctx, tline, text, tags, rarity=rar.get(nl, ""), qty=q)
+        rows.append((keep, n, mv, sorted(p["roles"]), p["fit"], p["reasons"], ctx, text,
+                     p["is_int"], p["power"], p["uniq"], p["upside"], p["mult"]))
 
     rows.sort(key=lambda r: (r[0], r[1].lower()))
     return rows, central, prot_present, deck_int
@@ -5979,17 +6033,20 @@ def _weakest_cut(dmeta, cards, cardmeta, carddata, add_is_fixer=False):
     (removal, card advantage) already reach the keep-score through `_role_credit`, so
     excluding those too would double-count. Fixing is the resource the score is blind
     to, which is precisely why it needs the guard.
+
+    Scored by the SHARED `cut_keep_score` — the same formula `deck.py cuts` prints and
+    `tier --to` pairs its adds against. It used to carry its own three-term copy (theme
+    fit over central themes + unsaturated role credit) and so inherited none of the
+    co-signals: no power, no distinctiveness, no multiplier, no tribal or signature
+    term, and a role credit blind to how much of that role the deck already runs. The
+    two answers to "this deck's most-cuttable card" disagreed on **36 of 64 decks**.
+    Ties break on the card name, matching `rank_cut_candidates`' sort — a min-scan that
+    keeps the first-seen winner would otherwise resolve a tie by deck-file order and
+    disagree with the printed ranking on exactly the cards that scored equal.
     """
     protected = _protected(dmeta)
-    theme_w = {}
-    for q, n, s, c in cards:
-        if n.lower() in BASICS:
-            continue
-        m = cardmeta.get(n.lower())
-        if m:
-            for t in m["synergies"]:
-                theme_w[t] = theme_w.get(t, 0) + q
-    central = _central_themes(theme_w)
+    sctx = cut_scoring_context(dmeta, cards, cardmeta, carddata)
+    rar = load_rarities()
     best = None
     for q, n, s, c in cards:
         nl = n.lower()
@@ -6003,10 +6060,11 @@ def _weakest_cut(dmeta, cards, cardmeta, carddata, add_is_fixer=False):
         ctext = cd["text"] if cd else ""
         if add_is_fixer and _is_color_fixer(tags, ctext):
             continue
-        fit = sum(theme_w.get(t, 0) for t in tags if t in central)
-        keep = fit + _role_credit(classify_roles(ctext))
-        if best is None or keep < best[0]:
-            best = (keep, n)
+        keep, _ = cut_keep_score(sctx, tline, ctext, tags,
+                                 rarity=rar.get(nl, ""), qty=q)
+        key = (keep, n.lower())
+        if best is None or key < best[0]:
+            best = (key, n)
     return best[1] if best else None
 
 

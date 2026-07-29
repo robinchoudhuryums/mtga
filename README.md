@@ -1097,7 +1097,7 @@ hundreds of games. Read it for disasters, not for marginal swaps.
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
 derived files present **and still carrying their own columns** — a pool that lost
 its `Rarity`/`Legalities` is a hard failure, not a silent degrade — decks parse)
-plus seven **model-sanity checks** that keep the
+plus nine **model-sanity checks** that keep the
 grading/ranking models from silently drifting: the **ranking model**
 (`check_rankings.py`), **color parsing** (`check_colors.py` — also a static scan
 banning the naive inline `WUBRG` parse outside `lib.py`), the **DFC ownership-join**
@@ -1113,7 +1113,19 @@ may contain a Python tuple repr like `(0, 2)` — which is what a `{0,2}` quanti
 becomes when an f-string eats it. Both historical instances of that bug (the `{0,2}`
 one, and `(?:owner|their) hand` demanding the text "owner hand" while Magic writes
 "owner's hand") were invisible to unit tests, because each pattern had been tested
-against a string written to match it. The gate found a third on its first run. It exits
+against a string written to match it. The gate found a third on its first run.
+Then **workflow coverage** (`check_commands.py` — every subcommand and script must be
+reachable from a skill, or exempted with a reason: a capability that works and is never
+reached is invisible to every correctness gate above), and **model agreement**
+(`check_agreement.py`). That last one covers what the other eight structurally cannot:
+**two functions that are each correct and disagree with each other.** Every check above
+evaluates a model in isolation, and a divergence exists only *between* models — which is
+how `suggest-homes` came to print a "weakest card" cut hint that `deck.py cuts` did not
+rank first on **36 of 64 decks**, with every gate green. It registers questions with two
+implementations each (the most-cuttable card, a card's format legality, copies owned, the
+interaction count, the power seed, owned-vs-craft filler filters) and fails when they
+disagree — on the live roster, not a fixture, because a synthetic case only proves the
+pair agrees on the example its author wrote. It exits
 non-zero on any hard break. It also
 emits **soft warnings** (never gating): wishlist target drift (a card whose target
 deck can no longer cast it); **new unindexed card mechanics** (`check_keywords.py`);

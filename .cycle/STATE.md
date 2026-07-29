@@ -1,11 +1,24 @@
 # Cycle state — 2026-07
 
-> **Starting fresh? Read `.cycle/NEXT-SESSION.md` first.** It carries the cycle's
-> diagnosis (cohesion, not correctness), the agreed next task (a TASK-FIRST systems
-> map), the measurements not to re-derive, and the traps. This file is the prose
-> record of what happened; that one is what to do.
+> **Starting fresh? Read `.cycle/NEXT-SESSION.md` first.** It carries the current
+> diagnosis, the agreed next task, the measurements not to re-derive, and the traps.
+> This file is the prose record of what happened; that one is what to do.
+> For "which command answers X, and why do two of them disagree", read
+> **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
-## Where I left off
+## Session — systems map + agreement gate (2026-07-29)
+
+The task-first systems map landed (`docs/systems-map.md`), the agreement gate landed
+(`scripts/check_agreement.py`, the twelfth hard gate), and the map's top finding was
+fixed: `_weakest_cut` and `rank_cut_candidates` both answered "this deck's most-cuttable
+card" and **disagreed on 36 of 64 decks**. Both now score through one `cut_keep_score`.
+Subcommand count held flat at 33 — a duplicate model was removed, not added.
+Block: `.cycle/blocks/2026-07-systems-map-agreement-gate.md`.
+
+Also: `load_rarities` was the one reference-table loader never memoized, and it was
+**85% of `deck.py cuts`' runtime**. Found by profiling the new gate, not by reading.
+
+## Where I left off (previous session)
 Feedback segmentation is implemented, mutation-tested, gated and committed on
 `claude/add-cards-ingested-batch-cy2tdb`. Nothing is half-done. Block:
 `.cycle/blocks/2026-07-feedback-segmentation-broad-implement.md`. Docs for it are
@@ -38,15 +51,32 @@ ingests (PR #85, merged). Prior block:
 
 ## Open follow-ons
 See FOLLOW-ON ITEMS in each block. Highest value now:
-1. `tier --audit-rationale` false negative — a `_HISTORY_CUES` cue about one card
+1. **`_signature_themes` saturates in `cuts`** — the +2 keep-boost fires on 86% of
+   nonland cards across the 22 `#: protect:` decks (100% in decks 20 and 46), because
+   `cuts` reads the LOOSE signature set while all three `fit_strength` callers read the
+   STRICT one. Switching would unify them and de-saturate to 66%; the motivating case
+   (deck 30's counter-doublers) survives. Needs a roster-wide before/after diff first.
+   Measured in `docs/systems-map.md` §7.
+2. `tier --audit-rationale` false negative — a `_HISTORY_CUES` cue about one card
    suppresses a citation of ANOTHER card in the same window, even when that
    clause says the card STAYS. Deck 42a asserted "Erode stay[s]" after Erode was
    cut and the audit reported clean. Fix is the mirror of `_cites_as_arriving`;
    needs a roster sweep before landing.
-2. /sync-docs for the segmented feedback report and the `cuts` tag-count property.
-3. The reverse `screen` flag (a candidate strictly WORSE than an incumbent).
+3. An incremental `make refresh` — still ~10 min for a 4-card ingest, the largest
+   single cost in the repo. Must not fork the rebuild order into a second recipe.
+4. The reverse `screen` flag (a candidate strictly WORSE than an incumbent).
 
-## Decided AGAINST this session
+## Decided AGAINST (2026-07-29)
+- Vendoring the Tier-3 `systems-map` command. It produces a MODULE map, and the module
+  structure was never the friction — the map that was needed is task-first and
+  hand-written. CLAUDE.md's Command-provenance paragraph now records this.
+- Fixing the `_signature_themes` saturation in the same session it was measured. It
+  changes the cut ranking, and the standing rule is that a scoring change needs a
+  roster-wide diff first. Recorded with numbers instead of landed blind.
+- Moving `check_suggest` #13 and the `test_verify_ingest` rebuild-order check into the
+  new agreement gate. That would trade one registry for two.
+
+## Decided AGAINST (previous session)
 - Re-weighting `cuts` to normalize its fit sum. Simulated across all 64 decks:
   top-3 themes moves correlation(tag count, keep-rank) +0.73 -> +0.72 and changes
   1% of top-5 shortlist slots; mean-of-hits reaches +0.60 and over-rewards narrow

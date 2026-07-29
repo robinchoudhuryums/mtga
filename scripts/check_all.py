@@ -232,6 +232,18 @@ def main():
     except Exception as e:
         hard.append(f"workflow coverage check errored: {e}")
 
+    # AGREEMENT gate — two functions answering the same question must give the same
+    # answer. Every gate above verifies one model in isolation, which is structurally
+    # blind to a divergence BETWEEN two correct models: `_weakest_cut` scored three
+    # terms while `rank_cut_candidates` scored nine, and they named a different
+    # most-cuttable card on 36 of 64 decks with all eleven gates green. Same shape as
+    # the format filter `owned_role_fillers` skipped and its craft sibling applied.
+    try:
+        from check_agreement import check as check_agreement
+        hard += check_agreement()
+    except Exception as e:
+        hard.append(f"model agreement check errored: {e}")
+
     # Soft: wishlist target drift — a target deck that can no longer cast its card
     # after a retune (e.g. deck 14 Mardu->Rakdos orphaned Neriv). Informational
     # only; never fails the build.
