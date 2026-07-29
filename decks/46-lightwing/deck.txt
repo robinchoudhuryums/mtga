@@ -1,4 +1,4 @@
-#: name: Radiant Ascension
+#: name: Lightwing
 #: format: Standard
 #: colors: W
 #: plan: midrange
@@ -7,8 +7,8 @@
 #: archetype: (3 Knight's Edge, 23 Avengers) both go WIDE — `deck.py shape` scores them
 #: archetype: 19/7 and 9/4 wide-over-tall — and win by adding a body and an anthem. This
 #: archetype: one grows the bodies it already has with counters instead of adding more.
-#: archetype: BE HONEST ABOUT THE BODY COUNT: at 22 creatures this is not a low-creature
-#: archetype: deck, and `deck.py shape` reads it WIDE 7/2. That verdict is mostly a
+#: archetype: BE HONEST ABOUT THE BODY COUNT: at 24 creatures this is not a low-creature
+#: archetype: deck, and `deck.py shape` reads it WIDE 8/3. That verdict is mostly a
 #: archetype: measurement artifact — the wide cues it finds are the creature-ENTERS
 #: archetype: lifegain engines (Hinterland Sanctifier, Dazzling Angel), which are engine
 #: archetype: pieces rather than a go-wide plan — but the count is real, and the honest
@@ -28,8 +28,13 @@
 #: archetype: the triggered abilities of creatures with power 2 or less, and the deck's
 #: archetype: whole engine layer sits at or under that line: Diamond Mare (two lifegain
 #: archetype: events per white spell), Hinterland Sanctifier and Dazzling Angel (two per
-#: archetype: creature), Inspiring Overseer (two life and TWO CARDS), Stirring Hopesinger
-#: archetype: (two counters on every creature per trick), Mockingbird, Ace Agent, Silver Sable.
+#: archetype: creature), Stirring Hopesinger (two counters on every creature per trick),
+#: archetype: Youthful Valkyrie (two counters per ANGEL that lands, and nine of them do),
+#: archetype: Mockingbird, Ace Agent, Silver Sable.
+#: archetype: SERRA REDEEMER IS THE OTHER HALF OF THAT LINE. Delney doubles the triggers of
+#: archetype: power-2-or-less creatures; Serra Redeemer PAYS OFF the same 15 bodies, putting
+#: archetype: TWO counters on each one as it enters. The two read the deck's engine layer
+#: archetype: from opposite ends, which is why both are worth their slots.
 #: archetype: THE TRICKS ARE ENGINE PIECES. Every instant here targets a creature on
 #: archetype: purpose, because that is the trigger condition for Stirring Hopesinger's
 #: archetype: Repartee and Mockingbird, Ace Agent — so a protection spell is also a mass
@@ -79,11 +84,13 @@
 #: tier: WHY THE COUNTS UNDER-READ. Interaction 5 excludes Rally the Monastery's and
 #: tier: Battle Menu's destroy modes being conditional on power 4 or greater, which is
 #: tier: fair, but it also cannot see that Stirring Hopesinger plus any trick is a combat
-#: tier: blowout. Card advantage 2 counts Exemplar of Light and Haliya; it correctly
-#: tier: excludes Inspiring Overseer as a one-shot cantrip, though a body plus a card for
-#: tier: three mana is real value, and with Delney out the Overseer draws TWO.
-#: tier: HELD AT A RATHER THAN S by four things. 1. THE CURVE IS STILL HEAVY at 3.11 with
-#: tier: only 11 early drops, though cutting Aettir and Priwen and Dawnstrike Vanguard
+#: tier: blowout. Card advantage 2 counts Exemplar of Light and Haliya, and that is now the
+#: tier: WHOLE of the deck's card flow — the third source was traded for Youthful Valkyrie,
+#: tier: a deliberate choice of engine over replacement that the floor cannot see either
+#: tier: way (a one-shot ETB cantrip never counted). This is the axis to watch in play: if
+#: tier: the deck runs out of cards before it runs out of board, that trade is the reason.
+#: tier: HELD AT A RATHER THAN S by four things. 1. THE CURVE IS STILL HEAVY at 3.14 with
+#: tier: only 12 early drops, though cutting Aettir and Priwen and Dawnstrike Vanguard
 #: tier: took the 6-plus slots from four down to two. 2. IT NEEDS TWO
 #: tier: HALVES — an engine creature AND a payoff — and a singleton build draws one far
 #: tier: more often than both; the counter payoffs are three-deep and the trigger engines
@@ -91,7 +98,7 @@
 #: tier: 3. DELNEY'S CEILING IS SELF-LIMITING on the payoffs it doubles: Ajani's Pridemate
 #: tier: is a 2/2, so Delney doubles its first lifegain trigger and then the Pridemate has
 #: tier: grown past power 2 and stops qualifying. The doubling is durable on the ENGINE
-#: tier: side (Diamond Mare, Hinterland Sanctifier, Dazzling Angel, Inspiring Overseer,
+#: tier: side (Diamond Mare, Hinterland Sanctifier, Dazzling Angel, Youthful Valkyrie,
 #: tier: Stirring Hopesinger all stay small) and transient on the payoff side, which is
 #: tier: worth knowing before counting on it. 4. Unplayed, so nothing is outcome-evidence.
 #: tier: Re-grade after games; a win rate is not admissible at this sample size and must
@@ -123,7 +130,7 @@
 1 Resplendent Angel (LCI) 32
 
 # Angel core — Lyra makes every other Angel a lifelinker
-1 Inspiring Overseer (FDN) 496
+1 Youthful Valkyrie (FDN) 149
 1 Lyra Dawnbringer (FDN) 707
 1 Herald of Eternal Dawn (FDN) 17
 
@@ -134,7 +141,7 @@
 1 Valkyrie's Call (FDN) 27
 1 Angelic Destiny (FDN) 565
 1 The Wind Crystal (FIN) 43
-1 Due Diligence (MKM) 14
+1 Serra Redeemer (BLB) 387
 1 Sheltered by Ghosts (DSK) 30
 
 # Tricks — every one targets a creature, which is what Repartee and Ace Agent read
@@ -190,7 +197,7 @@
 #~ arrival, and — unlike Stirring Hopesinger, which reads the same Repartee trigger — it is
 #~ an ENCHANTMENT, so Delney cannot double it and it counters one creature rather than all.
 #~ It was over-protected in an earlier round; the protect header no longer lists it.
-#~ -Due Diligence | +Liminal Hold — the INTERACTION hedge. Interaction sits at exactly 5,
+#~ note: applied — Serra Redeemer in for Due Diligence.
 #~ the A floor's bar, with no slack, and Due Diligence took the slot a removal-adjacent
 #~ card used to hold. If games show the deck light on answers, Liminal Hold is the owned
 #~ one-for-one (exile a nonland permanent, gain 2 life — Prayer of Binding is the same
