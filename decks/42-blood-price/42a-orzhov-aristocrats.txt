@@ -173,7 +173,7 @@ Deck
 1 Starseer Mentor (BLB) 233
 
 # Removal
-1 Erode (SOS) 15
+1 Ruthless Lawbringer (OTJ) 229
 1 Hero's Downfall (FDN) 175
 
 # Lands — 25, Orzhov
