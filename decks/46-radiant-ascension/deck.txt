@@ -2,129 +2,148 @@
 #: format: Standard
 #: colors: W
 #: plan: midrange
-#: archetype: Mono-WHITE LIFEGAIN, built TALL. The roster's other two mono-white decks
+#: archetype: Mono-WHITE LIFEGAIN built on SEVERAL GROWING LIFELINK BODIES, with an ANGEL
+#: archetype: sub-theme and graveyard recursion. The roster's other two mono-white decks
 #: archetype: (3 Knight's Edge, 23 Avengers) both go WIDE — `deck.py shape` scores them
 #: archetype: 19/7 and 9/4 wide-over-tall — and win by adding a body and an anthem. This
-#: archetype: one wins by making ONE creature enormous, and it uses the life total as the
-#: archetype: fuel rather than as a cushion.
-#: archetype: THE ENGINE IS LIFEGAIN EVENTS, NOT LIFE POINTS. Ajani's Pridemate, Twinblade
-#: archetype: Paladin and Exemplar of Light each read "whenever you GAIN life, put a +1/+1
-#: archetype: counter" — that triggers once per EVENT regardless of size, so the deck is
-#: archetype: built to gain life OFTEN and cheaply: Diamond Mare (every white spell),
-#: archetype: Hinterland Sanctifier and Dazzling Angel (every creature), Haliya (every
-#: archetype: creature OR artifact), six lifelink bodies, and a land that gains 2 on
-#: archetype: arrival. Exemplar turns that same trigger into a CARD, which is where the
-#: archetype: deck's card advantage comes from.
-#: archetype: THE LIFE TOTAL IS ALSO A PAYOFF, which is the half that makes it "maximize
-#: archetype: life" rather than "gain incidental life". Angel of Vitality is +2/+2 at 25
-#: archetype: life, Twinblade Paladin gains double strike at 25, and Aettir and Priwen
-#: archetype: sets its bearer's base power and toughness to your LIFE TOTAL — so the
-#: archetype: number on the life pad is literally the size of the finisher. The Wind
-#: archetype: Crystal doubles every gain, which is what gets those thresholds online fast.
-#: archetype: TALL MEANS THE THREAT MUST SURVIVE. A deck that puts eight counters and an
-#: archetype: Aura on one body loses to a single removal spell, so the protection suite is
-#: archetype: deliberately oversized for a midrange deck: Restoration Magic (hexproof and
-#: archetype: indestructible, or all permanents on the Curaga tier), Enter the Avatar State,
-#: archetype: Take Up the Shield, Crumb and Get It, plus ward 2 from Sheltered by Ghosts.
-#: archetype: Angelic Destiny is the exception that proves it — it returns to hand when the
-#: archetype: creature dies, so it is the one pump effect removal cannot two-for-one.
+#: archetype: one grows the bodies it already has with counters instead of adding more.
+#: archetype: BE HONEST ABOUT THE BODY COUNT: at 22 creatures this is not a low-creature
+#: archetype: deck, and `deck.py shape` reads it WIDE 7/2. That verdict is mostly a
+#: archetype: measurement artifact — the wide cues it finds are the creature-ENTERS
+#: archetype: lifegain engines (Hinterland Sanctifier, Dazzling Angel), which are engine
+#: archetype: pieces rather than a go-wide plan — but the count is real, and the honest
+#: archetype: statement of the difference is the AXIS, not the body count: nothing here
+#: archetype: scales with how many creatures are on the board, and everything scales with
+#: archetype: how many counters are on one of them.
+#: archetype: LIFELINK IS THE ENGINE, NOT THE REWARD. Power on a lifelink body converts
+#: archetype: directly into life, and life converts back into counters, so the two halves
+#: archetype: feed each other: every "whenever you gain life" payoff (Ajani's Pridemate,
+#: archetype: Twinblade Paladin, Exemplar of Light) grows a creature, and a bigger creature
+#: archetype: with lifelink gains more. That is why lifelink is spread across so many
+#: archetype: bodies rather than concentrated, and why so much of the deck GRANTS it —
+#: archetype: Lyra to every other Angel, Silver Sable to any modified creature (counters
+#: archetype: are modifications, so effectively all of them), Rosa every combat, Enter the
+#: archetype: Avatar State and Take Up the Shield at instant speed.
+#: archetype: DELNEY IS A TRIGGER DOUBLER, NOT A GO-WIDE CARD. Its second ability doubles
+#: archetype: the triggered abilities of creatures with power 2 or less, and the deck's
+#: archetype: whole engine layer sits at or under that line: Diamond Mare (two lifegain
+#: archetype: events per white spell), Hinterland Sanctifier and Dazzling Angel (two per
+#: archetype: creature), Inspiring Overseer (two life and TWO CARDS), Stirring Hopesinger
+#: archetype: (two counters on every creature per trick), Mockingbird, Ace Agent, Silver Sable.
+#: archetype: THE TRICKS ARE ENGINE PIECES. Every instant here targets a creature on
+#: archetype: purpose, because that is the trigger condition for Stirring Hopesinger's
+#: archetype: Repartee, Graduation Day and Mockingbird, Ace Agent — so a protection spell is also a
+#: archetype: mass pump, and the deck is never holding a dead card.
+#: archetype: RECURSION IS THE THIRD LEG and the clearest break from decks 3 and 23, which
+#: archetype: have none. Valkyrie's Call does three jobs at once: it returns a dead
+#: archetype: non-Angel, adds a +1/+1 counter, and makes it an ANGEL — which turns on Lyra
+#: archetype: (+1/+1 and lifelink) and Giada. A deck with few, expensive bodies needs its
+#: archetype: threats to come back, and this one comes back bigger and with a keyword.
+#: archetype: THE TOP END IS DELIBERATE. Herald of Eternal Dawn is the over-the-top
+#: archetype: finisher — a 6/6 flash flier that, with Lyra out, is a 7/7 lifelinker, and
+#: archetype: whose "you can't lose the game" is the thematic end point of a deck about
+#: archetype: life totals. Ancestor Dragon and Dawnstrike Vanguard are the repeatable
+#: archetype: engines at 6, and Aettir and Priwen is the trump that reads the life total
+#: archetype: back as power.
 #: archetype: DISTINCTNESS vs 3 and 23: same color, opposite axis. Those decks scale with
-#: archetype: creature COUNT (anthems, token makers, Elspeth); nothing here reads the
-#: archetype: number of creatures. vs decks 20/41/42, the roster's other lifegain shells:
-#: archetype: all three are ORZHOV and convert life into DRAIN or into CARDS. This one
-#: archetype: converts it into a single lethal body and never touches black.
-#: protect: Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Aettir and Priwen; The Wind Crystal; Angelic Destiny; Lyra Dawnbringer
-#: tier: A — PROVISIONAL (unplayed brew, and 9 cards short of buildable). The letter sits
-#: tier: AT the metrics floor rather than above it: interaction 7 clears the A bar of 5,
-#: tier: and 7 + card advantage 3 clears the sum of 7. Protection 5 is unusually high for
-#: tier: a midrange deck and is not decoration — it is what a one-big-creature plan needs
-#: tier: to survive, and it is the axis the floor cannot credit.
-#: tier: CARD ADVANTAGE 3 IS THE DECK'S THIN AXIS and it is worth recording how the number
-#: tier: got here, because drafting this deck is what exposed the bug. It read 1 at first,
-#: tier: and the uncertainty channel did NOT flag it: Exemplar of Light draws on every turn
-#: tier: it gets a counter and Haliya draws at end step whenever 3 life arrived, but both
-#: tier: had been sorted into a DIFFERENT role (Payoff, Lifegain), so `unclassified` — which
-#: tier: only names cards matching NOTHING — could never reach them, and the broad cue net
-#: tier: missed the same phrasing the precise pattern did. The classifier now reads a
-#: tier: repeatable draw on any phase and any `whenever` trigger, so 3 is the counted
-#: tier: figure. It is still THIN: three sources, and Inspiring Overseer's body-plus-a-card
-#: tier: is not one of them (a one-shot cantrip is correctly excluded).
-#: tier: WHY A SINGLETON LIST GRADES A HERE: the deck is functionally redundant on the axis
-#: tier: that matters. Three cards read "whenever you gain life, put a +1/+1 counter"
-#: tier: (Ajani's Pridemate, Twinblade Paladin, Exemplar of Light), four are dedicated
-#: tier: lifegain engines, six are lifelink bodies and five are protection. The tier floor
-#: tier: counts EFFECTS rather than distinct cards, so virtual copies score the floor while
-#: tier: dodging the variance a true singleton pays. It is a notch below a 4-of build — the
-#: tier: copies are not identical and no keystone can be stacked — but no single card is
-#: tier: load-bearing enough to make the draw a coin flip.
-#: tier: HELD AT A RATHER THAN S by three things. 1. The trump is SLOW: Aettir and Priwen
-#: tier: costs 6 to cast and 5 to equip, and being colorless it takes no discount from the
-#: tier: white cost reduction, so 11 mana is the real price of the biggest payoff. The
-#: tier: counters-plus-Aura clock is the actual win-con and the equipment is the trump. 2.
-#: tier: THE 25-LIFE THRESHOLDS ARE A SECOND RESOURCE TO ASSEMBLE — Angel of Vitality and
-#: tier: Twinblade Paladin both key on it, and a deck that gains life in ones can be held
-#: tier: under 25 by any clock. 3. Unplayed, so nothing here is outcome-evidence.
-#: tier: A tight 2.81 curve and 16 early drops mean it is not a durdle deck despite the
-#: tier: enchantment count. Re-grade after games; a win rate is not admissible at this
-#: tier: sample size and must never be written into this header.
+#: archetype: creature COUNT (anthems, token makers, Elspeth); this one scales with counters
+#: archetype: on individual bodies and recurs them. vs decks 20/41/42, the roster's other
+#: archetype: lifegain shells: all three are ORZHOV and convert life into DRAIN or into
+#: archetype: CARDS. This one converts it into creature size and never touches black.
+#: protect: Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Delney, Streetwise Lookout; Stirring Hopesinger; Graduation Day; Valkyrie's Call; Lyra Dawnbringer; Giada, Font of Hope; Angelic Destiny; Aettir and Priwen; Herald of Eternal Dawn; Silver Sable, Mercenary Leader; Rosa, Resolute White Mage
+#: tier: A — PROVISIONAL (unplayed brew, 11 cards short of buildable). The letter sits AT
+#: tier: the metrics floor: interaction 5 is exactly the A bar, and 5 + card advantage 2 is
+#: tier: exactly the sum of 7. There is no slack on either axis, which is the honest
+#: tier: summary of this build — it spends its slots on ENGINE rather than on answers, and
+#: tier: one more cut to either axis drops it to B.
+#: tier: THE PROTECT LIST IS DOING REAL WORK HERE, more than on any other deck. `cuts`
+#: tier: ranks Delney, Graduation Day and Valkyrie's Call among the WEAKEST cards in the
+#: tier: 60, and all three are engine spine. The classifier reads Delney as "role not
+#: tier: auto-detected" because trigger-doubling is not a functional role it knows;
+#: tier: Graduation Day looks like a 1-mana enchantment that does nothing on arrival; and
+#: tier: Valkyrie's Call is scored as generic reanimation rather than as the card that
+#: tier: makes dead non-Angels into ANGELS and so turns on Lyra and Giada. A synergy model
+#: tier: cannot see a multiplier — it sees a card with no board impact.
+#: tier: WHY THE COUNTS UNDER-READ. Interaction 5 excludes Rally the Monastery's and
+#: tier: Battle Menu's destroy modes being conditional on power 4 or greater, which is
+#: tier: fair, but it also cannot see that Stirring Hopesinger plus any trick is a combat
+#: tier: blowout. Card advantage 2 counts Exemplar of Light and Haliya; it correctly
+#: tier: excludes Inspiring Overseer as a one-shot cantrip, though a body plus a card for
+#: tier: three mana is real value, and with Delney out the Overseer draws TWO.
+#: tier: HELD AT A RATHER THAN S by four things. 1. THE CURVE IS HEAVY at 3.17 with only
+#: tier: 12 early drops, and the deck runs four cards at 6 mana or more. 2. IT NEEDS TWO
+#: tier: HALVES — an engine creature AND a payoff — and a singleton build draws one far
+#: tier: more often than both; the counter payoffs are three-deep and the trigger engines
+#: tier: six-deep, which is the virtual-copy answer, but virtual copies are not 4-ofs.
+#: tier: 3. DELNEY'S CEILING IS SELF-LIMITING on the payoffs it doubles: Ajani's Pridemate
+#: tier: is a 2/2, so Delney doubles its first lifegain trigger and then the Pridemate has
+#: tier: grown past power 2 and stops qualifying. The doubling is durable on the ENGINE
+#: tier: side (Diamond Mare, Hinterland Sanctifier, Dazzling Angel, Inspiring Overseer,
+#: tier: Stirring Hopesinger all stay small) and transient on the payoff side, which is
+#: tier: worth knowing before counting on it. 4. Unplayed, so nothing is outcome-evidence.
+#: tier: Re-grade after games; a win rate is not admissible at this sample size and must
+#: tier: never be written into this header.
 
-#~ -Crumb and Get It | +Linden, the Steadfast Queen — the strongest craft upgrade not in
-#~ the list (R). "Whenever a white creature you control attacks, you gain 1 life" is a
-#~ SEPARATE lifegain event per attacker, so a three-creature attack puts three counters on
-#~ each of the counter payoffs rather than one. The {W}{W}{W} cost is free in mono-white.
-#~ Weigh it against losing a protection spell, which is the resource this plan is least
-#~ able to spare.
-
-# Lifegain engines
-1 Hinterland Sanctifier (FDN) 730
-1 Diamond Mare (FDN) 770
-1 Dazzling Angel (FDN) 9
+# Cheap trigger engines (power 2 or less — Delney doubles all of these)
 1 Haliya, Guided by Light (EOE) 19
-1 Wanderbrine Preacher (ECL) 41
-
-# Lifegain payoffs — counters and thresholds
+1 Healer's Hawk (FDN) 142
+1 Hinterland Sanctifier (FDN) 730
 1 Ajani's Pridemate (FDN) 135
+1 Giada, Font of Hope (FDN) 141
+1 Diamond Mare (FDN) 770
+
+# Counter amplifiers and lifelink granters
 1 Angel of Vitality (ANB) 1
+1 Dazzling Angel (FDN) 9
+1 Delney, Streetwise Lookout (MKM) 12
+1 Stirring Hopesinger (SOS) 35
+1 Sage of the Skies (TDM) 22
+1 Silver Sable, Mercenary Leader (SPM) 13
+1 Rosa, Resolute White Mage (FIN) 555
+
+# Bodies that grow
+1 Mockingbird, Ace Agent (MSH) 22
 1 Twinblade Paladin (FDN) 503
 1 Exemplar of Light (FDN) 733
 1 Resplendent Angel (LCI) 32
 
-# Lifelink bodies
-1 Healer's Hawk (FDN) 142
-1 Adelbert Steiner (FIN) 3
-1 Prideful Feastling (ECL) 238
-1 Felidar Savior (FDN) 12
-1 Exalted Sunborn (EOE) 15
-1 Lyra Dawnbringer (FDN) 707
-
-# Support creatures
-1 Giada, Font of Hope (FDN) 141
+# Angel core — Lyra makes every other Angel a lifelinker
 1 Inspiring Overseer (FDN) 496
-1 Beza, the Bounding Spring (BLB) 2
-1 Agent 13, Sharon Carter (MSH) 1
+1 Lyra Dawnbringer (FDN) 707
+1 Herald of Eternal Dawn (FDN) 17
 
-# Make it tall
-1 Quintessential Katana (TMT) 23
-1 White Mage's Staff (FIN) 42
-1 Sheltered by Ghosts (DSK) 30
+# Repeatable top end (not Angels — no Lyra bonus)
+1 Ancestor Dragon (FDN) 489
+1 Dawnstrike Vanguard (EOE) 10
+
+# Recursion and permanents
+1 Valkyrie's Call (FDN) 27
 1 Angelic Destiny (FDN) 565
-1 The Wind Crystal (FIN) 43
+1 Graduation Day (SOS) 16
+1 Sheltered by Ghosts (DSK) 30
 1 Aettir and Priwen (FIN) 253
 
-# Protection
-1 Restoration Magic (FIN) 30
+# Tricks — every one targets a creature, which is what Repartee and Ace Agent read
+1 Take Up the Shield (MSH) 39
 1 Enter the Avatar State (TLA) 18
 1 Crumb and Get It (BLB) 8
-1 Take Up the Shield (MSH) 39
+1 Restoration Magic (FIN) 30
+1 Practiced Offense (SOS) 25
 
 # Interaction
 1 Battle Menu (FIN) 9
-1 Razor Rings (TLA) 33
-1 Banishing Light (EOE) 6
+1 Rally the Monastery (TDM) 19
 1 Stasis Snare (FDN) 581
 1 Liminal Hold (ECL) 24
-1 Radiant Strike (EOE) 29
 
 # Lands
 1 Adventurer's Inn (FIN) 271
 23 Plains (FDN) 275
+
+#~ -Adventurer's Inn | +Plains — `consistency` wants 24 white sources for Herald of
+#~ Eternal Dawn's {4}{W}{W}{W} and the deck has 23; the Inn is the only non-Plains. Costs
+#~ a free lifegain event (a Pridemate trigger) to buy ~2% on one 7-drop, so it is close.
+#~ -Sage of the Skies | +Astelli Reclaimer — if the recursion leg wants a second card. A
+#~ 5/4 flying ANGEL that returns a noncreature permanent (Angelic Destiny, Valkyrie's Call,
+#~ Graduation Day) is more on-plan than a conditional self-copy, and warp {2}{W} makes it
+#~ castable early. Costs a craft (R) and a point of curve.
