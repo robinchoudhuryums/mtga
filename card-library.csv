@@ -3853,3 +3853,38 @@ Tifa's Limit Break,Instant,"Tiered (Choose one additional cost.)
 Grappling Kraken,Creature — Kraken,"Landfall — Whenever a land you control enters, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,Kraken; counters; landfall; lands; ramp,FDN,39,1
 Seedship Impact,Instant,"Destroy target artifact or enchantment. If its mana value was 2 or less, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",G,sacrifice; tokens; removal; ramp,EOE,205,1
 Repulsive Mutation,Instant,Put X +1/+1 counters on target creature you control. Then counter up to one target spell unless its controller pays mana equal to the greatest power among creatures you control.,U/G,counters,MKM,227,1
+"Ayli, Eternal Pilgrim",Legendary Creature — Kor Cleric,"Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)
+{1}, Sacrifice another creature: You gain life equal to the sacrificed creature's toughness.
+{1}{W}{B}, Sacrifice another creature: Exile target nonland permanent. Activate only if you have at least 10 life more than your starting life total.",W/B,,FDN,652,1
+Ravenous Amulet,Artifact,"{1}, {T}, Sacrifice a creature: Draw a card and put a soul counter on this artifact. Activate only as a sorcery.
+{4}, {T}, Sacrifice this artifact: Each opponent loses life equal to the number of soul counters on this artifact.",Colorless,,FDN,131,1
+Baron Bertram Graywater,Legendary Creature — Vampire Noble,"Whenever one or more tokens you control enter, create a 1/1 black Vampire Rogue creature token with lifelink. This ability triggers only once each turn.
+{1}{B}, Sacrifice another creature or artifact: Draw a card.",W/B,,OTJ,195,1
+Al Bhed Salvagers,Creature — Human Artificer Warrior,"Whenever this creature or another creature or artifact you control dies, target opponent loses 1 life and you gain 1 life.",B,,FIN,88,1
+Agent Venom,Legendary Creature — Symbiote Soldier Hero,"Flash
+Menace
+Whenever another nontoken creature you control dies, you draw a card and lose 1 life.",B,,SPM,49,1
+"Eirdu, Carrier of Dawn // Isilu, Carrier of Twilight",Legendary Creature — Elemental God // Legendary Creature — Elemental God,"Flying, lifelink
+Creature spells you cast have convoke. (Your creatures can help cast those spells. Each creature you tap while casting a creature spell pays for {1} or one mana of that creature's color.)
+At the beginning of your first main phase, you may pay {B}. If you do, transform Eirdu. // Flying, lifelink
+Each other nontoken creature you control has persist. (When it dies, if it had no -1/-1 counters on it, return it to the battlefield under its owner's control with a -1/-1 counter on it.)
+At the beginning of your first main phase, you may pay {W}. If you do, transform Isilu.",W/B,,ECL,13,1
+Krumar Initiate,Creature — Human Cleric,"{X}{B}, {T}, Pay X life: This creature endures X. Activate only as a sorcery. (Put X +1/+1 counters on it or create an X/X white Spirit creature token.)",B,,TDM,84,1
+Midnight Snack,Enchantment,"Raid — At the beginning of your end step, if you attacked this turn, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+{2}{B}, Sacrifice this enchantment: Target opponent loses X life, where X is the amount of life you gained this turn.",B,,FDN,65,1
+Treasure Dredger,Creature — Human Rogue,"{1}, {T}, Pay 1 life: Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",B,,OTJ,110,1
+Krovod Haunch,Artifact — Food Equipment,"Equipped creature gets +2/+0.
+{2}, {T}, Sacrifice this Equipment: You gain 3 life.
+When this Equipment is put into a graveyard from the battlefield, you may pay {1}{W}. If you do, create two 1/1 white Dog creature tokens.
+Equip {2}",W,,MKM,21,1
+Treacherous Greed,Instant,"As an additional cost to cast this spell, sacrifice a creature that dealt damage this turn.
+Draw three cards. Each opponent loses 3 life and you gain 3 life.",W/B,,MKM,237,1
+Vein Ripper,Creature — Vampire Assassin,"Flying
+Ward—Sacrifice a creature.
+Whenever a creature dies, target opponent loses 2 life and you gain 2 life.",B,,MKM,110,1
+Fix What's Broken,Sorcery,"As an additional cost to cast this spell, pay X life.
+Return each artifact and creature card with mana value X from your graveyard to the battlefield.",W/B,,SOS,188,1
+Rottenmouth Viper,Creature — Elemental Snake,"As an additional cost to cast this spell, you may sacrifice any number of nonland permanents. This spell costs {1} less to cast for each permanent sacrificed this way.
+Whenever this creature enters or attacks, put a blight counter on it. Then for each blight counter on it, each opponent loses 4 life unless that player sacrifices a nonland permanent of their choice or discards a card.",B,,BLB,107,1
+Starseer Mentor,Creature — Bat Warlock,"Flying, vigilance
+At the beginning of your end step, if you gained or lost life this turn, target opponent loses 3 life unless they sacrifice a nonland permanent of their choice or discard a card.",W/B,,BLB,233,1

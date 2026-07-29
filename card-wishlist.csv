@@ -8,8 +8,6 @@ Whenever Dragonhawk enters or attacks, exile the top X cards of your library, wh
 +1: Create a 1/1 blue and red Otter creature token with prowess.
 −3: Draw three cards, then discard two cards.
 −10: Draw three cards. You get an emblem with ""Instant and sorcery spells you cast have storm."" (Whenever you cast an instant or sorcery spell, copy it for each spell cast before it this turn.)",U/R,Ral; Planeswalker; counters; card draw; tokens; planeswalker; spellslinger,BLB,230,Mythic,25,UR spellslinger planeswalker — tokens + copy your spells,7.5,hand
-Rottenmouth Viper,Creature — Elemental Snake,"As an additional cost to cast this spell, you may sacrifice any number of nonland permanents. This spell costs {1} less to cast for each permanent sacrificed this way.
-Whenever this creature enters or attacks, put a blight counter on it. Then for each blight counter on it, each opponent loses 4 life unless that player sacrifices a nonland permanent of their choice or discards a card.",B,Elemental; Snake; counters; cost-reduction; sacrifice; discard,BLB,107,Mythic,42a,sac-to-cast discount makes it a 3-4 drop here AND each sacrifice triggers the death payoffs; blight counters are a hard clock,7.5,hand
 "Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,6.0,hand
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
@@ -51,7 +49,6 @@ Dubious Delicacy,Artifact — Food,"Flash
 When this artifact enters, up to one target creature gets -3/-3 until end of turn.
 {2}, {T}, Sacrifice this artifact: You gain 3 life.
 {2}, {T}, Sacrifice this artifact: Target opponent loses 3 life.",B,Food; lifegain; sacrifice; etb; removal; flash; tempo,EOE,96,Uncommon,21; 20,,4.5,hand
-Seedship Impact,Instant,"Destroy target artifact or enchantment. If its mana value was 2 or less, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")",G,sacrifice; tokens; removal; ramp,EOE,205,Uncommon,40a,Instant artifact/ench removal + a Lander token = a LANDFALL trigger. Replaced Broken Wings.,5.5,hand
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",W,Human; Knight; sacrifice; tokens; ramp; etb; landfall; pump; lands,EOE,41,Uncommon,36,,3.0,hand
 "Ajani, Caller of the Pride",Legendary Planeswalker — Ajani,"+1: Put a +1/+1 counter on up to one target creature.
@@ -65,9 +62,6 @@ Twinflame Tyrant,Creature — Dragon,"Flying
 If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals double that damage instead.",R,Dragon; flying; evasion; double,FDN,97,Mythic,14,,7.0,hand
 "Arahbo, the First Fang",Legendary Creature — Cat Avatar,"Other Cats you control get +1/+1.
 Whenever Arahbo or another nontoken Cat you control enters, create a 1/1 white Cat creature token.",W,Cat; Avatar; tokens; pump,FDN,2,Rare,36,,5.5,hand
-"Ayli, Eternal Pilgrim",Legendary Creature — Kor Cleric,"Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)
-{1}, Sacrifice another creature: You gain life equal to the sacrificed creature's toughness.
-{1}{W}{B}, Sacrifice another creature: Exile target nonland permanent. Activate only if you have at least 10 life more than your starting life total.",W/B,Kor; Cleric; lifegain; sacrifice; removal; deathtouch; combat,FDN,205,Rare,42a,2-mana deathtouch body that is also a cheap repeatable sac outlet; exile mode live once the drain gets you to 30,6.5,hand
 Desecration Demon,Creature — Demon,"Flying
 At the beginning of each combat, any opponent may sacrifice a creature of their choice. If a player does, tap this creature and put a +1/+1 counter on it.",B,Demon; counters; sacrifice; flying; evasion,FDN,603,Rare,general,efficient 6/6 flying B beater (opp-sac edict) — any black midrange,5.5,hand
 "Drakuseth, Maw of Flames",Legendary Creature — Dragon,"Flying
@@ -92,10 +86,6 @@ Claws Out,Instant,"Affinity for Cats (This spell costs {1} less to cast for each
 Creatures you control get +2/+2 until end of turn.",W,pump; affinity; artifacts; cost-reduction,FDN,6,Uncommon,36,,4.0,hand
 Good-Fortune Unicorn,Creature — Unicorn,"Whenever another creature you control enters, put a +1/+1 counter on that creature.",W/G,Unicorn; counters,FDN,240,Uncommon,36a,,5.0,hand
 Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0,hand
-Midnight Snack,Enchantment,"Raid — At the beginning of your end step, if you attacked this turn, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
-{2}{B}, Sacrifice this enchantment: Target opponent loses X life, where X is the amount of life you gained this turn.",B,lifegain; sacrifice; tokens; food; raid; aggro,FDN,65,Uncommon,42a,"Food engine + a drain finisher that scales with the turn's lifegain, and 42a runs 17 lifegain enablers. Held at 5 by the RAID condition — it makes nothing on a turn you don't attack, which an attrition deck often can't.",5,hand
-Ravenous Amulet,Artifact,"{1}, {T}, Sacrifice a creature: Draw a card and put a soul counter on this artifact. Activate only as a sorcery.
-{4}, {T}, Sacrifice this artifact: Each opponent loses life equal to the number of soul counters on this artifact.",Colorless,counters; card draw; sacrifice,FDN,131,Uncommon,42a,"{1} sac-for-draw vs Ahriman's {3}, and the {4} sac-for-drain is the closer this deck otherwise lacks; also the 2nd artifact for Al Bhed Salvagers",6.5,hand
 Lightshell Duo,Creature — Rat Otter,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,Rat; Otter; graveyard; etb; pump; selection; surveil; prowess; spellslinger; tempo,FDN,157,Common,37,,3.0,hand
 "Cecil, Dark Knight // Cecil, Redeemed Paladin",Legendary Creature — Human Knight // Legendary Creature — Human Knight,"Deathtouch
@@ -132,9 +122,6 @@ III — Ecliptic Growl — Draw a card if you control the creature with the grea
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
-Vein Ripper,Creature — Vampire Assassin,"Flying
-Ward—Sacrifice a creature.
-Whenever a creature dies, target opponent loses 2 life and you gain 2 life.",B,Vampire; Assassin; lifegain; sacrifice; flying; evasion; ward; protection,MKM,108,Mythic,42a,6/5 flier; drains 2 on ANY creature death incl. opponents killed by your removal; Ward-Sacrifice a creature is real protection in a deck at protection 1. {B}{B}{B} vs 17 sources = 73% on T6,8.0,hand
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
@@ -150,8 +137,6 @@ This land enters tapped.
 When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",W/B,Plains; Swamp; graveyard; mana; etb; selection; surveil,MKM,268,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also de-taplands + firms black in deck 20 (Honor Among Thieves) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,5.5,hand
 Sharp-Eyed Rookie,Creature — Human Detective,"Vigilance
 Whenever a creature you control enters, if its power is greater than this creature's power or its toughness is greater than this creature's toughness, put a +1/+1 counter on this creature and investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",G,Human; Detective; counters; card draw; sacrifice; tokens; clue; investigate; vigilance; combat,MKM,176,Rare,13,grows + investigates when a bigger creature enters — its own flex-noted home (counters/value). Also a ★ card-advantage engine for deck 9 (Gruul counters/smash) — every bigger creature entering = counter + Clue.,5.0,hand
-Treacherous Greed,Instant,"As an additional cost to cast this spell, sacrifice a creature that dealt damage this turn.
-Draw three cards. Each opponent loses 3 life and you gain 3 life.",W/B,lifegain; card draw; sacrifice,MKM,219,Rare,42a,draw three + 6-point swing for 3; the sac is post-combat so it also triggers every death payoff,7.5,hand
 Underground Mortuary,Land — Swamp Forest,"({T}: Add {B} or {G}.)
 This land enters tapped.
 When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",B/G,Swamp; Forest; graveyard; mana; etb; selection; surveil,MKM,271,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also firms deck 8's thin green (Killmonger/Ygra) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,5.5,hand
@@ -161,13 +146,8 @@ Solved — {2}{U}, Sacrifice this Case: Put four +1/+1 counters on target noncre
 Gleaming Geardrake,Artifact Creature — Drake,"Flying
 When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
 Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",U/R,Drake; counters; card draw; sacrifice; tokens; etb; clue; flying; evasion; investigate,MKM,205,Uncommon,35,,5.0,hand
-Krovod Haunch,Artifact — Food Equipment,"Equipped creature gets +2/+0.
-{2}, {T}, Sacrifice this Equipment: You gain 3 life.
-When this Equipment is put into a graveyard from the battlefield, you may pay {1}{W}. If you do, create two 1/1 white Dog creature tokens.
-Equip {2}",W,Food; Equipment; reanimator; graveyard; lifegain; sacrifice; tokens; equipment; pump; equip,MKM,21,Uncommon,42a,"Quadruple on-theme for 42a (Food + Equipment + sacrifice + tokens) at ONE mana, and the death trigger refunds two Dog bodies for {1}{W}. Modest ceiling — +2/+0 and 3 life are small — but it feeds the sacrifice engine (10 enablers / 9 payoffs) from the cheapest slot on the curve.",5.5,hand
 Magnetic Snuffler,Artifact Creature — Construct,"When this creature enters, return target Equipment card from your graveyard to the battlefield attached to this creature.
 Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",Colorless,Construct; counters; reanimator; graveyard; sacrifice; etb,MKM,254,Uncommon,38,,4.0,hand
-Repulsive Mutation,Instant,Put X +1/+1 counters on target creature you control. Then counter up to one target spell unless its controller pays mana equal to the greatest power among creatures you control.,U/G,counters,MKM,227,Uncommon,40a,Counter taxed at your greatest creature power (unconditional with the Hydra out) AND puts X counters on it. Interaction + protection + engine in one instant.,7.0,hand
 Soul Enervation,Enchantment,"Flash
 When this enchantment enters, target creature gets -4/-4 until end of turn.
 Whenever one or more creature cards leave your graveyard, each opponent loses 1 life and you gain 1 life.",B,graveyard; lifegain; etb; removal; flash; tempo,MKM,106,Uncommon,37,,5.5,hand
