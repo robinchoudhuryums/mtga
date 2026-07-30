@@ -3940,3 +3940,5 @@ You may cast creature spells from your graveyard using their sneak abilities.",B
 Virulent Emissary,Creature — Elf Assassin,"Deathtouch
 Whenever another creature you control enters, you gain 1 life.",G,Elf; Assassin; lifegain; deathtouch; combat; removal,ECL,202,1
 Vision Quest,Sorcery,"Search your library and/or graveyard for an artifact creature card with mana value X or less and put it onto the battlefield with X additional +1/+1 counters on it. If X is 4 or greater, it gains haste until end of turn. If you search your library this way, shuffle.",U/R,counters; reanimator; graveyard,MSH,237,1
+Self-Reflection,Sorcery,"Create a token that's a copy of target creature you control.
+Flashback {3}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; tokens; flashback; recursion; spellslinger,FDN,163,1

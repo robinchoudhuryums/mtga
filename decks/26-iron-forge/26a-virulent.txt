@@ -44,6 +44,14 @@
 #: archetype: job from the LAND slot, costing no card at all. Fugitive Droid is free whenever an
 #: archetype: artifact entered this turn, which Diamond Pick-Axe's per-attack Treasure now makes
 #: archetype: reliable, and Gingerbrute pays {1} for it.
+#: archetype: COPYING THE PAYOFF IS A WHOLE SUB-THEME, and there are two distinct ways to do it.
+#: archetype: Copy the CREATURE: Relm's Sketching's token, Shuri's artifact-becomes-a-copy, and
+#: archetype: Silent Hallcreeper's third mode all give a second Virulent Silencer, and two
+#: archetype: Silencers means FOUR poison per connecting creature. Copy the TRIGGERED ABILITY:
+#: archetype: Echo, Perceptive Prodigy taps for {1} to copy "target activated or triggered
+#: archetype: ability you control FROM A CREATURE SOURCE" — the Silencer is a creature and its
+#: archetype: poison clause is a triggered ability, so that is two more poison, repeatable every
+#: archetype: turn. Echo has vigilance, so attack first and tap her after damage triggers.
 #: archetype: SHURI IS A REPEATABLE SILENCER-DOUBLER, which is not obvious from her text.
 #: archetype: "{1}, {T}: Target artifact you control becomes a copy of a second target artifact
 #: archetype: you control until end of turn" — point any spare artifact at Virulent Silencer and
@@ -99,6 +107,27 @@
 #: notes: the payoff IS the card advantage. It measured 1 at one point in pass 2 and that was
 #: notes: too thin even for an aggro deck — Mechan Navigator was chosen over a second one-shot
 #: notes: unblockable cantrip specifically to put it back to 2 while staying a carrier.
+#: notes: PASS 3. OUT: Steelswarm Operator (a fine carrier-plus-ramp, but not critical — the
+#: notes: slot bought something better) · War Balloon (needs {3} in fire counters or crew 3
+#: notes: before it is a body at all) · Memory Guardian (an unspent craft; cutting it dropped the
+#: notes: wildcard bill too). IN: Echo, Perceptive Prodigy (owned — the trigger-copier above) ·
+#: notes: Silent Hallcreeper (owned — unblockable, and its third mode turns it INTO a second
+#: notes: Silencer; note it is an Enchantment Creature, so it carries no poison until it copies
+#: notes: one) · Fin Fang Foom (owned). Measured: interaction held at 8, card advantage held at
+#: notes: 2, avg MV 2.97 -> 2.95. The variant that cut Galvanize instead of Memory Guardian was
+#: notes: worse (interaction 7, avg MV 3.03).
+#: notes: FIN FANG FOOM MOVED IN, reversing the build-day exclusion, and the reason is a real
+#: notes: measurement: it has EIGHT artifact-targeting spells to copy here (Relm's Sketching,
+#: notes: Scour for Scrap, I Am Iron Man, Mind Transfer Protocol, Abrade, Untimely Malfunction,
+#: notes: Price of Freedom, Fiery Annihilation) against four in core 26. It still carries no
+#: notes: poison — it is not an artifact creature — but "put two +1/+1 counters" on a 3/5 flier
+#: notes: every trigger is a genuine second threat, and Krang makes it indestructible.
+#: notes: DO NOT CUT INTERACTION TO PAY FOR THE COPY EFFECTS. It was proposed and it is
+#: notes: backwards: Fin Fang Foom and Mica only copy spells you cast WHILE THEY ARE ON THE
+#: notes: BATTLEFIELD, so trimming removal from six to four does not make removal more
+#: notes: available — it makes it likelier you hold a copy engine with nothing to copy. Copy
+#: notes: effects are multipliers on cards you already drew; they never substitute for drawing
+#: notes: them. A deck with copy effects wants MORE spells, not fewer.
 #: notes: PASS 2 (2026-07, same day as the build). OUT: Aerial Doombot, Flying Octobot,
 #: notes: Super-Adaptoid (all 1/1-or-*/2 bodies — the three weakest carriers) · Mouser Mark III
 #: notes: (a 2/3 with NO evasion of any kind, so it cannot carry poison unless Krang is out) ·
@@ -142,7 +171,16 @@
 #: notes: plus granted evasion — is not a tagged theme at all. Do not tune off that output.
 #: notes: CRAFT TARGETS (11, ten Uncommon + one Common): Virulent Silencer, Fireshrieker, Living Brain,
 #: notes: Fugitive Droid, Scour for Scrap, Memory Guardian, Valkyrie Aerial Unit, Iron Lad,
-#: notes: Atomic Microsizer, Mechan Navigator, Rogue's Passage.
+#: notes: Atomic Microsizer, Mechan Navigator, Rogue's Passage. (Memory Guardian dropped off at
+#: notes: pass 3, so the bill is 10.)
+#: notes: PYM PARTICLES vs ATOMIC MICROSIZER — both stay, and the copy question has a split
+#: notes: answer. Fin Fang Foom does NOT copy Pym Particles: Foom needs a spell that targets an
+#: notes: ARTIFACT OR LAND, and Pym Particles targets a creature. Mica WOULD copy it, since Mica
+#: notes: copies any instant or sorcery. Microsizer is the better card long-run (repeatable, and
+#: notes: its "base power and toughness 1/1" clause costs nothing because poison does not scale
+#: notes: with power) but it needs to resolve, be equipped for {2}, and have its creature
+#: notes: attack; Pym Particles is available turn one and replaces itself. If a slot is ever
+#: notes: needed, Pym is the cuttable one of the pair.
 #: notes: Everything else is owned. Silencer and Fireshrieker are the two that must come first —
 #: notes: the Silencer is the deck and Fireshrieker doubles its clock.
 
@@ -167,14 +205,14 @@
 # Carriers — nontoken artifact creatures
 1 Fugitive Droid (TMT) 40
 1 Gingerbrute (ELD) 219
-1 Steelswarm Operator (EOE) 80
+1 Echo, Perceptive Prodigy (MSH) 51
 1 Diversion Unit (DFT) 41
 1 Machinesmith Automaton (MSH) 144
 1 War Machine, Legacy of Iron (MSH) 238
-1 War Balloon (TLA) 159
+1 Silent Hallcreeper (DSK) 61
 1 Rook Turret (FIN) 69
 1 Metalhead (TMT) 44
-1 Memory Guardian (DFT) 49
+1 Fin Fang Foom (MSH) 129
 1 H.E.R.B.I.E. Scout Unit (MSH) 247
 1 The Vision (MSH) 255
 1 Iron Man, Master of Machines (MSH) 216
@@ -201,6 +239,16 @@
 
 # Flex — considered and parked. See: deck.py flex 26a
 #~ note: applied — PASS 2: OUT Aerial Doombot, Flying Octobot, Super-Adaptoid, Mouser Mark III, Viv Vision. IN Shuri, Pym Particles, Atomic Microsizer, Diamond Pick-Axe, Mechan Navigator, + Rogue's Passage for an Island. avg MV 3.05 -> 2.97, clock 4/7 -> 5/7.
+#~ note: applied — PASS 3: OUT Steelswarm Operator, War Balloon, Memory Guardian. IN Echo Perceptive Prodigy, Silent Hallcreeper, Fin Fang Foom (all owned). interaction held 8, avg MV 2.97 -> 2.95, craft bill 11 -> 10.
+#~ +Chameleon, Master of Disguise | OWNED (Uncommon) — {3}{U}, "you may have Chameleon enter as a copy of a creature you control". Enter as a second Virulent Silencer, permanently and as a NONTOKEN body, plus Mayhem {2}{U} to recast it from the graveyard if discarded. The cheapest permanent Silencer-copy after Silent Hallcreeper; parked only because pass 3 already added three copy effects.
+#~ +Omni-Changeling | OWNED (Uncommon) — {3}{U}{U} with CONVOKE, enters as a copy of any creature on the battlefield. Same job as Chameleon for one more printed mana, but convoke makes the real cost much lower in a deck with sixteen early drops. Take whichever of the two you prefer; running both is redundant.
+#~ +Self-Reflection | OWNED (Uncommon) — {4}{U}{U} sorcery, token copy of target creature you control, with flashback {3}{U} for a second use. A token copy of the SILENCER keeps the trigger, so this is two extra Silencers across a game. Parked purely on cost: MV 6 in a deck with avg MV 2.95.
+#~ +Return the Favor | OWNED (Uncommon) — {R}{R} Spree; "+{1} — copy target instant spell, sorcery spell, activated ability, or TRIGGERED ability". Yes, it copies Virulent Silencer's poison trigger — three mana for two extra poison, plus a target-redirection mode. It works, but Echo does the same job repeatably for {1}, so this is the expensive version; it is also a third {R}{R} cost.
+#~ +Invasion Submersible | CRAFT (Uncommon) — {2}{U} artifact Vehicle: ETB bounce a nonland permanent (clears the blocker stopping the clock), and Exhaust—Waterbend {3} makes it a PERMANENT artifact creature with three +1/+1 counters. Interaction and a carrier in one card; waterbend lets your artifacts help pay. The best of the parked craft options.
+#~ +Relic's Roar | CRAFT (Common) — {U} instant, "target artifact or creature becomes a Dinosaur artifact creature with base power and toughness 4/3". A one-mana animation, i.e. a fourth way to turn an Equipment into a carrier. Behind the Mask does the same for the same cost but with an awkward optional evidence cost; prefer Relic's Roar. Both are marginal — the deck already runs I Am Iron Man, Mind Transfer Protocol, Living Brain and Iron Man Armor's self-animate.
+#~ note: The Mechanist, Aerial Artisan was CONSIDERED AND REJECTED for this deck, despite looking like an obvious fit. Its ability reads "target artifact TOKEN you control becomes a 3/1 Construct artifact creature with flying" — an animated token is still a TOKEN, which is exactly what Virulent Silencer does not see. Its Clue generation is real card advantage, but the half that looks like a poison enabler is structurally blind to the payoff.
+#~ note: Veteran Ice Climber was considered and rejected: permanently unblockable is the right effect, but it is a Human Scout, not an artifact creature, so it can never carry poison. Same reason Deserter's Disciple lost to Ragged Playmate above.
+#~ note: Improvised Arsenal belongs in CORE 26, not here — "+1/+0 for each artifact you control" is pure damage, and poison does not scale with power. Tezzeret, Cruel Captain is not worth a Mythic for either deck: its -3 only tutors artifacts with mana value 1 or less, which cannot find Virulent Silencer (MV 3) or any of core 26's heavy hitters.
 #~ +Trade the Helm | CRAFT (Uncommon) — {4}{U} "exchange control of target artifact or creature you control and target artifact or creature an opponent controls", cycling {2}. A genuinely good idea for this deck: hand them a Treasure or a 1/1 and take the blocker that is stopping the clock, and it is never dead thanks to cycling. Parked purely on cost — five mana is a lot in a deck with avg MV 2.97 and sixteen early drops. Take it if the deck keeps losing to a single large blocker.
 #~ +Enter the Enigma | OWNED — {U} sorcery: target creature can't be blocked, draw a card. A second Pym Particles minus the vigilance. Lost its slot to Mechan Navigator because card advantage had fallen to 1 and the Navigator both draws AND is a carrier; take Enter the Enigma if you would rather have a second guaranteed connection than a body.
 #~ +Cryptic Coat | CRAFT (Rare) — {2}{U} Equipment: "equipped creature gets +1/+0 and can't be blocked", plus it cloaks the top card of your library and attaches itself. PERMANENT unblockability is the strongest version of this deck's key effect. Note the cloaked 2/2 is NOT an artifact creature, so move the Coat onto a real carrier. Parked as the one Rare worth considering.
