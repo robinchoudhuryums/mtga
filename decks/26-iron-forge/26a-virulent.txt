@@ -107,6 +107,12 @@
 #: notes: the payoff IS the card advantage. It measured 1 at one point in pass 2 and that was
 #: notes: too thin even for an aggro deck — Mechan Navigator was chosen over a second one-shot
 #: notes: unblockable cantrip specifically to put it back to 2 while staying a carrier.
+#: notes: PASS 4. Galvanize out, Invasion Submersible in. Accepted the measured interaction dip
+#: notes: 8 -> 7 as a MODELLING ARTIFACT: role_tally does not score "return up to one other
+#: notes: target nonland permanent to its owner's hand" as interaction, but bouncing the blocker
+#: notes: that is stopping the clock is exactly what this deck needs an answer to do. It also
+#: notes: adds a carrier the removal spell was not — Exhaust-Waterbend {3} makes it a PERMANENT
+#: notes: artifact creature with three +1/+1 counters, and waterbend lets your artifacts help pay.
 #: notes: PASS 3. OUT: Steelswarm Operator (a fine carrier-plus-ramp, but not critical — the
 #: notes: slot bought something better) · War Balloon (needs {3} in fire counters or crew 3
 #: notes: before it is a body at all) · Memory Guardian (an unspent craft; cutting it dropped the
@@ -223,7 +229,7 @@
 1 Plasma Bolt (EOE) 152
 1 Abrade (FDN) 188
 1 Untimely Malfunction (DSK) 161
-1 Galvanize (MKM) 128
+1 Invasion Submersible (TLA) 63
 1 Price of Freedom (TLA) 149
 1 Fiery Annihilation (FDN) 86
 1 Pym Particles (MSH) 70
@@ -240,6 +246,7 @@
 # Flex — considered and parked. See: deck.py flex 26a
 #~ note: applied — PASS 2: OUT Aerial Doombot, Flying Octobot, Super-Adaptoid, Mouser Mark III, Viv Vision. IN Shuri, Pym Particles, Atomic Microsizer, Diamond Pick-Axe, Mechan Navigator, + Rogue's Passage for an Island. avg MV 3.05 -> 2.97, clock 4/7 -> 5/7.
 #~ note: applied — PASS 3: OUT Steelswarm Operator, War Balloon, Memory Guardian. IN Echo Perceptive Prodigy, Silent Hallcreeper, Fin Fang Foom (all owned). interaction held 8, avg MV 2.97 -> 2.95, craft bill 11 -> 10.
+#~ note: A THIRD "ARTIFACT TOKENS" VARIANT WAS INVESTIGATED AND DECLINED — recorded here so the pool sweep is not re-run. The ENABLERS are abundant: 120 artifact/token makers in U/R/colorless Standard, 40 of them owned. The PAYOFF is what does not exist. Sacrifice-an-artifact drain (the Marionette Master axis that makes a token deck actually kill) is ONE card, Vengeful Tracker, and it triggers when the OPPONENT sacrifices — so that axis is effectively zero. Token-COUNT payoffs: three cards, one owned (Mister Fantastic, which draws rather than wins). Mass token animation: one card, The Mechanist, and it animates one token per turn. Static artifact-creature anthems: Chrome Dome (+1/+0, Rare craft) and Krang. Everything else that "cares" is an artifact-COUNT payoff — affinity, improvise, "+1/+0 for each artifact" — and a Treasure feeds those exactly as well as Krang does, except Krang also wins the game. A token variant would therefore be core 26 with strictly worse artifacts and no unique win condition.
 #~ note: A FOUR-CUT / NINE-CANDIDATE PACKAGE was proposed and MEASURED, and every version of it came out worse than the live list (interaction 8 -> 7, early drops 16 -> 14/15). The reason is one line: of the nine candidates, FIVE are not artifact creatures (The Mechanist, Mm'menon, Don & Raph, Donatello Way with Machines, Trade the Helm) and so can never carry poison — while three of the four proposed cuts (Gingerbrute, H.E.R.B.I.E., Metalhead) ARE artifact creatures. The swap trades carriers for non-carriers.
 #~ note: GINGERBRUTE IS THE WORST OF THE FOUR TO CUT and it is worth spelling out why, because a 1/1 looks like filler: poison does NOT scale with power, so "{1}: this creature can't be blocked this turn except by creatures with haste" on a ONE-MANA artifact creature is a guaranteed two poison per turn for one mana. That is the most mana-efficient carrier in the deck. Galvanize is the only one of the four I would cut on its own merits (interaction is 8).
 #~ note: THE GROW-A-CREATURE CARDS ARE DOUBLY WRONG HERE — Mm'menon, Don & Raph and Donatello Way with Machines all pump power, and poison does not care about power at all. They are also none of them artifact creatures. Keep them in core 26's discussion, not this one.
