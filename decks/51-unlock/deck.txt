@@ -1,0 +1,130 @@
+#: name: Unlock
+#: format: Standard
+#: colors: U
+#: plan: control
+#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 14
+#: tier: plus card advantage 9 at a 3.71 curve. The measurable case is the STRONGEST of anything
+#: tier: built this cycle, and the interaction profile is the best on the roster: 12 of the 14
+#: tier: are instant-speed and NINE can answer a noncreature permanent, against a family average
+#: tier: closer to three. Card advantage 9 is likewise the highest. Two weaknesses hold it here:
+#: tier: 1. IT WINS ON FIVE CARDS. Tolarian Terror x2, Krang, The Dawning Archaic and Kiora are
+#: tier:    the entire clock in a sixty-card deck. Omniscience does not win the game — it makes
+#: tier:    a hand free, and a free hand still has to contain a threat. A control deck that
+#: tier:    answers everything and cannot close is a draw, not a win.
+#: tier: 2. IT CANNOT ACCELERATE OUT OF TROUBLE. Blue's ramp is thin below four mana (Gilded
+#: tier:    Lotus {5}, The Eternity Elevator {5}, Matzalantli {3}), so against a fast start it
+#: tier:    must answer every threat on curve with no ability to skip ahead. 14 early drops is
+#: tier:    low for a deck with no sweeper.
+#: tier: WHAT ARGUES UP, and A is genuinely arguable once played: the manabase is flawless —
+#: tier: `consistency` reports every coloured card on curve at >=90% with keepable 86.0%, the
+#: tier: best pair on the roster — and the Room suite means the deck's "dead late-game cards"
+#: tier: problem does not exist, because every cheap answer converts into a mana sink. Protection
+#: tier: 3 on top of that interaction is a real resilience profile.
+#: tier: PROVISIONAL: unplayed, 16 craft targets, and the win-condition count is exactly the
+#: tier: kind of thing that either proves fine or proves fatal in the first session.
+#: protect: Mirror Room // Fractured Realm; Omniscience; Gilded Lotus; The Eternity Elevator; Archmage of Runes
+#: archetype: MONO-BLUE ROOMS CONTROL. Every Room is two spells stapled together at opposite
+#: archetype: ends of the curve — a one-mana play on turn one and a five-to-seven-mana play on
+#: archetype: turn eight, from the same card. That is exactly the shape a control deck wants,
+#: archetype: and it is why this deck can run a genuine ten-drop without flooding on dead cards.
+#: archetype: THE ROOM SUITE, front half first: Underwater Tunnel {U} surveils 2 and later
+#: archetype: Slimy Aquarium {3}{U} manifests dread with a counter · Bottomless Pool {U} bounces
+#: archetype: a creature and later Locker Room {4}{U} draws on combat damage · Central Elevator
+#: archetype: {2}{U} and Promising Stairs {3}{U} · Meat Locker {2}{U} taps a creature with two
+#: archetype: stun counters and later Drowned Diner {3}{U}{U} draws three. Each front half is
+#: archetype: real interaction on curve; each back half is a mana sink for the turns a control
+#: archetype: deck otherwise spends holding up counters it does not need.
+#: archetype: FRACTURED REALM IS THE PAYOFF THAT MAKES IT AN ENGINE, not just a good card. "If a
+#: archetype: triggered ability of a permanent you control triggers, that ability triggers an
+#: archetype: ADDITIONAL time" doubles every "when you unlock this door" in the deck: Drowned
+#: archetype: Diner draws six, Slimy Aquarium manifests twice, Meat Locker stuns two creatures.
+#: archetype: It also doubles Braided Net, Cryogen Relic and Cerebral Download.
+#: archetype: ITS PRINTED MANA VALUE OF 10 IS A LIE ABOUT HOW IT PLAYS. A Room's stored cost
+#: archetype: covers BOTH halves; Mirror Room is a {2}{U} THREE-DROP that token-copies a
+#: archetype: creature, and Fractured Realm unlocks separately for {5}{U}{U}. You never pay ten.
+#: archetype: OMNISCIENCE IS THE ONE HONEST TEN-DROP and it is a single copy on purpose. Once it
+#: archetype: resolves every card in hand is free, which is why the deck runs four unconditional
+#: archetype: draw spells and two X-spells: the enchantment does nothing without cards to spend
+#: archetype: it on. Gilded Lotus, The Eternity Elevator and Matzalantli are the ramp that makes
+#: archetype: turn eight realistic rather than aspirational.
+#: archetype: DISTINCTNESS from deck 47 Grid Overload, the other mono-blue deck. 47 is an
+#: archetype: AFFINITY AGGRO deck: it floods cheap artifacts to shrink its own spells and attacks
+#: archetype: with oversized bodies. This deck fields almost no creatures, wins by resolving
+#: archetype: enormous spells, and its curve runs the opposite direction — 47's bad draw is "not
+#: archetype: enough artifacts", this one's is "not enough time".
+#: notes: BUILT 2026-07 from scratch, around Omniscience and Fractured Realm by request.
+#: notes: UNGRADED ON PURPOSE — no `#: tier:` until the metrics are read.
+#: notes: WHY ROOMS RATHER THAN A GENERIC BIG-MANA PILE. The two named cards want different
+#: notes: things — Omniscience wants expensive cards in hand, Fractured Realm wants TRIGGERS —
+#: notes: and a deck built for one is usually bad at the other. Rooms resolve that: their unlock
+#: notes: abilities are triggers (for Fractured Realm) printed on cards that are cheap early and
+#: notes: expensive late (for the curve Omniscience needs). Nothing else in blue does both.
+#: notes: THE HONEST PROBLEM IS SPEED. Blue's ramp is thin below four mana — Gilded Lotus is
+#: notes: {5}, The Eternity Elevator {5}, Matzalantli {3} — so this deck cannot accelerate out
+#: notes: of trouble the way a green deck can. It survives on counters and bounce instead, which
+#: notes: means a resolved threat it cannot answer is a much bigger problem here than in any
+#: notes: other deck on the roster.
+#: notes: DISTINCTNESS, MEASURED, and it is the cleanest of anything built this cycle: the
+#: notes: nearest neighbour is 68% with ZERO shared nonland cards, and deck 47 — the other
+#: notes: mono-blue deck, the one this could actually have duplicated — sits THIRD at 62% with
+#: notes: six shared, all of them commodity blue interaction. For scale, 26b against 48a reads
+#: notes: 89% with nine shared. The two mono-blue decks are opposite ends of the same colour.
+#: notes: THE MANABASE IS FLAWLESS, the mono-colour payoff this deck shares only with 47 and 49:
+#: notes: every coloured card casts on curve at >=90%, keepable 86.0%, nothing enters tapped
+#: notes: except Matzalantli's back face. Uthros, Titanic Godcore is the single nonbasic.
+#: notes: TOLARIAN TERROR IS THE PAYOFF NOBODY EXPECTS. "{6}{U}, costs {1} less for each instant
+#: notes: and sorcery in your graveyard" in a deck running six counterspells and five draw
+#: notes: spells is routinely a turn-five 5/5 with ward {2} — a threat that gets cheaper exactly
+#: notes: as the control plan does its job. Two copies, deliberately.
+
+# Rooms — cheap on the front, a mana sink on the back
+1 Underwater Tunnel // Slimy Aquarium (DSK) 79
+1 Bottomless Pool // Locker Room (DSK) 43
+1 Central Elevator // Promising Stairs (DSK) 44
+1 Meat Locker // Drowned Diner (DSK) 65
+1 Mirror Room // Fractured Realm (DSK) 67
+
+# Ramp — what makes turn eight real
+2 Gilded Lotus (FDN) 725
+1 The Eternity Elevator (EOE) 241
+1 Matzalantli, the Great Door // The Core (LCI) 256
+1 The Water Crystal (FIN) 85
+1 Archmage of Runes (FDN) 30
+
+# Card advantage — Omniscience needs a hand to spend
+1 Braided Net (LCI) 47
+1 Cryogen Relic (EOE) 52
+1 Cerebral Download (EOE) 48
+1 Mind Spring (BLB) 389
+1 Finale of Revelation (FDN) 589
+1 Spellgyre (BLB) 72
+1 Calamitous Tide (BLB) 43
+
+# Counters
+1 Spell Pierce (SOA) 23
+1 Dazzling Denial (BLB) 45
+1 Long River's Pull (BLB) 58
+1 Get Out (DSK) 60
+1 Sokka's Haiku (TLA) 71
+1 Tishana's Tidebinder (LCI) 81
+1 Spell Snare (ECL) 71
+1 Twist Reality (DSK) 77
+
+# Bounce and tempo — blue's answer to a resolved threat
+1 Into the Flood Maw (BLB) 52
+1 Bounce Off (DFT) 39
+1 Splash Portal (BLB) 74
+1 Floodpits Drowner (DSK) 59
+
+# Threats — Tolarian Terror shrinks with every counterspell you cast
+2 Tolarian Terror (FDN) 167
+1 Kiora, the Rising Tide (FDN) 45
+
+# The top end
+1 Omniscience (FDN) 161
+1 The Dawning Archaic (SOS) 1
+1 Krang, Utrom Warlord (TMT) 175
+
+# Lands (24)
+1 Uthros, Titanic Godcore (EOE) 260
+23 Island (MSH) 289
