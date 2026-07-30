@@ -4,7 +4,7 @@
 #: plan: midrange
 #: tier: A — Izzet artifacts/robots, rebuilt 2026-07 around RAMP-TO-HEAVY-HITTERS plus a
 #: tier: Station package. Metrics floor is A on interaction 8 + card
-#: tier: advantage 5, protection 3, avg MV 3.69. The letter buys what the floor cannot see:
+#: tier: advantage 4, protection 3, avg MV 3.64. The letter buys what the floor cannot see:
 #: tier: Krang, Bygone Colossus, Chronicle of Victory, Ultron, Iron Man and Dawnsire are
 #: tier: real bombs, and Tony Stark's back face plus Tannuk make them arrive early. Held at
 #: tier: A rather than argued up to S because the plan is UNPLAYED in this configuration and
@@ -23,11 +23,19 @@
 #: archetype: {R}, Bygone Colossus {3}, Anticausal Vestige {4} — and Tannuk grants warp {2}{R}
 #: archetype: to every artifact card in hand, so "a spell was warped this turn" is reliably
 #: archetype: true. That turns on Plasma Bolt's Void (3 damage instead of 2 for {R}) and pays
-#: archetype: for Impolite Entrance, which hands a warped body trample AND haste and replaces
-#: archetype: itself. Anticausal Vestige is the best of them: warp it for {4}, get a 7/5 for a
+#: archetype: for Full Bore, which gives a warped body +3/+2 AND trample AND haste for {R} at
+#: archetype: INSTANT speed — warp Bygone Colossus for {3}, Full Bore for {R}, attack as a
+#: archetype: 12/11 trample haste. Anticausal Vestige is the best of them: warp it for {4}, get a 7/5 for a
 #: archetype: turn, and when it is exiled at end step its LEAVES-THE-BATTLEFIELD trigger draws
 #: archetype: a card and free-drops a permanent with mana value <= your land count. At eight or
 #: archetype: nine lands that is a free Krang or Bygone Colossus.
+#: archetype: WHY RAMOS IS BETTER HERE THAN IN A MULTICOLOUR DECK, which is not obvious. Its
+#: archetype: ability adds {W}{W}{U}{U}{B}{B}{R}{R}{G}{G} — ten mana — and in a five-colour
+#: archetype: deck you would want those as COLOURS. This deck's whole top end costs GENERIC
+#: archetype: mana (Krang {9}, Bygone Colossus {9}, Chronicle {6}, Anticausal Vestige {6},
+#: archetype: Dawnsire {5}), and generic costs can be paid with any colour, so all TEN mana is
+#: archetype: live here. suggest-homes confirms it has no better home: only decks 17 and 35a
+#: archetype: are castable + on-theme, both only `tangential`, and both flagged top-heavy.
 #: archetype: THE STATION PACKAGE is the piece worth knowing. Station's cost is "tap ANOTHER
 #: archetype: creature you control", which is NOT that creature's own {T} ability — so
 #: archetype: summoning sickness does not apply (same reason you can crew with a creature you
@@ -76,8 +84,8 @@
 #: notes: MV 1 not 3, instant not sorcery-only, not summoning-sick, adds trample, and draws)
 #: notes: · Mechan Assembler (MY OWN pass-1 add, cut on measurement — MV 5 in a deck already
 #: notes: heavy at the top, and its 2/2-per-turn serves a WIDE plan while this deck went TALL).
-#: notes: IN: Plasma Bolt (owned; {R} for 3 damage with Void reliably on) · Impolite Entrance
-#: notes: (trample + haste + a card for {R} — the haste answer for warped bodies) · Anticausal
+#: notes: IN: Plasma Bolt (owned; {R} for 3 damage with Void reliably on) · Full Bore
+#: notes: (+3/+2 plus trample AND haste on a warped body, at instant speed) · Anticausal
 #: notes: Vestige (the ramp engine; see the archetype block) · Technodrome RESTORED (an artifact
 #: notes: creature and the cheapest repeatable card-draw in the deck; the growth package turns
 #: notes: its power-6 gate on — Donatello Mutant Mechanic's three counters do it in one tap).
@@ -86,6 +94,37 @@
 #: notes: cut Viv Vision instead of Mechan Assembler was strictly worse on every axis (card
 #: notes: advantage 4, avg MV 3.75) — Viv Vision stays, and she is also a 26a card, which costs
 #: notes: nothing since one owned copy serves both decks.
+#: notes: PASS 3 — two changes. Full Bore in for Impolite Entrance (metrics IDENTICAL: 8/5/
+#: notes: 3.69/10 either way, because role_tally does not count Impolite Entrance's single-draw
+#: notes: rider anyway, so the trade is pure upside — +3/+2 and instant speed for the same {R}).
+#: notes: Ramos, Dragon Engine in for The Ten Rings: MV 8 -> 6, avg MV 3.69 -> 3.64, and the
+#: notes: Ten Rings hand-refill was the least plan-aligned card left in the deck. Cost: card
+#: notes: advantage 5 -> 4, since The Ten Rings carried that classification.
+#: notes: A HEURISTIC THAT DOES NOT WORK, recorded because it came up explicitly: "if a card
+#: notes: will be in 26a, cut it from core and use the slot for something 26a cannot use."
+#: notes: Decks SHARE the collection — one owned copy runs in both decks at once — so a card
+#: notes: being good in 26a does not make it worse here and frees no resource. The only valid
+#: notes: version of the instinct is roster UTILISATION: between two cards of equal value to
+#: notes: core, the one that is core-ONLY never gets played anywhere else. That is a
+#: notes: tie-breaker, not a reason to cut a card that measures better. Viv Vision measured
+#: notes: better than Mechan Assembler, Sokka and Mica in that slot, so she stayed.
+#: notes: STEELSWARM OPERATOR IS NOT MARGINAL — it was raised as a possible cut. Its second
+#: notes: mode adds {U}{U} for ABILITIES of artifact sources, and this deck is full of them:
+#: notes: Iron Man Armor's {2} self-animate, Ultron's {2} token copy, Iron Spider's {2} draw,
+#: notes: Technodrome's sac-draw, Dawnsire's Station. Two mana for a 1/1 flier that
+#: notes: accelerates both halves of the plan is one of only four acceleration pieces. Keep.
+#: notes: FIN FANG FOOM TRIGGER COUNT, re-verified at pass 3: FOUR reliable — Abrade and
+#: notes: Explosive Derailment (destroy-target-artifact modes), I Am Iron Man (targets your own
+#: notes: artifact, always available) and Price of Freedom ("artifact OR LAND an opponent
+#: notes: controls", can never fizzle) — plus Fiery Annihilation conditionally. NOTE the text
+#: notes: scan reports Fiery Annihilation as a non-trigger because its wording is "target
+#: notes: EQUIPMENT", not "target artifact"; Equipment IS an artifact type, so it DOES trigger
+#: notes: whenever there is an Equipment to exile. Plasma Bolt does NOT trigger it ("any
+#: notes: target" cannot be an artifact), and neither Full Bore nor Impolite Entrance does
+#: notes: (both target a creature). Four reliable triggers is enough — General Traag was
+#: notes: offered as a substitute and is NOT needed on trigger grounds.
+#: notes: MICA now has EIGHT triggers, every instant and sorcery in the deck, up from four at
+#: notes: pass 1. That strengthens the case for it as Foom redundancy rather than replacement.
 #: notes: PASS 2'S ONE REAL COST: protection 4 -> 3. Super-Adaptoid was classified as
 #: notes: Protection / trick (it copies indestructible off a target creature), so cutting it
 #: notes: spent a point on that axis. Protection is REPORTED but deliberately not fed into the
@@ -144,6 +183,7 @@
 1 Bygone Colossus (EOE) 235
 1 Technodrome (TMT) 179
 1 Anticausal Vestige (EOE) 1
+1 Ramos, Dragon Engine (FDN) 678
 
 # Artifacts / Spells
 1 Fiery Annihilation (FDN) 86
@@ -152,8 +192,7 @@
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 Explosive Derailment (DFT) 130
 1 Plasma Bolt (EOE) 152
-1 Impolite Entrance (ECL) 146
-1 The Ten Rings (MSH) 251
+1 Full Bore (EOE) 135
 1 I Am Iron Man (MSH) 58
 1 Price of Freedom (TLA) 149
 1 Armor Wars (MSH) 203
@@ -188,9 +227,12 @@
 #~ note: applied — Fin Fang Foom enabler package: I Am Iron Man in for Retrieve the Esper, Price of Freedom in for Oreplate Pangolin (both owned). NOTE this reverses the "the two animate-cantrip tricks" dismissal in the older cut note below — I Am Iron Man now has two reasons to be here that did not exist then (a Foom trigger, and a Virulent Silencer carrier-maker). Price of Freedom was moved to # Artifacts / Spells; it inherited Oreplate Pangolin's slot under # Creatures.
 #~ note: applied — REBUILD 2026-07 to ramp-to-heavy-hitters + Station. OUT: Aerial Doombot, The Mechanist, Donatello Turtle Techie, Donatello Way with Machines, HYDRA Assault Robot, Mouser Foundry, Don & Leo, Technodrome. IN: Bygone Colossus, Kavaron Memorial World (land), Tannuk, Kavaron Turbodrone, Vision Quest, Chronicle of Victory, Iron Spider, Mechan Assembler, Explosive Derailment. Mjölnir RESTORED (its ETB removal was misread as an Equipment-only card). Full reasoning + the interaction-drop mistake are in the #: notes: block.
 #~ +Mica, Reader of Ruins | CRAFT (Uncommon) — the upgrade to the Fin Fang Foom plan that was not taken. Same copy effect with NO artifact/land restriction, {3}{R} single pip (~88% on curve vs Foom's 69.6%), a 4/4 with ward—pay 3 life, and it triggers off ALL of the deck's instants and sorceries rather than the two that target an artifact. Cost to copy is sacrificing an artifact, which is close to free here. Take it as REDUNDANCY alongside Foom (two copies of one spell), not as a replacement, unless red screw shows up in play.
-#~ +Ramos, Dragon Engine | CRAFT (Mythic) — 4/4 flier that gains a +1/+1 counter per colour of every spell you cast, and converts five counters into WWUUBBRRGG. Held back from the rebuild only because it would have been the FIFTH card at MV 6+; its five-colour identity is cosmetic here since it casts for {6} colorless. Revisit if the top end proves castable.
+#~ note: applied — PASS 3: Full Bore in for Impolite Entrance (identical metrics, pure upside); Ramos, Dragon Engine in for The Ten Rings (MV 8 -> 6, avg MV 3.69 -> 3.64, card advantage 5 -> 4). Viv Vision HELD after measuring her against Mechan Assembler / Sokka / Mica in that slot — she beat all three on card advantage. Steelswarm Operator held: its {U}{U}-for-artifact-abilities mode is real acceleration, not filler.
+#~ +The Ten Rings | OWNED — {8} legendary artifact hand-refill engine, cut at pass 3 as the least plan-aligned card in the deck (it refills a hand this deck would rather be emptying onto the battlefield). Take it back if the deck proves to run out of gas rather than out of mana; it is also an I Am Iron Man / Living Brain animation target.
+#~ +Mechan Assembler | CRAFT (Uncommon) — 4/4 Robot Artificer that makes a 2/2 Robot token every turn, and an artifact that ENTERS (triggering Machinesmith, Ultron, Iron Man). Added at pass 1, cut at pass 2, and re-measured at pass 3 against Viv Vision's slot: it scored card advantage 3 vs her 4. Take it if the board-presence plan matters more than the extra card.
+#~ +Sokka, Bold Boomeranger | OWNED (Rare) — {U}{R} 1/1 that grows on every artifact OR LESSON cast (Price of Freedom is a Lesson), with an ETB rummage. Cheapest grower available and the best curve of the three pass-3 alternatives (avg MV 3.61, early drops 11) — but its "discard up to two, then draw that many" is a net-neutral RUMMAGE that role_tally scores as card advantage, so its measured 4 overstates it. Take it for curve, not for cards.
 #~ note: applied — PASS 2: OUT Ultron Drone, Super-Adaptoid, Kavaron Turbodrone, Mechan Assembler. IN Plasma Bolt, Impolite Entrance, Anticausal Vestige, Technodrome (restored). interaction 7->8, avg MV 3.78->3.69, first three one-drops. Full reasoning in #: notes:.
-#~ +Full Bore | CRAFT (Uncommon) — {R} INSTANT: +3/+2, and trample AND haste if the creature was cast for its WARP cost. The bigger-swing sibling of Impolite Entrance: warp Bygone Colossus for {3}, Full Bore for {R}, attack as a 12/11 trample haste. Take it OVER Impolite Entrance if you want the kill rather than the card; take BOTH if the warp plan proves reliable in play. Three warp cards in the deck plus Tannuk granting warp to every artifact in hand means the condition is usually met.
+#~ +Impolite Entrance | CRAFT (Uncommon) — {R} sorcery: target creature gains trample AND haste, draw a card. The card-neutral sibling of Full Bore (now in the 60), and its haste is UNCONDITIONAL rather than warp-gated. Metrics are identical either way, so this is a real choice, not a downgrade: take Impolite Entrance if you want to replace the card and grant haste to a hard-cast bomb; keep Full Bore if you want the +3/+2 and instant speed. Running BOTH is defensible once the warp plan is proven in play.
 #~ +Crash Through | CRAFT (Common) — {R}: trample for your WHOLE board + draw a card. The alpha-strike version; matters most with Krang and Bygone Colossus at 9 power. Cheapest possible way to convert a stalled board into lethal. · minor next to Impolite Entrance, which also grants haste.
 #~ +General Traag, Heart of Stone | OWNED — 4/3 TRAMPLE artifact creature whose ETB may sac another artifact to deal 4 damage to a creature: interaction, trample and an artifact body in one card, i.e. all three things this deck wanted. HELD BACK for one measured reason only: it would be the THIRD {R}{R} cost, and the two already here (Fin Fang Foom, Tannuk) both price at 69.6% on turn four against 13 red sources. Take it the moment red sources go up, or in place of Tannuk.
 #~ +Kavaron Skywarden | OWNED — 4/5 reach that grows every end step off Void (which this deck reliably turns on). Skipped on curve and type: MV 5 in a deck already carrying nine cards at 5+, and it is a Kavu Soldier, so it is neither an artifact creature nor a Robot — it feeds none of the tribal payoffs.
