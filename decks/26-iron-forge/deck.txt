@@ -4,7 +4,7 @@
 #: plan: midrange
 #: tier: A — Izzet artifacts/robots, rebuilt 2026-07 around RAMP-TO-HEAVY-HITTERS plus a
 #: tier: Station package. Metrics floor is A on interaction 8 + card
-#: tier: advantage 5, protection 3, avg MV 3.50. The letter buys what the floor cannot see:
+#: tier: advantage 5, protection 3, avg MV 3.58. The letter buys what the floor cannot see:
 #: tier: Krang, Bygone Colossus, Chronicle of Victory, Ultron, Iron Man and Dawnsire are
 #: tier: real bombs, and Tony Stark's back face plus Tannuk make them arrive early. Held at
 #: tier: A rather than argued up to S because the plan is UNPLAYED in this configuration and
@@ -14,8 +14,8 @@
 #: archetype: acceleration layers, not one: Tony Stark flips into The Invincible Iron Man
 #: archetype: ("you may put an artifact card from your hand onto the battlefield" every
 #: archetype: combat — free Krang, free Bygone Colossus, free Chronicle); Tannuk gives every
-#: archetype: artifact card in hand warp {2}{R} plus board-wide haste; and Steelswarm
-#: archetype: Operator / Ironheart's improvise-granting / Cosmic Cube / Vision Quest each
+#: archetype: artifact card in hand warp {2}{R} plus board-wide haste; and Arc Reactor /
+#: archetype: Ironheart's improvise-granting / Cosmic Cube / Vision Quest each
 #: archetype: cheat cost a different way. The bodies GROW on the way there — Machinesmith
 #: archetype: Automaton, Iron Spider's board-wide counter tap, Donatello Mutant Mechanic's
 #: archetype: three-counter animate, and Technodrome converting artifacts into cards.
@@ -147,6 +147,22 @@
 #: notes: MICA has EIGHT triggers here, every instant and sorcery in the deck. With Foom gone it
 #: notes: is no longer redundancy but the only spell-copy option; it stays in flex rather than
 #: notes: the 60 because Improvised Arsenal measured better in the one slot that opened.
+#: notes: PASS 6 — Arc Reactor in for Steelswarm Operator. THE METRICS SAY THIS IS WORSE (avg MV
+#: notes: 3.50 -> 3.58, early drops 12 -> 11) AND THE METRICS ARE WRONG HERE, for the documented
+#: notes: reason: Arc Reactor has IMPROVISE, so its printed {5} is not what it costs. Against 21
+#: notes: nonland artifacts you routinely cast it for two or three.
+#: notes: The real comparison is what each one RAMPS INTO. Steelswarm Operator adds one {U}
+#: notes: restricted to artifact spells (or {U}{U} restricted to artifact ABILITIES). Arc
+#: notes: Reactor adds {C}{C}{C}, UNRESTRICTED — and this deck's whole top end costs generic
+#: notes: mana (Krang {9}, Bygone Colossus {9}, Chronicle {6}, Anticausal Vestige {6}, Dawnsire
+#: notes: {5}), so three colorless is three real mana toward every bomb. Rough curve: Arc
+#: notes: Reactor on turn three means seven mana on turn four and nine on turn six — Krang.
+#: notes: Steelswarm on turn two means seven on turn six. Roughly two turns faster.
+#: notes: WHAT IT COSTS, stated because it is not free: a 1/1 flying BODY (which was also a
+#: notes: Virulent Silencer carrier and a Robot for the tribal count, 13 -> 12), and improvise
+#: notes: TAPS your artifacts to pay, which competes with attacking and with Station. It also
+#: notes: enters tapped, so first mana is a turn later than it looks. Cast it on a turn you are
+#: notes: not attacking. Both cards are owned, so this is a free experiment either way.
 #: notes: PASS 4 — Sokka, Bold Boomeranger in for Metalhead, chosen by measuring all four
 #: notes: candidates in that one slot: Sokka (card advantage 5, avg MV 3.56, early drops 11) beat
 #: notes: Mechan Assembler (4 / 3.64 / 10), Donatello Gadget Master (4 / 3.58 / 10) and Mica
@@ -200,7 +216,7 @@
 #: notes: max cutoff, so it is not comparable across edits that change the dominant theme.
 # Creatures
 1 Shuri, Wakandan Inventor (MSH) 75
-1 Steelswarm Operator (EOE) 80
+1 Arc Reactor (MSH) 243
 1 Tony Stark (MSH) 80
 1 Donatello, Mutant Mechanic (TMT) 36
 1 Ironheart, Clever Champion (MSH) 60
