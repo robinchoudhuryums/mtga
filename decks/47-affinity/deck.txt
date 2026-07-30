@@ -99,6 +99,31 @@
 #: notes: discount needs a Spacecraft and there are none) and Lunatic Pandora (a {6} sacrifice
 #: notes: ability that will not be activated). Flying Octobot went later for the same class of
 #: notes: reason — it grows off VILLAIN entries and this deck fields two.
+#: notes: PASS 2 — seven adds from the leftover pile, after a per-deck `screen` corrected an
+#: notes: earlier bucketing that had dismissed several of these without a deck-specific reason.
+#: notes: IN: Uthros Psionicist (the second spell each turn costs {2} less — cost reduction is
+#: notes: this deck's entire premise) · Lady Octopus (ingenuity counters on your first and
+#: notes: second DRAW each turn, then free-casts an artifact of that mana value; a deck with
+#: notes: this much looting turns her on fast) · Oaken Siren (a flying artifact creature that
+#: notes: taps for artifact-only mana — exactly this deck's profile) · Trade the Helm (hand
+#: notes: them a spare token, take their bomb; cycling {2} means it is never dead) ·
+#: notes: Waterbender Ascension · Illvoi Infiltrator · Donatello, Gadget Master.
+#: notes: WATERBEND IS CHEAPER HERE THAN ANYWHERE, which is why Waterbender Ascension made it:
+#: notes: a waterbend cost lets you tap ARTIFACTS as well as creatures to pay, and this deck
+#: notes: fields more artifacts than any other on the roster. Its {4} unblockable mode is
+#: notes: routinely free.
+#: notes: TWO CANDIDATES WERE REJECTED ON TEXT DESPITE SCREENING "KEY", and the reason matters:
+#: notes: The Eternity Elevator ({5}) and Extinguisher Battleship ({8}) have NO affinity and no
+#: notes: cost reduction of any kind. This deck's whole plan is casting expensive things
+#: notes: CHEAPLY; adding genuinely expensive cards that do not shrink fights it. Measured:
+#: notes: including them took interaction 9 -> 6 and avg MV 3.05 -> 3.30. They belong in 48a,
+#: notes: which has the Station and big-mana angle to support them.
+#: notes: GLEAMING GEARDRAKE WAS EXCLUDED AS UNCASTABLE, not unwanted — it costs {U}{R} and
+#: notes: this deck is mono-blue. Don & Raph, Hard Science is castable ({1}{U/R}{U/R} pays with
+#: notes: blue) but its R colour IDENTITY would widen `#: colors:` and cost the mono-colour
+#: notes: manabase that is this deck's main structural advantage; left out on that ground alone.
+#: notes: MEASURED: interaction 9 -> 7, card advantage 8 -> 9, avg MV 3.05 -> 3.08, early drops
+#: notes: held at 19, and the manabase is untouched — still every colored card on curve at 90%+.
 #: notes: CRAFT TARGETS (9): Krang Master Mind (R), Chrome Dome (R), Edgar King of Figaro (R),
 #: notes: Gearseeker Serpent (C), Memory Guardian (U), Valkyrie Aerial Unit (U), Cerebral
 #: notes: Download (U), Fugitive Droid (U), Mechan Navigator (U). Chrome Dome and Krang Master
@@ -110,7 +135,7 @@
 1 Gearseeker Serpent (DFT) 43
 1 Valkyrie Aerial Unit (FIN) 84
 1 Memory Guardian (DFT) 49
-1 Mechanozoa (EOE) 66
+1 Donatello, Gadget Master (TMT) 35
 1 Chrome Dome (TMT) 172
 1 Ironheart, Clever Champion (MSH) 60
 
@@ -127,31 +152,31 @@
 1 Buzz Bots (TMT) 32
 1 A.I.M. Synthoids (MSH) 242
 1 Bumbleflower's Sharepot (BLB) 244
-1 Mechanical Mobster (SPM) 168
+1 Waterbender Ascension (TLA) 79
 
 # Cheap evasive artifact creatures
 1 Aerial Doombot (MSH) 43
 1 Diversion Unit (DFT) 41
 1 Rook Turret (FIN) 69
-1 Gingerbrute (ELD) 219
+1 Oaken Siren (LCI) 66
 1 Fugitive Droid (TMT) 40
 1 S.H.I.E.L.D. Deployment Drone (MSH) 73
 
 # Mana on artifact bodies
 1 Hydraulic Helper (MSH) 57
 1 Steelswarm Operator (EOE) 80
-1 Nanoform Sentinel (EOE) 71
+1 Trade the Helm (DFT) 69
 1 Arc Reactor (MSH) 243
 
 # Bigger artifact bodies
-1 Utrom Scientists (TMT) 56
+1 Illvoi Infiltrator (EOE) 59
 1 Iron Man Armor (MSH) 248
 1 Mechan Navigator (DFT) 48
 
 # Interaction — bounce and counters, the mono-blue price
 1 Into the Flood Maw (BLB) 52
-1 Unsummon (ANB) 36
-1 Spell Pierce (SOA) 23
+1 Uthros Psionicist (EOE) 84
+1 Lady Octopus, Inspired Inventor (SPM) 35
 1 Tishana's Tidebinder (LCI) 81
 1 Floodpits Drowner (DSK) 59
 1 Exclusion Mage (FDN) 508
