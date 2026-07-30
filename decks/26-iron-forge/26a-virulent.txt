@@ -1,0 +1,156 @@
+#: name: Iron Forge — Virulent
+#: format: Standard
+#: colors: UR
+#: based-on: deck.txt
+#: plan: aggro
+#: protect: Virulent Silencer; Fireshrieker; Relm's Sketching; Scour for Scrap; Vision Quest; Krang, Utrom Warlord
+#: tier: (ungraded — new build, grade after a play session)
+#: archetype: Izzet (U/R) artifact POISON. Variant of 26 Iron Forge: where core 26 ramps into a
+#: archetype: few enormous bodies, this deck fields CHEAP EVASIVE ones and converts their chip
+#: archetype: damage into a real clock (avg MV 3.05, 15 early drops, 23 evasive creatures).
+#: archetype: NOT a "wide" deck, and the measurement corrected the first draft of this line:
+#: archetype: `deck.py shape` reads TALL 5 / WIDE 3, because every buff here is single-target
+#: archetype: (Falcon's Wing Harness, Iron Man Armor, I Am Iron Man, Mind Transfer Protocol,
+#: archetype: Living Brain). So the real contrast with 26 is not wide-vs-tall — both are tall —
+#: archetype: it is CHEAP-AND-EVASIVE-many-times versus EXPENSIVE-AND-HUGE-once, and the win
+#: archetype: condition (poison, which ignores life totals entirely) rather than the shape.
+#: archetype: THE PAYOFF is Virulent Silencer: "whenever a NONTOKEN artifact creature you
+#: archetype: control deals combat damage to a player, that player gets two poison counters."
+#: archetype: Ten poison wins, so five connections is the game. Twenty-one of the deck's
+#: archetype: nonland cards are nontoken artifact creatures or make one, most with native
+#: archetype: flying, and the plan routes entirely around lifegain, life totals and damage
+#: archetype: prevention — which is the reason to build it as a separate deck rather than a
+#: archetype: package inside 26.
+#: archetype: THE WORD THAT SHAPES EVERY CARD CHOICE IS "NONTOKEN": every token-maker in the
+#: archetype: Izzet artifact pool produces bodies the Silencer ignores, so none is in this list.
+#: archetype: The specific cards deliberately excluded are named in the notes block below.
+#: archetype: CONSISTENCY COMES FROM TUTORS, NOT REDUNDANCY, and this is the deck's honest
+#: archetype: weak point. Virulent Silencer is the ONLY poison source castable in a U/R or
+#: archetype: colorless Standard shell — measured against the whole pool — and there is no
+#: archetype: proliferate at all. So four cards find or duplicate the one payoff:
+#: archetype: Vision Quest at X=3 searches library AND graveyard and puts the Silencer
+#: archetype: straight onto the battlefield with three +1/+1 counters; Scour for Scrap tutors
+#: archetype: it to hand or rebuys it from the graveyard; and Relm's Sketching makes a TOKEN
+#: archetype: COPY of the Silencer itself, which still carries the triggered ability — the word
+#: archetype: "nontoken" describes the creatures being watched, not the watcher — so two
+#: archetype: Silencers means FOUR poison per connection.
+#: archetype: EVASION IS GRANTED, NOT JUST NATIVE. Krang gives every other artifact creature
+#: archetype: flying, trample, indestructible and haste at once. Falcon's Wing Harness attaches
+#: archetype: itself on entry for +1/+1, flying and ward {1}, so it both makes a carrier and
+#: archetype: protects one. Gingerbrute pays {1} to be unblockable except by haste. Fugitive
+#: archetype: Droid is unblockable whenever an artifact entered this turn, which is most turns.
+#: archetype: FIRESHRIEKER IS THE CLOCK-DOUBLER and the least obvious card here: double strike
+#: archetype: means the creature deals combat damage in TWO separate combat damage steps, and
+#: archetype: each one is its own "deals combat damage to a player" event — so an equipped
+#: archetype: carrier gives FOUR poison per attack. Note Mjölnir does NOT do this; it doubles
+#: archetype: the damage amount, not the number of trigger events, which is why it stayed in 26.
+#: archetype: ANIMATION TURNS DEAD ARTIFACTS INTO CARRIERS. I Am Iron Man and Mind Transfer
+#: archetype: Protocol both make a noncreature artifact into a nontoken artifact creature (the
+#: archetype: former with flying) and replace themselves; Living Brain does it FREE every
+#: archetype: combat; and Iron Man Armor self-animates for {2} into a flier that grows with the
+#: archetype: artifact count. An animated artifact is an artifact creature, so Krang grants it
+#: archetype: flying too.
+#: notes: THE TOKEN-MAKERS DELIBERATELY EXCLUDED, named here rather than in the archetype block
+#: notes: because --audit-rationale audits that block for cards the deck does not run: Mouser
+#: notes: Foundry, Retrieve the Esper, Castle Doom, Mechan Assembler, Simulacrum Synthesizer,
+#: notes: Detective's Satchel, Robotics Mastery, Fuss // Bother, Spider-Slayer, and Ultron's
+#: notes: copy trigger. All are fine artifact cards; all make TOKEN artifact creatures, which
+#: notes: Virulent Silencer explicitly does not see. Their absence is the design, not a gap.
+#: notes: BUILT 2026-07 as the poison half of the 26 split. Core 26 kept the Silencer as a
+#: notes: free alternate win — one owned copy runs in both decks at once, since decks share the
+#: notes: collection — but 26 is a TALL ramp deck and a poison clock wants WIDE and evasive.
+#: notes: UNGRADED ON PURPOSE. No `#: tier:` letter until this has been played: the tier rubric
+#: notes: is a human competitive judgment and nothing here should auto-write one.
+#: notes: `#: plan: aggro` is set because the floor is archetype-aware — an aggro plan
+#: notes: substitutes a bounded clock score for the interaction a resilience floor demands.
+#: notes: That is the honest description of this deck (it closes by connecting repeatedly, not
+#: notes: by controlling the board), but it is also the header that makes the floor kinder, so
+#: notes: it is called out rather than left implicit. AND IT TURNS OUT NOT TO MATTER: the deck
+#: notes: measures interaction 8, which clears the A-floor (interaction >=5, interaction+card-
+#: notes: advantage >=7) on its own, so the clock substitution the aggro plan buys is doing
+#: notes: nothing here. Clock scores 4/7 for the record.
+#: notes: THE RISK, STATED PLAINLY: this is a one-payoff deck. Draw no Silencer and no tutor
+#: notes: and it is a mediocre tempo deck of small fliers. That is the cost of the only poison
+#: notes: card in the colour pair, and it is why four slots are spent on finding it.
+#: notes: MANABASE: 23 lands, R 14 / U 14, only FOUR tapped — leaner and less tapped than 26's,
+#: notes: because an aggro clock cannot afford six tapped lands. Riverpyre Verge is the one
+#: notes: owned untapped UR dual. `check` flags War Machine, Legacy of Iron as a W colour
+#: notes: stray; that is a FALSE POSITIVE — `deck.py mana` confirms "hybrid — paid on-color",
+#: notes: since {2}{R/W} is payable as {2}{R}. Do not widen #: colors: for it.
+#: notes: CARD ADVANTAGE IS 2 AND THAT IS THE THIN AXIS. Rook Turret's loot, H.E.R.B.I.E.'s
+#: notes: ETB draw, Iron Lad's reveal-an-artifact tap and the animation spells' riders are all
+#: notes: real but mostly single-draw, which role_tally does not count. The four tutors are the
+#: notes: substitute: in a one-payoff deck, finding the payoff IS the card advantage.
+#: notes: DISTINCTNESS, MEASURED not asserted: `similar` reads 72% against core 26 and reports
+#: notes: 16 SHARED nonland cards. Unlike the deck-43-vs-42 case that number is meaningful
+#: notes: rather than a tag artifact — but 21 of 37 nonland cards (57%) are 26a-only, including
+#: notes: the entire payoff-and-tutor package and the whole cheap-carrier layer, and the win
+#: notes: conditions genuinely differ (poison vs combat damage from ramped bombs). Verdict: a
+#: notes: real variant, at the high end of acceptable overlap. Ironheart was cut from the first
+#: notes: draft partly for this reason — its value is the improvise-granting, which only matters
+#: notes: in the RAMP deck; here it was a 5-mana 3/4 flier. Iron Lad does the flier job for
+#: notes: {2}{U} and adds a repeatable artifact-reveal draw.
+#: notes: LAND COUNT: 23 is deliberate. A 24th land was tested and the tool's keepable warning
+#: notes: fires in BOTH directions ("consider more lands" at 23, "consider fewer" at 24), so it
+#: notes: is not actionable; paying for the 24th with Fiery Annihilation cost interaction 8 -> 7,
+#: notes: which is a worse trade than an 82.5% keepable.
+#: notes: `deck.py engines` FINDS NOTHING, and that is expected rather than a problem: it reads
+#: notes: tagged themes (sacrifice 1/0, lifegain 6/0, counters 5/0, graveyard 2/1, all
+#: notes: incidental), and this deck's actual engine — Silencer plus nontoken artifact carriers
+#: notes: plus granted evasion — is not a tagged theme at all. Do not tune off that output.
+#: notes: CRAFT TARGETS (8, all Uncommon): Virulent Silencer, Fireshrieker, Living Brain,
+#: notes: Fugitive Droid, Scour for Scrap, Memory Guardian, Valkyrie Aerial Unit, Iron Lad.
+#: notes: Everything else is owned. Silencer and Fireshrieker are the two that must come first —
+#: notes: the Silencer is the deck and Fireshrieker doubles its clock.
+
+# Payoff + the four ways to find or duplicate it
+1 Virulent Silencer (EOE) 248
+1 Vision Quest (MSH) 237
+1 Relm's Sketching (FIN) 67
+1 Scour for Scrap (EOE) 73
+1 Fireshrieker (FDN) 674
+
+# Evasion granting + animation
+1 Krang, Utrom Warlord (TMT) 175
+1 Falcon's Wing Harness (MSH) 53
+1 Iron Man Armor (MSH) 248
+1 I Am Iron Man (MSH) 58
+1 Mind Transfer Protocol (TMT) 45
+1 Living Brain, Mechanical Marvel (SPM) 167
+
+# Carriers — nontoken artifact creatures
+1 Aerial Doombot (MSH) 43
+1 Fugitive Droid (TMT) 40
+1 Gingerbrute (ELD) 219
+1 Steelswarm Operator (EOE) 80
+1 Diversion Unit (DFT) 41
+1 Flying Octobot (SPM) 31
+1 Mouser Mark III (TMT) 159
+1 Super-Adaptoid (MSH) 250
+1 Machinesmith Automaton (MSH) 144
+1 War Machine, Legacy of Iron (MSH) 238
+1 War Balloon (TLA) 159
+1 Viv Vision, Teen Synthezoid (MSH) 256
+1 Rook Turret (FIN) 69
+1 Metalhead (TMT) 44
+1 Memory Guardian (DFT) 49
+1 H.E.R.B.I.E. Scout Unit (MSH) 247
+1 The Vision (MSH) 255
+1 Iron Man, Master of Machines (MSH) 216
+1 Iron Lad, Diverging Destiny (MSH) 57
+1 Valkyrie Aerial Unit (FIN) 84
+
+# Interaction — clear the blockers the clock cannot fly over
+1 Plasma Bolt (EOE) 152
+1 Abrade (FDN) 188
+1 Untimely Malfunction (DSK) 161
+1 Galvanize (MKM) 128
+1 Price of Freedom (TLA) 149
+1 Fiery Annihilation (FDN) 86
+
+# Lands (23) — leaner and less tapped than core 26's
+1 Riverpyre Verge (DFT) 260
+2 Stark Industries (MSH) 272
+2 Swiftwater Cliffs (MOM) 273
+9 Island (MSH) 290
+9 Mountain (MSH) 294

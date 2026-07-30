@@ -51,7 +51,8 @@
 #: archetype: assigned against blockers, and this is a triggered ability. And at 10+ Dawnsire
 #: archetype: is not a creature at all (that is the 20+ line, effectively unreachable), so it
 #: archetype: never attacks; "whenever you attack" triggers off any creature you attack with.
-#: archetype: DISTINCTNESS: the poison plan moved out to variant 26a, which is built on
+#: archetype: DISTINCTNESS: the poison plan moved out to variant 26a (BUILT 2026-07, 60 cards,
+#: archetype: `similar` 72% / 16 shared nonland cards / 21 unique to 26a), which is built on
 #: archetype: Virulent Silencer and many cheap evasive NONTOKEN bodies. This deck keeps the
 #: archetype: Silencer as a free alternate win (one owned copy serves both decks) but is
 #: archetype: built the opposite way: few enormous bodies instead of many small evasive ones.
