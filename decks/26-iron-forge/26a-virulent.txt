@@ -34,6 +34,21 @@
 #: archetype: COPY of the Silencer itself, which still carries the triggered ability — the word
 #: archetype: "nontoken" describes the creatures being watched, not the watcher — so two
 #: archetype: Silencers means FOUR poison per connection.
+#: archetype: THE UNBLOCKABLE PACKAGE (added pass 2, and it is the sharpest tool here). Poison
+#: archetype: needs COMBAT DAMAGE to connect, so guaranteeing one connection is worth more than
+#: archetype: a bigger body — and note poison does NOT scale with power, which makes one card
+#: archetype: unusually good: Atomic Microsizer's drawback ("that creature has base power and
+#: archetype: toughness 1/1 until end of turn") costs this deck literally NOTHING, so a {U}
+#: archetype: Equipment becomes a repeatable "make anything unblockable" every attack. Pym
+#: archetype: Particles is {U} for unblockable + vigilance + a card. Rogue's Passage does the
+#: archetype: job from the LAND slot, costing no card at all. Fugitive Droid is free whenever an
+#: archetype: artifact entered this turn, which Diamond Pick-Axe's per-attack Treasure now makes
+#: archetype: reliable, and Gingerbrute pays {1} for it.
+#: archetype: SHURI IS A REPEATABLE SILENCER-DOUBLER, which is not obvious from her text.
+#: archetype: "{1}, {T}: Target artifact you control becomes a copy of a second target artifact
+#: archetype: you control until end of turn" — point any spare artifact at Virulent Silencer and
+#: archetype: you have TWO Silencers, i.e. four poison per connecting creature, every turn for
+#: archetype: {1}. Her "artifact spells cost {1} less" also accelerates the whole carrier layer.
 #: archetype: EVASION IS GRANTED, NOT JUST NATIVE. Krang gives every other artifact creature
 #: archetype: flying, trample, indestructible and haste at once. Falcon's Wing Harness attaches
 #: archetype: itself on entry for +1/+1, flying and ward {1}, so it both makes a carrier and
@@ -77,10 +92,37 @@
 #: notes: owned untapped UR dual. `check` flags War Machine, Legacy of Iron as a W colour
 #: notes: stray; that is a FALSE POSITIVE — `deck.py mana` confirms "hybrid — paid on-color",
 #: notes: since {2}{R/W} is payable as {2}{R}. Do not widen #: colors: for it.
-#: notes: CARD ADVANTAGE IS 2 AND THAT IS THE THIN AXIS. Rook Turret's loot, H.E.R.B.I.E.'s
-#: notes: ETB draw, Iron Lad's reveal-an-artifact tap and the animation spells' riders are all
-#: notes: real but mostly single-draw, which role_tally does not count. The four tutors are the
-#: notes: substitute: in a one-payoff deck, finding the payoff IS the card advantage.
+#: notes: CARD ADVANTAGE IS 2 AND THAT IS THE THIN AXIS. Rook Turret's loot, Mechan Navigator's
+#: notes: loot-on-tap, H.E.R.B.I.E.'s ETB draw, Iron Lad's reveal-an-artifact tap, Pym Particles
+#: notes: and both animation spells all draw, but nearly all are SINGLE-draw, which role_tally
+#: notes: does not count. The four tutors are the real substitute: in a one-payoff deck, finding
+#: notes: the payoff IS the card advantage. It measured 1 at one point in pass 2 and that was
+#: notes: too thin even for an aggro deck — Mechan Navigator was chosen over a second one-shot
+#: notes: unblockable cantrip specifically to put it back to 2 while staying a carrier.
+#: notes: PASS 2 (2026-07, same day as the build). OUT: Aerial Doombot, Flying Octobot,
+#: notes: Super-Adaptoid (all 1/1-or-*/2 bodies — the three weakest carriers) · Mouser Mark III
+#: notes: (a 2/3 with NO evasion of any kind, so it cannot carry poison unless Krang is out) ·
+#: notes: Viv Vision. Cutting Viv Vision was a good call and not mine: her draw needs power 4+,
+#: notes: and I checked — in THIS deck only Iron Man Armor's +2/+1 gets her there, where core 26
+#: notes: had Iron Spider's board-wide counters and Donatello Mutant Mechanic's three. My
+#: notes: earlier claim that she was clearly a 26a card was wrong.
+#: notes: IN: Shuri (owned — the Silencer-doubler, see archetype) · Pym Particles (owned) ·
+#: notes: Atomic Microsizer · Diamond Pick-Axe (owned) · Mechan Navigator · Rogue's Passage
+#: notes: (land slot, replacing an Island). Measured: avg MV 3.05 -> 2.97, early drops 15 -> 16,
+#: notes: clock 4/7 -> 5/7, interaction held at 8, card advantage held at 2.
+#: notes: FIN FANG FOOM AND MICA WERE EXCLUDED DELIBERATELY, and NOT for lack of triggers —
+#: notes: Foom has EIGHT artifact-targeting spells to copy here (Relm's Sketching, Scour for
+#: notes: Scrap, I Am Iron Man, Mind Transfer Protocol, Abrade, Untimely Malfunction, Price of
+#: notes: Freedom, Fiery Annihilation) against four in core 26, so its engine is twice as live
+#: notes: in this deck. They are out because NEITHER IS AN ARTIFACT CREATURE, so neither
+#: notes: advances the poison clock, and Foom's {2}{R}{R} is the worst cost in either deck.
+#: notes: If you want the spell-copy value here, Foom is a defensible add — just know you are
+#: notes: buying a 3/5 flier that does not carry poison.
+#: notes: DIAMOND PICK-AXE ANSWERS THE ARTIFACT-TOKEN QUESTION, but not for the reason tokens
+#: notes: usually get added. Its Treasures cannot carry poison (tokens never can). What they do
+#: notes: is satisfy Fugitive Droid's "if an artifact entered the battlefield under your control
+#: notes: this turn" every turn you attack, and feed affinity on Memory Guardian and Valkyrie
+#: notes: Aerial Unit. That is the only reason to run a token-maker in this deck.
 #: notes: DISTINCTNESS, MEASURED not asserted: `similar` reads 72% against core 26 and reports
 #: notes: 16 SHARED nonland cards. Unlike the deck-43-vs-42 case that number is meaningful
 #: notes: rather than a tag artifact — but 21 of 37 nonland cards (57%) are 26a-only, including
@@ -98,8 +140,9 @@
 #: notes: tagged themes (sacrifice 1/0, lifegain 6/0, counters 5/0, graveyard 2/1, all
 #: notes: incidental), and this deck's actual engine — Silencer plus nontoken artifact carriers
 #: notes: plus granted evasion — is not a tagged theme at all. Do not tune off that output.
-#: notes: CRAFT TARGETS (8, all Uncommon): Virulent Silencer, Fireshrieker, Living Brain,
-#: notes: Fugitive Droid, Scour for Scrap, Memory Guardian, Valkyrie Aerial Unit, Iron Lad.
+#: notes: CRAFT TARGETS (11, ten Uncommon + one Common): Virulent Silencer, Fireshrieker, Living Brain,
+#: notes: Fugitive Droid, Scour for Scrap, Memory Guardian, Valkyrie Aerial Unit, Iron Lad,
+#: notes: Atomic Microsizer, Mechan Navigator, Rogue's Passage.
 #: notes: Everything else is owned. Silencer and Fireshrieker are the two that must come first —
 #: notes: the Silencer is the deck and Fireshrieker doubles its clock.
 
@@ -117,20 +160,18 @@
 1 I Am Iron Man (MSH) 58
 1 Mind Transfer Protocol (TMT) 45
 1 Living Brain, Mechanical Marvel (SPM) 167
+1 Shuri, Wakandan Inventor (MSH) 75
+1 Atomic Microsizer (EOE) 47
+1 Diamond Pick-Axe (LCI) 143
 
 # Carriers — nontoken artifact creatures
-1 Aerial Doombot (MSH) 43
 1 Fugitive Droid (TMT) 40
 1 Gingerbrute (ELD) 219
 1 Steelswarm Operator (EOE) 80
 1 Diversion Unit (DFT) 41
-1 Flying Octobot (SPM) 31
-1 Mouser Mark III (TMT) 159
-1 Super-Adaptoid (MSH) 250
 1 Machinesmith Automaton (MSH) 144
 1 War Machine, Legacy of Iron (MSH) 238
 1 War Balloon (TLA) 159
-1 Viv Vision, Teen Synthezoid (MSH) 256
 1 Rook Turret (FIN) 69
 1 Metalhead (TMT) 44
 1 Memory Guardian (DFT) 49
@@ -147,10 +188,22 @@
 1 Galvanize (MKM) 128
 1 Price of Freedom (TLA) 149
 1 Fiery Annihilation (FDN) 86
+1 Pym Particles (MSH) 70
+1 Mechan Navigator (DFT) 48
 
 # Lands (23) — leaner and less tapped than core 26's
 1 Riverpyre Verge (DFT) 260
 2 Stark Industries (MSH) 272
 2 Swiftwater Cliffs (MOM) 273
-9 Island (MSH) 290
+1 Rogue's Passage (FDN) 264
+8 Island (MSH) 290
 9 Mountain (MSH) 294
+
+# Flex — considered and parked. See: deck.py flex 26a
+#~ note: applied — PASS 2: OUT Aerial Doombot, Flying Octobot, Super-Adaptoid, Mouser Mark III, Viv Vision. IN Shuri, Pym Particles, Atomic Microsizer, Diamond Pick-Axe, Mechan Navigator, + Rogue's Passage for an Island. avg MV 3.05 -> 2.97, clock 4/7 -> 5/7.
+#~ +Trade the Helm | CRAFT (Uncommon) — {4}{U} "exchange control of target artifact or creature you control and target artifact or creature an opponent controls", cycling {2}. A genuinely good idea for this deck: hand them a Treasure or a 1/1 and take the blocker that is stopping the clock, and it is never dead thanks to cycling. Parked purely on cost — five mana is a lot in a deck with avg MV 2.97 and sixteen early drops. Take it if the deck keeps losing to a single large blocker.
+#~ +Enter the Enigma | OWNED — {U} sorcery: target creature can't be blocked, draw a card. A second Pym Particles minus the vigilance. Lost its slot to Mechan Navigator because card advantage had fallen to 1 and the Navigator both draws AND is a carrier; take Enter the Enigma if you would rather have a second guaranteed connection than a body.
+#~ +Cryptic Coat | CRAFT (Rare) — {2}{U} Equipment: "equipped creature gets +1/+0 and can't be blocked", plus it cloaks the top card of your library and attaches itself. PERMANENT unblockability is the strongest version of this deck's key effect. Note the cloaked 2/2 is NOT an artifact creature, so move the Coat onto a real carrier. Parked as the one Rare worth considering.
+#~ +Ragged Playmate | CRAFT (Common) — {1}{R} artifact creature (so a carrier itself) with "{1}, {T}: target creature with power 2 or less can't be blocked". Most of this deck's carriers are power 2 or less, so it is repeatable unblockability on a body. Cheapest way to add a second repeatable enabler after Atomic Microsizer.
+#~ +Deserter's Disciple | OWNED — {1}{R}, "{T}: another target creature you control with power 2 or less can't be blocked". Same effect as Ragged Playmate for zero wildcards, but it is NOT an artifact creature, so it adds no carrier and no artifact count.
+#~ +Fin Fang Foom | OWNED — has EIGHT artifact-targeting spells to copy in this deck against four in core 26, so its engine is twice as live here. Excluded anyway because it is not an artifact creature and cannot carry poison, and {2}{R}{R} is the worst cost in either deck. A defensible add if you want the spell-copy value.

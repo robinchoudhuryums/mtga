@@ -4,7 +4,7 @@
 #: plan: midrange
 #: tier: A — Izzet artifacts/robots, rebuilt 2026-07 around RAMP-TO-HEAVY-HITTERS plus a
 #: tier: Station package. Metrics floor is A on interaction 8 + card
-#: tier: advantage 4, protection 3, avg MV 3.64. The letter buys what the floor cannot see:
+#: tier: advantage 5, protection 3, avg MV 3.56. The letter buys what the floor cannot see:
 #: tier: Krang, Bygone Colossus, Chronicle of Victory, Ultron, Iron Man and Dawnsire are
 #: tier: real bombs, and Tony Stark's back face plus Tannuk make them arrive early. Held at
 #: tier: A rather than argued up to S because the plan is UNPLAYED in this configuration and
@@ -126,6 +126,19 @@
 #: notes: offered as a substitute and is NOT needed on trigger grounds.
 #: notes: MICA now has EIGHT triggers, every instant and sorcery in the deck, up from four at
 #: notes: pass 1. That strengthens the case for it as Foom redundancy rather than replacement.
+#: notes: PASS 4 — Sokka, Bold Boomeranger in for Metalhead, chosen by measuring all four
+#: notes: candidates in that one slot: Sokka (card advantage 5, avg MV 3.56, early drops 11) beat
+#: notes: Mechan Assembler (4 / 3.64 / 10), Donatello Gadget Master (4 / 3.58 / 10) and Mica
+#: notes: (4 / 3.61 / 10). Sokka's second clause is the reason — "whenever you cast an artifact
+#: notes: or LESSON spell, put a +1/+1 counter" fires off 22 of the 36 nonland cards here (21
+#: notes: artifacts plus Price of Freedom, which is a Lesson), so a two-mana 1/1 becomes a real
+#: notes: threat while the ramp sets up. TWO HONEST CAVEATS: his measured card advantage of 5 is
+#: notes: INFLATED, because "discard up to two, then draw that many" is a net-neutral rummage
+#: notes: that role_tally scores as card advantage — read it as 4, same as Metalhead. And
+#: notes: Metalhead was a HASTE source ({R}, sac an artifact: counter + menace + haste), which
+#: notes: the warp plan wants; haste now comes only from Tannuk's board-wide grant and Full
+#: notes: Bore's warp-gated clause. If warped bodies keep sitting idle, Metalhead is the card to
+#: notes: bring back. He is also one of only four Mjölnir-worthy creatures.
 #: notes: PASS 2'S ONE REAL COST: protection 4 -> 3. Super-Adaptoid was classified as
 #: notes: Protection / trick (it copies indestructible off a target creature), so cutting it
 #: notes: spent a point on that axis. Protection is REPORTED but deliberately not fed into the
@@ -171,7 +184,7 @@
 1 Donatello, Mutant Mechanic (TMT) 36
 1 Ironheart, Clever Champion (MSH) 60
 1 Iron Man, Master of Machines (MSH) 216
-1 Metalhead (TMT) 44
+1 Sokka, Bold Boomeranger (TLA) 240
 1 Machinesmith Automaton (MSH) 144
 1 Weftstalker Ardent (EOE) 169
 1 Fin Fang Foom (MSH) 129
