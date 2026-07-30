@@ -91,6 +91,29 @@
 #: notes: PRINTED stats — a dork that becomes a 14/14 under Craterhoof still does not satisfy an
 #: notes: ENTERS trigger. The static "creatures you control have trample" is unconditional and is
 #: notes: the reason both copies are in. Do not count its draw when grading this deck.
+#: notes: DOUBLE STRIKE IS NOT AN ALTERNATIVE TO TRAMPLE HERE, and the reasoning is worth keeping
+#: notes: because the two get conflated. A 9999/1 Jumbo Cactuar with double strike, blocked by a
+#: notes: 1/1, deals 9999 to the BLOCKER in the first-strike step and 9999 to it AGAIN in the
+#: notes: regular step — zero to the player both times. Double strike multiplies damage that is
+#: notes: already connecting; trample changes WHERE the damage goes, and Cactuar's problem is the
+#: notes: second one. (Green/colorless has exactly two double-strike granters anyway, The Vision
+#: notes: and Thrumming Hivepool, and neither is castable to purpose here.)
+#: notes: ROGUE'S PASSAGE IS THE SECOND EVASION ROUTE and it costs no spell slot. "{4}, {T}:
+#: notes: Target creature can't be blocked this turn" is the one fix that does not require
+#: notes: drawing Craterhoof or Garruk's Uprising, so the two Aura-style finishers stop being
+#: notes: dead when no trample grant is in hand. Measured as FREE: swapping it for a Forest moved
+#: notes: nothing — below-90 held at 3, interaction 6, card advantage 2, avg MV 3.11, 21 early
+#: notes: drops, 25 creatures, all identical. A second evasion land (Secret Tunnel) was tested
+#: notes: and REJECTED: it took below-90 from 3 to 4, since green sources drop too far.
+#: notes: THE EARTH CRYSTAL WAS TESTED AND REJECTED, against five different cuts. "Green spells
+#: notes: you cast cost {1} less" plus counter-doubling is genuinely good and it is OWNED, but
+#: notes: every cut that funds it costs either a CREATURE — the deck's actual currency, since
+#: notes: creature count feeds Craterhoof, Enduring Vitality and Three Tree City alike — or the
+#: notes: curve (best case, cutting Loot: avg MV 3.11 -> 3.14 and a creature gone, for no
+#: notes: measurable gain). A noncreature accelerant is simply the wrong kind of acceleration
+#: notes: for this deck. Cutting AGGRESSIVE MAMMOTH for it measured BEST on every axis and was
+#: notes: rejected on text: "Other creatures you control have trample" makes it the deck's third
+#: notes: board-wide trample source, and no metric here can see that trample is load-bearing.
 
 # Mana creatures — bodies, ramp, and Craterhoof's X, all at once
 2 Llanowar Elves (M19) 314
@@ -136,6 +159,7 @@
 1 Clash of the Eikons (FIN) 180
 1 Coordinated Clobbering (DSK) 173
 
-# Lands (24) — Three Tree City names Druid
+# Lands (24) — Three Tree City names Druid; Rogue's Passage is the 2nd evasion route
 1 Three Tree City (BLB) 260
-23 Forest (MSH) 295
+1 Rogue's Passage (FDN) 264
+22 Forest (MSH) 295

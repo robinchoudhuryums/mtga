@@ -136,6 +136,8 @@ Hoarding Dragon,Creature — Dragon,"Flying
 When this creature enters, you may search your library for an artifact card, exile it, then shuffle.
 When this creature dies, you may put the exiled card into its owner's hand.",R,Dragon; etb; flying; evasion,FDN,626,Uncommon,49,,5.0,hand
 Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0,hand
+Rogue's Passage,Land,"{T}: Add {C}.
+{4}, {T}: Target creature can't be blocked this turn.",Colorless,mana,FDN,264,Uncommon,50,"2nd evasion route in 50: {4},{T} unblockable is the fix for Jumbo Cactuar / Colossification that does NOT need a trample grant in hand. Measured free against a Forest.",6.0,hand
 Lightshell Duo,Creature — Rat Otter,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,Rat; Otter; graveyard; etb; pump; selection; surveil; prowess; spellslinger; tempo,FDN,157,Common,37,,3.0,hand
 Rapacious Dragon,Creature — Dragon,"Flying
