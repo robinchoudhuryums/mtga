@@ -52,6 +52,27 @@
 #: notes: even 48, and it shares at most four nonland cards with any of them. Building the
 #: notes: Vehicle half as a variant rather than a third artifact deck was the right call: it
 #: notes: reads as a different deck to the model, not a re-skin.
+#: notes: PASS 2 — seven adds plus a land, from the leftover pile.
+#: notes: IN: Mica, Reader of Ruins (copies every instant and sorcery for the cost of sacrificing
+#: notes: an artifact, which this deck produces as Treasure anyway — the un-taken upgrade in
+#: notes: three previous decks, finally placed) · The Mechanist (a Clue on every noncreature
+#: notes: spell, and its {T} animates an artifact TOKEN into a 3/1 flier, which is live here
+#: notes: because Treasures and Pilot tokens are artifact tokens) · Gleaming Geardrake · Magnetic
+#: notes: Snuffler (returns an Equipment from the graveyard attached, and grows on every artifact
+#: notes: sacrifice) · Dracosaur Auxiliary (saddle 3 is trivial off tokens) · THE ETERNITY
+#: notes: ELEVATOR and EXTINGUISHER BATTLESHIP, rehomed from deck 47 — both were rejected there
+#: notes: for carrying no affinity in a deck built on cost reduction, and both belong here where
+#: notes: Station and Treasure support them · Volatile Fault (land).
+#: notes: OUT: Reckless Velocitaur · Untimely Malfunction · Fiery Annihilation · Meteor Golem
+#: notes: (Extinguisher Battleship is the better version of the same effect) · Purple Dragon
+#: notes: Punks (a mana dork that is neither an artifact nor a Vehicle) · Luxurious Locomotive
+#: notes: (The Regalia is the better card in that slot — 4 mana not 5, haste built in, and it
+#: notes: ramps a LAND per attack rather than one Treasure) · Push the Limit.
+#: notes: MEASURED: card advantage 1 -> 2, which is the axis this deck was flagged weakest on;
+#: notes: interaction 10 -> 9, avg MV 3.11 -> 3.19. THE DOUBLE-RED COUNT IS UNCHANGED despite
+#: notes: adding Dracosaur Auxiliary: it replaces Push the Limit, which was also {R}{R}, and
+#: notes: does it at MV 6 instead of 7. Truck Toss (69.6% on curve) and Dracosaur (75.3%) are
+#: notes: the two to watch against 13 red sources.
 #: notes: KNOWN SOFT SPOTS: crewing costs bodies, so a sweeper that kills the cheap creatures
 #: notes: leaves the Vehicles stranded as noncreature artifacts (which is also their defence —
 #: notes: they dodge creature removal at instant speed). And the deck is craft-heavy; the
@@ -65,23 +86,23 @@
 1 Fire Nation Warship (TLA) 256
 1 War Balloon (TLA) 159
 1 Passenger Ferry (SPM) 170
-1 Luxurious Locomotive (OTJ) 244
+1 The Eternity Elevator (EOE) 241
 1 The Regalia (FIN) 267
 1 Invasion Submersible (TLA) 57
 
 # Vehicle payoffs
 1 Truck Toss (MSH) 157
-1 Reckless Velocitaur (DFT) 144
+1 Mica, Reader of Ruins (SOS) 124
 1 Chandra, Spark Hunter (DFT) 116
 1 Guidelight Matrix (DFT) 233
-1 Push the Limit (DFT) 143
+1 Dracosaur Auxiliary (DFT) 122
 
 # Crew — cheap bodies that also make Treasure
 1 Kavaron Harrier (EOE) 139
 1 Aerial Doombot (MSH) 43
 1 Gingerbrute (ELD) 219
 1 Stark Industries Executive (MSH) 153
-1 Purple Dragon Punks (TMT) 100
+1 Magnetic Snuffler (MKM) 254
 1 Casey Jones, Jury-Rig Justiciar (TMT) 87
 
 # Treasure engine
@@ -96,13 +117,13 @@
 # Finishers the Treasure pays for
 1 Summon: Bahamut (FIN) 1
 1 Radiant Lotus (DFT) 240
-1 Meteor Golem (FDN) 256
+1 Extinguisher Battleship (EOE) 242
 
 # Interaction
 1 Abrade (FDN) 188
 1 Plasma Bolt (EOE) 152
-1 Fiery Annihilation (FDN) 86
-1 Untimely Malfunction (DSK) 161
+1 Gleaming Geardrake (MKM) 205
+1 The Mechanist, Aerial Artisan (TLA) 64
 1 Hell to Pay (OTJ) 126
 1 Scrap Compactor (DFT) 242
 
@@ -113,5 +134,6 @@
 1 Riverpyre Verge (DFT) 260
 2 Stark Industries (MSH) 272
 1 Swiftwater Cliffs (MOM) 273
-9 Mountain (MSH) 294
+8 Mountain (MSH) 294
+1 Volatile Fault (LCI) 286
 8 Island (MSH) 290
