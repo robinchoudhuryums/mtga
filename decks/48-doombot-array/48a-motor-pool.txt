@@ -1,0 +1,117 @@
+#: name: Doombot Array — Motor Pool
+#: format: Standard
+#: colors: UR
+#: based-on: deck.txt
+#: plan: midrange
+#: protect: Lifecraft Engine; Summon: Bahamut; Tangle Tumbler; The Regalia; Brass's Bounty
+#: archetype: IZZET VEHICLES + TREASURE, the variant of 48 that attacks the same problem from
+#: archetype: the other side. Where 48 makes many small Robots enormous with anthems, this deck
+#: archetype: fields a handful of oversized VEHICLES, crews them with cheap bodies and Treasure,
+#: archetype: and finishes with permanents nobody hard-cast.
+#: archetype: LIFECRAFT ENGINE IS THE BRIDGE between the two lists and it is the reason this is
+#: archetype: a variant rather than an unrelated deck: "Vehicle creatures you control are the
+#: archetype: chosen creature type in addition to their other types" means naming Robot turns
+#: archetype: every Vehicle here into a Robot, so the same lord that anchors 48 also works here.
+#: archetype: A CREWED VEHICLE IS A NONTOKEN ARTIFACT CREATURE, which is worth stating because
+#: archetype: it is what makes the crew bodies do double duty — Tangle Tumbler is a 6/6 for {3}
+#: archetype: that crews by tapping two TOKENS rather than by power, so the Treasures and Pilot
+#: archetype: tokens this deck makes anyway turn it on for free. The Prima Vista crews ITSELF
+#: archetype: whenever you spend four or more mana on a noncreature spell.
+#: archetype: TREASURE IS THE FUEL, not the plan. It crews, it fixes the two-colour base, and it
+#: archetype: ramps into the three cards that actually end games. Sources: Goldvein Pick and
+#: archetype: Diamond Pick-Axe on combat damage, Stark Industries Executive and Collector's
+#: archetype: Vault on demand, Prompto Argentum and Death to Our Enemies off noncreature spells,
+#: archetype: Hell to Pay off excess damage, and Brass's Bounty for a Treasure PER LAND.
+#: archetype: THE FINISHER IS SUMMON: BAHAMUT, and its fourth chapter is the payoff the whole
+#: archetype: Treasure engine is building toward: "deals damage equal to the TOTAL MANA VALUE OF
+#: archetype: OTHER PERMANENTS you control to each opponent". In a deck full of Vehicles,
+#: archetype: Equipment and Treasures that is frequently lethal from a stalled board, and it
+#: archetype: does not care whether any of them can attack. Radiant Lotus converts a Treasure
+#: archetype: pile into the mana to get there early; Push the Limit returns every Vehicle in the
+#: archetype: graveyard with haste for one alpha strike.
+#: archetype: DISTINCTNESS from its own parent: 48 wins by making a wide board bigger and needs
+#: archetype: creature COUNT; this deck wins with a few large permanents and a non-combat
+#: archetype: damage finisher, and is happy with an empty board as long as the artifacts stay.
+#: notes: BUILT 2026-07 from the same 122-card pile as 48.
+#: notes: UNGRADED ON PURPOSE — no `#: tier:` until played.
+#: notes: REEF ROADS AND ROCKY ROADS are the Vehicle-aware lands: each enters UNTAPPED if you
+#: notes: control a Mount or Vehicle, and each sacrifices for a 1/1 Pilot token that crews as
+#: notes: though its power were 4 — i.e. a land that becomes a crew member for any Vehicle here.
+#: notes: TRUCK TOSS costs {2} less with a Vehicle on board, so it is {R}{R} for 4 damage to any
+#: notes: target — the deck's cheapest removal and reach, priced by the theme itself.
+#: notes: CHANDRA, SPARK HUNTER earns her slot here where she could not in deck 26: her combat
+#: notes: trigger animates a Vehicle every turn and her 0 makes a 3/2 Vehicle token, both of
+#: notes: which were dead in a deck running zero Vehicles.
+#: notes: MEASURED: interaction 10, card advantage 1, avg MV 3.11, 17 early drops. CARD
+#: notes: ADVANTAGE 1 IS THE REAL WEAKNESS — Collector's Vault's loot, Fire Nation Warship's
+#: notes: Clue and Casey Jones's dig are all real but none is counted, and even read generously
+#: notes: this deck refuels worse than any of its siblings. It compensates by making its cards
+#: notes: bigger rather than more numerous, which is a fair trade only while the board holds.
+#: notes: DISTINCTNESS IS EXCELLENT and better than its parent's: `similar` puts its nearest
+#: notes: neighbours at decks 1, 9 and 8 — TREASURE and sacrifice decks — not at 26, 26a, 47 or
+#: notes: even 48, and it shares at most four nonland cards with any of them. Building the
+#: notes: Vehicle half as a variant rather than a third artifact deck was the right call: it
+#: notes: reads as a different deck to the model, not a re-skin.
+#: notes: KNOWN SOFT SPOTS: crewing costs bodies, so a sweeper that kills the cheap creatures
+#: notes: leaves the Vehicles stranded as noncreature artifacts (which is also their defence —
+#: notes: they dodge creature removal at instant speed). And the deck is craft-heavy; the
+#: notes: owned core is Lifecraft Engine, War Balloon, Truck Toss, Guidelight Matrix, the
+#: notes: Treasure package and Summon: Bahamut, with most of the Vehicles unowned.
+
+# Vehicles — crewed, these are nontoken artifact creatures
+1 Lifecraft Engine (DFT) 234
+1 Tangle Tumbler (BLB) 250
+1 The Prima Vista (FIN) 64
+1 Fire Nation Warship (TLA) 256
+1 War Balloon (TLA) 159
+1 Passenger Ferry (SPM) 170
+1 Luxurious Locomotive (OTJ) 244
+1 The Regalia (FIN) 267
+1 Invasion Submersible (TLA) 57
+
+# Vehicle payoffs
+1 Truck Toss (MSH) 157
+1 Reckless Velocitaur (DFT) 144
+1 Chandra, Spark Hunter (DFT) 116
+1 Guidelight Matrix (DFT) 233
+1 Push the Limit (DFT) 143
+
+# Crew — cheap bodies that also make Treasure
+1 Kavaron Harrier (EOE) 139
+1 Aerial Doombot (MSH) 43
+1 Gingerbrute (ELD) 219
+1 Stark Industries Executive (MSH) 153
+1 Purple Dragon Punks (TMT) 100
+1 Casey Jones, Jury-Rig Justiciar (TMT) 87
+
+# Treasure engine
+1 Goldvein Pick (FDN) 253
+1 Diamond Pick-Axe (LCI) 143
+1 Prompto Argentum (FIN) 148
+1 Collector's Vault (WOE) 244
+1 Death to Our Enemies (MSH) 127
+1 Brass's Bounty (FDN) 190
+1 Reckless Ransacking (ECL) 152
+
+# Finishers the Treasure pays for
+1 Summon: Bahamut (FIN) 1
+1 Radiant Lotus (DFT) 240
+1 Meteor Golem (FDN) 256
+
+# Interaction
+1 Abrade (FDN) 188
+1 Plasma Bolt (EOE) 152
+1 Fiery Annihilation (FDN) 86
+1 Untimely Malfunction (DSK) 161
+1 Hell to Pay (OTJ) 126
+1 Scrap Compactor (DFT) 242
+
+# Lands (24) — Reef/Rocky Roads enter untapped with a Vehicle out
+1 Reef Roads (DFT) 259
+1 Rocky Roads (DFT) 261
+1 The Gold Saucer (FIN) 279
+1 Riverpyre Verge (DFT) 260
+2 Stark Industries (MSH) 272
+1 Swiftwater Cliffs (MOM) 273
+9 Mountain (MSH) 294
+8 Island (MSH) 290
