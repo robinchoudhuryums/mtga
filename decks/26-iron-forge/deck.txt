@@ -1,95 +1,132 @@
 #: name: Iron Forge
 #: format: Standard
-#: tier: A — Izzet artifacts/robots; Iron Man/Ultron bombs + 9 interaction + 4 card advantage on a tightened 2-color base (down from Jeskai). Re-graded B→A: measurable floor is A (solid interaction + card advantage) and the deck adds real bombs the metrics can't see — the earlier B under-rated a coherent 2-color engine.
 #: colors: UR
-#: archetype: Izzet (U/R) artifacts + Robot tribal — the finalized playable 60; Iron Man / Ultron payoffs, Dawnsire for removal, The Ten Rings for card advantage. (Trimmed down FROM a Jeskai W/U/R build; the header said Jeskai for several cycles after the white was cut.)
-#: notes: The tuned, legal 60 (promoted from the old 73-card brew, which is archived
-#: notes: as variant 26b-full-pile). Removed the off-color Bullseye (B) and the weakest
-#: notes: filler/equipment; kept Dawnsire (its 10+ mode is repeatable removal), swapped
-#: notes: the 8-mana Walls of Ba Sing Se for The Vision, and −Super Suit / +The Ten Rings
-#: notes: (an artifact hand-refill engine, discounted by Shuri).
-#: notes: SECOND WIN AXIS — Virulent Silencer in for Steel Wrecking Ball (craft, U): every
-#: notes: NONTOKEN artifact creature that connects gives 2 poison. 16 of the 25 creatures
-#: notes: qualify, 12 have native evasion, and Krang grants flying+trample to all the rest,
-#: notes: so 2 connections a turn is a 3-attack clock that ignores lifegain and life totals.
-#: notes: It converts the SMALL air force (Steelswarm Operator 1/1, Aerial Doombot 1/1, Viv
-#: notes: Vision 2/2) from chip damage into a real clock. Iron Man Armor's {2} self-animate
-#: notes: is already a carrier. The word to remember is NONTOKEN: Mouser Foundry, Retrieve
-#: notes: the Esper, Castle Doom and Ultron's copies all make bodies the Silencer ignores.
-#: notes: Cut Steel Wrecking Ball as the deck's lowest-power card (5 mana for what Fiery
-#: notes: Annihilation does for 3, second mode duplicating Abrade); interaction 9 -> 8
-#: notes: against a need of 5.
-#: notes: MANABASE FIXED 2026-07 — the deck ran ZERO dual lands (10 Mountain was its only
-#: notes: red source), which was the root cause of 17 sub-90% cast-on-curve rows. -2
-#: notes: Mountain -2 Island, +Riverpyre Verge (the one owned UNTAPPED UR dual) + 2 Stark
-#: notes: Industries + Swiftwater Cliffs: R 10 -> 12, U 12 -> 14, sub-90% rows 17 -> 14,
-#: notes: and both {R}{U} four-drops (Iron Man, Armor Wars) cleared their shortfall note.
-#: notes: Cost: tapped lands 1 -> 4, which `consistency` does NOT price — it models colour
-#: notes: availability only. Riverpyre Verge is the only untapped owned option; Spirebluff
-#: notes: Canal (R craft) is the only way to add untapped fixing.
-#: notes: FIN FANG FOOM RESCUED, not cut. Its copy clause needs an instant/sorcery that
-#: notes: TARGETS an artifact or land, and the deck had ONE situational enabler (Abrade in
-#: notes: its destroy-artifact mode; Fiery Annihilation only with an Equipment to exile),
-#: notes: against 2 instants + 1 sorcery total. Its {2}{R}{R} was also the worst cast-on-
-#: notes: curve in the deck at 53%. Rather than cut a build-around the deck simply wasn't
-#: notes: feeding: +I Am Iron Man (-Retrieve the Esper) and +Price of Freedom (-Oreplate
-#: notes: Pangolin), both OWNED, 0 wildcards. Both are GUARANTEED triggers — I Am Iron Man
-#: notes: targets your own artifact, Price of Freedom reads "artifact OR LAND an opponent
-#: notes: controls" and so can never fizzle. Enablers: 1 situational -> 2 guaranteed + 2
-#: notes: situational. The real payoff is "put two +1/+1 counters": a 3/5 flier becomes 5/7
-#: notes: after one trigger, 7/9 after two, and Krang makes it indestructible.
-#: notes: THE CONVERGENCE: I Am Iron Man animates a NONCREATURE artifact into a 4/4 with
-#: notes: FLYING, which is a nontoken artifact creature — i.e. a Virulent Silencer trigger
-#: notes: for 2 poison off a permanent that wasn't attacking. Point it at The Ten Rings,
-#: notes: Cosmic Cube, Buster Sword, Mjölnir or Technodrome. Iron Man Armor's {2} self-
-#: notes: animate already did this for free.
-#: notes: TWO FIGURES NOT TO MISREAD. (1) Card advantage still reads 4: role_tally
-#: notes: deliberately does not count a single-draw cantrip, so both new cards' "Draw a
-#: notes: card" riders are invisible to the counter. Read it as 4 measured, ~6 on a text
-#: notes: read. (2) central_themes jumped 18 -> 29 and that is a CUTOFF ARTIFACT, not a
-#: notes: synergy gain: cutting the two `counters` cards dropped the dominant theme 14 ->
-#: notes: 12, so _central_themes' 25%-of-max bar fell from 3.50 to 3.00 and ten themes
-#: notes: crossed a LOWERED bar. The deck did not get more synergistic.
+#: plan: midrange
+#: tier: A — Izzet artifacts/robots, rebuilt 2026-07 around RAMP-TO-HEAVY-HITTERS plus a
+#: tier: Station package. Metrics floor is A on interaction 7 (3 unclassified) + card
+#: tier: advantage 5, protection 4, avg MV 3.78. The letter buys what the floor cannot see:
+#: tier: Krang, Bygone Colossus, Chronicle of Victory, Ultron, Iron Man and Dawnsire are
+#: tier: real bombs, and Tony Stark's back face plus Tannuk make them arrive early. Held at
+#: tier: A rather than argued up to S because the plan is UNPLAYED in this configuration and
+#: tier: carries two live risks: nine cards at MV 5+, and TWO {R}{R} costs (Fin Fang Foom,
+#: tier: Tannuk) that both price at 69.6% on turn four against 13 red sources.
+#: archetype: Izzet (U/R) artifacts + Robot tribal, built to RAMP INTO HEAVY HITTERS. Three
+#: archetype: acceleration layers, not one: Tony Stark flips into The Invincible Iron Man
+#: archetype: ("you may put an artifact card from your hand onto the battlefield" every
+#: archetype: combat — free Krang, free Bygone Colossus, free Chronicle); Tannuk gives every
+#: archetype: artifact card in hand warp {2}{R} plus board-wide haste; and Steelswarm
+#: archetype: Operator / Ironheart's improvise-granting / Cosmic Cube / Vision Quest each
+#: archetype: cheat cost a different way. The bodies GROW on the way there — Machinesmith
+#: archetype: Automaton, Iron Spider's board-wide counter tap, Donatello Mutant Mechanic's
+#: archetype: three-counter animate, Super-Adaptoid scaling off the legend count.
+#: archetype: THE STATION PACKAGE is the piece worth knowing. Station's cost is "tap ANOTHER
+#: archetype: creature you control", which is NOT that creature's own {T} ability — so
+#: archetype: summoning sickness does not apply (same reason you can crew with a creature you
+#: archetype: just cast). Warp Bygone Colossus for {3}, tap the 9/9 to Station, and Dawnsire
+#: archetype: gets NINE charge counters in one activation; any 1-power body finishes the 10+
+#: archetype: threshold and turns on "whenever you attack, deal 100 damage to up to one
+#: archetype: target creature or planeswalker" — repeatable, unconditional removal. The
+#: archetype: counters STAY when the warped Colossus is exiled, and it can be hard-cast from
+#: archetype: exile later. Kavaron, Memorial World takes 9 of its 12+ the same way, and it
+#: archetype: taps for {R}, so the Station package pays part of the red bill it creates.
+#: archetype: TWO THINGS DAWNSIRE DOES NOT DO. The 100 damage cannot target a PLAYER, so no
+#: archetype: amount of trample turns it into a kill — trample only applies to combat damage
+#: archetype: assigned against blockers, and this is a triggered ability. And at 10+ Dawnsire
+#: archetype: is not a creature at all (that is the 20+ line, effectively unreachable), so it
+#: archetype: never attacks; "whenever you attack" triggers off any creature you attack with.
+#: archetype: DISTINCTNESS: the poison plan moved out to variant 26a, which is built on
+#: archetype: Virulent Silencer and many cheap evasive NONTOKEN bodies. This deck keeps the
+#: archetype: Silencer as a free alternate win (one owned copy serves both decks) but is
+#: archetype: built the opposite way: few enormous bodies instead of many small evasive ones.
 
+#: notes: REBUILD 2026-07 — 9 cards changed. This was a plan change, not a tune: the deck
+#: notes: was an artifact goodstuff midrange list and is now a ramp-to-heavy-hitters deck
+#: notes: with a Station engine. The poison half went to variant 26a.
+#: notes: OUT (9): Aerial Doombot (1/1 flier, power-up costs 6 mana for +3/+3 — weakest card
+#: notes: under a TALL plan) · The Mechanist (its {T} animates artifact TOKENS, and this deck
+#: notes: moved away from tokens; tribes measured its Construct payoff at 1 qualifying
+#: notes: creature) · Donatello Turtle Techie (a plain 4-mana 3/4 + one card; the other two
+#: notes: Donatellos both carry engines) · Donatello Way with Machines (redundant with
+#: notes: Machinesmith Automaton, which does the same growth on a trample body) · HYDRA
+#: notes: Assault Robot (Weftstalker Ardent pings EACH opponent and has warp {R}) · Mouser
+#: notes: Foundry (token bodies serve neither the growth nor the Station plan) · Don & Leo
+#: notes: (MV 5, and the only source of the W colour-identity stray) · Technodrome (the most
+#: notes: conditional body in the deck — cannot attack or block under power 6).
+#: notes: IN (9): Bygone Colossus + Kavaron, Memorial World (the Station package) · Tannuk,
+#: notes: Steadfast Second (warp on every artifact card in hand + board haste) · Kavaron
+#: notes: Turbodrone (owned haste enabler, and a Robot) · Vision Quest (owned; tutor an
+#: notes: artifact creature ONTO the battlefield with X counters, and with haste at X>=4) ·
+#: notes: Chronicle of Victory (owned; choose Robot -> 13 of them get +2/+2, first strike and
+#: notes: trample, and every Robot spell draws) · Iron Spider (board-wide +1/+1 counter tap +
+#: notes: a draw outlet) · Mechan Assembler (4/4 that makes a 2/2 every turn) · Explosive
+#: notes: Derailment (cheap Spree removal, and a Foom/Mica enabler in its artifact mode).
+#: notes: THE MISTAKE THIS REBUILD MADE, RECORDED SO IT IS NOT REPEATED. The first pass cut
+#: notes: seven cards chosen on plan-fit and body quality. FOUR of them were carrying
+#: notes: interaction (Mjölnir, HYDRA Assault Robot, Mouser Foundry, Don & Leo) and NONE of
+#: notes: the seven adds supplies any, so interaction fell 9 -> 5 — technically still at the
+#: notes: A-floor minimum, with zero headroom, and entirely invisible while picking cuts by
+#: notes: feel. Fixed by restoring Mjölnir (its ETB "4 damage to up to one target creature"
+#: notes: is REAL removal and does not depend on having a legal equip carrier — the original
+#: notes: cut graded it as an Equipment with only 4 worthy creatures and missed that its main
+#: notes: job here is a removal spell) and adding Explosive Derailment. Interaction is now 7.
+#: notes: Lesson: run `deck.py quality` BEFORE choosing cuts, not after.
+#: notes: MANABASE. 24 lands, R 13 / U 13, six tapped. Only TWO cards now sit below 90%
+#: notes: cast-on-curve (down from 17 pre-rebuild) and they are the two {R}{R} costs, Fin
+#: notes: Fang Foom and Tannuk, both at 69.6%. That is the deck's live risk: if red screw
+#: notes: shows up in play, Tannuk is the card to cut, not Foom (Foom has the enabler package
+#: notes: built around it). Kavaron, Memorial World taps for {R} and is part of the Station
+#: notes: package, so it pays some of the bill. Keepable is 84.4%, flagged low but in range.
+#: notes: FIN FANG FOOM's enabler package survives the rebuild: I Am Iron Man and Price of
+#: notes: Freedom are both GUARANTEED triggers (one targets your own artifact, the other reads
+#: notes: "artifact OR LAND an opponent controls"), with Abrade and Explosive Derailment
+#: notes: situational in their destroy-artifact modes. Mica, Reader of Ruins is the upgrade
+#: notes: not yet taken: same copy effect with NO artifact/land restriction, {3}{R} single
+#: notes: pip, 4/4 with ward, and it triggers off all the deck's instants and sorceries.
+#: notes: FIGURES NOT TO MISREAD. Card advantage reads 5 but role_tally does not count
+#: notes: single-draw cantrips, so I Am Iron Man, Price of Freedom and Donatello Turtle
+#: notes: Techie-style riders are invisible — read it higher on a text read. THIRTEEN cards
+#: notes: were classified with no role at all, which is the documented under-count, not an
+#: notes: absence of effects. And a central_themes figure on this deck moves with the 25%-of-
+#: notes: max cutoff, so it is not comparable across edits that change the dominant theme.
 # Creatures
 1 Shuri, Wakandan Inventor (MSH) 75
-1 Fiery Annihilation (FDN) 86
 1 Steelswarm Operator (EOE) 80
 1 Tony Stark (MSH) 80
-1 Donatello, Way with Machines (TMT) 38
-1 The Mechanist, Aerial Artisan (TLA) 64
 1 Donatello, Mutant Mechanic (TMT) 36
-1 Donatello, Turtle Techie (TMT) 37
 1 Ironheart, Clever Champion (MSH) 60
-1 Don & Leo, Problem Solvers (TMT) 143
 1 Iron Man, Master of Machines (MSH) 216
 1 Metalhead (TMT) 44
-1 Aerial Doombot (MSH) 43
-1 HYDRA Assault Robot (MSH) 137
 1 Machinesmith Automaton (MSH) 144
 1 Weftstalker Ardent (EOE) 169
 1 Fin Fang Foom (MSH) 129
-1 Abrade (FDN) 188
 1 Viv Vision, Teen Synthezoid (MSH) 256
 1 Super-Adaptoid (MSH) 250
-1 Technodrome (TMT) 179
-1 Iron Man Armor (MSH) 248
 1 Ultron, Artificial Malevolence (MSH) 252
 1 Ultron Drone (MSH) 253
 1 Krang, Utrom Warlord (TMT) 175
 1 The Vision (MSH) 255
 1 Virulent Silencer (EOE) 248
+1 Kavaron Turbodrone (EOE) 141
+1 Tannuk, Steadfast Second (EOE) 162
+1 Mechan Assembler (EOE) 63
+1 Bygone Colossus (EOE) 235
 
 # Artifacts / Spells
+1 Fiery Annihilation (FDN) 86
+1 Abrade (FDN) 188
+1 Iron Man Armor (MSH) 248
+1 Mjölnir, Hammer of Thor (MSH) 146
+1 Explosive Derailment (DFT) 130
 1 The Ten Rings (MSH) 251
 1 I Am Iron Man (MSH) 58
 1 Price of Freedom (TLA) 149
-1 Mouser Foundry (TMT) 96
-1 Mjölnir, Hammer of Thor (MSH) 146
 1 Armor Wars (MSH) 203
 1 Buster Sword (FIN) 255
 1 Cosmic Cube (MSH) 245
 1 Dawnsire, Sunstar Dreadnought (EOE) 238
+1 Iron Spider, Stark Upgrade (SPM) 166
+1 Chronicle of Victory (ECL) 253
+1 Vision Quest (MSH) 237
 
 # Lands (24)
 1 Uthros, Titanic Godcore (EOE) 260
@@ -98,8 +135,9 @@
 1 Riverpyre Verge (DFT) 260
 2 Stark Industries (MSH) 272
 1 Swiftwater Cliffs (MOM) 273
+1 Kavaron, Memorial World (EOE) 255
 8 Mountain (MSH) 294
-9 Island (MSH) 290
+8 Island (MSH) 290
 
 # Flex — parked from the 73-pile / craft options. See: deck.py flex 26
 #~ -Cosmic Cube | +The Walls of Ba Sing Se | OWNED: re-add the 8-mana anchor (all your permanents indestructible) if you want top-end board protection; parked because it partly overlaps Krang
@@ -108,8 +146,11 @@
 #~ -Iron Man Armor | +Galvanize | OWNED alt to Fiery Annihilation: cheaper (MV2) instant, 3 damage / 5 if you've drawn 2+ this turn (achievable with the deck's card-draw engine). Take it over Fiery Annihilation if you want a cheaper reactive answer that rewards your draws.
 #~ note: Cuts from base 26 → Bullseye (off-color B), Broadcast Takeover, Radiant Lotus, Waterbending Scroll, Bender's Waterskin, Mind Transfer Protocol, I Am Iron Man, Relm's Sketching, Nanoform Sentinel, Diamond Pick-Axe, Bespoke Bō, Goldvein Pick, Mirrormind Crown, The Walls of Ba Sing Se; +The Vision.
 #~ +Diamond Pick-Axe | OWNED (salvage from retired 26b pile): {R} indestructible +1/+1 Equipment that makes a Treasure on attack — survives sweepers and ramps/feeds artifact count; highest-ranked pile leftover (suggest #48). ~ sidegrade to the equipment suite if you want a resilient cheap one.
-#~ +Relm's Sketching | OWNED (salvage from retired 26b pile): {2}{U}{U} "create a token copy of target artifact, creature, or land" — copy Iron Man / Ultron / Krang for a 2nd bomb, or a mana rock; flexible value that also feeds artifact-count. Spice/value option. DOWNGRADED 2026-07: its bodies are TOKENS, which Virulent Silencer explicitly ignores, so it now works against the poison axis. Keep it parked.
+#~ +Relm's Sketching | OWNED (salvage from retired 26b pile): {2}{U}{U} "create a token copy of target artifact, creature, or land" — copy Iron Man / Ultron / Krang for a 2nd bomb, or a mana rock; flexible value that also feeds artifact-count. Spice/value option. CORRECTION to a 2026-07 downgrade of this line: I first marked it as working AGAINST Virulent Silencer because its bodies are tokens. That is only half right. Copying a CARRIER is useless, but copying the SILENCER ITSELF is not — a token copy keeps the triggered ability, and the word "nontoken" describes the OTHER creatures, not the Silencer. Two Silencers = 4 poison per connecting creature. It belongs in variant 26a as a payoff-doubler, not parked here as an anti-synergy.
 #~ note: applied — Virulent Silencer in for Steel Wrecking Ball (craft, U). Second win axis; see the #: notes: block. Moved to the # Creatures section (the add inherited the cut's slot under # Artifacts / Spells) and corrected the #: tier: interaction figure 9 -> 8 plus the stale "Jeskai" archetype header in the same edit.
 #~ note: applied — manabase: -2 Mountain -2 Island, +Riverpyre Verge +2 Stark Industries +Swiftwater Cliffs (all owned, 0 wildcards). R 10->12, U 12->14.
 #~ note: applied — Fin Fang Foom enabler package: I Am Iron Man in for Retrieve the Esper, Price of Freedom in for Oreplate Pangolin (both owned). NOTE this reverses the "the two animate-cantrip tricks" dismissal in the older cut note below — I Am Iron Man now has two reasons to be here that did not exist then (a Foom trigger, and a Virulent Silencer carrier-maker). Price of Freedom was moved to # Artifacts / Spells; it inherited Oreplate Pangolin's slot under # Creatures.
+#~ note: applied — REBUILD 2026-07 to ramp-to-heavy-hitters + Station. OUT: Aerial Doombot, The Mechanist, Donatello Turtle Techie, Donatello Way with Machines, HYDRA Assault Robot, Mouser Foundry, Don & Leo, Technodrome. IN: Bygone Colossus, Kavaron Memorial World (land), Tannuk, Kavaron Turbodrone, Vision Quest, Chronicle of Victory, Iron Spider, Mechan Assembler, Explosive Derailment. Mjölnir RESTORED (its ETB removal was misread as an Equipment-only card). Full reasoning + the interaction-drop mistake are in the #: notes: block.
+#~ +Mica, Reader of Ruins | CRAFT (Uncommon) — the upgrade to the Fin Fang Foom plan that was not taken. Same copy effect with NO artifact/land restriction, {3}{R} single pip (~88% on curve vs Foom's 69.6%), a 4/4 with ward—pay 3 life, and it triggers off ALL of the deck's instants and sorceries rather than the two that target an artifact. Cost to copy is sacrificing an artifact, which is close to free here. Take it as REDUNDANCY alongside Foom (two copies of one spell), not as a replacement, unless red screw shows up in play.
+#~ +Ramos, Dragon Engine | CRAFT (Mythic) — 4/4 flier that gains a +1/+1 counter per colour of every spell you cast, and converts five counters into WWUUBBRRGG. Held back from the rebuild only because it would have been the FIFTH card at MV 6+; its five-colour identity is cosmetic here since it casts for {6} colorless. Revisit if the top end proves castable.
 #~ note: 26b "Full Pile (brew)" retired 2026-07 — the trim held up: updated `suggest --owned` ranks every pile-only leftover OUTSIDE the top 47 owned cards, none a swap-in. Salvage kept above; Sami, Wildcat Captain skipped (W/R — needs a white source the UR base lacks), Bullseye/Wistfulness off-color (B/G), the rest redundant equipment (Goldvein/Super Suit/Mirrormind/Bespoke Bō) or niche (Nanoform/Radiant Lotus/Bender's Waterskin/Broadcast Takeover/the two animate-cantrip tricks).
