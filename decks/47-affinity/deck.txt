@@ -3,8 +3,8 @@
 #: colors: U
 #: plan: midrange
 #: tier: B — PROVISIONAL, and deliberately one band BELOW the measurable floor, which reads
-#: tier: A on interaction 9 (7 of it instant-speed, 5 able to answer a noncreature permanent)
-#: tier: plus card advantage 8 on a 3.05 curve. The guard will soft-flag this as possibly
+#: tier: A on interaction 7 (5 of it instant-speed, 4 able to answer a noncreature permanent)
+#: tier: plus card advantage 9 on a 3.08 curve. The guard will soft-flag this as possibly
 #: tier: under-graded; that is intentional, and here is the argument. FOUR structural risks the
 #: tier: floor cannot see, which is more than an A tolerates:
 #: tier: 1. IT DOES NOT EXIST YET. Eight craft targets, including both cards that make it a
@@ -119,11 +119,28 @@
 #: notes: including them took interaction 9 -> 6 and avg MV 3.05 -> 3.30. They belong in 48a,
 #: notes: which has the Station and big-mana angle to support them.
 #: notes: GLEAMING GEARDRAKE WAS EXCLUDED AS UNCASTABLE, not unwanted — it costs {U}{R} and
-#: notes: this deck is mono-blue. Don & Raph, Hard Science is castable ({1}{U/R}{U/R} pays with
-#: notes: blue) but its R colour IDENTITY would widen `#: colors:` and cost the mono-colour
-#: notes: manabase that is this deck's main structural advantage; left out on that ground alone.
+#: notes: this deck is mono-blue. That reason is real and it is GOLD. It does NOT extend to a
+#: notes: HYBRID card, which is the mistake an earlier pass made here.
 #: notes: MEASURED: interaction 9 -> 7, card advantage 8 -> 9, avg MV 3.05 -> 3.08, early drops
 #: notes: held at 19, and the manabase is untouched — still every colored card on curve at 90%+.
+#: notes: PASS 3 — DON & RAPH, HARD SCIENCE IN, correcting a rejection that was bookkeeping and
+#: notes: not deck-building. It was left out of pass 2 on the ground that its R colour IDENTITY
+#: notes: "would widen `#: colors:`" and cost the mono-colour manabase. Both halves of that are
+#: notes: wrong. It costs {1}{U/R}{U/R} — every pip is payable with blue, so it needs no red
+#: notes: source and the manabase is untouched; and the tooling does not require the header to
+#: notes: widen, it reports "Don & Raph, Hard Science — identity has R (hybrid — paid on-color)"
+#: notes: and `preflight` reads castability PASS. Widening would in fact have been WORSE: a
+#: notes: two-colour baseline stops flagging a genuinely off-colour card added later. The same
+#: notes: correction was made in 26b for Bullseye. `#: colors:` stays U.
+#: notes: ON FIT it is one of the better cards in the deck, which is why the bookkeeping error
+#: notes: was expensive: "whenever Don & Raph attack, the NEXT NONCREATURE SPELL you cast this
+#: notes: turn has affinity for artifacts" grants this deck's premise to cards that do not have
+#: notes: it — Braided Net, Cerebral Download, Into the Flood Maw, Iron Man Armor, every cheap
+#: notes: artifact — and it carries menace so the attack trigger is hard to stop.
+#: notes: PAID FOR WITH S.H.I.E.L.D. DEPLOYMENT DRONE, the one body here that neither shrinks
+#: notes: with artifact count nor replaces itself; both are MV 3, so the curve is unmoved.
+#: notes: MEASURED: interaction 7, card advantage 9, protection 1, avg MV 3.08, 19 early drops —
+#: notes: every axis unchanged. This is a straight quality upgrade in a fixed slot.
 #: notes: CRAFT TARGETS (9): Krang Master Mind (R), Chrome Dome (R), Edgar King of Figaro (R),
 #: notes: Gearseeker Serpent (C), Memory Guardian (U), Valkyrie Aerial Unit (U), Cerebral
 #: notes: Download (U), Fugitive Droid (U), Mechan Navigator (U). Chrome Dome and Krang Master
@@ -138,6 +155,7 @@
 1 Donatello, Gadget Master (TMT) 35
 1 Chrome Dome (TMT) 172
 1 Ironheart, Clever Champion (MSH) 60
+1 Don & Raph, Hard Science (TMT) 144
 
 # Artifact-count card advantage
 1 Edgar, King of Figaro (FIN) 51
@@ -160,7 +178,6 @@
 1 Rook Turret (FIN) 69
 1 Oaken Siren (LCI) 66
 1 Fugitive Droid (TMT) 40
-1 S.H.I.E.L.D. Deployment Drone (MSH) 73
 
 # Mana on artifact bodies
 1 Hydraulic Helper (MSH) 57

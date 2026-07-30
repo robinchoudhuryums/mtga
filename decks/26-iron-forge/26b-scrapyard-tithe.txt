@@ -1,6 +1,6 @@
 #: name: Iron Forge — Scrapyard Tithe
 #: format: Standard
-#: colors: UBR
+#: colors: UR
 #: based-on: deck.txt
 #: plan: midrange
 #: protect: Monument to Endurance; Cool but Rude; Magmakin Artillerist; Summon: Bahamut; Death to Our Enemies
@@ -71,12 +71,13 @@
 #: notes: OUT: Untimely Malfunction, Galvanize (interaction was 12 against a much lower need),
 #: notes: Elixir (a {5} activated ability that will never be paid), Oasis Gardener, Magic Pot.
 #: notes: MEASURED: interaction held at 12, card advantage 7 -> 8, avg MV 2.25 -> 2.39.
-#: notes: `#: colors:` WIDENED FROM UR TO UBR FOR BULLSEYE, and the cost is real enough to name:
-#: notes: {2}{B/R} is hybrid and pays with red, so the card is castable on a two-colour base —
-#: notes: but its colour IDENTITY carries B, and every castability lint now compares against a
-#: notes: three-colour baseline, which can mask a genuine stray later. It was worth it here and
-#: notes: nowhere else; 48a screened it KEY too and was deliberately left alone so only one
-#: notes: header had to widen.
+#: notes: BULLSEYE NEEDED NO HEADER CHANGE, correcting a mistake made when it was added. I
+#: notes: widened `#: colors:` to UBR for it and then reverted: the tooling ALREADY handles a
+#: notes: hybrid correctly against a narrower header — `deck.py mana` reports "hybrid — paid
+#: notes: on-color" and `preflight` reads "castability PASS (+1 hybrid stray, ok)", exactly as
+#: notes: it does for War Machine in 26a. Widening was not just unnecessary, it was actively
+#: notes: WORSE: a three-colour baseline would have stopped flagging a genuinely off-colour
+#: notes: black card added later. `#: colors:` stays UR.
 #: notes: FOUR CANDIDATES REJECTED FOR THIS DECK SPECIFICALLY, all for the same reason: this is
 #: notes: the one deck on the roster that wins WITHOUT ATTACKING, so cards keyed to combat
 #: notes: damage do nothing. Waterbender Ascension (quest counters on combat damage; its
@@ -84,6 +85,22 @@
 #: notes: Donatello Gadget Master (token-copies an artifact on combat damage) and Draconautics
 #: notes: Engineer all went elsewhere or stayed out. Brilliance Unleashed was also skipped —
 #: notes: not on fit but on curve (MV 6 in a 2.39 deck), and it is already in deck 48.
+#: notes: PASS 3 — CAPTAIN STORM, COSMIUM RAIDER IN, TRADE THE HELM OUT. Storm is the deck's
+#: notes: only Pirate and does not need another: "whenever an artifact you control enters, put a
+#: notes: +1/+1 counter on TARGET PIRATE you control" targets herself, and this deck puts an
+#: notes: artifact onto the battlefield most turns (Treasures off Monument, Reckless Ransacking,
+#: notes: Stark Industries Executive and Hell to Pay; Clues off Gleaming Geardrake; the cheap
+#: notes: artifacts themselves). She is a {U}{R} two-drop that keeps growing without spending a
+#: notes: card, which is the one thing this deck's stated hole — "almost no blockers" — asks for.
+#: notes: She is GOLD, not hybrid, so she only works in a deck that makes both colours; that is
+#: notes: why she could not go to mono-blue 47 alongside Oaken Siren.
+#: notes: TRADE THE HELM paid for her: MV 5 in a 2.31-curve deck and the second-weakest fit the
+#: notes: ranking prints. It stays on the roster in deck 47, where the curve tolerates it.
+#: notes: MEASURED: interaction held at 12, card advantage held at 8, avg MV 2.39 -> 2.31 (the
+#: notes: lowest in the family), early drops 21 -> 22. Every axis flat or better.
+#: notes: SHE IS STILL THE MARGINAL CARD HERE and worth saying so: this deck wins WITHOUT
+#: notes: ATTACKING, so a growing body is defence and a mana sink, not the plan. She earns the
+#: notes: slot on curve and on blocking, not on the drain axis everything else here is built for.
 #: notes: NO SWEEPER AND ALMOST NO BLOCKERS is the obvious hole — the deck's creature count is
 #: notes: deliberately low because creatures are not how it wins. Against a fast aggro start it
 #: notes: must trade removal one-for-one and race with drain, which is a real losing posture.
@@ -113,17 +130,17 @@
 1 HYDRA Assault Robot (MSH) 137
 1 Death to Our Enemies (MSH) 127
 
-# Treasure and artifact fuel
+# Treasure and artifact fuel — and the one payoff that counts them
 1 Stark Industries Executive (MSH) 153
 1 Reckless Ransacking (ECL) 152
 1 Lady Octopus, Inspired Inventor (SPM) 35
-1 Trade the Helm (DFT) 69
 1 Mouser Foundry (TMT) 96
 1 Machinesmith Automaton (MSH) 144
 1 Iron Man, Master of Machines (MSH) 216
 1 Gleaming Barrier (FDN) 252
 1 Gleaming Geardrake (MKM) 205
 1 Technodrome (TMT) 179
+1 Captain Storm, Cosmium Raider (LCI) 227
 
 # Repeatable loot — every activation is a drain trigger
 1 Kitsa, Otterball Elite (BLB) 54

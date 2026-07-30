@@ -73,6 +73,31 @@
 #: notes: adding Dracosaur Auxiliary: it replaces Push the Limit, which was also {R}{R}, and
 #: notes: does it at MV 6 instead of 7. Truck Toss (69.6% on curve) and Dracosaur (75.3%) are
 #: notes: the two to watch against 13 red sources.
+#: notes: PASS 3 — TWO IN, and one of them reverses a pass-2 cut.
+#: notes: RECKLESS VELOCITAUR ({3}{R}) back in: "whenever this creature saddles a Mount or CREWS
+#: notes: A VEHICLE during your main phase, that Vehicle gets +2/+0 and gains TRAMPLE until end
+#: notes: of turn." Trample is the part that matters — this deck's Vehicles are large and the
+#: notes: opponent's answer to a 6/6 Tangle Tumbler is a 1/1 chump block, which trample turns
+#: notes: into 5 damage anyway. It is also a crew body in its own right, so it costs the deck
+#: notes: nothing structurally. It was cut in pass 2 for slot pressure, not on fit.
+#: notes: KRANG & SHREDDER ({4}{U/B}{U/B}) is a FINISHER, filed with Summon: Bahamut rather than
+#: notes: with the Vehicles: it exiles from each opponent's library on entry AND on attack, and
+#: notes: Disappear lets you cast one of those exiled cards FREE at end step whenever a permanent
+#: notes: left the battlefield under your control that turn. This deck sacrifices Treasures every
+#: notes: turn, so that condition is close to always on — it is the card-advantage engine the
+#: notes: deck was flagged short of, taken off the OPPONENT'S deck rather than its own.
+#: notes: IT IS HYBRID, NOT GOLD, so it needs no black source and no header change: `deck.py
+#: notes: mana` reads "Krang & Shredder — identity has B (hybrid — paid on-color)". Same
+#: notes: correction as Bullseye in 26b and Don & Raph in 47. `#: colors:` stays UR.
+#: notes: OUT: Passenger Ferry (a {3} Vehicle whose whole text is paying {U} on attack to make
+#: notes: something else unblockable — the smallest of nine Vehicles and the only one that is
+#: notes: not a threat by itself) · Magnetic Snuffler ({5}, and its ETB returns an EQUIPMENT
+#: notes: from the graveyard; the deck runs exactly two Equipment, so the trigger whiffs most
+#: notes: games — a five-drop bought for a conditional it rarely meets).
+#: notes: MEASURED: interaction held at 9, card advantage held at 2, protection held at 2, avg
+#: notes: MV 3.19 -> 3.25, early drops held at 16. THE CURVE COST IS REAL and accepted: a 6-drop
+#: notes: went in and a 3-drop came out. It was paid from the Vehicle and Treasure halves rather
+#: notes: than from the crew bodies, which is what keeps early drops flat.
 #: notes: KNOWN SOFT SPOTS: crewing costs bodies, so a sweeper that kills the cheap creatures
 #: notes: leaves the Vehicles stranded as noncreature artifacts (which is also their defence —
 #: notes: they dodge creature removal at instant speed). And the deck is craft-heavy; the
@@ -85,13 +110,13 @@
 1 The Prima Vista (FIN) 64
 1 Fire Nation Warship (TLA) 256
 1 War Balloon (TLA) 159
-1 Passenger Ferry (SPM) 170
 1 The Eternity Elevator (EOE) 241
 1 The Regalia (FIN) 267
 1 Invasion Submersible (TLA) 57
 
 # Vehicle payoffs
 1 Truck Toss (MSH) 157
+1 Reckless Velocitaur (DFT) 144
 1 Mica, Reader of Ruins (SOS) 124
 1 Chandra, Spark Hunter (DFT) 116
 1 Guidelight Matrix (DFT) 233
@@ -102,7 +127,6 @@
 1 Aerial Doombot (MSH) 43
 1 Gingerbrute (ELD) 219
 1 Stark Industries Executive (MSH) 153
-1 Magnetic Snuffler (MKM) 254
 1 Casey Jones, Jury-Rig Justiciar (TMT) 87
 
 # Treasure engine
@@ -116,6 +140,7 @@
 
 # Finishers the Treasure pays for
 1 Summon: Bahamut (FIN) 1
+1 Krang & Shredder (TMT) 153
 1 Radiant Lotus (DFT) 240
 1 Extinguisher Battleship (EOE) 242
 
