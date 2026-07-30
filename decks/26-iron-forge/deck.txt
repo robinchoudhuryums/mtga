@@ -1,13 +1,24 @@
 #: name: Iron Forge
 #: format: Standard
-#: tier: A — Izzet artifacts/robots; Iron Man/Ultron bombs + 9 interaction + 4 card advantage on a tightened 2-color base (down from Jeskai). Re-graded B→A: measurable floor is A (solid interaction + card advantage) and the deck adds real bombs the metrics can't see — the earlier B under-rated a coherent 2-color engine.
+#: tier: A — Izzet artifacts/robots; Iron Man/Ultron bombs + 8 interaction + 4 card advantage on a tightened 2-color base (down from Jeskai). Re-graded B→A: measurable floor is A (solid interaction + card advantage) and the deck adds real bombs the metrics can't see — the earlier B under-rated a coherent 2-color engine.
 #: colors: UR
-#: archetype: Jeskai (W/U/R) artifacts + Robot tribal — the finalized playable 60; Iron Man / Ultron payoffs, Dawnsire for removal, The Ten Rings for card advantage.
+#: archetype: Izzet (U/R) artifacts + Robot tribal — the finalized playable 60; Iron Man / Ultron payoffs, Dawnsire for removal, The Ten Rings for card advantage. (Trimmed down FROM a Jeskai W/U/R build; the header said Jeskai for several cycles after the white was cut.)
 #: notes: The tuned, legal 60 (promoted from the old 73-card brew, which is archived
 #: notes: as variant 26b-full-pile). Removed the off-color Bullseye (B) and the weakest
 #: notes: filler/equipment; kept Dawnsire (its 10+ mode is repeatable removal), swapped
 #: notes: the 8-mana Walls of Ba Sing Se for The Vision, and −Super Suit / +The Ten Rings
 #: notes: (an artifact hand-refill engine, discounted by Shuri).
+#: notes: SECOND WIN AXIS — Virulent Silencer in for Steel Wrecking Ball (craft, U): every
+#: notes: NONTOKEN artifact creature that connects gives 2 poison. 16 of the 25 creatures
+#: notes: qualify, 12 have native evasion, and Krang grants flying+trample to all the rest,
+#: notes: so 2 connections a turn is a 3-attack clock that ignores lifegain and life totals.
+#: notes: It converts the SMALL air force (Steelswarm Operator 1/1, Aerial Doombot 1/1, Viv
+#: notes: Vision 2/2) from chip damage into a real clock. Iron Man Armor's {2} self-animate
+#: notes: is already a carrier. The word to remember is NONTOKEN: Mouser Foundry, Retrieve
+#: notes: the Esper, Castle Doom and Ultron's copies all make bodies the Silencer ignores.
+#: notes: Cut Steel Wrecking Ball as the deck's lowest-power card (5 mana for what Fiery
+#: notes: Annihilation does for 3, second mode duplicating Abrade); interaction 9 -> 8
+#: notes: against a need of 5.
 
 # Creatures
 1 Shuri, Wakandan Inventor (MSH) 75
@@ -37,13 +48,13 @@
 1 Ultron Drone (MSH) 253
 1 Krang, Utrom Warlord (TMT) 175
 1 The Vision (MSH) 255
+1 Virulent Silencer (EOE) 248
 
 # Artifacts / Spells
 1 The Ten Rings (MSH) 251
 1 Retrieve the Esper (FIN) 68
 1 Mouser Foundry (TMT) 96
 1 Mjölnir, Hammer of Thor (MSH) 146
-1 Steel Wrecking Ball (SPM) 177
 1 Armor Wars (MSH) 203
 1 Buster Sword (FIN) 255
 1 Cosmic Cube (MSH) 245
@@ -63,5 +74,6 @@
 #~ -Iron Man Armor | +Galvanize | OWNED alt to Fiery Annihilation: cheaper (MV2) instant, 3 damage / 5 if you've drawn 2+ this turn (achievable with the deck's card-draw engine). Take it over Fiery Annihilation if you want a cheaper reactive answer that rewards your draws.
 #~ note: Cuts from base 26 → Bullseye (off-color B), Broadcast Takeover, Radiant Lotus, Waterbending Scroll, Bender's Waterskin, Mind Transfer Protocol, I Am Iron Man, Relm's Sketching, Nanoform Sentinel, Diamond Pick-Axe, Bespoke Bō, Goldvein Pick, Mirrormind Crown, The Walls of Ba Sing Se; +The Vision.
 #~ +Diamond Pick-Axe | OWNED (salvage from retired 26b pile): {R} indestructible +1/+1 Equipment that makes a Treasure on attack — survives sweepers and ramps/feeds artifact count; highest-ranked pile leftover (suggest #48). ~ sidegrade to the equipment suite if you want a resilient cheap one.
-#~ +Relm's Sketching | OWNED (salvage from retired 26b pile): {2}{U}{U} "create a token copy of target artifact, creature, or land" — copy Iron Man / Ultron / Krang for a 2nd bomb, or a mana rock; flexible value that also feeds artifact-count. Spice/value option.
+#~ +Relm's Sketching | OWNED (salvage from retired 26b pile): {2}{U}{U} "create a token copy of target artifact, creature, or land" — copy Iron Man / Ultron / Krang for a 2nd bomb, or a mana rock; flexible value that also feeds artifact-count. Spice/value option. DOWNGRADED 2026-07: its bodies are TOKENS, which Virulent Silencer explicitly ignores, so it now works against the poison axis. Keep it parked.
+#~ note: applied — Virulent Silencer in for Steel Wrecking Ball (craft, U). Second win axis; see the #: notes: block. Moved to the # Creatures section (the add inherited the cut's slot under # Artifacts / Spells) and corrected the #: tier: interaction figure 9 -> 8 plus the stale "Jeskai" archetype header in the same edit.
 #~ note: 26b "Full Pile (brew)" retired 2026-07 — the trim held up: updated `suggest --owned` ranks every pile-only leftover OUTSIDE the top 47 owned cards, none a swap-in. Salvage kept above; Sami, Wildcat Captain skipped (W/R — needs a white source the UR base lacks), Bullseye/Wistfulness off-color (B/G), the rest redundant equipment (Goldvein/Super Suit/Mirrormind/Bespoke Bō) or niche (Nanoform/Radiant Lotus/Bender's Waterskin/Broadcast Takeover/the two animate-cantrip tricks).
