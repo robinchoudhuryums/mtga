@@ -12,6 +12,9 @@ Whenever Dragonhawk enters or attacks, exile the top X cards of your library, wh
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
 When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)",5.0,hand
+Three Tree City,Legendary Land,"As Three Tree City enters, choose a creature type.
+{T}: Add {C}.
+{2}, {T}: Choose a color. Add an amount of mana of that color equal to the number of creatures you control of the chosen type.",Colorless,mana,BLB,260,Rare,49,"25th land in 49. {2},{T}: mana equal to Dragon count — needs 4+ of a type to beat a plain tap; 49 is the only deck on the roster that is mono-colour, dense enough, has a top end, and does not sweep its own board.",6.0,hand
 Builder's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
 When this Class enters, create a 0/4 white Wall creature token with defender.
 {W}: Level 2

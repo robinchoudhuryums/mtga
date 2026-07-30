@@ -2,17 +2,17 @@
 #: format: Standard
 #: colors: R
 #: plan: midrange
-#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 14
-#: tier: plus card advantage 2 at a 3.94 curve. Two structural weaknesses the floor cannot see:
+#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 13
+#: tier: plus card advantage 2 at a 4.00 curve. Two structural weaknesses the floor cannot see:
 #: tier: 1. ZERO PROTECTION against five named build-arounds, and this deck's payoffs are the
 #: tier:    kind that must SURVIVE A TURN to matter — Lathliss only pays off on the NEXT Dragon,
 #: tier:    Terror of the Peaks only on the next creature, Dragonlord's Servant only on the next
 #: tier:    spell. Removal on any of them costs a whole turn cycle, not just a card.
-#: tier: 2. IT IS SLOW AND HAS NO SWEEPER. Avg MV 3.94 with 10 early drops is the slowest curve
+#: tier: 2. IT IS SLOW AND HAS NO SWEEPER. Avg MV 4.00 with 9 early drops is the slowest curve
 #: tier:    on the roster; against a fast start the deck must trade one-for-one with removal it
 #: tier:    has plenty of, then stabilise with a five-drop. Card advantage 2 is genuinely thin —
 #: tier:    Bonehoard Dracosaur and Dragonhawk both refuel but neither is counted.
-#: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 14 is not padding,
+#: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 13 is not padding,
 #: tier: it is real removal stapled to Dragon BODIES (Nova Hellkite, Magmatic Hellkite, Nebula
 #: tier: Dragon, Realm-Scorcher, Drakuseth), so the deck interacts without spending cards; the
 #: tier: manabase is flawless, matching deck 47 as the only two on the roster with zero cards
@@ -66,6 +66,19 @@
 #: notes: payoff here). IN: a SECOND Dragonlord's Servant and a THIRD Dragonstorm Globe — the two
 #: notes: accelerants that are also Dragon payoffs. Measured: avg MV 4.11 -> 3.94, early drops
 #: notes: 9 -> 10, interaction 15 -> 14 (still nearly triple the 5 the model asks for).
+#: notes: THREE TREE CITY IS THE 25th LAND, and this deck is the only one on the roster that can
+#: notes: actually use it. "{2}, {T}: choose a color, add mana equal to the number of creatures
+#: notes: you control of the chosen type" needs FOUR of a type to beat just tapping the land, and
+#: notes: it wants a top end to spend the mana on and a plan that does not empty its own board —
+#: notes: three conditions nothing else here met. Deck 11 has the top end but runs four sweepers
+#: notes: and a sacrifice-all bomb, deck 23 caps at MV 5, deck 48's manabase cannot afford a
+#: notes: colourless source. At 21 Dragons and a 4.00 curve this deck meets all three.
+#: notes: IT COST A REMOVAL SPELL, NOT A MOUNTAIN, and that is why the manabase survived it.
+#: notes: Swapping it FOR a Mountain took Drakuseth's {4}{R}{R}{R} from 90.5% to 88.2% and broke
+#: notes: the zero-below-90 record; running it as a 25th land instead, paid for by Giantfall
+#: notes: (tied-weakest fit, in a deck the needs model already called over-served on interaction
+#: notes: at 14 against a want of 5), holds every card at >=90% AND raises keepable 84.4% ->
+#: notes: 86.0%. 25 lands is also simply correct for a 4.00 curve.
 #: notes: THE MANABASE IS FLAWLESS, which is the mono-colour payoff: `consistency` reports
 #: notes: "every colored card casts on curve at >=90%" with ZERO cards below target, the lowest
 #: notes: being Drakuseth's {4}{R}{R}{R} at 90.5%. Only deck 47 shares that on this roster.
@@ -118,8 +131,8 @@
 1 Bombard (EOE) 129
 1 Untimely Malfunction (DSK) 161
 1 Cinder Strike (ECL) 131
-1 Giantfall (ECL) 141
 
-# Lands (24) — mono-red, nothing enters tapped
+# Lands (25) — Three Tree City taps for Dragon count
+1 Three Tree City (BLB) 260
 1 Kavaron, Memorial World (EOE) 255
 23 Mountain (MSH) 293
