@@ -165,8 +165,14 @@ directions.
   row. [G-01]
 - **A split / Room / Adventure card's stored cost covers BOTH halves — read the FRONT
   face.** Use `lib.front_face_cost()` / `lib.mana_value()`; `parse_pips` and `load_mana`
-  already do. **Residual: a deck that plays a split card mainly for its BACK half reads
-  cheaper than it plays — grade that one from the printed card.** [G-02]
+  already do. **Residual 1: a deck that plays a split card mainly for its BACK half reads
+  cheaper than it plays — grade that one from the printed card. Residual 2, and it is on
+  the surface you are told to trust: `card.py` prints the COMBINED mana value**, so a Room
+  reads far MORE expensive than it plays — Mirror Room // Fractured Realm displays MV 10
+  when it is a `{2}{U}` three-drop whose back door unlocks separately for `{5}{U}{U}`, and
+  you never pay ten. Every analysis path (`stats`, `consistency`, the curve) already uses
+  the front face, so the inspection surface and the analysis surface disagree. Read the
+  printed cost, not the MV, whenever a name contains `" // "`. [G-02]
 - **Don't judge a card by printed mana value or a single subtype.** Read the card TEXT
   (it is in the CSV): `stats` flags ◊/△ cost flexibility and functional roles, `tribes`
   reads oracle text for cross-type synergies. [G-03]
@@ -485,6 +491,17 @@ directions.
   payable in mono-U; `{U}{R}` is not, which is why Captain Storm genuinely could not join
   47 while Don & Raph could. Read the cost from `card-mana.csv` / `deck.py mana`, never
   from identity. [G-58]
+- **A TRIBE'S VIABILITY IS ITS PAYOFF COUNT, NOT ITS BODY COUNT, and changelings cannot fix
+  the missing half.** Measured across eight tribes: Dragon 71 bodies / 20 payoffs (built as
+  deck 49), Dinosaur 52/11, Vampire 69/3, Mutant 79/**2**, Demon 28/1, Plant 27/1, God 21/**0**,
+  Leviathan 5/0. Mutant has the MOST bodies of any tribe considered and is unbuildable —
+  body count is the number that is easy to measure and the one that does not decide anything.
+  A changeling is every creature type, so it RECEIVES tribal effects and never provides one:
+  ten changelings in a Demon deck give you eleven Demons and still exactly ONE card that
+  cares. Count the payoffs first (search the effect shape per K-13 — "Xs you control", "for
+  each X", "X spells you cast"), and only then ask whether the bodies exist. The inverse
+  reading — that a deep tribe must be supportable — is what makes a shallow archetype look
+  buildable right up until the deck has no reason to share a type. [G-59]
 
 ## Known Issues
 
