@@ -1,0 +1,141 @@
+#: name: Hoofprint
+#: format: Standard
+#: colors: G
+#: plan: midrange
+#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 6
+#: tier: plus card advantage 2 at a 3.11 curve. Three weaknesses the floor cannot price:
+#: tier: 1. EVERY REMOVAL SPELL IS A FIGHT EFFECT, so the interaction and the board are the SAME
+#: tier:    resource. A sweeper takes both in one card: the creatures die and the six removal
+#: tier:    spells in hand become blanks at the same moment. No other deck on the roster has its
+#: tier:    answers coupled to its threats this tightly.
+#: tier: 2. CARD ADVANTAGE 2 WITH NO REAL REFUEL. Garruk's Uprising looks like the fix and is
+#: tier:    not — both its draw triggers key on power 4+ and only 4 of 25 creature copies
+#: tier:    qualify on printed stats. It is in the deck for its unconditional trample.
+#: tier: 3. PROTECTION 1 against five named build-arounds, and the finishers are sorcery-speed
+#: tier:    permanents. A removal spell on the turn Craterhoof resolves costs the whole game
+#: tier:    plan, not a card.
+#: tier: WHAT ARGUES UP, and why this may be A once played: `shape` reads WIDE 10 / TALL 7 on 25
+#: tier: creatures with 21 early drops — the plan and the measurement agree completely, which is
+#: tier: rare. The kill is REDUNDANT four ways (Craterhoof x3, Jumbo Cactuar, Colossification,
+#: tier: Famished Worldsire) rather than one card deep, and the mana base is unusually clean for
+#: tier: a deck with this much {G}{G}{G}. The ceiling is genuinely a turn-five kill from an
+#: tier: empty-looking board of 1/1 mana dorks.
+#: tier: PROVISIONAL: unplayed, and 23 craft targets — this was built as the best version with
+#: tier: ownership ignored by request, so the letter grades the LIST, not the pile.
+#: protect: Craterhoof Behemoth; Enduring Vitality; Garruk's Uprising; Famished Worldsire; Three Tree City
+#: archetype: MONO-GREEN CREATURE-COUNT RAMP. Every deck ramps toward something; this one ramps
+#: archetype: with the same resource it wins with. The mana comes from CREATURES, so the board
+#: archetype: that pays for the finisher is also the board the finisher makes lethal.
+#: archetype: THE ONE NUMBER THAT MATTERS IS CREATURE COUNT, and three separate cards read it.
+#: archetype: Craterhoof Behemoth gives every creature trample and +X/+X where X IS THE NUMBER
+#: archetype: OF CREATURES YOU CONTROL — so a board of thirteen 1/1 mana dorks is not a board
+#: archetype: of chump blockers, it is 13 attackers at 14/14 with trample. Enduring Vitality
+#: archetype: gives every creature "{T}: Add one mana of any color", which turns that same board
+#: archetype: into the mana that cast the Behemoth. Three Tree City taps for mana equal to your
+#: archetype: DRUID count. The dorks are doing three jobs at once and never stop doing any.
+#: archetype: TRAMPLE IS LOAD-BEARING, NOT A BONUS. Jumbo Cactuar gets +9999/+0 whenever it
+#: archetype: attacks and Colossification grants +20/+20, and BOTH ARE BLANKED BY A 1/1 CHUMP
+#: archetype: BLOCK on their own — all that power hits one token and stops. Craterhoof's trample
+#: archetype: and Garruk's Uprising ("creatures you control have trample") are what convert them
+#: archetype: from win-more into lethal. Grade those two cards by what this deck grants them,
+#: archetype: never in isolation, or they read far better than they play.
+#: archetype: THE PAYOFFS ARE FOUR ROUTES TO THE SAME KILL, deliberately redundant so the deck
+#: archetype: is not one card deep: Craterhoof (go wide, everything huge), Jumbo Cactuar (one
+#: archetype: attacker, absurd), Colossification (+20/+20 on anything), Famished Worldsire
+#: archetype: (devour land 3 makes it enormous and its ETB puts the lands back from the top).
+#: archetype: DISTINCTNESS: this is not a tribal deck and that is the point. Deck 31 Pox is BG
+#: archetype: ELF go-wide plus a Fynn poison kill; deck 28 Dino Stampede is RGW aggro; deck 34
+#: archetype: Zoologist is Simic CHANGELING type-diversity. This deck cares only about how MANY
+#: archetype: creatures it has, never which kind — the Druid count is a bonus Three Tree City
+#: archetype: reads, not a plan anything else depends on.
+#: notes: BUILT 2026-07 from scratch, as the aspirational BEST version — ownership ignored by
+#: notes: request, so the craft list is long and that is deliberate.
+#: notes: UNGRADED ON PURPOSE — no `#: tier:` until the metrics are read.
+#: notes: WHY THERE IS NO TRIBE, and it was measured rather than assumed. Green's go-wide tribe
+#: notes: is ELF, which is deck 31's territory. A sweep for a LAND-PULLER tribe (creatures that
+#: notes: fetch or ramp lands) found none worth building: Scout leads at 5 pullers of 24 bodies,
+#: notes: then Robot 4, Insect 3, Druid only 2 — the land-fetchers are scattered across types,
+#: notes: not concentrated in one. MOUSE was checked and is a BOROS tribe: 19 in Standard, W 9 /
+#: notes: R 6 / W-R 3 and exactly ONE green. So the tribal angle was dropped, not overlooked.
+#: notes: DRUID EMERGED ANYWAY, which is why Three Tree City is here: the mana-dork shell is
+#: notes: nine Druids without trying (Llanowar Elves, Druid of the Cowl, Overgrown Zealot,
+#: notes: Three Tree Rootweaver, Great Forest Druid, Tender Wildguide, Ixalli's Lorekeeper).
+#: notes: Naming Druid on Three Tree City is free value, and nothing else in the deck needs it.
+#: notes: MULTIPLES OVER SINGLETONS on the load-bearing cards, which is a deliberate break from
+#: notes: the roster's usual shape: the deck DIES if it never draws a trample grant or a
+#: notes: finisher, so Craterhoof, Garruk's Uprising, Enduring Vitality, Llanowar Elves and
+#: notes: Druid of the Cowl run in multiple. `redundancy` prefers virtual copies first, but
+#: notes: nothing in Standard is a second Craterhoof, so true copies are the only option.
+#: notes: THE INTERACTION IS ALL FIGHT EFFECTS, which is green's only removal — and it scales
+#: notes: with the deck's own plan, since a Craterhoof-pumped creature kills anything. The cost
+#: notes: is that every one of them is DEAD WITH AN EMPTY BOARD, which is the deck's real
+#: notes: weakness against a sweeper: it loses the board and the removal in the same turn.
+#: notes: TUNED ONCE BEFORE GRADING, on two `stats` flags the first draft failed. The
+#: notes: interaction profile read 0 instant-speed of 5 and ZERO answers to a noncreature
+#: notes: permanent — for a green deck that is close to the worst possible interaction shape,
+#: notes: since it can neither respond nor touch an enchantment that blanks the plan.
+#: notes: OUT: Hunter's Talent (its trigger keys on POWER 4+, which only 4 of 25 creature
+#: notes: copies here satisfy — the classifier's own flag caught it, and its card-advantage
+#: notes: contribution was therefore fictional) · Rabid Bite (the sorcery-speed version of a
+#: notes: card the deck can have at instant speed) · The Unbeatable Squirrel Girl ({1}{G}{G}{G}
+#: notes: measured 82.8% on turn four, the worst castability in the deck).
+#: notes: IN: Bite Down (instant fight) · Pawpatch Formation (instant: kills a FLIER, which is
+#: notes: green's structural blind spot, or an enchantment) · Heritage Reclamation (instant:
+#: notes: artifact OR enchantment — the deck's only answer to a noncreature permanent).
+#: notes: MEASURED: interaction 5 -> 6 and the profile 0/5 instant -> 3 instant / 3 sorcery with
+#: notes: 2 noncreature answers; avg MV 3.17 -> 3.11, early drops 20 -> 21. Card advantage reads
+#: notes: 3 -> 2 and that is a CORRECTION, not a regression — the 3 counted Hunter's Talent's
+#: notes: near-dead draw.
+#: notes: KNOWN, LIVE: GARRUK'S UPRISING IS HERE FOR THE TRAMPLE, NOT THE DRAW. Its ETB and its
+#: notes: recurring draw both key on power 4+, and only 4 of 25 creature copies qualify on
+#: notes: PRINTED stats — a dork that becomes a 14/14 under Craterhoof still does not satisfy an
+#: notes: ENTERS trigger. The static "creatures you control have trample" is unconditional and is
+#: notes: the reason both copies are in. Do not count its draw when grading this deck.
+
+# Mana creatures — bodies, ramp, and Craterhoof's X, all at once
+2 Llanowar Elves (M19) 314
+1 Ixalli's Lorekeeper (LCI) 194
+2 Druid of the Cowl (M19) 177
+1 Three Tree Rootweaver (BLB) 198
+1 Great Forest Druid (ECL) 178
+1 Overgrown Zealot (DSK) 193
+1 Intrepid Stablemaster (OTJ) 169
+1 Rootrider Faun (WOE) 182
+1 Thornvault Forager (BLB) 197
+1 Tender Wildguide (BLB) 196
+1 Poison Dart Frog (LCI) 207
+1 Twitching Doll (DSK) 201
+
+# The board-to-mana converter
+2 Enduring Vitality (DSK) 176
+
+# Bodies that also find lands
+1 Spineseeker Centipede (DSK) 199
+1 Outcaster Greenblade (OTJ) 172
+1 Loot, Exuberant Explorer (FDN) 106
+
+# Going wider
+1 Rise of the Varmints (OTJ) 179
+
+# Trample — without this the finishers are chump-blocked
+2 Garruk's Uprising (M21) 186
+1 Aggressive Mammoth (FDN) 551
+
+# The four kills
+3 Craterhoof Behemoth (TDM) 138
+1 Famished Worldsire (EOE) 182
+1 Colossification (BLB) 392
+1 Jumbo Cactuar (FIN) 191
+
+# Interaction — instant-speed fights plus green's only noncreature answers
+1 Hard-Hitting Question (MKM) 164
+1 Bite Down (FDN) 212
+1 Pawpatch Formation (BLB) 186
+1 Heritage Reclamation (TDM) 145
+1 Plow Through (DFT) 174
+1 Clash of the Eikons (FIN) 180
+1 Coordinated Clobbering (DSK) 173
+
+# Lands (24) — Three Tree City names Druid
+1 Three Tree City (BLB) 260
+23 Forest (MSH) 295

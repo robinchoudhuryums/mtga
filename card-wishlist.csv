@@ -9,9 +9,18 @@ Whenever Dragonhawk enters or attacks, exile the top X cards of your library, wh
 −3: Draw three cards, then discard two cards.
 −10: Draw three cards. You get an emblem with ""Instant and sorcery spells you cast have storm."" (Whenever you cast an instant or sorcery spell, copy it for each spell cast before it this turn.)",U/R,Ral; Planeswalker; counters; card draw; tokens; planeswalker; spellslinger,BLB,230,Mythic,25,UR spellslinger planeswalker — tokens + copy your spells,7.5,hand
 "Alania, Divergent Storm",Legendary Creature — Otter Wizard,"Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.",U/R,Otter; Wizard; card draw,BLB,204,Rare,25,copy your first spell of each type each turn,6.0,hand
+Colossification,Enchantment — Aura,"Enchant creature
+When this Aura enters, tap enchanted creature.
+Enchanted creature gets +20/+20.",G,Aura; etb; aura; pump; enchant,BLB,392,Rare,50,,6.0,hand
 Essence Channeler,Creature — Bat Cleric,"As long as you've lost life this turn, this creature has flying and vigilance.
 Whenever you gain life, put a +1/+1 counter on this creature.
 When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)",5.0,hand
+Tender Wildguide,Creature — Possum Druid,"Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
+{T}: Add one mana of any color.
+{T}: Put a +1/+1 counter on this creature.",G,Possum; Druid; counters; tokens; mana; etb; offspring; go-wide,BLB,196,Rare,50,,3.0,seed
+Thornvault Forager,Creature — Squirrel Ranger,"{T}: Add {G}.
+{T}, Forage: Add two mana in any combination of colors. (To forage, exile three cards from your graveyard or sacrifice a Food.)
+{3}{G}, {T}: Search your library for a Squirrel card, reveal it, put it into your hand, then shuffle.",G,Squirrel; Ranger; graveyard; sacrifice; mana; food; forage,BLB,197,Rare,50,,4.5,seed
 Three Tree City,Legendary Land,"As Three Tree City enters, choose a creature type.
 {T}: Add {C}.
 {2}, {T}: Choose a color. Add an amount of mana of that color equal to the number of creatures you control of the chosen type.",Colorless,mana,BLB,260,Rare,49,"25th land in 49. {2},{T}: mana equal to Dragon count — needs 4+ of a type to beat a plain tap; 49 is the only deck on the roster that is mono-colour, dense enough, has a top end, and does not sweep its own board.",6.0,hand
@@ -21,11 +30,19 @@ When this Class enters, create a 0/4 white Wall creature token with defender.
 Whenever one or more noncreature, nonland permanents you control enter, put a +1/+1 counter on target creature you control.
 {4}{W}: Level 3
 When this Class becomes level 3, return target noncreature, nonland permanent card from your graveyard to the battlefield.",W,Class; counters; reanimator; graveyard; tokens; etb,BLB,5,Uncommon,29,,5.5,hand
+Pawpatch Formation,Instant,"Choose one —
+• Destroy target creature with flying.
+• Destroy target enchantment.
+• Draw a card. Create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",G,lifegain; card draw; sacrifice; tokens; removal; food,BLB,186,Uncommon,50,,5.5,hand
 Starforged Sword,Artifact — Equipment,"Gift a tapped Fish (You may promise an opponent a gift as you cast this spell. If you do, when it enters, they create a tapped 1/1 blue Fish creature token.)
 When this Equipment enters, if the gift was promised, attach this Equipment to target creature you control.
 Equipped creature gets +3/+3 and loses flying.
 Equip {3}",Colorless,Equipment; tokens; etb; equipment; pump; gift; value; equip,BLB,249,Uncommon,38,,3.0,hand
+Three Tree Rootweaver,Creature — Mole Druid,{T}: Add one mana of any color.,G,Mole; Druid; mana,BLB,198,Common,50,,1.0,seed
 Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,5.5,hand
+Plow Through,Sorcery,"Choose one —
+• Target creature you control fights target creature an opponent controls. (Each deals damage equal to its power to the other.)
+• Destroy target Vehicle.",G,removal; fight; combat,DFT,174,Uncommon,50,,3.0,seed
 Pride of the Road,Creature — Zombie Cat Warrior,"Vigilance
 Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
 Max speed — At the beginning of combat on your turn, target creature or Vehicle you control gains double strike until end of turn.",W,Zombie; Cat; Warrior; max speed; speed; aggro; vigilance; combat; start your engines!,DFT,24,Uncommon,36,,2.5,hand
@@ -39,14 +56,24 @@ Equip {3}",R,Equipment; counters; burn; etb; equipment; pump; equip,DSK,128,Rare
 Enduring Vitality,Enchantment Creature — Elk Glimmer,"Vigilance
 Creatures you control have ""{T}: Add one mana of any color.""
 When Enduring Vitality dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",G,Elk; Glimmer; mana; vigilance; combat,DSK,176,Rare,29,,6.5,hand
+Twitching Doll,Artifact Creature — Spider Toy,"{T}: Add one mana of any color. Put a nest counter on this creature.
+{T}, Sacrifice this creature: Create a 2/2 green Spider creature token with reach for each counter on this creature. Activate only as a sorcery.",G,Spider; Toy; counters; sacrifice; tokens; mana,DSK,201,Rare,50,,3.0,seed
 Conductive Machete,Artifact — Equipment,"When this Equipment enters, manifest dread, then attach this Equipment to that creature. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)
 Equipped creature gets +2/+1.
 Equip {4}",Colorless,Equipment; reanimator; graveyard; etb; equipment; pump; selection; manifest; tokens; manifest dread; equip,DSK,244,Uncommon,38,,4.5,hand
+Coordinated Clobbering,Sorcery,Tap one or two target untapped creatures you control. They each deal damage equal to their power to target creature an opponent controls.,G,,DSK,173,Uncommon,50,,2.0,seed
+Overgrown Zealot,Creature — Elf Druid,"{T}: Add one mana of any color.
+{T}: Add two mana of any one color. Spend this mana only to turn permanents face up.",G,Elf; Druid; mana,DSK,193,Uncommon,50,,6.0,hand
 Shroudstomper,Creature — Elemental,"Deathtouch
 Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.",W/B,Elemental; lifegain; card draw; deathtouch; combat; removal,DSK,233,Uncommon,20,,5.0,hand
+Spineseeker Centipede,Creature — Insect,"When this creature enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.
+Delirium — This creature gets +1/+2 and has vigilance as long as there are four or more card types among cards in your graveyard.",G,Insect; graveyard; ramp; etb; pump; delirium,DSK,199,Common,50,,1.5,seed
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
 Kinscaer Sentry,Creature — Kithkin Soldier,"First strike, lifelink
 Whenever this creature attacks, you may put a creature card with mana value X or less from your hand onto the battlefield tapped and attacking, where X is the number of attacking creatures you control.",W,Kithkin; Soldier; lifegain; lifelink; first strike; combat,ECL,22,Rare,23,2-drop first strike/lifelink that cheats a creature with MV <= attackers from hand into play attacking,6.0,hand
+Famished Worldsire,Creature — Leviathan,"Ward {3}
+Devour land 3 (As this creature enters, you may sacrifice any number of lands. It enters with three times that many +1/+1 counters on it.)
+When this creature enters, look at the top X cards of your library, where X is this creature's power. Put any number of land cards from among them onto the battlefield tapped, then shuffle.",G,Leviathan; counters; sacrifice; etb; selection; ward; protection; devour; tokens,EOE,182,Mythic,50,,7.5,hand
 Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19,,4.5,hand
 Dubious Delicacy,Artifact — Food,"Flash
@@ -70,6 +97,8 @@ If a source you control would deal damage to an opponent or a permanent an oppon
 Adaptive Automaton,Artifact Creature — Construct,"As this creature enters, choose a creature type.
 This creature is the chosen type in addition to its other types.
 Other creatures you control of the chosen type get +1/+1.",Colorless,Construct; pump,FDN,723,Rare,48,FLEX in 48: swap back for Mm'menon when a Rare wildcard is free. One of only 5 choose-a-type anthems in Standard; no cheaper substitute exists.,6.0,hand
+Aggressive Mammoth,Creature — Elephant,"Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)
+Other creatures you control have trample.",G,Elephant; trample; evasion,FDN,551,Rare,50,,6.0,hand
 "Arahbo, the First Fang",Legendary Creature — Cat Avatar,"Other Cats you control get +1/+1.
 Whenever Arahbo or another nontoken Cat you control enters, create a 1/1 white Cat creature token.",W,Cat; Avatar; tokens; pump,FDN,2,Rare,36,,5.5,hand
 Desecration Demon,Creature — Demon,"Flying
@@ -119,6 +148,7 @@ Flashback {3}{G} (You may cast this card from your graveyard for its flashback c
 I — Reveal the top card of your library. If it's a permanent card, put it into your hand.
 II — Add {G}{G}.
 III — Other creatures you control get +2/+2 and gain trample until end of turn.",G,Saga; Elemental; counters; reanimator; graveyard; lifegain; sacrifice; saga; pump; surveil; transform; flashback; recursion; spellslinger,FIN,185,Rare,13,"Flex / second wave for 13: surveil 2 bins lands for Sandman/Lumra/Mole Man, flashback gives two casts, Saga side is conditional card advantage -> {G}{G} -> team pump. VALUE, not interaction, and 6 mana across two casts — deck 13's Rare goes to The Earth Crystal first.",6,hand
+Jumbo Cactuar,Creature — Plant,"10,000 Needles — Whenever this creature attacks, it gets +9999/+0 until end of turn.",G,Plant; pump,FIN,191,Rare,50,,6.5,hand
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +2/+2 for each artifact you control and is an Artificer in addition to its other types.
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell",5.0,hand
@@ -148,6 +178,15 @@ Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card
 Bonehoard Dracosaur,Creature — Dinosaur Dragon,"Flying, first strike
 At the beginning of your upkeep, exile the top two cards of your library. You may play them this turn. If you exiled a land card this way, create a 3/1 red Dinosaur creature token. If you exiled a nonland card this way, create a Treasure token.",R,Dinosaur; Dragon; tokens; treasure; impulse; flying; evasion; first strike; combat,LCI,134,Mythic,49,,7.5,hand
 "Captain Storm, Cosmium Raider",Legendary Creature — Human Pirate,"Whenever an artifact you control enters, put a +1/+1 counter on target Pirate you control.",U/R,Human; Pirate; counters,LCI,227,Uncommon,26b,,4.5,seed
+Ixalli's Lorekeeper,Creature — Human Druid,{T}: Add one mana of any color. Spend this mana only to cast a Dinosaur spell or activate an ability of a Dinosaur source.,G,Human; Druid; mana,LCI,194,Uncommon,50,,2.0,seed
+Poison Dart Frog,Creature — Frog,"Reach
+{T}: Add one mana of any color.
+{2}: This creature gains deathtouch until end of turn.",G,Frog; mana; reach; defense,LCI,207,Common,50,,1.0,seed
+Druid of the Cowl,Creature — Elf Druid,{T}: Add {G}.,G,Elf; Druid; mana,M19,177,Common,50,,1.5,seed
+Llanowar Elves,Creature — Elf Druid,{T}: Add {G}.,G,Elf; Druid; mana,M19,314,Common,50,,1.5,seed
+Garruk's Uprising,Enchantment,"When this enchantment enters, if you control a creature with power 4 or greater, draw a card.
+Creatures you control have trample. (Each of those creatures can deal excess combat damage to the player or planeswalker it's attacking.)
+Whenever a creature you control with power 4 or greater enters, draw a card.",G,card draw; etb,M21,186,Uncommon,50,,5.5,seed
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
@@ -172,6 +211,7 @@ Solved — {2}{U}, Sacrifice this Case: Put four +1/+1 counters on target noncre
 Gleaming Geardrake,Artifact Creature — Drake,"Flying
 When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
 Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",U/R,Drake; counters; card draw; sacrifice; tokens; etb; clue; flying; evasion; investigate,MKM,205,Uncommon,35,,5.0,hand
+Hard-Hitting Question,Sorcery,Target creature you control deals damage equal to its power to target creature or planeswalker you don't control.,G,removal,MKM,164,Uncommon,50,,3.0,seed
 Magnetic Snuffler,Artifact Creature — Construct,"When this creature enters, return target Equipment card from your graveyard to the battlefield attached to this creature.
 Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",Colorless,Construct; counters; reanimator; graveyard; sacrifice; etb,MKM,254,Uncommon,38,,4.0,hand
 Soul Enervation,Enchantment,"Flash
@@ -203,8 +243,15 @@ Whenever you cast your second spell each turn, investigate. (Create a Clue token
 Stingerback Terror,Creature — Scorpion Dragon,"Flying, trample
 This creature gets -1/-1 for each card in your hand.
 Plot {2}{R} (You may pay {2}{R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",R,Scorpion; Dragon; exile cast; removal; flying; evasion; plot; tempo; cost-reduction; trample,OTJ,147,Rare,49,,5.0,hand
+Intrepid Stablemaster,Creature — Human Scout,"Reach
+{T}: Add {G}.
+{T}: Add two mana of any one color. Spend this mana only to cast Mount or Vehicle spells.",G,Human; Scout; mana; reach; defense,OTJ,169,Uncommon,50,,5.5,hand
 Lassoed by the Law,Enchantment,"When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.
 When this enchantment enters, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",W,tokens; removal; etb; pump,OTJ,18,Uncommon,3; 36a,,5.5,hand
+Outcaster Greenblade,Creature — Human Mercenary,"When this creature enters, search your library for a basic land card or a Desert card, reveal it, put it into your hand, then shuffle.
+This creature gets +1/+1 for each Desert you control.",G,Human; Mercenary; ramp; etb; pump,OTJ,172,Uncommon,50,,2.5,seed
+Rise of the Varmints,Sorcery,"Create X 2/1 green Varmint creature tokens, where X is the number of creature cards in your graveyard.
+Plot {2}{G} (You may pay {2}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",G,graveyard; exile cast; tokens; plot; tempo; cost-reduction,OTJ,179,Uncommon,50,,3.5,seed
 Thunder Lasso,Artifact — Equipment,"When this Equipment enters, attach it to target creature you control.
 Equipped creature gets +1/+1.
 Whenever equipped creature attacks, tap target creature defending player controls.
@@ -266,6 +313,8 @@ Enchanted creature gets +2/+2 for each Aura and Equipment attached to it.
 All damage that would be dealt to you is dealt to enchanted creature instead.",W,Aura; aura; pump; enchant,SPM,24,Rare,38,,3.5,hand
 "Green Goblin, Revenant",Legendary Creature — Goblin Human Villain,"Flying, deathtouch
 Whenever Green Goblin attacks, discard a card. Then draw a card for each card you've discarded this turn.",B/R,Goblin; Human; Villain; card draw; deathtouch; combat; removal; flying; evasion,SPM,130,Uncommon,10,,4.5,hand
+Craterhoof Behemoth,Creature — Beast,"Haste
+When this creature enters, creatures you control gain trample and get +X/+X until end of turn, where X is the number of creatures you control.",G,Beast; etb; pump; haste; aggro,TDM,138,Mythic,50,,9.0,hand
 "Neriv, Heart of the Storm",Legendary Creature — Spirit Dragon,"Flying
 If a creature you control that entered this turn would deal damage, it deals twice that much damage instead.",W/B/R,Spirit; Dragon; flying; evasion,TDM,210,Mythic,concept: Mardu,Lost its home when deck 14 converted Mardu->Rakdos (BR) for consistency; needs a Mardu (WBR) shell — no current deck. Build-around concept.,6.5,hand
 Stormscale Scion,Creature — Dragon,"Flying
@@ -374,3 +423,5 @@ Realm-Scorcher Hellkite,Creature — Dragon,"Bargain (You may sacrifice an artif
 Flying, haste
 When this creature enters, if it was bargained, add four mana in any combination of colors.
 {1}{R}: This creature deals 1 damage to any target.",R,Dragon; sacrifice; burn; etb; noncombat damage; flying; evasion; haste; aggro; bargain; value,WOE,145,Mythic,49,,6.5,hand
+Rootrider Faun,Creature — Satyr Scout,"{T}: Add {G}.
+{1}, {T}: Add one mana of any color.",G,Satyr; Scout; mana,WOE,182,Common,50,,1.5,seed
