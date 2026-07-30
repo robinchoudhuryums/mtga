@@ -153,3 +153,7 @@
 8 Mountain (MSH) 294
 7 Island (MSH) 290
 1 Secluded Courtyard (FDN) 267
+
+# Flex — measured and parked. See: deck.py flex 48
+#~ +Dauntless Scrapbot | CRAFT (Uncommon) — {3} 3/1 Robot: ETB exiles each opponent's graveyard and creates a Lander token (ramp + an artifact token). Genuinely reasonable, and it MEASURED as a non-upgrade in every configuration tried: paying for it by cutting cheap bodies (Aerial Doombot, Viv Vision) dropped card advantage 2 -> 1, and paying with Untimely Malfunction dropped interaction 10 -> 9. Not rejected on fit — the deck simply has no slot whose loss is cheaper than the gain.
+#~ +Spider-Bot | CRAFT (Common) — {2} 2/1 reach Robot with a land-smoothing ETB. Same finding as above; it is the marginal card in a 36-slot list that is already tight.

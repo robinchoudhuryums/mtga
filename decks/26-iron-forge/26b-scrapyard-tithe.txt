@@ -1,6 +1,6 @@
 #: name: Iron Forge — Scrapyard Tithe
 #: format: Standard
-#: colors: UR
+#: colors: UBR
 #: based-on: deck.txt
 #: plan: midrange
 #: protect: Monument to Endurance; Cool but Rude; Magmakin Artillerist; Summon: Bahamut; Death to Our Enemies
@@ -29,9 +29,9 @@
 #: archetype: THE LOOT ENGINES ARE THE ENGINE, not filler: Kitsa and Gran-Gran each loot for
 #: archetype: free every turn, Rewrite History loots whenever your creatures become TAPPED
 #: archetype: (which this deck does constantly for mana), and Kiora draws two and discards two
-#: archetype: on entry — two drain triggers off one card. Galvanize is priced by the same plan:
-#: archetype: 3 damage, or FIVE if you have drawn two or more cards this turn, which a looting
-#: archetype: deck manages most turns.
+#: archetype: on entry — two drain triggers off one card. Iron-Fist Pulverizer is priced by the
+#: archetype: same plan: it deals 2 to an opponent whenever you cast your SECOND spell each
+#: archetype: turn, which a 2.39-curve deck manages most turns.
 #: archetype: DISTINCTNESS from its own parent: deck 26 and this deck share colours, an artifact
 #: archetype: base and a taste for big top-end, but 26 needs its permanents to CONNECT and this
 #: archetype: one is indifferent to whether it has a creature at all.
@@ -58,6 +58,32 @@
 #: notes: 48a. Galvanize replaced it and is priced by THIS deck's plan instead.
 #: notes: AGNA QEL'A IS A LOOT ENGINE IN THE MANABASE ("{2}{U}, {T}: draw a card, then discard
 #: notes: a card"), so the drain has a source that costs no spell slot and survives a sweeper.
+#: notes: PASS 2 — five adds from the leftover pile, all chosen for hitting this deck's actual
+#: notes: plan rather than for being good cards. BULLSEYE is the best of them and fits THREE
+#: notes: plan pieces at once: "sacrifice an artifact OR discard a nonland card: deals 2 damage
+#: notes: to any target", repeatable at {3},{T} — a sacrifice outlet, a discard outlet and a
+#: notes: damage source in one card. LADY OCTOPUS gains ingenuity counters on your first and
+#: notes: second DRAW each turn, which a deck looting every turn turns on immediately, and then
+#: notes: free-casts artifacts. IRON-FIST PULVERIZER deals 2 to an opponent whenever you cast
+#: notes: your SECOND spell each turn — non-combat damage that scales with a low curve.
+#: notes: GLEAMING GEARDRAKE grows on every artifact sacrifice and Clues on entry. TRADE THE
+#: notes: HELM hands them a spare Treasure and takes their best permanent.
+#: notes: OUT: Untimely Malfunction, Galvanize (interaction was 12 against a much lower need),
+#: notes: Elixir (a {5} activated ability that will never be paid), Oasis Gardener, Magic Pot.
+#: notes: MEASURED: interaction held at 12, card advantage 7 -> 8, avg MV 2.25 -> 2.39.
+#: notes: `#: colors:` WIDENED FROM UR TO UBR FOR BULLSEYE, and the cost is real enough to name:
+#: notes: {2}{B/R} is hybrid and pays with red, so the card is castable on a two-colour base —
+#: notes: but its colour IDENTITY carries B, and every castability lint now compares against a
+#: notes: three-colour baseline, which can mask a genuine stray later. It was worth it here and
+#: notes: nowhere else; 48a screened it KEY too and was deliberately left alone so only one
+#: notes: header had to widen.
+#: notes: FOUR CANDIDATES REJECTED FOR THIS DECK SPECIFICALLY, all for the same reason: this is
+#: notes: the one deck on the roster that wins WITHOUT ATTACKING, so cards keyed to combat
+#: notes: damage do nothing. Waterbender Ascension (quest counters on combat damage; its
+#: notes: unblockable mode is irrelevant), Illvoi Infiltrator (draws on combat damage),
+#: notes: Donatello Gadget Master (token-copies an artifact on combat damage) and Draconautics
+#: notes: Engineer all went elsewhere or stayed out. Brilliance Unleashed was also skipped —
+#: notes: not on fit but on curve (MV 6 in a 2.39 deck), and it is already in deck 48.
 #: notes: NO SWEEPER AND ALMOST NO BLOCKERS is the obvious hole — the deck's creature count is
 #: notes: deliberately low because creatures are not how it wins. Against a fast aggro start it
 #: notes: must trade removal one-for-one and race with drain, which is a real losing posture.
@@ -90,13 +116,13 @@
 # Treasure and artifact fuel
 1 Stark Industries Executive (MSH) 153
 1 Reckless Ransacking (ECL) 152
-1 Elixir (FIN) 256
-1 Magic Pot (FIN) 263
+1 Lady Octopus, Inspired Inventor (SPM) 35
+1 Trade the Helm (DFT) 69
 1 Mouser Foundry (TMT) 96
 1 Machinesmith Automaton (MSH) 144
 1 Iron Man, Master of Machines (MSH) 216
 1 Gleaming Barrier (FDN) 252
-1 Oasis Gardener (OTJ) 246
+1 Gleaming Geardrake (MKM) 205
 1 Technodrome (TMT) 179
 
 # Repeatable loot — every activation is a drain trigger
@@ -110,8 +136,8 @@
 1 Abrade (FDN) 188
 1 Plasma Bolt (EOE) 152
 1 Fiery Annihilation (FDN) 86
-1 Untimely Malfunction (DSK) 161
-1 Galvanize (MKM) 128
+1 Bullseye, Death Dealer (MSH) 209
+1 Iron-Fist Pulverizer (OTJ) 137
 
 # Lands (24)
 1 Castle Doom (MSH) 263
