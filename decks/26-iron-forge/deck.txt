@@ -3,8 +3,8 @@
 #: colors: UR
 #: plan: midrange
 #: tier: A — Izzet artifacts/robots, rebuilt 2026-07 around RAMP-TO-HEAVY-HITTERS plus a
-#: tier: Station package. Metrics floor is A on interaction 7 (3 unclassified) + card
-#: tier: advantage 5, protection 4, avg MV 3.78. The letter buys what the floor cannot see:
+#: tier: Station package. Metrics floor is A on interaction 8 + card
+#: tier: advantage 5, protection 3, avg MV 3.69. The letter buys what the floor cannot see:
 #: tier: Krang, Bygone Colossus, Chronicle of Victory, Ultron, Iron Man and Dawnsire are
 #: tier: real bombs, and Tony Stark's back face plus Tannuk make them arrive early. Held at
 #: tier: A rather than argued up to S because the plan is UNPLAYED in this configuration and
@@ -18,7 +18,16 @@
 #: archetype: Operator / Ironheart's improvise-granting / Cosmic Cube / Vision Quest each
 #: archetype: cheat cost a different way. The bodies GROW on the way there — Machinesmith
 #: archetype: Automaton, Iron Spider's board-wide counter tap, Donatello Mutant Mechanic's
-#: archetype: three-counter animate, Super-Adaptoid scaling off the legend count.
+#: archetype: three-counter animate, and Technodrome converting artifacts into cards.
+#: archetype: THE WARP/VOID SUB-ENGINE (pass 2). Three cards carry warp — Weftstalker Ardent
+#: archetype: {R}, Bygone Colossus {3}, Anticausal Vestige {4} — and Tannuk grants warp {2}{R}
+#: archetype: to every artifact card in hand, so "a spell was warped this turn" is reliably
+#: archetype: true. That turns on Plasma Bolt's Void (3 damage instead of 2 for {R}) and pays
+#: archetype: for Impolite Entrance, which hands a warped body trample AND haste and replaces
+#: archetype: itself. Anticausal Vestige is the best of them: warp it for {4}, get a 7/5 for a
+#: archetype: turn, and when it is exiled at end step its LEAVES-THE-BATTLEFIELD trigger draws
+#: archetype: a card and free-drops a permanent with mana value <= your land count. At eight or
+#: archetype: nine lands that is a free Krang or Bygone Colossus.
 #: archetype: THE STATION PACKAGE is the piece worth knowing. Station's cost is "tap ANOTHER
 #: archetype: creature you control", which is NOT that creature's own {T} ability — so
 #: archetype: summoning sickness does not apply (same reason you can crew with a creature you
@@ -53,13 +62,36 @@
 #: notes: (MV 5, and the only source of the W colour-identity stray) · Technodrome (the most
 #: notes: conditional body in the deck — cannot attack or block under power 6).
 #: notes: IN (9): Bygone Colossus + Kavaron, Memorial World (the Station package) · Tannuk,
-#: notes: Steadfast Second (warp on every artifact card in hand + board haste) · Kavaron
-#: notes: Turbodrone (owned haste enabler, and a Robot) · Vision Quest (owned; tutor an
+#: notes: Steadfast Second (warp on every artifact card in hand + board haste) · Vision Quest (owned; tutor an
 #: notes: artifact creature ONTO the battlefield with X counters, and with haste at X>=4) ·
 #: notes: Chronicle of Victory (owned; choose Robot -> 13 of them get +2/+2, first strike and
 #: notes: trample, and every Robot spell draws) · Iron Spider (board-wide +1/+1 counter tap +
-#: notes: a draw outlet) · Mechan Assembler (4/4 that makes a 2/2 every turn) · Explosive
+#: notes: a draw outlet) · Explosive
 #: notes: Derailment (cheap Spree removal, and a Foom/Mica enabler in its artifact mode).
+#: notes: PASS 2 — four more changes, all measured against pass 1 rather than argued.
+#: notes: OUT: Ultron Drone (a 3-mana 2/3 whose ONLY ability costs {6} — weakest artifact
+#: notes: creature in the deck) · Super-Adaptoid (its power equals LEGENDS YOU CONTROL, not
+#: notes: legends in the deck; with 14 in the list you typically control 2-3, so it is a 2/2
+#: notes: or 3/2 that steals keywords) · Kavaron Turbodrone (superseded by Impolite Entrance:
+#: notes: MV 1 not 3, instant not sorcery-only, not summoning-sick, adds trample, and draws)
+#: notes: · Mechan Assembler (MY OWN pass-1 add, cut on measurement — MV 5 in a deck already
+#: notes: heavy at the top, and its 2/2-per-turn serves a WIDE plan while this deck went TALL).
+#: notes: IN: Plasma Bolt (owned; {R} for 3 damage with Void reliably on) · Impolite Entrance
+#: notes: (trample + haste + a card for {R} — the haste answer for warped bodies) · Anticausal
+#: notes: Vestige (the ramp engine; see the archetype block) · Technodrome RESTORED (an artifact
+#: notes: creature and the cheapest repeatable card-draw in the deck; the growth package turns
+#: notes: its power-6 gate on — Donatello Mutant Mechanic's three counters do it in one tap).
+#: notes: Measured: interaction 7 -> 8, card advantage held at 5, avg MV 3.78 -> 3.69, early
+#: notes: drops 8 -> 10, and the deck went from ZERO one-drops to three. The alternative that
+#: notes: cut Viv Vision instead of Mechan Assembler was strictly worse on every axis (card
+#: notes: advantage 4, avg MV 3.75) — Viv Vision stays, and she is also a 26a card, which costs
+#: notes: nothing since one owned copy serves both decks.
+#: notes: PASS 2'S ONE REAL COST: protection 4 -> 3. Super-Adaptoid was classified as
+#: notes: Protection / trick (it copies indestructible off a target creature), so cutting it
+#: notes: spent a point on that axis. Protection is REPORTED but deliberately not fed into the
+#: notes: tier floor, so the letter is unaffected — but the deck now defends its bombs with
+#: notes: Krang's board-wide indestructible and The Vision's Density Control, and little else.
+#: notes: If a removal-heavy matchup is the problem, that is the axis to fix.
 #: notes: THE MISTAKE THIS REBUILD MADE, RECORDED SO IT IS NOT REPEATED. The first pass cut
 #: notes: seven cards chosen on plan-fit and body quality. FOUR of them were carrying
 #: notes: interaction (Mjölnir, HYDRA Assault Robot, Mouser Foundry, Don & Leo) and NONE of
@@ -70,8 +102,12 @@
 #: notes: cut graded it as an Equipment with only 4 worthy creatures and missed that its main
 #: notes: job here is a removal spell) and adding Explosive Derailment. Interaction is now 7.
 #: notes: Lesson: run `deck.py quality` BEFORE choosing cuts, not after.
-#: notes: MANABASE. 24 lands, R 13 / U 13, six tapped. Only TWO cards now sit below 90%
-#: notes: cast-on-curve (down from 17 pre-rebuild) and they are the two {R}{R} costs, Fin
+#: notes: MANABASE. 24 lands, R 13 / U 13, six tapped. THIRTEEN cards read below 90%
+#: notes: cast-on-curve after pass 2, up from two — but do NOT read that as a regression. The
+#: notes: model caps the horizon at turn = mana value, so the three new {R} ONE-drops are
+#: notes: judged purely on "do you have a red source on turn one" (83.7%), which for removal
+#: notes: you hold anyway is not a real cost. The figures that matter are unchanged: the two
+#: notes: {R}{R} costs, Fin
 #: notes: Fang Foom and Tannuk, both at 69.6%. That is the deck's live risk: if red screw
 #: notes: shows up in play, Tannuk is the card to cut, not Foom (Foom has the enabler package
 #: notes: built around it). Kavaron, Memorial World taps for {R} and is part of the Station
@@ -100,16 +136,14 @@
 1 Weftstalker Ardent (EOE) 169
 1 Fin Fang Foom (MSH) 129
 1 Viv Vision, Teen Synthezoid (MSH) 256
-1 Super-Adaptoid (MSH) 250
 1 Ultron, Artificial Malevolence (MSH) 252
-1 Ultron Drone (MSH) 253
 1 Krang, Utrom Warlord (TMT) 175
 1 The Vision (MSH) 255
 1 Virulent Silencer (EOE) 248
-1 Kavaron Turbodrone (EOE) 141
 1 Tannuk, Steadfast Second (EOE) 162
-1 Mechan Assembler (EOE) 63
 1 Bygone Colossus (EOE) 235
+1 Technodrome (TMT) 179
+1 Anticausal Vestige (EOE) 1
 
 # Artifacts / Spells
 1 Fiery Annihilation (FDN) 86
@@ -117,6 +151,8 @@
 1 Iron Man Armor (MSH) 248
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 Explosive Derailment (DFT) 130
+1 Plasma Bolt (EOE) 152
+1 Impolite Entrance (ECL) 146
 1 The Ten Rings (MSH) 251
 1 I Am Iron Man (MSH) 58
 1 Price of Freedom (TLA) 149
@@ -153,4 +189,10 @@
 #~ note: applied — REBUILD 2026-07 to ramp-to-heavy-hitters + Station. OUT: Aerial Doombot, The Mechanist, Donatello Turtle Techie, Donatello Way with Machines, HYDRA Assault Robot, Mouser Foundry, Don & Leo, Technodrome. IN: Bygone Colossus, Kavaron Memorial World (land), Tannuk, Kavaron Turbodrone, Vision Quest, Chronicle of Victory, Iron Spider, Mechan Assembler, Explosive Derailment. Mjölnir RESTORED (its ETB removal was misread as an Equipment-only card). Full reasoning + the interaction-drop mistake are in the #: notes: block.
 #~ +Mica, Reader of Ruins | CRAFT (Uncommon) — the upgrade to the Fin Fang Foom plan that was not taken. Same copy effect with NO artifact/land restriction, {3}{R} single pip (~88% on curve vs Foom's 69.6%), a 4/4 with ward—pay 3 life, and it triggers off ALL of the deck's instants and sorceries rather than the two that target an artifact. Cost to copy is sacrificing an artifact, which is close to free here. Take it as REDUNDANCY alongside Foom (two copies of one spell), not as a replacement, unless red screw shows up in play.
 #~ +Ramos, Dragon Engine | CRAFT (Mythic) — 4/4 flier that gains a +1/+1 counter per colour of every spell you cast, and converts five counters into WWUUBBRRGG. Held back from the rebuild only because it would have been the FIFTH card at MV 6+; its five-colour identity is cosmetic here since it casts for {6} colorless. Revisit if the top end proves castable.
+#~ note: applied — PASS 2: OUT Ultron Drone, Super-Adaptoid, Kavaron Turbodrone, Mechan Assembler. IN Plasma Bolt, Impolite Entrance, Anticausal Vestige, Technodrome (restored). interaction 7->8, avg MV 3.78->3.69, first three one-drops. Full reasoning in #: notes:.
+#~ +Full Bore | CRAFT (Uncommon) — {R} INSTANT: +3/+2, and trample AND haste if the creature was cast for its WARP cost. The bigger-swing sibling of Impolite Entrance: warp Bygone Colossus for {3}, Full Bore for {R}, attack as a 12/11 trample haste. Take it OVER Impolite Entrance if you want the kill rather than the card; take BOTH if the warp plan proves reliable in play. Three warp cards in the deck plus Tannuk granting warp to every artifact in hand means the condition is usually met.
+#~ +Crash Through | CRAFT (Common) — {R}: trample for your WHOLE board + draw a card. The alpha-strike version; matters most with Krang and Bygone Colossus at 9 power. Cheapest possible way to convert a stalled board into lethal. · minor next to Impolite Entrance, which also grants haste.
+#~ +General Traag, Heart of Stone | OWNED — 4/3 TRAMPLE artifact creature whose ETB may sac another artifact to deal 4 damage to a creature: interaction, trample and an artifact body in one card, i.e. all three things this deck wanted. HELD BACK for one measured reason only: it would be the THIRD {R}{R} cost, and the two already here (Fin Fang Foom, Tannuk) both price at 69.6% on turn four against 13 red sources. Take it the moment red sources go up, or in place of Tannuk.
+#~ +Kavaron Skywarden | OWNED — 4/5 reach that grows every end step off Void (which this deck reliably turns on). Skipped on curve and type: MV 5 in a deck already carrying nine cards at 5+, and it is a Kavu Soldier, so it is neither an artifact creature nor a Robot — it feeds none of the tribal payoffs.
+#~ +Donatello, Way with Machines | OWNED — cut in pass 1 as redundant with Machinesmith Automaton. Partial correction: it is a FLIER (Machinesmith has trample), a Turtle, and Legendary. With Super-Adaptoid now cut, the legend-count argument for it is gone, so the cut stands — but note it is NOT an artifact creature, so it cannot carry poison and 26a has no use for it either. It is a core-or-nothing card.
 #~ note: 26b "Full Pile (brew)" retired 2026-07 — the trim held up: updated `suggest --owned` ranks every pile-only leftover OUTSIDE the top 47 owned cards, none a swap-in. Salvage kept above; Sami, Wildcat Captain skipped (W/R — needs a white source the UR base lacks), Bullseye/Wistfulness off-color (B/G), the rest redundant equipment (Goldvein/Super Suit/Mirrormind/Bespoke Bō) or niche (Nanoform/Radiant Lotus/Bender's Waterskin/Broadcast Takeover/the two animate-cantrip tricks).
