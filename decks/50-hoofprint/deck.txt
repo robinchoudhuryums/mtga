@@ -105,6 +105,21 @@
 #: notes: nothing — below-90 held at 3, interaction 6, card advantage 2, avg MV 3.11, 21 early
 #: notes: drops, 25 creatures, all identical. A second evasion land (Secret Tunnel) was tested
 #: notes: and REJECTED: it took below-90 from 3 to 4, since green sources drop too far.
+#: notes: MICHELANGELO, IMPROVISER IS THE CHEAT PACKAGE, and an earlier pass wrongly dismissed
+#: notes: him as circular ("only triggers on combat damage to a player — the outcome the package
+#: notes: was meant to enable"). That reasoning is only valid in a deck with no way to make a
+#: notes: creature connect. THIS DECK HAS SIX: Craterhoof x3 and Garruk's Uprising x2 both grant
+#: notes: trample, Aggressive Mammoth grants it board-wide, and Rogue's Passage makes any
+#: notes: creature unblockable for {4}. He is a 4/4 for {3}{G}, so trample actually gets through
+#: notes: an early blocker rather than being absorbed, and "put a creature card AND/OR A LAND
+#: notes: CARD from your hand onto the battlefield" cheats an MV-8 finisher in for free.
+#: notes: HE ALSO FIXES GARRUK'S UPRISING. At printed power 4 he is one of the few creatures
+#: notes: here that actually satisfies its power-4+ enters trigger, so he draws a card on entry.
+#: notes: PAID FOR WITH RISE OF THE VARMINTS, which was the genuinely weak slot: "create X 2/1
+#: notes: tokens where X is the number of creature cards in your GRAVEYARD" in a deck with no
+#: notes: self-mill and few creature deaths is usually X=0 or 1. Measured free — below-90 held
+#: notes: at 3, interaction 6, card advantage 2, avg MV 3.11 and 21 early drops all unchanged,
+#: notes: and creature count went 25 -> 26, which this deck reads three separate ways.
 #: notes: THE EARTH CRYSTAL WAS TESTED AND REJECTED, against five different cuts. "Green spells
 #: notes: you cast cost {1} less" plus counter-doubling is genuinely good and it is OWNED, but
 #: notes: every cut that funds it costs either a CREATURE — the deck's actual currency, since
@@ -132,13 +147,14 @@
 # The board-to-mana converter
 2 Enduring Vitality (DSK) 176
 
+# The cheat — connects, then puts Craterhoof into play from hand
+1 Michelangelo, Improviser (TMT) 119
+
 # Bodies that also find lands
 1 Spineseeker Centipede (DSK) 199
 1 Outcaster Greenblade (OTJ) 172
 1 Loot, Exuberant Explorer (FDN) 106
 
-# Going wider
-1 Rise of the Varmints (OTJ) 179
 
 # Trample — without this the finishers are chump-blocked
 2 Garruk's Uprising (M21) 186
