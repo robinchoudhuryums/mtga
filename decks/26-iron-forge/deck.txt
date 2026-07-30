@@ -4,12 +4,12 @@
 #: plan: midrange
 #: tier: A — Izzet artifacts/robots, rebuilt 2026-07 around RAMP-TO-HEAVY-HITTERS plus a
 #: tier: Station package. Metrics floor is A on interaction 8 + card
-#: tier: advantage 5, protection 3, avg MV 3.56. The letter buys what the floor cannot see:
+#: tier: advantage 5, protection 3, avg MV 3.50. The letter buys what the floor cannot see:
 #: tier: Krang, Bygone Colossus, Chronicle of Victory, Ultron, Iron Man and Dawnsire are
 #: tier: real bombs, and Tony Stark's back face plus Tannuk make them arrive early. Held at
 #: tier: A rather than argued up to S because the plan is UNPLAYED in this configuration and
-#: tier: carries two live risks: nine cards at MV 5+, and TWO {R}{R} costs (Fin Fang Foom,
-#: tier: Tannuk) that both price at 69.6% on turn four against 13 red sources.
+#: tier: still carries nine cards at MV 5+. The double-red risk is now HALVED: Tannuk is the
+#: tier: only {R}{R} cost left, at 69.6% on turn four against 13 red sources.
 #: archetype: Izzet (U/R) artifacts + Robot tribal, built to RAMP INTO HEAVY HITTERS. Three
 #: archetype: acceleration layers, not one: Tony Stark flips into The Invincible Iron Man
 #: archetype: ("you may put an artifact card from your hand onto the battlefield" every
@@ -124,8 +124,29 @@
 #: notes: target" cannot be an artifact), and neither Full Bore nor Impolite Entrance does
 #: notes: (both target a creature). Four reliable triggers is enough — General Traag was
 #: notes: offered as a substitute and is NOT needed on trigger grounds.
-#: notes: MICA now has EIGHT triggers, every instant and sorcery in the deck, up from four at
-#: notes: pass 1. That strengthens the case for it as Foom redundancy rather than replacement.
+#: notes: PASS 5 — FIN FANG FOOM LEFT FOR VARIANT 26a, and Improvised Arsenal took the slot.
+#: notes: Foom's copy clause has EIGHT artifact-targeting spells to trigger off in 26a against
+#: notes: four here, so its engine is literally twice as live over there; and 26a wanted a
+#: notes: second threat that grows. Improvised Arsenal beat Mica and General Traag in the same
+#: notes: slot on measurement (avg MV 3.56 -> 3.50, early drops 11 -> 12; Mica was flat, General
+#: notes: Traag added interaction but re-introduced a second {R}{R}).
+#: notes: THE REAL PRIZE IS CASTABILITY, and it is bigger than the table shows: Fin Fang Foom
+#: notes: was one of this deck's TWO {R}{R} costs, both pricing at 69.6% on turn four. Cutting
+#: notes: it halves that problem outright — Tannuk is now the only one. That was the standing
+#: notes: live risk in this deck's #: tier: rationale, and it is now half solved for free.
+#: notes: Improvised Arsenal itself: "+1/+0 for each artifact you control" with equip {R} is a
+#: notes: real clock on a deck running ~21 artifacts, it counts ITSELF so it is never zero, and
+#: notes: "{4}{R}: create a token copy of this Equipment" doubles it late. It is a Rare.
+#: notes: WHAT HAPPENS TO THE FOOM ENABLER PACKAGE, since it was added FOR Foom: I Am Iron Man
+#: notes: and Price of Freedom both STAY, and they were never really Foom-only. I Am Iron Man
+#: notes: animates an artifact into a 4/4 flier and cantrips (and is a Virulent Silencer trigger
+#: notes: here too); Price of Freedom is two-mana removal that can never fizzle, plus a cantrip.
+#: notes: They earn their slots on their own text. The pass-3 sentence about Foom's four
+#: notes: reliable triggers is now HISTORY, not a live claim — kept because it records why
+#: notes: those two cards are in the deck at all.
+#: notes: MICA has EIGHT triggers here, every instant and sorcery in the deck. With Foom gone it
+#: notes: is no longer redundancy but the only spell-copy option; it stays in flex rather than
+#: notes: the 60 because Improvised Arsenal measured better in the one slot that opened.
 #: notes: PASS 4 — Sokka, Bold Boomeranger in for Metalhead, chosen by measuring all four
 #: notes: candidates in that one slot: Sokka (card advantage 5, avg MV 3.56, early drops 11) beat
 #: notes: Mechan Assembler (4 / 3.64 / 10), Donatello Gadget Master (4 / 3.58 / 10) and Mica
@@ -187,7 +208,7 @@
 1 Sokka, Bold Boomeranger (TLA) 240
 1 Machinesmith Automaton (MSH) 144
 1 Weftstalker Ardent (EOE) 169
-1 Fin Fang Foom (MSH) 129
+1 Improvised Arsenal (TMT) 92
 1 Viv Vision, Teen Synthezoid (MSH) 256
 1 Ultron, Artificial Malevolence (MSH) 252
 1 Krang, Utrom Warlord (TMT) 175
@@ -242,6 +263,8 @@
 #~ note: applied — REBUILD 2026-07 to ramp-to-heavy-hitters + Station. OUT: Aerial Doombot, The Mechanist, Donatello Turtle Techie, Donatello Way with Machines, HYDRA Assault Robot, Mouser Foundry, Don & Leo, Technodrome. IN: Bygone Colossus, Kavaron Memorial World (land), Tannuk, Kavaron Turbodrone, Vision Quest, Chronicle of Victory, Iron Spider, Mechan Assembler, Explosive Derailment. Mjölnir RESTORED (its ETB removal was misread as an Equipment-only card). Full reasoning + the interaction-drop mistake are in the #: notes: block.
 #~ +Mica, Reader of Ruins | CRAFT (Uncommon) — the upgrade to the Fin Fang Foom plan that was not taken. Same copy effect with NO artifact/land restriction, {3}{R} single pip (~88% on curve vs Foom's 69.6%), a 4/4 with ward—pay 3 life, and it triggers off ALL of the deck's instants and sorceries rather than the two that target an artifact. Cost to copy is sacrificing an artifact, which is close to free here. Take it as REDUNDANCY alongside Foom (two copies of one spell), not as a replacement, unless red screw shows up in play.
 #~ note: applied — PASS 3: Full Bore in for Impolite Entrance (identical metrics, pure upside); Ramos, Dragon Engine in for The Ten Rings (MV 8 -> 6, avg MV 3.69 -> 3.64, card advantage 5 -> 4). Viv Vision HELD after measuring her against Mechan Assembler / Sokka / Mica in that slot — she beat all three on card advantage. Steelswarm Operator held: its {U}{U}-for-artifact-abilities mode is real acceleration, not filler.
+#~ note: applied — PASS 5: Fin Fang Foom out (moved to variant 26a, where it has eight artifact-targeting spells to copy against four here), Improvised Arsenal in. Halves the deck's double-red problem — Tannuk is now the only {R}{R} cost.
+#~ +Mica, Reader of Ruins | CRAFT (Uncommon) — {3}{R} 4/4 with ward-pay 3 life; "whenever you cast an instant or sorcery spell, you may sacrifice an artifact. If you do, copy that spell." EIGHT triggers here (every instant and sorcery in the deck). With Fin Fang Foom gone this is the deck's only spell-copy option, and it is single-pip red at ~88% on curve. It lost the open slot to Improvised Arsenal on measurement only (flat metrics vs -0.06 avg MV and +1 early drop) — take it if you want the copy effect back.
 #~ +The Ten Rings | OWNED — {8} legendary artifact hand-refill engine, cut at pass 3 as the least plan-aligned card in the deck (it refills a hand this deck would rather be emptying onto the battlefield). Take it back if the deck proves to run out of gas rather than out of mana; it is also an I Am Iron Man / Living Brain animation target.
 #~ +Mechan Assembler | CRAFT (Uncommon) — 4/4 Robot Artificer that makes a 2/2 Robot token every turn, and an artifact that ENTERS (triggering Machinesmith, Ultron, Iron Man). Added at pass 1, cut at pass 2, and re-measured at pass 3 against Viv Vision's slot: it scored card advantage 3 vs her 4. Take it if the board-presence plan matters more than the extra card.
 #~ +Sokka, Bold Boomeranger | OWNED (Rare) — {U}{R} 1/1 that grows on every artifact OR LESSON cast (Price of Freedom is a Lesson), with an ETB rummage. Cheapest grower available and the best curve of the three pass-3 alternatives (avg MV 3.61, early drops 11) — but its "discard up to two, then draw that many" is a net-neutral RUMMAGE that role_tally scores as card advantage, so its measured 4 overstates it. Take it for curve, not for cards.
