@@ -7,8 +7,21 @@
 #: tier: first three answers to a noncreature permanent (it had zero) put the metrics
 #: tier: floor at A. Letter HELD at B pending a human re-grade — the remaining case
 #: tier: for B is card advantage, which measures 0 (Avengers Assemble! is a real
-#: tier: repeatable draw the classifier misses, so call it ~1), and 24 central themes,
+#: tier: repeatable draw the classifier misses, so call it ~1), and 23 central themes,
 #: tier: the most diffuse deck on the roster.
+#: notes: MANABASE: Surveillance Room was cut for a 21st Plains. In a MONO-WHITE deck its
+#: notes: "{1}, {T}: add one mana of any color" is a white source with a tax and its {C} mode
+#: notes: does nothing a Plains does not — so it was costing a real white source for a one-shot
+#: notes: surveil. W sources 21 -> 22, and Anti-Venom ({W}{W}{W}{W}{W}) goes 31.9% -> 36.7% on
+#: notes: turn five, with the deck's sub-90% count dropping from 2 to 1.
+#: notes: ANTI-VENOM CANNOT BE FIXED, only improved, and the number should be read that way:
+#: notes: Karsten puts 90% at turn five for five white pips at 35 sources, which is more than
+#: notes: this deck has LANDS. It is a turn six-or-seven card. Cutting a second land (Urban
+#: notes: Retreat) measured identically at 36.7% and was rejected as a no-op; cutting an
+#: notes: Avengers Tower reached 41.7% but that land's "any color, spend on a Hero spell" mode
+#: notes: is a white source for 15 of this deck's creatures plus a Hero tutor, so it stays.
+#: notes: Reanimating or blinking Anti-Venom is NOT a workaround — his trigger reads "if he was
+#: notes: cast", so cheating him in leaves a vanilla damage-prevention body.
 #: colors: W
 #: notes: Mono-white Hero go-wide/counters — Avengers Assemble + Captain America +
 #: notes: Phil Coulson, with a TMT secondary engine (Raph & Leo extra combat,
@@ -62,9 +75,8 @@ Deck
 1 Cosmogrand Zenith (EOE) 9
 
 # Lands
-20 Plains (MSH) 288
+21 Plains (MSH) 288
 2 Avengers Tower (MSH) 260
-1 Surveillance Room (MSH) 274
 1 Urban Retreat (SPM) 187
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 23

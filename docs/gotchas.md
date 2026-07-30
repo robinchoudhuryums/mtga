@@ -62,8 +62,22 @@ recomputes MV whenever the cost contains `" // "`. FRONT is the convention, matc
 `owned_qty`'s DFC rule — the creature on an Adventure card, the cheap door on a Room —
 and Adventure cards already stored the front-face value, so recomputing AGREES with
 them and only corrects the split/Room shape. Roster diff when this landed: 18 of 59
-decks changed, **every one downward**. Residual: a deck that plays a split card mainly
+decks changed, **every one downward**. Residual 1: a deck that plays a split card mainly
 for its BACK half reads cheaper than it plays; grade that from the printed card.
+
+**Residual 2, found while building deck 51 and worse because it sits on the surface a
+session is TOLD to trust.** `card.py` prints the mana value stored in `card-mana.csv`,
+which for a two-half card is the COMBINED total — so a Room reads far MORE expensive than
+it plays, the opposite direction from residual 1. Mirror Room // Fractured Realm displays
+`{2}{U} // {5}{U}{U} (MV 10)`, and it was very nearly filed as an unbuildable ten-drop; it
+is a `{2}{U}` THREE-DROP whose back door unlocks separately for `{5}{U}{U}`, and you never
+pay ten. The analysis paths are all correct — `deck.py stats 51` counts it at MV 3, and
+`consistency` prices it off the front face — so the *inspection* surface and the *analysis*
+surface disagree about the same card. G-01 tells a session to run `card.py` before grading
+anything, which is exactly when this misleads. **Read the printed COST, not the MV,
+whenever a name contains `" // "`.** The narrow code fix would be for `card.py` to render
+`mana_value(front_face_cost(cost))` and show the combined total only as an aside; until
+that lands the rule above is the mitigation.
 
 
 ## [G-03] Don't judge a card by printed mana value or a single subtype
@@ -2035,3 +2049,49 @@ and `check_patterns` can prove a pattern list is current, but neither can see a 
 into a session. The only defence is the phrasing discipline above plus [G-52]'s rule that a
 verdict surface must print its evidence — a sweep that shows its query is a sweep someone
 can falsify.
+
+
+## [G-59] A tribe's viability is its PAYOFF count, not its body count — and changelings cannot fix the missing half
+
+**A tribe's viability is its payoff count, not its body count, and changelings cannot fix
+the missing half.** Asked to find a second tribal ramp deck after deck 49 (Dragons), the
+obvious move was to rank creature types by how many creatures exist. That number is easy
+to measure and it decides nothing. Splitting each tribe into BODIES and PAYOFFS — cards
+whose text actually cares that the type is present — produced this, across Standard:
+
+| tribe | bodies | payoffs |
+|---|---|---|
+| Dragon | 71 | **20** |
+| Dinosaur | 52 | 11 |
+| Vampire | 69 | 3 |
+| Mutant | 79 | **2** |
+| Demon | 28 | 1 |
+| Plant | 27 | 1 |
+| God | 21 | **0** |
+| Leviathan | 5 | 0 |
+
+**Mutant has the most bodies of any tribe considered and is unbuildable**: 79 creatures and
+two cards that care, spread across all five colours at a maximum of 13 in any one. Dragons
+work because twenty cards read the type — Dragonlord's Servant, Lathliss, Stormscale Scion,
+the whole Exhale cycle. God and Leviathan have literally zero.
+
+**Changelings are the trap inside the trap.** A changeling is every creature type, so it
+RECEIVES tribal effects and never provides one. Adding ten changelings to a Demon deck
+gives you eleven Demons and still exactly one card that cares — the shortage is on the side
+changelings do not touch. This is the same inversion as stacking anthem *recipients* with
+nothing providing the anthem (see G-58's neighbourhood and the deck 48 Adaptive Automaton
+decision): a body is not a payoff, and no quantity of bodies becomes one.
+
+**The rule: count payoffs FIRST, then ask whether the bodies exist.** Search the effect
+shape rather than the noun, per K-13 — `"<Type>s you control"`, `"for each <Type>"`,
+`"number of <Type>s"`, `"<Type> spells you cast"` — because a payoff phrased generically
+("choose a creature type") will not contain the type name at all.
+
+**The corollary that mattered in practice:** when a tribe fails this test, the answer is
+usually to drop the tribal constraint rather than to prop it up. Deck 50 was built as a
+mono-green *creature-count* deck with no tribe at all, because Craterhoof reads COUNT and
+not type — which also sidestepped the deck 31 Elf and deck 28 Dinosaur collisions the
+tribal versions kept running into. A separate check confirmed there is no "land-puller
+tribe" in green either (Scout leads at 5 pullers of 24 bodies, then Robot 4, Insect 3,
+Druid 2 — scattered, not concentrated), and Mouse is a Boros tribe (19 in Standard: W 9 /
+R 6 / W-R 3 and exactly one green).

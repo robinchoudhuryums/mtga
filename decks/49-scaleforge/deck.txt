@@ -1,0 +1,138 @@
+#: name: Scaleforge
+#: format: Standard
+#: colors: R
+#: plan: midrange
+#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 13
+#: tier: plus card advantage 2 at a 4.00 curve. Two structural weaknesses the floor cannot see:
+#: tier: 1. ZERO PROTECTION against five named build-arounds, and this deck's payoffs are the
+#: tier:    kind that must SURVIVE A TURN to matter — Lathliss only pays off on the NEXT Dragon,
+#: tier:    Terror of the Peaks only on the next creature, Dragonlord's Servant only on the next
+#: tier:    spell. Removal on any of them costs a whole turn cycle, not just a card.
+#: tier: 2. IT IS SLOW AND HAS NO SWEEPER. Avg MV 4.00 with 9 early drops is the slowest curve
+#: tier:    on the roster; against a fast start the deck must trade one-for-one with removal it
+#: tier:    has plenty of, then stabilise with a five-drop. Card advantage 2 is genuinely thin —
+#: tier:    Bonehoard Dracosaur and Dragonhawk both refuel but neither is counted.
+#: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 13 is not padding,
+#: tier: it is real removal stapled to Dragon BODIES (Nova Hellkite, Magmatic Hellkite, Nebula
+#: tier: Dragon, Realm-Scorcher, Drakuseth), so the deck interacts without spending cards; the
+#: tier: manabase is flawless, matching deck 47 as the only two on the roster with zero cards
+#: tier: below 90% on curve; and the payoff stack genuinely compounds — Terror of the Peaks
+#: tier: pointed at Lathliss's 5/5 tokens is 5 damage per Dragon with no combat step, doubled
+#: tier: again by Twinflame Tyrant. That ceiling is the case for A once it has been played.
+#: tier: PROVISIONAL because it is unplayed and 15 cards are craft targets.
+#: protect: Lathliss, Dragon Queen; Dragonlord's Servant; Terror of the Peaks; Dragonstorm Globe; Sarkhan, Dragon Ascendant
+#: archetype: MONO-RED DRAGON RAMP. Twenty-one Dragons in a sixty-card deck, which is the whole
+#: archetype: idea: Standard's Dragons average MV 5.30, so a deck that wants to field several
+#: archetype: of them must SOLVE ITS OWN MANA, and every accelerant here is paid for by the
+#: archetype: same Dragon count it enables.
+#: archetype: THE RAMP IS TRIBAL, NOT GENERIC, and that is what separates this from a big-mana
+#: archetype: pile that happens to run Dragons. Dragonlord's Servant makes every Dragon spell
+#: archetype: cost {1} less — 21 cards in this deck, so it is closer to a Sol Ring than to a
+#: archetype: cost reducer. Dragonstorm Globe taps for mana AND gives every Dragon an extra
+#: archetype: +1/+1 counter, so the rock is also an anthem. Sarkhan, Dragon Ascendant beholds a
+#: archetype: Dragon for a Treasure on entry, then grows and turns himself into a Dragon.
+#: archetype: Rapacious Dragon is a Dragon that ETBs two Treasures — ramp that also counts.
+#: archetype: THE PAYOFF STACK compounds rather than merely adding up. Lathliss makes a 5/5
+#: archetype: flier for EVERY other nontoken Dragon that enters. Terror of the Peaks deals
+#: archetype: damage equal to the power of each creature that enters — pointed at Lathliss's
+#: archetype: 5/5 tokens that is five to the face per Dragon, with no combat step involved.
+#: archetype: Stormscale Scion pumps the rest and carries Storm. Twinflame Tyrant DOUBLES all
+#: archetype: damage you deal, including Terror's triggers and Drakuseth's ten-damage entry.
+#: archetype: BEHOLD IS THE HIDDEN INTERACTION UPGRADE. Molten Exhale is a {1}{R} sorcery that
+#: archetype: deals 4 — but beholding a Dragon (revealing one from hand is enough, you do not
+#: archetype: have to control it) gives it FLASH. At 21 Dragons that condition is almost always
+#: archetype: on, so the deck's cheapest removal is an instant that costs a card nothing.
+#: archetype: DISTINCTNESS from deck 14 Dragon King Roku, which is the deck this could be
+#: archetype: mistaken for. 14 is RAKDOS and DRAGON-FLAVOURED: only 6 of its 25 creatures are
+#: archetype: Dragons, it runs 14 cards at 1-2 MV, and it wins with removal plus a few bombs on
+#: archetype: a low curve. This is MONO-RED and DRAGON-DENSE — 21 Dragons, a deliberately high
+#: archetype: curve, and a plan that ramps INTO the top end rather than curving out under it.
+#: archetype: They are opposite shapes wearing the same creature type.
+#: notes: BUILT 2026-07 from scratch, after a sweep for a big-mana tribal ramp shell.
+#: notes: UNGRADED ON PURPOSE — no `#: tier:` until the metrics are read and it has been played.
+#: notes: WHY MONO-RED AND NOT RAKDOS. Of 35 Dragons castable in Rakdos, the overwhelming
+#: notes: majority are mono-red; black adds seven and none of them is a payoff. Going mono
+#: notes: buys the flawless manabase that deck 47 proved is worth having, and it is the
+#: notes: cleanest separation from deck 14, which already owns the BR Dragon slot.
+#: notes: OWNED CORE: Fin Fang Foom, Nova Hellkite, Ran and Shaw, Spinerock Tyrant, Lathliss,
+#: notes: Dracosaur Auxiliary, Nebula Dragon, Summon: Bahamut, both Dragonstorm Globes, Sarkhan
+#: notes: and the whole interaction suite bar Molten Exhale. The craft list is real but it is
+#: notes: mostly the payoff layer, not the shell.
+#: notes: TUNED ONCE BEFORE GRADING, on the needs model rather than on taste. `suggest --needs`
+#: notes: read "Acceleration want: HIGH (avg MV 3.94) - Interaction: 14/5 ok", i.e. the deck was
+#: notes: over-served on removal and under-served on mana — the exact inverse of what a theme
+#: notes: `suggest` would have surfaced. OUT: Conduct Electricity (MV 5 removal, the worst curve
+#: notes: slot in the deck) and Shivan Dragon (a {4}{R}{R} firebreather with no synergy to any
+#: notes: payoff here). IN: a SECOND Dragonlord's Servant and a THIRD Dragonstorm Globe — the two
+#: notes: accelerants that are also Dragon payoffs. Measured: avg MV 4.11 -> 3.94, early drops
+#: notes: 9 -> 10, interaction 15 -> 14 (still nearly triple the 5 the model asks for).
+#: notes: THREE TREE CITY IS THE 25th LAND, and this deck is the only one on the roster that can
+#: notes: actually use it. "{2}, {T}: choose a color, add mana equal to the number of creatures
+#: notes: you control of the chosen type" needs FOUR of a type to beat just tapping the land, and
+#: notes: it wants a top end to spend the mana on and a plan that does not empty its own board —
+#: notes: three conditions nothing else here met. Deck 11 has the top end but runs four sweepers
+#: notes: and a sacrifice-all bomb, deck 23 caps at MV 5, deck 48's manabase cannot afford a
+#: notes: colourless source. At 21 Dragons and a 4.00 curve this deck meets all three.
+#: notes: IT COST A REMOVAL SPELL, NOT A MOUNTAIN, and that is why the manabase survived it.
+#: notes: Swapping it FOR a Mountain took Drakuseth's {4}{R}{R}{R} from 90.5% to 88.2% and broke
+#: notes: the zero-below-90 record; running it as a 25th land instead, paid for by Giantfall
+#: notes: (tied-weakest fit, in a deck the needs model already called over-served on interaction
+#: notes: at 14 against a want of 5), holds every card at >=90% AND raises keepable 84.4% ->
+#: notes: 86.0%. 25 lands is also simply correct for a 4.00 curve.
+#: notes: THE MANABASE IS FLAWLESS, which is the mono-colour payoff: `consistency` reports
+#: notes: "every colored card casts on curve at >=90%" with ZERO cards below target, the lowest
+#: notes: being Drakuseth's {4}{R}{R}{R} at 90.5%. Only deck 47 shares that on this roster.
+#: notes: DISTINCTNESS, MEASURED, and this was the build's actual risk: `similar` puts deck 14 —
+#: notes: the other Dragon deck — FOURTH at 66% with 7 shared nonland cards, behind three decks
+#: notes: this shares almost nothing with. Nothing on the roster reads above 72%, and the 72%
+#: notes: (deck 35) is a tag artifact carrying only TWO shared cards. Compare 26b vs 48a at 89%
+#: notes: with nine shared. The two Dragon decks are genuinely different shapes.
+
+# Ramp — every accelerant is paid for by the Dragon count
+2 Dragonlord's Servant (FDN) 536
+3 Dragonstorm Globe (TDM) 241
+1 Sarkhan, Dragon Ascendant (TDM) 118
+1 Stark Industries Executive (MSH) 153
+1 Seize the Spoils (SOS) 129
+1 Reckless Ransacking (ECL) 152
+
+# Dragons — the early curve
+1 Firespitter Whelp (FDN) 761
+1 Fin Fang Foom (MSH) 129
+1 Magmatic Hellkite (TDM) 111
+1 Stingerback Terror (OTJ) 147
+
+# Dragons — the engine band
+1 Nova Hellkite (EOE) 148
+1 Ran and Shaw (TLA) 150
+1 Spinerock Tyrant (ECL) 159
+1 Rapacious Dragon (FDN) 544
+1 Terror of the Peaks (OTJ) 149
+1 Bonehoard Dracosaur (LCI) 134
+1 Dragonhawk, Fate's Tempest (BLB) 132
+1 Twinflame Tyrant (FDN) 97
+1 Hoarding Dragon (FDN) 626
+
+# Dragons — the payoff band
+1 Lathliss, Dragon Queen (FDN) 627
+1 Dracosaur Auxiliary (DFT) 122
+1 Stormscale Scion (TDM) 123
+1 Realm-Scorcher Hellkite (WOE) 145
+
+# Dragons — the top end the ramp is for
+1 Drakuseth, Maw of Flames (FDN) 760
+1 Nebula Dragon (EOE) 147
+1 Summon: Bahamut (FIN) 1
+
+# Interaction — Molten Exhale gains flash off any Dragon in hand
+1 Molten Exhale (TDM) 113
+1 Fiery Annihilation (FDN) 86
+1 Plasma Bolt (EOE) 152
+1 Bombard (EOE) 129
+1 Untimely Malfunction (DSK) 161
+1 Cinder Strike (ECL) 131
+
+# Lands (25) — Three Tree City taps for Dragon count
+1 Three Tree City (BLB) 260
+1 Kavaron, Memorial World (EOE) 255
+23 Mountain (MSH) 293
