@@ -3,6 +3,31 @@
 #: colors: UR
 #: based-on: deck.txt
 #: plan: midrange
+#: tier: B — same letter as its parent for opposite reasons, and a WEAKER B. The floor reads A
+#: tier: on interaction 9 plus card advantage 2 at a 3.25 curve, so the guard soft-flags this as
+#: tier: possibly under-graded; that is intentional. Three weaknesses, where A allows one:
+#: tier: 1. THE INTERACTION IS LOPSIDED BY SPEED, 2 instant against 8 sorcery. Deck 48 splits
+#: tier:    evenly. This is the shape the interaction profile exists to flag: the deck cannot
+#: tier:    act on the opponent's turn, which for a list built on slow permanents is structural.
+#: tier: 2. CARD ADVANTAGE 2 IS GENUINELY THIN, not mis-counted. Unlike deck 48, where Chronicle
+#: tier:    of Victory hides a real engine behind a conditional the classifier can't read, the
+#: tier:    refuel here is Collector's Vault's loot, Fire Nation Warship's Clue and Casey Jones's
+#: tier:    dig — all real, all small. Read generously it is still the worst in the family.
+#: tier: 3. IT IS TALL 5 / WIDE 1 ON THIRTEEN CREATURE COPIES, and crewing costs bodies. A
+#: tier:    sweeper that kills the cheap creatures strands the Vehicles as noncreature artifacts.
+#: tier:    That is half a defence — they dodge creature removal — but the deck cannot both crew
+#: tier:    and hold a board. `engines` also reports counters at 4 enablers / 0 payoffs.
+#: tier: THE DISTINCTNESS READING IS THE UNCOMFORTABLE ONE and belongs in the grade's context
+#: tier: rather than in it: `similar` puts this at 89% against 26b with NINE shared nonland cards
+#: tier: and five SPECIFIC shared themes (sacrifice, tokens, burn, treasure, card draw). That is
+#: tier: the highest overlap in the family, and it is against the deck that was pivoted mid-build
+#: tier: specifically to stop duplicating this one. The pivot worked on curve and on loot, but
+#: tier: the Treasure/sacrifice spine still reads near-identical. Whether these two should merge
+#: tier: is a BUILD question, not a tier question — but the letter should not pretend it is absent.
+#: tier: WHAT ARGUES UP: effect depth passes on everything carrying the plan (treasure 9, burn 9,
+#: tier: removal 9, Vehicle 7), and 5 of the interaction can answer a noncreature permanent, which
+#: tier: is above average here. Re-grade after it is played; 19 craft targets is the heaviest load
+#: tier: of the four, but per the rubric that is context for WHEN, not a reason to grade low.
 #: protect: Lifecraft Engine; Summon: Bahamut; Tangle Tumbler; The Regalia; Brass's Bounty
 #: archetype: IZZET VEHICLES + TREASURE, the variant of 48 that attacks the same problem from
 #: archetype: the other side. Where 48 makes many small Robots enormous with anthems, this deck
