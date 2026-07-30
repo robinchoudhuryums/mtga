@@ -20,7 +20,8 @@
 #: archetype: Leyline is every creature spell), Lifecraft Engine (+1/+1, and it makes Vehicles
 #: archetype: into Robots too, which is the bridge to variant 48a), Banner of Kinship (+1/+1
 #: archetype: for EACH fellowship counter, so it scales with a board you have already built),
-#: archetype: Adaptive Automaton and Patchwork Banner (+1/+1 each, and the Banner fixes mana),
+#: archetype: Patchwork Banner (+1/+1, and it fixes mana; its Rare twin Adaptive Automaton is
+#: archetype: parked in the flex block on wildcard cost, not on fit),
 #: archetype: Chrome Dome (+1/+0 to other artifact creatures) and ROAMING THRONE, which is the
 #: archetype: one that is not an anthem at all: it makes every triggered ability of another
 #: archetype: Robot trigger an ADDITIONAL time. With Leyline out that doubles Ultron's copy
@@ -110,6 +111,25 @@
 #: notes: 3.14 -> 3.19, early drops held at 13, central themes 13 -> 15. The curve moves 0.05
 #: notes: for two MV-5 cards because both cuts were also expensive — the pass-2 lesson (pay for
 #: notes: adds with the EXPENSIVE cards, never the cheap bodies) was applied deliberately.
+#: notes: PASS 4 — MM'MENON BACK IN, TAKING ADAPTIVE AUTOMATON'S SLOT, to spend an UNCOMMON
+#: notes: wildcard instead of a RARE one. Pass 3 cut Mm'menon for Baxter Stockman and that
+#: notes: reasoning still holds; what changed is the SLOT it comes back into. The obvious
+#: notes: home was Mirrormind Crown's ({4} Equipment, {2} to equip, and it needs a good
+#: notes: creature already alive — six mana across three conditions before it does anything).
+#: notes: The Automaton's slot is the better trade for a different reason: it is the deck's
+#: notes: only remaining RARE craft whose effect has a documented cheaper stand-in strategy.
+#: notes: THE ANTHEM SWEEP THAT DECIDED IT. Searched by EFFECT SHAPE rather than by the type
+#: notes: name (K-13): Standard contains exactly FIVE choose-a-type anthems — Chronicle of
+#: notes: Victory, Banner of Kinship, Adaptive Automaton, Patchwork Banner and Oko, Lorwyn
+#: notes: Liege. This deck runs four of them and the fifth is U/G, uncastable here. So there
+#: notes: is no cheaper card that does the Automaton's JOB; the only honest options were to
+#: notes: craft it or to run a fifth anthem's worth of something else. Mm'menon is the
+#: notes: something else, and the flex line records the exact swap to undo this.
+#: notes: THE MEASUREMENT IS A WASH AND THAT IS THE POINT: interaction 10, card advantage 2,
+#: notes: protection 3, avg MV 3.19, 13 early drops — all unchanged. `role_tally` has no
+#: notes: anthem axis, so it grades a board-wide +1/+1 and a vanilla body identically. Do not
+#: notes: read the flat vector as parity; the deck is measurably no different and actually
+#: notes: weaker, and the flex line exists so that is not forgotten.
 #: notes: A FIRST DRAFT OF THIS PASS WAS REJECTED BY MEASUREMENT, and the reason is worth
 #: notes: keeping: it paid for the adds by cutting CHEAP bodies (Aerial Doombot, Diversion Unit,
 #: notes: Viv Vision), which made the deck worse on every axis (interaction 7, card advantage 1,
@@ -124,7 +144,6 @@
 1 Chronicle of Victory (ECL) 253
 1 Lifecraft Engine (DFT) 234
 1 Banner of Kinship (FDN) 127
-1 Adaptive Automaton (FDN) 723
 1 Patchwork Banner (BLB) 247
 1 Roaming Throne (LCI) 258
 1 Chrome Dome (TMT) 172
@@ -148,6 +167,7 @@
 1 Tezzeret, Cruel Captain (EOE) 2
 1 Firdoch Core (ECL) 255
 1 The Mechanist, Aerial Artisan (TLA) 64
+1 Mm'menon, Uthros Exile (EOE) 221
 1 The Vision (MSH) 255
 1 Krang, Utrom Warlord (TMT) 175
 
@@ -178,3 +198,4 @@
 # Flex — measured and parked. See: deck.py flex 48
 #~ +Dauntless Scrapbot | CRAFT (Uncommon) — {3} 3/1 Robot: ETB exiles each opponent's graveyard and creates a Lander token (ramp + an artifact token). Genuinely reasonable, and it MEASURED as a non-upgrade in every configuration tried: paying for it by cutting cheap bodies (Aerial Doombot, Viv Vision) dropped card advantage 2 -> 1, and paying with Untimely Malfunction dropped interaction 10 -> 9. Not rejected on fit — the deck simply has no slot whose loss is cheaper than the gain.
 #~ +Spider-Bot | CRAFT (Common) — {2} 2/1 reach Robot with a land-smoothing ETB. Same finding as above; it is the marginal card in a 36-slot list that is already tight.
+#~ -Mm'menon, Uthros Exile | +Adaptive Automaton | CRAFT (Rare) — THE PLANNED RE-ADD, parked only on wildcard cost. Adaptive Automaton is one of only FIVE choose-a-type anthems in Standard ("as this enters, choose a creature type; other creatures you control of the chosen type get +1/+1") and this deck already runs three of the other four; the fifth is Oko, which is U/G and uncastable here. There is no cheaper substitute because there is no other card that does this — a pool sweep by EFFECT SHAPE (not the type name, see K-13) returns exactly those five. It is also a {3} ARTIFACT creature, so it is a body the other lords pump and it feeds Ravenous Robots. Mm'menon holds the slot at UNCOMMON: it flies and puts a +1/+1 counter on a creature per artifact entering, which is real in a deck that floods artifacts but is a per-turn trickle where the Automaton is a board-wide multiplier. Measured as a wash on every axis the vector can see (interaction 10, card advantage 2, protection 3, avg MV 3.19, 13 early drops) — READ THAT AS THE MODEL BEING BLIND, not as parity: role_tally has no anthem axis, so it scores a lord and a vanilla body identically. Swap back the moment a Rare wildcard is free.

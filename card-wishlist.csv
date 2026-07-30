@@ -51,6 +51,8 @@ When this artifact enters, up to one target creature gets -3/-3 until end of tur
 {2}, {T}, Sacrifice this artifact: You gain 3 life.
 {2}, {T}, Sacrifice this artifact: Target opponent loses 3 life.",B,Food; lifegain; sacrifice; etb; removal; flash; tempo,EOE,96,Uncommon,21; 20,,4.5,hand
 Mechan Assembler,Artifact Creature — Robot Artificer,"Whenever another artifact you control enters, create a 2/2 colorless Robot artifact creature token. This ability triggers only once each turn.",U,Robot; Artificer; tokens,EOE,63,Uncommon,48,,4.0,seed
+"Mm'menon, Uthros Exile",Legendary Creature — Jellyfish Advisor,"Flying
+Whenever an artifact you control enters, put a +1/+1 counter on target creature.",U/R,Jellyfish; Advisor; counters; flying; evasion,EOE,221,Uncommon,48,Holds Adaptive Automaton's slot in 48 at Uncommon cost.,4.0,hand
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",W,Human; Knight; sacrifice; tokens; ramp; etb; landfall; pump; lands,EOE,41,Uncommon,36,,3.0,hand
 "Ajani, Caller of the Pride",Legendary Planeswalker — Ajani,"+1: Put a +1/+1 counter on up to one target creature.
@@ -62,6 +64,9 @@ Remove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activ
 Rite of the Dragoncaller,Enchantment,"Whenever you cast an instant or sorcery spell, create a 5/5 red Dragon creature token with flying.",R,tokens; spellslinger,FDN,92,Mythic,2,,7.0,hand
 Twinflame Tyrant,Creature — Dragon,"Flying
 If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals double that damage instead.",R,Dragon; flying; evasion; double,FDN,97,Mythic,14,,7.0,hand
+Adaptive Automaton,Artifact Creature — Construct,"As this creature enters, choose a creature type.
+This creature is the chosen type in addition to its other types.
+Other creatures you control of the chosen type get +1/+1.",Colorless,Construct; pump,FDN,723,Rare,48,FLEX in 48: swap back for Mm'menon when a Rare wildcard is free. One of only 5 choose-a-type anthems in Standard; no cheaper substitute exists.,6.0,hand
 "Arahbo, the First Fang",Legendary Creature — Cat Avatar,"Other Cats you control get +1/+1.
 Whenever Arahbo or another nontoken Cat you control enters, create a 1/1 white Cat creature token.",W,Cat; Avatar; tokens; pump,FDN,2,Rare,36,,5.5,hand
 Desecration Demon,Creature — Demon,"Flying
