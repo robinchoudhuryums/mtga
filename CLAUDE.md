@@ -301,7 +301,9 @@ directions.
 - **Run `tier <id> --audit-rationale` after ANY deck edit.** The tier guard checks the
   LETTER; this checks the ARGUMENT — cards the prose cites that the deck no longer runs,
   and figures the live quality vector contradicts. A swap moves those numbers by
-  construction. Scoped to `#: tier:`; `#: notes:` is a free-form build log where naming
+  construction. Scoped to `#: tier:` AND `#: archetype:` — the archetype block is equally a
+  claim about the CURRENT list, and it is the header a reader trusts first, so it is the
+  one that goes stale unnoticed. `#: notes:` stays out: it is a free-form build log where naming
   an absent card is correct. Report-only. A rationale that legitimately names a card it
   cut must put the change-cue ADJACENT to the name. [G-27]
 - **`suggest`'s `Decks` column is cross-deck BREADTH, not curated fit** — castable and
@@ -471,6 +473,18 @@ directions.
   record with restraint** — under 20 matches `--report` refuses to print a percentage,
   above it prints a Wilson interval, and a small-sample win rate never belongs in
   `#: tier:`. [G-57]
+- **NEVER widen `#: colors:` for a HYBRID card, and never reject a card for a widening you
+  do not need.** Both halves were violated in one cycle: 26b's header was widened to UBR
+  for `{B/R}` Bullseye, and Don & Raph was kept OUT of mono-blue 47 because its R identity
+  "would widen `#: colors:`". The tooling already handles this and SAYS SO — `deck.py mana`
+  prints "identity has R (hybrid — paid on-color)" and `preflight` reads "castability PASS
+  (+1 hybrid stray, ok)". Widening is not merely unnecessary, it is WORSE: a wider baseline
+  stops flagging a genuinely off-colour card added later, i.e. you trade a real signal for
+  a cosmetic one. **The distinction that decides it is HYBRID vs GOLD**, and only the
+  printed cost shows it — `Color(s)` is identity and reads the same for both. `{U/R}` is
+  payable in mono-U; `{U}{R}` is not, which is why Captain Storm genuinely could not join
+  47 while Don & Raph could. Read the cost from `card-mana.csv` / `deck.py mana`, never
+  from identity. [G-58]
 
 ## Known Issues
 
@@ -532,6 +546,18 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   and a card sorted into the WRONG bucket is harder to detect than one in no bucket at
   all. The castability lint reads the deck's `#: colors:` header, so a stale header
   manufactures phantom strays — a flag is a review signal, not a hard failure. [K-12]
+- **A LITERAL TYPE-NAME SEARCH CANNOT SEE THE CHOOSE-A-TYPE CATEGORY, and a false negative
+  there reads as a finished answer.** A pool sweep for "Robots you control get" / "for each
+  Robot" returned zero, and an entire archetype was declined in writing as "bodies without
+  a payoff". There are FOURTEEN such cards in those colours and five are genuine lords —
+  they say "as this enters, choose a creature type", so the category NEVER contains the
+  type name. Deck 48 exists only because a later card pile surfaced one by accident. This
+  is K-04 one layer earlier: that rule says do not gate a PREDICATE on a derived tag, this
+  one says do not gate a SEARCH on a literal name when the effect is expressed generically.
+  **Search the EFFECT SHAPE, not the noun** — "choose a creature type", "creatures you
+  control get +1/+1", "of the chosen type" — and treat a zero-result sweep as an unverified
+  search, not a fact about the format. Same shape as the changeling / kindred cards, and as
+  any "permanents of that type" wording. [K-13]
 
 ## Cycle Workflow Config
 

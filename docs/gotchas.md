@@ -767,7 +767,12 @@ contradict the live quality vector. Card matching is CASE-SENSITIVE against know
 names (prose capitalizes a citation, so a lowercase "counterspell" isn't one), masks the
 cards the deck DOES run first (else "the Ooze Spill" reported the card *The Ooze*), and
 suppresses citations sitting next to change/flex language — a rationale legitimately
-documents what it cut. Scoped to `#: tier:`; `#: notes:` is a free-form build log where
+documents what it cut. Scoped to `#: tier:` AND `#: archetype:` — the archetype block makes
+claims about the current list just as the tier rationale does ("these cards push your life
+total up" is false once those cards are cut), and it is the header a reader trusts first.
+It was added to the scope after a deck's own archetype text survived three rounds of swaps
+that removed every card it named; it earned its keep again when deck 48's archetype block
+went on citing Robotics Mastery a pass after the cut. `#: notes:` is a free-form build log where
 naming an absent card is CORRECT. Report-only; it never edits the prose. Note the practical
 consequence of the suppression window: a rationale that legitimately NAMES a card it cut
 must put the change-cue ADJACENT to the name ("X and Y were CUT because…"), not a sentence
@@ -1551,6 +1556,47 @@ restraint `count_conf` shows for role counts: a number that looks certain when i
 is the expensive kind of wrong.
 
 
+## [G-58] Never widen `#: colors:` for a HYBRID card — and never reject a card for a widening you don't need
+
+**Never widen `#: colors:` for a HYBRID card, and never reject a card for a widening you
+do not need.** Both halves of this were violated inside a single cycle, in opposite
+directions, and each cost something real.
+
+**The widening.** Bullseye, Death Dealer (`{B/R}` in its activation) was added to deck 26b,
+and the header was widened from `UR` to `UBR` "for" it. That was wrong twice: the card is
+payable entirely with red, so the deck needs no black source; and a three-colour baseline
+is a WEAKER lint than a two-colour one, because the castability check measures strays
+against the declared identity. Widening bought nothing and disarmed the guard — a genuinely
+off-colour black card added later would have passed silently. Reverted; header stays `UR`.
+
+**The rejection.** The mirror error is worse because it is invisible. Don & Raph, Hard
+Science (`{1}{U/R}{U/R}`) was kept out of mono-blue deck 47 on the written ground that its
+R colour identity "would widen `#: colors:` and cost the mono-colour manabase that is this
+deck's main structural advantage". Neither clause survives contact: every pip is payable
+with blue, so the manabase is untouched and `consistency` still reports every coloured card
+on curve at ≥90%; and the header never needed to move. A strong card — it grants affinity
+for artifacts to the next noncreature spell each time it attacks, which is deck 47's entire
+premise handed to cards that lack it — sat out a whole pass for a bookkeeping fiction.
+
+**The tooling was never confused; only the prose was.** `deck.py mana` prints
+`Don & Raph, Hard Science — identity has R (hybrid — paid on-color)` under a "Castable,
+but color identity strays" heading, and `preflight` renders the same fact as
+`castability PASS (+1 hybrid stray, ok)`. A hybrid stray is the EXPECTED steady state of a
+correctly-narrow header, not a defect to design away.
+
+**The distinction that actually decides it is HYBRID vs GOLD, and `Color(s)` cannot show
+it.** Colour identity reads `U/R` for both `{U/R}` and `{U}{R}`; only the printed cost
+separates them. In the same cycle Captain Storm, Cosmium Raider (`{U}{R}`, gold) genuinely
+WAS uncastable in mono-blue 47 and had to go to a two-colour deck, while Don & Raph
+(`{1}{U/R}{U/R}`, hybrid) was fine there — two cards with identical identity and opposite
+verdicts. This is INV-05 and the `card-mana.csv` design decision applied to a deck header
+rather than to a card: read the cost from `card-mana.csv` / `deck.py mana`, never infer a
+mana requirement from identity. Related but distinct: [G-32] (identity-subset castability
+says nothing about whether you can pay the PIPS) and [G-35] (`mana` lints colour SOURCES
+against strict pips). Neither of those states the header rule, which is why it was
+re-derived wrongly.
+
+
 ---
 
 # Known Issues
@@ -1950,3 +1996,42 @@ otherwise assert "off-color ability" for a card it cannot classify (false for de
 two R/W hybrids). It still COUNTS an unknown as actionable, so the offline path
 over-reports rather than silently clearing a deck; only the claim is softened to match
 the evidence. Run `deck.py mana` (which loads real costs) for the definitive read.
+
+
+## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer
+
+**A literal type-name search cannot see the choose-a-creature-type category, and a false
+negative there reads as a finished answer.** Asked whether a Robot-tribal deck had payoffs,
+a pool sweep was run for `Robots you control get`, `for each Robot` and `number of Robots`
+across every colour in Standard. It returned zero, and the archetype was declined in
+writing — "bodies without a payoff" — with the zero quoted as a fact about the format.
+
+**The search was wrong, not the archetype.** There are FOURTEEN cards in those colours whose
+text is a lord effect, five of them genuine anthems: Leyline of Transformation, Chronicle of
+Victory, Lifecraft Engine, Banner of Kinship, Adaptive Automaton, Patchwork Banner, Roaming
+Throne. Every one of them reads `As this enters, choose a creature type` and then talks
+about `the chosen type` — the category NEVER contains the type name, because naming it is
+the player's job at resolution. The regex was searching for a word the cards structurally
+cannot contain. Deck 48 (Doombot Array) exists only because a later card pile happened to
+include Lifecraft Engine and forced the correction; nothing in the toolchain would have
+surfaced it, because no gate can see a search that was run once, in chat, and believed.
+
+**Why this is [K-04] one layer earlier.** K-04 says never gate a PREDICATE on a derived tag,
+because the predicate inherits every hole in the tagger — `_is_color_fixer` read the
+roster's two best fixers as non-fixers. This is the same failure moved upstream to the
+SEARCH: gating on a literal noun inherits every way the effect can be phrased without it.
+The two share a fix shape — read the effect, not the label.
+
+**The rule: search the EFFECT SHAPE, not the noun.** For a tribal payoff that means
+`choose a creature type`, `of the chosen type`, `creatures you control get +1/+1`, and the
+kindred/changeling wordings (`is every creature type`) which reach the same place from the
+other side. More generally, treat a zero-result sweep as an UNVERIFIED SEARCH rather than a
+property of the format, and say so when reporting it — the honest form is "my search found
+none, and here is what it searched for", which invites the correction that "there are none"
+forecloses. A zero is the one result that cannot distinguish "absent" from "mis-queried".
+
+**Residual, live.** Nothing gates this. `check_commands` can prove a command is reachable
+and `check_patterns` can prove a pattern list is current, but neither can see a query typed
+into a session. The only defence is the phrasing discipline above plus [G-52]'s rule that a
+verdict surface must print its evidence — a sweep that shows its query is a sweep someone
+can falsify.

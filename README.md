@@ -750,7 +750,10 @@ Add **`--audit-rationale`** to check the *argument*, not just the letter. A
 `#: tier:` rationale is prose, so nothing kept it honest as the list changed
 underneath it — it can end up arguing from cards that were cut, or quoting figures
 the deck no longer has. `deck.py tier <id> --audit-rationale` flags both, and
-reports nothing when the rationale is current. It never edits the prose; a stale
+reports nothing when the rationale is current. It reads **`#: archetype:` as well as
+`#: tier:`** — the archetype block is equally a claim about the current list, and being
+the header a reader trusts first, it is the one that rots unnoticed. `#: notes:` is
+deliberately excluded: it is a build log, where naming a card you cut is correct. It never edits the prose; a stale
 argument is how a defensible letter quietly becomes an indefensible one. **You no
 longer have to remember to run it** — `check_all` sweeps the whole roster as a soft
 warning, and `/apply-changes` and `/tune-deck` run the per-deck form at the moment of
