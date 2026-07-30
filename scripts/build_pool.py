@@ -120,6 +120,38 @@ def _pt_fields(card):
     return {"Power": "" if p is None else str(p), "Toughness": "" if t is None else str(t)}
 
 
+FRESH_DAYS = 7          # a pool younger than this is reused unless --refetch
+
+
+def read_stamp():
+    """(iso_date, query) from the card-pool.build sidecar; (None, None) if absent.
+
+    The sidecar has always held the build DATE on its first line; the QUERY is a second
+    line added for the freshness check. `deck.pool_staleness_days` reads `[:10]` of the
+    stripped file, so the date must stay first — that keeps the older reader working
+    unchanged.
+    """
+    if not os.path.exists(POOL_BUILD_STAMP):
+        return None, None
+    try:
+        lines = open(POOL_BUILD_STAMP, encoding="utf-8").read().splitlines()
+    except OSError:
+        return None, None
+    date = (lines[0].strip() if lines else "") or None
+    return date, (lines[1].strip() if len(lines) > 1 else None)
+
+
+def stamp_age_days(date):
+    if not date:
+        return None
+    try:
+        import datetime
+        return (datetime.date.today()
+                - datetime.date.fromisoformat(date[:10])).days
+    except Exception:
+        return None
+
+
 def main():
     ap = argparse.ArgumentParser(description="Build the Arena card-pool reference.")
     ap.add_argument("--query", help="custom Scryfall query (overrides --all)")
@@ -128,9 +160,48 @@ def main():
     ap.add_argument("--allow-shrink", action="store_true",
                     help="permit overwriting even when the new pool is empty or far "
                          "smaller than the existing file (a deliberate narrow --query)")
+    ap.add_argument("--refetch", action="store_true",
+                    help="rebuild even when the existing pool is still fresh")
+    ap.add_argument("--max-age", type=int, default=FRESH_DAYS, metavar="DAYS",
+                    help=f"reuse a pool built within this many days (default "
+                         f"{FRESH_DAYS}; 0 always rebuilds)")
     args = ap.parse_args()
 
     query = args.query or ("game:arena" if args.all else "game:arena legal:standard")
+
+    # FRESHNESS SKIP — the whole cost of this tool is the paginated fetch: measured
+    # 222.5s of a 224.3s run (99%), 91 pages at ~2.4s each, against 1.8s to derive every
+    # row. So the only lever is not fetching.
+    #
+    # Skipping is CORRECT, not just fast, because this file is the whole Arena card pool
+    # and is INDEPENDENT OF WHAT YOU OWN. The motivating case — `make refresh` after an
+    # ingest — changes the LIBRARY; the pool is unaffected, so re-fetching 15.9k cards
+    # to write out the same rows was pure waste.
+    #
+    # What genuinely does go stale is `Legalities` (rotation, bans, Alchemy rebalances)
+    # and the arrival of a new SET, which is why this is a time window rather than a
+    # blanket reuse: past --max-age it always rebuilds. `deck.pool_staleness_days` and
+    # `suggest`'s stale-pool warning already exist for exactly this question, so the
+    # freshness notion is established here, not invented.
+    #
+    # The recorded QUERY must match too. `--all` and the Standard-only default produce
+    # different files, and reusing a Standard-scoped pool for an `--all` request would
+    # silently freeze the wrong scope — the shrink guard below catches a shrink, but it
+    # cannot see that the file answers a different question.
+    stamp_date, stamp_query = read_stamp()
+    age = stamp_age_days(stamp_date)
+    if (not args.refetch and args.out == POOL_PATH and os.path.exists(args.out)
+            and age is not None and args.max_age > 0 and age <= args.max_age
+            and stamp_query == query):
+        eprint(f"Pool built {age} day(s) ago for the same query — reusing "
+               f"{os.path.basename(args.out)} (--refetch to rebuild, --max-age to change "
+               f"the window).")
+        print(f"{args.out} is fresh ({age}d old); not rebuilt.")
+        return 0
+    if not args.refetch and stamp_query is not None and stamp_query != query:
+        eprint(f"Existing pool was built for query {stamp_query!r}, not {query!r} — "
+               f"rebuilding.")
+
     eprint(f"Fetching pool for query: {query!r}")
     try:
         cards = fetch_all(query)
@@ -181,11 +252,14 @@ def main():
         for c in cards:
             writer.writerow(row_for(c))
     atomic_write(args.out, _write)
-    # Stamp the build date so suggest can flag a stale pool (rotation happened since).
+    # Stamp the build date so suggest can flag a stale pool (rotation happened since),
+    # plus the QUERY so the freshness skip above can tell a full-pool build from a
+    # Standard-only one. Date stays on line 1 for `deck.pool_staleness_days`.
     import datetime
     if args.out == POOL_PATH:
         atomic_write(POOL_BUILD_STAMP,
-                     lambda fh: fh.write(datetime.date.today().isoformat() + "\n"))
+                     lambda fh: fh.write(datetime.date.today().isoformat() + "\n"
+                                         + query + "\n"))
     print(f"Wrote {args.out}: {len(cards)} cards.")
     return 0
 

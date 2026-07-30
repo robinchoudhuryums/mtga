@@ -383,3 +383,64 @@ class TestSegments:
         assert check("Front // Back") is True
         assert check("Front") is True
         assert check("Absent Card") is None
+
+
+class TestSegmentConcentration:
+    """A segment rate dominated by one deck is that deck's rate wearing the segment's
+    name — the same "a pooled number hides a split" failure the segmentation itself
+    exists for, one level down. Testing the creature hypothesis found the creature
+    segment running 0% to 100% per deck, so 45% says more about which decks were
+    edited than about how `cuts` grades bodies."""
+
+    @staticmethod
+    def _creatures(*names):
+        want = {n.lower() for n in names}
+        return lambda name: (name or "").strip().lower() in want
+
+    def test_it_breaks_a_segment_down_by_deck(self):
+        rows = ([_row(Deck="46", Cut="Body", **{"Cut Rank": 30, "Cut Of": 36})] * 3
+                + [_row(Deck="20", Cut="Body", **{"Cut Rank": 2, "Cut Of": 36})] * 3)
+        got = deck.segment_concentration(rows, self._creatures("Body"),
+                                         segment="creature", min_rows=3)
+        assert [(d, n, ok) for d, n, ok, _s in got] == [("46", 3, 0), ("20", 3, 3)]
+        assert all(abs(s - 0.5) < 1e-9 for _d, _n, _ok, s in got)
+
+    def test_worst_agreement_sorts_first(self):
+        """The reader is looking for the deck dragging the segment down."""
+        rows = ([_row(Deck="a", Cut="Body", **{"Cut Rank": 2, "Cut Of": 36})] * 4
+                + [_row(Deck="b", Cut="Body", **{"Cut Rank": 34, "Cut Of": 36})] * 4)
+        got = deck.segment_concentration(rows, self._creatures("Body"),
+                                         segment="creature", min_rows=3)
+        assert got[0][0] == "b"
+
+    def test_there_is_no_share_threshold(self):
+        """The regression this function shipped with. The first draft disclosed a deck
+        holding >20% of the segment, and deck 46 — the case that motivated it — sits at
+        6/31 = 19.4% and did not print. A cutoff tuned until the finding you already
+        believe appears is the finding smuggled into a constant, so there is no share
+        parameter: a deck with enough rows for a rate always gets a line."""
+        import inspect
+        sig = inspect.signature(deck.segment_concentration)
+        assert "threshold" not in sig.parameters
+        # 1 deck at 19.4% of the segment must still be reported.
+        rows = ([_row(Deck="46", Cut="Body", **{"Cut Rank": 30, "Cut Of": 36})] * 6
+                + [_row(Deck=str(i), Cut="Body", **{"Cut Rank": 2, "Cut Of": 36})
+                   for i in range(25)])
+        got = deck.segment_concentration(rows, self._creatures("Body"),
+                                         segment="creature", min_rows=3)
+        assert [d for d, *_ in got] == ["46"]
+        assert abs(got[0][3] - 6 / 31) < 1e-9
+
+    def test_a_deck_too_thin_for_a_rate_is_omitted(self):
+        rows = [_row(Deck="x", Cut="Body", **{"Cut Rank": 2, "Cut Of": 36})] * 2
+        assert deck.segment_concentration(rows, self._creatures("Body"),
+                                          segment="creature", min_rows=3) == []
+
+    def test_it_reads_only_the_named_segment(self):
+        rows = ([_row(Deck="a", Cut="Body", **{"Cut Rank": 2, "Cut Of": 36})] * 3
+                + [_row(Deck="a", Cut="Bolt", **{"Cut Rank": 2, "Cut Of": 36})] * 3)
+        cre = deck.segment_concentration(rows, self._creatures("Body"),
+                                         segment="creature", min_rows=3)
+        non = deck.segment_concentration(rows, self._creatures("Body"),
+                                         segment="noncreature", min_rows=3)
+        assert cre[0][1] == 3 and non[0][1] == 3

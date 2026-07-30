@@ -1,0 +1,180 @@
+#: name: Doombot Array
+#: format: Standard
+#: colors: UR
+#: plan: midrange
+#: protect: Leyline of Transformation; Lifecraft Engine; Chronicle of Victory; Roaming Throne; Ravenous Robots
+#: archetype: IZZET ROBOT TRIBAL, built on the CHOOSE-A-CREATURE-TYPE lord package rather than
+#: archetype: on cards that say the word "Robot". That distinction is the whole reason this
+#: archetype: deck exists: a pool search for a literal Robot lord ("Robots you control get…")
+#: archetype: returns ZERO cards in all of Standard, which is why an earlier pass declined this
+#: archetype: archetype outright. The lords are real, they just never name the type — you name
+#: archetype: it. Seven of them are in here.
+#: archetype: LEYLINE OF TRANSFORMATION IS THE KEYSTONE and it is easy to under-read: "creatures
+#: archetype: you control are the chosen type in addition to their other types" makes EVERY
+#: archetype: creature you control a Robot, including Shuri, Tony Stark and Baxter Stockman who
+#: archetype: are not Robots at all. Every lord in the deck then applies to the entire board
+#: archetype: instead of to a subset. It can also start the game on the battlefield from your
+#: archetype: opening hand, which is the best possible turn-zero play here.
+#: archetype: THE LORD STACK, in the order it matters: Chronicle of Victory (+2/+2, first
+#: archetype: strike, trample, and a card every time you cast a Robot spell — which after
+#: archetype: Leyline is every creature spell), Lifecraft Engine (+1/+1, and it makes Vehicles
+#: archetype: into Robots too, which is the bridge to variant 48a), Banner of Kinship (+1/+1
+#: archetype: for EACH fellowship counter, so it scales with a board you have already built),
+#: archetype: Adaptive Automaton and Patchwork Banner (+1/+1 each, and the Banner fixes mana),
+#: archetype: Chrome Dome (+1/+0 to other artifact creatures) and ROAMING THRONE, which is the
+#: archetype: one that is not an anthem at all: it makes every triggered ability of another
+#: archetype: Robot trigger an ADDITIONAL time. With Leyline out that doubles Ultron's copy
+#: archetype: trigger, Machinesmith's counters, HYDRA's ping, Mouser Foundry, Baxter Stockman
+#: archetype: and Retrieve the Esper simultaneously.
+#: archetype: TOKENS ARE THE BODY COUNT the anthems need, and they come from five engines that
+#: archetype: cost no cards: Ravenous Robots (a 1/1 Robot for every artifact spell you cast),
+#: archetype: Kavaron Harrier (pay {2} on attack for a 2/2 already attacking), Mouser Foundry
+#: archetype: (one on entry and another on leaving), Mechan Assembler (a 2/2 Robot the first
+#: archetype: time another artifact enters each turn — a per-turn body, not a one-shot) and
+#: archetype: THREE Castle Doom in the manabase, each turning a spare artifact into a 3/3
+#: archetype: Doombot. Mirrormind Crown then converts the first tokens you make each turn into
+#: archetype: COPIES of whatever it is equipping — point it at Ultron or Krang and the 1/1s
+#: archetype: arrive as bombs instead.
+#: archetype: DISTINCTNESS: deck 26 ramps with mana into a few enormous artifacts; 26a converts
+#: archetype: nontoken artifact creatures into poison; 47 uses affinity to cast expensive things
+#: archetype: cheaply. This deck does none of those — it goes WIDE and makes the whole board
+#: archetype: bigger, and it is the only one of the four that cares about a creature TYPE.
+#: notes: BUILT 2026-07 from a 122-card pile, as the first of two decks (48a is the Vehicle
+#: notes: variant, bridged by Lifecraft Engine making Vehicles into Robots).
+#: notes: UNGRADED ON PURPOSE — no `#: tier:` until this has been played.
+#: notes: THIS DECK EXISTS BECAUSE OF A CORRECTED MISTAKE, recorded so the reasoning is not
+#: notes: lost. An earlier sweep searched for "Robots you control get", "for each Robot",
+#: notes: "number of Robots" across every colour in Standard, found zero, and declined Robot
+#: notes: tribal as "bodies without a payoff". The search was wrong, not the archetype: the
+#: notes: choose-a-creature-type category never contains the type name, and there are FOURTEEN
+#: notes: such cards in these colours, five of them genuine lords. Do not gate a search on a
+#: notes: literal name when the effect can be expressed generically.
+#: notes: WHY UR AND NOT MONO-BLUE: the lords are all colorless, so colour is chosen purely to
+#: notes: maximise bodies. Red brings Ravenous Robots (the token engine), Kavaron Harrier,
+#: notes: Machinesmith Automaton, HYDRA Assault Robot, Red Tiger Mechan and Mouser Foundry —
+#: notes: eight Robot cards blue does not have. Deck 47 took the opposite trade and went
+#: notes: mono-blue for a flawless manabase; this deck pays the two-colour tax for the count.
+#: notes: CASTLE DOOM x3 IS DELIBERATE and legal — it is a plain Land, not legendary. Three
+#: notes: copies means the Doombot engine is a manabase slot rather than a spell slot, and each
+#: notes: also taps for any colour toward artifact spells, which quietly fixes the UR base.
+#: notes: MEASURED: interaction 8, card advantage 2, avg MV 3.25, 14 early drops. Card advantage
+#: notes: reads 2 and that UNDERSTATES it — Chronicle of Victory draws on every chosen-type
+#: notes: spell, and after Leyline resolves that is every creature spell in the deck. role_tally
+#: notes: cannot see a conditional like that.
+#: notes: LEYLINE'S {2}{U}{U} IS THE ONE CASTABILITY PROBLEM: 64.6% on turn four against 12 blue
+#: notes: sources. It is tolerable only because casting it is the SECOND-best mode — its primary
+#: notes: line is starting the game on the battlefield from your opening hand, which needs no
+#: notes: mana at all. If it keeps sitting in hand uncastable, shift Mountains to Islands or cut
+#: notes: a red Robot; do not add more double-blue.
+#: notes: DISTINCTNESS IS THE WEAKEST OF THE FOUR ARTIFACT DECKS and worth stating plainly: 18
+#: notes: of 36 nonland cards (50%) appear in none of 26, 26a or 47, against 81% for deck 47.
+#: notes: What carries it is that the entire eight-card LORD package is exclusive and the plan
+#: notes: is the only type-caring one on the roster. If a future pass wants more separation,
+#: notes: cut the shared generic bodies (The Vision, Metalhead, Memory Guardian) before the
+#: notes: lords.
+#: notes: PASS 2 — seven cards in, one land, from the leftover pile. The earlier pass had
+#: notes: dismissed most of these on 26a-SPECIFIC reasoning ("not an artifact creature, so it
+#: notes: cannot carry poison"; "grows creatures, but poison does not scale with power") which
+#: notes: simply does not apply to a deck that wins with anthems. A per-deck `screen` corrected
+#: notes: it. IN: The Mechanist (its {T} animates artifact TOKENS, which is dead in 26a and
+#: notes: fully live HERE, plus a Clue on every noncreature spell) · Henchbots (removal on a
+#: notes: Robot body — the direct fix for the interaction hole named below) · Tezzeret, Cruel
+#: notes: Captain (loyalty grows off EVERY artifact entering, and this deck makes a token per
+#: notes: artifact spell) · Brilliance Unleashed (removal, and its reanimate mode returns an
+#: notes: artifact as a 3/3 ROBOT FLIER) · Mm'menon and Donatello Way with Machines (a counter
+#: notes: per artifact entering, in the deck that floods artifacts) · Firdoch Core (a CHANGELING
+#: notes: artifact, so it is a Robot for every lord, plus any-colour mana) · Secluded Courtyard
+#: notes: (naming Robot, it fixes nearly the whole deck from a land slot).
+#: notes: OUT: Memory Guardian (affinity wants an artifact count this deck does not have —
+#: notes: that card belongs in 47) · Ultron Drone (only ability costs {6}) · Red Tiger Mechan ·
+#: notes: Super-Adaptoid (its power counts LEGENDS, not Robots, so it is off-plan in a Robot
+#: notes: deck) · Metalhead · Baxter Stockman · Mechan Assembler.
+#: notes: MEASURED: interaction 8 -> 10, card advantage held at 2, avg MV 3.25 -> 3.14.
+#: notes: PASS 3 — BAXTER STOCKMAN AND MECHAN ASSEMBLER BACK IN, reversing the two pass-2 cuts
+#: notes: above. The archetype prose had gone on naming Baxter Stockman twice as a card the
+#: notes: deck ran, which is what a cut made on slot pressure rather than on fit looks like
+#: notes: afterwards. Both are Robot-count cards in the deck whose whole plan is Robot count.
+#: notes: MECHAN ASSEMBLER ({4}{U}, "whenever another artifact you control enters, create a 2/2
+#: notes: Robot token; once each turn") is a REPEATABLE body engine where the card it replaced,
+#: notes: Robotics Mastery, was a one-shot {4}{U} Aura making two 1/1s — same cost, same colour,
+#: notes: and an Aura additionally risks a two-for-one to any removal spell. The anthems do not
+#: notes: care which token they pump, so a per-turn 2/2 beats a one-time pair of 1/1s outright.
+#: notes: BAXTER STOCKMAN ({3}{U}{R}) makes a Robot token on entry and then gives an artifact
+#: notes: creature +3/+0, first strike and vigilance EVERY combat — a recurring anthem on the
+#: notes: one body that needs it. It replaces Mm'menon, whose "+1/+1 counter per artifact
+#: notes: entering" is already covered by Donatello, Way with Machines; Baxter is also OWNED
+#: notes: where Mm'menon was a craft, and both are gold UR so the manabase is unchanged.
+#: notes: ROAMING THRONE DOUBLES BOTH of these, which the archetype block already claimed for
+#: notes: Baxter and is now true again.
+#: notes: MEASURED: interaction held at 10, card advantage 2, protection held at 3, avg MV
+#: notes: 3.14 -> 3.19, early drops held at 13, central themes 13 -> 15. The curve moves 0.05
+#: notes: for two MV-5 cards because both cuts were also expensive — the pass-2 lesson (pay for
+#: notes: adds with the EXPENSIVE cards, never the cheap bodies) was applied deliberately.
+#: notes: A FIRST DRAFT OF THIS PASS WAS REJECTED BY MEASUREMENT, and the reason is worth
+#: notes: keeping: it paid for the adds by cutting CHEAP bodies (Aerial Doombot, Diversion Unit,
+#: notes: Viv Vision), which made the deck worse on every axis (interaction 7, card advantage 1,
+#: notes: avg MV 3.44, early drops 10). In an anthem deck the cheap bodies ARE the plan — a 1/1
+#: notes: is what the lords turn into a 4/4. Pay for adds with the EXPENSIVE cards here.
+#: notes: KNOWN SOFT SPOT: the deck has no sweeper. It
+#: notes: is built to win a board-stall by going over the top with anthems, so the bad matchup
+#: notes: is a deck that removes the lords and leaves the 1/1s.
+
+# The lord package — the reason this deck exists
+1 Leyline of Transformation (DSK) 63
+1 Chronicle of Victory (ECL) 253
+1 Lifecraft Engine (DFT) 234
+1 Banner of Kinship (FDN) 127
+1 Adaptive Automaton (FDN) 723
+1 Patchwork Banner (BLB) 247
+1 Roaming Throne (LCI) 258
+1 Chrome Dome (TMT) 172
+
+# Token engines + the token payoff
+1 Ravenous Robots (TMT) 106
+1 Kavaron Harrier (EOE) 139
+1 Mouser Foundry (TMT) 96
+1 Retrieve the Esper (FIN) 68
+1 Mechan Assembler (EOE) 63
+1 Mirrormind Crown (ECL) 258
+
+# Robot bodies
+1 Aerial Doombot (MSH) 43
+1 Diversion Unit (DFT) 41
+1 HYDRA Assault Robot (MSH) 137
+1 Machinesmith Automaton (MSH) 144
+1 Ultron, Artificial Malevolence (MSH) 252
+1 Henchbots (TMT) 174
+1 Viv Vision, Teen Synthezoid (MSH) 256
+1 Tezzeret, Cruel Captain (EOE) 2
+1 Firdoch Core (ECL) 255
+1 The Mechanist, Aerial Artisan (TLA) 64
+1 The Vision (MSH) 255
+1 Krang, Utrom Warlord (TMT) 175
+
+# Support — all of these become Robots under Leyline
+1 Shuri, Wakandan Inventor (MSH) 75
+1 Baxter Stockman (TMT) 139
+1 Tony Stark (MSH) 80
+1 Donatello, Way with Machines (TMT) 38
+1 Brilliance Unleashed (TMT) 141
+
+# Interaction
+1 Abrade (FDN) 188
+1 Plasma Bolt (EOE) 152
+1 Fiery Annihilation (FDN) 86
+1 Untimely Malfunction (DSK) 161
+1 Into the Flood Maw (BLB) 52
+
+# Lands (24) — Castle Doom x3 is the Doombot engine in the manabase
+3 Castle Doom (MSH) 263
+1 Kavaron, Memorial World (EOE) 255
+1 Riverpyre Verge (DFT) 260
+2 Stark Industries (MSH) 272
+1 Swiftwater Cliffs (MOM) 273
+8 Mountain (MSH) 294
+7 Island (MSH) 290
+1 Secluded Courtyard (FDN) 267
+
+# Flex — measured and parked. See: deck.py flex 48
+#~ +Dauntless Scrapbot | CRAFT (Uncommon) — {3} 3/1 Robot: ETB exiles each opponent's graveyard and creates a Lander token (ramp + an artifact token). Genuinely reasonable, and it MEASURED as a non-upgrade in every configuration tried: paying for it by cutting cheap bodies (Aerial Doombot, Viv Vision) dropped card advantage 2 -> 1, and paying with Untimely Malfunction dropped interaction 10 -> 9. Not rejected on fit — the deck simply has no slot whose loss is cheaper than the gain.
+#~ +Spider-Bot | CRAFT (Common) — {2} 2/1 reach Robot with a land-smoothing ETB. Same finding as above; it is the marginal card in a 36-slot list that is already tight.

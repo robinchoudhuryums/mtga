@@ -3,14 +3,27 @@
 #: colors: BG
 #: tier: A — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; fully built. Elf engine (Lathril drain finish + Elvish Archdruid ramp/anthem + Imperious Perfect / Morcant's Loyalist anthems + High Perfect Morcant blight), interaction 8 (the count now credits the bounce/edict lines the old classifier missed; The Serpent Society / Sporogenic Infection still read as interaction on top of that) — Bite Down (any deathtoucher kills anything for {G}) + Bake into a Pie clearing the poison clock's blockers — plus card advantage from Morcant's Eyes surveil + token dump, on a clean 2-color base → A-floor. Re-graded B→A on corrected interaction; the only reason it's not a clearer S-conversation is the singleton dilution across two half-density plans (Elf go-wide + poison).
 #: archetype: Golgari (B/G) poison (Fynn + deathtouch) x Elf tribal go-wide hybrid.
+#: protect: Fynn, the Fangbearer; Lathril, Blade of the Elves; The Serpent Society; Elvish Archdruid
 #: notes: Two reinforcing plans: go-wide Elves (Lathril/Imperious Perfect/Elvish Archdruid
 #: notes: engine — CRAFT targets — + Dwynen's Elite/Elfsworn Giant tokens, Druid ramp) AND a
 #: notes: Fynn deathtouch-poison kill (~14 deathtouchers incl. flying Vampire Nighthawk; The
-#: notes: Serpent Society is a 2nd poison payoff + deathtouch sac-engine). Bridge: deathtouch
-#: notes: grants (Widow's Bite, Scarblade's Malice) turn go-wide bodies into poison carriers.
+#: notes: Serpent Society is a 2nd poison payoff + deathtouch sac-engine). Bridge: the
+#: notes: deathtouch grant on Scarblade's Malice turns a go-wide body into a poison carrier
+#: notes: (Widow's Bite was CUT for the 23rd land — its grant was redundant with ~14 native
+#: notes: deathtouchers and its teamwork cost taps Elves Lathril wants untapped).
 #: notes: Trimmed 67->60 (aspirational build; keeps the 4 Elf-engine crafts — see wishlist,
-#: notes: Target 31). Sultai Devotee casts {1}{G} (U is ability-only, not a splash). 22 lands
-#: notes: + ~5 ramp is slightly lean — bump to 23 by cutting a marginal body if it flounders.
+#: notes: Target 31). Sultai Devotee casts {1}{G} (U is ability-only, not a splash). Now at
+#: notes: 23 lands + ~5 ramp: keepable was 80% at 22 (tool-flagged low) with the T4 land drop
+#: notes: at 53.9%, so the lean-manabase note was acted on rather than left standing.
+#: notes: Virulent Emissary in for Serpent Specialist (crafted, U): same {G} 1/1 deathtouch,
+#: notes: but an ELF — picks up all 3 anthems, Lathril's tap-ten and the 14 Elf payoffs, and
+#: notes: its lifegain trigger feeds South Wind Avatar's drain. Central themes 15->13 as a
+#: notes: RESULT, not a loss: Human was coincidental and counters was already incidental
+#: notes: (engines: 4 enablers, no payoff); both still have 4 copies, just below centrality.
+#: notes: Professor Dellian Fel in for Gran Pulse Ochu: the 0-ability is a REPEATABLE draw,
+#: notes: which role_tally deliberately does not count (single-draw cantrip rule), so the
+#: notes: card-advantage axis still reads 1 — read it as 2-3 on a text read (Dellian's 0,
+#: notes: Derelict Attic's draw-2, Wardens of the Cycle's morbid draw).
 
 # Nonland
 1 The Serpent Society (MSH) 226
@@ -38,22 +51,22 @@
 1 High Perfect Morcant (ECL) 229
 1 Imperious Perfect (FDN) 719
 1 Elvish Archdruid (FDN) 219
-1 Widow's Bite (MSH) 122
 1 Arnyn, Deathbloom Botanist (SOS) 74
 1 Bake into a Pie (FDN) 169
 1 Vampire Nighthawk (FDN) 186
 1 South Wind Avatar (TMT) 78
 1 Venom, Evil Unleashed (SPM) 71
 1 Shredder, Unrelenting (TMT) 74
-1 Gran Pulse Ochu (FIN) 189
-1 Serpent Specialist (MSH) 186
+1 Professor Dellian Fel (SOS) 214
+1 Virulent Emissary (ECL) 202
 1 Sultai Devotee (TDM) 160
 1 Killmonger, Scourge of Wakanda (MSH) 218
 1 Witherbloom, the Balancer (SOS) 245
 
 1 Derelict Attic // Widow's Walk (DSK) 93
 
-# Lands (22)
+# Lands (23)
+1 Illegitimate Business (TMT) 186
 6 Swamp (MSH) 292
 5 Forest (MSH) 296
 1 Evendo, Waking Haven (EOE) 253
@@ -66,4 +79,5 @@
 1 Adventurer's Inn (FIN) 271
 #~ note: applied — Elf engine deepened (owned Uncommon crafts): Morcant's Loyalist (-Melancholic Poet) non-legendary Elf anthem + dies->recur an Elf; Morcant's Eyes (-Lys Alana Informant) upkeep surveil + late {4}{G}{G} sac for X Elf tokens. Adds anthem redundancy + card advantage/recursion.
 #~ note: applied — Killmonger, Scourge of Wakanda (-Putrid Pals): owned. ETB may sac a creature -> destroy target nonland permanent (the noncreature answer the deck lacked; 2->raises noncreature-answer count) AND the sac cost feeds the death-trigger payoffs (Arnyn/South Wind/Serpent Society); +2/+1 with 2+ creatures in yard is self-fed by combat deaths.
-#~ +Izoni, Center of the Web | CRAFT (Rare, R wildcard) — Standard-legal Elf Detective card-advantage engine. Menace; enter/attack collect evidence 4 -> two 2/1 Spiders; sac four tokens: surveil 2, draw 2, gain 2. Closes the card-advantage gap (still at 1) on-theme (Elf/tokens/graveyard/sac). See wishlist Target 31.
+#~ +Izoni, Center of the Web | CRAFT (Rare, R wildcard) — Standard-legal Elf Detective card-advantage engine. Menace; enter/attack collect evidence 4 -> two 2/1 Spiders; sac four tokens: surveil 2, draw 2, gain 2. On-theme card advantage (Elf/tokens/graveyard/sac), but DOWNGRADED to a sidegrade: Professor Dellian Fel now supplies a repeatable draw for 0 wildcards at MV 4 vs Izoni's MV 6 + a Rare. Owned-first rule — skip unless you want a second engine. Note role_tally still reads card-adv 1 because it does not count a single-draw ability. See wishlist Target 31.
+#~ note: applied — Virulent Emissary in for Serpent Specialist.

@@ -1,0 +1,167 @@
+#: name: Iron Forge — Scrapyard Tithe
+#: format: Standard
+#: colors: UR
+#: based-on: deck.txt
+#: plan: midrange
+#: protect: Monument to Endurance; Cool but Rude; Magmakin Artillerist; Summon: Bahamut; Death to Our Enemies
+#: archetype: IZZET ARTIFACTS THAT WIN WITHOUT ATTACKING. Every other deck in this family gets
+#: archetype: its damage through the combat step — 26 with ramped bombs, 26a with poison, 47
+#: archetype: with affinity bodies, 48 with anthems, 48a with crewed Vehicles. This one taxes
+#: archetype: the opponent every time you throw something away. Treasure and cheap artifacts are
+#: archetype: the currency; discarding and sacrificing them is how you spend it.
+#: archetype: THE THREE DRAIN ENGINES all read off the same action. Monument to Endurance:
+#: archetype: "whenever you DISCARD a card, choose one — draw a card; create a Treasure; EACH
+#: archetype: OPPONENT LOSES 3 LIFE." Cool but Rude at level 2: "whenever you discard a card,
+#: archetype: this Class deals 2 damage to each opponent" — and its level 1 gives you a free
+#: archetype: discard-and-draw on every attack, so it fuels itself. Magmakin Artillerist:
+#: archetype: "whenever you discard one or more cards, this creature deals that much damage to
+#: archetype: each opponent." With two of the three out, one loot is 5 damage across the table.
+#: archetype: THE DISCARD IS NEVER A COST HERE, which is what makes the engine work rather than
+#: archetype: just hurt. Collector's Vault loots AND makes a Treasure; Melded Moxite discards to
+#: archetype: draw TWO; Seize the Spoils discards to draw two and make a Treasure; Cool but Rude
+#: archetype: replaces the card it discards; Inti exiles the top card and lets you play it. Every
+#: archetype: one of those is card-neutral or better BEFORE the drain triggers.
+#: archetype: DESTROY-TO-DAMAGE is the second half. Scrap Compactor, Barrels of Blasting Jelly
+#: archetype: and Bumbleflower's Sharepot each sacrifice themselves to kill something; Hell to
+#: archetype: Pay converts overkill damage back into Treasure; Crime Novelist turns every
+#: archetype: artifact sacrifice into a +1/+1 counter and a red mana. Armor Wars III and
+#: archetype: Weftstalker Ardent add non-combat damage that does not care about blockers either.
+#: archetype: THE LOOT ENGINES ARE THE ENGINE, not filler: Kitsa and Gran-Gran each loot for
+#: archetype: free every turn, Rewrite History loots whenever your creatures become TAPPED
+#: archetype: (which this deck does constantly for mana), and Kiora draws two and discards two
+#: archetype: on entry — two drain triggers off one card. Iron-Fist Pulverizer is priced by the
+#: archetype: same plan: it deals 2 to an opponent whenever you cast your SECOND spell each
+#: archetype: turn, which a 2.39-curve deck manages most turns.
+#: archetype: DISTINCTNESS from its own parent: deck 26 and this deck share colours, an artifact
+#: archetype: base and a taste for big top-end, but 26 needs its permanents to CONNECT and this
+#: archetype: one is indifferent to whether it has a creature at all.
+#: notes: BUILT 2026-07 from the same 122-card pile as 48 and 48a.
+#: notes: UNGRADED ON PURPOSE — no `#: tier:` until played.
+#: notes: WHY THIS IS NOT THE DECK ORIGINALLY PROPOSED. The plan floated for a 26 variant was
+#: notes: "Treasure ramp into unique heavy-hitters". That is exactly what 48a Motor Pool already
+#: notes: does — Treasure engine, Brass's Bounty, Radiant Lotus, Summon: Bahamut — so building
+#: notes: it here would have produced a near-duplicate of a deck finished the same day. The
+#: notes: DESTROY-TO-DAMAGE half of that brief had no home anywhere on the roster, so the
+#: notes: variant was built on that axis instead. Treasure is still the fuel; the difference is
+#: notes: what it buys.
+#: notes: THE FIRST DRAFT DUPLICATED 48a AND WAS PIVOTED RATHER THAN TUNED. Built as a
+#: notes: Treasure-ramp-to-heavy-hitters deck it measured `similar` 84% against 48a with
+#: notes: FOURTEEN shared nonland cards — the same meaningful-overlap pattern 26a vs 26 showed,
+#: notes: not a tag artifact. The shared half was the top end: Summon: Bahamut, Radiant Lotus,
+#: notes: Brass's Bounty, Extinguisher Battleship and The Eternity Elevator all went to 48a
+#: notes: exclusively, and this deck took five cheap repeatable LOOT engines instead. Result:
+#: notes: avg MV 2.97 -> 2.31, early drops 18 -> 21, card advantage 5 -> 7, and overlap down to
+#: notes: 81% / 11 shared, of which five are the commodity Izzet removal suite every deck in
+#: notes: the family runs. The two decks now want opposite curves.
+#: notes: TRUCK TOSS WAS CUT FOR THE SAME REASON IN MINIATURE: it costs {2} less if you control
+#: notes: a Vehicle, and this deck runs zero — it was a 4-mana Shock here and a 2-mana one in
+#: notes: 48a. Galvanize replaced it and is priced by THIS deck's plan instead.
+#: notes: AGNA QEL'A IS A LOOT ENGINE IN THE MANABASE ("{2}{U}, {T}: draw a card, then discard
+#: notes: a card"), so the drain has a source that costs no spell slot and survives a sweeper.
+#: notes: PASS 2 — five adds from the leftover pile, all chosen for hitting this deck's actual
+#: notes: plan rather than for being good cards. BULLSEYE is the best of them and fits THREE
+#: notes: plan pieces at once: "sacrifice an artifact OR discard a nonland card: deals 2 damage
+#: notes: to any target", repeatable at {3},{T} — a sacrifice outlet, a discard outlet and a
+#: notes: damage source in one card. LADY OCTOPUS gains ingenuity counters on your first and
+#: notes: second DRAW each turn, which a deck looting every turn turns on immediately, and then
+#: notes: free-casts artifacts. IRON-FIST PULVERIZER deals 2 to an opponent whenever you cast
+#: notes: your SECOND spell each turn — non-combat damage that scales with a low curve.
+#: notes: GLEAMING GEARDRAKE grows on every artifact sacrifice and Clues on entry. TRADE THE
+#: notes: HELM hands them a spare Treasure and takes their best permanent.
+#: notes: OUT: Untimely Malfunction, Galvanize (interaction was 12 against a much lower need),
+#: notes: Elixir (a {5} activated ability that will never be paid), Oasis Gardener, Magic Pot.
+#: notes: MEASURED: interaction held at 12, card advantage 7 -> 8, avg MV 2.25 -> 2.39.
+#: notes: BULLSEYE NEEDED NO HEADER CHANGE, correcting a mistake made when it was added. I
+#: notes: widened `#: colors:` to UBR for it and then reverted: the tooling ALREADY handles a
+#: notes: hybrid correctly against a narrower header — `deck.py mana` reports "hybrid — paid
+#: notes: on-color" and `preflight` reads "castability PASS (+1 hybrid stray, ok)", exactly as
+#: notes: it does for War Machine in 26a. Widening was not just unnecessary, it was actively
+#: notes: WORSE: a three-colour baseline would have stopped flagging a genuinely off-colour
+#: notes: black card added later. `#: colors:` stays UR.
+#: notes: FOUR CANDIDATES REJECTED FOR THIS DECK SPECIFICALLY, all for the same reason: this is
+#: notes: the one deck on the roster that wins WITHOUT ATTACKING, so cards keyed to combat
+#: notes: damage do nothing. Waterbender Ascension (quest counters on combat damage; its
+#: notes: unblockable mode is irrelevant), Illvoi Infiltrator (draws on combat damage),
+#: notes: Donatello Gadget Master (token-copies an artifact on combat damage) and Draconautics
+#: notes: Engineer all went elsewhere or stayed out. Brilliance Unleashed was also skipped —
+#: notes: not on fit but on curve (MV 6 in a 2.39 deck), and it is already in deck 48.
+#: notes: PASS 3 — CAPTAIN STORM, COSMIUM RAIDER IN, TRADE THE HELM OUT. Storm is the deck's
+#: notes: only Pirate and does not need another: "whenever an artifact you control enters, put a
+#: notes: +1/+1 counter on TARGET PIRATE you control" targets herself, and this deck puts an
+#: notes: artifact onto the battlefield most turns (Treasures off Monument, Reckless Ransacking,
+#: notes: Stark Industries Executive and Hell to Pay; Clues off Gleaming Geardrake; the cheap
+#: notes: artifacts themselves). She is a {U}{R} two-drop that keeps growing without spending a
+#: notes: card, which is the one thing this deck's stated hole — "almost no blockers" — asks for.
+#: notes: She is GOLD, not hybrid, so she only works in a deck that makes both colours; that is
+#: notes: why she could not go to mono-blue 47 alongside Oaken Siren.
+#: notes: TRADE THE HELM paid for her: MV 5 in a 2.31-curve deck and the second-weakest fit the
+#: notes: ranking prints. It stays on the roster in deck 47, where the curve tolerates it.
+#: notes: MEASURED: interaction held at 12, card advantage held at 8, avg MV 2.39 -> 2.31 (the
+#: notes: lowest in the family), early drops 21 -> 22. Every axis flat or better.
+#: notes: SHE IS STILL THE MARGINAL CARD HERE and worth saying so: this deck wins WITHOUT
+#: notes: ATTACKING, so a growing body is defence and a mana sink, not the plan. She earns the
+#: notes: slot on curve and on blocking, not on the drain axis everything else here is built for.
+#: notes: NO SWEEPER AND ALMOST NO BLOCKERS is the obvious hole — the deck's creature count is
+#: notes: deliberately low because creatures are not how it wins. Against a fast aggro start it
+#: notes: must trade removal one-for-one and race with drain, which is a real losing posture.
+#: notes: The five interaction spells are doing double duty as both defence and reach.
+
+# Drain engines — every one triggers off discarding
+1 Monument to Endurance (DFT) 237
+1 Cool but Rude (TMT) 89
+1 Magmakin Artillerist (DFT) 137
+1 Inti, Seneschal of the Sun (LCI) 156
+
+# Discard outlets that cost you nothing
+1 Collector's Vault (WOE) 244
+1 Melded Moxite (EOE) 143
+1 Seize the Spoils (SOS) 129
+
+# Destroy-to-damage
+1 Scrap Compactor (DFT) 242
+1 Barrels of Blasting Jelly (TLA) 254
+1 Bumbleflower's Sharepot (BLB) 244
+1 Crime Novelist (MKM) 121
+1 Hell to Pay (OTJ) 126
+
+# Non-combat damage that ignores blockers
+1 Armor Wars (MSH) 203
+1 Weftstalker Ardent (EOE) 169
+1 HYDRA Assault Robot (MSH) 137
+1 Death to Our Enemies (MSH) 127
+
+# Treasure and artifact fuel — and the one payoff that counts them
+1 Stark Industries Executive (MSH) 153
+1 Reckless Ransacking (ECL) 152
+1 Lady Octopus, Inspired Inventor (SPM) 35
+1 Mouser Foundry (TMT) 96
+1 Machinesmith Automaton (MSH) 144
+1 Iron Man, Master of Machines (MSH) 216
+1 Gleaming Barrier (FDN) 252
+1 Gleaming Geardrake (MKM) 205
+1 Technodrome (TMT) 179
+1 Captain Storm, Cosmium Raider (LCI) 227
+
+# Repeatable loot — every activation is a drain trigger
+1 Kitsa, Otterball Elite (BLB) 54
+1 Gran-Gran (TLA) 54
+1 Rewrite History (MSH) 71
+1 Kiora, the Rising Tide (FDN) 45
+1 Romantic Rendezvous (MSC) 808
+
+# Interaction — also the deck's only defence
+1 Abrade (FDN) 188
+1 Plasma Bolt (EOE) 152
+1 Fiery Annihilation (FDN) 86
+1 Bullseye, Death Dealer (MSH) 209
+1 Iron-Fist Pulverizer (OTJ) 137
+
+# Lands (24)
+1 Castle Doom (MSH) 263
+1 Agna Qel'a (TLA) 264
+1 The Gold Saucer (FIN) 279
+1 Riverpyre Verge (DFT) 260
+2 Stark Industries (MSH) 272
+1 Swiftwater Cliffs (MOM) 273
+9 Mountain (MSH) 294
+8 Island (MSH) 290

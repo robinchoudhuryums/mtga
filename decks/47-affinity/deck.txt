@@ -1,0 +1,203 @@
+#: name: Grid Overload
+#: format: Standard
+#: colors: U
+#: plan: midrange
+#: tier: B — PROVISIONAL, and deliberately one band BELOW the measurable floor, which reads
+#: tier: A on interaction 7 (5 of it instant-speed, 4 able to answer a noncreature permanent)
+#: tier: plus card advantage 9 on a 3.08 curve. The guard will soft-flag this as possibly
+#: tier: under-graded; that is intentional, and here is the argument. FOUR structural risks the
+#: tier: floor cannot see, which is more than an A tolerates:
+#: tier: 1. IT DOES NOT EXIST YET. Eight craft targets, including both cards that make it a
+#: tier:    deck rather than a pile (Chrome Dome, the lord; Krang Master Mind, the finisher).
+#: tier:    Unplayed and unbuilt is not an A.
+#: tier: 2. PROTECTION 1 against five `#: protect:` build-arounds. The only real answer to
+#: tier:    removal is Fugitive Droid's sacrifice-counter. Every protected card is a must-kill.
+#: tier: 3. NO REBUILD. A pool search for "whenever an artifact creature enters, attacks or
+#: tier:    dies" returns ZERO cards in these colours, so there is no aristocrats engine and no
+#: tier:    value loop to recover with. A sweeper is close to a reset, and affinity makes the
+#: tier:    rebuild slower because the discount goes away with the board.
+#: tier: 4. THE BAD DRAW IS STRUCTURAL. Affinity does nothing until artifacts are down, and
+#: tier:    unlike a mana problem there is no mulligan heuristic that fixes it — a hand of
+#: tier:    payoffs with no fuel is unkeepable in a way a hand of lands is not.
+#: tier: What argues UP, for when this is played: the interaction profile is the best of the
+#: tier: three artifact decks, the manabase is flawless (see below), and the goldfish draws
+#: tier: are genuinely fast. Re-grade after a session.
+#: protect: Krang, Master Mind; Chrome Dome; Gearseeker Serpent; Ironheart, Clever Champion; Braided Net
+#: archetype: MONO-BLUE AFFINITY. The deck's whole idea is that it ramps with PERMANENTS
+#: archetype: rather than with mana. Flood the board with cheap artifacts, then cast things
+#: archetype: that read {5}{U}{U} for {U}{U}, and attack with bodies nobody paid full price
+#: archetype: for. Affinity for artifacts and improvise are the engine — Krang Master Mind,
+#: archetype: Gearseeker Serpent, Valkyrie Aerial Unit and Memory Guardian all shrink by one
+#: archetype: for every artifact on board, and Ironheart GRANTS improvise to every noncreature
+#: archetype: spell you cast on top of having it herself.
+#: archetype: WHY THIS IS NOT DECK 26 OR 26a, which are the two decks it could be mistaken for.
+#: archetype: All three like artifacts, but they spend a different RESOURCE. Deck 26 ramps with
+#: archetype: MANA — lands, Arc Reactor, Tony Stark's free artifact drop, Tannuk's warp — and
+#: archetype: hard-casts genuine bombs. Deck 26a wins with poison counters off nontoken
+#: archetype: artifact creatures and does not care about artifact COUNT at all. This deck
+#: archetype: converts board presence directly into cost reduction, so its bad draw is "not
+#: archetype: enough artifacts yet" rather than "not enough lands" or "no Silencer".
+#: archetype: THE FUEL HAS TO REPLACE ITSELF or affinity is just card disadvantage in a
+#: archetype: trenchcoat, and that is the real constraint on which cheap artifacts made it.
+#: archetype: Futurist Forge and Guidelight Matrix draw on entry; Cryogen Relic draws when it
+#: archetype: ENTERS AND AGAIN WHEN IT LEAVES; Buzz Bots draws when it dies; A.I.M. Synthoids
+#: archetype: surveils 2; Sewer-veillance Cam has flash and sacrifices for two cards. Every one
+#: archetype: of those is an artifact that costs you no card to deploy — that is why they are
+#: archetype: here and the equally cheap vanilla artifacts in the collection are not.
+#: archetype: MONO-BLUE IS A DELIBERATE STRUCTURAL CHOICE, not a shortage. A survey of the
+#: archetype: owned Robot/artifact base found 9 colorless and 11 mono-blue against only 5
+#: archetype: mono-red, and every affinity payoff in the format is blue or colorless. Both
+#: archetype: existing artifact decks pay a two-colour manabase tax (deck 26 runs six tapped
+#: archetype: lands and a {R}{R} card at 69.6% on curve) for a red contribution that is almost
+#: archetype: entirely REMOVAL rather than bodies. This deck declines that trade: 23 lands, no
+#: archetype: duals, nothing enters tapped, and interaction comes from bounce and counters.
+#: archetype: THE HONEST LIMIT: a pool search for "whenever an artifact creature enters,
+#: archetype: attacks or dies" returns ZERO cards in these colours. There is no aristocrats
+#: archetype: engine and no value loop available. This deck attacks with oversized cheap bodies
+#: archetype: and that is all it does — if the board gets swept it rebuilds slowly.
+#: notes: BUILT 2026-07 from scratch. Two other third-deck shapes were swept and rejected
+#: notes: first (both recorded in 26a's flex block): artifact TOKENS, where 120 makers exist
+#: notes: but the sacrifice-drain win-con is a single card that triggers off the OPPONENT; and
+#: notes: ROBOT tribal, where a search for a Robot lord across ALL of Standard in EVERY colour
+#: notes: returned zero. Affinity is the shape that has a payoff: 16 cards scale with artifact
+#: notes: count and 7 carry affinity or improvise.
+#: notes: UNGRADED ON PURPOSE — no `#: tier:` letter until this has been played. See the tier
+#: notes: rubric; the letter is a human competitive judgment and nothing should auto-write one.
+#: notes: CHROME DOME is one of only THREE artifact-creature lords in the format ("other
+#: notes: artifact creatures you control get +1/+0"), the others being Krang Utrom Warlord and
+#: notes: Iron Spider. At {2} it is also cheap enough to be affinity fuel itself.
+#: notes: KRANG, MASTER MIND is a DIFFERENT card from the Krang in decks 26 and 26a — {6}{U}{U}
+#: notes: with affinity, "if you have fewer than four cards in hand, draw cards equal to the
+#: notes: difference", and +1/+0 for each other artifact. It is the finisher and the refuel in
+#: notes: one card, and against six artifacts it costs {U}{U}.
+#: notes: NO BASIC-LAND FIXING PROBLEM EXISTS HERE, which is the payoff for going mono-colour:
+#: notes: 22 Island plus Uthros, Titanic Godcore, whose 12+ station mode adds {U} for each
+#: notes: artifact you control — an affinity payoff on a land.
+#: notes: THE MANABASE IS THE POINT AND IT MEASURES PERFECTLY: `consistency` reports "every
+#: notes: colored card casts on curve at >=90%" — ZERO cards below the target. Deck 26 has 14
+#: notes: below and 26a has 10. Nothing enters tapped, there are no duals to draw, and the
+#: notes: only nonbasic is Uthros. That is the entire payoff for going mono-colour and it is
+#: notes: the one axis where this deck is unambiguously ahead of both siblings.
+#: notes: DISTINCTNESS, MEASURED: `similar` reads 72% against 26a — the same headline number
+#: notes: 26a scored against 26 — but the two cases are opposite. 26a vs 26 shared SIXTEEN
+#: notes: nonland cards, so that number was real. This deck shares FIVE with 26a and THREE
+#: notes: with 26; 30 of its 37 nonland cards (81%) appear in neither. The tag model is seeing
+#: notes: "Robot / card draw / artifacts" and calling it similarity; the lists are nearly
+#: notes: disjoint. `shape` agrees: this deck reads WIDE 5 / TALL 2 where both siblings read
+#: notes: TALL.
+#: notes: `deck.py engines` FLAGS "graveyard: 6 enablers, no payoff — your engine has no
+#: notes: reward", and that is EXPECTED, not a hole to fix. Valkyrie, Cerebral Download,
+#: notes: A.I.M. Synthoids, Mechanical Mobster, Rook Turret and Mechan Navigator all surveil or
+#: notes: loot, which fills the graveyard as a SIDE EFFECT of card selection. There is no
+#: notes: graveyard plan here and adding graveyard payoffs would be tuning toward a deck this
+#: notes: is not. Ignore that line.
+#: notes: FOUR CARDS WERE CUT DURING THE BUILD after the full-text read, all for the same
+#: notes: reason — their condition is not met in THIS deck: Technodrome ("can't attack or
+#: notes: block unless its power is 6 or greater", and the counter package that enabled it in
+#: notes: deck 26 did not come along), Scorpion Sentinel (+3/+0 only at seven lands, and this
+#: notes: is a 23-land affinity deck that does not want to get there), Thaumaton Torpedo (its
+#: notes: discount needs a Spacecraft and there are none) and Lunatic Pandora (a {6} sacrifice
+#: notes: ability that will not be activated). Flying Octobot went later for the same class of
+#: notes: reason — it grows off VILLAIN entries and this deck fields two.
+#: notes: PASS 2 — seven adds from the leftover pile, after a per-deck `screen` corrected an
+#: notes: earlier bucketing that had dismissed several of these without a deck-specific reason.
+#: notes: IN: Uthros Psionicist (the second spell each turn costs {2} less — cost reduction is
+#: notes: this deck's entire premise) · Lady Octopus (ingenuity counters on your first and
+#: notes: second DRAW each turn, then free-casts an artifact of that mana value; a deck with
+#: notes: this much looting turns her on fast) · Oaken Siren (a flying artifact creature that
+#: notes: taps for artifact-only mana — exactly this deck's profile) · Trade the Helm (hand
+#: notes: them a spare token, take their bomb; cycling {2} means it is never dead) ·
+#: notes: Waterbender Ascension · Illvoi Infiltrator · Donatello, Gadget Master.
+#: notes: WATERBEND IS CHEAPER HERE THAN ANYWHERE, which is why Waterbender Ascension made it:
+#: notes: a waterbend cost lets you tap ARTIFACTS as well as creatures to pay, and this deck
+#: notes: fields more artifacts than any other on the roster. Its {4} unblockable mode is
+#: notes: routinely free.
+#: notes: TWO CANDIDATES WERE REJECTED ON TEXT DESPITE SCREENING "KEY", and the reason matters:
+#: notes: The Eternity Elevator ({5}) and Extinguisher Battleship ({8}) have NO affinity and no
+#: notes: cost reduction of any kind. This deck's whole plan is casting expensive things
+#: notes: CHEAPLY; adding genuinely expensive cards that do not shrink fights it. Measured:
+#: notes: including them took interaction 9 -> 6 and avg MV 3.05 -> 3.30. They belong in 48a,
+#: notes: which has the Station and big-mana angle to support them.
+#: notes: GLEAMING GEARDRAKE WAS EXCLUDED AS UNCASTABLE, not unwanted — it costs {U}{R} and
+#: notes: this deck is mono-blue. That reason is real and it is GOLD. It does NOT extend to a
+#: notes: HYBRID card, which is the mistake an earlier pass made here.
+#: notes: MEASURED: interaction 9 -> 7, card advantage 8 -> 9, avg MV 3.05 -> 3.08, early drops
+#: notes: held at 19, and the manabase is untouched — still every colored card on curve at 90%+.
+#: notes: PASS 3 — DON & RAPH, HARD SCIENCE IN, correcting a rejection that was bookkeeping and
+#: notes: not deck-building. It was left out of pass 2 on the ground that its R colour IDENTITY
+#: notes: "would widen `#: colors:`" and cost the mono-colour manabase. Both halves of that are
+#: notes: wrong. It costs {1}{U/R}{U/R} — every pip is payable with blue, so it needs no red
+#: notes: source and the manabase is untouched; and the tooling does not require the header to
+#: notes: widen, it reports "Don & Raph, Hard Science — identity has R (hybrid — paid on-color)"
+#: notes: and `preflight` reads castability PASS. Widening would in fact have been WORSE: a
+#: notes: two-colour baseline stops flagging a genuinely off-colour card added later. The same
+#: notes: correction was made in 26b for Bullseye. `#: colors:` stays U.
+#: notes: ON FIT it is one of the better cards in the deck, which is why the bookkeeping error
+#: notes: was expensive: "whenever Don & Raph attack, the NEXT NONCREATURE SPELL you cast this
+#: notes: turn has affinity for artifacts" grants this deck's premise to cards that do not have
+#: notes: it — Braided Net, Cerebral Download, Into the Flood Maw, Iron Man Armor, every cheap
+#: notes: artifact — and it carries menace so the attack trigger is hard to stop.
+#: notes: PAID FOR WITH S.H.I.E.L.D. DEPLOYMENT DRONE, the one body here that neither shrinks
+#: notes: with artifact count nor replaces itself; both are MV 3, so the curve is unmoved.
+#: notes: MEASURED: interaction 7, card advantage 9, protection 1, avg MV 3.08, 19 early drops —
+#: notes: every axis unchanged. This is a straight quality upgrade in a fixed slot.
+#: notes: CRAFT TARGETS (9): Krang Master Mind (R), Chrome Dome (R), Edgar King of Figaro (R),
+#: notes: Gearseeker Serpent (C), Memory Guardian (U), Valkyrie Aerial Unit (U), Cerebral
+#: notes: Download (U), Fugitive Droid (U), Mechan Navigator (U). Chrome Dome and Krang Master
+#: notes: Mind are the two that turn this from a pile into a deck — the lord and the finisher;
+#: notes: everything else is incremental. Three Rares, one Common, five Uncommons.
+
+# Affinity / improvise payoffs — the reason the deck exists
+1 Krang, Master Mind (TMT) 43
+1 Gearseeker Serpent (DFT) 43
+1 Valkyrie Aerial Unit (FIN) 84
+1 Memory Guardian (DFT) 49
+1 Donatello, Gadget Master (TMT) 35
+1 Chrome Dome (TMT) 172
+1 Ironheart, Clever Champion (MSH) 60
+1 Don & Raph, Hard Science (TMT) 144
+
+# Artifact-count card advantage
+1 Edgar, King of Figaro (FIN) 51
+1 Cerebral Download (EOE) 48
+1 Braided Net (LCI) 47
+
+# Fuel that replaces itself
+1 Futurist Forge (MSH) 55
+1 Cryogen Relic (EOE) 52
+1 Guidelight Matrix (DFT) 233
+1 Sewer-veillance Cam (TMT) 53
+1 Buzz Bots (TMT) 32
+1 A.I.M. Synthoids (MSH) 242
+1 Bumbleflower's Sharepot (BLB) 244
+1 Waterbender Ascension (TLA) 79
+
+# Cheap evasive artifact creatures
+1 Aerial Doombot (MSH) 43
+1 Diversion Unit (DFT) 41
+1 Rook Turret (FIN) 69
+1 Oaken Siren (LCI) 66
+1 Fugitive Droid (TMT) 40
+
+# Mana on artifact bodies
+1 Hydraulic Helper (MSH) 57
+1 Steelswarm Operator (EOE) 80
+1 Trade the Helm (DFT) 69
+1 Arc Reactor (MSH) 243
+
+# Bigger artifact bodies
+1 Illvoi Infiltrator (EOE) 59
+1 Iron Man Armor (MSH) 248
+1 Mechan Navigator (DFT) 48
+
+# Interaction — bounce and counters, the mono-blue price
+1 Into the Flood Maw (BLB) 52
+1 Uthros Psionicist (EOE) 84
+1 Lady Octopus, Inspired Inventor (SPM) 35
+1 Tishana's Tidebinder (LCI) 81
+1 Floodpits Drowner (DSK) 59
+1 Exclusion Mage (FDN) 508
+
+# Lands (23) — no duals, nothing enters tapped
+1 Uthros, Titanic Godcore (EOE) 260
+22 Island (MSH) 290

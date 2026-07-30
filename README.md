@@ -750,7 +750,10 @@ Add **`--audit-rationale`** to check the *argument*, not just the letter. A
 `#: tier:` rationale is prose, so nothing kept it honest as the list changed
 underneath it — it can end up arguing from cards that were cut, or quoting figures
 the deck no longer has. `deck.py tier <id> --audit-rationale` flags both, and
-reports nothing when the rationale is current. It never edits the prose; a stale
+reports nothing when the rationale is current. It reads **`#: archetype:` as well as
+`#: tier:`** — the archetype block is equally a claim about the current list, and being
+the header a reader trusts first, it is the one that rots unnoticed. `#: notes:` is
+deliberately excluded: it is a build log, where naming a card you cut is correct. It never edits the prose; a stale
 argument is how a defensible letter quietly becomes an indefensible one. **You no
 longer have to remember to run it** — `check_all` sweeps the whole roster as a soft
 warning, and `/apply-changes` and `/tune-deck` run the per-deck form at the moment of
@@ -1097,7 +1100,7 @@ hundreds of games. Read it for disasters, not for marginal swaps.
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
 derived files present **and still carrying their own columns** — a pool that lost
 its `Rarity`/`Legalities` is a hard failure, not a silent degrade — decks parse)
-plus seven **model-sanity checks** that keep the
+plus ten **model-sanity checks** that keep the
 grading/ranking models from silently drifting: the **ranking model**
 (`check_rankings.py`), **color parsing** (`check_colors.py` — also a static scan
 banning the naive inline `WUBRG` parse outside `lib.py`), the **DFC ownership-join**
@@ -1113,7 +1116,26 @@ may contain a Python tuple repr like `(0, 2)` — which is what a `{0,2}` quanti
 becomes when an f-string eats it. Both historical instances of that bug (the `{0,2}`
 one, and `(?:owner|their) hand` demanding the text "owner hand" while Magic writes
 "owner's hand") were invisible to unit tests, because each pattern had been tested
-against a string written to match it. The gate found a third on its first run. It exits
+against a string written to match it. The gate found a third on its first run.
+Then **workflow coverage** (`check_commands.py` — every subcommand and script must be
+reachable from a skill, or exempted with a reason: a capability that works and is never
+reached is invisible to every correctness gate above), and **model agreement**
+(`check_agreement.py`). That last one covers what the other eight structurally cannot:
+**two functions that are each correct and disagree with each other.** Every check above
+evaluates a model in isolation, and a divergence exists only *between* models — which is
+how `suggest-homes` came to print a "weakest card" cut hint that `deck.py cuts` did not
+rank first on **36 of 64 decks**, with every gate green. It registers questions with two
+implementations each (the most-cuttable card, a card's format legality, copies owned, the
+interaction count, the power seed, owned-vs-craft filler filters) and fails when they
+disagree — on the live roster, not a fixture, because a synthetic case only proves the
+pair agrees on the example its author wrote. Finally **doc structure**
+(`check_docs.py`): CLAUDE.md is the only file a fresh session loads automatically, so
+each operative rule lives there and its evidence — the incident, the measurement, the
+reasoning — lives in `docs/gotchas.md` under an anchor. That is a hand-kept
+cross-reference, so the gate checks the link in BOTH directions (a dangling anchor loses
+the evidence; an orphaned section is evidence nothing can reach), asserts the section
+headings the vendored workflow commands name verbatim still exist, and caps a bullet's
+length so the two files cannot quietly re-fuse. It exits
 non-zero on any hard break. It also
 emits **soft warnings** (never gating): wishlist target drift (a card whose target
 deck can no longer cast it); **new unindexed card mechanics** (`check_keywords.py`);

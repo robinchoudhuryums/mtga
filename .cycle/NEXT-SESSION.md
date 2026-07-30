@@ -1,214 +1,186 @@
 # Handoff — start the next session here
 
-Written at the end of the 2026-07 cycle, for a session with none of its context.
+Written 2026-07-29, for a session with none of this one's context.
 Read this before CLAUDE.md's Common Gotchas, not instead of them.
 
-**The task for the next session is a SYSTEMS MAP, not a fix.** Details in §3.
+**Read the evidence file when a rule's reasoning matters.** CLAUDE.md carries the RULE and
+any live residual; the incident and measurement live under the anchor the rule ends with —
+`[G-nn]` / `[K-nn]` in `docs/gotchas.md`, `[C-nn]` in `docs/cycle-config.md`. Nothing was
+deleted; open the long form before deciding a rule looks arbitrary. **Keep Cycle Workflow
+Config terse** — its shape is specified by `setup-cycle.md` in claude-workflow-tools and
+the vendored commands read those fields.
+
+**Also live: `docs/systems-map.md`.** Read it when you need
+to know which command answers a question, what a workflow's real command path is, or
+why two commands disagree. It replaces re-deriving that from 2,100 lines of prose.
 
 ---
 
 ## 1. Repo position
 
-- `main` is at the squash-merge of PR #86. Everything from the last cycle is IN.
-- The working branch `claude/add-cards-ingested-batch-cy2tdb` has been restarted
-  from `main` and is clean. If its PR is merged again, restart it the same way
+- Working branch `claude/project-development-continuation-3hnw5r`, based on `origin/main`
+  at the squash-merge of PR #87. If its PR is merged, restart it from `main`
   (`docs/verify-commit-tail.md` §3).
-- Gates green as of handoff: `check_all` all invariants hold; 651 pytest;
-  `check_patterns` 145 live; `check_commands` OK (33 subcommands / 30 scripts).
-- Collection: 1,853 cards, 66 decks. Decks 20, 42a and 46 became fully owned
-  this cycle.
+- Gates green at handoff: `check_all` all invariants hold (~11s); **686 pytest**;
+  `check_patterns` 145 live; `check_commands` OK (33 subcommands / 34 scripts).
+- **CLAUDE.md is 757 lines** (was 2,219). The evidence is in `docs/gotchas.md` (rules)
+  and `docs/cycle-config.md` (the Cycle Workflow Config fields), linked by anchor and
+  gated in both directions by `scripts/check_docs.py`. The doc split is COMPLETE.
+- Collection: 1,853 cards, 64 roster decks. Unchanged this session — no card or deck
+  data was touched, only tooling.
 
-## 2. The diagnosis — read this before deciding what to build
+## 2. What the last session did
 
-**The models are in good shape. The composition layer is where the friction is.**
+The task was a task-first systems map, then an agreement gate, then fixes prioritized
+by the map, holding the subcommand count flat. All four held.
 
-Current surface: **33 `deck.py` subcommands, 21 skills, 11 correctness gates,
-8,748 lines in `deck.py`, 2,096 in CLAUDE.md.** Every model is bounded, anchored
-and unit-tested. But **six commands rank cards by fit** — `cuts`, `suggest`,
-`suggest-homes`, `screen`, `redundancy`, `tier --to` — each composing the same
-theme-fit + role machinery differently, and **nothing checks that they agree**.
+1. **`docs/systems-map.md`** — the four workflows, their real command paths and costs,
+   every **reconciliation point** where a human must settle two answers, and an
+   overlapping-answer inventory with measured agreement rates.
+2. **`scripts/check_agreement.py`** — the twelfth hard gate, and the one that covers
+   what the other eleven structurally cannot: two functions that are each correct and
+   disagree with each other.
+3. **The fix the map surfaced** — `_weakest_cut` (the cut hint on every `suggest-homes`
+   row) and `rank_cut_candidates` (what `cuts` prints) both answered "this deck's
+   most-cuttable card" and **disagreed on 36 of 64 decks**. One `cut_keep_score` now.
+4. **`load_rarities` memoized** — 85% of `deck.py cuts`' runtime, found by profiling.
 
-That produced one recurring bug class all cycle, always the same shape: **the
-model was correct and the CALLER never asked.**
+Subcommand count: **33 → 33.** A duplicate model was deleted, not added.
 
-| incident | the model was right | the caller was wrong |
-|---|---|---|
-| `cuts` multiplier | `doubler_axis`/`doubler_support` scored Delney correctly for `suggest-homes` | `rank_cut_candidates` never called them |
-| `owned_role_fillers` | `craft_role_fillers` applied the format filter | its owned sibling did not |
-| `doubler_restriction` | power scopes parse correctly | type scopes were never asked about |
-| `suggest --lands` | the legality check existed | the lands path never applied it |
-| `rationale_staleness` | the per-deck check worked | nothing swept the roster |
+## 3. The task for the next session
 
-Eleven gates verify each model is CORRECT. **None verifies that two models
-answering the same question AGREE.** Where that check exists — `check_suggest`
-anchor 13 (the two breadth models), `tests/test_verify_ingest.py` (the rebuild
-order) — it was added reactively, one pair at a time, after a drift was already
-found in production.
+**Pick from §5. There is no single blocking item.** Note §5.5 closed earlier today — the
+P/T fix-hypothesis was tested and rejected, so the list is one speculative item shorter
+and the remaining work is ordinary. The diagnosis that opened this
+cycle — *the models are fine, the composition layer is where the friction is* — is now
+one gate and one map better, and the remaining items are ordinary work rather than a
+structural gap.
 
-Two more, named honestly:
-
-- **The decision surface is too wide.** Placing one card in one deck this cycle
-  took `card` → `suggest-homes` → `screen` → `cuts` → `swap` → `quality --vs` →
-  `preflight` → `tier --audit-rationale`. Eight commands — and the one that ranks
-  cuts is a **45% coin flip on creatures** (§5), the regime where it is used most.
-- **CLAUDE.md is doing two jobs.** It is simultaneously the operating manual and
-  the incident changelog, and the second has crowded out the first. The operative
-  rule ("route every colour parse through `card_colors()`") sits inside the
-  narrative of the bug that motivated it. This is why a fresh session must load
-  2,000 lines of prose to act safely. Do not "fix" this by deleting history — the
-  history is why the rules are trusted — but a separated operating manual is a
-  legitimate output of the mapping work.
-
-## 3. The task: a TASK-FIRST systems map
-
-### Why task-first is the whole point
-
-A module map (deck.py / lib.py / wishlist.py / the gates) would teach nothing —
-that structure is already legible and is not where the friction is. **Map the four
-things the user actually does:**
-
-1. **Ingest new cards** — `/ingest`
-2. **Build a new deck** — `/draft-deck`
-3. **Refine an existing deck** — `/tune-deck` → `/apply-changes`
-4. **Prioritize crafts** — `/add-wishlist`, `wishlist.py --rank/--budget`
-
-For each, record:
-
-- the actual command path, in order, with what each returns
-- **every point where a human must reconcile two answers by hand** — this is the
-  deliverable, the rest is context
-- which commands answer an overlapping question, and whether they agree
-- the cost profile (see the `make refresh` note in §6)
-
-### Getting `systems-map`
-
-It is a **Tier-3 command from `claude-workflow-tools` and deliberately NOT
-vendored** — CLAUDE.md §"Command provenance" records the reasoning: the ceremony
-outweighed the benefit *at this project's size*. That judgement was probably right
-when written and is worth re-testing at 33 subcommands.
-
-Two options, in order of preference:
-
-1. **Run the mapping directly** (a scoped `/broad-scan`, or by hand) without
-   vendoring anything. The generic command is built for a module map; what is
-   needed here is the task-first version above, so the generic one may need
-   steering anyway.
-2. **Vendor it via `/sync-commands`** if the generic structure turns out to fit.
-   If you do, update the Command-provenance paragraph — that section is a
-   hand-kept registry and this file's whole thesis is that those rot.
-
-### Then, in order
-
-2. **Add an agreement gate**, generalizing `check_suggest` anchor 13: any two
-   functions answering the same question for different inputs — owned vs unowned,
-   card vs deck, Python vs JS — must agree on a synthetic fixture. This is the
-   gate the project has now built ad-hoc five times.
-3. **Fix**, prioritized by the map, not by what is most recently annoying.
-4. **Hold the surface**: net subcommand count should go DOWN or stay flat. If a
-   fix wants a 34th subcommand, ask what it replaces.
+If you want the highest-value one: **`_signature_themes` saturation in `cuts`** (§5.1) —
+measured, and needing only the roster-wide diff the standing rule requires before its
+one-line caller change can land. The doc split is finished; both phases are done.
 
 ## 4. What NOT to do
 
-- **Do not open by writing code.** The tempting failure is to fix the creature
-  cut-ranking, add a subcommand, and leave cohesion one command worse.
-- **Do not re-weight `cuts`.** See §5 — it was simulated across all 64 decks and
-  does not work. Re-weighting off the ledger is also structurally forbidden by
-  `tests/test_recommendations.py`.
-- **Do not audit `/roster-review`, `/log-matches` or the wishlist tooling
-  speculatively.** They were barely exercised; there is no evidence of friction.
-- **Do not touch the model internals.** They are the part that works.
-- **`docs/tooling-improvement-plan.md` is HISTORICAL** (F01–F15, all landed, cycle
-  closed) and is referenced from nowhere. Its F01 instructs adding
-  `lib.full_card_text`, which was later **deleted** as dead code. A status header
-  has been added; do not follow it as a plan.
+- **Do not re-weight `cuts`' fit sum.** Simulated across all 64 decks last cycle and
+  rejected; also structurally forbidden by `tests/test_recommendations.py`.
+  (§5.1 is NOT this — it unifies two definitions of "signature", it does not tune fit.)
+- **Do not add a 34th subcommand** without saying what it replaces.
+- **Do not trust a gate you have not watched fail.** See §6 — a new gate was vacuous on
+  the pair it was written for, twice, and a first run of the creature experiment measured
+  a miscalibrated signal rather than the hypothesis.
+- **Do not re-propose the P/T creature signal** (§5.5). It was pre-registered, tested and
+  rejected; re-running it without new data would just re-find the same null.
+- **`docs/tooling-improvement-plan.md` is HISTORICAL** (F01–F15, all landed). Its F01
+  instructs adding `lib.full_card_text`, which was later deleted as dead code.
 
-## 5. Measurements — do not re-derive these
+## 5. Open work, in rough value order
 
-All measured this cycle. Re-deriving costs a roster sweep each.
+1. ~~**`_signature_themes` saturates in `cuts`**~~ — **DONE.** The +2 keep-boost read the
+   LOOSE union of every `#: protect:` card's tags and fired on **87% of nonland cards**
+   across the 22 decks that declare one (100% in decks 20 and 46). `cut_scoring_context`
+   now reads `_strong_signature_themes` (≥2 protected cards), firing on 66% — the same fix
+   `check_suggest` anchor 11b forces on `cmd_suggest_homes`, one caller over. Roster diff:
+   14 of 64 decks re-scored, 4 top-cut candidates moved, and deck 30's motivating case
+   survives (strict signature = `{counters}`).
 
-**The recommendation ledger, at 52 scored swaps:**
+2. ~~**An incremental `make refresh`**~~ — **DONE, both halves.** `build_mana.py` reuses
+   already-resolved rows, and `build_pool.py` — which was **99% of the cost** (222.5s of a
+   224.3s run, 91 paginated pages at ~2.4s each) — now reuses a pool built within the last
+   week for the same query. Skipping the pool is correct, not just fast: it is the whole
+   Arena pool, independent of what you OWN, so an ingest cannot change it; what goes stale
+   is `Legalities` and a new set's arrival, hence a window. Originally: It now reuses already-resolved
+   rows and fetches only new or unresolved names: a no-change refresh takes ~1s and needs
+   NO network; a four-card ingest fetches four cards. `make refresh REFETCH=1` forces the
+   full re-price for BOTH steps. Implemented as a flag on the one target, not a second
+   recipe. A no-change `make refresh` is now **12.7s** (of which ~11s is `check_all` itself) against 5m3s for a full rebuild, and needs no network.
+
+3. **`tier --audit-rationale` STAY-marker false negative.** A `_HISTORY_CUES` change-cue
+   about one card suppresses a citation of ANOTHER card in the same ±140-char window,
+   even when the clause says the card **stays**. Deck 42a asserted "Erode stay[s]" after
+   Erode was cut and the audit reported clean. Fix is the mirror of `_cites_as_arriving`.
+   **Needs a roster sweep before landing**, per the cue-list rule. Until then a "X stays"
+   claim is not covered — check by hand after a swap.
+
+4. **`doubler_restriction` parses POWER scopes only.** A type-scoped doubler (Splinter,
+   Radical Rat's Ninja clause) is counted against the whole deck — 27 feeders in deck 20
+   against a correct 12. The `✱ multiplier` figure on a tribal doubler is an upper bound.
+   Fix is a second scope pattern feeding the same filter, not a second model.
+
+5. **The creature cut-ranking regime — the P/T hypothesis is TESTED and REJECTED.**
+   Do not re-propose it. Pre-registered, scored against all 31 creature cuts on
+   git-reconstructed pre-swap snapshots: as a bounded ±3 co-signal it changed nothing
+   (4 up / 5 down, p=1.00, agreement 48% → 48%), which was *predicted* — `fit` has a
+   roster median of 44 (IQR 31–59), so a ±3 term cannot reorder anything. Scaled to span
+   that IQR it made agreement slightly worse (48% → 45%). Decisive: a cut creature's body
+   quality (mean 4.83) is indistinguishable from the median body of the creatures that
+   STAYED (5.00), and the cut card was the worse body only 17/31 times — chance, p=0.72.
+
+   **What replaced it:** the 45% is not a property of creatures. Per deck it runs 0/6,
+   1/6, 3/6, 2/4, 4/4 — 0% to 100% — so it is largely a statement about which decks were
+   edited. `deck.py feedback` now discloses that breakdown (`segment_concentration`).
+   The build-vs-tune story fits deck 46 (rebuilt mid-window, 0/6) but not deck 3 (1/6, an
+   ordinary tune). **The next move is MORE LEDGER DATA, not another signal** — every
+   subgroup here is 4–6 rows. A pre-registered re-test at ~100 swaps is the honest step.
+   Full method and numbers: `.cycle/blocks/2026-07-creature-cut-hypothesis-test.md`.
+
+6. Smaller: the reverse `screen` flag (a candidate strictly WORSE than an incumbent);
+   ROADMAP Tier 1 (theme the remaining UB flavor mechanics).
+
+## 6. Measurements — do not re-derive
+
+Each costs a roster sweep. All still current.
+
+**Cut-ranking agreement** (this session): `_weakest_cut` vs `rank_cut_candidates`
+**28/64 before → 64/64 after**.
+
+**Signature-boost saturation** (this session): 86% loose / 66% strict — table in §5.1.
+
+**`suggest` vs `suggest-homes`** (this session): they use different theme gates
+(`suggest` admits any theme the deck carries, `suggest-homes` requires a CENTRAL one),
+which looked like a guaranteed divergence. Across 640 picks on 64 decks they agree
+**100%** — `suggest` sorts by theme weight and central themes are the heaviest, so its
+top always clears the stricter gate. A consequence of the ranking, not a property.
+
+**The recommendation ledger** at 52 scored swaps (last cycle):
 
 | segment | agreement | median toward "keep" | n |
 |---|---|---|---|
 | noncreature cuts | 90% | 10% | 21 |
 | creature cuts | **45%** | 56% | 31 |
-| *pooled (what it used to print)* | *63%* | *28%* | *52* |
+| *pooled* | *63%* | *28%* | *52* |
 
-**Why:** `rank_cut_candidates` computes `fit` as an **unnormalized sum** —
-`for t in tags: fit += theme_w[t]` — so tag count drives the keep-score, and every
-co-signal (`_cuts_power_adj` / `_cuts_uniq_adj` / `_cuts_multiplier_adj`) is
-bounded to ±3 and cannot reach a term spanning that range. Roster-wide,
-**correlation(tag count, keep-rank) = +0.73, positive in 64 of 64 decks**.
-Creatures carry ~5.7 tags against ~3.0 for noncreature spells.
+`fit` is an **unnormalized sum**, so tag count drives the keep-score; creatures carry
+~5.7 tags against ~3.0 for spells. Correlation(tag count, keep-rank) = **+0.73, positive
+in 64 of 64 decks**. Normalization was simulated and rejected (top-3 themes moves it to
++0.72 and changes 1% of top-5 shortlist slots).
 
-**Normalization was simulated across all 64 decks and rejected:**
-
-| fit variant | corr(tag count, keep-rank) |
-|---|---|
-| current (sum all) | +0.73 |
-| top-3 themes | +0.72 |
-| top-4 themes | +0.73 |
-| mean of hits | +0.60 |
-
-Top-3 changes **1% of top-5 shortlist slots**. The effect is not double-counting
-within a card — tag count proxies for "is this card described by the tag
-vocabulary at all", and a card matching zero themes gets fit 0 and sorts to the
-top regardless of quality.
-
-**So the real fix is probably a DIFFERENT SIGNAL for creatures, not a tuned
-version of this one.** Bodies compete on stats, evasion and curve slot; theme-fit
-structurally cannot see any of that. `card-pool.csv` already carries
-`Power`/`Toughness` (read via `lib.card_power`) and nothing in the cut ranking
-uses them. That is the most promising unexplored direction, and it is a
-**hypothesis, not a conclusion** — nothing has tested it.
-
-## 6. Open follow-ons
-
-**Live and user-facing:**
-
-- **`tier --audit-rationale` STAY-marker false negative.** A `_HISTORY_CUES`
-  change-cue about ONE card suppresses a citation of ANOTHER card in the same
-  ±140-char window, even when the clause says the card **stays**. Deck 42a
-  asserted "Erode stay[s]" after Erode was cut and the audit reported the deck
-  clean. Proposed fix is the mirror of `_cites_as_arriving`: un-suppress a
-  citation carrying `stay`/`stays`/`remains`/`is kept`. **Needs a roster-wide
-  sweep before landing**, per the cue-list rule. Until then a "X stays" claim is
-  not covered — check by hand after a swap.
-- **`doubler_restriction` parses power scopes only.** A type-scoped doubler
-  (Splinter, Radical Rat's Ninja clause) is counted against the whole deck — 27
-  feeders in deck 20 against a correct 12. The `✱ multiplier` figure on a tribal
-  doubler is an upper bound. Fix is a second scope pattern feeding the same
-  filter, not a second model.
-
-**Cost / quality-of-life:**
-
-- **`make refresh` costs the same for a 4-card ingest as for a full rebuild**
-  (~10 min, re-pricing ~15.9k cards through Scryfall's rate limit). Nothing about
-  the ingest loop needs that. An incremental path is likely the cheapest real
-  quality-of-life win in the repo — but note the rebuild ORDER is load-bearing and
-  pinned by `tests/test_verify_ingest.py`; any incremental path must not fork it
-  into a second recipe (that exact drift is documented in CLAUDE.md, and the
-  Makefile is deliberately the ONE executable definition).
-
-**Smaller, from earlier blocks:**
-
-- The reverse `screen` flag — a candidate strictly WORSE than an incumbent.
-- ROADMAP Tier 1: theme the remaining UB flavor mechanics.
+**Costs:** whole tune-deck gather phase ~10s · `preflight` 6.4s (it runs `check_all`) ·
+`suggest-homes` 3.1s per card · `make refresh` ~10 min · `check_all` 11.3s.
 
 ## 7. Where things are
 
-- Per-cycle implementation blocks: `.cycle/blocks/*.md` — the newest is
-  `2026-07-feedback-segmentation-broad-implement.md`.
-- Prose state / decisions: `.cycle/STATE.md`.
-- Commit discipline (shared by every writing skill):
-  `docs/verify-commit-tail.md`.
+- **`docs/systems-map.md`** — the live task-first map. Start here for "which command".
+- Per-cycle blocks: `.cycle/blocks/*.md`; newest
+  `2026-07-systems-map-agreement-gate.md`.
+- Prose state / decisions incl. what was decided AGAINST: `.cycle/STATE.md`.
+- Commit discipline: `docs/verify-commit-tail.md`.
 - Long-range ideas: `ROADMAP.md` (regenerate with `/roadmap`).
 - **Historical, do not follow:** `docs/tooling-improvement-plan.md`.
 
 ## 8. One thing to preserve
 
-The habit that found nearly every real bug this cycle was **measuring before
-believing** — the roster-wide before/after diff, the mutation test, the 64-deck
-simulation that killed a fix that looked obviously right. Two of this cycle's
-findings were bugs in my own new tests, caught only by mutating the code and
-watching the test stay green. Whatever the next session builds, keep that.
+**Measure before believing, then check the measurement.** It found every real thing this
+session:
+
+- The cut-model divergence was invisible to eleven gates and obvious in one roster sweep.
+- `load_rarities` reads as fine in any single command's wall clock; cProfile said 85%.
+- The new gate's role-filler pair ran GREEN with the bug it names deliberately
+  reintroduced — **twice**, for two independent reasons (it read a truncated view of the
+  filtered set, and it asked about only one of the two role axes). Both were found by
+  mutating the code and watching the check stay green.
+- The first `suggest`-vs-`suggest-homes` measurement said 100% disagreement. It was
+  reading a dict's keys as rows. The real answer is 100% agreement.
+
+A check you have not watched fail is not a check, and a number you have not sanity-tested
+is not a measurement.

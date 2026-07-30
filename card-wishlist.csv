@@ -26,6 +26,7 @@ Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G
 Pride of the Road,Creature — Zombie Cat Warrior,"Vigilance
 Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
 Max speed — At the beginning of combat on your turn, target creature or Vehicle you control gains double strike until end of turn.",W,Zombie; Cat; Warrior; max speed; speed; aggro; vigilance; combat; start your engines!,DFT,24,Uncommon,36,,2.5,hand
+Reckless Velocitaur,Creature — Minotaur Pilot,"Whenever this creature saddles a Mount or crews a Vehicle during your main phase, that Mount or Vehicle gets +2/+0 and gains trample until end of turn.",R,Minotaur; Pilot; pump,DFT,144,Uncommon,48a,,2.0,seed
 Overlord of the Balemurk,Enchantment Creature — Avatar Horror,"Impending 5—{1}{B} (If you cast this spell for its impending cost, it enters with five time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)
 Whenever this permanent enters or attacks, mill four cards, then you may return a non-Avatar creature card or a planeswalker card from your graveyard to your hand.",B,Avatar; Horror; graveyard; mill; impending,DSK,113,Mythic,5; 11,"Impending {1}{B} graveyard value-bomb for Coming of Galactus (5): mills + recurs a creature — a real engine | Also deck 11 (Villainous, mono-B): the recurring, no-strings card-advantage + reanimation engine it lacks — mill 4 + recur a creature on enter AND attack.",8.0,hand
 Chainsaw,Artifact — Equipment,"When this Equipment enters, it deals 3 damage to up to one target creature.
@@ -49,6 +50,7 @@ Dubious Delicacy,Artifact — Food,"Flash
 When this artifact enters, up to one target creature gets -3/-3 until end of turn.
 {2}, {T}, Sacrifice this artifact: You gain 3 life.
 {2}, {T}, Sacrifice this artifact: Target opponent loses 3 life.",B,Food; lifegain; sacrifice; etb; removal; flash; tempo,EOE,96,Uncommon,21; 20,,4.5,hand
+Mechan Assembler,Artifact Creature — Robot Artificer,"Whenever another artifact you control enters, create a 2/2 colorless Robot artifact creature token. This ability triggers only once each turn.",U,Robot; Artificer; tokens,EOE,63,Uncommon,48,,4.0,seed
 Sunstar Expansionist,Creature — Human Knight,"When this creature enters, if an opponent controls more lands than you, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Landfall — Whenever a land you control enters, this creature gets +1/+0 until end of turn.",W,Human; Knight; sacrifice; tokens; ramp; etb; landfall; pump; lands,EOE,41,Uncommon,36,,3.0,hand
 "Ajani, Caller of the Pride",Legendary Planeswalker — Ajani,"+1: Put a +1/+1 counter on up to one target creature.
@@ -125,6 +127,7 @@ III — Ecliptic Growl — Draw a card if you control the creature with the grea
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
+"Captain Storm, Cosmium Raider",Legendary Creature — Human Pirate,"Whenever an artifact you control enters, put a +1/+1 counter on target Pirate you control.",U/R,Human; Pirate; counters,LCI,227,Uncommon,26b,,4.5,seed
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
@@ -163,7 +166,6 @@ Spider-UK,Legendary Creature — Spider Human Hero,"Web-slinging {2}{W} (You may
 At the beginning of your end step, if two or more creatures entered the battlefield under your control this turn, you draw a card and gain 2 life.",W,Spider; Human; Hero; lifegain; card draw; bounce; web-slinging; evasion; tempo,MSC,777,Uncommon,23,,3.5,hand
 Kang the Conqueror,Legendary Creature — Human Villain,"Flying
 Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after this one. During that turn, power-up abilities can't be activated. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",U,Human; Villain; counters; flying; evasion; power-up; payoff,MSH,62,Mythic,12,blue control finisher — evasive body + extra-turn power-up; UUU castable in Dimir,6.5,hand
-Vision Quest,Sorcery,"Search your library and/or graveyard for an artifact creature card with mana value X or less and put it onto the battlefield with X additional +1/+1 counters on it. If X is 4 or greater, it gains haste until end of turn. If you search your library this way, shuffle.",U/R,counters; reanimator; graveyard,MSH,237,Rare,general,UR artifact-creature cheat/reanimator — wants a dedicated artifacts shell,5.0,hand
 Archangel of Tithes,Creature — Angel,"Flying
 As long as this creature is untapped, creatures can't attack you or planeswalkers you control unless their controller pays {1} for each of those creatures.
 As long as this creature is attacking, creatures can't block unless their controller pays {1} for each of those creatures.",W,Angel; flying; evasion,OTJ,2,Mythic,3,"Go-wide tax (protects you + pushes a wide board through); also fits deck 23 — one copy serves both. Mythic craft, OTJ rotation-soon.",6.5,hand
@@ -288,7 +290,7 @@ Whenever you discard a card, this Class deals 2 damage to each opponent.
 {1}{R}: Level 3
 When this Class becomes level 3, search your library for a card, put it into your hand, shuffle, then discard a card at random.",R,Class; card draw; burn,TMT,89,Rare,2,"best 2 (Thundergod); also 8,1,21a",4.0,hand
 "Don & Raph, Hard Science",Legendary Creature — Mutant Ninja Turtle,"Menace
-Whenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)",U/R,Mutant; Ninja; Turtle; menace; evasion,TMT,144,Rare,concept,TMNT UR-artifacts legend — new-deck focal point (menace + artifact-affinity payoff),5.0,hand
+Whenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)",U/R,Mutant; Ninja; Turtle; menace; evasion,TMT,144,Rare,47,TMNT UR-artifacts legend — new-deck focal point (menace + artifact-affinity payoff),5.0,hand
 "Donatello, Gadget Master",Legendary Creature — Mutant Ninja Turtle,"Sneak {1}{U} (You may cast this spell for {1}{U} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)
 Whenever Donatello deals combat damage to a player, create a token that's a copy of target artifact you control.",U,Mutant; Ninja; Turtle; tokens; sneak; tempo; cost-reduction,TMT,35,Rare,19,Mutant Ninja Turtle — sneak/tempo token-maker for the Turtle shell,5.0,hand
 Groundchuck & Dirtbag,Legendary Creature — Ox Mole Mutant,"Trample

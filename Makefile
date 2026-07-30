@@ -14,7 +14,8 @@ help:
 	@echo "make check           run the integrity gate (no dependencies)"
 	@echo "make test-units      run the pytest unit layer (installs requirements-dev.txt)"
 	@echo "make verify          BOTH gates: integrity + unit tests (run before committing)"
-	@echo "make refresh         rebuild ALL derived data in dependency order (slow; needs Scryfall)"
+	@echo "make refresh         rebuild derived data in dependency order (incremental; needs Scryfall)"
+	@echo "make refresh REFETCH=1   same, but re-price every card from scratch (slow)"
 	@echo "make clean-venv      remove the local .venv"
 
 # Launch the editor. Depends on the venv sentinel so deps install on first run
@@ -58,16 +59,34 @@ verify: check test-units
 # have no card-mana.csv row until the NEXT cycle, so they silently rank with no cost and
 # no keyword tags. Three prose copies is three chances to get that wrong; this is one.
 #
-# SLOW and needs Scryfall egress — build_mana --pool prices ~15.9k cards against a rate
-# limit. Each step announces itself so a failure is attributable, and make stops at the
-# first non-zero exit rather than running the rest against half-built data.
+# Needs Scryfall egress. Each step announces itself so a failure is attributable, and make
+# stops at the first non-zero exit rather than running the rest against half-built data.
+#
+# INCREMENTAL: every step skips work it has already done — enrich.py fills only blank
+# fields, build_gallery.py reuses its image cache, build_mana.py reuses the rows it has
+# already resolved (a printed mana cost does not change), and build_pool.py reuses a pool
+# built within the last week for the same query. A no-change refresh is ~13s — nearly all of
+# it the check_all step at the end — and needs no network at all; a four-card ingest fetches
+# four cards. It used to cost ~5 minutes every single run regardless, 99% of that the pool's
+# 91 paginated pages at ~2.4s each.
+#
+# Skipping the pool is correct, not merely fast: card-pool.csv is the whole Arena pool and
+# is INDEPENDENT of what you own, so an ingest cannot change it. What does go stale is
+# Legalities (rotation, bans, rebalances) and the arrival of a new set — hence a time
+# window, not a blanket reuse.
+#
+# `make refresh REFETCH=1` forces both fetches, for an errata/rebalance sweep or a new set.
+# That is a FLAG on this one target, not a second target: the order is the thing that must
+# have a single definition, and a separate "quick refresh" recipe is how it drifts.
+REFETCH ?=
+
 refresh:
 	@echo "==> 1/6 enrich.py            (fill blank Type/Text/Color/Collector #)"
 	python3 scripts/enrich.py
 	@echo "==> 2/6 build_pool.py --all  (full Arena pool; BEFORE build_mana, which reads it)"
-	python3 scripts/build_pool.py --all
-	@echo "==> 3/6 build_mana.py --pool (costs + keywords for library AND pool)"
-	python3 scripts/build_mana.py --pool
+	python3 scripts/build_pool.py --all $(if $(REFETCH),--refetch,)
+	@echo "==> 3/6 build_mana.py --pool (costs + keywords; reuses resolved rows)"
+	python3 scripts/build_mana.py --pool $(if $(REFETCH),--refetch,)
 	@echo "==> 4/6 tag_synergies.py --merge  (keyword-aware tags; --merge keeps hand edits)"
 	python3 scripts/tag_synergies.py --merge
 	@echo "==> 5/6 build_gallery.py     (gallery.html + images)"

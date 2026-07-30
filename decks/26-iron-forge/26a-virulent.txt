@@ -1,0 +1,272 @@
+#: name: Iron Forge — Virulent
+#: format: Standard
+#: colors: UR
+#: based-on: deck.txt
+#: plan: aggro
+#: protect: Virulent Silencer; Fireshrieker; Relm's Sketching; Scour for Scrap; Vision Quest; Krang, Utrom Warlord
+#: tier: (ungraded — new build, grade after a play session)
+#: archetype: Izzet (U/R) artifact POISON. Variant of 26 Iron Forge: where core 26 ramps into a
+#: archetype: few enormous bodies, this deck fields CHEAP EVASIVE ones and converts their chip
+#: archetype: damage into a real clock (avg MV 3.05, 15 early drops, 23 evasive creatures).
+#: archetype: NOT a "wide" deck, and the measurement corrected the first draft of this line:
+#: archetype: `deck.py shape` reads TALL 5 / WIDE 3, because every buff here is single-target
+#: archetype: (Falcon's Wing Harness, Iron Man Armor, I Am Iron Man, Mind Transfer Protocol,
+#: archetype: Living Brain). So the real contrast with 26 is not wide-vs-tall — both are tall —
+#: archetype: it is CHEAP-AND-EVASIVE-many-times versus EXPENSIVE-AND-HUGE-once, and the win
+#: archetype: condition (poison, which ignores life totals entirely) rather than the shape.
+#: archetype: THE PAYOFF is Virulent Silencer: "whenever a NONTOKEN artifact creature you
+#: archetype: control deals combat damage to a player, that player gets two poison counters."
+#: archetype: Ten poison wins, so five connections is the game. Twenty-one of the deck's
+#: archetype: nonland cards are nontoken artifact creatures or make one, most with native
+#: archetype: flying, and the plan routes entirely around lifegain, life totals and damage
+#: archetype: prevention — which is the reason to build it as a separate deck rather than a
+#: archetype: package inside 26.
+#: archetype: THE WORD THAT SHAPES EVERY CARD CHOICE IS "NONTOKEN": every token-maker in the
+#: archetype: Izzet artifact pool produces bodies the Silencer ignores, so none is in this list.
+#: archetype: The specific cards deliberately excluded are named in the notes block below.
+#: archetype: CONSISTENCY COMES FROM TUTORS, NOT REDUNDANCY, and this is the deck's honest
+#: archetype: weak point. Virulent Silencer is the ONLY poison source castable in a U/R or
+#: archetype: colorless Standard shell — measured against the whole pool — and there is no
+#: archetype: proliferate at all. So four cards find or duplicate the one payoff:
+#: archetype: Vision Quest at X=3 searches library AND graveyard and puts the Silencer
+#: archetype: straight onto the battlefield with three +1/+1 counters; Scour for Scrap tutors
+#: archetype: it to hand or rebuys it from the graveyard; and Relm's Sketching makes a TOKEN
+#: archetype: COPY of the Silencer itself, which still carries the triggered ability — the word
+#: archetype: "nontoken" describes the creatures being watched, not the watcher — so two
+#: archetype: Silencers means FOUR poison per connection.
+#: archetype: THE UNBLOCKABLE PACKAGE (added pass 2, and it is the sharpest tool here). Poison
+#: archetype: needs COMBAT DAMAGE to connect, so guaranteeing one connection is worth more than
+#: archetype: a bigger body — and note poison does NOT scale with power, which makes one card
+#: archetype: unusually good: Atomic Microsizer's drawback ("that creature has base power and
+#: archetype: toughness 1/1 until end of turn") costs this deck literally NOTHING, so a {U}
+#: archetype: Equipment becomes a repeatable "make anything unblockable" every attack. Pym
+#: archetype: Particles is {U} for unblockable + vigilance + a card. Rogue's Passage does the
+#: archetype: job from the LAND slot, costing no card at all. Fugitive Droid is free whenever an
+#: archetype: artifact entered this turn, which Diamond Pick-Axe's per-attack Treasure now makes
+#: archetype: reliable, and Gingerbrute pays {1} for it.
+#: archetype: COPYING THE PAYOFF IS A WHOLE SUB-THEME, and there are two distinct ways to do it.
+#: archetype: Copy the CREATURE: Relm's Sketching's token, Shuri's artifact-becomes-a-copy, and
+#: archetype: Silent Hallcreeper's third mode all give a second Virulent Silencer, and two
+#: archetype: Silencers means FOUR poison per connecting creature. Copy the TRIGGERED ABILITY:
+#: archetype: Echo, Perceptive Prodigy taps for {1} to copy "target activated or triggered
+#: archetype: ability you control FROM A CREATURE SOURCE" — the Silencer is a creature and its
+#: archetype: poison clause is a triggered ability, so that is two more poison, repeatable every
+#: archetype: turn. Echo has vigilance, so attack first and tap her after damage triggers.
+#: archetype: SHURI IS A REPEATABLE SILENCER-DOUBLER, which is not obvious from her text.
+#: archetype: "{1}, {T}: Target artifact you control becomes a copy of a second target artifact
+#: archetype: you control until end of turn" — point any spare artifact at Virulent Silencer and
+#: archetype: you have TWO Silencers, i.e. four poison per connecting creature, every turn for
+#: archetype: {1}. Her "artifact spells cost {1} less" also accelerates the whole carrier layer.
+#: archetype: EVASION IS GRANTED, NOT JUST NATIVE. Krang gives every other artifact creature
+#: archetype: flying, trample, indestructible and haste at once. Falcon's Wing Harness attaches
+#: archetype: itself on entry for +1/+1, flying and ward {1}, so it both makes a carrier and
+#: archetype: protects one. Gingerbrute pays {1} to be unblockable except by haste. Fugitive
+#: archetype: Droid is unblockable whenever an artifact entered this turn, which is most turns.
+#: archetype: FIRESHRIEKER IS THE CLOCK-DOUBLER and the least obvious card here: double strike
+#: archetype: means the creature deals combat damage in TWO separate combat damage steps, and
+#: archetype: each one is its own "deals combat damage to a player" event — so an equipped
+#: archetype: carrier gives FOUR poison per attack. Note Mjölnir does NOT do this; it doubles
+#: archetype: the damage amount, not the number of trigger events, which is why it stayed in 26.
+#: archetype: ANIMATION TURNS DEAD ARTIFACTS INTO CARRIERS. I Am Iron Man and Mind Transfer
+#: archetype: Protocol both make a noncreature artifact into a nontoken artifact creature (the
+#: archetype: former with flying) and replace themselves; Living Brain does it FREE every
+#: archetype: combat; and Iron Man Armor self-animates for {2} into a flier that grows with the
+#: archetype: artifact count. An animated artifact is an artifact creature, so Krang grants it
+#: archetype: flying too.
+#: notes: THE TOKEN-MAKERS DELIBERATELY EXCLUDED, named here rather than in the archetype block
+#: notes: because --audit-rationale audits that block for cards the deck does not run: Mouser
+#: notes: Foundry, Retrieve the Esper, Castle Doom, Mechan Assembler, Simulacrum Synthesizer,
+#: notes: Detective's Satchel, Robotics Mastery, Fuss // Bother, Spider-Slayer, and Ultron's
+#: notes: copy trigger. All are fine artifact cards; all make TOKEN artifact creatures, which
+#: notes: Virulent Silencer explicitly does not see. Their absence is the design, not a gap.
+#: notes: BUILT 2026-07 as the poison half of the 26 split. Core 26 kept the Silencer as a
+#: notes: free alternate win — one owned copy runs in both decks at once, since decks share the
+#: notes: collection — but 26 is a TALL ramp deck and a poison clock wants WIDE and evasive.
+#: notes: UNGRADED ON PURPOSE. No `#: tier:` letter until this has been played: the tier rubric
+#: notes: is a human competitive judgment and nothing here should auto-write one.
+#: notes: `#: plan: aggro` is set because the floor is archetype-aware — an aggro plan
+#: notes: substitutes a bounded clock score for the interaction a resilience floor demands.
+#: notes: That is the honest description of this deck (it closes by connecting repeatedly, not
+#: notes: by controlling the board), but it is also the header that makes the floor kinder, so
+#: notes: it is called out rather than left implicit. AND IT TURNS OUT NOT TO MATTER: the deck
+#: notes: measures interaction 8, which clears the A-floor (interaction >=5, interaction+card-
+#: notes: advantage >=7) on its own, so the clock substitution the aggro plan buys is doing
+#: notes: nothing here. Clock scores 4/7 for the record.
+#: notes: THE RISK, STATED PLAINLY: this is a one-payoff deck. Draw no Silencer and no tutor
+#: notes: and it is a mediocre tempo deck of small fliers. That is the cost of the only poison
+#: notes: card in the colour pair, and it is why four slots are spent on finding it.
+#: notes: MANABASE: 23 lands, R 14 / U 14, only FOUR tapped — leaner and less tapped than 26's,
+#: notes: because an aggro clock cannot afford six tapped lands. Riverpyre Verge is the one
+#: notes: owned untapped UR dual. `check` flags War Machine, Legacy of Iron as a W colour
+#: notes: stray; that is a FALSE POSITIVE — `deck.py mana` confirms "hybrid — paid on-color",
+#: notes: since {2}{R/W} is payable as {2}{R}. Do not widen #: colors: for it.
+#: notes: CARD ADVANTAGE IS 2 AND THAT IS THE THIN AXIS. Rook Turret's loot, Mechan Navigator's
+#: notes: loot-on-tap, H.E.R.B.I.E.'s ETB draw, Iron Lad's reveal-an-artifact tap, Pym Particles
+#: notes: and both animation spells all draw, but nearly all are SINGLE-draw, which role_tally
+#: notes: does not count. The four tutors are the real substitute: in a one-payoff deck, finding
+#: notes: the payoff IS the card advantage. It measured 1 at one point in pass 2 and that was
+#: notes: too thin even for an aggro deck — Mechan Navigator was chosen over a second one-shot
+#: notes: unblockable cantrip specifically to put it back to 2 while staying a carrier.
+#: notes: PASS 4. Galvanize out, Invasion Submersible in. Accepted the measured interaction dip
+#: notes: 8 -> 7 as a MODELLING ARTIFACT: role_tally does not score "return up to one other
+#: notes: target nonland permanent to its owner's hand" as interaction, but bouncing the blocker
+#: notes: that is stopping the clock is exactly what this deck needs an answer to do. It also
+#: notes: adds a carrier the removal spell was not — Exhaust-Waterbend {3} makes it a PERMANENT
+#: notes: artifact creature with three +1/+1 counters, and waterbend lets your artifacts help pay.
+#: notes: PASS 3. OUT: Steelswarm Operator (a fine carrier-plus-ramp, but not critical — the
+#: notes: slot bought something better) · War Balloon (needs {3} in fire counters or crew 3
+#: notes: before it is a body at all) · Memory Guardian (an unspent craft; cutting it dropped the
+#: notes: wildcard bill too). IN: Echo, Perceptive Prodigy (owned — the trigger-copier above) ·
+#: notes: Silent Hallcreeper (owned — unblockable, and its third mode turns it INTO a second
+#: notes: Silencer; note it is an Enchantment Creature, so it carries no poison until it copies
+#: notes: one) · Fin Fang Foom (owned). Measured: interaction held at 8, card advantage held at
+#: notes: 2, avg MV 2.97 -> 2.95. The variant that cut Galvanize instead of Memory Guardian was
+#: notes: worse (interaction 7, avg MV 3.03).
+#: notes: FIN FANG FOOM MOVED IN, reversing the build-day exclusion, and the reason is a real
+#: notes: measurement: it has EIGHT artifact-targeting spells to copy here (Relm's Sketching,
+#: notes: Scour for Scrap, I Am Iron Man, Mind Transfer Protocol, Abrade, Untimely Malfunction,
+#: notes: Price of Freedom, Fiery Annihilation) against four in core 26. It still carries no
+#: notes: poison — it is not an artifact creature — but "put two +1/+1 counters" on a 3/5 flier
+#: notes: every trigger is a genuine second threat, and Krang makes it indestructible.
+#: notes: DO NOT CUT INTERACTION TO PAY FOR THE COPY EFFECTS. It was proposed and it is
+#: notes: backwards: Fin Fang Foom and Mica only copy spells you cast WHILE THEY ARE ON THE
+#: notes: BATTLEFIELD, so trimming removal from six to four does not make removal more
+#: notes: available — it makes it likelier you hold a copy engine with nothing to copy. Copy
+#: notes: effects are multipliers on cards you already drew; they never substitute for drawing
+#: notes: them. A deck with copy effects wants MORE spells, not fewer.
+#: notes: PASS 2 (2026-07, same day as the build). OUT: Aerial Doombot, Flying Octobot,
+#: notes: Super-Adaptoid (all 1/1-or-*/2 bodies — the three weakest carriers) · Mouser Mark III
+#: notes: (a 2/3 with NO evasion of any kind, so it cannot carry poison unless Krang is out) ·
+#: notes: Viv Vision. Cutting Viv Vision was a good call and not mine: her draw needs power 4+,
+#: notes: and I checked — in THIS deck only Iron Man Armor's +2/+1 gets her there, where core 26
+#: notes: had Iron Spider's board-wide counters and Donatello Mutant Mechanic's three. My
+#: notes: earlier claim that she was clearly a 26a card was wrong.
+#: notes: IN: Shuri (owned — the Silencer-doubler, see archetype) · Pym Particles (owned) ·
+#: notes: Atomic Microsizer · Diamond Pick-Axe (owned) · Mechan Navigator · Rogue's Passage
+#: notes: (land slot, replacing an Island). Measured: avg MV 3.05 -> 2.97, early drops 15 -> 16,
+#: notes: clock 4/7 -> 5/7, interaction held at 8, card advantage held at 2.
+#: notes: FIN FANG FOOM AND MICA WERE EXCLUDED DELIBERATELY, and NOT for lack of triggers —
+#: notes: Foom has EIGHT artifact-targeting spells to copy here (Relm's Sketching, Scour for
+#: notes: Scrap, I Am Iron Man, Mind Transfer Protocol, Abrade, Untimely Malfunction, Price of
+#: notes: Freedom, Fiery Annihilation) against four in core 26, so its engine is twice as live
+#: notes: in this deck. They are out because NEITHER IS AN ARTIFACT CREATURE, so neither
+#: notes: advances the poison clock, and Foom's {2}{R}{R} is the worst cost in either deck.
+#: notes: If you want the spell-copy value here, Foom is a defensible add — just know you are
+#: notes: buying a 3/5 flier that does not carry poison.
+#: notes: DIAMOND PICK-AXE ANSWERS THE ARTIFACT-TOKEN QUESTION, but not for the reason tokens
+#: notes: usually get added. Its Treasures cannot carry poison (tokens never can). What they do
+#: notes: is satisfy Fugitive Droid's "if an artifact entered the battlefield under your control
+#: notes: this turn" every turn you attack, and feed affinity on Memory Guardian and Valkyrie
+#: notes: Aerial Unit. That is the only reason to run a token-maker in this deck.
+#: notes: DISTINCTNESS, MEASURED not asserted: `similar` reads 72% against core 26 and reports
+#: notes: 16 SHARED nonland cards. Unlike the deck-43-vs-42 case that number is meaningful
+#: notes: rather than a tag artifact — but 21 of 37 nonland cards (57%) are 26a-only, including
+#: notes: the entire payoff-and-tutor package and the whole cheap-carrier layer, and the win
+#: notes: conditions genuinely differ (poison vs combat damage from ramped bombs). Verdict: a
+#: notes: real variant, at the high end of acceptable overlap. Ironheart was cut from the first
+#: notes: draft partly for this reason — its value is the improvise-granting, which only matters
+#: notes: in the RAMP deck; here it was a 5-mana 3/4 flier. Iron Lad does the flier job for
+#: notes: {2}{U} and adds a repeatable artifact-reveal draw.
+#: notes: LAND COUNT: 23 is deliberate. A 24th land was tested and the tool's keepable warning
+#: notes: fires in BOTH directions ("consider more lands" at 23, "consider fewer" at 24), so it
+#: notes: is not actionable; paying for the 24th with Fiery Annihilation cost interaction 8 -> 7,
+#: notes: which is a worse trade than an 82.5% keepable.
+#: notes: `deck.py engines` FINDS NOTHING, and that is expected rather than a problem: it reads
+#: notes: tagged themes (sacrifice 1/0, lifegain 6/0, counters 5/0, graveyard 2/1, all
+#: notes: incidental), and this deck's actual engine — Silencer plus nontoken artifact carriers
+#: notes: plus granted evasion — is not a tagged theme at all. Do not tune off that output.
+#: notes: CRAFT TARGETS (11, ten Uncommon + one Common): Virulent Silencer, Fireshrieker, Living Brain,
+#: notes: Fugitive Droid, Scour for Scrap, Memory Guardian, Valkyrie Aerial Unit, Iron Lad,
+#: notes: Atomic Microsizer, Mechan Navigator, Rogue's Passage. (Memory Guardian dropped off at
+#: notes: pass 3, so the bill is 10.)
+#: notes: PYM PARTICLES vs ATOMIC MICROSIZER — both stay, and the copy question has a split
+#: notes: answer. Fin Fang Foom does NOT copy Pym Particles: Foom needs a spell that targets an
+#: notes: ARTIFACT OR LAND, and Pym Particles targets a creature. Mica WOULD copy it, since Mica
+#: notes: copies any instant or sorcery. Microsizer is the better card long-run (repeatable, and
+#: notes: its "base power and toughness 1/1" clause costs nothing because poison does not scale
+#: notes: with power) but it needs to resolve, be equipped for {2}, and have its creature
+#: notes: attack; Pym Particles is available turn one and replaces itself. If a slot is ever
+#: notes: needed, Pym is the cuttable one of the pair.
+#: notes: Everything else is owned. Silencer and Fireshrieker are the two that must come first —
+#: notes: the Silencer is the deck and Fireshrieker doubles its clock.
+
+# Payoff + the four ways to find or duplicate it
+1 Virulent Silencer (EOE) 248
+1 Vision Quest (MSH) 237
+1 Relm's Sketching (FIN) 67
+1 Scour for Scrap (EOE) 73
+1 Fireshrieker (FDN) 674
+
+# Evasion granting + animation
+1 Krang, Utrom Warlord (TMT) 175
+1 Falcon's Wing Harness (MSH) 53
+1 Iron Man Armor (MSH) 248
+1 I Am Iron Man (MSH) 58
+1 Mind Transfer Protocol (TMT) 45
+1 Living Brain, Mechanical Marvel (SPM) 167
+1 Shuri, Wakandan Inventor (MSH) 75
+1 Atomic Microsizer (EOE) 47
+1 Diamond Pick-Axe (LCI) 143
+
+# Carriers — nontoken artifact creatures
+1 Fugitive Droid (TMT) 40
+1 Gingerbrute (ELD) 219
+1 Echo, Perceptive Prodigy (MSH) 51
+1 Diversion Unit (DFT) 41
+1 Machinesmith Automaton (MSH) 144
+1 War Machine, Legacy of Iron (MSH) 238
+1 Silent Hallcreeper (DSK) 61
+1 Rook Turret (FIN) 69
+1 Metalhead (TMT) 44
+1 Fin Fang Foom (MSH) 129
+1 H.E.R.B.I.E. Scout Unit (MSH) 247
+1 The Vision (MSH) 255
+1 Iron Man, Master of Machines (MSH) 216
+1 Iron Lad, Diverging Destiny (MSH) 57
+1 Valkyrie Aerial Unit (FIN) 84
+
+# Interaction — clear the blockers the clock cannot fly over
+1 Plasma Bolt (EOE) 152
+1 Abrade (FDN) 188
+1 Untimely Malfunction (DSK) 161
+1 Invasion Submersible (TLA) 63
+1 Price of Freedom (TLA) 149
+1 Fiery Annihilation (FDN) 86
+1 Pym Particles (MSH) 70
+1 Mechan Navigator (DFT) 48
+
+# Lands (23) — leaner and less tapped than core 26's
+1 Riverpyre Verge (DFT) 260
+2 Stark Industries (MSH) 272
+2 Swiftwater Cliffs (MOM) 273
+1 Rogue's Passage (FDN) 264
+8 Island (MSH) 290
+9 Mountain (MSH) 294
+
+# Flex — considered and parked. See: deck.py flex 26a
+#~ note: applied — PASS 2: OUT Aerial Doombot, Flying Octobot, Super-Adaptoid, Mouser Mark III, Viv Vision. IN Shuri, Pym Particles, Atomic Microsizer, Diamond Pick-Axe, Mechan Navigator, + Rogue's Passage for an Island. avg MV 3.05 -> 2.97, clock 4/7 -> 5/7.
+#~ note: applied — PASS 3: OUT Steelswarm Operator, War Balloon, Memory Guardian. IN Echo Perceptive Prodigy, Silent Hallcreeper, Fin Fang Foom (all owned). interaction held 8, avg MV 2.97 -> 2.95, craft bill 11 -> 10.
+#~ note: CORRECTED 2026-07 — an earlier version of this note claimed "ZERO Robot-count payoffs in all of Standard, any colour" and used that to decline a Robot-tribal variant. THAT WAS WRONG, and the error was methodological: the search regex looked for the literal word "Robot" ("Robots you control get", "for each Robot", ...), and the entire CHOOSE-A-CREATURE-TYPE category never contains the type name. There are 14 such cards in U/R/colorless Standard and FIVE are genuine lords that work by naming Robot: Lifecraft Engine (OWNED — +1/+1 to the chosen type, and Vehicles you control BECOME that type), Chronicle of Victory (OWNED — +2/+2, first strike, trample, and a draw on every chosen-type spell), Adaptive Automaton, Patchwork Banner and Banner of Kinship. Also in that category: Roaming Throne (DOUBLES triggered abilities of the chosen type), Collective Inferno (doubles damage from chosen-type sources), and Leyline of Transformation (OWNED — makes ALL your creatures the chosen type, i.e. it turns every lord on for the whole board). Robot tribal is viable; the original sweep simply could not see the payoffs. Lesson, and it is the same one this repo keeps relearning: do not gate a search on a literal name when the effect can be expressed generically.
+#~ note: TOOL CAVEAT FOUND WHILE CHECKING THAT. `deck.py tribes` reports "Type-matters payoffs — rewards Robot" and named six cards for deck 26 (Ultron, Ultron Drone, Castle Doom, Mouser Foundry, Kavaron Memorial World, Donatello Mutant Mechanic). Every one of those CREATES a Robot token; none of them rewards the Robot COUNT. The heuristic reads token-creation as type-matters support, which overstates tribal depth. Earlier reasoning in this deck's build cited those six as Robot payoffs — the honest number is ONE (Chronicle of Victory). Read that section of `tribes` as "cards that mention this type", not "cards that reward it".
+#~ note: THE MANA STRUCTURE FINDING, which is the useful part of the Robot sweep. Of 27 owned Robots: 9 are COLORLESS, 11 mono-BLUE, 5 mono-RED, 2 hybrid/gold. The Robot pool is blue-and-colorless; red barely contributes bodies. Measured on the live lists: deck 26 runs 11 red-requiring nonland cards of which only THREE are creatures, and 26a runs 8 of which only TWO are creatures. In both decks red is buying REMOVAL (Abrade, Plasma Bolt, Fiery Annihilation, Explosive Derailment, Full Bore, Price of Freedom, Untimely Malfunction), not the creature base. 26a is the deck where that is worth re-examining: it is the aggro list, tapped lands hurt it most, and 18 of its nonland cards already want blue against 8 wanting red. A near-mono-blue 26a would have essentially no mana problems, at the cost of trading burn for bounce and counters. NOT changed here — flagged as the next real architectural question for this deck.
+#~ note: A THIRD "ARTIFACT TOKENS" VARIANT WAS INVESTIGATED AND DECLINED — recorded here so the pool sweep is not re-run. The ENABLERS are abundant: 120 artifact/token makers in U/R/colorless Standard, 40 of them owned. The PAYOFF is what does not exist. Sacrifice-an-artifact drain (the Marionette Master axis that makes a token deck actually kill) is ONE card, Vengeful Tracker, and it triggers when the OPPONENT sacrifices — so that axis is effectively zero. Token-COUNT payoffs: three cards, one owned (Mister Fantastic, which draws rather than wins). Mass token animation: one card, The Mechanist, and it animates one token per turn. Static artifact-creature anthems: Chrome Dome (+1/+0, Rare craft) and Krang. Everything else that "cares" is an artifact-COUNT payoff — affinity, improvise, "+1/+0 for each artifact" — and a Treasure feeds those exactly as well as Krang does, except Krang also wins the game. A token variant would therefore be core 26 with strictly worse artifacts and no unique win condition.
+#~ note: A FOUR-CUT / NINE-CANDIDATE PACKAGE was proposed and MEASURED, and every version of it came out worse than the live list (interaction 8 -> 7, early drops 16 -> 14/15). The reason is one line: of the nine candidates, FIVE are not artifact creatures (The Mechanist, Mm'menon, Don & Raph, Donatello Way with Machines, Trade the Helm) and so can never carry poison — while three of the four proposed cuts (Gingerbrute, H.E.R.B.I.E., Metalhead) ARE artifact creatures. The swap trades carriers for non-carriers.
+#~ note: GINGERBRUTE IS THE WORST OF THE FOUR TO CUT and it is worth spelling out why, because a 1/1 looks like filler: poison does NOT scale with power, so "{1}: this creature can't be blocked this turn except by creatures with haste" on a ONE-MANA artifact creature is a guaranteed two poison per turn for one mana. That is the most mana-efficient carrier in the deck. Galvanize is the only one of the four I would cut on its own merits (interaction is 8).
+#~ note: THE GROW-A-CREATURE CARDS ARE DOUBLY WRONG HERE — Mm'menon, Don & Raph and Donatello Way with Machines all pump power, and poison does not care about power at all. They are also none of them artifact creatures. Keep them in core 26's discussion, not this one.
+#~ +Memory Guardian | CRAFT (Uncommon) — {4}{U} 3/4 FLIER Robot with affinity for artifacts, so it routinely costs {1}{U} or {U}. A genuinely good carrier, and the best of the nine candidates; it lost its slot at pass 3 purely to save a wildcard. Its printed MV 5 makes every metric read worse than it plays. Take it if you want one more evasive body.
+#~ +Invasion Submersible | CRAFT (Uncommon) — the second-best of the nine: {2}{U} Vehicle whose ETB bounces a nonland permanent (clearing the blocker stopping the clock) and whose Exhaust-Waterbend {3} makes it a PERMANENT artifact creature with three +1/+1 counters. Note role_tally does NOT score the bounce as interaction, so adding it measured as interaction 8 -> 7 even though it plays as an answer.
+#~ +Chameleon, Master of Disguise | OWNED (Uncommon) — {3}{U}, "you may have Chameleon enter as a copy of a creature you control". Enter as a second Virulent Silencer, permanently and as a NONTOKEN body, plus Mayhem {2}{U} to recast it from the graveyard if discarded. The cheapest permanent Silencer-copy after Silent Hallcreeper; parked only because pass 3 already added three copy effects.
+#~ +Omni-Changeling | OWNED (Uncommon) — {3}{U}{U} with CONVOKE, enters as a copy of any creature on the battlefield. Same job as Chameleon for one more printed mana, but convoke makes the real cost much lower in a deck with sixteen early drops. Take whichever of the two you prefer; running both is redundant.
+#~ +Self-Reflection | OWNED (Uncommon) — {4}{U}{U} sorcery, token copy of target creature you control, with flashback {3}{U} for a second use. A token copy of the SILENCER keeps the trigger, so this is two extra Silencers across a game. Parked purely on cost: MV 6 in a deck with avg MV 2.95.
+#~ +Return the Favor | OWNED (Uncommon) — {R}{R} Spree; "+{1} — copy target instant spell, sorcery spell, activated ability, or TRIGGERED ability". Yes, it copies Virulent Silencer's poison trigger — three mana for two extra poison, plus a target-redirection mode. It works, but Echo does the same job repeatably for {1}, so this is the expensive version; it is also a third {R}{R} cost.
+#~ +Invasion Submersible | CRAFT (Uncommon) — {2}{U} artifact Vehicle: ETB bounce a nonland permanent (clears the blocker stopping the clock), and Exhaust—Waterbend {3} makes it a PERMANENT artifact creature with three +1/+1 counters. Interaction and a carrier in one card; waterbend lets your artifacts help pay. The best of the parked craft options.
+#~ +Relic's Roar | CRAFT (Common) — {U} instant, "target artifact or creature becomes a Dinosaur artifact creature with base power and toughness 4/3". A one-mana animation, i.e. a fourth way to turn an Equipment into a carrier. Behind the Mask does the same for the same cost but with an awkward optional evidence cost; prefer Relic's Roar. Both are marginal — the deck already runs I Am Iron Man, Mind Transfer Protocol, Living Brain and Iron Man Armor's self-animate.
+#~ note: The Mechanist, Aerial Artisan was CONSIDERED AND REJECTED for this deck, despite looking like an obvious fit. Its ability reads "target artifact TOKEN you control becomes a 3/1 Construct artifact creature with flying" — an animated token is still a TOKEN, which is exactly what Virulent Silencer does not see. Its Clue generation is real card advantage, but the half that looks like a poison enabler is structurally blind to the payoff.
+#~ note: Veteran Ice Climber was considered and rejected: permanently unblockable is the right effect, but it is a Human Scout, not an artifact creature, so it can never carry poison. Same reason Deserter's Disciple lost to Ragged Playmate above.
+#~ note: Improvised Arsenal belongs in CORE 26, not here — "+1/+0 for each artifact you control" is pure damage, and poison does not scale with power. Tezzeret, Cruel Captain is not worth a Mythic for either deck: its -3 only tutors artifacts with mana value 1 or less, which cannot find Virulent Silencer (MV 3) or any of core 26's heavy hitters.
+#~ +Trade the Helm | CRAFT (Uncommon) — {4}{U} "exchange control of target artifact or creature you control and target artifact or creature an opponent controls", cycling {2}. A genuinely good idea for this deck: hand them a Treasure or a 1/1 and take the blocker that is stopping the clock, and it is never dead thanks to cycling. Parked purely on cost — five mana is a lot in a deck with avg MV 2.97 and sixteen early drops. Take it if the deck keeps losing to a single large blocker.
+#~ +Enter the Enigma | OWNED — {U} sorcery: target creature can't be blocked, draw a card. A second Pym Particles minus the vigilance. Lost its slot to Mechan Navigator because card advantage had fallen to 1 and the Navigator both draws AND is a carrier; take Enter the Enigma if you would rather have a second guaranteed connection than a body.
+#~ +Cryptic Coat | CRAFT (Rare) — {2}{U} Equipment: "equipped creature gets +1/+0 and can't be blocked", plus it cloaks the top card of your library and attaches itself. PERMANENT unblockability is the strongest version of this deck's key effect. Note the cloaked 2/2 is NOT an artifact creature, so move the Coat onto a real carrier. Parked as the one Rare worth considering.
+#~ +Ragged Playmate | CRAFT (Common) — {1}{R} artifact creature (so a carrier itself) with "{1}, {T}: target creature with power 2 or less can't be blocked". Most of this deck's carriers are power 2 or less, so it is repeatable unblockability on a body. Cheapest way to add a second repeatable enabler after Atomic Microsizer.
+#~ +Deserter's Disciple | OWNED — {1}{R}, "{T}: another target creature you control with power 2 or less can't be blocked". Same effect as Ragged Playmate for zero wildcards, but it is NOT an artifact creature, so it adds no carrier and no artifact count.
+#~ +Fin Fang Foom | OWNED — has EIGHT artifact-targeting spells to copy in this deck against four in core 26, so its engine is twice as live here. Excluded anyway because it is not an artifact creature and cannot carry poison, and {2}{R}{R} is the worst cost in either deck. A defensible add if you want the spell-copy value.
