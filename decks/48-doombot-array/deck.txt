@@ -2,6 +2,28 @@
 #: format: Standard
 #: colors: UR
 #: plan: midrange
+#: tier: B — and deliberately ONE BAND BELOW the measurable floor, which reads A on
+#: tier: interaction 10 (5 instant-speed, 4 able to answer a noncreature permanent) plus card
+#: tier: advantage 2 on a 3.17 curve. The guard will soft-flag this as possibly under-graded;
+#: tier: that is intentional and should not be "fixed". The rubric's A wants a coherent engine,
+#: tier: a tight curve and AT MOST ONE clear weakness. This list has three:
+#: tier: 1. THE MANABASE IS THE WORST ON THE ROSTER. 19 coloured cards cast below 90% on curve
+#: tier:    and the deck is short on BOTH colours (U wants 15-16 and has 11; R wants 15-16 and
+#: tier:    has 13). Leyline of Transformation, the keystone, is 64.6% on turn four.
+#: tier: 2. NO SWEEPER AND NO REBUILD. The plan is to win a board stall by going over the top
+#: tier:    with anthems, so the losing matchup is a deck that answers the lords and leaves the
+#: tier:    1/1s — and with card advantage 2 there is nothing to rebuild with.
+#: tier: 3. A COUNTERS SUB-THEME WITH NO PAYOFF. `engines` reports 7 enablers placing +1/+1
+#: tier:    counters against zero cards that reward HAVING them (and sacrifice reads 5/0 too).
+#: tier: WHAT ARGUES UP, for a later re-grade: `shape` reads WIDE 10 / TALL 0, the cleanest
+#: tier: match of plan to measurement in this family; effect depth is genuinely deep where it
+#: tier: matters (Robot 13, payoff 12, removal 9), which is what lets a singleton list grade
+#: tier: well; and CARD ADVANTAGE 2 UNDERSTATES BADLY — Chronicle of Victory draws on every
+#: tier: chosen-type spell, which after Leyline is every creature spell in the deck, and the
+#: tier: whole lord package reads as roleless (6 unclassified).
+#: tier: NOT GRADED DOWN FOR BEING UNBUILT. Tier rates the LIST, not ownership; the 13 craft
+#: tier: targets are context for WHEN to re-grade, not a reason to grade low. Re-grade after
+#: tier: the manabase is fixed and the deck has been played.
 #: protect: Leyline of Transformation; Lifecraft Engine; Chronicle of Victory; Roaming Throne; Ravenous Robots
 #: archetype: IZZET ROBOT TRIBAL, built on the CHOOSE-A-CREATURE-TYPE lord package rather than
 #: archetype: on cards that say the word "Robot". That distinction is the whole reason this
