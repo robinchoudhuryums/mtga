@@ -43,8 +43,6 @@ Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
 Kinscaer Sentry,Creature — Kithkin Soldier,"First strike, lifelink
 Whenever this creature attacks, you may put a creature card with mana value X or less from your hand onto the battlefield tapped and attacking, where X is the number of attacking creatures you control.",W,Kithkin; Soldier; lifegain; lifelink; first strike; combat,ECL,22,Rare,23,2-drop first strike/lifelink that cheats a creature with MV <= attackers from hand into play attacking,6.0,hand
-Virulent Emissary,Creature — Elf Assassin,"Deathtouch
-Whenever another creature you control enters, you gain 1 life.",G,Elf; Assassin; lifegain; deathtouch; combat; removal,ECL,202,Uncommon,31,,4.5,seed
 Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
 Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,Rare,19,,4.5,hand
 Dubious Delicacy,Artifact — Food,"Flash

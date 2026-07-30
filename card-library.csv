@@ -3937,3 +3937,5 @@ Creature cards in your graveyard have sneak {3}{B}.
 You may cast creature spells from your graveyard using their sneak abilities.",B,Class; graveyard; pump,TMT,67,1
 "Splinter, Radical Rat",Legendary Creature — Mutant Ninja Rat,"If a triggered ability of a Ninja creature you control triggers, that ability triggers an additional time.
 {1}{U}: Target Ninja can't be blocked this turn.",W/U/B,Mutant; Ninja; Rat,TMT,169,1
+Virulent Emissary,Creature — Elf Assassin,"Deathtouch
+Whenever another creature you control enters, you gain 1 life.",G,Elf; Assassin; lifegain; deathtouch; combat; removal,ECL,202,1

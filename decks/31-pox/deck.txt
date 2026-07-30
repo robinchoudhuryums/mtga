@@ -15,6 +15,11 @@
 #: notes: Target 31). Sultai Devotee casts {1}{G} (U is ability-only, not a splash). Now at
 #: notes: 23 lands + ~5 ramp: keepable was 80% at 22 (tool-flagged low) with the T4 land drop
 #: notes: at 53.9%, so the lean-manabase note was acted on rather than left standing.
+#: notes: Virulent Emissary in for Serpent Specialist (crafted, U): same {G} 1/1 deathtouch,
+#: notes: but an ELF — picks up all 3 anthems, Lathril's tap-ten and the 14 Elf payoffs, and
+#: notes: its lifegain trigger feeds South Wind Avatar's drain. Central themes 15->13 as a
+#: notes: RESULT, not a loss: Human was coincidental and counters was already incidental
+#: notes: (engines: 4 enablers, no payoff); both still have 4 copies, just below centrality.
 #: notes: Professor Dellian Fel in for Gran Pulse Ochu: the 0-ability is a REPEATABLE draw,
 #: notes: which role_tally deliberately does not count (single-draw cantrip rule), so the
 #: notes: card-advantage axis still reads 1 — read it as 2-3 on a text read (Dellian's 0,
@@ -53,7 +58,7 @@
 1 Venom, Evil Unleashed (SPM) 71
 1 Shredder, Unrelenting (TMT) 74
 1 Professor Dellian Fel (SOS) 214
-1 Serpent Specialist (MSH) 186
+1 Virulent Emissary (ECL) 202
 1 Sultai Devotee (TDM) 160
 1 Killmonger, Scourge of Wakanda (MSH) 218
 1 Witherbloom, the Balancer (SOS) 245
@@ -75,4 +80,4 @@
 #~ note: applied — Elf engine deepened (owned Uncommon crafts): Morcant's Loyalist (-Melancholic Poet) non-legendary Elf anthem + dies->recur an Elf; Morcant's Eyes (-Lys Alana Informant) upkeep surveil + late {4}{G}{G} sac for X Elf tokens. Adds anthem redundancy + card advantage/recursion.
 #~ note: applied — Killmonger, Scourge of Wakanda (-Putrid Pals): owned. ETB may sac a creature -> destroy target nonland permanent (the noncreature answer the deck lacked; 2->raises noncreature-answer count) AND the sac cost feeds the death-trigger payoffs (Arnyn/South Wind/Serpent Society); +2/+1 with 2+ creatures in yard is self-fed by combat deaths.
 #~ +Izoni, Center of the Web | CRAFT (Rare, R wildcard) — Standard-legal Elf Detective card-advantage engine. Menace; enter/attack collect evidence 4 -> two 2/1 Spiders; sac four tokens: surveil 2, draw 2, gain 2. On-theme card advantage (Elf/tokens/graveyard/sac), but DOWNGRADED to a sidegrade: Professor Dellian Fel now supplies a repeatable draw for 0 wildcards at MV 4 vs Izoni's MV 6 + a Rare. Owned-first rule — skip unless you want a second engine. Note role_tally still reads card-adv 1 because it does not count a single-draw ability. See wishlist Target 31.
-#~ -Serpent Specialist | +Virulent Emissary | CRAFT (Uncommon, U wildcard) — like-for-like 1-mana 1/1 deathtouch, but an ELF: picks up all three anthems ("Other Elves you control get +1/+1"), Lathril's tap-ten and the 14 Elf payoffs, where a Human Snake Villain picks up none. Its "whenever another creature you control enters, you gain 1 life" also fires off every Lathril/Elfsworn/Imperious token, and South Wind Avatar turns each of those into opponent drain. Cut card's Power-up ({3}{G} for two +1/+1 counters) is a one-shot mana sink. screen: KEY.
+#~ note: applied — Virulent Emissary in for Serpent Specialist.
