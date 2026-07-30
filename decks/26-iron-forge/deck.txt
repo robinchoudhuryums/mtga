@@ -1,6 +1,6 @@
 #: name: Iron Forge
 #: format: Standard
-#: tier: A — Izzet artifacts/robots; Iron Man/Ultron bombs + 8 interaction + 4 card advantage on a tightened 2-color base (down from Jeskai). Re-graded B→A: measurable floor is A (solid interaction + card advantage) and the deck adds real bombs the metrics can't see — the earlier B under-rated a coherent 2-color engine.
+#: tier: A — Izzet artifacts/robots; Iron Man/Ultron bombs + 9 interaction + 4 card advantage on a tightened 2-color base (down from Jeskai). Re-graded B→A: measurable floor is A (solid interaction + card advantage) and the deck adds real bombs the metrics can't see — the earlier B under-rated a coherent 2-color engine.
 #: colors: UR
 #: archetype: Izzet (U/R) artifacts + Robot tribal — the finalized playable 60; Iron Man / Ultron payoffs, Dawnsire for removal, The Ten Rings for card advantage. (Trimmed down FROM a Jeskai W/U/R build; the header said Jeskai for several cycles after the white was cut.)
 #: notes: The tuned, legal 60 (promoted from the old 73-card brew, which is archived
@@ -19,6 +19,37 @@
 #: notes: Cut Steel Wrecking Ball as the deck's lowest-power card (5 mana for what Fiery
 #: notes: Annihilation does for 3, second mode duplicating Abrade); interaction 9 -> 8
 #: notes: against a need of 5.
+#: notes: MANABASE FIXED 2026-07 — the deck ran ZERO dual lands (10 Mountain was its only
+#: notes: red source), which was the root cause of 17 sub-90% cast-on-curve rows. -2
+#: notes: Mountain -2 Island, +Riverpyre Verge (the one owned UNTAPPED UR dual) + 2 Stark
+#: notes: Industries + Swiftwater Cliffs: R 10 -> 12, U 12 -> 14, sub-90% rows 17 -> 14,
+#: notes: and both {R}{U} four-drops (Iron Man, Armor Wars) cleared their shortfall note.
+#: notes: Cost: tapped lands 1 -> 4, which `consistency` does NOT price — it models colour
+#: notes: availability only. Riverpyre Verge is the only untapped owned option; Spirebluff
+#: notes: Canal (R craft) is the only way to add untapped fixing.
+#: notes: FIN FANG FOOM RESCUED, not cut. Its copy clause needs an instant/sorcery that
+#: notes: TARGETS an artifact or land, and the deck had ONE situational enabler (Abrade in
+#: notes: its destroy-artifact mode; Fiery Annihilation only with an Equipment to exile),
+#: notes: against 2 instants + 1 sorcery total. Its {2}{R}{R} was also the worst cast-on-
+#: notes: curve in the deck at 53%. Rather than cut a build-around the deck simply wasn't
+#: notes: feeding: +I Am Iron Man (-Retrieve the Esper) and +Price of Freedom (-Oreplate
+#: notes: Pangolin), both OWNED, 0 wildcards. Both are GUARANTEED triggers — I Am Iron Man
+#: notes: targets your own artifact, Price of Freedom reads "artifact OR LAND an opponent
+#: notes: controls" and so can never fizzle. Enablers: 1 situational -> 2 guaranteed + 2
+#: notes: situational. The real payoff is "put two +1/+1 counters": a 3/5 flier becomes 5/7
+#: notes: after one trigger, 7/9 after two, and Krang makes it indestructible.
+#: notes: THE CONVERGENCE: I Am Iron Man animates a NONCREATURE artifact into a 4/4 with
+#: notes: FLYING, which is a nontoken artifact creature — i.e. a Virulent Silencer trigger
+#: notes: for 2 poison off a permanent that wasn't attacking. Point it at The Ten Rings,
+#: notes: Cosmic Cube, Buster Sword, Mjölnir or Technodrome. Iron Man Armor's {2} self-
+#: notes: animate already did this for free.
+#: notes: TWO FIGURES NOT TO MISREAD. (1) Card advantage still reads 4: role_tally
+#: notes: deliberately does not count a single-draw cantrip, so both new cards' "Draw a
+#: notes: card" riders are invisible to the counter. Read it as 4 measured, ~6 on a text
+#: notes: read. (2) central_themes jumped 18 -> 29 and that is a CUTOFF ARTIFACT, not a
+#: notes: synergy gain: cutting the two `counters` cards dropped the dominant theme 14 ->
+#: notes: 12, so _central_themes' 25%-of-max bar fell from 3.50 to 3.00 and ten themes
+#: notes: crossed a LOWERED bar. The deck did not get more synergistic.
 
 # Creatures
 1 Shuri, Wakandan Inventor (MSH) 75
@@ -35,7 +66,6 @@
 1 Metalhead (TMT) 44
 1 Aerial Doombot (MSH) 43
 1 HYDRA Assault Robot (MSH) 137
-1 Oreplate Pangolin (EOE) 150
 1 Machinesmith Automaton (MSH) 144
 1 Weftstalker Ardent (EOE) 169
 1 Fin Fang Foom (MSH) 129
@@ -52,7 +82,8 @@
 
 # Artifacts / Spells
 1 The Ten Rings (MSH) 251
-1 Retrieve the Esper (FIN) 68
+1 I Am Iron Man (MSH) 58
+1 Price of Freedom (TLA) 149
 1 Mouser Foundry (TMT) 96
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 Armor Wars (MSH) 203
@@ -60,12 +91,15 @@
 1 Cosmic Cube (MSH) 245
 1 Dawnsire, Sunstar Dreadnought (EOE) 238
 
-# Lands
+# Lands (24)
 1 Uthros, Titanic Godcore (EOE) 260
 1 Castle Doom (MSH) 263
 1 The Gold Saucer (FIN) 279
-10 Mountain (MSH) 294
-11 Island (MSH) 290
+1 Riverpyre Verge (DFT) 260
+2 Stark Industries (MSH) 272
+1 Swiftwater Cliffs (MOM) 273
+8 Mountain (MSH) 294
+9 Island (MSH) 290
 
 # Flex — parked from the 73-pile / craft options. See: deck.py flex 26
 #~ -Cosmic Cube | +The Walls of Ba Sing Se | OWNED: re-add the 8-mana anchor (all your permanents indestructible) if you want top-end board protection; parked because it partly overlaps Krang
@@ -76,4 +110,6 @@
 #~ +Diamond Pick-Axe | OWNED (salvage from retired 26b pile): {R} indestructible +1/+1 Equipment that makes a Treasure on attack — survives sweepers and ramps/feeds artifact count; highest-ranked pile leftover (suggest #48). ~ sidegrade to the equipment suite if you want a resilient cheap one.
 #~ +Relm's Sketching | OWNED (salvage from retired 26b pile): {2}{U}{U} "create a token copy of target artifact, creature, or land" — copy Iron Man / Ultron / Krang for a 2nd bomb, or a mana rock; flexible value that also feeds artifact-count. Spice/value option. DOWNGRADED 2026-07: its bodies are TOKENS, which Virulent Silencer explicitly ignores, so it now works against the poison axis. Keep it parked.
 #~ note: applied — Virulent Silencer in for Steel Wrecking Ball (craft, U). Second win axis; see the #: notes: block. Moved to the # Creatures section (the add inherited the cut's slot under # Artifacts / Spells) and corrected the #: tier: interaction figure 9 -> 8 plus the stale "Jeskai" archetype header in the same edit.
+#~ note: applied — manabase: -2 Mountain -2 Island, +Riverpyre Verge +2 Stark Industries +Swiftwater Cliffs (all owned, 0 wildcards). R 10->12, U 12->14.
+#~ note: applied — Fin Fang Foom enabler package: I Am Iron Man in for Retrieve the Esper, Price of Freedom in for Oreplate Pangolin (both owned). NOTE this reverses the "the two animate-cantrip tricks" dismissal in the older cut note below — I Am Iron Man now has two reasons to be here that did not exist then (a Foom trigger, and a Virulent Silencer carrier-maker). Price of Freedom was moved to # Artifacts / Spells; it inherited Oreplate Pangolin's slot under # Creatures.
 #~ note: 26b "Full Pile (brew)" retired 2026-07 — the trim held up: updated `suggest --owned` ranks every pile-only leftover OUTSIDE the top 47 owned cards, none a swap-in. Salvage kept above; Sami, Wildcat Captain skipped (W/R — needs a white source the UR base lacks), Bullseye/Wistfulness off-color (B/G), the rest redundant equipment (Goldvein/Super Suit/Mirrormind/Bespoke Bō) or niche (Nanoform/Radiant Lotus/Bender's Waterskin/Broadcast Takeover/the two animate-cantrip tricks).
