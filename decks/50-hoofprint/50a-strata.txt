@@ -42,7 +42,7 @@
 #: archetype: counters, Primeval Bounty gains six. It also lets you play lands off the top.
 #: archetype: THE LAND-MAKERS ARE THE REAL MANA BASE. Overlord of the Hauntwoods creates a land
 #: archetype: token when it enters AND when it attacks; The Earth King fetches a basic for every
-#: archetype: power-4-or-greater attacker; Planar Engineering trades two lands for four; Famished
+#: archetype: power-4-or-greater attacker; Famished
 #: archetype: Worldsire devours lands for counters and then refills them from the top. Loot and
 #: archetype: Icetill Explorer each add a second land drop per turn, which is what turns a
 #: archetype: landfall payoff from once-a-turn into twice.
@@ -73,6 +73,23 @@
 #: notes: counters that is STILL A LAND — a body that Lumra and Grovestrider still count, and
 #: notes: which returns to the battlefield if it dies. It is the one bridge back to the parent
 #: notes: deck's axis, and it is deliberately small.
+#: notes: THE EARTH CRYSTAL IS IN, AND THE THIRD TIME OF ASKING IS THE RIGHT ONE. It was parked
+#: notes: in the parent's flex block twice on the same finding — every cut cost either a creature
+#: notes: or the curve. What changed is the DECK, not the card: this list now runs SEVEN +1/+1
+#: notes: counter sources (Seedship Agrarian, Primeval Bounty, Famished Worldsire, Badgermole
+#: notes: Cub, Ba Sing Se's earthbend, Zanarkand and the Cauldron itself), and the Crystal's
+#: notes: second line doubles every one of them. Primeval Bounty's three counters per
+#: notes: noncreature spell becomes SIX; Ba Sing Se's earthbend 2 becomes 4.
+#: notes: IT ALSO WIDENS THE CAULDRON'S GATE, which is the part that matters most: the Cauldron
+#: notes: only grants its exiled abilities to creatures WITH +1/+1 counters, so doubling every
+#: notes: counter placement is doubling how fast the whole board turns on. The {1} discount on
+#: notes: green spells is a third mode and this deck is entirely green.
+#: notes: MEASURED FREE — the only slot in either deck where it costs nothing. Cutting Planar
+#: notes: Engineering held every axis: below-90 at 0, interaction 5, card advantage 1, protection
+#: notes: 3, avg MV 3.85, 10 early drops and 20 creatures all identical. Planar Engineering was
+#: notes: the right card to lose: "sacrifice two lands, search for four basics" is a net +2 lands
+#: notes: and nothing else, in a deck that already fetches with The Earth King, Spineseeker,
+#: notes: Outcaster Greenblade, Overlord of the Hauntwoods, Loot and Famished Worldsire.
 #: notes: AGATHA'S SOUL CAULDRON IS A COMBO PIECE HERE, NOT A NARROW ARTIFACT — an earlier pass
 #: notes: filed it as "too narrow, needs exiled creatures with activated abilities" and missed
 #: notes: that THIS IS THE DECK THAT FILLS ITS OWN GRAVEYARD. Icetill Explorer mills on every
@@ -129,7 +146,6 @@
 # Land-makers — these are the real mana base
 1 Overlord of the Hauntwoods (DSK) 194
 1 The Earth King (TLA) 172
-1 Planar Engineering (SOS) 158
 1 Spineseeker Centipede (DSK) 199
 1 Outcaster Greenblade (OTJ) 172
 1 Seedship Agrarian (EOE) 204
@@ -155,6 +171,7 @@
 1 Kona, Rescue Beastie (DSK) 187
 1 Sledge-Class Seedship (EOE) 208
 1 Agatha's Soul Cauldron (WOE) 242
+1 The Earth Crystal (FIN) 184
 1 Web of Life and Destiny (SPM) 122
 
 # Trample and the multiplier
