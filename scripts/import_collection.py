@@ -192,12 +192,47 @@ def plan(rows, entries, *, zero_missing=False):
     updated, added, ambiguous = [], [], []
     seen_rows = set()
 
-    def _set(row, n):
-        old = (row.get("Quantity Owned") or "").strip()
-        seen_rows.add(id(row))
-        if old != str(n):
-            updated.append(((row.get("Card Name") or "").strip(), old or "0", str(n)))
-            row["Quantity Owned"] = str(n)
+    # SEVERAL export rows can resolve to ONE library row, and they must SUM.
+    #
+    # A tracker exports one row per PRINTING while the library may hold fewer printings
+    # of that card, so an export listing `2x (M19) 314` + `1x (DOM) 168` against a library
+    # holding only the DOM printing resolves both entries onto that single row. Assigning
+    # each in turn made the LAST one win and silently drop the rest: the row landed on 1
+    # or 2 depending on export order, against a real 3. Order-dependent, and invisible in
+    # the report — the surviving-entry-last case prints one clean "1 -> 2" line and looks
+    # correct. This is the ONLY tool here that may lower a count, so a silent undercount
+    # from it is the worst failure in the ingest subsystem (broad-scan F-01).
+    #
+    # Two passes: accumulate the intended total per row, then write each row ONCE, so
+    # `updated` also reports one net change per row instead of a self-cancelling pair.
+    #
+    # Summing is right for DISTINCT printings and wrong for a repeated one: a tracker that
+    # emits the same (name, set, collector) twice is stating one holding twice, not two
+    # holdings, and summing there would over-count exactly where the old last-wins was
+    # correct. So collapse identical export keys FIRST, taking the max — the same reading
+    # `import_arena` applies to a repeated line — and only then sum across the distinct
+    # printings that remain.
+    deduped, seen_keys = [], {}
+    for qty, name, setc, coll in entries:
+        ek = (_front(name).lower(), setc.lower(), coll.lower())
+        if ek in seen_keys:
+            i = seen_keys[ek]
+            deduped[i] = (max(deduped[i][0], qty), *deduped[i][1:])
+            continue
+        seen_keys[ek] = len(deduped)
+        deduped.append((qty, name, setc, coll))
+    entries = deduped
+
+    totals, order = {}, []
+    new_idx, new_order = {}, []
+
+    def _want(row, n):
+        k = id(row)
+        seen_rows.add(k)
+        if k not in totals:
+            totals[k] = [row, 0]
+            order.append(k)
+        totals[k][1] += n
 
     for qty, name, setc, coll in entries:
         # Full name first, then the front face — `lib.owned_qty`'s rule.
@@ -207,12 +242,12 @@ def plan(rows, entries, *, zero_missing=False):
         exact = next((by_print[(a, setc.lower(), coll.lower())] for a in aliases
                       if (a, setc.lower(), coll.lower()) in by_print), None)
         if exact is not None:
-            _set(exact, qty)
+            _want(exact, qty)
             continue
         same_name = next((by_name[a] for a in aliases if by_name.get(a)), [])
         nl = aliases[0]
         if len(same_name) == 1:
-            _set(same_name[0], qty)
+            _want(same_name[0], qty)
         elif len(same_name) > 1:
             # Deduped by name: a name-only export carries one row per printing, so the
             # same unresolvable name would otherwise be reported once per copy.
@@ -225,7 +260,25 @@ def plan(rows, entries, *, zero_missing=False):
         else:
             # A genuinely new card is stored under its FRONT name, the convention every
             # ownership join here expects (reconcile_crafts.py / app.py do the same).
-            added.append((_front(name), setc, coll, qty))
+            # Keyed and summed for the same reason the library rows are: two export lines
+            # naming the SAME new printing would otherwise append two rows for it, which
+            # is a duplicate (Card Name, Set Code, Collector #) — an INV-01 break written
+            # by the importer itself.
+            ak = (_front(name).lower(), setc.lower(), coll.lower())
+            if ak in new_idx:
+                new_idx[ak][3] += qty
+            else:
+                new_idx[ak] = [_front(name), setc, coll, qty]
+                new_order.append(ak)
+
+    # Apply the accumulated totals — one write, and one `updated` line, per row.
+    for k in order:
+        row, n = totals[k]
+        old = (row.get("Quantity Owned") or "").strip()
+        if old != str(n):
+            updated.append(((row.get("Card Name") or "").strip(), old or "0", str(n)))
+            row["Quantity Owned"] = str(n)
+    added = [tuple(new_idx[k]) for k in new_order]
 
     zeroed = []
     for r in rows:

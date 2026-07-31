@@ -271,6 +271,55 @@ Both open code follow-ons from the P6–P8 block are now closed. Full block:
 **767 tests pass** (+12). `check_all` green, all ten gates OK. Regression scenarios 2 and
 3 walked and PASS.
 
+## Session 2026-07-31 — ownership counting + name keys (/broad-implement)
+
+Five findings from a `/broad-scan`, implemented and gated. Full block:
+`.cycle/blocks/2026-07-ownership-and-name-keys-broad-implement.md`.
+
+One theme, and it is G-63's, one layer down: **the front-face rule is applied per call
+site, so every new index that keys off a pool-shaped file re-introduces it.** Three of
+the five were that shape.
+
+- **F-14** `load_rarities` was the ONLY reference-table loader without a DFC front-face
+  alias (the other five have it), because it reads the pool, which keys only the full
+  `Front // Back` name. 47 roster names resolved to `""`, `_power_seed` fell to its
+  default floor, and every mythic/rare DFC sorted UP the cut list — Ojer Axonil's
+  `_cuts_power_adj` went −0.70 where the real mythic gives +0.17, so the nudge changed
+  SIGN. Aliased in a second pass so a real card named `Front` can never be shadowed.
+- **F-02** `_multiset` was not front-face aware, so `verify` reported phantom drift on an
+  identical deck and `sync --apply` would have rewritten a stored `Front // Back` name to
+  the bare front — P8's un-importable line, re-introduced from the other side, past a
+  green INV-04 check. New `_ms_key` / `_ms_display`; `reconcile_lines` and the dashboard's
+  client-side `parseLine` repointed at the same key.
+- **F-03** `card.py` read owned quantity off ONE printing — on the surface G-01 makes the
+  mandated pre-grading read. Rugged Highlands showed 1 against a real 3.
+- **F-01** `import_collection.plan()` assigned rather than accumulated, so several export
+  printings of one card collapsed onto one row and the last one won, order-dependently.
+  Its verifier (`verify_ingest --exact`) had the mirror bug and now sums per card. Both
+  halves had to move or the authoritative route has no working check.
+- **F-04** `revert` picked the newest `.bak` by mtime, but `copy2` copies the SOURCE's
+  mtime — so after one revert the ordering inverts and the next revert restored the state
+  already discarded. `lib.latest_backup` selects on the creation stamp in the name.
+
+**802 tests pass** (+35), `check_all` green, all twelve gates OK. Regression scenarios 1,
+2 and 4 walked and PASS (4 headless via Flask's test client — it is F-04's acceptance
+path); 3 not applicable, 5–8 are the browser/perceptual checks.
+
+**Where I left off.** Committed and pushed; nothing half-done. Open:
+1. **F-05 is confirmed live and was left out of scope** — `import_arena`'s `max()` is
+   per-PRINTING while ownership sums across printings, so re-importing the same physical
+   playset under a different printing inflates the count. Reproduced while walking
+   Scenario 1. Its docstring promises the opposite.
+2. Documentation updates the block lists — the tests file count (16 → 17), G-63 gaining
+   its fifth and sixth members, `card.py` joining the fungibility rule's enforcement list,
+   and the README's `import_collection` / `verify_ingest` semantics. Run `/sync-docs`.
+3. The committed `dashboard.html` still carries the OLD client-side key; Pages rebuilds it
+   on push to `main`. Not regenerated here to keep the diff free of ~1.2 MB of data churn.
+4. Everything else from the scan (F-06…F-13, F-15…F-23) is unimplemented by scope. The
+   highest-value remaining are F-15 (a dead no-op fallback in `reconcile_crafts`) and
+   F-23 (the ledger has reached the pre-registered n=100 re-test threshold and four docs
+   still quote the n=52 figures).
+
 ## Decided AGAINST (2026-07-31)
 - Adding a `Layout` column to `card-mana.csv` to mark modal-vs-transform. It would have
   let `load_existing` re-fetch exactly the stale rows, but the 4-column header is
@@ -311,3 +360,4 @@ Both open code follow-ons from the P6–P8 block are now closed. Full block:
   "described by the tag vocabulary at all". Reporting the split is the fix.
 - Promoting decks 41 or 42a to tier A. Both sit one band below an A floor by a
   written, still-true argument; the guard permits that and does not nag.
+

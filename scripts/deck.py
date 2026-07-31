@@ -420,7 +420,25 @@ def load_rarities():
     `rank_cut_candidates` calls it for the power co-signal, so a full-pool re-parse ran
     for every deck a roster sweep touched. It was **85% of `deck.py cuts`' runtime**
     (0.69s of 0.81s) and, being invisible in any single command's wall clock, it only
-    surfaced when a roster-wide gate made the per-deck cost add up."""
+    surfaced when a roster-wide gate made the per-deck cost add up.
+
+    ANSWERS FOR A DFC'S FRONT FACE TOO, like every other reference-table loader
+    (`load_card_data`, `load_mana`, `load_legalities`, `load_card_meta`,
+    `_pool_rotation_index`). This one read the POOL, which keys only the full
+    `Front // Back` name, and had no alias — so 47 distinct names across the live roster
+    resolved to `""`, which is not an error anywhere: `cut_keep_score` hands the empty
+    string to `_power_seed`, which falls to its default floor. Every mythic/rare DFC was
+    therefore seeded as low-rarity and sorted UP the cut list — Ojer Axonil's
+    `_cuts_power_adj` came out −0.70 where the real mythic gives +0.17, so the sign of
+    the nudge flipped and the model treated a bomb as more cuttable. This is the SAME
+    bug the note in `cut_keep_score` records as fixed for the rarity word-vs-letter
+    shape (F-01); the front-face shape was never covered (broad-scan F-14).
+
+    The alias is a SECOND PASS on purpose. Adding `out.setdefault(front, …)` inside the
+    row loop would let a `Front // Back` row seen early shadow a real, distinct card
+    named `Front` seen later — `"Life"` is a card as well as the front of
+    `"Life // Death"`, the same trap `build_mana._front_face_retry` guards. Aliasing
+    only after every real row is in the dict makes the result order-independent."""
     out = {}
     if not os.path.exists(POOL_CSV):
         return out
@@ -430,6 +448,10 @@ def load_rarities():
             rar = (r.get("Rarity") or "").strip().lower()
             if n and rar:
                 out.setdefault(n, WC_LETTER.get(rar, "?"))
+    for n, letter in list(out.items()):
+        front = n.split(" // ")[0]
+        if front != n:
+            out.setdefault(front, letter)
     return out
 
 
@@ -728,16 +750,54 @@ def cmd_check(args):
     return 1 if (missing or short) else 0
 
 
+def _ms_key(name):
+    """The canonical comparison key for a card NAME: lowercased, FRONT FACE only.
+
+    Every other name-facing join in this repo resolves `Front // Back` to the front
+    (`lib.owned_qty`, `load_card_data`, `load_mana`, `load_legalities`,
+    `_pool_rotation_index`, `_printing_of`, `_printing_index`). `_multiset` was the
+    exception, and it is the key behind `verify` / `sync` / `diff` / the dashboard's
+    stale-check — the commands whose whole job is matching a pasted list against a
+    stored one BY NAME. So a deck file storing `Ojer Axonil, Deepest Might // Temple of
+    Power` against an export naming just the front read as a real change:
+
+        +1  Ojer Axonil, Deepest Might
+        -1  Ojer Axonil, Deepest Might // Temple of Power
+
+    `verify` exited non-zero on an identical deck, and `sync --apply` would have
+    "repaired" the file by replacing the full name with the bare front — the exact
+    un-importable line P8 fixed `_printing_of` to stop writing, re-introduced from the
+    other side, past a green INV-04 check (the copy count is unchanged). 14 deck files
+    carry a `Front // Back` line. Fifth member of the G-63 class (broad-scan F-02)."""
+    return (name or "").strip().lower().split(" // ")[0]
+
+
+def _ms_display(existing, incoming):
+    """Pick the display name to keep when two spellings of one card meet.
+
+    FIRST-SEEN wins (the long-standing rule audit F4 established), with ONE exception:
+    the full `Front // Back` form beats a bare front face. A bare front name parses and
+    passes INV-04 but fails an Arena import (P8), so when either spelling knows the
+    two-faced name it is the one that belongs in a deck file."""
+    if existing is None:
+        return incoming
+    if " // " in (incoming or "") and " // " not in existing:
+        return incoming
+    return existing
+
+
 def _multiset(cards):
-    """{name_lower: (display_name, total_qty)} — keyed case-insensitively (like
-    every other command) so the SAME card spelled with different casing across two
-    files isn't reported as a spurious −N / +N change (audit F4). The first-seen
-    spelling is kept for display."""
+    """{name_key: (display_name, total_qty)} — keyed case-insensitively (like every
+    other command) so the SAME card spelled with different casing across two files
+    isn't reported as a spurious −N / +N change (audit F4), and FRONT-FACE normalized
+    (see `_ms_key`) so the two legitimate spellings of a double-faced card aren't
+    either. The fullest spelling seen is kept for display, so a reconcile that has to
+    write the line back writes the importable name."""
     m = {}
     for q, n, s, c in cards:
-        nl = n.lower()
-        disp, cur = m.get(nl, (n, 0))
-        m[nl] = (disp, cur + q)
+        nl = _ms_key(n)
+        disp, cur = m.get(nl, (None, 0))
+        m[nl] = (_ms_display(disp, n), cur + q)
     return m
 
 
@@ -5861,7 +5921,13 @@ def reconcile_lines(lines, target, printings):
     its line dropped, and genuinely new cards are appended after the last card line — so
     `# Creatures` / `# Lands` comments, the `#:` header and `#~` flex lines all survive.
     A card split across two printing lines has its whole quantity assigned to the first
-    and the rest dropped, matching `_multiset`'s printing-fungible view."""
+    and the rest dropped, matching `_multiset`'s printing-fungible view.
+
+    Existing lines are matched on `_ms_key` — the SAME front-face-normalized key
+    `_multiset` builds `target` with. Keying the file side on the raw name while the
+    target side is normalized would make every `Front // Back` line look absent: its
+    line would be dropped and a fresh one appended, silently rewriting the stored
+    spelling and moving the card out of its `# section` (broad-scan F-02)."""
     remaining = {nl: q for nl, (_disp, q) in target.items()}
     out, last_card = [], -1
     for ln in lines:
@@ -5869,7 +5935,7 @@ def reconcile_lines(lines, target, printings):
         if nm is None:
             out.append(ln)
             continue
-        nl = nm.lower()
+        nl = _ms_key(nm)
         want = remaining.pop(nl, None)
         if not want:
             continue                      # dropped from the deck (or a consumed 2nd line)
@@ -5885,6 +5951,11 @@ def reconcile_lines(lines, target, printings):
         if not q:
             continue
         disp, setc, coll = printings.get(nl, (target[nl][0], "", ""))
+        # `printings` is keyed front-face too, and for a DFC the LIBRARY row wins there —
+        # and the library stores the front name alone. Writing that bare name back is the
+        # P8 failure (parses, passes INV-04 and `legal`, fails an Arena import), so let
+        # the fuller of the two spellings decide, exactly as `_multiset` does.
+        disp = _ms_display(disp, target[nl][0])
         line = f"{q} {disp}"
         if setc:
             line += f" ({setc})" + (f" {coll}" if coll else "")

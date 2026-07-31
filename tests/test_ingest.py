@@ -515,3 +515,53 @@ class TestCollectionPlan:
         rows = [self._row("Shock", "M21", "159", "2"), self._row("Shock", "DAR", "12", "2")]
         r = ic.plan(rows, [(3, "Shock", "", "")])
         assert r["zeroed"] == []
+
+    def test_several_export_printings_SUM_onto_one_library_row(self):
+        """A tracker exports one row per PRINTING while the library may hold fewer of
+        them, so both entries resolve to the same row. Assigning each in turn made the
+        LAST one win and silently drop the rest — an undercount from the one tool that
+        may lower a count, and the report looked clean (broad-scan F-01)."""
+        rows = [self._row("Llanowar Elves", "DOM", "168", "1")]
+        r = ic.plan(rows, [(2, "Llanowar Elves", "M19", "314"),
+                           (1, "Llanowar Elves", "DOM", "168")])
+        assert rows[0]["Quantity Owned"] == "3"
+        assert r["updated"] == [("Llanowar Elves", "1", "3")]   # one NET line, not a pair
+
+    def test_the_sum_does_not_depend_on_export_order(self):
+        for entries in ([(2, "Llanowar Elves", "M19", "314"), (1, "Llanowar Elves", "DOM", "168")],
+                        [(1, "Llanowar Elves", "DOM", "168"), (2, "Llanowar Elves", "M19", "314")]):
+            rows = [self._row("Llanowar Elves", "DOM", "168", "1")]
+            ic.plan(rows, entries)
+            assert rows[0]["Quantity Owned"] == "3", entries
+
+    def test_summing_does_not_break_a_genuine_DECREASE(self):
+        """The whole point of the tool still has to work: one entry, one row, count down."""
+        rows = [self._row("Shock", qty="4")]
+        ic.plan(rows, [(1, "Shock", "M21", "1")])
+        assert rows[0]["Quantity Owned"] == "1"
+
+    def test_a_REPEATED_printing_is_not_summed(self):
+        """Summing is right for DISTINCT printings and wrong for a repeated one: a
+        tracker emitting the same (name, set, collector) twice is stating one holding
+        twice, not two holdings. Identical export keys collapse on max first — the
+        reading `import_arena` applies to a repeated line — so the accumulation fix
+        can't over-count where the old last-wins was correct."""
+        rows = [self._row("Llanowar Elves", "DOM", "168", "1")]
+        ic.plan(rows, [(2, "Llanowar Elves", "DOM", "168"),
+                       (2, "Llanowar Elves", "DOM", "168")])
+        assert rows[0]["Quantity Owned"] == "2"
+
+    def test_two_lines_for_one_NEW_printing_do_not_append_two_rows(self):
+        """Two rows with the same (Card Name, Set Code, Collector #) is a duplicate
+        printing — an INV-01 break, written by the importer itself."""
+        r = ic.plan([], [(1, "Brand New", "XXX", "9"), (2, "Brand New", "XXX", "9")])
+        assert r["added"] == [("Brand New", "XXX", "9", 2)]
+
+    def test_distinct_new_printings_stay_distinct(self):
+        r = ic.plan([], [(1, "Brand New", "XXX", "9"), (2, "Brand New", "YYY", "4")])
+        assert r["added"] == [("Brand New", "XXX", "9", 1), ("Brand New", "YYY", "4", 2)]
+
+    def test_a_row_that_received_a_summed_total_is_not_also_zeroed(self):
+        rows = [self._row("Shock", "M21", "1", "4")]
+        r = ic.plan(rows, [(2, "Shock", "M21", "1"), (1, "Shock", "M20", "5")])
+        assert r["zeroed"] == [] and rows[0]["Quantity Owned"] == "3"

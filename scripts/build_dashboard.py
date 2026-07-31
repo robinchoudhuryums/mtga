@@ -1695,7 +1695,12 @@ renderWishlist(); renderSim();
     if (line.startsWith('#') || line.startsWith('//')) return null;   // comment, not a card
     const m = line.match(/^(\d+)\s*[xX]?\s+(.+?)(?:\s+\(([^)]+)\)(?:\s+\S+)?)?$/);
     if (!m) return null; const name = m[2].trim(); if (!name) return null;
-    return {nl:name.toLowerCase(), disp:name, qty:parseInt(m[1],10)}; }
+    // Front-face normalized, mirroring deck._ms_key. The stored side of this compare is
+    // deck._multiset (serialized into d.cards), so keying the pasted side on the raw name
+    // would report a phantom +1/-1 for every `Front // Back` card whose two legitimate
+    // spellings differ between Arena and the repo (broad-scan F-02). 14 deck files carry
+    // one. Any change to the key belongs on BOTH sides, like match_paste's sort key.
+    return {nl:name.toLowerCase().split(' // ')[0], disp:name, qty:parseInt(m[1],10)}; }
   function splitDecks(text){ const segs = []; let cur = null, started = false; for (const ln of text.split(/\r?\n/)){ const t = ln.trim(); if (/^deck\s*$/i.test(t)){ cur = []; segs.push(cur); started = true; continue; } if (SECTION.test(t)) continue; if (!started){ cur = []; segs.push(cur); started = true; } cur.push(ln); } return segs.filter(s => s.length); }
   function multiset(lines){ const m = {}; for (const ln of lines){ const p = parseLine(ln); if (!p) continue; if (m[p.nl]) m[p.nl][1] += p.qty; else m[p.nl] = [p.disp, p.qty]; } return m; }
   function diffSets(pasted, stored){ const names = new Set([...Object.keys(pasted), ...Object.keys(stored)]); let added = 0, removed = 0; const diffs = []; for (const nl of names){ const p = pasted[nl]?pasted[nl][1]:0, s = stored[nl]?stored[nl][1]:0; const disp = (pasted[nl]&&pasted[nl][0]) || (stored[nl]&&stored[nl][0]) || nl; if (p > s){ added += p-s; diffs.push({sign:'+', qty:p-s, name:disp}); } else if (s > p){ removed += s-p; diffs.push({sign:'-', qty:s-p, name:disp}); } } diffs.sort((a,b) => a.sign===b.sign ? a.name.localeCompare(b.name) : (a.sign==='-'?-1:1)); return {added, removed, diffs}; }

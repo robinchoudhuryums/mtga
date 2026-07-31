@@ -102,30 +102,61 @@ def _library_key(names, name):
     return front if front in names else None
 
 
+def _row_key(r):
+    """The LIBRARY ROW a result belongs to — its resolved key, else its own name. The one
+    identity `verify` sums a paste on and `report` dedupes by, so the two can't disagree
+    about which lines describe the same card."""
+    return r["key"] or r["name"].strip().lower()
+
+
 def verify(text, *, exact=False, include_basics=False, lib=None, mana=_UNSET):
     """(results, warnings) — one result dict per pasted line.
 
-    Each result: {qty, name, owned, key, present, enough, has_mana, basic}.
-    Pure over its inputs so the report and the tests read the same data.
+    Each result: {qty, pasted, name, owned, key, present, enough, has_mana, basic}.
+    `qty` is THIS line's quantity; `pasted` is the total across every line resolving to
+    the same library row. Pure over its inputs so the report and the tests read the same
+    data.
+
+    The quantity check compares owned against `pasted`, not `qty`, because the two sides
+    are counted at different granularities: a tracker exports one line per PRINTING while
+    `library_index` (and `lib.owned_qty`, and every ownership join in the repo) SUMS
+    copies across printings. Comparing a summed total against one line's share made
+    `--exact` structurally unable to pass a correct multi-printing import — `2x (M19)` +
+    `1x (DOM)` against a correctly-stored 3 reported both lines wrong — and, in the
+    default lower-bound mode, let a real shortfall hide: owned 2 against lines of 2 and 1
+    passed both `>=` tests while the paste claimed 3. This is the read half of the
+    accumulation fix in `import_collection.plan` (broad-scan F-01); the two must agree
+    about what a card's quantity MEANS or the authoritative route has no working check.
     """
     entries, warnings = parse(text)
     quantities, names = lib if lib is not None else library_index()
     known_mana = mana_names() if mana is _UNSET else mana
 
+    # Sum the paste per LIBRARY ROW first — keyed the way the library resolves the name
+    # (full, else DFC front), so two spellings of one card also land on one total. An
+    # unresolvable name keys on itself, so absent cards still report their own quantity.
+    totals = {}
+    for qty, name, _set, _cn in entries:
+        if name.strip().lower() in BASICS and not include_basics:
+            continue
+        k = _library_key(names, name) or name.strip().lower()
+        totals[k] = totals.get(k, 0) + qty
+
     results = []
     for qty, name, _set, _cn in entries:
         basic = name.strip().lower() in BASICS
         if basic and not include_basics:
-            results.append({"qty": qty, "name": name, "owned": None, "key": None,
-                            "present": True, "enough": True, "has_mana": True,
-                            "basic": True})
+            results.append({"qty": qty, "pasted": qty, "name": name, "owned": None,
+                            "key": None, "present": True, "enough": True,
+                            "has_mana": True, "basic": True})
             continue
         key = _library_key(names, name)
         have = owned_qty(quantities, name)
+        pasted = totals.get(key or name.strip().lower(), qty)
         results.append({
-            "qty": qty, "name": name, "owned": have, "key": key,
+            "qty": qty, "pasted": pasted, "name": name, "owned": have, "key": key,
             "present": key is not None,
-            "enough": (have == qty) if exact else (have >= qty),
+            "enough": (have == pasted) if exact else (have >= pasted),
             # Unknown rather than False when card-mana.csv is absent — that is a
             # different failure (INV-03) and saying "no mana row" per card would
             # misattribute it to the ingest.
@@ -166,11 +197,26 @@ def report(results, warnings, *, exact=False, mana_missing=False):
               "against the export.\n")
 
     if short:
+        # Deduped by library row: several pasted PRINTINGS of one card share ONE owned
+        # total, so reporting per line would name the same card once per printing and
+        # invite the reader to add the shortfalls up.
+        lines_for = {}
+        for r in results:
+            lines_for[_row_key(r)] = lines_for.get(_row_key(r), 0) + 1
+        seen_short, uniq = set(), []
+        for r in short:
+            if _row_key(r) not in seen_short:
+                seen_short.add(_row_key(r))
+                uniq.append(r)
+        short = uniq
         word = "does not equal" if exact else "is below"
         print(f"✗ {len(short)} card(s) present but the owned count {word} what you "
               f"pasted:")
         for r in short:
-            print(f"    {r['name']}: library has {r['owned']}, paste said {r['qty']}")
+            n_lines = lines_for.get(_row_key(r), 1)
+            note = f" (summed over {n_lines} pasted printings)" if n_lines > 1 else ""
+            print(f"    {r['name']}: library has {r['owned']}, paste said "
+                  f"{r['pasted']}{note}")
         if not exact:
             print("  A deck-dump import takes max(existing, line), so a lower count "
                   "here means the line never applied.")

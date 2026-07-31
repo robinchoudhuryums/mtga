@@ -92,6 +92,9 @@ _EXCLUDED = {
     ("deck", "_SQUASH_RE"): "hand-typed card NAME normalization (punctuation-insensitive "
                             "match key), not card text; unit-tested in "
                             "test_deck.py::TestNameResolution",
+    ("lib", "_BAK_STAMP_RE"): "`.bak` FILENAME stamp syntax (the creation timestamp "
+                              "backup_path embeds, read back by latest_backup), not card "
+                              "text; unit-tested in test_lib.py::TestBackupSelection",
 }
 
 

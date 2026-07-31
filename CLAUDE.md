@@ -36,7 +36,12 @@ docs. This file is the source of truth for the workflow commands in
   an interrupted or empty-result write can't truncate the source of truth (audit
   F3/F5). `.bak` names come from one collision-free, sort-safe helper so "newest"
   is unambiguous (audit F22); readers that need the latest (e.g. `app.py revert`)
-  select by mtime. Pass `backup=False` only when writing a scratch temp the caller
+  **must use `lib.latest_backup()`, which selects on the CREATION stamp in the name —
+  never on mtime.** Backups are made with `shutil.copy2`, which copies the SOURCE's
+  mtime, so a `.bak`'s mtime is when its *contents* were written, not when the backup
+  was taken; the two orders diverge as soon as anything restores an old file, and a
+  revert→save→revert then restored the state the first revert had discarded
+  (broad-scan F-04). Pass `backup=False` only when writing a scratch temp the caller
   promotes itself.
 - **`card-library.csv` is the owned inventory** and stays compatible with the
   companion Google Sheet (fixed 8-column header). Derived/reference data lives

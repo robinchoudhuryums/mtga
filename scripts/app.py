@@ -63,7 +63,8 @@ except ModuleNotFoundError:
 import deck as deckmod
 import scryfall
 from scryfall import ScryfallUnavailable
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, write_rows, atomic_write, backup_path, card_colors
+from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, write_rows, atomic_write, backup_path,
+                 latest_backup as backup_path_latest, card_colors)
 from validate import validate
 
 MANIFEST_PATH = os.path.join(REPO_ROOT, "image-manifest.json")
@@ -568,9 +569,14 @@ def revert():
             if f.startswith(base + ".") and f.endswith(".bak")]
     if not baks:
         return jsonify(ok=False, errors=["No backup to revert to yet — nothing has been saved."]), 409
-    # Newest by mtime, not lexical name — robust to any legacy/mixed .bak naming (F22).
-    newest_base = max(baks, key=lambda f: os.path.getmtime(os.path.join(d, f)))
-    newest = os.path.join(d, newest_base)
+    # Newest by the CREATION stamp in the name, via the shared `lib.latest_backup`. This
+    # used to select on mtime, which is wrong for a file made by `shutil.copy2`: copy2
+    # copies the SOURCE's mtime, so after one revert (which restores an old-mtime file)
+    # the next save's backup carries that old mtime and sorts before newer ones — and the
+    # revert after that restored the very state the first revert discarded (broad-scan
+    # F-04). `latest_backup` still falls back to mtime for unstamped legacy names.
+    newest = backup_path_latest([os.path.join(d, f) for f in baks])
+    newest_base = os.path.basename(newest)
     buf = io.StringIO()
     with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
         rc = validate(newest)

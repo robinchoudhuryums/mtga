@@ -784,10 +784,86 @@ class TestRoleTally:
         assert deck._interaction_count(cards, self.CD) == deck.role_tally(cards, self.CD)["interaction"]
 
 
+class TestRarityLoader:
+    """Every reference-table loader answers for a DFC's FRONT face — except this one,
+    which reads the POOL (keyed only by the full `Front // Back` name) and had no alias.
+    47 roster names resolved to "", `_power_seed` fell to its default floor, and every
+    mythic/rare DFC was seeded as low-rarity and sorted UP the cut list; Ojer Axonil's
+    `_cuts_power_adj` came out -0.70 against a real +0.17, so the nudge changed SIGN
+    (broad-scan F-14)."""
+
+    def _pool(self, tmp_path, rows):
+        p = tmp_path / "pool.csv"
+        p.write_text("Card Name,Rarity\n" + "".join(f"{n},{r}\n" for n, r in rows))
+        return str(p)
+
+    def test_a_dfc_resolves_by_its_front_face(self, tmp_path, monkeypatch):
+        monkeypatch.setattr(deck, "POOL_CSV",
+                            self._pool(tmp_path, [("Ojer Axonil // Temple of Power", "mythic")]))
+        rar = deck.load_rarities()
+        assert rar["ojer axonil // temple of power"] == "M"
+        assert rar["ojer axonil"] == "M"          # the deck-file spelling
+
+    def test_a_real_card_is_never_shadowed_by_a_front_face_alias(self, tmp_path, monkeypatch):
+        """`Life` is a card as well as the front of `Life // Death`. Aliasing inside the
+        row loop would let whichever came first win; the alias pass runs after every real
+        row is in, so the result is order-independent."""
+        for order in ([("Life // Death", "uncommon"), ("Life", "rare")],
+                      [("Life", "rare"), ("Life // Death", "uncommon")]):
+            monkeypatch.setattr(deck, "POOL_CSV", self._pool(tmp_path, order))
+            deck.load_rarities.cache_clear()
+            assert deck.load_rarities()["life"] == "R", order
+
+    def test_every_roster_deck_card_now_prices(self, tmp_path):
+        """The measured symptom: 47 distinct deck-file names had no rarity at all."""
+        rar = deck.load_rarities()
+        missing = {n for d in deck.roster_decks()
+                   for _q, n, _s, _c in deck.parse_deck_file(d["path"])[1]
+                   if n.lower() not in deck.BASICS and n.lower() not in rar}
+        assert missing == set(), sorted(missing)[:8]
+
+
 class TestMultisetAndDelta:
     def test_multiset_case_insensitive_sums(self):
         ms = deck._multiset([(2, "Shock", "", ""), (1, "shock", "", "")])
         assert ms == {"shock": ("Shock", 3)}  # first spelling kept
+
+    def test_multiset_normalizes_a_dfc_to_its_front_face(self):
+        """The two legitimate spellings of a two-faced card are ONE card. Keying on the
+        raw name made `verify` report a phantom +1/-1 on an identical deck and would have
+        had `sync --apply` rewrite the stored full name to the bare front — the
+        un-importable line P8 fixed `_printing_of` to stop writing (broad-scan F-02)."""
+        ms = deck._multiset([(1, "Ojer Axonil, Deepest Might // Temple of Power", "", ""),
+                             (1, "Ojer Axonil, Deepest Might", "", "")])
+        assert list(ms) == ["ojer axonil, deepest might"]
+        assert ms["ojer axonil, deepest might"][1] == 2
+
+    def test_multiset_keeps_the_IMPORTABLE_spelling(self):
+        """First-seen wins (audit F4) EXCEPT that the full `Front // Back` form beats a
+        bare front face, in either order — that name is what a deck file must carry."""
+        front_first = deck._multiset([(1, "Ojer Axonil, Deepest Might", "", ""),
+                                      (1, "Ojer Axonil, Deepest Might // Temple of Power", "", "")])
+        full_first = deck._multiset([(1, "Ojer Axonil, Deepest Might // Temple of Power", "", ""),
+                                     (1, "Ojer Axonil, Deepest Might", "", "")])
+        for ms in (front_first, full_first):
+            assert ms["ojer axonil, deepest might"][0] == \
+                "Ojer Axonil, Deepest Might // Temple of Power"
+
+    def test_two_spellings_of_one_card_are_not_drift(self):
+        stored = deck._multiset([(1, "Ojer Axonil, Deepest Might // Temple of Power", "", "")])
+        pasted = deck._multiset([(1, "Ojer Axonil, Deepest Might", "", "")])
+        added, removed, diffs = deck._ms_diff(pasted, stored)
+        assert (added, removed, diffs) == (0, 0, [])
+
+    def test_reconcile_keeps_a_dfc_line_when_the_paste_names_the_front(self):
+        """The write half: the stored line must survive with its printing and its place
+        in the file, not be dropped and re-appended under the front-face spelling."""
+        lines = ["# Creatures",
+                 "1 Ojer Axonil, Deepest Might // Temple of Power (LCI) 158",
+                 "2 Shock (M21) 159"]
+        target = deck._multiset([(1, "Ojer Axonil, Deepest Might", "", ""),
+                                 (2, "Shock", "", "")])
+        assert deck.reconcile_lines(lines, target, {}) == lines
 
     def test_ms_delta(self):
         prev = deck._multiset([(2, "A", "", ""), (1, "B", "", "")])
