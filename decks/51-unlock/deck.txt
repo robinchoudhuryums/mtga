@@ -3,22 +3,32 @@
 #: colors: U
 #: plan: control
 #: tier: B — PROVISIONAL, one band below the measurable floor, which still reads A on
-#: tier: interaction 10 plus card advantage 10 at a 3.80 curve. The list was rebalanced after
-#: tier: the first grade: five of the cheapest and most marginal interaction pieces (Splash
-#: tier: Portal, Calamitous Tide, Dazzling Denial, Bounce Off, Sokka's Haiku) became five
-#: tier: threats-or-engines, so interaction 14 -> 10 and card advantage 9 -> 10 while the
-#: tier: clock roughly doubled. The interaction that remains is still the best-shaped on the
-#: tier: roster: 9 of 10 instant-speed and SEVEN answer a noncreature permanent, against a
-#: tier: family average closer to three.
+#: tier: interaction 9 plus card advantage 8 at a 3.74 curve. The list was rebalanced after
+#: tier: the first grade: the cheapest and most marginal interaction pieces (Splash Portal,
+#: tier: Calamitous Tide, Dazzling Denial, Bounce Off, Sokka's Haiku, Spell Snare) became
+#: tier: threats and engines, so interaction 14 -> 9 while the clock roughly doubled. The
+#: tier: interaction that remains is still the best-shaped on the roster: nearly all of it is
+#: tier: instant-speed and most of it answers a noncreature permanent, against a family
+#: tier: average closer to three.
 #: tier: WEAKNESS 1 IS LARGELY GONE. The deck no longer wins on five cards. Stormkeld Prowler,
 #: tier: Ghostly Keybearer and Krang & Shredder join Tolarian Terror x2, Krang Utrom Warlord,
 #: tier: The Dawning Archaic and Kiora — nine threats, and creatures 8 -> 12. Prowler in
 #: tier: particular is a two-drop that grows off the top end the deck was already running.
 #: tier: WEAKNESS 2 IS PARTLY ADDRESSED, in the way blue actually can. There is still no ramp
 #: tier: below four mana (Gilded Lotus {5}, The Eternity Elevator {5}, Matzalantli {3}), but
-#: tier: Case of the Ransacked Lab shaves {1} off every instant and sorcery and The Water
-#: tier: Crystal shaves {1} off every blue spell, which is acceleration by another route. 12
-#: tier: early drops is still low for a deck with no sweeper, and that is the live risk.
+#: tier: The Water Crystal shaves {1} off every blue spell — 29 of the 35 nonland cards — and
+#: tier: Keys to the House turns Fractured Realm's {5}{U}{U} door into four total mana split
+#: tier: across two turns. 13 early drops is still low for a deck with no sweeper, and that
+#: tier: is the live risk.
+#: tier: THERE IS NOW A SECOND WAY TO WIN, and it costs two slots because the payoff was
+#: tier: already in the deck. The Water Crystal's "if an opponent would mill, they mill that
+#: tier: many plus four" was earning its slot as a cost reducer; Riverchurn Monument and
+#: tier: Scrabbling Skullcrab convert it into a clock. Riverchurn's {1}, {T} mills 6 a turn
+#: tier: and its Exhaust mode mills the opponent's whole graveyard plus four; Skullcrab mills
+#: tier: 6 on every enchantment entering and every Room fully unlocked, DOUBLED by Fractured
+#: tier: Realm because Eerie is a triggered ability. Riverchurn's are ACTIVATED and are not
+#: tier: doubled. Without the Crystal the mill package is a 2-a-turn nuisance, so read it as
+#: tier: an inevitability plan that needs one specific card, not a second archetype.
 #: tier: WHAT ARGUES UP, and A is genuinely arguable once played: the manabase is flawless —
 #: tier: `consistency` reports every coloured card on curve at >=90% with keepable 86.0%, the
 #: tier: best pair on the roster — and the Room suite means the deck's "dead late-game cards"
@@ -94,13 +104,11 @@
 1 Matzalantli, the Great Door // The Core (LCI) 256
 1 The Water Crystal (FIN) 85
 1 Archmage of Runes (FDN) 30
-1 Case of the Ransacked Lab (MKM) 45
 
 # Card advantage — Omniscience needs a hand to spend
 1 Braided Net (LCI) 47
 1 Cryogen Relic (EOE) 52
 1 Cerebral Download (EOE) 48
-1 Mind Spring (BLB) 389
 1 Finale of Revelation (FDN) 589
 1 Spellgyre (BLB) 72
 1 Pensive Professor (SOS) 63
@@ -110,12 +118,18 @@
 1 Long River's Pull (BLB) 58
 1 Get Out (DSK) 60
 1 Tishana's Tidebinder (LCI) 81
-1 Spell Snare (ECL) 71
 1 Twist Reality (DSK) 77
 
 # Bounce and tempo — blue's answer to a resolved threat
 1 Into the Flood Maw (BLB) 52
 1 Floodpits Drowner (DSK) 59
+
+# Mill — the alternate clock. The Water Crystal turns every mill here into +4
+1 Riverchurn Monument (DFT) 57
+1 Scrabbling Skullcrab (DSK) 71
+
+# Room access — Keys unlocks Fractured Realm's {5}{U}{U} door for four total mana
+1 Keys to the House (DSK) 251
 
 # Threats — Tolarian Terror shrinks with every counterspell you cast
 2 Tolarian Terror (FDN) 167

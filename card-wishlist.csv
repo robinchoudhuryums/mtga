@@ -48,6 +48,8 @@ Equip {3}",Colorless,Equipment; tokens; etb; equipment; pump; gift; value; equip
 Sunshower Druid,Creature — Frog Druid,"When this creature enters, put a +1/+1 counter on target creature and you gain 1 life.",G,Frog; Druid; counters; lifegain; etb,BLB,195,Common,50,,1.5,seed
 Three Tree Rootweaver,Creature — Mole Druid,{T}: Add one mana of any color.,G,Mole; Druid; mana,BLB,198,Common,50,,1.0,seed
 Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,5.5,hand
+Riverchurn Monument,Artifact,"{1}, {T}: Any number of target players each mill two cards. (Each of them puts the top two cards of their library into their graveyard.)
+Exhaust — {2}{U}{U}, {T}: Any number of target players each mill cards equal to the number of cards in their graveyard. (Activate each exhaust ability only once.)",U,graveyard; mill; exhaust; payoff,DFT,57,Rare,51,"Deck 51: {1},{T} mills 2 -> SIX with The Water Crystal already in the deck; Exhaust mills their whole graveyard +4. Activated, so Fractured Realm does NOT double it. ~turn 11 clock alone, faster with Exhaust.",74,hand
 Plow Through,Sorcery,"Choose one —
 • Target creature you control fights target creature an opponent controls. (Each deals damage equal to its power to the other.)
 • Destroy target Vehicle.",G,removal; fight; combat,DFT,174,Uncommon,50,,3.0,seed
@@ -82,8 +84,11 @@ Get Out,Instant,"Choose one —
 • Return one or two target creatures and/or enchantments you own to your hand.",U,counterspell,DSK,60,Uncommon,51,,3.0,seed
 Ghostly Keybearer,Creature — Spirit,"Flying
 Whenever this creature deals combat damage to a player, unlock a locked door of up to one target Room you control.",U,Spirit; flying; evasion,DSK,61,Uncommon,51,"Deck 51: 3/3 flier that unlocks a Room door on combat damage - a free back-half unlock, and a Fractured Realm trigger.",55,hand
+Keys to the House,Artifact,"{1}, {T}, Sacrifice this artifact: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.
+{3}, {T}, Sacrifice this artifact: Lock or unlock a door of target Room you control. Activate only as a sorcery.",Colorless,sacrifice; ramp,DSK,251,Uncommon,51,"Deck 51: the case is Fractured Realm specifically - its {5}{U}{U} door for {1} cast + {3} activate = 4 total, split across turns. Saves 0-1 on the other four Rooms. Also a 'fully unlock' trigger for Eerie.",52,hand
 Overgrown Zealot,Creature — Elf Druid,"{T}: Add one mana of any color.
 {T}: Add two mana of any one color. Spend this mana only to turn permanents face up.",G,Elf; Druid; mana,DSK,193,Uncommon,50,,6.0,hand
+Scrabbling Skullcrab,Creature — Crab Skeleton,"Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, target player mills two cards. (They put the top two cards of their library into their graveyard.)",U,Crab; Skeleton; graveyard; mill; eerie,DSK,71,Uncommon,51,"Deck 51: Eerie mills 2 on every enchantment entering and every Room fully unlocked -> 6 with Water Crystal, and Fractured Realm DOES double it (triggered ability) for 12. The on-theme mill card.",70,hand
 Shroudstomper,Creature — Elemental,"Deathtouch
 Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.",W/B,Elemental; lifegain; card draw; deathtouch; combat; removal,DSK,233,Uncommon,20,,5.0,hand
 Meat Locker // Drowned Diner,Enchantment — Room // Enchantment — Room,"When you unlock this door, tap up to one target creature and put two stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
@@ -256,9 +261,6 @@ Llanowar Elves,Creature — Elf Druid,{T}: Add {G}.,G,Elf; Druid; mana,M19,314,C
 Garruk's Uprising,Enchantment,"When this enchantment enters, if you control a creature with power 4 or greater, draw a card.
 Creatures you control have trample. (Each of those creatures can deal excess combat damage to the player or planeswalker it's attacking.)
 Whenever a creature you control with power 4 or greater enters, draw a card.",G,card draw; etb,M21,186,Uncommon,50,,5.5,seed
-Case of the Ransacked Lab,Enchantment — Case,"Instant and sorcery spells you cast cost {1} less to cast.
-To solve — You've cast four or more instant and sorcery spells this turn. (If unsolved, solve at the beginning of your end step.)
-Solved — Whenever you cast an instant or sorcery spell, draw a card.",U,Case; cost-reduction; card draw; spellslinger; solved,MKM,45,Rare,51,Deck 51: -{1} on every instant/sorcery (19 of them) - blue's real acceleration. Solved (4 spells/turn) is a stretch but the front half alone is the fix for weakness 2.,72,hand
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
