@@ -3,23 +3,26 @@
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07. Deliberately one band BELOW the measurable floor, which reads A on
-#: tier: interaction 6 plus card advantage 9 at a 4.14 curve. The floor is metric-only and says
+#: tier: interaction 7 plus card advantage 9 at a 4.06 curve. The floor is metric-only and says
 #: tier: so; against the rubric an A needs four things and this list fails two.
-#: tier:   A-FLOOR — yes, but interaction 6 clears the threshold of five by ONE.
+#: tier:   A-FLOOR — yes, and interaction 7 now clears the threshold of five by two.
 #: tier:   COHERENT ENGINE — yes. Rooms into Fractured Realm into Omniscience, with real doubling.
-#: tier:   TIGHT CURVE — no. 4.14 is the slowest on the roster, on 12 early drops.
-#: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND: a 4.14-curve deck holding six
-#: tier:   answers, of which four are instant-speed and three hit a noncreature permanent, loses
-#: tier:   to a fast start in a way neither problem would cause alone.
+#: tier:   TIGHT CURVE — no. 4.06 is the slowest on the roster, on 12 early drops.
+#: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND: a 4.06-curve deck holding seven
+#: tier:   answers loses to a fast start in a way neither problem would cause alone. Secret
+#: tier:   Invasion narrowed both gaps at once — it is the deck's only card that is removal, a
+#: tier:   threat and a protection source in one, since exiling a creature also turns one of yours
+#: tier:   into a copy of it and grants ward {2} — but one card does not close them.
 #: tier: HOW IT GOT HERE, stated plainly because it is the real risk: interaction went 14 -> 6
-#: tier: across three tuning passes as the cheapest answers became threats and engines. Every
+#: tier: across three tuning passes as the cheapest answers became threats and engines, and back
+#: tier: to 7 on the fourth. Every
 #: tier: individual swap was defensible and measured before applying; the cumulative deck got
 #: tier: greedier each round. If a first session is lost to a resolved threat rather than to a
 #: tier: slow start, that sequence is what was wrong, not any one swap.
 #: tier: TWO THINGS THE FLOOR CANNOT SEE, both arguing DOWN. `deck.py engines` reports "counters:
 #: tier: 6 enablers, no payoff — your engine has no reward": Ramos, Pensive Professor, Bruce
 #: tier: Banner, Norman Osborn and Stormkeld Prowler all make +1/+1 counters and nothing in the
-#: tier: deck cares. And 11 central themes with `shape` reading BALANCED/neither is diffuse.
+#: tier: deck cares. And 12 central themes with `shape` reading BALANCED/neither is diffuse.
 #: tier: WHAT ARGUES UP, and A is genuinely close. The bombs are PRESENT, not aspirational —
 #: tier: Omniscience, Summon: Bahamut (four unconditional destroys under Fractured Realm), Krang
 #: tier: Utrom Warlord and The Walls of Ba Sing Se are all in the 60, and Walls is the reason
@@ -56,8 +59,8 @@
 #: archetype: is the single largest thing Fractured Realm does in this deck. The other permanents it
 #: archetype: doubles: Pensive Professor, Stormkeld Prowler, Ramos's counters, Norman Osborn's connive,
 #: archetype: Ghostly Keybearer's unlock, Lady Octopus's ingenuity counters (two per turn ->
-#: archetype: FOUR), Scrabbling Skullcrab's Eerie mill, Tishana's Tidebinder, Floodpits Drowner, Krang &
-#: archetype: Shredder, The Dawning Archaic — and Summon: Bahamut, whose SAGA CHAPTERS are
+#: archetype: FOUR), Scrabbling Skullcrab's Eerie mill, Tishana's Tidebinder, Floodpits Drowner,
+#: archetype: The Dawning Archaic — and Summon: Bahamut, whose SAGA CHAPTERS are
 #: archetype: triggered abilities, so I and II each destroy TWO nonland permanents and III draws
 #: archetype: four. That is the deck's only effect that DESTROYS anything.
 #: archetype: KIORA IS THE CASE WHERE DOUBLING CUTS BOTH WAYS, so read both halves. Her ETB
@@ -140,10 +143,20 @@
 #: notes: a known data gap, not a rules fact.
 #: notes: THE COST WAS INTERACTION, and it is stated here rather than buried: Cryogen Relic, Get
 #: notes: Out, Spell Pierce, Into the Flood Maw and Twist Reality all left, taking the count
-#: notes: 10 -> 6 and avg MV 3.97 -> 4.14. That is the deliberate trade — a deck that answered
+#: notes: 10 -> 6 (since recovered to 7) and avg MV 3.97 -> 4.06. That is the deliberate trade — a deck that answered
 #: notes: everything and could
 #: notes: not close became one that closes and answers less. If the first session loses to a
 #: notes: fast start rather than to an unanswered threat, this is the paragraph that was wrong.
+#: notes: SECRET INVASION CAME IN FOR KRANG & SHREDDER, and the cut was decided on a count, not
+#: notes: a ranking. Krang's Disappear needs "a permanent left the battlefield under your control
+#: notes: this turn", and the deck had three ways to do that when it was added — Cryogen Relic,
+#: notes: Braided Net and Splash Portal. All three have since left, so its second ability was
+#: notes: close to dead and it was a 6-mana 6/7. Two other cuts were checked and rejected on
+#: notes: their own counts: STORMKELD PROWLER triggers on 14 of 35 nonland cards (every MV-5+
+#: notes: spell, and mana value ignores this deck's cost reducers, so Tolarian Terror still
+#: notes: counts at 7 when you cast it for 3) and is one of only twelve cards at MV<=2; CEREBRAL
+#: notes: DOWNLOAD reads 10 artifacts for its surveil and is the deck's card advantage, which is
+#: notes: the one measurable this list is strong on.
 #: notes: BUILT 2026-07 from scratch, around Omniscience and Fractured Realm by request.
 #: notes: WHY ROOMS RATHER THAN A GENERIC BIG-MANA PILE. The two named cards want different
 #: notes: things — Omniscience wants expensive cards in hand, Fractured Realm wants TRIGGERS —
@@ -196,6 +209,7 @@
 1 Tishana's Tidebinder (LCI) 81
 
 # Bounce and tempo — blue's answer to a resolved threat
+1 Secret Invasion (MSH) 72
 1 Floodpits Drowner (DSK) 59
 
 # Mill — the alternate clock. The Water Crystal turns every mill here into +4
@@ -211,7 +225,6 @@
 1 Kiora, the Rising Tide (FDN) 45
 1 Tolarian Terror (FDN) 167
 1 Stormkeld Prowler (WOE) 71
-1 Krang & Shredder (TMT) 153
 
 # The top end
 1 Summon: Bahamut (FIN) 1
