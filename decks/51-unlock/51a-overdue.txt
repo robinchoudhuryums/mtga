@@ -2,6 +2,31 @@
 #: format: Standard
 #: colors: U
 #: plan: control
+#: tier: B — GRADED 2026-07. One band below the measurable floor, which reads A on interaction 9
+#: tier: plus card advantage 7 at a 3.17 curve. On the measurables this is the BETTER of the two
+#: tier: Unlock decks and it is worth saying so: against parent 51 it wins on interaction (9 vs
+#: tier: 6), curve (3.17 vs 4.14), focus (5 central themes vs 11) and engine health — `engines`
+#: tier: reports graveyard 20 enablers / 9 payoffs, balanced, with no warning at all. The
+#: tier: interaction is well shaped too: 7 of 9 instant-speed, 6 answering a noncreature permanent.
+#: tier: WHAT HOLDS IT AT B IS ONE NUMBER. The deck is a two-card engine and the second card is a
+#: tier: 2-of. P(seeing at least one The Water Crystal) on the play is 33.6% by turn five, 38.9%
+#: tier: by turn seven, 44.1% by turn nine and 53.7% by turn thirteen — a coin flip on your engine
+#: tier: that late. Without it the mill halves and the clock roughly doubles, so a third of games
+#: tier: are played as a mediocre tempo deck rather than the deck described above. Eleven cantrips
+#: tier: and dig effects mitigate; they do not fix a 2-of.
+#: tier: PROTECTION IS 1, close to the zero the rubric flags, in a deck whose plan rests on two
+#: tier: specific permanents surviving — The Water Crystal and Master Pakku. Losing the second
+#: tier: Tolarian Terror to Hama took its ward {2} with it; that was a knowing trade for mill, but
+#: tier: it is the reason this axis reads 1 rather than 2.
+#: tier: THE THIRD MARK is self-inflicted and recorded in the notes: cutting Lost Days for Eddymurk
+#: tier: Crab left Zuko's Exile as the only recursion-proof answer, and the recursion matchup was
+#: tier: already this deck's worst because blind mill FEEDS a graveyard deck (G-42, G-62).
+#: tier: WHAT ARGUES UP: Kitsune's Technique and Jidoor each mill HALF a library (half plus four
+#: tier: with the Crystal), so the clock is not incremental once it starts; the Lesson subtype
+#: tier: gives three payoffs reading one graveyard for close to no deckbuilding cost; and
+#: tier: distinctness is 83% with ZERO shared cards. If the Crystal proves findable in practice,
+#: tier: A is the right letter.
+#: tier: TO RE-GRADE TO A, run `deck.py tier 51a --to A`. Unplayed, with 16 craft targets.
 #: protect: The Water Crystal; Master Pakku; Riverchurn Monument; The Mindskinner; Exhibition Tidecaller
 #: archetype: MONO-BLUE LESSON MILL. The parent deck 51 wins by resolving enormous spells and
 #: archetype: carries mill as a two-card side plan. This variant inverts that: mill IS the deck,
@@ -68,8 +93,6 @@
 #: notes: turn-four-or-five card by construction and was accepted as such rather than chased.
 #: notes: Octopus Form was the cut; it is the first card back in if a land can be spared.
 #: notes: BUILT 2026-07 as the "lean harder into opponent mill" variant, by request.
-#: notes: UNGRADED ON PURPOSE — no `#: tier:` letter until the metrics are read and a human
-#: notes: assigns one. `deck.py tier 51a` prints the measurable floor.
 #: notes: HAMA CAME IN FOR THE SECOND TOLARIAN TERROR, trading a 5/5 body for mill plus a
 #: notes: second copy of the deck's hidden combo. Its ETB mills three -> SEVEN with The Water
 #: notes: Crystal, which the Terror never did, and then it exiles a noncreature nonland card

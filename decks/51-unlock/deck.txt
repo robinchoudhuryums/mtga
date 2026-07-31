@@ -2,49 +2,39 @@
 #: format: Standard
 #: colors: U
 #: plan: control
-#: tier: B — PROVISIONAL, one band below the measurable floor, which still reads A on
-#: tier: interaction 6 plus card advantage 9 at a 4.14 curve. The list was rebalanced after
-#: tier: the first grade: the cheapest and most marginal interaction pieces became threats
-#: tier: and engines across three passes, so interaction 14 -> 6 while the clock more than
-#: tier: doubled. SIX IS THE NUMBER TO WATCH — one above the A-floor's five, and the figure
-#: tier: that decides whether this deck was tuned or hollowed out. It was accepted knowingly
-#: tier: on the last pass (Twist Reality out for Bruce Banner, measured before applying), so
-#: tier: if the first session is lost to a resolved threat rather than to a slow start, this
-#: tier: is the line that was wrong.
-#: tier: What remains is still the best-SHAPED interaction on the roster (nearly all
-#: tier: instant-speed, most of it answering a noncreature permanent), and Summon: Bahamut
-#: tier: adds the deck's first effects that DESTROY, but shape does not substitute for count.
-#: tier: WEAKNESS 1 IS GONE. The deck no longer wins on five cards: Stormkeld Prowler, Norman
-#: tier: Osborn, Ghostly Keybearer, Krang & Shredder, Ramos and Summon: Bahamut join Tolarian
-#: tier: Terror, Krang Utrom Warlord, The Dawning Archaic and Kiora. Creatures 8 -> 18.
-#: tier: Tolarian Terror went to a SINGLE copy for The Walls of Ba Sing Se, which is not a
-#: tier: threat at all — "other permanents you control have indestructible" protects
-#: tier: Omniscience, Fractured Realm, Gilded Lotus and every body listed above, in the deck
-#: tier: whose whole plan is resolving a large permanent and keeping it.
-#: tier: WEAKNESS 2 IS PARTLY ADDRESSED, in the way blue actually can. There is still no ramp
-#: tier: below four mana (Gilded Lotus {5}, The Eternity Elevator {5}, Matzalantli {3}), but
-#: tier: The Water Crystal shaves {1} off every blue spell — 29 of the 35 nonland cards — and
-#: tier: Keys to the House turns Fractured Realm's {5}{U}{U} door into four total mana split
-#: tier: across two turns. Ramos, Dragon Engine is the third route and the one the identity
-#: tier: column hid: its cost is {6} COLORLESS, so it casts on Islands, and five +1/+1
-#: tier: counters convert into TEN mana. 12 early drops is still low for a deck with no
-#: tier: sweeper, and that is the live risk.
-#: tier: THERE IS NOW A SECOND WAY TO WIN, and it costs two slots because the payoff was
-#: tier: already in the deck. The Water Crystal's "if an opponent would mill, they mill that
-#: tier: many plus four" was earning its slot as a cost reducer; Riverchurn Monument and
-#: tier: Scrabbling Skullcrab convert it into a clock. Riverchurn's {1}, {T} mills 6 a turn
-#: tier: and its Exhaust mode mills the opponent's whole graveyard plus four; Skullcrab mills
-#: tier: 6 on every enchantment entering and every Room fully unlocked, DOUBLED by Fractured
-#: tier: Realm because Eerie is a triggered ability. Riverchurn's are ACTIVATED and are not
-#: tier: doubled. Without the Crystal the mill package is a 2-a-turn nuisance, so read it as
-#: tier: an inevitability plan that needs one specific card, not a second archetype.
-#: tier: WHAT ARGUES UP, and A is genuinely arguable once played: the manabase is flawless —
-#: tier: `consistency` reports every coloured card on curve at >=90% with keepable 86.0%, the
-#: tier: best pair on the roster — and the Room suite means the deck's "dead late-game cards"
-#: tier: problem does not exist, because every cheap answer converts into a mana sink. Protection
-#: tier: 3 on top of that interaction is a real resilience profile.
-#: tier: PROVISIONAL: unplayed and 20 craft targets. What proves or disproves it in the first
-#: tier: session is whether trading five answers for five threats left enough answers.
+#: tier: B — GRADED 2026-07. Deliberately one band BELOW the measurable floor, which reads A on
+#: tier: interaction 6 plus card advantage 9 at a 4.14 curve. The floor is metric-only and says
+#: tier: so; against the rubric an A needs four things and this list fails two.
+#: tier:   A-FLOOR — yes, but interaction 6 clears the threshold of five by ONE.
+#: tier:   COHERENT ENGINE — yes. Rooms into Fractured Realm into Omniscience, with real doubling.
+#: tier:   TIGHT CURVE — no. 4.14 is the slowest on the roster, on 12 early drops.
+#: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND: a 4.14-curve deck holding six
+#: tier:   answers, of which four are instant-speed and three hit a noncreature permanent, loses
+#: tier:   to a fast start in a way neither problem would cause alone.
+#: tier: HOW IT GOT HERE, stated plainly because it is the real risk: interaction went 14 -> 6
+#: tier: across three tuning passes as the cheapest answers became threats and engines. Every
+#: tier: individual swap was defensible and measured before applying; the cumulative deck got
+#: tier: greedier each round. If a first session is lost to a resolved threat rather than to a
+#: tier: slow start, that sequence is what was wrong, not any one swap.
+#: tier: TWO THINGS THE FLOOR CANNOT SEE, both arguing DOWN. `deck.py engines` reports "counters:
+#: tier: 6 enablers, no payoff — your engine has no reward": Ramos, Pensive Professor, Bruce
+#: tier: Banner, Norman Osborn and Stormkeld Prowler all make +1/+1 counters and nothing in the
+#: tier: deck cares. And 11 central themes with `shape` reading BALANCED/neither is diffuse.
+#: tier: WHAT ARGUES UP, and A is genuinely close. The bombs are PRESENT, not aspirational —
+#: tier: Omniscience, Summon: Bahamut (four unconditional destroys under Fractured Realm), Krang
+#: tier: Utrom Warlord and The Walls of Ba Sing Se are all in the 60, and Walls is the reason
+#: tier: protection reads 3: "other permanents you control have indestructible" covers every one
+#: tier: of them. The manabase is flawless — 86.0% keepable, every coloured card on curve at
+#: tier: >=90% — and distinctness is the cleanest on the roster at 71% with ZERO shared cards.
+#: tier: The Room suite also means this deck has no dead late-game cards: every cheap answer
+#: tier: converts into a mana sink.
+#: tier: THE SECOND WIN CONDITION costs two slots because the payoff was already here. The Water
+#: tier: Crystal's "if an opponent would mill, they mill that many plus four" was earning its slot
+#: tier: as a cost reducer; Riverchurn Monument and Scrabbling Skullcrab convert it into a clock.
+#: tier: Read it as inevitability that needs one specific card, not a second archetype — and read
+#: tier: it as a CLOCK, never as interaction (G-62).
+#: tier: TO RE-GRADE TO A, the measurable gap is interaction, and `deck.py tier 51 --to A` prints
+#: tier: the fillers. Unplayed, with 20 craft targets.
 #: protect: Mirror Room // Fractured Realm; Omniscience; Gilded Lotus; The Eternity Elevator; Archmage of Runes; The Dawning Archaic; Kiora, the Rising Tide
 #: archetype: MONO-BLUE ROOMS CONTROL. Every Room is two spells stapled together at opposite
 #: archetype: ends of the curve — a one-mana play on turn one and a five-to-seven-mana play on
