@@ -2095,3 +2095,75 @@ tribal versions kept running into. A separate check confirmed there is no "land-
 tribe" in green either (Scout leads at 5 pullers of 24 bodies, then Robot 4, Insect 3,
 Druid 2 — scattered, not concentrated), and Mouse is a Boros tribe (19 in Standard: W 9 /
 R 6 / W-R 3 and exactly one green).
+
+
+## [G-60] An `{X}` spell is priced at MV 1, so a curve reading under-reads a deck that runs several
+
+**An `{X}` spell is priced at MV 1, so a curve reading under-reads any deck running
+several — and the distortion runs BOTH ways.** `lib.mana_value` counts `X` as 0 because
+that is what the rules say for a spell not on the stack, and that is the RIGHT answer for
+the two things it primarily serves: castability (`{X}{G}` really is castable off one
+Forest) and `consistency`'s cast-on-curve probability. It is the wrong answer for the
+curve, `avg_mv` and the early-drop count, all of which read the same number — a card you
+realistically cast for four books as a one-drop *and* as an early drop.
+
+**Deck 50a was misread twice in one cycle, in opposite directions.** Adding Wildwood
+Scourge and Jadelight Spelunker read as avg MV 3.85 → 3.70 with early drops 10 → 12, and
+the swap was described as improving the curve. Removing Jadelight Spelunker later read as
+avg MV 3.55 → 3.76 with early drops 13 → 12, and was nearly rejected on that basis. The
+real curve barely moved either time; both figures were the `{X}`-at-MV-1 accounting.
+
+**The fix is a flag, not a formula change.** `deck.py stats` lists the offenders under
+`✕ X-COST cards — the curve books these at MV 1, X counts as 0`, with a line reminding
+the reader what that does to avg MV and the early-drop count. `deck.py tier` prints a
+one-line `⚠ avg MV under-reads: N X-cost card(s)` advisory next to the vector, because
+`tier` is the surface where avg MV actually gets quoted into a grade.
+
+**Both are REPORT-ONLY and must stay so.** `x_cost_cards` is deliberately not wired into
+`deck_quality_vector` or `tier_band` — a new term there would silently re-grade every
+deck on the roster, which is the same reason the protection axis is reported and never
+scored. `tests/test_deck_models.py::TestXCostCards` pins this with a source-level
+assertion that neither function mentions the helper, alongside behavioural tests that a
+fixed-cost card is not flagged and that lands and duplicate copies are excluded.
+
+**Residual:** the flag tells you the number is soft, not what the true curve is — pricing
+an `{X}` spell properly would need a model of what X you actually pay, which depends on
+the board. Read the flagged cards and judge; do not try to correct `avg_mv` by hand,
+because `check_tier.py` anchors the floor formula against the raw value.
+
+
+## [G-61] Before dismissing a card, count the deck property its value depends on
+
+**Before dismissing a card, count the deck property its value depends on.** Four
+dismissals were overturned inside a single cycle, every one the same shape: a card judged
+on its own text when the decision actually belonged to a number in the LIST. In each case
+the user supplied the number and the verdict flipped immediately.
+
+| card | the dismissal | the count that decided it |
+|---|---|---|
+| Michelangelo, Improviser | "circular — only triggers on combat damage to a player" | deck 50 has **six** ways to force damage through (Craterhoof ×2, Garruk's Uprising ×2, Aggressive Mammoth, Rogue's Passage) |
+| Topiary Lecturer / Mona Lisa / Doc Samson / Rainveil Rejuvenator | "circular — the only pump is Craterhoof, which wins anyway" | the deck runs **Colossification**, +20/+20 and not a win condition; Topiary Lecturer also self-scales via Increment |
+| Groundchuck & Dirtbag | "a six-drop worth less than a two-drop that scales" | deck 50a runs **27 lands and exactly 1 creature mana source**, so "tap a land for mana, add {G}" doubles nearly the whole base |
+| Agatha's Soul Cauldron | "too narrow — needs exiled creatures with activated abilities" | deck 50a **self-mills four ways**, so it fills its own graveyard as a side effect of its engine |
+
+**The control case is The Earth Crystal.** It was measured and rejected twice, then went
+into both decks on the third pass — and the card never changed. What changed was Doc
+Samson arriving in 50 (a second counter-doubler, so the two stack) and Agatha's Soul
+Cauldron arriving in 50a (whose gate is creatures with +1/+1 counters). A rejection is
+therefore a statement about a deck at a moment, not about a card.
+
+**The failure mode is specifically GENERALISING FROM ONE INSTANCE.** "Craterhoof is the
+only pump" was true of the best-known pump and false of the list. "It needs combat damage"
+was true of the trigger and false of a deck holding six enablers. Each dismissal was a
+correct sentence about the card attached to an unchecked assumption about the deck.
+
+**The rule: state the count, then decide.** Lands vs creature mana sources, trample
+grants, mill effects, counter sources, bodies of a type — these are all cheap to measure
+and each one has now flipped at least one verdict. And when a card is parked rather than
+rejected, say WHICH number would have to move for it to come back; that is what makes a
+flex line worth reading later instead of re-litigating from scratch (see G-04 on flex
+lines rotting silently, and the flex entries in decks 48 and 50 for the shape).
+
+**Residual:** nothing gates this — no check can see a judgement made in prose. `deck.py
+stats`, `shape`, `engines` and `redundancy` all print the relevant counts, so the
+discipline is to run one of them before writing the word "circular" or "too narrow".
