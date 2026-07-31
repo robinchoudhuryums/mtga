@@ -3,7 +3,7 @@
 #: colors: R
 #: plan: midrange
 #: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 13
-#: tier: plus card advantage 3 at a 4.18 curve. Two structural weaknesses the floor cannot see:
+#: tier: plus card advantage 3 at a 4.17 curve. Two structural weaknesses the floor cannot see:
 #: tier: 1. PROTECTION IS 1, and it is one card: Roaming Throne's ward {2}. Five named
 #: tier:    build-arounds and this deck's payoffs are the kind that must SURVIVE A TURN to
 #: tier:    matter — Lathliss only pays off on the NEXT Dragon, Terror of the Peaks only on the
@@ -12,7 +12,7 @@
 #: tier:    a protection grant returned essentially nothing, so this is red's cost, not an
 #: tier:    oversight. Call the Spirit Dragons was REJECTED on colour, not overlooked: it reads
 #: tier:    "Dragons you control have indestructible" and costs {W}{U}{B}{R}{G}, genuinely gold.
-#: tier: 2. IT IS SLOW AND HAS NO SWEEPER. Avg MV 4.18 with 9 early drops is the slowest curve
+#: tier: 2. IT IS SLOW AND HAS NO SWEEPER. Avg MV 4.17 with 9 early drops is the slowest curve
 #: tier:    on the roster; against a fast start the deck must trade one-for-one with removal it
 #: tier:    has plenty of, then stabilise with a five-drop. Card advantage 3 is still thin, and
 #: tier:    still an UNDER-count — Bonehoard Dracosaur exiles two cards a turn and Breaching
@@ -85,7 +85,7 @@
 #: notes: whose BACK face is a land as a LAND, so Ojer Axonil is counted as one. `consistency`
 #: notes: therefore reports "Lands: 26/60" for a deck holding 25, keepable is computed against a
 #: notes: phantom land, and Ojer's {2}{R}{R} is missing from the curve — so the true avg MV is
-#: notes: slightly ABOVE the 4.18 reported. 81 pool cards share the shape; Matzalantli in decks 51
+#: notes: slightly ABOVE the 4.17 reported. 81 pool cards share the shape; Matzalantli in decks 51
 #: notes: and 51a and Ojer Kaslem in 50a are the other live cases.
 #: notes: THE THREE-CARD PASS (2026-07). Roaming Throne and Chronicle of Victory in for two
 #: notes: Dragonstorm Globes, Breaching Dragonstorm in for Bombard. The Globes went because

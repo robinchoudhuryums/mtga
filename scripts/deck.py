@@ -866,10 +866,26 @@ def parse_pips(cost):
 
 
 def _primary_type(type_line):
+    """The card's type for analysis, read from the FRONT FACE ONLY.
+
+    A two-faced card's type line is stored as `Front // Back`, and a substring scan
+    over the whole string reports the BACK face's type whenever it sorts earlier in
+    `order` — which for `Land` is always. So `Legendary Creature — God // Land`
+    (Ojer Axonil) and `Legendary Artifact // Legendary Artifact Land` (Matzalantli)
+    both read as LAND, and every one of this module's ~35 `"Land" in _primary_type(...)`
+    guards then skipped them: excluded from the curve, uncounted as creatures, and
+    ADDED to the land total. `consistency 49` reported "Lands: 26/60" for a deck
+    holding 25, with keepable computed against a phantom land. 81 pool cards share the
+    shape; three were live in decks (Matzalantli in 51/51a, Ojer Kaslem in 50a).
+
+    The front face is the correct read for the same reason G-02 gives for cost: it is
+    the half you cast or play. A card whose front really IS a land (Jidoor's
+    `Land — Town // Sorcery — Adventure`) still reports Land, because the front says so."""
+    front = (type_line or "").split("//")[0]
     order = ["Land", "Creature", "Planeswalker", "Battle", "Artifact",
              "Enchantment", "Instant", "Sorcery"]
     for t in order:
-        if t.lower() in type_line.lower():
+        if t.lower() in front.lower():
             return t
     return "Other"
 
@@ -3413,9 +3429,22 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         nl = name.lower()
         if not name or nl.split(" // ")[0] in deck_names or nl in BASICS:
             continue
+        # CASTABILITY IS READ FROM THE PRINTED COST, not from color identity. The block
+        # above is careful to derive the DECK's colors from costs "never color identity";
+        # this filter then compared CANDIDATES on identity, so the two halves disagreed.
+        # A `{1}{U/R}` hybrid and a `{6}` colorless card are both castable in mono-U or
+        # mono-R and both read as off-color in `Color(s)`, so `suggest` could never
+        # surface either for any deck. Measured on the red pool: 55 Standard cards a red
+        # filter hides that mono-red can cast, including two Dragons at MV 4 whose absence
+        # led to a written conclusion that deck 49's curve could not be fixed (G-58,
+        # bulk-triage variant). `_candidate_castability` mirrors `_castability_lint`, so
+        # a monocolor/Phyrexian hybrid never constrains and only a TRUE multicolor one does.
         ccolors = card_colors(r.get("Color(s)"))
-        if not ccolors.issubset(deck_colors):
-            continue  # off-color for this deck
+        cast_ok, _ = _candidate_castability(
+            (mana_map.get(nl) or mana_map.get(nl.split(" // ")[0]) or ("", None))[0],
+            ccolors, deck_colors)
+        if not cast_ok:
+            continue  # genuinely uncastable for this deck
         if apply_fmt and fmt not in {x.strip() for x in
                                      (r.get("Legalities") or "").split(";")}:
             continue  # not legal in the target format
@@ -4443,17 +4472,27 @@ def cmd_flex(args):
 
 # --- swap preview / apply (and flex promotion) ------------------------------ #
 def _printing_of(name):
-    """Best-known (set, collector#) for a card name: an owned library printing
-    first (so the added line matches something you have), else any known
-    printing. ('', '') if unknown — a bare '1 Name' line still parses/checks."""
+    """Best-known `(display_name, set, collector#)` for a card name: an owned library
+    printing first (so the added line matches something you have), else any known
+    printing. `(name, '', '')` if unknown — a bare '1 Name' line still parses/checks.
+
+    MATCHES A DFC BY ITS FRONT FACE TOO, and returns the CANONICAL display name. The
+    CSVs key a two-faced card under its full `Front // Back` name, so an exact-only
+    lookup for the front name found nothing and `swap --apply` wrote a bare `1 Runescale
+    Stormbrood` with no printing. INV-04 passed and `legal` reported clean, because a
+    bare line parses — but the line is not a valid Arena import, so the failure surfaced
+    only when a human tried to paste the deck. Returning the display name as well is what
+    stops the file recording the front-face shorthand instead of the real card name."""
     nl = name.strip().lower()
-    best = ("", "")
+    best = (name.strip(), "", "")
     for path, owned_pref in ((DEFAULT_CSV, True), (POOL_CSV, False)):
         if not os.path.exists(path):
             continue
         with open(path, newline="", encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
-                if (r.get("Card Name") or "").strip().lower() != nl:
+                disp = (r.get("Card Name") or "").strip()
+                dl = disp.lower()
+                if dl != nl and dl.split(" // ")[0] != nl:
                     continue
                 setc = (r.get("Set Code") or "").strip()
                 cn = (r.get("Collector #") or "").strip()
@@ -4465,9 +4504,9 @@ def _printing_of(name):
                     except ValueError:
                         q = 0
                     if q > 0:
-                        return (setc, cn)      # an owned printing wins outright
-                if best == ("", ""):
-                    best = (setc, cn)
+                        return (disp, setc, cn)   # an owned printing wins outright
+                if not best[1]:
+                    best = (disp, setc, cn)
     return best
 
 
@@ -5080,8 +5119,10 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
     carddata = load_card_data()
     mana = load_mana()
     _, cards = parse_deck_file(d["path"])
-    add_pr = _printing_of(add)
-    after = _cards_after_swap(cards, cut, add, add_pr)
+    add_disp, add_set, add_cn = _printing_of(add)
+    # Write the CANONICAL name, not the front-face shorthand the caller typed.
+    add = add_disp
+    after = _cards_after_swap(cards, cut, add, (add_set, add_cn))
     if after is None:
         eprint(f"{cut!r} is not in deck {d['id']}. Nothing swapped.")
         return 1

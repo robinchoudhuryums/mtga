@@ -3,12 +3,12 @@
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07. Deliberately one band BELOW the measurable floor, which reads A on
-#: tier: interaction 7 plus card advantage 9 at a 4.06 curve. The floor is metric-only and says
+#: tier: interaction 7 plus card advantage 9 at a 4.03 curve. The floor is metric-only and says
 #: tier: so; against the rubric an A needs four things and this list fails two.
 #: tier:   A-FLOOR — yes, and interaction 7 now clears the threshold of five by two.
 #: tier:   COHERENT ENGINE — yes. Rooms into Fractured Realm into Omniscience, with real doubling.
-#: tier:   TIGHT CURVE — no. 4.06 is the slowest on the roster, on 12 early drops.
-#: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND: a 4.06-curve deck holding seven
+#: tier:   TIGHT CURVE — no. 4.03 is the slowest on the roster, on 12 early drops.
+#: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND: a 4.03-curve deck holding seven
 #: tier:   answers loses to a fast start in a way neither problem would cause alone. Secret
 #: tier:   Invasion narrowed both gaps at once — it is the deck's only card that is removal, a
 #: tier:   threat and a protection source in one, since exiling a creature also turns one of yours
@@ -27,8 +27,12 @@
 #: tier: Omniscience, Summon: Bahamut (four unconditional destroys under Fractured Realm), Krang
 #: tier: Utrom Warlord and The Walls of Ba Sing Se are all in the 60, and Walls is the reason
 #: tier: protection reads 3: "other permanents you control have indestructible" covers every one
-#: tier: of them. The manabase is flawless — 86.0% keepable, every coloured card on curve at
-#: tier: >=90% — and distinctness is the cleanest on the roster at 71% with ZERO shared cards.
+#: tier: of them. Every coloured card casts on curve at >=90% — and distinctness is the
+#: tier: cleanest on the roster at 71% with ZERO shared cards. The manabase was described as
+#: tier: FLAWLESS on the strength of 86.0% keepable; that figure was wrong. It counted
+#: tier: Matzalantli as a land, which it is not — you cast it for {3} and only its BACK face
+#: tier: is a land. The deck runs 24 lands, not 25, and keepable is 84.4%, which `consistency`
+#: tier: flags as low. The on-curve half of the claim still holds; the keepable half does not.
 #: tier: The Room suite also means this deck has no dead late-game cards: every cheap answer
 #: tier: converts into a mana sink.
 #: tier: THE SECOND WIN CONDITION costs two slots because the payoff was already here. The Water
@@ -143,7 +147,7 @@
 #: notes: a known data gap, not a rules fact.
 #: notes: THE COST WAS INTERACTION, and it is stated here rather than buried: Cryogen Relic, Get
 #: notes: Out, Spell Pierce, Into the Flood Maw and Twist Reality all left, taking the count
-#: notes: 10 -> 6 (since recovered to 7) and avg MV 3.97 -> 4.06. That is the deliberate trade — a deck that answered
+#: notes: 10 -> 6 (since recovered to 7) and avg MV 3.97 -> 4.03. That is the deliberate trade — a deck that answered
 #: notes: everything and could
 #: notes: not close became one that closes and answers less. If the first session loses to a
 #: notes: fast start rather than to an unanswered threat, this is the paragraph that was wrong.
@@ -174,7 +178,8 @@
 #: notes: six shared, all of them commodity blue interaction. For scale, 26b against 48a reads
 #: notes: 89% with nine shared. The two mono-blue decks are opposite ends of the same colour.
 #: notes: THE MANABASE IS FLAWLESS, the mono-colour payoff this deck shares only with 47 and 49:
-#: notes: every coloured card casts on curve at >=90%, keepable 86.0%, nothing enters tapped
+#: notes: every coloured card casts on curve at >=90%, keepable 84.4% (see the tier block —
+#: notes: the earlier 86.0% counted Matzalantli as a land), nothing enters tapped
 #: notes: except Matzalantli's back face. Uthros, Titanic Godcore is the single nonbasic.
 #: notes: TOLARIAN TERROR IS THE PAYOFF NOBODY EXPECTS. "{6}{U}, costs {1} less for each instant
 #: notes: and sorcery in your graveyard" in a deck running six counterspells and five draw

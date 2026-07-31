@@ -201,6 +201,52 @@ nine cards. Full block: `.cycle/blocks/2026-07-pile-triage-broad-implement.md`.
    a NEW third variant for the ~20-card unblockable-tempo overflow. Measurements are in
    chat; nothing was written. The owner has asked twice for no changes without approval.
 
+## Session 2026-07-31 — front-face-vs-metadata fixes (P6–P8)
+
+Three fixes, all the SAME SHAPE and all found by deck work rather than by a scan: a
+two-faced card's FRONT face and the metadata row disagree. Full block:
+`.cycle/blocks/2026-07-front-face-metadata-broad-implement.md`.
+
+- **P6 (COLOR)** `suggest_scored` scoped candidates by `Color(s)` — color IDENTITY — while
+  the surrounding code derived the DECK's colours from printed COSTS. So `suggest` could
+  never surface a hybrid or a colorless-cost card. 55 Standard red-pool cards were hidden
+  from a mono-red deck. Now reads `_candidate_castability` (shared with `_castability_lint`).
+  Verified live: `suggest 49 --unowned` now shows Decadent Dragon and Ramos, Dragon Engine.
+- **P7 (TYPE)** `_primary_type` substring-scanned the whole `Front // Back` type line, so
+  ANY DFC with a land back read as a Land — out of the curve, uncounted as a creature, and
+  added to the land total. ~35 call sites inherited it. Land counts corrected: deck 49
+  26→25, deck 51 25→24, deck 51a 25→24.
+- **P8 (NAME)** `_printing_of` matched names exactly, so `swap --apply` wrote a DFC add as
+  a bare `1 Runescale Stormbrood` — parses, passes INV-04, passes `legal`, fails an Arena
+  import. It now matches a DFC front and returns the CANONICAL display name.
+
+**755 tests pass** (+11). `check_all` green; the soft stale-rationale warning P7 raised is
+clear on all five affected decks.
+
+The class now has four members and only one is documented: COST is G-02, COLOR is G-58,
+TYPE and NAME are not written up. A combined gotcha is justified — see the block's
+DOCUMENTATION UPDATES NEEDED.
+
+**Deck work completed this session** (closing the P1–P5 block's open item 2): deck 51
+tuned to tier **B** across four passes; deck **51a Overdue** built from scratch and graded
+**B**; deck 49 (Scaleforge) refined across four passes. PR #91 created and squash-merged.
+G-62 (blind mill is a CLOCK, not interaction) was added with its permutation proof.
+
+**Where I left off.** Committed and pushed; nothing half-done. Open, all needing an owner
+decision rather than work:
+1. The `card-mana.csv` modal-DFC gap is STILL unfixed (carried from the P1–P5 block): 432
+   two-faced rows hold one cost and need splitting into transform (correct) vs modal (data
+   loss). `build_mana.py` is the fix site. It caused a wrong answer in chat.
+2. `build_gallery.py` has its own `_primary_type` at line 217 with the identical P7 bug.
+   Gallery type-breakdown only; no analysis path reads it.
+3. Decks 51 / 51a read keepable **84.4%** on 24 lands, which `consistency` flags low. A
+   25th land is a real open question in both — re-opened BY this fix, since the reading
+   that closed it was the P7 artifact.
+4. Whether to add Ramos, Dragon Engine to deck 49. Recommendation: skip — every available
+   cut worsens the curve. If taken, cut Spinerock Tyrant or Rapacious Dragon.
+5. Whether to build the third unblockable-tempo deck from deck 51's ~20-card overflow.
+   Recommended as its own number **52**, not `51b`.
+
 ## Decided AGAINST (2026-07-29, later)
 - Shipping any body-quality term in the cut ranking. It failed its pre-registered test;
   a term that fails and ships anyway is worse than no term.

@@ -93,12 +93,18 @@
 #: notes: JIDOOR REPLACED AN ISLAND, not a spell. It is a Land // Adventure: it taps for {U}
 #: notes: all game and later Adventures for "target opponent mills half their library", so a
 #: notes: second half-mill costs zero nonland slots. The price is that it enters tapped.
-#: notes: MANABASE, measured: 25 lands rather than 24. At 24 the deck read keepable 84.4% with
-#: notes: THREE cards below 90% on curve; the 25th land moved that to 86.0% and one, and dropped
-#: notes: screw 14.3% -> 12.2%. The one remaining is The Mindskinner at {U}{U}{U} (75.5% on turn
+#: notes: MANABASE, and the recorded figures were CORRECTED once `_primary_type` stopped
+#: notes: counting Matzalantli as a land. It is a {3} artifact whose BACK face is a land, so the
+#: notes: deck runs 24 lands, not the 25 this note used to claim, and keepable is 84.4% rather
+#: notes: than 86.0% — `consistency` flags that as low. The original tuning decision still
+#: notes: stands on its own terms (adding the extra land dropped screw 14.3% -> 12.2% and cut
+#: notes: the below-90% count from three to one); only the absolute numbers moved. The one
+#: notes: card still below 90% is The Mindskinner at {U}{U}{U} (75.5% on turn
 #: notes: three) — Karsten wants 29 sources for that, more than the deck has lands, so it is a
 #: notes: turn-four-or-five card by construction and was accepted as such rather than chased.
 #: notes: Octopus Form was the cut; it is the first card back in if a land can be spared.
+#: notes: WITH 24 REAL LANDS AND KEEPABLE AT 84.4%, a 25th land is now a live consideration
+#: notes: rather than a settled question — the reading that closed it was an artifact.
 #: notes: BUILT 2026-07 as the "lean harder into opponent mill" variant, by request.
 #: notes: HAMA CAME IN FOR THE SECOND TOLARIAN TERROR, trading a 5/5 body for mill plus a
 #: notes: second copy of the deck's hidden combo. Its ETB mills three -> SEVEN with The Water
@@ -196,7 +202,7 @@ Deck
 1 Gilded Lotus (FDN) 725
 1 Matzalantli, the Great Door // The Core (LCI) 256
 
-# Lands (24 in this block; Matzalantli's back face makes 25)
+# Lands (24)
 1 Jidoor, Aristocratic Capital // Overture (FIN) 284
 23 Island (MSH) 289
 
