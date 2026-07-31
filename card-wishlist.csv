@@ -80,6 +80,8 @@ Coordinated Clobbering,Sorcery,Tap one or two target untapped creatures you cont
 Get Out,Instant,"Choose one —
 • Counter target creature or enchantment spell.
 • Return one or two target creatures and/or enchantments you own to your hand.",U,counterspell,DSK,60,Uncommon,51,,3.0,seed
+Ghostly Keybearer,Creature — Spirit,"Flying
+Whenever this creature deals combat damage to a player, unlock a locked door of up to one target Room you control.",U,Spirit; flying; evasion,DSK,61,Uncommon,51,"Deck 51: 3/3 flier that unlocks a Room door on combat damage - a free back-half unlock, and a Fractured Realm trigger.",55,hand
 Overgrown Zealot,Creature — Elf Druid,"{T}: Add one mana of any color.
 {T}: Add two mana of any one color. Spend this mana only to turn permanents face up.",G,Elf; Druid; mana,DSK,193,Uncommon,50,,6.0,hand
 Shroudstomper,Creature — Elemental,"Deathtouch
@@ -254,6 +256,9 @@ Llanowar Elves,Creature — Elf Druid,{T}: Add {G}.,G,Elf; Druid; mana,M19,314,C
 Garruk's Uprising,Enchantment,"When this enchantment enters, if you control a creature with power 4 or greater, draw a card.
 Creatures you control have trample. (Each of those creatures can deal excess combat damage to the player or planeswalker it's attacking.)
 Whenever a creature you control with power 4 or greater enters, draw a card.",G,card draw; etb,M21,186,Uncommon,50,,5.5,seed
+Case of the Ransacked Lab,Enchantment — Case,"Instant and sorcery spells you cast cost {1} less to cast.
+To solve — You've cast four or more instant and sorcery spells this turn. (If unsolved, solve at the beginning of your end step.)
+Solved — Whenever you cast an instant or sorcery spell, draw a card.",U,Case; cost-reduction; card draw; spellslinger; solved,MKM,45,Rare,51,Deck 51: -{1} on every instant/sorcery (19 of them) - blue's real acceleration. Solved (4 spells/turn) is a stretch but the front half alone is the fix for weakness 2.,72,hand
 Ill-Timed Explosion,Sorcery,"Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the greatest mana value among cards discarded this way.",U/R,card draw; burn,MKM,207,Rare,25,draw two + scalable board sweep/burn,7.0,hand
 "Izoni, Center of the Web",Legendary Creature — Elf Detective,"Menace
 Whenever Izoni enters or attacks, you may collect evidence 4. If you do, create two 2/1 black and green Spider creature tokens with menace and reach.
@@ -351,6 +356,8 @@ When Moseo enters, create a 1/1 black and green Pest creature token with ""Whene
 Infusion — At the beginning of your end step, if you gained life this turn, return up to one target creature card with mana value X or less from your graveyard to the battlefield, where X is the amount of life you gained this turn.",B,Bird; Skeleton; Warlock; reanimator; graveyard; lifegain; tokens; etb; infusion; flying; evasion,SOS,91,Rare,6,Infusion: gain life -> reanimate a creature + a lifegain Pest — core Dead or Alive engine,5.0,hand
 "Nita, Forum Conciliator",Legendary Creature — Human Advisor,"Whenever you cast a spell you don't own, put a +1/+1 counter on each creature you control.
 {2}, Sacrifice another creature: Exile target instant or sorcery card from an opponent's graveyard. You may cast it this turn, and mana of any type can be spent to cast that spell. If that spell would be put into a graveyard, exile it instead. Activate only as a sorcery.",W/B,Human; Advisor; counters; graveyard; sacrifice; removal,SOS,206,Rare,21,sac outlet + counters-on-cast; looser fit — a WB value/theft engine,4.0,hand
+Pensive Professor,Creature — Human Wizard,"Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)
+Whenever one or more +1/+1 counters are put on this creature, draw a card.",U,Human; Wizard; counters; card draw; increment,SOS,63,Rare,51,"Deck 51: 0/2 Increment, so nearly every spell in a 3.80-curve deck puts a counter on it and draws a card. Card-advantage engine and a growing threat in one card.",78,hand
 Planar Engineering,Sorcery,"Sacrifice two lands. Search your library for four basic land cards, put them onto the battlefield tapped, then shuffle.",G,sacrifice,SOS,158,Rare,13,"ramp: sac 2 lands -> fetch 4 basics — feeds Earth Kingdom's ramp ('sacrifice' tag was a red herring, not aristocrats)",4.0,hand
 Postmortem Professor,Creature — Zombie Warlock,"This creature can't block.
 Whenever this creature attacks, each opponent loses 1 life and you gain 1 life.
@@ -457,7 +464,7 @@ Improvised Arsenal,Artifact — Equipment,"Equipped creature gets +1/+0 for each
 {4}{R}: Create a token that's a copy of this Equipment.
 Equip {R}",R,Equipment; tokens; equipment; pump; equip,TMT,92,Rare,10,"broadly useful — best 10 (Mad Villainy); also 9,1,21",5.0,hand
 Krang & Shredder,Legendary Creature — Utrom Human Ninja,"Whenever Krang & Shredder enter or attack, each opponent exiles cards from the top of their library until they exile a nonland card.
-Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, you may cast a card exiled with Krang & Shredder without paying its mana cost.",U/B,Utrom; Human; Ninja; disappear,TMT,153,Rare,22,UB exile-and-cast value + mill; fits Bloodbending's UB control (TMNT flavor),6.0,hand
+Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, you may cast a card exiled with Krang & Shredder without paying its mana cost.",U/B,Utrom; Human; Ninja; disappear,TMT,153,Rare,22; 51,"UB exile-and-cast value + mill; fits Bloodbending's UB control (TMNT flavor) | Deck 51: 6/7 for {4}{U/B}{U/B} - HYBRID, fully castable in mono-U (G-58). Threat #9 and an Omniscience payoff; Disappear needs a permanent to leave, which deck 51 does only 2-3 ways.",6.0,hand
 "Madame Null, Power Broker",Legendary Creature — Demon Advisor,"Deathtouch
 Whenever another creature you control enters, you may pay life equal to its power. If you do, put that many +1/+1 counters on it.",B,Demon; Advisor; counters; deathtouch; combat; removal,TMT,66,Rare,20b,"broadly useful — best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 11,8,21",5.5,hand
 Michelangelo's Technique,Sorcery,"Sneak {3}{G} (You may cast this spell for {3}{G} if you also return an unblocked attacker you control to hand during the declare blockers step.)
@@ -501,3 +508,4 @@ When this creature enters, if it was bargained, add four mana in any combination
 {1}{R}: This creature deals 1 damage to any target.",R,Dragon; sacrifice; burn; etb; noncombat damage; flying; evasion; haste; aggro; bargain; value,WOE,145,Mythic,49,,6.5,hand
 Rootrider Faun,Creature — Satyr Scout,"{T}: Add {G}.
 {1}, {T}: Add one mana of any color.",G,Satyr; Scout; mana,WOE,182,Common,50,,1.5,seed
+Stormkeld Prowler,Creature — Human Rogue,"Whenever you cast a spell with mana value 5 or greater, put two +1/+1 counters on this creature.",U,Human; Rogue; counters,WOE,71,Common,51,Deck 51: two-drop that gets +2/+2 whenever you cast MV>=5 - the deck runs 11 such. Cheap clock that scales with the top end it already had.,62,hand
