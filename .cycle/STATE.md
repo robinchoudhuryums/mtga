@@ -223,9 +223,9 @@ two-faced card's FRONT face and the metadata row disagree. Full block:
 **755 tests pass** (+11). `check_all` green; the soft stale-rationale warning P7 raised is
 clear on all five affected decks.
 
-The class now has four members and only one is documented: COST is G-02, COLOR is G-58,
-TYPE and NAME are not written up. A combined gotcha is justified — see the block's
-DOCUMENTATION UPDATES NEEDED.
+The class has four members — COST (G-02), COLOUR (G-58), TYPE and NAME — and it is now
+written up as **G-63**, with the four incidents and their measurements in
+`docs/gotchas.md`. Done in the same cycle by `/sync-docs`; nothing outstanding here.
 
 **Deck work completed this session** (closing the P1–P5 block's open item 2): deck 51
 tuned to tier **B** across four passes; deck **51a Overdue** built from scratch and graded
