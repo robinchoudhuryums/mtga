@@ -3,17 +3,20 @@
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07. One band below the measurable floor, which reads A on interaction 9
-#: tier: plus card advantage 7 at a 3.17 curve. On the measurables this is the BETTER of the two
+#: tier: plus card advantage 7 at a 3.14 curve. On the measurables this is the BETTER of the two
 #: tier: Unlock decks and it is worth saying so: against parent 51 it wins on interaction (9 vs
-#: tier: 6), curve (3.17 vs 4.14), focus (5 central themes vs 11) and engine health — `engines`
+#: tier: 6), curve (3.14 vs 4.14), focus (5 central themes vs 11) and engine health — `engines`
 #: tier: reports graveyard 20 enablers / 9 payoffs, balanced, with no warning at all. The
 #: tier: interaction is well shaped too: 7 of 9 instant-speed, 6 answering a noncreature permanent.
 #: tier: WHAT HOLDS IT AT B IS ONE NUMBER. The deck is a two-card engine and the second card is a
-#: tier: 2-of. P(seeing at least one The Water Crystal) on the play is 33.6% by turn five, 38.9%
-#: tier: by turn seven, 44.1% by turn nine and 53.7% by turn thirteen — a coin flip on your engine
-#: tier: that late. Without it the mill halves and the clock roughly doubles, so a third of games
-#: tier: are played as a mediocre tempo deck rather than the deck described above. Eleven cantrips
-#: tier: and dig effects mitigate; they do not fix a 2-of.
+#: tier: singleton plus one tutor. P(finding The Water Crystal) on the play is 33.6% by turn five,
+#: tier: 38.9% by turn seven, 44.1% by turn nine and 53.7% by turn thirteen — a coin flip on your
+#: tier: engine that late. Without it the mill halves and the clock roughly doubles, so a third of
+#: tier: games are played as a mediocre tempo deck rather than the deck described above. Transit
+#: tier: Mage came in for the SECOND Water Crystal, which changed the dead-draw problem but NOT
+#: tier: this number: two outs before, two outs after. A THIRD out (a second tutor, or restoring
+#: tier: the second copy over Gilded Lotus) would read 58.5% by turn nine, and that is the single
+#: tier: change most likely to earn this deck an A.
 #: tier: PROTECTION IS 1, close to the zero the rubric flags, in a deck whose plan rests on two
 #: tier: specific permanents surviving — The Water Crystal and Master Pakku. Losing the second
 #: tier: Tolarian Terror to Hama took its ward {2} with it; that was a knowing trade for mill, but
@@ -32,8 +35,12 @@
 #: archetype: carries mill as a two-card side plan. This variant inverts that: mill IS the deck,
 #: archetype: and the Lesson subtype is the engine that feeds it. Every card is chosen to make one
 #: archetype: of three numbers go up — mill per turn, Lessons in the graveyard, or cards in hand.
-#: archetype: THE WATER CRYSTAL IS THE WHOLE DECK, which is why it runs as a 2-of despite being
-#: archetype: legendary. "If an opponent would mill one or more cards, they mill that many cards
+#: archetype: THE WATER CRYSTAL IS THE WHOLE DECK, and it is now a SINGLETON plus Transit Mage
+#: archetype: rather than a 2-of. One copy plus a tutor finds it exactly as often as two copies —
+#: archetype: two outs either way, 44.1% by turn nine on the play — but the tutor is never the dead
+#: archetype: draw the second LEGENDARY copy becomes once one has resolved, and Transit Mage's
+#: archetype: "artifact card with mana value 4 or 5" also finds Gilded Lotus. "If an opponent would
+#: archetype: mill one or more cards, they mill that many cards
 #: archetype: plus four instead" applies to EVERY mill event separately, so it is not a +4, it is a
 #: archetype: +4 per trigger. Riverchurn Monument's {1}, {T} goes from 2 to 6. Scrabbling Skullcrab
 #: archetype: goes from 2 to 6 per enchantment or Room unlock. Exhibition Tidecaller goes from 3 to
@@ -151,8 +158,9 @@ Deck
 1 Deepmuck Desperado (OTJ) 42
 1 Hama, the Bloodbender (TLA) 224
 
-# The amplifier — 2-of despite legendary, because it is the deck
-2 The Water Crystal (FIN) 85
+# The amplifier — now a SINGLETON plus a tutor: same outs, no dead legendary draw
+1 The Water Crystal (FIN) 85
+1 Transit Mage (DFT) 70
 
 # Lesson payoffs — all three read the same graveyard
 1 Gran-Gran (TLA) 54
