@@ -81,12 +81,29 @@
 #: notes: one plus a 3/3. In a deck that wins by decking the opponent, that is the right side
 #: notes: of the trade — but if a game is lost with the opponent at 4 life and 20 cards left,
 #: notes: this is the swap to revisit.
+#: notes: EDDYMURK CRAB CAME IN FOR LOST DAYS, and the cost is worth stating because it was
+#: notes: argued against before it was applied. Eddymurk is the G-46 VIRTUAL COPY of Tolarian
+#: notes: Terror — the identical "costs {1} less for each instant and sorcery card in your
+#: notes: graveyard" clause on a different card, so the deck runs two graveyard-priced 5/5s
+#: notes: without running two of anything. Against 14 instants and sorceries it is routinely a
+#: notes: three-to-four mana 5/5, and its ETB taps two creatures, which clears blockers for
+#: notes: Veteran Ice Climber and The Mindskinner.
+#: notes: WHAT IT COST, all three of which were measured first: interaction 10 -> 9; the Lesson
+#: notes: count 10 -> 9, which is Master Pakku's X directly and fuel for the two thresholds
+#: notes: Gran-Gran and Accumulate Wisdom read at three; and ONE OF ONLY TWO RECURSION-PROOF
+#: notes: ANSWERS. Lost Days TUCKED a creature or enchantment second from the top, so unlike a
+#: notes: counter or a bounce it beat a card that rebuys itself. Zuko's Exile is now the only
+#: notes: one left, and that lands on the matchup this deck is already worst against — see the
+#: notes: graveyard-deck liability below. Gilded Lotus was the alternative cut and would have
+#: notes: held all three (interaction 10, Lessons 10, both answers) at the same avg MV 3.17;
+#: notes: it was declined in favour of keeping the ramp. If the recursion matchup proves bad,
+#: notes: that is the swap to make, not a change to Eddymurk.
 #: notes: MILL IS A CLOCK, NOT INTERACTION — see G-62. Blind mill is provably access-neutral:
 #: notes: the opponent draws library positions M+1..M+D instead of 1..D, and any fixed set of D
 #: notes: positions in a shuffled library has the same contents, so their chance of finding an
 #: notes: answer is unchanged. This deck therefore still needs REAL answers, which is why it
-#: notes: keeps six of them (Zuko's Exile, Lost Days, It'll Quench Ya! x2, Floodpits Drowner,
-#: notes: Tishana's Tidebinder) rather than becoming all mill.
+#: notes: keeps five of them (Zuko's Exile, It'll Quench Ya! x2, Floodpits Drowner, Tishana's
+#: notes: Tidebinder) rather than becoming all mill.
 #: notes: KNOWN LIABILITY, and it is worse here than in the parent: milling an opponent FEEDS a
 #: notes: graveyard deck — the G-42 shape. A deck built entirely on mill hands a recursion deck
 #: notes: its whole library. Blue/colorless Standard has the exile answers (Ghost Vacuum,
@@ -125,7 +142,6 @@ Deck
 1 Boomerang Basics (TLA) 46
 1 Sokka's Haiku (TLA) 71
 1 Zuko's Exile (TLA) 3
-1 Lost Days (TLA) 62
 2 Waterbending Lesson (TLA) 80
 
 # Rooms — Eerie triggers for Skullcrab, cheap interaction on the front
@@ -137,8 +153,9 @@ Deck
 1 Tishana's Tidebinder (LCI) 81
 1 Floodpits Drowner (DSK) 59
 
-# Threat — priced by the self-mill the deck does anyway
+# Threats — both priced by the self-mill the deck does anyway (G-46 virtual copies)
 1 Tolarian Terror (FDN) 167
+1 Eddymurk Crab (BLB) 48
 
 # Card advantage
 1 Cerebral Download (EOE) 48
@@ -153,11 +170,5 @@ Deck
 23 Island (MSH) 289
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 51a
-#~ -Tolarian Terror | +Eddymurk Crab | The VIRTUAL-COPY option (G-46) if you would rather not
-#~   run the last Terror either: {5}{U}{U} flash 5/5 reading the SAME "costs {1} less for each
-#~   instant and sorcery card in your graveyard" clause against this deck's 14 instants and
-#~   sorceries, so it is a different card doing the identical job — routinely a 3-to-4 mana 5/5.
-#~   Its ETB taps up to two creatures, which clears blockers for Veteran Ice Climber and The
-#~   Mindskinner. NOT owned and in NO other deck, so it is a wildcard spent solely for 51a, and
-#~   "enters tapped if it's not your turn" blunts the flash. Measured against the second Terror:
-#~   interaction 10 and card advantage 7 both hold, avg MV unchanged at 3.17, protection 2 -> 1.
+#~ note: applied — Eddymurk Crab in for Lost Days (the cut was Lost Days, not the
+#~   Tolarian Terror this line originally proposed).
