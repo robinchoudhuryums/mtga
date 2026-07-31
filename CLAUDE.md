@@ -513,6 +513,20 @@ directions.
   `✕ X-COST cards` and `deck.py tier` prints a one-line "avg MV under-reads" advisory.
   Both are REPORT-ONLY and must stay so — a new term in `tier_band` would silently
   re-grade the roster, exactly as the protection axis is kept out. [G-60]
+- **BEFORE DISMISSING A CARD, COUNT THE DECK PROPERTY ITS VALUE DEPENDS ON.** Four
+  dismissals were overturned in one cycle, all the same shape — a card judged on its own
+  text when the decision belonged to a number in the LIST. Michelangelo was called
+  "circular, it needs combat damage" in the same commit that added Rogue's Passage to
+  force damage through (the deck had SIX enablers); the power-as-mana dorks were called
+  circular because "only Craterhoof pumps", in a deck running Colossification (+20/+20,
+  not a win condition); Groundchuck & Dirtbag was cut as "a six-drop worth less than a
+  two-drop" from the deck with 27 LANDS AND ONE CREATURE MANA SOURCE, which is precisely
+  what its land-doubling reads; Agatha's Soul Cauldron was called "too narrow, needs
+  exiled creatures" in the deck that SELF-MILLS four different ways. The control case is
+  The Earth Crystal — rejected twice, correct the third time, with the card unchanged and
+  the deck different. **State the count, then decide** (lands vs creature mana sources,
+  trample grants, mill effects, counter sources), and when a card is parked say WHICH
+  number would have to move for it to come back. [G-61]
 
 ## Known Issues
 

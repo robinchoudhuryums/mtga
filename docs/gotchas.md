@@ -2130,3 +2130,40 @@ fixed-cost card is not flagged and that lands and duplicate copies are excluded.
 an `{X}` spell properly would need a model of what X you actually pay, which depends on
 the board. Read the flagged cards and judge; do not try to correct `avg_mv` by hand,
 because `check_tier.py` anchors the floor formula against the raw value.
+
+
+## [G-61] Before dismissing a card, count the deck property its value depends on
+
+**Before dismissing a card, count the deck property its value depends on.** Four
+dismissals were overturned inside a single cycle, every one the same shape: a card judged
+on its own text when the decision actually belonged to a number in the LIST. In each case
+the user supplied the number and the verdict flipped immediately.
+
+| card | the dismissal | the count that decided it |
+|---|---|---|
+| Michelangelo, Improviser | "circular — only triggers on combat damage to a player" | deck 50 has **six** ways to force damage through (Craterhoof ×2, Garruk's Uprising ×2, Aggressive Mammoth, Rogue's Passage) |
+| Topiary Lecturer / Mona Lisa / Doc Samson / Rainveil Rejuvenator | "circular — the only pump is Craterhoof, which wins anyway" | the deck runs **Colossification**, +20/+20 and not a win condition; Topiary Lecturer also self-scales via Increment |
+| Groundchuck & Dirtbag | "a six-drop worth less than a two-drop that scales" | deck 50a runs **27 lands and exactly 1 creature mana source**, so "tap a land for mana, add {G}" doubles nearly the whole base |
+| Agatha's Soul Cauldron | "too narrow — needs exiled creatures with activated abilities" | deck 50a **self-mills four ways**, so it fills its own graveyard as a side effect of its engine |
+
+**The control case is The Earth Crystal.** It was measured and rejected twice, then went
+into both decks on the third pass — and the card never changed. What changed was Doc
+Samson arriving in 50 (a second counter-doubler, so the two stack) and Agatha's Soul
+Cauldron arriving in 50a (whose gate is creatures with +1/+1 counters). A rejection is
+therefore a statement about a deck at a moment, not about a card.
+
+**The failure mode is specifically GENERALISING FROM ONE INSTANCE.** "Craterhoof is the
+only pump" was true of the best-known pump and false of the list. "It needs combat damage"
+was true of the trigger and false of a deck holding six enablers. Each dismissal was a
+correct sentence about the card attached to an unchecked assumption about the deck.
+
+**The rule: state the count, then decide.** Lands vs creature mana sources, trample
+grants, mill effects, counter sources, bodies of a type — these are all cheap to measure
+and each one has now flipped at least one verdict. And when a card is parked rather than
+rejected, say WHICH number would have to move for it to come back; that is what makes a
+flex line worth reading later instead of re-litigating from scratch (see G-04 on flex
+lines rotting silently, and the flex entries in decks 48 and 50 for the shape).
+
+**Residual:** nothing gates this — no check can see a judgement made in prose. `deck.py
+stats`, `shape`, `engines` and `redundancy` all print the relevant counts, so the
+discipline is to run one of them before writing the word "circular" or "too narrow".

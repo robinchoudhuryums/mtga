@@ -571,7 +571,11 @@ convention already used for double-faced card ownership.
 
 `stats` also flags **cost nature** — `◊` for cards whose text reduces their cost
 or grants flash (convoke/delve/"costs {1} less", so the printed mana value doesn't
-mislead), `△` for abilities/modes that carry an added or conditional cost — and
+mislead), `△` for abilities/modes that carry an added or conditional cost, `✕` for
+**X-cost cards**, which the curve books at **MV 1** because X counts as 0 off the
+stack (right for castability, wrong as a curve reading — a card you cast for four
+registers as a one-drop *and* as an early drop; `tier` prints a matching "avg MV
+under-reads" advisory beside the vector) — and
 breaks the nonland spells into **functional roles**: a heuristic read of card text
 that counts removal / counters / card advantage / ramp / anthems (with an
 interaction total), so "light on interaction" is *measured*, not eyeballed. Because
