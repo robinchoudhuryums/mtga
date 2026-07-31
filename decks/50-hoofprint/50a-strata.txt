@@ -4,12 +4,12 @@
 #: based-on: deck.txt
 #: plan: midrange
 #: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 5
-#: tier: plus card advantage 1 at a 3.70 curve. Three weaknesses:
+#: tier: plus card advantage 1 at a 3.61 curve. Three weaknesses:
 #: tier: 1. CARD ADVANTAGE 1 IS THE LOWEST FIGURE ON THE ROSTER. Icetill Explorer, Traveling
 #: tier:    Chocobo, Agatha's Soul Cauldron and Web of Life and Destiny all generate real value
 #: tier:    the classifier cannot read, so the true number is higher — but not by much, and the
 #: tier:    deck has no unconditional draw spell at all.
-#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.70 with only 12 early drops, and
+#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.61 with only 13 early drops, and
 #: tier:    the engine needs lands in the GRAVEYARD before it does anything, so the first three
 #: tier:    turns are close to blank. Against a fast start it is behind before Lumra is castable.
 #: tier: 3. CENTRAL THEMES 25 is the most diffuse reading on the roster after deck 23. That is
@@ -73,6 +73,27 @@
 #: notes: counters that is STILL A LAND — a body that Lumra and Grovestrider still count, and
 #: notes: which returns to the battlefield if it dies. It is the one bridge back to the parent
 #: notes: deck's axis, and it is deliberately small.
+#: notes: PASS 4 — A THIRD MASS LAND RETURN, AND TWO LANDFALL SCALERS.
+#: notes: AFTERMATH ANALYST ({1}{G}) is the card this deck was missing: "when this creature
+#: notes: enters, MILL THREE" and then "{3}{G}, sacrifice this creature: return ALL land cards
+#: notes: from your graveyard to the battlefield tapped". It is Lumra's effect on a two-drop
+#: notes: body, it self-mills to set itself up, and it is the third copy of the engine after
+#: notes: Lumra and Summon: Titan — the one line this deck cannot afford to draw late.
+#: notes: TIFA LOCKHART ({1}{G}, trample) doubles her own power on EVERY landfall. With two land
+#: notes: drops a turn from Icetill Explorer and Loot, and Traveling Chocobo doubling landfall
+#: notes: triggers, that is exponential rather than incremental.
+#: notes: BRISTLY BILL, SPINE SOWER places a counter on every landfall — doubled by The Earth
+#: notes: Crystal and doubled again by Traveling Chocobo — and his "{3}{G}{G}: double the number
+#: notes: of +1/+1 counters on each creature you control" is a mana sink that also widens
+#: notes: Agatha's Soul Cauldron's gate across the whole board at once.
+#: notes: OUT: Groundchuck & Dirtbag (a six-drop whose "tap a land for mana, add {G}" is worth
+#: notes: less than a two-drop that scales) and the last two vanilla dorks, Llanowar Elves and
+#: notes: Druid of the Cowl. This deck's mana comes from LANDS, so a 1/1 that taps for {G} was
+#: notes: never the acceleration it needed.
+#: notes: MEASURED BETTER: avg MV 3.70 -> 3.61 and early drops 12 -> 13, with interaction 5,
+#: notes: card advantage 1, protection 3, creature count 20 and the below-90 count at zero all
+#: notes: held. Adding Inspiring Call and Punishing Punch on top was tried and cost interaction
+#: notes: (5 -> 3), so the removal suite stayed intact.
 #: notes: PASS 3 — OVERGROWN ZEALOT, SPINESEEKER CENTIPEDE AND OUTCASTER GREENBLADE OUT. The
 #: notes: two land-fetch bodies look on-theme for a lands deck and are not: this list already
 #: notes: fetches with The Earth King, Overlord of the Hauntwoods, Loot, Icetill Explorer and
@@ -155,6 +176,7 @@
 
 # The engine — mill lands on purpose, then return them all at once
 1 Icetill Explorer (EOE) 192
+1 Aftermath Analyst (MKM) 148
 1 Lumra, Bellow of the Woods (BLB) 183
 1 Summon: Titan (FIN) 204
 1 Traveling Chocobo (FIN) 210
@@ -173,14 +195,13 @@
 1 Famished Worldsire (EOE) 182
 
 # Ramp
-1 Llanowar Elves (M19) 314
 1 Sazh's Chocobo (FIN) 200
+1 Tifa Lockhart (FIN) 206
+1 Bristly Bill, Spine Sower (OTJ) 157
 1 Wildwood Scourge (FDN) 236
 1 Jadelight Spelunker (LCI) 196
-1 Druid of the Cowl (M19) 177
 1 Badgermole Cub (TLA) 167
 1 Mona Lisa, Science Geek (TMT) 123
-1 Groundchuck & Dirtbag (TMT) 115
 
 # Cheat into play — the land-aware half of the family's options
 1 Ojer Kaslem, Deepest Growth // Temple of Cultivation (LCI) 204
@@ -208,4 +229,4 @@
 22 Forest (MSH) 295
 
 # Flex — measured and parked. See: deck.py flex 50a
-#~ -Plow Through | +A Realm Reborn | "Other permanents you control have '{T}: Add one mana of any color'" — and the breadth is the point: not just lands or creatures, but the enchantments (Sapling Nursery, Primeval Bounty, Garruk's Uprising) and artifacts too, which no other mana card here reaches. This deck has no Enduring Vitality, so nothing currently turns its creatures into mana at all. Parked purely on COST: at {4}{G}{G} it is the wrong end of the curve for the slowest deck on the roster. Measured as the fourth add of a package (with Sledge-Class Seedship, Summoner's Grimoire and Rainveil Rejuvenator) it read avg MV 4.18 with SEVEN early drops and interaction 4 — unplayable. Take it only after the curve comes down, e.g. if the land-fetch bodies get cheaper replacements.
+#~ -Hard-Hitting Question | +A Realm Reborn | "Other permanents you control have '{T}: Add one mana of any color'" — and the breadth is the point: not just lands or creatures, but the enchantments (Sapling Nursery, Primeval Bounty, Garruk's Uprising) and artifacts too, which no other mana card here reaches. This deck has no Enduring Vitality, so nothing currently turns its creatures into mana at all. Parked purely on COST: at {4}{G}{G} it is the wrong end of the curve for the slowest deck on the roster. Measured as the fourth add of a package (with Sledge-Class Seedship, Summoner's Grimoire and Rainveil Rejuvenator) it read avg MV 4.18 with SEVEN early drops and interaction 4 — unplayable. Take it only after the curve comes down, e.g. if the land-fetch bodies get cheaper replacements.

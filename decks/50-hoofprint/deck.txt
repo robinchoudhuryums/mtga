@@ -3,26 +3,29 @@
 #: colors: G
 #: plan: midrange
 #: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 5
-#: tier: plus card advantage 2 at a 3.17 curve. Three weaknesses the floor cannot price:
-#: tier: 1. EVERY REMOVAL SPELL IS A FIGHT EFFECT, so the interaction and the board are the SAME
-#: tier:    resource. A sweeper takes both in one card: the creatures die and the six removal
-#: tier:    spells in hand become blanks at the same moment. No other deck on the roster has its
-#: tier:    answers coupled to its threats this tightly.
-#: tier: 2. CARD ADVANTAGE 2 WITH NO REAL REFUEL. Garruk's Uprising looks like the fix and is
-#: tier:    not — both its draw triggers key on power 4+ and only 4 of 25 creature copies
-#: tier:    qualify on printed stats. It is in the deck for its unconditional trample.
-#: tier: 3. PROTECTION 2 against five named build-arounds, and the finishers are sorcery-speed
-#: tier:    permanents. A removal spell on the turn Craterhoof resolves costs the whole game
-#: tier:    plan, not a card. Swiftfoot Boots is half an answer, not a solution — it protects
-#: tier:    one creature at a time and only if you have {1} spare to re-equip.
-#: tier: WHAT ARGUES UP, and why this may be A once played: `shape` reads WIDE 10 / TALL 7 on 25
-#: tier: creatures with 17 early drops — the plan and the measurement agree completely, which is
-#: tier: rare. The kill is REDUNDANT four ways (Craterhoof x3, Jumbo Cactuar, Colossification,
-#: tier: Famished Worldsire) rather than one card deep, and the mana base is unusually clean for
-#: tier: a deck with this much {G}{G}{G}. The ceiling is genuinely a turn-five kill from an
-#: tier: empty-looking board of 1/1 mana dorks.
-#: tier: PROVISIONAL: unplayed, and 23 craft targets — this was built as the best version with
-#: tier: ownership ignored by request, so the letter grades the LIST, not the pile.
+#: tier: plus card advantage 3 at a 3.25 curve. Two of the three weaknesses this deck was first
+#: tier: graded on have since been ADDRESSED, and the letter is held pending play rather than on
+#: tier: the original argument. What remains:
+#: tier: 1. EVERY REMOVAL SPELL IS STILL A FIGHT EFFECT, so the interaction and the board are the
+#: tier:    SAME resource. A sweeper takes both in one card: the creatures die and the five
+#: tier:    removal spells in hand become blanks at the same moment. No other deck on the roster
+#: tier:    couples its answers to its threats this tightly, and nothing added since fixes it.
+#: tier: 2. THE FINISHERS ARE STILL SORCERY-SPEED PERMANENTS. Protection is now 3 rather than 2 —
+#: tier:    Inspiring Call grants indestructible to the whole countered board and Swiftfoot Boots
+#: tier:    covers one creature — but a removal spell on the turn Craterhoof resolves still costs
+#: tier:    the game plan rather than a card.
+#: tier: 3. IT IS A COMBO DECK PRETENDING TO BE A MIDRANGE ONE. The ceiling now depends on
+#: tier:    stacking three counter multipliers (The Earth Crystal, Doc Samson, Michelangelo
+#: tier:    Weirdness to 11) on top of a counter source, and each is a separate card that must
+#: tier:    survive. The floor without them is a pile of small mana creatures.
+#: tier: WHAT ARGUES UP: card advantage went 2 -> 3 on a card the classifier UNDER-reads badly —
+#: tier:    Inspiring Call draws one per countered creature, which in a deck multiplying counters
+#: tier:    is routinely three or four cards for {2}{G}. `shape` reads WIDE 10 / TALL 7 on 23
+#: tier: creatures with 16 early drops, so plan and measurement agree. The kill is redundant four
+#: tier: ways (Craterhoof x2, Jumbo Cactuar, Colossification, Famished Worldsire) rather than one
+#: tier: card deep, and no metric here can see mana PRODUCTION, which is the deck's real engine.
+#: tier: PROVISIONAL: unplayed, and the craft list is long — this was built as the best version
+#: tier: with ownership ignored by request, so the letter grades the LIST, not the pile.
 #: protect: Craterhoof Behemoth; Enduring Vitality; Garruk's Uprising; Famished Worldsire; Three Tree City
 #: archetype: MONO-GREEN CREATURE-COUNT RAMP. Every deck ramps toward something; this one ramps
 #: archetype: with the same resource it wins with. The mana comes from CREATURES, so the board
@@ -165,6 +168,27 @@
 #: notes: advantage 2, protection 2, avg MV 3.11 -> 3.25, early drops 21 -> 17, creatures 26 ->
 #: notes: 25, and cards below 90% on curve 3 -> 2. The curve is the price; the ceiling is what
 #: notes: was bought, and no metric here can see mana PRODUCTION at all.
+#: notes: PASS 5 — A THIRD COUNTER MULTIPLIER, AND THE CARD-ADVANTAGE FIX. The graded weakness
+#: notes: on this deck was card advantage 2 with no real refuel, and protection 2. Both moved.
+#: notes: MICHELANGELO, WEIRDNESS TO 11 ({1}{G}) is the third multiplier: "if one or more +1/+1
+#: notes: counters would be put on a creature you control, that many PLUS ONE are put on it
+#: notes: instead". It stacks with The Earth Crystal (twice that many) and Doc Samson (that many
+#: notes: plus one) — all three are replacement effects, so you order them and take the best
+#: notes: line. One counter becomes eight. He also makes a Mutagen token, which is another
+#: notes: counter source. This is a DIFFERENT CARD from Michelangelo, Improviser, already here.
+#: notes: BRISTLY BILL, SPINE SOWER ({1}{G}) places a counter on every landfall and then offers
+#: notes: "{3}{G}{G}: DOUBLE the number of +1/+1 counters on each creature you control" — a mana
+#: notes: sink that reads the whole board, in a deck whose whole mana engine is creature-based.
+#: notes: INSPIRING CALL IS THE REFUEL: "draw a card for EACH creature you control with a +1/+1
+#: notes: counter on it. Those creatures gain indestructible until end of turn." In a deck that
+#: notes: multiplies counters eight ways it is both a mass draw and a sweeper answer, which is
+#: notes: why card advantage AND protection both moved on one card.
+#: notes: PAID FOR WITH THE THREE WEAKEST BODIES, not with removal: Sunshower Druid and Sazh's
+#: notes: Chocobo (both added last pass and both strictly worse than what replaced them) and
+#: notes: Tender Wildguide. Cutting interaction was tried and REJECTED — it took the count from
+#: notes: 5 to 3, which drops the deck off the A-floor entirely.
+#: notes: MEASURED: card advantage 2 -> 3, protection 2 -> 3, interaction held at 5, avg MV 3.17
+#: notes: -> 3.25, early drops 17 -> 16, creatures 24 -> 23, below-90 held at 2.
 #: notes: PASS 4 — THE VANILLA DORKS AND THE ETB-LAND BODIES ARE OUT. Overgrown Zealot,
 #: notes: Rootrider Faun, Thornvault Forager, Spineseeker Centipede and Outcaster Greenblade all
 #: notes: left together. The first three were "{T}: Add {G}" with a rider this deck never uses;
@@ -220,8 +244,8 @@
 
 # Mana creatures — bodies, ramp, and Craterhoof's X, all at once
 1 Llanowar Elves (M19) 314
-1 Sazh's Chocobo (FIN) 200
-1 Sunshower Druid (BLB) 195
+1 Michelangelo, Weirdness to 11 (TMT) 121
+1 Bristly Bill, Spine Sower (OTJ) 157
 1 Shang-Chi, Master of Kung Fu (MSH) 187
 1 Topiary Lecturer (SOS) 165
 1 Badgermole Cub (TLA) 167
@@ -230,7 +254,6 @@
 1 Mona Lisa, Science Geek (TMT) 123
 1 Doc Samson, Super Psychiatrist (MSH) 164
 1 The Earth Crystal (FIN) 184
-1 Tender Wildguide (BLB) 196
 1 Transdimensional Bovine (TMT) 134
 1 Wildwood Scourge (FDN) 236
 1 Jadelight Spelunker (LCI) 196
@@ -266,6 +289,7 @@
 1 Bite Down (FDN) 212
 1 Pawpatch Formation (BLB) 186
 1 Heritage Reclamation (TDM) 145
+1 Inspiring Call (TLE) 168
 1 Plow Through (DFT) 174
 
 # Lands (24) — Three Tree City names Druid; Rogue's Passage is the 2nd evasion route
@@ -274,4 +298,4 @@
 22 Forest (MSH) 295
 
 # Flex — measured and parked. See: deck.py flex 50
-#~ -Clash of the Eikons | +Earth's Mightiest Heroes | OWNED, and the biggest cheat effect in green: teamwork 5 (tap creatures with total power 5+), reveal eight, and put ANY NUMBER of creature cards from among them onto the battlefield. In a deck that goes wide and then reads creature count three ways, resolving it with teamwork is often three or four bodies at once — and Craterhoof's X counts every one. Parked because it MEASURED as a curve cost in every configuration: against Clash of the Eikons it took interaction 6 -> 5, avg MV 3.11 -> 3.25 and early drops 21 -> 20; against Great Forest Druid, avg MV -> 3.22 with a creature lost; adding it alongside Sledge-Class Seedship read 3.28 / 19 early. This deck's whole advantage is a 3.11 curve with 21 early drops, and it already runs TWO cheat engines (Michelangelo, Loot). Take this only if the deck plays out as top-heavy-but-slow rather than fast-but-shallow. The rest of the cheat package went to 50a, which is slow enough to pay for it: Ojer Kaslem, Kona Rescue Beastie and Web of Life and Destiny.
+#~ -Plow Through | +Earth's Mightiest Heroes | OWNED, and the biggest cheat effect in green: teamwork 5 (tap creatures with total power 5+), reveal eight, and put ANY NUMBER of creature cards from among them onto the battlefield. In a deck that goes wide and then reads creature count three ways, resolving it with teamwork is often three or four bodies at once — and Craterhoof's X counts every one. Parked because it MEASURED as a curve cost in every configuration: against Clash of the Eikons it took interaction 6 -> 5, avg MV 3.11 -> 3.25 and early drops 21 -> 20; against Great Forest Druid, avg MV -> 3.22 with a creature lost; adding it alongside Sledge-Class Seedship read 3.28 / 19 early. This deck's whole advantage is a 3.11 curve with 21 early drops, and it already runs TWO cheat engines (Michelangelo, Loot). Take this only if the deck plays out as top-heavy-but-slow rather than fast-but-shallow. The rest of the cheat package went to 50a, which is slow enough to pay for it: Ojer Kaslem, Kona Rescue Beastie and Web of Life and Destiny.
