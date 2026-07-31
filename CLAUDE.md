@@ -527,6 +527,20 @@ directions.
   the deck different. **State the count, then decide** (lands vs creature mana sources,
   trample grants, mill effects, counter sources), and when a card is parked say WHICH
   number would have to move for it to come back. [G-61]
+- **BLIND MILL IS A CLOCK, NOT INTERACTION, and that is provable, not a matter of taste.**
+  Milling M cards makes the opponent draw library positions M+1..M+D instead of 1..D, and
+  in a random permutation any fixed set of D positions has the same distribution — so
+  `P(they draw one of their k answers)` is IDENTICAL either way. Mill changes neither
+  threat density nor access; it changes exactly one thing, the turn the library empties.
+  Its payoff is binary, so it belongs next to the deck's other CLOCKS (turns-to-kill),
+  never in its removal count. It is most tempting when you are behind on board, which is
+  exactly when milling six does nothing about the threat killing you. **Three exceptions,
+  all needing the mill to stop being blind:** SELECTIVE mill ("look at top X, bin one") IS
+  interaction; mill + graveyard EXILE answers recursion (blue/colorless Standard: Ghost
+  Vacuum, Soul-Guide Lantern, Wreck Remover, Mechanical Mobster); and a library already
+  short. **The inverse is the G-42 shape** — blind mill FEEDS a graveyard deck. If the
+  scorecard really says interaction, the fix is `suggest --needs` per G-38, not a mill
+  card. Deck 51 is the worked case: its mill package is a second win condition. [G-62]
 
 ## Known Issues
 

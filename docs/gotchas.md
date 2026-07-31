@@ -2167,3 +2167,59 @@ lines rotting silently, and the flex entries in decks 48 and 50 for the shape).
 **Residual:** nothing gates this — no check can see a judgement made in prose. `deck.py
 stats`, `shape`, `engines` and `redundancy` all print the relevant counts, so the
 discipline is to run one of them before writing the word "circular" or "too narrow".
+
+## [G-62] Blind mill is a CLOCK, not interaction — it is provably access-neutral
+
+The question that produced this: *"if the deck is low on interaction, is mill-as-interaction
+by disrupting the opponent's deck a valid tactic?"* It is the most common intuition about
+mill and it is wrong for a reason that can be stated exactly, so it is worth writing down
+rather than re-deriving.
+
+**The proof.** A library is a uniformly random permutation of L cards, k of which are the
+opponent's relevant threats or answers. Over the rest of the game they will draw D cards.
+With no mill they draw positions 1..D. If you mill M cards first they draw positions
+M+1..M+D. Any fixed set of D positions in a uniformly random permutation has the same joint
+distribution of contents, so
+
+    P(at least one of the k in their next D draws)  =  1 - C(L-k, D) / C(L, D)
+
+in BOTH cases. Identical. Milling changes neither the density of threats in the library
+(composition-neutral) nor the probability that any particular card reaches their hand
+(access-neutral). It holds for every k, every D, and every M, right up until L < M + D —
+at which point they deck out and lose. That boundary is the entire value of mill.
+
+**So mill's payoff is binary.** Until the library is genuinely empty, a milled opponent is
+in exactly the same position as an unmilled one. Interaction changes the board this turn;
+mill changes nothing this turn and everything on the turn the library runs out. That is a
+clock — the same category as a creature, priced in turns-to-kill — and it should be compared
+against the deck's other clocks, never against its removal count.
+
+**Where the intuition comes from, and why it fails hardest when invoked.** The appeal of
+"mill as interaction" is strongest when you are behind on board, which is precisely when it
+does least: a resolved threat is killing you and milling six does not touch it. Mill is
+best when you are stable and have time — the same condition under which you did not need
+interaction. The tactic is therefore anti-correlated with the deficit it is proposed to fix.
+
+**The three real exceptions, all of which require the mill to stop being blind:**
+
+1. **Selective mill IS interaction** — "look at the top X, put one in the graveyard" filters
+   a choice and does change what they draw. Blind mill does not.
+2. **Mill paired with graveyard EXILE** is disruption, because the exile half answers
+   recursion. In blue/colorless Standard that is Ghost Vacuum, Soul-Guide Lantern,
+   Wreck Remover, Mechanical Mobster, Magic Pot, Gravestone Strider (measured 2026-07).
+3. **A library already short** — late enough that M + D exceeds L, the boundary above.
+
+**And the inverse, which is the G-42 shape:** blind mill actively HELPS a graveyard deck.
+You are filling the zone their recursion reads. A mill package should be assumed to be a
+liability against recursion until the sideboard says otherwise.
+
+**Deck 51 is the worked case.** Its mill package (Riverchurn Monument + Scrabbling
+Skullcrab, amplified by The Water Crystal's +4) was added as a SECOND WIN CONDITION and the
+deck's `#: tier:` block says so. It was never interaction, and the deck did not need it to
+be: `suggest 51 --needs` reads "Interaction: 9/5 ok". Had interaction genuinely been the
+deficit, the fix comes from the needs model per G-38 — which surfaced Summon: Bahamut
+(score 9.5) and Dawnsire, Sunstar Dreadnought (6.5), both already OWNED — and not from a
+mill card.
+
+**Residual:** nothing gates this either. `role_tally` correctly does not count a mill card
+as interaction, so the tooling has never made this mistake; only prose can.

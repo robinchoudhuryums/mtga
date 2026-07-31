@@ -34,7 +34,7 @@
 #: tier: best pair on the roster — and the Room suite means the deck's "dead late-game cards"
 #: tier: problem does not exist, because every cheap answer converts into a mana sink. Protection
 #: tier: 3 on top of that interaction is a real resilience profile.
-#: tier: PROVISIONAL: unplayed and 19 craft targets. What proves or disproves it in the first
+#: tier: PROVISIONAL: unplayed and 20 craft targets. What proves or disproves it in the first
 #: tier: session is whether trading five answers for five threats left enough answers.
 #: protect: Mirror Room // Fractured Realm; Omniscience; Gilded Lotus; The Eternity Elevator; Archmage of Runes
 #: archetype: MONO-BLUE ROOMS CONTROL. Every Room is two spells stapled together at opposite
@@ -58,7 +58,7 @@
 #: archetype: creature, and Fractured Realm unlocks separately for {5}{U}{U}. You never pay ten.
 #: archetype: OMNISCIENCE IS THE ONE HONEST TEN-DROP and it is a single copy on purpose. Once it
 #: archetype: resolves every card in hand is free, which is why the deck runs four unconditional
-#: archetype: draw spells and two X-spells: the enchantment does nothing without cards to spend
+#: archetype: draw spells and an X-spell: the enchantment does nothing without cards to spend
 #: archetype: it on. Gilded Lotus, The Eternity Elevator and Matzalantli are the ramp that makes
 #: archetype: turn eight realistic rather than aspirational.
 #: archetype: DISTINCTNESS from deck 47 Grid Overload, the other mono-blue deck. 47 is an
@@ -66,8 +66,18 @@
 #: archetype: with oversized bodies. This deck fields almost no creatures, wins by resolving
 #: archetype: enormous spells, and its curve runs the opposite direction — 47's bad draw is "not
 #: archetype: enough artifacts", this one's is "not enough time".
+#: notes: THE MILL PACKAGE IS A CLOCK, NOT INTERACTION, and the deck must not be read as
+#: notes: having 11 answers because it has 9 plus two mill cards. Blind mill is provably
+#: notes: access-neutral — the opponent draws library positions M+1..M+D instead of 1..D, and
+#: notes: any fixed set of D positions in a shuffled library has the same contents, so their
+#: notes: chance of finding an answer is unchanged. The only thing mill changes is the turn
+#: notes: the library empties. Compare Riverchurn against Tolarian Terror (a clock), never
+#: notes: against Get Out (an answer). See G-62.
+#: notes: KNOWN LIABILITY, unfixed: milling an opponent FEEDS a graveyard deck — the G-42
+#: notes: shape, a card that fights the matchup it is played in. Blue/colorless Standard has
+#: notes: the exile answers (Ghost Vacuum, Soul-Guide Lantern, Wreck Remover) but none are in
+#: notes: the 60. Treat this as a sideboard hole against recursion, not a solved problem.
 #: notes: BUILT 2026-07 from scratch, around Omniscience and Fractured Realm by request.
-#: notes: UNGRADED ON PURPOSE — no `#: tier:` until the metrics are read.
 #: notes: WHY ROOMS RATHER THAN A GENERIC BIG-MANA PILE. The two named cards want different
 #: notes: things — Omniscience wants expensive cards in hand, Fractured Realm wants TRIGGERS —
 #: notes: and a deck built for one is usually bad at the other. Rooms resolve that: their unlock
