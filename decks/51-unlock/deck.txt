@@ -3,17 +3,20 @@
 #: colors: U
 #: plan: control
 #: tier: B — PROVISIONAL, one band below the measurable floor, which still reads A on
-#: tier: interaction 7 plus card advantage 8 at a 4.09 curve. The list was rebalanced after
+#: tier: interaction 6 plus card advantage 9 at a 4.14 curve. The list was rebalanced after
 #: tier: the first grade: the cheapest and most marginal interaction pieces became threats
-#: tier: and engines across two passes, so interaction 14 -> 7 while the clock more than
-#: tier: doubled. SEVEN IS NOW THE NUMBER TO WATCH — it clears the A-floor's 5 with little
-#: tier: room, and it is the figure that decides whether this deck was tuned or hollowed out.
+#: tier: and engines across three passes, so interaction 14 -> 6 while the clock more than
+#: tier: doubled. SIX IS THE NUMBER TO WATCH — one above the A-floor's five, and the figure
+#: tier: that decides whether this deck was tuned or hollowed out. It was accepted knowingly
+#: tier: on the last pass (Twist Reality out for Bruce Banner, measured before applying), so
+#: tier: if the first session is lost to a resolved threat rather than to a slow start, this
+#: tier: is the line that was wrong.
 #: tier: What remains is still the best-SHAPED interaction on the roster (nearly all
 #: tier: instant-speed, most of it answering a noncreature permanent), and Summon: Bahamut
 #: tier: adds the deck's first effects that DESTROY, but shape does not substitute for count.
-#: tier: WEAKNESS 1 IS GONE. The deck no longer wins on five cards: Stormkeld Prowler, Kitsa,
-#: tier: Norman Osborn, Ghostly Keybearer, Krang & Shredder and Summon: Bahamut join Tolarian
-#: tier: Terror, Krang Utrom Warlord, The Dawning Archaic and Kiora. Creatures 8 -> 17.
+#: tier: WEAKNESS 1 IS GONE. The deck no longer wins on five cards: Stormkeld Prowler, Norman
+#: tier: Osborn, Ghostly Keybearer, Krang & Shredder, Ramos and Summon: Bahamut join Tolarian
+#: tier: Terror, Krang Utrom Warlord, The Dawning Archaic and Kiora. Creatures 8 -> 18.
 #: tier: Tolarian Terror went to a SINGLE copy for The Walls of Ba Sing Se, which is not a
 #: tier: threat at all — "other permanents you control have indestructible" protects
 #: tier: Omniscience, Fractured Realm, Gilded Lotus and every body listed above, in the deck
@@ -22,8 +25,10 @@
 #: tier: below four mana (Gilded Lotus {5}, The Eternity Elevator {5}, Matzalantli {3}), but
 #: tier: The Water Crystal shaves {1} off every blue spell — 29 of the 35 nonland cards — and
 #: tier: Keys to the House turns Fractured Realm's {5}{U}{U} door into four total mana split
-#: tier: across two turns. 12 early drops is still low for a deck with no sweeper, and that
-#: tier: is the live risk.
+#: tier: across two turns. Ramos, Dragon Engine is the third route and the one the identity
+#: tier: column hid: its cost is {6} COLORLESS, so it casts on Islands, and five +1/+1
+#: tier: counters convert into TEN mana. 12 early drops is still low for a deck with no
+#: tier: sweeper, and that is the live risk.
 #: tier: THERE IS NOW A SECOND WAY TO WIN, and it costs two slots because the payoff was
 #: tier: already in the deck. The Water Crystal's "if an opponent would mill, they mill that
 #: tier: many plus four" was earning its slot as a cost reducer; Riverchurn Monument and
@@ -59,7 +64,7 @@
 #: archetype: THE BIGGEST TARGET IS NOT A ROOM. Archmage of Runes reads "whenever you cast an
 #: archetype: instant or sorcery spell, draw a card" — doubled, that is TWO cards per spell, and it
 #: archetype: is the single largest thing Fractured Realm does in this deck. The other permanents it
-#: archetype: doubles: Pensive Professor, Stormkeld Prowler, Kitsa, Norman Osborn's connive,
+#: archetype: doubles: Pensive Professor, Stormkeld Prowler, Ramos's counters, Norman Osborn's connive,
 #: archetype: Ghostly Keybearer's unlock, Lady Octopus's ingenuity counters (two per turn ->
 #: archetype: FOUR), Scrabbling Skullcrab's Eerie mill, Tishana's Tidebinder, Floodpits Drowner, Krang &
 #: archetype: Shredder, The Dawning Archaic — and Summon: Bahamut, whose SAGA CHAPTERS are
@@ -125,8 +130,8 @@
 #: notes: EXILES what it casts, and Tolarian Terror x2 price off that same eight-card pool, so
 #: notes: three cards compete for one thin resource. Protected as a deliberate call, not because
 #: notes: the numbers demanded it.
-#: notes: THE IDENTITY-COLUMN BATCH. Lady Octopus, Kitsa, Norman Osborn, The Walls of Ba Sing
-#: notes: Se and Ghostly Keybearer came in together, and three of them are here only because a
+#: notes: THE IDENTITY-COLUMN BATCH, now six cards. Lady Octopus, Norman Osborn, The Walls of Ba
+#: notes: Sing Se, Ghostly Keybearer, Bruce Banner and Ramos, and FOUR are here only because a
 #: notes: bulk triage that sorted the pile on `Color(s)` was redone against the printed COST
 #: notes: (G-58, bulk-triage variant). NORMAN OSBORN is the clearest case: identity U/B/R, cost
 #: notes: {1}{U} — an unblockable two-drop that connives on damage, DOUBLED by Fractured Realm,
@@ -135,9 +140,18 @@
 #: notes: two ingenuity counters a turn become FOUR under Fractured Realm, and "{T}: cast an
 #: notes: artifact spell with mana value <= counters WITHOUT paying its mana cost" points at the
 #: notes: deck's EIGHT artifacts, including Gilded Lotus, Planetarium and a 9-mana Krang.
+#: notes: BRUCE BANNER AND RAMOS ARE BOTH CASTABILITY CORRECTIONS. Banner's identity is U/R/G and
+#: notes: its cost is {U}; Ramos's identity is WUBRG and its cost is {6}. Neither is a hybrid —
+#: notes: Banner's stray comes from a TRANSFORM cost and Ramos's from a MANA ABILITY, two routes
+#: notes: into the identity column that the hybrid framing alone does not cover. Banner is also
+#: notes: a MODAL DFC: The Incredible Hulk has a real {2}{R}{R}{G}{G} cost and is castable from
+#: notes: hand, so it is a live free-cast target under Omniscience or Planetarium even though
+#: notes: this deck can never pay for it. `card-mana.csv` records only the front cost, which is
+#: notes: a known data gap, not a rules fact.
 #: notes: THE COST WAS INTERACTION, and it is stated here rather than buried: Cryogen Relic, Get
-#: notes: Out, Spell Pierce and Into the Flood Maw all left, taking the count 10 -> 7 and avg MV
-#: notes: 3.97 -> 4.09. That is the deliberate trade — a deck that answered everything and could
+#: notes: Out, Spell Pierce, Into the Flood Maw and Twist Reality all left, taking the count
+#: notes: 10 -> 6 and avg MV 3.97 -> 4.14. That is the deliberate trade — a deck that answered
+#: notes: everything and could
 #: notes: not close became one that closes and answers less. If the first session loses to a
 #: notes: fast start rather than to an unanswered threat, this is the paragraph that was wrong.
 #: notes: BUILT 2026-07 from scratch, around Omniscience and Fractured Realm by request.
@@ -178,17 +192,18 @@
 1 The Water Crystal (FIN) 85
 1 Archmage of Runes (FDN) 30
 1 Lady Octopus, Inspired Inventor (SPM) 35
+1 Ramos, Dragon Engine (FDN) 678
 
 # Card advantage — Omniscience needs a hand to spend
 1 Cerebral Download (EOE) 48
 1 Finale of Revelation (FDN) 589
 1 Spellgyre (BLB) 72
 1 Pensive Professor (SOS) 63
+1 Bruce Banner (MSH) 49
 
 # Counters
 1 Long River's Pull (BLB) 58
 1 Tishana's Tidebinder (LCI) 81
-1 Twist Reality (DSK) 77
 
 # Bounce and tempo — blue's answer to a resolved threat
 1 Floodpits Drowner (DSK) 59
@@ -201,7 +216,6 @@
 1 Keys to the House (DSK) 251
 
 # Threats — the clock, now eight cards rather than five
-1 Kitsa, Otterball Elite (BLB) 54
 1 Norman Osborn (SPM) 39
 1 Ghostly Keybearer (DSK) 61
 1 Kiora, the Rising Tide (FDN) 45
