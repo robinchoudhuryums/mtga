@@ -165,7 +165,10 @@ directions.
   row. [G-01]
 - **A split / Room / Adventure card's stored cost covers BOTH halves — read the FRONT
   face.** Use `lib.front_face_cost()` / `lib.mana_value()`; `parse_pips` and `load_mana`
-  already do. **Residual 1: a deck that plays a split card mainly for its BACK half reads
+  already do. A **MODAL DFC** is stored the same way now — either face is castable from
+  hand — but its Mana Value is the FRONT face's, so it escapes residual 2 below; a
+  TRANSFORM DFC keeps one cost, since its back is reached by transforming, not by paying.
+  **Residual 1: a deck that plays a split card mainly for its BACK half reads
   cheaper than it plays — grade that one from the printed card. Residual 2, and it is on
   the surface you are told to trust: `card.py` prints the COMBINED mana value**, so a Room
   reads far MORE expensive than it plays — Mirror Room // Fractured Realm displays MV 10
@@ -544,6 +547,20 @@ directions.
   short. **The inverse is the G-42 shape** — blind mill FEEDS a graveyard deck. If the
   scorecard really says interaction, the fix is `suggest --needs` per G-38, not a mill
   card. Deck 51 is the worked case: its mill package is a second win condition. [G-62]
+- **THE FRONT FACE AND THE STORED METADATA DISAGREE — ON EVERY COLUMN, NOT JUST COST.**
+  G-02 is one member of a class that produced four bugs in one cycle, each on a different
+  column of a `Front // Back` card. **COST:** a modal DFC stored only the front, so a
+  castable back face was invisible — which is why both faces of Bruce Banner were called
+  unreachable in chat (49 rows, fixed). **COLOR:** `Color(s)` is identity, so `suggest`
+  hid 55 castable red-pool cards (G-58). **TYPE:** a substring scan over the whole type
+  line returned the BACK face's type, so any DFC with a land back left the curve and
+  joined the land total — deck 49 read 26 lands holding 25. **NAME:** `swap --apply` wrote
+  a bare `1 Runescale Stormbrood`, which parses and passes `legal` but fails an Arena
+  import. Each column now has ONE front-face-aware accessor — `lib.front_face_cost`,
+  the printed cost (not `card_colors` alone), `lib.primary_type`, `lib.owned_qty` — and a
+  SECOND COPY carries the bug again, which is what `build_gallery.py`'s private
+  `_primary_type` did for as long as it existed. **When a name contains `" // "`, ask
+  which face the column describes before you trust it.** [G-63]
 
 ## Known Issues
 

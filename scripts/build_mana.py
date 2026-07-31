@@ -13,6 +13,12 @@ Convoke, …), used by tag_synergies.py for accurate, complete synergy tags rath
 than a hand-maintained keyword list. This file feeds `deck.py mana`. Rerun after
 importing new cards. Lands (no mana cost) are written with an empty cost.
 
+Mana Cost holds EVERY face you may cast, joined by `" // "` in Scryfall's own convention
+— both halves of a split / Room / Adventure card, and both faces of a MODAL double-faced
+card, whose back face is castable from hand. A TRANSFORM DFC keeps one cost, since its
+back face is reached by transforming rather than by paying. Readers take the half they
+pay via `lib.front_face_cost` (see gotchas G-02 and G-63).
+
 Usage:
     python3 scripts/build_mana.py            # refresh from card-library.csv
     python3 scripts/build_mana.py --pool     # also cover card-pool.csv names
