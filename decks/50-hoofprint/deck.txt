@@ -11,9 +11,10 @@
 #: tier: 2. CARD ADVANTAGE 2 WITH NO REAL REFUEL. Garruk's Uprising looks like the fix and is
 #: tier:    not — both its draw triggers key on power 4+ and only 4 of 25 creature copies
 #: tier:    qualify on printed stats. It is in the deck for its unconditional trample.
-#: tier: 3. PROTECTION 1 against five named build-arounds, and the finishers are sorcery-speed
+#: tier: 3. PROTECTION 2 against five named build-arounds, and the finishers are sorcery-speed
 #: tier:    permanents. A removal spell on the turn Craterhoof resolves costs the whole game
-#: tier:    plan, not a card.
+#: tier:    plan, not a card. Swiftfoot Boots is half an answer, not a solution — it protects
+#: tier:    one creature at a time and only if you have {1} spare to re-equip.
 #: tier: WHAT ARGUES UP, and why this may be A once played: `shape` reads WIDE 10 / TALL 7 on 25
 #: tier: creatures with 21 early drops — the plan and the measurement agree completely, which is
 #: tier: rare. The kill is REDUNDANT four ways (Craterhoof x3, Jumbo Cactuar, Colossification,
@@ -120,6 +121,26 @@
 #: notes: self-mill and few creature deaths is usually X=0 or 1. Measured free — below-90 held
 #: notes: at 3, interaction 6, card advantage 2, avg MV 3.11 and 21 early drops all unchanged,
 #: notes: and creature count went 25 -> 26, which this deck reads three separate ways.
+#: notes: PASS 2 — THREE ADDS FROM A 47-CARD REVIEW PILE, all measured free or better.
+#: notes: BADGERMOLE CUB is the best card the pile contained for this deck and it is OWNED:
+#: notes: "whenever you TAP A CREATURE FOR MANA, add an additional {G}" doubles every mana dork
+#: notes: in the list, and with Enduring Vitality out — which makes EVERY creature tap for mana
+#: notes: — it doubles the whole board. Its earthbend 1 also turns a land into a creature, which
+#: notes: this deck counts three separate ways. Replaced Poison Dart Frog, a vanilla dork.
+#: notes: GOLDVEIN HYDRA ({X}{G}, vigilance trample haste, enters with X counters) is the mana
+#: notes: SINK the deck lacked: every other card here converts mana into board, and this one
+#: notes: converts surplus mana into a trampling threat that needs no enabler. It replaced
+#: notes: Coordinated Clobbering, the worst-fit card the ranking printed (fit 0, no tags).
+#: notes: SWIFTFOOT BOOTS answers the deck's own graded weakness. Protection measured 1 against
+#: notes: five named build-arounds; hexproof plus HASTE means a finisher connects the turn it
+#: notes: lands and cannot be answered in response. It is the missing piece for Jumbo Cactuar
+#: notes: specifically, whose +9999/+0 only triggers on ATTACK — Boots turn a seven-drop into
+#: notes: the turn it arrives. Protection 1 -> 2; everything else held.
+#: notes: MEASURED: interaction 6, card advantage 2, avg MV 3.11, 21 early drops and 26
+#: notes: creatures all UNCHANGED, protection 1 -> 2. Three strictly better cards for free.
+#: notes: WEB OF LIFE AND DESTINY was tested from the same pile and REJECTED: it is a free
+#: notes: creature every combat, but at {6}{G}{G} it took interaction 6 -> 5, avg MV 3.11 ->
+#: notes: 3.31 and early drops 21 -> 20. Convoke makes it castable; it does not make it cheap.
 #: notes: THE EARTH CRYSTAL WAS TESTED AND REJECTED, against five different cuts. "Green spells
 #: notes: you cast cost {1} less" plus counter-doubling is genuinely good and it is OWNED, but
 #: notes: every cut that funds it costs either a CREATURE — the deck's actual currency, since
@@ -133,6 +154,7 @@
 # Mana creatures — bodies, ramp, and Craterhoof's X, all at once
 2 Llanowar Elves (M19) 314
 1 Ixalli's Lorekeeper (LCI) 194
+1 Badgermole Cub (TLA) 167
 2 Druid of the Cowl (M19) 177
 1 Three Tree Rootweaver (BLB) 198
 1 Great Forest Druid (ECL) 178
@@ -141,8 +163,6 @@
 1 Rootrider Faun (WOE) 182
 1 Thornvault Forager (BLB) 197
 1 Tender Wildguide (BLB) 196
-1 Poison Dart Frog (LCI) 207
-1 Twitching Doll (DSK) 201
 
 # The board-to-mana converter
 2 Enduring Vitality (DSK) 176
@@ -156,11 +176,15 @@
 1 Loot, Exuberant Explorer (FDN) 106
 
 
+# Haste + hexproof, so a finisher connects the turn it lands
+1 Swiftfoot Boots (BRR) 58
+
 # Trample — without this the finishers are chump-blocked
 2 Garruk's Uprising (M21) 186
 1 Aggressive Mammoth (FDN) 551
 
 # The four kills
+1 Goldvein Hydra (OTJ) 167
 3 Craterhoof Behemoth (TDM) 138
 1 Famished Worldsire (EOE) 182
 1 Colossification (BLB) 392
@@ -173,7 +197,6 @@
 1 Heritage Reclamation (TDM) 145
 1 Plow Through (DFT) 174
 1 Clash of the Eikons (FIN) 180
-1 Coordinated Clobbering (DSK) 173
 
 # Lands (24) — Three Tree City names Druid; Rogue's Passage is the 2nd evasion route
 1 Three Tree City (BLB) 260
