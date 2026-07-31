@@ -4,12 +4,12 @@
 #: based-on: deck.txt
 #: plan: midrange
 #: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 5
-#: tier: plus card advantage 1 at a 3.61 curve. Three weaknesses:
+#: tier: plus card advantage 1 at a 3.55 curve. Three weaknesses:
 #: tier: 1. CARD ADVANTAGE 1 IS THE LOWEST FIGURE ON THE ROSTER. Icetill Explorer, Traveling
-#: tier:    Chocobo, Agatha's Soul Cauldron and Web of Life and Destiny all generate real value
+#: tier:    Chocobo, Agatha's Soul Cauldron and Aftermath Analyst all generate real value
 #: tier:    the classifier cannot read, so the true number is higher — but not by much, and the
 #: tier:    deck has no unconditional draw spell at all.
-#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.61 with only 13 early drops, and
+#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.55 with only 13 early drops, and
 #: tier:    the engine needs lands in the GRAVEYARD before it does anything, so the first three
 #: tier:    turns are close to blank. Against a fast start it is behind before Lumra is castable.
 #: tier: 3. CENTRAL THEMES 25 is the most diffuse reading on the roster after deck 23. That is
@@ -49,7 +49,7 @@
 #: archetype: THE CHEAT PACKAGE IS DELIBERATELY THE LAND-AWARE HALF of the family's options: Ojer
 #: archetype: Kaslem puts a creature AND/OR A LAND onto the battlefield off combat damage, Kona
 #: archetype: Rescue Beastie puts any PERMANENT (a land counts) from hand into play at second
-#: archetype: main if she is tapped, and Web of Life and Destiny digs five deep every combat.
+#: archetype: main if she is tapped, and Sledge-Class Seedship cheats one in on every attack.
 #: archetype: The parent deck took the creature-count half (Michelangelo, Earth's Mightiest
 #: archetype: Heroes) — the two lists split the pile rather than sharing it.
 #: archetype: DISTINCTNESS from its parent: 50's bad draw is "not enough creatures", this one's
@@ -86,10 +86,20 @@
 #: notes: Crystal and doubled again by Traveling Chocobo — and his "{3}{G}{G}: double the number
 #: notes: of +1/+1 counters on each creature you control" is a mana sink that also widens
 #: notes: Agatha's Soul Cauldron's gate across the whole board at once.
-#: notes: OUT: Groundchuck & Dirtbag (a six-drop whose "tap a land for mana, add {G}" is worth
-#: notes: less than a two-drop that scales) and the last two vanilla dorks, Llanowar Elves and
-#: notes: Druid of the Cowl. This deck's mana comes from LANDS, so a 1/1 that taps for {G} was
-#: notes: never the acceleration it needed.
+#: notes: OUT: the last two vanilla dorks, Llanowar Elves and Druid of the Cowl. This deck's
+#: notes: mana comes from LANDS, so a 1/1 that taps for {G} was never the acceleration it needed.
+#: notes: GROUNDCHUCK & DIRTBAG WAS ALSO CUT IN THAT PASS AND THE REASONING WAS WRONG — it was
+#: notes: dismissed as "a six-drop worth less than a two-drop that scales", which ignored the
+#: notes: measurement that matters: this deck runs TWENTY-SEVEN LANDS and exactly ONE creature
+#: notes: mana source. "Whenever you tap a LAND for mana, add {G}" therefore doubles essentially
+#: notes: the entire mana base here, where in the parent deck (24 lands but ten creature
+#: notes: sources plus Enduring Vitality) it would double only part of one. It is also an 8/8
+#: notes: TRAMPLE for {4}{G}{G} — a fixed big body next to Lumra and Harmonious Grovestrider,
+#: notes: both of which are only as large as the land count happens to be. Restored.
+#: notes: IT COST WEB OF LIFE AND DESTINY, the deck's most expensive card at {6}{G}{G}, which
+#: notes: drops the cheat count from four engines to three (Ojer Kaslem, Kona, Sledge-Class
+#: notes: Seedship). Measured: avg MV 3.61 -> 3.55, creatures 20 -> 21, and interaction, card
+#: notes: advantage, protection, early drops and the below-90 count all held.
 #: notes: MEASURED BETTER: avg MV 3.70 -> 3.61 and early drops 12 -> 13, with interaction 5,
 #: notes: card advantage 1, protection 3, creature count 20 and the below-90 count at zero all
 #: notes: held. Adding Inspiring Call and Punishing Punch on top was tried and cost interaction
@@ -207,9 +217,9 @@
 1 Ojer Kaslem, Deepest Growth // Temple of Cultivation (LCI) 204
 1 Kona, Rescue Beastie (DSK) 187
 1 Sledge-Class Seedship (EOE) 208
+1 Groundchuck & Dirtbag (TMT) 115
 1 Agatha's Soul Cauldron (WOE) 242
 1 The Earth Crystal (FIN) 184
-1 Web of Life and Destiny (SPM) 122
 
 # Trample and the multiplier
 1 Garruk's Uprising (M21) 186
