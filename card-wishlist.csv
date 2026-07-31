@@ -84,8 +84,6 @@ Coordinated Clobbering,Sorcery,Tap one or two target untapped creatures you cont
 Get Out,Instant,"Choose one —
 • Counter target creature or enchantment spell.
 • Return one or two target creatures and/or enchantments you own to your hand.",U,counterspell,DSK,60,Uncommon,51,,3.0,seed
-Ghostly Keybearer,Creature — Spirit,"Flying
-Whenever this creature deals combat damage to a player, unlock a locked door of up to one target Room you control.",U,Spirit; flying; evasion,DSK,61,Uncommon,51,"Deck 51: 3/3 flier that unlocks a Room door on combat damage - a free back-half unlock, and a Fractured Realm trigger.",55,hand
 Keys to the House,Artifact,"{1}, {T}, Sacrifice this artifact: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.
 {3}, {T}, Sacrifice this artifact: Lock or unlock a door of target Room you control. Activate only as a sorcery.",Colorless,sacrifice; ramp,DSK,251,Uncommon,51,"Deck 51: the case is Fractured Realm specifically - its {5}{U}{U} door for {1} cast + {3} activate = 4 total, split across turns. Saves 0-1 on the other four Rooms. Also a 'fully unlock' trigger for Eerie.",52,hand
 Overgrown Zealot,Creature — Elf Druid,"{T}: Add one mana of any color.
