@@ -3,13 +3,13 @@
 #: colors: G
 #: based-on: deck.txt
 #: plan: midrange
-#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 6
-#: tier: plus card advantage 1 at a 3.88 curve. Three weaknesses:
+#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 5
+#: tier: plus card advantage 1 at a 3.85 curve. Three weaknesses:
 #: tier: 1. CARD ADVANTAGE 1 IS THE LOWEST FIGURE ON THE ROSTER. Icetill Explorer, Traveling
-#: tier:    Chocobo, Pull Through the Weft and Web of Life and Destiny all generate real value
+#: tier:    Chocobo, Agatha's Soul Cauldron and Web of Life and Destiny all generate real value
 #: tier:    the classifier cannot read, so the true number is higher — but not by much, and the
 #: tier:    deck has no unconditional draw spell at all.
-#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.88 with only 10 early drops, and
+#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.85 with only 10 early drops, and
 #: tier:    the engine needs lands in the GRAVEYARD before it does anything, so the first three
 #: tier:    turns are close to blank. Against a fast start it is behind before Lumra is castable.
 #: tier: 3. CENTRAL THEMES 25 is the most diffuse reading on the roster after deck 23. That is
@@ -32,7 +32,7 @@
 #: archetype: a liability everywhere else. Icetill Explorer mills on every landfall AND lets you
 #: archetype: play lands out of the graveyard; Lumra mills four and then returns EVERY land card
 #: archetype: in the yard at once; Summon: Titan mills five on chapter I and returns them all on
-#: archetype: chapter II. Pull Through the Weft is the cheap version of the same effect. You are
+#: archetype: chapter II. Those two are the whole return package, and they are why you mill. You are
 #: archetype: not discarding lands, you are STOCKPILING them somewhere the opponent cannot see.
 #: archetype: TRAVELING CHOCOBO DOUBLES THE PAYOFF LAYER and is the reason this is an engine
 #: archetype: rather than a pile: "if a LAND you control entering causes a triggered ability of a
@@ -73,6 +73,35 @@
 #: notes: counters that is STILL A LAND — a body that Lumra and Grovestrider still count, and
 #: notes: which returns to the battlefield if it dies. It is the one bridge back to the parent
 #: notes: deck's axis, and it is deliberately small.
+#: notes: AGATHA'S SOUL CAULDRON IS A COMBO PIECE HERE, NOT A NARROW ARTIFACT — an earlier pass
+#: notes: filed it as "too narrow, needs exiled creatures with activated abilities" and missed
+#: notes: that THIS IS THE DECK THAT FILLS ITS OWN GRAVEYARD. Icetill Explorer mills on every
+#: notes: landfall, Lumra mills four, Summon: Titan mills five: the creature cards the Cauldron
+#: notes: wants to exile arrive as a SIDE EFFECT of the engine, without being cast.
+#: notes: WHAT IT ACTUALLY DOES: "creatures you control with +1/+1 counters on them have all
+#: notes: ACTIVATED abilities of all creature cards exiled with Agatha's Soul Cauldron", and a
+#: notes: granted ability's self-reference by name becomes the new creature — so exiling MONA
+#: notes: LISA gives every countered creature "{T}: Add X mana of any one color where X is ITS
+#: notes: power". On an eight-land Lumra that is eight mana from one tap. Exiling LOOT instead
+#: notes: gives every countered creature his "{4}{G}{G}, {T}: look at the top six, put a
+#: notes: creature with mana value <= your land count onto the battlefield" — the cheat engine,
+#: notes: repeatable across the whole board. You choose which mode the graveyard offers.
+#: notes: THE COUNTER GATE IS ALREADY PAID FOR: Seedship Agrarian, Primeval Bounty (three
+#: notes: counters per noncreature spell), Famished Worldsire, Badgermole Cub and Ba Sing Se
+#: notes: (earthbend) and Zanarkand all place +1/+1 counters, and the Cauldron adds one itself
+#: notes: every time it exiles a creature card. Its first line also lets you spend mana as any
+#: notes: colour for creature abilities, which is free here but matters for the granted costs.
+#: notes: MONA LISA CAME IN WITH IT and is deliberately a card you are happy to MILL rather than
+#: notes: cast: she only needs to reach the graveyard for the Cauldron to use her. Rainveil
+#: notes: Rejuvenator does the same job with an ETB mill attached and was tested — running BOTH
+#: notes: took interaction to 4 with avg MV 4.03 and eight early drops, so only one fits.
+#: notes: PAID FOR WITH PLOW THROUGH and PULL THROUGH THE WEFT. Losing the second land-return
+#: notes: is the real cost; Lumra and Summon: Titan remain as the mass versions. Measured: avg
+#: notes: MV 3.88 -> 3.85 (better), early drops held at 10, creatures 19 -> 20, cards below 90%
+#: notes: held at zero, interaction 6 -> 5.
+#: notes: IT IS NOT IN THE PARENT DECK, and the reason is precise rather than a judgement call:
+#: notes: deck 50 has MORE counter sources and already runs both Mona Lisa and Loot — but it
+#: notes: does not self-mill, so its graveyard is empty and the Cauldron has nothing to exile.
 #: notes: SLEDGE-CLASS SEEDSHIP IS THE FOURTH CHEAT ENGINE and it belongs here rather than in
 #: notes: the parent for a specific reason: Station puts charge counters equal to the tapped
 #: notes: creature's POWER, and this deck fields 8/8s (Lumra, Harmonious Grovestrider are each
@@ -95,7 +124,6 @@
 1 Icetill Explorer (EOE) 192
 1 Lumra, Bellow of the Woods (BLB) 183
 1 Summon: Titan (FIN) 204
-1 Pull Through the Weft (EOE) 202
 1 Traveling Chocobo (FIN) 210
 
 # Land-makers — these are the real mana base
@@ -118,6 +146,7 @@
 1 Llanowar Elves (M19) 314
 1 Druid of the Cowl (M19) 177
 1 Badgermole Cub (TLA) 167
+1 Mona Lisa, Science Geek (TMT) 123
 1 Overgrown Zealot (DSK) 193
 1 Groundchuck & Dirtbag (TMT) 115
 
@@ -125,6 +154,7 @@
 1 Ojer Kaslem, Deepest Growth // Temple of Cultivation (LCI) 204
 1 Kona, Rescue Beastie (DSK) 187
 1 Sledge-Class Seedship (EOE) 208
+1 Agatha's Soul Cauldron (WOE) 242
 1 Web of Life and Destiny (SPM) 122
 
 # Trample and the multiplier
@@ -136,7 +166,6 @@
 1 Hard-Hitting Question (MKM) 164
 1 Heritage Reclamation (TDM) 145
 1 Pawpatch Formation (BLB) 186
-1 Plow Through (DFT) 174
 1 Clash of the Eikons (FIN) 180
 
 # Lands (26) — every one of these is a spell
