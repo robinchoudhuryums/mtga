@@ -1,0 +1,140 @@
+#: name: Hoofprint — Strata
+#: format: Standard
+#: colors: G
+#: based-on: deck.txt
+#: plan: midrange
+#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 6
+#: tier: plus card advantage 1 at a 3.85 curve. Three weaknesses:
+#: tier: 1. CARD ADVANTAGE 1 IS THE LOWEST FIGURE ON THE ROSTER. Icetill Explorer, Traveling
+#: tier:    Chocobo, Pull Through the Weft and Web of Life and Destiny all generate real value
+#: tier:    the classifier cannot read, so the true number is higher — but not by much, and the
+#: tier:    deck has no unconditional draw spell at all.
+#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.85 with only 11 early drops, and
+#: tier:    the engine needs lands in the GRAVEYARD before it does anything, so the first three
+#: tier:    turns are close to blank. Against a fast start it is behind before Lumra is castable.
+#: tier: 3. CENTRAL THEMES 25 is the most diffuse reading on the roster after deck 23. That is
+#: tier:    partly an artifact of counting every landfall and token cue separately, but it does
+#: tier:    reflect a real spread: the deck is doing land-ramp, self-mill, tokens and counters at
+#: tier:    once, and a sweeper catches it mid-assembly.
+#: tier: WHAT ARGUES UP: the manabase is flawless — every coloured card on curve at >=90% with
+#: tier: keepable 88.4%, the best pair on the roster — protection 3 is the highest of any deck
+#: tier: built this cycle, and Traveling Chocobo genuinely doubles the payoff layer rather than
+#: tier: adding to it. A resolved Lumra with eight lands is an 8/8 that returns every land in
+#: tier: the yard, which is a one-card swing nothing else here matches.
+#: tier: PROVISIONAL: unplayed, 18 craft targets.
+#: protect: Lumra, Bellow of the Woods; Traveling Chocobo; Sapling Nursery; Summon: Titan; Icetill Explorer
+#: archetype: MONO-GREEN LANDS. Its parent counts CREATURES — Craterhoof's X, Enduring Vitality,
+#: archetype: Three Tree City all read the same number. This deck counts LANDS instead, and two
+#: archetype: of its creatures are literally sized by that count: Lumra, Bellow of the Woods and
+#: archetype: Harmonious Grovestrider are each "power and toughness equal to the number of lands
+#: archetype: you control". Same colour, opposite resource.
+#: archetype: THE ENGINE IS SELF-MILL INTO MASS RETURN, which is why milling is an asset here and
+#: archetype: a liability everywhere else. Icetill Explorer mills on every landfall AND lets you
+#: archetype: play lands out of the graveyard; Lumra mills four and then returns EVERY land card
+#: archetype: in the yard at once; Summon: Titan mills five on chapter I and returns them all on
+#: archetype: chapter II. Pull Through the Weft is the cheap version of the same effect. You are
+#: archetype: not discarding lands, you are STOCKPILING them somewhere the opponent cannot see.
+#: archetype: TRAVELING CHOCOBO DOUBLES THE PAYOFF LAYER and is the reason this is an engine
+#: archetype: rather than a pile: "if a LAND you control entering causes a triggered ability of a
+#: archetype: permanent you control to trigger, that ability triggers an ADDITIONAL time." Every
+#: archetype: landfall in the deck fires twice — Sapling Nursery makes two 3/4 Treefolk per land,
+#: archetype: Mightform Harmonizer doubles a creature's power twice, Seedship Agrarian takes two
+#: archetype: counters, Primeval Bounty gains six. It also lets you play lands off the top.
+#: archetype: THE LAND-MAKERS ARE THE REAL MANA BASE. Overlord of the Hauntwoods creates a land
+#: archetype: token when it enters AND when it attacks; The Earth King fetches a basic for every
+#: archetype: power-4-or-greater attacker; Planar Engineering trades two lands for four; Famished
+#: archetype: Worldsire devours lands for counters and then refills them from the top. Loot and
+#: archetype: Icetill Explorer each add a second land drop per turn, which is what turns a
+#: archetype: landfall payoff from once-a-turn into twice.
+#: archetype: THE CHEAT PACKAGE IS DELIBERATELY THE LAND-AWARE HALF of the family's options: Ojer
+#: archetype: Kaslem puts a creature AND/OR A LAND onto the battlefield off combat damage, Kona
+#: archetype: Rescue Beastie puts any PERMANENT (a land counts) from hand into play at second
+#: archetype: main if she is tapped, and Web of Life and Destiny digs five deep every combat.
+#: archetype: The parent deck took the creature-count half (Michelangelo, Earth's Mightiest
+#: archetype: Heroes) — the two lists split the pile rather than sharing it.
+#: archetype: DISTINCTNESS from its parent: 50's bad draw is "not enough creatures", this one's
+#: archetype: is "not enough lands". Craterhoof is deliberately NOT here — Summon: Titan's third
+#: archetype: chapter is this deck's mass pump ("+X/+X and trample where X is the number of lands
+#: archetype: you control"), and it reads the resource this deck actually accumulates.
+#: notes: BUILT 2026-07 from a 47-card review pile alongside its parent's pass 2.
+#: notes: UNGRADED ON PURPOSE — no `#: tier:` until the metrics are read.
+#: notes: GROUNDCHUCK & DIRTBAG IS THE LAND-SIDE BADGERMOLE CUB: "whenever you tap a LAND for
+#: notes: mana, add {G}" where the Cub doubles creatures. It is in this deck and not the parent
+#: notes: for exactly that reason — 26 lands here against 24 dork-heavy ones there.
+#: notes: THE SKULLSPORE NEXUS IS NEARLY FREE HERE. "{6}{G}{G}, costs {X} less where X is the
+#: notes: greatest power among creatures you control" — with an eight-land Lumra on board that
+#: notes: is {G}{G}. Its "{2}, {T}: double target creature's power" then doubles the creature
+#: notes: that paid for it, and its death trigger turns a dying fatty into a token of equal size.
+#: notes: 26 LANDS IS NOT A TYPO. Every land is a spell in this deck (landfall triggers), two
+#: notes: cards want the highest land count they can reach, and Sapling Nursery has affinity for
+#: notes: FORESTS. Flooding is close to impossible: the mana sinks are Ba Sing Se's earthbend,
+#: notes: Evendo's 12+ station and Skullspore Nexus's doubler.
+#: notes: BA SING SE AND BADGERMOLE CUB BOTH EARTHBEND, turning a land into a 0/0 creature with
+#: notes: counters that is STILL A LAND — a body that Lumra and Grovestrider still count, and
+#: notes: which returns to the battlefield if it dies. It is the one bridge back to the parent
+#: notes: deck's axis, and it is deliberately small.
+#: notes: GREENHOUSE // RICKETY GAZEBO WAS TESTED AND REJECTED, which is worth recording because
+#: notes: it looks perfect on paper: the back door mills four and returns two permanents, and
+#: notes: milling is an ASSET here. Every configuration made the deck slower — avg MV 3.85 ->
+#: notes: 3.88/3.91 and early drops 11 -> 10 — and this deck cannot afford to get slower.
+#: notes: DISTINCTNESS, MEASURED: `similar` reads 67% against the parent with SIXTEEN shared
+#: notes: nonland cards. That number is high and it is honest: the shared half is the five mana
+#: notes: dorks, the six-card interaction suite and five utility cards (Badgermole Cub, Famished
+#: notes: Worldsire, Garruk's Uprising, Loot, the two land-fetching bodies). All twenty-one cards
+#: notes: that carry the PLAN are exclusive. That is what a variant should look like — a shared
+#: notes: shell and a different engine — as against 26b vs 48a at 89%, where the top end itself
+#: notes: was duplicated.
+
+# The engine — mill lands on purpose, then return them all at once
+1 Icetill Explorer (EOE) 192
+1 Lumra, Bellow of the Woods (BLB) 183
+1 Summon: Titan (FIN) 204
+1 Pull Through the Weft (EOE) 202
+1 Traveling Chocobo (FIN) 210
+
+# Land-makers — these are the real mana base
+1 Overlord of the Hauntwoods (DSK) 194
+1 The Earth King (TLA) 172
+1 Planar Engineering (SOS) 158
+1 Spineseeker Centipede (DSK) 199
+1 Outcaster Greenblade (OTJ) 172
+1 Seedship Agrarian (EOE) 204
+1 Loot, Exuberant Explorer (FDN) 106
+
+# Landfall payoffs — Traveling Chocobo fires each of these twice
+1 Sapling Nursery (ECL) 192
+1 Mightform Harmonizer (EOE) 200
+1 Primeval Bounty (FDN) 644
+1 Harmonious Grovestrider (EOE) 189
+1 Famished Worldsire (EOE) 182
+
+# Ramp
+1 Llanowar Elves (M19) 314
+1 Druid of the Cowl (M19) 177
+1 Great Forest Druid (ECL) 178
+1 Badgermole Cub (TLA) 167
+1 Overgrown Zealot (DSK) 193
+1 Groundchuck & Dirtbag (TMT) 115
+
+# Cheat into play — the land-aware half of the family's options
+1 Ojer Kaslem, Deepest Growth // Temple of Cultivation (LCI) 204
+1 Kona, Rescue Beastie (DSK) 187
+1 Web of Life and Destiny (SPM) 122
+
+# Trample and the multiplier
+1 Garruk's Uprising (M21) 186
+1 The Skullspore Nexus (LCI) 212
+
+# Interaction
+1 Bite Down (FDN) 212
+1 Hard-Hitting Question (MKM) 164
+1 Heritage Reclamation (TDM) 145
+1 Pawpatch Formation (BLB) 186
+1 Plow Through (DFT) 174
+1 Clash of the Eikons (FIN) 180
+
+# Lands (26) — every one of these is a spell
+2 Ba Sing Se (TLA) 266
+1 Evendo, Waking Haven (EOE) 253
+1 Zanarkand, Ancient Metropolis // Lasting Fayth (FIN) 293
+22 Forest (MSH) 295
