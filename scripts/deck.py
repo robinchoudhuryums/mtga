@@ -60,7 +60,7 @@ import urllib.request
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
-                 mana_value, atomic_write)
+                 mana_value, primary_type, atomic_write)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -865,29 +865,10 @@ def parse_pips(cost):
     return strict, hybrid
 
 
-def _primary_type(type_line):
-    """The card's type for analysis, read from the FRONT FACE ONLY.
-
-    A two-faced card's type line is stored as `Front // Back`, and a substring scan
-    over the whole string reports the BACK face's type whenever it sorts earlier in
-    `order` — which for `Land` is always. So `Legendary Creature — God // Land`
-    (Ojer Axonil) and `Legendary Artifact // Legendary Artifact Land` (Matzalantli)
-    both read as LAND, and every one of this module's ~35 `"Land" in _primary_type(...)`
-    guards then skipped them: excluded from the curve, uncounted as creatures, and
-    ADDED to the land total. `consistency 49` reported "Lands: 26/60" for a deck
-    holding 25, with keepable computed against a phantom land. 81 pool cards share the
-    shape; three were live in decks (Matzalantli in 51/51a, Ojer Kaslem in 50a).
-
-    The front face is the correct read for the same reason G-02 gives for cost: it is
-    the half you cast or play. A card whose front really IS a land (Jidoor's
-    `Land — Town // Sorcery — Adventure`) still reports Land, because the front says so."""
-    front = (type_line or "").split("//")[0]
-    order = ["Land", "Creature", "Planeswalker", "Battle", "Artifact",
-             "Enchantment", "Instant", "Sorcery"]
-    for t in order:
-        if t.lower() in front.lower():
-            return t
-    return "Other"
+# The definition lives in lib.primary_type — build_gallery.py needs the same answer and
+# had its own copy with the same back-face bug. Kept under the private name because ~35
+# call sites below, build_dashboard.py and the tests all reach for `_primary_type`.
+_primary_type = primary_type
 
 
 # --- card data (type + text) for synergy / cost analysis -------------------- #

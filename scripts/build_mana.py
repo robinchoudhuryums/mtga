@@ -30,23 +30,47 @@ import urllib.request
 
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write
 import scryfall
-from scryfall import ScryfallUnavailable, NotFound
+from scryfall import ScryfallUnavailable
 
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
 
 
-def _front_mana(card):
-    """Mana cost of a card, using the front face for double-faced cards."""
+def _castable_cost(card):
+    """Every cost this card can be CAST for, in Scryfall's ``A // B`` convention.
+
+    A split / Room / Adventure card already arrives with both halves in the top-level
+    ``mana_cost`` (``{U} // {4}{U}``), and every reader downstream takes the half it
+    pays via ``lib.front_face_cost``. A MODAL double-faced card is the same situation —
+    you choose a face as you cast it — but Scryfall leaves its top-level ``mana_cost``
+    empty and puts a real cost on BOTH faces, so storing only face 0 dropped the back
+    face entirely: Bruce Banner read as a plain ``{U}`` one-drop with nothing recording
+    that ``{2}{R}{R}{G}{G}`` The Incredible Hulk is castable from that same card in hand.
+    That produced a WRONG ANSWER in chat (both faces called unreachable), which is why
+    the two are stored the same way now. 40 Arena cards are affected.
+
+    A TRANSFORM DFC is genuinely different and keeps ONE cost: its back face is reached
+    by transforming, never by paying, and Scryfall writes that face's ``mana_cost`` as
+    ``""``. So the test is the SHAPE of the faces, not a layout string — a card with a
+    real cost on more than one face is one you may cast either way, whatever the layout
+    is called.
+
+    The FRONT face always comes first, since ``front_face_cost`` takes the head of the
+    string and every curve, pip count and castability read depends on that being the
+    face you cast (G-02).
+    """
     mc = card.get("mana_cost")
-    if not mc and card.get("card_faces"):
-        mc = card["card_faces"][0].get("mana_cost", "")
-    return mc or ""
+    if mc:
+        return mc                                   # split / Room / Adventure / normal
+    costs = [(f.get("mana_cost") or "") for f in (card.get("card_faces") or [])]
+    front = costs[0] if costs else ""
+    back = " // ".join(c for c in costs[1:] if c)
+    return front + " // " + back if front and back else front
 
 
 def _store(out, card):
     """Index one Scryfall card under its full and front-face name."""
-    cost = _front_mana(card)
+    cost = _castable_cost(card)
     mv = card.get("cmc", 0)
     kw = ";".join(card.get("keywords", []) or [])
     full = (card.get("name") or "").lower()
@@ -79,24 +103,30 @@ def fetch(names):
     missing = [n for n in names if n.lower() not in out]
     if missing:
         eprint(f"       {len(missing)} name(s) unmatched by batch — trying front-face lookups")
-    for j, n in enumerate(missing, 1):
-        front = n.split(" // ")[0]
+    # The front-face retry is BATCHED through the same /cards/collection endpoint, which
+    # matches a two-faced card by its front name just as /cards/named does. It used to be
+    # one GET per name; on the ~700 two-faced names that is not merely slower, it trips
+    # Scryfall's rate limiter and the client's backoff, so a full `--refetch` took longer
+    # than the entire rest of the build. Batched, the same set is ten requests.
+    for i in range(0, len(missing), 75):
+        chunk = missing[i:i + 75]
         try:
-            card = scryfall.named({"exact": front}, retries=2, timeout=20)
-        except NotFound:
-            continue                      # genuinely no such card — leave it blank
+            data = scryfall.post_collection([n.split(" // ")[0] for n in chunk])
         except ScryfallUnavailable as e:
             eprint(f"WARN:  Scryfall went unreachable during front-face lookups ({e}); "
-                   f"{len(missing) - j + 1} name(s) left blank.")
+                   f"{len(missing) - i} name(s) left blank.")
             break
-        # Accept ONLY when the resolved card IS the one asked for. A bare front name can
-        # name a DIFFERENT card ("Life" is also a card), and writing a wrong cost is worse
-        # than writing none — the whole point of this file is that costs are trustworthy.
-        got = (card.get("name") or "").lower()
-        if got == n.lower() or got.split(" // ")[0] == n.lower():
-            _store(out, card)
-        if j % 100 == 0:
-            eprint(f"       front-face {j}/{len(missing)}")
+        asked = {n.split(" // ")[0].lower(): n for n in chunk}
+        for card in data.get("data", []):
+            # Accept ONLY when the resolved card IS the one asked for. A bare front name
+            # can name a DIFFERENT card ("Life" is also a card), and writing a wrong cost
+            # is worse than writing none — the whole point of this file is that costs are
+            # trustworthy.
+            got = (card.get("name") or "").lower()
+            want = asked.get(got) or asked.get(got.split(" // ")[0])
+            if want and (got == want.lower() or got.split(" // ")[0] == want.lower()):
+                _store(out, card)
+        eprint(f"       front-face {min(i + 75, len(missing))}/{len(missing)}")
         time.sleep(0.1)
     return out
 

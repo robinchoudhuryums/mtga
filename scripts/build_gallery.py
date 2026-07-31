@@ -35,7 +35,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write
+from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write,
+                 primary_type as _primary_type)
 import scryfall
 from scryfall import NotFound, ScryfallUnavailable
 
@@ -212,14 +213,6 @@ def build_cards(rows, cache):
             "img": cache.get(name.lower(), ""),
         })
     return cards
-
-
-def _primary_type(type_line):
-    for t in ["Land", "Creature", "Planeswalker", "Battle", "Artifact",
-              "Enchantment", "Instant", "Sorcery"]:
-        if t.lower() in type_line.lower():
-            return t
-    return "Other"
 
 
 def compute_stats(cards):

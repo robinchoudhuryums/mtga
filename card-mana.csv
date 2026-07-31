@@ -61,7 +61,7 @@ Fortress Kin-Guard,{1}{W},2,Endure
 Harsh Annotation,{1}{W},2,
 Invasion Reinforcements,{1}{W},2,Flash
 Ironpaw Aspirant,{1}{W},2,
-Jennifer Walters,{1}{W},2,Reach;Transform;Trample
+Jennifer Walters,{1}{W} // {3}{G}{W}{W},2,Reach;Transform;Trample
 Jeong Jeong's Deserters,{1}{W},2,
 Leader's Talent,{1}{W},2,
 "Leonardo, Cutting Edge",{1}{W},2,Lifelink;Sneak
@@ -132,7 +132,7 @@ Kree Commandos,{2}{W},3,Flying;Prowess;Vigilance
 "Leonardo, Big Brother",{2}{W},3,Sneak
 Living Phone,{2}{W},3,
 Mischievous Pup,{2}{W},3,Flash
-Monica Rambeau,{2}{W},3,Flying;Prowess;Transform;Hexproof
+Monica Rambeau,{2}{W} // {2}{R}{W}{W},3,Flying;Prowess;Transform;Hexproof
 Moonlit Lamenter,{2}{W},3,
 Owlin Historian,{2}{W},3,Flying;Surveil
 Paladin's Arms,{2}{W},3,Job select;Equip
@@ -375,7 +375,7 @@ Unwelcome Sprite,{1}{U},2,Flying;Surveil
 Unstable Experiment,{1}{U},2,Connive
 "Ultros, Obnoxious Octopus",{1}{U},2,
 Think Twice,{1}{U},2,Flashback
-Tony Stark,{1}{U},2,Flying;Transform;Haste
+Tony Stark,{1}{U} // {4}{U}{R},2,Flying;Transform;Haste
 The Wondrous Wasp,{1}{U},2,Flying;Wasp's Sting;Flash
 Tester of the Tangential,{1}{U},2,Increment
 Steelswarm Operator,{1}{U},2,Flying
@@ -450,7 +450,7 @@ Harmonized Trio,{U} // {U},1,Prepared
 Gran-Gran,{U},1,
 Chase Inspiration,{U},1,
 Fleeting Distraction,{U},1,
-Bruce Banner,{U},1,Reach;Enrage;Transform;Trample
+Bruce Banner,{U} // {2}{R}{R}{G}{G},1,Reach;Enrage;Transform;Trample
 Bounce Off,{U},1,
 Aerial Doombot,{U},1,Flying;Power-up
 Boomerang Basics,{U},1,
@@ -1711,7 +1711,7 @@ Daily Bugle Building,,0,Smear Campaign
 "Anti-Venom, Horrifying Healer",{W}{W}{W}{W}{W},5,
 Web of Life and Destiny,{6}{G}{G},8,Convoke
 Spider-Verse,{3}{R}{R},5,
-Norman Osborn,{1}{U},2,Flying;Goblin Formula;Transform;Menace;Connive
+Norman Osborn,{1}{U} // {1}{U}{B}{R},2,Flying;Goblin Formula;Transform;Menace;Connive
 "Gwenom, Remorseless",{3}{B}{B},5,Lifelink;Deathtouch
 Ponder,{U},1,
 Exalted Sunborn,{3}{W}{W},5,Flying;Lifelink;Warp
@@ -1748,7 +1748,7 @@ Behold the Sinister Six!,{6}{B},7,
 "Doctor Octopus, Master Planner",{5}{U}{B},7,
 "Shriek, Treblemaker",{2}{B/R},3,Sonic Blast
 "Ezekiel Sims, Spider-Totem",{4}{G},5,Reach
-King T'Challa,{1}{W}{U},3,Transform;Double strike;Flash
+King T'Challa,{1}{W}{U} // {4}{W}{U},3,Transform;Double strike;Flash
 Dracogenesis,{6}{R}{R},8,
 Festival of Embers,{4}{R},5,
 "Delney, Streetwise Lookout",{2}{W},3,
@@ -1797,13 +1797,13 @@ Getaway Glamer,{W},1,Spree
 Parting Gust,{W}{W},2,Gift
 Personify,{1}{W},2,
 Enduring Innocence,{1}{W}{W},3,Lifelink
-Gwen Stacy,{1}{R},2,Flying;Vigilance;Transform;Haste
-Miles Morales,{1}{G},2,Camouflage;Transform;First strike;Haste;Double
+Gwen Stacy,{1}{R} // {2}{U}{R}{W},2,Flying;Vigilance;Transform;Haste
+Miles Morales,{1}{G} // {3}{R}{G}{W},2,Camouflage;Transform;First strike;Haste;Double
 Damage Control Crew,{3}{G},4,Repair;Impound
 Spider Manifestation,{1}{R/G},2,Reach
 "Prowler, Clawed Thief",{1}{U}{B},3,Menace;Connive
 Guy in the Chair,{2}{G},3,Web Support
-Peter Parker,{1}{W},2,Reach;Vigilance;Transform
+Peter Parker,{1}{W} // {1}{G}{W}{U},2,Reach;Vigilance;Transform
 Absorbing Man and Titania,{3}{R}{G},5,Double
 "Leatherhead, Swamp Stalker",{2}{G}{G},4,Trample
 Seedship Agrarian,{3}{G},4,Landfall
@@ -1852,6 +1852,9 @@ Prayer of Binding,{3}{W},4,Flash
 Ruthless Lawbringer,{1}{W}{B},3,
 Ninja Teen,{2}{B},3,
 "Splinter, Radical Rat",{1}{W/B}{W/B},3,
+Virulent Emissary,{G},1,Deathtouch
+Vision Quest,{X}{U}{R},2,
+Self-Reflection,{4}{U}{U},6,Flashback
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -4189,7 +4192,6 @@ Spry and Mighty,{4}{G},5,
 Tend the Sprigs,{2}{G},3,
 Thoughtweft Charge,{1}{G},2,
 "Trystan, Callous Cultivator // Trystan, Penitent Culler",{2}{G},3,Transform;Mill;Deathtouch
-Virulent Emissary,{G},1,Deathtouch
 Ashling's Command,{3}{U}{R},5,Treasure
 Boggart Cursecrafter,{B}{R},2,Deathtouch
 Brigid's Command,{1}{G}{W},3,Fight
@@ -4758,7 +4760,6 @@ Lightshell Duo,{3}{U},4,Surveil;Prowess
 Micromancer,{3}{U},4,
 An Offer You Can't Refuse,{U},1,Treasure
 Omniscience,{7}{U}{U}{U},10,
-Self-Reflection,{4}{U}{U},6,Flashback
 Burglar Rat,{1}{B},2,
 Exsanguinate,{X}{B}{B},2,
 Marauding Blight-Priest,{2}{B},3,
@@ -7058,7 +7059,7 @@ A-Skemfar Elderhall,,0,
 A-Canopy Tactician,{3}{G},4,
 A-Elderfang Ritualist,{1}{B},2,
 A-Thornmantle Striker,{3}{B},4,
-"A-Alrund, God of the Cosmos // A-Hakka, Whispering Raven",{3}{U}{U},5,Scry;Flying
+"A-Alrund, God of the Cosmos // A-Hakka, Whispering Raven",{3}{U}{U} // {1}{U},5,Scry;Flying
 A-Cosmos Charger,{2}{U},3,Flying;Flash;Foretell
 Axgard Braggart,{3}{W},4,Boast
 Battershield Warrior,{2}{W},3,Boast
@@ -7074,13 +7075,13 @@ Giant Ox,{1}{W},2,
 Glorious Protector,{2}{W}{W},4,Flying;Flash;Foretell
 Gods' Hall Guardian,{5}{W},6,Vigilance;Foretell
 Goldmaw Champion,{2}{W},3,Boast
-"Halvar, God of Battle // Sword of the Realms",{2}{W}{W},4,Equip
+"Halvar, God of Battle // Sword of the Realms",{2}{W}{W} // {1}{W},4,Equip
 Invoke the Divine,{2}{W},3,
 Iron Verdict,{2}{W},3,Foretell
 Kaya's Onslaught,{2}{W},3,Foretell
 Master Skald,{4}{W},5,
 Rally the Ranks,{1}{W},2,
-"Reidane, God of the Worthy // Valkmira, Protector's Shield",{2}{W},3,Flying;Vigilance
+"Reidane, God of the Worthy // Valkmira, Protector's Shield",{2}{W} // {3}{W},3,Flying;Vigilance
 Resplendent Marshal,{1}{W}{W},3,Flying
 Revitalize,{1}{W},2,
 Righteous Valkyrie,{2}{W},3,Flying
@@ -7099,7 +7100,7 @@ Valkyrie's Sword,{1}{W},2,Equip
 Valor of the Worthy,{W},1,Enchant
 Warhorn Blast,{4}{W},5,Foretell
 Wings of the Cosmos,{W},1,
-"Alrund, God of the Cosmos // Hakka, Whispering Raven",{3}{U}{U},5,Scry;Flying
+"Alrund, God of the Cosmos // Hakka, Whispering Raven",{3}{U}{U} // {1}{U},5,Scry;Flying
 Alrund's Epiphany,{5}{U}{U},7,Foretell
 Ascendant Spirit,{U},1,
 Augury Raven,{3}{U},4,Flying;Foretell
@@ -7108,7 +7109,7 @@ Behold the Multiverse,{3}{U},4,Foretell;Scry
 Berg Strider,{4}{U},5,
 Bind the Monster,{U},1,Enchant
 Brinebarrow Intruder,{U},1,Flash
-"Cosima, God of the Voyage // The Omenkeel",{2}{U},3,Crew
+"Cosima, God of the Voyage // The Omenkeel",{2}{U} // {1}{U},3,Crew
 Cosmos Charger,{3}{U},4,Flying;Flash;Foretell
 Cyclone Summoner,{5}{U}{U},7,
 Depart the Realm,{1}{U},2,Foretell
@@ -7149,7 +7150,7 @@ Draugr's Helm,{1}{B},2,Equip
 Dread Rider,{5}{B},6,
 Dream Devourer,{1}{B},2,
 Duskwielder,{B},1,Boast
-"Egon, God of Death // Throne of Death",{2}{B},3,Mill;Deathtouch
+"Egon, God of Death // Throne of Death",{2}{B} // {B},3,Mill;Deathtouch
 Elderfang Disciple,{1}{B},2,
 Eradicator Valkyrie,{2}{B}{B},4,Flying;Lifelink;Hexproof from;Hexproof;Boast
 Feed the Serpent,{2}{B}{B},4,
@@ -7169,9 +7170,9 @@ Rune of Mortality,{1}{B},2,Enchant
 Skemfar Avenger,{1}{B},2,
 Skemfar Shadowsage,{3}{B},4,
 Skull Raid,{3}{B},4,Foretell
-"Tergrid, God of Fright // Tergrid's Lantern",{3}{B}{B},5,Menace
+"Tergrid, God of Fright // Tergrid's Lantern",{3}{B}{B} // {3}{B},5,Menace
 Tergrid's Shadow,{3}{B}{B},5,Foretell
-"Valki, God of Lies // Tibalt, Cosmic Impostor",{1}{B},2,
+"Valki, God of Lies // Tibalt, Cosmic Impostor",{1}{B} // {5}{B}{R},2,
 "Varragoth, Bloodsky Sire",{2}{B},3,Boast;Deathtouch
 Vengeful Reaper,{3}{B},4,Foretell;Deathtouch;Flying;Haste
 Village Rites,{B},1,
@@ -7179,7 +7180,7 @@ Weigh Down,{B},1,
 Withercrown,{1}{B},2,Enchant
 Arni Brokenbrow,{2}{R},3,Boast;Haste
 Basalt Ravager,{3}{R},4,
-"Birgi, God of Storytelling // Harnfel, Horn of Bounty",{2}{R},3,
+"Birgi, God of Storytelling // Harnfel, Horn of Bounty",{2}{R} // {4}{R},3,
 Breakneck Berserker,{2}{R},3,Haste
 Calamity Bearer,{2}{R}{R},4,Double
 Cinderheart Giant,{5}{R}{R},7,Trample
@@ -7208,7 +7209,7 @@ Shackles of Treachery,{2}{R},3,
 Smashing Success,{3}{R},4,Treasure
 Squash,{4}{R},5,
 Tibalt's Trickery,{1}{R},2,Mill
-"Toralf, God of Fury // Toralf's Hammer",{2}{R}{R},4,Trample;Equip
+"Toralf, God of Fury // Toralf's Hammer",{2}{R}{R} // {1}{R},4,Trample;Equip
 Tormentor's Helm,{R},1,Equip
 Tundra Fumarole,{1}{R}{R},3,
 Tuskeri Firewalker,{2}{R},3,Boast
@@ -7221,7 +7222,7 @@ Boreal Outrider,{2}{G},3,
 Elderleaf Mentor,{3}{G},4,
 Elven Bow,{G},1,Equip
 Elvish Warmaster,{1}{G},2,
-"Esika, God of the Tree // The Prismatic Bridge",{1}{G}{G},3,Vigilance
+"Esika, God of the Tree // The Prismatic Bridge",{1}{G}{G} // {W}{U}{B}{R}{G},3,Vigilance
 Esika's Chariot,{3}{G},4,Crew
 Glittering Frost,{2}{G},3,Enchant
 Gnottvold Recluse,{2}{G},3,Reach
@@ -7231,9 +7232,9 @@ Horizon Seeker,{2}{G},3,Boast
 Icehide Troll,{2}{G},3,
 In Search of Greatness,{G}{G},2,Scry
 Jaspera Sentinel,{G},1,Reach
-"Jorn, God of Winter // Kaldring, the Rimestaff",{2}{G},3,
+"Jorn, God of Winter // Kaldring, the Rimestaff",{2}{G} // {1}{U}{B},3,
 King Harald's Revenge,{2}{G},3,
-"Kolvori, God of Kinship // The Ringhart Crest",{2}{G}{G},4,
+"Kolvori, God of Kinship // The Ringhart Crest",{2}{G}{G} // {1}{G},4,
 Littjara Glade-Warden,{3}{G},4,Changeling
 Mammoth Growth,{2}{G},3,Foretell
 Masked Vandal,{1}{G},2,Changeling
@@ -10530,18 +10531,17 @@ Power Boost,{2}{R},3,
 Repulsor Rays,{R},1,
 "Scarlet Witch, Wanda Maximoff",{2}{R},3,Menace
 "Agent 13, Sharon Carter",{2}{W},3,Investigate
-Jennifer Walters // The Sensational She-Hulk,{1}{W},2,Reach;Transform;Trample
-"Monica Rambeau // Photon, Living Light",{2}{W},3,Flying;Prowess;Transform;Hexproof
+Jennifer Walters // The Sensational She-Hulk,{1}{W} // {3}{G}{W}{W},2,Reach;Transform;Trample
+"Monica Rambeau // Photon, Living Light",{2}{W} // {2}{R}{W}{W},3,Flying;Prowess;Transform;Hexproof
 "Patriot, Shield Wielder",{1}{W},2,
-Bruce Banner // The Incredible Hulk,{U},1,Reach;Enrage;Transform;Trample
+Bruce Banner // The Incredible Hulk,{U} // {2}{R}{R}{G}{G},1,Reach;Enrage;Transform;Trample
 "Iron Lad, Diverging Destiny",{2}{U},3,Flying;Vigilance
 Kang the Conqueror,{2}{U}{U},4,Flying;Power-up
 S.H.I.E.L.D. Flying Car,{2}{U},3,Flying;Crew;Flash
-Tony Stark // The Invincible Iron Man,{1}{U},2,Flying;Transform;Haste
+Tony Stark // The Invincible Iron Man,{1}{U} // {4}{U}{R},2,Flying;Transform;Haste
 "Misty Knight, Hero for Hire",{1}{R},2,
 "Black Widow, Double Agent",{1}{W}{B},3,Deathtouch
-"King T'Challa // Black Panther, Hope Enduring",{1}{W}{U},3,Transform;Double strike;Flash
-Vision Quest,{X}{U}{R},2,
+"King T'Challa // Black Panther, Hope Enduring",{1}{W}{U} // {4}{W}{U},3,Transform;Double strike;Flash
 A.I.M. Labs,,0,
 Asgardian Citadel,,0,
 Avengers Hangar,,0,
@@ -12949,7 +12949,7 @@ Sylvan Library,{1}{G},2,
 "Adrix and Nev, Twincasters",{2}{G}{U},4,Ward
 "Arachne, Psionic Weaver",{2}{W},3,Web-slinging
 Origin of Spider-Man,{1}{W},2,
-Peter Parker // Amazing Spider-Man,{1}{W},2,Reach;Vigilance;Transform
+Peter Parker // Amazing Spider-Man,{1}{W} // {1}{G}{W}{U},2,Reach;Vigilance;Transform
 Rent Is Due,{W},1,
 Spectacular Spider-Man,{1}{W},2,Flash
 With Great Power . . .,{3}{W},4,Enchant
@@ -12957,19 +12957,19 @@ Hide on the Ceiling,{X}{U},1,
 "Hydro-Man, Fluid Felon",{U}{U},2,
 "Lady Octopus, Inspired Inventor",{U},1,
 "Mysterio, Master of Illusion",{3}{U},4,
-Norman Osborn // Green Goblin,{1}{U},2,Flying;Goblin Formula;Transform;Menace;Connive
+Norman Osborn // Green Goblin,{1}{U} // {1}{U}{B}{R},2,Flying;Goblin Formula;Transform;Menace;Connive
 Oscorp Research Team,{3}{U},4,
 School Daze,{3}{U}{U},5,Do Homework;Fight Crime
 Secret Identity,{U},1,Conceal
 Spider-Sense,{1}{U},2,Web-slinging
 "Black Cat, Cunning Thief",{3}{B}{B},5,
 The Death of Gwen Stacy,{2}{B},3,
-"Eddie Brock // Venom, Lethal Protector",{2}{B},3,Transform;Haste;Trample;Menace
+"Eddie Brock // Venom, Lethal Protector",{2}{B} // {3}{B}{R}{G},3,Transform;Haste;Trample;Menace
 Merciless Enforcers,{1}{B},2,Lifelink
 Parker Luck,{2}{B},3,
 "Scorpion, Seething Striker",{3}{B},4,Connive;Deathtouch
 The Soul Stone,{1}{B},2,Indestructible
-Gwen Stacy // Ghost-Spider,{1}{R},2,Flying;Vigilance;Transform;Haste
+Gwen Stacy // Ghost-Spider,{1}{R} // {2}{U}{R}{W},2,Flying;Vigilance;Transform;Haste
 Maximum Carnage,{4}{R},5,
 Shadow of the Goblin,{1}{R},2,Undying;Unreliable Visions;Undying Vengeance
 "Shocker, Unshakable",{4}{R}{R},6,Vibro-Shock Gauntlets
@@ -12977,7 +12977,7 @@ Spider-Punk,{1}{R},2,Riot
 Superior Foes of Spider-Man,{2}{R},3,Trample
 Kraven's Last Hunt,{3}{G},4,Mill
 "Lizard, Connors's Curse",{2}{G}{G},4,Lizard Formula;Trample
-Miles Morales // Ultimate Spider-Man,{1}{G},2,Camouflage;Transform;First strike;Haste;Double
+Miles Morales // Ultimate Spider-Man,{1}{G} // {3}{R}{G}{W},2,Camouflage;Transform;First strike;Haste;Double
 Professional Wrestler,{3}{G},4,Treasure
 Radioactive Spider,{G},1,Reach;Fateful Bite;Deathtouch
 Strength of Will,{1}{G},2,
@@ -13043,7 +13043,7 @@ Electrolyze,{1}{U}{R},3,
 Putrefy,{1}{B}{G},3,
 A-Tome Shredder,{1}{R},2,Haste
 A-Dueling Coach,{3}{W},4,
-"A-Rowan, Scholar of Sparks // A-Will, Scholar of Frost",{2}{R},3,
+"A-Rowan, Scholar of Sparks // A-Will, Scholar of Frost",{2}{R} // {4}{U},3,
 A-Maelstrom Muse,{U}{U/R}{R},3,Flying
 A-Tanazir Quandrix,{3}{G}{U},5,Flying;Trample;Double
 A-Spell Satchel,{2},2,Magecraft
@@ -13056,7 +13056,7 @@ Expanded Anatomy,{3},3,
 Introduction to Annihilation,{5},5,
 Introduction to Prophecy,{3},3,Scry
 Mascot Exhibition,{7},7,
-Wandering Archaic // Explore the Vastlands,{5},5,
+Wandering Archaic // Explore the Vastlands,{5} // {3},5,
 Academic Probation,{1}{W},2,
 Ageless Guardian,{1}{W},2,
 Beaming Defiance,{1}{W},2,
@@ -13195,21 +13195,21 @@ Spined Karok,{2}{G},3,
 Springmane Cervin,{2}{G},3,
 Tangletrap,{1}{G},2,
 Verdant Mastery,{5}{G},6,
-Augmenter Pugilist // Echoing Equation,{1}{G}{G},3,Trample
-"Blex, Vexing Pest // Search for Blex",{2}{G},3,
-"Extus, Oriq Overlord // Awaken the Blood Avatar",{1}{W}{B}{B},4,Magecraft;Double strike
-Flamescroll Celebrant // Revel in Silence,{1}{R},2,
-"Jadzi, Oracle of Arcavios // Journey to the Oracle",{6}{U}{U},8,Magecraft
-"Kianne, Dean of Substance // Imbraham, Dean of Theory",{2}{G},3,Flying
-"Mila, Crafty Companion // Lukka, Wayward Bonder",{1}{W}{W},3,
-Pestilent Cauldron // Restorative Burst,{2}{B},3,Mill
-"Plargg, Dean of Chaos // Augusta, Dean of Order",{1}{R},2,
-"Rowan, Scholar of Sparks // Will, Scholar of Frost",{2}{R},3,
-Selfless Glyphweaver // Deadly Vanity,{2}{W},3,
-"Shaile, Dean of Radiance // Embrose, Dean of Shadow",{1}{W},2,Flying;Vigilance
-Torrent Sculptor // Flamethrower Sonata,{2}{U}{U},4,Ward
-"Uvilda, Dean of Perfection // Nassari, Dean of Expression",{2}{U},3,
-"Valentin, Dean of the Vein // Lisette, Dean of the Root",{B},1,Lifelink;Menace
+Augmenter Pugilist // Echoing Equation,{1}{G}{G} // {3}{U}{U},3,Trample
+"Blex, Vexing Pest // Search for Blex",{2}{G} // {2}{B}{B},3,
+"Extus, Oriq Overlord // Awaken the Blood Avatar",{1}{W}{B}{B} // {6}{B}{R},4,Magecraft;Double strike
+Flamescroll Celebrant // Revel in Silence,{1}{R} // {W}{W},2,
+"Jadzi, Oracle of Arcavios // Journey to the Oracle",{6}{U}{U} // {2}{G}{G},8,Magecraft
+"Kianne, Dean of Substance // Imbraham, Dean of Theory",{2}{G} // {2}{U}{U},3,Flying
+"Mila, Crafty Companion // Lukka, Wayward Bonder",{1}{W}{W} // {4}{R}{R},3,
+Pestilent Cauldron // Restorative Burst,{2}{B} // {3}{G}{G},3,Mill
+"Plargg, Dean of Chaos // Augusta, Dean of Order",{1}{R} // {2}{W},2,
+"Rowan, Scholar of Sparks // Will, Scholar of Frost",{2}{R} // {4}{U},3,
+Selfless Glyphweaver // Deadly Vanity,{2}{W} // {5}{B}{B}{B},3,
+"Shaile, Dean of Radiance // Embrose, Dean of Shadow",{1}{W} // {2}{B}{B},2,Flying;Vigilance
+Torrent Sculptor // Flamethrower Sonata,{2}{U}{U} // {1}{R},4,Ward
+"Uvilda, Dean of Perfection // Nassari, Dean of Expression",{2}{U} // {3}{R}{R},3,
+"Valentin, Dean of the Vein // Lisette, Dean of the Root",{B} // {2}{G}{G},1,Lifelink;Menace
 Aether Helix,{3}{G}{U},5,
 Beledros Witherbloom,{5}{B}{G},7,Flying
 Biomathematician,{1}{G}{U},3,

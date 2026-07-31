@@ -247,6 +247,41 @@ decision rather than work:
 5. Whether to build the third unblockable-tempo deck from deck 51's ~20-card overflow.
    Recommended as its own number **52**, not `51b`.
 
+## Session 2026-07-31 — the two code follow-ons (FO-1, FO-2)
+
+Both open code follow-ons from the P6–P8 block are now closed. Full block:
+`.cycle/blocks/2026-07-follow-ons-broad-implement.md`.
+
+- **FO-1** `card-mana.csv` kept only the FRONT cost of a MODAL double-faced card.
+  `build_mana._castable_cost` now keeps every face you may cast, in Scryfall's own
+  `A // B` convention — the shape of the faces decides, not a layout string, so a
+  TRANSFORM DFC still keeps one cost. Re-priced with `--refetch`: **49 rows changed, all
+  the same class**, 0 added/removed, no Mana Value or Keyword moved. Nothing downstream
+  changed except `card.py`, which now prints `{U} // {2}{R}{R}{G}{G} (MV 1)`.
+- **FO-1b** The front-face retry is now BATCHED (one `/cards/collection` call per 75
+  names, resolving a DFC by its front name). Per-card it tripped Scryfall's rate limiter —
+  432 lookups did not finish in ten minutes; batched, the same set is nine requests. This
+  is what made the migration affordable.
+- **FO-2** `_primary_type` now lives in `lib.primary_type`; `build_gallery.py`'s private
+  copy carried the identical back-face bug and is deleted. The committed gallery's type
+  breakdown was wrong: Creature 1071→1063, Enchantment 137→146, Land 108→106. The
+  Enchantment shift is the transforming Sagas, which the whole-string scan called
+  creatures.
+
+**767 tests pass** (+12). `check_all` green, all ten gates OK. Regression scenarios 2 and
+3 walked and PASS.
+
+## Decided AGAINST (2026-07-31)
+- Adding a `Layout` column to `card-mana.csv` to mark modal-vs-transform. It would have
+  let `load_existing` re-fetch exactly the stale rows, but the 4-column header is
+  hardcoded in four writers plus INV-03, and the same correction was reachable with a
+  one-time `--refetch` that the tool itself produces. No bespoke migration script either
+  (G-53: a capability nothing reaches).
+- Applying FO-3 (a 25th land in decks 51 / 51a). Measured — keepable 82.5/84.4/86.0/87.4%
+  at 23/24/25/26 lands, so the 25th buys +1.6pp keepable and −2.1pp screw for +0.4pp
+  flood; take it in 51 (avg MV 4.03), leave 51a at 24 (avg MV 3.14). A deck edit is the
+  owner's call under the standing "propose, don't apply until confirmed" rule.
+
 ## Decided AGAINST (2026-07-29, later)
 - Shipping any body-quality term in the cut ranking. It failed its pre-registered test;
   a term that fails and ships anyway is worse than no term.
