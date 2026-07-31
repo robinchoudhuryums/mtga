@@ -4,12 +4,12 @@
 #: based-on: deck.txt
 #: plan: midrange
 #: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 5
-#: tier: plus card advantage 1 at a 3.85 curve. Three weaknesses:
+#: tier: plus card advantage 1 at a 3.70 curve. Three weaknesses:
 #: tier: 1. CARD ADVANTAGE 1 IS THE LOWEST FIGURE ON THE ROSTER. Icetill Explorer, Traveling
 #: tier:    Chocobo, Agatha's Soul Cauldron and Web of Life and Destiny all generate real value
 #: tier:    the classifier cannot read, so the true number is higher — but not by much, and the
 #: tier:    deck has no unconditional draw spell at all.
-#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.85 with only 10 early drops, and
+#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.70 with only 12 early drops, and
 #: tier:    the engine needs lands in the GRAVEYARD before it does anything, so the first three
 #: tier:    turns are close to blank. Against a fast start it is behind before Lumra is castable.
 #: tier: 3. CENTRAL THEMES 25 is the most diffuse reading on the roster after deck 23. That is
@@ -73,6 +73,22 @@
 #: notes: counters that is STILL A LAND — a body that Lumra and Grovestrider still count, and
 #: notes: which returns to the battlefield if it dies. It is the one bridge back to the parent
 #: notes: deck's axis, and it is deliberately small.
+#: notes: PASS 3 — OVERGROWN ZEALOT, SPINESEEKER CENTIPEDE AND OUTCASTER GREENBLADE OUT. The
+#: notes: two land-fetch bodies look on-theme for a lands deck and are not: this list already
+#: notes: fetches with The Earth King, Overlord of the Hauntwoods, Loot, Icetill Explorer and
+#: notes: Famished Worldsire, so a 2/2 that finds one basic was the weakest card here.
+#: notes: WHAT REPLACED THEM ARE COUNTER CARDS, because counters are this deck's real second
+#: notes: currency now — Agatha's Soul Cauldron only grants its exiled abilities to creatures
+#: notes: WITH +1/+1 counters, and The Earth Crystal doubles every counter placed.
+#: notes: SAZH'S CHOCOBO takes a counter on EVERY landfall, in the deck built to trigger landfall
+#: notes: repeatedly and with Traveling Chocobo doubling it — so it grows twice per land and
+#: notes: doubles again off the Crystal. WILDWOOD SCOURGE grows off every counter placed on any
+#: notes: other creature, which is now seven sources. JADELIGHT SPELUNKER explores X times, which
+#: notes: puts LANDS IN HAND and counters on itself — both currencies from one {X} spell.
+#: notes: MEASURED BETTER: avg MV 3.85 -> 3.70 and early drops 10 -> 12, with interaction, card
+#: notes: advantage, protection, creature count and the below-90 count all held. Same caveat as
+#: notes: the parent: the two {X} spells register as MV 1 because `mana_value` counts X as 0, so
+#: notes: the curve gain is partly an artifact — read it as "no worse, and better cards".
 #: notes: THE EARTH CRYSTAL IS IN, AND THE THIRD TIME OF ASKING IS THE RIGHT ONE. It was parked
 #: notes: in the parent's flex block twice on the same finding — every cut cost either a creature
 #: notes: or the curve. What changed is the DECK, not the card: this list now runs SEVEN +1/+1
@@ -146,8 +162,6 @@
 # Land-makers — these are the real mana base
 1 Overlord of the Hauntwoods (DSK) 194
 1 The Earth King (TLA) 172
-1 Spineseeker Centipede (DSK) 199
-1 Outcaster Greenblade (OTJ) 172
 1 Seedship Agrarian (EOE) 204
 1 Loot, Exuberant Explorer (FDN) 106
 
@@ -160,10 +174,12 @@
 
 # Ramp
 1 Llanowar Elves (M19) 314
+1 Sazh's Chocobo (FIN) 200
+1 Wildwood Scourge (FDN) 236
+1 Jadelight Spelunker (LCI) 196
 1 Druid of the Cowl (M19) 177
 1 Badgermole Cub (TLA) 167
 1 Mona Lisa, Science Geek (TMT) 123
-1 Overgrown Zealot (DSK) 193
 1 Groundchuck & Dirtbag (TMT) 115
 
 # Cheat into play — the land-aware half of the family's options

@@ -45,6 +45,7 @@ Starforged Sword,Artifact — Equipment,"Gift a tapped Fish (You may promise an 
 When this Equipment enters, if the gift was promised, attach this Equipment to target creature you control.
 Equipped creature gets +3/+3 and loses flying.
 Equip {3}",Colorless,Equipment; tokens; etb; equipment; pump; gift; value; equip,BLB,249,Uncommon,38,,3.0,hand
+Sunshower Druid,Creature — Frog Druid,"When this creature enters, put a +1/+1 counter on target creature and you gain 1 life.",G,Frog; Druid; counters; lifegain; etb,BLB,195,Common,50,,1.5,seed
 Three Tree Rootweaver,Creature — Mole Druid,{T}: Add one mana of any color.,G,Mole; Druid; mana,BLB,198,Common,50,,1.0,seed
 Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,5.5,hand
 Plow Through,Sorcery,"Choose one —

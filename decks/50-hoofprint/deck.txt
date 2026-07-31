@@ -3,7 +3,7 @@
 #: colors: G
 #: plan: midrange
 #: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 5
-#: tier: plus card advantage 2 at a 3.31 curve. Three weaknesses the floor cannot price:
+#: tier: plus card advantage 2 at a 3.17 curve. Three weaknesses the floor cannot price:
 #: tier: 1. EVERY REMOVAL SPELL IS A FIGHT EFFECT, so the interaction and the board are the SAME
 #: tier:    resource. A sweeper takes both in one card: the creatures die and the six removal
 #: tier:    spells in hand become blanks at the same moment. No other deck on the roster has its
@@ -16,7 +16,7 @@
 #: tier:    plan, not a card. Swiftfoot Boots is half an answer, not a solution — it protects
 #: tier:    one creature at a time and only if you have {1} spare to re-equip.
 #: tier: WHAT ARGUES UP, and why this may be A once played: `shape` reads WIDE 10 / TALL 7 on 25
-#: tier: creatures with 16 early drops — the plan and the measurement agree completely, which is
+#: tier: creatures with 17 early drops — the plan and the measurement agree completely, which is
 #: tier: rare. The kill is REDUNDANT four ways (Craterhoof x3, Jumbo Cactuar, Colossification,
 #: tier: Famished Worldsire) rather than one card deep, and the mana base is unusually clean for
 #: tier: a deck with this much {G}{G}{G}. The ceiling is genuinely a turn-five kill from an
@@ -165,6 +165,27 @@
 #: notes: advantage 2, protection 2, avg MV 3.11 -> 3.25, early drops 21 -> 17, creatures 26 ->
 #: notes: 25, and cards below 90% on curve 3 -> 2. The curve is the price; the ceiling is what
 #: notes: was bought, and no metric here can see mana PRODUCTION at all.
+#: notes: PASS 4 — THE VANILLA DORKS AND THE ETB-LAND BODIES ARE OUT. Overgrown Zealot,
+#: notes: Rootrider Faun, Thornvault Forager, Spineseeker Centipede and Outcaster Greenblade all
+#: notes: left together. The first three were "{T}: Add {G}" with a rider this deck never uses;
+#: notes: the last two were ETB-fetch-a-basic bodies whose only contribution was a land and a
+#: notes: 2/2. In a deck where COUNTERS are quadrupled (Earth Crystal x Doc Samson) and three
+#: notes: creatures tap for mana equal to their POWER, a body that neither takes counters nor
+#: notes: grows is the worst card in the list.
+#: notes: WILDWOOD SCOURGE IS THE REPLACEMENT THAT MATTERS: "{X}{G}, enters with X +1/+1
+#: notes: counters; whenever one or more +1/+1 counters are put on another non-Hydra creature you
+#: notes: control, put a +1/+1 counter on this creature." It scales off EVERY counter the deck
+#: notes: places, and this deck doubles them twice over. It is also an {X} mana sink.
+#: notes: JADELIGHT SPELUNKER ({X}{G}, explores X times) is counters plus card selection on the
+#: notes: same mana-sink shape. SAZH'S CHOCOBO takes a counter on every landfall — one per turn,
+#: notes: quadrupled. SUNSHOWER DRUID puts a counter on entry. TRANSDIMENSIONAL BOVINE is the
+#: notes: one straight dork upgrade: {2}{G} for a FLIER that taps for TWO mana of any one colour.
+#: notes: MEASURED BETTER ON EVERY AXIS THAT MOVED: avg MV 3.31 -> 3.17, early drops 16 -> 17,
+#: notes: with interaction, card advantage, protection, creature count and the below-90 count all
+#: notes: held. CAVEAT ON THAT CURVE FIGURE, because it flatters the swap: Wildwood Scourge and
+#: notes: Jadelight Spelunker are {X} spells and `mana_value` counts X as 0, so both register as
+#: notes: MV 1 when you will really pay three to five for them. The honest read is that the curve
+#: notes: is roughly UNCHANGED and the card quality went up.
 #: notes: THE EARTH CRYSTAL FINALLY EARNS ITS SLOT, after being parked in this deck's own flex
 #: notes: block twice. The card did not change; the deck did. Pass 3 added DOC SAMSON, and the
 #: notes: two counter-doublers STACK: they are both replacement effects, so you choose the order
@@ -199,6 +220,8 @@
 
 # Mana creatures — bodies, ramp, and Craterhoof's X, all at once
 1 Llanowar Elves (M19) 314
+1 Sazh's Chocobo (FIN) 200
+1 Sunshower Druid (BLB) 195
 1 Shang-Chi, Master of Kung Fu (MSH) 187
 1 Topiary Lecturer (SOS) 165
 1 Badgermole Cub (TLA) 167
@@ -207,10 +230,10 @@
 1 Mona Lisa, Science Geek (TMT) 123
 1 Doc Samson, Super Psychiatrist (MSH) 164
 1 The Earth Crystal (FIN) 184
-1 Overgrown Zealot (DSK) 193
-1 Rootrider Faun (WOE) 182
-1 Thornvault Forager (BLB) 197
 1 Tender Wildguide (BLB) 196
+1 Transdimensional Bovine (TMT) 134
+1 Wildwood Scourge (FDN) 236
+1 Jadelight Spelunker (LCI) 196
 
 # The board-to-mana converter
 2 Enduring Vitality (DSK) 176
@@ -219,8 +242,6 @@
 1 Michelangelo, Improviser (TMT) 119
 
 # Bodies that also find lands
-1 Spineseeker Centipede (DSK) 199
-1 Outcaster Greenblade (OTJ) 172
 1 Loot, Exuberant Explorer (FDN) 106
 
 
