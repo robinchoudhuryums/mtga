@@ -25,9 +25,14 @@
 #: tier: deck cares. And 12 central themes with `shape` reading BALANCED/neither is diffuse.
 #: tier: WHAT ARGUES UP, and A is genuinely close. The bombs are PRESENT, not aspirational —
 #: tier: Omniscience, Summon: Bahamut (four unconditional destroys under Fractured Realm), Krang
-#: tier: Utrom Warlord and The Walls of Ba Sing Se are all in the 60, and Walls is the reason
-#: tier: protection reads 3: "other permanents you control have indestructible" covers every one
-#: tier: of them. Every coloured card casts on curve at >=90% — and distinctness is the
+#: tier: Utrom Warlord and The Walls of Ba Sing Se are all in the 60, and Walls is the broadest
+#: tier: of the FOUR sources behind protection 4: "other permanents you control have
+#: tier: indestructible" covers every one of them, while Krang carries its own indestructible
+#: tier: and grants it to other artifact creatures, and Tolarian Terror and Secret Invasion each
+#: tier: bring ward {2}. (This line read "protection reads 3" until 2026-07-31; the figure had
+#: tier: moved and --audit-rationale cannot see it, because a copula between a label and its
+#: tier: number hides the figure from the sweep — the live G-26 residual, so check this one by
+#: tier: hand.) Every coloured card casts on curve at >=90% — and distinctness is the
 #: tier: cleanest on the roster at 71% with ZERO shared cards. The manabase was described as
 #: tier: FLAWLESS on the strength of 86.0% keepable; that figure was wrong. It counted
 #: tier: Matzalantli as a land, which it is not — you cast it for {3} and only its BACK face
@@ -105,19 +110,21 @@
 #: notes: shape, a card that fights the matchup it is played in. Blue/colorless Standard has
 #: notes: the exile answers (Ghost Vacuum, Soul-Guide Lantern, Wreck Remover) but none are in
 #: notes: the 60. Treat this as a sideboard hole against recursion, not a solved problem.
-#: notes: PLANETARIUM OF WAN SHI TONG came in for Kiora, the Rising Tide. "{1}, {T}: Scry 2"
-#: notes: self-enables its own "whenever you scry or surveil, look at the top card of your library.
-#: notes: You may cast that card without paying its mana cost" — a repeatable free cast for {1} a
-#: notes: turn, in the deck whose top end is Omniscience, Krang Utrom Warlord and The Dawning
-#: notes: Archaic. It is OWNED, so it costs no wildcard. Kiora was the cut because her Threshold
-#: notes: 8/8 needs seven cards in your graveyard AND an attack, and this deck reliably does
-#: notes: neither; `cuts` ranked her 28th of 28. Card advantage 8 -> 8 held, avg MV 3.74 -> 3.83.
-#: notes: PLANETARIUM OF WAN SHI TONG came in for Ghostly Keybearer (`cuts` ranked Keybearer 1st
-#: notes: of 28 weakest). "{1}, {T}: Scry 2" self-enables its own "whenever you scry or surveil,
-#: notes: look at the top card of your library. You may cast that card without paying its mana
-#: notes: cost" — a repeatable free cast for {1} a turn, into a top end of Omniscience, Krang
-#: notes: Utrom Warlord, The Dawning Archaic and Summon: Bahamut. OWNED, so no wildcard. Cost:
-#: notes: reach 2 -> 1 and avg MV 3.74 -> 3.80.
+#: notes: PLANETARIUM OF WAN SHI TONG. "{1}, {T}: Scry 2" self-enables its own "whenever you
+#: notes: scry or surveil, look at the top card of your library. You may cast that card without
+#: notes: paying its mana cost" — a repeatable free cast for {1} a turn, into a top end of
+#: notes: Omniscience, Krang Utrom Warlord, The Dawning Archaic and Summon: Bahamut. OWNED, so
+#: notes: no wildcard. Cost when it landed: reach 2 -> 1 and avg MV 3.74 -> 3.80.
+#: notes: THE CUT IT CAME IN FOR IS NOT IN THIS DECK ANY MORE, and this block carried two
+#: notes: contradictory versions of that sentence — one naming Kiora, one naming Ghostly
+#: notes: Keybearer, with BOTH cards sitting in the 60 while the prose said they had been cut.
+#: notes: Reconstructed from the timestamped .bak chain, since the git history is squashed:
+#: notes: the cut was GHOSTLY KEYBEARER (`cuts` ranked it 1st of 28 weakest). Kiora was
+#: notes: PROPOSED and the proposal was reversed — her ETB doubles to draw four / discard four,
+#: notes: self-enabling her own Threshold, so she stayed and is now protected. Keybearer then
+#: notes: came BACK later the same session, in for Into the Flood Maw. Net: Planetarium in,
+#: notes: Into the Flood Maw out, everything else unchanged. A build log may name a card the
+#: notes: deck no longer runs; it must not say a card was cut while that card is in the list.
 #: notes: THE DAWNING ARCHAIC IS PROTECTED, and the count behind that is thinner than it reads.
 #: notes: Its "{1} less for each instant and sorcery card in your graveyard" reads against only
 #: notes: EIGHT such cards in the deck, so a realistic turn-eight yard of four to five puts it at
@@ -242,3 +249,29 @@
 # Lands (24)
 1 Uthros, Titanic Godcore (EOE) 260
 23 Island (MSH) 289
+
+# Flex — options (comments; not part of the 60). See: deck.py flex 51
+#~ -Krang, Utrom Warlord | +Island | THE 25TH LAND, deliberately NOT taken 2026-07-31 — the
+#~   list stands as is. Re-opened by the front-face type fix: Matzalantli was being counted as
+#~   a land, so this deck runs 24, not 25, and keepable is 84.4% (not the 86.0% the tier block
+#~   once quoted), which `consistency` flags as low. What the 25th buys: keepable 84.4 -> 86.0%,
+#~   screw 14.3 -> 12.2%, flood 1.3 -> 1.7%, and the land-drop curve T3 78.9 -> 81.9%, T4 63.2 ->
+#~   67.5%, T5 46.7 -> 51.7%. T4 at 63% is the number that hurts a deck whose average spell
+#~   costs four and whose cheapest ramp is {3} Matzalantli.
+#~   THE CUT MUST COME OFF THE TOP, not off the cheap end. This deck's two weaknesses compound
+#~   (thin interaction plus a 4.03 curve, the roster's slowest), and cutting a 1- or 2-drop for
+#~   a land fixes keepable while making the curve worse: Keys to the House or Scrabbling
+#~   Skullcrab both take avg MV to 4.11, Riverchurn Monument to 4.09. Cutting from the top fixes
+#~   both: Krang -0.14 to 3.89, Walls -0.11 to 3.91.
+#~   WHY KRANG IS THE CANDIDATE (G-61, count the property first): "other artifact creatures you
+#~   control have flying, trample, indestructible, haste" reads against exactly TWO cards —
+#~   Ramos and Walls. Ten artifacts, three of them creatures. And at 24 lands you have five
+#~   lands on turn 5 only 46.7% of the time, so a {9} is a cheat-in-only card (Omniscience,
+#~   Planetarium, or Lady Octopus reaching 9 ingenuity counters). Cost of the cut: protection
+#~   4 -> 3, and a real bomb when it is cheated in.
+#~   THE RUNNER-UP AND THE ONE TO AVOID. The Walls of Ba Sing Se is `cuts`' top-ranked weakest
+#~   card and nearly matches on curve, but it is a Defender whose whole job is the indestructible
+#~   anthem — the only thing protecting Omniscience, Fractured Realm and Gilded Lotus — so
+#~   cutting it is a pure loss with no clock returned. Do NOT cut Summon: Bahamut even though its
+#~   curve math ties Krang's: it is the deck's only destroy effect, four destroys under Fractured
+#~   Realm, and it takes interaction 7 -> 6 — the exact axis the tier block names as the gap to A.

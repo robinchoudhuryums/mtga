@@ -1,6 +1,6 @@
 # Handoff — start the next session here
 
-Written 2026-07-29, for a session with none of this one's context.
+Written 2026-07-31, for a session with none of this one's context.
 Read this before CLAUDE.md's Common Gotchas, not instead of them.
 
 **Read the evidence file when a rule's reasoning matters.** CLAUDE.md carries the RULE and
@@ -10,177 +10,149 @@ deleted; open the long form before deciding a rule looks arbitrary. **Keep Cycle
 Config terse** — its shape is specified by `setup-cycle.md` in claude-workflow-tools and
 the vendored commands read those fields.
 
-**Also live: `docs/systems-map.md`.** Read it when you need
-to know which command answers a question, what a workflow's real command path is, or
-why two commands disagree. It replaces re-deriving that from 2,100 lines of prose.
+**Also live: `docs/systems-map.md`.** Read it when you need to know which command answers a
+question, what a workflow's real command path is, or why two commands disagree.
 
 ---
 
 ## 1. Repo position
 
 - Working branch `claude/project-development-continuation-3hnw5r`, based on `origin/main`
-  at the squash-merge of PR #87. If its PR is merged, restart it from `main`
-  (`docs/verify-commit-tail.md` §3).
-- Gates green at handoff: `check_all` all invariants hold (~11s); **686 pytest**;
-  `check_patterns` 145 live; `check_commands` OK (33 subcommands / 34 scripts).
-- **CLAUDE.md is 757 lines** (was 2,219). The evidence is in `docs/gotchas.md` (rules)
-  and `docs/cycle-config.md` (the Cycle Workflow Config fields), linked by anchor and
-  gated in both directions by `scripts/check_docs.py`. The doc split is COMPLETE.
-- Collection: 1,853 cards, 64 roster decks. Unchanged this session — no card or deck
-  data was touched, only tooling.
+  at the squash-merge of **PR #93**. **If its PR is merged, restart it from `main`**
+  (`docs/verify-commit-tail.md` §3) — it has been merged three times this cycle, so assume
+  it needs the restart and check.
+- Gates green at handoff: `check_all` all invariants hold (**14.8s**); **767 pytest** in 16
+  files; `check_patterns` 145 live; `check_commands` OK (33 subcommands / 32 scripts, 5
+  exemptions); `check_agreement` OK; `check_docs` OK (87 anchors linked).
+- **CLAUDE.md is 868 lines.** The doc split is COMPLETE and gated in both directions.
+- Collection: **1,860 cards, 76 deck files.** Both moved this cycle — decks 51 and 51a were
+  built, deck 49 refined.
 
-## 2. What the last session did
+## 2. What the last three sessions did
 
-The task was a task-first systems map, then an agreement gate, then fixes prioritized
-by the map, holding the subcommand count flat. All four held.
+One theme, found late and named only at the end: **a two-faced card's FRONT face and its
+stored metadata disagree**, on every column, and five separate places trusted the metadata.
+Each was found by deck work, none by a gate.
 
-1. **`docs/systems-map.md`** — the four workflows, their real command paths and costs,
-   every **reconciliation point** where a human must settle two answers, and an
-   overlapping-answer inventory with measured agreement rates.
-2. **`scripts/check_agreement.py`** — the twelfth hard gate, and the one that covers
-   what the other eleven structurally cannot: two functions that are each correct and
-   disagree with each other.
-3. **The fix the map surfaced** — `_weakest_cut` (the cut hint on every `suggest-homes`
-   row) and `rank_cut_candidates` (what `cuts` prints) both answered "this deck's
-   most-cuttable card" and **disagreed on 36 of 64 decks**. One `cut_keep_score` now.
-4. **`load_rarities` memoized** — 85% of `deck.py cuts`' runtime, found by profiling.
+1. **P1–P5, the pile-triage path** — a shared name resolver, cost-based castability in
+   `screen`, a proportional generic-theme bar, `/add-cards` Stage 0b, and G-58's
+   bulk-triage variant. Block: `2026-07-pile-triage-broad-implement.md`.
+2. **P6–P8, front-face metadata I** — `suggest` scoped candidates by colour IDENTITY (55
+   castable red-pool cards hidden from a mono-red deck); `_primary_type` read the BACK
+   face's type (deck 49 reported 26 lands holding 25); `swap --apply` wrote a DFC add as a
+   bare unimportable line. Block: `2026-07-front-face-metadata-broad-implement.md`.
+3. **FO-1/FO-2, front-face metadata II** — `card-mana.csv` kept only the FRONT cost of a
+   MODAL DFC (49 rows; it caused a wrong answer in chat), and `build_gallery.py` had its
+   own copy of `_primary_type` with the same bug. `build_mana`'s front-face retry is now
+   batched. Block: `2026-07-follow-ons-broad-implement.md`.
+4. **G-63** — the class is now a rule, with all four incidents in `docs/gotchas.md`.
+5. **Deck work** — 51 Unlock (tier B) and 51a Overdue (tier B, built from scratch) shipped;
+   49 Scaleforge refined across four passes; G-62 (blind mill is a CLOCK, not interaction)
+   recorded with its permutation proof.
 
-Subcommand count: **33 → 33.** A duplicate model was deleted, not added.
+Subcommand count: **33 → 33.**
 
 ## 3. The task for the next session
 
-**Pick from §5. There is no single blocking item.** Note §5.5 closed earlier today — the
-P/T fix-hypothesis was tested and rejected, so the list is one speculative item shorter
-and the remaining work is ordinary. The diagnosis that opened this
-cycle — *the models are fine, the composition layer is where the friction is* — is now
-one gate and one map better, and the remaining items are ordinary work rather than a
-structural gap.
-
-If you want the highest-value one: **`_signature_themes` saturation in `cuts`** (§5.1) —
-measured, and needing only the roster-wide diff the standing rule requires before its
-one-line caller change can land. The doc split is finished; both phases are done.
+**Pick from §5. There is no blocking item and nothing is half-done.** The highest-value
+one is §5.1 (`tier --audit-rationale`'s stay-marker false negative) — it is the oldest open
+item, it is measured, and it fired again this cycle in a new way: deck 51's tier block said
+"protection reads 3" against a live 4 and the audit reported the deck **clean**, because a
+copula between a label and its number hides the figure from the sweep. That is the same
+residual from the other side, and it is now costing real accuracy in the decks being built.
 
 ## 4. What NOT to do
 
-- **Do not re-weight `cuts`' fit sum.** Simulated across all 64 decks last cycle and
-  rejected; also structurally forbidden by `tests/test_recommendations.py`.
-  (§5.1 is NOT this — it unifies two definitions of "signature", it does not tune fit.)
+- **Do not re-weight `cuts`' fit sum.** Simulated across all 64 decks and rejected; also
+  structurally forbidden by `tests/test_recommendations.py`.
+- **Do not re-propose the P/T creature signal.** Pre-registered, tested, rejected.
 - **Do not add a 34th subcommand** without saying what it replaces.
-- **Do not trust a gate you have not watched fail.** See §6 — a new gate was vacuous on
-  the pair it was written for, twice, and a first run of the creature experiment measured
-  a miscalibrated signal rather than the hypothesis.
-- **Do not re-propose the P/T creature signal** (§5.5). It was pre-registered, tested and
-  rejected; re-running it without new data would just re-find the same null.
-- **`docs/tooling-improvement-plan.md` is HISTORICAL** (F01–F15, all landed). Its F01
-  instructs adding `lib.full_card_text`, which was later deleted as dead code.
+- **Do not trust a gate you have not watched fail** (§8).
+- **Do not hand-triage a card pile on the `Color(s)` column.** G-58's bulk-triage variant:
+  it mis-binned nine of 111 cards, eight of which were castable. `deck.py screen` is the
+  tool and `/add-cards` Stage 0b now requires it above ~10 cards.
+- **Do not apply a deck edit without the owner confirming it.** Standing rule, restated
+  several times this cycle. Propose with numbers; they decide.
+- **`docs/tooling-improvement-plan.md` is HISTORICAL.** Its F01 instructs adding
+  `lib.full_card_text`, which was later deleted as dead code.
 
 ## 5. Open work, in rough value order
 
-1. ~~**`_signature_themes` saturates in `cuts`**~~ — **DONE.** The +2 keep-boost read the
-   LOOSE union of every `#: protect:` card's tags and fired on **87% of nonland cards**
-   across the 22 decks that declare one (100% in decks 20 and 46). `cut_scoring_context`
-   now reads `_strong_signature_themes` (≥2 protected cards), firing on 66% — the same fix
-   `check_suggest` anchor 11b forces on `cmd_suggest_homes`, one caller over. Roster diff:
-   14 of 64 decks re-scored, 4 top-cut candidates moved, and deck 30's motivating case
-   survives (strict signature = `{counters}`).
+1. **`tier --audit-rationale` false negatives, now two shapes.** (a) The STAY-marker one: a
+   `_HISTORY_CUES` change-cue about one card suppresses a citation of ANOTHER card in the
+   same ±140-char window even when the clause says that card **stays** (deck 42a asserted
+   "Erode stay[s]" after Erode was cut, reported clean). (b) The COPULA one, hit again in
+   deck 51 this cycle: a figure joined to its label by a copula or participle ("protection
+   reads 3", "the reported 2.57") is invisible to the figure sweep. **Both need a roster
+   sweep before landing**, per the cue-list rule — a false positive is noisy and gets
+   noticed, a false negative is silent.
+2. **`card-mana.csv` cannot distinguish a MODAL DFC from a SPLIT card.** FO-1 made it able
+   to tell transform from modal (a transform DFC keeps one cost), but both split and modal
+   now render `A // B`. No reader asks the question today; if one ever needs to, the fix is
+   a `Layout` column — and note the 4-column header is hardcoded in four writers plus
+   INV-03, which is exactly why it was NOT added this cycle.
+3. **`doubler_restriction` parses POWER scopes only.** A type-scoped doubler (Splinter's
+   Ninja clause) is counted against the whole deck — 27 feeders in deck 20 against a
+   correct 12. Read a `✱ multiplier` figure on a tribal doubler as an upper bound. Fix is a
+   second scope pattern feeding the same filter, not a second model.
+4. **The pool's `Power`/`Toughness` for a two-faced card** is stored the same merged way
+   costs were before FO-1. Not investigated — flagged because it is the same shape as the
+   whole G-63 class and nothing has looked.
+5. **`build_dashboard.py` reaches into `deckmod._primary_type`**, a private name in another
+   module, instead of `lib.primary_type`. Harmless today; the reason it is listed is that a
+   private cross-module reference is how the duplicate copy survived in the first place.
+6. **More ledger data, not another cut signal.** Every subgroup in the recommendation
+   ledger is 4–6 rows. A pre-registered re-test at ~100 swaps is the honest next step.
+7. Smaller: the reverse `screen` flag (a candidate strictly WORSE than an incumbent);
+   ROADMAP Tier 1 (theme the remaining UB flavor mechanics, `scripts/keyword_baseline.txt`).
 
-2. ~~**An incremental `make refresh`**~~ — **DONE, both halves.** `build_mana.py` reuses
-   already-resolved rows, and `build_pool.py` — which was **99% of the cost** (222.5s of a
-   224.3s run, 91 paginated pages at ~2.4s each) — now reuses a pool built within the last
-   week for the same query. Skipping the pool is correct, not just fast: it is the whole
-   Arena pool, independent of what you OWN, so an ingest cannot change it; what goes stale
-   is `Legalities` and a new set's arrival, hence a window. Originally: It now reuses already-resolved
-   rows and fetches only new or unresolved names: a no-change refresh takes ~1s and needs
-   NO network; a four-card ingest fetches four cards. `make refresh REFETCH=1` forces the
-   full re-price for BOTH steps. Implemented as a flag on the one target, not a second
-   recipe. A no-change `make refresh` is now **12.7s** (of which ~11s is `check_all` itself) against 5m3s for a full rebuild, and needs no network.
+## 6. Open DECK decisions (the owner's, not yours)
 
-3. **`tier --audit-rationale` STAY-marker false negative.** A `_HISTORY_CUES` change-cue
-   about one card suppresses a citation of ANOTHER card in the same ±140-char window,
-   even when the clause says the card **stays**. Deck 42a asserted "Erode stay[s]" after
-   Erode was cut and the audit reported clean. Fix is the mirror of `_cites_as_arriving`.
-   **Needs a roster sweep before landing**, per the cue-list rule. Until then a "X stays"
-   claim is not covered — check by hand after a swap.
+Measured, recorded, and deliberately not applied. Do not act on these unsolicited.
 
-4. **`doubler_restriction` parses POWER scopes only.** A type-scoped doubler (Splinter,
-   Radical Rat's Ninja clause) is counted against the whole deck — 27 feeders in deck 20
-   against a correct 12. The `✱ multiplier` figure on a tribal doubler is an upper bound.
-   Fix is a second scope pattern feeding the same filter, not a second model.
+- **Deck 51, the 25th land.** Recorded as a `#~` flex line in the deck file with the full
+  measurement. The list stands as is by the owner's call.
+- **Deck 51a, the 25th land.** Recommended AGAINST (avg MV 3.14; it wants the spell).
+- **Deck 49, Ramos, Dragon Engine.** Recommended against — every available cut worsens the
+  curve. If taken: Spinerock Tyrant or Rapacious Dragon.
+- **A third unblockable-tempo deck** from deck 51's ~20-card overflow. Recommended as its
+  own number **52**, not `51b`.
 
-5. **The creature cut-ranking regime — the P/T hypothesis is TESTED and REJECTED.**
-   Do not re-propose it. Pre-registered, scored against all 31 creature cuts on
-   git-reconstructed pre-swap snapshots: as a bounded ±3 co-signal it changed nothing
-   (4 up / 5 down, p=1.00, agreement 48% → 48%), which was *predicted* — `fit` has a
-   roster median of 44 (IQR 31–59), so a ±3 term cannot reorder anything. Scaled to span
-   that IQR it made agreement slightly worse (48% → 45%). Decisive: a cut creature's body
-   quality (mean 4.83) is indistinguishable from the median body of the creatures that
-   STAYED (5.00), and the cut card was the worse body only 17/31 times — chance, p=0.72.
+## 7. Measurements — do not re-derive
 
-   **What replaced it:** the 45% is not a property of creatures. Per deck it runs 0/6,
-   1/6, 3/6, 2/4, 4/4 — 0% to 100% — so it is largely a statement about which decks were
-   edited. `deck.py feedback` now discloses that breakdown (`segment_concentration`).
-   The build-vs-tune story fits deck 46 (rebuilt mid-window, 0/6) but not deck 3 (1/6, an
-   ordinary tune). **The next move is MORE LEDGER DATA, not another signal** — every
-   subgroup here is 4–6 rows. A pre-registered re-test at ~100 swaps is the honest step.
-   Full method and numbers: `.cycle/blocks/2026-07-creature-cut-hypothesis-test.md`.
+Each costs a roster sweep. All current.
 
-6. Smaller: the reverse `screen` flag (a candidate strictly WORSE than an incumbent);
-   ROADMAP Tier 1 (theme the remaining UB flavor mechanics).
-
-## 6. Measurements — do not re-derive
-
-Each costs a roster sweep. All still current.
-
-**Cut-ranking agreement** (this session): `_weakest_cut` vs `rank_cut_candidates`
-**28/64 before → 64/64 after**.
-
-**Signature-boost saturation** (this session): 86% loose / 66% strict — table in §5.1.
-
-**`suggest` vs `suggest-homes`** (this session): they use different theme gates
-(`suggest` admits any theme the deck carries, `suggest-homes` requires a CENTRAL one),
-which looked like a guaranteed divergence. Across 640 picks on 64 decks they agree
-**100%** — `suggest` sorts by theme weight and central themes are the heaviest, so its
-top always clears the stricter gate. A consequence of the ranking, not a property.
-
-**The recommendation ledger** at 52 scored swaps (last cycle):
-
-| segment | agreement | median toward "keep" | n |
-|---|---|---|---|
-| noncreature cuts | 90% | 10% | 21 |
-| creature cuts | **45%** | 56% | 31 |
-| *pooled* | *63%* | *28%* | *52* |
-
-`fit` is an **unnormalized sum**, so tag count drives the keep-score; creatures carry
-~5.7 tags against ~3.0 for spells. Correlation(tag count, keep-rank) = **+0.73, positive
-in 64 of 64 decks**. Normalization was simulated and rejected (top-3 themes moves it to
-+0.72 and changes 1% of top-5 shortlist slots).
-
-**Costs:** whole tune-deck gather phase ~10s · `preflight` 6.4s (it runs `check_all`) ·
-`suggest-homes` 3.1s per card · `make refresh` ~10 min · `check_all` 11.3s.
-
-## 7. Where things are
-
-- **`docs/systems-map.md`** — the live task-first map. Start here for "which command".
-- Per-cycle blocks: `.cycle/blocks/*.md`; newest
-  `2026-07-systems-map-agreement-gate.md`.
-- Prose state / decisions incl. what was decided AGAINST: `.cycle/STATE.md`.
-- Commit discipline: `docs/verify-commit-tail.md`.
-- Long-range ideas: `ROADMAP.md` (regenerate with `/roadmap`).
-- **Historical, do not follow:** `docs/tooling-improvement-plan.md`.
+- **Cut-ranking agreement**: `_weakest_cut` vs `rank_cut_candidates` **28/64 → 64/64**.
+- **Signature-boost saturation**: 87% loose / 66% strict; the generic-theme bar (P3) moved
+  4,440 (deck, card) judgements, KEY 13% → 8%, and **every one of the 223 changed labels
+  went KEY → weaker**. Nothing gained a KEY.
+- **`suggest` vs `suggest-homes`**: 640 picks on 64 decks, **100% agreement** — a
+  consequence of the ranking, not a property of the gates.
+- **Colour-identity vs printed cost** (G-58/P6): 55 Standard cards in the red pool that an
+  identity filter hides from a mono-red deck; 9 of 111 pile cards mis-binned by hand, 8 of
+  them castable.
+- **Back-face type** (P7): 81 pool cards have a type line whose back face outranks the
+  front; 4 decks were live.
+- **Modal DFC costs** (FO-1): 100 Arena modal DFCs, 40 with a real cost on both faces, 49
+  `card-mana.csv` rows corrected (the extra 9 are library front-name rows).
+- **Land math for a 60-card deck**: keepable 82.5 / 84.4 / 86.0 / 87.4% at 23 / 24 / 25 / 26
+  lands; at 24, land-drop probability is T3 78.9%, T4 63.2%, T5 46.7%.
+- **Costs**: `check_all` 14.8s · full pytest ~36s · `preflight` ~6s · `suggest-homes` ~3s
+  per card · no-change `make refresh` ~13s · full `make refresh REFETCH=1` ~5 min (the mana
+  re-price is now batched end to end).
 
 ## 8. One thing to preserve
 
-**Measure before believing, then check the measurement.** It found every real thing this
-session:
+**Measure before believing, then check the measurement** — and this cycle adds a second
+half: **a fix applied to one definition does not reach a copy of it.**
 
-- The cut-model divergence was invisible to eleven gates and obvious in one roster sweep.
-- `load_rarities` reads as fine in any single command's wall clock; cProfile said 85%.
-- The new gate's role-filler pair ran GREEN with the bug it names deliberately
-  reintroduced — **twice**, for two independent reasons (it read a truncated view of the
-  filtered set, and it asked about only one of the two role axes). Both were found by
-  mutating the code and watching the check stay green.
-- The first `suggest`-vs-`suggest-homes` measurement said 100% disagreement. It was
-  reading a dict's keys as rows. The real answer is 100% agreement.
-
-A check you have not watched fail is not a check, and a number you have not sanity-tested
-is not a measurement.
+- Three of the four G-63 bugs were found by building a deck, not by any gate. Eleven gates
+  were green throughout.
+- `build_gallery.py` kept mis-typing its own breakdown after `deck.py` was fixed, because
+  it had its own `_primary_type`. The test now asserts both callers resolve to the **same
+  object**, not that they agree today — a same-answer test passes against two copies.
+- The "Ojer −Hoarding Dragon → avg MV 4.15" reading that shaped a deck-49 decision was an
+  artifact of the type bug. A measurement taken through a broken primitive is not a
+  measurement.
+- A `--refetch` that "took too long" was not slow: it was rate-limited by doing 700
+  single-card GETs. The fix was one batch call, and it was invisible until timed.
