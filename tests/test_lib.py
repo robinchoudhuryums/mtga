@@ -294,3 +294,29 @@ class TestCardPower:
 
     def test_none_and_missing(self):
         assert lib.card_power(None) is None
+
+
+class TestPrimaryTypeHasOneDefinition:
+    """`build_gallery.py` carried its own copy of `_primary_type` with the identical
+    back-face bug, and it went on mis-typing the gallery's breakdown for as long as the
+    copy existed — a fix applied to one definition cannot reach the other. The wiring is
+    the half a pure-function test structurally cannot see (the recurring failure shape
+    here), so this asserts both callers resolve to lib's object, not merely that they
+    agree today."""
+
+    def test_deck_and_gallery_both_use_libs_definition(self):
+        import deck
+        import build_gallery
+        assert deck._primary_type is lib.primary_type
+        assert build_gallery._primary_type is lib.primary_type
+
+    def test_the_back_face_never_decides_the_type(self):
+        assert lib.primary_type("Legendary Creature — God // Land") == "Creature"
+        assert lib.primary_type("Legendary Artifact // Legendary Artifact Land") == "Artifact"
+
+    def test_a_real_land_front_is_still_a_land(self):
+        assert lib.primary_type("Land — Town // Sorcery — Adventure") == "Land"
+
+    def test_missing_and_empty(self):
+        assert lib.primary_type("") == "Other"
+        assert lib.primary_type(None) == "Other"

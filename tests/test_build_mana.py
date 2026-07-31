@@ -193,3 +193,85 @@ class TestGuardsStillHold:
         monkeypatch.setattr(build_mana, "fetch", boom)
         assert _run(env) == 1
         assert open(env["out"], encoding="utf-8").read() == before
+
+
+class TestModalDfcKeepsBothCosts:
+    """A MODAL double-faced card is castable as EITHER face, so both costs must survive.
+
+    Storing only face 0 lost the back half entirely — Bruce Banner read as a plain `{U}`
+    one-drop with nothing recording that `{2}{R}{R}{G}{G}` The Incredible Hulk is castable
+    from the same card in hand. That produced a wrong answer in chat. 49 rows were affected.
+    A TRANSFORM DFC is the control case: its back face is reached by transforming, never by
+    paying, so it must keep exactly ONE cost.
+    """
+
+    def test_modal_dfc_joins_both_faces_front_first(self):
+        card = {"mana_cost": None,
+                "card_faces": [{"mana_cost": "{U}"}, {"mana_cost": "{2}{R}{R}{G}{G}"}]}
+        assert build_mana._castable_cost(card) == "{U} // {2}{R}{R}{G}{G}"
+
+    def test_transform_dfc_keeps_one_cost(self):
+        card = {"mana_cost": None,
+                "card_faces": [{"mana_cost": "{3}{W}{W}"}, {"mana_cost": ""}]}
+        assert build_mana._castable_cost(card) == "{3}{W}{W}"
+
+    def test_split_card_uses_scryfalls_own_joined_cost(self):
+        assert build_mana._castable_cost({"mana_cost": "{U} // {4}{U}"}) == "{U} // {4}{U}"
+
+    def test_a_land_has_no_cost(self):
+        assert build_mana._castable_cost({"mana_cost": "", "card_faces": []}) == ""
+        assert build_mana._castable_cost({}) == ""
+
+    def test_the_front_face_is_still_the_head_of_the_string(self):
+        """`lib.front_face_cost` takes the head, and every curve / pip / castability read
+        depends on that being the face you cast (G-02)."""
+        from lib import front_face_cost
+        card = {"mana_cost": None,
+                "card_faces": [{"mana_cost": "{1}{B}"}, {"mana_cost": "{5}{B}{R}"}]}
+        assert front_face_cost(build_mana._castable_cost(card)) == "{1}{B}"
+
+
+class TestFrontFaceRetryIsBatched:
+    """The retry for names /cards/collection won't match by FULL name is a batch, not a
+    GET per card: on ~700 two-faced names the per-card loop tripped Scryfall's rate
+    limiter and its own backoff, making a `--refetch` slower than the whole rest of the
+    build. The strict "the resolved card must BE the one asked for" check is what must
+    survive the rewrite — a bare front name can name a DIFFERENT card."""
+
+    def _client(self, monkeypatch, responses):
+        calls = []
+
+        def fake_post(names, **kw):
+            calls.append(list(names))
+            return {"data": responses.get(tuple(names), [])}
+
+        monkeypatch.setattr(build_mana.scryfall, "post_collection", fake_post)
+        monkeypatch.setattr(build_mana.time, "sleep", lambda *_: None)
+        return calls
+
+    def test_a_dfc_is_resolved_by_its_front_name(self, monkeypatch):
+        card = {"name": "Bruce Banner // The Incredible Hulk", "cmc": 1, "keywords": [],
+                "mana_cost": None,
+                "card_faces": [{"mana_cost": "{U}"}, {"mana_cost": "{2}{R}{R}{G}{G}"}]}
+        calls = self._client(monkeypatch, {
+            ("Bruce Banner // The Incredible Hulk",): [],
+            ("Bruce Banner",): [card],
+        })
+        out = build_mana.fetch(["Bruce Banner // The Incredible Hulk"])
+        assert out["bruce banner // the incredible hulk"][0] == "{U} // {2}{R}{R}{G}{G}"
+        assert calls == [["Bruce Banner // The Incredible Hulk"], ["Bruce Banner"]]
+
+    def test_a_front_name_that_resolves_to_a_different_card_is_rejected(self, monkeypatch):
+        """"Life" is also a card. Writing a wrong cost is worse than writing none."""
+        other = {"name": "Life", "cmc": 1, "keywords": [], "mana_cost": "{G}"}
+        self._client(monkeypatch, {("Life // Death",): [], ("Life",): [other]})
+        out = build_mana.fetch(["Life // Death"])
+        assert "life // death" not in out
+
+    def test_the_retry_is_one_request_per_75_names(self, monkeypatch):
+        names = [f"Front {i} // Back {i}" for i in range(80)]
+        calls = self._client(monkeypatch, {})
+        build_mana.fetch(names)
+        # 2 batches for the full names, then 2 more for the front-face retry.
+        assert len(calls) == 4
+        assert calls[2][0] == "Front 0" and calls[3][0] == "Front 75"

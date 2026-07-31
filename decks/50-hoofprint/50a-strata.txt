@@ -11,7 +11,7 @@
 #: tier:    Chocobo, Agatha's Soul Cauldron and Web of Life and Destiny all generate real value
 #: tier:    the classifier cannot read, so the true number is higher — but not by much, and the
 #: tier:    deck has no unconditional draw spell at all.
-#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.76 with only 12 early drops, and
+#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.79 with only 12 early drops, and
 #: tier:    the engine needs lands in the GRAVEYARD before it does anything, so the first three
 #: tier:    turns are close to blank. Against a fast start it is behind before Lumra is castable.
 #: tier: 3. CENTRAL THEMES 25 is the most diffuse reading on the roster after deck 23. That is
@@ -106,7 +106,7 @@
 #: notes: the right cut: it is one of TWELVE counter sources, one of six land-finders and one of
 #: notes: four self-mill effects. Its explore also mills the WRONG HALF — only nonlands go to the
 #: notes: graveyard, and Lumra, Summon: Titan and Aftermath Analyst all return LANDS from there.
-#: notes: READ THE CURVE FIGURE WITH CARE. This swap measures avg MV 3.55 -> 3.76 and early drops
+#: notes: READ THE CURVE FIGURE WITH CARE. This swap measures avg MV 3.55 -> 3.79 and early drops
 #: notes: 13 -> 12, and both numbers OVERSTATE the cost: `mana_value` prices {X} spells at 1 (X
 #: notes: counts as 0 off the stack), so Jadelight was booked as a one-drop when you really cast
 #: notes: it for three or four. Removing it inflates the average of what remains. The real curve

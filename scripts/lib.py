@@ -169,6 +169,36 @@ def front_face_cost(cost):
     return (cost or "").split(_COST_SPLIT, 1)[0]
 
 
+def primary_type(type_line):
+    """The card's type for analysis, read from the FRONT FACE ONLY.
+
+    A two-faced card's type line is stored as `Front // Back`, and a substring scan
+    over the whole string reports the BACK face's type whenever it sorts earlier in
+    `order` — which for `Land` is always. So `Legendary Creature — God // Land`
+    (Ojer Axonil) and `Legendary Artifact // Legendary Artifact Land` (Matzalantli)
+    both read as LAND, and every one of deck.py's ~35 `"Land" in primary_type(...)`
+    guards then skipped them: excluded from the curve, uncounted as creatures, and
+    ADDED to the land total. `consistency 49` reported "Lands: 26/60" for a deck
+    holding 25, with keepable computed against a phantom land. 81 pool cards share the
+    shape; three were live in decks (Matzalantli in 51/51a, Ojer Kaslem in 50a).
+
+    The front face is the correct read for the same reason G-02 gives for cost: it is
+    the half you cast or play. A card whose front really IS a land (Jidoor's
+    `Land — Town // Sorcery — Adventure`) still reports Land, because the front says so.
+
+    Lives HERE, not in deck.py, because build_gallery.py had its own copy carrying the
+    identical back-face bug — the second copy went on mis-typing the gallery's breakdown
+    for as long as it existed separately. One definition, one fix.
+    """
+    front = (type_line or "").split("//")[0]
+    order = ["Land", "Creature", "Planeswalker", "Battle", "Artifact",
+             "Enchantment", "Instant", "Sorcery"]
+    for t in order:
+        if t.lower() in front.lower():
+            return t
+    return "Other"
+
+
 def mana_value(cost):
     """Mana value of ONE cost string: generic numbers plus one per non-generic symbol.
 

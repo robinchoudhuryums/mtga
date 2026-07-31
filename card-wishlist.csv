@@ -242,6 +242,11 @@ When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
 Bonehoard Dracosaur,Creature — Dinosaur Dragon,"Flying, first strike
 At the beginning of your upkeep, exile the top two cards of your library. You may play them this turn. If you exiled a land card this way, create a 3/1 red Dinosaur creature token. If you exiled a nonland card this way, create a Treasure token.",R,Dinosaur; Dragon; tokens; treasure; impulse; flying; evasion; first strike; combat,LCI,134,Mythic,49,,7.5,hand
+"Ojer Axonil, Deepest Might // Temple of Power",Legendary Creature — God // Land,"Trample
+If a red source you control would deal an amount of noncombat damage less than Ojer Axonil's power to an opponent, that source deals damage equal to Ojer Axonil's power instead.
+When Ojer Axonil dies, return it to the battlefield tapped and transformed under its owner's control. // (Transforms from Ojer Axonil, Deepest Might.)
+{T}: Add {R}.
+{2}{R}, {T}: Transform this land. Activate only if red sources you controlled dealt 4 or more noncombat damage this turn and only as a sorcery.",R,God; mana; noncombat damage; transform; trample; evasion,LCI,158,Mythic,49,"Deck 49: upgrades ELEVEN noncombat damage sources to 4 apiece (Firespitter Whelp 1->4, Nova Hellkite 1->4, Nebula Dragon 3->4, Realm-Scorcher's repeatable ping, Plasma Bolt, Dracosaur Auxiliary, both Drakuseth halves). A 4-drop with trample that returns transformed on death - the closest red gets to protection-by-revive. NOT a Dragon.",84,hand
 "Ojer Kaslem, Deepest Growth // Temple of Cultivation",Legendary Creature — God // Land,"Trample
 Whenever Ojer Kaslem deals combat damage to a player, reveal that many cards from the top of your library. You may put a creature card and/or a land card from among them onto the battlefield. Put the rest on the bottom in a random order.
 When Ojer Kaslem dies, return it to the battlefield tapped and transformed under its owner's control. // (Transforms from Ojer Kaslem, Deepest Growth.)
@@ -253,6 +258,10 @@ Whenever one or more nontoken creatures you control die, create a green Fungus D
 "Matzalantli, the Great Door // The Core",Legendary Artifact // Legendary Land,"{T}: Draw a card, then discard a card.
 {4}, {T}: Transform Matzalantli. Activate only if there are four or more permanent types among cards in your graveyard. (Artifact, battle, creature, enchantment, land, and planeswalker are permanent types.) // (Transforms from Matzalantli.)
 Fathomless descent — {T}: Add X mana of any one color, where X is the number of permanent cards in your graveyard.",Colorless,graveyard; card draw; mana; transform; fathomless descent,LCI,256,Rare,51,,3.5,seed
+Roaming Throne,Artifact Creature — Golem,"Ward {2}
+As this creature enters, choose a creature type.
+This creature is the chosen type in addition to its other types.
+If a triggered ability of another creature you control of the chosen type triggers, it triggers an additional time.",Colorless,Golem; ward; protection,LCI,258,Rare,49,"Deck 49: doubles the triggered ability of every chosen-type creature, and SIXTEEN of the deck's Dragons have one - Terror of the Peaks fires twice per creature, Lathliss makes two 5/5s per Dragon, Drakuseth deals 4+3+3 twice per attack. Ward {2} is also the only protection red offers. Found via the K-13 effect-shape search; it never says 'Dragon'.",88,hand
 "Captain Storm, Cosmium Raider",Legendary Creature — Human Pirate,"Whenever an artifact you control enters, put a +1/+1 counter on target Pirate you control.",U/R,Human; Pirate; counters,LCI,227,Uncommon,26b,,4.5,seed
 Ixalli's Lorekeeper,Creature — Human Druid,{T}: Add one mana of any color. Spend this mana only to cast a Dinosaur spell or activate an ability of a Dinosaur source.,G,Human; Druid; mana,LCI,194,Uncommon,50,,2.0,seed
 Poison Dart Frog,Creature — Frog,"Reach
@@ -412,8 +421,12 @@ When this creature enters, destroy target nonbasic land an opponent controls. It
 Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I, II — Create a 5/5 green Elephant creature token.
 III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,5.5,hand
+Breaching Dragonstorm,Enchantment,"When this enchantment enters, exile cards from the top of your library until you exile a nonland card. You may cast it without paying its mana cost if that spell's mana value is 8 or less. If you don't, put that card into your hand.
+When a Dragon you control enters, return this enchantment to its owner's hand.",R,card advantage; etb; bounce,TDM,101,Uncommon,49,"Deck 49: exile until a nonland card and CAST IT FREE if MV<=8, then 'when a Dragon you control enters, return this to its owner's hand' - a RECURRING free spell in a deck with 20 Dragons. The card-advantage fix for a deck that measured 2.",74,hand
 Duty Beyond Death,Instant,"As an additional cost to cast this spell, sacrifice a creature.
 Creatures you control gain indestructible until end of turn. Put a +1/+1 counter on each creature you control. (Damage and effects that say ""destroy"" don't destroy those creatures.)",W,counters; sacrifice,TDM,10,Uncommon,23; 3,instant team indestructible + a permanent counter on every creature; sac cost is a token in a go-wide deck,6.0,hand
+Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen,"Flying
+Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,72,hand
 Static Snare,Enchantment,"Flash
 This spell costs {1} less to cast for each attacking creature.
 When this enchantment enters, exile target artifact or creature an opponent controls until this enchantment leaves the battlefield.",W,cost-reduction; removal; etb; flash; tempo,TDM,26,Uncommon,23,"flash, costs {1} less per attacking creature — often 1-2 mana in a wide deck; exiles artifact or creature",5.5,hand

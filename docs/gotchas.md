@@ -79,6 +79,15 @@ whenever a name contains `" // "`.** The narrow code fix would be for `card.py` 
 `mana_value(front_face_cost(cost))` and show the combined total only as an aside; until
 that lands the rule above is the mitigation.
 
+**Later development: MODAL double-faced cards now store both costs the same way.** A
+modal DFC is castable as either face, so it belongs in the same `A // B` convention, and
+`build_mana` used to keep only the front — see G-63 for the incident and the wider class.
+Two things follow for this rule. Every reader here is unaffected, because they all take
+the head of the string via `front_face_cost` and that is still the front face. And a modal
+DFC does NOT hit residual 2 above: Scryfall's `cmc` for one is the FRONT face's value
+(Bruce Banner is MV 1, not MV 6), so `card.py` prints `{U} // {2}{R}{R}{G}{G} (MV 1)` —
+correct on both halves. The combined-MV trap is specific to split and Room cards.
+
 
 ## [G-03] Don't judge a card by printed mana value or a single subtype
 
@@ -2268,3 +2277,61 @@ mill card.
 
 **Residual:** nothing gates this either. `role_tally` correctly does not count a mill card
 as interaction, so the tooling has never made this mistake; only prose can.
+
+
+## [G-63] The front face and the stored metadata disagree — on every column, not just cost
+
+**G-02 is not a cost rule. It is one member of a class**, and the class produced four
+separate bugs in a single cycle — one per column of a `Front // Back` card. Each was
+found by deck work, none by a gate, and each had been live for a long time because the
+wrong answer is plausible.
+
+**COST.** Scryfall gives a split / Room / Adventure card both halves in the top-level
+`mana_cost` (`{U} // {4}{U}`), but leaves a MODAL double-faced card's top-level cost
+empty and puts a real cost on each face. `build_mana._front_mana` took face 0, so the
+back face vanished: Bruce Banner was stored as a plain `{U}` one-drop with nothing
+recording that `{2}{R}{R}{G}{G}` The Incredible Hulk is castable from that same card in
+hand. **That produced a wrong answer in chat** — I told the owner both faces were
+permanently unreachable, and the correction came from them, verified against Scryfall's
+`layout: modal_dfc`. 49 rows were affected. Fixed in `_castable_cost`, which decides on
+the SHAPE of the faces rather than a layout string: a card with a real cost on more than
+one face is one you may cast either way, whatever the layout is called. A TRANSFORM DFC
+is the control case and correctly keeps one cost — Scryfall writes its back face's
+`mana_cost` as `""`, because that face is reached by transforming, never by paying.
+
+**COLOR.** `Color(s)` is colour IDENTITY, so a hybrid `{U/R}` and a colorless `{6}` both
+read as off-colour for a mono-blue deck. `suggest_scored` filtered candidates on that
+column while the surrounding code derived the DECK's colours from printed costs — the two
+halves of one function disagreeing about the same question. Measured on the red pool: 55
+Standard cards a red filter hid that mono-red can cast. See G-58 for the bulk-triage
+variant, where hand-sorting a 111-card pile on that column mis-binned nine cards of which
+eight were castable.
+
+**TYPE.** `_primary_type` substring-scanned the whole type line, so it returned the BACK
+face's type whenever that type sorted earlier in its list — which for `Land` is always.
+`Legendary Creature — God // Land` (Ojer Axonil) read as a Land, and every one of
+deck.py's ~35 `"Land" in _primary_type(...)` guards then skipped the card: out of the
+curve, uncounted as a creature, and ADDED to the land total. `consistency 49` reported
+"Lands: 26/60" for a deck holding 25, and deck 51's tier rationale called its manabase
+"flawless" on a keepable figure computed against a phantom land. 81 pool cards share the
+shape.
+
+**NAME.** `_printing_of` matched names exactly, so a DFC add resolved to nothing and
+`swap --apply` wrote `1 Runescale Stormbrood` with no `(SET) NUM`. It parses, it passes
+INV-04, it passes `deck.py legal` — and it fails an Arena import, which is the one place
+the failure shows and the one place no gate here runs.
+
+**The two lessons.** First, each column now has exactly ONE front-face-aware accessor:
+`lib.front_face_cost` for cost, the printed cost (not `card_colors` alone) for
+castability, `lib.primary_type` for type, `lib.owned_qty` / `_printing_of` for name.
+Second, and this is the part that keeps repeating here: **a second copy of an accessor
+carries the bug for as long as it exists.** `build_gallery.py` had its own
+`_primary_type`, so P7's fix reached the deck tooling and left the gallery still
+mis-typing its own breakdown — Creature over-counted by 8, Enchantment under by 9 (the
+transforming Sagas), Land by 2. The definition now lives in `lib.py` and the test asserts
+both callers resolve to the SAME OBJECT, not merely that they agree today; a same-answer
+test would have passed against two copies.
+
+**Standing rule.** When a name contains `" // "`, ask which face the column describes
+before you trust it. A metadata column is a claim about a card, and a two-faced card is
+two cards wearing one row.

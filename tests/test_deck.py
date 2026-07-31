@@ -2104,3 +2104,69 @@ class TestGenericSignatureBar:
                         {"A": ["counters", "flying"], "B": ["counters", "haste"],
                          "C": ["card draw"]})
         assert "counters" in sig and "card draw" not in sig and "flying" not in sig
+
+
+class TestPrimaryTypeFrontFace:
+    """`_primary_type` reads the FRONT face of a two-faced type line.
+
+    A substring scan over `Front // Back` reports the BACK face's type whenever it
+    sorts earlier in the order list — which for `Land` is always. Every one of this
+    module's ~35 `"Land" in _primary_type(...)` guards then skipped the card: out of
+    the curve, uncounted as a creature, and added to the land total. `consistency 49`
+    reported "Lands: 26/60" for a deck holding 25."""
+
+    def test_creature_with_a_land_back_is_a_creature(self):
+        assert deck._primary_type("Legendary Creature — God // Land") == "Creature"
+
+    def test_artifact_with_a_land_back_is_an_artifact(self):
+        assert deck._primary_type(
+            "Legendary Artifact // Legendary Artifact Land") == "Artifact"
+
+    def test_enchantment_with_a_land_back_is_an_enchantment(self):
+        assert deck._primary_type("Enchantment // Land — Cave") == "Enchantment"
+
+    def test_a_real_land_front_is_still_a_land(self):
+        """Jidoor: the front genuinely IS a land, so it must keep reporting Land."""
+        assert deck._primary_type("Land — Town // Sorcery — Adventure") == "Land"
+
+    def test_single_faced_types_are_unchanged(self):
+        assert deck._primary_type("Basic Land — Mountain") == "Land"
+        assert deck._primary_type("Creature — Dragon") == "Creature"
+        assert deck._primary_type("Instant") == "Instant"
+        assert deck._primary_type("Enchantment — Room // Enchantment — Room") == "Enchantment"
+
+    def test_unknown_and_empty_are_other(self):
+        assert deck._primary_type("") == "Other"
+        assert deck._primary_type("Scheme") == "Other"
+
+
+class TestPrintingOfDFC:
+    """`_printing_of` matches a DFC by its FRONT face and returns the CANONICAL name.
+
+    The CSVs key a two-faced card under `Front // Back`, so an exact-only lookup for
+    the front name found nothing and `swap --apply` wrote a bare `1 Runescale
+    Stormbrood` with no printing. INV-04 passed and `legal` reported clean because a
+    bare line parses — the failure only surfaced when a human pasted the deck into
+    Arena."""
+
+    def test_a_returned_triple_feeds_a_full_deck_line(self):
+        disp, setc, cn = deck._printing_of("Lathliss, Dragon Queen")
+        assert disp == "Lathliss, Dragon Queen"
+        assert setc and cn, "a known card must resolve to a real printing"
+
+    def test_front_face_query_resolves_to_the_full_name_and_a_printing(self):
+        disp, setc, cn = deck._printing_of("Runescale Stormbrood")
+        assert disp == "Runescale Stormbrood // Chilling Screech"
+        assert setc and cn
+
+    def test_full_dfc_name_still_resolves(self):
+        disp, setc, _ = deck._printing_of("Runescale Stormbrood // Chilling Screech")
+        assert disp == "Runescale Stormbrood // Chilling Screech" and setc
+
+    def test_an_unknown_name_degrades_to_a_bare_line(self):
+        assert deck._printing_of("Not A Real Card") == ("Not A Real Card", "", "")
+
+    def test_the_swap_writes_the_canonical_name(self):
+        disp, setc, cn = deck._printing_of("Ojer Axonil, Deepest Might")
+        out = deck._cards_after_swap([(1, "Cut Me", "AAA", "1")], "Cut Me", disp, (setc, cn))
+        assert out == [(1, "Ojer Axonil, Deepest Might // Temple of Power", setc, cn)]

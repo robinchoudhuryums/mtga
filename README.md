@@ -567,7 +567,12 @@ so the merged string over-counts pips — and a split card's *rules* mana value 
 combined total, which is correct but useless for a curve: Funeral Room arrived at **MV
 11** and read as a `{B}{B}{B}` turn-5 play when the door you cast is one black pip on
 turn 3. `lib.front_face_cost` / `lib.mana_value` fix both, matching the front-face
-convention already used for double-faced card ownership.
+convention already used for double-faced card ownership. A **modal** double-faced card is
+stored the same way (`Bruce Banner` is `{U} // {2}{R}{R}{G}{G}`), since either face is
+castable from hand; a **transform** DFC keeps one cost, because its back face is reached
+by transforming rather than by paying. Everything downstream reads the front half either
+way. More generally, a `Front // Back` card's *cost*, *colour*, *type* and *name* columns
+each describe a different face than you expect — see gotcha **G-63**.
 
 `stats` also flags **cost nature** — `◊` for cards whose text reduces their cost
 or grants flash (convoke/delve/"costs {1} less", so the printed mana value doesn't
@@ -805,9 +810,14 @@ python3 scripts/build_mana.py --allow-shrink   # permit a deliberate narrowing o
 Like `build_pool.py`, it **refuses to shrink the file by more than half** — this tool
 defaults to library-only, so a plain rerun over a pool-scoped file would silently discard
 ~14k rows (and disable the one-card keyword heuristic, which needs a pool-sized corpus).
-Names the batch endpoint can't match — split and room cards like `Life // Death` — get a
-front-face `/cards/named` fallback, accepted only when the resolved card is the one asked
-for; anything still unmatched is written blank **and reported**, never silently.
+Names the batch endpoint can't match by their FULL name — split, room and double-faced
+cards like `Life // Death` — get a second, **batched** pass through the same
+`/cards/collection` endpoint using each card's front-face name, accepted only when the
+resolved card is the one asked for (a bare front name can name a different card: `Life` is
+also a card). Anything still unmatched is written blank **and reported**, never silently.
+That retry used to be one request per name, which on the ~700 two-faced names tripped
+Scryfall's rate limiter and made a full `--refetch` slower than the entire rest of the
+build; batched, the same set is nine requests.
 
 ### Gallery — a visual, filterable view of the collection
 
