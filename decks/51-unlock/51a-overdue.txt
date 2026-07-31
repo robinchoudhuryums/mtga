@@ -36,7 +36,7 @@
 #: archetype: is pure upside because there was no combat plan to lose. "If a source you control would
 #: archetype: deal damage to an opponent, prevent that damage and each opponent mills that many
 #: archetype: cards" — with the Crystal, a 1/1 connecting mills five. In deck 51 it would be a trap,
-#: archetype: switching off Krang and both Terrors as a damage clock; here it is a multiplier.
+#: archetype: switching off Krang and the Terrors as a damage clock; here it is a multiplier.
 #: archetype: VETERAN ICE CLIMBER is the same idea on a two-drop: unblockable, vigilance, and mills
 #: archetype: its own power on attack. Vigilance matters twice — it attacks and still blocks, and it
 #: archetype: is untapped for a waterbend cost.
@@ -70,6 +70,17 @@
 #: notes: BUILT 2026-07 as the "lean harder into opponent mill" variant, by request.
 #: notes: UNGRADED ON PURPOSE — no `#: tier:` letter until the metrics are read and a human
 #: notes: assigns one. `deck.py tier 51a` prints the measurable floor.
+#: notes: HAMA CAME IN FOR THE SECOND TOLARIAN TERROR, trading a 5/5 body for mill plus a
+#: notes: second copy of the deck's hidden combo. Its ETB mills three -> SEVEN with The Water
+#: notes: Crystal, which the Terror never did, and then it exiles a noncreature nonland card
+#: notes: from what you just milled and lets you cast it by WATERBENDING {X} — a cost paid by
+#: notes: TAPPING your artifacts and creatures, so Master Pakku mills again for it. {2}{U/B}
+#: notes: {U/B}{U/B} is hybrid and pays entirely in Islands; `#: colors:` stays U (G-58).
+#: notes: The cost is real and is not hidden: protection 2 -> 1, because the Terror's ward {2}
+#: notes: was one of only two protection sources, and the damage clock drops from two 5/5s to
+#: notes: one plus a 3/3. In a deck that wins by decking the opponent, that is the right side
+#: notes: of the trade — but if a game is lost with the opponent at 4 life and 20 cards left,
+#: notes: this is the swap to revisit.
 #: notes: MILL IS A CLOCK, NOT INTERACTION — see G-62. Blind mill is provably access-neutral:
 #: notes: the opponent draws library positions M+1..M+D instead of 1..D, and any fixed set of D
 #: notes: positions in a shuffled library has the same contents, so their chance of finding an
@@ -98,6 +109,7 @@ Deck
 1 Master Pakku (TLA) 63
 1 Veteran Ice Climber (TDM) 64
 1 Deepmuck Desperado (OTJ) 42
+1 Hama, the Bloodbender (TLA) 224
 
 # The amplifier — 2-of despite legendary, because it is the deck
 2 The Water Crystal (FIN) 85
@@ -125,8 +137,8 @@ Deck
 1 Tishana's Tidebinder (LCI) 81
 1 Floodpits Drowner (DSK) 59
 
-# Threats — priced by the self-mill the deck does anyway
-2 Tolarian Terror (FDN) 167
+# Threat — priced by the self-mill the deck does anyway
+1 Tolarian Terror (FDN) 167
 
 # Card advantage
 1 Cerebral Download (EOE) 48
@@ -136,6 +148,16 @@ Deck
 1 Gilded Lotus (FDN) 725
 1 Matzalantli, the Great Door // The Core (LCI) 256
 
-# Lands (25)
+# Lands (24 in this block; Matzalantli's back face makes 25)
 1 Jidoor, Aristocratic Capital // Overture (FIN) 284
 23 Island (MSH) 289
+
+# Flex — options (comments; not part of the 60). See: deck.py flex 51a
+#~ -Tolarian Terror | +Eddymurk Crab | The VIRTUAL-COPY option (G-46) if you would rather not
+#~   run the last Terror either: {5}{U}{U} flash 5/5 reading the SAME "costs {1} less for each
+#~   instant and sorcery card in your graveyard" clause against this deck's 14 instants and
+#~   sorceries, so it is a different card doing the identical job — routinely a 3-to-4 mana 5/5.
+#~   Its ETB taps up to two creatures, which clears blockers for Veteran Ice Climber and The
+#~   Mindskinner. NOT owned and in NO other deck, so it is a wildcard spent solely for 51a, and
+#~   "enters tapped if it's not your turn" blunts the flash. Measured against the second Terror:
+#~   interaction 10 and card advantage 7 both hold, avg MV unchanged at 3.17, protection 2 -> 1.
