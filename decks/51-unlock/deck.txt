@@ -3,7 +3,7 @@
 #: colors: U
 #: plan: control
 #: tier: B — PROVISIONAL, one band below the measurable floor, which still reads A on
-#: tier: interaction 9 plus card advantage 8 at a 3.80 curve. The list was rebalanced after
+#: tier: interaction 10 plus card advantage 8 at a 3.97 curve. The list was rebalanced after
 #: tier: the first grade: the cheapest and most marginal interaction pieces (Splash Portal,
 #: tier: Calamitous Tide, Dazzling Denial, Bounce Off, Sokka's Haiku, Spell Snare) became
 #: tier: threats and engines, so interaction 14 -> 9 while the clock roughly doubled. The
@@ -11,7 +11,7 @@
 #: tier: instant-speed and most of it answers a noncreature permanent, against a family
 #: tier: average closer to three.
 #: tier: WEAKNESS 1 IS LARGELY GONE. The deck no longer wins on five cards. Stormkeld Prowler,
-#: tier: Stormkeld Prowler and Krang & Shredder join Tolarian Terror x2, Krang Utrom Warlord,
+#: tier: Krang & Shredder and Summon: Bahamut join Tolarian Terror x2, Krang Utrom Warlord,
 #: tier: The Dawning Archaic and Kiora — eight threats against the original five. Prowler in
 #: tier: particular is a two-drop that grows off the top end the deck was already running.
 #: tier: WEAKNESS 2 IS PARTLY ADDRESSED, in the way blue actually can. There is still no ramp
@@ -34,7 +34,7 @@
 #: tier: best pair on the roster — and the Room suite means the deck's "dead late-game cards"
 #: tier: problem does not exist, because every cheap answer converts into a mana sink. Protection
 #: tier: 3 on top of that interaction is a real resilience profile.
-#: tier: PROVISIONAL: unplayed and 20 craft targets. What proves or disproves it in the first
+#: tier: PROVISIONAL: unplayed and 19 craft targets. What proves or disproves it in the first
 #: tier: session is whether trading five answers for five threats left enough answers.
 #: protect: Mirror Room // Fractured Realm; Omniscience; Gilded Lotus; The Eternity Elevator; Archmage of Runes; The Dawning Archaic; Kiora, the Rising Tide
 #: archetype: MONO-BLUE ROOMS CONTROL. Every Room is two spells stapled together at opposite
@@ -56,8 +56,10 @@
 #: archetype: instant or sorcery spell, draw a card" — doubled, that is TWO cards per spell, and it
 #: archetype: is the single largest thing Fractured Realm does in this deck. The other permanents it
 #: archetype: doubles: Cryogen Relic (enter/leave draw), Pensive Professor, Stormkeld Prowler,
-#: archetype: Scrabbling Skullcrab's Eerie mill, Ghostly Keybearer, Tishana's Tidebinder, Floodpits
-#: archetype: Drowner, Krang & Shredder and The Dawning Archaic.
+#: archetype: Scrabbling Skullcrab's Eerie mill, Tishana's Tidebinder, Floodpits Drowner, Krang &
+#: archetype: Shredder, The Dawning Archaic — and Summon: Bahamut, whose SAGA CHAPTERS are
+#: archetype: triggered abilities, so I and II each destroy TWO nonland permanents and III draws
+#: archetype: four. That is the deck's only effect that DESTROYS anything.
 #: archetype: KIORA IS THE CASE WHERE DOUBLING CUTS BOTH WAYS, so read both halves. Her ETB
 #: archetype: "draw two cards, then discard two" doubles cleanly into DRAW FOUR, DISCARD FOUR —
 #: archetype: four cards deeper and four cards straight into the graveyard, which self-enables her
@@ -65,12 +67,13 @@
 #: archetype: "Scion of the Deep, a LEGENDARY 8/8" — doubling it makes two tokens, the legend rule
 #: archetype: eats one, and you get exactly the same board. Doubling a token-maker is worth nothing
 #: archetype: when the token is legendary; check that before counting a body twice.
-#: archetype: TWO THINGS IT DOES NOT DOUBLE, both previously claimed here in error. Braided Net's
-#: archetype: abilities are ACTIVATED ({T}, remove a net counter; craft), and Fractured Realm reads
-#: archetype: "if a TRIGGERED ability of a permanent you control triggers" — activated abilities are
-#: archetype: untouched, which is also why Riverchurn Monument's {1}, {T} is not doubled. And Cerebral
-#: archetype: Download is an INSTANT, not a permanent, so it was never eligible at all. When judging a
-#: archetype: card as a Fractured Realm target, check BOTH halves: permanent, and triggered.
+#: archetype: WHAT IT DOES NOT DOUBLE, and this block claimed two such cards in error before it was
+#: archetype: checked. Fractured Realm reads "if a TRIGGERED ability of a PERMANENT you control
+#: archetype: triggers", so ACTIVATED abilities are untouched — that is why Riverchurn Monument's
+#: archetype: {1}, {T} is not doubled, and it is why Braided Net never was a target (it has only
+#: archetype: activated abilities; losing that credit is what demoted it out of the deck). An
+#: archetype: INSTANT or SORCERY is not a permanent and is never eligible at all. When judging a
+#: archetype: card as a target, check BOTH halves: permanent, and triggered.
 #: archetype: ITS PRINTED MANA VALUE OF 10 IS A LIE ABOUT HOW IT PLAYS. A Room's stored cost
 #: archetype: covers BOTH halves; Mirror Room is a {2}{U} THREE-DROP that token-copies a
 #: archetype: creature, and Fractured Realm unlocks separately for {5}{U}{U}. You never pay ten.
@@ -156,7 +159,7 @@
 1 Archmage of Runes (FDN) 30
 
 # Card advantage — Omniscience needs a hand to spend
-1 Braided Net (LCI) 47
+1 Summon: Bahamut (FIN) 1
 1 Cryogen Relic (EOE) 52
 1 Cerebral Download (EOE) 48
 1 Finale of Revelation (FDN) 589
