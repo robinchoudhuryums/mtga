@@ -2,25 +2,39 @@
 #: format: Standard
 #: colors: R
 #: plan: midrange
-#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 13
-#: tier: plus card advantage 2 at a 4.00 curve. Two structural weaknesses the floor cannot see:
-#: tier: 1. ZERO PROTECTION against five named build-arounds, and this deck's payoffs are the
-#: tier:    kind that must SURVIVE A TURN to matter — Lathliss only pays off on the NEXT Dragon,
-#: tier:    Terror of the Peaks only on the next creature, Dragonlord's Servant only on the next
-#: tier:    spell. Removal on any of them costs a whole turn cycle, not just a card.
-#: tier: 2. IT IS SLOW AND HAS NO SWEEPER. Avg MV 4.00 with 9 early drops is the slowest curve
+#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 12
+#: tier: plus card advantage 3 at a 4.17 curve. Two structural weaknesses the floor cannot see:
+#: tier: 1. PROTECTION IS 1, and it is one card: Roaming Throne's ward {2}. Five named
+#: tier:    build-arounds and this deck's payoffs are the kind that must SURVIVE A TURN to
+#: tier:    matter — Lathliss only pays off on the NEXT Dragon, Terror of the Peaks only on the
+#: tier:    next creature, Dragonlord's Servant only on the next spell. Removal on any of them
+#: tier:    costs a whole turn cycle, not just a card. A sweep of red and colorless Standard for
+#: tier:    a protection grant returned essentially nothing, so this is red's cost, not an
+#: tier:    oversight. Call the Spirit Dragons was REJECTED on colour, not overlooked: it reads
+#: tier:    "Dragons you control have indestructible" and costs {W}{U}{B}{R}{G}, genuinely gold.
+#: tier: 2. IT IS SLOW AND HAS NO SWEEPER. Avg MV 4.17 with 9 early drops is the slowest curve
 #: tier:    on the roster; against a fast start the deck must trade one-for-one with removal it
-#: tier:    has plenty of, then stabilise with a five-drop. Card advantage 2 is genuinely thin —
-#: tier:    Bonehoard Dracosaur and Dragonhawk both refuel but neither is counted.
-#: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 13 is not padding,
+#: tier:    has plenty of, then stabilise with a five-drop. Card advantage 3 is still thin, and
+#: tier:    still an UNDER-count — Bonehoard Dracosaur exiles two cards a turn and Breaching
+#: tier:    Dragonstorm free-casts one, but both read as `impulse` to the classifier, not draw.
+#: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 12 is not padding,
 #: tier: it is real removal stapled to Dragon BODIES (Nova Hellkite, Magmatic Hellkite, Nebula
 #: tier: Dragon, Realm-Scorcher, Drakuseth), so the deck interacts without spending cards; the
 #: tier: manabase is flawless, matching deck 47 as the only two on the roster with zero cards
 #: tier: below 90% on curve; and the payoff stack genuinely compounds — Terror of the Peaks
 #: tier: pointed at Lathliss's 5/5 tokens is 5 damage per Dragon with no combat step, doubled
 #: tier: again by Twinflame Tyrant. That ceiling is the case for A once it has been played.
-#: tier: PROVISIONAL because it is unplayed and 15 cards are craft targets.
-#: protect: Lathliss, Dragon Queen; Dragonlord's Servant; Terror of the Peaks; Dragonstorm Globe; Sarkhan, Dragon Ascendant
+#: tier: THE K-13 PASS IS WHY THIS LIST CHANGED. A literal search for "Dragons you control"
+#: tier: returns nine red Standard payoffs and this deck already ran six, which reads as an
+#: tier: archetype with nothing left to add. Searching the EFFECT SHAPE instead — "choose a
+#: tier: creature type" — found a dozen more, and two are among the best cards here. ROAMING
+#: tier: THRONE doubles the triggered ability of every chosen-type creature, and SIXTEEN of
+#: tier: this deck's Dragons have one: Terror of the Peaks fires twice per creature, Lathliss
+#: tier: makes two 5/5s per Dragon, Drakuseth deals 4+3+3 twice on every attack, Bonehoard
+#: tier: exiles four cards a turn. CHRONICLE OF VICTORY is an anthem plus a card per Dragon
+#: tier: cast. Neither contains the word Dragon.
+#: tier: PROVISIONAL because it is unplayed and 17 cards are craft targets.
+#: protect: Lathliss, Dragon Queen; Dragonlord's Servant; Terror of the Peaks; Roaming Throne; Sarkhan, Dragon Ascendant
 #: archetype: MONO-RED DRAGON RAMP. Twenty-one Dragons in a sixty-card deck, which is the whole
 #: archetype: idea: Standard's Dragons average MV 5.30, so a deck that wants to field several
 #: archetype: of them must SOLVE ITS OWN MANA, and every accelerant here is paid for by the
@@ -48,6 +62,19 @@
 #: archetype: a low curve. This is MONO-RED and DRAGON-DENSE — 21 Dragons, a deliberately high
 #: archetype: curve, and a plan that ramps INTO the top end rather than curving out under it.
 #: archetype: They are opposite shapes wearing the same creature type.
+#: notes: THE THREE-CARD PASS (2026-07). Roaming Throne and Chronicle of Victory in for two
+#: notes: Dragonstorm Globes, Breaching Dragonstorm in for Bombard. The Globes went because
+#: notes: `engines` read "counters: 5 enablers, no payoff — your engine has no reward": a
+#: notes: +1/+1 counter on a 5/5 flier is close to nothing, so the card was really a 3-mana
+#: notes: rock and the deck ran three. ONE was kept as ramp, which is why that engine line now
+#: notes: reads 3 enablers rather than 5 — still no payoff, still the deck's weakest theme.
+#: notes: BOMBARD WAS THE THIRD CUT AND THE ONLY STRICTLY-OUTCLASSED CARD IN THE SUITE:
+#: notes: {2}{R} "deals 4 damage to target creature" against Fiery Annihilation's {2}{R} for
+#: notes: FIVE damage that also exiles instead of killing and picks off an Equipment. Same
+#: notes: cost, same slot, strictly worse. Every other removal spell does something distinct —
+#: notes: Molten Exhale has flash off beholding a Dragon, Untimely Malfunction redirects a
+#: notes: spell, and Plasma Bolt and Cinder Strike are two of only three cards at MV 1.
+#: notes: Interaction 13 -> 12 against a needs-model target of five, so it was affordable.
 #: notes: BUILT 2026-07 from scratch, after a sweep for a big-mana tribal ramp shell.
 #: notes: UNGRADED ON PURPOSE — no `#: tier:` until the metrics are read and it has been played.
 #: notes: WHY MONO-RED AND NOT RAKDOS. Of 35 Dragons castable in Rakdos, the overwhelming
@@ -90,7 +117,7 @@
 
 # Ramp — every accelerant is paid for by the Dragon count
 2 Dragonlord's Servant (FDN) 536
-3 Dragonstorm Globe (TDM) 241
+1 Dragonstorm Globe (TDM) 241
 1 Sarkhan, Dragon Ascendant (TDM) 118
 1 Stark Industries Executive (MSH) 153
 1 Seize the Spoils (SOS) 129
@@ -113,6 +140,10 @@
 1 Twinflame Tyrant (FDN) 97
 1 Hoarding Dragon (FDN) 626
 
+# Tribal payoffs — the CHOOSE-A-TYPE cards a literal 'Dragon' search never finds (K-13)
+1 Roaming Throne (LCI) 258
+1 Chronicle of Victory (ECL) 253
+
 # Dragons — the payoff band
 1 Lathliss, Dragon Queen (FDN) 627
 1 Dracosaur Auxiliary (DFT) 122
@@ -124,11 +155,13 @@
 1 Nebula Dragon (EOE) 147
 1 Summon: Bahamut (FIN) 1
 
+# Card advantage — the axis this deck measured 2 on
+1 Breaching Dragonstorm (TDM) 101
+
 # Interaction — Molten Exhale gains flash off any Dragon in hand
 1 Molten Exhale (TDM) 113
 1 Fiery Annihilation (FDN) 86
 1 Plasma Bolt (EOE) 152
-1 Bombard (EOE) 129
 1 Untimely Malfunction (DSK) 161
 1 Cinder Strike (ECL) 131
 

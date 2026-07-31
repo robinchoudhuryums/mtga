@@ -253,6 +253,10 @@ Whenever one or more nontoken creatures you control die, create a green Fungus D
 "Matzalantli, the Great Door // The Core",Legendary Artifact // Legendary Land,"{T}: Draw a card, then discard a card.
 {4}, {T}: Transform Matzalantli. Activate only if there are four or more permanent types among cards in your graveyard. (Artifact, battle, creature, enchantment, land, and planeswalker are permanent types.) // (Transforms from Matzalantli.)
 Fathomless descent — {T}: Add X mana of any one color, where X is the number of permanent cards in your graveyard.",Colorless,graveyard; card draw; mana; transform; fathomless descent,LCI,256,Rare,51,,3.5,seed
+Roaming Throne,Artifact Creature — Golem,"Ward {2}
+As this creature enters, choose a creature type.
+This creature is the chosen type in addition to its other types.
+If a triggered ability of another creature you control of the chosen type triggers, it triggers an additional time.",Colorless,Golem; ward; protection,LCI,258,Rare,49,"Deck 49: doubles the triggered ability of every chosen-type creature, and SIXTEEN of the deck's Dragons have one - Terror of the Peaks fires twice per creature, Lathliss makes two 5/5s per Dragon, Drakuseth deals 4+3+3 twice per attack. Ward {2} is also the only protection red offers. Found via the K-13 effect-shape search; it never says 'Dragon'.",88,hand
 "Captain Storm, Cosmium Raider",Legendary Creature — Human Pirate,"Whenever an artifact you control enters, put a +1/+1 counter on target Pirate you control.",U/R,Human; Pirate; counters,LCI,227,Uncommon,26b,,4.5,seed
 Ixalli's Lorekeeper,Creature — Human Druid,{T}: Add one mana of any color. Spend this mana only to cast a Dinosaur spell or activate an ability of a Dinosaur source.,G,Human; Druid; mana,LCI,194,Uncommon,50,,2.0,seed
 Poison Dart Frog,Creature — Frog,"Reach
@@ -412,6 +416,8 @@ When this creature enters, destroy target nonbasic land an opponent controls. It
 Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I, II — Create a 5/5 green Elephant creature token.
 III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,5.5,hand
+Breaching Dragonstorm,Enchantment,"When this enchantment enters, exile cards from the top of your library until you exile a nonland card. You may cast it without paying its mana cost if that spell's mana value is 8 or less. If you don't, put that card into your hand.
+When a Dragon you control enters, return this enchantment to its owner's hand.",R,card advantage; etb; bounce,TDM,101,Uncommon,49,"Deck 49: exile until a nonland card and CAST IT FREE if MV<=8, then 'when a Dragon you control enters, return this to its owner's hand' - a RECURRING free spell in a deck with 20 Dragons. The card-advantage fix for a deck that measured 2.",74,hand
 Duty Beyond Death,Instant,"As an additional cost to cast this spell, sacrifice a creature.
 Creatures you control gain indestructible until end of turn. Put a +1/+1 counter on each creature you control. (Damage and effects that say ""destroy"" don't destroy those creatures.)",W,counters; sacrifice,TDM,10,Uncommon,23; 3,instant team indestructible + a permanent counter on every creature; sac cost is a token in a go-wide deck,6.0,hand
 Static Snare,Enchantment,"Flash
