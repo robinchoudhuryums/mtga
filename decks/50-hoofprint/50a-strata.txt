@@ -4,12 +4,12 @@
 #: based-on: deck.txt
 #: plan: midrange
 #: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 6
-#: tier: plus card advantage 1 at a 3.85 curve. Three weaknesses:
+#: tier: plus card advantage 1 at a 3.88 curve. Three weaknesses:
 #: tier: 1. CARD ADVANTAGE 1 IS THE LOWEST FIGURE ON THE ROSTER. Icetill Explorer, Traveling
 #: tier:    Chocobo, Pull Through the Weft and Web of Life and Destiny all generate real value
 #: tier:    the classifier cannot read, so the true number is higher — but not by much, and the
 #: tier:    deck has no unconditional draw spell at all.
-#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.85 with only 11 early drops, and
+#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.88 with only 10 early drops, and
 #: tier:    the engine needs lands in the GRAVEYARD before it does anything, so the first three
 #: tier:    turns are close to blank. Against a fast start it is behind before Lumra is castable.
 #: tier: 3. CENTRAL THEMES 25 is the most diffuse reading on the roster after deck 23. That is
@@ -73,6 +73,12 @@
 #: notes: counters that is STILL A LAND — a body that Lumra and Grovestrider still count, and
 #: notes: which returns to the battlefield if it dies. It is the one bridge back to the parent
 #: notes: deck's axis, and it is deliberately small.
+#: notes: SLEDGE-CLASS SEEDSHIP IS THE FOURTH CHEAT ENGINE and it belongs here rather than in
+#: notes: the parent for a specific reason: Station puts charge counters equal to the tapped
+#: notes: creature's POWER, and this deck fields 8/8s (Lumra, Harmonious Grovestrider are each
+#: notes: sized by land count), so ONE tap fully stations it to 7+. Then "whenever this
+#: notes: Spacecraft attacks, you may put a creature card from your hand onto the battlefield".
+#: notes: It replaced Great Forest Druid, a vanilla dork, at a cost of one early drop.
 #: notes: GREENHOUSE // RICKETY GAZEBO WAS TESTED AND REJECTED, which is worth recording because
 #: notes: it looks perfect on paper: the back door mills four and returns two permanents, and
 #: notes: milling is an ASSET here. Every configuration made the deck slower — avg MV 3.85 ->
@@ -111,7 +117,6 @@
 # Ramp
 1 Llanowar Elves (M19) 314
 1 Druid of the Cowl (M19) 177
-1 Great Forest Druid (ECL) 178
 1 Badgermole Cub (TLA) 167
 1 Overgrown Zealot (DSK) 193
 1 Groundchuck & Dirtbag (TMT) 115
@@ -119,6 +124,7 @@
 # Cheat into play — the land-aware half of the family's options
 1 Ojer Kaslem, Deepest Growth // Temple of Cultivation (LCI) 204
 1 Kona, Rescue Beastie (DSK) 187
+1 Sledge-Class Seedship (EOE) 208
 1 Web of Life and Destiny (SPM) 122
 
 # Trample and the multiplier
@@ -138,3 +144,6 @@
 1 Evendo, Waking Haven (EOE) 253
 1 Zanarkand, Ancient Metropolis // Lasting Fayth (FIN) 293
 22 Forest (MSH) 295
+
+# Flex — measured and parked. See: deck.py flex 50a
+#~ -Plow Through | +A Realm Reborn | "Other permanents you control have '{T}: Add one mana of any color'" — and the breadth is the point: not just lands or creatures, but the enchantments (Sapling Nursery, Primeval Bounty, Garruk's Uprising) and artifacts too, which no other mana card here reaches. This deck has no Enduring Vitality, so nothing currently turns its creatures into mana at all. Parked purely on COST: at {4}{G}{G} it is the wrong end of the curve for the slowest deck on the roster. Measured as the fourth add of a package (with Sledge-Class Seedship, Summoner's Grimoire and Rainveil Rejuvenator) it read avg MV 4.18 with SEVEN early drops and interaction 4 — unplayable. Take it only after the curve comes down, e.g. if the land-fetch bodies get cheaper replacements.

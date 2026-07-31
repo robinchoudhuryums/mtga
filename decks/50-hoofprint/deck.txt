@@ -2,8 +2,8 @@
 #: format: Standard
 #: colors: G
 #: plan: midrange
-#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 6
-#: tier: plus card advantage 2 at a 3.11 curve. Three weaknesses the floor cannot price:
+#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 5
+#: tier: plus card advantage 2 at a 3.25 curve. Three weaknesses the floor cannot price:
 #: tier: 1. EVERY REMOVAL SPELL IS A FIGHT EFFECT, so the interaction and the board are the SAME
 #: tier:    resource. A sweeper takes both in one card: the creatures die and the six removal
 #: tier:    spells in hand become blanks at the same moment. No other deck on the roster has its
@@ -16,7 +16,7 @@
 #: tier:    plan, not a card. Swiftfoot Boots is half an answer, not a solution — it protects
 #: tier:    one creature at a time and only if you have {1} spare to re-equip.
 #: tier: WHAT ARGUES UP, and why this may be A once played: `shape` reads WIDE 10 / TALL 7 on 25
-#: tier: creatures with 21 early drops — the plan and the measurement agree completely, which is
+#: tier: creatures with 17 early drops — the plan and the measurement agree completely, which is
 #: tier: rare. The kill is REDUNDANT four ways (Craterhoof x3, Jumbo Cactuar, Colossification,
 #: tier: Famished Worldsire) rather than one card deep, and the mana base is unusually clean for
 #: tier: a deck with this much {G}{G}{G}. The ceiling is genuinely a turn-five kill from an
@@ -138,6 +138,36 @@
 #: notes: the turn it arrives. Protection 1 -> 2; everything else held.
 #: notes: MEASURED: interaction 6, card advantage 2, avg MV 3.11, 21 early drops and 26
 #: notes: creatures all UNCHANGED, protection 1 -> 2. Three strictly better cards for free.
+#: notes: PASS 3 — THE POWER-AS-MANA ENGINE, and a correction. Pass 2 dismissed Topiary
+#: notes: Lecturer, Mona Lisa, Doc Samson and Rainveil Rejuvenator as circular: they tap for
+#: notes: mana equal to their own POWER, and the argument was that the only thing here that
+#: notes: makes a creature big is Craterhoof, which wins the game anyway. That over-generalised
+#: notes: from ONE pump to all of them. COLOSSIFICATION is +20/+20 and is not a win condition —
+#: notes: Mona Lisa wearing it taps for 21. TOPIARY LECTURER self-scales without help at all
+#: notes: (Increment adds a counter whenever you cast a spell for more than its power, which a
+#: notes: ramp deck does every turn). And DOC SAMSON doubles every counter this deck places,
+#: notes: including Goldvein Hydra's X — Hydra for X=4 enters as an 8/8 with haste and trample.
+#: notes: SHANG-CHI is the piece that ties it together: "you may activate abilities of creatures
+#: notes: you control as though those creatures had HASTE" means every mana dork taps the turn
+#: notes: it lands, which is a full turn of acceleration the vector cannot see.
+#: notes: ALOE ALCHEMIST does two jobs the deck was short on for {1}{G}: its plot trigger grants
+#: notes: +3/+2 AND TRAMPLE to a target, so it is a cheap trample enabler for Jumbo Cactuar that
+#: notes: does not need Craterhoof, and the +3/+2 is itself a power-as-mana pump. It replaced
+#: notes: Aggressive Mammoth; board-wide trample is still covered by Craterhoof and both copies
+#: notes: of Garruk's Uprising.
+#: notes: ELVISH ARCHDRUID IS IN DESPITE THE DECK 31 OVERLAP, on an explicit call that Pox is
+#: notes: distinct enough (BG, poison, Fynn) for the shared Elf shell not to matter.
+#: notes: THE DUPLICATED VANILLA DORKS CAME OUT — Llanowar Elves and Druid of the Cowl go from
+#: notes: two copies each to one, and Ixalli's Lorekeeper, Three Tree Rootweaver and Great
+#: notes: Forest Druid are gone entirely. Each was a strictly-worse body than what replaced it.
+#: notes: PAID FOR HONESTLY, and the cost is real: Craterhoof drops from THREE copies to two and
+#: notes: Aggressive Mammoth is gone. Measured across the whole pass: interaction 6 -> 5, card
+#: notes: advantage 2, protection 2, avg MV 3.11 -> 3.25, early drops 21 -> 17, creatures 26 ->
+#: notes: 25, and cards below 90% on curve 3 -> 2. The curve is the price; the ceiling is what
+#: notes: was bought, and no metric here can see mana PRODUCTION at all.
+#: notes: SUMMONER'S GRIMOIRE is the third cheat engine ("equipped creature attacks: put a
+#: notes: creature card from your hand onto the battlefield"), joining Michelangelo and Loot.
+#: notes: It cost Clash of the Eikons — interaction 6 -> 5, which is the whole price.
 #: notes: WEB OF LIFE AND DESTINY was tested from the same pile and REJECTED: it is a free
 #: notes: creature every combat, but at {6}{G}{G} it took interaction 6 -> 5, avg MV 3.11 ->
 #: notes: 3.31 and early drops 21 -> 20. Convoke makes it castable; it does not make it cheap.
@@ -152,12 +182,14 @@
 #: notes: board-wide trample source, and no metric here can see that trample is load-bearing.
 
 # Mana creatures — bodies, ramp, and Craterhoof's X, all at once
-2 Llanowar Elves (M19) 314
-1 Ixalli's Lorekeeper (LCI) 194
+1 Llanowar Elves (M19) 314
+1 Shang-Chi, Master of Kung Fu (MSH) 187
+1 Topiary Lecturer (SOS) 165
 1 Badgermole Cub (TLA) 167
-2 Druid of the Cowl (M19) 177
-1 Three Tree Rootweaver (BLB) 198
-1 Great Forest Druid (ECL) 178
+1 Druid of the Cowl (M19) 177
+1 Elvish Archdruid (FDN) 219
+1 Mona Lisa, Science Geek (TMT) 123
+1 Doc Samson, Super Psychiatrist (MSH) 164
 1 Overgrown Zealot (DSK) 193
 1 Intrepid Stablemaster (OTJ) 169
 1 Rootrider Faun (WOE) 182
@@ -178,14 +210,16 @@
 
 # Haste + hexproof, so a finisher connects the turn it lands
 1 Swiftfoot Boots (BRR) 58
+1 Summoner's Grimoire (FIN) 205
 
 # Trample — without this the finishers are chump-blocked
 2 Garruk's Uprising (M21) 186
-1 Aggressive Mammoth (FDN) 551
+1 Aloe Alchemist (OTJ) 152
 
 # The four kills
 1 Goldvein Hydra (OTJ) 167
-3 Craterhoof Behemoth (TDM) 138
+2 Craterhoof Behemoth (TDM) 138
+1 Earth's Mightiest Heroes (MSH) 165
 1 Famished Worldsire (EOE) 182
 1 Colossification (BLB) 392
 1 Jumbo Cactuar (FIN) 191
@@ -196,7 +230,6 @@
 1 Pawpatch Formation (BLB) 186
 1 Heritage Reclamation (TDM) 145
 1 Plow Through (DFT) 174
-1 Clash of the Eikons (FIN) 180
 
 # Lands (24) — Three Tree City names Druid; Rogue's Passage is the 2nd evasion route
 1 Three Tree City (BLB) 260
