@@ -6445,7 +6445,23 @@ def _strong_signature_themes(meta, cards, cardmeta, min_cards=2):
     theme incidental to one protected bomb. Stricter than `_signature_themes` (which unions
     ALL protected cards' tags): used by `similar`'s generic-rescue so a lone protected card's
     card-draw/etb tag can't promote a diffuse value deck's generic overlap into a false
-    identity match (a counters spine spans multiple protected cards; Finale's card-draw doesn't)."""
+    identity match (a counters spine spans multiple protected cards; Finale's card-draw doesn't).
+
+    A GENERIC theme must additionally clear HALF the protect list, and that proportional bar
+    is the whole point of this function rather than a refinement of it. The signature exists
+    for one job — rescuing a theme that idf calls generic when it is genuinely the deck's
+    spine — so a SPECIFIC theme never needed rescuing and keeps the flat ≥2 bar. But ≥2 was
+    tuned against a 3-to-5-card protect list, and it does not survive a longer one: at 7
+    protected cards ≥2 is 29% of them, and at 14 it is 14%. Measured on the roster, that let
+    26 of 33 decks carry a signature that was ≥50% GENERIC — deck 46 rescued `Human`,
+    `combat`, `flying` and five more off 14 protected cards, and deck 51 rescued `card draw`,
+    `graveyard`, `mana` and `tokens` off 7. Since `fit_strength` is right to mint KEY from any
+    signature theme it is handed (see check_suggest anchor 11b — the strictness must live in
+    the caller, not the function), those false spines propagated straight into `screen`'s KEY
+    label, which fired on 66% of a 111-card pile and so carried almost no information. The
+    proportional bar drops 51 signature themes across 18 decks and leaves every genuine spine
+    standing (deck 49 keeps `Dragon`, deck 47 keeps `affinity`/`artifacts`). Same shape as
+    G-09: a keep-boost that applies to nearly everything is a constant, not a signal."""
     prot = _protected(meta)
     if not prot:
         return frozenset()
@@ -6456,7 +6472,9 @@ def _strong_signature_themes(meta, cards, cardmeta, min_cards=2):
             if m:
                 for t in set(m["synergies"]):
                     counts[t] = counts.get(t, 0) + 1
-    return frozenset(t for t, k in counts.items() if k >= min_cards)
+    generic_bar = max(min_cards, math.ceil(len(prot) / 2))
+    return frozenset(t for t, k in counts.items()
+                     if k >= (generic_bar if _theme_is_generic(t) else min_cards))
 
 
 def _sim_specific(t, keep):
@@ -6594,6 +6612,105 @@ def cmd_similar(args):
           "grade the DOMINANT theme + win-con from `deck.py text`, not the number. "
           "`--specific-only` scores identity themes alone.")
     return 0
+
+
+_TRAILING_NOTE_RE = re.compile(r"\s*\([^()]*\)\s*$")
+_SQUASH_RE = re.compile(r"[^a-z0-9]+")
+
+
+def _name_query(raw):
+    """Normalize a HAND-TYPED candidate name: drop trailing parenthetical notes and collapse
+    whitespace. A pile is written by a person, so `Master Pakku (needs Lessons)` and
+    `Bruce Banner (mostly for its front face)` name the same cards as the bare strings."""
+    q = " ".join(str(raw).split())
+    prev = None
+    while prev != q:                       # `Foo (a) (b)` — strip every trailing note
+        prev = q
+        q = _TRAILING_NOTE_RE.sub("", q).strip()
+    return q
+
+
+def _squash(s):
+    """Comparison key with every non-alphanumeric character removed, so a hand-typed name
+    matches the printed one across the punctuation people drop: `Ramos Dragon Engine` ->
+    `Ramos, Dragon Engine`, `Gran Gran` -> `Gran-Gran`, `Flotsam//Jetsam` ->
+    `Flotsam // Jetsam`. Deliberately NOT a typo-corrector — `Impostoer Syndrome` still
+    fails to resolve, because guessing at a misspelling silently grades the wrong card,
+    which is worse than reporting the name back."""
+    return _SQUASH_RE.sub("", s.lower())
+
+
+def _squash_index(table, display):
+    """squashed-name -> {key: display}, built ONCE per surface. Screening a 111-card pile
+    would otherwise re-scan every pool key per query."""
+    out = {}
+    for k in table:
+        for variant in (k, k.split(" // ")[0]):
+            out.setdefault(_squash(variant), {})[k] = display(k)
+    return out
+
+
+def _resolve_card_name(query, table, display, squashed):
+    """Resolve a hand-typed card name against `table` (a dict keyed by lowercase name).
+    Returns `(key, candidates)` — `key` on a unique match, `candidates` (sorted display
+    names) when genuinely ambiguous, `(None, [])` when nothing matched.
+
+    Order: exact -> DFC front -> squashed punctuation -> unique substring.
+
+    THE SQUASH STEP IS THE LOAD-BEARING ONE, and it exists because a real pasted pile
+    concentrates its interesting cards in exactly the names it recovers. Screening one
+    111-card pile left 22 names unresolved, and they were overwhelmingly `Name, Epithet`
+    legendary creatures typed without the comma — so the triage tool silently handed back
+    the fifth of the pile that most needed it, and those cards got graded by hand instead.
+    Ambiguity is still reported rather than guessed at (G-47: a shortlist that guesses is
+    worse than one that admits it doesn't know)."""
+    ql = _name_query(query).lower()
+    if ql in table:
+        return ql, []
+    front = ql.split(" // ")[0]
+    if front in table:
+        return front, []
+    hits = squashed.get(_squash(ql)) or {}
+    names = set(hits.values())
+    if len(names) == 1:
+        return sorted(hits, key=len)[0], []
+    if len(names) > 1:
+        return None, sorted(names)
+    subs = sorted((k for k in table if ql in k), key=len)
+    names = {display(k) for k in subs}
+    if len(names) == 1:
+        return subs[0], []
+    if len(names) > 1:
+        return None, sorted(names)
+    return None, []
+
+
+def _candidate_castability(cost, ident, declared):
+    """`(castable, note)` for a CANDIDATE card against a deck's declared colors, read from
+    the PRINTED COST rather than from color identity.
+
+    Identity and cost disagree in precisely the cases a pile is full of: `{1}{U/R}` is
+    payable with Islands alone, `{6}` is payable anywhere, and BOTH read as off-color in
+    the `Color(s)` column. Triaging a 111-card pile on that column mis-sorted nine cards,
+    eight of which were castable (G-58, bulk-triage variant). Mirrors `_castability_lint`
+    so the two surfaces cannot drift: only a TRUE multicolor hybrid constrains
+    castability; a monocolor (`{2/W}`) or Phyrexian (`{W/P}`) hybrid never does."""
+    strict, hybrid = parse_pips(cost or "")
+    off_strict = sorted(set(strict) - declared)
+    bad_hybrid = sorted({x for h in hybrid
+                         if len(h) >= 2 and not (h & declared) for x in h})
+    if off_strict or bad_hybrid:
+        return False, "⚠ NOT castable — needs " + "/".join(sorted(set(off_strict + bad_hybrid)))
+    stray = sorted(ident - declared)
+    if not stray:
+        return True, ""
+    if not cost:
+        return True, ("identity has " + "/".join(stray)
+                      + " (cost unknown — run `deck.py mana` to tell hybrid from ability)")
+    hybrid_colors = set().union(*hybrid) if hybrid else set()
+    if set(stray) <= hybrid_colors:
+        return True, "identity has " + "/".join(stray) + " (hybrid — paid on-color)"
+    return True, "identity has " + "/".join(stray) + " (off-color ability — still castable)"
 
 
 def _printing_index():
@@ -6751,18 +6868,15 @@ def cmd_screen(args):
           + (f"  ·  format {fmt}" if fmt else ""))
     print("Re-scored now, so nothing here is carried over from an earlier plan.\n")
 
-    rows, unresolved = [], []
+    rows, unresolved, ambiguous = [], [], []
+    sqidx = _squash_index(carddata, lambda k: carddata[k].get("name") or k)
     for qname in queries:
-        ql = qname.lower()
-        cd = carddata.get(ql) or carddata.get(ql.split(" // ")[0])
-        if not cd:
-            subs = sorted((k for k in carddata if ql in k), key=len)
-            disp = {(carddata[k].get("name") or k) for k in subs}
-            if len(disp) == 1:
-                cd = carddata[subs[0]]
-            else:
-                unresolved.append(qname)
-                continue
+        key, cands = _resolve_card_name(
+            qname, carddata, lambda k: carddata[k].get("name") or k, sqidx)
+        if not key:
+            (ambiguous if cands else unresolved).append((qname, cands))
+            continue
+        cd = carddata[key]
         name = cd.get("name") or qname
         nl = name.lower()
         text = cd.get("text") or ""
@@ -6776,25 +6890,26 @@ def cmd_screen(args):
         sup = doubler_support(ax, cards, carddata, doubler_restriction(text)) if ax else 0
         ups = strict_upgrades(name, text, mv, cards, carddata, mana)
         legs = legal.get(nl) or legal.get(nl.split(" // ")[0]) or set()
+        cast_ok, cast_note = _candidate_castability(cost, ident, declared)
         rows.append(dict(name=name, cost=cost, mv=mv, text=text, roles=roles,
                          strength=strength, shared=shared, axis=ax, support=sup,
                          upgrades=ups, ident=ident,
                          owned=owned_qty(qty, name), rar=rar.get(nl, "?"),
                          illegal=bool(fmt and legs and fmt not in legs),
-                         offcolor=not (ident <= declared),
+                         castable=cast_ok, cast_note=cast_note,
                          present=nl in in_deck))
 
     order = {"KEY": 0, "role-player": 1, "tangential": 2}
-    rows.sort(key=lambda r: (bool(r["present"]), r["illegal"], order.get(r["strength"], 3),
-                             -r["support"], r["name"].lower()))
+    rows.sort(key=lambda r: (bool(r["present"]), r["illegal"], not r["castable"],
+                             order.get(r["strength"], 3), -r["support"], r["name"].lower()))
     for r in rows:
         flags = []
         if r["present"]:
             flags.append("already in the deck")
         if r["illegal"]:
             flags.append(f"⚠ NOT legal in {fmt}")
-        if r["offcolor"]:
-            flags.append("⚠ off-color")
+        if r["cast_note"]:
+            flags.append(r["cast_note"])
         if r["upgrades"]:
             flags.append("★ STRICT UPGRADE of " + ", ".join(r["upgrades"]))
         if r["axis"] and r["support"]:
@@ -6810,9 +6925,13 @@ def cmd_screen(args):
             for line in (r["text"] or "(no text)").split("\n"):
                 print(f"         {line}")
         print()
+    if ambiguous:
+        print("Ambiguous (be more specific — not guessed at):")
+        for q, cands in ambiguous:
+            print(f"    {q!r} → {'; '.join(cands[:6])}")
     if unresolved:
-        print("Unresolved / ambiguous (fix the name, don't guess): "
-              + ", ".join(unresolved))
+        print("Not found (fix the name, don't guess): "
+              + ", ".join(q for q, _ in unresolved))
     print("Trust KEY, judge role-player, read tangential as 'probably not here'. A ★ strict "
           "upgrade is a TEXT-CONTAINMENT test — it is deliberately conservative and misses "
           "most real upgrades, so its silence is not a verdict.")
@@ -6833,24 +6952,19 @@ def cmd_resolve(args):
     if not raw or raw == ["-"]:
         raw = [ln for ln in sys.stdin.read().splitlines()]
     lines, unresolved, ambiguous = [], [], []
+    sqidx = _squash_index(idx, lambda k: idx[k][0])
     for ln in raw:
         ln = ln.strip()
         if not ln or ln.lstrip().startswith("#"):
             continue
         m = re.match(r"^\s*(\d+)\s+(.*)$", ln)          # optional leading quantity
         qty, query = (m.group(1), m.group(2)) if m else ("1", ln)
-        ql = query.strip().lower()
-        key = ql if ql in idx else None
+        # Shared resolver: exact -> DFC front -> squashed punctuation -> unique substring,
+        # deduped by DISPLAY name (a DFC's front and full name are two keys but ONE card).
+        key, cands = _resolve_card_name(query, idx, lambda k: idx[k][0], sqidx)
         if not key:
-            subs = sorted((k for k in idx if ql in k), key=len)
-            disp = {idx[k][0] for k in subs}        # dedup by display: a DFC's front+full
-            if len(disp) == 1:                       #   name are two keys but ONE card
-                key = subs[0]
-            elif len(disp) > 1:
-                ambiguous.append((query, sorted(disp)[:6]))
-                continue
-        if not key:
-            unresolved.append(query)
+            (ambiguous if cands else unresolved).append(
+                (query, cands[:6]) if cands else query)
             continue
         disp, setc, coll = idx[key]
         lines.append(f"{qty} {disp} ({setc}) {coll}".rstrip())

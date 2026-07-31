@@ -166,6 +166,41 @@ See FOLLOW-ON ITEMS in each block. Highest value now:
 - Rewriting the evidence while moving it. Verbatim movement is what makes the
   conservation check an exact-equality proof instead of a fuzzy overlap.
 
+## Session 2026-07-31 — pile-triage fixes (P1–P5)
+
+Five fixes to the candidate-pile path, all found by finally running
+`deck.py screen 51 <the 111-card pile>` AFTER a hand-triage had already mis-classified
+nine cards. Full block: `.cycle/blocks/2026-07-pile-triage-broad-implement.md`.
+
+- **P1** `_resolve_card_name` — one shared resolver for `resolve` and `screen`, matching
+  across dropped punctuation and stripping a trailing `(note)`. Unresolved on the real
+  pile 22 -> 2. Still refuses to correct typos.
+- **P2** `_candidate_castability` — `screen` reads castability from the PRINTED COST, not
+  from `Color(s)`. False off-colour flags 5 -> 1 (the one is genuinely gold).
+- **P3** `_strong_signature_themes` — a GENERIC theme now needs HALF the `#: protect:`
+  list; SPECIFIC keeps `>=2`. **This closes the deferral recorded below on 2026-07-29**
+  ("Fixing the `_signature_themes` saturation in the same session it was measured…
+  needs a roster-wide diff first"). The diff was run: 4,440 (deck, card) judgements,
+  KEY 13% -> 8%, 223 labels changed, ALL of them KEY -> weaker. Nothing gained a KEY.
+- **P4** `/add-cards` Stage 0b now REQUIRES `screen` for a pile over ~10 cards.
+- **P5** G-58 gained its BULK-TRIAGE variant, with the nine-card table.
+
+744 tests pass (+19). `check_all` green.
+
+**Where I left off.** Two things are open and neither is started:
+1. **A `card-mana.csv` data gap, found by checking a rules question against Scryfall.**
+   Modal DFCs store only the FRONT cost — Bruce Banner reads `{U}`, but its layout is
+   `modal_dfc` and BOTH faces have a real `mana_cost`, so either is castable from hand.
+   Rooms/splits correctly store two. 432 two-faced rows hold one cost and need splitting
+   into transform (correct) vs modal (data loss). `build_mana.py` is the fix site. This
+   caused a WRONG ANSWER in chat, so it is not cosmetic.
+2. **Deck work agreed but NOT applied**, pending the owner picking cuts: deck 51's
+   engine/top-end group (Lady Octopus, Walls of Ba Sing Se, Ramos, Kitsa, Norman Osborn,
+   Ghostly Keybearer ← Into the Flood Maw, 2nd Tolarian Terror freed), deck 51a's mill
+   group (Kitsune's Technique, Jidoor ← an Island, Tale of Tamiyo, Cephalid Inkmage), and
+   a NEW third variant for the ~20-card unblockable-tempo overflow. Measurements are in
+   chat; nothing was written. The owner has asked twice for no changes without approval.
+
 ## Decided AGAINST (2026-07-29, later)
 - Shipping any body-quality term in the cut ranking. It failed its pre-registered test;
   a term that fails and ships anyway is worse than no term.

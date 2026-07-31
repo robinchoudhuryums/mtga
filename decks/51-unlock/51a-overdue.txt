@@ -1,0 +1,205 @@
+#: name: Unlock — Overdue
+#: format: Standard
+#: colors: U
+#: plan: control
+#: tier: B — GRADED 2026-07. One band below the measurable floor, which reads A on interaction 9
+#: tier: plus card advantage 7 at a 3.14 curve. On the measurables this is the BETTER of the two
+#: tier: Unlock decks and it is worth saying so: against parent 51 it wins on interaction (9 vs
+#: tier: 6), curve (3.14 vs 4.14), focus (5 central themes vs 11) and engine health — `engines`
+#: tier: reports graveyard 20 enablers / 9 payoffs, balanced, with no warning at all. The
+#: tier: interaction is well shaped too: 7 of 9 instant-speed, 6 answering a noncreature permanent.
+#: tier: WHAT HOLDS IT AT B IS ONE NUMBER. The deck is a two-card engine and the second card is a
+#: tier: singleton plus one tutor. P(finding The Water Crystal) on the play is 33.6% by turn five,
+#: tier: 38.9% by turn seven, 44.1% by turn nine and 53.7% by turn thirteen — a coin flip on your
+#: tier: engine that late. Without it the mill halves and the clock roughly doubles, so a third of
+#: tier: games are played as a mediocre tempo deck rather than the deck described above. Transit
+#: tier: Mage came in for the SECOND Water Crystal, which changed the dead-draw problem but NOT
+#: tier: this number: two outs before, two outs after. A THIRD out (a second tutor, or restoring
+#: tier: the second copy over Gilded Lotus) would read 58.5% by turn nine, and that is the single
+#: tier: change most likely to earn this deck an A.
+#: tier: PROTECTION IS 1, close to the zero the rubric flags, in a deck whose plan rests on two
+#: tier: specific permanents surviving — The Water Crystal and Master Pakku. Losing the second
+#: tier: Tolarian Terror to Hama took its ward {2} with it; that was a knowing trade for mill, but
+#: tier: it is the reason this axis reads 1 rather than 2.
+#: tier: THE THIRD MARK is self-inflicted and recorded in the notes: cutting Lost Days for Eddymurk
+#: tier: Crab left Zuko's Exile as the only recursion-proof answer, and the recursion matchup was
+#: tier: already this deck's worst because blind mill FEEDS a graveyard deck (G-42, G-62).
+#: tier: WHAT ARGUES UP: Kitsune's Technique and Jidoor each mill HALF a library (half plus four
+#: tier: with the Crystal), so the clock is not incremental once it starts; the Lesson subtype
+#: tier: gives three payoffs reading one graveyard for close to no deckbuilding cost; and
+#: tier: distinctness is 83% with ZERO shared cards. If the Crystal proves findable in practice,
+#: tier: A is the right letter.
+#: tier: TO RE-GRADE TO A, run `deck.py tier 51a --to A`. Unplayed, with 16 craft targets.
+#: protect: The Water Crystal; Master Pakku; Riverchurn Monument; The Mindskinner; Exhibition Tidecaller
+#: archetype: MONO-BLUE LESSON MILL. The parent deck 51 wins by resolving enormous spells and
+#: archetype: carries mill as a two-card side plan. This variant inverts that: mill IS the deck,
+#: archetype: and the Lesson subtype is the engine that feeds it. Every card is chosen to make one
+#: archetype: of three numbers go up — mill per turn, Lessons in the graveyard, or cards in hand.
+#: archetype: THE WATER CRYSTAL IS THE WHOLE DECK, and it is now a SINGLETON plus Transit Mage
+#: archetype: rather than a 2-of. One copy plus a tutor finds it exactly as often as two copies —
+#: archetype: two outs either way, 44.1% by turn nine on the play — but the tutor is never the dead
+#: archetype: draw the second LEGENDARY copy becomes once one has resolved, and Transit Mage's
+#: archetype: "artifact card with mana value 4 or 5" also finds Gilded Lotus. "If an opponent would
+#: archetype: mill one or more cards, they mill that many cards
+#: archetype: plus four instead" applies to EVERY mill event separately, so it is not a +4, it is a
+#: archetype: +4 per trigger. Riverchurn Monument's {1}, {T} goes from 2 to 6. Scrabbling Skullcrab
+#: archetype: goes from 2 to 6 per enchantment or Room unlock. Exhibition Tidecaller goes from 3 to
+#: archetype: 7 per instant or sorcery, and from 10 to 14 when five or more mana was spent. It also
+#: archetype: still does its day job — {1} off every blue spell — so it is never a dead draw.
+#: archetype: THE LESSON SUBTYPE IS NOT FLAVOUR, it is three payoffs that read the same graveyard.
+#: archetype: Master Pakku mills X where X is the number of LESSON cards in your graveyard, which
+#: archetype: with the Crystal is X+4 every time he becomes tapped. Gran-Gran makes every NONCREATURE
+#: archetype: spell cost {1} less once three Lessons are in the yard — broader than any instant-and-
+#: archetype: sorcery reducer, because it also discounts the Rooms, Gilded Lotus and the Crystal
+#: archetype: itself. Accumulate Wisdom stops being "look at three, take one" and becomes TAKE ALL
+#: archetype: THREE for {1}{U} at the same threshold. Guru Pathik digs five deep for a Lesson.
+#: archetype: THE LESSONS ARE NOT A TAX, and that is what makes this build work rather than merely
+#: archetype: cohere. It'll Quench Ya! is Spell Pierce that hits creatures too. Zuko's Exile is
+#: archetype: unconditional exile of an artifact, creature or enchantment — removal deck 51 does not
+#: archetype: have at all. Lost Days tucks a creature or enchantment second from the top, which
+#: archetype: answers a recursive threat that bounce cannot. Each is a card the deck would want
+#: archetype: anyway; the subtype is a rider, so the engine costs close to nothing.
+#: archetype: WATERBENDING LESSON IS THE HIDDEN COMBO. Its waterbend cost is paid by TAPPING your
+#: archetype: artifacts and creatures — and Master Pakku mills whenever he BECOMES TAPPED. So you
+#: archetype: draw three, tap Pakku to avoid the discard, and mill for it. Octopus Form then untaps
+#: archetype: him — Octopus Form does that job and is the first card back in if the manabase can spare
+#: archetype: the slot. Gran-Gran has the same "becomes tapped" trigger and loots off it.
+#: archetype: THE MINDSKINNER CONVERTS THE COMBAT PLAN INSTEAD OF ADDING ONE, and in this deck that
+#: archetype: is pure upside because there was no combat plan to lose. "If a source you control would
+#: archetype: deal damage to an opponent, prevent that damage and each opponent mills that many
+#: archetype: cards" — with the Crystal, a 1/1 connecting mills five. In deck 51 it would be a trap,
+#: archetype: switching off Krang and the Terrors as a damage clock; here it is a multiplier.
+#: archetype: VETERAN ICE CLIMBER is the same idea on a two-drop: unblockable, vigilance, and mills
+#: archetype: its own power on attack. Vigilance matters twice — it attacks and still blocks, and it
+#: archetype: is untapped for a waterbend cost.
+#: archetype: SELF-MILL IS A SECOND RESOURCE, not a cost. Sokka's Haiku, the surveil off Underwater
+#: archetype: Tunnel and Spellgyre, and Waterbending Lesson's discard all fill YOUR graveyard, which
+#: archetype: is what prices Tolarian Terror — routinely a turn-five 5/5 with ward {2} here — and
+#: archetype: what feeds Master Pakku's Lesson count. The two halves of the graveyard do different
+#: archetype: jobs and neither competes with the other.
+#: archetype: DISTINCTNESS from parent 51: 51 fields Omniscience, Fractured Realm, Krang Utrom
+#: archetype: Warlord and The Dawning Archaic and wins by casting a huge spell. This list runs NONE
+#: archetype: of them, has no card above five mana, and never needs to resolve a threat at all.
+#: notes: KITSUNE'S TECHNIQUE IS THE BIGGEST SINGLE MILL IN THE DECK and was missed on the
+#: notes: first pass because its name never resolved in triage. "Target opponent mills HALF
+#: notes: their library, rounded up" — with The Water Crystal that is half plus four, off one
+#: notes: card. Its Sneak cost of {1}{U} is LIVE here rather than theoretical, because the deck
+#: notes: fields unblockable attackers (Veteran Ice Climber, The Mindskinner) to return; Kitsa
+#: notes: then copies it for {2} at power 3, which halves what is left again.
+#: notes: THE TALE OF TAMIYO IS SELF-MILL AND THAT IS THE POINT. Its chapters bin YOUR cards,
+#: notes: which is how LESSONS reach the graveyard — Master Pakku mills X for exactly that
+#: notes: count — and chapter IV then exiles instants and sorceries from the yard and copies
+#: notes: them free. Read it next to Pakku, not next to Riverchurn.
+#: notes: JIDOOR REPLACED AN ISLAND, not a spell. It is a Land // Adventure: it taps for {U}
+#: notes: all game and later Adventures for "target opponent mills half their library", so a
+#: notes: second half-mill costs zero nonland slots. The price is that it enters tapped.
+#: notes: MANABASE, measured: 25 lands rather than 24. At 24 the deck read keepable 84.4% with
+#: notes: THREE cards below 90% on curve; the 25th land moved that to 86.0% and one, and dropped
+#: notes: screw 14.3% -> 12.2%. The one remaining is The Mindskinner at {U}{U}{U} (75.5% on turn
+#: notes: three) — Karsten wants 29 sources for that, more than the deck has lands, so it is a
+#: notes: turn-four-or-five card by construction and was accepted as such rather than chased.
+#: notes: Octopus Form was the cut; it is the first card back in if a land can be spared.
+#: notes: BUILT 2026-07 as the "lean harder into opponent mill" variant, by request.
+#: notes: HAMA CAME IN FOR THE SECOND TOLARIAN TERROR, trading a 5/5 body for mill plus a
+#: notes: second copy of the deck's hidden combo. Its ETB mills three -> SEVEN with The Water
+#: notes: Crystal, which the Terror never did, and then it exiles a noncreature nonland card
+#: notes: from what you just milled and lets you cast it by WATERBENDING {X} — a cost paid by
+#: notes: TAPPING your artifacts and creatures, so Master Pakku mills again for it. {2}{U/B}
+#: notes: {U/B}{U/B} is hybrid and pays entirely in Islands; `#: colors:` stays U (G-58).
+#: notes: The cost is real and is not hidden: protection 2 -> 1, because the Terror's ward {2}
+#: notes: was one of only two protection sources, and the damage clock drops from two 5/5s to
+#: notes: one plus a 3/3. In a deck that wins by decking the opponent, that is the right side
+#: notes: of the trade — but if a game is lost with the opponent at 4 life and 20 cards left,
+#: notes: this is the swap to revisit.
+#: notes: EDDYMURK CRAB CAME IN FOR LOST DAYS, and the cost is worth stating because it was
+#: notes: argued against before it was applied. Eddymurk is the G-46 VIRTUAL COPY of Tolarian
+#: notes: Terror — the identical "costs {1} less for each instant and sorcery card in your
+#: notes: graveyard" clause on a different card, so the deck runs two graveyard-priced 5/5s
+#: notes: without running two of anything. Against 14 instants and sorceries it is routinely a
+#: notes: three-to-four mana 5/5, and its ETB taps two creatures, which clears blockers for
+#: notes: Veteran Ice Climber and The Mindskinner.
+#: notes: WHAT IT COST, all three of which were measured first: interaction 10 -> 9; the Lesson
+#: notes: count 10 -> 9, which is Master Pakku's X directly and fuel for the two thresholds
+#: notes: Gran-Gran and Accumulate Wisdom read at three; and ONE OF ONLY TWO RECURSION-PROOF
+#: notes: ANSWERS. Lost Days TUCKED a creature or enchantment second from the top, so unlike a
+#: notes: counter or a bounce it beat a card that rebuys itself. Zuko's Exile is now the only
+#: notes: one left, and that lands on the matchup this deck is already worst against — see the
+#: notes: graveyard-deck liability below. Gilded Lotus was the alternative cut and would have
+#: notes: held all three (interaction 10, Lessons 10, both answers) at the same avg MV 3.17;
+#: notes: it was declined in favour of keeping the ramp. If the recursion matchup proves bad,
+#: notes: that is the swap to make, not a change to Eddymurk.
+#: notes: MILL IS A CLOCK, NOT INTERACTION — see G-62. Blind mill is provably access-neutral:
+#: notes: the opponent draws library positions M+1..M+D instead of 1..D, and any fixed set of D
+#: notes: positions in a shuffled library has the same contents, so their chance of finding an
+#: notes: answer is unchanged. This deck therefore still needs REAL answers, which is why it
+#: notes: keeps five of them (Zuko's Exile, It'll Quench Ya! x2, Floodpits Drowner, Tishana's
+#: notes: Tidebinder) rather than becoming all mill.
+#: notes: KNOWN LIABILITY, and it is worse here than in the parent: milling an opponent FEEDS a
+#: notes: graveyard deck — the G-42 shape. A deck built entirely on mill hands a recursion deck
+#: notes: its whole library. Blue/colorless Standard has the exile answers (Ghost Vacuum,
+#: notes: Soul-Guide Lantern, Wreck Remover, Mechanical Mobster); none are in the 60 and they are
+#: notes: the first sideboard slots. Do not read the matchup as solved.
+#: notes: GURU PATHIK is {2}{G/U}{G/U} — HYBRID, so it is payable entirely with Islands and
+#: notes: `#: colors:` stays U (G-58). `deck.py mana` reports it as a hybrid stray paid on-color.
+#: notes: THE HONEST RISK: the deck is a two-card engine at heart. Without The Water Crystal the
+#: notes: mill halves and the clock roughly doubles in length. Two copies plus eleven cantrips and
+#: notes: dig effects is the mitigation, not a fix.
+
+Deck
+# Mill engines — the clock
+1 Kitsune's Technique (TMT) 42
+1 The Tale of Tamiyo (DSK) 75
+2 Riverchurn Monument (DFT) 57
+1 Scrabbling Skullcrab (DSK) 71
+1 Exhibition Tidecaller (SOS) 48
+1 The Mindskinner (DSK) 66
+1 Master Pakku (TLA) 63
+1 Veteran Ice Climber (TDM) 64
+1 Deepmuck Desperado (OTJ) 42
+1 Hama, the Bloodbender (TLA) 224
+
+# The amplifier — now a SINGLETON plus a tutor: same outs, no dead legendary draw
+1 The Water Crystal (FIN) 85
+1 Transit Mage (DFT) 70
+
+# Lesson payoffs — all three read the same graveyard
+1 Gran-Gran (TLA) 54
+1 Guru Pathik (TLA) 223
+1 Cephalid Inkmage (FDN) 32
+
+# Lessons — cards the deck wants anyway, with the subtype as a rider
+2 It'll Quench Ya! (TLA) 58
+2 Accumulate Wisdom (TLA) 44
+1 Boomerang Basics (TLA) 46
+1 Sokka's Haiku (TLA) 71
+1 Zuko's Exile (TLA) 3
+2 Waterbending Lesson (TLA) 80
+
+# Rooms — Eerie triggers for Skullcrab, cheap interaction on the front
+1 Underwater Tunnel // Slimy Aquarium (DSK) 79
+1 Bottomless Pool // Locker Room (DSK) 43
+1 Meat Locker // Drowned Diner (DSK) 65
+
+# Real answers — mill is a clock, so these do the interacting
+1 Tishana's Tidebinder (LCI) 81
+1 Floodpits Drowner (DSK) 59
+
+# Threats — both priced by the self-mill the deck does anyway (G-46 virtual copies)
+1 Tolarian Terror (FDN) 167
+1 Eddymurk Crab (BLB) 48
+
+# Card advantage
+1 Cerebral Download (EOE) 48
+1 Spellgyre (BLB) 72
+
+# Ramp
+1 Gilded Lotus (FDN) 725
+1 Matzalantli, the Great Door // The Core (LCI) 256
+
+# Lands (24 in this block; Matzalantli's back face makes 25)
+1 Jidoor, Aristocratic Capital // Overture (FIN) 284
+23 Island (MSH) 289
+
+# Flex — options (comments; not part of the 60). See: deck.py flex 51a
+#~ note: applied — Eddymurk Crab in for Lost Days (the cut was Lost Days, not the
+#~   Tolarian Terror this line originally proposed).

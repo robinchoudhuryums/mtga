@@ -482,15 +482,18 @@ directions.
 - **NEVER widen `#: colors:` for a HYBRID card, and never reject a card for a widening you
   do not need.** Both halves were violated in one cycle: 26b's header was widened to UBR
   for `{B/R}` Bullseye, and Don & Raph was kept OUT of mono-blue 47 because its R identity
-  "would widen `#: colors:`". The tooling already handles this and SAYS SO — `deck.py mana`
-  prints "identity has R (hybrid — paid on-color)" and `preflight` reads "castability PASS
-  (+1 hybrid stray, ok)". Widening is not merely unnecessary, it is WORSE: a wider baseline
-  stops flagging a genuinely off-colour card added later, i.e. you trade a real signal for
-  a cosmetic one. **The distinction that decides it is HYBRID vs GOLD**, and only the
-  printed cost shows it — `Color(s)` is identity and reads the same for both. `{U/R}` is
-  payable in mono-U; `{U}{R}` is not, which is why Captain Storm genuinely could not join
-  47 while Don & Raph could. Read the cost from `card-mana.csv` / `deck.py mana`, never
-  from identity. [G-58]
+  "would widen `#: colors:`". `deck.py mana` already prints "identity has R (hybrid — paid
+  on-color)" and `preflight` reads "castability PASS (+1 hybrid stray, ok)". Widening is
+  WORSE than unnecessary: a wider baseline stops flagging a genuinely off-colour card added
+  later. **The distinction is HYBRID vs GOLD and only the printed COST shows it** —
+  `Color(s)` is identity and reads the same for both. Read the cost from `card-mana.csv` /
+  `deck.py mana`, never from identity. **BULK-TRIAGE VARIANT, the costly one: never sort a
+  PILE on the `Color(s)` column.** Hand-filtering 111 cards that way binned nine as
+  off-colour of which EIGHT were castable — five hybrids, plus `{6}` Ramos (identity from a
+  MANA ABILITY) and `{U}` Bruce Banner / `{1}{U}` Norman Osborn (identity from a TRANSFORM
+  cost); only Iroh was truly gold. The one-card rule is easy to hold and a 111-row filter is
+  where it breaks. **`deck.py screen <id> <pile>` is the tool** — it prints the cost and
+  reads castability from it; `/add-cards` now requires it for a pile over ~10. [G-58]
 - **A TRIBE'S VIABILITY IS ITS PAYOFF COUNT, NOT ITS BODY COUNT, and changelings cannot fix
   the missing half.** Measured across eight tribes: Dragon 71 bodies / 20 payoffs (built as
   deck 49), Dinosaur 52/11, Vampire 69/3, Mutant 79/**2**, Demon 28/1, Plant 27/1, God 21/**0**,
@@ -527,6 +530,20 @@ directions.
   the deck different. **State the count, then decide** (lands vs creature mana sources,
   trample grants, mill effects, counter sources), and when a card is parked say WHICH
   number would have to move for it to come back. [G-61]
+- **BLIND MILL IS A CLOCK, NOT INTERACTION, and that is provable, not a matter of taste.**
+  Milling M cards makes the opponent draw library positions M+1..M+D instead of 1..D, and
+  in a random permutation any fixed set of D positions has the same distribution — so
+  `P(they draw one of their k answers)` is IDENTICAL either way. Mill changes neither
+  threat density nor access; it changes exactly one thing, the turn the library empties.
+  Its payoff is binary, so it belongs next to the deck's other CLOCKS (turns-to-kill),
+  never in its removal count. It is most tempting when you are behind on board, which is
+  exactly when milling six does nothing about the threat killing you. **Three exceptions,
+  all needing the mill to stop being blind:** SELECTIVE mill ("look at top X, bin one") IS
+  interaction; mill + graveyard EXILE answers recursion (blue/colorless Standard: Ghost
+  Vacuum, Soul-Guide Lantern, Wreck Remover, Mechanical Mobster); and a library already
+  short. **The inverse is the G-42 shape** — blind mill FEEDS a graveyard deck. If the
+  scorecard really says interaction, the fix is `suggest --needs` per G-38, not a mill
+  card. Deck 51 is the worked case: its mill package is a second win condition. [G-62]
 
 ## Known Issues
 

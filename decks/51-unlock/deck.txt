@@ -2,27 +2,40 @@
 #: format: Standard
 #: colors: U
 #: plan: control
-#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 14
-#: tier: plus card advantage 9 at a 3.71 curve. The measurable case is the STRONGEST of anything
-#: tier: built this cycle, and the interaction profile is the best on the roster: 12 of the 14
-#: tier: are instant-speed and NINE can answer a noncreature permanent, against a family average
-#: tier: closer to three. Card advantage 9 is likewise the highest. Two weaknesses hold it here:
-#: tier: 1. IT WINS ON FIVE CARDS. Tolarian Terror x2, Krang, The Dawning Archaic and Kiora are
-#: tier:    the entire clock in a sixty-card deck. Omniscience does not win the game — it makes
-#: tier:    a hand free, and a free hand still has to contain a threat. A control deck that
-#: tier:    answers everything and cannot close is a draw, not a win.
-#: tier: 2. IT CANNOT ACCELERATE OUT OF TROUBLE. Blue's ramp is thin below four mana (Gilded
-#: tier:    Lotus {5}, The Eternity Elevator {5}, Matzalantli {3}), so against a fast start it
-#: tier:    must answer every threat on curve with no ability to skip ahead. 14 early drops is
-#: tier:    low for a deck with no sweeper.
-#: tier: WHAT ARGUES UP, and A is genuinely arguable once played: the manabase is flawless —
-#: tier: `consistency` reports every coloured card on curve at >=90% with keepable 86.0%, the
-#: tier: best pair on the roster — and the Room suite means the deck's "dead late-game cards"
-#: tier: problem does not exist, because every cheap answer converts into a mana sink. Protection
-#: tier: 3 on top of that interaction is a real resilience profile.
-#: tier: PROVISIONAL: unplayed, 16 craft targets, and the win-condition count is exactly the
-#: tier: kind of thing that either proves fine or proves fatal in the first session.
-#: protect: Mirror Room // Fractured Realm; Omniscience; Gilded Lotus; The Eternity Elevator; Archmage of Runes
+#: tier: B — GRADED 2026-07. Deliberately one band BELOW the measurable floor, which reads A on
+#: tier: interaction 6 plus card advantage 9 at a 4.14 curve. The floor is metric-only and says
+#: tier: so; against the rubric an A needs four things and this list fails two.
+#: tier:   A-FLOOR — yes, but interaction 6 clears the threshold of five by ONE.
+#: tier:   COHERENT ENGINE — yes. Rooms into Fractured Realm into Omniscience, with real doubling.
+#: tier:   TIGHT CURVE — no. 4.14 is the slowest on the roster, on 12 early drops.
+#: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND: a 4.14-curve deck holding six
+#: tier:   answers, of which four are instant-speed and three hit a noncreature permanent, loses
+#: tier:   to a fast start in a way neither problem would cause alone.
+#: tier: HOW IT GOT HERE, stated plainly because it is the real risk: interaction went 14 -> 6
+#: tier: across three tuning passes as the cheapest answers became threats and engines. Every
+#: tier: individual swap was defensible and measured before applying; the cumulative deck got
+#: tier: greedier each round. If a first session is lost to a resolved threat rather than to a
+#: tier: slow start, that sequence is what was wrong, not any one swap.
+#: tier: TWO THINGS THE FLOOR CANNOT SEE, both arguing DOWN. `deck.py engines` reports "counters:
+#: tier: 6 enablers, no payoff — your engine has no reward": Ramos, Pensive Professor, Bruce
+#: tier: Banner, Norman Osborn and Stormkeld Prowler all make +1/+1 counters and nothing in the
+#: tier: deck cares. And 11 central themes with `shape` reading BALANCED/neither is diffuse.
+#: tier: WHAT ARGUES UP, and A is genuinely close. The bombs are PRESENT, not aspirational —
+#: tier: Omniscience, Summon: Bahamut (four unconditional destroys under Fractured Realm), Krang
+#: tier: Utrom Warlord and The Walls of Ba Sing Se are all in the 60, and Walls is the reason
+#: tier: protection reads 3: "other permanents you control have indestructible" covers every one
+#: tier: of them. The manabase is flawless — 86.0% keepable, every coloured card on curve at
+#: tier: >=90% — and distinctness is the cleanest on the roster at 71% with ZERO shared cards.
+#: tier: The Room suite also means this deck has no dead late-game cards: every cheap answer
+#: tier: converts into a mana sink.
+#: tier: THE SECOND WIN CONDITION costs two slots because the payoff was already here. The Water
+#: tier: Crystal's "if an opponent would mill, they mill that many plus four" was earning its slot
+#: tier: as a cost reducer; Riverchurn Monument and Scrabbling Skullcrab convert it into a clock.
+#: tier: Read it as inevitability that needs one specific card, not a second archetype — and read
+#: tier: it as a CLOCK, never as interaction (G-62).
+#: tier: TO RE-GRADE TO A, the measurable gap is interaction, and `deck.py tier 51 --to A` prints
+#: tier: the fillers. Unplayed, with 20 craft targets.
+#: protect: Mirror Room // Fractured Realm; Omniscience; Gilded Lotus; The Eternity Elevator; Archmage of Runes; The Dawning Archaic; Kiora, the Rising Tide
 #: archetype: MONO-BLUE ROOMS CONTROL. Every Room is two spells stapled together at opposite
 #: archetype: ends of the curve — a one-mana play on turn one and a five-to-seven-mana play on
 #: archetype: turn eight, from the same card. That is exactly the shape a control deck wants,
@@ -38,13 +51,35 @@
 #: archetype: triggered ability of a permanent you control triggers, that ability triggers an
 #: archetype: ADDITIONAL time" doubles every "when you unlock this door" in the deck: Drowned
 #: archetype: Diner draws six, Slimy Aquarium manifests twice, Meat Locker stuns two creatures.
-#: archetype: It also doubles Braided Net, Cryogen Relic and Cerebral Download.
+#: archetype: THE BIGGEST TARGET IS NOT A ROOM. Archmage of Runes reads "whenever you cast an
+#: archetype: instant or sorcery spell, draw a card" — doubled, that is TWO cards per spell, and it
+#: archetype: is the single largest thing Fractured Realm does in this deck. The other permanents it
+#: archetype: doubles: Pensive Professor, Stormkeld Prowler, Ramos's counters, Norman Osborn's connive,
+#: archetype: Ghostly Keybearer's unlock, Lady Octopus's ingenuity counters (two per turn ->
+#: archetype: FOUR), Scrabbling Skullcrab's Eerie mill, Tishana's Tidebinder, Floodpits Drowner, Krang &
+#: archetype: Shredder, The Dawning Archaic — and Summon: Bahamut, whose SAGA CHAPTERS are
+#: archetype: triggered abilities, so I and II each destroy TWO nonland permanents and III draws
+#: archetype: four. That is the deck's only effect that DESTROYS anything.
+#: archetype: KIORA IS THE CASE WHERE DOUBLING CUTS BOTH WAYS, so read both halves. Her ETB
+#: archetype: "draw two cards, then discard two" doubles cleanly into DRAW FOUR, DISCARD FOUR —
+#: archetype: four cards deeper and four cards straight into the graveyard, which self-enables her
+#: archetype: own Threshold (seven cards) the turn she lands. But her attack trigger creates
+#: archetype: "Scion of the Deep, a LEGENDARY 8/8" — doubling it makes two tokens, the legend rule
+#: archetype: eats one, and you get exactly the same board. Doubling a token-maker is worth nothing
+#: archetype: when the token is legendary; check that before counting a body twice.
+#: archetype: WHAT IT DOES NOT DOUBLE, and this block claimed two such cards in error before it was
+#: archetype: checked. Fractured Realm reads "if a TRIGGERED ability of a PERMANENT you control
+#: archetype: triggers", so ACTIVATED abilities are untouched — that is why Riverchurn Monument's
+#: archetype: {1}, {T} is not doubled, and it is why Braided Net never was a target (it has only
+#: archetype: activated abilities; losing that credit is what demoted it out of the deck). An
+#: archetype: INSTANT or SORCERY is not a permanent and is never eligible at all. When judging a
+#: archetype: card as a target, check BOTH halves: permanent, and triggered.
 #: archetype: ITS PRINTED MANA VALUE OF 10 IS A LIE ABOUT HOW IT PLAYS. A Room's stored cost
 #: archetype: covers BOTH halves; Mirror Room is a {2}{U} THREE-DROP that token-copies a
 #: archetype: creature, and Fractured Realm unlocks separately for {5}{U}{U}. You never pay ten.
 #: archetype: OMNISCIENCE IS THE ONE HONEST TEN-DROP and it is a single copy on purpose. Once it
 #: archetype: resolves every card in hand is free, which is why the deck runs four unconditional
-#: archetype: draw spells and two X-spells: the enchantment does nothing without cards to spend
+#: archetype: draw spells and an X-spell: the enchantment does nothing without cards to spend
 #: archetype: it on. Gilded Lotus, The Eternity Elevator and Matzalantli are the ramp that makes
 #: archetype: turn eight realistic rather than aspirational.
 #: archetype: DISTINCTNESS from deck 47 Grid Overload, the other mono-blue deck. 47 is an
@@ -52,8 +87,64 @@
 #: archetype: with oversized bodies. This deck fields almost no creatures, wins by resolving
 #: archetype: enormous spells, and its curve runs the opposite direction — 47's bad draw is "not
 #: archetype: enough artifacts", this one's is "not enough time".
+#: notes: THE MILL PACKAGE IS A CLOCK, NOT INTERACTION, and the deck must not be read as
+#: notes: having 11 answers because it has 9 plus two mill cards. Blind mill is provably
+#: notes: access-neutral — the opponent draws library positions M+1..M+D instead of 1..D, and
+#: notes: any fixed set of D positions in a shuffled library has the same contents, so their
+#: notes: chance of finding an answer is unchanged. The only thing mill changes is the turn
+#: notes: the library empties. Compare Riverchurn against Tolarian Terror (a clock), never
+#: notes: against Get Out (an answer). See G-62.
+#: notes: KNOWN LIABILITY, unfixed: milling an opponent FEEDS a graveyard deck — the G-42
+#: notes: shape, a card that fights the matchup it is played in. Blue/colorless Standard has
+#: notes: the exile answers (Ghost Vacuum, Soul-Guide Lantern, Wreck Remover) but none are in
+#: notes: the 60. Treat this as a sideboard hole against recursion, not a solved problem.
+#: notes: PLANETARIUM OF WAN SHI TONG came in for Kiora, the Rising Tide. "{1}, {T}: Scry 2"
+#: notes: self-enables its own "whenever you scry or surveil, look at the top card of your library.
+#: notes: You may cast that card without paying its mana cost" — a repeatable free cast for {1} a
+#: notes: turn, in the deck whose top end is Omniscience, Krang Utrom Warlord and The Dawning
+#: notes: Archaic. It is OWNED, so it costs no wildcard. Kiora was the cut because her Threshold
+#: notes: 8/8 needs seven cards in your graveyard AND an attack, and this deck reliably does
+#: notes: neither; `cuts` ranked her 28th of 28. Card advantage 8 -> 8 held, avg MV 3.74 -> 3.83.
+#: notes: PLANETARIUM OF WAN SHI TONG came in for Ghostly Keybearer (`cuts` ranked Keybearer 1st
+#: notes: of 28 weakest). "{1}, {T}: Scry 2" self-enables its own "whenever you scry or surveil,
+#: notes: look at the top card of your library. You may cast that card without paying its mana
+#: notes: cost" — a repeatable free cast for {1} a turn, into a top end of Omniscience, Krang
+#: notes: Utrom Warlord, The Dawning Archaic and Summon: Bahamut. OWNED, so no wildcard. Cost:
+#: notes: reach 2 -> 1 and avg MV 3.74 -> 3.80.
+#: notes: THE DAWNING ARCHAIC IS PROTECTED, and the count behind that is thinner than it reads.
+#: notes: Its "{1} less for each instant and sorcery card in your graveyard" reads against only
+#: notes: EIGHT such cards in the deck, so a realistic turn-eight yard of four to five puts it at
+#: notes: five or six mana, not two. That is still a fine rate for a 7/7 reach whose attack
+#: notes: trigger free-casts a spell from the graveyard — DOUBLED to two spells by Fractured
+#: notes: Realm — and it is the deck's only recursion. Two live tensions to hold: the trigger
+#: notes: EXILES what it casts, and Tolarian Terror x2 price off that same eight-card pool, so
+#: notes: three cards compete for one thin resource. Protected as a deliberate call, not because
+#: notes: the numbers demanded it.
+#: notes: THE IDENTITY-COLUMN BATCH, now six cards. Lady Octopus, Norman Osborn, The Walls of Ba
+#: notes: Sing Se, Ghostly Keybearer, Bruce Banner and Ramos, and FOUR are here only because a
+#: notes: bulk triage that sorted the pile on `Color(s)` was redone against the printed COST
+#: notes: (G-58, bulk-triage variant). NORMAN OSBORN is the clearest case: identity U/B/R, cost
+#: notes: {1}{U} — an unblockable two-drop that connives on damage, DOUBLED by Fractured Realm,
+#: notes: and a modal DFC whose {1}{U}{B}{R} Green Goblin face is castable from hand and so is a
+#: notes: free-cast target under Omniscience or Planetarium. LADY OCTOPUS reads its own engine:
+#: notes: two ingenuity counters a turn become FOUR under Fractured Realm, and "{T}: cast an
+#: notes: artifact spell with mana value <= counters WITHOUT paying its mana cost" points at the
+#: notes: deck's EIGHT artifacts, including Gilded Lotus, Planetarium and a 9-mana Krang.
+#: notes: BRUCE BANNER AND RAMOS ARE BOTH CASTABILITY CORRECTIONS. Banner's identity is U/R/G and
+#: notes: its cost is {U}; Ramos's identity is WUBRG and its cost is {6}. Neither is a hybrid —
+#: notes: Banner's stray comes from a TRANSFORM cost and Ramos's from a MANA ABILITY, two routes
+#: notes: into the identity column that the hybrid framing alone does not cover. Banner is also
+#: notes: a MODAL DFC: The Incredible Hulk has a real {2}{R}{R}{G}{G} cost and is castable from
+#: notes: hand, so it is a live free-cast target under Omniscience or Planetarium even though
+#: notes: this deck can never pay for it. `card-mana.csv` records only the front cost, which is
+#: notes: a known data gap, not a rules fact.
+#: notes: THE COST WAS INTERACTION, and it is stated here rather than buried: Cryogen Relic, Get
+#: notes: Out, Spell Pierce, Into the Flood Maw and Twist Reality all left, taking the count
+#: notes: 10 -> 6 and avg MV 3.97 -> 4.14. That is the deliberate trade — a deck that answered
+#: notes: everything and could
+#: notes: not close became one that closes and answers less. If the first session loses to a
+#: notes: fast start rather than to an unanswered threat, this is the paragraph that was wrong.
 #: notes: BUILT 2026-07 from scratch, around Omniscience and Fractured Realm by request.
-#: notes: UNGRADED ON PURPOSE — no `#: tier:` until the metrics are read.
 #: notes: WHY ROOMS RATHER THAN A GENERIC BIG-MANA PILE. The two named cards want different
 #: notes: things — Omniscience wants expensive cards in hand, Fractured Realm wants TRIGGERS —
 #: notes: and a deck built for one is usually bad at the other. Rooms resolve that: their unlock
@@ -90,37 +181,42 @@
 1 Matzalantli, the Great Door // The Core (LCI) 256
 1 The Water Crystal (FIN) 85
 1 Archmage of Runes (FDN) 30
+1 Lady Octopus, Inspired Inventor (SPM) 35
+1 Ramos, Dragon Engine (FDN) 678
 
 # Card advantage — Omniscience needs a hand to spend
-1 Braided Net (LCI) 47
-1 Cryogen Relic (EOE) 52
 1 Cerebral Download (EOE) 48
-1 Mind Spring (BLB) 389
 1 Finale of Revelation (FDN) 589
 1 Spellgyre (BLB) 72
-1 Calamitous Tide (BLB) 43
+1 Pensive Professor (SOS) 63
+1 Bruce Banner (MSH) 49
 
 # Counters
-1 Spell Pierce (SOA) 23
-1 Dazzling Denial (BLB) 45
 1 Long River's Pull (BLB) 58
-1 Get Out (DSK) 60
-1 Sokka's Haiku (TLA) 71
 1 Tishana's Tidebinder (LCI) 81
-1 Spell Snare (ECL) 71
-1 Twist Reality (DSK) 77
 
 # Bounce and tempo — blue's answer to a resolved threat
-1 Into the Flood Maw (BLB) 52
-1 Bounce Off (DFT) 39
-1 Splash Portal (BLB) 74
 1 Floodpits Drowner (DSK) 59
 
-# Threats — Tolarian Terror shrinks with every counterspell you cast
-2 Tolarian Terror (FDN) 167
+# Mill — the alternate clock. The Water Crystal turns every mill here into +4
+1 Riverchurn Monument (DFT) 57
+1 Scrabbling Skullcrab (DSK) 71
+
+# Room access — Keys unlocks Fractured Realm's {5}{U}{U} door for four total mana
+1 Keys to the House (DSK) 251
+
+# Threats — the clock, now eight cards rather than five
+1 Norman Osborn (SPM) 39
+1 Ghostly Keybearer (DSK) 61
 1 Kiora, the Rising Tide (FDN) 45
+1 Tolarian Terror (FDN) 167
+1 Stormkeld Prowler (WOE) 71
+1 Krang & Shredder (TMT) 153
 
 # The top end
+1 Summon: Bahamut (FIN) 1
+1 The Walls of Ba Sing Se (TLA) 261
+1 Planetarium of Wan Shi Tong (TLA) 259
 1 Omniscience (FDN) 161
 1 The Dawning Archaic (SOS) 1
 1 Krang, Utrom Warlord (TMT) 175
