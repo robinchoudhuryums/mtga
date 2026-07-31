@@ -957,6 +957,36 @@ CHEAPER_TEXT = [("less to cast", "cost reduction"),
                 ("as though it had flash", "conditional flash")]
 
 
+def x_cost_cards(cards, carddata, mana):
+    """Nonland cards whose printed cost contains {X} -> [(name, cost)], sorted.
+
+    The curve, `avg_mv` and the early-drop count all read `mana_value`, which counts
+    X as 0 because that is what the rules say off the stack. That is correct for
+    castability and for cast-on-curve probability — you really can cast Wildwood
+    Scourge for {G} — but it makes an {X} spell look like a ONE-DROP on the curve
+    when you will realistically pay three to five for it.
+
+    The distortion runs in BOTH directions and bit deck 50a twice: adding two {X}
+    spells made avg MV appear to drop 3.85 -> 3.70, and removing one made it appear
+    to rise 3.55 -> 3.76. Neither move changed the real curve much. Report-only —
+    this deliberately does NOT feed `deck_quality_vector` or `tier_band`, because a
+    new term there would silently re-grade the whole roster.
+    """
+    out, seen = [], set()
+    for _q, n, _s, _c in cards:
+        if n.lower() in BASICS or n in seen:
+            continue
+        d2 = carddata.get(n.lower())
+        if not d2 or "Land" in _primary_type(d2["type"]):
+            continue
+        entry = mana.get(n.lower())
+        cost = (entry[0] if entry else "") or ""
+        if "{X}" in cost.upper():
+            seen.add(n)
+            out.append((n, cost))
+    return sorted(out)
+
+
 def classify_cost(keywords, text):
     """Return (cheaper_reasons, gated_reasons) for a card's cost profile."""
     kset = set(keywords or [])
@@ -2526,6 +2556,14 @@ def cmd_stats(args):
         print("\nAbility/mode has an ADDED cost or condition — check text (△):")
         for n, r in gated:
             print(f"  △ {n} — {r}")
+
+    xs = x_cost_cards(cards, carddata, mana)
+    if xs:
+        print("\nX-COST cards — the curve books these at MV 1, X counts as 0 (✕):")
+        for n, c in xs:
+            print(f"  ✕ {n} — {c}")
+        print(f"  Read avg MV and the early-drop count with that in mind: {len(xs)} card(s) "
+              "register cheaper than you will cast them.")
 
     # Functional roles: what jobs the nonland spells actually do. Heuristic from
     # oracle text (see classify_roles) so the tune-deck health scorecard can
@@ -8197,6 +8235,16 @@ def cmd_tier(args):
           f"card-adv {vec.get('card_advantage_conf') or vec['card_advantage']} · "
           f"protection {vec.get('protection', 0)} · "
           f"avg MV {vec['avg_mv']} · central themes {vec['central_themes']}")
+    # An {X} spell is priced at MV 1 (X counts as 0 off the stack), so the avg MV printed
+    # just above under-reads a list that runs several. REPORT-only, like protection — a
+    # new term in tier_band would silently re-grade the roster.
+    _cd = load_card_data()
+    _mana = load_mana()
+    _xs = x_cost_cards(_cards, _cd, _mana)
+    if _xs:
+        print(f"  ⚠ avg MV under-reads: {len(_xs)} X-cost card(s) "
+              f"({', '.join(n for n, _c in _xs[:3])}{'…' if len(_xs) > 3 else ''}) "
+              "book as MV 1 because X counts as 0 — see `deck.py stats` for the list.")
     # Protection is REPORTED, never fed into tier_band (the floor formula is anchored by
     # check_tier.py). A zero here is a judgment prompt, not a band change.
     if not vec.get("protection"):

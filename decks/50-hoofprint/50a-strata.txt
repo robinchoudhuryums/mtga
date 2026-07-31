@@ -3,8 +3,10 @@
 #: colors: G
 #: based-on: deck.txt
 #: plan: midrange
-#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 5
-#: tier: plus card advantage 1 at a 3.76 curve. Three weaknesses:
+#: tier: B — PROVISIONAL, and it now MATCHES the measurable floor rather than sitting under it.
+#: tier: The floor moved: interaction 5 plus card advantage 1 is a sum of 6, and the A-floor
+#: tier: wants 7, so the earlier "one band below A" framing is no longer true — the removal
+#: tier: suite thinned as the engine cards came in. Three weaknesses hold it here:
 #: tier: 1. CARD ADVANTAGE 1 IS THE LOWEST FIGURE ON THE ROSTER. Icetill Explorer, Traveling
 #: tier:    Chocobo, Agatha's Soul Cauldron and Web of Life and Destiny all generate real value
 #: tier:    the classifier cannot read, so the true number is higher — but not by much, and the

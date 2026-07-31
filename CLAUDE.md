@@ -502,6 +502,17 @@ directions.
   each X", "X spells you cast"), and only then ask whether the bodies exist. The inverse
   reading — that a deep tribe must be supportable — is what makes a shallow archetype look
   buildable right up until the deck has no reason to share a type. [G-59]
+- **An `{X}` SPELL IS PRICED AT MV 1, so a curve reading UNDER-reads any deck running
+  several — and the distortion runs BOTH ways.** `mana_value` counts X as 0 because that
+  is what the rules say off the stack, which is right for castability and for
+  cast-on-curve probability (you really can cast Wildwood Scourge for `{G}`) and wrong as
+  a CURVE reading: a card you realistically cast for four books as a one-drop and as an
+  early drop. Deck 50a was misread twice in one cycle — adding two `{X}` spells made avg
+  MV appear to fall 3.85 → 3.70, and removing one made it appear to rise 3.55 → 3.76,
+  while the real curve barely moved either time. `deck.py stats` now lists them under
+  `✕ X-COST cards` and `deck.py tier` prints a one-line "avg MV under-reads" advisory.
+  Both are REPORT-ONLY and must stay so — a new term in `tier_band` would silently
+  re-grade the roster, exactly as the protection axis is kept out. [G-60]
 
 ## Known Issues
 

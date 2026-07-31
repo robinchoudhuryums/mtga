@@ -637,3 +637,46 @@ class TestTierConsistency:
         d = self._deck(synth, "D", ["8 Bear", "20 Swamp"])
         _claimed, _implied, mismatch, _msg = deck.tier_consistency(d)
         assert mismatch is False
+
+
+class TestXCostCards:
+    """An {X} spell is priced at MV 1 because X counts as 0 off the stack. That is
+    correct for castability and cast-on-curve probability, and WRONG as a curve
+    reading — it books a card you cast for four as a one-drop. `x_cost_cards` is the
+    report-only flag that says so; it must never feed the quality vector, because a
+    new term in `tier_band` would silently re-grade the roster."""
+
+    CD = {
+        "wildwood scourge": {"type": "Creature — Hydra", "text": "enters with X +1/+1 counters"},
+        "bear": {"type": "Creature — Bear", "text": ""},
+        "forest": {"type": "Basic Land — Forest", "text": ""},
+        "lumbering worldwagon": {"type": "Artifact — Vehicle", "text": ""},
+    }
+    MANA = {
+        "wildwood scourge": ("{X}{G}", 1),
+        "bear": ("{1}{G}", 2),
+        "lumbering worldwagon": ("{2}{G}", 3),
+    }
+
+    @staticmethod
+    def _cards(names):
+        return [(1, n, "SET", "1") for n in names]
+
+    def test_an_x_spell_is_flagged_with_its_printed_cost(self):
+        out = deck.x_cost_cards(self._cards(["Wildwood Scourge", "Bear"]), self.CD, self.MANA)
+        assert out == [("Wildwood Scourge", "{X}{G}")]
+
+    def test_a_fixed_cost_card_is_not_flagged(self):
+        out = deck.x_cost_cards(self._cards(["Bear", "Lumbering Worldwagon"]), self.CD, self.MANA)
+        assert out == []
+
+    def test_lands_and_duplicates_are_excluded(self):
+        """A land has no curve slot, and a 4-of should report once, not four times."""
+        cards = self._cards(["Wildwood Scourge", "Wildwood Scourge", "Forest"])
+        assert deck.x_cost_cards(cards, self.CD, self.MANA) == [("Wildwood Scourge", "{X}{G}")]
+
+    def test_the_flag_does_not_reach_the_quality_vector(self):
+        """Report-only by design — `tier_band` must not see it (see the protection axis)."""
+        import inspect
+        src = inspect.getsource(deck.deck_quality_vector) + inspect.getsource(deck.tier_band)
+        assert "x_cost_cards" not in src

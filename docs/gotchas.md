@@ -2095,3 +2095,38 @@ tribal versions kept running into. A separate check confirmed there is no "land-
 tribe" in green either (Scout leads at 5 pullers of 24 bodies, then Robot 4, Insect 3,
 Druid 2 — scattered, not concentrated), and Mouse is a Boros tribe (19 in Standard: W 9 /
 R 6 / W-R 3 and exactly one green).
+
+
+## [G-60] An `{X}` spell is priced at MV 1, so a curve reading under-reads a deck that runs several
+
+**An `{X}` spell is priced at MV 1, so a curve reading under-reads any deck running
+several — and the distortion runs BOTH ways.** `lib.mana_value` counts `X` as 0 because
+that is what the rules say for a spell not on the stack, and that is the RIGHT answer for
+the two things it primarily serves: castability (`{X}{G}` really is castable off one
+Forest) and `consistency`'s cast-on-curve probability. It is the wrong answer for the
+curve, `avg_mv` and the early-drop count, all of which read the same number — a card you
+realistically cast for four books as a one-drop *and* as an early drop.
+
+**Deck 50a was misread twice in one cycle, in opposite directions.** Adding Wildwood
+Scourge and Jadelight Spelunker read as avg MV 3.85 → 3.70 with early drops 10 → 12, and
+the swap was described as improving the curve. Removing Jadelight Spelunker later read as
+avg MV 3.55 → 3.76 with early drops 13 → 12, and was nearly rejected on that basis. The
+real curve barely moved either time; both figures were the `{X}`-at-MV-1 accounting.
+
+**The fix is a flag, not a formula change.** `deck.py stats` lists the offenders under
+`✕ X-COST cards — the curve books these at MV 1, X counts as 0`, with a line reminding
+the reader what that does to avg MV and the early-drop count. `deck.py tier` prints a
+one-line `⚠ avg MV under-reads: N X-cost card(s)` advisory next to the vector, because
+`tier` is the surface where avg MV actually gets quoted into a grade.
+
+**Both are REPORT-ONLY and must stay so.** `x_cost_cards` is deliberately not wired into
+`deck_quality_vector` or `tier_band` — a new term there would silently re-grade every
+deck on the roster, which is the same reason the protection axis is reported and never
+scored. `tests/test_deck_models.py::TestXCostCards` pins this with a source-level
+assertion that neither function mentions the helper, alongside behavioural tests that a
+fixed-cost card is not flagged and that lands and duplicate copies are excluded.
+
+**Residual:** the flag tells you the number is soft, not what the true curve is — pricing
+an `{X}` spell properly would need a model of what X you actually pay, which depends on
+the board. Read the flagged cards and judge; do not try to correct `avg_mv` by hand,
+because `check_tier.py` anchors the floor formula against the raw value.
