@@ -3,22 +3,26 @@
 #: colors: U
 #: plan: control
 #: tier: B — PROVISIONAL, one band below the measurable floor, which still reads A on
-#: tier: interaction 10 plus card advantage 8 at a 3.97 curve. The list was rebalanced after
-#: tier: the first grade: the cheapest and most marginal interaction pieces (Splash Portal,
-#: tier: Calamitous Tide, Dazzling Denial, Bounce Off, Sokka's Haiku, Spell Snare) became
-#: tier: threats and engines, so interaction 14 -> 9 while the clock roughly doubled. The
-#: tier: interaction that remains is still the best-shaped on the roster: nearly all of it is
-#: tier: instant-speed and most of it answers a noncreature permanent, against a family
-#: tier: average closer to three.
-#: tier: WEAKNESS 1 IS LARGELY GONE. The deck no longer wins on five cards. Stormkeld Prowler,
-#: tier: Krang & Shredder and Summon: Bahamut join Tolarian Terror x2, Krang Utrom Warlord,
-#: tier: The Dawning Archaic and Kiora — eight threats against the original five. Prowler in
-#: tier: particular is a two-drop that grows off the top end the deck was already running.
+#: tier: interaction 7 plus card advantage 8 at a 4.09 curve. The list was rebalanced after
+#: tier: the first grade: the cheapest and most marginal interaction pieces became threats
+#: tier: and engines across two passes, so interaction 14 -> 7 while the clock more than
+#: tier: doubled. SEVEN IS NOW THE NUMBER TO WATCH — it clears the A-floor's 5 with little
+#: tier: room, and it is the figure that decides whether this deck was tuned or hollowed out.
+#: tier: What remains is still the best-SHAPED interaction on the roster (nearly all
+#: tier: instant-speed, most of it answering a noncreature permanent), and Summon: Bahamut
+#: tier: adds the deck's first effects that DESTROY, but shape does not substitute for count.
+#: tier: WEAKNESS 1 IS GONE. The deck no longer wins on five cards: Stormkeld Prowler, Kitsa,
+#: tier: Norman Osborn, Ghostly Keybearer, Krang & Shredder and Summon: Bahamut join Tolarian
+#: tier: Terror, Krang Utrom Warlord, The Dawning Archaic and Kiora. Creatures 8 -> 17.
+#: tier: Tolarian Terror went to a SINGLE copy for The Walls of Ba Sing Se, which is not a
+#: tier: threat at all — "other permanents you control have indestructible" protects
+#: tier: Omniscience, Fractured Realm, Gilded Lotus and every body listed above, in the deck
+#: tier: whose whole plan is resolving a large permanent and keeping it.
 #: tier: WEAKNESS 2 IS PARTLY ADDRESSED, in the way blue actually can. There is still no ramp
 #: tier: below four mana (Gilded Lotus {5}, The Eternity Elevator {5}, Matzalantli {3}), but
 #: tier: The Water Crystal shaves {1} off every blue spell — 29 of the 35 nonland cards — and
 #: tier: Keys to the House turns Fractured Realm's {5}{U}{U} door into four total mana split
-#: tier: across two turns. 13 early drops is still low for a deck with no sweeper, and that
+#: tier: across two turns. 12 early drops is still low for a deck with no sweeper, and that
 #: tier: is the live risk.
 #: tier: THERE IS NOW A SECOND WAY TO WIN, and it costs two slots because the payoff was
 #: tier: already in the deck. The Water Crystal's "if an opponent would mill, they mill that
@@ -34,7 +38,7 @@
 #: tier: best pair on the roster — and the Room suite means the deck's "dead late-game cards"
 #: tier: problem does not exist, because every cheap answer converts into a mana sink. Protection
 #: tier: 3 on top of that interaction is a real resilience profile.
-#: tier: PROVISIONAL: unplayed and 19 craft targets. What proves or disproves it in the first
+#: tier: PROVISIONAL: unplayed and 20 craft targets. What proves or disproves it in the first
 #: tier: session is whether trading five answers for five threats left enough answers.
 #: protect: Mirror Room // Fractured Realm; Omniscience; Gilded Lotus; The Eternity Elevator; Archmage of Runes; The Dawning Archaic; Kiora, the Rising Tide
 #: archetype: MONO-BLUE ROOMS CONTROL. Every Room is two spells stapled together at opposite
@@ -55,8 +59,9 @@
 #: archetype: THE BIGGEST TARGET IS NOT A ROOM. Archmage of Runes reads "whenever you cast an
 #: archetype: instant or sorcery spell, draw a card" — doubled, that is TWO cards per spell, and it
 #: archetype: is the single largest thing Fractured Realm does in this deck. The other permanents it
-#: archetype: doubles: Cryogen Relic (enter/leave draw), Pensive Professor, Stormkeld Prowler,
-#: archetype: Scrabbling Skullcrab's Eerie mill, Tishana's Tidebinder, Floodpits Drowner, Krang &
+#: archetype: doubles: Pensive Professor, Stormkeld Prowler, Kitsa, Norman Osborn's connive,
+#: archetype: Ghostly Keybearer's unlock, Lady Octopus's ingenuity counters (two per turn ->
+#: archetype: FOUR), Scrabbling Skullcrab's Eerie mill, Tishana's Tidebinder, Floodpits Drowner, Krang &
 #: archetype: Shredder, The Dawning Archaic — and Summon: Bahamut, whose SAGA CHAPTERS are
 #: archetype: triggered abilities, so I and II each destroy TWO nonland permanents and III draws
 #: archetype: four. That is the deck's only effect that DESTROYS anything.
@@ -120,6 +125,21 @@
 #: notes: EXILES what it casts, and Tolarian Terror x2 price off that same eight-card pool, so
 #: notes: three cards compete for one thin resource. Protected as a deliberate call, not because
 #: notes: the numbers demanded it.
+#: notes: THE IDENTITY-COLUMN BATCH. Lady Octopus, Kitsa, Norman Osborn, The Walls of Ba Sing
+#: notes: Se and Ghostly Keybearer came in together, and three of them are here only because a
+#: notes: bulk triage that sorted the pile on `Color(s)` was redone against the printed COST
+#: notes: (G-58, bulk-triage variant). NORMAN OSBORN is the clearest case: identity U/B/R, cost
+#: notes: {1}{U} — an unblockable two-drop that connives on damage, DOUBLED by Fractured Realm,
+#: notes: and a modal DFC whose {1}{U}{B}{R} Green Goblin face is castable from hand and so is a
+#: notes: free-cast target under Omniscience or Planetarium. LADY OCTOPUS reads its own engine:
+#: notes: two ingenuity counters a turn become FOUR under Fractured Realm, and "{T}: cast an
+#: notes: artifact spell with mana value <= counters WITHOUT paying its mana cost" points at the
+#: notes: deck's EIGHT artifacts, including Gilded Lotus, Planetarium and a 9-mana Krang.
+#: notes: THE COST WAS INTERACTION, and it is stated here rather than buried: Cryogen Relic, Get
+#: notes: Out, Spell Pierce and Into the Flood Maw all left, taking the count 10 -> 7 and avg MV
+#: notes: 3.97 -> 4.09. That is the deliberate trade — a deck that answered everything and could
+#: notes: not close became one that closes and answers less. If the first session loses to a
+#: notes: fast start rather than to an unanswered threat, this is the paragraph that was wrong.
 #: notes: BUILT 2026-07 from scratch, around Omniscience and Fractured Realm by request.
 #: notes: WHY ROOMS RATHER THAN A GENERIC BIG-MANA PILE. The two named cards want different
 #: notes: things — Omniscience wants expensive cards in hand, Fractured Realm wants TRIGGERS —
@@ -157,24 +177,20 @@
 1 Matzalantli, the Great Door // The Core (LCI) 256
 1 The Water Crystal (FIN) 85
 1 Archmage of Runes (FDN) 30
+1 Lady Octopus, Inspired Inventor (SPM) 35
 
 # Card advantage — Omniscience needs a hand to spend
-1 Summon: Bahamut (FIN) 1
-1 Cryogen Relic (EOE) 52
 1 Cerebral Download (EOE) 48
 1 Finale of Revelation (FDN) 589
 1 Spellgyre (BLB) 72
 1 Pensive Professor (SOS) 63
 
 # Counters
-1 Spell Pierce (SOA) 23
 1 Long River's Pull (BLB) 58
-1 Get Out (DSK) 60
 1 Tishana's Tidebinder (LCI) 81
 1 Twist Reality (DSK) 77
 
 # Bounce and tempo — blue's answer to a resolved threat
-1 Into the Flood Maw (BLB) 52
 1 Floodpits Drowner (DSK) 59
 
 # Mill — the alternate clock. The Water Crystal turns every mill here into +4
@@ -184,13 +200,18 @@
 # Room access — Keys unlocks Fractured Realm's {5}{U}{U} door for four total mana
 1 Keys to the House (DSK) 251
 
-# Threats — Tolarian Terror shrinks with every counterspell you cast
+# Threats — the clock, now eight cards rather than five
+1 Kitsa, Otterball Elite (BLB) 54
+1 Norman Osborn (SPM) 39
+1 Ghostly Keybearer (DSK) 61
 1 Kiora, the Rising Tide (FDN) 45
-2 Tolarian Terror (FDN) 167
+1 Tolarian Terror (FDN) 167
 1 Stormkeld Prowler (WOE) 71
 1 Krang & Shredder (TMT) 153
 
 # The top end
+1 Summon: Bahamut (FIN) 1
+1 The Walls of Ba Sing Se (TLA) 261
 1 Planetarium of Wan Shi Tong (TLA) 259
 1 Omniscience (FDN) 161
 1 The Dawning Archaic (SOS) 1
