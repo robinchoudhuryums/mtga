@@ -1970,3 +1970,137 @@ class TestReferenceTableMemo:
             load()
         src.write_text("now here\n")
         assert load() == "now here"
+
+
+class TestNameResolution:
+    """The pile-triage resolver shared by `deck.py resolve` and `deck.py screen`.
+
+    A pasted pile is written by a person, so it drops the punctuation the printed name
+    carries. Screening one real 111-card pile left 22 names unresolved — overwhelmingly
+    `Name, Epithet` legendaries typed without the comma — so the tool silently handed back
+    the fifth of the pile that most needed grading, and those cards were graded by hand
+    instead. That is where nine cards got mis-classified."""
+
+    TABLE = {
+        "ramos, dragon engine": "Ramos, Dragon Engine",
+        "gran-gran": "Gran-Gran",
+        "flotsam // jetsam": "Flotsam // Jetsam",
+        "flotsam": "Flotsam // Jetsam",
+        "master pakku": "Master Pakku",
+        "kitsa, otterball elite": "Kitsa, Otterball Elite",
+        "kitsune's technique": "Kitsune's Technique",
+        "kitsune, dragon's daughter": "Kitsune, Dragon's Daughter",
+    }
+
+    def _resolve(self, q):
+        disp = lambda k: self.TABLE[k]
+        sq = deck._squash_index(self.TABLE, disp)
+        return deck._resolve_card_name(q, self.TABLE, disp, sq)
+
+    def test_exact_name_still_wins(self):
+        assert self._resolve("Ramos, Dragon Engine")[0] == "ramos, dragon engine"
+
+    def test_missing_comma_resolves(self):
+        assert self._resolve("Ramos Dragon Engine")[0] == "ramos, dragon engine"
+
+    def test_missing_hyphen_resolves(self):
+        assert self._resolve("Gran Gran")[0] == "gran-gran"
+
+    def test_missing_space_around_dfc_slashes_resolves(self):
+        assert self._resolve("Flotsam//Jetsam")[0] == "flotsam // jetsam"
+
+    def test_trailing_parenthetical_note_is_stripped(self):
+        assert self._resolve("Master Pakku (needs Lessons)")[0] == "master pakku"
+
+    def test_several_trailing_notes_are_stripped(self):
+        assert deck._name_query("Bruce Banner (front face) (owned)") == "Bruce Banner"
+
+    def test_a_typo_is_reported_not_guessed(self):
+        """The resolver must NOT be a spell-corrector. Guessing at a misspelling grades
+        the wrong card silently, which is strictly worse than reporting the name back."""
+        key, cands = self._resolve("Impostoer Syndrome")
+        assert key is None and cands == []
+
+    def test_a_genuinely_ambiguous_prefix_reports_candidates(self):
+        key, cands = self._resolve("Kitsune")
+        assert key is None
+        assert cands == ["Kitsune's Technique", "Kitsune, Dragon's Daughter"]
+
+    def test_a_dfc_front_and_full_name_are_one_card_not_an_ambiguity(self):
+        key, cands = self._resolve("flotsam")
+        assert key is not None and cands == []
+
+
+class TestCandidateCastability:
+    """`screen`'s castability read, off the PRINTED cost rather than color identity.
+
+    Identity and cost disagree exactly where a pile lives: `{1}{U/R}` and `{6}` are both
+    payable with Islands alone and both read as off-color in `Color(s)`. Triaging a pile on
+    that column mis-sorted nine cards, eight of them castable (G-58, bulk-triage variant)."""
+
+    U = frozenset("U")
+
+    def test_on_color_cost_is_clean(self):
+        ok, note = deck._candidate_castability("{1}{U}", set("U"), self.U)
+        assert ok and note == ""
+
+    def test_true_hybrid_is_castable_and_labelled(self):
+        ok, note = deck._candidate_castability("{1}{U/R}", set("UR"), self.U)
+        assert ok and "hybrid — paid on-color" in note
+
+    def test_colorless_cost_is_castable_whatever_the_identity(self):
+        """Ramos, Dragon Engine: cost {6}, identity WUBRG from its mana ability."""
+        ok, note = deck._candidate_castability("{6}", set("WUBRG"), self.U)
+        assert ok and "still castable" in note
+
+    def test_gold_cost_is_not_castable(self):
+        ok, note = deck._candidate_castability("{3}{G}{U}{R}", set("URG"), self.U)
+        assert not ok and "NOT castable" in note and "G" in note and "R" in note
+
+    def test_monocolor_hybrid_never_constrains(self):
+        ok, _ = deck._candidate_castability("{2/W}", set("W"), self.U)
+        assert ok
+
+    def test_unknown_cost_says_so_rather_than_asserting(self):
+        ok, note = deck._candidate_castability("", set("R"), self.U)
+        assert ok and "cost unknown" in note
+
+
+class TestGenericSignatureBar:
+    """`_strong_signature_themes` clears a GENERIC theme only at half the protect list.
+
+    The signature exists to rescue a theme idf calls generic when it is genuinely the
+    deck's spine, so a SPECIFIC theme keeps the flat >=2 bar. But >=2 was tuned against a
+    3-to-5-card protect list: at 14 protected cards it is 14% of them, which let deck 46
+    rescue `Human`, `combat` and `flying`. Those false spines fed `fit_strength`, whose KEY
+    label then fired on 66% of a 111-card pile."""
+
+    def _sig(self, protect, tags):
+        meta = {"protect": "; ".join(protect)}
+        cards = [(1, n, "", "") for n in protect]
+        cardmeta = {n.lower(): {"synergies": t} for n, t in tags.items()}
+        return deck._strong_signature_themes(meta, cards, cardmeta)
+
+    def test_a_specific_theme_still_clears_at_two(self):
+        sig = self._sig(["A", "B", "C", "D", "E", "F", "G", "H"],
+                        {"A": ["Dragon"], "B": ["Dragon"], "C": [], "D": [], "E": [],
+                         "F": [], "G": [], "H": []})
+        assert "Dragon" in sig, "a narrow tribal spine must survive a long protect list"
+
+    def test_a_generic_theme_needs_half_the_protect_list(self):
+        prot = ["A", "B", "C", "D", "E", "F", "G", "H"]
+        tags = {n: (["card draw"] if n in ("A", "B") else []) for n in prot}
+        assert "card draw" not in self._sig(prot, tags)
+
+    def test_a_generic_theme_that_really_is_the_spine_survives(self):
+        prot = ["A", "B", "C", "D"]
+        tags = {n: ["counters"] for n in prot}
+        assert "counters" in self._sig(prot, tags), (
+            "the whole point of the rescue: a counters deck protecting counter-doublers")
+
+    def test_a_short_protect_list_is_unchanged(self):
+        """The original >=2 behavior held for 3-to-5 protected cards and must not move."""
+        sig = self._sig(["A", "B", "C"],
+                        {"A": ["counters", "flying"], "B": ["counters", "haste"],
+                         "C": ["card draw"]})
+        assert "counters" in sig and "card draw" not in sig and "flying" not in sig

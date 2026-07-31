@@ -27,6 +27,40 @@ cannot drift from their behaviour. Read CLAUDE.md's Common Gotchas first.
 library, stop and route to `/ingest` — placing a card you do not own is a craft
 recommendation, which is `/add-wishlist`'s job, not this one.
 
+## Stage 0b — A pile over ~10 cards goes through `screen` FIRST (required)
+
+For any batch bigger than about ten cards, run the machine triage before you read
+anything by hand, once per candidate deck:
+
+```
+python3 scripts/deck.py screen <deck-id> - < pile.txt      # or: screen <id> "Name" "Name" …
+```
+
+**Do not hand-roll a filter over `card-pool.csv` instead.** That is not a hypothetical
+shortcut — it is what actually happened on a 111-card pile, and grouping it on the
+`Color(s)` column mis-sorted NINE cards, EIGHT of which were castable: `Color(s)` is
+identity, so every hybrid and every colorless-cost card reads as off-colour (G-58,
+bulk-triage variant). `screen` prints the **printed mana cost** next to each candidate
+and reads castability from it, which is the column that actually answers the question.
+
+Read the output as a shortlist, not a verdict:
+
+- It prints cost, owned/craft-rarity, roles, shared themes, format legality and a
+  castability note per candidate. `⚠ NOT castable` is cost-based and is a real
+  exclusion; `identity has X (hybrid — paid on-color)` and `(off-color ability — still
+  castable)` are review notes, NOT exclusions.
+- **`Not found` and `Ambiguous` lines are the ones to act on.** The resolver matches
+  across dropped punctuation (`Ramos Dragon Engine` → `Ramos, Dragon Engine`) and strips
+  a trailing note (`Master Pakku (needs Lessons)`), but it deliberately does not correct
+  typos. Anything it reports back is a card NOTHING has graded — fix the name and re-run
+  rather than moving on, because a silently-dropped name looks exactly like a card that
+  was considered and rejected.
+- `KEY` is tuned to be selective (~8–10% of a broad pile). Its silence is not a verdict,
+  and `tangential` means "this deck", not "this card is bad" — the same card can be KEY
+  for a sibling variant. Screen against **each** candidate deck.
+
+Then take the survivors into Stage 1 and read them in full.
+
 ## Stage 1 — Read each card, then place it (full text, always)
 
 For **every** card, in this order — never grade from a tag or a role label

@@ -86,6 +86,12 @@ _EXCLUDED = {
     ("deck", "_ARRIVING_BREAK"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_DEPARTING_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_ARROW_AFTER"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_TRAILING_NOTE_RE"): "hand-typed card NAME normalization (strips a pile's "
+                                   "'(needs Lessons)' note), not card text; unit-tested "
+                                   "in test_deck.py::TestNameResolution",
+    ("deck", "_SQUASH_RE"): "hand-typed card NAME normalization (punctuation-insensitive "
+                            "match key), not card text; unit-tested in "
+                            "test_deck.py::TestNameResolution",
 }
 
 

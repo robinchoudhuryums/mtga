@@ -2051,6 +2051,51 @@ verdict surface must print its evidence — a sweep that shows its query is a sw
 can falsify.
 
 
+### The BULK-TRIAGE variant: never sort a PILE on the `Color(s)` column
+
+The rule above is easy to hold for one card and silently breaks on a hundred, because the
+identity column is the one that is convenient to `GROUP BY`. A 111-card pile pasted for
+deck 51 was hand-filtered with an ad-hoc script over `card-pool.csv` that read `Color(s)`,
+and it binned NINE cards as "off-colour for mono-U". Eight of them were castable:
+
+| card | printed cost | why identity lied |
+|---|---|---|
+| Bruce Banner | `{U}` | identity U/R/G comes from the TRANSFORM cost |
+| Norman Osborn | `{1}{U}` | identity U/B/R comes from the TRANSFORM cost |
+| Ramos, Dragon Engine | `{6}` | identity WUBRG comes from a MANA ABILITY |
+| Abandon Attachments | `{1}{U/R}` | hybrid |
+| Hama, the Bloodbender | `{2}{U/B}{U/B}{U/B}` | hybrid |
+| Flotsam // Jetsam | `{1}{G/U}` // `{4}{U/B}{U/B}` | hybrid, both halves |
+| Messenger Hawk | `{2}{U/B}` | hybrid |
+| Vulture, Scheming Scavenger | `{5}{U/B}` | hybrid |
+
+Exactly one, Iroh Grand Lotus `{3}{G}{U}{R}`, was genuinely gold. So the filter's error
+rate on its own flagged set was 8 of 9. Two further notes worth carrying: **Standard does
+not restrict by colour identity at all** (only Brawl does), so `#: colors:` was never a
+legality question in the first place — it is a castability heuristic; and a **transform
+cost and a mana ability both leak into identity**, which is a second route to the same
+mistake that the hybrid framing alone does not cover.
+
+**The fix is a tool, not more care.** `deck.py screen <id> <pile>` already existed and was
+never run — it prints the printed mana cost per candidate and now reads castability from
+it via `_candidate_castability`, which mirrors `_castability_lint` so the two cannot drift.
+`/add-cards` Stage 0b now requires it for any pile over ~10 cards. Same shape as G-53: a
+capability that works and is never reached is invisible to every gate.
+
+Two tooling defects surfaced in the same pass and were fixed with it. **Name resolution
+dropped 22 of the 111 names** — `resolve`/`screen` matched only exact / DFC-front /
+substring, so every `Name, Epithet` legendary typed without its comma fell out, along with
+anything carrying a `(note)`. That is not a uniform 20% loss: legendary creatures are
+where a pile concentrates its interesting cards, so the tool returned the fifth of the
+pile that most needed grading straight back to hand-triage, which is where every error
+happened. `_resolve_card_name` now also matches on a punctuation-squashed key, and still
+refuses to correct typos. **And `screen`'s `KEY` label fired on 66% of the pile**, tracked
+to `_strong_signature_themes`: its flat `>=2` bar was tuned against a 3-to-5-card protect
+list and does not survive a longer one, so 26 of 33 decks carried a signature that was
+>=50% GENERIC. A generic theme now needs half the protect list; measured across 4,440
+(deck, card) judgements that moved KEY from 13% to 8% with all 223 changes running
+KEY -> weaker.
+
 ## [G-59] A tribe's viability is its PAYOFF count, not its body count — and changelings cannot fix the missing half
 
 **A tribe's viability is its payoff count, not its body count, and changelings cannot fix
