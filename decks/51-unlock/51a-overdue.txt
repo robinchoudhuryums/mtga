@@ -1,0 +1,127 @@
+#: name: Unlock — Overdue
+#: format: Standard
+#: colors: U
+#: plan: control
+#: protect: The Water Crystal; Master Pakku; Riverchurn Monument; The Mindskinner; Exhibition Tidecaller
+#: archetype: MONO-BLUE LESSON MILL. The parent deck 51 wins by resolving enormous spells and
+#: archetype: carries mill as a two-card side plan. This variant inverts that: mill IS the deck,
+#: archetype: and the Lesson subtype is the engine that feeds it. Every card is chosen to make one
+#: archetype: of three numbers go up — mill per turn, Lessons in the graveyard, or cards in hand.
+#: archetype: THE WATER CRYSTAL IS THE WHOLE DECK, which is why it runs as a 2-of despite being
+#: archetype: legendary. "If an opponent would mill one or more cards, they mill that many cards
+#: archetype: plus four instead" applies to EVERY mill event separately, so it is not a +4, it is a
+#: archetype: +4 per trigger. Riverchurn Monument's {1}, {T} goes from 2 to 6. Scrabbling Skullcrab
+#: archetype: goes from 2 to 6 per enchantment or Room unlock. Exhibition Tidecaller goes from 3 to
+#: archetype: 7 per instant or sorcery, and from 10 to 14 when five or more mana was spent. It also
+#: archetype: still does its day job — {1} off every blue spell — so it is never a dead draw.
+#: archetype: THE LESSON SUBTYPE IS NOT FLAVOUR, it is three payoffs that read the same graveyard.
+#: archetype: Master Pakku mills X where X is the number of LESSON cards in your graveyard, which
+#: archetype: with the Crystal is X+4 every time he becomes tapped. Gran-Gran makes every NONCREATURE
+#: archetype: spell cost {1} less once three Lessons are in the yard — broader than any instant-and-
+#: archetype: sorcery reducer, because it also discounts the Rooms, Gilded Lotus and the Crystal
+#: archetype: itself. Accumulate Wisdom stops being "look at three, take one" and becomes TAKE ALL
+#: archetype: THREE for {1}{U} at the same threshold. Guru Pathik digs five deep for a Lesson.
+#: archetype: THE LESSONS ARE NOT A TAX, and that is what makes this build work rather than merely
+#: archetype: cohere. It'll Quench Ya! is Spell Pierce that hits creatures too. Zuko's Exile is
+#: archetype: unconditional exile of an artifact, creature or enchantment — removal deck 51 does not
+#: archetype: have at all. Lost Days tucks a creature or enchantment second from the top, which
+#: archetype: answers a recursive threat that bounce cannot. Each is a card the deck would want
+#: archetype: anyway; the subtype is a rider, so the engine costs close to nothing.
+#: archetype: WATERBENDING LESSON IS THE HIDDEN COMBO. Its waterbend cost is paid by TAPPING your
+#: archetype: artifacts and creatures — and Master Pakku mills whenever he BECOMES TAPPED. So you
+#: archetype: draw three, tap Pakku to avoid the discard, and mill for it. Octopus Form then untaps
+#: archetype: him — Octopus Form does that job and is the first card back in if the manabase can spare
+#: archetype: the slot. Gran-Gran has the same "becomes tapped" trigger and loots off it.
+#: archetype: THE MINDSKINNER CONVERTS THE COMBAT PLAN INSTEAD OF ADDING ONE, and in this deck that
+#: archetype: is pure upside because there was no combat plan to lose. "If a source you control would
+#: archetype: deal damage to an opponent, prevent that damage and each opponent mills that many
+#: archetype: cards" — with the Crystal, a 1/1 connecting mills five. In deck 51 it would be a trap,
+#: archetype: switching off Krang and both Terrors as a damage clock; here it is a multiplier.
+#: archetype: VETERAN ICE CLIMBER is the same idea on a two-drop: unblockable, vigilance, and mills
+#: archetype: its own power on attack. Vigilance matters twice — it attacks and still blocks, and it
+#: archetype: is untapped for a waterbend cost.
+#: archetype: SELF-MILL IS A SECOND RESOURCE, not a cost. Sokka's Haiku, the surveil off Underwater
+#: archetype: Tunnel and Spellgyre, and Waterbending Lesson's discard all fill YOUR graveyard, which
+#: archetype: is what prices Tolarian Terror — routinely a turn-five 5/5 with ward {2} here — and
+#: archetype: what feeds Master Pakku's Lesson count. The two halves of the graveyard do different
+#: archetype: jobs and neither competes with the other.
+#: archetype: DISTINCTNESS from parent 51: 51 fields Omniscience, Fractured Realm, Krang Utrom
+#: archetype: Warlord and The Dawning Archaic and wins by casting a huge spell. This list runs NONE
+#: archetype: of them, has no card above five mana, and never needs to resolve a threat at all.
+#: notes: MANABASE, measured: 25 lands rather than 24. At 24 the deck read keepable 84.4% with
+#: notes: THREE cards below 90% on curve; the 25th land moved that to 86.0% and one, and dropped
+#: notes: screw 14.3% -> 12.2%. The one remaining is The Mindskinner at {U}{U}{U} (75.5% on turn
+#: notes: three) — Karsten wants 29 sources for that, more than the deck has lands, so it is a
+#: notes: turn-four-or-five card by construction and was accepted as such rather than chased.
+#: notes: Octopus Form was the cut; it is the first card back in if a land can be spared.
+#: notes: BUILT 2026-07 as the "lean harder into opponent mill" variant, by request.
+#: notes: UNGRADED ON PURPOSE — no `#: tier:` letter until the metrics are read and a human
+#: notes: assigns one. `deck.py tier 51a` prints the measurable floor.
+#: notes: MILL IS A CLOCK, NOT INTERACTION — see G-62. Blind mill is provably access-neutral:
+#: notes: the opponent draws library positions M+1..M+D instead of 1..D, and any fixed set of D
+#: notes: positions in a shuffled library has the same contents, so their chance of finding an
+#: notes: answer is unchanged. This deck therefore still needs REAL answers, which is why it
+#: notes: keeps eight of them (Zuko's Exile, Lost Days, It'll Quench Ya! x2, Get Out, Long
+#: notes: River's Pull, Into the Flood Maw, Tishana's Tidebinder) rather than becoming all mill.
+#: notes: KNOWN LIABILITY, and it is worse here than in the parent: milling an opponent FEEDS a
+#: notes: graveyard deck — the G-42 shape. A deck built entirely on mill hands a recursion deck
+#: notes: its whole library. Blue/colorless Standard has the exile answers (Ghost Vacuum,
+#: notes: Soul-Guide Lantern, Wreck Remover, Mechanical Mobster); none are in the 60 and they are
+#: notes: the first sideboard slots. Do not read the matchup as solved.
+#: notes: GURU PATHIK is {2}{G/U}{G/U} — HYBRID, so it is payable entirely with Islands and
+#: notes: `#: colors:` stays U (G-58). `deck.py mana` reports it as a hybrid stray paid on-color.
+#: notes: THE HONEST RISK: the deck is a two-card engine at heart. Without The Water Crystal the
+#: notes: mill halves and the clock roughly doubles in length. Two copies plus eleven cantrips and
+#: notes: dig effects is the mitigation, not a fix.
+
+Deck
+# Mill engines — the clock
+2 Riverchurn Monument (DFT) 57
+1 Scrabbling Skullcrab (DSK) 71
+1 Exhibition Tidecaller (SOS) 48
+1 The Mindskinner (DSK) 66
+1 Master Pakku (TLA) 63
+1 Veteran Ice Climber (TDM) 64
+1 Deepmuck Desperado (OTJ) 42
+
+# The amplifier — 2-of despite legendary, because it is the deck
+2 The Water Crystal (FIN) 85
+
+# Lesson payoffs — all three read the same graveyard
+1 Gran-Gran (TLA) 54
+1 Guru Pathik (TLA) 223
+
+# Lessons — cards the deck wants anyway, with the subtype as a rider
+2 It'll Quench Ya! (TLA) 58
+2 Accumulate Wisdom (TLA) 44
+1 Boomerang Basics (TLA) 46
+1 Sokka's Haiku (TLA) 71
+1 Zuko's Exile (TLA) 3
+1 Lost Days (TLA) 62
+2 Waterbending Lesson (TLA) 80
+
+# Rooms — Eerie triggers for Skullcrab, cheap interaction on the front
+1 Underwater Tunnel // Slimy Aquarium (DSK) 79
+1 Bottomless Pool // Locker Room (DSK) 43
+1 Meat Locker // Drowned Diner (DSK) 65
+
+# Real answers — mill is a clock, so these do the interacting
+1 Into the Flood Maw (BLB) 52
+1 Tishana's Tidebinder (LCI) 81
+1 Floodpits Drowner (DSK) 59
+1 Get Out (DSK) 60
+1 Long River's Pull (BLB) 58
+
+# Threats — priced by the self-mill the deck does anyway
+2 Tolarian Terror (FDN) 167
+
+# Card advantage
+1 Cerebral Download (EOE) 48
+1 Spellgyre (BLB) 72
+
+# Ramp
+1 Gilded Lotus (FDN) 725
+1 Matzalantli, the Great Door // The Core (LCI) 256
+
+# Lands (24)
+24 Island (MSH) 289

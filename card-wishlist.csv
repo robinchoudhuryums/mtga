@@ -49,7 +49,7 @@ Sunshower Druid,Creature — Frog Druid,"When this creature enters, put a +1/+1 
 Three Tree Rootweaver,Creature — Mole Druid,{T}: Add one mana of any color.,G,Mole; Druid; mana,BLB,198,Common,50,,1.0,seed
 Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,5.5,hand
 Riverchurn Monument,Artifact,"{1}, {T}: Any number of target players each mill two cards. (Each of them puts the top two cards of their library into their graveyard.)
-Exhaust — {2}{U}{U}, {T}: Any number of target players each mill cards equal to the number of cards in their graveyard. (Activate each exhaust ability only once.)",U,graveyard; mill; exhaust; payoff,DFT,57,Rare,51,"Deck 51: {1},{T} mills 2 -> SIX with The Water Crystal already in the deck; Exhaust mills their whole graveyard +4. Activated, so Fractured Realm does NOT double it. ~turn 11 clock alone, faster with Exhaust.",74,hand
+Exhaust — {2}{U}{U}, {T}: Any number of target players each mill cards equal to the number of cards in their graveyard. (Activate each exhaust ability only once.)",U,graveyard; mill; exhaust; payoff,DFT,57,Rare,51; 51a,"Deck 51: {1},{T} mills 2 -> SIX with The Water Crystal already in the deck; Exhaust mills their whole graveyard +4. Activated, so Fractured Realm does NOT double it. ~turn 11 clock alone, faster with Exhaust.",74,hand
 Plow Through,Sorcery,"Choose one —
 • Target creature you control fights target creature an opponent controls. (Each deals damage equal to its power to the other.)
 • Destroy target Vehicle.",G,removal; fight; combat,DFT,174,Uncommon,50,,3.0,seed
@@ -73,6 +73,8 @@ Enduring Vitality,Enchantment Creature — Elk Glimmer,"Vigilance
 Creatures you control have ""{T}: Add one mana of any color.""
 When Enduring Vitality dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",G,Elk; Glimmer; mana; vigilance; combat,DSK,176,Rare,29,,6.5,hand
 "Kona, Rescue Beastie",Legendary Creature — Beast Survivor,"Survival — At the beginning of your second main phase, if Kona is tapped, you may put a permanent card from your hand onto the battlefield.",G,Beast; Survivor; survival,DSK,187,Rare,50a,,6.5,hand
+The Mindskinner,Legendary Enchantment Creature — Nightmare,"The Mindskinner can't be blocked.
+If a source you control would deal damage to an opponent, prevent that damage and each opponent mills that many cards.",U,Nightmare; mill; graveyard,DSK,66,Rare,51a,"Deck 51a: converts every damage source you control into mill, +4 each with the Water Crystal. Pure upside HERE because the deck has no combat plan to lose - it would be a trap in parent 51, which wins with Krang and the Terrors.",72,hand
 Twitching Doll,Artifact Creature — Spider Toy,"{T}: Add one mana of any color. Put a nest counter on this creature.
 {T}, Sacrifice this creature: Create a 2/2 green Spider creature token with reach for each counter on this creature. Activate only as a sorcery.",G,Spider; Toy; counters; sacrifice; tokens; mana,DSK,201,Rare,50,,3.0,seed
 Conductive Machete,Artifact — Equipment,"When this Equipment enters, manifest dread, then attach this Equipment to that creature. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)
@@ -88,7 +90,7 @@ Keys to the House,Artifact,"{1}, {T}, Sacrifice this artifact: Search your libra
 {3}, {T}, Sacrifice this artifact: Lock or unlock a door of target Room you control. Activate only as a sorcery.",Colorless,sacrifice; ramp,DSK,251,Uncommon,51,"Deck 51: the case is Fractured Realm specifically - its {5}{U}{U} door for {1} cast + {3} activate = 4 total, split across turns. Saves 0-1 on the other four Rooms. Also a 'fully unlock' trigger for Eerie.",52,hand
 Overgrown Zealot,Creature — Elf Druid,"{T}: Add one mana of any color.
 {T}: Add two mana of any one color. Spend this mana only to turn permanents face up.",G,Elf; Druid; mana,DSK,193,Uncommon,50,,6.0,hand
-Scrabbling Skullcrab,Creature — Crab Skeleton,"Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, target player mills two cards. (They put the top two cards of their library into their graveyard.)",U,Crab; Skeleton; graveyard; mill; eerie,DSK,71,Uncommon,51,"Deck 51: Eerie mills 2 on every enchantment entering and every Room fully unlocked -> 6 with Water Crystal, and Fractured Realm DOES double it (triggered ability) for 12. The on-theme mill card.",70,hand
+Scrabbling Skullcrab,Creature — Crab Skeleton,"Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, target player mills two cards. (They put the top two cards of their library into their graveyard.)",U,Crab; Skeleton; graveyard; mill; eerie,DSK,71,Uncommon,51; 51a,"Deck 51: Eerie mills 2 on every enchantment entering and every Room fully unlocked -> 6 with Water Crystal, and Fractured Realm DOES double it (triggered ability) for 12. The on-theme mill card.",70,hand
 Shroudstomper,Creature — Elemental,"Deathtouch
 Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.",W/B,Elemental; lifegain; card draw; deathtouch; combat; removal,DSK,233,Uncommon,20,,5.0,hand
 Meat Locker // Drowned Diner,Enchantment — Room // Enchantment — Room,"When you unlock this door, tap up to one target creature and put two stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
@@ -325,6 +327,7 @@ Plot {2}{R} (You may pay {2}{R} and exile this card from your hand. Cast it as a
 Aloe Alchemist,Creature — Plant Warlock,"Trample
 When this card becomes plotted, target creature gets +3/+2 and gains trample until end of turn.
 Plot {1}{G} (You may pay {1}{G} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",G,Plant; Warlock; exile cast; pump; plot; tempo; cost-reduction; trample; evasion,OTJ,152,Uncommon,50,,4.0,seed
+Deepmuck Desperado,Creature — Homarid Mercenary,"Whenever you commit a crime, each opponent mills three cards. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)",U,Homarid; Mercenary; graveyard; mill,OTJ,42,Uncommon,51a,"Deck 51a: mills 3 (7 with Crystal) whenever you commit a crime, once a turn - and nearly every counterspell and bounce spell in the deck is a crime.",58,hand
 Intrepid Stablemaster,Creature — Human Scout,"Reach
 {T}: Add {G}.
 {T}: Add two mana of any one color. Spend this mana only to cast Mount or Vehicle spells.",G,Human; Scout; mana; reach; defense,OTJ,169,Uncommon,50,,5.5,hand
@@ -346,7 +349,7 @@ Comforting Counsel,Enchantment,"Whenever you gain life, put a growth counter on 
 As long as there are five or more growth counters on this enchantment, creatures you control get +3/+3.",G,counters; pump,SOS,143,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 9,19b,19a",4.0,hand
 Deathcap Glade,Land,"This land enters tapped unless you control two or more other lands.
 {T}: Add {B} or {G}.",B/G,mana,SOS,253,Rare,20b,"broadly useful — best 20b (Honor Among Thieves — Abzan Toughness Ramp); also 13,21,21a",5.0,hand
-Exhibition Tidecaller,Creature — Djinn Wizard,"Opus — Whenever you cast an instant or sorcery spell, target player mills three cards. If five or more mana was spent to cast that spell, that player mills ten cards instead.",U,Djinn; Wizard; mill; spellslinger; graveyard; opus,SOS,48,Rare,22,mill/spellslinger Djinn — feeds the Dimir graveyard/card-advantage plan,4.5,hand
+Exhibition Tidecaller,Creature — Djinn Wizard,"Opus — Whenever you cast an instant or sorcery spell, target player mills three cards. If five or more mana was spent to cast that spell, that player mills ten cards instead.",U,Djinn; Wizard; mill; spellslinger; graveyard; opus,SOS,48,Rare,51a,"Deck 51a: Opus mills 3 per instant/sorcery -> SEVEN with The Water Crystal, and 10 -> FOURTEEN when 5+ mana was spent. A {U} one-drop; the deck's best mill rate per mana.",80,hand
 Magmablood Archaic,Creature — Avatar,"Trample, reach
 Converge — This creature enters with a +1/+1 counter on it for each color of mana spent to cast it.
 Whenever you cast an instant or sorcery spell, creatures you control get +1/+0 until end of turn for each color of mana spent to cast that spell.",R,Avatar; counters; pump; spellslinger; reach; defense; converge; multicolor; trample; evasion,SOS,123,Rare,25,Repeatable spellslinger payoff for Spellstorm (25) — the flex block's craft target,5.0,hand
@@ -414,6 +417,9 @@ Creatures you control gain indestructible until end of turn. Put a +1/+1 counter
 Static Snare,Enchantment,"Flash
 This spell costs {1} less to cast for each attacking creature.
 When this enchantment enters, exile target artifact or creature an opponent controls until this enchantment leaves the battlefield.",W,cost-reduction; removal; etb; flash; tempo,TDM,26,Uncommon,23,"flash, costs {1} less per attacking creature — often 1-2 mana in a wide deck; exiles artifact or creature",5.5,hand
+Veteran Ice Climber,Creature — Human Scout,"Vigilance
+This creature can't be blocked.
+Whenever this creature attacks, up to one target player mills cards equal to this creature's power. (They put that many cards from the top of their library into their graveyard.)",U,Human; Scout; graveyard; mill; vigilance; combat,TDM,64,Uncommon,51a,"Deck 51a: unblockable vigilance two-drop that mills its own power on attack (+4 with Crystal). Vigilance matters twice - blocks, and stays untapped for a waterbend cost.",64,hand
 Coordinated Maneuver,Instant,"Choose one —
 • Coordinated Maneuver deals damage equal to the number of creatures you control to target creature or planeswalker.
 • Destroy target enchantment.",W,removal,TDM,12,Common,23,"2-mana modal instant; damage mode scales with board (27 creatures in 23), or kills an enchantment",5.0,hand
