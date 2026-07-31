@@ -4,12 +4,12 @@
 #: based-on: deck.txt
 #: plan: midrange
 #: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 5
-#: tier: plus card advantage 1 at a 3.55 curve. Three weaknesses:
+#: tier: plus card advantage 1 at a 3.76 curve. Three weaknesses:
 #: tier: 1. CARD ADVANTAGE 1 IS THE LOWEST FIGURE ON THE ROSTER. Icetill Explorer, Traveling
-#: tier:    Chocobo, Agatha's Soul Cauldron and Aftermath Analyst all generate real value
+#: tier:    Chocobo, Agatha's Soul Cauldron and Web of Life and Destiny all generate real value
 #: tier:    the classifier cannot read, so the true number is higher — but not by much, and the
 #: tier:    deck has no unconditional draw spell at all.
-#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.55 with only 13 early drops, and
+#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.76 with only 12 early drops, and
 #: tier:    the engine needs lands in the GRAVEYARD before it does anything, so the first three
 #: tier:    turns are close to blank. Against a fast start it is behind before Lumra is castable.
 #: tier: 3. CENTRAL THEMES 25 is the most diffuse reading on the roster after deck 23. That is
@@ -96,10 +96,26 @@
 #: notes: sources plus Enduring Vitality) it would double only part of one. It is also an 8/8
 #: notes: TRAMPLE for {4}{G}{G} — a fixed big body next to Lumra and Harmonious Grovestrider,
 #: notes: both of which are only as large as the land count happens to be. Restored.
-#: notes: IT COST WEB OF LIFE AND DESTINY, the deck's most expensive card at {6}{G}{G}, which
-#: notes: drops the cheat count from four engines to three (Ojer Kaslem, Kona, Sledge-Class
-#: notes: Seedship). Measured: avg MV 3.61 -> 3.55, creatures 20 -> 21, and interaction, card
-#: notes: advantage, protection, early drops and the below-90 count all held.
+#: notes: IT COST JADELIGHT SPELUNKER, after a first attempt cut Web of Life and Destiny and was
+#: notes: reversed. Web is the deck's answer to its own graded weakness — card advantage 1, the
+#: notes: lowest on the roster — since it puts a creature onto the battlefield from the top five
+#: notes: EVERY combat, so trading it away to fix the curve was fixing the wrong problem.
+#: notes: JADELIGHT SPELUNKER IS REDUNDANT ON ALL THREE OF ITS AXES HERE, which is what makes it
+#: notes: the right cut: it is one of TWELVE counter sources, one of six land-finders and one of
+#: notes: four self-mill effects. Its explore also mills the WRONG HALF — only nonlands go to the
+#: notes: graveyard, and Lumra, Summon: Titan and Aftermath Analyst all return LANDS from there.
+#: notes: READ THE CURVE FIGURE WITH CARE. This swap measures avg MV 3.55 -> 3.76 and early drops
+#: notes: 13 -> 12, and both numbers OVERSTATE the cost: `mana_value` prices {X} spells at 1 (X
+#: notes: counts as 0 off the stack), so Jadelight was booked as a one-drop when you really cast
+#: notes: it for three or four. Removing it inflates the average of what remains. The real curve
+#: notes: barely moves; what the deck actually lost is redundancy, and what it gained is its only
+#: notes: repeatable source of extra cards.
+#: notes: WHAT WAS KEPT INSTEAD, and why: The Skullspore Nexus was the free cut on paper (a
+#: notes: straight {6}{G}{G}-for-{6}{G}{G} trade, every axis identical) and was rejected because
+#: notes: its "{2}, {T}: double target creature's power" is nearly unique here — only Mightform
+#: notes: Harmonizer does anything similar, and that is landfall-gated. It is also a MANA
+#: notes: doubler, not just a combat one, since Mona Lisa taps for an amount equal to her power.
+#: notes: The cheat count stands at four: Ojer Kaslem, Kona, Sledge-Class Seedship, Web of Life.
 #: notes: MEASURED BETTER: avg MV 3.70 -> 3.61 and early drops 12 -> 13, with interaction 5,
 #: notes: card advantage 1, protection 3, creature count 20 and the below-90 count at zero all
 #: notes: held. Adding Inspiring Call and Punishing Punch on top was tried and cost interaction
@@ -209,7 +225,6 @@
 1 Tifa Lockhart (FIN) 206
 1 Bristly Bill, Spine Sower (OTJ) 157
 1 Wildwood Scourge (FDN) 236
-1 Jadelight Spelunker (LCI) 196
 1 Badgermole Cub (TLA) 167
 1 Mona Lisa, Science Geek (TMT) 123
 
@@ -217,6 +232,7 @@
 1 Ojer Kaslem, Deepest Growth // Temple of Cultivation (LCI) 204
 1 Kona, Rescue Beastie (DSK) 187
 1 Sledge-Class Seedship (EOE) 208
+1 Web of Life and Destiny (SPM) 122
 1 Groundchuck & Dirtbag (TMT) 115
 1 Agatha's Soul Cauldron (WOE) 242
 1 The Earth Crystal (FIN) 184
