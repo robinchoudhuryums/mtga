@@ -2537,3 +2537,36 @@ class TestDeckStateAxis:
     def test_a_card_with_no_deck_state_axis_returns_none(self):
         assert deck._deck_state_axis("Destroy target creature.") is None
         assert deck._deck_state_axis("") is None
+
+
+class TestCrossModuleDeckCallers:
+    """`build_dashboard.py` calls into `deck.py`'s internals, and NOTHING exercised that
+    seam. When `_castability` went from a 3-tuple to a 4-tuple for the `#: uncastable-ok:`
+    header, every caller inside deck.py was found by grep and updated — and the dashboard's
+    was missed, because the grep was scoped to one file. `check_all` does not build the
+    dashboard, `tests/test_cli.py` only asserts `--help` exits 0, and the gates were green
+    the whole time. It broke on the first real `build_dashboard.py` run, one deck later.
+
+    This runs the actual function rather than asserting on the call SHAPE, so it survives
+    a future signature change instead of needing to be rewritten alongside one."""
+
+    def test_dashboard_deck_viz_runs_against_a_real_deck(self):
+        import build_dashboard as bd
+        d = deck.discover_decks()[0]
+        meta, cards = deck.parse_deck_file(d["path"])
+        viz = bd.deck_viz(meta, cards, deck.load_card_data(), deck.load_mana(),
+                          deck.load_keywords(), *deck.load_collection()[:2])
+        assert isinstance(viz, dict) and viz
+
+    def test_dashboard_honours_the_uncastable_ok_header(self, tmp_path):
+        """The exemption must reach the dashboard too, or a deck reads BLOCKED there and
+        READY in `preflight` — the two surfaces disagreeing is the bug class this repo
+        keeps rediscovering."""
+        import build_dashboard as bd
+        p = tmp_path / "d.txt"
+        p.write_text("#: name: T\n#: colors: B\n#: uncastable-ok: Cosmic Spider-Man\n"
+                     "1 Cosmic Spider-Man (SPM) 175\n1 Swamp (MSH) 291\n")
+        meta, cards = deck.parse_deck_file(str(p))
+        viz = bd.deck_viz(meta, cards, deck.load_card_data(), deck.load_mana(),
+                          deck.load_keywords(), *deck.load_collection()[:2])
+        assert not viz.get("uncastable"), viz.get("uncastable")

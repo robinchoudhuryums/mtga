@@ -132,7 +132,11 @@ def deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name):
             hyb[k] = hyb.get(k, 0) + q
         if hybrid and not strict:
             hybrid_only += q
-    uncastable, off_ident, _off_ability = deckmod._castability(cards, declared, mana, carddata)
+    # `#: uncastable-ok:` exempts a reanimator's intended-uncastable bombs (F-02), so the
+    # dashboard must pass the same exemption the CLI does — otherwise a deck reads BLOCKED
+    # here and READY there.
+    uncastable, off_ident, _off_ability, _intended = deckmod._castability(
+        cards, declared, mana, carddata, deckmod._uncastable_ok(meta))
 
     return {
         "types": [{"t": t, "n": types[t]} for t in sorted(types, key=lambda x: -types[x])],
