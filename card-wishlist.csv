@@ -189,6 +189,7 @@ When this creature dies, you may put the exiled card into its owner's hand.",R,D
 Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0,hand
 Rogue's Passage,Land,"{T}: Add {C}.
 {4}, {T}: Target creature can't be blocked this turn.",Colorless,mana,FDN,264,Uncommon,50,"2nd evasion route in 50: {4},{T} unblockable is the fix for Jumbo Cactuar / Colossification that does NOT need a trample grant in hand. Measured free against a Forest.",6.0,hand
+Impact Tremors,Enchantment,"Whenever a creature you control enters, this enchantment deals 1 damage to each opponent.",R,burn; noncombat damage,FDN,717,Common,49,,4.0,seed
 Lightshell Duo,Creature — Rat Otter,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,Rat; Otter; graveyard; etb; pump; selection; surveil; prowess; spellslinger; tempo,FDN,157,Common,37,,3.0,hand
 Rapacious Dragon,Creature — Dragon,"Flying
@@ -430,6 +431,8 @@ Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+
 Static Snare,Enchantment,"Flash
 This spell costs {1} less to cast for each attacking creature.
 When this enchantment enters, exile target artifact or creature an opponent controls until this enchantment leaves the battlefield.",W,cost-reduction; removal; etb; flash; tempo,TDM,26,Uncommon,23,"flash, costs {1} less per attacking creature — often 1-2 mana in a wide deck; exiles artifact or creature",5.5,hand
+Sunset Strikemaster,Creature — Human Monk,"{T}: Add {R}.
+{2}{R}, {T}, Sacrifice this creature: It deals 6 damage to target creature with flying.",R,Human; Monk; sacrifice; burn; mana,TDM,126,Uncommon,49,,4.5,seed
 Veteran Ice Climber,Creature — Human Scout,"Vigilance
 This creature can't be blocked.
 Whenever this creature attacks, up to one target player mills cards equal to this creature's power. (They put that many cards from the top of their library into their graveyard.)",U,Human; Scout; graveyard; mill; vigilance; combat,TDM,64,Uncommon,51a,"Deck 51a: unblockable vigilance two-drop that mills its own power on attack (+4 with Crystal). Vigilance matters twice - blocks, and stays untapped for a waterbend cost.",64,hand

@@ -2,8 +2,8 @@
 #: format: Standard
 #: colors: R
 #: plan: midrange
-#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 12
-#: tier: plus card advantage 3 at a 4.03 curve. Two structural weaknesses the floor cannot see:
+#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 10
+#: tier: plus card advantage 3 at a 4.20 curve. Two structural weaknesses the floor cannot see:
 #: tier: 1. PROTECTION IS 1, and it is one card: Roaming Throne's ward {2}. Five named
 #: tier:    build-arounds and this deck's payoffs are the kind that must SURVIVE A TURN to
 #: tier:    matter — Lathliss only pays off on the NEXT Dragon, Terror of the Peaks only on the
@@ -12,12 +12,12 @@
 #: tier:    a protection grant returned essentially nothing, so this is red's cost, not an
 #: tier:    oversight. Call the Spirit Dragons was REJECTED on colour, not overlooked: it reads
 #: tier:    "Dragons you control have indestructible" and costs {W}{U}{B}{R}{G}, genuinely gold.
-#: tier: 2. IT IS SLOW. Avg MV 4.03 with 10 early drops is among the slowest curves
+#: tier: 2. IT IS SLOW. Avg MV 4.20 with 9 early drops is among the slowest curves
 #: tier:    on the roster; against a fast start the deck must trade one-for-one with removal it
 #: tier:    has plenty of, then stabilise with a five-drop. Card advantage 3 is still thin, and
 #: tier:    still an UNDER-count — Bonehoard Dracosaur exiles two cards a turn and Breaching
 #: tier:    Dragonstorm free-casts one, but both read as `impulse` to the classifier, not draw.
-#: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 12 is not padding,
+#: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 10 is not padding,
 #: tier: it is real removal stapled to Dragon BODIES (Nova Hellkite, Realm-Scorcher, Drakuseth),
 #: tier: so the deck interacts without spending cards; the manabase is flawless, matching
 #: tier: deck 47 as the only two on the roster with zero cards
@@ -76,11 +76,13 @@
 #: notes: OJER AXONIL came in for Hoarding Dragon. It is NOT a Dragon — Lathliss and
 #: notes: Dragonlord's Servant do not see it — but its static ability upgrades ELEVEN noncombat
 #: notes: damage sources to 4 apiece: Firespitter Whelp 1->4 on every Dragon spell, Nova Hellkite
-#: notes: 1->4, Nebula Dragon 3->4, Realm-Scorcher's repeatable {1}{R} ping 1->4, Plasma Bolt
-#: notes: 2->4, Dracosaur Auxiliary 2->4, and both of Drakuseth's 3-damage halves. It is also the
-#: notes: closest thing red has to the protection-by-revive idea: it returns transformed on death.
-#: notes: PLASMA BOLT IS THEREFORE PROTECTED BY IMPLICATION — cutting it would remove one of the
-#: notes: eleven cards Ojer was added to upgrade, and it is one of only three cards at MV 1.
+#: notes: 1->4, Realm-Scorcher's repeatable {1}{R} ping 1->4, Dracosaur Auxiliary 2->4, and both
+#: notes: of Drakuseth's 3-damage halves. It is also the closest thing red has to the
+#: notes: protection-by-revive idea: it returns transformed on death.
+#: notes: THE 'PLASMA BOLT IS PROTECTED BY IMPLICATION' ARGUMENT WAS OVERRULED and Plasma Bolt
+#: notes: was CUT (2026-08) for Rite of the Dragoncaller; Nebula Dragon was CUT earlier. Ojer now
+#: notes: upgrades EIGHT sources, not eleven. The argument was real but it protected the deck's
+#: notes: weakest slots by association — being a listed feeder is not the same as earning a slot.
 #: notes: KNOWN TOOLING DISTORTION, read the numbers with it: `_primary_type` classifies any DFC
 #: notes: whose BACK face is a land as a LAND, so Ojer Axonil is counted as one. `consistency`
 #: notes: therefore reports "Lands: 26/60" for a deck holding 25, keepable is computed against a
@@ -97,8 +99,8 @@
 #: notes: {2}{R} "deals 4 damage to target creature" against Fiery Annihilation's {2}{R} for
 #: notes: FIVE damage that also exiles instead of killing and picks off an Equipment. Same
 #: notes: cost, same slot, strictly worse. Every other removal spell does something distinct —
-#: notes: Molten Exhale has flash off beholding a Dragon, Untimely Malfunction redirects a
-#: notes: spell, and Plasma Bolt and Cinder Strike are two of only three cards at MV 1.
+#: notes: Molten Exhale has flash off beholding a Dragon. (Untimely Malfunction, Plasma Bolt and
+#: notes: Cinder Strike were all CUT in the 2026-08 pass, so the MV-1 slot is now empty.)
 #: notes: Interaction 13 -> 12 against a needs-model target of five, so it was affordable.
 #: notes: BUILT 2026-07 from scratch, after a sweep for a big-mana tribal ramp shell.
 #: notes: UNGRADED ON PURPOSE — no `#: tier:` until the metrics are read and it has been played.
@@ -106,8 +108,8 @@
 #: notes: majority are mono-red; black adds seven and none of them is a payoff. Going mono
 #: notes: buys the flawless manabase that deck 47 proved is worth having, and it is the
 #: notes: cleanest separation from deck 14, which already owns the BR Dragon slot.
-#: notes: OWNED CORE: Fin Fang Foom, Nova Hellkite, Ran and Shaw, Spinerock Tyrant, Lathliss,
-#: notes: Dracosaur Auxiliary, Nebula Dragon, Summon: Bahamut, Sarkhan
+#: notes: OWNED CORE: Nova Hellkite, Ran and Shaw, Spinerock Tyrant, Lathliss,
+#: notes: Dracosaur Auxiliary, Summon: Bahamut, Sarkhan (Fin Fang Foom and Nebula Dragon were CUT)
 #: notes: and the whole interaction suite bar Molten Exhale. The craft list is real but it is
 #: notes: mostly the payoff layer, not the shell.
 #: notes: TUNED ONCE BEFORE GRADING, on the needs model rather than on taste. `suggest --needs`
@@ -146,6 +148,7 @@
 1 Stark Industries Executive (MSH) 153
 1 Seize the Spoils (SOS) 129
 1 Reckless Ransacking (ECL) 152
+1 Sunset Strikemaster (TDM) 126
 
 # Dragons — the early curve
 1 Runescale Stormbrood // Chilling Screech (TDM) 221
@@ -175,6 +178,8 @@
 1 Dracosaur Auxiliary (DFT) 122
 1 Stormscale Scion (TDM) 123
 1 Realm-Scorcher Hellkite (WOE) 145
+1 Rite of the Dragoncaller (FDN) 92
+1 Impact Tremors (FDN) 717
 
 # Dragons — the top end the ramp is for
 1 Drakuseth, Maw of Flames (FDN) 760
@@ -186,9 +191,6 @@
 
 # Interaction — Molten Exhale gains flash off any Dragon in hand
 1 Molten Exhale (TDM) 113
-1 Plasma Bolt (EOE) 152
-1 Untimely Malfunction (DSK) 161
-1 Cinder Strike (ECL) 131
 1 Seismic Rupture (FDN) 205
 1 Iroh's Demonstration (TLA) 141
 
