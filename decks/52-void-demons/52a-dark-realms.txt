@@ -12,10 +12,13 @@
 #: archetype: collection and the enabler half is built from scratch.
 #: archetype: THE GAP IS THE POINT: Krang is a {9} 9/9 with flying, trample,
 #: archetype: indestructible AND HASTE, so reanimating him is not just cheap, it attacks
-#: archetype: the turn it lands. Summon: Bahamut is a {9} that removes two nonland
-#: archetype: permanents, draws two, then deals damage equal to the total mana value of
-#: archetype: your other permanents. Cat-Gator's ETB is damage equal to your Swamp count
-#: archetype: — 24 Swamps, so it is a reanimated Fireball with lifelink.
+#: archetype: the turn it lands. Armaggon destroys up to three creatures on ETB with no
+#: archetype: "if you cast it" clause, so reanimating him is a 9/6 body AND a triple kill.
+#: archetype: Cat-Gator's ETB is damage equal to your Swamp count — 24 Swamps, so it is a
+#: archetype: reanimated Fireball with lifelink. Bringer of the Last Gift is the exception
+#: archetype: that proves the rule: its wipe-and-rebuild fires only if HARD-CAST, and this
+#: archetype: is the deck that wins that exchange, because nine enablers have been stuffing
+#: archetype: your yard while the opponent's stays thin.
 #: archetype: THE ENABLER HALF, which the parent has almost none of: nine cards that put
 #: archetype: a bomb in the yard. Lively Dirge's {1} mode TUTORS one straight there;
 #: archetype: Commune with Evil bins three with selection; Quag Feast and Eerie
@@ -40,15 +43,15 @@
 #: archetype: a curve a full mana value higher.
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (3 craft targets, zero games).
 #: tier: One band BELOW the measurable floor, which reads A on interaction 11 plus card
-#: tier: advantage 2. Against the rubric an A needs four things and this list fails two:
+#: tier: advantage 1. Against the rubric an A needs four things and this list fails two:
 #: tier:   A-FLOOR — yes. Interaction 11 clears five; the sum of 13 clears seven.
-#: tier:   COHERENT ENGINE — yes. Nine enablers feed nine reanimation effects feed seven
+#: tier:   COHERENT ENGINE — yes. Eight enablers feed ten reanimation effects feed seven
 #: tier:     bombs, and the ratio is deliberate: a reanimator needs more ways to fill the
 #: tier:     yard than things to put in it.
 #: tier:   TIGHT CURVE — NO, and this is the honest reason it is not an A. Average nonland
-#: tier:     MV 4.17 on only 12 early drops, and that average UNDER-reads because Stargaze
+#: tier:     MV 4.22 on only 12 early drops, and that average UNDER-reads because Stargaze
 #: tier:     books as MV 1 (X counts as 0). It is the slowest list on this branch.
-#: tier:   AT MOST ONE CLEAR WEAKNESS — no. Card advantage is 2, and it COMPOUNDS with the
+#: tier:   AT MOST ONE CLEAR WEAKNESS — no. Card advantage is 1, and it COMPOUNDS with the
 #: tier:     curve: a slow deck that does not refill loses the game where it is disrupted
 #: tier:     once. Add the singleton problem — one Rise of the Dark Realms, one Lively
 #: tier:     Dirge to tutor with — and the draws where the halves do not meet are real.
@@ -59,9 +62,13 @@
 #: notes: WIP / aspirational — 3 craft targets: Rise of the Dark Realms (M), Evil
 #: notes: Reawakened (U), Commune with Evil (U). The mythic is the namesake and the only
 #: notes: expensive card in the list.
-#: notes: Deliberately NOT included and why: Bringer of the Last Gift (its wipe-and-mass-
-#: notes: reanimate only triggers "if you cast it", so reanimating it does nothing — the
-#: notes: exact card this deck would most want to cheat, and it refuses); Virtue of
+#: notes: Bringer of the Last Gift and Forum Necroscribe were ADDED 2026-08 after being
+#: notes: cut for the wrong reason. Bringer's wipe does refuse to be cheated, but it is a
+#: notes: fine HARD-CAST haymaker here; Forum Necroscribe was held out purely to keep this
+#: notes: list measurably distinct from its parent, which is not a card-quality argument —
+#: notes: with five cheap creature-targeting spells and a fuller yard, its Repartee returns
+#: notes: a BOMB here rather than the two-drop it returns in deck 52.
+#: notes: Deliberately NOT included and why: Virtue of
 #: notes: Persistence and Lich-Knights' Conquest (both mythic/rare crafts that ROTATE in
 #: notes: 2026); Bitter Triumph (discard-as-a-cost is perfectly on plan, but it rotates
 #: notes: 2026 — Quag Feast does the same job and lives to 2028); Xu-Ifit (returns
@@ -82,7 +89,7 @@
 1 Grave Researcher (SOS) 85
 1 Too Evil to Stay Dead (MSH) 118
 1 Ral Zarek, Guest Lecturer (SOS) 97
-1 Shinra Reinforcements (FIN) 118
+1 Forum Necroscribe (SOS) 84
 1 Withering Curse (SOS) 105
 1 Pull from the Grave (SOS) 95
 1 Commune with Evil (DSK) 87
@@ -102,7 +109,7 @@
 1 Armaggon, Future Shark (TMT) 58
 1 Ardyn, the Usurper (FIN) 89
 1 Rise of the Dark Realms (FDN) 183
-1 Summon: Bahamut (FIN) 1
+1 Bringer of the Last Gift (LCI) 94
 1 Krang, Utrom Warlord (TMT) 175
 
 # Lands
