@@ -3,7 +3,7 @@
 #: colors: R
 #: plan: midrange
 #: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 13
-#: tier: plus card advantage 3 at a 4.17 curve. Two structural weaknesses the floor cannot see:
+#: tier: plus card advantage 3 at a 4.03 curve. Two structural weaknesses the floor cannot see:
 #: tier: 1. PROTECTION IS 1, and it is one card: Roaming Throne's ward {2}. Five named
 #: tier:    build-arounds and this deck's payoffs are the kind that must SURVIVE A TURN to
 #: tier:    matter — Lathliss only pays off on the NEXT Dragon, Terror of the Peaks only on the
@@ -12,15 +12,15 @@
 #: tier:    a protection grant returned essentially nothing, so this is red's cost, not an
 #: tier:    oversight. Call the Spirit Dragons was REJECTED on colour, not overlooked: it reads
 #: tier:    "Dragons you control have indestructible" and costs {W}{U}{B}{R}{G}, genuinely gold.
-#: tier: 2. IT IS SLOW AND HAS NO SWEEPER. Avg MV 4.17 with 9 early drops is the slowest curve
+#: tier: 2. IT IS SLOW. Avg MV 4.03 with 10 early drops is among the slowest curves
 #: tier:    on the roster; against a fast start the deck must trade one-for-one with removal it
 #: tier:    has plenty of, then stabilise with a five-drop. Card advantage 3 is still thin, and
 #: tier:    still an UNDER-count — Bonehoard Dracosaur exiles two cards a turn and Breaching
 #: tier:    Dragonstorm free-casts one, but both read as `impulse` to the classifier, not draw.
 #: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 13 is not padding,
-#: tier: it is real removal stapled to Dragon BODIES (Nova Hellkite, Magmatic Hellkite, Nebula
-#: tier: Dragon, Realm-Scorcher, Drakuseth), so the deck interacts without spending cards; the
-#: tier: manabase is flawless, matching deck 47 as the only two on the roster with zero cards
+#: tier: it is real removal stapled to Dragon BODIES (Nova Hellkite, Realm-Scorcher, Drakuseth),
+#: tier: so the deck interacts without spending cards; the manabase is flawless, matching
+#: tier: deck 47 as the only two on the roster with zero cards
 #: tier: below 90% on curve; and the payoff stack genuinely compounds — Terror of the Peaks
 #: tier: pointed at Lathliss's 5/5 tokens is 5 damage per Dragon with no combat step, doubled
 #: tier: again by Twinflame Tyrant. That ceiling is the case for A once it has been played.
@@ -150,8 +150,6 @@
 # Dragons — the early curve
 1 Runescale Stormbrood // Chilling Screech (TDM) 221
 1 Firespitter Whelp (FDN) 761
-1 Fin Fang Foom (MSH) 129
-1 Magmatic Hellkite (TDM) 111
 1 Stingerback Terror (OTJ) 147
 
 # Dragons — the engine band
@@ -170,6 +168,7 @@
 # Tribal payoffs — the CHOOSE-A-TYPE cards a literal 'Dragon' search never finds (K-13)
 1 Roaming Throne (LCI) 258
 1 Chronicle of Victory (ECL) 253
+1 Collective Inferno (ECL) 132
 
 # Dragons — the payoff band
 1 Lathliss, Dragon Queen (FDN) 627
@@ -179,7 +178,6 @@
 
 # Dragons — the top end the ramp is for
 1 Drakuseth, Maw of Flames (FDN) 760
-1 Nebula Dragon (EOE) 147
 1 Summon: Bahamut (FIN) 1
 
 # Card advantage — the axis this deck measured 2 on
@@ -191,6 +189,8 @@
 1 Plasma Bolt (EOE) 152
 1 Untimely Malfunction (DSK) 161
 1 Cinder Strike (ECL) 131
+1 Seismic Rupture (FDN) 205
+1 Iroh's Demonstration (TLA) 141
 
 # Lands (25) — Three Tree City taps for Dragon count
 1 Three Tree City (BLB) 260

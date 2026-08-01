@@ -5233,7 +5233,14 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
     with open(d["path"], encoding="utf-8") as fh:
         lines = fh.read().split("\n")
     try:
-        new_lines = _swap_edit_lines(lines, cut, add, add_pr, drop_flex=flex_entry)
+        # `(add_set, add_cn)`, the same printing tuple `_cards_after_swap` gets above.
+        # P8 split `_printing_of`'s return from a 2-tuple into three values and updated
+        # the first call site but not this one, leaving `add_pr` dangling — so EVERY
+        # `swap --apply` raised NameError while the dry run, which returns before this
+        # line, stayed clean. Nothing caught it: `check_commands` marks `swap` covered
+        # because a skill REFERENCES it, and no test drives the write path.
+        new_lines = _swap_edit_lines(lines, cut, add, (add_set, add_cn),
+                                     drop_flex=flex_entry)
         bak = _safe_write_lines(d["path"], new_lines, before_s["total"])
     except ValueError as e:
         eprint(f"Not saved: {e}")

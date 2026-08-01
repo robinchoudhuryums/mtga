@@ -2246,3 +2246,42 @@ class TestPrintingOfDFC:
         disp, setc, cn = deck._printing_of("Ojer Axonil, Deepest Might")
         out = deck._cards_after_swap([(1, "Cut Me", "AAA", "1")], "Cut Me", disp, (setc, cn))
         assert out == [(1, "Ojer Axonil, Deepest Might // Temple of Power", setc, cn)]
+
+
+class TestSwapApplyWritePath:
+    """`swap --apply` is the sanctioned way to edit a deck, and it had NO test.
+
+    P8 split `_printing_of`'s return from a 2-tuple into three values and updated one of
+    its two call sites, leaving `add_pr` dangling in `_do_swap` — so every `--apply`
+    raised NameError while the dry run, which returns before that line, stayed clean.
+    `check_commands` reported `swap` covered the whole time, because coverage there means
+    a skill REFERENCES the subcommand, not that anything drives it. This pins the write
+    path itself."""
+
+    def _deck(self, tmp_path, lines):
+        d = tmp_path / "decks" / "99-t"
+        d.mkdir(parents=True)
+        (d / "deck.txt").write_text("\n".join(lines) + "\n")
+        return str(tmp_path / "decks")
+
+    def test_apply_writes_the_swap_and_preserves_the_copy_count(self, tmp_path, monkeypatch):
+        from types import SimpleNamespace as NS
+        lines = ["#: name: T", "#: colors: R", "", "# Spells",
+                 "4 Shock (M21) 159", "2 Lightning Strike (MSH) 142", "54 Mountain"]
+        monkeypatch.setattr(deck, "DECKS_DIR", self._deck(tmp_path, lines))
+        monkeypatch.setattr(deck, "RECS_CSV", str(tmp_path / "recs.csv"))
+        rc = deck.cmd_swap(NS(id="99", cut="Shock", add="Lightning Strike", apply=True))
+        assert rc == 0
+        _, cards = deck.parse_deck_file(str(tmp_path / "decks" / "99-t" / "deck.txt"))
+        got = {n: q for q, n, _s, _c in cards}
+        assert sum(got.values()) == 60          # _safe_write_lines' INV-04 total check
+        assert got["Shock"] == 3 and got["Lightning Strike"] == 3
+
+    def test_dry_run_writes_nothing(self, tmp_path, monkeypatch):
+        from types import SimpleNamespace as NS
+        lines = ["#: name: T", "", "4 Shock (M21) 159", "56 Mountain"]
+        root = self._deck(tmp_path, lines)
+        monkeypatch.setattr(deck, "DECKS_DIR", root)
+        before = (tmp_path / "decks" / "99-t" / "deck.txt").read_text()
+        deck.cmd_swap(NS(id="99", cut="Shock", add="Lightning Strike", apply=False))
+        assert (tmp_path / "decks" / "99-t" / "deck.txt").read_text() == before
