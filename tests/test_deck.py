@@ -2474,3 +2474,66 @@ class TestWrongExclusionClaims:
     def test_no_roster_deck_trips_it(self):
         for dd in deck.discover_decks():
             assert deck.wrong_exclusion_claims(dd) == [], dd["id"]
+
+
+class TestScreenSaturationAndCounts:
+    """F-05 / F-10: `screen`'s KEY label fired on ~half of every pile, and its header
+    counted INPUTS rather than resolved candidates."""
+
+    def test_key_saturation_threshold_exists_and_is_a_fraction(self):
+        assert 0 < deck._SCREEN_KEY_SATURATED < 1
+
+    def test_the_signature_rescue_is_preserved(self):
+        """A tightening was TRIED and rejected: requiring a non-generic signature theme
+        dropped deck 30's KEY rate 21%->1% and demoted Innkeeper's Talent, the
+        counter-doubler-in-a-counters-deck case the signature branch exists for. So the
+        fix REPORTS saturation instead of re-scoring — this pins that KEY still fires on a
+        generic signature theme."""
+        assert deck.fit_strength(["counters"], {"counters": 20}, "", 9, 5,
+                                 frozenset({"counters"})) == "KEY"
+
+
+class TestBelowFloorArgument:
+    """F-07: the tier guard flagged a deliberately conservative grade. Decks 51, 52 and
+    52a all sit one band under an A floor WITH a written rubric argument, which the rubric
+    permits — and all three carried a permanent "possibly UNDER-graded" nudge for it."""
+
+    def test_a_rationale_that_argues_below_the_floor_is_recognised(self):
+        assert deck._argues_below_floor(
+            {"tier": "B — PROVISIONAL. One band BELOW the measurable floor, which reads A."})
+
+    def test_a_bare_letter_is_not(self):
+        assert not deck._argues_below_floor({"tier": "B — Rakdos aggro, fine curve."})
+        assert not deck._argues_below_floor({})
+
+
+class TestKeepableNeighbour:
+    """F-08: the land advisory reversed direction and could not be satisfied — deck 52 at
+    24 lands read "consider FEWER", the same list at 23 read "consider MORE" at a WORSE
+    keepable."""
+
+    def test_moving_one_land_the_suggested_way_is_actually_checked(self):
+        at24, at23 = deck._keepable_at(24, 60), deck._keepable_at(23, 60)
+        assert at24 is not None and at23 is not None
+        assert at23 < at24          # the "fewer lands" advice made it worse
+
+    def test_out_of_range_is_none(self):
+        assert deck._keepable_at(-1, 60) is None and deck._keepable_at(61, 60) is None
+
+
+class TestDeckStateAxis:
+    """F-09b: a card whose value is a COUNT in the deck read at its FLOOR in every model.
+    Cat-Gator scores as a 7-mana 3/2 lifelink; its ETB is damage equal to your Swamp
+    count, and deck 52a runs 24."""
+
+    def test_the_zone_is_part_of_the_axis(self):
+        assert deck._deck_state_axis(
+            "When this creature enters, it deals damage equal to the number of Swamps "
+            "you control to any target.") == "Swamps you control"
+        assert deck._deck_state_axis(
+            "destroy it if its mana value is less than or equal to the number of cards "
+            "in your graveyard") == "cards in your graveyard"
+
+    def test_a_card_with_no_deck_state_axis_returns_none(self):
+        assert deck._deck_state_axis("Destroy target creature.") is None
+        assert deck._deck_state_axis("") is None

@@ -388,7 +388,14 @@ effects), F-03 (three separate rationale-audit misses).
   Necroscribe) were cut from 52a purely to lower a similarity number and were reinstated
   on merits. `similar` is a shortlist for "is this a new deck", not a constraint.
 
-**Still open**: F-05 through F-10 unimplemented. 27 unverified printings and 4 stale
+**All ten findings are now implemented** (second block:
+`2026-08-deck-build-tooling-remaining-broad-implement.md` covers F-05…F-10). One fix was
+designed, measured and REJECTED: tightening `fit_strength`'s signature branch fixed
+`screen`'s KEY saturation on deck 52a (51%→11%) but broke deck 30's documented
+counter-doubler rescue (21%→1%), so the saturation is REPORTED instead and the real fix
+is left open as a follow-on.
+
+**Still open**: 27 unverified printings and 4 stale
 rationale citations are now VISIBLE on the roster and unfixed — both were invisible before
 this session. The user plans 1–2 gold bombs in 52a, which is what F-02 unblocks.
 

@@ -4336,9 +4336,24 @@ def cmd_consistency(args):
     # A gentle land-count read — the classic 17-source floor is deck-dependent, so flag
     # only clear extremes rather than prescribe a number.
     if ls["keepable"] < 0.85:
+        # Both directions were reachable, and on a low-curve list BOTH trip. Deck 52 at 24
+        # lands read "consider FEWER"; the same list at 23 read "consider MORE", at a WORSE
+        # keepable (82.5%) with three cards falling under 90% on curve. An advisory that
+        # reverses and can be satisfied by nothing is worse than silence, so check the
+        # neighbour before prescribing: if moving one land the suggested way makes keepable
+        # worse too, say the threshold is unreachable for this shape and point at the
+        # measurement that CAN be optimised.
         want = "more" if nlands < N * 0.40 else "fewer"
-        print(f"  △ keepable {100*ls['keepable']:.0f}% is low — consider {want} lands "
-              f"(most 60-card decks run 23–26).")
+        step = 1 if want == "more" else -1
+        alt = _keepable_at(nlands + step, N)
+        if alt is not None and alt <= ls["keepable"]:
+            print(f"  △ keepable {100*ls['keepable']:.0f}% is low, and moving to "
+                  f"{nlands + step} lands does not improve it ({100*alt:.0f}%) — this curve "
+                  "cannot clear the threshold at any land count. Optimise on the "
+                  "cast-on-curve table below instead.")
+        else:
+            print(f"  △ keepable {100*ls['keepable']:.0f}% is low — consider {want} lands "
+                  f"(most 60-card decks run 23–26).")
 
     # Color sources.
     active = [c for c in "WUBRG" if sources[c]]
@@ -5787,6 +5802,24 @@ def cmd_cuts(args):
             print(f"       needs it populated: {', '.join(_hit[:4])}"
                   + (f" … (+{len(_hit) - 4})" if len(_hit) > 4 else ""))
         print()
+    # WHICH AXIS IS ACTUALLY SHORT. The `⚠interaction (deck runs N)` note below says a
+    # removal card is redundant, and on deck 52a — whose measured weakness is its CURVE
+    # (4.22 average, 12 early drops) — that hint put four ONE-MANA removal spells at the
+    # top of the cut list. Trimming cheap cards from a deck that is too slow is backwards.
+    # `tier --to` and `suggest --needs` both know what a deck is short on; `cuts` did not,
+    # so it optimised the axis it could see. Stated rather than scored — the ranking is a
+    # shortlist and this is the context that makes it readable.
+    _vec = deck_quality_vector(d)
+    _short = []
+    if _vec["interaction"] < 5:
+        _short.append(f"interaction {_vec['interaction']}")
+    if _vec["card_advantage"] < 3:
+        _short.append(f"card advantage {_vec['card_advantage']}")
+    if _vec.get("early_drops", 99) < 18:
+        _short.append(f"early drops {_vec['early_drops']} (avg MV {_vec['avg_mv']})")
+    if _short:
+        print(f"  ⓘ This deck is short on {', '.join(_short)} — weigh a `⚠interaction` note "
+              "against that before cutting a cheap card from an axis you are not long on.")
     print(f"  {'Card':30} {'MV':>3}  {'Fit':>4}  {'Pw':>3}  {'Uq':>3}  Roles / why-cuttable")
     print("-" * 82)
     for (keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq, upside,
@@ -5815,6 +5848,16 @@ def cmd_cuts(args):
         # baked into the score.
         if mult[0] and mult[1]:
             tail += f"   ✱multiplier — doubles {mult[0]} ({mult[1]} feeder(s) here)"
+        # A card whose VALUE is a function of a deck property reads as its FLOOR here, so
+        # it sorts up the cut list on a number that is not what you would cast it for:
+        # Cat-Gator scores as a 7-mana 3/2 lifelink when its ETB is damage equal to your
+        # Swamp count (24 in deck 52a). `suggest --needs` already flags this shape with
+        # `⚠ scales w/`; `cuts` had no equivalent, so the same card was graded two ways by
+        # two commands. FLAG only — the axis is fuzzy, and a score change on a fuzzy signal
+        # is exactly what this file keeps having to undo.
+        _ax = _int_scaling(text) or _deck_state_axis(text)
+        if _ax:
+            tail += f"   ⌁scales w/ {_ax} — graded here at its FLOOR"
         print(f"  {n[:30]:30} {mvs:>3}  {fit:>4}  {power:>3.0f}  {uniq:>3.0f}  {tail}")
 
     # Surface the actual oracle text so a cut is graded from what the card DOES,
@@ -6725,6 +6768,12 @@ def cmd_similar(args):
         both = anames & bnames
         rows.append((sim, colj, dd["id"], dd.get("name") or dd["id"], shared, spec,
                      len(both), sorted(both)))
+    # Theme cosine stays the PRIMARY order — it answers "does this duplicate an
+    # identity", which is the question. But it is not the same question as "which deck do
+    # I share the most cards with", and the two can rank in opposite orders: deck 52a
+    # reads 96% against deck 6 (4 shared cards, 33% colours) and 81% against its own
+    # parent 52 (13 shared cards, 100% colours). A reader acts on row order, so the
+    # card-overlap answer is stated explicitly below rather than left in a column.
     rows.sort(key=lambda r: (-r[0], -r[1], r[2]))
     limit = getattr(args, "limit", 8) or 8
     lens = "SPECIFIC-theme overlap only" if spec_only else "central-theme overlap"
@@ -6766,6 +6815,15 @@ def cmd_similar(args):
               "themes — a loose 'both value decks' overlap, not a duplicate identity.")
     elif top:
         print(f"\nClosest is #{top[2]} {top[3]} at {top[0]*100:.0f}% — comfortably distinct.")
+    # The deck you share the most CARDS with, when the theme ranking does not put it first.
+    by_cards = sorted(rows, key=lambda r: (-r[6], -r[1], r[2]))
+    if by_cards and by_cards[0][6] and by_cards[0][2] != rows[0][2]:
+        top = by_cards[0]
+        rank = next(i for i, r in enumerate(rows, 1) if r[2] == top[2])
+        print(f"  ▸ Most shared CARDS: deck {top[2]} ({top[6]} nonland card(s), "
+              f"{top[1] * 100:.0f}% colours) — it ranks #{rank} by theme. Theme similarity "
+              "and card overlap are different questions; some overlap between decks is "
+              "fine, so read this as 'where the lists actually meet'.\n")
     print("\n✦ marks a SPECIFIC (identity) theme; plain = generic value overlap. A SHORTLIST — "
           "grade the DOMINANT theme + win-con from `deck.py text`, not the number. "
           "`--specific-only` scores identity themes alone.")
@@ -7093,12 +7151,6 @@ def cmd_screen(args):
         m = re.match(r"^\s*\d+\s+(.*)$", ln)
         queries.append((m.group(1) if m else ln).strip())
 
-    print(f"Deck {d['id']}: {d['name'] or d['path']} — screening {len(queries)} candidate(s) "
-          f"against the CURRENT list")
-    print(f"Central themes: {', '.join(sorted(central)) or '(none)'}"
-          + (f"  ·  format {fmt}" if fmt else ""))
-    print("Re-scored now, so nothing here is carried over from an earlier plan.\n")
-
     rows, unresolved, ambiguous = [], [], []
     sqidx = _squash_index(carddata, lambda k: carddata[k].get("name") or k)
     for qname in queries:
@@ -7130,6 +7182,28 @@ def cmd_screen(args):
                          castable=cast_ok, cast_note=cast_note,
                          present=nl in in_deck))
 
+    # The header counts RESOLVED candidates, not INPUTS. It used to print len(queries),
+    # so `screen 52 "Demon"` announced "screening 1 candidate(s)" and then graded zero —
+    # and, worse, a pile passed with broken shell quoting announced "222 candidate(s)"
+    # when 83 names were given. The unresolved/ambiguous block moved ABOVE the results
+    # for the same reason: it used to print after ~200 lines of output, which is exactly
+    # where a reader does not look. (Use `-` and one name per line to avoid the whole
+    # class of problem — `screen` reads stdin.)
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — screening {len(rows)} candidate(s) "
+          f"against the CURRENT list"
+          + (f" ({len(queries)} name(s) given)" if len(rows) != len(queries) else ""))
+    print(f"Central themes: {', '.join(sorted(central)) or '(none)'}"
+          + (f"  ·  format {fmt}" if fmt else ""))
+    print("Re-scored now, so nothing here is carried over from an earlier plan.")
+    if ambiguous:
+        print("\nAmbiguous (be more specific — not guessed at):")
+        for q, cands in ambiguous:
+            print(f"    {q!r} → {'; '.join(cands[:6])}")
+    if unresolved:
+        print("\nNot found (fix the name, don't guess): "
+              + ", ".join(q for q, _ in unresolved))
+    print()
+
     order = {"KEY": 0, "role-player": 1, "tangential": 2}
     rows.sort(key=lambda r: (bool(r["present"]), r["illegal"], not r["castable"],
                              order.get(r["strength"], 3), -r["support"], r["name"].lower()))
@@ -7156,13 +7230,28 @@ def cmd_screen(args):
             for line in (r["text"] or "(no text)").split("\n"):
                 print(f"         {line}")
         print()
-    if ambiguous:
-        print("Ambiguous (be more specific — not guessed at):")
-        for q, cands in ambiguous:
-            print(f"    {q!r} → {'; '.join(cands[:6])}")
-    if unresolved:
-        print("Not found (fix the name, don't guess): "
-              + ", ".join(q for q, _ in unresolved))
+    # SATURATION. KEY means "shares the deck's signature theme", and when that theme is
+    # broad the label fires on everything: measured at 51% of 83 candidates on deck 52 and
+    # 45% of 119 on 52a, where the strict signature is {graveyard, reanimator} and half the
+    # black pool carries `graveyard`. Tightening was TRIED and rejected — requiring a
+    # non-generic signature theme dropped deck 30's KEY rate 21%->1% and demoted
+    # Innkeeper's Talent, the counter-doubler-in-a-counters-deck rescue the signature
+    # branch exists for. So this REPORTS rather than re-scores, like the protection axis
+    # and the role-count confidence: a reader who knows the label is saturated can still
+    # use the ordering, but will not mistake KEY for a recommendation.
+    keys = [r for r in rows if r["strength"] == "KEY"]
+    if len(rows) >= 10 and len(keys) / len(rows) >= _SCREEN_KEY_SATURATED:
+        by_theme = {}
+        for r in keys:
+            for t in r["shared"]:
+                if t in sig:
+                    by_theme[t] = by_theme.get(t, 0) + 1
+        top = sorted(by_theme.items(), key=lambda kv: (-kv[1], kv[0]))[:2]
+        print(f"⚠ KEY is SATURATED here — {len(keys)} of {len(rows)} candidates "
+              f"({len(keys) / len(rows) * 100:.0f}%)"
+              + (f", mostly on `{'`, `'.join(t for t, _ in top)}`" if top else "")
+              + ". A label that fires on half the pile is not a shortlist. Read the shared"
+              " themes and the oracle text, and treat the ORDER as the signal, not the word.")
     print("Trust KEY, judge role-player, read tangential as 'probably not here'. A ★ strict "
           "upgrade is a TEXT-CONTAINMENT test — it is deliberately conservative and misses "
           "most real upgrades, so its silence is not a verdict.")
@@ -7692,6 +7781,54 @@ def _clock_score(vec):
     c += 2 if early >= 12 else 1 if early >= 8 else 0
     c += 2 if reach >= 8 else 1 if reach >= 4 else 0
     return c
+
+
+# A rationale that grades BELOW the measurable floor and says why is a defensible human
+# call — the rubric credits intangibles in the other direction too, and deck 51 set the
+# precedent. Flagging it anyway gave decks 51, 52 and 52a a permanent "possibly
+# UNDER-graded" nudge for being honest, and a standing warning is one nobody reads.
+# Narrow on purpose: the prose must name the floor or the rubric's own language, not just
+# be long.
+_BELOW_FLOOR_ARGUMENT = re.compile(
+    r"(?:below the (?:measurable |metrics )?floor|band BELOW|deliberately (?:one )?band|"
+    r"conservative (?:read|grade)|fails? (?:the )?(?:fourth|two|three)|"
+    r"at most one clear weakness|PROVISIONAL)", re.I)
+
+
+def _argues_below_floor(meta):
+    """True when `#: tier:` explicitly argues for grading under the metrics floor."""
+    return bool(_BELOW_FLOOR_ARGUMENT.search((meta or {}).get("tier", "") or ""))
+
+
+def _keepable_at(nlands, deck_size, hand=7):
+    """P(opening hand holds 2–5 lands) at a hypothetical land count — used to check
+    whether the land advisory's suggested direction actually improves anything."""
+    if nlands < 0 or nlands > deck_size:
+        return None
+    from math import comb
+    tot = comb(deck_size, hand)
+    return sum(comb(nlands, k) * comb(deck_size - nlands, hand - k)
+               for k in range(2, 6) if k <= nlands and hand - k <= deck_size - nlands) / tot
+
+
+# Cards whose value is a COUNT in the deck rather than anything in their own text. The
+# `_int_scaling` sibling covers removal; this covers the rest — "equal to the number of
+# Swamps you control", "for each creature card in your graveyard", "X is the number of".
+# Every scoring model here grades a card in isolation, so these read at their floor.
+_DECK_STATE_AXIS_RE = re.compile(
+    r"(?:equal to the number of|for each|where X is the number of)\s+"
+    r"([\w' -]{3,30}?)\s+(you control|in your graveyard|on the battlefield)", re.I)
+
+
+def _deck_state_axis(text):
+    """The deck property a card's value scales with, or None. Report-only.
+
+    The ZONE is part of the axis: "cards" alone is uninformative, "cards in your
+    graveyard" tells you which number to go count."""
+    m = _DECK_STATE_AXIS_RE.search(text or "")
+    if not m:
+        return None
+    return f"{m.group(1).strip()} {m.group(2).strip()}"[:40] or None
 
 
 def tier_band(vec):
@@ -8728,7 +8865,10 @@ def cmd_tier(args):
         print("  genuinely rests on bombs/meta the metrics can't see — state which in the")
         print("  `#: tier:` rationale so the call is auditable.")
         return 1 if getattr(args, "strict", False) else 0
-    if gap <= -1:
+    if gap <= -1 and _argues_below_floor(meta):
+        print(f"\n  ✓ deliberately conservative — {claimed} sits below the {implied} floor and "
+              "the rationale argues why. Not flagged.")
+    elif gap <= -1:
         print(f"\n  ↑ possibly UNDER-graded: even the (under-rating) metrics floor is {implied}. "
               "Consider re-grading up.")
     elif gap == 1:
@@ -9064,6 +9204,7 @@ def cmd_preflight(args):
               # A gate names a RESOURCE the card needs; the count is how much of it the
               # deck actually holds. Each entry: (regex, label, kind). `kind` selects the
               # counter below — keeping the two apart is what lets a new gate be one line.
+_SCREEN_KEY_SATURATED = 0.40   # KEY on this share of a pile carries no information
 _TARGET_FAT_MV = 5      # at/above this, reanimating a card gains real mana
 _TARGET_GATES = [
     (re.compile(r"mana value (\d+) or less", re.I), "creature MV ≤{0} in the yard", "mv"),
