@@ -93,6 +93,28 @@ class TestQuantitiesLowerBoundVsAuthoritative:
                                lib=_lib([("Pacifism", 1)]), mana={"pacifism"})
             assert res[0]["enough"] is False, exact
 
+    def test_several_pasted_printings_are_compared_as_ONE_total(self):
+        """Owned is summed across printings; the paste is one line PER printing. Comparing
+        a summed total against one line's share made --exact structurally unable to pass a
+        correct multi-printing import (broad-scan F-01, the read half)."""
+        p = _paste("2 Llanowar Elves (M19) 314", "1 Llanowar Elves (DOM) 168")
+        for exact in (False, True):
+            res, _ = vi.verify(p, exact=exact, lib=_lib([("Llanowar Elves", 3)]),
+                               mana={"llanowar elves"})
+            assert [r["enough"] for r in res] == [True, True], exact
+            assert res[0]["pasted"] == 3 and res[0]["qty"] == 2
+
+    def test_a_shortfall_split_across_printings_is_no_longer_hidden(self):
+        """owned 2 against lines of 2 and 1 passed BOTH per-line `>=` tests while the
+        paste claimed 3 — a real shortfall that the default lower-bound mode missed."""
+        p = _paste("2 Llanowar Elves (M19) 314", "1 Llanowar Elves (DOM) 168")
+        res, _ = vi.verify(p, lib=_lib([("Llanowar Elves", 2)]), mana={"llanowar elves"})
+        assert [r["enough"] for r in res] == [False, False]
+
+    def test_an_absent_card_still_reports_its_own_quantity(self):
+        res, _ = vi.verify(_paste("3 Ghost Card (ZZZ) 1"), lib=_lib([]), mana=set())
+        assert res[0]["present"] is False and res[0]["pasted"] == 3
+
     def test_quantities_sum_across_printings(self):
         """Owned copies are fungible across printings (CLAUDE.md), so a card owned 1x in
         two sets is 2. Counting one printing would report a real ingest as short."""

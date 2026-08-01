@@ -25,18 +25,29 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 
+_RANK = {"S": 5, "A": 4, "B": 3, "C": 2, "D": 1}
+
+
 def _pure_floor(inter, ca, uncast=0):
-    """The original interaction+card-advantage floor, for the no-regression check."""
-    if uncast > 0:
-        return "C"
+    """The original interaction+card-advantage floor, for the no-regression check.
+
+    An uncastable stray CAPS this at C; it does not SET it. Until broad-scan F-16 was
+    implemented both this reference and `tier_band` returned "C" outright, which RAISED
+    a deck whose measurable floor was D — a dead card made a themeless, interactionless
+    list look better. The cap is what the `tier_band` docstring and CLAUDE.md's rubric
+    always claimed; only the code (and therefore this anchor) disagreed."""
     resil = inter + ca
     if inter >= 5 and resil >= 7:
-        return "A"
-    if inter >= 3 and resil >= 4:
-        return "B"
-    if resil >= 2:
-        return "C"
-    return "D"
+        band = "A"
+    elif inter >= 3 and resil >= 4:
+        band = "B"
+    elif resil >= 2:
+        band = "C"
+    else:
+        band = "D"
+    if uncast > 0 and _RANK[band] > _RANK["C"]:
+        band = "C"
+    return band
 
 
 def check():

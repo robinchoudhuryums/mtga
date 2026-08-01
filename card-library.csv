@@ -3942,3 +3942,82 @@ Whenever another creature you control enters, you gain 1 life.",G,Elf; Assassin;
 Vision Quest,Sorcery,"Search your library and/or graveyard for an artifact creature card with mana value X or less and put it onto the battlefield with X additional +1/+1 counters on it. If X is 4 or greater, it gains haste until end of turn. If you search your library this way, shuffle.",U/R,counters; reanimator; graveyard,MSH,237,1
 Self-Reflection,Sorcery,"Create a token that's a copy of target creature you control.
 Flashback {3}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; tokens; flashback; recursion; spellslinger,FDN,163,1
+"Ardyn, the Usurper",Legendary Creature — Elder Human Noble,"Demons you control have menace, lifelink, and haste.
+Starscourge — At the beginning of combat on your turn, exile up to one target creature card from a graveyard. If you exiled a card this way, create a token that's a copy of that card, except it's a 5/5 black Demon.",B,Elder; Human; Noble; Demon; graveyard; lifegain; tokens,FIN,89,1
+"Moseo, Vein's New Dean",Legendary Creature — Bird Skeleton Warlock,"Flying
+When Moseo enters, create a 1/1 black and green Pest creature token with ""Whenever this token attacks, you gain 1 life.""
+Infusion — At the beginning of your end step, if you gained life this turn, return up to one target creature card with mana value X or less from your graveyard to the battlefield, where X is the amount of life you gained this turn.",B,Bird; Skeleton; Warlock; reanimator; graveyard; lifegain; tokens; etb; infusion; flying; evasion,SOS,91,1
+A Realm Reborn,Enchantment,"Other permanents you control have ""{T}: Add one mana of any color.""",G,mana,FIN,196,1
+Interdimensional Web Watch,Artifact,"When this artifact enters, exile the top two cards of your library. Until the end of your next turn, you may play those cards.
+{T}: Add two mana in any combination of colors. Spend this mana only to cast spells from exile.",Colorless,mana; etb; impulse,SPM,165,1
+Bioengineered Future,Enchantment,"When this enchantment enters, create a Lander token. (It's an artifact with ""{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle."")
+Each creature you control enters with an additional +1/+1 counter on it for each land that entered the battlefield under your control this turn.",G,counters; sacrifice; tokens; ramp; etb,EOE,172,1
+Doubling Season,Enchantment,"If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.
+If an effect would put one or more counters on a permanent you control, it puts twice that many of those counters on that permanent instead.",G,tokens,FDN,216,1
+"Wingnut, Bat on the Belfry",Legendary Creature — Bat Mutant,"Alliance — Whenever another creature you control enters, Wingnut gains your choice of flying, menace, or haste until end of turn.
+Whenever Wingnut attacks, each other attacking creature gets +1/+0 until end of turn.",R,Bat; Mutant; pump; alliance; aggro; value,TMT,110,1
+The Soul Stone,Legendary Artifact — Infinity Stone,"Indestructible
+{T}: Add {B}.
+{6}{B}, {T}, Exile a creature you control: Harness The Soul Stone. (Once harnessed, its ∞ ability is active.)
+∞ — At the beginning of your upkeep, return target creature card from your graveyard to the battlefield.",B,Infinity; Stone; reanimator; graveyard; mana; indestructible; resilience,SPM,66,1
+Web-Warriors,Creature — Spider Hero,"When this creature enters, put a +1/+1 counter on each other creature you control.",W/G,Spider; Hero; counters; etb,SPM,159,1
+"Tannuk, Steadfast Second",Legendary Creature — Kavu Pilot,"Other creatures you control have haste.
+Artifact cards and red creature cards in your hand have warp {2}{R}. (You may cast a card from your hand for its warp cost. Exile that permanent at the beginning of the next end step, then you may cast it from exile on a later turn.)",R,Kavu; Pilot; exile cast,EOE,162,1
+Inventors' Fair,Legendary Land,"At the beginning of your upkeep, if you control three or more artifacts, you gain 1 life.
+{T}: Add {C}.
+{4}, {T}, Sacrifice Inventors' Fair: Search your library for an artifact card, reveal it, put it into your hand, then shuffle. Activate only if you control three or more artifacts.",Colorless,lifegain; sacrifice; mana,EOS,21,1
+"Alpharael, Stonechosen",Legendary Creature — Human Cleric,"Ward—Discard a card at random.
+Void — Whenever Alpharael attacks, if a nonland permanent left the battlefield this turn or a spell was warped this turn, defending player loses half their life, rounded up.",B,Human; Cleric; ward; protection; void; graveyard; payoff,EOE,87,1
+Specimen Freighter,Artifact — Spacecraft,"When this Spacecraft enters, return up to two target non-Spacecraft creatures to their owners' hands.
+Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 9+.)
+9+ | Flying
+Whenever this Spacecraft attacks, defending player mills four cards.",U,Spacecraft; mill; etb; bounce; station; counters; artifacts; graveyard,EOE,76,1
+Bygone Colossus,Artifact Creature — Robot Giant,"Warp {3} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",Colorless,Robot; Giant; exile cast; warp; tempo; cost-reduction,EOE,235,1
+Famished Worldsire,Creature — Leviathan,"Ward {3}
+Devour land 3 (As this creature enters, you may sacrifice any number of lands. It enters with three times that many +1/+1 counters on it.)
+When this creature enters, look at the top X cards of your library, where X is this creature's power. Put any number of land cards from among them onto the battlefield tapped, then shuffle.",G,Leviathan; counters; sacrifice; etb; selection; ward; protection; devour; tokens,EOE,182,1
+Seedship Broodtender,Creature — Insect Citizen,"When this creature enters, mill three cards. (Put the top three cards of your library into your graveyard.)
+{3}{B}{G}, Sacrifice this creature: Return target creature or Spacecraft card from your graveyard to the battlefield. Activate only as a sorcery.",B/G,Insect; Citizen; reanimator; graveyard; mill; sacrifice; etb,EOE,227,1
+Knight Luminary,Creature — Human Knight,"When this creature enters, create a 1/1 white Human Soldier creature token.
+Warp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,Human; Knight; exile cast; tokens; etb; warp; tempo; cost-reduction,EOE,23,1
+Perigee Beckoner,Creature — Horror,"When this creature enters, until end of turn, another target creature you control gets +2/+0 and gains ""When this creature dies, return it to the battlefield tapped under its owner's control.""
+Warp {1}{B} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",B,Horror; exile cast; etb; pump; blink; warp; tempo; cost-reduction,EOE,112,1
+Rhystic Study,Enchantment,"Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.",U,card draw,FCA,31,1
+Self-Destruct,Instant,"Target creature you control deals X damage to any other target and X damage to itself, where X is its power.",R,burn,FIN,157,1
+Exhibition Tidecaller,Creature — Djinn Wizard,"Opus — Whenever you cast an instant or sorcery spell, target player mills three cards. If five or more mana was spent to cast that spell, that player mills ten cards instead.",U,Djinn; Wizard; mill; spellslinger; graveyard; opus,SOS,48,1
+Fated Firepower,Enchantment,"Flash
+This enchantment enters with X fire counters on it.
+If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus an amount of damage equal to the number of fire counters on this enchantment instead.",R,flash; tempo,TLA,132,1
+Jumbo Cactuar,Creature — Plant,"10,000 Needles — Whenever this creature attacks, it gets +9999/+0 until end of turn.",G,Plant; pump,FIN,191,1
+Overgrown Tomb,Land — Swamp Forest,"({T}: Add {B} or {G}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",B/G,Swamp; Forest; pay life; mana,TRK,289,1
+Vicious Rivalry,Sorcery,"As an additional cost to cast this spell, pay X life.
+Destroy all artifacts and creatures with mana value X or less.",B/G,pay life,SOS,241,1
+The Endstone,Legendary Artifact,"Whenever you play a land or cast a spell, draw a card.
+At the beginning of your end step, your life total becomes half your starting life total, rounded up.",Colorless,card draw,EOE,240,1
+"Tezzeret, Cruel Captain",Legendary Planeswalker — Tezzeret,"Whenever an artifact you control enters, put a loyalty counter on Tezzeret.
+0: Untap target artifact or creature. If it's an artifact creature, put a +1/+1 counter on it.
+−3: Search your library for an artifact card with mana value 1 or less, reveal it, put it into your hand, then shuffle.
+−7: You get an emblem with ""At the beginning of combat on your turn, put three +1/+1 counters on target artifact you control. If it's not a creature, it becomes a 0/0 Robot artifact creature.""",Colorless,Tezzeret; Planeswalker; counters; planeswalker,EOE,2,1
+Memorial Team Leader,Creature — Kavu Soldier,"During your turn, other creatures you control get +1/+0.
+Warp {1}{R} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",R,Kavu; Soldier; exile cast; pump; warp; tempo; cost-reduction,EOE,144,1
+Ouroboroid,Creature — Plant Wurm,"At the beginning of combat on your turn, put X +1/+1 counters on each creature you control, where X is this creature's power.",G,Plant; Wurm; counters,EOE,201,1
+Harmonious Grovestrider,Creature — Beast,"Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
+Harmonious Grovestrider's power and toughness are each equal to the number of lands you control.",G,Beast; ward; protection,EOE,189,1
+Meltstrider Eulogist,Creature — Insect Soldier,"Whenever a creature you control with a +1/+1 counter on it dies, draw a card.",G,Insect; Soldier; counters; card draw,EOE,197,1
+Annul,Instant,Counter target artifact or enchantment spell.,U,counterspell,EOE,46,1
+Pull Through the Weft,Sorcery,"Return up to two target nonland permanent cards from your graveyard to your hand, then return up to two target land cards from your graveyard to the battlefield tapped.",G,graveyard,EOE,202,1
+Hylderblade,Artifact — Equipment,"Equipped creature gets +3/+1.
+Void — At the beginning of your end step, if a nonland permanent left the battlefield this turn or a spell was warped this turn, attach this Equipment to target creature you control.
+Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",B,Equipment; equipment; pump; equip; void; graveyard; payoff,EOE,106,1
+Hymn of the Faller,Sorcery,"Surveil 1, then you draw a card and lose 1 life. (To surveil 1, look at the top card of your library. You may put it into your graveyard.)
+Void — If a nonland permanent left the battlefield this turn or a spell was warped this turn, draw another card.",B,graveyard; pay life; card draw; selection; surveil; void; payoff,EOE,107,1
+Vivien Reid,Legendary Planeswalker — Vivien,"+1: Look at the top four cards of your library. You may reveal a creature or land card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.
+−3: Destroy target artifact, enchantment, or creature with flying.
+−8: You get an emblem with ""Creatures you control get +2/+2 and have vigilance, trample, and indestructible.""",G,Vivien; Planeswalker; removal; planeswalker; pump; selection,FDN,234,1
+"Chandra, Flameshaper",Legendary Planeswalker — Chandra,"+2: Add {R}{R}{R}. Exile the top three cards of your library. Choose one. You may play that card this turn.
++1: Create a token that's a copy of target creature you control, except it has haste and ""At the beginning of the end step, sacrifice this token.""
+−4: Chandra deals 8 damage divided as you choose among any number of target creatures and/or planeswalkers.",R,Chandra; Planeswalker; sacrifice; tokens; burn; planeswalker; impulse,FDN,81,1
+Firespitter Whelp,Creature — Dragon,"Flying
+Whenever you cast a noncreature or Dragon spell, this creature deals 1 damage to each opponent.",R,Dragon; burn; noncombat damage; flying; evasion,FDN,761,1
+Boltwave,Sorcery,Boltwave deals 3 damage to each opponent.,R,burn,FDN,79,1

@@ -46,6 +46,12 @@ Stage 5** — grade it from the floor, don't guess.
    integrity in one block; resolve any hard FAIL (illegal / uncastable / broken).
 4. `python3 scripts/deck.py mana NN` and `python3 scripts/deck.py consistency NN` —
    confirm the manabase supports the colored/double-pip and X-cost costs.
+5. `python3 scripts/deck.py targets NN` — does the list contain TARGETS for its own
+   gated effects? A card whose text names a resource (an MV cap on what it can
+   reanimate, a sacrifice cost, a count threshold) is only as good as the number of
+   cards in THIS deck that satisfy it, and every other model here grades a card in
+   isolation. A `✗ NOTHING` row is a dead card; a `⚠ thin` row is the shape that made
+   deck 52's first draft hold 24 ways to return a creature against 8 worth returning.
 
 ## Stage 5 — Tune for DISTINCTIVENESS + quality
 1. **`python3 scripts/deck.py similar NN`** — the whole point of a from-scratch deck:

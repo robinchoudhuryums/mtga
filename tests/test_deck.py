@@ -784,10 +784,86 @@ class TestRoleTally:
         assert deck._interaction_count(cards, self.CD) == deck.role_tally(cards, self.CD)["interaction"]
 
 
+class TestRarityLoader:
+    """Every reference-table loader answers for a DFC's FRONT face — except this one,
+    which reads the POOL (keyed only by the full `Front // Back` name) and had no alias.
+    47 roster names resolved to "", `_power_seed` fell to its default floor, and every
+    mythic/rare DFC was seeded as low-rarity and sorted UP the cut list; Ojer Axonil's
+    `_cuts_power_adj` came out -0.70 against a real +0.17, so the nudge changed SIGN
+    (broad-scan F-14)."""
+
+    def _pool(self, tmp_path, rows):
+        p = tmp_path / "pool.csv"
+        p.write_text("Card Name,Rarity\n" + "".join(f"{n},{r}\n" for n, r in rows))
+        return str(p)
+
+    def test_a_dfc_resolves_by_its_front_face(self, tmp_path, monkeypatch):
+        monkeypatch.setattr(deck, "POOL_CSV",
+                            self._pool(tmp_path, [("Ojer Axonil // Temple of Power", "mythic")]))
+        rar = deck.load_rarities()
+        assert rar["ojer axonil // temple of power"] == "M"
+        assert rar["ojer axonil"] == "M"          # the deck-file spelling
+
+    def test_a_real_card_is_never_shadowed_by_a_front_face_alias(self, tmp_path, monkeypatch):
+        """`Life` is a card as well as the front of `Life // Death`. Aliasing inside the
+        row loop would let whichever came first win; the alias pass runs after every real
+        row is in, so the result is order-independent."""
+        for order in ([("Life // Death", "uncommon"), ("Life", "rare")],
+                      [("Life", "rare"), ("Life // Death", "uncommon")]):
+            monkeypatch.setattr(deck, "POOL_CSV", self._pool(tmp_path, order))
+            deck.load_rarities.cache_clear()
+            assert deck.load_rarities()["life"] == "R", order
+
+    def test_every_roster_deck_card_now_prices(self, tmp_path):
+        """The measured symptom: 47 distinct deck-file names had no rarity at all."""
+        rar = deck.load_rarities()
+        missing = {n for d in deck.roster_decks()
+                   for _q, n, _s, _c in deck.parse_deck_file(d["path"])[1]
+                   if n.lower() not in deck.BASICS and n.lower() not in rar}
+        assert missing == set(), sorted(missing)[:8]
+
+
 class TestMultisetAndDelta:
     def test_multiset_case_insensitive_sums(self):
         ms = deck._multiset([(2, "Shock", "", ""), (1, "shock", "", "")])
         assert ms == {"shock": ("Shock", 3)}  # first spelling kept
+
+    def test_multiset_normalizes_a_dfc_to_its_front_face(self):
+        """The two legitimate spellings of a two-faced card are ONE card. Keying on the
+        raw name made `verify` report a phantom +1/-1 on an identical deck and would have
+        had `sync --apply` rewrite the stored full name to the bare front — the
+        un-importable line P8 fixed `_printing_of` to stop writing (broad-scan F-02)."""
+        ms = deck._multiset([(1, "Ojer Axonil, Deepest Might // Temple of Power", "", ""),
+                             (1, "Ojer Axonil, Deepest Might", "", "")])
+        assert list(ms) == ["ojer axonil, deepest might"]
+        assert ms["ojer axonil, deepest might"][1] == 2
+
+    def test_multiset_keeps_the_IMPORTABLE_spelling(self):
+        """First-seen wins (audit F4) EXCEPT that the full `Front // Back` form beats a
+        bare front face, in either order — that name is what a deck file must carry."""
+        front_first = deck._multiset([(1, "Ojer Axonil, Deepest Might", "", ""),
+                                      (1, "Ojer Axonil, Deepest Might // Temple of Power", "", "")])
+        full_first = deck._multiset([(1, "Ojer Axonil, Deepest Might // Temple of Power", "", ""),
+                                     (1, "Ojer Axonil, Deepest Might", "", "")])
+        for ms in (front_first, full_first):
+            assert ms["ojer axonil, deepest might"][0] == \
+                "Ojer Axonil, Deepest Might // Temple of Power"
+
+    def test_two_spellings_of_one_card_are_not_drift(self):
+        stored = deck._multiset([(1, "Ojer Axonil, Deepest Might // Temple of Power", "", "")])
+        pasted = deck._multiset([(1, "Ojer Axonil, Deepest Might", "", "")])
+        added, removed, diffs = deck._ms_diff(pasted, stored)
+        assert (added, removed, diffs) == (0, 0, [])
+
+    def test_reconcile_keeps_a_dfc_line_when_the_paste_names_the_front(self):
+        """The write half: the stored line must survive with its printing and its place
+        in the file, not be dropped and re-appended under the front-face spelling."""
+        lines = ["# Creatures",
+                 "1 Ojer Axonil, Deepest Might // Temple of Power (LCI) 158",
+                 "2 Shock (M21) 159"]
+        target = deck._multiset([(1, "Ojer Axonil, Deepest Might", "", ""),
+                                 (2, "Shock", "", "")])
+        assert deck.reconcile_lines(lines, target, {}) == lines
 
     def test_ms_delta(self):
         prev = deck._multiset([(2, "A", "", ""), (1, "B", "", "")])
@@ -2170,3 +2246,294 @@ class TestPrintingOfDFC:
         disp, setc, cn = deck._printing_of("Ojer Axonil, Deepest Might")
         out = deck._cards_after_swap([(1, "Cut Me", "AAA", "1")], "Cut Me", disp, (setc, cn))
         assert out == [(1, "Ojer Axonil, Deepest Might // Temple of Power", setc, cn)]
+
+
+class TestSwapApplyWritePath:
+    """`swap --apply` is the sanctioned way to edit a deck, and it had NO test.
+
+    P8 split `_printing_of`'s return from a 2-tuple into three values and updated one of
+    its two call sites, leaving `add_pr` dangling in `_do_swap` — so every `--apply`
+    raised NameError while the dry run, which returns before that line, stayed clean.
+    `check_commands` reported `swap` covered the whole time, because coverage there means
+    a skill REFERENCES the subcommand, not that anything drives it. This pins the write
+    path itself."""
+
+    def _deck(self, tmp_path, lines):
+        d = tmp_path / "decks" / "99-t"
+        d.mkdir(parents=True)
+        (d / "deck.txt").write_text("\n".join(lines) + "\n")
+        return str(tmp_path / "decks")
+
+    def test_apply_writes_the_swap_and_preserves_the_copy_count(self, tmp_path, monkeypatch):
+        from types import SimpleNamespace as NS
+        lines = ["#: name: T", "#: colors: R", "", "# Spells",
+                 "4 Shock (M21) 159", "2 Lightning Strike (MSH) 142", "54 Mountain"]
+        monkeypatch.setattr(deck, "DECKS_DIR", self._deck(tmp_path, lines))
+        monkeypatch.setattr(deck, "RECS_CSV", str(tmp_path / "recs.csv"))
+        rc = deck.cmd_swap(NS(id="99", cut="Shock", add="Lightning Strike", apply=True))
+        assert rc == 0
+        _, cards = deck.parse_deck_file(str(tmp_path / "decks" / "99-t" / "deck.txt"))
+        got = {n: q for q, n, _s, _c in cards}
+        assert sum(got.values()) == 60          # _safe_write_lines' INV-04 total check
+        assert got["Shock"] == 3 and got["Lightning Strike"] == 3
+
+    def test_dry_run_writes_nothing(self, tmp_path, monkeypatch):
+        from types import SimpleNamespace as NS
+        lines = ["#: name: T", "", "4 Shock (M21) 159", "56 Mountain"]
+        root = self._deck(tmp_path, lines)
+        monkeypatch.setattr(deck, "DECKS_DIR", root)
+        before = (tmp_path / "decks" / "99-t" / "deck.txt").read_text()
+        deck.cmd_swap(NS(id="99", cut="Shock", add="Lightning Strike", apply=False))
+        assert (tmp_path / "decks" / "99-t" / "deck.txt").read_text() == before
+
+
+class TestPrintingValidation:
+    """F-01: a deck line's `(SET) COLLECTOR#` was validated by NOTHING.
+
+    `1 Eaten Alive (ZZZ) 172` — a set code that does not exist — passed `legal`, passed
+    `check` (which reported it OWNED, because ownership joins on the NAME), passed
+    `preflight` READY and passed `check_all` "All invariants hold". A deck file could be
+    integrity-clean and un-importable at the same time. Hit for real: deck 52 was written
+    with `(FDN) 610` for a card whose collector number is 172."""
+
+    def test_nonexistent_set_code_is_hard(self):
+        bad, unverified = deck.printing_problems([(1, "Eaten Alive", "ZZZ", "172")])
+        assert [n for n, _s, _c in bad] == ["Eaten Alive"]
+        assert unverified == []
+
+    def test_wrong_collector_in_a_real_set_is_soft(self):
+        bad, unverified = deck.printing_problems([(1, "Eaten Alive", "FDN", "610")])
+        assert bad == []
+        assert [n for n, _s, _c, _k in unverified] == ["Eaten Alive"]
+
+    def test_the_real_printing_is_clean(self):
+        assert deck.printing_problems([(1, "Eaten Alive", "FDN", "172")]) == ([], [])
+
+    def test_basic_lands_are_exempt(self):
+        """Arena prints several arts per set (Swamp MSH 291 AND 292 are both real) while
+        the pool carries one. Measured before choosing the rule: a hard check without
+        this exemption failed 61 of 78 deck files on basics alone."""
+        assert deck.printing_problems([(24, "Swamp", "MSH", "292")]) == ([], [])
+
+    def test_a_line_with_no_printing_stated_is_not_flagged(self):
+        assert deck.printing_problems([(1, "Eaten Alive", "", "")]) == ([], [])
+
+    def test_no_roster_deck_names_a_nonexistent_set(self):
+        """The hard half must fail nothing today, or it could not have been made hard."""
+        for d in deck.discover_decks():
+            _meta, cards = deck.parse_deck_file(d["path"])
+            bad, _unv = deck.printing_problems(cards)
+            assert bad == [], f"deck {d['id']}: {bad}"
+
+
+class TestIntentionalUncastable:
+    """F-02: an intentionally-uncastable reanimation target read as a build ERROR.
+
+    Measured on deck 52a before the fix: adding ONE five-colour bomb to a mono-black
+    reanimator moved `preflight` READY -> BLOCKED and the metrics floor A -> C. Three
+    bands, for a card working exactly as designed. Reanimator is not an exotic archetype
+    — it is why `Zombify` is in the pool."""
+
+    def test_header_parses_semicolon_separated_names(self):
+        assert deck._uncastable_ok({"uncastable-ok": "Cosmic Spider-Man; Krang, Utrom Warlord"}) \
+            == {"cosmic spider-man", "krang, utrom warlord"}
+
+    def test_hyphenated_meta_keys_parse_at_all(self, tmp_path):
+        """META_RE allowed only [A-Za-z_], so `#: uncastable-ok:` never became a key —
+        and neither did `#: based-on:`, which 24 roster lines already used and which was
+        being silently dropped."""
+        p = tmp_path / "d.txt"
+        p.write_text("#: name: T\n#: based-on: deck.txt\n#: uncastable-ok: Shock\n1 Shock (M21) 159\n")
+        meta, _ = deck.parse_deck_file(str(p))
+        assert meta["based-on"] == "deck.txt"
+        assert meta["uncastable-ok"] == "Shock"
+
+    def test_exempt_card_leaves_the_failure_list_but_is_still_reported(self):
+        cards = [(1, "Cosmic Spider-Man", "SPM", "175")]
+        mana = {"cosmic spider-man": ("{W}{U}{B}{R}{G}", "5")}
+        cd = {"cosmic spider-man": {"name": "Cosmic Spider-Man", "type": "Creature",
+                                    "text": "", "colors": "W/U/B/R/G"}}
+        unc, _oi, _oa, intended = deck._castability(cards, {"B"}, mana, cd)
+        assert [n for n, _w in unc] == ["Cosmic Spider-Man"] and intended == []
+        unc, _oi, _oa, intended = deck._castability(cards, {"B"}, mana, cd,
+                                                    {"cosmic spider-man"})
+        assert unc == [] and [n for n, _w in intended] == ["Cosmic Spider-Man"]
+
+
+class TestUncastableCapsRatherThanSets:
+    """F-16, subsumed by F-02: `tier_band` RETURNED "C" on a stray instead of capping at
+    it, so a deck whose measurable floor was D got RAISED by holding a dead card. "Caps"
+    is what the docstring and CLAUDE.md's rubric always said; only the code disagreed."""
+
+    def test_a_stray_cannot_raise_a_d_floor(self):
+        vec = {"uncastable": 1, "interaction": 0, "card_advantage": 0}
+        assert deck.tier_band(vec) == "D"
+
+    def test_a_stray_still_caps_an_a_floor(self):
+        vec = {"uncastable": 1, "interaction": 10, "card_advantage": 3}
+        assert deck.tier_band(vec) == "C"
+        vec["uncastable"] = 0
+        assert deck.tier_band(vec) == "A"
+
+
+class TestTargetCounts:
+    """F-04: nothing answered "does this deck contain TARGETS for its own effects".
+
+    Deck 52's concept pile held 24 ways to return a creature against 8 worth returning,
+    and that number came from a hand-written script. G-61 states the discipline in prose
+    with four overturned dismissals behind it, precisely because nothing automated it."""
+
+    CD = {"reanimate": {"name": "Reanimate", "type": "Sorcery",
+                        "text": "Return target creature card with mana value 4 or less "
+                                "from your graveyard to the battlefield.", "colors": "B"},
+          "smallguy": {"name": "SmallGuy", "type": "Creature — Human", "text": "", "colors": "B"},
+          "bigguy": {"name": "BigGuy", "type": "Creature — Giant", "text": "", "colors": "B"}}
+    MANA = {"reanimate": ("{1}{B}", "2"), "smallguy": ("{1}{B}", "2"), "bigguy": ("{7}{B}", "8")}
+
+    def test_mv_cap_counts_only_the_creatures_under_the_cap(self):
+        cards = [(1, "Reanimate", "", ""), (1, "SmallGuy", "", ""), (1, "BigGuy", "", "")]
+        rows = deck.target_counts(cards, self.CD, self.MANA)
+        mv = [r for r in rows if "MV ≤4" in r[1]]
+        assert len(mv) == 1 and mv[0][2] == 1        # SmallGuy only; BigGuy is MV 8
+
+    def test_a_gate_with_nothing_behind_it_reports_zero(self):
+        cards = [(1, "Reanimate", "", ""), (1, "BigGuy", "", "")]
+        rows = deck.target_counts(cards, self.CD, self.MANA)
+        assert [r for r in rows if "MV ≤4" in r[1]][0][2] == 0
+
+    def test_a_card_is_never_its_own_target(self):
+        cd = dict(self.CD)
+        cd["outlet"] = {"name": "Outlet", "type": "Creature — Human",
+                        "text": "Sacrifice a creature: draw a card.", "colors": "B"}
+        mana = dict(self.MANA, outlet=("{B}", "1"))
+        rows = deck.target_counts([(1, "Outlet", "", "")], cd, mana)
+        assert [r for r in rows if "sacrifice" in r[1]][0][2] == 0
+
+    def test_no_saturated_discard_rule(self):
+        """A generic "cards to discard" gate was written and removed: it reported 35 for
+        every discard outlet in a 60-card deck, i.e. "you have a hand"."""
+        assert not any(kind == "any" for _rx, _lbl, kind in deck._TARGET_GATES)
+
+
+class TestRationaleAuditMisses:
+    """F-03: the audit reported "rationale is current" on prose that was stale twice."""
+
+    def test_removes_in_oracle_text_no_longer_suppresses_a_citation(self):
+        """`remov\\w*` matched the card's OWN description — "Summon: Bahamut is a {9}
+        that REMOVES two nonland permanents" — and suppressed the staleness report. The
+        same word is already documented as "the worst of them" on the FIGURE path, where
+        it was narrowed; only the CARD path kept the broad form."""
+        w = "it attacks the turn it lands. Summon: Bahamut is a {9} that removes two"
+        assert not deck._HISTORY_CUES.search(w)
+        assert deck._HISTORY_CUES.search("Bahamut was removed for Bringer")
+
+    def test_average_is_read_as_well_as_avg(self):
+        """"Average nonland MV 4.17" passed while the live value was 4.22 — "avg" is not
+        a prefix of "Average", so no pattern could see it."""
+        hits = [key for rx, key in deck._RATIONALE_FIGURES
+                if rx.search("TIGHT CURVE — Average nonland MV 4.17 on 12 early drops")]
+        assert "avg_mv" in hits
+
+    def test_a_simile_is_not_a_citation(self):
+        """"It'll Quench Ya! is Spell Pierce that hits creatures too" explains an in-deck
+        card BY NAMING one the deck does not run. The name is the yardstick, not a claim."""
+        assert deck._SIMILE_BEFORE.search("Ya! is ")
+        assert not deck._SIMILE_BEFORE.search("cut the ")
+
+    def test_shorthand_for_an_in_deck_card_is_not_a_citation(self):
+        """Deck 33 writes "Heartfire sac-removal" for Heartfire Immolator, and Heartfire
+        is itself a real card. Masking cannot help — the full name is not in the text."""
+        assert any(o.startswith("Heartfire" + " ") for o in {"Heartfire Immolator"})
+
+
+class TestWrongExclusionClaims:
+    """F-03, related: `#: notes:` is exempt from the staleness scan because naming an
+    ABSENT card there is correct — but "Deliberately NOT included: Bringer of the Last
+    Gift" after Bringer was ADDED is a false claim about the current list, the opposite
+    direction from the one the exemption covers."""
+
+    def _deck(self, tmp_path, notes, lines):
+        d = tmp_path / "decks" / "98-x"
+        d.mkdir(parents=True)
+        (d / "deck.txt").write_text(f"#: name: X\n#: notes: {notes}\n" + "\n".join(lines) + "\n")
+        return {"id": "98", "name": "X", "path": str(d / "deck.txt")}
+
+    def test_claiming_a_card_is_excluded_while_running_it_is_flagged(self, tmp_path):
+        d = self._deck(tmp_path, "Deliberately NOT included and why: Lightning Strike "
+                                 "(too slow); Shock (worse).", ["4 Lightning Strike (MSH) 142"])
+        assert [n for n, _h in deck.wrong_exclusion_claims(d)] == ["Lightning Strike"]
+
+    def test_a_replacement_named_after_the_dash_is_not_the_excluded_card(self, tmp_path):
+        """"Craterhoof is deliberately NOT here — Summon: Titan is this deck's mass pump"
+        names the REPLACEMENT after the boundary. A plain distance window reported ten
+        roster hits and every one sampled was noise; this shape reports zero."""
+        d = self._deck(tmp_path, "Craterhoof is deliberately NOT here — Lightning Strike "
+                                 "is this deck's reach.", ["4 Lightning Strike (MSH) 142"])
+        assert deck.wrong_exclusion_claims(d) == []
+
+    def test_no_roster_deck_trips_it(self):
+        for dd in deck.discover_decks():
+            assert deck.wrong_exclusion_claims(dd) == [], dd["id"]
+
+
+class TestScreenSaturationAndCounts:
+    """F-05 / F-10: `screen`'s KEY label fired on ~half of every pile, and its header
+    counted INPUTS rather than resolved candidates."""
+
+    def test_key_saturation_threshold_exists_and_is_a_fraction(self):
+        assert 0 < deck._SCREEN_KEY_SATURATED < 1
+
+    def test_the_signature_rescue_is_preserved(self):
+        """A tightening was TRIED and rejected: requiring a non-generic signature theme
+        dropped deck 30's KEY rate 21%->1% and demoted Innkeeper's Talent, the
+        counter-doubler-in-a-counters-deck case the signature branch exists for. So the
+        fix REPORTS saturation instead of re-scoring — this pins that KEY still fires on a
+        generic signature theme."""
+        assert deck.fit_strength(["counters"], {"counters": 20}, "", 9, 5,
+                                 frozenset({"counters"})) == "KEY"
+
+
+class TestBelowFloorArgument:
+    """F-07: the tier guard flagged a deliberately conservative grade. Decks 51, 52 and
+    52a all sit one band under an A floor WITH a written rubric argument, which the rubric
+    permits — and all three carried a permanent "possibly UNDER-graded" nudge for it."""
+
+    def test_a_rationale_that_argues_below_the_floor_is_recognised(self):
+        assert deck._argues_below_floor(
+            {"tier": "B — PROVISIONAL. One band BELOW the measurable floor, which reads A."})
+
+    def test_a_bare_letter_is_not(self):
+        assert not deck._argues_below_floor({"tier": "B — Rakdos aggro, fine curve."})
+        assert not deck._argues_below_floor({})
+
+
+class TestKeepableNeighbour:
+    """F-08: the land advisory reversed direction and could not be satisfied — deck 52 at
+    24 lands read "consider FEWER", the same list at 23 read "consider MORE" at a WORSE
+    keepable."""
+
+    def test_moving_one_land_the_suggested_way_is_actually_checked(self):
+        at24, at23 = deck._keepable_at(24, 60), deck._keepable_at(23, 60)
+        assert at24 is not None and at23 is not None
+        assert at23 < at24          # the "fewer lands" advice made it worse
+
+    def test_out_of_range_is_none(self):
+        assert deck._keepable_at(-1, 60) is None and deck._keepable_at(61, 60) is None
+
+
+class TestDeckStateAxis:
+    """F-09b: a card whose value is a COUNT in the deck read at its FLOOR in every model.
+    Cat-Gator scores as a 7-mana 3/2 lifelink; its ETB is damage equal to your Swamp
+    count, and deck 52a runs 24."""
+
+    def test_the_zone_is_part_of_the_axis(self):
+        assert deck._deck_state_axis(
+            "When this creature enters, it deals damage equal to the number of Swamps "
+            "you control to any target.") == "Swamps you control"
+        assert deck._deck_state_axis(
+            "destroy it if its mana value is less than or equal to the number of cards "
+            "in your graveyard") == "cards in your graveyard"
+
+    def test_a_card_with_no_deck_state_axis_returns_none(self):
+        assert deck._deck_state_axis("Destroy target creature.") is None
+        assert deck._deck_state_axis("") is None

@@ -44,6 +44,13 @@ Read the actual card text — never judge by mana value or a single subtype:
    split / adventure card by the FACE YOU CAST: Decadent Dragon was drafted for
    its `{2}{B}` adventure half and cut once `consistency` priced its `{2}{R}{R}`
    FRONT face at 53% on turn four.
+2c-bis. `python3 scripts/deck.py targets <id>` — do this deck's GATED cards have
+   anything to point at? MV caps ("reanimate a creature MV 4 or less"), sacrifice
+   costs and count thresholds all name a resource, and the count of cards satisfying
+   it lives in the LIST, not in the card. Read this before cutting a gated card as
+   weak — and before adding one. It is the automated half of the "state the count,
+   then decide" discipline that overturned four dismissals.
+
 2d. `python3 scripts/deck.py engines <id>` — enabler ↔ payoff balance (dead
    payoffs / under-enabled engine), and `python3 scripts/deck.py shape <id>` for
    WIDE vs TALL. Themes structurally cannot answer shape — `counters` is the same

@@ -2,8 +2,8 @@
 #: format: Standard
 #: colors: R
 #: plan: midrange
-#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 13
-#: tier: plus card advantage 3 at a 4.17 curve. Two structural weaknesses the floor cannot see:
+#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 10
+#: tier: plus card advantage 3 at a 4.03 curve. Two structural weaknesses the floor cannot see:
 #: tier: 1. PROTECTION IS 1, and it is one card: Roaming Throne's ward {2}. Five named
 #: tier:    build-arounds and this deck's payoffs are the kind that must SURVIVE A TURN to
 #: tier:    matter — Lathliss only pays off on the NEXT Dragon, Terror of the Peaks only on the
@@ -12,15 +12,16 @@
 #: tier:    a protection grant returned essentially nothing, so this is red's cost, not an
 #: tier:    oversight. Call the Spirit Dragons was REJECTED on colour, not overlooked: it reads
 #: tier:    "Dragons you control have indestructible" and costs {W}{U}{B}{R}{G}, genuinely gold.
-#: tier: 2. IT IS SLOW AND HAS NO SWEEPER. Avg MV 4.17 with 9 early drops is the slowest curve
-#: tier:    on the roster; against a fast start the deck must trade one-for-one with removal it
+#: tier: 2. IT IS SLOWISH, but much less so than it was. Avg MV 4.03 with 10 early drops (it was
+#: tier:    4.20 and 9 before the 2026-08 passes); against a fast start the deck
+#: tier:    must trade one-for-one with removal it
 #: tier:    has plenty of, then stabilise with a five-drop. Card advantage 3 is still thin, and
 #: tier:    still an UNDER-count — Bonehoard Dracosaur exiles two cards a turn and Breaching
 #: tier:    Dragonstorm free-casts one, but both read as `impulse` to the classifier, not draw.
-#: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 13 is not padding,
-#: tier: it is real removal stapled to Dragon BODIES (Nova Hellkite, Magmatic Hellkite, Nebula
-#: tier: Dragon, Realm-Scorcher, Drakuseth), so the deck interacts without spending cards; the
-#: tier: manabase is flawless, matching deck 47 as the only two on the roster with zero cards
+#: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 10 is not padding,
+#: tier: it is real removal stapled to Dragon BODIES (Nova Hellkite, Realm-Scorcher, Drakuseth),
+#: tier: so the deck interacts without spending cards; the manabase is flawless, matching
+#: tier: deck 47 as the only two on the roster with zero cards
 #: tier: below 90% on curve; and the payoff stack genuinely compounds — Terror of the Peaks
 #: tier: pointed at Lathliss's 5/5 tokens is 5 damage per Dragon with no combat step, doubled
 #: tier: again by Twinflame Tyrant. That ceiling is the case for A once it has been played.
@@ -35,8 +36,11 @@
 #: tier: cast. Neither contains the word Dragon.
 #: tier: PROVISIONAL because it is unplayed and 17 cards are craft targets.
 #: protect: Lathliss, Dragon Queen; Dragonlord's Servant; Terror of the Peaks; Roaming Throne; Sarkhan, Dragon Ascendant
-#: archetype: MONO-RED DRAGON RAMP. Twenty-one Dragons in a sixty-card deck, which is the whole
-#: archetype: idea: Standard's Dragons average MV 5.30, so a deck that wants to field several
+#: archetype: MONO-RED DRAGON RAMP. FIFTEEN Dragons in a sixty-card deck (it opened at 21 and the
+#: archetype: 2026-08 passes traded six for interaction, Treasures and early drops), plus token
+#: archetype: makers — Lathliss, Rite of the Dragoncaller and Magda all mint Dragons, so the board
+#: archetype: count runs ahead of the card count. The idea holds: Standard's Dragons average MV
+#: archetype: 5.30, so a deck that wants to field several
 #: archetype: of them must SOLVE ITS OWN MANA, and every accelerant here is paid for by the
 #: archetype: same Dragon count it enables.
 #: archetype: THE RAMP IS TRIBAL, NOT GENERIC, and that is what separates this from a big-mana
@@ -51,10 +55,11 @@
 #: archetype: 5/5 tokens that is five to the face per Dragon, with no combat step involved.
 #: archetype: Stormscale Scion pumps the rest and carries Storm. Twinflame Tyrant DOUBLES all
 #: archetype: damage you deal, including Terror's triggers and Drakuseth's ten-damage entry.
-#: archetype: BEHOLD IS THE HIDDEN INTERACTION UPGRADE. Molten Exhale is a {1}{R} sorcery that
-#: archetype: deals 4 — but beholding a Dragon (revealing one from hand is enough, you do not
-#: archetype: have to control it) gives it FLASH. At 21 Dragons that condition is almost always
-#: archetype: on, so the deck's cheapest removal is an instant that costs a card nothing.
+#: archetype: THE INTERACTION IS NOW CHEAP AND REPLACES ITSELF rather than riding on behold.
+#: archetype: Molten Exhale was CUT in the 2026-08 Treasure pass for Flick a Coin, which deals
+#: archetype: only 1 — but Ojer Axonil upgrades every noncombat damage source of ours to 4, and
+#: archetype: it draws a card and makes a Treasure on the way. Hell to Pay scales instead of
+#: archetype: fixing its damage, and pays excess damage back as Treasures.
 #: archetype: DISTINCTNESS from deck 14 Dragon King Roku, which is the deck this could be
 #: archetype: mistaken for. 14 is RAKDOS and DRAGON-FLAVOURED: only 6 of its 25 creatures are
 #: archetype: Dragons, it runs 14 cards at 1-2 MV, and it wins with removal plus a few bombs on
@@ -76,11 +81,13 @@
 #: notes: OJER AXONIL came in for Hoarding Dragon. It is NOT a Dragon — Lathliss and
 #: notes: Dragonlord's Servant do not see it — but its static ability upgrades ELEVEN noncombat
 #: notes: damage sources to 4 apiece: Firespitter Whelp 1->4 on every Dragon spell, Nova Hellkite
-#: notes: 1->4, Nebula Dragon 3->4, Realm-Scorcher's repeatable {1}{R} ping 1->4, Plasma Bolt
-#: notes: 2->4, Dracosaur Auxiliary 2->4, and both of Drakuseth's 3-damage halves. It is also the
-#: notes: closest thing red has to the protection-by-revive idea: it returns transformed on death.
-#: notes: PLASMA BOLT IS THEREFORE PROTECTED BY IMPLICATION — cutting it would remove one of the
-#: notes: eleven cards Ojer was added to upgrade, and it is one of only three cards at MV 1.
+#: notes: 1->4, Realm-Scorcher's repeatable {1}{R} ping 1->4, Dracosaur Auxiliary 2->4, and both
+#: notes: of Drakuseth's 3-damage halves. It is also the closest thing red has to the
+#: notes: protection-by-revive idea: it returns transformed on death.
+#: notes: THE 'PLASMA BOLT IS PROTECTED BY IMPLICATION' ARGUMENT WAS OVERRULED and Plasma Bolt
+#: notes: was CUT (2026-08) for Rite of the Dragoncaller; Nebula Dragon was CUT earlier. Ojer now
+#: notes: upgrades EIGHT sources, not eleven. The argument was real but it protected the deck's
+#: notes: weakest slots by association — being a listed feeder is not the same as earning a slot.
 #: notes: KNOWN TOOLING DISTORTION, read the numbers with it: `_primary_type` classifies any DFC
 #: notes: whose BACK face is a land as a LAND, so Ojer Axonil is counted as one. `consistency`
 #: notes: therefore reports "Lands: 26/60" for a deck holding 25, keepable is computed against a
@@ -97,8 +104,8 @@
 #: notes: {2}{R} "deals 4 damage to target creature" against Fiery Annihilation's {2}{R} for
 #: notes: FIVE damage that also exiles instead of killing and picks off an Equipment. Same
 #: notes: cost, same slot, strictly worse. Every other removal spell does something distinct —
-#: notes: Molten Exhale has flash off beholding a Dragon, Untimely Malfunction redirects a
-#: notes: spell, and Plasma Bolt and Cinder Strike are two of only three cards at MV 1.
+#: notes: (Molten Exhale, Untimely Malfunction, Plasma Bolt and Cinder Strike were all CUT in the
+#: notes: 2026-08 passes, so the MV-1 slot is now empty and behold no longer does any work here.)
 #: notes: Interaction 13 -> 12 against a needs-model target of five, so it was affordable.
 #: notes: BUILT 2026-07 from scratch, after a sweep for a big-mana tribal ramp shell.
 #: notes: UNGRADED ON PURPOSE — no `#: tier:` until the metrics are read and it has been played.
@@ -106,9 +113,9 @@
 #: notes: majority are mono-red; black adds seven and none of them is a payoff. Going mono
 #: notes: buys the flawless manabase that deck 47 proved is worth having, and it is the
 #: notes: cleanest separation from deck 14, which already owns the BR Dragon slot.
-#: notes: OWNED CORE: Fin Fang Foom, Nova Hellkite, Ran and Shaw, Spinerock Tyrant, Lathliss,
-#: notes: Dracosaur Auxiliary, Nebula Dragon, Summon: Bahamut, Sarkhan
-#: notes: and the whole interaction suite bar Molten Exhale. The craft list is real but it is
+#: notes: OWNED CORE: Nova Hellkite, Ran and Shaw, Spinerock Tyrant, Lathliss,
+#: notes: Dracosaur Auxiliary, Summon: Bahamut, Sarkhan (Fin Fang Foom and Nebula Dragon were CUT)
+#: notes: and most of the interaction suite. The craft list is real but it is
 #: notes: mostly the payoff layer, not the shell.
 #: notes: TUNED ONCE BEFORE GRADING, on the needs model rather than on taste. `suggest --needs`
 #: notes: read "Acceleration want: HIGH (avg MV 3.94) - Interaction: 14/5 ok", i.e. the deck was
@@ -145,24 +152,22 @@
 1 Sarkhan, Dragon Ascendant (TDM) 118
 1 Stark Industries Executive (MSH) 153
 1 Seize the Spoils (SOS) 129
-1 Reckless Ransacking (ECL) 152
+1 Sunset Strikemaster (TDM) 126
+1 Magda, the Hoardmaster (OTJ) 133
+1 Draconautics Engineer (DFT) 121
 
 # Dragons — the early curve
 1 Runescale Stormbrood // Chilling Screech (TDM) 221
 1 Firespitter Whelp (FDN) 761
-1 Fin Fang Foom (MSH) 129
-1 Magmatic Hellkite (TDM) 111
-1 Stingerback Terror (OTJ) 147
 
 # Dragons — the engine band
-1 Nova Hellkite (EOE) 148
 1 Ran and Shaw (TLA) 150
 1 Spinerock Tyrant (ECL) 159
 1 Rapacious Dragon (FDN) 544
 1 Terror of the Peaks (OTJ) 149
-1 Bonehoard Dracosaur (LCI) 134
 1 Dragonhawk, Fate's Tempest (BLB) 132
 1 Twinflame Tyrant (FDN) 97
+1 Decadent Dragon // Expensive Taste (WOE) 223
 
 # Damage amplifier — not a Dragon, but it upgrades ELEVEN damage sources to 4
 1 Ojer Axonil, Deepest Might // Temple of Power (LCI) 158
@@ -170,29 +175,35 @@
 # Tribal payoffs — the CHOOSE-A-TYPE cards a literal 'Dragon' search never finds (K-13)
 1 Roaming Throne (LCI) 258
 1 Chronicle of Victory (ECL) 253
+1 Collective Inferno (ECL) 132
 
 # Dragons — the payoff band
 1 Lathliss, Dragon Queen (FDN) 627
 1 Dracosaur Auxiliary (DFT) 122
 1 Stormscale Scion (TDM) 123
 1 Realm-Scorcher Hellkite (WOE) 145
+1 Rite of the Dragoncaller (FDN) 92
+1 Impact Tremors (FDN) 717
 
 # Dragons — the top end the ramp is for
 1 Drakuseth, Maw of Flames (FDN) 760
-1 Nebula Dragon (EOE) 147
 1 Summon: Bahamut (FIN) 1
 
 # Card advantage — the axis this deck measured 2 on
 1 Breaching Dragonstorm (TDM) 101
+1 Solstice Revelations (TLA) 153
 
 # Interaction — Molten Exhale gains flash off any Dragon in hand
-1 Molten Exhale (TDM) 113
-1 Fiery Annihilation (FDN) 86
-1 Plasma Bolt (EOE) 152
-1 Untimely Malfunction (DSK) 161
-1 Cinder Strike (ECL) 131
+1 Seismic Rupture (FDN) 205
+1 Iroh's Demonstration (TLA) 141
+1 Hell to Pay (OTJ) 126
+1 Flick a Coin (WOE) 128
 
 # Lands (25) — Three Tree City taps for Dragon count
 1 Three Tree City (BLB) 260
 1 Kavaron, Memorial World (EOE) 255
 23 Mountain (MSH) 293
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 49
+#~ -Draconautics Engineer | +Bonehoard Dracosaur | CRAFT (M), DEFERRED: the deck's best card-advantage engine — two cards per upkeep plus a token or Treasure, doubled by Roaming Throne to four. Card advantage is 3 and thin. Engineer holds the slot for 0 wildcards.
+#~ -Breaching Dragonstorm | +Incinerator of the Guilty | CRAFT (M), DEFERRED: screen rates it KEY and it is a real Dragon (16 -> 17). Combat damage collects evidence to wipe their board. MV 6 into a 4.1 curve is the cost, so it wants the curve to come down first.

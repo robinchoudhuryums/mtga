@@ -16,6 +16,12 @@ verbatim. `scripts/check_docs.py` gates the link in both directions.
 
 ## [C-01] Test Command — the gate stack
 
+**2026-08 addition — INV-04 grew a printing check.** It used to assert only that a
+deck line PARSES; a `(SET)` code that exists nowhere is now a HARD failure and an
+unheld `COLLECTOR #` within a real set is a soft warning. The split, and why basics
+are exempt, is measured in gotchas.md under [G-65]. Roster at the time of the change:
+0 hard, 27 soft across 15 decks — all pre-existing and silent until the check existed.
+
 (deterministic integrity gate; exits non-zero on any hard invariant break —
 NOTE it imports `deck` as a MODULE and calls `cmd_*` directly, so it never builds an
 argparse tree — the CLI surface is covered separately by `tests/test_cli.py` and a
@@ -277,8 +283,8 @@ Ingest a batch — `import_arena.py <file>` → **`make refresh`** → `verify_i
 
 ## [C-09] Regression Scenario 2 — analyze a deck
 
-Analyze a deck — `deck.py check|mana|consistency|tribes|stats|shape|legal|cuts|tier|tier --audit-rationale|redundancy|text|verify <id>`, plus `deck.py feedback` (the recommendation ledger; empty until a swap has been applied, and a dry-run `swap` must leave it untouched), the needs-aware recommenders `deck.py suggest <id> --lands|--ramp|--interaction|--needs`, `deck.py screen <id> <names>` (re-scores candidates against the CURRENT list; ★ strict upgrade + ✱ multiplier flags), and roster-wide `deck.py audit` / `deck.py suggest-homes <card>` / `deck.py similar <id>` / `deck.py resolve <names>` / `deck.py rotation` (+ `pool.py --role`). Expect: no traceback; mana is hybrid-aware; consistency reports keepable %/land-drops/cast-on-curve (with the splash / color-hungry fix notes); tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts/text print full oracle text; tier shows claimed-vs-floor (and `--audit-rationale` flags a tier rationale citing cut
-cards or stale figures); stats reports the protection axis and flags a ZERO; redundancy buckets effects by virtual-copy depth and proposes functional copies first, duplicates as fallback; suggest `--lands`/`--needs` surface the STRUCTURAL fills (fixing · acceleration · interaction, with board-scalers flagged) the theme model can't; audit scores every deck TUNE/craft/review/ok, with `review` reserved for an off-color ABILITY or thin interaction (a hybrid you pay on-color shows as `Ns` in the Cast column but never reaches the verdict); verify diffs a pasted Arena export against the stored deck. Also `python3 scripts/deck.py --help` and one subcommand help — the CLI surface check_all cannot reach.
+Analyze a deck — `deck.py check|mana|consistency|tribes|stats|shape|legal|cuts|tier|tier --audit-rationale|redundancy|targets|text|verify <id>`, plus `deck.py feedback` (the recommendation ledger; empty until a swap has been applied, and a dry-run `swap` must leave it untouched), the needs-aware recommenders `deck.py suggest <id> --lands|--ramp|--interaction|--needs`, `deck.py screen <id> <names>` (re-scores candidates against the CURRENT list; ★ strict upgrade + ✱ multiplier flags), and roster-wide `deck.py audit` / `deck.py suggest-homes <card>` / `deck.py similar <id>` / `deck.py resolve <names>` / `deck.py rotation` (+ `pool.py --role`). Expect: no traceback; mana is hybrid-aware; consistency reports keepable %/land-drops/cast-on-curve (with the splash / color-hungry fix notes); tribes surfaces type-matters payoffs; legal flags size/copy/format violations; cuts/text print full oracle text; tier shows claimed-vs-floor (and `--audit-rationale` flags a tier rationale citing cut
+cards or stale figures); stats reports the protection axis and flags a ZERO; redundancy buckets effects by virtual-copy depth and proposes functional copies first, duplicates as fallback; targets counts, per gated card, how many cards in the list satisfy the gate its text names (`✗ NOTHING` = a dead card, `⚠ thin` = ≤3) — the automated half of the "state the count, then decide" discipline; suggest `--lands`/`--needs` surface the STRUCTURAL fills (fixing · acceleration · interaction, with board-scalers flagged) the theme model can't; audit scores every deck TUNE/craft/review/ok, with `review` reserved for an off-color ABILITY or thin interaction (a hybrid you pay on-color shows as `Ns` in the Cast column but never reaches the verdict); verify diffs a pasted Arena export against the stored deck. Also `python3 scripts/deck.py --help` and one subcommand help — the CLI surface check_all cannot reach.
 
 
 ## [C-10] Deploy Command

@@ -1,0 +1,98 @@
+#: name: Void Demons
+#: format: Standard
+#: colors: B
+#: plan: midrange
+#: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (7 craft targets, zero games).
+#: tier: Deliberately one band BELOW the measurable floor, which reads A on interaction 9
+#: tier: plus card advantage 3 at a 2.83 curve. Against the rubric an A needs four things
+#: tier: and this list fails the fourth:
+#: tier:   A-FLOOR — yes. Interaction 9 clears the threshold of five, sum 12 clears seven.
+#: tier:   COHERENT ENGINE — yes. Void condition -> sac outlets -> Void payoffs, with
+#: tier:     Repartee recursion as the card-advantage engine underneath it.
+#: tier:   TIGHT CURVE — yes. 2.83 average on 20 early drops.
+#: tier:   AT MOST ONE CLEAR WEAKNESS — no, and there are three that COMPOUND. Card
+#: tier:     advantage is 3 and did not move when Villainous Wrath was traded for Pull
+#: tier:     from the Grave, so the thin axis is real and not a classifier artifact.
+#: tier:     Interaction is 8-of-9 SORCERY-speed, so a deck this reactive cannot answer
+#: tier:     anything on their turn. And exactly ONE piece answers a noncreature
+#: tier:     permanent — an opposing enchantment or planeswalker is close to unanswerable.
+#: tier:     A grindy midrange deck with thin draw, no instant-speed interaction and no
+#: tier:     noncreature answer loses the long game it is built to win.
+#: tier: Re-grade after it is BUILT and played — the floor says A and the intangibles here
+#: tier: (Alpharael's halving clock, Ardyn manufacturing 5/5 Demons) are exactly what the
+#: tier: metrics cannot see. This letter is the conservative read, not a ceiling.
+#: archetype: Mono-black VOID ARISTOCRATS. The plan is to make a nonland permanent
+#: archetype: leave the battlefield EVERY turn, cheaply, and get paid for it twice —
+#: archetype: once by the aristocrat payoffs and once by the EOE Void clause, which
+#: archetype: upgrades seven cards the moment the condition is met (Tragic Trajectory
+#: archetype: -2/-2 becomes -10/-10, Temporal Intervention costs {2} less, Decode
+#: archetype: Transmissions drains, Hymn draws a second card, Hylderblade re-attaches
+#: archetype: free, Elegy Acolyte makes a Robot, Alpharael halves their life). The
+#: archetype: enablers are deliberately COSTS, not spells: Deadly Precision and Embrace
+#: archetype: Oblivion each sacrifice as an additional cost, Treasure Dredger and
+#: archetype: Ultimate Green Goblin make a token every turn, Joo Dee sacrifices for
+#: archetype: free on a stick, Realm of Koh makes Spirits off a land, and Timeline
+#: archetype: Culler / Susurian Voidborn turn it on by WARPING with no board at all.
+#: archetype: RECURSION IS THE GRIND, NOT A MANA CHEAT. Forum Necroscribe's Repartee
+#: archetype: returns a creature to the battlefield every time you cast one of the six
+#: archetype: cheap instants/sorceries that TARGET a creature — that engine, not a
+#: archetype: reanimated fatty, is the card advantage. Sidisi and Xu-Ifit repeat it;
+#: archetype: Lively Dirge's {1} mode tutors the target straight into the yard.
+#: archetype: DISTINCTIVENESS vs deck 11 (mono-black villains, graveyard/sacrifice):
+#: archetype: the Void/warp package is the whole difference, so it is built to real
+#: archetype: density — 7 Void cards + 2 warp + 6 dedicated enablers. Strip that and
+#: archetype: this is deck 11. The Demons are MANUFACTURED, not drafted: Ardyn turns
+#: archetype: any graveyard into a 5/5 Demon each combat and gives them menace,
+#: archetype: lifelink and haste. Demon is not a tribe here (the pool has ~1 real
+#: archetype: payoff) — it is what the engine produces.
+#: protect: Forum Necroscribe; Alpharael, Stonechosen; Ardyn, the Usurper; Joo Dee, One of Many; Timeline Culler
+#: notes: WIP / aspirational — 7 craft targets (5 uncommon, 2 rare), no mythics.
+#: notes: Built from a ~116-card concept pile; the rejected pile is screened in Stage 5.
+#: notes: Deliberately NOT included and why: Bringer of the Last Gift (symmetric, hands
+#: notes: a graveyard deck its own army back); Cryptcaller Chariot / Monument to
+#: notes: Endurance (both trigger on DISCARD, which this build does not have);
+#: notes: Baron Helmut Zemo (Boast exiles ~10 black cards — anti-synergy with the yard);
+#: notes: Rise of the Dark Realms / Behold the Sinister Six! (mass reanimation needs a
+#: notes: top end this list does not run); Mister Negative (gold WB, would widen colors).
+
+# Nonland
+1 Moonshadow (ECL) 110
+1 Deadly Precision (TLA) 95
+1 Embrace Oblivion (EOE) 98
+1 Eaten Alive (FDN) 172
+1 Hylderblade (EOE) 106
+1 Tragic Trajectory (EOE) 122
+1 Lecturing Scornmage (SOS) 87
+1 Joo Dee, One of Many (TLA) 105
+1 Treasure Dredger (OTJ) 110
+1 Sidisi, Regent of the Mire (TDM) 92
+1 Super Shredder (TMT) 83
+1 Timeline Culler (EOE) 121
+1 Lively Dirge (OTJ) 93
+1 The Soul Stone (SPM) 66
+1 Hymn of the Faller (EOE) 107
+1 Vampire Gourmand (FDN) 74
+1 Lightless Evangel (EOE) 109
+1 Fake Your Own Death (FDN) 174
+1 Vayne's Treachery (FIN) 124
+1 Fell (BLB) 95
+1 Xu-Ifit, Osteoharmonist (EOE) 127
+1 Withering Curse (SOS) 105
+1 Too Evil to Stay Dead (MSH) 118
+1 Temporal Intervention (EOE) 120
+1 Decode Transmissions (EOE) 94
+1 Susurian Voidborn (EOE) 118
+1 Ultimate Green Goblin (SPM) 157
+1 Elegy Acolyte (EOE) 97
+1 Prison Break (SPM) 61
+1 Alpharael, Stonechosen (EOE) 87
+1 Pull from the Grave (SOS) 95
+1 Bloodthirsty Conqueror (FDN) 58
+1 Forum Necroscribe (SOS) 84
+1 Massacre Wurm (FDN) 714
+1 Liliana, Dreadhorde General (FDN) 176
+1 Ardyn, the Usurper (FIN) 89
+
+# Lands
+1 Realm of Koh (TLA) 276
+23 Swamp (MSH) 291

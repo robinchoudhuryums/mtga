@@ -320,3 +320,71 @@ class TestPrimaryTypeHasOneDefinition:
     def test_missing_and_empty(self):
         assert lib.primary_type("") == "Other"
         assert lib.primary_type(None) == "Other"
+
+
+class TestBackupSelection:
+    """`backup_path` writes a creation-ordered name; `latest_backup` reads it back.
+
+    They are two halves of one scheme and must agree, because the obvious reader —
+    `max(..., key=getmtime)` — is WRONG for a file made by `shutil.copy2`: copy2 copies
+    the SOURCE's mtime, so a `.bak`'s mtime is when its contents were written, not when
+    the backup was taken. The two orders diverge the moment anything restores an old
+    file, which is exactly what `app.py`'s revert does (broad-scan F-04)."""
+
+    def test_stamp_parses_with_and_without_the_collision_counter(self):
+        assert lib.backup_stamp("card-library.csv.20260731-225802-123456.bak") == \
+            ("20260731-225802-123456", "")
+        assert lib.backup_stamp("card-library.csv.20260731-225802-1234560001.bak") == \
+            ("20260731-225802-123456", "0001")
+
+    def test_a_name_outside_the_scheme_has_no_stamp(self):
+        assert lib.backup_stamp("card-library.csv.2026-07-31.bak") is None
+        assert lib.backup_stamp("") is None
+
+    def test_newest_is_by_creation_stamp(self):
+        assert lib.latest_backup([
+            "x.20260731-225802-000001.bak",
+            "x.20260731-225802-000002.bak",
+            "x.20260731-225801-999999.bak"]) == "x.20260731-225802-000002.bak"
+
+    def test_the_collision_counter_sorts_after_its_base(self):
+        # backup_path places the counter so it still sorts AFTER the collision-free name.
+        assert lib.latest_backup([
+            "x.20260731-225802-000001.bak",
+            "x.20260731-225802-0000010001.bak"]) == "x.20260731-225802-0000010001.bak"
+
+    def test_a_stamped_name_beats_an_unstamped_one(self):
+        assert lib.latest_backup(
+            ["x.legacy.bak", "x.20260731-225802-000001.bak"]) == "x.20260731-225802-000001.bak"
+
+    def test_empty_returns_none(self):
+        assert lib.latest_backup([]) is None
+        assert lib.latest_backup(None) is None
+
+    def test_revert_save_revert_restores_the_pre_save_state(self, tmp_path):
+        """The end-to-end sequence that made mtime selection wrong. Under the old
+        `max(..., key=getmtime)` the second revert restored the state the FIRST revert had
+        already discarded — silently re-applying the change the user just undid."""
+        import os
+        import shutil
+        target = tmp_path / "lib.csv"
+        target.write_text("v0\n")
+
+        def save(v):
+            shutil.copy2(target, lib.backup_path(str(target)))
+            target.write_text(f"v{v}\n")
+
+        def revert():
+            baks = [str(p) for p in tmp_path.iterdir() if p.name.endswith(".bak")]
+            newest = lib.latest_backup(baks)
+            shutil.copy2(target, lib.backup_path(str(target)))   # revert is itself undoable
+            shutil.copy2(newest, target)
+
+        save(1)
+        save(2)
+        revert()
+        assert target.read_text() == "v1\n"
+        save(3)
+        revert()
+        assert target.read_text() == "v1\n"      # the pre-save-3 state, not the discarded v2
+        assert os.path.exists(target)

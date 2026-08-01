@@ -1855,6 +1855,45 @@ Ninja Teen,{2}{B},3,
 Virulent Emissary,{G},1,Deathtouch
 Vision Quest,{X}{U}{R},2,
 Self-Reflection,{4}{U}{U},6,Flashback
+"Ardyn, the Usurper",{5}{B}{B}{B},8,Starscourge
+"Moseo, Vein's New Dean",{2}{B},3,Infusion;Flying
+A Realm Reborn,{4}{G}{G},6,
+Interdimensional Web Watch,{4},4,
+Bioengineered Future,{1}{G}{G},3,
+Doubling Season,{4}{G},5,
+"Wingnut, Bat on the Belfry",{1}{R},2,Alliance
+The Soul Stone,{1}{B},2,Indestructible
+Web-Warriors,{4}{G/W},5,
+"Tannuk, Steadfast Second",{2}{R}{R},4,
+Inventors' Fair,,0,
+"Alpharael, Stonechosen",{3}{B}{B},5,Ward;Void
+Specimen Freighter,{5}{U},6,Station;Mill
+Bygone Colossus,{9},9,Warp
+Famished Worldsire,{5}{G}{G}{G},8,Ward;Devour
+Seedship Broodtender,{B}{G},2,Mill
+Knight Luminary,{3}{W},4,Warp
+Perigee Beckoner,{4}{B},5,Warp
+Rhystic Study,{2}{U},3,
+Self-Destruct,{1}{R},2,
+Exhibition Tidecaller,{U},1,Mill;Opus
+Fated Firepower,{X}{R}{R}{R},3,Flash
+Jumbo Cactuar,{5}{G}{G},7,"10,000 Needles"
+Overgrown Tomb,,0,
+Vicious Rivalry,{2}{B}{G},4,
+The Endstone,{7},7,
+"Tezzeret, Cruel Captain",{3},3,
+Memorial Team Leader,{3}{R},4,Warp
+Ouroboroid,{2}{G}{G},4,
+Harmonious Grovestrider,{3}{G}{G},5,Ward
+Meltstrider Eulogist,{2}{G},3,
+Annul,{U},1,
+Pull Through the Weft,{3}{G}{G},5,
+Hylderblade,{B},1,Equip;Void
+Hymn of the Faller,{1}{B},2,Surveil;Void
+Vivien Reid,{3}{G}{G},5,
+"Chandra, Flameshaper",{5}{R}{R},7,
+Firespitter Whelp,{2}{R},3,Flying
+Boltwave,{R},1,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -4478,7 +4517,6 @@ Command Tower,,0,
 "Kilo, Apogee Mind",{U}{R}{W},3,Haste;Proliferate
 "Szarel, Genesis Shepherd",{2}{B}{R}{G},5,Flying
 Anticausal Vestige,{6},6,Warp
-"Tezzeret, Cruel Captain",{3},3,
 All-Fates Stalker,{3}{W},4,Warp
 Astelli Reclaimer,{3}{W}{W},5,Flying;Warp
 Auxiliary Boosters,{4}{W},5,Equip
@@ -4489,7 +4527,6 @@ Exosuit Savior,{2}{W},3,Flying
 Flight-Deck Coordinator,{2}{W},3,
 Hardlight Containment,{W},1,Enchant
 Honor,{W},1,
-Knight Luminary,{3}{W},4,Warp
 Lightstall Inquisitor,{W},1,Vigilance
 Lumen-Class Frigate,{1}{W},2,Station
 Pinnacle Starcage,{1}{W}{W},3,
@@ -4504,7 +4541,6 @@ Starfighter Pilot,{1}{W},2,Surveil
 Sunstar Chaplain,{1}{W},2,
 Sunstar Expansionist,{1}{W},2,Landfall
 Sunstar Lightsmith,{3}{W},4,
-Annul,{U},1,
 Atomic Microsizer,{U},1,Equip
 Cerebral Download,{4}{U},5,Surveil
 Cloudsculpt Technician,{2}{U},3,Flying
@@ -4523,14 +4559,12 @@ Mechan Shieldmate,{1}{U},2,Defender
 Moonlit Meditation,{2}{U},3,Enchant
 Scour for Scrap,{3}{U},4,
 Selfcraft Mechan,{3}{U},4,
-Specimen Freighter,{5}{U},6,Station;Mill
 Starfield Vocalist,{3}{U},4,Warp
 Starwinder,{5}{U}{U},7,Warp
 Synthesizer Labship,{U},1,Station
 Unravel,{1}{U}{U},3,
 Uthros Psionicist,{2}{U},3,
 Uthros Scanship,{3}{U},4,Station
-"Alpharael, Stonechosen",{3}{B}{B},5,Ward;Void
 Archenemy's Charm,{B}{B}{B},3,
 Chorale of the Void,{3}{B},4,Enchant;Void
 Comet Crawler,{2}{B},3,Lifelink
@@ -4541,12 +4575,9 @@ Faller's Faithful,{2}{B},3,
 Fell Gravship,{2}{B},3,Station;Mill
 Gravblade Heavy,{3}{B},4,
 Hullcarver,{B},1,Deathtouch
-Hylderblade,{B},1,Equip;Void
-Hymn of the Faller,{1}{B},2,Surveil;Void
 Lightless Evangel,{1}{B},2,
 Monoist Circuit-Feeder,{4}{B}{B},6,Flying
 Monoist Sentry,{B},1,Defender
-Perigee Beckoner,{4}{B},5,Warp
 Requiem Monolith,{2}{B},3,
 "Sothera, the Supervoid",{2}{B}{B},4,
 Sunset Saboteur,{1}{B},2,Menace;Ward
@@ -4562,7 +4593,6 @@ Full Bore,{R},1,
 Galvanizing Sawship,{5}{R},6,Station
 Kavaron Harrier,{R},1,
 Lithobraking,{2}{R},3,
-Memorial Team Leader,{3}{R},4,Warp
 Memorial Vault,{3}{R},4,
 Possibility Technician,{2}{R},3,Warp
 Red Tiger Mechan,{3}{R},4,Haste;Warp
@@ -4572,31 +4602,24 @@ Ruinous Rampage,{1}{R}{R},3,
 Rust Harvester,{R},1,Menace
 Slagdrill Scrapper,{R},1,
 Systems Override,{2}{R},3,
-"Tannuk, Steadfast Second",{2}{R}{R},4,
 Terminal Velocity,{4}{R}{R},6,
 Vaultguard Trooper,{4}{R},5,
 Warmaker Gunship,{2}{R},3,Station
 Weapons Manufacturing,{1}{R},2,
 Zookeeper Mechan,{1}{R},2,
 Atmospheric Greenhouse,{4}{G},5,Station
-Bioengineered Future,{1}{G}{G},3,
 Close Encounter,{1}{G},2,
 Diplomatic Relations,{2}{G},3,
 Edge Rover,{G},1,Reach
 Eumidian Terrabotanist,{1}{G},2,Landfall
-Famished Worldsire,{5}{G}{G}{G},8,Ward;Devour
 Frenzied Baloth,{G}{G},2,Haste;Trample
 Fungal Colossus,{6}{G},7,
 Gene Pollinator,{G},1,
-Harmonious Grovestrider,{3}{G}{G},5,Ward
 Icetill Explorer,{2}{G}{G},4,Mill;Landfall
 Larval Scoutlander,{2}{G},3,Station
 Lashwhip Predator,{4}{G}{G},6,Reach
-Meltstrider Eulogist,{2}{G},3,
 Meltstrider's Resolve,{G},1,Fight;Enchant
 Mightform Harmonizer,{2}{G}{G},4,Warp;Double;Landfall
-Ouroboroid,{2}{G}{G},4,
-Pull Through the Weft,{3}{G}{G},5,
 Sami's Curiosity,{G},1,
 Sledge-Class Seedship,{2}{G},3,Station
 Terrasymbiosis,{2}{G},3,
@@ -4613,16 +4636,13 @@ Interceptor Mechan,{2}{B}{R},4,Flying;Void
 Mutinous Massacre,{3}{B}{B}{R}{R},7,
 Pinnacle Emissary,{1}{U}{R},3,Warp
 "Sami, Ship's Engineer",{2}{R}{W},4,
-Seedship Broodtender,{B}{G},2,Mill
 Singularity Rupture,{3}{U}{B}{B},6,Mill
 Space-Time Anomaly,{2}{W}{U},4,Mill
 Station Monitor,{W}{U},2,
 "Syr Vondam, Sunstar Exemplar",{W}{B},2,Vigilance;Menace
 "Tannuk, Memorial Ensign",{1}{R}{G},3,Landfall
 All-Fates Scroll,{3},3,
-Bygone Colossus,{9},9,Warp
 Dauntless Scrapbot,{3},3,
-The Endstone,{7},7,
 The Eternity Elevator,{5},5,Station
 Extinguisher Battleship,{8},8,Station
 Nutrient Block,{1},1,Indestructible
@@ -4646,7 +4666,6 @@ Grove of the Burnwillows,,0,
 High Market,,0,
 Hissing Quagmire,,0,
 Inkmoth Nexus,,0,
-Inventors' Fair,,0,
 Lumbering Falls,,0,
 Mana Confluence,,0,
 Meteor Crater,,0,
@@ -4677,7 +4696,6 @@ Ancient Copper Dragon,{4}{R}{R},6,Flying;Treasure
 "Purphoros, God of the Forge",{3}{R},4,Indestructible
 Tymna the Weaver,{1}{W}{B},3,Lifelink;Partner
 Wall of Omens,{1}{W},2,Defender
-Rhystic Study,{2}{U},3,
 "Teferi, Mage of Zhalfir",{2}{U}{U}{U},5,Flash
 Mizzix's Mastery,{3}{R},4,Overload
 "Ragavan, Nimble Pilferer",{R},1,Treasure;Dash
@@ -4725,8 +4743,6 @@ Soul-Shackled Zombie,{3}{B},4,
 "Tinybones, Bauble Burglar",{1}{B},2,
 Tragic Banshee,{4}{B},5,Morbid
 "Zul Ashur, Lich Lord",{1}{B},2,Ward
-Boltwave,{R},1,
-"Chandra, Flameshaper",{5}{R}{R},7,
 Courageous Goblin,{1}{R},2,
 Dragon Trainer,{3}{R}{R},5,
 Electroduplicate,{2}{R},3,Flashback
@@ -4772,7 +4788,6 @@ Slagstorm,{1}{R}{R},3,
 Spitfire Lagac,{3}{R},4,Landfall
 Thrill of Possibility,{1}{R},2,
 Blanchwood Armor,{2}{G},3,Enchant
-Doubling Season,{4}{G},5,
 "Dwynen, Gilt-Leaf Daen",{2}{G}{G},4,Reach
 Genesis Wave,{X}{G}{G}{G},3,
 "Ghalta, Primal Hunger",{10}{G}{G},12,Trample
@@ -4783,7 +4798,6 @@ Nessian Hornbeetle,{1}{G},2,
 Overrun,{2}{G}{G}{G},5,
 Reclamation Sage,{2}{G},3,
 Scavenging Ooze,{1}{G},2,
-Vivien Reid,{3}{G}{G},5,
 Wary Thespian,{1}{G},2,Surveil
 Good-Fortune Unicorn,{1}{G}{W},3,
 "Muldrotha, the Gravetide",{3}{B}{G}{U},6,
@@ -4964,7 +4978,6 @@ Vampire Interloper,{1}{B},2,Flying
 Vampire Soulcaller,{4}{B},5,Flying
 Carnelian Orb of Dragonkind,{2}{R},3,
 "Drakuseth, Maw of Flames",{4}{R}{R}{R},7,Flying
-Firespitter Whelp,{2}{R},3,Flying
 Kargan Dragonrider,{1}{R},2,
 Shivan Dragon,{4}{R}{R},6,Flying
 Terror of Mount Velus,{5}{R}{R},7,Flying;Double strike
@@ -5032,7 +5045,6 @@ Thief's Knife,{2}{U},3,Job select;Equip
 Travel the Overworld,{5}{U}{U},7,Affinity
 Valkyrie Aerial Unit,{5}{U}{U},7,Flying;Surveil;Affinity
 The Water Crystal,{2}{U}{U},4,Mill
-"Ardyn, the Usurper",{5}{B}{B}{B},8,Starscourge
 "Cecil, Dark Knight // Cecil, Redeemed Paladin",{B},1,Lifelink;Protect;Transform;Darkness;Deathtouch
 Dark Knight's Greatsword,{2}{B},3,Chaosbringer;Job select;Equip
 The Darkness Crystal,{2}{B}{B},4,
@@ -5065,7 +5077,6 @@ Prompto Argentum,{1}{R},2,Selfie Shot;Treasure;Haste
 "Raubahn, Bull of Ala Mhigo",{1}{R},2,Ward
 Red Mage's Rapier,{1}{R},2,Job select;Equip
 Sandworm,{4}{R},5,Haste
-Self-Destruct,{1}{R},2,
 "Sidequest: Play Blitzball // World Champion, Celestial Weapon",{2}{R},3,Double Overdrive;Transform;Equip;Double
 Summon: Brynhildr,{1}{R},2,
 Summon: G.F. Cerberus,{2}{R}{R},4,Surveil;Double
@@ -5082,12 +5093,10 @@ Cactuar,{G},1,Trample
 Coliseum Behemoth,{5}{G}{G},7,Trample
 Esper Origins // Summon: Esper Maduin,{1}{G},2,Surveil;Transform;Flashback
 Gigantoad,{3}{G},4,
-Jumbo Cactuar,{5}{G}{G},7,"10,000 Needles"
 Loporrit Scout,{2}{G},3,
 Prishe's Wanderings,{2}{G},3,
 "Quina, Qu Gourmet",{2}{G},3,
 Reach the Horizon,{3}{G},4,
-A Realm Reborn,{4}{G}{G},6,
 Sazh Katzroy,{3}{G},4,Double
 Sidequest: Raise a Chocobo // Black Chocobo,{1}{G},2,Transform;Landfall
 Summon: Fenrir,{2}{G},3,
@@ -12787,7 +12796,6 @@ Brush Off,{2}{U}{U},4,
 Campus Composer // Aqueous Aria,{3}{U} // {4}{U},4,Prepared;Ward
 Emeritus of Ideation // Ancestral Recall,{3}{U}{U} // {U},5,Flying;Prepared;Ward
 Encouraging Aviator // Jump,{2}{U} // {U},3,Flying;Prepared
-Exhibition Tidecaller,{U},1,Mill;Opus
 Flow State,{1}{U},2,
 Fractal Anomaly,{U},1,
 Fractalize,{X}{U},1,
@@ -12811,7 +12819,6 @@ Grave Researcher // Reanimate,{2}{B} // {B},3,Surveil;Prepared
 Lecturing Scornmage,{B},1,Repartee
 Leech Collector // Bloodletting,{1}{B} // {B},2,Prepared
 Masterful Flourish,{B},1,
-"Moseo, Vein's New Dean",{2}{B},3,Infusion;Flying
 Postmortem Professor,{1}{B},2,
 Pox Plague,{B}{B}{B}{B}{B},5,
 Scathing Shadelock // Venomous Words,{4}{B} // {B},5,Prepared
@@ -12875,7 +12882,6 @@ Splatter Technique,{1}{U}{U}{R}{R},5,
 Stirring Honormancer,{2}{W}{W/B}{B},5,
 Suspend Aggression,{1}{R}{W},3,
 Traumatic Critique,{X}{U}{R},2,
-Vicious Rivalry,{2}{B}{G},4,
 Zaffai and the Tempests,{5}{U}{R},7,
 Diary of Dreams,{2},2,
 Mage Tower Referee,{2},2,
@@ -12968,7 +12974,6 @@ The Death of Gwen Stacy,{2}{B},3,
 Merciless Enforcers,{1}{B},2,Lifelink
 Parker Luck,{2}{B},3,
 "Scorpion, Seething Striker",{3}{B},4,Connive;Deathtouch
-The Soul Stone,{1}{B},2,Indestructible
 Gwen Stacy // Ghost-Spider,{1}{R} // {2}{U}{R}{W},2,Flying;Vigilance;Transform;Haste
 Maximum Carnage,{4}{R},5,
 Shadow of the Goblin,{1}{R},2,Undying;Unreliable Visions;Undying Vengeance
@@ -13000,10 +13005,8 @@ Spider-Man 2099,{U}{R},2,Vigilance;From the Future;Double strike
 "The Spot, Living Portal",{3}{W}{B},5,
 Superior Spider-Man,{2}{U}{B},4,Mind Swap
 "Vulture, Scheming Scavenger",{5}{U/B},6,Flying
-Web-Warriors,{4}{G/W},5,
 Bagel and Schmear,{1},1,Nosh;Share
 Doc Ock's Tentacles,{1},1,Equip
-Interdimensional Web Watch,{4},4,
 "Iron Spider, Stark Upgrade",{3},3,Vigilance
 "Living Brain, Mechanical Marvel",{4},4,
 Passenger Ferry,{3},3,Crew
@@ -13818,7 +13821,6 @@ Fire Nation Engineer,{2}{B},3,Raid
 Phoenix Fleet Airship,{2}{B}{B},4,Flying;Crew
 The Rise of Sozin // Fire Lord Sozin,{4}{B}{B},6,Transform;Firebending;Menace
 Wolfbat,{2}{B},3,Flying
-Fated Firepower,{X}{R}{R}{R},3,Flash
 Fire Nation Attacks,{4}{R},5,Flashback
 The Legend of Roku // Avatar Roku,{2}{R}{R},4,Transform;Firebending
 "Mai, Jaded Edge",{1}{R},2,Prowess;Exhaust
@@ -14103,7 +14105,6 @@ Mouser Attack!,{1}{R},2,
 Raphael's Technique,{4}{R}{R},6,Sneak
 Ravenous Robots,{1}{R},2,
 "Slash, Reptile Rampager",{3}{R}{R},5,Alliance
-"Wingnut, Bat on the Belfry",{1}{R},2,Alliance
 Groundchuck & Dirtbag,{4}{G}{G},6,Trample
 Michelangelo's Technique,{4}{G},5,Sneak
 "Mutagen Man, Living Ooze",{X}{G}{G},2,Trample
@@ -14145,7 +14146,6 @@ Seven of Nine,{2}{U}{B},4,Face a dilemma
 Crystalline Entity,{8},8,Flying
 "U.S.S. Enterprise-D, Galaxy-Class",{3},3,Station
 Godless Shrine,,0,
-Overgrown Tomb,,0,
 Sacred Foundry,,0,
 Steam Vents,,0,
 Stomping Ground,,0,

@@ -86,12 +86,26 @@ _EXCLUDED = {
     ("deck", "_ARRIVING_BREAK"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_DEPARTING_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_ARROW_AFTER"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_SIMILE_BEFORE"): "tier-RATIONALE prose (6-char lookbehind slice, not a "
+                                "card-text corpus); unit-tested in test_deck.py",
+    ("deck", "_EXCLUSION_CUES"): "deck-HEADER prose (wrong_exclusion_claims); "
+                                 "unit-tested in test_deck.py",
+    ("deck", "_EXCLUSION_PAREN"): "deck-HEADER prose punctuation, not card text; "
+                                  "unit-tested in test_deck.py",
+    ("deck", "_EXCLUSION_STOP"): "deck-HEADER prose punctuation (clause boundary), not "
+                                 "card text; unit-tested in test_deck.py",
+    ("deck", "_BELOW_FLOOR_ARGUMENT"): "tier-RATIONALE prose (F-07: does the header argue "
+                                       "for grading UNDER the metrics floor); unit-tested "
+                                       "in test_deck.py",
     ("deck", "_TRAILING_NOTE_RE"): "hand-typed card NAME normalization (strips a pile's "
                                    "'(needs Lessons)' note), not card text; unit-tested "
                                    "in test_deck.py::TestNameResolution",
     ("deck", "_SQUASH_RE"): "hand-typed card NAME normalization (punctuation-insensitive "
                             "match key), not card text; unit-tested in "
                             "test_deck.py::TestNameResolution",
+    ("lib", "_BAK_STAMP_RE"): "`.bak` FILENAME stamp syntax (the creation timestamp "
+                              "backup_path embeds, read back by latest_backup), not card "
+                              "text; unit-tested in test_lib.py::TestBackupSelection",
 }
 
 
@@ -128,6 +142,10 @@ def _pattern_groups():
     for name in ("_INT_CUES", "_CA_CUES", "_LOOT_RE", "_PROTECTION_RE",
                  "_POWER_THRESHOLD_RE", "_MANA_PRODUCE_RE", "_RESTRICT_RE",
                  "_INT_COUNT_RE", "_INT_FIGHT_RE",
+                 # F-09b: the non-removal sibling of _INT_COUNT_RE — a card whose
+                 # value is a COUNT in the deck ("damage equal to the number of
+                 # Swamps you control") reads at its floor in every model here.
+                 "_DECK_STATE_AXIS_RE",
                  # Added by broad-scan F-04 — live, but previously uncovered.
                  "_DOUBLER_POWER_RE", "_REMINDER_RE",
                  # Zone-conflict detector (the mirror of cost_upside_flags): which

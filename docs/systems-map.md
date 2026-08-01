@@ -111,15 +111,18 @@ The longest path, and the one that most needs a map.
   differently. Two of them answering the same question is now gated
   (`check_agreement.py`); the rest genuinely answer different questions and the
   reconciliation is yours.
-- ⚖ **`cuts` is a 45% coin flip on CREATURES** — measured on the recommendation ledger
-  (90% agreement on noncreature cuts, 45% on creature cuts, n=52). `fit` is an
+- ⚖ **`cuts` is a 42% coin flip on CREATURES** — measured on the recommendation ledger
+  (83% agreement on noncreature cuts, 42% on creature cuts, n=100; it read 90% / 45% at
+  n=52, so both segments drifted slightly worse as the sample doubled). `fit` is an
   unnormalized sum, so tag count drives the keep-score and creatures carry ~5.7 tags
   against ~3.0 for spells. **This is the regime where `cuts` is used most.** Read it as
   a shortlist, never a signal, on a creature-heavy deck. Normalization was simulated
   across all 64 decks and rejected (it moves 1% of shortlist slots), and the standing
-  P/T fix-hypothesis was **tested and rejected** (§7). Two caveats now attach to the 45%
-  itself: per deck it runs 0% to 100%, so it is partly a statement about which decks were
-  edited; and `deck.py feedback` discloses that breakdown so you can see it.
+  P/T fix-hypothesis was **tested and rejected** (§7). Two caveats attach to the creature
+  rate itself: per deck it runs 0% to 100%, so it is partly a statement about which decks
+  were edited; and `deck.py feedback` discloses that breakdown so you can see it. (The
+  measurements in §7 below were taken at n=52 and are left at their recorded values — a
+  past experiment's inputs are not restated when the sample grows.)
 - ⚖ **`suggest` alone is blind to structural needs.** It filters to cards sharing a
   synergy theme, so a removal spell, a dork or a land can never surface through it.
   If the scorecard's deficit is interaction or mana, the fix comes from `--needs`,

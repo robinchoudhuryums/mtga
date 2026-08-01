@@ -36,7 +36,12 @@ docs. This file is the source of truth for the workflow commands in
   an interrupted or empty-result write can't truncate the source of truth (audit
   F3/F5). `.bak` names come from one collision-free, sort-safe helper so "newest"
   is unambiguous (audit F22); readers that need the latest (e.g. `app.py revert`)
-  select by mtime. Pass `backup=False` only when writing a scratch temp the caller
+  **must use `lib.latest_backup()`, which selects on the CREATION stamp in the name —
+  never on mtime.** Backups are made with `shutil.copy2`, which copies the SOURCE's
+  mtime, so a `.bak`'s mtime is when its *contents* were written, not when the backup
+  was taken; the two orders diverge as soon as anything restores an old file, and a
+  revert→save→revert then restored the state the first revert had discarded
+  (broad-scan F-04). Pass `backup=False` only when writing a scratch temp the caller
   promotes itself.
 - **`card-library.csv` is the owned inventory** and stays compatible with the
   companion Google Sheet (fixed 8-column header). Derived/reference data lives
@@ -74,6 +79,11 @@ docs. This file is the source of truth for the workflow commands in
   library stores the front only — else an owned DFC would read as `craft` (audit F6).
   Route every such join through `lib.owned_qty` (front-face aware); `check_dfc.py`
   hard-gates this (behavioral anchor + a static scan for raw lookups that bypass it).
+  **`card.py` belongs in that list too, and was the violation**: it read `Quantity Owned`
+  off the FIRST matching row, so every card owned in two sets under-reported (Rugged
+  Highlands showed 1 against a real 3) — on the surface G-01 makes the mandated
+  pre-grading read. The gate could not see it: its scan looks for a lookup on an
+  ownership INDEX, and this was a per-row column read, which is a different shape.
 - **Decks share the collection — a card is NOT consumed by a deck.** In MTG Arena
   the whole collection is available to every deck at once, so one owned copy can
   sit in any number of decks *simultaneously*; owning N copies lets each deck run
@@ -109,7 +119,9 @@ castability · curve · central-theme density), with the intangibles moving a de
   **A-floor** interaction ≥5 and (interaction+card-adv) ≥7; **B-floor** interaction
   ≥3 and sum ≥4; **C-floor** sum ≥2; **D** below that; any uncastable stray caps at
   C. The floor is blind to raw card power / bombs / meta (an idf+role model can't
-  see those), so it **under-rates by design.**
+  see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
+  rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
+  the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
   interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
   cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
@@ -133,7 +145,8 @@ castability · curve · central-theme density), with the intangibles moving a de
   stale**, and that's the only thing the guard flags.
 - **The guard** — `deck.py tier <id>` shows claimed-vs-floor and flags a mismatch
   (≥2 bands over) or a possibly-under-graded deck (claimed *below* the under-rating
-  floor). A roster pass is a **soft, non-gating** `check_all` warning, so an
+  floor) — **unless the `#: tier:` prose argues for grading under it**, which the rubric
+  permits and which three decks were being nagged about. A roster pass is a **soft, non-gating** `check_all` warning, so an
   inflated/stale letter can't hide. It never assigns — it says "re-grade this, or
   justify the bombs/meta in the `#: tier:` rationale." **Run it after any deck edit**
   (the `/apply-changes` skill does) so a tune that moves the metrics re-grounds the
@@ -217,7 +230,11 @@ directions.
   and hard-protect signature cards with a `#: protect:` header. Its `#: protect:`
   keep-boost reads the STRICT spine (a theme carried by ≥2 protected cards), like every
   `fit_strength` caller: the loose union fired on 87% of nonland cards — 100% in two
-  decks — and a boost that applies to every card in a ranking is a constant. [G-09]
+  decks — and a boost that applies to every card in a ranking is a constant. It now
+  prints the axis the deck is SHORT on above the table, because a `⚠interaction` note
+  once put four ONE-MANA spells atop the cut list of the slowest deck on the roster, and
+  flags `⌁scales w/ <axis>` for a card graded at its FLOOR (Cat-Gator reads as a 7-mana
+  3/2 when its ETB is damage equal to your 24 Swamps). Both REPORT-only. [G-09]
 - **"Not in library" for a card you own is the deck-dump undercount symptom.** Fastest
   fix: `reconcile_crafts.py <arena-export>` — it adds the library row, adds a blank
   `card-mana.csv` row so INV-02 always holds, drops the card from the wishlist, and
@@ -302,19 +319,24 @@ directions.
   **let a roster-wide sweep be the check**: a false positive is noisy and gets noticed, a
   false negative is silent, and three separate sweeps each found figures the audit had
   reported clean. A CARD citation and a FIGURE go stale differently and must not share a
-  predicate. **KNOWN RESIDUAL, live:** a copula or participle between a label and its
-  number still hides a figure ("protection is 1", "the reported 2.57"), and a change-cue
-  about one card still suppresses a citation of ANOTHER card in the same window even when
-  the clause says that card **stays** — so a "X stays" claim is NOT covered; check it by
-  hand after a swap. [G-26]
+  predicate — and the CARD path kept a broad `remov\w*` for a year after the FIGURE path
+  was narrowed for exactly that word, so a card whose own text says "removes" suppressed
+  its own staleness report. **KNOWN RESIDUAL, live:** a copula between a label and its
+  number still hides a figure ("protection is 1"); a change-cue about one card still
+  suppresses a citation of ANOTHER in the same window even when the clause says that card
+  **stays**; and prose saying "the swap removes X" about a CUT card now reads as a live
+  citation. Shorthand ("Heartfire" for Heartfire Immolator) and simile ("X is Spell Pierce
+  that…") ARE handled. [G-26]
 - **Run `tier <id> --audit-rationale` after ANY deck edit.** The tier guard checks the
   LETTER; this checks the ARGUMENT — cards the prose cites that the deck no longer runs,
   and figures the live quality vector contradicts. A swap moves those numbers by
   construction. Scoped to `#: tier:` AND `#: archetype:` — the archetype block is equally a
   claim about the CURRENT list, and it is the header a reader trusts first, so it is the
-  one that goes stale unnoticed. `#: notes:` stays out: it is a free-form build log where naming
-  an absent card is correct. Report-only. A rationale that legitimately names a card it
-  cut must put the change-cue ADJACENT to the name. [G-27]
+  one that goes stale unnoticed. `#: notes:` stays out of the STALENESS scan — a build log
+  may name an absent card — but an EXCLUSION claim in it ("deliberately NOT included: X")
+  is checked, because that is a claim about the current list in the opposite direction.
+  Report-only. A rationale that legitimately names a card it cut must put the change-cue
+  ADJACENT to the name. [G-27]
 - **`suggest`'s `Decks` column is cross-deck BREADTH, not curated fit** — castable and
   sharing a *central* theme that is also SPECIFIC, with variants collapsed to their core
   deck. Both gates are load-bearing: centrality alone left the column saturated at 99%,
@@ -364,7 +386,11 @@ directions.
   source recommendation. Run it whenever a splash, a double pip or a top-end bomb is in
   question; it is what settles "is this actually castable" instead of hand-waving from a
   source count. A thin (≤3-source) splash is reframed "cast late or cut" rather than
-  printing an impractical land count. A planning aid, not a guarantee. [G-36]
+  printing an impractical land count. The land-count advisory checks the neighbour before
+  prescribing a direction: on a low curve BOTH directions used to trip ("consider fewer"
+  at 24 lands, "consider more" at 23, where keepable was worse), so when neither helps it
+  now says the threshold is unreachable and points at cast-on-curve — which is the number
+  that settles the question anyway. A planning aid, not a guarantee. [G-36]
 - **`deck.py suggest --lands <id>` is the manabase RECOMMENDER** — plain `suggest` is
   structurally blind to lands, because it filters to cards sharing a synergy theme.
   Scored on FIXING value plus two bounded nudges (a land's own synergy text, and the
@@ -430,7 +456,12 @@ directions.
   IS NOW. **Re-run `screen` after ANY change of plan, not once**: a pile graded against
   the first draft's plan keeps those verdicts, which is how four cards were excluded for
   reasons that had expired. Its `★ STRICT UPGRADE` test is deliberately conservative, so
-  its silence is not a verdict. [G-47]
+  its silence is not a verdict — and when KEY fires on ≥40% of a pile `screen` SAYS SO:
+  measured at 45–51% on the two mono-black decks, where the signature theme sits on half
+  the colour's pool. Read the ORDER, not the word. `similar` likewise prints `▸ Most
+  shared CARDS` when its theme ranking disagrees with actual card overlap — deck 52a
+  reads 96% against deck 6 (4 shared cards) and 81% against its own parent (14). Theme
+  similarity and card overlap are different questions, and SOME OVERLAP IS FINE. [G-47]
 - **Every role COUNT carries its own uncertainty** (`deck.count_conf`), because a
   heuristic classifier reports a false negative as a FACT. `stats`/`tier` render `7`,
   `3 +2?`, or `8 +4? (3 unclassified)`. The remainders are QUANTITY-WEIGHTED like the
@@ -547,20 +578,45 @@ directions.
   short. **The inverse is the G-42 shape** — blind mill FEEDS a graveyard deck. If the
   scorecard really says interaction, the fix is `suggest --needs` per G-38, not a mill
   card. Deck 51 is the worked case: its mill package is a second win condition. [G-62]
-- **THE FRONT FACE AND THE STORED METADATA DISAGREE — ON EVERY COLUMN, NOT JUST COST.**
-  G-02 is one member of a class that produced four bugs in one cycle, each on a different
-  column of a `Front // Back` card. **COST:** a modal DFC stored only the front, so a
-  castable back face was invisible — which is why both faces of Bruce Banner were called
-  unreachable in chat (49 rows, fixed). **COLOR:** `Color(s)` is identity, so `suggest`
-  hid 55 castable red-pool cards (G-58). **TYPE:** a substring scan over the whole type
-  line returned the BACK face's type, so any DFC with a land back left the curve and
-  joined the land total — deck 49 read 26 lands holding 25. **NAME:** `swap --apply` wrote
-  a bare `1 Runescale Stormbrood`, which parses and passes `legal` but fails an Arena
-  import. Each column now has ONE front-face-aware accessor — `lib.front_face_cost`,
-  the printed cost (not `card_colors` alone), `lib.primary_type`, `lib.owned_qty` — and a
-  SECOND COPY carries the bug again, which is what `build_gallery.py`'s private
-  `_primary_type` did for as long as it existed. **When a name contains `" // "`, ask
-  which face the column describes before you trust it.** [G-63]
+- **THE FRONT FACE AND THE STORED METADATA DISAGREE — ON EVERY COLUMN, AND IN EVERY
+  INDEX.** G-02 is one member of a class that has now produced SIX bugs across five
+  columns: **COST** (a modal DFC stored only the front), **COLOR** (identity hid 55
+  castable red-pool cards — G-58), **TYPE** (a whole-line scan read the BACK face's; deck
+  49 reported 26 lands holding 25), **NAME twice** (`swap --apply` wrote a bare
+  `1 Runescale Stormbrood`; then `_multiset` keyed `verify`/`sync` on the raw name, so an
+  identical deck read as DRIFTED and `sync --apply` would have written that bare name
+  back), and **RARITY** (`load_rarities` reads the pool, keyed only by `Front // Back`, so
+  47 roster names priced blank and every mythic DFC sorted UP the cut list). Each column
+  has ONE front-face accessor — but **the accessor rule does not reach an INDEX**: five
+  loaders alias the front face, two did not, and no gate sees the difference. **Ask which
+  face a column describes; and when you BUILD a name-keyed index over a pool-shaped file,
+  alias the front in a SECOND pass, so a real card named `Front` is never shadowed.**
+  [G-63]
+
+- **A reanimator's uncastable bombs need `#: uncastable-ok:`, and everything else's do
+  not.** The castability lint and `tier_band` both model "you cannot cast this" as a build
+  ERROR, which is right by default and wrong for a whole archetype: one five-colour bomb in
+  mono-black 52a moved `preflight` READY→BLOCKED and the floor A→C, for a card working as
+  designed. The header is OPT-IN and PER-CARD (`#: uncastable-ok: A; B`, semicolons, like
+  `#: protect:`) — most uncastable cards really are mistakes, so the default stays a hard
+  FAIL. An exempt card is still PRINTED by `mana` and counted in `preflight` as
+  "(+N intended, exempt)"; it leaves the failure list, not the page. [G-64]
+- **Never hand-write a deck line's `(SET) COLLECTOR#` — get it from `deck.py resolve`.**
+  Those fields were validated by NOTHING: `1 Eaten Alive (ZZZ) 172` passed `legal`, passed
+  `check` (which reported it OWNED, because ownership joins on the NAME), passed
+  `preflight` READY and passed `check_all`. A deck file could be integrity-clean and
+  un-importable at once, and deck 52 was written with `(FDN) 610` against a real 172. Now:
+  a set code that exists nowhere is a HARD INV-04 failure; an unheld collector number in a
+  real set is a SOFT warning, since the pool keys ONE printing per card. Basics are exempt
+  — Arena prints several arts per set. `deck.py legal <id>` lists both. [G-65]
+- **`deck.py targets <id>` answers whether the deck holds TARGETS for its own gated
+  effects** — MV caps ("reanimate a creature MV 4 or less"), sacrifice costs, count
+  thresholds. Every other model here grades a card in ISOLATION, so a gate with nothing
+  behind it is invisible: deck 52's concept pile held 24 ways to return a creature against
+  8 worth returning, a number that had to be derived by hand. This is the automated half of
+  G-61's "state the count, then decide". `✗ NOTHING` is a dead card; `⚠ thin` (≤3) is the
+  shape to read. Counts exclude the card itself. Heuristic and report-only — read the list,
+  not just the number. [G-66]
 
 ## Known Issues
 
@@ -666,8 +722,8 @@ earned it: [C-01]
 - Documentation Currency — README / CLAUDE.md / docs match the code and data
 
 **Subsystems:**
-- Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv,
-  recommendations.csv [C-02]
+- Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
+  (absent until the first `/log-matches`), recommendations.csv [C-02]
 - Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only
   subsystems that have seen a real game or a real decision [C-03]
 - Ingest & Enrich: scripts/import_arena.py, scripts/import_collection.py,
@@ -680,7 +736,7 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (16 files: the markup-contract, CLI-entry-point, analysis-model,
+- Testing: tests/ (17 files: the markup-contract, CLI-entry-point, analysis-model,
   gate-pinning, shared-primitive and ingest layers), requirements-dev.txt, pytest.ini,
   .github/workflows/tests.yml [C-07]
 - Decks: decks/
@@ -689,7 +745,7 @@ earned it: [C-01]
 - INV-01 | card-library.csv has the canonical 8-column header, every row has 8 fields, no duplicate (Card Name, Set Code, Collector #) printing, and Quantity Owned is blank or a non-negative integer | Subsystem: Data | Verify: scripts/check_all.py (via validate.py)
 - INV-02 | Every Card Name in card-library.csv has a row in card-mana.csv | Subsystem: Data | Verify: scripts/check_all.py
 - INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released+Power+Toughness warn if absent), gallery.html | Subsystem: Data/Presentation | Verify: scripts/check_all.py
-- INV-04 | Every deck file under decks/ parses with no malformed card lines | Subsystem: Decks | Verify: scripts/check_all.py
+- INV-04 | Every deck file under decks/ parses with no malformed card lines, AND every line's `(SET)` code exists in the pool or library (an unheld COLLECTOR # within a real set is a soft warning, since the pool keys one printing per card) | Subsystem: Decks | Verify: scripts/check_all.py
 - INV-05 | Color(s) stores color identity; actual mana cost lives only in card-mana.csv | Subsystem: Data | Verify: design/manual
 - INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --merge after imports (--merge preserves hand-curated tags; --force replaces them) | Subsystem: Ingest | Verify: manual
 
@@ -709,7 +765,7 @@ format.
    you pasted. [C-08]
 2. Analyze a deck | Subsystem: Deck Tooling Correctness
    Steps: `deck.py check|mana|consistency|tribes|stats|shape|legal|cuts|tier|tier
-   --audit-rationale|redundancy|text|verify <id>`, plus `feedback`, `suggest <id>
+   --audit-rationale|redundancy|targets|text|verify <id>`, plus `feedback`, `suggest <id>
    --lands|--ramp|--interaction|--needs`, `screen <id> <names>`, and roster-wide `audit`
    / `suggest-homes` / `similar` / `resolve` / `rotation` / `pool.py --role`. Also
    `deck.py --help` and one subcommand help.

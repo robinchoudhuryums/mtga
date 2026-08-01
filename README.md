@@ -61,6 +61,17 @@ pass `--zero-missing`. Columns are matched by alias against the header (so most 
 work unchanged) and it stops rather than guessing if it can't identify one; map them with
 `--map name=Card,qty=Have`.
 
+**Several export printings of one card SUM onto the library row they resolve to.** A
+tracker exports one row per *printing*, while the library may hold fewer printings of that
+card and ownership is counted per *card* (copies are fungible across sets) — so
+`2× (M19) 314` plus `1× (DOM) 168` against a library holding only the DOM printing means
+you own **3**. Each entry used to be assigned in turn, so the last one won and the rest
+were silently dropped: the row landed on 1 or 2 depending on the order the export happened
+to list them, and the report printed one clean line and looked right. A *repeated*
+printing is the opposite case and is not summed — a tracker emitting the same
+`(name, set, collector)` twice is stating one holding twice, not two holdings, so
+identical export keys collapse on `max` first.
+
 **After any import, rebuild the derived data** — a new card has no `card-mana.csv` row,
 so INV-02 fails until `build_mana.py --pool` runs. `/refresh` runs the whole chain.
 
@@ -367,6 +378,7 @@ python3 scripts/deck.py mana 1a       # hybrid-aware color requirements + castab
 python3 scripts/deck.py consistency 1a # opening-hand keepable %, land drops, P(cast on curve) + source fix
 python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
 python3 scripts/deck.py engines 1a    # enabler ↔ payoff balance for the deck's engine themes
+python3 scripts/deck.py targets 1a    # does the deck hold TARGETS for its own gated effects (MV caps, sac costs, thresholds)?
 python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
 python3 scripts/deck.py suggest 1a --lands --owned  # MANABASE recommender: owned lands that fix your colors (fixing + synergy + scarce-color nudges)
 python3 scripts/deck.py suggest 1a --needs   # STRUCTURAL needs the theme model can't see: fixing · acceleration (--ramp) · interaction (--interaction, board-scalers flagged)
@@ -406,8 +418,12 @@ than its accuracy. A disagreement is a case the model got wrong either way. Belo
 swaps it refuses to compute a rate at all.
 
 The rate is **split by creature vs noncreature cut**, because one pooled number hid a
-two-fold difference: at 52 swaps the pooled figure read 63%, while noncreature cuts
-agreed 90% and creature cuts sat at 45% — a coin flip. The cause is that `cuts` scores a
+two-fold difference: at 100 swaps the pooled figure reads 62%, while noncreature cuts
+agree 83% and creature cuts sit at 42% — a coin flip, and the median creature cut sits
+61% toward "keep", i.e. the model typically wanted to keep the card you cut. (The sample
+has doubled since the split was first measured at n=52, where the three figures read
+63% / 90% / 45%; the conclusion held and both segments drifted slightly WORSE, which is
+the honest direction for a signal that was never re-weighted.) The cause is that `cuts` scores a
 card by *summing* theme weights over its tags with no normalization for tag count, and
 creatures carry roughly twice as many tags as noncreature spells (tribes, keywords and
 ability tags), so they are systematically protected from the cut list. Normalizing was
@@ -607,6 +623,49 @@ false negative as a fact — a card it can't parse contributes 0, and `0` reads 
 read like that role but couldn't be tagged), or `8 +4? (3 unclassified)`. 52 of 57
 decks show uncertainty inline; one of them was graded on interaction 3 when a hand
 count said 7.
+
+**Four output changes worth knowing about.** `deck.py screen` says so when its `KEY`
+label is SATURATED — measured at 45–51% of the pile on a mono-black graveyard deck, where
+the deck's signature theme sits on half the colour's card pool; the ordering still carries
+information, the word does not. `deck.py similar` prints `▸ Most shared CARDS` whenever its
+theme ranking disagrees with actual card overlap (deck 52a reads 96% similar to deck 6, with
+which it shares 4 cards, and 81% to its own parent, with which it shares 14) — theme
+similarity and card overlap are different questions, and some overlap between decks is
+expected. `deck.py cuts` prints which axis the deck is short on, so a "this removal is
+redundant" note is read in context rather than trimming cheap cards from a deck that is
+already too slow, and flags `⌁ scales w/ <axis>` for a card whose value is a count in the
+deck rather than in its own text. And `deck.py consistency` no longer prescribes a land
+count when moving that way makes things worse — on a low curve both directions used to
+trip, so it now says the keepable threshold is unreachable and points at cast-on-curve.
+
+**`deck.py targets <id>`** answers a question every other model here is structurally
+blind to: a card whose text names a RESOURCE — "return target creature card with mana
+value 4 or less", "sacrifice an artifact or creature", "eight or more permanent cards in
+your graveyard" — is worth exactly as much as the number of cards in *this* deck that
+supply it, and every scoring function grades a card in isolation. It prints, per gated
+card, what the text needs and how many cards in the list satisfy it: `✗ NOTHING` is a dead
+card, `⚠ short of N` is an unmet threshold, `⚠ thin` fires at ≤3. Counts exclude the card
+itself. The recursion row reports the count that actually decides something — not "how
+many creatures" (nearly all of them) but how many are MV 5+, i.e. big enough that cheating
+them into play gains real mana. Deck 52's concept pile turned out to hold **24 ways to
+return a creature against 8 worth returning**, which redirected the whole build; before
+this command that number had to be derived by hand.
+
+**A deck line's printing is now checked.** `(SET)` and `COLLECTOR #` used to be read by
+nothing — a line naming a set code that does not exist passed `legal`, passed `check`
+(which reported it OWNED, since ownership joins on the name), passed `preflight` READY and
+passed `check_all`. A nonexistent set code is now a hard INV-04 failure; an unheld
+collector number inside a real set is a soft warning, because the pool keys one printing
+per card so a legitimate alternate art lands there too. Basic lands are exempt — Arena
+prints several arts per set. Get printings from **`deck.py resolve`**, never by hand.
+
+**`#: uncastable-ok: Card A; Card B`** exempts named cards from the castability failure and
+from the tier floor's uncastable cap. It exists for reanimator decks, where a bomb you
+cannot cast is the *point*: without it, one five-colour card in a mono-black reanimator
+moved `preflight` from READY to BLOCKED and the metrics floor from A to C. Opt-in and
+per-card on purpose — most uncastable cards really are mistakes, so the default stays a
+hard fail. Exempt cards are still printed by `deck.py mana` and counted in `preflight` as
+`(+N intended, exempt)`; they leave the failure list, not the page.
 
 **`deck.py shape <id>`** answers the structural question themes cannot: **wide or
 tall, fast or slow?** `counters` is the same tag whether they all go on one creature
@@ -1053,6 +1112,13 @@ basic lands are skipped — they are deliberately not in the collection.
 
 `--exact` requires `owned == pasted`; use it **only** for the authoritative
 `import_collection.py` route. Every other route treats a line as a lower bound.
+
+The comparison is per **card**, not per line: owned copies are summed across printings,
+while a tracker export carries one line per printing, so all the lines resolving to one
+library row are added up before the check. Comparing a summed total against a single
+line's share made `--exact` structurally unable to pass a *correct* multi-printing
+import — and in the default lower-bound mode it hid real shortfalls, since owned 2
+against lines of 2 and 1 passed both `>=` tests while the paste claimed 3.
 
 ### Rebuilding derived data
 

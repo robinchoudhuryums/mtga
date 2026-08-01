@@ -50,7 +50,10 @@ def backup_path(target):
     same-second write; an ``-%f.N`` counter that sorted BEFORE its base). A microsecond
     timestamp gives chronological lexical order; a sub-microsecond collision appends a
     zero-padded counter placed so it still sorts AFTER the collision-free name. ``.bak``
-    files are gitignored. (Readers that need the newest should still prefer mtime.)
+    files are gitignored.
+
+    Read the newest one back with ``latest_backup``, NOT with ``max(..., key=getmtime)``
+    — see that function for why mtime is the wrong key for a file made by ``copy2``.
     """
     stamp = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
     path = f"{target}.{stamp}.bak"
@@ -59,6 +62,54 @@ def backup_path(target):
         n += 1
         path = f"{target}.{stamp}{n:04d}.bak"
     return path
+
+
+# The stamp `backup_path` embeds: `<target>.YYYYmmdd-HHMMSS-ffffff[NNNN].bak`.
+_BAK_STAMP_RE = re.compile(r"\.(\d{8}-\d{6}-\d{6})(\d{4})?\.bak$")
+
+
+def backup_stamp(path):
+    """The CREATION stamp `backup_path` embedded, as a sortable tuple, or None if the
+    name doesn't follow the scheme (a hand-made or legacy `.bak`)."""
+    m = _BAK_STAMP_RE.search(path or "")
+    return (m.group(1), m.group(2) or "") if m else None
+
+
+def latest_backup(paths):
+    """The most recently CREATED backup among `paths` (None if empty).
+
+    Selects on the stamp in the NAME, not on mtime, because every backup here is made
+    with ``shutil.copy2`` — which copies the source's mtime. A `.bak`'s mtime is
+    therefore *when its contents were written*, not when the backup was taken, and those
+    orders diverge the moment anything restores an old file: `app.py`'s ``revert`` writes
+    a restored (old-mtime) file back into place, so the NEXT save's backup inherits that
+    old mtime and sorts before backups of newer content. Reproduced end to end — save,
+    save, revert, save, revert restored the state that had already been discarded rather
+    than the pre-save one, silently re-applying the change the user had just undone
+    (broad-scan F-04).
+
+    The names are microsecond-stamped at creation and lexically ordered by construction
+    (that is what `backup_path` is for), so they are the reliable key. Falls back to
+    mtime only when NO name carries a stamp — the legacy/hand-made case F22's mtime
+    selection was reaching for; a stamped name always wins over an unstamped one, which
+    is correct, since the stamped scheme is the current one.
+    """
+    paths = list(paths or [])
+    if not paths:
+        return None
+    stamped = [p for p in paths if backup_stamp(p)]
+    if stamped:
+        return max(stamped, key=backup_stamp)
+
+    def _mtime(p):
+        # A path that has vanished sorts last rather than raising: this is the fallback
+        # inside a RESTORE path, and losing the selector to a stat error is worse than
+        # picking the next-newest file.
+        try:
+            return os.path.getmtime(p)
+        except OSError:
+            return -1.0
+    return max(paths, key=_mtime)
 
 
 def atomic_write(path, write_fn, *, backup=True):

@@ -20,7 +20,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import REPO_ROOT  # noqa: E402
+from lib import REPO_ROOT, owned_qty  # noqa: E402
 
 LIBRARY = os.path.join(REPO_ROOT, "card-library.csv")
 POOL = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -80,6 +80,48 @@ def _find(query, rows):
         return exact[0], _distinct(exact)
     subs = _rank(query, [r for r in rows if nl in (r.get("Card Name") or "").lower()])
     return (subs[0] if subs else None), _distinct(subs)
+
+
+def _owned_index(rows):
+    """{name_lower: total copies} SUMMED across every printing.
+
+    card-library.csv holds one row per PRINTING, and Arena copies are fungible across
+    sets — CLAUDE.md's "Owned copies are fungible across printings … never count a single
+    printing in isolation". This file read `Quantity Owned` off the FIRST matching row, so
+    it under-reported every card owned in more than one set: Rugged Highlands showed
+    OWNED: 1 against a real 3, Lightning Strike 1 against 2. `card.py` is the surface G-01
+    names as the default way to read a card before grading it, so the one number a craft
+    decision leans on was the one that was wrong (broad-scan F-03).
+
+    `deck.py` (`load_collection`), `pool.py` (`owned_counts`) and `wishlist.py` all build
+    this same summed index; the lookup goes through `lib.owned_qty` so the DFC front-face
+    fallback is shared rather than re-implemented (the A3/A4/F6 rule)."""
+    idx = {}
+    for r in rows:
+        n = (r.get("Card Name") or "").strip().lower()
+        if not n:
+            continue
+        q = (r.get("Quantity Owned") or "").strip()
+        idx[n] = idx.get(n, 0) + (int(q) if q.isdigit() else 0)
+    return idx
+
+
+def _owned_printings(rows, name):
+    """`[(set, collector, qty)]` for every OWNED printing of `name`, so a multi-printing
+    count shows its working instead of asserting a bare total. Front-face aware, matching
+    `lib.owned_qty`'s resolution order."""
+    nl = (name or "").strip().lower()
+    front = nl.split(" // ")[0]
+    out = []
+    for r in rows:
+        rn = (r.get("Card Name") or "").strip().lower()
+        if rn != nl and rn != front:
+            continue
+        q = (r.get("Quantity Owned") or "").strip()
+        if q.isdigit() and int(q) > 0:
+            out.append(((r.get("Set Code") or "").strip(),
+                        (r.get("Collector #") or "").strip(), int(q)))
+    return out
 
 
 def _decks_using(name):
@@ -146,8 +188,9 @@ def main():
     rarity = (pr.get("Rarity") or "").strip()
     legal = (pr.get("Legalities") or "").strip()
     setc = lr.get("Set Code") or pr.get("Set Code") or ""
-    qty = (lr.get("Quantity Owned") or "").strip()
-    owned = int(qty) if qty.isdigit() else 0
+    # SUMMED across printings, never one row's cell — see _owned_index (broad-scan F-03).
+    owned = owned_qty(_owned_index(lib), name)
+    printings = _owned_printings(lib, name)
 
     print(f"━━ {name} ━━")
     head = typ + (f"   ·   {cost}" if cost else "") + (f" (MV {mv})" if mv else "")
@@ -156,7 +199,13 @@ def main():
     meta = [f"colors(identity): {colors or 'C'}"]
     if rarity:
         meta.append(f"rarity: {rarity} ({rarity[:1].upper()} wildcard)")
-    meta.append(f"OWNED: {owned}" + (f"  [set {setc}]" if setc else ""))
+    # Show the working when the total comes from more than one printing — the case the
+    # single-row read used to get wrong, so a reader can see WHY the number is what it is.
+    if len(printings) > 1:
+        where = ", ".join(f"{s or '—'}×{q}" for s, _c, q in printings)
+        meta.append(f"OWNED: {owned}  [{len(printings)} printings: {where}]")
+    else:
+        meta.append(f"OWNED: {owned}" + (f"  [set {setc}]" if setc else ""))
     print("  " + " | ".join(meta))
 
     # LEGALITY — the guardrail, printed prominently and never guessed.
