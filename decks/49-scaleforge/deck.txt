@@ -3,7 +3,7 @@
 #: colors: R
 #: plan: midrange
 #: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 10
-#: tier: plus card advantage 3 at a 4.00 curve. Two structural weaknesses the floor cannot see:
+#: tier: plus card advantage 3 at a 4.11 curve. Two structural weaknesses the floor cannot see:
 #: tier: 1. PROTECTION IS 1, and it is one card: Roaming Throne's ward {2}. Five named
 #: tier:    build-arounds and this deck's payoffs are the kind that must SURVIVE A TURN to
 #: tier:    matter — Lathliss only pays off on the NEXT Dragon, Terror of the Peaks only on the
@@ -12,8 +12,9 @@
 #: tier:    a protection grant returned essentially nothing, so this is red's cost, not an
 #: tier:    oversight. Call the Spirit Dragons was REJECTED on colour, not overlooked: it reads
 #: tier:    "Dragons you control have indestructible" and costs {W}{U}{B}{R}{G}, genuinely gold.
-#: tier: 2. IT IS SLOWISH, but much less so than it was. Avg MV 4.00 with 11 early drops after
-#: tier:    the Treasure pass; against a fast start the deck must trade one-for-one with removal it
+#: tier: 2. IT IS SLOWISH, but much less so than it was. Avg MV 4.11 with 9 early drops (it was
+#: tier:    4.20 and 9 before the Treasure pass, 4.00 and 11 during it); against a fast start the deck
+#: tier:    must trade one-for-one with removal it
 #: tier:    has plenty of, then stabilise with a five-drop. Card advantage 3 is still thin, and
 #: tier:    still an UNDER-count — Bonehoard Dracosaur exiles two cards a turn and Breaching
 #: tier:    Dragonstorm free-casts one, but both read as `impulse` to the classifier, not draw.
@@ -54,10 +55,11 @@
 #: archetype: 5/5 tokens that is five to the face per Dragon, with no combat step involved.
 #: archetype: Stormscale Scion pumps the rest and carries Storm. Twinflame Tyrant DOUBLES all
 #: archetype: damage you deal, including Terror's triggers and Drakuseth's ten-damage entry.
-#: archetype: BEHOLD IS THE HIDDEN INTERACTION UPGRADE. Molten Exhale is a {1}{R} sorcery that
-#: archetype: deals 4 — but beholding a Dragon (revealing one from hand is enough, you do not
-#: archetype: have to control it) gives it FLASH. At 21 Dragons that condition is almost always
-#: archetype: on, so the deck's cheapest removal is an instant that costs a card nothing.
+#: archetype: THE INTERACTION IS NOW CHEAP AND REPLACES ITSELF rather than riding on behold.
+#: archetype: Molten Exhale was CUT in the 2026-08 Treasure pass for Flick a Coin, which deals
+#: archetype: only 1 — but Ojer Axonil upgrades every noncombat damage source of ours to 4, and
+#: archetype: it draws a card and makes a Treasure on the way. Hell to Pay scales instead of
+#: archetype: fixing its damage, and pays excess damage back as Treasures.
 #: archetype: DISTINCTNESS from deck 14 Dragon King Roku, which is the deck this could be
 #: archetype: mistaken for. 14 is RAKDOS and DRAGON-FLAVOURED: only 6 of its 25 creatures are
 #: archetype: Dragons, it runs 14 cards at 1-2 MV, and it wins with removal plus a few bombs on
@@ -102,8 +104,8 @@
 #: notes: {2}{R} "deals 4 damage to target creature" against Fiery Annihilation's {2}{R} for
 #: notes: FIVE damage that also exiles instead of killing and picks off an Equipment. Same
 #: notes: cost, same slot, strictly worse. Every other removal spell does something distinct —
-#: notes: Molten Exhale has flash off beholding a Dragon. (Untimely Malfunction, Plasma Bolt and
-#: notes: Cinder Strike were all CUT in the 2026-08 pass, so the MV-1 slot is now empty.)
+#: notes: (Molten Exhale, Untimely Malfunction, Plasma Bolt and Cinder Strike were all CUT in the
+#: notes: 2026-08 passes, so the MV-1 slot is now empty and behold no longer does any work here.)
 #: notes: Interaction 13 -> 12 against a needs-model target of five, so it was affordable.
 #: notes: BUILT 2026-07 from scratch, after a sweep for a big-mana tribal ramp shell.
 #: notes: UNGRADED ON PURPOSE — no `#: tier:` until the metrics are read and it has been played.
@@ -113,7 +115,7 @@
 #: notes: cleanest separation from deck 14, which already owns the BR Dragon slot.
 #: notes: OWNED CORE: Nova Hellkite, Ran and Shaw, Spinerock Tyrant, Lathliss,
 #: notes: Dracosaur Auxiliary, Summon: Bahamut, Sarkhan (Fin Fang Foom and Nebula Dragon were CUT)
-#: notes: and the whole interaction suite bar Molten Exhale. The craft list is real but it is
+#: notes: and most of the interaction suite. The craft list is real but it is
 #: notes: mostly the payoff layer, not the shell.
 #: notes: TUNED ONCE BEFORE GRADING, on the needs model rather than on taste. `suggest --needs`
 #: notes: read "Acceleration want: HIGH (avg MV 3.94) - Interaction: 14/5 ok", i.e. the deck was
@@ -151,7 +153,6 @@
 1 Stark Industries Executive (MSH) 153
 1 Seize the Spoils (SOS) 129
 1 Sunset Strikemaster (TDM) 126
-1 Diamond Pick-Axe (LCI) 143
 1 Magda, the Hoardmaster (OTJ) 133
 
 # Dragons — the early curve
@@ -166,6 +167,7 @@
 1 Bonehoard Dracosaur (LCI) 134
 1 Dragonhawk, Fate's Tempest (BLB) 132
 1 Twinflame Tyrant (FDN) 97
+1 Decadent Dragon // Expensive Taste (WOE) 223
 
 # Damage amplifier — not a Dragon, but it upgrades ELEVEN damage sources to 4
 1 Ojer Axonil, Deepest Might // Temple of Power (LCI) 158
@@ -192,10 +194,10 @@
 1 Solstice Revelations (TLA) 153
 
 # Interaction — Molten Exhale gains flash off any Dragon in hand
-1 Molten Exhale (TDM) 113
 1 Seismic Rupture (FDN) 205
 1 Iroh's Demonstration (TLA) 141
 1 Hell to Pay (OTJ) 126
+1 Flick a Coin (WOE) 128
 
 # Lands (25) — Three Tree City taps for Dragon count
 1 Three Tree City (BLB) 260
