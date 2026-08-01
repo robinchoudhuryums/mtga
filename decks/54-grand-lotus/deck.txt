@@ -1,0 +1,121 @@
+#: name: Grand Lotus
+#: format: Standard
+#: colors: GUR
+#: plan: midrange
+#: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (2 craft targets, zero games).
+#: tier: One band BELOW the measurable floor, which reads A on interaction 7 plus card
+#: tier: advantage 3. Against the rubric an A needs four things and this list fails two:
+#: tier:   A-FLOOR — yes. Interaction 7 clears five; the sum of 10 clears seven.
+#: tier:   COHERENT ENGINE — yes, and it is self-sustaining: Lessons are instants and
+#: tier:     sorceries, so casting them IS filling the yard, and the payoffs read the
+#: tier:     count rather than any particular card.
+#: tier:   TIGHT CURVE — yes. 3.2 average on 16 early drops.
+#: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND badly.
+#: tier:     (1) THE MANABASE. Three colours on 25 lands, and the deepest colour has 12
+#: tier:     sources. Improvisation Capstone casts on curve at 52%, the three {U}{U}
+#: tier:     five-drops at 59%. The mitigation is real but partial: with Iroh out every
+#: tier:     Lesson costs {1} GENERIC, so the pips stop mattering — the deck is only
+#: tier:     colour-screwed in the games where its engine has not arrived.
+#: tier:     (2) A ONE-CARD ENGINE. Iroh, Grand Lotus is the ONLY card that grants the
+#: tier:     flashback; Uncle Iroh is a cost reducer and does not substitute. Fierce
+#: tier:     Empath (any MV 6+ creature — Iroh, Bumi or Serpent) and Formidable Speaker
+#: tier:     (discard a fat Lesson, then tutor any creature) were added specifically for
+#: tier:     this, taking the deck from one copy to three ways to find it. That is
+#: tier:     mitigation, not redundancy.
+#: tier:     Those two interact: the manabase is worst exactly when the engine is absent.
+#: tier: The floor cannot see that a resolved Iroh turns a graveyard of five-drops into a
+#: tier: hand of one-drops. Re-grade after it is played.
+#: archetype: Temur LESSONS, and the deck exists because of one clause almost everyone
+#: archetype: skims. Iroh, Grand Lotus gives every non-Lesson instant and sorcery in your
+#: archetype: graveyard flashback for ITS MANA COST — the line people read — and every
+#: archetype: LESSON card in your graveyard flashback for {1}. Flat. Not reduced: {1}.
+#: archetype: THAT INVERTS NORMAL DECKBUILDING. A flat flashback cost means the cards you
+#: archetype: most want in the graveyard are the EXPENSIVE ones, so this list deliberately
+#: archetype: runs Lessons it never intends to hard-cast: Improvisation Capstone ({5}{R}{R}),
+#: archetype: Echocasting Symposium ({4}{U}{U}), Germination Practicum ({3}{G}{G}) and
+#: archetype: Secret of Bloodbending ({U}{U}{U}{U}) all cost ONE with Iroh on the
+#: archetype: battlefield. The deck's job is to get them into the yard and then untap.
+#: archetype: THE YARD FILLS ITSELF, which is what makes the plan work without a dedicated
+#: archetype: mill package: Lessons are instants and sorceries, so every one you cast
+#: archetype: normally is a card Iroh can buy back later. Accumulate Wisdom bins two of
+#: archetype: three on purpose, Abandon Attachments discards to draw, Platypus-Bear and
+#: archetype: Leaves from the Vine mill, and two Surveillance Rooms do it off a land.
+#: archetype: THE PAYOFFS READ THE COUNT, not just the cards. Combustion Technique deals
+#: archetype: 2 plus the Lessons in your graveyard; Bumi, King of Three Trials chooses up
+#: archetype: to X modes where X is that same number; Serpent of the Pass gains flash at
+#: archetype: three; First-Time Flyer and Fire Nation Cadets turn on at one. So the
+#: archetype: graveyard is simultaneously the resource, the second hand, and the clock.
+#: archetype: DISTINCTIVENESS. Deck 51a is the roster's other Lesson deck and is MONO-BLUE
+#: archetype: LESSON MILL — it mills Lessons as a resource; this recurs them as a second
+#: archetype: hand, in three colours, off a creature. Deck 25 (Spellstorm, UR) is a
+#: archetype: creature deck carrying spell payoffs, and measured, it runs twelve
+#: archetype: instants and sorceries; this runs twenty-three, because here they ARE the
+#: archetype: deck. Neither shares this one's colours.
+#: protect: Iroh, Grand Lotus; Bumi, King of Three Trials; Combustion Technique; Improvisation Capstone; Echocasting Symposium
+#: notes: WIP — but unusually close to buildable for a from-scratch brew: 26 of the 27
+#: notes: Temur-castable Lessons in Standard were already in the collection, and so were
+#: notes: 15 of the 17 cards that read the Lesson count. The archetype was sitting there.
+#: notes: Secret of Bloodbending was drafted and CUT. It is the purest expression of the
+#: notes: plan — {U}{U}{U}{U} that you flash back for {1} — but it exiles itself on
+#: notes: resolution, so it is a one-shot, and what it buys is a single stolen combat
+#: notes: phase. At 5% on curve it was also single-handedly setting the deck's blue
+#: notes: requirement. Cut for Fierce Empath, which finds the engine.
+#: notes: Paradigm (Germination Practicum, Echocasting Symposium) is an UNINDEXED mechanic
+#: notes: per K-01 — it exiles the spell and then lets you cast a free copy each turn, so
+#: notes: the synergy tagger cannot see that it is a recurring engine. Grade those two
+#: notes: from their text, not from their tags.
+
+# Nonland
+1 Iroh, Grand Lotus (TLA) 227
+1 Uncle Iroh (TLA) 248
+1 Bumi, King of Three Trials (TLA) 169
+1 Serpent of the Pass (TLA) 70
+1 Master Pakku (TLA) 63
+1 First-Time Flyer (TLA) 49
+1 Fire Nation Cadets (TLA) 134
+1 Dragonfly Swarm (TLA) 215
+1 Platypus-Bear (TLA) 236
+1 Gran-Gran (TLA) 54
+1 Walltop Sentries (TLA) 202
+1 Abandon Attachments (TLA) 205
+1 Accumulate Wisdom (TLA) 44
+1 It'll Quench Ya! (TLA) 58
+1 Iroh's Demonstration (TLA) 141
+1 Combustion Technique (TLA) 128
+1 Origin of Metalbending (TLA) 187
+1 True Ancestry (TLA) 199
+1 Boomerang Basics (TLA) 46
+1 Seismic Sense (TLA) 195
+1 Solstice Revelations (TLA) 153
+1 Leaves from the Vine (TLA) 185
+1 Waterbending Lesson (TLA) 80
+1 Sokka's Haiku (TLA) 71
+1 Lost Days (TLA) 62
+1 Elemental Teachings (TLA) 178
+1 Germination Practicum (SOS) 149
+1 Echocasting Symposium (SOS) 44
+1 Improvisation Capstone (SOS) 120
+1 Fierce Empath (FDN) 636
+1 Rockalanche (TLA) 192
+1 Earthbending Lesson (TLA) 176
+1 Formidable Speaker (ECL) 176
+1 Price of Freedom (TLA) 149
+1 Cycle of Renewal (TLA) 170
+
+# Lands
+1 White Lotus Hideout (TLA) 281
+2 Rumble Arena (TLA) 277
+2 Surveillance Room (MSH) 274
+1 Capital City (FIN) 274
+2 Swiftwater Cliffs (MOM) 273
+3 Rugged Highlands (M21) 249
+1 Breeding Pool (EOE) 251
+1 Thornwood Falls (FDN) 269
+1 Mutant Town (TMT) 187
+1 Guadosalam, Farplane Gateway (FIN) 281
+1 Riverpyre Verge (DFT) 260
+1 Thornspire Verge (DSK) 270
+1 Willowrush Verge (DFT) 270
+2 Island (MSH) 289
+3 Forest (MSH) 295
+2 Mountain (MSH) 293
