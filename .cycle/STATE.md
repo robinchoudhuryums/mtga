@@ -361,3 +361,37 @@ path); 3 not applicable, 5–8 are the browser/perceptual checks.
 - Promoting decks 41 or 42a to tier A. Both sit one band below an A floor by a
   written, still-true argument; the guard permits that and does not nag.
 
+## 2026-08 — deck-build tooling scan + implement (session: Void Demons)
+
+Built decks **52 Void Demons** (mono-black Void aristocrats) and **52a Void Demons —
+Dark Realms** (mono-black true reanimator) from a ~116-card concept pile, then used what
+the build exposed as a scan.
+
+**Findings recorded**: `.cycle/blocks/2026-08-deck-build-tooling-scan.md` — 10 findings,
+each with a repro command. Provenance matters: none were caught by a gate. check_all was
+green, preflight said READY and 804 tests passed through all ten.
+
+**Implemented** (block: `2026-08-deck-build-tooling-broad-implement.md`): F-01 (deck-line
+set/collector validated for the first time — `(ZZZ) 172` used to pass every gate), F-02
+(`#: uncastable-ok:` header, so a reanimator's intentionally-uncastable bomb stops reading
+as a build error), F-16 (an uncastable stray now CAPS the tier floor instead of SETTING
+it), F-04 (new `deck.py targets` — does the deck contain targets for its own gated
+effects), F-03 (three separate rationale-audit misses).
+
+**Decided AGAINST / corrected in flight:**
+- A generic "cards to discard" gate in `targets` — written, measured at 35-for-everything,
+  removed. Same saturation class as `suggest`'s Decks column. Pinned by a test.
+- A distance-window `wrong_exclusion_claims` — 10 roster false positives at ±400 chars,
+  37 when split on `;`. Rewritten around clause SHAPE; now 0.
+- Over-weighting `similar`. The user's standing position, recorded in F-06: **some card
+  overlap between decks is acceptable.** Two good cards (Bringer of the Last Gift, Forum
+  Necroscribe) were cut from 52a purely to lower a similarity number and were reinstated
+  on merits. `similar` is a shortlist for "is this a new deck", not a constraint.
+
+**Still open**: F-05 through F-10 unimplemented. 27 unverified printings and 4 stale
+rationale citations are now VISIBLE on the roster and unfixed — both were invisible before
+this session. The user plans 1–2 gold bombs in 52a, which is what F-02 unblocks.
+
+**Where I left off**: all four findings implemented, 826 tests green, check_all clean with
+2 new (intended) soft warnings. Documentation updates are listed at the end of the
+implement block and NOT yet applied — run `/sync-docs`.

@@ -129,7 +129,13 @@ WC_NAMES = [("M", "Mythic"), ("R", "Rare"), ("U", "Uncommon"),
 
 # "4 Card Name" / "4x Card Name", optional "(SET)" and collector number.
 LINE_RE = re.compile(r"^\s*(\d+)\s*[xX]?\s+(.+?)\s*(?:\(([^)]+)\)\s*([^\s]+)?)?\s*$")
-META_RE = re.compile(r"^#:\s*([A-Za-z_]+)\s*:\s*(.*)$")
+# A HYPHEN is legal in a `#:` key. It was not, and the deck files had been using one
+# anyway: 24 `#: based-on:` lines across the roster were silently dropped — the line
+# matched no meta key, fell through to the card-line branch, matched no card either, and
+# vanished without a warning. Nothing read `based-on`, so nothing noticed. Found while
+# adding `#: uncastable-ok:` (F-02), whose key has the same shape. Nothing iterates meta
+# keys (only named lookups), so widening this adds keys without changing any output.
+META_RE = re.compile(r"^#:\s*([A-Za-z_][A-Za-z_-]*)\s*:\s*(.*)$")
 
 # Game-type (format) variant filenames: `<core>-<format>[-slug].txt`. These get the
 # id `<core>-<format>` so a Brawl/Alchemy adaptation of a core deck reads as *that
@@ -605,8 +611,14 @@ def _deck_castable_colors(dmeta, cards, mana):
 BASIC_COLOR = {"plains": "W", "island": "U", "swamp": "B", "mountain": "R", "forest": "G"}
 
 
-def _castability(cards, declared, mana, carddata):
+def _castability(cards, declared, mana, carddata, exempt=frozenset()):
     """Flag nonland cards whose color needs fall outside `declared` (a WUBRG set).
+
+    Returns (uncastable, off_identity, off_ability, intended):
+      intended     – the SUBSET of would-be-uncastable cards the deck's
+                     `#: uncastable-ok:` header names on purpose (a reanimator's
+                     targets). Still reported by every surface, but never counted as
+                     a failure and never fed to `tier_band`. See `_uncastable_ok`.
 
     Returns (uncastable, off_identity, off_ability):
       uncastable   – [(name, "needs X")] : a STRICT pip, or a true multicolor
@@ -636,9 +648,9 @@ def _castability(cards, declared, mana, carddata):
     network-free) — note that with no costs to read, no stray can be shown to be
     hybrid-explained, so every stray reads as an ability stray. That is the
     conservative direction: it over-reports rather than silently clearing a deck."""
-    uncastable, off_ident, off_ability = [], [], []
+    uncastable, off_ident, off_ability, intended = [], [], [], []
     if not declared:
-        return uncastable, off_ident, off_ability
+        return uncastable, off_ident, off_ability, intended
     seen = set()
     for q, n, s, c in cards:
         nl = n.lower()
@@ -662,7 +674,8 @@ def _castability(cards, declared, mana, carddata):
         bad_hybrid = sorted({x for h in hybrid
                              if len(h) >= 2 and not (h & declared) for x in h})
         if off_strict or bad_hybrid:
-            uncastable.append((n, "needs " + "/".join(sorted(set(off_strict + bad_hybrid)))))
+            why = "needs " + "/".join(sorted(set(off_strict + bad_hybrid)))
+            (intended if nl in exempt else uncastable).append((n, why))
             continue
         ident = card_colors(cd["colors"] if cd else "")
         stray = sorted(ident - declared)
@@ -688,7 +701,7 @@ def _castability(cards, declared, mana, carddata):
             off_ident.append((n, why))
             if not by_hybrid:
                 off_ability.append((n, why))
-    return uncastable, off_ident, off_ability
+    return uncastable, off_ident, off_ability, intended
 
 
 def cmd_check(args):
@@ -740,7 +753,7 @@ def cmd_check(args):
     # Castability lint (offline, identity-only — pass an empty mana dict). Flags
     # cards whose color identity strays outside the deck's declared colors.
     declared = _declared_colors(meta)
-    _, off_ident, _ = _castability(cards, declared, {}, load_card_data())
+    _, off_ident, _, _ = _castability(cards, declared, {}, load_card_data())
     if declared and off_ident:
         cols = "".join(sorted(declared))
         print(f"\n⚠ {len(off_ident)} card(s) stray outside the deck's {cols} colors "
@@ -4224,8 +4237,14 @@ def cmd_mana(args):
     # declared colors (the `#: colors:` header). Only meaningful when declared.
     declared = _declared_colors(meta)
     if declared:
-        uncastable, off_ident, _ = _castability(cards, declared, mana, load_card_data())
+        uncastable, off_ident, _, intended = _castability(
+            cards, declared, mana, load_card_data(), _uncastable_ok(meta))
         cols = "".join(sorted(declared))
+        if intended:
+            print(f"\n◆ Intentionally uncastable (`#: uncastable-ok:`) — reanimation "
+                  "targets you never cast from hand:")
+            for n, why in intended:
+                print(f"    {n} — {why}")
         if uncastable:
             print(f"\n✗ Uncastable off the deck's {cols} colors "
                   "(a pip needs a color the deck can't produce):")
@@ -5466,6 +5485,22 @@ def cmd_legal(args):
     else:
         print("\n✓ No construction issues"
               + (f" for {fmt}." if fmt else " (size/copy rules only — no format declared)."))
+
+    # PRINTING sanity. Legality is about the card; this is about whether the LINE names
+    # a printing that exists — the half nothing checked, so a wrong collector number
+    # produced a file that read clean everywhere and would not import (F-01).
+    bad_set, unverified = printing_problems(cards)
+    if bad_set:
+        print(f"\n✗ {len(bad_set)} line(s) name a SET CODE that does not exist:")
+        for n, st, cn in bad_set:
+            print(f"    {n} — ({st}) {cn}")
+    if unverified:
+        print(f"\n△ {len(unverified)} unverified printing(s) — the set is real but this "
+              "collector number is not one we hold (the pool keys ONE printing per card, "
+              "so an alternate art lands here too):")
+        for n, st, cn, kn in unverified:
+            known = ", ".join(f"({a.upper()}) {b}" for a, b in kn)
+            print(f"    {n} — ({st}) {cn}   known: {known}")
     if unknown:
         shown = ", ".join(unknown[:8]) + ("…" if len(unknown) > 8 else "")
         print(f"\n{len(unknown)} card(s) not in the pool — {fmt} legality unverified "
@@ -5480,6 +5515,28 @@ def _protected(meta):
     (repeatable across lines; SEMICOLON-separated — card names contain commas, so
     comma can't be the separator). Returns a lowercased set of card names."""
     raw = (meta or {}).get("protect", "") or ""
+    return {p.strip().lower() for p in raw.split(";") if p.strip()}
+
+
+def _uncastable_ok(meta):
+    """Cards the deck AUTHOR asserts are intentionally uncastable — a REANIMATOR's
+    targets, which you never cast from hand and cheat in from the graveyard instead.
+    Format: `#: uncastable-ok: Card A; Card B` (semicolon-separated, like `#: protect:`,
+    because card names contain commas). Returns a lowercased set.
+
+    Why this exists: the castability lint and `tier_band` both model "you cannot cast
+    this" as a build ERROR, which is right by default and wrong for a whole archetype.
+    Measured on deck 52a, a mono-black reanimator: adding ONE five-colour bomb moved
+    `preflight` from READY to BLOCKED and the metrics floor from A to C — three bands,
+    for a card working exactly as designed. Reanimator is not an exotic case; it is the
+    reason `Zombify` and `Rise of the Dark Realms` are in the pool at all.
+
+    Deliberately OPT-IN and per-card. Most uncastable cards really are mistakes, so the
+    default stays a hard FAIL; this is the author making a specific claim, the same
+    shape as `#: protect:` naming signature cards the tooling must not propose cutting.
+    An exempt card is still SHOWN everywhere it was shown before — it moves out of the
+    failure list, not out of sight (G-52: a verdict surface must print its evidence)."""
+    raw = (meta or {}).get("uncastable-ok", "") or ""
     return {p.strip().lower() for p in raw.split(";") if p.strip()}
 
 
@@ -6096,7 +6153,8 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta):
     # `off_ability` — NOT `off_ident` — drives the verdict. A stray explained by a
     # hybrid pip is a card you pay on-color and never need to look at, and counting
     # those fired `review` on 22 of 63 decks with a 0% actionable rate (F-03).
-    uncast, off_ident, off_ability = _castability(cards, declared, mana, carddata)
+    uncast, off_ident, off_ability, _intended = _castability(
+        cards, declared, mana, carddata, _uncastable_ok(meta))
 
     interaction = _interaction_count(cards, carddata)
 
@@ -6833,6 +6891,79 @@ def _printing_index():
     return idx
 
 
+@_file_memo("DEFAULT_CSV", "POOL_CSV")
+def known_printings():
+    """(by_name, set_codes) — every (set, collector) this repo knows, per card.
+
+      by_name    : name_lower -> {(set_lower, collector_lower), …}
+      set_codes  : {set_lower, …} across the whole pool + library
+
+    The deck-line fields `(SET) COLLECTOR#` were validated by NOTHING. `1 Eaten Alive
+    (ZZZ) 172` — a set code that does not exist — passed `legal`, passed `check` (which
+    reported it as OWNED, since ownership joins on the NAME), passed `preflight` READY
+    and passed `check_all` "All invariants hold". INV-04 only asserts a line PARSES, so a
+    deck file could be integrity-clean and un-importable at the same time. That is not
+    hypothetical: deck 52 was written with `(FDN) 610` for a card whose collector number
+    is 172, and nothing complained.
+
+    Front faces are aliased in a SECOND pass so a `Front // Back` row cannot shadow a
+    real card named `Front` (G-63) — and only when the front name has no rows of its own.
+    """
+    by_name, set_codes, real = {}, set(), set()
+    for path in (POOL_CSV, DEFAULT_CSV):
+        if not os.path.exists(path):
+            continue
+        with open(path, newline="", encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                nl = (r.get("Card Name") or "").strip().lower()
+                if not nl:
+                    continue
+                sc = (r.get("Set Code") or "").strip().lower()
+                pr = (sc, (r.get("Collector #") or "").strip().lower())
+                by_name.setdefault(nl, set()).add(pr)
+                real.add(nl)
+                if sc:
+                    set_codes.add(sc)
+    for nl in list(by_name):
+        front = nl.split(" // ")[0]
+        if front != nl and front not in real:
+            by_name.setdefault(front, set()).update(by_name[nl])
+    return by_name, set_codes
+
+
+def printing_problems(cards):
+    """(bad_set, unverified) for a deck's card lines.
+
+      bad_set     : [(name, set, collector)] — the set code appears in NO card anywhere,
+                    so the line is certainly wrong. HARD: zero across the whole roster.
+      unverified  : [(name, set, collector, known)] — the name and set code are both
+                    real, but this exact printing is not one we hold. SOFT, because the
+                    pool keys ONE printing per card by construction, so a legitimate
+                    alternate printing lands here too.
+
+    BASIC LANDS ARE EXEMPT. Arena prints several arts per set (Swamp MSH 291 and 292 are
+    both real) while the pool carries one, so a hard rule would have failed 61 of 78 deck
+    files on basics alone — measured before choosing the split. A line with no printing
+    stated at all is also skipped: that is a legal, if under-specified, deck line."""
+    by_name, set_codes = known_printings()
+    bad_set, unverified = [], []
+    for _q, n, s, c in cards:
+        nl = n.lower()
+        if nl in BASICS or nl.startswith("snow-covered "):
+            continue
+        if not s and not c:
+            continue
+        if s and s.lower() not in set_codes:
+            bad_set.append((n, s, c))
+            continue
+        known = by_name.get(nl) or by_name.get(nl.split(" // ")[0])
+        if not known:
+            continue                      # unknown card entirely — reported elsewhere
+        if (s.lower(), c.lower()) not in known:
+            unverified.append((n, s, c, sorted(known)[:3]))
+    return bad_set, unverified
+
+
 def _legality_of(names):
     """name_lower -> set(formats) from the pool, for a legality warning on any surface
     that hands back card names. Empty dict if the pool has no Legalities column."""
@@ -7341,7 +7472,8 @@ def deck_quality_vector(d):
                 theme_w[t] = theme_w.get(t, 0) + q
     declared_hdr = _declared_colors(dmeta)
     declared = declared_hdr or _deck_castable_colors(dmeta, cards, mana)
-    uncast, _off, _off_ability = _castability(cards, declared, mana, carddata)
+    uncast, _off, _off_ability, _intended = _castability(
+        cards, declared, mana, carddata, _uncastable_ok(dmeta))
     _tally = role_tally(cards, carddata)
     d_int, d_ca = _tally["interaction"], _tally["card_advantage"]
     return {
@@ -7571,8 +7703,6 @@ def tier_band(vec):
     — tier is a power judgment, and build-state (ownership) is tracked separately by
     `check`/`audit`, so an aspirational unbuilt list is graded on its merits. A
     castability stray IS a list flaw (a dead card), so it caps the floor."""
-    if vec["uncastable"] > 0:
-        return "C"                        # castability strays cap the floor
     inter, ca = vec["interaction"], vec["card_advantage"]
     # An AGGRO deck closes on a fast clock, not an interaction suite — so for an aggro
     # plan a strong clock (low curve + cheap threats + reach) substitutes for the
@@ -7583,12 +7713,21 @@ def tier_band(vec):
     ir = inter + clock                    # effective pressure/interaction axis
     resil = inter + ca + clock            # grind / resilience / closing speed
     if ir >= 5 and resil >= 7:
-        return "A"                        # measurable ceiling; S is a human call on top
-    if ir >= 3 and resil >= 4:
-        return "B"
-    if resil >= 2:
-        return "C"
-    return "D"
+        band = "A"                        # measurable ceiling; S is a human call on top
+    elif ir >= 3 and resil >= 4:
+        band = "B"
+    elif resil >= 2:
+        band = "C"
+    else:
+        band = "D"
+    # A castability stray CAPS the floor at C — it does not SET it (broad-scan F-16).
+    # The old form returned "C" outright, so a deck whose measurable floor was D got
+    # RAISED by having a dead card in it. "Caps" is what the docstring and CLAUDE.md
+    # both already said; only the code disagreed. Note the count reaching here excludes
+    # cards the deck's `#: uncastable-ok:` header declares intentional (F-02).
+    if vec["uncastable"] > 0 and TIER_RANK[band] > TIER_RANK["C"]:
+        band = "C"
+    return band
 
 
 # The measurable FLOOR requirement per band: (min interaction, min interaction+ca).
@@ -8102,10 +8241,17 @@ _RATIONALE_FIGURES = [
     (re.compile(r"interaction" + _FIG_PAREN, re.I), "interaction"),
     (re.compile(r"card[- ]adv(?:antage)?[  ]+(\d+)", re.I), "card_advantage"),
     (re.compile(r"card[- ]adv(?:antage)?" + _FIG_PAREN, re.I), "card_advantage"),
-    (re.compile(r"(?:avg (?:nonland )?MV|curve(?: of)?)[  ]+(\d+\.\d+)", re.I), "avg_mv"),
-    (re.compile(r"(?:avg (?:nonland )?MV|curve)" + _FIG_PAREN.replace(r"(\d+)",
-                                                                      r"(\d+\.\d+)"), re.I),
+    # `avg` alone missed the word people actually write. Deck 52a's rationale said
+    # "Average nonland MV 4.17" and the audit passed it while the live value was 4.22 —
+    # "avg" is not a prefix of "Average", so no pattern here could ever see it. Same
+    # class as the number-first miss recorded below: the pattern knew one spelling of a
+    # figure the prose writes several ways.
+    (re.compile(r"(?:avg|average) (?:nonland )?MV[  ]+(\d+\.\d+)", re.I), "avg_mv"),
+    (re.compile(r"curve(?: of)?[  ]+(\d+\.\d+)", re.I), "avg_mv"),
+    (re.compile(r"(?:avg|average) (?:nonland )?MV" + _FIG_PAREN.replace(r"(\d+)",
+                                                                        r"(\d+\.\d+)"), re.I),
      "avg_mv"),
+    (re.compile(r"curve" + _FIG_PAREN.replace(r"(\d+)", r"(\d+\.\d+)"), re.I), "avg_mv"),
     # The roster writes these NUMBER-FIRST far more often than the label-first form the
     # original patterns read — 13 interaction figures, 3 card-advantage, 1 protection,
     # none of them ever audited. Exactly the miss already recorded for avg_mv below,
@@ -8149,11 +8295,24 @@ _RATIONALE_MIN_LEN = 9
 # 43 quoted interaction 10 against a live 8 and the audit reported clean. Every other
 # cue here is a word that only appears when prose is describing a change; "over" is
 # ordinary English and was far too broad to earn a place among them.
+# `remov\w*` used to sit here, and it suppressed a card citation by matching the card's
+# own ORACLE TEXT. The archetype prose of deck 52a read "Summon: Bahamut is a {9} that
+# REMOVES two nonland permanents"; `removes` fell inside the ±140 window, so the audit
+# reported "rationale is current" while the header argued from a card two swaps had
+# already cut. The same word is already documented four lines down as "the worst of
+# them" on the FIGURE path, where it was narrowed because `removal` is the commonest
+# noun in a rationale about interaction — but only the figure path was fixed, and the
+# CARD path kept the broad form. `removes` is oracle-text vocabulary, not change
+# language; a rationale states a change in the past or progressive ("removed it",
+# "removing the second wipe"), so those are what the cue needs to match.
 _HISTORY_CUES = re.compile(
-    r"\b(?:was|were|became|becomes|replac\w*|swap\w*|cut\w*|remov\w*|left|leaves|"
+    r"\b(?:was|were|became|becomes|replac\w*|swap\w*|cut\w*|remov(?:ed|ing)|left|leaves|"
     r"instead|no longer|previously|earlier|former\w*|queued|flex|craft target|"
     r"alternative|revisit|option|skipped|held out)\b", re.I)
 _HISTORY_WINDOW = 140
+# "<in-deck card> is <other card> that …" — a comparison used to EXPLAIN a card the deck
+# runs. Matched immediately before the citation, never as a window cue (see the call site).
+_SIMILE_BEFORE = re.compile(r"\b(?:is|are)\s+$", re.I)
 # `0→1` / `1->4`: the matched number is the FROM side of a stated change.
 _ARROW_AFTER = re.compile(r"\s*(?:→|->|—>|–>)")
 
@@ -8357,6 +8516,14 @@ def rationale_staleness(d, carddata=None):
                 continue
             if disp in in_deck or name in BASICS or disp.split(" // ")[0] in in_deck:
                 continue
+            # SHORTHAND. A rationale abbreviates a card it runs — deck 33 writes
+            # "Heartfire sac-removal" for Heartfire Immolator — and `Heartfire` is
+            # itself a real card, so the scan reported a stale citation of a card the
+            # prose never meant. Masking cannot help: the full name is not in the text.
+            # A citation that is a strict word-prefix of a card the deck DOES run is an
+            # abbreviation of that card, not a reference to a different one.
+            if any(other.startswith(disp + " ") for other in in_deck):
+                continue
             # CASE-SENSITIVE: prose capitalizes a card citation, so this is what keeps
             # ordinary vocabulary out. A lowercase "counterspell"/"food"/"negate" in a
             # sentence is not a reference to the card of that name.
@@ -8384,6 +8551,15 @@ def rationale_staleness(d, carddata=None):
             if (_cites_as_history(masked, pos, len(disp))
                     and not _cites_as_arriving(masked, pos)):
                 continue
+            # SIMILE. "It'll Quench Ya! is Spell Pierce that hits creatures too" explains
+            # a card the deck runs BY NAMING a card it does not — the citation is the
+            # yardstick, not the claim. This is positional rather than a window cue on
+            # purpose: `is`/`are` in the ±140 window would suppress almost everything,
+            # but immediately before the name it is reliable, because this scan only ever
+            # sees cards the deck does NOT run (a real "the win condition is Krang" names
+            # an in-deck card and never reaches here).
+            if _SIMILE_BEFORE.search(masked[max(0, pos - 6):pos]):
+                continue
             stale_cards.append((disp, header))
     if stale_cards:
         stale_cards = sorted(set(stale_cards))
@@ -8409,6 +8585,61 @@ def rationale_staleness(d, carddata=None):
     return stale_cards, stale_figures
 
 
+_EXCLUSION_CUES = re.compile(
+    r"\b(?:NOT included|not included|deliberately not|not run|left out|"
+    r"kept out of the (?:list|deck|60)|not in the (?:list|deck|60))\b", re.I)
+_EXCLUSION_PAREN = re.compile(r"\([^()]*\)")
+# The claim ends at the first clause boundary. Without this, "Craterhoof is deliberately
+# NOT here — Summon: Titan's third chapter is this deck's mass pump" reads the REPLACEMENT
+# as the excluded card: the excluded name sits BEFORE the cue in that shape, and whatever
+# follows is the explanation. Same trap as 52a's own note, which named Quag Feast as the
+# card that replaced an excluded one.
+_EXCLUSION_STOP = re.compile(r"[;—–.]")
+_EXCLUSION_HEAD = 60
+
+
+def wrong_exclusion_claims(d, carddata=None):
+    """[(name, header)] — cards the prose says are NOT in the deck, that the deck RUNS.
+
+    The mirror of `rationale_staleness`, and the case G-27 deliberately leaves out of
+    that scan. `#: notes:` is exempted there because it is a build log where naming an
+    ABSENT card is correct — but "Deliberately NOT included: Bringer of the Last Gift"
+    is not naming an absent card, it is a false claim about the CURRENT list, and it
+    survives exactly the edit that makes it false (adding the card). Deck 52a carried
+    that sentence for one commit after Bringer was added.
+
+    Scans `notes` as well as `tier`/`archetype`, since the exclusion shape is what makes
+    it checkable — an exclusion claim is a claim about the current list wherever it is
+    written. Report-only, like the rest of the audit."""
+    carddata = carddata if carddata is not None else load_card_data()
+    meta, cards = parse_deck_file(d["path"])
+    in_deck = {n for _q, n, _s, _c in cards}
+    in_deck |= {n.split(" // ")[0] for n in list(in_deck)}
+    out = []
+    for header in ("notes", "tier", "archetype"):
+        prose = (meta or {}).get(header, "") or ""
+        # SHAPE, not proximity, and it took three tries to get there — the measurements
+        # are the reason this is written the way it is. A plain ±400-char window produced
+        # TEN roster hits and every one sampled was noise; splitting the whole post-cue
+        # prose on `;` produced THIRTY-SEVEN. What works is reading only the CLAUSE that
+        # the cue introduces: parentheticals stripped (the reason text is where innocent
+        # names live) and cut at the first boundary (the shape "X is deliberately NOT
+        # here — Y does the job" names the replacement after the dash). Roster-wide this
+        # form reports zero, and still catches the 52a sentence that motivated the check.
+        for m in _EXCLUSION_CUES.finditer(prose):
+            seg = _EXCLUSION_PAREN.sub(" ", prose[m.end():m.end() + _EXCLUSION_HEAD])
+            stop = _EXCLUSION_STOP.search(seg)
+            head = seg[:stop.start()] if stop else seg
+            for nm in sorted(in_deck, key=len, reverse=True):
+                if len(nm) < _RATIONALE_MIN_LEN and " " not in nm:
+                    continue
+                if nm in BASICS or nm.lower() in BASICS:
+                    continue
+                if nm in head:
+                    out.append((nm, header))
+    return sorted(set(out))
+
+
 def cmd_tier(args):
     """Tier robustness (F12): show a deck's claimed tier next to the tier FLOOR its
     measurable quality vector supports, and flag an indefensible/stale letter. It
@@ -8425,13 +8656,17 @@ def cmd_tier(args):
     implied = tier_band(vec)
     if getattr(args, "audit_rationale", False):
         cards_stale, figs = rationale_staleness(d)
+        wrong_excl = wrong_exclusion_claims(d)
         print(f"Rationale audit — deck {d['id']}: {d['name'] or d['path']}")
-        if not cards_stale and not figs:
-            print("  ✓ rationale is current — every card it cites is still in the deck and "
-                  "every figure matches the live vector.")
+        if not cards_stale and not figs and not wrong_excl:
+            print("  ✓ rationale is current — every card it cites is still in the deck, "
+                  "every figure matches the live vector, and nothing it calls excluded "
+                  "is actually in the list.")
             return 0
         for nm, hdr in cards_stale:
             print(f"  ⚠ `#: {hdr}:` argues from {nm}, which is NO LONGER in the deck.")
+        for nm, hdr in wrong_excl:
+            print(f"  ⚠ `#: {hdr}:` says {nm} is NOT included — but the deck RUNS it.")
         for key, quoted, actual in figs:
             print(f"  ⚠ `#: tier:` quotes {key.replace('_', ' ')} {quoted}, "
                   f"but the live vector says {actual}.")
@@ -8798,7 +9033,8 @@ def cmd_preflight(args):
     mana = load_mana()
     carddata = load_card_data()
     declared = _declared_colors(dmeta) or _deck_castable_colors(dmeta, cards, mana)
-    uncast, off_ident, _ = _castability(cards, declared, mana, carddata)
+    uncast, off_ident, _, intended = _castability(
+        cards, declared, mana, carddata, _uncastable_ok(dmeta))
 
     # Repo integrity — the deterministic gate, run out-of-process for a clean signal.
     integ = subprocess.run(
@@ -8817,11 +9053,136 @@ def cmd_preflight(args):
              else f"WARN — {missing} craft target(s), {short} short (WIP-ok)"))
     print(f"  castability          : "
           + ("PASS" if not uncast else f"FAIL — {len(uncast)} uncastable")
+          + (f" (+{len(intended)} intended, exempt)" if intended else "")
           + (f" (+{len(off_ident)} hybrid stray, ok)" if off_ident else ""))
     print(f"  integrity (check_all): {mark(integ_ok)}")
     hard = (not legal_ok) or bool(uncast) or (not integ_ok)
     print(f"Verdict: {'BLOCKED' if hard else 'READY'}")
     return 1 if hard else 0
+
+
+              # A gate names a RESOURCE the card needs; the count is how much of it the
+              # deck actually holds. Each entry: (regex, label, kind). `kind` selects the
+              # counter below — keeping the two apart is what lets a new gate be one line.
+_TARGET_FAT_MV = 5      # at/above this, reanimating a card gains real mana
+_TARGET_GATES = [
+    (re.compile(r"mana value (\d+) or less", re.I), "creature MV ≤{0} in the yard", "mv"),
+    (re.compile(r"total mana value (\d+) or less", re.I), "cards totalling MV ≤{0}", "mv"),
+    (re.compile(r"sacrifice (?:an artifact or creature|a creature or artifact)", re.I),
+     "artifacts + creatures to sacrifice", "sac_ac"),
+    (re.compile(r"sacrifice (?:a|another) creature", re.I), "creatures to sacrifice", "sac_c"),
+    # Lookahead, or this double-fires on "sacrifice an artifact or creature" and reports
+    # the artifact-only count next to the correct combined one.
+    (re.compile(r"sacrifice an artifact\b(?! or creature)", re.I),
+     "artifacts to sacrifice", "sac_a"),
+    (re.compile(r"(?:return|put) target creature card", re.I), "creature cards to return", "creat"),
+    (re.compile(r"(\d+) or more permanent cards in your graveyard", re.I),
+     "permanent cards (needs {0})", "perm"),
+    # NO generic "cards to discard" rule. It was written, and it reported 35 for every
+    # discard outlet in a 60-card deck — i.e. "you have a hand", which is true of every
+    # deck and decides nothing. Same saturation failure this file already documents for
+    # `suggest`'s Decks column and `cuts`' protect boost: a signal that fires on
+    # everything is not a signal. A gate earns a row only when the resource can be SHORT.
+]
+
+
+def target_counts(cards, carddata, mana):
+    """[(card, gate_label, count, need)] — for every card whose text names a GATE, how
+    many cards in THIS deck satisfy it.
+
+    The question no command answered. Deck 52's concept pile held 24 ways to return a
+    creature against 8 creatures worth returning, and that number came from a
+    hand-written script — `engines` grades enabler↔payoff by synergy TAG, which is a
+    different question, and every scoring model here reads a card in ISOLATION. G-61
+    states the discipline in prose ("state the count, then decide") with an incident list
+    of four dismissals that were overturned, precisely because nothing automates it.
+
+    Counts EXCLUDE the card itself (a sacrifice outlet is not its own fodder) and
+    exclude lands unless the gate is about lands. `need` is the number the text demands
+    when it states one (descend 8), else None. Report-only, and a heuristic on card
+    text like every model here — read the list, don't just read the number."""
+    pool = []
+    for q, n, _s, _c in cards:
+        nl = n.lower()
+        cd = carddata.get(nl) or carddata.get(nl.split(" // ")[0]) or {}
+        entry = mana.get(nl) or mana.get(nl.split(" // ")[0])
+        mv = mana_value(front_face_cost(entry[0])) if entry and entry[0] else None
+        pool.append({"n": n, "q": q, "type": (cd.get("type") or "").lower(),
+                     "text": cd.get("text") or "", "mv": mv})
+    out, seen = [], set()
+    for c in pool:
+        if c["n"] in seen or "land" in c["type"] and "creature" not in c["type"]:
+            continue
+        seen.add(c["n"])
+        for rx, label, kind in _TARGET_GATES:
+            m = rx.search(c["text"])
+            if not m:
+                continue
+            num = int(m.group(1)) if m.groups() else None
+            others = [o for o in pool if o["n"] != c["n"]]
+            if kind == "mv":
+                hits = [o for o in others if "creature" in o["type"]
+                        and o["mv"] is not None and o["mv"] <= num]
+            elif kind == "sac_ac":
+                hits = [o for o in others
+                        if "creature" in o["type"] or "artifact" in o["type"]]
+            elif kind == "sac_c":
+                hits = [o for o in others if "creature" in o["type"]]
+            elif kind == "sac_a":
+                hits = [o for o in others if "artifact" in o["type"]]
+            elif kind == "creat":
+                hits = [o for o in others if "creature" in o["type"]]
+                # The count that actually decided something on deck 52: not "how many
+                # creatures" (nearly all of them) but how many are BIG enough that
+                # cheating them in gains you mana. 24 ways to return against 8 worth
+                # returning is the shape of an over-built reanimation package.
+                fat = sum(o["q"] for o in hits
+                          if o["mv"] is not None and o["mv"] >= _TARGET_FAT_MV)
+                out.append((c["n"], f"creature cards to return ({fat} at MV{_TARGET_FAT_MV}+)",
+                            sum(o["q"] for o in hits), None))
+                continue
+            elif kind == "perm":
+                hits = [o for o in others if not {"instant", "sorcery"} & set(o["type"].split())]
+            else:
+                hits = [o for o in others if "land" not in o["type"]]
+            out.append((c["n"], label.format(num) if num is not None else label,
+                        sum(o["q"] for o in hits), num if kind == "perm" else None))
+    return out
+
+
+def cmd_targets(args):
+    """Does this deck contain TARGETS for its own effects? Counts, per gated card, how
+    many cards in the list satisfy the gate its text names."""
+    d = find_deck(args.id)
+    if not d:
+        eprint(f"No deck with id {args.id!r}. Try: deck.py list")
+        return 1
+    _meta, cards = parse_deck_file(d["path"])
+    rows = target_counts(cards, load_card_data(), load_mana())
+    print(f"Deck {d['id']}: {d['name'] or d['path']} — targets for its own effects")
+    if not rows:
+        print("  No gated effects detected (no MV cap, sacrifice cost or count threshold "
+              "in this list's text).")
+        return 0
+    print(f"  {'Card':32} {'What its text needs':42} {'in deck':>7}")
+    print("  " + "-" * 84)
+    thin = 0
+    for name, label, count, need in sorted(rows, key=lambda r: (r[2], r[0])):
+        flag = ""
+        if count == 0:
+            flag = "  ✗ NOTHING"
+            thin += 1
+        elif need is not None and count < need:
+            flag = f"  ⚠ short of {need}"
+            thin += 1
+        elif count <= 3:
+            flag = "  ⚠ thin"
+            thin += 1
+        print(f"  {name[:32]:32} {label[:42]:42} {count:>7}{flag}")
+    print(f"\n  {len(rows)} gated effect(s); {thin} thin or unmet. A gate with nothing "
+          "behind it is a dead card, and a card graded in isolation cannot show you that "
+          "(G-61). Counts exclude the card itself; read the list, not just the number.")
+    return 0
 
 
 def cmd_engines(args):
@@ -8994,6 +9355,8 @@ def main():
     p.add_argument("id")
     p = sub.add_parser("engines", help="enabler vs payoff balance for the deck's engine themes")
     p.add_argument("id")
+    p = sub.add_parser("targets", help="does the deck contain TARGETS for its own gated effects (MV caps, sacrifice costs, count thresholds)")
+    p.add_argument("id")
     p = sub.add_parser("brawl", help="roster-wide Brawl-readiness — which decks are closest to a legal Brawl conversion")
     p.add_argument("--format", dest="fmt", default="standard",
                    help="which decks to assess (default: standard)")
@@ -9134,7 +9497,8 @@ def main():
         "list": cmd_list, "wildcards": cmd_wildcards, "audit": cmd_audit, "check": cmd_check,
         "diff": cmd_diff, "arena": cmd_arena, "stats": cmd_stats,
         "mana": cmd_mana, "consistency": cmd_consistency,
-        "tribes": cmd_tribes, "engines": cmd_engines, "suggest": cmd_suggest,
+        "tribes": cmd_tribes, "engines": cmd_engines, "targets": cmd_targets,
+        "suggest": cmd_suggest,
         "rotation": cmd_rotation, "brawl": cmd_brawl,
         "legal": cmd_legal, "cuts": cmd_cuts,
         "shape": cmd_shape,

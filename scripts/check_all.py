@@ -101,8 +101,16 @@ def check_derived_files():
 
 
 def check_decks():
-    """INV-04 (deck parse) + buildability summary (info, not a hard invariant)."""
-    errs, info = [], []
+    """INV-04 (deck parse + real printings) + buildability summary (info).
+
+    INV-04 used to assert only that a line PARSES. It said nothing about whether the
+    `(SET) COLLECTOR#` on that line names a printing that exists, so `1 Eaten Alive
+    (ZZZ) 172` passed here, passed `legal`, passed `check` (reported OWNED — ownership
+    joins on the NAME) and passed `preflight` READY. A deck file could be
+    integrity-clean and un-importable at once. An unknown SET CODE is now hard; an
+    unknown printing WITHIN a real set is soft, because the pool keys one printing per
+    card by construction. See `deck.printing_problems` for why basics are exempt."""
+    errs, warns, info = [], [], []
     decks = deckmod.discover_decks()
     _, _, by_name_qty = deckmod.load_collection()
     for d in decks:
@@ -120,7 +128,14 @@ def check_decks():
         status = "buildable" if (missing == 0 and short == 0) else \
             f"{missing} missing, {short} short"
         info.append(f"  deck {d['id']:>4}  {d['name'] or d['id']:<28} {status}")
-    return errs, info, len(decks)
+        bad_set, unverified = deckmod.printing_problems(cards)
+        for n, st, cn in bad_set:
+            errs.append(f"deck {d['id']}: {n} — set code ({st}) does not exist in the pool or library; the line cannot import")
+        for n, st, cn, kn in unverified:
+            warns.append(
+                f"deck {d['id']}: {n} ({st}) {cn} is not a printing we hold "
+                f"(known: {', '.join(f'({a.upper()}) {b}' for a, b in kn)})")
+    return errs, warns, info, len(decks)
 
 
 def main():
@@ -150,7 +165,7 @@ def main():
     hard += derived_errs
 
     # INV-04 / INV-05
-    deck_errs, deck_info, ndecks = check_decks()
+    deck_errs, deck_warns, deck_info, ndecks = check_decks()
     hard += deck_errs
 
     # Ranking-model sanity — guards the Doctor-Doom-class scoring regression
@@ -261,6 +276,13 @@ def main():
     # after a retune (e.g. deck 14 Mardu->Rakdos orphaned Neriv). Informational
     # only; never fails the build.
     soft = list(derived_warns)
+    # Printing lines that name a real set but an unheld collector number. Soft
+    # because the pool keys ONE printing per card, so a legitimate alternate art
+    # lands here too — summarised, since 27 sit on the roster today.
+    if deck_warns:
+        soft.append(f"unverified printing(s): {len(deck_warns)} deck line(s) name a "
+                    "(SET) COLLECTOR# this repo does not hold — run "
+                    "`deck.py legal <id>` on the deck to see them")
     try:
         import wishlist as wl
         for _sev, name, msg in wl._audit_target_issues(color_only=True):

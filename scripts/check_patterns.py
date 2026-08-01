@@ -86,6 +86,14 @@ _EXCLUDED = {
     ("deck", "_ARRIVING_BREAK"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_DEPARTING_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_ARROW_AFTER"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_SIMILE_BEFORE"): "tier-RATIONALE prose (6-char lookbehind slice, not a "
+                                "card-text corpus); unit-tested in test_deck.py",
+    ("deck", "_EXCLUSION_CUES"): "deck-HEADER prose (wrong_exclusion_claims); "
+                                 "unit-tested in test_deck.py",
+    ("deck", "_EXCLUSION_PAREN"): "deck-HEADER prose punctuation, not card text; "
+                                  "unit-tested in test_deck.py",
+    ("deck", "_EXCLUSION_STOP"): "deck-HEADER prose punctuation (clause boundary), not "
+                                 "card text; unit-tested in test_deck.py",
     ("deck", "_TRAILING_NOTE_RE"): "hand-typed card NAME normalization (strips a pile's "
                                    "'(needs Lessons)' note), not card text; unit-tested "
                                    "in test_deck.py::TestNameResolution",

@@ -2285,3 +2285,192 @@ class TestSwapApplyWritePath:
         before = (tmp_path / "decks" / "99-t" / "deck.txt").read_text()
         deck.cmd_swap(NS(id="99", cut="Shock", add="Lightning Strike", apply=False))
         assert (tmp_path / "decks" / "99-t" / "deck.txt").read_text() == before
+
+
+class TestPrintingValidation:
+    """F-01: a deck line's `(SET) COLLECTOR#` was validated by NOTHING.
+
+    `1 Eaten Alive (ZZZ) 172` — a set code that does not exist — passed `legal`, passed
+    `check` (which reported it OWNED, because ownership joins on the NAME), passed
+    `preflight` READY and passed `check_all` "All invariants hold". A deck file could be
+    integrity-clean and un-importable at the same time. Hit for real: deck 52 was written
+    with `(FDN) 610` for a card whose collector number is 172."""
+
+    def test_nonexistent_set_code_is_hard(self):
+        bad, unverified = deck.printing_problems([(1, "Eaten Alive", "ZZZ", "172")])
+        assert [n for n, _s, _c in bad] == ["Eaten Alive"]
+        assert unverified == []
+
+    def test_wrong_collector_in_a_real_set_is_soft(self):
+        bad, unverified = deck.printing_problems([(1, "Eaten Alive", "FDN", "610")])
+        assert bad == []
+        assert [n for n, _s, _c, _k in unverified] == ["Eaten Alive"]
+
+    def test_the_real_printing_is_clean(self):
+        assert deck.printing_problems([(1, "Eaten Alive", "FDN", "172")]) == ([], [])
+
+    def test_basic_lands_are_exempt(self):
+        """Arena prints several arts per set (Swamp MSH 291 AND 292 are both real) while
+        the pool carries one. Measured before choosing the rule: a hard check without
+        this exemption failed 61 of 78 deck files on basics alone."""
+        assert deck.printing_problems([(24, "Swamp", "MSH", "292")]) == ([], [])
+
+    def test_a_line_with_no_printing_stated_is_not_flagged(self):
+        assert deck.printing_problems([(1, "Eaten Alive", "", "")]) == ([], [])
+
+    def test_no_roster_deck_names_a_nonexistent_set(self):
+        """The hard half must fail nothing today, or it could not have been made hard."""
+        for d in deck.discover_decks():
+            _meta, cards = deck.parse_deck_file(d["path"])
+            bad, _unv = deck.printing_problems(cards)
+            assert bad == [], f"deck {d['id']}: {bad}"
+
+
+class TestIntentionalUncastable:
+    """F-02: an intentionally-uncastable reanimation target read as a build ERROR.
+
+    Measured on deck 52a before the fix: adding ONE five-colour bomb to a mono-black
+    reanimator moved `preflight` READY -> BLOCKED and the metrics floor A -> C. Three
+    bands, for a card working exactly as designed. Reanimator is not an exotic archetype
+    — it is why `Zombify` is in the pool."""
+
+    def test_header_parses_semicolon_separated_names(self):
+        assert deck._uncastable_ok({"uncastable-ok": "Cosmic Spider-Man; Krang, Utrom Warlord"}) \
+            == {"cosmic spider-man", "krang, utrom warlord"}
+
+    def test_hyphenated_meta_keys_parse_at_all(self, tmp_path):
+        """META_RE allowed only [A-Za-z_], so `#: uncastable-ok:` never became a key —
+        and neither did `#: based-on:`, which 24 roster lines already used and which was
+        being silently dropped."""
+        p = tmp_path / "d.txt"
+        p.write_text("#: name: T\n#: based-on: deck.txt\n#: uncastable-ok: Shock\n1 Shock (M21) 159\n")
+        meta, _ = deck.parse_deck_file(str(p))
+        assert meta["based-on"] == "deck.txt"
+        assert meta["uncastable-ok"] == "Shock"
+
+    def test_exempt_card_leaves_the_failure_list_but_is_still_reported(self):
+        cards = [(1, "Cosmic Spider-Man", "SPM", "175")]
+        mana = {"cosmic spider-man": ("{W}{U}{B}{R}{G}", "5")}
+        cd = {"cosmic spider-man": {"name": "Cosmic Spider-Man", "type": "Creature",
+                                    "text": "", "colors": "W/U/B/R/G"}}
+        unc, _oi, _oa, intended = deck._castability(cards, {"B"}, mana, cd)
+        assert [n for n, _w in unc] == ["Cosmic Spider-Man"] and intended == []
+        unc, _oi, _oa, intended = deck._castability(cards, {"B"}, mana, cd,
+                                                    {"cosmic spider-man"})
+        assert unc == [] and [n for n, _w in intended] == ["Cosmic Spider-Man"]
+
+
+class TestUncastableCapsRatherThanSets:
+    """F-16, subsumed by F-02: `tier_band` RETURNED "C" on a stray instead of capping at
+    it, so a deck whose measurable floor was D got RAISED by holding a dead card. "Caps"
+    is what the docstring and CLAUDE.md's rubric always said; only the code disagreed."""
+
+    def test_a_stray_cannot_raise_a_d_floor(self):
+        vec = {"uncastable": 1, "interaction": 0, "card_advantage": 0}
+        assert deck.tier_band(vec) == "D"
+
+    def test_a_stray_still_caps_an_a_floor(self):
+        vec = {"uncastable": 1, "interaction": 10, "card_advantage": 3}
+        assert deck.tier_band(vec) == "C"
+        vec["uncastable"] = 0
+        assert deck.tier_band(vec) == "A"
+
+
+class TestTargetCounts:
+    """F-04: nothing answered "does this deck contain TARGETS for its own effects".
+
+    Deck 52's concept pile held 24 ways to return a creature against 8 worth returning,
+    and that number came from a hand-written script. G-61 states the discipline in prose
+    with four overturned dismissals behind it, precisely because nothing automated it."""
+
+    CD = {"reanimate": {"name": "Reanimate", "type": "Sorcery",
+                        "text": "Return target creature card with mana value 4 or less "
+                                "from your graveyard to the battlefield.", "colors": "B"},
+          "smallguy": {"name": "SmallGuy", "type": "Creature — Human", "text": "", "colors": "B"},
+          "bigguy": {"name": "BigGuy", "type": "Creature — Giant", "text": "", "colors": "B"}}
+    MANA = {"reanimate": ("{1}{B}", "2"), "smallguy": ("{1}{B}", "2"), "bigguy": ("{7}{B}", "8")}
+
+    def test_mv_cap_counts_only_the_creatures_under_the_cap(self):
+        cards = [(1, "Reanimate", "", ""), (1, "SmallGuy", "", ""), (1, "BigGuy", "", "")]
+        rows = deck.target_counts(cards, self.CD, self.MANA)
+        mv = [r for r in rows if "MV ≤4" in r[1]]
+        assert len(mv) == 1 and mv[0][2] == 1        # SmallGuy only; BigGuy is MV 8
+
+    def test_a_gate_with_nothing_behind_it_reports_zero(self):
+        cards = [(1, "Reanimate", "", ""), (1, "BigGuy", "", "")]
+        rows = deck.target_counts(cards, self.CD, self.MANA)
+        assert [r for r in rows if "MV ≤4" in r[1]][0][2] == 0
+
+    def test_a_card_is_never_its_own_target(self):
+        cd = dict(self.CD)
+        cd["outlet"] = {"name": "Outlet", "type": "Creature — Human",
+                        "text": "Sacrifice a creature: draw a card.", "colors": "B"}
+        mana = dict(self.MANA, outlet=("{B}", "1"))
+        rows = deck.target_counts([(1, "Outlet", "", "")], cd, mana)
+        assert [r for r in rows if "sacrifice" in r[1]][0][2] == 0
+
+    def test_no_saturated_discard_rule(self):
+        """A generic "cards to discard" gate was written and removed: it reported 35 for
+        every discard outlet in a 60-card deck, i.e. "you have a hand"."""
+        assert not any(kind == "any" for _rx, _lbl, kind in deck._TARGET_GATES)
+
+
+class TestRationaleAuditMisses:
+    """F-03: the audit reported "rationale is current" on prose that was stale twice."""
+
+    def test_removes_in_oracle_text_no_longer_suppresses_a_citation(self):
+        """`remov\\w*` matched the card's OWN description — "Summon: Bahamut is a {9}
+        that REMOVES two nonland permanents" — and suppressed the staleness report. The
+        same word is already documented as "the worst of them" on the FIGURE path, where
+        it was narrowed; only the CARD path kept the broad form."""
+        w = "it attacks the turn it lands. Summon: Bahamut is a {9} that removes two"
+        assert not deck._HISTORY_CUES.search(w)
+        assert deck._HISTORY_CUES.search("Bahamut was removed for Bringer")
+
+    def test_average_is_read_as_well_as_avg(self):
+        """"Average nonland MV 4.17" passed while the live value was 4.22 — "avg" is not
+        a prefix of "Average", so no pattern could see it."""
+        hits = [key for rx, key in deck._RATIONALE_FIGURES
+                if rx.search("TIGHT CURVE — Average nonland MV 4.17 on 12 early drops")]
+        assert "avg_mv" in hits
+
+    def test_a_simile_is_not_a_citation(self):
+        """"It'll Quench Ya! is Spell Pierce that hits creatures too" explains an in-deck
+        card BY NAMING one the deck does not run. The name is the yardstick, not a claim."""
+        assert deck._SIMILE_BEFORE.search("Ya! is ")
+        assert not deck._SIMILE_BEFORE.search("cut the ")
+
+    def test_shorthand_for_an_in_deck_card_is_not_a_citation(self):
+        """Deck 33 writes "Heartfire sac-removal" for Heartfire Immolator, and Heartfire
+        is itself a real card. Masking cannot help — the full name is not in the text."""
+        assert any(o.startswith("Heartfire" + " ") for o in {"Heartfire Immolator"})
+
+
+class TestWrongExclusionClaims:
+    """F-03, related: `#: notes:` is exempt from the staleness scan because naming an
+    ABSENT card there is correct — but "Deliberately NOT included: Bringer of the Last
+    Gift" after Bringer was ADDED is a false claim about the current list, the opposite
+    direction from the one the exemption covers."""
+
+    def _deck(self, tmp_path, notes, lines):
+        d = tmp_path / "decks" / "98-x"
+        d.mkdir(parents=True)
+        (d / "deck.txt").write_text(f"#: name: X\n#: notes: {notes}\n" + "\n".join(lines) + "\n")
+        return {"id": "98", "name": "X", "path": str(d / "deck.txt")}
+
+    def test_claiming_a_card_is_excluded_while_running_it_is_flagged(self, tmp_path):
+        d = self._deck(tmp_path, "Deliberately NOT included and why: Lightning Strike "
+                                 "(too slow); Shock (worse).", ["4 Lightning Strike (MSH) 142"])
+        assert [n for n, _h in deck.wrong_exclusion_claims(d)] == ["Lightning Strike"]
+
+    def test_a_replacement_named_after_the_dash_is_not_the_excluded_card(self, tmp_path):
+        """"Craterhoof is deliberately NOT here — Summon: Titan is this deck's mass pump"
+        names the REPLACEMENT after the boundary. A plain distance window reported ten
+        roster hits and every one sampled was noise; this shape reports zero."""
+        d = self._deck(tmp_path, "Craterhoof is deliberately NOT here — Lightning Strike "
+                                 "is this deck's reach.", ["4 Lightning Strike (MSH) 142"])
+        assert deck.wrong_exclusion_claims(d) == []
+
+    def test_no_roster_deck_trips_it(self):
+        for dd in deck.discover_decks():
+            assert deck.wrong_exclusion_claims(dd) == [], dd["id"]
