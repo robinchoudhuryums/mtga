@@ -3,7 +3,7 @@
 #: colors: R
 #: plan: midrange
 #: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 10
-#: tier: plus card advantage 3 at a 4.11 curve. Two structural weaknesses the floor cannot see:
+#: tier: plus card advantage 3 at a 4.03 curve. Two structural weaknesses the floor cannot see:
 #: tier: 1. PROTECTION IS 1, and it is one card: Roaming Throne's ward {2}. Five named
 #: tier:    build-arounds and this deck's payoffs are the kind that must SURVIVE A TURN to
 #: tier:    matter — Lathliss only pays off on the NEXT Dragon, Terror of the Peaks only on the
@@ -12,8 +12,8 @@
 #: tier:    a protection grant returned essentially nothing, so this is red's cost, not an
 #: tier:    oversight. Call the Spirit Dragons was REJECTED on colour, not overlooked: it reads
 #: tier:    "Dragons you control have indestructible" and costs {W}{U}{B}{R}{G}, genuinely gold.
-#: tier: 2. IT IS SLOWISH, but much less so than it was. Avg MV 4.11 with 9 early drops (it was
-#: tier:    4.20 and 9 before the Treasure pass, 4.00 and 11 during it); against a fast start the deck
+#: tier: 2. IT IS SLOWISH, but much less so than it was. Avg MV 4.03 with 10 early drops (it was
+#: tier:    4.20 and 9 before the 2026-08 passes); against a fast start the deck
 #: tier:    must trade one-for-one with removal it
 #: tier:    has plenty of, then stabilise with a five-drop. Card advantage 3 is still thin, and
 #: tier:    still an UNDER-count — Bonehoard Dracosaur exiles two cards a turn and Breaching
@@ -154,6 +154,7 @@
 1 Seize the Spoils (SOS) 129
 1 Sunset Strikemaster (TDM) 126
 1 Magda, the Hoardmaster (OTJ) 133
+1 Draconautics Engineer (DFT) 121
 
 # Dragons — the early curve
 1 Runescale Stormbrood // Chilling Screech (TDM) 221
@@ -164,7 +165,6 @@
 1 Spinerock Tyrant (ECL) 159
 1 Rapacious Dragon (FDN) 544
 1 Terror of the Peaks (OTJ) 149
-1 Bonehoard Dracosaur (LCI) 134
 1 Dragonhawk, Fate's Tempest (BLB) 132
 1 Twinflame Tyrant (FDN) 97
 1 Decadent Dragon // Expensive Taste (WOE) 223
@@ -203,3 +203,7 @@
 1 Three Tree City (BLB) 260
 1 Kavaron, Memorial World (EOE) 255
 23 Mountain (MSH) 293
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 49
+#~ -Draconautics Engineer | +Bonehoard Dracosaur | CRAFT (M), DEFERRED: the deck's best card-advantage engine — two cards per upkeep plus a token or Treasure, doubled by Roaming Throne to four. Card advantage is 3 and thin. Engineer holds the slot for 0 wildcards.
+#~ -Breaching Dragonstorm | +Incinerator of the Guilty | CRAFT (M), DEFERRED: screen rates it KEY and it is a real Dragon (16 -> 17). Combat damage collects evidence to wipe their board. MV 6 into a 4.1 curve is the cost, so it wants the curve to come down first.
