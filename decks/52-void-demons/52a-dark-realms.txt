@@ -1,0 +1,109 @@
+#: name: Void Demons — Dark Realms
+#: format: Standard
+#: colors: B
+#: based-on: deck.txt
+#: plan: midrange
+#: archetype: Mono-black TRUE REANIMATOR — the mana-cheat build its parent deliberately
+#: archetype: is not. Deck 52 grades recursion as GRIND (a two-drop that keeps coming
+#: archetype: back) on a 2.83 curve; this list grades it as a COST CHEAT, and the two
+#: archetype: therefore want opposite cards. The parent's concept pile could not support
+#: archetype: this plan — measured, it held 24 ways to return a creature against 8
+#: archetype: creatures worth returning — so the top end here is IMPORTED from the wider
+#: archetype: collection and the enabler half is built from scratch.
+#: archetype: THE GAP IS THE POINT: Krang is a {9} 9/9 with flying, trample,
+#: archetype: indestructible AND HASTE, so reanimating him is not just cheap, it attacks
+#: archetype: the turn it lands. Summon: Bahamut is a {9} that removes two nonland
+#: archetype: permanents, draws two, then deals damage equal to the total mana value of
+#: archetype: your other permanents. Cat-Gator's ETB is damage equal to your Swamp count
+#: archetype: — 24 Swamps, so it is a reanimated Fireball with lifelink.
+#: archetype: THE ENABLER HALF, which the parent has almost none of: nine cards that put
+#: archetype: a bomb in the yard. Lively Dirge's {1} mode TUTORS one straight there;
+#: archetype: Commune with Evil bins three with selection; Quag Feast and Eerie
+#: archetype: Gravestone mill while doing their day job; Ral Zarek surveils 2 every turn
+#: archetype: and can discard on demand; Prison Break's Mayhem lets a DISCARDED
+#: archetype: reanimation spell cast itself from the graveyard for {3}{B}.
+#: archetype: EVERY GRAVEYARD IS THE CARD POOL, and this is the axis that separates the
+#: archetype: deck from every other reanimator on the roster. Six cards read an OPPOSING
+#: archetype: yard: Rise of the Dark Realms takes all of them at once, The Rise of Sozin
+#: archetype: wraths on chapter I and then transforms into a creature that mass-reanimates
+#: archetype: from the player it hit, Grave Researcher's {B} spell half says "from A
+#: archetype: graveyard", Shark Shredder steals on combat damage, Ardyn copies any
+#: archetype: graveyard into a 5/5 Demon each combat. So the removal suite is not just
+#: archetype: defence — every creature this deck kills is restocking its own library.
+#: archetype: DISTINCTIVENESS vs deck 06 (Abzan reanimator, tier B), which `similar` puts
+#: archetype: at 97% on shared THEMES: 06's engine lives in its WHITE half — white
+#: archetype: recursion enchantments, a white sweeper and lifegain bodies this deck cannot
+#: archetype: cast at all — and it only ever recurs its OWN graveyard. Mono-black is not
+#: archetype: 06 minus two colours; it is a different engine reaching a different zone.
+#: archetype: They share 4 cards.
+#: archetype: vs the parent 52: zero Void cards, zero warp, no sacrifice-outlet layer, and
+#: archetype: a curve a full mana value higher.
+#: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (3 craft targets, zero games).
+#: tier: One band BELOW the measurable floor, which reads A on interaction 11 plus card
+#: tier: advantage 2. Against the rubric an A needs four things and this list fails two:
+#: tier:   A-FLOOR — yes. Interaction 11 clears five; the sum of 13 clears seven.
+#: tier:   COHERENT ENGINE — yes. Nine enablers feed nine reanimation effects feed seven
+#: tier:     bombs, and the ratio is deliberate: a reanimator needs more ways to fill the
+#: tier:     yard than things to put in it.
+#: tier:   TIGHT CURVE — NO, and this is the honest reason it is not an A. Average nonland
+#: tier:     MV 4.17 on only 12 early drops, and that average UNDER-reads because Stargaze
+#: tier:     books as MV 1 (X counts as 0). It is the slowest list on this branch.
+#: tier:   AT MOST ONE CLEAR WEAKNESS — no. Card advantage is 2, and it COMPOUNDS with the
+#: tier:     curve: a slow deck that does not refill loses the game where it is disrupted
+#: tier:     once. Add the singleton problem — one Rise of the Dark Realms, one Lively
+#: tier:     Dirge to tutor with — and the draws where the halves do not meet are real.
+#: tier: The floor cannot see that Krang reanimated on turn four is a hasty 9/9 with
+#: tier: flying, trample and indestructible, which ends games the metrics have no term
+#: tier: for. Re-grade after it is built and played.
+#: protect: Rise of the Dark Realms; Krang, Utrom Warlord; Behold the Sinister Six!; Lively Dirge; The Rise of Sozin
+#: notes: WIP / aspirational — 3 craft targets: Rise of the Dark Realms (M), Evil
+#: notes: Reawakened (U), Commune with Evil (U). The mythic is the namesake and the only
+#: notes: expensive card in the list.
+#: notes: Deliberately NOT included and why: Bringer of the Last Gift (its wipe-and-mass-
+#: notes: reanimate only triggers "if you cast it", so reanimating it does nothing — the
+#: notes: exact card this deck would most want to cheat, and it refuses); Virtue of
+#: notes: Persistence and Lich-Knights' Conquest (both mythic/rare crafts that ROTATE in
+#: notes: 2026); Bitter Triumph (discard-as-a-cost is perfectly on plan, but it rotates
+#: notes: 2026 — Quag Feast does the same job and lives to 2028); Xu-Ifit (returns
+#: notes: creatures with NO abilities, which is the opposite of what a bomb is for).
+
+# Nonland
+1 Deadly Precision (TLA) 95
+1 Embrace Oblivion (EOE) 98
+1 Eaten Alive (FDN) 172
+1 The Soul Stone (SPM) 66
+1 Sidisi, Regent of the Mire (TDM) 92
+1 Lively Dirge (OTJ) 93
+1 Macabre Waltz (FDN) 177
+1 Red Room Recruit (MSH) 110
+1 Quag Feast (DFT) 100
+1 Eerie Gravestone (SPM) 163
+1 Feed the Swarm (SOA) 29
+1 Grave Researcher (SOS) 85
+1 Too Evil to Stay Dead (MSH) 118
+1 Ral Zarek, Guest Lecturer (SOS) 97
+1 Shinra Reinforcements (FIN) 118
+1 Withering Curse (SOS) 105
+1 Pull from the Grave (SOS) 95
+1 Commune with Evil (DSK) 87
+1 Zombify (SOA) 36
+1 Grim Reaper, Lethal Legionnaire (MSH) 98
+1 Stargaze (SOA) 34
+1 Prison Break (SPM) 61
+1 Evil Reawakened (FIN) 98
+1 M.O.D.O.K. (MSH) 106
+1 Shark Shredder, Killer Clone (TMT) 73
+1 Liliana, Dreadhorde General (FDN) 176
+1 Massacre Wurm (FDN) 714
+1 Vein Ripper (MKM) 110
+1 The Rise of Sozin (TLA) 117
+1 Cat-Gator (TLA) 91
+1 Behold the Sinister Six! (SPM) 51
+1 Armaggon, Future Shark (TMT) 58
+1 Ardyn, the Usurper (FIN) 89
+1 Rise of the Dark Realms (FDN) 183
+1 Summon: Bahamut (FIN) 1
+1 Krang, Utrom Warlord (TMT) 175
+
+# Lands
+24 Swamp (MSH) 291
