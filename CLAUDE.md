@@ -145,7 +145,8 @@ castability · curve · central-theme density), with the intangibles moving a de
   stale**, and that's the only thing the guard flags.
 - **The guard** — `deck.py tier <id>` shows claimed-vs-floor and flags a mismatch
   (≥2 bands over) or a possibly-under-graded deck (claimed *below* the under-rating
-  floor). A roster pass is a **soft, non-gating** `check_all` warning, so an
+  floor) — **unless the `#: tier:` prose argues for grading under it**, which the rubric
+  permits and which three decks were being nagged about. A roster pass is a **soft, non-gating** `check_all` warning, so an
   inflated/stale letter can't hide. It never assigns — it says "re-grade this, or
   justify the bombs/meta in the `#: tier:` rationale." **Run it after any deck edit**
   (the `/apply-changes` skill does) so a tune that moves the metrics re-grounds the
@@ -229,7 +230,11 @@ directions.
   and hard-protect signature cards with a `#: protect:` header. Its `#: protect:`
   keep-boost reads the STRICT spine (a theme carried by ≥2 protected cards), like every
   `fit_strength` caller: the loose union fired on 87% of nonland cards — 100% in two
-  decks — and a boost that applies to every card in a ranking is a constant. [G-09]
+  decks — and a boost that applies to every card in a ranking is a constant. It now
+  prints the axis the deck is SHORT on above the table, because a `⚠interaction` note
+  once put four ONE-MANA spells atop the cut list of the slowest deck on the roster, and
+  flags `⌁scales w/ <axis>` for a card graded at its FLOOR (Cat-Gator reads as a 7-mana
+  3/2 when its ETB is damage equal to your 24 Swamps). Both REPORT-only. [G-09]
 - **"Not in library" for a card you own is the deck-dump undercount symptom.** Fastest
   fix: `reconcile_crafts.py <arena-export>` — it adds the library row, adds a blank
   `card-mana.csv` row so INV-02 always holds, drops the card from the wishlist, and
@@ -381,7 +386,11 @@ directions.
   source recommendation. Run it whenever a splash, a double pip or a top-end bomb is in
   question; it is what settles "is this actually castable" instead of hand-waving from a
   source count. A thin (≤3-source) splash is reframed "cast late or cut" rather than
-  printing an impractical land count. A planning aid, not a guarantee. [G-36]
+  printing an impractical land count. The land-count advisory checks the neighbour before
+  prescribing a direction: on a low curve BOTH directions used to trip ("consider fewer"
+  at 24 lands, "consider more" at 23, where keepable was worse), so when neither helps it
+  now says the threshold is unreachable and points at cast-on-curve — which is the number
+  that settles the question anyway. A planning aid, not a guarantee. [G-36]
 - **`deck.py suggest --lands <id>` is the manabase RECOMMENDER** — plain `suggest` is
   structurally blind to lands, because it filters to cards sharing a synergy theme.
   Scored on FIXING value plus two bounded nudges (a land's own synergy text, and the
@@ -447,7 +456,12 @@ directions.
   IS NOW. **Re-run `screen` after ANY change of plan, not once**: a pile graded against
   the first draft's plan keeps those verdicts, which is how four cards were excluded for
   reasons that had expired. Its `★ STRICT UPGRADE` test is deliberately conservative, so
-  its silence is not a verdict. [G-47]
+  its silence is not a verdict — and when KEY fires on ≥40% of a pile `screen` SAYS SO:
+  measured at 45–51% on the two mono-black decks, where the signature theme sits on half
+  the colour's pool. Read the ORDER, not the word. `similar` likewise prints `▸ Most
+  shared CARDS` when its theme ranking disagrees with actual card overlap — deck 52a
+  reads 96% against deck 6 (4 shared cards) and 81% against its own parent (14). Theme
+  similarity and card overlap are different questions, and SOME OVERLAP IS FINE. [G-47]
 - **Every role COUNT carries its own uncertainty** (`deck.count_conf`), because a
   heuristic classifier reports a false negative as a FACT. `stats`/`tier` render `7`,
   `3 +2?`, or `8 +4? (3 unclassified)`. The remainders are QUANTITY-WEIGHTED like the

@@ -624,6 +624,20 @@ read like that role but couldn't be tagged), or `8 +4? (3 unclassified)`. 52 of 
 decks show uncertainty inline; one of them was graded on interaction 3 when a hand
 count said 7.
 
+**Four output changes worth knowing about.** `deck.py screen` says so when its `KEY`
+label is SATURATED — measured at 45–51% of the pile on a mono-black graveyard deck, where
+the deck's signature theme sits on half the colour's card pool; the ordering still carries
+information, the word does not. `deck.py similar` prints `▸ Most shared CARDS` whenever its
+theme ranking disagrees with actual card overlap (deck 52a reads 96% similar to deck 6, with
+which it shares 4 cards, and 81% to its own parent, with which it shares 14) — theme
+similarity and card overlap are different questions, and some overlap between decks is
+expected. `deck.py cuts` prints which axis the deck is short on, so a "this removal is
+redundant" note is read in context rather than trimming cheap cards from a deck that is
+already too slow, and flags `⌁ scales w/ <axis>` for a card whose value is a count in the
+deck rather than in its own text. And `deck.py consistency` no longer prescribes a land
+count when moving that way makes things worse — on a low curve both directions used to
+trip, so it now says the keepable threshold is unreachable and points at cast-on-curve.
+
 **`deck.py targets <id>`** answers a question every other model here is structurally
 blind to: a card whose text names a RESOURCE — "return target creature card with mana
 value 4 or less", "sacrifice an artifact or creature", "eight or more permanent cards in
