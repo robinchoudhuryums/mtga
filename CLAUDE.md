@@ -14,6 +14,17 @@ docs. This file is the source of truth for the workflow commands in
   picks unless the power gap is large); override per run with `competitive` /
   `balanced` in the args. Still always report the by-the-numbers pick — the
   preference shifts recommendations, not honesty.
+- **BUILD THE OPTIMAL LIST. Do NOT gate a card on whether it is owned, and do not
+  budget the build against the wildcards on hand.** Wildcard balances change constantly
+  and the owned/unowned data in this repo is often stale, so "you only have 10 rares" is
+  a fact about last week, not about the deck. A card that is objectively better belongs in
+  the list whether or not you own it. This was a REAL failure mode, not a hypothetical:
+  deck 53 was reported as "over budget — 12 rares against 10 held" as though that were a
+  design verdict, and cheaper OWNED removal was picked over better unowned removal in all
+  three of decks 52/52a/53. **What stays:** report the craft cost as INFORMATION at the
+  end (it is useful for sequencing), keep decks WIP/aspirational so `check` tracks the
+  gap, and keep flagging ROTATION — a card leaving Standard is a legality fact about the
+  deck's future, not a resource constraint, and those are different questions.
 
 ## Key Design Decisions
 
