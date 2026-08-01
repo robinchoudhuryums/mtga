@@ -61,6 +61,17 @@ pass `--zero-missing`. Columns are matched by alias against the header (so most 
 work unchanged) and it stops rather than guessing if it can't identify one; map them with
 `--map name=Card,qty=Have`.
 
+**Several export printings of one card SUM onto the library row they resolve to.** A
+tracker exports one row per *printing*, while the library may hold fewer printings of that
+card and ownership is counted per *card* (copies are fungible across sets) — so
+`2× (M19) 314` plus `1× (DOM) 168` against a library holding only the DOM printing means
+you own **3**. Each entry used to be assigned in turn, so the last one won and the rest
+were silently dropped: the row landed on 1 or 2 depending on the order the export happened
+to list them, and the report printed one clean line and looked right. A *repeated*
+printing is the opposite case and is not summed — a tracker emitting the same
+`(name, set, collector)` twice is stating one holding twice, not two holdings, so
+identical export keys collapse on `max` first.
+
 **After any import, rebuild the derived data** — a new card has no `card-mana.csv` row,
 so INV-02 fails until `build_mana.py --pool` runs. `/refresh` runs the whole chain.
 
@@ -406,8 +417,12 @@ than its accuracy. A disagreement is a case the model got wrong either way. Belo
 swaps it refuses to compute a rate at all.
 
 The rate is **split by creature vs noncreature cut**, because one pooled number hid a
-two-fold difference: at 52 swaps the pooled figure read 63%, while noncreature cuts
-agreed 90% and creature cuts sat at 45% — a coin flip. The cause is that `cuts` scores a
+two-fold difference: at 100 swaps the pooled figure reads 62%, while noncreature cuts
+agree 83% and creature cuts sit at 42% — a coin flip, and the median creature cut sits
+61% toward "keep", i.e. the model typically wanted to keep the card you cut. (The sample
+has doubled since the split was first measured at n=52, where the three figures read
+63% / 90% / 45%; the conclusion held and both segments drifted slightly WORSE, which is
+the honest direction for a signal that was never re-weighted.) The cause is that `cuts` scores a
 card by *summing* theme weights over its tags with no normalization for tag count, and
 creatures carry roughly twice as many tags as noncreature spells (tribes, keywords and
 ability tags), so they are systematically protected from the cut list. Normalizing was
@@ -1053,6 +1068,13 @@ basic lands are skipped — they are deliberately not in the collection.
 
 `--exact` requires `owned == pasted`; use it **only** for the authoritative
 `import_collection.py` route. Every other route treats a line as a lower bound.
+
+The comparison is per **card**, not per line: owned copies are summed across printings,
+while a tracker export carries one line per printing, so all the lines resolving to one
+library row are added up before the check. Comparing a summed total against a single
+line's share made `--exact` structurally unable to pass a *correct* multi-printing
+import — and in the default lower-bound mode it hid real shortfalls, since owned 2
+against lines of 2 and 1 passed both `>=` tests while the paste claimed 3.
 
 ### Rebuilding derived data
 

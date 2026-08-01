@@ -1505,7 +1505,11 @@ rate at all, the same restraint `parse_matches --report` and `count_conf` show.
 **The rate is SEGMENTED by creature vs noncreature cut, because ONE pooled number hid
 a two-fold split.** At 52 scored swaps the pooled figure read 63%, and underneath it
 noncreature cuts agreed **19/21 (90%, median 10% toward "keep")** while creature cuts
-sat at **14/31 (45%, median 56%)** — a coin flip. A single rate averaging a healthy and
+sat at **14/31 (45%, median 56%)** — a coin flip. **At n=100 the split is unchanged in
+kind and slightly worse in degree: pooled 60/96 (62%), noncreature 40/48 (83%, median
+14%), creature 20/48 (42%, median 61% toward "keep").** The sample doubling without the
+gap closing is the useful part — this was never re-weighted, so the drift is the signal
+moving on its own rather than a fix regressing. A single rate averaging a healthy and
 a broken channel reads as healthy: the same saturation failure as the `Decks` column at
 99% and the `review` verdict firing on 22 of 63 decks. `recommendation_segments(rows,
 is_creature)` takes an INJECTED classifier so the summary stays pure and a test can
@@ -2320,6 +2324,50 @@ shape.
 `swap --apply` wrote `1 Runescale Stormbrood` with no `(SET) NUM`. It parses, it passes
 INV-04, it passes `deck.py legal` — and it fails an Arena import, which is the one place
 the failure shows and the one place no gate here runs.
+
+**NAME, a second time — and this is the one that should have been impossible.** The fix
+above gave the NAME column an accessor, and a later scan found the same column broken
+somewhere else: `_multiset`, the key behind `verify`, `sync`, `diff` and the dashboard's
+stale-check — the commands whose entire job is matching a pasted list against a stored one
+BY NAME. It keyed on the raw lowercased name, so a deck file storing
+`Ojer Axonil, Deepest Might // Temple of Power` against an Arena export naming just the
+front reported a real change: `+1 Ojer Axonil, Deepest Might` / `-1 Ojer Axonil, Deepest
+Might // Temple of Power`. `verify` exited non-zero on an identical deck, and
+`sync --apply` would have "repaired" the file by replacing the full name with the bare
+front — writing back the exact un-importable line the previous fix existed to prevent,
+past a green INV-04 check, because the copy count never changed. 14 deck files carry such
+a line. Fixed with `_ms_key` (front-face) plus `_ms_display`, which keeps first-seen
+spelling EXCEPT that the full `Front // Back` form always beats a bare front, since that
+is the spelling a deck file must carry.
+
+**RARITY — a column, and a SHAPE, that the accessor rule never covered.** `load_rarities`
+reads `card-pool.csv`, which keys only the full `Front // Back` name, and it had no front
+alias. 47 distinct card names across the live roster resolved to `""` — and an empty
+string is not an error anywhere: `cut_keep_score` hands it to `_power_seed`, which falls
+to its default (uncommon) floor. So every mythic and rare double-faced card in every deck
+was seeded as low-rarity and sorted UP the cut list. Ojer Axonil's `_cuts_power_adj` came
+out **−0.70 against a real +0.17** — the nudge changed SIGN, so the model was actively
+arguing to cut a bomb. Avatar Aang, Bruce Banner and Clive each read 2.5 power low. The
+irony is documented in the code: `cut_keep_score` already carries a note about rarity
+falling through to the default floor, from the earlier fix for the rarity WORD-vs-LETTER
+shape. That fix landed; this one was a different way into the same floor.
+
+**The third lesson, which is the general one.** The first two lessons below are about
+ACCESSORS, and they are correct as far as they go — but an accessor rule cannot reach an
+INDEX. Auditing every reference-table loader found five that alias a DFC's front face
+(`load_card_data`, `load_mana`, `load_legalities`, `load_card_meta`,
+`_pool_rotation_index`) and two that did not (`load_rarities`, `load_keywords`). Nothing
+gated the difference, and nothing could: each loader is individually correct against its
+own file. The distinguishing feature is not the column, it is **which file the index is
+built over** — a loader over the pool inherits the pool's full-name keying, while a loader
+that also reads the library picks up front names for free and looks fine. So: when you
+build a name-keyed index over a pool-shaped file, alias the front face — and do it in a
+SECOND pass, after every real row is indexed, or a `Front // Back` row seen early will
+shadow a genuinely distinct card named `Front` (`Life` is a card as well as the front of
+`Life // Death`, the same trap `build_mana._front_face_retry` guards). `load_keywords` has
+the same gap and was measured rather than assumed: 1 affected card, 0 behavioural
+difference today, because `card-mana.csv` is built from library names too. It is left as a
+known-latent case rather than fixed blind.
 
 **The two lessons.** First, each column now has exactly ONE front-face-aware accessor:
 `lib.front_face_cost` for cost, the printed cost (not `card_colors` alone) for

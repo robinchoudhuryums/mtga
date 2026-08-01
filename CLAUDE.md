@@ -79,6 +79,11 @@ docs. This file is the source of truth for the workflow commands in
   library stores the front only — else an owned DFC would read as `craft` (audit F6).
   Route every such join through `lib.owned_qty` (front-face aware); `check_dfc.py`
   hard-gates this (behavioral anchor + a static scan for raw lookups that bypass it).
+  **`card.py` belongs in that list too, and was the violation**: it read `Quantity Owned`
+  off the FIRST matching row, so every card owned in two sets under-reported (Rugged
+  Highlands showed 1 against a real 3) — on the surface G-01 makes the mandated
+  pre-grading read. The gate could not see it: its scan looks for a lookup on an
+  ownership INDEX, and this was a per-row column read, which is a different shape.
 - **Decks share the collection — a card is NOT consumed by a deck.** In MTG Arena
   the whole collection is available to every deck at once, so one owned copy can
   sit in any number of decks *simultaneously*; owning N copies lets each deck run
@@ -552,20 +557,20 @@ directions.
   short. **The inverse is the G-42 shape** — blind mill FEEDS a graveyard deck. If the
   scorecard really says interaction, the fix is `suggest --needs` per G-38, not a mill
   card. Deck 51 is the worked case: its mill package is a second win condition. [G-62]
-- **THE FRONT FACE AND THE STORED METADATA DISAGREE — ON EVERY COLUMN, NOT JUST COST.**
-  G-02 is one member of a class that produced four bugs in one cycle, each on a different
-  column of a `Front // Back` card. **COST:** a modal DFC stored only the front, so a
-  castable back face was invisible — which is why both faces of Bruce Banner were called
-  unreachable in chat (49 rows, fixed). **COLOR:** `Color(s)` is identity, so `suggest`
-  hid 55 castable red-pool cards (G-58). **TYPE:** a substring scan over the whole type
-  line returned the BACK face's type, so any DFC with a land back left the curve and
-  joined the land total — deck 49 read 26 lands holding 25. **NAME:** `swap --apply` wrote
-  a bare `1 Runescale Stormbrood`, which parses and passes `legal` but fails an Arena
-  import. Each column now has ONE front-face-aware accessor — `lib.front_face_cost`,
-  the printed cost (not `card_colors` alone), `lib.primary_type`, `lib.owned_qty` — and a
-  SECOND COPY carries the bug again, which is what `build_gallery.py`'s private
-  `_primary_type` did for as long as it existed. **When a name contains `" // "`, ask
-  which face the column describes before you trust it.** [G-63]
+- **THE FRONT FACE AND THE STORED METADATA DISAGREE — ON EVERY COLUMN, AND IN EVERY
+  INDEX.** G-02 is one member of a class that has now produced SIX bugs across five
+  columns: **COST** (a modal DFC stored only the front), **COLOR** (identity hid 55
+  castable red-pool cards — G-58), **TYPE** (a whole-line scan read the BACK face's; deck
+  49 reported 26 lands holding 25), **NAME twice** (`swap --apply` wrote a bare
+  `1 Runescale Stormbrood`; then `_multiset` keyed `verify`/`sync` on the raw name, so an
+  identical deck read as DRIFTED and `sync --apply` would have written that bare name
+  back), and **RARITY** (`load_rarities` reads the pool, keyed only by `Front // Back`, so
+  47 roster names priced blank and every mythic DFC sorted UP the cut list). Each column
+  has ONE front-face accessor — but **the accessor rule does not reach an INDEX**: five
+  loaders alias the front face, two did not, and no gate sees the difference. **Ask which
+  face a column describes; and when you BUILD a name-keyed index over a pool-shaped file,
+  alias the front in a SECOND pass, so a real card named `Front` is never shadowed.**
+  [G-63]
 
 ## Known Issues
 
@@ -685,7 +690,7 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (16 files: the markup-contract, CLI-entry-point, analysis-model,
+- Testing: tests/ (17 files: the markup-contract, CLI-entry-point, analysis-model,
   gate-pinning, shared-primitive and ingest layers), requirements-dev.txt, pytest.ini,
   .github/workflows/tests.yml [C-07]
 - Decks: decks/
