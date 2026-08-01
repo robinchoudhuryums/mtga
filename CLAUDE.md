@@ -119,7 +119,9 @@ castability · curve · central-theme density), with the intangibles moving a de
   **A-floor** interaction ≥5 and (interaction+card-adv) ≥7; **B-floor** interaction
   ≥3 and sum ≥4; **C-floor** sum ≥2; **D** below that; any uncastable stray caps at
   C. The floor is blind to raw card power / bombs / meta (an idf+role model can't
-  see those), so it **under-rates by design.**
+  see those), so it **under-rates by design.** An uncastable stray CAPS the floor at C
+  rather than SETTING it, so a dead card can no longer RAISE a D-floor deck, and a card
+  the deck's `#: uncastable-ok:` header declares intentional is not counted at all.
 - **The floor is ARCHETYPE-aware** (#4): an aggro deck closes on a fast clock, not an
   interaction suite, so for an **aggro** plan a bounded `_clock_score` (low curve +
   cheap threats + reach, 0–7) SUBSTITUTES for the interaction the resilience floor
@@ -312,19 +314,24 @@ directions.
   **let a roster-wide sweep be the check**: a false positive is noisy and gets noticed, a
   false negative is silent, and three separate sweeps each found figures the audit had
   reported clean. A CARD citation and a FIGURE go stale differently and must not share a
-  predicate. **KNOWN RESIDUAL, live:** a copula or participle between a label and its
-  number still hides a figure ("protection is 1", "the reported 2.57"), and a change-cue
-  about one card still suppresses a citation of ANOTHER card in the same window even when
-  the clause says that card **stays** — so a "X stays" claim is NOT covered; check it by
-  hand after a swap. [G-26]
+  predicate — and the CARD path kept a broad `remov\w*` for a year after the FIGURE path
+  was narrowed for exactly that word, so a card whose own text says "removes" suppressed
+  its own staleness report. **KNOWN RESIDUAL, live:** a copula between a label and its
+  number still hides a figure ("protection is 1"); a change-cue about one card still
+  suppresses a citation of ANOTHER in the same window even when the clause says that card
+  **stays**; and prose saying "the swap removes X" about a CUT card now reads as a live
+  citation. Shorthand ("Heartfire" for Heartfire Immolator) and simile ("X is Spell Pierce
+  that…") ARE handled. [G-26]
 - **Run `tier <id> --audit-rationale` after ANY deck edit.** The tier guard checks the
   LETTER; this checks the ARGUMENT — cards the prose cites that the deck no longer runs,
   and figures the live quality vector contradicts. A swap moves those numbers by
   construction. Scoped to `#: tier:` AND `#: archetype:` — the archetype block is equally a
   claim about the CURRENT list, and it is the header a reader trusts first, so it is the
-  one that goes stale unnoticed. `#: notes:` stays out: it is a free-form build log where naming
-  an absent card is correct. Report-only. A rationale that legitimately names a card it
-  cut must put the change-cue ADJACENT to the name. [G-27]
+  one that goes stale unnoticed. `#: notes:` stays out of the STALENESS scan — a build log
+  may name an absent card — but an EXCLUSION claim in it ("deliberately NOT included: X")
+  is checked, because that is a claim about the current list in the opposite direction.
+  Report-only. A rationale that legitimately names a card it cut must put the change-cue
+  ADJACENT to the name. [G-27]
 - **`suggest`'s `Decks` column is cross-deck BREADTH, not curated fit** — castable and
   sharing a *central* theme that is also SPECIFIC, with variants collapsed to their core
   deck. Both gates are load-bearing: centrality alone left the column saturated at 99%,
@@ -572,6 +579,31 @@ directions.
   alias the front in a SECOND pass, so a real card named `Front` is never shadowed.**
   [G-63]
 
+- **A reanimator's uncastable bombs need `#: uncastable-ok:`, and everything else's do
+  not.** The castability lint and `tier_band` both model "you cannot cast this" as a build
+  ERROR, which is right by default and wrong for a whole archetype: one five-colour bomb in
+  mono-black 52a moved `preflight` READY→BLOCKED and the floor A→C, for a card working as
+  designed. The header is OPT-IN and PER-CARD (`#: uncastable-ok: A; B`, semicolons, like
+  `#: protect:`) — most uncastable cards really are mistakes, so the default stays a hard
+  FAIL. An exempt card is still PRINTED by `mana` and counted in `preflight` as
+  "(+N intended, exempt)"; it leaves the failure list, not the page. [G-64]
+- **Never hand-write a deck line's `(SET) COLLECTOR#` — get it from `deck.py resolve`.**
+  Those fields were validated by NOTHING: `1 Eaten Alive (ZZZ) 172` passed `legal`, passed
+  `check` (which reported it OWNED, because ownership joins on the NAME), passed
+  `preflight` READY and passed `check_all`. A deck file could be integrity-clean and
+  un-importable at once, and deck 52 was written with `(FDN) 610` against a real 172. Now:
+  a set code that exists nowhere is a HARD INV-04 failure; an unheld collector number in a
+  real set is a SOFT warning, since the pool keys ONE printing per card. Basics are exempt
+  — Arena prints several arts per set. `deck.py legal <id>` lists both. [G-65]
+- **`deck.py targets <id>` answers whether the deck holds TARGETS for its own gated
+  effects** — MV caps ("reanimate a creature MV 4 or less"), sacrifice costs, count
+  thresholds. Every other model here grades a card in ISOLATION, so a gate with nothing
+  behind it is invisible: deck 52's concept pile held 24 ways to return a creature against
+  8 worth returning, a number that had to be derived by hand. This is the automated half of
+  G-61's "state the count, then decide". `✗ NOTHING` is a dead card; `⚠ thin` (≤3) is the
+  shape to read. Counts exclude the card itself. Heuristic and report-only — read the list,
+  not just the number. [G-66]
+
 ## Known Issues
 
 Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
@@ -676,8 +708,8 @@ earned it: [C-01]
 - Documentation Currency — README / CLAUDE.md / docs match the code and data
 
 **Subsystems:**
-- Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv,
-  recommendations.csv [C-02]
+- Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
+  (absent until the first `/log-matches`), recommendations.csv [C-02]
 - Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only
   subsystems that have seen a real game or a real decision [C-03]
 - Ingest & Enrich: scripts/import_arena.py, scripts/import_collection.py,
@@ -699,7 +731,7 @@ earned it: [C-01]
 - INV-01 | card-library.csv has the canonical 8-column header, every row has 8 fields, no duplicate (Card Name, Set Code, Collector #) printing, and Quantity Owned is blank or a non-negative integer | Subsystem: Data | Verify: scripts/check_all.py (via validate.py)
 - INV-02 | Every Card Name in card-library.csv has a row in card-mana.csv | Subsystem: Data | Verify: scripts/check_all.py
 - INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released+Power+Toughness warn if absent), gallery.html | Subsystem: Data/Presentation | Verify: scripts/check_all.py
-- INV-04 | Every deck file under decks/ parses with no malformed card lines | Subsystem: Decks | Verify: scripts/check_all.py
+- INV-04 | Every deck file under decks/ parses with no malformed card lines, AND every line's `(SET)` code exists in the pool or library (an unheld COLLECTOR # within a real set is a soft warning, since the pool keys one printing per card) | Subsystem: Decks | Verify: scripts/check_all.py
 - INV-05 | Color(s) stores color identity; actual mana cost lives only in card-mana.csv | Subsystem: Data | Verify: design/manual
 - INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --merge after imports (--merge preserves hand-curated tags; --force replaces them) | Subsystem: Ingest | Verify: manual
 
@@ -719,7 +751,7 @@ format.
    you pasted. [C-08]
 2. Analyze a deck | Subsystem: Deck Tooling Correctness
    Steps: `deck.py check|mana|consistency|tribes|stats|shape|legal|cuts|tier|tier
-   --audit-rationale|redundancy|text|verify <id>`, plus `feedback`, `suggest <id>
+   --audit-rationale|redundancy|targets|text|verify <id>`, plus `feedback`, `suggest <id>
    --lands|--ramp|--interaction|--needs`, `screen <id> <names>`, and roster-wide `audit`
    / `suggest-homes` / `similar` / `resolve` / `rotation` / `pool.py --role`. Also
    `deck.py --help` and one subcommand help.

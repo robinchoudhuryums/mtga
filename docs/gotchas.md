@@ -2383,3 +2383,117 @@ test would have passed against two copies.
 **Standing rule.** When a name contains `" // "`, ask which face the column describes
 before you trust it. A metadata column is a claim about a card, and a two-faced card is
 two cards wearing one row.
+
+## [G-64] A reanimator's uncastable bombs are not a build error — `#: uncastable-ok:`
+
+**The measurement that made this a rule.** Deck 52a is a mono-black true reanimator: it
+discards or mills a bomb it cannot cast and cheats it onto the battlefield. Adding ONE
+five-colour card to it — Cosmic Spider-Man, a 5/5 with flying, first strike, trample,
+lifelink and haste, which is exactly what you want to reanimate — produced this:
+
+| | before | after |
+|---|---|---|
+| `castability` | PASS | **FAIL — 1 uncastable** |
+| `preflight` | READY | **BLOCKED** |
+| metrics floor | **A** | **C** |
+
+Three tier bands and a blocked pre-commit gate, for a card doing its job. The tooling had
+no term for "intentionally uncastable", so it read the archetype as a misbuild.
+
+**Why opt-in and per-card.** Most uncastable cards genuinely are mistakes — a stray from a
+mis-typed name, an off-colour card left behind after a colour change, a hybrid misread.
+Weakening the default would lose all of that. `#: uncastable-ok: A; B` is the author making
+a specific claim about specific cards, structurally the same as `#: protect:` naming
+signature cards the tooling must never propose cutting. Semicolon-separated for the same
+reason: card names contain commas.
+
+**Nothing disappears.** `_castability` returns the exempt cards as a fourth list,
+`intended`. `deck.py mana` prints them under `◆ Intentionally uncastable`, and `preflight`
+appends `(+N intended, exempt)` to a PASS. G-52 — a verdict surface must print its evidence
+— applies here as much as anywhere: the reader still needs to see that the deck contains
+cards it cannot cast, they just should not read as failures.
+
+**A second bug fell out of building this.** `META_RE` allowed only `[A-Za-z_]` in a `#:`
+key, so `#: uncastable-ok:` did not parse at all — and neither did `#: based-on:`, which
+**24 lines across the roster already used**. Those lines matched no meta key, fell through
+to the card-line branch, matched no card, and vanished with no warning. Nothing read
+`based-on`, so nothing ever noticed. The key pattern now allows a hyphen.
+
+**The related fix, filed separately as F-16 and latent for a cycle.** `tier_band` returned
+`"C"` outright on any stray rather than capping at it, so a deck whose measurable floor was
+D got *raised* by holding a dead card. "Caps" is what the docstring and the tiering rubric
+both always said; only the code disagreed. Roster sweep after the fix: **0 decks change
+floor**, exactly as F-16 predicted when it was filed as latent.
+
+## [G-65] A deck line's `(SET) COLLECTOR#` was validated by nothing
+
+**The hole.** INV-04 asserted that a deck line PARSES. It said nothing about whether the
+printing on that line exists. Every ownership and legality join keys on the card NAME, so
+the set and collector fields were decorative to the tooling — while being load-bearing in
+the Arena import block the same tools EMIT.
+
+Demonstrated with a set code that does not exist:
+
+```
+1 Eaten Alive (ZZZ) 172
+  deck.py legal      ->  ✓ No construction issues for standard
+  deck.py check      ->  1 / 1   Eaten Alive (ZZZ)          <- reports it OWNED
+  deck.py preflight  ->  Verdict: READY
+  check_all.py       ->  All invariants hold. ✓
+```
+
+A deck file could be integrity-clean and un-importable at the same time. **Not
+hypothetical**: deck 52 was written with `1 Eaten Alive (FDN) 610` when the real collector
+number is 172, and nothing complained. It was caught only because `deck.py resolve` was run
+separately and the numbers happened to be compared by eye.
+
+**Why the rule is split hard/soft, and why basics are exempt — measured before deciding.**
+A first pass over all 78 deck files found 153 mismatches. The breakdown decided the design:
+
+- **98 basic lands.** Arena prints several arts per set — `Swamp (MSH) 291` and
+  `(MSH) 292` are both real — while the pool carries one representative. A hard rule
+  without an exemption would have failed **61 of 78 deck files on basics alone.**
+- **28 lines with no printing stated.** Legal, if under-specified. Skipped.
+- **27 non-basic mismatches** across 15 decks, and these are the real signal:
+  `Explosive Derailment (DFT) 130` when the card is `(OTJ) 122`; `Mechan Navigator
+  (DFT) 48` vs `(EOE) 64` in two decks; `Burst Lightning (SOA) 41` and `(DMU) 132` vs
+  `(FDN) 192` in three; `Vampire Nighthawk (FDN) 186` vs `(FDN) 757` in four.
+
+Some of those 27 may be legitimate alternate printings the pool does not carry — the pool
+keys ONE printing per card by construction — which is why the collector-number check is a
+WARNING. The set-code check is HARD because a code appearing in no card anywhere cannot be
+right, and because it was measured at **zero roster hits** first: a check that fails
+nothing today can safely be made hard.
+
+## [G-66] Nothing counted whether a deck holds targets for its own gated effects
+
+**The question no command answered.** A card whose text names a resource — "return target
+creature card with mana value 4 or less", "sacrifice an artifact or creature", "eight or
+more permanent cards in your graveyard" — is worth exactly as much as the number of cards
+in THIS deck that satisfy it. Every scoring model in `deck.py` grades a card in ISOLATION,
+so that number was invisible to all of them. `engines` looked closest but answers a
+different question: it grades enabler↔payoff by synergy TAG, not by arithmetic on the gate.
+
+**What it cost.** The single most important finding of the deck 52 build — the concept pile
+held **24 ways to return a creature against 8 creatures worth returning** — came from a
+script written by hand for that one occasion. Nothing in the toolkit could produce it, and
+the whole deck plan changed once it existed. G-61 records four separate dismissals that
+were overturned by exactly this kind of count, and states the fix as a HUMAN discipline
+("state the count, then decide") precisely because nothing automated it.
+
+**What it reports.** Per gated card: the resource its text names, and how many cards in the
+list supply it. `✗ NOTHING` is a dead card. `⚠ short of N` means a stated threshold is
+unmet. `⚠ thin` fires at ≤3. Counts exclude the card itself — a sacrifice outlet is not its
+own fodder — and exclude lands unless the gate is about lands.
+
+**The recursion row reports the count that actually decides something.** "How many creature
+cards can I return" is nearly all of them and carries no information; what mattered on deck
+52 was how many are MV 5+, i.e. big enough that cheating them in gains real mana. So the row
+reads `creature cards to return (9 at MV5+)`.
+
+**One rule was written and deleted, which is the point worth keeping.** A generic "cards to
+discard" gate reported **35 for every discard outlet** in a 60-card deck — "you have a
+hand", true of every deck, decisive for none. That is the same saturation failure already
+recorded for `suggest`'s Decks column (99%, G-28) and `cuts`' protect keep-boost (87%,
+G-09). **A gate earns a row only when the resource can be SHORT.** A test now forbids the
+rule returning.

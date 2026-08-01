@@ -378,6 +378,7 @@ python3 scripts/deck.py mana 1a       # hybrid-aware color requirements + castab
 python3 scripts/deck.py consistency 1a # opening-hand keepable %, land drops, P(cast on curve) + source fix
 python3 scripts/deck.py tribes 1a     # creature-subtype breakdown + type-matters synergies
 python3 scripts/deck.py engines 1a    # enabler ↔ payoff balance for the deck's engine themes
+python3 scripts/deck.py targets 1a    # does the deck hold TARGETS for its own gated effects (MV caps, sac costs, thresholds)?
 python3 scripts/deck.py suggest 1a --owned   # pool cards that fit; --owned = 0-wildcard upgrades
 python3 scripts/deck.py suggest 1a --lands --owned  # MANABASE recommender: owned lands that fix your colors (fixing + synergy + scarce-color nudges)
 python3 scripts/deck.py suggest 1a --needs   # STRUCTURAL needs the theme model can't see: fixing · acceleration (--ramp) · interaction (--interaction, board-scalers flagged)
@@ -622,6 +623,35 @@ false negative as a fact — a card it can't parse contributes 0, and `0` reads 
 read like that role but couldn't be tagged), or `8 +4? (3 unclassified)`. 52 of 57
 decks show uncertainty inline; one of them was graded on interaction 3 when a hand
 count said 7.
+
+**`deck.py targets <id>`** answers a question every other model here is structurally
+blind to: a card whose text names a RESOURCE — "return target creature card with mana
+value 4 or less", "sacrifice an artifact or creature", "eight or more permanent cards in
+your graveyard" — is worth exactly as much as the number of cards in *this* deck that
+supply it, and every scoring function grades a card in isolation. It prints, per gated
+card, what the text needs and how many cards in the list satisfy it: `✗ NOTHING` is a dead
+card, `⚠ short of N` is an unmet threshold, `⚠ thin` fires at ≤3. Counts exclude the card
+itself. The recursion row reports the count that actually decides something — not "how
+many creatures" (nearly all of them) but how many are MV 5+, i.e. big enough that cheating
+them into play gains real mana. Deck 52's concept pile turned out to hold **24 ways to
+return a creature against 8 worth returning**, which redirected the whole build; before
+this command that number had to be derived by hand.
+
+**A deck line's printing is now checked.** `(SET)` and `COLLECTOR #` used to be read by
+nothing — a line naming a set code that does not exist passed `legal`, passed `check`
+(which reported it OWNED, since ownership joins on the name), passed `preflight` READY and
+passed `check_all`. A nonexistent set code is now a hard INV-04 failure; an unheld
+collector number inside a real set is a soft warning, because the pool keys one printing
+per card so a legitimate alternate art lands there too. Basic lands are exempt — Arena
+prints several arts per set. Get printings from **`deck.py resolve`**, never by hand.
+
+**`#: uncastable-ok: Card A; Card B`** exempts named cards from the castability failure and
+from the tier floor's uncastable cap. It exists for reanimator decks, where a bomb you
+cannot cast is the *point*: without it, one five-colour card in a mono-black reanimator
+moved `preflight` from READY to BLOCKED and the metrics floor from A to C. Opt-in and
+per-card on purpose — most uncastable cards really are mistakes, so the default stays a
+hard fail. Exempt cards are still printed by `deck.py mana` and counted in `preflight` as
+`(+N intended, exempt)`; they leave the failure list, not the page.
 
 **`deck.py shape <id>`** answers the structural question themes cannot: **wide or
 tall, fast or slow?** `counters` is the same tag whether they all go on one creature
