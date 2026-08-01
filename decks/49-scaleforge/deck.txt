@@ -3,7 +3,7 @@
 #: colors: R
 #: plan: midrange
 #: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 10
-#: tier: plus card advantage 3 at a 4.20 curve. Two structural weaknesses the floor cannot see:
+#: tier: plus card advantage 3 at a 4.00 curve. Two structural weaknesses the floor cannot see:
 #: tier: 1. PROTECTION IS 1, and it is one card: Roaming Throne's ward {2}. Five named
 #: tier:    build-arounds and this deck's payoffs are the kind that must SURVIVE A TURN to
 #: tier:    matter — Lathliss only pays off on the NEXT Dragon, Terror of the Peaks only on the
@@ -12,8 +12,8 @@
 #: tier:    a protection grant returned essentially nothing, so this is red's cost, not an
 #: tier:    oversight. Call the Spirit Dragons was REJECTED on colour, not overlooked: it reads
 #: tier:    "Dragons you control have indestructible" and costs {W}{U}{B}{R}{G}, genuinely gold.
-#: tier: 2. IT IS SLOW. Avg MV 4.20 with 9 early drops is among the slowest curves
-#: tier:    on the roster; against a fast start the deck must trade one-for-one with removal it
+#: tier: 2. IT IS SLOWISH, but much less so than it was. Avg MV 4.00 with 11 early drops after
+#: tier:    the Treasure pass; against a fast start the deck must trade one-for-one with removal it
 #: tier:    has plenty of, then stabilise with a five-drop. Card advantage 3 is still thin, and
 #: tier:    still an UNDER-count — Bonehoard Dracosaur exiles two cards a turn and Breaching
 #: tier:    Dragonstorm free-casts one, but both read as `impulse` to the classifier, not draw.
@@ -35,8 +35,11 @@
 #: tier: cast. Neither contains the word Dragon.
 #: tier: PROVISIONAL because it is unplayed and 17 cards are craft targets.
 #: protect: Lathliss, Dragon Queen; Dragonlord's Servant; Terror of the Peaks; Roaming Throne; Sarkhan, Dragon Ascendant
-#: archetype: MONO-RED DRAGON RAMP. Twenty-one Dragons in a sixty-card deck, which is the whole
-#: archetype: idea: Standard's Dragons average MV 5.30, so a deck that wants to field several
+#: archetype: MONO-RED DRAGON RAMP. FIFTEEN Dragons in a sixty-card deck (it opened at 21 and the
+#: archetype: 2026-08 passes traded six for interaction, Treasures and early drops), plus token
+#: archetype: makers — Lathliss, Rite of the Dragoncaller and Magda all mint Dragons, so the board
+#: archetype: count runs ahead of the card count. The idea holds: Standard's Dragons average MV
+#: archetype: 5.30, so a deck that wants to field several
 #: archetype: of them must SOLVE ITS OWN MANA, and every accelerant here is paid for by the
 #: archetype: same Dragon count it enables.
 #: archetype: THE RAMP IS TRIBAL, NOT GENERIC, and that is what separates this from a big-mana
@@ -147,16 +150,15 @@
 1 Sarkhan, Dragon Ascendant (TDM) 118
 1 Stark Industries Executive (MSH) 153
 1 Seize the Spoils (SOS) 129
-1 Reckless Ransacking (ECL) 152
 1 Sunset Strikemaster (TDM) 126
+1 Diamond Pick-Axe (LCI) 143
+1 Magda, the Hoardmaster (OTJ) 133
 
 # Dragons — the early curve
 1 Runescale Stormbrood // Chilling Screech (TDM) 221
 1 Firespitter Whelp (FDN) 761
-1 Stingerback Terror (OTJ) 147
 
 # Dragons — the engine band
-1 Nova Hellkite (EOE) 148
 1 Ran and Shaw (TLA) 150
 1 Spinerock Tyrant (ECL) 159
 1 Rapacious Dragon (FDN) 544
@@ -193,6 +195,7 @@
 1 Molten Exhale (TDM) 113
 1 Seismic Rupture (FDN) 205
 1 Iroh's Demonstration (TLA) 141
+1 Hell to Pay (OTJ) 126
 
 # Lands (25) — Three Tree City taps for Dragon count
 1 Three Tree City (BLB) 260
