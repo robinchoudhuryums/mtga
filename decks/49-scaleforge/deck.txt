@@ -2,7 +2,7 @@
 #: format: Standard
 #: colors: R
 #: plan: midrange
-#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 13
+#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 12
 #: tier: plus card advantage 3 at a 4.03 curve. Two structural weaknesses the floor cannot see:
 #: tier: 1. PROTECTION IS 1, and it is one card: Roaming Throne's ward {2}. Five named
 #: tier:    build-arounds and this deck's payoffs are the kind that must SURVIVE A TURN to
@@ -17,7 +17,7 @@
 #: tier:    has plenty of, then stabilise with a five-drop. Card advantage 3 is still thin, and
 #: tier:    still an UNDER-count — Bonehoard Dracosaur exiles two cards a turn and Breaching
 #: tier:    Dragonstorm free-casts one, but both read as `impulse` to the classifier, not draw.
-#: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 13 is not padding,
+#: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 12 is not padding,
 #: tier: it is real removal stapled to Dragon BODIES (Nova Hellkite, Realm-Scorcher, Drakuseth),
 #: tier: so the deck interacts without spending cards; the manabase is flawless, matching
 #: tier: deck 47 as the only two on the roster with zero cards
@@ -182,10 +182,10 @@
 
 # Card advantage — the axis this deck measured 2 on
 1 Breaching Dragonstorm (TDM) 101
+1 Solstice Revelations (TLA) 153
 
 # Interaction — Molten Exhale gains flash off any Dragon in hand
 1 Molten Exhale (TDM) 113
-1 Fiery Annihilation (FDN) 86
 1 Plasma Bolt (EOE) 152
 1 Untimely Malfunction (DSK) 161
 1 Cinder Strike (ECL) 131
