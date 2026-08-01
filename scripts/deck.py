@@ -3534,8 +3534,16 @@ def suggest_scored(d, *, unowned=False, owned=False, limit=0, fmt=None, any_form
         suggestions = [x for x in suggestions if owned_of(x[1].lower()) == 0]
     if owned:
         suggestions = [x for x in suggestions if owned_of(x[1].lower()) > 0]
-    # Rank: strongest theme fit first; owned as a tiebreaker so quick adds float up.
-    suggestions.sort(key=lambda x: (-x[0], -min(owned_of(x[1].lower()), 1), x[1].lower()))
+    # Rank: strongest theme fit first, then NAME for a total order (G-54).
+    # Ownership used to be the tiebreaker, 'so quick adds float up' — which meant that
+    # at equal fit the owned card always printed above the unowned one, and a reader
+    # working down the list met the owned pool first by construction. Two reasons that
+    # is wrong: the goal is the best LIST, not the cheapest one, and this repo's
+    # owned/unowned data is hand-maintained, so the tiebreak silently ranks on
+    # information that may be weeks stale. Ownership is still SHOWN on every row
+    # (`×N` / `craft R`) — it is a note, not a ranking term. The `--owned` /
+    # `--unowned` FILTERS are untouched: those are the user asking a scoped question.
+    suggestions.sort(key=lambda x: (-x[0], x[1].lower()))
     top = suggestions if limit == 0 else suggestions[:limit]
 
     fps = _deck_fingerprints(meta, exclude_id=d["id"])
@@ -8902,23 +8910,28 @@ def cmd_tier(args):
             if not add_flag:
                 return
             owned_f = owned_role_fillers(d, role_set, limit=6)
-            if owned_f:
-                print(f"\n  owned on-color {label} to add (0 wildcards, {len(owned_f)} shown):")
-                for mv, name, ident, hit, txt in owned_f:
-                    print(f"    MV{mv:>2} {name:30} [{ident:4}] {','.join(hit):18} {txt}")
-            else:
-                print(f"\n  (no owned on-color {label} found)")
-            # Craft targets — the wildcard-spend options, cheaper rarity first.
             craft = craft_role_fillers(d, role_set, limit=6)
-            if craft:
-                print(f"  craft targets ({label}, format-legal, cheaper wildcard first):")
-                for rk, mv, name, ident, rar, txt in craft:
-                    print(f"    {rar[:1] or '?'} MV{mv:>2} {name:28} [{ident:4}] {txt}")
-            # Reserve `add_flag` fillers for the assembled plan — owned before craft.
-            picks = [(label, "owned", mv, name, ident, "0 WC") for mv, name, ident, _h, _t in owned_f]
-            picks += [(label, "craft", mv, name, ident, f"{rar[:1] or '?'} craft")
-                      for _rk, mv, name, ident, rar, _t in craft]
-            adds.extend(picks[:add_flag])
+            # ONE list, ordered by mana value, with ownership as an ANNOTATION. These used
+            # to print as two sections — owned first, then craft — each capped at six, so a
+            # better craft filler sat below six owned ones and the assembled plan below
+            # reserved owned picks first. That is a build gated on ownership, and ownership
+            # here is hand-maintained data that goes stale between updates. Cost still
+            # prints on every row; it just no longer decides the order.
+            merged = [(mv, name, ident, "owned", "owned", txt)
+                      for mv, name, ident, _hit, txt in owned_f]
+            merged += [(mv, name, ident, (rar[:1] or "?") + " craft", "craft", txt)
+                       for _rk, mv, name, ident, rar, txt in craft]
+            merged.sort(key=lambda r: (r[0], r[1].lower()))
+            if merged:
+                print(f"\n  on-color, format-legal {label} to add "
+                      f"(ranked by cost; ownership is a note, not a preference):")
+                for mv, name, ident, tag, _kind, txt in merged:
+                    print(f"    MV{mv:>2} {name:28} [{ident:4}] {tag:8} {txt}")
+            else:
+                print(f"\n  (no on-color {label} filler found)")
+            adds.extend((label, kind, mv, name, ident,
+                         "0 WC" if kind == "owned" else tag)
+                        for mv, name, ident, tag, kind, _t in merged[:add_flag])
 
         _axis(_INTERACTION_ROLES, gapinfo["add_interaction"], "interaction")
         _axis({"Card advantage"}, gapinfo["add_card_advantage"], "card advantage")

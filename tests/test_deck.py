@@ -2570,3 +2570,33 @@ class TestCrossModuleDeckCallers:
         viz = bd.deck_viz(meta, cards, deck.load_card_data(), deck.load_mana(),
                           deck.load_keywords(), *deck.load_collection()[:2])
         assert not viz.get("uncastable"), viz.get("uncastable")
+
+
+class TestOwnershipIsNotARankingTerm:
+    """The owner's standing rule: build the OPTIMAL list, do not gate a card on whether it
+    is owned. Two places in the tooling ranked on ownership rather than merit —
+    `suggest`'s sort tiebreak ("owned as a tiebreaker so quick adds float up") and
+    `tier --to`, which printed owned fillers first in their own capped section so a better
+    craft filler sat below six owned ones. Ownership data here is hand-maintained and goes
+    stale between updates, so those tiebreaks ranked on information that may be weeks old.
+    Ownership is still SHOWN on every row; it is a note, not a preference."""
+
+    def test_suggest_sort_key_has_no_ownership_term(self):
+        import inspect
+        src = inspect.getsource(deck.suggest_scored)
+        sort_lines = [l for l in src.splitlines() if "suggestions.sort" in l]
+        assert sort_lines, "suggest's sort disappeared — re-point this test"
+        assert not any("owned" in l for l in sort_lines), sort_lines
+
+    def test_the_owned_unowned_FILTERS_still_work(self):
+        """The filters are the user asking a scoped question and must survive — only the
+        implicit ranking preference was removed."""
+        import inspect
+        src = inspect.getsource(deck.suggest_scored)
+        assert "if unowned:" in src and "owned_of" in src
+
+    def test_tier_to_merges_owned_and_craft_into_one_ordering(self):
+        import inspect
+        src = inspect.getsource(deck.cmd_tier)
+        assert "merged.sort" in src, "the two filler lists were un-merged"
+        assert "ownership is a note" in src

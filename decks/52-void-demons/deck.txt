@@ -4,20 +4,23 @@
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (7 craft targets, zero games).
 #: tier: Deliberately one band BELOW the measurable floor, which reads A on interaction 9
-#: tier: plus card advantage 3 at a 2.83 curve. Against the rubric an A needs four things
+#: tier: plus card advantage 3 at a 2.86 curve. Against the rubric an A needs four things
 #: tier: and this list fails the fourth:
 #: tier:   A-FLOOR — yes. Interaction 9 clears the threshold of five, sum 12 clears seven.
 #: tier:   COHERENT ENGINE — yes. Void condition -> sac outlets -> Void payoffs, with
 #: tier:     Repartee recursion as the card-advantage engine underneath it.
-#: tier:   TIGHT CURVE — yes. 2.83 average on 20 early drops.
+#: tier:   TIGHT CURVE — yes. 2.86 average on 19 early drops.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and there are three that COMPOUND. Card
 #: tier:     advantage is 3 and did not move when Villainous Wrath was traded for Pull
 #: tier:     from the Grave, so the thin axis is real and not a classifier artifact.
-#: tier:     Interaction is 8-of-9 SORCERY-speed, so a deck this reactive cannot answer
-#: tier:     anything on their turn. And exactly ONE piece answers a noncreature
-#: tier:     permanent — an opposing enchantment or planeswalker is close to unanswerable.
-#: tier:     A grindy midrange deck with thin draw, no instant-speed interaction and no
-#: tier:     noncreature answer loses the long game it is built to win.
+#: tier:     The speed and coverage gaps this letter was first written around have been
+#: tier:     CLOSED (Fell and Withering Curse out, Hero's Downfall and Withering Torment
+#: tier:     in): interaction is now 3-of-9 instant-speed with TWO noncreature answers,
+#: tier:     up from 1 and 1. What remains is the draw. Card advantage 3 has not moved
+#: tier:     across two rounds of tuning, and a grindy midrange deck that does not refill
+#: tier:     loses the long game it is built to win. That is the one clear weakness; the
+#: tier:     second is softer — the Void condition is easy to meet but the deck has no
+#: tier:     way to WIN quickly if the grind stalls.
 #: tier: Re-grade after it is BUILT and played — the floor says A and the intangibles here
 #: tier: (Alpharael's halving clock, Ardyn manufacturing 5/5 Demons) are exactly what the
 #: tier: metrics cannot see. This letter is the conservative read, not a ceiling.
@@ -75,9 +78,9 @@
 1 Lightless Evangel (EOE) 109
 1 Fake Your Own Death (FDN) 174
 1 Vayne's Treachery (FIN) 124
-1 Fell (BLB) 95
+1 Hero's Downfall (FDN) 175
 1 Xu-Ifit, Osteoharmonist (EOE) 127
-1 Withering Curse (SOS) 105
+1 Withering Torment (DSK) 124
 1 Too Evil to Stay Dead (MSH) 118
 1 Temporal Intervention (EOE) 120
 1 Decode Transmissions (EOE) 94

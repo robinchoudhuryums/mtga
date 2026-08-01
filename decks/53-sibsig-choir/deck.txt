@@ -80,8 +80,8 @@
 1 Eaten Alive (FDN) 172
 1 Stomped by the Foot (TMT) 82
 1 Feed the Swarm (SOA) 29
-1 Long Goodbye (MKM) 92
-1 Sold Out (TLA) 119
+1 Hero's Downfall (FDN) 175
+1 Withering Torment (DSK) 124
 1 Demonic Counsel (DSK) 92
 1 The Final Days (FIN) 101
 1 Liliana, Dreadhorde General (FDN) 176
