@@ -6,9 +6,12 @@
 #: tier: One band BELOW the measurable floor, which reads A on interaction 7 plus card
 #: tier: advantage 3. Against the rubric an A needs four things and this list fails two:
 #: tier:   A-FLOOR — yes. Interaction 7 clears five; the sum of 10 clears seven.
-#: tier:   COHERENT ENGINE — yes, and it is self-sustaining: Lessons are instants and
-#: tier:     sorceries, so casting them IS filling the yard, and the payoffs read the
-#: tier:     count rather than any particular card.
+#: tier:   COHERENT ENGINE — yes, and now MEASURED rather than asserted. `targets` finds
+#: tier:     ten gated effects and reports zero thin or unmet: every Lesson-count gate in
+#: tier:     the list — Serpent's three, Bumi's X, Combustion Technique's scaling damage,
+#: tier:     four one-Lesson switches — sits against 20 or 21 Lessons. `engines` reads the
+#: tier:     graveyard axis as balanced 16 enablers / 16 payoffs. Lessons are instants and
+#: tier:     sorceries, so casting them IS filling the yard; the engine feeds itself.
 #: tier:   TIGHT CURVE — yes. 3.2 average on 16 early drops.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND badly.
 #: tier:     (1) THE MANABASE. Three colours on 25 lands, and the deepest colour has 12
@@ -22,9 +25,20 @@
 #: tier:     (discard a fat Lesson, then tutor any creature) were added specifically for
 #: tier:     this, taking the deck from one copy to three ways to find it. That is
 #: tier:     mitigation, not redundancy.
-#: tier:     Those two interact: the manabase is worst exactly when the engine is absent.
-#: tier: The floor cannot see that a resolved Iroh turns a graveyard of five-drops into a
-#: tier: hand of one-drops. Re-grade after it is played.
+#: tier:     (3) BOARD-DEPENDENT PAYOFFS IN A DECK WITH NO BOARD. `shape` measures this
+#: tier:     list as TALL with a WIDE score of ZERO on 13 creature copies, and two of the
+#: tier:     marquee Lessons want the opposite: Germination Practicum puts two counters on
+#: tier:     EACH creature you control, Echocasting Symposium copies one. `engines` says
+#: tier:     the same thing from the other side — six counter ENABLERS and no payoff. Both
+#: tier:     cards are carried by Paradigm (a free copy every turn compounds even on two
+#: tier:     creatures), which is why they stay, but they are worth materially less here
+#: tier:     than their mana costs suggest, and that is not visible from their text.
+#: tier:     These interact: the manabase is worst exactly when the engine is absent, and
+#: tier:     the board-dependent Lessons are worst exactly when the board is thin.
+#: tier: WHAT ARGUES UP, and why the letter may move after play: the floor counts
+#: tier: interaction 7, but four more cards read as interaction the classifier could not
+#: tier: tag, and a resolved Iroh turns a graveyard of five-drops into a hand of one-drops
+#: tier: — a swing the metrics have no term for at all. Re-grade after it is played.
 #: archetype: Temur LESSONS, and the deck exists because of one clause almost everyone
 #: archetype: skims. Iroh, Grand Lotus gives every non-Lesson instant and sorcery in your
 #: archetype: graveyard flashback for ITS MANA COST — the line people read — and every

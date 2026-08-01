@@ -139,6 +139,12 @@ def _pattern_groups():
     out = []
     for label, pats in deck._ROLE_COMPILED_MAP.items():
         out += [(f"role:{label}", p, "norm") for p in pats]
+    # `targets`' gate table. These live NESTED in a list of tuples rather than as
+    # module-level attributes, so the completeness check cannot see them and they were
+    # uncovered — which is how the `permanent cards in your graveyard` gate shipped
+    # digit-only and matched nothing at all. Registered explicitly so the live-corpus
+    # check proves each one still matches a real card.
+    out += [(f"target-gate:{kind}", rx, "norm") for rx, _label, kind in deck._TARGET_GATES]
     for name in ("_INT_CUES", "_CA_CUES", "_LOOT_RE", "_PROTECTION_RE",
                  "_POWER_THRESHOLD_RE", "_MANA_PRODUCE_RE", "_RESTRICT_RE",
                  "_INT_COUNT_RE", "_INT_FIGHT_RE",

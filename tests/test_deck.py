@@ -2600,3 +2600,62 @@ class TestOwnershipIsNotARankingTerm:
         src = inspect.getsource(deck.cmd_tier)
         assert "merged.sort" in src, "the two filler lists were un-merged"
         assert "ownership is a note" in src
+
+
+class TestGraveyardTypeGates:
+    """`targets` knew MV caps, sacrifice costs and the permanent-count threshold, and
+    nothing about CARD-TYPE thresholds in the graveyard. Found by running it against deck
+    54 — a Lesson deck built entirely on "three or more Lesson cards in your graveyard"
+    and "the number of Lesson cards in your graveyard" — and getting "no gated effects
+    detected" on a list with ten of them."""
+
+    CD = {"payoff": {"name": "Payoff", "type": "Creature — Human",
+                     "text": "This creature gets +1/+1 as long as there's a Lesson card "
+                             "in your graveyard.", "colors": "U"},
+          "scaler": {"name": "Scaler", "type": "Instant — Lesson",
+                     "text": "Scaler deals damage equal to 2 plus the number of Lesson "
+                             "cards in your graveyard.", "colors": "R"},
+          "gate3": {"name": "Gate3", "type": "Creature — Serpent",
+                    "text": "If there are three or more Lesson cards in your graveyard, "
+                            "you may cast this spell as though it had flash.", "colors": "U"},
+          "alesson": {"name": "ALesson", "type": "Sorcery — Lesson", "text": "Draw a card.",
+                      "colors": "G"},
+          "plain": {"name": "Plain", "type": "Instant", "text": "Draw a card.", "colors": "G"}}
+    MANA = {k: ("{1}", "1") for k in CD}
+
+    def _rows(self):
+        cards = [(1, n, "", "") for n in ("Payoff", "Scaler", "Gate3", "ALesson", "Plain")]
+        return deck.target_counts(cards, self.CD, self.MANA)
+
+    def test_a_type_threshold_is_detected_and_counted(self):
+        rows = [r for r in self._rows() if r[0] == "Gate3"]
+        assert rows, "the 'N or more <type> cards in your graveyard' gate was not detected"
+        # Only ALesson and Scaler carry the Lesson subtype; Gate3 excludes itself.
+        assert rows[0][2] == 2, rows
+
+    def test_a_word_number_is_parsed_and_shown_as_a_digit(self):
+        label = [r[1] for r in self._rows() if r[0] == "Gate3"][0]
+        assert "needs 3" in label, label
+
+    def test_the_bare_number_of_form_is_detected(self):
+        rows = [r for r in self._rows() if r[0] == "Scaler"]
+        assert rows and "Lesson cards in the yard" in rows[0][1]
+        assert rows[0][2] == 1          # ALesson only; Scaler excludes itself
+
+    def test_the_there_is_a_card_form_is_detected(self):
+        rows = [r for r in self._rows() if r[0] == "Payoff"]
+        assert rows and rows[0][2] == 2, rows
+
+    def test_permanent_is_left_to_its_own_rule_and_not_double_reported(self):
+        """`permanent` has a dedicated gate; the type rule excludes it so one clause
+        cannot produce two rows saying the same thing."""
+        cd = dict(self.CD)
+        cd["descend"] = {"name": "Descend", "type": "Creature — Horror",
+                         "text": "Whenever you draw a card, if there are eight or more "
+                                 "permanent cards in your graveyard, gain 1 life.",
+                         "colors": "B"}
+        mana = dict(self.MANA, descend=("{1}", "1"))
+        cards = [(1, v["name"], "", "") for v in cd.values()]
+        rows = [r for r in deck.target_counts(cards, cd, mana) if r[0] == "Descend"]
+        assert len(rows) == 1, rows
+        assert "permanent cards" in rows[0][1]

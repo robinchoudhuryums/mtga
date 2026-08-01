@@ -9218,6 +9218,8 @@ def cmd_preflight(args):
               # deck actually holds. Each entry: (regex, label, kind). `kind` selects the
               # counter below — keeping the two apart is what lets a new gate be one line.
 _SCREEN_KEY_SATURATED = 0.40   # KEY on this share of a pile carries no information
+_TARGET_WORD_NUM = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
+                    "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10}
 _TARGET_FAT_MV = 5      # at/above this, reanimating a card gains real mana
 _TARGET_GATES = [
     (re.compile(r"mana value (\d+) or less", re.I), "creature MV ≤{0} in the yard", "mv"),
@@ -9230,8 +9232,27 @@ _TARGET_GATES = [
     (re.compile(r"sacrifice an artifact\b(?! or creature)", re.I),
      "artifacts to sacrifice", "sac_a"),
     (re.compile(r"(?:return|put) target creature card", re.I), "creature cards to return", "creat"),
-    (re.compile(r"(\d+) or more permanent cards in your graveyard", re.I),
+    # WORD-numbers, because Magic writes "eight or more permanent cards", not "8 or more".
+    # The digit-only form of this pattern never matched a single card — it was written
+    # against Starving Revenant's Descend 8 and could not see it. Nothing noticed because
+    # a gate that silently reports nothing looks exactly like a deck with no gates.
+    (re.compile(r"(\d+|one|two|three|four|five|six|seven|eight|nine|ten) or more "
+                r"permanent cards in your graveyard", re.I),
      "permanent cards (needs {0})", "perm"),
+    # CARD-TYPE thresholds in the graveyard. Found by running `targets` against deck 54,
+    # a Lesson deck built entirely on them, and getting "no gated effects detected" — the
+    # table knew MV caps, sacrifice costs and the permanent-count threshold, and nothing
+    # about "three or more Lesson cards in your graveyard" or "the number of Lesson cards
+    # in your graveyard". Those are the same question (does the list hold the resource?)
+    # in the shape a TYPE-matters deck writes it. `permanent` is excluded because the rule
+    # above already owns it and would otherwise report the same gate twice.
+    (re.compile(r"(\d+|one|two|three|four|five|six|seven|eight|nine|ten) or more "
+                r"(?!permanent)([A-Za-z]+) cards? in (?:your|all) graveyards?", re.I),
+     "{1} cards in the yard (needs {0})", "gy_type"),
+    (re.compile(r"number of (?!permanent)([A-Za-z]+) cards? in (?:your|all) graveyards?", re.I),
+     "{0} cards in the yard", "gy_type"),
+    (re.compile(r"there'?s an? (?!permanent)([A-Za-z]+) card in (?:your|a) graveyard", re.I),
+     "{0} cards in the yard (needs 1)", "gy_type"),
     # NO generic "cards to discard" rule. It was written, and it reported 35 for every
     # discard outlet in a 60-card deck — i.e. "you have a hand", which is true of every
     # deck and decides nothing. Same saturation failure this file already documents for
@@ -9272,7 +9293,11 @@ def target_counts(cards, carddata, mana):
             m = rx.search(c["text"])
             if not m:
                 continue
-            num = int(m.group(1)) if m.groups() else None
+            groups = [g for g in (m.groups() or ()) if g is not None]
+            num = None
+            if groups:
+                g0 = groups[0].lower()
+                num = int(g0) if g0.isdigit() else _TARGET_WORD_NUM.get(g0)
             others = [o for o in pool if o["n"] != c["n"]]
             if kind == "mv":
                 hits = [o for o in others if "creature" in o["type"]
@@ -9297,10 +9322,25 @@ def target_counts(cards, carddata, mana):
                 continue
             elif kind == "perm":
                 hits = [o for o in others if not {"instant", "sorcery"} & set(o["type"].split())]
+            elif kind == "gy_type":
+                # The captured word is a TYPE or SUBTYPE ("Lesson", "creature", "artifact"),
+                # so match the type LINE. Case-insensitive: Magic capitalizes a real subtype
+                # but lower-cases the generic nouns, and both spellings appear in gate text.
+                want = groups[-1].lower()
+                hits = [o for o in others if want in o["type"].lower()]
             else:
                 hits = [o for o in others if "land" not in o["type"]]
-            out.append((c["n"], label.format(num) if num is not None else label,
-                        sum(o["q"] for o in hits), num if kind == "perm" else None))
+            # Normalise a word-number in the label ("needs three" -> "needs 3") so the
+            # column reads uniformly whichever spelling the card used.
+            disp_groups = list(groups)
+            if disp_groups and num is not None and not disp_groups[0].isdigit():
+                disp_groups[0] = str(num)
+            try:
+                shown = label.format(*disp_groups) if disp_groups else label
+            except (IndexError, KeyError):
+                shown = label
+            out.append((c["n"], shown, sum(o["q"] for o in hits),
+                        num if kind in ("perm", "gy_type") else None))
     return out
 
 
