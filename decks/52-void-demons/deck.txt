@@ -2,21 +2,21 @@
 #: format: Standard
 #: colors: B
 #: plan: midrange
-#: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (7 craft targets, zero games).
-#: tier: Deliberately one band BELOW the measurable floor, which reads A on interaction 9
-#: tier: plus card advantage 3 at a 2.86 curve. Against the rubric an A needs four things
+#: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (9 craft targets, zero games).
+#: tier: Deliberately one band BELOW the measurable floor, which reads A on interaction 8
+#: tier: plus card advantage 3 at a 2.89 curve. Against the rubric an A needs four things
 #: tier: and this list fails the fourth:
-#: tier:   A-FLOOR — yes. Interaction 9 clears the threshold of five, sum 12 clears seven.
+#: tier:   A-FLOOR — yes. Interaction 8 clears the threshold of five, sum 11 clears seven.
 #: tier:   COHERENT ENGINE — yes. Void condition -> sac outlets -> Void payoffs, with
 #: tier:     Repartee recursion as the card-advantage engine underneath it.
-#: tier:   TIGHT CURVE — yes. 2.86 average on 19 early drops.
+#: tier:   TIGHT CURVE — yes. 2.89 average on 19 early drops.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and there are three that COMPOUND. Card
 #: tier:     advantage is 3 and did not move when Villainous Wrath was traded for Pull
 #: tier:     from the Grave, so the thin axis is real and not a classifier artifact.
-#: tier:     The speed and coverage gaps this letter was first written around have been
-#: tier:     CLOSED (Fell and Withering Curse out, Hero's Downfall and Withering Torment
-#: tier:     in): interaction is now 3-of-9 instant-speed with TWO noncreature answers,
-#: tier:     up from 1 and 1. What remains is the draw. Card advantage 3 has not moved
+#: tier:     Interaction was traded DOWN on purpose in 2026-08: Hero's Downfall came out
+#: tier:     for Sothera, whose edict trigger is repeatable rather than one-shot, so the
+#: tier:     count fell 9 -> 8 and the instant-speed share fell to 2-of-8 with ONE
+#: tier:     noncreature answer. Card advantage 3 has not moved
 #: tier:     across two rounds of tuning, and a grindy midrange deck that does not refill
 #: tier:     loses the long game it is built to win. That is the one clear weakness; the
 #: tier:     second is softer — the Void condition is easy to meet but the deck has no
@@ -78,7 +78,7 @@
 1 Lightless Evangel (EOE) 109
 1 Fake Your Own Death (FDN) 174
 1 Vayne's Treachery (FIN) 124
-1 Hero's Downfall (FDN) 175
+1 Sothera, the Supervoid (EOE) 115
 1 Xu-Ifit, Osteoharmonist (EOE) 127
 1 Withering Torment (DSK) 124
 1 Too Evil to Stay Dead (MSH) 118
@@ -98,4 +98,5 @@
 
 # Lands
 1 Realm of Koh (TLA) 276
-23 Swamp (MSH) 291
+1 Susur Secundi, Void Altar (EOE) 259
+22 Swamp (MSH) 291
