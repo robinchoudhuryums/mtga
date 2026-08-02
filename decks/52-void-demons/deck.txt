@@ -31,7 +31,10 @@
 #: tier:     is a draw-and-discard every turn — and the classifier tags him Payoff/Recursion,
 #: tier:     not card advantage. Funeral Room and Susur Secundi are the same shape. So the
 #: tier:     axis moved even though the metric did not; re-measure once the classifier reads
-#: tier:     connive. A grindy midrange deck that does not refill
+#: tier:     connive. Susur Secundi was the fourth card in that group and was CUT
+#: tier:     2026-08 for Hidden Necropolis — a mythic wildcard is not worth spending on a
+#: tier:     land right now, and the Necropolis is a common that still converts to a free
+#: tier:     spell late. A grindy midrange deck that does not refill
 #: tier:     loses the long game it is built to win. That is the one clear weakness; the
 #: tier:     second is softer — the Void condition is easy to meet but the deck has no
 #: tier:     way to WIN quickly if the grind stalls.
@@ -58,9 +61,9 @@
 #: archetype: THE 2026-08 PASS added a second value layer on top of that grind: Sothera
 #: archetype: turns every one of your own creature deaths into an opposing EDICT, Funeral
 #: archetype: Room drains on the same trigger and unlocks into a mass reanimation, Zemo
-#: archetype: connives on every black spell, Susur Secundi is a LAND that becomes a free
-#: archetype: sacrifice outlet drawing cards equal to the sacrificed creature's power, and
-#: archetype: Rottenmouth Viper pays you for the sacrifices the deck was making anyway.
+#: archetype: connives on every black spell, Hidden Necropolis is a LAND that cashes in
+#: archetype: for a free MV-4-or-less spell once the game goes long, and Rottenmouth
+#: archetype: Viper pays you for the sacrifices the deck was making anyway.
 #: archetype: VINCENT VALENTINE IS THE RENEWABLE BODY that layer wanted. Attack, transform
 #: archetype: on the trigger, sacrifice Galian Beast in main two, and it returns to the
 #: archetype: battlefield front face up — a free sacrifice every turn cycle at no card
@@ -83,9 +86,9 @@
 #: archetype: payoff) — it is what the engine produces.
 #: protect: Forum Necroscribe; Alpharael, Stonechosen; Ardyn, the Usurper; Joo Dee, One of Many; Timeline Culler
 #: notes: WIP / aspirational — 10 craft targets: Tragic Trajectory, Lightless Evangel,
-#: notes: Withering Torment, Susurian Voidborn, Elegy Acolyte, The Darkness Crystal (R),
-#: notes: Zodiark, Umbral God (R), Vincent Valentine // Galian Beast (R),
-#: notes: Sothera, the Supervoid (M), Susur Secundi, Void Altar (M).
+#: notes: Withering Torment, Susurian Voidborn, Elegy Acolyte, Hidden Necropolis (C),
+#: notes: The Darkness Crystal (R), Zodiark, Umbral God (R),
+#: notes: Vincent Valentine // Galian Beast (R), Sothera, the Supervoid (M).
 #: notes: Built from a ~116-card concept pile; the rejected pile is screened in Stage 5.
 #: notes: Baron Helmut Zemo was CUT from the exclusion list and ADDED 2026-08. The old
 #: notes: note called his Boast "anti-synergy with the yard", which misread the card twice:
@@ -142,5 +145,5 @@
 
 # Lands
 1 Realm of Koh (TLA) 276
-1 Susur Secundi, Void Altar (EOE) 259
+1 Hidden Necropolis (LCI) 275
 22 Swamp (MSH) 291

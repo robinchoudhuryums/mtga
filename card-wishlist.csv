@@ -110,7 +110,7 @@ At the beginning of your end step, if a player controls no creatures, sacrifice 
 "Susur Secundi, Void Altar",Land — Planet,"This land enters tapped.
 {T}: Add {B}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
-12+ | {1}{B}, {T}, Pay 2 life, Sacrifice a creature: Draw cards equal to the sacrificed creature's power. Activate only as a sorcery.",B,Planet; pay life; card draw; sacrifice; mana; station; counters; artifacts,EOE,259,Mythic,52,,7.0,seed
+12+ | {1}{B}, {T}, Pay 2 life, Sacrifice a creature: Draw cards equal to the sacrificed creature's power. Activate only as a sorcery.",B,Planet; pay life; card draw; sacrifice; mana; station; counters; artifacts,EOE,259,Mythic,,dropped from deck 52 2026-08 (mythic wildcard deferred); still a candidate for 52a,7.0,seed
 Icetill Explorer,Creature — Insect Scout,"You may play an additional land on each of your turns.
 You may play lands from your graveyard.
 Landfall — Whenever a land you control enters, mill a card.",G,Insect; Scout; graveyard; mill; landfall; lands; ramp,EOE,192,Rare,50a,,7.0,hand
@@ -269,6 +269,9 @@ This creature is the chosen type in addition to its other types.
 If a triggered ability of another creature you control of the chosen type triggers, it triggers an additional time.",Colorless,Golem; ward; protection,LCI,258,Rare,49,"Deck 49: doubles the triggered ability of every chosen-type creature, and SIXTEEN of the deck's Dragons have one - Terror of the Peaks fires twice per creature, Lathliss makes two 5/5s per Dragon, Drakuseth deals 4+3+3 twice per attack. Ward {2} is also the only protection red offers. Found via the K-13 effect-shape search; it never says 'Dragon'.",88,hand
 "Captain Storm, Cosmium Raider",Legendary Creature — Human Pirate,"Whenever an artifact you control enters, put a +1/+1 counter on target Pirate you control.",U/R,Human; Pirate; counters,LCI,227,Uncommon,26b,,4.5,seed
 Ixalli's Lorekeeper,Creature — Human Druid,{T}: Add one mana of any color. Spend this mana only to cast a Dinosaur spell or activate an ability of a Dinosaur source.,G,Human; Druid; mana,LCI,194,Uncommon,50,,2.0,seed
+Hidden Necropolis,Land — Cave,"This land enters tapped.
+{T}: Add {B}.
+{4}{B}, {T}, Sacrifice this land: Discover 4. Activate only as a sorcery. (Exile cards from the top of your library until you exile a nonland card with mana value 4 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",B,Cave; card advantage; sacrifice; mana; discover; value; spellslinger,LCI,275,Common,52,,4.0,seed
 Poison Dart Frog,Creature — Frog,"Reach
 {T}: Add one mana of any color.
 {2}: This creature gains deathtouch until end of turn.",G,Frog; mana; reach; defense,LCI,207,Common,50,,1.0,seed
