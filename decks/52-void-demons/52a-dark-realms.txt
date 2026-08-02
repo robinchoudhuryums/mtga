@@ -53,19 +53,20 @@
 #: archetype: vs the parent 52: zero Void cards, zero warp, no sacrifice-outlet layer, and
 #: archetype: a curve a full mana value higher.
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (3 craft targets, zero games).
-#: tier: One band BELOW the measurable floor, which reads A on interaction 9 plus card
+#: tier: One band BELOW the measurable floor, which reads A on interaction 8 plus card
 #: tier: advantage 2. Against the rubric an A needs four things and this list fails two:
-#: tier:   A-FLOOR — yes. Interaction 9 clears five; the sum of 11 clears seven.
+#: tier:   A-FLOOR — yes. Interaction 8 clears five; the sum of 10 clears seven.
 #: tier:   COHERENT ENGINE — yes. Eight enablers feed ten reanimation effects feed seven
 #: tier:     bombs, and the ratio is deliberate: a reanimator needs more ways to fill the
 #: tier:     yard than things to put in it.
 #: tier:   TIGHT CURVE — NO, and this is the honest reason it is not an A. Average nonland
-#: tier:     MV 4.28 on only 10 early drops, and that average UNDER-reads because Stargaze
-#: tier:     books as MV 1 (X counts as 0). It is the slowest list on this branch. The
-#: tier:     2026-08 pass first made it SLOWER: three of the four cards cut in the opening
-#: tier:     batch were the deck's MV-2 cards (Macabre Waltz, Eerie Gravestone, Red Room
-#: tier:     Recruit) against one MV-1 card added, taking early drops 11 -> 9. Iron-Shield
-#: tier:     Elf paid one back (9 -> 10). Keep paying — the next change here should be CHEAP.
+#: tier:     MV 4.42 on only 9 early drops, and that average UNDER-reads because Stargaze
+#: tier:     books as MV 1 (X counts as 0). It is the slowest list on this branch and the
+#: tier:     2026-08 pass made it slower still, on purpose but at a real price: early drops
+#: tier:     went 11 -> 9 -> 10 -> 9 and avg MV 4.28 -> 4.42 across eight swaps, and
+#: tier:     SIXTEEN of 36 nonland cards now cost 5 or more. Every trade was quality-for-
+#: tier:     speed and each was defensible alone; the cumulative bill is not. THE NEXT
+#: tier:     CHANGE HERE MUST BE CHEAP, and preferably interaction — see below.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no. Card advantage moved 1 -> 2 and it still
 #: tier:     COMPOUNDS with the
 #: tier:     curve: a slow deck that does not refill loses the game where it is disrupted
@@ -73,6 +74,13 @@
 #: tier:     Dirge to tutor with — and the draws where the halves do not meet are real.
 #: tier:     The 2 also under-reads: Zemo's connive is a draw-and-discard the classifier
 #: tier:     tags Payoff/Recursion, exactly as in deck 52 (K-12).
+#: tier:   THE OPEN HOLE, and it is new: the interaction profile is 8 pieces, ONE of them
+#: tier:     instant-speed, and ZERO that answer a noncreature permanent. Withering Torment
+#: tier:     and then Eaten Alive were both traded away, and between them they were the
+#: tier:     whole noncreature answer. An opposing enchantment or planeswalker currently
+#: tier:     cannot be removed by this deck at all. Feed the Swarm ({1}{B}, creature OR
+#: tier:     enchantment) fixes the hole and is an early drop — it is the single best next
+#: tier:     change on both open axes at once.
 #: tier: The floor cannot see that Krang reanimated on turn four is a hasty 9/9 with
 #: tier: flying, trample and indestructible, which ends games the metrics have no term
 #: tier: for. Re-grade after it is built and played.
@@ -97,7 +105,7 @@
 # Nonland
 1 Deadly Precision (TLA) 95
 1 Embrace Oblivion (EOE) 98
-1 Eaten Alive (FDN) 172
+1 Vincent Valentine // Galian Beast (FIN) 125
 1 The Soul Stone (SPM) 66
 1 Sidisi, Regent of the Mire (TDM) 92
 1 Lively Dirge (OTJ) 93
@@ -107,7 +115,7 @@
 1 Unholy Annex // Ritual Chamber (DSK) 118
 1 Come Back Wrong (DSK) 86
 1 Grave Researcher (SOS) 85
-1 Too Evil to Stay Dead (MSH) 118
+1 Zodiark, Umbral God (FIN) 128
 1 Ral Zarek, Guest Lecturer (SOS) 97
 1 Forum Necroscribe (SOS) 84
 1 Valgavoth, Terror Eater (DSK) 120
