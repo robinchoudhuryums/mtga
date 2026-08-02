@@ -133,6 +133,37 @@ class TestClassifyRoles:
             "target spell unless its controller pays mana equal to the greatest power "
             "among creatures you control.")
 
+    def test_split_choose_then_destroy_is_removal(self):
+        # Quag Feast: the target is named in one sentence and the destroy verb lands in a
+        # later one, with "the chosen permanent" standing in for it. The main removal
+        # pattern needs destroy|exile immediately before "target", so this card scored
+        # ZERO roles — invisible to the interaction count the tier floor grades on, not
+        # merely to the noncreature-answer profile.
+        assert "Removal (spot)" in deck.classify_roles(
+            "Choose target creature, planeswalker, or Vehicle. Mill two cards, then "
+            "destroy the chosen permanent if its mana value is less than or equal to "
+            "the number of cards in your graveyard.")
+
+    def test_creature_or_enchantment_answers_a_noncreature_permanent(self):
+        # The planeswalker cues allowed any text between "target" and the type; the
+        # artifact/enchantment cues required the type IMMEDIATELY after "target". So
+        # "creature or PLANESWALKER" counted and "creature or ENCHANTMENT" did not —
+        # the same list templated the other way round. Withering Torment and Feed the
+        # Swarm were the only two enchantment answers on the roster, and neither counted.
+        for text in [
+            "Destroy target creature or enchantment. You lose 2 life.",
+            "Destroy target creature or enchantment an opponent controls. You lose life "
+            "equal to that permanent's mana value.",
+        ]:
+            assert any(p.search(text.lower()) for p in deck._NONCREATURE_ANSWER_CUES), text
+
+    def test_plain_creature_removal_is_not_a_noncreature_answer(self):
+        # The guard on the fix above: sentence-bounded `[^.]*` must not reach a later
+        # sentence that merely mentions an artifact.
+        text = "destroy target creature. create a food token. (it's an artifact with \"{2}, " \
+               "{t}, sacrifice this token: you gain 3 life.\")"
+        assert not any(p.search(text) for p in deck._NONCREATURE_ANSWER_CUES), text
+
     def test_library_tuck_is_removal(self):
         # Floodpits Drowner's activated ability — the creature leaves the battlefield.
         assert "Removal (spot)" in deck.classify_roles(

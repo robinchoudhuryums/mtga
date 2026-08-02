@@ -101,6 +101,7 @@ Scrabbling Skullcrab,Creature — Crab Skeleton,"Eerie — Whenever an enchantme
 Shroudstomper,Creature — Elemental,"Deathtouch
 Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.",W/B,Elemental; lifegain; card draw; deathtouch; combat; removal,DSK,233,Uncommon,20,,5.0,hand
 Valgavoth's Faithful,Creature — Human Cleric,"{3}{B}, Sacrifice this creature: Return target creature card from your graveyard to the battlefield. Activate only as a sorcery.",B,Human; Cleric; reanimator; graveyard; sacrifice,DSK,121,Uncommon,52a,,5.0,seed
+Withering Torment,Instant,Destroy target creature or enchantment. You lose 2 life.,B,pay life; removal,DSK,124,Uncommon,52a,,3.0,seed
 Meat Locker // Drowned Diner,Enchantment — Room // Enchantment — Room,"When you unlock this door, tap up to one target creature and put two stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, draw three cards, then discard a card.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,Room; counters; card draw,DSK,65,Common,51,,6.0,hand

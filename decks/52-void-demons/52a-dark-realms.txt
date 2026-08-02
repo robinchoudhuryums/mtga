@@ -51,20 +51,20 @@
 #: archetype: vs the parent 52: zero Void cards, zero warp, no sacrifice-outlet layer, and
 #: archetype: a curve a full mana value higher.
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (3 craft targets, zero games).
-#: tier: One band BELOW the measurable floor, which reads A on interaction 9 plus card
+#: tier: One band BELOW the measurable floor, which reads A on interaction 10 plus card
 #: tier: advantage 2. Against the rubric an A needs four things and this list fails two:
-#: tier:   A-FLOOR — yes. Interaction 9 clears five; the sum of 11 clears seven.
+#: tier:   A-FLOOR — yes. Interaction 10 clears five; the sum of 12 clears seven.
 #: tier:   COHERENT ENGINE — yes. Eight enablers feed ten reanimation effects feed seven
 #: tier:     bombs, and the ratio is deliberate: a reanimator needs more ways to fill the
 #: tier:     yard than things to put in it.
 #: tier:   TIGHT CURVE — NO, and this is the honest reason it is not an A. Average nonland
-#: tier:     MV 4.19 on 11 early drops, and that average UNDER-reads because Stargaze
+#: tier:     MV 4.22 on 10 early drops, and that average UNDER-reads because Stargaze
 #: tier:     books as MV 1 (X counts as 0). It is still the slowest list on this branch.
 #: tier:     The 2026-08 pass first made it worse and then paid it back: early drops ran
-#: tier:     11 -> 9 -> 10 -> 9 -> 11 and avg MV 4.28 -> 4.42 -> 4.19 across eleven swaps.
-#: tier:     The repair was three CHEAP cards (Feed the Swarm, Maximum Overdrive,
-#: tier:     Iron-Shield Elf) replacing three expensive redundant ones. Keep that
-#: tier:     discipline: this deck can absorb a bomb only by shedding a mid-band card.
+#: tier:     11 -> 9 -> 10 -> 9 -> 11 -> 10 and avg MV 4.28 -> 4.42 -> 4.22 across twelve
+#: tier:     swaps. The repair was cheap cards (Maximum Overdrive, Iron-Shield Elf)
+#: tier:     replacing expensive redundant ones. Keep that discipline: this deck can
+#: tier:     absorb a bomb only by shedding a mid-band card.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no. Card advantage moved 1 -> 2 and it still
 #: tier:     COMPOUNDS with the
 #: tier:     curve: a slow deck that does not refill loses the game where it is disrupted
@@ -72,15 +72,15 @@
 #: tier:     Dirge to tutor with — and the draws where the halves do not meet are real.
 #: tier:     The 2 also under-reads: Zemo's connive is a draw-and-discard the classifier
 #: tier:     tags Payoff/Recursion, exactly as in deck 52 (K-12).
-#: tier:   THE REMAINING HOLE IS SPEED, NOT COVERAGE. The profile reads 9 pieces, ONE
-#: tier:     instant-speed, and "0 noncreature answers" — but that ZERO IS A TOOL BUG, not
-#: tier:     the list. Feed the Swarm destroys target creature OR ENCHANTMENT and does
-#: tier:     answer one; _NONCREATURE_ANSWER_CUES matches "creature or planeswalker" but
-#: tier:     not "creature or enchantment", so every card templated the second way has
-#: tier:     never been counted, here or on the rest of the roster. Read the coverage as
-#: tier:     1, and the real gap as instant speed: 1-of-9 answers nothing on their turn.
-#: tier:     Maximum Overdrive is the only instant added so far and it protects rather
-#: tier:     than answers.
+#: tier:   THE INTERACTION PROFILE IS NOW HEALTHY and the numbers can be trusted: 10
+#: tier:     pieces, 2 instant-speed, 2 answering a noncreature permanent. Two classifier
+#: tier:     bugs found here in 2026-08 were fixed rather than annotated — the cue list
+#: tier:     matched "creature or planeswalker" but not "creature or enchantment", and no
+#: tier:     pattern read the split "choose target X … destroy the chosen permanent"
+#: tier:     template, which left Quag Feast with ZERO roles and this deck's interaction
+#: tier:     one low. Withering Torment replaced Feed the Swarm to buy instant speed on
+#: tier:     the same effect; the two are virtual copies (G-46), so keeping both would
+#: tier:     also have been correct.
 #: tier: The floor cannot see that Krang reanimated on turn four is a hasty 9/9 with
 #: tier: flying, trample and indestructible, which ends games the metrics have no term
 #: tier: for. Re-grade after it is built and played.
@@ -127,7 +127,7 @@
 1 Valgavoth, Terror Eater (DSK) 120
 1 Iron-Shield Elf (ECL) 108
 1 Commune with Evil (DSK) 87
-1 Feed the Swarm (SOA) 29
+1 Withering Torment (DSK) 124
 1 Grim Reaper, Lethal Legionnaire (MSH) 98
 1 Stargaze (SOA) 34
 1 Prison Break (SPM) 61

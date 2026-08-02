@@ -1092,7 +1092,7 @@ ROLE_ORDER = ["Removal (spot)", "Sweeper", "Counter", "Card advantage",
 # answers everywhere EXCEPT the count the tier floor grades on. One list-aware pattern
 # replaces the hand-kept combinations, so a new templating can't slip through again.
 _PERM_TYPE = (r"(?:nonland permanent|artifact creature|artifact|enchantment|creature|"
-              r"permanent|planeswalker|land)")
+              r"permanent|planeswalker|spacecraft|vehicle|land)")
 _PERM_TYPE_LIST = rf"{_PERM_TYPE}s?(?:,? (?:or |and )?{_PERM_TYPE}s?)*"
 
 _ROLE_PATTERNS = {
@@ -1109,6 +1109,15 @@ _ROLE_PATTERNS = {
         # the collection stopped matching and 46 decks lost interaction. Caught only by
         # the roster-wide before/after diff, which is why that diff is worth running.
         rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+ ){{0,2}}?{_PERM_TYPE_LIST}",
+        # SPLIT TEMPLATE: the target is named in one sentence and the destroy verb lands
+        # in a later one, with an anaphor standing in for the target — Quag Feast reads
+        # "CHOOSE target creature, planeswalker, or Vehicle. Mill two cards, then destroy
+        # THE CHOSEN PERMANENT if …". The pattern above needs `destroy|exile` immediately
+        # before `target`, so nothing matched and the card scored ZERO roles: it was
+        # absent from the interaction count the tier floor grades on, not merely from the
+        # noncreature-answer profile. Anchoring on the anaphor is precise on its own —
+        # "destroy/exile the chosen <permanent>" only ever appears in removal text.
+        r"(?:destroy|exile) the chosen (?:permanent|creature|card|artifact|enchantment)",
         r"deals? \d+ damage to (?:target|any target|another target)",
         r"deals? \d+ damage to up to \w+ target",
         # any "fight" is removal (Novel Nunchaku "fights up to one target", Longstalk
@@ -2973,6 +2982,17 @@ _NONCREATURE_ANSWER_CUES = [re.compile(p) for p in [
     r"exile target[^.]*planeswalker", r"destroy all permanents", r"destroy each",
     r"any target",  # burn to any target answers a planeswalker (and the opponent)
     r"deals? \d+ damage to any target", r"destroy target nonland permanent",
+    # The planeswalker rows above allow ANY text between "target" and the type
+    # (`[^.]*`, sentence-bounded); the artifact/enchantment rows required the type to
+    # follow "target" IMMEDIATELY. So "destroy target creature or PLANESWALKER" counted
+    # and "destroy target creature or ENCHANTMENT" did not — the same list, templated
+    # the other way round. Measured misses when this was found: Withering Torment and
+    # Feed the Swarm, i.e. the only two enchantment answers on the whole roster.
+    r"destroy target[^.]*\b(artifact|enchantment)", r"exile target[^.]*\b(artifact|enchantment)",
+    # Split template — see the Removal (spot) note on Quag Feast. "Choose target
+    # creature, planeswalker, or Vehicle … destroy the chosen permanent" reaches past
+    # creatures, but names the types a sentence away from the verb.
+    r"choose target[^.]*\b(planeswalker|artifact|enchantment|vehicle|spacecraft|permanent)",
 ]]
 
 
