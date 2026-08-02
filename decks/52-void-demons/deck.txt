@@ -3,20 +3,23 @@
 #: colors: B
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (9 craft targets, zero games).
-#: tier: Deliberately one band BELOW the measurable floor, which reads A on interaction 8
-#: tier: plus card advantage 3 at a 3.11 curve. Against the rubric an A needs four things
+#: tier: Deliberately one band BELOW the measurable floor, which reads A on interaction 7
+#: tier: plus card advantage 3 at a 3.22 curve. Against the rubric an A needs four things
 #: tier: and this list fails the fourth:
-#: tier:   A-FLOOR — yes. Interaction 8 clears the threshold of five, sum 11 clears seven.
+#: tier:   A-FLOOR — yes. Interaction 7 clears the threshold of five, sum 10 clears seven.
 #: tier:   COHERENT ENGINE — yes. Void condition -> sac outlets -> Void payoffs, with
 #: tier:     Repartee recursion as the card-advantage engine underneath it.
-#: tier:   TIGHT CURVE — yes. 3.11 average on 17 early drops.
+#: tier:   TIGHT CURVE — yes. 3.22 average on 16 early drops.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and there are three that COMPOUND. Card
-#: tier:     advantage is 3 and did not move when Villainous Wrath was traded for Pull
-#: tier:     from the Grave, so the thin axis is real and not a classifier artifact.
-#: tier:     Interaction was traded DOWN on purpose in 2026-08: Hero's Downfall came out
-#: tier:     for Sothera, whose edict trigger is repeatable rather than one-shot, so the
-#: tier:     count fell 9 -> 8 and the instant-speed share fell to 2-of-8 with ONE
-#: tier:     noncreature answer. Card advantage still READS 3 after the 2026-08 pass, but
+#: tier:     advantage has read 3 across three separate tuning rounds, so the thin axis
+#: tier:     is real and not a one-off classifier artifact.
+#: tier:     Interaction was traded DOWN twice on purpose in 2026-08: Hero's Downfall came
+#: tier:     out for Sothera, whose edict trigger is repeatable rather than one-shot, and
+#: tier:     Vayne's Treachery was CUT for Zodiark. The count fell 9 -> 7 and instant
+#: tier:     speed is now 1-of-7, with Withering Torment the only noncreature answer. The
+#: tier:     7 also under-reads: Zodiark's ETB half-edict is interaction the classifier
+#: tier:     does not tag, and it flags the same about Liliana.
+#: tier:     Card advantage still READS 3 after the 2026-08 pass, but
 #: tier:     that number is now an under-count and the reason is documented: Baron Helmut
 #: tier:     Zemo connives on every black spell cast from hand — in a mono-black list that
 #: tier:     is a draw-and-discard every turn — and the classifier tags him Payoff/Recursion,
@@ -52,6 +55,15 @@
 #: archetype: connives on every black spell, Susur Secundi is a LAND that becomes a free
 #: archetype: sacrifice outlet drawing cards equal to the sacrificed creature's power, and
 #: archetype: Rottenmouth Viper pays you for the sacrifices the deck was making anyway.
+#: archetype: VINCENT VALENTINE IS THE RENEWABLE BODY that layer wanted. Attack, transform
+#: archetype: on the trigger, sacrifice Galian Beast in main two, and it returns to the
+#: archetype: battlefield front face up — a free sacrifice every turn cycle at no card
+#: archetype: cost, which fires Sothera's edict, Liliana's draw, Funeral Room, Susurian
+#: archetype: Voidborn, Lightless Evangel and the Void condition all at once. Zodiark is
+#: archetype: the same idea held still: indestructible, it grows on every sacrifice by
+#: archetype: EITHER player, and its five black pips are a third of Zemo's Boast threshold
+#: archetype: on their own (the yard needs ~11 black cards to reach 15 pips, or ~8 with
+#: archetype: Zodiark among them).
 #: archetype: The Darkness Crystal is the one that reads as anti-synergy and is not: it
 #: archetype: REDIRECTS a dying opposing creature into an exile only YOU can reach, so
 #: archetype: Massacre Wurm's -2/-2 now banks their whole board for later reanimation at
@@ -64,8 +76,9 @@
 #: archetype: lifelink and haste. Demon is not a tribe here (the pool has ~1 real
 #: archetype: payoff) — it is what the engine produces.
 #: protect: Forum Necroscribe; Alpharael, Stonechosen; Ardyn, the Usurper; Joo Dee, One of Many; Timeline Culler
-#: notes: WIP / aspirational — 8 craft targets: Tragic Trajectory, Lightless Evangel,
+#: notes: WIP / aspirational — 10 craft targets: Tragic Trajectory, Lightless Evangel,
 #: notes: Withering Torment, Susurian Voidborn, Elegy Acolyte, The Darkness Crystal (R),
+#: notes: Zodiark, Umbral God (R), Vincent Valentine // Galian Beast (R),
 #: notes: Sothera, the Supervoid (M), Susur Secundi, Void Altar (M).
 #: notes: Built from a ~116-card concept pile; the rejected pile is screened in Stage 5.
 #: notes: Baron Helmut Zemo was CUT from the exclusion list and ADDED 2026-08. The old
@@ -76,9 +89,12 @@
 #: notes: a graveyard deck its own army back); Cryptcaller Chariot / Monument to
 #: notes: Endurance (both trigger on DISCARD, which this build does not have);
 #: notes: Rise of the Dark Realms / Behold the Sinister Six! (mass reanimation needs a
-#: notes: top end this list does not run); Mister Negative (gold WB, would widen colors);
-#: notes: Vincent Valentine (its growth trigger reads "a creature an opponent controls
-#: notes: DIES", which The Darkness Crystal replaces with exile — mutually exclusive).
+#: notes: top end this list does not run); Mister Negative (gold WB, would widen colors).
+#: notes: Vincent Valentine was ADDED 2026-08 after being wrongly excluded here as
+#: notes: "mutually exclusive with The Darkness Crystal". The Crystal does switch off its
+#: notes: +1/+1 growth trigger, but that is the minor half — the card is played for the
+#: notes: Galian Beast self-return loop, which the Crystal never touches because it only
+#: notes: reads creatures an OPPONENT controls.
 
 # Nonland
 1 Rottenmouth Viper (BLB) 107
@@ -99,7 +115,7 @@
 1 Vampire Gourmand (FDN) 74
 1 Lightless Evangel (EOE) 109
 1 Fake Your Own Death (FDN) 174
-1 Vayne's Treachery (FIN) 124
+1 Zodiark, Umbral God (FIN) 128
 1 Sothera, the Supervoid (EOE) 115
 1 Baron Helmut Zemo (MSH) 87
 1 Withering Torment (DSK) 124
@@ -111,7 +127,7 @@
 1 Elegy Acolyte (EOE) 97
 1 Prison Break (SPM) 61
 1 Alpharael, Stonechosen (EOE) 87
-1 Pull from the Grave (SOS) 95
+1 Vincent Valentine // Galian Beast (FIN) 125
 1 Bloodthirsty Conqueror (FDN) 58
 1 Forum Necroscribe (SOS) 84
 1 Massacre Wurm (FDN) 714

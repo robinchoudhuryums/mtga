@@ -222,8 +222,14 @@ If an opponent would mill one or more cards, they mill that many cards plus four
 {4}{U}{U}, {T}: Each opponent mills cards equal to the number of cards in your hand.",U,mill; cost-reduction; graveyard,FIN,85,Rare,51,,5.5,seed
 Tifa Lockhart,Legendary Creature — Human Monk,"Trample
 Landfall — Whenever a land you control enters, double Tifa Lockhart's power until end of turn.",G,Human; Monk; landfall; trample; evasion; double; lands; ramp,FIN,206,Rare,50a,,6.5,hand
+Vincent Valentine // Galian Beast,Legendary Creature — Assassin // Legendary Creature — Werewolf Beast,"Whenever a creature an opponent controls dies, put a number of +1/+1 counters on Vincent Valentine equal to that creature's power.
+Whenever Vincent Valentine attacks, you may transform it. // Trample, lifelink
+When Galian Beast dies, return it to the battlefield tapped (front face up).",B,Assassin; Werewolf; Beast; counters; lifegain; lifelink; transform; trample; evasion,FIN,125,Rare,52,,6.0,seed
 "Zanarkand, Ancient Metropolis // Lasting Fayth",Land — Town // Sorcery — Adventure,"This land enters tapped.
 {T}: Add {G}. // Create a 1/1 colorless Hero creature token. Put a +1/+1 counter on it for each land you control. (Then exile this card. You may play the land later from exile.)",G,Town; Adventure; counters; exile cast; tokens; mana,FIN,293,Rare,50a,,4.0,seed
+"Zodiark, Umbral God",Legendary Creature — God,"Indestructible
+When Zodiark enters, each player sacrifices half the non-God creatures they control of their choice, rounded down.
+Whenever a player sacrifices another creature, put a +1/+1 counter on Zodiark.",B,God; counters; sacrifice; etb; indestructible; resilience,FIN,128,Rare,52,,6.0,seed
 Dark Knight's Greatsword,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +3/+0 and is a Knight in addition to its other types.
 Chaosbringer — Equip—Pay 3 life. Activate only once each turn.",B,Equipment; tokens; etb; equipment; pump; chaosbringer; job select; equip,FIN,95,Uncommon,38,,4.0,hand
