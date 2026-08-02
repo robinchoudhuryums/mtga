@@ -4,12 +4,18 @@
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (9 craft targets, zero games).
 #: tier: Deliberately one band BELOW the measurable floor, which reads A on interaction 7
-#: tier: plus card advantage 3 at a 3.22 curve. Against the rubric an A needs four things
+#: tier: plus card advantage 3 at a 3.31 curve. Against the rubric an A needs four things
 #: tier: and this list fails the fourth:
 #: tier:   A-FLOOR — yes. Interaction 7 clears the threshold of five, sum 10 clears seven.
 #: tier:   COHERENT ENGINE — yes. Void condition -> sac outlets -> Void payoffs, with
 #: tier:     Repartee recursion as the card-advantage engine underneath it.
-#: tier:   TIGHT CURVE — yes. 3.22 average on 16 early drops.
+#: tier:   TIGHT CURVE — NO LONGER, and this is the axis to watch. 3.31 average on 15
+#: tier:     early drops, up from 2.86 / 19 before the 2026-08 pass. Both `cuts` and
+#: tier:     `consistency` now flag it: keepable is 84.4%, and 23 lands does not improve
+#: tier:     it (82%), so the fix is cast-on-curve, not land count. Zodiark reads 46.7%
+#: tier:     on turn five — the binding constraint is drawing five LANDS, not black
+#: tier:     sources, since all 24 lands make black. The next change here should LOWER
+#: tier:     the curve, not add another good five-drop.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and there are three that COMPOUND. Card
 #: tier:     advantage has read 3 across three separate tuning rounds, so the thin axis
 #: tier:     is real and not a one-off classifier artifact.
@@ -114,7 +120,7 @@
 1 Hymn of the Faller (EOE) 107
 1 Vampire Gourmand (FDN) 74
 1 Lightless Evangel (EOE) 109
-1 Fake Your Own Death (FDN) 174
+1 Gwenom, Remorseless (SPM) 56
 1 Zodiark, Umbral God (FIN) 128
 1 Sothera, the Supervoid (EOE) 115
 1 Baron Helmut Zemo (MSH) 87
