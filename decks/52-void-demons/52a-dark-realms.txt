@@ -51,22 +51,23 @@
 #: archetype: vs the parent 52: zero Void cards, zero warp, no sacrifice-outlet layer, and
 #: archetype: a curve a full mana value higher.
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (3 craft targets, zero games).
-#: tier: One band BELOW the measurable floor, which reads A on interaction 11 plus card
+#: tier: One band BELOW the measurable floor, which reads A on interaction 12 plus card
 #: tier: advantage 2. Against the rubric an A needs four things and this list fails two:
-#: tier:   A-FLOOR — yes. Interaction 11 clears five; the sum of 13 clears seven.
+#: tier:   A-FLOOR — yes. Interaction 12 clears five; the sum of 14 clears seven.
 #: tier:   COHERENT ENGINE — yes. Eight enablers feed SEVEN reanimation effects feed six
 #: tier:     bombs, and the ratio is deliberate: a reanimator needs more ways to fill the
 #: tier:     yard than things to put in it. Reanimation was trimmed from ten to seven over
 #: tier:     the 2026-08 pass — the redundant copies were spent on interaction, which is
 #: tier:     where a singleton reanimator actually runs short.
 #: tier:   TIGHT CURVE — NO, and this is the honest reason it is not an A. Average nonland
-#: tier:     MV 4.19 on 10 early drops, and that average UNDER-reads because Stargaze
-#: tier:     books as MV 1 (X counts as 0). It is still the slowest list on this branch.
-#: tier:     The 2026-08 pass first made it worse and then paid it back: early drops ran
-#: tier:     11 -> 9 -> 10 -> 9 -> 11 -> 10 and avg MV 4.28 -> 4.42 -> 4.19 across
-#: tier:     thirteen swaps. The repair was cheap cards (Maximum Overdrive, Iron-Shield Elf)
-#: tier:     replacing expensive redundant ones. Keep that discipline: this deck can
-#: tier:     absorb a bomb only by shedding a mid-band card.
+#: tier:     MV 4.22 on 9 early drops, and that average UNDER-reads because Stargaze
+#: tier:     books as MV 1 (X counts as 0). It is still the slowest list on this branch,
+#: tier:     and 9 early drops is the number to watch: across fifteen swaps it has run
+#: tier:     11 -> 9 -> 10 -> 9 -> 11 -> 10 -> 9 while avg MV moved 4.28 -> 4.42 -> 4.22.
+#: tier:     Every repair has come from CHEAP cards (Maximum Overdrive, Iron-Shield Elf)
+#: tier:     replacing expensive redundant ones, and every relapse from swapping a two-drop
+#: tier:     for a three. Keep the discipline: absorb a bomb only by shedding a mid-band
+#: tier:     card, and prefer an MV-2 add when the axis is level.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no. Card advantage moved 1 -> 2 and it still
 #: tier:     COMPOUNDS with the
 #: tier:     curve: a slow deck that does not refill loses the game where it is disrupted
@@ -74,7 +75,7 @@
 #: tier:     Dirge to tutor with — and the draws where the halves do not meet are real.
 #: tier:     The 2 also under-reads: Zemo's connive is a draw-and-discard the classifier
 #: tier:     tags Payoff/Recursion, exactly as in deck 52 (K-12).
-#: tier:   THE INTERACTION PROFILE IS NOW HEALTHY and the numbers can be trusted: 11
+#: tier:   THE INTERACTION PROFILE IS NOW HEALTHY and the numbers can be trusted: 12
 #: tier:     pieces, 3 instant-speed, 3 answering a noncreature permanent. Two classifier
 #: tier:     bugs found here in 2026-08 were fixed rather than annotated — the cue list
 #: tier:     matched "creature or planeswalker" but not "creature or enchantment", and no
@@ -91,11 +92,19 @@
 #: notes: Realms (M), Commune with Evil (U), Come Back Wrong (R), Unholy Annex (R),
 #: notes: Valgavoth's Faithful (U), Iron-Shield Elf (U), Zodiark (R), Vincent Valentine
 #: notes: (R), Maximum Overdrive (C), Emeritus of Woe (owned) — see `deck.py check 52a`.
-#: notes: DEMON COUNT IS NOW 1 (Valgavoth) plus Ardyn's tokens, down from 3. Rune-Scarred
-#: notes: Demon and Bringer of the Last Gift were both cut, and Unholy Annex's "if you
-#: notes: control a Demon" clause reads that number — without one it costs 2 life a turn
-#: notes: instead of draining 2. Unlocking Ritual Chamber for {3}{B}{B} makes a permanent
-#: notes: 6/6 Demon and fixes it; Miasma Demon is the cheap alternative if it slips.
+#: notes: DEMON COUNT IS 2 (Valgavoth, Abyssal Harvester) plus Ardyn's tokens, back up
+#: notes: from the 1 it fell to when Rune-Scarred Demon and Bringer of the Last Gift were
+#: notes: cut. Unholy Annex's "if you control a Demon" clause reads that number — without
+#: notes: one it costs 2 life a turn instead of draining 2. Unlocking Ritual Chamber for
+#: notes: {3}{B}{B} makes a permanent 6/6 Demon if the count slips again.
+#: notes: SIDISI WAS CUT 2026-08 on arithmetic, not feel. Its ability returns a creature of
+#: notes: mana value EXACTLY X+1 for a sacrifice at X, and this deck's creature curve has
+#: notes: a HOLE AT 7 — so Ardyn and Armaggon (MV 8) were unreachable by it at all, and
+#: notes: Krang and Valgavoth (MV 9) were reachable only by sacrificing Ardyn or Armaggon,
+#: notes: i.e. trading one bomb for another. Every genuinely usable rung sat in the 1-6
+#: notes: range, where it upgraded a small creature into a slightly bigger one. Note
+#: notes: `deck.py targets` scored this gate as "creature cards to return: 16" — it reads
+#: notes: the TARGET side only and cannot see that the gate is a PAIRED constraint.
 #: notes: Forum Necroscribe was ADDED 2026-08 after being held out purely to keep this
 #: notes: list measurably distinct from its parent, which is not a card-quality argument —
 #: notes: with five cheap creature-targeting spells and a fuller yard, its Repartee returns
@@ -115,7 +124,7 @@
 1 Embrace Oblivion (EOE) 98
 1 Vincent Valentine // Galian Beast (FIN) 125
 1 The Soul Stone (SPM) 66
-1 Sidisi, Regent of the Mire (TDM) 92
+1 Abyssal Harvester (FDN) 54
 1 Lively Dirge (OTJ) 93
 1 Ninja Teen (TMT) 67
 1 Valgavoth's Faithful (DSK) 121
@@ -149,4 +158,5 @@
 1 Krang, Utrom Warlord (TMT) 175
 
 # Lands
-24 Swamp (MSH) 291
+1 Realm of Koh (TLA) 276
+23 Swamp (MSH) 291

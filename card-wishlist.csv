@@ -153,6 +153,7 @@ Remove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activ
 Rite of the Dragoncaller,Enchantment,"Whenever you cast an instant or sorcery spell, create a 5/5 red Dragon creature token with flying.",R,tokens; spellslinger,FDN,92,Mythic,2,,7.0,hand
 Twinflame Tyrant,Creature — Dragon,"Flying
 If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals double that damage instead.",R,Dragon; flying; evasion; double,FDN,97,Mythic,14,,7.0,hand
+Abyssal Harvester,Creature — Demon Warlock,"{T}: Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.",B,Demon; Warlock; Nightmare; graveyard; tokens; removal,FDN,54,Rare,52a,,7.0,seed
 Adaptive Automaton,Artifact Creature — Construct,"As this creature enters, choose a creature type.
 This creature is the chosen type in addition to its other types.
 Other creatures you control of the chosen type get +1/+1.",Colorless,Construct; pump,FDN,723,Rare,48,FLEX in 48: swap back for Mm'menon when a Rare wildcard is free. One of only 5 choose-a-type anthems in Standard; no cheaper substitute exists.,6.0,hand
