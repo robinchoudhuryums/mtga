@@ -12,10 +12,11 @@
 #: archetype: collection and the enabler half is built from scratch.
 #: archetype: THE GAP IS THE POINT: Krang is a {9} 9/9 with flying, trample,
 #: archetype: indestructible AND HASTE, so reanimating him is not just cheap, it attacks
-#: archetype: the turn it lands. Armaggon destroys up to three creatures on ETB with no
-#: archetype: "if you cast it" clause, so reanimating him is a 9/6 body AND a triple kill.
-#: archetype: Cat-Gator's ETB is damage equal to your Swamp count — 24 Swamps, so it is a
-#: archetype: reanimated Fireball with lifelink. Bringer of the Last Gift is the exception
+#: archetype: the turn it lands. Valgavoth is a 9/9 flying lifelink body whose ward costs
+#: archetype: THREE nonland permanents, so once it is on the battlefield it tends to stay.
+#: archetype: Rune-Scarred Demon fetches any card in the deck on arrival — reanimate it and
+#: archetype: it finds Rise of the Dark Realms — and it is a Demon, so Ardyn's lord line
+#: archetype: reads it. Bringer of the Last Gift is the exception
 #: archetype: that proves the rule: its wipe-and-rebuild fires only if HARD-CAST, and this
 #: archetype: is the deck that wins that exchange, because nine enablers have been stuffing
 #: archetype: your yard while the opponent's stays thin.
@@ -42,14 +43,14 @@
 #: archetype: vs the parent 52: zero Void cards, zero warp, no sacrifice-outlet layer, and
 #: archetype: a curve a full mana value higher.
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (3 craft targets, zero games).
-#: tier: One band BELOW the measurable floor, which reads A on interaction 11 plus card
+#: tier: One band BELOW the measurable floor, which reads A on interaction 10 plus card
 #: tier: advantage 1. Against the rubric an A needs four things and this list fails two:
-#: tier:   A-FLOOR — yes. Interaction 11 clears five; the sum of 13 clears seven.
+#: tier:   A-FLOOR — yes. Interaction 10 clears five; the sum of 11 clears seven.
 #: tier:   COHERENT ENGINE — yes. Eight enablers feed ten reanimation effects feed seven
 #: tier:     bombs, and the ratio is deliberate: a reanimator needs more ways to fill the
 #: tier:     yard than things to put in it.
 #: tier:   TIGHT CURVE — NO, and this is the honest reason it is not an A. Average nonland
-#: tier:     MV 4.22 on only 12 early drops, and that average UNDER-reads because Stargaze
+#: tier:     MV 4.28 on only 11 early drops, and that average UNDER-reads because Stargaze
 #: tier:     books as MV 1 (X counts as 0). It is the slowest list on this branch.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no. Card advantage is 1, and it COMPOUNDS with the
 #: tier:     curve: a slow deck that does not refill loses the game where it is disrupted
@@ -85,12 +86,12 @@
 1 Red Room Recruit (MSH) 110
 1 Quag Feast (DFT) 100
 1 Eerie Gravestone (SPM) 163
-1 Feed the Swarm (SOA) 29
+1 Come Back Wrong (DSK) 86
 1 Grave Researcher (SOS) 85
 1 Too Evil to Stay Dead (MSH) 118
 1 Ral Zarek, Guest Lecturer (SOS) 97
 1 Forum Necroscribe (SOS) 84
-1 Withering Curse (SOS) 105
+1 Valgavoth, Terror Eater (DSK) 120
 1 Pull from the Grave (SOS) 95
 1 Commune with Evil (DSK) 87
 1 Zombify (SOA) 36
@@ -104,9 +105,9 @@
 1 Massacre Wurm (FDN) 714
 1 Vein Ripper (MKM) 110
 1 The Rise of Sozin (TLA) 117
-1 Cat-Gator (TLA) 91
+1 Rune-Scarred Demon (FDN) 184
 1 Behold the Sinister Six! (SPM) 51
-1 Armaggon, Future Shark (TMT) 58
+1 Withering Torment (DSK) 124
 1 Ardyn, the Usurper (FIN) 89
 1 Rise of the Dark Realms (FDN) 183
 1 Bringer of the Last Gift (LCI) 94

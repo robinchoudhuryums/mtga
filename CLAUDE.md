@@ -14,6 +14,17 @@ docs. This file is the source of truth for the workflow commands in
   picks unless the power gap is large); override per run with `competitive` /
   `balanced` in the args. Still always report the by-the-numbers pick — the
   preference shifts recommendations, not honesty.
+- **BUILD THE OPTIMAL LIST. Do NOT gate a card on whether it is owned, and do not
+  budget the build against the wildcards on hand.** Wildcard balances change constantly
+  and the owned/unowned data in this repo is often stale, so "you only have 10 rares" is
+  a fact about last week, not about the deck. A card that is objectively better belongs in
+  the list whether or not you own it. This was a REAL failure mode, not a hypothetical:
+  deck 53 was reported as "over budget — 12 rares against 10 held" as though that were a
+  design verdict, and cheaper OWNED removal was picked over better unowned removal in all
+  three of decks 52/52a/53. **What stays:** report the craft cost as INFORMATION at the
+  end (it is useful for sequencing), keep decks WIP/aspirational so `check` tracks the
+  gap, and keep flagging ROTATION — a card leaving Standard is a legality fact about the
+  deck's future, not a resource constraint, and those are different questions.
 
 ## Key Design Decisions
 
@@ -175,7 +186,11 @@ directions.
   pool" is NOT "it's Standard-legal". **In code, never slice a card's text to grade,
   classify or rank it**; `load_card_data()` is the ONE name→card accessor, and it
   resolves library-first, so a library row with BLANK text would shadow a populated pool
-  row. [G-01]
+  row. **Its key convention differs from every CSV reader here and fails SILENTLY:
+  keys are LOWERCASED and the oracle field is `text`, not `Card Text`.** A sweep written
+  as `load_card_data().get(name)["Card Text"]` matches nothing and returns a clean zero
+  for every deck — which reads as a finding, not a bug. Cost a wrong "0 scry/surveil
+  sources" answer for three decks in one pass. [G-01]
 - **A split / Room / Adventure card's stored cost covers BOTH halves — read the FRONT
   face.** Use `lib.front_face_cost()` / `lib.mana_value()`; `parse_pips` and `load_mana`
   already do. A **MODAL DFC** is stored the same way now — either face is castable from
@@ -234,7 +249,7 @@ directions.
   prints the axis the deck is SHORT on above the table, because a `⚠interaction` note
   once put four ONE-MANA spells atop the cut list of the slowest deck on the roster, and
   flags `⌁scales w/ <axis>` for a card graded at its FLOOR (Cat-Gator reads as a 7-mana
-  3/2 when its ETB is damage equal to your 24 Swamps). Both REPORT-only. [G-09]
+  3/2 when its ETB is damage = Swamps you CONTROL). Both REPORT-only. [G-09]
 - **"Not in library" for a card you own is the deck-dump undercount symptom.** Fastest
   fix: `reconcile_crafts.py <arena-export>` — it adds the library row, adds a blank
   `card-mana.csv` row so INV-02 always holds, drops the card from the wishlist, and
@@ -336,7 +351,11 @@ directions.
   may name an absent card — but an EXCLUSION claim in it ("deliberately NOT included: X")
   is checked, because that is a claim about the current list in the opposite direction.
   Report-only. A rationale that legitimately names a card it cut must put the change-cue
-  ADJACENT to the name. [G-27]
+  ADJACENT to the name — adjacent means the SAME clause; "X came out for Y" split across
+  a wrapped `#:` line still read stale, "X was CUT for Y" passed. **Residual: the
+  EXCLUSION check has a proximity window and misses a name several lines into a wrapped
+  list** — deck 52 named Zemo under "Deliberately NOT included" while running him, and
+  `wrong_exclusion_claims` returned empty. [G-27]
 - **`suggest`'s `Decks` column is cross-deck BREADTH, not curated fit** — castable and
   sharing a *central* theme that is also SPECIFIC, with variants collapsed to their core
   deck. Both gates are load-bearing: centrality alone left the column saturated at 99%,
@@ -396,7 +415,14 @@ directions.
   Scored on FIXING value plus two bounded nudges (a land's own synergy text, and the
   deck's scarcest colour). It defaults to the deck's own `#: format:`, as the card-facing
   `suggest` always did — it once offered two non-Standard duals as craft targets, and on
-  a wildcard-spend recommender an unfiltered pick costs real resources. [G-37]
+  a wildcard-spend recommender an unfiltered pick costs real resources. **LIVE RESIDUAL,
+  at the TOP of the list: three of its four highest-scored picks for deck 52 were NOT
+  PLAYABLE LANDS** — a land on the BACK face, a spell on the front, so it is reached by
+  transforming and never by a land drop. Maindeck one and the deck is a land short with
+  INV-04 seeing nothing wrong. Same class as G-63. Two scoring misses ride along: a
+  "spend this mana only to cast a creature spell" land scored top, and a
+  conditionally-tapped land scored as sometimes-untapped on a condition mono-black cannot
+  meet. **Read the type line of every pick before crafting.** [G-37]
 - **`suggest --ramp / --interaction / --needs` are the NEEDS model** — the structural
   axes theme-`suggest` is blind to (fixing, acceleration, interaction). **If the scorecard
   says the deficit is interaction or mana, the fix comes from here, not from plain
@@ -677,7 +703,11 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   run a roster-wide before/after diff**: three sweeps found large silent under-counts,
   and a card sorted into the WRONG bucket is harder to detect than one in no bucket at
   all. The castability lint reads the deck's `#: colors:` header, so a stale header
-  manufactures phantom strays — a flag is a review signal, not a hard failure. [K-12]
+  manufactures phantom strays — a flag is a review signal, not a hard failure.
+  **CONNIVE is an unread keyword here**: Baron Helmut Zemo connives on every black spell
+  and classifies as Payoff/Recursion, so deck 52's card advantage stayed at 3 across a
+  ten-swap pass that genuinely moved the axis. A FLAT metric after a tune is not proof
+  the tune failed. [K-12]
 - **A LITERAL TYPE-NAME SEARCH CANNOT SEE THE CHOOSE-A-TYPE CATEGORY, and a false negative
   there reads as a finished answer.** A pool sweep for "Robots you control get" / "for each
   Robot" returned zero, and an entire archetype was declined in writing as "bodies without

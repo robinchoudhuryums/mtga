@@ -46,6 +46,27 @@ shadow a populated pool row — harmless today (all 6 blank-text rows are genuin
 vanilla in both files) but the thing to check if an evaluator ever reads a card as
 text-less.
 
+### Its key convention is not the CSV convention, and the mismatch fails silently (2026-08)
+
+Every CSV reader in this repo keys on the **exact card name** and exposes the CSV's own
+column names (`Card Name`, `Card Text`, `Mana Cost`). `load_card_data()` does neither:
+
+- keys are **lowercased** — `cd["joo dee, one of many"]`, not `cd["Joo Dee, One of Many"]`
+- the oracle field is **`text`**, not `Card Text`; the others are `name`, `type`, `colors`,
+  `power`, `toughness`
+
+So the natural sweep — `(cd.get(name) or {}).get("Card Text")` — matches **nothing**, for
+**every** card, and returns an empty string rather than raising. Written ad hoc during the
+deck 52 pass to count scry/surveil sources, it reported **0 sources for all three decks**
+and looked like a clean result. It was only caught because the author happened to know Joo
+Dee surveils.
+
+**This is the K-13 shape one layer down.** K-13 says a zero-result *search* is an unverified
+search, not a fact about the format. This says a zero-result *accessor sweep* is not a fact
+about the deck. Both fail the same way: a false negative arrives formatted exactly like an
+answer. When an ad-hoc sweep returns zero, spot-check one card you KNOW should match before
+believing it.
+
 
 ## [G-02] A split / Room / Adventure card's stored cost covers BOTH halves — read the FRONT face
 
@@ -803,6 +824,25 @@ later — three separate rewrites this cycle were needed for exactly that. **Run
 any deck edit** — a defensible grade rotting into an indefensible one is the exact
 failure the tier guard exists to prevent.
 
+### Two calibration notes from the 2026-08 deck 52 pass
+
+**"Adjacent" means the same clause, and a wrapped `#:` line break can break it.** Deck 52's
+prose read *"Hero's Downfall came out for Sothera, and / Vayne's Treachery came out for
+Zodiark"* — the first passed, the second was reported stale, because the cue and the name
+landed on opposite sides of a continuation line. Rewriting the second as **"Vayne's
+Treachery was CUT for Zodiark"** cleared it. When the audit flags a card you know you
+documented, try moving the cue *before* the name in the same clause first.
+
+**Residual: the EXCLUSION check has a proximity window and misses a wrapped list.**
+Deck 52's `#: notes:` carried a five-line "Deliberately NOT included and why:" list with
+Baron Helmut Zemo named on the **third** continuation line — while the deck was running
+him. `wrong_exclusion_claims` returned `[]`. The check pairs the exclusion cue with names
+near it, and "near" does not span a wrapped `#: notes:` list. This is precisely the
+false-negative direction G-26 warns is the dangerous one: *a false positive is noisy and
+gets noticed, a false negative is silent.* Until it is fixed, re-read the exclusion list by
+eye whenever a swap adds a card the deck once rejected — which is common, since a
+reconsidered card is exactly the kind that gets excluded in writing first.
+
 
 ## [G-28] `deck.py suggest` shows a cross-deck reuse count (`Decks` column)
 
@@ -1088,6 +1128,39 @@ Shadow as craft targets — neither Standard-legal. On a WILDCARD-SPEND recommen
 unfiltered pick costs real resources, and it is the "recommending a craft without a legality
 check" failure this file warns about elsewhere. Found by USING the tool to build a deck, not
 by a test. `--any-format` still shows everything.
+
+### LIVE RESIDUAL (2026-08): the top of the list is not always a land
+
+Replacing an unowned mythic land in deck 52, `suggest --lands 52` returned this top four,
+and **not one of them is playable in the slot**:
+
+| Rank | Card | Score | Why it fails |
+|---|---|---|---|
+| 1 | Mudflat Village | 9.2 | `{T}: Add {B}. **Spend this mana only to cast a creature spell.**` 16 of the deck's 36 nonland cards are noncreature spells — 44% cannot use it. Its other ability returns Bat/Lizard/Rat/Squirrel; the deck has none |
+| 2 | Tarrian's Journal | 9.2 | **Not a land.** Front is a `{1}{B}` Legendary Artifact — Book |
+| 3 | Grasping Shadows | 8.3 | **Not a land.** Front is a `{3}{B}` Enchantment |
+| 4 | Aclazotz, Deepest Betrayal | 8.1 | **Not a land.** Front is a `{3}{B}{B}` Legendary Creature — Bat God |
+
+Ranks 2–4 all carry a land on the **back** face, reachable only by transforming — never by
+a land drop. The card that was actually correct, **Hidden Necropolis** (a common whose
+`{4}{B}, {T}, Sacrifice` discovers 4), ranked **8th**; the next-best real land, Midgar,
+ranked 8th-equal and is a genuine land only because ITS front face is the land half.
+
+**Why nothing caught it.** Maindecking rank 2, 3 or 4 in the `# Lands` block leaves the deck
+with one fewer real land and **INV-04 passes**: the line parses, the set code exists, the
+collector number is held, the card is Standard-legal. `check_all` has no notion of "is this
+line a land". The deck would simply play badly.
+
+**Root cause is G-63's class one layer out.** The pool row for a DFC records a land type
+whenever EITHER face is a land, and `_land_value` reads that row. The accessor rule ("ask
+which face a column describes") was never applied to the land-ness predicate itself.
+
+**Rank 5 is a fourth, milder miss.** Great Arashin City is a real land but reads *"enters
+tapped unless you control a Forest or a Plains"* — unreachable in mono-black, so it is
+always tapped. It scored 5.8 fixing rather than the 4.6 given to a flatly-tapped land,
+i.e. the scorer treated an unsatisfiable condition as sometimes-satisfied.
+
+**Until it is fixed, read the type line of every pick.** `card.py <name>` prints it.
 
 
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the
@@ -2023,6 +2096,30 @@ otherwise assert "off-color ability" for a card it cannot classify (false for de
 two R/W hybrids). It still COUNTS an unknown as actionable, so the offline path
 over-reports rather than silently clearing a deck; only the claim is softened to match
 the evidence. Run `deck.py mana` (which loads real costs) for the definitive read.
+
+### CONNIVE is an unread keyword, and a flat metric after a tune is not proof (2026-08)
+
+Deck 52 took a **ten-swap** tuning pass aimed squarely at card advantage. The metric read
+**3 before and 3 after.**
+
+The axis had genuinely moved. `classify_roles` returns `['Payoff / engine', 'Recursion']`
+for **Baron Helmut Zemo**, whose only repeatable ability is *"whenever you cast a black
+spell from your hand, Baron Helmut Zemo **connives**"* — in a mono-black list that is a
+draw-and-discard every single turn. **Funeral Room // Awakening Hall** and **Susur Secundi,
+Void Altar** classify the same way for the same reason: their card draw is behind a keyword
+or a stationed ability the pattern set does not read.
+
+**The failure mode this creates is a bad decision, not a bad number.** Seeing card advantage
+unmoved after a tune, the natural next move is to spend more slots on the same axis — in a
+deck that had already fixed it, and whose real constraint had by then become the curve
+(2.86 → 3.31 avg MV across the same ten swaps). Adding an eleventh card would have made the
+deck worse while chasing a metric that was wrong.
+
+Recorded in the deck's own `#: tier:` prose so the next reader does not repeat it. **When a
+targeted tune leaves its target axis flat, check whether the adds are classified before
+concluding the tune failed.** Fixing this means teaching `_ROLE_PATTERNS` the keyword —
+`connive` is a draw-then-discard, so it belongs in card advantage alongside the explicit
+"draw a card" texts.
 
 
 ## [K-13] A literal type-name search cannot see the choose-a-type category — and the false negative reads as an answer

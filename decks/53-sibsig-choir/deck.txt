@@ -1,0 +1,94 @@
+#: name: Sibsig Choir
+#: format: Standard
+#: colors: B
+#: plan: midrange
+#: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (17 craft targets, zero games).
+#: tier: One band BELOW the measurable floor, which reads A on interaction 8 plus card
+#: tier: advantage 3. Against the rubric an A needs four things and this list fails two:
+#: tier:   A-FLOOR — yes. Interaction 8 clears five; the sum of 11 clears seven.
+#: tier:   COHERENT ENGINE — yes, and `shape` measures it rather than taking the header's
+#: tier:     word: WIDE 10 against tall 5, on ten distinct effects that scale with creature
+#: tier:     COUNT. Tokens feed anthems, anthems make the tokens a clock, and the removal
+#: tier:     suite feeds Gisa by committing a crime every turn.
+#: tier:   TIGHT CURVE — borderline. 3.19 average, and it UNDER-reads because Dread Summons
+#: tier:     books as MV 1 (X counts as 0); you cast it for four or five.
+#: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND. Protection is 2 on a deck
+#: tier:     whose whole plan is a board, so one sweeper undoes several turns. And the
+#: tier:     engine needs BOTH halves — bodies and an anthem — in a singleton list, so the
+#: tier:     draws where you hold one and not the other are common and are the games you
+#: tier:     lose. Card advantage 3 is real but arrives late (Chronicle of Victory is {6}).
+#: tier: A further caution the floor cannot see: Gisa, the deck's best card, rotates ~2027,
+#: tier: as do four of the other sixteen craft targets. Re-grade after it is built.
+#: archetype: Mono-black ZOMBIE/SKELETON GO-WIDE, and the third deck the Void Demons
+#: archetype: concept pile was hiding. It is NOT a graveyard deck and that is the whole
+#: archetype: reason it exists: its bodies are TOKENS, and a token is not a card, so every
+#: archetype: castaway that fought decks 52/52a by exiling a graveyard is free here.
+#: archetype: THREE ENGINES THAT FEED EACH OTHER.
+#: archetype: (1) TOKENS. Dread Summons mills X and pays a Zombie per creature binned; The
+#: archetype: Sibsig Ceremony makes creature spells cost {2} less and converts each one you
+#: archetype: cast into a 2/2; Cryptcaller Chariot pays a Zombie per card DISCARDED; Gisa
+#: archetype: pays two whenever you commit a crime; Liliana and Hour of Victory add more.
+#: archetype: (2) ANTHEMS, and the reason this tribe is buildable at all. A literal name
+#: archetype: search finds three Zombie lords; searching the EFFECT SHAPE finds nineteen,
+#: archetype: because most of them never say "Zombie" — they say "as this enters, choose a
+#: archetype: creature type" (Chronicle of Victory, Patchwork Banner, Adaptive Automaton).
+#: archetype: Measured, the tribe is 40 bodies / 19 payoffs — second only to Dragon among
+#: archetype: the tribes surveyed, and far past Vampire's 69/3.
+#: archetype: (3) CRIME. Gisa's trigger is "target an opponent, anything they control, or
+#: archetype: cards in their graveyard". The removal suite already does that every turn,
+#: archetype: and so does Soul-Shackled Zombie's graveyard exile — the card that could not
+#: archetype: coexist with a reanimator plan is a token engine here.
+#: archetype: THE PAYOFF FOR GOING WIDE is Ninja Teen: every creature that LEAVES drains
+#: archetype: one, and its level 2 is a second anthem. Blasphemous Edict costs {B} once
+#: archetype: thirteen creatures are on the battlefield — with Ninja Teen out, that edict
+#: archetype: is a drain the size of the board, and this is the only deck on the roster
+#: archetype: that can reach the condition.
+#: protect: Gisa, the Hellraiser; Chronicle of Victory; Ninja Teen; The Sibsig Ceremony; Cryptcaller Chariot
+#: notes: WIP / heavily aspirational — this is the CRAFT-EXPENSIVE deck of the three, and
+#: notes: deliberately so; the pile's Zombie half was almost entirely unowned. Count the
+#: notes: wildcards before committing.
+#: notes: Deliberately NOT included: Monoist Circuit-Feeder — the artifact route was
+#: notes: checked rather than assumed. Seven artifacts are in the list, but you control
+#: notes: only two to four at a time, which makes it a six-mana 4/4 flier granting about
+#: notes: +3/+0. Below rate. Withering Curse and Villainous Wrath are out for the opposite
+#: notes: reason to their inclusion elsewhere: a symmetric sweeper in a 2/2-token deck
+#: notes: kills your own board first.
+
+# Nonland
+1 Case of the Stashed Skeleton (MKM) 80
+1 Death Baron (FDN) 521
+1 Hour of Victory (DFT) 91
+1 The Sibsig Ceremony (TDM) 91
+1 Cryptcaller Chariot (DFT) 80
+1 Cursecloth Wrappings (DFT) 81
+1 Dread Summons (FDN) 604
+1 Gisa, the Hellraiser (OTJ) 89
+1 Unstoppable Slasher (DSK) 119
+3 Soul-Shackled Zombie (FDN) 70
+1 Avenger of the Fallen (TDM) 73
+1 Deathless Pilot (DFT) 82
+1 Sidisi, Regent of the Mire (TDM) 92
+1 Ninja Teen (TMT) 67
+1 Patchwork Banner (BLB) 247
+1 Adaptive Automaton (FDN) 723
+1 Chronicle of Victory (ECL) 253
+1 Monument to Endurance (DFT) 237
+1 Macabre Waltz (FDN) 177
+1 Red Room Recruit (MSH) 110
+1 Ral Zarek, Guest Lecturer (SOS) 97
+1 Deadly Precision (TLA) 95
+1 Eaten Alive (FDN) 172
+1 Stomped by the Foot (TMT) 82
+1 Feed the Swarm (SOA) 29
+1 Hero's Downfall (FDN) 175
+1 Withering Torment (DSK) 124
+1 Demonic Counsel (DSK) 92
+1 The Final Days (FIN) 101
+1 Liliana, Dreadhorde General (FDN) 176
+1 Massacre Wurm (FDN) 714
+1 Blasphemous Edict (FDN) 57
+1 White Lotus Tile (TLA) 262
+1 Abyssal Harvester (FDN) 54
+
+# Lands
+24 Swamp (MSH) 291

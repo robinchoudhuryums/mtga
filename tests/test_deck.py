@@ -2537,3 +2537,125 @@ class TestDeckStateAxis:
     def test_a_card_with_no_deck_state_axis_returns_none(self):
         assert deck._deck_state_axis("Destroy target creature.") is None
         assert deck._deck_state_axis("") is None
+
+
+class TestCrossModuleDeckCallers:
+    """`build_dashboard.py` calls into `deck.py`'s internals, and NOTHING exercised that
+    seam. When `_castability` went from a 3-tuple to a 4-tuple for the `#: uncastable-ok:`
+    header, every caller inside deck.py was found by grep and updated — and the dashboard's
+    was missed, because the grep was scoped to one file. `check_all` does not build the
+    dashboard, `tests/test_cli.py` only asserts `--help` exits 0, and the gates were green
+    the whole time. It broke on the first real `build_dashboard.py` run, one deck later.
+
+    This runs the actual function rather than asserting on the call SHAPE, so it survives
+    a future signature change instead of needing to be rewritten alongside one."""
+
+    def test_dashboard_deck_viz_runs_against_a_real_deck(self):
+        import build_dashboard as bd
+        d = deck.discover_decks()[0]
+        meta, cards = deck.parse_deck_file(d["path"])
+        viz = bd.deck_viz(meta, cards, deck.load_card_data(), deck.load_mana(),
+                          deck.load_keywords(), *deck.load_collection()[:2])
+        assert isinstance(viz, dict) and viz
+
+    def test_dashboard_honours_the_uncastable_ok_header(self, tmp_path):
+        """The exemption must reach the dashboard too, or a deck reads BLOCKED there and
+        READY in `preflight` — the two surfaces disagreeing is the bug class this repo
+        keeps rediscovering."""
+        import build_dashboard as bd
+        p = tmp_path / "d.txt"
+        p.write_text("#: name: T\n#: colors: B\n#: uncastable-ok: Cosmic Spider-Man\n"
+                     "1 Cosmic Spider-Man (SPM) 175\n1 Swamp (MSH) 291\n")
+        meta, cards = deck.parse_deck_file(str(p))
+        viz = bd.deck_viz(meta, cards, deck.load_card_data(), deck.load_mana(),
+                          deck.load_keywords(), *deck.load_collection()[:2])
+        assert not viz.get("uncastable"), viz.get("uncastable")
+
+
+class TestOwnershipIsNotARankingTerm:
+    """The owner's standing rule: build the OPTIMAL list, do not gate a card on whether it
+    is owned. Two places in the tooling ranked on ownership rather than merit —
+    `suggest`'s sort tiebreak ("owned as a tiebreaker so quick adds float up") and
+    `tier --to`, which printed owned fillers first in their own capped section so a better
+    craft filler sat below six owned ones. Ownership data here is hand-maintained and goes
+    stale between updates, so those tiebreaks ranked on information that may be weeks old.
+    Ownership is still SHOWN on every row; it is a note, not a preference."""
+
+    def test_suggest_sort_key_has_no_ownership_term(self):
+        import inspect
+        src = inspect.getsource(deck.suggest_scored)
+        sort_lines = [l for l in src.splitlines() if "suggestions.sort" in l]
+        assert sort_lines, "suggest's sort disappeared — re-point this test"
+        assert not any("owned" in l for l in sort_lines), sort_lines
+
+    def test_the_owned_unowned_FILTERS_still_work(self):
+        """The filters are the user asking a scoped question and must survive — only the
+        implicit ranking preference was removed."""
+        import inspect
+        src = inspect.getsource(deck.suggest_scored)
+        assert "if unowned:" in src and "owned_of" in src
+
+    def test_tier_to_merges_owned_and_craft_into_one_ordering(self):
+        import inspect
+        src = inspect.getsource(deck.cmd_tier)
+        assert "merged.sort" in src, "the two filler lists were un-merged"
+        assert "ownership is a note" in src
+
+
+class TestGraveyardTypeGates:
+    """`targets` knew MV caps, sacrifice costs and the permanent-count threshold, and
+    nothing about CARD-TYPE thresholds in the graveyard. Found by running it against deck
+    54 — a Lesson deck built entirely on "three or more Lesson cards in your graveyard"
+    and "the number of Lesson cards in your graveyard" — and getting "no gated effects
+    detected" on a list with ten of them."""
+
+    CD = {"payoff": {"name": "Payoff", "type": "Creature — Human",
+                     "text": "This creature gets +1/+1 as long as there's a Lesson card "
+                             "in your graveyard.", "colors": "U"},
+          "scaler": {"name": "Scaler", "type": "Instant — Lesson",
+                     "text": "Scaler deals damage equal to 2 plus the number of Lesson "
+                             "cards in your graveyard.", "colors": "R"},
+          "gate3": {"name": "Gate3", "type": "Creature — Serpent",
+                    "text": "If there are three or more Lesson cards in your graveyard, "
+                            "you may cast this spell as though it had flash.", "colors": "U"},
+          "alesson": {"name": "ALesson", "type": "Sorcery — Lesson", "text": "Draw a card.",
+                      "colors": "G"},
+          "plain": {"name": "Plain", "type": "Instant", "text": "Draw a card.", "colors": "G"}}
+    MANA = {k: ("{1}", "1") for k in CD}
+
+    def _rows(self):
+        cards = [(1, n, "", "") for n in ("Payoff", "Scaler", "Gate3", "ALesson", "Plain")]
+        return deck.target_counts(cards, self.CD, self.MANA)
+
+    def test_a_type_threshold_is_detected_and_counted(self):
+        rows = [r for r in self._rows() if r[0] == "Gate3"]
+        assert rows, "the 'N or more <type> cards in your graveyard' gate was not detected"
+        # Only ALesson and Scaler carry the Lesson subtype; Gate3 excludes itself.
+        assert rows[0][2] == 2, rows
+
+    def test_a_word_number_is_parsed_and_shown_as_a_digit(self):
+        label = [r[1] for r in self._rows() if r[0] == "Gate3"][0]
+        assert "needs 3" in label, label
+
+    def test_the_bare_number_of_form_is_detected(self):
+        rows = [r for r in self._rows() if r[0] == "Scaler"]
+        assert rows and "Lesson cards in the yard" in rows[0][1]
+        assert rows[0][2] == 1          # ALesson only; Scaler excludes itself
+
+    def test_the_there_is_a_card_form_is_detected(self):
+        rows = [r for r in self._rows() if r[0] == "Payoff"]
+        assert rows and rows[0][2] == 2, rows
+
+    def test_permanent_is_left_to_its_own_rule_and_not_double_reported(self):
+        """`permanent` has a dedicated gate; the type rule excludes it so one clause
+        cannot produce two rows saying the same thing."""
+        cd = dict(self.CD)
+        cd["descend"] = {"name": "Descend", "type": "Creature — Horror",
+                         "text": "Whenever you draw a card, if there are eight or more "
+                                 "permanent cards in your graveyard, gain 1 life.",
+                         "colors": "B"}
+        mana = dict(self.MANA, descend=("{1}", "1"))
+        cards = [(1, v["name"], "", "") for v in cd.values()]
+        rows = [r for r in deck.target_counts(cards, cd, mana) if r[0] == "Descend"]
+        assert len(rows) == 1, rows
+        assert "permanent cards" in rows[0][1]

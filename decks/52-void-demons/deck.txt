@@ -2,30 +2,50 @@
 #: format: Standard
 #: colors: B
 #: plan: midrange
-#: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (7 craft targets, zero games).
-#: tier: Deliberately one band BELOW the measurable floor, which reads A on interaction 9
-#: tier: plus card advantage 3 at a 2.83 curve. Against the rubric an A needs four things
+#: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (9 craft targets, zero games).
+#: tier: Deliberately one band BELOW the measurable floor, which reads A on interaction 7
+#: tier: plus card advantage 3 at a 3.31 curve. Against the rubric an A needs four things
 #: tier: and this list fails the fourth:
-#: tier:   A-FLOOR — yes. Interaction 9 clears the threshold of five, sum 12 clears seven.
+#: tier:   A-FLOOR — yes. Interaction 7 clears the threshold of five, sum 10 clears seven.
 #: tier:   COHERENT ENGINE — yes. Void condition -> sac outlets -> Void payoffs, with
 #: tier:     Repartee recursion as the card-advantage engine underneath it.
-#: tier:   TIGHT CURVE — yes. 2.83 average on 20 early drops.
+#: tier:   TIGHT CURVE — NO LONGER, and this is the axis to watch. 3.31 average on 15
+#: tier:     early drops, up from 2.86 / 19 before the 2026-08 pass. Both `cuts` and
+#: tier:     `consistency` now flag it: keepable is 84.4%, and 23 lands does not improve
+#: tier:     it (82%), so the fix is cast-on-curve, not land count. Zodiark reads 46.7%
+#: tier:     on turn five — the binding constraint is drawing five LANDS, not black
+#: tier:     sources, since all 24 lands make black. The next change here should LOWER
+#: tier:     the curve, not add another good five-drop.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and there are three that COMPOUND. Card
-#: tier:     advantage is 3 and did not move when Villainous Wrath was traded for Pull
-#: tier:     from the Grave, so the thin axis is real and not a classifier artifact.
-#: tier:     Interaction is 8-of-9 SORCERY-speed, so a deck this reactive cannot answer
-#: tier:     anything on their turn. And exactly ONE piece answers a noncreature
-#: tier:     permanent — an opposing enchantment or planeswalker is close to unanswerable.
-#: tier:     A grindy midrange deck with thin draw, no instant-speed interaction and no
-#: tier:     noncreature answer loses the long game it is built to win.
+#: tier:     advantage has read 3 across three separate tuning rounds, so the thin axis
+#: tier:     is real and not a one-off classifier artifact.
+#: tier:     Interaction was traded DOWN twice on purpose in 2026-08: Hero's Downfall came
+#: tier:     out for Sothera, whose edict trigger is repeatable rather than one-shot, and
+#: tier:     Vayne's Treachery was CUT for Zodiark. The count fell 9 -> 7 and instant
+#: tier:     speed is now 1-of-7, with Withering Torment the only noncreature answer. The
+#: tier:     7 also under-reads: Zodiark's ETB half-edict is interaction the classifier
+#: tier:     does not tag, and it flags the same about Liliana.
+#: tier:     Card advantage still READS 3 after the 2026-08 pass, but
+#: tier:     that number is now an under-count and the reason is documented: Baron Helmut
+#: tier:     Zemo connives on every black spell cast from hand — in a mono-black list that
+#: tier:     is a draw-and-discard every turn — and the classifier tags him Payoff/Recursion,
+#: tier:     not card advantage. Funeral Room and Susur Secundi are the same shape. So the
+#: tier:     axis moved even though the metric did not; re-measure once the classifier reads
+#: tier:     connive. Susur Secundi was the fourth card in that group and was CUT
+#: tier:     2026-08 for Hidden Necropolis — a mythic wildcard is not worth spending on a
+#: tier:     land right now, and the Necropolis is a common that still converts to a free
+#: tier:     spell late. A grindy midrange deck that does not refill
+#: tier:     loses the long game it is built to win. That is the one clear weakness; the
+#: tier:     second is softer — the Void condition is easy to meet but the deck has no
+#: tier:     way to WIN quickly if the grind stalls.
 #: tier: Re-grade after it is BUILT and played — the floor says A and the intangibles here
 #: tier: (Alpharael's halving clock, Ardyn manufacturing 5/5 Demons) are exactly what the
 #: tier: metrics cannot see. This letter is the conservative read, not a ceiling.
 #: archetype: Mono-black VOID ARISTOCRATS. The plan is to make a nonland permanent
 #: archetype: leave the battlefield EVERY turn, cheaply, and get paid for it twice —
 #: archetype: once by the aristocrat payoffs and once by the EOE Void clause, which
-#: archetype: upgrades seven cards the moment the condition is met (Tragic Trajectory
-#: archetype: -2/-2 becomes -10/-10, Temporal Intervention costs {2} less, Decode
+#: archetype: upgrades six cards the moment the condition is met (Tragic Trajectory
+#: archetype: -2/-2 becomes -10/-10, Decode
 #: archetype: Transmissions drains, Hymn draws a second card, Hylderblade re-attaches
 #: archetype: free, Elegy Acolyte makes a Robot, Alpharael halves their life). The
 #: archetype: enablers are deliberately COSTS, not spells: Deadly Precision and Embrace
@@ -36,33 +56,63 @@
 #: archetype: RECURSION IS THE GRIND, NOT A MANA CHEAT. Forum Necroscribe's Repartee
 #: archetype: returns a creature to the battlefield every time you cast one of the six
 #: archetype: cheap instants/sorceries that TARGET a creature — that engine, not a
-#: archetype: reanimated fatty, is the card advantage. Sidisi and Xu-Ifit repeat it;
+#: archetype: reanimated fatty, is the card advantage. Sidisi repeats it;
 #: archetype: Lively Dirge's {1} mode tutors the target straight into the yard.
+#: archetype: THE 2026-08 PASS added a second value layer on top of that grind: Sothera
+#: archetype: turns every one of your own creature deaths into an opposing EDICT, Funeral
+#: archetype: Room drains on the same trigger and unlocks into a mass reanimation, Zemo
+#: archetype: connives on every black spell, Hidden Necropolis is a LAND that cashes in
+#: archetype: for a free MV-4-or-less spell once the game goes long, and Rottenmouth
+#: archetype: Viper pays you for the sacrifices the deck was making anyway.
+#: archetype: VINCENT VALENTINE IS THE RENEWABLE BODY that layer wanted. Attack, transform
+#: archetype: on the trigger, sacrifice Galian Beast in main two, and it returns to the
+#: archetype: battlefield front face up — a free sacrifice every turn cycle at no card
+#: archetype: cost, which fires Sothera's edict, Liliana's draw, Funeral Room, Susurian
+#: archetype: Voidborn, Lightless Evangel and the Void condition all at once. Zodiark is
+#: archetype: the same idea held still: indestructible, it grows on every sacrifice by
+#: archetype: EITHER player, and its five black pips are a third of Zemo's Boast threshold
+#: archetype: on their own (the yard needs ~11 black cards to reach 15 pips, or ~8 with
+#: archetype: Zodiark among them).
+#: archetype: The Darkness Crystal is the one that reads as anti-synergy and is not: it
+#: archetype: REDIRECTS a dying opposing creature into an exile only YOU can reach, so
+#: archetype: Massacre Wurm's -2/-2 now banks their whole board for later reanimation at
+#: archetype: +1/+1, +1/+1. It costs the Wurm's drain trigger, which is the trade.
 #: archetype: DISTINCTIVENESS vs deck 11 (mono-black villains, graveyard/sacrifice):
 #: archetype: the Void/warp package is the whole difference, so it is built to real
-#: archetype: density — 7 Void cards + 2 warp + 6 dedicated enablers. Strip that and
+#: archetype: density — 6 Void cards + 2 warp + 6 dedicated enablers. Strip that and
 #: archetype: this is deck 11. The Demons are MANUFACTURED, not drafted: Ardyn turns
 #: archetype: any graveyard into a 5/5 Demon each combat and gives them menace,
 #: archetype: lifelink and haste. Demon is not a tribe here (the pool has ~1 real
 #: archetype: payoff) — it is what the engine produces.
 #: protect: Forum Necroscribe; Alpharael, Stonechosen; Ardyn, the Usurper; Joo Dee, One of Many; Timeline Culler
-#: notes: WIP / aspirational — 7 craft targets (5 uncommon, 2 rare), no mythics.
+#: notes: WIP / aspirational — 10 craft targets: Tragic Trajectory, Lightless Evangel,
+#: notes: Withering Torment, Susurian Voidborn, Elegy Acolyte, Hidden Necropolis (C),
+#: notes: The Darkness Crystal (R), Zodiark, Umbral God (R),
+#: notes: Vincent Valentine // Galian Beast (R), Sothera, the Supervoid (M).
 #: notes: Built from a ~116-card concept pile; the rejected pile is screened in Stage 5.
+#: notes: Baron Helmut Zemo was CUT from the exclusion list and ADDED 2026-08. The old
+#: notes: note called his Boast "anti-synergy with the yard", which misread the card twice:
+#: notes: Boast COPIES the exiled cards and casts three of them free, and his main mode is
+#: notes: the connive on every black spell, which nothing in the old note mentioned.
 #: notes: Deliberately NOT included and why: Bringer of the Last Gift (symmetric, hands
 #: notes: a graveyard deck its own army back); Cryptcaller Chariot / Monument to
 #: notes: Endurance (both trigger on DISCARD, which this build does not have);
-#: notes: Baron Helmut Zemo (Boast exiles ~10 black cards — anti-synergy with the yard);
 #: notes: Rise of the Dark Realms / Behold the Sinister Six! (mass reanimation needs a
 #: notes: top end this list does not run); Mister Negative (gold WB, would widen colors).
+#: notes: Vincent Valentine was ADDED 2026-08 after being wrongly excluded here as
+#: notes: "mutually exclusive with The Darkness Crystal". The Crystal does switch off its
+#: notes: +1/+1 growth trigger, but that is the minor half — the card is played for the
+#: notes: Galian Beast self-return loop, which the Crystal never touches because it only
+#: notes: reads creatures an OPPONENT controls.
 
 # Nonland
-1 Moonshadow (ECL) 110
+1 Rottenmouth Viper (BLB) 107
 1 Deadly Precision (TLA) 95
 1 Embrace Oblivion (EOE) 98
 1 Eaten Alive (FDN) 172
 1 Hylderblade (EOE) 106
 1 Tragic Trajectory (EOE) 122
-1 Lecturing Scornmage (SOS) 87
+1 Funeral Room // Awakening Hall (DSK) 100
 1 Joo Dee, One of Many (TLA) 105
 1 Treasure Dredger (OTJ) 110
 1 Sidisi, Regent of the Mire (TDM) 92
@@ -73,20 +123,20 @@
 1 Hymn of the Faller (EOE) 107
 1 Vampire Gourmand (FDN) 74
 1 Lightless Evangel (EOE) 109
-1 Fake Your Own Death (FDN) 174
-1 Vayne's Treachery (FIN) 124
-1 Fell (BLB) 95
-1 Xu-Ifit, Osteoharmonist (EOE) 127
-1 Withering Curse (SOS) 105
+1 Gwenom, Remorseless (SPM) 56
+1 Zodiark, Umbral God (FIN) 128
+1 Sothera, the Supervoid (EOE) 115
+1 Baron Helmut Zemo (MSH) 87
+1 Withering Torment (DSK) 124
 1 Too Evil to Stay Dead (MSH) 118
-1 Temporal Intervention (EOE) 120
+1 The Darkness Crystal (FIN) 96
 1 Decode Transmissions (EOE) 94
 1 Susurian Voidborn (EOE) 118
 1 Ultimate Green Goblin (SPM) 157
 1 Elegy Acolyte (EOE) 97
 1 Prison Break (SPM) 61
 1 Alpharael, Stonechosen (EOE) 87
-1 Pull from the Grave (SOS) 95
+1 Vincent Valentine // Galian Beast (FIN) 125
 1 Bloodthirsty Conqueror (FDN) 58
 1 Forum Necroscribe (SOS) 84
 1 Massacre Wurm (FDN) 714
@@ -95,4 +145,5 @@
 
 # Lands
 1 Realm of Koh (TLA) 276
-23 Swamp (MSH) 291
+1 Hidden Necropolis (LCI) 275
+22 Swamp (MSH) 291
