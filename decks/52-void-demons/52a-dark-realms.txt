@@ -16,10 +16,15 @@
 #: archetype: THREE nonland permanents, so once it is on the battlefield it tends to stay.
 #: archetype: Rune-Scarred Demon fetches any card in the deck on arrival — reanimate it and
 #: archetype: it finds Rise of the Dark Realms — and it is a Demon, so Ardyn's lord line
-#: archetype: reads it. Bringer of the Last Gift is the exception
-#: archetype: that proves the rule: its wipe-and-rebuild fires only if HARD-CAST, and this
-#: archetype: is the deck that wins that exchange, because nine enablers have been stuffing
-#: archetype: your yard while the opponent's stays thin.
+#: archetype: reads it. Armaggon is the newest of them and the cleanest fit: a 9/6 whose
+#: archetype: ETB destroys up to THREE creatures, and unlike a hard-cast wipe it fires off
+#: archetype: any reanimation spell, so {3}{B} buys a bomb and a sweeper at once.
+#: archetype: EVERY BOMB HERE MUST WORK WHEN CHEATED, and that is the test Bringer of the
+#: archetype: Last Gift failed — it was CUT 2026-08 because its wipe-and-rebuild reads
+#: archetype: "if you CAST it", so reanimating it returns a vanilla 6/6 flier. It was the
+#: archetype: one card in the list the deck's whole plan could not cheat, at eight mana,
+#: archetype: in the slowest deck on the branch. Apply that test to every future top-end
+#: archetype: candidate before its power level.
 #: archetype: THE ENABLER HALF, which the parent has almost none of: nine cards that put
 #: archetype: a bomb in the yard. Lively Dirge's {1} mode TUTORS one straight there;
 #: archetype: Commune with Evil bins three with selection; Quag Feast mills while doing
@@ -55,12 +60,12 @@
 #: tier:     bombs, and the ratio is deliberate: a reanimator needs more ways to fill the
 #: tier:     yard than things to put in it.
 #: tier:   TIGHT CURVE — NO, and this is the honest reason it is not an A. Average nonland
-#: tier:     MV 4.31 on only 9 early drops, and that average UNDER-reads because Stargaze
-#: tier:     books as MV 1 (X counts as 0). It is the slowest list on this branch, and the
-#: tier:     2026-08 pass made it SLOWER, not faster: three of the four cards cut were the
-#: tier:     deck's MV-2 cards (Macabre Waltz, Eerie Gravestone, Red Room Recruit) against
-#: tier:     one MV-1 card added, so early drops fell 11 -> 9. That was a quality-for-speed
-#: tier:     trade and it should be paid back — the next change here should be CHEAP.
+#: tier:     MV 4.28 on only 10 early drops, and that average UNDER-reads because Stargaze
+#: tier:     books as MV 1 (X counts as 0). It is the slowest list on this branch. The
+#: tier:     2026-08 pass first made it SLOWER: three of the four cards cut in the opening
+#: tier:     batch were the deck's MV-2 cards (Macabre Waltz, Eerie Gravestone, Red Room
+#: tier:     Recruit) against one MV-1 card added, taking early drops 11 -> 9. Iron-Shield
+#: tier:     Elf paid one back (9 -> 10). Keep paying — the next change here should be CHEAP.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no. Card advantage moved 1 -> 2 and it still
 #: tier:     COMPOUNDS with the
 #: tier:     curve: a slow deck that does not refill loses the game where it is disrupted
@@ -75,12 +80,14 @@
 #: notes: WIP / aspirational — 3 craft targets: Rise of the Dark Realms (M), Evil
 #: notes: Reawakened (U), Commune with Evil (U). The mythic is the namesake and the only
 #: notes: expensive card in the list.
-#: notes: Bringer of the Last Gift and Forum Necroscribe were ADDED 2026-08 after being
-#: notes: cut for the wrong reason. Bringer's wipe does refuse to be cheated, but it is a
-#: notes: fine HARD-CAST haymaker here; Forum Necroscribe was held out purely to keep this
+#: notes: Forum Necroscribe was ADDED 2026-08 after being held out purely to keep this
 #: notes: list measurably distinct from its parent, which is not a card-quality argument —
 #: notes: with five cheap creature-targeting spells and a fuller yard, its Repartee returns
 #: notes: a BOMB here rather than the two-drop it returns in deck 52.
+#: notes: DO NOT CUT Iron-Shield Elf on the ranking's word. `cuts` puts it FIRST (weakest,
+#: notes: fit 2) while printing its own ⚡cost-as-upside flag two columns over: "discard
+#: notes: cost -> fills the yard". It is a free, unlimited, instant-speed discard outlet on
+#: notes: a two-drop, i.e. the deck's cheapest enabler, and the fit score cannot see that.
 #: notes: Deliberately NOT included and why: Virtue of
 #: notes: Persistence and Lich-Knights' Conquest (both mythic/rare crafts that ROTATE in
 #: notes: 2026); Bitter Triumph (discard-as-a-cost is perfectly on plan, but it rotates
@@ -104,7 +111,7 @@
 1 Ral Zarek, Guest Lecturer (SOS) 97
 1 Forum Necroscribe (SOS) 84
 1 Valgavoth, Terror Eater (DSK) 120
-1 Pull from the Grave (SOS) 95
+1 Iron-Shield Elf (ECL) 108
 1 Commune with Evil (DSK) 87
 1 Zombify (SOA) 36
 1 Grim Reaper, Lethal Legionnaire (MSH) 98
@@ -122,7 +129,7 @@
 1 Baron Helmut Zemo (MSH) 87
 1 Ardyn, the Usurper (FIN) 89
 1 Rise of the Dark Realms (FDN) 183
-1 Bringer of the Last Gift (LCI) 94
+1 Armaggon, Future Shark (TMT) 58
 1 Krang, Utrom Warlord (TMT) 175
 
 # Lands
