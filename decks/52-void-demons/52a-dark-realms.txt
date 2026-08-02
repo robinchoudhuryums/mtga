@@ -22,10 +22,15 @@
 #: archetype: your yard while the opponent's stays thin.
 #: archetype: THE ENABLER HALF, which the parent has almost none of: nine cards that put
 #: archetype: a bomb in the yard. Lively Dirge's {1} mode TUTORS one straight there;
-#: archetype: Commune with Evil bins three with selection; Quag Feast and Eerie
-#: archetype: Gravestone mill while doing their day job; Ral Zarek surveils 2 every turn
+#: archetype: Commune with Evil bins three with selection; Quag Feast mills while doing
+#: archetype: its day job; Ral Zarek surveils 2 every turn
 #: archetype: and can discard on demand; Prison Break's Mayhem lets a DISCARDED
-#: archetype: reanimation spell cast itself from the graveyard for {3}{B}.
+#: archetype: reanimation spell cast itself from the graveyard for {3}{B}; and Baron
+#: archetype: Helmut Zemo, ADDED 2026-08, connives on every black spell cast from hand —
+#: archetype: a free discard outlet every turn, which is the one shape the other eight
+#: archetype: lacked. Ninja Teen is the payoff half of the same idea: its level 3 gives
+#: archetype: every creature card in your graveyard sneak {3}{B}, so the yard stops being
+#: archetype: a staging area and becomes a second hand.
 #: archetype: EVERY GRAVEYARD IS THE CARD POOL, and this is the axis that separates the
 #: archetype: deck from every other reanimator on the roster. Six cards read an OPPOSING
 #: archetype: yard: Rise of the Dark Realms takes all of them at once, The Rise of Sozin
@@ -43,19 +48,26 @@
 #: archetype: vs the parent 52: zero Void cards, zero warp, no sacrifice-outlet layer, and
 #: archetype: a curve a full mana value higher.
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (3 craft targets, zero games).
-#: tier: One band BELOW the measurable floor, which reads A on interaction 10 plus card
-#: tier: advantage 1. Against the rubric an A needs four things and this list fails two:
-#: tier:   A-FLOOR — yes. Interaction 10 clears five; the sum of 11 clears seven.
+#: tier: One band BELOW the measurable floor, which reads A on interaction 9 plus card
+#: tier: advantage 2. Against the rubric an A needs four things and this list fails two:
+#: tier:   A-FLOOR — yes. Interaction 9 clears five; the sum of 11 clears seven.
 #: tier:   COHERENT ENGINE — yes. Eight enablers feed ten reanimation effects feed seven
 #: tier:     bombs, and the ratio is deliberate: a reanimator needs more ways to fill the
 #: tier:     yard than things to put in it.
 #: tier:   TIGHT CURVE — NO, and this is the honest reason it is not an A. Average nonland
-#: tier:     MV 4.28 on only 11 early drops, and that average UNDER-reads because Stargaze
-#: tier:     books as MV 1 (X counts as 0). It is the slowest list on this branch.
-#: tier:   AT MOST ONE CLEAR WEAKNESS — no. Card advantage is 1, and it COMPOUNDS with the
+#: tier:     MV 4.31 on only 9 early drops, and that average UNDER-reads because Stargaze
+#: tier:     books as MV 1 (X counts as 0). It is the slowest list on this branch, and the
+#: tier:     2026-08 pass made it SLOWER, not faster: three of the four cards cut were the
+#: tier:     deck's MV-2 cards (Macabre Waltz, Eerie Gravestone, Red Room Recruit) against
+#: tier:     one MV-1 card added, so early drops fell 11 -> 9. That was a quality-for-speed
+#: tier:     trade and it should be paid back — the next change here should be CHEAP.
+#: tier:   AT MOST ONE CLEAR WEAKNESS — no. Card advantage moved 1 -> 2 and it still
+#: tier:     COMPOUNDS with the
 #: tier:     curve: a slow deck that does not refill loses the game where it is disrupted
 #: tier:     once. Add the singleton problem — one Rise of the Dark Realms, one Lively
 #: tier:     Dirge to tutor with — and the draws where the halves do not meet are real.
+#: tier:     The 2 also under-reads: Zemo's connive is a draw-and-discard the classifier
+#: tier:     tags Payoff/Recursion, exactly as in deck 52 (K-12).
 #: tier: The floor cannot see that Krang reanimated on turn four is a hasty 9/9 with
 #: tier: flying, trample and indestructible, which ends games the metrics have no term
 #: tier: for. Re-grade after it is built and played.
@@ -82,10 +94,10 @@
 1 The Soul Stone (SPM) 66
 1 Sidisi, Regent of the Mire (TDM) 92
 1 Lively Dirge (OTJ) 93
-1 Macabre Waltz (FDN) 177
-1 Red Room Recruit (MSH) 110
+1 Ninja Teen (TMT) 67
+1 Valgavoth's Faithful (DSK) 121
 1 Quag Feast (DFT) 100
-1 Eerie Gravestone (SPM) 163
+1 Unholy Annex // Ritual Chamber (DSK) 118
 1 Come Back Wrong (DSK) 86
 1 Grave Researcher (SOS) 85
 1 Too Evil to Stay Dead (MSH) 118
@@ -107,7 +119,7 @@
 1 The Rise of Sozin (TLA) 117
 1 Rune-Scarred Demon (FDN) 184
 1 Behold the Sinister Six! (SPM) 51
-1 Withering Torment (DSK) 124
+1 Baron Helmut Zemo (MSH) 87
 1 Ardyn, the Usurper (FIN) 89
 1 Rise of the Dark Realms (FDN) 183
 1 Bringer of the Last Gift (LCI) 94
