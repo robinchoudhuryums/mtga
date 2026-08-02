@@ -118,6 +118,10 @@ At the beginning of your end step, if a player controls no creatures, sacrifice 
 {T}: Add {B}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
 12+ | {1}{B}, {T}, Pay 2 life, Sacrifice a creature: Draw cards equal to the sacrificed creature's power. Activate only as a sorcery.",B,Planet; pay life; card draw; sacrifice; mana; station; counters; artifacts,EOE,259,Mythic,,dropped from deck 52 2026-08 (mythic wildcard deferred); still a candidate for 52a,7.0,seed
+Archenemy's Charm,Instant,"Choose one —
+• Exile target creature or planeswalker.
+• Return one or two target creature and/or planeswalker cards from your graveyard to your hand.
+• Put two +1/+1 counters on target creature you control. It gains lifelink until end of turn.",B,counters; graveyard; lifegain; removal,EOE,88,Rare,52a,,6.0,seed
 Icetill Explorer,Creature — Insect Scout,"You may play an additional land on each of your turns.
 You may play lands from your graveyard.
 Landfall — Whenever a land you control enters, mill a card.",G,Insect; Scout; graveyard; mill; landfall; lands; ramp,EOE,192,Rare,50a,,7.0,hand
