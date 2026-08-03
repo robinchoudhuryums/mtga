@@ -14,18 +14,26 @@
 #: archetype: indestructible AND HASTE, so reanimating him is not just cheap, it attacks
 #: archetype: the turn it lands. Valgavoth is a 9/9 flying lifelink body whose ward costs
 #: archetype: THREE nonland permanents, so once it is on the battlefield it tends to stay.
-#: archetype: Rune-Scarred Demon fetches any card in the deck on arrival — reanimate it and
-#: archetype: it finds Rise of the Dark Realms — and it is a Demon, so Ardyn's lord line
-#: archetype: reads it. Bringer of the Last Gift is the exception
-#: archetype: that proves the rule: its wipe-and-rebuild fires only if HARD-CAST, and this
-#: archetype: is the deck that wins that exchange, because nine enablers have been stuffing
-#: archetype: your yard while the opponent's stays thin.
+#: archetype: Armaggon is the newest of them and the cleanest fit: a 9/6 whose
+#: archetype: ETB destroys up to THREE creatures, and unlike a hard-cast wipe it fires off
+#: archetype: any reanimation spell, so {3}{B} buys a bomb and a sweeper at once.
+#: archetype: EVERY BOMB HERE MUST WORK WHEN CHEATED, and that is the test Bringer of the
+#: archetype: Last Gift failed — it was CUT 2026-08 because its wipe-and-rebuild reads
+#: archetype: "if you CAST it", so reanimating it returns a vanilla 6/6 flier. It was the
+#: archetype: one card in the list the deck's whole plan could not cheat, at eight mana,
+#: archetype: in the slowest deck on the branch. Apply that test to every future top-end
+#: archetype: candidate before its power level.
 #: archetype: THE ENABLER HALF, which the parent has almost none of: nine cards that put
 #: archetype: a bomb in the yard. Lively Dirge's {1} mode TUTORS one straight there;
-#: archetype: Commune with Evil bins three with selection; Quag Feast and Eerie
-#: archetype: Gravestone mill while doing their day job; Ral Zarek surveils 2 every turn
+#: archetype: Commune with Evil bins three with selection; Quag Feast mills while doing
+#: archetype: its day job; Ral Zarek surveils 2 every turn
 #: archetype: and can discard on demand; Prison Break's Mayhem lets a DISCARDED
-#: archetype: reanimation spell cast itself from the graveyard for {3}{B}.
+#: archetype: reanimation spell cast itself from the graveyard for {3}{B}; and Baron
+#: archetype: Helmut Zemo, ADDED 2026-08, connives on every black spell cast from hand —
+#: archetype: a free discard outlet every turn, which is the one shape the other eight
+#: archetype: lacked. Ninja Teen is the payoff half of the same idea: its level 3 gives
+#: archetype: every creature card in your graveyard sneak {3}{B}, so the yard stops being
+#: archetype: a staging area and becomes a second hand.
 #: archetype: EVERY GRAVEYARD IS THE CARD POOL, and this is the axis that separates the
 #: archetype: deck from every other reanimator on the roster. Six cards read an OPPOSING
 #: archetype: yard: Rise of the Dark Realms takes all of them at once, The Rise of Sozin
@@ -43,32 +51,68 @@
 #: archetype: vs the parent 52: zero Void cards, zero warp, no sacrifice-outlet layer, and
 #: archetype: a curve a full mana value higher.
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (3 craft targets, zero games).
-#: tier: One band BELOW the measurable floor, which reads A on interaction 10 plus card
-#: tier: advantage 1. Against the rubric an A needs four things and this list fails two:
-#: tier:   A-FLOOR — yes. Interaction 10 clears five; the sum of 11 clears seven.
-#: tier:   COHERENT ENGINE — yes. Eight enablers feed ten reanimation effects feed seven
+#: tier: One band BELOW the measurable floor, which reads A on interaction 12 plus card
+#: tier: advantage 2. Against the rubric an A needs four things and this list fails two:
+#: tier:   A-FLOOR — yes. Interaction 12 clears five; the sum of 14 clears seven.
+#: tier:   COHERENT ENGINE — yes. Eight enablers feed SEVEN reanimation effects feed six
 #: tier:     bombs, and the ratio is deliberate: a reanimator needs more ways to fill the
-#: tier:     yard than things to put in it.
+#: tier:     yard than things to put in it. Reanimation was trimmed from ten to seven over
+#: tier:     the 2026-08 pass — the redundant copies were spent on interaction, which is
+#: tier:     where a singleton reanimator actually runs short.
 #: tier:   TIGHT CURVE — NO, and this is the honest reason it is not an A. Average nonland
-#: tier:     MV 4.28 on only 11 early drops, and that average UNDER-reads because Stargaze
-#: tier:     books as MV 1 (X counts as 0). It is the slowest list on this branch.
-#: tier:   AT MOST ONE CLEAR WEAKNESS — no. Card advantage is 1, and it COMPOUNDS with the
+#: tier:     MV 4.22 on 9 early drops, and that average UNDER-reads because Stargaze
+#: tier:     books as MV 1 (X counts as 0). It is still the slowest list on this branch,
+#: tier:     and 9 early drops is the number to watch: across fifteen swaps it has run
+#: tier:     11 -> 9 -> 10 -> 9 -> 11 -> 10 -> 9 while avg MV moved 4.28 -> 4.42 -> 4.22.
+#: tier:     Every repair has come from CHEAP cards (Maximum Overdrive, Iron-Shield Elf)
+#: tier:     replacing expensive redundant ones, and every relapse from swapping a two-drop
+#: tier:     for a three. Keep the discipline: absorb a bomb only by shedding a mid-band
+#: tier:     card, and prefer an MV-2 add when the axis is level.
+#: tier:   AT MOST ONE CLEAR WEAKNESS — no. Card advantage moved 1 -> 2 and it still
+#: tier:     COMPOUNDS with the
 #: tier:     curve: a slow deck that does not refill loses the game where it is disrupted
 #: tier:     once. Add the singleton problem — one Rise of the Dark Realms, one Lively
 #: tier:     Dirge to tutor with — and the draws where the halves do not meet are real.
+#: tier:     The 2 also under-reads: Zemo's connive is a draw-and-discard the classifier
+#: tier:     tags Payoff/Recursion, exactly as in deck 52 (K-12).
+#: tier:   THE INTERACTION PROFILE IS NOW HEALTHY and the numbers can be trusted: 12
+#: tier:     pieces, 3 instant-speed, 3 answering a noncreature permanent. Two classifier
+#: tier:     bugs found here in 2026-08 were fixed rather than annotated — the cue list
+#: tier:     matched "creature or planeswalker" but not "creature or enchantment", and no
+#: tier:     pattern read the split "choose target X … destroy the chosen permanent"
+#: tier:     template, which left Quag Feast with ZERO roles and this deck's interaction
+#: tier:     one low. Withering Torment replaced Feed the Swarm to buy instant speed on
+#: tier:     the same effect; the two are virtual copies (G-46), so keeping both would
+#: tier:     also have been correct.
 #: tier: The floor cannot see that Krang reanimated on turn four is a hasty 9/9 with
 #: tier: flying, trample and indestructible, which ends games the metrics have no term
 #: tier: for. Re-grade after it is built and played.
 #: protect: Rise of the Dark Realms; Krang, Utrom Warlord; Behold the Sinister Six!; Lively Dirge; The Rise of Sozin
-#: notes: WIP / aspirational — 3 craft targets: Rise of the Dark Realms (M), Evil
-#: notes: Reawakened (U), Commune with Evil (U). The mythic is the namesake and the only
-#: notes: expensive card in the list.
-#: notes: Bringer of the Last Gift and Forum Necroscribe were ADDED 2026-08 after being
-#: notes: cut for the wrong reason. Bringer's wipe does refuse to be cheated, but it is a
-#: notes: fine HARD-CAST haymaker here; Forum Necroscribe was held out purely to keep this
+#: notes: WIP / aspirational — 10 craft targets after the 2026-08 pass: Rise of the Dark
+#: notes: Realms (M), Commune with Evil (U), Come Back Wrong (R), Unholy Annex (R),
+#: notes: Valgavoth's Faithful (U), Iron-Shield Elf (U), Zodiark (R), Vincent Valentine
+#: notes: (R), Maximum Overdrive (C), Emeritus of Woe (owned) — see `deck.py check 52a`.
+#: notes: DEMON COUNT IS 2 (Valgavoth, Abyssal Harvester) plus Ardyn's tokens, back up
+#: notes: from the 1 it fell to when Rune-Scarred Demon and Bringer of the Last Gift were
+#: notes: cut. Unholy Annex's "if you control a Demon" clause reads that number — without
+#: notes: one it costs 2 life a turn instead of draining 2. Unlocking Ritual Chamber for
+#: notes: {3}{B}{B} makes a permanent 6/6 Demon if the count slips again.
+#: notes: SIDISI WAS CUT 2026-08 on arithmetic, not feel. Its ability returns a creature of
+#: notes: mana value EXACTLY X+1 for a sacrifice at X, and this deck's creature curve has
+#: notes: a HOLE AT 7 — so Ardyn and Armaggon (MV 8) were unreachable by it at all, and
+#: notes: Krang and Valgavoth (MV 9) were reachable only by sacrificing Ardyn or Armaggon,
+#: notes: i.e. trading one bomb for another. Every genuinely usable rung sat in the 1-6
+#: notes: range, where it upgraded a small creature into a slightly bigger one. Note
+#: notes: `deck.py targets` scored this gate as "creature cards to return: 16" — it reads
+#: notes: the TARGET side only and cannot see that the gate is a PAIRED constraint.
+#: notes: Forum Necroscribe was ADDED 2026-08 after being held out purely to keep this
 #: notes: list measurably distinct from its parent, which is not a card-quality argument —
 #: notes: with five cheap creature-targeting spells and a fuller yard, its Repartee returns
 #: notes: a BOMB here rather than the two-drop it returns in deck 52.
+#: notes: DO NOT CUT Iron-Shield Elf on the ranking's word. `cuts` puts it FIRST (weakest,
+#: notes: fit 2) while printing its own ⚡cost-as-upside flag two columns over: "discard
+#: notes: cost -> fills the yard". It is a free, unlimited, instant-speed discard outlet on
+#: notes: a two-drop, i.e. the deck's cheapest enabler, and the fit score cannot see that.
 #: notes: Deliberately NOT included and why: Virtue of
 #: notes: Persistence and Lich-Knights' Conquest (both mythic/rare crafts that ROTATE in
 #: notes: 2026); Bitter Triumph (discard-as-a-cost is perfectly on plan, but it rotates
@@ -78,40 +122,41 @@
 # Nonland
 1 Deadly Precision (TLA) 95
 1 Embrace Oblivion (EOE) 98
-1 Eaten Alive (FDN) 172
+1 Vincent Valentine // Galian Beast (FIN) 125
 1 The Soul Stone (SPM) 66
-1 Sidisi, Regent of the Mire (TDM) 92
+1 Abyssal Harvester (FDN) 54
 1 Lively Dirge (OTJ) 93
-1 Macabre Waltz (FDN) 177
-1 Red Room Recruit (MSH) 110
+1 Ninja Teen (TMT) 67
+1 Valgavoth's Faithful (DSK) 121
 1 Quag Feast (DFT) 100
-1 Eerie Gravestone (SPM) 163
+1 Unholy Annex // Ritual Chamber (DSK) 118
 1 Come Back Wrong (DSK) 86
 1 Grave Researcher (SOS) 85
-1 Too Evil to Stay Dead (MSH) 118
+1 Zodiark, Umbral God (FIN) 128
 1 Ral Zarek, Guest Lecturer (SOS) 97
 1 Forum Necroscribe (SOS) 84
 1 Valgavoth, Terror Eater (DSK) 120
-1 Pull from the Grave (SOS) 95
+1 Iron-Shield Elf (ECL) 108
 1 Commune with Evil (DSK) 87
-1 Zombify (SOA) 36
-1 Grim Reaper, Lethal Legionnaire (MSH) 98
+1 Withering Torment (DSK) 124
+1 Archenemy's Charm (EOE) 88
 1 Stargaze (SOA) 34
 1 Prison Break (SPM) 61
-1 Evil Reawakened (FIN) 98
+1 Maximum Overdrive (DFT) 96
 1 M.O.D.O.K. (MSH) 106
 1 Shark Shredder, Killer Clone (TMT) 73
 1 Liliana, Dreadhorde General (FDN) 176
 1 Massacre Wurm (FDN) 714
 1 Vein Ripper (MKM) 110
 1 The Rise of Sozin (TLA) 117
-1 Rune-Scarred Demon (FDN) 184
+1 Emeritus of Woe (SOS) 80
 1 Behold the Sinister Six! (SPM) 51
-1 Withering Torment (DSK) 124
+1 Baron Helmut Zemo (MSH) 87
 1 Ardyn, the Usurper (FIN) 89
 1 Rise of the Dark Realms (FDN) 183
-1 Bringer of the Last Gift (LCI) 94
+1 Armaggon, Future Shark (TMT) 58
 1 Krang, Utrom Warlord (TMT) 175
 
 # Lands
-24 Swamp (MSH) 291
+1 Realm of Koh (TLA) 276
+23 Swamp (MSH) 291

@@ -62,6 +62,7 @@ Start your engines! (If you have no speed, it starts at 1. It increases once on 
 Max speed — At the beginning of combat on your turn, target creature or Vehicle you control gains double strike until end of turn.",W,Zombie; Cat; Warrior; max speed; speed; aggro; vigilance; combat; start your engines!,DFT,24,Uncommon,36,,2.5,hand
 Reckless Velocitaur,Creature — Minotaur Pilot,"Whenever this creature saddles a Mount or crews a Vehicle during your main phase, that Mount or Vehicle gets +2/+0 and gains trample until end of turn.",R,Minotaur; Pilot; pump,DFT,144,Uncommon,48a,,2.0,seed
 Transit Mage,Creature — Human Wizard,"When this creature enters, you may search your library for an artifact card with mana value 4 or 5, reveal it, put it into your hand, then shuffle.",U,Human; Wizard; etb,DFT,70,Uncommon,51a,"Deck 51a: tutors an artifact of MV 4 or 5 - exactly The Water Crystal (4) and Gilded Lotus (5), the only two worth finding. Came in for the SECOND Water Crystal: one copy plus a tutor is the same two outs as two copies, but a tutor is never the dead draw a second LEGENDARY copy becomes, and it leaves a 2/2 behind.",60,hand
+Maximum Overdrive,Instant,Put a +1/+1 counter on target creature. It gains deathtouch and indestructible until end of turn.,B,counters,DFT,89,Common,52a,,1.5,seed
 Mirror Room // Fractured Realm,Enchantment — Room // Enchantment — Room,"When you unlock this door, create a token that's a copy of target creature you control, except it's a Reflection in addition to its other creature types.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // If a triggered ability of a permanent you control triggers, that ability triggers an additional time.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,Room; tokens,DSK,67,Mythic,51,,8.0,hand
@@ -82,6 +83,9 @@ The Mindskinner,Legendary Enchantment Creature — Nightmare,"The Mindskinner ca
 If a source you control would deal damage to an opponent, prevent that damage and each opponent mills that many cards.",U,Nightmare; mill; graveyard,DSK,66,Rare,51a,"Deck 51a: converts every damage source you control into mill, +4 each with the Water Crystal. Pure upside HERE because the deck has no combat plan to lose - it would be a trap in parent 51, which wins with Krang and the Terrors.",72,hand
 Twitching Doll,Artifact Creature — Spider Toy,"{T}: Add one mana of any color. Put a nest counter on this creature.
 {T}, Sacrifice this creature: Create a 2/2 green Spider creature token with reach for each counter on this creature. Activate only as a sorcery.",G,Spider; Toy; counters; sacrifice; tokens; mana,DSK,201,Rare,50,,3.0,seed
+Unholy Annex // Ritual Chamber,Enchantment — Room // Enchantment — Room,"At the beginning of your end step, draw a card. If you control a Demon, each opponent loses 2 life and you gain 2 life. Otherwise, you lose 2 life.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, create a 6/6 black Demon creature token with flying.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",B,Room; lifegain; pay life; card draw; tokens,DSK,118,Rare,52a,,6.5,seed
 Conductive Machete,Artifact — Equipment,"When this Equipment enters, manifest dread, then attach this Equipment to that creature. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)
 Equipped creature gets +2/+1.
 Equip {4}",Colorless,Equipment; reanimator; graveyard; etb; equipment; pump; selection; manifest; tokens; manifest dread; equip,DSK,244,Uncommon,38,,4.5,hand
@@ -96,6 +100,8 @@ Overgrown Zealot,Creature — Elf Druid,"{T}: Add one mana of any color.
 Scrabbling Skullcrab,Creature — Crab Skeleton,"Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, target player mills two cards. (They put the top two cards of their library into their graveyard.)",U,Crab; Skeleton; graveyard; mill; eerie,DSK,71,Uncommon,51; 51a,"Deck 51: Eerie mills 2 on every enchantment entering and every Room fully unlocked -> 6 with Water Crystal, and Fractured Realm DOES double it (triggered ability) for 12. The on-theme mill card.",70,hand
 Shroudstomper,Creature — Elemental,"Deathtouch
 Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.",W/B,Elemental; lifegain; card draw; deathtouch; combat; removal,DSK,233,Uncommon,20,,5.0,hand
+Valgavoth's Faithful,Creature — Human Cleric,"{3}{B}, Sacrifice this creature: Return target creature card from your graveyard to the battlefield. Activate only as a sorcery.",B,Human; Cleric; reanimator; graveyard; sacrifice,DSK,121,Uncommon,52a,,5.0,seed
+Withering Torment,Instant,Destroy target creature or enchantment. You lose 2 life.,B,pay life; removal,DSK,124,Uncommon,52a,,3.0,seed
 Meat Locker // Drowned Diner,Enchantment — Room // Enchantment — Room,"When you unlock this door, tap up to one target creature and put two stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, draw three cards, then discard a card.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,Room; counters; card draw,DSK,65,Common,51,,6.0,hand
@@ -104,6 +110,7 @@ Delirium — This creature gets +1/+2 and has vigilance as long as there are fou
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
 Kinscaer Sentry,Creature — Kithkin Soldier,"First strike, lifelink
 Whenever this creature attacks, you may put a creature card with mana value X or less from your hand onto the battlefield tapped and attacking, where X is the number of attacking creatures you control.",W,Kithkin; Soldier; lifegain; lifelink; first strike; combat,ECL,22,Rare,23,2-drop first strike/lifelink that cheats a creature with MV <= attackers from hand into play attacking,6.0,hand
+Iron-Shield Elf,Creature — Elf Warrior,"Discard a card: This creature gains indestructible until end of turn. Tap it. (Damage and effects that say ""destroy"" don't destroy it. If its toughness is 0 or less, it still dies.)",B,Elf; Warrior,ECL,108,Uncommon,52a,,2.5,seed
 Spell Snare,Instant,Counter target spell with mana value 2.,U,counterspell,ECL,71,Uncommon,51,,3.0,seed
 "Sothera, the Supervoid",Legendary Enchantment,"Whenever a creature you control dies, each opponent chooses a creature they control and exiles it.
 At the beginning of your end step, if a player controls no creatures, sacrifice Sothera, then put a creature card exiled with it onto the battlefield under your control with two additional +1/+1 counters on it.",B,counters; heist; sacrifice,EOE,115,Mythic,52,,8.5,seed
@@ -111,6 +118,10 @@ At the beginning of your end step, if a player controls no creatures, sacrifice 
 {T}: Add {B}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
 12+ | {1}{B}, {T}, Pay 2 life, Sacrifice a creature: Draw cards equal to the sacrificed creature's power. Activate only as a sorcery.",B,Planet; pay life; card draw; sacrifice; mana; station; counters; artifacts,EOE,259,Mythic,,dropped from deck 52 2026-08 (mythic wildcard deferred); still a candidate for 52a,7.0,seed
+Archenemy's Charm,Instant,"Choose one —
+• Exile target creature or planeswalker.
+• Return one or two target creature and/or planeswalker cards from your graveyard to your hand.
+• Put two +1/+1 counters on target creature you control. It gains lifelink until end of turn.",B,counters; graveyard; lifegain; removal,EOE,88,Rare,52a,,6.0,seed
 Icetill Explorer,Creature — Insect Scout,"You may play an additional land on each of your turns.
 You may play lands from your graveyard.
 Landfall — Whenever a land you control enters, mill a card.",G,Insect; Scout; graveyard; mill; landfall; lands; ramp,EOE,192,Rare,50a,,7.0,hand
@@ -142,6 +153,7 @@ Remove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activ
 Rite of the Dragoncaller,Enchantment,"Whenever you cast an instant or sorcery spell, create a 5/5 red Dragon creature token with flying.",R,tokens; spellslinger,FDN,92,Mythic,2,,7.0,hand
 Twinflame Tyrant,Creature — Dragon,"Flying
 If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals double that damage instead.",R,Dragon; flying; evasion; double,FDN,97,Mythic,14,,7.0,hand
+Abyssal Harvester,Creature — Demon Warlock,"{T}: Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.",B,Demon; Warlock; Nightmare; graveyard; tokens; removal,FDN,54,Rare,52a,,7.0,seed
 Adaptive Automaton,Artifact Creature — Construct,"As this creature enters, choose a creature type.
 This creature is the chosen type in addition to its other types.
 Other creatures you control of the chosen type get +1/+1.",Colorless,Construct; pump,FDN,723,Rare,48,FLEX in 48: swap back for Mm'menon when a Rare wildcard is free. One of only 5 choose-a-type anthems in Standard; no cheaper substitute exists.,6.0,hand
