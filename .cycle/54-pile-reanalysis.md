@@ -59,6 +59,12 @@ Sphinx of Forgotten Lore, Norman's Goblin Formula mayhem.
    clause, Muse Seeker's no-discard rider). A payoff reading *mana value* is turned ON at
    maximum — **Thor, God of Thunder** deals damage equal to the spell's MV, so a
    `{1}`-flashbacked Improvisation Capstone (MV 7) deals 7. Check which word the card uses.
+   **3b — THE POSITIVE HALF, found in batch 5.** A whole family reads *"whenever you cast a
+   spell with **mana value** 4 or greater"* — Tanufel Rimespeaker, Enraged Flamecaster,
+   Spider Manifestation, Equilibrium Adept, Kulrath Mystic, Galvanic Giant. These are the
+   mana-spent trap **inverted**: they fire on a `{1}` recast of an expensive card, so the
+   thesis turns them ON rather than off. When a card gates on a number, read whether that
+   number is the printed cost or the mana leaving your pool — it decides the card.
 4. **IN A SELF-MILLING DECK, "PLAY LANDS FROM YOUR GRAVEYARD" IS NOT RAMP — IT RECOVERS A
    COST THE ENGINE IMPOSES.** Milling is not free. 54a is 25 lands / 60, so roughly **42% of
    every mill is a land**, and those are dead cards: Glacierwood Siege alone bins ~4 per
@@ -336,6 +342,31 @@ of the tier-1/2 adds are themselves Lessons, so the count holds or rises.
 | **Glacial Dragonhunt** `{U}{R}` | **Cut LAST** — loot + conditional removal + yard fill in one, with a power-reducible Harmonize. Better than its ranking. |
 | **PROTECT** | **Loki Laufeyson, Berta, Germination Practicum** — `cuts` ranks all three near the top because their payoffs are power-scaling activated abilities and unindexed Increment (K-01) that no tag-gated tool can see. **Origin of Metalbending** is 1 of only 4 noncreature answers *and* the deck's other protection source. |
 
-### Batch 5 — pending
-### Batch 5 — pending
+### Batch 5 (30 cards — spell-count payoffs)
+
+**THOR HAS A TWIN.** Ovika reads the same word Thor does and pays in bodies instead of
+damage. Together they are the two cards that convert "expensive spells cast for `{1}`" into
+a win condition, and both are owned.
+
+| Card | 54 | 54a | Note |
+|---|---|---|---|
+| **Ovika, Enigma Goliath** `{5}{U}{R}` own R | ★★★ | ★★★ | *"create X 1/1 Phyrexian Goblin tokens, where X is the **mana value** of that spell"*, with haste. Deck 54 flashing back Improvisation Capstone (MV 7) for `{1}` makes **seven hasty bodies**; 54a's MV 3–5 recasts make 3–5 each. Also the answer to 54a's **wide score of 1**, and ward `{3}`+3 life protects it. Seven mana. |
+| **Balmor, Battlemage Captain** `{U}{R}` own | — | ★★ | Every instant/sorcery gives the team **+1/+0 and trample**. A two-drop that converts the spell count into damage — this is the card that makes the attack sub-theme (§3) actually work. |
+| **Wiccan, Rising Magician** `{4}{U}` own | ◇ | ★★ | Per noncreature spell, **exile another target nonland nontoken permanent, return at end step**. Blinks your own ETB granters (Slickshot Lockpicker, Daring Waverider, Songcrafter Mage) for a re-trigger, or removes a blocker for a turn. Every spell. |
+| **Seifer Almasy** `{3}{R}` own R | — | ★★ | *"Whenever Seifer deals combat damage to a player, you may cast target instant or sorcery card with **mana value 3 or less** from your graveyard **without paying its mana cost**."* An eleventh granter, Class A, capped at MV 3. Feeds the attack sub-theme. |
+| **Spinerock Tyrant** `{3}{R}{R}` own M | — | ★★ | Copy **every single-target instant/sorcery**, and the copies gain wither so burn becomes permanent −1/−1 counters. No G-42 risk — those land on their creatures, not on your +1/+1 layer. |
+| **Ral, Crackling Wit** `{2}{U}{R}` M | — | ★★ | A loyalty counter per noncreature spell, so it ults fast here. `−3` draws three and discards two — card advantage **and** yard fill on 54a's weakest axis, on a permanent that dodges creature removal. |
+| **Emeritus of Conflict // Lightning Bolt** `{1}{R}` own M | ◇ | ★★ | Split card — grade the face you cast (G-43). As Lightning Bolt it is premium `{R}` removal; as the creature it becomes **prepared** on your third spell each turn for a free copy of its own Bolt. "Prepared" is unindexed (K-01). |
+| **Guttersnipe** `{2}{R}` | — | ★ | 2 damage to each opponent per instant/sorcery — strictly better than Coruscation Mage's 1. |
+| **Tanufel Rimespeaker** `{3}{U}` | ◇ | ★ | **Rule 3b:** draw a card per **MV 4+** spell. The thesis turns it on. Card advantage on the weak axis. |
+| **Spider Manifestation** `{1}{R/G}` own | ◇ | ★ | **Rule 3b:** `{T}` for `{R}`/`{G}`, and it **untaps on every MV 4+ spell** — a mana source that goes several times a turn. Hybrid, so trivially castable. |
+| **Sword of Wealth and Power** `{3}` M | — | ★ | **Protection from instants and sorceries** (an axis at 1), plus a Treasure and a copy of your next spell on combat damage. Needs a creature to connect. |
+| **Great Hall of the Biblioplex** | ◇ | ★ | Taps for any colour at 1 life, **restricted to instants and sorceries** — a free restriction here. Better than a colourless utility land. |
+| Enraged Flamecaster / Equilibrium Adept / Rodeo Pyromancers / Cool but Rude / Prismatic Undercurrents / Boar-q-pine / Devoted Duelist | — | ◇ | Rodeo Pyromancers is a ritual every turn; Prismatic Undercurrents fetches basics **to hand** (slow) but adds a land drop. |
+| **Shantotto, Tactician Magician** own | ✗ | ✗ | **Rule 3.** Both the pump and the draw read *mana **spent***; a `{1}`-recast deck triggers neither. |
+| **Aberrant Manawurm** · **Prompto Argentum** · **Colorstorm Stallion** (token half) | ✗ | ✗ | Same — all gate on mana spent. |
+| Wildgrowth Archaic / Quilled Greatwurm / Jackal | — | △ | Creature-spell payoffs; these are spell decks. |
+| **Fire Lord Azula** own | ✗ | ✗ | Confirmed: must be **attacking** when you cast, and needs black **in the cast cost** — the Cauldron fixes activated abilities only. |
+| **Sokka, Tenacious Tactician** own · **Avatar Aang** own · **Ramos** | ✗ | ✗ | Off-colour. Aang's back face (*"spells cost `{W}{U}{B}{R}{G}` less"*) is spectacular and unreachable — the front costs `{R}{G}{W}{U}`. |
+
 ### Batch 6 (18 cards) — pending
