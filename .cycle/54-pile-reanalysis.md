@@ -176,7 +176,38 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | Leyline of Mutation / Urban Retreat / Flamehold Grappler | ✗ | ✗ | Off-colour. Leyline's alt cost is literally `{W}{U}{B}{R}{G}`. |
 | Troyan / Eshki Dragonclaw / Rydia / Grappling Kraken | ✗ | ✗ | On merit. |
 
-### Batch 3 — pending
+### Batch 3 (30 cards)
+
+**THE HEADLINE: three Lessons were cut from deck 54 EARLIER IN THIS SESSION on hard-cast
+rate, which is the exact error the framework exists to prevent.** A Lesson is Class A in
+deck 54 — Iroh replaces its whole cost with a flat `{1}`, pips included — so its printed
+cost is close to irrelevant there. Re-examine all three before the final ranking.
+
+| Card | 54 | 54a | Note |
+|---|---|---|---|
+| **Toph, Hardheaded Teacher** `{2}{R}{G}` | ★★★ | ★★ | ETB returns an instant/sorcery from the yard to hand (discard = yard fill). Then **every spell earthbends 1** — a land becomes a 0/0 haste creature with a counter, **+1 more if the spell is a Lesson**. That is a counter source per spell AND a BOARD built out of lands, which attacks 54's weakness #3 head-on (`shape`: wide score ZERO). Also a power source for Songcrafter / Iron Fist / The Last Agni Kai. |
+| **Elemental Teachings** `{4}{G}` own | ★★ | — | **REVERSAL — I cut this from 54 this session.** It is an Instant **Lesson**, so Iroh casts it for `{1}`: search **four land cards with different names** (NOT basic-restricted — this is the "curated lands" card), opponent bins two, two enter tapped. Two lands, any lands, for `{1}`. I cut it on its `{4}{G}` hard-cast rate. |
+| **Planetarium of Wan Shi Tong** `{6}` own M | ★★ | ★★ | `{1}`,`{T}`: Scry 2 — and **whenever you scry or surveil, you may cast the top card of your library FREE**, once a turn. Self-contained: `{1}` per turn for a free spell. Class A, so rule 1 applies (`{X}` spells become X=0). Six mana is the price. |
+| **Redirect Lightning** `{R}` own R | ★★ | ◇ | An Instant **Lesson** that changes the target of a spell or ability. Deck 54 casts it from the yard for `{1}` + the additional cost (5 life or `{2}`), **every turn** — repeatable protection on a deck whose protection is 2. |
+| **Ashling, Rekindled** `{1}{R}` own R | ◇ | ★★ | Two-drop: loots on entry/transform (yard fill), flips for `{U}`, and the back face adds **two mana of any one colour, spend only on MV 4 or greater** — a restriction the thesis makes nearly free. Flip back and forth for loot + ramp on alternating turns. |
+| **Mona Lisa, Science Geek** `{2}{G}` own | ◇ | ★★ | `{T}`: add **X mana of any one colour, X = her power**. Scales directly with the counters layer; a three-drop that becomes a rainbow Sol Ring. |
+| **Hydro-Channeler** `{1}{U}` own | ◇ | ★ | `{T}`: `{U}`, or `{1}`,`{T}`: any colour — **restricted to instants and sorceries**, which is what 54a casts. Ramp and fixing on a two-drop. |
+| **Lost Days** `{4}{U}` own | ★ | — | **REVERSAL, same shape as Elemental Teachings.** Instant Lesson → `{1}` via Iroh for a tuck plus a Clue. Cut this session on hard-cast rate. |
+| **The Legend of Roku** `{2}{R}{R}` own M | ◇ | ★ | Chapter I exiles three and lets you play them — each is a **cast from exile**, i.e. a Spider-Verse / Spider-Man 2099 trigger. Flips into a firebending-4 attacker. |
+| **Temur Battlecrier** `{G}{U}{R}` | — | ◇★ | **Revised up from ✗.** `{1}` less per power-4 creature, on **all** spells during your turn including graveyard recasts — a Class B discount that scales with the counters layer. The Berta Increment anti-synergy is real but is one of her three lines. |
+| **White Lotus Tile** `{4}` M | ◇ | ◇★ | X mana of one colour, X = most creatures sharing a type. 54a fields ~6 **Humans**. Enters tapped, needs a board. |
+| **Vizier of the Menagerie** `{3}{G}` own M | ◇ | ◇ | *"Spend mana of any type to cast creature spells"* + cast creatures off the top. Total fixing, but only for creatures, and these are spell decks. |
+| **Energybending** `{2}` own | ◇★ | ◇ | Instant Lesson: all basic land types + draw. `{1}` via Iroh = a turn of perfect fixing plus a card. |
+| Conduit Pylons / Hidden Grotto | ◇ | ◇ | ETB **surveil 1** + `{1}`,`{T}` any colour — virtual copies of Surveillance Room (G-46), and the surveil triggers Planetarium. |
+| Bender's Waterskin `{3}` own | ◇ | ◇ | Untaps during **each other player's** untap step — mana on their turn, i.e. instant-speed enablement. |
+| Bioengineered Future / Weather Maker / Captivating Cave / Baxter Building / Gene Pollinator / Temur Devotee / Firebending Lesson | ◇ | ◇ | |
+| **Secret of Bloodbending** | ✗ | ✗ | Framework does not change it: it is a Lesson, but it **exiles itself**, so it is a one-shot, and what `{1}` buys is one declined attack step. Already recorded in 54's `#: notes:`. |
+| Grow from the Ashes / Shared Roots | — | — | Shared Roots already ★ for 54 (a Lesson). Grow from the Ashes is not a Lesson and loses to New Horizons. |
+| Temur Monument / Potioner's Trove / Uncharted Haven / Daily Bugle Building | ✗ | ✗ | Below rate. |
+
+**New standing error (7): I CUT CARDS FROM DECK 54 ON HARD-CAST RATE WHILE HOLDING THE
+FRAMEWORK THAT SAYS NOT TO.** Elemental Teachings and Lost Days were both cut in the
+five-swap fixing package. Before any further Lesson leaves deck 54, price it at `{1}`.
 ### Batch 4 — pending
 ### Batch 5 — pending
 ### Batch 6 (18 cards) — pending
