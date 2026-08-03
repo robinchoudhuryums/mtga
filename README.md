@@ -1180,7 +1180,7 @@ hundreds of games. Read it for disasters, not for marginal swaps.
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
 derived files present **and still carrying their own columns** — a pool that lost
 its `Rarity`/`Legalities` is a hard failure, not a silent degrade — decks parse)
-plus ten **model-sanity checks** that keep the
+plus eleven **model-sanity checks** that keep the
 grading/ranking models from silently drifting: the **ranking model**
 (`check_rankings.py`), **color parsing** (`check_colors.py` — also a static scan
 banning the naive inline `WUBRG` parse outside `lib.py`), the **DFC ownership-join**
@@ -1188,7 +1188,10 @@ convention (`check_dfc.py` — an owned double-faced card must resolve by its fr
 face), the needs-aware **suggest/cuts scoring** (`check_suggest.py` — bounded
 modifiers, power never overrides theme fit), the **engine classifier**
 (`check_engines.py`), the archetype-aware **tier floor** (`check_tier.py` —
-non-aggro grades unchanged, the aggro clock only ever raises a band), and
+non-aggro grades unchanged, the aggro clock only ever raises a band),
+**role coverage** (`check_roles.py` — a card in a deck that classifies to NO functional
+role at all, baselined; `_ROLE_PATTERNS` is a whitelist of phrasings, so its misses are
+silent under-counts the tier floor inherits as fact), and
 **dead patterns** (`check_patterns.py`). That last one guards this project's
 signature bug: a regex that *compiles fine and can never fire*. Every card-text
 pattern must match at least one card in the ~15.8k-card pool, and no pattern source

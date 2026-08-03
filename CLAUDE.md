@@ -644,6 +644,21 @@ directions.
   shape to read. Counts exclude the card itself. Heuristic and report-only — read the list,
   not just the number. [G-66]
 
+- **A PATTERN SET IS A WHITELIST, AND A WHITELIST'S MISSES ARE INVISIBLE.** `_ROLE_PATTERNS`
+  matches PHRASINGS, and Magic templates one effect several ways — so a card worded a way no
+  pattern anticipates scores ZERO roles, and the tier floor, `cuts`, the quality guard and
+  `check_all` all inherit that as fact. Never an error, never an over-count: always a silent
+  UNDER-count. Eight holes surfaced in one 2026-08 session, every one found by a HUMAN
+  reading a card. The largest: ramp required a literal `{` after "add", so `{T}: Add one
+  mana of any color` — the templating of EVERY rainbow source — matched nothing, and four
+  fixers read as roleless in the three decks whose #1 weakness is the manabase.
+  **`check_roles.py` + `role_baseline.txt` make the population visible** (soft, deck-scoped,
+  baselined at 367); read it as a DELTA, not a target. Two habits follow: write a pattern's
+  fixture from the CARD'S REAL TEXT, never a paraphrase — that is how you write a pattern
+  for a card that does not exist — and check for a TEST DOUBLE encoding the old behaviour,
+  since `check_suggest` anchor 15 asserted a fixer ranks most-cuttable PRECISELY BECAUSE it
+  had no role. [G-67]
+
 ## Known Issues
 
 Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
@@ -766,7 +781,7 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (17 files: the markup-contract, CLI-entry-point, analysis-model,
+- Testing: tests/ (18 files: the markup-contract, CLI-entry-point, analysis-model,
   gate-pinning, shared-primitive and ingest layers), requirements-dev.txt, pytest.ini,
   .github/workflows/tests.yml [C-07]
 - Decks: decks/
