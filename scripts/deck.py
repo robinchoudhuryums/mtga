@@ -1233,7 +1233,24 @@ _ROLE_PATTERNS = {
                        # `whenever .* draw a card` swept every one into card advantage —
                        # scoring a draw-payoff as a draw, which is backwards.
                        r"\bwhenever\b[^.,]{0,80}?, [^.]{0,60}?draws? a card",
-                       r"\binvestigate\b"],
+                       r"\binvestigate\b",
+                       # A CLUE TOKEN *is* a delayed draw ("{2}, Sacrifice this token:
+                       # Draw a card"), and `investigate` above is the KEYWORD form of
+                       # exactly that. But plenty of cards spell the token out instead of
+                       # using the keyword — The Mechanist, Aerial Artisan makes a Clue per
+                       # noncreature spell and scored Payoff/engine only, so a deck built
+                       # on it still read card advantage 0.
+                       r"create (?:a|\w+|that many) clue tokens?",
+                       # IMPULSE. "Exile the top card of your library. You may play that
+                       # card this turn" is a card you would not otherwise have had — the
+                       # same advantage a draw gives, one zone over. Nothing matched it:
+                       # Zuko, Exiled Prince scored ZERO roles despite a repeatable {3}
+                       # impulse ability, and it is a whole deck archetype (deck 24, deck
+                       # 45) that the card-advantage axis could not see. `[^.]` keeps the
+                       # span inside the sentence pair so an unrelated later clause cannot
+                       # be swept in.
+                       r"exile the top card of your library[^.]{0,40}\. you may play (?:it|that card)",
+                       r"exile the top \w+ cards? of your library[^.]{0,60}\. (?:you may play|until )"],
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
                       r"\{t\}: add \{",
                       r"put (?:a|that|those|up to \w+).{0,40}?land.{0,40}?onto the battlefield"],

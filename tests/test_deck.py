@@ -174,6 +174,30 @@ class TestClassifyRoles:
                "{t}, sacrifice this token: you gain 3 life.\")"
         assert not any(p.search(text) for p in deck._NONCREATURE_ANSWER_CUES), text
 
+    def test_clue_token_is_card_advantage(self):
+        # `investigate` was indexed but the spelled-out token was not, so The Mechanist —
+        # a Clue per noncreature spell — scored Payoff/engine only and a deck built on it
+        # read card advantage 0. A Clue IS a delayed draw.
+        assert "Card advantage" in deck.classify_roles(
+            "Whenever you cast a noncreature spell, create a Clue token. (It's an artifact "
+            'with "{2}, Sacrifice this token: Draw a card.")')
+
+    def test_impulse_is_card_advantage(self):
+        # "Exile the top card of your library. You may play that card this turn" is a card
+        # you would not otherwise have had. Nothing matched it: Zuko, Exiled Prince scored
+        # ZERO roles, and deck 45 — built entirely on cast-from-exile — read 0.
+        for text in [
+            "{3}: Exile the top card of your library. You may play that card this turn.",
+            "At the beginning of your upkeep, exile the top two cards of your library. "
+            "You may play them this turn.",
+        ]:
+            assert "Card advantage" in deck.classify_roles(text), text
+
+    def test_plain_library_exile_is_not_card_advantage(self):
+        # The guard: exiling from a library without permission to play it is not advantage.
+        assert "Card advantage" not in deck.classify_roles(
+            "Exile the top card of your library. If it's a land card, you lose 2 life.")
+
     def test_scaling_damage_to_a_target_is_removal(self):
         # The only scaling-damage pattern hard-coded "power", so a spell whose size comes
         # from a COUNT read as nothing. Combustion Technique scored ZERO roles in the deck

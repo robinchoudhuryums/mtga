@@ -42,7 +42,7 @@
 #: tier: a 2-drop drain payoff for the slot.
 #: tier: BE PRECISE ABOUT THE FLOOR, because "restore the interaction" was not the whole
 #: tier: fix: the A floor wants interaction >=5 AND interaction+card-advantage >=7. Both
-#: tier: clauses are now MET — interaction 5 and card advantage 3 — so the MEASURABLE
+#: tier: clauses are now MET — interaction 5 and card advantage 4 — so the MEASURABLE
 #: tier: FLOOR IS A and the claimed B is a deliberate call one band BELOW it, on the three
 #: tier: risks listed further down that no metric can see. Note how the second clause was
 #: tier: cleared: not by a swap, but by a classifier fix. The card advantage here read 1
@@ -61,7 +61,7 @@
 #: tier: of ramping the opponent a basic — at the price of sorcery speed, taking the suite
 #: tier: to 1 instant against 4 sorcery.
 #: tier: Held at B by three further things the floor cannot see:
-#: tier: 1. CARD ADVANTAGE 3 IS REAL BUT CONDITIONAL, which is the part the number still
+#: tier: 1. CARD ADVANTAGE 4 IS REAL BUT CONDITIONAL, which is the part the number still
 #: tier:    cannot express. Treacherous Greed's draw-three clears the bar outright;
 #: tier:    Vampiric Rites, Ahriman, Baron Bertram and Agent Venom each draw exactly ONE
 #: tier:    card off a sacrifice, and that is a WASH when the fodder is a card from hand.
