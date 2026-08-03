@@ -10,10 +10,19 @@
 #: tier:     word: WIDE 10 against tall 5, on ten distinct effects that scale with creature
 #: tier:     COUNT. Tokens feed anthems, anthems make the tokens a clock, and the removal
 #: tier:     suite feeds Gisa by committing a crime every turn.
-#: tier:   TIGHT CURVE — borderline. 3.19 average, and it UNDER-reads because Dread Summons
-#: tier:     books as MV 1 (X counts as 0); you cast it for four or five.
+#: tier:   TIGHT CURVE — borderline. 3.39 average on 9 early drops, and it UNDER-reads
+#: tier:     because Dread Summons books as MV 1 (X counts as 0); you cast it for four or
+#: tier:     five. The 2026-08 pass cost 0.20 of curve and two early drops for three
+#: tier:     stronger cards; watch this axis before the next add.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND. Protection is 2 on a deck
-#: tier:     whose whole plan is a board, so one sweeper undoes several turns. And the
+#: tier:     whose whole plan is a board, so one sweeper undoes several turns. THIS IS A
+#: tier:     COLOUR CONSTRAINT, NOT AN OVERSIGHT, and it was measured rather than assumed:
+#: tier:     a pool sweep for mono-black/colorless Standard cards protecting MULTIPLE
+#: tier:     creatures returns exactly ONE, an {8} defender, unplayable on
+#: tier:     this curve. Widening to any protection grant at MV 4 or less returns eight
+#: tier:     more, every one SINGLE-TARGET. So stop shopping for a team pump: the answer
+#: tier:     available to the colour is to make the wipe COST them, which is why Ninja
+#: tier:     Teen and Funeral Room both drain per creature that leaves. And the
 #: tier:     engine needs BOTH halves — bodies and an anthem — in a singleton list, so the
 #: tier:     draws where you hold one and not the other are common and are the games you
 #: tier:     lose. Card advantage 3 is real but arrives late (Chronicle of Victory is {6}).
@@ -79,10 +88,10 @@
 1 Deadly Precision (TLA) 95
 1 Eaten Alive (FDN) 172
 1 Stomped by the Foot (TMT) 82
-1 Feed the Swarm (SOA) 29
-1 Hero's Downfall (FDN) 175
+1 Funeral Room // Awakening Hall (DSK) 100
+1 Sidequest: Hunt the Mark (FIN) 119
 1 Withering Torment (DSK) 124
-1 Demonic Counsel (DSK) 92
+1 The Cloning of Shredder (TMT) 60
 1 The Final Days (FIN) 101
 1 Liliana, Dreadhorde General (FDN) 176
 1 Massacre Wurm (FDN) 714

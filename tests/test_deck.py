@@ -133,6 +133,16 @@ class TestClassifyRoles:
             "target spell unless its controller pays mana equal to the greatest power "
             "among creatures you control.")
 
+    def test_reversed_avg_mv_phrasing_is_read_both_ways(self):
+        # The rationale audit carries number-first patterns for interaction, card
+        # advantage, protection, early drops and "N curve" — but the avg-MV reversal was
+        # only ever taught the word "curve", and the FORWARD pattern needs "average" to be
+        # followed by MV. So a bare "3.19 average" matched in neither direction, and deck
+        # 53's prose quoted 3.19 against a live 3.39 while the audit reported it CURRENT.
+        for probe in ["3.19 average", "3.19 curve", "avg MV 3.19", "Average nonland MV 3.19"]:
+            keys = [k for rx, k in deck._RATIONALE_FIGURES if rx.search(probe)]
+            assert "avg_mv" in keys, probe
+
     def test_split_choose_then_destroy_is_removal(self):
         # Quag Feast: the target is named in one sentence and the destroy verb lands in a
         # later one, with "the chosen permanent" standing in for it. The main removal

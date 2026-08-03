@@ -8430,6 +8430,14 @@ _RATIONALE_FIGURES = [
     # the other way round, so the avg_mv half of this audit was decorative. Six stale
     # curve figures were sitting in the prose, invisible, when this was added.
     (re.compile(r"(\d+\.\d+)[  ]+curve", re.I), "avg_mv"),
+    # The reversal above was only ever taught the word "curve". The other house phrasing
+    # for the same figure is "3.19 average" — and the FORWARD pattern requires "average"
+    # to be followed by MV, so a bare number-then-"average" matched nothing in either
+    # direction. Deck 53's prose read "3.19 average" while the live vector said 3.39 and
+    # the audit reported the rationale CURRENT. Same shape as the G-26 residual where a
+    # copula between a label and its number hides a figure: the audit is only as good as
+    # its phrasing coverage, and a miss here is silent by construction.
+    (re.compile(r"(\d+\.\d+)[  ]+average", re.I), "avg_mv"),
     (re.compile(r"(\d+)[- ]theme", re.I), "central_themes"),
     (re.compile(r"(\d+) central themes", re.I), "central_themes"),
     (re.compile(r"protection[  ]+(\d+)", re.I), "protection"),
