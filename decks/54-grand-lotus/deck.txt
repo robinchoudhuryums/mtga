@@ -64,9 +64,14 @@
 #: archetype: battlefield. The deck's job is to get them into the yard and then untap.
 #: archetype: THE YARD FILLS ITSELF, which is what makes the plan work without a dedicated
 #: archetype: mill package: Lessons are instants and sorceries, so every one you cast
-#: archetype: normally is a card Iroh can buy back later. Accumulate Wisdom bins two of
-#: archetype: three on purpose, Abandon Attachments discards to draw, Platypus-Bear and
-#: archetype: Leaves from the Vine mill, and two Surveillance Rooms do it off a land.
+#: archetype: normally is a card Iroh can buy back later. Abandon Attachments discards to
+#: archetype: draw, Platypus-Bear mills two on entry, Leaves from the Vine mills three on
+#: archetype: chapter I, and two Surveillance Rooms do it off a land. CORRECTION 2026-08:
+#: archetype: this list previously named Accumulate Wisdom as binning two of three. It does
+#: archetype: not — it puts the rest on the BOTTOM of your library, so it is pure selection
+#: archetype: and fills nothing. No audit catches that class of error: `rationale_staleness`
+#: archetype: checks whether a cited card is still in the deck and whether a quoted FIGURE
+#: archetype: matches, not whether a claim about a card's TEXT is true.
 #: archetype: THE PAYOFFS READ THE COUNT, not just the cards. Combustion Technique deals
 #: archetype: 2 plus the Lessons in your graveyard; Bumi, King of Three Trials chooses up
 #: archetype: to X modes where X is that same number; Serpent of the Pass gains flash at

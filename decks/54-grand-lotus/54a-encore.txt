@@ -162,7 +162,8 @@
 1 Loki Laufeyson (MSH) 143
 1 Germination Practicum (SOS) 149
 
-# Fixing / yard fill
+# Fixing / selection  (NOTE: Accumulate Wisdom is NOT yard fill — it bottoms the
+# cards it doesn't take. It is here for the Lesson-count gate and the dig.)
 1 Hermitic Herbalist (TLA) 226
 1 Gran-Gran (TLA) 54
 1 Accumulate Wisdom (TLA) 44
