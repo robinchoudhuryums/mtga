@@ -1,6 +1,6 @@
 # Deck 54 / 54a — pile-dump re-analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** Delete this file once the swaps land and the findings are folded
+**Status: ALL SIX BATCHES READ.** Next step is the final ranking + swap application. Delete this file once the swaps land and the findings are folded
 into the two deck files' `#: notes:` blocks. It is a scratchpad, not a source of truth —
 `decks/54-grand-lotus/deck.txt` and `54a-encore.txt` are.
 
@@ -369,4 +369,57 @@ a win condition, and both are owned.
 | **Fire Lord Azula** own | ✗ | ✗ | Confirmed: must be **attacking** when you cast, and needs black **in the cast cost** — the Cauldron fixes activated abilities only. |
 | **Sokka, Tenacious Tactician** own · **Avatar Aang** own · **Ramos** | ✗ | ✗ | Off-colour. Aang's back face (*"spells cost `{W}{U}{B}{R}{G}` less"*) is spectacular and unreachable — the front costs `{R}{G}{W}{U}`. |
 
-### Batch 6 (18 cards) — pending
+### Batch 6 (18 cards — six already graded in earlier batches)
+
+**THE ANTI-CARD OF THE BATCH: Wisdom of Ages EMPTIES the resource.** *"Return **all** instant
+and sorcery cards from your graveyard to your hand."* In a deck whose discounts (Melek `{3}`,
+Doc Aurlock `{2}`) apply **only to graveyard and exile casts**, moving ten cards to hand
+means paying full price for all of them — and it collapses Melek's power, The Lord Master
+of Hell's Starfall and Steal the Show's damage in the same turn. Same shape as Festival of
+Embers. ✗ despite looking like mass card advantage.
+
+| Card | 54 | 54a | Note |
+|---|---|---|---|
+| **Omenpath Journey** `{3}{G}` M | ★★ | ★★ | Search **five land cards with different names** — not basics — exile them, then drop one onto the battlefield at every end step. The curated-lands thesis fully realised, and a five-turn engine against weakness #1. Random selection is the cost. |
+| **Earth's Mightiest Heroes** `{4}{G}{G}` own M | ◇ | ★★ | Reveal eight, put creatures onto the battlefield, **rest into your graveyard** — mass yard fill AND cheating the engine into play, both on-plan. Teamwork 5 taps power-4 creatures, which the counters layer supplies. |
+| **Multiversal Incursion** `{5}{U}{U}` own M | ◇ | ★★ | A copy of every nontoken creature, ***except it isn't legendary*** — so it duplicates Iroh, Melek and Norman, which the legend rule would otherwise forbid. MV 7; Melek + Doc Aurlock take a recast to `{U}{U}`. |
+| **Dragonclaw Strike** `{2/G}{2/U}{2/R}` own | — | ◇★ | Double power, then fight — removal that scales with the counters layer, and the `{2/X}` hybrids make it castable off six generic in the worst case. |
+| **The Earth King** `{3}{G}` own R | ◇ | ◇★ | A 4/4 body plus land ramp per power-4 attacker. **Contingent on the attack decision (§3).** |
+| **Full Throttle** `{4}{R}{R}` | — | ◇ | Two extra combat phases. Pure attack payoff — same contingency. |
+| **Raphael's Technique** `{4}{R}{R}` | — | ◇ | Discard your hand, draw seven: real yard fill and refuel, but **symmetric** — it refills the opponent too. |
+| Worlds Within Worlds / Celestial Reunion / Sagu Wildling / Mammoth Bellow | — | △ | Celestial Reunion is an `{X}` spell (**rule 1**). Worlds Within Worlds wipes your own engine as hard as theirs. |
+| **Wisdom of Ages** own | ✗ | ✗⚠ | See above — empties the graveyard the deck runs on. |
+| **Narset's Rebuke** | ✗ | ✗ | Off-colour (needs W). |
+| Nature's Rhythm · Ember Island Production · Mirrorform · Artistic Process · Sozin's Comet | — | — | Graded in earlier batches; see there. |
+
+---
+
+## 6. Was a "rule 3b" variant deck viable? — ASKED AND ANSWERED (2026-08)
+
+**Counted first, per G-59.** A pool sweep of the effect shape returns **19 Standard payoffs
+gating on a spell's MANA VALUE, 16 of them GUR-castable.** By the tribe benchmark that is a
+buildable number (Dragon 20 → built as deck 49; Dinosaur 11; Vampire 3).
+
+**Verdict: enough cards, but not a deck. Three reasons.**
+
+1. **The payoff QUALITY is uniformly low.** Reading all 16: exactly three do anything but
+   combat stats — Tanufel Rimespeaker (draw 1), Superior Foes of Spider-Man (impulse 1),
+   Flaring Cinder (loot 1). The other thirteen are small creatures that grow or ping for
+   1–2: Angry Rabble, Lurking Lizards, Kulrath Mystic, Stormkeld Prowler, Skybeast Tracker,
+   Enraged Flamecaster, Rhino, Tempest Hart, Spider Manifestation, Galvanic Giant. **There
+   is no bomb and no engine in the family.** Compare what 54a's payoff layer does — copy a
+   spell (Spider-Verse), MV in damage (Thor), MV in bodies (Ovika).
+2. **3b payoffs do not need a recursion engine.** They fire on any MV 4+ cast, hard-cast
+   included, so the natural 3b shell is **ramp into big spells** — which is deck 30's shell,
+   in deck 30's colours, and deck 30 is tier A and fully owned.
+3. **The marriage beats the divorce.** 3b + recursion means casting an MV 6–7 spell for
+   `{1}` *and* collecting the trigger — a discount no other deck gets. That argues for
+   putting the best two or three 3b cards **inside** 54/54a, not building around the rest.
+
+**Falsifiable counterfactual:** if two or three members of this family were genuinely large
+— something that ends a game off an MV 4+ trigger — it would be a deck. The ceiling today
+is "draw a card".
+
+**Action:** take **Spider Manifestation** and **Tanufel Rimespeaker** into 54a as
+role-players. Note **Disdainful Stroke** is the family's anti-card and sits in the same
+colours, so a dedicated 3b deck would telegraph into it.
