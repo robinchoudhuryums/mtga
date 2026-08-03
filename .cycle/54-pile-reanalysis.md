@@ -394,6 +394,51 @@ Embers. ✗ despite looking like mass card advantage.
 
 ---
 
+## 5b. CONSOLIDATED PLAN — DECK 54b (Grand Lotus — Comet)
+
+**54b inverts the framework, and that is the headline of its whole plan.** Decks 54 and 54a
+DISCOUNT spells, so every payoff reading *"if N or more mana was **spent**"* is dead in them
+(rule 3). **54b does the opposite — it manufactures surplus red mana in combat and spends
+all of it.** Casting Fated Firepower for X=4 spends seven. Flashing a spell back at its
+mana cost per Class C spends full price. So the entire mana-spent family, rejected across
+batches 1–5 for the other two decks, is **LIVE here and only here.**
+
+Live needs, measured 2026-08: interaction 6 · **card advantage 3** · **protection 1** ·
+avg MV 3.23 · early drops 15 · WIDE 6, 23 creatures, 9 evasive · 8 instants, 1 sorcery.
+
+### Adds
+
+| Tier | Card | Reasoning |
+|---|---|---|
+| **1** | **Full Throttle** `{4}{R}{R}` | *"After this main phase, there are two additional combat phases. At the beginning of each combat this turn, untap all creatures that attacked."* **THREE combats = firebending mana ×3**, and every attack trigger fires three times — Sphinx, The Dawning Archaic, Archmage's Newt, Norman, and three quest counters onto Firebender Ascension. No other deck on the roster converts this card so directly. |
+| **1** | **Thunderdrum Soloist** `{1}{R}` own | **The reversal card.** Rejected in batch 1 on rule 3; here the upgrade clause fires. 1 damage per instant/sorcery, **3 if five or more mana was spent** — which is the normal case in a combat-mana deck. Reach, so it blocks while the rest attacks. |
+| **1** | **Prompto Argentum** `{1}{R}` | Haste, and a **Treasure per noncreature spell cast with 4+ mana**. Treasures are the fix for the deck's real structural leak: they turn combat mana into **permanent** mana, and they are **rainbow**, which is Azula's black. Two graded problems in one two-drop. |
+| **1** | **Sword of Wealth and Power** `{3}` M | **Protection from instants and sorceries** on an axis sitting at **1**, plus a Treasure and a **copy of your next instant/sorcery** on combat damage. Three of this deck's needs on one colourless card. |
+| **2** | **Shantotto, Tactician Magician** `{1}{U}{R}` own | Second reversal. `+X/+0` where X is mana spent, and **draw a card when X ≥ 4** — card advantage (axis 3) on a body that grows huge off a Fated Firepower turn. |
+| **2** | **Muse Seeker** `{1}{U}` own | Third reversal, and it was cut from this very deck for Azula. *"Draw a card, then discard **unless five or more mana was spent**"* — in 54 and 54a that is always a loot; **here it is often a true draw.** |
+| **2** | **Roxanne, Starfall Savant** `{3}{R}{G}` | Attack trigger that makes a **Meteorite: 2 damage on entry AND a rainbow mana source**, then doubles all artifact-token mana. Removal + fixing + attack payoff, and it compounds with Prompto's Treasures. |
+| **3** | **Fire Nation Attacks** `{4}{R}` | An **instant** that makes two firebending-1 bodies — a combat-mana sink that pays for itself in future combat mana. Iroh grants flashback at its `{4}{R}` mana cost, which beats its printed `{8}{R}`. |
+| **3** | **The Earth King** `{3}{G}` own · **Colorstorm Stallion** `{1}{U}{R}` own | A 4/4 plus land ramp per power-4 attacker; and a hasty warded body that **copies itself when 5+ mana is spent**. |
+| **3** | **Coruscation Mage** `{1}{R}` own · **Devoted Duelist** `{1}{R}` | Cheap per-spell drains that also lower the curve — the deck is short on early drops (15). |
+
+### Cuts
+
+| Cut | Reasoning |
+|---|---|
+| **Ran and Shaw** `{3}{R}{R}` | Its ETB needs *three or more Dragon and/or Lesson cards in your graveyard* — 54b runs **four Lessons and one Dragon**, so the copy almost never happens. Five mana for a firebending-2 flier is the worst rate in the package. |
+| **Wisecrack** `{2}{R}` | Narrowest removal in the list; `cuts` fit 5, Pw 2. |
+| **Combustion Technique** `{1}{R}` | Damage is *2 + Lessons in your graveyard*, and this deck has **four Lessons**, not seventeen. It is a deck-54 card that came along for the ride — `targets` already flags it `⚠ thin`. |
+| **Firebending Lesson** `{R}` | 2 damage for `{R}`; the kicker costs `{4}` and buys 3 more. Keep only if the Lesson count matters for Combustion Technique, and it will not if that goes. |
+| **Bulk Up** `{1}{R}` | A pure combat trick with no engine role. |
+| **Guttersnipe** `{2}{R}` own | 2 damage per spell is real, but Thunderdrum Soloist does the same job with a **3-damage** upside and reach. Cut only if Soloist lands. |
+| **PROTECT — do not cut on the ranking's word** | **Sozin's Comet** is ranked WEAKEST (fit 4) and grants **firebending 5 to every creature** — with eight attackers that is forty red mana, the deck's single biggest turn; the fit score cannot see it. **The Last Agni Kai** is one of only TWO cards that stop red mana emptying. **Return the Favor** copies a **triggered ability**, i.e. Sphinx's or The Dawning Archaic's. **Bloom Tender** is fixing on a four-colour manabase. |
+
+**Sequencing note.** Adds 1–4 do not touch the recursion spine, so they are safe first. The
+`#: notes:` abandon test still governs: if the six graveyard granters ever fall below four,
+this has become deck 14 in the wrong colours.
+
+---
+
 ## 6. Was a "rule 3b" variant deck viable? — ASKED AND ANSWERED (2026-08)
 
 **Counted first, per G-59.** A pool sweep of the effect shape returns **19 Standard payoffs
