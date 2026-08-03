@@ -631,12 +631,17 @@ def _wiring_flags():
         "filler bear": {"type": "Creature — Bear", "text": "Vanilla."},
         "mountain": {"type": "Basic Land — Mountain", "text": ""},
     }
+    #      BASELINE UPDATED 2026-08: the "no classified role" half of that premise is
+    #      no longer true. `_ROLE_PATTERNS` required a literal `{` after "add", so
+    #      "{T}: Add one mana of any color" — how Magic templates EVERY rainbow source —
+    #      scored zero roles. With that closed, a fixer earns Ramp/fixing credit and no
+    #      longer tops the cut list on its own. The `add_is_fixer` guard still matters:
+    #      role credit makes a fixer less cuttable, not uncuttable.
     blind = deck._weakest_cut(_dmeta, _cards, _cmeta, _cdata, add_is_fixer=False)
     guarded = deck._weakest_cut(_dmeta, _cards, _cmeta, _cdata, add_is_fixer=True)
-    if blind != "Rainbow Rock":
-        errs.append(f"_weakest_cut baseline changed: expected the untagged, role-less "
-                    f"fixer to rank most-cuttable, got {blind!r} — the anchor below no "
-                    "longer tests what it claims.")
+    if blind == "Rainbow Rock":
+        errs.append("_weakest_cut ranks a rainbow fixer most-cuttable again — the "
+                    "Ramp/fixing role credit that closed this (2026-08) has regressed.")
     if guarded == "Rainbow Rock":
         errs.append("_weakest_cut proposed cutting a rainbow fixer to make room for "
                     "another fixer — the add-blind cut regression (decks 13/17).")

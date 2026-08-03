@@ -174,6 +174,31 @@ class TestClassifyRoles:
                "{t}, sacrifice this token: you gain 3 life.\")"
         assert not any(p.search(text) for p in deck._NONCREATURE_ANSWER_CUES), text
 
+    def test_any_colour_source_is_ramp_fixing(self):
+        # The ramp pattern required a literal `{` right after "add", so it read
+        # "{T}: Add {G}" and missed "{T}: Add one mana of any color" — i.e. EVERY rainbow
+        # source. Bloom Tender, Great Divide Guide, Springleaf Drum and Agatha's Soul
+        # Cauldron all scored ZERO roles, in decks whose #1 weakness is the manabase.
+        for text in [
+            "Vivid — {T}: For each color among permanents you control, add one mana of that color.",
+            'Each land and Ally you control has "{T}: Add one mana of any color."',
+            "{T}, Tap an untapped creature you control: Add one mana of any color.",
+            "You may spend mana as though it were mana of any color to activate abilities "
+            "of creatures you control.",
+            "Lands you control gain all basic land types until end of turn. Draw a card.",
+        ]:
+            assert "Ramp / fixing" in deck.classify_roles(text), text
+
+    def test_cast_from_top_of_library_is_card_advantage(self):
+        # A permanent draw substitute — Vizier of the Menagerie, Bolas's Citadel. Scored
+        # nothing. Etali's "each player's library" was missed by the your-library scoping.
+        assert "Card advantage" in deck.classify_roles(
+            "You may look at the top card of your library any time. You may cast creature "
+            "spells from the top of your library.")
+        assert "Card advantage" in deck.classify_roles(
+            "Whenever Etali attacks, exile the top card of each player's library, then you "
+            "may cast any number of spells from among them without paying their mana costs.")
+
     def test_clue_token_is_card_advantage(self):
         # `investigate` was indexed but the spelled-out token was not, so The Mechanist —
         # a Clue per noncreature spell — scored Payoff/engine only and a deck built on it
@@ -1483,10 +1508,20 @@ class TestColorFixerOverlay:
         }
         return {}, cards, cardmeta, carddata
 
-    def test_fixer_tops_the_cut_list_when_the_add_is_not_a_fixer(self):
-        # The baseline the guard exists to correct: a fixer carries no synergy tags and
-        # no classified role, so theme-fit + role-credit ranks it most-cuttable.
-        assert deck._weakest_cut(*self._fixture(), add_is_fixer=False) == "Rainbow Rock"
+    def test_fixer_no_longer_tops_the_cut_list_on_role_credit_alone(self):
+        # BASELINE CHANGED 2026-08, and the change is an improvement rather than a
+        # regression. This used to assert "Rainbow Rock", on the premise that a fixer
+        # "carries no synergy tags AND NO CLASSIFIED ROLE, so theme-fit + role-credit
+        # ranks it most-cuttable". The second half of that premise is no longer true:
+        # `_ROLE_PATTERNS` required a literal `{` after "add", so "{T}: Add one mana of
+        # any color" — the templating of EVERY rainbow source — scored zero roles. With
+        # that hole closed a fixer earns Ramp/fixing credit and stops sorting to the top
+        # on its own.
+        #
+        # The `add_is_fixer` guard below is NOT redundant now: role credit makes a fixer
+        # less cuttable, it does not make it uncuttable, and a fixer in a deck full of
+        # higher-fit cards can still surface. The guard is what makes that safe.
+        assert deck._weakest_cut(*self._fixture(), add_is_fixer=False) == "Filler Bear"
 
     def test_fixer_excluded_when_the_add_is_a_fixer(self):
         assert deck._weakest_cut(*self._fixture(), add_is_fixer=True) == "Filler Bear"

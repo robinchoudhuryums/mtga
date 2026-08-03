@@ -402,3 +402,58 @@ this session. The user plans 1–2 gold bombs in 52a, which is what F-02 unblock
 **Where I left off**: all four findings implemented, 826 tests green, check_all clean with
 2 new (intended) soft warnings. Documentation updates are listed at the end of the
 implement block and NOT yet applied — run `/sync-docs`.
+
+---
+
+## Session 2026-08 (later) — role-coverage gate + batched classifier fixes
+
+**Context.** A long deck-building session on the Grand Lotus family (decks 54 / 54a / 54b)
+kept turning up holes in `deck._ROLE_PATTERNS` — eight of them, every single one found by a
+human reading a card rather than by any gate. `/broad-implement` was run on the two
+recommendations that came out of asking what the common thread was.
+
+**The thread, which is the finding worth remembering:** `_ROLE_PATTERNS` is a WHITELIST of
+phrasings, and Magic templates the same effect several ways. A card templated a way no
+pattern anticipates scores ZERO roles, and the tier floor, the `cuts` ranking, the quality
+guard and check_all's own reporting all inherit that as fact. The failure is never an
+error and never an over-count — always a silent under-count.
+
+**Completed:**
+- **REC-1** — `scripts/check_roles.py` + `scripts/role_baseline.txt`, on the
+  `keyword_baseline.txt` design. Soft, non-gating warning in check_all. Baseline is 367.
+- **REC-2** — three classifier holes fixed in ONE pass (deliberately batched: each fix
+  costs a roster-wide prose sweep, and three were already done this session):
+  any-colour ramp, Etali-style impulse, casting off the top of the library.
+
+**The ramp hole was the biggest single one found all session.** The pattern required a
+literal `{` after "add", so `{T}: Add one mana of any color` — the templating of EVERY
+rainbow source — matched nothing. Bloom Tender, Great Divide Guide, Springleaf Drum and
+Agatha's Soul Cauldron all read as having no functional role, in three decks whose #1
+graded weakness is the manabase.
+
+**Decisions made:**
+- check_roles is DECK-scoped, not pool-scoped. A pool-wide scan of ~30k cards is noise; a
+  card in a deck is one some model has already been asked about.
+- The gate is SOFT. A genuinely roleless card (a vanilla body, a pure combat trick) is a
+  legitimate zero and breaks no invariant.
+- The baseline is read as a DELTA, not a target. 367 is not a backlog to drive to zero.
+- The Treasure-reminder-text over-fire on the ramp patterns was left in, documented in
+  place, because Ramp / fixing does not feed `deck_quality_vector`.
+
+**Corrected in flight:** the first draft of the ramp pattern used a paraphrase where Bloom
+Tender's real text is the Vivid form ("add one mana of THAT color"). The test written from
+the card's ACTUAL text caught it — paraphrasing a card into a fixture is how a pattern gets
+written for a card that does not exist.
+
+**Test double found and updated, not reactively:** `check_suggest.py` anchor 15 and its
+pytest twin asserted a rainbow fixer ranks most-cuttable on the premise that it has "no
+classified role". The ramp fix falsifies that premise; both were re-premised rather than
+deleted, keeping the `add_is_fixer` guard assertion.
+
+**Where I left off**: 861 tests green, all fourteen gates green, check_all clean with the
+4 pre-existing stale rationales unchanged. CLAUDE.md gate count and subsystem inventory
+updated. One documentation judgement left for `/sync-docs`: whether the whitelist-failure
+lesson deserves its own `[G-nn]` anchor — it currently lives only in check_roles.py's
+docstring, and K-12 covers "counts under-count" but not "the pattern set is a whitelist".
+Also still open and unrelated: the queued swap plans for decks 54 / 54a / 54b in
+`.cycle/54-pile-reanalysis.md` §5 and §5b.

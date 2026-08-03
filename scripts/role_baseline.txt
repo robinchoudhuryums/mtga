@@ -1,0 +1,375 @@
+# Cards in decks/ that deck.classify_roles() scores with NO functional
+# role. ACKNOWLEDGED, not approved: some are genuinely roleless (vanilla
+# bodies, pure combat tricks, build-arounds whose value sits on another
+# card), and some are classifier holes nobody has triaged yet.
+#
+# This list should only ever SHRINK. A new entry means either a deck edit
+# introduced an untriaged card or a pattern regressed.
+# `check_roles.py --update-baseline` to acknowledge the current set.
+A.I.M. Synthoids
+Aang's Iceberg
+Absorbing Man
+Accumulate Wisdom
+Adaptive Automaton
+Additive Evolution
+Aerial Doombot
+Aettir and Priwen
+Agent Phil Coulson
+Agents of HYDRA
+Airbending Lesson
+Ajani, Caller of the Pride
+Alien Invasion
+Alpharael, Stonechosen
+Ancient Adamantoise
+Angel of Vitality
+Angelic Destiny
+Another Round
+Anticausal Vestige
+Appa, Loyal Sky Bison
+Applied Geometry
+Arnim Zola, Bio-Fanatic
+Ashroot Animist
+Atomic Microsizer
+Aurelia, the Warleader
+Avatar's Wrath
+Avengers Assemble!
+Avengers: Under Siege
+Azula, Cunning Usurper
+Badgermole
+Badgermole Cub
+Banner of Kinship
+Bark of Doran
+Barret Wallace
+Baxter Stockman
+Beetle-Headed Merchants
+Benevolent River Spirit
+Bespoke Bō
+Betor, Kin to All
+Biogenic Upgrade
+Bitterbloom Bearer
+Black Cat, Cunning Thief
+Black Widow, Super Spy
+Blacksmith's Talent
+Blasphemous Edict
+Blitzball Shot
+Bloodthirsty Conqueror
+Brightspear Zealot
+Broodguard Elite
+Bumi, King of Three Trials
+Bumi, Unleashed
+Burning Curiosity
+Buzz Bots
+Bygone Colossus
+Captain America, Living Legend
+Captain America, Wings of Freedom
+Captain Mar-Vell, Space-Born
+Case of the Stashed Skeleton
+Casey Jones, Jury-Rig Justiciar
+Cat-Owl
+Central Elevator // Promising Stairs
+Cephalid Inkmage
+Champions of the Shoal
+Charging Strifeknight
+Child of the Volcano
+Cloud, Midgar Mercenary
+Colossification
+Corrupt Court Official
+Crashing Wave
+Craterhoof Behemoth
+Cruelclaw's Heist
+Crustacean Commando
+Cryogen Relic
+Dark Confidant
+Darkstar Augur
+Death Baron
+Deceit
+Deepchannel Duelist
+Deepmuck Desperado
+Deepway Navigator
+Delney, Streetwise Lookout
+Devastating Onslaught
+Diligent Zookeeper
+Donatello, Mutant Mechanic
+Donatello, Turtle Techie
+Draconautics Engineer
+Dragon Fodder
+Dragoon's Lance
+Dragoon's Wyvern
+Dread Summons
+Dream Harvest
+Drix Fatemaker
+Dwynen's Elite
+Earth Kingdom General
+Earth Kingdom Soldier
+Earthbending Lesson
+Earthen Ally
+Echo, Perceptive Prodigy
+Eerie Gravestone
+Ember Island Production
+Emeritus of Woe
+Emil, Vastlands Roamer
+Empyrean Eagle
+End of the Hunt
+Enigma Drake
+Enter the Enigma
+Falcon's Wing Harness
+Falcon, Winged Wonder
+Fated Firepower
+Felonious Rage
+Fierce Empath
+Fire Sages
+Firebender Ascension
+Fireshrieker
+Flamehold Grappler
+Flexible Waterbender
+Flopsie, Bumi's Buddy
+Flowerfoot Swordmaster
+Foggy Swamp Visions
+Formidable Speaker
+Fortress Kin-Guard
+Frantic Strength
+Frontline War-Rager
+Frozen in Ice
+Fynn, the Fangbearer
+Gangly Stompling
+Gather the White Lotus
+Genji Glove
+Ghost, Spectral Saboteur
+Ghostly Keybearer
+Giant Cindermaw
+Giant Koi
+Glamer Gifter
+Glider Kids
+Glider Staff
+Goldvein Hydra
+Gravelgill Scoundrel
+Greenbelt Guardian
+Groundchuck & Dirtbag
+Growth Curve
+Guidelight Matrix
+Hama, the Bloodbender
+Hard-Won Jitte
+Harmonious Grovestrider
+Hawkeye, Young Avenger
+Hecteyes
+Hei Bai, Spirit of Balance
+Hemosymbic Mite
+Herald of Eternal Dawn
+Heroes' Hangout
+High Fae Trickster
+High Perfect Morcant
+Honored Knight-Captain
+Hour of Victory
+How to Start a Riot
+Hulking Raptor
+HYDRA Troopers
+Hylderblade
+Hymn of the Faller
+I Am Iron Man
+Imperious Inkmage
+Imperious Perfect
+Improvised Arsenal
+Ingenious Leonin
+Invasion Reinforcements
+Invasion Submersible
+Iron Lad, Diverging Destiny
+Iron Man Armor
+Iron Man, Master of Machines
+Iron Spider, Stark Upgrade
+Ironpaw Aspirant
+Itzquinth, Firstborn of Gishath
+Jadelight Spelunker
+Jecht, Reluctant Guardian
+Jennifer Walters
+Jeong Jeong, the Deserter
+Joo Dee, One of Many
+K'un-Lun Warrior
+Katara, Bending Prodigy
+Katara, Water Tribe's Hope
+Kavaron Skywarden
+Kitsune's Technique
+Klaw, Sonic Subjugator
+Krenko, Mob Boss
+Krumar Initiate
+Kutzil, Malamet Exemplar
+Kyoshi Battle Fan
+Laughing Jasper Flint
+Leader, Super-Genius
+Leonardo, Big Brother
+Leyline of Transformation
+Lifecraft Engine
+Living Brain, Mechanical Marvel
+Loading Zone
+Loki Laufeyson
+Long Feng, Grand Secretariat
+Loot, Exuberant Explorer
+Lorehold, the Historian
+Lys Alana Informant
+Madame Web, Clairvoyant
+Mai, Scornful Striker
+Mardu Devotee
+Mechanical Mobster
+Mechanized Ninja Cavalry
+Metalhead
+Michelangelo, Weirdness to 11
+Mind Transfer Protocol
+Miner's Guidewing
+Mirror Room // Fractured Realm
+Mirrormind Crown
+Mob Lookout
+Molten Man, Inferno Incarnate
+Moonshadow
+Moonshaker Cavalry
+Morcant's Eyes
+Multiversal Incursion
+Namazu Trader
+Nashi, Searcher in the Dark
+Needletooth Pack
+Ninja of the Hand
+North Pole Patrol
+Nurturing Bristleback
+Okoye, Dora Milaje Leader
+Omniscience
+Ostrich-Horse
+Outrageous Robbery
+Pain 101
+Pain for All
+Palani's Hatcher
+Paradox Surveyor
+Pet Avengers
+Powerful Broker
+Pride of the Road
+Prideful Parent
+Procrastinate
+Psychic Whorl
+Pym Particles
+Quicksilver, Brash Blur
+Quill-Blade Laureate
+Radiant Lotus
+Rampaging Ceratops
+Ran and Shaw
+Raph & Leo, Sibling Rivals
+Raphael, the Nightwatcher
+Ray Fillet, Man Ray
+Reckless Velocitaur
+Red Room Recruit
+Redirect Lightning
+Regal Imperiosaur
+Relm's Sketching
+Renet, Temporal Apprentice
+Reno and Rude
+Resolute Reinforcements
+Restorative Technique
+Return the Favor
+Riverchurn Monument
+Roaming Throne
+Rough Rhino Cavalry
+S.H.I.E.L.D. Spy Kit
+Samurai's Katana
+Satoru, the Infiltrator
+Sawblade Skinripper
+Scrabbling Skullcrab
+Searslicer Goblin
+Secret of Bloodbending
+Seedglaive Mentor
+Seismic Sense
+Serra Angel
+Serra Redeemer
+Shimmercreep
+Shredder, Unrelenting
+Shrike Force
+Silent Hallcreeper
+Silvergill Mentor
+Snow Villiers
+Soul Immolation
+Sovereign Okinec Ahau
+Sozin's Comet
+Spectral Sailor
+Spider-Rex, Daring Dino
+Spider-Suit
+Spider-Woman, Secret Agent
+Splinter, Hamato Yoshi
+Splinter, Radical Rat
+Stalactite Dagger
+Starfield Shepherd
+Stargaze
+Stature, Size Shifter
+Stegron the Dinosaur Man
+Stormscale Scion
+Sultai Devotee
+Sun Warriors
+Sun-Spider, Nimble Webber
+Super Strength
+Super-Soldier Serum
+Surrak, Elusive Hunter
+Sylvan Scavenging
+Tangle Tumbler
+Tannuk, Steadfast Second
+Tapestry Warden
+Taskmaster, Mercenary Mimic
+Team Tactics
+Technodrome
+Terra, Magical Adept
+Tezzeret, Cruel Captain
+Thawbringer
+The Boulder, Ready to Rumble
+The Cave of Two Lovers
+The Infamous Cruelclaw
+The Last Ronin's Technique
+The Masters of Evil
+The Mindskinner
+The Thing, Ben Grimm
+The Wondrous Wasp
+Tinybones, Bauble Burglar
+Tinybones, the Pickpocket
+Titania, Rugged Rumbler
+Toph, the Blind Bandit
+Trade the Helm
+Tragedy Feaster
+Training Regimen
+Transit Mage
+Traveling Chocobo
+Treetop Snarespinner
+Triceraton Commander
+Triumphant Chomp
+Trusty Boomerang
+Turtle-Duck
+Twin Blades
+Twinflame Tyrant
+U.S.Agent, John Walker
+Ultron Drone
+Umbral Collar Zealot
+Underwater Tunnel // Slimy Aquarium
+United Front
+Unstable Experiment
+Unstoppable Slasher
+Utrom Scientists
+Venus, Torn Between Worlds
+Veteran Ice Climber
+Virtue of Loyalty
+Virulent Silencer
+Virus Beetle
+Vision Quest
+Vito's Inquisitor
+Wakandan Royal Guard
+Wanderbrine Trapper
+War Balloon
+War Machine, Legacy of Iron
+War Squeak
+Warrior's Sword
+Wary Watchdog
+Water Tribe Rallier
+Waterbender Ascension
+Waterwind Scout
+Waxen Shapethief
+Weapons Vendor
+Web-Shooters
+Weftblade Enhancer
+Welcome to Sweettooth
+White Tiger, Ava Ayala
+Wild Hypothesis
+Wisecrack
+Wonder Man, Hollywood Hero
+Wrench
+Zimone, Paradox Sculptor
+Zog, Triceraton Castaway

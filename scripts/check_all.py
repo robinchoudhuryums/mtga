@@ -309,6 +309,26 @@ def main():
     except Exception as e:
         soft.append(f"keyword radar skipped ({e})")
 
+    # Soft: ZERO-ROLE cards — a card in a deck that `classify_roles` reads as having no
+    # functional role at all. `_ROLE_PATTERNS` is a WHITELIST of phrasings, so a card
+    # templated a way no pattern anticipates scores nothing, and the tier floor, the
+    # `cuts` ranking and the quality guard all inherit that as fact. Eight such holes were
+    # found in one 2026-08 session, every one by a human reading a card. Baselined, so it
+    # stays quiet until a deck edit or a new set introduces one; soft because a genuinely
+    # roleless card (a vanilla body, a pure combat trick) is a legitimate zero.
+    try:
+        import check_roles as cr
+        rflags = cr.check()
+        if rflags:
+            ex = ", ".join(n for n, _t, _x in rflags[:4])
+            soft.append(f"role coverage: {len(rflags)} deck card(s) score NO functional role and "
+                        f"are not baselined (e.g. {ex}"
+                        + (", …" if len(rflags) > 4 else "")
+                        + ") — read the text, then fix the pattern in deck._ROLE_PATTERNS "
+                          "or run check_roles.py --update-baseline")
+    except Exception as e:
+        soft.append(f"role coverage check skipped ({e})")
+
     # Soft: THEME coverage — owned cards whose text plays a theme they aren't tagged with
     # (the theme analog of role_coverage_flags); distorts every tag-based recommendation.
     # Summarized to one line so a batch of mis-tags doesn't flood the soft section.

@@ -1,8 +1,10 @@
 #: name: Zoologist
 #: format: Standard
-#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor now reads A, not B (interaction 8, card advantage 2
-#: tier: — the old note claimed card advantage was "under-read as 0", which is no longer
-#: tier: the shape of the problem; it is genuinely thin rather than mis-counted). A single-payoff glass cannon (lives/dies on Zookeeper) defended by scaling removal (Bite Down/Rabid Bite) + bounce + Spell Pierce; held below A by that fragility and rainbow-singleton variance. Now fully owned.
+#: tier: B — Simic changeling / Diligent-Zookeeper type-count deck; the metrics floor now reads A, not B (interaction 8, card advantage 3
+#: tier: — an older note claimed it was "under-read as 0". CORRECTED TWICE since, and both
+#: tier: times it WAS mis-counted: a 2026-08 pass taught the classifier that Clue tokens,
+#: tier: impulse and casting off the top of your library are card advantage. Three is the
+#: tier: current honest figure and still thin). A single-payoff glass cannon (lives/dies on Zookeeper) defended by scaling removal (Bite Down/Rabid Bite) + bounce + Spell Pierce; held below A by that fragility and rainbow-singleton variance. Now fully owned.
 #: colors: GU
 #: archetype: Simic (G/U) changeling / creature-type-count — flood the board with all-types creatures, then Diligent Zookeeper makes them enormous; a scaling-removal interaction suite keeps it from being a one-card combo.
 #: notes: The focused, resilient build (promoted from the old 34a variant; the original undirected

@@ -730,10 +730,10 @@ commands read them, so the field structure is load-bearing. Detail belongs in
 `docs/cycle-config.md` under the `[C-nn]` anchor a field carries.
 
 **Test Command:** `python3 scripts/check_all.py` — the deterministic integrity gate; it
-exits non-zero on any hard invariant break. INV-01…04 plus **thirteen model-sanity
+exits non-zero on any hard invariant break. INV-01…04 plus **fourteen model-sanity
 gates** (`check_rankings`, `check_colors`, `check_dfc`, `check_suggest`, `check_engines`,
 `check_tier`, `check_patterns`, `check_commands`, `check_agreement`, `check_docs`, and the
-soft `check_keywords` / `check_themes` / rationale-and-flex sweeps). Two things to know
+soft `check_keywords` / `check_roles` / `check_themes` / rationale-and-flex sweeps). Two things to know
 before touching it: it imports `deck` as a MODULE and calls `cmd_*` directly, so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
 step — and the reference-table loaders are memoized, which is what makes a roster-wide
@@ -761,8 +761,8 @@ earned it: [C-01]
   scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py,
   scripts/sheets_sync.py, scripts/scryfall.py, scripts/lib.py [C-04]
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py,
-  scripts/wishlist.py, scripts/validate.py, scripts/check_all.py + the twelve
-  `check_*.py` gates, scripts/keyword_baseline.txt [C-05]
+  scripts/wishlist.py, scripts/validate.py, scripts/check_all.py + the thirteen
+  `check_*.py` gates, scripts/keyword_baseline.txt, scripts/role_baseline.txt [C-05]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
