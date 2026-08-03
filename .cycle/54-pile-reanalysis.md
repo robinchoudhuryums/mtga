@@ -208,6 +208,107 @@ cost is close to irrelevant there. Re-examine all three before the final ranking
 **New standing error (7): I CUT CARDS FROM DECK 54 ON HARD-CAST RATE WHILE HOLDING THE
 FRAMEWORK THAT SAYS NOT TO.** Elemental Teachings and Lost Days were both cut in the
 five-swap fixing package. Before any further Lesson leaves deck 54, price it at `{1}`.
-### Batch 4 — pending
+### Batch 4 (32 cards — heavily landfall, so much of it is deck 30/50a material)
+
+**THE TRAP OF THE BATCH: Taigam, Master Opportunist looks perfect and fights the engine.**
+*"Flurry — whenever you cast your second spell each turn, copy it, then **exile** the spell
+you cast with four time counters on it… it gains suspend."* A free copy plus a free recast
+later reads as a dream 54a card. But the original is **exiled instead of reaching your
+graveyard**, so every second spell each turn is removed from the recursion pipeline — and
+it shrinks Melek's power, The Lord Master of Hell's Starfall, and Steal the Show's damage,
+all of which count cards *in the graveyard*. This is the G-42 mirror: a fine card that
+attacks your own engine. **✗ despite the power level.**
+
+| Card | 54 | 54a | Note |
+|---|---|---|---|
+| **Bristly Bill, Spine Sower** `{1}{G}` own M | ◇ | ★★ | Landfall: a +1/+1 counter **every land drop**, i.e. one guaranteed per turn — the repeatable counter source the utility layer lacks, on a two-drop. `{3}{G}{G}` doubles all counters. Cheaper than Zimone for the same job. |
+| **Shang-Chi, Master of Kung Fu** `{1}{G}` own M | ◇ | ★★ | *"You may activate abilities of creatures you control as though those creatures had haste."* Topiary Lecturer, Berta, Mona Lisa, Hydro-Channeler, Loki and Iron Fist all have `{T}` abilities that otherwise idle a turn. Accelerates the whole activated-ability manabase. |
+| **Doc Samson, Super Psychiatrist** `{4}{G}` own | ◇ | ★ | Counters arrive **plus one**, on every kind — and `{T}`: X mana of any colour where X is his power. A counters amplifier that is also a mana engine. Five mana. |
+| **Claim the Kingdom** `{1}{G}` own | ◇ | ★ | Counter per land drop + an **indestructible counter** at four — counters and protection, the axis 54a sits at 1. |
+| **Primeval Bounty** `{5}{G}` own M | ◇ | ★ | **Three** +1/+1 counters per noncreature spell. Enormous for the counters layer; six mana is the price. |
+| **Hardbristle Bandit** `{1}{G}` | ◇ | ★ | `{T}`: any colour, and it **untaps whenever you commit a crime** — 54a targets opponents every turn, so it is effectively two rainbow mana per turn from a two-drop. |
+| **The Mechanist, Aerial Artisan** `{2}{U}` own | ◇ | ◇★ | A **Clue per noncreature spell** — real card advantage on 54a's weakest axis (3), in a deck casting 3–5 spells a turn. |
+| **The Everflowing Well** `{2}{U}` own | ◇ | ◇★ | ETB **mill two, draw two** — yard fill and cards in one, for three mana. |
+| **Roxanne, Starfall Savant** `{3}{R}{G}` | — | ★ | Meteorite tokens: 2 damage on entry **and** a rainbow mana source, then doubles artifact-token mana. Removal plus fixing; five mana and wants to attack. |
+| **Undercover Skrull** `{1}{G}` own | ◇ | ◇★ | Two-drop rainbow source that becomes a 3/3 all-types once two creature cards are in the yard. |
+| **Muse Seeker** `{1}{U}` own | ◇ | ◇ | **RULE 3 CARD — read it carefully.** *"draw a card, then discard unless five or more mana was **spent**"* means a `{1}`-recast deck **always discards**. It is a LOOTER (yard fill), not card advantage. Fine — but not what it looks like. |
+| Astrologian's Planisphere / Illvoi Operative / Razzle-Dazzler / Splashy Spellcaster / Kulrath Mystic | — | ◇ | Small spell-count payoffs. Razzle-Dazzler grants itself **unblockable**, which matters if 54a commits to the attack sub-theme. |
+| Mole Man / A Realm Reborn / Galvanic Giant / Ojer Pakpatiq / Redshift / Dragonbroods' Relic | — | △ | A Realm Reborn does Great Divide Guide's job for four more mana. Ojer Pakpatiq's rebound is **hand-only and instant-only**. Redshift's mana is restricted to activated abilities. Dragonbroods' Relic adds a WUBRG stray. |
+| **Taigam, Master Opportunist** own M | ✗ | ✗⚠ | See above — exiles your second spell each turn out of the graveyard pipeline. |
+| Icetill Explorer / Seedship Agrarian / Tannuk / Gladiolus Amicitia / Tifa Lockhart / Dragonback Assault | ✗ | ✗ | Landfall payoffs in decks that play one land a turn. These belong in **deck 30 / 50a**. |
+| Tam, Observant Sequencer | — | — | **Not in the pool under any spelling** — check the name. |
+
+---
+
+## 5. CONSOLIDATED PLAN (live — rewritten after every batch)
+
+Both decks are exactly 60, so **every add needs a cut**. This section is the running
+answer, not a wish list; it is re-ranked as batches land.
+
+### Deck 54 — adds
+
+| Tier | Card | Reasoning |
+|---|---|---|
+| **1** | **Thor, God of Thunder** `{3}{R}{R}` own | Damage = the spell's **mana value**, so a `{1}`-flashbacked Improvisation Capstone (MV 7) deals 7 to any target. Converts the deck's founding insight into a clock. → `#: protect:` on add. |
+| **1** | **Toph, Hardheaded Teacher** `{2}{R}{G}` | Every spell earthbends a land into a growing creature, +1 extra on a **Lesson**. Builds the board `shape` measures at **wide score ZERO** (weakness #3) and returns an instant/sorcery from the yard on ETB. |
+| **1** | **Great Divide Guide** `{1}{G}` own | Every land **and Ally** taps for any colour — and Iroh, Gran-Gran, Hermitic Herbalist are Allies. Weakness #1, on a two-drop. |
+| **1** | **Bloom Tender** `{1}{G}` own | Three mana of the right colours from a two-drop. Weakness #1. |
+| **2** | **Elemental Teachings** `{4}{G}` own | **Un-cut it.** A Lesson → `{1}` via Iroh, fetching **four land cards with different names** (not basics). The curated-lands card. |
+| **2** | **Shared Roots** `{1}{G}` | A Lesson, so a repeatable `{1}` land drop. Lessons 17 → 18. |
+| **2** | **Ember Island Production** `{3}{U}{U}` own | A **non-legendary** copy of Iroh — actual redundancy for weakness #2, which Fierce Empath only *finds*. |
+| **2** | **Guru Pathik** `{2}{G/U}{G/U}` own | Digs 5 for a Lesson, then a counter per Lesson cast — feeds the 8 counter enablers that currently have no payoff. |
+| **3** | **Inspiring Call** `{2}{G}` | The counters **payoff** (weakness #3) plus team indestructible; protection is 2. |
+| **3** | **Redirect Lightning** `{R}` own | A Lesson that redirects, recastable for `{1}` + 5 life **every turn**. Repeatable protection. |
+| **3** | **Zimone's Experiment** `{3}{G}` own · **Overprotect** `{1}{G}` · **Lost Days** `{4}{U}` own (un-cut) · **Jeong Jeong** `{2}{R}` own (copies a Lesson) | |
+
+### Deck 54 — cuts, and the constraint that shapes them
+
+**The cut pool is mostly Lessons, and cutting a Lesson costs the two payoffs that SCALE
+with the count** (Combustion Technique, Bumi's X). Prefer non-Lesson cuts; note that five
+of the tier-1/2 adds are themselves Lessons, so the count holds or rises.
+
+| Cut | Reasoning |
+|---|---|
+| **Fierce Empath** `{2}{G}` | Narrow tutor (MV 6+ only), Pw 1. Ember Island Production is better engine redundancy. Non-Lesson. |
+| **It'll Quench Ya!** `{1}{U}` | The one card actively fighting the plan — a reactive `{2}`-tax counter in a deck that taps out. Lesson, so it costs 1 from the count. |
+| **Serpent of the Pass** `{7}` | Seven-drop on a 3.06 curve. Non-Lesson. |
+| **Seismic Sense** `{G}` | Cheapest Lesson, lowest impact; `⌁scales w/ lands` so it is graded at its floor — read before cutting. |
+| **Formidable Speaker** `{2}{G}` | ⚡cost-as-upside (discard fills the yard) and one of two Iroh finders — **cut last**. |
+| **Abandon Attachments** `{1}{U/R}` | ⚡cost-as-upside, low power. Lesson. |
+| ⓘ | `cuts` warns deck 54 is **short on early drops (17)** — three of these are MV 1–2. Do not take all of them. |
+
+### Deck 54a — adds
+
+| Tier | Card | Reasoning |
+|---|---|---|
+| **1** | **Melek, Reforged Researcher** `{3}{U}{R}` own | **`{3}` off** the first instant/sorcery each turn — the largest Class B discount in these colours, stacking with Doc Aurlock to `{5}`. P/T = 2× the yard, and **Songcrafter taps him to reduce a harmonize by his power**, which makes any expensive spell free from the graveyard. |
+| **1** | **Thor, God of Thunder** `{3}{R}{R}` own | As above; MV 3–5 recasts become 3–5 damage each, repeatedly. → `#: protect:` on add. |
+| **1** | **Bloom Tender** + **Great Divide Guide** `{1}{G}` own | Four mana total closes the manabase weakness (U14/R14/G10). |
+| **1** | **Steal the Show** `{2}{R}` | Choose one **or both**: yard fill *and* damage = instants+sorceries in the graveyard. Scaling removal on the exact resource the deck hoards. |
+| **2** | **Retrieve the Esper** `{3}{U}` own | *"if this spell was cast from a graveyard, put two +1/+1 counters"* — a **fifth payoff** for the deck's #1 weakness (4 payoffs), and Iroh recasts it at `{3}{U}`, Doc Aurlock at `{1}{U}`. |
+| **2** | **Kid Loki** `{U}` own · **Overprotect** `{1}{G}` | Protection 1 → 3. Kid Loki's hexproof needs a counter placed **that turn**, so on the opponent's turn it runs off Agatha's Soul Cauldron's untimed `{T}`. |
+| **2** | **Bristly Bill** `{1}{G}` own · **Shang-Chi** `{1}{G}` own | A guaranteed counter per turn, and haste for every `{T}` ability. Both two-drops, both owned. |
+| **2** | **Abstract Paintmage** `{U}{U/R}{R}` · **Ashling, Rekindled** `{1}{R}` own | Two free mana per turn for instants/sorceries; loot + ramp restricted to MV 4+, which the thesis makes free. |
+| **2** | **The Emperor of Palamecia** `{U}{R}` own | Unconditional mana ability; back face deals damage = noncreature nonland cards in your graveyard, per attack. |
+| **3** | **High Fae Trickster** `{3}{U}` own | Cast all spells as though they had flash — fixes the **2 instant / 8 sorcery** profile. |
+| **3** | **Electro** `{1}{R}{R}` own · **Rapturous Moment** `{4}{U}{R}` · **Zimone** `{2}{G}{U}` own · **Loading Zone** `{3}{G}` own · **Inspiring Call** · **Case of the Ransacked Lab** `{2}{U}` · **Iron Fist** `{2}{R}` own · **Firebender Ascension** `{1}{R}` own | Iron Fist and Firebender Ascension are **contingent on the attack decision** in §3. |
+| **3** | **Frontier Bivouac** (true GUR tri-land) · **Mona Lisa** · **Hydro-Channeler** · **Planetarium** `{6}` own | |
+| **⚠** | **Thousand-Year Storm** own | Powerful and on-plan, but it is deck 25's signature card and collapses 54a toward it on `similar`. **User call.** |
+
+### Deck 54a — cuts
+
+| Cut | Reasoning |
+|---|---|
+| **Duel Tactics** `{R}` | 1 damage. The single card extracting nothing from any enabler class — the thesis's clearest target. |
+| **Boomerang Basics** `{U}` | Weakest removal (`cuts` fit 16, Pw 3); bounce is the softest interaction, and MV 1 wastes every discount. |
+| **Channeled Dragonfire** `{R}` | 2 damage, and its Harmonize is `{5}{R}{R}` — coloured pips no discount touches (rule 2). |
+| **Tome Blast** `{1}{R}` | 2 damage, flashback `{4}{R}`. Same shape, one mana worse. |
+| **Accumulate Wisdom** `{1}{U}` | **Not yard fill** — it bottoms what it doesn't take. Pure selection; held only for the Lesson-count gate. |
+| **Self-Reflection** `{4}{U}{U}` | Strictly worse than Ember Island Production, whose copy is **not legendary** (so it can copy Iroh). |
+| **Abandon Attachments** `{1}{U/R}` | ⚡cost-as-upside, but low power and MV 2. |
+| **Glacial Dragonhunt** `{U}{R}` | **Cut LAST** — loot + conditional removal + yard fill in one, with a power-reducible Harmonize. Better than its ranking. |
+| **PROTECT** | **Loki Laufeyson, Berta, Germination Practicum** — `cuts` ranks all three near the top because their payoffs are power-scaling activated abilities and unindexed Increment (K-01) that no tag-gated tool can see. **Origin of Metalbending** is 1 of only 4 noncreature answers *and* the deck's other protection source. |
+
+### Batch 5 — pending
 ### Batch 5 — pending
 ### Batch 6 (18 cards) — pending
