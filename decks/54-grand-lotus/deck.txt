@@ -2,23 +2,31 @@
 #: format: Standard
 #: colors: GUR
 #: plan: midrange
-#: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (2 craft targets, zero games).
+#: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (5 craft targets, zero games).
 #: tier: One band BELOW the measurable floor, which reads A on interaction 7 plus card
-#: tier: advantage 3. Against the rubric an A needs four things and this list fails two:
-#: tier:   A-FLOOR — yes. Interaction 7 clears five; the sum of 10 clears seven.
+#: tier: advantage 5. Against the rubric an A needs four things and this list fails two:
+#: tier:   A-FLOOR — yes. Interaction 7 clears five; the sum of 12 clears seven.
 #: tier:   COHERENT ENGINE — yes, and now MEASURED rather than asserted. `targets` finds
-#: tier:     ten gated effects and reports zero thin or unmet: every Lesson-count gate in
+#: tier:     nine gated effects and reports zero thin or unmet: every Lesson-count gate in
 #: tier:     the list — Serpent's three, Bumi's X, Combustion Technique's scaling damage,
-#: tier:     four one-Lesson switches — sits against 20 or 21 Lessons. `engines` reads the
-#: tier:     graveyard axis as balanced 16 enablers / 16 payoffs. Lessons are instants and
+#: tier:     four one-Lesson switches — sits against 17 Lessons. `engines` reads the
+#: tier:     graveyard axis as balanced 18 enablers / 16 payoffs. Lessons are instants and
 #: tier:     sorceries, so casting them IS filling the yard; the engine feeds itself.
-#: tier:   TIGHT CURVE — yes. 3.2 average on 16 early drops.
+#: tier:     WATCH THIS NUMBER. The 2026-08 fixing pass cut four Lessons and added none, so
+#: tier:     the count fell 21 -> 17. Every GATE still clears (they need one to three), but
+#: tier:     two payoffs SCALE with the count rather than switching on — Combustion
+#: tier:     Technique and Bumi's X — and those lost about a fifth of their ceiling. Price a
+#: tier:     Lesson cut against them, not against the gates.
+#: tier:   TIGHT CURVE — yes. 3.06 average on 17 early drops.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND badly.
-#: tier:     (1) THE MANABASE. Three colours on 25 lands, and the deepest colour has 12
-#: tier:     sources. Improvisation Capstone casts on curve at 52%, the three {U}{U}
-#: tier:     five-drops at 59%. The mitigation is real but partial: with Iroh out every
-#: tier:     Lesson costs {1} GENERIC, so the pips stop mattering — the deck is only
-#: tier:     colour-screwed in the games where its engine has not arrived.
+#: tier:     (1) THE MANABASE, and the 2026-08 pass was aimed squarely at it. Three colours
+#: tier:     on 25 lands, deepest colour 12 sources; Improvisation Capstone still casts on
+#: tier:     curve at 52.5% and Echocasting Symposium at 59.1%. Hermitic Herbalist,
+#: tier:     Greenhouse and New Horizons were added as NON-LAND any-colour sources, which is
+#: tier:     the only way to move this axis without cutting spells for lands. The older
+#: tier:     mitigation still holds: with Iroh out every Lesson costs {1} GENERIC, so the
+#: tier:     pips stop mattering — the deck is only colour-screwed in the games where its
+#: tier:     engine has not arrived.
 #: tier:     (2) A ONE-CARD ENGINE. Iroh, Grand Lotus is the ONLY card that grants the
 #: tier:     flashback; Uncle Iroh is a cost reducer and does not substitute. Fierce
 #: tier:     Empath (any MV 6+ creature — Iroh, Bumi or Serpent) and Formidable Speaker
@@ -26,15 +34,20 @@
 #: tier:     this, taking the deck from one copy to three ways to find it. That is
 #: tier:     mitigation, not redundancy.
 #: tier:     (3) BOARD-DEPENDENT PAYOFFS IN A DECK WITH NO BOARD. `shape` measures this
-#: tier:     list as TALL with a WIDE score of ZERO on 13 creature copies, and two of the
+#: tier:     list as TALL with a WIDE score of ZERO on 15 creature copies, and two of the
 #: tier:     marquee Lessons want the opposite: Germination Practicum puts two counters on
 #: tier:     EACH creature you control, Echocasting Symposium copies one. `engines` says
-#: tier:     the same thing from the other side — six counter ENABLERS and no payoff. Both
+#: tier:     the same thing from the other side — EIGHT counter ENABLERS and no payoff. Both
 #: tier:     cards are carried by Paradigm (a free copy every turn compounds even on two
 #: tier:     creatures), which is why they stay, but they are worth materially less here
 #: tier:     than their mana costs suggest, and that is not visible from their text.
 #: tier:     These interact: the manabase is worst exactly when the engine is absent, and
 #: tier:     the board-dependent Lessons are worst exactly when the board is thin.
+#: tier:     THIS IS THE STRONGEST ARGUMENT FOR A VARIANT rather than a repair. A counters
+#: tier:     PAYOFF layer (mana dorks that scale with power, a copy effect gated on power,
+#: tier:     a transform gated on a counter count) would turn eight dead enablers into an
+#: tier:     engine — but it wants the opposite build from this list, so it belongs in a
+#: tier:     54a, not here. See the parked-directions note below.
 #: tier: WHAT ARGUES UP, and why the letter may move after play: the floor counts
 #: tier: interaction 7, but four more cards read as interaction the classifier could not
 #: tier: tag, and a resolved Iroh turns a graveyard of five-drops into a hand of one-drops
@@ -46,14 +59,19 @@
 #: archetype: THAT INVERTS NORMAL DECKBUILDING. A flat flashback cost means the cards you
 #: archetype: most want in the graveyard are the EXPENSIVE ones, so this list deliberately
 #: archetype: runs Lessons it never intends to hard-cast: Improvisation Capstone ({5}{R}{R}),
-#: archetype: Echocasting Symposium ({4}{U}{U}), Germination Practicum ({3}{G}{G}) and
-#: archetype: Secret of Bloodbending ({U}{U}{U}{U}) all cost ONE with Iroh on the
+#: archetype: Echocasting Symposium ({4}{U}{U}) and Germination Practicum ({3}{G}{G}) all
+#: archetype: cost ONE with Iroh on the
 #: archetype: battlefield. The deck's job is to get them into the yard and then untap.
 #: archetype: THE YARD FILLS ITSELF, which is what makes the plan work without a dedicated
 #: archetype: mill package: Lessons are instants and sorceries, so every one you cast
-#: archetype: normally is a card Iroh can buy back later. Accumulate Wisdom bins two of
-#: archetype: three on purpose, Abandon Attachments discards to draw, Platypus-Bear and
-#: archetype: Leaves from the Vine mill, and two Surveillance Rooms do it off a land.
+#: archetype: normally is a card Iroh can buy back later. Abandon Attachments discards to
+#: archetype: draw, Platypus-Bear mills two on entry, Leaves from the Vine mills three on
+#: archetype: chapter I, and two Surveillance Rooms do it off a land. CORRECTION 2026-08:
+#: archetype: this list previously named Accumulate Wisdom as binning two of three. It does
+#: archetype: not — it puts the rest on the BOTTOM of your library, so it is pure selection
+#: archetype: and fills nothing. No audit catches that class of error: `rationale_staleness`
+#: archetype: checks whether a cited card is still in the deck and whether a quoted FIGURE
+#: archetype: matches, not whether a claim about a card's TEXT is true.
 #: archetype: THE PAYOFFS READ THE COUNT, not just the cards. Combustion Technique deals
 #: archetype: 2 plus the Lessons in your graveyard; Bumi, King of Three Trials chooses up
 #: archetype: to X modes where X is that same number; Serpent of the Pass gains flash at
@@ -63,17 +81,30 @@
 #: archetype: LESSON MILL — it mills Lessons as a resource; this recurs them as a second
 #: archetype: hand, in three colours, off a creature. Deck 25 (Spellstorm, UR) is a
 #: archetype: creature deck carrying spell payoffs, and measured, it runs twelve
-#: archetype: instants and sorceries; this runs twenty-three, because here they ARE the
-#: archetype: deck. Neither shares this one's colours.
+#: archetype: instants and sorceries; this runs seventeen (down from twenty-three before the
+#: archetype: 2026-08 fixing pass traded four spells for permanents), because here they ARE
+#: archetype: the deck. Neither shares this one's colours.
 #: protect: Iroh, Grand Lotus; Bumi, King of Three Trials; Combustion Technique; Improvisation Capstone; Echocasting Symposium
 #: notes: WIP — but unusually close to buildable for a from-scratch brew: 26 of the 27
 #: notes: Temur-castable Lessons in Standard were already in the collection, and so were
 #: notes: 15 of the 17 cards that read the Lesson count. The archetype was sitting there.
-#: notes: Secret of Bloodbending was drafted and CUT. It is the purest expression of the
-#: notes: plan — {U}{U}{U}{U} that you flash back for {1} — but it exiles itself on
-#: notes: resolution, so it is a one-shot, and what it buys is a single stolen combat
-#: notes: phase. At 5% on curve it was also single-handedly setting the deck's blue
-#: notes: requirement. Cut for Fierce Empath, which finds the engine.
+#: notes: Secret of Bloodbending was drafted and CUT, and the ORIGINAL reason recorded here
+#: notes: was wrong — it cited 5% on curve, which is the HARD-CAST number for a card this
+#: notes: deck's whole plan says it never hard-casts. Re-examined 2026-08 and still out, on
+#: notes: the text instead: "Exile Secret of Bloodbending" fires on resolution, so unlike
+#: notes: every other Lesson it is a ONE-SHOT even with Iroh, and it is a SORCERY that
+#: notes: controls an opponent during THEIR next combat phase — i.e. what {1} buys is one
+#: notes: declined attack step. Compare the {1} you would otherwise spend: Capstone gives
+#: notes: free spells EVERY turn via Paradigm. Cut for Fierce Empath, which finds the engine.
+#: notes: The stale version also survived `tier --audit-rationale`: the `#: archetype:` block
+#: notes: named the card while the list did not run it and `rationale_staleness` returned
+#: notes: empty. Fourth audit gap found in the 2026-08 cycle; the citation is now removed.
+#: notes: PARKED DIRECTIONS, so they are not re-litigated. Fire Lord Azula: her copy clause
+#: notes: needs a spell cast WHILE SHE IS ATTACKING, and this list holds 7 instants against
+#: notes: 28 other nonland cards, so most of the deck cannot trigger her — the black pip is
+#: notes: the smaller problem. Icetill Explorer / Glacierwood Siege: yard-fill was never the
+#: notes: constraint here (18 enablers), and a mill engine can bin Iroh in a deck with one
+#: notes: copy of him. Both belong in a 54a with granter redundancy, not in the parent.
 #: notes: Paradigm (Germination Practicum, Echocasting Symposium) is an UNINDEXED mechanic
 #: notes: per K-01 — it exiles the spell and then lets you cast a free copy each turn, so
 #: notes: the synergy tagger cannot see that it is a recurring engine. Grade those two
@@ -84,13 +115,13 @@
 1 Uncle Iroh (TLA) 248
 1 Bumi, King of Three Trials (TLA) 169
 1 Serpent of the Pass (TLA) 70
-1 Master Pakku (TLA) 63
+1 Death to Our Enemies (MSH) 127
 1 First-Time Flyer (TLA) 49
 1 Fire Nation Cadets (TLA) 134
 1 Dragonfly Swarm (TLA) 215
 1 Platypus-Bear (TLA) 236
 1 Gran-Gran (TLA) 54
-1 Walltop Sentries (TLA) 202
+1 Hermitic Herbalist (TLA) 226
 1 Abandon Attachments (TLA) 205
 1 Accumulate Wisdom (TLA) 44
 1 It'll Quench Ya! (TLA) 58
@@ -104,8 +135,8 @@
 1 Leaves from the Vine (TLA) 185
 1 Waterbending Lesson (TLA) 80
 1 Sokka's Haiku (TLA) 71
-1 Lost Days (TLA) 62
-1 Elemental Teachings (TLA) 178
+1 Sokka, Bold Boomeranger (TLA) 240
+1 New Horizons (FDN) 557
 1 Germination Practicum (SOS) 149
 1 Echocasting Symposium (SOS) 44
 1 Improvisation Capstone (SOS) 120
@@ -113,8 +144,8 @@
 1 Rockalanche (TLA) 192
 1 Earthbending Lesson (TLA) 176
 1 Formidable Speaker (ECL) 176
-1 Price of Freedom (TLA) 149
-1 Cycle of Renewal (TLA) 170
+1 Doc Aurlock, Grizzled Genius (OTJ) 201
+1 Greenhouse // Rickety Gazebo (DSK) 181
 
 # Lands
 1 White Lotus Hideout (TLA) 281

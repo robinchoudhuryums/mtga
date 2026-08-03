@@ -644,6 +644,21 @@ directions.
   shape to read. Counts exclude the card itself. Heuristic and report-only — read the list,
   not just the number. [G-66]
 
+- **A PATTERN SET IS A WHITELIST, AND A WHITELIST'S MISSES ARE INVISIBLE.** `_ROLE_PATTERNS`
+  matches PHRASINGS, and Magic templates one effect several ways — so a card worded a way no
+  pattern anticipates scores ZERO roles, and the tier floor, `cuts`, the quality guard and
+  `check_all` all inherit that as fact. Never an error, never an over-count: always a silent
+  UNDER-count. Eight holes surfaced in one 2026-08 session, every one found by a HUMAN
+  reading a card. The largest: ramp required a literal `{` after "add", so `{T}: Add one
+  mana of any color` — the templating of EVERY rainbow source — matched nothing, and four
+  fixers read as roleless in the three decks whose #1 weakness is the manabase.
+  **`check_roles.py` + `role_baseline.txt` make the population visible** (soft, deck-scoped,
+  baselined at 367); read it as a DELTA, not a target. Two habits follow: write a pattern's
+  fixture from the CARD'S REAL TEXT, never a paraphrase — that is how you write a pattern
+  for a card that does not exist — and check for a TEST DOUBLE encoding the old behaviour,
+  since `check_suggest` anchor 15 asserted a fixer ranks most-cuttable PRECISELY BECAUSE it
+  had no role. [G-67]
+
 ## Known Issues
 
 Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
@@ -730,10 +745,10 @@ commands read them, so the field structure is load-bearing. Detail belongs in
 `docs/cycle-config.md` under the `[C-nn]` anchor a field carries.
 
 **Test Command:** `python3 scripts/check_all.py` — the deterministic integrity gate; it
-exits non-zero on any hard invariant break. INV-01…04 plus **thirteen model-sanity
+exits non-zero on any hard invariant break. INV-01…04 plus **fourteen model-sanity
 gates** (`check_rankings`, `check_colors`, `check_dfc`, `check_suggest`, `check_engines`,
 `check_tier`, `check_patterns`, `check_commands`, `check_agreement`, `check_docs`, and the
-soft `check_keywords` / `check_themes` / rationale-and-flex sweeps). Two things to know
+soft `check_keywords` / `check_roles` / `check_themes` / rationale-and-flex sweeps). Two things to know
 before touching it: it imports `deck` as a MODULE and calls `cmd_*` directly, so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
 step — and the reference-table loaders are memoized, which is what makes a roster-wide
@@ -761,12 +776,12 @@ earned it: [C-01]
   scripts/build_pool.py, scripts/build_mana.py, scripts/reconcile_crafts.py,
   scripts/sheets_sync.py, scripts/scryfall.py, scripts/lib.py [C-04]
 - Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py,
-  scripts/wishlist.py, scripts/validate.py, scripts/check_all.py + the twelve
-  `check_*.py` gates, scripts/keyword_baseline.txt [C-05]
+  scripts/wishlist.py, scripts/validate.py, scripts/check_all.py + the thirteen
+  `check_*.py` gates, scripts/keyword_baseline.txt, scripts/role_baseline.txt [C-05]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (17 files: the markup-contract, CLI-entry-point, analysis-model,
+- Testing: tests/ (18 files: the markup-contract, CLI-entry-point, analysis-model,
   gate-pinning, shared-primitive and ingest layers), requirements-dev.txt, pytest.ini,
   .github/workflows/tests.yml [C-07]
 - Decks: decks/
@@ -885,7 +900,8 @@ deliverable is the list of **reconciliation points** — every place a human mus
 two answers by hand — plus the overlapping-answer inventory with MEASURED agreement
 rates. Regenerate it by hand when a cycle adds a subcommand or a skill stage.
 `check`, `refresh`, `add-deck`, `draft-deck`, `tune-deck`, `add-cards`,
-`add-wishlist`, `roster-review`, `ingest`, `log-matches`, and `apply-changes` are project-specific. **A skill drifts behind the
+`add-wishlist`, `roster-review`, `ingest`, `log-matches`, `pile-analysis`, and
+`apply-changes` are project-specific. **A skill drifts behind the
 tooling silently** — `/tune-deck` was still built around the command set it shipped with
 and had no step for `consistency` (the probability layer), `engines`, `shape`, `cuts`,
 `flex`, the protection axis, the role counts' own uncertainty, or the post-edit rationale
@@ -926,6 +942,13 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   cycle's diagnosis, the agreed next task, the measurements not worth re-deriving,
   and the traps. It is written for a session with no context and supersedes the
   older blocks where they disagree.
+- **`.cycle/*-analysis.md`** — a LIVE `/pile-analysis` working doc, if one exists.
+  Carries that pile's decision framework, its standing error list and the
+  consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
+  swaps land. Named here because a fresh session loads nothing else, and the whole
+  point of committing it per batch is that it outlives one context window.
+  **Currently live: `.cycle/54-pile-reanalysis.md`** — decks 54 / 54a / 54b,
+  plans written and NOT yet applied.
 - **`.cycle/STATE.md`** — prose record: what was completed, decisions made, what was
   decided AGAINST (worth reading before re-proposing a rejected fix), and where the
   last session left off.

@@ -1,6 +1,6 @@
 #: name: Sacrifices
 #: format: Standard
-#: tier: A — Rakdos aristocrats; coherent sac engine + 10 interaction (10 spot removal) + 4 card advantage on a clean 2-color base. Re-graded B→A: measurable floor is A and the earlier note already read "near A" — a coherent 2-color engine with strong interaction and no offsetting weakness clears the bar.
+#: tier: A — Rakdos aristocrats; coherent sac engine + 11 interaction (11 spot removal) + 6 card advantage on a clean 2-color base. Re-graded B→A: measurable floor is A and the earlier note already read "near A" — a coherent 2-color engine with strong interaction and no offsetting weakness clears the bar.
 #: colors: BRG
 #: archetype: Rakdos (B/R, light green) sacrifice / aristocrats.
 #: notes: Rakdos (B/R) sacrifice / aristocrats, black-primary with a light green splash.

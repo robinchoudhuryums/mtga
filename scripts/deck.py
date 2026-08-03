@@ -1124,6 +1124,22 @@ _ROLE_PATTERNS = {
         # Brawl "fight each other") — the old pattern only caught "fights target".
         r"\bfights?\b|creatures? fight",
         r"deals damage equal to (?:twice )?.{0,20}?power to target (?:creature|creature or planeswalker|attacking)",
+        # SCALING damage whose size is anything OTHER than a power reference. The pattern
+        # above hard-codes "power", so Combustion Technique — "deals damage equal to 2 plus
+        # the number of Lesson cards in your graveyard to target creature" — matched
+        # nothing and scored ZERO roles, in the deck that PROTECTS it as a marquee payoff.
+        # Same failure shape as Quag Feast above: a removal template no pattern read, so
+        # the card was absent from the interaction count the tier floor grades on. `[^.]`
+        # keeps the span inside one sentence so an unrelated later clause can't be swept in.
+        # The `(?!player|opponent)` guard is load-bearing: "deals damage equal to its power
+        # to target PLAYER" (Gravitic Punch, Sif's Spearmaster, Runebound Wolf) is reach,
+        # not an answer, and a roster sweep of the first draft showed that was the ONLY
+        # false-positive class among 116 newly-matched cards.
+        r"deals damage equal to [^.]{0,80}?to (?:any target|target (?!player|opponent)\w+)",
+        # DIVIDED damage — the Fiery Confluence / Death to Our Enemies template. Every
+        # fixed-damage pattern above expects "to target"/"to any target" immediately after
+        # the number, and this one says "divided as you choose among …" instead.
+        r"deals? \d+ damage divided as you choose among",
         # -N/-N or -X/-X shrink on a targeted creature (incl. "creature an opponent
         # controls gets -X/-X" — Cloud of Darkness, Wick's Patrol).
         r"target creature (?:an opponent controls )?gets -[0-9x]",
@@ -1217,10 +1233,64 @@ _ROLE_PATTERNS = {
                        # `whenever .* draw a card` swept every one into card advantage —
                        # scoring a draw-payoff as a draw, which is backwards.
                        r"\bwhenever\b[^.,]{0,80}?, [^.]{0,60}?draws? a card",
-                       r"\binvestigate\b"],
+                       r"\binvestigate\b",
+                       # A CLUE TOKEN *is* a delayed draw ("{2}, Sacrifice this token:
+                       # Draw a card"), and `investigate` above is the KEYWORD form of
+                       # exactly that. But plenty of cards spell the token out instead of
+                       # using the keyword — The Mechanist, Aerial Artisan makes a Clue per
+                       # noncreature spell and scored Payoff/engine only, so a deck built
+                       # on it still read card advantage 0.
+                       r"create (?:a|\w+|that many) clue tokens?",
+                       # IMPULSE. "Exile the top card of your library. You may play that
+                       # card this turn" is a card you would not otherwise have had — the
+                       # same advantage a draw gives, one zone over. Nothing matched it:
+                       # Zuko, Exiled Prince scored ZERO roles despite a repeatable {3}
+                       # impulse ability, and it is a whole deck archetype (deck 24, deck
+                       # 45) that the card-advantage axis could not see. `[^.]` keeps the
+                       # span inside the sentence pair so an unrelated later clause cannot
+                       # be swept in.
+                       r"exile the top card of your library[^.]{0,40}\. you may play (?:it|that card)",
+                       r"exile the top \w+ cards? of your library[^.]{0,60}\. (?:you may play|until )",
+                       # Impulse off EACH PLAYER'S library — Etali, Primal Storm exiles
+                       # the top card of every library and lets you cast them. The two
+                       # patterns above are scoped to "your library" and missed it.
+                       r"exile the top card of each player's library[^.]{0,60}?(?:you may cast|you may play)",
+                       # CASTING OFF THE TOP of your own library is a permanent draw
+                       # substitute — Vizier of the Menagerie, Mm'menon. Scored nothing.
+                       r"you may (?:cast|play) (?:\w+ ){0,3}(?:spells|cards?) from the top of your library"],
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
                       r"\{t\}: add \{",
-                      r"put (?:a|that|those|up to \w+).{0,40}?land.{0,40}?onto the battlefield"],
+                      r"put (?:a|that|those|up to \w+).{0,40}?land.{0,40}?onto the battlefield",
+                      # ANY-COLOUR MANA. The pattern above requires a literal `{` right
+                      # after "add", so it reads "{T}: Add {G}" and misses "{T}: Add one
+                      # mana of any color" — which is how Magic templates EVERY rainbow
+                      # source. Bloom Tender, Great Divide Guide, Springleaf Drum and
+                      # Agatha's Soul Cauldron all scored ZERO roles, in decks whose #1
+                      # graded weakness is the manabase. The cost prefix is left open
+                      # because these come as `{T}:`, `{1},{T}:`, `{T}, Tap an untapped
+                      # creature:` and as a granted ability in quotes ("Each land you
+                      # control has '{T}: Add one mana of any color'").
+                      r"add (?:one|two|three|x|that much|an amount of) mana (?:of|in) any",
+                      # The per-colour (Vivid) form says "of THAT color", not "of any" —
+                      # Bloom Tender reads "For each color among permanents you control,
+                      # add one mana of that color". Caught only because the test above
+                      # used the card's real text instead of a paraphrase.
+                      r"for each color[^.]{0,60}?add (?:one|that much|x) mana of that color",
+                      # Colour-fixing that adds no mana at all — it lets the mana you
+                      # already have pay a cost it otherwise could not. Same job.
+                      r"spend mana as though it were mana of any color",
+                      r"spend (?:this |that )?mana as though it were mana of any (?:one )?color",
+                      r"you can spend mana of any type",
+                      # All-basic-land-types (K-03 names this shape as a fixer the tagger
+                      # could not see); Energybending and friends.
+                      r"lands? you control (?:gain|have) all basic land types"],
+    # KNOWN RESIDUAL on the any-colour patterns above: they match the REMINDER TEXT of a
+    # Treasure token, including on cards that hand the Treasure to someone else ("Exile
+    # target nonland permanent. ITS CONTROLLER creates a Treasure token"). Those pick up a
+    # spurious Ramp/fixing role. Left in deliberately — Ramp/fixing does NOT feed
+    # `deck_quality_vector`, so the blast radius is the `stats` breakdown and
+    # `redundancy`'s depth count, not the tier floor. Tighten only if a real call is made
+    # off an inflated ramp depth.
     # Return a permanent to the BATTLEFIELD from the graveyard (higher value than
     # to-hand recursion). Catches "in your graveyard … return … to the battlefield"
     # phrasing, which the old "from your graveyard" Recursion pattern silently missed

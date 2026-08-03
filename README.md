@@ -1180,7 +1180,7 @@ hundreds of games. Read it for disasters, not for marginal swaps.
 invariants in [`CLAUDE.md`](CLAUDE.md) (CSV structure, `card-mana.csv` coverage,
 derived files present **and still carrying their own columns** — a pool that lost
 its `Rarity`/`Legalities` is a hard failure, not a silent degrade — decks parse)
-plus ten **model-sanity checks** that keep the
+plus eleven **model-sanity checks** that keep the
 grading/ranking models from silently drifting: the **ranking model**
 (`check_rankings.py`), **color parsing** (`check_colors.py` — also a static scan
 banning the naive inline `WUBRG` parse outside `lib.py`), the **DFC ownership-join**
@@ -1188,7 +1188,10 @@ convention (`check_dfc.py` — an owned double-faced card must resolve by its fr
 face), the needs-aware **suggest/cuts scoring** (`check_suggest.py` — bounded
 modifiers, power never overrides theme fit), the **engine classifier**
 (`check_engines.py`), the archetype-aware **tier floor** (`check_tier.py` —
-non-aggro grades unchanged, the aggro clock only ever raises a band), and
+non-aggro grades unchanged, the aggro clock only ever raises a band),
+**role coverage** (`check_roles.py` — a card in a deck that classifies to NO functional
+role at all, baselined; `_ROLE_PATTERNS` is a whitelist of phrasings, so its misses are
+silent under-counts the tier floor inherits as fact), and
 **dead patterns** (`check_patterns.py`). That last one guards this project's
 signature bug: a regex that *compiles fine and can never fire*. Every card-text
 pattern must match at least one card in the ~15.8k-card pool, and no pattern source
@@ -1255,6 +1258,10 @@ Claude Code slash commands live in `.claude/commands/`:
   re-run placement after a retune, after `tag_synergies` gains a theme, or for a card
   you have owned for months), `/add-wishlist` (intake unowned craft targets to
   the wishlist — enrich, set the home Target, do the cross-deck fit review),
+  `/pile-analysis` (work a LARGE pile — ~60+ cards — against a deck or deck family in
+  batches of 30, keeping a committed working doc that survives context loss; reach for it
+  when `/add-cards` would be too big a single pass, and when the answer wanted is a ranked
+  swap plan rather than a list of homes),
   `/apply-changes` (apply confirmed swaps, run the quality guard, verify + commit).
 
   The per-deck loop is `/tune-deck` → `/apply-changes`; the roster loop is

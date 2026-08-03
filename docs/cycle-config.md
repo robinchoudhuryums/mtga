@@ -186,7 +186,16 @@ mechanic being suppressed, audit F24); **theme coverage** — `check_themes.py` 
 an owned card whose oracle text clearly plays a high-confidence theme (food, landfall,
 proliferate, convoke, graveyard, lifegain, counters) it ISN'T tagged with (the theme
 analog of `role_coverage_flags`; a stale/removed tag distorts every tag-based
-recommendation), summarized to one line (#7); and **tier mismatch**
+recommendation), summarized to one line (#7); **role coverage** — `check_roles.py`
+flags a card in a deck that `classify_roles` scores with NO functional role at all,
+baselined in `role_baseline.txt` so it stays quiet until a deck edit or a new set
+introduces one. `_ROLE_PATTERNS` is a WHITELIST of phrasings, and a whitelist's misses
+are silent under-counts the tier floor inherits as fact — eight such holes surfaced in
+one 2026-08 session, every one found by a human reading a card rather than by a gate
+(see G-67). Soft because a genuinely roleless card — a vanilla body, a pure combat trick
+— is a legitimate zero; read the number as a DELTA rather than a backlog, since the
+baseline of 367 is partly legitimate. `check_roles.py --update-baseline` acknowledges the
+current set; and **tier mismatch**
 — `deck.py tier_consistency_issues()` flags a deck whose claimed `#: tier:` sits ≥2
 bands above the tier its measurable quality vector supports (an inflated/stale
 letter — see the Competitive Tiering rubric); and **stale flex lines** —
@@ -247,7 +256,7 @@ Ingest & Enrich: scripts/import_arena.py, scripts/import_collection.py (authorit
 
 ## [C-05] Subsystem: Analysis
 
-Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py, scripts/check_patterns.py, scripts/check_commands.py, scripts/check_agreement.py, scripts/keyword_baseline.txt (acknowledged-but-unindexed mechanics, read by check_keywords.py)
+Analysis: scripts/deck.py, scripts/query.py, scripts/card.py, scripts/pool.py, scripts/wishlist.py, scripts/validate.py, scripts/check_all.py, scripts/check_rankings.py, scripts/check_keywords.py, scripts/check_colors.py, scripts/check_dfc.py, scripts/check_suggest.py, scripts/check_engines.py, scripts/check_tier.py, scripts/check_themes.py, scripts/check_patterns.py, scripts/check_commands.py, scripts/check_agreement.py, scripts/keyword_baseline.txt (acknowledged-but-unindexed mechanics, read by check_keywords.py), scripts/check_roles.py, scripts/role_baseline.txt (acknowledged zero-role cards, read by check_roles.py — see G-67)
 
 
 ## [C-06] Subsystem: Presentation

@@ -1,0 +1,205 @@
+#: name: Grand Lotus — Comet
+#: format: Standard
+#: colors: BGUR
+#: based-on: deck.txt
+#: plan: aggro
+#: archetype: FIREBENDING COMBAT-MANA (Temur plus a black splash for one card), and it is the THIRD reading of one clause.
+#: archetype: Deck 54 uses Iroh's flashback as a DISCOUNT (a flat {1} on a fat Lesson).
+#: archetype: Deck 54a uses it as a TRIGGER SOURCE (the payoff is the cast event). This list
+#: archetype: uses it as a COMBAT REWARD, and its currency is mana that does not otherwise
+#: archetype: exist. Same card, three decks — the 52/52a pattern taken one step further.
+#: archetype: THE CLAUSE EVERYONE SKIMS IS THE LAST FOUR WORDS OF FIREBENDING: "whenever
+#: archetype: this creature attacks, add {R}{R}. THIS MANA LASTS UNTIL END OF COMBAT." Mana
+#: archetype: that expires at end of combat can only buy things castable at instant speed
+#: archetype: DURING combat, which is normally a narrow and mostly-wasted resource. But
+#: archetype: Iroh's grant reads "DURING YOUR TURN", and your combat phase is during your
+#: archetype: turn. So the loop is: attack, generate four to ten red mana that would
+#: archetype: otherwise evaporate, and spend it flashing back instants out of the graveyard
+#: archetype: mid-combat. This deck is not cheating a cost and it is not being paid for a
+#: archetype: cast — it is spending mana nobody else gets to spend.
+#: archetype: THAT DICTATES THE COLOUR OF EVERY CARD, and it is the build rule to hold:
+#: archetype: FIREBENDING MANA IS RED-ONLY AND COMBAT-ONLY, so the INSTANTS are red and the
+#: archetype: blue and green pips sit on PERMANENTS you cast off lands in your main phase.
+#: archetype: Blue is the graveyard half (Archmage's Newt, Slickshot Lockpicker, Sphinx of
+#: archetype: Forgotten Lore) and green is two mana dorks and Iroh's pip. Nine red instants
+#: archetype: are the combat-mana sinks.
+#: archetype: TWO CARDS BREAK THE "UNTIL END OF COMBAT" LIMIT and they are the deck's real
+#: archetype: engine. Electro, Assaulting Battery reads "you don't lose unspent red mana as
+#: archetype: steps and phases end" — firebending mana stops expiring, so a big attack
+#: archetype: bankrolls your SECOND main phase. The Last Agni Kai grants the same clause
+#: archetype: until end of turn AND converts excess fight damage into more {R}. With either
+#: archetype: out, combat mana becomes real mana.
+#: archetype: FATED FIREPOWER IS THE CARD THIS DECK EXISTS TO CAST, and the reason is its
+#: archetype: first word: FLASH. It was rejected twice for the other two lists because
+#: archetype: {X}{R}{R}{R} is an {X} cost on triple red — but both objections dissolve here.
+#: archetype: You cast it DURING combat off firebending mana, which is produced in fours and
+#: archetype: fives and is red by definition, so X is large and the pips are free. Then
+#: archetype: every damage source you control deals X more: firebending attackers, nine burn
+#: archetype: instants, Thor, Guttersnipe and Ovika's token swarm.
+#: archetype: THE ATTACK IS THE DRAW STEP. Seven creatures turn combat into cards or spells:
+#: archetype: Archmage's Newt grants flashback on damage and flashback {0} when SADDLED;
+#: archetype: Sphinx of Forgotten Lore and The Dawning Archaic grant and free-cast on
+#: archetype: attack; Seifer Almasy free-casts an MV 3-or-less spell on damage; Norman
+#: archetype: Osborn is unblockable and connives; and Firebender Ascension counts every
+#: archetype: attack trigger — firebending IS an attack trigger, so four firebenders swinging
+#: archetype: fill it in ONE combat, after which it copies every trigger that follows.
+#: archetype: DISTINCTIVENESS. vs 54: no fat Lessons, no Improvisation Capstone, an aggro
+#: archetype: plan and a mana curve built around instants. vs 54a: 54a is a spell deck that
+#: archetype: happens to have creatures; this is a creature deck whose spells are combat
+#: archetype: tricks, and it takes the attack-payoff cards 54a deliberately declined. vs
+#: archetype: deck 24 (Eternal Flame, Boros) and 02 (Thundergod): both are WHITE or mono-red
+#: archetype: aggro with no graveyard axis at all. Verify with `deck.py similar 54b`.
+#: tier: C — PROVISIONAL, GRADED 2026-08 on an UNBUILT, UNPLAYED, FIRST-DRAFT list.
+#: tier: Deliberately graded WELL BELOW the measurable floor, which reads A on interaction 6
+#: tier: plus card advantage 3. The guard permits grading under the floor when the prose
+#: tier: argues for it; here is the argument, in measured terms:
+#: tier:   CARD ADVANTAGE 3, AND IT ONLY READS 3 BECAUSE THE CLASSIFIER WAS FIXED FOR IT.
+#: tier:     The first draft measured ZERO. Adding The Mechanist, Aerial Artisan (a Clue per
+#: tier:     noncreature spell) did not move the number at all, which exposed two gaps: a
+#: tier:     spelled-out CLUE TOKEN was not read as card advantage (only the `investigate`
+#: tier:     keyword was), and IMPULSE — "exile the top card of your library, you may play
+#: tier:     it" — was not read at all, so Zuko, Exiled Prince scored zero roles. Both were
+#: tier:     fixed 2026-08; 31 decks moved upward. Three is still thin for an aggro deck that
+#: tier:     stalls, and Clues double as an instant-speed sink for leftover combat mana.
+#: tier:   THE MANABASE IS FOUR COLOURS ON 25 LANDS and one of them has effectively three
+#: tier:     sources. See the `#: notes:` block for what the black splash cost the other
+#: tier:     three colours; it was a deliberate trade, not an oversight.
+#: tier:   AGGRO PLAN — the floor substitutes a bounded clock for the interaction a midrange
+#: tier:     deck would need (rubric #4), and it scores clock 4 of 7. `shape` reads WIDE 6 on
+#: tier:     23 creature copies with 8 evasive, which is the one axis where this list beats
+#: tier:     both siblings (54 and 54a are TALL with wide 0-1).
+#: tier:   THE ENGINE IS UNPROVEN AND CONDITIONAL. Every other deck on this branch has an
+#: tier:     engine that works from the battlefield; this one must ATTACK PROFITABLY first.
+#: tier:     Against a deck that blocks well the mana never arrives and the list is a pile of
+#: tier:     small red creatures.
+#: tier:   THE COMBAT-MANA WINDOW IS NARROW WITHOUT ELECTRO OR THE LAST AGNI KAI. Two cards
+#: tier:     out of sixty convert the resource into real mana; without one you must spend it
+#: tier:     in combat, on instants only.
+#: tier:   READ FATED FIREPOWER'S CONSISTENCY NUMBER WITH CARE. `consistency` prices it at
+#: tier:     63.8% on turn three and calls it colour-hungry — that is the HARD-CAST reading,
+#: tier:     off lands. The deck does not intend to hard-cast it; it flashes it in during
+#: tier:     combat off firebending mana, which is red by definition and arrives in fours.
+#: tier:     No tool models that, so the printed figure under-reads this card specifically.
+#: tier:   Re-grade after it is built and played. C is a statement that the PLAN is untested,
+#: tier:   not that the cards are weak — Thor, Ovika and Fated Firepower are the same bombs
+#: tier:   the other two lists want.
+#: protect: Iroh, Grand Lotus; Fated Firepower; Thor, God of Thunder; Electro, Assaulting Battery; Firebender Ascension
+#: notes: WIP / aspirational — drafted 2026-08 out of the 54 pile re-analysis. See
+#: notes: `.cycle/54-pile-reanalysis.md` for the framework that produced it.
+#: notes: THE DISTINCTIVENESS RISK IS DECK 14, NOT ITS OWN FAMILY, and it was measured
+#: notes: rather than assumed. `similar` puts 54a closest on THEMES (72%, 8 shared cards),
+#: notes: which is the expected family relationship — but the `▸ Most shared CARDS` line
+#: notes: reads DECK 14 at NINE, and deck 14 is the roster's other firebending deck (Rakdos
+#: notes: BR dragons midrange, tier A). The cards they share are essentially the whole
+#: notes: firebending package: Fire Sages, Fire Nation Palace,
+#: notes: Firebender Ascension, Firebending Lesson, Jeong Jeong, Ran and Shaw, Sozin's
+#: notes: Comet, The Legend of Roku, Uncle Iroh. Thirty-six of this list's forty-six
+#: notes: nonland cards are its own, the colours overlap only 25%, and deck 14 has NO
+#: notes: graveyard axis at all — it is a dragons midrange deck that uses firebending as a
+#: notes: mana accent. THE TEST, if this list is ever tuned: it is not a firebending deck
+#: notes: that happens to recur spells, it is a RECURSION deck that uses firebending as its
+#: notes: mana source. If the six graveyard granters (Archmage's Newt, Slickshot Lockpicker,
+#: notes: Sphinx of Forgotten Lore, Seifer Almasy, The Dawning Archaic, Norman Osborn) ever
+#: notes: fall below four, this has become deck 14 in the wrong colours — abandon it.
+#: notes: FIRE LORD AZULA IS IN, AS A LATE-GAME CARD, AND THE COST IS RECORDED HERE SO IT
+#: notes: IS NOT MISREAD AS FREE. Her clause — "whenever you cast a spell WHILE FIRE LORD
+#: notes: AZULA IS ATTACKING, copy that spell" — describes exactly what this deck does, and
+#: notes: her own firebending 2 helps pay for the spells she copies. The objection that
+#: notes: killed her in decks 54 and 54a (almost nothing there can be cast during combat) is
+#: notes: DEAD here; do not re-litigate her on it.
+#: notes: WHAT SHE COSTS: `consistency` prices her at 0.0% ON CURVE and says so plainly —
+#: notes: "B is a 0-source splash". Black comes from THREE places only: Captivating Cave,
+#: notes: Daily Bugle Building and Great Divide Guide (which turns every land and Ally into
+#: notes: a rainbow source). Read her as a TURN 6-8 card, not a four-drop.
+#: notes: TOOL CAVEAT: `mana` reports "B 0" because a land whose any-colour ability costs
+#: notes: {1},{T} is not counted as a coloured SOURCE. Those two lands genuinely do make
+#: notes: black — at a one-mana premium — so the true figure is three, not zero. The
+#: notes: practical conclusion is the same, which is why the splash was left thin rather
+#: notes: than widened.
+#: notes: THE COLLATERAL DAMAGE IS THE REAL PRICE, and it is measured: making room for the
+#: notes: two black-capable lands took G from 8 to 7 and U from 12 to 11, which moved Bloom
+#: notes: Tender and Great Divide Guide 70.6% -> 65.4%, Sphinx of Forgotten Lore 64.6% ->
+#: notes: 59.1% and Iroh himself 76.4% -> 70.5%. One card was bought with four.
+#: notes: WHY NOT RED-GREEN-BLACK INSTEAD OF RED-GREEN-BLUE, which was the proposal: TWO
+#: notes: reasons, and the second is the decisive one. (1) Iroh, Grand Lotus costs
+#: notes: {3}{G}{U}{R} — drop blue and the deck loses the card the whole family is built on,
+#: notes: at which point this is not a 54 variant but a new deck. Blue also carries THREE of
+#: notes: the six graveyard granters (Archmage's Newt, Slickshot Lockpicker, Sphinx), and
+#: notes: the abandon test below fires at four. (2) The stated goal was to differentiate
+#: notes: from deck 14 — which is RAKDOS, B/R. Adding black moves this list's colours TOWARD
+#: notes: deck 14 while it already shares the entire firebending package. Blue is precisely
+#: notes: what keeps the two apart; trading it for black would leave two of three colours
+#: notes: shared with a tier-A deck that already does firebending better.
+#: notes: THE BUILD RULE, stated so a later edit does not break it: red instants, coloured
+#: notes: permanents. A blue or green INSTANT cannot be paid for with firebending mana, so
+#: notes: it competes for land mana with the permanents. Origin of Metalbending, Overprotect
+#: notes: and Galuf's Final Act are all fine cards that were cut for exactly this reason.
+#: notes: Deliberately NOT included: Rough Rhino Cavalry (five mana for firebending 2 — the
+#: notes: worst rate in the package); Fire Nation Attacks (two 2/2s for five, flashback
+#: notes: {8}{R}); Photon Blast Barrage (an {X} spell whose copies are not CAST, so Thor
+#: notes: sees one trigger, not X+1); Taigam, Master Opportunist (exiles your second spell
+#: notes: each turn out of the graveyard, which is where this deck's recursion lives).
+
+# Firebending — the mana engine
+1 Redirect Lightning (TLA) 151
+1 Fire Sages (TLA) 136
+1 Jeong Jeong, the Deserter (TLA) 142
+1 Zuko, Exiled Prince (TLA) 163
+1 Uncle Iroh (TLA) 248
+1 Iroh, Grand Lotus (TLA) 227
+1 Ran and Shaw (TLA) 150
+1 Firebender Ascension (TLA) 137
+1 Sozin's Comet (TLA) 154
+1 The Legend of Roku (TLA) 145
+
+# Attack unlocks the graveyard
+1 Archmage's Newt (OTJ) 39
+1 Slickshot Lockpicker (OTJ) 67
+1 Sphinx of Forgotten Lore (FDN) 51
+1 Seifer Almasy (FIN) 156
+1 The Dawning Archaic (SOS) 1
+1 Norman Osborn (SPM) 39
+
+# Payoffs — combat mana and spell count become damage
+1 Fated Firepower (TLA) 132
+1 Thor, God of Thunder (MSH) 156
+1 Ovika, Enigma Goliath (FDN) 663
+1 Balmor, Battlemage Captain (FDN) 237
+1 Guttersnipe (FDN) 716
+1 Electro, Assaulting Battery (SPM) 76
+
+# Red instants — the combat-mana sinks
+1 Firebending Lesson (TLA) 138
+1 The Last Agni Kai (TLA) 144
+1 Combustion Technique (TLA) 128
+1 Emeritus of Conflict (SOS) 113
+1 Bulk Up (SOA) 40
+1 Wisecrack (MSC) 813
+1 Return the Favor (SOA) 47
+1 The Mechanist, Aerial Artisan (TLA) 64
+1 Solstice Revelations (TLA) 153
+
+# Fixing and selection — cast off lands, not off combat mana
+1 Bloom Tender (ECL) 166
+1 Great Divide Guide (TLA) 181
+1 Spider Manifestation (SPM) 148
+1 Fire Lord Azula (TLA) 220
+
+# Lands — red-primary. Fire Nation Palace grants firebending 4 to a
+# creature that lacks it, which is a second copy of the deck's engine.
+2 Fire Nation Palace (TLA) 268
+2 Swiftwater Cliffs (MOM) 273
+1 Riverpyre Verge (DFT) 260
+2 Stark Industries (MSH) 272
+1 Daily Bugle Building (SPM) 179
+1 Spectacle Summit (SOS) 262
+1 Temple of Epiphany (FDN) 699
+1 Training Compound (MSH) 275
+2 Rugged Highlands (M21) 249
+1 Thornspire Verge (DSK) 270
+1 Frontier Bivouac (TDM) 256
+1 Breeding Pool (EOE) 251
+5 Mountain (MSH) 293
+2 Island (MSH) 289
+1 Forest (MSH) 295
+1 Captivating Cave (LCI) 268

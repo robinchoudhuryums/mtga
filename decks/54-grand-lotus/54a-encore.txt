@@ -1,0 +1,206 @@
+#: name: Grand Lotus — Encore
+#: format: Standard
+#: colors: GUR
+#: based-on: deck.txt
+#: plan: midrange
+#: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT, UNPLAYED list (12 craft targets).
+#: tier: One band BELOW the measurable floor, which reads A on interaction 10 plus card
+#: tier: advantage 3. Against the rubric an A needs four things and this list fails two:
+#: tier:   A-FLOOR — yes, comfortably. Interaction 10 doubles the threshold of five and the
+#: tier:     sum of 13 clears seven. Read that number with K-12's caution though: it is high
+#: tier:     because the deck's FUEL is cheap burn, and a burn spell you recast three times
+#: tier:     is counted ONCE. The profile is 2 instant-speed against 8 sorcery-speed, and 4
+#: tier:     can answer a noncreature permanent.
+#: tier:   COHERENT ENGINE — yes, and measured. `engines` reads the graveyard axis as 25
+#: tier:     enablers / 22 payoffs, the deepest on the roster, and `targets` finds four
+#: tier:     gated effects with zero thin or unmet. Eight granters against fourteen cheap
+#: tier:     spells is the ratio the plan wants. DISCOUNT the one ⚠ it prints: "counters: 7
+#: tier:     enablers, no payoff" is the tagger blind, not a real gap. Every payoff on that
+#: tier:     axis here is a POWER-scaling activated ability (Topiary Lecturer's {G} equal to
+#: tier:     power, Songcrafter Mage's harmonize reduction, Loki's mana-value gate) or the
+#: tier:     unindexed Increment keyword per K-01, and none of those carry a counters tag.
+#: tier:     The same ⚠ fires on the parent, where it IS real — this list is the payoff
+#: tier:     layer that deck's eight dead enablers were missing.
+#: tier:   TIGHT CURVE — yes. 2.94 average, the lowest of the three Lotus lists, which is
+#: tier:     the direct consequence of the design: a granter charging full price rewards
+#: tier:     cheap spells, where the parent's flat {1} rewarded expensive ones.
+#: tier:   AT MOST ONE CLEAR WEAKNESS — no, and these are the two to fix before it is built.
+#: tier:     (1) THE PAYOFF LAYER IS FOUR CARDS. A pool sweep of the effect shape found only
+#: tier:     six cards in these colours that get PAID for a not-from-hand cast, and two were
+#: tier:     unplayable here. So the deck's distinguishing axis rests on Spider-Verse,
+#: tier:     Spider-Man 2099, Shadow of the Goblin and Doc Aurlock. It still functions
+#: tier:     without them — recasting cheap interaction is value on its own — but the games
+#: tier:     where none appears are games where this is a worse deck 25.
+#: tier:     (2) PROTECTION 1 on a deck whose engine is creatures. Seven of the eight
+#: tier:     granters are bodies, and three of them (Slickshot Lockpicker, Daring Waverider,
+#: tier:     Songcrafter Mage) do their whole job on ETB, which at least means removal
+#: tier:     arrives too late to blank them. Sphinx of Forgotten Lore, Archmage's Newt and
+#: tier:     The Dawning Archaic must survive to a combat, and those are the fragile ones.
+#: tier:     These COMPOUND: the payoffs are permanents too, so a sweeper takes the engine
+#: tier:     and the reason for the engine in the same turn.
+#: tier: WHAT THE FLOOR CANNOT SEE, in both directions. Up: Spider-Verse copying a free
+#: tier: recast every turn, and Norman Osborn's back face handing the whole graveyard
+#: tier: mayhem, are effects the vector has no term for. Down: the manabase is three colours
+#: tier: on 25 lands and Germination Practicum still casts on curve at 59.1%, though
+#: tier: Hermitic Herbalist and Berta both add any colour and `consistency` cannot see a
+#: tier: non-land source. Re-grade after it is built and played — this letter is a draft
+#: tier: judgment on a list that has never been cast.
+#: archetype: Temur CAST-FROM-THE-GRAVEYARD, and it exists because the parent re-grades one
+#: archetype: card. Deck 54 uses Iroh's flashback as a DISCOUNT — a flat {1} that cheats a
+#: archetype: seven-drop Lesson — so it deliberately runs the most EXPENSIVE spells it can
+#: archetype: find and casts them once. This list grades the same clause as a TRIGGER
+#: archetype: SOURCE: the payoff is the CAST EVENT, not the mana saved, so it runs the
+#: archetype: CHEAPEST spells it can find and casts them over and over. Same engine card,
+#: archetype: opposite build — the 52/52a relationship, where recursion is GRIND in the
+#: archetype: parent and a COST CHEAT in the variant.
+#: archetype: THE PAYOFF LAYER, which the parent has none of. Spider-Verse copies every
+#: archetype: spell cast from anywhere other than hand, once a turn. Spider-Man 2099 fires
+#: archetype: at end step for his power if you cast one at all. Shadow of the Goblin drains
+#: archetype: one per not-from-hand cast AND per land drop, so it is live before the engine
+#: archetype: arrives. Doc Aurlock takes {2} off every graveyard cast, which turns a {1}
+#: archetype: Lesson flashback into {0} and a cheap burn spell into a cantrip.
+#: archetype: SEVEN GRANTERS, WHICH IS THE POINT. The parent's second graded weakness is a
+#: archetype: ONE-CARD ENGINE — Iroh grants the flashback and nothing else does. A pool
+#: archetype: sweep of the effect shape (not the word "flashback") found six more in these
+#: archetype: colours, and they change what the deck can run: they charge the card's OWN
+#: archetype: mana cost, never a flat {1}, so they are useless for cheating a {5}{R}{R}
+#: archetype: Lesson and excellent for recasting a {R} burn spell four times. That single
+#: archetype: fact is why this list and the parent barely share a spell.
+#: archetype: THE COUNTERS LAYER IS UTILITY, NOT A WIN CONDITION, and that is the line that
+#: archetype: keeps it out of deck 30. Songcrafter Mage's harmonize cost is reduced by the
+#: archetype: POWER of a creature you tap; Topiary Lecturer taps for {G} equal to its power;
+#: archetype: Berta turns any counter placed on her into mana of any colour; Loki Laufeyson
+#: archetype: copies a spell whose mana value is at most his power, which on this curve
+#: archetype: covers most of the list before a single counter lands. Germination
+#: archetype: Practicum puts two
+#: archetype: counters on EACH creature and then, via Paradigm, casts a FREE copy of itself
+#: archetype: every turn forever — so the counters arrive on their own. In deck 30 counters
+#: archetype: ARE the win condition (Fractals go wide, doublers multiply); here they buy
+#: archetype: mana, cost reduction and copy-size. Same mechanic, different job.
+#: archetype: AGATHA'S SOUL CAULDRON IS THE KEYSTONE and it does three jobs at once: it
+#: archetype: lets any colour pay for creature ACTIVATED abilities (which is most of this
+#: archetype: deck's mana engine), it puts counters on your creatures while exiling an
+#: archetype: opposing graveyard, and its second line gives every countered creature the
+#: archetype: activated abilities of the creature cards exiled with it — exile Topiary
+#: archetype: Lecturer and the whole board taps for {G} equal to power.
+#: archetype: DISTINCTIVENESS. vs the parent 54: zero fat Lessons, no Improvisation
+#: archetype: Capstone / Echocasting Symposium / Bumi / Serpent, and a curve a mana lower.
+#: archetype: vs deck 25 (Spellstorm, UR): 25 casts from HAND and counts spells per turn;
+#: archetype: this casts from the YARD and counts nothing — and 25 cannot play the green
+#: archetype: half at all. vs deck 30 (Fractals, GUR): counters as utility, above. vs deck
+#: archetype: 45 (Exile Dividend): that is WBR and reads spells cast from EXILE, off impulse
+#: archetype: and heist; this reads the graveyard and shares no colour pair with it.
+#: protect: Iroh, Grand Lotus; Spider-Verse; Songcrafter Mage; Agatha's Soul Cauldron; Doc Aurlock, Grizzled Genius
+#: notes: WIP / aspirational — drafted 2026-08 from scratch. Craft cost is real; run
+#: notes: `deck.py check 54a` for the current gap.
+#: notes: FESTIVAL OF EMBERS WAS CUT, and it is the G-42 shape (a card that fights your own
+#: notes: engine). Its first line reads as a second Iroh — "during your turn, you may cast
+#: notes: instant and sorcery spells from your graveyard by paying 1 life" — but its SECOND
+#: notes: line is "if a card or token would be put into your graveyard from anywhere, exile
+#: notes: it instead", which switches OFF every yard-filler in the deck while it is on the
+#: notes: battlefield. It is a burst, not an engine; the {1}{R} sacrifice clause exists
+#: notes: because the card knows this. Reconsider only if the list ever wants a one-turn
+#: notes: dump of an already-full graveyard.
+#: notes: NIBELHEIM AFLAME IS THE OTHER G-42 RISK, kept deliberately. Its damage hits EACH
+#: notes: OTHER creature including yours, so it is only one-sided once the counters layer
+#: notes: has landed. It is in the list because its rider — "if this spell was cast from a
+#: notes: graveyard, discard your hand and draw four cards" — is the deck's single largest
+#: notes: cast-from-the-yard payoff, and it flashes back natively.
+#: notes: NORMAN OSBORN WAS REJECTED IN DRAFT AND THEN ADDED, and the reversal is worth
+#: notes: recording because the first read was a G-58 error. He was held out for "needing a
+#: notes: fourth colour", but his CAST cost is {1}{U} — the black is on a TRANSFORM ability,
+#: notes: which is identity, not castability, and `preflight` reads it as "PASS (+1 hybrid
+#: notes: stray, ok)". So `#: colors:` stays GUR; widening it would stop the lint flagging a
+#: notes: genuinely off-colour card later. He earns the slot on four counts at once: the
+#: notes: front face is unblockable, so his connive is a RELIABLE draw-discard (yard fill)
+#: notes: that also places a +1/+1 counter whenever the discard is a nonland — the counters
+#: notes: layer's third source; and the BACK face is an eighth granter, giving every nonland
+#: notes: card in the yard mayhem at its mana cost plus {2} off every graveyard cast. The
+#: notes: {1}{U}{B}{R} transform has THREE enablers here, none of them a black source:
+#: notes: Agatha's Soul Cauldron (any colour for creature activated abilities), Hermitic
+#: notes: Herbalist and Berta (both add one mana of any colour).
+#: notes: LOKI LAUFEYSON CAME BACK for Platypus-Bear, and the reason `cuts` ranked him
+#: notes: WEAKEST is the reason he is fine: his gate reads MANA VALUE, not mana spent, and
+#: notes: his tags match none of the deck's central themes, so the fit score sees nothing.
+#: notes: On a 2.94 curve his base power already covers most of the list without a single
+#: notes: counter, and the counters layer only extends him to Nibelheim Aflame and Self-
+#: notes: Reflection. What he cost is Platypus-Bear's ETB mill 2, which the deck absorbs at
+#: notes: 24 remaining graveyard enablers — but he is the SECOND card here whose value the
+#: notes: ranking structurally cannot see, alongside Berta.
+#: notes: Deliberately NOT included and why. Fire Lord Azula: her copy trigger needs a
+#: notes: spell cast WHILE SHE IS ATTACKING, and this list holds 2 instant-speed pieces, so
+#: notes: almost nothing can trigger her; unlike Norman she also needs black IN THE CAST
+#: notes: COST, which the Cauldron cannot fix — it fixes activated abilities only.
+#: notes: Iron Fist: he consumes the targeting this deck produces and gives back damage; he
+#: notes: puts no counters on anything, so he amplifies nothing, and his printed ability is
+#: notes: TRIGGERED, which makes him a dead Cauldron exile. The Emperor of Palamecia: his
+#: notes: counter clause needs four mana SPENT, and this deck's whole plan is spending one.
+#: notes: Improvisation Capstone and Echocasting Symposium: they are the PARENT's cards by
+#: notes: construction — a granter that charges full price cannot cheat a seven-drop, so
+#: notes: they belong in the list built around the flat {1}, not this one.
+
+# Engine — cast-from-graveyard granters
+1 Iroh, Grand Lotus (TLA) 227
+1 Songcrafter Mage (TDM) 225
+1 Slickshot Lockpicker (OTJ) 67
+1 Sphinx of Forgotten Lore (FDN) 51
+1 Archmage's Newt (OTJ) 39
+1 Daring Waverider (BLB) 44
+1 The Dawning Archaic (SOS) 1
+
+# Payoffs — paid for the cast itself
+1 Spider-Verse (SPM) 93
+1 Doc Aurlock, Grizzled Genius (OTJ) 201
+1 Spider-Man 2099 (SPM) 150
+1 Shadow of the Goblin (SPM) 87
+
+# Counters — utility layer (mana, cost reduction, copy size)
+1 Agatha's Soul Cauldron (WOE) 242
+1 Topiary Lecturer (SOS) 165
+1 Berta, Wise Extrapolator (SOS) 175
+1 Norman Osborn (SPM) 39
+1 Loki Laufeyson (MSH) 143
+1 Germination Practicum (SOS) 149
+
+# Fixing / selection  (NOTE: Accumulate Wisdom is NOT yard fill — it bottoms the
+# cards it doesn't take. It is here for the Lesson-count gate and the dig.)
+1 Hermitic Herbalist (TLA) 226
+1 Gran-Gran (TLA) 54
+1 Accumulate Wisdom (TLA) 44
+1 Glacierwood Siege (TDM) 189
+
+# Cheap spells — the fuel that gets recast
+1 Flashback (SOS) 115
+1 Channeled Dragonfire (TDM) 102
+1 Duel Tactics (SOS) 112
+1 Boomerang Basics (TLA) 46
+1 Tome Blast (SOS) 135
+1 Combustion Technique (TLA) 128
+1 Iroh's Demonstration (TLA) 141
+1 Origin of Metalbending (TLA) 187
+1 Electro's Bolt (SPM) 77
+1 Glacial Dragonhunt (TDM) 188
+1 Solstice Revelations (TLA) 153
+1 Abandon Attachments (TLA) 205
+1 Self-Reflection (FDN) 163
+1 Nibelheim Aflame (FIN) 146
+
+# Lands — rebuilt for this list, NOT inherited from the parent. Deck 54 is
+# green-primary on six colourless utility lands; this list is U/R-primary
+# (U 19 pips / R 18 / G 10), so the utility lands and the G/U duals came out
+# for U/R duals and the parent's Lesson-only fixer was cut outright.
+2 Swiftwater Cliffs (MOM) 273
+1 Riverpyre Verge (DFT) 260
+3 Stark Industries (MSH) 272
+1 Spectacle Summit (SOS) 262
+1 Temple of Epiphany (FDN) 699
+1 Training Compound (MSH) 275
+2 Rugged Highlands (M21) 249
+1 Thornspire Verge (DSK) 270
+1 Breeding Pool (EOE) 251
+1 Willowrush Verge (DFT) 270
+1 Dreamroot Cascade (SOS) 254
+2 Surveillance Room (MSH) 274
+3 Island (MSH) 289
+2 Mountain (MSH) 293
+3 Forest (MSH) 295

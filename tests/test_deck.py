@@ -174,6 +174,90 @@ class TestClassifyRoles:
                "{t}, sacrifice this token: you gain 3 life.\")"
         assert not any(p.search(text) for p in deck._NONCREATURE_ANSWER_CUES), text
 
+    def test_any_colour_source_is_ramp_fixing(self):
+        # The ramp pattern required a literal `{` right after "add", so it read
+        # "{T}: Add {G}" and missed "{T}: Add one mana of any color" — i.e. EVERY rainbow
+        # source. Bloom Tender, Great Divide Guide, Springleaf Drum and Agatha's Soul
+        # Cauldron all scored ZERO roles, in decks whose #1 weakness is the manabase.
+        for text in [
+            "Vivid — {T}: For each color among permanents you control, add one mana of that color.",
+            'Each land and Ally you control has "{T}: Add one mana of any color."',
+            "{T}, Tap an untapped creature you control: Add one mana of any color.",
+            "You may spend mana as though it were mana of any color to activate abilities "
+            "of creatures you control.",
+            "Lands you control gain all basic land types until end of turn. Draw a card.",
+        ]:
+            assert "Ramp / fixing" in deck.classify_roles(text), text
+
+    def test_cast_from_top_of_library_is_card_advantage(self):
+        # A permanent draw substitute — Vizier of the Menagerie, Bolas's Citadel. Scored
+        # nothing. Etali's "each player's library" was missed by the your-library scoping.
+        assert "Card advantage" in deck.classify_roles(
+            "You may look at the top card of your library any time. You may cast creature "
+            "spells from the top of your library.")
+        assert "Card advantage" in deck.classify_roles(
+            "Whenever Etali attacks, exile the top card of each player's library, then you "
+            "may cast any number of spells from among them without paying their mana costs.")
+
+    def test_clue_token_is_card_advantage(self):
+        # `investigate` was indexed but the spelled-out token was not, so The Mechanist —
+        # a Clue per noncreature spell — scored Payoff/engine only and a deck built on it
+        # read card advantage 0. A Clue IS a delayed draw.
+        assert "Card advantage" in deck.classify_roles(
+            "Whenever you cast a noncreature spell, create a Clue token. (It's an artifact "
+            'with "{2}, Sacrifice this token: Draw a card.")')
+
+    def test_impulse_is_card_advantage(self):
+        # "Exile the top card of your library. You may play that card this turn" is a card
+        # you would not otherwise have had. Nothing matched it: Zuko, Exiled Prince scored
+        # ZERO roles, and deck 45 — built entirely on cast-from-exile — read 0.
+        for text in [
+            "{3}: Exile the top card of your library. You may play that card this turn.",
+            "At the beginning of your upkeep, exile the top two cards of your library. "
+            "You may play them this turn.",
+        ]:
+            assert "Card advantage" in deck.classify_roles(text), text
+
+    def test_plain_library_exile_is_not_card_advantage(self):
+        # The guard: exiling from a library without permission to play it is not advantage.
+        assert "Card advantage" not in deck.classify_roles(
+            "Exile the top card of your library. If it's a land card, you lose 2 life.")
+
+    def test_scaling_damage_to_a_target_is_removal(self):
+        # The only scaling-damage pattern hard-coded "power", so a spell whose size comes
+        # from a COUNT read as nothing. Combustion Technique scored ZERO roles in the deck
+        # that lists it under `#: protect:` — same failure as Quag Feast above.
+        assert "Removal (spot)" in deck.classify_roles(
+            "Combustion Technique deals damage equal to 2 plus the number of Lesson cards "
+            "in your graveyard to target creature. If that creature would die this turn, "
+            "exile it instead.")
+        assert "Removal (spot)" in deck.classify_roles(
+            "When this creature enters, it deals damage equal to the number of Swamps you "
+            "control to any target.")
+
+    def test_scaling_damage_to_a_player_is_not_removal(self):
+        # The guard on the fix above, and the ONLY false-positive class a roster sweep of
+        # the first draft found across 116 newly-matched cards: damage aimed at a player is
+        # reach, not an answer. Gravitic Punch, Sif's Spearmaster, Runebound Wolf.
+        for text in [
+            "Target creature you control deals damage equal to its power to target player.",
+            "{3}{R}, {T}: This creature deals damage equal to the number of Wolves and "
+            "Werewolves you control to target opponent.",
+        ]:
+            assert "Removal (spot)" not in deck.classify_roles(text), text
+
+    def test_divided_damage_is_removal(self):
+        # Every fixed-damage pattern expects "to target"/"to any target" right after the
+        # number; the Fiery Confluence template says "divided as you choose among" instead.
+        assert "Removal (spot)" in deck.classify_roles(
+            "Arc Lightning deals 3 damage divided as you choose among one, two, or three "
+            "targets.")
+        assert "Removal (spot)" in deck.classify_roles(
+            "Whenever you cast a noncreature spell, create a tapped Treasure token and put "
+            "a plan counter on this enchantment. When the fourth plan counter is put on "
+            "this enchantment, sacrifice it. When you do, it deals 7 damage divided as you "
+            "choose among one or two targets.")
+
     def test_library_tuck_is_removal(self):
         # Floodpits Drowner's activated ability — the creature leaves the battlefield.
         assert "Removal (spot)" in deck.classify_roles(
@@ -1424,10 +1508,20 @@ class TestColorFixerOverlay:
         }
         return {}, cards, cardmeta, carddata
 
-    def test_fixer_tops_the_cut_list_when_the_add_is_not_a_fixer(self):
-        # The baseline the guard exists to correct: a fixer carries no synergy tags and
-        # no classified role, so theme-fit + role-credit ranks it most-cuttable.
-        assert deck._weakest_cut(*self._fixture(), add_is_fixer=False) == "Rainbow Rock"
+    def test_fixer_no_longer_tops_the_cut_list_on_role_credit_alone(self):
+        # BASELINE CHANGED 2026-08, and the change is an improvement rather than a
+        # regression. This used to assert "Rainbow Rock", on the premise that a fixer
+        # "carries no synergy tags AND NO CLASSIFIED ROLE, so theme-fit + role-credit
+        # ranks it most-cuttable". The second half of that premise is no longer true:
+        # `_ROLE_PATTERNS` required a literal `{` after "add", so "{T}: Add one mana of
+        # any color" — the templating of EVERY rainbow source — scored zero roles. With
+        # that hole closed a fixer earns Ramp/fixing credit and stops sorting to the top
+        # on its own.
+        #
+        # The `add_is_fixer` guard below is NOT redundant now: role credit makes a fixer
+        # less cuttable, it does not make it uncuttable, and a fixer in a deck full of
+        # higher-fit cards can still surface. The guard is what makes that safe.
+        assert deck._weakest_cut(*self._fixture(), add_is_fixer=False) == "Filler Bear"
 
     def test_fixer_excluded_when_the_add_is_a_fixer(self):
         assert deck._weakest_cut(*self._fixture(), add_is_fixer=True) == "Filler Bear"

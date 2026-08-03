@@ -1702,6 +1702,85 @@ re-derived wrongly.
 # Known Issues
 
 
+## [G-67] A pattern set is a whitelist, and a whitelist's misses are invisible
+
+`deck._ROLE_PATTERNS` is the model that decides what a card *does*. It is a list of
+regexes matched against oracle text — i.e. a **whitelist of phrasings** — and Magic
+templates the same effect several different ways. When a card is worded a way no pattern
+anticipates, `classify_roles` returns an empty set, and that zero propagates: into
+`role_tally`, into the interaction and card-advantage figures the tier floor grades on,
+into `cuts`' "role not auto-detected" ranking, into the `quality --vs` guard, and into
+`check_all`'s own reporting. It is **never an error and never an over-count** — always a
+silent under-count that every consumer treats as fact.
+
+### The eight holes, all found in one 2026-08 session, none by a gate
+
+| effect | what was indexed | what was missing |
+|---|---|---|
+| targeted removal | `destroy target X` | `choose target X … destroy the chosen permanent` (Quag Feast) |
+| noncreature answer | `creature or planeswalker` | `creature or enchantment` |
+| noncreature answer | creature/artifact/enchantment | spacecraft, vehicle |
+| damage removal | `deals N damage to target` | `divided as you choose among` (Death to Our Enemies) |
+| scaling damage | `equal to … power` | equal to any other expression (Combustion Technique) |
+| card advantage | the `investigate` KEYWORD | a spelled-out `create a Clue token` |
+| card advantage | draw effects | impulse — `exile the top card, you may play it` |
+| ramp / fixing | `{t}: add {` | `{T}: Add one mana of any color` |
+
+Every one was discovered because a human was grading a specific card and noticed the
+number was wrong. That is not a repeatable process, which is the whole argument for the
+gate below.
+
+### The largest one, and why it mattered
+
+The ramp pattern was `\{t\}: add \{` — a literal `{` required right after "add". That
+reads `{T}: Add {G}` and misses `{T}: Add one mana of any color`, which is how Magic
+templates **every rainbow source in the format**. Bloom Tender, Great Divide Guide,
+Springleaf Drum and Agatha's Soul Cauldron all scored **zero roles** — in the three decks
+(54, 54a, 54b) whose #1 graded weakness was, at that moment, the manabase.
+
+Deck 45 is the other worked case: built entirely on cast-from-exile, it measured **card
+advantage 0** because impulse was not indexed at all, and nothing complained.
+
+### The gate
+
+`scripts/check_roles.py` + `scripts/role_baseline.txt`, on the `keyword_baseline.txt`
+design. Scope is every nonland, non-blank-text card in any `decks/*.txt`; it reports the
+ones `classify_roles` returns nothing for and that are not baselined. Three deliberate
+choices:
+
+- **Deck-scoped, not pool-scoped.** A ~30k-card pool sweep is noise. A card in a deck is
+  one some model has already been asked about.
+- **Soft, not hard.** A genuinely roleless card — a vanilla body, a pure combat trick, a
+  build-around whose value sits on another card — is a legitimate zero, and it breaks no
+  invariant.
+- **Read as a DELTA, not a target.** The baseline is 367 and a meaningful fraction of it
+  is legitimately roleless. The gate's job is that the set only ever shrinks and that a
+  NEW zero gets looked at once.
+
+### Two habits the fix earned
+
+**Write a new pattern's fixture from the card's real text, never a paraphrase.** The first
+draft of the ramp fix used "add one mana of any color" — but Bloom Tender's actual text is
+the Vivid form, *"For each color among permanents you control, add one mana of **that**
+color"*. The paraphrase would have shipped a pattern for a card that does not exist. The
+test written from the card's real text is what caught it, and it caught it *after* the
+roster diff had already been run and looked clean.
+
+**Check for a test double encoding the old behaviour before you run the suite, not after.**
+`check_suggest.py` anchor 15 and its pytest twin asserted that a rainbow fixer ranks
+most-cuttable — on the explicit premise that it carries "no synergy tags **and no
+classified role**". The ramp fix falsifies the second half, so the anchor started failing
+for the right reason. It was re-premised rather than deleted: role credit makes a fixer
+*less* cuttable, not uncuttable, so the `add_is_fixer` guard it protects is still load-bearing.
+
+### Relationship to the neighbouring rules
+
+G-53 says a capability that works and is never reached is invisible to every correctness
+gate. This is the same shape one layer down: **a pattern that was never written is
+invisible too.** K-12 says the role counts under-count and to read the uncertainty channel
+— that is the symptom; this is the cause, and `check_roles` is the instrument.
+
+
 ## [K-01] A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select, Opus, Increment, I
 
 A handful of recurring Universe-Beyond flavor *mechanics* (Vivid, Job select,

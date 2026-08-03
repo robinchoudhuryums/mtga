@@ -24,7 +24,7 @@
 #: archetype: Opposite life postures, opposite creature bases, same finisher.
 #: tier: B — Orzhov life-as-currency attrition, one band BELOW the A metrics floor,
 #: tier: PROVISIONAL (unplayed brew). The floor reads A on interaction 6 (FIVE of it
-#: tier: instant-speed, two answering a noncreature permanent) plus card advantage 6 over
+#: tier: instant-speed, two answering a noncreature permanent) plus card advantage 9 over
 #: tier: a 2.66 curve — five surplus removal spells became the pay-life engine and the
 #: tier: drain clock, and the Gwenom / Enduring Tenacity adds since cost two more
 #: tier: answers, so 6 is now the floor of comfortable rather than a surplus — and

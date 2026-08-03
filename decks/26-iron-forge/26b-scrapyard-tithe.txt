@@ -5,7 +5,7 @@
 #: plan: midrange
 #: tier: B — the CLOSEST call of the three graded this pass, and the only one where A is
 #: tier: genuinely arguable rather than merely allowed by the floor. The measurable case is the
-#: tier: strongest in the family by a wide margin: interaction 12 plus card advantage 8 against
+#: tier: strongest in the family by a wide margin: interaction 13 plus card advantage 9 against
 #: tier: 12 and 11 for the two Doombot lists, on the fastest curve here at 2.31, and with only
 #: tier: ONE unclassified card — so unlike its siblings these numbers are not hiding an engine
 #: tier: the classifier cannot read. Effect depth is the deepest on the roster's artifact side:
