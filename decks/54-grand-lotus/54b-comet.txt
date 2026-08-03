@@ -1,9 +1,9 @@
 #: name: Grand Lotus — Comet
 #: format: Standard
-#: colors: GUR
+#: colors: BGUR
 #: based-on: deck.txt
 #: plan: aggro
-#: archetype: Temur FIREBENDING COMBAT-MANA, and it is the THIRD reading of one clause.
+#: archetype: FIREBENDING COMBAT-MANA (Temur plus a black splash for one card), and it is the THIRD reading of one clause.
 #: archetype: Deck 54 uses Iroh's flashback as a DISCOUNT (a flat {1} on a fat Lesson).
 #: archetype: Deck 54a uses it as a TRIGGER SOURCE (the payoff is the cast event). This list
 #: archetype: uses it as a COMBAT REWARD, and its currency is mana that does not otherwise
@@ -51,12 +51,15 @@
 #: archetype: aggro with no graveyard axis at all. Verify with `deck.py similar 54b`.
 #: tier: C — PROVISIONAL, GRADED 2026-08 on an UNBUILT, UNPLAYED, FIRST-DRAFT list.
 #: tier: Deliberately graded WELL BELOW the measurable floor, which reads A on interaction 6
-#: tier: plus card advantage 1. The guard permits grading under the floor when the prose
+#: tier: plus card advantage 0. The guard permits grading under the floor when the prose
 #: tier: argues for it; here is the argument, in measured terms:
-#: tier:   CARD ADVANTAGE 1 IS THE HARD NUMBER, and the rubric caps a deck at C for exactly
-#: tier:     this shape. One looter (Muse Seeker, which per its own text always discards in
-#: tier:     a cheap-recast deck) is the entire refuel plan. An aggro deck that stalls has
-#: tier:     nothing to rebuild with.
+#: tier:   CARD ADVANTAGE 0 IS THE HARD NUMBER, and the rubric caps a deck at C for exactly
+#: tier:     this shape. There is no refuel plan at all — the deck's only looter was cut for
+#: tier:     Fire Lord Azula. An aggro deck that stalls has nothing to rebuild with, and this
+#: tier:     is now the first axis to fix.
+#: tier:   THE MANABASE IS FOUR COLOURS ON 25 LANDS and one of them has effectively three
+#: tier:     sources. See the `#: notes:` block for what the black splash cost the other
+#: tier:     three colours; it was a deliberate trade, not an oversight.
 #: tier:   AGGRO PLAN — the floor substitutes a bounded clock for the interaction a midrange
 #: tier:     deck would need (rubric #4), and it scores clock 4 of 7. `shape` reads WIDE 6 on
 #: tier:     23 creature copies with 8 evasive, which is the one axis where this list beats
@@ -94,16 +97,35 @@
 #: notes: mana source. If the six graveyard granters (Archmage's Newt, Slickshot Lockpicker,
 #: notes: Sphinx of Forgotten Lore, Seifer Almasy, The Dawning Archaic, Norman Osborn) ever
 #: notes: fall below four, this has become deck 14 in the wrong colours — abandon it.
-#: notes: FIRE LORD AZULA IS THE OBVIOUS MISSING CARD AND IS DELIBERATELY OUT. Her clause —
-#: notes: "whenever you cast a spell WHILE FIRE LORD AZULA IS ATTACKING, copy that spell" —
-#: notes: is a perfect description of what this deck does, and she carries firebending 2 to
-#: notes: help pay for it. She was rejected for decks 54 and 54a because almost nothing in
-#: notes: those lists can be cast during combat; that objection does NOT apply here. What
-#: notes: keeps her out is her CAST COST: {1}{U}{B}{R} needs a fourth colour, and the only
-#: notes: black source available is Great Divide Guide. One enabler is not enough, and G-58
-#: notes: warns that widening `#: colors:` for one card costs you every future stray flag.
-#: notes: SHE IS THE FIRST ADD if a second any-colour source lands. Do not re-litigate her
-#: notes: on the "she must be attacking" argument — that argument is dead in this deck.
+#: notes: FIRE LORD AZULA IS IN, AS A LATE-GAME CARD, AND THE COST IS RECORDED HERE SO IT
+#: notes: IS NOT MISREAD AS FREE. Her clause — "whenever you cast a spell WHILE FIRE LORD
+#: notes: AZULA IS ATTACKING, copy that spell" — describes exactly what this deck does, and
+#: notes: her own firebending 2 helps pay for the spells she copies. The objection that
+#: notes: killed her in decks 54 and 54a (almost nothing there can be cast during combat) is
+#: notes: DEAD here; do not re-litigate her on it.
+#: notes: WHAT SHE COSTS: `consistency` prices her at 0.0% ON CURVE and says so plainly —
+#: notes: "B is a 0-source splash". Black comes from THREE places only: Captivating Cave,
+#: notes: Daily Bugle Building and Great Divide Guide (which turns every land and Ally into
+#: notes: a rainbow source). Read her as a TURN 6-8 card, not a four-drop.
+#: notes: TOOL CAVEAT: `mana` reports "B 0" because a land whose any-colour ability costs
+#: notes: {1},{T} is not counted as a coloured SOURCE. Those two lands genuinely do make
+#: notes: black — at a one-mana premium — so the true figure is three, not zero. The
+#: notes: practical conclusion is the same, which is why the splash was left thin rather
+#: notes: than widened.
+#: notes: THE COLLATERAL DAMAGE IS THE REAL PRICE, and it is measured: making room for the
+#: notes: two black-capable lands took G from 8 to 7 and U from 12 to 11, which moved Bloom
+#: notes: Tender and Great Divide Guide 70.6% -> 65.4%, Sphinx of Forgotten Lore 64.6% ->
+#: notes: 59.1% and Iroh himself 76.4% -> 70.5%. One card was bought with four.
+#: notes: WHY NOT RED-GREEN-BLACK INSTEAD OF RED-GREEN-BLUE, which was the proposal: TWO
+#: notes: reasons, and the second is the decisive one. (1) Iroh, Grand Lotus costs
+#: notes: {3}{G}{U}{R} — drop blue and the deck loses the card the whole family is built on,
+#: notes: at which point this is not a 54 variant but a new deck. Blue also carries THREE of
+#: notes: the six graveyard granters (Archmage's Newt, Slickshot Lockpicker, Sphinx), and
+#: notes: the abandon test below fires at four. (2) The stated goal was to differentiate
+#: notes: from deck 14 — which is RAKDOS, B/R. Adding black moves this list's colours TOWARD
+#: notes: deck 14 while it already shares the entire firebending package. Blue is precisely
+#: notes: what keeps the two apart; trading it for black would leave two of three colours
+#: notes: shared with a tier-A deck that already does firebending better.
 #: notes: THE BUILD RULE, stated so a later edit does not break it: red instants, coloured
 #: notes: permanents. A blue or green INSTANT cannot be paid for with firebending mana, so
 #: notes: it competes for land mana with the permanents. Origin of Metalbending, Overprotect
@@ -157,14 +179,15 @@
 1 Bloom Tender (ECL) 166
 1 Great Divide Guide (TLA) 181
 1 Spider Manifestation (SPM) 148
-1 Muse Seeker (SOS) 60
+1 Fire Lord Azula (TLA) 220
 
 # Lands — red-primary. Fire Nation Palace grants firebending 4 to a
 # creature that lacks it, which is a second copy of the deck's engine.
 2 Fire Nation Palace (TLA) 268
 2 Swiftwater Cliffs (MOM) 273
 1 Riverpyre Verge (DFT) 260
-3 Stark Industries (MSH) 272
+2 Stark Industries (MSH) 272
+1 Daily Bugle Building (SPM) 179
 1 Spectacle Summit (SOS) 262
 1 Temple of Epiphany (FDN) 699
 1 Training Compound (MSH) 275
@@ -174,4 +197,5 @@
 1 Breeding Pool (EOE) 251
 5 Mountain (MSH) 293
 2 Island (MSH) 289
-2 Forest (MSH) 295
+1 Forest (MSH) 295
+1 Captivating Cave (LCI) 268
