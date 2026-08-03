@@ -56,9 +56,20 @@ Sphinx of Forgotten Lore, Norman's Goblin Formula mayhem.
    `{1}` on a Lesson) beats pips.
 3. **"MANA SPENT" vs "MANA VALUE" DECIDES CARDS.** A payoff reading *mana spent* is turned
    OFF by these decks (Thunderdrum Soloist's upgrade, Increment, The Emperor's counter
-   clause). A payoff reading *mana value* is turned ON at maximum — **Thor, God of Thunder**
-   deals damage equal to the spell's MV, so a `{1}`-flashbacked Improvisation Capstone (MV 7)
-   deals 7. Check which word the card uses before grading it.
+   clause, Muse Seeker's no-discard rider). A payoff reading *mana value* is turned ON at
+   maximum — **Thor, God of Thunder** deals damage equal to the spell's MV, so a
+   `{1}`-flashbacked Improvisation Capstone (MV 7) deals 7. Check which word the card uses.
+4. **IN A SELF-MILLING DECK, "PLAY LANDS FROM YOUR GRAVEYARD" IS NOT RAMP — IT RECOVERS A
+   COST THE ENGINE IMPOSES.** Milling is not free. 54a is 25 lands / 60, so roughly **42% of
+   every mill is a land**, and those are dead cards: Glacierwood Siege alone bins ~4 per
+   spell cast. A card that plays lands out of the graveyard converts the engine's own
+   downside into land drops — and it does so **without depending on drawing them**, which
+   matters because 54a's turn-4 land-drop consistency is only 67.5%. Grading these as "ramp
+   in a deck that isn't ramping" is the wrong frame and cost three cards a fair read
+   (user pushback, 2026-08).
+   *Counter-caution:* each landfall slot is a slot NOT spent on a cast-from-graveyard
+   payoff, and that layer is already the deck's #1 graded weakness at 4–5 cards. Recovery
+   is real value; a full landfall sub-theme is a different deck.
 
 ### Per-deck differences
 
@@ -121,6 +132,13 @@ Every one of these was made in this analysis and caught late.
 - **Thor, God of Thunder → `#: protect:` in both decks** (user decision 2026-08), to be
   written at the moment he is added, not before — a protect entry naming an absent card is
   a claim the file cannot support (see error 5).
+- **A MILL → LAND-RECOVERY → LANDFALL LOOP is available in 54a and is coherent** (rule 4):
+  Glacierwood Siege mills → Mole Man / Icetill Explorer play the milled lands → landfall
+  fires Bristly Bill's counter, Mole Man's Moloid, Claim the Kingdom's counter → more board,
+  more counters, and Icetill mills again on the way. It fixes THREE measured weaknesses at
+  once (land-drop consistency 67.5%, wide score 1, only 3 counter sources).
+  **The cost is slots**, and they come out of the 4–5 card payoff layer. Decide how many
+  landfall cards 54a takes at the final ranking — the answer is probably 2–3, not a theme.
 
 ---
 
@@ -208,6 +226,11 @@ cost is close to irrelevant there. Re-examine all three before the final ranking
 **New standing error (7): I CUT CARDS FROM DECK 54 ON HARD-CAST RATE WHILE HOLDING THE
 FRAMEWORK THAT SAYS NOT TO.** Elemental Teachings and Lost Days were both cut in the
 five-swap fixing package. Before any further Lesson leaves deck 54, price it at `{1}`.
+
+**New standing error (8): DISMISSING A CARD BY ITS CATEGORY INSTEAD OF ITS TEXT.** "Landfall
+payoffs belong in a landfall deck" swept six cards out in one line, and three of them were
+not payoffs at all — they were **recovery** for a cost this deck's own engine imposes
+(rule 4). A category label is a hypothesis about a card, not a reading of it.
 ### Batch 4 (32 cards — heavily landfall, so much of it is deck 30/50a material)
 
 **THE TRAP OF THE BATCH: Taigam, Master Opportunist looks perfect and fights the engine.**
@@ -235,7 +258,10 @@ attacks your own engine. **✗ despite the power level.**
 | Astrologian's Planisphere / Illvoi Operative / Razzle-Dazzler / Splashy Spellcaster / Kulrath Mystic | — | ◇ | Small spell-count payoffs. Razzle-Dazzler grants itself **unblockable**, which matters if 54a commits to the attack sub-theme. |
 | Mole Man / A Realm Reborn / Galvanic Giant / Ojer Pakpatiq / Redshift / Dragonbroods' Relic | — | △ | A Realm Reborn does Great Divide Guide's job for four more mana. Ojer Pakpatiq's rebound is **hand-only and instant-only**. Redshift's mana is restricted to activated abilities. Dragonbroods' Relic adds a WUBRG stray. |
 | **Taigam, Master Opportunist** own M | ✗ | ✗⚠ | See above — exiles your second spell each turn out of the graveyard pipeline. |
-| Icetill Explorer / Seedship Agrarian / Tannuk / Gladiolus Amicitia / Tifa Lockhart / Dragonback Assault | ✗ | ✗ | Landfall payoffs in decks that play one land a turn. These belong in **deck 30 / 50a**. |
+| **Mole Man, Moloid Master** `{2}{G}` own | — | ★ | **REVISED UP (user, 2026-08) — see rule 4.** Plays lands from the graveyard, which recovers the ~42% of every mill that is a land; and its landfall makes a **1/1 Moloid that mills on attack**, so it also answers the wide-score-1 problem and feeds the yard again. Three on-plan lines on a two-drop. |
+| **Icetill Explorer** `{2}{G}{G}` | — | ★ | **REVISED UP.** All three lines are on-plan: an extra land drop, lands from the graveyard (rule 4), and **landfall mills a card** — more fuel. My "ramp in a deck that isn't ramping" read was simply wrong. The honest remaining objection is `{G}{G}` on 10 green sources (~59% on curve, same band as Germination Practicum). |
+| **Seedship Agrarian** `{3}{G}` own | — | ◇ | **REVISED UP.** *"Whenever this creature **becomes tapped**"* — and **Songcrafter Mage's harmonize taps a creature to reduce its cost**, so reducing a recast pays you a Lander. Real loop; the Lander is still a slow `{2}`-to-crack basic fetcher. |
+| Tannuk / Gladiolus Amicitia / Tifa Lockhart / Dragonback Assault | — | △ | Genuine landfall *payoffs* rather than recovery — they need multiple land drops per turn to be good, which only happens once Icetill/Mole Man are already there. Dragonback Assault's ETB also kills your own Moloids and tokens. Primary home is still **deck 30 / 50a**. |
 | Tam, Observant Sequencer | — | — | **Not in the pool under any spelling** — check the name. |
 
 ---
@@ -293,6 +319,7 @@ of the tier-1/2 adds are themselves Lessons, so the count holds or rises.
 | **3** | **High Fae Trickster** `{3}{U}` own | Cast all spells as though they had flash — fixes the **2 instant / 8 sorcery** profile. |
 | **3** | **Electro** `{1}{R}{R}` own · **Rapturous Moment** `{4}{U}{R}` · **Zimone** `{2}{G}{U}` own · **Loading Zone** `{3}{G}` own · **Inspiring Call** · **Case of the Ransacked Lab** `{2}{U}` · **Iron Fist** `{2}{R}` own · **Firebender Ascension** `{1}{R}` own | Iron Fist and Firebender Ascension are **contingent on the attack decision** in §3. |
 | **3** | **Frontier Bivouac** (true GUR tri-land) · **Mona Lisa** · **Hydro-Channeler** · **Planetarium** `{6}` own | |
+| **2–3** | **Mole Man** `{2}{G}` own · **Icetill Explorer** `{2}{G}{G}` | Rule-4 recovery, not ramp: they convert the ~42% of every mill that is a land back into land drops, and Mole Man's Moloids add bodies to a wide-score-1 deck. **Cap the landfall count at 2–3** — every slot competes with the payoff layer. |
 | **⚠** | **Thousand-Year Storm** own | Powerful and on-plan, but it is deck 25's signature card and collapses 54a toward it on `similar`. **User call.** |
 
 ### Deck 54a — cuts
