@@ -10,6 +10,11 @@ pass graded cards by hard-cast rate; the framework below says that is the wrong 
 these two decks specifically. This doc carries the framework, the standing error list, and
 the running verdicts so that batch N+1 does not repeat batch N's mistakes.
 
+**Process owner: `/pile-analysis`.** This doc predates that skill and is the pile it was
+written from; the skill encodes the method (framework before batch 1, batches of 30, full
+text always, commit per batch, standing error list, protect list). Follow the skill for the
+next pile rather than copying this file's shape by hand.
+
 **Source list:** `/tmp/.../scratchpad/pile54-remaining.txt` (168 cards after removing the
 44 already in 54 or 54a). Regenerate from the pile if lost.
 

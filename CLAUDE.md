@@ -900,7 +900,8 @@ deliverable is the list of **reconciliation points** — every place a human mus
 two answers by hand — plus the overlapping-answer inventory with MEASURED agreement
 rates. Regenerate it by hand when a cycle adds a subcommand or a skill stage.
 `check`, `refresh`, `add-deck`, `draft-deck`, `tune-deck`, `add-cards`,
-`add-wishlist`, `roster-review`, `ingest`, `log-matches`, and `apply-changes` are project-specific. **A skill drifts behind the
+`add-wishlist`, `roster-review`, `ingest`, `log-matches`, `pile-analysis`, and
+`apply-changes` are project-specific. **A skill drifts behind the
 tooling silently** — `/tune-deck` was still built around the command set it shipped with
 and had no step for `consistency` (the probability layer), `engines`, `shape`, `cuts`,
 `flex`, the protection axis, the role counts' own uncertainty, or the post-edit rationale
@@ -941,6 +942,13 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   cycle's diagnosis, the agreed next task, the measurements not worth re-deriving,
   and the traps. It is written for a session with no context and supersedes the
   older blocks where they disagree.
+- **`.cycle/*-analysis.md`** — a LIVE `/pile-analysis` working doc, if one exists.
+  Carries that pile's decision framework, its standing error list and the
+  consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
+  swaps land. Named here because a fresh session loads nothing else, and the whole
+  point of committing it per batch is that it outlives one context window.
+  **Currently live: `.cycle/54-pile-reanalysis.md`** — decks 54 / 54a / 54b,
+  plans written and NOT yet applied.
 - **`.cycle/STATE.md`** — prose record: what was completed, decisions made, what was
   decided AGAINST (worth reading before re-proposing a rejected fix), and where the
   last session left off.

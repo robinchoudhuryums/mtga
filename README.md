@@ -1258,6 +1258,10 @@ Claude Code slash commands live in `.claude/commands/`:
   re-run placement after a retune, after `tag_synergies` gains a theme, or for a card
   you have owned for months), `/add-wishlist` (intake unowned craft targets to
   the wishlist — enrich, set the home Target, do the cross-deck fit review),
+  `/pile-analysis` (work a LARGE pile — ~60+ cards — against a deck or deck family in
+  batches of 30, keeping a committed working doc that survives context loss; reach for it
+  when `/add-cards` would be too big a single pass, and when the answer wanted is a ranked
+  swap plan rather than a list of homes),
   `/apply-changes` (apply confirmed swaps, run the quality guard, verify + commit).
 
   The per-deck loop is `/tune-deck` → `/apply-changes`; the roster loop is
