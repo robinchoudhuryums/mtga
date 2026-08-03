@@ -3,9 +3,9 @@
 #: colors: GUR
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (5 craft targets, zero games).
-#: tier: One band BELOW the measurable floor, which reads A on interaction 5 plus card
+#: tier: One band BELOW the measurable floor, which reads A on interaction 7 plus card
 #: tier: advantage 4. Against the rubric an A needs four things and this list fails two:
-#: tier:   A-FLOOR — yes. Interaction 5 clears five; the sum of 9 clears seven.
+#: tier:   A-FLOOR — yes. Interaction 7 clears five; the sum of 11 clears seven.
 #: tier:   COHERENT ENGINE — yes, and now MEASURED rather than asserted. `targets` finds
 #: tier:     nine gated effects and reports zero thin or unmet: every Lesson-count gate in
 #: tier:     the list — Serpent's three, Bumi's X, Combustion Technique's scaling damage,
@@ -14,10 +14,10 @@
 #: tier:     sorceries, so casting them IS filling the yard; the engine feeds itself.
 #: tier:     WATCH THIS NUMBER. The 2026-08 fixing pass cut four Lessons and added none, so
 #: tier:     the count fell 21 -> 17. Every GATE still clears (they need one to three), but
-#: tier:     three payoffs SCALE with the count rather than switching on — Combustion
-#: tier:     Technique, Bumi's X and Master Pakku's mill — and those lost about a fifth of
-#: tier:     their ceiling. Price a Lesson cut against them, not against the gates.
-#: tier:   TIGHT CURVE — yes. 3.03 average on 18 early drops.
+#: tier:     two payoffs SCALE with the count rather than switching on — Combustion
+#: tier:     Technique and Bumi's X — and those lost about a fifth of their ceiling. Price a
+#: tier:     Lesson cut against them, not against the gates.
+#: tier:   TIGHT CURVE — yes. 3.06 average on 17 early drops.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND badly.
 #: tier:     (1) THE MANABASE, and the 2026-08 pass was aimed squarely at it. Three colours
 #: tier:     on 25 lands, deepest colour 12 sources; Improvisation Capstone still casts on
@@ -49,7 +49,7 @@
 #: tier:     engine — but it wants the opposite build from this list, so it belongs in a
 #: tier:     54a, not here. See the parked-directions note below.
 #: tier: WHAT ARGUES UP, and why the letter may move after play: the floor counts
-#: tier: interaction 5, but four more cards read as interaction the classifier could not
+#: tier: interaction 7, but four more cards read as interaction the classifier could not
 #: tier: tag, and a resolved Iroh turns a graveyard of five-drops into a hand of one-drops
 #: tier: — a swing the metrics have no term for at all. Re-grade after it is played.
 #: archetype: Temur LESSONS, and the deck exists because of one clause almost everyone
@@ -110,7 +110,7 @@
 1 Uncle Iroh (TLA) 248
 1 Bumi, King of Three Trials (TLA) 169
 1 Serpent of the Pass (TLA) 70
-1 Master Pakku (TLA) 63
+1 Death to Our Enemies (MSH) 127
 1 First-Time Flyer (TLA) 49
 1 Fire Nation Cadets (TLA) 134
 1 Dragonfly Swarm (TLA) 215

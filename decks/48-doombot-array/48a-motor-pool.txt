@@ -4,7 +4,7 @@
 #: based-on: deck.txt
 #: plan: midrange
 #: tier: B — same letter as its parent for opposite reasons, and a WEAKER B. The floor reads A
-#: tier: on interaction 9 plus card advantage 2 at a 3.25 curve, so the guard soft-flags this as
+#: tier: on interaction 10 plus card advantage 2 at a 3.25 curve, so the guard soft-flags this as
 #: tier: possibly under-graded; that is intentional. Three weaknesses, where A allows one:
 #: tier: 1. THE INTERACTION IS LOPSIDED BY SPEED, 2 instant against 8 sorcery. Deck 48 splits
 #: tier:    evenly. This is the shape the interaction profile exists to flag: the deck cannot

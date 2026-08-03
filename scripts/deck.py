@@ -1124,6 +1124,22 @@ _ROLE_PATTERNS = {
         # Brawl "fight each other") — the old pattern only caught "fights target".
         r"\bfights?\b|creatures? fight",
         r"deals damage equal to (?:twice )?.{0,20}?power to target (?:creature|creature or planeswalker|attacking)",
+        # SCALING damage whose size is anything OTHER than a power reference. The pattern
+        # above hard-codes "power", so Combustion Technique — "deals damage equal to 2 plus
+        # the number of Lesson cards in your graveyard to target creature" — matched
+        # nothing and scored ZERO roles, in the deck that PROTECTS it as a marquee payoff.
+        # Same failure shape as Quag Feast above: a removal template no pattern read, so
+        # the card was absent from the interaction count the tier floor grades on. `[^.]`
+        # keeps the span inside one sentence so an unrelated later clause can't be swept in.
+        # The `(?!player|opponent)` guard is load-bearing: "deals damage equal to its power
+        # to target PLAYER" (Gravitic Punch, Sif's Spearmaster, Runebound Wolf) is reach,
+        # not an answer, and a roster sweep of the first draft showed that was the ONLY
+        # false-positive class among 116 newly-matched cards.
+        r"deals damage equal to [^.]{0,80}?to (?:any target|target (?!player|opponent)\w+)",
+        # DIVIDED damage — the Fiery Confluence / Death to Our Enemies template. Every
+        # fixed-damage pattern above expects "to target"/"to any target" immediately after
+        # the number, and this one says "divided as you choose among …" instead.
+        r"deals? \d+ damage divided as you choose among",
         # -N/-N or -X/-X shrink on a targeted creature (incl. "creature an opponent
         # controls gets -X/-X" — Cloud of Darkness, Wick's Patrol).
         r"target creature (?:an opponent controls )?gets -[0-9x]",

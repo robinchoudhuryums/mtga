@@ -174,6 +174,41 @@ class TestClassifyRoles:
                "{t}, sacrifice this token: you gain 3 life.\")"
         assert not any(p.search(text) for p in deck._NONCREATURE_ANSWER_CUES), text
 
+    def test_scaling_damage_to_a_target_is_removal(self):
+        # The only scaling-damage pattern hard-coded "power", so a spell whose size comes
+        # from a COUNT read as nothing. Combustion Technique scored ZERO roles in the deck
+        # that lists it under `#: protect:` — same failure as Quag Feast above.
+        assert "Removal (spot)" in deck.classify_roles(
+            "Combustion Technique deals damage equal to 2 plus the number of Lesson cards "
+            "in your graveyard to target creature. If that creature would die this turn, "
+            "exile it instead.")
+        assert "Removal (spot)" in deck.classify_roles(
+            "When this creature enters, it deals damage equal to the number of Swamps you "
+            "control to any target.")
+
+    def test_scaling_damage_to_a_player_is_not_removal(self):
+        # The guard on the fix above, and the ONLY false-positive class a roster sweep of
+        # the first draft found across 116 newly-matched cards: damage aimed at a player is
+        # reach, not an answer. Gravitic Punch, Sif's Spearmaster, Runebound Wolf.
+        for text in [
+            "Target creature you control deals damage equal to its power to target player.",
+            "{3}{R}, {T}: This creature deals damage equal to the number of Wolves and "
+            "Werewolves you control to target opponent.",
+        ]:
+            assert "Removal (spot)" not in deck.classify_roles(text), text
+
+    def test_divided_damage_is_removal(self):
+        # Every fixed-damage pattern expects "to target"/"to any target" right after the
+        # number; the Fiery Confluence template says "divided as you choose among" instead.
+        assert "Removal (spot)" in deck.classify_roles(
+            "Arc Lightning deals 3 damage divided as you choose among one, two, or three "
+            "targets.")
+        assert "Removal (spot)" in deck.classify_roles(
+            "Whenever you cast a noncreature spell, create a tapped Treasure token and put "
+            "a plan counter on this enchantment. When the fourth plan counter is put on "
+            "this enchantment, sacrifice it. When you do, it deals 7 damage divided as you "
+            "choose among one or two targets.")
+
     def test_library_tuck_is_removal(self):
         # Floodpits Drowner's activated ability — the creature leaves the battlefield.
         assert "Removal (spot)" in deck.classify_roles(

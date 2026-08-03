@@ -1,6 +1,6 @@
 #: name: Knight's Edge
 #: format: Standard
-#: tier: A — Mono-W go-wide aggro; fast, anthems, 8 interaction on a 3.44 curve.
+#: tier: A — Mono-W go-wide aggro; fast, anthems, 9 interaction on a 3.44 curve.
 #: tier: Red Guardian was CUT for Delney (12 trigger feeders, 13 power-2-or-less
 #: tier: creatures); Resolute Reinforcements was CUT for Dollmaker's Shop, trading a
 #: tier: one-shot token for an every-attack one plus a board-scaling back door.
