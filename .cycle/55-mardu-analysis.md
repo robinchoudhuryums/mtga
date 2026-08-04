@@ -1,6 +1,6 @@
 # 55 Mardu (RWB) Mobilize pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS — batch 2 of 5 done (52/131).** Delete once the deck(s)
+**Status: IN PROGRESS — batch 3 of 5 done (78/131).** Delete once the deck(s)
 are drafted and findings folded into their `#: notes:` blocks. A scratchpad, not a
 source of truth — decks/ are.
 
@@ -73,11 +73,15 @@ step."* Everything follows from that clock:
   and is gone by end step, so the cost is payable only by holding back the permanent
   board. Any tap-as-cost card must be graded against rule 6 explicitly. (Batch 2:
   Wild Ride's harmonize discount is the same shape, though optional.)
-- **E-03 (batch 2): "died this turn" does NOT see the end-step sacrifice wave.** The
-  Mobilize tokens die at the beginning of YOUR END STEP — there is no main phase after
-  that, so a sorcery-speed "per creature that died this turn" card (Callous Sell-Sword)
-  cast in main 2 counts only COMBAT deaths (tokens eaten by blockers, sac outlets), not
-  the self-sacrifice. Grade death-counters by what dies BEFORE main 2.
+- **E-03 (batch 2, REFINED batch 3 after user challenge via Fire Navy Trebuchet):**
+  whether the end-step sacrifice wave is visible depends on the SHAPE of the reader:
+  (i) "whenever a creature dies" triggers on permanents → YES, they fire when the sac
+  resolves; (ii) an INSTANT cast in the end step after the sac → YES; (iii) a
+  sorcery-speed "per creature that died this turn" count (Callous Sell-Sword) → NO,
+  there is no main phase after your end step; (iv) "at the beginning of your end step,
+  if a creature died this turn" → NO, the intervening-if is checked when triggers go
+  on the stack, before the simultaneous sac trigger resolves (CR 603.4). The original
+  E-03 was shape (iii) only and over-generalized.
 - **E-04 (batch 2): airbending/exiling a TOKEN kills it.** Appa's airbend and Avatar's
   Wrath remove tokens permanently (a token in exile ceases to exist) — their recast
   value applies to NONTOKEN permanents only. Blink/exile value must be graded against
@@ -85,7 +89,7 @@ step."* Everything follows from that clock:
 
 ## 3. Cross-batch observations
 
-- Axis member counts (running, after batch 2): A=2 B=0 C=9 D=5 E=5 F=5.
+- Axis member counts (running, after batch 3): A=2 B=2 C=12 D=9 E=8 F=8.
 - **Mobilize bearer P/T tally (for Delney):** Stadium Headliner 1/1 (power ≤2 ✓). One
   bearer seen, one qualifies. Also tally WARRIOR payoffs — the tokens are Warriors and
   Suki is one; search plural effect-shapes at close-out (K-13).
@@ -97,7 +101,23 @@ step."* Everything follows from that clock:
   best trick and it is entirely a timing read.
 - **Brazen Collector funds the spell decks:** attack → {R} that persists through
   phases = combat-time ramp that pays for D-axis second spells or instant tricks.
-  A bridge card between primary and the spells variant.
+  A bridge card between primary and the spells variant. (Batch 3 adds Electro,
+  Assaulting Battery and Blazing Firesinger's Seething Song copy to the same
+  mana-engine family — the spells variant has real fuel.)
+- **OFF-PILE CANDIDATE (user, batch 3): Fire Navy Trebuchet** — {2}{B} Wall, owned 1,
+  Standard-legal: "whenever you attack, create a 2/1 flying Boulder tapped and
+  attacking, sac at next end step." A SECOND Mobilize-shaped wave engine on a
+  defensive body; every combat's wave grows by a 2/1 flier. Strong primary include.
+- **Mobilize bearer P/T tally (Delney):** Stadium Headliner 1/1 ✓, Shock Brigade 1/3 ✓
+  — 2 of 2 bearers so far are power ≤2. Wingnut (1/2) also doubles its Alliance
+  trigger under Delney. Delney trending toward ★★★.
+- **Micro-cluster: TREASURE/ARTIFACT SAC** (batch 3): Death to Our Enemies (Treasure
+  per noncreature spell) + Crime Novelist (sac artifact → counter + {R}) + Terrapact's
+  Landers + Machinesmith Automaton (artifact ETB counters) — a self-contained loop
+  that lives naturally INSIDE the spells variant (spells → Treasures → mana + bodies).
+- **Micro-cluster: DISCARD OUTLETS feed C:** Flamecache Gecko's rummage + Team
+  Avatar's discard mode enable Electro's Bolt mayhem — the C variant wants 2-3 cheap
+  discard outlets to turn dead cards into graveyard casts.
 - The primary's best batch-1 cards split into two machine parts: COMBAT-TIME READERS
   (Stormbeacon Blade, Auron's Inspiration, Practiced Offense, Snow Villiers) and
   WAVE-ETB ENGINES (Enduring Innocence, Spiritcall Enthusiast). Both scale with N
@@ -147,6 +167,37 @@ AXIS (primary = the Mobilize wave deck; letters = variant axes above).
 | Spiritcall Enthusiast | ★★ | — | re-prepares every combat off the wave; repeatable pump that is also an extra CAST (feeds D) |
 
 ## 5. Consolidated plan (live)
+
+### Batch 3 (26 — the red core: pingers, Mobilize bearers, spell fuel)
+
+| Card | Primary | Axis | Note |
+|---|---|---|---|
+| Demonic Ruckus | ★ | C ★ | menace+trample on a bearer; replaces itself; plot cast is a real exile-cast |
+| Flamecache Gecko | ◇ | D ★ | post-combat ETB refunds {B}{R} (opponent lost life ✓); rummage enables mayhem |
+| Impact Tremors | ★★★ | B | rule 2 made card: N damage per combat, every combat |
+| Jeskai Devotee | ★ | infra/D | G-58 poster child: identity has U from a MANA ABILITY; printed {1}{R} castable; a fixer that attacks |
+| Rabid Gnaw | ★ | F ★★ | one-sided fight scaling with the tall body |
+| Remnant Elemental | ✗ | — | landfall deck's card, not ours |
+| Red Mage's Rapier | ◇ | E ★ | per-spell +2/+0 engine; equip {3} steep |
+| Shocking Sharpshooter | ★★★ | B | 1 damage per OTHER creature entering — the wave, aimed at a player; reach body |
+| Shock Brigade | ★★ | A | Mobilize bearer #2, MENACE gets the bearer through; power 1 (Delney ✓) |
+| Terrapact Intimidator | ★ | infra | either mode fine: Landers fix RWB (and feed Crime Novelist) or 4/1-equivalent |
+| Tiger-Dillo | △ | F ◇ | needs the power-4 count (G-61) — pending F-axis density |
+| Thunder Salvo | ★ | D ★★ | X=2+spells this turn; the velocity build's cheap removal |
+| Wingnut, Bat on the Belfry | ★★★ | — | Alliance picks evasion MID-combat off the wave (tokens enter before blocks); attack pump resolves after Mobilize → counts the wave; Delney doubles it |
+| Adrenaline Jockey | ◇ | — | meta punisher; exhaust half is dead here |
+| Blazing Firesinger | ★ | D ★★ | prepared Seething Song copy = +2 mana burst AND an extra cast |
+| Crime Novelist | ◇ | D ★ | real only with the Treasure/Lander cluster — count at draft |
+| Death to Our Enemies | ★ | D/E ★★ | 4 spells → 7 damage + 4 Treasures that fund the next 4 |
+| Electro, Assaulting Battery | ◇ | D/E ★★★ | the spells variant's mana engine: rebate per spell, mana persists, X-damage exit |
+| Electro's Bolt | ★ | C ★★ | mayhem off the discard outlets; clean 4-damage otherwise |
+| Frantic Firebolt | ◇ | E ★★ | scales with the spells graveyard, not this board |
+| Machinesmith Automaton | ◇ | — | artifact-cluster only; Treasures do trigger it |
+| Longhorn Sharpshooter | ◇ | C ★ | plot ping + a later exile-cast; slow for primary |
+| Molecular Modifier | ◇ | — | rule 4: beginning-of-combat fires BEFORE the wave — bearer-only pump, works but small |
+| Prickly Pair | ★ | — | two persistent bodies; the Mercenary's sorcery-tap dodges rule 6 by staying home |
+| Scalestorm Summoner | ◇ | F ★★ | with a power-4 body: a PERSISTENT 3/1 per attack (not sacrificed) |
+| Tablet of Discovery | ◇ | E ★★ | spells-only RR mode; impulse ETB; the spells variant's rock |
 
 ### Batch 2 (26 — rest of white, into the red cluster)
 
