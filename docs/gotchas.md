@@ -1915,6 +1915,16 @@ remaining residual is only a fixer whose value scales with color count but whose
 lacks an explicit any-color / basic-land-type cue (so `_is_color_fixer` can't see it)
 — grade those from full text (why the shortlists print "grade from text").
 
+**2026-08, the same invisibility one theme over (Gilgamesh, Master-at-Arms):** his text
+digs six cards for "Equipment cards" — an equipment-MATTERS payoff — but because he never
+equips, attaches or enters as Equipment, the tagger gave him `Human; Samurai; selection`
+and no equipment theme. `suggest-homes` therefore ranked him tangential everywhere and
+never surfaced deck 39 (Starforge, 13 Equipment), his objectively best home; the fit was
+found only by a human asking "what does this card LOOK FOR" and counting it in the deck
+(13 Equipment → ~1.3 hits per dig, twice per turn cycle). The rule generalizes K-03's
+residual from fixers to any card whose value keys a card TYPE its own type line and
+keywords don't carry.
+
 
 ## [K-04] The fixer overlay recommended cutting the BETTER fixer, and it took three separate blind spots t
 
@@ -2738,3 +2748,12 @@ hand", true of every deck, decisive for none. That is the same saturation failur
 recorded for `suggest`'s Decks column (99%, G-28) and `cuts`' protect keep-boost (87%,
 G-09). **A gate earns a row only when the resource can be SHORT.** A test now forbids the
 rule returning.
+
+**2026-08 residual, found by deck 58 (Gold Standard): the counter sees CARDS, and a token
+economy's resource is TOKENS.** The Jund Treasure deck's whole engine mints artifact tokens
+(Treasures, Meteorites, Landers, Maps — 14 producer cards), and `targets` reported its two
+artifact-sac payoffs as `⚠ thin — 1 artifact to sacrifice`, counting the one nontoken
+artifact in the list. No list scan can see tokens, so the flag is structural, not fixable
+by a better pattern. The mitigation is editorial: a deck whose gated resource is tokens
+must say so in `#: notes:` (58 does), because a reader who trusts the flag would cut the
+deck's best payoffs.

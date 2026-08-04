@@ -15,7 +15,7 @@
 1 Bloodthirsty Conqueror (FDN) 58
 1 Haliya, Guided by Light (EOE) 19
 1 Koya, Death from Above (TMT) 11
-1 Vampire Nighthawk (FDN) 186
+1 Vampire Nighthawk (FDN) 757
 1 Karai's Technique (TMT) 152
 1 Shark Shredder, Killer Clone (TMT) 73
 1 Syr Vondam, the Lucent (EOE) 232
@@ -44,7 +44,7 @@
 1 Dissection Practice (SOS) 79
 
 # Lands
-3 Scoured Barrens (FDN) 266
+3 Scoured Barrens (M21) 250
 1 Bleachbone Verge (DFT) 250
 1 Insomnia, Crown City (FIN) 282
 1 Temple of Silence (FDN) 704

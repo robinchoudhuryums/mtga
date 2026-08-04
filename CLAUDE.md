@@ -652,7 +652,9 @@ directions.
   8 worth returning, a number that had to be derived by hand. This is the automated half of
   G-61's "state the count, then decide". `✗ NOTHING` is a dead card; `⚠ thin` (≤3) is the
   shape to read. Counts exclude the card itself. Heuristic and report-only — read the list,
-  not just the number. [G-66]
+  not just the number. **Residual: it counts CARDS, so a TOKEN economy reads false-thin** —
+  deck 58's artifact-sac gates reported "1 artifact" against 14 token producers; a deck
+  whose resource is tokens must say so in its `#: notes:` or the flag invites a bad cut. [G-66]
 
 - **A PATTERN SET IS A WHITELIST, AND A WHITELIST'S MISSES ARE INVISIBLE.** `_ROLE_PATTERNS`
   matches PHRASINGS, and Magic templates one effect several ways — so a card worded a way no
@@ -687,7 +689,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   under `selection`/`tokens` (cast-from-top → `card advantage`; spend-as-any-color and
   `land token` → `ramp`; all-basic-land-types → `mana`). **Residual: a fixer whose value
   scales with colour count but whose text carries no explicit any-colour / basic-land-type
-  cue is still invisible — grade those from full text.** [K-03]
+  cue is still invisible — grade those from full text. Same shape one theme over: a card
+  whose text names a CARD TYPE it never casts or equips (Gilgamesh digs for "Equipment
+  cards") carries no tag for that type, so `suggest-homes` never surfaced his real home,
+  the roster's 13-Equipment deck. A "what does this card look for" read beats the tags.** [K-03]
 - **Never gate a predicate on a derived TAG — it inherits every hole in the tagger.**
   `_is_color_fixer` did, so the roster's two best fixers (keying off unindexed Vivid) read
   as non-fixers and `suggest-homes` proposed cutting the BETTER fixer. Read TEXT, in

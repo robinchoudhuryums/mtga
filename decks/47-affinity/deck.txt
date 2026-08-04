@@ -188,7 +188,7 @@
 # Bigger artifact bodies
 1 Illvoi Infiltrator (EOE) 59
 1 Iron Man Armor (MSH) 248
-1 Mechan Navigator (DFT) 48
+1 Mechan Navigator (EOE) 64
 
 # Interaction — bounce and counters, the mono-blue price
 1 Into the Flood Maw (BLB) 52

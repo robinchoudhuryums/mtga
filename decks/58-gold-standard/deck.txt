@@ -1,0 +1,93 @@
+#: name: Gold Standard
+#: format: Standard
+#: colors: BRG
+#: plan: midrange
+#: archetype: JUND TREASURE ECONOMY — the user's RGB concept, given the identity the
+#: archetype: roster left open: artifact TOKENS as currency. Producers at every point
+#: archetype: on the curve (Greedy Freebooter's death trigger, Magda's once-a-turn
+#: archetype: crime, Jolene's power-4 attacks, Flamekin Gildweaver's ETB, Terrapact's
+#: archetype: Landers, Brass's Bounty's one-shot flood); Roxanne, Starfall Savant is
+#: archetype: the mana engine — every artifact TOKEN tapped for mana yields double,
+#: archetype: so each Treasure cracks for two and her Meteorites ramp AND burn; and
+#: archetype: the payoff layer spends the currency four ways: counters (Crime
+#: archetype: Novelist, Elvish Archivist, Pirate Peddlers, Lightless Evangel), bodies
+#: archetype: (Krenko's goblin per artifact death, Magda's 4/4 dragons, Aatchik's
+#: archetype: swarm), cards (Kingpin's Enforcers, Fanatical Offering, Tarrian's
+#: archetype: Journal, Fountainport), and damage (Food Fight turns every token into
+#: archetype: a fling; Gold Rush is the kill-turn pump). Distinct from deck 8 (BRG
+#: archetype: aristocrats — sacrifices CREATURES for drains), deck 21 (WBG Food
+#: archetype: chains) and the UR artifact family (26/48): this deck's engine is the
+#: archetype: token economy itself, and no other deck runs Roxanne's doubling.
+#: protect: Roxanne, Starfall Savant; Crime Novelist; Krenko, Baron of Tin Street; Magda, the Hoardmaster; Food Fight
+#: tier: B (PROVISIONAL) — deliberately conservative for a first economy build: the
+#: tier: engine is deep but the interaction count is thin for midrange and the deck
+#: tier: needs a turn of setup before the currency flows. The floor may read
+#: tier: higher; hold the letter until real games show the engine's speed. The
+#: tier: known structural risk: mass artifact removal cashes out the whole board.
+#: notes: BUILT from the 55-mardu addendum follow-up: the whole-pool payoff count
+#: notes: (108 treasure/artifact-sac payoffs, 75 producers in standard RGBW) that
+#: notes: made the concept viable, after the pile-only read had rejected RGB. Key
+#: notes: reads: Roxanne doubles mana from artifact TOKENS only (Treasures,
+#: notes: Meteorites, Landers — not Tarrian's Journal, a nontoken artifact), and
+#: notes: cracking a Treasure taps it for mana, so the doubling applies. Crime
+#: notes: Novelist + a Roxanne-doubled Treasure nets THREE mana per crack. Magda's
+#: notes: crime is TARGETING opponents or their stuff — Deadly Precision, Jolene
+#: notes: pings and Food Fight flings all trigger her, but she makes exactly one
+#: notes: Treasure a turn. Ygra makes ALL creatures Food ARTIFACTS: every creature
+#: notes: death then feeds Krenko's goblin trigger and Crime Novelist, and Ygra +
+#: notes: Food Fight lets any creature be flung — but she is symmetric (opponents'
+#: notes: creatures are Food too) and a lightning rod; she multi-homes from decks
+#: notes: 8/21. Aatchik counts artifact cards IN THE YARD — cracked Treasures are
+#: notes: tokens and do NOT count; his count grows from Journal sacs and dead
+#: notes: nontoken artifacts, so read his ETB as creatures-in-yard mostly. ROTATION
+#: notes: (G-30): Elvish Archivist and Food Fight are WOE (~2026 rotation) and the
+#: notes: LCI cards (Freebooter, Offering, Journal, Ridgeline) go ~2026-27 — the
+#: notes: OTJ/MKM/DFT/EOE/ECL core outlives them; re-check at rotation. TOOLING
+#: notes: FALSE-THIN (G-66): `deck.py targets` reports Crime Novelist and Krenko
+#: notes: with "1 artifact to sacrifice" because it counts artifact CARDS in the
+#: notes: list — the deck's artifacts are TOKENS from 14 producer cards, which no
+#: notes: list scan can see. The gates are fed; do not cut the payoffs over it.
+
+# Producers (the mint)
+2 Greedy Freebooter (LCI) 109
+2 Magda, the Hoardmaster (OTJ) 133
+2 Jolene, Plundering Pugilist (OTJ) 210
+2 Flamekin Gildweaver (ECL) 140
+2 Terrapact Intimidator (EOE) 164
+1 Generous Plunderer (BIG) 11
+1 Brass's Bounty (FDN) 190
+1 Reckless Ransacking (ECL) 152
+
+# The mana engine
+2 Roxanne, Starfall Savant (OTJ) 228
+
+# Payoffs (the spend)
+2 Crime Novelist (MKM) 121
+2 Krenko, Baron of Tin Street (MKM) 135
+2 Elvish Archivist (WOE) 168
+2 Pirate Peddlers (TLA) 115
+1 Lightless Evangel (EOE) 109
+1 Callous Sell-Sword // Burn Together (WOE) 221
+1 Aatchik, Emerald Radian (DFT) 187
+1 Ygra, Eater of All (BLB) 241
+1 Food Fight (WOE) 129
+1 Gold Rush (OTJ) 166
+
+# Draw / removal (sac-fueled)
+2 Kingpin's Enforcers (MSH) 102
+2 Fanatical Offering (LCI) 105
+1 Tarrian's Journal // The Tomb of Aclazotz (LCI) 126
+2 Deadly Precision (TLA) 95
+
+# Lands
+1 Blood Crypt (ECL) 262
+1 Wastewood Verge (DFT) 268
+1 Thornspire Verge (DSK) 270
+1 Blazemire Verge (DSK) 256
+1 Razortrap Gorge (DSK) 267
+1 Restless Ridgeline (LCI) 283
+1 Fountainport (BLB) 253
+1 Temple of Malady (FDN) 700
+6 Mountain (MSH) 293
+6 Swamp (MSH) 291
+4 Forest (MSH) 296

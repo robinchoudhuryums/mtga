@@ -1,0 +1,103 @@
+#: name: Mardu Waves
+#: format: Standard
+#: colors: RWB
+#: plan: aggro
+#: archetype: MARDU MOBILIZE WAVES. Six wave engines (two Zurgos, Stadium Headliner,
+#: archetype: Bone-Cairn, Trebuchet, Siegebreaker) put tapped-and-attacking tokens onto
+#: archetype: the battlefield EVERY combat; three doubler layers multiply the wave
+#: archetype: (Windcrag Siege doubles attack-triggers, Delney doubles power<=2 triggers,
+#: archetype: Neriv doubles entered-this-turn damage; Raph & Leo and Aurelia add whole
+#: archetype: extra combats = extra waves); converters turn each wave into damage
+#: archetype: (Impact Tremors, Shocking Sharpshooter), cards (Enduring Innocence,
+#: archetype: Stormbeacon Blade), mana (Sun Warriors), and permanent board (EPF Point
+#: archetype: Squad counters, Suki's Ally, Zurgo TD making waves PERMANENT). Distinct
+#: archetype: from every other token deck on the roster: the width is a per-combat
+#: archetype: PULSE, not a built board — no other deck runs Mobilize at all.
+#: protect: Zurgo, Thunder's Decree; Windcrag Siege; Delney, Streetwise Lookout; Suki, Courageous Rescuer; Mardu Siegebreaker; Fire Navy Trebuchet
+#: tier: A (PROVISIONAL) — graded at the measurable floor, not above it: aggro plan
+#: tier: with a real clock, nine interaction slots, and a sub-3 curve. Unproven in
+#: tier: matches, and the two honest weaknesses are thin card advantage (the engine
+#: tier: draws through Enduring Innocence and Stormbeacon Blade, not a draw suite)
+#: tier: and double-white on turn 3 in a three-color manabase (Suki and Enduring
+#: tier: Innocence cast late more often than on curve). Re-grade after real games.
+#: notes: BUILT from the 131-card pile analysis (55-mardu working doc). Timing spine the
+#: notes: tooling can't see: (1) Zurgo TD's end-step clause DEFEATS the wave's delayed
+#: notes: sac trigger permanently — waves become permanent width while he's out. (2)
+#: notes: Main phase 2 sees the wave's WIDTH (tokens live until end step) but not their
+#: notes: DEATHS — Akul's sorcery sac eats live tokens in main 2; died-this-turn counts
+#: notes: do not see the end-step sac. (3) Mobilize tokens are created attacking, never
+#: notes: declared — "attacks alone" effects still work, and per-attack triggers of the
+#: notes: bearer resolve BEFORE converters can count the wave (order Mobilize first).
+#: notes: (4) Windcrag doubles ATTACK-caused triggers only (not Tremors' ETBs). (5)
+#: notes: Siegebreaker wants a NONTOKEN ETB creature exiled (Sonic Shrieker / Jet) — a
+#: notes: token exiled dies. Deliberately NOT included: Group Project (its flashback
+#: notes: taps three untapped creatures, and this deck's width enters tapped-attacking);
+#: notes: Leyline of the Guildpact ({G/U} pip is uncastable in strict Mardu).
+#: notes: PARKED, NOT DEAD (from the pile, each with the count that revives it):
+#: notes: Tiger-Dillo and Scalestorm Summoner at ~8+ power-4+ bodies (a tall rebuild);
+#: notes: Remnant Elemental at ~6+ land-drop synergies (final count: 1 payoff, 0
+#: notes: enablers); Southern Air Temple if a second Shrine ever exists (count: 1);
+#: notes: Eddie Brock only in a green variant (transform needs literal {G}); Aziza,
+#: notes: Mage Tower Captain with a vigilance stay-home package (Swiftblade /
+#: notes: Seedglaive / Snow / Prickly's Mercenary); The Scarlet Witch at ~6+ MV>=4
+#: notes: instants/sorceries (55a holds 1); Crime Novelist at ~8+ artifact producers
+#: notes: (55a holds 3). Bench if a slot opens (screened KEY, in grade order): Cruel
+#: notes: Administrator, Shock Brigade, Reigning Victor, Sami. (Jolly Balloon Man
+#: notes: was promoted from this bench into the Converters block, for Snow.)
+
+# Wave engines
+2 Zurgo, Thunder's Decree (TDM) 237
+2 Zurgo's Vanguard (TDM) 133
+2 Stadium Headliner (TDM) 122
+2 Bone-Cairn Butcher (TDM) 173
+1 Fire Navy Trebuchet (TLA) 100
+1 Mardu Siegebreaker (TDM) 206
+1 Sonic Shrieker (TDM) 226
+1 Jet, Freedom Fighter (TLA) 229
+
+# Doublers
+1 Delney, Streetwise Lookout (MKM) 12
+2 Windcrag Siege (TDM) 235
+1 Neriv, Heart of the Storm (TDM) 210
+1 Raph & Leo, Sibling Rivals (TMT) 166
+1 Aurelia, the Warleader (FDN) 651
+
+# Converters
+2 Impact Tremors (FDN) 717
+1 Shocking Sharpshooter (TDM) 121
+2 EPF Point Squad (TMT) 145
+1 Enduring Innocence (DSK) 6
+1 Suki, Courageous Rescuer (TLA) 37
+1 Sun Warriors (TLA) 244
+1 Stormbeacon Blade (TDM) 27
+1 The Jolly Balloon Man (DSK) 219
+1 Taii Wakeen, Perfect Shot (OTJ) 234
+
+# Pulse tricks
+1 Frontline Rush (TDM) 186
+1 Duty Beyond Death (TDM) 10
+1 Boros Charm (FDN) 721
+
+# Removal (spot)
+1 Lightning Helix (MKM) 218
+1 Lorehold Charm (SOS) 200
+
+# Payoff sink
+1 Akul the Unrepentant (OTJ) 189
+
+# Ramp / fixing
+1 Mardu Devotee (TDM) 16
+
+# Lands
+1 Blood Crypt (ECL) 262
+1 Sunbillow Verge (DFT) 264
+1 Blazemire Verge (DSK) 256
+1 Bleachbone Verge (DFT) 250
+1 Nomad Outpost (TDM) 263
+1 Razortrap Gorge (DSK) 267
+1 Sun-Blessed Peak (TLA) 280
+1 Boiling Rock Prison (TLA) 267
+1 Scoured Barrens (M21) 250
+6 Mountain (MSH) 293
+7 Plains (MSH) 287
+2 Swamp (MSH) 291

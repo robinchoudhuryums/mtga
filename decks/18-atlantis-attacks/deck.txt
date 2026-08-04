@@ -63,5 +63,5 @@
 1 Hallowed Fountain (ECL) 265
 1 Gleaming Bastion (MSH) 267
 1 Floodfarm Verge (DSK) 259
-1 Tranquil Cove (FDN) 270
+1 Tranquil Cove (TDM) 270
 17 Island (MSH) 289

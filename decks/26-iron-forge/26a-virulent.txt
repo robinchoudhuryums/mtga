@@ -215,25 +215,25 @@
 1 Diversion Unit (DFT) 41
 1 Machinesmith Automaton (MSH) 144
 1 War Machine, Legacy of Iron (MSH) 238
-1 Silent Hallcreeper (DSK) 61
+1 Silent Hallcreeper (DSK) 72
 1 Rook Turret (FIN) 69
 1 Metalhead (TMT) 44
 1 Fin Fang Foom (MSH) 129
 1 H.E.R.B.I.E. Scout Unit (MSH) 247
 1 The Vision (MSH) 255
 1 Iron Man, Master of Machines (MSH) 216
-1 Iron Lad, Diverging Destiny (MSH) 57
+1 Iron Lad, Diverging Destiny (MSH) 59
 1 Valkyrie Aerial Unit (FIN) 84
 
 # Interaction — clear the blockers the clock cannot fly over
 1 Plasma Bolt (EOE) 152
 1 Abrade (FDN) 188
 1 Untimely Malfunction (DSK) 161
-1 Invasion Submersible (TLA) 63
+1 Invasion Submersible (TLA) 57
 1 Price of Freedom (TLA) 149
 1 Fiery Annihilation (FDN) 86
 1 Pym Particles (MSH) 70
-1 Mechan Navigator (DFT) 48
+1 Mechan Navigator (EOE) 64
 
 # Lands (23) — leaner and less tapped than core 26's
 1 Riverpyre Verge (DFT) 260

@@ -52,7 +52,7 @@
 1 Venom, Evil Unleashed (SPM) 71
 1 Ancestor Dragon (FDN) 489
 1 The Masters of Evil (MSH) 105
-1 Vampire Nighthawk (FDN) 186
+1 Vampire Nighthawk (FDN) 757
 1 Crypt Feaster (FDN) 59
 1 East Wind Avatar (TMT) 5
 1 Dawnstrike Vanguard (EOE) 10

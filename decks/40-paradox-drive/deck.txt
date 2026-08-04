@@ -2,7 +2,7 @@
 #: format: Standard
 #: colors: GU
 #: archetype: Simic (G/U) big-mana ramp-CONTROL — ramp + a counter/removal shell into a
-#: archetype: game-ending X-spell (Finale of Revelation / Doppelgang / Mind Spring), with
+#: archetype: game-ending X-spell (Finale of Revelation / Mind Spring), with
 #: archetype: Taigam copying the payoff and Paradox Surveyor smoothing land/X-spell draws.
 #: archetype: Built to be DISTINCT from the Simic counters decks (04 Quantum Realm) and the
 #: archetype: Temur Fractals/counters ramp deck (30 Fractalandtastic): this wins with one

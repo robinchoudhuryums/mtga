@@ -56,8 +56,7 @@
 #: archetype: THE LESSONS ARE NOT A TAX, and that is what makes this build work rather than merely
 #: archetype: cohere. It'll Quench Ya! is Spell Pierce that hits creatures too. Zuko's Exile is
 #: archetype: unconditional exile of an artifact, creature or enchantment — removal deck 51 does not
-#: archetype: have at all. Lost Days tucks a creature or enchantment second from the top, which
-#: archetype: answers a recursive threat that bounce cannot. Each is a card the deck would want
+#: archetype: have at all. Each is a card the deck would want
 #: archetype: anyway; the subtype is a rider, so the engine costs close to nothing.
 #: archetype: WATERBENDING LESSON IS THE HIDDEN COMBO. Its waterbend cost is paid by TAPPING your
 #: archetype: artifacts and creatures — and Master Pakku mills whenever he BECOMES TAPPED. So you

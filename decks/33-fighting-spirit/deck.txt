@@ -20,7 +20,7 @@
 1 Draconautics Engineer (DFT) 121
 1 Stormcatch Mentor (BLB) 234
 1 Emeritus of Conflict (SOS) 113
-1 Heartfire Immolator (FDN) 143
+1 Heartfire Immolator (FDN) 201
 1 Hobgoblin, Mantled Marauder (MSC) 805
 1 Kiora, the Rising Tide (FDN) 45
 1 Balmor, Battlemage Captain (FDN) 237
@@ -55,9 +55,9 @@
 1 Artistic Process (SOS) 108
 
 # Lands (24) — R 18 / U 9 sources; only Temple + Spectacle enter tapped
-1 Riverpyre Verge (DFT) 267
-1 Temple of Epiphany (FDN) 698
-1 Spectacle Summit (SOS) 258
+1 Riverpyre Verge (DFT) 260
+1 Temple of Epiphany (FDN) 699
+1 Spectacle Summit (SOS) 262
 6 Island (MSH) 291
 15 Mountain (MSH) 293
 

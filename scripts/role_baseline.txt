@@ -41,6 +41,7 @@ Banner of Kinship
 Bark of Doran
 Barret Wallace
 Baxter Stockman
+Become Brutes
 Beetle-Headed Merchants
 Benevolent River Spirit
 Bespoke Bō
@@ -53,6 +54,7 @@ Blacksmith's Talent
 Blasphemous Edict
 Blitzball Shot
 Bloodthirsty Conqueror
+Brazen Collector
 Brightspear Zealot
 Broodguard Elite
 Bumi, King of Three Trials
@@ -105,6 +107,7 @@ Earthbending Lesson
 Earthen Ally
 Echo, Perceptive Prodigy
 Eerie Gravestone
+Effortless Master
 Ember Island Production
 Emeritus of Woe
 Emil, Vastlands Roamer
@@ -128,11 +131,13 @@ Foggy Swamp Visions
 Formidable Speaker
 Fortress Kin-Guard
 Frantic Strength
+Frontline Rush
 Frontline War-Rager
 Frozen in Ice
 Fynn, the Fangbearer
 Gangly Stompling
 Gather the White Lotus
+Generous Plunderer
 Genji Glove
 Ghost, Spectral Saboteur
 Ghostly Keybearer
@@ -141,12 +146,14 @@ Giant Koi
 Glamer Gifter
 Glider Kids
 Glider Staff
+Gold Rush
 Goldvein Hydra
 Gravelgill Scoundrel
 Greenbelt Guardian
 Groundchuck & Dirtbag
 Growth Curve
 Guidelight Matrix
+Halana and Alena, Partners
 Hama, the Bloodbender
 Hard-Won Jitte
 Harmonious Grovestrider
@@ -189,6 +196,8 @@ Katara, Water Tribe's Hope
 Kavaron Skywarden
 Kitsune's Technique
 Klaw, Sonic Subjugator
+Knight Luminary
+Krenko, Baron of Tin Street
 Krenko, Mob Boss
 Krumar Initiate
 Kutzil, Malamet Exemplar
@@ -225,6 +234,7 @@ Multiversal Incursion
 Namazu Trader
 Nashi, Searcher in the Dark
 Needletooth Pack
+Neriv, Heart of the Storm
 Ninja of the Hand
 North Pole Patrol
 Nurturing Bristleback
@@ -262,17 +272,20 @@ Resolute Reinforcements
 Restorative Technique
 Return the Favor
 Riverchurn Monument
+Riverwheel Sweep
 Roaming Throne
 Rough Rhino Cavalry
 S.H.I.E.L.D. Spy Kit
 Samurai's Katana
 Satoru, the Infiltrator
 Sawblade Skinripper
+Scarlet Spider, Ben Reilly
 Scrabbling Skullcrab
 Searslicer Goblin
 Secret of Bloodbending
 Seedglaive Mentor
 Seismic Sense
+Self-Destruct
 Serra Angel
 Serra Redeemer
 Shimmercreep
@@ -302,7 +315,9 @@ Sun-Spider, Nimble Webber
 Super Strength
 Super-Soldier Serum
 Surrak, Elusive Hunter
+Swiftblade Vindicator
 Sylvan Scavenging
+Taii Wakeen, Perfect Shot
 Tangle Tumbler
 Tannuk, Steadfast Second
 Tapestry Warden
@@ -320,6 +335,7 @@ The Masters of Evil
 The Mindskinner
 The Thing, Ben Grimm
 The Wondrous Wasp
+Tiger-Dillo
 Tinybones, Bauble Burglar
 Tinybones, the Pickpocket
 Titania, Rugged Rumbler

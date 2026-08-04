@@ -168,6 +168,18 @@ Power cells, 27 unverified printings, 4 stale tier rationales; then the strategi
 bets (log the first matches — matches.csv is still empty — deck lifecycle,
 rotation planning, keyword theming). Doc touch-ups queued for /sync-docs: the
 [C-07] test count (18→24), G-19's range-enforcement note, Batch 4's carry-overs.
+## Session — data-hygiene sweep (2026-08-04, sixth pass, post-#100)
+
+The three standing warnings are CLEARED (commit `1899be3`, branch restarted from
+the merged main): the 15 mis-scaled Power cells rescaled ÷10 (one batch graded
+0–100; relative judgment and `hand` provenance preserved), all 27 unverified
+printings repointed to held printings via `_printing_of` + `_safe_write_lines`,
+and the four stale rationale claims rewritten from the current lists with every
+new citation verified against oracle text (decks 40, 49, 51a — all three audit
+"rationale is current"). **check_all is fully quiet: zero soft warnings**, for
+the first time. 922/922 pytest. Remaining open items are purely strategic:
+log the first matches, deck lifecycle, rotation planning, keyword theming.
+
 **Update, same day: that /sync-docs pass has RUN** (commit `354b4ed`) — all of the
 above landed (C-07 24 files + the six new layers described in cycle-config, G-19
 range enforcement in bullet + long form, G-63's enforcer clause, C-01's Batch-4
@@ -624,3 +636,64 @@ lesson deserves its own `[G-nn]` anchor — it currently lives only in check_rol
 docstring, and K-12 covers "counts under-count" but not "the pattern set is a whitelist".
 Also still open and unrelated: the queued swap plans for decks 54 / 54a / 54b in
 `.cycle/54-pile-reanalysis.md` §5 and §5b.
+
+---
+
+## Session 2026-08-04 (continued): the three Mardu decks drafted, pile doc closed out
+
+**Completed:** /draft-deck for all three decks the 131-card pile analysis produced —
+55 Mardu Waves (Mobilize pulse; A PROVISIONAL at the floor), 55a Mardu Spellstorm
+(cast-cadence; A PROVISIONAL), 55b Mardu Airbender (exile-cast; B PROVISIONAL, argued
+under the A floor). Full draft-deck pipeline each: text read, legal, preflight READY,
+mana + consistency (manabases rebalanced from the cast-on-curve table: 55 traded 2
+Swamps to Plains for the WW three-drops, 55a traded 4, 55b dropped Swamps entirely for
+its 2-pip B splash), targets, similar, screen of the rejected/parked pile, cuts,
+tier + audit-rationale, dashboard rebuild, verify-commit tail. Commits a6f6caa /
+2b6774f / 7d43477 on claude/broad-scan-hekdj0.
+
+**Decisions made:**
+- 55b graded UNDER its metrics floor (B vs A) — payoff concentration + protection 2 +
+  card-adv 0; the rubric permits it and the header argues it.
+- Quintorius Kand swapped in over Stand Up for Yourself in 55b after screening KEY —
+  Discover fills the measured zero card-advantage axis; same copy sits in 45/24/24b
+  (decks share the collection).
+- Six roleless cards baselined rather than pattern-edited (Delney precedent; a role
+  pattern edit needs a roster-wide diff per K-12 and is cycle work, not draft work).
+- The pile doc's "flashback pairs with Zuko/Appa" claim was WRONG (they trigger on
+  exile-casts only; flashback casts from the graveyard) — corrected in 55b's notes.
+- Deck 45 overlap surfaced by `similar` and stated honestly in 55b's archetype rather
+  than pivoting the build: different enabler suite (own-board exile vs library
+  impulse/heist), different win-con (wide vs drain), 3 shared nonland cards.
+
+**Decided against:** churning the three 60s toward the screen's KEY bench (Cruel
+Administrator, Shock Brigade, Reigning Victor…) — the consolidated plan already ranked
+them below the ★★★ picks and nothing expired; they are recorded as the bench in 55's
+notes. Also against hand-writing rotation years — deck.py rotation is the source.
+
+**Where this leaves off:** `.cycle/55-mardu-analysis.md` deleted (findings folded into
+the three deck headers). check_all clean, zero soft warnings, 922 tests green. Open:
+the 54-family swap plans in `.cycle/54-pile-reanalysis.md` (§5/§5b) remain unapplied;
+no PR open for the current branch (user has not asked).
+
+## Session — the Mardu pile family: seven decks, an addendum, and the follow-on tunes (2026-08-04/05)
+
+The 131-card Mardu pile (five batches, analyzed prior session) was drafted into decks
+55 / 55a / 55b; the user then extended the pile with a 59-card addendum carrying three
+new concepts, of which two survived contact with the counts: T (ultra-tall) became deck
+56 + variant 56a after a full drafted A/B (white beat green on every measured axis;
+green revived as 56a WITH the protection suite the A/B never tested), and J (Jeskai)
+became deck 57 (prowess tempo; the pile holds zero mono-U spells — recorded as the
+first tuning axis). Concept G (RGB) was rejected BY COUNT (zero G/B cards; deck 8
+already owns BRG sacrifice) — then resurrected on the user's sharper idea (Treasure
+economy) once a whole-pool payoff sweep (108 payoffs / 75 producers) showed the token
+economy identity unclaimed: deck 58 Gold Standard, around Roxanne's token-mana
+doubling. Follow-on tunes landed via screened + quality-guarded swaps (55a ×2, 55 ×2,
+58 ×1, 55b flex line); a ten-card revival pass produced seven pending placements the
+user is still weighing (list + cut candidates in NEXT-SESSION §3.2), and a
+craft-priority read (Castle Doom/Electro/Appa/Cosmogrand as direct crafts; FDN > TDM >
+OTJ packs; avoid rotating LCI/WOE). Decided AGAINST: a generic RGB goodstuff deck (no
+identity left), Voja (0 Elves), Charging Strifeknight to 55a (outlet recount: Pursue
+already covers it), Speedball (its rider theme was cut from 55a's final), Taii into 55
+initially — reversed later by the user reading the amplifier correctly (every
+noncombat-damage instance that turn). Doc residuals G-66 (token false-thin) and K-03
+(type-keying tag invisibility, Gilgamesh/deck 39) recorded in CLAUDE.md + gotchas.
