@@ -1,0 +1,101 @@
+#: name: Mardu Airbender
+#: format: Standard
+#: colors: RWB
+#: plan: midrange
+#: archetype: MARDU EXILE-CAST (the C1 axis from the 131-card pile analysis). Two
+#: archetype: payoffs count every spell cast from anywhere other than the hand: Fire
+#: archetype: Lord Zuko grows per exile-cast (and firebending scales with his own
+#: archetype: size), Appa makes an Ally per exile-cast and flash-saves the nontoken
+#: archetype: board from a wrath. The enabler suite is every exile-cast shape in the
+#: archetype: colors: warp (Knight Luminary), plot (Aven Interrupter plotting a spell —
+#: archetype: theirs or ours — off the stack, Demonic Ruckus, Longhorn Sharpshooter),
+#: archetype: adventure (Heartflame Duelist), Appa's own airbend returns
+#: archetype: at {2}, and Bre's end-step free cast off lifegain — which the
+#: archetype: interaction package (Lightning Helix, Sheltered by Ghosts, Prayer of
+#: archetype: Binding, Defibrillating Current, Heartflame's lifelink) feeds on purpose.
+#: archetype: White token base (Suki, Frontline Rush, Cosmogrand) keeps the board wide.
+#: archetype: Distinct from 55 (combat pulse) and 55a (cast cadence). Deck 45 Exile
+#: archetype: Dividend shares the trigger and two payoffs (Zuko, Appa — same copies,
+#: archetype: decks share the collection): the decks differ in HOW the exile-cast
+#: archetype: happens — 45 impulses and heists cards off LIBRARIES; this deck warps,
+#: archetype: plots and airbends its OWN board — and in win-con (45 drains, this goes
+#: archetype: wide; Quintorius Kand drains in both, and the same owned copy sits in
+#: archetype: both because decks share the collection). Three shared nonland cards.
+#: protect: Fire Lord Zuko; Appa, Steadfast Guardian; Bre of Clan Stoutarm; Aven Interrupter; Antiquities on the Loose
+#: tier: B (PROVISIONAL) — deliberately graded UNDER the A metrics floor. The floor
+#: tier: credits the interaction suite, but the engine's payoff half concentrates in
+#: tier: a handful of removal-magnet permanents with almost no protection behind
+#: tier: them, and without a payoff on board the exile-cast enablers are fair value
+#: tier: cards. Measured card advantage is near zero (the counter under-reads Bre
+#: tier: and Discover, but not by much). The pile analysis called this the thinnest
+#: tier: of the three Mardu builds and the letter should say so. Re-grade after
+#: tier: real games or once the enabler suite proves it can win through removal.
+#: notes: BUILT from the 55-mardu pile analysis (C1 axis; built third per the plan —
+#: notes: it borrows the primary's white half, so decks 55/55a's kept cards informed
+#: notes: this list). E-01 (user-corrected): Aven Interrupter can exile an OPPONENT'S
+#: notes: spell as tempo or plot OUR OWN spell off the stack — the self-plot is a
+#: notes: real exile-cast enabler for Zuko/Appa, not just disruption. TIMING SPINE the
+#: notes: tooling can't see: Zuko and Appa trigger on casts FROM EXILE only — the
+#: notes: flashback spells (Antiquities, Auron's, Practiced) cast from the GRAVEYARD
+#: notes: and do NOT feed them; flashback is here for Antiquities' own not-from-hand
+#: notes: bonus and raw value. The exile-cast count that feeds the payoffs: 9 enabler
+#: notes: cards (warp 2, plot 5, adventure 2), plus Appa's airbend returns and Bre's
+#: notes: end-step cast generating more from the payoff side. E-04: exiled
+#: notes: TOKENS die, so Appa's wrath-dodge saves only the nontoken board — Suki's
+#: notes: Allies and Antiquities' Spirits are lost; weigh that before dodging. Scout
+#: notes: for Survivors' MV<=3-total mass reanimate has real targets here (Mardu
+#: notes: Devotee 1, Aven Interrupter 2, Bre 2 — pairs sum to 3). Deliberately NOT
+#: notes: included: Group Project (E-02 — its flashback taps three untapped creatures
+#: notes: against a deck that attacks wide); Electro's Bolt mayhem (needs the discard
+#: notes: outlets that live in 55a, and blind discard fights no engine here).
+#: notes: ROTATION (deck.py rotation): Heartflame Duelist (WOE) and Quintorius Kand
+#: notes: (LCI) rotate ~2026; the plot suite (Aven, Ruckus, Longhorn — OTJ) plus
+#: notes: Lightning Helix and Push // Pull rotate ~2027. The plot suite is the
+#: notes: exile-cast spine, so the deck needs a re-draft at the 2027 rotation.
+# Exile-cast payoffs
+2 Fire Lord Zuko (TLA) 221
+2 Appa, Steadfast Guardian (TLA) 10
+2 Bre of Clan Stoutarm (ECL) 207
+1 Quintorius Kand (LCI) 238
+
+# Exile-cast enablers (warp / plot / adventure / flashback)
+2 Knight Luminary (EOE) 23
+2 Aven Interrupter (OTJ) 4
+2 Antiquities on the Loose (SOS) 7
+2 Demonic Ruckus (OTJ) 120
+1 Longhorn Sharpshooter (OTJ) 132
+2 Heartflame Duelist // Heartflame Slash (WOE) 228
+1 Auron's Inspiration (FIN) 8
+1 Practiced Offense (SOS) 25
+
+# White token base
+2 Cosmogrand Zenith (EOE) 9
+1 Suki, Courageous Rescuer (TLA) 37
+2 Frontline Rush (TDM) 186
+1 Snow Villiers (FIN) 33
+
+# Interaction (lifegain-heavy on purpose — it feeds Bre)
+2 Lightning Helix (MKM) 218
+1 Boros Charm (FDN) 721
+1 Push // Pull (MKM) 250
+1 Sheltered by Ghosts (DSK) 30
+1 Prayer of Binding (FDN) 739
+1 Defibrillating Current (TDM) 177
+1 Avatar's Wrath (TLA) 12
+
+# Recursion / fixing
+1 Scout for Survivors (EOE) 33
+1 Mardu Devotee (TDM) 16
+
+# Lands
+1 Blood Crypt (ECL) 262
+1 Sunbillow Verge (DFT) 264
+1 Blazemire Verge (DSK) 256
+1 Bleachbone Verge (DFT) 250
+1 Nomad Outpost (TDM) 263
+1 Razortrap Gorge (DSK) 267
+1 Sun-Blessed Peak (TLA) 280
+1 Boiling Rock Prison (TLA) 267
+1 Scoured Barrens (M21) 250
+11 Plains (MSH) 287
+4 Mountain (MSH) 293
