@@ -1,6 +1,6 @@
 # 55 Mardu (RWB) Mobilize pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS — batch 1 of 5 done (26/131).** Delete once the deck(s)
+**Status: IN PROGRESS — batch 2 of 5 done (52/131).** Delete once the deck(s)
 are drafted and findings folded into their `#: notes:` blocks. A scratchpad, not a
 source of truth — decks/ are.
 
@@ -62,18 +62,42 @@ step."* Everything follows from that clock:
 
 ## 2. Standing error list
 
-- **E-01 (batch 1): Aven Interrupter is NOT a C-axis engine piece.** It plots the
-  OPPONENT'S spell — the free later cast belongs to the spell's owner, not us. It is
-  opponent-facing tempo plus a recursion tax. Grade it as interaction, never as an
-  exile-cast enabler.
+- **E-01 (batch 1, AMENDED batch 2 by user):** Aven Interrupter's "exile target spell"
+  has NO opponent restriction — two modes: (i) opponent-facing tempo + recursion tax,
+  and (ii) SELF-TARGET: respond to your own spell, it becomes plotted, and YOUR later
+  free cast is a genuine cast-from-exile (triggers Appa's Ally-maker and Antiquities'
+  not-from-hand clause). Mode (ii) makes it a real C-axis enabler at the price of
+  delaying your own spell a turn. Original one-mode read was the error.
 - **E-02 (batch 1): "tap creatures" costs fight the engine (rule 6).** Group Project's
   flashback taps three UNTAPPED creatures — Mobilize width enters tapped-and-attacking
   and is gone by end step, so the cost is payable only by holding back the permanent
-  board. Any tap-as-cost card must be graded against rule 6 explicitly.
+  board. Any tap-as-cost card must be graded against rule 6 explicitly. (Batch 2:
+  Wild Ride's harmonize discount is the same shape, though optional.)
+- **E-03 (batch 2): "died this turn" does NOT see the end-step sacrifice wave.** The
+  Mobilize tokens die at the beginning of YOUR END STEP — there is no main phase after
+  that, so a sorcery-speed "per creature that died this turn" card (Callous Sell-Sword)
+  cast in main 2 counts only COMBAT deaths (tokens eaten by blockers, sac outlets), not
+  the self-sacrifice. Grade death-counters by what dies BEFORE main 2.
+- **E-04 (batch 2): airbending/exiling a TOKEN kills it.** Appa's airbend and Avatar's
+  Wrath remove tokens permanently (a token in exile ceases to exist) — their recast
+  value applies to NONTOKEN permanents only. Blink/exile value must be graded against
+  the nontoken board.
 
 ## 3. Cross-batch observations
 
-- Axis member counts (running, after batch 1): A=1 B=0 C=3 D=3 E=4 F=2.
+- Axis member counts (running, after batch 2): A=2 B=0 C=9 D=5 E=5 F=5.
+- **Mobilize bearer P/T tally (for Delney):** Stadium Headliner 1/1 (power ≤2 ✓). One
+  bearer seen, one qualifies. Also tally WARRIOR payoffs — the tokens are Warriors and
+  Suki is one; search plural effect-shapes at close-out (K-13).
+- **Team Avatar + Mobilize stack ruling (batch 2):** "attacks alone" checks DECLARED
+  attackers, and Mobilize tokens are created attacking, never declared — so a solo
+  Mobilize bearer still triggers it; both triggers go on the stack together and
+  resolving Mobilize FIRST means the +X/+X pump counts the fresh wave. The engine's
+  wide pulse and the F-axis tall payoff are the SAME attack. This is the F-axis's
+  best trick and it is entirely a timing read.
+- **Brazen Collector funds the spell decks:** attack → {R} that persists through
+  phases = combat-time ramp that pays for D-axis second spells or instant tricks.
+  A bridge card between primary and the spells variant.
 - The primary's best batch-1 cards split into two machine parts: COMBAT-TIME READERS
   (Stormbeacon Blade, Auron's Inspiration, Practiced Offense, Snow Villiers) and
   WAVE-ETB ENGINES (Enduring Innocence, Spiritcall Enthusiast). Both scale with N
@@ -91,6 +115,7 @@ Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ m
 AXIS (primary = the Mobilize wave deck; letters = variant axes above).
 
 ### Batch 1 (26 — the white cluster)
+*(Aven Interrupter re-graded C ★★ after the E-01 amendment.)*
 
 | Card | Primary | Axis | Note |
 |---|---|---|---|
@@ -123,4 +148,39 @@ AXIS (primary = the Mobilize wave deck; letters = variant axes above).
 
 ## 5. Consolidated plan (live)
 
-(built after batch 1; re-ranked every batch)
+### Batch 2 (26 — rest of white, into the red cluster)
+
+| Card | Primary | Axis | Note |
+|---|---|---|---|
+| Stand Up for Yourself | ★ | — | clean power-3+ removal |
+| Suki, Courageous Rescuer | ★★★ | F | anthem + converts one wave-death per turn into a PERSISTENT Ally (end step is "during your turn" ✓); a Warrior herself |
+| Team Avatar | ★★ | F ★★★ | the stack ruling above: solo bearer + wave = counted pump; discard mode reads count at combat (rule 1) |
+| Appa, Steadfast Guardian | ★★ | C ★★★ | flash wrath-dodge for the NONTOKEN board (E-04); Ally per exile-cast pairs with warp/plot/flashback |
+| Avatar's Wrath | ◇ | C | reset-when-behind; our cheap engine rebuilds at {2} each, tokens lost (E-04); briefly shuts THEIR recursion |
+| Exemplar of Light | ◇ | E | verdict waits on the LIFEGAIN COUNT (G-61) — with Heartflame Duelist every spell draws |
+| Knight Luminary | ★ | C ★★ | warp = two ETBs + a real exile-cast; feeds Appa |
+| Prayer of Binding | ★ | — | flash exile removal, any build |
+| Rally the Monastery | ★ | D ★★ | {1}{W} after your second spell; three relevant modes |
+| Southern Air Temple | △ | — | Shrine count in pile = 1 (G-61: counted, dismissed) |
+| Spider-UK | ★★ | — | "2+ entered this turn" = every Mobilize combat → draw+2 life; web-slinging RE-BUYS a tapped post-combat ETB creature (rule 6 turned into upside) |
+| Sunstar Lightsmith | ★ | D ★★ | second spell → counter + draw |
+| Wayspeaker Bodyguard | ★ | C/D | recurs MV≤2 engines; Flurry taps a blocker |
+| White Auracite | ★ | infra | removal that fixes ({T}: add W) |
+| Ajani's Response | ★ | — | {1}{W} destroy vs a tapped creature — attackers and post-Flurry targets |
+| Primary Research | ◇ | C ★★ | reanimate + draw-per-turn once the graveyard moves; spells-variant engine |
+| Lecturing Scornmage | △ | E ★ | grows per targeting spell; small |
+| Masterful Flourish | ◇ | — | 1-mana protection; competes with Restoration Magic's {0} tier |
+| Callous Sell-Sword | ★ | F ★★ | E-03: counts combat deaths, NOT the end-step wave; Burn Together is the F-axis fling finisher |
+| Eddie Brock // Venom | ✗ | — | transform costs literal {G} — uncastable in Mardu; the front alone is filler (G-58 read correctly: castable front, unreachable payoff) |
+| Stadium Headliner | ★★★ | A | Mobilize-1 one-drop whose sac reads creature count DURING combat (rule 1); bearer power 1 (Delney ✓) |
+| Violent Urge | △ | — | delirium wants a graveyard this build doesn't fill deliberately |
+| Wild Ride | ◇ | C | E-02-shaped harmonize discount; the front is a fine haste trick |
+| Become Brutes | ◇ | — | haste + Roles; unexciting here |
+| Brazen Collector | ★★ | D | attack → persistent {R}: combat-time ramp that funds second spells (see observation) |
+| Bulk Up | ◇ | F ★★ | double Snow Villiers = double the count; flashback for two uses |
+
+## 5. Consolidated plan (live)
+
+(first draft lands after batch 3 — the Mobilize core itself (Zurgo, Siegebreaker,
+Bone-Cairn, Frontline Rush, Warriors) is still unread in batches 4-5; ranking the
+shell before reading the engine would be premature)
