@@ -1,0 +1,80 @@
+#: name: Jeskai Tempest
+#: format: Standard
+#: colors: RWU
+#: plan: aggro
+#: archetype: JESKAI PROWESS TEMPO (concept J from the 55-mardu addendum): cheap
+#: archetype: noncreature spells across evasive prowess bodies, closing before a
+#: archetype: midrange deck stabilizes. Sokka is the engine (a 1/1 Ally per
+#: archetype: noncreature spell, and ALL Allies gain menace and prowess — the tokens
+#: archetype: he makes attack through the same spells that made them); Narset refills
+#: archetype: the hand every end step (discard, draw per spell cast); Flamehold
+#: archetype: Grappler and Shiko copy and recast the cheap suite; the prowess block
+#: archetype: (Brushmaster's double strike, Effortless Master, Mai, Crackling Cyclops,
+#: archetype: Skywhale, Equilibrium Adept's flurry) converts each cast into damage.
+#: archetype: Distinct from deck 25 (UR storm — magnifies ONE big-spell turn) and 55a
+#: archetype: (Mardu engine midrange — grinds value): this deck is the FAST third
+#: archetype: point of the spellslinger triangle, width + prowess + menace tempo.
+#: tier: A (PROVISIONAL) — graded at the measurable floor: real interaction that
+#: tier: doubles as prowess fuel, and genuine card advantage (Narset's wheel, the
+#: tier: impulse suite) that most aggro decks lack. Unproven in matches; the honest
+#: tier: weaknesses are the three-color manabase taxing the tri-pip engine bodies on
+#: tier: curve, a top-heavy curve for a tempo plan, and near-zero protection for the
+#: tier: engine creatures. First tuning axis: craft cheap blue tempo spells the pile
+#: tier: could not supply. Re-grade after real games.
+#: protect: Sokka, Tenacious Tactician; Narset, Jeskai Waymaster; Flamehold Grappler; Mai, Jaded Edge
+#: notes: BUILT from the 55-mardu addendum (concept J). The pile's known blue gap,
+#: notes: recorded honestly: it contains ZERO mono-U spells, so blue here buys
+#: notes: bodies only (Sokka, Narset, the TDM prowess block) and the spell suite is
+#: notes: red/white. The deck's first tuning axis is crafting out-of-pile U tempo
+#: notes: spells (cantrips / counters) via suggest --needs when wildcards allow.
+#: notes: Timing reads: Narset's end-step wheel happens AFTER attackers profit from
+#: notes: prowess — dump the hand freely on your turn, she restocks at end step.
+#: notes: Riverwheel Sweep and Monastery Messenger cost {2/U}{2/R}{2/W} — each pip
+#: notes: is payable with {2} OR the color, so they cast without blue at 6 mana or
+#: notes: cheaper with any mix; they count as U spells for nothing (G-58 read).
+#: notes: Rally the Monastery costs {2} less after a spell this turn — sequence it
+#: notes: second. Equilibrium Adept and Crackling Cyclops are shared with 55a/56
+#: notes: (decks share the collection; a copy is never consumed).
+
+# Engine
+2 Sokka, Tenacious Tactician (TLA) 242
+2 Narset, Jeskai Waymaster (TDM) 209
+2 Flamehold Grappler (TDM) 185
+
+# Prowess block
+2 Jeskai Brushmaster (TDM) 195
+2 Effortless Master (TDM) 181
+2 Mai, Jaded Edge (TLA) 147
+2 Crackling Cyclops (FDN) 83
+2 Spectacular Skywhale (SOS) 229
+2 Equilibrium Adept (TDM) 106
+1 Enigma Drake (FDN) 657
+
+# Value top end
+1 Shiko, Paragon of the Way (TDM) 223
+1 Jeskai Shrinekeeper (TDM) 197
+1 Monastery Messenger (TDM) 208
+1 Jeskai Revelation (TDM) 196
+
+# Cheap spells (prowess fuel)
+2 Lightning Helix (MKM) 218
+1 Boros Charm (FDN) 721
+2 Thunder Salvo (OTJ) 150
+2 Rally the Monastery (TDM) 19
+2 Haste Magic (FIN) 140
+2 Ancestors' Aid (LCI) 132
+1 Frontline Rush (TDM) 186
+1 Riverwheel Sweep (TDM) 219
+
+# Lands
+2 Mystic Monastery (TDM) 262
+1 Riverpyre Verge (DFT) 260
+1 Temple of Epiphany (FDN) 699
+1 Floodfarm Verge (DSK) 259
+1 Temple of Enlightenment (FDN) 698
+1 Restless Anchorage (LCI) 280
+1 Sunbillow Verge (DFT) 264
+1 Baron, Airship Kingdom (FIN) 273
+6 Mountain (MSH) 293
+5 Plains (MSH) 287
+4 Island (MSH) 290

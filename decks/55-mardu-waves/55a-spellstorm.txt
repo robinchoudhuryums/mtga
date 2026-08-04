@@ -5,8 +5,8 @@
 #: archetype: MARDU SPELLS-VELOCITY with a graveyard half — the C2+D+E merge from the
 #: archetype: 131-card pile analysis. Cast two-plus spells a turn: the mana engine funds
 #: archetype: it (Electro rebates per spell and his mana persists, Brazen Collector adds
-#: archetype: {R} per attack, Blazing Firesinger's prepared half is a +5 red burst, Death to Our
-#: archetype: Enemies pays for the next four spells in Treasures), the velocity layer
+#: archetype: {R} per attack, Death to Our Enemies pays for the next four spells in
+#: archetype: Treasures), the velocity layer
 #: archetype: pays it off per second spell (Cosmogrand Zenith, Sunstar Lightsmith, Rally
 #: archetype: the Monastery), and the payoff layer converts each cast into damage and
 #: archetype: life (Judith, Cori Mountain Stalwart, Thor, Monica, Heartflame Duelist).
@@ -51,16 +51,16 @@
 
 # Mana engine (spells fund spells)
 2 Electro, Assaulting Battery (SPM) 76
-1 Blazing Firesinger (SOS) 109
 2 Brazen Collector (BLB) 128
 1 Tablet of Discovery (SOS) 132
 1 Death to Our Enemies (MSH) 127
 
 # Velocity (second-spell layer)
+1 Equilibrium Adept (TDM) 106
 2 Cosmogrand Zenith (EOE) 9
 2 Sunstar Lightsmith (EOE) 42
 2 Rally the Monastery (TDM) 19
-1 Pigment Wrangler // Striking Palette (SOS) 126
+1 Antiquities on the Loose (SOS) 7
 
 # Graveyard half (Kirol + the yard-leaving suite)
 2 Kirol, History Buff // Pack a Punch (SOS) 198
