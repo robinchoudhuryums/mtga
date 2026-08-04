@@ -52,6 +52,8 @@
 #: notes: (LCI) rotate ~2026; the plot suite (Aven, Ruckus, Longhorn — OTJ) plus
 #: notes: Lightning Helix and Push // Pull rotate ~2027. The plot suite is the
 #: notes: exile-cast spine, so the deck needs a re-draft at the 2027 rotation.
+#~ -Snow Villiers | +Red Tiger Mechan (craft C) | warp is a 10th exile-cast enabler feeding Zuko/Appa/Quintorius on the recast; Snow is the least engine-connected body. Confirmed direction 2026-08; craft when wildcards allow.
+
 # Exile-cast payoffs
 2 Fire Lord Zuko (TLA) 221
 2 Appa, Steadfast Guardian (TLA) 10
