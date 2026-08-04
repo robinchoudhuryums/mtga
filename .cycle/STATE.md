@@ -674,3 +674,26 @@ notes. Also against hand-writing rotation years — deck.py rotation is the sour
 the three deck headers). check_all clean, zero soft warnings, 922 tests green. Open:
 the 54-family swap plans in `.cycle/54-pile-reanalysis.md` (§5/§5b) remain unapplied;
 no PR open for the current branch (user has not asked).
+
+## Session — the Mardu pile family: seven decks, an addendum, and the follow-on tunes (2026-08-04/05)
+
+The 131-card Mardu pile (five batches, analyzed prior session) was drafted into decks
+55 / 55a / 55b; the user then extended the pile with a 59-card addendum carrying three
+new concepts, of which two survived contact with the counts: T (ultra-tall) became deck
+56 + variant 56a after a full drafted A/B (white beat green on every measured axis;
+green revived as 56a WITH the protection suite the A/B never tested), and J (Jeskai)
+became deck 57 (prowess tempo; the pile holds zero mono-U spells — recorded as the
+first tuning axis). Concept G (RGB) was rejected BY COUNT (zero G/B cards; deck 8
+already owns BRG sacrifice) — then resurrected on the user's sharper idea (Treasure
+economy) once a whole-pool payoff sweep (108 payoffs / 75 producers) showed the token
+economy identity unclaimed: deck 58 Gold Standard, around Roxanne's token-mana
+doubling. Follow-on tunes landed via screened + quality-guarded swaps (55a ×2, 55 ×2,
+58 ×1, 55b flex line); a ten-card revival pass produced seven pending placements the
+user is still weighing (list + cut candidates in NEXT-SESSION §3.2), and a
+craft-priority read (Castle Doom/Electro/Appa/Cosmogrand as direct crafts; FDN > TDM >
+OTJ packs; avoid rotating LCI/WOE). Decided AGAINST: a generic RGB goodstuff deck (no
+identity left), Voja (0 Elves), Charging Strifeknight to 55a (outlet recount: Pursue
+already covers it), Speedball (its rider theme was cut from 55a's final), Taii into 55
+initially — reversed later by the user reading the amplifier correctly (every
+noncombat-damage instance that turn). Doc residuals G-66 (token false-thin) and K-03
+(type-keying tag invisibility, Gilgamesh/deck 39) recorded in CLAUDE.md + gotchas.
