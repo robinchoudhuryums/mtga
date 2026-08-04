@@ -269,7 +269,8 @@ def render_stats(stats):
         js_tag = tag.replace("\\", "\\\\").replace("'", "\\'")
         attr = html.escape(js_tag, quote=True)
         chips.append(
-            f'<span class="chip" onclick="var q=document.getElementById(\'q\');'
+            f'<span class="chip" role="button" tabindex="0" '
+            f'onclick="var q=document.getElementById(\'q\');'
             f'q.value=\'{attr}\';q.dispatchEvent(new Event(\'input\'));'
             f'window.scrollTo(0,0)">{html.escape(tag)} <span class="n">{n}</span></span>')
 
@@ -360,6 +361,11 @@ HTML_TEMPLATE = """<!doctype html>
     padding: 3px 11px; font-size: 12px; cursor: pointer; color: var(--text); }
   .chip:hover { border-color: var(--accent); color: var(--accent); }
   .chip .n { color: var(--muted); }
+  /* Visible focus ring for keyboard users — the page had NO focus style at all
+     (BS-21b); scoped to :focus-visible so mouse clicks stay ring-free. */
+  .pip:focus-visible, .chip:focus-visible, input[type=search]:focus-visible,
+  select:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px; }
 </style>
 </head>
 <body>
@@ -369,14 +375,18 @@ HTML_TEMPLATE = """<!doctype html>
     <span class="stats" id="stats"></span>
   </div>
   <div class="controls">
-    <input type="search" id="q" placeholder="Search name, type, or text…" autocomplete="off">
+    <input type="search" id="q" placeholder="Search name, type, or text…" autocomplete="off"
+           aria-label="Search cards by name, type, or text">
+    <!-- Keyboard-accessible filter controls: the gallery predates the I-01 pass its
+         sibling collection.html received, so the identical pips had drifted —
+         mouse-only divs with no role, tabindex, or focus style (BS-21b). -->
     <div class="pips" id="pips">
-      <div class="pip W" data-c="W" title="White">W</div>
-      <div class="pip U" data-c="U" title="Blue">U</div>
-      <div class="pip B" data-c="B" title="Black">B</div>
-      <div class="pip R" data-c="R" title="Red">R</div>
-      <div class="pip G" data-c="G" title="Green">G</div>
-      <div class="pip C" data-c="C" title="Colorless">C</div>
+      <div class="pip W" data-c="W" role="button" tabindex="0" aria-pressed="false" aria-label="Filter White" title="White">W</div>
+      <div class="pip U" data-c="U" role="button" tabindex="0" aria-pressed="false" aria-label="Filter Blue" title="Blue">U</div>
+      <div class="pip B" data-c="B" role="button" tabindex="0" aria-pressed="false" aria-label="Filter Black" title="Black">B</div>
+      <div class="pip R" data-c="R" role="button" tabindex="0" aria-pressed="false" aria-label="Filter Red" title="Red">R</div>
+      <div class="pip G" data-c="G" role="button" tabindex="0" aria-pressed="false" aria-label="Filter Green" title="Green">G</div>
+      <div class="pip C" data-c="C" role="button" tabindex="0" aria-pressed="false" aria-label="Filter Colorless" title="Colorless">C</div>
     </div>
     <select id="set"></select>
     <select id="sort">
@@ -408,7 +418,16 @@ __STATS__
     const c = pip.dataset.c;
     if (activeColors.has(c)) { activeColors.delete(c); pip.classList.remove('on'); }
     else { activeColors.add(c); pip.classList.add('on'); }
+    pip.setAttribute('aria-pressed', String(activeColors.has(c)));
     render();
+  });
+  // Enter/Space activate, like a real button (BS-21b) — routed through .click()
+  // so the handler above stays the single definition of what a pip does. The same
+  // delegated listener covers the synergy chips in the overview panel.
+  document.addEventListener('keydown', e => {
+    const t = e.target.closest && e.target.closest('.pip, .chip');
+    if (!t) return;
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); t.click(); }
   });
   q.addEventListener('input', render);
   setSel.addEventListener('change', render);

@@ -57,11 +57,41 @@ BASICS = {"plains", "island", "swamp", "mountain", "forest", "wastes"}
 
 
 def parse(text, skip_basics=False):
-    """Return (entries, warnings). entries: list of (qty, name, set, collector)."""
+    """Return (entries, warnings). entries: list of (qty, name, set, collector),
+    ONE entry per printing, aggregated section-aware:
+
+    Within one deck block, Deck and Sideboard copies of a card draw from the
+    collection SIMULTANEOUSLY — a Bo3 export with 2 Duress maindeck and 2 more in
+    the sideboard proves ownership of 4, and the old flat list handed both rows to
+    merge()'s max(), recording 2 (broad-scan batch 5). So: SUM across a block's
+    sections, MAX for a repeat within one section (one holding stated twice), MAX
+    across separate `Deck` blocks (decks share the collection, so the lower bound
+    over many decks is the best single block). A Companion line duplicates its
+    Sideboard row in Arena exports, so it is folded into that section."""
     entries, warnings = [], []
+    idx, disp = {}, {}
+    block, block_secs = {}, {}
+
+    def _fold_block():
+        for k, q in block.items():
+            i = idx.get(k)
+            if i is None:
+                idx[k] = len(entries)
+                entries.append((q, *disp[k]))
+            elif q > entries[i][0]:
+                entries[i] = (q, *entries[i][1:])
+        block.clear()
+        block_secs.clear()
+
+    section = "deck"
     for lineno, raw in enumerate(text.splitlines(), 1):
         line = raw.strip()
-        if not line or line.lower() in SECTIONS:
+        if not line:
+            continue
+        if line.lower() in SECTIONS:
+            if line.lower() == "deck":
+                _fold_block()          # a new deck block starts
+            section = line.lower()
             continue
         if line.startswith("#") or line.startswith("//"):
             continue
@@ -75,7 +105,15 @@ def parse(text, skip_basics=False):
         collector = (m.group(4) or "").strip()
         if skip_basics and name.lower() in BASICS:
             continue
-        entries.append((qty, name, set_code, collector))
+        k = key(name, set_code, collector)
+        disp.setdefault(k, (name, set_code, collector))
+        sec = "sideboard" if section == "companion" else section
+        if sec in block_secs.get(k, ()):
+            block[k] = max(block[k], qty)              # same-section repeat
+        else:
+            block_secs.setdefault(k, set()).add(sec)
+            block[k] = block.get(k, 0) + qty           # a NEW section: sums
+    _fold_block()
     return entries, warnings
 
 

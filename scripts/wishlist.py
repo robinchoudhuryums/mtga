@@ -569,9 +569,13 @@ def _land_value(row, deck_colors):
     prize untapped fixing. Colorless/utility or unknown-deck lands score neutral."""
     txt = (row.get("Card Text") or "")
     prod = card_colors(row.get("Color(s)"))
-    for c in "WUBRG":
-        if "{" + c + "}" in txt:
-            prod.add(c)
+    # Only an ADD clause is color PRODUCTION: a bare `{W}` anywhere in the text
+    # counted an ACTIVATION COST as fixing ("{W}: …" read as producing white),
+    # inflating a land's manabase score (broad-scan batch 5).
+    for m in re.finditer(r"[Aa]dd\b[^.\n]*", txt):
+        for c in "WUBRG":
+            if "{" + c + "}" in m.group(0):
+                prod.add(c)
     if not prod or not deck_colors:
         return 3.5  # colorless/utility land, or no known target — neutral
     used = prod & deck_colors
@@ -822,7 +826,10 @@ def _rank_scores(rows, keep=None):
             # and re-tier from the land value so a well-matched untapped dual ranks
             # like a real upgrade instead of at a 0.0 theme-fit.
             s["fitN"] = s["land_val"]
-            pw = s["power"] or s["land_val"]
+            # `s["power"] or …` is the exact or-with-0 trap lib.card_power's comment
+            # names: a land hand-graded Power 0 is a real judgment and `0 or x`
+            # collapses it to "ungraded". Blank-ness is what raw_power records.
+            pw = s["land_val"] if s["blank_power"] else s["power"]
             s["combined"] = round(0.65 * s["land_val"] + 0.35 * pw, 2)
             s["tier"] = "A" if s["land_val"] >= 7 else "B" if s["land_val"] >= 5 else "C"
             s["sig"] = "manabase (land)"
@@ -836,6 +843,18 @@ def _rank_scores(rows, keep=None):
         # sinks within its tier (don't burn a wildcard on a card about to leave the format).
         if s.get("rot"):
             s["combined"] = round(max(0.0, s["combined"] - _ROT_PENALTY), 2)
+    # ONE entry per card NAME, keeping the best-`combined` row: the wishlist
+    # legitimately holds one row per (name, set) — Drakuseth and Sally Pride are
+    # live duplicates — and scoring ROWS made a duplicated card rank twice, so a
+    # 3-slot `--budget` could silently be a 2-card plan spending two wildcard
+    # slots on one card (broad-scan batch 5). A wildcard crafts the CARD, not a
+    # printing, so the spend views must be name-unique.
+    best = {}
+    for s in out:
+        cur = best.get(s["name"])
+        if cur is None or s["combined"] > cur["combined"]:
+            best[s["name"]] = s
+    out = list(best.values())
     order = {"A": 0, "B": 1, "C": 2}
     out.sort(key=lambda s: (order[s["tier"]], -s["pri"], -_WC_RANK.get(s["rarity"], 0), s["name"]))
     if keep is not None:

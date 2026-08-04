@@ -60,7 +60,11 @@ HEADER = ["Date", "Match ID", "Deck", "Course ID", "Event", "Result",
           "Games Won", "Games Lost", "Opponent Course", "Reason"]
 
 # `Match to <userId>:` — the ONLY place the local player's seat is identified.
-_ME_RE = re.compile(r"Match to ([A-Z0-9]+):")
+# The id charset is deliberately broad ([A-Za-z0-9] + separators): the original
+# [A-Z0-9]+ TRUNCATED an id containing lowercase, so the truncated id matched no
+# seat and every match was skipped — the safe direction (skip, never guess a
+# seat), but the warning blamed a missing header that was present (batch 5).
+_ME_RE = re.compile(r"Match to ([A-Za-z0-9_-]+):")
 # The log line's own timestamp is LOCAL; the JSON's epoch field is UTC, and using it files
 # an evening session under the next day (the sample: header 7/27, epoch 7/28).
 _DATE_RE = re.compile(r"\](\d{1,2})/(\d{1,2})/(\d{4})\s")
@@ -292,8 +296,13 @@ def main():
         r["Deck"] = args.deck or course_map.get(r["Course ID"], "")
 
     existing = load_matches(args.out)
-    known = {r.get("Match ID") for r in existing}
-    fresh = [r for r in rows if r.get("Match ID") not in known]
+    # A row with NO matchId must never dedupe against another blank — "" in the
+    # known-set silently dropped every subsequent id-less match as "already
+    # recorded", which reads as data, not as a gap (broad-scan batch 5).
+    known = {mid for r in existing if (mid := (r.get("Match ID") or "").strip())}
+    fresh = [r for r in rows
+             if not (r.get("Match ID") or "").strip()
+             or r.get("Match ID") not in known]
 
     print(f"Found {len(rows)} completed match(es); {len(fresh)} new, "
           f"{len(rows) - len(fresh)} already recorded.")

@@ -1169,8 +1169,11 @@ function sortableTable(cls, cols, rows, sortState, onRowExtra, opts){
       td.onclick = () => { opts._exp = !opts._exp; redraw(); };
       tr.appendChild(td); tb.appendChild(tr);
     }
-    // rebuild header arrows
-    [...htr.children].forEach((th,i) => { const c = cols[i]; th.className = (c.num?'num':'') + (sortState.key===c.key?' on':''); th.textContent = c.label + (sortState.key===c.key ? (sortState.dir>0?' ▲':' ▼') : ''); });
+    // rebuild header arrows — and aria-sort, which was set only at construction, so
+    // after any sort click a screen reader heard the ORIGINAL sort state (S3).
+    [...htr.children].forEach((th,i) => { const c = cols[i]; th.className = (c.num?'num':'') + (sortState.key===c.key?' on':''); th.textContent = c.label + (sortState.key===c.key ? (sortState.dir>0?' ▲':' ▼') : '');
+      if (sortState.key===c.key) th.setAttribute('aria-sort', sortState.dir>0?'ascending':'descending');
+      else th.removeAttribute('aria-sort'); });
   }
   redraw();
   return tbl;
@@ -1419,10 +1422,21 @@ $('deckfilter').addEventListener('input', e => { STATE.deckFilter = e.target.val
   const wrap = $('quickpills');
   QUICK.forEach(([k,label]) => { const p = a11y(el('span','pill' + (STATE.quickFilter===k?' on':''), label), {pressed:STATE.quickFilter===k}); p.onclick = () => { STATE.quickFilter = k; persist(); [...wrap.children].forEach(x => x.classList.remove('on')); p.classList.add('on'); renderDecks(); }; wrap.appendChild(p); });
 })();
+// a11y() wraps: these four spans (plus exportwl / palettehint below) missed the
+// I-01 keyboard pass — every sibling control in this file is wrapped, and a
+// keyboard user could not switch view, copy imports, or export the wishlist.
+a11y($('viewGrid'), {label:'Grid view', pressed: STATE.viewMode==='grid'});
+a11y($('viewCompact'), {label:'Compact view', pressed: STATE.viewMode==='compact'});
+a11y($('copyall'), {label:'Copy all deck imports'});
 $('viewGrid').classList.toggle('on', STATE.viewMode==='grid');
 $('viewCompact').classList.toggle('on', STATE.viewMode==='compact');
-$('viewGrid').onclick = () => { STATE.viewMode = 'grid'; persist(); $('viewGrid').classList.add('on'); $('viewCompact').classList.remove('on'); renderDecks(); };
-$('viewCompact').onclick = () => { STATE.viewMode = 'compact'; persist(); $('viewCompact').classList.add('on'); $('viewGrid').classList.remove('on'); renderDecks(); };
+function setView(mode){ STATE.viewMode = mode; persist();
+  $('viewGrid').classList.toggle('on', mode==='grid'); $('viewCompact').classList.toggle('on', mode==='compact');
+  $('viewGrid').setAttribute('aria-pressed', String(mode==='grid'));
+  $('viewCompact').setAttribute('aria-pressed', String(mode==='compact'));
+  renderDecks(); }
+$('viewGrid').onclick = () => setView('grid');
+$('viewCompact').onclick = () => setView('compact');
 $('copyall').onclick = () => { const list = filteredDecks(); const text = list.map(d => '// #' + d.id + ' ' + d.name + '\n' + ((d.detail&&d.detail.arena)||'')).join('\n\n'); writeClip(text, () => toast(list.length + ' deck imports copied')); };
 renderDecks();
 
@@ -1609,6 +1623,7 @@ $('wlfilter').addEventListener('input', e => { STATE.wlFilter = e.target.value; 
     host.appendChild(c);
   });
 })();
+a11y($('exportwl'), {label:'Export wishlist to clipboard'});
 $('exportwl').onclick = () => { const lines = ['MTGA WILDCARD WISHLIST']; ['A','B','C'].forEach(k => { const rows = D.wishlist[k]||[]; if (!rows.length) return; lines.push('', WL_LABELS[k]); rows.forEach(r => lines.push('  [' + (WC[r.rarity]||'?') + '] ' + r.name + ' — ' + (r.target||'') + ' (pri ' + (typeof r.pri==='number'?r.pri.toFixed(2):r.pri) + ')')); }); writeClip(lines.join('\n'), () => toast('Wishlist copied to clipboard')); };
 // simulator
 const SIM = [['off','Off'],['A','+ Tier A'],['AB','+ Tier A & B'],['all','+ All tiers']];
@@ -1866,6 +1881,7 @@ function paletteEl(){
 $('btntheme').onclick = () => { STATE.theme = STATE.theme==='dark'?'light':'dark'; document.documentElement.setAttribute('data-theme', STATE.theme); persist(); };
 $('btnshare').onclick = () => { const url = location.href.split('#')[0] + buildHash().replace(/^ $/,''); writeClip(url, () => toast('View link copied to clipboard')); };
 $('btnsync').onclick = () => syncLive(false);
+a11y($('palettehint'), {label:'Open command palette'});
 $('palettehint').onclick = openPalette;
 function jumpTo(id){ const e = $(id); if (e) window.scrollTo({top:e.getBoundingClientRect().top + window.scrollY - 82, behavior:'smooth'}); }
 function isTyping(e){ const t = e.target; return t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable); }

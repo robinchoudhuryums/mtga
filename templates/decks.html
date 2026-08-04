@@ -36,6 +36,11 @@
     text-align:center; }
   .badge.ok { color:var(--ok); border:1px solid var(--ok); }
   .badge.warn { color:var(--warn); border:1px solid var(--warn); }
+  /* Missing (not owned at all) is RED everywhere else in the app — deck.html's
+     card badges and the dashboard both distinguish it from amber "short". This
+     page collapsed both into one amber badge, so scenario 5's tri-color
+     semantics didn't survive the /decks list (S5). */
+  .badge.bad { color:var(--bad); border:1px solid var(--bad); }
 </style>
 </head>
 <body>
@@ -53,8 +58,9 @@
   const list = document.getElementById('list');
   list.innerHTML = decks.map(d => {
     const ready = d.short === 0 && d.missing === 0;
+    // missing → red (matches deck.html / dashboard); short-only → amber.
     const badge = ready ? '<span class="badge ok">buildable ✓</span>'
-      : `<span class="badge warn">${[d.missing?d.missing+' missing':'', d.short?d.short+' short':'']
+      : `<span class="badge ${d.missing ? 'bad' : 'warn'}">${[d.missing?d.missing+' missing':'', d.short?d.short+' short':'']
           .filter(Boolean).join(', ')}</span>`;
     return `<a class="deck${d.variant?' variant':''}" href="/deck/${encodeURIComponent(d.id)}">
       <span class="id">[${esc(d.id)}]</span>

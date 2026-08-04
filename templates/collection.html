@@ -312,6 +312,23 @@
     }
   }
 
+  // Staged quantity/synergy edits live only in `dirty` until Save — and add /
+  // remove / revert all reload on success, silently discarding any OTHER staged
+  // edits, with no warning on closing the tab either (S4). One guard for all
+  // three, plus beforeunload; the flag skips the browser prompt on the reloads
+  // the guarded actions themselves trigger (the user just confirmed).
+  let bypassUnloadGuard = false;
+  function confirmDiscardStaged(action) {
+    if (!dirty.size) return true;
+    const ok = confirm(`You have ${dirty.size} unsaved edit(s) that will be lost if you ${action}. ` +
+                       'Continue and discard them? (Cancel to Save first.)');
+    if (ok) bypassUnloadGuard = true;
+    return ok;
+  }
+  window.addEventListener('beforeunload', (e) => {
+    if (dirty.size && !bypassUnloadGuard) { e.preventDefault(); e.returnValue = ''; }
+  });
+
   // Add card — enrich + append server-side, then reload to pick up the new row.
   const addPanel = document.getElementById('addPanel');
   document.getElementById('addToggle').addEventListener('click', () => {
@@ -321,6 +338,7 @@
   document.getElementById('addBtn').addEventListener('click', async () => {
     const name = document.getElementById('aName').value.trim();
     if (!name) { toast('Card name is required.'); return; }
+    if (!confirmDiscardStaged('add a card')) return;
     const btn = document.getElementById('addBtn');
     btn.disabled = true; btn.textContent = 'Adding…';
     try {
@@ -344,6 +362,7 @@
   grid.addEventListener('click', async (e) => {
     const rm = e.target.closest('.rm'); if (!rm) return;
     const c = CARDS.find(x => x._key === rm.closest('.card').dataset.key); if (!c) return;
+    if (!confirmDiscardStaged('remove a printing')) return;
     if (!confirm(`Remove ${c.name} (${c.set || '—'})? This deletes the printing from the collection.`)) return;
     // try/catch, like save/add: without it a rejected fetch (server stopped, bad
     // response) escaped as an unhandled rejection and the click did NOTHING VISIBLE —
@@ -359,6 +378,7 @@
 
   // Revert last save.
   document.getElementById('revert').addEventListener('click', async () => {
+    if (!confirmDiscardStaged('revert')) return;
     if (!confirm('Revert the last save? Restores the most recent backup and discards changes since then.')) return;
     // Same guard as remove() above — this is the most destructive action in the app,
     // and it was one of the two that failed silently (broad-scan F-02).

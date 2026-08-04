@@ -23,7 +23,11 @@ two):
    (reads card-mana.csv's keywords, so it must run after step 3). `--merge` ADDS
    newly-derived tags to existing cells without removing hand-curated ones; use
    `--force` only for a deliberate destructive regenerate (it clobbers hand edits)
-5. `python3 scripts/build_gallery.py` — rebuild gallery.html (images + dashboard)
+5. `python3 scripts/build_gallery.py` — rebuild gallery.html (images). NOTE:
+   this does NOT rebuild dashboard.html — nothing in the refresh chain does.
+   The deployed dashboard is rebuilt by pages.yml on every push to main; run
+   `make dashboard` (~2 min, offline) only if the committed copy should be
+   current locally.
 6. `python3 scripts/check_all.py` — confirm all invariants hold
 
 Notes:

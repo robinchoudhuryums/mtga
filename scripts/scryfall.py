@@ -63,6 +63,14 @@ def _run(req, retries=6, timeout=30):
                 raise NotFound()
             last = f"HTTP {e.code}: {e.reason}"
             # 429 (rate limit) and 5xx are worth retrying; honour Retry-After on 429.
+            # Any OTHER 4xx is a permanent CLIENT error (a malformed --query is a
+            # 400 every time) — the docstring promised an immediate raise, but only
+            # 404 short-circuited, so a bad query burned ~63s of backoff before
+            # surfacing as "could not reach Scryfall", misdiagnosing a permanent
+            # error as an outage (broad-scan batch 5).
+            if 400 <= e.code < 500 and e.code != 429:
+                raise ScryfallUnavailable(last + " (client error — not retried; "
+                                          "check the request, not the network)")
             if attempt < retries - 1:
                 wait = (float(e.headers.get("Retry-After", 0) or 0)
                         if e.code == 429 else 0) or 1.0 * (2 ** attempt)

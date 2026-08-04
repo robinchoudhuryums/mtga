@@ -128,9 +128,31 @@ def atomic_write(path, write_fn, *, backup=True):
     try:
         with os.fdopen(fd, "w", newline="", encoding="utf-8") as fh:
             write_fn(fh)
+            # fsync BEFORE the rename: os.replace is atomic against a process crash
+            # either way, but without the flush-to-disk a power loss shortly after a
+            # "successful" write could surface an empty/old file — the docstring
+            # promised "durably" and the code didn't deliver it (broad-scan batch 5).
+            fh.flush()
+            os.fsync(fh.fileno())
+        # mkstemp creates the temp 0600 and os.replace keeps the temp's mode, so
+        # every write silently flipped the canonical CSV 644 → 600 (masked locally
+        # because git checkouts reset modes). Carry the target's own mode over.
+        if os.path.exists(path):
+            shutil.copymode(path, tmp)
+        else:
+            os.chmod(tmp, 0o644)
         if backup and os.path.exists(path):
             shutil.copy2(path, backup_path(path))
         os.replace(tmp, path)
+        try:
+            # fsync the DIRECTORY too, so the rename itself survives power loss.
+            dfd = os.open(directory, os.O_RDONLY)
+            try:
+                os.fsync(dfd)
+            finally:
+                os.close(dfd)
+        except OSError:
+            pass  # some platforms can't fsync a directory; atomicity still holds
     except BaseException:
         try:
             os.remove(tmp)
@@ -287,9 +309,15 @@ def mana_value(cost):
             total += int(s)
         elif s in ("X", "Y", "Z"):
             continue
+        elif "/" in s and any(p.isdigit() for p in s.split("/")):
+            # A MONOCOLOR hybrid contributes its larger half (CR 202.3f): {2/G} is
+            # mana value 2, not 1. Counting it 1 under-read Wildgrowth Archaic's
+            # {2/G}{2/G} as MV 2 against a real 4, and made a recompute disagree
+            # with the stored Mana Value column — a two-answers split (batch 5).
+            total += max(int(p) for p in s.split("/") if p.isdigit())
         else:
-            # A colored, hybrid, phyrexian or snow symbol is worth 1 regardless of
-            # how many colours it offers ({W/U} is one mana, not two).
+            # A colored, hybrid or phyrexian symbol is worth 1 regardless of how
+            # many colours it offers ({W/U} is one mana, not two; {W/P} is 1).
             total += 1
     return total
 

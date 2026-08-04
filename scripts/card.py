@@ -243,15 +243,19 @@ def main():
     if kw:
         print(f"  keywords: {kw}")
     # Flag mechanics the synergy tagger doesn't index (a new set's keyword), so a
-    # card is never evaluated with a hidden/mis-tagged mechanic.
+    # card is never evaluated with a hidden/mis-tagged mechanic. A crash in the
+    # checker must SAY so on stderr — the bare `except: pass` silently turned the
+    # K-01 warning off on the exact surface built to show it, and "no unindexed
+    # mechanics" was indistinguishable from "the checker died" (batch 5).
     try:
         import check_keywords as ck
         unindexed = ck.unknown_for_card(kw)
         if unindexed:
             print(f"  ⚠ unindexed mechanic(s): {', '.join(unindexed)} "
                   "(not in the synergy map — grade its effect from the text above)")
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"  (unindexed-mechanic check unavailable: {type(e).__name__}: {e})",
+              file=sys.stderr)
 
     # FULL oracle text — never truncated (this is the whole point).
     print("\n  Oracle text:")

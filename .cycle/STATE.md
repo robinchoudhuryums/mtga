@@ -72,6 +72,41 @@ lib.alias_front are the two that prevent recurrence), Batch 5 (low tail), Batch 
 (tests for the 7 uncovered scripts). /sync-docs still owed for BOTH blocks' doc items
 (--color semantics, sheets_sync contract, G-38/G-58/G-63 long forms).
 
+## Session — /sync-docs + Batches 3 & 5 (2026-08-04, same session, third pass)
+
+**Docs are synced** (README --color set semantics + sheets_sync pull contract +
+import_collection finish column; CLAUDE.md check_colors both-scans bullet, G-38
+needs-model note, G-63 rewritten with the five 2026-08 members; gotchas.md addenda
+under G-58/G-63/G-38/G-59/G-17; app.py's mtime docstring corrected; test_cli's
+stale counts made count-free). check_docs green, 91 anchors linked.
+
+**Batch 3 (interface parity)** and **Batch 5 (correctness tail)** are implemented —
+21 items; block: `.cycle/blocks/2026-08-batch3-5-broad-implement.md`. Headlines:
+the deck editor's JS ownership lookup now mirrors lib.owned_qty (BS-08, the last
+open G-63 member); gallery + dashboard keyboard access completed; `make dashboard`
+target (deliberately outside refresh — measured 1m44s vs 13s) with the /refresh doc
+claim corrected; consistency's → note targets the BINDING color; import_arena sums
+Deck+Sideboard within a block and maxes across blocks; wishlist rank/budget is
+name-unique (live dups Drakuseth/Sally Pride collapsed); atomic_write is actually
+durable and permission-preserving; snow basics exempt from the copy limit (rules
+side only — they stay real collection cards).
+
+**Verification:** check_all green (same 2 pre-existing soft warnings), 872/872
+pytest (4 new), scenario walks clean, wishlist --rank diffed against pre-change
+code via git stash.
+
+**New follow-ons found:** Pensive Professor / Riverchurn Monument carry Power cells
+of 78.0 / 74.0 (pre-existing data typos, scale is 0–10 — reproduced on old code);
+a Power>10 range flag in _rank_scores would catch the class. Committed
+dashboard.html/gallery.html still carry pre-batch markup until `make dashboard` /
+`make refresh` regenerate them (pages.yml covers the deployed dashboard).
+
+**Where I left off:** everything above committed and pushed on
+`claude/broad-scan-hekdj0`. Remaining scan backlog: Batch 4 (gate hardening: the
+sibling-filter diff gate, lib.alias_front + check_dfc index/payload scan, BS-04
+check_patterns perimeter, BS-19 role_baseline pruning, gate tail) and Batch 6
+(behavioral tests for the 7 uncovered scripts, + the F20 re-seed path).
+
 ## Session — systems map + agreement gate (2026-07-29)
 
 The task-first systems map landed (`docs/systems-map.md`), the agreement gate landed

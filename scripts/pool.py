@@ -31,7 +31,15 @@ import sys
 import textwrap
 
 from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty, color_matches
-from deck import classify_roles   # functional-role classifier (removal/ramp/draw/…)
+
+
+def classify_roles(text):
+    """Lazy proxy for `deck.classify_roles` — imported on FIRST USE, not at module
+    load: the top-level `from deck import …` coupled every pool query (--owned,
+    --text, --color) to deck.py's import health, so a deck.py syntax error broke
+    searches that never touch --role (broad-scan batch 5)."""
+    import deck
+    return deck.classify_roles(text)
 
 # Friendly --role aliases → the canonical labels classify_roles emits, so you can survey
 # the collection by what a card DOES (the axis you deckbuild on), not just its synergy tags.

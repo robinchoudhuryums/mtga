@@ -18,6 +18,26 @@ class TestImportArenaParse:
         assert (1, "Shock", "M19", "156") in entries
         assert (2, "Negate", "M19", "69") in entries
 
+    def test_deck_plus_sideboard_copies_SUM(self):
+        """Deck and Sideboard copies draw from the collection simultaneously: a Bo3
+        export with 2+2 Duress proves 4 owned — max() recorded 2 (batch 5)."""
+        entries, _ = import_arena.parse(
+            "Deck\n2 Duress (M21) 96\nSideboard\n2 Duress (M21) 96")
+        assert entries == [(4, "Duress", "M21", "96")]
+
+    def test_two_deck_blocks_take_the_MAX_not_the_sum(self):
+        """Decks share one collection: 2 Duress in each of two decks proves 2, not 4."""
+        entries, _ = import_arena.parse(
+            "Deck\n2 Duress (M21) 96\n\nDeck\n2 Duress (M21) 96")
+        assert entries == [(2, "Duress", "M21", "96")]
+
+    def test_companion_line_does_not_double_its_sideboard_row(self):
+        entries, _ = import_arena.parse(
+            "Companion\n1 Yorion, Sky Nomad (IKO) 232\n"
+            "Deck\n4 Shock (M19) 156\n"
+            "Sideboard\n1 Yorion, Sky Nomad (IKO) 232")
+        assert (1, "Yorion, Sky Nomad", "IKO", "232") in entries
+
     def test_name_without_set(self):
         entries, _ = import_arena.parse("3 Forest")
         assert entries == [(3, "Forest", "", "")]
