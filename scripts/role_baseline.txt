@@ -137,6 +137,7 @@ Frozen in Ice
 Fynn, the Fangbearer
 Gangly Stompling
 Gather the White Lotus
+Generous Plunderer
 Genji Glove
 Ghost, Spectral Saboteur
 Ghostly Keybearer
@@ -145,6 +146,7 @@ Giant Koi
 Glamer Gifter
 Glider Kids
 Glider Staff
+Gold Rush
 Goldvein Hydra
 Gravelgill Scoundrel
 Greenbelt Guardian
@@ -195,6 +197,7 @@ Kavaron Skywarden
 Kitsune's Technique
 Klaw, Sonic Subjugator
 Knight Luminary
+Krenko, Baron of Tin Street
 Krenko, Mob Boss
 Krumar Initiate
 Kutzil, Malamet Exemplar
