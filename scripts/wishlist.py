@@ -43,7 +43,7 @@ import os
 import sys
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty,
-                 card_colors, card_distinctiveness)
+                 card_colors, card_distinctiveness, color_matches)
 from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
@@ -275,6 +275,15 @@ def cmd_add(path):
                 for col in ("Type", "Card Text", "Color(s)", "Synergies", "Rarity"):
                     if row.get(col):
                         prev[col] = row[col]
+                # An outage-era row's Power was seeded from BLANK Type/Text/Rarity —
+                # a flat 2.0, so a Mythic bomb ranked like filler Uncommon — and it
+                # stuck: seeding below iterates new_rows only, and cmd_seed_power
+                # fills only BLANK cells (broad-scan BS-17). Now that the data
+                # arrived, recompute an UNTRUSTED power (seed/unknown/blank per
+                # G-17's provenance rule); a hand grade is never touched.
+                if power_is_seeded(prev):
+                    prev["Power"] = str(_seed_power(prev))
+                    prev["Power Source"] = POWER_SEEDED
                 reenriched += 1
             else:
                 dupes += 1
@@ -336,9 +345,13 @@ def _match(card, args):
     def has(col, needle):
         return needle is None or needle.lower() in (card.get(col) or "").lower()
     if not (has("Card Name", args.name) and has("Type", args.type)
-            and has("Card Text", args.text) and has("Color(s)", args.color)
+            and has("Card Text", args.text)
             and has("Synergies", args.synergy) and has("Set Code", args.set)
             and has("Target", args.target) and has("Note", args.note)):
+        return False
+    # Identity is SET-matched via lib.color_matches, never substring — "r" is in
+    # "colorless", so the substring test matched every Colorless card (BS-10).
+    if not color_matches(card.get("Color(s)"), args.color):
         return False
     if args.rarity:
         want = {x.strip().lower() for x in args.rarity.split(",")}
@@ -556,9 +569,13 @@ def _land_value(row, deck_colors):
     prize untapped fixing. Colorless/utility or unknown-deck lands score neutral."""
     txt = (row.get("Card Text") or "")
     prod = card_colors(row.get("Color(s)"))
-    for c in "WUBRG":
-        if "{" + c + "}" in txt:
-            prod.add(c)
+    # Only an ADD clause is color PRODUCTION: a bare `{W}` anywhere in the text
+    # counted an ACTIVATION COST as fixing ("{W}: …" read as producing white),
+    # inflating a land's manabase score (broad-scan batch 5).
+    for m in re.finditer(r"[Aa]dd\b[^.\n]*", txt):
+        for c in "WUBRG":
+            if "{" + c + "}" in m.group(0):
+                prod.add(c)
     if not prod or not deck_colors:
         return 3.5  # colorless/utility land, or no known target — neutral
     used = prod & deck_colors
@@ -751,7 +768,11 @@ def _rank_scores(rows, keep=None):
             # float() accepts "nan"/"inf"/"-inf" — a non-finite Power would escape the
             # bad-value flag and poison the `combined` score (nan scrambles the sort,
             # inf pins to the top), audit A10. Treat it like a non-numeric typo.
-            if not math.isfinite(power):
+            # OUT-OF-RANGE is the same trap one notch subtler: the scale is 0–10, and
+            # a large FINITE typo passes both guards and pins the rank — Pensive
+            # Professor's cell read 78.0 and topped Tier A at combined 42.3
+            # (broad-scan batch 6). Flag, score 0.0, tell the user to fix the cell.
+            if not math.isfinite(power) or not (0.0 <= power <= 10.0):
                 power, bad_power = 0.0, True
         except ValueError:
             # A non-numeric typo ("~9", "4,5", "TBD") must NOT silently score 0.0 and
@@ -809,7 +830,10 @@ def _rank_scores(rows, keep=None):
             # and re-tier from the land value so a well-matched untapped dual ranks
             # like a real upgrade instead of at a 0.0 theme-fit.
             s["fitN"] = s["land_val"]
-            pw = s["power"] or s["land_val"]
+            # `s["power"] or …` is the exact or-with-0 trap lib.card_power's comment
+            # names: a land hand-graded Power 0 is a real judgment and `0 or x`
+            # collapses it to "ungraded". Blank-ness is what raw_power records.
+            pw = s["land_val"] if s["blank_power"] else s["power"]
             s["combined"] = round(0.65 * s["land_val"] + 0.35 * pw, 2)
             s["tier"] = "A" if s["land_val"] >= 7 else "B" if s["land_val"] >= 5 else "C"
             s["sig"] = "manabase (land)"
@@ -823,6 +847,18 @@ def _rank_scores(rows, keep=None):
         # sinks within its tier (don't burn a wildcard on a card about to leave the format).
         if s.get("rot"):
             s["combined"] = round(max(0.0, s["combined"] - _ROT_PENALTY), 2)
+    # ONE entry per card NAME, keeping the best-`combined` row: the wishlist
+    # legitimately holds one row per (name, set) — Drakuseth and Sally Pride are
+    # live duplicates — and scoring ROWS made a duplicated card rank twice, so a
+    # 3-slot `--budget` could silently be a 2-card plan spending two wildcard
+    # slots on one card (broad-scan batch 5). A wildcard crafts the CARD, not a
+    # printing, so the spend views must be name-unique.
+    best = {}
+    for s in out:
+        cur = best.get(s["name"])
+        if cur is None or s["combined"] > cur["combined"]:
+            best[s["name"]] = s
+    out = list(best.values())
     order = {"A": 0, "B": 1, "C": 2}
     out.sort(key=lambda s: (order[s["tier"]], -s["pri"], -_WC_RANK.get(s["rarity"], 0), s["name"]))
     if keep is not None:
@@ -902,7 +938,8 @@ def cmd_rank(rows, all_rows=None):
     bad = [(s["name"], s["raw_power"]) for s in scored if s["bad_power"]]
     if bad:
         # A malformed Power scored 0.0 and would otherwise sink silently (F9).
-        print(f"⚠ {len(bad)} card(s) have a NON-NUMERIC Power (shown as 'pow!', scored 0.0): "
+        print(f"⚠ {len(bad)} card(s) have a NON-NUMERIC or OUT-OF-RANGE Power "
+              f"(shown as 'pow!', scored 0.0): "
               f"{', '.join(f'{n} ({v!r})' for n, v in bad[:6])}"
               f"{' …' if len(bad) > 6 else ''}. Fix the cell to a 1–10 number.")
     rot = [s for s in scored if s.get("rot")]

@@ -74,8 +74,12 @@ REQUIRED_LABELS = ["Invariant Library", "Test Command", "Subsystems"]
 SPLIT_SECTIONS = ["Common Gotchas", "Known Issues", "Cycle Workflow Config"]
 LINE_CAP = 15               # max lines for one bullet in a split section
 
-ANCHOR_RE = re.compile(r"\[([GKC]-\d{2})\]")
-HEADING_RE = re.compile(r"^##\s*\[([GKC]-\d{2})\]\s*(.*)$")
+# {2,3}: gotchas are at G-67 and rising roughly monotonically — a two-digit cap
+# would make the first [G-100] invisible to BOTH scans at once (reference and
+# heading), so the round-trip gate would go silent exactly when the numbering
+# rolled over (broad-scan batch 4).
+ANCHOR_RE = re.compile(r"\[([GKC]-\d{2,3})\]")
+HEADING_RE = re.compile(r"^##\s*\[([GKC]-\d{2,3})\]\s*(.*)$")
 
 
 def _read(path):

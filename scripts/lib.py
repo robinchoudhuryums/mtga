@@ -128,9 +128,31 @@ def atomic_write(path, write_fn, *, backup=True):
     try:
         with os.fdopen(fd, "w", newline="", encoding="utf-8") as fh:
             write_fn(fh)
+            # fsync BEFORE the rename: os.replace is atomic against a process crash
+            # either way, but without the flush-to-disk a power loss shortly after a
+            # "successful" write could surface an empty/old file — the docstring
+            # promised "durably" and the code didn't deliver it (broad-scan batch 5).
+            fh.flush()
+            os.fsync(fh.fileno())
+        # mkstemp creates the temp 0600 and os.replace keeps the temp's mode, so
+        # every write silently flipped the canonical CSV 644 → 600 (masked locally
+        # because git checkouts reset modes). Carry the target's own mode over.
+        if os.path.exists(path):
+            shutil.copymode(path, tmp)
+        else:
+            os.chmod(tmp, 0o644)
         if backup and os.path.exists(path):
             shutil.copy2(path, backup_path(path))
         os.replace(tmp, path)
+        try:
+            # fsync the DIRECTORY too, so the rename itself survives power loss.
+            dfd = os.open(directory, os.O_RDONLY)
+            try:
+                os.fsync(dfd)
+            finally:
+                os.close(dfd)
+        except OSError:
+            pass  # some platforms can't fsync a directory; atomicity still holds
     except BaseException:
         try:
             os.remove(tmp)
@@ -154,6 +176,50 @@ def card_colors(colstr):
     if s.lower() == "colorless":
         return set()
     return {ch for ch in s.upper() if ch in "WUBRG"}
+
+
+def alias_front(index):
+    """SECOND-PASS front-face aliasing for a name-keyed index over pool-shaped data:
+    every `Front // Back` key gets its FRONT aliased to the same value — but only
+    when no REAL row already claims the front name, so a distinct card named
+    `Front` is never shadowed ("Life" is a card as well as the front of
+    "Life // Death"). Call it AFTER the loop that inserts real rows; aliasing
+    in-pass (`setdefault` inside the row loop) is order-dependent — a full-name row
+    seen early claims the front before the real card's own row arrives (G-63).
+
+    This is the index half of G-63 given ONE home: six loaders each carried their
+    own copy of this loop, two aliased in-pass with the shadowing trap, and a
+    seventh (`reconcile_crafts`' pool map) never aliased at all, reporting owned
+    DFCs "NOT FOUND in pool" (broad-scan BS-16/batch 4). `check_dfc` behaviorally
+    verifies each registered loader resolves a DFC's front key. Mutates and
+    returns `index`."""
+    for n in list(index):
+        front = n.split(" // ")[0].strip()
+        if front and front != n and front not in index:
+            index[front] = index[n]
+    return index
+
+
+def color_matches(cell, needle):
+    """Does a ``Color(s)`` identity cell match a user's ``--color`` filter?
+
+    SET semantics through ``card_colors`` on BOTH sides — never a substring test.
+    The substring predecessor was the F1 trap wearing a filter's clothes:
+    ``"r" in "colorless"`` is True, so ``--color R`` matched every Colorless card
+    (104 of the 546 library rows it returned; all 1,116 Colorless pool cards) in
+    query.py / pool.py / wishlist.py at once, and the AST gate couldn't see it
+    because a substring ``in`` is not the comprehension idiom it scans for
+    (broad-scan BS-10/BS-18 — check_colors now scans for this shape too).
+
+    A needle with WUBRG letters ("R", "WU", "B/G") matches cards whose identity
+    CONTAINS all of them; a needle with none ("colorless", "c") matches only
+    colorless cards; None/blank means "no filter" and matches everything.
+    """
+    if needle is None or not str(needle).strip():
+        return True
+    want = card_colors(needle)
+    have = card_colors(cell)
+    return want <= have if want else not have
 
 
 def owned_qty(index, name):
@@ -265,9 +331,15 @@ def mana_value(cost):
             total += int(s)
         elif s in ("X", "Y", "Z"):
             continue
+        elif "/" in s and any(p.isdigit() for p in s.split("/")):
+            # A MONOCOLOR hybrid contributes its larger half (CR 202.3f): {2/G} is
+            # mana value 2, not 1. Counting it 1 under-read Wildgrowth Archaic's
+            # {2/G}{2/G} as MV 2 against a real 4, and made a recompute disagree
+            # with the stored Mana Value column — a two-answers split (batch 5).
+            total += max(int(p) for p in s.split("/") if p.isdigit())
         else:
-            # A colored, hybrid, phyrexian or snow symbol is worth 1 regardless of
-            # how many colours it offers ({W/U} is one mana, not two).
+            # A colored, hybrid or phyrexian symbol is worth 1 regardless of how
+            # many colours it offers ({W/U} is one mana, not two; {W/P} is 1).
             total += 1
     return total
 

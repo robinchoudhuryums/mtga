@@ -22,7 +22,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import REPO_ROOT, card_colors  # noqa: E402
+from lib import REPO_ROOT, card_colors, color_matches  # noqa: E402
 
 LIB_CSV = os.path.join(REPO_ROOT, "card-library.csv")
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -164,6 +164,59 @@ def _scan_inline_color_parses():
     return errs
 
 
+def _scan_color_cell_membership():
+    """Static guard for the F1 bug's THIRD shape: a substring/membership test whose
+    CONTAINER is a raw ``Color(s)`` cell.
+
+    The comprehension scan above catches ``{ch … if ch in "WUBRG"}``; it cannot see
+    ``needle in row.get("Color(s)").lower()`` — yet that is the same trap as a filter:
+    ``"r" in "colorless"`` is True, so ``--color R`` matched every Colorless card in
+    query.py / pool.py / wishlist.py simultaneously, with this gate green throughout
+    (broad-scan BS-10/BS-18). Flag any ``in``/``not in`` whose container's source
+    mentions ``Color(s)`` and does not route through ``card_colors`` /
+    ``color_matches``. Testing a set already parsed by ``card_colors()`` is the
+    correct shape and never flagged; ``"Color(s)" in header`` puts the string on the
+    LEFT, not the container, so header checks pass untouched."""
+    def _names_color_cell(node):
+        # Cheap subtree walk for the literal "Color(s)" — the expensive
+        # ast.get_source_segment (O(file) per call) runs ONLY on the rare node
+        # that passes this, not on every `in` test in a 10k-line file: doing it
+        # unconditionally added ~28s to check_all (batch-4 profiling).
+        return any(isinstance(x, ast.Constant) and x.value == "Color(s)"
+                   for x in ast.walk(node))
+
+    errs = []
+    for fn in sorted(f for f in os.listdir(SCRIPTS_DIR) if f.endswith(".py")):
+        if fn == "lib.py":
+            continue
+        path = os.path.join(SCRIPTS_DIR, fn)
+        try:
+            src = open(path, encoding="utf-8").read()
+            if "Color(s)" not in src:
+                continue
+            tree = ast.parse(src)
+        except (OSError, SyntaxError) as e:
+            errs.append(f"color membership scan: could not parse {fn} ({e})")
+            continue
+        for node in ast.walk(tree):
+            if not isinstance(node, ast.Compare):
+                continue
+            if not any(isinstance(o, (ast.In, ast.NotIn)) for o in node.ops):
+                continue
+            for comp in node.comparators:
+                if not _names_color_cell(comp):
+                    continue
+                seg = ast.get_source_segment(src, comp) or ""
+                if "card_colors" not in seg and "color_matches" not in seg:
+                    errs.append(
+                        f"membership test against a raw Color(s) cell in {fn}:"
+                        f"{node.lineno} — a substring `in` re-implements the F1 trap "
+                        f"(\"r\" in \"colorless\" is True; broad-scan BS-10). Parse "
+                        f"both sides with lib.card_colors(), or use "
+                        f"lib.color_matches() for a --color-style filter.")
+    return errs
+
+
 def check():
     """Return a list of error strings (empty == healthy). Never raises."""
     errs = []
@@ -210,9 +263,26 @@ def check():
     except Exception as e:  # pragma: no cover - import/deck guard
         errs.append(f"color call-site check skipped ({type(e).__name__}: {e})")
 
+    # (1b) The FILTER primitive: --color must never substring-match (BS-10).
+    if color_matches("Colorless", "R"):
+        errs.append("color_matches('Colorless', 'R') is True — the --color filter is "
+                    "substring-matching again ('r' in 'colorless', broad-scan BS-10).")
+    if not color_matches("B/R", "R"):
+        errs.append("color_matches('B/R', 'R') is False — a gold card must match a "
+                    "filter on any of its identity colors.")
+    if not color_matches("Colorless", "colorless"):
+        errs.append("color_matches('Colorless', 'colorless') is False — the colorless "
+                    "filter must match colorless cards.")
+    if color_matches("B", "colorless"):
+        errs.append("color_matches('B', 'colorless') is True — the colorless filter "
+                    "must match ONLY colorless cards.")
+
     # (4) STATIC call-site scan: no script may re-implement the naive WUBRG parse
     #     instead of card_colors() (the gap that let F1 regress into wishlist.py/app.py).
     errs += _scan_inline_color_parses()
+
+    # (4b) STATIC membership scan: no `in` test against a raw Color(s) cell (BS-18).
+    errs += _scan_color_cell_membership()
 
     # (5) REGISTRY staleness: every exemption must still name a real call site.
     errs += _scan_stale_allowlist()

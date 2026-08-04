@@ -488,11 +488,25 @@ _SYN_POOL_HEADER = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
 # produces — sorts the mythic to the top of the cut list, failing the assertion. Naming
 # them the other way round would make a tie look correct and hide the regression.
 _SYN_CARDS = [
-    # name,                type,                text, tags,     rarity
-    ("Alpha Mythic Body",  "Creature — Wizard",  "",   "Wizard", "Mythic"),
-    ("Zeta Common Body",   "Creature — Wizard",  "",   "Wizard", "Common"),
-    ("Omega Wizard Pick",  "Creature — Wizard",  "",   "Wizard", "Uncommon"),   # pool-only
-    ("Zeta Offtheme Body", "Creature — Bear",    "",   "Bear",   "Common"),     # pool-only
+    # name,                type,                text, tags,     rarity,    colors, cost (mv)
+    ("Alpha Mythic Body",  "Creature — Wizard",  "",   "Wizard", "Mythic",  "U", ("{2}{U}", 3)),
+    ("Zeta Common Body",   "Creature — Wizard",  "",   "Wizard", "Common",  "U", ("{2}{U}", 3)),
+    ("Omega Wizard Pick",  "Creature — Wizard",  "",   "Wizard", "Uncommon", "U", ("{2}{U}", 3)),  # pool-only
+    ("Zeta Offtheme Body", "Creature — Bear",    "",   "Bear",   "Common",  "U", ("{2}{U}", 3)),   # pool-only
+    # (13d) discriminators for the SIBLING-CASTABILITY parity anchor. Identity and
+    # printed cost deliberately DISAGREE on the first three — the exact input that
+    # separates a cost-based filter (_candidate_castability) from an identity-subset
+    # one. BS-01 was precisely this: the fix landed in suggest_scored and not in
+    # suggest_mana / suggest_interaction, and no gate could see the difference
+    # because no synthetic card discriminated the two filters.
+    ("Hybrid Removal Pick", "Instant", "Destroy target creature.",
+     "", "Uncommon", "U/R", ("{1}{U/R}", 2)),          # castable in mono-U; identity is not ⊆ {U}
+    ("Rainbow Rock Pick", "Artifact", "{T}: Add one mana of any color.",
+     "", "Uncommon", "W/U/B/R/G", ("{3}", 3)),          # castable ANYWHERE; 5-color identity
+    ("Hybrid Wizard Pick", "Creature — Wizard", "",
+     "Wizard", "Uncommon", "U/R", ("{1}{U/R}", 2)),     # suggest_scored's copy of the same case
+    ("Offcolor Zap", "Instant", "Destroy target creature.",
+     "", "Common", "W", ("{W}{W}", 2)),                 # genuinely UNCASTABLE in mono-U
 ]
 _SYN_IN_DECK = ("Alpha Mythic Body", "Zeta Common Body")
 
@@ -504,8 +518,8 @@ def _syn_world(tmp):
     with open(pool, "w", newline="", encoding="utf-8") as fh:
         w = _csv.DictWriter(fh, fieldnames=_SYN_POOL_HEADER)
         w.writeheader()
-        for i, (n, ty, tx, tags, rar) in enumerate(_SYN_CARDS):
-            w.writerow({"Card Name": n, "Type": ty, "Card Text": tx, "Color(s)": "U",
+        for i, (n, ty, tx, tags, rar, cols, _cost) in enumerate(_SYN_CARDS):
+            w.writerow({"Card Name": n, "Type": ty, "Card Text": tx, "Color(s)": cols,
                         "Synergies": tags, "Set Code": "SYN", "Collector #": str(i),
                         "Rarity": rar, "Legalities": "standard", "Released": "2024-01-01"})
     dpath = os.path.join(tmp, "90-synthetic")
@@ -536,16 +550,19 @@ def _wiring_flags():
               "load_rarities", "load_collection", "load_legalities", "_power_seed")}
     try:
         pool, _ = _syn_world(tmp)
-        carddata = {n.lower(): {"name": n, "type": ty, "text": tx, "colors": "U"}
-                    for n, ty, tx, _tg, _r in _SYN_CARDS}
-        cardmeta = {n.lower(): {"colors": {"U"}, "synergies": [t for t in tg.split(";") if t]}
-                    for n, _ty, _tx, tg, _r in _SYN_CARDS}
-        rar = {n.lower(): deck.WC_LETTER[r.lower()] for n, _ty, _tx, _tg, r in _SYN_CARDS}
+        carddata = {n.lower(): {"name": n, "type": ty, "text": tx, "colors": cols}
+                    for n, ty, tx, _tg, _r, cols, _c in _SYN_CARDS}
+        from lib import card_colors as _cc   # the ONE Color(s) parser — never inline
+        cardmeta = {n.lower(): {"colors": _cc(cols),
+                                "synergies": [t for t in tg.split(";") if t]}
+                    for n, _ty, _tx, tg, _r, cols, _c in _SYN_CARDS}
+        rar = {n.lower(): deck.WC_LETTER[r.lower()] for n, _ty, _tx, _tg, r, _co, _c in _SYN_CARDS}
+        mana = {n.lower(): cost for n, _ty, _tx, _tg, _r, _co, cost in _SYN_CARDS}
         deck.POOL_CSV = pool
         deck.DECKS_DIR = tmp
         deck.load_card_data = lambda: dict(carddata)
         deck.load_card_meta = lambda: dict(cardmeta)
-        deck.load_mana = lambda: {n.lower(): ("{2}{U}", 3) for n, *_ in _SYN_CARDS}
+        deck.load_mana = lambda: dict(mana)
         deck.load_rarities = lambda: dict(rar)
         deck.load_legalities = lambda: {n.lower(): {"standard"} for n, *_ in _SYN_CARDS}
         deck.load_collection = lambda: ({}, {}, {n.lower(): 4 for n, *_ in _SYN_CARDS})
@@ -607,6 +624,40 @@ def _wiring_flags():
                             "breadth signals have drifted apart again (audit F-04).")
         except Exception as e:
             errs.append(f"wiring: wishlist breadth helper unavailable ({type(e).__name__}: {e})")
+
+        # (13d) SIBLING CASTABILITY PARITY — the BS-01 gate. `suggest_scored`,
+        #       `suggest_mana` and `suggest_interaction` all answer "is this candidate
+        #       castable here?", and the G-58 fix (read the PRINTED COST via
+        #       _candidate_castability, never color identity) landed in the first and
+        #       skipped the other two for a full cycle: 34 castable interaction cards
+        #       and 25 mana sources were hidden from mono-color decks, on exactly the
+        #       recommenders G-38 routes deficits to — with every gate green, because
+        #       no synthetic card DISCRIMINATED the two filters. These three do:
+        #       identity and printed cost disagree on each (a mono-U-castable {1}{U/R}
+        #       hybrid, a {3} rock with 5-color identity, and their suggest_scored
+        #       twin), plus a genuinely uncastable {W}{W} control. A revert to an
+        #       identity-subset filter in ANY sibling makes its pick vanish and this
+        #       anchor fail.
+        needs = deck.deck_needs(d)
+        ipicks = [p["name"] for p in deck.suggest_interaction(d, needs, fmt="standard")]
+        mpicks = [p["name"] for p in deck.suggest_mana(d, needs, fmt="standard")]
+        if "Hybrid Removal Pick" not in ipicks:
+            errs.append(f"wiring: suggest_interaction dropped a mono-U-castable "
+                        f"{{1}}{{U/R}} hybrid (got {ipicks}) — its castability filter is "
+                        "reading color IDENTITY again, not the printed cost (BS-01/G-58).")
+        if "Offcolor Zap" in ipicks:
+            errs.append("wiring: suggest_interaction surfaced a {W}{W} card to a mono-U "
+                        "deck — the castability filter admitted a genuinely uncastable "
+                        "candidate.")
+        if "Rainbow Rock Pick" not in mpicks:
+            errs.append(f"wiring: suggest_mana dropped a {{3}} rock whose 5-color "
+                        f"identity comes from its mana ability (got {mpicks}) — its "
+                        "castability filter is reading color IDENTITY again (BS-01; the "
+                        "Haunted Screen case, invisible to EVERY deck).")
+        if res.get("ok") and "Hybrid Wizard Pick" not in names:
+            errs.append(f"wiring: suggest_scored dropped the on-theme {{1}}{{U/R}} hybrid "
+                        f"(got {names}) — the cost-based filter regressed in the sibling "
+                        "that was fixed first (G-58).")
     except Exception as e:  # pragma: no cover - harness guard
         errs.append(f"wiring anchors errored ({type(e).__name__}: {e})")
     finally:

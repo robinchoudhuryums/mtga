@@ -60,7 +60,7 @@ import urllib.request
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
-                 mana_value, primary_type, atomic_write)
+                 mana_value, primary_type, atomic_write, alias_front)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -396,10 +396,17 @@ def cmd_list(_args):
         for d in group:
             _, cards = parse_deck_file(d["path"])
             total = sum(q for q, *_ in cards)
-            short = 0
+            # Aggregate per NAME before comparing against owned — cmd_check's rule:
+            # comparing line-by-line, a card split across two lines of 2 with 3
+            # owned read "OK " here while `check` reported it short (broad-scan
+            # batch 5; latent — no current deck splits a card across lines).
+            need = {}
             for q, n, s, c in cards:
+                need[n] = need.get(n, 0) + q
+            short = 0
+            for n, req in need.items():
                 have, found = owned(by_name_qty, n)
-                if not found or have < q:
+                if not found or have < req:
                     short += 1
             status = "OK " if short == 0 else f"{short} short"
             label = d["name"] or os.path.basename(os.path.dirname(d["path"])) or d["id"]
@@ -454,11 +461,7 @@ def load_rarities():
             rar = (r.get("Rarity") or "").strip().lower()
             if n and rar:
                 out.setdefault(n, WC_LETTER.get(rar, "?"))
-    for n, letter in list(out.items()):
-        front = n.split(" // ")[0]
-        if front != n:
-            out.setdefault(front, letter)
-    return out
+    return alias_front(out)
 
 
 def fetch_missing_rarities(names, rarities):
@@ -609,6 +612,10 @@ def _deck_castable_colors(dmeta, cards, mana):
 
 
 BASIC_COLOR = {"plains": "W", "island": "U", "swamp": "B", "mountain": "R", "forest": "G"}
+# Snow-covered basics produce the same color (the source-count sites that guard on
+# `nl in BASICS` never reach these entries today — widening those guards is a
+# follow-on — but any direct BASIC_COLOR lookup resolves them correctly).
+BASIC_COLOR.update({f"snow-covered {n}": c for n, c in list(BASIC_COLOR.items())})
 
 
 def _castability(cards, declared, mana, carddata, exempt=frozenset()):
@@ -902,8 +909,17 @@ def fetch_missing_mana(names, mana):
             faces = card.get("card_faces") or [{}]
             cost = card.get("mana_cost") or faces[0].get("mana_cost", "")
             mv = card.get("cmc", 0)
+            mv = int(mv) if isinstance(mv, (int, float)) else None
+            if cost and " // " in cost:
+                # Scryfall's root cmc for a split/Room card is the COMBINED total;
+                # the analysis convention is the FRONT face's (G-02). load_mana
+                # applies this correction to stored rows — this live-fetch fallback
+                # skipped it, so a Room fetched live booked at MV 10 while its CSV
+                # twin booked at 3, and the curve/consistency read depended on which
+                # path supplied the number (broad-scan BS-13).
+                mv = mana_value(front_face_cost(cost))
             full = card.get("name", "").lower()
-            mana[full] = (cost or "", int(mv) if isinstance(mv, (int, float)) else None)
+            mana[full] = (cost or "", mv)
             mana.setdefault(full.split(" // ")[0], mana[full])
         time.sleep(0.1)
     return mana
@@ -970,7 +986,6 @@ def load_card_data():
                                "colors": r.get("Color(s)") or "",
                                "power": r.get("Power") or "",
                                "toughness": r.get("Toughness") or ""}
-                    data.setdefault(n.split(" // ")[0], data[n])
                 elif not data[n]["power"] and (r.get("Power") or r.get("Toughness")):
                     # P/T is a POOL-only column — card-library.csv has no such fields.
                     # Because the library is read FIRST and wins, every card you OWN
@@ -980,7 +995,11 @@ def load_card_data():
                     # which stay authoritative.
                     data[n]["power"] = r.get("Power") or ""
                     data[n]["toughness"] = r.get("Toughness") or ""
-    return data
+    # The old in-loop setdefault stored the alias the moment a full-name row was
+    # seen, so a REAL card named exactly like a DFC's front, arriving later in CSV
+    # order, could never claim its own key — only its P/T backfilled (the G-63
+    # in-pass shape, broad-scan batch 5).
+    return alias_front(data)
 
 
 def creature_subtypes(type_line):
@@ -1004,7 +1023,11 @@ def load_keywords():
             raw = (r.get("Keywords") or "").strip()
             if n:
                 kw[n] = [k.strip().lower() for k in raw.split(";") if k.strip()]
-    return kw
+    # This was the sixth unaliased name-keyed index over a pool-shaped file: the
+    # mana file keys a DFC under its full `Front // Back` while deck lines store
+    # the front, so a front-named line's keywords read as a clean "none" — deck
+    # 42's Cecil, Dark Knight lost its ⌘ keywords line (G-63; broad-scan BS-12).
+    return alias_front(kw)
 
 
 # Keywords whose real cost is LOWER than the printed mana value (alt/reduced cost).
@@ -2827,6 +2850,29 @@ def cmd_stats(args):
     return 0
 
 
+def _tribe_ref_re(t):
+    """Compiled pattern matching a creature TYPE reference in oracle text — singular
+    OR plural. Lords overwhelmingly template plural ("Ninjas you control get +1/+1",
+    "Elves you control"), and the old `\\b<type>\\b` scan could not see a plural (no
+    word boundary before the 's'), so the payoff list under-reported exactly the
+    count G-59 says decides tribal viability (broad-scan BS-11). English plurals as
+    Magic templates them: -y → -ies (Mercenaries), -f → -ves (Elves, Dwarves,
+    Wolves), sibilants → -es (Foxes, Sphinxes), else +s; a couple of irregulars."""
+    forms = [re.escape(t)]
+    irregular = {"Mouse": "Mice", "Ox": "Oxen"}
+    if t in irregular:
+        forms.append(irregular[t])
+    elif t.endswith("y"):
+        forms.append(re.escape(t[:-1] + "ies"))
+    elif t.endswith("f"):
+        forms.append(re.escape(t[:-1] + "ves"))
+    elif t.endswith(("s", "x", "z", "ch", "sh")):
+        forms.append(re.escape(t + "es"))
+    else:
+        forms.append(re.escape(t + "s"))
+    return re.compile(rf"\b(?:{'|'.join(forms)})\b")
+
+
 def cmd_tribes(args):
     """Creature-subtype breakdown + type-matters synergy scan."""
     d = find_deck(args.id)
@@ -2863,7 +2909,7 @@ def cmd_tribes(args):
         if not d2 or not d2["text"]:
             continue
         refs = {t for t in deck_types
-                if re.search(rf"\b{re.escape(t)}\b", d2["text"])}
+                if _tribe_ref_re(t).search(d2["text"])}
         if refs:
             qual = sum(q2 for q2, n2, s2, c2 in cards
                        if subs_by_card.get(n2, set()) & refs)
@@ -3331,8 +3377,7 @@ def _pool_rotation_index():
                     {x.strip().lower() for x in (r.get("Legalities") or "").split(";") if x.strip()},
                     (r.get("Set Code") or "").strip())
             idx.setdefault(nl, info)
-            idx.setdefault(nl.split(" // ")[0], info)  # DFC front-face fallback
-    return idx, has_released
+    return alias_front(idx), has_released
 
 
 def rotation_sweep(fmt="standard", years=3, within=2):
@@ -3850,8 +3895,16 @@ def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
         # ETB-treasure body or a vanilla creature that merely mentions mana doesn't qualify.
         if not (_produces_mana(txt) and re.search(r":[^.\n]{0,40}\badd\b", txt, re.I)):
             continue
-        if not card_colors(r.get("Color(s)")).issubset(dc):
-            continue  # off-color / uncastable for this deck
+        # Castability from the PRINTED COST, not color identity — the exact filter
+        # suggest_scored uses (G-58): an identity-subset test here hid 25 castable mana
+        # sources, including every `{N}` rock whose identity comes from its mana ability
+        # (Haunted Screen's 5-color identity excluded it from EVERY deck). Worst place
+        # for that bug: per G-38 this recommender IS the fix path for a mana deficit.
+        cast_ok, _ = _candidate_castability(
+            (mana_map.get(nl) or mana_map.get(nl.split(" // ")[0]) or ("", None))[0],
+            card_colors(r.get("Color(s)")), dc)
+        if not cast_ok:
+            continue  # genuinely uncastable for this deck
         if apply_fmt and fmt not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
             continue
         h = owned_of(nl)
@@ -3885,6 +3938,7 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
     'damage = creatures you control' in a go-wide deck) + a small power tiebreak. The scaling is
     FLAGGED with the deck metric so the human confirms — it's never a silent boost."""
     dc = needs["colors"]
+    mana_map = load_mana()
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
         pool = list(csv.DictReader(fh))
     has_leg = bool(pool) and "Legalities" in pool[0]
@@ -3903,7 +3957,15 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
         roles = set(classify_roles(txt))
         if not (roles & _INTERACTION_ROLES):
             continue  # not interaction
-        if not card_colors(r.get("Color(s)")).issubset(dc):
+        # Castability from the PRINTED COST, not color identity — the exact filter
+        # suggest_scored uses (G-58): an identity-subset test here hid 34 castable
+        # Standard interaction cards from mono-color decks (Bullseye, Death Dealer
+        # `{2}{B/R}` — the card G-58 names — read as off-color in `Color(s)`). Worst
+        # place for that bug: per G-38 this IS the fix path for an interaction deficit.
+        cast_ok, _ = _candidate_castability(
+            (mana_map.get(nl) or mana_map.get(nl.split(" // ")[0]) or ("", None))[0],
+            card_colors(r.get("Color(s)")), dc)
+        if not cast_ok:
             continue
         if apply_fmt and fmt not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
             continue
@@ -4494,8 +4556,16 @@ def cmd_consistency(args):
         mv = entry[1] if entry[1] is not None else sum(strict.values())
         turn = max(1, min(int(mv) if mv else 1, CAST_CAP))
         p = cast_probability(N, sources, turn, strict, on_play)
-        # The tightest single-color demand drives the fix recommendation.
-        worst_col = max(strict, key=lambda col: (strict[col], -sources.get(col, 0)))
+        # The BINDING single-color demand drives the fix recommendation — the color
+        # whose per-color hypergeometric term is LOWEST, not the one with the most
+        # pips: a {B}{B}{R} cost off B=16/R=2 is dragged down by the one-pip R
+        # splash, and keying on pip count pointed the → note (and the splash
+        # reframing) at B, prescribing sources for the color that wasn't the
+        # problem. Tiebreak: more pips, then name (a total order, G-54).
+        seen_by_turn = cards_seen(turn, on_play)
+        worst_col = min(strict, key=lambda col: (
+            hypergeom_at_least(N, sources.get(col, 0), seen_by_turn, strict[col]),
+            -strict[col], col))
         need = min_sources_for(N, turn, strict[worst_col], target, on_play)
         rows.append((p, n, turn, strict, worst_col, need))
 
@@ -4589,14 +4659,18 @@ def flex_staleness(path):
     there is nothing to check it against.
     """
     _, cards = parse_deck_file(path)
-    have = {n for _q, n, _s, _c in cards}
+    # Lowercased on both sides — every other name join here is case-insensitive
+    # (audit F4's rule), and this one was exact-case, so a flex line typed in
+    # different case from its deck line read permanently STALE (broad-scan batch 5).
+    have = {n.lower() for _q, n, _s, _c in cards}
     have |= {n.split(" // ")[0] for n in list(have)}
     out = []
     for e in parse_flex(path):
         cut = (e.get("out") or "").strip()
         if not cut:
             continue
-        if cut not in have and cut.split(" // ")[0] not in have:
+        cl = cut.lower()
+        if cl not in have and cl.split(" // ")[0] not in have:
             out.append((cut, (e.get("in") or "").strip(),
                         "the -Out card is no longer in the deck"))
     return out
@@ -4723,7 +4797,12 @@ def _deck_summary(cards, carddata, mana):
 def _cards_after_swap(cards, cut, add, add_printing):
     """Return the cards list with one copy of `cut` replaced by `add`, or None
     if `cut` isn't present. If `add` is already in the deck, its existing line is
-    bumped by one rather than adding a second line for the same card."""
+    bumped by one rather than adding a second line for the same card — matched on
+    `_ms_key` (front face), because `_do_swap` canonicalizes the add to the pool's
+    full `Front // Back` name while the deck may store the front-face spelling: an
+    exact-name match missed that line and split the card's count across two
+    spellings, which `legality_report`'s copy counter then couldn't sum
+    (broad-scan BS-05). The existing line's own spelling is kept."""
     out, removed = [], False
     for (q, n, s, c) in cards:
         if not removed and n.lower() == cut.strip().lower():
@@ -4734,9 +4813,9 @@ def _cards_after_swap(cards, cut, add, add_printing):
         out.append((q, n, s, c))
     if not removed:
         return None
-    add_nl = add.strip().lower()
+    add_key = _ms_key(add)
     for i, (q, n, s, c) in enumerate(out):
-        if n.lower() == add_nl:
+        if _ms_key(n) == add_key:
             out[i] = (q + 1, n, s, c)
             break
     else:
@@ -4801,6 +4880,16 @@ def section_mismatch(lines, idx, add_name, carddata):
     return None
 
 
+def _line_comment(ln):
+    """The trailing inline `# …` comment on a card line, or '' — so a line rewrite
+    (quantity bump/decrement here, `reconcile_lines`) re-attaches it instead of
+    silently deleting a human note. The parser has always ACCEPTED inline comments;
+    every rebuild dropped them (broad-scan batch 5; latent — no current deck file
+    carries one)."""
+    i = ln.find("#")
+    return ("   " + ln[i:].rstrip()) if i >= 0 else ""
+
+
 def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
     """Apply the swap to raw file lines: -1 copy of `cut` (removed if it was a
     singleton, else decremented) with the `add` line taking its slot; optionally
@@ -4820,21 +4909,25 @@ def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
 
     # If `add` is already a line in the deck, bump that line by one instead of
     # writing a second line for the same card (which would split its count).
+    # Matched on `_ms_key` (front face), mirroring `_cards_after_swap`: the add
+    # arrives canonicalized to the pool's full `Front // Back` name while the deck
+    # line may store the front-face spelling (broad-scan BS-05). The existing
+    # line keeps its own spelling — the rebuild below reuses its matched groups.
     ai = next((i for i, ln in enumerate(out)
-               if (_card_line_name(ln) or "").lower() == add.strip().lower()), None)
+               if _ms_key(_card_line_name(ln)) == _ms_key(add)), None)
     if ai is not None:
         am = LINE_RE.match(out[ai].split("#", 1)[0].strip())
         a_indent = out[ai][:len(out[ai]) - len(out[ai].lstrip())]
         a_rebuilt = f"{a_indent}{int(am.group(1)) + 1} {am.group(2).strip()}"
         if am.group(3):
             a_rebuilt += f" ({am.group(3).strip()})" + (f" {am.group(4).strip()}" if am.group(4) else "")
-        out[ai] = a_rebuilt
+        out[ai] = a_rebuilt + _line_comment(out[ai])
         if qty > 1:
             indent = out[ci][:len(out[ci]) - len(out[ci].lstrip())]
             rebuilt = f"{indent}{qty - 1} {m.group(2).strip()}"
             if m.group(3):
                 rebuilt += f" ({m.group(3).strip()})" + (f" {m.group(4).strip()}" if m.group(4) else "")
-            out[ci] = rebuilt
+            out[ci] = rebuilt + _line_comment(out[ci])
         else:
             del out[ci]
     elif qty > 1:
@@ -4842,7 +4935,7 @@ def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
         rebuilt = f"{indent}{qty - 1} {m.group(2).strip()}"
         if m.group(3):
             rebuilt += f" ({m.group(3).strip()})" + (f" {m.group(4).strip()}" if m.group(4) else "")
-        out[ci] = rebuilt
+        out[ci] = rebuilt + _line_comment(out[ci])
         out.insert(ci + 1, add_line)
     else:
         out[ci] = add_line
@@ -5282,19 +5375,24 @@ def cmd_feedback(args):
 def _do_swap(d, cut, add, apply, flex_entry=None):
     """Shared engine for `swap` and `apply-flex`: preview deltas, and on --apply
     perform the edit with a .bak + INV-04 re-check."""
+    add_disp, add_set, add_cn = _printing_of(add)
+    # Write the CANONICAL name, not the front-face shorthand the caller typed.
+    # Resolved BEFORE the self-swap guard, and the guard compares `_ms_key` (front
+    # face): `--cut "Bruce Banner" --add "Bruce Banner // The Incredible Hulk"` is
+    # the same card under two spellings, and the exact-name compare let it through —
+    # whereupon the raw-line edit's cut-rebuild overwrote its own bump of the shared
+    # line, the audit-F2 corruption from a second direction (broad-scan BS-05).
+    add = add_disp
     # A card can't be swapped for itself: it's a no-op, and on --apply the raw-line
     # edit would decrement (or delete) the shared line instead (audit F2). The
     # INV-04 copy-count guard wouldn't catch it, since a 1-for-1 swap preserves the
     # total — so reject it up front rather than silently corrupt the count.
-    if cut.strip().lower() == add.strip().lower():
+    if _ms_key(cut) == _ms_key(add):
         eprint(f"Cut and add are the same card ({cut!r}) — nothing to swap.")
         return 1
     carddata = load_card_data()
     mana = load_mana()
     _, cards = parse_deck_file(d["path"])
-    add_disp, add_set, add_cn = _printing_of(add)
-    # Write the CANONICAL name, not the front-face shorthand the caller typed.
-    add = add_disp
     after = _cards_after_swap(cards, cut, add, (add_set, add_cn))
     if after is None:
         eprint(f"{cut!r} is not in deck {d['id']}. Nothing swapped.")
@@ -5460,8 +5558,7 @@ def load_legalities():
             legs = {x.strip().lower() for x in (r.get("Legalities") or "").split(";")
                     if x.strip()}
             out.setdefault(n, legs)
-            out.setdefault(n.split(" // ")[0], legs)
-    return out
+    return alias_front(out)
 
 
 def legality_report(meta, cards, fmt, leg, carddata=None):
@@ -5479,16 +5576,28 @@ def legality_report(meta, cards, fmt, leg, carddata=None):
         identity must sit within the commander's (Brawl's defining rule).
       • Alchemy: a card that's Standard-legal but not Alchemy-legal is REBALANCED, not
         illegal — Arena plays its A- version — so it's a note, not a problem."""
+    # Copy counts key on `_ms_key` (front face), like every other name-facing join
+    # (see `_ms_key`'s docstring): the roster live-mixes `Front // Back` and front-only
+    # spellings of the same card, and an exact-name key saw them as two different cards
+    # — 4 copies under one spelling plus 1 under the other passed the 4-copy limit, and
+    # two "singletons" passed Brawl (broad-scan BS-06). The first-seen spelling is kept
+    # for display; `leg` / `carddata` lookups below already alias the front face.
     counts, order, disp, total = {}, [], {}, 0
     for q, n, s, c in cards:
         total += q
         nl = n.lower()
-        if nl in BASICS:
+        # Snow-covered basics are BASIC lands (CR 205.4c): exempt from the copy
+        # limit like their plain siblings, which this loop flagged at 5+ copies
+        # (broad-scan batch 5). Deliberately NOT added to BASICS itself — that set
+        # also means "unlimited in the Arena collection", and snow basics are real
+        # craftable cards there, so the ownership sites must keep counting them.
+        if nl in BASICS or nl.startswith("snow-covered "):
             continue
-        if nl not in counts:
-            order.append(nl)
-            disp[nl] = n
-        counts[nl] = counts.get(nl, 0) + q
+        key = _ms_key(n)
+        if key not in counts:
+            order.append(key)
+            disp[key] = n
+        counts[key] = counts.get(key, 0) + q
 
     singleton = fmt in SINGLETON_FORMATS
     copy_limit = 1 if singleton else 4
@@ -5548,7 +5657,9 @@ def legality_report(meta, cards, fmt, leg, carddata=None):
                     problems.append(f"commander {cmd_name}: must be a legendary creature or "
                                     f"planeswalker (is {ctype or '?'})")
                 cident = card_colors(ccd.get("colors", ""))
-                if cnl not in counts:
+                # Presence keys on `_ms_key` too: a `#: commander:` naming the front
+                # face against a full-name deck line is the same card (BS-06).
+                if _ms_key(cmd_name) not in counts:
                     notes.append(f"commander {cmd_name} isn't listed in the deck — add it "
                                  f"(it counts as one of the {min_size})")
             if cident is not None:
@@ -5618,7 +5729,11 @@ def cmd_legal(args):
         shown = ", ".join(unknown[:8]) + ("…" if len(unknown) > 8 else "")
         print(f"\n{len(unknown)} card(s) not in the pool — {fmt} legality unverified "
               f"(WIP / older printings): {shown}")
-    return 1 if problems else 0
+    # A nonexistent set code is a HARD failure per G-65 and prints a ✗ above — it
+    # must fail the exit code too, not just the page: `legal` exited 0 on it, and
+    # preflight's construction-PASS inherited the blind spot, rescued only by the
+    # separate check_all leg (broad-scan batch 5). `unverified` stays soft.
+    return 1 if (problems or bad_set) else 0
 
 
 # --- cut candidates: the companion to `suggest` (adds) ---------------------- #
@@ -6052,6 +6167,34 @@ def cmd_verify(args):
 _DECK_MARKER_RE = re.compile(r"^deck\s*$", re.I)
 
 
+def strip_boards(block):
+    """(maindeck_lines, board_card_count) for one pasted block: drop the lines under a
+    `Sideboard` / `Maybeboard` heading, counting the card COPIES dropped.
+
+    `import_arena.parse` skips section HEADINGS but keeps their card lines — the right
+    call for an ownership import (a sideboard card is owned) and wrong for `sync`, the
+    WRITE half: stored decks are maindeck-only, so an in-sync deck exported with a
+    7-card sideboard read "drifted: 7 added" and `--apply` wrote those cards into the
+    60. `verify`, the READ half, had warned about exactly this since it shipped; the
+    write half didn't even detect it (broad-scan BS-07). Commander / Companion
+    sections are KEPT — a stored Brawl deck lists its commander among the 100."""
+    from import_arena import SECTIONS, LINE_RE as _ALINE
+    keep, dropped_n, skipping = [], 0, False
+    for ln in block:
+        s = ln.strip().lower()
+        if s in SECTIONS:
+            skipping = s in ("sideboard", "maybeboard")
+            keep.append(ln)               # headings are skipped by parse either way
+            continue
+        if skipping:
+            m = _ALINE.match(ln.strip())
+            if m:
+                dropped_n += int(m.group(1))
+            continue
+        keep.append(ln)
+    return keep, dropped_n
+
+
 def split_paste(text):
     """An Arena paste containing one or MANY decks -> a list of line-blocks. Arena
     exports start each deck with a bare `Deck` line; text before the first one is
@@ -6149,7 +6292,7 @@ def reconcile_lines(lines, target, printings):
         rebuilt = f"{indent}{want} {m.group(2).strip()}"
         if m.group(3):
             rebuilt += f" ({m.group(3).strip()})" + (f" {m.group(4).strip()}" if m.group(4) else "")
-        out.append(rebuilt)
+        out.append(rebuilt + _line_comment(ln))
         last_card = len(out) - 1
     new = []
     for nl, q in remaining.items():
@@ -6184,11 +6327,20 @@ def cmd_sync(args):
         eprint("No deck blocks found in the paste.")
         return 1
 
-    decks = [(d, _multiset(parse_deck_file(d["path"])[1])) for d in discover_decks()]
+    # Roster only (BS-14): an `example`/`retired` deck must not be a sync match
+    # target — a low-confidence paste match could rewrite a retired list. A
+    # non-roster deck can still be verified/edited directly by id.
+    decks = [(d, _multiset(parse_deck_file(d["path"])[1])) for d in roster_decks()]
     printings = _printing_index()
-    results, rc = [], 0
+    results, rc, unmatched = [], 0, 0
     print(f"Sync — {len(blocks)} pasted deck block(s) vs {len(decks)} stored decks\n")
     for i, block in enumerate(blocks, 1):
+        # Maindeck only: stored decks carry no sideboard, so board cards must not
+        # read as drift — or be written into the file on --apply (BS-07).
+        block, board_n = strip_boards(block)
+        if board_n:
+            print(f"  (block {i}: ignoring {board_n} sideboard/maybeboard card(s) — "
+                  "stored decks are maindeck-only)")
         entries, warnings = parse_arena("\n".join(block))
         for w in warnings:
             eprint(f"WARN:  block {i}: {w}")
@@ -6200,6 +6352,7 @@ def cmd_sync(args):
             n = sum(q for q, *_ in entries)
             print(f"  ? block {i}: {n} cards, {m['uniq']} unique — no close stored deck "
                   "(a new deck? add it with /add-deck).")
+            unmatched += 1
             rc = 1
             continue
         d = m["deck"]
@@ -6222,10 +6375,12 @@ def cmd_sync(args):
         print(f"\n(dry run — {len(results)} deck file(s) would be rewritten to match the "
               "paste; pass --apply to write, each with a .bak)")
         return rc
+    failures = 0
     for d, pasted, m in results:
         if m.get("lowconf") and not getattr(args, "force", False):
             eprint(f"  ✗ #{d['id']}: skipped — low-confidence match (#{m['runner_up']['id']} "
                    "is nearly as close). Re-paste that deck alone, or pass --force.")
+            failures += 1
             continue
         with open(d["path"], encoding="utf-8") as fh:
             lines = fh.read().split("\n")
@@ -6235,11 +6390,17 @@ def cmd_sync(args):
                                     sum(q for _disp, q in pasted.values()))
         except ValueError as e:
             eprint(f"  ✗ #{d['id']}: not saved — {e}")
+            failures += 1
             continue
         print(f"  ✓ #{d['id']}: wrote {os.path.relpath(d['path'], REPO_ROOT)} "
               f"(backup: {os.path.basename(bak)})")
     print("\nRe-check with `deck.py check <id>` / `deck.py preflight <id>`.")
-    return rc
+    # Drift DETECTED is the right non-zero for the dry run ("differences exist") and
+    # the wrong one for the write half: a fully successful --apply repair exited 1,
+    # so a scripted caller read a clean sync as failure (broad-scan batch 5). After
+    # --apply, non-zero means something still needs attention: an unmatched block,
+    # a low-confidence skip, or a failed write.
+    return 1 if (unmatched or failures) else 0
 
 
 def _interaction_count(cards, carddata):
@@ -6843,7 +7004,9 @@ def cmd_similar(args):
     anames = {n for _q, n, _s, _c in cards if n.lower() not in BASICS
               and "Land" not in _primary_type((carddata.get(n.lower()) or {}).get("type") or "")}
     rows = []
-    for dd in discover_decks():
+    # Roster only (BS-14): distinctness against a retired/example list is noise —
+    # is_roster_deck's own contract scopes "cross-deck reuse" to the roster.
+    for dd in roster_decks():
         if dd["id"].lower() == d["id"].lower():
             continue
         m2, c2 = parse_deck_file(dd["path"])
@@ -7482,7 +7645,10 @@ def cmd_suggest_homes(args):
     _drestrict = doubler_restriction(cd.get("text") or "") if _daxis else None
     results = []
     skipped_illegal = 0
-    for dd in discover_decks():
+    # Roster only (BS-14): a retired/example deck must not be rated a KEY home —
+    # `suggest`'s Decks column already excludes them via _deck_fingerprints, and the
+    # two surfaces answering "where does this card fit" must agree on the universe.
+    for dd in roster_decks():
         dmeta, cards = parse_deck_file(dd["path"])
         castable = _deck_castable_colors(dmeta, cards, mana)
         if not ccols.issubset(castable):

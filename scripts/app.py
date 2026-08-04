@@ -37,6 +37,7 @@ import contextlib
 import csv
 import datetime
 import functools
+import html
 import io
 import json
 import os
@@ -217,8 +218,10 @@ def index():
 def _backup_path(target):
     """A unique timestamped `.bak` path for `target` — delegates to the shared
     `lib.backup_path` so every backup in the toolkit uses one collision-free,
-    sort-safe naming scheme (audit F22). `revert` selects the newest by mtime, so it
-    no longer depends on lexical order alone."""
+    sort-safe naming scheme (audit F22). `revert` selects the newest via
+    `lib.latest_backup`, which keys on the CREATION stamp in the NAME — never on
+    mtime, which `shutil.copy2` copies from the source and which broke a
+    revert→save→revert sequence (broad-scan F-04)."""
     return backup_path(target)
 
 
@@ -817,7 +820,11 @@ def deck_new():
 def deck_editor(deck_id):
     d = deckmod.find_deck(deck_id)
     if not d:
-        return (f"No deck with id {deck_id!r}. <a href='/decks'>← Decks</a>", 404)
+        # Escape the user-controlled path segment: reflected unescaped, a crafted
+        # /deck/<script…> link executed same-origin — defeating the same-origin/
+        # rebinding guard, since injected JS can POST /api/save (broad-scan BS-09).
+        return (f"No deck with id '{html.escape(deck_id)}'. "
+                "<a href='/decks'>← Decks</a>", 404)
     return _render_template("deck.html", {"__DATA__": _deck_payload(d)})
 
 

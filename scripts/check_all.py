@@ -280,9 +280,14 @@ def main():
     # because the pool keys ONE printing per card, so a legitimate alternate art
     # lands here too — summarised, since 27 sit on the roster today.
     if deck_warns:
+        # NAMED, not just counted: a bare "27" was delta-blind — a new bad printing
+        # moved a standing number nobody reads, the exact "standing warning is a
+        # decision nobody has made yet" shape K-01 documents (broad-scan batch 4).
+        ex = "; ".join(w.split(" is not ")[0] for w in deck_warns[:3])
         soft.append(f"unverified printing(s): {len(deck_warns)} deck line(s) name a "
-                    "(SET) COLLECTOR# this repo does not hold — run "
-                    "`deck.py legal <id>` on the deck to see them")
+                    f"(SET) COLLECTOR# this repo does not hold — {ex}"
+                    + ("; …" if len(deck_warns) > 3 else "")
+                    + " (run `deck.py legal <id>` for the per-deck detail)")
     try:
         import wishlist as wl
         for _sev, name, msg in wl._audit_target_issues(color_only=True):
@@ -326,6 +331,16 @@ def main():
                         + (", …" if len(rflags) > 4 else "")
                         + ") — read the text, then fix the pattern in deck._ROLE_PATTERNS "
                           "or run check_roles.py --update-baseline")
+        # BS-19: the baseline's pruning half. An entry a pattern fix un-zeroed stays
+        # acknowledged forever, so a later regression re-zeroing that card would be
+        # silent for good — surface stale entries instead of trusting someone to
+        # diff role_baseline.txt.
+        rstale = cr.stale_baseline_entries()
+        if rstale:
+            ex = ", ".join(n for n, _w in rstale[:4])
+            soft.append(f"role baseline: {len(rstale)} STALE entr(ies) masking nothing "
+                        f"(e.g. {ex}" + (", …" if len(rstale) > 4 else "")
+                        + ") — review `check_roles.py`, then --update-baseline to prune")
     except Exception as e:
         soft.append(f"role coverage check skipped ({e})")
 
@@ -411,8 +426,21 @@ def main():
     for line in deck_info:
         print(line)
     if soft:
+        # A soft RADAR that crashed degrades to one "skipped" line forever — and a
+        # radar that cannot run is a gate that never fires, visible only to someone
+        # reading this section closely. Promote crash-skips above the ordinary
+        # warnings with their own count, so a permanently-broken radar reads as a
+        # problem, not as quiet (broad-scan batch 4; stateless on purpose — no
+        # cross-run counter, just impossible to mistake for health).
+        down = [s for s in soft if " skipped (" in s]
+        rest = [s for s in soft if " skipped (" not in s]
         eprint("\nSOFT WARNINGS (not gating):")
-        for s in soft:
+        if down:
+            eprint(f"  ⚠ {len(down)} RADAR(S) DID NOT RUN — the quiet sections they "
+                   "cover are unverified, not healthy:")
+            for s in down:
+                eprint(f"    ⚠ {s}")
+        for s in rest:
             eprint(f"  ~ {s}")
     if hard:
         eprint("\nHARD FAILURES:")

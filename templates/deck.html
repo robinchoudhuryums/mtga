@@ -133,13 +133,25 @@
     return n;
   }
 
+  // Ownership lookup mirrors lib.owned_qty: the library keys a double-faced card
+  // under its FRONT face while a deck line may carry the full "Front // Back" name,
+  // so look up the full name then fall back to the front — a raw `name in OWNED`
+  // read King T'Challa // Black Panther as "not owned" and counted deck 43
+  // "1 missing" while /decks and `deck.py check` called it buildable (BS-08; the
+  // G-63 class in a serialized index no Python gate can scan).
+  function ownedOf(name) {
+    if (name in OWNED) return OWNED[name];
+    const front = name.split(' // ')[0].trim();
+    return front && front in OWNED ? OWNED[front] : undefined;
+  }
+
   function cardStatus(t) {
     const name = (t.name || '').trim().toLowerCase();
     if (!name) return {cls:'', txt:''};
     const need = needFor(name);
     if (BASICS.has(name)) return {cls:'ok', txt:'basic ∞'};
-    if (!(name in OWNED)) return {cls:'missing', txt:'not owned'};
-    const have = OWNED[name];
+    const have = ownedOf(name);
+    if (have === undefined) return {cls:'missing', txt:'not owned'};
     return have < need ? {cls:'short', txt:`have ${have} / ${need}`}
                        : {cls:'ok', txt:`have ${have} / ${need}`};
   }
@@ -277,12 +289,17 @@
     const out = document.getElementById('out');
     if (cache[kind] !== undefined) { out.textContent = cache[kind]; return; }
     out.textContent = 'Running…';
+    // Only a SUCCESS is cached: caching a failure made it permanent — a transient
+    // fetch error (server restarting, network blip) could never be retried by
+    // clicking the tab again, on the one surface you'd re-check (BS batch-3).
+    let text;
     try {
       const res = await fetch(`/api/deck/analysis/${encodeURIComponent(DATA.id)}/${kind}`);
       const d = await res.json();
-      cache[kind] = d.ok ? d.text : ('error: ' + (d.error||'unknown'));
-    } catch (err) { cache[kind] = 'error: ' + err.message; }
-    if (curKind === kind) out.textContent = cache[kind];
+      if (d.ok) { cache[kind] = d.text; text = d.text; }
+      else text = 'error: ' + (d.error||'unknown') + ' — click the tab to retry';
+    } catch (err) { text = 'error: ' + err.message + ' — click the tab to retry'; }
+    if (curKind === kind) out.textContent = text;
   }
   function renderAnalysisNote(dirty) {
     const n = document.getElementById('anote'); if (!n) return;

@@ -18,6 +18,9 @@ credentials*.json
 
 # Timestamped CSV snapshots written by sheets_sync.py pull before it overwrites
 *.bak
+# A temp file lib.atomic_write strands only if the process is killed between
+# mkstemp and os.replace — never valid content, never commit it
+*.tmp
 
 # Personal Claude Code settings (permissions etc.) — not shared
 .claude/settings.local.json

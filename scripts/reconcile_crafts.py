@@ -28,7 +28,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import REPO_ROOT, eprint, atomic_write  # noqa: E402
+from lib import REPO_ROOT, eprint, atomic_write, alias_front  # noqa: E402
 
 LIB = os.path.join(REPO_ROOT, "card-library.csv")
 MANA = os.path.join(REPO_ROOT, "card-mana.csv")
@@ -87,6 +87,11 @@ def reconcile(export_lines, apply=False, set_exact=False):
     for r in _read(POOL):
         pool_by_sc[(r["Set Code"].upper(), str(r["Collector #"]))] = r
         pool_by_name[r["Card Name"].lower()] = r
+    # The pool keys a DFC under its full `Front // Back` while an Arena export
+    # names the FRONT, so the un-aliased index reported an owned DFC "NOT FOUND in
+    # pool (skipped)" whenever the exact (set, collector) lookup missed; the old
+    # third fallback was provably dead code (broad-scan BS-16).
+    alias_front(pool_by_name)
 
     lib = _read(LIB)
     lib_keys = {(r["Card Name"].lower(), r["Set Code"].upper(), str(r["Collector #"])) for r in lib}
@@ -109,8 +114,9 @@ def reconcile(export_lines, apply=False, set_exact=False):
             continue
         qty, name, setc, coll = int(m.group(1)), m.group(2).strip(), m.group(3).strip(), m.group(4).strip()
         exact = pool_by_sc.get((setc.upper(), coll))
-        pr = exact or pool_by_name.get(name.lower()) \
-            or pool_by_name.get((name + " // ").split(" // ")[0].lower())
+        # The name index aliases DFC fronts (above), so one lookup covers both a
+        # full-name and a front-name paste.
+        pr = exact or pool_by_name.get(name.lower())
         if not pr:
             notfound.append(f"{name} ({setc}) {coll}")
             continue

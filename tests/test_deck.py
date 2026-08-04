@@ -67,6 +67,7 @@ class TestSplitCostMana:
         assert lib.mana_value("{5}{W}{B}") == 7
         assert lib.mana_value("{W/U}{2}") == 3       # a hybrid symbol is ONE mana
         assert lib.mana_value("{W/P}") == 1
+        assert lib.mana_value("{2/G}{2/G}") == 4     # monocolor hybrid: larger half (CR 202.3f)
         assert lib.mana_value("") == 0
 
     def test_x_counts_zero(self):

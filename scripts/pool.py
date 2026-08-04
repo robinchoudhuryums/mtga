@@ -30,8 +30,16 @@ import os
 import sys
 import textwrap
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty
-from deck import classify_roles   # functional-role classifier (removal/ramp/draw/…)
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty, color_matches
+
+
+def classify_roles(text):
+    """Lazy proxy for `deck.classify_roles` — imported on FIRST USE, not at module
+    load: the top-level `from deck import …` coupled every pool query (--owned,
+    --text, --color) to deck.py's import health, so a deck.py syntax error broke
+    searches that never touch --role (broad-scan batch 5)."""
+    import deck
+    return deck.classify_roles(text)
 
 # Friendly --role aliases → the canonical labels classify_roles emits, so you can survey
 # the collection by what a card DOES (the axis you deckbuild on), not just its synergy tags.
@@ -113,8 +121,12 @@ def matches(card, args, owned):
         return needle is None or needle.lower() in (card.get(col) or "").lower()
 
     if not (has("Card Name", args.name) and has("Type", args.type)
-            and has("Card Text", args.text) and has("Color(s)", args.color)
+            and has("Card Text", args.text)
             and has("Synergies", args.synergy)):
+        return False
+    # Identity is SET-matched via lib.color_matches, never substring — "r" is in
+    # "colorless", so the substring test swept in all 1,116 Colorless cards (BS-10).
+    if not color_matches(card.get("Color(s)"), args.color):
         return False
     if args.rarity:
         rarities = [r.strip().lower() for r in args.rarity.split(",")]

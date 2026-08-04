@@ -6,7 +6,7 @@ VENV  := .venv
 PYBIN := $(VENV)/bin/python
 ARGS  ?=
 
-.PHONY: help app check test-units verify refresh clean-venv
+.PHONY: help app check test-units verify refresh dashboard clean-venv
 
 help:
 	@echo "make app             set up a local venv, install Flask, and launch the editor"
@@ -16,6 +16,7 @@ help:
 	@echo "make verify          BOTH gates: integrity + unit tests (run before committing)"
 	@echo "make refresh         rebuild derived data in dependency order (incremental; needs Scryfall)"
 	@echo "make refresh REFETCH=1   same, but re-price every card from scratch (slow)"
+	@echo "make dashboard       rebuild the committed dashboard.html (offline, ~2 min; pages.yml also rebuilds it on every push to main)"
 	@echo "make clean-venv      remove the local .venv"
 
 # Launch the editor. Depends on the venv sentinel so deps install on first run
@@ -93,6 +94,16 @@ refresh:
 	python3 scripts/build_gallery.py
 	@echo "==> 6/6 check_all.py         (invariants)"
 	python3 scripts/check_all.py
+	@echo "NOTE: dashboard.html is NOT rebuilt by refresh (it costs ~2 min of full deck"
+	@echo "      analysis and pages.yml rebuilds it on every push to main anyway)."
+	@echo "      Run 'make dashboard' if you want the committed copy current locally."
+
+# Deliberately OUTSIDE refresh: a no-change refresh is ~13s and this step alone is
+# ~1m45s of roster-wide deck analysis, for an artifact the deploy workflow
+# (.github/workflows/pages.yml) rebuilds from data on every push to main. The
+# committed copy is a convenience snapshot; this is its one-command rebuild.
+dashboard:
+	python3 scripts/build_dashboard.py
 
 clean-venv:
 	rm -rf $(VENV)

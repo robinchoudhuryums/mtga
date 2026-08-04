@@ -18,6 +18,26 @@ class TestImportArenaParse:
         assert (1, "Shock", "M19", "156") in entries
         assert (2, "Negate", "M19", "69") in entries
 
+    def test_deck_plus_sideboard_copies_SUM(self):
+        """Deck and Sideboard copies draw from the collection simultaneously: a Bo3
+        export with 2+2 Duress proves 4 owned — max() recorded 2 (batch 5)."""
+        entries, _ = import_arena.parse(
+            "Deck\n2 Duress (M21) 96\nSideboard\n2 Duress (M21) 96")
+        assert entries == [(4, "Duress", "M21", "96")]
+
+    def test_two_deck_blocks_take_the_MAX_not_the_sum(self):
+        """Decks share one collection: 2 Duress in each of two decks proves 2, not 4."""
+        entries, _ = import_arena.parse(
+            "Deck\n2 Duress (M21) 96\n\nDeck\n2 Duress (M21) 96")
+        assert entries == [(2, "Duress", "M21", "96")]
+
+    def test_companion_line_does_not_double_its_sideboard_row(self):
+        entries, _ = import_arena.parse(
+            "Companion\n1 Yorion, Sky Nomad (IKO) 232\n"
+            "Deck\n4 Shock (M19) 156\n"
+            "Sideboard\n1 Yorion, Sky Nomad (IKO) 232")
+        assert (1, "Yorion, Sky Nomad", "IKO", "232") in entries
+
     def test_name_without_set(self):
         entries, _ = import_arena.parse("3 Forest")
         assert entries == [(3, "Forest", "", "")]
@@ -437,6 +457,28 @@ class TestCollectionParse:
         entries, warn = ic.parse_export("Name,Count\nShock,\nBolt,two\n")
         assert entries == []
         assert len(warn) == 2 and "Shock" in warn[0]
+
+    def test_foil_and_nonfoil_rows_of_one_printing_SUM(self):
+        """Trackers export foil and non-foil as separate rows sharing (name, set,
+        collector), told apart only by a finish column. 2 foil + 2 non-foil is 4
+        Arena copies; the finish-blind path collapsed them on max to 2 — and this
+        is the one tool that can LOWER a count (broad-scan BS-15)."""
+        entries, _ = ic.parse_export(
+            "Name,Set,Number,Quantity,Finish\n"
+            "Shock,M21,159,2,normal\nShock,M21,159,2,foil\n")
+        assert entries == [(4, "Shock", "M21", "159")]
+
+    def test_a_repeated_row_with_the_SAME_finish_still_takes_max(self):
+        """One holding stated twice is not two holdings — max within a finish."""
+        entries, _ = ic.parse_export(
+            "Name,Set,Number,Quantity,Finish\n"
+            "Shock,M21,159,2,foil\nShock,M21,159,2,foil\n")
+        assert entries == [(2, "Shock", "M21", "159")]
+
+    def test_no_finish_column_keeps_the_old_max_semantics(self):
+        entries, _ = ic.parse_export(
+            "Name,Set,Number,Quantity\nShock,M21,159,2\nShock,M21,159,3\n")
+        assert entries == [(3, "Shock", "M21", "159")]
 
     def test_basics_are_skipped(self):
         entries, _ = ic.parse_export("Name,Count\nForest,40\nShock,4\n")

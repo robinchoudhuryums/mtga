@@ -17,8 +17,17 @@ Setup (one-time):
 
 Usage:
     python3 scripts/sheets_sync.py push
-    python3 scripts/sheets_sync.py pull
+    python3 scripts/sheets_sync.py pull            # DRY RUN — reports what it would write
+    python3 scripts/sheets_sync.py pull --apply    # actually overwrite card-library.csv
     python3 scripts/sheets_sync.py push --worksheet "Library" --dry-run
+
+`pull` is dry-run by default and refuses a >50% row-count shrink without
+--allow-shrink: it is the one authoritative overwrite of the whole inventory, and
+a header-only worksheet (a cleared sheet, a partially-loaded get_all_values(), a
+wrong-but-existing tab) passes both the header check and validate() — zero rows is
+a "valid" library. Every sibling overwrite path (import_collection, build_pool,
+build_mana) already carries a shrink guard; this one gets the same, plus the
+dry-run default every other destructive tool here uses (broad-scan BS-03).
 
 The CSV itself is the interchange format, so even without this script you can
 always File > Import (or download as CSV) in Google Sheets manually — this just
@@ -136,7 +145,10 @@ def push(worksheet_name, dry_run):
     return 0
 
 
-def pull(worksheet_name, dry_run):
+_SHRINK_FLOOR = 0.5   # same floor as import_collection: refuse a >50% shrink
+
+
+def pull(worksheet_name, apply=False, allow_shrink=False):
     ws = _worksheet(worksheet_name)
     grid = ws.get_all_values()
     if not grid:
@@ -151,9 +163,23 @@ def pull(worksheet_name, dry_run):
         )
         return 1
     rows = [dict(zip(HEADER, row + [""] * (len(HEADER) - len(row)))) for row in data]
-    if dry_run:
-        print(f"[dry-run] would write {len(rows)} row(s) to {DEFAULT_CSV}. "
-              f"Nothing written.")
+    # Shrink guard (BS-03): validate() passes a header-only, ZERO-row library, so a
+    # cleared / wrong / partially-loaded worksheet could replace the whole inventory
+    # with nothing. Same floor and escape hatch as import_collection.
+    try:
+        _, local = load_rows(DEFAULT_CSV)
+    except FileNotFoundError:
+        local = []
+    if local and len(rows) < len(local) * _SHRINK_FLOOR and not allow_shrink:
+        eprint(f"ERROR: the worksheet holds {len(rows)} row(s) against "
+               f"{len(local)} in {os.path.basename(DEFAULT_CSV)} — a "
+               f">{int((1 - _SHRINK_FLOOR) * 100)}% shrink. A cleared sheet or a "
+               f"wrong tab looks exactly like this. Pass --allow-shrink if the "
+               f"shrink is real. Nothing written.")
+        return 1
+    if not apply:
+        print(f"[dry-run] would write {len(rows)} row(s) to {DEFAULT_CSV} "
+              f"(replacing {len(local)}). Nothing written — pass --apply to write.")
         return 0
     # pull() overwrites the canonical inventory in place, so the incoming data
     # must clear the SAME validate() gate every other write path honors — a sheet
@@ -200,10 +226,16 @@ def main():
     ap.add_argument("direction", choices=["push", "pull"], help="push local->sheet or pull sheet->local")
     ap.add_argument("--worksheet", default="card-library", help="worksheet/tab name")
     ap.add_argument("--dry-run", action="store_true", help="report only, transfer nothing")
+    ap.add_argument("--apply", action="store_true",
+                    help="pull only: actually overwrite card-library.csv "
+                         "(pull is a DRY RUN by default; push still writes unless --dry-run)")
+    ap.add_argument("--allow-shrink", action="store_true",
+                    help="pull only: permit replacing the library with <50%% of its rows")
     args = ap.parse_args()
     if args.direction == "push":
         return push(args.worksheet, args.dry_run)
-    return pull(args.worksheet, args.dry_run)
+    return pull(args.worksheet, apply=args.apply and not args.dry_run,
+                allow_shrink=args.allow_shrink)
 
 
 if __name__ == "__main__":

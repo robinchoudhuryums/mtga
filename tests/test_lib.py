@@ -29,6 +29,31 @@ class TestCardColors:
         assert lib.card_colors("") == set()
         assert lib.card_colors(None) == set()
 
+
+class TestColorMatches:
+    """The --color FILTER primitive (broad-scan BS-10). Its predecessor was a raw
+    substring test in query/pool/wishlist, so `--color R` matched every Colorless
+    card ("r" in "colorless" — the F1 trap as a filter)."""
+
+    def test_colorless_card_does_not_match_R(self):
+        assert not lib.color_matches("Colorless", "R")
+
+    def test_gold_card_matches_either_color(self):
+        assert lib.color_matches("B/R", "R")
+        assert lib.color_matches("B/R", "B")
+
+    def test_multi_letter_needle_requires_all(self):
+        assert lib.color_matches("B/R", "BR")
+        assert not lib.color_matches("B/R", "BRW")
+
+    def test_colorless_needle_matches_only_colorless(self):
+        assert lib.color_matches("Colorless", "colorless")
+        assert not lib.color_matches("B", "colorless")
+
+    def test_no_needle_is_no_filter(self):
+        assert lib.color_matches("B", None)
+        assert lib.color_matches("Colorless", "")
+
     def test_colorless_is_subset_of_everything(self):
         # A colorless identity must be castable in every deck.
         assert lib.card_colors("Colorless").issubset(set())

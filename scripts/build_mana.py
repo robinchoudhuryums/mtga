@@ -116,12 +116,16 @@ def fetch(names):
     # than the entire rest of the build. Batched, the same set is ten requests.
     for i in range(0, len(missing), 75):
         chunk = missing[i:i + 75]
-        try:
-            data = scryfall.post_collection([n.split(" // ")[0] for n in chunk])
-        except ScryfallUnavailable as e:
-            eprint(f"WARN:  Scryfall went unreachable during front-face lookups ({e}); "
-                   f"{len(missing) - i} name(s) left blank.")
-            break
+        # ScryfallUnavailable PROPAGATES here, exactly like the primary batch loop
+        # above — main() turns it into a clean abort with card-mana.csv untouched.
+        # This loop used to catch-and-break instead, and the build then WROTE the
+        # file with blanks for every name past the break: harmless in incremental
+        # mode (those names had no reusable rows anyway), but under --refetch
+        # `reuse` is empty, so a mid-run outage here replaced ~700 previously-good
+        # split/Room/DFC costs with blanks — G-14's "partial-blank file over good
+        # data", from the one loop that had its own catch (broad-scan follow-on to
+        # BS-13's family).
+        data = scryfall.post_collection([n.split(" // ")[0] for n in chunk])
         asked = {n.split(" // ")[0].lower(): n for n in chunk}
         for card in data.get("data", []):
             # Accept ONLY when the resolved card IS the one asked for. A bare front name

@@ -6,6 +6,173 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan + top-5 fixes (2026-08-04)
+
+A full `/broad-scan` (three stages, seven parallel deep-read passes, top findings
+hand-verified) followed by `/broad-implement BS-01, BS-02, BS-05 - BS-07`. The scan's
+full report lives in the session; the implemented slice and its verification are in
+`.cycle/blocks/2026-08-broad-scan-top5-broad-implement.md`.
+
+**Implemented (scripts/deck.py, scripts/card.py):** BS-01 the needs recommenders
+(`suggest --ramp/--interaction`) now filter by PRINTED COST via `_candidate_castability`
+like `suggest_scored` — the G-58 bug had been re-introduced on the exact path G-38
+routes deficits to (34 interaction cards + 25 mana sources were hidden from mono-color
+decks). BS-02 `card.py` exactness now outranks source (`card.py "Mimic"` no longer
+shows Gogo) — including a second shadow inside field resolution. BS-05/BS-06 the
+swap bump-match, self-swap guard, and `legality_report` copy/commander counting all
+key on `_ms_key` (front face), closing the seam where a DFC swap could split a card
+across two spellings and the copy limit couldn't sum them. BS-07 `sync` now strips
+Sideboard/Maybeboard per pasted block (with a visible note) instead of writing board
+cards into the maindeck.
+
+**Verification:** check_all green (same 2 pre-existing soft warnings), 861/861 pytest,
+Scenario 2 walked on the modified surfaces. Net score +3 − 0.
+
+**Decisions / for the next session:** the scan's unimplemented findings are queued in
+the block's FOLLOW-ON ITEMS (highest value next: BS-10 `--color` substring filter,
+BS-09 XSS one-liner, BS-08 deck-editor JS front-face buildability, BS-03 sheets_sync
+shrink guard, BS-04 check_patterns perimeter). The scan DISCONFIRMED the pool-DFC
+Power/Toughness suspicion (NEXT-SESSION §5.4 / ROADMAP Tier 2.1 shrinks: 0 of 698 DFC
+rows merged). The /broad-implement scope string ended in a truncated "BS-" — if a
+sixth finding was meant, it was not implemented.
+
+**Where I left off:** all five findings implemented, tested, and committed on
+`claude/broad-scan-hekdj0`; docs updates (G-38/G-58/G-63 long forms) flagged for
+/sync-docs, not yet written.
+
+## Session — broad-implement Batches 1 & 2 (2026-08-04, same session, second pass)
+
+Eleven more scan findings landed on `claude/broad-scan-hekdj0`. Block:
+`.cycle/blocks/2026-08-batch1-2-broad-implement.md`.
+
+**Batch 1 (trust the surfaces):** BS-10+18 — `--color` now set-matches via new
+`lib.color_matches` in query/pool/wishlist (546→442 on `--color R`; the 104 Colorless
+under `--color colorless`), and check_colors gained a membership-scan that was watched
+to fail on the old shape, plus behavioral anchors and 5 unit tests. BS-11 — tribes
+payoff scan sees plurals (deck 49/48 payoff lists now show their lords). BS-12 —
+`load_keywords` front-face aliased (Cecil's keywords back). BS-13 — live-fetched
+split costs book front-face MV. BS-14 — suggest-homes/similar/sync scope to
+`roster_decks()`. BS-09 — 404 XSS escaped.
+
+**Batch 2 (data safety):** BS-03 — `sheets_sync pull` is dry-run by default with
+`--apply` + a 50% shrink guard (fake-worksheet tested: header-only and tiny sheets
+refused). BS-15 — `import_collection` is finish-aware (foil+non-foil SUM; same-finish
+repeats still MAX; 3 new tests). BS-16 — `reconcile_crafts` pool index front-face
+aliased, dead fallback deleted (front-name paste of a DFC now reconciles). BS-17 —
+outage-era wishlist Power seeds recompute on re-enrich (2.0→6.5 in the verified case;
+hand grades untouched). Rider — `build_mana`'s front-face loop propagates outages to
+the clean-abort path instead of writing blanks over ~700 good rows under --refetch.
+
+**Verification:** check_all green (same 2 pre-existing soft warnings), 869/869 pytest
+(8 new), scenario walks clean. Net +4 − 0.
+
+**Where I left off:** Batches 1–2 committed and pushed. Remaining backlog: Batch 3
+(interface parity), Batch 4 (gate hardening — the sibling-filter diff gate and
+lib.alias_front are the two that prevent recurrence), Batch 5 (low tail), Batch 6
+(tests for the 7 uncovered scripts). /sync-docs still owed for BOTH blocks' doc items
+(--color semantics, sheets_sync contract, G-38/G-58/G-63 long forms).
+
+## Session — /sync-docs + Batches 3 & 5 (2026-08-04, same session, third pass)
+
+**Docs are synced** (README --color set semantics + sheets_sync pull contract +
+import_collection finish column; CLAUDE.md check_colors both-scans bullet, G-38
+needs-model note, G-63 rewritten with the five 2026-08 members; gotchas.md addenda
+under G-58/G-63/G-38/G-59/G-17; app.py's mtime docstring corrected; test_cli's
+stale counts made count-free). check_docs green, 91 anchors linked.
+
+**Batch 3 (interface parity)** and **Batch 5 (correctness tail)** are implemented —
+21 items; block: `.cycle/blocks/2026-08-batch3-5-broad-implement.md`. Headlines:
+the deck editor's JS ownership lookup now mirrors lib.owned_qty (BS-08, the last
+open G-63 member); gallery + dashboard keyboard access completed; `make dashboard`
+target (deliberately outside refresh — measured 1m44s vs 13s) with the /refresh doc
+claim corrected; consistency's → note targets the BINDING color; import_arena sums
+Deck+Sideboard within a block and maxes across blocks; wishlist rank/budget is
+name-unique (live dups Drakuseth/Sally Pride collapsed); atomic_write is actually
+durable and permission-preserving; snow basics exempt from the copy limit (rules
+side only — they stay real collection cards).
+
+**Verification:** check_all green (same 2 pre-existing soft warnings), 872/872
+pytest (4 new), scenario walks clean, wishlist --rank diffed against pre-change
+code via git stash.
+
+**New follow-ons found:** Pensive Professor / Riverchurn Monument carry Power cells
+of 78.0 / 74.0 (pre-existing data typos, scale is 0–10 — reproduced on old code);
+a Power>10 range flag in _rank_scores would catch the class. Committed
+dashboard.html/gallery.html still carry pre-batch markup until `make dashboard` /
+`make refresh` regenerate them (pages.yml covers the deployed dashboard).
+
+**Where I left off:** everything above committed and pushed on
+`claude/broad-scan-hekdj0`. Remaining scan backlog: Batch 4 (gate hardening: the
+sibling-filter diff gate, lib.alias_front + check_dfc index/payload scan, BS-04
+check_patterns perimeter, BS-19 role_baseline pruning, gate tail) and Batch 6
+(behavioral tests for the 7 uncovered scripts, + the F20 re-seed path).
+
+## Session — Batch 4, gate hardening (2026-08-04, same session, fourth pass)
+
+The recurrence-prevention batch. Block: `.cycle/blocks/2026-08-batch4-broad-implement.md`.
+Every new guard was WATCHED TO FAIL on its target regression before being trusted.
+
+- **check_suggest anchor 13d** — sibling-castability parity: four synthetic cards whose
+  identity and printed cost DISAGREE run through suggest_scored/suggest_mana/
+  suggest_interaction end-to-end; a revert to an identity filter in any sibling fails
+  the build. This is the gate BS-01 lacked.
+- **lib.alias_front** — G-63's index rule in one home (six loader copies unified;
+  known_printings keeps its provenance-aware variant), plus check_dfc's new
+  index-alias REGISTRY (seven loaders behaviorally verified against a live DFC) and a
+  payload pin on deck.html's `ownedOf` (the JS channel no Python scan reaches).
+- **BS-04** — check_patterns scans wishlist (175 patterns live); **BS-19** —
+  role_baseline has its pruning half, wired into check_all.
+- **Gate tail** — flavor_overreach reports its skip; check_docs survives G-100;
+  crash-skipped radars promoted with a "N RADAR(S) DID NOT RUN" count; the
+  printings warning names cards.
+- **Perf**: the batch-1 check_colors membership scan was costing +28s of check_all
+  (unconditional ast.get_source_segment); a subtree pre-filter restored 67s → 42s
+  (~39s baseline + ~3s of new gates).
+
+**Verification:** 872/872 pytest, check_all green, every touched gate green
+standalone. Net score 0 − 0 by "fired this month" — deliberately: this batch buys
+recurrence-prevention, not live fixes.
+
+**Where I left off:** Batch 4 committed and pushed. Only Batch 6 remains from the
+scan backlog (tests for the 7 uncovered scripts, F20 re-seed path, Power>10 range
+flag) plus the owner data-hygiene items (27 printings, 4 stale rationales,
+Pensive Professor/Riverchurn Power-cell typos) and the strategic items
+(matches.csv, deck lifecycle).
+
+## Session — Batch 6, the coverage batch (2026-08-04, same session, fifth pass)
+
+**The 2026-08 broad-scan backlog is CLOSED** — top-5 + Batches 1–6 all implemented
+in one session. Block: `.cycle/blocks/2026-08-batch6-broad-implement.md`.
+
+Six new test files (50 tests → **922 total in 24 files**) cover the previously
+untested scripts, writers first: reconcile_crafts (tmp four-CSV world; the BS-16
+DFC pin), sheets_sync (fake worksheet; the BS-03 header-only/shrink/dry-run
+contract), validate (INV-01's letter + a characterization pin on the zero-row
+pass), query+pool (the BS-10 color-set pins), scryfall (scripted urlopen; the
+404/400/429/timeout classification incl. batch-5's no-retry-on-400), enrich (the
+F-02 schema guard, F-11 vanilla rule, clean outage abort). The F20 outage→
+re-enrich→re-seed path is tested end to end with a hand-grade-survives control.
+
+**The Power range flag found a real mess:** 15 wishlist Power cells carry
+0–100-style grades ('84','78','74','66','60','52'…) and were silently LEADING the
+craft ranking — Pensive Professor sat at #1 with combined 42.3 on a 0–10 scale.
+They now flag pow! and score 0.0 (loud under-rank replacing silent over-rank).
+**Owner action: re-grade those 15 cells** (`wishlist.py --rank` names them); they
+are hand-grade data per G-17 and were deliberately not auto-rewritten.
+
+**Verification:** 922/922 pytest, check_all green.
+
+**Where I left off:** everything committed and pushed on `claude/broad-scan-hekdj0`.
+Nothing from the scan remains unimplemented. Open items are owner-paced: the 15
+Power cells, 27 unverified printings, 4 stale tier rationales; then the strategic
+bets (log the first matches — matches.csv is still empty — deck lifecycle,
+rotation planning, keyword theming). Doc touch-ups queued for /sync-docs: the
+[C-07] test count (18→24), G-19's range-enforcement note, Batch 4's carry-overs.
+**Update, same day: that /sync-docs pass has RUN** (commit `354b4ed`) — all of the
+above landed (C-07 24 files + the six new layers described in cycle-config, G-19
+range enforcement in bullet + long form, G-63's enforcer clause, C-01's Batch-4
+addendum). Nothing from the 2026-08 broad scan remains queued, in code or in docs.
+
 ## Session — systems map + agreement gate (2026-07-29)
 
 The task-first systems map landed (`docs/systems-map.md`), the agreement gate landed
