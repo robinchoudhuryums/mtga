@@ -1,0 +1,81 @@
+#: name: One Fell Swoop — Overgrowth
+#: format: Standard
+#: colors: RG
+#: plan: aggro
+#: archetype: GRUUL ULTRA-TALL — the green-package variant of deck 56, revived from
+#: archetype: its parked-not-dead note. Same red core (Molten Man, Crackling Cyclops,
+#: archetype: Red Hulk, Bulk Up, Self-Destruct, the trick suite); green replaces the
+#: archetype: white bearers with the two biggest RAW boosters in the whole pile —
+#: archetype: Ashroot Animist (+X/+X AND trample per attack) and Halana and Alena
+#: archetype: (X permanent counters + haste every combat) — plus Ruby's ramp. The
+#: archetype: A/B loss that parked this package was protection 0; this list fixes
+#: archetype: what that test never tried: green's OWN protection suite (Overprotect
+#: archetype: is +3/+3 trample hexproof indestructible on ONE card, Snakeskin Veil a
+#: archetype: 1-mana hexproof counter). Distinct tilt vs 56 core: white MULTIPLIES
+#: archetype: boosts on small bearers; green COMPOUNDS permanent counters on bodies
+#: archetype: that are already big — slower, bigger, board-independent.
+#: protect: Molten Man, Inferno Incarnate; Ashroot Animist; Halana and Alena, Partners; Bulk Up; Self-Destruct; Overprotect
+#: tier: A (PROVISIONAL) — graded at the measurable floor, same rubric as the 56
+#: tier: core. The variant trades the core's faster clock and deeper interaction
+#: tier: for bigger permanent boosts and single-card protection; the honest
+#: tier: weaknesses are the same thin card advantage plus a real dependence on
+#: tier: resolving and keeping one body. Re-grade against the core after games —
+#: tier: whichever list wins more takes the buildable slot.
+#: notes: REVIVAL of the 56 A/B's green package per the core deck's parked-not-dead
+#: notes: note — the user asked for this variant. The A/B judged the PACKAGES, not
+#: notes: green's ceiling: that test's green list ran zero protection while green
+#: notes: owns the format's cheapest (Overprotect, Snakeskin Veil, Blossoming
+#: notes: Defense as a bench option). Halana triggers at BEGINNING of combat —
+#: notes: counters land before blockers, and haste means a freshly cast body can
+#: notes: swing the same turn she pumps it. Ashroot targets ANOTHER creature: he
+#: notes: boosts the protected body, not himself — sequence him as the enabler.
+#: notes: Same Self-Destruct / Red Hulk SBA non-combo and Tiger-Dillo / Scalestorm
+#: notes: power-4 gate reads as the core deck (see 56's notes). War Machine's
+#: notes: {2}{R/W} hybrid casts on {R} here (G-58). Commercial District counts as
+#: notes: a Mountain for Molten Man (type line Mountain Forest) — 14 Mountains.
+
+# Tall bodies
+2 Molten Man, Inferno Incarnate (SPM) 84
+2 Crackling Cyclops (FDN) 83
+1 Red Hulk (MSH) 149
+1 Wolverine, Fierce Fighter (MSH) 240
+1 Scarlet Spider, Ben Reilly (SPM) 142
+1 Mai, Jaded Edge (TLA) 147
+
+# Power-4 payoff bodies
+1 Tiger-Dillo (TLA) 155
+1 Scalestorm Summoner (OTJ) 144
+
+# Boosters (repeatable, permanent)
+2 Ashroot Animist (FDN) 117
+2 Halana and Alena, Partners (VOW) 239
+1 War Machine, Legacy of Iron (MSH) 238
+
+# Ramp / evasion riders
+2 Ruby, Daring Tracker (FDN) 245
+2 Speed, Young Avenger (MSH) 152
+
+# Protection (what the A/B green list never had)
+2 Overprotect (BLB) 185
+1 Snakeskin Veil (TDM) 159
+
+# Multipliers and tricks
+2 Bulk Up (SOA) 40
+2 Team Tactics (MSH) 155
+2 Twin Blades (TLA) 157
+2 Haste Magic (FIN) 140
+1 Reckless Ransacking (ECL) 152
+
+# Finisher / removal (power-scaled)
+2 Self-Destruct (FIN) 157
+2 The Last Agni Kai (TLA) 144
+1 Rabid Gnaw (BLB) 147
+
+# Lands
+1 Thornspire Verge (DSK) 270
+1 Restless Ridgeline (LCI) 283
+1 Gongaga, Reactor Town (FIN) 280
+1 Training Compound (MSH) 275
+1 Commercial District (MKM) 259
+13 Mountain (MSH) 293
+6 Forest (MSH) 296
