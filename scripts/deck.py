@@ -60,7 +60,7 @@ import urllib.request
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
-                 mana_value, primary_type, atomic_write)
+                 mana_value, primary_type, atomic_write, alias_front)
 from scryfall import post_collection, ScryfallUnavailable
 
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -461,11 +461,7 @@ def load_rarities():
             rar = (r.get("Rarity") or "").strip().lower()
             if n and rar:
                 out.setdefault(n, WC_LETTER.get(rar, "?"))
-    for n, letter in list(out.items()):
-        front = n.split(" // ")[0]
-        if front != n:
-            out.setdefault(front, letter)
-    return out
+    return alias_front(out)
 
 
 def fetch_missing_rarities(names, rarities):
@@ -999,17 +995,11 @@ def load_card_data():
                     # which stay authoritative.
                     data[n]["power"] = r.get("Power") or ""
                     data[n]["toughness"] = r.get("Toughness") or ""
-    # Front-face aliases in a SECOND pass — the load_rarities pattern, order-
-    # independent. The old in-loop setdefault stored the alias the moment a
-    # full-name row was seen, so a REAL card named exactly like a DFC's front,
-    # arriving later in CSV order, could never claim its own key (only its P/T
-    # backfilled). Zero live collisions today; one new printing flips that with
-    # no gate watching (broad-scan batch 5, the G-63 in-pass shape).
-    for n in list(data):
-        front = n.split(" // ")[0].strip()
-        if front and front != n and front not in data:
-            data[front] = data[n]
-    return data
+    # The old in-loop setdefault stored the alias the moment a full-name row was
+    # seen, so a REAL card named exactly like a DFC's front, arriving later in CSV
+    # order, could never claim its own key — only its P/T backfilled (the G-63
+    # in-pass shape, broad-scan batch 5).
+    return alias_front(data)
 
 
 def creature_subtypes(type_line):
@@ -1033,18 +1023,11 @@ def load_keywords():
             raw = (r.get("Keywords") or "").strip()
             if n:
                 kw[n] = [k.strip().lower() for k in raw.split(";") if k.strip()]
-    # Front-face alias in a SECOND pass — order-independent, and a REAL card named
-    # like a front is never shadowed (the load_rarities pattern). This was the sixth
-    # unaliased name-keyed index over a pool-shaped file: the mana file keys a DFC
-    # under its full `Front // Back` while deck lines store the front, so a front-
-    # named line's keywords read as a clean "none" — deck 42's Cecil, Dark Knight
-    # lost its ⌘ keywords line and every front-named DFC lost its ◊/△ cost-nature
-    # flags in `stats`/`text` (G-63; broad-scan BS-12).
-    for n in list(kw):
-        front = n.split(" // ")[0].strip()
-        if front and front != n and front not in kw:
-            kw[front] = kw[n]
-    return kw
+    # This was the sixth unaliased name-keyed index over a pool-shaped file: the
+    # mana file keys a DFC under its full `Front // Back` while deck lines store
+    # the front, so a front-named line's keywords read as a clean "none" — deck
+    # 42's Cecil, Dark Knight lost its ⌘ keywords line (G-63; broad-scan BS-12).
+    return alias_front(kw)
 
 
 # Keywords whose real cost is LOWER than the printed mana value (alt/reduced cost).
@@ -3394,13 +3377,7 @@ def _pool_rotation_index():
                     {x.strip().lower() for x in (r.get("Legalities") or "").split(";") if x.strip()},
                     (r.get("Set Code") or "").strip())
             idx.setdefault(nl, info)
-    # Front-face aliases in a SECOND pass (the load_rarities pattern): a real card
-    # named like a DFC's front keeps its own rotation info regardless of row order.
-    for nl in list(idx):
-        front = nl.split(" // ")[0].strip()
-        if front and front != nl and front not in idx:
-            idx[front] = idx[nl]
-    return idx, has_released
+    return alias_front(idx), has_released
 
 
 def rotation_sweep(fmt="standard", years=3, within=2):
@@ -5581,13 +5558,7 @@ def load_legalities():
             legs = {x.strip().lower() for x in (r.get("Legalities") or "").split(";")
                     if x.strip()}
             out.setdefault(n, legs)
-    # Front-face aliases in a SECOND pass (the load_rarities pattern): a real card
-    # named like a DFC's front keeps its own legalities regardless of row order.
-    for n in list(out):
-        front = n.split(" // ")[0].strip()
-        if front and front != n and front not in out:
-            out[front] = out[n]
-    return out
+    return alias_front(out)
 
 
 def legality_report(meta, cards, fmt, leg, carddata=None):

@@ -53,6 +53,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import deck  # noqa: E402
 import lib  # noqa: E402
 import tag_synergies  # noqa: E402
+import wishlist  # noqa: E402
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -61,7 +62,12 @@ POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
 _TUPLE_LEAK_RE = re.compile(r"\(\d+, \d+\)")
 
 # Modules whose module-level patterns the COMPLETENESS check enumerates.
-_SCANNED_MODULES = (deck, lib, tag_synergies)
+# wishlist was OUTSIDE this perimeter (broad-scan BS-04): its `_FLEX_REMOVAL_RE`
+# (the Meteor-Sword flex-removal seed bonus) and `_CONDITIONAL_POWER_RE` (the G-19
+# `pow~` flag) are oracle-text classifiers with the exact silent-death failure mode
+# this gate exists for — and check_rankings' anchor 7 stays green with the flex
+# bonus dead, so nothing else would notice.
+_SCANNED_MODULES = (deck, lib, tag_synergies, wishlist)
 
 # Patterns that are NOT card-text classifiers, keyed (module, attribute) -> why.
 # Every entry is a deliberate statement that a live-corpus check is meaningless
@@ -106,6 +112,8 @@ _EXCLUDED = {
     ("lib", "_BAK_STAMP_RE"): "`.bak` FILENAME stamp syntax (the creation timestamp "
                               "backup_path embeds, read back by latest_backup), not card "
                               "text; unit-tested in test_lib.py::TestBackupSelection",
+    ("wishlist", "LINE_RE"): "wishlist-batch card-line syntax (mirrors deck.LINE_RE), "
+                             "not card text",
 }
 
 
@@ -199,6 +207,14 @@ def _pattern_groups():
         out.append((f"tag_synergies.{name}", getattr(tag_synergies, name), "norm"))
     for name in ("_POWER_SCOPE_MINE_RE", "_POWER_SCOPE_TOTAL_RE"):
         out.append((f"deck.{name}", getattr(deck, name), "window"))
+    # wishlist's oracle-text classifiers (BS-04): the flex-removal seed bonus and the
+    # G-19 conditional-power (`pow~`) flag. If _FLEX_REMOVAL_RE goes dead, the seed
+    # ranking's other terms keep check_rankings green, so this is the ONLY gate that
+    # would notice. Both compile with re.I, so the norm corpus is the right one
+    # (_CONDITIONAL_POWER_RE also reads Mana Cost for `{x}` — its text alternatives
+    # alone are what the live-corpus check proves alive, which is enough).
+    for name in ("_FLEX_REMOVAL_RE", "_CONDITIONAL_POWER_RE"):
+        out.append((f"wishlist.{name}", getattr(wishlist, name), "norm"))
     return out
 
 

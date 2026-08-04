@@ -107,6 +107,38 @@ sibling-filter diff gate, lib.alias_front + check_dfc index/payload scan, BS-04
 check_patterns perimeter, BS-19 role_baseline pruning, gate tail) and Batch 6
 (behavioral tests for the 7 uncovered scripts, + the F20 re-seed path).
 
+## Session — Batch 4, gate hardening (2026-08-04, same session, fourth pass)
+
+The recurrence-prevention batch. Block: `.cycle/blocks/2026-08-batch4-broad-implement.md`.
+Every new guard was WATCHED TO FAIL on its target regression before being trusted.
+
+- **check_suggest anchor 13d** — sibling-castability parity: four synthetic cards whose
+  identity and printed cost DISAGREE run through suggest_scored/suggest_mana/
+  suggest_interaction end-to-end; a revert to an identity filter in any sibling fails
+  the build. This is the gate BS-01 lacked.
+- **lib.alias_front** — G-63's index rule in one home (six loader copies unified;
+  known_printings keeps its provenance-aware variant), plus check_dfc's new
+  index-alias REGISTRY (seven loaders behaviorally verified against a live DFC) and a
+  payload pin on deck.html's `ownedOf` (the JS channel no Python scan reaches).
+- **BS-04** — check_patterns scans wishlist (175 patterns live); **BS-19** —
+  role_baseline has its pruning half, wired into check_all.
+- **Gate tail** — flavor_overreach reports its skip; check_docs survives G-100;
+  crash-skipped radars promoted with a "N RADAR(S) DID NOT RUN" count; the
+  printings warning names cards.
+- **Perf**: the batch-1 check_colors membership scan was costing +28s of check_all
+  (unconditional ast.get_source_segment); a subtree pre-filter restored 67s → 42s
+  (~39s baseline + ~3s of new gates).
+
+**Verification:** 872/872 pytest, check_all green, every touched gate green
+standalone. Net score 0 − 0 by "fired this month" — deliberately: this batch buys
+recurrence-prevention, not live fixes.
+
+**Where I left off:** Batch 4 committed and pushed. Only Batch 6 remains from the
+scan backlog (tests for the 7 uncovered scripts, F20 re-seed path, Power>10 range
+flag) plus the owner data-hygiene items (27 printings, 4 stale rationales,
+Pensive Professor/Riverchurn Power-cell typos) and the strategic items
+(matches.csv, deck lifecycle).
+
 ## Session — systems map + agreement gate (2026-07-29)
 
 The task-first systems map landed (`docs/systems-map.md`), the agreement gate landed

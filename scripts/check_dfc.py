@@ -143,6 +143,87 @@ def _static_flags():
     return errs
 
 
+# (3) INDEX-ALIAS registry: every name-keyed loader over pool-shaped data that
+# consumers hit with FRONT-face keys. G-63's recurring lesson is that the accessor
+# rule does not reach an index — six loaders each carried (or lacked) their own
+# aliasing copy, and no gate saw the difference until a deck tripped over one
+# (`load_keywords` was the sixth, BS-12). Aliasing now has ONE home
+# (`lib.alias_front`); this registry asserts each loader's OUTPUT actually resolves
+# a real DFC's front, so a new loader added to the list is covered on arrival and a
+# loader that drops its alias pass fails the build. Entries resolve by getattr at
+# run time — a renamed loader is a hard error, not a silently skipped row (the
+# stale-registry rule every hand-kept list here follows).
+#   (module, attr, index_position)  index_position=None → the return IS the dict;
+#   an int → the dict sits at that tuple position.
+_ALIASED_LOADERS = (
+    ("deck", "load_keywords", None),
+    ("deck", "load_legalities", None),
+    ("deck", "load_rarities", None),
+    ("deck", "load_card_data", None),
+    ("deck", "_pool_rotation_index", 0),
+    ("deck", "_printing_index", None),
+    ("deck", "known_printings", 0),
+)
+
+
+def _index_alias_flags():
+    """Behavioral: each registered loader must resolve a live DFC's FRONT key."""
+    import importlib
+    import csv as _csv
+    from lib import REPO_ROOT as _root
+    pool = os.path.join(_root, "card-pool.csv")
+    front = full = None
+    if os.path.exists(pool):
+        with open(pool, newline="", encoding="utf-8") as fh:
+            for r in _csv.DictReader(fh):
+                n = (r.get("Card Name") or "").strip()
+                if " // " in n:
+                    full, front = n.lower(), n.lower().split(" // ")[0].strip()
+                    break
+    if not front:
+        # No two-faced card in the pool at all — say so rather than pass silently.
+        print("check_dfc: no DFC in card-pool.csv — index-alias registry not exercised.")
+        return []
+    errs = []
+    for mod_name, attr, pos in _ALIASED_LOADERS:
+        try:
+            mod = importlib.import_module(mod_name)
+            fn = getattr(mod, attr)          # AttributeError == stale registry entry
+            out = fn()
+            idx = out if pos is None else out[pos]
+        except Exception as e:
+            errs.append(f"index-alias registry: {mod_name}.{attr} failed to run "
+                        f"({type(e).__name__}: {e}) — stale entry, or the loader broke.")
+            continue
+        if full in idx and front not in idx:
+            errs.append(f"{mod_name}.{attr}: holds the full name {full!r} but not its "
+                        f"front {front!r} — the index lost its front-face alias pass "
+                        f"(route it through lib.alias_front; G-63/BS-12).")
+    return errs
+
+
+def _payload_flags():
+    """The SERIALIZED index: templates/deck.html consumes the ownership map in JS,
+    where no Python scan can reach — which is exactly how BS-08 shipped (a raw
+    `name in OWNED` with no front fallback; one app, two buildability verdicts).
+    Pin the fix's two load-bearing markers: the `ownedOf` helper exists and it
+    front-splits. Residual, stated honestly: a NEW raw lookup added elsewhere in
+    the template would not fire this — the pin guards the helper, not every use."""
+    tpl = os.path.join(os.path.dirname(SCRIPTS_DIR), "templates", "deck.html")
+    if not os.path.exists(tpl):
+        return []
+    src = open(tpl, encoding="utf-8").read()
+    errs = []
+    if "function ownedOf" not in src:
+        errs.append("templates/deck.html: the `ownedOf` front-face ownership helper is "
+                    "gone — the JS payload consumer is back to raw `name in OWNED` "
+                    "lookups (BS-08; the G-63 class beyond Python's reach).")
+    elif ".split(' // ')[0]" not in src:
+        errs.append("templates/deck.html: `ownedOf` no longer falls back to the front "
+                    "face — a front-named DFC line reads 'not owned' again (BS-08).")
+    return errs
+
+
 def check():
     """Return a list of error strings (empty == healthy). Never raises."""
     errs = []
@@ -154,6 +235,14 @@ def check():
         errs += _static_flags()
     except Exception as e:  # pragma: no cover - defensive
         errs.append(f"DFC static scan errored ({type(e).__name__}: {e})")
+    try:
+        errs += _index_alias_flags()
+    except Exception as e:  # pragma: no cover - defensive
+        errs.append(f"DFC index-alias check errored ({type(e).__name__}: {e})")
+    try:
+        errs += _payload_flags()
+    except Exception as e:  # pragma: no cover - defensive
+        errs.append(f"DFC payload check errored ({type(e).__name__}: {e})")
     return errs
 
 

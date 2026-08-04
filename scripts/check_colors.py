@@ -177,6 +177,14 @@ def _scan_color_cell_membership():
     ``color_matches``. Testing a set already parsed by ``card_colors()`` is the
     correct shape and never flagged; ``"Color(s)" in header`` puts the string on the
     LEFT, not the container, so header checks pass untouched."""
+    def _names_color_cell(node):
+        # Cheap subtree walk for the literal "Color(s)" — the expensive
+        # ast.get_source_segment (O(file) per call) runs ONLY on the rare node
+        # that passes this, not on every `in` test in a 10k-line file: doing it
+        # unconditionally added ~28s to check_all (batch-4 profiling).
+        return any(isinstance(x, ast.Constant) and x.value == "Color(s)"
+                   for x in ast.walk(node))
+
     errs = []
     for fn in sorted(f for f in os.listdir(SCRIPTS_DIR) if f.endswith(".py")):
         if fn == "lib.py":
@@ -184,6 +192,8 @@ def _scan_color_cell_membership():
         path = os.path.join(SCRIPTS_DIR, fn)
         try:
             src = open(path, encoding="utf-8").read()
+            if "Color(s)" not in src:
+                continue
             tree = ast.parse(src)
         except (OSError, SyntaxError) as e:
             errs.append(f"color membership scan: could not parse {fn} ({e})")
@@ -194,9 +204,10 @@ def _scan_color_cell_membership():
             if not any(isinstance(o, (ast.In, ast.NotIn)) for o in node.ops):
                 continue
             for comp in node.comparators:
+                if not _names_color_cell(comp):
+                    continue
                 seg = ast.get_source_segment(src, comp) or ""
-                if "Color(s)" in seg and "card_colors" not in seg \
-                        and "color_matches" not in seg:
+                if "card_colors" not in seg and "color_matches" not in seg:
                     errs.append(
                         f"membership test against a raw Color(s) cell in {fn}:"
                         f"{node.lineno} — a substring `in` re-implements the F1 trap "

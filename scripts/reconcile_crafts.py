@@ -28,7 +28,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import REPO_ROOT, eprint, atomic_write  # noqa: E402
+from lib import REPO_ROOT, eprint, atomic_write, alias_front  # noqa: E402
 
 LIB = os.path.join(REPO_ROOT, "card-library.csv")
 MANA = os.path.join(REPO_ROOT, "card-mana.csv")
@@ -87,18 +87,11 @@ def reconcile(export_lines, apply=False, set_exact=False):
     for r in _read(POOL):
         pool_by_sc[(r["Set Code"].upper(), str(r["Collector #"]))] = r
         pool_by_name[r["Card Name"].lower()] = r
-    # Front-face alias in a SECOND pass — order-independent, and a REAL card named
-    # like a front is never shadowed (the load_rarities pattern, G-63). The pool
-    # keys a DFC under its full `Front // Back` while an Arena export names the
-    # FRONT, so the un-aliased index reported an owned DFC "NOT FOUND in pool
-    # (skipped)" whenever the exact (set, collector) lookup missed. The old third
-    # fallback here was provably dead code: for a front-name paste it recomputed
-    # the key the second lookup just missed, and for a full-name paste it looked
-    # up a front face in a full-name-keyed index (broad-scan BS-16).
-    for n in list(pool_by_name):
-        front = n.split(" // ")[0].strip()
-        if front and front != n and front not in pool_by_name:
-            pool_by_name[front] = pool_by_name[n]
+    # The pool keys a DFC under its full `Front // Back` while an Arena export
+    # names the FRONT, so the un-aliased index reported an owned DFC "NOT FOUND in
+    # pool (skipped)" whenever the exact (set, collector) lookup missed; the old
+    # third fallback was provably dead code (broad-scan BS-16).
+    alias_front(pool_by_name)
 
     lib = _read(LIB)
     lib_keys = {(r["Card Name"].lower(), r["Set Code"].upper(), str(r["Collector #"])) for r in lib}

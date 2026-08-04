@@ -112,6 +112,32 @@ def check(include_baselined=False):
     return [r for r in zero_role_cards() if r[0].lower() not in base]
 
 
+def stale_baseline_entries():
+    """[(name, why)] for baseline entries that no longer describe a zero-role roster
+    card — the pruning half the baseline never had (broad-scan BS-19).
+
+    keyword_baseline gets `check_keywords.stale_registry_entries`; this is the same
+    guard for roles. Two stale shapes, and the first is the dangerous one: a card a
+    pattern fix UN-ZEROED stays acknowledged forever, so a later regression
+    re-zeroing it is silent for good — the baseline quietly converts from "known
+    holes" into a mask. The second (the card left every deck) acknowledges nothing,
+    since the scan is roster-scoped. `--update-baseline` clears both, but only this
+    check makes them VISIBLE instead of waiting for someone to diff the file."""
+    base = load_baseline()
+    if not base:
+        return []
+    roster = _roster_cards()
+    zero = {r[0].lower() for r in zero_role_cards()}
+    out = []
+    for nm in sorted(base):
+        if nm not in roster:
+            out.append((nm, "no longer in any deck — the roster-scoped entry acknowledges nothing"))
+        elif nm not in zero:
+            out.append((nm, "now classifies with roles — prune it, or a regression "
+                            "re-zeroing this card is silent forever"))
+    return out
+
+
 def _write_baseline():
     rows = zero_role_cards()
     with open(BASELINE, "w", encoding="utf-8") as fh:
@@ -139,9 +165,18 @@ def main():
         print(f"Baseline updated: {n} acknowledged zero-role card(s) written to "
               f"{os.path.basename(BASELINE)}.")
         return 0
+    stale = stale_baseline_entries()
+    if stale:
+        print(f"{len(stale)} STALE baseline entr(ies) — run --update-baseline after reviewing:")
+        for nm, why in stale[:20]:
+            print(f"  {nm} — {why}")
+        if len(stale) > 20:
+            print(f"  … and {len(stale) - 20} more")
+        print()
     res = check(include_baselined=args.all)
     if not res:
-        print("No new zero-role cards (roster, vs baseline).")
+        print("No new zero-role cards (roster, vs baseline)."
+              + (" (stale entries above still need pruning)" if stale else ""))
         return 0
     scope = "zero-role" if args.all else "NEW zero-role (since baseline)"
     print(f"{len(res)} {scope} card(s) in decks/ — each is either genuinely roleless or a\n"

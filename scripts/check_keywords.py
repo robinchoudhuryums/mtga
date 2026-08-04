@@ -32,7 +32,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import REPO_ROOT  # noqa: E402
+from lib import REPO_ROOT, eprint  # noqa: E402
 
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
 LIB_CSV = os.path.join(REPO_ROOT, "card-library.csv")
@@ -162,8 +162,15 @@ def flavor_overreach(threshold=3):
         out += [(k, -2, "denylisted but named in deck.ENGINE_THEMES as a real engine "
                         "mechanic — the tagger suppresses what the engine classifier counts")
                 for k in sorted(flavor & engine_words)]
-    except Exception:
-        pass  # deck.py unavailable — the other two signals still run
+    except Exception as e:
+        # deck.py unavailable — the other two signals still run, but SAY so: this
+        # is the signal built specifically for the `harmonize` blind spot, and a
+        # bare pass meant a deck.py refactor of ENGINE_THEMES' shape killed it
+        # with no "skipped" line anywhere — the one degraded path in the gate
+        # suite that reported nothing (broad-scan batch 4).
+        eprint(f"check_keywords: ENGINE_THEMES cross-check skipped "
+               f"({type(e).__name__}: {e}) — the flavor-overreach signal is "
+               f"running WITHOUT its engine-mechanic denylist screen")
     if not os.path.exists(MANA_CSV):
         return out
     owned = _owned_names()

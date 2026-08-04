@@ -178,6 +178,28 @@ def card_colors(colstr):
     return {ch for ch in s.upper() if ch in "WUBRG"}
 
 
+def alias_front(index):
+    """SECOND-PASS front-face aliasing for a name-keyed index over pool-shaped data:
+    every `Front // Back` key gets its FRONT aliased to the same value — but only
+    when no REAL row already claims the front name, so a distinct card named
+    `Front` is never shadowed ("Life" is a card as well as the front of
+    "Life // Death"). Call it AFTER the loop that inserts real rows; aliasing
+    in-pass (`setdefault` inside the row loop) is order-dependent — a full-name row
+    seen early claims the front before the real card's own row arrives (G-63).
+
+    This is the index half of G-63 given ONE home: six loaders each carried their
+    own copy of this loop, two aliased in-pass with the shadowing trap, and a
+    seventh (`reconcile_crafts`' pool map) never aliased at all, reporting owned
+    DFCs "NOT FOUND in pool" (broad-scan BS-16/batch 4). `check_dfc` behaviorally
+    verifies each registered loader resolves a DFC's front key. Mutates and
+    returns `index`."""
+    for n in list(index):
+        front = n.split(" // ")[0].strip()
+        if front and front != n and front not in index:
+            index[front] = index[n]
+    return index
+
+
 def color_matches(cell, needle):
     """Does a ``Color(s)`` identity cell match a user's ``--color`` filter?
 
