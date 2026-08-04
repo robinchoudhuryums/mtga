@@ -524,3 +524,43 @@ members — a possible Boros-pinger variant if T/G/J stall); Charging Strifeknig
 55a's discard-outlet count (2→3 if adopted); Ghired/Annie/Samut/Voja → a Naya axis
 that only exists if the user wants a FOURTH color identity family; Roxanne → Crime
 Novelist's artifact-producer count.
+
+### Addendum Batch A2 (20 — the Jeskai block + blue)
+
+**The batch's headline finding, for concept J:** the pile's blue half is ENTIRELY gold
+creature costs — there are **zero mono-U spells** in the combined 190 (the 2 Islands
+have nothing to cast). So a Jeskai deck built from this pile casts the SAME red/white
+spell suite 55a already runs (Helix, Charm, Salvo, Frontline Rush…), and blue buys
+bodies only: it would play as a Boros prowess deck paying a third-color mana tax for
+better creatures. That is buildable — Sokka + Narset + the prowess block is a real,
+distinct engine (prowess TEMPO vs 55a's engine-midrange vs 25's UR big-spell storm) —
+but it starts life adjacent to two existing decks. Also note deck 17 (Spectrum)
+already runs Sokka and Flamehold Grappler. Verdict at close-out.
+
+| Card | Grade | Axis | Note |
+|---|---|---|---|
+| Sokka, Tenacious Tactician | ★★★ | J | the J engine: 1/1 Ally per noncreature spell + ALL Allies get menace/prowess — width and evasion from the same cadence 55a rewards; owned ×1 (deck 17). U identity keeps him out of 55b's Ally deck, the addendum's second big off-identity tease |
+| Narset, Jeskai Waymaster | ★★★ | J | end step: discard hand, draw per spell cast — the refill engine that lets a cheap-spell deck dump and reload every turn; owned ×1 |
+| Flamehold Grappler | ★★ | J | ETB: copy the next spell this turn — velocity payoff, brutal with anything modal or X; owned ×1 |
+| Jeskai Brushmaster | ★★ | J | double strike + prowess: each noncreature spell is +2 damage — the prowess shell's tall-ish threat |
+| Shiko, Paragon of the Way | ★★ | J | 5-drop flier: recast any MV<=3 nonland from the yard free — value engine over the same cheap-spell yard |
+| Equilibrium Adept | ★★ | J / 55a bench | MONO-RED: impulse ETB + flurry double strike — castable in 55a today; the addendum's cleanest cross-gift to a built deck |
+| Crackling Cyclops | ★★ | T-watch / J | +3/+0 per noncreature spell, mono-R common, owned — a self-boosting TALL body for the T concept (3 spells = +9; with Twinblade Blessing that swing doubles); already in the 37 family |
+| Spectacular Skywhale | ★★ | J | Opus pump (+3/+0, or 3 permanent counters off a 5-mana spell) on a flier; owned, already in 25 |
+| Jeskai Shrinekeeper | ★ | J | flying haste, draw+life on player damage — generic but real value 5-drop |
+| Jeskai Revelation | ★ | J | 7-mana instant: bounce + 4 damage + two prowess Monks + draw 2 + gain 4 — the one-of finisher if J lands |
+| Effortless Master | ★ | J | 2 counters when cast two spells; menace/vigilance — fine curve filler, nothing more |
+| Enigma Drake | ★ | J | power = I/S in yard on a 3-mana flier — "tall via graveyard", but UR identity binds it to J/25, not the red T deck; owned (deck 25) |
+| Zidane, Tantalus Thief | ★ | RW | ETB threaten with lifelink+haste — castable in the Mardu family as a 1-of finisher-enabler; owned |
+| Mystic Monastery | ★ | J-infra | the J tri-land; auto-include if J builds |
+| Riverwheel Sweep | ◇ | any | {2/U}{2/R}{2/W} — G-58 reminder: in MARDU this costs {2}+{R}+{W} (4 mana), no U needed; tap + 3 stun counters + impulse 2 is real tempo, just expensive at sorcery speed |
+| Monastery Messenger | ◇ | any | same hybrid trick (castable off-color for {2}s); flier + regrow-a-spell-to-top; filler |
+| Sami, Wildcat Captain | ◇ | gate | affinity-for-artifacts on all your spells — G-61 count: the combined pile's artifact producers are ~4 (Death to Our Enemies, UGG, Zidane, Roxanne) — far from affinity turning on; owned, correctly parked in 24b/39 |
+| Speedball, New Warrior | ◇ | spice | redirect-any-spell-that-targets-him + pump; {2}{U/R} hybrid is castable in 55a (pay R) as a targeting-rider oddity; owned (deck 33) |
+| Mm'menon, Uthros Exile | △ | — | counter per artifact ETB — needs the artifact density only deck 48 has (where he already lives) |
+| Frontier Bivouac | △ | — | TEMUR tri-land — fits none of the three concepts (already in 54b) |
+
+**Cross-links recorded:** Equilibrium Adept + Speedball → 55a bench (both castable
+there today); Crackling Cyclops → the T concept's cheap self-boosting body (grade
+against A3's boost suite); Sokka → 55b's Ally theme, blocked by U identity; Sami WC →
+the artifact-producer count (still ~4, gate stays shut).
