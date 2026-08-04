@@ -168,6 +168,18 @@ Power cells, 27 unverified printings, 4 stale tier rationales; then the strategi
 bets (log the first matches — matches.csv is still empty — deck lifecycle,
 rotation planning, keyword theming). Doc touch-ups queued for /sync-docs: the
 [C-07] test count (18→24), G-19's range-enforcement note, Batch 4's carry-overs.
+## Session — data-hygiene sweep (2026-08-04, sixth pass, post-#100)
+
+The three standing warnings are CLEARED (commit `1899be3`, branch restarted from
+the merged main): the 15 mis-scaled Power cells rescaled ÷10 (one batch graded
+0–100; relative judgment and `hand` provenance preserved), all 27 unverified
+printings repointed to held printings via `_printing_of` + `_safe_write_lines`,
+and the four stale rationale claims rewritten from the current lists with every
+new citation verified against oracle text (decks 40, 49, 51a — all three audit
+"rationale is current"). **check_all is fully quiet: zero soft warnings**, for
+the first time. 922/922 pytest. Remaining open items are purely strategic:
+log the first matches, deck lifecycle, rotation planning, keyword theming.
+
 **Update, same day: that /sync-docs pass has RUN** (commit `354b4ed`) — all of the
 above landed (C-07 24 files + the six new layers described in cycle-config, G-19
 range enforcement in bullet + long form, G-63's enforcer clause, C-01's Batch-4
