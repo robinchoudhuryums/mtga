@@ -6,6 +6,40 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan + top-5 fixes (2026-08-04)
+
+A full `/broad-scan` (three stages, seven parallel deep-read passes, top findings
+hand-verified) followed by `/broad-implement BS-01, BS-02, BS-05 - BS-07`. The scan's
+full report lives in the session; the implemented slice and its verification are in
+`.cycle/blocks/2026-08-broad-scan-top5-broad-implement.md`.
+
+**Implemented (scripts/deck.py, scripts/card.py):** BS-01 the needs recommenders
+(`suggest --ramp/--interaction`) now filter by PRINTED COST via `_candidate_castability`
+like `suggest_scored` — the G-58 bug had been re-introduced on the exact path G-38
+routes deficits to (34 interaction cards + 25 mana sources were hidden from mono-color
+decks). BS-02 `card.py` exactness now outranks source (`card.py "Mimic"` no longer
+shows Gogo) — including a second shadow inside field resolution. BS-05/BS-06 the
+swap bump-match, self-swap guard, and `legality_report` copy/commander counting all
+key on `_ms_key` (front face), closing the seam where a DFC swap could split a card
+across two spellings and the copy limit couldn't sum them. BS-07 `sync` now strips
+Sideboard/Maybeboard per pasted block (with a visible note) instead of writing board
+cards into the maindeck.
+
+**Verification:** check_all green (same 2 pre-existing soft warnings), 861/861 pytest,
+Scenario 2 walked on the modified surfaces. Net score +3 − 0.
+
+**Decisions / for the next session:** the scan's unimplemented findings are queued in
+the block's FOLLOW-ON ITEMS (highest value next: BS-10 `--color` substring filter,
+BS-09 XSS one-liner, BS-08 deck-editor JS front-face buildability, BS-03 sheets_sync
+shrink guard, BS-04 check_patterns perimeter). The scan DISCONFIRMED the pool-DFC
+Power/Toughness suspicion (NEXT-SESSION §5.4 / ROADMAP Tier 2.1 shrinks: 0 of 698 DFC
+rows merged). The /broad-implement scope string ended in a truncated "BS-" — if a
+sixth finding was meant, it was not implemented.
+
+**Where I left off:** all five findings implemented, tested, and committed on
+`claude/broad-scan-hekdj0`; docs updates (G-38/G-58/G-63 long forms) flagged for
+/sync-docs, not yet written.
+
 ## Session — systems map + agreement gate (2026-07-29)
 
 The task-first systems map landed (`docs/systems-map.md`), the agreement gate landed

@@ -69,17 +69,44 @@ def _rank(query, rows):
     return sorted(rows, key=key)
 
 
-def _find(query, rows):
-    """(best_row, distinct_matches). An exact hit (case-insensitive, including a DFC
-    front face) wins outright; otherwise substring matches are ranked closest-first and
-    deduped by name, so both the pick and the "N cards match" count are honest."""
+def _exact(query, rows):
+    """Rows whose name — or DFC FRONT face — equals the query, case-insensitive."""
     nl = query.strip().lower()
-    exact = [r for r in rows if (r.get("Card Name") or "").strip().lower() == nl
-             or _front(r.get("Card Name") or "") == nl]
+    return [r for r in rows if (r.get("Card Name") or "").strip().lower() == nl
+            or _front(r.get("Card Name") or "") == nl]
+
+
+def _find(query, rows):
+    """(best_row, distinct_matches) WITHIN one source. An exact hit (case-insensitive,
+    including a DFC front face) wins outright; otherwise substring matches are ranked
+    closest-first and deduped by name, so both the pick and the "N cards match" count
+    are honest. Cross-SOURCE resolution lives in `_resolve` — exactness must outrank
+    source there, so don't chain two `_find`s with `or`."""
+    exact = _exact(query, rows)
     if exact:
         return exact[0], _distinct(exact)
-    subs = _rank(query, [r for r in rows if nl in (r.get("Card Name") or "").lower()])
+    subs = _rank(query, [r for r in rows
+                         if query.strip().lower() in (r.get("Card Name") or "").lower()])
     return (subs[0] if subs else None), _distinct(subs)
+
+
+def _resolve(query, lib, pool):
+    """(best_row, distinct_matches, is_exact) across BOTH sources.
+
+    EXACTNESS OUTRANKS SOURCE. The old shape — `lib_hit or pool_hit`, `lmatches or
+    pmatches` — preferred the library unconditionally, so a library SUBSTRING match
+    shadowed a pool card exactly named the query and dropped the pool's matches from
+    the "Others" list entirely: `card.py "Mimic"` showed Gogo, Master of Mimicry and
+    the pool card named "Mimic" appeared nowhere (broad-scan BS-02), on the surface
+    G-01 mandates for pre-grading reads. Between two EXACT hits the library still
+    wins, matching `load_card_data`'s library-first precedence; substring matches are
+    ranked across the merged sources, library first on a same-name tie (stable sort)."""
+    lex, pex = _exact(query, lib), _exact(query, pool)
+    if lex or pex:
+        return (lex or pex)[0], _distinct(lex + pex), True
+    subs = _rank(query, [r for r in lib + pool
+                         if query.strip().lower() in (r.get("Card Name") or "").lower()])
+    return (subs[0] if subs else None), _distinct(subs), False
 
 
 def _owned_index(rows):
@@ -155,17 +182,12 @@ def main():
     lib, pool = _load(LIBRARY), _load(POOL)
     mana = {(r.get("Card Name") or "").strip().lower(): r for r in _load(MANA)}
 
-    lrow, lmatches = _find(query, lib)
-    prow, pmatches = _find(query, pool)
-    if lrow is None and prow is None:
+    best, matches, is_exact = _resolve(query, lib, pool)
+    if best is None:
         print(f"No card matching {query!r} in library or pool.")
         return 1
-    name = (lrow or prow).get("Card Name", "").strip()
+    name = best.get("Card Name", "").strip()
 
-    matches = lmatches or pmatches
-    is_exact = any((r.get("Card Name") or "").strip().lower() == query.strip().lower()
-                   or _front(r.get("Card Name") or "") == query.strip().lower()
-                   for r in matches)
     if not is_exact and len(matches) > 1:
         print(f"{len(matches)} cards match {query!r}; showing the closest. Others:")
         for r in matches[:12]:
@@ -173,9 +195,12 @@ def main():
                 print(f"   - {r.get('Card Name')}")
         print()
 
-    # Resolve every field from the best-named library row, then the pool row.
-    lr = _find(name, lib)[0] or {}
-    pr = _find(name, pool)[0] or {}
+    # Resolve every field from the best-named library row, then the pool row —
+    # EXACT lookups only: `name` is already a resolved display name, and a substring
+    # fallback here re-introduces the shadow `_resolve` exists to prevent (a library
+    # row containing the name as a substring would supply the fields for a pool card).
+    lr = (_exact(name, lib) or [{}])[0]
+    pr = (_exact(name, pool) or [{}])[0]
     m = mana.get(name.lower()) or mana.get(_front(name)) or {}
 
     typ = lr.get("Type") or pr.get("Type") or ""

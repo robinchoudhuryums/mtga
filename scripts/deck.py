@@ -3850,8 +3850,16 @@ def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
         # ETB-treasure body or a vanilla creature that merely mentions mana doesn't qualify.
         if not (_produces_mana(txt) and re.search(r":[^.\n]{0,40}\badd\b", txt, re.I)):
             continue
-        if not card_colors(r.get("Color(s)")).issubset(dc):
-            continue  # off-color / uncastable for this deck
+        # Castability from the PRINTED COST, not color identity — the exact filter
+        # suggest_scored uses (G-58): an identity-subset test here hid 25 castable mana
+        # sources, including every `{N}` rock whose identity comes from its mana ability
+        # (Haunted Screen's 5-color identity excluded it from EVERY deck). Worst place
+        # for that bug: per G-38 this recommender IS the fix path for a mana deficit.
+        cast_ok, _ = _candidate_castability(
+            (mana_map.get(nl) or mana_map.get(nl.split(" // ")[0]) or ("", None))[0],
+            card_colors(r.get("Color(s)")), dc)
+        if not cast_ok:
+            continue  # genuinely uncastable for this deck
         if apply_fmt and fmt not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
             continue
         h = owned_of(nl)
@@ -3885,6 +3893,7 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
     'damage = creatures you control' in a go-wide deck) + a small power tiebreak. The scaling is
     FLAGGED with the deck metric so the human confirms — it's never a silent boost."""
     dc = needs["colors"]
+    mana_map = load_mana()
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
         pool = list(csv.DictReader(fh))
     has_leg = bool(pool) and "Legalities" in pool[0]
@@ -3903,7 +3912,15 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
         roles = set(classify_roles(txt))
         if not (roles & _INTERACTION_ROLES):
             continue  # not interaction
-        if not card_colors(r.get("Color(s)")).issubset(dc):
+        # Castability from the PRINTED COST, not color identity — the exact filter
+        # suggest_scored uses (G-58): an identity-subset test here hid 34 castable
+        # Standard interaction cards from mono-color decks (Bullseye, Death Dealer
+        # `{2}{B/R}` — the card G-58 names — read as off-color in `Color(s)`). Worst
+        # place for that bug: per G-38 this IS the fix path for an interaction deficit.
+        cast_ok, _ = _candidate_castability(
+            (mana_map.get(nl) or mana_map.get(nl.split(" // ")[0]) or ("", None))[0],
+            card_colors(r.get("Color(s)")), dc)
+        if not cast_ok:
             continue
         if apply_fmt and fmt not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
             continue
@@ -4723,7 +4740,12 @@ def _deck_summary(cards, carddata, mana):
 def _cards_after_swap(cards, cut, add, add_printing):
     """Return the cards list with one copy of `cut` replaced by `add`, or None
     if `cut` isn't present. If `add` is already in the deck, its existing line is
-    bumped by one rather than adding a second line for the same card."""
+    bumped by one rather than adding a second line for the same card — matched on
+    `_ms_key` (front face), because `_do_swap` canonicalizes the add to the pool's
+    full `Front // Back` name while the deck may store the front-face spelling: an
+    exact-name match missed that line and split the card's count across two
+    spellings, which `legality_report`'s copy counter then couldn't sum
+    (broad-scan BS-05). The existing line's own spelling is kept."""
     out, removed = [], False
     for (q, n, s, c) in cards:
         if not removed and n.lower() == cut.strip().lower():
@@ -4734,9 +4756,9 @@ def _cards_after_swap(cards, cut, add, add_printing):
         out.append((q, n, s, c))
     if not removed:
         return None
-    add_nl = add.strip().lower()
+    add_key = _ms_key(add)
     for i, (q, n, s, c) in enumerate(out):
-        if n.lower() == add_nl:
+        if _ms_key(n) == add_key:
             out[i] = (q + 1, n, s, c)
             break
     else:
@@ -4820,8 +4842,12 @@ def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
 
     # If `add` is already a line in the deck, bump that line by one instead of
     # writing a second line for the same card (which would split its count).
+    # Matched on `_ms_key` (front face), mirroring `_cards_after_swap`: the add
+    # arrives canonicalized to the pool's full `Front // Back` name while the deck
+    # line may store the front-face spelling (broad-scan BS-05). The existing
+    # line keeps its own spelling — the rebuild below reuses its matched groups.
     ai = next((i for i, ln in enumerate(out)
-               if (_card_line_name(ln) or "").lower() == add.strip().lower()), None)
+               if _ms_key(_card_line_name(ln)) == _ms_key(add)), None)
     if ai is not None:
         am = LINE_RE.match(out[ai].split("#", 1)[0].strip())
         a_indent = out[ai][:len(out[ai]) - len(out[ai].lstrip())]
@@ -5282,19 +5308,24 @@ def cmd_feedback(args):
 def _do_swap(d, cut, add, apply, flex_entry=None):
     """Shared engine for `swap` and `apply-flex`: preview deltas, and on --apply
     perform the edit with a .bak + INV-04 re-check."""
+    add_disp, add_set, add_cn = _printing_of(add)
+    # Write the CANONICAL name, not the front-face shorthand the caller typed.
+    # Resolved BEFORE the self-swap guard, and the guard compares `_ms_key` (front
+    # face): `--cut "Bruce Banner" --add "Bruce Banner // The Incredible Hulk"` is
+    # the same card under two spellings, and the exact-name compare let it through —
+    # whereupon the raw-line edit's cut-rebuild overwrote its own bump of the shared
+    # line, the audit-F2 corruption from a second direction (broad-scan BS-05).
+    add = add_disp
     # A card can't be swapped for itself: it's a no-op, and on --apply the raw-line
     # edit would decrement (or delete) the shared line instead (audit F2). The
     # INV-04 copy-count guard wouldn't catch it, since a 1-for-1 swap preserves the
     # total — so reject it up front rather than silently corrupt the count.
-    if cut.strip().lower() == add.strip().lower():
+    if _ms_key(cut) == _ms_key(add):
         eprint(f"Cut and add are the same card ({cut!r}) — nothing to swap.")
         return 1
     carddata = load_card_data()
     mana = load_mana()
     _, cards = parse_deck_file(d["path"])
-    add_disp, add_set, add_cn = _printing_of(add)
-    # Write the CANONICAL name, not the front-face shorthand the caller typed.
-    add = add_disp
     after = _cards_after_swap(cards, cut, add, (add_set, add_cn))
     if after is None:
         eprint(f"{cut!r} is not in deck {d['id']}. Nothing swapped.")
@@ -5479,16 +5510,23 @@ def legality_report(meta, cards, fmt, leg, carddata=None):
         identity must sit within the commander's (Brawl's defining rule).
       • Alchemy: a card that's Standard-legal but not Alchemy-legal is REBALANCED, not
         illegal — Arena plays its A- version — so it's a note, not a problem."""
+    # Copy counts key on `_ms_key` (front face), like every other name-facing join
+    # (see `_ms_key`'s docstring): the roster live-mixes `Front // Back` and front-only
+    # spellings of the same card, and an exact-name key saw them as two different cards
+    # — 4 copies under one spelling plus 1 under the other passed the 4-copy limit, and
+    # two "singletons" passed Brawl (broad-scan BS-06). The first-seen spelling is kept
+    # for display; `leg` / `carddata` lookups below already alias the front face.
     counts, order, disp, total = {}, [], {}, 0
     for q, n, s, c in cards:
         total += q
         nl = n.lower()
         if nl in BASICS:
             continue
-        if nl not in counts:
-            order.append(nl)
-            disp[nl] = n
-        counts[nl] = counts.get(nl, 0) + q
+        key = _ms_key(n)
+        if key not in counts:
+            order.append(key)
+            disp[key] = n
+        counts[key] = counts.get(key, 0) + q
 
     singleton = fmt in SINGLETON_FORMATS
     copy_limit = 1 if singleton else 4
@@ -5548,7 +5586,9 @@ def legality_report(meta, cards, fmt, leg, carddata=None):
                     problems.append(f"commander {cmd_name}: must be a legendary creature or "
                                     f"planeswalker (is {ctype or '?'})")
                 cident = card_colors(ccd.get("colors", ""))
-                if cnl not in counts:
+                # Presence keys on `_ms_key` too: a `#: commander:` naming the front
+                # face against a full-name deck line is the same card (BS-06).
+                if _ms_key(cmd_name) not in counts:
                     notes.append(f"commander {cmd_name} isn't listed in the deck — add it "
                                  f"(it counts as one of the {min_size})")
             if cident is not None:
@@ -6052,6 +6092,34 @@ def cmd_verify(args):
 _DECK_MARKER_RE = re.compile(r"^deck\s*$", re.I)
 
 
+def strip_boards(block):
+    """(maindeck_lines, board_card_count) for one pasted block: drop the lines under a
+    `Sideboard` / `Maybeboard` heading, counting the card COPIES dropped.
+
+    `import_arena.parse` skips section HEADINGS but keeps their card lines — the right
+    call for an ownership import (a sideboard card is owned) and wrong for `sync`, the
+    WRITE half: stored decks are maindeck-only, so an in-sync deck exported with a
+    7-card sideboard read "drifted: 7 added" and `--apply` wrote those cards into the
+    60. `verify`, the READ half, had warned about exactly this since it shipped; the
+    write half didn't even detect it (broad-scan BS-07). Commander / Companion
+    sections are KEPT — a stored Brawl deck lists its commander among the 100."""
+    from import_arena import SECTIONS, LINE_RE as _ALINE
+    keep, dropped_n, skipping = [], 0, False
+    for ln in block:
+        s = ln.strip().lower()
+        if s in SECTIONS:
+            skipping = s in ("sideboard", "maybeboard")
+            keep.append(ln)               # headings are skipped by parse either way
+            continue
+        if skipping:
+            m = _ALINE.match(ln.strip())
+            if m:
+                dropped_n += int(m.group(1))
+            continue
+        keep.append(ln)
+    return keep, dropped_n
+
+
 def split_paste(text):
     """An Arena paste containing one or MANY decks -> a list of line-blocks. Arena
     exports start each deck with a bare `Deck` line; text before the first one is
@@ -6189,6 +6257,12 @@ def cmd_sync(args):
     results, rc = [], 0
     print(f"Sync — {len(blocks)} pasted deck block(s) vs {len(decks)} stored decks\n")
     for i, block in enumerate(blocks, 1):
+        # Maindeck only: stored decks carry no sideboard, so board cards must not
+        # read as drift — or be written into the file on --apply (BS-07).
+        block, board_n = strip_boards(block)
+        if board_n:
+            print(f"  (block {i}: ignoring {board_n} sideboard/maybeboard card(s) — "
+                  "stored decks are maindeck-only)")
         entries, warnings = parse_arena("\n".join(block))
         for w in warnings:
             eprint(f"WARN:  block {i}: {w}")
