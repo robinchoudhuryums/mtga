@@ -66,7 +66,8 @@
 2 Krenko, Baron of Tin Street (MKM) 135
 2 Elvish Archivist (WOE) 168
 2 Pirate Peddlers (TLA) 115
-2 Lightless Evangel (EOE) 109
+1 Lightless Evangel (EOE) 109
+1 Callous Sell-Sword // Burn Together (WOE) 221
 1 Aatchik, Emerald Radian (DFT) 187
 1 Ygra, Eater of All (BLB) 241
 1 Food Fight (WOE) 129
