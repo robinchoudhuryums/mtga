@@ -37,6 +37,7 @@ import contextlib
 import csv
 import datetime
 import functools
+import html
 import io
 import json
 import os
@@ -817,7 +818,11 @@ def deck_new():
 def deck_editor(deck_id):
     d = deckmod.find_deck(deck_id)
     if not d:
-        return (f"No deck with id {deck_id!r}. <a href='/decks'>← Decks</a>", 404)
+        # Escape the user-controlled path segment: reflected unescaped, a crafted
+        # /deck/<script…> link executed same-origin — defeating the same-origin/
+        # rebinding guard, since injected JS can POST /api/save (broad-scan BS-09).
+        return (f"No deck with id '{html.escape(deck_id)}'. "
+                "<a href='/decks'>← Decks</a>", 404)
     return _render_template("deck.html", {"__DATA__": _deck_payload(d)})
 
 

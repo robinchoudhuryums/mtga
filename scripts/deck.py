@@ -902,8 +902,17 @@ def fetch_missing_mana(names, mana):
             faces = card.get("card_faces") or [{}]
             cost = card.get("mana_cost") or faces[0].get("mana_cost", "")
             mv = card.get("cmc", 0)
+            mv = int(mv) if isinstance(mv, (int, float)) else None
+            if cost and " // " in cost:
+                # Scryfall's root cmc for a split/Room card is the COMBINED total;
+                # the analysis convention is the FRONT face's (G-02). load_mana
+                # applies this correction to stored rows — this live-fetch fallback
+                # skipped it, so a Room fetched live booked at MV 10 while its CSV
+                # twin booked at 3, and the curve/consistency read depended on which
+                # path supplied the number (broad-scan BS-13).
+                mv = mana_value(front_face_cost(cost))
             full = card.get("name", "").lower()
-            mana[full] = (cost or "", int(mv) if isinstance(mv, (int, float)) else None)
+            mana[full] = (cost or "", mv)
             mana.setdefault(full.split(" // ")[0], mana[full])
         time.sleep(0.1)
     return mana
@@ -1004,6 +1013,17 @@ def load_keywords():
             raw = (r.get("Keywords") or "").strip()
             if n:
                 kw[n] = [k.strip().lower() for k in raw.split(";") if k.strip()]
+    # Front-face alias in a SECOND pass — order-independent, and a REAL card named
+    # like a front is never shadowed (the load_rarities pattern). This was the sixth
+    # unaliased name-keyed index over a pool-shaped file: the mana file keys a DFC
+    # under its full `Front // Back` while deck lines store the front, so a front-
+    # named line's keywords read as a clean "none" — deck 42's Cecil, Dark Knight
+    # lost its ⌘ keywords line and every front-named DFC lost its ◊/△ cost-nature
+    # flags in `stats`/`text` (G-63; broad-scan BS-12).
+    for n in list(kw):
+        front = n.split(" // ")[0].strip()
+        if front and front != n and front not in kw:
+            kw[front] = kw[n]
     return kw
 
 
@@ -2827,6 +2847,29 @@ def cmd_stats(args):
     return 0
 
 
+def _tribe_ref_re(t):
+    """Compiled pattern matching a creature TYPE reference in oracle text — singular
+    OR plural. Lords overwhelmingly template plural ("Ninjas you control get +1/+1",
+    "Elves you control"), and the old `\\b<type>\\b` scan could not see a plural (no
+    word boundary before the 's'), so the payoff list under-reported exactly the
+    count G-59 says decides tribal viability (broad-scan BS-11). English plurals as
+    Magic templates them: -y → -ies (Mercenaries), -f → -ves (Elves, Dwarves,
+    Wolves), sibilants → -es (Foxes, Sphinxes), else +s; a couple of irregulars."""
+    forms = [re.escape(t)]
+    irregular = {"Mouse": "Mice", "Ox": "Oxen"}
+    if t in irregular:
+        forms.append(irregular[t])
+    elif t.endswith("y"):
+        forms.append(re.escape(t[:-1] + "ies"))
+    elif t.endswith("f"):
+        forms.append(re.escape(t[:-1] + "ves"))
+    elif t.endswith(("s", "x", "z", "ch", "sh")):
+        forms.append(re.escape(t + "es"))
+    else:
+        forms.append(re.escape(t + "s"))
+    return re.compile(rf"\b(?:{'|'.join(forms)})\b")
+
+
 def cmd_tribes(args):
     """Creature-subtype breakdown + type-matters synergy scan."""
     d = find_deck(args.id)
@@ -2863,7 +2906,7 @@ def cmd_tribes(args):
         if not d2 or not d2["text"]:
             continue
         refs = {t for t in deck_types
-                if re.search(rf"\b{re.escape(t)}\b", d2["text"])}
+                if _tribe_ref_re(t).search(d2["text"])}
         if refs:
             qual = sum(q2 for q2, n2, s2, c2 in cards
                        if subs_by_card.get(n2, set()) & refs)
@@ -6252,7 +6295,10 @@ def cmd_sync(args):
         eprint("No deck blocks found in the paste.")
         return 1
 
-    decks = [(d, _multiset(parse_deck_file(d["path"])[1])) for d in discover_decks()]
+    # Roster only (BS-14): an `example`/`retired` deck must not be a sync match
+    # target — a low-confidence paste match could rewrite a retired list. A
+    # non-roster deck can still be verified/edited directly by id.
+    decks = [(d, _multiset(parse_deck_file(d["path"])[1])) for d in roster_decks()]
     printings = _printing_index()
     results, rc = [], 0
     print(f"Sync — {len(blocks)} pasted deck block(s) vs {len(decks)} stored decks\n")
@@ -6917,7 +6963,9 @@ def cmd_similar(args):
     anames = {n for _q, n, _s, _c in cards if n.lower() not in BASICS
               and "Land" not in _primary_type((carddata.get(n.lower()) or {}).get("type") or "")}
     rows = []
-    for dd in discover_decks():
+    # Roster only (BS-14): distinctness against a retired/example list is noise —
+    # is_roster_deck's own contract scopes "cross-deck reuse" to the roster.
+    for dd in roster_decks():
         if dd["id"].lower() == d["id"].lower():
             continue
         m2, c2 = parse_deck_file(dd["path"])
@@ -7556,7 +7604,10 @@ def cmd_suggest_homes(args):
     _drestrict = doubler_restriction(cd.get("text") or "") if _daxis else None
     results = []
     skipped_illegal = 0
-    for dd in discover_decks():
+    # Roster only (BS-14): a retired/example deck must not be rated a KEY home —
+    # `suggest`'s Decks column already excludes them via _deck_fingerprints, and the
+    # two surfaces answering "where does this card fit" must agree on the universe.
+    for dd in roster_decks():
         dmeta, cards = parse_deck_file(dd["path"])
         castable = _deck_castable_colors(dmeta, cards, mana)
         if not ccols.issubset(castable):

@@ -438,6 +438,28 @@ class TestCollectionParse:
         assert entries == []
         assert len(warn) == 2 and "Shock" in warn[0]
 
+    def test_foil_and_nonfoil_rows_of_one_printing_SUM(self):
+        """Trackers export foil and non-foil as separate rows sharing (name, set,
+        collector), told apart only by a finish column. 2 foil + 2 non-foil is 4
+        Arena copies; the finish-blind path collapsed them on max to 2 — and this
+        is the one tool that can LOWER a count (broad-scan BS-15)."""
+        entries, _ = ic.parse_export(
+            "Name,Set,Number,Quantity,Finish\n"
+            "Shock,M21,159,2,normal\nShock,M21,159,2,foil\n")
+        assert entries == [(4, "Shock", "M21", "159")]
+
+    def test_a_repeated_row_with_the_SAME_finish_still_takes_max(self):
+        """One holding stated twice is not two holdings — max within a finish."""
+        entries, _ = ic.parse_export(
+            "Name,Set,Number,Quantity,Finish\n"
+            "Shock,M21,159,2,foil\nShock,M21,159,2,foil\n")
+        assert entries == [(2, "Shock", "M21", "159")]
+
+    def test_no_finish_column_keeps_the_old_max_semantics(self):
+        entries, _ = ic.parse_export(
+            "Name,Set,Number,Quantity\nShock,M21,159,2\nShock,M21,159,3\n")
+        assert entries == [(3, "Shock", "M21", "159")]
+
     def test_basics_are_skipped(self):
         entries, _ = ic.parse_export("Name,Count\nForest,40\nShock,4\n")
         assert [e[1] for e in entries] == ["Shock"]

@@ -77,6 +77,10 @@ _ALIASES = {
     "set": ["setcode", "set", "edition", "expansion", "setid"],
     "collector": ["collectornumber", "collectorno", "collector", "cardnumber",
                   "number", "num", "cn"],
+    # Optional: foil/non-foil live on separate export rows sharing (name, set,
+    # collector) in real tracker exports — the finish column is what tells them
+    # apart, and ignoring it halved those holdings (broad-scan BS-15).
+    "finish": ["finish", "foil", "isfoil", "foiltype", "printingtype"],
 }
 # Fraction of the library the export must cover before it is trusted to rewrite counts.
 _SHRINK_FLOOR = 0.5
@@ -149,7 +153,19 @@ def parse_export(text, overrides=None):
     delete a card's copies."""
     header, rows = _read_table(text)
     cols = detect_columns(header, overrides)
-    entries, warnings = [], []
+    warnings = []
+    # One output entry per (front, set, collector) printing, FINISH-aware: foil and
+    # non-foil are separate Arena copies that real tracker exports emit as separate
+    # rows sharing set and collector, distinguished only by a finish column. The old
+    # key-blind path fed both rows to plan(), whose repeated-key collapse takes max —
+    # so 2 foil + 2 non-foil imported as 2, and since this is the ONE tool that can
+    # lower a count, a correct prior 4 was REDUCED (broad-scan BS-15; the same
+    # failure shape as F-01, one column over). Per (printing, finish) a repeat still
+    # takes MAX (one holding stated twice); DISTINCT finishes SUM. With no finish
+    # column every row shares finish "" and the old max semantics hold unchanged —
+    # plan()'s own collapse stays as the backstop for direct callers.
+    fin_col = cols.get("finish")
+    groups, order = {}, []
     for i, r in enumerate(rows, start=2):          # row 1 is the header
         name = (r.get(cols["name"]) or "").strip()
         if not name:
@@ -163,7 +179,14 @@ def parse_export(text, overrides=None):
         coll = (r.get(cols.get("collector", "")) or "").strip() if cols.get("collector") else ""
         if _front(name).lower() in BASICS:
             continue                               # unlimited in Arena; not collection data
-        entries.append((int(raw), name, setc, coll))
+        fin = (r.get(fin_col) or "").strip().lower() if fin_col else ""
+        key = (_front(name).lower(), setc.lower(), coll.lower())
+        g = groups.get(key)
+        if g is None:
+            g = groups[key] = {"disp": (name, setc, coll), "fins": {}}
+            order.append(key)
+        g["fins"][fin] = max(g["fins"].get(fin, 0), int(raw))
+    entries = [(sum(groups[k]["fins"].values()), *groups[k]["disp"]) for k in order]
     return entries, warnings
 
 

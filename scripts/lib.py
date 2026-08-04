@@ -156,6 +156,28 @@ def card_colors(colstr):
     return {ch for ch in s.upper() if ch in "WUBRG"}
 
 
+def color_matches(cell, needle):
+    """Does a ``Color(s)`` identity cell match a user's ``--color`` filter?
+
+    SET semantics through ``card_colors`` on BOTH sides — never a substring test.
+    The substring predecessor was the F1 trap wearing a filter's clothes:
+    ``"r" in "colorless"`` is True, so ``--color R`` matched every Colorless card
+    (104 of the 546 library rows it returned; all 1,116 Colorless pool cards) in
+    query.py / pool.py / wishlist.py at once, and the AST gate couldn't see it
+    because a substring ``in`` is not the comprehension idiom it scans for
+    (broad-scan BS-10/BS-18 — check_colors now scans for this shape too).
+
+    A needle with WUBRG letters ("R", "WU", "B/G") matches cards whose identity
+    CONTAINS all of them; a needle with none ("colorless", "c") matches only
+    colorless cards; None/blank means "no filter" and matches everything.
+    """
+    if needle is None or not str(needle).strip():
+        return True
+    want = card_colors(needle)
+    have = card_colors(cell)
+    return want <= have if want else not have
+
+
 def owned_qty(index, name):
     """Quantity owned for a card name from a name→count index, DFC-aware.
 

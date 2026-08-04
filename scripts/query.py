@@ -27,7 +27,7 @@ import os
 import sys
 import textwrap
 
-from lib import HEADER, DEFAULT_CSV, REPO_ROOT, load_rows, eprint
+from lib import HEADER, DEFAULT_CSV, REPO_ROOT, load_rows, eprint, color_matches
 
 
 def keywords_map():
@@ -73,7 +73,9 @@ def matches(row, args):
         return False
     if not has("Card Text", args.text):
         return False
-    if not has("Color(s)", args.color):
+    # Identity is SET-matched via lib.color_matches, never substring — "r" is in
+    # "colorless", so the substring test returned every Colorless card (BS-10).
+    if not color_matches(row.get("Color(s)"), args.color):
         return False
     if not has("Synergies", args.synergy):
         return False

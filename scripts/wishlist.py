@@ -43,7 +43,7 @@ import os
 import sys
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty,
-                 card_colors, card_distinctiveness)
+                 card_colors, card_distinctiveness, color_matches)
 from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
@@ -275,6 +275,15 @@ def cmd_add(path):
                 for col in ("Type", "Card Text", "Color(s)", "Synergies", "Rarity"):
                     if row.get(col):
                         prev[col] = row[col]
+                # An outage-era row's Power was seeded from BLANK Type/Text/Rarity —
+                # a flat 2.0, so a Mythic bomb ranked like filler Uncommon — and it
+                # stuck: seeding below iterates new_rows only, and cmd_seed_power
+                # fills only BLANK cells (broad-scan BS-17). Now that the data
+                # arrived, recompute an UNTRUSTED power (seed/unknown/blank per
+                # G-17's provenance rule); a hand grade is never touched.
+                if power_is_seeded(prev):
+                    prev["Power"] = str(_seed_power(prev))
+                    prev["Power Source"] = POWER_SEEDED
                 reenriched += 1
             else:
                 dupes += 1
@@ -336,9 +345,13 @@ def _match(card, args):
     def has(col, needle):
         return needle is None or needle.lower() in (card.get(col) or "").lower()
     if not (has("Card Name", args.name) and has("Type", args.type)
-            and has("Card Text", args.text) and has("Color(s)", args.color)
+            and has("Card Text", args.text)
             and has("Synergies", args.synergy) and has("Set Code", args.set)
             and has("Target", args.target) and has("Note", args.note)):
+        return False
+    # Identity is SET-matched via lib.color_matches, never substring — "r" is in
+    # "colorless", so the substring test matched every Colorless card (BS-10).
+    if not color_matches(card.get("Color(s)"), args.color):
         return False
     if args.rarity:
         want = {x.strip().lower() for x in args.rarity.split(",")}

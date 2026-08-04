@@ -87,6 +87,18 @@ def reconcile(export_lines, apply=False, set_exact=False):
     for r in _read(POOL):
         pool_by_sc[(r["Set Code"].upper(), str(r["Collector #"]))] = r
         pool_by_name[r["Card Name"].lower()] = r
+    # Front-face alias in a SECOND pass — order-independent, and a REAL card named
+    # like a front is never shadowed (the load_rarities pattern, G-63). The pool
+    # keys a DFC under its full `Front // Back` while an Arena export names the
+    # FRONT, so the un-aliased index reported an owned DFC "NOT FOUND in pool
+    # (skipped)" whenever the exact (set, collector) lookup missed. The old third
+    # fallback here was provably dead code: for a front-name paste it recomputed
+    # the key the second lookup just missed, and for a full-name paste it looked
+    # up a front face in a full-name-keyed index (broad-scan BS-16).
+    for n in list(pool_by_name):
+        front = n.split(" // ")[0].strip()
+        if front and front != n and front not in pool_by_name:
+            pool_by_name[front] = pool_by_name[n]
 
     lib = _read(LIB)
     lib_keys = {(r["Card Name"].lower(), r["Set Code"].upper(), str(r["Collector #"])) for r in lib}
@@ -109,8 +121,9 @@ def reconcile(export_lines, apply=False, set_exact=False):
             continue
         qty, name, setc, coll = int(m.group(1)), m.group(2).strip(), m.group(3).strip(), m.group(4).strip()
         exact = pool_by_sc.get((setc.upper(), coll))
-        pr = exact or pool_by_name.get(name.lower()) \
-            or pool_by_name.get((name + " // ").split(" // ")[0].lower())
+        # The name index aliases DFC fronts (above), so one lookup covers both a
+        # full-name and a front-name paste.
+        pr = exact or pool_by_name.get(name.lower())
         if not pr:
             notfound.append(f"{name} ({setc}) {coll}")
             continue

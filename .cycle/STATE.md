@@ -40,6 +40,38 @@ sixth finding was meant, it was not implemented.
 `claude/broad-scan-hekdj0`; docs updates (G-38/G-58/G-63 long forms) flagged for
 /sync-docs, not yet written.
 
+## Session — broad-implement Batches 1 & 2 (2026-08-04, same session, second pass)
+
+Eleven more scan findings landed on `claude/broad-scan-hekdj0`. Block:
+`.cycle/blocks/2026-08-batch1-2-broad-implement.md`.
+
+**Batch 1 (trust the surfaces):** BS-10+18 — `--color` now set-matches via new
+`lib.color_matches` in query/pool/wishlist (546→442 on `--color R`; the 104 Colorless
+under `--color colorless`), and check_colors gained a membership-scan that was watched
+to fail on the old shape, plus behavioral anchors and 5 unit tests. BS-11 — tribes
+payoff scan sees plurals (deck 49/48 payoff lists now show their lords). BS-12 —
+`load_keywords` front-face aliased (Cecil's keywords back). BS-13 — live-fetched
+split costs book front-face MV. BS-14 — suggest-homes/similar/sync scope to
+`roster_decks()`. BS-09 — 404 XSS escaped.
+
+**Batch 2 (data safety):** BS-03 — `sheets_sync pull` is dry-run by default with
+`--apply` + a 50% shrink guard (fake-worksheet tested: header-only and tiny sheets
+refused). BS-15 — `import_collection` is finish-aware (foil+non-foil SUM; same-finish
+repeats still MAX; 3 new tests). BS-16 — `reconcile_crafts` pool index front-face
+aliased, dead fallback deleted (front-name paste of a DFC now reconciles). BS-17 —
+outage-era wishlist Power seeds recompute on re-enrich (2.0→6.5 in the verified case;
+hand grades untouched). Rider — `build_mana`'s front-face loop propagates outages to
+the clean-abort path instead of writing blanks over ~700 good rows under --refetch.
+
+**Verification:** check_all green (same 2 pre-existing soft warnings), 869/869 pytest
+(8 new), scenario walks clean. Net +4 − 0.
+
+**Where I left off:** Batches 1–2 committed and pushed. Remaining backlog: Batch 3
+(interface parity), Batch 4 (gate hardening — the sibling-filter diff gate and
+lib.alias_front are the two that prevent recurrence), Batch 5 (low tail), Batch 6
+(tests for the 7 uncovered scripts). /sync-docs still owed for BOTH blocks' doc items
+(--color semantics, sheets_sync contract, G-38/G-58/G-63 long forms).
+
 ## Session — systems map + agreement gate (2026-07-29)
 
 The task-first systems map landed (`docs/systems-map.md`), the agreement gate landed
