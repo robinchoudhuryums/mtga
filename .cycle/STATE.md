@@ -636,3 +636,41 @@ lesson deserves its own `[G-nn]` anchor — it currently lives only in check_rol
 docstring, and K-12 covers "counts under-count" but not "the pattern set is a whitelist".
 Also still open and unrelated: the queued swap plans for decks 54 / 54a / 54b in
 `.cycle/54-pile-reanalysis.md` §5 and §5b.
+
+---
+
+## Session 2026-08-04 (continued): the three Mardu decks drafted, pile doc closed out
+
+**Completed:** /draft-deck for all three decks the 131-card pile analysis produced —
+55 Mardu Waves (Mobilize pulse; A PROVISIONAL at the floor), 55a Mardu Spellstorm
+(cast-cadence; A PROVISIONAL), 55b Mardu Airbender (exile-cast; B PROVISIONAL, argued
+under the A floor). Full draft-deck pipeline each: text read, legal, preflight READY,
+mana + consistency (manabases rebalanced from the cast-on-curve table: 55 traded 2
+Swamps to Plains for the WW three-drops, 55a traded 4, 55b dropped Swamps entirely for
+its 2-pip B splash), targets, similar, screen of the rejected/parked pile, cuts,
+tier + audit-rationale, dashboard rebuild, verify-commit tail. Commits a6f6caa /
+2b6774f / 7d43477 on claude/broad-scan-hekdj0.
+
+**Decisions made:**
+- 55b graded UNDER its metrics floor (B vs A) — payoff concentration + protection 2 +
+  card-adv 0; the rubric permits it and the header argues it.
+- Quintorius Kand swapped in over Stand Up for Yourself in 55b after screening KEY —
+  Discover fills the measured zero card-advantage axis; same copy sits in 45/24/24b
+  (decks share the collection).
+- Six roleless cards baselined rather than pattern-edited (Delney precedent; a role
+  pattern edit needs a roster-wide diff per K-12 and is cycle work, not draft work).
+- The pile doc's "flashback pairs with Zuko/Appa" claim was WRONG (they trigger on
+  exile-casts only; flashback casts from the graveyard) — corrected in 55b's notes.
+- Deck 45 overlap surfaced by `similar` and stated honestly in 55b's archetype rather
+  than pivoting the build: different enabler suite (own-board exile vs library
+  impulse/heist), different win-con (wide vs drain), 3 shared nonland cards.
+
+**Decided against:** churning the three 60s toward the screen's KEY bench (Cruel
+Administrator, Shock Brigade, Reigning Victor…) — the consolidated plan already ranked
+them below the ★★★ picks and nothing expired; they are recorded as the bench in 55's
+notes. Also against hand-writing rotation years — deck.py rotation is the source.
+
+**Where this leaves off:** `.cycle/55-mardu-analysis.md` deleted (findings folded into
+the three deck headers). check_all clean, zero soft warnings, 922 tests green. Open:
+the 54-family swap plans in `.cycle/54-pile-reanalysis.md` (§5/§5b) remain unapplied;
+no PR open for the current branch (user has not asked).

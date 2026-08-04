@@ -33,6 +33,16 @@
 #: notes: token exiled dies. Deliberately NOT included: Group Project (its flashback
 #: notes: taps three untapped creatures, and this deck's width enters tapped-attacking);
 #: notes: Leyline of the Guildpact ({G/U} pip is uncastable in strict Mardu).
+#: notes: PARKED, NOT DEAD (from the pile, each with the count that revives it):
+#: notes: Tiger-Dillo and Scalestorm Summoner at ~8+ power-4+ bodies (a tall rebuild);
+#: notes: Remnant Elemental at ~6+ land-drop synergies (final count: 1 payoff, 0
+#: notes: enablers); Southern Air Temple if a second Shrine ever exists (count: 1);
+#: notes: Eddie Brock only in a green variant (transform needs literal {G}); Aziza,
+#: notes: Mage Tower Captain with a vigilance stay-home package (Swiftblade /
+#: notes: Seedglaive / Snow / Prickly's Mercenary); The Scarlet Witch at ~6+ MV>=4
+#: notes: instants/sorceries (55a holds 1); Crime Novelist at ~8+ artifact producers
+#: notes: (55a holds 3). Bench if a slot opens (screened KEY, in grade order): Cruel
+#: notes: Administrator, Shock Brigade, Reigning Victor, Jolly Balloon Man, Sami.
 
 # Wave engines
 2 Zurgo, Thunder's Decree (TDM) 237
