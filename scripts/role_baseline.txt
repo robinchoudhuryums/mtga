@@ -128,6 +128,7 @@ Foggy Swamp Visions
 Formidable Speaker
 Fortress Kin-Guard
 Frantic Strength
+Frontline Rush
 Frontline War-Rager
 Frozen in Ice
 Fynn, the Fangbearer
@@ -225,6 +226,7 @@ Multiversal Incursion
 Namazu Trader
 Nashi, Searcher in the Dark
 Needletooth Pack
+Neriv, Heart of the Storm
 Ninja of the Hand
 North Pole Patrol
 Nurturing Bristleback
