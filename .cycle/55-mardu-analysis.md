@@ -1,6 +1,6 @@
 # 55 Mardu (RWB) Mobilize pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS — batch 4 of 5 done (104/131).** Delete once the deck(s)
+**Status: ALL FIVE BATCHES READ (131/131). Consolidated plan below — awaiting user picks.** Delete once the deck(s)
 are drafted and findings folded into their `#: notes:` blocks. A scratchpad, not a
 source of truth — decks/ are.
 
@@ -29,7 +29,10 @@ step."* Everything follows from that clock:
    "deals damage equal to creatures you control" on an attack, Tremors-style ETB pings)
    gets the peak number; a sorcery-speed count effect you cast MAIN PHASE 1 sees the
    trough (yesterday's tokens are gone, this turn's not yet made). Grade every
-   count-reader by WHEN it reads.
+   count-reader by WHEN it reads. **AMENDED batch 5: MAIN PHASE 2 sees the full wave's
+   WIDTH** — the tokens live until the beginning of the end step, so post-combat
+   sorceries count them and post-combat sac outlets can EAT them. Only their DEATHS
+   have not happened yet (E-03 unchanged). Main 1 = trough; combat + main 2 = peak.
 2. **Every combat is an ETB WAVE.** N tokens enter attacking → "whenever a creature
    enters" triggers fire N times per combat, every combat. This is the engine's real
    output; Impact Tremors-class cards are converters from width-pulse to damage.
@@ -82,6 +85,11 @@ step."* Everything follows from that clock:
   if a creature died this turn" → NO, the intervening-if is checked when triggers go
   on the stack, before the simultaneous sac trigger resolves (CR 603.4). The original
   E-03 was shape (iii) only and over-generalized.
+- **E-05 (batch 5): I over-applied the trough rule to Akul.** His sorcery-only sac
+  CAN eat the wave — main phase 2 is before the end step, the tokens are alive, and
+  three of them pay his cost. Batch 4's parking reason ("the wave can't pay it") was
+  wrong; the real constraints are his {B}{B}{R}{R} pips and wanting a bomb in hand.
+  Re-graded ◇ → ★★ primary. The framework's rule-1 amendment is the general fix.
 - **E-04 (batch 2): airbending/exiling a TOKEN kills it.** Appa's airbend and Avatar's
   Wrath remove tokens permanently (a token in exile ceases to exist) — their recast
   value applies to NONTOKEN permanents only. Blink/exile value must be graded against
@@ -89,7 +97,35 @@ step."* Everything follows from that clock:
 
 ## 3. Cross-batch observations
 
-- Axis member counts (running, after batch 4): A=5 B=4 C=17 D=12 E=11 F=12.
+- Axis member counts (FINAL): A=7 B=4 C1=9 C2=12 D=13 E=13 F=13. Mobilize bearers: 6
+  in-pile (Stadium 1/1, Shock Brigade 1/3, Zurgo's Vanguard */3, Bone-Cairn 4/4,
+  Zurgo 2/4, Reigning Victor 3/3) + Fire Navy Trebuchet off-pile + wave-shaped
+  engines (Mardu Siegebreaker, Cruel Administrator, Jolly Balloon Man, Push//Pull's
+  back half).
+- **Zurgo, Thunder's Decree is the architecture card:** "during your end step, Warrior
+  tokens can't be sacrificed" defeats the delayed sac trigger ENTIRELY (it tries once,
+  fails, never returns) — with Zurgo out, every wave is PERMANENT width. The deck
+  stops being pulse-only; sorcery-speed counts, Akul fodder, and Delney (Zurgo is
+  power 2 — doubled Mobilize 2 = 4 tokens/attack) all improve. He is the primary's
+  centerpiece.
+- **Windcrag Siege (Mardu mode) is Delney-on-an-enchantment** for ATTACK-caused
+  triggers of permanents: doubles every Mobilize wave, Wingnut's pump, Cruel Admin's
+  Soldier, Siegebreaker's copies. It does NOT double ETB converters (Tremors triggers
+  off entering, not attacking).
+- **Neriv doubles the wave's DAMAGE** (entered-this-turn creatures deal double) —
+  tokens hit for 2 each; stacks under Windcrag/Delney wave doubling.
+- **The Siegebreaker package:** exile a nontoken ETB creature (Sonic Shrieker, Jet) →
+  a fresh attacking copy EVERY combat (its ETB re-fires; Tremors sees it; Neriv
+  doubles it). E-04 respected (never exile a token).
+- **Landfall final count (user watch): package did NOT materialize** — 1 payoff
+  (Remnant Elemental), 0 true enablers (Mardu Monument fetches to HAND). Remnant
+  stays parked; revival number unmet in this pile.
+- **Leyline of the Guildpact is genuinely uncastable in Mardu** — {G/U} demands G or
+  U mana, neither exists here. ✗ (not parked; a 4c/5c deck's card).
+- **Thanos, graded as what's reachable:** the power-up needs literal {C}{W}{U}{B}{R}{G}
+  — dead in Mardu — but the front is a castable {R}{W}{B} 4/4 deathtouch lifelink,
+  a fair body on rate. ★ as a body, ability written off (contrast Eddie Brock, whose
+  PAYOFF was the unreachable half).
 - **Batch 4 held the primary's SPINE:** Zurgo's Vanguard (self-scaling bearer),
   EPF Point Squad (the wave feeds him PERMANENTLY — counters outlive the tokens),
   Frontline Rush (instant-speed +X at the pulse peak), Raph & Leo (extra combat =
@@ -213,6 +249,38 @@ AXIS (primary = the Mobilize wave deck; letters = variant axes above).
 
 ## 5. Consolidated plan (live)
 
+### Batch 5 (27 — top end and lands)
+
+| Card | Primary | Axis | Note |
+|---|---|---|---|
+| Mabel, Heir to Cragflame | ★ | — | free Cragflame (haste+vigilance) on a bearer; Mouse count too low for the anthem |
+| Windcrag Siege | ★★★ | — | Mardu mode doubles ATTACK-caused triggers of permanents — every wave, Wingnut, Cruel Admin, Siegebreaker; not Tremors (ETB≠attack) |
+| Bre of Clan Stoutarm | ★★ | C1 ★★ | taps HERSELF (rule 6 clean); lifelink the bearer → free-cast MV≤life at end step |
+| Ertha Jo, Frontier Mentor | ★★ | — | copies targeted ACTIVATIONS: Stadium's count-damage, Balloon Man's copy, Mercenary pumps |
+| Sami, Ship's Engineer | ★★ | — | "2+ tapped" post-attack = always (rule 6 as upside); free 2/2 per turn |
+| Sun Warriors | ★★★ | A | firebending X = count AFTER the wave resolves first — width into mana, mid-combat; {5} sink included |
+| Veteran Guardmouse | ★ | F/E | Valiant + scry rider |
+| Jet, Freedom Fighter | ★★ | A | rule-1 AMENDMENT case: cast MAIN 2 → counts the still-living wave |
+| Lorehold, the Historian | ◇ | E ★★ | hand-miracle {2} makes the big-spell tilt real; enables Scarlet Witch's gate |
+| Thor Odinson | ◇ | D/E ★★ | double prowess, vigilance |
+| Aurelia, the Warleader | ★★★ | — | untap ALL + extra combat = full second wave |
+| Molten Note | ◇ | E ★ | "mana SPENT" not MV (framework Stage-1 distinction); untap-all rider |
+| Form a Posse | ★ | F | X persistent Mercenaries; Akul/Ertha fodder |
+| Mardu Monument | ★ | infra | fetch-to-HAND (no landfall); late 3-Warrior sac |
+| Fire Lord Zuko | ★ | C1 ★★★ | the exile variant's payoff: counters per exile-cast; firebending scales with his own growth |
+| Push // Pull | ★★ | C2 ★★ | G-02: front is {1}{W/B} removal, not MV 8; back is a wave-shaped reanimation |
+| Bone-Cairn Butcher | ★★★ | A | Mobilize 2 + the WAVE GAINS DEATHTOUCH — attacking into it loses material every turn |
+| Zurgo, Thunder's Decree | ★★★ | A | the architecture card: end-step sac PREVENTED once = prevented forever; waves become permanent; power 2 → Delney doubles him |
+| Thanos, the Mad Titan | ★ | — | power-up needs literal WUBRG+C — dead; the {R}{W}{B} 4/4 deathtouch lifelink body is still fair |
+| Mardu Siegebreaker | ★★★ | A | attacking COPY of your best ETB creature every combat; sac-at-end-step (wave-shaped); pair with Sonic Shrieker/Jet |
+| All-Out Assault | ★★ | — | anthem + deathtouch + a third extra-combat effect |
+| Neriv, Heart of the Storm | ★★★ | A | entered-this-turn creatures deal DOUBLE — tokens hit for 2; stacks with wave-count doublers |
+| Sonic Shrieker | ★ | — | ★★ as the Siegebreaker exile target (ETB re-fires per copy) |
+| Defibrillating Current | ★ | — | {2/R}{2/W}{2/B}: MV prints 6, casts for 3 colored pips (rule 5) |
+| Nomad Outpost | ★ | infra | the Mardu tapland |
+| Reigning Victor | ★ | A | bearer #6; flexible hybrid cost |
+| Leyline of the Guildpact | ✗ | — | {G/U} demands G or U mana — uncastable in strict Mardu |
+
 ### Batch 4 (26 — the multicolor heart)
 
 | Card | Primary | Axis | Note |
@@ -308,6 +376,62 @@ AXIS (primary = the Mobilize wave deck; letters = variant axes above).
 
 ## 5. Consolidated plan (live)
 
-(first draft lands after batch 3 — the Mobilize core itself (Zurgo, Siegebreaker,
-Bone-Cairn, Frontline Rush, Warriors) is still unread in batches 4-5; ranking the
-shell before reading the engine would be premature)
+**VARIANT VERDICT (all 131 read): three decks, matching the user's 2–3 guess.**
+A and B fold into the primary (the pingers ARE its damage converters); F folds in as
+a sub-package; C1 and C2+D+E each stand alone.
+
+### 55 PRIMARY — "Mardu Waves" (Mobilize pulse-to-permanence)
+- **Engine (bearers + wave-shaped):** Zurgo, Thunder's Decree ★★★ (centerpiece —
+  makes waves permanent) · Zurgo's Vanguard ★★★ · Stadium Headliner ★★★ · Bone-Cairn
+  Butcher ★★★ (wave gains deathtouch) · Shock Brigade ★★ · Reigning Victor ★ ·
+  Fire Navy Trebuchet (off-pile, owned) · Mardu Siegebreaker ★★★ + Sonic Shrieker/Jet
+  as its exile targets · Cruel Administrator ★★ · The Jolly Balloon Man ★★
+- **Doublers:** Windcrag Siege ★★★ (attack-triggers) · Delney ★★★ (power≤2 triggers)
+  · Neriv ★★★ (damage) · Raph & Leo ★★★ / Aurelia ★★★ / All-Out Assault ★★ (extra
+  combats = extra waves)
+- **Converters (the wave becomes cards/damage/mana):** Impact Tremors ★★★ · Shocking
+  Sharpshooter ★★★ · EPF Point Squad ★★★ (permanent counters) · Enduring Innocence
+  ★★★ (draw/combat) · Spider-UK ★★ · Stormbeacon Blade ★★★ · Sun Warriors ★★★
+  (width → {R} mana mid-combat) · Suki ★★★ (wave-death → permanent Ally) · Sami ★★
+- **Pulse spells:** Frontline Rush ★★★ · Duty Beyond Death ★★★ · Auron's Inspiration
+  ★★ · Practiced Offense ★★ · Boros Charm ★★
+- **Big sink (revived):** Akul ★★ (E-05 — main-2 sac of three live tokens)
+- **Interaction:** Lightning Helix ★★ · Lorehold Charm ★★ · Stand Up for Yourself ★ ·
+  Ajani's Response ★ · Sheltered by Ghosts/Prayer of Binding ★ · Defibrillating
+  Current ★ · Push // Pull ★★ (2-mana front; wave-shaped back)
+- **Infra:** Mardu Devotee ★★ · Terrapact ★ · Nomad Outpost + fixers · Mabel ★
+  (Cragflame on a bearer)
+- **F sub-package (trim to taste):** Snow Villiers ★★★ · Team Avatar ★★ (stack
+  ruling) · Bulk Up · Go Ninja Go · Rabid Gnaw · Swiftblade · Seedglaive
+- **PROTECT (what `cuts` can't see):** Zurgo (rules-layer sac prevention), Windcrag
+  Siege (trigger doubling reads as blank text to role patterns), Delney (G-40's
+  documented shape), Suki (leave-trigger cadence), Siegebreaker's exile targets
+  (their value is the copies, not their bodies).
+
+### 55a — "Mardu Spellstorm" (C2 + D + E merged)
+Payoffs: Judith ★★★ · Cori Mountain Stalwart ★★ · Thor ★★ · Monica ★★ · Heartflame
+Duelist ★★. Mana engine: Electro ★★★ · Blazing Firesinger ★★ · Brazen Collector ★★ ·
+Tablet of Discovery ★★ · Death to Our Enemies ★★ (+ Crime Novelist on its Treasures).
+Velocity: Cosmogrand ★★★ · Sage ★★ · Sunstar ★★ · Rally ★★ · Pigment Wrangler ★★.
+Graveyard half: Kirol ★★★ + Spirit Mascot + the flashback suite (Pursue ★★,
+Antiquities, Auron's, Practiced) + discard outlets (UGG ★★★, Flamecache, Cruelclaw)
++ mayhem (Electro's Bolt ★★). Removal that scales: Thunder Salvo ★★ · Frantic
+Firebolt ★★. Big-spell tilt (optional): Lorehold the Historian ★★ miracle + Scarlet
+Witch (parked gate). Targeting riders: Inkwright ★ · Scornmage ★ · Seedglaive ★.
+Aziza rides ONLY with the vigilance package (parked note).
+
+### 55b — "Mardu Airbender" (C1 exile-cast, white-heavy)
+Fire Lord Zuko ★★★ (counters per exile-cast + firebending) · Appa ★★★ (flash save +
+Ally per exile-cast) · Bre of Clan Stoutarm ★★ (lifegain → free cast) · Knight
+Luminary ★★ (warp) · Aven Interrupter ★★ (self-plot, E-01) · Antiquities on the
+Loose ★★ · Longhorn Sharpshooter ★ · Demonic Ruckus ★ (plot) · Avatar's Wrath ◇ ·
+plus white token base (Suki, Frontline Rush, Cosmogrand) and Mardu interaction.
+Thinnest of the three — a 60 exists, but it borrows the primary's white half; build
+THIRD, after the first two prove which cards they actually keep.
+
+### Next steps (Stage 6)
+1. User picks the build order (recommendation: 55 primary via /draft-deck, then 55a;
+   55b after both settle).
+2. /draft-deck per deck; this doc's PROTECT list goes into `#: protect:` headers.
+3. Fold durable findings (E-01..E-05, the stack rulings, Zurgo architecture note)
+   into the deck files' `#: notes:`, then DELETE this doc.
