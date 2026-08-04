@@ -768,7 +768,11 @@ def _rank_scores(rows, keep=None):
             # float() accepts "nan"/"inf"/"-inf" — a non-finite Power would escape the
             # bad-value flag and poison the `combined` score (nan scrambles the sort,
             # inf pins to the top), audit A10. Treat it like a non-numeric typo.
-            if not math.isfinite(power):
+            # OUT-OF-RANGE is the same trap one notch subtler: the scale is 0–10, and
+            # a large FINITE typo passes both guards and pins the rank — Pensive
+            # Professor's cell read 78.0 and topped Tier A at combined 42.3
+            # (broad-scan batch 6). Flag, score 0.0, tell the user to fix the cell.
+            if not math.isfinite(power) or not (0.0 <= power <= 10.0):
                 power, bad_power = 0.0, True
         except ValueError:
             # A non-numeric typo ("~9", "4,5", "TBD") must NOT silently score 0.0 and
@@ -934,7 +938,8 @@ def cmd_rank(rows, all_rows=None):
     bad = [(s["name"], s["raw_power"]) for s in scored if s["bad_power"]]
     if bad:
         # A malformed Power scored 0.0 and would otherwise sink silently (F9).
-        print(f"⚠ {len(bad)} card(s) have a NON-NUMERIC Power (shown as 'pow!', scored 0.0): "
+        print(f"⚠ {len(bad)} card(s) have a NON-NUMERIC or OUT-OF-RANGE Power "
+              f"(shown as 'pow!', scored 0.0): "
               f"{', '.join(f'{n} ({v!r})' for n, v in bad[:6])}"
               f"{' …' if len(bad) > 6 else ''}. Fix the cell to a 1–10 number.")
     rot = [s for s in scored if s.get("rot")]

@@ -139,6 +139,36 @@ flag) plus the owner data-hygiene items (27 printings, 4 stale rationales,
 Pensive Professor/Riverchurn Power-cell typos) and the strategic items
 (matches.csv, deck lifecycle).
 
+## Session — Batch 6, the coverage batch (2026-08-04, same session, fifth pass)
+
+**The 2026-08 broad-scan backlog is CLOSED** — top-5 + Batches 1–6 all implemented
+in one session. Block: `.cycle/blocks/2026-08-batch6-broad-implement.md`.
+
+Six new test files (50 tests → **922 total in 24 files**) cover the previously
+untested scripts, writers first: reconcile_crafts (tmp four-CSV world; the BS-16
+DFC pin), sheets_sync (fake worksheet; the BS-03 header-only/shrink/dry-run
+contract), validate (INV-01's letter + a characterization pin on the zero-row
+pass), query+pool (the BS-10 color-set pins), scryfall (scripted urlopen; the
+404/400/429/timeout classification incl. batch-5's no-retry-on-400), enrich (the
+F-02 schema guard, F-11 vanilla rule, clean outage abort). The F20 outage→
+re-enrich→re-seed path is tested end to end with a hand-grade-survives control.
+
+**The Power range flag found a real mess:** 15 wishlist Power cells carry
+0–100-style grades ('84','78','74','66','60','52'…) and were silently LEADING the
+craft ranking — Pensive Professor sat at #1 with combined 42.3 on a 0–10 scale.
+They now flag pow! and score 0.0 (loud under-rank replacing silent over-rank).
+**Owner action: re-grade those 15 cells** (`wishlist.py --rank` names them); they
+are hand-grade data per G-17 and were deliberately not auto-rewritten.
+
+**Verification:** 922/922 pytest, check_all green.
+
+**Where I left off:** everything committed and pushed on `claude/broad-scan-hekdj0`.
+Nothing from the scan remains unimplemented. Open items are owner-paced: the 15
+Power cells, 27 unverified printings, 4 stale tier rationales; then the strategic
+bets (log the first matches — matches.csv is still empty — deck lifecycle,
+rotation planning, keyword theming). Doc touch-ups queued for /sync-docs: the
+[C-07] test count (18→24), G-19's range-enforcement note, Batch 4's carry-overs.
+
 ## Session — systems map + agreement gate (2026-07-29)
 
 The task-first systems map landed (`docs/systems-map.md`), the agreement gate landed

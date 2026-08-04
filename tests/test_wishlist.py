@@ -254,3 +254,86 @@ class TestBudgetPlanner:
     def test_keep_is_optional_and_defaults_to_everything(self):
         rows = self._rows(3)
         assert len(wishlist._rank_scores(rows)) == 3
+
+
+class TestOutageReseed:
+    """The F20 + BS-17 path end to end: a card added during a Scryfall outage gets a
+    2.0 Power seed computed from BLANK data; the re-add backfills the card's fields
+    AND recomputes the untrusted seed — while a hand grade is never touched. This
+    path had no coverage at all (batch 6): it needs the enrich seam faked, which is
+    exactly why nobody had tested it."""
+
+    def _world(self, tmp_path, monkeypatch):
+        monkeypatch.setattr(wishlist, "WISHLIST_CSV", str(tmp_path / "wl.csv"))
+        monkeypatch.setattr(wishlist, "POOL_CSV", str(tmp_path / "pool.csv"))    # absent → {}
+        monkeypatch.setattr(wishlist, "DEFAULT_CSV", str(tmp_path / "lib.csv"))  # absent → own 0
+        batch = tmp_path / "batch.txt"
+        batch.write_text("1 Test Bomb (SET) 9\n", encoding="utf-8")
+        return str(batch)
+
+    def _fake_enrich(self, outage):
+        def _enrich(name, set_code, collector, pool):
+            if outage:
+                data = {"Card Name": name, "Type": "", "Card Text": "", "Color(s)": "",
+                        "Synergies": "", "Rarity": ""}
+                status = "error"
+            else:
+                data = {"Card Name": name, "Type": "Legendary Creature — Demon",
+                        "Card Text": "Flying. Destroy target creature.",
+                        "Color(s)": "B", "Synergies": "removal", "Rarity": "Mythic"}
+                status = "scryfall"
+            data.update({"Set Code": set_code, "Collector #": collector,
+                         "Target": "", "Note": ""})
+            return data, status
+        return _enrich
+
+    def test_outage_seed_is_recomputed_on_reenrich(self, tmp_path, monkeypatch):
+        batch = self._world(tmp_path, monkeypatch)
+        monkeypatch.setattr(wishlist, "enrich", self._fake_enrich(outage=True))
+        wishlist.cmd_add(batch)
+        row = wishlist.load_wishlist()[0]
+        outage_seed = float(row["Power"])
+        assert row["Power Source"] == "seed" and outage_seed == 2.0   # blank-data floor
+        # Scryfall comes back; the SAME batch is re-added.
+        monkeypatch.setattr(wishlist, "enrich", self._fake_enrich(outage=False))
+        wishlist.cmd_add(batch)
+        row = wishlist.load_wishlist()[0]
+        assert row["Type"], "F20: the re-add must backfill the outage row's fields"
+        assert float(row["Power"]) > outage_seed, \
+            "BS-17: the untrusted seed must be recomputed from the arrived data"
+        assert row["Power Source"] == "seed"
+
+    def test_a_hand_grade_survives_reenrich(self, tmp_path, monkeypatch):
+        batch = self._world(tmp_path, monkeypatch)
+        monkeypatch.setattr(wishlist, "enrich", self._fake_enrich(outage=True))
+        wishlist.cmd_add(batch)
+        rows = wishlist.load_wishlist()
+        rows[0]["Power"], rows[0]["Power Source"] = "9.5", "hand"     # the human graded it
+        wishlist.write_wishlist(rows)
+        monkeypatch.setattr(wishlist, "enrich", self._fake_enrich(outage=False))
+        wishlist.cmd_add(batch)
+        row = wishlist.load_wishlist()[0]
+        assert row["Power"] == "9.5" and row["Power Source"] == "hand", \
+            "G-17: a hand grade is trusted; re-enrich must never overwrite it"
+
+
+class TestPowerRangeFlag:
+    def test_out_of_range_power_is_flagged_and_scored_zero(self):
+        """The Pensive Professor class (batch 6): a finite 78.0 passed the NaN and
+        non-numeric guards and pinned the top of the craft ranking at combined
+        42.3 on a 0-10 scale. 15 live cells turned out to carry 0-100-style
+        grades."""
+        row = {"Card Name": "Typo Bomb", "Type": "Creature", "Card Text": "",
+               "Color(s)": "B", "Synergies": "", "Set Code": "SET",
+               "Collector #": "1", "Target": "", "Note": "", "Power": "78",
+               "Power Source": "hand"}
+        s = wishlist._rank_scores([row])[0]
+        assert s["bad_power"] and s["power"] == 0.0
+
+    def test_ten_and_zero_are_in_range(self):
+        for val in ("10", "0"):
+            row = {"Card Name": "Edge Case", "Type": "Creature", "Card Text": "",
+                   "Color(s)": "B", "Synergies": "", "Set Code": "SET",
+                   "Collector #": "1", "Target": "", "Note": "", "Power": val,
+                   "Power Source": "hand"}
+            assert not wishlist._rank_scores([row])[0]["bad_power"]
