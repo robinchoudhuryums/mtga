@@ -51,8 +51,10 @@ Black Cat, Cunning Thief
 Black Widow, Super Spy
 Blacksmith's Talent
 Blasphemous Edict
+Blazing Firesinger
 Blitzball Shot
 Bloodthirsty Conqueror
+Brazen Collector
 Brightspear Zealot
 Broodguard Elite
 Bumi, King of Three Trials
@@ -239,6 +241,7 @@ Pain for All
 Palani's Hatcher
 Paradox Surveyor
 Pet Avengers
+Pigment Wrangler // Striking Palette
 Powerful Broker
 Pride of the Road
 Prideful Parent

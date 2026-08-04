@@ -1,0 +1,90 @@
+#: name: Mardu Spellstorm
+#: format: Standard
+#: colors: RWB
+#: plan: midrange
+#: archetype: MARDU SPELLS-VELOCITY with a graveyard half — the C2+D+E merge from the
+#: archetype: 131-card pile analysis. Cast two-plus spells a turn: the mana engine funds
+#: archetype: it (Electro rebates per spell and his mana persists, Brazen Collector adds
+#: archetype: {R} per attack, Blazing Firesinger's prepared half is a +5 red burst, Death to Our
+#: archetype: Enemies pays for the next four spells in Treasures), the velocity layer
+#: archetype: pays it off per second spell (Cosmogrand Zenith, Sunstar Lightsmith, Rally
+#: archetype: the Monastery), and the payoff layer converts each cast into damage and
+#: archetype: life (Judith, Cori Mountain Stalwart, Thor, Monica, Heartflame Duelist).
+#: archetype: The graveyard half keeps the storm going: Kirol grows on every card that
+#: archetype: LEAVES the yard, which the flashback suite (Pursue the Past, Auron's
+#: archetype: Inspiration, Practiced Offense) and Electro's Bolt mayhem provide, with
+#: archetype: Ultimate Green Goblin and Cruelclaw as the discard outlets that fill it.
+#: archetype: Distinct from deck 25 (UR Spellstorm), the roster's other spellslinger:
+#: archetype: 25 magnifies ONE big turn (storm copies of big spells); this deck rewards
+#: archetype: a steady CADENCE — second-spell-each-turn triggers, per-cast damage
+#: archetype: converters, and a graveyard half 25 does not have. One shared card.
+#: protect: Electro, Assaulting Battery; Kirol, History Buff // Pack a Punch; Judith, Carnage Connoisseur; Ultimate Green Goblin; Cosmogrand Zenith
+#: tier: A (PROVISIONAL) — graded at the measurable floor: deep interaction for a
+#: tier: spells deck (much of it scaling with the cast count it wants anyway) and
+#: tier: real card advantage. Unproven in matches; the honest weaknesses are a slow
+#: tier: start (few early drops, curve over 3) and a protection axis of nearly
+#: tier: nothing — the engine creatures die to everything and the deck rebuilds on
+#: tier: velocity rather than protecting them. Re-grade after real games.
+#: notes: BUILT from the 55-mardu pile analysis (C2+D+E merged per the consolidated
+#: notes: plan). Gated cards left OUT, each with the count that parks it (G-61): The
+#: notes: Scarlet Witch needs ~6+ MV>=4 instants/sorceries (this list has 1 — Rally;
+#: notes: Thunder Salvo only via X); Crime Novelist needs ~8+ artifact producers (this list has
+#: notes: 3 — Death to Our Enemies, Tablet, UGG's Treasures); Aziza, Mage Tower Captain
+#: notes: needs the vigilance stay-home package (Swiftblade/Seedglaive/Snow — none
+#: notes: here, they sit with deck 55's F sub-package); Lorehold the Historian rides
+#: notes: only with the big-spell tilt that Scarlet Witch's gate also waits on. Kirol
+#: notes: triggers on cards LEAVING the graveyard — flashback casts, mayhem casts and
+#: notes: Cruelclaw's free cast all count; blind self-mill does not fill him alone.
+#: notes: Electro's mana persists across steps within the turn — combat {R} from Brazen
+#: notes: Collector plus Electro rebates fund a post-combat second spell every turn.
+#: notes: Exemplar of Light parked: the lifegain is real (Heartflame's static gives
+#: notes: every instant/sorcery lifelink; Cori, Pursue, Judith add more) but its WW
+#: notes: four-slot competes with Sunstar and screened tangential — revisit if the
+#: notes: deck ever wants a fifth second-spell payoff over interaction.
+
+# Payoffs (per-cast converters)
+2 Judith, Carnage Connoisseur (MKM) 210
+2 Cori Mountain Stalwart (TDM) 175
+1 Thor Odinson (MSH) 234
+1 Monica Rambeau (MSH) 23
+2 Heartflame Duelist // Heartflame Slash (WOE) 228
+
+# Mana engine (spells fund spells)
+2 Electro, Assaulting Battery (SPM) 76
+1 Blazing Firesinger (SOS) 109
+2 Brazen Collector (BLB) 128
+1 Tablet of Discovery (SOS) 132
+1 Death to Our Enemies (MSH) 127
+
+# Velocity (second-spell layer)
+2 Cosmogrand Zenith (EOE) 9
+2 Sunstar Lightsmith (EOE) 42
+2 Rally the Monastery (TDM) 19
+1 Pigment Wrangler // Striking Palette (SOS) 126
+
+# Graveyard half (Kirol + the yard-leaving suite)
+2 Kirol, History Buff // Pack a Punch (SOS) 198
+2 Pursue the Past (SOS) 216
+1 Ultimate Green Goblin (SPM) 157
+1 The Infamous Cruelclaw (BLB) 219
+2 Electro's Bolt (SPM) 77
+1 Auron's Inspiration (FIN) 8
+1 Practiced Offense (SOS) 25
+
+# Removal (scales with the spell count)
+2 Thunder Salvo (OTJ) 150
+2 Frantic Firebolt (WOE) 130
+
+# Lands
+1 Blood Crypt (ECL) 262
+1 Sunbillow Verge (DFT) 264
+1 Blazemire Verge (DSK) 256
+1 Bleachbone Verge (DFT) 250
+1 Nomad Outpost (TDM) 263
+1 Razortrap Gorge (DSK) 267
+1 Sun-Blessed Peak (TLA) 280
+1 Boiling Rock Prison (TLA) 267
+1 Scoured Barrens (M21) 250
+6 Mountain (MSH) 293
+8 Plains (MSH) 287
+1 Swamp (MSH) 291
