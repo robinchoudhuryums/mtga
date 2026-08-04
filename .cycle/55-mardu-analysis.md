@@ -1,6 +1,6 @@
 # 55 Mardu (RWB) Mobilize pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS — batch 3 of 5 done (78/131).** Delete once the deck(s)
+**Status: IN PROGRESS — batch 4 of 5 done (104/131).** Delete once the deck(s)
 are drafted and findings folded into their `#: notes:` blocks. A scratchpad, not a
 source of truth — decks/ are.
 
@@ -89,7 +89,27 @@ step."* Everything follows from that clock:
 
 ## 3. Cross-batch observations
 
-- Axis member counts (running, after batch 3): A=2 B=2 C=12 D=9 E=8 F=8.
+- Axis member counts (running, after batch 4): A=5 B=4 C=17 D=12 E=11 F=12.
+- **Batch 4 held the primary's SPINE:** Zurgo's Vanguard (self-scaling bearer),
+  EPF Point Squad (the wave feeds him PERMANENTLY — counters outlive the tokens),
+  Frontline Rush (instant-speed +X at the pulse peak), Raph & Leo (extra combat =
+  a SECOND wave per turn, untapping the bearers), Jolly Balloon Man (a nightly
+  Balloon copy of Vanguard/Stadium — the copy keeps their count-scaling abilities).
+- **Delney tally, near-final:** bearers Stadium ✓ (1/1), Shock Brigade ✓ (1/3);
+  Zurgo's Vanguard ✗ (power = creature count, usually >2 at trigger time — Delney
+  checks power WHEN the trigger triggers). But the doubling roster widened: Wingnut ✓,
+  EPF ✓ (double counters per wave), Raph & Leo ✓ (up to FOUR untaps), Suki ✓ (two
+  Allies/turn). Delney graduates to ★★★ for the primary.
+- **C splits into two flavors** (affects variant condensation): C1 = exile-cast
+  (Appa, Knight Luminary warp, Aven self-plot, Longhorn plot, Demonic Ruckus plot);
+  C2 = graveyard/discard (Kirol + Spirit Mascot leave-the-yard growers, Ultimate
+  Green Goblin's discard+Treasure engine, Cruelclaw's discard-cast, Electro's Bolt
+  mayhem, the flashback suite, Pursue the Past). C2 overlaps discard outlets and
+  Treasures with D — C2+D+E looks like ONE deck; C1 rides with the primary's white
+  half (Appa/Knight/Ally).
+- **Landfall watch (user):** none in batch 4, but Terrapact's Landers FETCH basics
+  (a land ETB on crack) — if batch 5 shows landfall payoffs, the Landers count
+  toward the revival number for Remnant Elemental.
 - **Mobilize bearer P/T tally (for Delney):** Stadium Headliner 1/1 (power ≤2 ✓). One
   bearer seen, one qualifies. Also tally WARRIOR payoffs — the tokens are Warriors and
   Suki is one; search plural effect-shapes at close-out (K-13).
@@ -129,7 +149,32 @@ step."* Everything follows from that clock:
   Offense flashback + targets; Inkwright wants targeting spells; Sage/Cosmogrand want
   velocity) — first sign C+D+E condense into ONE variant.
 
-## 4. Running verdicts
+## 3b. Parked, not dead (user rule, batch 4)
+
+- **The Scarlet Witch** — discount gates on MV≥4 instants/sorceries; revives at ~6+
+  big spells in the final E list (current pile count is low; tally at close-out).
+- **Akul the Unrepentant** — the sac is SORCERY-only, so the Mobilize wave can't pay
+  it (rule 1 trough + rule 6); revives at ~8+ PERSISTENT token producers (Suki,
+  Antiquities, Cruel Administrator, Prickly Pair, Frontline Rush mode 1…) — that
+  count is actually climbing.
+- **Aziza, Mage Tower Captain** — E-02's tap-three cost; revives with a vigilance/
+  stay-home width package (Swiftblade, Seedglaive, Snow, Prickly's Mercenary) in
+  the copy build.
+
+A ✗/△ is a claim about a COUNT (G-61), and later batches can move it. Each parked
+card names its revival number:
+
+- **Remnant Elemental** — revives if the pile's LANDFALL package (user: small but
+  present, later batches) reaches ~6+ land-drop synergies. Watch batch 4/5.
+- **Tiger-Dillo** — revives at ~8+ power-4+ bodies (F-axis tall build).
+- **Scalestorm Summoner** (◇→★★) — same power-4 count as Tiger-Dillo.
+- **Southern Air Temple** — revives only if a second Shrine appears (count: 1).
+- **Eddie Brock** — stays out for MARDU (transform needs literal {G}); revives only
+  in a 4-color/green variant, which is out of scope.
+- **Crime Novelist / Machinesmith Automaton** — revive at ~8+ artifact-producers
+  (Treasure/Lander cluster tally).
+
+## 4. Running verdicts (batch 4 table below batch 3)
 
 Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`, per
 AXIS (primary = the Mobilize wave deck; letters = variant axes above).
@@ -167,6 +212,37 @@ AXIS (primary = the Mobilize wave deck; letters = variant axes above).
 | Spiritcall Enthusiast | ★★ | — | re-prepares every combat off the wave; repeatable pump that is also an extra CAST (feeds D) |
 
 ## 5. Consolidated plan (live)
+
+### Batch 4 (26 — the multicolor heart)
+
+| Card | Primary | Axis | Note |
+|---|---|---|---|
+| The Scarlet Witch | ◇ | E (parked) | MV≥4 gate — see parked list |
+| War Balloon | △ | — | crew fights rule 6; fire-counter route slow |
+| Zurgo's Vanguard | ★★★ | A | bearer #3; power recalcs continuously — counts his own wave mid-combat |
+| Combustion Man | ★★ | — | punisher removal EVERY attack (rule 4 cadence: once/combat is enough at power 4+) |
+| Pigment Wrangler | ◇ | E ★★ | {R} copy-next-spell sorcery rides the prepared body |
+| The Infamous Cruelclaw | ◇ | C2 ★★ | combat damage → free cast via discard; feeds mayhem |
+| Ultimate Green Goblin | ◇ | C2 ★★★ | the discard engine: upkeep rummage + Treasure; mayhem loop on himself |
+| Akul the Unrepentant | ◇ | F (parked) | sorcery-only sac CANNOT eat the wave — parked on persistent-token count |
+| Cruel Administrator | ★★ | A | the wave that STAYS: persistent firebending Soldiers per attack |
+| Judith, Carnage Connoisseur | ◇ | B/E ★★★ | deathtouch+lifelink on damage spells (Thunder Salvo kills anything) or death-ping Imps; the spells variant's namesake payoff |
+| Aziza, Mage Tower Captain | ◇ | E (parked) | E-02 tap-three; revives with vigilance width |
+| Boros Charm | ★★ | E | modal: reach/indestructible (nontoken board)/double strike |
+| Frontline Rush | ★★★ | F | instant: 2 PERSISTENT Goblins or +X at the pulse peak — the F-axis modal card |
+| Go Ninja Go | ★★ | F | blink re-buys ETBs; damage = greatest power scales with the tall body |
+| Kirol, History Buff | ◇ | C2 ★★★ | every card LEAVING the yard re-prepares a {1}{R}{W} pump — the flashback suite's engine |
+| Lorehold Charm | ★★ | C2 | 3 live modes; reanimates MV≤2 engines; team trample at the peak |
+| Lightning Helix | ★★ | — | premium interaction any build |
+| Pursue the Past | ★ | C2/D ★★ | discard outlet + draw 2 + flashback |
+| Spirit Mascot | △ | C2 ★ | Kirol's little brother |
+| Swiftblade Vindicator | ★ | F ★★ | vigilance dodges rule 6 (untapped for Aziza; pump magnet) |
+| EPF Point Squad | ★★★ | A | wave counters PERSIST after tokens die; hybrid cost; Delney doubles |
+| Cori Mountain Stalwart | ★ | D ★★ | Flurry ping+life; the velocity build's Tremors |
+| Iroh, Tea Master | △ | — | donate gimmick; slow in 1v1 |
+| Seedglaive Mentor | ★ | F/E ★★ | Valiant + vigilance + haste; grows off every targeting trick |
+| Raph & Leo, Sibling Rivals | ★★★ | A | EXTRA COMBAT = second Mobilize wave; untaps the bearers; Delney doubles the untap |
+| The Jolly Balloon Man | ★★ | — | nightly Balloon copy KEEPS count-scaling abilities (copy Vanguard → power = creature count, flying haste) |
 
 ### Batch 3 (26 — the red core: pingers, Mobilize bearers, spell fuel)
 
