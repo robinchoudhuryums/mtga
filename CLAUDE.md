@@ -36,11 +36,15 @@ docs. This file is the source of truth for the workflow commands in
   as `{R}` (the word contains an R), so a colorless card was mis-routed as red by
   `suggest`/`suggest-homes`/fingerprints; a `.replace(" ", "")` variant kept the `/`
   and broke gold cards (audit F1/F2). `card_colors()` handles both — route every new
-  color-parse site through it. `scripts/check_colors.py` (a hard `check_all` gate,
-  like `check_rankings`) locks this in: a colorless card must not read as colored,
-  AND a static AST scan fails the build if any script re-implements the naive
-  `{x for x in … if x in "WUBRG"}` idiom instead of `card_colors()` — the coverage
-  gap that once let the bug regress into `wishlist.py`/`app.py` undetected.
+  color-parse site through it, and a `--color`-style FILTER through
+  `lib.color_matches()` (set semantics both sides): a substring test is the same trap
+  as a filter — `"r" in "colorless"`, so `--color R` matched every Colorless card in
+  query/pool/wishlist at once (BS-10). `scripts/check_colors.py` (a hard `check_all`
+  gate, like `check_rankings`) locks both in: a colorless card must not read as
+  colored, a static AST scan fails the build if any script re-implements the naive
+  `{x for x in … if x in "WUBRG"}` idiom — the gap that once let the bug regress into
+  `wishlist.py`/`app.py` undetected — and a second scan fails any `in` test whose
+  container is a raw `Color(s)` cell, the substring shape the first scan could not see.
 - **Write canonical files through `lib.atomic_write()` (+ `lib.backup_path()`).**
   Every mutation of `card-library.csv` / `card-mana.csv` / `card-pool.csv` /
   `card-wishlist.csv` goes temp-file → timestamped `.bak` → atomic `os.replace`, so
@@ -428,7 +432,10 @@ directions.
   says the deficit is interaction or mana, the fix comes from here, not from plain
   `suggest`.** Never weaken the gated theme filter to surface them; add a parallel path.
   Board-dependent removal is FLAGGED `⚠ scales w/ <axis>` rather than silently boosted —
-  the honest stance for a fuzzy signal. [G-38]
+  the honest stance for a fuzzy signal. Their castability filter reads the PRINTED COST
+  via `_candidate_castability`, same as `suggest` proper — they were the two siblings the
+  G-58 fix missed, hiding 34 castable interaction cards and 25 mana sources from
+  mono-color decks on exactly the paths this rule routes deficits to (BS-01). [G-38]
 - **`cuts` folds a card-QUALITY (power) co-signal**, so an on-theme-but-weak card sorts
   UP the cut list and an on-theme bomb is protected. Bounded and neutral-centred, so it
   only breaks near-ties; a `Pw` column shows it. Still grade from the oracle text, not
@@ -612,12 +619,12 @@ directions.
   `1 Runescale Stormbrood`; then `_multiset` keyed `verify`/`sync` on the raw name, so an
   identical deck read as DRIFTED and `sync --apply` would have written that bare name
   back), and **RARITY** (`load_rarities` reads the pool, keyed only by `Front // Back`, so
-  47 roster names priced blank and every mythic DFC sorted UP the cut list). Each column
-  has ONE front-face accessor — but **the accessor rule does not reach an INDEX**: five
-  loaders alias the front face, two did not, and no gate sees the difference. **Ask which
-  face a column describes; and when you BUILD a name-keyed index over a pool-shaped file,
-  alias the front in a SECOND pass, so a real card named `Front` is never shadowed.**
-  [G-63]
+  47 roster names priced blank and every mythic DFC sorted UP the cut list). The 2026-08
+  scan added FIVE members: two indexes (`load_keywords`, `reconcile_crafts`), two
+  exact-name JOINS (`legality_report`'s copy limit; `swap`'s bump match — a count split
+  across two spellings the 4-copy check could not sum), and the deck editor's JS
+  ownership payload, which no Python gate can reach. **Ask which face a column
+  describes; alias the front in a SECOND pass; key every name JOIN on `_ms_key`.** [G-63]
 
 - **A reanimator's uncastable bombs need `#: uncastable-ok:`, and everything else's do
   not.** The castability lint and `tier_band` both model "you cannot cast this" as a build

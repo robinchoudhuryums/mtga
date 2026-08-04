@@ -40,7 +40,7 @@ undercounts your collection or overwrites it, so `/ingest` exists to route the c
 | Cards you just crafted or opened | `reconcile_crafts.py` (via `/ingest`) | lower bound — takes `max(existing, line)` |
 | A deck list you built in Arena | `import_arena.py --skip-basics` | lower bound |
 | A tracker's full-collection CSV/TSV | `import_collection.py` | **authoritative** — sets exact, including down |
-| The companion Google Sheet | `sheets_sync.py pull` | authoritative (needs credentials) |
+| The companion Google Sheet | `sheets_sync.py pull --apply` | authoritative (needs credentials; dry-run without `--apply`) |
 | One card to fix by hand | `make app` | interactive |
 
 ```
@@ -59,7 +59,11 @@ here that can **lower** a count — which is why it is dry-run by default, refus
 covering under half the library, and leaves cards absent from the export alone unless you
 pass `--zero-missing`. Columns are matched by alias against the header (so most trackers
 work unchanged) and it stops rather than guessing if it can't identify one; map them with
-`--map name=Card,qty=Have`.
+`--map name=Card,qty=Have`. A **finish** column (foil/non-foil), when present, is part of
+the identity: foil and non-foil rows of one printing are separate Arena copies and their
+quantities **sum**, while a repeated row with the same finish still takes the max (one
+holding stated twice) — a finish-blind read halved split holdings on the one tool that
+can lower a count.
 
 **Several export printings of one card SUM onto the library row they resolve to.** A
 tracker exports one row per *printing*, while the library may hold fewer printings of that
@@ -171,7 +175,11 @@ python3 scripts/query.py --min-owned 1 --count         # how many distinct cards
 python3 scripts/query.py --color G --csv               # emit CSV to pipe elsewhere
 ```
 
-Case-insensitive substring filters, AND-ed together. Table output by default.
+Case-insensitive substring filters, AND-ed together — except `--color`, which
+matches the color-identity **set**: `--color R` returns cards whose identity
+contains R (gold cards included, Colorless excluded), `--color colorless` returns
+only colorless cards. (The old substring match returned every Colorless card for
+`--color R` — the word contains an "r".) Table output by default.
 `query.py` searches only cards you **own** (`card-library.csv`); to search the
 full set of cards you *could* play, use `pool.py` below.
 
@@ -225,8 +233,10 @@ python3 scripts/pool.py --synergy removal --rarity rare,mythic --unowned
 python3 scripts/pool.py --type Merfolk --count               # how many exist vs. how many you own
 ```
 
-Each row shows `×N` (copies owned) or `craft`, plus rarity; the summary totals
-the wildcard cost of the craftable results. Rebuild the pool after a new set
+`--color` matches the identity set, as in `query.py` (`--color R` excludes
+Colorless; `--color colorless` for colorless cards); the other filters are
+substrings. Each row shows `×N` (copies owned) or `craft`, plus rarity; the
+summary totals the wildcard cost of the craftable results. Rebuild the pool after a new set
 releases. For formats outside the stored pool (e.g. a one-off Historic card),
 just ask Claude Code — it can query Scryfall live and cross-check your library.
 
@@ -246,7 +256,7 @@ below, which blends it with theme fit).
 python3 scripts/wishlist.py --add batch.txt   # append a batch (enriches + AUTO-seeds a Power estimate)
 python3 scripts/wishlist.py                    # browse the whole wishlist
 python3 scripts/wishlist.py --set SOS --rarity rare,mythic   # filter (substring, AND-ed)
-python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme
+python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme (--color is set-matched, like query.py)
 python3 scripts/wishlist.py --target 14        # what you've earmarked for a deck
 python3 scripts/wishlist.py --by-set           # PACK OPTIMIZATION: cards per set, by rarity
 python3 scripts/wishlist.py --rank             # WILDCARD PRIORITY: theme fit + hand-graded power, blended
@@ -1080,14 +1090,19 @@ import it.
 pip install -r requirements.txt
 export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
 export MTGA_SHEET_ID=<sheet id from its URL>
-python3 scripts/sheets_sync.py push    # local CSV  -> Google Sheet
-python3 scripts/sheets_sync.py pull    # Google Sheet -> local CSV
+python3 scripts/sheets_sync.py push            # local CSV  -> Google Sheet
+python3 scripts/sheets_sync.py pull            # DRY RUN: reports what it would write
+python3 scripts/sheets_sync.py pull --apply    # Google Sheet -> local CSV (writes)
 ```
 
 Keeps the CSV and the companion Google Sheet in sync. `pull` overwrites the local
-CSV, so the incoming rows are run through `validate.py` on a temp file first (and
-the current CSV is backed up to a timestamped `.bak`) — a sheet with a matching
-header but bad rows can't corrupt the inventory. `push` writes cells as **RAW**
+CSV, so it is **dry-run by default** (`--apply` to write), the incoming rows are
+run through `validate.py` on a temp file first (and the current CSV is backed up
+to a timestamped `.bak`), and it **refuses a >50% row-count shrink** without
+`--allow-shrink` — `validate.py` passes a header-only sheet with zero rows, so a
+cleared or wrong-but-existing tab would otherwise look valid while replacing the
+whole inventory. A sheet with a matching header but bad rows can't corrupt the
+inventory. `push` writes cells as **RAW**
 values, so a field whose text begins `=`, `+`, `-`, or `@` is stored literally and
 never evaluated as a spreadsheet formula (a CSV-injection guard, and it also keeps
 leading-zero collector numbers intact). Setup details are in the docstring at the

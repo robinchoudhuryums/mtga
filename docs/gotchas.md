@@ -503,6 +503,13 @@ untrusted. **`unknown` is a deliberate third value:** rows predating the column 
 mostly auto-seeds but some were hand-graded, so defaulting either way would be wrong in
 one direction. Set `Power Source=hand` when you grade one.
 
+**2026-08 (BS-17):** a row added name-only during a Scryfall outage was seeded from
+BLANK Type/Text/Rarity — a flat 2.0, so a Mythic bomb ranked like filler — and the seed
+was permanent: the F20 re-enrich backfilled the card's data but seeding only iterates
+NEW rows, and `--seed-power` fills only blank cells. The re-enrich branch now recomputes
+the seed when `power_is_seeded()` says the number is untrusted (seed/unknown/blank); a
+hand grade is never touched. Verified: 2.0 from no data → 6.5 once the data arrived.
+
 
 ## [G-18] `card-pool.csv` now holds the full Arena pool
 
@@ -1184,6 +1191,12 @@ metric` reads the deck's strength on that axis) and FLAGS it `⚠ scales w/ <axi
 read — never a silent boost (the honest stance for a fuzzy signal). **`--needs`** is the
 one-stop view composing all three (fixing · acceleration · interaction). All nudges bounded,
 gated by `check_suggest` anchor 10.
+
+**2026-08 (BS-01):** `--ramp` and `--interaction` filtered candidates by color IDENTITY,
+not printed cost — the G-58 bug re-introduced on exactly the paths this rule routes
+deficits to, hiding a measured 34 castable interaction cards + 25 mana sources from
+mono-color decks. Both now use `_candidate_castability`, the same filter as `suggest`
+proper. Full incident under G-58's 2026-08 addendum.
 
 
 ## [G-39] `deck.py cuts` folds a card-QUALITY (power) co-signal into the ranking (#3)
@@ -2285,6 +2298,18 @@ list and does not survive a longer one, so 26 of 33 decks carried a signature th
 (deck, card) judgements that moved KEY from 13% to 8% with all 223 changes running
 KEY -> weaker.
 
+**2026-08: the identity-vs-cost bug was RE-INTRODUCED in the needs model** — the exact
+fix `suggest_scored` received never reached its siblings. `suggest_mana` and
+`suggest_interaction` still filtered candidates with `card_colors(...).issubset(deck)`,
+and these are the two recommenders G-38 designates as THE fix path when a deck's
+scorecard says the deficit is interaction or mana. Measured before the fix: 34
+Standard interaction cards hidden from at least one mono-color deck that could cast
+them — including Bullseye, Death Dealer `{2}{B/R}`, the very card this gotcha names —
+and 25 mana sources, including every `{N}` rock whose 5-color identity comes from a
+mana ability (Haunted Screen was invisible to EVERY deck). Both now route through
+`_candidate_castability` (broad-scan BS-01). The lesson is G-45's, at class scope: a
+fix applied to one sibling is a bug report about the others.
+
 ## [G-59] A tribe's viability is its PAYOFF count, not its body count — and changelings cannot fix the missing half
 
 **A tribe's viability is its payoff count, not its body count, and changelings cannot fix
@@ -2329,6 +2354,18 @@ tribal versions kept running into. A separate check confirmed there is no "land-
 tribe" in green either (Scout leads at 5 pullers of 24 bodies, then Robot 4, Insect 3,
 Druid 2 — scattered, not concentrated), and Mouse is a Boros tribe (19 in Standard: W 9 /
 R 6 / W-R 3 and exactly one green).
+
+**2026-08 (BS-11): `deck.py tribes`' payoff scan was PLURAL-BLIND.** The type-matters
+scan matched `\bNinja\b`, and `\b` finds no word boundary between "Ninja" and a plural
+"s" — so "Ninjas you control get +1/+1", the way lords overwhelmingly template, matched
+nothing. The payoff list under-reported exactly the count this rule says decides tribal
+viability, on the tool built to show it: deck 49's list was missing Lathliss, Dragon
+Queen and Dragonlord's Servant; deck 48's was missing Ultron, Ravenous Robots and
+Mouser Foundry. Fixed with `_tribe_ref_re` (singular + English plural: -y→-ies,
+-f→-ves, sibilants→-es, else +s, Mouse/Ox irregulars). Same family as K-13: a
+literal-name search whose misses read as facts. The tribal TABLE above was
+hand-measured at the pool level and is not invalidated by this, but a payoff count
+near a viability threshold deserves a re-measure through the fixed scan.
 
 
 ## [G-60] An `{X}` spell is priced at MV 1, so a curve reading under-reads a deck that runs several
@@ -2559,6 +2596,22 @@ test would have passed against two copies.
 **Standing rule.** When a name contains `" // "`, ask which face the column describes
 before you trust it. A metadata column is a claim about a card, and a two-faced card is
 two cards wearing one row.
+
+**2026-08 broad scan: five more members, two of them a NEW SHAPE.** Two were the known
+index shape — `load_keywords` (a front-named deck line's keywords read as a clean "no
+keywords"; deck 42's Cecil, Dark Knight lost its ⌘ line) and `reconcile_crafts`' pool
+map, whose "fallback" was provably dead code. Two were exact-name **JOINS**, which the
+accessor rule had never been read as covering: `legality_report`'s copy counter keyed
+raw line names, so 4 `Bruce Banner` + 1 `Bruce Banner // The Incredible Hulk` passed the
+4-copy limit as two different cards — and `swap --apply`'s bump match was the tool that
+could *create* that split state, since `_do_swap` canonicalizes an add to the pool's
+full name while the deck stores the front. The fifth was the deck editor's client-side
+buildability: `app.py` serialized the raw ownership index to JS, whose `name in OWNED`
+lookup has no front fallback — a deck read "1 missing" in the editor while `/decks` and
+`deck.py check` called it buildable, and `check_dfc`'s Python-only scan structurally
+cannot see a consumer in JavaScript. All five fixed 2026-08 (the JS one by front-aliasing
+the served payload). The join lesson is now in the standing rule: key every name-facing
+JOIN on `_ms_key`, not only every loader.
 
 ## [G-64] A reanimator's uncastable bombs are not a build error — `#: uncastable-ok:`
 

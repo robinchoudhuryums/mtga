@@ -218,8 +218,10 @@ def index():
 def _backup_path(target):
     """A unique timestamped `.bak` path for `target` — delegates to the shared
     `lib.backup_path` so every backup in the toolkit uses one collision-free,
-    sort-safe naming scheme (audit F22). `revert` selects the newest by mtime, so it
-    no longer depends on lexical order alone."""
+    sort-safe naming scheme (audit F22). `revert` selects the newest via
+    `lib.latest_backup`, which keys on the CREATION stamp in the NAME — never on
+    mtime, which `shutil.copy2` copies from the source and which broke a
+    revert→save→revert sequence (broad-scan F-04)."""
     return backup_path(target)
 
 

@@ -99,8 +99,9 @@ class TestScriptEntryPoints:
 
     def test_the_f01_regression_specifically(self):
         """A bare `%` in any argparse help string takes the WHOLE top-level help
-        down, because rendering expands every subaction. deck.py has 31 of them,
-        so it is both the likeliest place for this and the costliest."""
+        down, because rendering expands every subaction. deck.py has dozens of
+        subparsers, so it is both the likeliest place for this and the costliest.
+        (Deliberately count-free: a hardcoded count here rotted twice.)"""
         rc, out = _run([os.path.join("scripts", "deck.py"), "--help"])
         assert rc == 0, out
         assert "unsupported format character" not in out
@@ -108,8 +109,8 @@ class TestScriptEntryPoints:
 
 
 class TestDeckSubcommands:
-    """deck.py is the project's main interface — 31 subparsers, each with its own
-    help strings, and the roster of commands a skill is supposed to be re-read
+    """deck.py is the project's main interface — dozens of subparsers, each with its
+    own help strings, and the roster of commands a skill is supposed to be re-read
     against. Each subparser's own `--help` must render too."""
 
     def test_the_subcommand_list_is_discoverable(self, subcommands):
