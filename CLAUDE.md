@@ -305,7 +305,10 @@ directions.
   every check `--rank` runs — it once dropped the rotation flag and planned two rotating
   cards into a 3-slot budget. The filter flags apply to `--rank`/`--budget`/`--by-set`,
   and a filtered view is normalized against the WHOLE wishlist. `pow~` marks a
-  CONDITIONAL power a rarity+role seed structurally cannot price. [G-19]
+  CONDITIONAL power a rarity+role seed structurally cannot price. **The Power scale is
+  0–10 and range-ENFORCED at rank time**: a finite out-of-range cell flags `pow!` and
+  scores 0 — 15 live cells carried 0–100-style grades ('84', '78'…) and were silently
+  LEADING `--rank`/`--budget` until the flag landed (batch 6). [G-19]
 - **Auto-targeting a wishlist batch: trust STRONG, judge `review`.**
   `wishlist.py --suggest-targets` scores fit by theme rarity (idf) so broad decks stop
   acting as catch-alls — only a *specific* theme is a confident match. Workflow: `--add`
@@ -620,11 +623,11 @@ directions.
   identical deck read as DRIFTED and `sync --apply` would have written that bare name
   back), and **RARITY** (`load_rarities` reads the pool, keyed only by `Front // Back`, so
   47 roster names priced blank and every mythic DFC sorted UP the cut list). The 2026-08
-  scan added FIVE members: two indexes (`load_keywords`, `reconcile_crafts`), two
-  exact-name JOINS (`legality_report`'s copy limit; `swap`'s bump match — a count split
-  across two spellings the 4-copy check could not sum), and the deck editor's JS
-  ownership payload, which no Python gate can reach. **Ask which face a column
-  describes; alias the front in a SECOND pass; key every name JOIN on `_ms_key`.** [G-63]
+  scan added FIVE members — two indexes, two exact-name JOINS, and the deck editor's
+  JS ownership payload, which no Python gate can reach. **Ask which face a column
+  describes; alias via `lib.alias_front` — the ONE second-pass home, ENFORCED by
+  `check_dfc`'s index registry + a pin on the editor's JS payload; key every name
+  JOIN on `_ms_key`.** [G-63]
 
 - **A reanimator's uncastable bombs need `#: uncastable-ok:`, and everything else's do
   not.** The castability lint and `tier_band` both model "you cannot cast this" as a build
@@ -788,9 +791,10 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (18 files: the markup-contract, CLI-entry-point, analysis-model,
-  gate-pinning, shared-primitive and ingest layers), requirements-dev.txt, pytest.ini,
-  .github/workflows/tests.yml [C-07]
+- Testing: tests/ (24 files: the markup-contract, CLI-entry-point, analysis-model,
+  gate-pinning, shared-primitive and ingest layers, plus the 2026-08 ingest-writer /
+  sync-guard / resilience-layer / CLI-filter coverage of the formerly untested
+  scripts), requirements-dev.txt, pytest.ini, .github/workflows/tests.yml [C-07]
 - Decks: decks/
 
 **Invariant Library:**

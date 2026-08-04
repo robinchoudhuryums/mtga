@@ -608,6 +608,18 @@ The wishlist CSV itself isn't gated by check_all, but the **ranking
 model is** — `check_rankings.py` (run inside check_all) guards the specific-theme
 cutoff so a scoring change can't silently reclassify a real tribe as "generic".
 
+**2026-08 (batch 6): the Power scale is now range-enforced at rank time.** The
+NaN/inf guard (audit A10) and the non-numeric flag (F9) both existed, and a large
+FINITE typo passed straight between them: `_rank_scores` now treats a Power outside
+0–10 exactly like those (flag `pow!`, score 0.0, named in the ⚠ report). The
+incident that earned it: **15 live cells carried 0–100-style grades** ('84', '78',
+'74', '66', '60', '52'…) — an entire batch apparently graded on the wrong scale —
+and because `combined` blends power at 50%, they didn't just distort the ranking,
+they LED it: Pensive Professor sat at #1 with combined 42.3 on a 0–10 scale, so
+every `--rank` and `--budget` run was steering wildcards by mis-scaled cells. The
+flag replaces a silent over-rank with a loud under-rank; the cells are hand-grade
+data (G-17) and stay yours to re-grade — `wishlist.py --rank` lists all 15.
+
 
 ## [G-20] Auto-targeting a wishlist batch: trust STRONG, judge `review`
 
