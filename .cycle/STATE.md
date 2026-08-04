@@ -168,6 +168,10 @@ Power cells, 27 unverified printings, 4 stale tier rationales; then the strategi
 bets (log the first matches — matches.csv is still empty — deck lifecycle,
 rotation planning, keyword theming). Doc touch-ups queued for /sync-docs: the
 [C-07] test count (18→24), G-19's range-enforcement note, Batch 4's carry-overs.
+**Update, same day: that /sync-docs pass has RUN** (commit `354b4ed`) — all of the
+above landed (C-07 24 files + the six new layers described in cycle-config, G-19
+range enforcement in bullet + long form, G-63's enforcer clause, C-01's Batch-4
+addendum). Nothing from the 2026-08 broad scan remains queued, in code or in docs.
 
 ## Session — systems map + agreement gate (2026-07-29)
 
