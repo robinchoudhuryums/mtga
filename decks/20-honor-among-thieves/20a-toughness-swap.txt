@@ -25,7 +25,7 @@
 1 Bark of Doran (ECL) 6
 
 # Nonland — high-toughness beaters (deathtouch / evasion / vigilance)
-1 Vampire Nighthawk (FDN) 186
+1 Vampire Nighthawk (FDN) 757
 1 Venom, Evil Unleashed (SPM) 71
 1 Ancestor Dragon (FDN) 489
 1 The Masters of Evil (MSH) 105
@@ -66,7 +66,7 @@
 1 Social Snub (SOS) 228
 
 # Lands
-3 Scoured Barrens (FDN) 266
+3 Scoured Barrens (M21) 250
 1 Bleachbone Verge (DFT) 250
 1 Insomnia, Crown City (FIN) 282
 1 Temple of Silence (FDN) 704

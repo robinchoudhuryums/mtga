@@ -116,8 +116,8 @@
 
 # Removal — single-pip only, to survive three colors
 1 Plasma Bolt (EOE) 152
-1 Burst Lightning (DMU) 132
-1 Erode (TLA) 15
+1 Burst Lightning (FDN) 192
+1 Erode (SOS) 15
 1 Long Goodbye (MKM) 92
 1 Bitter Triumph (SOA) 26
 1 Feed the Swarm (SOA) 29

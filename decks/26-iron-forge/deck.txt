@@ -241,7 +241,7 @@
 1 Abrade (FDN) 188
 1 Iron Man Armor (MSH) 248
 1 Mjölnir, Hammer of Thor (MSH) 146
-1 Explosive Derailment (DFT) 130
+1 Explosive Derailment (OTJ) 122
 1 Plasma Bolt (EOE) 152
 1 Full Bore (EOE) 135
 1 I Am Iron Man (MSH) 58

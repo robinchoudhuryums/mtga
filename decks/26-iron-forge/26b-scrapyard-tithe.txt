@@ -177,7 +177,7 @@
 1 Plasma Bolt (EOE) 152
 1 Fiery Annihilation (FDN) 86
 1 Bullseye, Death Dealer (MSH) 209
-1 Iron-Fist Pulverizer (OTJ) 137
+1 Iron-Fist Pulverizer (OTJ) 131
 
 # Lands (24)
 1 Castle Doom (MSH) 263

@@ -73,9 +73,9 @@ Deck
 
 # The refund + alternate win-cons
 1 Mister Negative (SPM) 135
-1 Corroding Dragonstorm (TLA) 96
+1 Corroding Dragonstorm (TDM) 75
 1 Mai, Scornful Striker (TLA) 109
-1 Doom Reigns Supreme (MSH) 95
+1 Doom Reigns Supreme (MSH) 96
 
 # Evasive / token drain — plan B
 1 Bitterbloom Bearer (ECL) 88
@@ -84,7 +84,7 @@ Deck
 1 Vengeful Bloodwitch (FDN) 76
 1 Cecil, Dark Knight
 1 Callous Inspector (TLA) 89
-1 Sanguine Syphoner (ECL) 118
+1 Sanguine Syphoner (FDN) 68
 1 Dream Beavers (TMT) 62
 1 Starscape Cleric (BLB) 116
 

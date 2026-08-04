@@ -16,10 +16,11 @@
 #: tier:    4.20 and 9 before the 2026-08 passes); against a fast start the deck
 #: tier:    must trade one-for-one with removal it
 #: tier:    has plenty of, then stabilise with a five-drop. Card advantage 3 is still thin, and
-#: tier:    still an UNDER-count — Bonehoard Dracosaur exiles two cards a turn and Breaching
+#: tier:    still an UNDER-count — Dragonhawk, Fate's Tempest impulse-exiles a batch on every
+#: tier:    entry or attack and Breaching
 #: tier:    Dragonstorm free-casts one, but both read as `impulse` to the classifier, not draw.
 #: tier: WHAT ARGUES UP, and why the letter may move after play: interaction 11 is not padding,
-#: tier: it is real removal stapled to Dragon BODIES (Nova Hellkite, Realm-Scorcher, Drakuseth),
+#: tier: it is real removal stapled to Dragon BODIES (Realm-Scorcher, Drakuseth),
 #: tier: so the deck interacts without spending cards; the manabase is flawless, matching
 #: tier: deck 47 as the only two on the roster with zero cards
 #: tier: below 90% on curve; and the payoff stack genuinely compounds — Terror of the Peaks
@@ -31,8 +32,8 @@
 #: tier: creature type" — found a dozen more, and two are among the best cards here. ROAMING
 #: tier: THRONE doubles the triggered ability of every chosen-type creature, and SIXTEEN of
 #: tier: this deck's Dragons have one: Terror of the Peaks fires twice per creature, Lathliss
-#: tier: makes two 5/5s per Dragon, Drakuseth deals 4+3+3 twice on every attack, Bonehoard
-#: tier: exiles four cards a turn. CHRONICLE OF VICTORY is an anthem plus a card per Dragon
+#: tier: makes two 5/5s per Dragon, Drakuseth deals 4+3+3 twice on every attack, Dragonhawk
+#: tier: impulse-exiles twice the cards. CHRONICLE OF VICTORY is an anthem plus a card per Dragon
 #: tier: cast. Neither contains the word Dragon.
 #: tier: PROVISIONAL because it is unplayed and 17 cards are craft targets.
 #: protect: Lathliss, Dragon Queen; Dragonlord's Servant; Terror of the Peaks; Roaming Throne; Sarkhan, Dragon Ascendant

@@ -53,7 +53,7 @@
 1 Elvish Archdruid (FDN) 219
 1 Arnyn, Deathbloom Botanist (SOS) 74
 1 Bake into a Pie (FDN) 169
-1 Vampire Nighthawk (FDN) 186
+1 Vampire Nighthawk (FDN) 757
 1 South Wind Avatar (TMT) 78
 1 Venom, Evil Unleashed (SPM) 71
 1 Shredder, Unrelenting (TMT) 74
@@ -74,7 +74,7 @@
 1 Wastewood Verge (DFT) 268
 1 Subterranean Cavern (MSH) 273
 1 Golgari Guildgate (FDN) 689
-4 Jungle Hollow (FDN) 263
+4 Jungle Hollow (M21) 247
 1 Temple of Malady (FDN) 700
 1 Adventurer's Inn (FIN) 271
 #~ note: applied — Elf engine deepened (owned Uncommon crafts): Morcant's Loyalist (-Melancholic Poet) non-legendary Elf anthem + dies->recur an Elf; Morcant's Eyes (-Lys Alana Informant) upkeep surveil + late {4}{G}{G} sac for X Elf tokens. Adds anthem redundancy + card advantage/recursion.
