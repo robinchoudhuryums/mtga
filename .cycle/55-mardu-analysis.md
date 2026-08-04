@@ -644,3 +644,38 @@ future variant seed, not a deck yet).
 **Recommendation:** draft T first (strongest, and it absorbs G's green cards), J
 second if the prowess-tempo identity still reads distinct after T lands. G dissolved.
 Awaiting user picks.
+
+## 9. ADDENDUM outcomes (2026-08-04, post-user-picks)
+
+**Deck 56 "One Fell Swoop" DRAFTED — and the white package WON the A/B.** Both 60s
+were fully drafted and scored (green build committed to nothing; white build kept):
+green (RG) floor A, clock 4/7, interaction 5, protection **0** (the tool itself
+flagged "one removal spell undoes the plan"); white (RW) floor A, clock **5/7**,
+interaction **7**, protection **3**, curve 2.42 v 2.64. The white bearers MULTIPLY
+boosts (Swiftblade double strike; Seedglaive valiant) where green only ADDED bigger
+ones, and Boros Charm / Celestial Armor / Go Ninja Go answer the archetype's fatal
+weakness. **Parked, not dead (revival: real games showing raw boost magnitude beats
+protection):** Ashroot Animist, Halana and Alena, Ruby, Wolverine, Scarlet Spider →
+a Gruul/Naya 56a variant.
+
+**55-variant cross-gift verdicts (screened + cuts-ranked, NOT yet applied):**
+- **55a + Equilibrium Adept (KEY, craft U): RECOMMENDED.** Cut candidates, weakest
+  first from `cuts 55a`: Blazing Firesinger (1×, one-shot burst, Fit 31), Pigment
+  Wrangler (1×, MV-5 top-end, Fit 43), Monica Rambeau (1×, steep transform).
+- **55a + Antiquities on the Loose (KEY, owned, multi-home from 55b): RECOMMENDED.**
+  Same three cut candidates — two adds fit by cutting Firesinger + one of
+  Wrangler/Monica.
+- **55a + Charging Strifeknight: WITHDRAWN (changed my mind).** Screen says
+  tangential and the A1 note under-counted the deck's existing outlets: Pursue the
+  Past ×2 discards too, so the real outlet count is 4-5, not 2.
+- **55a + Speedball: WITHDRAWN.** Tangential; the targeting-rider theme it wants
+  (Inkwright/Scornmage) was cut from the final 55a list.
+- **55b + Red Tiger Mechan (KEY, craft C): RECOMMENDED.** Enabler count 9→10, and
+  warp means it feeds Zuko/Appa twice (warp exile → later cast FROM exile). Cut
+  candidates from `cuts 55b`: Snow Villiers (creature-count body in a non-width
+  deck, Fit 15), Scout for Survivors (recursion with thin targets, Fit 23),
+  Longhorn Sharpshooter (1×, the weakest plot enabler — enabler-for-enabler swap,
+  only if the curve wants it).
+- **55 + Taii Wakeen: NOT recommended for now** — role-player on screen; 55's
+  noncombat damage mostly targets PLAYERS (Tremors), not creatures, so the draw
+  trigger is thin there. Stays a Boros-pinger-variant seed.

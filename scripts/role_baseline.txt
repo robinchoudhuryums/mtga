@@ -41,6 +41,7 @@ Banner of Kinship
 Bark of Doran
 Barret Wallace
 Baxter Stockman
+Become Brutes
 Beetle-Headed Merchants
 Benevolent River Spirit
 Bespoke Bō
@@ -279,6 +280,7 @@ Searslicer Goblin
 Secret of Bloodbending
 Seedglaive Mentor
 Seismic Sense
+Self-Destruct
 Serra Angel
 Serra Redeemer
 Shimmercreep
@@ -308,6 +310,7 @@ Sun-Spider, Nimble Webber
 Super Strength
 Super-Soldier Serum
 Surrak, Elusive Hunter
+Swiftblade Vindicator
 Sylvan Scavenging
 Tangle Tumbler
 Tannuk, Steadfast Second
@@ -326,6 +329,7 @@ The Masters of Evil
 The Mindskinner
 The Thing, Ben Grimm
 The Wondrous Wasp
+Tiger-Dillo
 Tinybones, Bauble Burglar
 Tinybones, the Pickpocket
 Titania, Rugged Rumbler
