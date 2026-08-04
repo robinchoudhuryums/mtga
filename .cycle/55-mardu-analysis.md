@@ -564,3 +564,83 @@ already runs Sokka and Flamehold Grappler. Verdict at close-out.
 there today); Crackling Cyclops → the T concept's cheap self-boosting body (grade
 against A3's boost suite); Sokka → 55b's Ally theme, blocked by U identity; Sami WC →
 the artifact-producer count (still ~4, gate stays shut).
+
+### Addendum Batch A3 (21 — red tall / equipment / burst; Red Mage's Rapier re-read)
+
+| Card | Grade | Axis | Note |
+|---|---|---|---|
+| Molten Man, Inferno Incarnate | ★★★ | T | THE tall body: 3 mana, fetches a Mountain, +1/+1 per Mountain — in a red-forward manabase he is 7/7+ by midgame for 3; owned (decks 2, 10). Leaves-play land sac is the cost to respect |
+| Self-Destruct | ★★★ | T | the "one fell swoop" card that solves chump-blocking entirely: the boosted body deals its FULL power to ANY target — face included — at instant speed. The body takes the same damage and usually dies; irrelevant if the swing is lethal. Owned. (NON-combo flagged: on Red Hulk the self-damage is destroyed-by-SBA before enrage math helps — do not write that line) |
+| Team Tactics | ★★ | T | double strike (+trample with teamwork) at 2 mana — the multiplier that turns a +X pile lethal; teamwork tap-cost is payable by ONE other 1-power body (rule-6 clean in a tall deck); owned |
+| Twin Blades | ★★ | T | flash: ETB-attach + double strike THAT turn, then a permanent +1/+1 equip — trick and equipment in one; owned (deck 39) |
+| War Machine, Legacy of Iron | ★★ | T | {2}{R/W} — castable in MONO-RED (G-58): each combat another creature +X/+0 where X = his power; repeatable boost on a 3-drop flier; owned (4 decks) |
+| Speed, Young Avenger | ★★ | T | 2-drop haste; {1} per noncreature spell: a HASTE creature becomes nigh-unblockable — the evasion rider the T deck's tricks turn on every turn; owned |
+| Red Hulk | ★★ | T | 6-mana 6/6-class reach/trample that grows when damaged and pings — a resilient secondary bearer, not the engine; owned (3 decks) |
+| Haste Magic | ★★ | T | +3/+1 haste + impulse a card for 2 — tempo boost that replaces itself; owned |
+| Reckless Ransacking | ★★ | T | +3/+2 + Treasure for 2 (owned ×2) — trick + ramp toward the big turn |
+| The Last Agni Kai | ★★ | T | fight as removal where the tall body's power IS the removal, excess damage → {R} that persists — converts overkill into mana for the next spell; owned (decks 39, 54b) |
+| Mai, Jaded Edge | ★ | T/J | prowess 2-drop; exhaust {3}: a PERMANENT double strike counter — self-only, but a real threat that scales with the spell suite |
+| Ancestors' Aid | ★ | T | +2/+0 first strike + Treasure — Ransacking's little sibling |
+| Red Mage's Rapier (re-read) | ★ | T | equipped creature +2/+0 per noncreature spell — stacks the Cyclops effect onto any body; job select gives it its own bearer |
+| Samurai's Katana | ★ | T | job select body + +2/+2 trample haste — fine curve equipment; owned (decks 33, 39) |
+| Red Tiger Mechan | ★ | 55b bench | mono-R warp {1}{R} — a REAL exile-cast enabler; 55b's enabler count 9→10 if adopted (cross-gift, the A3 counterpart to A2's Equilibrium Adept) |
+| Gilgamesh, Master-at-Arms | ◇ | gate | dig-6-for-Equipment on enter/attack — G-61 count: the combined pile holds ~5 equipment (Twin Blades, Katana, Rapier, Celestial Armor, Stormbeacon) and a 6-drop engine wants far more; deck 39 (Starforge) is where he'd shine, and he is unowned |
+| Scarlet Spider, Ben Reilly | ◇ | T-alt | web-slinging counters = a cheap tall-ish body, but the bounce cost fights tempo; RG |
+| Rocketeer Boostbuggy | ◇ | — | Treasure-per-attack vehicle; crew 1 is rule-6-shaped (taps a creature); no axis wants it |
+| Spider Manifestation | ◇ | — | RG dork with a 4-MV-spell untap; 54b already runs it |
+| Raging Goblinoids | △ | — | mayhem aggro body — the discard outlets live in 55a and it is already in 3 decks |
+| Iron Man, Master of Machines | △ | — | artifact-count scaling — deck 26 family's card, already there ×4 |
+
+## 8. ADDENDUM consolidated verdict (all 59 read)
+
+**Concept G — "RGB mana base": INFEASIBLE AS STATED, by count (G-59/G-61).** The
+combined 190-card pile contains ZERO green-black cards, the green half is Gruul/Naya,
+and no black card in the pile does anything green cares about (no sac-matters overlap,
+no -1/-1, no graveyard-to-green bridge). An RGB build would be a Gruul deck paying B
+for cards that already have Mardu homes. **The green cards' real home is concept T.**
+
+**Concept J — "RWU mana base": FEASIBLE, medium confidence — deck 56 candidate,
+"Jeskai Prowess Tempo".** Real, distinct engine: Sokka (Ally per spell + team
+menace/prowess) + Narset Waymaster (refill) + Flamehold Grappler / Shiko (copy/recast
+value) over the prowess block (Brushmaster, Effortless Master, Equilibrium Adept, Mai,
+Skywhale, Cyclops) and the SAME cheap RW spell suite the Mardu decks run. Two honest
+caveats: (i) zero mono-U spells in the pile — blue is a creature-cost tax until
+out-of-pile U cantrips/counters are crafted (suggest --needs will surface them at
+draft time); (ii) adjacency — it must stay prowess-TEMPO to remain distinct from 25
+(UR big-spell storm) and 55a (Mardu engine midrange). Sokka/Flamehold live in deck 17
+(Spectrum, 5c) — decks share the collection, no conflict.
+
+**Concept T — "red-forward ultra-tall": FEASIBLE and the STRONGEST of the three —
+deck 56/57 candidate, "Gruul Tall" (red-majority RG).** Everything the axis needs
+exists at density:
+- **Bodies that get tall on their own:** Molten Man ★★★ (Mountains), Crackling
+  Cyclops (spells), Red Hulk (damage), Mai (perm double strike), + Enigma Drake if
+  it stays 2-color... it does not — UR stays with J. Wolverine as the resilient one.
+- **Boost suite (A1's green core):** Ashroot Animist ★★★ (+X/+X AND trample),
+  Halana and Alena ★★★ (X permanent counters + haste), War Machine, Ruby; original
+  pile's F axis merges in (Bulk Up, Become Brutes, Go Ninja Go, Rabid Gnaw,
+  Descendant of Storms — graded F in batches 1–4).
+- **Multipliers:** Team Tactics, Twin Blades, Twinblade Blessing, Pride of the Road
+  (four double-strike sources — a boosted DS swing is the "one fell swoop").
+- **The no-combat finisher:** Self-Destruct ★★★ — power-as-fireball at instant speed
+  makes chump-blocking irrelevant; the deck's second win condition.
+- **Protection:** Celestial Armor (hexproof+indestructible flash), Boros Charm...
+  which is WHITE — mono-RG loses it; Celestial Armor too. DECISION for draft time:
+  pure Gruul (cleaner mana, loses the white protection/DS auras) vs Naya-leaning
+  (Ghired/Annie/Samut become live, mana worsens). Red-FORWARD Gruul is the
+  recommendation; the white package is the first thing to re-screen at draft.
+- **Evasion:** Ashroot's trample grant, Team Tactics teamwork trample, Speed's
+  haste-unblockable rider, Quaketusk's native trample.
+- **Revivals now LIVE (their stated counts are met by this deck's shape):**
+  Tiger-Dillo and Scalestorm Summoner both revive at "~8+ power-4+ bodies" — a tall
+  deck reaches that trivially (Molten Man, Red Hulk, Quaketusk, Ashroot, boosted
+  anything). Re-screen both at draft.
+
+**Cross-gifts to built decks (independent of any new draft):** Equilibrium Adept +
+Speedball → 55a bench; Red Tiger Mechan → 55b (enabler 10); Charging Strifeknight →
+55a (third discard outlet); Taii Wakeen → the Boros-pinger cluster (5 members — a
+future variant seed, not a deck yet).
+
+**Recommendation:** draft T first (strongest, and it absorbs G's green cards), J
+second if the prowess-tempo identity still reads distinct after T lands. G dissolved.
+Awaiting user picks.
