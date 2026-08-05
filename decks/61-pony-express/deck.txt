@@ -1,0 +1,95 @@
+#: name: Pony Express
+#: format: Standard
+#: colors: GW
+#: plan: midrange
+#: archetype: SELESNYA MOUNTS — the third unmade tactic from the color/tactic gap
+#: archetype: survey, built Mounts-first around a +1/+1 counter spine. Every counter
+#: archetype: event is amplified by Caradora (+1 extra), and the saddled-attack layer
+#: archetype: mints them constantly: Miriam counters every attacking Mount/Vehicle
+#: archetype: (and gives them hexproof on your turn), Lagorin counters two at once,
+#: archetype: Bulwark Ox counters anything, Tumblewagg counters then DOUBLES,
+#: archetype: Bounding Felidar counters the whole board, and Thunderous Velocipede
+#: archetype: makes everything enter pre-countered. The saddle tax (tapping bodies at
+#: archetype: sorcery speed) is paid by specialists: Interface Ace saddles with its
+#: archetype: toughness and self-untaps, Cloudspire Captain saddles at +2 power (and
+#: archetype: lords the herd), Pilot tokens (Defend the Rider, Roads lands, Flagship
+#: archetype: cycling) saddle at +2, and Unswerving Sloth refunds the whole team.
+#: archetype: Guardian Sunmare turns each attack into a battlefield tutor for the
+#: archetype: MV<=3 toolbox; Fortune blinks its rider for repeat ETBs. Distinct from
+#: archetype: 48a Motor Pool (UR Vehicles + Treasure velocity, zero Mounts, zero
+#: archetype: counters): different colors, Mount-typed engine, counter payoff axis.
+#: protect: Caradora, Heart of Alacria; Miriam, Herd Whisperer; Ornery Tumblewagg; Guardian Sunmare; Valor's Flagship
+#: tier: B (PROVISIONAL) — an unplayed first draft graded under whatever the floor
+#: tier: says: the engine is attack-gated (saddle triggers need combat to happen)
+#: tier: and light on card advantage beyond Frontier Seeker digs, Airship loot and
+#: tier: Fortune re-ETBs; interaction is real but thin. The counter compounding
+#: tier: (Caradora + Miriam + Tumblewagg doubling) has a genuine ceiling. Re-grade
+#: tier: after games show whether the saddle economics hold up under removal.
+#: notes: BUILT per the user's constraint: owned basis (Caradora, Valor's Flagship,
+#: notes: Bulwark Ox, Unswerving Sloth, Venomsac Lagac, Voyager Glidecar, Magitek
+#: notes: Armor, Adventurer's Airship, Run Over, + owned GW dual lands) with crafts
+#: notes: filling the engine. SADDLE MECHANICS the tooling can't see: saddling is
+#: notes: SORCERY-speed and taps OTHER creatures — a saddled-up turn spends bodies
+#: notes: before attacks are declared. The payroll: Interface Ace saddles with
+#: notes: TOUGHNESS (0/4-class body) and untaps itself once per your turn, so it
+#: notes: saddles daily and still blocks; Cloudspire Captain and Pilot tokens count
+#: notes: +2 power toward saddle/crew; Unswerving Sloth's attack UNTAPS the whole
+#: notes: team (saddle it with blockers-to-be, get them back); Brightfield Mustang
+#: notes: untaps ITSELF each attack. Miriam's hexproof is YOUR-TURN-only — the
+#: notes: Mounts are exposed on defense; Bulwark Ox's sac (hexproof+indestructible
+#: notes: for countered creatures) is the answer to a wrath, and nearly every body
+#: notes: carries a counter fast (Caradora makes Velocipede's enters-counters 2).
+#: notes: Ride's End reads {4}{W} but is {1}{W} against a tapped attacker. Sunmare's
+#: notes: tutor hits: Miriam, Cloudspire, Interface Ace, Tumblewagg, Lagorin,
+#: notes: Venomsac, Glidecar, Homestead — the toolbox is why singletons are fine
+#: notes: (Caradora's ETB tutors any Mount/Vehicle for the same reason). ROTATION:
+#: notes: the OTJ third (Miriam, Tumblewagg, Seraphic, Fortune, Felidar, Bucolic
+#: notes: Ranch) rotates a year before the DFT spine (~2027) — legality fact, not a
+#: notes: build constraint. Bench (screened, in grade order): Congregation Gryff,
+#: notes: Autarch Mammoth, Gloryheath Lynx, Alacrian Jaguar, One Last Job.
+
+# Glue (pilots + counter amplifier)
+1 Caradora, Heart of Alacria (DFT) 195
+2 Miriam, Herd Whisperer (OTJ) 221
+2 Cloudspire Captain (DFT) 9
+3 Interface Ace (DFT) 17
+2 Frontier Seeker (OTJ) 13
+
+# Mounts (saddled-attack engine)
+2 Lagorin, Soul of Alacria (DFT) 211
+1 Bulwark Ox (DFT) 7
+1 Venomsac Lagac (DFT) 185
+2 Ornery Tumblewagg (OTJ) 171
+2 Seraphic Steed (OTJ) 232
+2 Brightfield Mustang (DFT) 5
+1 Fortune, Loyal Steed (OTJ) 12
+1 Guardian Sunmare (DFT) 15
+1 Unswerving Sloth (DFT) 34
+1 Bounding Felidar (OTJ) 5
+
+# Vehicles
+1 Voyager Glidecar (DFT) 36
+1 Magitek Armor (FIN) 24
+1 Thunderous Velocipede (DFT) 183
+1 Mobile Homestead (OTJ) 245
+1 Valor's Flagship (DFT) 35
+1 Adventurer's Airship (FIN) 252
+
+# Interaction
+2 Run Over (DFT) 179
+2 Ride's End (DFT) 25
+1 Defend the Rider (DFT) 157
+1 Steer Clear (OTJ) 31
+
+# Lands
+2 Country Roads (DFT) 253
+2 Wild Roads (DFT) 269
+2 Bucolic Ranch (OTJ) 265
+1 Hushwood Verge (DSK) 261
+1 Gathering Place (MSH) 266
+1 Blossoming Sands (M21) 244
+1 Kyoshi Village (TLA) 271
+1 Birnin Zana Plaza (MSH) 262
+1 Suburban Sanctuary (SPM) 185
+6 Plains (MSH) 287
+6 Forest (MSH) 295
