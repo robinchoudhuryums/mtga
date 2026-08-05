@@ -26,7 +26,7 @@
 1 Shang-Chi, Master of Kung Fu (MSH) 187
 1 Hermitic Herbalist (TLA) 226
 1 Energybending (TLA) 2
-1 Bender's Waterskin (TLA) 255
+1 Leyline of the Guildpact (MKM) 217
 1 Doc Samson, Super Psychiatrist (MSH) 164
 1 Diamond Pick-Axe (LCI) 143
 1 Goldvein Pick (FDN) 253

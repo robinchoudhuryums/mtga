@@ -62,6 +62,7 @@ Bumi, Unleashed
 Burning Curiosity
 Buzz Bots
 Bygone Colossus
+Callous Sell-Sword // Burn Together
 Captain America, Living Legend
 Captain America, Wings of Freedom
 Captain Mar-Vell, Space-Born
@@ -205,6 +206,7 @@ Kyoshi Battle Fan
 Laughing Jasper Flint
 Leader, Super-Genius
 Leonardo, Big Brother
+Leyline of the Guildpact
 Leyline of Transformation
 Lifecraft Engine
 Living Brain, Mechanical Marvel
@@ -330,6 +332,7 @@ Thawbringer
 The Boulder, Ready to Rumble
 The Cave of Two Lovers
 The Infamous Cruelclaw
+The Jolly Balloon Man
 The Last Ronin's Technique
 The Masters of Evil
 The Mindskinner

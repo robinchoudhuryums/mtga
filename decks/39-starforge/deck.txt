@@ -66,7 +66,7 @@ Deck
 
 # Spells
 1 The Last Agni Kai (TLA) 144
-1 Slash of Light (FIN) 32
+1 Gilgamesh, Master-at-Arms (FIN) 139
 1 Go Ninja Go (TMT) 149
 
 # Lands — 25, Boros; owned untapped-with-basic duals/utility over straight basics
