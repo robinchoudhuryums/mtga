@@ -1928,6 +1928,19 @@ Claws Out,{3}{W}{W},5,Affinity
 Collector's Vault,{2},2,Treasure
 Death in the Family,{1}{B},2,
 Fugitive Droid,{U},1,
+Slumbering Keepguard,{W},1,Scry
+Summon: Fenrir,{2}{G},3,
+Coordinated Maneuver,{1}{W},2,
+Static Snare,{4}{W},5,Flash
+Kinscaer Sentry,{1}{W},2,Lifelink;First strike
+Marauding Blight-Priest,{2}{B},3,
+Wolfbat,{2}{B},3,Flying
+Marina Vendrell's Grimoire,{5}{U},6,
+New Horizons,{2}{G},3,Enchant
+Shared Roots,{1}{G},2,
+Greenhouse,{2}{G} // {3}{G},7,Mill
+"Toph, Hardheaded Teacher",{2}{R}{G},4,Earthbend
+Lightning Helix,{R}{W},2,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3924,7 +3937,6 @@ Fear of Isolation,{1}{U},2,Flying
 Get Out,{U}{U},2,
 Ghostly Keybearer,{3}{U},4,Flying
 Glimmerburst,{3}{U},4,
-Marina Vendrell's Grimoire,{5}{U},6,
 Meat Locker // Drowned Diner,{2}{U} // {3}{U}{U},8,
 The Mindskinner,{U}{U}{U},3,Mill
 Mirror Room // Fractured Realm,{2}{U} // {5}{U}{U},10,
@@ -4165,7 +4177,6 @@ Gallant Fowlknight,{3}{W},4,
 Keep Out,{1}{W},2,
 Kinbinding,{3}{W}{W},5,
 Kinsbaile Aspirant,{W},1,Behold
-Kinscaer Sentry,{1}{W},2,Lifelink;First strike
 Kithkeeper,{6}{W},7,Vivid
 Meanders Guide,{2}{W},3,
 Protective Response,{2}{W},3,Convoke
@@ -4803,7 +4814,6 @@ An Offer You Can't Refuse,{U},1,Treasure
 Omniscience,{7}{U}{U}{U},10,
 Burglar Rat,{1}{B},2,
 Exsanguinate,{X}{B}{B},2,
-Marauding Blight-Priest,{2}{B},3,
 Reassembling Skeleton,{1}{B},2,
 Rise of the Dark Realms,{7}{B}{B},9,
 Rune-Scarred Demon,{5}{B}{B},7,Flying
@@ -4877,7 +4887,6 @@ Aggressive Mammoth,{3}{G}{G}{G},6,Trample
 Bear Cub,{1}{G},2,
 Joraga Invocation,{4}{G}{G},6,
 Magnigoth Sentry,{3}{G},4,Reach
-New Horizons,{2}{G},3,Enchant
 Tajuru Pathwarden,{4}{G},5,Vigilance;Trample
 Thornweald Archer,{1}{G},2,Reach;Deathtouch
 Thrashing Brontodon,{1}{G}{G},3,
@@ -5119,7 +5128,6 @@ Prishe's Wanderings,{2}{G},3,
 Reach the Horizon,{3}{G},4,
 Sazh Katzroy,{3}{G},4,Double
 Sidequest: Raise a Chocobo // Black Chocobo,{1}{G},2,Transform;Landfall
-Summon: Fenrir,{2}{G},3,
 Summoner's Grimoire,{3}{G},4,Job select;Equip;Abraxas
 Tifa Lockhart,{1}{G},2,Trample;Double;Landfall
 "Torgal, A Fine Hound",{1}{G},2,
@@ -9912,7 +9920,6 @@ Kraul Whipcracker,{B}{G},2,Reach
 "Kylox, Visionary Inventor",{5}{U}{R},7,Haste;Menace;Ward
 Kylox's Voltstrider,{1}{U}{R},3,Collect evidence;Crew
 "Lazav, Wearer of Faces",{U}{B},2,Investigate
-Lightning Helix,{R}{W},2,
 Meddling Youths,{3}{R}{W},5,Investigate;Haste
 "Niv-Mizzet, Guildpact",{W}{U}{B}{R}{G},5,Flying;Hexproof from;Hexproof
 No More Lies,{W}{U},2,
@@ -13350,7 +13357,6 @@ A-Cori-Steel Cutter,{1}{R},2,Flurry;Equip
 Arashin Sunshield,{3}{W},4,
 Bearer of Glory,{1}{W},2,
 Clarion Conqueror,{2}{W},3,Flying
-Coordinated Maneuver,{1}{W},2,
 Dalkovan Packbeasts,{2}{W},3,Vigilance;Mobilize
 Descendant of Storms,{W},1,Endure
 Furious Forebear,{1}{W},2,
@@ -13363,7 +13369,6 @@ Riling Dawnbreaker // Signaling Roar,{4}{W} // {1}{W},5,Flying;Vigilance
 Salt Road Packbeast,{5}{W},6,Affinity
 Smile at Death,{3}{W}{W},5,
 Starry-Eyed Skyrider,{2}{W},3,Flying
-Static Snare,{4}{W},5,Flash
 Stormbeacon Blade,{1}{W},2,Equip
 Sunpearl Kirin,{1}{W},2,Flying;Flash
 Teeming Dragonstorm,{3}{W},4,
@@ -13826,7 +13831,6 @@ Fire Nation Engineer,{2}{B},3,Raid
 "Lo and Li, Twin Tutors",{4}{B},5,
 Phoenix Fleet Airship,{2}{B}{B},4,Flying;Crew
 The Rise of Sozin // Fire Lord Sozin,{4}{B}{B},6,Transform;Firebending;Menace
-Wolfbat,{2}{B},3,Flying
 Fire Nation Attacks,{4}{R},5,Flashback
 The Legend of Roku // Avatar Roku,{2}{R}{R},4,Transform;Firebending
 Tiger-Dillo,{1}{R},2,
@@ -13834,7 +13838,6 @@ Tiger-Dillo,{1}{R},2,
 Earth Rumble,{3}{G},4,Fight;Earthbend
 The Legend of Kyoshi // Avatar Kyoshi,{4}{G}{G},6,Transform;Earthbend
 Rocky Rebuke,{1}{G},2,
-Shared Roots,{1}{G},2,
 "Aang, at the Crossroads // Aang, Destined Savior",{2}{G}{W}{U},5,Flying;Transform;Earthbend
 "Aang, Swift Savior // Aang and La, Ocean's Fury",{1}{W}{U},3,Flying;Reach;Airbend;Transform;Trample;Flash;Waterbend
 "Avatar Aang // Aang, Master of Elements",{R}{G}{W}{U},4,Flying;Transform;Firebending
@@ -13844,7 +13847,6 @@ Earth King's Lieutenant,{G}{W},2,Trample
 "Iroh, Tea Master",{1}{R}{W},3,Food
 "Jet, Freedom Fighter",{2}{R/W}{R/W}{R/W},5,
 The Lion-Turtle,{1}{G}{U},3,Reach;Vigilance
-"Toph, Hardheaded Teacher",{2}{R}{G},4,Earthbend
 "Toph, the First Metalbender",{1}{R}{G}{W},4,Earthbend
 Fire Nation Warship,{3},3,Reach;Crew
 White Lotus Tile,{4},4,
@@ -14675,7 +14677,6 @@ The Princess Takes Flight,{2}{W},3,
 Protective Parents,{2}{W},3,Role token
 Regal Bunnicorn,{1}{W},2,
 Rimefur Reindeer,{3}{W},4,
-Slumbering Keepguard,{W},1,Scry
 Spellbook Vendor,{1}{W},2,Role token;Vigilance;Scry
 Stockpiling Celebrant,{2}{W},3,Scry
 A Tale for the Ages,{1}{W},2,

@@ -1602,7 +1602,7 @@ Mutant Town Musicians,Creature — Mutant Bard Performer,"Trample
 Alliance — Whenever another creature you control enters, this creature gets +1/+0 until end of turn.",R,Mutant; Bard; Performer; pump; alliance; aggro; value; trample; evasion,TMT,97,1
 "Molten Man, Inferno Incarnate",Legendary Creature — Elemental Villain,"When Molten Man enters, search your library for a basic Mountain card, put it onto the battlefield tapped, then shuffle.
 Molten Man gets +1/+1 for each Mountain you control.
-When Molten Man leaves the battlefield, sacrifice a land.",R,Elemental; Villain; sacrifice; ramp; etb; pump,SPM,84,1
+When Molten Man leaves the battlefield, sacrifice a land.",R,Elemental; Villain; sacrifice; ramp; etb; pump,SPM,84,2
 Mysidian Elder,Creature — Human Wizard,"When this creature enters, create a 0/1 black Wizard creature token with ""Whenever you cast a noncreature spell, this token deals 1 damage to each opponent.""",R,Human; Wizard; tokens; burn; etb; noncombat damage,FIN,145,1
 Null Group Biological Assets,Creature — Mutant Mercenary,"During your turn, this creature has first strike.
 Whenever this creature attacks, you may discard a card. If you do, draw a card.",R,Mutant; Mercenary; card draw,TMT,98,1
@@ -3413,7 +3413,7 @@ Unflinching Courage,Enchantment — Aura,"Enchant creature
 Enchanted creature gets +2/+2 and has trample and lifelink. (Damage dealt by the creature also causes its controller to gain that much life.)",W/G,Aura; lifegain; aura; pump; enchant,FDN,722,1
 Angelic Destiny,Enchantment — Aura,"Enchant creature
 Enchanted creature gets +4/+4, has flying and first strike, and is an Angel in addition to its other types.
-When enchanted creature dies, return this card to its owner's hand.",W,Aura; aura; pump; bounce; enchant,FDN,565,1
+When enchanted creature dies, return this card to its owner's hand.",W,Aura; aura; pump; bounce; enchant,FDN,565,2
 Needletooth Pack,Creature — Dinosaur,"Morbid — At the beginning of your end step, if a creature died this turn, put two +1/+1 counters on target creature you control.",G,Dinosaur; counters; morbid; sacrifice; aristocrats,FDN,108,1
 Quakestrider Ceratops,Creature — Dinosaur,,G,Dinosaur,FDN,110,1
 Sunbird Standard,Artifact // Artifact Creature — Bird Construct,"{T}: Add one mana of any color.
@@ -4095,3 +4095,34 @@ Collector's Vault,Artifact,"{2}, {T}: Draw a card, then discard a card. Create a
 Death in the Family,Instant,Exile target creature with mana value 3 or less.,B,removal,TMT,61,1
 Fugitive Droid,Artifact Creature — Robot Scientist,"This creature can't be blocked if an artifact entered the battlefield under your control this turn.
 {U}, Sacrifice this creature: Counter target spell that targets an artifact or creature you control.",U,Robot; Scientist; counterspell; sacrifice,TMT,40,1
+Slumbering Keepguard,Creature — Human Knight,"Whenever an enchantment you control enters, scry 1.
+{2}{W}: This creature gets +1/+1 until end of turn for each enchantment you control.",W,Human; Knight; scry; pump; selection,WOE,29,1
+Summon: Fenrir,Enchantment Creature — Saga Wolf,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Crescent Fang — Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
+II — Heavenward Howl — When you next cast a creature spell this turn, that creature enters with an additional +1/+1 counter on it.
+III — Ecliptic Growl — Draw a card if you control the creature with the greatest power or tied for the greatest power.",G,Saga; Wolf; counters; card draw; sacrifice; ramp; etb; saga,FIN,203,1
+Coordinated Maneuver,Instant,"Choose one —
+• Coordinated Maneuver deals damage equal to the number of creatures you control to target creature or planeswalker.
+• Destroy target enchantment.",W,removal,TDM,6,1
+Static Snare,Enchantment,"Flash
+This spell costs {1} less to cast for each attacking creature.
+When this enchantment enters, exile target artifact or creature an opponent controls until this enchantment leaves the battlefield.",W,cost-reduction; removal; etb; flash; tempo,TDM,26,1
+Kinscaer Sentry,Creature — Kithkin Soldier,"First strike, lifelink
+Whenever this creature attacks, you may put a creature card with mana value X or less from your hand onto the battlefield tapped and attacking, where X is the number of attacking creatures you control.",W,Kithkin; Soldier; lifegain; lifelink; first strike; combat,ECL,22,1
+Marauding Blight-Priest,Creature — Vampire Cleric,"Whenever you gain life, each opponent loses 1 life.",B,Vampire; Cleric; lifegain,FDN,178,1
+Wolfbat,Creature — Wolf Bat,"Flying
+Whenever you draw your second card each turn, you may pay {B}. If you do, return this card from your graveyard to the battlefield with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)",B,Wolf; Bat; counters; reanimator; graveyard; flying; evasion,TLA,122,1
+Marina Vendrell's Grimoire,Legendary Artifact — Book,"When Marina Vendrell's Grimoire enters, if you cast it, draw five cards.
+You have no maximum hand size and don't lose the game for having 0 or less life.
+Whenever you gain life, draw that many cards.
+Whenever you lose life, discard that many cards. Then if you have no cards in hand, you lose the game.",U,Book; lifegain; pay life; card draw; etb,DSK,64,1
+New Horizons,Enchantment — Aura,"Enchant land
+When this Aura enters, put a +1/+1 counter on target creature you control.
+Enchanted land has ""{T}: Add two mana of any one color.""",G,Aura; counters; mana; etb; aura; enchant,FDN,557,1
+Shared Roots,Sorcery — Lesson,"Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",G,Lesson; ramp,TLA,196,1
+Greenhouse,Enchantment — Room // Enchantment — Room,"Lands you control have ""{T}: Add one mana of any color.""
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, mill four cards, then return up to two permanent cards from among them to your hand.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",G,Room; mill; mana; graveyard,DSK,181,1
+"Toph, Hardheaded Teacher",Legendary Creature — Human Warrior Ally,"When Toph enters, you may discard a card. If you do, return target instant or sorcery card from your graveyard to your hand.
+Whenever you cast a spell, earthbend 1. If that spell is a Lesson, put an additional +1/+1 counter on that land. (Target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)",R/G,Human; Warrior; Ally; counters; reanimator; graveyard; etb; earthbend; bending,TLA,246,1
+Lightning Helix,Instant,Lightning Helix deals 3 damage to any target and you gain 3 life.,W/R,lifegain; burn,MKM,218,1
