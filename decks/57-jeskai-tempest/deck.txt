@@ -59,7 +59,8 @@
 # Cheap spells (prowess fuel)
 2 Lightning Helix (MKM) 218
 1 Boros Charm (FDN) 721
-2 Thunder Salvo (OTJ) 150
+1 Thunder Salvo (OTJ) 150
+1 Aziza, Mage Tower Captain (SOS) 174
 2 Rally the Monastery (TDM) 19
 2 Haste Magic (FIN) 140
 2 Ancestors' Aid (LCI) 132

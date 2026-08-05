@@ -29,9 +29,7 @@
 #: notes: plan). Gated cards left OUT, each with the count that parks it (G-61): The
 #: notes: Scarlet Witch needs ~6+ MV>=4 instants/sorceries (this list has 1 — Rally;
 #: notes: Thunder Salvo only via X); Crime Novelist needs ~8+ artifact producers (this list has
-#: notes: 3 — Death to Our Enemies, Tablet, UGG's Treasures); Aziza, Mage Tower Captain
-#: notes: needs the vigilance stay-home package (Swiftblade/Seedglaive/Snow — none
-#: notes: here, they sit with deck 55's F sub-package); Lorehold the Historian rides
+#: notes: 3 — Death to Our Enemies, Tablet, UGG's Treasures); Lorehold the Historian rides
 #: notes: only with the big-spell tilt that Scarlet Witch's gate also waits on. Kirol
 #: notes: triggers on cards LEAVING the graveyard — flashback casts, mayhem casts and
 #: notes: Cruelclaw's free cast all count; blind self-mill does not fill him alone.
@@ -51,11 +49,12 @@
 
 # Mana engine (spells fund spells)
 2 Electro, Assaulting Battery (SPM) 76
-2 Brazen Collector (BLB) 128
+1 Brazen Collector (BLB) 128
 1 Tablet of Discovery (SOS) 132
 1 Death to Our Enemies (MSH) 127
 
 # Velocity (second-spell layer)
+1 Aziza, Mage Tower Captain (SOS) 174
 1 Equilibrium Adept (TDM) 106
 2 Cosmogrand Zenith (EOE) 9
 2 Sunstar Lightsmith (EOE) 42

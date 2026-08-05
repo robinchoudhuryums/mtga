@@ -55,8 +55,8 @@
 #: archetype: Mardu VARIANT of Eternal Flame — rather than a core deck of its own. It is
 #: archetype: kept standalone here only because Mardu is an otherwise empty color slot;
 #: archetype: if the go-wide plan does not separate it in play, fold it into 24 as 24c.
-#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 9
-#: tier: across a 3.26 curve, six of it able to answer a noncreature permanent, and the
+#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 8
+#: tier: across a 3.34 curve, six of it able to answer a noncreature permanent, and the
 #: tier: deck is FULLY OWNED — zero craft targets, unusual for a from-scratch build. Held
 #: tier: a band below the floor by three things the floor cannot see:
 #: tier: 1. THE 76% OVERLAP WITH 24. A deck that measurably duplicates an existing A-tier
@@ -84,6 +84,7 @@
 1 Fire Lord Zuko (TLA) 221
 1 Quintorius Kand (LCI) 238
 
+1 Zidane, Tantalus Thief (FIN) 251
 # Impulse enablers — exile off your own library
 1 Kellan, Planar Trailblazer (FDN) 91
 1 Fanatical Firebrand (FDN) 195
@@ -119,7 +120,6 @@
 1 Burst Lightning (FDN) 192
 1 Erode (SOS) 15
 1 Long Goodbye (MKM) 92
-1 Bitter Triumph (SOA) 26
 1 Feed the Swarm (SOA) 29
 1 Cruel Alliance (MSH) 92
 
