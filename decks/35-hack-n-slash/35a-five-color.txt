@@ -50,7 +50,7 @@
 # Push-through / evasion + burn spells
 1 Pym Particles (MSH) 70
 1 Untimely Malfunction (DSK) 161
-1 How to Start a Riot (TLA) 140
+1 Leyline of Mutation (DSK) 188
 1 Mona Lisa, Science Geek (TMT) 123
 1 Biosynthic Burst (EOE) 173
 1 Burst Lightning (FDN) 192
@@ -68,8 +68,8 @@
 1 Wastewood Verge (DFT) 268
 1 Breeding Pool (EOE) 251
 1 Hallowed Fountain (ECL) 265
-1 Izzet Guildgate (FDN) 691
-1 Gruul Guildgate (FDN) 690
+1 Starting Town (FIN) 289
+1 Rumble Arena (TLA) 277
 3 Island (MSH) 290
 3 Mountain (MSH) 294
 3 Forest (MSH) 296
@@ -77,4 +77,4 @@
 1 Bloom Tender (ECL) 166
 
 # Flex — craft upgrade for the manabase. See: deck.py flex 35a
-#~ -How to Start a Riot | +Overlord of the Hauntwoods | OWNED (crafted): its "Everywhere" token (every basic land type) is repeatable 5-color fixing + ramp on ETB and each attack, plus a 5/5 impending body — the single best fixer for this greedy WUBRG base, stacking with the Great Divide Guide / Bloom Tender / Mona Lisa dorks. (Fungible with decks 17 / 21a.) Comes in over a redundant combat trick (the deck keeps Pym/Untimely/Gossip's for push-through), keeping The Legend of Kyoshi's card draw + fixing. Alt cut: Biosynthic Burst.
+#~ note: applied — Leyline of Mutation in for How to Start a Riot.

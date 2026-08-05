@@ -81,6 +81,8 @@ Whenever one or more creatures die, put a rev counter on this Equipment.
 Equipped creature gets +X/+0, where X is the number of rev counters on this Equipment.
 Equip {3}",R,Equipment; counters; burn; etb; equipment; pump; equip,DSK,128,Rare,26,"On-theme R removal for Iron Forge (26): ETB deal 3, grows with deaths — the interaction upgrade over War Machine",6.0,hand
 "Kona, Rescue Beastie",Legendary Creature — Beast Survivor,"Survival — At the beginning of your second main phase, if Kona is tapped, you may put a permanent card from your hand onto the battlefield.",G,Beast; Survivor; survival,DSK,187,Rare,50a,,6.5,hand
+Leyline of Mutation,Enchantment,"If this card is in your opening hand, you may begin the game with it on the battlefield.
+You may pay {W}{U}{B}{R}{G} rather than pay the mana cost for spells you cast.",W/U/B/R/G,,DSK,165,Rare,,,3.0,seed
 The Mindskinner,Legendary Enchantment Creature — Nightmare,"The Mindskinner can't be blocked.
 If a source you control would deal damage to an opponent, prevent that damage and each opponent mills that many cards.",U,Nightmare; mill; graveyard,DSK,66,Rare,51a,"Deck 51a: converts every damage source you control into mill, +4 each with the Water Crystal. Pure upside HERE because the deck has no combat plan to lose - it would be a trap in parent 51, which wins with Krang and the Terrors.",7.2,hand
 Twitching Doll,Artifact Creature — Spider Toy,"{T}: Add one mana of any color. Put a nest counter on this creature.
