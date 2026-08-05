@@ -1,4 +1,7 @@
 Card Name,Type,Card Text,Color(s),Synergies,Set Code,Collector #,Rarity,Target,Note,Power,Power Source
+Sword of Wealth and Power,Artifact — Equipment,"Equipped creature gets +2/+2 and has protection from instants and from sorceries.
+Whenever equipped creature deals combat damage to a player, create a Treasure token. When you next cast an instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.
+Equip {2}",Colorless,Equipment; tokens; treasure; equipment; pump; spell copy; equip,BIG,26,Mythic,,,7.0,seed
 "Bria, Riptide Rogue",Legendary Creature — Otter Rogue,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 Other creatures you control have prowess. (If a creature has multiple instances of prowess, each triggers separately.)
 Whenever you cast a noncreature spell, target creature you control can't be blocked this turn.",U/R,Otter; Rogue; pump; prowess; spellslinger; tempo,BLB,379,Mythic,25,prowess + gives your team menace/evasion,6.5,hand
@@ -51,6 +54,8 @@ Equipped creature gets +3/+3 and loses flying.
 Equip {3}",Colorless,Equipment; tokens; etb; equipment; pump; gift; value; equip,BLB,249,Uncommon,38,,3.0,hand
 Sunshower Druid,Creature — Frog Druid,"When this creature enters, put a +1/+1 counter on target creature and you gain 1 life.",G,Frog; Druid; counters; lifegain; etb,BLB,195,Common,50,,1.5,seed
 Three Tree Rootweaver,Creature — Mole Druid,{T}: Add one mana of any color.,G,Mole; Druid; mana,BLB,198,Common,50,,1.0,seed
+Full Throttle,Sorcery,"After this main phase, there are two additional combat phases.
+At the beginning of each combat this turn, untap all creatures that attacked this turn.",R,,DFT,127,Rare,,,3.0,seed
 Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,5.5,hand
 Riverchurn Monument,Artifact,"{1}, {T}: Any number of target players each mill two cards. (Each of them puts the top two cards of their library into their graveyard.)
 Exhaust — {2}{U}{U}, {T}: Any number of target players each mill cards equal to the number of cards in their graveyard. (Activate each exhaust ability only once.)",U,graveyard; mill; exhaust; payoff,DFT,57,Rare,51; 51a,"Deck 51: {1},{T} mills 2 -> SIX with The Water Crystal already in the deck; Exhaust mills their whole graveyard +4. Activated, so Fractured Realm does NOT double it. ~turn 11 clock alone, faster with Exhaust.",7.4,hand
@@ -248,6 +253,8 @@ Chaosbringer — Equip—Pay 3 life. Activate only once each turn.",B,Equipment;
 Lion Heart,Artifact — Equipment,"When this Equipment enters, it deals 2 damage to any target.
 Equipped creature gets +2/+1.
 Equip {2}",Colorless,Equipment; burn; etb; equipment; pump; equip,FIN,261,Uncommon,38,,4.5,hand
+Prompto Argentum,Legendary Creature — Human Scout,"Haste
+Selfie Shot — Whenever you cast a noncreature spell, if at least four mana was spent to cast it, create a Treasure token.",R,Human; Scout; tokens; treasure; haste; aggro,FIN,148,Uncommon,,,4.5,seed
 "Ragnarok, Divine Deliverance",Legendary Creature — Beast Avatar,"Vigilance, menace, trample, reach, haste
 When Ragnarok dies, destroy target permanent and return target nonlegendary permanent card from your graveyard to the battlefield.",B/G,Beast; Avatar; graveyard; removal; reach; defense; vigilance; combat; haste; aggro; trample; evasion; menace,FIN,99b,Uncommon,31,,6.0,hand
 Summon: Fenrir,Enchantment Creature — Saga Wolf,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
@@ -399,6 +406,9 @@ Slumbering Trudge,Creature — Plant Beast,"This creature enters with a number o
 Splatter Technique,Sorcery,"Choose one —
 • Draw four cards.
 • Splatter Technique deals 4 damage to each creature and planeswalker.",U/R,card draw; burn,SOS,231,Rare,general,flexible UR: draw 4 OR sweep 4 to each creature/PW — role-player in any UR/grixis shell,6.5,hand
+Steal the Show,Sorcery,"Choose one or both —
+• Target player discards any number of cards, then draws that many cards.
+• Steal the Show deals damage equal to the number of instant and sorcery cards in your graveyard to target creature or planeswalker.",R,graveyard; discard,SOS,130,Rare,,,5.5,seed
 Sundown Pass,Land,"This land enters tapped unless you control two or more other lands.
 {T}: Add {R} or {W}.",W/R,mana,SOS,264,Rare,general,"WR fixing land — generic fixing, not earthbend-specific",5.0,hand
 Together as One,Sorcery,"Converge — Target player draws X cards, Together as One deals X damage to any target, and you gain X life, where X is the number of colors of mana spent to cast this spell.",Colorless,burn; converge; multicolor,SOS,4,Rare,17,Converge payoff (draw/burn/gain X = colors spent) — rewards the 5-color manabase,4.5,hand
@@ -470,12 +480,15 @@ The Lion-Turtle,Legendary Creature — Elder Cat Turtle,"Vigilance, reach
 When The Lion-Turtle enters, you gain 3 life.
 The Lion-Turtle can't attack or block unless there are three or more Lesson cards in your graveyard.
 {T}: Add one mana of any color.",U/G,Elder; Cat; Turtle; graveyard; lifegain; mana; etb; reach; defense; vigilance; combat,TLA,232,Rare,concept: Turtle,"best 19a (Bird Brain — Bant Tokens); also 17,4",4.0,hand
+"Toph, Hardheaded Teacher",Legendary Creature — Human Warrior Ally,"When Toph enters, you may discard a card. If you do, return target instant or sorcery card from your graveyard to your hand.
+Whenever you cast a spell, earthbend 1. If that spell is a Lesson, put an additional +1/+1 counter on that land. (Target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)",R/G,Human; Warrior; Ally; counters; reanimator; graveyard; etb; earthbend; bending,TLA,246,Rare,,,6.5,seed
 "Toph, the First Metalbender",Legendary Creature — Human Warrior Ally,"Nontoken artifacts you control are lands in addition to their other types. (They don't gain the ability to {T} for mana.)
 At the beginning of your end step, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",W/R/G,Human; Warrior; Ally; counters; blink; earthbend; bending,TLA,247,Rare,13,,6.0,hand
 "Zhao, the Moon Slayer",Legendary Creature — Human Soldier,"Menace
 Nonbasic lands enter tapped.
 {7}: Put a conqueror counter on Zhao.
 As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17",4.0,hand
+Shared Roots,Sorcery — Lesson,"Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",G,Lesson; ramp,TLA,243,Uncommon,,,2.5,seed
 Inspiring Call,Instant,"Draw a card for each creature you control with a +1/+1 counter on it. Those creatures gain indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy them.)",G,counters; card draw,TLE,168,Uncommon,50,,7.0,hand
 Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,8,"best 8 (Sacrifices); also 21,21a,5",3.5,hand
 Cool but Rude,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)

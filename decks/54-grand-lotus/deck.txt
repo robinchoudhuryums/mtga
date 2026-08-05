@@ -4,7 +4,7 @@
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT list (5 craft targets, zero games).
 #: tier: One band BELOW the measurable floor, which reads A on interaction 7 plus card
-#: tier: advantage 5. Against the rubric an A needs four things and this list fails two:
+#: tier: advantage 4. Against the rubric an A needs four things and this list fails two:
 #: tier:   A-FLOOR — yes. Interaction 7 clears five; the sum of 12 clears seven.
 #: tier:   COHERENT ENGINE — yes, and now MEASURED rather than asserted. `targets` finds
 #: tier:     nine gated effects and reports zero thin or unmet: every Lesson-count gate in
@@ -13,11 +13,12 @@
 #: tier:     graveyard axis as balanced 18 enablers / 16 payoffs. Lessons are instants and
 #: tier:     sorceries, so casting them IS filling the yard; the engine feeds itself.
 #: tier:     WATCH THIS NUMBER. The 2026-08 fixing pass cut four Lessons and added none, so
-#: tier:     the count fell 21 -> 17. Every GATE still clears (they need one to three), but
+#: tier:     the count fell 21 -> 17, and the 2026-08 plan pass moved it to 16 (three
+#: tier:     Lesson cuts against Elemental Teachings and Shared Roots added). Every GATE still clears (they need one to three), but
 #: tier:     two payoffs SCALE with the count rather than switching on — Combustion
 #: tier:     Technique and Bumi's X — and those lost about a fifth of their ceiling. Price a
 #: tier:     Lesson cut against them, not against the gates.
-#: tier:   TIGHT CURVE — yes. 3.06 average on 17 early drops.
+#: tier:   TIGHT CURVE — yes. 3.11 average after the 2026-08 plan pass.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND badly.
 #: tier:     (1) THE MANABASE, and the 2026-08 pass was aimed squarely at it. Three colours
 #: tier:     on 25 lands, deepest colour 12 sources; Improvisation Capstone still casts on
@@ -64,8 +65,8 @@
 #: archetype: battlefield. The deck's job is to get them into the yard and then untap.
 #: archetype: THE YARD FILLS ITSELF, which is what makes the plan work without a dedicated
 #: archetype: mill package: Lessons are instants and sorceries, so every one you cast
-#: archetype: normally is a card Iroh can buy back later. Abandon Attachments discards to
-#: archetype: draw, Platypus-Bear mills two on entry, Leaves from the Vine mills three on
+#: archetype: normally is a card Iroh can buy back later. (Abandon Attachments, which
+#: archetype: discarded to draw, was CUT in the 2026-08 plan pass.) Platypus-Bear mills two on entry, Leaves from the Vine mills three on
 #: archetype: chapter I, and two Surveillance Rooms do it off a land. CORRECTION 2026-08:
 #: archetype: this list previously named Accumulate Wisdom as binning two of three. It does
 #: archetype: not — it puts the rest on the BOTTOM of your library, so it is pure selection
@@ -74,8 +75,9 @@
 #: archetype: matches, not whether a claim about a card's TEXT is true.
 #: archetype: THE PAYOFFS READ THE COUNT, not just the cards. Combustion Technique deals
 #: archetype: 2 plus the Lessons in your graveyard; Bumi, King of Three Trials chooses up
-#: archetype: to X modes where X is that same number; Serpent of the Pass gains flash at
-#: archetype: three; First-Time Flyer and Fire Nation Cadets turn on at one. So the
+#: archetype: to X modes where X is that same number (Serpent of the Pass, whose flash
+#: archetype: gate read the same count, was CUT for the plan's engine adds); First-Time
+#: archetype: Flyer and Fire Nation Cadets turn on at one. So the
 #: archetype: graveyard is simultaneously the resource, the second hand, and the clock.
 #: archetype: DISTINCTIVENESS. Deck 51a is the roster's other Lesson deck and is MONO-BLUE
 #: archetype: LESSON MILL — it mills Lessons as a resource; this recurs them as a second
@@ -84,7 +86,7 @@
 #: archetype: instants and sorceries; this runs seventeen (down from twenty-three before the
 #: archetype: 2026-08 fixing pass traded four spells for permanents), because here they ARE
 #: archetype: the deck. Neither shares this one's colours.
-#: protect: Iroh, Grand Lotus; Bumi, King of Three Trials; Combustion Technique; Improvisation Capstone; Echocasting Symposium
+#: protect: Iroh, Grand Lotus; Thor, God of Thunder; Bumi, King of Three Trials; Combustion Technique; Improvisation Capstone; Echocasting Symposium
 #: notes: WIP — but unusually close to buildable for a from-scratch brew: 26 of the 27
 #: notes: Temur-castable Lessons in Standard were already in the collection, and so were
 #: notes: 15 of the 17 cards that read the Lesson count. The archetype was sitting there.
@@ -110,11 +112,14 @@
 #: notes: the synergy tagger cannot see that it is a recurring engine. Grade those two
 #: notes: from their text, not from their tags.
 
+#: notes: BENCH (2026-08 plan, next in line if a slot opens): Ember Island Production
+#: notes: (non-legendary Iroh copy — gave its seat back to the Lesson-count constraint),
+#: notes: Ovika (MV of each {1}-flashback in hasty bodies), Guru Pathik, Omenpath Journey.
 # Nonland
 1 Iroh, Grand Lotus (TLA) 227
 1 Uncle Iroh (TLA) 248
 1 Bumi, King of Three Trials (TLA) 169
-1 Serpent of the Pass (TLA) 70
+1 Shared Roots (TLA) 196
 1 Death to Our Enemies (MSH) 127
 1 First-Time Flyer (TLA) 49
 1 Fire Nation Cadets (TLA) 134
@@ -122,15 +127,15 @@
 1 Platypus-Bear (TLA) 236
 1 Gran-Gran (TLA) 54
 1 Hermitic Herbalist (TLA) 226
-1 Abandon Attachments (TLA) 205
+1 Bloom Tender (ECL) 166
 1 Accumulate Wisdom (TLA) 44
-1 It'll Quench Ya! (TLA) 58
+1 Thor, God of Thunder (MSH) 156
 1 Iroh's Demonstration (TLA) 141
 1 Combustion Technique (TLA) 128
 1 Origin of Metalbending (TLA) 187
 1 True Ancestry (TLA) 199
 1 Boomerang Basics (TLA) 46
-1 Seismic Sense (TLA) 195
+1 Great Divide Guide (TLA) 181
 1 Solstice Revelations (TLA) 153
 1 Leaves from the Vine (TLA) 185
 1 Waterbending Lesson (TLA) 80
@@ -140,10 +145,10 @@
 1 Germination Practicum (SOS) 149
 1 Echocasting Symposium (SOS) 44
 1 Improvisation Capstone (SOS) 120
-1 Fierce Empath (FDN) 636
+1 Elemental Teachings (TLA) 178
 1 Rockalanche (TLA) 192
 1 Earthbending Lesson (TLA) 176
-1 Formidable Speaker (ECL) 176
+1 Toph, Hardheaded Teacher (TLA) 246
 1 Doc Aurlock, Grizzled Genius (OTJ) 201
 1 Greenhouse // Rickety Gazebo (DSK) 181
 
