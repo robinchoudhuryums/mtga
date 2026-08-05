@@ -1,8 +1,8 @@
 #: name: Dino Stampede
 #: format: Standard
-#: tier: A — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit). Re-graded B→A after the interaction package (+Bushwhack / +Clash of the Eikons fight removal / +Auspicious Arrival investigate-draw, cutting off-tribe Soldier chaff) took interaction 3→5 and card advantage 1→2 → A-floor, while tightening the Dino/Soldier split. A here is a clean, resilient fair-creature A (not a bomb-driven one). The fully-owned playable version is variant 28a.
+#: tier: A — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit). Re-graded B→A after the interaction package (+Bushwhack / +Clash of the Eikons fight removal / +Auspicious Arrival investigate-draw, cutting off-tribe Soldier chaff) took interaction to 5, then the 2026-08 rotation-proofing pass (Gishath/Palani's Hatcher/Rampaging Ceratops/Hulking Raptor were CUT for Etali/Savage Land Dinosaur/Spider-Rex/Thrashing Brontodon) moved it to interaction 6 and card advantage 3 → A-floor. A here is a clean, resilient fair-creature A (not a bomb-driven one). The fully-owned playable version is variant 28a.
 #: colors: RGW
-#: archetype: Naya (R/G/W) Dinosaur tribal with a Soldier secondary — Triceraton Commander token engine into big dinos (Ghalta, Gishath). WIP brew.
+#: archetype: Naya (R/G/W) Dinosaur tribal with a Soldier secondary — Triceraton Commander token engine into big dinos (Ghalta, Etali cheating spells off the top). WIP brew, rotation-proofed 2026-08: every unowned card now survives the ~Q4 2026 rotation.
 
 2 Triceraton Commander (TMT) 25
 1 Giant Cindermaw (FDN) 624
@@ -31,17 +31,17 @@
 1 Belligerent Yearling (LCI) 133
 1 Triumphant Chomp (LCI) 170
 1 Scalestorm Summoner (OTJ) 144
-1 Rampaging Ceratops (LCI) 162
+1 Spider-Rex, Daring Dino (MSC) 818
 1 Dracosaur Auxiliary (DFT) 122
 1 Regal Imperiosaur (DFT) 177
-1 Hulking Raptor (LCI) 191
-1 Palani's Hatcher (LCI) 237
-1 Gishath, Sun's Avatar (LCI) 229
+1 Thrashing Brontodon (FDN) 560
+1 Savage Land Dinosaur (MSH) 185
+1 Etali, Primal Storm (FDN) 194
 1 Ghalta, Primal Hunger (FDN) 222
 1 Itzquinth, Firstborn of Gishath (LCI) 230
-# Lands (24 — Naya fixing: 11 owned duals + 13 basics). Premium craft upgrade =
+# Lands (24 — Naya fixing: 13 owned duals + 11 basics). Premium craft upgrade =
 # untapped duals (surveil lands / shocks / a Naya triome) to shed the tapland tempo cost.
-1 Restless Ridgeline (LCI) 283
+1 Training Compound (MSH) 275
 1 Blossoming Sands (M21) 244
 1 Hushwood Verge (DSK) 261
 1 Gathering Place (MSH) 266
@@ -53,5 +53,16 @@
 1 Temple of Triumph (FDN) 705
 1 Abraded Bluffs (OTJ) 251
 5 Plains
-4 Forest
-4 Mountain
+3 Forest
+1 Kyoshi Village (TLA) 271
+3 Mountain
+1 Rugged Highlands (FDN) 265
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 28
+# October successors for the six OWNED cards that rotate ~Q4 2026 (kept until then — they cost nothing):
+#~ -Earthshaker Dreadmaw | +Terrian, World Tyrant | rotates 2026; Terrian is an owned rotation-safe 9/7 for 5 (vanilla, K-11)
+#~ -Belligerent Yearling | +Ragamuffin Raptor | rotates 2026; owned 4/3 whose ETB "return up to one target creature or Food card from your graveyard" adds recursion
+#~ -Nurturing Bristleback | +Migrating Ketradon | rotates 2026; craft C — 6/6 reach, "you gain 4 life", cycling {2} keeps the never-dead-card property
+#~ -Itzquinth, Firstborn of Gishath | +Tyrox, Saurid Tyrant | rotates 2026; craft U — owned-adjacent legendary 4/1 haste-less beater for {1}{R}; or any surviving 2-drop Dino
+#~ -Triumphant Chomp | +Bushwhack | rotates 2026; the fight mode covers the same job — or craft a surviving fight/burn spell at the time
+# (Restless Ridgeline → Training Compound already applied 2026-08 — the rotating land is handled.)
