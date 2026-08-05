@@ -80,10 +80,9 @@ Chainsaw,Artifact — Equipment,"When this Equipment enters, it deals 3 damage t
 Whenever one or more creatures die, put a rev counter on this Equipment.
 Equipped creature gets +X/+0, where X is the number of rev counters on this Equipment.
 Equip {3}",R,Equipment; counters; burn; etb; equipment; pump; equip,DSK,128,Rare,26,"On-theme R removal for Iron Forge (26): ETB deal 3, grows with deaths — the interaction upgrade over War Machine",6.0,hand
-Enduring Vitality,Enchantment Creature — Elk Glimmer,"Vigilance
-Creatures you control have ""{T}: Add one mana of any color.""
-When Enduring Vitality dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",G,Elk; Glimmer; mana; vigilance; combat,DSK,176,Rare,29,,6.5,hand
 "Kona, Rescue Beastie",Legendary Creature — Beast Survivor,"Survival — At the beginning of your second main phase, if Kona is tapped, you may put a permanent card from your hand onto the battlefield.",G,Beast; Survivor; survival,DSK,187,Rare,50a,,6.5,hand
+Leyline of Mutation,Enchantment,"If this card is in your opening hand, you may begin the game with it on the battlefield.
+You may pay {W}{U}{B}{R}{G} rather than pay the mana cost for spells you cast.",W/U/B/R/G,,DSK,165,Rare,,,3.0,seed
 The Mindskinner,Legendary Enchantment Creature — Nightmare,"The Mindskinner can't be blocked.
 If a source you control would deal damage to an opponent, prevent that damage and each opponent mills that many cards.",U,Nightmare; mill; graveyard,DSK,66,Rare,51a,"Deck 51a: converts every damage source you control into mill, +4 each with the Water Crystal. Pure upside HERE because the deck has no combat plan to lose - it would be a trap in parent 51, which wins with Krang and the Terrors.",7.2,hand
 Twitching Doll,Artifact Creature — Spider Toy,"{T}: Add one mana of any color. Put a nest counter on this creature.
@@ -106,19 +105,11 @@ Scrabbling Skullcrab,Creature — Crab Skeleton,"Eerie — Whenever an enchantme
 Shroudstomper,Creature — Elemental,"Deathtouch
 Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.",W/B,Elemental; lifegain; card draw; deathtouch; combat; removal,DSK,233,Uncommon,20,,5.0,hand
 Valgavoth's Faithful,Creature — Human Cleric,"{3}{B}, Sacrifice this creature: Return target creature card from your graveyard to the battlefield. Activate only as a sorcery.",B,Human; Cleric; reanimator; graveyard; sacrifice,DSK,121,Uncommon,52a,,5.0,seed
-Withering Torment,Instant,Destroy target creature or enchantment. You lose 2 life.,B,pay life; removal,DSK,124,Uncommon,52a,,3.0,seed
-Meat Locker // Drowned Diner,Enchantment — Room // Enchantment — Room,"When you unlock this door, tap up to one target creature and put two stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
-(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, draw three cards, then discard a card.
-(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,Room; counters; card draw,DSK,65,Common,51,,6.0,hand
 Spineseeker Centipede,Creature — Insect,"When this creature enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.
 Delirium — This creature gets +1/+2 and has vigilance as long as there are four or more card types among cards in your graveyard.",G,Insect; graveyard; ramp; etb; pump; delirium,DSK,199,Common,50,,1.5,seed
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
-Kinscaer Sentry,Creature — Kithkin Soldier,"First strike, lifelink
-Whenever this creature attacks, you may put a creature card with mana value X or less from your hand onto the battlefield tapped and attacking, where X is the number of attacking creatures you control.",W,Kithkin; Soldier; lifegain; lifelink; first strike; combat,ECL,22,Rare,23,2-drop first strike/lifelink that cheats a creature with MV <= attackers from hand into play attacking,6.0,hand
 Iron-Shield Elf,Creature — Elf Warrior,"Discard a card: This creature gains indestructible until end of turn. Tap it. (Damage and effects that say ""destroy"" don't destroy it. If its toughness is 0 or less, it still dies.)",B,Elf; Warrior,ECL,108,Uncommon,52a,,2.5,seed
 Spell Snare,Instant,Counter target spell with mana value 2.,U,counterspell,ECL,71,Uncommon,51,,3.0,seed
-"Sothera, the Supervoid",Legendary Enchantment,"Whenever a creature you control dies, each opponent chooses a creature they control and exiles it.
-At the beginning of your end step, if a player controls no creatures, sacrifice Sothera, then put a creature card exiled with it onto the battlefield under your control with two additional +1/+1 counters on it.",B,counters; heist; sacrifice,EOE,115,Mythic,52,,8.5,seed
 "Susur Secundi, Void Altar",Land — Planet,"This land enters tapped.
 {T}: Add {B}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
@@ -138,7 +129,6 @@ Whenever this Spacecraft attacks, you may put a creature card from your hand ont
 The Eternity Elevator,Legendary Artifact — Spacecraft,"{T}: Add {C}{C}{C}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery.)
 20+ | {T}: Add X mana of any one color, where X is the number of charge counters on The Eternity Elevator.",Colorless,Spacecraft; mana; station; counters; artifacts,EOE,241,Rare,51,,5.5,hand
-Cerebral Download,Instant,"Surveil X, where X is the number of artifacts you control. Then draw three cards. (To surveil X, look at the top X cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,graveyard; card draw; selection; surveil,EOE,48,Uncommon,51,,3.5,seed
 Dubious Delicacy,Artifact — Food,"Flash
 When this artifact enters, up to one target creature gets -3/-3 until end of turn.
 {2}, {T}, Sacrifice this artifact: You gain 3 life.
@@ -152,6 +142,7 @@ Landfall — Whenever a land you control enters, this creature gets +1/+0 until 
 −3: Target creature gains flying and double strike until end of turn.
 −8: Create X 2/2 white Cat creature tokens, where X is your life total.",W,Ajani; Planeswalker; counters; tokens; planeswalker,FDN,134,Mythic,36,,6.5,hand
 Omniscience,Enchantment,You may cast spells from your hand without paying their mana costs.,U,,FDN,161,Mythic,51,,8.0,hand
+Omniscience,Enchantment,You may cast spells from your hand without paying their mana costs.,U,,FDN,208,Mythic,,,4.5,seed
 "Ramos, Dragon Engine",Legendary Artifact Creature — Dragon,"Flying
 Whenever you cast a spell, put a +1/+1 counter on Ramos for each of that spell's colors.
 Remove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activate only once each turn.",W/U/B/R/G,Dragon; counters; flying; evasion,FDN,678,Mythic,17; 51,"Deck 51: cost is {6} COLORLESS so it casts on Islands — the identity column (WUBRG, from its MANA ABILITY) is what hid it. Five +1/+1 counters convert to TEN mana, and Fractured Realm doubles the counter trigger. 4/4 flier.",8,hand
@@ -192,8 +183,6 @@ Regal Caracal,Creature — Cat,"Other Cats you control get +1/+1 and have lifeli
 When this creature enters, create two 1/1 white Cat creature tokens with lifelink.",W,Cat; lifegain; tokens; etb; pump,FDN,579,Rare,36,,5.0,hand
 Rite of Replication,Sorcery,"Kicker {5} (You may pay an additional {5} as you cast this spell.)
 Create a token that's a copy of target creature. If this spell was kicked, create five of those tokens instead.",U,tokens; kicker; value,FDN,711,Rare,25,Copy engine for Spellstorm (25): clone your best creature (kicker = 5 copies) — payoff redundancy,6.5,hand
-Claws Out,Instant,"Affinity for Cats (This spell costs {1} less to cast for each Cat you control.)
-Creatures you control get +2/+2 until end of turn.",W,pump; affinity; artifacts; cost-reduction,FDN,6,Uncommon,36,,4.0,hand
 Dragonlord's Servant,Creature — Goblin Shaman,Dragon spells you cast cost {1} less to cast.,R,Goblin; Shaman; cost-reduction,FDN,536,Uncommon,49,,7.0,hand
 Good-Fortune Unicorn,Creature — Unicorn,"Whenever another creature you control enters, put a +1/+1 counter on that creature.",W/G,Unicorn; counters,FDN,240,Uncommon,36a,,5.0,hand
 Hoarding Dragon,Creature — Dragon,"Flying
@@ -202,7 +191,8 @@ When this creature dies, you may put the exiled card into its owner's hand.",R,D
 Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0,hand
 Rogue's Passage,Land,"{T}: Add {C}.
 {4}, {T}: Target creature can't be blocked this turn.",Colorless,mana,FDN,264,Uncommon,50,"2nd evasion route in 50: {4},{T} unblockable is the fix for Jumbo Cactuar / Colossification that does NOT need a trample grant in hand. Measured free against a Forest.",6.0,hand
-Impact Tremors,Enchantment,"Whenever a creature you control enters, this enchantment deals 1 damage to each opponent.",R,burn; noncombat damage,FDN,717,Common,49,,4.0,seed
+Savage Ventmaw,Creature — Dragon,"Flying
+Whenever this creature attacks, add {R}{R}{R}{G}{G}{G}. Until end of turn, you don't lose this mana as steps and phases end.",R/G,Dragon; flying; evasion,FDN,631,Uncommon,,,2.0,seed
 Lightshell Duo,Creature — Rat Otter,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,Rat; Otter; graveyard; etb; pump; selection; surveil; prowess; spellslinger; tempo,FDN,157,Common,37,,3.0,hand
 Rapacious Dragon,Creature — Dragon,"Flying
@@ -220,14 +210,6 @@ III — Other creatures you control get +2/+2 and gain trample until end of turn
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +2/+2 for each artifact you control and is an Artificer in addition to its other types.
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell",5.0,hand
-Ninja's Blades,Artifact — Equipment,"Job select
-Equipped creature gets +1/+1, is a Ninja in addition to its other types, and has ""Whenever this creature deals combat damage to a player, draw a card, then discard a card. That player loses life equal to the discarded card's mana value.""
-Mutsunokami — Equip {2}",B,Equipment; card draw; equipment; pump; job select; equip; mutsunokami,FIN,108,Rare,38,,6.0,hand
-Summon: Titan,Enchantment Creature — Saga Giant,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
-I — Mill five cards.
-II — Return all land cards from your graveyard to the battlefield tapped.
-III — Until end of turn, another target creature you control gains trample and gets +X/+X, where X is the number of lands you control.
-Reach, trample",G,Saga; Giant; reanimator; graveyard; mill; sacrifice; saga; pump; reach; defense; trample; evasion,FIN,204,Rare,29,,5.5,hand
 Summoner's Grimoire,Artifact — Book Equipment,"Job select
 Equipped creature is a Shaman in addition to its other types and has ""Whenever this creature attacks, you may put a creature card from your hand onto the battlefield. If that card is an enchantment card, it enters tapped and attacking.""
 Abraxas — Equip {3}",G,Book; Equipment; equipment; job select; equip,FIN,205,Rare,50,,5.5,seed
@@ -253,14 +235,8 @@ Chaosbringer — Equip—Pay 3 life. Activate only once each turn.",B,Equipment;
 Lion Heart,Artifact — Equipment,"When this Equipment enters, it deals 2 damage to any target.
 Equipped creature gets +2/+1.
 Equip {2}",Colorless,Equipment; burn; etb; equipment; pump; equip,FIN,261,Uncommon,38,,4.5,hand
-Prompto Argentum,Legendary Creature — Human Scout,"Haste
-Selfie Shot — Whenever you cast a noncreature spell, if at least four mana was spent to cast it, create a Treasure token.",R,Human; Scout; tokens; treasure; haste; aggro,FIN,148,Uncommon,,,4.5,seed
 "Ragnarok, Divine Deliverance",Legendary Creature — Beast Avatar,"Vigilance, menace, trample, reach, haste
 When Ragnarok dies, destroy target permanent and return target nonlegendary permanent card from your graveyard to the battlefield.",B/G,Beast; Avatar; graveyard; removal; reach; defense; vigilance; combat; haste; aggro; trample; evasion; menace,FIN,99b,Uncommon,31,,6.0,hand
-Summon: Fenrir,Enchantment Creature — Saga Wolf,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
-I — Crescent Fang — Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
-II — Heavenward Howl — When you next cast a creature spell this turn, that creature enters with an additional +1/+1 counter on it.
-III — Ecliptic Growl — Draw a card if you control the creature with the greatest power or tied for the greatest power.",G,Saga; Wolf; counters; card draw; sacrifice; ramp; etb; saga,FIN,203,Uncommon,29,,5.5,hand
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
@@ -322,9 +298,6 @@ Aftermath Analyst,Creature — Elf Detective,"When this creature enters, mill th
 Case of the Filched Falcon,Enchantment — Case,"When this Case enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
 To solve — You control three or more artifacts. (If unsolved, solve at the beginning of your end step.)
 Solved — {2}{U}, Sacrifice this Case: Put four +1/+1 counters on target noncreature artifact. It becomes a 0/0 Bird creature with flying in addition to its other types.",U,Case; counters; card draw; sacrifice; tokens; etb; clue; investigate; solved,MKM,44,Uncommon,26,,3.5,hand
-Gleaming Geardrake,Artifact Creature — Drake,"Flying
-When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
-Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",U/R,Drake; counters; card draw; sacrifice; tokens; etb; clue; flying; evasion; investigate,MKM,205,Uncommon,35,,5.0,hand
 Hard-Hitting Question,Sorcery,Target creature you control deals damage equal to its power to target creature or planeswalker you don't control.,G,removal,MKM,164,Uncommon,50,,3.0,seed
 Magnetic Snuffler,Artifact Creature — Construct,"When this creature enters, return target Equipment card from your graveyard to the battlefield attached to this creature.
 Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",Colorless,Construct; counters; reanimator; graveyard; sacrifice; etb,MKM,254,Uncommon,38,,4.0,hand
@@ -340,6 +313,8 @@ Spider-UK,Legendary Creature — Spider Human Hero,"Web-slinging {2}{W} (You may
 At the beginning of your end step, if two or more creatures entered the battlefield under your control this turn, you draw a card and gain 2 life.",W,Spider; Human; Hero; lifegain; card draw; bounce; web-slinging; evasion; tempo,MSC,777,Uncommon,23,,3.5,hand
 Kang the Conqueror,Legendary Creature — Human Villain,"Flying
 Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after this one. During that turn, power-up abilities can't be activated. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",U,Human; Villain; counters; flying; evasion; power-up; payoff,MSH,62,Mythic,12,blue control finisher — evasive body + extra-turn power-up; UUU castable in Dimir,6.5,hand
+Progenitus,Legendary Creature — Hydra Avatar,"Protection from everything
+If Progenitus would be put into a graveyard from anywhere, reveal Progenitus and shuffle it into its owner's library instead.",W/U/B/R/G,Hydra; Avatar; graveyard; protection,MSH,265,Mythic,,,5.0,seed
 Archangel of Tithes,Creature — Angel,"Flying
 As long as this creature is untapped, creatures can't attack you or planeswalkers you control unless their controller pays {1} for each of those creatures.
 As long as this creature is attacking, creatures can't block unless their controller pays {1} for each of those creatures.",W,Angel; flying; evasion,OTJ,2,Mythic,3,"Go-wide tax (protects you + pushes a wide board through); also fits deck 23 — one copy serves both. Mythic craft, OTJ rotation-soon.",6.5,hand
@@ -355,8 +330,6 @@ Concealed Courtyard,Land,"This land enters tapped unless you control two or fewe
 {T}: Add {W} or {B}.",W/B,mana,OTJ,268,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also de-taplands + firms black in deck 20 (Honor Among Thieves) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6.5,hand
 "Lilah, Undefeated Slickshot",Legendary Creature — Human Rogue,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 Whenever you cast a multicolored instant or sorcery spell from your hand, exile that spell instead of putting it into your graveyard as it resolves. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/R,Human; Rogue; graveyard; pump; plot; tempo; cost-reduction; prowess; spellslinger,OTJ,217,Rare,25,prowess 3-drop that impulses off your spells,6.5,hand
-"Magda, the Hoardmaster",Legendary Creature — Dwarf Berserker,"Whenever you commit a crime, create a tapped Treasure token. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)
-Sacrifice three Treasures: Create a 4/4 red Scorpion Dragon creature token with flying and haste. Activate only as a sorcery.",R,Dwarf; Berserker; graveyard; sacrifice; tokens; treasure,OTJ,133,Rare,,,5.5,seed
 "Malcolm, the Eyes",Legendary Creature — Siren Pirate,"Flying, haste
 Whenever you cast your second spell each turn, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U/R,Siren; Pirate; card draw; sacrifice; tokens; clue; flying; evasion; investigate; haste; aggro,OTJ,219,Rare,25,2-drop: second spell -> investigate,5.5,hand
 Stingerback Terror,Creature — Scorpion Dragon,"Flying, trample
@@ -382,7 +355,6 @@ Equip {2}",W,Equipment; etb; equipment; pump; equip,OTJ,35,Uncommon,38,,2.5,hand
 Rooftop Assassin,Creature — Vampire Assassin,"Flash
 Flying, lifelink
 When this creature enters, destroy target creature an opponent controls that was dealt damage this turn.",B,Vampire; Assassin; lifegain; removal; etb; flying; evasion; lifelink; flash; tempo,OTJ,103,Common,20,,3.5,hand
-"Aziza, Mage Tower Captain",Legendary Creature — Djinn Sorcerer,"Whenever you cast an instant or sorcery spell, you may tap three untapped creatures you control. If you do, copy that spell. You may choose new targets for the copy.",W/R,Djinn; Sorcerer; spellslinger,SOS,174,Rare,concept,RW spells/magecraft (Strixhaven-style),6.5,hand
 Comforting Counsel,Enchantment,"Whenever you gain life, put a growth counter on this enchantment.
 As long as there are five or more growth counters on this enchantment, creatures you control get +3/+3.",G,counters; pump,SOS,143,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 9,19b,19a",4.0,hand
 Deathcap Glade,Land,"This land enters tapped unless you control two or more other lands.
@@ -443,21 +415,13 @@ I, II — Create a 5/5 green Elephant creature token.
 III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,5.5,hand
 Breaching Dragonstorm,Enchantment,"When this enchantment enters, exile cards from the top of your library until you exile a nonland card. You may cast it without paying its mana cost if that spell's mana value is 8 or less. If you don't, put that card into your hand.
 When a Dragon you control enters, return this enchantment to its owner's hand.",R,card advantage; etb; bounce,TDM,101,Uncommon,49,"Deck 49: exile until a nonland card and CAST IT FREE if MV<=8, then 'when a Dragon you control enters, return this to its owner's hand' - a RECURRING free spell in a deck with 20 Dragons. The card-advantage fix for a deck that measured 2.",7.4,hand
-Duty Beyond Death,Instant,"As an additional cost to cast this spell, sacrifice a creature.
-Creatures you control gain indestructible until end of turn. Put a +1/+1 counter on each creature you control. (Damage and effects that say ""destroy"" don't destroy those creatures.)",W,counters; sacrifice,TDM,10,Uncommon,23; 3,instant team indestructible + a permanent counter on every creature; sac cost is a token in a go-wide deck,6.0,hand
 Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen,"Flying
 Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,7.2,hand
-Static Snare,Enchantment,"Flash
-This spell costs {1} less to cast for each attacking creature.
-When this enchantment enters, exile target artifact or creature an opponent controls until this enchantment leaves the battlefield.",W,cost-reduction; removal; etb; flash; tempo,TDM,26,Uncommon,23,"flash, costs {1} less per attacking creature — often 1-2 mana in a wide deck; exiles artifact or creature",5.5,hand
 Sunset Strikemaster,Creature — Human Monk,"{T}: Add {R}.
 {2}{R}, {T}, Sacrifice this creature: It deals 6 damage to target creature with flying.",R,Human; Monk; sacrifice; burn; mana,TDM,126,Uncommon,49,,4.5,seed
 Veteran Ice Climber,Creature — Human Scout,"Vigilance
 This creature can't be blocked.
 Whenever this creature attacks, up to one target player mills cards equal to this creature's power. (They put that many cards from the top of their library into their graveyard.)",U,Human; Scout; graveyard; mill; vigilance; combat,TDM,64,Uncommon,51a,"Deck 51a: unblockable vigilance two-drop that mills its own power on attack (+4 with Crystal). Vigilance matters twice - blocks, and stays untapped for a waterbend cost.",6.4,hand
-Coordinated Maneuver,Instant,"Choose one —
-• Coordinated Maneuver deals damage equal to the number of creatures you control to target creature or planeswalker.
-• Destroy target enchantment.",W,removal,TDM,12,Common,23,"2-mana modal instant; damage mode scales with board (27 creatures in 23), or kills an enchantment",5.0,hand
 Molten Exhale,Sorcery,"You may cast this spell as though it had flash if you behold a Dragon as an additional cost to cast it. (To behold a Dragon, choose a Dragon you control or reveal a Dragon card from your hand.)
 Molten Exhale deals 4 damage to target creature or planeswalker.",R,burn; behold; dragons,TDM,113,Common,49,,6.0,hand
 Phoenix Fleet Airship,Artifact — Vehicle,"Flying
@@ -480,15 +444,12 @@ The Lion-Turtle,Legendary Creature — Elder Cat Turtle,"Vigilance, reach
 When The Lion-Turtle enters, you gain 3 life.
 The Lion-Turtle can't attack or block unless there are three or more Lesson cards in your graveyard.
 {T}: Add one mana of any color.",U/G,Elder; Cat; Turtle; graveyard; lifegain; mana; etb; reach; defense; vigilance; combat,TLA,232,Rare,concept: Turtle,"best 19a (Bird Brain — Bant Tokens); also 17,4",4.0,hand
-"Toph, Hardheaded Teacher",Legendary Creature — Human Warrior Ally,"When Toph enters, you may discard a card. If you do, return target instant or sorcery card from your graveyard to your hand.
-Whenever you cast a spell, earthbend 1. If that spell is a Lesson, put an additional +1/+1 counter on that land. (Target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)",R/G,Human; Warrior; Ally; counters; reanimator; graveyard; etb; earthbend; bending,TLA,246,Rare,,,6.5,seed
 "Toph, the First Metalbender",Legendary Creature — Human Warrior Ally,"Nontoken artifacts you control are lands in addition to their other types. (They don't gain the ability to {T} for mana.)
 At the beginning of your end step, earthbend 2. (Target land you control becomes a 0/0 creature with haste that's still a land. Put two +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",W/R/G,Human; Warrior; Ally; counters; blink; earthbend; bending,TLA,247,Rare,13,,6.0,hand
 "Zhao, the Moon Slayer",Legendary Creature — Human Soldier,"Menace
 Nonbasic lands enter tapped.
 {7}: Put a conqueror counter on Zhao.
 As long as Zhao has a conqueror counter on him, nonbasic lands are Mountains. (They lose all other land types and abilities and have ""{T}: Add {R}."")",R,Human; Soldier; counters; mana; menace; evasion,TLA,162,Rare,14,"Fire Nation flavor (heuristic top 13 on counters/mana) | fits: 13,17",4.0,hand
-Shared Roots,Sorcery — Lesson,"Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",G,Lesson; ramp,TLA,243,Uncommon,,,2.5,seed
 Inspiring Call,Instant,"Draw a card for each creature you control with a +1/+1 counter on it. Those creatures gain indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy them.)",G,counters; card draw,TLE,168,Uncommon,50,,7.0,hand
 Bebop & Rocksteady,Legendary Creature — Boar Rhino Mutant,"Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.",B/G,Boar; Rhino; Mutant; sacrifice,TMT,140,Rare,8,"best 8 (Sacrifices); also 21,21a,5",3.5,hand
 Cool but Rude,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
@@ -524,10 +485,6 @@ Raphael's Technique,Instant,"Sneak {2}{R} (You may cast this spell for {2}{R} if
 Each player may discard their hand and draw seven cards.",R,card draw; sneak; tempo; cost-reduction,TMT,105,Rare,general,"symmetric red wheel (each player may draw 7) — niche refuel, no sacrifice synergy",3.5,hand
 "Rat King, Verminister",Legendary Creature — Rat Avatar,"Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, create a 1/1 black Rat creature token and put a +1/+1 counter on Rat King.
 {T}, Sacrifice three Rats: Return target creature card and all other cards with the same name as that card from your graveyard to the battlefield tapped.",B,Rat; Avatar; counters; reanimator; graveyard; sacrifice; tokens; disappear,TMT,71,Rare,11,Rat Avatar — reanimator/sacrifice payoff; grindy mono-black value,5.0,hand
-"Sally Pride, Lioness Leader",Legendary Creature — Cat Mutant Rebel,"When Sally Pride enters, create X 2/2 red Mutant creature tokens, where X is the number of nontoken creatures you control.
-Whenever Sally Pride attacks, put a +1/+1 counter on each creature you control.",W,Cat; Mutant; Rebel; counters; tokens; etb,TMT,24,Rare,3,"X 2/2 tokens where X = nontoken creatures, plus attack-trigger counters on the team; a bomb in a 20-wide deck",7.5,hand
-"Sally Pride, Lioness Leader",Legendary Creature — Cat Mutant Rebel,"When Sally Pride enters, create X 2/2 red Mutant creature tokens, where X is the number of nontoken creatures you control.
-Whenever Sally Pride attacks, put a +1/+1 counter on each creature you control.",W,Cat; Mutant; Rebel; counters; tokens; etb,TMT,30,Rare,3,"X 2/2 tokens where X = nontoken creatures, plus attack-trigger counters on the team; a bomb in a 20-wide deck",7.5,hand
 "Slash, Reptile Rampager",Legendary Creature — Mutant Berserker Turtle,"Alliance — Whenever another creature you control enters, Slash deals 2 damage to each opponent.
 Whenever Slash attacks, create a 2/2 red Mutant creature token.",R,Mutant; Berserker; Turtle; tokens; burn; alliance; aggro; value,TMT,108,Rare,1,"Rakdos aggro/burn/tokens; also 10 | fits: 10,9",6.0,hand
 Splinter's Technique,Sorcery,"Sneak {1}{B} (You may cast this spell for {1}{B} if you also return an unblocked attacker you control to hand during the declare blockers step.)

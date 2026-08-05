@@ -1,0 +1,84 @@
+#: name: Redline
+#: format: Standard
+#: colors: BR
+#: plan: aggro
+#: archetype: RAKDOS MAX SPEED — the roster's first Start your engines! deck, one of
+#: archetype: the two unmade tactics from the color/tactic gap survey. The mechanic
+#: archetype: is its own engine: speed starts at 1 and ticks up every turn an
+#: archetype: opponent loses life, so the deck's only real rule is HIT EVERY TURN
+#: archetype: until max speed (4), where the payoffs come online — Far Fortune adds
+#: archetype: +1 to every damage source, Hazoret unlocks as an indestructible hasty
+#: archetype: attacker, The Speed Demon draws four a turn, Gas Guzzler turns spare
+#: archetype: bodies into cards, Risen Necroregent mints a Zombie every end step,
+#: archetype: Howlsquad's tap makes {R} per Goblin, and the graveyard Surveyors
+#: archetype: recycle themselves into draws. Cheap attackers (Burnout's menace
+#: archetype: double-strike, Gastal Thrillseeker's deathtouch-haste) plus reach
+#: archetype: burn keep the tick going through blockers. Distinct from every deck
+#: archetype: on the roster: nothing else plays the speed axis at all, and the
+#: archetype: closest cousin (55 Mardu Waves) builds width per combat where this
+#: archetype: deck builds a RESOURCE per combat.
+#: protect: Hazoret, Godseeker; Far Fortune, End Boss; Gas Guzzler; The Speed Demon
+#: tier: B (PROVISIONAL) — an unplayed first draft of an unfamiliar mechanic,
+#: tier: graded under whatever the floor says: the engine rewards relentless
+#: tier: sequencing (damage every single turn) that no metric measures, and the
+#: tier: deck concedes card quality in spots to stay on-mechanic (the Surveyors
+#: tier: are commons doing engine work). The payoff ceiling at max speed is real.
+#: tier: Re-grade after games show how reliably turn-4-5 hits max speed.
+#: notes: BUILT per the user's constraint: from the six owned speed cards (all six
+#: notes: castable here except the two BLUE ones — Vnwxt, Verbose Host and Glitch
+#: notes: Ghost Surveyor are PARKED, not dead: they revive in a UB(x) speed
+#: notes: variant if this deck proves the mechanic; Vnwxt's draw-doubling is the
+#: notes: best speed payoff we own) plus crafts chosen for CROSS-DECK value where
+#: notes: the mechanic allowed: Howlsquad Heavy also serves deck 58's Krenko line
+#: notes: (haste lord + Goblin count mana); Momentum Breaker's edict shape suits
+#: notes: the 52/53 black decks; The Speed Demon is a generic black draw engine
+#: notes: beyond this deck; Heartless Act is the copy freed from 37b (in no deck
+#: notes: until now). MECHANIC READS: speed ticks ONCE per turn, on YOUR turn,
+#: notes: from ANY opponent life loss — combat, Far Fortune's attack ping, burn,
+#: notes: even Gastal Thrillseeker's ETB — so a stalled board still ticks via any
+#: notes: noncombat damage. Gas Guzzler ENTERS TAPPED (deploy T1, it attacks T2).
+#: notes: Hazoret CANNOT attack below max speed — she is a turn-1 play whose
+#: notes: unblockable-granting tap ability works the whole time, not an early
+#: notes: attacker. Outpace Oblivion's sac mode hits every player without max
+#: notes: speed — including us below 4; time it. ROTATION: the deck is ~90% DFT
+#: notes: (rotates ~2027) — this is a two-year deck by construction; accepted.
+
+# One-drops (start the clock)
+2 Gas Guzzler (DFT) 85
+2 Burnout Bashtronaut (DFT) 115
+1 Hazoret, Godseeker (DFT) 133
+
+# Two-drops (keep hitting)
+2 Gastal Thrillseeker (DFT) 205
+2 Momentum Breaker (DFT) 97
+2 Endrider Catalyzer (DFT) 124
+2 Kickoff Celebrations (DFT) 135
+
+# Three-drops (engine bodies)
+2 Gastal Raider (DFT) 86
+2 Hour of Victory (DFT) 91
+2 Goblin Surveyor (DFT) 131
+2 Mutant Surveyor (DFT) 98
+1 Howlsquad Heavy (DFT) 134
+2 Outpace Oblivion (DFT) 139
+
+# Payoffs (max-speed top end)
+2 Far Fortune, End Boss (DFT) 203
+1 The Speed Demon (DFT) 105
+1 Risen Necroregent (DFT) 102
+2 Streaking Oilgorger (DFT) 107
+1 Endrider Spikespitter (DFT) 125
+
+# Removal
+2 Lightning Strike (TLA) 146
+1 Bitter Triumph (SOA) 26
+1 Heartless Act (TLA) 103
+
+# Lands
+1 Blood Crypt (ECL) 262
+1 Blazemire Verge (DSK) 256
+1 Razortrap Gorge (DSK) 267
+1 Boiling Rock Prison (TLA) 267
+2 Amonkhet Raceway (DFT) 248
+10 Mountain (MSH) 293
+9 Swamp (MSH) 291

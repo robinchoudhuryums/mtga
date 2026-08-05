@@ -66,6 +66,7 @@ Callous Sell-Sword // Burn Together
 Captain America, Living Legend
 Captain America, Wings of Freedom
 Captain Mar-Vell, Space-Born
+Caradora, Heart of Alacria
 Case of the Stashed Skeleton
 Casey Jones, Jury-Rig Justiciar
 Cat-Owl
@@ -75,6 +76,7 @@ Champions of the Shoal
 Charging Strifeknight
 Child of the Volcano
 Cloud, Midgar Mercenary
+Cloudspire Captain
 Colossification
 Corrupt Court Official
 Crashing Wave
@@ -130,12 +132,15 @@ Flowerfoot Swordmaster
 Foggy Swamp Visions
 Fortress Kin-Guard
 Frantic Strength
+Frontier Seeker
 Frontline Rush
 Frontline War-Rager
 Frozen in Ice
 Full Throttle
 Fynn, the Fangbearer
 Gangly Stompling
+Gas Guzzler
+Gastal Raider
 Gather the White Lotus
 Generous Plunderer
 Genji Glove
@@ -152,6 +157,7 @@ Gravelgill Scoundrel
 Greenbelt Guardian
 Groundchuck & Dirtbag
 Growth Curve
+Guardian Sunmare
 Guidelight Matrix
 Halana and Alena, Partners
 Hama, the Bloodbender
@@ -177,6 +183,7 @@ Imperious Inkmage
 Imperious Perfect
 Improvised Arsenal
 Ingenious Leonin
+Interface Ace
 Invasion Reinforcements
 Invasion Submersible
 Iron Lad, Diverging Destiny
@@ -205,6 +212,7 @@ Kyoshi Battle Fan
 Laughing Jasper Flint
 Leader, Super-Genius
 Leonardo, Big Brother
+Leyline of Mutation
 Leyline of the Guildpact
 Leyline of Transformation
 Lifecraft Engine
@@ -216,6 +224,7 @@ Loot, Exuberant Explorer
 Lorehold, the Historian
 Lys Alana Informant
 Madame Web, Clairvoyant
+Magitek Armor
 Mai, Scornful Striker
 Mardu Devotee
 Mechanical Mobster
@@ -227,6 +236,7 @@ Miner's Guidewing
 Mirror Room // Fractured Realm
 Mirrormind Crown
 Mob Lookout
+Mobile Homestead
 Molten Man, Inferno Incarnate
 Moonshadow
 Moonshaker Cavalry
@@ -241,6 +251,7 @@ North Pole Patrol
 Nurturing Bristleback
 Okoye, Dora Milaje Leader
 Omniscience
+Ornery Tumblewagg
 Ostrich-Horse
 Outrageous Robbery
 Pain 101
@@ -254,6 +265,7 @@ Prideful Parent
 Procrastinate
 Psychic Whorl
 Pym Particles
+Quaketusk Boar
 Quicksilver, Brash Blur
 Quill-Blade Laureate
 Radiant Lotus
@@ -272,6 +284,7 @@ Reno and Rude
 Resolute Reinforcements
 Restorative Technique
 Return the Favor
+Risen Necroregent
 Riverchurn Monument
 Riverwheel Sweep
 Roaming Throne
@@ -279,6 +292,7 @@ Rough Rhino Cavalry
 S.H.I.E.L.D. Spy Kit
 Samurai's Katana
 Satoru, the Infiltrator
+Savage Ventmaw
 Sawblade Skinripper
 Scarlet Spider, Ben Reilly
 Scrabbling Skullcrab
@@ -337,6 +351,7 @@ The Masters of Evil
 The Mindskinner
 The Thing, Ben Grimm
 The Wondrous Wasp
+Thunderous Velocipede
 Tiger-Dillo
 Tinybones, Bauble Burglar
 Tinybones, the Pickpocket
@@ -369,6 +384,7 @@ Virulent Silencer
 Virus Beetle
 Vision Quest
 Vito's Inquisitor
+Voyager Glidecar
 Wakandan Royal Guard
 Wanderbrine Trapper
 War Balloon
