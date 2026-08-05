@@ -4,10 +4,11 @@
 #: based-on: deck.txt
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT, UNPLAYED list (12 craft targets).
-#: tier: One band BELOW the measurable floor, which reads A on interaction 10 plus card
-#: tier: advantage 3. Against the rubric an A needs four things and this list fails two:
-#: tier:   A-FLOOR — yes, comfortably. Interaction 10 doubles the threshold of five and the
-#: tier:     sum of 13 clears seven. Read that number with K-12's caution though: it is high
+#: tier: One band BELOW the measurable floor, which reads A on interaction 8 plus card
+#: tier: advantage 3 (interaction fell 10 -> 8 in the 2026-08 plan pass — four 1-to-2
+#: tier: damage spells were the cuts that paid for the engine adds). Against the rubric an A needs four things and this list fails two:
+#: tier:   A-FLOOR — yes. Interaction 8 clears the threshold of five and the
+#: tier:     sum of 11 clears seven. Read that number with K-12's caution though: it is high
 #: tier:     because the deck's FUEL is cheap burn, and a burn spell you recast three times
 #: tier:     is counted ONCE. The profile is 2 instant-speed against 8 sorcery-speed, and 4
 #: tier:     can answer a noncreature permanent.
@@ -21,7 +22,8 @@
 #: tier:     unindexed Increment keyword per K-01, and none of those carry a counters tag.
 #: tier:     The same ⚠ fires on the parent, where it IS real — this list is the payoff
 #: tier:     layer that deck's eight dead enablers were missing.
-#: tier:   TIGHT CURVE — yes. 2.94 average, the lowest of the three Lotus lists, which is
+#: tier:   TIGHT CURVE — printed 3.31 average after the plan pass added the Thor/Ovika/
+#: tier:     Melek top end, but the thesis discounts what printed MV cannot see, which is
 #: tier:     the direct consequence of the design: a granter charging full price rewards
 #: tier:     cheap spells, where the parent's flat {1} rewarded expensive ones.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and these are the two to fix before it is built.
@@ -31,7 +33,7 @@
 #: tier:     Spider-Man 2099, Shadow of the Goblin and Doc Aurlock. It still functions
 #: tier:     without them — recasting cheap interaction is value on its own — but the games
 #: tier:     where none appears are games where this is a worse deck 25.
-#: tier:     (2) PROTECTION 1 on a deck whose engine is creatures. Seven of the eight
+#: tier:     (2) PROTECTION 2 on a deck whose engine is creatures. Seven of the eight
 #: tier:     granters are bodies, and three of them (Slickshot Lockpicker, Daring Waverider,
 #: tier:     Songcrafter Mage) do their whole job on ETB, which at least means removal
 #: tier:     arrives too late to blank them. Sphinx of Forgotten Lore, Archmage's Newt and
@@ -90,7 +92,7 @@
 #: archetype: half at all. vs deck 30 (Fractals, GUR): counters as utility, above. vs deck
 #: archetype: 45 (Exile Dividend): that is WBR and reads spells cast from EXILE, off impulse
 #: archetype: and heist; this reads the graveyard and shares no colour pair with it.
-#: protect: Iroh, Grand Lotus; Spider-Verse; Songcrafter Mage; Agatha's Soul Cauldron; Doc Aurlock, Grizzled Genius
+#: protect: Iroh, Grand Lotus; Thor, God of Thunder; Spider-Verse; Songcrafter Mage; Agatha's Soul Cauldron; Doc Aurlock, Grizzled Genius
 #: notes: WIP / aspirational — drafted 2026-08 from scratch. Craft cost is real; run
 #: notes: `deck.py check 54a` for the current gap.
 #: notes: FESTIVAL OF EMBERS WAS CUT, and it is the G-42 shape (a card that fights your own
@@ -139,6 +141,10 @@
 #: notes: construction — a granter that charges full price cannot cheat a seven-drop, so
 #: notes: they belong in the list built around the flat {1}, not this one.
 
+#: notes: BENCH (2026-08 plan): Kid Loki + Overprotect are the protection package
+#: notes: (2 -> 3+), first call if the engine keeps dying; Balmor converts the spell
+#: notes: count to combat damage. Thousand-Year Storm is on-plan but collapses this
+#: notes: deck toward deck 25's identity — a USER CALL, deliberately not auto-applied.
 # Engine — cast-from-graveyard granters
 1 Iroh, Grand Lotus (TLA) 227
 1 Songcrafter Mage (TDM) 225
@@ -166,23 +172,23 @@
 # cards it doesn't take. It is here for the Lesson-count gate and the dig.)
 1 Hermitic Herbalist (TLA) 226
 1 Gran-Gran (TLA) 54
-1 Accumulate Wisdom (TLA) 44
+1 Great Divide Guide (TLA) 181
 1 Glacierwood Siege (TDM) 189
 
 # Cheap spells — the fuel that gets recast
 1 Flashback (SOS) 115
-1 Channeled Dragonfire (TDM) 102
-1 Duel Tactics (SOS) 112
-1 Boomerang Basics (TLA) 46
-1 Tome Blast (SOS) 135
+1 Steal the Show (SOS) 130
+1 Melek, Reforged Researcher (MKM) 430
+1 Thor, God of Thunder (MSH) 156
+1 Bloom Tender (ECL) 166
 1 Combustion Technique (TLA) 128
 1 Iroh's Demonstration (TLA) 141
 1 Origin of Metalbending (TLA) 187
 1 Electro's Bolt (SPM) 77
 1 Glacial Dragonhunt (TDM) 188
 1 Solstice Revelations (TLA) 153
-1 Abandon Attachments (TLA) 205
-1 Self-Reflection (FDN) 163
+1 Retrieve the Esper (FIN) 68
+1 Ovika, Enigma Goliath (FDN) 663
 1 Nibelheim Aflame (FIN) 146
 
 # Lands — rebuilt for this list, NOT inherited from the parent. Deck 54 is

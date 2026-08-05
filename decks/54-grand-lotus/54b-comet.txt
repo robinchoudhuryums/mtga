@@ -35,7 +35,9 @@
 #: archetype: You cast it DURING combat off firebending mana, which is produced in fours and
 #: archetype: fives and is red by definition, so X is large and the pips are free. Then
 #: archetype: every damage source you control deals X more: firebending attackers, nine burn
-#: archetype: instants, Thor, Guttersnipe and Ovika's token swarm.
+#: archetype: instants, Thor, Thunderdrum Soloist (Guttersnipe was CUT for it — same
+#: archetype: job, 3-damage upside when five-plus mana was spent, plus reach) and
+#: archetype: Ovika's token swarm.
 #: archetype: THE ATTACK IS THE DRAW STEP. Seven creatures turn combat into cards or spells:
 #: archetype: Archmage's Newt grants flashback on damage and flashback {0} when SADDLED;
 #: archetype: Sphinx of Forgotten Lore and The Dawning Archaic grant and free-cast on
@@ -50,10 +52,11 @@
 #: archetype: deck 24 (Eternal Flame, Boros) and 02 (Thundergod): both are WHITE or mono-red
 #: archetype: aggro with no graveyard axis at all. Verify with `deck.py similar 54b`.
 #: tier: C — PROVISIONAL, GRADED 2026-08 on an UNBUILT, UNPLAYED, FIRST-DRAFT list.
-#: tier: Deliberately graded WELL BELOW the measurable floor, which reads A on interaction 6
-#: tier: plus card advantage 3. The guard permits grading under the floor when the prose
+#: tier: Deliberately graded WELL BELOW the measurable floor, which reads A on interaction 4
+#: tier: plus card advantage 4 (the 2026-08 plan pass traded three narrow removal
+#: tier: spells for the mana-spent engine, so interaction thinned while draw grew). The guard permits grading under the floor when the prose
 #: tier: argues for it; here is the argument, in measured terms:
-#: tier:   CARD ADVANTAGE 3, AND IT ONLY READS 3 BECAUSE THE CLASSIFIER WAS FIXED FOR IT.
+#: tier:   CARD ADVANTAGE 4, AND IT ONLY READS THAT BECAUSE THE CLASSIFIER WAS FIXED FOR IT.
 #: tier:     The first draft measured ZERO. Adding The Mechanist, Aerial Artisan (a Clue per
 #: tier:     noncreature spell) did not move the number at all, which exposed two gaps: a
 #: tier:     spelled-out CLUE TOKEN was not read as card advantage (only the `investigate`
@@ -83,7 +86,7 @@
 #: tier:   Re-grade after it is built and played. C is a statement that the PLAN is untested,
 #: tier:   not that the cards are weak — Thor, Ovika and Fated Firepower are the same bombs
 #: tier:   the other two lists want.
-#: protect: Iroh, Grand Lotus; Fated Firepower; Thor, God of Thunder; Electro, Assaulting Battery; Firebender Ascension
+#: protect: Iroh, Grand Lotus; Sozin's Comet; The Last Agni Kai; Return the Favor; Fated Firepower; Thor, God of Thunder; Electro, Assaulting Battery; Firebender Ascension
 #: notes: WIP / aspirational — drafted 2026-08 out of the 54 pile re-analysis. See
 #: notes: `.cycle/54-pile-reanalysis.md` for the framework that produced it.
 #: notes: THE DISTINCTIVENESS RISK IS DECK 14, NOT ITS OWN FAMILY, and it was measured
@@ -140,6 +143,10 @@
 #: notes: sees one trigger, not X+1); Taigam, Master Opportunist (exiles your second spell
 #: notes: each turn out of the graveyard, which is where this deck's recursion lives).
 
+#: notes: BENCH (2026-08 plan): Roxanne, Starfall Savant (craft R) — Meteorite is
+#: notes: removal + rainbow fixing + attack payoff, and the craft now also serves
+#: notes: deck 58's protected pair. Guttersnipe left only because Thunderdrum
+#: notes: Soloist does its job with a 3-damage upside and reach.
 # Firebending — the mana engine
 1 Redirect Lightning (TLA) 151
 1 Fire Sages (TLA) 136
@@ -147,7 +154,7 @@
 1 Zuko, Exiled Prince (TLA) 163
 1 Uncle Iroh (TLA) 248
 1 Iroh, Grand Lotus (TLA) 227
-1 Ran and Shaw (TLA) 150
+1 Full Throttle (DFT) 127
 1 Firebender Ascension (TLA) 137
 1 Sozin's Comet (TLA) 154
 1 The Legend of Roku (TLA) 145
@@ -165,16 +172,16 @@
 1 Thor, God of Thunder (MSH) 156
 1 Ovika, Enigma Goliath (FDN) 663
 1 Balmor, Battlemage Captain (FDN) 237
-1 Guttersnipe (FDN) 716
+1 Muse Seeker (SOS) 60
 1 Electro, Assaulting Battery (SPM) 76
 
 # Red instants — the combat-mana sinks
-1 Firebending Lesson (TLA) 138
+1 Sword of Wealth and Power (BIG) 26
 1 The Last Agni Kai (TLA) 144
-1 Combustion Technique (TLA) 128
+1 Prompto Argentum (FIN) 148
 1 Emeritus of Conflict (SOS) 113
-1 Bulk Up (SOA) 40
-1 Wisecrack (MSC) 813
+1 Shantotto, Tactician Magician (FIN) 241
+1 Thunderdrum Soloist (SOS) 134
 1 Return the Favor (SOA) 47
 1 The Mechanist, Aerial Artisan (TLA) 64
 1 Solstice Revelations (TLA) 153
