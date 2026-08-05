@@ -57,6 +57,8 @@
 1 Kefka, Court Mage (FIN) 231
 1 Niv-Mizzet, Visionary (FDN) 123
 
+1 Shipwreck Dowser (FDN) 596
+
 # Noncreature — token / ping enablers
 1 Cornered by Black Mages (FIN) 93
 1 Black Mage's Rod (FIN) 90
@@ -72,10 +74,9 @@
 
 # Noncreature — removal / counters (light interaction package)
 1 Thunder Magic (FIN) 165
-1 Impractical Joke (SOS) 119
 1 Lightning Strike (MSH) 142
 1 Bitter Triumph (SOA) 26
-1 Heartless Act (TLA) 103
+1 Magic Damper (FIN) 61
 1 Mana Sculpt (SOS) 57
 
 # Lands — 24, U-weighted Grixis (owned duals + basics; fungible with 37/37a)
@@ -95,4 +96,4 @@
 
 # Flex — more virtual copies (comments; not part of the 60). See: deck.py redundancy 37b
 #~ -Boomerang Basics | +Divert Disaster | owned: a 3rd counter (virtual copy) if the meta rewards interaction over a cantrip
-#~ -Impractical Joke | +Lightning Strike | owned: a virtual copy of your burn/reach that also goes face
+#~ note: applied — Shipwreck Dowser in for Impractical Joke.
