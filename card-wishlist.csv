@@ -80,9 +80,6 @@ Chainsaw,Artifact — Equipment,"When this Equipment enters, it deals 3 damage t
 Whenever one or more creatures die, put a rev counter on this Equipment.
 Equipped creature gets +X/+0, where X is the number of rev counters on this Equipment.
 Equip {3}",R,Equipment; counters; burn; etb; equipment; pump; equip,DSK,128,Rare,26,"On-theme R removal for Iron Forge (26): ETB deal 3, grows with deaths — the interaction upgrade over War Machine",6.0,hand
-Enduring Vitality,Enchantment Creature — Elk Glimmer,"Vigilance
-Creatures you control have ""{T}: Add one mana of any color.""
-When Enduring Vitality dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",G,Elk; Glimmer; mana; vigilance; combat,DSK,176,Rare,29,,6.5,hand
 "Kona, Rescue Beastie",Legendary Creature — Beast Survivor,"Survival — At the beginning of your second main phase, if Kona is tapped, you may put a permanent card from your hand onto the battlefield.",G,Beast; Survivor; survival,DSK,187,Rare,50a,,6.5,hand
 The Mindskinner,Legendary Enchantment Creature — Nightmare,"The Mindskinner can't be blocked.
 If a source you control would deal damage to an opponent, prevent that damage and each opponent mills that many cards.",U,Nightmare; mill; graveyard,DSK,66,Rare,51a,"Deck 51a: converts every damage source you control into mill, +4 each with the Water Crystal. Pure upside HERE because the deck has no combat plan to lose - it would be a trap in parent 51, which wins with Krang and the Terrors.",7.2,hand
@@ -106,9 +103,6 @@ Scrabbling Skullcrab,Creature — Crab Skeleton,"Eerie — Whenever an enchantme
 Shroudstomper,Creature — Elemental,"Deathtouch
 Whenever this creature enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.",W/B,Elemental; lifegain; card draw; deathtouch; combat; removal,DSK,233,Uncommon,20,,5.0,hand
 Valgavoth's Faithful,Creature — Human Cleric,"{3}{B}, Sacrifice this creature: Return target creature card from your graveyard to the battlefield. Activate only as a sorcery.",B,Human; Cleric; reanimator; graveyard; sacrifice,DSK,121,Uncommon,52a,,5.0,seed
-Meat Locker // Drowned Diner,Enchantment — Room // Enchantment — Room,"When you unlock this door, tap up to one target creature and put two stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
-(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, draw three cards, then discard a card.
-(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,Room; counters; card draw,DSK,65,Common,51,,6.0,hand
 Spineseeker Centipede,Creature — Insect,"When this creature enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.
 Delirium — This creature gets +1/+2 and has vigilance as long as there are four or more card types among cards in your graveyard.",G,Insect; graveyard; ramp; etb; pump; delirium,DSK,199,Common,50,,1.5,seed
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
@@ -116,8 +110,6 @@ Kinscaer Sentry,Creature — Kithkin Soldier,"First strike, lifelink
 Whenever this creature attacks, you may put a creature card with mana value X or less from your hand onto the battlefield tapped and attacking, where X is the number of attacking creatures you control.",W,Kithkin; Soldier; lifegain; lifelink; first strike; combat,ECL,22,Rare,23,2-drop first strike/lifelink that cheats a creature with MV <= attackers from hand into play attacking,6.0,hand
 Iron-Shield Elf,Creature — Elf Warrior,"Discard a card: This creature gains indestructible until end of turn. Tap it. (Damage and effects that say ""destroy"" don't destroy it. If its toughness is 0 or less, it still dies.)",B,Elf; Warrior,ECL,108,Uncommon,52a,,2.5,seed
 Spell Snare,Instant,Counter target spell with mana value 2.,U,counterspell,ECL,71,Uncommon,51,,3.0,seed
-"Sothera, the Supervoid",Legendary Enchantment,"Whenever a creature you control dies, each opponent chooses a creature they control and exiles it.
-At the beginning of your end step, if a player controls no creatures, sacrifice Sothera, then put a creature card exiled with it onto the battlefield under your control with two additional +1/+1 counters on it.",B,counters; heist; sacrifice,EOE,115,Mythic,52,,8.5,seed
 "Susur Secundi, Void Altar",Land — Planet,"This land enters tapped.
 {T}: Add {B}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)
@@ -137,7 +129,6 @@ Whenever this Spacecraft attacks, you may put a creature card from your hand ont
 The Eternity Elevator,Legendary Artifact — Spacecraft,"{T}: Add {C}{C}{C}.
 Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery.)
 20+ | {T}: Add X mana of any one color, where X is the number of charge counters on The Eternity Elevator.",Colorless,Spacecraft; mana; station; counters; artifacts,EOE,241,Rare,51,,5.5,hand
-Cerebral Download,Instant,"Surveil X, where X is the number of artifacts you control. Then draw three cards. (To surveil X, look at the top X cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,graveyard; card draw; selection; surveil,EOE,48,Uncommon,51,,3.5,seed
 Dubious Delicacy,Artifact — Food,"Flash
 When this artifact enters, up to one target creature gets -3/-3 until end of turn.
 {2}, {T}, Sacrifice this artifact: You gain 3 life.
@@ -191,8 +182,6 @@ Regal Caracal,Creature — Cat,"Other Cats you control get +1/+1 and have lifeli
 When this creature enters, create two 1/1 white Cat creature tokens with lifelink.",W,Cat; lifegain; tokens; etb; pump,FDN,579,Rare,36,,5.0,hand
 Rite of Replication,Sorcery,"Kicker {5} (You may pay an additional {5} as you cast this spell.)
 Create a token that's a copy of target creature. If this spell was kicked, create five of those tokens instead.",U,tokens; kicker; value,FDN,711,Rare,25,Copy engine for Spellstorm (25): clone your best creature (kicker = 5 copies) — payoff redundancy,6.5,hand
-Claws Out,Instant,"Affinity for Cats (This spell costs {1} less to cast for each Cat you control.)
-Creatures you control get +2/+2 until end of turn.",W,pump; affinity; artifacts; cost-reduction,FDN,6,Uncommon,36,,4.0,hand
 Dragonlord's Servant,Creature — Goblin Shaman,Dragon spells you cast cost {1} less to cast.,R,Goblin; Shaman; cost-reduction,FDN,536,Uncommon,49,,7.0,hand
 Good-Fortune Unicorn,Creature — Unicorn,"Whenever another creature you control enters, put a +1/+1 counter on that creature.",W/G,Unicorn; counters,FDN,240,Uncommon,36a,,5.0,hand
 Hoarding Dragon,Creature — Dragon,"Flying
@@ -201,7 +190,6 @@ When this creature dies, you may put the exiled card into its owner's hand.",R,D
 Ingenious Leonin,Creature — Cat Soldier,"{3}{W}: Put a +1/+1 counter on another target attacking creature you control. If that creature is a Cat, it gains first strike until end of turn. (It deals combat damage before creatures without first strike.)",W,Cat; Soldier; counters,FDN,495,Uncommon,36,,2.0,hand
 Rogue's Passage,Land,"{T}: Add {C}.
 {4}, {T}: Target creature can't be blocked this turn.",Colorless,mana,FDN,264,Uncommon,50,"2nd evasion route in 50: {4},{T} unblockable is the fix for Jumbo Cactuar / Colossification that does NOT need a trample grant in hand. Measured free against a Forest.",6.0,hand
-Impact Tremors,Enchantment,"Whenever a creature you control enters, this enchantment deals 1 damage to each opponent.",R,burn; noncombat damage,FDN,717,Common,49,,4.0,seed
 Lightshell Duo,Creature — Rat Otter,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,Rat; Otter; graveyard; etb; pump; selection; surveil; prowess; spellslinger; tempo,FDN,157,Common,37,,3.0,hand
 Rapacious Dragon,Creature — Dragon,"Flying
@@ -219,11 +207,6 @@ III — Other creatures you control get +2/+2 and gain trample until end of turn
 Machinist's Arsenal,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +2/+2 for each artifact you control and is an Artificer in addition to its other types.
 Machina — Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; machina; job select; equip,FIN,23,Rare,21a,"artifact payoff — +2/+2 per artifact, Job-select token; fits the big-artifact goodstuff shell",5.0,hand
-Summon: Titan,Enchantment Creature — Saga Giant,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
-I — Mill five cards.
-II — Return all land cards from your graveyard to the battlefield tapped.
-III — Until end of turn, another target creature you control gains trample and gets +X/+X, where X is the number of lands you control.
-Reach, trample",G,Saga; Giant; reanimator; graveyard; mill; sacrifice; saga; pump; reach; defense; trample; evasion,FIN,204,Rare,29,,5.5,hand
 Summoner's Grimoire,Artifact — Book Equipment,"Job select
 Equipped creature is a Shaman in addition to its other types and has ""Whenever this creature attacks, you may put a creature card from your hand onto the battlefield. If that card is an enchantment card, it enters tapped and attacking.""
 Abraxas — Equip {3}",G,Book; Equipment; equipment; job select; equip,FIN,205,Rare,50,,5.5,seed

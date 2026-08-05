@@ -1911,6 +1911,23 @@ Nomad Outpost,,0,
 Withering Torment,{2}{B},3,
 Paradox Surveyor,{G}{G/U}{U},3,Reach
 Matterbending Mage,{2}{U},3,
+Cerebral Download,{4}{U},5,Surveil
+Enduring Vitality,{1}{G}{G},3,Vigilance
+Summon: Titan,{3}{G}{G},5,Reach;Trample;Mill
+"Lady Octopus, Inspired Inventor",{U},1,
+"Sothera, the Supervoid",{2}{B}{B},4,
+Impact Tremors,{1}{R},2,
+Meat Locker,{2}{U} // {3}{U}{U},8,
+Scrap Compactor,{1},1,
+Thunder Salvo,{1}{R},2,
+Crime Novelist,{2}{R},3,
+"Doc Aurlock, Grizzled Genius",{G}{U},2,
+Equilibrium Adept,{3}{R},4,Flurry
+Epic Downfall,{1}{B},2,
+Claws Out,{3}{W}{W},5,Affinity
+Collector's Vault,{2},2,Treasure
+Death in the Family,{1}{B},2,
+Fugitive Droid,{U},1,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3345,7 +3362,6 @@ Monument to Endurance,{3},3,Treasure
 Pit Automaton,{2},2,Defender
 Racers' Scoreboard,{4},4,Max speed;Start your engines!
 Rover Blades,{3},3,Crew;Equip;Double strike
-Scrap Compactor,{1},1,
 Skybox Ferry,{5},5,Flying;Crew;Cycling
 Starting Column,{3},3,Max speed;Start your engines!
 Ticket Tortoise,{2},2,Treasure;Defender
@@ -4004,7 +4020,6 @@ Cathartic Parting,{1}{G},2,
 Cautious Survivor,{3}{G},4,Survival
 Coordinated Clobbering,{G},1,
 Cryptid Inspector,{2}{G},3,Vigilance
-Enduring Vitality,{1}{G}{G},3,Vigilance
 Fear of Exposure,{2}{G},3,Trample
 Grasping Longneck,{2}{G},3,Reach
 Greenhouse // Rickety Gazebo,{2}{G} // {3}{G},7,Mill
@@ -4556,7 +4571,6 @@ Sunstar Chaplain,{1}{W},2,
 Sunstar Expansionist,{1}{W},2,Landfall
 Sunstar Lightsmith,{3}{W},4,
 Atomic Microsizer,{U},1,Equip
-Cerebral Download,{4}{U},5,Surveil
 Cloudsculpt Technician,{2}{U},3,Flying
 Codecracker Hound,{2}{U},3,Warp
 Consult the Star Charts,{1}{U},2,Kicker
@@ -4593,7 +4607,6 @@ Lightless Evangel,{1}{B},2,
 Monoist Circuit-Feeder,{4}{B}{B},6,Flying
 Monoist Sentry,{B},1,Defender
 Requiem Monolith,{2}{B},3,
-"Sothera, the Supervoid",{2}{B}{B},4,
 Sunset Saboteur,{1}{B},2,Menace;Ward
 Susurian Dirgecraft,{4}{B},5,Station
 Susurian Voidborn,{2}{B},3,Warp
@@ -4727,7 +4740,6 @@ Command Beacon,,0,
 Sire of Seven Deaths,{7},7,Lifelink;Reach;Vigilance;First strike;Trample;Menace;Ward
 "Arahbo, the First Fang",{2}{W},3,
 Armasaur Guide,{4}{W},5,Vigilance
-Claws Out,{3}{W}{W},5,Affinity
 Fleeting Flight,{W},1,
 Guarded Heir,{5}{W},6,Lifelink
 Hare Apparent,{1}{W},2,
@@ -4967,7 +4979,6 @@ Confiscate,{4}{U}{U},6,Enchant
 Rite of Replication,{2}{U}{U},4,Kicker
 Gratuitous Violence,{2}{R}{R}{R},5,Double
 Guttersnipe,{2}{R},3,
-Impact Tremors,{1}{R},2,
 Adaptive Automaton,{3},3,
 Expedition Map,{1},1,
 Gilded Lotus,{5},5,
@@ -5109,7 +5120,6 @@ Reach the Horizon,{3}{G},4,
 Sazh Katzroy,{3}{G},4,Double
 Sidequest: Raise a Chocobo // Black Chocobo,{1}{G},2,Transform;Landfall
 Summon: Fenrir,{2}{G},3,
-Summon: Titan,{3}{G}{G},5,Reach;Trample;Mill
 Summoner's Grimoire,{3}{G},4,Job select;Equip;Abraxas
 Tifa Lockhart,{1}{G},2,Trample;Double;Landfall
 "Torgal, A Fine Hound",{1}{G},2,
@@ -9815,7 +9825,6 @@ Concealed Weapon,{1}{R},2,Disguise;Equip
 Connecting the Dots,{1}{R},2,
 Convenient Target,{R},1,Suspect;Enchant
 Cornered Crook,{4}{R},5,
-Crime Novelist,{2}{R},3,
 Demand Answers,{1}{R},2,
 Expedited Inheritance,{R}{R},2,
 Expose the Culprit,{1}{R},2,Cloak
@@ -11286,7 +11295,6 @@ Slickshot Show-Off,{1}{R},2,Flying;Plot;Haste
 Stingerback Terror,{2}{R}{R},4,Flying;Plot;Trample
 Take for a Ride,{2}{R},3,
 Terror of the Peaks,{3}{R}{R},5,Flying
-Thunder Salvo,{1}{R},2,
 Trick Shot,{4}{R},5,
 Aloe Alchemist,{1}{G},2,Plot;Trample
 Beastbond Outcaster,{2}{G},3,Plot
@@ -11333,7 +11341,6 @@ Badlands Revival,{3}{B}{G},5,
 "Bruse Tarl, Roving Rancher",{2}{R}{W},4,
 Cactusfolk Sureshot,{2}{R}{G},4,Reach;Ward
 Congregation Gryff,{1}{G}{W},3,Flying;Lifelink;Saddle
-"Doc Aurlock, Grizzled Genius",{G}{U},2,
 "Eriette, the Beguiler",{1}{W}{U}{B},4,Lifelink
 "Ertha Jo, Frontier Mentor",{2}{R}{W},4,
 Form a Posse,{X}{R}{W},2,
@@ -12967,7 +12974,6 @@ Spectacular Spider-Man,{1}{W},2,Flash
 With Great Power . . .,{3}{W},4,Enchant
 Hide on the Ceiling,{X}{U},1,
 "Hydro-Man, Fluid Felon",{U}{U},2,
-"Lady Octopus, Inspired Inventor",{U},1,
 "Mysterio, Master of Illusion",{3}{U},4,
 Norman Osborn // Green Goblin,{1}{U} // {1}{U}{B}{R},2,Flying;Goblin Formula;Transform;Menace;Connive
 Oscorp Research Team,{3}{U},4,
@@ -13426,7 +13432,6 @@ Breaching Dragonstorm,{4}{R},5,
 Channeled Dragonfire,{R},1,Harmonize
 Cori-Steel Cutter,{1}{R},2,Flurry;Equip
 Devoted Duelist,{1}{R},2,Flurry;Haste
-Equilibrium Adept,{3}{R},4,Flurry
 Fire-Rim Form,{1}{R},2,Enchant;Flash
 Fleeting Effigy,{R},1,Haste
 Iridescent Tiger,{4}{R},5,
@@ -13815,7 +13820,6 @@ The Unagi of Kyoshi Island,{3}{U}{U},5,Ward;Flash;Waterbend
 "Azula, On the Hunt",{3}{B},4,Firebending
 Boiling Rock Rioter,{2}{B},3,Firebending
 Dai Li Indoctrination,{1}{B},2,Earthbend
-Epic Downfall,{1}{B},2,
 The Fire Nation Drill,{2}{B}{B},4,Crew;Trample
 Fire Nation Engineer,{2}{B},3,Raid
 "June, Bounty Hunter",{1}{B},2,
@@ -14087,10 +14091,8 @@ Turtles Forever,{3}{W},4,
 Does Machines,{1}{U},2,Mill
 "Donatello, Gadget Master",{2}{U},3,Sneak
 Donatello's Technique,{2}{U},3,Sneak
-Fugitive Droid,{U},1,
 "Krang, Master Mind",{6}{U}{U},8,Affinity
 Return to the Sewers,{3}{U},4,
-Death in the Family,{1}{B},2,
 Foot Mystic,{3}{B},4,Disappear;Lifelink
 "Lord Dregg, Insect Invader",{3}{B},4,Flying;Disappear
 "Madame Null, Power Broker",{2}{B},3,Deathtouch
@@ -14867,7 +14869,6 @@ Threadbind Clique // Rip the Seams,{3}{U} // {2}{W},4,Flying
 Twining Twins // Swift Spiral,{2}{U}{U} // {1}{W},4,Flying;Vigilance;Ward
 Woodland Acolyte // Mend the Wilds,{2}{W} // {G},3,
 Candy Trail,{1},1,Scry
-Collector's Vault,{2},2,Treasure
 Eriette's Tempting Apple,{4},4,
 Hylda's Crown of Winter,{3},3,
 The Irencrag,{2},2,

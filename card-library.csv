@@ -1449,7 +1449,7 @@ Axgard Cavalry,Creature — Dwarf Berserker,{T}: Target creature gains haste unt
 Blazing Crescendo,Instant,"Target creature gets +3/+1 until end of turn.
 Exile the top card of your library. Until the end of your next turn, you may play that card.",R,pump; impulse,MSH,125,2
 Bulk Up,Instant,"Double target creature's power until end of turn.
-Flashback {4}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",R,graveyard; flashback; recursion; spellslinger; double,SOA,40,1
+Flashback {4}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",R,graveyard; flashback; recursion; spellslinger; double,SOA,40,2
 "Casey Jones, Jury-Rig Justiciar",Legendary Creature — Human Berserker,"Haste
 When Casey Jones enters, look at the top four cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",R,Human; Berserker; etb; selection; haste; aggro,TMT,87,1
 Combustion Technique,Instant — Lesson,"Combustion Technique deals damage equal to 2 plus the number of Lesson cards in your graveyard to target creature. If that creature would die this turn, exile it instead.",R,Lesson; graveyard,TLA,128,1
@@ -4063,3 +4063,35 @@ Paradox Surveyor,Creature — Elf Druid,"Reach
 When this creature enters, look at the top five cards of your library. You may reveal a land card or a card with {X} in its mana cost from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",U/G,Elf; Druid; etb; selection; reach; defense,SOS,208,1
 Matterbending Mage,Creature — Human Wizard,"When this creature enters, return up to one other target creature to its owner's hand.
 Whenever you cast a spell with {X} in its mana cost, this creature can't be blocked this turn.",U,Human; Wizard; etb; bounce,SOS,59,1
+Cerebral Download,Instant,"Surveil X, where X is the number of artifacts you control. Then draw three cards. (To surveil X, look at the top X cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,graveyard; card draw; selection; surveil,EOE,48,1
+Enduring Vitality,Enchantment Creature — Elk Glimmer,"Vigilance
+Creatures you control have ""{T}: Add one mana of any color.""
+When Enduring Vitality dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",G,Elk; Glimmer; mana; vigilance; combat,DSK,176,1
+Summon: Titan,Enchantment Creature — Saga Giant,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Mill five cards.
+II — Return all land cards from your graveyard to the battlefield tapped.
+III — Until end of turn, another target creature you control gains trample and gets +X/+X, where X is the number of lands you control.
+Reach, trample",G,Saga; Giant; reanimator; graveyard; mill; sacrifice; saga; pump; reach; defense; trample; evasion,FIN,204,1
+"Lady Octopus, Inspired Inventor",Legendary Creature — Human Scientist Villain,"Whenever you draw your first or second card each turn, put an ingenuity counter on Lady Octopus.
+{T}: You may cast an artifact spell from your hand with mana value less than or equal to the number of ingenuity counters on Lady Octopus without paying its mana cost.",U,Human; Scientist; Villain; counters,SPM,35,1
+"Sothera, the Supervoid",Legendary Enchantment,"Whenever a creature you control dies, each opponent chooses a creature they control and exiles it.
+At the beginning of your end step, if a player controls no creatures, sacrifice Sothera, then put a creature card exiled with it onto the battlefield under your control with two additional +1/+1 counters on it.",B,counters; heist; sacrifice,EOE,115,1
+Impact Tremors,Enchantment,"Whenever a creature you control enters, this enchantment deals 1 damage to each opponent.",R,burn; noncombat damage,FDN,717,1
+Meat Locker,Enchantment — Room // Enchantment — Room,"When you unlock this door, tap up to one target creature and put two stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, draw three cards, then discard a card.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",U,Room; counters; card draw,DSK,65,1
+Scrap Compactor,Artifact,"{3}, {T}, Sacrifice this artifact: It deals 3 damage to target creature.
+{6}, {T}, Sacrifice this artifact: Destroy target creature or Vehicle.",Colorless,sacrifice; removal; burn,DFT,242,1
+Thunder Salvo,Instant,"Thunder Salvo deals X damage to target creature, where X is 2 plus the number of other spells you've cast this turn.",R,burn,OTJ,150,1
+Crime Novelist,Creature — Goblin Bard,"Whenever you sacrifice an artifact, put a +1/+1 counter on this creature and add {R}.",R,Goblin; Bard; counters; sacrifice,MKM,121,1
+"Doc Aurlock, Grizzled Genius",Legendary Creature — Bear Druid,"Spells you cast from your graveyard or from exile cost {2} less to cast.
+Plotting cards from your hand costs {2} less.",U/G,Bear; Druid; graveyard; cost-reduction; exile cast,OTJ,201,1
+Equilibrium Adept,Creature — Dog Monk,"When this creature enters, exile the top card of your library. Until the end of your next turn, you may play that card.
+Flurry — Whenever you cast your second spell each turn, this creature gains double strike until end of turn.",R,Dog; Monk; etb; impulse; flurry; spellslinger,TDM,106,1
+Epic Downfall,Sorcery,Exile target creature with mana value 3 or greater.,B,removal,TLA,96,1
+Claws Out,Instant,"Affinity for Cats (This spell costs {1} less to cast for each Cat you control.)
+Creatures you control get +2/+2 until end of turn.",W,cost-reduction; pump; affinity; artifacts,FDN,6,1
+Collector's Vault,Artifact,"{2}, {T}: Draw a card, then discard a card. Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",Colorless,card draw; sacrifice; tokens; treasure,WOE,244,1
+Death in the Family,Instant,Exile target creature with mana value 3 or less.,B,removal,TMT,61,1
+Fugitive Droid,Artifact Creature — Robot Scientist,"This creature can't be blocked if an artifact entered the battlefield under your control this turn.
+{U}, Sacrifice this creature: Counter target spell that targets an artifact or creature you control.",U,Robot; Scientist; counterspell; sacrifice,TMT,40,1
