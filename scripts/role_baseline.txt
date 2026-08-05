@@ -136,6 +136,8 @@ Frozen in Ice
 Full Throttle
 Fynn, the Fangbearer
 Gangly Stompling
+Gas Guzzler
+Gastal Raider
 Gather the White Lotus
 Generous Plunderer
 Genji Glove
@@ -274,6 +276,7 @@ Reno and Rude
 Resolute Reinforcements
 Restorative Technique
 Return the Favor
+Risen Necroregent
 Riverchurn Monument
 Riverwheel Sweep
 Roaming Throne
