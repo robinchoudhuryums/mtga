@@ -1953,6 +1953,8 @@ Archmage's Newt,{1}{U},2,Saddle
 "Aziza, Mage Tower Captain",{R}{W},2,
 Heartflame Duelist,{1}{W} // {2}{R},2,
 Monument to Endurance,{3},3,Treasure
+Leyline of Mutation,{2}{G}{G},4,
+"Cecil, Dark Knight",{B},1,Lifelink;Protect;Transform;Darkness;Deathtouch
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -4051,7 +4053,6 @@ Horrid Vigor,{1}{G},2,
 House Cartographer,{1}{G},2,Survival
 Insidious Fungus,{G},1,
 "Kona, Rescue Beastie",{3}{G},4,Survival
-Leyline of Mutation,{2}{G}{G},4,
 Manifest Dread,{1}{G},2,Manifest;Manifest dread
 Moldering Gym // Weight Room,{2}{G} // {5}{G},9,Manifest;Manifest dread
 Monstrous Emergence,{1}{G},2,
