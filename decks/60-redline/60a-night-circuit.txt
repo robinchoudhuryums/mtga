@@ -1,0 +1,96 @@
+#: name: Redline — Night Circuit
+#: format: Standard
+#: colors: UB
+#: plan: midrange
+#: archetype: DIMIR SPEED-DRAIN — the UB(x) variant deck 60's notes parked, built now
+#: archetype: rather than waiting: the two blue speed cards it revives (Vnwxt, Verbose
+#: archetype: Host and Glitch Ghost Surveyor) were the best speed payoffs we owned all
+#: archetype: along. Where 60 ticks speed with COMBAT (cheap attackers hitting every
+#: archetype: turn), this deck ticks it with DRAIN — life loss from any source counts,
+#: archetype: so Sinister Monolith (beginning of combat: opponent loses 1), Scrawling
+#: archetype: Crawler (opponents' draw on YOUR upkeep drains them), Pactdoll Terror
+#: archetype: (artifact ETBs), Soured Springs (a LAND that ticks), and the attack-drain
+#: archetype: commons advance speed even through a stalled board. At max speed the
+#: archetype: payoffs are card-flow, not damage: Vnwxt doubles every draw with no hand
+#: archetype: limit, The Speed Demon draws speed-many per end step, Aether Syphon turns
+#: archetype: each draw into mill, Racers' Scoreboard discounts everything, and the
+#: archetype: Surveyors recycle from the yard. The drain shell doubles as the win: the
+#: archetype: owned loop pieces (Bloodthirsty Conqueror + Marauding Blight-Priest, or
+#: archetype: Conqueror + Enduring Tenacity) close the game on the spot once assembled.
+#: archetype: Distinct from 60 (BR combat aggro, damage payoffs) and from every drain
+#: archetype: deck on the roster: nothing else couples life loss to a speed counter.
+#: protect: Vnwxt, Verbose Host; Aether Syphon; Bloodthirsty Conqueror; Sinister Monolith; The Speed Demon
+#: tier: B (PROVISIONAL) — an unplayed first draft, graded under whatever the floor
+#: tier: says: the deck banks on reaching max speed by turn 4-5 via noncombat drain,
+#: tier: a line no metric measures, and the payoff layer (doubled draws, Syphon mill)
+#: tier: needs a turn to convert cards into board. Protection is literally ZERO —
+#: tier: every engine piece dies to any removal, and the deck rebuilds on card flow
+#: tier: rather than protecting anything. The Conqueror loops are a real ceiling.
+#: tier: Re-grade after games show how fast the drain shell actually ticks.
+#: notes: BUILT per the deck 60 notes' revival plan. MECHANIC READS (same as 60, plus
+#: notes: the drain angle): speed ticks ONCE per YOUR turn on ANY opponent life loss —
+#: notes: Sinister Monolith guarantees the tick every turn from turn 2, no combat
+#: notes: needed; Scrawling Crawler's symmetric upkeep draw happens on YOUR upkeep, so
+#: notes: the opponent's draw-triggered life loss ticks it too (and the extra draw
+#: notes: feeds Vnwxt). Soured Springs' ETB ping ticks the turn it's played. LOOP
+#: notes: NOTES: Bloodthirsty Conqueror (opponent loses life → you gain that much) +
+#: notes: Marauding Blight-Priest (you gain life → each opponent loses 1) is a closed
+#: notes: loop off ANY life loss; Conqueror + Enduring Tenacity likewise; Starscape
+#: notes: Cleric substitutes for Blight-Priest. Any drain trigger while a pair is out
+#: notes: ends the game — sequence a Bake into a Pie Food-sac or a Syphoner attack to
+#: notes: start it. The Speed Demon's end-step "draw X lose X" is NET-POSITIVE with
+#: notes: Conqueror out (X loss → X gain... ours is OUR life loss, no loop — but
+#: notes: lifelink Oilgorger and the drain gains cover the bill). G-42 audit: Aether
+#: notes: Syphon mills the OPPONENT, no self-mill conflict; Painful Quandary-style
+#: notes: symmetric effects avoided. SHARED COPIES with deck 60 (fungible, both decks
+#: notes: can run them at once): Mutant Surveyor ×2, Streaking Oilgorger ×2, The Speed
+#: notes: Demon, Gastal Raider, Hour of Victory, Risen Necroregent, Gas Guzzler,
+#: notes: Heartless Act, Bitter Triumph, Amonkhet Raceway ×2. ROTATION: the speed
+#: notes: spine is DFT (~2028); BLB pieces (Sinister Monolith, Starscape Cleric)
+#: notes: rotate ~2027 — noted, not a build constraint.
+
+# Speed engine (tickers + max-speed payoffs)
+2 Vnwxt, Verbose Host (DFT) 73
+2 Glitch Ghost Surveyor (DFT) 44
+2 Streaking Oilgorger (DFT) 107
+2 Aether Syphon (DFT) 38
+1 Racers' Scoreboard (DFT) 239
+1 Starting Column (DFT) 244
+2 Mutant Surveyor (DFT) 98
+1 The Speed Demon (DFT) 105
+1 Slick Imitator (DFT) 62
+1 Gastal Raider (DFT) 86
+1 Hour of Victory (DFT) 91
+1 Risen Necroregent (DFT) 102
+1 Gas Guzzler (DFT) 85
+
+# Drain layer (ticks speed without combat; loop finish)
+2 Sinister Monolith (BLB) 113
+1 Scrawling Crawler (FDN) 132
+2 Pactdoll Terror (DFT) 99
+1 Marauding Blight-Priest (FDN) 178
+1 Starscape Cleric (BLB) 116
+1 Bloodthirsty Conqueror (FDN) 58
+1 Enduring Tenacity (DSK) 95
+1 Sanguine Syphoner (FDN) 68
+1 Vengeful Bloodwitch (FDN) 76
+
+# Interaction
+1 Murder (MKM) 95
+1 Hero's Downfall (FDN) 175
+2 Bake into a Pie (FDN) 169
+1 Heartless Act (TLA) 103
+1 Bitter Triumph (SOA) 26
+1 Spell Pierce (SOA) 23
+
+# Lands
+2 Amonkhet Raceway (DFT) 248
+1 Soured Springs (OTJ) 264
+1 Gloomlake Verge (DSK) 260
+1 Undercity Sewers (PZA) 0
+1 Treno, Dark City (FIN) 290
+1 Hidden Lair (MSH) 269
+2 Dismal Backwater (FDN) 261
+1 Serpent's Pass (TLA) 279
+8 Swamp (MSH) 291
+6 Island (MSH) 289
