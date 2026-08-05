@@ -1,9 +1,29 @@
 #: name: Hack n Slash — 5-Color (Route B)
 #: format: Standard
-#: tier: C — the greedy 5-color variant of the Temur primary (35, tier B). Same connect engine, but the 5-color manabase is a real consistency tax even with the 3-dork fixing package (Great Divide Guide / Bloom Tender / Mona Lisa): color-screw when you miss the dorks. Per the rubric, that heavy variance caps it at C — note the card advantage of 5 is NOT part of the case any more (it read 3 until the repeatable-draw classifier fix; the manabase is now the whole argument); the off-color bombs (Absolute Virtue, Lightning Army of One's Stagger) are the payoff for the risk — a defensible B on a good draw, but the honest "play the bombs for fun" grade is C. Metrics floor A can't see the 5c variance. (Guard will soft-flag under-graded; intentional.)
+#: tier: B (PROVISIONAL) — re-graded C -> B with the 2026-08 tune, at the user's
+#: tier: call, still one band under the A metrics floor. What changed: the manabase
+#: tier: was the whole C argument, and the tune addressed it directly — 22 -> 24
+#: tier: lands (keepable was 80%, screw 19%), the two always-tapped Guildgates and
+#: tier: two weakest tricks became four any-color sources (rainbow count 3 -> 5
+#: tier: plus the dorks), and the three-source black splash is now played as a
+#: tier: late-game splash by design rather than a curve miss. Leyline of Mutation
+#: tier: and Avatar Aang give the big-spell top end two more payoffs. Held under
+#: tier: the floor for the honest residue: five-color singleton variance when the
+#: tier: fixing doesn't show up, and the bombs are still the plan. Re-grade after
+#: tier: real games.
 #: colors: WUBRG
 #: based-on: deck.txt
 #: archetype: 35 variant — the greedy 5-color build: keeps the W/B bombs (Absolute Virtue, Lightning Army of One, Karai, Bullseye, Sawblade…) that the Temur primary cuts, on a dual-heavy rainbow base.
+#: protect: Great Divide Guide; Bloom Tender; Leyline of Mutation; Absolute Virtue
+#: notes: LEYLINE PAYMENT INFRASTRUCTURE (2026-08 tune): Great Divide Guide and Bloom
+#: notes: Tender are the WUBRG payment's enablers and `cuts` ranks Bloom Tender near
+#: notes: the top precisely because a fixer's value lives in what it casts (the G-40
+#: notes: shape) — hence both in the protect header. AVATAR AANG'S FLIP IS DEAD HERE,
+#: notes: counted per G-61: transforming needs all FOUR bends in one turn, and this
+#: notes: list has earthbend 2 (Kyoshi, Bumi), firebend only via Aang's own attack,
+#: notes: and ZERO waterbend or airbend sources. He is in the deck as a 4-mana flier
+#: notes: that draws per bend (2-3 real draws a game), NOT for the back face — do not
+#: notes: re-argue the flip without adding water+air bend cards first.
 #: notes: Route B — same connect-and-trigger + cheat + burn plan as the primary, but WUBRG so
 #: notes: the off-color bombs stay in: Absolute Virtue (unkillable evasive finisher), Lightning
 #: notes: Army of One (Stagger doubles all damage), Lorehold, Karai (W/B sneak-reanimator),
@@ -19,7 +39,7 @@
 1 The Dawning Archaic (SOS) 1
 1 The Legend of Kyoshi (TLA) 186
 1 Absolute Virtue (FIN) 212
-1 Karai, Future of the Foot (TMT) 151
+1 Avatar Aang (TLA) 207
 
 # Connect creatures (combat-damage payoffs)
 1 Bruce Banner (MSH) 49
@@ -48,11 +68,11 @@
 1 Sawblade Skinripper (DSK) 231
 
 # Push-through / evasion + burn spells
-1 Pym Particles (MSH) 70
+1 Capital City (FIN) 274
 1 Untimely Malfunction (DSK) 161
 1 Leyline of Mutation (DSK) 188
 1 Mona Lisa, Science Geek (TMT) 123
-1 Biosynthic Burst (EOE) 173
+1 Captivating Cave (LCI) 268
 1 Burst Lightning (FDN) 192
 1 Vibrant Outburst (SOS) 240
 
