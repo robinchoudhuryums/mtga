@@ -2440,7 +2440,11 @@ ENGINE_THEMES = {
         "payoff": [
             r"for each \+1/\+1 counter",
             r"\+1/\+1 counter[^.]*(among (creatures|permanents) you control|on creatures you control)",
-            r"whenever[^.]*\+1/\+1 counter is (put|placed)",
+            # Singular AND plural passive: Wildwood Scourge's "whenever one or more
+            # +1/+1 counters ARE put on another non-Hydra creature" slipped the
+            # singular-only pattern — found during the deck 9 tune, the passive-voice
+            # sibling of the active-voice gap fixed in broad-implement #6.
+            r"whenever[^.]*\+1/\+1 counters? (is|are) (put|placed)",
             # ACTIVE voice was missing — the passive pattern above let Knight of
             # Wundagore ("Whenever you put a +1/+1 counter on another creature, put a
             # +1/+1 counter on this creature") read as roleless, and deck 36's engines

@@ -33,6 +33,11 @@ CASES = [
     ("counter put-trigger payoff",
      "Whenever you put a +1/+1 counter on another creature, put a +1/+1 counter on this creature. This ability triggers only once each turn.",
      "counters", "payoff"),
+    # Passive-PLURAL put-trigger: Wildwood Scourge's printed text — "counters are put"
+    # slipped the singular-only "counter is put" pattern (deck 9 tune).
+    ("counter plural-passive payoff",
+     "Whenever one or more +1/+1 counters are put on another non-Hydra creature you control, put a +1/+1 counter on this creature.",
+     "counters", "payoff"),
     # Grown-past-base shape: Kutzil, Malamet Exemplar's printed text — rewards counters
     # without the word 'counter' in the clause.
     ("base-power-exceeded payoff",

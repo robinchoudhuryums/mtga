@@ -42,16 +42,16 @@
 1 Ka-Zar of the Savage Land (MSH) 174
 
 # Lands
-1 Restless Ridgeline (LCI) 283
+1 Thornspire Verge (DSK) 270
 2 Rugged Highlands (M21) 249
 1 Training Compound (MSH) 275
 1 Omashu City (TLA) 275
 1 Castle Doom (MSH) 263
-9 Mountain (MSH) 294
-9 Forest (MSH) 296
+7 Mountain (MSH) 294
+11 Forest (MSH) 296
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 9
-#~ -Pain for All | +Sharp-Eyed Rookie | CRAFT (R) ★ MARKED UPGRADE / ★ ACROSS THE ROSTER: vigilance body that grows a counter AND investigates whenever a bigger creature enters — the card-advantage-plus-counters engine the deck lacks, cutting a thin 2-for-1 aura. Fits 10 of your decks; wildcard very well spent
+#~ -Pain for All | +Sharp-Eyed Rookie | CRAFT (R) ★ but ⚠rot~2027 (MKM): vigilance body that grows a counter AND investigates whenever a bigger creature enters — the card-advantage-plus-counters engine the deck lacks. Re-graded 2026-08: still a marked upgrade with ~1y of Standard left, but Mutagen Man (below, rotation-safe) is now the better first craft at the same ★
 #~ -Training Regimen | +Mutagen Man, Living Ooze | CRAFT (R) ★ MARKED UPGRADE: trample body that makes X Mutagen tokens (each a counter) and cheapens your artifact-token abilities (Mutagen/Food/Treasure/Lander) — trades a 2-for-1 aura risk for a resilient counters payoff. Fits 10 decks
 #~ -Goldvein Pick | +Bioengineered Future | CRAFT (R) ~ SIDEGRADE: every creature enters with a counter per land that entered — good, but needs landfall you only partly support; skip unless you lean into landers
 #~ note: owned adds already done — Michelangelo, Weirdness to 11 (counter amplifier) and Ka-Zar (card advantage) beat anything craftable for THIS deck. The crafts above earn their wildcard mostly on cross-deck reuse (10 decks each).
