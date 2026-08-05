@@ -27,7 +27,8 @@ finishers), leaning on owned cards, marking craft targets. Then turn the names i
 valid deck lines instead of hand-looking-up printings:
 `python3 scripts/deck.py resolve <names…>`  (or pipe a name list on stdin; optional
 leading quantity per line). It reports unresolved/ambiguous names — fix those, don't
-guess. Count the lines: it must total 60 (the resolver won't catch an off-by-one).
+guess. Pass `--expect 60`: the resolver prints a total-count line and hard-fails a
+miscount (the 59-card off-by-one shipped twice before that flag existed).
 
 ## Stage 3 — Create the deck file
 Next deck number + a short slug → `decks/NN-slug/deck.txt`. Paste the resolved lines

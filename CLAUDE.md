@@ -347,8 +347,10 @@ directions.
   number still hides a figure ("protection is 1"); a change-cue about one card still
   suppresses a citation of ANOTHER in the same window even when the clause says that card
   **stays**; and prose saying "the swap removes X" about a CUT card now reads as a live
-  citation. Shorthand ("Heartfire" for Heartfire Immolator) and simile ("X is Spell Pierce
-  that…") ARE handled. [G-26]
+  citation. Shorthand is handled BOTH directions since 2026-08 — suppression ("Heartfire"
+  for in-deck Heartfire Immolator) AND detection of an ABSENT card cited by comma-head or
+  word-tail ("Gishath", "Okinec Ahau" — both real misses). Simile is handled. Residual: a
+  fragment shared by 4+ cards drops as an epithet. [G-26]
 - **Run `tier <id> --audit-rationale` after ANY deck edit.** The tier guard checks the
   LETTER; this checks the ARGUMENT — cards the prose cites that the deck no longer runs,
   and figures the live quality vector contradicts. A swap moves those numbers by
@@ -373,7 +375,11 @@ directions.
 - **The pool's `Legalities` is a build-time SNAPSHOT — Standard rotates.** `suggest`
   marks an aging pick `⚠rot` from the `Released` date, `deck.py rotation` is the
   roster-wide view, and `wishlist --rank` flags a craft target rotating this year or
-  next. `rotation_risk` is calendar-YEAR based, since rotation happens annually.
+  next. Since 2026-08 the CRAFT views carry the same flag: `deck.py check` marks each
+  missing/short card `⚠rot~YEAR` inline, and `wildcards` (incl. `--dedup`, the
+  cross-deck union ranked by decks-served per copy) flags its leverage list — deck 28's
+  plan bought four rotating cards past unflagged views, and deck 49 held five more.
+  `rotation_risk` is calendar-YEAR based, since rotation happens annually.
   **Reprint caveat, partly encoded:** the pool keys ONE printing, so a card reprinted
   into a long-legality set inherited the wrong date — `_SET_ROTATION_OVERRIDE` fixes the
   announced ones, and the residual is real: verify against the official schedule. [G-30]
@@ -723,7 +729,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   `tag_synergies.py` or `enrich.py` at `card-pool.csv` — both write the library's 8
   columns and would destroy the pool's own. [K-10]
 - **A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
-  warning** — expected, not an error. [K-11]
+  warning** — expected, not an error. `card.py` / `deck.py text` label a resolved row
+  with blank text "(no rules text — a vanilla creature (K-11), not a data gap)" since
+  2026-08, so the blank no longer reads as an enrichment failure; only an UNRESOLVED
+  card still says enrich/build. [K-11]
 - **The functional-role breakdown and the castability lint are HEURISTIC, and they
   silently UNDER-count.** So every count carries its own uncertainty: `stats`/`tier`
   print `7`, `3 +2?`, or `8 +4? (3 unclassified)` plus a "⚠ Possible UNDER-COUNT" list.

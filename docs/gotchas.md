@@ -817,6 +817,27 @@ the arriving side of a replacement. **Not yet fixed** — per the rule two parag
 cue-list change needs a roster sweep first. Until then, a "X stays" claim in a `#: tier:`
 rationale is NOT covered by the audit; check it by hand after a swap.
 
+**2026-08 extension — SHORTHAND is handled in both directions.** The scan matched FULL
+names only, so a rationale abbreviating an ABSENT card was invisible: deck 28's
+archetype cited "Gishath" after Gishath, Sun's Avatar was cut, deck 36's cited
+"Okinec Ahau" after Sovereign Okinec Ahau was cut, and both audits reported clean —
+two consecutive misses on the header a reader trusts first. `_shorthand_index` now
+maps the comma-heads ("Gishath") and capitalized word-tails ("Okinec Ahau") of every
+multi-word card name to the full name(s) they abbreviate, and `rationale_staleness`
+scans the prose's capitalized 1–3-word spans against it (prose-driven, so cost scales
+with the rationale, not the pool). Design points, each earned by the roster sweep that
+validated the fix: an AMBIGUOUS fragment stays in the index and flags when EVERY
+candidate is absent ("Okinec Ahau" abbreviates both Envoy of and Sovereign — dropping
+ambiguity would have re-lost the real miss), a fragment shared by 4+ names is dropped
+as an epithet; the ten GUILD names are blocklisted (four decks say "Rakdos" meaning
+the color pair); the in-deck suppression gate uses PLAIN containment so "Tishana"
+reads as shorthand for an in-deck "Tishana's Tidebinder" (the word-boundary rule
+treats the apostrophe as in-word, and over-suppression is the safe direction); and a
+citation immediately followed by a negation ("Note Mjölnir does NOT do this") is a
+contrast with an absent card, suppressed positionally like the simile rule
+(`_NEGATION_AFTER`). The sweep's single surviving flag was a TRUE positive — deck 21's
+archetype still claimed Ragost as its core after Ragost moved to variant 21a.
+
 
 ## [G-27] `deck.py tier <id> --audit-rationale` catches a STALE tier argument
 
@@ -930,6 +951,20 @@ is calendar-YEAR based, not days-since-release, because rotation happens at an a
 fall rotation: a 2023 set rotates during 2026 and is at risk for all of 2026, not only
 after its third birthday. The RESIDUAL is still real — a card whose newest printing the
 pool didn't capture can read early; verify against the official schedule.
+
+**2026-08 extension — the CRAFT views carry the flag too.** The wishlist was the only
+flagged craft surface, and a deck line that never reached the wishlist bypassed it:
+deck 28's craft plan held FOUR LCI cards rotating within months, invisible to `check`,
+`wildcards` and `audit` alike, and caught only by a human cross-referencing `rotation`
+output during a roster review. `deck.craft_rot_note()` (same `rotation_year` primitive,
+same this-year-or-next window as the wishlist flag, so the surfaces cannot disagree)
+now marks each missing/short card `⚠rot~YEAR` inline in `deck.py check` — with a
+closing advisory naming the flagged cards — and in `wildcards`' leverage list.
+`wildcards --dedup` (the cross-deck UNION of craft targets, one row per card with
+copies-short under shared-collection math, rarity, decks-served and the rot flag,
+ranked by decks-served then rarity) formalizes the craft-efficiency question that four
+2026-08 ingest cycles answered by hand. First run of the flag found deck 49 holding
+FIVE 2026-rotating craft targets nothing had reported.
 
 
 ## [G-31] `deck.py suggest-homes <card>` automates the "which of my decks does this new card improve" fit 
@@ -2102,6 +2137,17 @@ columns. Skip the pool rebuild and UNOWNED craft candidates read stale pool tags
 
 A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
 warning (expected, not an error).
+
+**2026-08 update — the inspection surfaces now say so.** `card.py` and `deck.py text`
+printed "(no oracle text on file — enrich/build the pool)" for a blank-text row, which
+is WRONG advice for a vanilla: it sent a session to Scryfall to re-learn that
+Quakestrider Ceratops is a 12/8 with no abilities (Tyrox, Saurid Tyrant and Terrian,
+World Tyrant likewise — DFT prints several legendary vanillas). A row that RESOLVED
+(a real type line from the pool/library) with blank text now prints "(no rules text —
+a vanilla creature (K-11), not a data gap)"; only a card with no resolved row at all
+still directs you to enrich/build. The distinction is computed from the row, not
+guessed: enrichment fills Type and Card Text together, so a populated type line with
+empty text is the vanilla signature.
 
 
 ## [K-12] The functional-role breakdown (`deck.py stats`) and castability lint (`deck.py mana` / `check`) 
