@@ -53,10 +53,12 @@
 #: archetype: aggro with no graveyard axis at all. Verify with `deck.py similar 54b`.
 #: tier: C — PROVISIONAL, GRADED 2026-08 on an UNBUILT, UNPLAYED, FIRST-DRAFT list.
 #: tier: Deliberately graded WELL BELOW the measurable floor, which reads A on interaction 4
-#: tier: plus card advantage 4 (the 2026-08 plan pass traded three narrow removal
-#: tier: spells for the mana-spent engine, so interaction thinned while draw grew). The guard permits grading under the floor when the prose
+#: tier: plus card advantage 3 (the 2026-08 plan pass traded three narrow removal
+#: tier: spells for the mana-spent engine; Muse Seeker was then CUT for Savage
+#: tier: Ventmaw — six persistent mana per attack, the engine's biggest source —
+#: tier: giving back one draw slot for the deck's defining effect). The guard permits grading under the floor when the prose
 #: tier: argues for it; here is the argument, in measured terms:
-#: tier:   CARD ADVANTAGE 4, AND IT ONLY READS THAT BECAUSE THE CLASSIFIER WAS FIXED FOR IT.
+#: tier:   CARD ADVANTAGE 3, AND IT ONLY READS THAT BECAUSE THE CLASSIFIER WAS FIXED FOR IT.
 #: tier:     The first draft measured ZERO. Adding The Mechanist, Aerial Artisan (a Clue per
 #: tier:     noncreature spell) did not move the number at all, which exposed two gaps: a
 #: tier:     spelled-out CLUE TOKEN was not read as card advantage (only the `investigate`
@@ -172,7 +174,7 @@
 1 Thor, God of Thunder (MSH) 156
 1 Ovika, Enigma Goliath (FDN) 663
 1 Balmor, Battlemage Captain (FDN) 237
-1 Muse Seeker (SOS) 60
+1 Savage Ventmaw (FDN) 665
 1 Electro, Assaulting Battery (SPM) 76
 
 # Red instants — the combat-mana sinks

@@ -18,12 +18,19 @@
 #: notes: LEYLINE PAYMENT INFRASTRUCTURE (2026-08 tune): Great Divide Guide and Bloom
 #: notes: Tender are the WUBRG payment's enablers and `cuts` ranks Bloom Tender near
 #: notes: the top precisely because a fixer's value lives in what it casts (the G-40
-#: notes: shape) — hence both in the protect header. AVATAR AANG'S FLIP IS DEAD HERE,
-#: notes: counted per G-61: transforming needs all FOUR bends in one turn, and this
-#: notes: list has earthbend 2 (Kyoshi, Bumi), firebend only via Aang's own attack,
-#: notes: and ZERO waterbend or airbend sources. He is in the deck as a 4-mana flier
-#: notes: that draws per bend (2-3 real draws a game), NOT for the back face — do not
-#: notes: re-argue the flip without adding water+air bend cards first.
+#: notes: shape) — hence both in the protect header. AVATAR AANG'S FLIP IS LIVE as of
+#: notes: the 2026-08 second pass (it was dead by count before — zero water/air):
+#: notes: earthbend from Kyoshi's chapters or Bumi, firebend from Aang's own attack,
+#: notes: airbend from Appa, Loyal Sky Bison (enters OR attacks — repeatable), and
+#: notes: waterbend from Yue's activation. The line: upkeep/saga earthbend -> attack
+#: notes: Aang + Appa (fire + air) -> activate Yue (water) -> flip; each bend also
+#: notes: draws off Aang's front on the way. Yue doubles as a free-cast engine
+#: notes: (waterbend {5}, {T}: cast a noncreature spell from hand for free) — she is
+#: notes: payment infrastructure like Bloom Tender, worth protecting on the same
+#: notes: G-40 logic. Leyline TOP END: Progenitus and Omniscience replaced Dawning
+#: notes: Archaic (near full price here — its discount reads this deck's thin spell
+#: notes: yard) and Krang (his artifact-lord text was dead here); both cuts still
+#: notes: live in their real homes, and Leyline pays either new bomb at five flat.
 #: notes: Route B — same connect-and-trigger + cheat + burn plan as the primary, but WUBRG so
 #: notes: the off-color bombs stay in: Absolute Virtue (unkillable evasive finisher), Lightning
 #: notes: Army of One (Stagger doubles all damage), Lorehold, Karai (W/B sneak-reanimator),
@@ -34,9 +41,9 @@
 
 # Cheat enablers + top-end payoffs
 1 Michelangelo, Improviser (TMT) 119
-1 Krang, Utrom Warlord (TMT) 175
+1 Omniscience (FDN) 161
 1 Summon: Bahamut (FIN) 1
-1 The Dawning Archaic (SOS) 1
+1 Progenitus (FDN) 244
 1 The Legend of Kyoshi (TLA) 186
 1 Absolute Virtue (FIN) 212
 1 Avatar Aang (TLA) 207
@@ -56,12 +63,12 @@
 1 Drake Hatcher (FDN) 35
 1 Hawkeye, Master Marksman (MSH) 130
 1 Nashi, Searcher in the Dark (DSK) 223
-1 Ghost, Spectral Saboteur (MSH) 214
+1 Yue, the Moon Spirit (TLA) 83
 1 Lorehold, the Historian (SOS) 201
 1 The Vision (MSH) 255
 
 # Engines + any-target damage
-1 Impostor Syndrome (SPM) 34
+1 Appa, Loyal Sky Bison (TLA) 9
 1 Gossip's Talent (BLB) 51
 1 Buster Sword (FIN) 255
 1 Bullseye, Death Dealer (MSH) 209
