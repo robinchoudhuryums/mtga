@@ -1483,7 +1483,7 @@ Goblin Glasswright,Creature — Goblin Sorcerer // Sorcery,"This creature enters
 Gristle Glutton,Creature — Goblin Scout,"{T}, Blight 1: Discard a card. If you do, draw a card. (To blight 1, put a -1/-1 counter on a creature you control.)",R,Goblin; Scout; counters; card draw; blight; graveyard,ECL,144,1
 Hard-Won Jitte,Artifact — Equipment,"Equipped creature has double strike.
 Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",R,Equipment; equipment; equip,TMT,91,1
-Haste Magic,Instant,Target creature gets +3/+1 and gains haste until end of turn. Exile the top card of your library. You may play it until your next end step.,R,pump; impulse,FIN,140,1
+Haste Magic,Instant,Target creature gets +3/+1 and gains haste until end of turn. Exile the top card of your library. You may play it until your next end step.,R,pump; impulse,FIN,140,2
 "Hawkeye, Master Marksman",Legendary Creature — Human Archer Hero,"First strike, reach
 Trick Arrows — Whenever Hawkeye becomes tapped, you may pay {1} up to three times. When you do, choose up to that many.
 • Net — Target creature can't block this turn.
@@ -1561,7 +1561,7 @@ Exile the top two cards of your library. If this spell's additional cost was pai
 Charging Strifeknight,Creature — Spirit Knight,"Haste
 {T}, Discard a card: Draw a card.",R,Spirit; Knight; card draw; haste; aggro,SOS,110,1
 Count on Luck,Enchantment,"At the beginning of your upkeep, exile the top card of your library. You may play that card this turn.",R,impulse,DFT,118,1
-Crackling Cyclops,Creature — Cyclops Wizard,"Whenever you cast a noncreature spell, this creature gets +3/+0 until end of turn.",R,Cyclops; Wizard; pump,FDN,83,1
+Crackling Cyclops,Creature — Cyclops Wizard,"Whenever you cast a noncreature spell, this creature gets +3/+0 until end of turn.",R,Cyclops; Wizard; pump,FDN,83,2
 Cut Propulsion,Instant,"Target creature deals damage to itself equal to its power. If that creature has flying, it deals twice that much damage to itself instead.",R,,EOE,130,1
 "Electro, Assaulting Battery",Legendary Creature — Human Villain,"Flying
 You don't lose unspent red mana as steps and phases end.
@@ -4021,3 +4021,45 @@ Vivien Reid,Legendary Planeswalker — Vivien,"+1: Look at the top four cards of
 Firespitter Whelp,Creature — Dragon,"Flying
 Whenever you cast a noncreature or Dragon spell, this creature deals 1 damage to each opponent.",R,Dragon; burn; noncombat damage; flying; evasion,FDN,761,1
 Boltwave,Sorcery,Boltwave deals 3 damage to each opponent.,R,burn,FDN,79,1
+Bark of Doran,Artifact — Equipment,"Equipped creature gets +0/+1.
+As long as equipped creature's toughness is greater than its power, it assigns combat damage equal to its toughness rather than its power.
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; equipment; pump; toughness matters; equip,ECL,6,1
+Gossip's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+Whenever a creature you control enters, surveil 1.
+{1}{U}: Level 2
+Whenever you attack, target attacking creature with power 3 or less can't be blocked this turn.
+{3}{U}: Level 3
+Whenever a creature you control deals combat damage to a player, you may exile it, then return it to the battlefield under its owner's control.",U,Class; blink; surveil; graveyard,BLB,51,1
+Ashroot Animist,Creature — Lizard Druid,"Trample
+Whenever this creature attacks, another target creature you control gains trample and gets +X/+X until end of turn, where X is this creature's power.",R/G,Lizard; Druid; pump; trample; evasion,FDN,117,1
+Duty Beyond Death,Instant,"As an additional cost to cast this spell, sacrifice a creature.
+Creatures you control gain indestructible until end of turn. Put a +1/+1 counter on each creature you control. (Damage and effects that say ""destroy"" don't destroy those creatures.)",W,counters; sacrifice,TDM,10,1
+"Sally Pride, Lioness Leader",Legendary Creature — Cat Mutant Rebel,"When Sally Pride enters, create X 2/2 red Mutant creature tokens, where X is the number of nontoken creatures you control.
+Whenever Sally Pride attacks, put a +1/+1 counter on each creature you control.",W,Cat; Mutant; Rebel; counters; tokens; etb,TMT,24,1
+Leyline of the Guildpact,Enchantment,"If this card is in your opening hand, you may begin the game with it on the battlefield.
+Each nonland permanent you control is all colors.
+Lands you control are every basic land type in addition to their other types.",W/U/B/R/G,mana,MKM,217,1
+"Gilgamesh, Master-at-Arms",Legendary Creature — Human Samurai,"Whenever Gilgamesh enters or attacks, look at the top six cards of your library. You may put any number of Equipment cards from among them onto the battlefield. Put the rest on the bottom of your library in a random order. When you put one or more Equipment onto the battlefield this way, you may attach one of them to a Samurai you control.",R,Human; Samurai; selection,FIN,139,1
+Superior Foes of Spider-Man,Creature — Human Rogue Villain,"Trample
+Whenever you cast a spell with mana value 4 or greater, you may exile the top card of your library. If you do, you may play that card until you exile another card with this creature.",R,Human; Rogue; Villain; impulse; trample; evasion,SPM,96,1
+Fireshrieker,Artifact — Equipment,"Equipped creature has double strike. (It deals both first-strike and regular combat damage.)
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; equipment; equip,FDN,674,1
+Ninja's Blades,Artifact — Equipment,"Job select
+Equipped creature gets +1/+1, is a Ninja in addition to its other types, and has ""Whenever this creature deals combat damage to a player, draw a card, then discard a card. That player loses life equal to the discarded card's mana value.""
+Mutsunokami — Equip {2}",B,Equipment; card draw; equipment; pump; job select; equip,FIN,108,1
+Boros Charm,Instant,"Choose one —
+• Boros Charm deals 4 damage to target player or planeswalker.
+• Permanents you control gain indestructible until end of turn.
+• Target creature gains double strike until end of turn.",W/R,burn,FDN,721,1
+"Mai, Jaded Edge",Legendary Creature — Human Noble,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+Exhaust — {3}: Put a double strike counter on Mai. (Activate each exhaust ability only once.)",R,Human; Noble; counters; pump; prowess; spellslinger; tempo; exhaust; payoff,TLA,147,1
+Frontline Rush,Instant,"Choose one —
+• Create two 1/1 red Goblin creature tokens.
+• Target creature gets +X/+X until end of turn, where X is the number of creatures you control.",W/R,tokens; pump,TDM,186,1
+Nomad Outpost,Land,"This land enters tapped.
+{T}: Add {R}, {W}, or {B}.",W/B/R,mana,TDM,263,1
+Withering Torment,Instant,Destroy target creature or enchantment. You lose 2 life.,B,pay life; removal,DSK,124,1
+Paradox Surveyor,Creature — Elf Druid,"Reach
+When this creature enters, look at the top five cards of your library. You may reveal a land card or a card with {X} in its mana cost from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",U/G,Elf; Druid; etb; selection; reach; defense,SOS,208,1
+Matterbending Mage,Creature — Human Wizard,"When this creature enters, return up to one other target creature to its owner's hand.
+Whenever you cast a spell with {X} in its mana cost, this creature can't be blocked this turn.",U,Human; Wizard; etb; bounce,SOS,59,1
