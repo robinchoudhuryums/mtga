@@ -1941,6 +1941,18 @@ Shared Roots,{1}{G},2,
 Greenhouse,{2}{G} // {3}{G},7,Mill
 "Toph, Hardheaded Teacher",{2}{R}{G},4,Earthbend
 Lightning Helix,{R}{W},2,
+Prompto Argentum,{1}{R},2,Selfie Shot;Treasure;Haste
+Slickshot Lockpicker,{2}{U},3,Plot
+Gleaming Geardrake,{U}{R},2,Flying;Investigate
+Virulent Silencer,{3},3,
+Lightless Evangel,{1}{B},2,
+"Kutzil, Malamet Exemplar",{1}{G}{W},3,
+Nowhere to Run,{1}{B},2,Flash
+Archmage's Newt,{1}{U},2,Saddle
+"Magda, the Hoardmaster",{1}{R},2,Treasure
+"Aziza, Mage Tower Captain",{R}{W},2,
+Heartflame Duelist,{1}{W} // {2}{R},2,
+Monument to Endurance,{3},3,Treasure
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3371,7 +3383,6 @@ The Aetherspark,{4},4,
 Camera Launcher,{3},3,Exhaust
 Marketback Walker,{X}{X},0,
 Marshals' Pathcruiser,{3},3,Crew;Exhaust
-Monument to Endurance,{3},3,Treasure
 Pit Automaton,{2},2,Defender
 Racers' Scoreboard,{4},4,Max speed;Start your engines!
 Rover Blades,{3},3,Crew;Equip;Double strike
@@ -3976,7 +3987,6 @@ Leyline of the Void,{2}{B}{B},4,
 Live or Die,{3}{B}{B},5,
 Meathook Massacre II,{X}{X}{B}{B}{B}{B},4,
 Miasma Demon,{4}{B}{B},6,Flying
-Nowhere to Run,{1}{B},2,Flash
 Overlord of the Balemurk,{3}{B}{B},5,Impending;Mill
 Popular Egotist,{2}{B},3,
 Resurrected Cultist,{2}{B},3,Delirium
@@ -4614,7 +4624,6 @@ Faller's Faithful,{2}{B},3,
 Fell Gravship,{2}{B},3,Station;Mill
 Gravblade Heavy,{3}{B},4,
 Hullcarver,{B},1,Deathtouch
-Lightless Evangel,{1}{B},2,
 Monoist Circuit-Feeder,{4}{B}{B},6,Flying
 Monoist Sentry,{B},1,Defender
 Requiem Monolith,{2}{B},3,
@@ -4686,7 +4695,6 @@ Extinguisher Battleship,{8},8,Station
 Nutrient Block,{1},1,Indestructible
 Survey Mechan,{4},4,Flying;Hexproof
 Thrumming Hivepool,{6},6,Affinity
-Virulent Silencer,{3},3,
 "Adagia, Windswept Bastion",,0,Station
 Command Bridge,,0,
 Secluded Starforge,,0,
@@ -5102,7 +5110,6 @@ Item Shopkeep,{1}{R},2,
 Laughing Mad,{2}{R},3,Flashback
 Light of Judgment,{4}{R},5,
 Opera Love Song,{1}{R},2,
-Prompto Argentum,{1}{R},2,Selfie Shot;Treasure;Haste
 "Raubahn, Bull of Ala Mhigo",{1}{R},2,Ward
 Red Mage's Rapier,{1}{R},2,Job select;Equip
 Sandworm,{4}{R},5,Haste
@@ -8027,7 +8034,6 @@ Caparocti Sunborn,{2}{R}{W},4,Discover
 Deepfathom Echo,{2}{G}{U},4,Explore
 "Gishath, Sun's Avatar",{5}{R}{G}{W},8,Vigilance;Haste;Trample
 "Kellan, Daring Traveler // Journey On",{1}{W} // {G},2,
-"Kutzil, Malamet Exemplar",{1}{G}{W},3,
 Master's Guide-Mural // Master's Manufactory,{3}{W}{U},5,Craft;Transform
 Molten Collapse,{B}{R},2,
 The Mycotyrant,{1}{B}{G},3,Trample
@@ -9908,7 +9914,6 @@ Evidence Examiner,{G}{U},2,Collect evidence;Investigate
 "Ezrim, Agency Chief",{1}{W}{W}{U}{U},5,Flying;Investigate
 Faerie Snoop,{1}{U}{B},3,Flying;Disguise
 Gadget Technician,{2}{U}{R},4,Disguise
-Gleaming Geardrake,{U}{R},2,Flying;Investigate
 Granite Witness,{2}{W}{U},4,Flying;Vigilance;Disguise
 Ill-Timed Explosion,{2}{U}{R},4,
 Insidious Roots,{B}{G},2,
@@ -11205,7 +11210,6 @@ Thunder Lasso,{2}{W},3,Equip
 Trained Arynx,{1}{W},2,Saddle;Scry
 Vengeful Townsfolk,{2}{W},3,
 Wanted Griffin,{3}{W},4,Flying
-Archmage's Newt,{1}{U},2,Saddle
 Canyon Crab,{1}{U},2,
 Daring Thunder-Thief,{3}{U},4,Flash
 Deepmuck Desperado,{2}{U},3,Mill
@@ -11231,7 +11235,6 @@ Plan the Heist,{2}{U}{U},4,Surveil;Plot
 Seize the Secrets,{2}{U},3,
 Shackle Slinger,{2}{U},3,
 Shifting Grift,{U}{U},2,Spree
-Slickshot Lockpicker,{2}{U},3,Plot
 Slickshot Vault-Buster,{2}{U},3,Vigilance
 Spring Splasher,{1}{U},2,
 Step Between Worlds,{3}{U}{U},5,Plot
@@ -11290,7 +11293,6 @@ Highway Robbery,{1}{R},2,Plot
 Irascible Wolverine,{2}{R},3,Plot
 Iron-Fist Pulverizer,{4}{R},5,Reach;Scry
 Longhorn Sharpshooter,{2}{R},3,Reach;Plot
-"Magda, the Hoardmaster",{1}{R},2,Treasure
 Mine Raider,{2}{R},3,Treasure;Trample
 Quick Draw,{R},1,
 Quilled Charger,{3}{R},4,Saddle
@@ -12875,7 +12877,6 @@ Vastlands Scavenger // Bind to Life,{1}{G}{G} // {4}{G},3,Prepared;Mill;Deathtou
 "Abigale, Poet Laureate // Heroic Stanza",{1}{W}{B} // {1}{W/B},3,Flying;Prepared
 Abstract Paintmage,{U}{U/R}{R},3,
 Ark of Hunger,{2}{R}{W},4,Mill
-"Aziza, Mage Tower Captain",{R}{W},2,
 "Berta, Wise Extrapolator",{2}{G}{U},4,Increment
 Borrowed Knowledge,{2}{R}{W},4,
 Colossus of the Blood Age,{4}{R}{W},6,

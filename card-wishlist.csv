@@ -230,8 +230,6 @@ Chaosbringer — Equip—Pay 3 life. Activate only once each turn.",B,Equipment;
 Lion Heart,Artifact — Equipment,"When this Equipment enters, it deals 2 damage to any target.
 Equipped creature gets +2/+1.
 Equip {2}",Colorless,Equipment; burn; etb; equipment; pump; equip,FIN,261,Uncommon,38,,4.5,hand
-Prompto Argentum,Legendary Creature — Human Scout,"Haste
-Selfie Shot — Whenever you cast a noncreature spell, if at least four mana was spent to cast it, create a Treasure token.",R,Human; Scout; tokens; treasure; haste; aggro,FIN,148,Uncommon,,,4.5,seed
 "Ragnarok, Divine Deliverance",Legendary Creature — Beast Avatar,"Vigilance, menace, trample, reach, haste
 When Ragnarok dies, destroy target permanent and return target nonlegendary permanent card from your graveyard to the battlefield.",B/G,Beast; Avatar; graveyard; removal; reach; defense; vigilance; combat; haste; aggro; trample; evasion; menace,FIN,99b,Uncommon,31,,6.0,hand
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
@@ -295,9 +293,6 @@ Aftermath Analyst,Creature — Elf Detective,"When this creature enters, mill th
 Case of the Filched Falcon,Enchantment — Case,"When this Case enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
 To solve — You control three or more artifacts. (If unsolved, solve at the beginning of your end step.)
 Solved — {2}{U}, Sacrifice this Case: Put four +1/+1 counters on target noncreature artifact. It becomes a 0/0 Bird creature with flying in addition to its other types.",U,Case; counters; card draw; sacrifice; tokens; etb; clue; investigate; solved,MKM,44,Uncommon,26,,3.5,hand
-Gleaming Geardrake,Artifact Creature — Drake,"Flying
-When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
-Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",U/R,Drake; counters; card draw; sacrifice; tokens; etb; clue; flying; evasion; investigate,MKM,205,Uncommon,35,,5.0,hand
 Hard-Hitting Question,Sorcery,Target creature you control deals damage equal to its power to target creature or planeswalker you don't control.,G,removal,MKM,164,Uncommon,50,,3.0,seed
 Magnetic Snuffler,Artifact Creature — Construct,"When this creature enters, return target Equipment card from your graveyard to the battlefield attached to this creature.
 Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",Colorless,Construct; counters; reanimator; graveyard; sacrifice; etb,MKM,254,Uncommon,38,,4.0,hand
@@ -328,8 +323,6 @@ Concealed Courtyard,Land,"This land enters tapped unless you control two or fewe
 {T}: Add {W} or {B}.",W/B,mana,OTJ,268,Rare,21; 6,Manabase upgrade: de-tapland Gastromancer (21) B->A; reusable across WB/BG/GW decks. Also de-taplands + firms black in deck 20 (Honor Among Thieves) — fungible. | Also Abzan reanimator deck 6 (Dead or Alive) — same WBG fixing; fungible craft.,6.5,hand
 "Lilah, Undefeated Slickshot",Legendary Creature — Human Rogue,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 Whenever you cast a multicolored instant or sorcery spell from your hand, exile that spell instead of putting it into your graveyard as it resolves. If you do, it becomes plotted. (You may cast it as a sorcery on a later turn without paying its mana cost.)",U/R,Human; Rogue; graveyard; pump; plot; tempo; cost-reduction; prowess; spellslinger,OTJ,217,Rare,25,prowess 3-drop that impulses off your spells,6.5,hand
-"Magda, the Hoardmaster",Legendary Creature — Dwarf Berserker,"Whenever you commit a crime, create a tapped Treasure token. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)
-Sacrifice three Treasures: Create a 4/4 red Scorpion Dragon creature token with flying and haste. Activate only as a sorcery.",R,Dwarf; Berserker; graveyard; sacrifice; tokens; treasure,OTJ,133,Rare,,,5.5,seed
 "Malcolm, the Eyes",Legendary Creature — Siren Pirate,"Flying, haste
 Whenever you cast your second spell each turn, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",U/R,Siren; Pirate; card draw; sacrifice; tokens; clue; flying; evasion; investigate; haste; aggro,OTJ,219,Rare,25,2-drop: second spell -> investigate,5.5,hand
 Stingerback Terror,Creature — Scorpion Dragon,"Flying, trample
@@ -355,7 +348,6 @@ Equip {2}",W,Equipment; etb; equipment; pump; equip,OTJ,35,Uncommon,38,,2.5,hand
 Rooftop Assassin,Creature — Vampire Assassin,"Flash
 Flying, lifelink
 When this creature enters, destroy target creature an opponent controls that was dealt damage this turn.",B,Vampire; Assassin; lifegain; removal; etb; flying; evasion; lifelink; flash; tempo,OTJ,103,Common,20,,3.5,hand
-"Aziza, Mage Tower Captain",Legendary Creature — Djinn Sorcerer,"Whenever you cast an instant or sorcery spell, you may tap three untapped creatures you control. If you do, copy that spell. You may choose new targets for the copy.",W/R,Djinn; Sorcerer; spellslinger,SOS,174,Rare,concept,RW spells/magecraft (Strixhaven-style),6.5,hand
 Comforting Counsel,Enchantment,"Whenever you gain life, put a growth counter on this enchantment.
 As long as there are five or more growth counters on this enchantment, creatures you control get +3/+3.",G,counters; pump,SOS,143,Rare,7,"broadly useful — best 7 (Earth's Mightiest); also 9,19b,19a",4.0,hand
 Deathcap Glade,Land,"This land enters tapped unless you control two or more other lands.

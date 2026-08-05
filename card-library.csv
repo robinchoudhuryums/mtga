@@ -1536,7 +1536,7 @@ Morbid — At the beginning of each end step, if a creature died this turn, unta
 "Speed, Young Avenger",Legendary Creature — Mutant Hero,"Haste
 Whenever you cast a noncreature spell, you may pay {1}. When you do, target creature with haste can't be blocked this turn except by creatures with haste.",R,Mutant; Hero; haste; aggro,MSH,152,1
 Team Tactics,Instant,"Teamwork 1 (As an additional cost to cast this spell, you may tap any number of creatures you control with total power 1 or more.)
-Target creature gains double strike until end of turn. If this spell was cast using teamwork, that creature also gains trample until end of turn.",R,teamwork; go-wide; combat,MSH,155,1
+Target creature gains double strike until end of turn. If this spell was cast using teamwork, that creature also gains trample until end of turn.",R,teamwork; go-wide; combat,MSH,155,2
 Sure Strike,Instant,Target creature gets +3/+0 and gains first strike until end of turn. (It deals combat damage before creatures without first strike.),R,pump,FDN,209,1
 The Last Agni Kai,Instant,"Target creature you control fights target creature an opponent controls. If the creature the opponent controls is dealt excess damage this way, add that much {R}.
 Until end of turn, you don't lose unspent red mana as steps and phases end.",R,fight; removal; combat,TLA,144,1
@@ -3922,7 +3922,7 @@ Rally the Monastery,Instant,"This spell costs {2} less to cast if you've cast an
 Choose one —
 • Create two 1/1 white Monk creature tokens with prowess.
 • Up to two target creatures you control each get +2/+2 until end of turn.
-• Destroy target creature with power 4 or greater.",W,cost-reduction; tokens; removal; pump,TDM,19,1
+• Destroy target creature with power 4 or greater.",W,cost-reduction; tokens; removal; pump,TDM,19,2
 Prayer of Binding,Enchantment,"Flash
 When this enchantment enters, exile up to one target nonland permanent an opponent controls until this enchantment leaves the battlefield. You gain 2 life.",W,lifegain; etb; flash; tempo,FDN,739,1
 "Koya, Death from Above",Legendary Creature — Mutant Ninja Bird,"Flying
@@ -4125,4 +4125,28 @@ Greenhouse,Enchantment — Room // Enchantment — Room,"Lands you control have 
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",G,Room; mill; mana; graveyard,DSK,181,1
 "Toph, Hardheaded Teacher",Legendary Creature — Human Warrior Ally,"When Toph enters, you may discard a card. If you do, return target instant or sorcery card from your graveyard to your hand.
 Whenever you cast a spell, earthbend 1. If that spell is a Lesson, put an additional +1/+1 counter on that land. (Target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)",R/G,Human; Warrior; Ally; counters; reanimator; graveyard; etb; earthbend; bending,TLA,246,1
-Lightning Helix,Instant,Lightning Helix deals 3 damage to any target and you gain 3 life.,W/R,lifegain; burn,MKM,218,1
+Lightning Helix,Instant,Lightning Helix deals 3 damage to any target and you gain 3 life.,W/R,lifegain; burn,MKM,218,2
+Prompto Argentum,Legendary Creature — Human Scout,"Haste
+Selfie Shot — Whenever you cast a noncreature spell, if at least four mana was spent to cast it, create a Treasure token.",R,Human; Scout; tokens; treasure; haste; aggro,FIN,148,1
+Slickshot Lockpicker,Creature — Human Rogue,"When this creature enters, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost. (You may cast that card from your graveyard for its flashback cost. Then exile it.)
+Plot {2}{U} (You may pay {2}{U} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",U,Human; Rogue; graveyard; exile cast; etb; plot; tempo; cost-reduction,OTJ,67,1
+Gleaming Geardrake,Artifact Creature — Drake,"Flying
+When this creature enters, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
+Whenever you sacrifice an artifact, put a +1/+1 counter on this creature.",U/R,Drake; counters; card draw; sacrifice; tokens; etb; clue; flying; evasion; investigate,MKM,205,1
+Virulent Silencer,Artifact Creature — Robot Assassin,"Whenever a nontoken artifact creature you control deals combat damage to a player, that player gets two poison counters. (A player with ten or more poison counters loses the game.)",Colorless,Robot; Assassin,EOE,248,1
+Lightless Evangel,Creature — Vampire Cleric,"Whenever you sacrifice another creature or artifact, put a +1/+1 counter on this creature.",B,Vampire; Cleric; counters; sacrifice,EOE,109,1
+"Kutzil, Malamet Exemplar",Legendary Creature — Cat Warrior,"Your opponents can't cast spells during your turn.
+Whenever one or more creatures you control each with power greater than its base power deals combat damage to a player, draw a card.",W/G,Cat; Warrior; card draw,LCI,232,1
+Nowhere to Run,Enchantment,"Flash
+When this enchantment enters, target creature an opponent controls gets -3/-3 until end of turn.
+Creatures your opponents control can be the targets of spells and abilities as though they didn't have hexproof. Ward abilities of those creatures don't trigger.",B,etb; removal; flash; tempo,DSK,111,1
+Archmage's Newt,Creature — Salamander Mount,"Whenever this creature deals combat damage to a player, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost. That card gains flashback {0} until end of turn instead if this creature is saddled. (You may cast that card from your graveyard for its flashback cost. Then exile it.)
+Saddle 3",U,Salamander; Mount; graveyard; saddle; go-wide; combat,OTJ,39,1
+"Magda, the Hoardmaster",Legendary Creature — Dwarf Berserker,"Whenever you commit a crime, create a tapped Treasure token. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)
+Sacrifice three Treasures: Create a 4/4 red Scorpion Dragon creature token with flying and haste. Activate only as a sorcery.",R,Dwarf; Berserker; graveyard; sacrifice; tokens; treasure,OTJ,133,1
+"Aziza, Mage Tower Captain",Legendary Creature — Djinn Sorcerer,"Whenever you cast an instant or sorcery spell, you may tap three untapped creatures you control. If you do, copy that spell. You may choose new targets for the copy.",W/R,Djinn; Sorcerer; spellslinger; spell copy,SOS,174,1
+Heartflame Duelist,Creature — Human Knight // Instant — Adventure,Instant and sorcery spells you control have lifelink. // Heartflame Slash deals 3 damage to any target. (Then exile this card. You may cast the creature later from exile.),W/R,Human; Knight; Adventure; lifegain; exile cast; burn; spellslinger,WOE,228,1
+Monument to Endurance,Artifact,"Whenever you discard a card, choose one that hasn't been chosen this turn —
+• Draw a card.
+• Create a Treasure token.
+• Each opponent loses 3 life.",Colorless,card draw; tokens; treasure,DFT,237,1
