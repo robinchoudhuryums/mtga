@@ -1643,6 +1643,62 @@ class TestSyncPaste:
                              [(self._d("1"), self._ms(A=4, B=4, C=4))])
         assert m.get("unmatched") is True
 
+    # --- the FORMAT tie-breaker (deck 3 vs 3-brawl confusion) ----------------------
+    # A Standard deck and its Brawl sibling share most card NAMES, so drift alone put
+    # each inside the other's low-confidence window — while the paste itself carried an
+    # unambiguous structural signal (Commander heading / deck size). `paste_format_hint`
+    # reads that signal and `match_paste` sorts format-mismatched decks behind every
+    # consistent one and excludes them from the low-confidence comparison. The dashboard
+    # JS mirrors all of this (formatHint / deckFormatClass / bestMatch); change both.
+
+    def _df(self, i, fmt):
+        return {"id": i, "name": f"deck{i}", "path": "", "meta": {"format": fmt}}
+
+    def test_format_hint_commander_heading(self):
+        assert deck.paste_format_hint(["Commander", "1 A"], 60) == "commander"
+
+    def test_format_hint_by_size(self):
+        assert deck.paste_format_hint(["1 A"], 100) == "commander"
+        assert deck.paste_format_hint(["1 A"], 60) == "sixty"
+        assert deck.paste_format_hint(["1 A"], 80) is None
+
+    def test_sixty_paste_prefers_sixty_sibling_over_closer_brawl(self):
+        # The Brawl sibling is CLOSER by drift, but the paste is sixty-shaped:
+        # the format-consistent deck must win.
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._df("3", "standard"), self._ms(A=4, B=4, C=2)),
+                              (self._df("3-brawl", "brawl"), self._ms(A=4, B=4, C=4))],
+                             fmt_hint="sixty")
+        assert m["deck"]["id"] == "3"
+
+    def test_commander_paste_prefers_brawl_sibling(self):
+        m = deck.match_paste(self._ms(A=1, B=1, C=1, D=1),
+                             [(self._df("3", "standard"), self._ms(A=4, B=1, C=1, D=1)),
+                              (self._df("3-brawl", "brawl"), self._ms(A=1, B=1, C=1, E=1))],
+                             fmt_hint="commander")
+        assert m["deck"]["id"] == "3-brawl"
+
+    def test_format_mismatch_does_not_trigger_low_confidence(self):
+        # The Brawl sibling is within 2 drift with plenty of shared cards — exactly the
+        # shape that used to fire lowconf. A format-mismatched rival must not.
+        m = deck.match_paste(self._ms(A=4, B=4, C=4, D=4),
+                             [(self._df("3", "standard"), self._ms(A=4, B=4, C=4, D=4)),
+                              (self._df("3-brawl", "brawl"), self._ms(A=4, B=4, C=4, D=2))],
+                             fmt_hint="sixty")
+        assert m["deck"]["id"] == "3" and m["lowconf"] is False
+
+    def test_no_hint_keeps_pure_drift_behavior(self):
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._df("3", "standard"), self._ms(A=4, B=4, C=2)),
+                              (self._df("3-brawl", "brawl"), self._ms(A=4, B=4, C=4))])
+        assert m["deck"]["id"] == "3-brawl"
+
+    def test_unknown_deck_format_is_never_penalized(self):
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._d("9"), self._ms(A=4, B=4, C=4))],
+                             fmt_hint="sixty")
+        assert m["deck"]["id"] == "9" and m["sync"] is True
+
     def test_low_confidence_between_siblings(self):
         m = deck.match_paste(self._ms(A=4, B=4, C=4, D=4, E=1),
                              [(self._d("1"), self._ms(A=4, B=4, C=4, D=4, E=2)),

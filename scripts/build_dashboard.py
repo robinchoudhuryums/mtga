@@ -1720,7 +1720,15 @@ renderWishlist(); renderSim();
     // spellings differ between Arena and the repo (broad-scan F-02). 14 deck files carry
     // one. Any change to the key belongs on BOTH sides, like match_paste's sort key.
     return {nl:name.toLowerCase().split(' // ')[0], disp:name, qty:parseInt(m[1],10)}; }
-  function splitDecks(text){ const segs = []; let cur = null, started = false; for (const ln of text.split(/\r?\n/)){ const t = ln.trim(); if (/^deck\s*$/i.test(t)){ cur = []; segs.push(cur); started = true; continue; } if (SECTION.test(t)) continue; if (!started){ cur = []; segs.push(cur); started = true; } cur.push(ln); } return segs.filter(s => s.length); }
+  // Sideboard/maybeboard CARD lines are dropped, mirroring Python strip_boards — stored
+  // decks are maindeck-only, so a 7-card sideboard must not read as drift (BS-07; the JS
+  // half previously dropped only the headings and counted the cards). Headings are KEPT
+  // in the segment (parseLine ignores them) so the format hint below can see `Commander`.
+  function splitDecks(text){ const segs = []; let cur = null, started = false, skipping = false; for (const ln of text.split(/\r?\n/)){ const t = ln.trim(); if (/^deck\s*$/i.test(t)){ cur = []; segs.push(cur); started = true; skipping = false; continue; } if (SECTION.test(t)){ skipping = /^(sideboard|maybeboard)\b/i.test(t); if (!started){ cur = []; segs.push(cur); started = true; } cur.push(ln); continue; } if (skipping) continue; if (!started){ cur = []; segs.push(cur); started = true; } cur.push(ln); } return segs.filter(s => s.length); }
+  // 'commander' | 'sixty' | null — mirrors deck.paste_format_hint: a Commander heading
+  // or ~100-card size says commander-shaped; <=75 says sixty; between is ambiguous.
+  function formatHint(seg, nCards){ for (const ln of seg){ if (/^commander\s*$/i.test(ln.trim())) return 'commander'; } if (nCards >= 90) return 'commander'; if (nCards > 0 && nCards <= 75) return 'sixty'; return null; }
+  function deckFormatClass(d){ const f = (d.format||'').trim().toLowerCase(); if (!f) return null; return (f === 'brawl' || f === 'commander' || f === 'historic brawl') ? 'commander' : 'sixty'; }
   function multiset(lines){ const m = {}; for (const ln of lines){ const p = parseLine(ln); if (!p) continue; if (m[p.nl]) m[p.nl][1] += p.qty; else m[p.nl] = [p.disp, p.qty]; } return m; }
   function diffSets(pasted, stored){ const names = new Set([...Object.keys(pasted), ...Object.keys(stored)]); let added = 0, removed = 0; const diffs = []; for (const nl of names){ const p = pasted[nl]?pasted[nl][1]:0, s = stored[nl]?stored[nl][1]:0; const disp = (pasted[nl]&&pasted[nl][0]) || (stored[nl]&&stored[nl][0]) || nl; if (p > s){ added += p-s; diffs.push({sign:'+', qty:p-s, name:disp}); } else if (s > p){ removed += s-p; diffs.push({sign:'-', qty:s-p, name:disp}); } } diffs.sort((a,b) => a.sign===b.sign ? a.name.localeCompare(b.name) : (a.sign==='-'?-1:1)); return {added, removed, diffs}; }
   // Ranked with deck.match_paste's EXACT key — (drift asc, shared desc, id asc) — then
@@ -1730,22 +1738,28 @@ renderWishlist(); renderSim();
   // could name different decks for the same paste, in precisely the sibling-variant case
   // the low-confidence flag exists for (broad-scan F-08). The docstring on match_paste
   // promises the two are identical, so any change to that key belongs here too.
-  function bestMatch(pasted){
+  function bestMatch(pasted, fmtHint){
     const ranked = D.decks.map(d => {
       const r = diffSets(pasted, d.cards||{});
       const shared = Object.keys(pasted).filter(nl => (d.cards||{})[nl]).length;
-      return {deck:d, drift:r.added + r.removed, shared, ...r};
+      const cls = deckFormatClass(d);
+      const mm = (fmtHint && cls && cls !== fmtHint) ? 1 : 0;
+      return {deck:d, drift:r.added + r.removed, shared, mm, ...r};
     });
     // Plain < / > on the id, NOT localeCompare: Python sorts strings by CODEPOINT, while
     // locale collation can ignore punctuation at the primary level and would order
     // "3-brawl" against "3b" differently. Deck ids carry hyphens, so that is reachable.
-    ranked.sort((a,b) => (a.drift - b.drift) || (b.shared - a.shared)
+    // Format-mismatched decks sort behind ALL format-consistent ones, and the runner-up
+    // is the best SAME-class rival — a Brawl sibling must neither win a sixty-shaped
+    // paste nor trigger low confidence on it (the deck 3 vs 3-brawl confusion). Mirrors
+    // deck.match_paste exactly; change both or neither.
+    ranked.sort((a,b) => (a.mm - b.mm) || (a.drift - b.drift) || (b.shared - a.shared)
                       || (a.deck.id < b.deck.id ? -1 : a.deck.id > b.deck.id ? 1 : 0));
     const best = ranked[0] || null;
-    if (best) best.runnerUp = ranked[1] || null;
+    if (best) best.runnerUp = ranked.slice(1).find(r => r.mm === best.mm) || null;
     return best;
   }
-  function analyzeOne(seg){ const pasted = multiset(seg); const nCards = Object.values(pasted).reduce((a,v) => a+v[1], 0); if (!nCards) return null; const uniq = Object.keys(pasted).length; const m = bestMatch(pasted); if (!m || m.shared < Math.max(3, uniq*0.3)) return {unmatched:true, nCards, uniq}; const ru = m.runnerUp; const lowconf = !!(ru && (ru.drift - m.drift) <= 2 && ru.shared >= m.shared*0.8); return {unmatched:false, deck:m.deck, sync:m.drift===0, added:m.added, removed:m.removed, diffs:m.diffs, shared:m.shared, nCards, lowconf, runnerUp:lowconf?ru.deck:null}; }
+  function analyzeOne(seg){ const pasted = multiset(seg); const nCards = Object.values(pasted).reduce((a,v) => a+v[1], 0); if (!nCards) return null; const uniq = Object.keys(pasted).length; const m = bestMatch(pasted, formatHint(seg, nCards)); if (!m || m.shared < Math.max(3, uniq*0.3)) return {unmatched:true, nCards, uniq}; const ru = m.runnerUp; const lowconf = !!(ru && (ru.drift - m.drift) <= 2 && ru.shared >= m.shared*0.8); return {unmatched:false, deck:m.deck, sync:m.drift===0, added:m.added, removed:m.removed, diffs:m.diffs, shared:m.shared, nCards, lowconf, runnerUp:lowconf?ru.deck:null}; }
   function stalecardEl(r){ const box = el('div','stalecard'); if (r.unmatched){ box.innerHTML = '<h4>Unmatched paste <span class="stale-nomatch">no close deck</span></h4><div class="sub2">' + r.nCards + ' cards, ' + r.uniq + ' unique — doesn’t closely match any stored deck.</div>'; return box; } const d = r.deck; const status = r.sync ? '<span class="stale-sync">✓ in sync</span>' : '<span class="stale-drift">⟳ drifted — ' + r.added + ' added / ' + r.removed + ' removed</span>'; const conf = r.lowconf && r.runnerUp ? ' · <span class="stale-nomatch">⚠ low confidence — #' + esc(r.runnerUp.id) + ' ' + esc(r.runnerUp.name) + ' is nearly as close</span>' : ''; box.innerHTML = '<h4>#' + esc(d.id) + ' ' + esc(d.name) + ' ' + status + '</h4><div class="sub2">matched by ' + r.shared + ' shared cards' + (d.variant?' · variant':'') + (r.sync?'':' · update it in Arena or in the repo') + conf + '</div>'; if (!r.sync){ const dl = el('div','difflist'); dl.innerHTML = r.diffs.map(x => '<div class="' + (x.sign==='+'?'diffadd':'diffrem') + '">' + x.sign + x.qty + '  ' + esc(x.name) + '</div>').join(''); box.appendChild(dl); const note = el('div','metaline2', '+ = your Arena paste has more · − = the stored repo deck has more'); box.appendChild(note); } return box; }
   const out = $('staleout');
   $('stalego').addEventListener('click', () => { out.innerHTML = ''; const segs = splitDecks($('staletext').value); if (!segs.length){ out.innerHTML = '<div class="metaline2">Nothing to compare — paste an Arena export above.</div>'; return; } const results = segs.map(analyzeOne).filter(Boolean); if (!results.length){ out.innerHTML = '<div class="metaline2">No card lines found in the paste.</div>'; return; } if (results.length > 1){ const drifted = results.filter(r => !r.unmatched && !r.sync); const synced = results.filter(r => !r.unmatched && r.sync).length; const unm = results.filter(r => r.unmatched).length; const s = el('div','staletot'); s.innerHTML = '<b>' + results.length + '</b> decks checked · <span class="stale-sync">' + synced + ' in sync</span> · <span class="stale-drift">' + drifted.length + ' drifted</span>' + (unm?' · <span class="stale-nomatch">'+unm+' unmatched</span>':'') + (drifted.length?'<br>Update in Arena: ' + drifted.map(r => '#'+esc(r.deck.id)+' '+esc(r.deck.name)).join(', '):''); out.appendChild(s); } results.forEach(r => out.appendChild(stalecardEl(r))); });

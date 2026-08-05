@@ -6229,7 +6229,35 @@ def _ms_diff(pasted, stored):
     return added, removed, diffs
 
 
-def match_paste(pasted, decks):
+def paste_format_hint(block, total):
+    """``'commander' | 'sixty' | None`` — one pasted block's STRUCTURAL format signal.
+
+    A Brawl/Commander export names its commander under a ``Commander`` heading, and
+    failing that its ~100-card size still says commander-shaped; a 60-card constructed
+    export says sixty. ``None`` when the block is ambiguous (76–89 cards, no heading),
+    so the matcher falls back to pure drift — the pre-hint behavior. This exists
+    because a Standard deck and its Brawl sibling share most card NAMES: matching on
+    drift alone put deck 3 and 3-brawl inside each other's low-confidence window, when
+    the paste itself said unambiguously which family it belonged to."""
+    for ln in block:
+        if ln.strip().lower() == "commander":
+            return "commander"
+    if total >= 90:
+        return "commander"
+    if 0 < total <= 75:
+        return "sixty"
+    return None
+
+
+def _deck_format_class(d):
+    """'commander' | 'sixty' | None for a stored deck record — from `#: format:`."""
+    fmt = ((d.get("meta") or {}).get("format") or d.get("format") or "").strip().lower()
+    if not fmt:
+        return None
+    return "commander" if fmt in ("brawl", "commander", "historic brawl") else "sixty"
+
+
+def match_paste(pasted, decks, fmt_hint=None):
     """Best stored deck for one pasted block (Arena exports carry no deck name).
 
     `decks` is [(deck_record, multiset)]. Returns a dict describing the match, or
@@ -6238,21 +6266,30 @@ def match_paste(pasted, decks):
     cards) with the deck, so an unrelated paste doesn't get force-fitted; flag LOW
     CONFIDENCE when the runner-up is within 2 drift and nearly as many shared cards
     (variants of one core deck look alike, and picking the wrong sibling would rewrite
-    the wrong file)."""
+    the wrong file).
+
+    ``fmt_hint`` (from `paste_format_hint`) is the FORMAT tie-breaker: a deck whose
+    `#: format:` class contradicts the paste's structural signal sorts behind every
+    format-consistent candidate, and a format-mismatched rival never triggers the
+    low-confidence flag — a Standard 60 and its Brawl sibling share most card names,
+    and drift alone had them confusing the matcher for exactly that reason. A deck
+    with no `#: format:` header is never penalized (unknown ≠ mismatch)."""
     uniq = len(pasted)
     ranked = []
     for d, ms in decks:
         added, removed, diffs = _ms_diff(pasted, ms)
         shared = sum(1 for nl in pasted if nl in ms)
+        cls = _deck_format_class(d)
+        mm = 1 if (fmt_hint and cls and cls != fmt_hint) else 0
         ranked.append({"deck": d, "drift": added + removed, "shared": shared,
-                       "added": added, "removed": removed, "diffs": diffs})
+                       "added": added, "removed": removed, "diffs": diffs, "_mm": mm})
     if not ranked:
         return {"unmatched": True, "uniq": uniq}
-    ranked.sort(key=lambda r: (r["drift"], -r["shared"], r["deck"]["id"]))
+    ranked.sort(key=lambda r: (r["_mm"], r["drift"], -r["shared"], r["deck"]["id"]))
     best = ranked[0]
     if best["shared"] < max(3, uniq * 0.3):
         return {"unmatched": True, "uniq": uniq}
-    runner = ranked[1] if len(ranked) > 1 else None
+    runner = next((r for r in ranked[1:] if r["_mm"] == best["_mm"]), None)
     best["lowconf"] = bool(runner and runner["drift"] - best["drift"] <= 2
                            and runner["shared"] >= best["shared"] * 0.8)
     best["runner_up"] = runner["deck"] if (runner and best["lowconf"]) else None
@@ -6347,7 +6384,8 @@ def cmd_sync(args):
         if not entries:
             continue
         pasted = _multiset(entries)
-        m = match_paste(pasted, decks)
+        hint = paste_format_hint(block, sum(q for q, *_ in entries))
+        m = match_paste(pasted, decks, fmt_hint=hint)
         if m.get("unmatched"):
             n = sum(q for q, *_ in entries)
             print(f"  ? block {i}: {n} cards, {m['uniq']} unique — no close stored deck "
