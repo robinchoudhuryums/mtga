@@ -500,10 +500,13 @@ def _wc_str(by):
     return " ".join(f"{by[r]}{r}" for r, _ in WC_NAMES if by.get(r))
 
 
-def cmd_wildcards(_args):
+def cmd_wildcards(args):
     """Roster-wide crafting plan: what to craft, and which crafts unlock the most
     decks. Owned copies are shared across decks and summed across printings, so a
-    card is only ever short by (max any deck needs − total owned)."""
+    card is only ever short by (max any deck needs − total owned). `--dedup` prints
+    the cross-deck UNION of craft targets ranked by decks-served-per-copy — the
+    "most efficient next N crafts" question that was previously answered by hand
+    each cycle (broad-implement #5)."""
     decks = roster_decks()   # a documentation placeholder must not demand wildcards
     if not decks:
         print("No decks yet. Add one under decks/<NN-name>/deck.txt.")
@@ -539,6 +542,34 @@ def cmd_wildcards(_args):
     if short_names:
         fetch_missing_rarities(short_names, rarities)
     rar_of = lambda name: rarities.get(name.lower(), "?")
+    pool_rot, _ = _pool_rotation_index()
+
+    if getattr(args, "dedup", False):
+        # Cross-deck union: one row per distinct craft target. copies = what the
+        # SHARED collection is short (max any single deck needs − owned), decks =
+        # every deck advanced by owning it. Sort: most decks served first, then
+        # cheapest rarity, then name — 'value per wildcard', the ranking the four
+        # 2026-08 craft-efficiency cycles derived by hand from #: notes: prose.
+        rar_rank = {r: i for i, (r, _) in enumerate(WC_NAMES)}
+        rows = []
+        for nl, ids in needed_by.items():
+            have, _f = owned(by_name_qty, display[nl])
+            copies = max(0, max_need[nl] - have)
+            if copies:
+                rows.append((display[nl], rar_of(display[nl]), copies, sorted(ids, key=lambda x: (len(x), x))))
+        rows.sort(key=lambda r: (-len(r[3]), rar_rank.get(r[1], 99), r[0]))
+        print("Craft targets — cross-deck union (shared collection; most decks per copy first)\n")
+        print(f"{'Copies':>6}  {'R':1}  {'Decks':>5}  Card")
+        print("-" * 72)
+        for name, rar, copies, ids in rows:
+            rot = craft_rot_note(name, pool_rot)
+            print(f"{copies:>6}  {rar:1}  {len(ids):>5}  {name}{rot}   [{', '.join(ids)}]")
+        if not rows:
+            print("  Nothing to craft — the whole roster is buildable. ✓")
+        else:
+            print(f"\n{len(rows)} distinct card(s). ⚠rot = rotates out of Standard this "
+                  "year or next; spend those wildcards knowingly or not at all.")
+        return 0
 
     # Per-deck: wildcards to finish, closest-to-done first.
     print("Roster crafting plan\n")
@@ -563,7 +594,8 @@ def cmd_wildcards(_args):
         print("\nHighest-leverage crafts (one card, multiple decks):")
         for nl, ids in multi[:15]:
             decks_s = ", ".join(sorted(ids, key=lambda x: (len(x), x)))
-            print(f"  {display[nl]} ({rar_of(display[nl])})  — {len(ids)} decks: {decks_s}")
+            rot = craft_rot_note(display[nl], pool_rot)
+            print(f"  {display[nl]} ({rar_of(display[nl])})  — {len(ids)} decks: {decks_s}{rot}")
 
     # Roster totals: one shared collection, so per card only max(0, maxneed-owned).
     roster = {}
@@ -733,7 +765,11 @@ def cmd_check(args):
     print(f"Deck {d['id']}: {d['name'] or d['path']}")
     print(f"{'Have':>4} / {'Need':<4}  Card")
     print("-" * 44)
-    missing, short = [], []
+    # Craft targets get a rotation flag inline: a missing/short card is exactly the
+    # one a wildcard is about to be spent on, and the deck 28 plan bought four
+    # rotating cards past this view with nothing said (broad-implement #1).
+    pool_rot, _ = _pool_rotation_index()
+    missing, short, rot_flagged = [], [], []
     for nl in order:
         n, s = printing[nl]
         req = need[nl]
@@ -745,6 +781,11 @@ def cmd_check(args):
         elif have < req:
             flag = f"  <- short {req - have}"
             short.append(n)
+        if flag:
+            rot = craft_rot_note(n, pool_rot)
+            if rot:
+                flag += rot
+                rot_flagged.append(n)
         shown = "unlim" if nl in BASICS else have
         print(f"{str(shown):>4} / {req:<4}  {n} ({s}){flag}")
     print("-" * 44)
@@ -754,6 +795,9 @@ def cmd_check(args):
         print(f"{len(missing)} not in library: {', '.join(missing)}")
     if short:
         print(f"{len(short)} short of the deck's requirement.")
+    if rot_flagged:
+        print(f"⚠ {len(rot_flagged)} craft target(s) rotate out of Standard this year or "
+              f"next ({', '.join(rot_flagged)}) — see `deck.py rotation` before crafting.")
     if not missing and not short:
         print("You own everything in this deck. Ready to build.")
 
@@ -2397,6 +2441,17 @@ ENGINE_THEMES = {
             r"for each \+1/\+1 counter",
             r"\+1/\+1 counter[^.]*(among (creatures|permanents) you control|on creatures you control)",
             r"whenever[^.]*\+1/\+1 counter is (put|placed)",
+            # ACTIVE voice was missing — the passive pattern above let Knight of
+            # Wundagore ("Whenever you put a +1/+1 counter on another creature, put a
+            # +1/+1 counter on this creature") read as roleless, and deck 36's engines
+            # view reported "counters: 12 enablers, NO payoff" through three real
+            # payoffs (broad-implement #6; fixture from the printed text, G-67).
+            r"whenever you put (a|one|two|x|\d+)[^.]*counter",
+            # The grown-past-its-base shape: Kutzil ("creatures you control each with
+            # power greater than its base power") and Sovereign Okinec Ahau ("power
+            # greater than that creature's base power") reward counters without ever
+            # saying 'counter' in the clause.
+            r"greater than (its|that creature's) base power",
             r"if[^.]*would[^.]*\+1/\+1 counter[^.]*instead", r"twice that many \+1/\+1",
             r"remove (a|one|x|\d+)[^.]*\+1/\+1 counter", r"move (a|one|any number of)[^.]*\+1/\+1 counter",
         ],
@@ -2635,7 +2690,14 @@ def cmd_text(args):
             flags = read_flags(text, cost, kw.get(nl))
             if flags:
                 print(f"    ⚠ {' · '.join(flags)}")
-            for para in (text or "(no oracle text on file — enrich/build the pool)").split("\n"):
+            # A resolved row (real type line) with blank text is a GENUINE vanilla
+            # creature (K-11), not an enrichment failure — the old message sent a
+            # session to Scryfall to re-learn that (broad-implement #3).
+            if not text:
+                text = ("(no rules text — a vanilla creature (K-11), not a data gap)"
+                        if tline else
+                        "(no oracle text on file — card not resolved; enrich/build the pool)")
+            for para in text.split("\n"):
                 for line in (textwrap.wrap(para, width=90) or [""]):
                     print(f"    {line}")
     print("\nGrade every keep / cut / swap from the text above — not a role or tag label.")
@@ -3357,6 +3419,29 @@ def rotation_risk(released, years=3, set_code=""):
     import datetime
     yr = rotation_year(released, years, set_code)
     return bool(yr) and yr <= datetime.date.today().year
+
+
+def craft_rot_note(name, pool_rot):
+    """'⚠rot~YYYY' if `name`'s pool printing is Standard-legal but its set rotates
+    this year or next, else ''. The CRAFT-TARGET views (`check`, `wildcards`) join
+    through this so a card is flagged at the exact moment a wildcard decision is
+    made: deck 28's craft plan held FOUR cards rotating within months and nothing on
+    the craft path said so — `wishlist --rank` had the flag, but a deck line that
+    never reached the wishlist bypassed it entirely. Same `rotation_year` primitive
+    and same this-year-or-next window as the wishlist's ⚠rot, so the two surfaces
+    cannot disagree. Degrades to '' with no pool / no Released column, like
+    `rotation_risk`."""
+    import datetime
+    info = pool_rot.get((name or "").strip().lower())
+    if not info:
+        return ""
+    released, legal, set_code = info
+    if "standard" not in legal:
+        return ""
+    yr = rotation_year(released, set_code=set_code)
+    if yr and yr <= datetime.date.today().year + 1:
+        return f"  ⚠rot~{yr}"
+    return ""
 
 
 def _pool_rotation_index():
@@ -7613,6 +7698,17 @@ def cmd_resolve(args):
         eprint("\n⚠ not found:")
         for q in unresolved:
             eprint(f"    {q!r}")
+    # COUNT SUMMARY. Two consecutive from-scratch drafts (decks 60 and 60a) went to
+    # validation at 59 cards because nothing on this path counts — the skill even
+    # warns "the resolver won't catch an off-by-one", which was a description of a
+    # gap, not a law (broad-implement #4). Totals go to stderr so a piped paste of
+    # the resolved lines stays clean.
+    total = sum(int((re.match(r"^(\d+)\s", ln) or [None, "1"])[1]) for ln in lines)
+    eprint(f"\nTotal: {total} card(s) across {len(lines)} line(s).")
+    expect = getattr(args, "expect", None)
+    if expect is not None and total != expect:
+        eprint(f"✗ expected {expect}, resolved {total} — off by {total - expect:+d}.")
+        return 1
     return 1 if (unresolved or ambiguous) else 0
 
 
@@ -8753,15 +8849,18 @@ _RATIONALE_MIN_LEN = 9
 # language; a rationale states a change in the past or progressive ("removed it",
 # "removing the second wipe"), so those are what the cue needs to match.
 _HISTORY_CUES = re.compile(
-    r"\b(?:was|were|became|becomes|replac\w*|swap\w*|cut\w*|remov(?:ed|ing)|left|leaves|"
-    r"instead|no longer|previously|earlier|former\w*|queued|flex|craft target|"
-    r"alternative|revisit|option|skipped|held out)\b", re.I)
+    r"\b(?:was|were|became|becomes|replac\w*|swap\w*|cut\w*|remov(?:ed|ing)|dropp\w*|"
+    r"left|leaves|instead|no longer|previously|earlier|former\w*|queued|flex|"
+    r"craft target|alternative|revisit|option|skipped|held out)\b", re.I)
 _HISTORY_WINDOW = 140
 # "<in-deck card> is <other card> that …" — a comparison used to EXPLAIN a card the deck
 # runs. Matched immediately before the citation, never as a window cue (see the call site).
 _SIMILE_BEFORE = re.compile(r"\b(?:is|are)\s+$", re.I)
 # `0→1` / `1->4`: the matched number is the FROM side of a stated change.
 _ARROW_AFTER = re.compile(r"\s*(?:→|->|—>|–>)")
+# "X does NOT do this" — a citation immediately followed by a negation is a contrast
+# with an absent card, not a claim the deck runs it (26a's Mjölnir note).
+_NEGATION_AFTER = re.compile(r"\s+(?:does\s+not|doesn'?t|is\s+not|isn'?t|cannot|can'?t)\b", re.I)
 
 # The SECOND way a citation is not a claim about the current list: it is about ANOTHER
 # DECK, or about a change you have not made yet. Three real false positives drove this,
@@ -8779,7 +8878,7 @@ _ARROW_AFTER = re.compile(r"\s*(?:→|->|—>|–>)")
 _COMPARISON_CUES = re.compile(
     r"\b(?:path to|vs\.?|versus|unlike|compared|comparison|distinctness|roster'?s|"
     r"another deck|other deck|that deck|that one|elsewhere|would be|would need|"
-    r"consider|candidate|upgrade to|next add|instead of)\b", re.I)
+    r"consider|candidate|upgrade to|next add|instead of|variant)\b", re.I)
 
 
 def _cites_as_history(prose, pos, length):
@@ -8923,6 +9022,92 @@ def _roster_deck_names(_cache={}):
     return _cache["names"]
 
 
+def _find_word_bounded(text, needle):
+    """First word-bounded occurrence of `needle` in `text`, or -1. The boundary rule
+    is the citation scan's: a neighbour that is alphanumeric, an apostrophe or a
+    hyphen means we are inside a longer word ("Deliberately" must not match
+    *Deliberate*)."""
+    start = 0
+    while True:
+        i = text.find(needle, start)
+        if i < 0:
+            return -1
+        before_ok = i == 0 or not (text[i - 1].isalnum() or text[i - 1] in "'-")
+        j = i + len(needle)
+        after_ok = j >= len(text) or not (text[j].isalnum() or text[j] in "'-")
+        if before_ok and after_ok:
+            return i
+        start = i + 1
+
+
+def _shorthand_index(carddata, _cache={}):
+    """shorthand fragment -> full display name, for MULTI-WORD card names.
+
+    The citation scan matches FULL names, so a rationale that abbreviates an ABSENT
+    card was invisible: deck 28's archetype cited "Gishath" after Gishath, Sun's
+    Avatar was cut, deck 36's cited "Okinec Ahau" after Sovereign Okinec Ahau was
+    cut, and both audits reported clean (broad-implement #2). G-26's "shorthand IS
+    handled" covered only the SUPPRESSION direction — an abbreviation of a card the
+    deck RUNS must not flag — never detection. Fragments are the comma-head
+    ("Gishath") and the capitalized word-tails ("Okinec Ahau"). Maps fragment ->
+    sorted tuple of EVERY full name it abbreviates: an ambiguous fragment stays in
+    the index, because a citation whose every candidate is absent from the deck is
+    stale whichever card it meant — "Okinec Ahau" abbreviates both Envoy of and
+    Sovereign Okinec Ahau, and dropping ambiguity is exactly how the real deck 36
+    miss would have survived this fix. A fragment shared by more than a few names
+    is an epithet, not shorthand, and is dropped; so is one that IS a full card
+    name (the main scan owns those). Memoized per carddata generation."""
+    key = id(carddata)
+    if _cache.get("key") == key:
+        return _cache["idx"]
+    frags = {}
+    for name, row in carddata.items():
+        disp = row.get("name") or name
+        front = disp.split(" // ")[0]
+        cands = set()
+        head = front.split(",")[0].strip()
+        if "," in front and len(head) >= 6 and head[0].isupper():
+            cands.add(head)
+        words = front.replace(",", "").split()
+        for i in range(1, max(0, len(words) - 1)):
+            tail = " ".join(words[i:])
+            if len(tail) >= 8 and tail[0].isupper():
+                cands.add(tail)
+        for c in cands:
+            frags.setdefault(c, set()).add(disp)
+    full_names = {row.get("name") or n for n, row in carddata.items()}
+    # Guild names are the domain's COLOR vocabulary before they are card comma-heads:
+    # "Rakdos sacrifice deck" cites no card, and four decks false-flagged on it in the
+    # first roster sweep of this fix. (Shards/wedges — Naya, Jeskai — aren't comma-heads
+    # of any pool card, so the ten guilds are the whole collision class.)
+    _GUILDS = {"Azorius", "Dimir", "Rakdos", "Gruul", "Selesnya",
+               "Orzhov", "Izzet", "Golgari", "Boros", "Simic"}
+    idx = {c: tuple(sorted(names)) for c, names in frags.items()
+           if c not in full_names and c not in _GUILDS and len(names) <= 3}
+    _cache.clear()
+    _cache.update(key=key, idx=idx)
+    return idx
+
+
+def _shorthand_candidates(masked, frags):
+    """[(fragment, pos)] — capitalized 1–3-word spans of `masked` that are known
+    shorthand fragments. Prose-driven so cost scales with the rationale's length,
+    not the pool's size."""
+    tokens = [(m.group(0), m.start()) for m in re.finditer(r"[A-Za-z][\w'-]*", masked)]
+    out = []
+    for k, (w, p) in enumerate(tokens):
+        if not w[0].isupper():
+            continue
+        for n in (1, 2, 3):
+            if k + n > len(tokens):
+                break
+            lw, lp = tokens[k + n - 1]
+            frag = masked[p:lp + len(lw)]
+            if frag in frags:
+                out.append((frag, p))
+    return out
+
+
 def rationale_staleness(d, carddata=None):
     """(stale_cards, stale_figures) for a deck's `#: tier:` / `#: notes:` prose.
 
@@ -8977,19 +9162,7 @@ def rationale_staleness(d, carddata=None):
             # Word-boundary match. A bare substring search reported the card
             # *Deliberate* inside the word "Deliberately" — and card names are common
             # enough English that this class of hit is frequent, not exotic.
-            pos = -1
-            start = 0
-            while True:
-                i = masked.find(disp, start)
-                if i < 0:
-                    break
-                before_ok = i == 0 or not (masked[i - 1].isalnum() or masked[i - 1] in "'-")
-                j = i + len(disp)
-                after_ok = j >= len(masked) or not (masked[j].isalnum() or masked[j] in "'-")
-                if before_ok and after_ok:
-                    pos = i
-                    break
-                start = i + 1
+            pos = _find_word_bounded(masked, disp)
             if pos < 0:
                 continue
             # History suppression, EXCEPT on the arriving side of a stated replacement:
@@ -9008,6 +9181,34 @@ def rationale_staleness(d, carddata=None):
             if _SIMILE_BEFORE.search(masked[max(0, pos - 6):pos]):
                 continue
             stale_cards.append((disp, header))
+        # SHORTHAND DETECTION — the mirror of the suppression above: an ABSENT card
+        # cited by abbreviation ("Gishath" for Gishath, Sun's Avatar; "Okinec Ahau"
+        # for Sovereign Okinec Ahau). Both real misses survived a clean audit
+        # (broad-implement #2). Same suppressions as a full-name citation.
+        frags = _shorthand_index(carddata)
+        for frag, pos in _shorthand_candidates(masked, frags):
+            fulls = frags[frag]
+            # If ANY candidate is in the deck, the citation means that card — and an
+            # abbreviation contained in an in-deck name is that card's shorthand
+            # either way (the Heartfire rule, extended to fragments). PLAIN substring
+            # on purpose, not word-bounded: "Tishana" must suppress against in-deck
+            # "Tishana's Tidebinder", and over-suppression is the safe direction here.
+            if any(f in in_deck or f.split(" // ")[0] in in_deck for f in fulls):
+                continue
+            if any(frag in other for other in in_deck):
+                continue
+            if (_cites_as_history(masked, pos, len(frag))
+                    and not _cites_as_arriving(masked, pos)):
+                continue
+            if _SIMILE_BEFORE.search(masked[max(0, pos - 6):pos]):
+                continue
+            # "Note Mjölnir does NOT do this" — a contrast citation explains this deck
+            # by NEGATING an absent card's behavior; the negation IS the claim that
+            # the card isn't here. Positional like the simile rule.
+            if _NEGATION_AFTER.match(masked, pos + len(frag)):
+                continue
+            stale_cards.append((fulls[0] if len(fulls) == 1
+                                else f"{frag} (one of: {' / '.join(fulls)})", header))
     if stale_cards:
         stale_cards = sorted(set(stale_cards))
     vec = deck_quality_vector(d)
@@ -9821,7 +10022,9 @@ def main():
     ap = argparse.ArgumentParser(description="Manage decks and variations.")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("list", help="list all decks and variants")
-    sub.add_parser("wildcards", help="roster-wide crafting plan (wildcards to finish decks)")
+    p = sub.add_parser("wildcards", help="roster-wide crafting plan (wildcards to finish decks)")
+    p.add_argument("--dedup", action="store_true",
+                   help="cross-deck union of craft targets, ranked by decks served per copy")
     p = sub.add_parser("audit", help="roster-wide triage scorecard — which decks need a tune (offline)")
     p.add_argument("--flagged", action="store_true",
                    help="show only decks with a flag (hide the 'ok' rows)")
@@ -9977,6 +10180,9 @@ def main():
     p.add_argument("--format", default="standard",
                    help="warn about names not legal in this format (default standard; "
                         "'any' disables the check)")
+    p.add_argument("--expect", type=int, default=None,
+                   help="fail unless the resolved quantities total exactly this many "
+                        "cards (e.g. --expect 60 for a from-scratch draft)")
     p = sub.add_parser("screen",
                        help="re-score candidate cards against a deck's CURRENT list; "
                             "flags strict upgrades of cards already in it")

@@ -92,6 +92,8 @@ _EXCLUDED = {
     ("deck", "_ARRIVING_BREAK"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_DEPARTING_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_ARROW_AFTER"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_NEGATION_AFTER"): "tier-RATIONALE prose (positional contrast-citation "
+                                 "suppressor); unit-tested in test_deck.py",
     ("deck", "_SIMILE_BEFORE"): "tier-RATIONALE prose (6-char lookbehind slice, not a "
                                 "card-text corpus); unit-tested in test_deck.py",
     ("deck", "_EXCLUSION_CUES"): "deck-HEADER prose (wrong_exclusion_claims); "

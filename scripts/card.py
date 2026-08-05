@@ -204,7 +204,16 @@ def main():
     m = mana.get(name.lower()) or mana.get(_front(name)) or {}
 
     typ = lr.get("Type") or pr.get("Type") or ""
-    text = lr.get("Card Text") or pr.get("Card Text") or "(no oracle text on file)"
+    # Blank text on a row that otherwise resolved (a real type line from the pool) is
+    # almost always a GENUINE vanilla creature (K-11), not an enrichment failure — the
+    # old "(no oracle text on file)" read as "go re-fetch" and sent a session to
+    # Scryfall to learn Quakestrider Ceratops is a 12/8 with no abilities
+    # (broad-implement #3). No row at all is still a data gap.
+    text = lr.get("Card Text") or pr.get("Card Text")
+    if not text:
+        text = ("(no rules text — a vanilla creature (K-11), not a data gap)"
+                if (pr.get("Type") or lr.get("Type"))
+                else "(no oracle text on file — card not resolved; enrich/build the pool)")
     colors = lr.get("Color(s)") or pr.get("Color(s)") or ""
     syn = lr.get("Synergies") or pr.get("Synergies") or ""
     cost = (m.get("Mana Cost") or "").strip()

@@ -26,6 +26,18 @@ CASES = [
     ("sac trigger",  "Whenever you sacrifice a permanent, draw a card.",        "sacrifice", "payoff"),
     ("counter placer","Put a +1/+1 counter on target creature.",                "counters",  "enabler"),
     ("counter payoff","Ghalta's power is equal to the number of +1/+1 counters among creatures you control.", "counters", "payoff"),
+    # ACTIVE-voice put-trigger: fixture is Knight of Wundagore's PRINTED text (G-67 —
+    # never a paraphrase). The passive "counter is put" pattern alone let this read as
+    # roleless and deck 36's engines view said "counters: no payoff" through three real
+    # payoffs (broad-implement #6).
+    ("counter put-trigger payoff",
+     "Whenever you put a +1/+1 counter on another creature, put a +1/+1 counter on this creature. This ability triggers only once each turn.",
+     "counters", "payoff"),
+    # Grown-past-base shape: Kutzil, Malamet Exemplar's printed text — rewards counters
+    # without the word 'counter' in the clause.
+    ("base-power-exceeded payoff",
+     "Whenever one or more creatures you control each with power greater than its base power deals combat damage to a player, draw a card.",
+     "counters", "payoff"),
     ("token maker",  "Create a 1/1 white Soldier creature token.",              "tokens",    "enabler"),
     ("yard filler",  "Mill three cards, then return a creature card to your hand.", "graveyard", "enabler"),
     ("reanimator",   "Return target creature card from your graveyard to the battlefield.", "graveyard", "payoff"),

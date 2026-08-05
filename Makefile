@@ -6,7 +6,7 @@ VENV  := .venv
 PYBIN := $(VENV)/bin/python
 ARGS  ?=
 
-.PHONY: help app check test-units verify refresh dashboard clean-venv
+.PHONY: help app check test-units verify refresh dashboard postedit clean-venv
 
 help:
 	@echo "make app             set up a local venv, install Flask, and launch the editor"
@@ -17,6 +17,7 @@ help:
 	@echo "make refresh         rebuild derived data in dependency order (incremental; needs Scryfall)"
 	@echo "make refresh REFETCH=1   same, but re-price every card from scratch (slow)"
 	@echo "make dashboard       rebuild the committed dashboard.html (offline, ~2 min; pages.yml also rebuilds it on every push to main)"
+	@echo "make postedit        the after-every-deck-edit tail: re-baseline roles, rebuild dashboard, run the gate"
 	@echo "make clean-venv      remove the local .venv"
 
 # Launch the editor. Depends on the venv sentinel so deps install on first run
@@ -104,6 +105,21 @@ refresh:
 # committed copy is a convenience snapshot; this is its one-command rebuild.
 dashboard:
 	python3 scripts/build_dashboard.py
+
+# The after-every-deck-edit tail, as ONE command. Every deck edit in the 2026-08
+# sessions ended with this same three-step chain typed by hand (re-baseline any new
+# roleless engine cards, rebuild the committed dashboard, run the full gate), and at
+# ~2 min it outlives a foreground shell window — a recurring ceremony is exactly the
+# thing that gets skipped under time pressure (broad-implement #8). Order matters:
+# the baseline must update BEFORE check_all or the gate warns about the cards the
+# baseline was about to acknowledge.
+postedit:
+	@echo "==> 1/3 check_roles.py --update-baseline  (acknowledge new zero-role cards)"
+	python3 scripts/check_roles.py --update-baseline
+	@echo "==> 2/3 build_dashboard.py               (committed snapshot; ~2 min)"
+	python3 scripts/build_dashboard.py
+	@echo "==> 3/3 check_all.py                     (invariants + soft sweeps)"
+	python3 scripts/check_all.py
 
 clean-venv:
 	rm -rf $(VENV)
