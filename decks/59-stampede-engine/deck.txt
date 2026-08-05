@@ -1,0 +1,96 @@
+#: name: Stampede Engine
+#: format: Standard
+#: colors: RG
+#: plan: midrange
+#: archetype: GRUUL COMBAT-RAMP — the roster-gap concept found after Savage Ventmaw:
+#: archetype: attacking IS the ramp, and the mana buys CREATURES. The engine layer
+#: archetype: makes mana by turning sideways (Ventmaw's six, Zuko's three, Rough Rhino
+#: archetype: Cavalry's two apiece, Jolene's Treasure per power-4 attack, Roxanne
+#: archetype: doubling every token tap); the sink layer spends it on monsters
+#: archetype: (Ghalta costs {X} less for total power, Goldvein Hydra eats any X,
+#: archetype: Famished Worldsire, Vaultborn Tyrant, Web of Life and Destiny cheating
+#: archetype: a creature in every combat); and the power-4 payoff lattice (Garruk's
+#: archetype: Uprising and Outcaster Trailblazer draws, The Earth King's lands, The
+#: archetype: Boulder's earthbend, Scalestorm's Dinos, Tiger-Dillo) rewards the
+#: archetype: bodies the mana bought. Distinct from 54b (spends combat mana on
+#: archetype: SPELLS with mana-spent payoffs, four colors) and 56/56a (boost ONE
+#: archetype: creature): this deck spends combat mana on MORE CREATURES — the third,
+#: archetype: previously unclaimed corner of the combat-mana triangle, in the
+#: archetype: roster's thinnest color pair.
+#: protect: Savage Ventmaw; Jolene, Plundering Pugilist; Ghalta, Primal Hunger; Garruk's Uprising; The Boulder, Ready to Rumble
+#: tier: B (PROVISIONAL) — a first-draft brew graded under its floor on purpose:
+#: tier: the engine needs attackers to survive to generate anything, protection is
+#: tier: near zero, and the deck has no game plan against a stalled board beyond
+#: tier: trample math. The mana-when-attacking engine is genuinely fast when it
+#: tier: works — re-grade after real games show how often it does.
+#: notes: TIMING SPINE the tooling can't see: FIREBENDING mana (Zuko, Rhinos, Fire
+#: notes: Sages) lasts only UNTIL END OF COMBAT — its sinks must be castable in
+#: notes: combat: Bolt Bend ({R} with power-4 out — redirects a removal spell, the
+#: notes: deck's one protection trick), The Last Agni Kai, Ancestors' Aid, and
+#: notes: Rough Rhino's own {8} exhaust. VENTMAW mana is different — it lasts
+#: notes: until end of TURN ("you don't lose this mana as steps and phases end"),
+#: notes: so it reaches main phase 2 and pays for the sorcery-speed monsters
+#: notes: (Goldvein Hydra's X, Ghalta, Worldsire). Sequencing: declare attackers,
+#: notes: spend firebending mana DURING combat (instants/activations), spend
+#: notes: Ventmaw mana + Treasures in main 2 on the monsters. Jolene's Treasures
+#: notes: and Roxanne's Meteorites persist across turns — the engine banks.
+#: notes: Spider Manifestation untaps on every MV4+ cast — with the monster suite
+#: notes: that is most turns. Raucous Audience taps for GG once any power-4 body
+#: notes: exists (trivial here). The Boulder's earthbent land RETURNS on death —
+#: notes: removal insurance the deck otherwise lacks. Tiger-Dillo and Scalestorm
+#: notes: carry their power-4 gates from the 55-pile parked list — this deck meets
+#: notes: them by design (~14 bodies reach power 4). G-42 audit: nothing here
+#: notes: empties our own board or graveyard; Worldsire's devour-land is OPT-IN —
+#: notes: never sac lands you need, its ETB refills from the top anyway.
+
+# Attack-mana engine
+2 Savage Ventmaw (FDN) 665
+2 Jolene, Plundering Pugilist (OTJ) 210
+2 Rough Rhino Cavalry (TLA) 152
+1 Zuko, Exiled Prince (TLA) 163
+1 Fire Sages (TLA) 136
+1 Roxanne, Starfall Savant (OTJ) 228
+
+# Ramp bodies / fixers
+2 Ruby, Daring Tracker (FDN) 245
+1 Raucous Audience (TLA) 190
+1 Spider Manifestation (SPM) 148
+1 Outcaster Trailblazer (OTJ) 173
+
+# Early bodies that reach power 4
+2 Molten Man, Inferno Incarnate (SPM) 84
+1 Tiger-Dillo (TLA) 155
+
+# Monster sinks
+1 Ghalta, Primal Hunger (FDN) 222
+1 Goldvein Hydra (OTJ) 167
+1 Famished Worldsire (EOE) 182
+1 Vaultborn Tyrant (BIG) 20
+1 Web of Life and Destiny (SPM) 122
+1 Red Hulk (MSH) 149
+1 Quaketusk Boar (BLB) 146
+
+# Power-4 payoff lattice
+1 Garruk's Uprising (M21) 186
+1 The Earth King (TLA) 172
+1 The Boulder, Ready to Rumble (TLA) 168
+1 Scalestorm Summoner (OTJ) 144
+1 Sylvan Scavenging (FDN) 113
+1 Flopsie, Bumi's Buddy (TLA) 179
+1 Halana and Alena, Partners (VOW) 239
+
+# Interaction (combat-mana sinks)
+2 The Last Agni Kai (TLA) 144
+1 Rabid Gnaw (BLB) 147
+1 Bolt Bend (TLE) 163
+1 Ancestors' Aid (LCI) 132
+
+# Lands
+1 Thornspire Verge (DSK) 270
+1 Restless Ridgeline (LCI) 283
+1 Gongaga, Reactor Town (FIN) 280
+1 Training Compound (MSH) 275
+1 Commercial District (MKM) 259
+2 Fire Nation Palace (TLA) 268
+8 Mountain (MSH) 293
+9 Forest (MSH) 296
