@@ -49,6 +49,7 @@
 #: notes: Autarch Mammoth, Gloryheath Lynx, Alacrian Jaguar, One Last Job.
 
 # Glue (pilots + counter amplifier)
+1 Kona, Rescue Beastie (DSK) 187
 1 Caradora, Heart of Alacria (DFT) 195
 2 Miriam, Herd Whisperer (OTJ) 221
 2 Cloudspire Captain (DFT) 9
@@ -79,7 +80,6 @@
 2 Run Over (DFT) 179
 2 Ride's End (DFT) 25
 1 Defend the Rider (DFT) 157
-1 Steer Clear (OTJ) 31
 
 # Lands
 2 Country Roads (DFT) 253

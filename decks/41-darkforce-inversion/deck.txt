@@ -19,8 +19,8 @@
 #: archetype: runs no Ninjas and no sneak/clock package; the creature base is chosen for
 #: archetype: ETB text, not evasion.
 #: tier: B — Orzhov blink-value control, one band BELOW the metrics floor of A, and
-#: tier: deliberately so. The floor reads A on interaction 8 (six of it instant-speed)
-#: tier: over a 2.67 curve — five surplus removal spells were traded for the card
+#: tier: deliberately so. The floor reads A on interaction 7 (six of it instant-speed)
+#: tier: over a 2.64 curve — five surplus removal spells were traded for the card
 #: tier: advantage below, and 8 answers is still deep for a control deck.
 #: tier: 1. CARD ADVANTAGE was the standing weakness and is now HALF-FIXED: the measured
 #: tier:    figure is 6, up from 2, on Circle of Power and Visions of Villainy (both real
@@ -70,6 +70,7 @@ Deck
 1 Jackdaw Savior (BLB) 18
 
 # Blink support / extra answers
+1 Sunpearl Kirin (TDM) 29
 1 Airbender Ascension (TLA) 6
 1 Stolen Stark Tech (MSH) 114
 1 Visions of Villainy (MSH) 120
@@ -101,7 +102,6 @@ Deck
 # Removal
 1 Morningtide's Light (ECL) 27
 1 Stroke of Midnight (FDN) 148
-1 Crib Swap (ECL) 11
 1 Tolls of War (TLA) 245
 
 # Lands — 24, Orzhov

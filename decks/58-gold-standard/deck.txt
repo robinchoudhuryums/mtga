@@ -10,7 +10,8 @@
 #: archetype: the mana engine — every artifact TOKEN tapped for mana yields double,
 #: archetype: so each Treasure cracks for two and her Meteorites ramp AND burn; and
 #: archetype: the payoff layer spends the currency four ways: counters (Crime
-#: archetype: Novelist, Elvish Archivist, Pirate Peddlers, Lightless Evangel), bodies
+#: archetype: Novelist, Elvish Archivist, Pirate Peddlers; Lightless Evangel was CUT for
+#: archetype: Rot-Curse Rakshasa, whose decayed body feeds the same outlets), bodies
 #: archetype: (Krenko's goblin per artifact death, Magda's 4/4 dragons, Aatchik's
 #: archetype: swarm), cards (Kingpin's Enforcers, Fanatical Offering, Tarrian's
 #: archetype: Journal, Fountainport), and damage (Food Fight turns every token into
@@ -54,7 +55,7 @@
 2 Jolene, Plundering Pugilist (OTJ) 210
 2 Flamekin Gildweaver (ECL) 140
 2 Terrapact Intimidator (EOE) 164
-1 Generous Plunderer (BIG) 11
+1 War Effort (TDM) 131
 1 Brass's Bounty (FDN) 190
 1 Reckless Ransacking (ECL) 152
 
@@ -66,7 +67,7 @@
 2 Krenko, Baron of Tin Street (MKM) 135
 2 Elvish Archivist (WOE) 168
 2 Pirate Peddlers (TLA) 115
-1 Lightless Evangel (EOE) 109
+1 Rot-Curse Rakshasa (TDM) 87
 1 Callous Sell-Sword // Burn Together (WOE) 221
 1 Aatchik, Emerald Radian (DFT) 187
 1 Ygra, Eater of All (BLB) 241
@@ -76,7 +77,7 @@
 # Draw / removal (sac-fueled)
 2 Kingpin's Enforcers (MSH) 102
 2 Fanatical Offering (LCI) 105
-1 Tarrian's Journal // The Tomb of Aclazotz (LCI) 126
+1 Salt Road Skirmish (TDM) 88
 2 Deadly Precision (TLA) 95
 
 # Lands
@@ -91,3 +92,6 @@
 6 Mountain (MSH) 293
 6 Swamp (MSH) 291
 4 Forest (MSH) 296
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 58
+#~ -War Effort | +Generous Plunderer | benched 2026-08 for War Effort: a menace body whose upkeep Treasure is symmetric (the opponent gets one too) and whose attack damage scales with THEIR artifact count, not ours — good in an artifact meta, worse as generic fodder. Bring it back if the Warrior tokens prove surplus.

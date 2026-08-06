@@ -817,6 +817,46 @@ the arriving side of a replacement. **Not yet fixed** — per the rule two parag
 cue-list change needs a roster sweep first. Until then, a "X stays" claim in a `#: tier:`
 rationale is NOT covered by the audit; check it by hand after a swap.
 
+**2026-08 extension — SHORTHAND is handled in both directions.** The scan matched FULL
+names only, so a rationale abbreviating an ABSENT card was invisible: deck 28's
+archetype cited "Gishath" after Gishath, Sun's Avatar was cut, deck 36's cited
+"Okinec Ahau" after Sovereign Okinec Ahau was cut, and both audits reported clean —
+two consecutive misses on the header a reader trusts first. `_shorthand_index` now
+maps the comma-heads ("Gishath") and capitalized word-tails ("Okinec Ahau") of every
+multi-word card name to the full name(s) they abbreviate, and `rationale_staleness`
+scans the prose's capitalized 1–3-word spans against it (prose-driven, so cost scales
+with the rationale, not the pool). Design points, each earned by the roster sweep that
+validated the fix: an AMBIGUOUS fragment stays in the index and flags when EVERY
+candidate is absent ("Okinec Ahau" abbreviates both Envoy of and Sovereign — dropping
+ambiguity would have re-lost the real miss), a fragment shared by 4+ names is dropped
+as an epithet; the ten GUILD names are blocklisted (four decks say "Rakdos" meaning
+the color pair); the in-deck suppression gate uses PLAIN containment so "Tishana"
+reads as shorthand for an in-deck "Tishana's Tidebinder" (the word-boundary rule
+treats the apostrophe as in-word, and over-suppression is the safe direction); and a
+citation immediately followed by a negation ("Note Mjölnir does NOT do this") is a
+contrast with an absent card, suppressed positionally like the simile rule
+(`_NEGATION_AFTER`). The sweep's single surviving flag was a TRUE positive — deck 21's
+archetype still claimed Ragost as its core after Ragost moved to variant 21a.
+
+**2026-08, the FALSE-POSITIVE direction — a DATE read as a figure.** Every fix above
+widens what the audit catches; this one narrows it, and the asymmetry is the point. The
+NUMBER-FIRST figure patterns (`(\d+)[ ]+interaction`, `…protection`, `(\d+\.\d+)[ ]+curve`
+and six siblings) opened with a bare unanchored `(\d+)`, so the group matched the TAIL of
+any larger number sitting before the metric word. Deck 63's rationale said *"three cards
+after the 2026-08 protection pass"* and the audit reported **`protection 08` against a
+live 4** — a claim the prose never made, on a deck whose protection figure was correct.
+`_FIG_NUM` / `_FIG_DEC` now prefix those nine patterns with `(?<![\d.])(?<!\d-)`, which
+rejects a number preceded by a digit, a decimal point, or the `YYYY-MM` digit-hyphen
+shape (each lookbehind fixed-width, as Python requires). It also, deliberately, rejects a
+RANGE — *"2-3 interaction"* states a band, not a figure, and auditing a band against an
+exact live value would flag prose that is not making an exact claim. **Why this mattered
+more than its size suggests:** a false positive here is the expensive direction. Every
+other entry in this section documents a SILENT MISS, which costs you one stale sentence;
+a false positive trains you to skim past the audit, which costs you all of them. The fix
+was validated both ways — four unit cases pin the date, the range and the still-caught
+real figure, and a roster-wide diff of old-vs-new matching confirmed the guard rejects
+**zero** spans of genuine prose across all 95 decks.
+
 
 ## [G-27] `deck.py tier <id> --audit-rationale` catches a STALE tier argument
 
@@ -930,6 +970,20 @@ is calendar-YEAR based, not days-since-release, because rotation happens at an a
 fall rotation: a 2023 set rotates during 2026 and is at risk for all of 2026, not only
 after its third birthday. The RESIDUAL is still real — a card whose newest printing the
 pool didn't capture can read early; verify against the official schedule.
+
+**2026-08 extension — the CRAFT views carry the flag too.** The wishlist was the only
+flagged craft surface, and a deck line that never reached the wishlist bypassed it:
+deck 28's craft plan held FOUR LCI cards rotating within months, invisible to `check`,
+`wildcards` and `audit` alike, and caught only by a human cross-referencing `rotation`
+output during a roster review. `deck.craft_rot_note()` (same `rotation_year` primitive,
+same this-year-or-next window as the wishlist flag, so the surfaces cannot disagree)
+now marks each missing/short card `⚠rot~YEAR` inline in `deck.py check` — with a
+closing advisory naming the flagged cards — and in `wildcards`' leverage list.
+`wildcards --dedup` (the cross-deck UNION of craft targets, one row per card with
+copies-short under shared-collection math, rarity, decks-served and the rot flag,
+ranked by decks-served then rarity) formalizes the craft-efficiency question that four
+2026-08 ingest cycles answered by hand. First run of the flag found deck 49 holding
+FIVE 2026-rotating craft targets nothing had reported.
 
 
 ## [G-31] `deck.py suggest-homes <card>` automates the "which of my decks does this new card improve" fit 
@@ -1282,6 +1336,25 @@ rule: when a deck DEPENDS on a zone being populated, audit every card that empti
 graveyard hate in a graveyard deck, hand attack in a deck that wants them holding cards.
 Grading a card in isolation cannot see this, which is the same blind spot `⚡` exists for.
 
+
+
+**2026-08 — a new member of this class, found by asking rather than by shipping.** The
+question was whether white BLINK effects would suit deck 63 (Abzan +1/+1 counters), since
+blink is a known way to re-buy ETB triggers. Two measurements answered it, and neither is
+visible in any single card's text. First, DENSITY: only **7 of 35 nonland cards** in that
+deck are ETB-triggered, and the seven are small (one counter, two, three) — so
+re-triggering them is a worse rate than simply casting another placer. Second, and
+decisive: **a blinked creature returns as a NEW OBJECT with no counters on it.** In a deck
+whose whole plan is accumulating counters on bodies, blink erases the investment it looks
+like it should protect — the G-42 shape exactly, a perfectly good card fighting its own
+engine, invisible to every model that grades a card in isolation. The contrast that makes
+it a rule rather than an anecdote: the same effect is CORRECT in deck 41 (Darkforce
+Inversion), which is built on big one-shot ETBs with nothing to erase. **The deck decides,
+not the card.** One partial exception is worth knowing: Daydream returns the creature
+*with* a +1/+1 counter, so it replaces one of what it erases — which makes it a
+PROTECTION card (save the body, lose the counters, beat losing both), never an engine
+piece. Generalised: before adding a blink, bounce or flicker package, count what it would
+DISCARD, not just what it would re-trigger.
 
 ## [G-43] Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want
 
@@ -2102,6 +2175,17 @@ columns. Skip the pool rebuild and UNOWNED craft candidates read stale pool tags
 
 A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
 warning (expected, not an error).
+
+**2026-08 update — the inspection surfaces now say so.** `card.py` and `deck.py text`
+printed "(no oracle text on file — enrich/build the pool)" for a blank-text row, which
+is WRONG advice for a vanilla: it sent a session to Scryfall to re-learn that
+Quakestrider Ceratops is a 12/8 with no abilities (Tyrox, Saurid Tyrant and Terrian,
+World Tyrant likewise — DFT prints several legendary vanillas). A row that RESOLVED
+(a real type line from the pool/library) with blank text now prints "(no rules text —
+a vanilla creature (K-11), not a data gap)"; only a card with no resolved row at all
+still directs you to enrich/build. The distinction is computed from the row, not
+guessed: enrichment fills Type and Card Text together, so a populated type line with
+empty text is the vanilla signature.
 
 
 ## [K-12] The functional-role breakdown (`deck.py stats`) and castability lint (`deck.py mana` / `check`) 

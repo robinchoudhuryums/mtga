@@ -1,0 +1,137 @@
+#: name: Heirloom
+#: format: Standard
+#: colors: WBG
+#: plan: midrange
+#: archetype: ABZAN +1/+1 COUNTERS — the uncovered angle from the 2026-08 Abzan survey.
+#: archetype: Your four existing WBG decks are all SLOW value piles (6 reanimator, 13
+#: archetype: earthbend ramp, 21 Food-aristocrats, 20b toughness ramp, three of them
+#: archetype: at 3.75+ avg MV); this is the first FAST one, and the first to assemble
+#: archetype: the counter payoffs that were scattered across five different color
+#: archetype: pairs. The engine has three layers. PLACERS put counters cheaply and
+#: archetype: repeatedly (Ironpaw, Cloudbound Moogle, Weftblade Enhancer's two-target
+#: archetype: ETB, Serra Redeemer's two-per-small-creature, Rosa and Ouroboroid every
+#: archetype: combat, Ride the Shoopuf on every land drop, New Horizons, Armament
+#: archetype: Dragon's three-way distribute). DOUBLERS multiply them — The Earth
+#: archetype: Crystal and Loading Zone each turn one counter into two, and
+#: archetype: Michelangelo, Weirdness to 11 adds one to every placement. PAYOFFS cash
+#: archetype: them: Mikey & Leo draw a card on the first counter each turn, Exemplar
+#: archetype: of Light draws on its own, Kutzil draws when a grown creature connects,
+#: archetype: Knight of Wundagore and Hulkling grow themselves, Drix Fatemaker grants
+#: archetype: trample to everything countered, Michelangelo Mutant BFF makes them
+#: archetype: nearly unblockable, and Training Regimen adds trample plus a counter
+#: archetype: every combat. Black supplies the removal suite the other counter decks
+#: archetype: on this roster all lack.
+#: protect: Mikey & Leo, Chaos & Order; The Earth Crystal; Loading Zone; Michelangelo, Weirdness to 11; Drix Fatemaker
+#: tier: B (PROVISIONAL) — an unplayed first draft graded under whatever the floor
+#: tier: says: the deck is a singleton pile of one-ofs whose engine wants specific
+#: tier: pairings (a doubler plus a placer, a payoff plus a grown body), and it has
+#: tier: thin defence for the creature it invests counters into — three modal
+#: tier: answers, the classic counters weakness where a removal spell eats the whole
+#: tier: investment. The
+#: tier: ceiling (Earth Crystal or Loading Zone alongside Ouroboroid or Serra
+#: tier: Redeemer) is genuinely high. Re-grade after games show how often the
+#: tier: doubler-plus-placer pairing actually assembles.
+#: notes: BUILT ENTIRELY FROM OWNED CARDS — 0 wildcards. Every card here already
+#: notes: plays in at least one other deck; copies are fungible in Arena, so nothing
+#: notes: was taken from anywhere. The survey that produced this deck counted 18
+#: notes: owned Abzan-castable counter PAYOFFS against 217 counter-interacting cards
+#: notes: (G-59: payoffs decide viability, not body count) — 14 of those 18 are here.
+#: notes: MECHANIC READS: the two DOUBLERS are replacement effects, so they also
+#: notes: double Michelangelo Weirdness-to-11's bonus counter — Earth Crystal plus
+#: notes: Michelangelo turns a single counter into four. Serra Redeemer only fires on
+#: notes: creatures with POWER 2 OR LESS entering, which is why the curve is stocked
+#: notes: with small bodies rather than fat ones. Hulkling checks power OR toughness
+#: notes: GREATER than its own, so it stops growing once it outsizes the deck — an
+#: notes: early drop, not a late one. Kutzil's draw needs a creature whose power
+#: notes: exceeds its BASE power, i.e. a counter, which is why he is a payoff and not
+#: notes: a lord. Longstalk Brawl and Spectacular Tactics are counter-placement AND
+#: notes: removal on one card; Galuf's Final Act converts a dying creature into
+#: notes: counters. G-42 audit: nothing here empties a zone this deck needs — the
+#: notes: only sacrifice cost is Bitter Triumph's discard-or-3-life, and the deck
+#: notes: keeps no graveyard resource. PROTECTION, the deck's known weak axis: THREE
+#: notes: real answers after the 2026-08 pass — Spectacular Tactics (counter +
+#: notes: hexproof), Origin of Metalbending (counter + indestructible, or kill an
+#: notes: artifact/enchantment) and Valorous Stance (indestructible, or kill a
+#: notes: toughness-4+ creature). All three are MODAL, so none is dead when the
+#: notes: opponent has no removal. HEXPROOF beats indestructible against this deck's
+#: notes: actual failure mode (a targeted kill spell on the invested body);
+#: notes: indestructible is the anti-sweeper half — hence one of each. (`stats`
+#: notes: measures protection 4, but one is a FALSE POSITIVE: Long Goodbye's "can't
+#: notes: be countered. (This includes by the ward ability)" is about the spell, not
+#: notes: about protecting a creature — read the axis as 3.) BLINK was surveyed and
+#: notes: REJECTED here: only 7 of 35 nonland cards are ETB-triggered, and blinking a
+#: notes: creature ERASES its counters, so it fights the engine (the G-42 shape).
+#: notes: Daydream ({W}, returns the card WITH a +1/+1 counter) is the one blink that
+#: notes: half-works, as protection rather than value; it is on the bench, not in the
+#: notes: 60. Deck 41 is where blink belongs — big one-shot ETBs, nothing to erase.
+#: notes: OVERLAP, disclosed: deck 7 (Selesnya Avengers go-wide) shares TEN nonland
+#: notes: cards — the Marvel counter bodies both decks want. Different colors and a
+#: notes: different plan (7 goes wide with heroes; this deck grows a few big ones and
+#: notes: draws off the counters), and copies are fungible, so both can run them.
+
+# Placers — cheap, repeatable counters
+1 Ironpaw Aspirant (LCI) 18
+1 Cloudbound Moogle (FIN) 11
+1 Weftblade Enhancer (EOE) 44
+1 Serra Redeemer (BLB) 387
+1 Rosa, Resolute White Mage (FIN) 555
+1 Dawnstrike Vanguard (EOE) 10
+1 Ouroboroid (EOE) 201
+1 Armament Dragon (TDM) 168
+
+# Doublers — the multiplier layer
+1 The Earth Crystal (FIN) 184
+1 Loading Zone (EOE) 196
+1 Michelangelo, Weirdness to 11 (TMT) 121
+
+# Payoffs — what the counters buy
+1 Mikey & Leo, Chaos & Order (TMT) 158
+1 Exemplar of Light (FDN) 733
+1 Kutzil, Malamet Exemplar (LCI) 232
+1 Knight of Wundagore (MSH) 175
+1 Hulkling, Burgeoning Bruiser (MSH) 173
+1 Wildwood Scourge (FDN) 236
+1 Drix Fatemaker (EOE) 178
+1 Michelangelo, Mutant BFF (TMT) 120
+1 Invisible Woman, Sue Storm (MSH) 17
+1 The Thing, Ben Grimm (MSH) 190
+1 Colleen Wing, Street Samurai (MSH) 13
+1 Mockingbird, Ace Agent (MSH) 22
+
+# Enchantment engines
+1 Training Regimen (MSH) 192
+1 Ride the Shoopuf (FIN) 197
+1 New Horizons (FDN) 557
+
+# Interaction (counters + removal in one, then the black suite)
+1 Longstalk Brawl (BLB) 182
+1 Spectacular Tactics (SPM) 15
+1 Galuf's Final Act (FIN) 186
+1 Origin of Metalbending (TLA) 187
+1 Valorous Stance (FDN) 583
+1 Bitter Triumph (SOA) 26
+1 Long Goodbye (MKM) 92
+1 Sephiroth's Intervention (FIN) 116
+1 Withering Torment (DSK) 124
+
+# Lands
+1 Overgrown Tomb (TRK) 289
+1 Temple of Malady (FDN) 700
+1 Temple of Silence (FDN) 704
+1 Bleachbone Verge (DFT) 250
+1 Wastewood Verge (DFT) 268
+1 Hushwood Verge (DSK) 261
+2 Jungle Hollow (M21) 247
+2 Scoured Barrens (M21) 250
+1 Blossoming Sands (M21) 244
+1 Subterranean Cavern (MSH) 273
+1 Gathering Place (MSH) 266
+1 Insomnia, Crown City (FIN) 282
+1 Suburban Sanctuary (SPM) 185
+4 Forest (HOB) 193
+4 Plains (HOB) 189
+2 Swamp (HOB) 191
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 63
+#~ -Bitter Triumph | +Daydream | the one blink that half-works here: {W}, returns the creature WITH a +1/+1 counter (so it replaces one of what it erases) and has flashback. Protection, not value — take it only if targeted removal is beating you and you want a fourth answer
+#~ -Sephiroth's Intervention | +Airtight Alibi | flash HEXPROOF plus a permanent +2/+2 — the strongest single protection effect owned, but an Aura, so a response costs you two cards

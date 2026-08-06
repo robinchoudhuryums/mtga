@@ -27,6 +27,7 @@ Another Round
 Anticausal Vestige
 Appa, Loyal Sky Bison
 Applied Geometry
+Armament Dragon
 Arnim Zola, Bio-Fanatic
 Ashroot Animist
 Atomic Microsizer
@@ -76,6 +77,7 @@ Champions of the Shoal
 Charging Strifeknight
 Child of the Volcano
 Cloud, Midgar Mercenary
+Cloudbound Moogle
 Cloudspire Captain
 Colossification
 Corrupt Court Official
@@ -91,6 +93,7 @@ Deceit
 Deepchannel Duelist
 Deepmuck Desperado
 Deepway Navigator
+Defiant Survivor
 Delney, Streetwise Lookout
 Devastating Onslaught
 Diligent Zookeeper
@@ -118,6 +121,7 @@ Empyrean Eagle
 End of the Hunt
 Enigma Drake
 Enter the Enigma
+Extravagant Replication
 Falcon's Wing Harness
 Falcon, Winged Wonder
 Fated Firepower
@@ -138,11 +142,11 @@ Frontline War-Rager
 Frozen in Ice
 Full Throttle
 Fynn, the Fangbearer
+Galuf's Final Act
 Gangly Stompling
 Gas Guzzler
 Gastal Raider
 Gather the White Lotus
-Generous Plunderer
 Genji Glove
 Ghost, Spectral Saboteur
 Ghostly Keybearer
@@ -174,7 +178,6 @@ High Perfect Morcant
 Honored Knight-Captain
 Hour of Victory
 How to Start a Riot
-Hulking Raptor
 HYDRA Troopers
 Hylderblade
 Hymn of the Faller
@@ -227,6 +230,7 @@ Madame Web, Clairvoyant
 Magitek Armor
 Mai, Scornful Striker
 Mardu Devotee
+Mardu Monument
 Mechanical Mobster
 Mechanized Ninja Cavalry
 Metalhead
@@ -253,10 +257,10 @@ Okoye, Dora Milaje Leader
 Omniscience
 Ornery Tumblewagg
 Ostrich-Horse
+Ouroboroid
 Outrageous Robbery
 Pain 101
 Pain for All
-Palani's Hatcher
 Paradox Surveyor
 Pet Avengers
 Powerful Broker
@@ -269,7 +273,6 @@ Quaketusk Boar
 Quicksilver, Brash Blur
 Quill-Blade Laureate
 Radiant Lotus
-Rampaging Ceratops
 Ran and Shaw
 Raph & Leo, Sibling Rivals
 Raphael, the Nightwatcher
@@ -286,7 +289,6 @@ Restorative Technique
 Return the Favor
 Risen Necroregent
 Riverchurn Monument
-Riverwheel Sweep
 Roaming Throne
 Rough Rhino Cavalry
 S.H.I.E.L.D. Spy Kit
@@ -308,6 +310,7 @@ Shredder, Unrelenting
 Shrike Force
 Silent Hallcreeper
 Silvergill Mentor
+Slick Imitator
 Snow Villiers
 Soul Immolation
 Sovereign Okinec Ahau
@@ -327,6 +330,7 @@ Stormscale Scion
 Sultai Devotee
 Sun Warriors
 Sun-Spider, Nimble Webber
+Sunpearl Kirin
 Super Strength
 Super-Soldier Serum
 Surrak, Elusive Hunter

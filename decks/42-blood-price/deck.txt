@@ -82,7 +82,7 @@ Deck
 1 Black Widow, Super Spy (MSH) 89
 1 Healer's Hawk (FDN) 142
 1 Vengeful Bloodwitch (FDN) 76
-1 Cecil, Dark Knight
+1 Cecil, Dark Knight // Cecil, Redeemed Paladin (FIN) 91
 1 Callous Inspector (TLA) 89
 1 Sanguine Syphoner (FDN) 68
 1 Dream Beavers (TMT) 62

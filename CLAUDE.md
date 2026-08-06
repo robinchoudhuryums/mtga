@@ -347,8 +347,10 @@ directions.
   number still hides a figure ("protection is 1"); a change-cue about one card still
   suppresses a citation of ANOTHER in the same window even when the clause says that card
   **stays**; and prose saying "the swap removes X" about a CUT card now reads as a live
-  citation. Shorthand ("Heartfire" for Heartfire Immolator) and simile ("X is Spell Pierce
-  that…") ARE handled. [G-26]
+  citation. Shorthand is handled BOTH directions since 2026-08 — suppression ("Heartfire"
+  for in-deck Heartfire Immolator) AND detection of an ABSENT card cited by comma-head or
+  word-tail ("Gishath", "Okinec Ahau" — both real misses). Simile is handled. Residual: a
+  fragment shared by 4+ cards drops as an epithet. [G-26]
 - **Run `tier <id> --audit-rationale` after ANY deck edit.** The tier guard checks the
   LETTER; this checks the ARGUMENT — cards the prose cites that the deck no longer runs,
   and figures the live quality vector contradicts. A swap moves those numbers by
@@ -373,7 +375,11 @@ directions.
 - **The pool's `Legalities` is a build-time SNAPSHOT — Standard rotates.** `suggest`
   marks an aging pick `⚠rot` from the `Released` date, `deck.py rotation` is the
   roster-wide view, and `wishlist --rank` flags a craft target rotating this year or
-  next. `rotation_risk` is calendar-YEAR based, since rotation happens annually.
+  next. Since 2026-08 the CRAFT views carry the same flag: `deck.py check` marks each
+  missing/short card `⚠rot~YEAR` inline, and `wildcards` (incl. `--dedup`, the
+  cross-deck union ranked by decks-served per copy) flags its leverage list — deck 28's
+  plan bought four rotating cards past unflagged views, and deck 49 held five more.
+  `rotation_risk` is calendar-YEAR based, since rotation happens annually.
   **Reprint caveat, partly encoded:** the pool keys ONE printing, so a card reprinted
   into a long-legality set inherited the wrong date — `_SET_ROTATION_OVERRIDE` fixes the
   announced ones, and the residual is real: verify against the official schedule. [G-30]
@@ -460,7 +466,11 @@ directions.
   Graveyard hate in a graveyard deck, hand attack against a deck you want holding cards.
   Two such cards shipped into finished decks. **When a deck DEPENDS on a zone being
   populated, audit every card that empties it** — grading a card in isolation cannot see
-  this. [G-42]
+  this. **Same shape one resource over: BLINK ERASES +1/+1 COUNTERS** (the creature
+  returns as a new object), so a flicker package in a counters deck resets the
+  investment it is meant to protect — the question was asked of deck 63 and the answer
+  came from measuring ETB density (7 of 35 nonland cards) against the erasure, not from
+  the cards' own text. Before adding blink, count what the blink would DISCARD. [G-42]
 - **Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want.**
   Decadent Dragon was drafted for its `{2}{B}` adventure half and cut once `consistency`
   priced its `{2}{R}{R}` FRONT face at 53% on turn four. [G-43]
@@ -723,7 +733,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   `tag_synergies.py` or `enrich.py` at `card-pool.csv` — both write the library's 8
   columns and would destroy the pool's own. [K-10]
 - **A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
-  warning** — expected, not an error. [K-11]
+  warning** — expected, not an error. `card.py` / `deck.py text` label a resolved row
+  with blank text "(no rules text — a vanilla creature (K-11), not a data gap)" since
+  2026-08, so the blank no longer reads as an enrichment failure; only an UNRESOLVED
+  card still says enrich/build. [K-11]
 - **The functional-role breakdown and the castability lint are HEURISTIC, and they
   silently UNDER-count.** So every count carries its own uncertainty: `stats`/`tier`
   print `7`, `3 +2?`, or `8 +4? (3 unclassified)` plus a "⚠ Possible UNDER-COUNT" list.
@@ -796,7 +809,7 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (24 files: the markup-contract, CLI-entry-point, analysis-model,
+- Testing: tests/ (25 files: the markup-contract, CLI-entry-point, analysis-model,
   gate-pinning, shared-primitive and ingest layers, plus the 2026-08 ingest-writer /
   sync-guard / resilience-layer / CLI-filter coverage of the formerly untested
   scripts), requirements-dev.txt, pytest.ini, .github/workflows/tests.yml [C-07]
@@ -963,8 +976,8 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
   swaps land. Named here because a fresh session loads nothing else, and the whole
   point of committing it per batch is that it outlives one context window.
-  **Currently live: `.cycle/54-pile-reanalysis.md`** — decks 54 / 54a / 54b,
-  plans written and NOT yet applied.
+  **None currently live** — the 54-family doc was deleted when its swaps landed
+  (2026-08-05), which is the contract working as intended.
 - **`.cycle/STATE.md`** — prose record: what was completed, decisions made, what was
   decided AGAINST (worth reading before re-proposing a rejected fix), and where the
   last session left off.

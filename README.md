@@ -377,6 +377,7 @@ own that `deck.py check` still lists as a craft target.
 ```
 python3 scripts/deck.py list          # every deck + variant, with buildable status
 python3 scripts/deck.py wildcards     # roster-wide crafting plan (wildcards to finish decks)
+python3 scripts/deck.py wildcards --dedup   # cross-deck union of craft targets, best value-per-copy first
 python3 scripts/deck.py audit         # roster triage: one line per deck — which decks need a tune
 python3 scripts/deck.py similar 40    # decks most alike by central-theme overlap (is it distinct?)
 python3 scripts/deck.py resolve "Bloom Tender" "2 Island"   # names → deck lines `<qty> Name (SET) #`
@@ -585,7 +586,13 @@ fallback for non-Standard cards), and reports three things: per-deck wildcards t
 finish (closest-to-done first), the **highest-leverage crafts** (one card that
 unblocks multiple decks), and the total wildcards to make the *whole* roster
 buildable — deduplicated, since one shared collection means a card is only ever
-short by `max(any deck needs) − total owned`.
+short by `max(any deck needs) − total owned`. `--dedup` turns that union into the
+whole report: one row per distinct craft target with copies short, rarity, the decks
+it serves and a `⚠rot~YEAR` flag, ranked by decks-served then rarity — the "most
+efficient next N crafts" view. `check` marks rotating craft targets the same way, so
+a wildcard about to leave Standard is flagged wherever the spend decision happens.
+`resolve --expect 60` fails a from-scratch draft that doesn't total 60 (it always
+prints the total).
 
 **Split, Room and Adventure cards are read on their FRONT face.** Scryfall stores both
 halves joined by `" // "` (Funeral Room is `{2}{B} // {6}{B}{B}`) and you never pay both,
@@ -1143,6 +1150,8 @@ make refresh
 
 Runs the whole chain in dependency order: `enrich` → `build_pool --all` →
 `build_mana --pool` → `tag_synergies --merge` → `build_gallery` → `check_all`.
+(`make postedit` is the separate after-a-DECK-edit tail — re-baseline roles,
+rebuild the dashboard, run the gate — offline and independent of this chain.)
 The order is a real dependency graph (`build_mana --pool` reads `card-pool.csv`;
 `tag_synergies` reads `card-mana.csv`'s keywords), and getting it wrong is quiet
 rather than loud — a new set's pool cards end up with no mana row until the next

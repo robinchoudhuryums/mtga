@@ -697,3 +697,44 @@ already covers it), Speedball (its rider theme was cut from 55a's final), Taii i
 initially — reversed later by the user reading the amplifier correctly (every
 noncombat-damage instance that turn). Doc residuals G-66 (token false-thin) and K-03
 (type-keying tag invisibility, Gilgamesh/deck 39) recorded in CLAUDE.md + gotchas.
+
+## 2026-08-05 (later) — /broad-implement #1-8 (session tooling findings)
+
+Implemented all eight findings from the post-work tooling assessment (summary block:
+`.cycle/blocks/2026-08-tooling-followup-broad-implement.md`):
+rot flags on `check`/`wildcards` (#1), shorthand-citation DETECTION in the rationale
+audit with roster-sweep-verified FP fixes (#2 — found one true positive, deck 21's
+archetype header, fixed), vanilla-vs-gap messaging (#3), `resolve` totals + `--expect`
+(#4), `wildcards --dedup` (#5), counters-payoff patterns from Wundagore/Kutzil printed
+text (#6 — 10 decks gained payoffs, 0 lost), matches.csv noted as process debt (#7),
+`make postedit` (#8). 936 tests green, check_all green.
+
+Decided AGAINST: encoding vanilla-ness in the pool CSV (message-level fix suffices;
+a data-format change would touch every reader for marginal gain).
+
+Where I left off: /sync-docs is owed (G-26/G-30 claims, draft-deck skill line, new
+command mentions). NEW actionable from #1: deck 49 has five ⚠rot~2026 craft targets —
+wants the deck-28-style rotation-proofing pass before any wildcard goes there.
+October rotation pass (28 flex block, 28a, 36 Kutzil successor) still pending.
+
+## 2026-08-06 — decks 59-63, tooling batch, ingests, doc sync
+
+Completed: decks 59/60/60a/61/62/63 (four built entirely from owned cards); the
+eight-finding tooling batch (rot-flagged craft views, shorthand staleness DETECTION,
+`wildcards --dedup`, `resolve --expect`, vanilla messaging, counters-payoff patterns,
+`make postedit`); three ingests (14 crafted + 2 crafted + 16-card TDM pack) with all
+placement swaps applied; rotation-proofing of decks 28 and 36; tunes of 9, 29, 36, 37b,
+25 (reported, not applied); a plural-passive counters-payoff pattern fix; and a
+date-adjacency FALSE POSITIVE fix in the rationale figure matcher.
+
+Decided AGAINST (do not re-propose without new information):
+- **Blink in deck 63.** Measured 7/35 ETB density, and blink ERASES +1/+1 counters, so
+  it fights the engine (now recorded under G-42). Daydream is benched as PROTECTION only.
+- **A new Abzan deck was NOT needed for Armament Dragon** — four WBG decks already exist
+  (6, 13, 21, 20b). What was missing was the counters ANGLE, which became deck 63.
+- **Deck 49 Route A** — proposed, measured, and deferred by the user ("hold off for now").
+  Queued, not rejected; see NEXT-SESSION §3.
+
+Where I left off: doc sync applied (CLAUDE.md stale `.cycle/54-pile-reanalysis.md`
+pointer removed — the file was deleted when its swaps landed; test count 24→25; G-42
+extended with the blink/counters finding), then PR opened and merged.

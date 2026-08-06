@@ -1894,6 +1894,87 @@ class TestRationaleStaleness:
         _cards, figs = deck.rationale_staleness(d)
         assert figs == []
 
+    # ── DATE ADJACENCY. The number-first figure patterns opened with a bare `(\d+)`,
+    # which is unanchored, so it matched the tail of any larger number sitting before
+    # the metric word. Deck 63's rationale said "three cards after the 2026-08
+    # protection pass" and the audit reported `protection 08` against a live 4 — a
+    # claim the prose never made. A false POSITIVE is the expensive direction here:
+    # it teaches you to ignore the one check that reads the argument, not the letter.
+
+    def test_a_date_before_a_metric_word_is_not_a_figure(self, tmp_path):
+        d = self._deck(tmp_path, ["B — three answers after the 2026-08 protection pass."])
+        _cards, figs = deck.rationale_staleness(d)
+        assert [f for f in figs if f[0] == "protection"] == []
+
+    def test_a_date_before_interaction_is_not_a_figure(self, tmp_path):
+        d = self._deck(tmp_path, ["B — rebuilt in the 2026-08 interaction pass."])
+        _cards, figs = deck.rationale_staleness(d)
+        assert [f for f in figs if f[0] == "interaction"] == []
+
+    def test_a_range_is_not_audited_as_a_precise_claim(self, tmp_path):
+        # "2-3 interaction" states a band, not a figure; auditing it against an exact
+        # live value would flag prose that is not making an exact claim.
+        d = self._deck(tmp_path, ["B — sits at 2-3 interaction depending on the draw."])
+        _cards, figs = deck.rationale_staleness(d)
+        assert [f for f in figs if f[0] == "interaction"] == []
+
+    def test_the_guard_does_not_silence_a_real_number_first_figure(self, tmp_path):
+        # The whole point of the number-first patterns: this deck runs 0 interaction,
+        # so a claimed 9 must still be caught. Guarding the date must not cost this.
+        d = self._deck(tmp_path, ["A — 9 interaction carries it."])
+        _cards, figs = deck.rationale_staleness(d)
+        assert any(k == "interaction" and q == "9" for k, q, _a in figs)
+
+    # ── Shorthand DETECTION (broad-implement #2). Two real misses survived a clean
+    # audit: deck 28 cited "Gishath" after Gishath, Sun's Avatar was cut, and deck 36
+    # cited "Okinec Ahau" after Sovereign Okinec Ahau was cut. G-26's "shorthand is
+    # handled" covered only the suppression direction (an abbreviation of an IN-deck
+    # card must not flag) — a shorthand citation of an ABSENT card matched nothing,
+    # because the scan searched for full names only.
+
+    def test_comma_head_shorthand_of_absent_card_is_flagged(self, tmp_path):
+        d = self._deck(tmp_path, ["A — big dinos, and Gishath carries the top end."])
+        cards, _figs = deck.rationale_staleness(d)
+        assert "Gishath, Sun's Avatar" in [c for c, _h in cards]
+
+    def test_tail_shorthand_of_absent_card_is_flagged_even_when_ambiguous(self, tmp_path):
+        # "Okinec Ahau" abbreviates BOTH Envoy of and Sovereign Okinec Ahau; with
+        # neither in the deck the citation is stale whichever it meant, so ambiguity
+        # must not drop the fragment (that is exactly how the real miss would have
+        # survived the fix).
+        d = self._deck(tmp_path, ["A — the counter payoff Okinec Ahau carries it."])
+        cards, _figs = deck.rationale_staleness(d)
+        assert any("Okinec Ahau" in c for c, _h in cards)
+
+    def test_shorthand_of_in_deck_card_stays_suppressed(self, tmp_path):
+        d = self._deck(tmp_path, ["B — Gishath is the top end."],
+                       cards=("1 Gishath, Sun's Avatar (LCI) 229",))
+        cards, _figs = deck.rationale_staleness(d)
+        assert cards == []
+
+    def test_possessive_in_deck_name_suppresses_its_shorthand(self, tmp_path):
+        # "Tishana" must read as shorthand for in-deck "Tishana's Tidebinder" — the
+        # word-boundary rule treats the apostrophe as inside-a-word, so the in-deck
+        # gate uses plain containment (over-suppression is the safe direction).
+        d = self._deck(tmp_path, ["A — the soft tempo suite (Tishana and friends)."],
+                       cards=("1 Tishana's Tidebinder (LCI) 81",))
+        cards, _figs = deck.rationale_staleness(d)
+        assert cards == []
+
+    def test_guild_name_is_color_vocabulary_not_a_citation(self, tmp_path):
+        # Four decks false-flagged "Rakdos" (the guild word) as shorthand for a
+        # Rakdos legend in the first roster sweep of this fix.
+        d = self._deck(tmp_path, ["B — a Rakdos sacrifice shell at heart."])
+        cards, _figs = deck.rationale_staleness(d)
+        assert cards == []
+
+    def test_negated_contrast_citation_is_suppressed(self, tmp_path):
+        # 26a explains itself by contrast: "Note Mjölnir does NOT do this". The
+        # negation IS the claim that the card isn't here.
+        d = self._deck(tmp_path, ["B — note Gishath does NOT fit this plan."])
+        cards, _figs = deck.rationale_staleness(d)
+        assert cards == []
+
 
 class TestRationaleWordBoundary:
     """Card names are ordinary English often enough that a bare substring search
