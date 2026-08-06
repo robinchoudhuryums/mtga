@@ -1984,6 +1984,20 @@ Veteran Ice Climber,{1}{U},2,Vigilance;Mill
 Mardu Monument,{2},2,
 Fresh Start,{1}{U},2,Enchant;Flash
 Unsparing Boltcaster,{2}{R},3,
+Reputable Merchant,{2/W}{2/B}{2/G},6,
+Reigning Victor,{2/R}{2/W}{2/B},6,Mobilize
+Gurmag Nightwatch,{2/B}{2/G}{2/U},6,
+Nightblade Brigade,{2}{B},3,Surveil;Mobilize;Deathtouch
+Snakeskin Veil,{G},1,
+Ainok Wayfarer,{1}{G},2,Mill
+Meticulous Artisan,{3}{R},4,Prowess;Treasure
+Delta Bloodflies,{1}{B},2,Flying
+Sarkhan's Resolve,{1}{G},2,
+Worthy Cost,{B},1,
+Monastery Messenger,{2/U}{2/R}{2/W},6,Flying;Vigilance
+Unburied Earthcarver,{1}{B},2,
+Fire-Rim Form,{1}{R},2,Enchant;Flash
+Rebellious Strike,{1}{W},2,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -13506,7 +13520,6 @@ Lightfoot Technique,{1}{W},2,
 Loxodon Battle Priest,{4}{W},5,
 Osseous Exhale,{1}{W},2,Behold
 Poised Practitioner,{2}{W},3,Flurry;Scry
-Rebellious Strike,{1}{W},2,
 Riling Dawnbreaker // Signaling Roar,{4}{W} // {1}{W},5,Flying;Vigilance
 Salt Road Packbeast,{5}{W},6,Affinity
 Smile at Death,{3}{W}{W},5,
@@ -13548,34 +13561,28 @@ Alchemist's Assistant,{1}{B},2,Lifelink;Renew
 Alesha's Legacy,{1}{B},2,
 Avenger of the Fallen,{2}{B},3,Mobilize;Deathtouch
 Caustic Exhale,{B},1,Behold
-Delta Bloodflies,{1}{B},2,Flying
 Desperate Measures,{B},1,
 Dragon's Prey,{2}{B},3,
 Feral Deathgorger // Dusk Sight,{5}{B} // {1}{B},6,Deathtouch;Flying
 Gurmag Rakshasa,{4}{B}{B},6,Menace
 Hundred-Battle Veteran,{3}{B},4,
 Kin-Tree Nurturer,{2}{B},3,Lifelink;Endure
-Nightblade Brigade,{2}{B},3,Surveil;Mobilize;Deathtouch
 Qarsi Revenant,{1}{B}{B},3,Deathtouch;Flying;Lifelink;Renew
 Sandskitter Outrider,{3}{B},4,Menace;Endure
 Scavenger Regent // Exude Toxin,{3}{B} // {X}{B}{B},4,Flying;Ward
 The Sibsig Ceremony,{B}{B}{B},3,
 Sinkhole Surveyor,{1}{B},2,Endure;Flying
 Strategic Betrayal,{1}{B},2,
-Unburied Earthcarver,{1}{B},2,
 Unrooted Ancestor,{2}{B},3,Flash
 Venerated Stormsinger,{3}{B},4,Mobilize
 Wail of War,{2}{B},3,
-Worthy Cost,{B},1,
 Yathan Tombguard,{2}{B},3,Menace
 Channeled Dragonfire,{R},1,Harmonize
 Cori-Steel Cutter,{1}{R},2,Flurry;Equip
 Devoted Duelist,{1}{R},2,Flurry;Haste
-Fire-Rim Form,{1}{R},2,Enchant;Flash
 Fleeting Effigy,{R},1,Haste
 Iridescent Tiger,{4}{R},5,
 Magmatic Hellkite,{2}{R}{R},4,Flying
-Meticulous Artisan,{3}{R},4,Prowess;Treasure
 Molten Exhale,{1}{R},2,Behold
 Narset's Rebuke,{4}{R},5,
 Rescue Leopard,{2}{R},3,
@@ -13590,7 +13597,6 @@ Twin Bolt,{1}{R},2,
 Underfoot Underdogs,{2}{R},3,
 Wild Ride,{R},1,Harmonize
 Zurgo's Vanguard,{2}{R},3,Mobilize
-Ainok Wayfarer,{1}{G},2,Mill
 Attuned Hunter,{2}{G},3,Trample
 Bloomvine Regent // Claim Territory,{3}{G}{G} // {2}{G},5,Flying
 Champion of Dusan,{2}{G},3,Renew;Trample
@@ -13609,8 +13615,6 @@ Rite of Renewal,{3}{G},4,
 Roamer's Routine,{2}{G},3,Harmonize
 Sagu Pummeler,{3}{G},4,Reach;Renew
 Sagu Wildling // Roost Seek,{4}{G} // {G},5,Flying
-Sarkhan's Resolve,{1}{G},2,
-Snakeskin Veil,{G},1,
 Trade Route Envoy,{3}{G},4,
 Traveling Botanist,{1}{G},2,
 Undergrowth Leopard,{1}{G},2,Vigilance
@@ -13631,7 +13635,6 @@ Fangkeeper's Familiar,{1}{B}{G}{U},4,Surveil;Flash
 Frostcliff Siege,{1}{U}{R},3,
 Glacial Dragonhunt,{U}{R},2,Harmonize
 Glacierwood Siege,{1}{G}{U},3,Mill
-Gurmag Nightwatch,{2/B}{2/G}{2/U},6,
 Hardened Tactician,{1}{W}{B},3,
 Hollowmurk Siege,{B}{G},2,
 Inevitable Defeat,{1}{R}{W}{B},4,
@@ -13644,15 +13647,12 @@ Kin-Tree Severance,{2/W}{2/B}{2/G},6,
 Lotuslight Dancers,{2}{B}{G}{U},5,Lifelink
 Mardu Siegebreaker,{1}{R}{W}{B},4,Haste;Deathtouch
 Marshal of the Lost,{2}{W}{B},4,Deathtouch
-Monastery Messenger,{2/U}{2/R}{2/W},6,Flying;Vigilance
 "Neriv, Heart of the Storm",{1}{R}{W}{B},4,Flying
 New Way Forward,{2}{U}{R}{W},5,
 Perennation,{3}{W}{B}{G},6,
 Purging Stormbrood // Absorb Essence,{4}{B} // {1}{W},5,Flying;Ward
 Rakshasa's Bargain,{2/B}{2/G}{2/U},6,
 Rediscover the Way,{U}{R}{W},3,
-Reigning Victor,{2/R}{2/W}{2/B},6,Mobilize
-Reputable Merchant,{2/W}{2/B}{2/G},6,
 Revival of the Ancestors,{1}{W}{B}{G},4,
 Riverwheel Sweep,{2/U}{2/R}{2/W},6,
 Roar of Endless Song,{2}{G}{U}{R},5,Double

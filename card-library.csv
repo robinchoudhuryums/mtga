@@ -4219,3 +4219,30 @@ Fresh Start,Enchantment — Aura,"Flash
 Enchant creature
 Enchanted creature gets -5/-0 and loses all abilities.",U,Aura; aura; removal; enchant; flash; tempo,TDM,46,1
 Unsparing Boltcaster,Creature — Ogre Wizard,"When this creature enters, it deals 5 damage to target creature an opponent controls that was dealt damage this turn.",R,Ogre; Wizard; burn; etb,TDM,130,1
+Reputable Merchant,Creature — Human Citizen,"When this creature enters or dies, put a +1/+1 counter on target creature you control.",W/B/G,Human; Citizen; counters; etb,TDM,217,1
+Reigning Victor,Creature — Orc Warrior,"Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)
+When this creature enters, target creature gets +1/+0 and gains indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)",W/B/R,Orc; Warrior; sacrifice; tokens; etb; pump; mobilize; go-wide; aggro,TDM,216,1
+Gurmag Nightwatch,Creature — Human Ranger,"When this creature enters, look at the top three cards of your library. You may put one of those cards back on top of your library. Put the rest into your graveyard.",U/B/G,Human; Ranger; graveyard; etb; selection,TDM,190,1
+Nightblade Brigade,Creature — Goblin Soldier,"Deathtouch
+Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)
+When this creature enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)",B,Goblin; Soldier; graveyard; sacrifice; tokens; etb; selection; surveil; mobilize; go-wide; aggro; deathtouch; combat; removal,TDM,85,2
+Snakeskin Veil,Instant,Put a +1/+1 counter on target creature you control. It gains hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.),G,counters,TDM,159,2
+Ainok Wayfarer,Creature — Dog Scout,"When this creature enters, mill three cards. You may put a land card from among them into your hand. If you don't, put a +1/+1 counter on this creature. (To mill three cards, put the top three cards of your library into your graveyard.)",G,Dog; Scout; counters; graveyard; mill; etb,TDM,134,1
+Meticulous Artisan,Creature — Djinn Artificer,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+When this creature enters, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,Djinn; Artificer; sacrifice; tokens; etb; treasure; pump; prowess; spellslinger; tempo,TDM,112,1
+Delta Bloodflies,Creature — Insect,"Flying
+Whenever this creature attacks, if you control a creature with a counter on it, each opponent loses 1 life.",B,Insect; counters; flying; evasion,TDM,77,1
+Sarkhan's Resolve,Instant,"Choose one —
+• Target creature gets +3/+3 until end of turn.
+• Destroy target creature with flying.",G,removal; pump,TDM,158,1
+Worthy Cost,Sorcery,"As an additional cost to cast this spell, sacrifice a creature.
+Exile target creature or planeswalker.",B,sacrifice; removal,TDM,99,1
+Monastery Messenger,Creature — Bird Scout,"Flying, vigilance
+When this creature enters, put up to one target noncreature, nonland card from your graveyard on top of your library.",W/U/R,Bird; Scout; graveyard; etb; flying; evasion; vigilance; combat,TDM,208,1
+Unburied Earthcarver,Creature — Human Warrior,"{2}, Sacrifice another creature: Put a +1/+1 counter on this creature.",B,Human; Warrior; counters; sacrifice,TDM,95,1
+Fire-Rim Form,Enchantment — Aura,"Flash
+Enchant creature
+When this Aura enters, enchanted creature gains first strike until end of turn.
+Enchanted creature gets +2/+0.",R,Aura; etb; aura; pump; enchant; flash; tempo,TDM,107,1
+Rebellious Strike,Instant,"Target creature gets +3/+0 until end of turn.
+Draw a card.",W,card draw; pump,TDM,20,1
