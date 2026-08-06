@@ -1969,6 +1969,21 @@ Craterhoof Behemoth,{5}{G}{G}{G},8,Haste
 Jeskai Revelation,{4}{U}{R}{W},7,
 "Ureni, the Song Unending",{5}{G}{U}{R},8,Flying;Protection
 Death Begets Life,{5}{B}{G}{U},8,
+Wingblade Disciple,{2}{U},3,Flying;Flurry
+Furious Forebear,{1}{W},2,
+Sunpearl Kirin,{1}{W},2,Flying;Flash
+Armament Dragon,{3}{W}{B}{G},6,Flying
+Kishla Skimmer,{G}{U},2,Flying
+Breaching Dragonstorm,{4}{R},5,
+War Effort,{3}{R},4,
+Salt Road Skirmish,{3}{B},4,
+Overwhelming Surge,{2}{R},3,
+Spectral Denial,{X}{U},1,
+Mammoth Bellow,{2}{G}{U}{R},5,Harmonize
+Veteran Ice Climber,{1}{U},2,Vigilance;Mill
+Mardu Monument,{2},2,
+Fresh Start,{1}{U},2,Enchant;Flash
+Unsparing Boltcaster,{2}{R},3,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -13487,7 +13502,6 @@ Bearer of Glory,{1}{W},2,
 Clarion Conqueror,{2}{W},3,Flying
 Dalkovan Packbeasts,{2}{W},3,Vigilance;Mobilize
 Descendant of Storms,{W},1,Endure
-Furious Forebear,{1}{W},2,
 Lightfoot Technique,{1}{W},2,
 Loxodon Battle Priest,{4}{W},5,
 Osseous Exhale,{1}{W},2,Behold
@@ -13498,7 +13512,6 @@ Salt Road Packbeast,{5}{W},6,Affinity
 Smile at Death,{3}{W}{W},5,
 Starry-Eyed Skyrider,{2}{W},3,Flying
 Stormbeacon Blade,{1}{W},2,Equip
-Sunpearl Kirin,{1}{W},2,Flying;Flash
 Teeming Dragonstorm,{3}{W},4,
 Tempest Hawk,{2}{W},3,Flying
 United Battlefront,{3}{W},4,
@@ -13515,7 +13528,6 @@ Dragonologist,{2}{U},3,
 Dragonstorm Forecaster,{U},1,
 Essence Anchor,{2}{U},3,Surveil
 Focus the Mind,{4}{U},5,
-Fresh Start,{1}{U},2,Enchant;Flash
 Highspire Bell-Ringer,{2}{U},3,Flying
 Iceridge Serpent,{4}{U},5,
 Kishla Trawlers,{2}{U},3,
@@ -13525,13 +13537,10 @@ Riverwalk Technique,{3}{U},4,
 Roiling Dragonstorm,{1}{U},2,
 Sibsig Appraiser,{2}{U},3,
 Snowmelt Stag,{3}{U},4,Vigilance
-Spectral Denial,{X}{U},1,
 Stillness in Motion,{1}{U},2,Mill
 Temur Devotee,{1}{U},2,Defender
 Unending Whisper,{U},1,Harmonize
 Ureni's Rebuff,{1}{U},2,Harmonize
-Veteran Ice Climber,{1}{U},2,Vigilance;Mill
-Wingblade Disciple,{2}{U},3,Flying;Flurry
 Wingspan Stride,{U},1,Enchant
 Winternight Stories,{2}{U},3,Harmonize
 Adorned Crocodile,{4}{B},5,Renew
@@ -13548,7 +13557,6 @@ Hundred-Battle Veteran,{3}{B},4,
 Kin-Tree Nurturer,{2}{B},3,Lifelink;Endure
 Nightblade Brigade,{2}{B},3,Surveil;Mobilize;Deathtouch
 Qarsi Revenant,{1}{B}{B},3,Deathtouch;Flying;Lifelink;Renew
-Salt Road Skirmish,{3}{B},4,
 Sandskitter Outrider,{3}{B},4,Menace;Endure
 Scavenger Regent // Exude Toxin,{3}{B} // {X}{B}{B},4,Flying;Ward
 The Sibsig Ceremony,{B}{B}{B},3,
@@ -13560,7 +13568,6 @@ Venerated Stormsinger,{3}{B},4,Mobilize
 Wail of War,{2}{B},3,
 Worthy Cost,{B},1,
 Yathan Tombguard,{2}{B},3,Menace
-Breaching Dragonstorm,{4}{R},5,
 Channeled Dragonfire,{R},1,Harmonize
 Cori-Steel Cutter,{1}{R},2,Flurry;Equip
 Devoted Duelist,{1}{R},2,Flurry;Haste
@@ -13571,7 +13578,6 @@ Magmatic Hellkite,{2}{R}{R},4,Flying
 Meticulous Artisan,{3}{R},4,Prowess;Treasure
 Molten Exhale,{1}{R},2,Behold
 Narset's Rebuke,{4}{R},5,
-Overwhelming Surge,{2}{R},3,
 Rescue Leopard,{2}{R},3,
 Seize Opportunity,{2}{R},3,
 Shock Brigade,{1}{R},2,Menace;Mobilize
@@ -13582,8 +13588,6 @@ Sunset Strikemaster,{1}{R},2,
 Tersa Lightshatter,{2}{R},3,Haste
 Twin Bolt,{1}{R},2,
 Underfoot Underdogs,{2}{R},3,
-Unsparing Boltcaster,{2}{R},3,
-War Effort,{3}{R},4,
 Wild Ride,{R},1,Harmonize
 Zurgo's Vanguard,{2}{R},3,Mobilize
 Ainok Wayfarer,{1}{G},2,Mill
@@ -13612,7 +13616,6 @@ Traveling Botanist,{1}{G},2,
 Undergrowth Leopard,{1}{G},2,Vigilance
 Warden of the Grove,{2}{G},3,Endure
 All-Out Assault,{2}{R}{W}{B},5,
-Armament Dragon,{3}{W}{B}{G},6,Flying
 Auroral Procession,{G}{U},2,
 Awaken the Honored Dead,{B}{G}{U},3,Mill
 Barrensteppe Siege,{2}{W}{B},4,
@@ -13637,10 +13640,8 @@ Jeskai Shrinekeeper,{2}{U}{R}{W},5,Flying;Haste
 Karakyk Guardian,{3}{G}{U}{R},6,Flying;Vigilance;Trample
 Kheru Goldkeeper,{1}{B}{G}{U},4,Flying;Renew;Treasure
 Kin-Tree Severance,{2/W}{2/B}{2/G},6,
-Kishla Skimmer,{G}{U},2,Flying
 "Kotis, the Fangkeeper",{1}{B}{G}{U},4,Indestructible
 Lotuslight Dancers,{2}{B}{G}{U},5,Lifelink
-Mammoth Bellow,{2}{G}{U}{R},5,Harmonize
 Mardu Siegebreaker,{1}{R}{W}{B},4,Haste;Deathtouch
 Marshal of the Lost,{2}{W}{B},4,Deathtouch
 Monastery Messenger,{2/U}{2/R}{2/W},6,Flying;Vigilance
@@ -13673,7 +13674,6 @@ Boulderborn Dragon,{5},5,Flying;Surveil;Vigilance
 Embermouth Sentinel,{2},2,
 Jade-Cast Sentinel,{4},4,Reach
 Jeskai Monument,{2},2,
-Mardu Monument,{2},2,
 Mox Jasper,{0},0,
 Sultai Monument,{2},2,
 Temur Monument,{2},2,

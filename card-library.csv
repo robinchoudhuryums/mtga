@@ -4188,3 +4188,34 @@ Jeskai Revelation,Instant,Return target spell or permanent to its owner's hand. 
 "Ureni, the Song Unending",Legendary Creature — Spirit Dragon,"Flying, protection from white and from black
 When Ureni enters, it deals X damage divided as you choose among any number of target creatures and/or planeswalkers your opponents control, where X is the number of lands you control.",U/R/G,Spirit; Dragon; burn; etb; flying; evasion; protection,TDM,233,1
 Death Begets Life,Sorcery,Destroy all creatures and enchantments. Draw a card for each permanent destroyed this way.,U/B/G,card draw,TDM,176,1
+Wingblade Disciple,Creature — Human Monk,"Flying
+Flurry — Whenever you cast your second spell each turn, create a 1/1 white Bird creature token with flying.",U,Human; Monk; tokens; flying; evasion; flurry; spellslinger,TDM,65,1
+Furious Forebear,Creature — Spirit Warrior,"Whenever a creature you control dies while this card is in your graveyard, you may pay {1}{W}. If you do, return this card from your graveyard to your hand.",W,Spirit; Warrior; graveyard,TDM,13,1
+Sunpearl Kirin,Creature — Kirin,"Flash
+Flying
+When this creature enters, return up to one other target nonland permanent you control to its owner's hand. If it was a token, draw a card.",W,Kirin; card draw; etb; bounce; flying; evasion; flash; tempo,TDM,29,1
+Armament Dragon,Creature — Dragon,"Flying
+When this creature enters, distribute three +1/+1 counters among one, two, or three target creatures you control.",W/B/G,Dragon; counters; etb; flying; evasion,TDM,168,1
+Kishla Skimmer,Creature — Bird Scout,"Flying
+Whenever a card leaves your graveyard during your turn, draw a card. This ability triggers only once each turn.",U/G,Bird; Scout; graveyard; card draw; flying; evasion,TDM,201,1
+Breaching Dragonstorm,Enchantment,"When this enchantment enters, exile cards from the top of your library until you exile a nonland card. You may cast it without paying its mana cost if that spell's mana value is 8 or less. If you don't, put that card into your hand.
+When a Dragon you control enters, return this enchantment to its owner's hand.",R,card advantage; etb; bounce,TDM,101,1
+War Effort,Enchantment,"Creatures you control get +1/+0.
+Whenever you attack, create a 1/1 red Warrior creature token that's tapped and attacking. Sacrifice it at the beginning of the next end step.",R,sacrifice; tokens; pump,TDM,131,1
+Salt Road Skirmish,Sorcery,Destroy target creature. Create two 1/1 red Warrior creature tokens. They gain haste until end of turn. Sacrifice them at the beginning of the next end step.,B,sacrifice; tokens; removal,TDM,88,1
+Overwhelming Surge,Instant,"Choose one or both —
+• Overwhelming Surge deals 3 damage to target creature.
+• Destroy target noncreature artifact.",R,removal; burn,TDM,115,1
+Spectral Denial,Instant,"This spell costs {1} less to cast for each creature you control with power 4 or greater.
+Counter target spell unless its controller pays {X}.",U,counterspell; cost-reduction,TDM,58,1
+Mammoth Bellow,Sorcery,"Create a 5/5 green Elephant creature token.
+Harmonize {5}{G}{U}{R} (You may cast this card from your graveyard for its harmonize cost. You may tap a creature you control to reduce that cost by {X}, where X is its power. Then exile this spell.)",U/R/G,graveyard; tokens; harmonize; recursion,TDM,205,1
+Veteran Ice Climber,Creature — Human Scout,"Vigilance
+This creature can't be blocked.
+Whenever this creature attacks, up to one target player mills cards equal to this creature's power. (They put that many cards from the top of their library into their graveyard.)",U,Human; Scout; graveyard; mill; vigilance; combat,TDM,64,1
+Mardu Monument,Artifact,"When this artifact enters, search your library for a basic Mountain, Plains, or Swamp card, reveal it, put it into your hand, then shuffle.
+{2}{R}{W}{B}, {T}, Sacrifice this artifact: Create three 1/1 red Warrior creature tokens. They gain menace and haste until end of turn. Activate only as a sorcery. (A creature with menace can't be blocked except by two or more creatures.)",W/B/R,sacrifice; tokens; etb,TDM,245,1
+Fresh Start,Enchantment — Aura,"Flash
+Enchant creature
+Enchanted creature gets -5/-0 and loses all abilities.",U,Aura; aura; removal; enchant; flash; tempo,TDM,46,1
+Unsparing Boltcaster,Creature — Ogre Wizard,"When this creature enters, it deals 5 damage to target creature an opponent controls that was dealt damage this turn.",R,Ogre; Wizard; burn; etb,TDM,130,1

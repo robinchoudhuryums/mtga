@@ -400,15 +400,10 @@ When this creature enters, destroy target nonbasic land an opponent controls. It
 Roar of Endless Song,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
 I, II — Create a 5/5 green Elephant creature token.
 III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,5.5,hand
-Breaching Dragonstorm,Enchantment,"When this enchantment enters, exile cards from the top of your library until you exile a nonland card. You may cast it without paying its mana cost if that spell's mana value is 8 or less. If you don't, put that card into your hand.
-When a Dragon you control enters, return this enchantment to its owner's hand.",R,card advantage; etb; bounce,TDM,101,Uncommon,49,"Deck 49: exile until a nonland card and CAST IT FREE if MV<=8, then 'when a Dragon you control enters, return this to its owner's hand' - a RECURRING free spell in a deck with 20 Dragons. The card-advantage fix for a deck that measured 2.",7.4,hand
 Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen,"Flying
 Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,7.2,hand
 Sunset Strikemaster,Creature — Human Monk,"{T}: Add {R}.
 {2}{R}, {T}, Sacrifice this creature: It deals 6 damage to target creature with flying.",R,Human; Monk; sacrifice; burn; mana,TDM,126,Uncommon,49,,4.5,seed
-Veteran Ice Climber,Creature — Human Scout,"Vigilance
-This creature can't be blocked.
-Whenever this creature attacks, up to one target player mills cards equal to this creature's power. (They put that many cards from the top of their library into their graveyard.)",U,Human; Scout; graveyard; mill; vigilance; combat,TDM,64,Uncommon,51a,"Deck 51a: unblockable vigilance two-drop that mills its own power on attack (+4 with Crystal). Vigilance matters twice - blocks, and stays untapped for a waterbend cost.",6.4,hand
 Molten Exhale,Sorcery,"You may cast this spell as though it had flash if you behold a Dragon as an additional cost to cast it. (To behold a Dragon, choose a Dragon you control or reveal a Dragon card from your hand.)
 Molten Exhale deals 4 damage to target creature or planeswalker.",R,burn; behold; dragons,TDM,113,Common,49,,6.0,hand
 Phoenix Fleet Airship,Artifact — Vehicle,"Flying
