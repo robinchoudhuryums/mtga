@@ -1998,6 +1998,19 @@ Monastery Messenger,{2/U}{2/R}{2/W},6,Flying;Vigilance
 Unburied Earthcarver,{1}{B},2,
 Fire-Rim Form,{1}{R},2,Enchant;Flash
 Rebellious Strike,{1}{W},2,
+Snowmelt Stag,{3}{U},4,Vigilance
+Dispelling Exhale,{1}{U},2,Behold
+Champion of Dusan,{2}{G},3,Renew;Trample
+Salt Road Packbeast,{5}{W},6,Affinity
+"Mimeoplasm, Revered One",{X}{B}{G}{U},3,
+"Ketramose, the New Dawn",{1}{W}{B},3,Lifelink;Indestructible;Menace
+"Sab-Sunen, Luxa Embodied",{3}{G}{U},5,Reach;Indestructible;Trample
+The Last Ride,{B},1,Crew
+Riptide Gearhulk,{1}{W}{W}{U}{U},5,Prowess;Double strike
+Coalstoke Gearhulk,{1}{B}{B}{R}{R},5,Menace;Deathtouch
+Skyserpent Seeker,{G}{U},2,Deathtouch;Flying;Exhaust
+Embalmed Ascendant,{1}{W}{B},3,Max speed;Start your engines!
+"Tyrox, Saurid Tyrant",{1}{R},2,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3307,7 +3320,6 @@ Hellish Sideswipe,{B},1,
 Hour of Victory,{2}{B},3,Max speed;Start your engines!
 Intimidation Tactics,{B},1,Cycling
 "Kalakscion, Hunger Tyrant",{1}{B}{B},3,
-The Last Ride,{B},1,Crew
 Maximum Overdrive,{1}{B},2,
 Momentum Breaker,{1}{B},2,Start your engines!
 Mutant Surveyor,{2}{B},3,Max speed;Start your engines!
@@ -3351,7 +3363,6 @@ Road Rage,{R},1,
 Skycrash,{1}{R},2,Cycling
 Spire Mechcycle,{4}{R},5,Haste;Crew;Exhaust
 Thunderhead Gunner,{4}{R},5,Reach
-"Tyrox, Saurid Tyrant",{1}{R},2,
 Afterburner Expert,{2}{G},3,Exhaust
 Agonasaur Rex,{3}{G}{G},5,Trample;Cycling
 Alacrian Jaguar,{4}{G},5,Saddle;Vigilance
@@ -3391,10 +3402,8 @@ Broodheart Engine,{B}{G},2,Surveil
 "Captain Howler, Sea Scourge",{2}{U}{R},4,Ward
 Cloudspire Coordinator,{R}{W},2,Scry
 Cloudspire Skycycle,{2}{R}{W},4,Flying;Crew
-Coalstoke Gearhulk,{1}{B}{B}{R}{R},5,Menace;Deathtouch
 Debris Beetle,{2}{B}{G},4,Crew;Trample
 Dune Drifter,{X}{W}{B},2,Crew
-Embalmed Ascendant,{1}{W}{B},3,Max speed;Start your engines!
 Explosive Getaway,{3}{R}{W},5,
 "Far Fortune, End Boss",{2}{B}{R},4,Max speed;Start your engines!
 Fearless Swashbuckler,{1}{U}{R},3,Haste
@@ -3402,21 +3411,16 @@ Gastal Thrillseeker,{B}{R},2,Max speed;Start your engines!
 Guidelight Pathmaker,{4}{W}{U},6,Vigilance;Crew
 Haunt the Network,{3}{U}{B},5,
 Haunted Hellride,{1}{U}{B},3,Crew
-"Ketramose, the New Dawn",{1}{W}{B},3,Lifelink;Indestructible;Menace
 "Kolodin, Triumph Caster",{R}{W},2,
 "Lagorin, Soul of Alacria",{G}{W},2,Flying;Saddle
 "Loot, the Pathfinder",{2}{G}{U}{R},5,Vigilance;Haste;Exhaust;Double strike
 "Mendicant Core, Guidelight",{W}{U},2,Max speed;Start your engines!
-"Mimeoplasm, Revered One",{X}{B}{G}{U},3,
 Oildeep Gearhulk,{U}{U}{B}{B},4,Lifelink;Ward
 Rangers' Aetherhive,{1}{G}{U},3,Vigilance;Crew
 "Redshift, Rocketeer Chief",{R}{G},2,Vigilance;Exhaust
-Riptide Gearhulk,{1}{W}{W}{U}{U},5,Prowess;Double strike
 Rocketeer Boostbuggy,{R}{G},2,Treasure;Crew;Exhaust
-"Sab-Sunen, Luxa Embodied",{3}{G}{U},5,Reach;Indestructible;Trample
 "Samut, the Driving Force",{3}{R}{G}{W},6,Vigilance;First strike;Haste;Start your engines!
 "Sita Varma, Masked Racer",{G}{U},2,Exhaust
-Skyserpent Seeker,{G}{U},2,Deathtouch;Flying;Exhaust
 Thundering Broodwagon,{2}{B}{B}{G}{G},6,Reach;Crew;Menace;Cycling
 Voyage Home,{5}{W}{U},7,Affinity
 "Winter, Cursed Rider",{U}{B},2,Exhaust;Ward
@@ -13521,7 +13525,6 @@ Loxodon Battle Priest,{4}{W},5,
 Osseous Exhale,{1}{W},2,Behold
 Poised Practitioner,{2}{W},3,Flurry;Scry
 Riling Dawnbreaker // Signaling Roar,{4}{W} // {1}{W},5,Flying;Vigilance
-Salt Road Packbeast,{5}{W},6,Affinity
 Smile at Death,{3}{W}{W},5,
 Starry-Eyed Skyrider,{2}{W},3,Flying
 Stormbeacon Blade,{1}{W},2,Equip
@@ -13536,7 +13539,6 @@ Ambling Stormshell,{3}{U}{U},5,Ward
 Bewildering Blizzard,{4}{U}{U},6,
 Constrictor Sage,{4}{U},5,Renew
 Dirgur Island Dragon // Skimming Strike,{5}{U} // {1}{U},6,Flying;Ward
-Dispelling Exhale,{1}{U},2,Behold
 Dragonologist,{2}{U},3,
 Dragonstorm Forecaster,{U},1,
 Essence Anchor,{2}{U},3,Surveil
@@ -13549,7 +13551,6 @@ Naga Fleshcrafter,{3}{U},4,Renew
 Riverwalk Technique,{3}{U},4,
 Roiling Dragonstorm,{1}{U},2,
 Sibsig Appraiser,{2}{U},3,
-Snowmelt Stag,{3}{U},4,Vigilance
 Stillness in Motion,{1}{U},2,Mill
 Temur Devotee,{1}{U},2,Defender
 Unending Whisper,{U},1,Harmonize
@@ -13599,7 +13600,6 @@ Wild Ride,{R},1,Harmonize
 Zurgo's Vanguard,{2}{R},3,Mobilize
 Attuned Hunter,{2}{G},3,Trample
 Bloomvine Regent // Claim Territory,{3}{G}{G} // {2}{G},5,Flying
-Champion of Dusan,{2}{G},3,Renew;Trample
 Dragon Sniper,{G},1,Reach;Vigilance;Deathtouch
 Dusyut Earthcarver,{5}{G},6,Reach;Endure
 Encroaching Dragonstorm,{3}{G},4,

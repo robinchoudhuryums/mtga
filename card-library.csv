@@ -4246,3 +4246,34 @@ When this Aura enters, enchanted creature gains first strike until end of turn.
 Enchanted creature gets +2/+0.",R,Aura; etb; aura; pump; enchant; flash; tempo,TDM,107,1
 Rebellious Strike,Instant,"Target creature gets +3/+0 until end of turn.
 Draw a card.",W,card draw; pump,TDM,20,1
+Snowmelt Stag,Creature — Elemental Elk,"Vigilance
+During your turn, this creature has base power and toughness 5/2.
+{5}{U}{U}: This creature can't be blocked this turn.",U,Elemental; Elk; vigilance; combat,TDM,57,1
+Dispelling Exhale,Instant,"As an additional cost to cast this spell, you may behold a Dragon. (You may choose a Dragon you control or reveal a Dragon card from your hand.)
+Counter target spell unless its controller pays {2}. If a Dragon was beheld, counter that spell unless its controller pays {4} instead.",U,counterspell; behold; dragons,TDM,41,1
+Champion of Dusan,Creature — Human Warrior,"Trample
+Renew — {1}{G}, Exile this card from your graveyard: Put a +1/+1 counter and a trample counter on target creature. Activate only as a sorcery.",G,Human; Warrior; counters; graveyard; renew; trample; evasion,TDM,137,1
+Salt Road Packbeast,Creature — Beast,"Affinity for creatures (This spell costs {1} less to cast for each creature you control.)
+When this creature enters, draw a card.",W,Beast; cost-reduction; card draw; etb; affinity; artifacts,TDM,23,1
+"Mimeoplasm, Revered One",Legendary Creature — Ooze,"As Mimeoplasm enters, exile up to X creature cards from your graveyard. It enters with three +1/+1 counters on it for each creature card exiled this way.
+{2}: Mimeoplasm becomes a copy of target creature card exiled with it, except it's 0/0 and has this ability.",U/B/G,Ooze; counters; graveyard,DFT,214,1
+"Ketramose, the New Dawn",Legendary Creature — God,"Menace, lifelink, indestructible
+Ketramose can't attack or block unless there are seven or more cards in exile.
+Whenever one or more cards are put into exile from graveyards and/or the battlefield during your turn, you draw a card and lose 1 life.",W/B,God; graveyard; lifegain; pay life; card draw; lifelink; indestructible; resilience; menace; evasion,DFT,209,1
+"Sab-Sunen, Luxa Embodied",Legendary Creature — God,"Reach, trample, indestructible
+Sab-Sunen can't attack or block unless it has an even number of counters on it. (Zero is even.)
+At the beginning of your first main phase, put a +1/+1 counter on Sab-Sunen. Then if it has an odd number of counters on it, draw two cards.",U/G,God; counters; card draw; reach; defense; indestructible; resilience; trample; evasion,DFT,221,2
+The Last Ride,Legendary Artifact — Vehicle,"The Last Ride gets -X/-X, where X is your life total.
+{2}{B}, Pay 2 life: Draw a card.
+Crew 2",B,Vehicle; pay life; card draw; vehicle; removal; crew; vehicles,DFT,94,1
+Riptide Gearhulk,Artifact Creature — Construct,"Double strike
+Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+When this creature enters, for each opponent, put up to one target nonland permanent that player controls into its owner's library third from the top.",W/U,Construct; etb; pump; prowess; spellslinger; tempo; double strike; combat; aggro,DFT,219,1
+Coalstoke Gearhulk,Artifact Creature — Construct,"Menace, deathtouch
+When this creature enters, put target creature card with mana value 4 or less from a graveyard onto the battlefield under your control with a finality counter on it. That creature gains menace, deathtouch, and haste. At the beginning of your next end step, exile that creature.",B/R,Construct; counters; reanimator; graveyard; etb; menace; evasion; deathtouch; combat; removal,DFT,198,1
+Skyserpent Seeker,Creature — Snake,"Flying, deathtouch
+Exhaust — {4}: Reveal cards from the top of your library until you reveal two land cards. Put those land cards onto the battlefield tapped and the rest on the bottom of your library in a random order. Put a +1/+1 counter on this creature. (Activate each exhaust ability only once.)",U/G,Snake; counters; deathtouch; combat; removal; flying; evasion; exhaust; payoff,DFT,224,1
+Embalmed Ascendant,Creature — Zombie,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+When this creature enters, create a 2/2 black Zombie creature token.
+Max speed — Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life.",W/B,Zombie; lifegain; tokens; etb; max speed; speed; aggro; start your engines!,DFT,201,1
+"Tyrox, Saurid Tyrant",Legendary Creature — Dinosaur Warrior,,R,Dinosaur; Warrior,DFT,149,1
