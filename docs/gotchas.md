@@ -1337,6 +1337,25 @@ graveyard hate in a graveyard deck, hand attack in a deck that wants them holdin
 Grading a card in isolation cannot see this, which is the same blind spot `⚡` exists for.
 
 
+
+**2026-08 — a new member of this class, found by asking rather than by shipping.** The
+question was whether white BLINK effects would suit deck 63 (Abzan +1/+1 counters), since
+blink is a known way to re-buy ETB triggers. Two measurements answered it, and neither is
+visible in any single card's text. First, DENSITY: only **7 of 35 nonland cards** in that
+deck are ETB-triggered, and the seven are small (one counter, two, three) — so
+re-triggering them is a worse rate than simply casting another placer. Second, and
+decisive: **a blinked creature returns as a NEW OBJECT with no counters on it.** In a deck
+whose whole plan is accumulating counters on bodies, blink erases the investment it looks
+like it should protect — the G-42 shape exactly, a perfectly good card fighting its own
+engine, invisible to every model that grades a card in isolation. The contrast that makes
+it a rule rather than an anecdote: the same effect is CORRECT in deck 41 (Darkforce
+Inversion), which is built on big one-shot ETBs with nothing to erase. **The deck decides,
+not the card.** One partial exception is worth knowing: Daydream returns the creature
+*with* a +1/+1 counter, so it replaces one of what it erases — which makes it a
+PROTECTION card (save the body, lose the counters, beat losing both), never an engine
+piece. Generalised: before adding a blink, bounce or flicker package, count what it would
+DISCARD, not just what it would re-trigger.
+
 ## [G-43] Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want
 
 **Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want.**

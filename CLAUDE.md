@@ -466,7 +466,11 @@ directions.
   Graveyard hate in a graveyard deck, hand attack against a deck you want holding cards.
   Two such cards shipped into finished decks. **When a deck DEPENDS on a zone being
   populated, audit every card that empties it** — grading a card in isolation cannot see
-  this. [G-42]
+  this. **Same shape one resource over: BLINK ERASES +1/+1 COUNTERS** (the creature
+  returns as a new object), so a flicker package in a counters deck resets the
+  investment it is meant to protect — the question was asked of deck 63 and the answer
+  came from measuring ETB density (7 of 35 nonland cards) against the erasure, not from
+  the cards' own text. Before adding blink, count what the blink would DISCARD. [G-42]
 - **Grade a modal / split / adventure card by the FACE YOU CAST, not the half you want.**
   Decadent Dragon was drafted for its `{2}{B}` adventure half and cut once `consistency`
   priced its `{2}{R}{R}` FRONT face at 53% on turn four. [G-43]
@@ -805,7 +809,7 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (24 files: the markup-contract, CLI-entry-point, analysis-model,
+- Testing: tests/ (25 files: the markup-contract, CLI-entry-point, analysis-model,
   gate-pinning, shared-primitive and ingest layers, plus the 2026-08 ingest-writer /
   sync-guard / resilience-layer / CLI-filter coverage of the formerly untested
   scripts), requirements-dev.txt, pytest.ini, .github/workflows/tests.yml [C-07]
@@ -972,8 +976,8 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
   swaps land. Named here because a fresh session loads nothing else, and the whole
   point of committing it per batch is that it outlives one context window.
-  **Currently live: `.cycle/54-pile-reanalysis.md`** — decks 54 / 54a / 54b,
-  plans written and NOT yet applied.
+  **None currently live** — the 54-family doc was deleted when its swaps landed
+  (2026-08-05), which is the contract working as intended.
 - **`.cycle/STATE.md`** — prose record: what was completed, decisions made, what was
   decided AGAINST (worth reading before re-proposing a rejected fix), and where the
   last session left off.

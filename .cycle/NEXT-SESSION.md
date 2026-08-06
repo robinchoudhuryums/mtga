@@ -1,6 +1,6 @@
 # Handoff — start the next session here
 
-Written 2026-08-05, for a session with none of this one's context.
+Written 2026-08-06, for a session with none of this one's context.
 Read this before CLAUDE.md's Common Gotchas, not instead of them.
 
 **Read the evidence file when a rule's reasoning matters.** CLAUDE.md carries the RULE and
@@ -15,72 +15,75 @@ commands disagree.
 
 ## 1. Repo position
 
-- Working branch **`claude/broad-scan-hekdj0`**. PR **#100** (the 2026-08 broad-scan
-  cycle) merged earlier as `1df3fbb`; the branch was restarted and now carries the
-  Mardu-family work, which is being PR'd and merged at this handoff's writing. After
-  that merge the branch must be RESTARTED from `main` again before any new commit
-  (CLAUDE.md Git rules).
-- Gates green: `check_all` all invariants hold, zero soft warnings; 922 tests.
-- Collection: 1,895 cards; the deck roster now runs through **58** (see §2).
+- Working branch **`claude/broad-scan-hekdj0`**. PRs #101–#104 all merged; the branch was
+  restarted from `main` after each. **If the current PR is merged when you resume, restart
+  the branch from `main` before the first new commit** (CLAUDE.md Git rules).
+- Gates green: `check_all` all invariants hold; 939 tests. One standing SOFT warning:
+  decks 26a and 50 name `Rogue's Passage (FDN) 264`, a printing the repo does not hold —
+  fix with `deck.py resolve` next time either deck is touched.
+- Collection ~1,985 cards; roster runs through **deck 63**.
 
-## 2. What the 2026-08-04/05 sessions did
+## 2. What the 2026-08-05/06 sessions did
 
-1. **Seven decks from one pile family.** The 131-card Mardu pile produced **55 Mardu
-   Waves** (Mobilize pulse, A PROV), **55a Spellstorm** (cast-cadence, A PROV), **55b
-   Airbender** (exile-cast, B PROV argued under the floor). The user then extended the
-   pile (+59 cards, three concepts); the addendum verdicts produced **56 One Fell Swoop**
-   (Boros ultra-tall — the white package beat the green in a drafted A/B on every axis),
-   **56a Overgrowth** (the Gruul variant, revived with green's own protection suite),
-   **57 Jeskai Tempest** (prowess tempo; the pile has ZERO mono-U spells — first tuning
-   axis is crafting blue tempo), and **58 Gold Standard** (Jund Treasure economy around
-   Roxanne's token-mana doubling; the RGB concept that finally had an unclaimed
-   identity). Concept G (generic RGB) was proven infeasible-as-stated by count (zero G/B
-   cards in the pile; deck 8 already owns BRG sacrifice).
-2. **Tuning swaps applied** (all quality-guarded, ledger-recorded): 55a — Equilibrium
-   Adept + Antiquities in, Blazing Firesinger + Pigment Wrangler out; 55 — Taii Wakeen
-   in for one Lightning Helix, Jolly Balloon Man in for Snow Villiers; 58 — Callous
-   Sell-Sword in for one Lightless Evangel; 55b — Red Tiger Mechan recorded as a
-   flex-line craft (user keeps Longhorn after the plot ruling: the plotted card's BODY
-   comes back, cast free from exile, feeding Zuko/Appa/Quintorius).
-3. **`.cycle/55-mardu-analysis.md` deleted (again, finally)** — every durable finding
-   lives in the seven decks' `#:` headers; the addendum's batch verdicts are in git
-   history of that file.
-4. Two doc residuals recorded from real incidents: G-66 (targets counts CARDS — a token
-   economy reads false-thin; deck 58) and K-03 (a card keying a TYPE it never carries —
-   Gilgamesh's "Equipment cards" — is tag-invisible, so suggest-homes missed deck 39).
+1. **Five new decks, four of them from owned cards only.** **59 Stampede Engine** (Gruul
+   combat-ramp: attacking makes mana, mana buys creatures — the third corner of the
+   combat-mana triangle), **60 Redline** (Rakdos max speed, the roster's first Start your
+   engines! deck), **60a Night Circuit** (the UB speed-DRAIN variant 60's notes parked —
+   drain ticks speed without combat), **61 Pony Express** (GW Mounts on a +1/+1 counter
+   spine), **62 Rot and Bloom** (the first Sultai deck — wraths that draw, feeding
+   reanimation), **63 Heirloom** (Abzan +1/+1 counters — see §4).
+2. **Tooling: eight findings implemented** (`/broad-implement #1-8`, block in
+   `.cycle/blocks/`). The two that change daily work: **craft views now carry `⚠rot`**
+   (`check`, `wildcards`, and the new `wildcards --dedup` cross-deck union), and the
+   **rationale audit now DETECTS shorthand citations** of absent cards. Also `resolve
+   --expect N` (caught a 59-card draft three times since), vanilla-vs-data-gap messaging,
+   counters-payoff patterns, and `make postedit`.
+3. **Rotation-proofing, twice.** Deck 28's craft plan held FOUR cards rotating within
+   months; deck 36's held one. Both fixed by swapping to owned rotation-safe cards. **Deck
+   49 still holds EIGHT** and its Route A plan is written but NOT applied — see §3.
+4. **Ingests:** two crafted batches (14 + 2) and one 16-card TDM pack, all verified
+   16/16-style by `verify_ingest`, with the placement swaps applied across ~20 decks.
 
-## 3. Open work, in priority order
+## 3. The agreed next task
 
-1. **`.cycle/54-pile-reanalysis.md` §5/§5b — the queued swap plans for decks 54/54a/54b
-   are STILL not applied** (verified against git: decks/54 untouched since PR #99).
-   Apply via /apply-changes or re-judge, then delete that doc.
-2. **Pending placements the user is still considering** (cut candidates already
-   delivered in-session; screens/homes verified): Mabel + Gilgamesh + Veteran Guardmouse
-   → deck 39 (cuts: Slash of Light, Go Ninja Go, Barret Wallace); Zidane → 45 (cut
-   Bitter Triumph); Aziza → 55a (cut Thunder Salvo; 57 weaker — tap-cost fights tempo);
-   Team Avatar → 55 as a flex line (attacks-alone reads the wave — documented ruling);
-   Leyline of the Guildpact → 17 (cut Bender's Waterskin).
-3. **Wildcard/pack guidance delivered:** craft directly Castle Doom (7 decks), Electro
-   (6), Appa (6), Cosmogrand (5); pack priority FDN > TDM > OTJ > EOE; avoid LCI/WOE
-   packs (rotating ~2026).
-4. The 56-core-vs-56a A/B continues in real games — whichever wins takes the buildable
-   slot; 57's blue-tempo craft axis; 58's engine speed decides its B-vs-floor letter.
-5. Standing roadmap bets, owner-paced: log the first matches (`matches.csv` still
-   empty), deck lifecycle status, keyword theming Tier 1 (`keyword_baseline.txt`).
-6. app.py's Flask routes and build_gallery's HTML output remain the two untested
-   surfaces (need a Flask test client / HTML assertions — a different harness class).
+**Deck 49 Scaleforge rotation-proofing — Route A, proposed and NOT applied.** The user
+said "I will hold off on these changes for now," so it is queued, not rejected. The plan,
+already measured:
 
-## 4. Traps that cost time this session
+- −Gishath / +Etali, Primal Storm (owned) · −Palani's Hatcher / +Savage Land Dinosaur
+  (owned) · −Decadent Dragon / +Nova Hellkite (owned) · −Realm-Scorcher Hellkite /
+  +Steel Hellkite (craft R, safe) · −Flick a Coin / +Molten Exhale (craft C, safe)
+- Effect: craft plan 18 → 15, three rares of rotating wildcards saved, and the only
+  rotating cards left are the 2027 trio (Dragonhawk, Terror of the Peaks, Three Tree
+  City) which the user must decide on — a year of Standard for premium cards.
+- Do NOT re-derive this; the measurements are in the transcript and the plan is stable.
 
-- A same-pile sibling deck goes in the CORE deck's directory as `NNx-slug.txt`
-  (`decks/55-mardu-waves/55a-spellstorm.txt`), NOT its own `decks/55a-…/deck.txt` —
-  the id won't parse otherwise.
-- `tier --audit-rationale` reads "copies a Seething Song" as a stale card citation —
-  phrase similes as effects ("a +5 red burst"), not card names.
-- Hand-dated rotation years were wrong twice; `deck.py rotation` has the per-deck
-  years — cite it, don't date sets from memory.
-- Never hand-write a collector number even in a scripted replacement — Temple of
-  Malady went in as 702 against resolve's 700 (G-65's exact failure, caught by legal).
-- `suggest-homes`' KEY can be label-only (generic tag overlap) AND its misses can be
-  structural (the K-03 tag hole) — judge every label against the card's text and the
-  target deck's engine before acting.
+## 4. Standing items, owner-paced
+
+- **`matches.csv` is still EMPTY.** ~12 decks now carry "B/A PROVISIONAL — re-grade after
+  real games" and zero games are recorded. Every tier argument on the new decks is
+  unfalsifiable until `/log-matches` runs once. This is the single largest gap in the
+  project and it needs the user, not the tooling.
+- **October rotation pass is pre-loaded**: deck 28's flex block names successors for its
+  six owned rotating cards; deck 28a has never had the pass; deck 36 loses Kutzil with no
+  safe replacement for his "opponents can't cast spells during your turn" half.
+- **Deck 63's first upgrade is PROTECTION, not more counters** — it runs three modal
+  answers after the 2026-08 pass; Daydream and Airtight Alibi are benched as flex lines
+  with their reasons.
+
+## 5. Traps this cycle re-confirmed
+
+- **Never hand-write `(SET) COLLECTOR#`** — use `deck.py resolve`. Violated twice in
+  earlier cycles; the `Rogue's Passage` soft warning above is the same class, still open.
+- **`resolve` does not count for you unless you ask** — pass `--expect 60`. Three
+  from-scratch drafts resolved to 59 this cycle and the flag caught all three.
+- **A swap's prose goes stale BY CONSTRUCTION.** Run `tier <id> --audit-rationale` after
+  every apply; this cycle it caught seven stale figures and one cut-card citation in a
+  single batch. Fix them in the SAME commit.
+- **Copies are fungible.** "Already used elsewhere" is never a reason to exclude a card —
+  one owned copy plays in every deck simultaneously. This came up explicitly this cycle
+  and the answer changed a deck-building decision.
+- **A theme miss is not a color-identity gap.** `suggest-homes` returning zero rows means
+  no shared CENTRAL THEME, not that no deck of those colors exists — reporting the second
+  when you measured the first produced a wrong "you have no Abzan deck" claim (you have
+  four). Check `#: colors:` before concluding a color pair is unbuilt.
