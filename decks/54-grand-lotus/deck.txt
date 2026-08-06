@@ -18,7 +18,8 @@
 #: tier:     two payoffs SCALE with the count rather than switching on — Combustion
 #: tier:     Technique and Bumi's X — and those lost about a fifth of their ceiling. Price a
 #: tier:     Lesson cut against them, not against the gates.
-#: tier:   TIGHT CURVE — yes. 3.11 average after the 2026-08 plan pass.
+#: tier:   TIGHT CURVE — yes. 3.2 average after the 2026-08 plan pass and the
+#: tier:   Mammoth Bellow add.
 #: tier:   AT MOST ONE CLEAR WEAKNESS — no, and the two COMPOUND badly.
 #: tier:     (1) THE MANABASE, and the 2026-08 pass was aimed squarely at it. Three colours
 #: tier:     on 25 lands, deepest colour 12 sources; Improvisation Capstone still casts on
@@ -124,7 +125,7 @@
 1 First-Time Flyer (TLA) 49
 1 Fire Nation Cadets (TLA) 134
 1 Dragonfly Swarm (TLA) 215
-1 Platypus-Bear (TLA) 236
+1 Mammoth Bellow (TDM) 205
 1 Gran-Gran (TLA) 54
 1 Hermitic Herbalist (TLA) 226
 1 Bloom Tender (ECL) 166

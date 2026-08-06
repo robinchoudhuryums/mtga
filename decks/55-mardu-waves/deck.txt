@@ -48,7 +48,8 @@
 # Wave engines
 2 Zurgo, Thunder's Decree (TDM) 237
 2 Zurgo's Vanguard (TDM) 133
-2 Stadium Headliner (TDM) 122
+1 Stadium Headliner (TDM) 122
+1 Mardu Monument (TDM) 245
 2 Bone-Cairn Butcher (TDM) 173
 1 Fire Navy Trebuchet (TLA) 100
 1 Mardu Siegebreaker (TDM) 206

@@ -83,7 +83,7 @@
 1 Thunder Magic (FIN) 165
 1 Impractical Joke (SOS) 119
 1 Bitter Triumph (SOA) 26
-1 Dark Deed (MSH) 93
+1 Unsparing Boltcaster (TDM) 130
 1 Heartless Act (TLA) 103
 1 Tribute to Hunger (FDN) 614
 1 Mana Sculpt (SOS) 57

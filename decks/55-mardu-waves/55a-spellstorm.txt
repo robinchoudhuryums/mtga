@@ -71,7 +71,8 @@
 1 Practiced Offense (SOS) 25
 
 # Removal (scales with the spell count)
-2 Thunder Salvo (OTJ) 150
+1 Thunder Salvo (OTJ) 150
+1 Overwhelming Surge (TDM) 115
 2 Frantic Firebolt (WOE) 130
 
 # Lands

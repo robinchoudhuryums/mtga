@@ -174,7 +174,7 @@
 
 # Interaction — also the deck's only defence
 1 Abrade (FDN) 188
-1 Plasma Bolt (EOE) 152
+1 Overwhelming Surge (TDM) 115
 1 Fiery Annihilation (FDN) 86
 1 Bullseye, Death Dealer (MSH) 209
 1 Iron-Fist Pulverizer (OTJ) 131

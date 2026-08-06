@@ -55,7 +55,7 @@
 2 Jolene, Plundering Pugilist (OTJ) 210
 2 Flamekin Gildweaver (ECL) 140
 2 Terrapact Intimidator (EOE) 164
-1 Generous Plunderer (BIG) 11
+1 War Effort (TDM) 131
 1 Brass's Bounty (FDN) 190
 1 Reckless Ransacking (ECL) 152
 
@@ -77,7 +77,7 @@
 # Draw / removal (sac-fueled)
 2 Kingpin's Enforcers (MSH) 102
 2 Fanatical Offering (LCI) 105
-1 Tarrian's Journal // The Tomb of Aclazotz (LCI) 126
+1 Salt Road Skirmish (TDM) 88
 2 Deadly Precision (TLA) 95
 
 # Lands
@@ -92,3 +92,6 @@
 6 Mountain (MSH) 293
 6 Swamp (MSH) 291
 4 Forest (MSH) 296
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 58
+#~ -War Effort | +Generous Plunderer | benched 2026-08 for War Effort: a menace body whose upkeep Treasure is symmetric (the opponent gets one too) and whose attack damage scales with THEIR artifact count, not ours — good in an artifact meta, worse as generic fodder. Bring it back if the Warrior tokens prove surplus.

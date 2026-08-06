@@ -144,7 +144,6 @@ Gangly Stompling
 Gas Guzzler
 Gastal Raider
 Gather the White Lotus
-Generous Plunderer
 Genji Glove
 Ghost, Spectral Saboteur
 Ghostly Keybearer
@@ -228,6 +227,7 @@ Madame Web, Clairvoyant
 Magitek Armor
 Mai, Scornful Striker
 Mardu Devotee
+Mardu Monument
 Mechanical Mobster
 Mechanized Ninja Cavalry
 Metalhead
