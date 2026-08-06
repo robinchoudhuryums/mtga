@@ -57,7 +57,8 @@
 1 Jeskai Revelation (TDM) 196
 
 # Cheap spells (prowess fuel)
-2 Lightning Helix (MKM) 218
+1 Lightning Helix (MKM) 218
+1 Riptide Gearhulk (DFT) 219
 1 Boros Charm (FDN) 721
 1 Wingblade Disciple (TDM) 65
 1 Aziza, Mage Tower Captain (SOS) 174

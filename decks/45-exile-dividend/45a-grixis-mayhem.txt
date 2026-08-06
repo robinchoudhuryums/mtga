@@ -30,8 +30,8 @@
 #: archetype: wins by decking; this discards to re-CAST, and the graveyard is a second hand
 #: archetype: rather than a resource to grow. Against 37 Wizardz (also UBR) the spine is
 #: archetype: different: 37 is Wizard tribal with noncombat-damage pingers.
-#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 12
-#: tier: across a 2.75 curve, but three things hold it a band below:
+#: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 11
+#: tier: across a 2.81 curve, but three things hold it a band below:
 #: tier: 1. THE PAYOFF IS THE ONE CRAFT TARGET. Norman Osborn // Green Goblin is a single
 #: tier:    unowned mythic, ~22% to be seen by turn seven, and he is what converts the
 #: tier:    flashback half into the mayhem engine. Without him the deck is a competent
@@ -65,6 +65,7 @@
 1 Raging Goblinoids (SPM) 85
 
 # Flashback / recursion — the other half of the graveyard plan
+1 Coalstoke Gearhulk (DFT) 198
 1 Think Twice (FDN) 165
 1 Dreams of Laguna (FIN) 50
 1 Tome Blast (SOS) 135
@@ -95,7 +96,6 @@
 1 Long Goodbye (MKM) 92
 1 Bitter Triumph (SOA) 26
 1 Feed the Swarm (SOA) 29
-1 Hero's Downfall (FDN) 175
 1 Weftstalker Ardent (EOE) 169
 
 # Lands
