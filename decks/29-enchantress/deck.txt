@@ -26,7 +26,7 @@
 1 Alien Invasion (MSH) 200
 1 Political Triumph (MSH) 31
 1 Death to Our Enemies (MSH) 127
-1 Firebender Ascension (TLA) 137
+1 Leaves from the Vine (TLA) 185
 1 Enduring Courage (DSK) 133
 1 Claim the Kingdom (MSH) 163
 1 Garruk's Uprising (FDN) 220
@@ -58,7 +58,7 @@
 1 The Cave of Two Lovers (TLA) 126
 
 # Lands (23 — Naya fixing: 11 owned duals + 12 basics)
-1 Restless Ridgeline (LCI) 283
+1 Training Compound (MSH) 275
 1 Blossoming Sands (M21) 244
 1 Hushwood Verge (DSK) 261
 1 Gathering Place (MSH) 266
@@ -69,7 +69,9 @@
 1 Sunbillow Verge (DFT) 264
 1 Temple of Triumph (FDN) 705
 1 Abraded Bluffs (OTJ) 251
-6 Forest
+4 Forest
+1 Suburban Sanctuary (SPM) 185
+1 Kyoshi Village (TLA) 271
 3 Plains
 3 Mountain
 
