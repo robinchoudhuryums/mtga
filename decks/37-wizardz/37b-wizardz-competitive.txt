@@ -75,7 +75,7 @@
 # Noncreature — removal / counters (light interaction package)
 1 Thunder Magic (FIN) 165
 1 Lightning Strike (MSH) 142
-1 Bitter Triumph (SOA) 26
+1 Unsparing Boltcaster (TDM) 130
 1 Magic Damper (FIN) 61
 1 Mana Sculpt (SOS) 57
 
