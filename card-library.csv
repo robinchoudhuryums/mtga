@@ -4277,3 +4277,44 @@ Embalmed Ascendant,Creature — Zombie,"Start your engines! (If you have no spee
 When this creature enters, create a 2/2 black Zombie creature token.
 Max speed — Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life.",W/B,Zombie; lifegain; tokens; etb; max speed; speed; aggro; start your engines!,DFT,201,1
 "Tyrox, Saurid Tyrant",Legendary Creature — Dinosaur Warrior,,R,Dinosaur; Warrior,DFT,149,1
+Endrider Spikespitter,Creature — Human Mercenary,"Reach
+Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+Max speed — At the beginning of your upkeep, exile the top card of your library. You may play that card this turn.",R,Human; Mercenary; impulse; reach; defense; max speed; speed; aggro; start your engines!,DFT,125,1
+Scrounging Skyray,Creature — Fish Pirate,"Flying
+Whenever you discard one or more cards, put that many +1/+1 counters on this creature.
+Cycling {2} ({2}, Discard this card: Draw a card.)",U,Fish; Pirate; counters; card draw; flying; evasion; cycling,DFT,60,1
+Cloudspire Captain,Creature — Human Pilot,"Mounts and Vehicles you control get +1/+1.
+This creature saddles Mounts and crews Vehicles as though its power were 2 greater.",W,Human; Pilot; pump,DFT,9,1
+Shefet Archfiend,Creature — Demon,"Flying
+When this creature enters, all other creatures get -2/-2 until end of turn.
+Cycling {2} ({2}, Discard this card: Draw a card.)",B,Demon; card draw; etb; flying; evasion; cycling,DFT,104,1
+Road Rage,Instant,"Road Rage deals X damage to target creature or planeswalker, where X is 2 plus the number of Mounts and Vehicles you control.",R,burn,DFT,145,1
+Momentum Breaker,Enchantment,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+When this enchantment enters, each opponent sacrifices a creature or Vehicle of their choice. Each opponent who can't discards a card.
+{2}, Sacrifice this enchantment: You gain life equal to your speed.",B,lifegain; sacrifice; etb; discard; start your engines!; speed,DFT,97,1
+Dredger's Insight,Enchantment,"Whenever one or more artifact and/or creature cards leave your graveyard, you gain 1 life.
+When this enchantment enters, mill four cards. You may put an artifact, creature, or land card from among the milled cards into your hand. (To mill four cards, put the top four cards of your library into your graveyard.)",G,graveyard; mill; lifegain; etb,DFT,159,1
+Back on Track,Sorcery,"Return target creature or Vehicle card from your graveyard to the battlefield. Create a 1/1 colorless Pilot creature token with ""This token saddles Mounts and crews Vehicles as though its power were 2 greater.""",B,reanimator; graveyard; tokens,DFT,76,1
+Aether Syphon,Artifact,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+{2}, {T}: Draw a card.
+Max speed — Whenever you draw a card, each opponent mills two cards. (Each opponent puts the top two cards of their library into their graveyard.)",U,graveyard; mill; card draw; max speed; speed; aggro; start your engines!,DFT,38,1
+Earthrumbler,Artifact — Vehicle,"Vigilance, trample
+Exile an artifact or creature card from your graveyard: This Vehicle becomes an artifact creature until end of turn.
+Crew 3 (Tap any number of creatures you control with total power 3 or more: This Vehicle becomes an artifact creature until end of turn.)",G,Vehicle; graveyard; vehicle; vigilance; combat; crew; vehicles; trample; evasion,DFT,160,1
+Rover Blades,Artifact — Equipment Vehicle,"Double strike
+Equipped creature has double strike.
+Equip {4}
+Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn. Creatures can't be attached to other permanents.)",Colorless,Equipment; Vehicle; equipment; vehicle; crew; vehicles; equip; double strike; combat; aggro,DFT,241,1
+Howler's Heavy,Creature — Seal Pirate,"Cycling {1}{U} ({1}{U}, Discard this card: Draw a card.)
+When you cycle this card, target creature or Vehicle an opponent controls gets -3/-0 until end of turn.",U,Seal; Pirate; card draw; removal; cycling,DFT,46,1
+Crash and Burn,Instant,"Choose one —
+• Destroy target Vehicle.
+• Crash and Burn deals 6 damage to target creature or planeswalker.",R,removal; burn,DFT,119,1
+Beastrider Vanguard,Creature — Human Knight,{4}{G}: Look at the top three cards of your library. You may reveal a permanent card from among them and put it into your hand. Put the rest on the bottom of your library in any order.,G,Human; Knight; selection,DFT,154,1
+Silken Strength,Enchantment — Aura,"Flash
+Enchant creature or Vehicle
+When this Aura enters, untap enchanted permanent.
+Enchanted permanent gets +1/+2 and has reach.",G,Aura; etb; aura; pump; enchant; flash; tempo,DFT,180,1
+Hazard of the Dunes,Creature — Wurm,"Trample, reach
+Exhaust — {6}{G}: Put three +1/+1 counters on this creature. (Activate each exhaust ability only once.)",G,Wurm; counters; reach; defense; trample; evasion; exhaust; payoff,DFT,165,1
+Pothole Mole,Creature — Mole,"When this creature enters, mill three cards, then you may return a land card from your graveyard to your hand. (To mill three cards, put the top three cards of your library into your graveyard.)",G,Mole; graveyard; mill; etb,DFT,176,1

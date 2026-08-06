@@ -2011,6 +2011,23 @@ Coalstoke Gearhulk,{1}{B}{B}{R}{R},5,Menace;Deathtouch
 Skyserpent Seeker,{G}{U},2,Deathtouch;Flying;Exhaust
 Embalmed Ascendant,{1}{W}{B},3,Max speed;Start your engines!
 "Tyrox, Saurid Tyrant",{1}{R},2,
+Endrider Spikespitter,{3}{R},4,Reach;Max speed;Start your engines!
+Scrounging Skyray,{1}{U},2,Flying;Cycling
+Cloudspire Captain,{2}{W},3,
+Shefet Archfiend,{5}{B}{B},7,Flying;Cycling
+Road Rage,{R},1,
+Momentum Breaker,{1}{B},2,Start your engines!
+Dredger's Insight,{1}{G},2,Mill
+Back on Track,{4}{B},5,
+Aether Syphon,{1}{U}{U},3,Max speed;Mill;Start your engines!
+Earthrumbler,{4}{G},5,Vigilance;Crew;Trample
+Rover Blades,{3},3,Crew;Equip;Double strike
+Howler's Heavy,{3}{U},4,Cycling
+Crash and Burn,{3}{R},4,
+Beastrider Vanguard,{1}{G},2,
+Silken Strength,{1}{G},2,Enchant;Flash
+Hazard of the Dunes,{3}{G},4,Reach;Trample;Exhaust
+Pothole Mole,{2}{G},3,Mill
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3254,7 +3271,6 @@ Brightfield Glider,{W},1,Saddle;Vigilance
 Brightfield Mustang,{3}{W},4,Saddle
 Broadcast Rambler,{4}{W},5,Crew
 Canyon Vaulter,{1}{W},2,
-Cloudspire Captain,{2}{W},3,
 Collision Course,{1}{W},2,
 Detention Chariot,{4}{W}{W},6,Crew;Cycling
 Gallant Strike,{1}{W},2,Cycling
@@ -3278,11 +3294,9 @@ Spotcycle Scouter,{1}{W},2,Crew;Scry
 Swiftwing Assailant,{3}{W},4,Flying;Max speed;Start your engines!
 Tune Up,{3}{W},4,
 Voyager Quickwelder,{2}{W},3,
-Aether Syphon,{1}{U}{U},3,Max speed;Mill;Start your engines!
 Flood the Engine,{2}{U},3,Enchant
 Gearseeker Serpent,{5}{U}{U},7,Affinity
 Guidelight Optimizer,{1}{U},2,
-Howler's Heavy,{3}{U},4,Cycling
 Hulldrifter,{3}{U}{U},5,Flying;Crew
 Keen Buccaneer,{2}{U},3,Vigilance;Exhaust
 Memory Guardian,{4}{U},5,Flying;Affinity
@@ -3293,7 +3307,6 @@ Rangers' Refueler,{1}{U},2,Crew;Exhaust
 Repurposing Bay,{2}{U},3,
 Riverchurn Monument,{1}{U},2,Exhaust;Mill
 Sabotage Strategist,{2}{U}{U},4,Flying;Vigilance;Exhaust
-Scrounging Skyray,{1}{U},2,Flying;Cycling
 Skystreak Engineer,{1}{U},2,Flying;Exhaust
 Slick Imitator,{1}{U},2,Max speed;Start your engines!
 Spectral Interference,{1}{U},2,
@@ -3304,7 +3317,6 @@ Trade the Helm,{4}{U},5,Cycling
 Transit Mage,{2}{U},3,
 Unstoppable Plan,{2}{U},3,
 Ancient Vendetta,{3}{B},4,
-Back on Track,{4}{B},5,
 Bloodghast,{B}{B},2,Landfall
 Carrion Cruiser,{2}{B},3,Crew;Mill
 Chitin Gravestalker,{5}{B},6,Cycling
@@ -3321,11 +3333,9 @@ Hour of Victory,{2}{B},3,Max speed;Start your engines!
 Intimidation Tactics,{B},1,Cycling
 "Kalakscion, Hunger Tyrant",{1}{B}{B},3,
 Maximum Overdrive,{1}{B},2,
-Momentum Breaker,{1}{B},2,Start your engines!
 Mutant Surveyor,{2}{B},3,Max speed;Start your engines!
 Pactdoll Terror,{3}{B},4,
 Ripclaw Wrangler,{3}{B},4,Crew
-Shefet Archfiend,{5}{B}{B},7,Flying;Cycling
 The Speed Demon,{3}{B}{B},5,Flying;Trample;Start your engines!
 Spin Out,{1}{B}{B},3,
 Streaking Oilgorger,{4}{B},5,Flying;Max speed;Haste;Start your engines!
@@ -3339,11 +3349,9 @@ Burner Rocket,{1}{R},2,Crew;Flash
 Burnout Bashtronaut,{R},1,Max speed;Menace;Start your engines!
 "Chandra, Spark Hunter",{3}{R},4,
 Clamorous Ironclad,{3}{R},4,Crew;Menace;Cycling
-Crash and Burn,{3}{R},4,
 "Daretti, Rocketeer Engineer",{4}{R},5,
 Dynamite Diver,{R},1,
 Endrider Catalyzer,{1}{R},2,Max speed;Start your engines!
-Endrider Spikespitter,{3}{R},4,Reach;Max speed;Start your engines!
 Fuel the Flames,{2}{R},3,Cycling
 Full Throttle,{4}{R}{R},6,
 Gastal Blockbuster,{2}{R},3,
@@ -3359,7 +3367,6 @@ Pedal to the Metal,{X}{R},1,
 Prowcatcher Specialist,{1}{R},2,Haste;Exhaust
 Push the Limit,{5}{R}{R},7,
 Reckless Velocitaur,{3}{R},4,
-Road Rage,{R},1,
 Skycrash,{1}{R},2,Cycling
 Spire Mechcycle,{4}{R},5,Haste;Crew;Exhaust
 Thunderhead Gunner,{4}{R},5,Reach
@@ -3367,16 +3374,12 @@ Afterburner Expert,{2}{G},3,Exhaust
 Agonasaur Rex,{3}{G}{G},5,Trample;Cycling
 Alacrian Jaguar,{4}{G},5,Saddle;Vigilance
 Autarch Mammoth,{4}{G}{G},6,Saddle
-Beastrider Vanguard,{1}{G},2,
 Bestow Greatness,{2}{G},3,
 Defend the Rider,{G},1,
 District Mascot,{G},1,Saddle
-Dredger's Insight,{1}{G},2,Mill
-Earthrumbler,{4}{G},5,Vigilance;Crew;Trample
 Elvish Refueler,{2}{G},3,Exhaust
 Fang Guardian,{3}{G},4,Flash
 Fang-Druid Summoner,{3}{G},4,Reach
-Hazard of the Dunes,{3}{G},4,Reach;Trample;Exhaust
 Loxodon Surveyor,{2}{G},3,Max speed;Start your engines!
 Lumbering Worldwagon,{2}{G},3,Crew
 Migrating Ketradon,{4}{G}{G},6,Reach;Cycling
@@ -3385,10 +3388,8 @@ Ooze Patrol,{3}{G},4,Mill
 "Oviya, Automech Artisan",{3}{G},4,
 Plow Through,{G},1,Fight
 Point the Way,{G},1,Start your engines!
-Pothole Mole,{2}{G},3,Mill
 Regal Imperiosaur,{1}{G}{G},3,
 Rise from the Wreck,{2}{G},3,
-Silken Strength,{1}{G},2,Enchant;Flash
 Stampeding Scurryfoot,{G},1,Exhaust
 Thunderous Velocipede,{1}{G}{G},3,Crew;Trample
 Veloheart Bike,{2}{G},3,Crew
@@ -3431,7 +3432,6 @@ Marketback Walker,{X}{X},0,
 Marshals' Pathcruiser,{3},3,Crew;Exhaust
 Pit Automaton,{2},2,Defender
 Racers' Scoreboard,{4},4,Max speed;Start your engines!
-Rover Blades,{3},3,Crew;Equip;Double strike
 Skybox Ferry,{5},5,Flying;Crew;Cycling
 Starting Column,{3},3,Max speed;Start your engines!
 Ticket Tortoise,{2},2,Treasure;Defender
