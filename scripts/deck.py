@@ -8775,6 +8775,18 @@ def tier_consistency_issues():
 # ("dense interaction (12)", "card advantage is thinner (3)") and drops every breakdown.
 _FIG_GAP = r"[  ]+(?:[a-z]+[  ]+){0,2}"
 _FIG_PAREN = _FIG_GAP + r"\((\d+)\)"
+# The NUMBER-FIRST patterns below start with a bare `(\d+)`, which is unanchored — so it
+# happily matches the tail of a LARGER number that happens to sit before the metric word.
+# A DATE is the case that fires in practice: deck 63's rationale said "three cards after
+# the 2026-08 protection pass" and the audit reported `protection 08` against a live 4,
+# i.e. it invented a claim the prose never made. A false POSITIVE here is the expensive
+# direction — it trains you to ignore the audit, which is the one check that reads the
+# argument rather than the letter. This guard rejects a number preceded by a digit, a
+# decimal point, or a digit-hyphen (the `YYYY-MM` shape); each lookbehind is fixed-width,
+# as Python requires. It deliberately also rejects a RANGE ("2-3 interaction"), which is
+# not a precise claim and should not be audited as one.
+_FIG_NUM = r"(?<![\d.])(?<!\d-)(\d+)"
+_FIG_DEC = r"(?<![\d.])(?<!\d-)(\d+\.\d+)"
 _RATIONALE_FIGURES = [
     (re.compile(r"interaction[  ]+(\d+)", re.I), "interaction"),
     (re.compile(r"interaction" + _FIG_PAREN, re.I), "interaction"),
@@ -8795,15 +8807,15 @@ _RATIONALE_FIGURES = [
     # original patterns read — 13 interaction figures, 3 card-advantage, 1 protection,
     # none of them ever audited. Exactly the miss already recorded for avg_mv below,
     # repeated on the three axes the tier FLOOR is actually computed from.
-    (re.compile(r"(\d+)[  ]+interaction", re.I), "interaction"),
-    (re.compile(r"(\d+)[  ]+card[- ]adv(?:antage)?", re.I), "card_advantage"),
-    (re.compile(r"(\d+)[  ]+protection", re.I), "protection"),
+    (re.compile(_FIG_NUM + r"[  ]+interaction", re.I), "interaction"),
+    (re.compile(_FIG_NUM + r"[  ]+card[- ]adv(?:antage)?", re.I), "card_advantage"),
+    (re.compile(_FIG_NUM + r"[  ]+protection", re.I), "protection"),
     # …and the house phrasing, where the number comes FIRST ("a tight 2.44 curve").
     # The pattern above only reads "curve of 2.44" / "avg MV 2.44", which the rationales
     # essentially never use: roster-wide it matched ONE figure against fourteen written
     # the other way round, so the avg_mv half of this audit was decorative. Six stale
     # curve figures were sitting in the prose, invisible, when this was added.
-    (re.compile(r"(\d+\.\d+)[  ]+curve", re.I), "avg_mv"),
+    (re.compile(_FIG_DEC + r"[  ]+curve", re.I), "avg_mv"),
     # The reversal above was only ever taught the word "curve". The other house phrasing
     # for the same figure is "3.19 average" — and the FORWARD pattern requires "average"
     # to be followed by MV, so a bare number-then-"average" matched nothing in either
@@ -8811,16 +8823,16 @@ _RATIONALE_FIGURES = [
     # the audit reported the rationale CURRENT. Same shape as the G-26 residual where a
     # copula between a label and its number hides a figure: the audit is only as good as
     # its phrasing coverage, and a miss here is silent by construction.
-    (re.compile(r"(\d+\.\d+)[  ]+average", re.I), "avg_mv"),
-    (re.compile(r"(\d+)[- ]theme", re.I), "central_themes"),
-    (re.compile(r"(\d+) central themes", re.I), "central_themes"),
+    (re.compile(_FIG_DEC + r"[  ]+average", re.I), "avg_mv"),
+    (re.compile(_FIG_NUM + r"[- ]theme", re.I), "central_themes"),
+    (re.compile(_FIG_NUM + r" central themes", re.I), "central_themes"),
     (re.compile(r"protection[  ]+(\d+)", re.I), "protection"),
     (re.compile(r"protection" + _FIG_PAREN, re.I), "protection"),
     # EARLY DROPS were in the quality vector but never audited, so a count could go stale
     # in total silence — deck 23 claimed "6 one-two-drops" against a live 11. Both
     # phrasings below are taken from the roster's own prose rather than invented.
-    (re.compile(r"(\d+)[  ]+(?:early|cheap) drops?", re.I), "early_drops"),
-    (re.compile(r"(\d+)[- ]one[- ]two[- ]drops?", re.I), "early_drops"),
+    (re.compile(_FIG_NUM + r"[  ]+(?:early|cheap) drops?", re.I), "early_drops"),
+    (re.compile(_FIG_NUM + r"[- ]one[- ]two[- ]drops?", re.I), "early_drops"),
 ]
 # Words that are also real card names ("Negate", "Rest in Peace", …). Requiring a
 # multi-word name or a long single word keeps the scan quiet; a citation of a one-word

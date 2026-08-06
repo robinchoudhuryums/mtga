@@ -838,6 +838,25 @@ contrast with an absent card, suppressed positionally like the simile rule
 (`_NEGATION_AFTER`). The sweep's single surviving flag was a TRUE positive — deck 21's
 archetype still claimed Ragost as its core after Ragost moved to variant 21a.
 
+**2026-08, the FALSE-POSITIVE direction — a DATE read as a figure.** Every fix above
+widens what the audit catches; this one narrows it, and the asymmetry is the point. The
+NUMBER-FIRST figure patterns (`(\d+)[ ]+interaction`, `…protection`, `(\d+\.\d+)[ ]+curve`
+and six siblings) opened with a bare unanchored `(\d+)`, so the group matched the TAIL of
+any larger number sitting before the metric word. Deck 63's rationale said *"three cards
+after the 2026-08 protection pass"* and the audit reported **`protection 08` against a
+live 4** — a claim the prose never made, on a deck whose protection figure was correct.
+`_FIG_NUM` / `_FIG_DEC` now prefix those nine patterns with `(?<![\d.])(?<!\d-)`, which
+rejects a number preceded by a digit, a decimal point, or the `YYYY-MM` digit-hyphen
+shape (each lookbehind fixed-width, as Python requires). It also, deliberately, rejects a
+RANGE — *"2-3 interaction"* states a band, not a figure, and auditing a band against an
+exact live value would flag prose that is not making an exact claim. **Why this mattered
+more than its size suggests:** a false positive here is the expensive direction. Every
+other entry in this section documents a SILENT MISS, which costs you one stale sentence;
+a false positive trains you to skim past the audit, which costs you all of them. The fix
+was validated both ways — four unit cases pin the date, the range and the still-caught
+real figure, and a roster-wide diff of old-vs-new matching confirmed the guard rejects
+**zero** spans of genuine prose across all 95 decks.
+
 
 ## [G-27] `deck.py tier <id> --audit-rationale` catches a STALE tier argument
 

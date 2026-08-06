@@ -1894,6 +1894,37 @@ class TestRationaleStaleness:
         _cards, figs = deck.rationale_staleness(d)
         assert figs == []
 
+    # ── DATE ADJACENCY. The number-first figure patterns opened with a bare `(\d+)`,
+    # which is unanchored, so it matched the tail of any larger number sitting before
+    # the metric word. Deck 63's rationale said "three cards after the 2026-08
+    # protection pass" and the audit reported `protection 08` against a live 4 — a
+    # claim the prose never made. A false POSITIVE is the expensive direction here:
+    # it teaches you to ignore the one check that reads the argument, not the letter.
+
+    def test_a_date_before_a_metric_word_is_not_a_figure(self, tmp_path):
+        d = self._deck(tmp_path, ["B — three answers after the 2026-08 protection pass."])
+        _cards, figs = deck.rationale_staleness(d)
+        assert [f for f in figs if f[0] == "protection"] == []
+
+    def test_a_date_before_interaction_is_not_a_figure(self, tmp_path):
+        d = self._deck(tmp_path, ["B — rebuilt in the 2026-08 interaction pass."])
+        _cards, figs = deck.rationale_staleness(d)
+        assert [f for f in figs if f[0] == "interaction"] == []
+
+    def test_a_range_is_not_audited_as_a_precise_claim(self, tmp_path):
+        # "2-3 interaction" states a band, not a figure; auditing it against an exact
+        # live value would flag prose that is not making an exact claim.
+        d = self._deck(tmp_path, ["B — sits at 2-3 interaction depending on the draw."])
+        _cards, figs = deck.rationale_staleness(d)
+        assert [f for f in figs if f[0] == "interaction"] == []
+
+    def test_the_guard_does_not_silence_a_real_number_first_figure(self, tmp_path):
+        # The whole point of the number-first patterns: this deck runs 0 interaction,
+        # so a claimed 9 must still be caught. Guarding the date must not cost this.
+        d = self._deck(tmp_path, ["A — 9 interaction carries it."])
+        _cards, figs = deck.rationale_staleness(d)
+        assert any(k == "interaction" and q == "9" for k, q, _a in figs)
+
     # ── Shorthand DETECTION (broad-implement #2). Two real misses survived a clean
     # audit: deck 28 cited "Gishath" after Gishath, Sun's Avatar was cut, and deck 36
     # cited "Okinec Ahau" after Sovereign Okinec Ahau was cut. G-26's "shorthand is
