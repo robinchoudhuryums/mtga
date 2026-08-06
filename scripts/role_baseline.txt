@@ -119,6 +119,7 @@ Empyrean Eagle
 End of the Hunt
 Enigma Drake
 Enter the Enigma
+Extravagant Replication
 Falcon's Wing Harness
 Falcon, Winged Wonder
 Fated Firepower
@@ -284,7 +285,6 @@ Restorative Technique
 Return the Favor
 Risen Necroregent
 Riverchurn Monument
-Riverwheel Sweep
 Roaming Throne
 Rough Rhino Cavalry
 S.H.I.E.L.D. Spy Kit

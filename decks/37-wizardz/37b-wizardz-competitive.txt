@@ -35,7 +35,7 @@
 #: protect: Coruscation Mage; Black Waltz No. 3; Balmor, Battlemage Captain; Kefka, Court Mage; Niv-Mizzet, Visionary
 
 # Creatures — Wizard pingers (virtual copies of the win-con) / prowess payoffs / engines
-1 Spell Pierce (SOA) 23
+1 Mu Yanling, Wind Rider (DFT) 52
 1 The Emperor of Palamecia (FIN) 219
 1 Stormcatch Mentor (BLB) 234
 1 Coruscation Mage (BLB) 131

@@ -51,7 +51,7 @@
 1 Enigma Drake (FDN) 657
 
 # Value top end
-1 Shiko, Paragon of the Way (TDM) 223
+2 Shiko, Paragon of the Way (TDM) 223
 1 Jeskai Shrinekeeper (TDM) 197
 1 Monastery Messenger (TDM) 208
 1 Jeskai Revelation (TDM) 196
@@ -65,7 +65,6 @@
 2 Haste Magic (FIN) 140
 2 Ancestors' Aid (LCI) 132
 1 Frontline Rush (TDM) 186
-1 Riverwheel Sweep (TDM) 219
 
 # Lands
 2 Mystic Monastery (TDM) 262

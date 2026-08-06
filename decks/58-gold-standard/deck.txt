@@ -10,7 +10,8 @@
 #: archetype: the mana engine — every artifact TOKEN tapped for mana yields double,
 #: archetype: so each Treasure cracks for two and her Meteorites ramp AND burn; and
 #: archetype: the payoff layer spends the currency four ways: counters (Crime
-#: archetype: Novelist, Elvish Archivist, Pirate Peddlers, Lightless Evangel), bodies
+#: archetype: Novelist, Elvish Archivist, Pirate Peddlers; Lightless Evangel was CUT for
+#: archetype: Rot-Curse Rakshasa, whose decayed body feeds the same outlets), bodies
 #: archetype: (Krenko's goblin per artifact death, Magda's 4/4 dragons, Aatchik's
 #: archetype: swarm), cards (Kingpin's Enforcers, Fanatical Offering, Tarrian's
 #: archetype: Journal, Fountainport), and damage (Food Fight turns every token into
@@ -66,7 +67,7 @@
 2 Krenko, Baron of Tin Street (MKM) 135
 2 Elvish Archivist (WOE) 168
 2 Pirate Peddlers (TLA) 115
-1 Lightless Evangel (EOE) 109
+1 Rot-Curse Rakshasa (TDM) 87
 1 Callous Sell-Sword // Burn Together (WOE) 221
 1 Aatchik, Emerald Radian (DFT) 187
 1 Ygra, Eater of All (BLB) 241
