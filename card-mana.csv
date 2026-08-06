@@ -2028,6 +2028,24 @@ Beastrider Vanguard,{1}{G},2,
 Silken Strength,{1}{G},2,Enchant;Flash
 Hazard of the Dunes,{3}{G},4,Reach;Trample;Exhaust
 Pothole Mole,{2}{G},3,Mill
+Ripclaw Wrangler,{3}{B},4,Crew
+Syphon Fuel,{4}{B},5,
+Engine Rat,{B},1,Deathtouch
+Lightwheel Enhancements,{W},1,Max speed;Enchant;Start your engines!
+Goblin Surveyor,{2}{R},3,Max speed;Trample;Start your engines!
+Pactdoll Terror,{3}{B},4,
+Progenitus,{W}{W}{U}{U}{B}{B}{R}{R}{G}{G},10,Protection
+Twinflame Tyrant,{3}{R}{R},5,Flying;Double
+An Offer You Can't Refuse,{U},1,Treasure
+Fishing Pole,{1},1,Equip
+"Dwynen, Gilt-Leaf Daen",{2}{G}{G},4,Reach
+Overrun,{2}{G}{G}{G},5,
+Revenge of the Rats,{2}{B}{B},4,Flashback
+Lightshell Duo,{3}{U},4,Surveil;Prowess
+Gnarlid Colony,{1}{G},2,Kicker
+Grow from the Ashes,{2}{G},3,Kicker
+Cathar Commando,{1}{W},2,Flash
+Champions of the Perfect,{3}{G},4,Behold
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3280,7 +3298,6 @@ Guidelight Synergist,{3}{W},4,Flying
 Interface Ace,{1}{W},2,
 Leonin Surveyor,{1}{W},2,Max speed;Start your engines!
 Lightshield Parry,{W},1,Cycling
-Lightwheel Enhancements,{W},1,Max speed;Enchant;Start your engines!
 Lotusguard Disciple,{2}{W},3,Flying
 Nesting Bot,{W},1,Max speed;Start your engines!
 Perilous Snare,{2}{W},3,Max speed;Start your engines!
@@ -3323,7 +3340,6 @@ Chitin Gravestalker,{5}{B},6,Cycling
 Cryptcaller Chariot,{3}{B},4,Crew;Menace
 Cursecloth Wrappings,{2}{B}{B},4,
 Demonic Junker,{6}{B},7,Affinity;Crew
-Engine Rat,{B},1,Deathtouch
 Gastal Raider,{2}{B},3,Max speed;Start your engines!
 "Gonti, Night Minister",{2}{B}{B},4,Treasure
 Grim Bauble,{B},1,Surveil
@@ -3334,12 +3350,9 @@ Intimidation Tactics,{B},1,Cycling
 "Kalakscion, Hunger Tyrant",{1}{B}{B},3,
 Maximum Overdrive,{1}{B},2,
 Mutant Surveyor,{2}{B},3,Max speed;Start your engines!
-Pactdoll Terror,{3}{B},4,
-Ripclaw Wrangler,{3}{B},4,Crew
 The Speed Demon,{3}{B}{B},5,Flying;Trample;Start your engines!
 Spin Out,{1}{B}{B},3,
 Streaking Oilgorger,{4}{B},5,Flying;Max speed;Haste;Start your engines!
-Syphon Fuel,{4}{B},5,
 Wickerfolk Indomitable,{3}{B},4,
 Wreckage Wickerfolk,{1}{B},2,Flying;Surveil
 Wretched Doll,{1}{B},2,Surveil
@@ -3356,7 +3369,6 @@ Fuel the Flames,{2}{R},3,Cycling
 Full Throttle,{4}{R}{R},6,
 Gastal Blockbuster,{2}{R},3,
 Gastal Thrillroller,{2}{R},3,Haste;Crew;Trample
-Goblin Surveyor,{2}{R},3,Max speed;Trample;Start your engines!
 Greasewrench Goblin,{R},1,Exhaust
 Howlsquad Heavy,{2}{R},3,Max speed;Start your engines!
 Kickoff Celebrations,{1}{R},2,Max speed;Start your engines!
@@ -4308,7 +4320,6 @@ Blossoming Defense,{G},1,
 Bristlebane Battler,{1}{G},2,Trample;Ward
 Bristlebane Outrider,{3}{G},4,
 Celestial Reunion,{X}{G},1,Behold
-Champions of the Perfect,{3}{G},4,Behold
 Crossroads Watcher,{2}{G},3,Trample
 Dundoolin Weaver,{1}{G},2,
 Formidable Speaker,{2}{G},3,
@@ -4824,7 +4835,6 @@ Arbiter of Woe,{4}{B}{B},6,Flying
 Billowing Shriekmass,{3}{B},4,Flying;Threshold;Mill
 Infernal Vessel,{2}{B},3,
 Nine-Lives Familiar,{1}{B}{B},3,
-Revenge of the Rats,{2}{B}{B},4,Flashback
 Seeker's Folly,{2}{B},3,
 Soul-Shackled Zombie,{3}{B},4,
 "Tinybones, Bauble Burglar",{1}{B},2,
@@ -4837,7 +4847,6 @@ Goblin Negotiation,{X}{R}{R},2,
 Incinerating Blast,{4}{R},5,
 Rite of the Dragoncaller,{4}{R}{R},6,
 Sower of Chaos,{3}{R},4,
-Twinflame Tyrant,{3}{R}{R},5,Flying;Double
 Apothecary Stomper,{4}{G}{G},6,Vigilance
 Elvish Regrower,{2}{G}{G},4,
 Preposterous Proportions,{5}{G}{G},7,
@@ -4847,7 +4856,6 @@ Dreadwing Scavenger,{1}{U}{B},3,Flying;Threshold
 "Koma, World-Eater",{3}{G}{G}{U}{U},7,Trample;Ward
 "Kykar, Zephyr Awakener",{2}{W}{U},4,Flying
 Banner of Kinship,{5},5,
-Fishing Pole,{1},1,Equip
 Leyline Axe,{4},4,Equip
 Quick-Draw Katana,{2},2,Equip
 Scrawling Crawler,{3},3,
@@ -4855,11 +4863,8 @@ Soulstone Sanctuary,,0,
 "Ajani, Caller of the Pride",{1}{W}{W},3,
 Angel of Finality,{3}{W},4,Flying
 Authority of the Consuls,{W},1,
-Cathar Commando,{1}{W},2,Flash
 Savannah Lions,{W},1,
-Lightshell Duo,{3}{U},4,Surveil;Prowess
 Micromancer,{3}{U},4,
-An Offer You Can't Refuse,{U},1,Treasure
 Omniscience,{7}{U}{U}{U},10,
 Burglar Rat,{1}{B},2,
 Exsanguinate,{X}{B}{B},2,
@@ -4872,20 +4877,15 @@ Slagstorm,{1}{R}{R},3,
 Spitfire Lagac,{3}{R},4,Landfall
 Thrill of Possibility,{1}{R},2,
 Blanchwood Armor,{2}{G},3,Enchant
-"Dwynen, Gilt-Leaf Daen",{2}{G}{G},4,Reach
 Genesis Wave,{X}{G}{G}{G},3,
 "Ghalta, Primal Hunger",{10}{G}{G},12,Trample
-Gnarlid Colony,{1}{G},2,Kicker
-Grow from the Ashes,{2}{G},3,Kicker
 Mild-Mannered Librarian,{G},1,
 Nessian Hornbeetle,{1}{G},2,
-Overrun,{2}{G}{G}{G},5,
 Reclamation Sage,{2}{G},3,
 Scavenging Ooze,{1}{G},2,
 Wary Thespian,{1}{G},2,Surveil
 Good-Fortune Unicorn,{1}{G}{W},3,
 "Muldrotha, the Gravetide",{3}{B}{G}{U},6,
-Progenitus,{W}{W}{U}{U}{B}{B}{R}{R}{G}{G},10,Protection
 "Ruby, Daring Tracker",{R}{G},2,Haste
 Swiftblade Vindicator,{R}{W},2,Vigilance;Trample;Double strike
 Adventuring Gear,{1},1,Equip;Landfall

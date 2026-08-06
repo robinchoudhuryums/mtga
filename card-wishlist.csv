@@ -142,8 +142,6 @@ Omniscience,Enchantment,You may cast spells from your hand without paying their 
 Whenever you cast a spell, put a +1/+1 counter on Ramos for each of that spell's colors.
 Remove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activate only once each turn.",W/U/B/R/G,Dragon; counters; flying; evasion,FDN,678,Mythic,17; 51,"Deck 51: cost is {6} COLORLESS so it casts on Islands — the identity column (WUBRG, from its MANA ABILITY) is what hid it. Five +1/+1 counters convert to TEN mana, and Fractured Realm doubles the counter trigger. 4/4 flier.",8,hand
 Rite of the Dragoncaller,Enchantment,"Whenever you cast an instant or sorcery spell, create a 5/5 red Dragon creature token with flying.",R,tokens; spellslinger,FDN,92,Mythic,2,,7.0,hand
-Twinflame Tyrant,Creature — Dragon,"Flying
-If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals double that damage instead.",R,Dragon; flying; evasion; double,FDN,97,Mythic,14,,7.0,hand
 Abyssal Harvester,Creature — Demon Warlock,"{T}: Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.",B,Demon; Warlock; Nightmare; graveyard; tokens; removal,FDN,54,Rare,52a,,7.0,seed
 Adaptive Automaton,Artifact Creature — Construct,"As this creature enters, choose a creature type.
 This creature is the chosen type in addition to its other types.
@@ -188,8 +186,6 @@ Rogue's Passage,Land,"{T}: Add {C}.
 {4}, {T}: Target creature can't be blocked this turn.",Colorless,mana,FDN,264,Uncommon,50,"2nd evasion route in 50: {4},{T} unblockable is the fix for Jumbo Cactuar / Colossification that does NOT need a trample grant in hand. Measured free against a Forest.",6.0,hand
 Savage Ventmaw,Creature — Dragon,"Flying
 Whenever this creature attacks, add {R}{R}{R}{G}{G}{G}. Until end of turn, you don't lose this mana as steps and phases end.",R/G,Dragon; flying; evasion,FDN,631,Uncommon,,,2.0,seed
-Lightshell Duo,Creature — Rat Otter,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
-When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,Rat; Otter; graveyard; etb; pump; selection; surveil; prowess; spellslinger; tempo,FDN,157,Common,37,,3.0,hand
 Rapacious Dragon,Creature — Dragon,"Flying
 When this creature enters, create two Treasure tokens. (They're artifacts with ""{T}, Sacrifice this token: Add one mana of any color."")",R,Dragon; sacrifice; tokens; etb; treasure; flying; evasion,FDN,544,Common,49,,5.5,hand
 Tolarian Terror,Creature — Serpent,"This spell costs {1} less to cast for each instant and sorcery card in your graveyard.
@@ -302,8 +298,6 @@ Spider-UK,Legendary Creature — Spider Human Hero,"Web-slinging {2}{W} (You may
 At the beginning of your end step, if two or more creatures entered the battlefield under your control this turn, you draw a card and gain 2 life.",W,Spider; Human; Hero; lifegain; card draw; bounce; web-slinging; evasion; tempo,MSC,777,Uncommon,23,,3.5,hand
 Kang the Conqueror,Legendary Creature — Human Villain,"Flying
 Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after this one. During that turn, power-up abilities can't be activated. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",U,Human; Villain; counters; flying; evasion; power-up; payoff,MSH,62,Mythic,12,blue control finisher — evasive body + extra-turn power-up; UUU castable in Dimir,6.5,hand
-Progenitus,Legendary Creature — Hydra Avatar,"Protection from everything
-If Progenitus would be put into a graveyard from anywhere, reveal Progenitus and shuffle it into its owner's library instead.",W/U/B/R/G,Hydra; Avatar; graveyard; protection,MSH,265,Mythic,,,5.0,seed
 Archangel of Tithes,Creature — Angel,"Flying
 As long as this creature is untapped, creatures can't attack you or planeswalkers you control unless their controller pays {1} for each of those creatures.
 As long as this creature is attacking, creatures can't block unless their controller pays {1} for each of those creatures.",W,Angel; flying; evasion,OTJ,2,Mythic,3,"Go-wide tax (protects you + pushes a wide board through); also fits deck 23 — one copy serves both. Mythic craft, OTJ rotation-soon.",6.5,hand

@@ -4318,3 +4318,42 @@ Enchanted permanent gets +1/+2 and has reach.",G,Aura; etb; aura; pump; enchant;
 Hazard of the Dunes,Creature — Wurm,"Trample, reach
 Exhaust — {6}{G}: Put three +1/+1 counters on this creature. (Activate each exhaust ability only once.)",G,Wurm; counters; reach; defense; trample; evasion; exhaust; payoff,DFT,165,1
 Pothole Mole,Creature — Mole,"When this creature enters, mill three cards, then you may return a land card from your graveyard to your hand. (To mill three cards, put the top three cards of your library into your graveyard.)",G,Mole; graveyard; mill; etb,DFT,176,1
+Ripclaw Wrangler,Artifact — Vehicle,"When this Vehicle enters, each opponent discards a card.
+Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",B,Vehicle; etb; vehicle; discard; crew; vehicles,DFT,101,1
+Syphon Fuel,Instant,Target creature gets -6/-6 until end of turn. You gain 2 life.,B,lifegain; removal,DFT,108,1
+Engine Rat,Creature — Zombie Rat,"Deathtouch
+{5}{B}: Each opponent loses 2 life.",B,Zombie; Rat; deathtouch; combat; removal,DFT,84,1
+Lightwheel Enhancements,Enchantment — Aura,"Enchant creature or Vehicle
+Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+Enchanted permanent gets +1/+1 and has vigilance.
+Max speed — You may cast this card from your graveyard.",W,Aura; graveyard; aura; pump; max speed; speed; aggro; enchant; start your engines!,DFT,20,1
+Goblin Surveyor,Creature — Goblin Scout,"Trample
+Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+Max speed — {3}, Exile this card from your graveyard: Draw a card.",R,Goblin; Scout; graveyard; card draw; max speed; speed; aggro; trample; evasion; start your engines!,DFT,131,1
+Pactdoll Terror,Artifact Creature — Toy,"Whenever this creature or another artifact you control enters, each opponent loses 1 life and you gain 1 life.",B,Toy; lifegain,DFT,99,1
+Progenitus,Legendary Creature — Hydra Avatar,"Protection from everything
+If Progenitus would be put into a graveyard from anywhere, reveal Progenitus and shuffle it into its owner's library instead.",W/U/B/R/G,Hydra; Avatar; graveyard; protection,FDN,244,1
+Twinflame Tyrant,Creature — Dragon,"Flying
+If a source you control would deal damage to an opponent or a permanent an opponent controls, it deals double that damage instead.",R,Dragon; flying; evasion; double,FDN,97,1
+An Offer You Can't Refuse,Instant,"Counter target noncreature spell. Its controller creates two Treasure tokens. (They're artifacts with ""{T}, Sacrifice this token: Add one mana of any color."")",U,counterspell; sacrifice; tokens; treasure,FDN,160,1
+Fishing Pole,Artifact — Equipment,"Equipped creature has ""{1}, {T}, Tap Fishing Pole: Put a bait counter on Fishing Pole.""
+Whenever equipped creature becomes untapped, remove a bait counter from this Equipment. If you do, create a 1/1 blue Fish creature token.
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; counters; tokens; equipment; equip,FDN,128,1
+"Dwynen, Gilt-Leaf Daen",Legendary Creature — Elf Warrior,"Reach (This creature can block creatures with flying.)
+Other Elf creatures you control get +1/+1.
+Whenever Dwynen attacks, you gain 1 life for each attacking Elf you control.",G,Elf; Warrior; lifegain; pump; reach; defense,FDN,217,1
+Overrun,Sorcery,Creatures you control get +3/+3 and gain trample until end of turn. (Each of those creatures can deal excess combat damage to the player or planeswalker it's attacking.),G,pump,FDN,230,1
+Revenge of the Rats,Sorcery,"Create a tapped 1/1 black Rat creature token for each creature card in your graveyard.
+Flashback {2}{B}{B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",B,graveyard; tokens; flashback; recursion; spellslinger,FDN,67,1
+Lightshell Duo,Creature — Rat Otter,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
+When this creature enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",U,Rat; Otter; graveyard; etb; pump; selection; surveil; prowess; spellslinger; tempo,FDN,157,1
+Gnarlid Colony,Creature — Beast,"Kicker {2}{G} (You may pay an additional {2}{G} as you cast this spell.)
+If this creature was kicked, it enters with two +1/+1 counters on it.
+Each creature you control with a +1/+1 counter on it has trample. (It can deal excess combat damage to the player or planeswalker it's attacking.)",G,Beast; counters; kicker; value,FDN,224,1
+Grow from the Ashes,Sorcery,"Kicker {2} (You may pay an additional {2} as you cast this spell.)
+Search your library for a basic land card, put it onto the battlefield, then shuffle. If this spell was kicked, instead search your library for two basic land cards, put them onto the battlefield, then shuffle.",G,ramp; kicker; value,FDN,225,1
+Cathar Commando,Creature — Human Soldier,"Flash
+{1}, Sacrifice this creature: Destroy target artifact or enchantment.",W,Human; Soldier; sacrifice; removal; flash; tempo,FDN,139,1
+Champions of the Perfect,Creature — Elf Warrior,"As an additional cost to cast this spell, behold an Elf and exile it. (Exile an Elf you control or an Elf card from your hand.)
+Whenever you cast a creature spell, draw a card.
+When this creature leaves the battlefield, return the exiled card to its owner's hand.",G,Elf; Warrior; card draw; bounce; behold; dragons,ECL,171,1
