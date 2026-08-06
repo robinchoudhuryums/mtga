@@ -4155,3 +4155,36 @@ You may pay {W}{U}{B}{R}{G} rather than pay the mana cost for spells you cast.",
 "Cecil, Dark Knight",Legendary Creature — Human Knight // Legendary Creature — Human Knight,"Deathtouch
 Darkness — Whenever Cecil deals damage, you lose that much life. Then if your life total is less than or equal to half your starting life total, untap Cecil and transform it. // Lifelink
 Protect — Whenever Cecil attacks, other attacking creatures gain indestructible until end of turn.",W/B,Human; Knight; lifegain; pay life; lifelink; transform; deathtouch; combat; removal,FIN,91,1
+"Mu Yanling, Wind Rider",Legendary Creature — Human Wizard Pilot,"When Mu Yanling enters, create a 3/2 colorless Vehicle artifact token with crew 1.
+Vehicles you control have flying.
+Whenever one or more creatures you control with flying deal combat damage to a player, draw a card.",U,Human; Wizard; Pilot; card draw; tokens; etb,DFT,52,1
+The Aetherspark,Legendary Artifact Planeswalker — Equipment,"As long as The Aetherspark is attached to a creature, The Aetherspark can't be attacked and has ""Whenever equipped creature deals combat damage during your turn, put that many loyalty counters on The Aetherspark.""
++1: Attach The Aetherspark to up to one target creature you control. Put a +1/+1 counter on that creature.
+−5: Draw two cards.
+−10: Add ten mana of any one color.",Colorless,Equipment; Planeswalker; counters; card draw; equipment; planeswalker,DFT,231,1
+Artist's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+Whenever you cast a noncreature spell, you may discard a card. If you do, draw a card.
+{2}{R}: Level 2
+Noncreature spells you cast cost {1} less to cast.
+{2}{R}: Level 3
+If a source you control would deal noncombat damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.",R,Class; cost-reduction; card draw; noncombat damage,BLB,124,1
+"Donatello, Gadget Master",Legendary Creature — Mutant Ninja Turtle,"Sneak {1}{U} (You may cast this spell for {1}{U} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)
+Whenever Donatello deals combat damage to a player, create a token that's a copy of target artifact you control.",U,Mutant; Ninja; Turtle; tokens; sneak; tempo; cost-reduction,TMT,35,1
+Mightform Harmonizer,Creature — Insect Druid,"Landfall — Whenever a land you control enters, double the power of target creature you control until end of turn.
+Warp {2}{G} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",G,Insect; Druid; exile cast; landfall; warp; tempo; cost-reduction; double; lands; ramp,EOE,200,1
+Extravagant Replication,Enchantment,"At the beginning of your upkeep, create a token that's a copy of another target nonland permanent you control.",U,tokens,FDN,154,1
+"Kona, Rescue Beastie",Legendary Creature — Beast Survivor,"Survival — At the beginning of your second main phase, if Kona is tapped, you may put a permanent card from your hand onto the battlefield.",G,Beast; Survivor; survival,DSK,187,1
+The Darkness Crystal,Legendary Artifact,"Black spells you cast cost {1} less to cast.
+If a nontoken creature an opponent controls would die, instead exile it and you gain 2 life.
+{4}{B}{B}, {T}: Put target creature card exiled with The Darkness Crystal onto the battlefield tapped under your control with two additional +1/+1 counters on it.",B,counters; lifegain; cost-reduction,FIN,96,1
+"Shiko, Paragon of the Way",Legendary Creature — Spirit Dragon,"Flying, vigilance
+When Shiko enters, exile target nonland card with mana value 3 or less from your graveyard. Copy it, then you may cast the copy without paying its mana cost. (A copy of a permanent spell becomes a token.)",W/U/R,Spirit; Dragon; graveyard; removal; etb; flying; evasion; vigilance; combat,TDM,223,1
+Rot-Curse Rakshasa,Creature — Demon,"Trample
+Decayed (This creature can't block. When it attacks, sacrifice it at end of combat.)
+Renew — {X}{B}{B}, Exile this card from your graveyard: Put a decayed counter on each of X target creatures. Activate only as a sorcery.",B,Demon; counters; graveyard; sacrifice; renew; trample; evasion,TDM,87,1
+Craterhoof Behemoth,Creature — Beast,"Haste
+When this creature enters, creatures you control gain trample and get +X/+X until end of turn, where X is the number of creatures you control.",G,Beast; etb; pump; haste; aggro,TDM,138,1
+Jeskai Revelation,Instant,Return target spell or permanent to its owner's hand. Jeskai Revelation deals 4 damage to any target. Create two 1/1 white Monk creature tokens with prowess. Draw two cards. You gain 4 life.,W/U/R,lifegain; card draw; tokens; burn; bounce,TDM,196,1
+"Ureni, the Song Unending",Legendary Creature — Spirit Dragon,"Flying, protection from white and from black
+When Ureni enters, it deals X damage divided as you choose among any number of target creatures and/or planeswalkers your opponents control, where X is the number of lands you control.",U/R/G,Spirit; Dragon; burn; etb; flying; evasion; protection,TDM,233,1
+Death Begets Life,Sorcery,Destroy all creatures and enchantments. Draw a card for each permanent destroyed this way.,U/B/G,card draw,TDM,176,1

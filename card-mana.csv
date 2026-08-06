@@ -1955,6 +1955,20 @@ Heartflame Duelist,{1}{W} // {2}{R},2,
 Monument to Endurance,{3},3,Treasure
 Leyline of Mutation,{2}{G}{G},4,
 "Cecil, Dark Knight",{B},1,Lifelink;Protect;Transform;Darkness;Deathtouch
+"Mu Yanling, Wind Rider",{2}{U}{U},4,
+The Aetherspark,{4},4,
+Artist's Talent,{1}{R},2,
+"Donatello, Gadget Master",{2}{U},3,Sneak
+Mightform Harmonizer,{2}{G}{G},4,Warp;Double;Landfall
+Extravagant Replication,{4}{U}{U},6,
+"Kona, Rescue Beastie",{3}{G},4,Survival
+The Darkness Crystal,{2}{B}{B},4,
+"Shiko, Paragon of the Way",{2}{U}{R}{W},5,Flying;Vigilance
+Rot-Curse Rakshasa,{1}{B},2,Renew;Trample;Decayed
+Craterhoof Behemoth,{5}{G}{G}{G},8,Haste
+Jeskai Revelation,{4}{U}{R}{W},7,
+"Ureni, the Song Unending",{5}{G}{U}{R},8,Flying;Protection
+Death Begets Life,{5}{B}{G}{U},8,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -2729,7 +2743,6 @@ Valley Rotcaller,{1}{B},2,Menace
 "Wick, the Whorled Mind",{3}{B},4,
 Agate Assault,{2}{R},3,
 Alania's Pathmaker,{3}{R},4,
-Artist's Talent,{1}{R},2,
 Blooming Blast,{1}{R},2,Gift;Treasure
 Brambleguard Captain,{3}{R},4,
 Brazen Collector,{1}{R},2,First strike
@@ -3232,7 +3245,6 @@ Hulldrifter,{3}{U}{U},5,Flying;Crew
 Keen Buccaneer,{2}{U},3,Vigilance;Exhaust
 Memory Guardian,{4}{U},5,Flying;Affinity
 Midnight Mangler,{1}{U},2,Crew
-"Mu Yanling, Wind Rider",{2}{U}{U},4,
 Nimble Thopterist,{3}{U},4,
 Possession Engine,{3}{U}{U},5,Crew
 Rangers' Refueler,{1}{U},2,Crew;Exhaust
@@ -3381,7 +3393,6 @@ Voyage Home,{5}{W}{U},7,Affinity
 "Winter, Cursed Rider",{U}{B},2,Exhaust;Ward
 "Zahur, Glory's Past",{W}{B},2,Surveil;Max speed;Start your engines!
 Aetherjacket,{3},3,Flying;Vigilance
-The Aetherspark,{4},4,
 Camera Launcher,{3},3,Exhaust
 Marketback Walker,{X}{X},0,
 Marshals' Pathcruiser,{3},3,Crew;Exhaust
@@ -4052,7 +4063,6 @@ Hedge Shredder,{2}{G}{G},4,Crew;Mill
 Horrid Vigor,{1}{G},2,
 House Cartographer,{1}{G},2,Survival
 Insidious Fungus,{G},1,
-"Kona, Rescue Beastie",{3}{G},4,Survival
 Manifest Dread,{1}{G},2,Manifest;Manifest dread
 Moldering Gym // Weight Room,{2}{G} // {5}{G},9,Manifest;Manifest dread
 Monstrous Emergence,{1}{G},2,
@@ -4128,7 +4138,6 @@ Tainted Remedy,{2}{B},3,
 "Alesha, Who Smiles at Death",{2}{R},3,First strike
 Temur Battle Rage,{1}{R},2,Ferocious
 Back to Nature,{1}{G},2,
-Elvish Mystic,{G},1,
 Battlewise Hoplite,{W}{U},2,Heroic;Scry
 Slaughter Games,{2}{B}{R},4,
 Hangarback Walker,{X}{X},0,
@@ -4667,7 +4676,6 @@ Icetill Explorer,{2}{G}{G},4,Mill;Landfall
 Larval Scoutlander,{2}{G},3,Station
 Lashwhip Predator,{4}{G}{G},6,Reach
 Meltstrider's Resolve,{G},1,Fight;Enchant
-Mightform Harmonizer,{2}{G}{G},4,Warp;Double;Landfall
 Sami's Curiosity,{G},1,
 Sledge-Class Seedship,{2}{G},3,Station
 Terrasymbiosis,{2}{G},3,
@@ -4816,7 +4824,6 @@ Angel of Finality,{3}{W},4,Flying
 Authority of the Consuls,{W},1,
 Cathar Commando,{1}{W},2,Flash
 Savannah Lions,{W},1,
-Extravagant Replication,{4}{U}{U},6,
 Lightshell Duo,{3}{U},4,Surveil;Prowess
 Micromancer,{3}{U},4,
 An Offer You Can't Refuse,{U},1,Treasure
@@ -4853,7 +4860,6 @@ Burnished Hart,{3},3,
 Campus Guide,{2},2,
 Juggernaut,{4},4,
 Meteor Golem,{7},7,
-Rogue's Passage,,0,
 Secluded Courtyard,,0,
 Adamant Will,{1}{W},2,
 Bishop's Soldier,{1}{W},2,Lifelink
@@ -4911,7 +4917,6 @@ Felidar Cub,{1}{W},2,
 Felidar Retreat,{3}{W},4,Landfall
 Fumigate,{3}{W}{W},5,
 Knight of Grace,{1}{W},2,Hexproof from;Hexproof;First strike
-Mentor of the Meek,{2}{W},3,
 Regal Caracal,{3}{W}{W},5,
 "Syr Alin, the Lion's Claw",{3}{W}{W},5,First strike
 "Zetalpa, Primal Dawn",{6}{W}{W},8,Flying;Indestructible;Vigilance;Trample;Double strike
@@ -4996,7 +5001,6 @@ Make a Stand,{2}{W},3,
 Confiscate,{4}{U}{U},6,Enchant
 Rite of Replication,{2}{U}{U},4,Kicker
 Gratuitous Violence,{2}{R}{R}{R},5,Double
-Guttersnipe,{2}{R},3,
 Adaptive Automaton,{3},3,
 Expedition Map,{1},1,
 Gilded Lotus,{5},5,
@@ -5087,7 +5091,6 @@ Valkyrie Aerial Unit,{5}{U}{U},7,Flying;Surveil;Affinity
 The Water Crystal,{2}{U}{U},4,Mill
 "Cecil, Dark Knight // Cecil, Redeemed Paladin",{B},1,Lifelink;Protect;Transform;Darkness;Deathtouch
 Dark Knight's Greatsword,{2}{B},3,Chaosbringer;Job select;Equip
-The Darkness Crystal,{2}{B}{B},4,
 Evil Reawakened,{4}{B},5,
 "Fang, Fearless l'Cie",{2}{B},3,
 "Jecht, Reluctant Guardian // Braska's Final Aeon",{3}{B},4,Transform;Menace
@@ -5307,7 +5310,6 @@ Erratic Cyclops,{3}{R},4,Trample
 Experimental Frenzy,{3}{R},4,
 Fire Urchin,{1}{R},2,Trample
 Goblin Banneret,{R},1,Mentor
-Goblin Cratermaker,{1}{R},2,
 Goblin Locksmith,{1}{R},2,
 Gravitic Punch,{3}{R},4,Jump;Jump-start
 Hellkite Whelp,{4}{R},5,Flying
@@ -5549,13 +5551,11 @@ Repeal,{X}{U},1,
 Grave Titan,{4}{B}{B},6,Deathtouch
 Echoing Decay,{1}{B},2,
 Unearth,{B},1,Cycling
-Inferno Titan,{4}{R}{R},6,
 Tribal Flames,{1}{R},2,Domain
 Wild Nacatl,{G},1,
 Acidic Slime,{3}{G}{G},5,Deathtouch
 Tooth and Nail,{5}{G}{G},7,Entwine
 Mortarpod,{2},2,Equip;Living weapon
-Wayfarer's Bauble,{1},1,
 Fiery Islet,,0,
 Nurturing Peatland,,0,
 Silent Clearing,,0,
@@ -5770,70 +5770,146 @@ Lantern of Revealing,{3},3,
 Mirror of Life Trapping,{4},4,
 Navigation Orb,{3},3,
 Baldur's Gate,,0,
+Long-Bodied Grey Dog,{3},3,Reach;Treasure;Flash
+Old Thrush,{2},2,Flying
+Troop of Ponies,{2},2,
 Belladonna Took,{1}{W},2,
 Bilbo's Gambit,{1}{W},2,Gift;Treasure
+"Bofur, Reliable Guardian // Concerted Care",{W} // {1}{W},1,Lifelink
+Celebrate the Mountain-king,{3}{W},4,
+"Dáin, Lord of the Iron Hills",{1}{W},2,Vigilance
+Dwarven Provisioner,{1}{W},2,
+Dwarven Shortsword,{3}{W},4,Equip
 Eagle of the Great Shelf,{4}{W},5,Flying
 The Eagles Are Coming!,{1}{W},2,Kicker
+Esgaroth Garrison,{4}{W},5,
+Fíli the Pathfinder,{3}{W},4,
+Gleaming Splendor,{1}{W},2,Treasure
 Iron Hills Blacksmith,{1}{W},2,Double strike
+Kíli the Resourceful,{1}{W},2,
+Lake-town Lookout,{W},1,
+Lake-town Toymaker,{3}{W},4,
+Magnificent End,{4}{W},5,
+Moment of Glory,{W},1,Flashback
 The Mountain-king's Return,{2}{W},3,
+"Ori, Keeper of Songs",{2}{W},3,
 The Queen of Dale,{1}{W},2,
 "Roads Go Ever, Ever On",{1}{W},2,
+Settle the Wreckage,{2}{W}{W},4,
 Stone by Sunlight,{1}{W},2,
+Thorin's Last Stand,{2}{W}{W},4,
 An Unexpected Party // At the Door,{2}{W}{W} // {X}{2}{W},4,
+Velvetwing Butterflies // Gaze in Wonder,{2}{W} // {1}{W},3,Flying
+Vow to Erebor,{1}{W},2,
 "Bilbo, Luckwearer // Burglar's Plot",{1}{U} // {4}{U},2,
 "Bilbo, Thief in the Night",{1}{U},2,
+"Bilbo Baggins, Burglar // Take a Glance",{2}{U} // {U},3,Scry
+Confusticate and Bebother,{2}{U},3,
 "Elrond, Moon-Reader",{2}{U},3,
 Elven Raft-Steerer,{2}{U},3,Landfall
+Elvenking's Harper,{1}{U},2,
+Enchanted River's Grasp,{2}{U},3,Enchant
+Fateful Discovery,{3}{U}{U},5,
+"Gandalf, Wandering Wizard",{4}{U},5,Ward
 Great Gilded Boat,{2}{U},3,Crew
+Lakeshore Apothecary,{1}{U},2,Vigilance
 Lake-town Mariners // Gone Fishing,{4}{U}{U} // {3}{U},6,Vigilance;Ward
+Long Lake Nuisance,{3}{U},4,Flying
 The Lord of the Eagles,{7}{U}{U},9,Flying;Flash
 Master's Councillors,{1}{U},2,Vigilance;Mill
+Mirkwood Meditator,{2}{U},3,Landfall
 Most Decrepit Old Bird // Speak Secrets,{U} // {1}{U},1,Flying;Threshold;Mill
+Old Fat Spider Can't See Me,{2}{U},3,
+Plunder the Trollshaws,{1}{U},2,Flashback
 Ravenhill Flock,{3}{U},4,Flying
 Riddles in the Dark,{2}{U},3,
 Roll-Roll-Roll-Roll,{2}{U},3,
 Sound the Trumpets,{1}{U}{U},3,
 Thranduil's Decree,{4}{U}{U},6,
+Uncover the Moon-Letters,{3}{U},4,
+Uneasy Partings,{3}{U},4,
 Wizard's Staff,{1}{U},2,Equip
+Along the Crooked Way,{2}{B},3,Amass
 "Azog, Moria's Ruin",{2}{B},3,Amass
+Bilbo's Deadly Slice,{1}{B}{B},3,
+Crude Bent Blade,{2}{B},3,Equip
 Desolation Prowler,{1}{B},2,
 "Down, Down to Goblin-town",{2}{B},3,Amass
+Dreaded Bat-Cloud,{4}{B},5,Deathtouch;Flying
+Front Porch Sentries,{1}{B},2,
 Gathering of Darkness,{3}{B},4,Amass
 Gnashing of Teeth,{1}{B}{B},3,
 "Gollum, Riddle Master",{1}{B},2,
+"Gollum, Silent Slinker // Meager Meal",{3}{B} // {B},4,Menace
 Gollum the Abandoned,{1}{B},2,
+Great Fierce Bee,{2}{B},3,Scry;Flying
 Great Ugly-Looking Goblin // Clap! Snap!,{5}{B} // {1}{B},6,Amass
 Head of the Hunt,{2}{B}{B},4,Flash
 Inside Information,{X}{B}{B},2,
 The Master of Lake-town,{1}{B}{B},3,Mill;Deathtouch
 Nighthowl Pursuer,{B},1,Ferocious;Menace
+Rage into the Valley,{2}{B},3,Amass
+Ravening Warg,{1}{B},2,Ferocious;Deathtouch
+Reverent Howl,{2}{B},3,
+Rhovanion Rampager,{2}{B},3,Amass
 The Sackville-Bagginses,{1}{B},2,Treasure
+Stir Up Trouble,{B},1,
+Stony-Voiced Goblins,{1}{B},2,
 Supper for Spiders,{1}{B},2,
+"Balin, Loremaster",{3}{R}{R},5,
+"Bombur, Gentle Dreamer",{2}{R},3,
 Bothersome Noisemaker,{1}{R},2,Amass
 "Burn, Burn, Tree and Fern",{3}{R},4,
 Dáin Ironfoot,{2}{R},3,
 Desert Were-Worm,{4}{R}{R},6,
 Desolation of Smaug,{2}{R}{R},4,
+"Dori, Bearer of Friends",{2}{R},3,Treasure;Trample
 Dwarven Mauler,{R},1,
 "Gandalf, Goblins' Bane // Flameshape",{2}{R} // {1}{R},3,
 "Gandalf, Spark Starter",{4}{R}{R},6,Reach
+Getaway Barrel,{3}{R},4,
 Glóin the Mighty // Easy Pickings,{3}{R} // {2}{R},4,
+Goblin-town Flunkies,{1}{R},2,Amass;Haste
+Gundabad Opportunist,{3}{R},4,
+Iron Hills Stalwart,{4}{R},5,Reach;Trample
 Last Light of Durin's Day,{1}{R},2,Mountaincycling;Landcycling;Typecycling;Cycling
 The Misty Mountains Cold,{2}{R},3,Treasure
 Misty Mountains Raider,{4}{R},5,Amass
+Óin the Brave,{1}{R},2,
+Pinecone Strike,{1}{R},2,
+Ragged Short Spear,{1}{R},2,Equip
+"Smaug, the Great Calamity // Spew Flame",{5}{R}{R} // {4}{R},7,Flying
 Smaug the Magnificent,{2}{R}{R},4,Flying;Treasure;Haste
+Smaug's Fury,{1}{R},2,
+Snowslope Hunter,{2}{R},3,
+Stone-Giant of High Pass,{5}{R}{R},7,
 "Thorin, Mountain-king",{3}{R},4,Trample
+Tidings of War,{R},1,Amass;Flashback
+Attercop,{1}{G},2,Reach;Deathtouch;Landfall
+Bejeweled Warg,{1}{G},2,Treasure;Trample
+"Beorn, Reluctant Host // Till and Tend",{4}{G} // {1}{G},5,Trample
 Beorn the Fierce,{3}{G}{G},5,Trample
 Beorn's Hospitality,{1}{G},2,Landfall
+Boughside Wanderers,{4}{G}{G},6,Landfall
 Cantankerous Keepers,{5}{G},6,Affinity;Mill
 Dancing from Dark to Dawn,{3}{G}{G},5,Landfall
 Down in the Valley,{2}{G},3,
 "Galion, Elvenking's Butler",{2}{G}{G},4,
+Gigantic Big Bear,{5}{G}{G},7,Hexproof;Haste
+Guardian of the Halls,{1}{G},2,Trample
+Little Bear,{2}{G},3,Flash
 Mirkwood Pathmaker,{2}{G},3,
 Nasty Little Rabbit,{G},1,Ferocious
+The Notary Hobbits,{3}{G}{G},5,
 Old Fat Spider,{4}{G}{G},6,Reach
+Ordinary Bear,{3}{G},4,
 Part in Friendship,{4}{G},5,
+Quarrel,{1}{G},2,
+Radagast of Rhosgobel,{2}{G}{G},4,
 Through the Forest Gate,{6}{G}{G},8,
+Troll Negotiations,{2}{G}{G},4,Fight
+Warg Tactics,{1}{G},2,
+Wargling,{1}{G},2,Ferocious
 Wilderland Scrounger,{4}{G},5,Ferocious
 Wood Elves,{2}{G},3,
 Woodland Weavemaster,{1}{G},2,Vigilance
@@ -5842,23 +5918,51 @@ Bard the Bowman,{1}{W}{U},3,Reach
 Bard's Company,{2}{W}{U},4,
 "Bifur, Melodic Rider",{4}{R/W}{R/W},6,
 Bolg of the North,{3}{B}{R},5,Amass
+Bolg's Company,{B}{R},2,
 The Chief Warg,{2}{B}{G},4,Ferocious;Menace
 Chief Warg's Company,{1}{B}{G},3,Trample
 Dáin's Company,{R}{W},2,
+Duskwatch Hunter,{2}{B/G},3,
+"Dwalin, Weaponmaster",{1}{R/W},2,First strike
 Eagle's Rescue,{2}{W/U}{W/U},4,Enchant
 Fearsome Goblin Pair,{2}{B/R},3,Amass
+Goblin Plate Mail,{1}{B/R},2,Amass;Equip
 The Great Goblin,{1}{B/R}{B/R},3,
+Large Bear,{3}{B/G}{B/G},5,Reach;Haste;Trample
+Mirkwood Nurturer,{2}{G/U},3,
+"Nori, Teller of Tales",{1}{R/W},2,
+Patient Instructor,{2}{W/U},3,Vigilance
 Silvan Reveler,{2}{G}{U},4,Landfall
+"Smaug, Wicked Worm",{3}{B}{R},5,Flying;Treasure
 Thorin Oakenshield,{R}{W},2,Trample
+"Thranduil, Sindarin Liege // Silvan Rally",{2}{G/U}{G/U} // {1}{G/U}{G/U},4,Mill;Landfall
 "Thranduil, the Elvenking",{2}{B}{G}{U},5,
+Thranduil's Company,{2}{G}{U},4,Landfall
 "Tom, Bert, and William",{3}{B}{G},5,
 The Arkenstone // Seek the Heart,{5} // {2}{W},5,
+The Black Arrow,{3},3,Equip;Flash
+Dwarven Mattock,{2},2,Equip
+Giant's Boulder,{1},1,Scry
+"Glamdring, Foe-hammer // Gleam of Death",{2} // {3}{U},2,Equip;Mill
+Key to the Side-Door,{1},1,
 My Precious // Allure of Power,{3} // {1}{B},3,Equip
 "Orcrist, Goblin-cleaver",{3},3,Treasure;Equip
 "Sting, Bilbo's Sword",{2},2,Equip;Flash
 Thrór's Map,{2},2,
+Well-Worn Spatula,{1},1,Equip
+Elven Passage,,0,Behold
+Elvenking's Halls,,0,
+Goblin-town,,0,
+Hobbit Hole,,0,
+Iron Hills,,0,
+Lake-town,,0,
 The Lonely Mountain,,0,
-Gleaming Splendor,{1}{W},2,Treasure
+Mirkwood,,0,
+Plains,,0,
+Island,,0,
+Swamp,,0,
+Mountain,,0,
+Forest,,0,
 "Fíli and Kíli, Joyous",{2}{R},3,Haste
 "Gandalf, Party Guest",{1}{U}{R}{W},4,
 "Thorin, King of Durin's Folk",{3}{R}{W},5,Treasure
@@ -5871,11 +5975,14 @@ Smaug the Impenetrable,{5}{B}{R},7,Flying;Indestructible;Treasure;Haste
 Bilbo's Burglaring,{4}{U}{U},6,
 Dragon's Desire,{2}{R}{R},4,
 Necklace of Girion,{2}{G},3,
+Dawn of a New Age,{1}{W},2,
 Flowering of the White Tree,{W}{W},2,
 The Gaffer,{2}{W},3,
 Galadriel's Dismissal,{W},1,Kicker
 Reprieve,{1}{W},2,
+Raise the Palisade,{4}{U},5,
 Orcish Bowmasters,{1}{B},2,Amass;Flash
+Witch-king of Angmar,{3}{B}{B},5,Flying
 "Witch-king, Bringer of Ruin",{4}{B}{B},6,Flying
 Call Forth the Tempest,{5}{R}{R}{R},8,Cascade
 Cavern-Hoard Dragon,{7}{R}{R},9,Flying;Treasure;Haste;Trample
@@ -5885,14 +5992,19 @@ Last March of the Ents,{6}{G}{G},8,
 "Aragorn, the Uniter",{R}{G}{W}{U},4,Scry
 "Arwen, Mortal Queen",{1}{G}{W},3,
 Flame of Anor,{1}{U}{R},3,
+"Galadriel, Light of Valinor",{2}{G}{W}{U},5,Alliance;Scry
+"Gríma, Saruman's Footman",{2}{U}{B},4,
+"Lotho, Corrupt Shirriff",{W}{B},2,Treasure
 Saruman of Many Colors,{3}{W}{U}{B},6,Ward;Mill
 "Sauron, the Lidless Eye",{3}{B}{R},5,
 "Andúril, Flame of the West",{3},3,Equip
 "Andúril, Narsil Reforged",{2},2,Ascend;Equip
 Bilbo's Ring,{3},3,Equip
+Glamdring,{2},2,Equip
 Mithril Coat,{3},3,Indestructible;Equip;Flash
 Palantír of Orthanc,{3},3,Mill;Scry
 Relic of Sauron,{4},4,
+The Black Gate,,0,
 "Minas Morgul, Dark Fortress",,0,
 Minas Tirith,,0,
 Mount Doom,,0,
@@ -5902,6 +6014,64 @@ Delighted Halfling,{G},1,
 "Aragorn and Arwen, Wed",{4}{G}{W},6,Vigilance
 Dwarven Warriors,{2}{R},3,
 The Reaver Cleaver,{2}{R},3,Treasure;Equip
+"Bilbo, Unexpected Adventurer",{3}{W},4,
+"Gandalf, Shadow's Foe",{5}{U}{U},7,Vigilance;Landfall
+"Thorin, Company's Leader",{4}{R},5,Treasure
+"Bard, Heir of Girion",{2}{W}{U},4,Reach;Vigilance
+"Bolg, Erebor's Reckoning",{4}{B}{R},6,Trample
+Chief of the Wilds,{2}{B}{G},4,Menace
+Dáin of the Ancient Halls,{3}{R}{W},5,Vigilance;Haste
+"Great Goblin, Foul-Hearted",{3}{B}{R},5,Amass
+Thranduil the Strategist,{3}{G}{U},5,Landfall
+Dúnedain Blade,{1}{W},2,Equip
+Eagles of the North,{5}{W},6,Flying;Plainscycling;Landcycling;Typecycling;Cycling
+Errand-Rider of Gondor,{2}{W},3,
+Esquire of the King,{W},1,
+Fiend Hunter,{1}{W}{W},3,
+Fog on the Barrow-Downs,{2}{W},3,Enchant
+"Landroval, Horizon Witness",{4}{W},5,Flying
+Mentor of the Meek,{2}{W},3,
+Soldier of the Grey Host,{3}{W},4,Flying;Flash
+Westfold Rider,{1}{W},2,
+Captain of Umbar,{2}{U},3,
+Colossal Whale,{5}{U}{U},7,Landwalk;Islandwalk
+Grey Havens Navigator,{2}{U},3,Flash;Scry
+Hithlain Knots,{1}{U},2,Scry
+Ithilien Kingfisher,{2}{U},3,Flying
+Knights of Dol Amroth,{3}{U},4,
+Lórien Revealed,{3}{U}{U},5,Islandcycling;Landcycling;Typecycling;Cycling
+Minas Tirith Garrison,{3}{U},4,
+Nimrodel Watcher,{1}{U},2,
+Pelargir Survivor,{1}{U},2,Mill
+Stern Scolding,{U},1,
+Willow-Wind,{4}{U},5,Scry;Flying
+Bitter Downfall,{3}{B},4,
+Haunt of the Dead Marshes,{B},1,Scry
+Languish,{2}{B}{B},4,
+Merciless Executioner,{2}{B},3,
+Night's Whisper,{1}{B},2,
+Shadow of the Enemy,{3}{B}{B}{B},6,
+Troll of Khazad-dûm,{5}{B},6,Landcycling;Typecycling;Cycling;Swampcycling
+Battle-Scarred Goblin,{1}{R},2,
+Fire of Orthanc,{3}{R},4,
+Goblin Cratermaker,{1}{R},2,
+Goblin Fireleaper,{1}{R},2,
+Guttersnipe,{2}{R},3,
+Improvised Club,{1}{R},2,
+Inferno Titan,{4}{R}{R},6,
+Oliphaunt,{5}{R},6,Mountaincycling;Landcycling;Trample;Typecycling;Cycling
+Olog-hai Crusher,{3}{R},4,Trample
+Orcish Siegemaster,{2}{R},3,Trample
+Smite the Deathless,{1}{R},2,
+Celeborn the Wise,{3}{G},4,Scry
+Elvish Mystic,{G},1,
+Elvish Visionary,{1}{G},2,
+Galadhrim Guide,{3}{G},4,Scry
+Gift of Strands,{3}{G},4,Enchant;Flash;Scry
+Lothlórien Lookout,{1}{G},2,Scry
+Mirkwood Elk,{5}{G},6,Trample
+Wayfarer's Bauble,{1},1,
+Rogue's Passage,,0,
 Nissa's Defeat,{2}{G},3,
 Consign // Oblivion,{1}{U} // {4}{B},7,Aftermath
 Fire Covenant,{1}{B}{R},3,
@@ -6518,7 +6688,6 @@ Blood Feud,{4}{R}{R},6,Fight
 Goblin Fireslinger,{R},1,
 Krenko's Command,{1}{R},2,
 Zealous Conscripts,{4}{R},5,Haste
-Elvish Visionary,{1}{G},2,
 Forgotten Ancient,{3}{G},4,
 Gift of the Gargantuan,{2}{G},3,
 Undercellar Myconid,{2}{G},3,
@@ -6608,7 +6777,6 @@ Heartstabber Mosquito,{3}{B},4,Kicker;Flying
 Moan of the Unhallowed,{2}{B}{B},4,Flashback
 Morkrut Necropod,{5}{B},6,Menace
 Necropolis Regent,{3}{B}{B}{B},6,Flying
-Night's Whisper,{1}{B},2,
 Pharika's Chosen,{B},1,Deathtouch
 Reaper from the Abyss,{3}{B}{B}{B},6,Flying;Morbid
 Rodolf Duskbringer,{5}{B},6,Deathtouch;Flying;Lifelink
@@ -6885,7 +7053,6 @@ Gristle Grinner,{4}{B},5,
 Harvester of Souls,{4}{B}{B},6,Deathtouch
 Innocent Blood,{B},1,
 Kalastria Nightwatch,{4}{B},5,
-Languish,{2}{B}{B},4,
 Launch Party,{3}{B},4,
 Lawless Broker,{2}{B},3,
 Liliana's Elite,{2}{B},3,
@@ -8102,22 +8269,15 @@ Banish from Edoras,{4}{W},5,
 The Battle of Bywater,{1}{W}{W},3,Food
 Bill the Pony,{3}{W},4,Food
 "Boromir, Warden of the Tower",{2}{W},3,Vigilance
-Dawn of a New Age,{1}{W},2,
-Dúnedain Blade,{1}{W},2,Equip
-Eagles of the North,{5}{W},6,Flying;Plainscycling;Landcycling;Typecycling;Cycling
 Eastfarthing Farmer,{2}{W},3,Food
 East-Mark Cavalier,{1}{W},2,Vigilance
 "Éowyn, Lady of Rohan",{2}{W},3,
-Errand-Rider of Gondor,{2}{W},3,
 Escape from Orthanc,{W},1,
-Esquire of the King,{W},1,
 "Faramir, Field Commander",{3}{W},4,
-Fog on the Barrow-Downs,{2}{W},3,Enchant
 Forge Anew,{2}{W},3,
 "Frodo, Sauron's Bane",{W},1,
 Gandalf the White,{3}{W}{W},5,Flash
 Hobbit's Sting,{1}{W},2,
-"Landroval, Horizon Witness",{4}{W},5,Flying
 Lost to Legend,{W}{W},2,
 Nimble Hobbit,{1}{W},2,
 "Now for Wrath, Now for Ruin!",{3}{W},4,
@@ -8127,12 +8287,10 @@ Samwise the Stouthearted,{1}{W},2,Flash
 Second Breakfast,{2}{W},3,Food
 Shire Shirriff,{1}{W},2,Vigilance
 Slip On the Ring,{1}{W},2,
-Soldier of the Grey Host,{3}{W},4,Flying;Flash
 Stalwarts of Osgiliath,{4}{W},5,
 Tale of Tinúviel,{3}{W}{W},5,
 Took Reaper,{1}{W},2,
 War of the Last Alliance,{3}{W},4,
-Westfold Rider,{1}{W},2,
 You Cannot Pass!,{W},1,
 Arwen's Gift,{3}{U},4,Scry
 The Bath Song,{3}{U},4,
@@ -8140,7 +8298,6 @@ Bewitching Leechcraft,{1}{U},2,Enchant
 "Bill Ferny, Bree Swindler",{1}{U},2,Treasure
 Birthday Escape,{U},1,
 Borne Upon a Wind,{1}{U},2,
-Captain of Umbar,{2}{U},3,
 Council's Deliberation,{1}{U},2,
 Deceive the Messenger,{U},1,Amass
 Dreadful as the Storm,{2}{U},3,
@@ -8148,31 +8305,21 @@ Dreadful as the Storm,{2}{U},3,
 "Gandalf, Friend of the Shire",{3}{U},4,Flash
 Glorious Gale,{1}{U},2,
 "Goldberry, River-Daughter",{1}{U},2,
-Grey Havens Navigator,{2}{U},3,Flash;Scry
-Hithlain Knots,{1}{U},2,Scry
 Horses of the Bruinen,{3}{U}{U},5,Scry
 Ioreth of the Healing House,{2}{U},3,
 Isolation at Orthanc,{3}{U},4,
-Ithilien Kingfisher,{2}{U},3,Flying
-Knights of Dol Amroth,{3}{U},4,
-Lórien Revealed,{3}{U}{U},5,Islandcycling;Landcycling;Typecycling;Cycling
 Lost Isle Calling,{1}{U},2,
 "Meneldor, Swift Savior",{3}{U},4,Flying
-Nimrodel Watcher,{1}{U},2,
-Pelargir Survivor,{1}{U},2,Mill
 Press the Enemy,{2}{U}{U},4,
 Rangers of Ithilien,{2}{U}{U},4,Vigilance
 Saruman the White,{4}{U},5,Amass;Ward
 Saruman's Trickery,{1}{U}{U},3,Amass
 Scroll of Isildur,{2}{U},3,
 Soothing of Sméagol,{1}{U},2,
-Stern Scolding,{U},1,
 Storm of Saruman,{4}{U}{U},6,Ward
 Surrounded by Orcs,{3}{U},4,Amass;Mill
 Treason of Isengard,{2}{U},3,Amass
 The Watcher in the Water,{3}{U}{U},5,
-Willow-Wind,{4}{U},5,Scry;Flying
-Bitter Downfall,{3}{B},4,
 The Black Breath,{2}{B},3,
 Call of the Ring,{1}{B},2,
 Cirith Ungol Patrol,{4}{B},5,Food
@@ -8185,7 +8332,6 @@ Gorbag of Minas Morgul,{1}{B},2,Treasure
 "Gothmog, Morgul Lieutenant",{3}{B},4,Amass
 Gríma Wormtongue,{2}{B},3,Amass
 "Grond, the Gatebreaker",{3}{B},4,Crew;Trample
-Haunt of the Dead Marshes,{B},1,Scry
 Isildur's Fateful Strike,{2}{B}{B},4,
 Lash of the Balrog,{B},1,
 Lobelia Sackville-Baggins,{2}{B},3,Treasure;Menace;Flash
@@ -8201,15 +8347,11 @@ One Ring to Rule Them All,{2}{B}{B},4,Mill
 Orcish Medicine,{1}{B},2,Amass
 Sam's Desperate Rescue,{B},1,
 "Sauron, the Necromancer",{3}{B}{B},5,Menace
-Shadow of the Enemy,{3}{B}{B}{B},6,
 Shelob's Ambush,{B},1,Food
 Snarling Warg,{3}{B},4,Menace
 The Torment of Gollum,{3}{B},4,Amass
-Troll of Khazad-dûm,{5}{B},6,Landcycling;Typecycling;Cycling;Swampcycling
 Uruk-hai Berserker,{2}{B},3,
 Voracious Fell Beast,{4}{B}{B},6,Flying;Food
-Witch-king of Angmar,{3}{B}{B},5,Flying
-Battle-Scarred Goblin,{1}{R},2,
 Book of Mazarbul,{2}{R},3,Amass
 Breaking of the Fellowship,{1}{R},2,
 Cast into the Fire,{1}{R},2,
@@ -8221,20 +8363,15 @@ Erebor Flamesmith,{1}{R},2,
 Fall of Cair Andros,{2}{R},3,Amass
 "Fear, Fire, Foes!",{X}{R},1,
 Fiery Inscription,{2}{R},3,
-Fire of Orthanc,{3}{R},4,
 Foray of Orcs,{3}{R},4,Amass
 "Gimli, Counter of Kills",{3}{R},4,Trample
 Gimli's Axe,{2}{R},3,Equip
 Gimli's Fury,{1}{R},2,
 "Glóin, Dwarf Emissary",{2}{R},3,Goad;Treasure
-Goblin Fireleaper,{1}{R},2,
 "Grishnákh, Brash Instigator",{2}{R},3,Amass
 Haradrim Spearmaster,{2}{R},3,Reach
 Hew the Entwood,{3}{R}{R},5,
-Improvised Club,{1}{R},2,
 Moria Marauder,{R}{R},2,Double strike
-Oliphaunt,{5}{R},6,Mountaincycling;Landcycling;Trample;Typecycling;Cycling
-Olog-hai Crusher,{3}{R},4,Trample
 Quarrel's End,{2}{R},3,
 Rally at the Hornburg,{1}{R},2,
 Ranger's Firebrand,{R},1,
@@ -8242,7 +8379,6 @@ Relentless Rohirrim,{3}{R},4,
 Rising of the Day,{2}{R},3,
 Rohirrim Lancer,{R},1,Menace
 Rush the Room,{R},1,
-Smite the Deathless,{1}{R},2,
 Spiteful Banditry,{X}{R}{R},2,Treasure
 Swarming of Moria,{2}{R},3,Amass;Treasure
 There and Back Again,{3}{R}{R},5,Treasure;Haste
@@ -8250,7 +8386,6 @@ Warbeast of Gorgoroth,{4}{R},5,Amass
 Bag End Porter,{3}{G},4,
 Bombadil's Song,{1}{G},2,
 Brandywine Farmer,{2}{G},3,Food
-Celeborn the Wise,{3}{G},4,Scry
 Chance-Met Elves,{2}{G},3,
 Dúnedain Rangers,{3}{G},4,Landfall
 Elven Farsight,{G},1,Scry
@@ -8260,13 +8395,10 @@ Ent's Fury,{1}{G},2,Fight
 Fall of Gil-galad,{1}{G},2,Fight;Scry
 "Fangorn, Tree Shepherd",{4}{G}{G}{G},7,
 Galadhrim Bow,{2}{G},3,Equip;Flash
-Galadhrim Guide,{3}{G},4,Scry
 Generous Ent,{5}{G},6,Reach;Landcycling;Food;Forestcycling;Typecycling;Cycling
-Gift of Strands,{3}{G},4,Enchant;Flash;Scry
 "Glorfindel, Dauntless Rescuer",{2}{G},3,
 "Legolas, Master Archer",{1}{G}{G},3,Reach
 Long List of the Ents,{G},1,
-Lothlórien Lookout,{1}{G},2,Scry
 Meriadoc Brandybuck,{1}{G},2,Food
 Mirkwood Spider,{G},1,Deathtouch
 Mirrormere Guardian,{2}{G},3,
@@ -8300,7 +8432,6 @@ Gandalf's Sanction,{1}{U}{R},3,
 Gwaihir the Windlord,{4}{W}{U},6,Flying;Vigilance
 King of the Oathbreakers,{2}{W}{B},4,Flying
 "Legolas, Counter of Kills",{2}{G}{U},4,Reach
-"Lotho, Corrupt Shirriff",{W}{B},2,Treasure
 "Mauhúr, Uruk-hai Captain",{B}{R},2,Menace
 "Merry, Esquire of Rohan",{R}{W},2,Haste
 The Mouth of Sauron,{3}{U}{B},5,Amass;Mill
@@ -8324,7 +8455,6 @@ Tom Bombadil,{W}{U}{B}{R}{G},5,
 Uglúk of the White Hand,{2}{B}{R},4,
 Barrow-Blade,{1},1,Equip
 Ent-Draught Basin,{2},2,
-Glamdring,{2},2,Equip
 Horn of Gondor,{3},3,
 Horn of the Mark,{2},2,
 Inherited Envelope,{3},3,
@@ -8354,7 +8484,6 @@ Fires of Mount Doom,{2}{R},3,
 "The Balrog, Flame of Udûn",{3}{B}{R},5,Trample
 Trailblazer's Boots,{2},2,Equip
 Eagle of Deliverance,{4}{W}{W},6,Flying
-Minas Tirith Garrison,{3}{U},4,
 Warg Rider,{4}{B},5,Amass;Menace
 Riders of the Mark,{6}{R},7,Affinity;Haste;Trample
 Mirkwood Channeler,{3}{G},4,
@@ -9146,6 +9275,9 @@ Rebuild the City,{3}{B}{R}{G},6,
 Tyvar the Bellicose,{2}{B}{G},4,
 "Karn, Legacy Reforged",{5},5,
 Drannith Ruins,,0,
+Case of the Lost Witness,{1}{U},2,Solved;Conjure
+Oracle of the Alpha,{2}{U},3,Scry;Flying;Conjure
+Perforator Crocodile,{3}{B}{B}{B},6,Cycling;Conjure
 Leonin Relic-Warder,{W}{W},2,
 Green Sun's Zenith,{X}{G},1,
 Ranger-Captain of Eos,{1}{W}{W},3,
@@ -10587,11 +10719,6 @@ Avengers Hangar,,0,
 Fisk Tower,,0,
 Hell's Kitchen,,0,
 Los Diablos Missile Base,,0,
-Plains,,0,
-Island,,0,
-Swamp,,0,
-Mountain,,0,
-Forest,,0,
 "Anafenza, Kin-Tree Spirit",{W}{W},2,Bolster
 "Elesh Norn, Grand Cenobite",{5}{W}{W},7,Vigilance
 "Baral, Chief of Compliance",{1}{U},2,
@@ -12416,7 +12543,6 @@ Divine Reckoning,{2}{W}{W},4,Flashback
 Doomed Traveler,{W},1,
 Elder Cathar,{2}{W},3,
 Feeling of Dread,{1}{W},2,Flashback
-Fiend Hunter,{1}{W}{W},3,
 Lingering Souls,{2}{W},3,Flashback
 Rally the Peasants,{2}{W},3,Flashback
 Requiem Angel,{5}{W},6,Flying
@@ -13422,7 +13548,6 @@ Hundred-Battle Veteran,{3}{B},4,
 Kin-Tree Nurturer,{2}{B},3,Lifelink;Endure
 Nightblade Brigade,{2}{B},3,Surveil;Mobilize;Deathtouch
 Qarsi Revenant,{1}{B}{B},3,Deathtouch;Flying;Lifelink;Renew
-Rot-Curse Rakshasa,{1}{B},2,Renew;Trample;Decayed
 Salt Road Skirmish,{3}{B},4,
 Sandskitter Outrider,{3}{B},4,Menace;Endure
 Scavenger Regent // Exude Toxin,{3}{B} // {X}{B}{B},4,Flying;Ward
@@ -13465,7 +13590,6 @@ Ainok Wayfarer,{1}{G},2,Mill
 Attuned Hunter,{2}{G},3,Trample
 Bloomvine Regent // Claim Territory,{3}{G}{G} // {2}{G},5,Flying
 Champion of Dusan,{2}{G},3,Renew;Trample
-Craterhoof Behemoth,{5}{G}{G}{G},8,Haste
 Dragon Sniper,{G},1,Reach;Vigilance;Deathtouch
 Dusyut Earthcarver,{5}{G},6,Reach;Endure
 Encroaching Dragonstorm,{3}{G},4,
@@ -13494,7 +13618,6 @@ Awaken the Honored Dead,{B}{G}{U},3,Mill
 Barrensteppe Siege,{2}{W}{B},4,
 Bone-Cairn Butcher,{1}{R}{W}{B},4,Mobilize
 Cori Mountain Stalwart,{1}{R}{W},3,Flurry
-Death Begets Life,{5}{B}{G}{U},8,
 Defibrillating Current,{2/R}{2/W}{2/B},6,
 Disruptive Stormbrood // Petty Revenge,{4}{G} // {1}{B},5,Flying
 Dragonback Assault,{3}{G}{U}{R},6,Landfall
@@ -13510,7 +13633,6 @@ Hardened Tactician,{1}{W}{B},3,
 Hollowmurk Siege,{B}{G},2,
 Inevitable Defeat,{1}{R}{W}{B},4,
 Jeskai Brushmaster,{1}{U}{R}{W},4,Prowess;Double strike
-Jeskai Revelation,{4}{U}{R}{W},7,
 Jeskai Shrinekeeper,{2}{U}{R}{W},5,Flying;Haste
 Karakyk Guardian,{3}{G}{U}{R},6,Flying;Vigilance;Trample
 Kheru Goldkeeper,{1}{B}{G}{U},4,Flying;Renew;Treasure
@@ -13535,7 +13657,6 @@ Riverwheel Sweep,{2/U}{2/R}{2/W},6,
 Roar of Endless Song,{2}{G}{U}{R},5,Double
 Runescale Stormbrood // Chilling Screech,{3}{R} // {1}{U},4,Flying
 Severance Priest,{W}{B}{G},3,Deathtouch
-"Shiko, Paragon of the Way",{2}{U}{R}{W},5,Flying;Vigilance
 Songcrafter Mage,{G}{U}{R},3,Flash
 Sonic Shrieker,{2}{R}{W}{B},5,Flying
 Stalwart Successor,{1}{B}{G},3,Menace
@@ -13543,7 +13664,6 @@ Temur Battlecrier,{G}{U}{R},3,
 "Teval, Arbiter of Virtue",{2}{B}{G}{U},5,Flying;Lifelink
 Thunder of Unity,{R}{W}{B},3,
 Twinmaw Stormbrood // Charring Bite,{5}{W} // {1}{R},6,Flying
-"Ureni, the Song Unending",{5}{G}{U}{R},8,Flying;Protection
 Whirlwing Stormbrood // Dynamic Soar,{4}{U} // {2}{G},5,Flying;Flash
 Windcrag Siege,{1}{R}{W},3,
 Yathan Roadwatcher,{1}{W}{B}{G},4,Mill
@@ -14093,7 +14213,6 @@ Turncoat Kunoichi,{2}{W},3,Sneak
 Turtles Forever,{3}{W},4,
 "April O'Neil, Hacktivist",{3}{U},4,
 Does Machines,{1}{U},2,Mill
-"Donatello, Gadget Master",{2}{U},3,Sneak
 Donatello's Technique,{2}{U},3,Sneak
 "Krang, Master Mind",{6}{U}{U},8,Affinity
 Return to the Sewers,{3}{U},4,
@@ -14965,7 +15084,6 @@ Queen's Commission,{2}{W},3,
 Rallying Roar,{2}{W},3,
 Ritual of Rejuvenation,{2}{W},3,
 Sanguine Sacrament,{X}{W}{W},2,
-Settle the Wreckage,{2}{W}{W},4,
 Sheltering Light,{W},1,Scry
 Shining Aerosaur,{4}{W},5,Flying
 Skyblade of the Legion,{1}{W},2,Flying
@@ -15255,7 +15373,6 @@ Rising Chicane,,0,Max speed;Start your engines!
 Benalish Knight-Counselor,{W},1,Enlist
 Priest of Possibility,{1}{W},2,
 Pull of the Mist Moon,{1}{W}{W},3,Kicker
-Oracle of the Alpha,{2}{U},3,Scry;Flying;Conjure
 Skywriter Djinn,{3}{U},4,Flying;Domain;Conjure
 Trove Mage,{2}{U},3,Seek
 Vesuvan Mist,{1}{U},2,Conjure;Kicker
@@ -15468,14 +15585,12 @@ Forsaken Crossroads,,0,Scry
 Scrutiny of the Guildpact,{1}{W},2,Incorporate
 Sleuth Instructor,{1}{W},2,Seek;Cloak;Disguise
 Spotlight Falcon,{2}{W}{W},4,Flying;Collect evidence;Conjure
-Case of the Lost Witness,{1}{U},2,Solved;Conjure
 Emporium Thopterist,{1}{U},2,Conjure
 Excogitator Sphinx,{2}{U}{U},4,Flying;Investigate;Seek
 Mapping the Maze,{1}{U},2,Incorporate
 Ominous Lockbox,{1}{U},2,
 Cackling Observer,{1}{B}{B},3,Flying;Seek
 Lurking Spinecrawler,{3}{B},4,Incorporate
-Perforator Crocodile,{3}{B}{B}{B},6,Cycling;Conjure
 Snarlfang Vermin,{B},1,Suspect
 Case of the Market Melee,{1}{R},2,Solved
 Concert Kaboomist,{1}{R}{R},3,Trample;Disguise
