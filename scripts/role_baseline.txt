@@ -91,6 +91,7 @@ Deceit
 Deepchannel Duelist
 Deepmuck Desperado
 Deepway Navigator
+Defiant Survivor
 Delney, Streetwise Lookout
 Devastating Onslaught
 Diligent Zookeeper
