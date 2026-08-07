@@ -2064,6 +2064,21 @@ Boom Box,{2},2,
 Ride Down,{R}{W},2,
 Highway Robbery,{1}{R},2,Plot
 Vengeful Townsfolk,{2}{W},3,
+Perennation,{3}{W}{B}{G},6,
+Shocking Sharpshooter,{1}{R},2,Reach
+Dragon Sniper,{G},1,Reach;Vigilance;Deathtouch
+Essence Anchor,{2}{U},3,Surveil
+Purging Stormbrood,{4}{B} // {1}{W},5,Flying;Ward
+Feral Deathgorger,{5}{B} // {1}{B},6,Deathtouch;Flying
+Dusyut Earthcarver,{5}{G},6,Reach;Endure
+Trade Route Envoy,{3}{G},4,
+Devoted Duelist,{1}{R},2,Flurry;Haste
+"Nita, Forum Conciliator",{1}{W}{B},3,
+Hauntwoods Shrieker,{1}{G}{G},3,Manifest;Manifest dread
+Synthesizer Labship,{U},1,Station
+Force of Will,{3}{U}{U},5,
+Fractal Anomaly,{U},1,
+Duel Tactics,{R},1,Flashback
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3482,7 +3497,6 @@ Burden of Guilt,{W},1,Enchant
 Stromkirk Captain,{1}{B}{R},3,First strike
 "Greensleeves, Maro-Sorcerer",{3}{G}{G},5,Protection;Landfall
 "Torsten, Founder of Benalia",{5}{G}{W},7,
-Force of Will,{3}{U}{U},5,
 "A-Karn, Living Legacy",{4},4,
 A-Meria's Outrider,{4}{R},5,Reach;Domain
 A-Radha's Firebrand,{1}{R},2,Domain
@@ -4121,7 +4135,6 @@ Cryptid Inspector,{2}{G},3,Vigilance
 Fear of Exposure,{2}{G},3,Trample
 Grasping Longneck,{2}{G},3,Reach
 Greenhouse // Rickety Gazebo,{2}{G} // {3}{G},7,Mill
-Hauntwoods Shrieker,{1}{G}{G},3,Manifest;Manifest dread
 Hedge Shredder,{2}{G}{G},4,Crew;Mill
 Horrid Vigor,{1}{G},2,
 House Cartographer,{1}{G},2,Survival
@@ -4682,7 +4695,6 @@ Scour for Scrap,{3}{U},4,
 Selfcraft Mechan,{3}{U},4,
 Starfield Vocalist,{3}{U},4,Warp
 Starwinder,{5}{U}{U},7,Warp
-Synthesizer Labship,{U},1,Station
 Unravel,{1}{U}{U},3,
 Uthros Psionicist,{2}{U},3,
 Uthros Scanship,{3}{U},4,Station
@@ -12983,7 +12995,6 @@ Campus Composer // Aqueous Aria,{3}{U} // {4}{U},4,Prepared;Ward
 Emeritus of Ideation // Ancestral Recall,{3}{U}{U} // {U},5,Flying;Prepared;Ward
 Encouraging Aviator // Jump,{2}{U} // {U},3,Flying;Prepared
 Flow State,{1}{U},2,
-Fractal Anomaly,{U},1,
 Fractalize,{X}{U},1,
 Harmonized Trio // Brainstorm,{U} // {U},1,Prepared
 "Jadzi, Steward of Fate // Oracle's Gift",{2}{U} // {X}{X}{U},3,Prepared
@@ -13012,7 +13023,6 @@ Send in the Pest,{1}{B},2,
 Sneering Shadewriter,{4}{B},5,Flying
 Blazing Firesinger // Seething Song,{2}{R} // {2}{R},3,Prepared
 Choreographed Sparks,{R}{R},2,
-Duel Tactics,{R},1,Flashback
 Emeritus of Conflict // Lightning Bolt,{1}{R} // {R},2,First strike;Prepared
 Flashback,{R},1,
 Goblin Glasswright // Craft with Pride,{1}{R} // {R},2,Treasure;Prepared
@@ -13052,7 +13062,6 @@ Lorehold Charm,{R}{W},2,
 Mind Roots,{1}{B}{G},3,
 Molten Note,{X}{R}{W},2,Flashback
 Moment of Reckoning,{3}{W}{W}{B}{B},7,
-"Nita, Forum Conciliator",{1}{W}{B},3,
 Old-Growth Educator,{2}{B}{G},4,Infusion;Reach;Vigilance
 Prismari Charm,{U}{R},2,Surveil
 Rapturous Moment,{4}{U}{R},6,
@@ -13543,7 +13552,6 @@ Constrictor Sage,{4}{U},5,Renew
 Dirgur Island Dragon // Skimming Strike,{5}{U} // {1}{U},6,Flying;Ward
 Dragonologist,{2}{U},3,
 Dragonstorm Forecaster,{U},1,
-Essence Anchor,{2}{U},3,Surveil
 Focus the Mind,{4}{U},5,
 Highspire Bell-Ringer,{2}{U},3,Flying
 Iceridge Serpent,{4}{U},5,
@@ -13582,7 +13590,6 @@ Wail of War,{2}{B},3,
 Yathan Tombguard,{2}{B},3,Menace
 Channeled Dragonfire,{R},1,Harmonize
 Cori-Steel Cutter,{1}{R},2,Flurry;Equip
-Devoted Duelist,{1}{R},2,Flurry;Haste
 Fleeting Effigy,{R},1,Haste
 Iridescent Tiger,{4}{R},5,
 Magmatic Hellkite,{2}{R}{R},4,Flying
@@ -13591,7 +13598,6 @@ Narset's Rebuke,{4}{R},5,
 Rescue Leopard,{2}{R},3,
 Seize Opportunity,{2}{R},3,
 Shock Brigade,{1}{R},2,Menace;Mobilize
-Shocking Sharpshooter,{1}{R},2,Reach
 Stormscale Scion,{4}{R}{R},6,Flying;Storm
 Stormshriek Feral // Flush Out,{4}{R} // {1}{R},5,Flying;Haste
 Sunset Strikemaster,{1}{R},2,
@@ -13602,8 +13608,6 @@ Wild Ride,{R},1,Harmonize
 Zurgo's Vanguard,{2}{R},3,Mobilize
 Attuned Hunter,{2}{G},3,Trample
 Bloomvine Regent // Claim Territory,{3}{G}{G} // {2}{G},5,Flying
-Dragon Sniper,{G},1,Reach;Vigilance;Deathtouch
-Dusyut Earthcarver,{5}{G},6,Reach;Endure
 Encroaching Dragonstorm,{3}{G},4,
 Formation Breaker,{1}{G},2,
 Herd Heirloom,{1}{G},2,
@@ -13617,7 +13621,6 @@ Rite of Renewal,{3}{G},4,
 Roamer's Routine,{2}{G},3,Harmonize
 Sagu Pummeler,{3}{G},4,Reach;Renew
 Sagu Wildling // Roost Seek,{4}{G} // {G},5,Flying
-Trade Route Envoy,{3}{G},4,
 Traveling Botanist,{1}{G},2,
 Undergrowth Leopard,{1}{G},2,Vigilance
 Warden of the Grove,{2}{G},3,Endure
@@ -13651,7 +13654,6 @@ Mardu Siegebreaker,{1}{R}{W}{B},4,Haste;Deathtouch
 Marshal of the Lost,{2}{W}{B},4,Deathtouch
 "Neriv, Heart of the Storm",{1}{R}{W}{B},4,Flying
 New Way Forward,{2}{U}{R}{W},5,
-Perennation,{3}{W}{B}{G},6,
 Purging Stormbrood // Absorb Essence,{4}{B} // {1}{W},5,Flying;Ward
 Rakshasa's Bargain,{2/B}{2/G}{2/U},6,
 Rediscover the Way,{U}{R}{W},3,

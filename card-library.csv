@@ -4394,3 +4394,31 @@ Ride Down,Instant,Destroy target blocking creature. Creatures that were blocked 
 Highway Robbery,Sorcery,"You may discard a card or sacrifice a land. If you do, draw two cards.
 Plot {1}{R} (You may pay {1}{R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",R,exile cast; card draw; sacrifice; plot; tempo; cost-reduction,OTJ,129,1
 Vengeful Townsfolk,Creature — Human Citizen,"Whenever one or more other creatures you control die, put a +1/+1 counter on this creature.",W,Human; Citizen; counters,OTJ,37,1
+Perennation,Sorcery,Return target permanent card from your graveyard to the battlefield with a hexproof counter and an indestructible counter on it.,W/B/G,counters; graveyard,TDM,212,1
+Shocking Sharpshooter,Creature — Human Archer,"Reach
+Whenever another creature you control enters, this creature deals 1 damage to target opponent.",R,Human; Archer; burn; noncombat damage; reach; defense,TDM,121,1
+Dragon Sniper,Creature — Human Archer,"Vigilance, reach, deathtouch",G,Human; Archer; reach; defense; vigilance; combat; deathtouch; removal,TDM,139,1
+Essence Anchor,Artifact,"At the beginning of your upkeep, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
+{T}: Create a 2/2 black Zombie Druid creature token. Activate only during your turn and only if a card left your graveyard this turn.",U,graveyard; tokens; selection; surveil,TDM,44,1
+Purging Stormbrood,Creature — Dragon // Instant — Omen,"Flying
+Ward—Pay 2 life.
+When this creature enters, remove all counters from up to one target creature. // Target creature gets +2/+2 and gains lifelink and hexproof until end of turn. (Then shuffle this card into its owner's library.)",W/B,Dragon; Omen; lifegain; etb; pump; flying; evasion; ward; protection,TDM,213,1
+Feral Deathgorger,Creature — Dragon // Sorcery — Omen,"Flying, deathtouch
+When this creature enters, exile up to two target cards from a single graveyard. // Put a +1/+1 counter on up to one target creature. Draw a card. (Then shuffle this card into its owner's library.)",B,Dragon; Omen; counters; graveyard; card draw; etb; deathtouch; combat; removal; flying; evasion,TDM,80,1
+Dusyut Earthcarver,Creature — Elephant Druid,"Reach
+When this creature enters, it endures 3. (Put three +1/+1 counters on it or create a 3/3 white Spirit creature token.)",G,Elephant; Druid; counters; tokens; etb; reach; defense; endure,TDM,141,1
+Trade Route Envoy,Creature — Dog Soldier,"When this creature enters, draw a card if you control a creature with a counter on it. If you don't draw a card this way, put a +1/+1 counter on this creature.",G,Dog; Soldier; counters; card draw; etb,TDM,163,1
+Devoted Duelist,Creature — Goblin Monk,"Haste
+Flurry — Whenever you cast your second spell each turn, this creature deals 1 damage to each opponent.",R,Goblin; Monk; burn; noncombat damage; flurry; spellslinger; haste; aggro,TDM,104,1
+"Nita, Forum Conciliator",Legendary Creature — Human Advisor,"Whenever you cast a spell you don't own, put a +1/+1 counter on each creature you control.
+{2}, Sacrifice another creature: Exile target instant or sorcery card from an opponent's graveyard. You may cast it this turn, and mana of any type can be spent to cast that spell. If that spell would be put into a graveyard, exile it instead. Activate only as a sorcery.",W/B,Human; Advisor; counters; graveyard; heist; sacrifice; removal,SOS,206,1
+Hauntwoods Shrieker,Creature — Beast Mutant,"Whenever this creature attacks, manifest dread. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)
+{1}{G}: Reveal target face-down permanent. If it's a creature card, you may turn it face up.",G,Beast; Mutant; reanimator; graveyard; selection; manifest; tokens; manifest dread,DSK,182,1
+Synthesizer Labship,Artifact — Spacecraft,"Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 9+.)
+2+ | At the beginning of combat on your turn, up to one other target artifact you control becomes an artifact creature with base power and toughness 2/2 and gains flying until end of turn.
+9+ | Flying, vigilance",U,Spacecraft; station; counters; artifacts,EOE,81,1
+Force of Will,Instant,"You may pay 1 life and exile a blue card from your hand rather than pay this spell's mana cost.
+Counter target spell.",U,counterspell; pay life,DMR,50,1
+Fractal Anomaly,Instant,"Create a 0/0 green and blue Fractal creature token and put X +1/+1 counters on it, where X is the number of cards you've drawn this turn.",U,counters; tokens,SOS,50,1
+Duel Tactics,Sorcery,"Duel Tactics deals 1 damage to target creature. It can't block this turn.
+Flashback {1}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",R,graveyard; burn; flashback; recursion; spellslinger,SOS,112,1
