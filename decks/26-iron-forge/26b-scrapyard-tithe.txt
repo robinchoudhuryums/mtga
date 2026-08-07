@@ -5,14 +5,14 @@
 #: plan: midrange
 #: tier: B — the CLOSEST call of the three graded this pass, and the only one where A is
 #: tier: genuinely arguable rather than merely allowed by the floor. The measurable case is the
-#: tier: strongest in the family by a wide margin: interaction 13 plus card advantage 8 against
-#: tier: 12 and 11 for the two Doombot lists, on the fastest curve here at 2.31, and with only
+#: tier: strongest in the family by a wide margin: interaction 12 plus card advantage 8 against
+#: tier: 10 and 9 for the two Doombot lists, on the fastest curve here at 2.39, and with only
 #: tier: ONE unclassified card — so unlike its siblings these numbers are not hiding an engine
-#: tier: the classifier cannot read. Effect depth is the deepest on the roster's artifact side:
-#: tier: burn 15, payoff 14, removal 12, card advantage 8.
+#: tier: the classifier cannot read. The role tally is the deepest on the roster's artifact
+#: tier: side: payoff 16, removal 12, card advantage 8, ramp 7.
 #: tier: WHAT CAPS IT IS THE ZERO-PROTECTION FLAG, and here it is not cosmetic. The whole deck
 #: tier: is three drain engines, and its own archetype block says the quiet part: "with two of
-#: tier: the three out, one loot is 5 damage across the table." Five build-around permanents are
+#: tier: the three out, one loot is 5 damage across the table." Four build-around permanents are
 #: tier: named in `#: protect:` and there is no ward, no hexproof, no indestructible and no
 #: tier: recursion for any of them. One removal spell undoes the plan. That is a single
 #: tier: catastrophic failure mode the metrics floor structurally cannot price, and it points
@@ -26,7 +26,7 @@
 #: tier: damage is CUMULATIVE. Life already taken does not come back when the engine dies, so
 #: tier: removal is a tempo hit rather than a reset, which is exactly the kind of thing a metrics
 #: tier: floor cannot see. If it plays out that way, re-grade up rather than re-deriving this.
-#: protect: Monument to Endurance; Cool but Rude; Magmakin Artillerist; Summon: Bahamut; Death to Our Enemies
+#: protect: Monument to Endurance; Cool but Rude; Magmakin Artillerist; Death to Our Enemies
 #: archetype: IZZET ARTIFACTS THAT WIN WITHOUT ATTACKING. Every other deck in this family gets
 #: archetype: its damage through the combat step — 26 with ramped bombs, 26a with poison, 47
 #: archetype: with affinity bodies, 48 with anthems, 48a with crewed Vehicles. This one taxes
@@ -127,7 +127,16 @@
 #: notes: NO SWEEPER AND ALMOST NO BLOCKERS is the obvious hole — the deck's creature count is
 #: notes: deliberately low because creatures are not how it wins. Against a fast aggro start it
 #: notes: must trade removal one-for-one and race with drain, which is a real losing posture.
-#: notes: The five interaction spells are doing double duty as both defence and reach.
+#: notes: The four interaction spells are doing double duty as both defence and reach.
+#: notes: PASS 4, 2026-08-07 — TWO CORRECTIONS. (1) `#: protect:` named Summon: Bahamut, a card
+#: notes: this deck has never run (it went to 48a in the pivot recorded above). The header was
+#: notes: therefore hard-protecting nothing and hiding the fact that only four permanents are
+#: notes: actually shielded from the cut ranking; removed. (2) FIERY ANNIHILATION CUT FOR
+#: notes: METICULOUS ARTISAN. Annihilation ranked 1/32 most-cuttable and was the third
+#: notes: near-duplicate of Abrade/Overwhelming Surge; the Artisan is a Treasure body that
+#: notes: COUNTS artifacts, i.e. it feeds the currency every engine here spends. Interaction
+#: notes: 13 -> 12 (still the family high), avg MV 2.31 -> 2.39. Its line lives under the
+#: notes: Treasure heading, not Interaction, per G-05 — it classifies Payoff/engine.
 
 # Drain engines — every one triggers off discarding
 1 Monument to Endurance (DFT) 237
@@ -154,6 +163,7 @@
 1 Death to Our Enemies (MSH) 127
 
 # Treasure and artifact fuel — and the one payoff that counts them
+1 Meticulous Artisan (TDM) 112
 1 Stark Industries Executive (MSH) 153
 1 Reckless Ransacking (ECL) 152
 1 Lady Octopus, Inspired Inventor (SPM) 35
@@ -175,7 +185,6 @@
 # Interaction — also the deck's only defence
 1 Abrade (FDN) 188
 1 Overwhelming Surge (TDM) 115
-1 Fiery Annihilation (FDN) 86
 1 Bullseye, Death Dealer (MSH) 209
 1 Iron-Fist Pulverizer (OTJ) 131
 
