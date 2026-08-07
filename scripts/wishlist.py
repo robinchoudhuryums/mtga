@@ -43,7 +43,8 @@ import os
 import sys
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty,
-                 card_colors, card_distinctiveness, color_matches, primary_type)
+                 alias_front, card_colors, card_distinctiveness, color_matches,
+                 primary_type)
 from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
@@ -93,8 +94,12 @@ def load_pool_index():
             if not n:
                 continue
             idx.setdefault(n, r)
-            idx.setdefault(n.split(" // ")[0], r)
-    return idx
+    # SECOND pass per lib.alias_front's contract (BS2-40): the in-loop `setdefault`
+    # on the front name is order-dependent — a full-name row seen early claims the
+    # front before a real card of that name arrives, and `enrich()` would then store
+    # the WRONG card's fields into a new wishlist row. Latent (0 front-name
+    # collisions in today's pool), and registered in check_dfc's _ALIASED_LOADERS.
+    return alias_front(idx)
 
 
 def owned_index():
@@ -514,11 +519,24 @@ def cmd_suggest_targets(rows, write=False, overwrite=False):
         else:
             best = fits[0]
             alts = ",".join(d for _, d, _, _ in fits[1:3])
+            spec_best = next((f for f in fits if f[2]), None)
             if best[2]:  # shares a specific (rare) theme — real signal
                 lead = len(fits) < 2 or best[0] >= fits[1][0] + 0.5
                 conf = "STRONG" if (lead or best[0] >= 1.5) else "ok"
                 tgt = proposal = best[1]
                 sig = f"{'/'.join(best[2][:2])}  (score {best[0]}; alts {alts or '—'})"
+            elif spec_best:
+                # BS2-39: the top-scoring deck won on summed GENERIC overlap while a
+                # lower-scoring deck shares a genuinely specific theme. The old path
+                # printed `review` and proposed the GENERIC deck with a `?` — pointing
+                # the human at the wrong home while the real one was never shown
+                # (Splash Portal → 27 `blink`, Aloe Alchemist → 50 `cost-reduction`).
+                # Propose the specific home at `ok` (it was not the top score), naming
+                # both so the trade is visible.
+                conf = "ok"
+                tgt = proposal = spec_best[1]
+                sig = (f"{'/'.join(spec_best[2][:2])}  (specific home; "
+                       f"generic-top {best[1]})")
             else:  # only generic-theme overlap — the catch-all zone
                 conf, tgt = "review", best[1] + "?"
                 sig = f"only generic: {','.join(best[3][:3])}  (alts {alts or '—'})"
@@ -726,13 +744,27 @@ def _rank_scores(rows, keep=None):
         import datetime
         pool_rot, _has_rel = dk._pool_rotation_index()
         _rot_soon_year = datetime.date.today().year + 1
-    except Exception:
-        pass
+        if not _has_rel:
+            # `_pool_rotation_index`'s docstring exists for exactly this: "callers
+            # then warn instead of silently reporting nothing." This caller bound the
+            # flag to an underscore and never read it, so a pool built before the
+            # Released column made `--rank`/`--budget` print ZERO ⚠rot flags and say
+            # nothing — which reads as "nothing on this plan is rotating", the precise
+            # wrong answer G-19/G-30 exist to prevent (broad-scan BS2-38).
+            eprint("WARN:  card-pool.csv has no Released column — rotation (⚠rot) "
+                   "flags are OFF, not clear. Rebuild with build_pool.py --all.")
+            _rot_soon_year = None
+    except Exception as e:
+        # Degrade, but never silently (audit A14 — the two sibling loaders above
+        # already eprint on their own failures for the same reason).
+        eprint(f"WARN:  rotation index unavailable ({e}) — ⚠rot flags are OFF, "
+               "not clear.")
     out = []
     for r in rows:
         ccols = card_colors(r.get("Color(s)"))
         ctags = {t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()}
         best, best_specific, reuse = 0.0, [], 0
+        best_spec_score, best_spec_list = 0.0, []
         for did, dcols, central, twn in fps:
             if not ccols.issubset(dcols):
                 continue
@@ -752,6 +784,15 @@ def _rank_scores(rows, keep=None):
             score = sum(idf.get(t, 0) * twn[t] for t in shared)
             if score > best:
                 best, best_specific = score, specific
+            # BS2-39: `specific` used to be retained only for the single highest-
+            # SCORING deck — and generic themes are floored, not zeroed, so three
+            # near-generic overlaps could outscore one genuinely specific theme.
+            # The card then read `review`/"generic/no-theme" while a real specific
+            # home existed (5 of 206 live rows: Splash Portal's blink home in deck
+            # 27, Aloe Alchemist's cost-reduction home in 50, …). Track the best
+            # SPECIFIC-theme deck separately so that signal survives.
+            if specific and score > best_spec_score:
+                best_spec_score, best_spec_list = score, specific
         # Breadth via the SHARED counting rule (deck.cross_deck_breadth), fed this
         # model's own idf-based notion of a specific theme. It used to be an inline
         # `reuse += 1` in the loop above — a second hand-written copy of the rule, which
@@ -761,6 +802,14 @@ def _rank_scores(rows, keep=None):
             conf = "STRONG"
         elif best_specific:
             conf = "ok"
+        elif best_spec_list:
+            # BS2-39 rescue: the top-scoring deck won on summed generic overlap, but
+            # a lower-scoring deck shares a genuinely SPECIFIC theme — that is a real
+            # home, not a "judge from text" case. Capped at `ok` (never STRONG: it was
+            # not the top-scoring fit), and the sig shows the specific themes so the
+            # reader sees why.
+            conf = "ok"
+            best_specific = best_spec_list
         else:
             conf = "review"
         # pri is the home-run single-deck fit; breadth is applied as a bounded bonus to
@@ -1000,7 +1049,19 @@ def cmd_budget(rows, budget_str, all_rows=None):
     print(f"Wildcard-spend plan for budget: "
           + ", ".join(f"{caps[r]} {r}" for r in ("Mythic", "Rare", "Uncommon", "Common") if caps.get(r)))
     print("(picks = highest combined fit+power within each cap; alts = next best)\n")
-    rotating = []
+
+    # G-19: "`--budget` must show every check `--rank` runs." The rotation half was
+    # fixed first; the three Power-PROVENANCE flags (`pow?` blank, `pow!` malformed,
+    # `pow~` conditional-and-unhand-graded) were still computed by _rank_scores and
+    # DISCARDED here — so a card whose confident-looking number is a seed, a blank, or
+    # structurally unpriceable could be picked into the plan with no "verify from
+    # text" marker, on the one view that spends real wildcards (broad-scan BS2-37).
+    def _pow_mark(s):
+        return (" pow!" if s.get("bad_power") else
+                " pow?" if s.get("blank_power") else
+                " pow~" if s.get("cond_power") else "")
+
+    rotating, flagged_pow = [], []
     for rar in ("Mythic", "Rare", "Uncommon", "Common"):
         cap = caps.get(rar, 0)
         if not cap:
@@ -1017,12 +1078,24 @@ def cmd_budget(rows, budget_str, all_rows=None):
             flag = f"  ⚠rot~{s['rot_year']}" if s.get("rot") else ""
             if s.get("rot"):
                 rotating.append((s["name"], s["rot_year"], rar))
+            mark = _pow_mark(s)
+            if mark:
+                flagged_pow.append((s["name"], mark.strip()))
             print(f"   {s['combined']:>4.1f}  {s['name'][:34]:34} "
-                  f"deck {s['target']:6}  (fit {s['fitN']:.1f} / pow {s['power']:.1f}){flag}")
+                  f"deck {s['target']:6}  (fit {s['fitN']:.1f} / pow {s['power']:.1f}{mark}){flag}")
         for s in alts:
             print(f"    alt {s['combined']:>3.1f}  {s['name'][:32]:32} deck {s['target']}"
+                  + _pow_mark(s)
                   + (f"  ⚠rot~{s['rot_year']}" if s.get("rot") else ""))
         print()
+    if flagged_pow:
+        print(f"⚠ {len(flagged_pow)} pick(s) carry an UNTRUSTED Power number — "
+              + "; ".join(f"{n} ({m})" for n, m in flagged_pow[:6])
+              + (" …" if len(flagged_pow) > 6 else "") + ".")
+        print("  pow? = blank (ranked on fit alone) · pow! = non-numeric/out-of-range "
+              "(scored 0.0 — fix the cell) · pow~ = conditional and not hand-graded "
+              "(the seed structurally can't price it). Verify from full text before "
+              "spending; hand-grade and set Power Source=hand.\n")
     if rotating:
         print(f"⚠ {len(rotating)} of the picks sit on a set ROTATING soon — a wildcard "
               f"there won't last: "
@@ -1108,11 +1181,28 @@ _CONDITIONAL_POWER_RE = re.compile(
     re.I)
 
 
-def is_conditional_power(row):
+def is_conditional_power(row, _mana={}):
     """True when a card's power depends on the DECK it's in (X-cost, kicker, landfall,
     'equal to …', 'for each … you control'), so its heuristic Power is a placeholder to
-    grade from text rather than a usable estimate."""
-    blob = f"{row.get('Card Text') or ''}\n{row.get('Mana Cost') or ''}"
+    grade from text rather than a usable estimate.
+
+    The mana COST is joined from card-mana.csv (`deck.load_mana`, full-pool scope per
+    G-18): wishlist rows carry NO `Mana Cost` column, so the old `row.get('Mana Cost')`
+    read was always '' and the `\\{x\\}` alternative — written for the cost — was dead
+    for the flag's whole life. Genesis Wave `{X}{G}{G}{G}`, named in this very block's
+    own design comment as a card the mechanism exists to catch, was unflagged
+    (broad-scan BS2-07-adjacent, batch B). Cached once per process; a missing mana
+    file degrades to the text-only read, which is the old behavior."""
+    if not _mana:
+        try:
+            import deck as dk
+            _mana.update(dk.load_mana() or {"": None})
+        except Exception:
+            _mana[""] = None
+    nl = (row.get("Card Name") or "").strip().lower()
+    entry = _mana.get(nl) or _mana.get(nl.split(" // ")[0])
+    cost = entry[0] if entry else ""
+    blob = f"{row.get('Card Text') or ''}\n{cost}"
     return bool(_CONDITIONAL_POWER_RE.search(blob))
 
 
@@ -1126,7 +1216,12 @@ def _seed_power(r):
     `Rarity` may be a word OR an Arena wildcard letter — see `_norm_rarity` (audit F-01)."""
     import deck as dk
     text = r.get("Card Text") or ""
-    ty = (r.get("Type") or "").lower()
+    # FRONT face only (G-63, batch B): the merged `A // B` type line made a DFC whose
+    # BACK is an Instant/Sorcery fail the permanent-value gate below — Decadent
+    # Dragon // Expensive Taste seeded 4.5 against a correct 5.5, and the wrong
+    # number was live in the CSV as `Power Source: seed`. The mirror hazard is a
+    # back-face Planeswalker granting the +2.0.
+    ty = (r.get("Type") or "").split("//")[0].lower()
     roles = set(dk.classify_roles(text))
     p = _SEED_RARITY.get(_norm_rarity(r.get("Rarity")), 2.0)
     p += sum(_SEED_ROLE.get(x, 0) for x in roles)

@@ -3141,8 +3141,14 @@ def load_card_meta():
                 cols = card_colors(r.get("Color(s)"))
                 tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
                 meta[nl] = {"colors": cols, "synergies": tags}
-                meta.setdefault(nl.split(" // ")[0], meta[nl])
-    return meta
+    # SECOND pass, per lib.alias_front's contract (BS2-40): this was the last loader
+    # still aliasing IN-pass, and its `nl in meta: continue` made the order-dependence
+    # into row LOSS — a real card named like an earlier DFC's front hit the alias and
+    # was dropped entirely, inheriting the DFC's colors and tags in suggest /
+    # suggest-homes / fingerprints / cut context (the documented "Life // Death"
+    # shadowing trap, latent at 0 collisions today). Registered in check_dfc's
+    # _ALIASED_LOADERS so the gate can see it.
+    return alias_front(meta)
 
 
 # High-confidence, high-precision mechanical SUB-themes (the tag-synergy payoffs added

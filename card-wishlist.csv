@@ -20,7 +20,7 @@ Whenever you gain life, put a +1/+1 counter on this creature.
 When this creature dies, put its counters on target creature you control.",W,Bat; Cleric; counters,BLB,12,Rare,20,"W lifegain payoff: gain life -> counters, life-loss -> flying — fits Orzhov lifegain (20)",5.0,hand
 Tender Wildguide,Creature — Possum Druid,"Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
 {T}: Add one mana of any color.
-{T}: Put a +1/+1 counter on this creature.",G,Possum; Druid; counters; tokens; mana; etb; offspring; go-wide,BLB,196,Rare,50,,3.0,seed
+{T}: Put a +1/+1 counter on this creature.",G,Possum; Druid; counters; tokens; mana; etb; offspring; go-wide,BLB,196,Rare,50,,4.0,seed
 Thornvault Forager,Creature — Squirrel Ranger,"{T}: Add {G}.
 {T}, Forage: Add two mana in any combination of colors. (To forage, exile three cards from your graveyard or sacrifice a Food.)
 {3}{G}, {T}: Search your library for a Squirrel card, reveal it, put it into your hand, then shuffle.",G,Squirrel; Ranger; graveyard; sacrifice; mana; food; forage,BLB,197,Rare,50,,4.5,seed
@@ -53,7 +53,7 @@ When this Equipment enters, if the gift was promised, attach this Equipment to t
 Equipped creature gets +3/+3 and loses flying.
 Equip {3}",Colorless,Equipment; tokens; etb; equipment; pump; gift; value; equip,BLB,249,Uncommon,38,,3.0,hand
 Sunshower Druid,Creature — Frog Druid,"When this creature enters, put a +1/+1 counter on target creature and you gain 1 life.",G,Frog; Druid; counters; lifegain; etb,BLB,195,Common,50,,1.5,seed
-Three Tree Rootweaver,Creature — Mole Druid,{T}: Add one mana of any color.,G,Mole; Druid; mana,BLB,198,Common,50,,1.0,seed
+Three Tree Rootweaver,Creature — Mole Druid,{T}: Add one mana of any color.,G,Mole; Druid; mana,BLB,198,Common,50,,1.5,seed
 Full Throttle,Sorcery,"After this main phase, there are two additional combat phases.
 At the beginning of each combat this turn, untap all creatures that attacked this turn.",R,,DFT,127,Rare,,,3.0,seed
 Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,5.5,hand
@@ -83,7 +83,7 @@ Equip {3}",R,Equipment; counters; burn; etb; equipment; pump; equip,DSK,128,Rare
 The Mindskinner,Legendary Enchantment Creature — Nightmare,"The Mindskinner can't be blocked.
 If a source you control would deal damage to an opponent, prevent that damage and each opponent mills that many cards.",U,Nightmare; mill; graveyard,DSK,66,Rare,51a,"Deck 51a: converts every damage source you control into mill, +4 each with the Water Crystal. Pure upside HERE because the deck has no combat plan to lose - it would be a trap in parent 51, which wins with Krang and the Terrors.",7.2,hand
 Twitching Doll,Artifact Creature — Spider Toy,"{T}: Add one mana of any color. Put a nest counter on this creature.
-{T}, Sacrifice this creature: Create a 2/2 green Spider creature token with reach for each counter on this creature. Activate only as a sorcery.",G,Spider; Toy; counters; sacrifice; tokens; mana,DSK,201,Rare,50,,3.0,seed
+{T}, Sacrifice this creature: Create a 2/2 green Spider creature token with reach for each counter on this creature. Activate only as a sorcery.",G,Spider; Toy; counters; sacrifice; tokens; mana,DSK,201,Rare,50,,4.0,seed
 Unholy Annex // Ritual Chamber,Enchantment — Room // Enchantment — Room,"At the beginning of your end step, draw a card. If you control a Demon, each opponent loses 2 life and you gain 2 life. Otherwise, you lose 2 life.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, create a 6/6 black Demon creature token with flying.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",B,Room; lifegain; pay life; card draw; tokens,DSK,118,Rare,52a,,6.5,seed
@@ -242,19 +242,19 @@ Whenever one or more nontoken creatures you control die, create a green Fungus D
 {2}, {T}: Double target creature's power until end of turn.",G,cost-reduction; tokens; double,LCI,212,Mythic,50a,,7.0,hand
 "Matzalantli, the Great Door // The Core",Legendary Artifact // Legendary Land,"{T}: Draw a card, then discard a card.
 {4}, {T}: Transform Matzalantli. Activate only if there are four or more permanent types among cards in your graveyard. (Artifact, battle, creature, enchantment, land, and planeswalker are permanent types.) // (Transforms from Matzalantli.)
-Fathomless descent — {T}: Add X mana of any one color, where X is the number of permanent cards in your graveyard.",Colorless,graveyard; card draw; mana; transform; fathomless descent,LCI,256,Rare,51,,3.5,seed
+Fathomless descent — {T}: Add X mana of any one color, where X is the number of permanent cards in your graveyard.",Colorless,graveyard; card draw; mana; transform; fathomless descent,LCI,256,Rare,51,,4.0,seed
 Roaming Throne,Artifact Creature — Golem,"Ward {2}
 As this creature enters, choose a creature type.
 This creature is the chosen type in addition to its other types.
 If a triggered ability of another creature you control of the chosen type triggers, it triggers an additional time.",Colorless,Golem; ward; protection,LCI,258,Rare,49,"Deck 49: doubles the triggered ability of every chosen-type creature, and SIXTEEN of the deck's Dragons have one - Terror of the Peaks fires twice per creature, Lathliss makes two 5/5s per Dragon, Drakuseth deals 4+3+3 twice per attack. Ward {2} is also the only protection red offers. Found via the K-13 effect-shape search; it never says 'Dragon'.",8.8,hand
 "Captain Storm, Cosmium Raider",Legendary Creature — Human Pirate,"Whenever an artifact you control enters, put a +1/+1 counter on target Pirate you control.",U/R,Human; Pirate; counters,LCI,227,Uncommon,26b,,4.5,seed
-Ixalli's Lorekeeper,Creature — Human Druid,{T}: Add one mana of any color. Spend this mana only to cast a Dinosaur spell or activate an ability of a Dinosaur source.,G,Human; Druid; mana,LCI,194,Uncommon,50,,2.0,seed
+Ixalli's Lorekeeper,Creature — Human Druid,{T}: Add one mana of any color. Spend this mana only to cast a Dinosaur spell or activate an ability of a Dinosaur source.,G,Human; Druid; mana,LCI,194,Uncommon,50,,2.5,seed
 Hidden Necropolis,Land — Cave,"This land enters tapped.
 {T}: Add {B}.
 {4}{B}, {T}, Sacrifice this land: Discover 4. Activate only as a sorcery. (Exile cards from the top of your library until you exile a nonland card with mana value 4 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",B,Cave; card advantage; sacrifice; mana; discover; value; spellslinger,LCI,275,Common,52,,4.0,seed
 Poison Dart Frog,Creature — Frog,"Reach
 {T}: Add one mana of any color.
-{2}: This creature gains deathtouch until end of turn.",G,Frog; mana; reach; defense,LCI,207,Common,50,,1.0,seed
+{2}: This creature gains deathtouch until end of turn.",G,Frog; mana; reach; defense,LCI,207,Common,50,,1.5,seed
 Druid of the Cowl,Creature — Elf Druid,{T}: Add {G}.,G,Elf; Druid; mana,M19,177,Common,50,,1.5,seed
 Llanowar Elves,Creature — Elf Druid,{T}: Add {G}.,G,Elf; Druid; mana,M19,314,Common,50,,1.5,seed
 Garruk's Uprising,Enchantment,"When this enchantment enters, if you control a creature with power 4 or greater, draw a card.
@@ -479,9 +479,9 @@ Flying, haste
 When this creature enters, if it was bargained, add four mana in any combination of colors.
 {1}{R}: This creature deals 1 damage to any target.",R,Dragon; sacrifice; burn; etb; noncombat damage; flying; evasion; haste; aggro; bargain; value,WOE,145,Mythic,49,,6.5,hand
 Decadent Dragon // Expensive Taste,Creature — Dragon // Instant — Adventure,"Flying, trample
-Whenever this creature attacks, create a Treasure token. // Exile the top two cards of target opponent's library face down. You may look at and play those cards for as long as they remain exiled.",B/R,Dragon; Adventure; exile cast; heist; tokens; treasure; flying; evasion; trample,WOE,223,Rare,49,,4.5,seed
+Whenever this creature attacks, create a Treasure token. // Exile the top two cards of target opponent's library face down. You may look at and play those cards for as long as they remain exiled.",B/R,Dragon; Adventure; exile cast; heist; tokens; treasure; flying; evasion; trample,WOE,223,Rare,49,,5.5,seed
 Flick a Coin,Instant,"Flick a Coin deals 1 damage to any target. You create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")
-Draw a card.",R,card draw; sacrifice; tokens; burn; treasure,WOE,128,Common,49,,2.0,seed
+Draw a card.",R,card draw; sacrifice; tokens; burn; treasure,WOE,128,Common,49,,2.5,seed
 Rootrider Faun,Creature — Satyr Scout,"{T}: Add {G}.
 {1}, {T}: Add one mana of any color.",G,Satyr; Scout; mana,WOE,182,Common,50,,1.5,seed
 Stormkeld Prowler,Creature — Human Rogue,"Whenever you cast a spell with mana value 5 or greater, put two +1/+1 counters on this creature.",U,Human; Rogue; counters,WOE,71,Common,51,Deck 51: two-drop that gets +2/+2 whenever you cast MV>=5 - the deck runs 11 such. Cheap clock that scales with the top end it already had.,6.2,hand

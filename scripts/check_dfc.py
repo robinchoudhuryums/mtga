@@ -163,6 +163,10 @@ _ALIASED_LOADERS = (
     ("deck", "_pool_rotation_index", 0),
     ("deck", "_printing_index", None),
     ("deck", "known_printings", 0),
+    # BS2-40: the last two in-pass aliasing survivors, converted to the second-pass
+    # `lib.alias_front` and registered so the behavioral anchor covers them.
+    ("deck", "load_card_meta", None),
+    ("wishlist", "load_pool_index", None),
 )
 
 

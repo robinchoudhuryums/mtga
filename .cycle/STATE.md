@@ -53,7 +53,13 @@ dead engine pattern is gone; INV-04 gained the malformed-line channel.
 Deliberately NOT done: BS2-07's full header-consumer sweep (only the swap-side protect
 guard was in Batch A's scope) — it is the named follow-on.
 
-**Where I left off:** top-5 + docs + all ten follow-ons + Batch A implemented, tested, committed and
+**Fourth pass, same session — Batch B** (wishlist & recommender honesty): BS2-37, 38, 39,
+40 + the grouped power-model fixes (conditional-power mana join, front-face seed) all
+implemented; 8 stale seed-provenance Power cells re-seeded in the same commit. Block:
+`.cycle/blocks/2026-08-broad-scan2-batchB-broad-implement.md`. 998 tests (6 more new).
+The five BS2-39 rows verified rescued live (Splash Portal → blink et al.).
+
+**Where I left off:** top-5 + docs + follow-ons + Batches A and B implemented, tested, committed and
 pushed on `claude/broad-scan-v74wau`; no PR opened (not requested). The remaining scan
 items are batched/prioritized in the session's closing report (batches A–H: verdict-surface
 joins, wishlist honesty, gate hardening, editor safety, interface access, editor theming,
