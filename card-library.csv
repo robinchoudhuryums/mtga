@@ -4357,3 +4357,40 @@ Cathar Commando,Creature — Human Soldier,"Flash
 Champions of the Perfect,Creature — Elf Warrior,"As an additional cost to cast this spell, behold an Elf and exile it. (Exile an Elf you control or an Elf card from your hand.)
 Whenever you cast a creature spell, draw a card.
 When this creature leaves the battlefield, return the exiled card to its owner's hand.",G,Elf; Warrior; card draw; bounce; behold; dragons,ECL,171,1
+Final Showdown,Instant,"Spree (Choose one or more additional costs.)
++ {1} — All creatures lose all abilities until end of turn.
++ {1} — Choose a creature you control. It gains indestructible until end of turn.
++ {3}{W}{W} — Destroy all creatures.",W,spree; value,OTJ,11,1
+Crime,Sorcery // Sorcery,"Put target creature or enchantment card from an opponent's graveyard onto the battlefield under your control. // Destroy each artifact, creature, and enchantment with mana value X.",W/B/G,reanimator; graveyard,OTP,39,1
+"Tinybones, the Pickpocket",Legendary Creature — Skeleton Rogue,"Deathtouch
+Whenever Tinybones deals combat damage to a player, you may cast target nonland permanent card from that player's graveyard, and mana of any type can be spent to cast that spell.",B,Skeleton; Rogue; graveyard; heist; deathtouch; combat; removal,OTJ,109,1
+"The Gitrog, Ravenous Ride",Legendary Creature — Frog Horror Mount,"Trample, haste
+Whenever The Gitrog deals combat damage to a player, you may sacrifice a creature that saddled it this turn. If you do, draw X cards, then put up to X land cards from your hand onto the battlefield tapped, where X is the sacrificed creature's power.
+Saddle 1",B/G,Frog; Horror; Mount; card draw; sacrifice; saddle; go-wide; combat; haste; aggro; trample; evasion,OTJ,206,1
+Nurturing Pixie,Creature — Faerie Rogue,"Flying
+When this creature enters, return up to one target non-Faerie, nonland permanent you control to its owner's hand. If a permanent was returned this way, put a +1/+1 counter on this creature.",W,Faerie; Rogue; counters; etb; bounce; flying; evasion,OTJ,20,1
+Visage Bandit,Creature — Shapeshifter Rogue,"You may have this creature enter as a copy of a creature you control, except it's a Shapeshifter Rogue in addition to its other types.
+Plot {2}{U} (You may pay {2}{U} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",U,Shapeshifter; Rogue; exile cast; plot; tempo; cost-reduction,OTJ,76,1
+"Kraum, Violent Cacophony",Legendary Creature — Zombie Horror,"Flying
+Whenever you cast your second spell each turn, put a +1/+1 counter on Kraum and draw a card.",U/R,Zombie; Horror; counters; card draw; flying; evasion,OTJ,214,1
+Heartless Pillage,Sorcery,"Target opponent discards two cards.
+Raid — If you attacked this turn, create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",B,sacrifice; tokens; treasure; discard; raid; aggro,XLN,109,1
+Servant of the Stinger,Creature — Human Warlock,"Deathtouch
+Whenever this creature deals combat damage to a player, if you've committed a crime this turn, you may sacrifice this creature. If you do, search your library for a card, put it into your hand, then shuffle. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)",B,Human; Warlock; graveyard; sacrifice; deathtouch; combat; removal,OTJ,105,1
+Congregation Gryff,Creature — Hippogriff Mount,"Flying, lifelink
+Whenever this creature attacks while saddled, it gets +X/+X until end of turn, where X is the number of Mounts you control.
+Saddle 3 (Tap any number of other creatures you control with total power 3 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",W/G,Hippogriff; Mount; lifegain; pump; flying; evasion; lifelink; saddle; go-wide; combat,OTJ,200,1
+Hypothesizzle,Instant,"Draw two cards. Then you may discard a nonland card. When you do, Hypothesizzle deals 4 damage to target creature.",U/R,card draw; burn,GRN,178,1
+Ferocification,Enchantment,"At the beginning of combat on your turn, choose one —
+• Target creature you control gets +2/+0 until end of turn.
+• Target creature you control gains menace and haste until end of turn.",R,pump,OTJ,123,1
+Cactusfolk Sureshot,Creature — Plant Mercenary,"Reach
+Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
+At the beginning of combat on your turn, other creatures you control with power 4 or greater gain trample and haste until end of turn.",R/G,Plant; Mercenary; reach; defense; ward; protection,OTJ,199,1
+Thornado,Instant,"Destroy target creature with flying.
+Cycling {1}{G} ({1}{G}, Discard this card: Draw a card.)",G,card draw; removal; cycling,OTP,33,1
+Boom Box,Artifact,"{6}, {T}, Sacrifice this artifact: Destroy up to one target artifact, up to one target creature, and up to one target land.",Colorless,sacrifice,OTJ,241,1
+Ride Down,Instant,Destroy target blocking creature. Creatures that were blocked by that creature this combat gain trample until end of turn.,W/R,removal,KTK,194,1
+Highway Robbery,Sorcery,"You may discard a card or sacrifice a land. If you do, draw two cards.
+Plot {1}{R} (You may pay {1}{R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",R,exile cast; card draw; sacrifice; plot; tempo; cost-reduction,OTJ,129,1
+Vengeful Townsfolk,Creature — Human Citizen,"Whenever one or more other creatures you control die, put a +1/+1 counter on this creature.",W,Human; Citizen; counters,OTJ,37,1

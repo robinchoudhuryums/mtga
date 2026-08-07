@@ -2046,6 +2046,24 @@ Gnarlid Colony,{1}{G},2,Kicker
 Grow from the Ashes,{2}{G},3,Kicker
 Cathar Commando,{1}{W},2,Flash
 Champions of the Perfect,{3}{G},4,Behold
+Final Showdown,{W},1,Spree
+Crime,{3}{W}{B} // {X}{B}{G},7,
+"Tinybones, the Pickpocket",{B},1,Deathtouch
+"The Gitrog, Ravenous Ride",{3}{B}{G},5,Saddle;Haste;Trample
+Nurturing Pixie,{W},1,Flying
+Visage Bandit,{3}{U},4,Plot
+"Kraum, Violent Cacophony",{2}{U}{R},4,Flying
+Heartless Pillage,{2}{B},3,Treasure;Raid
+Servant of the Stinger,{1}{B},2,Deathtouch
+Congregation Gryff,{1}{G}{W},3,Flying;Lifelink;Saddle
+Hypothesizzle,{3}{U}{R},5,
+Ferocification,{2}{R},3,
+Cactusfolk Sureshot,{2}{R}{G},4,Reach;Ward
+Thornado,{2}{G},3,Cycling
+Boom Box,{2},2,
+Ride Down,{R}{W},2,
+Highway Robbery,{1}{R},2,Plot
+Vengeful Townsfolk,{2}{W},3,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5407,7 +5425,6 @@ Goblin Electromancer,{U}{R},2,
 Golgari Findbroker,{B}{B}{G}{G},4,
 Hammer Dropper,{2}{R}{W},4,Mentor
 House Guildmage,{U}{B},2,Surveil
-Hypothesizzle,{3}{U}{R},5,
 Ionize,{1}{U}{R},3,
 "Izoni, Thousand-Eyed",{2}{B}{B}{G}{G},6,Undergrowth
 Join Shields,{3}{G}{W},5,
@@ -8005,7 +8022,6 @@ Master the Way,{3}{U}{R},5,
 Mindswipe,{X}{U}{R},2,
 "Narset, Enlightened Master",{3}{U}{R}{W},6,Hexproof;First strike
 Ponyback Brigade,{3}{R}{W}{B},6,Morph
-Ride Down,{R}{W},2,
 Sage of the Inward Eye,{2}{U}{R}{W},5,Flying
 Sagu Mauler,{4}{G}{U},6,Morph;Hexproof;Trample
 Savage Knuckleblade,{G}{U}{R},3,
@@ -11350,7 +11366,6 @@ Bridled Bighorn,{3}{W},4,Saddle;Vigilance
 Claim Jumper,{2}{W},3,Vigilance
 Dust Animus,{1}{W},2,Flying;Plot
 Eriette's Lullaby,{1}{W},2,
-Final Showdown,{W},1,Spree
 "Fortune, Loyal Steed",{2}{W},3,Saddle;Scry
 Frontier Seeker,{1}{W},2,
 High Noon,{1}{W},2,
@@ -11358,7 +11373,6 @@ Holy Cow,{2}{W},3,Scry;Flying;Flash
 Inventive Wingsmith,{2}{W},3,
 Lassoed by the Law,{3}{W},4,
 Mystical Tether,{2}{W},3,
-Nurturing Pixie,{W},1,Flying
 One Last Job,{2}{W},3,Spree
 Outlaw Medic,{1}{W},2,Lifelink
 Prairie Dog,{1}{W},2,Lifelink
@@ -11369,7 +11383,6 @@ Sterling Keykeeper,{1}{W},2,
 Sterling Supplier,{4}{W},5,Flying
 Thunder Lasso,{2}{W},3,Equip
 Trained Arynx,{1}{W},2,Saddle;Scry
-Vengeful Townsfolk,{2}{W},3,
 Wanted Griffin,{3}{W},4,Flying
 Canyon Crab,{1}{U},2,
 Daring Thunder-Thief,{3}{U},4,Flash
@@ -11403,7 +11416,6 @@ Stoic Sphinx,{2}{U}{U},4,Flying;Flash
 Stop Cold,{3}{U},4,Enchant;Flash
 Take the Fall,{U},1,
 Three Steps Ahead,{U},1,Spree
-Visage Bandit,{3}{U},4,Plot
 Ambush Gigapede,{4}{B}{B},6,Flash
 Binding Negotiation,{1}{B},2,
 Blacksnag Buzzard,{2}{B},3,Flying;Plot
@@ -11429,11 +11441,9 @@ Raven of Fell Omens,{1}{B},2,Flying
 Rictus Robber,{3}{B},4,Plot
 Rooftop Assassin,{3}{B},4,Flying;Lifelink;Flash
 Rush of Dread,{1}{B}{B},3,Spree
-Servant of the Stinger,{1}{B},2,Deathtouch
 Shoot the Sheriff,{1}{B},2,
 Skulduggery,{B},1,
 Tinybones Joins Up,{B},1,Mill
-"Tinybones, the Pickpocket",{B},1,Deathtouch
 Unfortunate Accident,{B},1,Spree
 Unscrupulous Contractor,{2}{B},3,Plot
 "Vadmir, New Blood",{1}{B},2,
@@ -11445,12 +11455,10 @@ Cunning Coyote,{1}{R},2,Plot;Haste
 Deadeye Duelist,{1}{R},2,Reach
 Demonic Ruckus,{1}{R},2,Plot;Enchant
 Explosive Derailment,{R},1,Spree
-Ferocification,{2}{R},3,
 Gila Courser,{2}{R},3,Saddle
 Great Train Heist,{R},1,Treasure;Spree
 Hellspur Brute,{4}{R},5,Affinity;Trample
 Hellspur Posse Boss,{2}{R}{R},4,
-Highway Robbery,{1}{R},2,Plot
 Irascible Wolverine,{2}{R},3,Plot
 Iron-Fist Pulverizer,{4}{R},5,Reach;Scry
 Longhorn Sharpshooter,{2}{R},3,Reach;Plot
@@ -11509,13 +11517,10 @@ Badlands Revival,{3}{B}{G},5,
 "Bonny Pall, Clearcutter",{3}{G}{U}{U},6,Reach
 "Breeches, the Blastmaker",{1}{U}{R},3,Menace
 "Bruse Tarl, Roving Rancher",{2}{R}{W},4,
-Cactusfolk Sureshot,{2}{R}{G},4,Reach;Ward
-Congregation Gryff,{1}{G}{W},3,Flying;Lifelink;Saddle
 "Eriette, the Beguiler",{1}{W}{U}{B},4,Lifelink
 "Ertha Jo, Frontier Mentor",{2}{R}{W},4,
 Form a Posse,{X}{R}{W},2,
 "Ghired, Mirror of the Wilds",{R}{G}{W},3,Haste
-"The Gitrog, Ravenous Ride",{3}{B}{G},5,Saddle;Haste;Trample
 Honest Rutstein,{1}{B}{G},3,
 Intimidation Campaign,{1}{U}{B},3,
 "Jem Lightfoote, Sky Explorer",{2}{W}{U},4,Flying;Vigilance
@@ -11523,7 +11528,6 @@ Intimidation Campaign,{1}{U}{B},3,
 "Kambal, Profiteering Mayor",{1}{W}{B},3,
 Kellan Joins Up,{G}{W}{U},3,Plot
 "Kellan, the Kid",{G}{W}{U},3,Flying;Lifelink
-"Kraum, Violent Cacophony",{2}{U}{R},4,Flying
 Laughing Jasper Flint,{1}{B}{R},3,
 "Lazav, Familiar Stranger",{1}{U}{B},3,
 "Lilah, Undefeated Slickshot",{1}{U}{R},3,Plot;Prowess
@@ -11548,7 +11552,6 @@ Vraska Joins Up,{B}{G},2,
 Wrangler of the Damned,{3}{W}{U},5,Flash
 "Wylie Duke, Atiin Hero",{1}{G}{W},3,Vigilance
 Bandit's Haul,{3},3,
-Boom Box,{2},2,
 Gold Pan,{2},2,Treasure;Equip
 Lavaspur Boots,{1},1,Equip
 Luxurious Locomotive,{5},5,Treasure;Crew
@@ -11591,7 +11594,6 @@ Collective Defiance,{1}{R}{R},3,Escalate
 Indomitable Creativity,{X}{R}{R}{R},3,
 Skullcrack,{1}{R},2,
 Pest Infestation,{X}{X}{G},1,
-Thornado,{2}{G},3,Cycling
 Abrupt Decay,{B}{G},2,
 Anguished Unmaking,{1}{W}{B},3,
 Crime // Punishment,{3}{W}{B} // {X}{B}{G},7,
@@ -15145,7 +15147,6 @@ Dire Fleet Interloper,{3}{B},4,Explore;Menace
 Dire Fleet Ravager,{3}{B}{B},5,Menace;Deathtouch
 Fathom Fleet Captain,{1}{B},2,Menace
 Grim Captain's Call,{2}{B},3,
-Heartless Pillage,{2}{B},3,Treasure;Raid
 Lurking Chupacabra,{3}{B},4,Explore
 March of the Drowned,{B},1,
 Queen's Agent,{5}{B},6,Lifelink;Explore
