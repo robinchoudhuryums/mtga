@@ -111,14 +111,15 @@ The longest path, and the one that most needs a map.
   differently. Two of them answering the same question is now gated
   (`check_agreement.py`); the rest genuinely answer different questions and the
   reconciliation is yours.
-- ⚖ **`cuts` is a 42% coin flip on CREATURES** — measured on the recommendation ledger
-  (83% agreement on noncreature cuts, 42% on creature cuts, n=100; it read 90% / 45% at
-  n=52, so both segments drifted slightly worse as the sample doubled). `fit` is an
-  unnormalized sum, so tag count drives the keep-score and creatures carry ~5.7 tags
-  against ~3.0 for spells. **This is the regime where `cuts` is used most.** Read it as
-  a shortlist, never a signal, on a creature-heavy deck. Normalization was simulated
-  across all 64 decks and rejected (it moves 1% of shortlist slots), and the standing
-  P/T fix-hypothesis was **tested and rejected** (§7). Two caveats attach to the creature
+- ⚖ **`cuts` is a coin flip on CREATURES** — measured on the recommendation ledger at
+  **50% against 86% on noncreature cuts, n=251** (it read 45%/90% at n=52 and 42%/83% at
+  n=100, so the split is stable and the sample has now quintupled). `fit` is an
+  unnormalized sum and creatures do carry more tags (pool means **5.31 vs 3.15**), but
+  **that is an observation, not the cause** — normalizing was pre-registered and tested in
+  2026-08, and it lifts creature agreement 53→68% while COLLAPSING noncreature 83→51%, so
+  the sum is load-bearing for the segment that works (§7). **This is the regime where
+  `cuts` is used most.** Read it as a shortlist, never a signal, on a creature-heavy deck.
+  The standing P/T fix-hypothesis was **also tested and rejected** (§7). Two caveats attach to the creature
   rate itself: per deck it runs 0% to 100%, so it is partly a statement about which decks
   were edited; and `deck.py feedback` discloses that breakdown so you can see it. (The
   measurements in §7 below were taken at n=52 and are left at their recorded values — a
@@ -214,6 +215,28 @@ runs 0/6, 1/6, 3/6, 2/4, 4/4 — 0% to 100%. `deck.py feedback` now prints that 
 The build-vs-tune story fits deck 46 (0/6, rebuilt mid-window) but not deck 3 (1/6, an
 ordinary tune), and excluding deck 46 moves the segment only 45% → 56%. All exploratory —
 4–6-row subgroups. **The next move here is more ledger data, not another signal.**
+
+**The 2026-08 re-test, at n=251 — a second hypothesis dead, and this one instructive.**
+The follow-on above named "a pre-registered re-test at ~100 swaps" as the honest next
+step, and the ledger passed it. The mechanism tested was the one `deck.py feedback` had
+been ASSERTING in its own warning text: that the unnormalized sum protects creatures.
+
+| model | creature n=38 | noncreature n=78 |
+|---|---|---|
+| M0 baseline | 20/38 (52.6%) | 65/78 (83.3%) |
+| M1 normalize `fit` by tag count | 26/38 (**68.4%**) | 40/78 (**51.3%**) |
+| M2 drop creature-subtype tags from `fit` | 22/38 (57.9%) | 63/78 (80.8%) |
+
+M1 clears the creature bar easily and fails the noncreature guard by **32 points** — the
+sum is carrying real signal for the segment that works, and the two segments want
+different treatments. That is a statement about a single-number model, not a bug in one
+term, and **the tool had been telling its reader to go fix something that would have made
+it worse**; the warning now names both refuted hypotheses instead of asserting a cause.
+M2 missed both criteria but is recorded as UNDERPOWERED, not rejected: the harness
+resolved 38 of 103 creature rows because its snapshot selector matches a card name
+anywhere in the file, including a `#:` comment. Fix that before re-asking. Full
+pre-registration and results: `.cycle/blocks/2026-08-creature-cut-retest.md`.
+**Do not derive a third fix from the tag-count asymmetry.**
 
 **Other live follow-ons** (carried forward, unchanged):
 

@@ -1,7 +1,7 @@
 # Handoff — start the next session here
 
-Written 2026-08-06, refreshed three times on 2026-08-07 (latest: after the G-68 gate),
-for a session with none of this one's context.
+Rewritten 2026-08-07 after the broad-scan-2 cycle closed (top-5 → follow-ons → Batches
+A–H, plus four `/sync-docs` passes), for a session with none of this one's context.
 Read this before CLAUDE.md's Common Gotchas, not instead of them.
 
 **Read the evidence file when a rule's reasoning matters.** CLAUDE.md carries the RULE and
@@ -16,148 +16,126 @@ commands disagree.
 
 ## 1. Repo position
 
-- Working branch **`claude/broad-scan-hekdj0`**. PRs #101–#107 all merged, including the
-  last one, so the branch holds ONLY merged history. **Restart it from `main` before your
-  first commit** — `git fetch origin main && git checkout -B claude/broad-scan-hekdj0
-  origin/main` (CLAUDE.md Git rules).
-- **The two other remote branches are fully merged too — do not try to recover them.**
-  `claude/broad-scan-fzu6nq` shows **27 commits ahead** of `main` and
-  `claude/project-development-continuation-3hnw5r` shows 1, but both went in by SQUASH
-  merge (PRs #96–#99 and #95), which rewrites the commits so the originals stay
-  permanently "ahead". Verified 2026-08-07: every file they added is in `main` except
-  `.cycle/54-pile-reanalysis.md`, which was deliberately deleted when its swaps landed,
-  and the ROADMAP blob is byte-identical. `git cherry` reports 26 of them as missing —
-  that is a patch-ID artifact of squashing, not lost work.
-- Gates green: `check_all` all invariants hold, **with ZERO soft warnings** — first time
-  this cycle. 951 tests. The long-standing `Rogue's Passage (FDN) 264` warning (decks 26a
-  and 50) is fixed; the real printing is `(HOC) 212`, from `deck.py resolve`.
-- Collection **2,085 library rows / 2,081 distinct names / 2,154 copies** (the session-start
-  hook prints the distinct-name figure, so 2081 vs 2085 is not a discrepancy); roster
-  **95 decks**, numbered through **63**. Two code changes on 08-07 — the K-14 role-pattern
-  fix (§2b item 5) and the G-68 header-staleness gate (§2c); everything else was data and
-  decks.
+- Working branch **`claude/broad-scan-v74wau`**, currently AHEAD of `main` and **not
+  merged** — the whole broad-scan-2 cycle lives on it. If a PR for it has since been
+  merged, restart the branch from `main` before your first commit (CLAUDE.md Git rules);
+  if it has not, keep committing to it.
+- Gates green: `check_all` all invariants hold, **ZERO soft warnings**. **1,078 tests in
+  29 files.** The 7 blank-Card-Text `validate` warnings are K-11 vanilla creatures and are
+  expected, not a data gap.
+- Collection **2,085 library rows / 2,081 distinct names**; roster **95 decks**, numbered
+  through **63**; 34 `deck.py` subcommands; 13 model-sanity gates.
+- **`ROADMAP.md` is a 2026-07-31 snapshot** with a staleness header on it. Individual
+  entries are marked DONE as they land, but it wants a `/roadmap` regeneration.
 
-## 2. What the 2026-08-05/06 sessions did
+## 2. What the broad-scan-2 cycle did (2026-08-07)
 
-1. **Five new decks, four of them from owned cards only.** **59 Stampede Engine** (Gruul
-   combat-ramp: attacking makes mana, mana buys creatures — the third corner of the
-   combat-mana triangle), **60 Redline** (Rakdos max speed, the roster's first Start your
-   engines! deck), **60a Night Circuit** (the UB speed-DRAIN variant 60's notes parked —
-   drain ticks speed without combat), **61 Pony Express** (GW Mounts on a +1/+1 counter
-   spine), **62 Rot and Bloom** (the first Sultai deck — wraths that draw, feeding
-   reanimation), **63 Heirloom** (Abzan +1/+1 counters — see §4).
-2. **Tooling: eight findings implemented** (`/broad-implement #1-8`, block in
-   `.cycle/blocks/`). The two that change daily work: **craft views now carry `⚠rot`**
-   (`check`, `wildcards`, and the new `wildcards --dedup` cross-deck union), and the
-   **rationale audit now DETECTS shorthand citations** of absent cards. Also `resolve
-   --expect N` (caught a 59-card draft three times since), vanilla-vs-data-gap messaging,
-   counters-payoff patterns, and `make postedit`.
-3. **Rotation-proofing, twice.** Deck 28's craft plan held FOUR cards rotating within
-   months; deck 36's held one. Both fixed by swapping to owned rotation-safe cards. **Deck
-   49 still holds EIGHT** and its Route A plan is written but NOT applied — see §3.
-4. **Ingests:** two crafted batches (14 + 2) and one 16-card TDM pack, all verified
-   16/16-style by `verify_ingest`, with the placement swaps applied across ~20 decks.
+One `/broad-scan`, then nine implementation passes. **57 findings closed + 1 retracted**
+in the first eight; Batch H closed the strategic remainder. Tests 951 → 1,078. Every
+block is in `.cycle/blocks/2026-08-broad-scan2-*.md` — read those, not this summary, when
+you need the detail.
 
-## 2b. What the 2026-08-07 session did
+The changes most likely to affect your daily work:
 
-1. **Six more ingest batches** (14 + 13 + 18 + 19 + 18 + 15 = ~97 cards) plus a
-   single-card Chandra ingest, every one `verify_ingest`-confirmed. Batches 11–13 held
-   cards that are NOT Standard-legal; those are noted in their commits, not silently kept.
-2. **~35 placement swaps** across the roster from those batches. Deck 35a is now **one
-   card (Omniscience) from buildable**; decks 62 and 63 are fully buildable.
-3. **Chandra, Spark Hunter into five decks in one pass** — 26b, 48, 58, 10, 45a — plus
-   48a where she was already maindecked as a craft target and simply became owned. The
-   selection is the worked example of G-61: `suggest-homes` rated her KEY in 14 of 42
-   decks on generic red themes, and the five real homes were chosen by hand-counting
-   artifacts / token producers / Vehicles / Mayhem cards. **Do not re-derive this** — the
-   table is in `docs/gotchas.md` under `[G-31]`.
-4. **Deck 26b's `#: protect:` header named a card the deck has never run** (Summon:
-   Bahamut). This became G-68 the same day — see §2c; there IS a gate for it now.
-5. **K-14 found AND FIXED (same day).** `role_tally` could not see a draw clause behind an
-   ACTIVATION cost, so every planeswalker's draw ability read as zero card advantage (187
-   pool cards, 24 planeswalkers). Two patterns added, `_LOOT_RE` given the singular pair.
-   **Result: 18 decks up, 12 down, interaction unchanged, ZERO tier floors moved**, and the
-   16 decks left with a stale `#: tier:` figure were re-grounded in the same commit.
-   **One thing is left for a human:** deck 21a's card advantage went 3 → 5, which removes
-   one of the two weaknesses its below-floor letter rests on. The file says so and asks for
-   a re-grade; the letter was not auto-written (design constraint).
+1. **`deck.py sync` refuses a TRUNCATED paste** (under 75% of the stored deck) — a partial
+   paste is a strict subset, so the shared-card floor read it as a full-confidence match
+   and `--apply` would have rewritten the 60 down to the fragment. `--force` overrides.
+2. **`suggest --ramp / --interaction / --needs` now apply the deck's format filter**, and
+   read castability from the PRINTED cost like `suggest` proper. They were the two
+   siblings the G-58 fix missed, hiding 34 castable interaction cards and 25 mana sources
+   from mono-colour decks — on exactly the paths a scorecard deficit routes you to.
+3. **Player-only burn no longer counts as spot removal** (14 decks over-read interaction).
+4. **The editor refuses a stale deck save with a 409** instead of silently overwriting a
+   file a CLI `swap --apply` changed underneath the tab.
+5. **Seven Universe-Beyond keywords are themed** (Batch H) — vivid, job select, opus,
+   increment, infusion, disappear, paradigm. Roughly 85 pool cards changed tags, so theme
+   weights moved roster-wide.
 
-## 2c. The 2026-08-07 tooling tail
+## 3. Batch H, and the two things it decided rather than built
 
-1. **`Rogue's Passage` printing fixed** in decks 26a and 50 — `(FDN) 264` → `(HOC) 212`,
-   resolved rather than hand-written (G-65). That clears the oldest standing soft warning.
-2. **New gate `[G-68]`: a `#:` header that lists CARD NAMES goes stale, and nothing
-   checked one.** `#: protect:` and `#: uncastable-ok:` are read as instructions, so an
-   entry naming an absent card is a silent no-op — and `protect` also inflates the
-   build-around count the zero-protection flag prints, which deck 26b was doing inside the
-   sentence arguing its own tier cap. `deck.header_card_staleness` now sweeps the roster
-   in `check_all` (soft). **It found two more on its first run**: deck 56's Boros header
-   protected two GREEN cards that live only in its Gruul variant 56a. Both fixed; a
-   roster-wide test anchor means any new hit is a regression, not backlog.
+**Read `.cycle/blocks/2026-08-creature-cut-retest.md` before touching the cut ranking.**
 
-## 3. The agreed next task
+- **The creature-cut question is CLOSED for two hypotheses, and the second closure
+  inverts what the tool used to say.** At n=251 the split held (creature 50%, noncreature
+  86%). The mechanism `deck.py feedback` ITSELF asserted — `fit` sums theme weights
+  unnormalized, creatures carry ~2× the tags — is true as an observation (5.31 vs 3.15
+  tags per pool card, so 1.7×) and **refuted as a diagnosis**: normalizing lifts creature
+  agreement 53→68% and **collapses noncreature 83→51%**. The unnormalized sum is
+  load-bearing for the segment that works. **Do not derive a third fix from the tag-count
+  asymmetry** — it is real, visible, and misleading, and two pre-registered tests have now
+  died on it (body quality 2026-07, normalization 2026-08).
+- **The second model is UNDERPOWERED, not rejected.** Excluding creature-subtype tags from
+  `fit` (they are already paid for by `min(tribal,6)`) missed both criteria, but the
+  harness resolved 38 of 103 creature rows. **Fix the harness before re-asking**: its
+  snapshot selector matches a card name anywhere in the file, including a `#:` COMMENT, so
+  it can pick a version where the card is discussed but not played. Match parsed lines.
+- **`jump` is the keyword lesson worth carrying.** It reports 13 cards; 11 of them are
+  `Jump-start` cards that Scryfall also labels "Jump". Mapping it would have put `evasion`
+  on 11 graveyard spells for the sake of 2 real ones. **A keyword's reported COUNT is not
+  its population** — read the cards before believing a tally.
 
-**Deck 49 Scaleforge rotation-proofing — Route A, proposed and NOT applied.** The user
-said "I will hold off on these changes for now," so it is queued, not rejected. The plan,
-already measured:
+## 4. Standing items, owner-paced — unchanged and still the biggest gaps
 
-- −Gishath / +Etali, Primal Storm (owned) · −Palani's Hatcher / +Savage Land Dinosaur
-  (owned) · −Decadent Dragon / +Nova Hellkite (owned) · −Realm-Scorcher Hellkite /
-  +Steel Hellkite (craft R, safe) · −Flick a Coin / +Molten Exhale (craft C, safe)
-- Effect: craft plan 18 → 15, three rares of rotating wildcards saved, and the only
-  rotating cards left are the 2027 trio (Dragonhawk, Terror of the Peaks, Three Tree
-  City) which the user must decide on — a year of Standard for premium cards.
-- Do NOT re-derive this; the measurements are in the transcript and the plan is stable.
-
-## 4. Standing items, owner-paced
-
-- **`matches.csv` is still EMPTY, and the gap is bigger than this file used to say.**
-  **34 decks** carry a PROVISIONAL tier (an earlier note said ~12 — recount, do not trust
-  that figure), every one of them promising a re-grade "after real games", and zero games
-  are recorded. Every tier argument on those decks is unfalsifiable until `/log-matches`
-  runs once. Still the single largest gap in the project, and it needs the user, not the
-  tooling.
+- **`matches.csv` is STILL EMPTY. This is the single largest gap in the project.** 34
+  decks carry a PROVISIONAL tier, every one promising a re-grade "after real games", and
+  zero games are recorded. The data is free and already in `Player.log`, the parser is
+  written and tested (`/log-matches`), and until it runs, every tier letter on the roster
+  is graded against internal consistency alone. It needs the user, not the tooling.
+- **Deck 49 Scaleforge rotation-proofing — Route A, measured and NOT applied.** The user
+  said "I will hold off on these changes for now," so it is queued, not rejected. Do NOT
+  re-derive it: −Gishath/+Etali, Primal Storm · −Palani's Hatcher/+Savage Land Dinosaur ·
+  −Decadent Dragon/+Nova Hellkite · −Realm-Scorcher Hellkite/+Steel Hellkite (craft R) ·
+  −Flick a Coin/+Molten Exhale (craft C). Craft plan 18 → 15; the only rotating cards left
+  would be the 2027 trio (Dragonhawk, Terror of the Peaks, Three Tree City), which is the
+  user's call — a year of Standard for premium cards.
 - **Deck 21a wants a HUMAN tier re-grade.** The K-14 fix took its card advantage 3 → 5,
-  which removes one of the two weaknesses its below-floor letter rested on; the manabase
-  (a ONE-source blue) is now the only thing holding it down. The file argues this in its
-  own `#: tier:` block. Letters are never auto-written, so this is yours to settle.
+  removing one of the two weaknesses its below-floor letter rested on; a one-source blue
+  splash is now the only thing holding it down. Letters are never auto-written.
+- **The Google Sheets round-trip needs its one-time operator setup.** The dev half is done;
+  run `python3 scripts/sheets_sync.py check` — it names every missing part (packages, key
+  file, sheet id, and whether the sheet is shared with the service account) and writes
+  nothing.
+- **The perceptual halves of Regression Scenarios 5–8 need a person at a browser.** The
+  markup contracts are pinned by `tests/test_templates.py`; contrast, focus rings and
+  phone-width reflow are not code-checkable.
 - **October rotation pass is pre-loaded**: deck 28's flex block names successors for its
   six owned rotating cards; deck 28a has never had the pass; deck 36 loses Kutzil with no
   safe replacement for his "opponents can't cast spells during your turn" half.
-- **Deck 63's first upgrade is PROTECTION, not more counters** — it runs three modal
-  answers after the 2026-08 pass; Daydream and Airtight Alibi are benched as flex lines
-  with their reasons.
 
-## 5. Traps this cycle re-confirmed
+## 5. Traps re-confirmed this cycle
 
-- **Never hand-write `(SET) COLLECTOR#`** — use `deck.py resolve`. Violated twice in
-  earlier cycles; the `Rogue's Passage` soft warning above is the same class, still open.
-- **`resolve` does not count for you unless you ask** — pass `--expect 60`. Three
-  from-scratch drafts resolved to 59 this cycle and the flag caught all three.
+- **A grace clause added so a fix costs nothing is a place the fix can cost nothing.**
+  BS2-23 made a tag edit defeat the pool's freshness reuse via a content fingerprint, and
+  gave pre-existing stamps a pass: unknown → don't rebuild. But the reuse path returns
+  BEFORE writing a stamp, so unknown was an ABSORBING state and the check could never arm.
+  Found only because Batch H's seven keyword mappings produced a byte-identical
+  `card-pool.csv` while step 2/6 announced itself and `check_all` stayed green. **Verify
+  the artifact changed; do not trust the step that says it ran.**
+- **A registry a human maintains cannot see what nobody added to it.** `check_dfc`'s alias
+  registry checked the loaders someone listed, and every bug in that class was a loader on
+  no list. The fix was to find them in the AST instead — and it found one immediately.
+  This is the `check_commands` lesson again: a capability nothing reaches is invisible.
+- **A check never watched failing is not a check.** The writer — the path every canonical
+  file in the repo goes through — had thorough tests of what it DOES and nothing proving
+  those tests would fail if it stopped. The mutation layer added in Batch H caught a wrong
+  expectation of mine on its first run.
+- **Before editing a module, scan for its test DOUBLES.** Three broke this cycle by
+  encoding old behaviour, twice in Batch H alone (a two-line pool stamp written by
+  default; a pinned copy of a warning string whose claim had just been refuted).
 - **A swap's prose goes stale BY CONSTRUCTION.** Run `tier <id> --audit-rationale` after
-  every apply; this cycle it caught seven stale figures and one cut-card citation in a
-  single batch. Fix them in the SAME commit.
+  every apply and fix it in the SAME commit. A roster-wide tag change does this too: the
+  H-6 retag moved two central-theme counts and both `#: tier:` figures needed re-grounding.
 - **Copies are fungible.** "Already used elsewhere" is never a reason to exclude a card —
-  one owned copy plays in every deck simultaneously. This came up explicitly this cycle
-  and the answer changed a deck-building decision.
-- **A theme miss is not a color-identity gap.** `suggest-homes` returning zero rows means
-  no shared CENTRAL THEME, not that no deck of those colors exists — reporting the second
-  when you measured the first produced a wrong "you have no Abzan deck" claim (you have
-  four). Check `#: colors:` before concluding a color pair is unbuilt. **Now a permanent
-  rule** — CLAUDE.md `[G-31]`, with the long form in `docs/gotchas.md`.
-- **"No gate checks this" was true TWICE in one cycle, on the same shape.** K-14 (a role
-  bucket nothing exercised) and G-68 (a `#:` header nothing validated) were both live for
-  months behind fully green gates. When something reads like a fact about the deck — a
-  count, a header, a label — ask which gate would fail if it were wrong, and if the answer
-  is none, that is the finding. Both were cheap to fix once stated.
-- **A quality-guard regression can be the METRIC being wrong.** Deck 58's guard reported
-  card advantage 4→3 on a swap that RAISED it. That specific cause is FIXED (K-14 — the
-  classifier now reads a draw behind an activation cost), so do not go looking for it;
-  the transferable half is the habit. The guard is soft for a reason: when it fires,
-  ask which side is wrong before "fixing" the deck.
-- **Widening a role bucket needs a floor measurement BEFORE it lands.** K-14 is the worked
-  example: the first draft counted `Sacrifice this land: Draw a card`, which would have
-  swept in a whole tapland cycle and moved the change from 24 decks to 58. Measured
-  roster-wide first, so what shipped moved 18 decks up, 12 down, and **zero tier floors**.
-  Anything feeding `tier_band` has to clear that bar — and it left 16 decks with a stale
-  `#: tier:` figure, all re-grounded in the same commit.
+  one owned copy plays in every deck simultaneously.
+- **A theme miss is not a colour-identity gap.** `suggest-homes` returning zero rows means
+  no shared CENTRAL THEME, not that no deck of those colours exists. CLAUDE.md `[G-31]`.
+- **Never hand-write `(SET) COLLECTOR#`** — use `deck.py resolve`, and pass `--expect 60`,
+  which caught three 59-card drafts.
+
+## 6. The one open item from the cycle's own findings
+
+**BS2-07's header-consumer sweep.** `rank_cut_candidates` / `_castability` /
+`_weakest_cut` still compare raw lowercase names against `#: protect:` /
+`#: uncastable-ok:`, while `header_card_staleness` joins on `_ms_key`. Zero live instances
+measured, so it is documented as deliberately open in `docs/gotchas.md`'s G-63 section
+rather than fixed blind. It is the one member of the G-63 class this cycle did not close.

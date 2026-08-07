@@ -756,7 +756,9 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   `_is_color_fixer` did, so the roster's two best fixers (keying off unindexed Vivid) read
   as non-fixers and `suggest-homes` proposed cutting the BETTER fixer. Read TEXT, in
   mana/land-type context, and exclude reminder text. When a gate blocks a fix, check
-  whether it encodes the intent or merely the old implementation. [K-04]
+  whether it encodes the intent or merely the old implementation. (Vivid has since been
+  themed — which does not retire the rule, it demonstrates it: reading TEXT is what made
+  the fixer overlay survive the keyword being unindexed, and will again.) [K-04]
 - **`pay life` is a tagged theme** (351 pool cards, 2.2% — specific enough to build
   around): YOU losing life as a cost, plus the cards that only CARE. "Each opponent loses
   2 life" is a DRAIN effect — the opposite card, deliberately not tagged. [K-05]
@@ -780,7 +782,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   which re-derives every pool row's `Synergies` through the same `tags_for()`. Skipping
   the pool rebuild used to leave unowned craft candidates ranking on stale tags SILENTLY;
   since BS2-23 the pool's build stamp carries the tagger's content hash, so an edit here
-  defeats the freshness reuse and `make refresh` really does re-derive them. Never point
+  defeats the freshness reuse and `make refresh` really does re-derive them. **That
+  sentence was false for a year of stamps** — a pre-BS2-23 stamp had no hash and the reuse
+  path never wrote one, so the check could not arm (BS3-02, G-18). VERIFY the pool
+  actually changed after a tag edit; do not trust the step announcing itself. Never point
   `tag_synergies.py` or `enrich.py` at `card-pool.csv` — both write the library's 8
   columns and would destroy the pool's own. [K-10]
 - **A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
@@ -876,12 +881,15 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (27 files: the markup-contract, CLI-entry-point, analysis-model,
+- Testing: tests/ (29 files: the markup-contract, CLI-entry-point, analysis-model,
   gate-pinning, shared-primitive and ingest layers, the 2026-08 ingest-writer /
   sync-guard / resilience-layer / CLI-filter coverage of the formerly untested
   scripts, plus the broad-scan-2 additions — test_check_all.py, the gate runner's
-  own mutation layer, and test_app_editor.py, the editor's write-safety pins
-  (importorskip'd on Flask)), requirements-dev.txt, pytest.ini,
+  own mutation layer; test_app_editor.py, the editor's write-safety pins
+  (importorskip'd on Flask); test_check_dfc.py, which pins the G-63 builder SCAN
+  rather than the registry it feeds; and test_writer_mutations.py, which runs each
+  write-safety property against a mutant writer so the property is proven to be
+  load-bearing), requirements-dev.txt, pytest.ini,
   .github/workflows/tests.yml [C-07]
 - Decks: decks/
 
