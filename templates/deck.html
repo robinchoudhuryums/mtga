@@ -190,7 +190,12 @@
       const k = row.querySelector('.mkey'), v = row.querySelector('.mval');
       k.addEventListener('input', () => { p.key = k.value; refresh(); });
       v.addEventListener('input', () => { p.value = v.value; refresh(); });
-      row.querySelector('.rm').addEventListener('click', () => { META.splice(i,1); renderMeta(); refresh(); });
+      row.querySelector('.rm').addEventListener('click', () => {
+        META.splice(i,1); renderMeta(); refresh();
+        const rms = metaEl.querySelectorAll('.rm');
+        const tgt = rms[Math.min(i, rms.length - 1)] || document.getElementById('addMeta');
+        if (tgt) tgt.focus();
+      });
       metaEl.appendChild(row);
     });
   }
@@ -220,7 +225,14 @@
         const s=cardStatus(t); stat.textContent=s.txt; stat.className='stat '+s.cls; refresh();
       };
       [q,nm,st,cn].forEach(el => el.addEventListener('input', paint));
-      row.querySelector('.rm').addEventListener('click', () => { BODY.splice(i,1); renderRows(); refresh(); });
+      row.querySelector('.rm').addEventListener('click', () => {
+        BODY.splice(i,1); renderRows(); refresh();
+        // Keep keyboard focus in the list after the rebuild (Batch E / S-6):
+        // the same-index ✕ (the next line slid up), else the last one, else Add.
+        const rms = rowsEl.querySelectorAll('.row.card .rm');
+        const tgt = rms[Math.min(i, rms.length - 1)] || document.getElementById('addRow');
+        if (tgt) tgt.focus();
+      });
       const s=cardStatus(t); stat.textContent=s.txt; stat.className='stat '+s.cls;
     });
   }

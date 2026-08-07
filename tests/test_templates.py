@@ -187,11 +187,15 @@ class TestToastIsAnnounced:
     region it is a purely visual event: nothing announces it, so a screen-reader user
     gets no confirmation that their deck saved."""
 
-    def test_the_deck_editor_toast_is_a_live_region(self):
-        m = re.search(r'<div class="toast" id="toast"[^>]*>', _read("deck.html"))
-        assert m, "toast not found"
-        assert 'role="status"' in m.group(0)
-        assert 'aria-live="polite"' in m.group(0)
+    def test_every_toast_is_a_live_region(self):
+        # collection.html joined at Batch E (S-4): its toast is the sole reporting
+        # channel for FIVE actions, two destructive, and it announced nothing — the
+        # pin covered deck.html only, a hole shaped exactly like the file it missed.
+        for name in ("deck.html", "collection.html"):
+            m = re.search(r'<div class="toast" id="toast"[^>]*>', _read(name))
+            assert m, f"toast not found in {name}"
+            assert 'role="status"' in m.group(0), name
+            assert 'aria-live="polite"' in m.group(0), name
 
 
 class TestFocusIsVisibleWhereverHoverIs:
@@ -216,7 +220,10 @@ class TestLandmarks:
     at — the whole page is one undifferentiated region."""
 
     def test_each_page_has_a_main_landmark(self):
-        for name in ("deck.html", "decks.html"):
+        # collection.html joined at Batch E (S-5): it was the only one of the three
+        # with NO <main> — and the one this module's own docstring is about. A
+        # landmark assertion written to exclude the failing page asserts nothing.
+        for name in ("deck.html", "decks.html", "collection.html"):
             assert any(t == "main" for t, _ in _parse(name)), name
 
 
@@ -264,3 +271,44 @@ class TestDashboardA11yRoleDiscipline:
         src = self._src()
         i = src.find("label:'Sort by ' + c.label")
         assert i != -1 and "role:null" in src[i:i + 80]
+
+
+class TestCollectionRemoveButtonsAreNamed:
+    """Batch E (S-10): every card's ✕ fell back to the shared title, so ~2k remove
+    buttons announced identically ("Remove this printing") and nothing said WHICH
+    card was about to be deleted until the confirm() fired. The button is built in
+    a JS template literal, so the pin is on the source string."""
+
+    def test_the_rm_button_names_its_card(self):
+        src = _read("collection.html")
+        assert 'aria-label="Remove ${esc(c.name)}' in src
+
+    def test_the_add_toggle_exposes_its_state(self):
+        src = _read("collection.html")
+        m = re.search(r'<button id="addToggle"[^>]*>', src, re.S)
+        assert m and 'aria-expanded' in m.group(0) and 'aria-controls="addPanel"' in m.group(0)
+
+
+class TestDashboardTablists:
+    """Batch E (S-2): the dashboard's two tab strips carried role="tab" with no
+    tablist, no tabpanel, and no aria-controls — the exact invalid-ARIA shape this
+    file pins the EDITOR against, on the side with no test. The markup is JS-built,
+    so the pin is on the builder source (the test_check-style source pin the
+    a11y-role tests below already use)."""
+
+    def _src(self):
+        p = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                         "scripts", "build_dashboard.py")
+        with open(p, encoding="utf-8") as fh:
+            return fh.read()
+
+    def test_the_tablist_completer_exists_and_sets_the_container_roles(self):
+        src = self._src()
+        assert "function tablist(strip, panel, label, pid)" in src
+        assert "setAttribute('role','tablist')" in src
+        assert "setAttribute('role','tabpanel')" in src
+        assert "aria-controls" in src
+
+    def test_both_strips_are_completed(self):
+        src = self._src()
+        assert src.count("tablist(tabs,") >= 2, "deck-card and modal strips must both call tablist()"

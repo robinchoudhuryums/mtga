@@ -118,7 +118,8 @@
       <option value="set">Sort: Set</option>
       <option value="qty">Sort: Quantity</option>
     </select>
-    <button id="addToggle" class="tool" title="Add a new printing to the collection">＋ Add card</button>
+    <button id="addToggle" class="tool" title="Add a new printing to the collection"
+            aria-expanded="false" aria-controls="addPanel">＋ Add card</button>
     <button id="revert" class="tool" title="Undo the last save (restore the most recent backup)">⤺ Revert last save</button>
   </div>
   <div class="addpanel" id="addPanel" hidden>
@@ -130,11 +131,14 @@
     <span class="hint">An exact name auto-fills type/text/color/synergies from Scryfall.</span>
   </div>
 </header>
-<div class="grid" id="grid"></div>
+<main class="grid" id="grid"></main>
 <div class="empty" id="empty" style="display:none">No cards match your filters.</div>
 <footer>Editing card-library.csv · edits Save back to the CSV (validated, with a
   timestamped .bak backup) · images © Wizards of the Coast, via Scryfall</footer>
-<div class="toast" id="toast"></div>
+<!-- role=status/aria-live: the toast is the ONLY report of save/add/remove/revert
+     succeeding or failing; without a live region every failure was visually-only
+     (Batch E / S-4 — the same one-attribute fix deck.html got at I-04). -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script id="data" type="application/json">__DATA__</script>
 <script>
   const CARDS = JSON.parse(document.getElementById('data').textContent);
@@ -217,7 +221,8 @@
       const curQty = dirty.has(c._key) ? dirty.get(c._key).quantity : (c.qty || '');
       const curSyn = dirty.has(c._key) ? dirty.get(c._key).synergies : (c.synergies || '');
       return `<div class="card${noimg}${isDirty}" data-key="${esc(c._key)}">
-        <button class="rm" title="Remove this printing">✕</button>
+        <button class="rm" title="Remove this printing"
+                aria-label="Remove ${esc(c.name)} (${esc(c.set || '?')}) from the collection">✕</button>
         <div class="art">
           <img loading="lazy" src="${esc(c.img)}" alt="${esc(c.name)}"
                onerror="this.closest('.card').classList.add('noimg')">
@@ -331,8 +336,10 @@
 
   // Add card — enrich + append server-side, then reload to pick up the new row.
   const addPanel = document.getElementById('addPanel');
-  document.getElementById('addToggle').addEventListener('click', () => {
+  document.getElementById('addToggle').addEventListener('click', (e) => {
     addPanel.hidden = !addPanel.hidden;
+    // The open/closed state was exposed nowhere but pixels (Batch E / S-10).
+    e.currentTarget.setAttribute('aria-expanded', String(!addPanel.hidden));
     if (!addPanel.hidden) document.getElementById('aName').focus();
   });
   document.getElementById('addBtn').addEventListener('click', async () => {

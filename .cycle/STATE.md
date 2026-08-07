@@ -74,7 +74,15 @@ reader (and a verifying grep) rendered as empty; no change made. Block:
 `.cycle/blocks/2026-08-broad-scan2-batchD-broad-implement.md`. 1018 tests (6 more new,
 in the new importorskip'd tests/test_app_editor.py).
 
-**Where I left off:** top-5 + docs + follow-ons + Batches A–D implemented, tested, committed and
+**Seventh pass, same session — Batch E + sync-docs** (interface access): S-2 tablist
+completer (both dashboard strips, arrow keys, live aria-selected), S-4 collection toast
+live region, S-5 <main> landmark + test scope, S-6 focus restoration on remove, S-7
+keyboard/focus preview parity, S-10 disclosure state + per-card remove names, S-11
+/decks empty state. dashboard.html rebuilt; the accumulated doc notes from Batches A–D
+applied (README ×3, CLAUDE.md C-07 + Scenario 4, gotchas G-08/G-63) and check_docs green.
+Block: `.cycle/blocks/2026-08-broad-scan2-batchE-broad-implement.md`. 1022 tests.
+
+**Where I left off:** top-5 + docs + follow-ons + Batches A–E implemented, tested, committed and
 pushed on `claude/broad-scan-v74wau`; no PR opened (not requested). The remaining scan
 items are batched/prioritized in the session's closing report (batches A–H: verdict-surface
 joins, wishlist honesty, gate hardening, editor safety, interface access, editor theming,

@@ -1136,10 +1136,44 @@ function positionPreview(x, y){
   previewBox.style.left = left + 'px'; previewBox.style.top = top + 'px';
 }
 function hidePreview(){ previewOn = false; previewBox.style.display = 'none'; previewBox.innerHTML = ''; }
+// Complete the tabs pattern the per-tab a11y() calls start (Batch E / S-2):
+// role="tab" outside a tablist is invalid ARIA — "the container role is what makes
+// the individual roles mean anything", the exact rule tests/test_templates.py pins
+// for the EDITOR's strip, whose comment claims it mirrors this file. It didn't:
+// this side had neither the container role, a tabpanel, nor aria-controls, so a
+// screen reader announced "Craft, tab" with no group, no "2 of 5", and no
+// relationship to the content below. Also installs Left/Right arrow navigation and
+// keeps aria-selected live across clicks (the strips don't rebuild on switch).
+function tablist(strip, panel, label, pid){
+  strip.setAttribute('role','tablist');
+  strip.setAttribute('aria-label', label);
+  panel.id = pid; panel.setAttribute('role','tabpanel');
+  [...strip.children].forEach(t => t.setAttribute('aria-controls', pid));
+  strip.addEventListener('click', () => [...strip.children].forEach(t =>
+    t.setAttribute('aria-selected', String(t.classList.contains('on')))));
+  strip.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const ts = [...strip.children]; const i = ts.indexOf(document.activeElement);
+    if (i < 0) return;
+    e.preventDefault();
+    const n = ts[(i + (e.key === 'ArrowRight' ? 1 : ts.length - 1)) % ts.length];
+    n.focus(); n.click();
+  });
+}
+
 function attachHover(node, name){
   node.addEventListener('mouseenter', e => showPreview(name, e.clientX, e.clientY));
   node.addEventListener('mousemove', e => { if (previewOn) positionPreview(e.clientX, e.clientY); });
   node.addEventListener('mouseleave', hidePreview);
+  // Keyboard parity (Batch E / S-7): I-01 made these nodes focusable and announced,
+  // but the card image — the EVIDENCE for a craft decision (G-52 in interface form)
+  // — only appeared on mouse hover. Mirror it on focus/blur, positioned from the
+  // node's own box since there is no cursor.
+  node.addEventListener('focus', () => {
+    const r = node.getBoundingClientRect();
+    showPreview(name, r.right, r.top + r.height / 2);
+  });
+  node.addEventListener('blur', hidePreview);
 }
 
 // ---------- generic sortable table ----------
@@ -1322,6 +1356,7 @@ function deckCard(d, variants){
     const curTab = (STATE._tab && STATE._tab[d.id]) || 'craft';
     const body = el('div');
     TABS.forEach(([k,label]) => { const tb = a11y(el('span','tab' + (k===curTab?' on':''), label), {role:'tab', selected:k===curTab}); tb.onclick = () => { STATE._tab = STATE._tab||{}; STATE._tab[d.id] = k; body.innerHTML=''; body.appendChild(detailBody(d,k)); [...tabs.children].forEach(x => x.classList.remove('on')); tb.classList.add('on'); }; tabs.appendChild(tb); });
+    tablist(tabs, body, 'Deck ' + d.id + ' analysis tabs', 'tabpanel-' + d.id);
     det.appendChild(tabs); body.appendChild(detailBody(d, curTab)); det.appendChild(body); card.appendChild(det);
   }
   // Nested variants — a labelled, always-visible strip; each row opens the full variant.
@@ -1858,6 +1893,7 @@ function modalEl(d){
   const tabs = el('div','tabs'); const cur = {k:(STATE._mtab||'craft')}; const bodyIn = el('div');
   const bar = el('div'); bar.style.display='flex'; bar.style.gap='6px'; bar.style.flexWrap='wrap'; bar.style.alignItems='center'; bar.style.marginBottom='12px';
   TABS.forEach(([k,label]) => { const tb = a11y(el('span','tab' + (k===cur.k?' on':''), label), {role:'tab', selected:k===cur.k}); tb.onclick = () => { STATE._mtab = k; cur.k = k; bodyIn.innerHTML=''; bodyIn.appendChild(detailBody(d,k)); [...tabs.children].forEach(z => z.classList.remove('on')); tb.classList.add('on'); }; tabs.appendChild(tb); });
+  tablist(tabs, bodyIn, 'Deck ' + d.id + ' analysis tabs (modal)', 'tabpanel-modal');
   bar.appendChild(tabs); bar.appendChild(el('span','grow'));
   const imp = el('button','miniimport','⧉ Import'); imp.onclick = () => writeClip((d.detail&&d.detail.arena)||'', () => toast('#'+d.id+' import copied')); bar.appendChild(imp);
   const prn = el('button','ghostbtn','🖨 Print'); prn.onclick = () => printDeck(d); bar.appendChild(prn);
