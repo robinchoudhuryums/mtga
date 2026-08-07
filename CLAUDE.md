@@ -391,7 +391,12 @@ directions.
   rainbow FIXER is promoted by the deck's colour count, a DOUBLER by the deck's magnitude
   on its axis, and cost-shaped themes (graveyard/mill/discard) count only when the deck
   fields payoffs — filling your graveyard is value in a reanimator deck and damage in a
-  control deck. It is a SHORTLIST: grade from full text, preview with `swap`. [G-31]
+  control deck. It is a SHORTLIST: grade from full text, preview with `swap`.
+  **TWO RESIDUALS, both measured on one card (2026-08-07).** A ZERO-ROW result is a THEME
+  miss, not a colour-identity fact — reporting the second produced a written "you have no
+  Abzan deck" claim against FOUR WBG decks. And KEY scores THEME OVERLAP ALONE, so for a
+  structurally-valued card it says little: Chandra rated KEY in 14 of 42 decks, nearly all
+  on the generic red trio, while the counts that decided placement were unseen. [G-31]
 - **`suggest-homes` reads castability as an identity SUBSET, which says nothing about
   whether you can pay the PIPS.** A `{W}{W}{W}{W}{W}` card was rated KEY for decks with
   10–11 white sources, roughly a 1% chance on turn five. `pip_depth_warning` prints
@@ -763,6 +768,18 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   control get +1/+1", "of the chosen type" — and treat a zero-result sweep as an unverified
   search, not a fact about the format. Same shape as the changeling / kindred cards, and as
   any "permanents of that type" wording. [K-13]
+- **A DRAW CLAUSE BEHIND AN ACTIVATION COST IS INVISIBLE TO `role_tally`.** Every
+  Card-advantage pattern is TRIGGER-shaped (`whenever …, draw a card`; `at the beginning of
+  your upkeep … draw a card`), so a `<cost>: … draw a card` matches NOTHING — a planeswalker
+  loyalty ability, a `{2}{U},{T}:` engine, a sacrifice-to-draw outlet. Measured 2026-08-07:
+  **187 pool cards (24 of them planeswalkers) and at least 12 roster cards**, excluding lands
+  and loot, read ZERO card advantage while drawing repeatably. Chandra, Spark Hunter
+  classifies as `{'Removal (spot)'}` alone — the removal is her −7 emblem; the +2 that draws
+  every turn is unseen. Not academic: deck 58's quality guard flagged "card advantage dropped
+  4→3" on a swap that RAISED it, because the cut card's draw was trigger-shaped and the added
+  card's is cost-shaped. **Read a ⚠ card-advantage regression on a planeswalker or
+  activated-engine swap as UNPROVEN, not a verdict** — K-12's CONNIVE case one level down,
+  and a G-67 whitelist miss. [K-14]
 
 ## Cycle Workflow Config
 

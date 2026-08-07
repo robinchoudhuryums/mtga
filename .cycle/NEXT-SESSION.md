@@ -1,6 +1,6 @@
 # Handoff — start the next session here
 
-Written 2026-08-06, for a session with none of this one's context.
+Written 2026-08-06, refreshed 2026-08-07, for a session with none of this one's context.
 Read this before CLAUDE.md's Common Gotchas, not instead of them.
 
 **Read the evidence file when a rule's reasoning matters.** CLAUDE.md carries the RULE and
@@ -15,13 +15,16 @@ commands disagree.
 
 ## 1. Repo position
 
-- Working branch **`claude/broad-scan-hekdj0`**. PRs #101–#104 all merged; the branch was
+- Working branch **`claude/broad-scan-hekdj0`**. PRs #101–#105 all merged; the branch was
   restarted from `main` after each. **If the current PR is merged when you resume, restart
-  the branch from `main` before the first new commit** (CLAUDE.md Git rules).
+  the branch from `main` before the first new commit** (CLAUDE.md Git rules). The commits
+  after `0c47ab4` (the #105 merge) are unpushed-to-`main` data work — no PR yet.
 - Gates green: `check_all` all invariants hold; 939 tests. One standing SOFT warning:
   decks 26a and 50 name `Rogue's Passage (FDN) 264`, a printing the repo does not hold —
   fix with `deck.py resolve` next time either deck is touched.
-- Collection ~1,985 cards; roster runs through **deck 63**.
+- Collection **2,085 library rows / 2,154 copies**; roster **95 decks**, numbered through
+  **63**. Nothing in `scripts/` changed on 2026-08-07 — that day was all data and decks,
+  so tooling behaviour is exactly as the 08-05/06 notes below describe it.
 
 ## 2. What the 2026-08-05/06 sessions did
 
@@ -43,6 +46,27 @@ commands disagree.
    49 still holds EIGHT** and its Route A plan is written but NOT applied — see §3.
 4. **Ingests:** two crafted batches (14 + 2) and one 16-card TDM pack, all verified
    16/16-style by `verify_ingest`, with the placement swaps applied across ~20 decks.
+
+## 2b. What the 2026-08-07 session did (data only — no code)
+
+1. **Six more ingest batches** (14 + 13 + 18 + 19 + 18 + 15 = ~97 cards) plus a
+   single-card Chandra ingest, every one `verify_ingest`-confirmed. Batches 11–13 held
+   cards that are NOT Standard-legal; those are noted in their commits, not silently kept.
+2. **~35 placement swaps** across the roster from those batches. Deck 35a is now **one
+   card (Omniscience) from buildable**; decks 62 and 63 are fully buildable.
+3. **Chandra, Spark Hunter into five decks in one pass** — 26b, 48, 58, 10, 45a — plus
+   48a where she was already maindecked as a craft target and simply became owned. The
+   selection is the worked example of G-61: `suggest-homes` rated her KEY in 14 of 42
+   decks on generic red themes, and the five real homes were chosen by hand-counting
+   artifacts / token producers / Vehicles / Mayhem cards. **Do not re-derive this** — the
+   table is in `docs/gotchas.md` under `[G-31]`.
+4. **Deck 26b's `#: protect:` header named a card the deck has never run** (Summon:
+   Bahamut). Worth a spot-check elsewhere: a protect entry for an absent card silently
+   shields nothing, and no gate flags it.
+5. **New rule K-14** — `role_tally` cannot see a draw clause behind an ACTIVATION cost, so
+   every planeswalker's draw ability reads as zero card advantage (187 pool cards, ≥12 on
+   the roster). This is the first thing to fix if a tooling cycle wants a small, high-value
+   pattern job; the measurement is done and written up.
 
 ## 3. The agreed next task
 
@@ -86,4 +110,9 @@ already measured:
 - **A theme miss is not a color-identity gap.** `suggest-homes` returning zero rows means
   no shared CENTRAL THEME, not that no deck of those colors exists — reporting the second
   when you measured the first produced a wrong "you have no Abzan deck" claim (you have
-  four). Check `#: colors:` before concluding a color pair is unbuilt.
+  four). Check `#: colors:` before concluding a color pair is unbuilt. **Now a permanent
+  rule** — CLAUDE.md `[G-31]`, with the long form in `docs/gotchas.md`.
+- **A quality-guard regression can be the METRIC being wrong.** Deck 58's guard reported
+  card advantage 4→3 on a swap that raised it, because the classifier reads a
+  trigger-shaped draw and not a cost-shaped one (K-14). The guard is soft for a reason:
+  check which side is wrong before "fixing" the deck.
