@@ -215,7 +215,12 @@ def _payload_flags():
     the template would not fire this — the pin guards the helper, not every use."""
     tpl = os.path.join(os.path.dirname(SCRIPTS_DIR), "templates", "deck.html")
     if not os.path.exists(tpl):
-        return []
+        # LOUD, like _index_alias_flags' own missing-input case — a template rename
+        # or move made the pin return clean, i.e. the guard for "the G-63 class
+        # beyond Python's reach" vanished with its file (Batch C small leaks).
+        return [f"editor-payload pin: {tpl} not found — the template moved or was "
+                "renamed, and the BS-08 ownedOf pin is not being checked at all. "
+                "Update the path here."]
     src = open(tpl, encoding="utf-8").read()
     errs = []
     if "function ownedOf" not in src:

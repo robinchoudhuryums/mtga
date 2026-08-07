@@ -301,6 +301,22 @@ def check():
                 f"f-string is a replacement field. Double the braces: "
                 f"{{{{m,n}}}}.  /{pat.pattern[:90]}/")
 
+    # 3b. _EXCLUDED STALENESS — every sibling gate screens its hand-kept registry
+    #     from inside check() (check_colors' allowlist, check_commands' exemptions,
+    #     check_agreement's REQUIRED, check_keywords' registries); this one's screen
+    #     lived only in the pytest layer, which the dependency-free integrity
+    #     workflow cannot run (Batch C small leaks). An entry naming a vanished
+    #     attribute suppresses nothing while looking considered.
+    mods = {m.__name__: m for m in _SCANNED_MODULES}
+    for mod_name, attr in sorted(_EXCLUDED):
+        mod = mods.get(mod_name)
+        if mod is None:
+            errors.append(f"_EXCLUDED entry ({mod_name!r}, {attr!r}): module "
+                          f"{mod_name!r} is not in _SCANNED_MODULES — stale entry.")
+        elif not hasattr(mod, attr):
+            errors.append(f"_EXCLUDED entry ({mod_name!r}, {attr!r}): no such attribute "
+                          f"any more — the exclusion covers nothing; remove it.")
+
     # 3. COMPLETENESS — a pattern the registry never heard of is a pattern neither
     #    check above can see. Compared by IDENTITY, not source text, so two patterns
     #    that happen to share a source (deck.SYMBOL_RE / lib._MANA_SYMBOL_RE) can't

@@ -451,7 +451,15 @@ def main():
 
     if args.quiet:
         state = "OK" if not hard else f"{len(hard)} ISSUE(S)"
+        # Carry the crashed-radar promotion onto the hook path too (Batch C small
+        # leaks): the full output distinguishes "a radar did not run" from an
+        # ordinary warning precisely because a broken radar reads as quiet — and
+        # --quiet, the mode documented as "for hooks" (the one nobody reads
+        # closely), collapsed both into the same soft count.
+        down = sum(1 for s in soft if " skipped (" in s)
         extra = f", {len(soft)} soft" if soft else ""
+        if down:
+            extra += f" (⚠ {down} RADAR(S) DID NOT RUN)"
         print(f"[card-library] {ncards} cards, {ndecks} decks — integrity: {state}{extra}")
         return 1 if hard else 0
 

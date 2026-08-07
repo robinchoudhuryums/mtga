@@ -59,7 +59,14 @@ implemented; 8 stale seed-provenance Power cells re-seeded in the same commit. B
 `.cycle/blocks/2026-08-broad-scan2-batchB-broad-implement.md`. 998 tests (6 more new).
 The five BS2-39 rows verified rescued live (Splash Portal → blink et al.).
 
-**Where I left off:** top-5 + docs + follow-ons + Batches A and B implemented, tested, committed and
+**Fifth pass, same session — Batch C** (gate hardening): BS2-29..34 + five small gate
+leaks all implemented. tests/test_check_all.py is NEW (the runner's first mutation
+layer — 11 tests, including the one that would have caught BS2-14). The tightened
+check_commands immediately caught query.py riding on prose mentions (exempted with an
+honest reason). Block: `.cycle/blocks/2026-08-broad-scan2-batchC-broad-implement.md`.
+1012 tests (14 more new).
+
+**Where I left off:** top-5 + docs + follow-ons + Batches A, B and C implemented, tested, committed and
 pushed on `claude/broad-scan-v74wau`; no PR opened (not requested). The remaining scan
 items are batched/prioritized in the session's closing report (batches A–H: verdict-surface
 joins, wishlist honesty, gate hardening, editor safety, interface access, editor theming,

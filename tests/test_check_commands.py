@@ -85,6 +85,36 @@ class TestGateFires:
         monkeypatch.setattr(cc, "_skill_text", lambda *a, **k: "")
         assert any("mentioned_only" in e for e in cc.check())
 
+    def test_a_script_prose_mention_does_not_count_as_coverage(self, monkeypatch):
+        """BS2-31: the script half accepted ANY filename mention — two of
+        build_pool.py's three skill 'mentions' were warnings NOT to run it, so
+        deleting the one real invocation left the gate green. Coverage now needs an
+        executable shape: `python3 scripts/<fn>` in a skill or `scripts/<fn>` in the
+        Makefile."""
+        monkeypatch.setattr(cc, "deck_subcommands", lambda *a, **k: [])
+        monkeypatch.setattr(cc, "runnable_scripts", lambda *a, **k: ["phantom_tool.py"])
+        monkeypatch.setattr(cc, "_script_text", lambda *a, **k: "")
+        monkeypatch.setattr(cc, "_skill_text",
+                            lambda *a, **k: "never run phantom_tool.py by hand")
+        assert any("phantom_tool.py" in e for e in cc.check())
+
+    def test_a_script_invocation_does_count(self, monkeypatch):
+        monkeypatch.setattr(cc, "deck_subcommands", lambda *a, **k: [])
+        monkeypatch.setattr(cc, "runnable_scripts", lambda *a, **k: ["phantom_tool.py"])
+        monkeypatch.setattr(cc, "_script_text", lambda *a, **k: "")
+        monkeypatch.setattr(cc, "_skill_text",
+                            lambda *a, **k: "run `python3 scripts/phantom_tool.py`")
+        assert not any("phantom_tool.py" in e for e in cc.check())
+
+    def test_suggest_does_not_inherit_coverage_from_suggest_homes(self, monkeypatch):
+        """BS2-31's regex half: `\b` is satisfied at a hyphen, so `deck.py suggest`
+        matched "deck.py suggest-homes" and an unrelated command vouched for it."""
+        monkeypatch.setattr(cc, "deck_subcommands", lambda *a, **k: ["suggest"])
+        monkeypatch.setattr(cc, "_script_text", lambda *a, **k: "")
+        monkeypatch.setattr(cc, "_skill_text",
+                            lambda *a, **k: "run `deck.py suggest-homes <card>`")
+        assert any("`deck.py suggest`" in e for e in cc.check())
+
     def test_a_real_call_does_count_as_coverage(self, monkeypatch):
         monkeypatch.setattr(cc, "deck_subcommands", lambda *a, **k: ["viz"])
         monkeypatch.setattr(cc, "_script_text",
