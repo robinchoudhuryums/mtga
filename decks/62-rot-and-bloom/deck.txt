@@ -41,13 +41,16 @@
 #: notes: power. Grim Reaper's finality counter means each body reanimates ONCE by
 #: notes: that route — send the copies, keep the originals for Cauldron. Sephiroth
 #: notes: transforms on the fourth death trigger; wraths advance it four at once.
-#: notes: SHARED COPIES (fungible): Murder/Hero's Downfall/Bake into a Pie/
-#: notes: Tolarian Terror/Bloodthirsty Conqueror/Craterhoof also serve 25/50/60a.
+#: notes: SHARED COPIES (fungible): Hero's Downfall/Bake into a Pie/Tolarian Terror/
+#: notes: Bloodthirsty Conqueror/Craterhoof also serve 25/50/60a. (Murder was CUT for
+#: notes: Hauntwoods Shrieker, whose attack-manifest fills the yard AND builds a board
+#: notes: — the deck's two axes on one card, against 12 interaction it could spare.)
 #: notes: ROTATION: BLB pieces (Scavenger's Talent, Coiling Rebirth, Rottenmouth
 #: notes: Viper, Wick's Patrol, Psychic Whorl, Lumra) rotate ~2027; DSK bodies
 #: notes: likewise — noted, not a build constraint.
 
 # Self-mill / setup
+1 Hauntwoods Shrieker (DSK) 182
 1 Nashi, Searcher in the Dark (DSK) 223
 1 Wick's Patrol (BLB) 121
 1 Stargaze (SOA) 34
@@ -84,7 +87,6 @@
 1 Sephiroth, Fabled SOLDIER (FIN) 115
 
 # Interaction
-1 Murder (MKM) 95
 1 Hero's Downfall (FDN) 175
 2 Bake into a Pie (FDN) 169
 1 Withering Torment (DSK) 124
