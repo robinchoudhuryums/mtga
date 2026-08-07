@@ -2650,7 +2650,7 @@ def engine_roles(text):
     return out
 
 
-def engine_balance(cards, carddata, central, signature=frozenset()):
+def engine_balance(cards, carddata, central, signature=frozenset(), weights=None):
     """For each engine theme CENTRAL to the deck, tally enabler vs payoff copies and a
     verdict. Only reports themes that are (a) real two-sided engines (in ENGINE_THEMES)
     and (b) central to THIS deck — so an incidental one-off doesn't raise a flag.
@@ -2664,7 +2664,15 @@ def engine_balance(cards, carddata, central, signature=frozenset()):
     Returns {theme: {'enablers': [(name,q)], 'payoffs': [(name,q)], 'en': n, 'pay': n,
     'verdict': str, 'flag': bool}} ordered by the deck's theme centrality."""
     sig = {t.lower() for t in signature}
-    central_engines = [t for t in central if t.lower() in _ENGINE_COMPILED]
+    # `central` is a SET (from `_central_themes`), and iterating it set-ordered made an
+    # unchanged deck print its engines in a different order run to run under hash
+    # randomization — reproduced across five runs of `engines 46` (broad-scan BS2-20,
+    # the exact G-54 shape). Sort by the deck's theme WEIGHT (the centrality order the
+    # docstring already promised) with the name as the tie-break, so the key is a
+    # total order; callers that have no weights get stable alphabetical order.
+    w = weights or {}
+    central_engines = sorted((t for t in central if t.lower() in _ENGINE_COMPILED),
+                             key=lambda t: (-w.get(t, 0), t.lower()))
     result = {}
     creatures = 0
     for theme in central_engines:
@@ -3020,7 +3028,8 @@ def cmd_stats(args):
                 theme_w[t] = theme_w.get(t, 0) + q
     signature = _signature_themes(meta, cards, cardmeta)
     flagged = [(t, info) for t, info in
-               engine_balance(cards, carddata, _central_themes(theme_w), signature).items()
+               engine_balance(cards, carddata, _central_themes(theme_w), signature,
+                              weights=theme_w).items()
                if info["flag"]]
     if flagged:
         print(f"\n⚠ Engine balance (detail: `deck.py engines {d['id']}`):")
@@ -5100,10 +5109,17 @@ def _cards_after_swap(cards, cut, add, add_printing):
     full `Front // Back` name while the deck may store the front-face spelling: an
     exact-name match missed that line and split the card's count across two
     spellings, which `legality_report`'s copy counter then couldn't sum
-    (broad-scan BS-05). The existing line's own spelling is kept."""
+    (broad-scan BS-05). The existing line's own spelling is kept.
+
+    The CUT side matches on `_ms_key` too (broad-scan BS2-21): it was exact-name while
+    the add side was front-face aware, so `swap 51 --cut "Mirror Room"` refused with
+    "'Mirror Room' is not in deck 51" for a card the deck stores as
+    `Mirror Room // Fractured Realm` — the spelling `cuts`, `card.py` and G-02's own
+    worked example all use. G-63: key every name JOIN on `_ms_key`."""
     out, removed = [], False
+    cut_key = _ms_key(cut)
     for (q, n, s, c) in cards:
-        if not removed and n.lower() == cut.strip().lower():
+        if not removed and _ms_key(n) == cut_key:
             if q > 1:
                 out.append((q - 1, n, s, c))
             removed = True
@@ -5194,8 +5210,13 @@ def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
     drop the flex line matching `drop_flex` (an entry dict). Raises ValueError if
     `cut` isn't a card line."""
     out = list(lines)
+    # `_ms_key` both sides (BS2-21): the cut may arrive as either face-spelling of a
+    # line stored the other way; exact-name matching refused a front-named cut of a
+    # full-name-stored card while `_cards_after_swap` (fixed for the same reason)
+    # accepted it — the two halves of one swap disagreeing about whether the card
+    # exists.
     ci = next((i for i, ln in enumerate(out)
-               if (_card_line_name(ln) or "").lower() == cut.strip().lower()), None)
+               if _ms_key(_card_line_name(ln) or "") == _ms_key(cut)), None)
     if ci is None:
         raise ValueError(f"{cut!r} is not a card line in this deck.")
     m = LINE_RE.match(out[ci].split("#", 1)[0].strip())
@@ -5250,14 +5271,17 @@ def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
     # no longer in the deck). Replace the first such line with an `applied` note
     # and drop the rest. Only touches `#~` comment lines, never card lines — so it
     # can't affect the copy count or INV-04. (Past sessions hand-cleaned these.)
-    add_l, cut_l = add.strip().lower(), cut.strip().lower()
-    maindeck = {(_card_line_name(ln) or "").lower() for ln in out if _card_line_name(ln)}
-    cut_gone = cut_l not in maindeck
+    # `_ms_key` throughout (BS2-21): a `#~` flex line is a human note, so its spelling
+    # is whichever face the author typed — raw `.lower()` comparisons meant a swap of
+    # a full-name DFC never retired a flex line naming its front face.
+    add_k, cut_k = _ms_key(add), _ms_key(cut)
+    maindeck = {_ms_key(_card_line_name(ln) or "") for ln in out if _card_line_name(ln)}
+    cut_gone = cut_k not in maindeck
     cleaned, noted = [], False
     for ln in out:
         e = _parse_flex_line(ln.strip())
         if e and e["out"] and e["in"] and (
-                e["in"].lower() == add_l or (e["out"].lower() == cut_l and cut_gone)):
+                _ms_key(e["in"]) == add_k or (_ms_key(e["out"]) == cut_k and cut_gone)):
             if not noted:
                 indent = ln[:len(ln) - len(ln.lstrip())]
                 cleaned.append(f"{indent}#~ note: applied — {add.strip()} in for {cut.strip()}.")
@@ -5695,7 +5719,10 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
     if after is None:
         eprint(f"{cut!r} is not in deck {d['id']}. Nothing swapped.")
         return 1
-    if cut.strip().lower() in _protected(d.get("meta") or {}):
+    # `_ms_key` both sides (BS2-21): the header may name either face-spelling of the
+    # card being cut, and a raw `.lower()` comparison let a protected DFC be cut
+    # without the ⚠ when the spellings differed.
+    if _ms_key(cut) in {_ms_key(p) for p in _protected(d.get("meta") or {})}:
         eprint(f"⚠ {cut!r} is marked protected (#: protect:) in deck {d['id']} — a "
                "signature/spice card. Proceeding, but reconsider; remove it from the "
                "header if this cut is intentional.")
@@ -8183,17 +8210,28 @@ def deck_quality_vector(d):
     mana, carddata, cardmeta = load_mana(), load_card_data(), load_card_meta()
     _, _, qty = load_collection()
     missing = short = 0
+    # Ownership per aggregated NAME, not per line (BS2-22): a card split across two
+    # lines (two printings) must compare its TOTAL need against total owned — the
+    # exact bug cmd_list records as fixed and cmd_check aggregates against; this
+    # sibling was missed, so `buildable` here (feeding preflight's verdict and
+    # `quality --vs`'s "became UNbuildable" flag) could disagree with `check`.
+    need = {}
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        need[n] = need.get(n, 0) + q
+    for n, req in need.items():
+        have, inlib = owned(qty, n)
+        if not inlib:
+            missing += 1
+        elif have < req:
+            short += 1
     theme_w, mvs, early = {}, [], 0
     creatures = reach = 0
     for q, n, s, c in cards:
         nl = n.lower()
         if nl in BASICS:
             continue
-        have, inlib = owned(qty, n)
-        if not inlib:
-            missing += 1
-        elif have < q:
-            short += 1
         cd = carddata.get(nl)
         tline = (cd.get("type") if cd else "") or ""
         m = cardmeta.get(nl)
@@ -8585,11 +8623,17 @@ def owned_role_fillers(d, roles, *, limit=10):
     _, _, qty = load_collection()
     legalities = load_legalities()
     fmt = (meta.get("format") or "").strip().lower()
-    in_deck = {n.lower() for q, n, s, c in cards}
+    # `_ms_key` both sides (BS2-19): `carddata` keys a DFC under BOTH spellings, so a
+    # raw-name `in_deck` suppressed only the spelling the deck file used — the OTHER
+    # key sailed through, `owned()` resolved it via the front-face fallback, and the
+    # deck was offered its own maindecked card as a 0-wildcard filler (25 such rows at
+    # full limit; reaches `tier --to` and `redundancy`). The display-name dedupe below
+    # can't help — the two entries were separate dicts.
+    in_deck = {_ms_key(n) for q, n, s, c in cards}
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
     out = []
     for nl, cd in carddata.items():
-        if nl in in_deck or nl in BASICS:
+        if _ms_key(nl) in in_deck or nl in BASICS:
             continue
         if "Land" in _primary_type(cd.get("type") or ""):
             continue
@@ -8634,7 +8678,11 @@ def craft_role_fillers(d, roles, *, limit=8):
     meta, cards = parse_deck_file(d["path"])
     mana = load_mana()
     _, _, qty = load_collection()
-    in_deck = {n.lower() for q, n, s, c in cards}
+    # `_ms_key` (BS2-19), same reason as `owned_role_fillers`: the pool keys the full
+    # `Front // Back` while the deck line may store the front, so an UNOWNED DFC
+    # already maindecked as a WIP craft target was offered as a craft for its own deck
+    # (the owned_qty skip below only masks the owned case).
+    in_deck = {_ms_key(n) for q, n, s, c in cards}
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
     fmt = (meta.get("format") or "").strip().lower()
     RANK = {"Common": 0, "Uncommon": 1, "Rare": 2, "Mythic": 3}
@@ -8643,7 +8691,7 @@ def craft_role_fillers(d, roles, *, limit=8):
         for r in csv.DictReader(fh):
             name = (r.get("Card Name") or "").strip()
             nl = name.lower()
-            if not nl or nl in seen or nl in in_deck or nl in BASICS:
+            if not nl or nl in seen or _ms_key(nl) in in_deck or nl in BASICS:
                 continue
             if "Land" in _primary_type(r.get("Type") or ""):
                 continue
@@ -9945,13 +9993,20 @@ def cmd_preflight(args):
     # Owned / buildable.
     _, _, qty = load_collection()
     missing = short = 0
+    # Per aggregated NAME (BS2-22), matching cmd_check's explicit comment: a deck may
+    # list one card on two printing lines, and per-line comparison let preflight say
+    # "PASS — fully owned" where `check` said short (2+2 lines against 3 owned). The
+    # counts are also per-CARD now, so a two-line missing card is one craft target.
+    need = {}
     for q, n, s, c in cards:
         if n.lower() in BASICS:
             continue
+        need[n] = need.get(n, 0) + q
+    for n, req in need.items():
         have, inlib = owned(qty, n)
         if not inlib:
             missing += 1
-        elif have < q:
+        elif have < req:
             short += 1
 
     # Castability.
@@ -10173,7 +10228,7 @@ def cmd_engines(args):
                 theme_w[t] = theme_w.get(t, 0) + q
     central = _central_themes(theme_w)
     signature = _signature_themes(meta, cards, cardmeta)
-    bal = engine_balance(cards, carddata, central, signature)
+    bal = engine_balance(cards, carddata, central, signature, weights=theme_w)
 
     print(f"Deck {d['id']}: {d['name'] or d['path']} — engine analysis (enabler ↔ payoff)")
     if not bal:

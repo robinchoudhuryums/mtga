@@ -47,7 +47,13 @@ zero soft warnings, dashboard.html + gallery.html rebuilt. K-12's canonical-coun
 is TRUE again (BS2-18); check_patterns now sees 247 patterns at any nesting depth and the
 dead engine pattern is gone; INV-04 gained the malformed-line channel.
 
-**Where I left off:** top-5 + docs + all ten follow-ons implemented, tested, committed and
+**Third pass, same session — Batch A** (verdict-surface joins & determinism): BS2-19, 20,
+21, 22, 35, 36 all implemented. Block:
+`.cycle/blocks/2026-08-broad-scan2-batchA-broad-implement.md`. 992 tests (9 more new).
+Deliberately NOT done: BS2-07's full header-consumer sweep (only the swap-side protect
+guard was in Batch A's scope) — it is the named follow-on.
+
+**Where I left off:** top-5 + docs + all ten follow-ons + Batch A implemented, tested, committed and
 pushed on `claude/broad-scan-v74wau`; no PR opened (not requested). The remaining scan
 items are batched/prioritized in the session's closing report (batches A–H: verdict-surface
 joins, wishlist honesty, gate hardening, editor safety, interface access, editor theming,

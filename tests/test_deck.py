@@ -3198,3 +3198,36 @@ class TestMalformedDeckLines:
     def test_a_trailing_comment_on_a_card_line_is_fine(self, tmp_path):
         p = self._deck(tmp_path, "4 Shock (M21) 159  # burn\n")
         assert deck.malformed_deck_lines(p) == []
+
+
+class TestSwapCutSideFrontFace:
+    """BS2-21: the ADD side of a swap was `_ms_key`-matched (BS-05) but the CUT side
+    stayed exact-name, so cutting a full-name-stored DFC by its front face refused
+    with "not in deck" — the spelling `cuts`, `card.py` and G-02's worked example all
+    use — and the flex auto-retire missed cross-spelled `#~` lines."""
+
+    def test_front_name_cut_resolves_a_full_name_line(self):
+        cards = [(1, "Mirror Room // Fractured Realm", "DSK", "50"), (4, "Opt", "M21", "1")]
+        after = deck._cards_after_swap(cards, "Mirror Room", "Negate", ("M21", "69"))
+        assert after is not None
+        assert all(deck._ms_key(n) != "mirror room" for _q, n, _s, _c in after)
+
+    def test_full_name_cut_resolves_a_front_name_line(self):
+        cards = [(1, "Mirror Room", "DSK", "50"), (4, "Opt", "M21", "1")]
+        after = deck._cards_after_swap(
+            cards, "Mirror Room // Fractured Realm", "Negate", ("M21", "69"))
+        assert after is not None
+
+    def test_swap_edit_lines_accepts_a_front_name_cut(self):
+        lines = ["1 Mirror Room // Fractured Realm (DSK) 50", "4 Opt (M21) 1"]
+        out = deck._swap_edit_lines(lines, "Mirror Room", "Negate", ("M21", "69"))
+        assert any(ln.startswith("1 Negate") for ln in out)
+        assert not any("Mirror Room" in ln for ln in out)
+
+    def test_flex_line_naming_the_front_face_is_retired_by_a_full_name_swap(self):
+        lines = ["1 Mirror Room // Fractured Realm (DSK) 50",
+                 "#~ -Mirror Room | +Negate | tempo"]
+        out = deck._swap_edit_lines(
+            lines, "Mirror Room // Fractured Realm", "Negate", ("M21", "69"))
+        assert any("applied" in ln for ln in out)
+        assert not any(ln.strip().startswith("#~ -Mirror Room |") for ln in out)
