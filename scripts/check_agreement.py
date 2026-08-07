@@ -134,7 +134,16 @@ def _agree_legality(errs):
     writing them lowercase, i.e. it is a data coincidence rather than a property."""
     full = deck.load_legalities()
     if not full:
-        return  # pool predates the Legalities column; nothing to compare
+        # Pool predates the Legalities column — nothing to compare, but say so: this
+        # SOFT data state (a documented G-21 degradation, INV-03 only warns) was
+        # silently switching off two-thirds of a HARD gate, on exactly the axis
+        # (`owned_role_fillers` vs `craft_role_fillers`) that has gone vacuous twice
+        # before (broad-scan BS2-32). A skipped pair must be visible in the gate's
+        # own output, not indistinguishable from a passing one.
+        lib.eprint("WARN:  check_agreement: legality pairs NOT exercised — card-pool.csv "
+                   "has no Legalities column (rebuild with build_pool.py --all). The "
+                   "quiet result here is 'unverified', not 'agreeing'.")
+        return
     sample = sorted(full)[::97][:120]   # a spread across the pool, not the first N
     byname = deck._legality_of(sample)
     bad = []
@@ -247,6 +256,13 @@ def _agree_role_fillers(errs):
     card is not a licence to play it — the pick costs no wildcard but still costs a
     deck slot."""
     legal = deck.load_legalities()
+    if not legal:
+        # Same loud-skip rule as _agree_legality (BS2-32): with no legality data the
+        # `legs and fmt not in legs` guards below can never flag anything, so the
+        # pair would pass while asserting nothing.
+        lib.eprint("WARN:  check_agreement: role-filler format pair NOT exercised — "
+                   "card-pool.csv has no Legalities column. Quiet = unverified.")
+        return
     # BOTH axes `tier --to` asks for. Testing interaction alone was not enough: the
     # roster's only illegal interaction filler is Dovin's Veto and it is on-color for
     # decks 15-27, none of which fall in the sampled slice, so the check ran green

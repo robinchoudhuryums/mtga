@@ -76,6 +76,16 @@ printing is the opposite case and is not summed — a tracker emitting the same
 `(name, set, collector)` twice is stating one holding twice, not two holdings, so
 identical export keys collapse on `max` first.
 
+Two more `import_collection.py` safety rules, both about mis-shaped exports. A row whose
+quantity cell can't be read as a plain integer (`"1,024"`, `"4 (foil)"`, `"2.0"`) is
+warned and **left unchanged — it can never be zeroed by `--zero-missing`**, because the
+export mentioned the card, so "absent from the export" is false; fix the column (or
+`--map qty=<column>`) if those rows should be set. And when the export has **no
+set/collector column at all**, repeated rows of one card are read as distinct printings
+and **summed** (a tracker exports one row per printing), with a per-card "SUMMED to N"
+warning — the take-the-max rule applies only where a real printing key exists to tell a
+restated holding from a second printing.
+
 **After any import, rebuild the derived data** — a new card has no `card-mana.csv` row,
 so INV-02 fails until `build_mana.py --pool` runs. `/refresh` runs the whole chain.
 
@@ -173,6 +183,8 @@ python3 scripts/query.py --synergy counters            # counters-matter cards
 python3 scripts/query.py --set MSH --text "draw a card"
 python3 scripts/query.py --min-owned 1 --count         # how many distinct cards you own
 python3 scripts/query.py --color G --csv               # emit CSV to pipe elsewhere
+                                                       # (--csv emits the LIBRARY columns,
+                                                       #  so it refuses a derived file)
 ```
 
 Case-insensitive substring filters, AND-ed together — except `--color`, which
@@ -180,8 +192,10 @@ matches the color-identity **set**: `--color R` returns cards whose identity
 contains R (gold cards included, Colorless excluded), `--color colorless` returns
 only colorless cards. (The old substring match returned every Colorless card for
 `--color R` — the word contains an "r".) Table output by default.
-`query.py` searches only cards you **own** (`card-library.csv`); to search the
-full set of cards you *could* play, use `pool.py` below.
+`--min-owned` sums copies across printings (they're fungible in Arena), and
+`--count` reports **distinct cards**, not CSV rows — a card printed in two sets is
+one card. `query.py` searches only cards you **own** (`card-library.csv`); to search
+the full set of cards you *could* play, use `pool.py` below.
 
 ### Card — inspect one card in full
 
@@ -216,11 +230,16 @@ query typo, or Scryfall's zero-match 404) or one **less than half** the current 
 count — so a mistaken query, or a plain Standard rebuild run over a full `--all`
 pool, can't silently destroy the reference. Pass `--allow-shrink` when the shrink
 is intentional. (The write itself is atomic, so an interrupted build leaves the
-existing pool intact.)
+existing pool intact.) `--out` is schema-guarded in both directions: pointed at a file
+that already holds a *different* schema — `--out card-library.csv`, say — it refuses
+before doing any work, rather than overwriting your inventory with the pool's columns.
 
 `card-pool.csv` carries a **Rarity** column (= Arena wildcard cost) and a
 **`Released`** column (each card's set release date). `build_pool.py` also writes
-a `card-pool.build` sidecar stamping when the pool was last built — together these
+a `card-pool.build` sidecar stamping when the pool was last built (plus the query it
+was built for, and a content hash of `tag_synergies.py` — so editing a tag pattern
+defeats the one-week freshness reuse and the pool's `Synergies` really are re-derived,
+which used to be a silent no-op) — together these
 let `deck.py suggest` reason about **rotation** (Standard holds ~the last 3 years
 of sets), flagging picks whose set has aged out even when the static `Legalities`
 snapshot still says `standard`. Search the pool with `pool.py`, which joins
@@ -260,7 +279,7 @@ python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme (-
 python3 scripts/wishlist.py --target 14        # what you've earmarked for a deck
 python3 scripts/wishlist.py --by-set           # PACK OPTIMIZATION: cards per set, by rarity
 python3 scripts/wishlist.py --rank             # WILDCARD PRIORITY: theme fit + hand-graded power, blended
-python3 scripts/wishlist.py --budget "9M 10R 38U 48C"   # optimal craft plan within a wildcard budget
+python3 scripts/wishlist.py --budget "9M 10R 38U 48C"   # optimal craft plan within a wildcard budget (shows the same ⚠rot + pow?/pow!/pow~ checks as --rank)
 python3 scripts/wishlist.py --budget "3R" --set TMT     # ...scoped to one set (filters apply to --rank/--budget/--by-set)
 python3 scripts/wishlist.py --seed-power       # first-pass heuristic estimate for BLANK Power cells (+ --write)
 python3 scripts/wishlist.py --owned            # cards you've since acquired — prune these
@@ -359,7 +378,9 @@ python3 scripts/reconcile_crafts.py crafts.txt --apply   # write, with .bak back
 
 When you craft (or discover you already own) cards, paste them as an Arena export
 (`1 Doctor Doom (MSH) 95`). This adds each to `card-library.csv` (a double-faced
-card under its **front** name, matching the library convention), adds the matching
+card under its **front** name, matching the library convention — and a printing the
+library already stores under its full `A // B` name is matched by front face and
+bumped in place, never duplicated), adds the matching
 `card-mana.csv` row so INV-02 keeps holding (a **blank** row when the card has no
 source mana row yet — a later `build_mana.py`/`/refresh` fills the cost), drops it
 from `card-wishlist.csv`, and lists the decks that reference it so you can re-check
@@ -519,6 +540,10 @@ re-check. Edits are line-level, so an existing card keeps its printing and its p
 the file and only its quantity changes; the `#:` header, `# Creatures` section comments
 and `#~` flex lines survive. If a block matches two variants nearly equally it's flagged
 **low confidence** and skipped on `--apply` (re-paste that deck alone, or `--force`).
+A block holding fewer than 75% of the matched deck's cards is flagged **TRUNCATED?**
+and skipped the same way — a partial paste is a subset, so it would otherwise match
+with full confidence and rewrite the stored deck down to the fragment (`--force` for
+a deliberate cut).
 Before this, spotting drift and repairing it were separate jobs: you read a diff, then
 hand-edited each file.
 
@@ -1021,6 +1046,18 @@ python3 scripts/app.py --port 8000 --no-browser
 and opens your browser — so from a fresh clone it's a single command. (Run
 manually if you prefer; `--no-browser` skips the auto-open.)
 
+Two behaviours worth knowing before you edit:
+
+- **A deck save is refused if the file changed underneath it.** Open a deck page,
+  run `deck.py swap --apply` (or `sync`) against the same deck in a terminal, then
+  Save: you get a "the deck file CHANGED since this page loaded it" toast instead of
+  a silent overwrite of the swap. Reload, re-apply your edit, save again. The
+  collection CSV has always worked this way; the deck editor joined it later.
+- **The editor follows your OS colour scheme.** All three pages ship a light palette
+  and switch on `prefers-color-scheme`; there is no in-page toggle. The dashboard's
+  toggle can't drive them — it lives on a different origin (a `file://` or Pages URL
+  versus `127.0.0.1`), so its stored choice never reaches the editor.
+
 **Run it in the cloud, without a local clone (GitHub Codespaces).** The editor is
 a small server that reads and *writes* your CSV/deck files, so it can't run on a
 static host like GitHub Pages — but a Codespace is a live git checkout, which is
@@ -1097,19 +1134,30 @@ import it.
 pip install -r requirements.txt
 export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
 export MTGA_SHEET_ID=<sheet id from its URL>
+python3 scripts/sheets_sync.py check           # is the setup complete? writes nothing
 python3 scripts/sheets_sync.py push            # local CSV  -> Google Sheet
 python3 scripts/sheets_sync.py pull            # DRY RUN: reports what it would write
 python3 scripts/sheets_sync.py pull --apply    # Google Sheet -> local CSV (writes)
 ```
 
+**Start with `check`.** Setup has four independent parts — two packages, a key
+file, a sheet id — plus sharing the sheet with the service account's
+`client_email`, and each used to announce itself only by failing a real transfer,
+so a missing share and a typo'd tab name looked alike. `check` reports every part,
+lists the tabs it can see, and moves no data.
+
 Keeps the CSV and the companion Google Sheet in sync. `pull` overwrites the local
 CSV, so it is **dry-run by default** (`--apply` to write), the incoming rows are
 run through `validate.py` on a temp file first (and the current CSV is backed up
-to a timestamped `.bak`), and it **refuses a >50% row-count shrink** without
-`--allow-shrink` — `validate.py` passes a header-only sheet with zero rows, so a
-cleared or wrong-but-existing tab would otherwise look valid while replacing the
-whole inventory. A sheet with a matching header but bad rows can't corrupt the
-inventory. `push` writes cells as **RAW**
+to a timestamped `.bak`), and **both directions refuse a >50% row-count shrink**
+without `--allow-shrink` — `validate.py` passes a header-only sheet with zero rows,
+so a cleared or wrong-but-existing tab would otherwise look valid while replacing
+the whole inventory, and `push` CLEARS the tab before writing, so a short local CSV
+would destroy the remote copy you would otherwise recover from. A sheet with a
+matching header but bad rows can't corrupt the inventory. Reading never creates a
+worksheet: a typo'd `--worksheet` on `pull` used to add an empty tab to your
+spreadsheet and then report it empty; it now names the tabs that do exist.
+`push` writes cells as **RAW**
 values, so a field whose text begins `=`, `+`, `-`, or `@` is stored literally and
 never evaluated as a spreadsheet formula (a CSV-injection guard, and it also keeps
 leading-zero collector numbers intact). Setup details are in the docstring at the
@@ -1134,6 +1182,11 @@ basic lands are skipped — they are deliberately not in the collection.
 
 `--exact` requires `owned == pasted`; use it **only** for the authoritative
 `import_collection.py` route. Every other route treats a line as a lower bound.
+The input can be an Arena-style paste **or the collection CSV/TSV itself**: when no
+Arena lines parse, the file is re-read through `import_collection`'s own parser — so
+the post-import check the tool tells you to run actually works on the file you just
+imported (it used to fail every row of a CSV and then claim the cards were "never
+ingested by ANY tool").
 
 The comparison is per **card**, not per line: owned copies are summed across printings,
 while a tracker export carries one line per printing, so all the lines resolving to one

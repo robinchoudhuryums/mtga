@@ -124,7 +124,16 @@ def check():
     # (7) seed-power bonuses stay bounded and keep the seed in [0, 10]; a flexible removal
     #     on a PERMANENT (Meteor Sword) must outscore a common vanilla but not blow past a
     #     mythic bomb — the fix must nudge, not dominate.
+    # HARD-error on a missing symbol, like anchors (5) and (6) above — the getattr
+    # skip meant renaming `_seed_power` silently deleted this whole block, including
+    # the (7b) wildcard-letter normalization guard whose bug once re-graded the
+    # entire cut list (Batch C small leaks; check_agreement.REQUIRED would catch the
+    # rename only by accident of a different gate).
     sp = getattr(wishlist, "_seed_power", None)
+    if sp is None:
+        errs.append("anchor 7: wishlist._seed_power is GONE (renamed?) — the seed-bound "
+                    "and rarity-normalization anchors are not running. Re-point them at "
+                    "the new symbol.")
     if sp is not None:
         meteor = sp({"Rarity": "Uncommon", "Type": "Artifact — Equipment",
                      "Card Text": "When this Equipment enters, destroy target permanent. "

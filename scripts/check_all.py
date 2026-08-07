@@ -118,6 +118,15 @@ def check_decks():
         if not cards:
             errs.append(f"deck {d['id']} ({os.path.relpath(d['path'], REPO_ROOT)}) has no parseable cards")
             continue
+        # The line-syntax half of INV-04 (BS2-14). `parse_deck_file` discards a line
+        # LINE_RE rejects with no record, so a malformed card line ("Lightning Bolt
+        # (DMU) 137" with the quantity omitted, a BOM-prefixed paste) was silently
+        # DELETED from every analysis — the deck graded as a 59-card list while the
+        # file said 60, and this gate's own docstring claimed the check existed.
+        for lineno, text in deckmod.malformed_deck_lines(d["path"]):
+            errs.append(f"deck {d['id']}: line {lineno} is not a card line, `#:` header, "
+                        f"comment or Arena marker — it is silently EXCLUDED from every "
+                        f"analysis: {text[:60]!r}")
         missing = short = 0
         for q, n, s, c in cards:
             have, found = deckmod.owned(by_name_qty, n)
@@ -442,7 +451,15 @@ def main():
 
     if args.quiet:
         state = "OK" if not hard else f"{len(hard)} ISSUE(S)"
+        # Carry the crashed-radar promotion onto the hook path too (Batch C small
+        # leaks): the full output distinguishes "a radar did not run" from an
+        # ordinary warning precisely because a broken radar reads as quiet — and
+        # --quiet, the mode documented as "for hooks" (the one nobody reads
+        # closely), collapsed both into the same soft count.
+        down = sum(1 for s in soft if " skipped (" in s)
         extra = f", {len(soft)} soft" if soft else ""
+        if down:
+            extra += f" (⚠ {down} RADAR(S) DID NOT RUN)"
         print(f"[card-library] {ncards} cards, {ndecks} decks — integrity: {state}{extra}")
         return 1 if hard else 0
 

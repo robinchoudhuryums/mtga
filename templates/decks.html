@@ -5,12 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MTG Arena — Decks</title>
 <style>
+  /* This page already used the shared --ok/--warn/--bad vocabulary its two siblings
+     did not (broad-scan S-8); it gains the light palette and the --header token so
+     all three now theme identically. Light mode follows the OS — see deck.html's
+     block for why there is no in-page toggle. */
   :root { --bg:#0f1115; --panel:#191c23; --panel2:#21252e; --line:#2c313c;
-    --text:#e7e9ee; --muted:#949bab; --accent:#d9a441; --ok:#9dc7a3; --warn:#e3c98a; --bad:#e39a8a; }
+    --text:#e7e9ee; --muted:#949bab; --accent:#d9a441; --ok:#9dc7a3; --warn:#e3c98a; --bad:#e39a8a;
+    --header:rgba(15,17,21,.96); }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f2f3f6; --panel:#ffffff; --panel2:#f4f5f8; --line:#d9dde5;
+      --text:#1b1e25; --muted:#5a6472; --accent:#9a6b12; --ok:#1c7a4d; --warn:#8a5d0a; --bad:#b3402a;
+      --header:rgba(242,243,246,.96); }
+  }
   * { box-sizing: border-box; }
   body { margin:0; background:var(--bg); color:var(--text);
     font:15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-  header { position:sticky; top:0; z-index:5; background:rgba(15,17,21,.96);
+  header { position:sticky; top:0; z-index:5; background:var(--header);
     backdrop-filter:blur(6px); border-bottom:1px solid var(--line); padding:14px 20px;
     display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; }
   h1 { font-size:19px; margin:0; }
@@ -24,6 +34,7 @@
   a.tool:focus-visible, .deck:focus-visible {
     outline:2px solid var(--accent); outline-offset:2px; border-color:var(--accent); }
   .wrap { padding:20px; max-width:920px; margin:0 auto; }
+  .empty { color:var(--muted); padding:40px 8px; text-align:center; font-size:14px; }
   .deck { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text);
     background:var(--panel); border:1px solid var(--line); border-radius:10px;
     padding:12px 16px; margin-bottom:10px; }
@@ -41,6 +52,18 @@
      page collapsed both into one amber badge, so scenario 5's tri-color
      semantics didn't survive the /decks list (S5). */
   .badge.bad { color:var(--bad); border:1px solid var(--bad); }
+  /* Phone width (broad-scan S-3): the row is id(44) + cnt(120) + badge(96) + gaps,
+     which leaves ~54px for the deck NAME at 390px — the one thing you came to read.
+     Give the name its own line and let the rest share the second. */
+  @media (max-width: 620px) {
+    header { padding:12px 14px; }
+    .wrap { padding:14px; }
+    .deck { flex-wrap:wrap; row-gap:6px; }
+    .nm { order:-1; flex:1 1 100%; }
+    .cnt { min-width:0; text-align:left; flex:1 1 auto; }
+    .badge { min-width:0; }
+    .deck.variant { margin-left:14px; }
+  }
 </style>
 </head>
 <body>
@@ -56,6 +79,14 @@
   const DATA = JSON.parse(document.getElementById('data').textContent);
   const decks = DATA.decks;
   const list = document.getElementById('list');
+  // Empty state (Batch E / S-11): a fresh clone with no decks/ rendered a blank
+  // page whose only content was "0 decks · 0 buildable now" in muted grey — no
+  // explanation, no pointer at the ＋ New deck button that is the actual next step.
+  // collection.html and gallery.html both ship an .empty element for exactly this.
+  if (!decks.length) {
+    list.innerHTML = '<div class="empty">No decks yet. Create one with the ＋ New deck ' +
+      'button above, or add files under <code>decks/</code> and reload.</div>';
+  } else
   list.innerHTML = decks.map(d => {
     const ready = d.short === 0 && d.missing === 0;
     // missing → red (matches deck.html / dashboard); short-only → amber.

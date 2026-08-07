@@ -92,3 +92,25 @@ class TestAgreesWithTheRestOfTheToolkit:
         assert multi, "expected at least one card owned across several printings"
         for n in multi:
             assert owned_qty(idx, n) == by_name_qty[n], n
+
+
+class TestDecksUsing:
+    """BS2-12: the deck-file side of the join was never front-face normalized, so a
+    library-resolved front name missed a deck line storing the full `A // B` — and
+    "in decks: (none)" is the field that decides "safe to cut / homeless craft"."""
+
+    def _decks(self, tmp_path, monkeypatch, line):
+        d = tmp_path / "42-blood-price"
+        d.mkdir()
+        (d / "deck.txt").write_text(line + "\n", encoding="utf-8")
+        monkeypatch.setattr(card, "DECKS", str(tmp_path))
+
+    def test_front_name_query_finds_a_full_name_deck_line(self, tmp_path, monkeypatch):
+        self._decks(tmp_path, monkeypatch,
+                    "1 Cecil, Dark Knight // Cecil, Redeemed Paladin (FIN) 99")
+        assert card._decks_using("Cecil, Dark Knight") == ["42-blood-price"]
+
+    def test_full_name_query_finds_a_front_name_deck_line(self, tmp_path, monkeypatch):
+        self._decks(tmp_path, monkeypatch, "1 Cecil, Dark Knight (FIN) 99")
+        assert card._decks_using(
+            "Cecil, Dark Knight // Cecil, Redeemed Paladin") == ["42-blood-price"]

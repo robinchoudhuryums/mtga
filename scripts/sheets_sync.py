@@ -16,18 +16,25 @@ Setup (one-time):
          export MTGA_SHEET_ID=<the long id from the sheet's URL>
 
 Usage:
+    python3 scripts/sheets_sync.py check           # is the setup complete? writes nothing
     python3 scripts/sheets_sync.py push
     python3 scripts/sheets_sync.py pull            # DRY RUN — reports what it would write
     python3 scripts/sheets_sync.py pull --apply    # actually overwrite card-library.csv
     python3 scripts/sheets_sync.py push --worksheet "Library" --dry-run
 
-`pull` is dry-run by default and refuses a >50% row-count shrink without
---allow-shrink: it is the one authoritative overwrite of the whole inventory, and
-a header-only worksheet (a cleared sheet, a partially-loaded get_all_values(), a
-wrong-but-existing tab) passes both the header check and validate() — zero rows is
-a "valid" library. Every sibling overwrite path (import_collection, build_pool,
-build_mana) already carries a shrink guard; this one gets the same, plus the
-dry-run default every other destructive tool here uses (broad-scan BS-03).
+Start with `check`. The setup has four independent parts (two packages, a key file,
+a sheet id) plus a share on the Google side, and each used to announce itself only
+by failing a real transfer — so a missing share and a typo'd tab name looked alike.
+`check` reports all of them and moves no data.
+
+BOTH directions refuse a >50% row-count shrink without --allow-shrink. `pull` is the
+authoritative overwrite of the whole inventory, and a header-only worksheet (a cleared
+sheet, a partially-loaded get_all_values(), a wrong-but-existing tab) passes both the
+header check and validate() — zero rows is a "valid" library (broad-scan BS-03). `push`
+CLEARS the tab before writing, so a short local CSV would destroy the remote copy you
+would otherwise recover from; it got the mirror guard in BS3-03. Every sibling overwrite
+path (import_collection, build_pool, build_mana) carries the same floor. `pull` is
+additionally a dry run by default, like every other destructive tool here.
 
 The CSV itself is the interchange format, so even without this script you can
 always File > Import (or download as CSV) in Google Sheets manually — this just
@@ -113,27 +120,72 @@ def _client():
     return __import__("gspread").authorize(creds)
 
 
-def _worksheet(name):
+def _spreadsheet():
     sheet_id = os.environ.get(SHEET_ID_ENV)
     if not sheet_id:
         eprint(f"ERROR: set {SHEET_ID_ENV} to your Google Sheet's ID.")
         raise SystemExit(2)
-    spreadsheet = _client().open_by_key(sheet_id)
+    return _client().open_by_key(sheet_id)
+
+
+def _worksheet(name, create=False):
+    """Open worksheet `name`. Creates it ONLY when `create` is set.
+
+    It used to create unconditionally, on a bare `except Exception` — so a typo in
+    `--worksheet` on the READ side made `pull` add an empty tab to the operator's
+    spreadsheet and then report "the worksheet is empty", which is a read operation
+    silently mutating the remote document, and a misleading error on top of it. The
+    blanket except also swallowed auth and network failures and turned them into an
+    add_worksheet attempt, so a credentials problem surfaced as an unrelated error.
+    """
+    spreadsheet = _spreadsheet()
     try:
         return spreadsheet.worksheet(name)
-    except Exception:
-        # Create the worksheet if it doesn't exist yet.
+    except Exception as e:
+        if not create:
+            try:
+                have = ", ".join(repr(w.title) for w in spreadsheet.worksheets())
+            except Exception:            # the failure was not "no such tab"
+                eprint(f"ERROR: could not open worksheet {name!r}: {e}")
+                raise SystemExit(2)
+            eprint(f"ERROR: no worksheet named {name!r} in this spreadsheet.\n"
+                   f"       Tabs present: {have or '(none)'}\n"
+                   f"       Reading will not create one — pass --worksheet with an "
+                   f"existing tab name.")
+            raise SystemExit(2)
         return spreadsheet.add_worksheet(title=name, rows=1000, cols=len(HEADER))
 
 
-def push(worksheet_name, dry_run):
+_SHRINK_FLOOR = 0.5   # same floor as import_collection: refuse a >50% shrink
+
+
+def push(worksheet_name, dry_run, allow_shrink=False):
     _, rows = load_rows(DEFAULT_CSV)
     grid = [HEADER] + [[r.get(c, "") or "" for c in HEADER] for r in rows]
     if dry_run:
         print(f"[dry-run] would write {len(rows)} row(s) to worksheet "
               f"{worksheet_name!r}. Nothing sent.")
         return 0
-    ws = _worksheet(worksheet_name)
+    ws = _worksheet(worksheet_name, create=True)
+    # Push CLEARS the tab, so it is an overwrite of the operator's other copy and it
+    # deserves the same floor as its mirror. `pull` has had one since BS-03 and this
+    # direction had none at all: every reason a local CSV can be short — an aborted
+    # import, a bad merge, a half-written file — would have been propagated straight
+    # over the Sheet, destroying the copy you would otherwise have pulled BACK from.
+    # Same floor, same escape hatch, same wording as pull.
+    if not allow_shrink:
+        try:
+            remote = max(len(ws.get_all_values()) - 1, 0)   # minus the header row
+        except Exception:
+            remote = 0
+        if remote and len(rows) < remote * _SHRINK_FLOOR:
+            eprint(f"ERROR: {os.path.basename(DEFAULT_CSV)} holds {len(rows)} row(s) "
+                   f"against {remote} in worksheet {worksheet_name!r} — a "
+                   f">{int((1 - _SHRINK_FLOOR) * 100)}% shrink. A half-written or "
+                   f"partially-imported local CSV looks exactly like this, and push "
+                   f"CLEARS the tab. Pass --allow-shrink if the shrink is real. "
+                   f"Nothing sent.")
+            return 1
     ws.clear()
     # RAW so a cell whose text begins with '=', '+', '-', or '@' is stored as
     # literal text, never evaluated as a spreadsheet formula — a CSV-injection
@@ -143,9 +195,6 @@ def push(worksheet_name, dry_run):
     ws.update(range_name="A1", values=grid, value_input_option="RAW")
     print(f"Pushed {len(rows)} row(s) to Google Sheet worksheet {worksheet_name!r}.")
     return 0
-
-
-_SHRINK_FLOOR = 0.5   # same floor as import_collection: refuse a >50% shrink
 
 
 def pull(worksheet_name, apply=False, allow_shrink=False):
@@ -204,6 +253,15 @@ def pull(worksheet_name, apply=False, allow_shrink=False):
             backup = backup_path(target)  # shared collision-free naming (audit F22)
             shutil.copy2(target, backup)
             print(f"Backed up existing CSV to {os.path.basename(backup)} before overwrite.")
+            # Carry the target's own mode across, exactly as lib.atomic_write does:
+            # mkstemp creates 0600 and os.replace keeps the TEMP's mode, so this
+            # promote-my-own-temp path silently flipped card-library.csv 644 -> 600 —
+            # the regression atomic_write documents fixing, reintroduced by the one
+            # caller that stages its own file (broad-scan Batch G). Masked locally
+            # because a git checkout resets modes.
+            shutil.copymode(target, tmp)
+        else:
+            os.chmod(tmp, 0o644)
         os.replace(tmp, target)
         tmp = None
     finally:
@@ -221,19 +279,81 @@ def pull(worksheet_name, apply=False, allow_shrink=False):
     return 0
 
 
+def check_setup(worksheet_name):
+    """Report whether this machine can talk to the Sheet, WITHOUT moving any data.
+
+    The setup is four separate things — two packages, a key file, a sheet id, and a
+    share on the Google side — and until this existed the only way to find out which
+    one was missing was to run a real transfer and read whichever error came back
+    first. That is a bad way to learn you forgot to share the sheet with the service
+    account, and it is why the round-trip sat documented-but-unused: every failure
+    looked the same from outside. Read-only; creates nothing.
+    """
+    ok = True
+    try:
+        import gspread            # noqa: F401
+        from google.oauth2.service_account import Credentials  # noqa: F401
+        print("  ✓ gspread + google-auth installed")
+    except ImportError:
+        print("  ✗ gspread / google-auth NOT installed — pip install -r requirements.txt")
+        ok = False
+    key = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
+    if not key:
+        print("  ✗ GOOGLE_APPLICATION_CREDENTIALS is not set")
+        ok = False
+    elif not os.path.exists(key):
+        print(f"  ✗ GOOGLE_APPLICATION_CREDENTIALS points at a missing file: {key}")
+        ok = False
+    else:
+        print(f"  ✓ service-account key present ({os.path.basename(key)})")
+    if not os.environ.get(SHEET_ID_ENV):
+        print(f"  ✗ {SHEET_ID_ENV} is not set")
+        ok = False
+    else:
+        print(f"  ✓ {SHEET_ID_ENV} set")
+    if not ok:
+        print("\nSetup incomplete — see the docstring at the top of this file.")
+        return 1
+    try:
+        spreadsheet = _spreadsheet()
+        titles = [w.title for w in spreadsheet.worksheets()]
+    except SystemExit:
+        raise
+    except Exception as e:
+        print(f"  ✗ could not open the spreadsheet ({type(e).__name__}: {e})\n"
+              f"    The commonest cause is not having SHARED the sheet with the "
+              f"service account's client_email as an Editor.")
+        return 1
+    print(f"  ✓ spreadsheet opened — tabs: {', '.join(repr(t) for t in titles)}")
+    if worksheet_name in titles:
+        rows = max(len(spreadsheet.worksheet(worksheet_name).get_all_values()) - 1, 0)
+        _, local = load_rows(DEFAULT_CSV)
+        print(f"  ✓ worksheet {worksheet_name!r}: {rows} row(s) "
+              f"against {len(local)} local")
+    else:
+        print(f"  · worksheet {worksheet_name!r} does not exist yet — `push` will "
+              f"create it; `pull` will refuse.")
+    print("\nSetup OK. Nothing was written.")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="Sync the card library with Google Sheets.")
-    ap.add_argument("direction", choices=["push", "pull"], help="push local->sheet or pull sheet->local")
+    ap.add_argument("direction", choices=["push", "pull", "check"],
+                    help="push local->sheet, pull sheet->local, or check the setup")
     ap.add_argument("--worksheet", default="card-library", help="worksheet/tab name")
     ap.add_argument("--dry-run", action="store_true", help="report only, transfer nothing")
     ap.add_argument("--apply", action="store_true",
                     help="pull only: actually overwrite card-library.csv "
                          "(pull is a DRY RUN by default; push still writes unless --dry-run)")
     ap.add_argument("--allow-shrink", action="store_true",
-                    help="pull only: permit replacing the library with <50%% of its rows")
+                    help="permit an overwrite that shrinks the destination by >50%% "
+                         "(applies to BOTH directions)")
     args = ap.parse_args()
+    if args.direction == "check":
+        return check_setup(args.worksheet)
     if args.direction == "push":
-        return push(args.worksheet, args.dry_run)
+        return push(args.worksheet, args.dry_run, allow_shrink=args.allow_shrink)
     return pull(args.worksheet, apply=args.apply and not args.dry_run,
                 allow_shrink=args.allow_shrink)
 

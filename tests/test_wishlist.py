@@ -337,3 +337,106 @@ class TestPowerRangeFlag:
                    "Collector #": "1", "Target": "", "Note": "", "Power": val,
                    "Power Source": "hand"}
             assert not wishlist._rank_scores([row])[0]["bad_power"]
+
+
+class TestIsLandReadsTheFrontFace:
+    """BS2-11: `_is_land` was a whole-type-line substring scan, so a card whose BACK
+    face is a land (`Legendary Creature — God // Land`) took the manabase-value
+    ranking branch — theme fit discarded, tier re-assigned, a creature bought as a
+    phantom "manabase" upgrade in a live --budget run. The front face is what a land
+    drop can play."""
+
+    def test_a_back_face_land_is_not_a_land(self):
+        assert wishlist._is_land({"Type": "Legendary Creature — God // Land"}) is False
+
+    def test_a_front_face_land_is_a_land(self):
+        assert wishlist._is_land({"Type": "Land — Town // Sorcery — Adventure"}) is True
+
+    def test_a_plain_land_is_a_land(self):
+        assert wishlist._is_land({"Type": "Land — Desert"}) is True
+
+
+class TestSpecificHomeRescue:
+    """BS2-39: `specific` was retained only for the single highest-SCORING deck, and
+    generic themes are floored, not zeroed — so three near-generic overlaps could
+    outscore one genuinely specific theme, and the card read `review`/"generic" (or
+    was pointed at the generic deck) while a real specific home existed (5 of 206
+    live rows). The best specific-theme deck is now tracked separately and rescues
+    the confidence at `ok`, never STRONG."""
+
+    # deck g: three generic themes at floor idf, summed score ~3x. deck s: ONE
+    # genuinely specific theme with a smaller summed score. The generic deck wins
+    # on score; the specific deck must still carry the signal.
+    _FPS = [("g", frozenset("G"), {"etb", "tokens", "value"},
+             {"etb": 1.0, "tokens": 1.0, "value": 1.0}),
+            ("s", frozenset("G"), {"blink"}, {"blink": 1.0})]
+    _IDF = {"etb": 0.8, "tokens": 0.8, "value": 0.8, "blink": 1.4}
+    _SPEC = 1.3
+
+    def _model(self, monkeypatch):
+        monkeypatch.setattr(wishlist, "_theme_model", lambda: (self._FPS, self._IDF, self._SPEC))
+        # neutralize the loaders _rank_scores touches around the fit loop
+        monkeypatch.setattr(wishlist, "_deck_colors_map", lambda: {})
+        monkeypatch.setattr(wishlist, "_deck_status_map", lambda: {}, raising=False)
+
+    def _row(self):
+        return {"Card Name": "Splash Portal Test", "Type": "Sorcery",
+                "Card Text": "Exile a creature, then return it.", "Color(s)": "G",
+                "Synergies": "etb;tokens;value;blink", "Set Code": "TST",
+                "Collector #": "1", "Target": "", "Note": "", "Power": "5",
+                "Power Source": "hand"}
+
+    def test_rank_scores_rescues_the_specific_home(self, monkeypatch):
+        self._model(monkeypatch)
+        s = next(x for x in wishlist._rank_scores([self._row()])
+                 if x["name"] == "Splash Portal Test")
+        assert s["conf"] == "ok"                 # was: review
+        assert "blink" in s["sig"]               # the specific theme survives to the sig
+
+    def test_suggest_targets_points_at_the_specific_deck(self, monkeypatch, capsys):
+        self._model(monkeypatch)
+        wishlist.cmd_suggest_targets([self._row()], write=False)
+        out = capsys.readouterr().out
+        line = next(l for l in out.splitlines() if "Splash Portal Test" in l)
+        assert " ok " in line and " s " in line.replace("  ", " ")
+        assert "review" not in line
+
+
+class TestConditionalPowerManaJoin:
+    """Batch B: wishlist rows carry no `Mana Cost` column, so the `{x}` alternative
+    of the conditional-power regex was dead — Genesis Wave, named in the block's own
+    design comment, was unflagged. The cost now joins from card-mana.csv."""
+
+    def test_x_cost_in_the_joined_cost_flags(self):
+        cache = {"test x spell": ("{X}{G}", 1)}
+        assert wishlist.is_conditional_power(
+            {"Card Name": "Test X Spell", "Card Text": "Put X counters."}, _mana=cache)
+
+    def test_plain_cost_does_not_flag(self):
+        cache = {"plain spell": ("{1}{G}", 2)}
+        assert not wishlist.is_conditional_power(
+            {"Card Name": "Plain Spell", "Card Text": "Draw a card."}, _mana=cache)
+
+
+class TestSeedPowerReadsTheFrontFace:
+    """Batch B / G-63: the merged type line made a DFC whose BACK is an
+    Instant/Sorcery fail the permanent-value gate (Decadent Dragon seeded 4.5
+    against a correct 5.5, live in the CSV as Power Source: seed), and a back-face
+    Planeswalker would grant the +2.0."""
+
+    def test_back_face_instant_does_not_suppress_the_permanent_bump(self):
+        front_only = wishlist._seed_power(
+            {"Card Name": "A", "Type": "Creature — Dragon",
+             "Card Text": "Destroy target permanent.", "Rarity": "Rare"})
+        dfc = wishlist._seed_power(
+            {"Card Name": "A // B", "Type": "Creature — Dragon // Instant — Adventure",
+             "Card Text": "Destroy target permanent.", "Rarity": "Rare"})
+        assert dfc == front_only
+
+    def test_back_face_planeswalker_gets_no_bonus(self):
+        plain = wishlist._seed_power(
+            {"Card Name": "A", "Type": "Creature — Human", "Card Text": "", "Rarity": "Rare"})
+        dfc = wishlist._seed_power(
+            {"Card Name": "A // B", "Type": "Creature — Human // Planeswalker — B",
+             "Card Text": "", "Rarity": "Rare"})
+        assert dfc == plain

@@ -1871,6 +1871,33 @@ class TestSyncPaste:
                               (self._d("2"), self._ms(X=4, Y=4, Z=4))])
         assert m["lowconf"] is False
 
+    # --- the truncation guard (broad-scan BS2-01) ----------------------------------
+    # A partial paste is a strict SUBSET of its deck, so the shared-card floor —
+    # measured against the paste — passes trivially and the match is full-confidence.
+    # The first 8 lines of a 60-card deck dry-ran as "0 added / 52 removed" and
+    # --apply would have rewritten the file to the fragment. A paste under 75% of the
+    # stored total must flag `truncated` so cmd_sync refuses the write without --force.
+
+    def test_subset_paste_is_flagged_truncated(self):
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._d("1"), self._ms(A=4, B=4, C=4, D=4, E=4, F=4))])
+        assert m.get("unmatched") is None          # it still MATCHES (the match is right)
+        assert m["truncated"] is True              # ...but the write half must refuse
+        assert m["paste_total"] == 12 and m["deck_total"] == 24
+
+    def test_ordinary_edit_is_not_flagged_truncated(self):
+        # A real edit pastes the whole deck with a few cards changed (here 12 vs 14,
+        # ~0.86 — inside the legitimate trim range, e.g. an oversized draft cut down).
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._d("1"), self._ms(A=4, B=4, C=4, D=2))])
+        assert m["truncated"] is False
+
+    def test_grown_deck_is_not_flagged_truncated(self):
+        # The paste being LARGER than the stored deck is growth, never truncation.
+        m = deck.match_paste(self._ms(A=4, B=4, C=4, D=4),
+                             [(self._d("1"), self._ms(A=4, B=4, C=4))])
+        assert m["truncated"] is False
+
     # --- the tie-break rule, pinned (broad-scan F-08) ------------------------------
     # `match_paste`'s docstring promises the dashboard's stale-check panel applies the
     # same rule, and the JS copy had drifted: it compared drift alone with a strict `<`,
@@ -3092,3 +3119,115 @@ class TestGraveyardTypeGates:
         rows = [r for r in deck.target_counts(cards, cd, mana) if r[0] == "Descend"]
         assert len(rows) == 1, rows
         assert "permanent cards" in rows[0][1]
+
+
+class TestNeedsFmtNormalization:
+    """BS2-08: the needs recommenders (--ramp/--interaction/--needs) handed the raw
+    `--format` string to workers whose only gate is exact membership in POOL_FORMATS,
+    so `--format Standard` (the natural spelling) silently disabled ALL format
+    filtering — non-Standard cards surfaced as top craft picks on exactly the paths
+    G-38 routes a deficit to — and `--any-format` parsed but never reached the
+    workers. `_needs_fmt` is the shared normalization, mirroring suggest_scored's."""
+
+    def _ns(self, **kw):
+        from types import SimpleNamespace
+        return SimpleNamespace(**kw)
+
+    def test_cased_format_is_lowered(self):
+        assert deck._needs_fmt(self._ns(fmt="Standard"), {"format": ""}) == "standard"
+
+    def test_any_format_disables_the_filter(self):
+        assert deck._needs_fmt(self._ns(fmt="Standard", any_format=True),
+                               {"format": "standard"}) == ""
+
+    def test_deck_format_is_the_fallback(self):
+        assert deck._needs_fmt(self._ns(fmt=None), {"format": "standard"}) == "standard"
+
+    def test_an_untracked_format_warns_instead_of_silently_not_filtering(self, capsys):
+        deck._needs_fmt(self._ns(fmt="foo"), {"format": ""})
+        assert "not tracked" in capsys.readouterr().out
+
+
+class TestSyncSameDeckClaim:
+    """BS2-10: blocks are matched independently, so two pasted blocks could both
+    resolve to one stored deck and the write loop wrote the file twice — the second
+    write clobbering the first. First claim wins; later blocks are reported."""
+
+    def test_second_block_matching_the_same_deck_is_skipped(self, tmp_path, monkeypatch, capsys):
+        from types import SimpleNamespace
+        p = tmp_path / "deck.txt"
+        p.write_text("4 Aaa\n4 Bbb\n4 Ccc\n", encoding="utf-8")
+        d = {"id": "1", "name": "T", "path": str(p), "core": True, "variant": None}
+        monkeypatch.setattr(deck, "roster_decks", lambda: [d])
+        monkeypatch.setattr(deck, "_printing_index", lambda: {})
+        src = tmp_path / "paste.txt"
+        src.write_text("Deck\n4 Aaa\n4 Bbb\n4 Ccc\n\nDeck\n4 Aaa\n4 Bbb\n3 Ccc\n",
+                       encoding="utf-8")
+        rc = deck.cmd_sync(SimpleNamespace(source=str(src), apply=False, force=False))
+        out = capsys.readouterr().out
+        assert "ALSO matched" in out and "block 1" in out
+        assert rc == 1
+
+
+class TestMalformedDeckLines:
+    """BS2-14: parse_deck_file discards a line LINE_RE rejects with no record, so
+    INV-04 — documented as "parses with no malformed card lines" — actually failed
+    only on a file with ZERO parseable cards. A quantity-less line or a BOM-prefixed
+    paste was silently deleted from every analysis."""
+
+    def _deck(self, tmp_path, body):
+        p = tmp_path / "deck.txt"
+        p.write_text(body, encoding="utf-8")
+        return str(p)
+
+    def test_a_quantityless_card_line_is_reported(self, tmp_path):
+        p = self._deck(tmp_path, "#: name: T\n4 Shock (M21) 159\nLightning Bolt (DMU) 137\n")
+        hits = deck.malformed_deck_lines(p)
+        assert len(hits) == 1 and "Lightning Bolt" in hits[0][1]
+
+    def test_a_bom_prefixed_line_is_reported(self, tmp_path):
+        p = self._deck(tmp_path, "﻿1 Island\n4 Shock (M21) 159\n")
+        assert len(deck.malformed_deck_lines(p)) == 1
+
+    def test_arena_markers_comments_and_headers_are_tolerated(self, tmp_path):
+        p = self._deck(tmp_path,
+                       "Deck\n#: name: T\n# Creatures\n#~ -A | +B\n4 Shock (M21) 159\n"
+                       "Sideboard\n2 Negate (M21) 69\n")
+        assert deck.malformed_deck_lines(p) == []
+
+    def test_a_trailing_comment_on_a_card_line_is_fine(self, tmp_path):
+        p = self._deck(tmp_path, "4 Shock (M21) 159  # burn\n")
+        assert deck.malformed_deck_lines(p) == []
+
+
+class TestSwapCutSideFrontFace:
+    """BS2-21: the ADD side of a swap was `_ms_key`-matched (BS-05) but the CUT side
+    stayed exact-name, so cutting a full-name-stored DFC by its front face refused
+    with "not in deck" — the spelling `cuts`, `card.py` and G-02's worked example all
+    use — and the flex auto-retire missed cross-spelled `#~` lines."""
+
+    def test_front_name_cut_resolves_a_full_name_line(self):
+        cards = [(1, "Mirror Room // Fractured Realm", "DSK", "50"), (4, "Opt", "M21", "1")]
+        after = deck._cards_after_swap(cards, "Mirror Room", "Negate", ("M21", "69"))
+        assert after is not None
+        assert all(deck._ms_key(n) != "mirror room" for _q, n, _s, _c in after)
+
+    def test_full_name_cut_resolves_a_front_name_line(self):
+        cards = [(1, "Mirror Room", "DSK", "50"), (4, "Opt", "M21", "1")]
+        after = deck._cards_after_swap(
+            cards, "Mirror Room // Fractured Realm", "Negate", ("M21", "69"))
+        assert after is not None
+
+    def test_swap_edit_lines_accepts_a_front_name_cut(self):
+        lines = ["1 Mirror Room // Fractured Realm (DSK) 50", "4 Opt (M21) 1"]
+        out = deck._swap_edit_lines(lines, "Mirror Room", "Negate", ("M21", "69"))
+        assert any(ln.startswith("1 Negate") for ln in out)
+        assert not any("Mirror Room" in ln for ln in out)
+
+    def test_flex_line_naming_the_front_face_is_retired_by_a_full_name_swap(self):
+        lines = ["1 Mirror Room // Fractured Realm (DSK) 50",
+                 "#~ -Mirror Room | +Negate | tempo"]
+        out = deck._swap_edit_lines(
+            lines, "Mirror Room // Fractured Realm", "Negate", ("M21", "69"))
+        assert any("applied" in ln for ln in out)
+        assert not any(ln.strip().startswith("#~ -Mirror Room |") for ln in out)

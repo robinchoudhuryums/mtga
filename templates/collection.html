@@ -5,15 +5,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MTG Arena — Collection Editor</title>
 <style>
+  /* Shared status vocabulary (--ok/--warn/--bad) — see deck.html's block for why.
+     This page carried NO status tokens at all while its two siblings each had a
+     set, which is how one app ended up with three vocabularies (broad-scan S-8).
+     Light mode follows the OS; no in-page toggle, for the origin reason deck.html
+     states. */
   :root {
     --bg: #0f1115; --panel: #191c23; --panel2: #21252e; --line: #2c313c;
     --text: #e7e9ee; --muted: #949bab; --accent: #d9a441; --dirty: #4f9d69;
+    --ok:#9dc7a3; --warn:#e3c98a; --bad:#e39a8a;
+    --header: rgba(15,17,21,.96);
+    --on-solid: #0c130e;          /* ink ON a filled accent/dirty button (flips) */
+    /* The colour PIPS are card-identity swatches: fixed in both themes, so the ink
+       on them is fixed too — unlike --on-solid, which follows its fill. Same for
+       the scrim pair: .rm and .setcode sit over card ART, which is dark either way,
+       so a dark scrim with light ink is right in both themes (using --muted there
+       would have gone invisible the moment light mode made it a dark grey). */
+    --pip-ink: #1a1a1a;
+    --scrim: rgba(10,11,14,.8); --scrim-ink: #c9ccd3;
     --W:#f4e7c3; --U:#a5c8e8; --B:#b7a3c7; --R:#e39a8a; --G:#9dc7a3; --C:#c9ccd3;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f2f3f6; --panel: #ffffff; --panel2: #f4f5f8; --line: #d9dde5;
+      --text: #1b1e25; --muted: #5a6472; --accent: #9a6b12; --dirty: #177a4a;
+      --ok:#1c7a4d; --warn:#8a5d0a; --bad:#b3402a;
+      --header: rgba(242,243,246,.96); --on-solid: #ffffff;
+    }
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text);
     font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-  header { position: sticky; top: 0; z-index: 5; background: rgba(15,17,21,.96);
+  header { position: sticky; top: 0; z-index: 5; background: var(--header);
     backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 14px 20px; }
   .titlebar { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
   h1 { font-size: 19px; margin: 0; letter-spacing: .2px; }
@@ -24,7 +47,7 @@
   input[type=search] { min-width: 240px; flex: 1 1 240px; }
   .pips { display: flex; gap: 6px; }
   .pip { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent;
-    cursor: pointer; font-weight: 700; color: #1a1a1a; display: grid; place-items: center;
+    cursor: pointer; font-weight: 700; color: var(--pip-ink); display: grid; place-items: center;
     font-size: 13px; opacity: .45; transition: opacity .12s, border-color .12s; user-select: none; }
   .pip.on { opacity: 1; border-color: var(--text); }
   /* An OUTLINE, not the border: the border is what marks a pip as active, so reusing it
@@ -37,7 +60,7 @@
   #save { margin-left: auto; background: var(--panel2); color: var(--muted);
     border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px; font-size: 14px;
     font-weight: 700; cursor: not-allowed; }
-  #save.ready { background: var(--dirty); color: #0c130e; border-color: var(--dirty); cursor: pointer; }
+  #save.ready { background: var(--dirty); color: var(--on-solid); border-color: var(--dirty); cursor: pointer; }
   .grid { display: grid; gap: 14px; padding: 20px;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
   .card { position: relative; border-radius: 11px; overflow: hidden; background: var(--panel);
@@ -51,8 +74,8 @@
   .card.noimg .art img { display: none; }
   .fallback .fname { font-weight: 700; font-size: 15px; }
   .fallback .ftype { color: var(--muted); font-size: 12px; }
-  .setcode { position: absolute; bottom: 8px; left: 8px; background: rgba(10,11,14,.8);
-    color: var(--muted); font-size: 10px; letter-spacing: .5px; padding: 2px 6px; border-radius: 5px; }
+  .setcode { position: absolute; bottom: 8px; left: 8px; background: var(--scrim);
+    color: var(--scrim-ink); font-size: 10px; letter-spacing: .5px; padding: 2px 6px; border-radius: 5px; }
   .edit { padding: 8px; display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--line); }
   .qtyrow { display: flex; align-items: center; gap: 6px; }
   .qtyrow label { color: var(--muted); font-size: 12px; }
@@ -72,15 +95,24 @@
   .tool { background: var(--panel2); color: var(--text); border: 1px solid var(--line);
     border-radius: 8px; padding: 8px 12px; font-size: 13px; cursor: pointer; }
   .tool:hover { border-color: var(--accent); }
-  .tool.go { background: var(--accent); color: #1a1a1a; font-weight: 700; }
+  .tool.go { background: var(--accent); color: var(--on-solid); font-weight: 700; }
   .addpanel { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
   .addpanel input { background: var(--panel2); color: var(--text); border: 1px solid var(--line);
     border-radius: 8px; padding: 8px 10px; font-size: 14px; }
   .addpanel .hint { color: var(--muted); font-size: 12px; }
   .rm { position: absolute; top: 8px; left: 8px; z-index: 2; width: 24px; height: 24px;
-    border-radius: 50%; border: 1px solid var(--line); background: rgba(10,11,14,.8);
-    color: var(--muted); cursor: pointer; font-size: 12px; line-height: 1; padding: 0; }
-  .rm:hover { color: #e39a8a; border-color: #e39a8a; }
+    border-radius: 50%; border: 1px solid var(--line); background: var(--scrim);
+    color: var(--scrim-ink); cursor: pointer; font-size: 12px; line-height: 1; padding: 0; }
+  .rm:hover { color: var(--bad); border-color: var(--bad); }
+  /* Phone width (broad-scan S-3). This page survived by luck — auto-fill/minmax
+     collapses to one column — but the fixed 240px search min-width and the 20px
+     grid padding waste a third of a 390px screen. Tightened, not restructured. */
+  @media (max-width: 620px) {
+    header { padding: 12px 14px; }
+    .grid { padding: 14px; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    input[type=search] { min-width: 0; flex: 1 1 100%; }
+    .addpanel input { flex: 1 1 110px; min-width: 0; }
+  }
 </style>
 </head>
 <body>
@@ -118,7 +150,8 @@
       <option value="set">Sort: Set</option>
       <option value="qty">Sort: Quantity</option>
     </select>
-    <button id="addToggle" class="tool" title="Add a new printing to the collection">＋ Add card</button>
+    <button id="addToggle" class="tool" title="Add a new printing to the collection"
+            aria-expanded="false" aria-controls="addPanel">＋ Add card</button>
     <button id="revert" class="tool" title="Undo the last save (restore the most recent backup)">⤺ Revert last save</button>
   </div>
   <div class="addpanel" id="addPanel" hidden>
@@ -130,11 +163,14 @@
     <span class="hint">An exact name auto-fills type/text/color/synergies from Scryfall.</span>
   </div>
 </header>
-<div class="grid" id="grid"></div>
+<main class="grid" id="grid"></main>
 <div class="empty" id="empty" style="display:none">No cards match your filters.</div>
 <footer>Editing card-library.csv · edits Save back to the CSV (validated, with a
   timestamped .bak backup) · images © Wizards of the Coast, via Scryfall</footer>
-<div class="toast" id="toast"></div>
+<!-- role=status/aria-live: the toast is the ONLY report of save/add/remove/revert
+     succeeding or failing; without a live region every failure was visually-only
+     (Batch E / S-4 — the same one-attribute fix deck.html got at I-04). -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script id="data" type="application/json">__DATA__</script>
 <script>
   const CARDS = JSON.parse(document.getElementById('data').textContent);
@@ -217,7 +253,8 @@
       const curQty = dirty.has(c._key) ? dirty.get(c._key).quantity : (c.qty || '');
       const curSyn = dirty.has(c._key) ? dirty.get(c._key).synergies : (c.synergies || '');
       return `<div class="card${noimg}${isDirty}" data-key="${esc(c._key)}">
-        <button class="rm" title="Remove this printing">✕</button>
+        <button class="rm" title="Remove this printing"
+                aria-label="Remove ${esc(c.name)} (${esc(c.set || '?')}) from the collection">✕</button>
         <div class="art">
           <img loading="lazy" src="${esc(c.img)}" alt="${esc(c.name)}"
                onerror="this.closest('.card').classList.add('noimg')">
@@ -331,8 +368,10 @@
 
   // Add card — enrich + append server-side, then reload to pick up the new row.
   const addPanel = document.getElementById('addPanel');
-  document.getElementById('addToggle').addEventListener('click', () => {
+  document.getElementById('addToggle').addEventListener('click', (e) => {
     addPanel.hidden = !addPanel.hidden;
+    // The open/closed state was exposed nowhere but pixels (Batch E / S-10).
+    e.currentTarget.setAttribute('aria-expanded', String(!addPanel.hidden));
     if (!addPanel.hidden) document.getElementById('aName').focus();
   });
   document.getElementById('addBtn').addEventListener('click', async () => {

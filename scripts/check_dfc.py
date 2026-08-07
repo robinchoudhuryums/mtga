@@ -6,7 +6,8 @@ key the full ``Front // Back``. Every ownership JOIN across that boundary must g
 ``lib.owned_qty`` (which falls back to the front face) — the audit A3/A4/F6 class of bug
 is a lookup that BYPASSES it and reads an owned DFC as unowned / a craft target.
 
-Two guards, mirroring check_colors:
+Five guards. The first two mirror check_colors; the rest grew as G-63 kept producing
+bugs one layer further out than the rule then reached.
 
   (1) BEHAVIORAL — lib.owned_qty and its delegating wrappers (wishlist._owned_of,
       pool.owned_of) resolve an owned DFC by its front face when the index is keyed by
@@ -18,6 +19,17 @@ Two guards, mirroring check_colors:
       instead of owned_qty. That is the exact bypass shape A3 hit in wishlist.py. A short,
       justified allowlist exempts the two canonical sites (the index BUILDER and the
       deck-side owned() helper, whose keys are already front names by contract).
+
+  (3) INDEX-ALIAS registry (BEHAVIORAL) — every registered name-keyed loader over
+      pool-shaped data actually resolves a live DFC's front key.
+
+  (4) REGISTRY COMPLETENESS (STATIC) — and every such loader is REGISTERED. (3) can only
+      check the loaders someone listed; each real bug so far was a loader nobody listed.
+      This scan finds them in the AST instead, so the hand-kept list cannot go stale
+      silently. See _pool_index_builders.
+
+  (5) EDITOR PAYLOAD — the serialized ownership map consumed by JS, where no Python scan
+      reaches (BS-08).
 
 Coverage note: a function-misuse bug — passing a FULL pool name to a non-fallback lookup
 like deck.owned() — is a semantically-wrong argument to a normal call, NOT a distinct
@@ -153,8 +165,10 @@ def _static_flags():
 # loader that drops its alias pass fails the build. Entries resolve by getattr at
 # run time — a renamed loader is a hard error, not a silently skipped row (the
 # stale-registry rule every hand-kept list here follows).
-#   (module, attr, index_position)  index_position=None → the return IS the dict;
-#   an int → the dict sits at that tuple position.
+#   (module, attr, index_position[, args_factory])
+#     index_position=None → the return IS the dict; an int → the dict sits at that
+#     tuple position. args_factory is optional: a callable (full, front) -> tuple of
+#     positional args, for a loader that does not take zero arguments.
 _ALIASED_LOADERS = (
     ("deck", "load_keywords", None),
     ("deck", "load_legalities", None),
@@ -163,6 +177,14 @@ _ALIASED_LOADERS = (
     ("deck", "_pool_rotation_index", 0),
     ("deck", "_printing_index", None),
     ("deck", "known_printings", 0),
+    # BS2-40: the last two in-pass aliasing survivors, converted to the second-pass
+    # `lib.alias_front` and registered so the behavioral anchor covers them.
+    ("deck", "load_card_meta", None),
+    ("wishlist", "load_pool_index", None),
+    # BS3-01: found by the registry-completeness scan below, which is the point of it —
+    # `_legality_of` builds the same shape and nothing verified it. It takes the names
+    # it should index, so it needs an args_factory; every other entry is zero-arg.
+    ("deck", "_legality_of", None, lambda full, front: ([full],)),
 )
 
 
@@ -185,11 +207,13 @@ def _index_alias_flags():
         print("check_dfc: no DFC in card-pool.csv — index-alias registry not exercised.")
         return []
     errs = []
-    for mod_name, attr, pos in _ALIASED_LOADERS:
+    for entry in _ALIASED_LOADERS:
+        mod_name, attr, pos = entry[:3]
+        argf = entry[3] if len(entry) > 3 else None
         try:
             mod = importlib.import_module(mod_name)
             fn = getattr(mod, attr)          # AttributeError == stale registry entry
-            out = fn()
+            out = fn(*(argf(full, front) if argf else ()))
             idx = out if pos is None else out[pos]
         except Exception as e:
             errs.append(f"index-alias registry: {mod_name}.{attr} failed to run "
@@ -202,6 +226,144 @@ def _index_alias_flags():
     return errs
 
 
+# (4) REGISTRY COMPLETENESS. Guard (3) verifies every loader the registry NAMES; it is
+# blind to a loader nobody named, and the registry is hand-kept — its own comment claims
+# "a new loader added to the list is covered on arrival", which is true and answers the
+# wrong question. Every G-63 index bug so far was a loader that existed and was never on
+# any list: `load_keywords` (BS-12) and reconcile_crafts' pool map (BS-16) were both
+# written, shipped and consumed before anyone thought to register them. That is the
+# `check_commands` lesson one subsystem over — a capability nothing reaches is invisible,
+# and here it is a loader nothing CHECKS.
+#
+# So: find the builders statically instead of trusting the list. A "pool-shaped name
+# index" is a function that (a) names the pool, (b) reads it with a csv.DictReader, and
+# (c) stores into a dict under a key derived from the `Card Name` column. That last clause
+# is what keeps the scan honest — `suggest_scored` / `suggest_lands` iterate the same rows
+# and build `theme_w` / `deck_curve`, which are not name-keyed and must not be flagged.
+# Measured at introduction: 9 builders found, 0 false positives, 1 unregistered
+# (`deck._legality_of`, now registered — it had a fourth private copy of the alias loop
+# that nothing verified).
+_BUILDER_SCAN_SKIP = {"lib.py", "check_dfc.py"}
+
+# Builders that legitimately stay out of the behavioral registry, each WITH A REASON —
+# a bare allowlist is the stale-assertion shape _ACCESS_ALLOW was burned by above.
+_BUILDER_ALLOW = {}
+
+
+def _seg(lines, node):
+    """Source text of `node`, sliced from PRE-SPLIT lines.
+
+    Not a style preference: ``ast.get_source_segment`` re-splits the whole file on every
+    call, so asking it for each of deck.py's several hundred functions made this scan
+    take 39 seconds — for a gate check_all runs on every invocation. Slicing a list
+    split once per file takes it to well under a second."""
+    end = getattr(node, "end_lineno", None) or node.lineno
+    return "".join(lines[node.lineno - 1:end])
+
+
+def _pool_index_builders():
+    """[(module, function, file, lineno)] — every pool-shaped name-index builder in
+    scripts/, found statically. Shared by the gate and its tests."""
+    found = []
+    for fn in sorted(f for f in os.listdir(SCRIPTS_DIR) if f.endswith(".py")):
+        # A gate's own scratch index is not a consumer surface, and forcing one into the
+        # production registry would assert something false about it. Stated residual: a
+        # check_*.py that builds a REAL consumer index is not covered here.
+        if fn in _BUILDER_SCAN_SKIP or fn.startswith("check_"):
+            continue
+        path = os.path.join(SCRIPTS_DIR, fn)
+        try:
+            src = open(path, encoding="utf-8").read()
+            tree = ast.parse(src)
+        except (OSError, SyntaxError) as e:
+            found.append(("<unparsed>", str(e), fn, 0))
+            continue
+        # Whole-file pre-filter: most scripts never touch the pool at all.
+        if "DictReader" not in src or not any(c in src for c in ("card-pool.csv", "POOL_CSV")):
+            continue
+        lines = src.splitlines(keepends=True)
+        for f in ast.walk(tree):
+            if not isinstance(f, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                continue
+            seg = _seg(lines, f)
+            if "DictReader" not in seg:
+                continue
+            if not any(cue in seg for cue in ("card-pool.csv", "POOL_CSV")):
+                continue
+            keys = _cardname_derived(f, lines)
+            if keys and _stores_keyed_by(f, keys):
+                found.append((fn[:-3], f.name, fn, f.lineno))
+    return found
+
+
+def _cardname_derived(f, lines):
+    """Local names bound (transitively, shallowly) from a `Card Name` column read.
+    `lines` is the enclosing file split with keepends (see _seg)."""
+    tainted = set()
+    assigns = [n for n in ast.walk(f)
+               if isinstance(n, (ast.Assign, ast.AnnAssign)) and n.value is not None]
+    # Precompute per-assignment facts once; the fixpoint below only re-reads `refs`.
+    facts = [(n, "Card Name" in _seg(lines, n.value),
+              {x.id for x in ast.walk(n.value) if isinstance(x, ast.Name)},
+              n.targets if isinstance(n, ast.Assign) else [n.target])
+             for n in assigns]
+    for _ in range(4):                      # fixpoint; 4 hops is far more than any site
+        grew = False
+        for _n, from_col, refs, targets in facts:
+            if not from_col and not (refs & tainted):
+                continue
+            for t in targets:
+                for x in ast.walk(t):
+                    if isinstance(x, ast.Name) and x.id not in tainted:
+                        tainted.add(x.id)
+                        grew = True
+        if not grew:
+            break
+    return tainted
+
+
+def _stores_keyed_by(f, keys):
+    """True iff the function stores into a dict under one of `keys` — either
+    ``d[name] = …`` or ``d.setdefault(name, …)``."""
+    for n in ast.walk(f):
+        subs = []
+        if isinstance(n, ast.Assign):
+            subs = [t for t in n.targets if isinstance(t, ast.Subscript)]
+        elif isinstance(n, ast.AnnAssign) and isinstance(n.target, ast.Subscript):
+            subs = [n.target]
+        for t in subs:
+            if not isinstance(t.value, ast.Name):
+                continue
+            if {x.id for x in ast.walk(t.slice) if isinstance(x, ast.Name)} & keys:
+                return True
+        if (isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute)
+                and n.func.attr == "setdefault" and n.args
+                and isinstance(n.func.value, ast.Name)):
+            if {x.id for x in ast.walk(n.args[0]) if isinstance(x, ast.Name)} & keys:
+                return True
+    return False
+
+
+def _registry_completeness_flags():
+    """Static: every pool-shaped name-index builder must be behaviorally verified."""
+    registered = {(e[0], e[1]) for e in _ALIASED_LOADERS}
+    errs = []
+    for mod, func, fn, lineno in _pool_index_builders():
+        if mod == "<unparsed>":
+            errs.append(f"pool-index builder scan: could not parse {fn} ({func})")
+            continue
+        if (mod, func) in registered or (mod, func) in _BUILDER_ALLOW:
+            continue
+        errs.append(
+            f"unregistered pool-shaped name index in {fn}:{lineno} (function {func!r}) — "
+            f"it keys a dict on the pool's `Card Name`, so a consumer holding a FRONT-face "
+            f"name misses every `Front // Back` row (G-63; that is exactly how BS-12 and "
+            f"BS-16 shipped). Alias it via lib.alias_front and add "
+            f"({mod!r}, {func!r}, None) to _ALIASED_LOADERS so the behavioral anchor "
+            f"covers it — or add it to _BUILDER_ALLOW WITH A REASON.")
+    return errs
+
+
 def _payload_flags():
     """The SERIALIZED index: templates/deck.html consumes the ownership map in JS,
     where no Python scan can reach — which is exactly how BS-08 shipped (a raw
@@ -211,7 +373,12 @@ def _payload_flags():
     the template would not fire this — the pin guards the helper, not every use."""
     tpl = os.path.join(os.path.dirname(SCRIPTS_DIR), "templates", "deck.html")
     if not os.path.exists(tpl):
-        return []
+        # LOUD, like _index_alias_flags' own missing-input case — a template rename
+        # or move made the pin return clean, i.e. the guard for "the G-63 class
+        # beyond Python's reach" vanished with its file (Batch C small leaks).
+        return [f"editor-payload pin: {tpl} not found — the template moved or was "
+                "renamed, and the BS-08 ownedOf pin is not being checked at all. "
+                "Update the path here."]
     src = open(tpl, encoding="utf-8").read()
     errs = []
     if "function ownedOf" not in src:
@@ -239,6 +406,10 @@ def check():
         errs += _index_alias_flags()
     except Exception as e:  # pragma: no cover - defensive
         errs.append(f"DFC index-alias check errored ({type(e).__name__}: {e})")
+    try:
+        errs += _registry_completeness_flags()
+    except Exception as e:  # pragma: no cover - defensive
+        errs.append(f"DFC registry-completeness scan errored ({type(e).__name__}: {e})")
     try:
         errs += _payload_flags()
     except Exception as e:  # pragma: no cover - defensive

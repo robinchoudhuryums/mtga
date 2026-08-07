@@ -6,6 +6,11 @@ Effort: S ≈ <2h, M ≈ ½–2 days, L ≈ 3+ days (one dev + Claude Code).
 State at regeneration: 1,860 cards · 76 deck files · 33 `deck.py` subcommands ·
 767 tests in 16 files · 13 model-sanity gates · `check_all` 14.8s.
 
+> **This file is a 2026-07-31 snapshot and the counts above are stale** (as of 2026-08-07:
+> 2,085 library rows · 95 decks · 34 subcommands · 1,078 tests in 29 files). Individual
+> entries have been marked DONE as they landed, but the whole file wants a `/roadmap`
+> regeneration — read the outcomes and Tier lists, not the header figures.
+
 ## What the last roadmap proposed, and where it went
 
 Stated because a roadmap that never records its own outcomes is a wishlist.
@@ -17,20 +22,30 @@ Stated because a roadmap that never records its own outcomes is a wishlist.
   that can set an owned count DOWN, which is why `/ingest` routes by provenance.
 - **Match / win-rate tracking — the CODE shipped**, `parse_matches.py` plus `--report`
   with the G-57 restraint. **The data did not**: `matches.csv` does not exist. See Tier 1.
-- **Theme the remaining flavor keywords — still open.** Ten in
-  `scripts/keyword_baseline.txt`. Carried to Tier 1 again, unchanged.
-- **Google Sheets round-trip — still unwired.** The script is complete; what is missing is
-  a one-time service-account setup, which is an operator action, not development.
+- **Theme the remaining flavor keywords — DONE 2026-08-07**, and the answer was not "ten".
+  Seven were themed with measured deltas (vivid, job select, opus, increment, infusion,
+  disappear, paradigm); three were decided AGAINST, each for its own reason — `jump` is a
+  Scryfall extraction artifact that reports 13 cards of which 11 are `Jump-start`, `tiered`
+  is a cost shape rather than a resource, `triple` was already triaged out. See K-01.
+- **Google Sheets round-trip — the DEV half is now done** (broad-scan H-7): a
+  `sheets_sync.py check` preflight that names every missing setup part and writes nothing,
+  a shrink guard on `push` to match `pull`'s, and a read that no longer creates worksheets
+  in the operator's spreadsheet. What remains is the one-time service-account setup, which
+  is an operator action, not development.
 
 ## Tier 1 — Short-term (days–weeks)
 
-1. **Run the pre-registered creature-cut re-test. The threshold is MET.** The handoff said
-   "a pre-registered re-test at ~100 swaps is the honest step"; `recommendations.csv` now
-   holds exactly **100 swaps, 96 with a usable ranking**. The split replicates at nearly
-   double the sample: creature cuts **20/48 (42%)**, noncreature **40/48 (83%)** — against
-   45% (n=31) and 90% (n=21) at the last reading. This is no longer a small-sample story,
-   and it is the only claim in the repo that has been tested twice. Decide what it means
-   before adding anything to the ranking. **(M, ~1 day)**
+1. **Run the pre-registered creature-cut re-test — DONE 2026-08-07, and it produced an
+   inversion.** At n=251 (103 creature) the split held: creature **50%**, noncreature
+   **86%**. The mechanism `deck.py feedback` itself asserted — that `fit` sums theme
+   weights unnormalized and creatures carry ~2x the tags — is true as an OBSERVATION
+   (5.31 vs 3.15 tags per pool card) and REFUTED as a diagnosis: normalizing lifts
+   creature agreement 53→68% and collapses noncreature 83→**51%**. The unnormalized sum
+   is load-bearing for the segment that works, and the tool was pointing its reader at a
+   change that would make it worse; that prose is corrected. Full record, including the
+   underpowered second model and the harness defect a re-test must fix first:
+   `.cycle/blocks/2026-08-creature-cut-retest.md`. **Do not derive a third fix from the
+   tag-count asymmetry.**
 2. **Fix `tier --audit-rationale`'s two false negatives.** (a) A change-cue about one card
    suppresses a citation of ANOTHER card in the same window even when the clause says that
    card stays. (b) A figure joined to its label by a copula is invisible — which fired
@@ -42,10 +57,9 @@ Stated because a roadmap that never records its own outcomes is a wishlist.
    has seen none. The data is free and already in `Player.log`, the parser is written and
    tested, and until it runs, every tier letter on the roster is graded against internal
    consistency alone. **(S, <2h, and most of it is playing.)**
-4. **Theme the remaining unindexed keywords** (Vivid, Job select, Opus, Increment,
-   Infusion, Paradigm, Disappear, Tiered, Jump, triple). K-01's rule stands: triage PER
-   KEYWORD, never in bulk — `renew` and `triple` went opposite ways. Each unindexed keyword
-   is a hole every tag-gated predicate inherits. **(S, ~2h)**
+4. **Theme the remaining unindexed keywords — DONE 2026-08-07.** Seven themed, three
+   decided against; see the outcomes section above and K-01. K-01's rule held and earned
+   its keep twice: `jump` and `tiered` would both have been mis-mapped in a bulk pass.
 5. **Give `doubler_restriction` a TYPE scope.** It parses a POWER scope and nothing else,
    so a type-scoped doubler is counted against the whole deck — 27 feeders in deck 20
    against a correct 12. A second pattern feeding the same filter, not a second model.

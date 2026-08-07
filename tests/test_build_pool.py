@@ -30,10 +30,16 @@ def _pool(path, n=100):
                        | {"Card Name": f"Card {i}"})
 
 
-def _stamp(path, days_ago, query):
+def _stamp(path, days_ago, query, tags="current"):
+    """Write a build stamp. `tags` defaults to the tagger's CURRENT fingerprint, which
+    is what a stamp written by this version of build_pool holds — pass None for the
+    pre-BS2-23 two-line shape, which now means "unknown, rebuild once" (BS3-02)."""
+    if tags == "current":
+        tags = build_pool.tagger_fingerprint()
     d = (datetime.date.today() - datetime.timedelta(days=days_ago)).isoformat()
     with open(path, "w", encoding="utf-8") as fh:
-        fh.write(d + "\n" + (query + "\n" if query is not None else ""))
+        fh.write(d + "\n" + (query + "\n" if query is not None else "")
+                 + (tags + "\n" if query is not None and tags is not None else ""))
 
 
 @pytest.fixture
@@ -58,19 +64,38 @@ def _run(env, *extra):
 class TestReadStamp:
     def test_a_missing_stamp_yields_nothing(self, tmp_path, monkeypatch):
         monkeypatch.setattr(build_pool, "POOL_BUILD_STAMP", str(tmp_path / "absent"))
-        assert build_pool.read_stamp() == (None, None)
+        assert build_pool.read_stamp() == (None, None, None)
 
     def test_a_legacy_date_only_stamp_has_no_query(self, tmp_path, monkeypatch):
         p = tmp_path / "s"
         p.write_text("2026-07-01\n")
         monkeypatch.setattr(build_pool, "POOL_BUILD_STAMP", str(p))
-        assert build_pool.read_stamp() == ("2026-07-01", None)
+        assert build_pool.read_stamp() == ("2026-07-01", None, None)
 
     def test_a_two_line_stamp_yields_date_and_query(self, tmp_path, monkeypatch):
+        """A pre-BS2-23 stamp has no tag fingerprint — it must read as UNKNOWN (None),
+        which the freshness check treats as "cannot tell, do not force a rebuild",
+        rather than as a mismatch that rebuilds the 15.9k-card pool on every run."""
         p = tmp_path / "s"
         p.write_text("2026-07-01\ngame:arena\n")
         monkeypatch.setattr(build_pool, "POOL_BUILD_STAMP", str(p))
-        assert build_pool.read_stamp() == ("2026-07-01", "game:arena")
+        assert build_pool.read_stamp() == ("2026-07-01", "game:arena", None)
+
+    def test_a_three_line_stamp_yields_the_tag_fingerprint(self, tmp_path, monkeypatch):
+        """BS2-23: the third line records tag_synergies.py's content hash, so a
+        tag-pattern edit defeats the freshness reuse — K-10 mandates
+        `build_pool.py --all` after one, and the reuse made it a silent no-op."""
+        p = tmp_path / "s"
+        p.write_text("2026-07-01\ngame:arena\nabc123def456\n")
+        monkeypatch.setattr(build_pool, "POOL_BUILD_STAMP", str(p))
+        assert build_pool.read_stamp() == ("2026-07-01", "game:arena", "abc123def456")
+
+    def test_the_fingerprint_is_content_not_mtime(self, monkeypatch):
+        """Stable across calls, and it changes when the tagger's BYTES change. mtime
+        would force a full rebuild after every fresh clone, since git stamps all
+        files at checkout time in arbitrary order (the F-04 content-not-mtime rule)."""
+        a = build_pool.tagger_fingerprint()
+        assert a and a == build_pool.tagger_fingerprint()
 
     def test_age_is_computed_from_the_date(self):
         y = (datetime.date.today() - datetime.timedelta(days=3)).isoformat()
@@ -102,6 +127,32 @@ class TestFreshnessSkip:
         _stamp(env["stamp"], 0, None)
         _run(env)
         assert env["calls"] == ["game:arena"]
+
+    def test_a_stamp_with_no_tag_fingerprint_rebuilds_once(self, env):
+        """BS3-02. A pre-BS2-23 two-line stamp cannot say whether the pool's Synergies
+        match the current tags_for(), and the reuse path returns BEFORE writing a
+        stamp — so treating unknown as "reuse" meant the fingerprint could never be
+        recorded and no tag edit would ever defeat the reuse again. Unknown rebuilds."""
+        _stamp(env["stamp"], 0, "game:arena", tags=None)
+        _run(env)
+        assert env["calls"] == ["game:arena"]
+
+    def test_a_changed_tag_fingerprint_rebuilds(self, env):
+        _stamp(env["stamp"], 0, "game:arena", tags="stale00000000000")
+        _run(env)
+        assert env["calls"] == ["game:arena"]
+
+    def test_the_rebuild_records_the_fingerprint_so_the_next_run_reuses(self, env):
+        """The half that makes it rebuild ONCE rather than every time: after a build
+        the stamp carries the fingerprint, and a second run reuses."""
+        _stamp(env["stamp"], 0, "game:arena", tags=None)
+        # --allow-shrink so the stubbed empty fetch is permitted to land; the point
+        # here is the STAMP it writes, not the rows.
+        assert _run(env, "--allow-shrink") == 0
+        assert build_pool.read_stamp()[2] == build_pool.tagger_fingerprint()
+        env["calls"].clear()
+        assert _run(env) == 0
+        assert env["calls"] == [], "the fingerprint was recorded but not honoured"
 
     def test_refetch_overrides_freshness(self, env):
         _stamp(env["stamp"], 0, "game:arena")
@@ -169,6 +220,6 @@ class TestStampContract:
         if not os.path.exists(deck.POOL_BUILD_STAMP):
             pytest.skip("no pool stamp in this checkout")
         assert deck.pool_staleness_days() is not None
-        date, query = build_pool.read_stamp()
+        date, query, _tags = build_pool.read_stamp()
         assert date, "the date must always be readable — deck reads stamp[:10]"
         assert query is None or isinstance(query, str)

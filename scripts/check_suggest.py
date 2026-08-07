@@ -599,6 +599,17 @@ def _wiring_flags():
         #       one that ISN'T in the deck must be.
         res = deck.suggest_scored(d, limit=0)
         names = [p["name"] for p in res.get("picks", [])]
+        # `ok` FALSY in the synthetic world is itself a wiring failure (BS2-33): the
+        # positive anchors below were guarded on `res.get("ok")`, so a regression that
+        # makes suggest_scored BAIL — a new required pool column, a changed find_deck
+        # contract, an early return — evaporated both assertions and left only an
+        # absence check an empty pick list satisfies. The loudest wiring failure was
+        # the one case the wiring anchors skipped.
+        if not res.get("ok"):
+            errs.append(f"wiring: suggest_scored returned ok={res.get('ok')!r} "
+                        f"(reason={res.get('reason')!r}) in the synthetic world — it "
+                        "bailed before scoring anything, so every positive anchor "
+                        "below is vacuous. Fix the wiring, not the anchors.")
         if "Zeta Offtheme Body" in names:
             errs.append("wiring: suggest_scored surfaced an OFF-THEME card — the theme "
                         "filter is not gating the candidate set.")

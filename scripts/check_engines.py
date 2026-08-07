@@ -18,14 +18,43 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # (label, oracle text, theme, expected-role-subset). role in {"enabler","payoff","death"}.
+#
+# Every fixture is a REAL card's printed text (G-67: "write a pattern's fixture from
+# the CARD'S REAL TEXT, never a paraphrase — that is how you write a pattern for a
+# card that does not exist"). Most of this table used to be author-invented strings —
+# "Sacrifice a creature: Draw a card." where Viscera Seer prints "Sacrifice a
+# creature: Scry 1." — i.e. strings written to match the regexes, the exact
+# circularity check_patterns' docstring names. The measurable cost: the sacrifice
+# payoff side carried a pattern (`whenever … is sacrificed`) matching ZERO pool
+# texts for its whole life, because its only exercise was a string invented for it
+# (broad-scan BS2-34/BS2-13). The card is named beside each text so a wording errata
+# can be re-checked against the source.
 CASES = [
-    ("sac outlet",   "Sacrifice a creature: Draw a card.",                       "sacrifice", "enabler"),
+    # A-Sepulcher Ghoul
+    ("sac outlet",
+     "Sacrifice another creature: Sepulcher Ghoul gets +2/+2 until end of turn.",
+     "sacrifice", "enabler"),
     # "whenever ~ dies" is now its own COMBAT-FED role ('death'), distinct from a
     # sac-outlet-dependent 'payoff' — the split that stops the go-wide false positive.
-    ("death trigger","Whenever a creature you control dies, each opponent loses 1 life.", "sacrifice", "death"),
-    ("sac trigger",  "Whenever you sacrifice a permanent, draw a card.",        "sacrifice", "payoff"),
-    ("counter placer","Put a +1/+1 counter on target creature.",                "counters",  "enabler"),
-    ("counter payoff","Ghalta's power is equal to the number of +1/+1 counters among creatures you control.", "counters", "payoff"),
+    # Elas il-Kor, Sadistic Pilgrim (the dies-trigger line).
+    ("death trigger",
+     "Whenever another creature you control dies, each opponent loses 1 life.",
+     "sacrifice", "death"),
+    # Esoteric Duplicator.
+    ("sac trigger",
+     "Whenever you sacrifice this artifact or another artifact, you may pay {2}. "
+     "If you do, at the beginning of the next end step, create a token that's a copy "
+     "of that artifact.",
+     "sacrifice", "payoff"),
+    # Kick in the Door (first line).
+    ("counter placer",
+     "Put a +1/+1 counter on target creature. That creature gains haste until end of "
+     "turn and can't be blocked by Walls this turn.",
+     "counters",  "enabler"),
+    # Marketback Walker (dies-line: a per-counter payoff).
+    ("counter payoff",
+     "When this creature dies, draw a card for each +1/+1 counter on it.",
+     "counters", "payoff"),
     # ACTIVE-voice put-trigger: fixture is Knight of Wundagore's PRINTED text (G-67 —
     # never a paraphrase). The passive "counter is put" pattern alone let this read as
     # roleless and deck 36's engines view said "counters: no payoff" through three real
@@ -43,25 +72,42 @@ CASES = [
     ("base-power-exceeded payoff",
      "Whenever one or more creatures you control each with power greater than its base power deals combat damage to a player, draw a card.",
      "counters", "payoff"),
-    ("token maker",  "Create a 1/1 white Soldier creature token.",              "tokens",    "enabler"),
-    ("yard filler",  "Mill three cards, then return a creature card to your hand.", "graveyard", "enabler"),
-    ("reanimator",   "Return target creature card from your graveyard to the battlefield.", "graveyard", "payoff"),
+    # Argivian Cavalier (ETB line).
+    ("token maker",
+     "When this creature enters, create a 1/1 white Soldier creature token.",
+     "tokens", "enabler"),
+    # Midnight Tilling.
+    ("yard filler",
+     "Mill four cards, then you may return a permanent card from among them to your hand.",
+     "graveyard", "enabler"),
+    # Life // Death (back face).
+    ("reanimator",
+     "Return target creature card from your graveyard to the battlefield. "
+     "You lose life equal to its mana value.",
+     "graveyard", "payoff"),
     # Flashback (and escape/harmonize/…) put the card in the yard itself → self-enabling:
     # it must read as an ENABLER, not only a payoff, so a flashback-heavy deck isn't
-    # mis-flagged as "payoffs with no enablers".
-    ("self-recursion enabler", "Lightning deals 3 damage to any target. Flashback {4}{R}.", "graveyard", "enabler"),
-    ("lifegain payoff","Whenever you gain life, draw a card.",                   "lifegain",  "payoff"),
-    ("food maker",   "Create a Food token.",                                    "food",      "enabler"),
+    # mis-flagged as "payoffs with no enablers". Devil's Play.
+    ("self-recursion enabler",
+     "Devil's Play deals X damage to any target. Flashback {X}{R}{R}{R}",
+     "graveyard", "enabler"),
+    # Drogskol Reaver (last line).
+    ("lifegain payoff", "Whenever you gain life, draw a card.", "lifegain", "payoff"),
+    # Savor (second sentence).
+    ("food maker", "Target creature gets -2/-2 until end of turn. Create a Food token.",
+     "food", "enabler"),
 ]
 
 # Texts that must NOT be classified as the given (theme, role) — false-positive guards.
 NEG_CASES = [
-    ("edict != our outlet", "Target player sacrifices a creature.", "sacrifice", "enabler"),
+    # Summon: Anima's chapter IV — the opponent sacrifices, not you.
+    ("edict != our outlet", "Each opponent sacrifices a creature.", "sacrifice", "enabler"),
     ("vanilla != engine",   "Flying. Vigilance.",                   "sacrifice", "enabler"),
     ("vanilla != counters", "Flying. Vigilance.",                   "counters",  "payoff"),
     # a death trigger must be 'death', NOT 'payoff' — else it double-counts and re-earns
-    # the sac-outlet dependency the split exists to remove.
-    ("death != sac-payoff", "Whenever a creature you control dies, each opponent loses 1 life.",
+    # the sac-outlet dependency the split exists to remove. Elas il-Kor's dies-line.
+    ("death != sac-payoff",
+     "Whenever another creature you control dies, each opponent loses 1 life.",
      "sacrifice", "payoff"),
 ]
 

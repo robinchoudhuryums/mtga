@@ -152,8 +152,13 @@ def _owned_printings(rows, name):
 
 
 def _decks_using(name):
-    nl = name.strip().lower()
-    front = _front(name)
+    # Join on FRONT faces BOTH sides (the `_ms_key` convention, G-63): the resolved
+    # name may be the library's front-only spelling while the deck file stores the
+    # full `Front // Back` — an exact match against (nl, front) missed those lines,
+    # so `card.py "Cecil, Dark Knight"` printed "in decks: (none)" for a card deck 42
+    # runs, and "(none)" is the field that decides "safe to cut / homeless craft"
+    # (broad-scan BS2-12; five cards across six deck files at the time).
+    front = _front(name).lower()
     hits = []
     if not os.path.isdir(DECKS):
         return hits
@@ -165,7 +170,7 @@ def _decks_using(name):
             for raw in open(path, encoding="utf-8"):
                 line = raw.split("#", 1)[0].strip()
                 m = re.match(r"^\d+\s*[xX]?\s+(.+?)\s*(?:\([^)]+\).*)?$", line)
-                if m and m.group(1).strip().lower() in (nl, front):
+                if m and _front(m.group(1)).lower() == front:
                     tag = (os.path.basename(root) if fn == "deck.txt"
                            else os.path.splitext(fn)[0])
                     hits.append(tag)
@@ -244,7 +249,13 @@ def main():
 
     # LEGALITY — the guardrail, printed prominently and never guessed.
     if legal:
-        std = "standard" in legal.lower()
+        # TOKEN, not substring (Batch G): every other legality read in the repo splits
+        # on ";" into a set first (pool.py, deck.craft_rot_note, wishlist._rank_scores),
+        # and Scryfall's key list includes `standardbrawl` — which CONTAINS "standard".
+        # Safe today only because build_pool.POOL_FORMATS happens to omit it; adding it
+        # would silently mark every Brawl-only card "✓ STANDARD-LEGAL". Same shape as
+        # the `"r" in "colorless"` trap lib.color_matches exists to kill.
+        std = "standard" in {x.strip().lower() for x in legal.split(";") if x.strip()}
         flag = "✓ STANDARD-LEGAL" if std else "✗ NOT Standard-legal"
         print(f"  legality: {flag}   [{legal}]")
     else:

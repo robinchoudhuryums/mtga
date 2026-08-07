@@ -373,10 +373,17 @@ def csv_schema_error(path, header=None):
     if existing is None or existing == header:
         return None
     lost = [c for c in existing if c not in header]
-    return (f"{os.path.basename(path)} is not the card library — its header is "
-            f"{existing}, not the canonical {header}. Writing it with the library "
-            f"header would DROP {lost or 'columns'}. Refusing (audit F-02); rebuild "
-            f"derived files with their own builder (build_pool.py / build_mana.py).")
+    # Direction-NEUTRAL wording. F-02 was "a library writer pointed at a derived
+    # file", and the message said so literally — which read backwards the moment the
+    # MIRROR guard landed (build_pool/build_mana/parse_matches `--out`): it called
+    # card-library.csv "not the card library" and advised rebuilding it with a
+    # derived builder, i.e. the very thing being refused (broad-scan Batch G). State
+    # the mismatch and name the owning tool instead of assuming which side is which.
+    return (f"{os.path.basename(path)} already holds a DIFFERENT schema: its header is "
+            f"{existing}, but this writer emits {header}. Writing it would DROP "
+            f"{lost or 'columns'}. Refusing (audit F-02 and its mirror) — each file is "
+            f"written by the tool that OWNS it: card-library.csv by the ingest/enrich "
+            f"writers, card-pool.csv by build_pool.py, card-mana.csv by build_mana.py.")
 
 
 def write_rows(rows, path=DEFAULT_CSV, *, backup=True):

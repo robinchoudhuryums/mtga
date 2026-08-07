@@ -178,6 +178,40 @@ def parse_deck_file(path):
     return meta, cards
 
 
+# Stray block markers an Arena paste carries ("Deck", "Sideboard", …). Tolerated by
+# `malformed_deck_lines` because 12 roster files hold a leftover `Deck` line and it is
+# harmless — but ONLY these: anything else that fails LINE_RE is a card the deck
+# silently isn't playing.
+_STRAY_MARKERS = {"deck", "sideboard", "commander", "companion", "maybeboard", "about"}
+
+
+def malformed_deck_lines(path):
+    """[(lineno, text)] — non-blank, non-comment lines that are NEITHER a `#:` header,
+    a card line, nor a tolerated Arena block marker. The MISSING channel of INV-04.
+
+    `parse_deck_file` discards a line `LINE_RE` rejects with no record, so INV-04 —
+    documented as "every deck file parses with no malformed card lines" — actually
+    failed only when a file had ZERO parseable cards. `Lightning Bolt (DMU) 137`
+    (quantity omitted, the most plausible hand-edit) or a BOM-prefixed line was
+    silently deleted from the deck: `check` reported the remaining 59 buildable, the
+    curve/tier floor graded a list that is not the file, and every gate stayed green
+    (broad-scan BS2-14). The `(SET) COLLECTOR#` half of this exact function was
+    hardened for G-65; this is the line-syntax half of the same sentence."""
+    out = []
+    with open(path, encoding="utf-8") as fh:
+        for i, raw in enumerate(fh, start=1):
+            s = raw.strip()
+            if not s or s.startswith("#"):
+                continue
+            line = s.split("#", 1)[0].strip()
+            if not line or LINE_RE.match(line):
+                continue
+            if line.lower() in _STRAY_MARKERS:
+                continue
+            out.append((i, line))
+    return out
+
+
 def discover_decks():
     """Return a list of deck records: {id, name, path, core, variant}."""
     decks = []
@@ -312,7 +346,7 @@ def deck_color_sources(cards, meta, carddata):
     return src
 
 
-def pip_depth_warning(cost, sources):
+def pip_depth_warning(cost, sources, total=None):
     """(colour, pips, have, want) when a card's DEEPEST single-colour pip demand is more
     than the deck's sources realistically support — else None.
 
@@ -335,10 +369,19 @@ def pip_depth_warning(cost, sources):
         return None
     have = sources.get(col, 0)
     seen = cards_seen(_PIP_DEPTH_TURN)
-    if hypergeom_at_least(60, have, seen, pips) >= _PIP_DEPTH_TARGET:
+    # Deck SIZE is a parameter, not a constant 60 (broad-scan Batch G). The docstring
+    # says this shares `consistency`'s model, and `cmd_consistency` reads the real
+    # total (`N = total or 60`) while this hardcoded 60 in three places — so for a
+    # 100-card Brawl list, which `cmd_suggest_homes` runs this over for every roster
+    # deck, it badly OVERSTATED P: 14 sources / 3 pips / turn 5 is 50.2% at N=60 but
+    # 18.2% at N=100, i.e. the flag was suppressed exactly where colour depth is
+    # hardest. Latent today (every roster deck is 60), and `legality_report` already
+    # contemplates min_size 100 for BIG_DECK_FORMATS.
+    n = total or 60
+    if hypergeom_at_least(n, have, seen, pips) >= _PIP_DEPTH_TARGET:
         return None
     want = next((s for s in range(have + 1, 41)
-                 if hypergeom_at_least(60, s, seen, pips) >= _PIP_DEPTH_TARGET), None)
+                 if hypergeom_at_least(n, s, seen, pips) >= _PIP_DEPTH_TARGET), None)
     return (col, pips, have, want)
 
 
@@ -1185,7 +1228,17 @@ _ROLE_PATTERNS = {
         # noncreature-answer profile. Anchoring on the anaphor is precise on its own —
         # "destroy/exile the chosen <permanent>" only ever appears in removal text.
         r"(?:destroy|exile) the chosen (?:permanent|creature|card|artifact|enchantment)",
-        r"deals? \d+ damage to (?:target|any target|another target)",
+        # The `(?!(?:player|opponent)\b(?! or planeswalker))` guard mirrors the one the
+        # scaling-damage sibling below documents as load-bearing: "deals N damage to
+        # target OPPONENT/PLAYER" is reach, not an answer, and this fixed-damage twin
+        # shipped without it — 89 pool cards of player-only burn (HYDRA Assault Robot,
+        # Shocking Sharpshooter, Ozai's Cruelty …) classified as spot removal, and 17
+        # roster decks over-reported the interaction axis the tier floor grades on
+        # (deck 10 read 15 against a real 12) — the one measured OVER-count in a
+        # pattern set whose failure mode is otherwise uniformly under (broad-scan
+        # BS2-06). "player or planeswalker" / "opponent or planeswalker" stay IN: that
+        # older templating can hit a planeswalker, which is an answer (42 pool cards).
+        r"deals? \d+ damage to (?:any target|(?:another )?target (?!(?:player|opponent)\b(?! or planeswalker)))",
         r"deals? \d+ damage to up to \w+ target",
         # any "fight" is removal (Novel Nunchaku "fights up to one target", Longstalk
         # Brawl "fight each other") — the old pattern only caught "fights target".
@@ -2044,7 +2097,11 @@ def role_coverage_flags(cards, carddata):
             missed.append("card advantage")
         if missed:
             under_read.append((n, "/".join(missed)))
-        elif not roles and "Creature" not in (cd.get("type") or ""):
+        # `_primary_type` (G-63), not a whole-line scan: a card whose FRONT is a
+        # noncreature spell but whose BACK is a Creature was dropped from the
+        # unclassified list, so the uncertainty channel under-reported on exactly the
+        # DFC class this codebase keeps tripping over (broad-scan Batch G).
+        elif not roles and "Creature" not in _primary_type(cd.get("type") or ""):
             unclassified.append(n)
     return unclassified, under_read, no_data
 
@@ -2548,8 +2605,15 @@ ENGINE_THEMES = {
         # it is NOT sac-outlet-dependent the way a "whenever you sacrifice" payoff is.
         # engine_balance keeps them apart: only sac-triggers "sit dead" without an outlet;
         # death triggers are combat-fed when the deck has a real creature base (F-engines).
+        # The passive-voice sibling `whenever[^.]*is sacrificed` matched 0 of ~15.9k
+        # pool texts — Magic templates sacrifice triggers actively ("whenever you
+        # sacrifice …") — and sat dead for the pattern's whole life because the
+        # completeness gate's walker stopped one container level up (broad-scan
+        # BS2-13, the `(?:owner|their) hand` failure verbatim). Removed rather than
+        # kept-just-in-case: check_patterns now sees this table, and a pattern that
+        # matches nothing FAILS the build, which is the forcing function working.
         "enabler": [r"\bsacrifice (a|an|another|two|three|\d+|x|it|them)\b", r"you may sacrifice"],
-        "payoff": [r"whenever you sacrifice", r"whenever[^.]*is sacrificed"],
+        "payoff": [r"whenever you sacrifice"],
         "death": [r"whenever[^.]*\bdies\b"],
     },
     "graveyard": {   # fill the yard vs use the yard (reanimator / recursion)
@@ -2599,7 +2663,7 @@ def engine_roles(text):
     return out
 
 
-def engine_balance(cards, carddata, central, signature=frozenset()):
+def engine_balance(cards, carddata, central, signature=frozenset(), weights=None):
     """For each engine theme CENTRAL to the deck, tally enabler vs payoff copies and a
     verdict. Only reports themes that are (a) real two-sided engines (in ENGINE_THEMES)
     and (b) central to THIS deck — so an incidental one-off doesn't raise a flag.
@@ -2613,7 +2677,15 @@ def engine_balance(cards, carddata, central, signature=frozenset()):
     Returns {theme: {'enablers': [(name,q)], 'payoffs': [(name,q)], 'en': n, 'pay': n,
     'verdict': str, 'flag': bool}} ordered by the deck's theme centrality."""
     sig = {t.lower() for t in signature}
-    central_engines = [t for t in central if t.lower() in _ENGINE_COMPILED]
+    # `central` is a SET (from `_central_themes`), and iterating it set-ordered made an
+    # unchanged deck print its engines in a different order run to run under hash
+    # randomization — reproduced across five runs of `engines 46` (broad-scan BS2-20,
+    # the exact G-54 shape). Sort by the deck's theme WEIGHT (the centrality order the
+    # docstring already promised) with the name as the tie-break, so the key is a
+    # total order; callers that have no weights get stable alphabetical order.
+    w = weights or {}
+    central_engines = sorted((t for t in central if t.lower() in _ENGINE_COMPILED),
+                             key=lambda t: (-w.get(t, 0), t.lower()))
     result = {}
     creatures = 0
     for theme in central_engines:
@@ -2969,7 +3041,8 @@ def cmd_stats(args):
                 theme_w[t] = theme_w.get(t, 0) + q
     signature = _signature_themes(meta, cards, cardmeta)
     flagged = [(t, info) for t, info in
-               engine_balance(cards, carddata, _central_themes(theme_w), signature).items()
+               engine_balance(cards, carddata, _central_themes(theme_w), signature,
+                              weights=theme_w).items()
                if info["flag"]]
     if flagged:
         print(f"\n⚠ Engine balance (detail: `deck.py engines {d['id']}`):")
@@ -3081,8 +3154,14 @@ def load_card_meta():
                 cols = card_colors(r.get("Color(s)"))
                 tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
                 meta[nl] = {"colors": cols, "synergies": tags}
-                meta.setdefault(nl.split(" // ")[0], meta[nl])
-    return meta
+    # SECOND pass, per lib.alias_front's contract (BS2-40): this was the last loader
+    # still aliasing IN-pass, and its `nl in meta: continue` made the order-dependence
+    # into row LOSS — a real card named like an earlier DFC's front hit the alias and
+    # was dropped entirely, inheriting the DFC's colors and tags in suggest /
+    # suggest-homes / fingerprints / cut context (the documented "Life // Death"
+    # shadowing trap, latent at 0 collisions today). Registered in check_dfc's
+    # _ALIASED_LOADERS so the gate can see it.
+    return alias_front(meta)
 
 
 # High-confidence, high-precision mechanical SUB-themes (the tag-synergy payoffs added
@@ -3276,6 +3355,14 @@ def interaction_profile(cards, carddata):
     for nl, q in qty_by_name.items():
         cd = carddata.get(nl)
         if not cd:
+            continue
+        # Same nonbasic-LAND filter the canonical `role_tally` applies — this profile
+        # skipped it, so 13 decks printed two contradicting interaction figures eleven
+        # lines apart in one `stats` run (29a: total 13 vs profile 14, the extra being
+        # the land Abraded Bluffs), and the all-sorcery / no-noncreature-answer flags
+        # fired off the inflated total (broad-scan BS2-18; K-12's one-canonical-counter
+        # contract).
+        if "Land" in _primary_type(cd.get("type") or ""):
             continue
         text = cd.get("text") or ""
         roles = classify_roles(text)
@@ -4150,9 +4237,43 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
     return picks[:limit] if limit and limit > 0 else picks
 
 
+def _needs_fmt(args, needs):
+    """The format filter for the needs recommenders (--ramp/--interaction/--needs) —
+    the SAME normalization `suggest_scored`/`suggest_lands` apply, honouring
+    --any-format, and never silent when the filter cannot bite. These three wrappers
+    used to hand `args.fmt` through raw: `--format Standard` (the natural spelling)
+    failed the exact-membership `fmt in POOL_FORMATS` test in the workers, so ALL
+    format filtering was dropped with no message — non-Standard cards surfaced as top
+    craft picks on exactly the paths G-38 routes a deficit to, the G-37 incident
+    relived — and `--any-format` parsed but never reached the workers at all
+    (broad-scan BS2-08; the G-45 "diff the siblings' filters" shape, third time on
+    this family after G-58 and BS-01)."""
+    if getattr(args, "any_format", False):
+        return ""
+    fmt = (getattr(args, "fmt", None) or needs["format"] or "").strip().lower()
+    if not fmt:
+        return fmt
+    if fmt not in POOL_FORMATS:
+        print(f"Format: '{fmt}' not tracked — not filtering. "
+              f"(known: {', '.join(sorted(POOL_FORMATS))})")
+    elif "Legalities" not in (_header_of_pool() or []):
+        print(f"Format: '{fmt}' filter requested but card-pool.csv has no legality "
+              "data — rebuild with build_pool.py. Showing all.")
+    return fmt
+
+
+def _header_of_pool():
+    """card-pool.csv's header row, or None — one cheap read for the warning above."""
+    try:
+        with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+            return next(csv.reader(fh), None)
+    except OSError:
+        return None
+
+
 def cmd_suggest_ramp(args, d):
     needs = deck_needs(d)
-    fmt = getattr(args, "fmt", None) or needs["format"]
+    fmt = _needs_fmt(args, needs)
     picks = suggest_mana(d, needs, unowned=args.unowned, owned=getattr(args, "owned", False),
                          limit=args.limit, fmt=fmt)
     accel = needs["accel"]
@@ -4182,7 +4303,7 @@ def cmd_suggest_ramp(args, d):
 
 def cmd_suggest_interaction(args, d):
     needs = deck_needs(d)
-    fmt = getattr(args, "fmt", None) or needs["format"]
+    fmt = _needs_fmt(args, needs)
     picks = suggest_interaction(d, needs, unowned=args.unowned, owned=getattr(args, "owned", False),
                                 limit=args.limit, fmt=fmt)
     it, tgt = needs["interaction"], needs["int_target"]
@@ -4216,7 +4337,7 @@ def cmd_suggest_needs(args, d):
     """Unified structural-needs view: fixing (lands + dorks), acceleration (dorks), interaction —
     the one-stop 'what does my deck LACK' report, composing the three needs-aware recommenders."""
     needs = deck_needs(d)
-    fmt = getattr(args, "fmt", None) or needs["format"]
+    fmt = _needs_fmt(args, needs)
     print(f"Deck {d['id']}: {d['name'] or d['path']} — STRUCTURAL NEEDS\n")
     dc = needs["colors"]
     scarce = sorted(needs["deficit"].items(), key=lambda kv: -kv[1])
@@ -4238,7 +4359,11 @@ def cmd_suggest_needs(args, d):
         for p in rows[:n]:
             print("  " + fmt_row(p))
 
-    lands = suggest_lands(d, owned=True, limit=4, fmt=fmt)["picks"]
+    # any_format must be FORWARDED here, not folded into fmt="": suggest_lands treats
+    # a blank fmt as "fall back to the deck's own #: format:", which would re-enable
+    # the filter --any-format just disabled.
+    lands = suggest_lands(d, owned=True, limit=4, fmt=fmt,
+                          any_format=getattr(args, "any_format", False))["picks"]
     _top("Fixing · owned lands", lands,
          lambda p: f"×{p['owned']} {p['name'][:34]:34} {p['produces']:4} score {p['score']:.1f}")
     dorks = suggest_mana(d, needs, owned=True, limit=4, fmt=fmt)
@@ -4641,7 +4766,16 @@ def cmd_consistency(args):
 
     sources, nlands, total = _deck_source_counts(cards, by_key, by_name, carddata)
     on_play = not getattr(args, "on_draw", False)
-    target = getattr(args, "target", None) or 0.90
+    # `or 0.90` made `--target 0` silently mean 0.90, and nothing range-checked the
+    # value: `--target 90` (the obvious mis-read of "as a fraction") made
+    # min_sources_for return N for every card and printed an unreachable source count
+    # for the whole deck (broad-scan Batch G).
+    target = getattr(args, "target", None)
+    target = 0.90 if target is None else float(target)
+    if not (0.0 < target < 1.0):
+        eprint(f"--target must be a fraction strictly between 0 and 1 (got {target}); "
+               f"e.g. 0.90 for 'castable on curve 90% of the time'.")
+        return 2
     N = total or 60
     coin = "on the play" if on_play else "on the draw"
 
@@ -5003,10 +5137,17 @@ def _cards_after_swap(cards, cut, add, add_printing):
     full `Front // Back` name while the deck may store the front-face spelling: an
     exact-name match missed that line and split the card's count across two
     spellings, which `legality_report`'s copy counter then couldn't sum
-    (broad-scan BS-05). The existing line's own spelling is kept."""
+    (broad-scan BS-05). The existing line's own spelling is kept.
+
+    The CUT side matches on `_ms_key` too (broad-scan BS2-21): it was exact-name while
+    the add side was front-face aware, so `swap 51 --cut "Mirror Room"` refused with
+    "'Mirror Room' is not in deck 51" for a card the deck stores as
+    `Mirror Room // Fractured Realm` — the spelling `cuts`, `card.py` and G-02's own
+    worked example all use. G-63: key every name JOIN on `_ms_key`."""
     out, removed = [], False
+    cut_key = _ms_key(cut)
     for (q, n, s, c) in cards:
-        if not removed and n.lower() == cut.strip().lower():
+        if not removed and _ms_key(n) == cut_key:
             if q > 1:
                 out.append((q - 1, n, s, c))
             removed = True
@@ -5097,8 +5238,13 @@ def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
     drop the flex line matching `drop_flex` (an entry dict). Raises ValueError if
     `cut` isn't a card line."""
     out = list(lines)
+    # `_ms_key` both sides (BS2-21): the cut may arrive as either face-spelling of a
+    # line stored the other way; exact-name matching refused a front-named cut of a
+    # full-name-stored card while `_cards_after_swap` (fixed for the same reason)
+    # accepted it — the two halves of one swap disagreeing about whether the card
+    # exists.
     ci = next((i for i, ln in enumerate(out)
-               if (_card_line_name(ln) or "").lower() == cut.strip().lower()), None)
+               if _ms_key(_card_line_name(ln) or "") == _ms_key(cut)), None)
     if ci is None:
         raise ValueError(f"{cut!r} is not a card line in this deck.")
     m = LINE_RE.match(out[ci].split("#", 1)[0].strip())
@@ -5153,14 +5299,17 @@ def _swap_edit_lines(lines, cut, add, add_printing, drop_flex=None):
     # no longer in the deck). Replace the first such line with an `applied` note
     # and drop the rest. Only touches `#~` comment lines, never card lines — so it
     # can't affect the copy count or INV-04. (Past sessions hand-cleaned these.)
-    add_l, cut_l = add.strip().lower(), cut.strip().lower()
-    maindeck = {(_card_line_name(ln) or "").lower() for ln in out if _card_line_name(ln)}
-    cut_gone = cut_l not in maindeck
+    # `_ms_key` throughout (BS2-21): a `#~` flex line is a human note, so its spelling
+    # is whichever face the author typed — raw `.lower()` comparisons meant a swap of
+    # a full-name DFC never retired a flex line naming its front face.
+    add_k, cut_k = _ms_key(add), _ms_key(cut)
+    maindeck = {_ms_key(_card_line_name(ln) or "") for ln in out if _card_line_name(ln)}
+    cut_gone = cut_k not in maindeck
     cleaned, noted = [], False
     for ln in out:
         e = _parse_flex_line(ln.strip())
         if e and e["out"] and e["in"] and (
-                e["in"].lower() == add_l or (e["out"].lower() == cut_l and cut_gone)):
+                _ms_key(e["in"]) == add_k or (_ms_key(e["out"]) == cut_k and cut_gone)):
             if not noted:
                 indent = ln[:len(ln) - len(ln.lstrip())]
                 cleaned.append(f"{indent}#~ note: applied — {add.strip()} in for {cut.strip()}.")
@@ -5302,7 +5451,12 @@ def append_recommendation(row, path=None):
         w.writeheader()
         for r in rows:
             w.writerow({c: r.get(c, "") for c in RECS_HEADER})
-    atomic_write(path, _w, backup=False)
+    # backup=True (Batch G): this is a full-file REWRITE projected onto RECS_HEADER,
+    # so any column added to recommendations.csv — by hand, or by a future field — is
+    # dropped for all 250+ historical rows on the next `swap --apply`, with no .bak to
+    # recover from. CLAUDE.md scopes backup=False to "a scratch temp the caller
+    # promotes itself"; the ledger is a Data subsystem (C-02), not a scratch file.
+    atomic_write(path, _w)
     return len(rows)
 
 
@@ -5348,10 +5502,14 @@ def recommendation_segments(rows, is_creature):
     `unknown`. Exists because ONE pooled agreement rate averages two regimes that
     differ by a factor of two, and a single number over a healthy and a broken
     channel reads as healthy — the same saturation failure as the `Decks` column at
-    99% and the `review` verdict at 22-of-63. `cuts` scores a card by summing theme
-    weights over its tags WITHOUT normalizing for tag count, and creatures carry far
-    more tags than noncreature spells (tribes + keywords + ability tags), so they are
-    systematically protected from the cut list.
+    99% and the `review` verdict at 22-of-63.
+
+    Creatures DO carry more tags than noncreature spells (pool means 5.31 vs 3.15,
+    tribes + keywords + ability tags) and `fit` is an unnormalized SUM over them — but
+    that is an observation, not the diagnosis this docstring used to state. Normalizing
+    was pre-registered and tested at 2026-08: it lifts creature agreement and collapses
+    noncreature agreement, so the sum is load-bearing for the segment that works. See
+    `.cycle/blocks/2026-08-creature-cut-retest.md`.
 
     `is_creature` is INJECTED (name -> True / False / None) to keep this pure and to
     let a test supply a fake classifier. **A None is its own bucket, never folded into
@@ -5485,11 +5643,22 @@ def _print_recommendation_segments(rows):
               f"excluded from both, not folded into either.)")
     lo = min(shown.items(), key=lambda kv: kv[1][1] / kv[1][0])
     if lo[1][1] / lo[1][0] < 0.55:
-        print(f"  ⚠ {_SEGMENT_LABEL[lo[0]]} sit near a coin flip — `cuts` scores a card "
-              f"by SUMMING theme weights over its tags with no normalization for tag "
-              f"count, and creatures carry roughly twice as many tags as noncreature "
-              f"spells, so they are systematically protected. Treat the cut ranking as "
-              f"a shortlist there, not a signal; grade from the printed oracle text.")
+        # This used to assert a CAUSE — "cuts sums theme weights with no normalization
+        # for tag count, so creatures are systematically protected" — and the cause was
+        # tested and refuted (BS3-04, pre-registered, .cycle/blocks/
+        # 2026-08-creature-cut-retest.md). Normalizing `fit` by tag count does raise
+        # creature agreement (53% → 68%), and it COLLAPSES noncreature agreement
+        # (83% → 51%): the unnormalized sum is carrying real signal for the segment that
+        # works. So the asymmetry is real (creatures average 5.3 tags to a noncreature
+        # spell's 3.2, measured over the pool) but it is not a defect with a known fix,
+        # and a warning that names a wrong cause is worse than one that names none —
+        # it sends the next reader to fix something that would make the tool worse.
+        # State what is measured, and stop there.
+        print(f"  ⚠ {_SEGMENT_LABEL[lo[0]]} sit near a coin flip. A theme-fit model "
+              f"ranks bodies poorly and no fix has survived testing — body quality "
+              f"(2026-07) and tag-count normalization (2026-08) were both measured and "
+              f"both rejected. Treat the cut ranking as a shortlist there, not a "
+              f"signal; grade from the printed oracle text.")
         # Disclose a deck dominating the weak segment. One deck's rate wearing the
         # segment's name is the same "a pooled number hides a split" failure the
         # segmentation itself exists for, one level down (see segment_concentration).
@@ -5598,7 +5767,10 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
     if after is None:
         eprint(f"{cut!r} is not in deck {d['id']}. Nothing swapped.")
         return 1
-    if cut.strip().lower() in _protected(d.get("meta") or {}):
+    # `_ms_key` both sides (BS2-21): the header may name either face-spelling of the
+    # card being cut, and a raw `.lower()` comparison let a protected DFC be cut
+    # without the ⚠ when the spellings differed.
+    if _ms_key(cut) in {_ms_key(p) for p in _protected(d.get("meta") or {})}:
         eprint(f"⚠ {cut!r} is marked protected (#: protect:) in deck {d['id']} — a "
                "signature/spice card. Proceeding, but reconsider; remove it from the "
                "header if this cut is intentional.")
@@ -5702,8 +5874,13 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
                 bits.append(f"suggest surfaced +{add}: {rec['Add Surfaced']}")
             print(f"  · recorded to {os.path.basename(RECS_CSV)} ({total} swap(s)): "
                   + "; ".join(bits) + ".  Read it: deck.py feedback")
-        except OSError as e:
-            eprint(f"  · could not record the outcome ({e}) — the swap itself is saved.")
+        except Exception as e:
+            # BROADER than OSError (Batch G): a csv.Error / UnicodeDecodeError from a
+            # corrupted ledger propagated after the deck file was already written, so
+            # the user saw a traceback and reasonably concluded the swap had failed —
+            # against G-56's "recording never blocks a swap".
+            eprint(f"  · could not record the outcome ({type(e).__name__}: {e}) — "
+                   f"the swap itself is saved.")
     return 0
 
 
@@ -6277,7 +6454,13 @@ def cmd_cuts(args):
     # Surface the actual oracle text so a cut is graded from what the card DOES,
     # never from the label above (the role map is a shortlist, not a verdict).
     import textwrap
-    text_n = args.limit if getattr(args, "limit", 0) and args.limit > 0 else min(12, len(rows))
+    # `--limit 0` documents itself as "0 = all", and the TABLE honours it (limit =
+    # len(rows) above) — while this line silently capped the oracle block at 12 and
+    # then announced "the top 12", so the one flag you reach for to see EVERYTHING
+    # left 23 of the printed rows with no text, presented as if 12 were what you
+    # asked for. G-09/G-52 make printing the evidence the load-bearing property of
+    # `cuts` (broad-scan Batch G). Same expression as the table's, deliberately.
+    text_n = args.limit if getattr(args, "limit", 0) and args.limit > 0 else limit
     print(f"\n── Oracle text of the top {min(text_n, len(rows))} cut candidates "
           f"(grade from THIS, not the label) ──")
     for (keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq, upside,
@@ -6317,6 +6500,18 @@ def cmd_verify(args):
         eprint(f"Could not read {args.source!r}: {e}")
         return 1
     from import_arena import parse as parse_arena
+    # A multi-deck paste merges into ONE multiset here: `parse_arena` treats a bare
+    # `Deck` marker as a section header, not a separator, so pasting a full multi-deck
+    # export at `verify <id>` reports the rest of the collection as `+N` additions.
+    # `sync` splits blocks (split_paste); `verify` never did, and it already warns
+    # about a Sideboard section, which is why the omission read as an oversight rather
+    # than a decision (broad-scan Batch G). Report-only, so this is a warning, not a
+    # refusal — the same shape as the sideboard note below it.
+    if len(split_paste(text)) > 1:
+        eprint(f"WARN:  the paste contains {len(split_paste(text))} `Deck` blocks — "
+               f"`verify` compares ONE deck and merges them all into a single list, so "
+               f"the extra blocks will read as additions. Paste deck {d['id']} alone, "
+               f"or use `deck.py sync` for a multi-deck paste.")
     entries, warnings = parse_arena(text)
     for w in warnings:
         eprint(f"WARN:  {w}")
@@ -6483,7 +6678,8 @@ def match_paste(pasted, decks, fmt_hint=None):
         cls = _deck_format_class(d)
         mm = 1 if (fmt_hint and cls and cls != fmt_hint) else 0
         ranked.append({"deck": d, "drift": added + removed, "shared": shared,
-                       "added": added, "removed": removed, "diffs": diffs, "_mm": mm})
+                       "added": added, "removed": removed, "diffs": diffs, "_mm": mm,
+                       "_ms": ms})
     if not ranked:
         return {"unmatched": True, "uniq": uniq}
     ranked.sort(key=lambda r: (r["_mm"], r["drift"], -r["shared"], r["deck"]["id"]))
@@ -6496,6 +6692,21 @@ def match_paste(pasted, decks, fmt_hint=None):
     best["runner_up"] = runner["deck"] if (runner and best["lowconf"]) else None
     best["sync"] = best["drift"] == 0
     best["uniq"] = uniq
+    # TRUNCATION guard (broad-scan BS2-01). The shared-card floor above is measured
+    # against the PASTE, so a partial paste — a strict subset of its deck — passes it
+    # trivially, matches with full confidence, and `--apply` would rewrite the stored
+    # 60 down to the fragment (reproduced: the first 8 lines of deck 52 dry-ran as
+    # "0 added / 52 removed", not low-confidence). An Arena export is always the WHOLE
+    # deck, and the largest legitimate shrink a sync performs is trimming an oversized
+    # draft (64→60 ≈ 0.94 of the stored total), so a paste under 75% of the stored
+    # total is a fragment, not an edit. Flag, don't unmatch: the match itself is
+    # usually RIGHT — it is the write that must not happen (cmd_sync skips it unless
+    # --force, the same handling as a low-confidence sibling match).
+    best["paste_total"] = sum(q for _disp, q in pasted.values())
+    best["deck_total"] = sum(q for _disp, q in best["_ms"].values())
+    best["truncated"] = best["paste_total"] < best["deck_total"] * 0.75
+    for r in ranked:
+        del r["_ms"]
     return best
 
 
@@ -6571,6 +6782,7 @@ def cmd_sync(args):
     decks = [(d, _multiset(parse_deck_file(d["path"])[1])) for d in roster_decks()]
     printings = _printing_index()
     results, rc, unmatched = [], 0, 0
+    claimed = {}                       # deck id → block number that matched it first
     print(f"Sync — {len(blocks)} pasted deck block(s) vs {len(decks)} stored decks\n")
     for i, block in enumerate(blocks, 1):
         # Maindeck only: stored decks carry no sideboard, so board cards must not
@@ -6596,12 +6808,32 @@ def cmd_sync(args):
             continue
         d = m["deck"]
         label = f"#{d['id']} {d['name'] or d['id']}"
+        # ONE stored deck per paste (broad-scan BS2-10). Blocks are matched
+        # independently, so two blocks can both resolve to the same deck — pasting a
+        # 52/52a family where one variant is retired makes both blocks legitimately
+        # match the survivor — and the write loop then wrote the file TWICE, the
+        # second write clobbering the first with only an intermediate .bak between
+        # them. The low-confidence rule compares a block against runner-up DECKS,
+        # never blocks against each other, so it cannot see this. First claim wins;
+        # later blocks are reported and skipped (re-paste separately to choose).
+        if d["id"] in claimed:
+            print(f"  ✗ block {i}: ALSO matched {label}, already claimed by block "
+                  f"{claimed[d['id']]} — skipped. If this block is the real list, "
+                  "re-paste it alone; two blocks matching one deck usually means a "
+                  "variant is retired or renamed.")
+            unmatched += 1
+            rc = 1
+            continue
+        claimed[d["id"]] = i
         if m["sync"]:
             print(f"  ✓ {label} — in sync")
             continue
         rc = 1
         conf = (f"   ⚠ low confidence — #{m['runner_up']['id']} is nearly as close"
                 if m.get("runner_up") else "")
+        if m.get("truncated"):
+            conf += (f"   ⚠ TRUNCATED? paste holds {m['paste_total']} cards vs the "
+                     f"stored {m['deck_total']} — looks like a partial paste, not an edit")
         print(f"  ⟳ {label} — drifted: {m['added']} added / {m['removed']} removed{conf}")
         for sign, qty, nm in m["diffs"]:
             print(f"        {sign}{qty}  {nm}")
@@ -6619,6 +6851,13 @@ def cmd_sync(args):
         if m.get("lowconf") and not getattr(args, "force", False):
             eprint(f"  ✗ #{d['id']}: skipped — low-confidence match (#{m['runner_up']['id']} "
                    "is nearly as close). Re-paste that deck alone, or pass --force.")
+            failures += 1
+            continue
+        if m.get("truncated") and not getattr(args, "force", False):
+            eprint(f"  ✗ #{d['id']}: skipped — the paste holds {m['paste_total']} cards "
+                   f"against the stored {m['deck_total']}, which looks like a TRUNCATED "
+                   "paste, not a deck edit; writing it would discard the rest of the "
+                   "list. Re-paste the full export, or pass --force for a deliberate cut.")
             failures += 1
             continue
         with open(d["path"], encoding="utf-8") as fh:
@@ -7240,7 +7479,13 @@ def cmd_similar(args):
               "deck (nothing specific to duplicate). Drop --specific-only for a value-overlap view.")
         return 0
     carddata = load_card_data()
-    anames = {n for _q, n, _s, _c in cards if n.lower() not in BASICS
+    # Keyed on `_ms_key` (G-63), displayed under the deck's own spelling: this set
+    # feeds the "▸ Most shared CARDS" figure G-47 tells the reader to trust when it
+    # disagrees with the cosine, and raw display names meant a card the two decks
+    # spell differently (front vs full) never counted as shared. Intersecting KEYS
+    # while printing the mapped display name keeps the count right without turning
+    # the printed list into lowercased keys.
+    anames = {_ms_key(n): n for _q, n, _s, _c in cards if n.lower() not in BASICS
               and "Land" not in _primary_type((carddata.get(n.lower()) or {}).get("type") or "")}
     rows = []
     # Roster only (BS-14): distinctness against a retired/example list is noise —
@@ -7263,11 +7508,11 @@ def cmd_similar(args):
         # card names — four of them lands. Without this column the score reads as "these
         # are the same deck" when it often means "these are both Orzhov value decks".
         # Lands are excluded: a shared manabase is not a shared identity.
-        bnames = {n for _q, n, _s, _c in c2 if n.lower() not in BASICS
+        bnames = {_ms_key(n) for _q, n, _s, _c in c2 if n.lower() not in BASICS
                   and "Land" not in _primary_type((carddata.get(n.lower()) or {}).get("type") or "")}
-        both = anames & bnames
+        both = set(anames) & bnames
         rows.append((sim, colj, dd["id"], dd.get("name") or dd["id"], shared, spec,
-                     len(both), sorted(both)))
+                     len(both), sorted(anames[k] for k in both)))
     # Theme cosine stays the PRIMARY order — it answers "does this duplicate an
     # identity", which is the question. But it is not the same question as "which deck do
     # I share the most cards with", and the two can rank in opposite orders: deck 52a
@@ -7637,7 +7882,7 @@ def cmd_screen(args):
     central = _central_themes(theme_w)
     d_int, d_ca = deck_role_counts(cards, carddata)
     sig = _strong_signature_themes(dmeta, cards, cardmeta)
-    in_deck = {n.lower() for q, n, s, c in cards}
+    in_deck = {_ms_key(n) for q, n, s, c in cards}   # G-63: front-face join
     declared = set(_declared_colors(dmeta) or _deck_castable_colors(dmeta, cards, mana))
 
     raw = list(args.names or [])
@@ -7908,7 +8153,8 @@ def cmd_suggest_homes(args):
         # load_mana values are (cost, mana_value) tuples, not dicts.
         _ce = mana.get(card.lower()) or mana.get(card.split(" // ")[0].lower())
         pipwarn = pip_depth_warning(_ce[0] if _ce else "",
-                                    deck_color_sources(cards, cardmeta, carddata))
+                                    deck_color_sources(cards, cardmeta, carddata),
+                                    total=sum(q for q, *_ in cards))
         # Skip a deck whose format the card isn't legal in (see card_legals above).
         if not any_format and card_legals:
             dfmt = (dmeta.get("format") or "").strip().lower()
@@ -8042,17 +8288,28 @@ def deck_quality_vector(d):
     mana, carddata, cardmeta = load_mana(), load_card_data(), load_card_meta()
     _, _, qty = load_collection()
     missing = short = 0
+    # Ownership per aggregated NAME, not per line (BS2-22): a card split across two
+    # lines (two printings) must compare its TOTAL need against total owned — the
+    # exact bug cmd_list records as fixed and cmd_check aggregates against; this
+    # sibling was missed, so `buildable` here (feeding preflight's verdict and
+    # `quality --vs`'s "became UNbuildable" flag) could disagree with `check`.
+    need = {}
+    for q, n, s, c in cards:
+        if n.lower() in BASICS:
+            continue
+        need[n] = need.get(n, 0) + q
+    for n, req in need.items():
+        have, inlib = owned(qty, n)
+        if not inlib:
+            missing += 1
+        elif have < req:
+            short += 1
     theme_w, mvs, early = {}, [], 0
     creatures = reach = 0
     for q, n, s, c in cards:
         nl = n.lower()
         if nl in BASICS:
             continue
-        have, inlib = owned(qty, n)
-        if not inlib:
-            missing += 1
-        elif have < q:
-            short += 1
         cd = carddata.get(nl)
         tline = (cd.get("type") if cd else "") or ""
         m = cardmeta.get(nl)
@@ -8142,6 +8399,17 @@ def cmd_quality(args):
         return 1
     vec = deck_quality_vector(d)
     if getattr(args, "at", None):
+        # `--at` returns below without ever reading --json/--vs/--add/--strict, so a
+        # caller asking for JSON got human prose and a JSONDecodeError (broad-scan
+        # Batch G). Composing them is feature work; dropping them SILENTLY is the bug.
+        ignored = [f for f, v in (("--json", getattr(args, "json", False)),
+                                  ("--vs", getattr(args, "vs", None)),
+                                  ("--add", getattr(args, "add", None)),
+                                  ("--strict", getattr(args, "strict", False))) if v]
+        if ignored:
+            eprint(f"NOTE:  --at is a past-vs-now comparison and does not combine with "
+                   f"{', '.join(ignored)} — {'that flag is' if len(ignored) == 1 else 'those flags are'} "
+                   f"ignored for this run.")
         old, err = _quality_vector_at(d, args.at)
         if old is None:
             eprint(f"could not read deck {d['id']} at {args.at!r}: {err} "
@@ -8444,11 +8712,17 @@ def owned_role_fillers(d, roles, *, limit=10):
     _, _, qty = load_collection()
     legalities = load_legalities()
     fmt = (meta.get("format") or "").strip().lower()
-    in_deck = {n.lower() for q, n, s, c in cards}
+    # `_ms_key` both sides (BS2-19): `carddata` keys a DFC under BOTH spellings, so a
+    # raw-name `in_deck` suppressed only the spelling the deck file used — the OTHER
+    # key sailed through, `owned()` resolved it via the front-face fallback, and the
+    # deck was offered its own maindecked card as a 0-wildcard filler (25 such rows at
+    # full limit; reaches `tier --to` and `redundancy`). The display-name dedupe below
+    # can't help — the two entries were separate dicts.
+    in_deck = {_ms_key(n) for q, n, s, c in cards}
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
     out = []
     for nl, cd in carddata.items():
-        if nl in in_deck or nl in BASICS:
+        if _ms_key(nl) in in_deck or nl in BASICS:
             continue
         if "Land" in _primary_type(cd.get("type") or ""):
             continue
@@ -8493,7 +8767,11 @@ def craft_role_fillers(d, roles, *, limit=8):
     meta, cards = parse_deck_file(d["path"])
     mana = load_mana()
     _, _, qty = load_collection()
-    in_deck = {n.lower() for q, n, s, c in cards}
+    # `_ms_key` (BS2-19), same reason as `owned_role_fillers`: the pool keys the full
+    # `Front // Back` while the deck line may store the front, so an UNOWNED DFC
+    # already maindecked as a WIP craft target was offered as a craft for its own deck
+    # (the owned_qty skip below only masks the owned case).
+    in_deck = {_ms_key(n) for q, n, s, c in cards}
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
     fmt = (meta.get("format") or "").strip().lower()
     RANK = {"Common": 0, "Uncommon": 1, "Rare": 2, "Mythic": 3}
@@ -8502,7 +8780,7 @@ def craft_role_fillers(d, roles, *, limit=8):
         for r in csv.DictReader(fh):
             name = (r.get("Card Name") or "").strip()
             nl = name.lower()
-            if not nl or nl in seen or nl in in_deck or nl in BASICS:
+            if not nl or nl in seen or _ms_key(nl) in in_deck or nl in BASICS:
                 continue
             if "Land" in _primary_type(r.get("Type") or ""):
                 continue
@@ -8597,7 +8875,7 @@ def functional_theme_options(d, theme, *, limit=8):
     rar = load_rarities()
     leg = load_legalities()
     _, _, qty = load_collection()
-    in_deck = {n.lower() for q, n, s, c in cards}
+    in_deck = {_ms_key(n) for q, n, s, c in cards}   # G-63: front-face join
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
     fmt = (meta.get("format") or "").strip().lower()
     out, seen = [], set()
@@ -9431,6 +9709,14 @@ def cmd_tier(args):
     vec = deck_quality_vector(d)
     implied = tier_band(vec)
     if getattr(args, "audit_rationale", False):
+        # Same silent-drop shape as `quality --at` (broad-scan Batch G): this branch
+        # returns without reading --to/--strict.
+        _ign = [f for f, v in (("--to", getattr(args, "to", None)),
+                               ("--strict", getattr(args, "strict", False))) if v]
+        if _ign:
+            eprint(f"NOTE:  --audit-rationale checks the ARGUMENT, not the letter, and "
+                   f"does not combine with {', '.join(_ign)} — ignored for this run. "
+                   f"Run `deck.py tier {args.id}` on its own for the band/gap view.")
         cards_stale, figs = rationale_staleness(d)
         wrong_excl = wrong_exclusion_claims(d)
         print(f"Rationale audit — deck {d['id']}: {d['name'] or d['path']}")
@@ -9756,6 +10042,15 @@ def cmd_history(args):
     since = getattr(args, "since", None)
     hist = deck_git_history(d["path"])
     if since:
+        # git's --date=short is zero-padded ISO, so a STRING compare only works for a
+        # zero-padded ISO needle: `--since 2026-8-1` silently matched nothing
+        # ("2026-08-07" >= "2026-8-1" is False) while the card-delta half below, which
+        # hands the same string to `git log --before=`, happily parsed it — one command
+        # printing "0 commit(s)" above a populated delta (broad-scan Batch G).
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", since.strip()):
+            eprint(f"--since must be a zero-padded ISO date (YYYY-MM-DD); got "
+                   f"{since!r}. Try {since.strip()[:4]}-08-01.")
+            return 2
         hist = [h for h in hist if h["date"] >= since]
     scope = f" since {since}" if since else ""
     print(f"History — deck {d['id']}: {d['name'] or rel}{scope}  ({len(hist)} commit(s))")
@@ -9804,13 +10099,20 @@ def cmd_preflight(args):
     # Owned / buildable.
     _, _, qty = load_collection()
     missing = short = 0
+    # Per aggregated NAME (BS2-22), matching cmd_check's explicit comment: a deck may
+    # list one card on two printing lines, and per-line comparison let preflight say
+    # "PASS — fully owned" where `check` said short (2+2 lines against 3 owned). The
+    # counts are also per-CARD now, so a two-line missing card is one craft target.
+    need = {}
     for q, n, s, c in cards:
         if n.lower() in BASICS:
             continue
+        need[n] = need.get(n, 0) + q
+    for n, req in need.items():
         have, inlib = owned(qty, n)
         if not inlib:
             missing += 1
-        elif have < q:
+        elif have < req:
             short += 1
 
     # Castability.
@@ -10032,7 +10334,7 @@ def cmd_engines(args):
                 theme_w[t] = theme_w.get(t, 0) + q
     central = _central_themes(theme_w)
     signature = _signature_themes(meta, cards, cardmeta)
-    bal = engine_balance(cards, carddata, central, signature)
+    bal = engine_balance(cards, carddata, central, signature, weights=theme_w)
 
     print(f"Deck {d['id']}: {d['name'] or d['path']} — engine analysis (enabler ↔ payoff)")
     if not bal:

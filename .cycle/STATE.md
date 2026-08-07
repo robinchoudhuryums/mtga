@@ -6,6 +6,137 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #2 + top-5 fixes (2026-08-07)
+
+A full `/broad-scan` (three stages, six parallel deep-read passes, every Critical/High
+finding hand-verified by reproduction) followed by `/broad-implement top 5 from scan`.
+The scan used fresh IDs **BS2-01…BS2-40** (the 2026-08-04 scan owns BS-01…19). Scan
+report lives in the session; the implemented slice and its verification are in
+`.cycle/blocks/2026-08-broad-scan2-top5-broad-implement.md`.
+
+**Implemented (all reproduced before/after, 14 new tests, 965 passing, zero soft
+warnings):** BS2-01 sync --apply truncation guard (a partial paste can no longer
+rewrite a deck file; --force overrides). BS2-03/04 import_collection: an unreadable
+quantity cell can never be zeroed by --zero-missing, and a no-printing-column export
+SUMS repeated names instead of max-collapsing (each loudly warned). BS2-06 the
+fixed-damage removal pattern no longer counts player-only burn as interaction — 14
+decks re-measured, ZERO tier floors moved, 2 cards baselined, 9 stale `#: tier:`
+figures re-grounded in the same commit. BS2-02/25 the ingest DFC loop: front-face
+joins in reconcile_crafts/import_arena (no more duplicate front-name rows for the 8
+full-name-stored printings) and front→full resolution in verify_ingest (owned Rooms
+no longer report "NOT in library"). BS2-08 the needs recommenders normalize --format,
+honour --any-format, and warn instead of silently dropping the filter.
+
+**Decisions:** BS2-10 (sync same-deck double-claim) was deliberately left OUT of the
+top-5 scope despite being adjacent to BS2-01 — same write loop, queued as the next
+sync fix. The no-printing-column SUM trades a warned over-count for a silent
+under-count; the per-printing-export premise justifies it.
+
+**For the next session:** the scan's unimplemented findings are queued in the block's
+FOLLOW-ON ITEMS (highest value next: BS2-10, BS2-05 verify-for-collection-CSVs,
+BS2-11/12 wishlist land mis-rank + card.py deck join, BS2-16/17 a11y + gallery XSS,
+BS2-13/14 gate holes, BS2-18 interaction_profile divergence). Doc updates for
+/sync-docs are listed in the block (G-67 incident, README import_collection semantics,
+G-63 write-side membership, K-12's still-contradicted claim).
+
+**Second pass, same session:** `/sync-docs` applied (G-63/G-67/G-08 + README ingest/sync
+semantics, K-12 left un-annotated on purpose), then `/broad-implement` of ALL TEN follow-on
+items — BS2-05, 10, 11, 12, 13, 14, 16, 17, 18, 24. Block:
+`.cycle/blocks/2026-08-broad-scan2-followon-broad-implement.md`. 983 tests (18 more new),
+zero soft warnings, dashboard.html + gallery.html rebuilt. K-12's canonical-counter claim
+is TRUE again (BS2-18); check_patterns now sees 247 patterns at any nesting depth and the
+dead engine pattern is gone; INV-04 gained the malformed-line channel.
+
+**Third pass, same session — Batch A** (verdict-surface joins & determinism): BS2-19, 20,
+21, 22, 35, 36 all implemented. Block:
+`.cycle/blocks/2026-08-broad-scan2-batchA-broad-implement.md`. 992 tests (9 more new).
+Deliberately NOT done: BS2-07's full header-consumer sweep (only the swap-side protect
+guard was in Batch A's scope) — it is the named follow-on.
+
+**Fourth pass, same session — Batch B** (wishlist & recommender honesty): BS2-37, 38, 39,
+40 + the grouped power-model fixes (conditional-power mana join, front-face seed) all
+implemented; 8 stale seed-provenance Power cells re-seeded in the same commit. Block:
+`.cycle/blocks/2026-08-broad-scan2-batchB-broad-implement.md`. 998 tests (6 more new).
+The five BS2-39 rows verified rescued live (Splash Portal → blink et al.).
+
+**Fifth pass, same session — Batch C** (gate hardening): BS2-29..34 + five small gate
+leaks all implemented. tests/test_check_all.py is NEW (the runner's first mutation
+layer — 11 tests, including the one that would have caught BS2-14). The tightened
+check_commands immediately caught query.py riding on prose mentions (exempted with an
+honest reason). Block: `.cycle/blocks/2026-08-broad-scan2-batchC-broad-implement.md`.
+1012 tests (14 more new).
+
+**Sixth pass, same session — Batch D** (editor write-safety): BS2-26 (deck-save
+staleness 409 via content-hash token), BS2-27 (atomic rollback), BS2-28 (metadata-key
+validation) + the html-shadow minor. ONE RETRACTION: the dirty-key join('') "collision"
+is a non-finding — the file already delimits with an invisible \x01 that the scan's
+reader (and a verifying grep) rendered as empty; no change made. Block:
+`.cycle/blocks/2026-08-broad-scan2-batchD-broad-implement.md`. 1018 tests (6 more new,
+in the new importorskip'd tests/test_app_editor.py).
+
+**Seventh pass, same session — Batch E + sync-docs** (interface access): S-2 tablist
+completer (both dashboard strips, arrow keys, live aria-selected), S-4 collection toast
+live region, S-5 <main> landmark + test scope, S-6 focus restoration on remove, S-7
+keyboard/focus preview parity, S-10 disclosure state + per-card remove names, S-11
+/decks empty state. dashboard.html rebuilt; the accumulated doc notes from Batches A–D
+applied (README ×3, CLAUDE.md C-07 + Scenario 4, gotchas G-08/G-63) and check_docs green.
+Block: `.cycle/blocks/2026-08-broad-scan2-batchE-broad-implement.md`. 1022 tests.
+
+**Eighth pass, same session — Batch F** (editor theming + phone width, the last
+interface batch): S-9 dashboard status fills/borders via color-mix (completing I-03's
+half-done fix), S-8 one --ok/--warn/--bad vocabulary + a light palette across all three
+templates + five hardcoded hexes tokenized (with --on-solid flipping per theme and
+--pip-ink/--scrim held invariant on purpose), S-3 a phone breakpoint per template.
+Light-mode contrast measured: every pair clears WCAG AA. Deliberate decision recorded:
+NO in-page theme toggle (the dashboard's is a different origin; three copies would rot).
+Block: `.cycle/blocks/2026-08-broad-scan2-batchF-broad-implement.md`. 1029 tests (7 new,
+verified non-vacuous after a lowercase-only regex was found skipping the pip tokens).
+Batches E+F close every STRUCTURAL Stage-3 interface finding.
+
+**Ninth pass — /sync-docs** after Batch F. Eight drift points found and applied across
+the four checks: Regression Scenarios 5 (S-9 moved fills+borders onto the tokens, so the
+"hardcoded until I-03" note was false), 6 (extended dashboard-only → dashboard AND
+editor, absorbing what the scan proposed as a new Scenario 9) and 7 (arrow-key tablists,
+focus-follows-preview, focus-after-remove, and a leg in each OS colour scheme); C-01's
+gate enumeration, which omitted three soft roster sweeps check_all really runs; G-53
+(both coverage paths now enforce the real-call rule); **G-56's overstated "structurally
+forbids"** — the test is one call level deep and does not cover `cut_keep_score`, now
+stated as a live residual rather than fixed (that is Batch G); integrity.yml's rotted
+"31 subparsers" comment (real: 34) replaced with a no-count floor; C-10's browser
+baseline (color-mix ⇒ 2023+); and README's two operator-visible editor behaviours (the
+save-refused-on-concurrent-change toast, and following the OS colour scheme with the
+different-origin reason there is no toggle). C-11's Scenario 7 long form extended to match.
+
+**Tenth pass — Batch G** (refresh, resilience, CLI polish — the scan's whole Low tail):
+BS2-23 pool re-tag staleness via a tag-CONTENT fingerprint in the build stamp (not mtime:
+a fresh clone would otherwise force a 5-min rebuild every time), scryfall's two missing
+body-read exceptions, sheets_sync's file mode, the F-02 MIRROR guards on `--out` (plus a
+direction-neutral rewrite of csv_schema_error's message, which read backwards for the new
+direction), import_arena/import_collection polish, nine deck.py CLI seams, card.py's
+legality token test, query.py's --csv guard, two model fixes, and the G-56 depth close.
+1031 tests. TWO self-inflicted breaks caught by the gates and fixed pre-commit — an
+indentation loss that made card.py unparseable (check_all's AST scans caught it) and four
+read_stamp test doubles I should have scanned for first.
+Block: `.cycle/blocks/2026-08-broad-scan2-batchG-broad-implement.md`.
+
+**Eleventh pass — /sync-docs** after Batch G. Two claims were now FALSE in the other
+direction (the fixes outran the docs): G-56's "one call level deep" residual, which I had
+documented one pass earlier and Batch G then CLOSED, and K-10's stale-tags warning, which
+is now enforced rather than advisory. Three were incomplete: G-18 (the freshness reuse
+now has a tag-content escape), the F-02 Key Design Decision (the MIRROR direction is
+guarded too), and G-14 (naming the two exceptions that were escaping `_TRANSIENT`).
+README gained the third stamp line, the `--out` schema guard, and `--csv`'s refusal.
+docs/gotchas.md gained the BS2-23 incident WITH the content-not-mtime design decision
+(an mtime test would have forced a 5-minute rebuild after every fresh clone), and G-63's
+long form now records both the Batch G closures and the ONE member left deliberately
+open — the `#: protect:` consumers vs the G-68 gate, at zero measured live instances.
+
+**Where I left off:** top-5 + docs + follow-ons + Batches A–G implemented, tested, committed and
+pushed on `claude/broad-scan-v74wau`; no PR opened (not requested). The remaining scan
+items are batched/prioritized in the session's closing report (batches A–H: verdict-surface
+joins, wishlist honesty, gate hardening, editor safety, interface access, editor theming,
+CLI polish, strategic).
+
 ## Session — broad scan + top-5 fixes (2026-08-04)
 
 A full `/broad-scan` (three stages, seven parallel deep-read passes, top findings
@@ -836,3 +967,60 @@ The pattern across both fixes, worth stating once: "no gate checks this" was tru
 one day, on the same shape — a role bucket nothing exercised, and a header nothing
 validated. Both had been live for months behind fully green gates, and both were cheap to
 fix once someone said the sentence out loud.
+
+## Twelfth pass — Batch H (strategic), 2026-08-07
+
+The last batch of the broad-scan-2 priority report. Five of its seven items were code;
+two are the user's to decide and were left alone (H-1 needs games played, H-5 the user
+said to hold off on). Full block: `.cycle/blocks/2026-08-broad-scan2-batchH-broad-implement.md`.
+
+**The batch found two bugs by doing its own work, and both are the same shape.**
+
+1. **BS3-02 — the BS2-23 fingerprint could never arm itself.** H-6 mapped seven keywords,
+   `make refresh` ran, step 2/6 announced `build_pool.py`, `check_all` went green, and
+   `card-pool.csv` came back BYTE-IDENTICAL. The freshness reuse returns before writing a
+   stamp, so a pre-BS2-23 two-line stamp never acquired a fingerprint, and the grace
+   clause ("unknown → don't force a rebuild", added so the upgrade would cost nothing)
+   made unknown an absorbing state. G-18's long form asserted "the upgrade costs exactly
+   one pool build, once" — describing behaviour the code did not implement. Unknown now
+   rebuilds once. **A grace clause added so a fix costs nothing is a place the fix can
+   cost nothing.**
+2. **H-4's whole premise, confirmed on its first run.** The alias registry checks the
+   loaders someone listed; every G-63 index bug was a loader on no list. The new AST scan
+   found `deck._legality_of` immediately — a fourth private copy of the alias loop that
+   nothing verified.
+
+**H-2 is decided, and the answer was worth having.** Pre-registered, one evaluation. The
+mechanism the tool's OWN warning asserted — that `fit` sums theme weights unnormalized
+and creatures carry ~2× the tags — is real as an observation (5.31 vs 3.15 tags, so 1.7×)
+and REFUTED as a diagnosis. Normalizing lifts creature agreement 53→68% and collapses
+noncreature 83→**51%**. The unnormalized sum is carrying real signal for the segment that
+works; the two segments want different treatments, which is a statement about a
+single-number model, not a bug in one term. **The tool was telling its reader to go fix
+something that would have made it worse**, and that prose is now corrected. M2
+(de-duplicating creature-subtype tags already paid for by `min(tribal,6)`) is recorded as
+UNDERPOWERED rather than rejected — the harness resolved 38 of 103 creature rows, and no
+third run was made to chase a better n, because re-running after seeing the numbers is
+exactly what the stopping rule exists to prevent. The harness defect is written down so a
+re-test starts ahead: the snapshot selector matches a card name in a `#:` COMMENT.
+
+**Do not re-derive a third creature-cut fix from the tag-count asymmetry.** It is real,
+it is visible, and it is misleading. Two hypotheses have now been pre-registered and
+refuted (body quality 2026-07, normalization 2026-08). The remaining lever is still more
+ledger data.
+
+**The two keyword non-decisions are the useful half of H-6.** `jump` reports 13 cards, of
+which 11 are `Jump-start` cards Scryfall also labels "Jump" — mapping it would have put
+`evasion` on 11 graveyard spells for the sake of 2. A keyword's reported COUNT is not its
+population. `tiered` is a cost SHAPE, not a resource, and its six cards' effects already
+tag correctly from text; a single theme would be wrong for five of them.
+
+1078 tests (was 1031). `check_all` green with ZERO soft warnings — the two stale tier
+figures the retag produced (decks 17, 40) were re-grounded in the same commit that moved
+them, per G-27.
+
+Where I left off: Batch H committed and pushed; the broad-scan-2 priority report is now
+fully worked. Outstanding and NOT code: log ten real matches (`matches.csv` still absent,
+34 provisional tiers unfalsifiable), deck 49 Route A, the Sheets operator setup (now
+verifiable with `sheets_sync.py check`), and the perceptual halves of Regression
+Scenarios 5–8. BS2-07's header-consumer sweep is still the one open G-63 member.

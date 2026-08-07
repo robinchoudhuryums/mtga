@@ -65,6 +65,10 @@ INTERACTIVE_ONLY = {
         "the optional Flask editor — an interactive GUI launched by `make app`, not a "
         "step any workflow drives (/ingest routes single-card fixes to it by name, but "
         "the editing itself is a human at a browser)",
+    ("script", "query.py"):
+        "ad-hoc owned-collection search — every argument comes from the conversation "
+        "(/tune-deck names it for themed deep-reads), so no workflow can carry a fixed "
+        "invocation; surfaced when BS2-31 stopped counting prose mentions as coverage",
 }
 # NOTE: sheets_sync.py and import_collection.py were exempt here until /ingest existed.
 # Both are ingest routes, so the honest fix was to give them a workflow rather than a
@@ -141,8 +145,10 @@ def check():
     for name in subs:
         if ("deck.py", name) in INTERACTIVE_ONLY:
             continue
-        # A skill drives it...
-        if re.search(rf"deck\.py {re.escape(name)}\b", skills):
+        # A skill drives it... `(?![\w-])`, not `\b`: a bare word boundary is satisfied
+        # at a hyphen, so `deck.py suggest\b` matched "deck.py suggest-homes" and the
+        # `suggest` subcommand inherited coverage from an unrelated command (BS2-31).
+        if re.search(rf"deck\.py {re.escape(name)}(?![\w-])", skills):
             continue
         # ...or another module CALLS it programmatically. Deliberately matching the
         # `cmd_*` function rather than the string "deck.py <name>": every docstring in
@@ -175,11 +181,23 @@ def check():
                 f"someone remembers to. Wire it into check_all.py, or add "
                 f"('script', {fn!r}) to INTERACTIVE_ONLY with a reason.")
             continue
-        if re.search(rf"\b{re.escape(fn)}", skills):
+        # A REAL invocation, not a prose mention (G-53's own words — the subcommand
+        # path above already honours this and says why). A bare-name match counted a
+        # WARNING as coverage: two of build_pool.py's three skill mentions were "had
+        # build_pool.py in the wrong position" cautions, so deleting the one real
+        # `python3 scripts/build_pool.py` call would have left the gate green
+        # (BS2-31). Coverage = an executable shape: `python3 scripts/<fn>` in a
+        # skill, or `scripts/<fn>` in the Makefile (the one executable definition of
+        # the rebuild chain — `make refresh`/`make dashboard` ARE the invocation).
+        mk_path = os.path.join(os.path.dirname(SCRIPTS_DIR), "Makefile")
+        mk = open(mk_path, encoding="utf-8").read() if os.path.exists(mk_path) else ""
+        if re.search(rf"python3 scripts/{re.escape(fn)}", skills) \
+                or re.search(rf"scripts/{re.escape(fn)}", mk):
             continue
         errs.append(
-            f"{fn} is mentioned by NO skill — nothing routes work to it. Reference it "
-            f"from a workflow in .claude/commands/, or add ('script', {fn!r}) to "
+            f"{fn} is INVOKED by no skill and no Makefile target (a prose mention is "
+            f"not coverage — G-53). Add a real `python3 scripts/{fn}` call to a "
+            f"workflow in .claude/commands/, or add ('script', {fn!r}) to "
             f"INTERACTIVE_ONLY with the reason it is human-driven.")
 
     # 3. STALENESS — an exemption must still name something real.

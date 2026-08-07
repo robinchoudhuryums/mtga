@@ -452,10 +452,15 @@ __STATS__
 
     grid.innerHTML = list.map(c => {
       const noimg = c.img ? '' : ' noimg';
-      const qty = c.qty ? `<span class="qty">×${c.qty}</span>` : '';
-      const set = c.set ? `<span class="setcode">${c.set}${c.cn ? ' · ' + c.cn : ''}</span>` : '';
+      // esc() EVERY interpolation, exactly as collection.html does for the same data:
+      // Set Code / Collector # are free-text CSV columns app.py stores unvalidated, so
+      // an unescaped `${c.set}` here was stored XSS one `make refresh` away, in the
+      // same template literal that already escaped c.name (broad-scan BS2-17). The
+      // `<` island escaping protects the JSON block, not this runtime HTML.
+      const qty = c.qty ? `<span class="qty">×${esc(String(c.qty))}</span>` : '';
+      const set = c.set ? `<span class="setcode">${esc(c.set)}${c.cn ? ' · ' + esc(c.cn) : ''}</span>` : '';
       return `<div class="card${noimg}" title="${esc(c.name)}">
-        <img loading="lazy" src="${c.img}" alt="${esc(c.name)}"
+        <img loading="lazy" src="${esc(c.img)}" alt="${esc(c.name)}"
              onerror="this.closest('.card').classList.add('noimg')">
         <div class="fallback"><div class="fname">${esc(c.name)}</div>
           <div class="ftype">${esc(c.type)}</div><div class="ftext">${esc(c.text)}</div></div>

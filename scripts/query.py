@@ -27,7 +27,7 @@ import os
 import sys
 import textwrap
 
-from lib import HEADER, DEFAULT_CSV, REPO_ROOT, load_rows, eprint, color_matches
+from lib import csv_schema_error, HEADER, DEFAULT_CSV, REPO_ROOT, load_rows, eprint, color_matches
 
 
 def keywords_map():
@@ -83,9 +83,13 @@ def matches(row, args):
         return False
 
     if args.min_owned is not None:
-        qty = (row.get("Quantity Owned") or "").strip()
-        owned = int(qty) if qty.isdigit() else 0
-        if owned < args.min_owned:
+        # SUMMED across printings (BS2-36): owned copies are fungible in Arena, so the
+        # per-row read dropped every card whose copies are split across sets — at
+        # `--min-owned 3` it dropped Rugged Highlands (1+2 across two printings), the
+        # exact card the sibling fix in card.py cites. The totals index is built once
+        # in main() and carried on args.
+        name = (row.get("Card Name") or "").strip().lower()
+        if args._owned_totals.get(name, 0) < args.min_owned:
             return False
     return True
 
@@ -127,15 +131,37 @@ def main():
     args = ap.parse_args()
 
     try:
-        _, rows = load_rows(args.path)
+        _, hdr_rows = load_rows(args.path)
+        rows = hdr_rows
     except FileNotFoundError:
         eprint(f"ERROR: file not found: {args.path}")
         return 1
+    # `--csv` writes lib.HEADER, so pointing this at a DERIVED file and redirecting
+    # produces a file that looks like a pool and isn't — Rarity/Legalities/Released
+    # dropped, a blank Quantity Owned invented. The F-02 accident's read-side shape;
+    # the writers refuse it, the reader had no equivalent (broad-scan Batch G).
+    if args.csv:
+        problem = csv_schema_error(args.path)
+        if problem:
+            eprint(f"ERROR: --csv emits the card-library columns, so it cannot faithfully "
+                   f"re-emit this file.\n       {problem}")
+            return 1
+
+    # Per-name owned totals for --min-owned (fungible across printings, BS2-36).
+    args._owned_totals = {}
+    for r in rows:
+        q = (r.get("Quantity Owned") or "").strip()
+        if q.isdigit():
+            nm = (r.get("Card Name") or "").strip().lower()
+            args._owned_totals[nm] = args._owned_totals.get(nm, 0) + int(q)
 
     hits = [r for r in rows if matches(r, args)]
 
     if args.count:
-        print(len(hits))
+        # DISTINCT CARDS, not rows (BS2-36): the module's own usage line advertises
+        # `--min-owned 1 --count` as "how many distinct cards you own", and a row
+        # count over-reads any card printed in two sets (2085 rows vs 2081 cards).
+        print(len({(r.get("Card Name") or "").strip().lower() for r in hits}))
         return 0
 
     if not hits:

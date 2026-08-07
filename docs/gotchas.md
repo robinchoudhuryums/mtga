@@ -237,6 +237,30 @@ SKIPPED on `--apply` (rewriting the wrong sibling is the one expensive mistake h
 re-paste that deck alone, or pass `--force`. Previously the only repair was reading a diff
 and hand-editing each file.
 
+**The truncation guard (broad-scan BS2-01, 2026-08-07).** The anti-force-fit floor —
+"share at least max(3, 30% of the block's distinct cards)" — is measured against the
+PASTE, and a partial paste is a strict SUBSET of its deck, so it passed trivially with
+full confidence. Reproduced: the first 8 lines of deck 52 dry-ran as `⟳ #52 — drifted:
+0 added / 52 removed`, not low-confidence, and `--apply` would have rewritten the stored
+60 down to the fragment with INV-04 green (deck size is not an invariant) and the real
+list surviving only as a `.bak`. An Arena export is always the WHOLE deck, and the
+largest legitimate shrink a sync performs is trimming an oversized draft (64→60 ≈ 0.94
+of the stored total), so `match_paste` now flags a paste under **75%** of the stored
+total as `truncated`; `cmd_sync` prints `⚠ TRUNCATED?` with both totals in the dry run
+and refuses the write without `--force` — the same handling as a low-confidence sibling
+match, because the MATCH is usually right and it is the WRITE that must not happen.
+
+**The same-deck claim guard (BS2-10, same scan).** Blocks are matched independently, so
+two pasted blocks could both resolve to ONE stored deck — pasting a 52/52a family where
+one variant is retired makes both blocks legitimately match the survivor — and the write
+loop then wrote the file TWICE, the second write clobbering the first with only an
+intermediate `.bak` between them. The low-confidence rule compares a block against
+runner-up DECKS, never blocks against each other, so it could not see this. `cmd_sync`
+now claims each stored deck for the first block that matches it; a later block matching
+the same deck is reported ("✗ block N: ALSO matched #id, already claimed by block M")
+and skipped — re-paste it alone if it is the real list. Exit is non-zero, since
+something needs attention.
+
 
 ## [G-09] Legality lint and cut candidates are separate from ownership
 
@@ -336,6 +360,15 @@ B`** header (semicolon-separated — card names contain commas): `cuts` then kee
 them off the cut list and `swap --cut`-ing one warns. Set these for cards a deck
 is built around so the tooling never proposes cutting them.
 
+
+**The two REPORT-only annotations above the cut table, and what each was for.** `cuts`
+prints the axis the deck is SHORT on above the ranking, because a `⚠interaction` note
+once put four ONE-MANA spells at the top of the cut list of the slowest deck on the
+roster — the ranking answered "weakest fit" while the reader was being told the deck
+needed interaction, and nothing reconciled the two. And it flags `⌁scales w/ <axis>` for
+a card whose printed stats are its FLOOR rather than its value: Cat-Gator reads as a
+7-mana 3/2 until you notice its ETB damage counts the Swamps you CONTROL. Neither
+changes a score.
 
 **The `#: protect:` keep-boost reads the STRICT spine, and the loose union saturated.**
 `rank_cut_candidates` gave a +2 keep-boost to any card sharing `_signature_themes` — the
@@ -531,6 +564,51 @@ fetches only what is new or still unresolved, with `--refetch` (or
 (`Life // Death`), ~630 of them — and accepts the result only when the resolved card IS
 the one asked for, since a bare front name can be a different card and a wrong cost is
 worse than a blank one.
+
+**The freshness reuse had a hole the reasoning did not cover (BS2-23, fixed 2026-08-07).**
+The justification above — "the pool is the whole Arena pool and independent of what you
+OWN, so an ingest cannot change it" — is sound for the INGEST case and false for the other
+documented reason to run `build_pool.py --all`: **K-10 mandates it after a tag-pattern
+edit**, because every pool row's `Synergies` is derived inside `row_for()` at FETCH time.
+So a tagger edit followed by `make refresh` left the library re-tagged and the 15.9k-row
+pool on the OLD tags for up to a week — with step 2/6 printing "card-pool.csv is fresh
+(1d old); not rebuilt", `check_all` green throughout, and unowned craft candidates ranking
+on stale tags. The stamp now carries a third line: a content hash of `tag_synergies.py`.
+A mismatch defeats the reuse and prints why.
+
+**Content, not mtime — and that choice is the interesting part.** The first implementation
+compared the tagger's mtime to the pool's, which works on a developer's machine and is
+wrong in general: git stamps every file at CHECKOUT time in arbitrary order, so a fresh
+clone would have forced a ~5-minute full rebuild on its first `make refresh`, every time.
+This repo had already learned the same lesson from the other direction at F-04, where a
+`copy2`'d `.bak`'s mtime describes when its CONTENTS were written rather than when the
+backup was taken.
+
+**BS3-02: the grace clause disarmed the whole mechanism, and it took another instance of
+the original bug to notice.** A stamp written before BS2-23 has no third line. That read
+as None = "cannot tell" and — by explicit design — never forced a rebuild, so that the
+upgrade would cost nothing. But **the reuse path returns before any stamp is written**,
+so a legacy two-line stamp could never ACQUIRE a fingerprint: as long as the pool stayed
+inside the freshness window, the escape hatch could not arm itself, and no tag edit would
+ever be detected. The claim in the sentence above — "the upgrade costs exactly one pool
+build, once" — described intended behaviour the code did not implement.
+
+It surfaced the only way it could. The seven K-01 keyword mappings were added, `make
+refresh` ran, step 2/6 announced `build_pool.py`, `check_all` came back green — and
+`card-pool.csv` was byte-identical, with all seven mappings absent from the 16k-row
+reference. That is BS2-23's bug happening again, inside its own fix.
+
+The fix is that **unknown means rebuild once**: an absent fingerprint now defeats the
+reuse and prints why, the build records the fingerprint, and every later refresh reuses a
+fresh pool exactly as before. Pinned by four tests in `tests/test_build_pool.py`,
+including the pair that matters — an unknown fingerprint rebuilds, and the run after it
+reuses (so "once" is really once). The test helper `_stamp` now writes a three-line stamp
+by DEFAULT, because the two-line double it used to write was quietly asserting the old
+behaviour in the same file that was supposed to guard the new one.
+
+The general lesson, which is this file's most repeated: **a grace clause added so a fix
+costs nothing is a place where the fix can cost nothing.** If "unknown" can never become
+"known", the state machine has one absorbing state and it is the broken one.
 
 
 ## [G-19] `card-wishlist.csv` is UNOWNED craft targets
@@ -1842,8 +1920,10 @@ templates the same effect several different ways. When a card is worded a way no
 anticipates, `classify_roles` returns an empty set, and that zero propagates: into
 `role_tally`, into the interaction and card-advantage figures the tier floor grades on,
 into `cuts`' "role not auto-detected" ranking, into the `quality --vs` guard, and into
-`check_all`'s own reporting. It is **never an error and never an over-count** — always a
-silent under-count that every consumer treats as fact.
+`check_all`'s own reporting. It is **never an error**, and the DEFAULT failure is a
+silent under-count that every consumer treats as fact — but "never an over-count" turned
+out to be false: a too-broad pattern over-counts the same silent way (see the BS2-06
+exception below).
 
 ### The eight holes, all found in one 2026-08 session, none by a gate
 
@@ -1872,6 +1952,26 @@ Springleaf Drum and Agatha's Soul Cauldron all scored **zero roles** — in the 
 
 Deck 45 is the other worked case: built entirely on cast-from-exile, it measured **card
 advantage 0** because impulse was not indexed at all, and nothing complained.
+
+### The one measured OVER-count (broad-scan BS2-06, fixed 2026-08-07)
+
+This anchor claimed the failure mode was *always* an under-count. The second broad scan
+falsified that: the fixed-damage removal pattern — `deals? \d+ damage to
+(?:target|any target|another target)` — had no target-type guard, so **damage aimed at a
+player** classified as spot removal and counted as interaction, the axis `tier_band`
+grades on. Its own sibling three lines down (the scaling-damage pattern) carried exactly
+the missing guard, with a comment calling it load-bearing. 89 pool cards of player-only
+burn (HYDRA Assault Robot, Shocking Sharpshooter, Ozai's Cruelty …) matched only this
+pattern; **14 roster decks over-reported interaction** (deck 10 read 15 against a real
+12), feeding `tier_band`, `audit`'s thin-verdict, `deck_needs["int_short"]` and `cuts`'
+is-interaction guard. The fix added `(?!(?:player|opponent)\b(?! or planeswalker))` —
+the trailing clause keeps the 42 pool cards templated "target player **or planeswalker**"
+counted, because those CAN answer a planeswalker. Measured roster-wide before landing,
+per the K-14 discipline: 14 decks moved, **zero tier floors moved**, two honestly-roleless
+cards (Hawkeye's player-only burn mode; Ozai's Cruelty) baselined from full text, and the
+nine `#: tier:` figures the change staled were re-grounded in the same commit. The
+transferable lesson: an over-broad pattern is as silent as a missing one, and the
+roster-wide before/after diff is the only check that sees either direction.
 
 ### The gate
 
@@ -1952,6 +2052,55 @@ The lesson worth keeping: **a standing warning is a decision nobody has made yet
 two fired on every `check_all` run for several cycles, which is the saturation failure
 this file documents elsewhere — a channel that always fires reads as working, and a
 genuinely new mechanic arriving beside them would have been invisible.
+
+### 2026-08: the remaining ten, triaged one at a time (broad-scan H-6)
+
+Seven were themed, three were left. Every mapping's DELTA was measured before landing,
+because K-02's whole point is that a mapping's value is invisible without one — most
+cards quote reminder text the TEXT rules already read, so the map earns its keep on the
+tail that states the keyword bare.
+
+| keyword | pool cards | themes | cards that GAINED a theme |
+|---|---|---|---|
+| vivid | 17 | `multicolor`, `payoff` | 17/17 |
+| job select | 16 | `equipment`, `tokens` | **2**/16 |
+| opus | 11 | `spellslinger`, `payoff` | 11/11 |
+| increment | 10 | `counters`, `spellslinger` | 10/10 |
+| infusion | 13 | `lifegain`, `payoff` | 13/13 |
+| disappear | 9 | `sacrifice`, `aristocrats` | 9/9 |
+| paradigm | 5 | `exile cast`, `card advantage` | 5/5 |
+
+`vivid` scales with "the number of colors among permanents you control" — the same
+family as `converge` (colors of mana SPENT), hence the same theme. Nothing in the text
+rules reads a colour COUNT, which is why 17/17 gained both, and why K-04's fixer overlay
+was blind to Bloom Tender for so long. `job select` is the K-02 shape at full strength:
+14 of 16 print the reminder text ("create a 1/1 Hero token, then attach this to it") and
+already tagged; the two that state it bare are the reason the map exists. `disappear`
+gets `morbid`'s exact pair, deliberately — its known adjacency to BLINK is left untagged
+because several disappear cards accumulate +1/+1 counters, which blink ERASES (G-42), so
+a `blink` tag would recommend a package that fights half of them. `paradigm` is K-07's
+`exile cast` by definition: cast a free copy of your own exiled spell each main phase.
+
+**The three that were left, each for a different reason — this is why bulk triage is
+wrong:**
+
+* **`jump` — a SOURCE artifact, and the most instructive of the three.** It reports 13
+  cards, of which **11 are `Jump-start` cards**: Scryfall lists both "Jump" and
+  "Jump-start" in their keyword arrays. Only Freya Crescent and Kain genuinely have Jump
+  ("during your turn, this has flying"). Mapping it to `evasion` would have put that
+  theme on 11 unrelated graveyard spells. **A keyword's reported count is not its
+  population** — check what the cards actually say before believing the tally.
+* **`tiered` — a cost SHAPE, not a resource.** "Choose one additional cost", with
+  escalating modes. Its six cards span burn (Fire Magic, Thunder Magic), bounce (Ice
+  Magic), lifegain/protection (Restoration Magic) and pump (both Limit Breaks), and the
+  text rules already tag each correctly. Any single theme would be wrong for five of
+  them, and a new theme for six cards is the fix K-09 warns off.
+* **`triple`** — already triaged out once, unchanged. Tiered cards also emit `Double`,
+  `Final Heaven` and `Somersault` as keywords, which is the same artifact as `jump`.
+
+Note the follow-through this required: K-10 mandates rebuilding BOTH tag stores after a
+pattern edit, and the mechanism meant to enforce that turned out to be disarmed — see
+[G-18]'s BS3-02 entry, which was found by this very edit coming back a no-op.
 
 
 ## [K-02] `forage` was THEMED rather than baselined, and the 7-of-9 split is the lesson
@@ -2752,6 +2901,53 @@ lookup has no front fallback — a deck read "1 missing" in the editor while `/d
 cannot see a consumer in JavaScript. All five fixed 2026-08 (the JS one by front-aliasing
 the served payload). The join lesson is now in the standing rule: key every name-facing
 JOIN on `_ms_key`, not only every loader.
+
+**2026-08-07 broad scan #2: the class reaches the ingest WRITE side (BS2-02/BS2-25,
+fixed same day).** Every prior member was a READER — a loader, an index, a join, a
+serialized payload. The second scan found the same shape in the writers that create
+library rows. `reconcile_crafts` normalized an incoming card to its FRONT name and then
+looked for the existing library row with an **exact**-name join — but the library stores
+eight printings under their full `A // B` name (the DSK Rooms), so the join missed and
+the tool APPENDED a second row for the *same physical printing* under the front name.
+`import_arena`'s `(name, set, collector)` index had the identical miss. INV-01 is blind
+(two different Card Names are not a duplicate printing), and `lib.owned_qty` resolves the
+pool's full-name key to the full-name row only — so the owned count silently split
+across two spellings, a real 3 reading as 1. Worse, the halves composed into a loop:
+`verify_ingest` resolved full→front but never front→full, so a front-named paste of an
+owned Room reported "✗ NOT in card-library.csv — re-run the ingest", and the prescribed
+re-ingest *created* the duplicate. Fixes: both writers join on front faces (a collector
+number is unique within a set, so `(front, set, collector)` cannot collide two distinct
+cards); `reconcile_crafts`' mana-row check keys on the library row's actual spelling so
+INV-02 tracks the real row; `verify_ingest._library_key` gained the front→full third
+step, resolving to the STORED spelling so the quantity and mana checks read one row.
+The lesson extends the standing rule again: the front-face question is not a read-side
+question — **a writer that keys rows by name is a join too.**
+
+**Batch G closed the last read-side stragglers** — `screen` / `redundancy`'s
+already-in-deck filters and `similar`'s shared-card intersection, the last of which feeds
+the "▸ Most shared CARDS" figure G-47 tells the reader to trust when it disagrees with the
+cosine, so a card the two decks spelled differently simply never counted. `similar`
+intersects KEYS through a key→display map, keeping the count right without printing
+lowercased keys at the reader. **ONE MEMBER REMAINS OPEN**, deliberately: the
+`#: protect:` / `#: uncastable-ok:` CONSUMERS (`rank_cut_candidates`, `_castability`,
+`_weakest_cut`) still compare raw lowercase names while `header_card_staleness` — the gate
+built to catch a dead header entry — joins on `_ms_key`, so a header naming a DFC by its
+other face is a disabled instruction the gate certifies as healthy. Measured at zero live
+instances (all 14 DFC-bearing headers happen to use the full spelling), which is why it was
+left rather than rushed; it is the next thing to close in this class.
+
+**Batch A/B of the same scan closed five more members in one pass**, all the raw-name
+join shape: the swap CUT side (`_cards_after_swap` / `_swap_edit_lines` /
+`_do_swap`'s protect guard — a front-name cut of a full-name-stored card refused with
+"not in deck" while the ADD side had been `_ms_key`-matched since BS-05), the flex
+auto-retire's add/cut/maindeck comparisons, both role fillers' already-in-deck filter
+(a deck was offered its OWN maindecked DFC as a 0-wildcard filler — 25 rows roster-wide),
+`card.py`'s in-decks join ("in decks: (none)" for five owned, played cards), and
+`wishlist._is_land`'s whole-type-line scan (a back-face `// Land` god ranked — and was
+bought in a live `--budget` — as a phantom manabase upgrade). The remaining structural
+closure: `deck.load_card_meta` and `wishlist.load_pool_index` were the last two loaders
+aliasing IN-pass; both now use the second-pass `lib.alias_front` and are REGISTERED in
+`check_dfc._ALIASED_LOADERS`, so the behavioral anchor exercises every member.
 
 ## [G-64] A reanimator's uncastable bombs are not a build error — `#: uncastable-ok:`
 

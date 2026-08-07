@@ -14,14 +14,15 @@ import pool  # noqa: E402
 
 def _qargs(**kw):
     base = dict(name=None, type=None, text=None, color=None, synergy=None,
-                set=None, min_owned=None)
+                set=None, min_owned=None, _owned_totals={})
     base.update(kw)
     return argparse.Namespace(**base)
 
 
 def _pargs(**kw):
     base = dict(name=None, type=None, text=None, color=None, synergy=None,
-                rarity=None, legal=None, role=None, owned=False, unowned=False)
+                rarity=None, legal=None, role=None, owned=False, unowned=False,
+                _roles=set())
     base.update(kw)
     return argparse.Namespace(**base)
 
@@ -58,8 +59,16 @@ class TestQueryOtherFilters:
         assert not query.matches(_RED, _qargs(type="Instant", text="destroy"))
 
     def test_min_owned(self):
-        assert query.matches(_RED, _qargs(min_owned=2))
-        assert not query.matches(_RED, _qargs(min_owned=3))
+        totals = {"shock": 2}
+        assert query.matches(_RED, _qargs(min_owned=2, _owned_totals=totals))
+        assert not query.matches(_RED, _qargs(min_owned=3, _owned_totals=totals))
+
+    def test_min_owned_sums_across_printings(self):
+        """BS2-36: copies are fungible across printings — the per-row read dropped
+        Rugged Highlands (1+2 across two sets) at --min-owned 3, the exact card the
+        sibling fix in card.py cites. The totals index carries the summed count."""
+        totals = {"shock": 3}          # 2 in this printing + 1 in another
+        assert query.matches(_RED, _qargs(min_owned=3, _owned_totals=totals))
 
 
 class TestPoolFilters:
@@ -79,5 +88,6 @@ class TestPoolFilters:
     def test_role_filter_routes_through_the_lazy_deck_proxy(self):
         """pool.classify_roles is a lazy import proxy (batch 5) — --role must
         still classify through the real deck.classify_roles."""
-        assert pool.matches(_GOLD, _pargs(role="removal"), {})
-        assert not pool.matches(_RED.copy() | {"Card Text": ""}, _pargs(role="removal"), {})
+        rr = _pargs(role="removal", _roles={"Removal (spot)"})
+        assert pool.matches(_GOLD, rr, {})
+        assert not pool.matches(_RED.copy() | {"Card Text": ""}, rr, {})

@@ -93,13 +93,27 @@ def mana_names(path=None):
 
 def _library_key(names, name):
     """The key the LIBRARY stores this card under: the full name if present, else the
-    front face. Mirrors `owned_qty`'s resolution order so the quantity check and the
-    INV-02 check can't disagree about which row they are talking about."""
+    front face, else — for a FRONT-named paste of a card the library stores under its
+    full "A // B" (the DSK Rooms) — the stored full name. Mirrors `owned_qty`'s
+    resolution order, plus the front→full direction `owned_qty` cannot do, so the
+    quantity check and the INV-02 check can't disagree about which row they are
+    talking about. Without the third step, pasting "Bottomless Pool" against a library
+    holding "Bottomless Pool // Locker Room" at that exact printing reported "✗ NOT in
+    card-library.csv — the ingest did not write them", and the prescribed re-ingest
+    then created a duplicate front-name row: the two halves of broad-scan BS2-25/BS2-02
+    composed into a loop that manufactured the very split this tool exists to catch.
+    Resolving to the STORED spelling (not an alias) keeps the mana-row check consistent:
+    card-mana.csv keys the library's spelling."""
     nl = (name or "").strip().lower()
     if nl in names:
         return nl
-    front = nl.split(" // ")[0]
-    return front if front in names else None
+    front = nl.split(" // ")[0].strip()
+    if front in names:
+        return front
+    for n in names:
+        if " // " in n and n.split(" // ")[0].strip() == front:
+            return n
+    return None
 
 
 def _row_key(r):
@@ -127,8 +141,26 @@ def verify(text, *, exact=False, include_basics=False, lib=None, mana=_UNSET):
     passed both `>=` tests while the paste claimed 3. This is the read half of the
     accumulation fix in `import_collection.plan` (broad-scan F-01); the two must agree
     about what a card's quantity MEANS or the authoritative route has no working check.
+
+    INPUT FORMATS: Arena decklist lines first; if NONE parse, a CSV/TSV tracker export
+    is tried via `import_collection.parse_export`. That second reading is load-bearing:
+    `import_collection`'s docstring and its post-apply message both direct the operator
+    HERE with the export file, and this tool could not read that file at all — every
+    row failed the Arena regex and `report()` then printed "Unparseable lines were never
+    ingested by ANY tool", flatly false for an import just applied. The one tool that
+    may LOWER a count had no working read-back check (broad-scan BS2-05).
     """
     entries, warnings = parse(text)
+    if not entries:
+        try:
+            import import_collection
+            centries, cwarnings, _unreadable = import_collection.parse_export(text)
+        except Exception:
+            centries, cwarnings = [], []
+        if centries:
+            entries = centries
+            warnings = cwarnings + [f"read as a collection CSV/TSV export "
+                                    f"({len(centries)} card row(s))"]
     quantities, names = lib if lib is not None else library_index()
     known_mana = mana_names() if mana is _UNSET else mana
 
@@ -151,7 +183,11 @@ def verify(text, *, exact=False, include_basics=False, lib=None, mana=_UNSET):
                             "has_mana": True, "basic": True})
             continue
         key = _library_key(names, name)
-        have = owned_qty(quantities, name)
+        # Read the count off the RESOLVED key, not the pasted spelling: `owned_qty`
+        # resolves full→front but not front→full, so a front-named paste of a
+        # full-name-stored card read owned 0 for a row _library_key had just found
+        # (broad-scan BS2-25). For every other case the two reads are identical.
+        have = quantities.get(key, 0) if key is not None else owned_qty(quantities, name)
         pasted = totals.get(key or name.strip().lower(), qty)
         results.append({
             "qty": qty, "pasted": pasted, "name": name, "owned": have, "key": key,
@@ -184,7 +220,11 @@ def report(results, warnings, *, exact=False, mana_missing=False):
 
     for w in warnings:
         eprint(f"WARN:  {w}")
-    if warnings:
+    # Scoped to ACTUAL parse failures: warnings also carry informational notes now
+    # (the CSV-mode banner, unreadable-quantity rows), and this claim is about lines
+    # no parser matched — printing it for a successfully-read CSV export made it
+    # flatly false for an import that just applied (broad-scan BS2-05).
+    if any("could not parse" in w for w in warnings):
         eprint("       Unparseable lines were never ingested by ANY tool — they are not "
                "in the library because nothing ever wrote them.\n")
 

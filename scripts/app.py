@@ -37,6 +37,7 @@ import contextlib
 import csv
 import datetime
 import functools
+import hashlib
 import html
 import io
 import json
@@ -507,11 +508,27 @@ def add():
             # The library write already landed; if the mana-row write fails we'd leave
             # a card with no mana row (INV-02). Roll the library back to the .bak
             # _safe_write just made, so the add is all-or-nothing (audit F11).
+            #
+            # Staged restore, NOT a bare copy2 over the target (BS2-27): this branch
+            # is reached exactly when a write just FAILED — disk full, permissions —
+            # which is when a direct copy is likeliest to die mid-write and leave a
+            # truncated card-library.csv behind an error message claiming a clean
+            # rollback. `revert()` above stages into a temp and os.replace()s for
+            # precisely this reason (its comment says so); this was the one restore
+            # path that didn't.
             if backup:
                 target = os.path.abspath(DEFAULT_CSV)
                 bpath = os.path.join(os.path.dirname(target), backup)
                 if os.path.exists(bpath):
-                    shutil.copy2(bpath, target)
+                    fd, tmp = tempfile.mkstemp(suffix=".csv", dir=os.path.dirname(target))
+                    os.close(fd)
+                    try:
+                        shutil.copy2(bpath, tmp)
+                        os.replace(tmp, target)
+                        tmp = None
+                    finally:
+                        if tmp and os.path.exists(tmp):
+                            os.remove(tmp)
             return jsonify(ok=False, errors=[
                 f"Card written but its card-mana.csv row failed ({e}); rolled the "
                 "library add back to keep INV-02. Try again."]), 500
@@ -609,11 +626,15 @@ def revert():
 # Deck editing (live buildability)
 # --------------------------------------------------------------------------- #
 def _render_template(filename, replacements):
+    # `src`, NOT `html`: the local used to shadow the `html` MODULE (imported for
+    # escaping, the BS-09 fix) inside the one function whose whole job is emitting
+    # HTML — so the next person adding `html.escape(...)` here would get a runtime
+    # AttributeError on a str (Batch D minor).
     with open(os.path.join(REPO_ROOT, "templates", filename), encoding="utf-8") as fh:
-        html = fh.read()
+        src = fh.read()
     for k, v in replacements.items():
-        html = html.replace(k, v)
-    return html
+        src = src.replace(k, v)
+    return src
 
 
 def _decks_overview():
@@ -685,6 +706,35 @@ def _serialize_doc(meta, body):
         else:
             out.append(t.get("raw", ""))
     return "\n".join(out).rstrip("\n") + "\n"
+
+
+def _validate_meta(meta):
+    """Errors for `#:` header fields that would not survive the round-trip (BS2-28).
+
+    `_serialize_doc` emits `#: {key}: {value}` for whatever the user typed, and
+    nothing re-checked it: a key `deck.META_RE` cannot parse (`tier2`, `uncastable
+    ok` — plausible, since `#: uncastable-ok:` is a real header) SAVED fine, toasted
+    "Saved N card lines", passed INV-04 — and on the next load `_parse_deck_doc`
+    filed the line under {kind: "other"}, rendering it as a grey comment while
+    deck.py never saw the header at all. A success confirmation for a field the
+    editor silently disabled. The key grammar is META_RE's own: a letter/underscore
+    then letters/underscores/hyphens — no spaces, no digits."""
+    errs = []
+    for p in meta:
+        k = (p.get("key") or "").strip()
+        v = (p.get("value") or "").strip()
+        if not k:
+            if v:
+                errs.append(f"A header field with no NAME would be dropped (value "
+                            f"{v[:40]!r}). Name it, or clear the value.")
+            continue
+        if not re.fullmatch(r"[A-Za-z_][A-Za-z_-]*", k):
+            errs.append(f"Header field {k!r} is not a valid `#:` key (letters, "
+                        f"underscores and hyphens only, starting with a letter — no "
+                        f"spaces or digits). Saved as-is it would silently become a "
+                        f"comment the tooling never reads. Rename it (e.g. "
+                        f"{re.sub(r'[^A-Za-z_-]+', '-', k).strip('-') or 'field'!r}).")
+    return errs
 
 
 def _validate_body(body):
@@ -793,21 +843,34 @@ def decks():
     return _render_template("decks.html", {"__DATA__": payload})
 
 
+def _doc_token(path):
+    """Content hash of a deck file — the staleness token the editor echoes back on
+    save (BS2-26). Content, not mtime: a revert restores old-mtime bytes (the F-04
+    lesson), and it is the CONTENT the editor loaded that matters."""
+    try:
+        with open(path, "rb") as fh:
+            return hashlib.sha1(fh.read()).hexdigest()[:16]
+    except OSError:
+        return ""
+
+
 def _deck_payload(d, new=False):
     _, _, by_name_qty = deckmod.load_collection()
     if new:
         meta = [{"key": "name", "value": ""}, {"key": "format", "value": "Standard"},
                 {"key": "colors", "value": ""}, {"key": "notes", "value": ""}]
         body, ident, name, fname = [], None, "New deck", "(unsaved)"
-        flex = []
+        flex, token = [], ""
     else:
         meta, body = _parse_deck_doc(d["path"])
         ident, name = d["id"], (d["name"] or d["id"])
         fname = os.path.relpath(d["path"], REPO_ROOT)
         flex = deckmod.parse_flex(d["path"])
+        token = _doc_token(d["path"])
     return json.dumps({"id": ident, "name": name, "file": fname, "new": new,
                        "meta": meta, "body": body, "owned": by_name_qty,
-                       "flex": flex, "basics": sorted(deckmod.BASICS)},
+                       "flex": flex, "basics": sorted(deckmod.BASICS),
+                       "doc_token": token},
                       ensure_ascii=False).replace("<", "\\u003c")
 
 
@@ -851,11 +914,27 @@ def deck_save():
     d = deckmod.find_deck(did)
     if not d:
         return jsonify(ok=False, errors=[f"No deck with id {did!r}."]), 404
+    # Staleness gate (BS2-26), the same contract the CSV save() has had all along:
+    # this endpoint wrote the client's ENTIRE document over the file with no check
+    # that the file still matched what the page loaded — so an open tab silently
+    # reverted a CLI `swap --apply` (the documented G-06 workflow writes the same
+    # file), and `recommendations.csv` then recorded a decision against a deck
+    # state that no longer existed. The `.bak` made it recoverable; nothing made
+    # it VISIBLE. Token = content hash sent with the page, echoed on save.
+    sent = str(data.get("doc_token") or "")
+    if sent and sent != _doc_token(d["path"]):
+        return jsonify(ok=False, errors=[
+            "The deck file CHANGED since this page loaded it (a `swap --apply`, a "
+            "sync, or another tab?). Saving would silently overwrite that change — "
+            "reload the page, re-apply your edit, and save again."]), 409
     ok, errs, _ = _validate_body(body)
-    if not ok:
+    errs = _validate_meta(meta) + errs
+    if errs or not ok:
         return jsonify(ok=False, errors=errs), 400
     payload, status = _write_deck(d["path"], _serialize_doc(meta, body),
                                   _body_cards(body), backup=True)
+    if payload.get("ok"):
+        payload["doc_token"] = _doc_token(d["path"])
     return jsonify(**payload), status
 
 
@@ -872,7 +951,8 @@ def deck_create():
     if not name:
         return jsonify(ok=False, errors=["Give the deck a name first (the 'name' field)."]), 400
     ok, errs, _ = _validate_body(body)
-    if not ok:
+    errs = _validate_meta(meta) + errs
+    if errs or not ok:
         return jsonify(ok=False, errors=errs), 400
 
     nums = [int(dd["core"]) for dd in deckmod.discover_decks() if str(dd["core"]).isdigit()]

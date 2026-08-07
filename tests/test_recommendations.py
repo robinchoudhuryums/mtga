@@ -228,8 +228,14 @@ class TestItIsReportOnly:
         stack may call them. A future edit that wires feedback into a score has to
         delete this test, which is the point — it makes the decision visible."""
         import inspect
-        for fn in (deck.rank_cut_candidates, deck.suggest_scored,
-                   deck.fit_strength, deck.deck_quality_vector, deck.tier_band):
+        # `cut_keep_score` is the DELEGATE both cut rankings read — check_agreement
+        # treats it as the single definition of the cut score — and it was absent
+        # from this list, so a ledger read placed there satisfied every assertion
+        # while CLAUDE.md claimed the rule was "structurally forbidden". One call
+        # level deep is not structural (broad-scan Batch G).
+        for fn in (deck.rank_cut_candidates, deck.cut_keep_score, deck.suggest_scored,
+                   deck.fit_strength, deck.deck_quality_vector, deck.tier_band,
+                   deck._weakest_cut):
             src = inspect.getsource(fn)
             assert "load_recommendations" not in src, fn.__name__
             assert "RECS_CSV" not in src, fn.__name__
@@ -375,8 +381,15 @@ class TestSegments:
         assert "By segment" in out
         assert "noncreature cuts   20/20 (100%)" in out
         assert "creature cuts      0/20 (0%)" in out
-        # The weak segment must carry the reason, not just a number.
-        assert "coin flip" in out and "no normalization for tag count" in out
+        # The weak segment must carry context, not just a number — but NOT a claimed
+        # CAUSE. It used to assert "no normalization for tag count", and that mechanism
+        # was pre-registered, tested and refuted (BS3-04): normalizing lifts creatures
+        # 53% → 68% and collapses noncreature 83% → 51%, so the tool was pointing its
+        # reader at a change that would make it worse. Pin the honest shape instead —
+        # the flag, and that a tested-and-rejected hypothesis is named.
+        assert "coin flip" in out
+        assert "rejected" in out and "2026-08" in out
+        assert "no normalization for tag count" not in out
 
     def test_the_classifier_resolves_a_dfc_by_its_front_face(self):
         check = deck.cut_creature_classifier({"front": {"type": "Creature — Bird"}})

@@ -458,6 +458,24 @@ class TestRoleFillers:
         names = [r[1] for r in deck.owned_role_fillers(d, {"Removal (spot)"})]
         assert "Pool Zap" not in names
 
+    def test_a_maindecked_dfc_is_not_offered_under_its_other_spelling(self, world):
+        """BS2-19: carddata keys a DFC under BOTH spellings, and the raw-name in_deck
+        filter suppressed only the spelling the deck file used — the other key sailed
+        through and the deck was offered its OWN maindecked card as a 0-wildcard
+        filler (25 such rows roster-wide at full limit, reaching `tier --to` and
+        `redundancy`)."""
+        d = world(["1 Pool Door", "20 Swamp"], owned=["Pool Door"])
+        names = [r[1] for r in deck.owned_role_fillers(d, {"Card advantage"})]
+        assert all("Pool Door" not in n for n in names), names
+
+    def test_an_unowned_maindecked_dfc_is_not_offered_as_a_craft(self, world):
+        """The craft sibling has the same join; the owned_qty skip only masks the
+        owned case — a WIP craft target already maindecked under its front name was
+        offered as a craft for its own deck."""
+        d = world(["1 Pool Door", "20 Swamp"], owned=[])
+        names = [r[2] for r in deck.craft_role_fillers(d, {"Card advantage"})]
+        assert all("Pool Door" not in n for n in names), names
+
     def test_owned_fillers_exclude_a_card_illegal_in_the_deck_format(self, world):
         """Owning a card is not a licence to play it. `craft_role_fillers` always applied
         the format check and its owned sibling did not, so `tier --to A` printed one list
@@ -680,3 +698,20 @@ class TestXCostCards:
         import inspect
         src = inspect.getsource(deck.deck_quality_vector) + inspect.getsource(deck.tier_band)
         assert "x_cost_cards" not in src
+
+
+class TestQualityVectorOwnership:
+    """BS2-22: deck_quality_vector compared ownership per LINE, the exact bug
+    cmd_list records as fixed and cmd_check aggregates against — a card split
+    across two printing lines read buildable while `check` said short, and
+    preflight folds `buildable` into its READY/BLOCKED verdict."""
+
+    def test_a_card_split_across_lines_compares_its_total(self, world):
+        # 3 + 2 = 5 needed against 4 owned: per-line (4>=3, 4>=2) read buildable.
+        d = world(["3 Pool Zap", "2 Pool Zap", "20 Swamp"], owned=["Pool Zap"])
+        vec = deck.deck_quality_vector(d)
+        assert vec["buildable"] is False
+
+    def test_an_unsplit_deck_is_unchanged(self, world):
+        d = world(["4 Pool Zap", "20 Swamp"], owned=["Pool Zap"])
+        assert deck.deck_quality_vector(d)["buildable"] is True

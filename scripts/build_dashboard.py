@@ -394,7 +394,8 @@ TEMPLATE = r"""<!DOCTYPE html>
   .hsub .link { cursor:pointer; color:var(--accent-ink); }
   .kbd { font-family:var(--font-mono); border:1px solid var(--line2); border-radius:5px; padding:1px 6px; font-size:11px; }
   .stalechip { cursor:pointer; font-size:11px; font-weight:600; padding:1px 8px; border-radius:999px;
-    background:rgba(214,150,40,.16); color:var(--warn); border:1px solid rgba(230,177,60,.3); }
+    background:color-mix(in srgb, var(--warn) 16%, transparent); color:var(--warn);
+    border:1px solid color-mix(in srgb, var(--warn) 30%, transparent); }
   .hactions { display:flex; gap:11px; flex-wrap:wrap; align-items:stretch; }
   .iconbtn { align-self:stretch; width:42px; border-radius:12px; border:1px solid var(--line); background:var(--fill);
     color:var(--ink2); font-size:15px; cursor:pointer; transition:all .15s; }
@@ -485,9 +486,17 @@ TEMPLATE = r"""<!DOCTYPE html>
   .pin.on { color:var(--accent-ink); }
   .badges { display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; }
   .badge { font-size:11px; font-weight:600; padding:2px 9px; border-radius:999px; white-space:nowrap; }
-  .b-ok { background:rgba(58,204,138,.14); color:var(--ok); border:1px solid rgba(99,214,154,.28); }
-  .b-missing { background:rgba(236,110,90,.16); color:var(--bad); border:1px solid rgba(240,138,114,.3); }
-  .b-short { background:rgba(214,150,40,.16); color:var(--warn); border:1px solid rgba(230,177,60,.3); }
+  /* Status chips: fill AND border derive from the status token, which already flips
+     per theme — I-03 moved only the `color:` here, leaving ~14 dark-tuned literal
+     rgba fills whose .28-.3 borders fell to roughly 1.3:1 over light mode's white
+     panel, so the pills lost their chip shape and read as loose coloured words
+     (broad-scan S-9). color-mix keeps both themes on ONE declaration. */
+  .b-ok { background:color-mix(in srgb, var(--ok) 14%, transparent); color:var(--ok);
+    border:1px solid color-mix(in srgb, var(--ok) 28%, transparent); }
+  .b-missing { background:color-mix(in srgb, var(--bad) 16%, transparent); color:var(--bad);
+    border:1px solid color-mix(in srgb, var(--bad) 30%, transparent); }
+  .b-short { background:color-mix(in srgb, var(--warn) 16%, transparent); color:var(--warn);
+    border:1px solid color-mix(in srgb, var(--warn) 30%, transparent); }
   .deck .arch { color:var(--ink2); font-size:12.5px; margin:7px 0 9px; line-height:1.45; min-height:2.6em; }
   .deck .metaline, .modal .metaline { display:flex; gap:9px; align-items:center; flex-wrap:wrap; font-size:11.5px; color:var(--ink2); }
   .vtag { border:1px dashed var(--line2); border-radius:999px; padding:1px 9px; color:var(--ink2b); }
@@ -614,11 +623,14 @@ TEMPLATE = r"""<!DOCTYPE html>
   table.at tbody tr.clk:hover td { background:var(--accent-bg); }
   a.goto { color:var(--accent); cursor:pointer; }
   .vpill { font-size:11px; font-weight:700; padding:2px 9px; border-radius:999px; white-space:nowrap; text-transform:uppercase; letter-spacing:.03em; }
-  .v-tune { background:rgba(236,110,90,.16); color:var(--bad); } .v-craft { background:rgba(214,150,40,.16); color:var(--warn); }
-  .v-review { background:var(--accent-bg); color:var(--accent-ink); } .v-ok { background:rgba(58,204,138,.14); color:var(--ok); }
+  .v-tune { background:color-mix(in srgb, var(--bad) 16%, transparent); color:var(--bad); }
+  .v-craft { background:color-mix(in srgb, var(--warn) 16%, transparent); color:var(--warn); }
+  .v-review { background:var(--accent-bg); color:var(--accent-ink); } .v-ok { background:color-mix(in srgb, var(--ok) 14%, transparent); color:var(--ok); }
   .tierpill { font-size:11px; font-weight:800; padding:2px 8px; border-radius:6px; min-width:20px; display:inline-block; text-align:center; }
-  .t-s { background:rgba(143,123,242,.28); color:var(--accent-ink); } .t-a { background:rgba(58,204,138,.2); color:var(--ok); }
-  .t-b { background:rgba(214,150,40,.2); color:var(--warn); } .t-c { background:rgba(236,110,90,.16); color:var(--bad); }
+  .t-s { background:color-mix(in srgb, var(--accent) 28%, transparent); color:var(--accent-ink); }
+  .t-a { background:color-mix(in srgb, var(--ok) 20%, transparent); color:var(--ok); }
+  .t-b { background:color-mix(in srgb, var(--warn) 20%, transparent); color:var(--warn); }
+  .t-c { background:color-mix(in srgb, var(--bad) 16%, transparent); color:var(--bad); }
   .t-d { background:var(--line2); color:var(--ink2); }
   .cell-flag { color:var(--bad); font-weight:600; } .cell-ok { color:var(--ink3); } .cell-muted { color:var(--ink3); }
   .why { color:var(--ink2); font-size:11.5px; }
@@ -642,8 +654,8 @@ TEMPLATE = r"""<!DOCTYPE html>
   /* recently-edited panel */
   .recdelta { display:flex; flex-wrap:wrap; gap:5px; margin:5px 0 8px; }
   .recdelta span { font-size:11.5px; font-weight:600; padding:1px 8px; border-radius:999px; font-family:var(--font-mono); }
-  .radd { color:var(--ok); background:rgba(75,189,131,.12); }
-  .rrem { color:var(--bad); background:rgba(221,106,77,.12); }
+  .radd { color:var(--ok); background:color-mix(in srgb, var(--ok) 12%, transparent); }
+  .rrem { color:var(--bad); background:color-mix(in srgb, var(--bad) 12%, transparent); }
   .reclog { margin:2px 0 9px; padding:0; list-style:none; }
   .reclog li { font-size:12px; color:var(--ink2); padding:1px 0; }
   .reclog .recdate { color:var(--ink3); font-family:var(--font-mono); font-size:11px; margin-right:7px; }
@@ -940,7 +952,16 @@ const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) 
 // giving it role="button" would announce a control that isn't one.
 function a11y(node, opts){
   const o = opts || {};
-  node.setAttribute('role', o.role || 'button');
+  // role:null means KEEP the element's native role. The unconditional 'button'
+  // default erased load-bearing semantics wherever a11y() touched a semantic
+  // element: role="button" on the nine <h2> section headers removed every heading
+  // from the accessibility tree (heading-jump navigation — NVDA/JAWS H, the
+  // VoiceOver rotor — found nothing on a ~2000-line page), and on the sort <th>s it
+  // replaced columnheader, which both broke cell-by-cell table navigation and made
+  // aria-sort invalid, silently undoing the S3 fix that re-applies it every redraw
+  // (broad-scan BS2-16). Interactive-but-semantic elements keep their role and gain
+  // focus/keys/state attributes instead.
+  if (o.role !== null) node.setAttribute('role', o.role || 'button');
   node.tabIndex = 0;
   if (o.label) node.setAttribute('aria-label', o.label);
   if (o.pressed != null) node.setAttribute('aria-pressed', String(!!o.pressed));
@@ -1127,10 +1148,44 @@ function positionPreview(x, y){
   previewBox.style.left = left + 'px'; previewBox.style.top = top + 'px';
 }
 function hidePreview(){ previewOn = false; previewBox.style.display = 'none'; previewBox.innerHTML = ''; }
+// Complete the tabs pattern the per-tab a11y() calls start (Batch E / S-2):
+// role="tab" outside a tablist is invalid ARIA — "the container role is what makes
+// the individual roles mean anything", the exact rule tests/test_templates.py pins
+// for the EDITOR's strip, whose comment claims it mirrors this file. It didn't:
+// this side had neither the container role, a tabpanel, nor aria-controls, so a
+// screen reader announced "Craft, tab" with no group, no "2 of 5", and no
+// relationship to the content below. Also installs Left/Right arrow navigation and
+// keeps aria-selected live across clicks (the strips don't rebuild on switch).
+function tablist(strip, panel, label, pid){
+  strip.setAttribute('role','tablist');
+  strip.setAttribute('aria-label', label);
+  panel.id = pid; panel.setAttribute('role','tabpanel');
+  [...strip.children].forEach(t => t.setAttribute('aria-controls', pid));
+  strip.addEventListener('click', () => [...strip.children].forEach(t =>
+    t.setAttribute('aria-selected', String(t.classList.contains('on')))));
+  strip.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const ts = [...strip.children]; const i = ts.indexOf(document.activeElement);
+    if (i < 0) return;
+    e.preventDefault();
+    const n = ts[(i + (e.key === 'ArrowRight' ? 1 : ts.length - 1)) % ts.length];
+    n.focus(); n.click();
+  });
+}
+
 function attachHover(node, name){
   node.addEventListener('mouseenter', e => showPreview(name, e.clientX, e.clientY));
   node.addEventListener('mousemove', e => { if (previewOn) positionPreview(e.clientX, e.clientY); });
   node.addEventListener('mouseleave', hidePreview);
+  // Keyboard parity (Batch E / S-7): I-01 made these nodes focusable and announced,
+  // but the card image — the EVIDENCE for a craft decision (G-52 in interface form)
+  // — only appeared on mouse hover. Mirror it on focus/blur, positioned from the
+  // node's own box since there is no cursor.
+  node.addEventListener('focus', () => {
+    const r = node.getBoundingClientRect();
+    showPreview(name, r.right, r.top + r.height / 2);
+  });
+  node.addEventListener('blur', hidePreview);
 }
 
 // ---------- generic sortable table ----------
@@ -1142,7 +1197,7 @@ function sortableTable(cls, cols, rows, sortState, onRowExtra, opts){
   const thead = el('thead'), htr = el('tr');
   cols.forEach(c => {
     const th = a11y(el('th', (c.num?'num':'') + (sortState.key===c.key?' on':''), ''),
-                    {label:'Sort by ' + c.label});
+                    {label:'Sort by ' + c.label, role:null});   // keep columnheader — aria-sort lives there
     if (sortState.key===c.key) th.setAttribute('aria-sort', sortState.dir>0?'ascending':'descending');
     th.textContent = c.label + (sortState.key===c.key ? (sortState.dir>0?' ▲':' ▼') : '');
     th.onclick = () => { if (sortState.key===c.key) sortState.dir = -sortState.dir; else { sortState.key = c.key; sortState.dir = c.num?-1:1; } redraw(); };
@@ -1164,7 +1219,7 @@ function sortableTable(cls, cols, rows, sortState, onRowExtra, opts){
     });
     // progressive-disclosure toggle row (only when the list is longer than the cap)
     if (opts.limit && rs.length > opts.limit){
-      const tr = el('tr','morerow'); const td = a11y(el('td')); td.colSpan = cols.length;
+      const tr = el('tr','morerow'); const td = a11y(el('td'), {role:null}); td.colSpan = cols.length;  // role=button inside a <tr> breaks the row's structure
       td.textContent = opts._exp ? ('▴ show top ' + opts.limit) : ('▾ show all ' + rs.length + '  (+' + (rs.length - opts.limit) + ')');
       td.onclick = () => { opts._exp = !opts._exp; redraw(); };
       tr.appendChild(td); tb.appendChild(tr);
@@ -1313,6 +1368,7 @@ function deckCard(d, variants){
     const curTab = (STATE._tab && STATE._tab[d.id]) || 'craft';
     const body = el('div');
     TABS.forEach(([k,label]) => { const tb = a11y(el('span','tab' + (k===curTab?' on':''), label), {role:'tab', selected:k===curTab}); tb.onclick = () => { STATE._tab = STATE._tab||{}; STATE._tab[d.id] = k; body.innerHTML=''; body.appendChild(detailBody(d,k)); [...tabs.children].forEach(x => x.classList.remove('on')); tb.classList.add('on'); }; tabs.appendChild(tb); });
+    tablist(tabs, body, 'Deck ' + d.id + ' analysis tabs', 'tabpanel-' + d.id);
     det.appendChild(tabs); body.appendChild(detailBody(d, curTab)); det.appendChild(body); card.appendChild(det);
   }
   // Nested variants — a labelled, always-visible strip; each row opens the full variant.
@@ -1849,6 +1905,7 @@ function modalEl(d){
   const tabs = el('div','tabs'); const cur = {k:(STATE._mtab||'craft')}; const bodyIn = el('div');
   const bar = el('div'); bar.style.display='flex'; bar.style.gap='6px'; bar.style.flexWrap='wrap'; bar.style.alignItems='center'; bar.style.marginBottom='12px';
   TABS.forEach(([k,label]) => { const tb = a11y(el('span','tab' + (k===cur.k?' on':''), label), {role:'tab', selected:k===cur.k}); tb.onclick = () => { STATE._mtab = k; cur.k = k; bodyIn.innerHTML=''; bodyIn.appendChild(detailBody(d,k)); [...tabs.children].forEach(z => z.classList.remove('on')); tb.classList.add('on'); }; tabs.appendChild(tb); });
+  tablist(tabs, bodyIn, 'Deck ' + d.id + ' analysis tabs (modal)', 'tabpanel-modal');
   bar.appendChild(tabs); bar.appendChild(el('span','grow'));
   const imp = el('button','miniimport','⧉ Import'); imp.onclick = () => writeClip((d.detail&&d.detail.arena)||'', () => toast('#'+d.id+' import copied')); bar.appendChild(imp);
   const prn = el('button','ghostbtn','🖨 Print'); prn.onclick = () => printDeck(d); bar.appendChild(prn);
@@ -1975,7 +2032,7 @@ function applyCollapsed(id, collapsed){
     applyCollapsed(id, collapsed);
     // The section headers are the page's primary navigation — every section collapses
     // through them — and they were <h2> with a bare onclick (I-01).
-    a11y(h, {label:label + ' section', expanded:!collapsed});
+    a11y(h, {label:label + ' section', expanded:!collapsed, role:null});  // keep the <h2> a heading
     h.onclick = () => { const c = !sec.classList.contains('collapsed'); STATE.secCollapsed[id] = c; applyCollapsed(id, c); h.setAttribute('aria-expanded', String(!c)); persist(); };
   });
   // scroll-spy: highlight the nav chip of the last section scrolled past

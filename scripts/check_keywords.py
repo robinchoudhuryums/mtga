@@ -229,20 +229,30 @@ def main():
         print(f"Baseline updated: {n} acknowledged unindexed keyword(s) written to "
               f"{os.path.basename(BASELINE)}.")
         return 0
+    # ALL THREE signals, exactly as check_all consumes them (BS2-C small leaks):
+    # a standalone run used to report only the unindexed list — and, worse,
+    # `stale_registry_entries` was DEFINED BELOW the `if __name__` guard, so under
+    # `python3 scripts/check_keywords.py` the sys.exit fired before the function
+    # existed at all. Anyone debugging a flavor_overreach or stale-registry warning
+    # by re-running the gate by hand got a clean bill of health.
     res = check(text_shape=args.text_shape, include_baselined=args.all)
-    if not res:
-        print("No new unindexed mechanics (owned cards, vs baseline).")
+    over = flavor_overreach()
+    stale = stale_registry_entries()
+    if not (res or over or stale):
+        print("No new unindexed mechanics (owned cards, vs baseline); no denylist "
+              "overreach; no stale registry entries.")
         return 0
-    scope = "unindexed" if args.all else "NEW unindexed (since baseline)"
-    print(f"{len(res)} {scope} mechanic(s) on owned cards — add each to "
-          "tag_synergies KEYWORD_THEMES (a synergy) or FLAVOR_KEYWORDS (flavor):\n")
-    for kw, ex, sig in res:
-        print(f"  [{sig:10}] {kw:26} e.g. {ex}")
+    if res:
+        scope = "unindexed" if args.all else "NEW unindexed (since baseline)"
+        print(f"{len(res)} {scope} mechanic(s) on owned cards — add each to "
+              "tag_synergies KEYWORD_THEMES (a synergy) or FLAVOR_KEYWORDS (flavor):\n")
+        for kw, ex, sig in res:
+            print(f"  [{sig:10}] {kw:26} e.g. {ex}")
+    for kw, _n, note in over:
+        print(f"  FLAVOR_KEYWORDS overreach: {kw!r} — {note}")
+    for reg, kw, note in stale:
+        print(f"  stale {reg} entry {kw!r} — {note}")
     return 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())
 
 
 def stale_registry_entries():
@@ -291,3 +301,7 @@ def stale_registry_entries():
                         "acknowledged-but-unindexed, yet on no card in the corpus — "
                         "drop it (check_keywords.py --update-baseline rewrites the file)"))
     return out
+
+
+if __name__ == "__main__":
+    sys.exit(main())

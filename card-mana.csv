@@ -6020,11 +6020,6 @@ Iron Hills,,0,
 Lake-town,,0,
 The Lonely Mountain,,0,
 Mirkwood,,0,
-Plains,,0,
-Island,,0,
-Swamp,,0,
-Mountain,,0,
-Forest,,0,
 "Fíli and Kíli, Joyous",{2}{R},3,Haste
 "Gandalf, Party Guest",{1}{U}{R}{W},4,
 "Thorin, King of Durin's Folk",{3}{R}{W},5,Treasure
@@ -9336,9 +9331,6 @@ Rebuild the City,{3}{B}{R}{G},6,
 Tyvar the Bellicose,{2}{B}{G},4,
 "Karn, Legacy Reforged",{5},5,
 Drannith Ruins,,0,
-Case of the Lost Witness,{1}{U},2,Solved;Conjure
-Oracle of the Alpha,{2}{U},3,Scry;Flying;Conjure
-Perforator Crocodile,{3}{B}{B}{B},6,Cycling;Conjure
 Leonin Relic-Warder,{W}{W},2,
 Green Sun's Zenith,{X}{G},1,
 Ranger-Captain of Eos,{1}{W}{W},3,
@@ -14258,21 +14250,79 @@ Escape Tunnel,,0,
 Foot Headquarters,,0,
 Northampton Farm,,0,
 TCRI Building,,0,
+"70,000 Light-Years from Home",{1}{W},2,
 "Brad Boimler, Eager Ensign",{1}{W},2,Lifelink
+Command Decision,{1}{W},2,
+DOT-7 Repair Squad,{3}{W},4,Flying
 Dr. Beverly Crusher,{2}{W},3,
+Emergency Medical Hologram,{W},1,
+Federation Field Medic,{3}{W},4,Vigilance
+Free Borg Revolutionaries,{3}{W}{W},5,Landcycling;Basic landcycling;Typecycling;Cycling
+Malfunctioning Holodeck,{2}{W},3,Ward
+"Picard, Leading by Example",{1}{W},2,
+"Saavik, Stoic Student",{4}{W},5,Flash
 Set Phasers to . . .,{W},1,
+Shields Up!,{1}{W},2,
+Shuttle Ace,{4}{W},5,
+Tactical Officer,{1}{W},2,
+Cloistered Telepath,{1}{U},2,Flash
 Consider the Prime Directive,{2}{U},3,
+Dominion Saboteur,{4}{U},5,
+Federation Probe,{U},1,Flying;Surveil
+Guidance Failure,{3}{U},4,
 Highly Illogical,{1}{U},2,Kicker
 "Hoshi Sato, Exolinguist",{4}{U},5,
+Humpback Whales,{4}{U}{U},6,Vigilance;Landcycling;Basic landcycling;Ward;Typecycling;Cycling
+Marooned,{U},1,Enchant
+"V'Ger, the Intruder",{6}{U},7,Flying
+Assault Drone,{3}{B},4,
+Automated Warfare System,{2}{B},3,Flying
+Bat'leth,{2}{B},3,Equip
+Battle-Scarred Survivalist,{1}{B},2,Menace
+Cha'DIch Investigator,{4}{B},5,
+Collective Drone,{1}{B},2,
+Eject the Warp Core,{1}{B},2,Kicker
+A Good Day to Die,{B},1,
+"He's Dead, Jim",{3}{B},4,Surveil
+Hive Mind Coprocessor,{4}{B},5,
 In the Pale Moonlight,{3}{B}{B},5,Investigate
+Organic Avulsion Unit,{2}{B},3,
+Relentless Drednok,{B},1,Lifelink
+Resistance Is Futile,{1}{B},2,
+Rogue Artificial Intelligence,{4}{B}{B},6,Surveil;Landcycling;Basic landcycling;Typecycling;Cycling
 Salt Vampire,{1}{B},2,Lifelink
 "Beckett Mariner, Impetuous Ensign",{1}{R},2,First strike
+Cantankerous Captain,{2}{R},3,
 Captain James T. Kirk,{2}{R},3,
+Captain's Tutelage,{1}{R},2,Enchant;Flash
+Horta,{4}{R}{R},6,Landcycling;Trample;Basic landcycling;Typecycling;Cycling
+Khaaaaaaaaaaaannn!,{X}{R},1,
+"La'An Noonien-Singh, Security",{2}{R}{R},4,
+Munitions Enthusiast,{1}{R},2,Trample
+Perils of the Past,{1}{R},2,
+Planetary Patrol,{1}{R},2,Landfall
+Plasma Cascade,{2}{R},3,
+Reckless Impulse,{1}{R},2,
+Silicate Surveyor,{4}{R},5,Reach
 Amok Time,{2}{G},3,Fight
 Captain Kathryn Janeway,{3}{G},4,Explore
+Cold-Blooded Crew,{4}{G}{G},6,Landcycling;Basic landcycling;Typecycling;Cycling
+Common Goal,{1}{G},2,
+Dathon and Picard at El-Adrel,{2}{G},3,
+Dominion Supervisor,{2}{G},3,
+First Contact,{1}{G},2,Mill
+"I'm a Doctor, Not a . . .",{G},1,
+Moopsy,{G},1,Deathtouch
+Mugato,{3}{G}{G},5,Reach;Vigilance;Deathtouch
+Saurian Explorer,{3}{G},4,Landfall
+Support Mission,{2}{G},3,
+Syndicate Liquidators,{4}{G},5,Trample;Landfall
+Xenobotanist,{1}{G},2,
+Xindi Surveyors,{2}{G},3,Landfall
 The City on the Edge of Forever,{3}{W}{B},5,
 Seven of Nine,{2}{U}{B},4,Face a dilemma
 Crystalline Entity,{8},8,Flying
+Cybernetic Specialist,{2},2,Surveil
 "U.S.S. Enterprise-D, Galaxy-Class",{3},3,Station
 Godless Shrine,,0,
 Sacred Foundry,,0,
@@ -14280,6 +14330,11 @@ Steam Vents,,0,
 Stomping Ground,,0,
 Temple Garden,,0,
 Watery Grave,,0,
+Plains,,0,
+Island,,0,
+Swamp,,0,
+Mountain,,0,
+Forest,,0,
 Magmaw,{3}{R}{R},5,
 "Leovold, Emissary of Trest",{B}{G}{U},3,
 Ancient Tomb,,0,
@@ -14466,7 +14521,6 @@ Manaform Hellkite,{2}{R}{R},4,Flying
 Markov Retribution,{2}{R},3,
 Olivia's Attendants,{4}{R}{R},6,Menace
 Pyre Spawn,{4}{R}{R},6,
-Reckless Impulse,{1}{R},2,
 Rending Flame,{2}{R},3,
 Runebound Wolf,{1}{R},2,
 Sanguine Statuette,{1}{R},2,
@@ -15376,6 +15430,7 @@ Rising Chicane,,0,Max speed;Start your engines!
 Benalish Knight-Counselor,{W},1,Enlist
 Priest of Possibility,{1}{W},2,
 Pull of the Mist Moon,{1}{W}{W},3,Kicker
+Oracle of the Alpha,{2}{U},3,Scry;Flying;Conjure
 Skywriter Djinn,{3}{U},4,Flying;Domain;Conjure
 Trove Mage,{2}{U},3,Seek
 Vesuvan Mist,{1}{U},2,Conjure;Kicker
@@ -15588,12 +15643,14 @@ Forsaken Crossroads,,0,Scry
 Scrutiny of the Guildpact,{1}{W},2,Incorporate
 Sleuth Instructor,{1}{W},2,Seek;Cloak;Disguise
 Spotlight Falcon,{2}{W}{W},4,Flying;Collect evidence;Conjure
+Case of the Lost Witness,{1}{U},2,Solved;Conjure
 Emporium Thopterist,{1}{U},2,Conjure
 Excogitator Sphinx,{2}{U}{U},4,Flying;Investigate;Seek
 Mapping the Maze,{1}{U},2,Incorporate
 Ominous Lockbox,{1}{U},2,
 Cackling Observer,{1}{B}{B},3,Flying;Seek
 Lurking Spinecrawler,{3}{B},4,Incorporate
+Perforator Crocodile,{3}{B}{B}{B},6,Cycling;Conjure
 Snarlfang Vermin,{B},1,Suspect
 Case of the Market Melee,{1}{R},2,Solved
 Concert Kaboomist,{1}{R}{R},3,Trample;Disguise

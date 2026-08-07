@@ -118,18 +118,70 @@ def parse(text, skip_basics=False):
 
 
 def key(name, set_code, collector):
-    return (name.lower(), set_code.lower(), collector.lower())
+    """Printing key, FRONT-face named. The library stores most DFCs under the front
+    name but a handful under the full "A // B" (the DSK Rooms), and a paste can name
+    either spelling. An exact-name key missed the full-name rows, so re-importing an
+    owned DFC APPENDED a second row for the same physical printing — the owned count
+    then SPLIT across two spellings where `lib.owned_qty` resolves only one, and the
+    collection silently under-reported (broad-scan BS2-02). Two distinct cards can
+    never share (front, set, collector): a collector number is unique within a set."""
+    return (name.split(" // ")[0].strip().lower(), set_code.lower(), collector.lower())
 
 
 def merge(rows, entries, sum_mode):
-    """Merge parsed entries into rows (list of dicts). Returns (added, updated)."""
+    """Merge parsed entries into rows (list of dicts). Returns (added, updated, notes).
+
+    `notes` are per-line advisories the caller should surface (currently only the
+    set-less-line handling below)."""
     index = {}
     for r in rows:
         index[key(r.get("Card Name", ""), r.get("Set Code", ""),
                   r.get("Collector #", ""))] = r
+    # Summed owned per FRONT name, for the set-less path: copies are fungible across
+    # printings, so a name-only claim compares against the TOTAL, never one row.
+    by_front = {}
+    for r in rows:
+        f = key(r.get("Card Name", ""), "", "")[0]
+        by_front.setdefault(f, []).append(r)
 
     added = updated = 0
+    notes = []
     for qty, name, set_code, collector in entries:
+        # A SET-LESS line (`4 Llanowar Elves`, a website list) is a NAME-level claim,
+        # not a printing. It used to key on ("name","","") which matches no real row,
+        # so merge APPENDED a phantom blank-set printing — and since every consumer
+        # SUMS across printings, a real 4 then read as 5: the one OVER-count path in a
+        # subsystem whose documented failure mode is uniformly undercount, later
+        # legitimized by enrich backfilling the phantom row (broad-scan BS2-24;
+        # reconcile_crafts already refuses such lines). For a card the library holds,
+        # compare against the summed total and top up the first row only if the line
+        # exceeds it (lower-bound semantics); for an unknown card, keep the blank-set
+        # append but SAY so, since nothing else can represent it.
+        if not set_code and not collector:
+            fam = by_front.get(key(name, "", "")[0])
+            if fam:
+                total = sum(int(q) for r in fam
+                            if (q := (r.get("Quantity Owned") or "").strip()).isdigit())
+                if sum_mode or qty > total:
+                    first = fam[0]
+                    cur = (first.get("Quantity Owned") or "").strip()
+                    cur_n = int(cur) if cur.isdigit() else 0
+                    bump = qty if sum_mode else qty - total
+                    first["Quantity Owned"] = str(cur_n + bump)
+                    updated += 1
+                    notes.append(f"{name}: set-less line ({qty}) exceeded the summed "
+                                 f"owned total ({total}) — topped up the "
+                                 f"({first.get('Set Code') or '?'}) printing"
+                                 if not sum_mode else
+                                 f"{name}: set-less line summed onto the "
+                                 f"({first.get('Set Code') or '?'}) printing")
+                else:
+                    notes.append(f"{name}: set-less line ({qty}) already covered by the "
+                                 f"summed owned total ({total}) — no change")
+                continue
+            notes.append(f"{name}: set-less line for a card not in the library — added "
+                         "with a BLANK set code; prefer a printed Arena export or "
+                         "reconcile_crafts.py so the printing is real")
         k = key(name, set_code, collector)
         existing = index.get(k)
         if existing is None:
@@ -153,7 +205,7 @@ def merge(rows, entries, sum_mode):
             if str(new_n) != cur:
                 existing["Quantity Owned"] = str(new_n)
                 updated += 1
-    return added, updated
+    return added, updated, notes
 
 
 def main():
@@ -167,7 +219,14 @@ def main():
                     help="ignore basic lands (use when reconciling from a deck list)")
     args = ap.parse_args()
 
-    text = sys.stdin.read() if args.source == "-" else open(args.source, encoding="utf-8").read()
+    # A bad path was a raw traceback here, while import_collection / verify_ingest /
+    # parse_matches all print a clean "Could not read …" (broad-scan Batch G).
+    try:
+        text = (sys.stdin.read() if args.source == "-"
+                else open(args.source, encoding="utf-8").read())
+    except OSError as e:
+        eprint(f"Could not read {args.source!r}: {e}")
+        return 1
     entries, warnings = parse(text, skip_basics=args.skip_basics)
     for w in warnings:
         eprint(f"WARN:  {w}")
@@ -180,11 +239,21 @@ def main():
     except FileNotFoundError:
         rows = []
 
-    added, updated = merge(rows, entries, args.sum)
+    added, updated, notes = merge(rows, entries, args.sum)
+    for n in notes:
+        eprint(f"NOTE:  {n}")
 
     if args.dry_run:
         print(f"[dry-run] {len(entries)} card line(s): would add {added} new, "
               f"update {updated} existing. Nothing written.")
+        return 0
+
+    if not (added or updated):
+        # Don't rewrite (and .bak) a 614KB file that isn't changing: build_mana.py
+        # avoids exactly this for exactly this reason, and import_collection gates on
+        # `changed`. A re-imported paste used to litter a backup per run (Batch G).
+        print(f"Checked {len(entries)} card line(s): nothing to change; "
+              f"{args.library} left untouched.")
         return 0
 
     write_rows(rows, args.library)

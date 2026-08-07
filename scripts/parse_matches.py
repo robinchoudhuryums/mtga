@@ -53,7 +53,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import REPO_ROOT, atomic_write, eprint  # noqa: E402
+from lib import REPO_ROOT, atomic_write, csv_schema_error, eprint  # noqa: E402
 
 MATCHES_CSV = os.path.join(REPO_ROOT, "matches.csv")
 HEADER = ["Date", "Match ID", "Deck", "Course ID", "Event", "Result",
@@ -202,6 +202,13 @@ def load_matches(path=MATCHES_CSV):
 
 
 def write_matches(rows, path=MATCHES_CSV):
+    # Same F-02 mirror guard as the two builders (broad-scan Batch G): `--out`
+    # accepts any path, and this writer emits only HEADER — pointed at a canonical
+    # CSV it would overwrite it with the match schema.
+    problem = csv_schema_error(path, HEADER)
+    if problem:
+        raise ValueError(problem)
+
     def _w(fh):
         w = csv.DictWriter(fh, fieldnames=HEADER, quoting=csv.QUOTE_MINIMAL)
         w.writeheader()

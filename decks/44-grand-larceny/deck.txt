@@ -43,7 +43,7 @@
 #: archetype: 14 cards here and by no other deck on the roster.
 #: tier: B — Dimir heist tempo-attrition, one band BELOW the A metrics floor, and
 #: tier: PROVISIONAL (unplayed brew, 18 craft targets). The floor reads A on interaction
-#: tier: 11 +1? across a 2.94 curve — six of it instant-speed, three able to answer a
+#: tier: 10 +1? across a 2.94 curve — six of it instant-speed, four able to answer a
 #: tier: noncreature permanent — and if anything the floor UNDER-states the deck: card
 #: tier: advantage scores 1 only because the classifier finds no role for the heist
 #: tier: package (Cruelclaw's Heist, Outrageous Robbery, Psychic Whorl, End of the

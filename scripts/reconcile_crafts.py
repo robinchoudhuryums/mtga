@@ -94,7 +94,7 @@ def reconcile(export_lines, apply=False, set_exact=False):
     alias_front(pool_by_name)
 
     lib = _read(LIB)
-    lib_keys = {(r["Card Name"].lower(), r["Set Code"].upper(), str(r["Collector #"])) for r in lib}
+    lib_keys = {(_front(r["Card Name"]).lower(), r["Set Code"].upper(), str(r["Collector #"])) for r in lib}
     mana = _read(MANA)
     mana_names = {r["Card Name"].lower() for r in mana}
     wish = _read(WISH)
@@ -132,8 +132,15 @@ def reconcile(export_lines, apply=False, set_exact=False):
         rec_coll = str(pr["Collector #"]) if exact else coll
         key = (front.lower(), rec_set.upper(), str(rec_coll))
 
-        # library: add or set-quantity
-        existing = next((r for r in lib if r["Card Name"].lower() == front.lower()
+        # library: add or set-quantity. Match the stored row by FRONT face, not exact
+        # name — the library stores most DFCs under the front name but a handful under
+        # the full "A // B" (the DSK Rooms), and an exact-name join missed those rows
+        # and APPENDED a duplicate front-name row for a printing already owned. The
+        # owned count then split across two spellings where `lib.owned_qty` resolves
+        # only one — the repair tool manufacturing the undercount it exists to repair
+        # (broad-scan BS2-02). (set, collector) keeps the join unambiguous: a collector
+        # number is unique within a set, so two DISTINCT cards can never collide here.
+        existing = next((r for r in lib if _front(r["Card Name"]).lower() == front.lower()
                          and r["Set Code"].upper() == rec_set.upper()
                          and str(r["Collector #"]) == str(rec_coll)), None)
         if existing is None:
@@ -157,24 +164,30 @@ def reconcile(export_lines, apply=False, set_exact=False):
                 note = "" if set_exact or qty >= old_n else f"  (kept ≥; paste had {qty})"
                 bumped.append(f"{front}: {old_s or '0'} -> {new_n}{note}")
 
-        # mana: ensure a row under the library (front) name
-        if front.lower() not in mana_names:
+        # mana: ensure a row under the name the LIBRARY row actually carries — the
+        # front for a new row (the convention), but the stored spelling for an
+        # existing one: the DSK Rooms live in the library (and card-mana.csv) under
+        # the full "A // B", and checking the FRONT here appended a spurious
+        # front-named mana row for a card whose real row already satisfied INV-02
+        # (broad-scan BS2-02's read-side residual).
+        lib_name = front if existing is None else existing["Card Name"]
+        if lib_name.lower() not in mana_names:
             src = next((r for r in mana if r["Card Name"] == full), None) \
                 or next((r for r in mana if r["Card Name"] == front), None)
             if src:
-                mana.append({"Card Name": front, "Mana Cost": src["Mana Cost"],
+                mana.append({"Card Name": lib_name, "Mana Cost": src["Mana Cost"],
                              "Mana Value": src["Mana Value"], "Keywords": src["Keywords"]})
-                mana_names.add(front.lower())
-                mana_added.append(front)
+                mana_names.add(lib_name.lower())
+                mana_added.append(lib_name)
             else:
                 # No source mana row (a freshly-crafted card not yet in card-mana.csv):
                 # still write a BLANK row so every library name has a mana row — else
                 # the library gains a card with no mana row and INV-02 breaks on the
                 # next check_all (audit F8). build_mana.py/refresh fills in the cost.
-                mana.append({"Card Name": front, "Mana Cost": "",
+                mana.append({"Card Name": lib_name, "Mana Cost": "",
                              "Mana Value": "", "Keywords": ""})
-                mana_names.add(front.lower())
-                mana_added.append(front + "  (blank — run build_mana.py to fill cost/keywords)")
+                mana_names.add(lib_name.lower())
+                mana_added.append(lib_name + "  (blank — run build_mana.py to fill cost/keywords)")
 
         # wishlist: drop the card by NAME (full or DFC front) or by the recorded
         # set+collector — see _wishlist_hit. Name matching is what lets a differently-

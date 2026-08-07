@@ -137,8 +137,12 @@ def matches(card, args, owned):
         if args.legal.lower() not in legal:
             return False
     if args.role:
-        want = {_ROLE_ALIASES.get(r.strip().lower(), r.strip()) for r in args.role.split(",")}
-        if not (want & classify_roles(card.get("Card Text") or "")):
+        # Resolved + validated in main() (BS2-35): the old inline fallback kept the
+        # user's ORIGINAL case while classify_roles emits capitalized labels, and only
+        # 7 of 13 labels had aliases — so `--role recursion` returned a silent 0
+        # indistinguishable from "you own no recursion", on the survey /draft-deck
+        # starts from (the K-13 failure shape: a zero that reads as a fact).
+        if not (args._roles & classify_roles(card.get("Card Text") or "")):
             return False
     have = owned_of(owned, card.get("Card Name"))
     if args.owned and have <= 0:
@@ -201,6 +205,28 @@ def main():
         eprint("Pool has no Legalities column — rebuild with build_pool.py to use "
                "--legal. Ignoring the filter.")
         args.legal = None
+
+    # Resolve --role names case-insensitively against the canonical labels AND the
+    # aliases, and REJECT anything that matches neither (BS2-35): `--role recursion`
+    # used to return a silent 0 — a typo, an unaliased-but-real label, and a genuine
+    # empty result were the same output, on the owned-pool survey /draft-deck builds
+    # from. A zero must mean "no cards", never "no such role".
+    args._roles = set()
+    if args.role:
+        import deck as _deck
+        canon = {l.lower(): l for l in _deck.ROLE_ORDER}
+        bad = []
+        for r in args.role.split(","):
+            rs = r.strip()
+            if not rs:
+                continue
+            label = _ROLE_ALIASES.get(rs.lower()) or canon.get(rs.lower())
+            (args._roles.add(label) if label else bad.append(rs))
+        if bad:
+            eprint(f"ERROR: unknown role(s): {', '.join(bad)}.\n"
+                   f"       Roles: {', '.join(_deck.ROLE_ORDER)}\n"
+                   f"       Aliases: {', '.join(sorted(_ROLE_ALIASES))}")
+            return 2
 
     owned = owned_counts()
     hits = [c for c in pool if matches(c, args, owned)]
