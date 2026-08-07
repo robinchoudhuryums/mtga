@@ -1185,7 +1185,17 @@ _ROLE_PATTERNS = {
         # noncreature-answer profile. Anchoring on the anaphor is precise on its own —
         # "destroy/exile the chosen <permanent>" only ever appears in removal text.
         r"(?:destroy|exile) the chosen (?:permanent|creature|card|artifact|enchantment)",
-        r"deals? \d+ damage to (?:target|any target|another target)",
+        # The `(?!(?:player|opponent)\b(?! or planeswalker))` guard mirrors the one the
+        # scaling-damage sibling below documents as load-bearing: "deals N damage to
+        # target OPPONENT/PLAYER" is reach, not an answer, and this fixed-damage twin
+        # shipped without it — 89 pool cards of player-only burn (HYDRA Assault Robot,
+        # Shocking Sharpshooter, Ozai's Cruelty …) classified as spot removal, and 17
+        # roster decks over-reported the interaction axis the tier floor grades on
+        # (deck 10 read 15 against a real 12) — the one measured OVER-count in a
+        # pattern set whose failure mode is otherwise uniformly under (broad-scan
+        # BS2-06). "player or planeswalker" / "opponent or planeswalker" stay IN: that
+        # older templating can hit a planeswalker, which is an answer (42 pool cards).
+        r"deals? \d+ damage to (?:any target|(?:another )?target (?!(?:player|opponent)\b(?! or planeswalker)))",
         r"deals? \d+ damage to up to \w+ target",
         # any "fight" is removal (Novel Nunchaku "fights up to one target", Longstalk
         # Brawl "fight each other") — the old pattern only caught "fights target".
@@ -4150,9 +4160,43 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
     return picks[:limit] if limit and limit > 0 else picks
 
 
+def _needs_fmt(args, needs):
+    """The format filter for the needs recommenders (--ramp/--interaction/--needs) —
+    the SAME normalization `suggest_scored`/`suggest_lands` apply, honouring
+    --any-format, and never silent when the filter cannot bite. These three wrappers
+    used to hand `args.fmt` through raw: `--format Standard` (the natural spelling)
+    failed the exact-membership `fmt in POOL_FORMATS` test in the workers, so ALL
+    format filtering was dropped with no message — non-Standard cards surfaced as top
+    craft picks on exactly the paths G-38 routes a deficit to, the G-37 incident
+    relived — and `--any-format` parsed but never reached the workers at all
+    (broad-scan BS2-08; the G-45 "diff the siblings' filters" shape, third time on
+    this family after G-58 and BS-01)."""
+    if getattr(args, "any_format", False):
+        return ""
+    fmt = (getattr(args, "fmt", None) or needs["format"] or "").strip().lower()
+    if not fmt:
+        return fmt
+    if fmt not in POOL_FORMATS:
+        print(f"Format: '{fmt}' not tracked — not filtering. "
+              f"(known: {', '.join(sorted(POOL_FORMATS))})")
+    elif "Legalities" not in (_header_of_pool() or []):
+        print(f"Format: '{fmt}' filter requested but card-pool.csv has no legality "
+              "data — rebuild with build_pool.py. Showing all.")
+    return fmt
+
+
+def _header_of_pool():
+    """card-pool.csv's header row, or None — one cheap read for the warning above."""
+    try:
+        with open(POOL_CSV, newline="", encoding="utf-8") as fh:
+            return next(csv.reader(fh), None)
+    except OSError:
+        return None
+
+
 def cmd_suggest_ramp(args, d):
     needs = deck_needs(d)
-    fmt = getattr(args, "fmt", None) or needs["format"]
+    fmt = _needs_fmt(args, needs)
     picks = suggest_mana(d, needs, unowned=args.unowned, owned=getattr(args, "owned", False),
                          limit=args.limit, fmt=fmt)
     accel = needs["accel"]
@@ -4182,7 +4226,7 @@ def cmd_suggest_ramp(args, d):
 
 def cmd_suggest_interaction(args, d):
     needs = deck_needs(d)
-    fmt = getattr(args, "fmt", None) or needs["format"]
+    fmt = _needs_fmt(args, needs)
     picks = suggest_interaction(d, needs, unowned=args.unowned, owned=getattr(args, "owned", False),
                                 limit=args.limit, fmt=fmt)
     it, tgt = needs["interaction"], needs["int_target"]
@@ -4216,7 +4260,7 @@ def cmd_suggest_needs(args, d):
     """Unified structural-needs view: fixing (lands + dorks), acceleration (dorks), interaction —
     the one-stop 'what does my deck LACK' report, composing the three needs-aware recommenders."""
     needs = deck_needs(d)
-    fmt = getattr(args, "fmt", None) or needs["format"]
+    fmt = _needs_fmt(args, needs)
     print(f"Deck {d['id']}: {d['name'] or d['path']} — STRUCTURAL NEEDS\n")
     dc = needs["colors"]
     scarce = sorted(needs["deficit"].items(), key=lambda kv: -kv[1])
@@ -4238,7 +4282,11 @@ def cmd_suggest_needs(args, d):
         for p in rows[:n]:
             print("  " + fmt_row(p))
 
-    lands = suggest_lands(d, owned=True, limit=4, fmt=fmt)["picks"]
+    # any_format must be FORWARDED here, not folded into fmt="": suggest_lands treats
+    # a blank fmt as "fall back to the deck's own #: format:", which would re-enable
+    # the filter --any-format just disabled.
+    lands = suggest_lands(d, owned=True, limit=4, fmt=fmt,
+                          any_format=getattr(args, "any_format", False))["picks"]
     _top("Fixing · owned lands", lands,
          lambda p: f"×{p['owned']} {p['name'][:34]:34} {p['produces']:4} score {p['score']:.1f}")
     dorks = suggest_mana(d, needs, owned=True, limit=4, fmt=fmt)
@@ -6483,7 +6531,8 @@ def match_paste(pasted, decks, fmt_hint=None):
         cls = _deck_format_class(d)
         mm = 1 if (fmt_hint and cls and cls != fmt_hint) else 0
         ranked.append({"deck": d, "drift": added + removed, "shared": shared,
-                       "added": added, "removed": removed, "diffs": diffs, "_mm": mm})
+                       "added": added, "removed": removed, "diffs": diffs, "_mm": mm,
+                       "_ms": ms})
     if not ranked:
         return {"unmatched": True, "uniq": uniq}
     ranked.sort(key=lambda r: (r["_mm"], r["drift"], -r["shared"], r["deck"]["id"]))
@@ -6496,6 +6545,21 @@ def match_paste(pasted, decks, fmt_hint=None):
     best["runner_up"] = runner["deck"] if (runner and best["lowconf"]) else None
     best["sync"] = best["drift"] == 0
     best["uniq"] = uniq
+    # TRUNCATION guard (broad-scan BS2-01). The shared-card floor above is measured
+    # against the PASTE, so a partial paste — a strict subset of its deck — passes it
+    # trivially, matches with full confidence, and `--apply` would rewrite the stored
+    # 60 down to the fragment (reproduced: the first 8 lines of deck 52 dry-ran as
+    # "0 added / 52 removed", not low-confidence). An Arena export is always the WHOLE
+    # deck, and the largest legitimate shrink a sync performs is trimming an oversized
+    # draft (64→60 ≈ 0.94 of the stored total), so a paste under 75% of the stored
+    # total is a fragment, not an edit. Flag, don't unmatch: the match itself is
+    # usually RIGHT — it is the write that must not happen (cmd_sync skips it unless
+    # --force, the same handling as a low-confidence sibling match).
+    best["paste_total"] = sum(q for _disp, q in pasted.values())
+    best["deck_total"] = sum(q for _disp, q in best["_ms"].values())
+    best["truncated"] = best["paste_total"] < best["deck_total"] * 0.75
+    for r in ranked:
+        del r["_ms"]
     return best
 
 
@@ -6602,6 +6666,9 @@ def cmd_sync(args):
         rc = 1
         conf = (f"   ⚠ low confidence — #{m['runner_up']['id']} is nearly as close"
                 if m.get("runner_up") else "")
+        if m.get("truncated"):
+            conf += (f"   ⚠ TRUNCATED? paste holds {m['paste_total']} cards vs the "
+                     f"stored {m['deck_total']} — looks like a partial paste, not an edit")
         print(f"  ⟳ {label} — drifted: {m['added']} added / {m['removed']} removed{conf}")
         for sign, qty, nm in m["diffs"]:
             print(f"        {sign}{qty}  {nm}")
@@ -6619,6 +6686,13 @@ def cmd_sync(args):
         if m.get("lowconf") and not getattr(args, "force", False):
             eprint(f"  ✗ #{d['id']}: skipped — low-confidence match (#{m['runner_up']['id']} "
                    "is nearly as close). Re-paste that deck alone, or pass --force.")
+            failures += 1
+            continue
+        if m.get("truncated") and not getattr(args, "force", False):
+            eprint(f"  ✗ #{d['id']}: skipped — the paste holds {m['paste_total']} cards "
+                   f"against the stored {m['deck_total']}, which looks like a TRUNCATED "
+                   "paste, not a deck edit; writing it would discard the rest of the "
+                   "list. Re-paste the full export, or pass --force for a deliberate cut.")
             failures += 1
             continue
         with open(d["path"], encoding="utf-8") as fh:

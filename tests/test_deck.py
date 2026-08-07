@@ -1871,6 +1871,33 @@ class TestSyncPaste:
                               (self._d("2"), self._ms(X=4, Y=4, Z=4))])
         assert m["lowconf"] is False
 
+    # --- the truncation guard (broad-scan BS2-01) ----------------------------------
+    # A partial paste is a strict SUBSET of its deck, so the shared-card floor —
+    # measured against the paste — passes trivially and the match is full-confidence.
+    # The first 8 lines of a 60-card deck dry-ran as "0 added / 52 removed" and
+    # --apply would have rewritten the file to the fragment. A paste under 75% of the
+    # stored total must flag `truncated` so cmd_sync refuses the write without --force.
+
+    def test_subset_paste_is_flagged_truncated(self):
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._d("1"), self._ms(A=4, B=4, C=4, D=4, E=4, F=4))])
+        assert m.get("unmatched") is None          # it still MATCHES (the match is right)
+        assert m["truncated"] is True              # ...but the write half must refuse
+        assert m["paste_total"] == 12 and m["deck_total"] == 24
+
+    def test_ordinary_edit_is_not_flagged_truncated(self):
+        # A real edit pastes the whole deck with a few cards changed (here 12 vs 14,
+        # ~0.86 — inside the legitimate trim range, e.g. an oversized draft cut down).
+        m = deck.match_paste(self._ms(A=4, B=4, C=4),
+                             [(self._d("1"), self._ms(A=4, B=4, C=4, D=2))])
+        assert m["truncated"] is False
+
+    def test_grown_deck_is_not_flagged_truncated(self):
+        # The paste being LARGER than the stored deck is growth, never truncation.
+        m = deck.match_paste(self._ms(A=4, B=4, C=4, D=4),
+                             [(self._d("1"), self._ms(A=4, B=4, C=4))])
+        assert m["truncated"] is False
+
     # --- the tie-break rule, pinned (broad-scan F-08) ------------------------------
     # `match_paste`'s docstring promises the dashboard's stale-check panel applies the
     # same rule, and the JS copy had drifted: it compared drift alone with a strict `<`,
@@ -3092,3 +3119,30 @@ class TestGraveyardTypeGates:
         rows = [r for r in deck.target_counts(cards, cd, mana) if r[0] == "Descend"]
         assert len(rows) == 1, rows
         assert "permanent cards" in rows[0][1]
+
+
+class TestNeedsFmtNormalization:
+    """BS2-08: the needs recommenders (--ramp/--interaction/--needs) handed the raw
+    `--format` string to workers whose only gate is exact membership in POOL_FORMATS,
+    so `--format Standard` (the natural spelling) silently disabled ALL format
+    filtering — non-Standard cards surfaced as top craft picks on exactly the paths
+    G-38 routes a deficit to — and `--any-format` parsed but never reached the
+    workers. `_needs_fmt` is the shared normalization, mirroring suggest_scored's."""
+
+    def _ns(self, **kw):
+        from types import SimpleNamespace
+        return SimpleNamespace(**kw)
+
+    def test_cased_format_is_lowered(self):
+        assert deck._needs_fmt(self._ns(fmt="Standard"), {"format": ""}) == "standard"
+
+    def test_any_format_disables_the_filter(self):
+        assert deck._needs_fmt(self._ns(fmt="Standard", any_format=True),
+                               {"format": "standard"}) == ""
+
+    def test_deck_format_is_the_fallback(self):
+        assert deck._needs_fmt(self._ns(fmt=None), {"format": "standard"}) == "standard"
+
+    def test_an_untracked_format_warns_instead_of_silently_not_filtering(self, capsys):
+        deck._needs_fmt(self._ns(fmt="foo"), {"format": ""})
+        assert "not tracked" in capsys.readouterr().out

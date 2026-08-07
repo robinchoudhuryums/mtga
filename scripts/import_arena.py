@@ -118,7 +118,14 @@ def parse(text, skip_basics=False):
 
 
 def key(name, set_code, collector):
-    return (name.lower(), set_code.lower(), collector.lower())
+    """Printing key, FRONT-face named. The library stores most DFCs under the front
+    name but a handful under the full "A // B" (the DSK Rooms), and a paste can name
+    either spelling. An exact-name key missed the full-name rows, so re-importing an
+    owned DFC APPENDED a second row for the same physical printing — the owned count
+    then SPLIT across two spellings where `lib.owned_qty` resolves only one, and the
+    collection silently under-reported (broad-scan BS2-02). Two distinct cards can
+    never share (front, set, collector): a collector number is unique within a set."""
+    return (name.split(" // ")[0].strip().lower(), set_code.lower(), collector.lower())
 
 
 def merge(rows, entries, sum_mode):

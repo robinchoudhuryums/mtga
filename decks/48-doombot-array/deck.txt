@@ -3,7 +3,7 @@
 #: colors: UR
 #: plan: midrange
 #: tier: B — and deliberately ONE BAND BELOW the measurable floor, which reads A on
-#: tier: interaction 10 (5 instant-speed, 4 able to answer a noncreature permanent) plus card
+#: tier: interaction 9 (4 instant-speed, 6 able to answer a noncreature permanent) plus card
 #: tier: advantage 4 on a 3.19 curve. The guard will soft-flag this as possibly under-graded;
 #: tier: that is intentional and should not be "fixed". The rubric's A wants a coherent engine,
 #: tier: a tight curve and AT MOST ONE clear weakness. This list has three:

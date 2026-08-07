@@ -62,6 +62,20 @@ class TestPresence:
         res, _ = vi.verify(_paste("1 Ghost Card (ZZZ) 1"), lib=_lib([]), mana=set())
         assert res[0]["present"] is False
 
+    def test_front_name_paste_resolves_a_full_name_stored_row(self):
+        """BS2-25: the library stores the DSK Rooms under the full `A // B` name,
+        and `_library_key` resolved only full→front — so pasting the FRONT name of
+        an owned printing reported "NOT in card-library.csv", and the prescribed
+        re-ingest then created the duplicate row (the BS2-02 loop). The key must
+        resolve front→full too, to the STORED spelling, so the quantity and
+        mana-row checks read the same row."""
+        res, _ = vi.verify(_paste("1 Bottomless Pool (DSK) 43"),
+                           lib=_lib([("Bottomless Pool // Locker Room", 1)]),
+                           mana={"bottomless pool // locker room"})
+        assert res[0]["present"] and res[0]["enough"] and res[0]["has_mana"]
+        assert res[0]["owned"] == 1
+        assert res[0]["key"] == "bottomless pool // locker room"
+
     def test_an_unparseable_line_is_a_warning_not_a_silent_drop(self):
         """A line no parser matched was never ingested by ANY tool, so it is exactly the
         case a verifier must not swallow."""

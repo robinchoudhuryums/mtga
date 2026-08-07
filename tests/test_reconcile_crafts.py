@@ -44,9 +44,16 @@ def world(tmp_path, monkeypatch):
              "POOL": tmp_path / "card-pool.csv", "WISH": tmp_path / "card-wishlist.csv"}
     _write_csv(paths["LIB"], LIB_HEADER,
                [{"Card Name": "Shock", "Type": "Instant", "Set Code": "M21",
-                 "Collector #": "159", "Quantity Owned": "2"}])
+                 "Collector #": "159", "Quantity Owned": "2"},
+                # A printing the library stores under the FULL `A // B` name (the DSK
+                # Rooms really are stored this way — the front-name convention is not
+                # universal in the data).
+                {"Card Name": "Bottomless Pool // Locker Room", "Type": "Enchantment — Room",
+                 "Set Code": "DSK", "Collector #": "43", "Quantity Owned": "1"}])
     _write_csv(paths["MANA"], MANA_HEADER,
-               [{"Card Name": "Shock", "Mana Cost": "{R}", "Mana Value": "1"}])
+               [{"Card Name": "Shock", "Mana Cost": "{R}", "Mana Value": "1"},
+                {"Card Name": "Bottomless Pool // Locker Room", "Mana Cost": "{U}",
+                 "Mana Value": "1"}])
     _write_csv(paths["POOL"], POOL_HEADER, [
         {"Card Name": "Shock", "Type": "Instant", "Card Text": "Shock deals 2 damage to any target.",
          "Color(s)": "R", "Set Code": "M21", "Collector #": "159", "Rarity": "Common"},
@@ -56,6 +63,9 @@ def world(tmp_path, monkeypatch):
         {"Card Name": "Bruce Banner // The Incredible Hulk", "Type": "Legendary Creature — Human // Creature — Monster",
          "Card Text": "Whenever you cast a spell, transform Bruce Banner.",
          "Color(s)": "U/G", "Set Code": "MSH", "Collector #": "5", "Rarity": "Mythic"},
+        {"Card Name": "Bottomless Pool // Locker Room", "Type": "Enchantment — Room",
+         "Card Text": "Return up to one target creature to its owner's hand.",
+         "Color(s)": "U", "Set Code": "DSK", "Collector #": "43", "Rarity": "Common"},
     ])
     _write_csv(paths["WISH"], WISH_HEADER,
                [{"Card Name": "Duress", "Type": "Sorcery", "Set Code": "M21",
@@ -119,6 +129,24 @@ class TestDFCResolution:
         assert any(r["Card Name"] == "Bruce Banner" for r in lib)
         mana_names = {r["Card Name"] for r in _read_csv(world["MANA"])}
         assert "Bruce Banner" in mana_names
+
+    def test_front_name_paste_of_a_full_name_stored_printing_does_not_duplicate(self, world):
+        """BS2-02: the library stores the DSK Rooms under the full `A // B` name,
+        and the exact-front-name join missed those rows — so re-ingesting an owned
+        printing APPENDED a second row under the front name. The count then split
+        across two spellings where `lib.owned_qty` resolves only one, and the
+        collection silently under-reported. The join must match on front faces."""
+        rc.reconcile(["2 Bottomless Pool (DSK) 43"], apply=True)
+        lib = _read_csv(world["LIB"])
+        rooms = [r for r in lib if r["Card Name"].startswith("Bottomless Pool")]
+        assert len(rooms) == 1                                   # no duplicate row
+        assert rooms[0]["Card Name"] == "Bottomless Pool // Locker Room"
+        assert rooms[0]["Quantity Owned"] == "2"                 # max(1, 2) bumped in place
+        # And no spurious front-named mana row: the stored full-name row is the one
+        # INV-02 needs, and it already exists.
+        mana_names = [r["Card Name"] for r in _read_csv(world["MANA"])]
+        assert mana_names.count("Bottomless Pool // Locker Room") == 1
+        assert "Bottomless Pool" not in mana_names
 
 
 class TestInputHygiene:

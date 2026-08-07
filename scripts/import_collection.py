@@ -146,14 +146,22 @@ def _front(name):
 
 
 def parse_export(text, overrides=None):
-    """(entries, warnings) from a tracker export. entries: [(qty, name, set, collector)].
+    """(entries, warnings, unreadable) from a tracker export.
+    entries: [(qty, name, set, collector)]. unreadable: card names whose quantity cell
+    could not be read as a non-negative integer.
 
     Quantities are read strictly: a blank or non-numeric count is reported rather than
     silently treated as 0, because this tool SETS counts and a mis-read cell would
-    delete a card's copies."""
+    delete a card's copies. The `unreadable` names exist so `plan` can honour that
+    promise on the --zero-missing path too: a dropped row used to leave the card out of
+    `entries`, and the zero pass then read "not in entries" as "absent from the export"
+    — so an unreadable cell ("1,024", "4 (foil)", "2.0") became 0 by a different route,
+    the exact outcome the strict read exists to prevent (broad-scan BS2-03). A tracker
+    whose whole quantity column is formatted that way zeroed the collection in one
+    --apply --zero-missing."""
     header, rows = _read_table(text)
     cols = detect_columns(header, overrides)
-    warnings = []
+    warnings, unreadable = [], []
     # One output entry per (front, set, collector) printing, FINISH-aware: foil and
     # non-foil are separate Arena copies that real tracker exports emit as separate
     # rows sharing set and collector, distinguished only by a finish column. The old
@@ -161,11 +169,18 @@ def parse_export(text, overrides=None):
     # so 2 foil + 2 non-foil imported as 2, and since this is the ONE tool that can
     # lower a count, a correct prior 4 was REDUCED (broad-scan BS-15; the same
     # failure shape as F-01, one column over). Per (printing, finish) a repeat still
-    # takes MAX (one holding stated twice); DISTINCT finishes SUM. With no finish
-    # column every row shares finish "" and the old max semantics hold unchanged —
-    # plan()'s own collapse stays as the backstop for direct callers.
+    # takes MAX (one holding stated twice); DISTINCT finishes SUM.
+    #
+    # That max-on-repeat reading rests on the printing key being REAL. When the export
+    # has NO set/collector column at all, every row of a card shares the degenerate key
+    # ("name", "", ""), so two genuinely distinct printings (2× M19 + 1× DOM = 3 owned)
+    # collapsed to max = 2 — a silent LOWERING on the one tool that can lower a count,
+    # F-01's failure one column over (broad-scan BS2-04). A tracker exports one row per
+    # PRINTING (the premise the summing rule above already rests on), so with no
+    # printing columns a repeated name means distinct printings: SUM, and say so.
     fin_col = cols.get("finish")
-    groups, order = {}, []
+    printing_cols = bool(cols.get("set") or cols.get("collector"))
+    groups, order, name_rows = {}, [], {}
     for i, r in enumerate(rows, start=2):          # row 1 is the header
         name = (r.get(cols["name"]) or "").strip()
         if not name:
@@ -173,7 +188,9 @@ def parse_export(text, overrides=None):
         raw = (r.get(cols["qty"]) or "").strip()
         if not raw.isdigit():
             warnings.append(f"row {i} ({name}): quantity {raw!r} is not a "
-                            f"non-negative integer — skipped")
+                            f"non-negative integer — row left unchanged (it is NOT "
+                            f"treated as absent, so --zero-missing cannot zero it)")
+            unreadable.append(name)
             continue
         setc = (r.get(cols.get("set", "")) or "").strip() if cols.get("set") else ""
         coll = (r.get(cols.get("collector", "")) or "").strip() if cols.get("collector") else ""
@@ -185,12 +202,22 @@ def parse_export(text, overrides=None):
         if g is None:
             g = groups[key] = {"disp": (name, setc, coll), "fins": {}}
             order.append(key)
-        g["fins"][fin] = max(g["fins"].get(fin, 0), int(raw))
+        if printing_cols:
+            g["fins"][fin] = max(g["fins"].get(fin, 0), int(raw))
+        else:
+            # No printing columns: each row is a distinct printing — sum them.
+            g["fins"][fin] = g["fins"].get(fin, 0) + int(raw)
+            name_rows[key] = name_rows.get(key, 0) + 1
+    for key, n in name_rows.items():
+        if n > 1:
+            warnings.append(f"{groups[key]['disp'][0]}: {n} export rows share no "
+                            f"set/collector column — read as distinct printings and "
+                            f"SUMMED to {sum(groups[key]['fins'].values())}")
     entries = [(sum(groups[k]["fins"].values()), *groups[k]["disp"]) for k in order]
-    return entries, warnings
+    return entries, warnings, unreadable
 
 
-def plan(rows, entries, *, zero_missing=False):
+def plan(rows, entries, *, zero_missing=False, unreadable=()):
     """Work out the changes without touching anything. Returns a dict of:
         updated   [(name, old, new)]      a printing whose count changes
         added     [(name, set, coll, n)]  a printing the library doesn't have
@@ -198,7 +225,12 @@ def plan(rows, entries, *, zero_missing=False):
         ambiguous [(name, n, printings)]  name-only row, several printings to choose from
     A name-only export row for a card the library holds in SEVERAL printings is reported,
     never guessed at: the export says how many you own in total but not which printing to
-    put them on, and picking one would silently zero the other."""
+    put them on, and picking one would silently zero the other.
+
+    `unreadable` (from `parse_export`) names cards whose quantity cell could not be
+    read. They are marked SEEN so the --zero-missing pass leaves them alone: the export
+    mentioned them, so "absent from the export" is false — dropping them into the zero
+    pass was how a mis-read cell deleted a card's copies (broad-scan BS2-03)."""
     by_print, by_name = {}, {}
     for r in rows:
         stored = (r.get("Card Name") or "").strip()
@@ -214,6 +246,13 @@ def plan(rows, entries, *, zero_missing=False):
 
     updated, added, ambiguous = [], [], []
     seen_rows = set()
+    # Unreadable-quantity cards are PRESENT in the export even though no count could be
+    # read — protect every library row they resolve to (full name or front face) from
+    # the zero pass, matching the strict-read promise in parse_export's docstring.
+    for name in unreadable:
+        for alias in {name.lower(), _front(name).lower()}:
+            for r in by_name.get(alias, []):
+                seen_rows.add(id(r))
 
     # SEVERAL export rows can resolve to ONE library row, and they must SUM.
     #
@@ -394,12 +433,16 @@ def main():
         overrides[role.strip()] = actual.strip()
 
     try:
-        entries, warnings = parse_export(text, overrides)
+        entries, warnings, unreadable = parse_export(text, overrides)
     except ValueError as e:
         eprint(f"ERROR: {e}")
         return 1
     for w in warnings:
         eprint(f"WARN:  {w}")
+    if unreadable and args.zero_missing:
+        eprint(f"WARN:  {len(unreadable)} card(s) had unreadable quantity cells — they "
+               "are left UNCHANGED, not zeroed. Fix the export's quantity column (or "
+               "--map qty=<column>) if these should be set.")
     if not entries:
         eprint("No usable card rows found in the export.")
         return 1
@@ -421,7 +464,7 @@ def main():
                f"--allow-shrink if the narrowing is real.")
         return 1
 
-    result = plan(rows, entries, zero_missing=args.zero_missing)
+    result = plan(rows, entries, zero_missing=args.zero_missing, unreadable=unreadable)
     _report(result, entries, rows, args.zero_missing)
 
     changed = result["updated"] or result["added"] or (

@@ -78,6 +78,20 @@ class TestMergeQuantities:
         added, _ = import_arena.merge(rows, [(1, "Shock", "M19", "156")], sum_mode=False)
         assert added == 1 and rows[0]["Card Name"] == "Shock"
 
+    def test_front_name_line_bumps_a_full_name_stored_printing(self):
+        """BS2-02: the library stores a handful of DFCs under the full `A // B`
+        name (the DSK Rooms), and Arena exports name the FRONT face — an
+        exact-name key appended a second row for the same physical printing,
+        silently splitting the owned count across two spellings."""
+        rows = [{"Card Name": "Bottomless Pool // Locker Room", "Set Code": "DSK",
+                 "Collector #": "43", "Quantity Owned": "1", "Type": "",
+                 "Card Text": "", "Color(s)": "", "Synergies": ""}]
+        added, updated = import_arena.merge(
+            rows, [(2, "Bottomless Pool", "DSK", "43")], sum_mode=False)
+        assert added == 0 and updated == 1
+        assert len(rows) == 1 and rows[0]["Quantity Owned"] == "2"
+        assert rows[0]["Card Name"] == "Bottomless Pool // Locker Room"
+
 
 class TestTagsFor:
     def test_impending_maps_to_tempo(self):
@@ -444,49 +458,70 @@ class TestCollectionColumnDetection:
 
 class TestCollectionParse:
     def test_reads_a_plain_csv(self):
-        entries, warn = ic.parse_export(
+        entries, warn, unread = ic.parse_export(
             "Card Name,Set Code,Collector Number,Quantity\nShock,M21,159,4\n")
-        assert entries == [(4, "Shock", "M21", "159")] and warn == []
+        assert entries == [(4, "Shock", "M21", "159")] and warn == [] and unread == []
 
     def test_sniffs_a_tab_separated_export(self):
-        entries, _ = ic.parse_export("Name\tEdition\tHave\nShock\tM21\t3\n")
+        entries, _, _ = ic.parse_export("Name\tEdition\tHave\nShock\tM21\t3\n")
         assert entries == [(3, "Shock", "M21", "")]
 
     def test_a_non_numeric_quantity_is_reported_not_zeroed(self):
         """Silently reading a bad cell as 0 would DELETE that card's copies."""
-        entries, warn = ic.parse_export("Name,Count\nShock,\nBolt,two\n")
+        entries, warn, unread = ic.parse_export("Name,Count\nShock,\nBolt,two\n")
         assert entries == []
         assert len(warn) == 2 and "Shock" in warn[0]
+        # BS2-03: the unreadable rows are named, so plan() can protect them from
+        # the --zero-missing pass — "couldn't read the cell" must never become 0.
+        assert unread == ["Shock", "Bolt"]
 
     def test_foil_and_nonfoil_rows_of_one_printing_SUM(self):
         """Trackers export foil and non-foil as separate rows sharing (name, set,
         collector), told apart only by a finish column. 2 foil + 2 non-foil is 4
         Arena copies; the finish-blind path collapsed them on max to 2 — and this
         is the one tool that can LOWER a count (broad-scan BS-15)."""
-        entries, _ = ic.parse_export(
+        entries, _, _ = ic.parse_export(
             "Name,Set,Number,Quantity,Finish\n"
             "Shock,M21,159,2,normal\nShock,M21,159,2,foil\n")
         assert entries == [(4, "Shock", "M21", "159")]
 
     def test_a_repeated_row_with_the_SAME_finish_still_takes_max(self):
         """One holding stated twice is not two holdings — max within a finish."""
-        entries, _ = ic.parse_export(
+        entries, _, _ = ic.parse_export(
             "Name,Set,Number,Quantity,Finish\n"
             "Shock,M21,159,2,foil\nShock,M21,159,2,foil\n")
         assert entries == [(2, "Shock", "M21", "159")]
 
     def test_no_finish_column_keeps_the_old_max_semantics(self):
-        entries, _ = ic.parse_export(
+        entries, _, _ = ic.parse_export(
             "Name,Set,Number,Quantity\nShock,M21,159,2\nShock,M21,159,3\n")
         assert entries == [(3, "Shock", "M21", "159")]
 
     def test_basics_are_skipped(self):
-        entries, _ = ic.parse_export("Name,Count\nForest,40\nShock,4\n")
+        entries, _, _ = ic.parse_export("Name,Count\nForest,40\nShock,4\n")
         assert [e[1] for e in entries] == ["Shock"]
+
+    def test_no_printing_columns_SUMS_repeated_names(self):
+        """BS2-04: with no set/collector column every row of a card shares the
+        degenerate ("name","","") key, so two genuinely distinct printings
+        (2 + 1 = 3 owned) collapsed to max = 2 — a silent LOWERING on the one
+        tool that can lower a count. A tracker exports one row per printing, so
+        repeated names here are distinct printings: SUM, and warn."""
+        entries, warn, _ = ic.parse_export(
+            "Name,Count\nLlanowar Elves,2\nLlanowar Elves,1\n")
+        assert entries == [(3, "Llanowar Elves", "", "")]
+        assert any("SUMMED" in w and "Llanowar Elves" in w for w in warn)
+
+    def test_printing_columns_keep_max_on_a_true_repeat(self):
+        """The max-on-repeat reading stays where the printing key is REAL —
+        the same (name, set, collector) twice is one holding stated twice."""
+        entries, _, _ = ic.parse_export(
+            "Name,Set,Number,Quantity\nShock,M21,159,2\nShock,M21,159,2\n")
+        assert entries == [(2, "Shock", "M21", "159")]
 
     def test_a_zero_count_is_kept(self):
         """0 is a real, meaningful value here — it is how the export says 'disenchanted'."""
-        entries, _ = ic.parse_export("Name,Count\nShock,0\n")
+        entries, _, _ = ic.parse_export("Name,Count\nShock,0\n")
         assert entries == [(0, "Shock", "", "")]
 
 
@@ -552,6 +587,24 @@ class TestCollectionPlan:
         rows = [self._row("Shock", qty="4")]
         ic.plan(rows, [(1, "Other", "M21", "2")], zero_missing=True)
         assert rows[0]["Quantity Owned"] == "0"
+
+    def test_an_unreadable_quantity_is_never_zeroed(self):
+        """BS2-03: a row whose quantity cell couldn't be read was dropped from
+        `entries`, and the zero pass then read "not in entries" as "absent from
+        the export" — so a mis-read cell ("1,024") became 0 by a different route
+        than the one the strict read guards. The export MENTIONED the card, so
+        it is not absent; `unreadable` marks it seen."""
+        rows = [self._row("Llanowar Elves", qty="4")]
+        r = ic.plan(rows, [(1, "Other", "M21", "2")], zero_missing=True,
+                    unreadable=["Llanowar Elves"])
+        assert r["zeroed"] == []
+        assert rows[0]["Quantity Owned"] == "4"      # untouched
+
+    def test_unreadable_protects_via_the_front_face_too(self):
+        rows = [self._row("Bottomless Pool // Locker Room", "DSK", "43", "2")]
+        r = ic.plan(rows, [(1, "Other", "M21", "2")], zero_missing=True,
+                    unreadable=["Bottomless Pool"])
+        assert r["zeroed"] == [] and rows[0]["Quantity Owned"] == "2"
 
     def test_an_ambiguous_card_is_not_also_reported_as_missing(self):
         rows = [self._row("Shock", "M21", "159", "2"), self._row("Shock", "DAR", "12", "2")]

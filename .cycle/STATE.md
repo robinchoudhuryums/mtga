@@ -6,6 +6,42 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #2 + top-5 fixes (2026-08-07)
+
+A full `/broad-scan` (three stages, six parallel deep-read passes, every Critical/High
+finding hand-verified by reproduction) followed by `/broad-implement top 5 from scan`.
+The scan used fresh IDs **BS2-01…BS2-40** (the 2026-08-04 scan owns BS-01…19). Scan
+report lives in the session; the implemented slice and its verification are in
+`.cycle/blocks/2026-08-broad-scan2-top5-broad-implement.md`.
+
+**Implemented (all reproduced before/after, 14 new tests, 965 passing, zero soft
+warnings):** BS2-01 sync --apply truncation guard (a partial paste can no longer
+rewrite a deck file; --force overrides). BS2-03/04 import_collection: an unreadable
+quantity cell can never be zeroed by --zero-missing, and a no-printing-column export
+SUMS repeated names instead of max-collapsing (each loudly warned). BS2-06 the
+fixed-damage removal pattern no longer counts player-only burn as interaction — 14
+decks re-measured, ZERO tier floors moved, 2 cards baselined, 9 stale `#: tier:`
+figures re-grounded in the same commit. BS2-02/25 the ingest DFC loop: front-face
+joins in reconcile_crafts/import_arena (no more duplicate front-name rows for the 8
+full-name-stored printings) and front→full resolution in verify_ingest (owned Rooms
+no longer report "NOT in library"). BS2-08 the needs recommenders normalize --format,
+honour --any-format, and warn instead of silently dropping the filter.
+
+**Decisions:** BS2-10 (sync same-deck double-claim) was deliberately left OUT of the
+top-5 scope despite being adjacent to BS2-01 — same write loop, queued as the next
+sync fix. The no-printing-column SUM trades a warned over-count for a silent
+under-count; the per-printing-export premise justifies it.
+
+**For the next session:** the scan's unimplemented findings are queued in the block's
+FOLLOW-ON ITEMS (highest value next: BS2-10, BS2-05 verify-for-collection-CSVs,
+BS2-11/12 wishlist land mis-rank + card.py deck join, BS2-16/17 a11y + gallery XSS,
+BS2-13/14 gate holes, BS2-18 interaction_profile divergence). Doc updates for
+/sync-docs are listed in the block (G-67 incident, README import_collection semantics,
+G-63 write-side membership, K-12's still-contradicted claim).
+
+**Where I left off:** all five findings implemented, tested, committed and pushed on
+`claude/broad-scan-v74wau`; no PR opened (not requested).
+
 ## Session — broad scan + top-5 fixes (2026-08-04)
 
 A full `/broad-scan` (three stages, seven parallel deep-read passes, top findings

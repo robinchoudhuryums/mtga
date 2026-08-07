@@ -93,13 +93,27 @@ def mana_names(path=None):
 
 def _library_key(names, name):
     """The key the LIBRARY stores this card under: the full name if present, else the
-    front face. Mirrors `owned_qty`'s resolution order so the quantity check and the
-    INV-02 check can't disagree about which row they are talking about."""
+    front face, else — for a FRONT-named paste of a card the library stores under its
+    full "A // B" (the DSK Rooms) — the stored full name. Mirrors `owned_qty`'s
+    resolution order, plus the front→full direction `owned_qty` cannot do, so the
+    quantity check and the INV-02 check can't disagree about which row they are
+    talking about. Without the third step, pasting "Bottomless Pool" against a library
+    holding "Bottomless Pool // Locker Room" at that exact printing reported "✗ NOT in
+    card-library.csv — the ingest did not write them", and the prescribed re-ingest
+    then created a duplicate front-name row: the two halves of broad-scan BS2-25/BS2-02
+    composed into a loop that manufactured the very split this tool exists to catch.
+    Resolving to the STORED spelling (not an alias) keeps the mana-row check consistent:
+    card-mana.csv keys the library's spelling."""
     nl = (name or "").strip().lower()
     if nl in names:
         return nl
-    front = nl.split(" // ")[0]
-    return front if front in names else None
+    front = nl.split(" // ")[0].strip()
+    if front in names:
+        return front
+    for n in names:
+        if " // " in n and n.split(" // ")[0].strip() == front:
+            return n
+    return None
 
 
 def _row_key(r):
@@ -151,7 +165,11 @@ def verify(text, *, exact=False, include_basics=False, lib=None, mana=_UNSET):
                             "has_mana": True, "basic": True})
             continue
         key = _library_key(names, name)
-        have = owned_qty(quantities, name)
+        # Read the count off the RESOLVED key, not the pasted spelling: `owned_qty`
+        # resolves full→front but not front→full, so a front-named paste of a
+        # full-name-stored card read owned 0 for a row _library_key had just found
+        # (broad-scan BS2-25). For every other case the two reads are identical.
+        have = quantities.get(key, 0) if key is not None else owned_qty(quantities, name)
         pasted = totals.get(key or name.strip().lower(), qty)
         results.append({
             "qty": qty, "pasted": pasted, "name": name, "owned": have, "key": key,
