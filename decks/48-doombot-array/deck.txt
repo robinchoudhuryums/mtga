@@ -4,7 +4,7 @@
 #: plan: midrange
 #: tier: B — and deliberately ONE BAND BELOW the measurable floor, which reads A on
 #: tier: interaction 10 (5 instant-speed, 4 able to answer a noncreature permanent) plus card
-#: tier: advantage 3 on a 3.17 curve. The guard will soft-flag this as possibly under-graded;
+#: tier: advantage 3 on a 3.19 curve. The guard will soft-flag this as possibly under-graded;
 #: tier: that is intentional and should not be "fixed". The rubric's A wants a coherent engine,
 #: tier: a tight curve and AT MOST ONE clear weakness. This list has three:
 #: tier: 1. THE MANABASE IS THE WORST ON THE ROSTER. 19 coloured cards cast below 90% on curve
@@ -164,6 +164,20 @@
 #: notes: KNOWN SOFT SPOT: the deck has no sweeper. It
 #: notes: is built to win a board-stall by going over the top with anthems, so the bad matchup
 #: notes: is a deck that removes the lords and leaves the 1/1s.
+#: notes: 2026-08-07 — CHANDRA, SPARK HUNTER IN FOR FIERY ANNIHILATION (now owned). Cut from
+#: notes: a pocket of FOUR near-duplicate red removal spells in the cut list's top 8 (Abrade,
+#: notes: Untimely Malfunction, Plasma Bolt are the others) against 10 interaction, so the
+#: notes: axis is untouched. She is filed under the TOKEN ENGINES heading, not Interaction,
+#: notes: because that is what she does here (G-05): her 0 makes a 3/2 Vehicle token, which
+#: notes: is "another artifact you control enters" for MECHAN ASSEMBLER — once each turn,
+#: notes: exactly her cadence — so one activation is a 3/2 AND a 2/2 Robot. Under Leyline of
+#: notes: Transformation both tokens are Robots, so Adaptive Automaton and Banner of Kinship
+#: notes: pump them, and Castle Doom x3 turns a spare token into a 3/3 Doombot. Her +2
+#: notes: (sacrifice an artifact or discard, draw) is a fourth sac outlet. Curve 3.17 -> 3.19;
+#: notes: the deck is short on early drops at 13 and a 4-drop does not help that.
+#: notes: DO NOT CUT Adaptive Automaton or Banner of Kinship on the ranking's say-so — it
+#: notes: labels them "off-tribe / role not auto-detected" because they are choose-a-type
+#: notes: lords whose text never contains the word Robot (K-13). They are real payoffs.
 
 # The lord package — the reason this deck exists
 1 Leyline of Transformation (DSK) 63
@@ -180,6 +194,7 @@
 1 Mouser Foundry (TMT) 96
 1 Retrieve the Esper (FIN) 68
 1 Mechan Assembler (EOE) 63
+1 Chandra, Spark Hunter (DFT) 116
 1 Adaptive Automaton (FDN) 723
 
 # Robot bodies
@@ -207,7 +222,6 @@
 # Interaction
 1 Abrade (FDN) 188
 1 Plasma Bolt (EOE) 152
-1 Fiery Annihilation (FDN) 86
 1 Untimely Malfunction (DSK) 161
 1 Into the Flood Maw (BLB) 52
 

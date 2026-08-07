@@ -31,15 +31,17 @@
 #: archetype: rather than a resource to grow. Against 37 Wizardz (also UBR) the spine is
 #: archetype: different: 37 is Wizard tribal with noncombat-damage pingers.
 #: tier: B — PROVISIONAL (unplayed brew). The metrics floor reads A on interaction 11
-#: tier: across a 2.81 curve, but three things hold it a band below:
+#: tier: across a 2.86 curve, but three things hold it a band below:
 #: tier: 1. THE PAYOFF IS THE ONE CRAFT TARGET. Norman Osborn // Green Goblin is a single
 #: tier:    unowned mythic, ~22% to be seen by turn seven, and he is what converts the
 #: tier:    flashback half into the mayhem engine. Without him the deck is a competent
 #: tier:    Grixis graveyard-value pile — the seven owned mayhem cards still work off the
 #: tier:    discard package — but it is not the deck the header describes.
 #: tier: 2. MAYHEM IS CONDITIONAL ON A SAME-TURN DISCARD. Every mayhem cast needs the card
-#: tier:    discarded THAT turn, so the engine is gated on drawing an outlet; Ultimate
-#: tier:    Green Goblin is the only one that supplies discard for free every upkeep.
+#: tier:    discarded THAT turn, so the engine is gated on drawing an outlet. Ultimate
+#: tier:    Green Goblin and Chandra, Spark Hunter are the two that supply that discard for
+#: tier:    free on a repeating clock — Chandra's +2 also REPLACES the card, so a mayhem
+#: tier:    card pitched to her is a two-for-one rather than a cost.
 #: tier: 3. PROTECTION 1 against three `#: protect:` build-arounds.
 #: tier: NOTE ON DISTINCTNESS: unlike its core deck this one measures CLEAN. `deck.py
 #: tier: similar` tops out at 73% against deck 6 on a single shared card and 71% against
@@ -47,8 +49,22 @@
 #: tier: deck 45, which reads 79% against 24 on TWELVE shared cards. On the numbers this
 #: tier: variant has a better claim to being a standalone deck than its own core does.
 #: tier: PATH TO A: a second protection effect, and a second discard outlet that works
-#: tier: without costing a card, so mayhem is not gated on drawing Ultimate Green Goblin.
+#: tier: without costing a card. The second outlet landed 2026-08-07 (Chandra); what is
+#: tier: still outstanding for A is the protection half.
 #: protect: Norman Osborn // Green Goblin; Ultimate Green Goblin; Baron Helmut Zemo
+#: notes: 2026-08-07 — CHANDRA, SPARK HUNTER IN FOR LIGHTNING STRIKE (now owned). Lightning
+#: notes: Strike was plain 3 damage and the weakest of five removal spells at the top of the
+#: notes: cut ranking, against 11 interaction — the axis the deck is long on. What it buys is
+#: notes: the deficit: card advantage 2, and her +2 draws every turn. THE REAL FIT IS MAYHEM.
+#: notes: A mayhem card can be cast from the graveyard only if you discarded it THAT turn, so
+#: notes: the engine has always been gated on drawing an outlet; her +2 is a free repeating
+#: notes: one that also replaces the card, which turns a pitched mayhem card into a
+#: notes: two-for-one. Five cards read it: Ultimate Green Goblin, Sandman's Quicksand,
+#: notes: Electro's Bolt, Spider-Islanders, Raging Goblinoids. Filed under the DISCARD / LOOT
+#: notes: heading rather than the Removal one she was swapped into (G-05).
+#: notes: COST, stated: MV 4 on a deck already short at 16 early drops / 2.86 avg, and this
+#: notes: deck runs 2 artifacts, so her +2 will nearly always take the DISCARD mode and her
+#: notes: combat trigger (animate a Vehicle) is dead here. Graded on the +2 alone.
 
 # Engine — discard outlets that are also graveyard payoffs
 1 Norman Osborn // Green Goblin (SPM) 39
@@ -82,6 +98,7 @@
 1 Mob Lookout (MSC) 821
 1 Hawkeye, Master Marksman (MSH) 130
 1 Unstable Experiment (SPM) 47
+1 Chandra, Spark Hunter (DFT) 116
 
 # Value
 1 Nibelheim Aflame (FIN) 146
@@ -92,7 +109,6 @@
 # Removal
 1 Pumpkin Bombardment (MSC) 822
 1 Plasma Bolt (EOE) 152
-1 Lightning Strike (TLA) 146
 1 Long Goodbye (MKM) 92
 1 Bitter Triumph (SOA) 26
 1 Feed the Swarm (SOA) 29

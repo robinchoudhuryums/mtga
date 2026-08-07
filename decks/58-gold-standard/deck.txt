@@ -48,6 +48,22 @@
 #: notes: with "1 artifact to sacrifice" because it counts artifact CARDS in the
 #: notes: list — the deck's artifacts are TOKENS from 14 producer cards, which no
 #: notes: list scan can see. The gates are fed; do not cut the payoffs over it.
+#: notes: 2026-08-07 — CHANDRA, SPARK HUNTER IN FOR ONE ELVISH ARCHIVIST (1-for-1; the second
+#: notes: Archivist stays). Two reasons. ROTATION: Archivist is WOE and goes ~2026, Chandra is
+#: notes: DFT and owned, so this is the same rotation-proofing trade decks 28 and 36 took.
+#: notes: FIT: her +2 sacrifices an artifact for a card, and 19 token producers feed it —
+#: notes: that sacrifice then triggers Crime Novelist (+1/+1 and {R}), Pirate Peddlers
+#: notes: (+1/+1) and Krenko ("whenever an artifact is put into a graveyard from the
+#: notes: battlefield, pay {R}: 1/1 Goblin"). Her 0 makes a 3/2 artifact token that Food
+#: notes: Fight can fling. Her -7 emblem (artifact enters: 3 damage to any target) is a real
+#: notes: win condition against this producer count, not a rider.
+#: notes: THE QUALITY GUARD SOFT-FLAGGED card advantage 4 -> 3 AND IT IS READING BACKWARDS
+#: notes: (K-12). Archivist's draw half is "whenever one or more ENCHANTMENTS you control
+#: notes: enter" and this deck runs TWO enchantments, so that half was close to dead;
+#: notes: Chandra's +2 draws every turn but the classifier does not read card advantage
+#: notes: inside a loyalty ability. Real card advantage went UP. Interaction reads 8 -> 9 for
+#: notes: the mirror-image reason (her -7 emblem parses as removal) — treat that one as
+#: notes: cosmetic, the deck's interaction is still the thin axis its tier note names.
 
 # Producers (the mint)
 2 Greedy Freebooter (LCI) 109
@@ -65,7 +81,8 @@
 # Payoffs (the spend)
 2 Crime Novelist (MKM) 121
 2 Krenko, Baron of Tin Street (MKM) 135
-2 Elvish Archivist (WOE) 168
+1 Elvish Archivist (WOE) 168
+1 Chandra, Spark Hunter (DFT) 116
 2 Pirate Peddlers (TLA) 115
 1 Rot-Curse Rakshasa (TDM) 87
 1 Callous Sell-Sword // Burn Together (WOE) 221
