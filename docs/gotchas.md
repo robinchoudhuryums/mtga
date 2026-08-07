@@ -556,6 +556,27 @@ fetches only what is new or still unresolved, with `--refetch` (or
 the one asked for, since a bare front name can be a different card and a wrong cost is
 worse than a blank one.
 
+**The freshness reuse had a hole the reasoning did not cover (BS2-23, fixed 2026-08-07).**
+The justification above — "the pool is the whole Arena pool and independent of what you
+OWN, so an ingest cannot change it" — is sound for the INGEST case and false for the other
+documented reason to run `build_pool.py --all`: **K-10 mandates it after a tag-pattern
+edit**, because every pool row's `Synergies` is derived inside `row_for()` at FETCH time.
+So a tagger edit followed by `make refresh` left the library re-tagged and the 15.9k-row
+pool on the OLD tags for up to a week — with step 2/6 printing "card-pool.csv is fresh
+(1d old); not rebuilt", `check_all` green throughout, and unowned craft candidates ranking
+on stale tags. The stamp now carries a third line: a content hash of `tag_synergies.py`.
+A mismatch defeats the reuse and prints why.
+
+**Content, not mtime — and that choice is the interesting part.** The first implementation
+compared the tagger's mtime to the pool's, which works on a developer's machine and is
+wrong in general: git stamps every file at CHECKOUT time in arbitrary order, so a fresh
+clone would have forced a ~5-minute full rebuild on its first `make refresh`, every time.
+This repo had already learned the same lesson from the other direction at F-04, where a
+`copy2`'d `.bak`'s mtime describes when its CONTENTS were written rather than when the
+backup was taken. A stamp written before this change has no third line, which reads as
+None = "cannot tell" and never forces a rebuild — so the upgrade costs exactly one pool
+build, once.
+
 
 ## [G-19] `card-wishlist.csv` is UNOWNED craft targets
 
@@ -2819,6 +2840,19 @@ INV-02 tracks the real row; `verify_ingest._library_key` gained the front→full
 step, resolving to the STORED spelling so the quantity and mana checks read one row.
 The lesson extends the standing rule again: the front-face question is not a read-side
 question — **a writer that keys rows by name is a join too.**
+
+**Batch G closed the last read-side stragglers** — `screen` / `redundancy`'s
+already-in-deck filters and `similar`'s shared-card intersection, the last of which feeds
+the "▸ Most shared CARDS" figure G-47 tells the reader to trust when it disagrees with the
+cosine, so a card the two decks spelled differently simply never counted. `similar`
+intersects KEYS through a key→display map, keeping the count right without printing
+lowercased keys at the reader. **ONE MEMBER REMAINS OPEN**, deliberately: the
+`#: protect:` / `#: uncastable-ok:` CONSUMERS (`rank_cut_candidates`, `_castability`,
+`_weakest_cut`) still compare raw lowercase names while `header_card_staleness` — the gate
+built to catch a dead header entry — joins on `_ms_key`, so a header naming a DFC by its
+other face is a disabled instruction the gate certifies as healthy. Measured at zero live
+instances (all 14 DFC-bearing headers happen to use the full spelling), which is why it was
+left rather than rushed; it is the next thing to close in this class.
 
 **Batch A/B of the same scan closed five more members in one pass**, all the raw-name
 join shape: the swap CUT side (`_cards_after_swap` / `_swap_edit_lines` /

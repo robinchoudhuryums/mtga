@@ -183,6 +183,8 @@ python3 scripts/query.py --synergy counters            # counters-matter cards
 python3 scripts/query.py --set MSH --text "draw a card"
 python3 scripts/query.py --min-owned 1 --count         # how many distinct cards you own
 python3 scripts/query.py --color G --csv               # emit CSV to pipe elsewhere
+                                                       # (--csv emits the LIBRARY columns,
+                                                       #  so it refuses a derived file)
 ```
 
 Case-insensitive substring filters, AND-ed together — except `--color`, which
@@ -228,11 +230,16 @@ query typo, or Scryfall's zero-match 404) or one **less than half** the current 
 count — so a mistaken query, or a plain Standard rebuild run over a full `--all`
 pool, can't silently destroy the reference. Pass `--allow-shrink` when the shrink
 is intentional. (The write itself is atomic, so an interrupted build leaves the
-existing pool intact.)
+existing pool intact.) `--out` is schema-guarded in both directions: pointed at a file
+that already holds a *different* schema — `--out card-library.csv`, say — it refuses
+before doing any work, rather than overwriting your inventory with the pool's columns.
 
 `card-pool.csv` carries a **Rarity** column (= Arena wildcard cost) and a
 **`Released`** column (each card's set release date). `build_pool.py` also writes
-a `card-pool.build` sidecar stamping when the pool was last built — together these
+a `card-pool.build` sidecar stamping when the pool was last built (plus the query it
+was built for, and a content hash of `tag_synergies.py` — so editing a tag pattern
+defeats the one-week freshness reuse and the pool's `Synergies` really are re-derived,
+which used to be a silent no-op) — together these
 let `deck.py suggest` reason about **rotation** (Standard holds ~the last 3 years
 of sets), flagging picks whose set has aged out even when the static `Legalities`
 snapshot still says `standard`. Search the pool with `pool.py`, which joins

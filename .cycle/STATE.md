@@ -119,6 +119,18 @@ indentation loss that made card.py unparseable (check_all's AST scans caught it)
 read_stamp test doubles I should have scanned for first.
 Block: `.cycle/blocks/2026-08-broad-scan2-batchG-broad-implement.md`.
 
+**Eleventh pass — /sync-docs** after Batch G. Two claims were now FALSE in the other
+direction (the fixes outran the docs): G-56's "one call level deep" residual, which I had
+documented one pass earlier and Batch G then CLOSED, and K-10's stale-tags warning, which
+is now enforced rather than advisory. Three were incomplete: G-18 (the freshness reuse
+now has a tag-content escape), the F-02 Key Design Decision (the MIRROR direction is
+guarded too), and G-14 (naming the two exceptions that were escaping `_TRANSIENT`).
+README gained the third stamp line, the `--out` schema guard, and `--csv`'s refusal.
+docs/gotchas.md gained the BS2-23 incident WITH the content-not-mtime design decision
+(an mtime test would have forced a 5-minute rebuild after every fresh clone), and G-63's
+long form now records both the Batch G closures and the ONE member left deliberately
+open — the `#: protect:` consumers vs the G-68 gate, at zero measured live instances.
+
 **Where I left off:** top-5 + docs + follow-ons + Batches A–G implemented, tested, committed and
 pushed on `claude/broad-scan-v74wau`; no PR opened (not requested). The remaining scan
 items are batched/prioritized in the session's closing report (batches A–H: verdict-surface

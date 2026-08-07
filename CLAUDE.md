@@ -70,7 +70,12 @@ docs. This file is the source of truth for the workflow commands in
   checked that the file EXISTED (audit F-02). Both CLIs now refuse a non-library
   target up front via `lib.csv_schema_error()`, `write_rows` raises `lib.WrongSchema`
   as the backstop, and INV-03 verifies each derived file still carries its own
-  columns. **To refresh a derived file, use its own builder** — `build_pool.py --all`
+  columns. **The MIRROR is guarded too**: `build_pool.py` / `build_mana.py` /
+  `parse_matches.py` refuse an `--out` that already holds a different schema, before any
+  network work — `build_pool.py --out card-library.csv` would otherwise overwrite the
+  inventory with the pool header, and the shrink guard reads 15.9k-rows-over-2k as
+  GROWTH. `query.py --csv` refuses a derived path for the same reason on the READ side.
+  **To refresh a derived file, use its own builder** — `build_pool.py --all`
   re-derives pool `Synergies` through the same `tags_for()`; `build_mana.py` rebuilds
   costs/keywords. A new writer for a differently-shaped CSV needs its own
   `atomic_write` + `DictWriter` on that file's real fieldnames (see
@@ -277,7 +282,10 @@ directions.
   an outage maps to `ScryfallUnavailable` so the interactive tools DEGRADE instead of
   crashing, and the rebuild scripts fail cleanly rather than writing a partial-blank file
   over good data. A new call that bypasses it will hit the same class of bug — a read
-  TIMEOUT is not a `URLError`. Needs `api.scryfall.com` + `*.scryfall.io` reachable.
+  TIMEOUT is not a `URLError`, `http.client.IncompleteRead` is not a `JSONDecodeError`,
+  and `ssl.SSLError` subclasses `OSError` rather than `ConnectionError` (all three now in
+  `_TRANSIENT`; the last two were escaping as tracebacks). Needs `api.scryfall.com` +
+  `*.scryfall.io` reachable.
   [G-14]
 - **The optional editor (`scripts/app.py`) mutates `card-library.csv`** via validated
   writes plus a timestamped `.bak`, appends a `card-mana.csv` row when you add a card
@@ -301,7 +309,10 @@ directions.
   (99% of the old refresh cost was its 91 paginated pages). Skipping the pool is correct,
   not just fast: it is the whole Arena pool and independent of what you OWN, so an ingest
   cannot change it — what goes stale is `Legalities` and a new set's arrival, hence a
-  window. `--refetch` (`make refresh REFETCH=1`) forces both. [G-18]
+  window. **But a TAG-PATTERN edit also stales it**, which the reuse could not see: the
+  stamp now records a content hash of `tag_synergies.py` and a mismatch defeats the
+  reuse, because K-10's mandated `build_pool.py --all` was otherwise a silent no-op for
+  up to a week (BS2-23). `--refetch` (`make refresh REFETCH=1`) forces both. [G-18]
 - **`card-wishlist.csv` is UNOWNED craft targets**, with DFCs under their full
   `Front // Back` name. `--rank` blends a hand-graded Power 50/50 with theme fit plus a
   bounded cross-deck breadth bonus; **lands rank on manabase value instead**, since theme
@@ -559,10 +570,12 @@ directions.
   the card you cut and whether `suggest` surfaced the add, captured against the PRE-swap
   deck. `deck.py feedback` reads it back and **leads with the DISAGREEMENTS**, because an
   agreement is contaminated by the shortlist's own influence. It is REPORT-ONLY and must
-  stay so: `tests/test_recommendations.py` forbids a scoring function reading the
-  ledger — **one call level deep**, though: it inspects five named functions' own bodies
-  and NOT `cut_keep_score`, the shared delegate both cut rankings actually read, so a
-  ledger read placed there would satisfy every assertion. Recording never blocks a swap.
+  stay so: `tests/test_recommendations.py` structurally forbids a scoring function
+  reading the ledger — including `cut_keep_score` and `_weakest_cut`, the DELEGATES the
+  scan missed while claiming to be structural (a ledger read placed in the shared
+  delegate satisfied every assertion; 7 functions are scanned now, not 5). Recording
+  never blocks a swap — the caller catches any exception, not just `OSError`, so a
+  corrupted ledger can't traceback AFTER the deck file is written.
   **A swap applied only to MEASURE something still leaves a row** — prefer a dry run or a
   scratch copy, since a fabricated row is worse than a missing one. [G-56]
 - **Match results are FREE from `Player.log`, and the header line is the load-bearing
@@ -757,8 +770,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   tail of un-themeable effects, and a new theme for four cards is not the fix.** [K-09]
 - **After editing a tag pattern, regenerate BOTH derived tag stores** —
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
-  which re-derives every pool row's `Synergies` through the same `tags_for()`. Skip the
-  pool rebuild and unowned craft candidates rank on stale tags. Never point
+  which re-derives every pool row's `Synergies` through the same `tags_for()`. Skipping
+  the pool rebuild used to leave unowned craft candidates ranking on stale tags SILENTLY;
+  since BS2-23 the pool's build stamp carries the tagger's content hash, so an edit here
+  defeats the freshness reuse and `make refresh` really does re-derive them. Never point
   `tag_synergies.py` or `enrich.py` at `card-pool.csv` — both write the library's 8
   columns and would destroy the pool's own. [K-10]
 - **A few genuinely text-less vanilla creatures trip validate's blank-Card-Text
