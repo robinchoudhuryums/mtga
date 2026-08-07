@@ -337,3 +337,20 @@ class TestPowerRangeFlag:
                    "Collector #": "1", "Target": "", "Note": "", "Power": val,
                    "Power Source": "hand"}
             assert not wishlist._rank_scores([row])[0]["bad_power"]
+
+
+class TestIsLandReadsTheFrontFace:
+    """BS2-11: `_is_land` was a whole-type-line substring scan, so a card whose BACK
+    face is a land (`Legendary Creature — God // Land`) took the manabase-value
+    ranking branch — theme fit discarded, tier re-assigned, a creature bought as a
+    phantom "manabase" upgrade in a live --budget run. The front face is what a land
+    drop can play."""
+
+    def test_a_back_face_land_is_not_a_land(self):
+        assert wishlist._is_land({"Type": "Legendary Creature — God // Land"}) is False
+
+    def test_a_front_face_land_is_a_land(self):
+        assert wishlist._is_land({"Type": "Land — Town // Sorcery — Adventure"}) is True
+
+    def test_a_plain_land_is_a_land(self):
+        assert wishlist._is_land({"Type": "Land — Desert"}) is True

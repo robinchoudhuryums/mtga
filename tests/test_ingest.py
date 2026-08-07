@@ -62,7 +62,7 @@ class TestMergeQuantities:
         rows = [{"Card Name": "Shock", "Set Code": "M19", "Collector #": "156",
                  "Quantity Owned": "4", "Type": "", "Card Text": "", "Color(s)": "",
                  "Synergies": ""}]
-        added, updated = import_arena.merge(rows, [(2, "Shock", "M19", "156")], sum_mode=False)
+        added, updated, _ = import_arena.merge(rows, [(2, "Shock", "M19", "156")], sum_mode=False)
         assert rows[0]["Quantity Owned"] == "4"  # max(4, 2) — a lower-bound line can't drop a count
         assert added == 0
 
@@ -75,7 +75,7 @@ class TestMergeQuantities:
 
     def test_new_printing_added(self):
         rows = []
-        added, _ = import_arena.merge(rows, [(1, "Shock", "M19", "156")], sum_mode=False)
+        added, _, _ = import_arena.merge(rows, [(1, "Shock", "M19", "156")], sum_mode=False)
         assert added == 1 and rows[0]["Card Name"] == "Shock"
 
     def test_front_name_line_bumps_a_full_name_stored_printing(self):
@@ -86,7 +86,7 @@ class TestMergeQuantities:
         rows = [{"Card Name": "Bottomless Pool // Locker Room", "Set Code": "DSK",
                  "Collector #": "43", "Quantity Owned": "1", "Type": "",
                  "Card Text": "", "Color(s)": "", "Synergies": ""}]
-        added, updated = import_arena.merge(
+        added, updated, _ = import_arena.merge(
             rows, [(2, "Bottomless Pool", "DSK", "43")], sum_mode=False)
         assert added == 0 and updated == 1
         assert len(rows) == 1 and rows[0]["Quantity Owned"] == "2"
@@ -660,3 +660,38 @@ class TestCollectionPlan:
         rows = [self._row("Shock", "M21", "1", "4")]
         r = ic.plan(rows, [(2, "Shock", "M21", "1"), (1, "Shock", "M20", "5")])
         assert r["zeroed"] == [] and rows[0]["Quantity Owned"] == "3"
+
+
+class TestSetlessLines:
+    """BS2-24: a set-less line ('4 Llanowar Elves', a website list) keyed on
+    ("name","","") which matches no real row, so merge APPENDED a phantom blank-set
+    printing — and since every consumer SUMS across printings, a real 4 read as 5:
+    the one over-count path in a subsystem that otherwise only undercounts."""
+
+    def _rows(self):
+        return [{"Card Name": "Llanowar Elves", "Set Code": "M19", "Collector #": "314",
+                 "Quantity Owned": "4", "Type": "", "Card Text": "", "Color(s)": "",
+                 "Synergies": ""}]
+
+    def test_covered_setless_line_changes_nothing(self):
+        rows = self._rows()
+        added, updated, notes = import_arena.merge(rows, [(4, "Llanowar Elves", "", "")],
+                                                   sum_mode=False)
+        assert added == 0 and updated == 0 and len(rows) == 1
+        assert rows[0]["Quantity Owned"] == "4"
+        assert any("already covered" in n for n in notes)
+
+    def test_setless_line_above_the_summed_total_tops_up_not_appends(self):
+        rows = self._rows()
+        added, updated, notes = import_arena.merge(rows, [(6, "Llanowar Elves", "", "")],
+                                                   sum_mode=False)
+        assert added == 0 and len(rows) == 1        # NO phantom blank-set row
+        assert rows[0]["Quantity Owned"] == "6"      # topped up to the claimed total
+        assert any("topped up" in n for n in notes)
+
+    def test_setless_line_for_an_unknown_card_is_added_loudly(self):
+        rows = []
+        added, _, notes = import_arena.merge(rows, [(2, "New Card", "", "")],
+                                             sum_mode=False)
+        assert added == 1 and rows[0]["Set Code"] == ""
+        assert any("BLANK set code" in n for n in notes)

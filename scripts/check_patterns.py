@@ -116,6 +116,13 @@ _EXCLUDED = {
                               "text; unit-tested in test_lib.py::TestBackupSelection",
     ("wishlist", "LINE_RE"): "wishlist-batch card-line syntax (mirrors deck.LINE_RE), "
                              "not card text",
+    # Surfaced by the BS2-13 deep walk — previously below the walker's depth, so
+    # they were silently exempt rather than declared. Declared now, with the same
+    # reasoning as their _HISTORY_CUES siblings.
+    ("deck", "_RATIONALE_FIGURES"): "tier-RATIONALE prose (quoted figures); "
+                                    "unit-tested in test_deck.py",
+    ("deck", "_SECTION_EXPECTATIONS"): "deck-file `# section` comment prose, not card "
+                                       "text; unit-tested via section_mismatch tests",
 }
 
 
@@ -217,25 +224,50 @@ def _pattern_groups():
     # alone are what the live-corpus check proves alive, which is enough).
     for name in ("_FLEX_REMOVAL_RE", "_CONDITIONAL_POWER_RE"):
         out.append((f"wishlist.{name}", getattr(wishlist, name), "norm"))
+    # The two-sided engine tables and the cost-as-upside detector (BS2-13): 68
+    # oracle-text classifiers that lived below the old walker's one-level depth,
+    # so neither the live-corpus nor the completeness check ever saw them — which
+    # is how a sacrifice-payoff pattern matching 0 pool texts shipped and stayed.
+    # engine_roles lowercases with the same −→- normalization classify_roles uses,
+    # and _COST_UPSIDE compiles re.I, so the norm corpus is right for both.
+    for theme, sides in deck._ENGINE_COMPILED.items():
+        for role, pats in sides.items():
+            out += [(f"engine:{theme}/{role}", p, "norm") for p in pats]
+    out += [(f"deck._COST_UPSIDE[{i}]", rx, "norm")
+            for i, (rx, _themes, _why) in enumerate(deck._COST_UPSIDE)]
     return out
+
+
+def _walk_patterns(obj, _depth=0):
+    """Every re.Pattern reachable inside nested lists/tuples/dicts/sets, any depth.
+
+    The predecessor descended exactly ONE container level, so `_ENGINE_COMPILED`
+    (dict → dict → list, depth three) and every list-of-TUPLES table
+    (`_COST_UPSIDE`, `_TARGET_GATES`, `_RATIONALE_FIGURES`) were invisible to the
+    completeness check — 90 of 419 module-level patterns, 68 of them oracle-text
+    classifiers, outside every check. Not latent: an engine payoff pattern that
+    matched 0 of ~15.9k pool texts shipped and sat dead behind a green gate, the
+    exact failure this file's own docstring is about (broad-scan BS2-13). Depth
+    is capped only to guard against a cyclic structure."""
+    if _depth > 6:
+        return
+    if isinstance(obj, re.Pattern):
+        yield obj
+    elif isinstance(obj, dict):
+        for v in obj.values():
+            yield from _walk_patterns(v, _depth + 1)
+    elif isinstance(obj, (list, tuple, set, frozenset)):
+        for v in obj:
+            yield from _walk_patterns(v, _depth + 1)
 
 
 def _module_patterns():
     """(module_name, attr_name, compiled) for every module-level pattern in the
-    scanned modules — including those nested one level inside a list/tuple/dict
-    value, which is where `_DOUBLER_AXES` and the role tables live."""
+    scanned modules, at ANY nesting depth (see `_walk_patterns`)."""
     out = []
     for mod in _SCANNED_MODULES:
         for name, obj in sorted(vars(mod).items()):
-            if isinstance(obj, re.Pattern):
-                out.append((mod.__name__, name, obj))
-            elif isinstance(obj, (list, tuple)):
-                out += [(mod.__name__, name, p) for p in obj if isinstance(p, re.Pattern)]
-            elif isinstance(obj, dict):
-                for v in obj.values():
-                    for p in (v if isinstance(v, (list, tuple)) else [v]):
-                        if isinstance(p, re.Pattern):
-                            out.append((mod.__name__, name, p))
+            out += [(mod.__name__, name, p) for p in _walk_patterns(obj)]
     return out
 
 

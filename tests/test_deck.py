@@ -3146,3 +3146,55 @@ class TestNeedsFmtNormalization:
     def test_an_untracked_format_warns_instead_of_silently_not_filtering(self, capsys):
         deck._needs_fmt(self._ns(fmt="foo"), {"format": ""})
         assert "not tracked" in capsys.readouterr().out
+
+
+class TestSyncSameDeckClaim:
+    """BS2-10: blocks are matched independently, so two pasted blocks could both
+    resolve to one stored deck and the write loop wrote the file twice — the second
+    write clobbering the first. First claim wins; later blocks are reported."""
+
+    def test_second_block_matching_the_same_deck_is_skipped(self, tmp_path, monkeypatch, capsys):
+        from types import SimpleNamespace
+        p = tmp_path / "deck.txt"
+        p.write_text("4 Aaa\n4 Bbb\n4 Ccc\n", encoding="utf-8")
+        d = {"id": "1", "name": "T", "path": str(p), "core": True, "variant": None}
+        monkeypatch.setattr(deck, "roster_decks", lambda: [d])
+        monkeypatch.setattr(deck, "_printing_index", lambda: {})
+        src = tmp_path / "paste.txt"
+        src.write_text("Deck\n4 Aaa\n4 Bbb\n4 Ccc\n\nDeck\n4 Aaa\n4 Bbb\n3 Ccc\n",
+                       encoding="utf-8")
+        rc = deck.cmd_sync(SimpleNamespace(source=str(src), apply=False, force=False))
+        out = capsys.readouterr().out
+        assert "ALSO matched" in out and "block 1" in out
+        assert rc == 1
+
+
+class TestMalformedDeckLines:
+    """BS2-14: parse_deck_file discards a line LINE_RE rejects with no record, so
+    INV-04 — documented as "parses with no malformed card lines" — actually failed
+    only on a file with ZERO parseable cards. A quantity-less line or a BOM-prefixed
+    paste was silently deleted from every analysis."""
+
+    def _deck(self, tmp_path, body):
+        p = tmp_path / "deck.txt"
+        p.write_text(body, encoding="utf-8")
+        return str(p)
+
+    def test_a_quantityless_card_line_is_reported(self, tmp_path):
+        p = self._deck(tmp_path, "#: name: T\n4 Shock (M21) 159\nLightning Bolt (DMU) 137\n")
+        hits = deck.malformed_deck_lines(p)
+        assert len(hits) == 1 and "Lightning Bolt" in hits[0][1]
+
+    def test_a_bom_prefixed_line_is_reported(self, tmp_path):
+        p = self._deck(tmp_path, "﻿1 Island\n4 Shock (M21) 159\n")
+        assert len(deck.malformed_deck_lines(p)) == 1
+
+    def test_arena_markers_comments_and_headers_are_tolerated(self, tmp_path):
+        p = self._deck(tmp_path,
+                       "Deck\n#: name: T\n# Creatures\n#~ -A | +B\n4 Shock (M21) 159\n"
+                       "Sideboard\n2 Negate (M21) 69\n")
+        assert deck.malformed_deck_lines(p) == []
+
+    def test_a_trailing_comment_on_a_card_line_is_fine(self, tmp_path):
+        p = self._deck(tmp_path, "4 Shock (M21) 159  # burn\n")
+        assert deck.malformed_deck_lines(p) == []

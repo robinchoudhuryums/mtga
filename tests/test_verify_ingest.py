@@ -312,3 +312,23 @@ class TestRebuildOrderIsDefinedOnceAndCorrectly:
         pool_src = open(os.path.join(REPO, "scripts", "build_pool.py"), encoding="utf-8").read()
         assert "MANA_CSV" not in pool_src, \
             "build_pool now reads card-mana.csv — the order needs re-deriving"
+
+
+class TestCollectionCsvInput:
+    """BS2-05: import_collection's docstring and post-apply message both direct the
+    operator here with the CSV export, and this tool could not read that file at all
+    — every row failed the Arena regex, and the 'never ingested by ANY tool' hint
+    then printed a flatly false claim about an import just applied."""
+
+    def test_a_tracker_csv_is_read_when_no_arena_lines_parse(self):
+        res, warns = vi.verify(
+            "Card Name,Set Code,Collector Number,Quantity\nPacifism,ANB,16,2\n",
+            lib=_lib([("Pacifism", 2)]), mana={"pacifism"})
+        assert len(res) == 1
+        assert res[0]["present"] and res[0]["enough"]
+        assert any("collection CSV" in w for w in warns)
+
+    def test_arena_lines_still_take_priority(self):
+        res, warns = vi.verify(_paste("2 Pacifism (ANB) 16"),
+                               lib=_lib([("Pacifism", 2)]), mana={"pacifism"})
+        assert len(res) == 1 and not any("collection CSV" in w for w in warns)

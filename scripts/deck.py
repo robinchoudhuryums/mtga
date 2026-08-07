@@ -178,6 +178,40 @@ def parse_deck_file(path):
     return meta, cards
 
 
+# Stray block markers an Arena paste carries ("Deck", "Sideboard", …). Tolerated by
+# `malformed_deck_lines` because 12 roster files hold a leftover `Deck` line and it is
+# harmless — but ONLY these: anything else that fails LINE_RE is a card the deck
+# silently isn't playing.
+_STRAY_MARKERS = {"deck", "sideboard", "commander", "companion", "maybeboard", "about"}
+
+
+def malformed_deck_lines(path):
+    """[(lineno, text)] — non-blank, non-comment lines that are NEITHER a `#:` header,
+    a card line, nor a tolerated Arena block marker. The MISSING channel of INV-04.
+
+    `parse_deck_file` discards a line `LINE_RE` rejects with no record, so INV-04 —
+    documented as "every deck file parses with no malformed card lines" — actually
+    failed only when a file had ZERO parseable cards. `Lightning Bolt (DMU) 137`
+    (quantity omitted, the most plausible hand-edit) or a BOM-prefixed line was
+    silently deleted from the deck: `check` reported the remaining 59 buildable, the
+    curve/tier floor graded a list that is not the file, and every gate stayed green
+    (broad-scan BS2-14). The `(SET) COLLECTOR#` half of this exact function was
+    hardened for G-65; this is the line-syntax half of the same sentence."""
+    out = []
+    with open(path, encoding="utf-8") as fh:
+        for i, raw in enumerate(fh, start=1):
+            s = raw.strip()
+            if not s or s.startswith("#"):
+                continue
+            line = s.split("#", 1)[0].strip()
+            if not line or LINE_RE.match(line):
+                continue
+            if line.lower() in _STRAY_MARKERS:
+                continue
+            out.append((i, line))
+    return out
+
+
 def discover_decks():
     """Return a list of deck records: {id, name, path, core, variant}."""
     decks = []
@@ -2558,8 +2592,15 @@ ENGINE_THEMES = {
         # it is NOT sac-outlet-dependent the way a "whenever you sacrifice" payoff is.
         # engine_balance keeps them apart: only sac-triggers "sit dead" without an outlet;
         # death triggers are combat-fed when the deck has a real creature base (F-engines).
+        # The passive-voice sibling `whenever[^.]*is sacrificed` matched 0 of ~15.9k
+        # pool texts — Magic templates sacrifice triggers actively ("whenever you
+        # sacrifice …") — and sat dead for the pattern's whole life because the
+        # completeness gate's walker stopped one container level up (broad-scan
+        # BS2-13, the `(?:owner|their) hand` failure verbatim). Removed rather than
+        # kept-just-in-case: check_patterns now sees this table, and a pattern that
+        # matches nothing FAILS the build, which is the forcing function working.
         "enabler": [r"\bsacrifice (a|an|another|two|three|\d+|x|it|them)\b", r"you may sacrifice"],
-        "payoff": [r"whenever you sacrifice", r"whenever[^.]*is sacrificed"],
+        "payoff": [r"whenever you sacrifice"],
         "death": [r"whenever[^.]*\bdies\b"],
     },
     "graveyard": {   # fill the yard vs use the yard (reanimator / recursion)
@@ -3286,6 +3327,14 @@ def interaction_profile(cards, carddata):
     for nl, q in qty_by_name.items():
         cd = carddata.get(nl)
         if not cd:
+            continue
+        # Same nonbasic-LAND filter the canonical `role_tally` applies — this profile
+        # skipped it, so 13 decks printed two contradicting interaction figures eleven
+        # lines apart in one `stats` run (29a: total 13 vs profile 14, the extra being
+        # the land Abraded Bluffs), and the all-sorcery / no-noncreature-answer flags
+        # fired off the inflated total (broad-scan BS2-18; K-12's one-canonical-counter
+        # contract).
+        if "Land" in _primary_type(cd.get("type") or ""):
             continue
         text = cd.get("text") or ""
         roles = classify_roles(text)
@@ -6635,6 +6684,7 @@ def cmd_sync(args):
     decks = [(d, _multiset(parse_deck_file(d["path"])[1])) for d in roster_decks()]
     printings = _printing_index()
     results, rc, unmatched = [], 0, 0
+    claimed = {}                       # deck id → block number that matched it first
     print(f"Sync — {len(blocks)} pasted deck block(s) vs {len(decks)} stored decks\n")
     for i, block in enumerate(blocks, 1):
         # Maindeck only: stored decks carry no sideboard, so board cards must not
@@ -6660,6 +6710,23 @@ def cmd_sync(args):
             continue
         d = m["deck"]
         label = f"#{d['id']} {d['name'] or d['id']}"
+        # ONE stored deck per paste (broad-scan BS2-10). Blocks are matched
+        # independently, so two blocks can both resolve to the same deck — pasting a
+        # 52/52a family where one variant is retired makes both blocks legitimately
+        # match the survivor — and the write loop then wrote the file TWICE, the
+        # second write clobbering the first with only an intermediate .bak between
+        # them. The low-confidence rule compares a block against runner-up DECKS,
+        # never blocks against each other, so it cannot see this. First claim wins;
+        # later blocks are reported and skipped (re-paste separately to choose).
+        if d["id"] in claimed:
+            print(f"  ✗ block {i}: ALSO matched {label}, already claimed by block "
+                  f"{claimed[d['id']]} — skipped. If this block is the real list, "
+                  "re-paste it alone; two blocks matching one deck usually means a "
+                  "variant is retired or renamed.")
+            unmatched += 1
+            rc = 1
+            continue
+        claimed[d["id"]] = i
         if m["sync"]:
             print(f"  ✓ {label} — in sync")
             continue

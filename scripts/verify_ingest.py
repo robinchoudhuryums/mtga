@@ -141,8 +141,26 @@ def verify(text, *, exact=False, include_basics=False, lib=None, mana=_UNSET):
     passed both `>=` tests while the paste claimed 3. This is the read half of the
     accumulation fix in `import_collection.plan` (broad-scan F-01); the two must agree
     about what a card's quantity MEANS or the authoritative route has no working check.
+
+    INPUT FORMATS: Arena decklist lines first; if NONE parse, a CSV/TSV tracker export
+    is tried via `import_collection.parse_export`. That second reading is load-bearing:
+    `import_collection`'s docstring and its post-apply message both direct the operator
+    HERE with the export file, and this tool could not read that file at all — every
+    row failed the Arena regex and `report()` then printed "Unparseable lines were never
+    ingested by ANY tool", flatly false for an import just applied. The one tool that
+    may LOWER a count had no working read-back check (broad-scan BS2-05).
     """
     entries, warnings = parse(text)
+    if not entries:
+        try:
+            import import_collection
+            centries, cwarnings, _unreadable = import_collection.parse_export(text)
+        except Exception:
+            centries, cwarnings = [], []
+        if centries:
+            entries = centries
+            warnings = cwarnings + [f"read as a collection CSV/TSV export "
+                                    f"({len(centries)} card row(s))"]
     quantities, names = lib if lib is not None else library_index()
     known_mana = mana_names() if mana is _UNSET else mana
 
@@ -202,7 +220,11 @@ def report(results, warnings, *, exact=False, mana_missing=False):
 
     for w in warnings:
         eprint(f"WARN:  {w}")
-    if warnings:
+    # Scoped to ACTUAL parse failures: warnings also carry informational notes now
+    # (the CSV-mode banner, unreadable-quantity rows), and this claim is about lines
+    # no parser matched — printing it for a successfully-read CSV export made it
+    # flatly false for an import that just applied (broad-scan BS2-05).
+    if any("could not parse" in w for w in warnings):
         eprint("       Unparseable lines were never ingested by ANY tool — they are not "
                "in the library because nothing ever wrote them.\n")
 

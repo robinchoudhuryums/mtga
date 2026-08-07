@@ -940,7 +940,16 @@ const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) 
 // giving it role="button" would announce a control that isn't one.
 function a11y(node, opts){
   const o = opts || {};
-  node.setAttribute('role', o.role || 'button');
+  // role:null means KEEP the element's native role. The unconditional 'button'
+  // default erased load-bearing semantics wherever a11y() touched a semantic
+  // element: role="button" on the nine <h2> section headers removed every heading
+  // from the accessibility tree (heading-jump navigation — NVDA/JAWS H, the
+  // VoiceOver rotor — found nothing on a ~2000-line page), and on the sort <th>s it
+  // replaced columnheader, which both broke cell-by-cell table navigation and made
+  // aria-sort invalid, silently undoing the S3 fix that re-applies it every redraw
+  // (broad-scan BS2-16). Interactive-but-semantic elements keep their role and gain
+  // focus/keys/state attributes instead.
+  if (o.role !== null) node.setAttribute('role', o.role || 'button');
   node.tabIndex = 0;
   if (o.label) node.setAttribute('aria-label', o.label);
   if (o.pressed != null) node.setAttribute('aria-pressed', String(!!o.pressed));
@@ -1142,7 +1151,7 @@ function sortableTable(cls, cols, rows, sortState, onRowExtra, opts){
   const thead = el('thead'), htr = el('tr');
   cols.forEach(c => {
     const th = a11y(el('th', (c.num?'num':'') + (sortState.key===c.key?' on':''), ''),
-                    {label:'Sort by ' + c.label});
+                    {label:'Sort by ' + c.label, role:null});   // keep columnheader — aria-sort lives there
     if (sortState.key===c.key) th.setAttribute('aria-sort', sortState.dir>0?'ascending':'descending');
     th.textContent = c.label + (sortState.key===c.key ? (sortState.dir>0?' ▲':' ▼') : '');
     th.onclick = () => { if (sortState.key===c.key) sortState.dir = -sortState.dir; else { sortState.key = c.key; sortState.dir = c.num?-1:1; } redraw(); };
@@ -1164,7 +1173,7 @@ function sortableTable(cls, cols, rows, sortState, onRowExtra, opts){
     });
     // progressive-disclosure toggle row (only when the list is longer than the cap)
     if (opts.limit && rs.length > opts.limit){
-      const tr = el('tr','morerow'); const td = a11y(el('td')); td.colSpan = cols.length;
+      const tr = el('tr','morerow'); const td = a11y(el('td'), {role:null}); td.colSpan = cols.length;  // role=button inside a <tr> breaks the row's structure
       td.textContent = opts._exp ? ('▴ show top ' + opts.limit) : ('▾ show all ' + rs.length + '  (+' + (rs.length - opts.limit) + ')');
       td.onclick = () => { opts._exp = !opts._exp; redraw(); };
       tr.appendChild(td); tb.appendChild(tr);
@@ -1975,7 +1984,7 @@ function applyCollapsed(id, collapsed){
     applyCollapsed(id, collapsed);
     // The section headers are the page's primary navigation — every section collapses
     // through them — and they were <h2> with a bare onclick (I-01).
-    a11y(h, {label:label + ' section', expanded:!collapsed});
+    a11y(h, {label:label + ' section', expanded:!collapsed, role:null});  // keep the <h2> a heading
     h.onclick = () => { const c = !sec.classList.contains('collapsed'); STATE.secCollapsed[id] = c; applyCollapsed(id, c); h.setAttribute('aria-expanded', String(!c)); persist(); };
   });
   // scroll-spy: highlight the nav chip of the last section scrolled past

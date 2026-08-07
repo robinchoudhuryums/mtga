@@ -39,8 +39,19 @@ BS2-13/14 gate holes, BS2-18 interaction_profile divergence). Doc updates for
 /sync-docs are listed in the block (G-67 incident, README import_collection semantics,
 G-63 write-side membership, K-12's still-contradicted claim).
 
-**Where I left off:** all five findings implemented, tested, committed and pushed on
-`claude/broad-scan-v74wau`; no PR opened (not requested).
+**Second pass, same session:** `/sync-docs` applied (G-63/G-67/G-08 + README ingest/sync
+semantics, K-12 left un-annotated on purpose), then `/broad-implement` of ALL TEN follow-on
+items — BS2-05, 10, 11, 12, 13, 14, 16, 17, 18, 24. Block:
+`.cycle/blocks/2026-08-broad-scan2-followon-broad-implement.md`. 983 tests (18 more new),
+zero soft warnings, dashboard.html + gallery.html rebuilt. K-12's canonical-counter claim
+is TRUE again (BS2-18); check_patterns now sees 247 patterns at any nesting depth and the
+dead engine pattern is gone; INV-04 gained the malformed-line channel.
+
+**Where I left off:** top-5 + docs + all ten follow-ons implemented, tested, committed and
+pushed on `claude/broad-scan-v74wau`; no PR opened (not requested). The remaining scan
+items are batched/prioritized in the session's closing report (batches A–H: verdict-surface
+joins, wishlist honesty, gate hardening, editor safety, interface access, editor theming,
+CLI polish, strategic).
 
 ## Session — broad scan + top-5 fixes (2026-08-04)
 

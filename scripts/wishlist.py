@@ -43,7 +43,7 @@ import os
 import sys
 
 from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, owned_qty,
-                 card_colors, card_distinctiveness, color_matches)
+                 card_colors, card_distinctiveness, color_matches, primary_type)
 from scryfall import ScryfallUnavailable
 
 WISHLIST_CSV = os.path.join(REPO_ROOT, "card-wishlist.csv")
@@ -558,7 +558,15 @@ def _deck_colors_map():
 
 
 def _is_land(row):
-    return "land" in (row.get("Type") or "").lower()
+    """FRONT-face land test, via `lib.primary_type` — a whole-type-line substring scan
+    reads the BACK face's `// Land` (`lib.primary_type`'s own worked examples), so the
+    three live God/door DFCs (Ojer Axonil / Ojer Kaslem / Matzalantli) took the
+    manabase-value ranking branch: theme fit discarded, `fitN` replaced by a bogus
+    "manabase" score for a creature, tier re-assigned from `land_val` — Ojer Axonil was
+    bought at pick #6 of a live `--budget` as a phantom manabase upgrade, and
+    Matzalantli moved a whole tier (broad-scan BS2-11). The front face is what a land
+    drop can play, which is the only sense in which the wishlist ranks a "land"."""
+    return primary_type(row.get("Type") or "") == "Land"
 
 
 def _land_value(row, deck_colors):

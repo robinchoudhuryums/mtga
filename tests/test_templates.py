@@ -235,3 +235,32 @@ class TestNoControlSilentlyLosesItsName:
         for tag, a in _parse("collection.html"):
             if tag == "select":
                 assert a.get("aria-label"), a
+
+
+class TestDashboardA11yRoleDiscipline:
+    """BS2-16: a11y()'s unconditional role='button' default erased load-bearing
+    semantics — the nine <h2> section headers left the heading tree (heading-jump
+    navigation found nothing) and the sort <th>s lost columnheader, making the
+    re-applied aria-sort invalid. The dashboard's markup is built at runtime by JS,
+    so these pin the SOURCE: the role:null escape hatch must exist and the three
+    semantic call sites must use it."""
+
+    def _src(self):
+        import os
+        p = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                         "scripts", "build_dashboard.py")
+        with open(p, encoding="utf-8") as fh:
+            return fh.read()
+
+    def test_a11y_honors_a_null_role(self):
+        assert "if (o.role !== null) node.setAttribute('role'" in self._src()
+
+    def test_section_headings_keep_their_heading_role(self):
+        src = self._src()
+        i = src.find("label:label + ' section'")
+        assert i != -1 and "role:null" in src[i:i + 120]
+
+    def test_sort_headers_keep_columnheader(self):
+        src = self._src()
+        i = src.find("label:'Sort by ' + c.label")
+        assert i != -1 and "role:null" in src[i:i + 80]
