@@ -204,6 +204,15 @@ def pull(worksheet_name, apply=False, allow_shrink=False):
             backup = backup_path(target)  # shared collision-free naming (audit F22)
             shutil.copy2(target, backup)
             print(f"Backed up existing CSV to {os.path.basename(backup)} before overwrite.")
+            # Carry the target's own mode across, exactly as lib.atomic_write does:
+            # mkstemp creates 0600 and os.replace keeps the TEMP's mode, so this
+            # promote-my-own-temp path silently flipped card-library.csv 644 -> 600 —
+            # the regression atomic_write documents fixing, reintroduced by the one
+            # caller that stages its own file (broad-scan Batch G). Masked locally
+            # because a git checkout resets modes.
+            shutil.copymode(target, tmp)
+        else:
+            os.chmod(tmp, 0o644)
         os.replace(tmp, target)
         tmp = None
     finally:

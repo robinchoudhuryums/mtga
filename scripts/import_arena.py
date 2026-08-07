@@ -219,7 +219,14 @@ def main():
                     help="ignore basic lands (use when reconciling from a deck list)")
     args = ap.parse_args()
 
-    text = sys.stdin.read() if args.source == "-" else open(args.source, encoding="utf-8").read()
+    # A bad path was a raw traceback here, while import_collection / verify_ingest /
+    # parse_matches all print a clean "Could not read …" (broad-scan Batch G).
+    try:
+        text = (sys.stdin.read() if args.source == "-"
+                else open(args.source, encoding="utf-8").read())
+    except OSError as e:
+        eprint(f"Could not read {args.source!r}: {e}")
+        return 1
     entries, warnings = parse(text, skip_basics=args.skip_basics)
     for w in warnings:
         eprint(f"WARN:  {w}")
@@ -239,6 +246,14 @@ def main():
     if args.dry_run:
         print(f"[dry-run] {len(entries)} card line(s): would add {added} new, "
               f"update {updated} existing. Nothing written.")
+        return 0
+
+    if not (added or updated):
+        # Don't rewrite (and .bak) a 614KB file that isn't changing: build_mana.py
+        # avoids exactly this for exactly this reason, and import_collection gates on
+        # `changed`. A re-imported paste used to litter a backup per run (Batch G).
+        print(f"Checked {len(entries)} card line(s): nothing to change; "
+              f"{args.library} left untouched.")
         return 0
 
     write_rows(rows, args.library)

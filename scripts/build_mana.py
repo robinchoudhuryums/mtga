@@ -34,7 +34,7 @@ import time
 import urllib.error
 import urllib.request
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write
+from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, csv_schema_error
 import scryfall
 from scryfall import ScryfallUnavailable
 
@@ -196,6 +196,16 @@ def main():
                     help="re-fetch every name instead of reusing the rows already "
                          "resolved in the output file (the slow, full rebuild)")
     args = ap.parse_args()
+    # The MIRROR of F-02 (broad-scan Batch G). lib.csv_schema_error closed "a library
+    # writer pointed at a derived file"; nothing closed the other direction, so
+    # `--out card-library.csv` would overwrite the inventory with THIS builder's
+    # header — and the shrink guard cannot object, because 15.9k rows over 2,085 is
+    # GROWTH. Refuse UP FRONT, before any Scryfall traffic, the way enrich.py does
+    # (tests/test_enrich.py pins that ordering for F-02 itself).
+    problem = csv_schema_error(args.out, ["Card Name", "Mana Cost", "Mana Value", "Keywords"])
+    if problem:
+        eprint(f"ERROR: {problem}")
+        return 1
 
     paths = [DEFAULT_CSV] + ([POOL_CSV] if args.pool and os.path.exists(POOL_CSV) else [])
     names = collect_names(paths)

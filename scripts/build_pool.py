@@ -31,7 +31,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-from lib import REPO_ROOT, eprint, atomic_write
+from lib import REPO_ROOT, eprint, atomic_write, csv_schema_error
 from enrich import color_shorthand, oracle_fields
 from tag_synergies import tags_for
 import scryfall
@@ -123,8 +123,24 @@ def _pt_fields(card):
 FRESH_DAYS = 7          # a pool younger than this is reused unless --refetch
 
 
+def tagger_fingerprint():
+    """Hash of tag_synergies.py — the file whose `tags_for()` derives every pool row's
+    Synergies at fetch time. Recorded in the build stamp so a tag-pattern edit defeats
+    the freshness reuse: K-10 mandates `build_pool.py --all` after one, and the reuse
+    made that mandated command a silent no-op for up to a week (broad-scan BS2-23).
+    Returns "" when unreadable, which compares equal to nothing and so never forces a
+    rebuild on its own."""
+    import hashlib
+    try:
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                               "tag_synergies.py"), "rb") as fh:
+            return hashlib.sha1(fh.read()).hexdigest()[:16]
+    except OSError:
+        return ""
+
+
 def read_stamp():
-    """(iso_date, query) from the card-pool.build sidecar; (None, None) if absent.
+    """(iso_date, query, tag_fingerprint) from the card-pool.build sidecar.
 
     The sidecar has always held the build DATE on its first line; the QUERY is a second
     line added for the freshness check. `deck.pool_staleness_days` reads `[:10]` of the
@@ -132,13 +148,16 @@ def read_stamp():
     unchanged.
     """
     if not os.path.exists(POOL_BUILD_STAMP):
-        return None, None
+        return None, None, None
     try:
         lines = open(POOL_BUILD_STAMP, encoding="utf-8").read().splitlines()
     except OSError:
-        return None, None
+        return None, None, None
     date = (lines[0].strip() if lines else "") or None
-    return date, (lines[1].strip() if len(lines) > 1 else None)
+    # Line 3 (optional) is the tag-pattern fingerprint — absent in a stamp written
+    # before BS2-23, which reads as "unknown" and must NOT force a rebuild.
+    return (date, (lines[1].strip() if len(lines) > 1 else None),
+            (lines[2].strip() if len(lines) > 2 else None))
 
 
 def stamp_age_days(date):
@@ -166,6 +185,16 @@ def main():
                     help=f"reuse a pool built within this many days (default "
                          f"{FRESH_DAYS}; 0 always rebuilds)")
     args = ap.parse_args()
+    # The MIRROR of F-02 (broad-scan Batch G). lib.csv_schema_error closed "a library
+    # writer pointed at a derived file"; nothing closed the other direction, so
+    # `--out card-library.csv` would overwrite the inventory with THIS builder's
+    # header — and the shrink guard cannot object, because 15.9k rows over 2,085 is
+    # GROWTH. Refuse UP FRONT, before any Scryfall traffic, the way enrich.py does
+    # (tests/test_enrich.py pins that ordering for F-02 itself).
+    problem = csv_schema_error(args.out, POOL_HEADER)
+    if problem:
+        eprint(f"ERROR: {problem}")
+        return 1
 
     query = args.query or ("game:arena" if args.all else "game:arena legal:standard")
 
@@ -188,11 +217,30 @@ def main():
     # different files, and reusing a Standard-scoped pool for an `--all` request would
     # silently freeze the wrong scope — the shrink guard below catches a shrink, but it
     # cannot see that the file answers a different question.
-    stamp_date, stamp_query = read_stamp()
+    #
+    # ...and the pool's `Synergies` must not be stale either (broad-scan BS2-23).
+    # G-18 justifies the reuse with "the pool is independent of what you OWN, so an
+    # ingest cannot change it" — true for the INGEST case, and false for the other
+    # documented reason to run this: K-10 mandates `build_pool.py --all` after a
+    # tag-pattern edit, because every pool row's Synergies is derived inside
+    # `row_for()` at FETCH time. Skipping on freshness made that mandated command a
+    # silent no-op for up to a week, with step 2/6 of `make refresh` announcing
+    # itself as having run and check_all green throughout. So: a tagger newer than
+    # the pool defeats the freshness reuse.
+    # The signal is the tagger's CONTENT, not its mtime. A fresh clone stamps every
+    # file with the same checkout time in arbitrary order, so an mtime comparison
+    # would force a ~5-minute full rebuild on the first refresh after every clone —
+    # and this repo already learned "content, not mtime" the hard way (F-04, where a
+    # copy2'd .bak's mtime described its CONTENTS' age, not the backup's).
+    stamp_date, stamp_query, stamp_tags = read_stamp()
+    tags_changed = stamp_tags is not None and stamp_tags != tagger_fingerprint()
     age = stamp_age_days(stamp_date)
+    if tags_changed and not args.refetch:
+        print("tag_synergies.py is newer than the pool — rebuilding so every row's "
+              "Synergies is re-derived through the current tags_for() (K-10).")
     if (not args.refetch and args.out == POOL_PATH and os.path.exists(args.out)
             and age is not None and args.max_age > 0 and age <= args.max_age
-            and stamp_query == query):
+            and stamp_query == query and not tags_changed):
         eprint(f"Pool built {age} day(s) ago for the same query — reusing "
                f"{os.path.basename(args.out)} (--refetch to rebuild, --max-age to change "
                f"the window).")
@@ -259,7 +307,8 @@ def main():
     if args.out == POOL_PATH:
         atomic_write(POOL_BUILD_STAMP,
                      lambda fh: fh.write(datetime.date.today().isoformat() + "\n"
-                                         + query + "\n"))
+                                         + query + "\n"
+                                         + tagger_fingerprint() + "\n"))
     print(f"Wrote {args.out}: {len(cards)} cards.")
     return 0
 

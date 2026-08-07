@@ -346,7 +346,7 @@ def deck_color_sources(cards, meta, carddata):
     return src
 
 
-def pip_depth_warning(cost, sources):
+def pip_depth_warning(cost, sources, total=None):
     """(colour, pips, have, want) when a card's DEEPEST single-colour pip demand is more
     than the deck's sources realistically support — else None.
 
@@ -369,10 +369,19 @@ def pip_depth_warning(cost, sources):
         return None
     have = sources.get(col, 0)
     seen = cards_seen(_PIP_DEPTH_TURN)
-    if hypergeom_at_least(60, have, seen, pips) >= _PIP_DEPTH_TARGET:
+    # Deck SIZE is a parameter, not a constant 60 (broad-scan Batch G). The docstring
+    # says this shares `consistency`'s model, and `cmd_consistency` reads the real
+    # total (`N = total or 60`) while this hardcoded 60 in three places — so for a
+    # 100-card Brawl list, which `cmd_suggest_homes` runs this over for every roster
+    # deck, it badly OVERSTATED P: 14 sources / 3 pips / turn 5 is 50.2% at N=60 but
+    # 18.2% at N=100, i.e. the flag was suppressed exactly where colour depth is
+    # hardest. Latent today (every roster deck is 60), and `legality_report` already
+    # contemplates min_size 100 for BIG_DECK_FORMATS.
+    n = total or 60
+    if hypergeom_at_least(n, have, seen, pips) >= _PIP_DEPTH_TARGET:
         return None
     want = next((s for s in range(have + 1, 41)
-                 if hypergeom_at_least(60, s, seen, pips) >= _PIP_DEPTH_TARGET), None)
+                 if hypergeom_at_least(n, s, seen, pips) >= _PIP_DEPTH_TARGET), None)
     return (col, pips, have, want)
 
 
@@ -2088,7 +2097,11 @@ def role_coverage_flags(cards, carddata):
             missed.append("card advantage")
         if missed:
             under_read.append((n, "/".join(missed)))
-        elif not roles and "Creature" not in (cd.get("type") or ""):
+        # `_primary_type` (G-63), not a whole-line scan: a card whose FRONT is a
+        # noncreature spell but whose BACK is a Creature was dropped from the
+        # unclassified list, so the uncertainty channel under-reported on exactly the
+        # DFC class this codebase keeps tripping over (broad-scan Batch G).
+        elif not roles and "Creature" not in _primary_type(cd.get("type") or ""):
             unclassified.append(n)
     return unclassified, under_read, no_data
 
@@ -4753,7 +4766,16 @@ def cmd_consistency(args):
 
     sources, nlands, total = _deck_source_counts(cards, by_key, by_name, carddata)
     on_play = not getattr(args, "on_draw", False)
-    target = getattr(args, "target", None) or 0.90
+    # `or 0.90` made `--target 0` silently mean 0.90, and nothing range-checked the
+    # value: `--target 90` (the obvious mis-read of "as a fraction") made
+    # min_sources_for return N for every card and printed an unreachable source count
+    # for the whole deck (broad-scan Batch G).
+    target = getattr(args, "target", None)
+    target = 0.90 if target is None else float(target)
+    if not (0.0 < target < 1.0):
+        eprint(f"--target must be a fraction strictly between 0 and 1 (got {target}); "
+               f"e.g. 0.90 for 'castable on curve 90% of the time'.")
+        return 2
     N = total or 60
     coin = "on the play" if on_play else "on the draw"
 
@@ -5429,7 +5451,12 @@ def append_recommendation(row, path=None):
         w.writeheader()
         for r in rows:
             w.writerow({c: r.get(c, "") for c in RECS_HEADER})
-    atomic_write(path, _w, backup=False)
+    # backup=True (Batch G): this is a full-file REWRITE projected onto RECS_HEADER,
+    # so any column added to recommendations.csv — by hand, or by a future field — is
+    # dropped for all 250+ historical rows on the next `swap --apply`, with no .bak to
+    # recover from. CLAUDE.md scopes backup=False to "a scratch temp the caller
+    # promotes itself"; the ledger is a Data subsystem (C-02), not a scratch file.
+    atomic_write(path, _w)
     return len(rows)
 
 
@@ -5832,8 +5859,13 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
                 bits.append(f"suggest surfaced +{add}: {rec['Add Surfaced']}")
             print(f"  · recorded to {os.path.basename(RECS_CSV)} ({total} swap(s)): "
                   + "; ".join(bits) + ".  Read it: deck.py feedback")
-        except OSError as e:
-            eprint(f"  · could not record the outcome ({e}) — the swap itself is saved.")
+        except Exception as e:
+            # BROADER than OSError (Batch G): a csv.Error / UnicodeDecodeError from a
+            # corrupted ledger propagated after the deck file was already written, so
+            # the user saw a traceback and reasonably concluded the swap had failed —
+            # against G-56's "recording never blocks a swap".
+            eprint(f"  · could not record the outcome ({type(e).__name__}: {e}) — "
+                   f"the swap itself is saved.")
     return 0
 
 
@@ -6407,7 +6439,13 @@ def cmd_cuts(args):
     # Surface the actual oracle text so a cut is graded from what the card DOES,
     # never from the label above (the role map is a shortlist, not a verdict).
     import textwrap
-    text_n = args.limit if getattr(args, "limit", 0) and args.limit > 0 else min(12, len(rows))
+    # `--limit 0` documents itself as "0 = all", and the TABLE honours it (limit =
+    # len(rows) above) — while this line silently capped the oracle block at 12 and
+    # then announced "the top 12", so the one flag you reach for to see EVERYTHING
+    # left 23 of the printed rows with no text, presented as if 12 were what you
+    # asked for. G-09/G-52 make printing the evidence the load-bearing property of
+    # `cuts` (broad-scan Batch G). Same expression as the table's, deliberately.
+    text_n = args.limit if getattr(args, "limit", 0) and args.limit > 0 else limit
     print(f"\n── Oracle text of the top {min(text_n, len(rows))} cut candidates "
           f"(grade from THIS, not the label) ──")
     for (keep, n, mv, roles, fit, reasons, ctx, text, is_int, power, uniq, upside,
@@ -6447,6 +6485,18 @@ def cmd_verify(args):
         eprint(f"Could not read {args.source!r}: {e}")
         return 1
     from import_arena import parse as parse_arena
+    # A multi-deck paste merges into ONE multiset here: `parse_arena` treats a bare
+    # `Deck` marker as a section header, not a separator, so pasting a full multi-deck
+    # export at `verify <id>` reports the rest of the collection as `+N` additions.
+    # `sync` splits blocks (split_paste); `verify` never did, and it already warns
+    # about a Sideboard section, which is why the omission read as an oversight rather
+    # than a decision (broad-scan Batch G). Report-only, so this is a warning, not a
+    # refusal — the same shape as the sideboard note below it.
+    if len(split_paste(text)) > 1:
+        eprint(f"WARN:  the paste contains {len(split_paste(text))} `Deck` blocks — "
+               f"`verify` compares ONE deck and merges them all into a single list, so "
+               f"the extra blocks will read as additions. Paste deck {d['id']} alone, "
+               f"or use `deck.py sync` for a multi-deck paste.")
     entries, warnings = parse_arena(text)
     for w in warnings:
         eprint(f"WARN:  {w}")
@@ -7414,7 +7464,13 @@ def cmd_similar(args):
               "deck (nothing specific to duplicate). Drop --specific-only for a value-overlap view.")
         return 0
     carddata = load_card_data()
-    anames = {n for _q, n, _s, _c in cards if n.lower() not in BASICS
+    # Keyed on `_ms_key` (G-63), displayed under the deck's own spelling: this set
+    # feeds the "▸ Most shared CARDS" figure G-47 tells the reader to trust when it
+    # disagrees with the cosine, and raw display names meant a card the two decks
+    # spell differently (front vs full) never counted as shared. Intersecting KEYS
+    # while printing the mapped display name keeps the count right without turning
+    # the printed list into lowercased keys.
+    anames = {_ms_key(n): n for _q, n, _s, _c in cards if n.lower() not in BASICS
               and "Land" not in _primary_type((carddata.get(n.lower()) or {}).get("type") or "")}
     rows = []
     # Roster only (BS-14): distinctness against a retired/example list is noise —
@@ -7437,11 +7493,11 @@ def cmd_similar(args):
         # card names — four of them lands. Without this column the score reads as "these
         # are the same deck" when it often means "these are both Orzhov value decks".
         # Lands are excluded: a shared manabase is not a shared identity.
-        bnames = {n for _q, n, _s, _c in c2 if n.lower() not in BASICS
+        bnames = {_ms_key(n) for _q, n, _s, _c in c2 if n.lower() not in BASICS
                   and "Land" not in _primary_type((carddata.get(n.lower()) or {}).get("type") or "")}
-        both = anames & bnames
+        both = set(anames) & bnames
         rows.append((sim, colj, dd["id"], dd.get("name") or dd["id"], shared, spec,
-                     len(both), sorted(both)))
+                     len(both), sorted(anames[k] for k in both)))
     # Theme cosine stays the PRIMARY order — it answers "does this duplicate an
     # identity", which is the question. But it is not the same question as "which deck do
     # I share the most cards with", and the two can rank in opposite orders: deck 52a
@@ -7811,7 +7867,7 @@ def cmd_screen(args):
     central = _central_themes(theme_w)
     d_int, d_ca = deck_role_counts(cards, carddata)
     sig = _strong_signature_themes(dmeta, cards, cardmeta)
-    in_deck = {n.lower() for q, n, s, c in cards}
+    in_deck = {_ms_key(n) for q, n, s, c in cards}   # G-63: front-face join
     declared = set(_declared_colors(dmeta) or _deck_castable_colors(dmeta, cards, mana))
 
     raw = list(args.names or [])
@@ -8082,7 +8138,8 @@ def cmd_suggest_homes(args):
         # load_mana values are (cost, mana_value) tuples, not dicts.
         _ce = mana.get(card.lower()) or mana.get(card.split(" // ")[0].lower())
         pipwarn = pip_depth_warning(_ce[0] if _ce else "",
-                                    deck_color_sources(cards, cardmeta, carddata))
+                                    deck_color_sources(cards, cardmeta, carddata),
+                                    total=sum(q for q, *_ in cards))
         # Skip a deck whose format the card isn't legal in (see card_legals above).
         if not any_format and card_legals:
             dfmt = (dmeta.get("format") or "").strip().lower()
@@ -8327,6 +8384,17 @@ def cmd_quality(args):
         return 1
     vec = deck_quality_vector(d)
     if getattr(args, "at", None):
+        # `--at` returns below without ever reading --json/--vs/--add/--strict, so a
+        # caller asking for JSON got human prose and a JSONDecodeError (broad-scan
+        # Batch G). Composing them is feature work; dropping them SILENTLY is the bug.
+        ignored = [f for f, v in (("--json", getattr(args, "json", False)),
+                                  ("--vs", getattr(args, "vs", None)),
+                                  ("--add", getattr(args, "add", None)),
+                                  ("--strict", getattr(args, "strict", False))) if v]
+        if ignored:
+            eprint(f"NOTE:  --at is a past-vs-now comparison and does not combine with "
+                   f"{', '.join(ignored)} — {'that flag is' if len(ignored) == 1 else 'those flags are'} "
+                   f"ignored for this run.")
         old, err = _quality_vector_at(d, args.at)
         if old is None:
             eprint(f"could not read deck {d['id']} at {args.at!r}: {err} "
@@ -8792,7 +8860,7 @@ def functional_theme_options(d, theme, *, limit=8):
     rar = load_rarities()
     leg = load_legalities()
     _, _, qty = load_collection()
-    in_deck = {n.lower() for q, n, s, c in cards}
+    in_deck = {_ms_key(n) for q, n, s, c in cards}   # G-63: front-face join
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
     fmt = (meta.get("format") or "").strip().lower()
     out, seen = [], set()
@@ -9626,6 +9694,14 @@ def cmd_tier(args):
     vec = deck_quality_vector(d)
     implied = tier_band(vec)
     if getattr(args, "audit_rationale", False):
+        # Same silent-drop shape as `quality --at` (broad-scan Batch G): this branch
+        # returns without reading --to/--strict.
+        _ign = [f for f, v in (("--to", getattr(args, "to", None)),
+                               ("--strict", getattr(args, "strict", False))) if v]
+        if _ign:
+            eprint(f"NOTE:  --audit-rationale checks the ARGUMENT, not the letter, and "
+                   f"does not combine with {', '.join(_ign)} — ignored for this run. "
+                   f"Run `deck.py tier {args.id}` on its own for the band/gap view.")
         cards_stale, figs = rationale_staleness(d)
         wrong_excl = wrong_exclusion_claims(d)
         print(f"Rationale audit — deck {d['id']}: {d['name'] or d['path']}")
@@ -9951,6 +10027,15 @@ def cmd_history(args):
     since = getattr(args, "since", None)
     hist = deck_git_history(d["path"])
     if since:
+        # git's --date=short is zero-padded ISO, so a STRING compare only works for a
+        # zero-padded ISO needle: `--since 2026-8-1` silently matched nothing
+        # ("2026-08-07" >= "2026-8-1" is False) while the card-delta half below, which
+        # hands the same string to `git log --before=`, happily parsed it — one command
+        # printing "0 commit(s)" above a populated delta (broad-scan Batch G).
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", since.strip()):
+            eprint(f"--since must be a zero-padded ISO date (YYYY-MM-DD); got "
+                   f"{since!r}. Try {since.strip()[:4]}-08-01.")
+            return 2
         hist = [h for h in hist if h["date"] >= since]
     scope = f" since {since}" if since else ""
     print(f"History — deck {d['id']}: {d['name'] or rel}{scope}  ({len(hist)} commit(s))")

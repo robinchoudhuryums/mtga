@@ -107,7 +107,19 @@ baseline (color-mix ⇒ 2023+); and README's two operator-visible editor behavio
 save-refused-on-concurrent-change toast, and following the OS colour scheme with the
 different-origin reason there is no toggle). C-11's Scenario 7 long form extended to match.
 
-**Where I left off:** top-5 + docs + follow-ons + Batches A–F implemented, tested, committed and
+**Tenth pass — Batch G** (refresh, resilience, CLI polish — the scan's whole Low tail):
+BS2-23 pool re-tag staleness via a tag-CONTENT fingerprint in the build stamp (not mtime:
+a fresh clone would otherwise force a 5-min rebuild every time), scryfall's two missing
+body-read exceptions, sheets_sync's file mode, the F-02 MIRROR guards on `--out` (plus a
+direction-neutral rewrite of csv_schema_error's message, which read backwards for the new
+direction), import_arena/import_collection polish, nine deck.py CLI seams, card.py's
+legality token test, query.py's --csv guard, two model fixes, and the G-56 depth close.
+1031 tests. TWO self-inflicted breaks caught by the gates and fixed pre-commit — an
+indentation loss that made card.py unparseable (check_all's AST scans caught it) and four
+read_stamp test doubles I should have scanned for first.
+Block: `.cycle/blocks/2026-08-broad-scan2-batchG-broad-implement.md`.
+
+**Where I left off:** top-5 + docs + follow-ons + Batches A–G implemented, tested, committed and
 pushed on `claude/broad-scan-v74wau`; no PR opened (not requested). The remaining scan
 items are batched/prioritized in the session's closing report (batches A–H: verdict-surface
 joins, wishlist honesty, gate hardening, editor safety, interface access, editor theming,

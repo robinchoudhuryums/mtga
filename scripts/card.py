@@ -249,7 +249,13 @@ def main():
 
     # LEGALITY — the guardrail, printed prominently and never guessed.
     if legal:
-        std = "standard" in legal.lower()
+        # TOKEN, not substring (Batch G): every other legality read in the repo splits
+        # on ";" into a set first (pool.py, deck.craft_rot_note, wishlist._rank_scores),
+        # and Scryfall's key list includes `standardbrawl` — which CONTAINS "standard".
+        # Safe today only because build_pool.POOL_FORMATS happens to omit it; adding it
+        # would silently mark every Brawl-only card "✓ STANDARD-LEGAL". Same shape as
+        # the `"r" in "colorless"` trap lib.color_matches exists to kill.
+        std = "standard" in {x.strip().lower() for x in legal.split(";") if x.strip()}
         flag = "✓ STANDARD-LEGAL" if std else "✗ NOT Standard-legal"
         print(f"  legality: {flag}   [{legal}]")
     else:

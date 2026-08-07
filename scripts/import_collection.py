@@ -377,13 +377,21 @@ def _ensure_mana_rows(names):
     return added
 
 
-def _report(result, entries, rows, zero_missing):
+def _report(result, entries, rows, zero_missing, full=False):
+    # Dry-run-by-default makes this report the ENTIRE review surface before an
+    # irreversible authoritative rewrite — and it truncated every section at 20,
+    # including "Set to 0", identically to the cosmetic ones. A partial export that
+    # clears the 50% shrink guard plus --zero-missing could present "Set to 0: 900"
+    # with 20 names shown and no way to see the rest (broad-scan Batch G). --full
+    # prints everything; the cap still applies by default so an ordinary run stays
+    # readable.
     def section(title, items, fmt):
         print(f"\n{title}: {len(items)}")
-        for x in items[:20]:
+        cap = len(items) if full else 20
+        for x in items[:cap]:
             print(f"   {fmt(x)}")
-        if len(items) > 20:
-            print(f"   … and {len(items) - 20} more")
+        if len(items) > cap:
+            print(f"   … and {len(items) - cap} more (--full to list them)")
 
     print(f"Export: {len(entries)} card line(s).  Library: {len(rows)} printing(s).")
     section("Quantity changes", result["updated"], lambda x: f"{x[0]}: {x[1]} -> {x[2]}")
@@ -412,6 +420,10 @@ def main():
     ap.add_argument("--map", default="",
                     help="explicit column mapping when auto-detection fails, e.g. "
                          "name=Card,qty=Have,set=Edition")
+    ap.add_argument("--full", action="store_true",
+                    help="list every row in the report instead of the first 20 per "
+                         "section (the dry run is your only look before an "
+                         "authoritative rewrite)")
     ap.add_argument("--allow-shrink", action="store_true",
                     help="permit an export covering far fewer cards than the library "
                          "(the guard exists because a PARTIAL export is the likely mistake)")
@@ -465,7 +477,7 @@ def main():
         return 1
 
     result = plan(rows, entries, zero_missing=args.zero_missing, unreadable=unreadable)
-    _report(result, entries, rows, args.zero_missing)
+    _report(result, entries, rows, args.zero_missing, full=args.full)
 
     changed = result["updated"] or result["added"] or (
         result["zeroed"] and args.zero_missing)

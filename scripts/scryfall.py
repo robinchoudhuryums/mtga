@@ -22,7 +22,9 @@ offline and dependency-free.
 """
 
 import json
+import http.client
 import socket
+import ssl
 import time
 import urllib.error
 import urllib.parse
@@ -35,8 +37,20 @@ NAMED_URL = "https://api.scryfall.com/cards/named"
 # Transient connection/read failures worth retrying. HTTPError is handled
 # separately (it's a URLError subclass, caught first). json.JSONDecodeError covers
 # a truncated/garbled body; socket.timeout/TimeoutError a slow body read.
+#
+# The last two were escaping (broad-scan Batch G). This module's whole premise is
+# that a failure while READING the response body becomes ScryfallUnavailable so
+# callers degrade instead of crashing — and:
+#   * http.client.IncompleteRead is the truncated-chunked-body case json.JSONDecodeError
+#     was added for, raised one layer LOWER, so it never reached the decoder.
+#   * ssl.SSLError (a TLS reset mid-body) subclasses OSError, NOT ConnectionError,
+#     so it slipped past every entry here.
+# Verified by issubclass against the old tuple: both False. A --refetch
+# `build_mana.py --pool` dropping TLS at page 40 raised a traceback past main()'s
+# `except ScryfallUnavailable` — no data loss, but no clean abort and no retry either.
 _TRANSIENT = (socket.timeout, TimeoutError, ConnectionError,
-              json.JSONDecodeError, urllib.error.URLError)
+              json.JSONDecodeError, urllib.error.URLError,
+              http.client.IncompleteRead, ssl.SSLError)
 
 
 class NotFound(Exception):

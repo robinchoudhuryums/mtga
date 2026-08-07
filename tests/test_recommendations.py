@@ -228,8 +228,14 @@ class TestItIsReportOnly:
         stack may call them. A future edit that wires feedback into a score has to
         delete this test, which is the point — it makes the decision visible."""
         import inspect
-        for fn in (deck.rank_cut_candidates, deck.suggest_scored,
-                   deck.fit_strength, deck.deck_quality_vector, deck.tier_band):
+        # `cut_keep_score` is the DELEGATE both cut rankings read — check_agreement
+        # treats it as the single definition of the cut score — and it was absent
+        # from this list, so a ledger read placed there satisfied every assertion
+        # while CLAUDE.md claimed the rule was "structurally forbidden". One call
+        # level deep is not structural (broad-scan Batch G).
+        for fn in (deck.rank_cut_candidates, deck.cut_keep_score, deck.suggest_scored,
+                   deck.fit_strength, deck.deck_quality_vector, deck.tier_band,
+                   deck._weakest_cut):
             src = inspect.getsource(fn)
             assert "load_recommendations" not in src, fn.__name__
             assert "RECS_CSV" not in src, fn.__name__
