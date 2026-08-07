@@ -4,7 +4,7 @@
 #: plan: midrange
 #: tier: A — Izzet artifacts/robots, rebuilt 2026-07 around RAMP-TO-HEAVY-HITTERS plus a
 #: tier: Station package. Metrics floor is A on interaction 8 + card
-#: tier: advantage 5, protection 3, avg MV 3.58. The letter buys what the floor cannot see:
+#: tier: advantage 7, protection 3, avg MV 3.58. The letter buys what the floor cannot see:
 #: tier: Krang, Bygone Colossus, Chronicle of Victory, Ultron, Iron Man and Dawnsire are
 #: tier: real bombs, and Tony Stark's back face plus Tannuk make them arrive early. Held at
 #: tier: A rather than argued up to S because the plan is UNPLAYED in this configuration and

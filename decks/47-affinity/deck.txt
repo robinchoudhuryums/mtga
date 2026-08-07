@@ -4,7 +4,7 @@
 #: plan: midrange
 #: tier: B — PROVISIONAL, and deliberately one band BELOW the measurable floor, which reads
 #: tier: A on interaction 7 (5 of it instant-speed, 4 able to answer a noncreature permanent)
-#: tier: plus card advantage 9 on a 3.08 curve. The guard will soft-flag this as possibly
+#: tier: plus card advantage 8 on a 3.08 curve. The guard will soft-flag this as possibly
 #: tier: under-graded; that is intentional, and here is the argument. FOUR structural risks the
 #: tier: floor cannot see, which is more than an A tolerates:
 #: tier: 1. IT DOES NOT EXIST YET. Eight craft targets, including both cards that make it a

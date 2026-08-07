@@ -5,7 +5,7 @@
 #: plan: midrange
 #: tier: B — PROVISIONAL, GRADED 2026-08 on an UNBUILT, UNPLAYED list (12 craft targets).
 #: tier: One band BELOW the measurable floor, which reads A on interaction 8 plus card
-#: tier: advantage 3 (interaction fell 10 -> 8 in the 2026-08 plan pass — four 1-to-2
+#: tier: advantage 2 (interaction fell 10 -> 8 in the 2026-08 plan pass — four 1-to-2
 #: tier: damage spells were the cuts that paid for the engine adds). Against the rubric an A needs four things and this list fails two:
 #: tier:   A-FLOOR — yes. Interaction 8 clears the threshold of five and the
 #: tier:     sum of 11 clears seven. Read that number with K-12's caution though: it is high

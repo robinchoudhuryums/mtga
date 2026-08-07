@@ -2876,7 +2876,7 @@ by a better pattern. The mitigation is editorial: a deck whose gated resource is
 must say so in `#: notes:` (58 does), because a reader who trusts the flag would cut the
 deck's best payoffs.
 
-## [K-14] A draw clause behind an activation cost is invisible to the role tally
+## [K-14] A draw clause behind an activation cost was invisible to the role tally (fixed 2026-08-07)
 
 `classify_roles` decides "Card advantage" from `_ROLE_PATTERNS`, and **every pattern in
 that bucket is TRIGGER-shaped**:
@@ -2937,3 +2937,58 @@ cost-shaped before accepting it, and record the reasoning in the deck's `#: note
 10 both do) so the next pass does not re-derive it. This is K-12's CONNIVE case one level
 down — same failure, different grammar — and a G-67 whitelist miss: never an error, never
 an over-count, always a silent UNDER-count.
+
+### The fix (2026-08-07), and why its shape matters more than its content
+
+Two patterns were added to the `Card advantage` bucket, plus one clause to `_LOOT_RE`. The
+justification is not new — an activated ability is repeatable BY CONSTRUCTION, which is
+verbatim the argument the `whenever …, draw a card` pattern already rested on. What needed
+care was not *whether* to widen but *how far*, because this bucket has never produced an
+over-count and the change had to keep it that way.
+
+**Three exclusions, each taken from a rule the module already stated rather than invented
+for the occasion:**
+
+| exclusion | why | the rule it comes from |
+|---|---|---|
+| `(?m)^` line anchor | oracle text puts each ability on its own line, so a cost quoted inside REMINDER text is mid-line — every Clue and Blood token maker quotes `{2}, Sacrifice this artifact: Draw a card` and must not pick up the role from the quote | new, and the only genuinely new one |
+| `discard` in the cost span | `{T}, Discard a card: Draw a card` (Charging Strifeknight, Professor Zei) is RUMMAGING — card-neutral | `_LOOT_RE`, one clause over; the only difference is which side of the colon the discard sits on |
+| `sacrifice this` in the cost span | `{2}, Sacrifice this artifact: Draw a card` consumes the source, so it is a ONE-SHOT single draw | the cantrip rule this bucket already implements ("a one-card draw is deliberately NOT counted") |
+
+The third is the one that mattered most, and it was found by measuring rather than by
+reasoning. Counting self-sacrifice draws would have swept in the common
+`{4}, {T}, Sacrifice this land: Draw a card` tapland cycle and taken the change from **24
+decks to 58** — a roster-wide re-grade driven by flood-insurance lands. An ability-word
+prefix (`Delirium — {2}{U}, {T}: Draw a card`) was added after a separate measurement showed
+it changes the final answer for exactly THREE cards: Raving Visionary, Jodah's Codex,
+Thought Shucker. Re-run that measurement if the prefix is ever loosened.
+
+**`_LOOT_RE` gained the singular pair** — `draw a card, then discard a card`. Its comment
+used to say connive "never counted in the first place", which was true only because nothing
+matched a bare "draw a card" at all. The moment a cost-shaped pattern landed, Bag of
+Holding, Collector's Vault, Agna Qel'a, Merfolk Looter and 74 others would have scored as
+draw engines. The invariant is now true by construction instead of by accident.
+
+### The measured result
+
+Roster-wide before/after, per the K-12 mandate:
+
+- **card advantage: 18 decks up, 12 down, 65 unchanged.** Every one of the 12 decreases is
+  a looter losing a role it should never have had (Gran-Gran, Silvergill Peddler, Emet-Selch,
+  Mechan Navigator). Deck 22's figure fell 11 → 8 and its `#: tier:` claim that the draws are
+  "a real engine, not a pile of cantrips" went from asserted to measured.
+- **interaction: unchanged on all 95 decks** — the change touches one bucket.
+- **tier floors: ZERO moved.** This is the property that made the change shippable at all.
+  CLAUDE.md keeps the protection axis and the X-cost advisory REPORT-ONLY precisely so a
+  measurement change cannot silently re-grade the roster; a widening that DOES feed
+  `tier_band` has to clear the same bar, and this one was checked before it landed rather
+  than after.
+- **16 decks had a stale `#: tier:` figure afterwards** and were re-grounded in the same
+  commit. The largest is deck 42a at 4 → 8 — sacrifice-for-value IS that archetype, so the
+  deck most exposed to this blind spot was the one built entirely on it. Deck 21a's 3 → 5
+  removed one of the two weaknesses its sub-floor letter rested on, and is flagged in-file
+  for a HUMAN re-grade rather than re-graded automatically.
+
+Seven tests pin the behaviour, every fixture written from a card's real oracle text with its
+newlines intact — a paraphrase would not exercise the line anchor, which is the whole
+defence against the reminder-text over-count.

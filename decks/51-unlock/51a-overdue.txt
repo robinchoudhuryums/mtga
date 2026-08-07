@@ -3,7 +3,7 @@
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07. One band below the measurable floor, which reads A on interaction 9
-#: tier: plus card advantage 7 at a 3.14 curve. On the measurables this is the BETTER of the two
+#: tier: plus card advantage 6 at a 3.14 curve. On the measurables this is the BETTER of the two
 #: tier: Unlock decks and it is worth saying so: against parent 51 it wins on interaction (9 vs
 #: tier: 6), curve (3.14 vs 4.14), focus (5 central themes vs 11) and engine health — `engines`
 #: tier: reports graveyard 20 enablers / 9 payoffs, balanced, with no warning at all. The
