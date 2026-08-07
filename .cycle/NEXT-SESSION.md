@@ -15,16 +15,15 @@ commands disagree.
 
 ## 1. Repo position
 
-- Working branch **`claude/broad-scan-hekdj0`**. PRs #101–#105 all merged; the branch was
+- Working branch **`claude/broad-scan-hekdj0`**. PRs #101–#106 all merged; the branch was
   restarted from `main` after each. **If the current PR is merged when you resume, restart
-  the branch from `main` before the first new commit** (CLAUDE.md Git rules). The commits
-  after `0c47ab4` (the #105 merge) are unpushed-to-`main` data work — no PR yet.
-- Gates green: `check_all` all invariants hold; 939 tests. One standing SOFT warning:
+  the branch from `main` before the first new commit** (CLAUDE.md Git rules).
+- Gates green: `check_all` all invariants hold; 946 tests. One standing SOFT warning:
   decks 26a and 50 name `Rogue's Passage (FDN) 264`, a printing the repo does not hold —
   fix with `deck.py resolve` next time either deck is touched.
 - Collection **2,085 library rows / 2,154 copies**; roster **95 decks**, numbered through
-  **63**. Nothing in `scripts/` changed on 2026-08-07 — that day was all data and decks,
-  so tooling behaviour is exactly as the 08-05/06 notes below describe it.
+  **63**. The only 08-07 code change is the K-14 role-pattern fix (§2b item 5); everything
+  else that day was data and decks.
 
 ## 2. What the 2026-08-05/06 sessions did
 
@@ -47,7 +46,7 @@ commands disagree.
 4. **Ingests:** two crafted batches (14 + 2) and one 16-card TDM pack, all verified
    16/16-style by `verify_ingest`, with the placement swaps applied across ~20 decks.
 
-## 2b. What the 2026-08-07 session did (data only — no code)
+## 2b. What the 2026-08-07 session did
 
 1. **Six more ingest batches** (14 + 13 + 18 + 19 + 18 + 15 = ~97 cards) plus a
    single-card Chandra ingest, every one `verify_ingest`-confirmed. Batches 11–13 held
@@ -63,10 +62,14 @@ commands disagree.
 4. **Deck 26b's `#: protect:` header named a card the deck has never run** (Summon:
    Bahamut). Worth a spot-check elsewhere: a protect entry for an absent card silently
    shields nothing, and no gate flags it.
-5. **New rule K-14** — `role_tally` cannot see a draw clause behind an ACTIVATION cost, so
-   every planeswalker's draw ability reads as zero card advantage (187 pool cards, ≥12 on
-   the roster). This is the first thing to fix if a tooling cycle wants a small, high-value
-   pattern job; the measurement is done and written up.
+5. **K-14 found AND FIXED (same day).** `role_tally` could not see a draw clause behind an
+   ACTIVATION cost, so every planeswalker's draw ability read as zero card advantage (187
+   pool cards, 24 planeswalkers). Two patterns added, `_LOOT_RE` given the singular pair.
+   **Result: 18 decks up, 12 down, interaction unchanged, ZERO tier floors moved**, and the
+   16 decks left with a stale `#: tier:` figure were re-grounded in the same commit.
+   **One thing is left for a human:** deck 21a's card advantage went 3 → 5, which removes
+   one of the two weaknesses its below-floor letter rests on. The file says so and asks for
+   a re-grade; the letter was not auto-written (design constraint).
 
 ## 3. The agreed next task
 

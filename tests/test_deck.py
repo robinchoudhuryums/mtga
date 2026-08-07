@@ -378,6 +378,105 @@ class TestClassifyRoles:
         assert "Card advantage" in deck.classify_roles(
             "Whenever a Cleric, Rogue, Warrior, or Wizard you control enters, draw a card.")
 
+    # --- K-14: a draw reached by PAYING a cost. Every pattern in this bucket was
+    # trigger-shaped, so an activated ability — repeatable by construction, which is the
+    # same argument the `whenever` pattern rests on — matched nothing at all. 187 pool
+    # cards, 24 of them planeswalkers. Every text below is a card's REAL oracle text,
+    # newlines included: the line anchor is load-bearing and a paraphrase would not
+    # exercise it.
+
+    def test_activated_ability_draw_is_card_advantage(self):
+        """Arcane Encyclopedia, Spectral Sailor, Kingpin's Enforcers — a cost you can pay
+        again next turn is a draw engine, not a cantrip."""
+        assert "Card advantage" in deck.classify_roles("{3}, {T}: Draw a card.")
+        assert "Card advantage" in deck.classify_roles(
+            "Flash (You may cast this spell any time you could cast an instant.)\nFlying\n"
+            "{3}{U}: Draw a card.")
+        assert "Card advantage" in deck.classify_roles(
+            "Lifelink\n{2}{B}, Sacrifice an artifact or creature: Draw a card.")
+
+    def test_loyalty_ability_draw_is_card_advantage(self):
+        """Chandra, Spark Hunter. Her draw sits one sentence past the cost behind an
+        'If you do', which is why the second pattern exists — and why the original
+        measurement of this bug missed the card that demonstrates it."""
+        assert "Card advantage" in deck.classify_roles(
+            "At the beginning of combat on your turn, choose up to one target Vehicle you "
+            "control. Until end of turn, it becomes an artifact creature and gains "
+            "haste.\n+2: You may sacrifice an artifact or discard a card. If you do, draw "
+            "a card.\n0: Create a 3/2 colorless Vehicle artifact token with crew 1.")
+        # Professor Dellian Fel — the plain in-sentence loyalty draw.
+        assert "Card advantage" in deck.classify_roles(
+            "+2: You gain 3 life.\n0: You draw a card and lose 1 life.\n−3: Destroy "
+            "target creature.")
+
+    def test_ability_word_gated_activation_still_counts(self):
+        """Raving Visionary, Jodah's Codex, Thought Shucker. An ability word pushes the
+        cost off the line start; measured at exactly these three cards, so widening the
+        prefix further needs the same measurement re-run."""
+        assert "Card advantage" in deck.classify_roles(
+            "{U}, {T}: Draw a card, then discard a card.\nDelirium — {2}{U}, {T}: Draw a "
+            "card. Activate only if there are four or more card types among cards in your "
+            "graveyard.")
+        assert "Card advantage" in deck.classify_roles(
+            "Domain — {5}, {T}: Draw a card. This ability costs {1} less to activate for "
+            "each basic land type among lands you control.")
+
+    def test_rummaging_cost_is_not_card_advantage(self):
+        """Charging Strifeknight, Professor Zei. Discarding to draw is card-NEUTRAL —
+        the same rule `_LOOT_RE` implements one clause over. The only difference is which
+        side of the colon the discard sits on."""
+        assert "Card advantage" not in deck.classify_roles(
+            "Haste\n{T}, Discard a card: Draw a card.")
+        assert "Card advantage" not in deck.classify_roles(
+            "{T}, Discard a card: Draw a card.\n{1}, {T}, Sacrifice Professor Zei: Return "
+            "target instant or sorcery card from your graveyard to your hand.")
+
+    def test_self_sacrifice_draw_is_a_cantrip_not_an_engine(self):
+        """Aether Spellbomb and the common `Sacrifice this land: Draw a card` tapland
+        cycle. Consuming the source makes it a ONE-SHOT single draw, which the cantrip
+        rule above already excludes. Counting these took the change from 24 decks to 58
+        and would have re-graded the roster off a flood-insurance land."""
+        assert "Card advantage" not in deck.classify_roles(
+            "{U}: Return target creature to its owner's hand.\n{1}, Sacrifice this "
+            "artifact: Draw a card.")
+        assert "Card advantage" not in deck.classify_roles(
+            "This land enters tapped.\n{T}: Add {G} or {W}.\n{4}, {T}, Sacrifice this "
+            "land: Draw a card.")
+        # Sacrificing something ELSE is repeatable and DOES count (Ayara, Technodrome).
+        assert "Card advantage" in deck.classify_roles(
+            "{T}, Sacrifice another black creature: Draw a card.")
+
+    def test_activated_loot_is_not_card_advantage(self):
+        """Bag of Holding, Collector's Vault, Merfolk Looter. Before the singular pair was
+        added to `_LOOT_RE`, nothing matched a bare `draw a card`, so a looter was excluded
+        by ACCIDENT rather than by rule — and the moment a cost-shaped pattern landed it
+        would have scored as a draw engine."""
+        assert "Card advantage" not in deck.classify_roles("{T}: Draw a card, then discard a card.")
+        assert "Card advantage" not in deck.classify_roles(
+            "Whenever you discard a card, exile that card from your graveyard.\n"
+            "{2}, {T}: Draw a card, then discard a card.")
+        # Connive's reminder text is the same singular pair, and must not be swept in.
+        assert "Card advantage" not in deck.classify_roles(
+            "Whenever this creature attacks, it connives. (Draw a card, then discard a "
+            "card. If you discarded a nonland card, put a +1/+1 counter on it.)")
+
+    def test_reminder_text_cost_does_not_grant_the_role(self):
+        """The line anchor's real job. A Clue's reminder text quotes `{2}, Sacrifice this
+        artifact: Draw a card.` mid-line, so a card that merely MAKES one must not pick up
+        the role from the quote — an over-count is the one failure this bucket has never
+        had, and the anchor is what keeps it that way."""
+        assert "Card advantage" not in deck.classify_roles(
+            "When this creature enters, put a +1/+1 counter on target creature.\n"
+            "{2}, {T}: Create a Blood token. (It's an artifact with \"{1}, {T}, Discard a "
+            "card, Sacrifice this artifact: Draw a card.\")")
+        # The control case: a CLUE maker does get the role — from the `create a clue
+        # token` clause that has always been in this bucket, not from the quoted cost.
+        # Same reminder-text shape, opposite answer, so the assertion above is testing the
+        # anchor rather than an accident of these two cards.
+        assert "Card advantage" in deck.classify_roles(
+            "{2}, {T}: Create a Clue token. (It's an artifact with \"{2}, Sacrifice this "
+            "artifact: Draw a card.\")")
+
     def test_the_under_read_channel_now_sees_these(self):
         """The half that made the miss invisible: both cards got SOME role (Payoff,
         Lifegain), so `unclassified` could never name them, and the broad `_CA_CUES` net

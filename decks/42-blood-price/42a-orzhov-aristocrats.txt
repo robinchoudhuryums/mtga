@@ -42,12 +42,17 @@
 #: tier: a 2-drop drain payoff for the slot.
 #: tier: BE PRECISE ABOUT THE FLOOR, because "restore the interaction" was not the whole
 #: tier: fix: the A floor wants interaction >=5 AND interaction+card-advantage >=7. Both
-#: tier: clauses are now MET — interaction 5 and card advantage 4 — so the MEASURABLE
+#: tier: clauses are now MET — interaction 5 and card advantage 8 — so the MEASURABLE
 #: tier: FLOOR IS A and the claimed B is a deliberate call one band BELOW it, on the three
 #: tier: risks listed further down that no metric can see. Note how the second clause was
-#: tier: cleared: not by a swap, but by a classifier fix. The card advantage here read 1
-#: tier: for as long as this deck existed because the role model matched a repeatable draw
-#: tier: only when it was templated on the UPKEEP, and this deck's draws are not.
+#: tier: cleared: not by a swap, but by a classifier fix — TWICE now. The card advantage
+#: tier: here read 1 for as long as this deck existed because the role model matched a
+#: tier: repeatable draw only when it was templated on the UPKEEP, and this deck's draws
+#: tier: are not. It then went 4 -> 8 under K-14, which taught the model that a draw you
+#: tier: reach by PAYING a cost is still a draw: Vampiric Rites, Ravenous Amulet, Baron
+#: tier: Bertram, Lunar Convocation and Fountainport are all sacrifice-to-draw outlets
+#: tier: and all read as zero. This deck is the roster's largest single correction, which
+#: tier: is not a coincidence — sacrifice-for-value IS the archetype.
 #: tier: THE MEASURED 5 UNDER-READS THIS DECK and `tier` says so itself, printing 5 +2?
 #: tier: and naming both misses. Liliana's -4 (each player sacrifices two creatures) and
 #: tier: Jecht's chapter III (each OPPONENT sacrifices two) are unambiguous interaction the
@@ -61,7 +66,7 @@
 #: tier: of ramping the opponent a basic — at the price of sorcery speed, taking the suite
 #: tier: to 1 instant against 4 sorcery.
 #: tier: Held at B by three further things the floor cannot see:
-#: tier: 1. CARD ADVANTAGE 4 IS REAL BUT CONDITIONAL, which is the part the number still
+#: tier: 1. CARD ADVANTAGE 8 IS REAL BUT CONDITIONAL, which is the part the number still
 #: tier:    cannot express. Treacherous Greed's draw-three clears the bar outright;
 #: tier:    Vampiric Rites, Ahriman, Baron Bertram and Agent Venom each draw exactly ONE
 #: tier:    card off a sacrifice, and that is a WASH when the fodder is a card from hand.

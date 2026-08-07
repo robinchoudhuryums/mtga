@@ -768,18 +768,20 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   control get +1/+1", "of the chosen type" — and treat a zero-result sweep as an unverified
   search, not a fact about the format. Same shape as the changeling / kindred cards, and as
   any "permanents of that type" wording. [K-13]
-- **A DRAW CLAUSE BEHIND AN ACTIVATION COST IS INVISIBLE TO `role_tally`.** Every
-  Card-advantage pattern is TRIGGER-shaped (`whenever …, draw a card`; `at the beginning of
-  your upkeep … draw a card`), so a `<cost>: … draw a card` matches NOTHING — a planeswalker
-  loyalty ability, a `{2}{U},{T}:` engine, a sacrifice-to-draw outlet. Measured 2026-08-07:
-  **187 pool cards (24 of them planeswalkers) and at least 12 roster cards**, excluding lands
-  and loot, read ZERO card advantage while drawing repeatably. Chandra, Spark Hunter
-  classifies as `{'Removal (spot)'}` alone — the removal is her −7 emblem; the +2 that draws
-  every turn is unseen. Not academic: deck 58's quality guard flagged "card advantage dropped
-  4→3" on a swap that RAISED it, because the cut card's draw was trigger-shaped and the added
-  card's is cost-shaped. **Read a ⚠ card-advantage regression on a planeswalker or
-  activated-engine swap as UNPROVEN, not a verdict** — K-12's CONNIVE case one level down,
-  and a G-67 whitelist miss. [K-14]
+- **A DRAW REACHED BY PAYING A COST IS A DRAW — FIXED 2026-08-07, and the fix's SHAPE is
+  the rule.** Every Card-advantage pattern was TRIGGER-shaped, so `+1: Draw a card`,
+  `{3},{T}: Draw a card` and every planeswalker's draw ability scored ZERO (187 pool cards,
+  24 of them planeswalkers). An activated ability is repeatable BY CONSTRUCTION, which is
+  the same argument the `whenever` pattern already rested on. **What made it safe to widen
+  was three exclusions taken from rules this module already stated, not invented:** a
+  `(?m)^` LINE anchor (an ability owns its line, so a cost quoted inside REMINDER text —
+  every Clue and Blood maker — stays out); `discard` in the cost span (rummaging is
+  card-neutral, the same rule `_LOOT_RE` implements one clause over); and `sacrifice this`
+  (consuming the source makes it a ONE-SHOT cantrip, which the cantrip rule already
+  excluded — keeping those took the change from 24 decks to 58 and re-graded the roster off
+  a flood-insurance land). `_LOOT_RE` also gained the SINGULAR pair, which had been excluded
+  only by accident. Result: 18 decks up, 12 down, **interaction unchanged and ZERO tier
+  floors moved**. Prefer that shape — measure the floors before widening a role bucket. [K-14]
 
 ## Cycle Workflow Config
 

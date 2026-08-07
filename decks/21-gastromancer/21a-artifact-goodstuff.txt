@@ -6,9 +6,14 @@
 #: tier: BELOW the floor, because the floor is blind to the manabase: `deck.py mana 21a`
 #: tier: shows W 3 / U 1 / B 5 / R 3 / G 6 across 24 lands, i.e. a 4-color deck resting on
 #: tier: a ONE-source blue, and `consistency` puts keepable openers at only 84%. Add
-#: tier: card advantage 3 — thin for a deck this slow, though no longer the near-zero the
-#: tier: old classifier reported — and that is two clear weaknesses where A allows one.
-#: tier: Path to A: fix or cut the blue first, since the mana is now the larger of the two.
+#: tier: card advantage 5 — and that second weakness has now largely gone. It read 3 here
+#: tier: until the K-14 classifier fix, which counts a draw you reach by PAYING a cost;
+#: tier: Ice Cream Kitty, Technodrome and both Baxter Buildings are sacrifice- or
+#: tier: activation-to-draw outlets that scored zero. At 5 this is no longer thin for the
+#: tier: curve, so the "two clear weaknesses where A allows one" argument is down to ONE —
+#: tier: the manabase. RE-GRADE THIS BY HAND: the letter is not auto-written, and the
+#: tier: honest position is that the case for holding it below the floor rests entirely on
+#: tier: the ONE-source blue now. Path to A: fix or cut the blue; nothing else is in the way.
 #: colors: WBRG
 #: based-on: deck.txt
 #: archetype: 21 variant — 4-color (WBRG) big-artifact goodstuff; colorless bombs + heavy any-color fixing; least consistent of the three.

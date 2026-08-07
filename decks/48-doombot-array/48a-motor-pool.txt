@@ -4,12 +4,12 @@
 #: based-on: deck.txt
 #: plan: midrange
 #: tier: B — same letter as its parent for opposite reasons, and a WEAKER B. The floor reads A
-#: tier: on interaction 9 plus card advantage 5 at a 3.33 curve, so the guard soft-flags this as
+#: tier: on interaction 9 plus card advantage 6 at a 3.33 curve, so the guard soft-flags this as
 #: tier: possibly under-graded; that is intentional. Three weaknesses, where A allows one:
 #: tier: 1. THE INTERACTION IS LOPSIDED BY SPEED, 2 instant against 8 sorcery. Deck 48 splits
 #: tier:    evenly. This is the shape the interaction profile exists to flag: the deck cannot
 #: tier:    act on the opponent's turn, which for a list built on slow permanents is structural.
-#: tier: 2. CARD ADVANTAGE 5, AND THE EARLIER "2, GENUINELY THIN, NOT MIS-COUNTED" WAS WRONG.
+#: tier: 2. CARD ADVANTAGE 6, AND THE EARLIER "2, GENUINELY THIN, NOT MIS-COUNTED" WAS WRONG.
 #: tier:    It WAS mis-counted: a 2026-08 classifier fix taught the model that a Clue token and
 #: tier:    an impulse ("exile the top card, you may play it") are card advantage, and this
 #: tier:    deck's refuel — Collector's Vault's loot, Fire Nation Warship's Clue, Casey Jones's

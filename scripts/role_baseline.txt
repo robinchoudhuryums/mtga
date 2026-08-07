@@ -192,7 +192,6 @@ Invasion Submersible
 Iron Lad, Diverging Destiny
 Iron Man Armor
 Iron Man, Master of Machines
-Iron Spider, Stark Upgrade
 Ironpaw Aspirant
 Itzquinth, Firstborn of Gishath
 Jadelight Spelunker
@@ -276,7 +275,6 @@ Radiant Lotus
 Ran and Shaw
 Raph & Leo, Sibling Rivals
 Raphael, the Nightwatcher
-Ray Fillet, Man Ray
 Reckless Velocitaur
 Red Room Recruit
 Redirect Lightning
@@ -315,7 +313,6 @@ Snow Villiers
 Soul Immolation
 Sovereign Okinec Ahau
 Sozin's Comet
-Spectral Sailor
 Spider-Rex, Daring Dino
 Spider-Suit
 Spider-Woman, Secret Agent
@@ -342,7 +339,6 @@ Tannuk, Steadfast Second
 Tapestry Warden
 Taskmaster, Mercenary Mimic
 Team Tactics
-Technodrome
 Terra, Magical Adept
 Tezzeret, Cruel Captain
 Thawbringer

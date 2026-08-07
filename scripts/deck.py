@@ -1324,7 +1324,73 @@ _ROLE_PATTERNS = {
                        r"exile the top card of each player's library[^.]{0,60}?(?:you may cast|you may play)",
                        # CASTING OFF THE TOP of your own library is a permanent draw
                        # substitute — Vizier of the Menagerie, Mm'menon. Scored nothing.
-                       r"you may (?:cast|play) (?:\w+ ){0,3}(?:spells|cards?) from the top of your library"],
+                       r"you may (?:cast|play) (?:\w+ ){0,3}(?:spells|cards?) from the top of your library",
+                       # AN ACTIVATED ABILITY IS REPEATABLE BY CONSTRUCTION, which is the
+                       # same argument the "whenever" pattern above rests on — but every
+                       # pattern in this bucket was TRIGGER-shaped, so a draw you reach by
+                       # PAYING a cost matched nothing at all. `+1: Draw a card`,
+                       # `{3}, {T}: Draw a card` (Arcane Encyclopedia), `{2}{B}, Sacrifice
+                       # an artifact or creature: Draw a card` (Kingpin's Enforcers) all
+                       # scored zero, and so did EVERY planeswalker's draw ability.
+                       # Measured at 187 pool cards before the fix, 24 of them
+                       # planeswalkers. The cost that surfaced it: deck 58's quality guard
+                       # reported "card advantage 4→3" on a swap that RAISED it, because
+                       # the card cut had a trigger-shaped draw and the card added has a
+                       # cost-shaped one (K-14).
+                       #
+                       # `(?m)^` is load-bearing. Oracle text puts each ability on its own
+                       # LINE, so anchoring there is what distinguishes a real ability from
+                       # the same words quoted inside REMINDER text — a Clue's reminder
+                       # ('It\'s an artifact with "{2}, Sacrifice this artifact: Draw a
+                       # card."') is mid-line, so every card that merely CREATES a Clue or
+                       # a Blood token stays out. Granting those cards the role via
+                       # reminder text would have been a silent over-count, the one failure
+                       # this bucket has never had.
+                       #
+                       # TWO EXCLUSIONS INSIDE THE COST SPAN, both taken from rules this
+                       # module already states rather than invented here:
+                       #   `discard`       — `{T}, Discard a card: Draw a card` (Charging
+                       #                     Strifeknight, Professor Zei) is RUMMAGING. It
+                       #                     is card-neutral, exactly what _LOOT_RE filters
+                       #                     one clause over; the only difference is which
+                       #                     side of the colon the discard sits on.
+                       #   `sacrifice this`— `{2}, Sacrifice this artifact: Draw a card`
+                       #                     (Aether Spellbomb, Candy Trail, the common
+                       #                     "{4}, {T}, Sacrifice this land: Draw a card"
+                       #                     tapland cycle) consumes the source, so it is a
+                       #                     ONE-SHOT single draw — a cantrip with delayed
+                       #                     timing, and the cantrip rule above already
+                       #                     excludes those. Keeping them would have taken
+                       #                     the change from 24 decks to 58 and re-graded
+                       #                     the roster off a flood-insurance land.
+                       # Sacrificing something ELSE (Ayara "another black creature",
+                       # Fountainport "a token", Technodrome "another artifact") is
+                       # repeatable and counts.
+                       #
+                       # The optional `<ability word> — ` prefix is there because an
+                       # ABILITY-WORD-gated activation still starts its own line but does
+                       # NOT start with the cost: "Delirium — {2}{U}, {T}: Draw a card"
+                       # (Raving Visionary), "Domain — {5}, {T}: Draw a card" (Jodah's
+                       # Codex), "Threshold — {1}{U}: … and draw a card" (Thought Shucker).
+                       # Measured: it changes the final answer for exactly those THREE
+                       # cards and nothing else, which is the check worth repeating if the
+                       # prefix is ever widened — a looser prefix reaches into reminder
+                       # text and the line anchor stops earning its keep.
+                       r"(?m)^(?:[a-z][a-z']{2,14}(?: \d+)? [-—] )?"
+                       r"(?:[+-]?\d+|\{[^}]+\})(?:(?!discard|sacrifice this)[^.:\n])"
+                       r"{0,60}:[^.\n]{0,60}?draws? a card",
+                       # The same ability with the draw one sentence later, behind an
+                       # "if you do" — Chandra, Spark Hunter's `+2: You may sacrifice an
+                       # artifact or discard a card. If you do, draw a card.` The pattern
+                       # above stops at the sentence break and missed her, which is how the
+                       # measurement of K-14 failed to include the card that demonstrates
+                       # it. KNOWN RESIDUAL: her discard mode IS a rummage, so a modal cost
+                       # whose worst branch is card-neutral reads here as full advantage.
+                       # Under-counting is this bucket's stated preference, but the cost
+                       # span is the only thing either pattern can see, and hers is `+2`.
+                       r"(?m)^(?:[a-z][a-z']{2,14}(?: \d+)? [-—] )?"
+                       r"(?:[+-]?\d+|\{[^}]+\})(?:(?!discard|sacrifice this)[^.:\n])"
+                       r"{0,60}:[^.\n]{0,90}\.\s*(?:if|when) you do[^.\n]{0,40}?draws? a card"],
     "Ramp / fixing": [r"search your library for .{0,30}?\bland",
                       r"\{t\}: add \{",
                       r"put (?:a|that|those|up to \w+).{0,40}?land.{0,40}?onto the battlefield",
@@ -1428,11 +1494,20 @@ _INTERACTION_ROLES = {"Removal (spot)", "Sweeper", "Counter"}
 # advantage, which both inflated her value when the deck was graded and made cutting her
 # register as a regression the quality guard reported but that wasn't real (session
 # finding). Only an EQUAL, adjacent draw/discard pair is filtered — a genuinely
-# net-positive "draw three cards. Discard a card." is untouched, and connive (draw 1,
-# discard 1) never counted in the first place.
+# net-positive "draw three cards. Discard a card." is untouched.
+#
+# THE SINGULAR PAIR ("draw a card, then discard a card") was added with the
+# activated-cost patterns above, and it closes a hole this comment used to paper over.
+# It said connive "never counted in the first place" — true, but only because nothing
+# matched a bare "draw a card" at all, not because anything excluded it. The moment a
+# cost-shaped pattern landed, `{2}, {T}: Draw a card, then discard a card` (Bag of
+# Holding, Collector's Vault, Agna Qel'a, Kitsa) would have counted as card advantage —
+# a looter scoring as a draw engine, which is the exact inversion the plural half exists
+# to prevent. The invariant is now true by construction rather than by accident.
 _LOOT_RE = re.compile(
     r"draws? (two|three|four|five|x|that many) cards?,? (?:then )?"
-    r"discards? (?:\1|that many) cards?")
+    r"discards? (?:\1|that many) cards?"
+    r"|draws? a card,? (?:then )?discards? a card")
 
 # Real PROTECTION for a permanent you control — deliberately NARROWER than the
 # "Protection / trick" role, which lumps a combat pump ("gets +2/+2 until end of turn")

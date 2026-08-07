@@ -3,8 +3,10 @@
 #: tier: C — Honor Among Thieves Abzan toughness-ramp. The old rationale capped this on
 #: tier: "thin interaction (3)"; that figure was a classifier under-read and the live
 #: tier: count is 4, a B floor. The letter STAYS at C on the two things the floor misses:
-#: tier: 1. CARD ADVANTAGE 1. Effectively nothing in the 60 refuels — the single point
-#: tier:    is one repeatable trigger, not an engine. A ramp deck that spends its first
+#: tier: 1. CARD ADVANTAGE 2. Effectively nothing in the 60 refuels — both points are
+#: tier:    single repeatable abilities, not an engine (the second is Lunar Convocation's
+#: tier:    "{1}{B}, Pay 2 life: Draw a card", which the K-14 classifier fix made
+#: tier:    visible; it was always in the list). A ramp deck that spends its first
 #: tier:    four turns developing and then draws one card a turn loses every long game it
 #: tier:    was building toward, and 4 removal spells do not substitute.
 #: tier: 2. The payoff is not reliably castable. `consistency 20b` puts {G}{G}{G} Ancient

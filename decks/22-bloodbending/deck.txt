@@ -3,11 +3,14 @@
 #: tier: B — Dimir mill / graveyard-value control. RE-GRADED UP from C: the C rested on
 #: tier: "thin interaction (2)", and that 2 was a classifier under-read, not the deck —
 #: tier: the bounce and edict patterns were broken, so the live count is interaction 4
-#: tier: against card advantage 11, which is the B floor rather than the near-zero
+#: tier: against card advantage 8, which is the B floor rather than the near-zero
 #: tier: interaction C is meant to cap. The card advantage is a real engine, not a pile
 #: tier: of cantrips (Portent of Calamity, Inspiration from Beyond, the draw-two
 #: tier: waterbenders), and it feeds the graveyard payoffs directly, so the mill plan and
-#: tier: the value plan are the same cards.
+#: tier: the value plan are the same cards. That claim is now MEASURED rather than
+#: tier: asserted: the figure fell 11 -> 8 when K-14 taught the loot filter the singular
+#: tier: pair, and all three cards it dropped (Emet-Selch, Gran-Gran, Silvergill Peddler)
+#: tier: were card-neutral looters. The 8 that remain are real draws.
 #: tier: HELD AT B by one real gap, per the rubric: the interaction is 4 pieces and only
 #: tier: ONE of them is instant-speed, so a resolved threat is usually a resolved threat.
 #: tier: Mill also remains a slow Bo1 ladder plan — Consuming Aberration and Uchbenbak

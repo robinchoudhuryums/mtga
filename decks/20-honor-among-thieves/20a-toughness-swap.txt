@@ -6,7 +6,7 @@
 #: tier: unclassified — Bark of Doran / Pain 101) over 11 central themes is a coherent
 #: tier: toughness-matters engine, not
 #: tier: near-zero interaction on a thin theme. Metrics floor is B. Held at B, not A, by the
-#: tier: real gap: card advantage 1 and a 3.64 curve, plus reliance on Kingpin to convert.
+#: tier: real gap: card advantage 2 and a 3.64 curve, plus reliance on Kingpin to convert.
 #: colors: WB
 #: based-on: deck.txt
 #: archetype: 20 variant — P/T-swap novelty: high-toughness bodies deal damage via Kingpin (leans on drawing him).
