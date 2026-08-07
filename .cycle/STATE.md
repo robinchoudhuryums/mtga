@@ -967,3 +967,60 @@ The pattern across both fixes, worth stating once: "no gate checks this" was tru
 one day, on the same shape — a role bucket nothing exercised, and a header nothing
 validated. Both had been live for months behind fully green gates, and both were cheap to
 fix once someone said the sentence out loud.
+
+## Twelfth pass — Batch H (strategic), 2026-08-07
+
+The last batch of the broad-scan-2 priority report. Five of its seven items were code;
+two are the user's to decide and were left alone (H-1 needs games played, H-5 the user
+said to hold off on). Full block: `.cycle/blocks/2026-08-broad-scan2-batchH-broad-implement.md`.
+
+**The batch found two bugs by doing its own work, and both are the same shape.**
+
+1. **BS3-02 — the BS2-23 fingerprint could never arm itself.** H-6 mapped seven keywords,
+   `make refresh` ran, step 2/6 announced `build_pool.py`, `check_all` went green, and
+   `card-pool.csv` came back BYTE-IDENTICAL. The freshness reuse returns before writing a
+   stamp, so a pre-BS2-23 two-line stamp never acquired a fingerprint, and the grace
+   clause ("unknown → don't force a rebuild", added so the upgrade would cost nothing)
+   made unknown an absorbing state. G-18's long form asserted "the upgrade costs exactly
+   one pool build, once" — describing behaviour the code did not implement. Unknown now
+   rebuilds once. **A grace clause added so a fix costs nothing is a place the fix can
+   cost nothing.**
+2. **H-4's whole premise, confirmed on its first run.** The alias registry checks the
+   loaders someone listed; every G-63 index bug was a loader on no list. The new AST scan
+   found `deck._legality_of` immediately — a fourth private copy of the alias loop that
+   nothing verified.
+
+**H-2 is decided, and the answer was worth having.** Pre-registered, one evaluation. The
+mechanism the tool's OWN warning asserted — that `fit` sums theme weights unnormalized
+and creatures carry ~2× the tags — is real as an observation (5.31 vs 3.15 tags, so 1.7×)
+and REFUTED as a diagnosis. Normalizing lifts creature agreement 53→68% and collapses
+noncreature 83→**51%**. The unnormalized sum is carrying real signal for the segment that
+works; the two segments want different treatments, which is a statement about a
+single-number model, not a bug in one term. **The tool was telling its reader to go fix
+something that would have made it worse**, and that prose is now corrected. M2
+(de-duplicating creature-subtype tags already paid for by `min(tribal,6)`) is recorded as
+UNDERPOWERED rather than rejected — the harness resolved 38 of 103 creature rows, and no
+third run was made to chase a better n, because re-running after seeing the numbers is
+exactly what the stopping rule exists to prevent. The harness defect is written down so a
+re-test starts ahead: the snapshot selector matches a card name in a `#:` COMMENT.
+
+**Do not re-derive a third creature-cut fix from the tag-count asymmetry.** It is real,
+it is visible, and it is misleading. Two hypotheses have now been pre-registered and
+refuted (body quality 2026-07, normalization 2026-08). The remaining lever is still more
+ledger data.
+
+**The two keyword non-decisions are the useful half of H-6.** `jump` reports 13 cards, of
+which 11 are `Jump-start` cards Scryfall also labels "Jump" — mapping it would have put
+`evasion` on 11 graveyard spells for the sake of 2. A keyword's reported COUNT is not its
+population. `tiered` is a cost SHAPE, not a resource, and its six cards' effects already
+tag correctly from text; a single theme would be wrong for five of them.
+
+1078 tests (was 1031). `check_all` green with ZERO soft warnings — the two stale tier
+figures the retag produced (decks 17, 40) were re-grounded in the same commit that moved
+them, per G-27.
+
+Where I left off: Batch H committed and pushed; the broad-scan-2 priority report is now
+fully worked. Outstanding and NOT code: log ten real matches (`matches.csv` still absent,
+34 provisional tiers unfalsifiable), deck 49 Route A, the Sheets operator setup (now
+verifiable with `sheets_sync.py check`), and the perceptual halves of Regression
+Scenarios 5–8. BS2-07's header-consumer sweep is still the one open G-63 member.

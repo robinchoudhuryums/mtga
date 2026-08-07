@@ -381,8 +381,15 @@ class TestSegments:
         assert "By segment" in out
         assert "noncreature cuts   20/20 (100%)" in out
         assert "creature cuts      0/20 (0%)" in out
-        # The weak segment must carry the reason, not just a number.
-        assert "coin flip" in out and "no normalization for tag count" in out
+        # The weak segment must carry context, not just a number — but NOT a claimed
+        # CAUSE. It used to assert "no normalization for tag count", and that mechanism
+        # was pre-registered, tested and refuted (BS3-04): normalizing lifts creatures
+        # 53% → 68% and collapses noncreature 83% → 51%, so the tool was pointing its
+        # reader at a change that would make it worse. Pin the honest shape instead —
+        # the flag, and that a tested-and-rejected hypothesis is named.
+        assert "coin flip" in out
+        assert "rejected" in out and "2026-08" in out
+        assert "no normalization for tag count" not in out
 
     def test_the_classifier_resolves_a_dfc_by_its_front_face(self):
         check = deck.cut_creature_classifier({"front": {"type": "Creature — Bird"}})

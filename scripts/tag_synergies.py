@@ -144,6 +144,63 @@ KEYWORD_THEMES = {
     "firebending": ["bending"],
     # Vehicles / equipment
     "crew": ["vehicles"], "equip": ["equipment"],
+    # ── The Universe-Beyond mechanics K-01 carried as "acknowledged but unindexed",
+    # triaged PER KEYWORD (never in bulk — that rule exists because `renew` and
+    # `triple` came out opposite). Each is a recurring template across 5–17 pool
+    # cards, and each maps to the RESOURCE it turns on, per K-02. The measured
+    # delta is recorded because it is the only way to see what a mapping buys: most
+    # of these cards quote reminder text the TEXT rules already read, so the map
+    # earns its keep on the tail that states the keyword BARE.
+    #
+    # Vivid — "X = the number of colors among permanents you control". The same
+    # family as `converge` (colors of mana SPENT), hence the same theme. 17/17 gain
+    # both tags: nothing in the text rules reads a colour COUNT, which is why K-04's
+    # two best fixers (Bloom Tender keys off Vivid) read as non-fixers for so long.
+    "vivid": ["multicolor", "payoff"],
+    # Job select — "When this Equipment enters, create a 1/1 Hero token, then attach
+    # this to it." Both halves are literal. Only 2 of 16 gain anything: the other 14
+    # print the reminder text, which the tokens rule already reads. The two that
+    # don't (Ninja's Blades, Summoner's Grimoire) state it bare — exactly K-02's
+    # invisible tail.
+    "job select": ["equipment", "tokens"],
+    # Opus — "Whenever you cast an instant or sorcery spell … if five or more mana
+    # was spent". A spellslinger PAYOFF that additionally rewards expensive spells.
+    # All 11 already read as spellslinger from text; the mapping's contribution is
+    # `payoff`, which is what distinguishes them from the cheap spells they want.
+    "opus": ["spellslinger", "payoff"],
+    # Increment — "Whenever you cast a spell, if the mana spent is greater than this
+    # creature's power or toughness, put a +1/+1 counter on it." 10/10 gain
+    # spellslinger; Scalar Scholar states Increment bare and gains `counters` too.
+    "increment": ["counters", "spellslinger"],
+    # Infusion — "if you gained life this turn". A lifegain payoff, the lifegain
+    # analogue of `morbid`. 13/13 gain `payoff`, 5 gain `lifegain`.
+    "infusion": ["lifegain", "payoff"],
+    # Disappear — "if a permanent left the battlefield under your control this turn".
+    # Deliberately given morbid's exact pair: a disappear deck is built with sac
+    # outlets and expiring tokens. KNOWN ADJACENCY, not tagged: blink also satisfies
+    # it, but several disappear cards accumulate +1/+1 counters, which blink ERASES
+    # (G-42) — so `blink` would recommend a package that fights half these cards.
+    "disappear": ["sacrifice", "aristocrats"],
+    # Paradigm — "exile this spell; after you first resolve a spell with this name,
+    # cast a copy from exile for free each first main phase." Casting your OWN
+    # exiled cards is exactly K-07's `exile cast`, and a free recurring copy is
+    # repeatable card advantage. 5 cards, all on one template.
+    "paradigm": ["exile cast", "card advantage"],
+    # NOT MAPPED, and the reasons are the point of triaging one at a time:
+    #   * `tiered` (6) — a COST SHAPE ("choose one additional cost"), not a resource.
+    #     Its six cards span burn / bounce / lifegain / pump / protection and the
+    #     text rules already tag each correctly; any single theme would be wrong for
+    #     five of them, and a new theme for six cards is the fix K-09 warns off.
+    #   * `jump` (13 reported, 2 real) — a SOURCE artifact, and the most interesting
+    #     of the three. Scryfall lists "Jump" alongside "Jump-start" on all 11
+    #     jump-start cards, so the apparent population is mostly a different, already
+    #     mapped keyword. Only Freya Crescent and Kain genuinely have Jump ("during
+    #     your turn, this has flying"). Mapping it to `evasion` would put that theme
+    #     on 11 unrelated graveyard spells. A keyword's COUNT is not its population.
+    #   * `triple` (3) — already triaged out once (K-01). Two damage triplers, which
+    #     `doubler_axis` reads structurally, plus a Tiered mode NAME. Tiered cards
+    #     also emit "Double", "Final Heaven", "Somersault" as keywords, which is the
+    #     same source artifact as `jump`.
 }
 
 # Scryfall records Universe-Beyond *flavor* ability names in each card's
@@ -151,9 +208,10 @@ KEYWORD_THEMES = {
 # Marvel/Avatar signature moves (Wave Cannon, Angelo Cannon, Particle Beam, …),
 # and one-off named actions (Take the Elevator, The Allagan Eye, …). These are
 # card-unique flavor, not deck-building mechanics, so they're dropped from tags
-# rather than polluting the Synergies vocabulary. Recurring UB *mechanics*
-# (Vivid, Opus, Job select, Infusion, Paradigm, Increment, Disappear, Tiered)
-# are intentionally kept — theming those is a separate roadmap item — as are
+# rather than polluting the Synergies vocabulary. Recurring UB *mechanics* are
+# intentionally kept — seven of them (Vivid, Opus, Job select, Infusion, Paradigm,
+# Increment, Disappear) are now THEMED in KEYWORD_THEMES above, and Tiered is
+# deliberately left unthemed with its reason recorded there — as are
 # genuine keywords that merely look unusual (Eerie, Survival). This is a
 # denylist so new *real* keywords still tag automatically; extend it as new
 # flavor-heavy sets land. Compare against the keyword lowercased.

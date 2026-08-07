@@ -232,15 +232,30 @@ def main():
     # would force a ~5-minute full rebuild on the first refresh after every clone —
     # and this repo already learned "content, not mtime" the hard way (F-04, where a
     # copy2'd .bak's mtime described its CONTENTS' age, not the backup's).
+    # An ABSENT fingerprint (a stamp written before BS2-23) is UNKNOWN, and unknown has
+    # to mean rebuild-once. It first meant "don't force a rebuild", to spare people one
+    # surprise refetch — and that quietly disarmed the whole mechanism: the reuse path
+    # returns before any stamp is written, so a legacy two-line stamp never ACQUIRES a
+    # fingerprint, and as long as the pool stayed fresh no tag edit would ever be
+    # detected. Found the only way it could be: the seven K-01 keyword mappings were
+    # added, `make refresh` ran and announced build_pool, and card-pool.csv came back
+    # byte-identical (broad-scan BS3-02). The grace clause is the same shape as the bug
+    # it was bolted onto — a freshness check that cannot see the thing it exists to see.
+    # It costs one full rebuild, exactly once per stamp, and then the escape hatch works.
     stamp_date, stamp_query, stamp_tags = read_stamp()
     tags_changed = stamp_tags is not None and stamp_tags != tagger_fingerprint()
+    tags_unknown = stamp_tags is None
     age = stamp_age_days(stamp_date)
     if tags_changed and not args.refetch:
         print("tag_synergies.py is newer than the pool — rebuilding so every row's "
               "Synergies is re-derived through the current tags_for() (K-10).")
+    elif tags_unknown and not args.refetch and os.path.exists(args.out):
+        print("This pool was built before the tag fingerprint existed, so whether its "
+              "Synergies match the current tags_for() is unknown — rebuilding once to "
+              "record it. Later refreshes reuse a fresh pool as before (BS3-02).")
     if (not args.refetch and args.out == POOL_PATH and os.path.exists(args.out)
             and age is not None and args.max_age > 0 and age <= args.max_age
-            and stamp_query == query and not tags_changed):
+            and stamp_query == query and not tags_changed and not tags_unknown):
         eprint(f"Pool built {age} day(s) ago for the same query — reusing "
                f"{os.path.basename(args.out)} (--refetch to rebuild, --max-age to change "
                f"the window).")

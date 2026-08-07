@@ -1134,19 +1134,30 @@ import it.
 pip install -r requirements.txt
 export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
 export MTGA_SHEET_ID=<sheet id from its URL>
+python3 scripts/sheets_sync.py check           # is the setup complete? writes nothing
 python3 scripts/sheets_sync.py push            # local CSV  -> Google Sheet
 python3 scripts/sheets_sync.py pull            # DRY RUN: reports what it would write
 python3 scripts/sheets_sync.py pull --apply    # Google Sheet -> local CSV (writes)
 ```
 
+**Start with `check`.** Setup has four independent parts — two packages, a key
+file, a sheet id — plus sharing the sheet with the service account's
+`client_email`, and each used to announce itself only by failing a real transfer,
+so a missing share and a typo'd tab name looked alike. `check` reports every part,
+lists the tabs it can see, and moves no data.
+
 Keeps the CSV and the companion Google Sheet in sync. `pull` overwrites the local
 CSV, so it is **dry-run by default** (`--apply` to write), the incoming rows are
 run through `validate.py` on a temp file first (and the current CSV is backed up
-to a timestamped `.bak`), and it **refuses a >50% row-count shrink** without
-`--allow-shrink` — `validate.py` passes a header-only sheet with zero rows, so a
-cleared or wrong-but-existing tab would otherwise look valid while replacing the
-whole inventory. A sheet with a matching header but bad rows can't corrupt the
-inventory. `push` writes cells as **RAW**
+to a timestamped `.bak`), and **both directions refuse a >50% row-count shrink**
+without `--allow-shrink` — `validate.py` passes a header-only sheet with zero rows,
+so a cleared or wrong-but-existing tab would otherwise look valid while replacing
+the whole inventory, and `push` CLEARS the tab before writing, so a short local CSV
+would destroy the remote copy you would otherwise recover from. A sheet with a
+matching header but bad rows can't corrupt the inventory. Reading never creates a
+worksheet: a typo'd `--worksheet` on `pull` used to add an empty tab to your
+spreadsheet and then report it empty; it now names the tabs that do exist.
+`push` writes cells as **RAW**
 values, so a field whose text begins `=`, `+`, `-`, or `@` is stored literally and
 never evaluated as a spreadsheet formula (a CSV-injection guard, and it also keeps
 leading-zero collector numbers intact). Setup details are in the docstring at the

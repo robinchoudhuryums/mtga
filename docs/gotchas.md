@@ -361,6 +361,15 @@ them off the cut list and `swap --cut`-ing one warns. Set these for cards a deck
 is built around so the tooling never proposes cutting them.
 
 
+**The two REPORT-only annotations above the cut table, and what each was for.** `cuts`
+prints the axis the deck is SHORT on above the ranking, because a `⚠interaction` note
+once put four ONE-MANA spells at the top of the cut list of the slowest deck on the
+roster — the ranking answered "weakest fit" while the reader was being told the deck
+needed interaction, and nothing reconciled the two. And it flags `⌁scales w/ <axis>` for
+a card whose printed stats are its FLOOR rather than its value: Cat-Gator reads as a
+7-mana 3/2 until you notice its ETB damage counts the Swamps you CONTROL. Neither
+changes a score.
+
 **The `#: protect:` keep-boost reads the STRICT spine, and the loose union saturated.**
 `rank_cut_candidates` gave a +2 keep-boost to any card sharing `_signature_themes` — the
 union of every `#: protect:` card's tags. Measured across the 22 decks that declare one, it
@@ -573,9 +582,33 @@ wrong in general: git stamps every file at CHECKOUT time in arbitrary order, so 
 clone would have forced a ~5-minute full rebuild on its first `make refresh`, every time.
 This repo had already learned the same lesson from the other direction at F-04, where a
 `copy2`'d `.bak`'s mtime describes when its CONTENTS were written rather than when the
-backup was taken. A stamp written before this change has no third line, which reads as
-None = "cannot tell" and never forces a rebuild — so the upgrade costs exactly one pool
-build, once.
+backup was taken.
+
+**BS3-02: the grace clause disarmed the whole mechanism, and it took another instance of
+the original bug to notice.** A stamp written before BS2-23 has no third line. That read
+as None = "cannot tell" and — by explicit design — never forced a rebuild, so that the
+upgrade would cost nothing. But **the reuse path returns before any stamp is written**,
+so a legacy two-line stamp could never ACQUIRE a fingerprint: as long as the pool stayed
+inside the freshness window, the escape hatch could not arm itself, and no tag edit would
+ever be detected. The claim in the sentence above — "the upgrade costs exactly one pool
+build, once" — described intended behaviour the code did not implement.
+
+It surfaced the only way it could. The seven K-01 keyword mappings were added, `make
+refresh` ran, step 2/6 announced `build_pool.py`, `check_all` came back green — and
+`card-pool.csv` was byte-identical, with all seven mappings absent from the 16k-row
+reference. That is BS2-23's bug happening again, inside its own fix.
+
+The fix is that **unknown means rebuild once**: an absent fingerprint now defeats the
+reuse and prints why, the build records the fingerprint, and every later refresh reuses a
+fresh pool exactly as before. Pinned by four tests in `tests/test_build_pool.py`,
+including the pair that matters — an unknown fingerprint rebuilds, and the run after it
+reuses (so "once" is really once). The test helper `_stamp` now writes a three-line stamp
+by DEFAULT, because the two-line double it used to write was quietly asserting the old
+behaviour in the same file that was supposed to guard the new one.
+
+The general lesson, which is this file's most repeated: **a grace clause added so a fix
+costs nothing is a place where the fix can cost nothing.** If "unknown" can never become
+"known", the state machine has one absorbing state and it is the broken one.
 
 
 ## [G-19] `card-wishlist.csv` is UNOWNED craft targets
@@ -2019,6 +2052,55 @@ The lesson worth keeping: **a standing warning is a decision nobody has made yet
 two fired on every `check_all` run for several cycles, which is the saturation failure
 this file documents elsewhere — a channel that always fires reads as working, and a
 genuinely new mechanic arriving beside them would have been invisible.
+
+### 2026-08: the remaining ten, triaged one at a time (broad-scan H-6)
+
+Seven were themed, three were left. Every mapping's DELTA was measured before landing,
+because K-02's whole point is that a mapping's value is invisible without one — most
+cards quote reminder text the TEXT rules already read, so the map earns its keep on the
+tail that states the keyword bare.
+
+| keyword | pool cards | themes | cards that GAINED a theme |
+|---|---|---|---|
+| vivid | 17 | `multicolor`, `payoff` | 17/17 |
+| job select | 16 | `equipment`, `tokens` | **2**/16 |
+| opus | 11 | `spellslinger`, `payoff` | 11/11 |
+| increment | 10 | `counters`, `spellslinger` | 10/10 |
+| infusion | 13 | `lifegain`, `payoff` | 13/13 |
+| disappear | 9 | `sacrifice`, `aristocrats` | 9/9 |
+| paradigm | 5 | `exile cast`, `card advantage` | 5/5 |
+
+`vivid` scales with "the number of colors among permanents you control" — the same
+family as `converge` (colors of mana SPENT), hence the same theme. Nothing in the text
+rules reads a colour COUNT, which is why 17/17 gained both, and why K-04's fixer overlay
+was blind to Bloom Tender for so long. `job select` is the K-02 shape at full strength:
+14 of 16 print the reminder text ("create a 1/1 Hero token, then attach this to it") and
+already tagged; the two that state it bare are the reason the map exists. `disappear`
+gets `morbid`'s exact pair, deliberately — its known adjacency to BLINK is left untagged
+because several disappear cards accumulate +1/+1 counters, which blink ERASES (G-42), so
+a `blink` tag would recommend a package that fights half of them. `paradigm` is K-07's
+`exile cast` by definition: cast a free copy of your own exiled spell each main phase.
+
+**The three that were left, each for a different reason — this is why bulk triage is
+wrong:**
+
+* **`jump` — a SOURCE artifact, and the most instructive of the three.** It reports 13
+  cards, of which **11 are `Jump-start` cards**: Scryfall lists both "Jump" and
+  "Jump-start" in their keyword arrays. Only Freya Crescent and Kain genuinely have Jump
+  ("during your turn, this has flying"). Mapping it to `evasion` would have put that
+  theme on 11 unrelated graveyard spells. **A keyword's reported count is not its
+  population** — check what the cards actually say before believing the tally.
+* **`tiered` — a cost SHAPE, not a resource.** "Choose one additional cost", with
+  escalating modes. Its six cards span burn (Fire Magic, Thunder Magic), bounce (Ice
+  Magic), lifegain/protection (Restoration Magic) and pump (both Limit Breaks), and the
+  text rules already tag each correctly. Any single theme would be wrong for five of
+  them, and a new theme for six cards is the fix K-09 warns off.
+* **`triple`** — already triaged out once, unchanged. Tiered cards also emit `Double`,
+  `Final Heaven` and `Somersault` as keywords, which is the same artifact as `jump`.
+
+Note the follow-through this required: K-10 mandates rebuilding BOTH tag stores after a
+pattern edit, and the mechanism meant to enforce that turned out to be disarmed — see
+[G-18]'s BS3-02 entry, which was found by this very edit coming back a no-op.
 
 
 ## [K-02] `forage` was THEMED rather than baselined, and the 7-of-9 split is the lesson

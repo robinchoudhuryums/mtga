@@ -254,15 +254,15 @@ directions.
   colour identity). A pool-absent card is *unverified*, not illegal. `deck.py brawl` is
   the roster-wide counterpart. **`deck.py cuts <id>` ranks weakest-fit cards and is a
   SHORTLIST, not a GRADE** — it cannot see raw power or spice, and on a creature-heavy
-  deck it is close to a coin flip. Read the printed oracle text, preview with `swap`,
-  and hard-protect signature cards with a `#: protect:` header. Its `#: protect:`
-  keep-boost reads the STRICT spine (a theme carried by ≥2 protected cards), like every
-  `fit_strength` caller: the loose union fired on 87% of nonland cards — 100% in two
-  decks — and a boost that applies to every card in a ranking is a constant. It now
-  prints the axis the deck is SHORT on above the table, because a `⚠interaction` note
-  once put four ONE-MANA spells atop the cut list of the slowest deck on the roster, and
-  flags `⌁scales w/ <axis>` for a card graded at its FLOOR (Cat-Gator reads as a 7-mana
-  3/2 when its ETB is damage = Swamps you CONTROL). Both REPORT-only. [G-09]
+  deck it is a coin flip (50% vs 86% noncreature, replicated at n=31 and n=103). **Two
+  fixes were pre-registered and REFUTED**: body quality (2026-07) and tag-count
+  normalization (2026-08 — it lifts creatures 53→68% and COLLAPSES noncreature 83→51%,
+  so the unnormalized sum is load-bearing). Don't derive a third from the tag-count
+  asymmetry. Read the oracle text, preview with `swap`, and hard-protect signature cards
+  with a `#: protect:` header — whose keep-boost reads the STRICT spine (≥2 protected
+  cards share the theme), like every `fit_strength` caller. `cuts` also prints the axis
+  the deck is SHORT on, and flags `⌁scales w/ <axis>` for a card graded at its FLOOR.
+  Both REPORT-only. [G-09]
 - **"Not in library" for a card you own is the deck-dump undercount symptom.** Fastest
   fix: `reconcile_crafts.py <arena-export>` — it adds the library row, adds a blank
   `card-mana.csv` row so INV-02 always holds, drops the card from the wishlist, and
@@ -310,9 +310,10 @@ directions.
   not just fast: it is the whole Arena pool and independent of what you OWN, so an ingest
   cannot change it — what goes stale is `Legalities` and a new set's arrival, hence a
   window. **But a TAG-PATTERN edit also stales it**, which the reuse could not see: the
-  stamp now records a content hash of `tag_synergies.py` and a mismatch defeats the
-  reuse, because K-10's mandated `build_pool.py --all` was otherwise a silent no-op for
-  up to a week (BS2-23). `--refetch` (`make refresh REFETCH=1`) forces both. [G-18]
+  stamp records a content hash of `tag_synergies.py` and a mismatch defeats the reuse
+  (BS2-23). An ABSENT hash means UNKNOWN and rebuilds ONCE — the reuse path returns
+  before writing a stamp, so "unknown = reuse" meant the hatch could never arm (BS3-02).
+  `--refetch` (`make refresh REFETCH=1`) forces both. [G-18]
 - **`card-wishlist.csv` is UNOWNED craft targets**, with DFCs under their full
   `Front // Back` name. `--rank` blends a hand-graded Power 50/50 with theme fit plus a
   bounded cross-deck breadth bonus; **lands rank on manabase value instead**, since theme
@@ -652,19 +653,19 @@ directions.
   scorecard really says interaction, the fix is `suggest --needs` per G-38, not a mill
   card. Deck 51 is the worked case: its mill package is a second win condition. [G-62]
 - **THE FRONT FACE AND THE STORED METADATA DISAGREE — ON EVERY COLUMN, AND IN EVERY
-  INDEX.** G-02 is one member of a class that has now produced SIX bugs across five
-  columns: **COST** (a modal DFC stored only the front), **COLOR** (identity hid 55
-  castable red-pool cards — G-58), **TYPE** (a whole-line scan read the BACK face's; deck
-  49 reported 26 lands holding 25), **NAME twice** (`swap --apply` wrote a bare front
-  name; `_multiset` then read an identical deck as DRIFTED and `sync` would have written
-  it back), and **RARITY** (`load_rarities` reads the pool, keyed only by `Front // Back`, so
-  47 roster names priced blank and every mythic DFC sorted UP the cut list). The 2026-08
-  scan added FIVE members — two indexes, two exact-name JOINS, the editor's JS ownership
-  payload — and scan #2 added the ingest WRITE side: reconcile/import_arena APPENDED a
-  duplicate front-name row for a full-name-stored printing, splitting the owned count
-  (BS2-02; writer joins are front-face now). **Ask which face a column describes; alias
+  INDEX.** G-02 is one member of a class that has produced SIX bugs across five columns —
+  **COST** (a modal DFC stored only the front), **COLOR** (identity hid 55 castable
+  red-pool cards — G-58), **TYPE** (a whole-line scan read the BACK face's; deck 49
+  reported 26 lands holding 25), **NAME twice** (a bare front name written by
+  `swap --apply`, then read back as DRIFT), **RARITY** (47 roster names priced blank) —
+  plus FIVE more from the 2026-08 scan (two indexes, two exact-name JOINS, the editor's
+  JS payload) and the ingest WRITE side, where reconcile/import_arena APPENDED a
+  duplicate front-name row and split the owned count (BS2-02). **Ask which face a column describes; alias
   via `lib.alias_front` (the ONE second-pass home, ENFORCED by `check_dfc`'s registry +
-  the editor-payload pin); key every name JOIN — a writer's too — on `_ms_key`.** [G-63]
+  the editor-payload pin); key every name JOIN — a writer's too — on `_ms_key`.** The
+  registry is now itself gated by an AST scan for pool-shaped name-index BUILDERS: it
+  only ever checked loaders someone listed, and every bug in this class was a loader on
+  no list (2026-08; it found `deck._legality_of` on its first run). [G-63]
 
 - **A reanimator's uncastable bombs need `#: uncastable-ok:`, and everything else's do
   not.** The castability lint and `tier_band` both model "you cannot cast this" as a build
@@ -728,11 +729,17 @@ directions.
 Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
 
 - **An unindexed keyword is a HOLE every tag-gated predicate inherits**, not an inert
-  gap. The acknowledged-but-unindexed list is `scripts/keyword_baseline.txt` (Vivid, Job
-  select, Opus, Increment, Infusion, Paradigm, Disappear, Tiered, Jump, triple); theming
-  them is ROADMAP Tier 1. Triage a new set's keywords PER KEYWORD, not in bulk — `renew`
-  and `triple` triaged in opposite directions. A standing warning is a decision nobody
-  has made yet. [K-01]
+  gap. The acknowledged-but-unindexed list is `scripts/keyword_baseline.txt`. Triage a
+  new set's keywords PER KEYWORD, not in bulk — of the ten this rule used to list,
+  SEVEN were themed in 2026-08 (vivid→multicolor·payoff, job select→equipment·tokens,
+  opus→spellslinger·payoff, increment→counters·spellslinger, infusion→lifegain·payoff,
+  disappear→sacrifice·aristocrats, paradigm→exile cast·card advantage) and THREE were
+  deliberately left, for three different reasons. **A keyword's reported COUNT is not
+  its population**: Scryfall lists `Jump` on all 11 `Jump-start` cards, so mapping it
+  would have put `evasion` on 11 graveyard spells for the sake of 2 real ones — the same
+  source artifact that emits `Triple`/`Double`/`Somersault` off Tiered's mode names.
+  `tiered` is a COST SHAPE, not a resource, and its six cards' effects already tag
+  correctly from text. A standing warning is a decision nobody has made yet. [K-01]
 - **A keyword maps to the resources it COSTS** — `forage` → `["graveyard", "food"]`, not
   `sacrifice`. Mapping it changed only 2 of 9 cards because the rest quote reminder text
   the TEXT rules already read; the keyword map exists for the cards that state a keyword

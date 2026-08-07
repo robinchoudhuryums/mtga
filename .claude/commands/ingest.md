@@ -20,7 +20,7 @@ whether the quantities are LOWER BOUNDS or AUTHORITATIVE.**
 | Arena export of cards you just **crafted or opened** | `/add-cards` → `reconcile_crafts.py` | lower bound; takes `max(existing, line)` |
 | A **deck list** you built in Arena, to true up counts | `import_arena.py <file> --skip-basics` | lower bound — each line is what that deck plays, not what you own |
 | A **tracker's full-collection CSV/TSV** | `import_collection.py` | **authoritative** — sets exact counts, including DOWN |
-| The companion **Google Sheet** | `sheets_sync.py pull` | authoritative; needs credentials (ROADMAP Tier 3, not wired up) |
+| The companion **Google Sheet** | `sheets_sync.py pull` | authoritative; needs credentials — run `sheets_sync.py check` first, it reports every missing setup part and writes nothing |
 | A **new deck** to store in the repo | `/add-deck` | not an ownership change at all |
 | One card to fix by hand | `make app` (the Flask editor) | interactive |
 
@@ -42,7 +42,7 @@ Every tool here defaults to a dry run. Show the user what would change before wr
 - `python3 scripts/import_arena.py <file> --skip-basics --dry-run`
 - `python3 scripts/import_collection.py <file>` — also reports cards owned here but
   ABSENT from the export; those are left alone unless you pass `--zero-missing`
-- `python3 scripts/sheets_sync.py pull --dry-run`
+- `python3 scripts/sheets_sync.py check` then `python3 scripts/sheets_sync.py pull --dry-run`
 
 Report the counts and anything flagged (unparseable lines, ambiguous name-only rows,
 cards about to be zeroed), then **ask before applying**. Only `import_collection.py` can

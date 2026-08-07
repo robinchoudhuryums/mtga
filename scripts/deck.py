@@ -5502,10 +5502,14 @@ def recommendation_segments(rows, is_creature):
     `unknown`. Exists because ONE pooled agreement rate averages two regimes that
     differ by a factor of two, and a single number over a healthy and a broken
     channel reads as healthy — the same saturation failure as the `Decks` column at
-    99% and the `review` verdict at 22-of-63. `cuts` scores a card by summing theme
-    weights over its tags WITHOUT normalizing for tag count, and creatures carry far
-    more tags than noncreature spells (tribes + keywords + ability tags), so they are
-    systematically protected from the cut list.
+    99% and the `review` verdict at 22-of-63.
+
+    Creatures DO carry more tags than noncreature spells (pool means 5.31 vs 3.15,
+    tribes + keywords + ability tags) and `fit` is an unnormalized SUM over them — but
+    that is an observation, not the diagnosis this docstring used to state. Normalizing
+    was pre-registered and tested at 2026-08: it lifts creature agreement and collapses
+    noncreature agreement, so the sum is load-bearing for the segment that works. See
+    `.cycle/blocks/2026-08-creature-cut-retest.md`.
 
     `is_creature` is INJECTED (name -> True / False / None) to keep this pure and to
     let a test supply a fake classifier. **A None is its own bucket, never folded into
@@ -5639,11 +5643,22 @@ def _print_recommendation_segments(rows):
               f"excluded from both, not folded into either.)")
     lo = min(shown.items(), key=lambda kv: kv[1][1] / kv[1][0])
     if lo[1][1] / lo[1][0] < 0.55:
-        print(f"  ⚠ {_SEGMENT_LABEL[lo[0]]} sit near a coin flip — `cuts` scores a card "
-              f"by SUMMING theme weights over its tags with no normalization for tag "
-              f"count, and creatures carry roughly twice as many tags as noncreature "
-              f"spells, so they are systematically protected. Treat the cut ranking as "
-              f"a shortlist there, not a signal; grade from the printed oracle text.")
+        # This used to assert a CAUSE — "cuts sums theme weights with no normalization
+        # for tag count, so creatures are systematically protected" — and the cause was
+        # tested and refuted (BS3-04, pre-registered, .cycle/blocks/
+        # 2026-08-creature-cut-retest.md). Normalizing `fit` by tag count does raise
+        # creature agreement (53% → 68%), and it COLLAPSES noncreature agreement
+        # (83% → 51%): the unnormalized sum is carrying real signal for the segment that
+        # works. So the asymmetry is real (creatures average 5.3 tags to a noncreature
+        # spell's 3.2, measured over the pool) but it is not a defect with a known fix,
+        # and a warning that names a wrong cause is worse than one that names none —
+        # it sends the next reader to fix something that would make the tool worse.
+        # State what is measured, and stop there.
+        print(f"  ⚠ {_SEGMENT_LABEL[lo[0]]} sit near a coin flip. A theme-fit model "
+              f"ranks bodies poorly and no fix has survived testing — body quality "
+              f"(2026-07) and tag-count normalization (2026-08) were both measured and "
+              f"both rejected. Treat the cut ranking as a shortlist there, not a "
+              f"signal; grade from the printed oracle text.")
         # Disclose a deck dominating the weak segment. One deck's rate wearing the
         # segment's name is the same "a pooled number hides a split" failure the
         # segmentation itself exists for, one level down (see segment_concentration).
