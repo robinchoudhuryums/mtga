@@ -4422,3 +4422,7 @@ Counter target spell.",U,counterspell; pay life,DMR,50,1
 Fractal Anomaly,Instant,"Create a 0/0 green and blue Fractal creature token and put X +1/+1 counters on it, where X is the number of cards you've drawn this turn.",U,counters; tokens,SOS,50,1
 Duel Tactics,Sorcery,"Duel Tactics deals 1 damage to target creature. It can't block this turn.
 Flashback {1}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",R,graveyard; burn; flashback; recursion; spellslinger,SOS,112,1
+"Chandra, Spark Hunter",Legendary Planeswalker — Chandra,"At the beginning of combat on your turn, choose up to one target Vehicle you control. Until end of turn, it becomes an artifact creature and gains haste.
++2: You may sacrifice an artifact or discard a card. If you do, draw a card.
+0: Create a 3/2 colorless Vehicle artifact token with crew 1.
+−7: You get an emblem with ""Whenever an artifact you control enters, this emblem deals 3 damage to any target.""",R,Chandra; Planeswalker; card draw; sacrifice; tokens; burn; planeswalker; noncombat damage,DFT,116,1

@@ -2079,6 +2079,7 @@ Synthesizer Labship,{U},1,Station
 Force of Will,{3}{U}{U},5,
 Fractal Anomaly,{U},1,
 Duel Tactics,{R},1,Flashback
+"Chandra, Spark Hunter",{3}{R},4,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3393,7 +3394,6 @@ Adrenaline Jockey,{2}{R},3,
 Boommobile,{2}{R}{R},4,Crew;Exhaust
 Burner Rocket,{1}{R},2,Crew;Flash
 Burnout Bashtronaut,{R},1,Max speed;Menace;Start your engines!
-"Chandra, Spark Hunter",{3}{R},4,
 Clamorous Ironclad,{3}{R},4,Crew;Menace;Cycling
 "Daretti, Rocketeer Engineer",{4}{R},5,
 Dynamite Diver,{R},1,
