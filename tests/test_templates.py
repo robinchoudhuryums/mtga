@@ -312,3 +312,93 @@ class TestDashboardTablists:
     def test_both_strips_are_completed(self):
         src = self._src()
         assert src.count("tablist(tabs,") >= 2, "deck-card and modal strips must both call tablist()"
+
+
+# --- Batch F: one theme vocabulary, and no mode with gaps ---------------------
+# The three editor pages are siblings of one app that had drifted into three
+# incompatible status vocabularies (deck.html: --ok/--short/--missing;
+# collection.html: none at all; decks.html: --ok/--warn/--bad) and no light mode,
+# while Regression Scenario 5 exercises light mode and Scenario 7 walks a person
+# straight from the light dashboard into these pages (broad-scan S-8).
+
+_EDITOR_PAGES = ("collection.html", "deck.html", "decks.html")
+
+# Tokens that are theme-INVARIANT on purpose, so the "light redefines everything"
+# rule below must not demand them: the colour pips are card-identity swatches, and
+# the scrim pair overlays card ART (dark in either theme, so its ink stays light).
+_THEME_INVARIANT = {"--pip-ink", "--scrim", "--scrim-ink",
+                    "--W", "--U", "--B", "--R", "--G", "--C"}
+
+
+def _tokens(block):
+    # Case-INSENSITIVE: the colour-pip tokens are uppercase (--W, --U, …), and a
+    # lowercase-only class made them invisible to every assertion below — which
+    # would also have left dead entries in _THEME_INVARIANT, the "registry that
+    # looks considered while covering nothing" shape check_patterns gates against.
+    return set(re.findall(r"(--[A-Za-z0-9-]+)\s*:", block))
+
+
+def _root_and_light(src):
+    """(dark tokens, light tokens) from the :root block and the light-mode block."""
+    light_m = re.search(r"@media \(prefers-color-scheme: light\)\s*\{(.*?)\n  \}",
+                        src, re.S)
+    root_m = re.search(r":root \{(.*?)\}", src, re.S)
+    assert root_m and light_m, "missing :root or light block"
+    return _tokens(root_m.group(1)), _tokens(light_m.group(1))
+
+
+class TestOneStatusVocabulary:
+    def test_every_page_defines_the_shared_status_tokens(self):
+        for name in _EDITOR_PAGES:
+            defined, _ = _root_and_light(_read(name))
+            for tok in ("--ok", "--warn", "--bad"):
+                assert tok in defined, f"{name} is missing {tok}"
+
+    def test_the_old_private_vocabulary_is_gone(self):
+        """--short/--missing were deck.html's private names for --warn/--bad."""
+        for name in _EDITOR_PAGES:
+            src = _read(name)
+            assert "var(--short)" not in src, name
+            assert "var(--missing)" not in src, name
+
+
+class TestNoThemeInheritsGaps:
+    """'Does every declared mode supply a value for every token it consumes, or
+    does one mode inherit gaps?' — the rubric question S-8 came from. A token
+    defined only in the dark block silently keeps its dark value in light mode."""
+
+    def test_light_redefines_every_theme_dependent_token(self):
+        for name in _EDITOR_PAGES:
+            dark, light = _root_and_light(_read(name))
+            missing = (dark - light) - _THEME_INVARIANT
+            assert not missing, f"{name}: light mode inherits {sorted(missing)}"
+
+    def test_light_introduces_no_token_the_dark_root_lacks(self):
+        for name in _EDITOR_PAGES:
+            dark, light = _root_and_light(_read(name))
+            assert not (light - dark), f"{name}: {sorted(light - dark)} only in light"
+
+    def test_every_consumed_token_is_defined(self):
+        """A var(--x) with no definition falls back to nothing — an invisible
+        control, not a styled one."""
+        for name in _EDITOR_PAGES:
+            src = _read(name)
+            dark, _ = _root_and_light(src)
+            used = set(re.findall(r"var\((--[A-Za-z0-9-]+)\)", src))
+            assert used <= dark, f"{name}: undefined {sorted(used - dark)}"
+
+
+class TestPhoneBreakpoints:
+    """S-3: templates/ had no breakpoints at all, so deck.html's card rows —
+    52+140+64+56+96+24 plus five 8px gaps, all fixed but the name — needed 472px
+    inside the 350px a 390px viewport leaves, and the BODY scrolled sideways."""
+
+    def test_every_page_has_a_width_breakpoint(self):
+        for name in _EDITOR_PAGES:
+            assert re.search(r"@media \(max-width:\s*\d+px\)", _read(name)), name
+
+    def test_the_deck_row_can_wrap_at_phone_width(self):
+        src = _read("deck.html")
+        bp = src[src.index("@media (max-width:"):]
+        assert "flex-wrap:wrap" in bp.replace(" ", "")
+        assert "flex:1 1 100%" in bp.replace("  ", " ") or "flex:1 1 100%" in bp

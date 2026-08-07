@@ -394,7 +394,8 @@ TEMPLATE = r"""<!DOCTYPE html>
   .hsub .link { cursor:pointer; color:var(--accent-ink); }
   .kbd { font-family:var(--font-mono); border:1px solid var(--line2); border-radius:5px; padding:1px 6px; font-size:11px; }
   .stalechip { cursor:pointer; font-size:11px; font-weight:600; padding:1px 8px; border-radius:999px;
-    background:rgba(214,150,40,.16); color:var(--warn); border:1px solid rgba(230,177,60,.3); }
+    background:color-mix(in srgb, var(--warn) 16%, transparent); color:var(--warn);
+    border:1px solid color-mix(in srgb, var(--warn) 30%, transparent); }
   .hactions { display:flex; gap:11px; flex-wrap:wrap; align-items:stretch; }
   .iconbtn { align-self:stretch; width:42px; border-radius:12px; border:1px solid var(--line); background:var(--fill);
     color:var(--ink2); font-size:15px; cursor:pointer; transition:all .15s; }
@@ -485,9 +486,17 @@ TEMPLATE = r"""<!DOCTYPE html>
   .pin.on { color:var(--accent-ink); }
   .badges { display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; }
   .badge { font-size:11px; font-weight:600; padding:2px 9px; border-radius:999px; white-space:nowrap; }
-  .b-ok { background:rgba(58,204,138,.14); color:var(--ok); border:1px solid rgba(99,214,154,.28); }
-  .b-missing { background:rgba(236,110,90,.16); color:var(--bad); border:1px solid rgba(240,138,114,.3); }
-  .b-short { background:rgba(214,150,40,.16); color:var(--warn); border:1px solid rgba(230,177,60,.3); }
+  /* Status chips: fill AND border derive from the status token, which already flips
+     per theme — I-03 moved only the `color:` here, leaving ~14 dark-tuned literal
+     rgba fills whose .28-.3 borders fell to roughly 1.3:1 over light mode's white
+     panel, so the pills lost their chip shape and read as loose coloured words
+     (broad-scan S-9). color-mix keeps both themes on ONE declaration. */
+  .b-ok { background:color-mix(in srgb, var(--ok) 14%, transparent); color:var(--ok);
+    border:1px solid color-mix(in srgb, var(--ok) 28%, transparent); }
+  .b-missing { background:color-mix(in srgb, var(--bad) 16%, transparent); color:var(--bad);
+    border:1px solid color-mix(in srgb, var(--bad) 30%, transparent); }
+  .b-short { background:color-mix(in srgb, var(--warn) 16%, transparent); color:var(--warn);
+    border:1px solid color-mix(in srgb, var(--warn) 30%, transparent); }
   .deck .arch { color:var(--ink2); font-size:12.5px; margin:7px 0 9px; line-height:1.45; min-height:2.6em; }
   .deck .metaline, .modal .metaline { display:flex; gap:9px; align-items:center; flex-wrap:wrap; font-size:11.5px; color:var(--ink2); }
   .vtag { border:1px dashed var(--line2); border-radius:999px; padding:1px 9px; color:var(--ink2b); }
@@ -614,11 +623,14 @@ TEMPLATE = r"""<!DOCTYPE html>
   table.at tbody tr.clk:hover td { background:var(--accent-bg); }
   a.goto { color:var(--accent); cursor:pointer; }
   .vpill { font-size:11px; font-weight:700; padding:2px 9px; border-radius:999px; white-space:nowrap; text-transform:uppercase; letter-spacing:.03em; }
-  .v-tune { background:rgba(236,110,90,.16); color:var(--bad); } .v-craft { background:rgba(214,150,40,.16); color:var(--warn); }
-  .v-review { background:var(--accent-bg); color:var(--accent-ink); } .v-ok { background:rgba(58,204,138,.14); color:var(--ok); }
+  .v-tune { background:color-mix(in srgb, var(--bad) 16%, transparent); color:var(--bad); }
+  .v-craft { background:color-mix(in srgb, var(--warn) 16%, transparent); color:var(--warn); }
+  .v-review { background:var(--accent-bg); color:var(--accent-ink); } .v-ok { background:color-mix(in srgb, var(--ok) 14%, transparent); color:var(--ok); }
   .tierpill { font-size:11px; font-weight:800; padding:2px 8px; border-radius:6px; min-width:20px; display:inline-block; text-align:center; }
-  .t-s { background:rgba(143,123,242,.28); color:var(--accent-ink); } .t-a { background:rgba(58,204,138,.2); color:var(--ok); }
-  .t-b { background:rgba(214,150,40,.2); color:var(--warn); } .t-c { background:rgba(236,110,90,.16); color:var(--bad); }
+  .t-s { background:color-mix(in srgb, var(--accent) 28%, transparent); color:var(--accent-ink); }
+  .t-a { background:color-mix(in srgb, var(--ok) 20%, transparent); color:var(--ok); }
+  .t-b { background:color-mix(in srgb, var(--warn) 20%, transparent); color:var(--warn); }
+  .t-c { background:color-mix(in srgb, var(--bad) 16%, transparent); color:var(--bad); }
   .t-d { background:var(--line2); color:var(--ink2); }
   .cell-flag { color:var(--bad); font-weight:600; } .cell-ok { color:var(--ink3); } .cell-muted { color:var(--ink3); }
   .why { color:var(--ink2); font-size:11.5px; }
@@ -642,8 +654,8 @@ TEMPLATE = r"""<!DOCTYPE html>
   /* recently-edited panel */
   .recdelta { display:flex; flex-wrap:wrap; gap:5px; margin:5px 0 8px; }
   .recdelta span { font-size:11.5px; font-weight:600; padding:1px 8px; border-radius:999px; font-family:var(--font-mono); }
-  .radd { color:var(--ok); background:rgba(75,189,131,.12); }
-  .rrem { color:var(--bad); background:rgba(221,106,77,.12); }
+  .radd { color:var(--ok); background:color-mix(in srgb, var(--ok) 12%, transparent); }
+  .rrem { color:var(--bad); background:color-mix(in srgb, var(--bad) 12%, transparent); }
   .reclog { margin:2px 0 9px; padding:0; list-style:none; }
   .reclog li { font-size:12px; color:var(--ink2); padding:1px 0; }
   .reclog .recdate { color:var(--ink3); font-family:var(--font-mono); font-size:11px; margin-right:7px; }

@@ -82,7 +82,18 @@ keyboard/focus preview parity, S-10 disclosure state + per-card remove names, S-
 applied (README ×3, CLAUDE.md C-07 + Scenario 4, gotchas G-08/G-63) and check_docs green.
 Block: `.cycle/blocks/2026-08-broad-scan2-batchE-broad-implement.md`. 1022 tests.
 
-**Where I left off:** top-5 + docs + follow-ons + Batches A–E implemented, tested, committed and
+**Eighth pass, same session — Batch F** (editor theming + phone width, the last
+interface batch): S-9 dashboard status fills/borders via color-mix (completing I-03's
+half-done fix), S-8 one --ok/--warn/--bad vocabulary + a light palette across all three
+templates + five hardcoded hexes tokenized (with --on-solid flipping per theme and
+--pip-ink/--scrim held invariant on purpose), S-3 a phone breakpoint per template.
+Light-mode contrast measured: every pair clears WCAG AA. Deliberate decision recorded:
+NO in-page theme toggle (the dashboard's is a different origin; three copies would rot).
+Block: `.cycle/blocks/2026-08-broad-scan2-batchF-broad-implement.md`. 1029 tests (7 new,
+verified non-vacuous after a lowercase-only regex was found skipping the pip tokens).
+Batches E+F close every STRUCTURAL Stage-3 interface finding.
+
+**Where I left off:** top-5 + docs + follow-ons + Batches A–F implemented, tested, committed and
 pushed on `claude/broad-scan-v74wau`; no PR opened (not requested). The remaining scan
 items are batched/prioritized in the session's closing report (batches A–H: verdict-surface
 joins, wishlist honesty, gate hardening, editor safety, interface access, editor theming,
