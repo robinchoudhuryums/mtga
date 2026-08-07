@@ -541,7 +541,10 @@ directions.
   gate.** Every gate verifies a model is right; none can see a command nothing runs.
   `check_commands.py` closes it — every subcommand and script must be invoked by a skill,
   called by another module, or exempted WITH A REASON, and a stale exemption is itself a
-  failure. Coverage requires a REAL call, not a prose mention. [G-53]
+  failure. Coverage requires a REAL call, not a prose mention — on BOTH paths: the
+  script half accepted any filename mention until 2026-08 (two of `build_pool.py`'s three
+  were warnings NOT to run it), and now wants `python3 scripts/<fn>` in a skill or
+  `scripts/<fn>` in the Makefile. [G-53]
 - **A SET plus a sort key that can TIE is a nondeterministic output.** Tied themes left
   in set-iteration order made an unchanged build produce different output every run.
   **Before sorting anything derived from a set, ask what happens when the key ties** —
@@ -556,10 +559,12 @@ directions.
   the card you cut and whether `suggest` surfaced the add, captured against the PRE-swap
   deck. `deck.py feedback` reads it back and **leads with the DISAGREEMENTS**, because an
   agreement is contaminated by the shortlist's own influence. It is REPORT-ONLY and must
-  stay so: `tests/test_recommendations.py` structurally forbids a scoring function
-  reading the ledger. Recording never blocks a swap. **A swap applied only to MEASURE
-  something still leaves a row** — prefer a dry run or a scratch copy, since a fabricated
-  row is worse than a missing one. [G-56]
+  stay so: `tests/test_recommendations.py` forbids a scoring function reading the
+  ledger — **one call level deep**, though: it inspects five named functions' own bodies
+  and NOT `cut_keep_score`, the shared delegate both cut rankings actually read, so a
+  ledger read placed there would satisfy every assertion. Recording never blocks a swap.
+  **A swap applied only to MEASURE something still leaves a row** — prefer a dry run or a
+  scratch copy, since a fabricated row is worse than a missing one. [G-56]
 - **Match results are FREE from `Player.log`, and the header line is the load-bearing
   half** — the `finalMatchResult` JSON carries the outcome and both seats but NOT which
   seat is yours; that appears only in the `Match to <userId>:` prefix. A paste of the JSON
@@ -814,7 +819,9 @@ commands read them, so the field structure is load-bearing. Detail belongs in
 exits non-zero on any hard invariant break. INV-01…04 plus **fourteen model-sanity
 gates** (`check_rankings`, `check_colors`, `check_dfc`, `check_suggest`, `check_engines`,
 `check_tier`, `check_patterns`, `check_commands`, `check_agreement`, `check_docs`, and the
-soft `check_keywords` / `check_roles` / `check_themes` / rationale-and-flex sweeps). Two things to know
+soft `check_keywords` / `check_roles` / `check_themes` / rationale-and-flex sweeps) — plus
+three further SOFT roster sweeps this list used to omit: wishlist target drift, the G-68
+card-name-header staleness pass, and the tier-mismatch pass. Two things to know
 before touching it: it imports `deck` as a MODULE and calls `cmd_*` directly, so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
 step — and the reference-table loaders are memoized, which is what makes a roster-wide
@@ -903,28 +910,44 @@ format.
      - Look at a deck card's build badge (buildable / N missing / N short)
      - Expand "Recently edited" — the +added / −removed delta lines
      - Paste any deck into the stale-deck panel — the in-sync / drifted text
-   Expected: green/amber/red read clearly against the LIGHT panel background and are
-   distinguishable from each other and from body text. All 16 of these sites were
-   hardcoded to the DARK-mode hexes until I-03; a washed-out or muddy pill means one
-   regressed back off `var(--ok)` / `var(--warn)` / `var(--bad)`.
-6. Dashboard at phone width | Subsystem: Presentation & Interface
+   Expected: green/amber/red read clearly against the LIGHT panel background, are
+   distinguishable from each other and from body text, AND each pill still reads as a
+   bounded CHIP — a visible fill and border, not a loose coloured word. The TEXT moved
+   onto `var(--ok)` / `var(--warn)` / `var(--bad)` at I-03; the FILLS and BORDERS
+   followed at S-9, via `color-mix` off the same tokens (they had been dark-tuned
+   literals whose ~1.3:1 edge disappeared over a white panel). A washed-out pill means
+   one regressed back off the tokens.
+6. Phone width — dashboard AND editor | Subsystem: Presentation & Interface
    Steps:
      - Open `dashboard.html` at 390×844 (or a real phone); scroll top to bottom
      - Open the roster-triage table and the wishlist table
      - Open a deck modal from the section-nav and switch tabs
+     - Then `make app` at the same width: the collection grid, `/decks`, and a DECK
+       editor page — scroll each, and edit a card line's quantity
    Expected: the page body NEVER scrolls sideways; the wide tables scroll inside their
-   own boxes; the section-nav strip scrolls horizontally; every grid is one column.
+   own boxes; the section-nav strip scrolls horizontally; every grid is one column. In
+   the deck editor each card line WRAPS — the name on its own row above the
+   qty/set/№/status fields — and a long `#` comment line scrolls inside its own row.
+   The editor leg is new: `templates/` had no breakpoints at all until S-3, when a card
+   row needed 472px inside the 350px a 390px viewport leaves.
 7. Keyboard-only traversal | Subsystem: Presentation & Interface
    Steps: in `dashboard.html`, using Tab / Shift-Tab only, reach a colour filter chip, a
    quick-filter pill, a roster-table sort header, a section header (collapse it with
    Enter or Space) and a deck's ⤢ opener; open the modal, Tab through it, press Escape.
-   Then the EDITOR (`make app`, `templates/collection.html`) colour pips, and the DECK
-   editor's (`templates/deck.html`) Analysis tab strip.
+   On a deck card's tab strip try ← / →, and focus a wishlist card NAME to check the
+   card image appears. Then the EDITOR (`make app`, `templates/collection.html`) colour
+   pips, and the DECK editor's (`templates/deck.html`) Analysis tab strip; remove a card
+   line with its ✕ and watch where focus lands.
    Expected: every control reachable with a VISIBLE focus ring; Enter and Space both
-   activate; Tab inside the modal never reaches the page behind; Escape returns focus to
-   the ⤢ that opened it. The MARKUP half is pinned by `tests/test_templates.py`; what
-   needs a person is the perceptual part. Full step list, the I-01/I-04 acceptance
-   criteria, and the known SUCCESS-toast-cut-short-by-reload caveat: [C-11]
+   activate; ← / → move along a tab strip (S-2 made them real tablists); the card
+   preview follows FOCUS, not just the mouse (S-7); removing a row leaves focus on the
+   next row's ✕, never on `<body>` (S-6); Tab inside the modal never reaches the page
+   behind; Escape returns focus to the ⤢ that opened it. **Walk it once in each OS
+   colour scheme** — the editor pages follow `prefers-color-scheme` since S-8 and no
+   longer snap to forced dark mid-walk. The MARKUP half is pinned by
+   `tests/test_templates.py`; what needs a person is the perceptual part. Full step list,
+   the I-01/I-04 acceptance criteria, and the known SUCCESS-toast-cut-short-by-reload
+   caveat: [C-11]
 8. Editor failure feedback | Subsystem: Presentation & Interface
    Steps:
      - `make app`, open the editor, then STOP the server (Ctrl-C)
@@ -940,7 +963,10 @@ format.
 one deployed artifact is the roster **dashboard**: `.github/workflows/pages.yml` rebuilds
 `build_dashboard.py` offline and publishes it to GitHub Pages on every push to `main`.
 `build_dashboard.py` restyles are **template-only** — the data pipeline feeding the
-`#data` island is the source of truth and must stay untouched by any restyle. [C-10]
+`#data` island is the source of truth and must stay untouched by any restyle. The
+published page assumes a **2023-or-later browser**: it has long used `backdrop-filter`
+and `aspect-ratio`, and S-9 added `color-mix` (Chrome 111 / Safari 16.2 / Firefox 113)
+so the status pills' fills derive from the same token as their text. [C-10]
 
 ## Command provenance
 

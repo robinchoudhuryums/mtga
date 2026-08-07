@@ -93,6 +93,20 @@ Block: `.cycle/blocks/2026-08-broad-scan2-batchF-broad-implement.md`. 1029 tests
 verified non-vacuous after a lowercase-only regex was found skipping the pip tokens).
 Batches E+F close every STRUCTURAL Stage-3 interface finding.
 
+**Ninth pass — /sync-docs** after Batch F. Eight drift points found and applied across
+the four checks: Regression Scenarios 5 (S-9 moved fills+borders onto the tokens, so the
+"hardcoded until I-03" note was false), 6 (extended dashboard-only → dashboard AND
+editor, absorbing what the scan proposed as a new Scenario 9) and 7 (arrow-key tablists,
+focus-follows-preview, focus-after-remove, and a leg in each OS colour scheme); C-01's
+gate enumeration, which omitted three soft roster sweeps check_all really runs; G-53
+(both coverage paths now enforce the real-call rule); **G-56's overstated "structurally
+forbids"** — the test is one call level deep and does not cover `cut_keep_score`, now
+stated as a live residual rather than fixed (that is Batch G); integrity.yml's rotted
+"31 subparsers" comment (real: 34) replaced with a no-count floor; C-10's browser
+baseline (color-mix ⇒ 2023+); and README's two operator-visible editor behaviours (the
+save-refused-on-concurrent-change toast, and following the OS colour scheme with the
+different-origin reason there is no toggle). C-11's Scenario 7 long form extended to match.
+
 **Where I left off:** top-5 + docs + follow-ons + Batches A–F implemented, tested, committed and
 pushed on `claude/broad-scan-v74wau`; no PR opened (not requested). The remaining scan
 items are batched/prioritized in the session's closing report (batches A–H: verdict-surface

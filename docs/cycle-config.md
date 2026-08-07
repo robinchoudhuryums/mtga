@@ -347,9 +347,21 @@ Steps:
     chip, a quick-filter pill, a roster-table sort header, a section header (collapse
     it with Enter or Space), and a deck's ⤢ detail opener
   - Open the modal, Tab through it, press Escape
+  - On a deck card's tab strip (Craft / Stats / Mana / Legal / Cuts), press ← and →
+  - Tab to a wishlist card NAME and check the card image appears without a mouse
+  - In the DECK editor, remove a card line with its ✕ and watch where focus lands
 Expected: every one is reachable with a VISIBLE focus ring; Enter and Space both
-activate; Tab inside the modal cycles within it and never reaches the page behind;
-Escape closes it and returns focus to the ⤢ that opened it. This is the acceptance
+activate; ← / → step along a tab strip and switch the panel with it (the strips
+became real tablists — container role, tabpanel, aria-controls — at S-2; before
+that a screen reader announced "Craft, tab" with no group and no "2 of 5"); the card
+preview follows FOCUS as well as hover (S-7, the craft-decision evidence was
+mouse-only); removing a row leaves focus on the next row's ✕ rather than falling to
+`<body>` (S-6, which used to cost a full re-traversal per cut); Tab inside the modal
+cycles within it and never reaches the page behind; Escape closes it and returns
+focus to the ⤢ that opened it. Walk the whole scenario once in EACH OS colour
+scheme: since S-8 the editor pages carry a light palette and follow
+`prefers-color-scheme`, so the walk no longer snaps from a light dashboard into a
+forced-dark editor halfway through. This is the acceptance
 test for I-01/I-04 — before those, nothing in that list was reachable at all.
 Then the EDITOR's half of the same fix (`make app`, `templates/collection.html`):
   - Focus the search box, then Tab — the six colour pips must come next, in W U B R

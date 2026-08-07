@@ -1039,6 +1039,18 @@ python3 scripts/app.py --port 8000 --no-browser
 and opens your browser — so from a fresh clone it's a single command. (Run
 manually if you prefer; `--no-browser` skips the auto-open.)
 
+Two behaviours worth knowing before you edit:
+
+- **A deck save is refused if the file changed underneath it.** Open a deck page,
+  run `deck.py swap --apply` (or `sync`) against the same deck in a terminal, then
+  Save: you get a "the deck file CHANGED since this page loaded it" toast instead of
+  a silent overwrite of the swap. Reload, re-apply your edit, save again. The
+  collection CSV has always worked this way; the deck editor joined it later.
+- **The editor follows your OS colour scheme.** All three pages ship a light palette
+  and switch on `prefers-color-scheme`; there is no in-page toggle. The dashboard's
+  toggle can't drive them — it lives on a different origin (a `file://` or Pages URL
+  versus `127.0.0.1`), so its stored choice never reaches the editor.
+
 **Run it in the cloud, without a local clone (GitHub Codespaces).** The editor is
 a small server that reads and *writes* your CSV/deck files, so it can't run on a
 static host like GitHub Pages — but a Codespace is a live git checkout, which is

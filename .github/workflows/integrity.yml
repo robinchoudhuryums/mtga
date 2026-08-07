@@ -51,8 +51,11 @@ jobs:
             exit 1
           fi
           echo "checked $n_scripts scripts' --help"
-          # Every deck.py subcommand's own help must render too — 31 subparsers, each
-          # with its own help strings, and the command list a skill is re-read against.
+          # Every deck.py subcommand's own help must render too — each carries its own
+          # help strings, and the list is what a skill gets re-read against. Deliberately
+          # no hardcoded TOTAL here: the count rotted (the comment said 31 against a real
+          # 34), the same lesson tests/test_cli.py records for its own script list. The
+          # floor below is a floor, not a census.
           subs="$(python3 scripts/deck.py --help 2>/dev/null \
                   | grep -o '{[a-z0-9,-]*}' | head -1 | tr -d '{}' | tr ',' ' ')"
           # Guard on the COUNT, not on emptiness: a whitespace-only capture is not
