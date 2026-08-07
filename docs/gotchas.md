@@ -2992,3 +2992,76 @@ Roster-wide before/after, per the K-12 mandate:
 Seven tests pin the behaviour, every fixture written from a card's real oracle text with its
 newlines intact — a paraphrase would not exercise the line anchor, which is the whole
 defence against the reminder-text over-count.
+
+## [G-68] A `#:` header that lists card names goes stale, and nothing checked one
+
+Two deck headers are a semicolon-separated list of CARD NAMES rather than prose:
+
+```
+#: protect: Monument to Endurance; Cool but Rude; Magmakin Artillerist
+#: uncastable-ok: Rise of the Dark Realms; Omniscience
+```
+
+Both are read by the tooling as instructions. `_protected()` feeds `cuts`, which
+hard-excludes those cards from its ranking and prints them above the table;
+`_uncastable_ok()` feeds the castability lint and `tier_band`, exempting named cards from
+a failure that would otherwise be hard. Neither reader validates that a name matches a
+card in the deck — it builds a lowercased set and tests membership, so a name matching
+nothing simply never matches anything.
+
+### What that costs, measured on the two decks it was found on
+
+**Deck 26b (found by hand, 2026-08-07).** Its `#: protect:` header named **Summon:
+Bahamut**, a card the deck has never run — it went to variant 48a in the pivot the deck's
+own `#: notes:` block records. Two separate failures:
+
+1. **The entry protected nothing.** If the name had been a TYPO for a card actually in the
+   deck rather than a leftover, the card it was meant to shield would have been silently
+   cuttable the whole time, with the header on the page saying otherwise.
+2. **It inflated a number a human reads.** `stats` and `tier` both print
+   `⚠ ZERO protection, but #: protect: names N build-around card(s)` — 26b reported
+   **five against a real four**, inside the exact sentence its `#: tier:` block uses to
+   argue why the deck is capped at B. A reader checking that argument would have been
+   checking a wrong figure.
+
+**Deck 56 (found by the sweep, the first time it ran).** The Boros core deck's header
+protected **Ashroot Animist** and **Halana and Alena, Partners** — both R/G, both living
+only in the Gruul variant **56a**. A mono-Boros deck was protecting two green cards it
+cannot even cast. Same shape as 26b: a variant split left the parent's header behind.
+
+### Why no gate could see it
+
+This is the project's recurring shape — a capability that exists and is never reached
+(G-53) — one layer over from where it usually appears:
+
+| what it checks | what it reads | sees a bad header entry? |
+|---|---|---|
+| INV-04 | deck card LINES, `(SET) COLLECTOR#` | no — a `#:` line is not a card line |
+| `tier --audit-rationale` | `#: tier:` / `#: archetype:` PROSE | no — scoped to those two headers |
+| `flex_staleness` | `#~` flex lines | no — different block |
+| **nothing** | **`#: protect:` / `#: uncastable-ok:`** | — |
+
+The three sibling sweeps ran on every `check_all` while this one did not exist. Note that
+`protect` and `uncastable-ok` were already exactly parallel in FORM (semicolon-separated,
+because card names contain commas, and both documented that way in `_protected`'s and
+`_uncastable_ok`'s docstrings) — the parallel just never extended to validation.
+
+### The fix
+
+`deck.header_card_staleness(path)` → `[(header, name)]`, swept roster-wide inside
+`check_all` as a SOFT warning. Soft because pruning a header is an editorial call: a stale
+entry might be a leftover to delete or a typo to correct, and the tool cannot tell which.
+
+The name join goes through **`_ms_key`** (G-63), which is load-bearing rather than
+decorative: a header customarily names a DFC by its front face (`Ojer Axonil, Deepest
+Might`) while the deck LINE stores the full `Front // Back`. A raw-name join would report
+every such live entry as stale — the precise bug `_ms_key` was extracted to prevent, and
+`_multiset` is the one that already made it once.
+
+`#: uncastable-ok:` is swept alongside `#: protect:` and is the more dangerous of the two.
+A stale `protect` entry disables a BOOST; a stale `uncastable-ok` entry disables a CHECK —
+it exists to suppress a castability failure, so a leftover name means a genuine uncastable
+card added later could be silently exempted if the names happened to collide.
+
+Five tests pin it, including a roster-wide behavioural anchor: both known instances are
+fixed, so any new hit is a regression someone introduced rather than a backlog item.

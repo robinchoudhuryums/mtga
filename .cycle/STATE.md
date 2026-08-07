@@ -804,3 +804,35 @@ Worth a roster-wide sweep next time someone is in the tooling.
 Where I left off: five Chandra placements committed and pushed, `/sync-docs` applied
 (K-14 added, G-31 extended, NEXT-SESSION and STATE refreshed). No PR opened yet for the
 work after `0c47ab4`.
+
+### Tail of the same day: K-14 fixed, then the two cheap tooling jobs
+
+**K-14 shipped** (PR #107). The role tally now counts a draw reached by PAYING a cost. The
+part worth keeping is the METHOD, not the patterns: the first draft counted
+`Sacrifice this land: Draw a card`, which would have swept in a whole common tapland cycle
+and taken the change from 24 decks to 58. Measuring the roster BEFORE landing it caught
+that, and what shipped moved 18 decks up, 12 down, interaction unchanged, and **zero tier
+floors**. Sixteen decks were left with a stale `#: tier:` figure and were re-grounded in
+the same commit; deck 21a's 3 → 5 is flagged in-file for a HUMAN re-grade.
+
+**Then the two jobs this file had been listing as cheap and un-owned:**
+
+1. `Rogue's Passage (FDN) 264` → `(HOC) 212` in decks 26a and 50, from `deck.py resolve`
+   rather than by hand (G-65). Oldest standing soft warning, now gone.
+2. **G-68**, and it is the more interesting of the two. `#: protect:` and
+   `#: uncastable-ok:` are card-name lists the tooling reads as INSTRUCTIONS, and nothing
+   validated that a name matches a card in the deck. A stale `protect` entry protects
+   nothing (`cuts` excludes by name) AND inflates the build-around count the
+   zero-protection flag prints — deck 26b reported five against a real four inside the
+   sentence arguing its own tier cap. `deck.header_card_staleness` now sweeps the roster
+   in `check_all`, joined on `_ms_key` so a front-face DFC name does not read as stale.
+   **It found two more on its first run**: deck 56's Boros header protected Ashroot Animist
+   and Halana and Alena — both R/G, both living only in variant 56a. A variant split left
+   the parent's header behind, which is presumably how 26b's happened too.
+
+**`check_all` now reports ZERO soft warnings**, the first time this cycle. 951 tests.
+
+The pattern across both fixes, worth stating once: "no gate checks this" was true twice in
+one day, on the same shape — a role bucket nothing exercised, and a header nothing
+validated. Both had been live for months behind fully green gates, and both were cheap to
+fix once someone said the sentence out loud.

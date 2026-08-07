@@ -25,7 +25,7 @@
 #: tier: weaknesses are thin card advantage (impulse effects only — a stalled board
 #: tier: grinds it out of resources) and the structural all-in shape: a timely
 #: tier: sweeper or edict-style effect still beats the plan. Re-grade after games.
-#: protect: Molten Man, Inferno Incarnate; Ashroot Animist; Halana and Alena, Partners; Bulk Up; Self-Destruct
+#: protect: Molten Man, Inferno Incarnate; Bulk Up; Self-Destruct
 #: notes: BUILT from the 55-mardu addendum analysis (concept T). The RGB idea was
 #: notes: infeasible (zero G/B cards in the pile) and the GREEN package measurably
 #: notes: lost the draft-time A/B to white on every axis — parked, not dead: Ashroot
