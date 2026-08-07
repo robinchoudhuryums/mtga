@@ -847,10 +847,13 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (25 files: the markup-contract, CLI-entry-point, analysis-model,
-  gate-pinning, shared-primitive and ingest layers, plus the 2026-08 ingest-writer /
+- Testing: tests/ (27 files: the markup-contract, CLI-entry-point, analysis-model,
+  gate-pinning, shared-primitive and ingest layers, the 2026-08 ingest-writer /
   sync-guard / resilience-layer / CLI-filter coverage of the formerly untested
-  scripts), requirements-dev.txt, pytest.ini, .github/workflows/tests.yml [C-07]
+  scripts, plus the broad-scan-2 additions — test_check_all.py, the gate runner's
+  own mutation layer, and test_app_editor.py, the editor's write-safety pins
+  (importorskip'd on Flask)), requirements-dev.txt, pytest.ini,
+  .github/workflows/tests.yml [C-07]
 - Decks: decks/
 
 **Invariant Library:**
@@ -890,7 +893,9 @@ format.
    Steps: start `scripts/app.py`, change a quantity and Save, add a card, open a deck (Decks →),
    change a card's quantity and Save; run `check_all.py`
    Expected: CSV + deck file updated, `.bak`s written, all invariants hold (INV-02 since
-   an add appends a card-mana.csv row; INV-04 since a deck save re-parses cleanly).
+   an add appends a card-mana.csv row; INV-04 since a deck save re-parses cleanly). A
+   deck save against a file changed underneath (e.g. a CLI `swap --apply` while the tab
+   was open) is refused with a 409 "reload the page" toast, never silently overwritten.
 5. Light-mode status colors | Subsystem: Presentation & Interface
    Steps:
      - Open `dashboard.html`, press `t` (or click the theme toggle) for light mode

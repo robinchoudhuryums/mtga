@@ -190,8 +190,10 @@ matches the color-identity **set**: `--color R` returns cards whose identity
 contains R (gold cards included, Colorless excluded), `--color colorless` returns
 only colorless cards. (The old substring match returned every Colorless card for
 `--color R` — the word contains an "r".) Table output by default.
-`query.py` searches only cards you **own** (`card-library.csv`); to search the
-full set of cards you *could* play, use `pool.py` below.
+`--min-owned` sums copies across printings (they're fungible in Arena), and
+`--count` reports **distinct cards**, not CSV rows — a card printed in two sets is
+one card. `query.py` searches only cards you **own** (`card-library.csv`); to search
+the full set of cards you *could* play, use `pool.py` below.
 
 ### Card — inspect one card in full
 
@@ -270,7 +272,7 @@ python3 scripts/wishlist.py --color R --synergy firebending  # by color/theme (-
 python3 scripts/wishlist.py --target 14        # what you've earmarked for a deck
 python3 scripts/wishlist.py --by-set           # PACK OPTIMIZATION: cards per set, by rarity
 python3 scripts/wishlist.py --rank             # WILDCARD PRIORITY: theme fit + hand-graded power, blended
-python3 scripts/wishlist.py --budget "9M 10R 38U 48C"   # optimal craft plan within a wildcard budget
+python3 scripts/wishlist.py --budget "9M 10R 38U 48C"   # optimal craft plan within a wildcard budget (shows the same ⚠rot + pow?/pow!/pow~ checks as --rank)
 python3 scripts/wishlist.py --budget "3R" --set TMT     # ...scoped to one set (filters apply to --rank/--budget/--by-set)
 python3 scripts/wishlist.py --seed-power       # first-pass heuristic estimate for BLANK Power cells (+ --write)
 python3 scripts/wishlist.py --owned            # cards you've since acquired — prune these
@@ -1150,6 +1152,11 @@ basic lands are skipped — they are deliberately not in the collection.
 
 `--exact` requires `owned == pasted`; use it **only** for the authoritative
 `import_collection.py` route. Every other route treats a line as a lower bound.
+The input can be an Arena-style paste **or the collection CSV/TSV itself**: when no
+Arena lines parse, the file is re-read through `import_collection`'s own parser — so
+the post-import check the tool tells you to run actually works on the file you just
+imported (it used to fail every row of a CSV and then claim the cards were "never
+ingested by ANY tool").
 
 The comparison is per **card**, not per line: owned copies are summed across printings,
 while a tracker export carries one line per printing, so all the lines resolving to one

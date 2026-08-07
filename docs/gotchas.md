@@ -250,6 +250,17 @@ total as `truncated`; `cmd_sync` prints `⚠ TRUNCATED?` with both totals in the
 and refuses the write without `--force` — the same handling as a low-confidence sibling
 match, because the MATCH is usually right and it is the WRITE that must not happen.
 
+**The same-deck claim guard (BS2-10, same scan).** Blocks are matched independently, so
+two pasted blocks could both resolve to ONE stored deck — pasting a 52/52a family where
+one variant is retired makes both blocks legitimately match the survivor — and the write
+loop then wrote the file TWICE, the second write clobbering the first with only an
+intermediate `.bak` between them. The low-confidence rule compares a block against
+runner-up DECKS, never blocks against each other, so it could not see this. `cmd_sync`
+now claims each stored deck for the first block that matches it; a later block matching
+the same deck is reported ("✗ block N: ALSO matched #id, already claimed by block M")
+and skipped — re-paste it alone if it is the real list. Exit is non-zero, since
+something needs attention.
+
 
 ## [G-09] Legality lint and cut candidates are separate from ownership
 
@@ -2808,6 +2819,19 @@ INV-02 tracks the real row; `verify_ingest._library_key` gained the front→full
 step, resolving to the STORED spelling so the quantity and mana checks read one row.
 The lesson extends the standing rule again: the front-face question is not a read-side
 question — **a writer that keys rows by name is a join too.**
+
+**Batch A/B of the same scan closed five more members in one pass**, all the raw-name
+join shape: the swap CUT side (`_cards_after_swap` / `_swap_edit_lines` /
+`_do_swap`'s protect guard — a front-name cut of a full-name-stored card refused with
+"not in deck" while the ADD side had been `_ms_key`-matched since BS-05), the flex
+auto-retire's add/cut/maindeck comparisons, both role fillers' already-in-deck filter
+(a deck was offered its OWN maindecked DFC as a 0-wildcard filler — 25 rows roster-wide),
+`card.py`'s in-decks join ("in decks: (none)" for five owned, played cards), and
+`wishlist._is_land`'s whole-type-line scan (a back-face `// Land` god ranked — and was
+bought in a live `--budget` — as a phantom manabase upgrade). The remaining structural
+closure: `deck.load_card_meta` and `wishlist.load_pool_index` were the last two loaders
+aliasing IN-pass; both now use the second-pass `lib.alias_front` and are REGISTERED in
+`check_dfc._ALIASED_LOADERS`, so the behavioral anchor exercises every member.
 
 ## [G-64] A reanimator's uncastable bombs are not a build error — `#: uncastable-ok:`
 
