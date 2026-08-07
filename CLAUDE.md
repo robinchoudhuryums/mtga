@@ -238,7 +238,11 @@ directions.
   writes the file. `deck.py verify <id>` diffs a pasted export; **`deck.py sync` is the
   WRITE half**, matching one or many `Deck` blocks to their closest stored decks and
   rewriting the drifted ones. Dry-run by default; a block matching two variants nearly
-  equally is reported LOW CONFIDENCE and skipped. [G-08]
+  equally is reported LOW CONFIDENCE and skipped, and a paste under 75% of the stored
+  deck's total is flagged **TRUNCATED** and skipped too — a partial paste is a strict
+  SUBSET, so the shared-card floor alone read it as a full-confidence match and
+  `--apply` would have rewritten the 60 down to the fragment (`--force` overrides,
+  for a deliberate cut). [G-08]
 - **`check` answers "do I own this deck"; `legal <id>` answers "is it a LEGAL deck"** —
   size, copy limit and each nonbasic's legality in the deck's `#: format:`, format-aware
   for Alchemy and Brawl (a Brawl deck also validates `#: commander:` and every card's
@@ -633,16 +637,16 @@ directions.
   INDEX.** G-02 is one member of a class that has now produced SIX bugs across five
   columns: **COST** (a modal DFC stored only the front), **COLOR** (identity hid 55
   castable red-pool cards — G-58), **TYPE** (a whole-line scan read the BACK face's; deck
-  49 reported 26 lands holding 25), **NAME twice** (`swap --apply` wrote a bare
-  `1 Runescale Stormbrood`; then `_multiset` keyed `verify`/`sync` on the raw name, so an
-  identical deck read as DRIFTED and `sync --apply` would have written that bare name
-  back), and **RARITY** (`load_rarities` reads the pool, keyed only by `Front // Back`, so
+  49 reported 26 lands holding 25), **NAME twice** (`swap --apply` wrote a bare front
+  name; `_multiset` then read an identical deck as DRIFTED and `sync` would have written
+  it back), and **RARITY** (`load_rarities` reads the pool, keyed only by `Front // Back`, so
   47 roster names priced blank and every mythic DFC sorted UP the cut list). The 2026-08
-  scan added FIVE members — two indexes, two exact-name JOINS, and the deck editor's
-  JS ownership payload, which no Python gate can reach. **Ask which face a column
-  describes; alias via `lib.alias_front` — the ONE second-pass home, ENFORCED by
-  `check_dfc`'s index registry + a pin on the editor's JS payload; key every name
-  JOIN on `_ms_key`.** [G-63]
+  scan added FIVE members — two indexes, two exact-name JOINS, the editor's JS ownership
+  payload — and scan #2 added the ingest WRITE side: reconcile/import_arena APPENDED a
+  duplicate front-name row for a full-name-stored printing, splitting the owned count
+  (BS2-02; writer joins are front-face now). **Ask which face a column describes; alias
+  via `lib.alias_front` (the ONE second-pass home, ENFORCED by `check_dfc`'s registry +
+  the editor-payload pin); key every name JOIN — a writer's too — on `_ms_key`.** [G-63]
 
 - **A reanimator's uncastable bombs need `#: uncastable-ok:`, and everything else's do
   not.** The castability lint and `tier_band` both model "you cannot cast this" as a build
@@ -674,13 +678,13 @@ directions.
 - **A PATTERN SET IS A WHITELIST, AND A WHITELIST'S MISSES ARE INVISIBLE.** `_ROLE_PATTERNS`
   matches PHRASINGS, and Magic templates one effect several ways — so a card worded a way no
   pattern anticipates scores ZERO roles, and the tier floor, `cuts`, the quality guard and
-  `check_all` all inherit that as fact. Never an error, never an over-count: always a silent
-  UNDER-count. Eight holes surfaced in one 2026-08 session, every one found by a HUMAN
-  reading a card. The largest: ramp required a literal `{` after "add", so `{T}: Add one
-  mana of any color` — the templating of EVERY rainbow source — matched nothing, and four
-  fixers read as roleless in the three decks whose #1 weakness is the manabase.
+  `check_all` all inherit that as fact. Never an error; the DEFAULT failure is a silent
+  UNDER-count — but a too-broad pattern OVER-counts just as silently, and one did for its
+  whole life (player-only burn counted as spot removal; 14 decks over-read the interaction
+  axis — BS2-06, guard now in the pattern). Eight under-count holes surfaced in one
+  2026-08 session, every one found by a HUMAN reading a card.
   **`check_roles.py` + `role_baseline.txt` make the population visible** (soft, deck-scoped,
-  baselined at 367); read it as a DELTA, not a target. Two habits follow: write a pattern's
+  baselined); read it as a DELTA, not a target. Two habits follow: write a pattern's
   fixture from the CARD'S REAL TEXT, never a paraphrase — that is how you write a pattern
   for a card that does not exist — and check for a TEST DOUBLE encoding the old behaviour,
   since `check_suggest` anchor 15 asserted a fixer ranks most-cuttable PRECISELY BECAUSE it

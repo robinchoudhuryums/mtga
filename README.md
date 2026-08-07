@@ -76,6 +76,16 @@ printing is the opposite case and is not summed — a tracker emitting the same
 `(name, set, collector)` twice is stating one holding twice, not two holdings, so
 identical export keys collapse on `max` first.
 
+Two more `import_collection.py` safety rules, both about mis-shaped exports. A row whose
+quantity cell can't be read as a plain integer (`"1,024"`, `"4 (foil)"`, `"2.0"`) is
+warned and **left unchanged — it can never be zeroed by `--zero-missing`**, because the
+export mentioned the card, so "absent from the export" is false; fix the column (or
+`--map qty=<column>`) if those rows should be set. And when the export has **no
+set/collector column at all**, repeated rows of one card are read as distinct printings
+and **summed** (a tracker exports one row per printing), with a per-card "SUMMED to N"
+warning — the take-the-max rule applies only where a real printing key exists to tell a
+restated holding from a second printing.
+
 **After any import, rebuild the derived data** — a new card has no `card-mana.csv` row,
 so INV-02 fails until `build_mana.py --pool` runs. `/refresh` runs the whole chain.
 
@@ -359,7 +369,9 @@ python3 scripts/reconcile_crafts.py crafts.txt --apply   # write, with .bak back
 
 When you craft (or discover you already own) cards, paste them as an Arena export
 (`1 Doctor Doom (MSH) 95`). This adds each to `card-library.csv` (a double-faced
-card under its **front** name, matching the library convention), adds the matching
+card under its **front** name, matching the library convention — and a printing the
+library already stores under its full `A // B` name is matched by front face and
+bumped in place, never duplicated), adds the matching
 `card-mana.csv` row so INV-02 keeps holding (a **blank** row when the card has no
 source mana row yet — a later `build_mana.py`/`/refresh` fills the cost), drops it
 from `card-wishlist.csv`, and lists the decks that reference it so you can re-check
@@ -519,6 +531,10 @@ re-check. Edits are line-level, so an existing card keeps its printing and its p
 the file and only its quantity changes; the `#:` header, `# Creatures` section comments
 and `#~` flex lines survive. If a block matches two variants nearly equally it's flagged
 **low confidence** and skipped on `--apply` (re-paste that deck alone, or `--force`).
+A block holding fewer than 75% of the matched deck's cards is flagged **TRUNCATED?**
+and skipped the same way — a partial paste is a subset, so it would otherwise match
+with full confidence and rewrite the stored deck down to the fragment (`--force` for
+a deliberate cut).
 Before this, spotting drift and repairing it were separate jobs: you read a diff, then
 hand-edited each file.
 

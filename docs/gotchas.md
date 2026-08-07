@@ -237,6 +237,19 @@ SKIPPED on `--apply` (rewriting the wrong sibling is the one expensive mistake h
 re-paste that deck alone, or pass `--force`. Previously the only repair was reading a diff
 and hand-editing each file.
 
+**The truncation guard (broad-scan BS2-01, 2026-08-07).** The anti-force-fit floor —
+"share at least max(3, 30% of the block's distinct cards)" — is measured against the
+PASTE, and a partial paste is a strict SUBSET of its deck, so it passed trivially with
+full confidence. Reproduced: the first 8 lines of deck 52 dry-ran as `⟳ #52 — drifted:
+0 added / 52 removed`, not low-confidence, and `--apply` would have rewritten the stored
+60 down to the fragment with INV-04 green (deck size is not an invariant) and the real
+list surviving only as a `.bak`. An Arena export is always the WHOLE deck, and the
+largest legitimate shrink a sync performs is trimming an oversized draft (64→60 ≈ 0.94
+of the stored total), so `match_paste` now flags a paste under **75%** of the stored
+total as `truncated`; `cmd_sync` prints `⚠ TRUNCATED?` with both totals in the dry run
+and refuses the write without `--force` — the same handling as a low-confidence sibling
+match, because the MATCH is usually right and it is the WRITE that must not happen.
+
 
 ## [G-09] Legality lint and cut candidates are separate from ownership
 
@@ -1842,8 +1855,10 @@ templates the same effect several different ways. When a card is worded a way no
 anticipates, `classify_roles` returns an empty set, and that zero propagates: into
 `role_tally`, into the interaction and card-advantage figures the tier floor grades on,
 into `cuts`' "role not auto-detected" ranking, into the `quality --vs` guard, and into
-`check_all`'s own reporting. It is **never an error and never an over-count** — always a
-silent under-count that every consumer treats as fact.
+`check_all`'s own reporting. It is **never an error**, and the DEFAULT failure is a
+silent under-count that every consumer treats as fact — but "never an over-count" turned
+out to be false: a too-broad pattern over-counts the same silent way (see the BS2-06
+exception below).
 
 ### The eight holes, all found in one 2026-08 session, none by a gate
 
@@ -1872,6 +1887,26 @@ Springleaf Drum and Agatha's Soul Cauldron all scored **zero roles** — in the 
 
 Deck 45 is the other worked case: built entirely on cast-from-exile, it measured **card
 advantage 0** because impulse was not indexed at all, and nothing complained.
+
+### The one measured OVER-count (broad-scan BS2-06, fixed 2026-08-07)
+
+This anchor claimed the failure mode was *always* an under-count. The second broad scan
+falsified that: the fixed-damage removal pattern — `deals? \d+ damage to
+(?:target|any target|another target)` — had no target-type guard, so **damage aimed at a
+player** classified as spot removal and counted as interaction, the axis `tier_band`
+grades on. Its own sibling three lines down (the scaling-damage pattern) carried exactly
+the missing guard, with a comment calling it load-bearing. 89 pool cards of player-only
+burn (HYDRA Assault Robot, Shocking Sharpshooter, Ozai's Cruelty …) matched only this
+pattern; **14 roster decks over-reported interaction** (deck 10 read 15 against a real
+12), feeding `tier_band`, `audit`'s thin-verdict, `deck_needs["int_short"]` and `cuts`'
+is-interaction guard. The fix added `(?!(?:player|opponent)\b(?! or planeswalker))` —
+the trailing clause keeps the 42 pool cards templated "target player **or planeswalker**"
+counted, because those CAN answer a planeswalker. Measured roster-wide before landing,
+per the K-14 discipline: 14 decks moved, **zero tier floors moved**, two honestly-roleless
+cards (Hawkeye's player-only burn mode; Ozai's Cruelty) baselined from full text, and the
+nine `#: tier:` figures the change staled were re-grounded in the same commit. The
+transferable lesson: an over-broad pattern is as silent as a missing one, and the
+roster-wide before/after diff is the only check that sees either direction.
 
 ### The gate
 
@@ -2752,6 +2787,27 @@ lookup has no front fallback — a deck read "1 missing" in the editor while `/d
 cannot see a consumer in JavaScript. All five fixed 2026-08 (the JS one by front-aliasing
 the served payload). The join lesson is now in the standing rule: key every name-facing
 JOIN on `_ms_key`, not only every loader.
+
+**2026-08-07 broad scan #2: the class reaches the ingest WRITE side (BS2-02/BS2-25,
+fixed same day).** Every prior member was a READER — a loader, an index, a join, a
+serialized payload. The second scan found the same shape in the writers that create
+library rows. `reconcile_crafts` normalized an incoming card to its FRONT name and then
+looked for the existing library row with an **exact**-name join — but the library stores
+eight printings under their full `A // B` name (the DSK Rooms), so the join missed and
+the tool APPENDED a second row for the *same physical printing* under the front name.
+`import_arena`'s `(name, set, collector)` index had the identical miss. INV-01 is blind
+(two different Card Names are not a duplicate printing), and `lib.owned_qty` resolves the
+pool's full-name key to the full-name row only — so the owned count silently split
+across two spellings, a real 3 reading as 1. Worse, the halves composed into a loop:
+`verify_ingest` resolved full→front but never front→full, so a front-named paste of an
+owned Room reported "✗ NOT in card-library.csv — re-run the ingest", and the prescribed
+re-ingest *created* the duplicate. Fixes: both writers join on front faces (a collector
+number is unique within a set, so `(front, set, collector)` cannot collide two distinct
+cards); `reconcile_crafts`' mana-row check keys on the library row's actual spelling so
+INV-02 tracks the real row; `verify_ingest._library_key` gained the front→full third
+step, resolving to the STORED spelling so the quantity and mana checks read one row.
+The lesson extends the standing rule again: the front-face question is not a read-side
+question — **a writer that keys rows by name is a join too.**
 
 ## [G-64] A reanimator's uncastable bombs are not a build error — `#: uncastable-ok:`
 
