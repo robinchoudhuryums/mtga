@@ -236,8 +236,11 @@
     saveBtn.disabled = true; saveBtn.textContent = 'Saving…';
     try {
       const url = NEW ? '/api/deck/new' : '/api/deck/save';
+      // doc_token: the content hash of the file this page loaded. The server 409s
+      // if the file changed underneath (a CLI swap --apply, a sync, another tab) —
+      // without it, Save silently reverted that change (BS2-26).
       const res = await fetch(url, {method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({id: DATA.id, meta: META, body: BODY})});
+        body: JSON.stringify({id: DATA.id, meta: META, body: BODY, doc_token: DATA.doc_token || ''})});
       const d = await res.json();
       if (d.ok) {
         if (NEW) { location.href = '/deck/' + encodeURIComponent(d.id); }

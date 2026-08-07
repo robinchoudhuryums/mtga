@@ -66,7 +66,15 @@ check_commands immediately caught query.py riding on prose mentions (exempted wi
 honest reason). Block: `.cycle/blocks/2026-08-broad-scan2-batchC-broad-implement.md`.
 1012 tests (14 more new).
 
-**Where I left off:** top-5 + docs + follow-ons + Batches A, B and C implemented, tested, committed and
+**Sixth pass, same session — Batch D** (editor write-safety): BS2-26 (deck-save
+staleness 409 via content-hash token), BS2-27 (atomic rollback), BS2-28 (metadata-key
+validation) + the html-shadow minor. ONE RETRACTION: the dirty-key join('') "collision"
+is a non-finding — the file already delimits with an invisible \x01 that the scan's
+reader (and a verifying grep) rendered as empty; no change made. Block:
+`.cycle/blocks/2026-08-broad-scan2-batchD-broad-implement.md`. 1018 tests (6 more new,
+in the new importorskip'd tests/test_app_editor.py).
+
+**Where I left off:** top-5 + docs + follow-ons + Batches A–D implemented, tested, committed and
 pushed on `claude/broad-scan-v74wau`; no PR opened (not requested). The remaining scan
 items are batched/prioritized in the session's closing report (batches A–H: verdict-surface
 joins, wishlist honesty, gate hardening, editor safety, interface access, editor theming,
