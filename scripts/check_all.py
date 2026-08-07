@@ -377,6 +377,30 @@ def main():
     except Exception as e:
         soft.append(f"stale-flex check skipped ({e})")
 
+    # Soft: STALE CARD-NAME HEADERS — a `#: protect:` or `#: uncastable-ok:` entry naming
+    # a card the deck does not run. Both headers are read by the tooling as instructions,
+    # so a leftover name is a silent no-op, and `protect` additionally inflates a figure a
+    # HUMAN reads (the zero-protection flag prints "names N build-around card(s)").
+    #
+    # Nothing could see this class. INV-04 validates deck LINES; the rationale audit reads
+    # `#: tier:` / `#: archetype:` PROSE; a card-name list in a third header was checked by
+    # nothing — the same "capability that is never reached" shape as the rationale sweep
+    # above. Found by hand on deck 26b, and this sweep immediately turned up two more on
+    # deck 56, whose Boros header protected two GREEN cards that live only in its Gruul
+    # variant. Advisory: pruning a header is a human editorial call.
+    try:
+        hdr_stale = []
+        for d in deckmod.roster_decks():
+            for header, name in deckmod.header_card_staleness(d["path"]):
+                hdr_stale.append(f"deck {d['id']}: `#: {header}:` names {name!r}")
+        if hdr_stale:
+            soft.append(f"stale card-name header(s): {len(hdr_stale)} name a card the deck "
+                        f"no longer runs — {'; '.join(hdr_stale[:3])}"
+                        + (" …" if len(hdr_stale) > 3 else "")
+                        + " (prune the entry, or fix the name if it is a typo)")
+    except Exception as e:
+        soft.append(f"stale-header check skipped ({e})")
+
     # Soft: STALE TIER RATIONALE — a `#: tier:` argument citing a card the deck no
     # longer runs, or a figure that no longer matches the live quality vector.
     #

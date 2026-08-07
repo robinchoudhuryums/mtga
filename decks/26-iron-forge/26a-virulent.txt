@@ -239,7 +239,7 @@
 1 Riverpyre Verge (DFT) 260
 2 Stark Industries (MSH) 272
 2 Swiftwater Cliffs (MOM) 273
-1 Rogue's Passage (FDN) 264
+1 Rogue's Passage (HOC) 212
 8 Island (MSH) 290
 9 Mountain (MSH) 294
 

@@ -294,7 +294,7 @@
 
 # Lands (24) — Three Tree City names Druid; Rogue's Passage is the 2nd evasion route
 1 Three Tree City (BLB) 260
-1 Rogue's Passage (FDN) 264
+1 Rogue's Passage (HOC) 212
 22 Forest (MSH) 295
 
 # Flex — measured and parked. See: deck.py flex 50

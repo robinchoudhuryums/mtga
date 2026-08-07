@@ -1,7 +1,7 @@
 # Handoff — start the next session here
 
-Written 2026-08-06, refreshed twice on 2026-08-07 (latest: after the K-14 fix), for a
-session with none of this one's context.
+Written 2026-08-06, refreshed three times on 2026-08-07 (latest: after the G-68 gate),
+for a session with none of this one's context.
 Read this before CLAUDE.md's Common Gotchas, not instead of them.
 
 **Read the evidence file when a rule's reasoning matters.** CLAUDE.md carries the RULE and
@@ -28,13 +28,14 @@ commands disagree.
   `.cycle/54-pile-reanalysis.md`, which was deliberately deleted when its swaps landed,
   and the ROADMAP blob is byte-identical. `git cherry` reports 26 of them as missing —
   that is a patch-ID artifact of squashing, not lost work.
-- Gates green: `check_all` all invariants hold; 946 tests. One standing SOFT warning:
-  decks 26a and 50 name `Rogue's Passage (FDN) 264`, a printing the repo does not hold —
-  fix with `deck.py resolve` next time either deck is touched.
+- Gates green: `check_all` all invariants hold, **with ZERO soft warnings** — first time
+  this cycle. 951 tests. The long-standing `Rogue's Passage (FDN) 264` warning (decks 26a
+  and 50) is fixed; the real printing is `(HOC) 212`, from `deck.py resolve`.
 - Collection **2,085 library rows / 2,081 distinct names / 2,154 copies** (the session-start
   hook prints the distinct-name figure, so 2081 vs 2085 is not a discrepancy); roster
-  **95 decks**, numbered through **63**. The only 08-07 code change is the K-14
-  role-pattern fix (§2b item 5); everything else that day was data and decks.
+  **95 decks**, numbered through **63**. Two code changes on 08-07 — the K-14 role-pattern
+  fix (§2b item 5) and the G-68 header-staleness gate (§2c); everything else was data and
+  decks.
 
 ## 2. What the 2026-08-05/06 sessions did
 
@@ -71,8 +72,7 @@ commands disagree.
    artifacts / token producers / Vehicles / Mayhem cards. **Do not re-derive this** — the
    table is in `docs/gotchas.md` under `[G-31]`.
 4. **Deck 26b's `#: protect:` header named a card the deck has never run** (Summon:
-   Bahamut). Worth a spot-check elsewhere: a protect entry for an absent card silently
-   shields nothing, and no gate flags it.
+   Bahamut). This became G-68 the same day — see §2c; there IS a gate for it now.
 5. **K-14 found AND FIXED (same day).** `role_tally` could not see a draw clause behind an
    ACTIVATION cost, so every planeswalker's draw ability read as zero card advantage (187
    pool cards, 24 planeswalkers). Two patterns added, `_LOOT_RE` given the singular pair.
@@ -81,6 +81,19 @@ commands disagree.
    **One thing is left for a human:** deck 21a's card advantage went 3 → 5, which removes
    one of the two weaknesses its below-floor letter rests on. The file says so and asks for
    a re-grade; the letter was not auto-written (design constraint).
+
+## 2c. The 2026-08-07 tooling tail
+
+1. **`Rogue's Passage` printing fixed** in decks 26a and 50 — `(FDN) 264` → `(HOC) 212`,
+   resolved rather than hand-written (G-65). That clears the oldest standing soft warning.
+2. **New gate `[G-68]`: a `#:` header that lists CARD NAMES goes stale, and nothing
+   checked one.** `#: protect:` and `#: uncastable-ok:` are read as instructions, so an
+   entry naming an absent card is a silent no-op — and `protect` also inflates the
+   build-around count the zero-protection flag prints, which deck 26b was doing inside the
+   sentence arguing its own tier cap. `deck.header_card_staleness` now sweeps the roster
+   in `check_all` (soft). **It found two more on its first run**: deck 56's Boros header
+   protected two GREEN cards that live only in its Gruul variant 56a. Both fixed; a
+   roster-wide test anchor means any new hit is a regression, not backlog.
 
 ## 3. The agreed next task
 
@@ -132,6 +145,11 @@ already measured:
   when you measured the first produced a wrong "you have no Abzan deck" claim (you have
   four). Check `#: colors:` before concluding a color pair is unbuilt. **Now a permanent
   rule** — CLAUDE.md `[G-31]`, with the long form in `docs/gotchas.md`.
+- **"No gate checks this" was true TWICE in one cycle, on the same shape.** K-14 (a role
+  bucket nothing exercised) and G-68 (a `#:` header nothing validated) were both live for
+  months behind fully green gates. When something reads like a fact about the deck — a
+  count, a header, a label — ask which gate would fail if it were wrong, and if the answer
+  is none, that is the finding. Both were cheap to fix once stated.
 - **A quality-guard regression can be the METRIC being wrong.** Deck 58's guard reported
   card advantage 4→3 on a swap that RAISED it. That specific cause is FIXED (K-14 — the
   classifier now reads a draw behind an activation cost), so do not go looking for it;

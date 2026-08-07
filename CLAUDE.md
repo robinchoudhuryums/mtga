@@ -686,6 +686,21 @@ directions.
   since `check_suggest` anchor 15 asserted a fixer ranks most-cuttable PRECISELY BECAUSE it
   had no role. [G-67]
 
+- **A `#:` HEADER THAT LISTS CARD NAMES GOES STALE, AND UNTIL 2026-08-07 NOTHING CHECKED
+  ONE.** `#: protect:` and `#: uncastable-ok:` are read by the tooling as INSTRUCTIONS, so
+  an entry naming a card the deck no longer runs is a silent no-op — `cuts` excludes
+  protected cards BY NAME, so a name matching nothing drops out of the mechanism it was
+  written for. Worse, `protect` also feeds a figure a HUMAN reads: the zero-protection flag
+  prints "names N build-around card(s)", and deck 26b reported FIVE against a real four in
+  the very sentence arguing its tier cap. `#: uncastable-ok:` is the more dangerous half —
+  it SUPPRESSES a castability failure, so a stale entry is a disabled check. No gate could
+  see the class: INV-04 validates deck LINES, the rationale audit reads `#: tier:` /
+  `#: archetype:` PROSE, and a card-name list in a third header was checked by nothing.
+  `deck.header_card_staleness` now sweeps the roster inside `check_all` (soft — pruning is
+  editorial) and found two more the moment it ran: deck 56's Boros header protected two
+  GREEN cards that live only in its Gruul variant 56a. Joined on `_ms_key` per G-63, so a
+  DFC named by its front face does not read as stale. [G-68]
+
 ## Known Issues
 
 Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.

@@ -691,6 +691,67 @@ Deck
         assert deck.flex_staleness(str(p)) == []
 
 
+class TestHeaderCardStaleness:
+    """`#: protect:` / `#: uncastable-ok:` entries naming a card the deck does not run.
+
+    Found by hand on deck 26b, whose header protected Summon: Bahamut — a card that deck
+    has never run. Two failures, neither visible: the entry protected NOTHING (`cuts`
+    excludes protected cards by NAME, so a name matching no card drops silently out of
+    the mechanism), and it inflated the build-around count the zero-protection flag
+    prints, in the exact sentence used to argue the deck's tier cap. The sweep then found
+    two more on deck 56, whose Boros header protected two GREEN cards that live only in
+    its Gruul variant.
+    """
+
+    DECK = """#: name: Probe
+#: format: Standard
+#: colors: B
+#: protect: Vengeful Bloodwitch; Summon: Bahamut
+#: uncastable-ok: Ojer Axonil, Deepest Might; Craterhoof Behemoth
+
+Deck
+4 Swamp (MSH) 291
+1 Vengeful Bloodwitch (FDN) 76
+1 Ojer Axonil, Deepest Might // Temple of Power (LCI) 145
+"""
+
+    def _write(self, tmp_path):
+        p = tmp_path / "deck.txt"
+        p.write_text(self.DECK, encoding="utf-8")
+        return str(p)
+
+    def test_flags_the_absent_protect_entry_only(self, tmp_path):
+        stale = deck.header_card_staleness(self._write(tmp_path))
+        assert ("protect", "summon: bahamut") in stale
+        assert not any(n == "vengeful bloodwitch" for _h, n in stale)
+
+    def test_sweeps_uncastable_ok_too(self, tmp_path):
+        """The more dangerous of the pair: `#: uncastable-ok:` SUPPRESSES a castability
+        failure, so a stale entry there is a disabled check, not a disabled boost."""
+        stale = deck.header_card_staleness(self._write(tmp_path))
+        assert ("uncastable-ok", "craterhoof behemoth") in stale
+
+    def test_a_dfc_named_by_its_front_face_is_not_stale(self, tmp_path):
+        """G-63: the header says `Ojer Axonil, Deepest Might`, the deck line stores the
+        full `Front // Back`. Joining on the raw name would report a live entry as stale —
+        the exact bug `_ms_key` exists to prevent, and this join must use it."""
+        stale = deck.header_card_staleness(self._write(tmp_path))
+        assert not any("ojer axonil" in n for _h, n in stale)
+
+    def test_a_deck_with_no_such_headers_reports_nothing(self, tmp_path):
+        p = tmp_path / "deck.txt"
+        p.write_text("#: name: Probe\n#: colors: B\n\nDeck\n4 Swamp (MSH) 291\n",
+                     encoding="utf-8")
+        assert deck.header_card_staleness(str(p)) == []
+
+    def test_the_roster_is_clean(self):
+        """A behavioural anchor, not a unit test: both known instances (26b, 56) are
+        fixed, so a NEW one is a regression someone introduced."""
+        hits = [(d["id"], h, n) for d in deck.roster_decks()
+                for h, n in deck.header_card_staleness(d["path"])]
+        assert hits == [], f"stale card-name header(s): {hits}"
+
+
 class TestLifegainRoleAlignment:
     """`gain(s) life equal to` (Exsanguinate, Corrupt, Sifter Wurm — 68 pool cards) was in
     neither the role classifier nor the tag model. The tag half went in with the `pay

@@ -4840,6 +4840,43 @@ def flex_staleness(path):
     return out
 
 
+def header_card_staleness(path):
+    """`#: protect:` / `#: uncastable-ok:` entries naming a card the deck does NOT run.
+
+    → [(header, name)].
+
+    Found on deck 26b (2026-08-07): its `#: protect:` header named Summon: Bahamut, a
+    card that deck has never run — it went to variant 48a in the pivot the deck's own
+    notes record. Two things were wrong and neither was visible:
+
+      1. The entry protected NOTHING. `cuts` hard-excludes protected cards from its
+         ranking, so a name that matches no card silently drops out of the mechanism it
+         was written for, and the card it was meant to shield (if the name were a typo
+         rather than a leftover) stays cuttable.
+      2. It inflated a number a HUMAN reads. The zero-protection flag in `stats` and
+         `tier` prints "`#: protect:` names N build-around card(s)", so 26b reported
+         five build-arounds against a real four — in the exact sentence used to argue
+         the deck's tier cap.
+
+    NO GATE COULD SEE IT. `check_all` validates deck LINES (INV-04) and the rationale
+    audit reads `#: tier:` / `#: archetype:` PROSE; a card-name list in a third header
+    was checked by nothing, which is this project's recurring shape — a capability that
+    exists and is never reached. Roster-wide and automatic now.
+
+    `#: uncastable-ok:` is swept too, and is the more dangerous of the pair: it SUPPRESSES
+    a castability failure, so a stale entry there is a disabled check rather than a
+    disabled boost. Advisory either way — pruning a header is a human editorial call.
+    """
+    meta, cards = parse_deck_file(path)
+    have = {_ms_key(n) for _q, n, _s, _c in cards}
+    out = []
+    for header, reader in (("protect", _protected), ("uncastable-ok", _uncastable_ok)):
+        for name in sorted(reader(meta)):
+            if _ms_key(name) not in have:
+                out.append((header, name))
+    return out
+
+
 def cmd_flex(args):
     """Show a deck's flex suggestions, enriching the +In card with cost / owned /
     rarity so you can see what each swap would take."""
