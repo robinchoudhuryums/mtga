@@ -738,3 +738,69 @@ Decided AGAINST (do not re-propose without new information):
 Where I left off: doc sync applied (CLAUDE.md stale `.cycle/54-pile-reanalysis.md`
 pointer removed — the file was deleted when its swaps landed; test count 24→25; G-42
 extended with the blink/counters finding), then PR opened and merged.
+
+## Session — six ingest batches, ~35 placements, and Chandra into five decks (2026-08-07)
+
+**No code changed.** Every commit after `0c47ab4` is data, decks or docs; `scripts/` is
+untouched apart from `role_baseline.txt` moving with the roster. So a resuming session can
+trust the 08-05/06 notes above as a description of current tooling behaviour.
+
+**Ingests (six batches, ~97 cards, plus Chandra).** Batches 8–13, each run through
+`/ingest` and confirmed by `verify_ingest` rather than by `check_all` alone — check_all
+proves the library is self-consistent, not that it contains what was pasted. Three things
+worth carrying forward: batch 9 needed comma restoration on five names (Arena export
+strips them); batches 11–13 contained cards that are **not Standard-legal**, called out in
+their commits instead of quietly kept; and batch 11's Progenitus lands plus batch 12's
+speed/Mount cards closed most of decks 60/60a/61's gap. Deck 35a is now **one card
+(Omniscience) from buildable**.
+
+**Placements (~35 swaps).** Applied through the standard chain — `quality --json` before,
+`swap --apply`, `quality --vs`, `preflight`, `tier --audit-rationale`, stale prose fixed in
+the SAME commit. The audit earned its keep repeatedly: seven stale figures and one
+cut-card citation in a single batch, three more figures and two prose claims in the Chandra
+pass. G-05 section-comment relocations were needed on roughly ten swaps, which is close to
+every swap that crossed a section boundary — the warning is doing its job and the fix
+stays manual by design.
+
+### Chandra, Spark Hunter — the placement pass worth not re-deriving
+
+Crafted mid-session, then placed in **26b, 48, 58, 10 and 45a**, with **48a** already
+maindecking her as a craft target (she simply became owned, so that deck's plan dropped by
+one). One owned copy plays in all six simultaneously.
+
+The selection is the cleanest worked example of G-61 so far. `suggest-homes` rated her KEY
+in **14 of 42** decks, nearly all on the generic red trio `burn, card draw, noncombat
+damage`; nine of those fourteen run zero artifacts, where she is a four-mana looter. The
+five real homes were found by hand-counting the resources her text names — artifact cards,
+token producers, Vehicles, Mayhem cards — and two of the five break the obvious pattern:
+deck 58 holds **zero artifact CARDS** and is among the best homes (its resource is tokens,
+the G-66 residual its own notes already flag), while 45a holds two and is a good home for a
+reason unrelated to artifacts (five Mayhem cards want a free repeating discard). **The
+table is in `docs/gotchas.md` under `[G-31]`; do not re-measure it.**
+
+### Two findings recorded as rules
+
+- **`[K-14]` — a draw clause behind an ACTIVATION cost is invisible to `role_tally`.** All
+  Card-advantage patterns are trigger-shaped, so `+1: Draw a card` / `{2}{U},{T}: Draw a
+  card` / `{1}, Sacrifice this artifact: Draw a card` all score zero. Measured: 187 pool
+  cards (24 planeswalkers), ≥12 on the roster. It surfaced because deck 58's quality guard
+  reported `card advantage 4→3` on a swap that RAISED real card advantage — Elvish
+  Archivist's draw keys off enchantments entering and the deck runs two, while Chandra
+  draws every turn from a loyalty ability nothing parses. The mirror image rode along:
+  interaction read 8→9 (58) and 14→15 (10) because her `−7` emblem parses as removal.
+  **This is the highest-value small pattern job available** — the measurement is done.
+- **`[G-31]` gained two residuals.** A zero-row `suggest-homes` result is a THEME miss, not
+  a colour-identity fact — that misread was written up this cycle as "you have no Abzan
+  deck" against four existing WBG decks, and it is K-13's shape one layer up: the sweep did
+  not fail, it answered a narrower question than the one reported. And KEY scores theme
+  overlap alone, which is why the count-first habit above was needed at all.
+
+**Also found, unfixed and cheap to check elsewhere:** deck 26b's `#: protect:` header named
+**Summon: Bahamut**, a card the deck has never run (it went to 48a in the pivot its own
+notes record). A protect entry for an absent card shields nothing and inflates the
+build-around count the zero-protection flag is read against, and **no gate catches it**.
+Worth a roster-wide sweep next time someone is in the tooling.
+
+Where I left off: five Chandra placements committed and pushed, `/sync-docs` applied
+(K-14 added, G-31 extended, NEXT-SESSION and STATE refreshed). No PR opened yet for the
+work after `0c47ab4`.

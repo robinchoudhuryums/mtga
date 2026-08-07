@@ -1069,6 +1069,40 @@ never demotes a fit `fit_strength` already rated KEY, and does nothing below 3 c
 miss. **The promotion is RATE-GATED and the cut side is add-AWARE — both because the
 overlay shipped a backwards recommendation.** See the fixer-overlay gotcha below.
 
+### Two residuals, both measured on one card (Chandra, Spark Hunter, 2026-08-07)
+
+**A zero-row result is a THEME miss, not a colour-identity fact.** Asked which Abzan angle
+the roster did not cover, a `suggest-homes` sweep returned no WBG rows and that was written
+up as "you have no white-black-green deck." There are FOUR — 6 Dead or Alive, 13 Earth
+Kingdom, 20b Abzan Toughness Ramp, 21 Gastromancer. What the sweep actually measured was
+that no WBG deck shared a *central, specific* theme with the card, which is a different and
+much narrower claim. The check costs one command: read `#: colors:` before concluding a
+colour pair is unbuilt. This is the K-13 shape one layer up — a zero-result sweep is an
+unverified search, not a fact — and it is the more dangerous version, because the sweep
+here did not fail. It answered a question correctly; the question was just not the one
+being reported.
+
+**KEY scores THEME OVERLAP alone, so for a structurally-valued card it carries little.**
+Chandra, Spark Hunter rated KEY in **14 of 42** decks. Nearly every one of them shared only
+the generic red trio `burn, card draw, noncombat damage`, and nine of the fourteen ran
+**zero artifacts** — where she is a four-mana Merfolk Looter. What actually decided her five
+placements was a set of counts the model cannot see, measured by hand per G-61:
+
+| deck | artifact cards | token producers | Vehicles | the deciding payoff |
+|---|---|---|---|---|
+| 48a Motor Pool | 19 | 17 | **7** | her combat trigger is live at all |
+| 48 Doombot Array | 22 | 12 | 1 | Mechan Assembler, once per turn, matches her `0` |
+| 58 Gold Standard | 0 | **19** | 0 | Crime Novelist / Krenko / Pirate Peddlers read her `+2` |
+| 10 Mad Villainy | 9 | 7 | 0 | card advantage 1 — the deficit her `+2` fixes |
+| 45a Grixis Mayhem | 2 | 2 | 0 | 5 Mayhem cards want a free repeating discard |
+
+Note the two rows that break the pattern in opposite directions: **58 holds zero artifact
+CARDS** and is one of the best homes on the list (its resource is tokens — the G-66
+residual), and **45a holds two** and is a fine home for a reason unrelated to artifacts at
+all. Neither is derivable from the KEY label. The rule is not "distrust KEY"; it is that
+KEY answers "does this share a theme", and for a card whose text names a resource, the
+question that decides is "how much of that resource does the deck hold".
+
 
 ## [G-32] `suggest-homes` reads CASTABILITY as an identity SUBSET — which says nothing about whether you c
 
@@ -2841,3 +2875,65 @@ artifact in the list. No list scan can see tokens, so the flag is structural, no
 by a better pattern. The mitigation is editorial: a deck whose gated resource is tokens
 must say so in `#: notes:` (58 does), because a reader who trusts the flag would cut the
 deck's best payoffs.
+
+## [K-14] A draw clause behind an activation cost is invisible to the role tally
+
+`classify_roles` decides "Card advantage" from `_ROLE_PATTERNS`, and **every pattern in
+that bucket is TRIGGER-shaped**:
+
+```
+\bwhenever\b[^.,]{0,80}?, [^.]{0,60}?draws? a card
+at the beginning of (?:your|each|the) (?:upkeep|end step|…)[^.]{0,60}?draws? a card
+draws? (?:two|three|…) cards?          draws? cards? equal to        \binvestigate\b
+exile the top card of your library[^.]{0,40}\. you may play (?:it|that card)
+```
+
+There is no pattern for a card-draw clause reached by PAYING something. So all of these
+score zero card advantage:
+
+```
++1: Draw a card.                          {T}: Draw a card.
+{2}{U}, {T}: Draw a card.                 {1}, Sacrifice this artifact: Draw a card.
+```
+
+while `Whenever this creature attacks, draw a card.` scores `{Card advantage, Payoff}`.
+The difference is purely the grammar of the sentence, not the effect.
+
+### The measurement (2026-08-07)
+
+Sweeping the pool for a `<cost>: … draw a card` shape, then excluding lands (whose
+activated draw is arguably not the same thing) and loot effects (deliberately excluded by
+`_LOOT_RE`), and keeping only cards that score NO card advantage:
+
+- **187 pool cards**, of which **24 are planeswalkers**
+- **at least 12 on the roster**: Aether Syphon, Charging Strifeknight, Ice Cream Kitty,
+  Kingpin's Enforcers, Lunar Convocation, Professor Dellian Fel, Professor Zei, Ravenous
+  Amulet, Spectral Sailor, Technodrome, Vampiric Rites, Wrench
+
+"At least" is exact: the sweep's own regex stops at a sentence boundary, so **Chandra,
+Spark Hunter is missed by the measurement of the bug she demonstrates** — her clause is
+`+2: You may sacrifice an artifact or discard a card. If you do, draw a card.`, and the
+draw sits in the next sentence. `classify_roles` returns `{'Removal (spot)'}` for her, and
+even that comes from the `−7` emblem's "deals 3 damage to any target", not from anything
+she does on the turn you cast her.
+
+### The cost, on a real swap
+
+Deck 58 Gold Standard, `-Elvish Archivist +Chandra`. The quality guard reported
+`⚠ card advantage dropped (4→3)`. Both halves of that are backwards:
+
+- Archivist's draw half is *"whenever one or more ENCHANTMENTS you control enter, draw a
+  card"* — trigger-shaped, so it counts — and deck 58 runs **two** enchantments, so it was
+  close to dead.
+- Chandra's `+2` draws **every turn**, unconditionally, and counts for nothing.
+
+The mirror image showed up in the same batch: interaction read 8→9 in deck 58 and 14→15 in
+deck 10, both from her `−7` emblem parsing as removal — an ultimate that will be activated
+in a small fraction of games counted as a full removal spell.
+
+**The habit:** a ⚠ card-advantage regression on a swap involving a planeswalker or an
+activated-draw engine is UNPROVEN, not a verdict. Check whether the added card's draw is
+cost-shaped before accepting it, and record the reasoning in the deck's `#: notes:` (58 and
+10 both do) so the next pass does not re-derive it. This is K-12's CONNIVE case one level
+down — same failure, different grammar — and a G-67 whitelist miss: never an error, never
+an over-count, always a silent UNDER-count.

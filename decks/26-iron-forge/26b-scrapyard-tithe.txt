@@ -5,20 +5,20 @@
 #: plan: midrange
 #: tier: B — the CLOSEST call of the three graded this pass, and the only one where A is
 #: tier: genuinely arguable rather than merely allowed by the floor. The measurable case is the
-#: tier: strongest in the family by a wide margin: interaction 13 plus card advantage 8 against
-#: tier: 12 and 11 for the two Doombot lists, on the fastest curve here at 2.31, and with only
+#: tier: strongest in the family by a wide margin: interaction 12 plus card advantage 8 against
+#: tier: 10 and 9 for the two Doombot lists, on the fastest curve here at 2.44, and with only
 #: tier: ONE unclassified card — so unlike its siblings these numbers are not hiding an engine
-#: tier: the classifier cannot read. Effect depth is the deepest on the roster's artifact side:
-#: tier: burn 15, payoff 14, removal 12, card advantage 8.
+#: tier: the classifier cannot read. The role tally is the deepest on the roster's artifact
+#: tier: side: payoff 16, removal 12, card advantage 8, ramp 7.
 #: tier: WHAT CAPS IT IS THE ZERO-PROTECTION FLAG, and here it is not cosmetic. The whole deck
 #: tier: is three drain engines, and its own archetype block says the quiet part: "with two of
-#: tier: the three out, one loot is 5 damage across the table." Five build-around permanents are
+#: tier: the three out, one loot is 5 damage across the table." Four build-around permanents are
 #: tier: named in `#: protect:` and there is no ward, no hexproof, no indestructible and no
 #: tier: recursion for any of them. One removal spell undoes the plan. That is a single
 #: tier: catastrophic failure mode the metrics floor structurally cannot price, and it points
 #: tier: the opposite way from the intangibles a band is supposed to credit.
-#: tier: TWO MORE THAT COMPOUND IT: the interaction is 2 instant-speed against 10 sorcery-speed,
-#: tier: a worse skew than 48a, so the deck can neither protect the engine nor answer at instant
+#: tier: TWO MORE THAT COMPOUND IT: the interaction is 1 instant-speed against 11 sorcery-speed,
+#: tier: a worse skew than 48a's 2/8, so it can neither protect the engine nor answer at instant
 #: tier: speed; and it runs no sweeper and almost no blockers, which against a fast aggro start
 #: tier: is a losing posture it must race out of. `engines` also reports counters at 6 enablers
 #: tier: and no payoff. "Coherent but capped" is the rubric's definition of B and it fits.
@@ -26,7 +26,7 @@
 #: tier: damage is CUMULATIVE. Life already taken does not come back when the engine dies, so
 #: tier: removal is a tempo hit rather than a reset, which is exactly the kind of thing a metrics
 #: tier: floor cannot see. If it plays out that way, re-grade up rather than re-deriving this.
-#: protect: Monument to Endurance; Cool but Rude; Magmakin Artillerist; Summon: Bahamut; Death to Our Enemies
+#: protect: Monument to Endurance; Cool but Rude; Magmakin Artillerist; Death to Our Enemies
 #: archetype: IZZET ARTIFACTS THAT WIN WITHOUT ATTACKING. Every other deck in this family gets
 #: archetype: its damage through the combat step — 26 with ramped bombs, 26a with poison, 47
 #: archetype: with affinity bodies, 48 with anthems, 48a with crewed Vehicles. This one taxes
@@ -54,7 +54,7 @@
 #: archetype: (which this deck does constantly for mana), and Kiora draws two and discards two
 #: archetype: on entry — two drain triggers off one card. Iron-Fist Pulverizer is priced by the
 #: archetype: same plan: it deals 2 to an opponent whenever you cast your SECOND spell each
-#: archetype: turn, which a 2.39-curve deck manages most turns.
+#: archetype: turn, which a 2.44-curve deck manages most turns.
 #: archetype: DISTINCTNESS from its own parent: deck 26 and this deck share colours, an artifact
 #: archetype: base and a taste for big top-end, but 26 needs its permanents to CONNECT and this
 #: archetype: one is indifferent to whether it has a creature at all.
@@ -127,7 +127,41 @@
 #: notes: NO SWEEPER AND ALMOST NO BLOCKERS is the obvious hole — the deck's creature count is
 #: notes: deliberately low because creatures are not how it wins. Against a fast aggro start it
 #: notes: must trade removal one-for-one and race with drain, which is a real losing posture.
-#: notes: The five interaction spells are doing double duty as both defence and reach.
+#: notes: The three interaction spells are doing double duty as both defence and reach.
+#: notes: PASS 4, 2026-08-07 — TWO CORRECTIONS. (1) `#: protect:` named Summon: Bahamut, a card
+#: notes: this deck has never run (it went to 48a in the pivot recorded above). The header was
+#: notes: therefore hard-protecting nothing and hiding the fact that only four permanents are
+#: notes: actually shielded from the cut ranking; removed. (2) FIERY ANNIHILATION CUT FOR
+#: notes: METICULOUS ARTISAN. Annihilation ranked 1/32 most-cuttable and was the third
+#: notes: near-duplicate of Abrade/Overwhelming Surge; the Artisan is a Treasure body that
+#: notes: COUNTS artifacts, i.e. it feeds the currency every engine here spends. Interaction
+#: notes: 13 -> 12 (still the family high), avg MV 2.31 -> 2.39. Its line lives under the
+#: notes: Treasure heading, not Interaction, per G-05 — it classifies Payoff/engine.
+#: notes: PASS 5, 2026-08-07 — ABRADE CUT FOR CHANDRA, SPARK HUNTER (crafted). Her Vehicle
+#: notes: combat trigger is dead on arrival (this deck runs zero Vehicle CARDS) and should be
+#: notes: ignored; she was taken for the +2, which is a FREE, REPEATABLE, CARD-NEUTRAL
+#: notes: "sacrifice an artifact or discard a card, draw a card" — i.e. the exact action all
+#: notes: three drain engines read off, on a permanent that ticks to 6 doing it. Her 0 makes a
+#: notes: 3/2 artifact token (an artifact ENTERING, which Captain Storm / Machinesmith /
+#: notes: Gleaming Geardrake all count) and a crew-1 blocker against the no-blockers hole; the
+#: notes: -7 emblem turns the Treasure economy into a win condition. She is also the closest
+#: notes: thing this deck has to PROTECTION: a planeswalker soaks the removal and the attacks
+#: notes: that would otherwise land on the four named build-arounds.
+#: notes: THE COST, STATED PLAINLY BECAUSE THE METRIC HIDES IT. `interaction` reads 12 before
+#: notes: and 12 after, but that is a classifier artifact — Chandra tags Removal (spot) off her
+#: notes: -7 emblem's "deals 3 damage to any target", which is a 7-loyalty ultimate and not a
+#: notes: removal spell you cast. Real castable removal went 12 -> 11, and the instant-speed
+#: notes: skew this deck was already worst-in-family on went 2/10 -> 1/11. That was the flagged
+#: notes: risk of cutting Abrade specifically rather than Machinesmith Automaton, and it was
+#: notes: taken knowingly. A FLAT METRIC IS NOT PROOF A TUNE WAS FREE (the inverse of K-12).
+#: notes: Overwhelming Surge is the survivor of the Abrade/Surge near-duplicate pair — modal
+#: notes: both-halves, though it only reaches NONcreature artifacts where Abrade reached any.
+#: notes: Side effect worth recording against the Truck Toss note above: Chandra's 0 now gives
+#: notes: this deck a way to control a Vehicle, so the "runs zero Vehicles" premise that priced
+#: notes: Truck Toss out is no longer strictly true — still not worth the slot at one token.
+#: notes: avg MV 2.39 -> 2.44, early drops 21 -> 20, still the fastest curve in the family
+#: notes: (26 is 3.58, 26a 2.97, 47 3.08, 48 3.17, 48a 3.33). Her line sits under the loot
+#: notes: heading, not Interaction, per G-05 — the +2 IS a repeatable loot.
 
 # Drain engines — every one triggers off discarding
 1 Monument to Endurance (DFT) 237
@@ -154,6 +188,7 @@
 1 Death to Our Enemies (MSH) 127
 
 # Treasure and artifact fuel — and the one payoff that counts them
+1 Meticulous Artisan (TDM) 112
 1 Stark Industries Executive (MSH) 153
 1 Reckless Ransacking (ECL) 152
 1 Lady Octopus, Inspired Inventor (SPM) 35
@@ -171,11 +206,10 @@
 1 Rewrite History (MSH) 71
 1 Kiora, the Rising Tide (FDN) 45
 1 Artist's Talent (BLB) 124
+1 Chandra, Spark Hunter (DFT) 116
 
 # Interaction — also the deck's only defence
-1 Abrade (FDN) 188
 1 Overwhelming Surge (TDM) 115
-1 Fiery Annihilation (FDN) 86
 1 Bullseye, Death Dealer (MSH) 209
 1 Iron-Fist Pulverizer (OTJ) 131
 

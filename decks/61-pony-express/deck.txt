@@ -45,18 +45,23 @@
 #: notes: (Caradora's ETB tutors any Mount/Vehicle for the same reason). ROTATION:
 #: notes: the OTJ third (Miriam, Tumblewagg, Seraphic, Fortune, Felidar, Bucolic
 #: notes: Ranch) rotates a year before the DFT spine (~2027) — legality fact, not a
-#: notes: build constraint. Bench (screened, in grade order): Congregation Gryff,
-#: notes: Autarch Mammoth, Gloryheath Lynx, Alacrian Jaguar, One Last Job.
+#: notes: build constraint — and Congregation Gryff, opened 2026-08, is OTJ too, so
+#: notes: this add does not extend the deck's shelf life. It CAME OFF THE BENCH for
+#: notes: the third Interface Ace: at 14 other Mounts its saddled-attack trigger is
+#: notes: +14/+14 at ceiling, and the deck had more saddlers than saddle targets.
+#: notes: Bench (screened, in grade order): Autarch Mammoth, Gloryheath Lynx,
+#: notes: Alacrian Jaguar, One Last Job.
 
 # Glue (pilots + counter amplifier)
 1 Kona, Rescue Beastie (DSK) 187
 1 Caradora, Heart of Alacria (DFT) 195
 2 Miriam, Herd Whisperer (OTJ) 221
 2 Cloudspire Captain (DFT) 9
-3 Interface Ace (DFT) 17
+2 Interface Ace (DFT) 17
 2 Frontier Seeker (OTJ) 13
 
 # Mounts (saddled-attack engine)
+1 Congregation Gryff (OTJ) 200
 2 Lagorin, Soul of Alacria (DFT) 211
 1 Bulwark Ox (DFT) 7
 1 Venomsac Lagac (DFT) 185

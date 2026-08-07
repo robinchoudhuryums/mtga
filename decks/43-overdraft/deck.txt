@@ -32,8 +32,8 @@
 #: archetype: answers, 22 Bloodbending mills; here the drawing IS the deck and white is a
 #: archetype: real color rather than a splash. It is the roster's only Esper deck.
 #: tier: B — Esper hand-size control, one band BELOW the A metrics floor, PROVISIONAL
-#: tier: (unplayed brew). The floor reads A on interaction 6 (five of it instant-speed,
-#: tier: three able to answer a noncreature permanent) plus card advantage 14 on a 2.97
+#: tier: (unplayed brew). The floor reads A on interaction 5 (four of it instant-speed,
+#: tier: three able to answer a noncreature permanent) plus card advantage 14 on a 3.03
 #: tier: curve, and that card-advantage number is real rather than a pile of cantrips —
 #: tier: Cloudblazer draws two, Chart a Course draws two, Spirit Water Revival draws
 #: tier: seven when waterbent, and the Grimoire draws five on cast. Held at B by three
@@ -44,7 +44,7 @@
 #: tier:    still a functional Esper draw-control deck — that is what the second-card
 #: tier:    cluster is for — but a deck whose identity shows up one game in five is not
 #: tier:    an A on its identity, only on its floor.
-#: tier: 2. PROTECTION 1 against four `#: protect:` build-arounds. Restoration Magic is
+#: tier: 2. PROTECTION 2 against four `#: protect:` build-arounds. Restoration Magic is
 #: tier:    the only answer to removal in the deck, and every one of the protected cards
 #: tier:    is a must-kill the moment it resolves.
 #: tier: 3. THREE COLORS, SINGLETON. The manabase is deliberately built to survive it
@@ -88,6 +88,7 @@
 
 Deck
 # Hand size — the spine
+1 Ketramose, the New Dawn (DFT) 209
 1 Sunpearl Kirin (TDM) 29
 1 Doctor Octopus, Master Planner (SPM) 128
 1 Marina Vendrell's Grimoire (DSK) 64
@@ -129,7 +130,6 @@ Deck
 1 Leech Collector (SOS) 88
 
 # Removal
-1 Into the Flood Maw (BLB) 52
 1 Tishana's Tidebinder (LCI) 81
 1 Floodpits Drowner (DSK) 59
 1 Exclusion Mage (FDN) 508

@@ -63,6 +63,6 @@
 #~ -Earthshaker Dreadmaw | +Terrian, World Tyrant | rotates 2026; Terrian is an owned rotation-safe 9/7 for 5 (vanilla, K-11)
 #~ -Belligerent Yearling | +Ragamuffin Raptor | rotates 2026; owned 4/3 whose ETB "return up to one target creature or Food card from your graveyard" adds recursion
 #~ -Nurturing Bristleback | +Migrating Ketradon | rotates 2026; craft C — 6/6 reach, "you gain 4 life", cycling {2} keeps the never-dead-card property
-#~ -Itzquinth, Firstborn of Gishath | +Tyrox, Saurid Tyrant | rotates 2026; craft U — owned-adjacent legendary 4/1 haste-less beater for {1}{R}; or any surviving 2-drop Dino
+#~ -Itzquinth, Firstborn of Gishath | +Tyrox, Saurid Tyrant | rotates 2026; Tyrox is now OWNED (opened 2026-08-06), a rotation-safe DFT legendary 4/1 vanilla for {1}{R} — no craft needed, promote with `deck.py apply-flex 28` when October comes
 #~ -Triumphant Chomp | +Bushwhack | rotates 2026; the fight mode covers the same job — or craft a surviving fight/burn spell at the time
 # (Restless Ridgeline → Training Compound already applied 2026-08 — the rotating land is handled.)

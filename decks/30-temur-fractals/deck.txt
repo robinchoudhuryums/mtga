@@ -32,6 +32,7 @@
 1 Broodguard Elite (EOE) 175
 
 # Card advantage / dig
+1 Sab-Sunen, Luxa Embodied (DFT) 221
 1 Mind into Matter (SOS) 202
 1 Lasting Tarfire (ECL) 149
 1 Shock (ANB) 84
@@ -58,7 +59,6 @@
 # Land-fetch / ramp value
 1 Environmental Scientist (SOS) 147
 1 Proctor's Gaze (SOS) 213
-1 Spell Pierce (SOA) 23
 1 Improvisation Capstone (SOS) 120
 
 # Lands (25 — Temur fixing: 12 owned duals + Terramorphic + 12 basics; many differently-named for Emil)

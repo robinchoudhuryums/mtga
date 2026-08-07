@@ -1,9 +1,18 @@
 #: name: Mad Villainy
 #: format: Standard
-#: tier: A — Rakdos artifacts midrange; removal-dense (14 interaction — most in the roster)
+#: tier: A — Rakdos artifacts midrange; removal-dense (15 interaction — most in the roster)
 #: colors: BR
 #: archetype: Rakdos (B/R) villains / artifacts midrange.
 #: notes: Rakdos (B/R) — villains / artifacts midrange.
+#: notes: 2026-08-07 — CHANDRA, SPARK HUNTER IN FOR HIRE A CREW (now owned). Hire a Crew was
+#: notes: an instant-speed 2/1-plus-team-pump combat trick in a deck carrying 14 interaction
+#: notes: and exactly ONE card-advantage card, which is the deficit that decided this. Her +2
+#: notes: (sacrifice an artifact or discard a card, then draw) is a free per-turn draw, and
+#: notes: both halves have payoffs here: the discard mode switches on the two MAYHEM cards
+#: notes: (Electro's Bolt, Raging Goblinoids), the sacrifice mode has Castle Doom's Doombot
+#: notes: engine behind it, and her 0 (a 3/2 artifact token) is "another artifact enters" for
+#: notes: Machinesmith Automaton and Oreplate Pangolin. Interaction 14 -> 15 is a
+#: notes: classifier artifact of her -7 emblem, not new removal.
 
 # Nonland
 1 Whiplash, Vengeful Engineer (MSH) 121
@@ -16,7 +25,7 @@
 1 Morlun, Devourer of Spiders (SPM) 59
 2 HYDRA Assault Robot (MSH) 137
 1 Electro, Assaulting Battery (SPM) 76
-1 Hire a Crew (MSH) 134
+1 Chandra, Spark Hunter (DFT) 116
 1 Machinesmith Automaton (MSH) 144
 1 Molten Man, Inferno Incarnate (SPM) 84
 1 Red Hulk (MSH) 149

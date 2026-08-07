@@ -16,13 +16,13 @@
 #: archetype: body. (Emil is here for its trample line, not its Fractal mana sink.)
 #: tier: A — Simic landfall counters-midrange. Re-graded B->A after the Garruk's Uprising
 #: tier: / The Legend of Kyoshi pass, which closed the last of the three caps the B was
-#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 5 on a 2.79 curve).
+#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 6 on a 2.91 curve).
 #: tier: The ENGINE was never the problem: `deck.py redundancy 40a` reads a virtual 8-of
 #: tier: counter-DOUBLER plus 5-of landfall / 5-of lands / 9-of payoff / 4-of ramp, on a
 #: tier: clean manabase (26 lands, 87% keepable openers, 0 uncastable). What kept it at B
 #: tier: was three named weaknesses, all now addressed:
 #: tier: 1. FRAGILITY (fixed). Was zero ward/hexproof/indestructible in the 60, so one
-#: tier:    removal spell reset the plan. `deck.py stats` now measures protection 3 — Kid
+#: tier:    removal spell reset the plan. `deck.py stats` now measures protection 4 — Kid
 #: tier:    Loki's standing hexproof for anything that got a counter this turn (most turns
 #: tier:    from ~T3 here), Origin of Metalbending's instant indestructible, and Kyoshi's
 #: tier:    back face giving lands trample and hexproof.
@@ -47,7 +47,7 @@
 #: tier: THE ONE REMAINING WEAKNESS an A tolerates: the deck is threat-centric, and its
 #: tier: best draws all want a big creature already on board — a sweeper on an empty-ish
 #: tier: board leaves it casting doublers with nothing to double. Held from S by that, by
-#: tier: the 2.79 curve, and by having no format-warping bomb. Now fully owned and
+#: tier: the 2.91 curve, and by having no format-warping bomb. Now fully owned and
 #: tier: buildable — the 12 outstanding craft targets were trued up from the built Arena
 #: tier: deck; per the rubric build-state never affected the letter, only `check`/`audit`.
 #: notes: This is the TALL sibling of 40; keep the two apart by
@@ -92,7 +92,7 @@ Deck
 1 The Goose Mother (WOE) 204
 1 Greenbelt Guardian (DFT) 164
 1 Kid Loki (MSH) 63
-1 Hemosymbic Mite (EOE) 190
+1 Sab-Sunen, Luxa Embodied (DFT) 221
 1 Wan Shi Tong, Librarian (TLA) 78
 1 Broodguard Elite (EOE) 175
 
