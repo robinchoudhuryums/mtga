@@ -3,7 +3,7 @@
 #: colors: BRG
 #: plan: midrange
 #: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is A
-#: tier: (interaction 6 + card advantage 5, protection 2, avg MV 2.92), held UNDER it:
+#: tier: (interaction 6 + card advantage 5, protection 2, avg MV 2.81), held UNDER it:
 #: tier: the deck is unplayed, both reanimation leaders are CRAFT targets (Eddie M,
 #: tier: Carnage R) so the core line is aspirational, Eddie's MV<=1 gate reads ⚠ thin
 #: tier: (2 real targets — Spinneret, Masked Meower), and the theme neighbourhood is
@@ -69,8 +69,8 @@
 1 Joo Dee, One of Many (TLA) 105
 1 Insatiable Skittermaw (EOE) 108
 1 Alpharael, Stonechosen (EOE) 87
-1 Kindle the Inner Flame (ECL) 147
-1 Revenge of the Rats (FDN) 67
+1 Spider-Ham, Peter Porker (SPM) 114
+1 Spiders-Man, Heroic Horde (SPM) 117
 1 Spinneret and Spiderling (SPM) 94
 1 Gwenom, Remorseless (SPM) 56
 1 Spider-Man Noir (SPM) 67
@@ -99,3 +99,8 @@
 5 Swamp (TRK) 321
 5 Mountain (TRK) 323
 5 Forest (TRK) 325
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 65a
+#~ -Grub's Command | +Spider-Man, To the Rescue | OWNED, castable on {G/W} hybrid: flash indestructible for the invested body (Gwenom/Venom) — protection is this deck's thinnest axis (2). Take it if Grub's one-Goblin copy mode keeps disappointing
+#~ -Random Encounter | +Wall Crawl | OWNED: anthem + a Spider token + "gain 1 life per Spider" (~11 Spiders now) — take it if the deck plays wider than it sacs
+#~ -Osseous Sticktwister | +Web-Warriors | OWNED x2, castable on {G/W}: a counter on EVERY other creature — the go-wide read of the same slot; Final Days tokens make it live
