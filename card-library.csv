@@ -3657,7 +3657,7 @@ Gallant Citizen,Creature — Human Citizen,"When this creature enters, draw a ca
 Whoosh!,Instant,"Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)
 Return target nonland permanent to its owner's hand. If this spell was kicked, draw a card.",U,card draw; bounce; kicker; value,MSC,790,1
 Skyward Spider,Creature — Spider Human Hero,"Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
-This creature has flying as long as it's modified. (Equipment, Auras you control, and counters are modifications.)",W/U,Spider; Human; Hero; ward; protection,SPM,146,1
+This creature has flying as long as it's modified. (Equipment, Auras you control, and counters are modifications.)",W/U,Spider; Human; Hero; ward; protection,SPM,146,2
 City Pigeon,Creature — Bird,"Flying
 When this creature leaves the battlefield, create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",W,Bird; lifegain; sacrifice; tokens; food; flying; evasion,MSC,769,1
 Lurking Lizards,Creature — Lizard Villain,"Trample
@@ -3818,13 +3818,13 @@ Damage Control Crew,Creature — Human Citizen,"When this creature enters, choos
 • Impound — Exile target artifact or enchantment.",G,Human; Citizen; graveyard; removal; etb,SPM,99,1
 Spider Manifestation,Creature — Spider Avatar,"Reach
 {T}: Add {R} or {G}.
-Whenever you cast a spell with mana value 4 or greater, untap this creature.",R/G,Spider; Avatar; mana; reach; defense,SPM,148,1
+Whenever you cast a spell with mana value 4 or greater, untap this creature.",R/G,Spider; Avatar; mana; reach; defense,SPM,148,3
 "Prowler, Clawed Thief",Legendary Creature — Human Rogue Villain,"Menace (This creature can't be blocked except by two or more creatures.)
 Whenever another Villain you control enters, Prowler connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)",U/B,Human; Rogue; Villain; counters; card draw; menace; evasion; connive; graveyard,SPM,138,1
 "Spider-Rex, Daring Dino",Legendary Creature — Spider Dinosaur Hero,"Reach, trample
 Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)",G,Spider; Dinosaur; Hero; reach; defense; trample; evasion; ward; protection,SPM,116,1
 Guy in the Chair,Creature — Human Advisor,"{T}: Add one mana of any color.
-Web Support — {2}{G}, {T}: Put a +1/+1 counter on target Spider. Activate only as a sorcery.",G,Human; Advisor; counters; mana,SPM,102,1
+Web Support — {2}{G}, {T}: Put a +1/+1 counter on target Spider. Activate only as a sorcery.",G,Human; Advisor; counters; mana,SPM,102,2
 Peter Parker,Legendary Creature — Human Scientist Hero // Legendary Creature — Spider Human Hero,"When Peter Parker enters, create a 2/1 green Spider creature token with reach.
 {1}{G}{W}{U}: Transform Peter Parker. Activate only as a sorcery. // Vigilance, reach
 Each legendary spell you cast that's one or more colors has web-slinging {G}{W}{U}. (You may cast a spell for its web-slinging cost if you also return a tapped creature you control to its owner's hand.)",W/U/G,Human; Scientist; Hero; Spider; tokens; etb; bounce; reach; defense; vigilance; combat; transform,SPM,10,1
@@ -3960,7 +3960,7 @@ The Soul Stone,Legendary Artifact — Infinity Stone,"Indestructible
 {T}: Add {B}.
 {6}{B}, {T}, Exile a creature you control: Harness The Soul Stone. (Once harnessed, its ∞ ability is active.)
 ∞ — At the beginning of your upkeep, return target creature card from your graveyard to the battlefield.",B,Infinity; Stone; reanimator; graveyard; mana; indestructible; resilience,SPM,66,1
-Web-Warriors,Creature — Spider Hero,"When this creature enters, put a +1/+1 counter on each other creature you control.",W/G,Spider; Hero; counters; etb,SPM,159,1
+Web-Warriors,Creature — Spider Hero,"When this creature enters, put a +1/+1 counter on each other creature you control.",W/G,Spider; Hero; counters; etb,SPM,159,2
 "Tannuk, Steadfast Second",Legendary Creature — Kavu Pilot,"Other creatures you control have haste.
 Artifact cards and red creature cards in your hand have warp {2}{R}. (You may cast a card from your hand for its warp cost. Exile that permanent at the beginning of the next end step, then you may cast it from exile on a later turn.)",R,Kavu; Pilot; exile cast,EOE,162,1
 Inventors' Fair,Legendary Land,"At the beginning of your upkeep, if you control three or more artifacts, you gain 1 life.
