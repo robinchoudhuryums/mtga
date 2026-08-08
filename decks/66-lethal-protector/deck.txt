@@ -3,7 +3,7 @@
 #: colors: BRG
 #: plan: midrange
 #: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is A
-#: tier: (interaction 5 + card advantage 5, protection 2, avg MV 2.67), held UNDER it:
+#: tier: (interaction 5 + card advantage 4, protection 3, avg MV 2.72), held UNDER it:
 #: tier: the deck is unplayed, both reanimation leaders are CRAFT targets (Eddie M,
 #: tier: Carnage R) so the core line is aspirational, Eddie's MV<=1 gate reads ⚠ thin
 #: tier: (2 real targets — Spinneret, Masked Meower), and the theme neighbourhood is
@@ -20,7 +20,8 @@
 #: archetype: into cards + a free permanent, and the VOID/sac payoffs (Alpharael,
 #: archetype: Insatiable Skittermaw, Lightless Evangel, Osseous Sticktwister) grow off
 #: archetype: every death. The discard outlets (Masked Meower, Spider-Gwen's tap-loot,
-#: archetype: Gristle Glutton, Tweeze, Melded Moxite, Ultimate Green Goblin) pay twice —
+#: archetype: Gristle Glutton, Tweeze, Shriek's free main-phase pitch, Titania's cast
+#: archetype: cost and ward, Ultimate Green Goblin) pay twice —
 #: archetype: Monument to Endurance on the discard itself, and the yard they fill feeds
 #: archetype: the reanimators, The Final Days' X-token mode and the two mayhem Spiders.
 #: archetype: SPIDER-VERSE copies any non-hand cast the shell produces. PIVOTED AT DRAFT
@@ -45,6 +46,15 @@
 #: notes: Command is a Goblin kindred card with exactly ONE Goblin (Ultimate Green
 #: notes: Goblin) — its copy mode is narrow here; it earns the slot on the other three
 #: notes: modes (mill 5 fuels the yard, destroy is removal, pump is reach). Watch it.
+#: notes: 2026-08-08 swaps, both a DELIBERATE trade of card advantage for board and
+#: notes: protection: -Macabre Waltz/+Shriek, Treblemaker and -Melded Moxite/+Titania,
+#: notes: Rugged Rumbler. Card advantage 5 -> 4 (the quality guard flags it, correctly);
+#: notes: protection 2 -> 3, and both adds are discard OUTLETS, which is what the two
+#: notes: cuts were really being paid for. Macabre Waltz went because returning creature
+#: notes: cards to HAND fights a deck that reanimates to the BATTLEFIELD and wants the
+#: notes: yard full (G-42). The deck's real imbalance is still 9 enablers to ~1 card that
+#: notes: cares you discarded (Monument to Endurance) — the next add should be a discard
+#: notes: PAYOFF, not a tenth outlet.
 #: notes: The discard SEQUENCING note: mayhem windows are "if you discarded it THIS
 #: notes: turn" — pitch the mayhem card, then cast it from the yard the same turn, and
 #: notes: Spider-Verse copies it.
@@ -68,9 +78,9 @@
 1 Spider-Gwen, Free Spirit (MSC) 874
 1 Gristle Glutton (ECL) 144
 1 Tweeze (ECL) 162
-1 Melded Moxite (EOE) 143
+1 Titania, Rugged Rumbler (MSH) 235
 1 Monument to Endurance (DFT) 237
-1 Macabre Waltz (FDN) 177
+1 Shriek, Treblemaker (SPM) 144
 
 # Spiders, symbiotes & bodies
 1 Venomized Cat (SPM) 72
