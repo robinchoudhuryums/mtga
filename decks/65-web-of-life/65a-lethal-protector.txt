@@ -3,7 +3,7 @@
 #: colors: BRG
 #: plan: midrange
 #: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is A
-#: tier: (interaction 6 + card advantage 5, protection 2, avg MV 2.81), held UNDER it:
+#: tier: (interaction 5 + card advantage 5, protection 2, avg MV 2.78), held UNDER it:
 #: tier: the deck is unplayed, both reanimation leaders are CRAFT targets (Eddie M,
 #: tier: Carnage R) so the core line is aspirational, Eddie's MV<=1 gate reads ⚠ thin
 #: tier: (2 real targets — Spinneret, Masked Meower), and the theme neighbourhood is
@@ -52,7 +52,7 @@
 1 Ultimate Green Goblin (SPM) 157
 1 Alien Symbiosis (MSC) 791
 1 The Final Days (FIN) 101
-1 Duel Tactics (SOS) 112
+1 Scarlet Spider, Kaine (SPM) 143
 
 # Discard outlets (the yard-fillers)
 1 Masked Meower (MSC) 807
@@ -73,7 +73,7 @@
 1 Spiders-Man, Heroic Horde (SPM) 117
 1 Spinneret and Spiderling (SPM) 94
 1 Gwenom, Remorseless (SPM) 56
-1 Spider-Man Noir (SPM) 67
+1 Symbiote Spider-Man (SPM) 156
 3 Spider Manifestation (SPM) 148
 1 Twitching Doll (DSK) 201
 1 Venom Connoisseur (FDN) 648
