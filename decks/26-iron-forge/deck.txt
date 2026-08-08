@@ -4,12 +4,12 @@
 #: plan: midrange
 #: tier: A — Izzet artifacts/robots, rebuilt 2026-07 around RAMP-TO-HEAVY-HITTERS plus a
 #: tier: Station package. Metrics floor is A on interaction 8 + card
-#: tier: advantage 7, protection 3, avg MV 3.58. The letter buys what the floor cannot see:
+#: tier: advantage 8, protection 3, avg MV 3.64. The letter buys what the floor cannot see:
 #: tier: Krang, Bygone Colossus, Chronicle of Victory, Ultron, Iron Man and Dawnsire are
 #: tier: real bombs, and Tony Stark's back face plus Tannuk make them arrive early. Held at
 #: tier: A rather than argued up to S because the plan is UNPLAYED in this configuration and
 #: tier: still carries nine cards at MV 5+. The double-red risk is now HALVED: Tannuk is the
-#: tier: only {R}{R} cost left, at 69.6% on turn four against 13 red sources.
+#: tier: only {R}{R} cost left, at 78.1% on turn four against 15 red sources.
 #: archetype: Izzet (U/R) artifacts + Robot tribal, built to RAMP INTO HEAVY HITTERS. Three
 #: archetype: acceleration layers, not one: Tony Stark flips into The Invincible Iron Man
 #: archetype: ("you may put an artifact card from your hand onto the battlefield" every
@@ -29,13 +29,24 @@
 #: archetype: turn, and when it is exiled at end step its LEAVES-THE-BATTLEFIELD trigger draws
 #: archetype: a card and free-drops a permanent with mana value <= your land count. At eight or
 #: archetype: nine lands that is a free Krang or Bygone Colossus.
-#: archetype: WHY RAMOS IS BETTER HERE THAN IN A MULTICOLOUR DECK, which is not obvious. Its
-#: archetype: ability adds {W}{W}{U}{U}{B}{B}{R}{R}{G}{G} — ten mana — and in a five-colour
-#: archetype: deck you would want those as COLOURS. This deck's whole top end costs GENERIC
-#: archetype: mana (Krang {9}, Bygone Colossus {9}, Chronicle {6}, Anticausal Vestige {6},
-#: archetype: Dawnsire {5}), and generic costs can be paid with any colour, so all TEN mana is
-#: archetype: live here. suggest-homes confirms it has no better home: only decks 17 and 35a
-#: archetype: are castable + on-theme, both only `tangential`, and both flagged top-heavy.
+#: archetype: WHY UGIN IS THE FOURTH ACCELERATION LAYER, and why the theme model cannot see
+#: archetype: it. Sixteen of this deck's 36 nonland spells cost NO coloured mana, so Ugin's
+#: archetype: "whenever you cast a colorless spell, exile up to one target permanent that's
+#: archetype: one or more colors" is repeatable, uncounterable exile roughly every other
+#: archetype: spell — and his 0 ability adds {C}{C}{C}. He costs {7} GENERIC, which is the
+#: archetype: same argument this block used to make for Ramos: the whole top end (Krang {9},
+#: archetype: Bygone Colossus {9}, Chronicle {6}, Anticausal Vestige {6}, Dawnsire {5}) is
+#: archetype: generic, so any mana pays for it — and Ironheart grants NONCREATURE spells
+#: archetype: improvise, which includes a planeswalker, so artifacts help cast him.
+#: archetype: Ramos came out for him (2026-08): Ramos was an unowned mythic AND this deck's
+#: archetype: only colour-identity stray, so the swap took identity B/G/R/U/W -> R/U, matching
+#: archetype: the header exactly, and dropped the craft plan by one mythic. MEASURED against
+#: archetype: the alternative of cutting Fiery Annihilation instead: that line held interaction
+#: archetype: at 8 and took instant-speed answers 3 -> 2 (reverting a deliberate earlier fix),
+#: archetype: where cutting Ramos took interaction 8 -> 9 and held instant speed at 3.
+#: archetype: NOTE: plain `suggest`/`screen` rate Ugin only `tangential` here — there is no
+#: archetype: "colorless matters" tag, so the theme model is structurally blind to him. He was
+#: archetype: found by `suggest --needs`, which scored him 10.0, tied top of owned interaction.
 #: archetype: THE STATION PACKAGE is the piece worth knowing. Station's cost is "tap ANOTHER
 #: archetype: creature you control", which is NOT that creature's own {T} ability — so
 #: archetype: summoning sickness does not apply (same reason you can crew with a creature you
@@ -234,14 +245,14 @@
 1 Bygone Colossus (EOE) 235
 1 Technodrome (TMT) 179
 1 Anticausal Vestige (EOE) 1
-1 Ramos, Dragon Engine (FDN) 678
+1 Ugin, Eye of the Storms (TDM) 1
 
 # Artifacts / Spells
 1 Fiery Annihilation (FDN) 86
 1 Abrade (FDN) 188
 1 Iron Man Armor (MSH) 248
 1 Mjölnir, Hammer of Thor (MSH) 146
-1 Explosive Derailment (OTJ) 122
+1 The Ooze (TMT) 177
 1 Plasma Bolt (EOE) 152
 1 Full Bore (EOE) 135
 1 I Am Iron Man (MSH) 58
@@ -263,7 +274,9 @@
 1 Swiftwater Cliffs (MOM) 273
 1 Kavaron, Memorial World (EOE) 255
 8 Mountain (MSH) 294
-8 Island (MSH) 290
+6 Island (MSH) 290
+1 Baron, Airship Kingdom (FIN) 273
+1 Airship Engine Room (TLA) 265
 
 # Flex — parked from the 73-pile / craft options. See: deck.py flex 26
 #~ -Cosmic Cube | +The Walls of Ba Sing Se | OWNED: re-add the 8-mana anchor (all your permanents indestructible) if you want top-end board protection; parked because it partly overlaps Krang

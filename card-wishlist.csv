@@ -66,7 +66,6 @@ Pride of the Road,Creature — Zombie Cat Warrior,"Vigilance
 Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
 Max speed — At the beginning of combat on your turn, target creature or Vehicle you control gains double strike until end of turn.",W,Zombie; Cat; Warrior; max speed; speed; aggro; vigilance; combat; start your engines!,DFT,24,Uncommon,36,,2.5,hand
 Reckless Velocitaur,Creature — Minotaur Pilot,"Whenever this creature saddles a Mount or crews a Vehicle during your main phase, that Mount or Vehicle gets +2/+0 and gains trample until end of turn.",R,Minotaur; Pilot; pump,DFT,144,Uncommon,48a,,2.0,seed
-Transit Mage,Creature — Human Wizard,"When this creature enters, you may search your library for an artifact card with mana value 4 or 5, reveal it, put it into your hand, then shuffle.",U,Human; Wizard; etb,DFT,70,Uncommon,51a,"Deck 51a: tutors an artifact of MV 4 or 5 - exactly The Water Crystal (4) and Gilded Lotus (5), the only two worth finding. Came in for the SECOND Water Crystal: one copy plus a tutor is the same two outs as two copies, but a tutor is never the dead draw a second LEGENDARY copy becomes, and it leaves a 2/2 behind.",6,hand
 Maximum Overdrive,Instant,Put a +1/+1 counter on target creature. It gains deathtouch and indestructible until end of turn.,B,counters,DFT,89,Common,52a,,1.5,seed
 Mirror Room // Fractured Realm,Enchantment — Room // Enchantment — Room,"When you unlock this door, create a token that's a copy of target creature you control, except it's a Reflection in addition to its other creature types.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // If a triggered ability of a permanent you control triggers, that ability triggers an additional time.
@@ -82,8 +81,6 @@ Equipped creature gets +X/+0, where X is the number of rev counters on this Equi
 Equip {3}",R,Equipment; counters; burn; etb; equipment; pump; equip,DSK,128,Rare,26,"On-theme R removal for Iron Forge (26): ETB deal 3, grows with deaths — the interaction upgrade over War Machine",6.0,hand
 The Mindskinner,Legendary Enchantment Creature — Nightmare,"The Mindskinner can't be blocked.
 If a source you control would deal damage to an opponent, prevent that damage and each opponent mills that many cards.",U,Nightmare; mill; graveyard,DSK,66,Rare,51a,"Deck 51a: converts every damage source you control into mill, +4 each with the Water Crystal. Pure upside HERE because the deck has no combat plan to lose - it would be a trap in parent 51, which wins with Krang and the Terrors.",7.2,hand
-Twitching Doll,Artifact Creature — Spider Toy,"{T}: Add one mana of any color. Put a nest counter on this creature.
-{T}, Sacrifice this creature: Create a 2/2 green Spider creature token with reach for each counter on this creature. Activate only as a sorcery.",G,Spider; Toy; counters; sacrifice; tokens; mana,DSK,201,Rare,50,,4.0,seed
 Unholy Annex // Ritual Chamber,Enchantment — Room // Enchantment — Room,"At the beginning of your end step, draw a card. If you control a Demon, each opponent loses 2 life and you gain 2 life. Otherwise, you lose 2 life.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // When you unlock this door, create a 6/6 black Demon creature token with flying.
 (You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",B,Room; lifegain; pay life; card draw; tokens,DSK,118,Rare,52a,,6.5,seed
@@ -362,6 +359,8 @@ Splatter Technique,Sorcery,"Choose one —
 Steal the Show,Sorcery,"Choose one or both —
 • Target player discards any number of cards, then draws that many cards.
 • Steal the Show deals damage equal to the number of instant and sorcery cards in your graveyard to target creature or planeswalker.",R,graveyard; discard,SOS,130,Rare,,,5.5,seed
+Stormcarved Coast,Land,"This land enters tapped unless you control two or more other lands.
+{T}: Add {U} or {R}.",U/R,mana,SOS,263,Rare,26,"untapped from your 3rd land on, so it is live for Tannuk's {R}{R} on turn 4 and the 5-drops. Prefer over Spirebluff Canal, which is tapped on exactly that turn. Craft over a tapped dual, not an Island, to keep source counts.",4.0,seed
 Sundown Pass,Land,"This land enters tapped unless you control two or more other lands.
 {T}: Add {R} or {W}.",W/R,mana,SOS,264,Rare,general,"WR fixing land — generic fixing, not earthbend-specific",5.0,hand
 Together as One,Sorcery,"Converge — Target player draws X cards, Together as One deals X damage to any target, and you gain X life, where X is the number of colors of mana spent to cast this spell.",Colorless,burn; converge; multicolor,SOS,4,Rare,17,Converge payoff (draw/burn/gain X = colors spent) — rewards the 5-color manabase,4.5,hand
@@ -371,11 +370,13 @@ This creature enters prepared. (While it's prepared, you may cast a copy of its 
 "Carnage, Crimson Chaos",Legendary Creature — Symbiote Villain,"Trample
 When Carnage enters, return target creature card with mana value 3 or less from your graveyard to the battlefield. It gains ""This creature attacks each combat if able"" and ""When this creature deals combat damage to a player, sacrifice it.""
 Mayhem {B}{R}",B/R,Symbiote; Villain; reanimator; graveyard; sacrifice; etb; mayhem; aggro; trample; evasion,SPM,125,Rare,10,,6.0,hand
-"Iron Spider, Stark Upgrade",Legendary Artifact Creature — Spider Hero,"Vigilance
-{T}: Put a +1/+1 counter on each artifact creature and/or Vehicle you control.
-{2}, Remove two +1/+1 counters from among artifacts you control: Draw a card.",Colorless,Spider; Hero; counters; card draw; vigilance; combat,SPM,166,Rare,17,,5.0,hand
 Multiversal Passage,Land,"As this land enters, choose a basic land type. Then you may pay 2 life. If you don't, it enters tapped.
 This land is the chosen type.",Colorless,,SPM,180,Rare,general,basic-type fixing land — any deck,6.0,hand
+Radioactive Spider,Creature — Spider,"Reach, deathtouch
+Fateful Bite — {2}, Sacrifice this creature: Search your library for a Spider Hero card, reveal it, put it into your hand, then shuffle. Activate only as a sorcery.",G,Spider; sacrifice; reach; defense; deathtouch; combat; removal,SPM,111,Rare,66,"PRIORITY of the two: the only MV-1 Spider available to fix Eddie Brock's flagged thin reanimation gate (2 targets). Deathtouch/reach body, sac outlet, and a tutor for any Spider Hero. Cut candidate on craft: Alien Symbiosis or Grub's Command.",3.0,seed
+"Scarlet Spider, Ben Reilly",Legendary Creature — Spider Human Hero,"Web-slinging {R}{G} (You may cast this spell for {R}{G} if you also return a tapped creature you control to its owner's hand.)
+Trample
+Sensational Save — If Scarlet Spider was cast using web-slinging, he enters with X +1/+1 counters on him, where X is the mana value of the returned creature.",R/G,Spider; Human; Hero; counters; bounce; trample; evasion; web-slinging; tempo,SPM,142,Rare,66,"OPTIONAL, graded last of the three finds: Sensational Save wants a tapped creature RETURNED, in a deck that would rather sacrifice it (the G-42 mirror). Take only if the tempo line proves itself in games. Cut candidate: Alien Symbiosis or Grub's Command.",3.5,seed
 Strength of Will,Instant,"Until end of turn, target creature you control gains indestructible and ""Whenever this creature is dealt damage, put that many +1/+1 counters on it.""",G,counters,SPM,118,Rare,general,green protect + damage->counters combat trick — any green deck,4.0,hand
 With Great Power . . .,Enchantment — Aura,"Enchant creature you control
 Enchanted creature gets +2/+2 for each Aura and Equipment attached to it.
@@ -394,8 +395,6 @@ I, II — Create a 5/5 green Elephant creature token.
 III — Double the power and toughness of each creature you control until end of turn.",U/R/G,Saga; sacrifice; tokens; saga; double,TDM,220,Rare,17,Temur (URG) go-wide Saga (5/5 Elephants + team P/T double) — only castable in 5c Spectrum,5.5,hand
 Runescale Stormbrood // Chilling Screech,Creature — Dragon // Instant — Omen,"Flying
 Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn. // Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)",U/R,Dragon; Omen; counterspell; pump; flying; evasion,TDM,221,Uncommon,49,Deck 49: a 4-drop DRAGON that is also a Dragon payoff (+2/+0 on every noncreature or Dragon spell). Hidden from every red filter because its identity is U/R from the {1}{U} Omen half - the FRONT face is {3}{R} and mono-red castable (G-58 bulk-triage variant).,7.2,hand
-Sunset Strikemaster,Creature — Human Monk,"{T}: Add {R}.
-{2}{R}, {T}, Sacrifice this creature: It deals 6 damage to target creature with flying.",R,Human; Monk; sacrifice; burn; mana,TDM,126,Uncommon,49,,4.5,seed
 Molten Exhale,Sorcery,"You may cast this spell as though it had flash if you behold a Dragon as an additional cost to cast it. (To behold a Dragon, choose a Dragon you control or reveal a Dragon card from your hand.)
 Molten Exhale deals 4 damage to target creature or planeswalker.",R,burn; behold; dragons,TDM,113,Common,49,,6.0,hand
 Phoenix Fleet Airship,Artifact — Vehicle,"Flying
@@ -436,9 +435,6 @@ When this Class becomes level 3, search your library for a card, put it into you
 Whenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)",U/R,Mutant; Ninja; Turtle; menace; evasion,TMT,144,Rare,47,TMNT UR-artifacts legend — new-deck focal point (menace + artifact-affinity payoff),5.0,hand
 Groundchuck & Dirtbag,Legendary Creature — Ox Mole Mutant,"Trample
 Whenever you tap a land for mana, add {G}.",G,Ox; Mole; Mutant; trample; evasion,TMT,115,Rare,13,mono-G ramp payoff: tap a land adds an extra {G}; accelerates Earth Kingdom's ramp (TMNT flavor),4.5,hand
-Improvised Arsenal,Artifact — Equipment,"Equipped creature gets +1/+0 for each artifact you control.
-{4}{R}: Create a token that's a copy of this Equipment.
-Equip {R}",R,Equipment; tokens; equipment; pump; equip,TMT,92,Rare,10,"broadly useful — best 10 (Mad Villainy); also 9,1,21",5.0,hand
 Krang & Shredder,Legendary Creature — Utrom Human Ninja,"Whenever Krang & Shredder enter or attack, each opponent exiles cards from the top of their library until they exile a nonland card.
 Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, you may cast a card exiled with Krang & Shredder without paying its mana cost.",U/B,Utrom; Human; Ninja; disappear,TMT,153,Rare,22; 51,"UB exile-and-cast value + mill; fits Bloodbending's UB control (TMNT flavor) | Deck 51: 6/7 for {4}{U/B}{U/B} - HYBRID, fully castable in mono-U (G-58). Threat #9 and an Omniscience payoff; Disappear needs a permanent to leave, which deck 51 does only 2-3 ways.",6.0,hand
 "Madame Null, Power Broker",Legendary Creature — Demon Advisor,"Deathtouch
@@ -448,9 +444,6 @@ Look at the top eight cards of your library. Put up to two creature cards with t
 "Mikey & Don, Party Planners",Legendary Creature — Mutant Ninja Turtle,"Ward {2}
 You may look at the top card of your library any time.
 You may play lands and cast Mutant, Ninja, or Turtle spells from the top of your library. If you cast a creature spell this way, that creature enters with an additional +1/+1 counter on it.",U/G,Mutant; Ninja; Turtle; counters; selection; ward; protection,TMT,157,Rare,4,"best 4 (Quantum Realm); also 19a,17",5.5,hand
-"Mutagen Man, Living Ooze",Legendary Creature — Ooze Mutant,"Trample
-Activated abilities of artifact tokens you control cost {1} less to activate.
-When Mutagen Man enters, create X Mutagen tokens. (They're artifacts with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",G,Ooze; Mutant; counters; sacrifice; tokens; etb; trample; evasion,TMT,124,Rare,4,+1/+1 counters + artifact-token sac engine — Quantum Realm's counters core; also 21/21a artifact-tokens,5.0,hand
 "Raph & Mikey, Troublemakers",Legendary Creature — Mutant Ninja Turtle,"Trample, haste
 Whenever Raph & Mikey attack, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.",R/G,Mutant; Ninja; Turtle; haste; aggro; trample; evasion,TMT,167,Rare,9,"RG aggro: on attack, cheat a creature into play attacking — fits Hulk Smash (TMNT flavor)",5.5,hand
 Raphael's Technique,Instant,"Sneak {2}{R} (You may cast this spell for {2}{R} if you also return an unblocked attacker you control to hand during the declare blockers step.)
@@ -461,8 +454,6 @@ Each player may discard their hand and draw seven cards.",R,card draw; sneak; te
 Whenever Slash attacks, create a 2/2 red Mutant creature token.",R,Mutant; Berserker; Turtle; tokens; burn; alliance; aggro; value,TMT,108,Rare,1,"Rakdos aggro/burn/tokens; also 10 | fits: 10,9",6.0,hand
 Splinter's Technique,Sorcery,"Sneak {1}{B} (You may cast this spell for {1}{B} if you also return an unblocked attacker you control to hand during the declare blockers step.)
 Search your library for a card, put that card into your hand, then shuffle.",B,sneak; tempo; cost-reduction,TMT,80,Rare,20,Ninja sneak tempo,5.0,hand
-The Ooze,Legendary Artifact,"Whenever a creature you control with a +1/+1 counter on it leaves the battlefield, create a Mutagen token for each +1/+1 counter on it. (A Mutagen token is an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")
-{T}: Exile target card from a graveyard. Create a Mutagen token.",Colorless,counters; reanimator; graveyard; sacrifice; tokens; removal,TMT,177,Rare,general,counters payoff: +1/+1-counter creature dies -> Mutagen counter-tokens — fits Quantum Realm,4.5,hand
 Transdimensional Bovine,Creature — Ox Avatar,"Flying
 {T}: Add two mana of any one color.",G,Ox; Avatar; mana; flying; evasion,TMT,134,Rare,17,"best 19a (Bird Brain — Bant Tokens); also 17,19b,20b",4.5,hand
 Turtle Power!,Enchantment,"Flash

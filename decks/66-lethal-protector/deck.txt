@@ -1,0 +1,150 @@
+#: name: Lethal Protector
+#: format: Standard
+#: colors: BRG
+#: plan: midrange
+#: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is A
+#: tier: (interaction 5 + card advantage 4, protection 3, avg MV 2.77), held UNDER it:
+#: tier: the deck is unplayed, both reanimation leaders are CRAFT targets (Eddie M,
+#: tier: Carnage R) so the core line is aspirational, Eddie's MV<=1 gate reads ⚠ thin
+#: tier: (2 real targets — Spinneret, Masked Meower), and the theme neighbourhood is
+#: tier: crowded (45a at 83% by tags even after the pivot cut the shared engine to 5
+#: tier: cards). The aristocrats spine is real and the interaction is cheap; re-grade
+#: tier: after /log-matches.
+#: archetype: Jund (B/R/G) SYMBIOTE ARISTOCRATS — a STANDALONE deck that began life as
+#: archetype: deck 65's variant and was PROMOTED 2026-08-08 (see #: notes:). It shares
+#: archetype: the Spider-Man flavour with 65 and almost nothing else: 65 bounces its OWN
+#: archetype: board to hand for value; this deck feeds bodies and cards to the bin and
+#: archetype: gets paid three ways: Eddie Brock / Carnage REANIMATE the
+#: archetype: cheap bodies the outlets discarded (Eddie MV<=1: Spinneret and Masked
+#: archetype: Meower only — Spider Manifestation is MV 2 and does NOT qualify, an error
+#: archetype: this header carried until 2026-08-08; Carnage MV<=3 has 22 targets),
+#: archetype: Venom's attack converts a sacrificed body
+#: archetype: into cards + a free permanent, and the VOID/sac payoffs (Alpharael,
+#: archetype: Insatiable Skittermaw, Lightless Evangel, Osseous Sticktwister) grow off
+#: archetype: every death. The discard outlets (Masked Meower, Spider-Gwen's tap-loot,
+#: archetype: Tweeze, Shriek's free main-phase pitch, Titania's cast cost and ward,
+#: archetype: Ninja's Blades on combat damage, Ultimate Green Goblin) pay TWICE — a
+#: archetype: payoff prices the discard itself (Monument to Endurance's three modes,
+#: archetype: Magmakin Artillerist's damage per card binned, Ninja's Blades draining the
+#: archetype: discarded card's mana value), and the yard they fill feeds the reanimators,
+#: archetype: The Final Days' X-token mode and Scarlet Spider's mayhem rebuy.
+#: archetype: SPIDER-VERSE copies any non-hand cast the shell produces. PIVOTED AT DRAFT
+#: archetype: TIME (deck-40 precedent): the first list ran the full mayhem/flashback
+#: archetype: engine and `similar` read 85% against deck 45a with 13 shared cards —
+#: archetype: 45a's entire identity IS cast-from-graveyard, so Timeline Culler / Tome
+#: archetype: Blast / Bulk Up x2 / Sandman's Quicksand / Prison Break / Resentful
+#: archetype: Revelation were cut for the aristocrats package above. Mayhem stays as
+#: archetype: SEASONING on Ultimate Green Goblin and Scarlet Spider, Kaine, not as the
+#: archetype: engine.
+#: protect: Eddie Brock; Spider-Verse; Carnage, Crimson Chaos; Gwenom, Remorseless; Ultimate Green Goblin
+#: notes: PROMOTED from 65a to standalone deck 66 (2026-08-08). Variant status here
+#: notes: meant SAME PLAN in different colours (the 56/56a, 45/45a precedent); after the
+#: notes: draft-time pivot and the full pile sweep these two shared ~3 cards and opposite
+#: notes: engines, so the label claimed a mechanical kinship that does not exist. It also
+#: notes: cost information: `suggest`'s cross-deck Decks column COLLAPSES variants into
+#: notes: their core deck (G-28), so every card that fits this deck was having its
+#: notes: breadth score quietly deflated. A flavour FAMILY is not a mechanical variant.
+#: notes: Drafted 2026-08-08 as deck 65's Jund variant from the user's seed list (Eddie
+#: notes: Brock, Alien Symbiosis, Carnage, Ultimate Green Goblin, Grub's Command, Venom
+#: notes: Connoisseur, Webstrike Elite + Spider-Verse from the original pile). Grub's
+#: notes: Command is a Goblin kindred card with exactly ONE Goblin (Ultimate Green
+#: notes: Goblin) — its copy mode is narrow here; it earns the slot on the other three
+#: notes: modes (mill 5 fuels the yard, destroy is removal, pump is reach). Watch it.
+#: notes: 2026-08-08 REBALANCE, six swaps in one pass. The measured imbalance was 9
+#: notes: cards that made you discard against ONE that cared you had (Monument to
+#: notes: Endurance). -Macabre Waltz/+Shriek, Treblemaker · -Melded Moxite/+Titania,
+#: notes: Rugged Rumbler · -Gristle Glutton/+Magmakin Artillerist ·
+#: notes: -Spider-Islanders/+Ninja's Blades · -Spider Manifestation/+Dark Fortress ·
+#: notes: -Spider Manifestation/+Raven Eagle. Payoffs 1 -> 3, protection 2 -> 3,
+#: notes: interaction FLAT at 5, card advantage 5 -> 3 -> 4, avg MV 2.67 -> 2.77.
+#: notes: Macabre Waltz went because returning creature cards to HAND fights a deck that
+#: notes: reanimates to the BATTLEFIELD and wants the yard full (G-42); Gristle Glutton
+#: notes: was the only outlet charging a board cost (Blight 1) against 14 bodies of
+#: notes: toughness <=2. The first four swaps cost card advantage 5 -> 3, flagged by the
+#: notes: quality guard each time; the last two bought a point back and the guard now
+#: notes: reads net improvement.
+#: notes: WHY A LAND REPLACED A MANA CREATURE: Spider Manifestation looks like the fix
+#: notes: for R/G at 10 sources each, but every failing cast-on-curve row is a turn-1 or
+#: notes: turn-2 play and a 2-mana creature cannot help those — it taps a turn later.
+#: notes: Dark Fortress is untapped, and its condition (entered this turn, or you control
+#: notes: a basic) is met by the 15 basics. B is scarcest by pip demand (19 pips / 13
+#: notes: sources), R second (13 / 10); Dark Fortress serves both. Went to 25 lands;
+#: notes: flood risk was 1.3%. Spiders 13 -> 11, still clear of Spinneret's 2+ gate.
+#: notes: RAVEN EAGLE HAS A G-42 EDGE: point its exile at the OPPONENT's graveyard. Aimed
+#: notes: at your own it eats the creature cards Carnage, Eddie and The Final Days want,
+#: notes: and the Clue only pays when a CREATURE card is exiled — so the mode that draws
+#: notes: is the mode that can hurt you.
+#: notes: Two K-12 caveats on the card-advantage figure: Ninja's Blades draws then
+#: notes: discards, so it is genuinely card-NEUTRAL and correctly uncounted, but Symbiote
+#: notes: Spider-Man's combat-damage dig and Spinneret's exile-and-play are both real
+#: notes: card advantage the classifier does not read. Hand-count before acting on it.
+#: notes: The discard SEQUENCING note: mayhem windows are "if you discarded it THIS
+#: notes: turn" — pitch the mayhem card, then cast it from the yard the same turn, and
+#: notes: Spider-Verse copies it.
+
+# Reanimation leaders
+1 Eddie Brock // Venom, Lethal Protector (SPM) 55
+1 Carnage, Crimson Chaos (SPM) 125
+
+# The copy payoff
+1 Spider-Verse (SPM) 93
+
+# Mayhem & graveyard-casts (what Spider-Verse copies)
+1 Ultimate Green Goblin (SPM) 157
+1 Alien Symbiosis (MSC) 791
+1 The Final Days (FIN) 101
+1 Scarlet Spider, Kaine (SPM) 143
+
+# Discard engine — outlets (fill the yard) and the payoffs that price the discard
+1 Masked Meower (MSC) 807
+1 Spider-Gwen, Free Spirit (MSC) 874
+1 Tweeze (ECL) 162
+1 Titania, Rugged Rumbler (MSH) 235
+1 Shriek, Treblemaker (SPM) 144
+1 Monument to Endurance (DFT) 237
+1 Magmakin Artillerist (DFT) 137
+1 Ninja's Blades (FIN) 108
+
+# Spiders, symbiotes & bodies
+1 Venomized Cat (SPM) 72
+1 Lightless Evangel (EOE) 109
+1 Joo Dee, One of Many (TLA) 105
+1 Insatiable Skittermaw (EOE) 108
+1 Alpharael, Stonechosen (EOE) 87
+1 Spider-Ham, Peter Porker (SPM) 114
+1 Spiders-Man, Heroic Horde (SPM) 117
+1 Spider-Punk (SPM) 92
+1 Spinneret and Spiderling (SPM) 94
+1 Gwenom, Remorseless (SPM) 56
+1 Symbiote Spider-Man (SPM) 156
+1 Spider Manifestation (SPM) 148
+1 Raven Eagle (TLA) 116
+1 Twitching Doll (DSK) 201
+1 Venom Connoisseur (FDN) 648
+1 Webstrike Elite (DFT) 186
+1 Grub's Command (ECL) 228
+
+# Value & interaction
+1 Osseous Sticktwister (DSK) 112
+1 Bitter Triumph (SOA) 26
+1 Long Goodbye (MKM) 92
+
+# Lands
+1 Dark Fortress (MSH) 264
+1 Blood Crypt (ECL) 262
+1 Overgrown Tomb (TRK) 289
+1 Blazemire Verge (DSK) 256
+1 Thornspire Verge (DSK) 270
+1 Wastewood Verge (DFT) 268
+1 Temple of Malady (FDN) 700
+1 Temple of Malice (FDN) 701
+1 Ominous Asylum (SPM) 181
+1 Foggy Bottom Swamp (TLA) 269
+5 Swamp (TRK) 321
+5 Mountain (TRK) 323
+5 Forest (TRK) 325
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 66
+#~ -Grub's Command | +Spider-Man, To the Rescue | OWNED, castable on {G/W} hybrid: flash indestructible for the invested body (Gwenom/Venom) — protection is this deck's thinnest axis (2). Take it if Grub's one-Goblin copy mode keeps disappointing
+#~ note: applied — Spider-Punk in for Random Encounter.
+#~ -Osseous Sticktwister | +Web-Warriors | OWNED x2, castable on {G/W}: a counter on EVERY other creature — the go-wide read of the same slot; Final Days tokens make it live

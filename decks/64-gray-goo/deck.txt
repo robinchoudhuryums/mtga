@@ -1,0 +1,102 @@
+#: name: Gray Goo
+#: format: Standard
+#: colors: UBG
+#: plan: midrange
+#: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). The metrics floor says A
+#: tier: (interaction 7 + card advantage 2 = 9 over the bar), and the letter is held
+#: tier: UNDER it deliberately: card advantage is a thin 2 for a deck that wants to hit
+#: tier: land drops AND feed an engine; protection is ZERO against five protected
+#: tier: build-arounds — the invested-body failure mode deck 63's notes name — with The
+#: tier: Ooze as insurance (the counters come back as Mutagens) rather than an answer;
+#: tier: and ten of 24 lands enter tapped or conditionally tapped. The engine is real
+#: tier: and the interaction is on-theme, but an unplayed three-colour brew with those
+#: tier: three knowns is a B until games say otherwise. Re-grade after /log-matches.
+#: archetype: Sultai "EAT THE GRAVEYARD, GROW" — the graveyard is FOOD, not a
+#: archetype: reanimation resource. The roster's first deck on this axis: self-mill
+#: archetype: (17 fillers, most attached to bodies or interaction) stocks the yard, and
+#: archetype: the engine pieces convert it into +1/+1 counters — Mimeoplasm exiles
+#: archetype: creatures for three counters each, Ooze Patrol counts the yard on entry,
+#: archetype: Scavenging Ooze eats a card at a time, Slime Against Humanity counts Ooze
+#: archetype: CARDS in yard AND exile (so the eaters FEED it rather than fighting it —
+#: archetype: an exiled Ooze still counts), and The Ooze converts the counters back into
+#: archetype: Mutagen artifacts when the invested body dies. DELIBERATE TENSION, managed:
+#: archetype: Scavenging Ooze and The Ooze default to eating the OPPONENT'S yard; your
+#: archetype: own yard is spent on Mimeoplasm's ETB and guarded for Delirium (Flytrap,
+#: archetype: Sticktwister), Threshold (Kiora) and Descend 8 (Uchbenbak, Everflowing
+#: archetype: Well). Interaction is on-theme: Quag Feast scales removal with the yard,
+#: archetype: Wick's Patrol/-X/-X and Sokka's Haiku mill as they answer. March of the
+#: archetype: World Ooze is the anthem top end (6/6 Oozes) and Omnivorous Flytrap
+#: archetype: DOUBLES counters at six card types. Ooze tribal was measured and REJECTED
+#: archetype: as the mechanism (11 Standard bodies, ZERO payoffs — below the G-59 bar);
+#: archetype: Ooze is the FLAVOUR identity, graveyard-to-counters is the deck.
+#: protect: Mimeoplasm, Revered One; March of the World Ooze; The Ooze; Slime Against Humanity; Omnivorous Flytrap
+#: notes: DECK 62 (Rot and Bloom, same colours) is the deck this must NOT duplicate:
+#: notes: 62 wants creatures to STAY in the yard to reanimate; this deck EXILES the
+#: notes: yard as fuel — the resource flows in opposite directions (G-42 is why the
+#: notes: Ooze package was never sub-themed into 62). A TOKEN-ECONOMY note per G-66:
+#: notes: The Ooze's payoff is Mutagen TOKENS, so target-counting tools under-read it.
+#: notes: Slime Against Humanity is deliberately a 3-of ("a deck can have any number");
+#: notes: rotation: verified ⚠rot~2027 — a year-plus of Standard for three commons.
+
+# Engine — eat the yard, grow
+1 Mimeoplasm, Revered One (DFT) 214
+1 The Ooze (TMT) 177
+1 Scavenging Ooze (FDN) 232
+1 Ooze Patrol (DFT) 172
+3 Slime Against Humanity (MKM) 177
+1 Avatar Destiny (TLA) 165
+1 Quag Feast (DFT) 100
+
+# Growth layer — counters and their amplifiers
+1 Stalwart Successor (TDM) 227
+1 Ouroboroid (EOE) 201
+1 Omnivorous Flytrap (DSK) 192
+1 March of the World Ooze (DFT) 169
+
+# Ooze bodies & spice
+1 Putrid Pals (TMT) 165
+1 Mutagen Man, Living Ooze (TMT) 124
+1 Slick Imitator (DFT) 62
+
+# Yard-dependent payoffs
+1 Osseous Sticktwister (DSK) 112
+1 Uchbenbak, the Great Mistake (LCI) 242
+1 Kiora, the Rising Tide (FDN) 45
+1 Grave Researcher // Reanimate (SOS) 85
+
+# Self-mill value bodies
+1 Lluwen, Imperfect Naturalist (ECL) 232
+1 Dawnhand Eulogist (ECL) 99
+1 Town Greeter (FIN) 209
+1 Ainok Wayfarer (TDM) 134
+1 Nashi, Searcher in the Dark (DSK) 223
+
+# Mill spells & card flow
+1 The Everflowing Well // The Myriad Pools (LCI) 56
+1 Summon: Titan (FIN) 204
+1 Midnight Tilling (ECL) 182
+1 Scout the City (SPM) 113
+1 Cruel Truths (TDM) 76
+1 Rapid Rescue (MSH) 181
+
+# Interaction (mills while it answers)
+1 Wick's Patrol (BLB) 121
+1 Hour of Defeat (MSH) 99
+1 Consuming Ashes (OTJ) 83
+1 Sokka's Haiku (TLA) 71
+1 Don't Make a Sound (DSK) 49
+
+# Lands
+1 Breeding Pool (EOE) 251
+1 Overgrown Tomb (TRK) 289
+1 Gloomlake Verge (DSK) 260
+1 Willowrush Verge (DFT) 270
+1 Wastewood Verge (DFT) 268
+1 Dreamroot Cascade (SOS) 254
+1 Undercity Sewers (PZA) 0
+1 Opulent Palace (TDM) 264
+1 Lilypad Village (BLB) 255
+1 Surveillance Room (MSH) 274
+6 Forest (TRK) 325
+4 Island (TRK) 319
+4 Swamp (TRK) 321

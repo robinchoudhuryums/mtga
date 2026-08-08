@@ -74,6 +74,7 @@
 1 War Effort (TDM) 131
 1 Brass's Bounty (FDN) 190
 1 Reckless Ransacking (ECL) 152
+1 Mutagen Man, Living Ooze (TMT) 124
 
 # The mana engine
 2 Roxanne, Starfall Savant (OTJ) 228
@@ -81,7 +82,7 @@
 # Payoffs (the spend)
 2 Crime Novelist (MKM) 121
 2 Krenko, Baron of Tin Street (MKM) 135
-1 Elvish Archivist (WOE) 168
+1 Twitching Doll (DSK) 201
 1 Chandra, Spark Hunter (DFT) 116
 2 Pirate Peddlers (TLA) 115
 1 Rot-Curse Rakshasa (TDM) 87
@@ -92,7 +93,7 @@
 1 Gold Rush (OTJ) 166
 
 # Draw / removal (sac-fueled)
-2 Kingpin's Enforcers (MSH) 102
+1 Kingpin's Enforcers (MSH) 102
 2 Fanatical Offering (LCI) 105
 1 Salt Road Skirmish (TDM) 88
 2 Deadly Precision (TLA) 95

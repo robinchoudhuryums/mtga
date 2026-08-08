@@ -83,6 +83,7 @@
 1 The Earth Crystal (FIN) 184
 1 Loading Zone (EOE) 196
 1 Michelangelo, Weirdness to 11 (TMT) 121
+1 Stalwart Successor (TDM) 227
 
 # Payoffs — what the counters buy
 1 Mikey & Leo, Chaos & Order (TMT) 158
@@ -92,6 +93,7 @@
 1 Hulkling, Burgeoning Bruiser (MSH) 173
 1 Wildwood Scourge (FDN) 236
 1 Drix Fatemaker (EOE) 178
+1 The Ooze (TMT) 177
 1 Michelangelo, Mutant BFF (TMT) 120
 1 Invisible Woman, Sue Storm (MSH) 17
 1 The Thing, Ben Grimm (MSH) 190
@@ -111,8 +113,6 @@
 1 Valorous Stance (FDN) 583
 1 Bitter Triumph (SOA) 26
 1 Long Goodbye (MKM) 92
-1 Sephiroth's Intervention (FIN) 116
-1 Withering Torment (DSK) 124
 
 # Lands
 1 Overgrown Tomb (TRK) 289
@@ -134,4 +134,4 @@
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 63
 #~ -Bitter Triumph | +Daydream | the one blink that half-works here: {W}, returns the creature WITH a +1/+1 counter (so it replaces one of what it erases) and has flashback. Protection, not value — take it only if targeted removal is beating you and you want a fourth answer
-#~ -Sephiroth's Intervention | +Airtight Alibi | flash HEXPROOF plus a permanent +2/+2 — the strongest single protection effect owned, but an Aura, so a response costs you two cards
+#~ note: applied — The Ooze in for Sephiroth's Intervention.
