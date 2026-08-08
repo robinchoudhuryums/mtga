@@ -4476,3 +4476,6 @@ Full Bore,Instant,"Target creature you control gets +3/+2 until end of turn. If 
 "Iron Spider, Stark Upgrade",Legendary Artifact Creature — Spider Hero,"Vigilance
 {T}: Put a +1/+1 counter on each artifact creature and/or Vehicle you control.
 {2}, Remove two +1/+1 counters from among artifacts you control: Draw a card.",Colorless,Spider; Hero; counters; card draw; vigilance; combat,SPM,166,1
+"Mutagen Man, Living Ooze",Legendary Creature — Ooze Mutant,"Trample
+Activated abilities of artifact tokens you control cost {1} less to activate.
+When Mutagen Man enters, create X Mutagen tokens. (They're artifacts with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",G,Ooze; Mutant; counters; cost-reduction; sacrifice; tokens; etb; trample; evasion,TMT,124,1
