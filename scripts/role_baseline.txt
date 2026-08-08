@@ -16,6 +16,7 @@ Aerial Doombot
 Aettir and Priwen
 Agent Phil Coulson
 Agents of HYDRA
+Ainok Wayfarer
 Airbending Lesson
 Ajani, Caller of the Pride
 Alien Invasion
@@ -255,6 +256,7 @@ North Pole Patrol
 Nurturing Bristleback
 Okoye, Dora Milaje Leader
 Omniscience
+Omnivorous Flytrap
 Ornery Tumblewagg
 Ostrich-Horse
 Ouroboroid
@@ -269,6 +271,7 @@ Pride of the Road
 Prideful Parent
 Procrastinate
 Psychic Whorl
+Putrid Pals
 Pym Particles
 Quaketusk Boar
 Quicksilver, Brash Blur
@@ -311,6 +314,7 @@ Shrike Force
 Silent Hallcreeper
 Silvergill Mentor
 Slick Imitator
+Slime Against Humanity
 Snow Villiers
 Soul Immolation
 Sovereign Okinec Ahau
