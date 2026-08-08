@@ -4426,3 +4426,42 @@ Flashback {1}{R} (You may cast this card from your graveyard for its flashback c
 +2: You may sacrifice an artifact or discard a card. If you do, draw a card.
 0: Create a 3/2 colorless Vehicle artifact token with crew 1.
 −7: You get an emblem with ""Whenever an artifact you control enters, this emblem deals 3 damage to any target.""",R,Chandra; Planeswalker; card draw; sacrifice; tokens; burn; planeswalker; noncombat damage,DFT,116,1
+Armored Armadillo,Creature — Armadillo,"Ward {1} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)
+{3}{W}: This creature gets +X/+0 until end of turn, where X is its toughness.",W,Armadillo; pump; ward; protection,OTJ,3,1
+Iron-Fist Pulverizer,Creature — Giant Warrior,"Reach
+Whenever you cast your second spell each turn, this creature deals 2 damage to target opponent. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)",R,Giant; Warrior; burn; scry; selection; noncombat damage; reach; defense,OTJ,131,1
+Holy Cow,Creature — Ox Angel,"Flash
+Flying
+When this creature enters, you gain 2 life and scry 1. (Look at the top card of your library. You may put that card on the bottom.)",W,Ox; Angel; lifegain; etb; scry; selection; flying; evasion; flash; tempo,OTJ,16,1
+Sterling Supplier,Creature — Bird Soldier,"Flying
+When this creature enters, put a +1/+1 counter on another target creature you control.",W,Bird; Soldier; counters; etb; flying; evasion,OTJ,33,1
+Geyser Drake,Creature — Drake,"Flying
+During turns other than yours, spells you cast cost {1} less to cast.",U,Drake; cost-reduction; flying; evasion,OTJ,51,1
+Giant Beaver,Creature — Beaver Mount,"Vigilance
+Whenever this creature attacks while saddled, put a +1/+1 counter on target creature that saddled it this turn.
+Saddle 3 (Tap any number of other creatures you control with total power 3 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",G,Beaver; Mount; counters; saddle; go-wide; combat; vigilance,OTJ,165,1
+Twitching Doll,Artifact Creature — Spider Toy,"{T}: Add one mana of any color. Put a nest counter on this creature.
+{T}, Sacrifice this creature: Create a 2/2 green Spider creature token with reach for each counter on this creature. Activate only as a sorcery.",G,Spider; Toy; counters; sacrifice; tokens; mana,DSK,201,1
+Zurgo's Vanguard,Creature — Dog Soldier,"Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)
+Zurgo's Vanguard's power is equal to the number of creatures you control.",R,Dog; Soldier; sacrifice; tokens; mobilize; go-wide; aggro,TDM,133,1
+Sunset Strikemaster,Creature — Human Monk,"{T}: Add {R}.
+{2}{R}, {T}, Sacrifice this creature: It deals 6 damage to target creature with flying.",R,Human; Monk; sacrifice; burn; mana,TDM,126,1
+"Ugin, Eye of the Storms",Legendary Planeswalker — Ugin,"When you cast this spell, exile up to one target permanent that's one or more colors.
+Whenever you cast a colorless spell, exile up to one target permanent that's one or more colors.
++2: You gain 3 life and draw a card.
+0: Add {C}{C}{C}.
+−11: Search your library for any number of colorless nonland cards, exile them, then shuffle. Until end of turn, you may cast those cards without paying their mana costs.",Colorless,Ugin; Planeswalker; lifegain; card draw; ramp; planeswalker,TDM,1,1
+Stalwart Successor,Creature — Human Warrior,"Menace (This creature can't be blocked except by two or more creatures.)
+Whenever one or more counters are put on a creature you control, if it's the first time counters have been put on that creature this turn, put a +1/+1 counter on that creature.",B/G,Human; Warrior; counters; menace; evasion,TDM,227,1
+Transit Mage,Creature — Human Wizard,"When this creature enters, you may search your library for an artifact card with mana value 4 or 5, reveal it, put it into your hand, then shuffle.",U,Human; Wizard; etb,DFT,70,1
+Alacrian Armory,Artifact,"Creatures you control get +0/+1 and have vigilance.
+At the beginning of combat on your turn, choose up to one target Mount or Vehicle you control. Until end of turn, that permanent becomes saddled if it's a Mount and becomes an artifact creature if it's a Vehicle.",W,pump,DFT,2,1
+Guidelight Pathmaker,Artifact — Vehicle,"Vigilance
+When this Vehicle enters, you may search your library for an artifact card and reveal it. Put it onto the battlefield if its mana value is 2 or less. Otherwise, put it into your hand. If you search your library this way, shuffle.
+Crew 2",W/U,Vehicle; etb; vehicle; vigilance; combat; crew; vehicles,DFT,206,1
+Migrating Ketradon,Creature — Dinosaur,"Reach
+When this creature enters, you gain 4 life.
+Cycling {2} ({2}, Discard this card: Draw a card.)",G,Dinosaur; lifegain; card draw; etb; reach; defense; cycling,DFT,170,1
+Collision Course,Sorcery,"Choose one —
+• Collision Course deals X damage to target creature, where X is the number of permanents you control that are creatures and/or Vehicles.
+• Destroy target artifact.",W,removal; burn,DFT,10,1

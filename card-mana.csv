@@ -2080,6 +2080,22 @@ Force of Will,{3}{U}{U},5,
 Fractal Anomaly,{U},1,
 Duel Tactics,{R},1,Flashback
 "Chandra, Spark Hunter",{3}{R},4,
+Armored Armadillo,{W},1,Ward
+Iron-Fist Pulverizer,{4}{R},5,Reach;Scry
+Holy Cow,{2}{W},3,Scry;Flying;Flash
+Sterling Supplier,{4}{W},5,Flying
+Geyser Drake,{2}{U},3,Flying
+Giant Beaver,{3}{G},4,Saddle;Vigilance
+Twitching Doll,{1}{G},2,
+Zurgo's Vanguard,{2}{R},3,Mobilize
+Sunset Strikemaster,{1}{R},2,
+"Ugin, Eye of the Storms",{7},7,
+Stalwart Successor,{1}{B}{G},3,Menace
+Transit Mage,{2}{U},3,
+Alacrian Armory,{3}{W},4,
+Guidelight Pathmaker,{4}{W}{U},6,Vigilance;Crew
+Migrating Ketradon,{4}{G}{G},6,Reach;Cycling
+Collision Course,{1}{W},2,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3317,13 +3333,11 @@ Vampiric Tutor,{B},1,
 Pyrokinesis,{4}{R}{R},6,
 Maverick Thopterist,{3}{U}{R},5,Improvise
 Air Response Unit,{2}{W},3,Flying;Vigilance;Crew
-Alacrian Armory,{3}{W},4,
 "Basri, Tomorrow's Champion",{W},1,Exert;Cycling
 Brightfield Glider,{W},1,Saddle;Vigilance
 Brightfield Mustang,{3}{W},4,Saddle
 Broadcast Rambler,{4}{W},5,Crew
 Canyon Vaulter,{1}{W},2,
-Collision Course,{1}{W},2,
 Detention Chariot,{4}{W}{W},6,Crew;Cycling
 Gallant Strike,{1}{W},2,Cycling
 Gloryheath Lynx,{1}{W},2,Lifelink;Saddle
@@ -3365,7 +3379,6 @@ Spikeshell Harrier,{4}{U},5,
 Stall Out,{1}{U},2,Cycling
 Thopter Fabricator,{2}{U},3,Flying;Crew
 Trade the Helm,{4}{U},5,Cycling
-Transit Mage,{2}{U},3,
 Unstoppable Plan,{2}{U},3,
 Ancient Vendetta,{3}{B},4,
 Bloodghast,{B}{B},2,Landfall
@@ -3427,7 +3440,6 @@ Fang Guardian,{3}{G},4,Flash
 Fang-Druid Summoner,{3}{G},4,Reach
 Loxodon Surveyor,{2}{G},3,Max speed;Start your engines!
 Lumbering Worldwagon,{2}{G},3,Crew
-Migrating Ketradon,{4}{G}{G},6,Reach;Cycling
 Molt Tender,{G},1,Mill
 Ooze Patrol,{3}{G},4,Mill
 "Oviya, Automech Artisan",{3}{G},4,
@@ -3454,7 +3466,6 @@ Explosive Getaway,{3}{R}{W},5,
 "Far Fortune, End Boss",{2}{B}{R},4,Max speed;Start your engines!
 Fearless Swashbuckler,{1}{U}{R},3,Haste
 Gastal Thrillseeker,{B}{R},2,Max speed;Start your engines!
-Guidelight Pathmaker,{4}{W}{U},6,Vigilance;Crew
 Haunt the Network,{3}{U}{B},5,
 Haunted Hellride,{1}{U}{B},3,Crew
 "Kolodin, Triumph Caster",{R}{W},2,
@@ -4149,7 +4160,6 @@ Say Its Name,{1}{G},2,Mill
 Slavering Branchsnapper,{4}{G}{G},6,Landcycling;Trample;Forestcycling;Typecycling;Cycling
 Spineseeker Centipede,{2}{G},3,Delirium
 Threats Around Every Corner,{3}{G},4,Manifest;Manifest dread
-Twitching Doll,{1}{G},2,
 "Tyvar, the Pummeler",{1}{G}{G},3,
 Under the Skin,{2}{G},3,Manifest;Manifest dread
 Valgavoth's Onslaught,{X}{X}{G},1,Manifest;Manifest dread
@@ -11363,7 +11373,6 @@ Evolutionary Leap,{1}{G},2,
 "Stella Lee, Wild Card",{1}{U}{R},3,
 "Yuma, Proud Protector",{5}{R}{G}{W},8,
 Archangel of Tithes,{1}{W}{W}{W},4,Flying
-Armored Armadillo,{W},1,Ward
 Bounding Felidar,{5}{W},6,Saddle
 Bovine Intervention,{1}{W},2,
 Bridled Bighorn,{3}{W},4,Saddle;Vigilance
@@ -11373,7 +11382,6 @@ Eriette's Lullaby,{1}{W},2,
 "Fortune, Loyal Steed",{2}{W},3,Saddle;Scry
 Frontier Seeker,{1}{W},2,
 High Noon,{1}{W},2,
-Holy Cow,{2}{W},3,Scry;Flying;Flash
 Inventive Wingsmith,{2}{W},3,
 Lassoed by the Law,{3}{W},4,
 Mystical Tether,{2}{W},3,
@@ -11384,7 +11392,6 @@ Prosperity Tycoon,{3}{W},4,
 Shepherd of the Clouds,{4}{W},5,Flying;Vigilance
 Steer Clear,{W},1,
 Sterling Keykeeper,{1}{W},2,
-Sterling Supplier,{4}{W},5,Flying
 Thunder Lasso,{2}{W},3,Equip
 Trained Arynx,{1}{W},2,Saddle;Scry
 Wanted Griffin,{3}{W},4,Flying
@@ -11398,7 +11405,6 @@ Emergent Haunting,{1}{U},2,Surveil
 "Fblthp, Lost on the Range",{1}{U}{U},3,Plot;Ward
 Fleeting Reflection,{1}{U},2,
 "Geralf, the Fleshwright",{2}{U},3,
-Geyser Drake,{2}{U},3,Flying
 Harrier Strix,{U},1,Flying
 Jailbreak Scheme,{U},1,Spree
 The Key to the Vault,{1}{U},2,Equip
@@ -11464,7 +11470,6 @@ Great Train Heist,{R},1,Treasure;Spree
 Hellspur Brute,{4}{R},5,Affinity;Trample
 Hellspur Posse Boss,{2}{R}{R},4,
 Irascible Wolverine,{2}{R},3,Plot
-Iron-Fist Pulverizer,{4}{R},5,Reach;Scry
 Longhorn Sharpshooter,{2}{R},3,Reach;Plot
 Mine Raider,{2}{R},3,Treasure;Trample
 Quick Draw,{R},1,
@@ -11489,7 +11494,6 @@ Drover Grizzly,{2}{G},3,Saddle
 Freestrider Commando,{2}{G},3,Plot
 Freestrider Lookout,{2}{G},3,Reach
 Full Steam Ahead,{3}{G}{G},5,
-Giant Beaver,{3}{G},4,Saddle;Vigilance
 Gold Rush,{1}{G},2,Treasure
 Goldvein Hydra,{X}{G},1,Vigilance;Treasure;Haste;Trample
 Hardbristle Bandit,{1}{G},2,
@@ -13517,7 +13521,6 @@ Felothar the Steadfast,{1}{W}{B}{G},4,
 Ureni of the Unwritten,{4}{G}{U}{R},7,Flying;Trample
 Zurgo Stormrender,{R}{W}{B},3,Mobilize
 A-Cori-Steel Cutter,{1}{R},2,Flurry;Equip
-"Ugin, Eye of the Storms",{7},7,
 Arashin Sunshield,{3}{W},4,
 Bearer of Glory,{1}{W},2,
 Clarion Conqueror,{2}{W},3,Flying
@@ -13592,12 +13595,10 @@ Seize Opportunity,{2}{R},3,
 Shock Brigade,{1}{R},2,Menace;Mobilize
 Stormscale Scion,{4}{R}{R},6,Flying;Storm
 Stormshriek Feral // Flush Out,{4}{R} // {1}{R},5,Flying;Haste
-Sunset Strikemaster,{1}{R},2,
 Tersa Lightshatter,{2}{R},3,Haste
 Twin Bolt,{1}{R},2,
 Underfoot Underdogs,{2}{R},3,
 Wild Ride,{R},1,Harmonize
-Zurgo's Vanguard,{2}{R},3,Mobilize
 Attuned Hunter,{2}{G},3,Trample
 Bloomvine Regent // Claim Territory,{3}{G}{G} // {2}{G},5,Flying
 Encroaching Dragonstorm,{3}{G},4,
@@ -13656,7 +13657,6 @@ Runescale Stormbrood // Chilling Screech,{3}{R} // {1}{U},4,Flying
 Severance Priest,{W}{B}{G},3,Deathtouch
 Songcrafter Mage,{G}{U}{R},3,Flash
 Sonic Shrieker,{2}{R}{W}{B},5,Flying
-Stalwart Successor,{1}{B}{G},3,Menace
 Temur Battlecrier,{G}{U}{R},3,
 "Teval, Arbiter of Virtue",{2}{B}{G}{U},5,Flying;Lifelink
 Thunder of Unity,{R}{W}{B},3,
