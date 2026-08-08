@@ -83,6 +83,7 @@
 1 The Earth Crystal (FIN) 184
 1 Loading Zone (EOE) 196
 1 Michelangelo, Weirdness to 11 (TMT) 121
+1 Stalwart Successor (TDM) 227
 
 # Payoffs — what the counters buy
 1 Mikey & Leo, Chaos & Order (TMT) 158
@@ -112,7 +113,6 @@
 1 Bitter Triumph (SOA) 26
 1 Long Goodbye (MKM) 92
 1 Sephiroth's Intervention (FIN) 116
-1 Withering Torment (DSK) 124
 
 # Lands
 1 Overgrown Tomb (TRK) 289

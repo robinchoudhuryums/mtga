@@ -81,7 +81,7 @@
 # Payoffs (the spend)
 2 Crime Novelist (MKM) 121
 2 Krenko, Baron of Tin Street (MKM) 135
-1 Elvish Archivist (WOE) 168
+1 Twitching Doll (DSK) 201
 1 Chandra, Spark Hunter (DFT) 116
 2 Pirate Peddlers (TLA) 115
 1 Rot-Curse Rakshasa (TDM) 87

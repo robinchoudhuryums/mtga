@@ -57,7 +57,8 @@
 1 Caradora, Heart of Alacria (DFT) 195
 2 Miriam, Herd Whisperer (OTJ) 221
 2 Cloudspire Captain (DFT) 9
-2 Interface Ace (DFT) 17
+1 Interface Ace (DFT) 17
+1 Giant Beaver (OTJ) 165
 2 Frontier Seeker (OTJ) 13
 
 # Mounts (saddled-attack engine)
