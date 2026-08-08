@@ -1,0 +1,101 @@
+#: name: Lethal Protector
+#: format: Standard
+#: colors: BRG
+#: plan: midrange
+#: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is A
+#: tier: (interaction 6 + card advantage 5, protection 2, avg MV 2.92), held UNDER it:
+#: tier: the deck is unplayed, both reanimation leaders are CRAFT targets (Eddie M,
+#: tier: Carnage R) so the core line is aspirational, Eddie's MV<=1 gate reads ⚠ thin
+#: tier: (2 real targets — Spinneret, Masked Meower), and the theme neighbourhood is
+#: tier: crowded (45a at 83% by tags even after the pivot cut the shared engine to 5
+#: tier: cards). The aristocrats spine is real and the interaction is cheap; re-grade
+#: tier: after /log-matches.
+#: archetype: Jund (B/R/G) SYMBIOTE ARISTOCRATS — deck 65's dark-mirror VARIANT. 65
+#: archetype: bounces its OWN board to hand for value; this deck feeds bodies and cards
+#: archetype: to the bin and gets paid three ways: Eddie Brock / Carnage REANIMATE the
+#: archetype: cheap bodies the outlets discarded (Eddie MV<=1: Spinneret, Masked Meower,
+#: archetype: Manifestation; Carnage MV<=3), Venom's attack converts a sacrificed body
+#: archetype: into cards + a free permanent, and the VOID/sac payoffs (Alpharael,
+#: archetype: Insatiable Skittermaw, Lightless Evangel, Osseous Sticktwister) grow off
+#: archetype: every death. The discard outlets (Masked Meower, Spider-Gwen's tap-loot,
+#: archetype: Gristle Glutton, Tweeze, Melded Moxite, Ultimate Green Goblin) pay twice —
+#: archetype: Monument to Endurance on the discard itself, and the yard they fill feeds
+#: archetype: the reanimators, The Final Days' X-token mode and the two mayhem Spiders.
+#: archetype: SPIDER-VERSE copies any non-hand cast the shell produces. PIVOTED AT DRAFT
+#: archetype: TIME (deck-40 precedent): the first list ran the full mayhem/flashback
+#: archetype: engine and `similar` read 85% against deck 45a with 13 shared cards —
+#: archetype: 45a's entire identity IS cast-from-graveyard, so Timeline Culler / Tome
+#: archetype: Blast / Bulk Up x2 / Sandman's Quicksand / Prison Break / Resentful
+#: archetype: Revelation were cut for the aristocrats package above. Mayhem stays as
+#: archetype: SEASONING on two flavour-core cards (Spider-Islanders, Ultimate Green
+#: archetype: Goblin), not as the engine.
+#: protect: Eddie Brock; Spider-Verse; Carnage, Crimson Chaos; Gwenom, Remorseless; Ultimate Green Goblin
+#: notes: Drafted 2026-08-08 as deck 65's Jund variant from the user's seed list (Eddie
+#: notes: Brock, Alien Symbiosis, Carnage, Ultimate Green Goblin, Grub's Command, Venom
+#: notes: Connoisseur, Webstrike Elite + Spider-Verse from the original pile). Grub's
+#: notes: Command is a Goblin kindred card with exactly ONE Goblin (Ultimate Green
+#: notes: Goblin) — its copy mode is narrow here; it earns the slot on the other three
+#: notes: modes (mill 5 fuels the yard, destroy is removal, pump is reach). Watch it.
+#: notes: The discard SEQUENCING note: mayhem windows are "if you discarded it THIS
+#: notes: turn" — pitch the mayhem card, then cast it from the yard the same turn, and
+#: notes: Spider-Verse copies it.
+
+# Reanimation leaders
+1 Eddie Brock // Venom, Lethal Protector (SPM) 55
+1 Carnage, Crimson Chaos (SPM) 125
+
+# The copy payoff
+1 Spider-Verse (SPM) 93
+
+# Mayhem & graveyard-casts (what Spider-Verse copies)
+1 Spider-Islanders (SPM) 91
+1 Ultimate Green Goblin (SPM) 157
+1 Alien Symbiosis (MSC) 791
+1 The Final Days (FIN) 101
+1 Duel Tactics (SOS) 112
+
+# Discard outlets (the yard-fillers)
+1 Masked Meower (MSC) 807
+1 Spider-Gwen, Free Spirit (MSC) 874
+1 Gristle Glutton (ECL) 144
+1 Tweeze (ECL) 162
+1 Melded Moxite (EOE) 143
+1 Monument to Endurance (DFT) 237
+1 Macabre Waltz (FDN) 177
+
+# Spiders, symbiotes & bodies
+1 Venomized Cat (SPM) 72
+1 Lightless Evangel (EOE) 109
+1 Joo Dee, One of Many (TLA) 105
+1 Insatiable Skittermaw (EOE) 108
+1 Alpharael, Stonechosen (EOE) 87
+1 Kindle the Inner Flame (ECL) 147
+1 Revenge of the Rats (FDN) 67
+1 Spinneret and Spiderling (SPM) 94
+1 Gwenom, Remorseless (SPM) 56
+1 Spider-Man Noir (SPM) 67
+3 Spider Manifestation (SPM) 148
+1 Twitching Doll (DSK) 201
+1 Venom Connoisseur (FDN) 648
+1 Webstrike Elite (DFT) 186
+1 Grub's Command (ECL) 228
+
+# Value & interaction
+1 Random Encounter (FIN) 150
+1 Osseous Sticktwister (DSK) 112
+1 Bitter Triumph (SOA) 26
+1 Long Goodbye (MKM) 92
+
+# Lands
+1 Blood Crypt (ECL) 262
+1 Overgrown Tomb (TRK) 289
+1 Blazemire Verge (DSK) 256
+1 Thornspire Verge (DSK) 270
+1 Wastewood Verge (DFT) 268
+1 Temple of Malady (FDN) 700
+1 Temple of Malice (FDN) 701
+1 Ominous Asylum (SPM) 181
+1 Foggy Bottom Swamp (TLA) 269
+5 Swamp (TRK) 321
+5 Mountain (TRK) 323
+5 Forest (TRK) 325

@@ -188,6 +188,7 @@ Imperious Inkmage
 Imperious Perfect
 Improvised Arsenal
 Ingenious Leonin
+Insatiable Skittermaw
 Interface Ace
 Invasion Reinforcements
 Invasion Submersible
@@ -232,6 +233,7 @@ Magitek Armor
 Mai, Scornful Striker
 Mardu Devotee
 Mardu Monument
+Masked Meower
 Mechanical Mobster
 Mechanized Ninja Cavalry
 Metalhead
@@ -387,6 +389,7 @@ United Front
 Unstable Experiment
 Unstoppable Slasher
 Utrom Scientists
+Venomized Cat
 Venus, Torn Between Worlds
 Veteran Ice Climber
 Virtue of Loyalty
