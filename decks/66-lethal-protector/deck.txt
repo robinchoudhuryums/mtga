@@ -3,7 +3,7 @@
 #: colors: BRG
 #: plan: midrange
 #: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is A
-#: tier: (interaction 5 + card advantage 4, protection 3, avg MV 2.72), held UNDER it:
+#: tier: (interaction 5 + card advantage 3, protection 3, avg MV 2.72), held UNDER it:
 #: tier: the deck is unplayed, both reanimation leaders are CRAFT targets (Eddie M,
 #: tier: Carnage R) so the core line is aspirational, Eddie's MV<=1 gate reads ⚠ thin
 #: tier: (2 real targets — Spinneret, Masked Meower), and the theme neighbourhood is
@@ -20,18 +20,20 @@
 #: archetype: into cards + a free permanent, and the VOID/sac payoffs (Alpharael,
 #: archetype: Insatiable Skittermaw, Lightless Evangel, Osseous Sticktwister) grow off
 #: archetype: every death. The discard outlets (Masked Meower, Spider-Gwen's tap-loot,
-#: archetype: Gristle Glutton, Tweeze, Shriek's free main-phase pitch, Titania's cast
-#: archetype: cost and ward, Ultimate Green Goblin) pay twice —
-#: archetype: Monument to Endurance on the discard itself, and the yard they fill feeds
-#: archetype: the reanimators, The Final Days' X-token mode and the two mayhem Spiders.
+#: archetype: Tweeze, Shriek's free main-phase pitch, Titania's cast cost and ward,
+#: archetype: Ninja's Blades on combat damage, Ultimate Green Goblin) pay TWICE — a
+#: archetype: payoff prices the discard itself (Monument to Endurance's three modes,
+#: archetype: Magmakin Artillerist's damage per card binned, Ninja's Blades draining the
+#: archetype: discarded card's mana value), and the yard they fill feeds the reanimators,
+#: archetype: The Final Days' X-token mode and Scarlet Spider's mayhem rebuy.
 #: archetype: SPIDER-VERSE copies any non-hand cast the shell produces. PIVOTED AT DRAFT
 #: archetype: TIME (deck-40 precedent): the first list ran the full mayhem/flashback
 #: archetype: engine and `similar` read 85% against deck 45a with 13 shared cards —
 #: archetype: 45a's entire identity IS cast-from-graveyard, so Timeline Culler / Tome
 #: archetype: Blast / Bulk Up x2 / Sandman's Quicksand / Prison Break / Resentful
 #: archetype: Revelation were cut for the aristocrats package above. Mayhem stays as
-#: archetype: SEASONING on two flavour-core cards (Spider-Islanders, Ultimate Green
-#: archetype: Goblin), not as the engine.
+#: archetype: SEASONING on Ultimate Green Goblin and Scarlet Spider, Kaine, not as the
+#: archetype: engine.
 #: protect: Eddie Brock; Spider-Verse; Carnage, Crimson Chaos; Gwenom, Remorseless; Ultimate Green Goblin
 #: notes: PROMOTED from 65a to standalone deck 66 (2026-08-08). Variant status here
 #: notes: meant SAME PLAN in different colours (the 56/56a, 45/45a precedent); after the
@@ -46,15 +48,23 @@
 #: notes: Command is a Goblin kindred card with exactly ONE Goblin (Ultimate Green
 #: notes: Goblin) — its copy mode is narrow here; it earns the slot on the other three
 #: notes: modes (mill 5 fuels the yard, destroy is removal, pump is reach). Watch it.
-#: notes: 2026-08-08 swaps, both a DELIBERATE trade of card advantage for board and
-#: notes: protection: -Macabre Waltz/+Shriek, Treblemaker and -Melded Moxite/+Titania,
-#: notes: Rugged Rumbler. Card advantage 5 -> 4 (the quality guard flags it, correctly);
-#: notes: protection 2 -> 3, and both adds are discard OUTLETS, which is what the two
-#: notes: cuts were really being paid for. Macabre Waltz went because returning creature
-#: notes: cards to HAND fights a deck that reanimates to the BATTLEFIELD and wants the
-#: notes: yard full (G-42). The deck's real imbalance is still 9 enablers to ~1 card that
-#: notes: cares you discarded (Monument to Endurance) — the next add should be a discard
-#: notes: PAYOFF, not a tenth outlet.
+#: notes: 2026-08-08 REBALANCE, four swaps in one pass, all fixing one measured
+#: notes: imbalance: the deck had 9 cards that made you discard and ONE that cared you
+#: notes: had (Monument to Endurance). -Macabre Waltz/+Shriek, Treblemaker ·
+#: notes: -Melded Moxite/+Titania, Rugged Rumbler · -Gristle Glutton/+Magmakin
+#: notes: Artillerist · -Spider-Islanders/+Ninja's Blades. Payoffs 1 -> 3, protection
+#: notes: 2 -> 3, interaction FLAT at 5, avg MV 2.67 -> 2.72. Macabre Waltz went because
+#: notes: returning creature cards to HAND fights a deck that reanimates to the
+#: notes: BATTLEFIELD and wants the yard full (G-42); Gristle Glutton was the only outlet
+#: notes: charging a board cost (Blight 1) against 14 bodies of toughness <=2.
+#: notes: THE COST, stated plainly: card advantage 5 -> 3 across the pass, flagged by the
+#: notes: quality guard each time and accepted each time. The A floor survives it
+#: notes: (interaction 5 + card adv 3 = 8, against 5 and 7), but this axis has no slack
+#: notes: left — the NEXT add here should be card advantage, not a fifth payoff. Two
+#: notes: K-12 caveats on that 3: Ninja's Blades draws then discards, so it is genuinely
+#: notes: card-NEUTRAL and correctly uncounted, but Symbiote Spider-Man's combat-damage
+#: notes: dig and Spinneret's exile-and-play are both real card advantage the classifier
+#: notes: does not read. Hand-count before acting on the number.
 #: notes: The discard SEQUENCING note: mayhem windows are "if you discarded it THIS
 #: notes: turn" — pitch the mayhem card, then cast it from the yard the same turn, and
 #: notes: Spider-Verse copies it.
@@ -67,20 +77,20 @@
 1 Spider-Verse (SPM) 93
 
 # Mayhem & graveyard-casts (what Spider-Verse copies)
-1 Spider-Islanders (SPM) 91
 1 Ultimate Green Goblin (SPM) 157
 1 Alien Symbiosis (MSC) 791
 1 The Final Days (FIN) 101
 1 Scarlet Spider, Kaine (SPM) 143
 
-# Discard outlets (the yard-fillers)
+# Discard engine — outlets (fill the yard) and the payoffs that price the discard
 1 Masked Meower (MSC) 807
 1 Spider-Gwen, Free Spirit (MSC) 874
-1 Gristle Glutton (ECL) 144
 1 Tweeze (ECL) 162
 1 Titania, Rugged Rumbler (MSH) 235
-1 Monument to Endurance (DFT) 237
 1 Shriek, Treblemaker (SPM) 144
+1 Monument to Endurance (DFT) 237
+1 Magmakin Artillerist (DFT) 137
+1 Ninja's Blades (FIN) 108
 
 # Spiders, symbiotes & bodies
 1 Venomized Cat (SPM) 72
