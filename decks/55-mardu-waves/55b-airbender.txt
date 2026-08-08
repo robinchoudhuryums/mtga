@@ -2,18 +2,23 @@
 #: format: Standard
 #: colors: RWB
 #: plan: midrange
-#: archetype: MARDU EXILE-CAST (the C1 axis from the 131-card pile analysis). Two
+#: archetype: MARDU EXILE-CAST (the C1 axis from the 131-card pile analysis). Three
 #: archetype: payoffs count every spell cast from anywhere other than the hand: Fire
 #: archetype: Lord Zuko grows per exile-cast (and firebending scales with his own
 #: archetype: size), Appa makes an Ally per exile-cast and flash-saves the nontoken
-#: archetype: board from a wrath. The enabler suite is every exile-cast shape in the
-#: archetype: colors: warp (Knight Luminary), plot (Aven Interrupter plotting a spell —
+#: archetype: board from a wrath, and Shadow of the Goblin — an ENCHANTMENT, so it
+#: archetype: dodges the creature removal the tier note worries about — pings each
+#: archetype: opponent per exile-cast. The enabler suite is every exile-cast shape in
+#: archetype: the colors: warp (Knight Luminary, Haliya, Weftstalker Ardent, Starfield
+#: archetype: Shepherd, Exalted Sunborn), plot (Aven Interrupter plotting a spell —
 #: archetype: theirs or ours — off the stack, Demonic Ruckus, Longhorn Sharpshooter),
 #: archetype: adventure (Heartflame Duelist), Appa's own airbend returns
 #: archetype: at {2}, and Bre's end-step free cast off lifegain — which the
 #: archetype: interaction package (Lightning Helix, Sheltered by Ghosts, Prayer of
 #: archetype: Binding, Defibrillating Current, Heartflame's lifelink) feeds on purpose.
-#: archetype: White token base (Suki, Frontline Rush, Cosmogrand) keeps the board wide.
+#: archetype: White token base (Suki, Frontline Rush, Cosmogrand) keeps the board wide,
+#: archetype: and Exalted Sunborn DOUBLES every token it makes — Appa's Allies,
+#: archetype: Antiquities' Spirits, Cosmogrand's Soldiers, Frontline Rush's Goblins.
 #: archetype: Distinct from 55 (combat pulse) and 55a (cast cadence). Deck 45 Exile
 #: archetype: Dividend shares the trigger and two payoffs (Zuko, Appa — same copies,
 #: archetype: decks share the collection): the decks differ in HOW the exile-cast
@@ -38,35 +43,53 @@
 #: notes: tooling can't see: Zuko and Appa trigger on casts FROM EXILE only — the
 #: notes: flashback spells (Antiquities, Auron's, Practiced) cast from the GRAVEYARD
 #: notes: and do NOT feed them; flashback is here for Antiquities' own not-from-hand
-#: notes: bonus and raw value. The exile-cast count that feeds the payoffs: 9 enabler
-#: notes: cards (warp 2, plot 5, adventure 2), plus Appa's airbend returns and Bre's
+#: notes: bonus and raw value. The exile-cast count that feeds the payoffs: 11 enabler
+#: notes: cards (warp 6, plot 4, adventure 1), plus Appa's airbend returns and Bre's
 #: notes: end-step cast generating more from the payoff side. E-04: exiled
 #: notes: TOKENS die, so Appa's wrath-dodge saves only the nontoken board — Suki's
 #: notes: Allies and Antiquities' Spirits are lost; weigh that before dodging. Scout
 #: notes: for Survivors' MV<=3-total mass reanimate has real targets here (Mardu
-#: notes: Devotee 1, Aven Interrupter 2, Bre 2 — pairs sum to 3). Deliberately NOT
+#: notes: Devotee, Aven Interrupter, plus the MV-3 warp bodies Haliya and Weftstalker
+#: notes: singly; Bre at MV 4 never qualified). Deliberately NOT
 #: notes: included: Group Project (E-02 — its flashback taps three untapped creatures
 #: notes: against a deck that attacks wide); Electro's Bolt mayhem (needs the discard
 #: notes: outlets that live in 55a, and blind discard fights no engine here).
 #: notes: ROTATION (deck.py rotation): Heartflame Duelist (WOE) and Quintorius Kand
 #: notes: (LCI) rotate ~2026; the plot suite (Aven, Ruckus, Longhorn — OTJ) plus
-#: notes: Lightning Helix and Push // Pull rotate ~2027. The plot suite is the
-#: notes: exile-cast spine, so the deck needs a re-draft at the 2027 rotation.
+#: notes: Lightning Helix and Push // Pull rotate ~2027. The plot half of the
+#: notes: exile-cast spine rotates 2027, but the 2026-08-08 dedup pass moved the
+#: notes: spine's weight onto the EOE warp package, which is long-legal.
+#: notes: 2026-08-08 DEDUP PASS (user-decided, applied in Arena first): the five
+#: notes: rare/mythic SECOND copies (Zuko, Bre, Aven, Antiquities, Heartflame) came out
+#: notes: for five DISTINCT cards — Shadow of the Goblin (craft R, a third payoff on a
+#: notes: removal-dodging card type) plus four owned warp bodies (Haliya, Weftstalker
+#: notes: Ardent, Starfield Shepherd, Exalted Sunborn). Reasoning: Zuko/Bre are
+#: notes: LEGENDS, so a second copy is never on the battlefield with the first; the two
+#: notes: rotating rares were bad crafts anyway; and every warp body is itself an
+#: notes: exile-cast trigger on the return trip. Craft plan fell from 2 mythic + 5 rare
+#: notes: (all duplicates) to 1 mythic + 1 rare (2nd Appa — kept, flash wrath-save has
+#: notes: no substitute — and Shadow). Cosmogrand was never short: library undercounted
+#: notes: it at 1, corrected to the real 2 this same day.
 #~ -Snow Villiers | +Red Tiger Mechan (craft C) | warp is a 10th exile-cast enabler feeding Zuko/Appa/Quintorius on the recast; Snow is the least engine-connected body. Confirmed direction 2026-08; craft when wildcards allow.
 
 # Exile-cast payoffs
-2 Fire Lord Zuko (TLA) 221
+1 Fire Lord Zuko (TLA) 221
+1 Shadow of the Goblin (SPM) 87
 2 Appa, Steadfast Guardian (TLA) 10
-2 Bre of Clan Stoutarm (ECL) 207
+1 Bre of Clan Stoutarm (ECL) 207
+1 Haliya, Guided by Light (EOE) 19
 1 Quintorius Kand (LCI) 238
 
 # Exile-cast enablers (warp / plot / adventure / flashback)
 2 Knight Luminary (EOE) 23
-2 Aven Interrupter (OTJ) 4
-2 Antiquities on the Loose (SOS) 7
+1 Aven Interrupter (OTJ) 4
+1 Weftstalker Ardent (EOE) 169
+1 Antiquities on the Loose (SOS) 7
+1 Starfield Shepherd (EOE) 37
 2 Demonic Ruckus (OTJ) 120
 1 Longhorn Sharpshooter (OTJ) 132
-2 Heartflame Duelist // Heartflame Slash (WOE) 228
+1 Heartflame Duelist // Heartflame Slash (WOE) 228
+1 Exalted Sunborn (EOE) 15
 1 Auron's Inspiration (FIN) 8
 1 Practiced Offense (SOS) 25
 
