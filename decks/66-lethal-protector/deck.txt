@@ -109,7 +109,7 @@
 5 Mountain (TRK) 323
 5 Forest (TRK) 325
 
-# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 65a
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 66
 #~ -Grub's Command | +Spider-Man, To the Rescue | OWNED, castable on {G/W} hybrid: flash indestructible for the invested body (Gwenom/Venom) — protection is this deck's thinnest axis (2). Take it if Grub's one-Goblin copy mode keeps disappointing
 #~ note: applied — Spider-Punk in for Random Encounter.
 #~ -Osseous Sticktwister | +Web-Warriors | OWNED x2, castable on {G/W}: a counter on EVERY other creature — the go-wide read of the same slot; Final Days tokens make it live
