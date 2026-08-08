@@ -1,6 +1,6 @@
 #: name: Hulk Smash
 #: format: Standard
-#: tier: A — Gruul aggro/smash; low curve (2.81) + 8 interaction
+#: tier: A — Gruul aggro/smash; low curve (2.75) + 8 interaction
 #: colors: RG
 #: archetype: Gruul (R/G) big creatures / smash.
 #: notes: Gruul (R/G) — big creatures / smash.
@@ -18,7 +18,7 @@
 1 Powerful Broker (MSH) 179
 1 Heroic Feast (MSH) 172
 1 Synchronized Charge (TDM) 162
-1 Training Regimen (MSH) 192
+1 Mutagen Man, Living Ooze (TMT) 124
 1 Go Nuts! (MSH) 168
 1 The Unbeatable Squirrel Girl (MSH) 193
 1 Kav Landseeker (EOE) 138
@@ -52,7 +52,7 @@
 
 # Flex — STANDARD-LEGAL craft targets, weighted so you don't waste wildcards. See: deck.py flex 9
 #~ -Pain for All | +Sharp-Eyed Rookie | CRAFT (R) ★ but ⚠rot~2027 (MKM): vigilance body that grows a counter AND investigates whenever a bigger creature enters — the card-advantage-plus-counters engine the deck lacks. Re-graded 2026-08: still a marked upgrade with ~1y of Standard left, but Mutagen Man (below, rotation-safe) is now the better first craft at the same ★
-#~ -Training Regimen | +Mutagen Man, Living Ooze | CRAFT (R) ★ MARKED UPGRADE: trample body that makes X Mutagen tokens (each a counter) and cheapens your artifact-token abilities (Mutagen/Food/Lander — NOT Treasure, whose cost is tap+sac with no mana to reduce) — trades a 2-for-1 aura risk for a resilient counters payoff. Fits 10 decks
+#~ note: applied — Mutagen Man, Living Ooze in for Training Regimen.
 #~ -Goldvein Pick | +Bioengineered Future | CRAFT (R) ~ SIDEGRADE: every creature enters with a counter per land that entered — good, but needs landfall you only partly support; skip unless you lean into landers
 #~ note: owned adds already done — Michelangelo, Weirdness to 11 (counter amplifier) and Ka-Zar (card advantage) beat anything craftable for THIS deck. The crafts above earn their wildcard mostly on cross-deck reuse (10 decks each).
 #~ +Lasting Tarfire | OWNED: {1}{R} enchantment — "at each end step, if you put a counter on a creature this turn, deal 2 damage to each opponent." A recurring reach/burn engine (this counters deck puts counters most turns) that patches the thin direct-damage. Maindecked in deck 30; fungible, promote here over a weak combat trick if you want the reach.
