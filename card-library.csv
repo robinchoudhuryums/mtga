@@ -4465,3 +4465,14 @@ Cycling {2} ({2}, Discard this card: Draw a card.)",G,Dinosaur; lifegain; card d
 Collision Course,Sorcery,"Choose one —
 • Collision Course deals X damage to target creature, where X is the number of permanents you control that are creatures and/or Vehicles.
 • Destroy target artifact.",W,removal; burn,DFT,10,1
+Improvised Arsenal,Artifact — Equipment,"Equipped creature gets +1/+0 for each artifact you control.
+{4}{R}: Create a token that's a copy of this Equipment.
+Equip {R}",R,Equipment; tokens; equipment; pump; equip,TMT,92,1
+Anticausal Vestige,Creature — Eldrazi,"When this creature leaves the battlefield, draw a card, then you may put a permanent card with mana value less than or equal to the number of lands you control from your hand onto the battlefield tapped.
+Warp {4} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",Colorless,Eldrazi; exile cast; card draw; warp; tempo; cost-reduction,EOE,1,1
+The Ooze,Legendary Artifact,"Whenever a creature you control with a +1/+1 counter on it leaves the battlefield, create a Mutagen token for each +1/+1 counter on it. (A Mutagen token is an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")
+{T}: Exile target card from a graveyard. Create a Mutagen token.",Colorless,counters; reanimator; graveyard; sacrifice; tokens; removal,TMT,177,1
+Full Bore,Instant,"Target creature you control gets +3/+2 until end of turn. If that creature was cast for its warp cost, it also gains trample and haste until end of turn.",R,exile cast; pump,EOE,135,1
+"Iron Spider, Stark Upgrade",Legendary Artifact Creature — Spider Hero,"Vigilance
+{T}: Put a +1/+1 counter on each artifact creature and/or Vehicle you control.
+{2}, Remove two +1/+1 counters from among artifacts you control: Draw a card.",Colorless,Spider; Hero; counters; card draw; vigilance; combat,SPM,166,1

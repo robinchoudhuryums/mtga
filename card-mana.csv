@@ -2096,6 +2096,11 @@ Alacrian Armory,{3}{W},4,
 Guidelight Pathmaker,{4}{W}{U},6,Vigilance;Crew
 Migrating Ketradon,{4}{G}{G},6,Reach;Cycling
 Collision Course,{1}{W},2,
+Improvised Arsenal,{1}{R},2,Equip
+Anticausal Vestige,{6},6,Warp
+The Ooze,{2},2,
+Full Bore,{R},1,
+"Iron Spider, Stark Upgrade",{3},3,Vigilance
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -4661,7 +4666,6 @@ Command Tower,,0,
 "Inspirit, Flagship Vessel",{U}{R}{W},3,Station
 "Kilo, Apogee Mind",{U}{R}{W},3,Haste;Proliferate
 "Szarel, Genesis Shepherd",{2}{B}{R}{G},5,Flying
-Anticausal Vestige,{6},6,Warp
 All-Fates Stalker,{3}{W},4,Warp
 Astelli Reclaimer,{3}{W}{W},5,Flying;Warp
 Auxiliary Boosters,{4}{W},5,Equip
@@ -4730,7 +4734,6 @@ Voidforged Titan,{4}{B},5,Void
 Zero Point Ballad,{X}{B},1,
 Debris Field Crusher,{4}{R},5,Station
 Drill Too Deep,{1}{R},2,
-Full Bore,{R},1,
 Galvanizing Sawship,{5}{R},6,Station
 Kavaron Harrier,{R},1,
 Lithobraking,{2}{R},3,
@@ -13193,7 +13196,6 @@ Superior Spider-Man,{2}{U}{B},4,Mind Swap
 "Vulture, Scheming Scavenger",{5}{U/B},6,Flying
 Bagel and Schmear,{1},1,Nosh;Share
 Doc Ock's Tentacles,{1},1,Equip
-"Iron Spider, Stark Upgrade",{3},3,Vigilance
 "Living Brain, Mechanical Marvel",{4},4,
 Passenger Ferry,{3},3,Crew
 Peter Parker's Camera,{1},1,
@@ -14221,7 +14223,6 @@ Splinter's Technique,{3}{B},4,Sneak
 Squirrelanoids,{B},1,Deathtouch
 "Casey Jones, Vigilante",{1}{R}{R},3,
 Cool but Rude,{1}{R},2,
-Improvised Arsenal,{1}{R},2,Equip
 Mouser Attack!,{1}{R},2,
 Raphael's Technique,{4}{R}{R},6,Sneak
 Ravenous Robots,{1}{R},2,
@@ -14241,7 +14242,6 @@ Lessons from Life,{2}{G}{U},4,
 "Tokka & Rahzar, Terrible Twos",{B/R}{B/R},2,Menace
 Chrome Dome,{2},2,
 Henchbots,{4},4,
-The Ooze,{2},2,
 Skateboard,{1},1,Equip
 Turtle Van,{3},3,Crew;Double
 Weather Maker,{3},3,Landfall
