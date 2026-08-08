@@ -32,6 +32,11 @@
 #: protect: Peter Parker; Mary Jane Watson; Spiders-Man, Heroic Horde; Spider-Ham, Peter Porker; Madame Web, Clairvoyant
 #: notes: Built 2026-08-08 from the user's 72-card Spider pile (census in chat; the SPM
 #: notes: set is nearly all Standard-legal and the GWU cluster holds every payoff).
+#: notes: SIBLING DECK: the Jund symbiote-aristocrats list drafted alongside this one is
+#: notes: deck 66 (Lethal Protector), NOT a variant of this deck — it was promoted to
+#: notes: standalone on 2026-08-08 once the two shared ~3 cards and opposite engines.
+#: notes: Same flavour universe, different resource: 65 bounces its board to HAND, 66
+#: notes: feeds its board to the GRAVEYARD. Cards castable in both are shared freely.
 #: notes: BOUNCE-COST ACCOUNTING, the number to watch in games: web-slinging and Urban
 #: notes: Retreat consume TAPPED creatures — attack first, bounce the survivor. The
 #: notes: deck wants ~3+ cheap re-buyable ETBs on board by turn 4.

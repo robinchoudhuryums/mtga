@@ -10,9 +10,11 @@
 #: tier: crowded (45a at 83% by tags even after the pivot cut the shared engine to 5
 #: tier: cards). The aristocrats spine is real and the interaction is cheap; re-grade
 #: tier: after /log-matches.
-#: archetype: Jund (B/R/G) SYMBIOTE ARISTOCRATS — deck 65's dark-mirror VARIANT. 65
-#: archetype: bounces its OWN board to hand for value; this deck feeds bodies and cards
-#: archetype: to the bin and gets paid three ways: Eddie Brock / Carnage REANIMATE the
+#: archetype: Jund (B/R/G) SYMBIOTE ARISTOCRATS — a STANDALONE deck that began life as
+#: archetype: deck 65's variant and was PROMOTED 2026-08-08 (see #: notes:). It shares
+#: archetype: the Spider-Man flavour with 65 and almost nothing else: 65 bounces its OWN
+#: archetype: board to hand for value; this deck feeds bodies and cards to the bin and
+#: archetype: gets paid three ways: Eddie Brock / Carnage REANIMATE the
 #: archetype: cheap bodies the outlets discarded (Eddie MV<=1: Spinneret, Masked Meower,
 #: archetype: Manifestation; Carnage MV<=3), Venom's attack converts a sacrificed body
 #: archetype: into cards + a free permanent, and the VOID/sac payoffs (Alpharael,
@@ -30,6 +32,13 @@
 #: archetype: SEASONING on two flavour-core cards (Spider-Islanders, Ultimate Green
 #: archetype: Goblin), not as the engine.
 #: protect: Eddie Brock; Spider-Verse; Carnage, Crimson Chaos; Gwenom, Remorseless; Ultimate Green Goblin
+#: notes: PROMOTED from 65a to standalone deck 66 (2026-08-08). Variant status here
+#: notes: meant SAME PLAN in different colours (the 56/56a, 45/45a precedent); after the
+#: notes: draft-time pivot and the full pile sweep these two shared ~3 cards and opposite
+#: notes: engines, so the label claimed a mechanical kinship that does not exist. It also
+#: notes: cost information: `suggest`'s cross-deck Decks column COLLAPSES variants into
+#: notes: their core deck (G-28), so every card that fits this deck was having its
+#: notes: breadth score quietly deflated. A flavour FAMILY is not a mechanical variant.
 #: notes: Drafted 2026-08-08 as deck 65's Jund variant from the user's seed list (Eddie
 #: notes: Brock, Alien Symbiosis, Carnage, Ultimate Green Goblin, Grub's Command, Venom
 #: notes: Connoisseur, Webstrike Elite + Spider-Verse from the original pile). Grub's
