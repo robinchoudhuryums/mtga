@@ -55,7 +55,7 @@
 
 # Ooze bodies & spice
 1 Putrid Pals (TMT) 165
-1 Hecteyes (FIN) 103
+1 Mutagen Man, Living Ooze (TMT) 124
 1 Slick Imitator (DFT) 62
 
 # Yard-dependent payoffs
