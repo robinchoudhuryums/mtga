@@ -359,6 +359,8 @@ Splatter Technique,Sorcery,"Choose one —
 Steal the Show,Sorcery,"Choose one or both —
 • Target player discards any number of cards, then draws that many cards.
 • Steal the Show deals damage equal to the number of instant and sorcery cards in your graveyard to target creature or planeswalker.",R,graveyard; discard,SOS,130,Rare,,,5.5,seed
+Stormcarved Coast,Land,"This land enters tapped unless you control two or more other lands.
+{T}: Add {U} or {R}.",U/R,mana,SOS,263,Rare,26,"untapped from your 3rd land on, so it is live for Tannuk's {R}{R} on turn 4 and the 5-drops. Prefer over Spirebluff Canal, which is tapped on exactly that turn. Craft over a tapped dual, not an Island, to keep source counts.",4.0,seed
 Sundown Pass,Land,"This land enters tapped unless you control two or more other lands.
 {T}: Add {R} or {W}.",W/R,mana,SOS,264,Rare,general,"WR fixing land — generic fixing, not earthbend-specific",5.0,hand
 Together as One,Sorcery,"Converge — Target player draws X cards, Together as One deals X damage to any target, and you gain X life, where X is the number of colors of mana spent to cast this spell.",Colorless,burn; converge; multicolor,SOS,4,Rare,17,Converge payoff (draw/burn/gain X = colors spent) — rewards the 5-color manabase,4.5,hand
@@ -457,7 +459,7 @@ Whenever Slash attacks, create a 2/2 red Mutant creature token.",R,Mutant; Berse
 Splinter's Technique,Sorcery,"Sneak {1}{B} (You may cast this spell for {1}{B} if you also return an unblocked attacker you control to hand during the declare blockers step.)
 Search your library for a card, put that card into your hand, then shuffle.",B,sneak; tempo; cost-reduction,TMT,80,Rare,20,Ninja sneak tempo,5.0,hand
 The Ooze,Legendary Artifact,"Whenever a creature you control with a +1/+1 counter on it leaves the battlefield, create a Mutagen token for each +1/+1 counter on it. (A Mutagen token is an artifact with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")
-{T}: Exile target card from a graveyard. Create a Mutagen token.",Colorless,counters; reanimator; graveyard; sacrifice; tokens; removal,TMT,177,Rare,general,counters payoff: +1/+1-counter creature dies -> Mutagen counter-tokens — fits Quantum Realm,4.5,hand
+{T}: Exile target card from a graveyard. Create a Mutagen token.",Colorless,counters; reanimator; graveyard; sacrifice; tokens; removal,TMT,177,Rare,4; 26,"counters payoff: +1/+1-counter creature dies -> Mutagen counter-tokens — fits Quantum Realm. ALSO deck 26 (2026-08): Mutagens are ARTIFACTS, so counters convert into artifact count for Iron Man / Machinesmith / Ultron, warp self-exile supplies the leaves-the-battlefield trigger, and at {2} colorless it feeds Ugin too. Power 4.5 left as previously hand-graded; it plays above that in an artifact shell specifically.",4.5,hand
 Transdimensional Bovine,Creature — Ox Avatar,"Flying
 {T}: Add two mana of any one color.",G,Ox; Avatar; mana; flying; evasion,TMT,134,Rare,17,"best 19a (Bird Brain — Bant Tokens); also 17,19b,20b",4.5,hand
 Turtle Power!,Enchantment,"Flash
