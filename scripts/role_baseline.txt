@@ -266,6 +266,7 @@ Pain 101
 Pain for All
 Paradox Surveyor
 Pet Avengers
+Peter Parker
 Powerful Broker
 Pride of the Road
 Prideful Parent
@@ -313,12 +314,14 @@ Shredder, Unrelenting
 Shrike Force
 Silent Hallcreeper
 Silvergill Mentor
+Skyward Spider
 Slick Imitator
 Slime Against Humanity
 Snow Villiers
 Soul Immolation
 Sovereign Okinec Ahau
 Sozin's Comet
+Spider-Man, Web-Slinger
 Spider-Rex, Daring Dino
 Spider-Suit
 Spider-Woman, Secret Agent
@@ -405,6 +408,7 @@ Waterwind Scout
 Waxen Shapethief
 Weapons Vendor
 Web-Shooters
+Web-Warriors
 Weftblade Enhancer
 Welcome to Sweettooth
 White Tiger, Ava Ayala

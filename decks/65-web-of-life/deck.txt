@@ -1,0 +1,111 @@
+#: name: Web of Life
+#: format: Standard
+#: colors: GWU
+#: plan: midrange
+#: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is A
+#: tier: (interaction 7 + card advantage 3, protection 4, avg MV 2.97) and the letter is
+#: tier: held UNDER it deliberately: the re-buy engine pays its cost in TEMPO (a
+#: tier: web-slinging cast returns a body you already paid for), which no metric here
+#: tier: prices; card advantage rests heavily on one craft target (Mary Jane); and the
+#: tier: engine's leader must transform through {1}{G}{W}{U} before the discount line
+#: tier: comes online. Protection 4 is real (Spectacular, To the Rescue, Skyward ward,
+#: tier: Daydream) — this deck does NOT have the zero-protection hole its sibling brews
+#: tier: were flagged for. Re-grade after /log-matches.
+#: archetype: Bant (G/W/U) SPIDERS — web-slinging ETB RE-BUY tribal. The engine is Peter
+#: archetype: Parker's back face: every coloured legendary spell gains web-slinging
+#: archetype: {G}{W}{U}, cast by RETURNING A TAPPED CREATURE YOU CONTROL — and this list
+#: archetype: is deliberately full of legendary Spiders with ETB triggers, so a tapped
+#: archetype: attacker becomes the next spell's discount and re-enters later for another
+#: archetype: trigger. Mary Jane Watson converts each Spider entry into a card; Aunt May
+#: archetype: converts it into lifegain + a counter; Wall Crawl / Spider-Ham anthem the
+#: archetype: board and Web-Warriors showers counters. Five cards carry NATIVE
+#: archetype: web-slinging (Spiders-Man, Web-Slinger, Brooklyn Visionary, India, Silk,
+#: archetype: Spider-UK, Spider-Sense) so the bounce line works before Peter transforms.
+#: archetype: THE INTERACTION IS THE ENGINE WEARING REMOVAL'S CLOTHES: Getaway Glamer and
+#: archetype: Daydream flicker/reset your own ETB Spiders at instant speed, Boomerang
+#: archetype: Basics re-buys and draws, Spider-Byte and Spider-Woman answer the board on
+#: archetype: a Spider body, and Urban Retreat is a LAND that costs a tapped-creature
+#: archetype: bounce — the engine's cost stapled to a land drop. DISTINCTNESS vs deck 7
+#: archetype: (Selesnya go-wide heroes): different colours (adds U), different engine
+#: archetype: (bounce-recast value loop, not anthem swarm), and a TRIBAL payoff base the
+#: archetype: G-59 census verified at 12 real payoffs — deck 7 has none of this class.
+#: protect: Peter Parker; Mary Jane Watson; Spiders-Man, Heroic Horde; Spider-Ham, Peter Porker; Madame Web, Clairvoyant
+#: notes: Built 2026-08-08 from the user's 72-card Spider pile (census in chat; the SPM
+#: notes: set is nearly all Standard-legal and the GWU cluster holds every payoff).
+#: notes: BOUNCE-COST ACCOUNTING, the number to watch in games: web-slinging and Urban
+#: notes: Retreat consume TAPPED creatures — attack first, bounce the survivor. The
+#: notes: deck wants ~3+ cheap re-buyable ETBs on board by turn 4.
+#: notes: OFF-DIRECTION pile cards, decided against with reasons: Spider Manifestation
+#: notes: x3 / Spider-Gwen / Spinneret / Masked Meower / Spider-Punk / Scarlet Spiders /
+#: notes: 2099 (R or B costs — a Naya/Jund Spider list is a different deck); Miles
+#: notes: Morales (front {1}{G} castable but his TRANSFORM needs {R} this base cannot
+#: notes: pay — the flip is the card); Morlun ({X}{B}{B}); Gwenom/Noir/Symbiote/Superior
+#: notes: (B); Cosmic Spider-Man (WUBRG — a 5c Spiders list is the OTHER other deck);
+#: notes: Spider-Verse (R); Blech (needs B; the lifegain->counters loop is the Abzan
+#: notes: variant's reason to exist); Spider-Rex ({4}{G}{G} pips), Treetop Snarespinner
+#: notes: (vanilla-adjacent), Web of Life and Destiny ({6}{G}{G} — name kept, card cut),
+#: notes: Relentless X-ATM092 / Spider-Bot / Spider-Mobile / Origin of Spider-Man /
+#: notes: Web-Shooters / Web Up / Thwip! / Pictures of Spider-Man / Grow Extra Arms /
+#: notes: Radioactive Spider (weaker than the 60's incumbents on text read); Doc Samson /
+#: notes: Wolverine / Hulk / Shang-Chi / Iron Fist / War Machine / Guy's non-Spider
+#: notes: friends (off-tribe, off-engine).
+
+# The leader
+1 Peter Parker (SPM) 10
+
+# Native web-slingers (the bounce line before Peter transforms)
+1 Spiders-Man, Heroic Horde (SPM) 117
+1 Spider-Man, Web-Slinger (MSC) 776
+1 Spider-Man, Brooklyn Visionary (SPM) 115
+1 Spider-Man India (SPM) 151
+1 Silk, Web Weaver (SPM) 145
+1 Spider-UK (MSC) 777
+1 Spider-Sense (SPM) 46
+
+# ETB Spiders (what the re-buy re-buys)
+1 Sun-Spider, Nimble Webber (SPM) 154
+1 Spider-Woman, Secret Agent (MSH) 229
+1 SP//dr, Piloted by Peni (SPM) 147
+1 Spider-Byte, Web Warden (SPM) 44
+1 Spinner of Souls (FDN) 112
+
+# Payoffs (what each entry pays)
+1 Mary Jane Watson (SPM) 134
+1 Wall Crawl (SPM) 121
+1 Spider-Ham, Peter Porker (SPM) 114
+1 Ezekiel Sims, Spider-Totem (SPM) 100
+2 Web-Warriors (SPM) 159
+2 Guy in the Chair (SPM) 102
+1 Madame Web, Clairvoyant (SPM) 36
+2 Skyward Spider (SPM) 146
+
+# Bodies & utility
+1 Spider-Man, To the Rescue (MSH) 228
+1 Twitching Doll (DSK) 201
+1 Iron Spider, Stark Upgrade (SPM) 166
+1 Spectacular Spider-Man (SPM) 14
+1 Aunt May (MSC) 768
+1 Spider-Suit (SPM) 176
+
+# Interaction (mostly the engine wearing removal's clothes)
+1 Getaway Glamer (OTJ) 14
+1 Daydream (SOS) 9
+1 Erode (SOS) 15
+1 Broken Wings (FDN) 214
+1 Boomerang Basics (TLA) 46
+
+# Lands
+1 Breeding Pool (EOE) 251
+1 Hallowed Fountain (ECL) 265
+1 Urban Retreat (SPM) 187
+1 Willowrush Verge (DFT) 270
+1 Floodfarm Verge (DSK) 259
+1 Hushwood Verge (DSK) 261
+1 Dreamroot Cascade (SOS) 254
+1 Restless Anchorage (LCI) 280
+1 Temple of Enlightenment (FDN) 698
+1 Gathering Place (MSH) 266
+1 Gleaming Bastion (MSH) 267
+5 Forest (TRK) 325
+5 Plains (TRK) 317
+4 Island (TRK) 319
