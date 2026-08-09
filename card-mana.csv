@@ -2102,6 +2102,12 @@ The Ooze,{2},2,
 Full Bore,{R},1,
 "Iron Spider, Stark Upgrade",{3},3,Vigilance
 "Mutagen Man, Living Ooze",{X}{G}{G},2,Trample
+"Ruby, Daring Tracker",{R}{G},2,Haste
+Thunderous Velocipede,{1}{G}{G},3,Crew;Trample
+Ancient Vendetta,{3}{B},4,
+Midnight Mangler,{1}{U},2,Crew
+Maximum Overdrive,{1}{B},2,
+Spikeshell Harrier,{4}{U},5,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3371,7 +3377,6 @@ Guidelight Optimizer,{1}{U},2,
 Hulldrifter,{3}{U}{U},5,Flying;Crew
 Keen Buccaneer,{2}{U},3,Vigilance;Exhaust
 Memory Guardian,{4}{U},5,Flying;Affinity
-Midnight Mangler,{1}{U},2,Crew
 Nimble Thopterist,{3}{U},4,
 Possession Engine,{3}{U}{U},5,Crew
 Rangers' Refueler,{1}{U},2,Crew;Exhaust
@@ -3381,12 +3386,10 @@ Sabotage Strategist,{2}{U}{U},4,Flying;Vigilance;Exhaust
 Skystreak Engineer,{1}{U},2,Flying;Exhaust
 Slick Imitator,{1}{U},2,Max speed;Start your engines!
 Spectral Interference,{1}{U},2,
-Spikeshell Harrier,{4}{U},5,
 Stall Out,{1}{U},2,Cycling
 Thopter Fabricator,{2}{U},3,Flying;Crew
 Trade the Helm,{4}{U},5,Cycling
 Unstoppable Plan,{2}{U},3,
-Ancient Vendetta,{3}{B},4,
 Bloodghast,{B}{B},2,Landfall
 Carrion Cruiser,{2}{B},3,Crew;Mill
 Chitin Gravestalker,{5}{B},6,Cycling
@@ -3401,7 +3404,6 @@ Hellish Sideswipe,{B},1,
 Hour of Victory,{2}{B},3,Max speed;Start your engines!
 Intimidation Tactics,{B},1,Cycling
 "Kalakscion, Hunger Tyrant",{1}{B}{B},3,
-Maximum Overdrive,{1}{B},2,
 Mutant Surveyor,{2}{B},3,Max speed;Start your engines!
 The Speed Demon,{3}{B}{B},5,Flying;Trample;Start your engines!
 Spin Out,{1}{B}{B},3,
@@ -3454,7 +3456,6 @@ Point the Way,{G},1,Start your engines!
 Regal Imperiosaur,{1}{G}{G},3,
 Rise from the Wreck,{2}{G},3,
 Stampeding Scurryfoot,{G},1,Exhaust
-Thunderous Velocipede,{1}{G}{G},3,Crew;Trample
 Veloheart Bike,{2}{G},3,Crew
 Webstrike Elite,{G}{G},2,Reach;Cycling
 "Aatchik, Emerald Radian",{3}{B}{B}{G},6,
@@ -4930,7 +4931,6 @@ Scavenging Ooze,{1}{G},2,
 Wary Thespian,{1}{G},2,Surveil
 Good-Fortune Unicorn,{1}{G}{W},3,
 "Muldrotha, the Gravetide",{3}{B}{G}{U},6,
-"Ruby, Daring Tracker",{R}{G},2,Haste
 Swiftblade Vindicator,{R}{W},2,Vigilance;Trample;Double strike
 Adventuring Gear,{1},1,Equip;Landfall
 Burnished Hart,{3},3,

@@ -228,7 +228,7 @@ Clachan Festival,Kindred Enchantment — Kithkin,"When this enchantment enters, 
 {4}{W}: Create a 1/1 green and white Kithkin creature token.",W,Kithkin; tokens; etb,ECL,10,1
 Cosmogrand Zenith,Creature — Human Soldier,"Whenever you cast your second spell each turn, choose one —
 • Create two 1/1 white Human Soldier creature tokens.
-• Put a +1/+1 counter on each creature you control.",W,Human; Soldier; counters; tokens,EOE,9,1
+• Put a +1/+1 counter on each creature you control.",W,Human; Soldier; counters; tokens,EOE,9,2
 Crib Swap,Kindred Instant — Shapeshifter,"Changeling (This card is every creature type.)
 Exile target creature. Its controller creates a 1/1 colorless Shapeshifter creature token with changeling.",W,Shapeshifter; tokens; removal; changeling; tribal,ECL,11,1
 Crusader of Odric,Creature — Human Soldier,Crusader of Odric's power and toughness are each equal to the number of creatures you control.,W,Human; Soldier,FDN,569,1
@@ -2524,7 +2524,7 @@ This creature gets +1/+0 and has trample as long as you control a land creature 
 Alien Invasion,Enchantment,"At the beginning of combat on your turn, create a 1/1 red Alien creature token with haste and ""This token attacks each combat if able."" Put a +1/+1 counter on it for each invasion counter on this enchantment, then put an invasion counter on this enchantment.",R/G,counters; tokens,MSH,200,1
 "Halana and Alena, Partners",Legendary Creature — Human Ranger,"First strike (This creature deals combat damage before creatures without first strike.)
 Reach (This creature can block creatures with flying.)
-At the beginning of combat on your turn, put X +1/+1 counters on another target creature you control, where X is Halana and Alena's power. That creature gains haste until end of turn.",R/G,Human; Ranger; counters; reach; defense; first strike; combat,VOW,239,1
+At the beginning of combat on your turn, put X +1/+1 counters on another target creature you control, where X is Halana and Alena's power. That creature gains haste until end of turn.",R/G,Human; Ranger; counters; reach; defense; first strike; combat,VOW,239,2
 "Wolverine, Fierce Fighter",Legendary Creature — Mutant Berserker Hero,"Haste
 When Wolverine enters, he fights up to one other target creature.
 If damage would be dealt to Wolverine, instead that damage is dealt, but all other damage already dealt to him is healed.",R/G,Mutant; Berserker; Hero; etb; haste; aggro; fight; removal; combat,MSH,240,1
@@ -2927,7 +2927,7 @@ Cosmic Spider-Man,Legendary Creature — Spider Human Hero,"Flying, first strike
 At the beginning of combat on your turn, other Spiders you control gain flying, first strike, trample, lifelink, and haste until end of turn.",W/U/B/R/G,Spider; Human; Hero; lifegain; flying; evasion; lifelink; first strike; combat; haste; aggro; trample; Spiders,SPM,127,1
 Castle Doom,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast an artifact spell.
-{3}, {T}, Sacrifice an artifact: Create a 3/3 colorless Robot Villain artifact creature token named Doombot. Activate only as a sorcery.",Colorless,sacrifice; tokens; mana,MSH,263,2
+{3}, {T}, Sacrifice an artifact: Create a 3/3 colorless Robot Villain artifact creature token named Doombot. Activate only as a sorcery.",Colorless,sacrifice; tokens; mana,MSH,263,3
 Capital City,Land — Town,"{T}: Add {C}.
 {1}, {T}: Add one mana of any color.
 Cycling {2} ({2}, Discard this card: Draw a card.)",Colorless,Town; card draw; mana; cycling,FIN,274,1
@@ -4479,3 +4479,14 @@ Full Bore,Instant,"Target creature you control gets +3/+2 until end of turn. If 
 "Mutagen Man, Living Ooze",Legendary Creature — Ooze Mutant,"Trample
 Activated abilities of artifact tokens you control cost {1} less to activate.
 When Mutagen Man enters, create X Mutagen tokens. (They're artifacts with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",G,Ooze; Mutant; counters; cost-reduction; sacrifice; tokens; etb; trample; evasion,TMT,124,1
+"Ruby, Daring Tracker",Legendary Creature — Human Scout,"Haste (This creature can attack and {T} as soon as it comes under your control.)
+Whenever Ruby attacks while you control a creature with power 4 or greater, Ruby gets +2/+2 until end of turn.
+{T}: Add {R} or {G}.",R/G,Human; Scout; mana; pump; haste; aggro,FDN,245,2
+Thunderous Velocipede,Artifact — Vehicle,"Trample
+Each other Vehicle and creature you control enters with an additional +1/+1 counter on it if its mana value is 4 or less. Otherwise, it enters with three additional +1/+1 counters on it.
+Crew 3",G,Vehicle; counters; vehicle; crew; vehicles; trample; evasion,DFT,183,1
+Ancient Vendetta,Sorcery,"Choose a card name. Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them. Then that player shuffles.",B,graveyard,DFT,75,1
+Midnight Mangler,Artifact — Vehicle,"During turns other than yours, this Vehicle is an artifact creature.
+Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",U,Vehicle; vehicle; crew; vehicles,DFT,50,1
+Maximum Overdrive,Instant,Put a +1/+1 counter on target creature. It gains deathtouch and indestructible until end of turn.,B,counters,DFT,96,1
+Spikeshell Harrier,Artifact Creature — Robot Turtle,"When this creature enters, return target creature or Vehicle an opponent controls to its owner's hand. If that opponent's speed is greater than each other player's speed, reduce that opponent's speed by 1. This effect can't reduce their speed below 1.",U,Robot; Turtle; etb; bounce,DFT,65,1

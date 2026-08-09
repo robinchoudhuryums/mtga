@@ -405,6 +405,26 @@ Collector, Inspiration from Beyond, Dion, Atlantis Attacks, the deck 20–22 FDN
 cards, The Everflowing Well, …).
 
 
+### 2026-08-09 — ownership data was wrong four times in one session
+
+Cosmogrand Zenith 1→2, Halana and Alena 1→2, Ruby, Daring Tracker absent→2, Castle Doom
+2→3. Every one was found because the user said "I actually have N", not by any gate:
+`check_all` cannot see an undercount, because a missing or low count breaks no invariant.
+
+The reason this is a gotcha and not a chore is the Castle Doom case. A dedup pass over
+eleven decks was recommending which duplicate crafts to swap out, and deck 48's argument
+opened with "the pending third copy is a rare craft that deepens the deck's worst
+weakness". The first clause was false — the copy was owned. The recommendation happened
+to survive re-testing on the manabase argument alone (Castle Doom's coloured mana is
+artifact-spell-only, and the 39% it cannot cast contains the keystone and every removal
+spell), but that was luck, not method.
+
+The rule that follows: craft cost is REPORTED, never REASONED FROM. CLAUDE.md's Player
+Profile already says to build the optimal list without gating on ownership; this is the
+same rule from the other direction — do not let a craft cost enter the argument as a
+*reason* either. When a recommendation does depend on ownership, say so explicitly, so
+the premise most likely to be false is the one the reader checks first.
+
 ## [G-11] MTG Arena set codes can differ from Scryfall
 
 **MTG Arena set codes can differ from Scryfall** (e.g. Arena `DAR` = Scryfall
@@ -524,6 +544,30 @@ list that exists to be read card-by-card. Found by asking why deck 13's earthben
 was flagged for a removal spell — then the pool survey turned up the larger `total`
 family that the single reported case never hinted at.
 
+
+### 2026-08-09 — the ENTERS-trigger caveat is generic, and it produced a false weakness
+
+`stats`' power-N flag ends with "(Printed stats: a body that GROWS after it enters still
+won't satisfy an ENTERS trigger.)" That parenthetical is appended to EVERY firing of the
+flag, whatever the card's actual trigger timing.
+
+Deck 56a fired it on two cards, and neither has an enters trigger:
+
+- Scalestorm Summoner — "Whenever this creature **attacks**, create a 3/1 … **if you
+  control** a creature with power 4 or greater"
+- Ruby, Daring Tracker — "Whenever Ruby **attacks while you control** a creature with
+  power 4 or greater"
+
+Both read the board at attack time, so a creature grown by Ashroot Animist, Halana,
+Ouroboroid, Bulk Up or Twin Blades satisfies them. In an ultra-tall counters deck that
+pumps every combat, the printed-power count (5 of 19 creature copies) understates the
+gate badly rather than overstating it.
+
+The caveat was taken at face value and written into 56a's `#: tier:` block as a fourth
+weakness supporting a grade. It had to be retracted the same day. The flag is still worth
+having — it catches genuinely dead payoffs — but the count answers "how many bodies are
+printed at power N", which is only the same question as "does this trigger fire" when the
+trigger checks at ETB. Read the timing first.
 
 ## [G-17] `card-wishlist.csv` records Power PROVENANCE
 
@@ -935,6 +979,24 @@ was validated both ways — four unit cases pin the date, the range and the stil
 real figure, and a roster-wide diff of old-vs-new matching confirmed the guard rejects
 **zero** spans of genuine prose across all 95 decks.
 
+
+### 2026-08-09 — a figure quoted about ANOTHER deck reads as a claim about this one
+
+Deck 56a's re-graded `#: tier:` block argued that sitting one band below its parent was
+coherent, and supported it by citing deck 56's vector: "deck 56 core is a genuine aggro
+deck (clock 5/7, interaction 7, avg MV 2.42) and holds A AT its floor."
+
+`--audit-rationale` reported two stale figures: interaction 7 vs live 4, avg mv 2.42 vs
+live 2.67. Both "stale" numbers were correct — about deck 56. The scan extracts numbers
+from a `#: tier:` block and compares them against the vector of the deck that OWNS the
+block; it has no notion of a figure attributed to a different deck, and no cue list can
+give it one, since "deck 56 core is…" is exactly the shape of an ordinary claim.
+
+Fixed by dropping the numbers and keeping the comparison in words, with a note in the
+file so a later editor does not helpfully restore them. The general rule: **compare with
+`deck.py tier <other-id>`, do not quote its numbers into this deck's prose.** This is the
+same family as the other G-26 residuals — the audit reasons about a block's text without
+a model of who a sentence is about.
 
 ## [G-27] `deck.py tier <id> --audit-rationale` catches a STALE tier argument
 

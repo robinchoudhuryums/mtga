@@ -23,10 +23,18 @@
 #: tier: could not supply. Re-grade after real games.
 #: protect: Sokka, Tenacious Tactician; Narset, Jeskai Waymaster; Flamehold Grappler; Mai, Jaded Edge
 #: notes: BUILT from the 55-mardu addendum (concept J). The pile's known blue gap,
-#: notes: recorded honestly: it contains ZERO mono-U spells, so blue here buys
-#: notes: bodies only (Sokka, Narset, the TDM prowess block) and the spell suite is
-#: notes: red/white. The deck's first tuning axis is crafting out-of-pile U tempo
-#: notes: spells (cantrips / counters) via suggest --needs when wildcards allow.
+#: notes: recorded honestly: the PILE contained ZERO mono-U spells, so at build time
+#: notes: blue bought bodies only and the spell suite was red/white. CLOSED (partly)
+#: notes: 2026-08-08 by the dedup pass: the deck now runs three mono-U spells (Into
+#: notes: the Flood Maw, Chart a Course, Phantom Interference — the last a craft C).
+#: notes: 2026-08-08 DEDUP PASS: the second copies of Shiko (M, legend, MV 5), Narset
+#: notes: (R, legend) and Flamehold Grappler (R, tri-pip) came out for those three
+#: notes: cheap blue spells — every stated weakness moves the right way (curve down,
+#: notes: blue-spell count 0 -> 3, Phantom Interference is soft protection for the
+#: notes: engine legends). 2nd Sokka stays a CRAFT: the token width flows through him
+#: notes: and no substitute exists in these colors. Chart a Course reads "discard
+#: notes: unless you attacked" — in this deck it is nearly always a clean draw-two.
+#: notes: Phantom Interference is OTJ, rotates ~2027 with the deck's LCI/OTJ tail.
 #: notes: Timing reads: Narset's end-step wheel happens AFTER attackers profit from
 #: notes: prowess — dump the hand freely on your turn, she restocks at end step.
 #: notes: Riverwheel Sweep and Monastery Messenger cost {2/U}{2/R}{2/W} — each pip
@@ -38,8 +46,8 @@
 
 # Engine
 2 Sokka, Tenacious Tactician (TLA) 242
-2 Narset, Jeskai Waymaster (TDM) 209
-2 Flamehold Grappler (TDM) 185
+1 Narset, Jeskai Waymaster (TDM) 209
+1 Flamehold Grappler (TDM) 185
 
 # Prowess block
 2 Jeskai Brushmaster (TDM) 195
@@ -51,12 +59,15 @@
 1 Enigma Drake (FDN) 657
 
 # Value top end
-2 Shiko, Paragon of the Way (TDM) 223
+1 Shiko, Paragon of the Way (TDM) 223
 1 Jeskai Shrinekeeper (TDM) 197
 1 Monastery Messenger (TDM) 208
 1 Jeskai Revelation (TDM) 196
 
 # Cheap spells (prowess fuel)
+1 Into the Flood Maw (BLB) 52
+1 Chart a Course (FDN) 586
+1 Phantom Interference (OTJ) 61
 1 Lightning Helix (MKM) 218
 1 Riptide Gearhulk (DFT) 219
 1 Boros Charm (FDN) 721

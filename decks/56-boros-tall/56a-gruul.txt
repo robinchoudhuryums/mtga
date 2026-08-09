@@ -1,7 +1,7 @@
 #: name: One Fell Swoop — Overgrowth
 #: format: Standard
 #: colors: RG
-#: plan: aggro
+#: plan: midrange
 #: archetype: GRUUL ULTRA-TALL — the green-package variant of deck 56, revived from
 #: archetype: its parked-not-dead note. Same red core (Molten Man, Crackling Cyclops,
 #: archetype: Red Hulk, Bulk Up, Self-Destruct, the trick suite); green replaces the
@@ -15,12 +15,44 @@
 #: archetype: boosts on small bearers; green COMPOUNDS permanent counters on bodies
 #: archetype: that are already big — slower, bigger, board-independent.
 #: protect: Molten Man, Inferno Incarnate; Ashroot Animist; Halana and Alena, Partners; Bulk Up; Self-Destruct; Overprotect
-#: tier: A (PROVISIONAL) — graded at the measurable floor, same rubric as the 56
-#: tier: core. The variant trades the core's faster clock and deeper interaction
-#: tier: for bigger permanent boosts and single-card protection; the honest
-#: tier: weaknesses are the same thin card advantage plus a real dependence on
-#: tier: resolving and keeping one body. Re-grade against the core after games —
-#: tier: whichever list wins more takes the buildable slot.
+#: tier: B (PROVISIONAL) — RE-GRADED 2026-08-09 from A, at the measurable floor, after
+#: tier: `#: plan:` was corrected from aggro to midrange. The letter did not change
+#: tier: because the LIST changed; it changed because the list stopped being graded as
+#: tier: an aggro deck. On the aggro plan tier_band substitutes a CLOCK score (this
+#: tier: deck read 4/7) for the interaction a resilience floor demands, which floated
+#: tier: the floor to A. Graded as midrange the floor is B, and the rubric's A wants at
+#: tier: most ONE clear weakness. This list has three:
+#: tier: 1. CARD ADVANTAGE 2, with no refuel — the same gap the first grading named.
+#: tier: 2. INTERACTION 4, and ZERO of it answers a NONCREATURE permanent. For an
+#: tier:    aggro deck that is survivable (you are racing); for a midrange deck it is a
+#: tier:    real hole — an enchantment or planeswalker that blanks the plan is unanswerable.
+#: tier: 3. IT DEPENDS ON RESOLVING AND KEEPING ONE BODY. Protection 3 (Overprotect x2,
+#: tier:    Snakeskin Veil) is real but thin against removal-heavy decks.
+#: tier: A FOURTH WEAKNESS WAS CLAIMED HERE AND IS RETRACTED (2026-08-09). `stats`
+#: tier: flags Scalestorm Summoner and Ruby for gating on POWER 4+ with only 5 of 19
+#: tier: creature copies printed at power 4+, and appends its standard caveat that a
+#: tier: body which GROWS after it enters cannot satisfy an ENTERS trigger. NEITHER
+#: tier: CARD HAS AN ENTERS TRIGGER: Scalestorm checks "whenever this creature ATTACKS
+#: tier: ... if you control a creature with power 4 or greater" and Ruby checks
+#: tier: "whenever Ruby ATTACKS WHILE you control" — both read the board at ATTACK
+#: tier: time, so a creature grown by Ashroot, Halana, Ouroboroid, Bulk Up or Twin
+#: tier: Blades DOES satisfy them. In an ultra-tall deck that pumps every combat the
+#: tier: printed-power count understates these gates badly. The flag is a G-16-family
+#: tier: limitation (it measures PRINTED power and cannot see the trigger's timing);
+#: tier: read the trigger before believing it. The B letter is unaffected — it sits AT
+#: tier: the measured floor, which this never fed.
+#: tier: WHAT ARGUES UP, and why it is not enough for A: the compounding ceiling is
+#: tier: genuinely high and no metric sees it — Ouroboroid grows Ashroot and Halana,
+#: tier: whose pumps scale off their own power, so the three multiply each other. But
+#: tier: that ceiling is exactly what weakness 3 is about; it needs the board to survive.
+#: tier: CONSISTENT WITH THE PARENT: deck 56 core is a genuine aggro deck — faster
+#: tier: curve, deeper interaction, a real clock — and holds A AT its own floor. 56a is
+#: tier: by its own archetype line the slower, less interactive variant, so sitting one
+#: tier: band below the core is coherent rather than a demotion. (The core's figures are
+#: tier: deliberately NOT quoted here: the rationale audit reads every number in a
+#: tier: `#: tier:` block as a claim about THIS deck, so citing deck 56's vector raised
+#: tier: two false staleness flags. Compare with `deck.py tier 56` instead.) Re-grade
+#: tier: against the core after games — whichever list wins more takes the buildable slot.
 #: notes: REVIVAL of the 56 A/B's green package per the core deck's parked-not-dead
 #: notes: note — the user asked for this variant. The A/B judged the PACKAGES, not
 #: notes: green's ceiling: that test's green list ran zero protection while green
@@ -29,10 +61,39 @@
 #: notes: counters land before blockers, and haste means a freshly cast body can
 #: notes: swing the same turn she pumps it. Ashroot targets ANOTHER creature: he
 #: notes: boosts the protected body, not himself — sequence him as the enabler.
-#: notes: Same Self-Destruct / Red Hulk SBA non-combo and Tiger-Dillo / Scalestorm
-#: notes: power-4 gate reads as the core deck (see 56's notes). War Machine's
+#: notes: Same Self-Destruct / Red Hulk SBA non-combo and Scalestorm power-4 gate
+#: notes: reads as the core deck (see 56's notes; Tiger-Dillo was CUT 2026-08-09 —
+#: notes: an unowned vanilla whose only text was a drawback — for the owned
+#: notes: Mightform Harmonizer, whose landfall DOUBLES a tall body's power and
+#: notes: whose warp {2}{G} is a single green pip on a stretched draw). War Machine's
 #: notes: {2}{R/W} hybrid casts on {R} here (G-58). Commercial District counts as
 #: notes: a Mountain for Molten Man (type line Mountain Forest) — 14 Mountains.
+#: notes: 2026-08-09 — OUROBOROID IN OVER A 2ND HALANA, and the premise was corrected
+#: notes: mid-decision: the 2nd Halana is OWNED, not a craft, so no wildcard argument
+#: notes: applies. Kept on card quality alone. THE REASON IS THE OTHER BOOSTERS:
+#: notes: Ouroboroid counters EACH creature, and both Ashroot and Halana scale their
+#: notes: pump off THEIR OWN power — so Ouroboroid grows them and their triggers grow
+#: notes: with it (order Ouroboroid's beginning-of-combat trigger FIRST and Halana's X
+#: notes: is 3, then 5). A 2nd Halana does nothing for Ashroot, and two legends never
+#: notes: share a battlefield; Ouroboroid is a non-legend that stacks with Halana #1.
+#: notes: CORRECTION TO AN EARLIER READ: Ouroboroid is a 1/3, so X starts at ONE, not
+#: notes: at ~4 — cumulative on a creature it is +1, +3, +7, +15, which means Halana's
+#: notes: flat +2-and-HASTE is AHEAD until the third combat. The cost of this swap is
+#: notes: real: no haste, a worse body, ~2 turns of tempo. It is justified by the
+#: notes: archetype line above ("COMPOUNDS permanent counters ... slower, bigger"),
+#: notes: not by early impact. Booster saturation also argued against a 7th pump
+#: notes: effect across 19 creatures. The 2nd ASHROOT stays a craft on its merits:
+#: notes: not a legend, and his trigger targets ANOTHER creature, so two copies attack
+#: notes: and pump each other. The 2nd AGNI KAI stays a craft and should be crafted
+#: notes: FIRST — 56, 56a and 59 are all short the same copy, so one rare completes
+#: notes: three decks (shared collection).
+#: notes: PLAN CORRECTED 2026-08-09 (user call): aggro -> midrange. `#: plan: aggro`
+#: notes: had always disagreed with this deck's own archetype line ("slower, bigger,
+#: notes: board-independent"), and the header is load-bearing rather than descriptive —
+#: notes: it decides whether tier_band grades on a CLOCK or on interaction + card
+#: notes: advantage. The mismatch was silently buying an A. See `#: tier:` for the
+#: notes: re-grade. LESSON WORTH KEEPING: a plan header is a grading input, not a label;
+#: notes: when the prose and the plan disagree, the prose is usually the honest one.
 
 # Tall bodies
 2 Molten Man, Inferno Incarnate (SPM) 84
@@ -42,13 +103,14 @@
 1 Scarlet Spider, Ben Reilly (SPM) 142
 1 Mai, Jaded Edge (TLA) 147
 
-# Power-4 payoff bodies
-1 Tiger-Dillo (TLA) 155
+# Power-4 payoff body
 1 Scalestorm Summoner (OTJ) 144
 
 # Boosters (repeatable, permanent)
 2 Ashroot Animist (FDN) 117
-2 Halana and Alena, Partners (VOW) 239
+1 Halana and Alena, Partners (VOW) 239
+1 Ouroboroid (EOE) 201
+1 Mightform Harmonizer (EOE) 200
 1 War Machine, Legacy of Iron (MSH) 238
 
 # Ramp / evasion riders

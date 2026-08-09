@@ -150,6 +150,15 @@ castability · curve · central-theme density), with the intangibles moving a de
   (clock 0), so nothing else regrades. The plan comes from an explicit **`#: plan:
   aggro|control|combo|midrange`** header, else keywords in `#: archetype:`, else a
   strict metric inference (default midrange). `deck.py tier` prints the plan + clock.
+  **`#: plan:` IS A GRADING INPUT, NOT A LABEL, so a wrong one silently BUYS a band.**
+  Deck 56a carried `aggro` while its own `#: archetype:` prose called it "slower, bigger,
+  board-independent"; the aggro path substituted a clock score (4/7) for the interaction
+  it lacked and floated the floor to A. Corrected to `midrange` 2026-08-09 the floor read
+  B and the letter followed it down. Nothing flags this — the guard compares the letter
+  to the floor, and the floor is what the wrong plan moved. **When the plan header and
+  the archetype prose disagree, the prose is usually the honest one**; check them against
+  each other whenever a deck's letter looks generous, and re-check after a pivot, since
+  a draft-time change of plan does not rewrite the header.
 - **The bands (what the letter means):**
   - **S** — measurably A-floor AND a human call that it's top-meta capable: real
     bombs, a protection/interaction suite, proven to close fast. Rare.
@@ -266,7 +275,15 @@ directions.
 - **"Not in library" for a card you own is the deck-dump undercount symptom.** Fastest
   fix: `reconcile_crafts.py <arena-export>` — it adds the library row, adds a blank
   `card-mana.csv` row so INV-02 always holds, drops the card from the wishlist, and
-  stores a DFC under its FRONT name. Dry-run by default. [G-10]
+  stores a DFC under its FRONT name. Dry-run by default. **NEVER USE A CRAFT COST AS A
+  REASON IN A CARD-QUALITY ARGUMENT.** Four counts were wrong in ONE 2026-08-09 session
+  (Cosmogrand 1→2, Halana 1→2, Ruby absent→2, Castle Doom 2→3), each found only because
+  the user noticed, and one of them ("the 3rd Castle Doom is a pending rare craft") had
+  been load-bearing in a swap recommendation — the advice survived re-testing on merits,
+  but it need not have. Report craft cost as INFORMATION at the end, per the Player
+  Profile; when a decision leans on ownership, say so, because that is the premise most
+  likely to be false. `import_collection.py` against a tracker export is the only tool
+  that sets counts EXACTLY (including down) — run it before a wildcard-spending pass. [G-10]
 - **MTG Arena set codes can differ from Scryfall** (`DAR` = `DOM`). `enrich.py` maps the
   known ones in `SET_ALIASES` and leaves Collector # blank rather than writing one from
   an unconfirmed printing. [G-11]
@@ -297,7 +314,13 @@ directions.
   `deck.py stats` flags a "power N+" payoff few of the deck's creatures meet, **scoped by
   `_POWER_SCOPE_MINE_RE` to clauses about creatures YOU control**: removal measures the
   opponent's board and "TOTAL power N" is a SUM, and counting your own bodies was wrong
-  in 16 of 27 roster flags. [G-16]
+  in 16 of 27 roster flags. **LIVE RESIDUAL: the flag appends a generic "a body that
+  GROWS after it enters won't satisfy an ENTERS trigger" caveat REGARDLESS of the
+  trigger's actual timing.** Deck 56a's Scalestorm Summoner and Ruby both check *on
+  ATTACK* ("whenever this creature attacks … if you control"), so pumped creatures DO
+  satisfy them, and in a counters deck the printed-power count understates the gate
+  badly — the caveat was copied into a `#: tier:` block as a real weakness and had to be
+  retracted. Read the trigger's timing before believing the count. [G-16]
 - **`card-wishlist.csv` records Power PROVENANCE** in a `Power Source` column
   (`seed` / `hand` / `unknown`). `wishlist.power_is_seeded()` treats seed, unknown and
   blank as untrusted; set `hand` when you grade one. [G-17]
@@ -359,14 +382,13 @@ directions.
   reported clean. A CARD citation and a FIGURE go stale differently and must not share a
   predicate — and the CARD path kept a broad `remov\w*` for a year after the FIGURE path
   was narrowed for exactly that word, so a card whose own text says "removes" suppressed
-  its own staleness report. **KNOWN RESIDUAL, live:** a copula between a label and its
-  number still hides a figure ("protection is 1"); a change-cue about one card still
-  suppresses a citation of ANOTHER in the same window even when the clause says that card
-  **stays**; and prose saying "the swap removes X" about a CUT card now reads as a live
-  citation. Shorthand is handled BOTH directions since 2026-08 — suppression ("Heartfire"
-  for in-deck Heartfire Immolator) AND detection of an ABSENT card cited by comma-head or
-  word-tail ("Gishath", "Okinec Ahau" — both real misses). Simile is handled. Residual: a
-  fragment shared by 4+ cards drops as an epithet. [G-26]
+  its own staleness report. Shorthand is handled both directions since 2026-08; simile is
+  handled. **KNOWN RESIDUALS, all live:** a copula hides a figure ("protection is 1"); a
+  change-cue about one card suppresses a citation of ANOTHER in the same window; "the swap
+  removes X" about a CUT card reads as live; a fragment shared by 4+ cards drops as an
+  epithet; and **a figure quoted about a DIFFERENT deck is read as a claim about THIS one**
+  — citing deck 56's vector inside 56a's `#: tier:` raised two false flags (2026-08-09), so
+  compare with `deck.py tier <other-id>` instead of quoting its numbers. [G-26]
 - **Run `tier <id> --audit-rationale` after ANY deck edit.** The tier guard checks the
   LETTER; this checks the ARGUMENT — cards the prose cites that the deck no longer runs,
   and figures the live quality vector contradicts. A swap moves those numbers by
