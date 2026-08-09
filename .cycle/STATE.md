@@ -1024,3 +1024,31 @@ fully worked. Outstanding and NOT code: log ten real matches (`matches.csv` stil
 34 provisional tiers unfalsifiable), deck 49 Route A, the Sheets operator setup (now
 verifiable with `sheets_sync.py check`), and the perceptual halves of Regression
 Scenarios 5–8. BS2-07's header-consumer sweep is still the one open G-63 member.
+
+## 2026-08-09 — post-merge deck session (branch restarted from main)
+
+**Completed.** PR #110 merged the broad-scan-2 cycle (PR #109 had been closed unmerged).
+Branch restarted from `main`. Then, on the fresh branch:
+
+- **Duplicate-craft sweep across all 11 decks** whose craft plans held a rare/mythic
+  duplicate. Eight swapped out for distinct cards (55b ×5, 57 ×3, 50, 56a, 58, 48), six
+  kept on their merits with the reason written into each deck file. ~10 rare-equivalents
+  freed for one common craft. Detail in `.cycle/NEXT-SESSION.md` §3b.
+- **Deck 56a re-graded A → B** after `#: plan:` was corrected aggro → midrange (the header
+  is a grading input; see §5b).
+- **Four ownership corrections** — Cosmogrand, Halana, Ruby, Castle Doom. See `[G-10]`.
+- **Ingested 5 crafted DFT cards** (Thunderous Velocipede, Ancient Vendetta, Midnight
+  Mangler, Maximum Overdrive, Spikeshell Harrier); `verify_ingest` 5/5.
+- **Docs synced**: `[G-10]`, `[G-16]`, `[G-26]` extended; the tiering rubric gained the
+  plan-header warning; handoff doc's repo position corrected.
+
+**Decided AGAINST** (do not re-propose without new information):
+- Reverting deck 48's Castle Doom swap — re-tested after the ownership correction and it
+  stands on the manabase argument alone.
+- Cutting 2nd Ruby for Tiger-Dillo or Raucous Audience — both Rubys are owned, so the
+  swap is marginal and not worth churning the list.
+- Ancient Vendetta and Spikeshell Harrier into any deck — owned, no home yet.
+
+**Where I left off.** All work committed and pushed; `check_all` clean, 1,078 tests green.
+The open operator item is `import_collection.py` against a full tracker export, which
+should precede any wildcard spending.

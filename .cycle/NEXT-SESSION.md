@@ -16,15 +16,18 @@ commands disagree.
 
 ## 1. Repo position
 
-- Working branch **`claude/broad-scan-v74wau`**, currently AHEAD of `main` and **not
-  merged** — the whole broad-scan-2 cycle lives on it. If a PR for it has since been
-  merged, restart the branch from `main` before your first commit (CLAUDE.md Git rules);
-  if it has not, keep committing to it.
+- Working branch **`claude/broad-scan-v74wau`**. **PR #110 MERGED the whole broad-scan-2
+  cycle into `main` (2026-08-09)** and the branch was restarted from `main` at that point;
+  PR #109 before it was closed WITHOUT merging, which is why #110 carried 26 commits. The
+  branch now holds the post-merge deck work. Check `git log origin/main..HEAD` before your
+  first commit and restart from `main` again if its PR has since merged.
 - Gates green: `check_all` all invariants hold, **ZERO soft warnings**. **1,078 tests in
   29 files.** The 7 blank-Card-Text `validate` warnings are K-11 vanilla creatures and are
   expected, not a data gap.
-- Collection **2,085 library rows / 2,081 distinct names**; roster **95 decks**, numbered
-  through **63**; 34 `deck.py` subcommands; 13 model-sanity gates.
+- Collection **2,113 library rows / 2,109 distinct names**; roster **98 deck files**,
+  numbered through **66**; 34 `deck.py` subcommands; 13 model-sanity gates. (Decks 64 Gray
+  Goo, 65 Web of Life and 66 Lethal Protector were drafted 2026-08-08; 66 was promoted out
+  of 65's variant slot rather than built as one.)
 - **`ROADMAP.md` is a 2026-07-31 snapshot** with a staleness header on it. Individual
   entries are marked DONE as they land, but it wants a `/roadmap` regeneration.
 
@@ -73,6 +76,27 @@ The changes most likely to affect your daily work:
   `Jump-start` cards that Scryfall also labels "Jump". Mapping it would have put `evasion`
   on 11 graveyard spells for the sake of 2 real ones. **A keyword's reported COUNT is not
   its population** — read the cards before believing a tally.
+
+## 3b. The 2026-08-09 session: a duplicate-craft sweep, and a data problem
+
+**Read this before recommending any wildcard spend.**
+
+A pass over all eleven decks whose craft plans contained a rare/mythic DUPLICATE (own 1,
+deck wants 2) swapped eight of them out for distinct cards, nearly all already owned —
+55b (five), 57 (three), 50, 56a, 58, 48 — freeing roughly ten rare-equivalents for the
+cost of one common. Six duplicates were KEPT on their merits, each with the reason written
+into its deck file: 2nd Appa, 2nd Sokka, 2nd Craterhoof, 2nd Ashroot, 2nd Gas Guzzler,
+2nd Vnwxt. **The pattern that held across all eleven: a LEGEND's second copy almost never
+survived scrutiny (it cannot share a battlefield with the first), while the duplicates
+worth keeping were non-legends doing engine work, or cards with no functional cousin in
+the format.** The Last Agni Kai is the priority craft — 56, 56a and 59 are short the same
+copy, so one rare completes three decks.
+
+**But the ownership data was wrong four times during that pass** — see `[G-10]`. Two decks
+were graded against counts that turned out false, and one recommendation used a craft cost
+as a *reason*. Nothing in the toolchain can detect this. **Run `import_collection.py`
+against a full tracker export before acting on any craft plan**; it is the only tool here
+that sets counts exactly, including downward.
 
 ## 4. Standing items, owner-paced — unchanged and still the biggest gaps
 
@@ -131,6 +155,21 @@ The changes most likely to affect your daily work:
   no shared CENTRAL THEME, not that no deck of those colours exists. CLAUDE.md `[G-31]`.
 - **Never hand-write `(SET) COLLECTOR#`** — use `deck.py resolve`, and pass `--expect 60`,
   which caught three 59-card drafts.
+
+## 5b. Traps added 2026-08-09
+
+- **A `#: plan:` header is a GRADING INPUT, not a label.** Deck 56a carried `aggro` while
+  its own archetype prose said "slower, bigger"; the aggro path substitutes a clock score
+  for interaction, which floated its floor to A. Corrected to `midrange`, the floor read B
+  and the letter followed. Nothing flags this — the guard compares the letter to the floor,
+  and the floor is what the wrong plan moved.
+- **`stats`' power-N flag appends an ENTERS-trigger caveat regardless of the real trigger
+  timing** (`[G-16]`). Two attack-time triggers were written into a tier block as a
+  weakness and had to be retracted. Read the timing before believing the count.
+- **The rationale audit reads a figure quoted about ANOTHER deck as a claim about this
+  one** (`[G-26]`). Compare with `deck.py tier <other-id>`; do not quote its numbers.
+- **Craft cost is REPORTED, never REASONED FROM** (`[G-10]`). Four ownership counts were
+  wrong in one session and one of them was load-bearing in a recommendation.
 
 ## 6. The one open item from the cycle's own findings
 
