@@ -58,7 +58,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, write_rows,  # noqa: E402
+from lib import (BASICS as lib_BASICS, DEFAULT_CSV, REPO_ROOT, load_rows, write_rows,  # noqa: E402
                  atomic_write, eprint)
 
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
@@ -66,7 +66,7 @@ MANA_HEADER = ["Card Name", "Mana Cost", "Mana Value", "Keywords"]
 
 # Basic lands are unlimited in Arena and deliberately absent from the collection
 # (CLAUDE.md); a tracker that exports them must not add them.
-BASICS = {"plains", "island", "swamp", "mountain", "forest", "wastes"}
+BASICS = lib_BASICS          # one definition, in lib.py
 
 # Column aliases, lowercased with punctuation/space stripped by `_norm_key`. Ordered
 # most-specific first so "collector number" can't be eaten by "number".

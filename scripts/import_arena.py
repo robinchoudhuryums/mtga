@@ -43,7 +43,7 @@ import argparse
 import re
 import sys
 
-from lib import DEFAULT_CSV, load_rows, write_rows, eprint
+from lib import BASICS as lib_BASICS, DEFAULT_CSV, load_rows, write_rows, eprint
 
 # <qty> <name> optionally followed by (SET) and a collector number.
 LINE_RE = re.compile(
@@ -53,7 +53,7 @@ LINE_RE = re.compile(
 SECTIONS = {"deck", "sideboard", "commander", "companion", "maybeboard", "about"}
 # Basic lands are unlimited in Arena and don't belong in the owned collection;
 # skip them when reconciling the library from a deck list (--skip-basics).
-BASICS = {"plains", "island", "swamp", "mountain", "forest", "wastes"}
+BASICS = lib_BASICS          # one definition, in lib.py
 
 
 def parse(text, skip_basics=False):

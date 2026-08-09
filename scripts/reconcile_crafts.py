@@ -28,7 +28,8 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import REPO_ROOT, eprint, atomic_write, alias_front  # noqa: E402
+from lib import (BASICS as lib_BASICS, REPO_ROOT, eprint, atomic_write,  # noqa: E402
+                 alias_front)
 
 LIB = os.path.join(REPO_ROOT, "card-library.csv")
 MANA = os.path.join(REPO_ROOT, "card-mana.csv")
@@ -45,7 +46,7 @@ LINE_RE = re.compile(r"^(\d+)\s+(.+?)\s+\(([^)]+)\)\s+(\S+)\s*$")
 # basic-land rows, so `--apply` wrote a basics row into the inventory (plus a mana
 # row) with no invariant able to object. Hard-skipped, never opt-in: a basic is
 # never crafted, so there is no legitimate case for this tool to record one.
-BASICS = {"plains", "island", "swamp", "mountain", "forest", "wastes"}
+BASICS = lib_BASICS          # one definition, in lib.py
 
 
 def _front(name):
@@ -54,8 +55,19 @@ def _front(name):
 
 
 def _read(path):
-    with open(path, newline="", encoding="utf-8") as fh:
-        return list(csv.DictReader(fh))
+    """Rows of a canonical/derived CSV, with a clean error when it is not there yet.
+
+    `main()` gives the EXPORT file a readable "No such file" message while these three
+    raised a bare FileNotFoundError — so on a fresh clone, before the first `make
+    refresh`, the tool tracebacked instead of saying which file to build. The
+    inconsistency was inside one script (BS4-38)."""
+    try:
+        with open(path, newline="", encoding="utf-8") as fh:
+            return list(csv.DictReader(fh))
+    except FileNotFoundError:
+        raise SystemExit(
+            f"Missing {os.path.basename(path)} — reconcile_crafts needs the derived data "
+            f"in place. Run `make refresh` (or build_pool.py / build_mana.py) first.")
 
 
 def _wishlist_hit(row, full, front, rec_set, rec_coll):
@@ -254,7 +266,12 @@ def reconcile(export_lines, apply=False, set_exact=False):
     if not (added or bumped or mana_added or wish_removed):
         print("\nNothing to write.")
         return 0
-    _bak_write(LIB, LIB_HEADER, lib)
+    # Only rewrite what CHANGED. The gate above fires if ANY of the four buckets moved,
+    # but the library write ran unconditionally inside it — so a run that merely dropped
+    # a wishlist row rewrote an unchanged 600KB inventory and left a fresh `.bak`, the
+    # exact litter import_arena and build_mana were both taught to avoid (BS4-38).
+    if added or bumped:
+        _bak_write(LIB, LIB_HEADER, lib)
     if mana_added:
         _bak_write(MANA, ["Card Name", "Mana Cost", "Mana Value", "Keywords"], mana)
     if wish_removed:

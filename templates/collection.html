@@ -422,7 +422,10 @@
     // right after the user confirmed a destructive dialog (broad-scan F-02).
     try {
       const d = await postJSON('/api/remove', {key: {name: c.name, set: c.set, collector: c.cn}});
-      if (d.ok) { sessionStorage.setItem('flash', `Removed ${c.name}`); location.reload(); }
+      // A partial success carries `warning`: the library write landed, a post-write step
+      // did not. Surfacing it matters because the removal is NOT retryable — the row is
+      // already gone (BS4-40).
+      if (d.ok) { sessionStorage.setItem('flash', d.warning || `Removed ${c.name}`); location.reload(); }
       else toast('Remove failed: ' + (d.errors || ['unknown']).join('  |  '));
     } catch (err) {
       toast('Remove failed (is the server running?): ' + err.message);

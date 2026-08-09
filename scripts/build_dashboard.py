@@ -225,7 +225,14 @@ def collect():
                 shorts.append((n, miss))
         ok = (missing == 0 and short == 0)
         buildable += 1 if ok else 0
-        wc = deckmod._wc_str(deckmod._wc_breakdown(shorts, rar_of))
+        # Emit the BREAKDOWN as data, not just its display string. The roster
+        # "Wildcards needed" KPI used to re-parse `wc` with /(\d+)\s*([MRUC])/g, so a
+        # formatting change in `deck._wc_str` — a separator, a label, a zero suppressed
+        # differently — would silently zero the panel with everything still green. Every
+        # other derived number on this page routes through a shared primitive; this was
+        # the one read back out of prose (BS4-42).
+        wc_by = deckmod._wc_breakdown(shorts, rar_of)
+        wc = deckmod._wc_str(wc_by)
         decks.append({
             "id": d["id"],
             "core": d["core"],
@@ -239,6 +246,7 @@ def collect():
             "short": short,
             "buildable": ok,
             "wc": wc,
+            "wcBy": {r: int(wc_by.get(r, 0)) for r in ("M", "R", "U", "C")},
             "craft": craft_rows(d),
             "viz": deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name),
             "detail": deck_detail(d["id"]),
@@ -1103,7 +1111,13 @@ $('plan').textContent = D.roster_plan || '(no craft plan)';
 // ---------- analytics: needs / color / format / roster curve ----------
 (function(){
   const N = {M:0,R:0,U:0,C:0};
-  D.decks.forEach(d => { const re = /(\d+)\s*([MRUC])/g; let m; while ((m = re.exec(d.wc||''))) N[m[2]] += +m[1]; });
+  // Structured counts from the island (BS4-42) — never re-parsed from `d.wc`, which is
+  // a DISPLAY string owned by deck._wc_str. Falls back to the old parse for a stale
+  // sessionStorage payload built before `wcBy` existed.
+  D.decks.forEach(d => {
+    if (d.wcBy) { ['M','R','U','C'].forEach(r => { N[r] += (d.wcBy[r] || 0); }); return; }
+    const re = /(\d+)\s*([MRUC])/g; let m; while ((m = re.exec(d.wc||''))) N[m[2]] += +m[1];
+  });
   const order = [['M','Mythic'],['R','Rare'],['U','Uncommon'],['C','Common']];
   const max = Math.max(1, ...order.map(o => N[o[0]]));
   const grad = {M:'linear-gradient(90deg,#f4a03a,#ffca6d)', R:'linear-gradient(90deg,#caa63a,#e6c866)', U:'linear-gradient(90deg,#7f8ba0,#9aa4b2)', C:'linear-gradient(90deg,#6b7480,#8a94a2)'};

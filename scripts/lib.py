@@ -25,6 +25,14 @@ HEADER = [
     "Quantity Owned",
 ]
 
+# The five basic land names plus Wastes. NOT part of the collection — Arena gives you
+# unlimited copies — so every ingest writer skips them and every analysis treats them as
+# free. Defined ONCE here after living in four modules as four identical literals: they
+# could not drift without someone noticing, but a fifth writer forgetting the set entirely
+# is exactly what happened to `reconcile_crafts` (BS4-03), and a name you have to import
+# is one you notice you need.
+BASICS = frozenset({"plains", "island", "swamp", "mountain", "forest", "wastes"})
+
 # Repo root is the parent of the scripts/ directory this file lives in.
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_CSV = os.path.join(REPO_ROOT, "card-library.csv")

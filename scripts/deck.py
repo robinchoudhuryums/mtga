@@ -58,7 +58,8 @@ import time
 import urllib.error
 import urllib.request
 
-from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty,
+from lib import (BASICS as lib_BASICS, DEFAULT_CSV, REPO_ROOT, load_rows, eprint,
+                 card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
                  mana_value, primary_type, atomic_write, alias_front)
 from scryfall import post_collection, ScryfallUnavailable
@@ -67,7 +68,7 @@ POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
 
 DECKS_DIR = os.path.join(REPO_ROOT, "decks")
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
-BASICS = {"plains", "island", "swamp", "mountain", "forest", "wastes"}
+BASICS = lib_BASICS          # one definition, in lib.py
 
 
 def _file_memo(*path_names):
@@ -4119,7 +4120,15 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         nl = name.lower()
         if not name or nl.split(" // ")[0] in deck_names or nl in BASICS:
             continue
-        if "land" not in (r.get("Type") or "").lower():
+        # FRONT face, via `_primary_type` — the same test `wishlist._is_land` was fixed to
+        # use in BS2-11, and the manabase RECOMMENDER kept the whole-type-line substring
+        # scan it was fixed away from. So any card with `// Land` on its BACK qualified:
+        # three of `suggest 52 --lands`' four highest-scored picks were Tarrian's Journal
+        # (Artifact front), Grasping Shadows (Enchantment front) and Aclazotz (Creature
+        # front). Those are reached by TRANSFORMING, never by a land drop — maindeck one
+        # and the deck is a land short with INV-04 seeing nothing wrong, because the line
+        # is a perfectly valid card line. G-37's live residual; the G-63 TYPE-column shape.
+        if _primary_type(r.get("Type") or "") != "Land":
             continue
         if apply_fmt and fmt not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
             continue
@@ -5523,8 +5532,13 @@ def recommendation_row(d, cut, add, source, today=None):
     # so the cut always has a well-defined position in a list that always contains it.
     try:
         rows, _central, prot_present, _int = rank_cut_candidates(d)
-        cl = cut.strip().lower()
-        idx = next((i for i, r in enumerate(rows) if r[1].strip().lower() == cl), None)
+        # `_ms_key` both sides, like the `Cut Protected` join below it. A raw `.lower()`
+        # compare blanked `Cut Rank` whenever the deck stored a DFC under one face and the
+        # swap named the other — telemetry only (G-56 keeps this ledger report-only, and
+        # `append_recommendation`'s caller swallows any error), but a silently-empty
+        # column is what `deck.py feedback` computes agreement FROM.
+        cl = _ms_key(cut)
+        idx = next((i for i, r in enumerate(rows) if _ms_key(r[1]) == cl), None)
         row["Cut Of"] = len(rows)
         row["Cut Protected"] = "yes" if _ms_key(cut) in {_ms_key(p) for p in prot_present} \
             else "no"

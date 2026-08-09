@@ -84,6 +84,25 @@ def check_derived_files():
             continue
         required = _REQUIRED_COLUMNS.get(name)
         if not required:
+            # gallery.html has no columns to check, but "exists" was the WHOLE test — a
+            # truncated or zero-byte gallery passed INV-03, which is the same
+            # exists-but-gutted shape the CSV half was hardened against in F-02. It is a
+            # generated artifact, so the cheap structural facts are enough: non-trivial
+            # size and the data island every card in it is read from (BS4-27).
+            if name.endswith(".html"):
+                try:
+                    blob = open(path, encoding="utf-8").read()
+                except OSError as e:
+                    errs.append(f"{name} exists but could not be read: {e}")
+                    continue
+                island = 'id="data"' in blob
+                if len(blob) < 1024 or not island:
+                    errs.append(
+                        f"{name} is present but has no usable content "
+                        f"({len(blob)} bytes, data island "
+                        + ("present" if island else "MISSING")
+                        + ") — a truncated or half-written build looks exactly like "
+                          "this. Rebuild it with build_gallery.py.")
             continue
         header = _header_of(path) or []
         missing = [c for c in required if c not in header]

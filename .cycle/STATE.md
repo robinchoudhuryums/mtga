@@ -6,6 +6,54 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #3, follow-ons + unbatched Lows (2026-08-09) — SCAN CLOSED
+
+Ten findings. Block:
+`.cycle/blocks/2026-08-broad-scan3-followon-lows-broad-implement.md`.
+Gates green, zero soft warnings; **1,188 tests**.
+
+**The headline is the G-37 residual, and it was the real defect all along.**
+`suggest --lands` filtered with `"land" in type_line.lower()` — a whole-type-line
+substring scan — so any card with `// Land` on its BACK qualified. **81 pool cards were
+wrongly admitted**, and three of them were the top picks for deck 52. They are reached by
+transforming, never by a land drop, so maindecking one leaves the deck a land short with
+INV-04 seeing nothing wrong. The fix is `_primary_type(...) == "Land"` — **the exact test
+`wishlist._is_land` was fixed to use in BS2-11**, which the manabase RECOMMENDER never
+got. Same rule, one place and not the other, for a year.
+
+Also: BS4-44 validate accepted Unicode digits its own consumers reject · BS4-27 INV-03's
+gallery leg now checks CONTENT not existence · BS4-42 the wildcard KPI reads structured
+data instead of re-parsing `_wc_str`'s display output · BS4-38 reconcile_crafts errors
+cleanly and stops rewriting an unchanged library · BS4-40 app.py's post-write prune is
+guarded and a collector-# -without-set is refused instead of silently dropped · BS4-21/23
+wishlist comment + the 100-card window · the `Cut Rank` `_ms_key` join · `BASICS` now has
+one definition in `lib.py`.
+
+**Two things worth carrying forward.**
+
+1. **I found two test doubles by RUNNING, not by scanning.** `test_check_all.py`'s INV-03
+   fixture wrote a 13-byte `<html></html>` gallery, encoding the existence-only rule
+   BS4-27 replaced. The standing instruction is to scan for doubles BEFORE editing a
+   module; I edited first and the suite caught it. It cost nothing here because the tests
+   were honest — but that is luck, not method.
+2. **BS4-40's collector-without-set fix introduces a REFUSAL.** A save that used to
+   succeed (while silently discarding the field) now blocks with an error. Better than a
+   toast that lied, but it is a behaviour change a user will meet.
+
+**Where I left off — the scan is fully closed.** Every finding is implemented or
+explicitly deferred. What remains:
+
+1. **G-37's two REMAINING scoring residuals**, still live and still documented: a "spend
+   this mana only to cast a creature spell" land scores top, and a conditionally-tapped
+   land scores as sometimes-untapped on a condition mono-black cannot meet. Only the
+   not-a-playable-land half was in scope.
+2. `dashboard.html` is one `make dashboard` behind (BS4-42 changed a KPI data path).
+3. A `/sync-docs` pass — **G-37's rule text now describes the fixed half in the present
+   tense, which is the most misleading stale text in CLAUDE.md.**
+4. The six operator visual checks, incl. the gallery's never-rendered light palette.
+5. Still owner-paced: **`matches.csv` is empty**, so 34 provisional tier letters rest on
+   internal consistency alone. This has been the largest gap for three cycles.
+
 ## Session — broad scan #3, Batch 5 (2026-08-09) — the scan's batches are DONE
 
 Seven interface findings, the STRUCTURAL half only. Block:

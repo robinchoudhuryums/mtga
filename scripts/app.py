@@ -571,7 +571,20 @@ def remove():
         return jsonify(ok=False, errors=errors), 400
     # Only AFTER the library write lands, so a rejected removal can't strand the mana
     # file out of step with it (the ordering `add()` uses for the same reason).
-    pruned = _prune_mana((key.get("name") or ""), kept)
+    #
+    # GUARDED, because the library removal has ALREADY landed atomically by this point.
+    # An unguarded raise here returned a 500 HTML page, which `postJSON` renders as
+    # "Remove failed … non-JSON response (HTTP 500)" — telling the user the remove FAILED
+    # when it succeeded, and inviting them to retry an operation that is already done.
+    # `add()` wraps its own post-write step for exactly this reason (BS2-27/BS4-40).
+    try:
+        pruned = _prune_mana((key.get("name") or ""), kept)
+    except Exception as e:
+        return jsonify(ok=True, backup=backup, removed=key.get("name"), mana_pruned=0,
+                       warning=(f"Removed from card-library.csv, but the card-mana.csv "
+                                f"row could not be pruned ({e}). Harmless to INV-02 (a "
+                                f"spare mana row breaks nothing); tidy it by hand or "
+                                f"re-run build_mana.py."))
     return jsonify(ok=True, backup=backup, removed=key.get("name"), mana_pruned=pruned)
 
 
@@ -748,6 +761,17 @@ def _validate_body(body):
         q = str(t.get("qty", "")).strip()
         if not q.isdigit() or int(q) < 1:
             problems.append(f"{name}: quantity must be a positive integer (got {q!r}).")
+        # A collector # with no set is DISCARDED by `_serialize_doc` (it only emits the
+        # number when a set is present, and `_body_cards` mirrors that so the round-trip
+        # check still passes). So the save succeeded, toasted "Saved N card lines", and
+        # the field the user filled in was gone on reload — a success confirmation for an
+        # input the editor silently dropped, the same class as the BS2-28 header bug one
+        # field over (BS4-40). Refuse it instead: an Arena line needs both or neither.
+        if (t.get("cn") or "").strip() and not (t.get("set") or "").strip():
+            problems.append(
+                f"{name}: a collector # needs a set code — `(SET) #` is one unit in an "
+                f"Arena line, and a number with no set cannot be written. Add the set, "
+                f"or clear the number (use `deck.py resolve` to get both).")
         n += 1
     if problems:
         return False, problems, n

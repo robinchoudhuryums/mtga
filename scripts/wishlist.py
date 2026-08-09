@@ -56,8 +56,13 @@ HEADER = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
 # PROVENANCE for the Power column. Both `--add` and `--seed-power` write a heuristic
 # estimate into the same cell a hand grade goes in, so nothing could tell an auto-seed
 # from a human judgment — which meant "verify this number" had to be said about EVERY
-# row, including the ones already graded. Written as "seed" by the estimators; anything
-# else (including blank, for rows that predate this column) is treated as hand-graded.
+# row, including the ones already graded. Written as "seed" by the estimators.
+#
+# NOTE the trust rule, because this comment used to state the OPPOSITE of the code: only
+# `hand` is trusted. `seed`, `unknown` AND BLANK are all untrusted — see
+# `power_is_seeded`, which is the definition, and G-17. A blank cell is a row nobody has
+# graded, so treating it as a human judgment is the one reading that cannot be right
+# (BS4-21).
 POWER_SEEDED = "seed"       # written by --add / --seed-power
 POWER_HAND = "hand"         # a human graded it; trust the number
 POWER_UNKNOWN = "unknown"   # predates this column — provenance genuinely not recorded
@@ -477,7 +482,16 @@ def _theme_model():
         if not dk.is_roster_deck(dd):
             continue
         dm, cards = dk.parse_deck_file(dd["path"])
-        if not (55 <= sum(q for q, _n, _s, _c in cards) <= 70):
+        # 60-card constructed OR 100-card singleton (Historic Brawl). The window used to
+        # be 55-70 alone, which silently dropped any 100-card deck from the fingerprint
+        # set — so cards targeted at one would rank "review"/generic while
+        # `--audit-targets` still accepted its id as valid, two views disagreeing about
+        # whether a deck exists. The roster has no 100-card deck yet and the handoff
+        # names building one as a live plan, so this is a trap laid for the next session
+        # rather than a live bug (BS4-23). The filter's real job is excluding untuned
+        # PILES, which both bands still do.
+        _total = sum(q for q, _n, _s, _c in cards)
+        if not (55 <= _total <= 70 or 95 <= _total <= 105):
             continue
         colors, ident, tw = dk._declared_colors(dm), set(), {}
         for q, n, s, c in cards:

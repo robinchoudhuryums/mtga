@@ -62,7 +62,12 @@ def validate(path):
 
         qty = (row.get("Quantity Owned") or "").strip()
         if qty:
-            if not qty.isdigit():
+            # ASCII digits only. `str.isdigit()` is True for '²', '٣' and other Unicode
+            # digit forms that `int()` then REJECTS — so such a cell passed INV-01 and
+            # crashed every downstream `int(q) if q.isdigit()` consumer (owned_index,
+            # deck.owned, the dashboard's collect). A gate that admits a value its own
+            # consumers cannot read is worse than no gate: it certifies the row (BS4-44).
+            if not (qty.isdigit() and qty.isascii()):
                 errors.append(
                     f"Row {i} ({name}): Quantity Owned must be a non-negative "
                     f"integer or blank, got {qty!r}"

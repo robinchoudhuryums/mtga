@@ -66,7 +66,13 @@ class TestInv03DerivedSchema:
         gal = tmp_path / "gallery.html"
         _write(mana, "Card Name,Mana Cost,Mana Value,Keywords\n")
         _write(pool, pool_header + "\n")
-        _write(gal, "<html></html>")
+        # A REALISTIC gallery stub. `_write(gal, "<html></html>")` encoded the old
+        # existence-only rule, and BS4-27 made INV-03 check that the artifact has usable
+        # content (non-trivial size + the data island every card is read from) — because
+        # a truncated or half-written build passed the old test exactly as a healthy one
+        # did. The stub is padded past the size floor and carries the island.
+        _write(gal, '<html><body><script id="data" type="application/json">[]</script>'
+                    + "<!-- " + ("x" * 1200) + " -->" + "</body></html>")
         monkeypatch.setattr(ca, "MANA_CSV", str(mana))
         monkeypatch.setattr(ca, "POOL_CSV", str(pool))
         monkeypatch.setattr(ca, "GALLERY", str(gal))
@@ -91,6 +97,23 @@ class TestInv03DerivedSchema:
         self._world(tmp_path, monkeypatch, self.FULL)
         errs, warns = ca.check_derived_files()
         assert errs == [] and warns == []
+
+    def test_a_gutted_gallery_is_hard_not_just_a_missing_one(self, tmp_path, monkeypatch):
+        """BS4-27: INV-03's gallery leg tested EXISTENCE only, so a zero-byte or truncated
+        artifact passed exactly as a healthy one did — the same exists-but-gutted shape the
+        CSV half was hardened against in F-02, on the third derived file."""
+        self._world(tmp_path, monkeypatch, self.FULL)
+        _write(tmp_path / "gallery.html", "")
+        errs, _ = ca.check_derived_files()
+        assert any("no usable content" in e for e in errs)
+
+    def test_a_gallery_that_lost_its_data_island_is_hard(self, tmp_path, monkeypatch):
+        """Big enough to pass a size floor, but every card is read from `#data` — so
+        without it the page renders empty chrome."""
+        self._world(tmp_path, monkeypatch, self.FULL)
+        _write(tmp_path / "gallery.html", "<html>" + ("x" * 4000) + "</html>")
+        errs, _ = ca.check_derived_files()
+        assert any("data island MISSING" in e for e in errs)
 
     def test_a_missing_derived_file_is_hard(self, tmp_path, monkeypatch):
         self._world(tmp_path, monkeypatch, self.FULL)
