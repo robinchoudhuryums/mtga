@@ -1052,3 +1052,22 @@ Branch restarted from `main`. Then, on the fresh branch:
 **Where I left off.** All work committed and pushed; `check_all` clean, 1,078 tests green.
 The open operator item is `import_collection.py` against a full tracker export, which
 should precede any wildcard spending.
+
+## 2026-08-09 evening — Brawl conversion, deck tunes, and the audit rework
+
+**Completed.** PR #111 merged, branch restarted. Then: ingested 5 crafted DFT cards and
+the 27 cards completing 55b/57/66 (all three now fully owned); deck 26b rotation pass;
+deck 19 Elspeth tune + first `#: protect:` header; deck 40-brawl (Standard Brawl); and
+the rationale-audit rework with `normalize_format`.
+
+**Decided AGAINST** (do not re-propose without new information):
+- Marauding Mako in deck 26b — applied, then reverted on the user's challenge. 16
+  artifact-creators vs 17 discard cards is a tie, and Machinesmith has trample.
+- Owlin Historian in deck 19 — applied, then reverted. The user keeps Aven Interrupter;
+  the {W}{W} problem is a LANDS problem.
+- Ancient Vendetta / Spikeshell Harrier into any deck — owned, no home.
+- Crafting Inti or Captain Storm for 26b — both rotate ~2026.
+
+**Where I left off.** All work committed and pushed; PR #112 merged to main. check_all
+clean, 1,094 tests green, roster rationale sweep 0 flags. Pick-up shortlist is
+`.cycle/NEXT-SESSION.md` §4b.

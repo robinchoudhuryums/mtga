@@ -3331,3 +3331,34 @@ class TestRationaleStalenessLiveMisses:
         got = self._cards(tmp_path,
             "#: archetype: Its parent counts CREATURES — Enduring Vitality reads the same number.\n")
         assert "Enduring Vitality" not in got
+
+
+class TestFormatNormalization:
+    """Arena renamed these and the repo kept the old names, so the labels are INVERTED
+    against the client UI: Arena's "Brawl" is 100-card Historic Brawl, Arena's
+    "Standard Brawl" is the 60-card one. `#: format:` is hand-written, so the spellings
+    a person reaches for must resolve — `historic-brawl` (a real slug in _FORMAT_SLUGS)
+    previously matched NEITHER construction set, silently giving a 100-card singleton
+    deck a 60-card floor and no copy limit, with `legal` reporting clean."""
+
+    def test_hyphenated_historic_brawl_gets_the_100_card_floor(self):
+        c = deck.normalize_format("historic-brawl")
+        assert c in deck.BIG_DECK_FORMATS and c in deck.SINGLETON_FORMATS
+
+    def test_arena_standard_brawl_label_maps_to_the_60_card_format(self):
+        c = deck.normalize_format("Standard Brawl")
+        assert c == "brawl"
+        assert c not in deck.BIG_DECK_FORMATS and c in deck.SINGLETON_FORMATS
+
+    def test_case_and_spacing_are_normalized(self):
+        assert deck.normalize_format("  HISTORIC  BRAWL ") == "historic brawl"
+
+    def test_plain_formats_pass_through(self):
+        assert deck.normalize_format("Standard") == "standard"
+        assert deck.normalize_format("") == ""
+
+    def test_a_100_card_historic_brawl_deck_is_not_flagged_undersized(self, tmp_path):
+        cards = [(1, f"Filler {i}", "SET", str(i)) for i in range(99)]
+        rep = deck.legality_report({"commander": ""}, cards, "historic-brawl", {})
+        assert not any("minimum is 60" in p for p in rep["problems"])
+        assert rep["min_size"] == 100 and rep["copy_limit"] == 1

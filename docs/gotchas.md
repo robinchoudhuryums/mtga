@@ -382,6 +382,38 @@ survives: deck 30 protects counter-doublers and its strict signature is exactly
 `{counters}`. Roster diff: 14 of 64 decks re-scored, 4 top-cut candidates moved (deck 36a's
 moved OFF Vizier of the Menagerie, one of the fixers the tooling is meant to protect).
 
+### 2026-08-09 — Arena's two Brawl formats, and the alias that was missing
+
+Arena renamed Historic Brawl to plain **"Brawl"** and calls the 60-card version
+**"Standard Brawl"**. This repo kept the older names, so the two labels are INVERTED
+against the client UI:
+
+| Arena's label | cards | `#: format:` here |
+|---|---|---|
+| Brawl | 100, singleton, Historic pool | `Historic Brawl` |
+| Standard Brawl | 60, singleton, Standard pool | `Brawl` |
+
+Deck 40-brawl (Paradox Drive) is a **Standard Brawl** conversion and correctly carries
+`#: format: Brawl`.
+
+The latent bug found while documenting this: `#: format:` is hand-written free text,
+and the construction-rule sets (`SINGLETON_FORMATS`, `BIG_DECK_FORMATS`,
+`_COMMANDER_FORMATS`) were tested with raw lowercased strings containing SPACES, while
+`_FORMAT_SLUGS` — the list used for legality lookup — carries the HYPHENATED
+`historic-brawl`. So a deck written `#: format: historic-brawl` matched neither
+singleton nor big-deck: a 100-card commander deck would have been given a **60-card
+floor and a 4-copy limit**, with `legal` printing a clean bill. Both construction checks
+off at once, from a spelling the repo's own slug list uses.
+
+Fixed with `normalize_format()` (lowercase, collapse whitespace, alias
+`historic-brawl`/`historicbrawl` → `historic brawl` and `standard brawl` → `brawl`),
+applied at every set test in `legality_report`. Pinned by `TestFormatNormalization`,
+including a 99-card deck that must not be flagged undersized.
+
+The general shape is one this file already knows: a set-membership test against a
+hand-written string is only as good as its alias table, and the failure is silent in
+the permissive direction.
+
 ## [G-10] "Not in library" for a card you own is the deck-dump undercount symptom
 
 **"Not in library" for a card you own is the deck-dump undercount symptom.**

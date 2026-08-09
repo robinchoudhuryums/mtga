@@ -16,18 +16,20 @@ commands disagree.
 
 ## 1. Repo position
 
-- Working branch **`claude/broad-scan-v74wau`**. **PR #110 MERGED the whole broad-scan-2
-  cycle into `main` (2026-08-09)** and the branch was restarted from `main` at that point;
-  PR #109 before it was closed WITHOUT merging, which is why #110 carried 26 commits. The
-  branch now holds the post-merge deck work. Check `git log origin/main..HEAD` before your
-  first commit and restart from `main` again if its PR has since merged.
+- Working branch **`claude/broad-scan-v74wau`**. Three PRs merged on 2026-08-09: **#110**
+  (the whole broad-scan-2 cycle — #109 before it was closed WITHOUT merging), **#111** (the
+  duplicate-craft sweep) and **#112** (this session). The branch is restarted from `main`
+  after each merge. **Check `git log origin/main..HEAD` before your first commit** — if it
+  is empty, the last PR merged and you must restart from `main`
+  (`git fetch origin main && git checkout -B claude/broad-scan-v74wau origin/main`).
 - Gates green: `check_all` all invariants hold, **ZERO soft warnings**. **1,078 tests in
   29 files.** The 7 blank-Card-Text `validate` warnings are K-11 vanilla creatures and are
   expected, not a data gap.
-- Collection **2,113 library rows / 2,109 distinct names**; roster **98 deck files**,
-  numbered through **66**; 34 `deck.py` subcommands; 13 model-sanity gates. (Decks 64 Gray
-  Goo, 65 Web of Life and 66 Lethal Protector were drafted 2026-08-08; 66 was promoted out
-  of 65's variant slot rather than built as one.)
+- Collection **2,133 library rows**; roster **99 deck files**, numbered through **66**;
+  34 `deck.py` subcommands; 13 model-sanity gates; **1,094 tests in 29 files**. (Decks 64
+  Gray Goo, 65 Web of Life and 66 Lethal Protector were drafted 2026-08-08; 66 was
+  promoted out of 65's variant slot. **40-brawl** is the roster's third Brawl conversion,
+  added 2026-08-09.)
 - **`ROADMAP.md` is a 2026-07-31 snapshot** with a staleness header on it. Individual
   entries are marked DONE as they land, but it wants a `/roadmap` regeneration.
 
@@ -98,6 +100,29 @@ as a *reason*. Nothing in the toolchain can detect this. **Run `import_collectio
 against a full tracker export before acting on any craft plan**; it is the only tool here
 that sets counts exactly, including downward.
 
+## 3c. The 2026-08-09 evening session
+
+**Decks.** 55b/57/66 crafted and now FULLY OWNED (27 cards ingested, verify 27/27) —
+55b and 57 were the two the dedup pass reworked most. Deck 19 gained Elspeth, Storm
+Slayer (−Dazzling Angel), taking interaction 4→5 and the **metrics floor B→A**; the
+LETTER is still B and wants a human call. Deck 26b replaced both ~2026 pending crafts
+(−Inti/+Captain Howler, −Captain Storm/+Scrounging Skyray) and parked Vision of Love in
+flex. **40-brawl** is a Standard Brawl conversion of deck 40 led by Ignis Scientia — The
+Goose Mother was the better card and was rejected because a COMMANDER that rotates in
+months is the deck's identity expiring.
+
+**Two swaps were applied and then REVERTED on the user's challenge**, both worth reading
+before re-proposing: Marauding Mako into 26b (the deck holds 16 artifact-creators against
+17 discard cards — trigger frequency was a tie, and the cut card had trample in a deck
+with almost no evasion), and Owlin Historian into 19 (the user wants Aven Interrupter
+kept; the `{W}{W}` fix should come from LANDS).
+
+**Tooling.** The rationale audit was **reworked against fixtures from five live misses**
+— see `[G-26]`. Its first clean sweep found **six real stale rationales** (decks 30, 37b,
+44, 48a, 51a, 58) that a scan run ~20 times that day had passed. `[G-16]`'s ENTERS-caveat
+residual is fixed. `normalize_format` closes a latent trap where `#: format: historic-brawl`
+disabled both the size floor and the copy limit (`[G-09]`).
+
 ## 4. Standing items, owner-paced — unchanged and still the biggest gaps
 
 - **`matches.csv` is STILL EMPTY. This is the single largest gap in the project.** 34
@@ -125,6 +150,32 @@ that sets counts exactly, including downward.
 - **October rotation pass is pre-loaded**: deck 28's flex block names successors for its
   six owned rotating cards; deck 28a has never had the pass; deck 36 loses Kutzil with no
   safe replacement for his "opponents can't cast spells during your turn" half.
+
+## 4b. WHERE TO PICK UP — the shortlist for a fresh session
+
+In priority order, with the reason:
+
+1. **Run `import_collection.py` against a full tracker export.** FIVE ownership counts
+   were wrong on 2026-08-09 (Cosmogrand, Halana, Ruby, Castle Doom, plus Cool but Rude's
+   craft status), every one caught only because the user said "I actually have N". One
+   was load-bearing in a recommendation. Nothing in the toolchain can detect this, and it
+   should precede any wildcard spending.
+2. **Deck 19's tier letter.** Its metrics floor is now A and the letter is B; `tier 19`
+   reports it as possibly under-graded. The file records both sides. Letters are never
+   auto-written — this needs a person.
+3. **The three remaining Brawl conversions** the user planned: decks **46 Lightwing**
+   (Delney), **4 Quantum Realm** (Ant-Man) and **11 Villainous** (Bullseye — note his
+   identity is BR against a mono-B deck; a mono-B legend would be tighter). 40-brawl is
+   the worked example; the pattern is one `#: commander:` line plus `#: format: Brawl`.
+4. **The 100-card Historic Brawl build** the user asked about: seed **35a** (already
+   60-card singleton, interaction 6 / card advantage 7) with **Terra, Magical Adept** as
+   commander — her identity is 5-colour but she CASTS for `{1}{R}{G}`, so she unlocks all
+   2,124 owned Historic-legal cards while asking the manabase for two. Avatar Aang was
+   measured and rejected: he needs all four bends in one turn and airbend is owned 11
+   against 22-24 for the others.
+5. **Deck 19 Route B** — the white manabase. Aven Interrupter is 58% on turn three and
+   Storm 61% on turn four; the fix is white DUALS, not cutting cards (the user said so
+   explicitly after a swap was tried and reverted).
 
 ## 5. Traps re-confirmed this cycle
 

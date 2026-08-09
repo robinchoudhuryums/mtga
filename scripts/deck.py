@@ -5944,6 +5944,27 @@ def cmd_apply_flex(args):
 # larger minimum size than the 60-card constructed default.
 SINGLETON_FORMATS = {"brawl", "historic brawl", "commander", "oathbreaker", "duel"}
 BIG_DECK_FORMATS = {"commander", "historic brawl", "oathbreaker"}
+# ARENA RENAMED THESE AND THE REPO KEPT THE OLD NAMES, so the two labels are INVERTED
+# against the client's UI: Arena's "Brawl" is 100-card Historic Brawl (`historic brawl`
+# here) and Arena's "Standard Brawl" is the 60-card one (`brawl` here). A `#: format:`
+# is hand-written free text, so the spellings a person will actually reach for have to
+# resolve — and before this map, `historic-brawl` (the hyphenated slug that IS in
+# `_FORMAT_SLUGS` for legality lookup) matched NEITHER set, silently giving a 100-card
+# singleton deck a 60-card floor AND no copy limit at all: both construction checks off
+# at once, with `legal` still printing a clean bill. Normalize before every set test.
+_FORMAT_ALIASES = {
+    "historic-brawl": "historic brawl",
+    "historicbrawl": "historic brawl",
+    "standard brawl": "brawl",
+    "standard-brawl": "brawl",
+}
+
+
+def normalize_format(fmt):
+    """Canonical form of a `#: format:` value for the construction-rule sets above.
+    Lowercased, whitespace-collapsed, and aliased (see `_FORMAT_ALIASES`)."""
+    f = " ".join((fmt or "").strip().lower().split())
+    return _FORMAT_ALIASES.get(f, f)
 # Formats led by a legendary creature/planeswalker commander with a color-identity lock
 # (Oathbreaker's PW-commander + signature-spell rules differ, so it's excluded here).
 _COMMANDER_FORMATS = {"brawl", "historic brawl", "commander", "duel"}
@@ -6004,9 +6025,10 @@ def legality_report(meta, cards, fmt, leg, carddata=None):
             disp[key] = n
         counts[key] = counts.get(key, 0) + q
 
-    singleton = fmt in SINGLETON_FORMATS
+    cfmt = normalize_format(fmt)
+    singleton = cfmt in SINGLETON_FORMATS
     copy_limit = 1 if singleton else 4
-    min_size = 100 if fmt in BIG_DECK_FORMATS else 60
+    min_size = 100 if cfmt in BIG_DECK_FORMATS else 60
 
     problems, unknown, notes = [], [], []
     if fmt and total < min_size:
@@ -6044,7 +6066,7 @@ def legality_report(meta, cards, fmt, leg, carddata=None):
                      "checking size/copies only.")
 
     # Commander rules (Brawl / Commander) — needs card types + identities.
-    if singleton and fmt in _COMMANDER_FORMATS and carddata is not None:
+    if singleton and cfmt in _COMMANDER_FORMATS and carddata is not None:
         cmd_name = (meta.get("commander") or "").strip()
         if not cmd_name:
             problems.append(f"{fmt} needs a `#: commander:` header — a legendary creature "
