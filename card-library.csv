@@ -324,7 +324,7 @@ Aerith Rescue Mission,Sorcery,"Choose one —
 "Appa, Steadfast Guardian",Legendary Creature — Bison Ally,"Flash
 Flying
 When Appa enters, airbend any number of other target nonland permanents you control. (Exile them. While each one is exiled, its owner may cast it for {2} rather than its mana cost.)
-Whenever you cast a spell from exile, create a 1/1 white Ally creature token.",W,Bison; Ally; tokens; etb; flying; evasion; airbend; bending; flash; tempo; exile cast,TLA,10,1
+Whenever you cast a spell from exile, create a 1/1 white Ally creature token.",W,Bison; Ally; tokens; etb; flying; evasion; airbend; bending; flash; tempo; exile cast,TLA,10,2
 Avatar's Wrath,Sorcery,"Choose up to one target creature, then airbend all other creatures. (Exile them. While each one is exiled, its owner may cast it for {2} rather than its mana cost.)
 Until your next turn, your opponents can't cast spells from anywhere other than their hands.
 Exile Avatar's Wrath.",W,airbend; bending,TLA,12,1
@@ -2959,7 +2959,7 @@ Opulent Palace,Land,"This land enters tapped.
 {T}: Add {B}, {G}, or {U}.",U/B/G,mana,TDM,264,1
 "Sokka, Tenacious Tactician",Legendary Creature — Human Warrior Ally,"Menace, prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
 Other Allies you control have menace and prowess.
-Whenever you cast a noncreature spell, create a 1/1 white Ally creature token.",W/U/R,Human; Warrior; Ally; tokens; pump; prowess; spellslinger; tempo; menace; evasion; Allie,TLA,242,1
+Whenever you cast a noncreature spell, create a 1/1 white Ally creature token.",W/U/R,Human; Warrior; Ally; tokens; pump; prowess; spellslinger; tempo; menace; evasion; Allie,TLA,242,2
 Lie in Wait,Sorcery,Return target creature card from your graveyard to your hand. Lie in Wait deals damage equal to that card's power to target creature.,U/B/G,graveyard,TDM,203,1
 "Narset, Jeskai Waymaster",Legendary Creature — Human Monk,"At the beginning of your end step, you may discard your hand. If you do, draw cards equal to the number of spells you've cast this turn.",W/U/R,Human; Monk; card draw,TDM,209,1
 Avengers Tower,Land,"{T}: Add {C}.
@@ -3110,7 +3110,7 @@ Artistic Process,Sorcery,"Choose one —
 • Artistic Process deals 2 damage to each creature you don't control.
 • Create a 3/3 blue and red Elemental creature token with flying. It gains haste until end of turn.",R,tokens; burn,SOS,108,1
 Spectacular Skywhale,Creature — Elemental Whale,"Flying
-Opus — Whenever you cast an instant or sorcery spell, this creature gets +3/+0 until end of turn. If five or more mana was spent to cast that spell, put three +1/+1 counters on this creature instead.",U/R,Elemental; Whale; counters; pump; spellslinger; flying; evasion; opus; payoff,SOS,229,1
+Opus — Whenever you cast an instant or sorcery spell, this creature gets +3/+0 until end of turn. If five or more mana was spent to cast that spell, put three +1/+1 counters on this creature instead.",U/R,Elemental; Whale; counters; pump; spellslinger; flying; evasion; opus; payoff,SOS,229,2
 Flowerfoot Swordmaster,Creature — Mouse Soldier,"Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
 Valiant — Whenever this creature becomes the target of a spell or ability you control for the first time each turn, Mice you control get +1/+0 until end of turn.",W,Mouse; Soldier; tokens; etb; pump; offspring; go-wide; valiant; combat; counters,BLB,14,1
 Rayblade Trooper,Creature — Human Soldier,"When this creature enters, put a +1/+1 counter on target creature you control.
@@ -3979,7 +3979,7 @@ When this creature enters, look at the top X cards of your library, where X is t
 Seedship Broodtender,Creature — Insect Citizen,"When this creature enters, mill three cards. (Put the top three cards of your library into your graveyard.)
 {3}{B}{G}, Sacrifice this creature: Return target creature or Spacecraft card from your graveyard to the battlefield. Activate only as a sorcery.",B/G,Insect; Citizen; reanimator; graveyard; mill; sacrifice; etb,EOE,227,1
 Knight Luminary,Creature — Human Knight,"When this creature enters, create a 1/1 white Human Soldier creature token.
-Warp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,Human; Knight; exile cast; tokens; etb; warp; tempo; cost-reduction,EOE,23,1
+Warp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",W,Human; Knight; exile cast; tokens; etb; warp; tempo; cost-reduction,EOE,23,2
 Perigee Beckoner,Creature — Horror,"When this creature enters, until end of turn, another target creature you control gets +2/+0 and gains ""When this creature dies, return it to the battlefield tapped under its owner's control.""
 Warp {1}{B} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",B,Horror; exile cast; etb; pump; blink; warp; tempo; cost-reduction,EOE,112,1
 Rhystic Study,Enchantment,"Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.",U,card draw,FCA,31,1
@@ -4052,10 +4052,10 @@ Boros Charm,Instant,"Choose one —
 • Permanents you control gain indestructible until end of turn.
 • Target creature gains double strike until end of turn.",W/R,burn,FDN,721,1
 "Mai, Jaded Edge",Legendary Creature — Human Noble,"Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)
-Exhaust — {3}: Put a double strike counter on Mai. (Activate each exhaust ability only once.)",R,Human; Noble; counters; pump; prowess; spellslinger; tempo; exhaust; payoff,TLA,147,1
+Exhaust — {3}: Put a double strike counter on Mai. (Activate each exhaust ability only once.)",R,Human; Noble; counters; pump; prowess; spellslinger; tempo; exhaust; payoff,TLA,147,2
 Frontline Rush,Instant,"Choose one —
 • Create two 1/1 red Goblin creature tokens.
-• Target creature gets +X/+X until end of turn, where X is the number of creatures you control.",W/R,tokens; pump,TDM,186,1
+• Target creature gets +X/+X until end of turn, where X is the number of creatures you control.",W/R,tokens; pump,TDM,186,2
 Nomad Outpost,Land,"This land enters tapped.
 {T}: Add {R}, {W}, or {B}.",W/B/R,mana,TDM,263,1
 Withering Torment,Instant,Destroy target creature or enchantment. You lose 2 life.,B,pay life; removal,DSK,124,1
@@ -4087,7 +4087,7 @@ Crime Novelist,Creature — Goblin Bard,"Whenever you sacrifice an artifact, put
 "Doc Aurlock, Grizzled Genius",Legendary Creature — Bear Druid,"Spells you cast from your graveyard or from exile cost {2} less to cast.
 Plotting cards from your hand costs {2} less.",U/G,Bear; Druid; graveyard; cost-reduction; exile cast,OTJ,201,1
 Equilibrium Adept,Creature — Dog Monk,"When this creature enters, exile the top card of your library. Until the end of your next turn, you may play that card.
-Flurry — Whenever you cast your second spell each turn, this creature gains double strike until end of turn.",R,Dog; Monk; etb; impulse; flurry; spellslinger,TDM,106,1
+Flurry — Whenever you cast your second spell each turn, this creature gains double strike until end of turn.",R,Dog; Monk; etb; impulse; flurry; spellslinger,TDM,106,2
 Epic Downfall,Sorcery,Exile target creature with mana value 3 or greater.,B,removal,TLA,96,1
 Claws Out,Instant,"Affinity for Cats (This spell costs {1} less to cast for each Cat you control.)
 Creatures you control get +2/+2 until end of turn.",W,cost-reduction; pump; affinity; artifacts,FDN,6,1
@@ -4490,3 +4490,54 @@ Midnight Mangler,Artifact — Vehicle,"During turns other than yours, this Vehic
 Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",U,Vehicle; vehicle; crew; vehicles,DFT,50,1
 Maximum Overdrive,Instant,Put a +1/+1 counter on target creature. It gains deathtouch and indestructible until end of turn.,B,counters,DFT,96,1
 Spikeshell Harrier,Artifact Creature — Robot Turtle,"When this creature enters, return target creature or Vehicle an opponent controls to its owner's hand. If that opponent's speed is greater than each other player's speed, reduce that opponent's speed by 1. This effect can't reduce their speed below 1.",U,Robot; Turtle; etb; bounce,DFT,65,1
+Shadow of the Goblin,Enchantment,"Unreliable Visions — At the beginning of your first main phase, discard a card. If you do, draw a card.
+Undying Vengeance — Whenever you play a land or cast a spell from anywhere other than your hand, this enchantment deals 1 damage to each opponent.",R,exile cast; card draw; burn; noncombat damage; undying,SPM,87,1
+Demonic Ruckus,Enchantment — Aura,"Enchant creature
+Enchanted creature gets +1/+1 and has menace and trample.
+When this Aura is put into a graveyard from the battlefield, draw a card.
+Plot {R} (You may pay {R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",R,Aura; reanimator; graveyard; exile cast; card draw; aura; pump; plot; tempo; cost-reduction; enchant,OTJ,120,2
+Longhorn Sharpshooter,Creature — Minotaur Rogue,"Reach
+When this card becomes plotted, it deals 2 damage to any target.
+Plot {3}{R} (You may pay {3}{R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",R,Minotaur; Rogue; exile cast; burn; noncombat damage; reach; defense; plot; tempo; cost-reduction,OTJ,132,1
+Push,Sorcery // Sorcery,Destroy target tapped creature. // Put up to two target creature cards from a single graveyard onto the battlefield under your control. They gain haste until end of turn. Sacrifice them at the beginning of the next end step.,W/B/R,reanimator; graveyard; sacrifice; removal,MKM,250,1
+Defibrillating Current,Sorcery,Defibrillating Current deals 4 damage to target creature or planeswalker and you gain 2 life.,W/B/R,lifegain; burn,TDM,177,1
+Scout for Survivors,Sorcery,Return up to three target creature cards with total mana value 3 or less from your graveyard to the battlefield. Put a +1/+1 counter on each of them.,W,counters; reanimator; graveyard,EOE,33,1
+Jeskai Brushmaster,Creature — Orc Monk,"Double strike
+Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)",W/U/R,Orc; Monk; pump; prowess; spellslinger; tempo; double strike; combat; aggro,TDM,195,2
+Effortless Master,Creature — Orc Monk,"Vigilance
+Menace (This creature can't be blocked except by two or more creatures.)
+This creature enters with two +1/+1 counters on it if you've cast two or more spells this turn.",U/R,Orc; Monk; counters; vigilance; combat; menace; evasion,TDM,181,2
+Jeskai Shrinekeeper,Creature — Dragon,"Flying, haste
+Whenever this creature deals combat damage to a player, you gain 1 life and draw a card.",W/U/R,Dragon; lifegain; card draw; flying; evasion; haste; aggro,TDM,197,1
+Phantom Interference,Instant,"Spree (Choose one or more additional costs.)
++ {3} — Create a 2/2 white Spirit creature token with flying.
++ {1} — Counter target spell unless its controller pays {2}.",U,counterspell; tokens; spree; value,OTJ,61,1
+Ancestors' Aid,Instant,"Target creature gets +2/+0 and gains first strike until end of turn.
+Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,sacrifice; tokens; treasure; pump,LCI,132,2
+Mystic Monastery,Land,"This land enters tapped.
+{T}: Add {U}, {R}, or {W}.",W/U/R,mana,TDM,262,2
+Eddie Brock,Legendary Creature — Human Hero Villain // Legendary Creature — Symbiote Hero Villain,"When Eddie Brock enters, return target creature card with mana value 1 or less from your graveyard to the battlefield.
+{3}{B}{R}{G}: Transform Eddie Brock. Activate only as a sorcery. // Menace, trample, haste
+Whenever Venom attacks, you may sacrifice another creature. If you do, draw X cards, then you may put a permanent card with mana value X or less from your hand onto the battlefield, where X is the sacrificed creature's mana value.",B/R/G,Human; Hero; Villain; Symbiote; reanimator; graveyard; card draw; sacrifice; etb; transform; haste; aggro; trample; evasion; menace,SPM,55,1
+"Carnage, Crimson Chaos",Legendary Creature — Symbiote Villain,"Trample
+When Carnage enters, return target creature card with mana value 3 or less from your graveyard to the battlefield. It gains ""This creature attacks each combat if able"" and ""When this creature deals combat damage to a player, sacrifice it.""
+Mayhem {B}{R}",B/R,Symbiote; Villain; reanimator; graveyard; sacrifice; etb; mayhem; aggro; trample; evasion,SPM,125,1
+"Scarlet Spider, Kaine",Legendary Creature — Spider Human Hero,"Menace (This creature can't be blocked except by two or more creatures.)
+When Scarlet Spider enters, you may discard a card. If you do, put a +1/+1 counter on him.
+Mayhem {B/R} (You may cast this card from your graveyard for {B/R} if you discarded it this turn. Timing rules still apply.)",B/R,Spider; Human; Hero; counters; graveyard; etb; mayhem; aggro; menace; evasion,SPM,143,1
+Magmakin Artillerist,Creature — Elemental Pirate,"Whenever you discard one or more cards, this creature deals that much damage to each opponent.
+Cycling {1}{R} ({1}{R}, Discard this card: Draw a card.)
+When you cycle this card, it deals 1 damage to each opponent.",R,Elemental; Pirate; card draw; burn; noncombat damage; cycling,DFT,137,1
+Spider-Punk,Legendary Creature — Spider Human Hero,"Riot (This creature enters with your choice of a +1/+1 counter or haste.)
+Other Spiders you control have riot.
+Spells and abilities can't be countered.
+Damage can't be prevented.",R,Spider; Human; Hero; counters; riot; aggro,SPM,92,1
+Venom Connoisseur,Creature — Human Druid,"Alliance — Whenever another creature you control enters, this creature gains deathtouch until end of turn. If this is the second time this ability has resolved this turn, all creatures you control gain deathtouch until end of turn.",G,Human; Druid; alliance; aggro; value,FDN,648,1
+Webstrike Elite,Creature — Insect Archer,"Reach
+Cycling {X}{G}{G} ({X}{G}{G}, Discard this card: Draw a card.)
+When you cycle this card, destroy up to one target artifact or enchantment with mana value X.",G,Insect; Archer; card draw; reach; defense; cycling,DFT,186,1
+Grub's Command,Kindred Sorcery — Goblin,"Choose two —
+• Create a token that's a copy of target Goblin you control.
+• Creatures target player controls get +1/+1 and gain haste until end of turn.
+• Destroy target artifact or creature.
+• Target player mills five cards, then puts each Goblin card milled this way into their hand.",B/R,Goblin; mill; tokens; removal; pump; graveyard,ECL,228,1

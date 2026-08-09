@@ -2108,6 +2108,26 @@ Ancient Vendetta,{3}{B},4,
 Midnight Mangler,{1}{U},2,Crew
 Maximum Overdrive,{1}{B},2,
 Spikeshell Harrier,{4}{U},5,
+Shadow of the Goblin,{1}{R},2,Undying;Unreliable Visions;Undying Vengeance
+Demonic Ruckus,{1}{R},2,Plot;Enchant
+Longhorn Sharpshooter,{2}{R},3,Reach;Plot
+Push,{1}{W/B} // {4}{B/R}{B/R},8,
+Defibrillating Current,{2/R}{2/W}{2/B},6,
+Scout for Survivors,{2}{W},3,
+Jeskai Brushmaster,{1}{U}{R}{W},4,Prowess;Double strike
+Effortless Master,{2}{U}{R},4,Vigilance;Menace
+Jeskai Shrinekeeper,{2}{U}{R}{W},5,Flying;Haste
+Phantom Interference,{U},1,Spree
+Ancestors' Aid,{1}{R},2,Treasure
+Mystic Monastery,,0,
+Eddie Brock,{2}{B} // {3}{B}{R}{G},3,Transform;Haste;Trample;Menace
+"Carnage, Crimson Chaos",{2}{B}{R},4,Mayhem;Trample
+"Scarlet Spider, Kaine",{B}{R},2,Mayhem;Menace
+Magmakin Artillerist,{2}{R},3,Cycling
+Spider-Punk,{1}{R},2,Riot
+Venom Connoisseur,{1}{G},2,Alliance
+Webstrike Elite,{G}{G},2,Reach;Cycling
+Grub's Command,{3}{B}{R},5,Mill
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -3426,7 +3446,6 @@ Gastal Thrillroller,{2}{R},3,Haste;Crew;Trample
 Greasewrench Goblin,{R},1,Exhaust
 Howlsquad Heavy,{2}{R},3,Max speed;Start your engines!
 Kickoff Celebrations,{1}{R},2,Max speed;Start your engines!
-Magmakin Artillerist,{2}{R},3,Cycling
 Marauding Mako,{R},1,Cycling
 Pacesetter Paragon,{2}{R},3,Exhaust
 Pedal to the Metal,{X}{R},1,
@@ -3457,7 +3476,6 @@ Regal Imperiosaur,{1}{G}{G},3,
 Rise from the Wreck,{2}{G},3,
 Stampeding Scurryfoot,{G},1,Exhaust
 Veloheart Bike,{2}{G},3,Crew
-Webstrike Elite,{G}{G},2,Reach;Cycling
 "Aatchik, Emerald Radian",{3}{B}{B}{G},6,
 Apocalypse Runner,{2}{B}{R},4,Crew
 Boom Scholar,{1}{R}{G},3,Exhaust
@@ -4396,7 +4414,6 @@ Eclipsed Kithkin,{G/W}{G/W},2,
 Feisty Spikeling,{1}{R/W},2,Changeling
 Figure of Fable,{G/W},1,
 Glister Bairn,{2}{G/U}{G/U}{G/U},5,Vivid
-Grub's Command,{3}{B}{R},5,Mill
 "Kirol, Attentive First-Year",{1}{R/W}{R/W},3,
 "Maralen, Fae Ascendant",{2}{B}{G}{U},5,Flying
 Raiding Schemes,{3}{R}{G},5,
@@ -4684,7 +4701,6 @@ Pinnacle Starcage,{1}{W}{W},3,
 Pulsar Squadron Ace,{1}{W},2,
 Reroute Systems,{W},1,
 Rescue Skiff,{5}{W},6,Station
-Scout for Survivors,{2}{W},3,
 Seam Rip,{W},1,
 The Seriema,{1}{W}{W},3,Station
 Squire's Lightblade,{W},1,Equip;Flash
@@ -5039,7 +5055,6 @@ Mold Adder,{G},1,
 Ordeal of Nylea,{1}{G},2,Enchant
 Predator Ooze,{G}{G}{G},3,Indestructible
 Rampaging Baloths,{4}{G}{G},6,Trample;Landfall
-Venom Connoisseur,{1}{G},2,Alliance
 Wildborn Preserver,{1}{G},2,Reach;Flash
 Deadly Brew,{B}{G},2,
 Drogskol Reaver,{5}{W}{U},7,Flying;Lifelink;Double strike
@@ -8184,7 +8199,6 @@ Tarrian's Journal // The Tomb of Aclazotz,{1}{B},2,Transform
 Terror Tide,{2}{B}{B},4,Fathomless descent
 Tithing Blade // Consuming Sepulcher,{1}{B},2,Craft;Transform
 Visage of Dread // Dread Osseosaur,{1}{B},2,Craft;Transform;Menace;Mill
-Ancestors' Aid,{1}{R},2,Treasure
 Bonehoard Dracosaur,{3}{R}{R},5,Flying;First strike;Treasure
 "Brass's Tunnel-Grinder // Tecutlan, the Searing Rift",{2}{R},3,Transform;Discover
 Brazen Blademaster,{2}{R},3,
@@ -11418,7 +11432,6 @@ Metamorphic Blast,{U},1,Spree
 Nimble Brigand,{2}{U},3,
 Outlaw Stitcher,{3}{U},4,Plot
 Peerless Ropemaster,{4}{U},5,
-Phantom Interference,{U},1,Spree
 Plan the Heist,{2}{U}{U},4,Surveil;Plot
 Seize the Secrets,{2}{U},3,
 Shackle Slinger,{2}{U},3,
@@ -11467,14 +11480,12 @@ Brimstone Roundup,{1}{R},2,Plot
 Caught in the Crossfire,{R}{R},2,Spree
 Cunning Coyote,{1}{R},2,Plot;Haste
 Deadeye Duelist,{1}{R},2,Reach
-Demonic Ruckus,{1}{R},2,Plot;Enchant
 Explosive Derailment,{R},1,Spree
 Gila Courser,{2}{R},3,Saddle
 Great Train Heist,{R},1,Treasure;Spree
 Hellspur Brute,{4}{R},5,Affinity;Trample
 Hellspur Posse Boss,{2}{R}{R},4,
 Irascible Wolverine,{2}{R},3,Plot
-Longhorn Sharpshooter,{2}{R},3,Reach;Plot
 Mine Raider,{2}{R},3,Treasure;Trample
 Quick Draw,{R},1,
 Quilled Charger,{3}{R},4,Saddle
@@ -13167,9 +13178,7 @@ Parker Luck,{2}{B},3,
 "Scorpion, Seething Striker",{3}{B},4,Connive;Deathtouch
 Gwen Stacy // Ghost-Spider,{1}{R} // {2}{U}{R}{W},2,Flying;Vigilance;Transform;Haste
 Maximum Carnage,{4}{R},5,
-Shadow of the Goblin,{1}{R},2,Undying;Unreliable Visions;Undying Vengeance
 "Shocker, Unshakable",{4}{R}{R},6,Vibro-Shock Gauntlets
-Spider-Punk,{1}{R},2,Riot
 Kraven's Last Hunt,{3}{G},4,Mill
 "Lizard, Connors's Curse",{2}{G}{G},4,Lizard Formula;Trample
 Miles Morales // Ultimate Spider-Man,{1}{G} // {3}{R}{G}{W},2,Camouflage;Transform;First strike;Haste;Double
@@ -13179,7 +13188,6 @@ Strength of Will,{1}{G},2,
 Supportive Parents,{2}{G},3,
 "Araña, Heart of the Spider",{1}{R}{W},3,
 Biorganic Carapace,{2}{W}{U},4,Equip
-"Carnage, Crimson Chaos",{2}{B}{R},4,Mayhem;Trample
 Cheering Crowd,{1}{R/G},2,
 "Green Goblin, Revenant",{3}{B}{R},5,Deathtouch;Flying
 "Jackal, Genius Geneticist",{G}{U},2,Trample
@@ -13188,7 +13196,6 @@ Kraven the Hunter,{1}{B}{G},3,Trample
 Mary Jane Watson,{1}{G/W},2,
 Morbius the Living Vampire,{2}{U}{B},4,Flying;Lifelink;Vigilance
 "Scarlet Spider, Ben Reilly",{1}{R}{G},3,Trample;Web-slinging;Sensational Save
-"Scarlet Spider, Kaine",{B}{R},2,Mayhem;Menace
 "Silk, Web Weaver",{2}{G}{W},4,Web-slinging
 Spider-Man 2099,{U}{R},2,Vigilance;From the Future;Double strike
 "Spider-Woman, Stunning Savior",{1}{W/U},2,Flying;Venom Blast
@@ -13626,10 +13633,8 @@ Awaken the Honored Dead,{B}{G}{U},3,Mill
 Barrensteppe Siege,{2}{W}{B},4,
 Bone-Cairn Butcher,{1}{R}{W}{B},4,Mobilize
 Cori Mountain Stalwart,{1}{R}{W},3,Flurry
-Defibrillating Current,{2/R}{2/W}{2/B},6,
 Disruptive Stormbrood // Petty Revenge,{4}{G} // {1}{B},5,Flying
 Dragonback Assault,{3}{G}{U}{R},6,Landfall
-Effortless Master,{2}{U}{R},4,Vigilance;Menace
 Eshki Dragonclaw,{1}{G}{U}{R},4,Vigilance;Trample;Ward
 Fangkeeper's Familiar,{1}{B}{G}{U},4,Surveil;Flash
 "Felothar, Dawn of the Abzan",{W}{B}{G},3,Trample
@@ -13639,8 +13644,6 @@ Glacierwood Siege,{1}{G}{U},3,Mill
 Hardened Tactician,{1}{W}{B},3,
 Hollowmurk Siege,{B}{G},2,
 Inevitable Defeat,{1}{R}{W}{B},4,
-Jeskai Brushmaster,{1}{U}{R}{W},4,Prowess;Double strike
-Jeskai Shrinekeeper,{2}{U}{R}{W},5,Flying;Haste
 Karakyk Guardian,{3}{G}{U}{R},6,Flying;Vigilance;Trample
 Kheru Goldkeeper,{1}{B}{G}{U},4,Flying;Renew;Treasure
 Kin-Tree Severance,{2/W}{2/B}{2/G},6,
@@ -13684,7 +13687,6 @@ Great Arashin City,,0,
 Kishla Village,,0,Surveil
 Maelstrom of the Spirit Dragon,,0,
 Mistrise Village,,0,
-Mystic Monastery,,0,
 Sandsteppe Citadel,,0,
 Alseid of Life's Bounty,{W},1,Lifelink
 Archon of Falling Stars,{4}{W}{W},6,Flying

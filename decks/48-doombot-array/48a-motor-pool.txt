@@ -55,8 +55,9 @@
 #: archetype: OTHER PERMANENTS you control to each opponent". In a deck full of Vehicles,
 #: archetype: Equipment and Treasures that is frequently lethal from a stalled board, and it
 #: archetype: does not care whether any of them can attack. Radiant Lotus converts a Treasure
-#: archetype: pile into the mana to get there early; Push the Limit returns every Vehicle in the
-#: archetype: graveyard with haste for one alpha strike.
+#: archetype: pile into the mana to get there early; Dracosaur Auxiliary (which replaced
+#: archetype: Push the Limit) is the haste finisher — saddled, it pings on every attack.
+#: archetype: The mass-return alpha strike left the deck with that swap.
 #: archetype: DISTINCTNESS from its own parent: 48 wins by making a wide board bigger and needs
 #: archetype: creature COUNT; this deck wins with a few large permanents and a non-combat
 #: archetype: damage finisher, and is happy with an empty board as long as the artifacts stay.

@@ -382,6 +382,38 @@ survives: deck 30 protects counter-doublers and its strict signature is exactly
 `{counters}`. Roster diff: 14 of 64 decks re-scored, 4 top-cut candidates moved (deck 36a's
 moved OFF Vizier of the Menagerie, one of the fixers the tooling is meant to protect).
 
+### 2026-08-09 — Arena's two Brawl formats, and the alias that was missing
+
+Arena renamed Historic Brawl to plain **"Brawl"** and calls the 60-card version
+**"Standard Brawl"**. This repo kept the older names, so the two labels are INVERTED
+against the client UI:
+
+| Arena's label | cards | `#: format:` here |
+|---|---|---|
+| Brawl | 100, singleton, Historic pool | `Historic Brawl` |
+| Standard Brawl | 60, singleton, Standard pool | `Brawl` |
+
+Deck 40-brawl (Paradox Drive) is a **Standard Brawl** conversion and correctly carries
+`#: format: Brawl`.
+
+The latent bug found while documenting this: `#: format:` is hand-written free text,
+and the construction-rule sets (`SINGLETON_FORMATS`, `BIG_DECK_FORMATS`,
+`_COMMANDER_FORMATS`) were tested with raw lowercased strings containing SPACES, while
+`_FORMAT_SLUGS` — the list used for legality lookup — carries the HYPHENATED
+`historic-brawl`. So a deck written `#: format: historic-brawl` matched neither
+singleton nor big-deck: a 100-card commander deck would have been given a **60-card
+floor and a 4-copy limit**, with `legal` printing a clean bill. Both construction checks
+off at once, from a spelling the repo's own slug list uses.
+
+Fixed with `normalize_format()` (lowercase, collapse whitespace, alias
+`historic-brawl`/`historicbrawl` → `historic brawl` and `standard brawl` → `brawl`),
+applied at every set test in `legality_report`. Pinned by `TestFormatNormalization`,
+including a 99-card deck that must not be flagged undersized.
+
+The general shape is one this file already knows: a set-membership test against a
+hand-written string is only as good as its alias table, and the failure is silent in
+the permissive direction.
+
 ## [G-10] "Not in library" for a card you own is the deck-dump undercount symptom
 
 **"Not in library" for a card you own is the deck-dump undercount symptom.**
@@ -568,6 +600,16 @@ weakness supporting a grade. It had to be retracted the same day. The flag is st
 having — it catches genuinely dead payoffs — but the count answers "how many bodies are
 printed at power N", which is only the same question as "does this trigger fire" when the
 trigger checks at ETB. Read the timing first.
+
+### 2026-08-09, later the same day — FIXED: the timing now travels with the flag
+
+`power_threshold_flags` reads the gated trigger's timing from its own ability line
+(the `(?m)^` one-ability-per-line convention K-14 rests on): `attack` beats `enters`
+when a line has both, because the attack reading — printed count is a FLOOR — is the
+conservative one for a growing board. `stats` renders a per-timing caveat: ENTERS keeps
+the old warning, ATTACK says pumped bodies DO qualify, anything else says to read the
+trigger. Pinned in `TestPowerThresholdFlags::test_attack_time_gates_report_their_timing`;
+the 56a incident's two cards now print the floor-reading caveat live.
 
 ## [G-17] `card-wishlist.csv` records Power PROVENANCE
 
@@ -997,6 +1039,47 @@ file so a later editor does not helpfully restore them. The general rule: **comp
 `deck.py tier <other-id>`, do not quote its numbers into this deck's prose.** This is the
 same family as the other G-26 residuals — the audit reasons about a block's text without
 a model of who a sentence is about.
+
+### 2026-08-09 — the fixture-driven rework: five live misses in one session
+
+One session produced five audit misses and one false positive, all on real decks, all
+while the audit printed "rationale is current". Each was reproduced as a failing
+fixture BEFORE any fix (scratch copies of the exact transient file states), then fixed,
+then swept roster-wide. The diagnoses:
+
+1. **Possessive citations were invisible.** `_find_word_bounded`'s apostrophe rule —
+   built so *Deliberate* cannot match "Deliberately" — read the `'s` in "Aven
+   Interrupter's {W}{W}" as "inside a longer word". Fixed: a terminal `'s` is grammar.
+2. **A cue word inside the card's own name suppressed it.** `_HISTORY_CUES` has
+   `swap\w*`, and *Crib Swap* was suppressed by the "Swap" in its own name — the
+   `remov\w*` incident's class, one level worse, since no prose edit can ever fix a
+   card whose NAME matches a cue. Fixed: the citation's span is excluded from the cue
+   window.
+3. **Short comma-heads were not shorthand.** The index required a 6-char head, so
+   "Inti" (also Ruby, Zuko, Suki, Momo — the whole Universe-Beyond first-name class)
+   could never be detected as a stale abbreviation. Lowered to 4; the epithet cap and
+   a new label-idiom rule ("Down: the manabase…" must not read as *Down, Down to
+   Goblin-town*) carry the false-positive load.
+4. **Suppression crossed sentence boundaries.** The flat ±140-char window let "were
+   cut for the aristocrats package." suppress a citation of a DIFFERENT card in the
+   NEXT sentence (deck 66's Spider-Islanders). Fixed: both cue families are
+   clause-scoped; comparison cues (and an explicit "deck N" reference) reach one
+   clause further back, because distinctness passages set their frame first.
+5. **Figures about another deck flagged against this one** (the 56a false positive).
+   Fixed: a figure whose clause names a different deck id is skipped.
+
+The first roster sweep of the fixed scanner found **six real stale rationales**
+(decks 30, 37b, 44, 48a, 51a, 58 — including an archetype block citing a card that
+never made the deck's final 60, and one asserting "the second Archivist stays" about
+a list with no Archivist at all), every one previously reported clean. All six prose
+blocks were corrected in the same commit. Nine cue-list false positives surfaced in
+the intermediate sweep and were closed by cue additions (`used to`, `missing`,
+`exclud\w*`, `would`, `rather than`, `parent`, `sibling`, `same shape`) — each
+recorded in the cue lists' own comments.
+
+The meta-lesson repeats `check_agreement`'s: a check that passes while missing things
+reads as coverage. What broke the standoff was FIXTURES FROM LIVE MISSES — not
+re-reasoning about cue lists — and a roster sweep after every change.
 
 ## [G-27] `deck.py tier <id> --audit-rationale` catches a STALE tier argument
 

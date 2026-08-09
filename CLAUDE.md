@@ -260,18 +260,18 @@ directions.
 - **`check` answers "do I own this deck"; `legal <id>` answers "is it a LEGAL deck"** —
   size, copy limit and each nonbasic's legality in the deck's `#: format:`, format-aware
   for Alchemy and Brawl (a Brawl deck also validates `#: commander:` and every card's
-  colour identity). A pool-absent card is *unverified*, not illegal. `deck.py brawl` is
+  colour identity). **ARENA'S BRAWL LABELS ARE INVERTED HERE**: Arena's "Brawl" is
+  100-card = `#: format: Historic Brawl`; Arena's "Standard Brawl" is 60-card =
+  `#: format: Brawl`. `normalize_format` aliases the spellings — `historic-brawl` used
+  to match NEITHER set, giving a 100-card deck a 60-card floor and no copy limit. A pool-absent card is *unverified*, not illegal. `deck.py brawl` is
   the roster-wide counterpart. **`deck.py cuts <id>` ranks weakest-fit cards and is a
   SHORTLIST, not a GRADE** — it cannot see raw power or spice, and on a creature-heavy
-  deck it is a coin flip (50% vs 86% noncreature, replicated at n=31 and n=103). **Two
-  fixes were pre-registered and REFUTED**: body quality (2026-07) and tag-count
-  normalization (2026-08 — it lifts creatures 53→68% and COLLAPSES noncreature 83→51%,
-  so the unnormalized sum is load-bearing). Don't derive a third from the tag-count
-  asymmetry. Read the oracle text, preview with `swap`, and hard-protect signature cards
-  with a `#: protect:` header — whose keep-boost reads the STRICT spine (≥2 protected
-  cards share the theme), like every `fit_strength` caller. `cuts` also prints the axis
-  the deck is SHORT on, and flags `⌁scales w/ <axis>` for a card graded at its FLOOR.
-  Both REPORT-only. [G-09]
+  deck it is a coin flip (50% vs 86% noncreature, at n=31 and n=103). **Two fixes were
+  pre-registered and REFUTED** (body quality, tag-count normalization) — don't derive a
+  third from the tag-count asymmetry. Read the oracle text, preview with `swap`, and
+  hard-protect signature cards with a `#: protect:` header, whose keep-boost reads the
+  STRICT spine. `cuts` prints the axis the deck is SHORT on and flags `⌁scales w/
+  <axis>`. Both REPORT-only. [G-09]
 - **"Not in library" for a card you own is the deck-dump undercount symptom.** Fastest
   fix: `reconcile_crafts.py <arena-export>` — it adds the library row, adds a blank
   `card-mana.csv` row so INV-02 always holds, drops the card from the wishlist, and
@@ -314,13 +314,13 @@ directions.
   `deck.py stats` flags a "power N+" payoff few of the deck's creatures meet, **scoped by
   `_POWER_SCOPE_MINE_RE` to clauses about creatures YOU control**: removal measures the
   opponent's board and "TOTAL power N" is a SUM, and counting your own bodies was wrong
-  in 16 of 27 roster flags. **LIVE RESIDUAL: the flag appends a generic "a body that
-  GROWS after it enters won't satisfy an ENTERS trigger" caveat REGARDLESS of the
-  trigger's actual timing.** Deck 56a's Scalestorm Summoner and Ruby both check *on
-  ATTACK* ("whenever this creature attacks … if you control"), so pumped creatures DO
-  satisfy them, and in a counters deck the printed-power count understates the gate
-  badly — the caveat was copied into a `#: tier:` block as a real weakness and had to be
-  retracted. Read the trigger's timing before believing the count. [G-16]
+  in 16 of 27 roster flags. The flag reads the gating trigger's TIMING from its own
+  ability line (fixed 2026-08-09): an ENTERS gate keeps the "a body that GROWS after it
+  enters won't satisfy it" caveat, while an ATTACK-time gate (Scalestorm Summoner, Ruby —
+  "whenever this creature attacks … if/while you control") says the printed count is a
+  FLOOR, since pumped bodies DO satisfy those. The one-size ENTERS caveat had been copied
+  into a `#: tier:` block as a fabricated weakness and retracted the same day. Printed
+  stats still under-state any gate a growing deck loosens — read the timing. [G-16]
 - **`card-wishlist.csv` records Power PROVENANCE** in a `Power Source` column
   (`seed` / `hand` / `unknown`). `wishlist.power_is_seeded()` treats seed, unknown and
   blank as untrusted; set `hand` when you grade one. [G-17]
@@ -382,13 +382,14 @@ directions.
   reported clean. A CARD citation and a FIGURE go stale differently and must not share a
   predicate — and the CARD path kept a broad `remov\w*` for a year after the FIGURE path
   was narrowed for exactly that word, so a card whose own text says "removes" suppressed
-  its own staleness report. Shorthand is handled both directions since 2026-08; simile is
-  handled. **KNOWN RESIDUALS, all live:** a copula hides a figure ("protection is 1"); a
-  change-cue about one card suppresses a citation of ANOTHER in the same window; "the swap
-  removes X" about a CUT card reads as live; a fragment shared by 4+ cards drops as an
-  epithet; and **a figure quoted about a DIFFERENT deck is read as a claim about THIS one**
-  — citing deck 56's vector inside 56a's `#: tier:` raised two false flags (2026-08-09), so
-  compare with `deck.py tier <other-id>` instead of quoting its numbers. [G-26]
+  its own staleness report. The 2026-08-09 rework (five live misses in one day, each now
+  a fixture in `test_deck.py`) clause-scoped both cue families — cross-sentence
+  suppression, a cue inside the card's OWN name ("Crib **Swap**"), possessives, short
+  comma-heads and cross-deck figures are all fixed, and its first roster sweep found six
+  real stale rationales a clean-reporting scan had been passing. **STILL LIVE:** a copula
+  hides a figure ("protection is 1"); "the swap removes X" about a CUT card reads as
+  live; a fragment shared by 4+ cards drops as an epithet; a card absent from the POOL
+  is invisible entirely (the scan matches known names only). [G-26]
 - **Run `tier <id> --audit-rationale` after ANY deck edit.** The tier guard checks the
   LETTER; this checks the ARGUMENT — cards the prose cites that the deck no longer runs,
   and figures the live quality vector contradicts. A swap moves those numbers by
@@ -759,7 +760,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   deliberately left, for three different reasons. **A keyword's reported COUNT is not
   its population**: Scryfall lists `Jump` on all 11 `Jump-start` cards, so mapping it
   would have put `evasion` on 11 graveyard spells for the sake of 2 real ones — the same
-  source artifact that emits `Triple`/`Double`/`Somersault` off Tiered's mode names.
+  source artifact that emits `Triple`/`Double`/`Somersault` off Tiered's mode names —
+  and `undying`, added 2026-08-09, is the same shape: it reports 2 cards, of which the
+  new one (Shadow of the Goblin) merely has an ABILITY NAMED "Undying Vengeance" and no
+  Undying mechanic at all. Baselined, not themed.
   `tiered` is a COST SHAPE, not a resource, and its six cards' effects already tag
   correctly from text. A standing warning is a decision nobody has made yet. [K-01]
 - **A keyword maps to the resources it COSTS** — `forage` → `["graveyard", "food"]`, not

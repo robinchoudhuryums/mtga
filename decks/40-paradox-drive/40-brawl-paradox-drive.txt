@@ -1,0 +1,109 @@
+#: name: Paradox Drive — Brawl
+#: format: Brawl
+#: colors: GU
+#: based-on: deck.txt
+#: commander: Ignis Scientia
+#: archetype: Brawl conversion of the Simic (G/U) big-mana ramp-CONTROL deck (deck 40).
+#: archetype: The Standard list was already 60-card singleton with no off-identity cards,
+#: archetype: so this is the same 60 with Ignis Scientia leading from the command zone.
+#: archetype: The plan is unchanged: ramp behind a counter/removal shell into a
+#: archetype: game-ending X-spell (Finale of Revelation / Mind Spring), with Taigam
+#: archetype: copying the payoff and Paradox Surveyor smoothing the draws.
+#: notes: WHY IGNIS SCIENTIA, AND WHY NOT THE TWO OBVIOUS PICKS. Only THREE of this
+#: notes: deck's legends carry the required G/U identity — Ignis Scientia, The Goose
+#: notes: Mother, Absorbing Man. The other five (Taigam, Y'shtola, Wan Shi Tong, Namor,
+#: notes: Kiora) are MONO-U, and a mono-U commander makes every green card in the deck
+#: notes: illegal, so they were never candidates however good they are inside the 60.
+#: notes: THE GOOSE MOTHER WAS THE FIRST PICK AND WAS REJECTED ON ROTATION. She is the
+#: notes: best mechanical fit by some distance — an {X}{G}{U} spell, so the commander is
+#: notes: itself a mana sink that scales with the ramp, entering with X counters, making
+#: notes: half-X Food and turning each Food into a card on attack; commander tax is
+#: notes: unusually cheap on her since recasting just means paying less X. But she is WOE
+#: notes: and `deck.py rotation` puts her at ~2026, i.e. within months. A rotating card in
+#: notes: the 60 is a swap; a rotating COMMANDER is the deck's identity expiring, so the
+#: notes: mechanical fit does not survive the calendar. She stays in the 60, where she is
+#: notes: still an excellent X-payoff until she rotates.
+#: notes: Ignis Scientia (FIN, safe to ~2028) is the rotation-safe pick that is still ON
+#: notes: PLAN: his ETB looks at six and puts a LAND onto the battlefield, which is
+#: notes: exactly what a deck that wins off a big X-spell wants from a card it can cast
+#: notes: every game — and the graveyard-exile activation is live in a singleton format
+#: notes: full of recursion. Absorbing Man (MSH, safe to ~2029) was the runner-up and is
+#: notes: the better raw card, but his copy clause needs a strong artifact / non-Aura
+#: notes: enchantment / land to point at and this deck runs almost none, so he would
+#: notes: usually be a 4/4 vigilance copying a land. Both stay in the 60; switching is a
+#: notes: one-line `#: commander:` change with no card swaps.
+#: notes: WHAT THIS CONVERSION ALREADY HAS that deck 3's Brawl notes flag as the usual
+#: notes: gap: 26 lands and card advantage 6. A 60-card Standard deck moved to Brawl
+#: notes: normally wants more of both, because singleton 1v1 games run long and you
+#: notes: cannot lean on redundancy — this deck was built that way already, which is why
+#: notes: it was picked first of the four planned conversions.
+#: notes: TUNING FROM HERE, not yet applied: protection is 0 in the Standard list and
+#: notes: that matters MORE in Brawl, where the opponent knows your commander from turn
+#: notes: zero and can hold removal for her. The counterspell suite is the current
+#: notes: answer; a hexproof/ward effect is the first real add. Also watch that the
+#: notes: singleton X-spell payoffs (Finale, Mind Spring, Portent, Divergent Equation)
+#: notes: are 4 shots, and 2 of them — Mind Spring and Portent (BLB) — rotate ~2027, so
+#: notes: the win condition itself thins out a year after the commander question settles.
+#: notes: Faithful game-type conversion, not a from-scratch Brawl build — a starting
+#: notes: point to tune once it has been played.
+
+Deck
+# Commander (leads from the command zone; also one of the 60)
+1 Ignis Scientia (FIN) 227
+
+# Ramp / dorks
+1 Bloom Tender (ECL) 166
+1 Druid of the Cowl (FDN) 554
+1 Great Divide Guide (TLA) 181
+1 Environmental Scientist (SOS) 147
+
+# Engine + payoff creatures / finishers
+1 Paradox Surveyor (SOS) 208
+1 Taigam, Master Opportunist (TDM) 60
+1 Mindspring Merfolk (DFT) 51
+1 Bold Biochemist (MSH) 48
+1 Floodpits Drowner (DSK) 59
+1 Absorbing Man (MSH) 199
+1 Emeritus of Abundance (SOS) 145
+1 Y'shtola Rhul (FIN) 86
+1 Wan Shi Tong, Librarian (TLA) 78
+1 Wildwood Scourge (FDN) 236
+1 The Goose Mother (WOE) 204
+1 Namor the Sub-Mariner (MSH) 69
+
+# X-spell payoffs / card advantage
+1 Mind into Matter (SOS) 202
+1 Mind Spring (BLB) 389
+1 Portent of Calamity (BLB) 66
+1 Finale of Revelation (FDN) 589
+1 Divergent Equation (SOS) 43
+1 Kiora, the Rising Tide (FDN) 45
+
+# Interaction — counters
+1 Syncopate (FIN) 80
+1 Ooze Spill (TMT) 48
+1 Negate (TMT) 47
+1 Disdainful Stroke (WOE) 47
+1 Amazing Acrobatics (SPM) 25
+1 Mana Sculpt (SOS) 57
+
+# Interaction — removal / tempo
+1 Epic Fight (MSH) 166
+1 Matterbending Mage (SOS) 59
+1 Procrastinate (SOS) 64
+1 Chelonian Tackle (SOS) 142
+1 Unforgiving Aim (ECL) 200
+
+# Lands — 26, Simic; owned untapped duals over straight basics
+1 Breeding Pool (TRK) 279
+1 Willowrush Verge (DFT) 270
+1 Dreamroot Cascade (SOS) 254
+1 Thornwood Falls (TDM) 269
+1 Agna Qel'a (TLA) 264
+1 Meditation Pools (TLA) 272
+10 Island (MSH) 289
+10 Forest (MSH) 295
+
+# Flex — Brawl notes (comments; not part of the 60)
+#~ note: Commander choice is the one real decision here and it is reversible — The Goose Mother and Absorbing Man are both still in the 60 and both carry the G/U identity, so switching is a one-line `#: commander:` change with no card swaps. Revisit at the 2026 rotation: when WOE leaves, The Goose Mother stops being an option at all.
+#~ note: Protection is 0 and Brawl exposes that harder than Standard does (the opponent sees your commander from turn zero). First add when tuning: a ward/hexproof effect for Ignis or Taigam.

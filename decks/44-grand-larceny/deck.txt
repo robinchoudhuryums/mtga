@@ -29,9 +29,10 @@
 #: archetype: Hecteyes took the slot, which is the inversion: discard FILLS the graveyard
 #: archetype: those four steal from.
 #: archetype: BLUE IS A DELIBERATE TWO-CARD SPLASH — only Azula and Etrata need a real
-#: archetype: {U} pip. Hama, Krang & Shredder and Ghost are U/B HYBRIDS castable off
+#: archetype: {U} pip. Hama and Krang & Shredder are U/B HYBRIDS castable off
 #: archetype: black alone, so a blue source is never a dead draw even when neither blue
-#: archetype: card is in hand. That is the argument for this second color over a red
+#: archetype: card is in hand. (Ghost, Spectral Saboteur was in this sentence from the
+#: archetype: build draft but never made the final 60 — he lives in deck 32.) That is the argument for this second color over a red
 #: archetype: one, where Laughing Jasper Flint and Rakdos, the Muscle would each demand
 #: archetype: a hard {R}. See variant 44a for the deck that takes the red side instead.
 #: archetype: DISTINCTNESS: the roster's three other Dimir decks all spend their OWN

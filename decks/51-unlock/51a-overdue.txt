@@ -60,9 +60,9 @@
 #: archetype: anyway; the subtype is a rider, so the engine costs close to nothing.
 #: archetype: WATERBENDING LESSON IS THE HIDDEN COMBO. Its waterbend cost is paid by TAPPING your
 #: archetype: artifacts and creatures — and Master Pakku mills whenever he BECOMES TAPPED. So you
-#: archetype: draw three, tap Pakku to avoid the discard, and mill for it. Octopus Form then untaps
-#: archetype: him — Octopus Form does that job and is the first card back in if the manabase can spare
-#: archetype: the slot. Gran-Gran has the same "becomes tapped" trigger and loots off it.
+#: archetype: draw three, tap Pakku to avoid the discard, and mill for it. (Octopus Form
+#: archetype: untapped him for a second loop, but it was CUT for the manabase — first card
+#: archetype: back in if a land can be spared; see notes.) Gran-Gran has the same "becomes tapped" trigger and loots off it.
 #: archetype: THE MINDSKINNER CONVERTS THE COMBAT PLAN INSTEAD OF ADDING ONE, and in this deck that
 #: archetype: is pure upside because there was no combat plan to lose. "If a source you control would
 #: archetype: deal damage to an opponent, prevent that damage and each opponent mills that many

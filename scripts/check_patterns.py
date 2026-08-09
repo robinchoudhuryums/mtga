@@ -92,6 +92,10 @@ _EXCLUDED = {
     ("deck", "_ARRIVING_BREAK"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_DEPARTING_CUES"): "tier-RATIONALE prose; unit-tested in test_deck.py",
     ("deck", "_ARROW_AFTER"): "tier-RATIONALE prose; unit-tested in test_deck.py",
+    ("deck", "_CLAUSE_BREAK"): "tier-RATIONALE prose (clause bounds for the 2026-08-09 "
+                               "suppression scoping); unit-tested in test_deck.py",
+    ("deck", "_OTHER_DECK_RE"): "tier-RATIONALE prose (a 'deck N' reference marks a "
+                                "cross-deck clause); unit-tested in test_deck.py",
     ("deck", "_NEGATION_AFTER"): "tier-RATIONALE prose (positional contrast-citation "
                                  "suppressor); unit-tested in test_deck.py",
     ("deck", "_SIMILE_BEFORE"): "tier-RATIONALE prose (6-char lookbehind slice, not a "
