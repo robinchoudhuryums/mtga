@@ -25,6 +25,15 @@
 #: tier: targets are context for WHEN to re-grade, not a reason to grade low. Re-grade after
 #: tier: the manabase is fixed and the deck has been played.
 #: protect: Leyline of Transformation; Lifecraft Engine; Chronicle of Victory; Roaming Throne; Ravenous Robots
+#: notes: 2026-08-09 DEDUP PASS (user-decided): the 3rd Castle Doom craft came out for
+#: notes: the OWNED 3rd Stark Industries. The tier note's own measurement decided it —
+#: notes: the manabase is short BOTH colours (U 11 / R 13 against wants of 15-16) and
+#: notes: Castle Doom's coloured mana is artifact-spell-only, so the third copy was a
+#: notes: colourless land deepening the deck's worst weakness. The Doombot mint keeps
+#: notes: two copies; a {3}+tap+sac sorcery-speed engine did not need a third. Stark
+#: notes: Industries adds a source of BOTH short colours (U 11 -> 12, R 13 -> 14),
+#: notes: entering tapped as the honest cost. This also cleared the deck's only
+#: notes: SHORT — every remaining craft target is an unowned single.
 #: archetype: IZZET ROBOT TRIBAL, built on the CHOOSE-A-CREATURE-TYPE lord package rather than
 #: archetype: on cards that say the word "Robot". That distinction is the whole reason this
 #: archetype: deck exists: a pool search for a literal Robot lord ("Robots you control get…")
@@ -53,8 +62,8 @@
 #: archetype: Kavaron Harrier (pay {2} on attack for a 2/2 already attacking), Mouser Foundry
 #: archetype: (one on entry and another on leaving), Mechan Assembler (a 2/2 Robot the first
 #: archetype: time another artifact enters each turn — a per-turn body, not a one-shot) and
-#: archetype: THREE Castle Doom in the manabase, each turning a spare artifact into a 3/3
-#: archetype: Doombot. The tokens do not need to be individually good — five 1/1s under four
+#: archetype: TWO Castle Doom in the manabase, each turning a spare artifact into a 3/3
+#: archetype: Doombot (the third came out 2026-08-09 — see the dedup note). The tokens do not need to be individually good — five 1/1s under four
 #: archetype: anthems is twenty power, and that arithmetic is the whole deck.
 #: archetype: DISTINCTNESS: deck 26 ramps with mana into a few enormous artifacts; 26a converts
 #: archetype: nontoken artifact creatures into poison; 47 uses affinity to cast expensive things
@@ -172,7 +181,7 @@
 #: notes: is "another artifact you control enters" for MECHAN ASSEMBLER — once each turn,
 #: notes: exactly her cadence — so one activation is a 3/2 AND a 2/2 Robot. Under Leyline of
 #: notes: Transformation both tokens are Robots, so Adaptive Automaton and Banner of Kinship
-#: notes: pump them, and Castle Doom x3 turns a spare token into a 3/3 Doombot. Her +2
+#: notes: pump them, and Castle Doom x2 turns a spare token into a 3/3 Doombot. Her +2
 #: notes: (sacrifice an artifact or discard, draw) is a fourth sac outlet. Curve 3.17 -> 3.19;
 #: notes: the deck is short on early drops at 13 and a 4-drop does not help that.
 #: notes: DO NOT CUT Adaptive Automaton or Banner of Kinship on the ranking's say-so — it
@@ -225,11 +234,11 @@
 1 Untimely Malfunction (DSK) 161
 1 Into the Flood Maw (BLB) 52
 
-# Lands (24) — Castle Doom x3 is the Doombot engine in the manabase
-3 Castle Doom (MSH) 263
+# Lands (24) — Castle Doom x2 is the Doombot engine in the manabase
+2 Castle Doom (MSH) 263
 1 Kavaron, Memorial World (EOE) 255
 1 Riverpyre Verge (DFT) 260
-2 Stark Industries (MSH) 272
+3 Stark Industries (MSH) 272
 1 Swiftwater Cliffs (MOM) 273
 8 Mountain (MSH) 294
 7 Island (MSH) 290
