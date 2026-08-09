@@ -42,7 +42,7 @@
 #: archetype: THE DISCARD IS NEVER A COST HERE, which is what makes the engine work rather than
 #: archetype: just hurt. Collector's Vault loots AND makes a Treasure; Melded Moxite discards to
 #: archetype: draw TWO; Seize the Spoils discards to draw two and make a Treasure; Cool but Rude
-#: archetype: replaces the card it discards; Inti exiles the top card and lets you play it. Every
+#: archetype: replaces the card it discards; Captain Howler pumps and then draws off the hit. Every
 #: archetype: one of those is card-neutral or better BEFORE the drain triggers.
 #: archetype: DESTROY-TO-DAMAGE is the second half. Scrap Compactor, Barrels of Blasting Jelly
 #: archetype: and Bumbleflower's Sharepot each sacrifice themselves to kill something; Hell to
@@ -142,17 +142,39 @@
 #: notes: ignored; she was taken for the +2, which is a FREE, REPEATABLE, CARD-NEUTRAL
 #: notes: "sacrifice an artifact or discard a card, draw a card" — i.e. the exact action all
 #: notes: three drain engines read off, on a permanent that ticks to 6 doing it. Her 0 makes a
-#: notes: 3/2 artifact token (an artifact ENTERING, which Captain Storm / Machinesmith /
-#: notes: Gleaming Geardrake all count) and a crew-1 blocker against the no-blockers hole; the
+#: notes: 3/2 artifact token (an artifact ENTERING, which Gleaming Geardrake and Iron Man
+#: notes: both count) and a crew-1 blocker against the no-blockers hole; the
 #: notes: -7 emblem turns the Treasure economy into a win condition. She is also the closest
 #: notes: thing this deck has to PROTECTION: a planeswalker soaks the removal and the attacks
 #: notes: that would otherwise land on the four named build-arounds.
+#: notes: 2026-08-09 ROTATION PASS on the pending crafts. Two of the three rotated ~2026
+#: notes: (both LCI): -Inti, Seneschal of the Sun / +Captain Howler, Sea Scourge (craft R)
+#: notes: and -Captain Storm, Cosmium Raider / +Scrounging Skyray (OWNED). Cool but Rude
+#: notes: is the third pending craft, does NOT rotate, and stays — it is one of the three
+#: notes: named drain engines.
+#: notes: CAPTAIN STORM WAS A BAD CARD HERE BEFORE ROTATION EVER APPLIED, and the count
+#: notes: says so: his counter targets PIRATES and the deck held TWO, one of which was
+#: notes: himself — against `engines`' standing report of 6 counter enablers and no
+#: notes: payoff. He was also filed under "discard outlets" while having no discard text
+#: notes: at all. Scrounging Skyray is the honest version of that slot: it grows on the
+#: notes: deck's ACTUAL action (discarding), it FLIES so the counters can connect, and it
+#: notes: cycles when the engine is not assembled.
+#: notes: CAPTAIN HOWLER keeps both halves of Inti (pump on discard, then a card when the
+#: notes: pumped creature connects) and adds WARD {2} — the first protection this deck has
+#: notes: ever had, against a tier cap that is explicitly the zero-protection flag.
+#: notes: -Machinesmith Automaton / +Marauding Mako (craft U) is the third swap and the
+#: notes: weakest of them: same shape (a body accumulating counters) but one mana instead
+#: notes: of three, and its trigger reads the deck's central action rather than artifact
+#: notes: ETBs. CAVEAT, since this deck's whole thesis is winning WITHOUT attacking: Mako
+#: notes: is a ground creature with no evasion, so its counters only matter if it connects.
+#: notes: Skyray does the same job with flying. If one of the two proves surplus, Mako is
+#: notes: the one to cut.
 #: notes: THE COST, STATED PLAINLY BECAUSE THE METRIC HIDES IT. `interaction` reads 12 before
 #: notes: and 12 after, but that is a classifier artifact — Chandra tags Removal (spot) off her
 #: notes: -7 emblem's "deals 3 damage to any target", which is a 7-loyalty ultimate and not a
 #: notes: removal spell you cast. Real castable removal went 12 -> 11, and the instant-speed
 #: notes: skew this deck was already worst-in-family on went 2/10 -> 1/11. That was the flagged
-#: notes: risk of cutting Abrade specifically rather than Machinesmith Automaton, and it was
+#: notes: risk of cutting Abrade specifically rather than the artifact bodies, and it was
 #: notes: taken knowingly. A FLAT METRIC IS NOT PROOF A TUNE WAS FREE (the inverse of K-12).
 #: notes: Overwhelming Surge is the survivor of the Abrade/Surge near-duplicate pair — modal
 #: notes: both-halves, though it only reaches NONcreature artifacts where Abrade reached any.
@@ -167,7 +189,7 @@
 1 Monument to Endurance (DFT) 237
 1 Cool but Rude (TMT) 89
 1 Magmakin Artillerist (DFT) 137
-1 Inti, Seneschal of the Sun (LCI) 156
+1 Captain Howler, Sea Scourge (DFT) 194
 
 # Discard outlets that cost you nothing
 1 Collector's Vault (WOE) 244
@@ -193,12 +215,12 @@
 1 Reckless Ransacking (ECL) 152
 1 Lady Octopus, Inspired Inventor (SPM) 35
 1 Mouser Foundry (TMT) 96
-1 Machinesmith Automaton (MSH) 144
+1 Marauding Mako (DFT) 138
 1 Iron Man, Master of Machines (MSH) 216
 1 Gleaming Barrier (FDN) 252
 1 Gleaming Geardrake (MKM) 205
 1 Technodrome (TMT) 179
-1 Captain Storm, Cosmium Raider (LCI) 227
+1 Scrounging Skyray (DFT) 60
 
 # Repeatable loot — every activation is a drain trigger
 1 Kitsa, Otterball Elite (BLB) 54
