@@ -194,6 +194,36 @@ def arena_deck_map():
         return {}
 
 
+def fresh_rows(rows, existing):
+    """The parsed rows not already recorded — deduped by Match ID against `existing`
+    AND against each other.
+
+    The within-paste half is the part that was missing (BS4-15). The filter compared only
+    against the CSV, so two copies of one `finalMatchResult` in a SINGLE paste — which is
+    what concatenating two overlapping log extracts produces — both passed and were both
+    written, double-counting that match in `--report` permanently. The module docstring
+    promises "deduped by Arena's matchId so re-pasting an overlapping log is safe", and
+    the JSON-truncation warning actively tells the user to re-paste, so the documented-safe
+    action was the one that corrupted the record.
+
+    A row with NO Match ID is never deduped, against the CSV or within the paste: "" is
+    not an identity, and treating it as one silently dropped every id-less match after the
+    first as "already recorded" — which reads as data, not as a gap (broad-scan batch 5).
+    """
+    known = {mid for r in existing if (mid := (r.get("Match ID") or "").strip())}
+    seen_here, out = set(), []
+    for r in rows:
+        mid = (r.get("Match ID") or "").strip()
+        if not mid:
+            out.append(r)
+            continue
+        if mid in known or mid in seen_here:
+            continue
+        seen_here.add(mid)
+        out.append(r)
+    return out
+
+
 def load_matches(path=MATCHES_CSV):
     if not os.path.exists(path):
         return []
@@ -239,10 +269,21 @@ def report(rows):
         print("No matches recorded yet.")
         return 0
     by = {}
+    # A row whose Result is blank or not one of W/L/D is COUNTED SEPARATELY and reported,
+    # never folded into a bucket. `b[r.get("Result", "L")]` only defaulted when the KEY was
+    # absent, so a row with `Result=""` (hand-edited, or a legacy CSV) incremented `b[""]`
+    # — a bucket printed in no column and excluded from `n = W+L`. The header count and
+    # the per-deck totals then disagreed with nothing said, which is the "reads as data,
+    # not as a gap" failure this module is otherwise built to avoid (BS4-24).
+    unreadable = []
     for r in rows:
         key = r.get("Deck") or f"(unmapped: {r.get('Course ID') or '?'})"
         b = by.setdefault(key, {"W": 0, "L": 0, "D": 0})
-        b[r.get("Result", "L")] = b.get(r.get("Result", "L"), 0) + 1
+        res = (r.get("Result") or "").strip().upper()
+        if res not in ("W", "L", "D"):
+            unreadable.append((key, r.get("Date") or "?", r.get("Result") or ""))
+            continue
+        b[res] += 1
     print(f"{len(rows)} match(es) recorded\n")
     print(f"  {'Deck':32}  {'W':>3} {'L':>3} {'D':>3}   Read")
     print("  " + "-" * 68)
@@ -255,6 +296,14 @@ def report(rows):
             lo, hi = _wilson(b["W"], n)
             read = f"{100*b['W']/n:.0f}%  (95% CI {lo:.0f}–{hi:.0f}%)"
         print(f"  {key[:32]:32}  {b['W']:>3} {b['L']:>3} {b['D']:>3}   {read}")
+    if unreadable:
+        print(f"\n⚠ {len(unreadable)} row(s) have an unreadable Result and are in NO "
+              f"column above — the per-deck totals therefore do not sum to "
+              f"{len(rows)}. Fix the Result cell (W/L/D) in matches.csv:")
+        for key, date, raw in unreadable[:10]:
+            print(f"    {date}  {key[:32]:32} Result={raw!r}")
+        if len(unreadable) > 10:
+            print(f"    … and {len(unreadable) - 10} more")
     unmapped = sorted({r["Course ID"] for r in rows if not r.get("Deck") and r.get("Course ID")})
     if unmapped:
         print(f"\n{len(unmapped)} unmapped Arena deck(s). Add `#: arena: <courseId>` to the "
@@ -306,10 +355,7 @@ def main():
     # A row with NO matchId must never dedupe against another blank — "" in the
     # known-set silently dropped every subsequent id-less match as "already
     # recorded", which reads as data, not as a gap (broad-scan batch 5).
-    known = {mid for r in existing if (mid := (r.get("Match ID") or "").strip())}
-    fresh = [r for r in rows
-             if not (r.get("Match ID") or "").strip()
-             or r.get("Match ID") not in known]
+    fresh = fresh_rows(rows, existing)
 
     print(f"Found {len(rows)} completed match(es); {len(fresh)} new, "
           f"{len(rows) - len(fresh)} already recorded.")

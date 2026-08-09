@@ -129,6 +129,14 @@ def _owned_of(owned, name):
     return owned_qty(owned, name)
 
 
+class TargetAuditUnavailable(Exception):
+    """The wishlist-target audit could not run because the deck roster wouldn't load.
+
+    A distinct exception rather than a swallowed error because the two outcomes it
+    separates look identical downstream and mean opposite things: "no issues found" and
+    "nothing was checked" are both an empty list (BS4-08)."""
+
+
 def load_wishlist():
     if not os.path.exists(WISHLIST_CSV):
         return []
@@ -235,8 +243,39 @@ def enrich(name, set_code, collector, pool):
     return data, status
 
 
+def _try_seed_power(row, _warned=[]):
+    """`_seed_power(row)`, or None if the seeding model is unavailable (warned once).
+
+    `_seed_power` does `import deck`, and `cmd_add` called it in a bare loop AFTER the
+    Scryfall fetches and BEFORE `write_wishlist` — so a broken deck.py threw away an
+    entire enriched batch, the expensive part, over a cosmetic estimate (BS4-22). A blank
+    Power is a recoverable state the tool already models (`cmd_seed_power` exists to fill
+    exactly those cells); a lost batch is not. pool.py made `classify_roles` a lazy proxy
+    for this same reason — this is that discipline on the write path."""
+    try:
+        return _seed_power(row)
+    except Exception as e:
+        if not _warned:
+            _warned.append(True)
+            eprint(f"WARN:  Power seeding unavailable ({type(e).__name__}: {e}) — rows are "
+                   "being written with a BLANK Power. The batch is safe; fill the "
+                   "estimates later with `wishlist.py --seed-power --write`.")
+        return None
+
+
 def cmd_add(path):
-    text = sys.stdin.read() if path == "-" else open(path, encoding="utf-8").read()
+    if path == "-":
+        text = sys.stdin.read()
+    else:
+        # A clean error, like query.py / pool.py / parse_matches all give. This was a bare
+        # `open(...).read()`, so a mistyped filename dumped a FileNotFoundError traceback
+        # (BS4-22) — and it leaked the handle besides.
+        try:
+            with open(path, encoding="utf-8") as fh:
+                text = fh.read()
+        except OSError as e:
+            eprint(f"Could not read {path!r}: {e}")
+            return 1
     entries = []
     for lineno, raw in enumerate(text.splitlines(), 1):
         line = raw.strip()
@@ -287,8 +326,10 @@ def cmd_add(path):
                 # arrived, recompute an UNTRUSTED power (seed/unknown/blank per
                 # G-17's provenance rule); a hand grade is never touched.
                 if power_is_seeded(prev):
-                    prev["Power"] = str(_seed_power(prev))
-                    prev["Power Source"] = POWER_SEEDED
+                    est = _try_seed_power(prev)
+                    if est is not None:
+                        prev["Power"] = str(est)
+                        prev["Power Source"] = POWER_SEEDED
                 reenriched += 1
             else:
                 dupes += 1
@@ -311,7 +352,10 @@ def cmd_add(path):
     seeded = 0
     for row in new_rows:
         if not (row.get("Power") or "").strip():
-            row["Power"] = str(_seed_power(row))
+            est = _try_seed_power(row)
+            if est is None:
+                break          # already warned; write the batch rather than lose it
+            row["Power"] = str(est)
             row["Power Source"] = POWER_SEEDED
             seeded += 1
 
@@ -1308,7 +1352,17 @@ def _audit_target_issues(color_only=False):
     against the CURRENT decks: 'color' = the target deck can't cast the card (the
     drift you get when a deck changes colors, e.g. 14 Mardu->Rakdos orphaned Neriv);
     'target' = an unknown deck id; 'power' = a blank Power cell. With color_only,
-    returns just the castability/target-drift issues (for check_all's soft pass)."""
+    returns just the castability/target-drift issues (for check_all's soft pass).
+
+    RAISES `TargetAuditUnavailable` if the deck roster can't be loaded. It used to
+    `except Exception: pass`, which left `deck_ids` and `mana` empty — and every check
+    below is gated on those being non-empty, so the function returned `[]` and
+    `cmd_audit_targets` printed "Wishlist targets are clean: every target deck can cast
+    its card" having checked nothing. Worse on the automated path: `check_all`'s soft
+    sweep has its own try/except that would have reported a skip, but the exception was
+    swallowed one level down, so the gate saw an empty list rather than a failure and the
+    roster sweep became an invisible no-op (BS4-08). Every sibling loader in this file
+    eprints on this exact failure (audit A14); this was the one that didn't."""
     rows = load_wishlist()
     issues = []
     deck_cols, deck_ids = {}, set()
@@ -1320,8 +1374,10 @@ def _audit_target_issues(color_only=False):
             deck_ids.add(d["id"].lower())
             deck_cols[d["id"].lower()] = card_colors(d["meta"].get("colors"))
         mana = dk.load_mana()
-    except Exception:
-        pass
+    except Exception as e:
+        raise TargetAuditUnavailable(
+            f"the deck roster could not be loaded ({type(e).__name__}: {e}), so wishlist "
+            "targets cannot be checked against it — this is a SKIP, not a clean bill") from e
 
     def _castable_in(name, ident, dc):
         """Can a deck of colors `dc` cast this card? Hybrid-aware: a hybrid pip is
@@ -1359,7 +1415,12 @@ def _audit_target_issues(color_only=False):
 def cmd_audit_targets(_rows):
     """Audit wishlist Targets against the current decks: flag cards whose target
     deck can't cast them (color/theme drift after a retune) and blank Power cells."""
-    issues = _audit_target_issues()
+    try:
+        issues = _audit_target_issues()
+    except TargetAuditUnavailable as e:
+        # Non-zero: an audit that could not run must not read as a pass.
+        eprint(f"Wishlist target audit SKIPPED — {e}")
+        return 1
     if not issues:
         print("Wishlist targets are clean: every target deck can cast its card, "
               "and every card has a Power grade.")

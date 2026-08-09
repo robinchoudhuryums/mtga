@@ -789,6 +789,46 @@ def _castability(cards, declared, mana, carddata, exempt=frozenset()):
     return uncastable, off_ident, off_ability, intended
 
 
+def deck_requirements(cards):
+    """[(key, display_name, set_code, total_qty)] — one entry per DISTINCT card, in
+    first-seen order, with copies SUMMED across duplicate lines.
+
+    A deck may list the same card on more than one line, and owned counts are per-name
+    (fungible across printings), so a buildability check must compare total-need against
+    total-owned rather than line-by-line. `cmd_check` has always done that and says so;
+    the problem was that it said so in a comment, and two other surfaces re-derived the
+    same question per LINE — `app.py`'s `/decks` overview and `check_all`'s info summary
+    both reported "buildable" for a deck listing 2+2 of a card owned 3, while `cmd_check`,
+    the dashboard and the deck editor all correctly reported it short (BS4-13).
+
+    Extracted so the answer has ONE definition. Three implementations of one question is
+    the shape `check_agreement.py` exists to catch, and the two that drifted were the two
+    that had copied the loop instead of calling it."""
+    need, order, printing = {}, [], {}
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl not in need:
+            order.append(nl)
+            printing[nl] = (n, s)
+        need[nl] = need.get(nl, 0) + q
+    return [(nl, printing[nl][0], printing[nl][1], need[nl]) for nl in order]
+
+
+def deck_build_gap(cards, by_name_qty):
+    """(missing, short) — counts of DISTINCT cards the collection can't cover for this
+    deck. `missing` = not in the library at all; `short` = held, but fewer than the
+    deck's TOTAL requirement. The summary half of `deck_requirements`, for the callers
+    that want the two numbers rather than the per-card rows."""
+    missing = short = 0
+    for _nl, n, _s, req in deck_requirements(cards):
+        have, found = owned(by_name_qty, n)
+        if not found:
+            missing += 1
+        elif have < req:
+            short += 1
+    return missing, short
+
+
 def cmd_check(args):
     d = find_deck(args.id)
     if not d:
@@ -797,16 +837,10 @@ def cmd_check(args):
     _, _, by_name_qty = load_collection()
     meta, cards = parse_deck_file(d["path"])
 
-    # Aggregate copies per card first: a deck may list the same card on more than
-    # one line, and owned counts are per-name (fungible across printings), so the
-    # short/missing check must compare total-need vs total-owned, not line-by-line.
-    need, order, printing = {}, [], {}
-    for q, n, s, c in cards:
-        nl = n.lower()
-        if nl not in need:
-            order.append(nl)
-            printing[nl] = (n, s)
-        need[nl] = need.get(nl, 0) + q
+    reqs = deck_requirements(cards)
+    need = {nl: q for nl, _n, _s, q in reqs}
+    order = [nl for nl, _n, _s, _q in reqs]
+    printing = {nl: (n, s) for nl, n, s, _q in reqs}
 
     print(f"Deck {d['id']}: {d['name'] or d['path']}")
     print(f"{'Have':>4} / {'Need':<4}  Card")
@@ -9394,6 +9428,15 @@ _CLAUSE_BREAK = re.compile(r"[.;!?](?=\s)")
 # "deck 56" / "deck 40a" — an explicit reference to a deck by id. Requires the word
 # `deck` so a bare count ("16 Birds") can never read as one.
 _OTHER_DECK_RE = re.compile(r"\bdeck\s+(\d+[a-z]?)\b", re.I)
+# A figure whose SUBJECT is the card POPULATION rather than this list. Deck 49's
+# archetype prose argues "Standard's Dragons average MV 5.30, so a deck that wants to
+# field several must SOLVE ITS OWN MANA" — a true statement about the format that the
+# figure scan read as a stale claim about the deck's own 4.03 curve. Possessive form
+# only, deliberately: "Standard's Dragons average…" names a population, while "fine in
+# Standard, avg MV 2.4" is still a claim about this deck and must keep auditing.
+_POPULATION_SUBJECT_RE = re.compile(
+    r"\b(?:standard|alchemy|historic|brawl|pioneer|modern|explorer|timeless)'s\b"
+    r"|\bthe (?:format|pool|meta|average)(?:'s)?\b", re.I)
 
 
 def _clause_bounds(prose, start, end):
@@ -9793,35 +9836,66 @@ def rationale_staleness(d, carddata=None):
     if stale_cards:
         stale_cards = sorted(set(stale_cards))
     vec = deck_quality_vector(d)
-    tier_prose = (meta or {}).get("tier", "") or ""
     own_id = str(d.get("id") or "").lower()
-    for rx, key in _RATIONALE_FIGURES:
-        for m in rx.finditer(tier_prose):
-            quoted, actual = m.group(1), vec.get(key)
-            if actual is None:
-                continue
-            # A figure quoted about ANOTHER DECK is not a claim about this one. 56a's
-            # block compared itself to its parent — "deck 56 core is a genuine aggro
-            # deck (clock 5/7, interaction 7, avg MV 2.42)" — and both numbers flagged
-            # as stale against 56a's own vector (two false positives, 2026-08-09).
-            # Scoped to the figure's clause, and only an id OTHER than this deck's
-            # suppresses, so a rationale citing its own number by id still audits.
-            clo, chi = _clause_bounds(tier_prose, m.start(), m.end())
-            ids = {g.lower() for g in _OTHER_DECK_RE.findall(tier_prose[clo:chi])}
-            if ids - {own_id}:
-                continue
-            # A rationale legitimately quotes PAST figures when it documents a change
-            # ("took interaction 1→4", "it cited a 2.65 curve; the list is now 3.0"), and
-            # flagging those makes the check cry wolf, which is how a check gets ignored.
-            # Only a figure presented as the CURRENT state is worth reporting. This used
-            # to reuse the CARD scan's `_cites_as_history`; see `_figure_is_history` for
-            # why that was wrong and what it hid.
-            if _figure_is_history(tier_prose, m.start(), m.end()):
-                continue
-            same = (abs(float(quoted) - float(actual)) < 0.005 if "." in quoted
-                    else int(quoted) == int(actual))
-            if not same and (key, quoted, actual) not in stale_figures:
-                stale_figures.append((key, quoted, actual))
+    # The FIGURE half sweeps the SAME two headers as the CARD half above. It read
+    # `#: tier:` alone, so a figure in `#: archetype:` could contradict the live vector
+    # indefinitely: deck 26a quoted "avg MV 3.05, 15 early drops" against a live 2.97 and
+    # the audit reported the deck clean. G-27 has always DOCUMENTED both headers as in
+    # scope — only the card scan implemented it, so the doc was true of half the function
+    # (BS4-07). Same reasoning as the card half: `#: archetype:` is a claim about the
+    # CURRENT list and is the header a reader trusts first, while `#: notes:` stays out
+    # as a free-form build log.
+    for header in ("tier", "archetype"):
+        prose = (meta or {}).get(header, "") or ""
+        if not prose:
+            continue
+        for rx, key in _RATIONALE_FIGURES:
+            for m in rx.finditer(prose):
+                quoted, actual = m.group(1), vec.get(key)
+                if actual is None:
+                    continue
+                # A figure quoted about ANOTHER DECK is not a claim about this one. 56a's
+                # block compared itself to its parent — "deck 56 core is a genuine aggro
+                # deck (clock 5/7, interaction 7, avg MV 2.42)" — and both numbers flagged
+                # as stale against 56a's own vector (two false positives, 2026-08-09).
+                # Scoped to the figure's clause, and only an id OTHER than this deck's
+                # suppresses, so a rationale citing its own number by id still audits.
+                clo, chi = _clause_bounds(prose, m.start(), m.end())
+                clause = prose[clo:chi]
+                ids = {g.lower() for g in _OTHER_DECK_RE.findall(clause)}
+                if ids - {own_id}:
+                    continue
+                # The same rule by NAME, which is how the prose usually writes it. Deck
+                # 44a's distinctness clause — "Black Sun is aggro-sacrifice with a 5/7
+                # clock and card advantage 0" — is a claim about DECK 1, but names it
+                # rather than saying "deck 1", so the id rule above could not see it and
+                # the figure flagged against 44a's own card advantage of 3. The card scan
+                # has masked roster deck names since it was written; this is the figure
+                # half of the same idea (BS4-07).
+                # A name that is part of THIS deck's own name is not another deck. The
+                # variant convention makes that essential rather than pedantic: 26a is
+                # "Iron Forge — Virulent", so its PARENT's name is a substring of its own,
+                # and an exact-match exclusion suppressed 26a's genuinely stale figure —
+                # the one case this whole fix exists to catch.
+                own_name = (meta or {}).get("name", "").strip()
+                if any(nm in clause for nm in _roster_deck_names()
+                       if nm and nm not in own_name):
+                    continue
+                # …and a figure about the card POPULATION is not a claim about this list.
+                if _POPULATION_SUBJECT_RE.search(clause):
+                    continue
+                # A rationale legitimately quotes PAST figures when it documents a change
+                # ("took interaction 1→4", "it cited a 2.65 curve; the list is now 3.0"),
+                # and flagging those makes the check cry wolf, which is how a check gets
+                # ignored. Only a figure presented as the CURRENT state is worth
+                # reporting. This used to reuse the CARD scan's `_cites_as_history`; see
+                # `_figure_is_history` for why that was wrong and what it hid.
+                if _figure_is_history(prose, m.start(), m.end()):
+                    continue
+                same = (abs(float(quoted) - float(actual)) < 0.005 if "." in quoted
+                        else int(quoted) == int(actual))
+                if not same and (key, quoted, actual) not in stale_figures:
+                    stale_figures.append((key, quoted, actual))
     return stale_cards, stale_figures
 
 

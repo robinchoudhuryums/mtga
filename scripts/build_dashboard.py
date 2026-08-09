@@ -928,7 +928,30 @@ TEMPLATE = r"""<!DOCTYPE html>
 // over the embedded snapshot so the fresher data survives the reload (and a new
 // tab/session falls back to the committed embedded data).
 const _live = (function(){ try { return sessionStorage.getItem('mtga-live'); } catch(e){ return null; } })();
-const D = JSON.parse(_live || document.getElementById('data').textContent);
+// Two guards, both bought by BS4-41.
+//  (1) The embedded snapshot is the FLOOR. `JSON.parse` on the stored payload used to run
+//      unguarded at the top of the script, so a truncated/tampered `mtga-live` (a quota-
+//      capped setItem is enough) threw before anything rendered and the page became dead
+//      chrome — every panel empty, no error, for the rest of the tab session.
+//  (2) Prefer the stored payload only when it is genuinely FRESHER. `syncLive` compares
+//      `generated` before STORING, but the loader preferred the stored copy
+//      unconditionally, so a locally rebuilt (newer) dashboard.html kept showing the older
+//      synced data in any tab that had ever synced.
+const D = (function(){
+  const embedded = JSON.parse(document.getElementById('data').textContent);
+  if (!_live) return embedded;
+  let live;
+  try { live = JSON.parse(_live); }
+  catch (e) {
+    try { sessionStorage.removeItem('mtga-live'); } catch (_) {}
+    console.warn('mtga: stored live payload was unreadable; using the embedded snapshot.', e);
+    return embedded;
+  }
+  const lt = Date.parse((live.generated||'').replace(' ','T'));
+  const et = Date.parse((embedded.generated||'').replace(' ','T'));
+  if (isNaN(lt) || (!isNaN(et) && et >= lt)) return embedded;
+  return live;
+})();
 const esc = s => (s==null?'':''+s).replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 const WC = {Mythic:'M',Rare:'R',Uncommon:'U',Common:'C'};
 const RANK = {Mythic:3,Rare:2,Uncommon:1,Common:0};

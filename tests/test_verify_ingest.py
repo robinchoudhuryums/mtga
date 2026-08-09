@@ -80,7 +80,20 @@ class TestPresence:
         """A line no parser matched was never ingested by ANY tool, so it is exactly the
         case a verifier must not swallow."""
         res, warns = vi.verify(_paste("~~~ junk ~~~"), lib=_lib([]), mana=set())
-        assert res == [] and len(warns) == 1
+        assert res == []
+        assert any("could not parse" in w for w in warns)
+
+    def test_the_csv_fallback_diagnostic_is_kept_not_swallowed(self):
+        """BS4-39: when NOTHING parses as Arena, verify retries the paste as a tracker
+        CSV — and `import_collection.parse_export` raises a ValueError naming the columns
+        it saw and the `--map` flag that fixes it. That was caught by a bare
+        `except Exception`, so the caller fell through to the generic "Expected Arena
+        export lines", pointing the operator at the wrong FORMAT. It is on the recommended
+        path: import_collection's post-apply message sends people here with that file."""
+        _res, warns = vi.verify(_paste("~~~ junk ~~~"), lib=_lib([]), mana=set())
+        joined = " ".join(warns)
+        assert "not readable as a collection CSV/TSV either" in joined
+        assert "--map" in joined          # the remedy, not just the failure
 
 
 class TestQuantitiesLowerBoundVsAuthoritative:

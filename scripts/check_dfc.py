@@ -43,6 +43,7 @@ empty == healthy.
 """
 import ast
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -369,8 +370,14 @@ def _payload_flags():
     where no Python scan can reach — which is exactly how BS-08 shipped (a raw
     `name in OWNED` with no front fallback; one app, two buildability verdicts).
     Pin the fix's two load-bearing markers: the `ownedOf` helper exists and it
-    front-splits. Residual, stated honestly: a NEW raw lookup added elsewhere in
-    the template would not fire this — the pin guards the helper, not every use."""
+    front-splits — plus, since BS4-14, every USE of the index.
+
+    That third check closed the residual this docstring used to state and then
+    demonstrate: "a NEW raw lookup added elsewhere in the template would not fire this"
+    was true, and `renderFlex` was already doing exactly that, so a flex line naming a
+    DFC by its full name read "not owned" while the rows above read it correctly. The
+    pin guarded the helper, not its callers — the same "a pure-function anchor cannot
+    see whether a caller asks" shape G-40 records."""
     tpl = os.path.join(os.path.dirname(SCRIPTS_DIR), "templates", "deck.html")
     if not os.path.exists(tpl):
         # LOUD, like _index_alias_flags' own missing-input case — a template rename
@@ -388,6 +395,23 @@ def _payload_flags():
     elif ".split(' // ')[0]" not in src:
         errs.append("templates/deck.html: `ownedOf` no longer falls back to the front "
                     "face — a front-named DFC line reads 'not owned' again (BS-08).")
+    # Every USE of the serialized index must go through the helper. The two lookups
+    # INSIDE `ownedOf` are the definition itself, so they are the only legitimate ones;
+    # anything else is a consumer that skipped the front-face fallback.
+    # Comment lines are excluded: the fix's own explanation quotes the banned shape, and
+    # a scan that flags the comment describing it is a scan nobody can satisfy.
+    uses = [ln.strip() for ln in src.splitlines()
+            if re.search(r"\bin OWNED\b|\bOWNED\[", ln) and "OWNED = " not in ln
+            and not ln.strip().startswith(("//", "*", "/*"))]
+    stray = [ln for ln in uses
+             if not (ln.startswith("if (name in OWNED)") or ln.startswith("return front"))]
+    for ln in stray:
+        errs.append(
+            f"templates/deck.html: raw ownership lookup outside `ownedOf` — {ln[:72]!r}. "
+            "Every consumer of the serialized OWNED index must call `ownedOf(name)`, "
+            "which falls back to the DFC front face; a raw lookup reads an owned "
+            "double-faced card as 'not owned' (BS-08 on the card rows, BS4-14 on the "
+            "flex panel — one fix, two consumers, and the second sat unnoticed).")
     return errs
 
 

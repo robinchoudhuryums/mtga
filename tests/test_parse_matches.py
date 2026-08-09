@@ -230,9 +230,56 @@ class TestDedup:
     def test_the_same_match_id_appears_once_across_two_pastes(self):
         first, _ = pm.parse_log(_log(_event(match_id="m-1")))
         second, _ = pm.parse_log(_log(_event(match_id="m-1"), _event(match_id="m-2")))
-        known = {r["Match ID"] for r in first}
-        fresh = [r for r in second if r["Match ID"] not in known]
-        assert [r["Match ID"] for r in fresh] == ["m-2"]
+        assert [r["Match ID"] for r in pm.fresh_rows(second, first)] == ["m-2"]
+
+    def test_a_duplicate_WITHIN_one_paste_is_recorded_once(self):
+        """BS4-15: concatenating two overlapping extracts puts the same match in ONE
+        paste. The filter only compared against the CSV, so both copies were written and
+        the match was double-counted in `--report` forever — while the docstring and the
+        truncation warning both told the user re-pasting was safe."""
+        rows, _ = pm.parse_log(_log(_event(match_id="m-1"), _event(match_id="m-2"),
+                                    _event(match_id="m-1")))
+        assert len(rows) == 3                       # the parser reports what it saw
+        assert [r["Match ID"] for r in pm.fresh_rows(rows, [])] == ["m-1", "m-2"]
+
+    def test_id_less_rows_are_never_deduped_against_each_other(self):
+        """"" is not an identity. Deduping on it dropped every id-less match after the
+        first as 'already recorded' — a silent loss that reads as data (batch 5)."""
+        rows = [{"Match ID": "", "Result": "W"}, {"Match ID": "", "Result": "L"}]
+        assert len(pm.fresh_rows(rows, [])) == 2
+        assert len(pm.fresh_rows(rows, [{"Match ID": ""}])) == 2
+
+
+class TestUnreadableResults:
+    """BS4-24: `b[r.get("Result", "L")]` only defaulted when the KEY was absent, so a row
+    with `Result=""` incremented a `b[""]` bucket printed in no column and excluded from
+    n = W+L. The header count and the per-deck totals then disagreed with nothing said —
+    the 'reads as data, not as a gap' failure this module is otherwise built to avoid."""
+
+    def _rows(self):
+        return [{"Deck": "5", "Result": "W", "Course ID": "c"},
+                {"Deck": "5", "Result": "", "Course ID": "c"},
+                {"Deck": "5", "Result": "?", "Course ID": "c"}]
+
+    def test_the_bad_rows_are_reported_not_silently_dropped(self, capsys):
+        pm.report(self._rows())
+        out = capsys.readouterr().out
+        assert "unreadable Result" in out
+        assert "do not sum to 3" in out
+
+    def test_good_rows_still_count(self, capsys):
+        pm.report(self._rows())
+        out = capsys.readouterr().out
+        assert "3 match(es) recorded" in out      # the header still counts every row
+
+    def test_a_clean_record_says_nothing_extra(self, capsys):
+        pm.report([{"Deck": "5", "Result": "W", "Course ID": "c"},
+                   {"Deck": "5", "Result": "L", "Course ID": "c"}])
+        assert "unreadable Result" not in capsys.readouterr().out
+
+    def test_case_and_whitespace_are_tolerated(self, capsys):
+        pm.report([{"Deck": "5", "Result": " w ", "Course ID": "c"}])
+        assert "unreadable Result" not in capsys.readouterr().out
 
 
 class TestWilson:

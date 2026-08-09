@@ -644,14 +644,13 @@ def _decks_overview():
     for d in deckmod.discover_decks():
         _, cards = deckmod.parse_deck_file(d["path"])
         total = sum(q for q, *_ in cards)
-        short = missing = 0
-        for q, n, s, c in cards:
-            have, found = deckmod.owned(by_name_qty, n)
-            if not found:
-                missing += 1
-            elif have < q:
-                short += 1
-        out.append({"id": d["id"], "name": d["name"] or d["id"], "unique": len(cards),
+        # Total-need vs total-owned, through the one shared definition — this loop used
+        # to compare each LINE's quantity against total owned, so a deck listing 2+2 of a
+        # card owned 3 read "buildable" here while `deck.py check`, the dashboard and the
+        # deck editor all said short (BS4-13). `unique` counted LINES for the same reason.
+        missing, short = deckmod.deck_build_gap(cards, by_name_qty)
+        out.append({"id": d["id"], "name": d["name"] or d["id"],
+                    "unique": len(deckmod.deck_requirements(cards)),
                     "total": total, "short": short, "missing": missing,
                     "variant": bool(d["variant"])})
     return out

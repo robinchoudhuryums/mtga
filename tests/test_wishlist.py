@@ -1,6 +1,8 @@
 """Unit tests for pure scoring helpers in scripts/wishlist.py."""
 import math
 
+import pytest
+
 import tag_synergies
 import wishlist
 
@@ -440,3 +442,64 @@ class TestSeedPowerReadsTheFrontFace:
             {"Card Name": "A // B", "Type": "Creature — Human // Planeswalker — B",
              "Card Text": "", "Rarity": "Rare"})
         assert dfc == plain
+
+
+class TestTargetAuditFailsLoud:
+    """BS4-08: `_audit_target_issues` wrapped the roster load in `except Exception: pass`,
+    and every check below is gated on the structures that load fills — so on any deck.py
+    failure it returned [] and `--audit-targets` printed "Wishlist targets are clean"
+    having checked nothing. Worse on the automated path: `check_all`'s soft sweep has its
+    own try/except that WOULD have reported a skip, but the exception was swallowed one
+    level down, so the gate saw an empty list rather than a failure and the roster sweep
+    became an invisible no-op. Every sibling loader in this file eprints on this exact
+    failure (audit A14); this was the one that didn't."""
+
+    def test_a_roster_failure_raises_instead_of_reporting_clean(self, monkeypatch):
+        import deck as dk
+        monkeypatch.setattr(dk, "discover_decks",
+                            lambda: (_ for _ in ()).throw(RuntimeError("deck.py broken")))
+        with pytest.raises(wishlist.TargetAuditUnavailable):
+            wishlist._audit_target_issues(color_only=True)
+
+    def test_the_message_says_SKIP_not_clean(self, monkeypatch):
+        import deck as dk
+        monkeypatch.setattr(dk, "discover_decks",
+                            lambda: (_ for _ in ()).throw(RuntimeError("boom")))
+        try:
+            wishlist._audit_target_issues()
+        except wishlist.TargetAuditUnavailable as e:
+            assert "SKIP" in str(e) and "not a clean bill" in str(e)
+
+    def test_check_all_reports_it_as_a_downed_radar(self, monkeypatch):
+        """The sentinel `check_all` counts: its handler appends "… skipped (…)", which the
+        --quiet path tallies as "RADAR(S) DID NOT RUN". Pin that the string still matches."""
+        msg = f"wishlist target audit skipped ({wishlist.TargetAuditUnavailable('x')})"
+        assert " skipped (" in msg
+
+    def test_the_healthy_path_still_returns_a_list(self):
+        assert isinstance(wishlist._audit_target_issues(color_only=True), list)
+
+
+class TestSeedPowerNeverLosesABatch:
+    """BS4-22: `_seed_power` does `import deck`, and cmd_add called it in a bare loop
+    AFTER the Scryfall fetches and BEFORE `write_wishlist` — so a broken deck.py threw
+    away an entire enriched batch over a cosmetic estimate. A blank Power is a state the
+    tool already models (`--seed-power` exists to fill exactly those cells); a lost batch
+    is not."""
+
+    def test_it_degrades_to_None_instead_of_raising(self, monkeypatch, capsys):
+        monkeypatch.setattr(wishlist, "_seed_power",
+                            lambda r: (_ for _ in ()).throw(ImportError("deck.py broken")))
+        assert wishlist._try_seed_power({"Card Name": "X"}, _warned=[]) is None
+
+    def test_it_warns_once_not_per_row(self, monkeypatch, capsys):
+        monkeypatch.setattr(wishlist, "_seed_power",
+                            lambda r: (_ for _ in ()).throw(ImportError("broken")))
+        warned = []
+        for _ in range(5):
+            wishlist._try_seed_power({"Card Name": "X"}, _warned=warned)
+        assert capsys.readouterr().err.count("Power seeding unavailable") == 1
+
+    def test_a_healthy_seed_is_returned_unchanged(self, monkeypatch):
+        monkeypatch.setattr(wishlist, "_seed_power", lambda r: 6.5)
+        assert wishlist._try_seed_power({"Card Name": "X"}, _warned=[]) == 6.5

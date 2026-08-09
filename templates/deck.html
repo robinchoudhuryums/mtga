@@ -382,9 +382,16 @@
       let owned = '';
       if (inName) {
         const key = inName.toLowerCase();
+        // Through `ownedOf`, NOT a raw `key in OWNED`. This was the second consumer of
+        // the same serialized index and it kept the pre-BS-08 lookup, so a `#~` flex
+        // line naming a DFC by its full `Front // Back` spelling — which is how the
+        // wishlist stores them and how `deck.py resolve` emits them — showed "not owned"
+        // for a card the rows above correctly showed as owned (BS4-14). The gate pins
+        // that `ownedOf` exists and that cardStatus uses it; it cannot see a new caller.
+        const have = ownedOf(key);
         owned = BASICS.has(key) ? '<span class="meta">basic ∞</span>'
-          : (key in OWNED ? `<span class="meta">owned ×${OWNED[key]}</span>`
-                          : '<span class="meta">not owned</span>');
+          : (have !== undefined ? `<span class="meta">owned ×${have}</span>`
+                                : '<span class="meta">not owned</span>');
       }
       const swap = (f.out || f.in)
         ? `<span class="swap"><span class="out">− ${esc(f.out)}</span>`

@@ -752,6 +752,103 @@ Deck
         assert hits == [], f"stale card-name header(s): {hits}"
 
 
+class TestBuildabilityIsPerNameNotPerLine:
+    """BS4-13. `cmd_check` has always compared TOTAL need against TOTAL owned — and said
+    so in a comment — but `app.py`'s /decks overview and `check_all`'s info summary each
+    re-derived the question per LINE. A deck listing 2+2 of a card owned 3 therefore read
+    "buildable" on those two surfaces while `deck.py check`, the dashboard and the deck
+    editor all called it short. Three implementations of one question; the two that
+    drifted were the two that copied the loop instead of calling it."""
+
+    CARDS = [(2, "Duress", "M21", "96"), (2, "Duress", "DMU", "94"),
+             (1, "Shock", "M21", "159")]
+
+    def test_requirements_sum_duplicate_lines(self):
+        reqs = deck.deck_requirements(self.CARDS)
+        assert [(n, q) for _k, n, _s, q in reqs] == [("Duress", 4), ("Shock", 1)]
+
+    def test_first_seen_order_and_printing_are_kept(self):
+        reqs = deck.deck_requirements(self.CARDS)
+        assert [r[0] for r in reqs] == ["duress", "shock"]
+        assert reqs[0][2] == "M21"          # the FIRST line's printing, as cmd_check shows
+
+    def test_split_lines_over_total_owned_read_as_short(self):
+        """The exact divergence: 2+2 against 3 owned. Per-line it passes twice."""
+        missing, short = deck.deck_build_gap(self.CARDS, {"duress": 3, "shock": 4})
+        assert (missing, short) == (0, 1)
+
+    def test_enough_copies_is_buildable(self):
+        missing, short = deck.deck_build_gap(self.CARDS, {"duress": 4, "shock": 1})
+        assert (missing, short) == (0, 0)
+
+    def test_absent_card_counts_as_missing_not_short(self):
+        missing, short = deck.deck_build_gap(self.CARDS, {"shock": 1})
+        assert (missing, short) == (1, 0)
+
+
+class TestArchetypeFiguresAreAudited:
+    """BS4-07: the figure half of the rationale audit read `#: tier:` ALONE while the card
+    half swept `#: tier:` AND `#: archetype:`. G-27 documented both, so the doc was true of
+    half the function, and deck 26a quoted "avg MV 3.05" against a live 2.97 for as long as
+    it took someone to check by hand."""
+
+    def _deck(self, tmp_path, header_block, name="Probe"):
+        p = tmp_path / "deck.txt"
+        p.write_text(f"#: name: {name}\n#: colors: B\n{header_block}\n\nDeck\n"
+                     "4 Swamp (MSH) 291\n", encoding="utf-8")
+        return {"id": "zz", "path": str(p), "name": name, "variant": None}
+
+    def test_a_stale_figure_in_archetype_prose_is_found(self, tmp_path, monkeypatch):
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: {"interaction": 7})
+        d = self._deck(tmp_path, "#: archetype: a real clock (interaction 3, fine curve).")
+        _cards, figs = deck.rationale_staleness(d, carddata={})
+        assert ("interaction", "3", 7) in figs
+
+    def test_a_matching_figure_is_not_flagged(self, tmp_path, monkeypatch):
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: {"interaction": 7})
+        d = self._deck(tmp_path, "#: archetype: a real clock (interaction 7, fine curve).")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_a_figure_about_the_card_POPULATION_is_not_a_claim_about_this_deck(
+            self, tmp_path, monkeypatch):
+        """Deck 49 argues "Standard's Dragons average MV 5.30, so a deck that wants to
+        field several must SOLVE ITS OWN MANA" — true about the format, and the first cut
+        of this fix reported it as a stale claim about the deck's own 4.03 curve."""
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: {"avg_mv": 4.03})
+        d = self._deck(tmp_path, "#: archetype: Standard's Dragons average MV 5.30, so "
+                                 "this deck must solve its own mana.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_a_figure_about_ANOTHER_ROSTER_DECK_is_not_a_claim_about_this_one(
+            self, tmp_path, monkeypatch):
+        """Deck 44a's distinctness clause quotes deck 1's card advantage by NAME rather
+        than by 'deck 1', which the id-based suppressor could not see."""
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: {"card_advantage": 3})
+        other = deck._roster_deck_names()[0]
+        d = self._deck(tmp_path, f"#: archetype: DISTINCTNESS vs {other}: it is aggro "
+                                 f"with card advantage 0 — it wins by racing.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_a_PARENT_deck_name_does_not_mute_a_variant_own_figure(
+            self, tmp_path, monkeypatch):
+        """The variant convention makes this essential: 26a is named "Iron Forge —
+        Virulent", so its parent's name is a substring of its OWN. An exact-match
+        exclusion suppressed the one genuinely stale figure this fix exists to catch."""
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: {"avg_mv": 2.97})
+        parent = deck._roster_deck_names()[0]
+        d = self._deck(tmp_path,
+                       f"#: archetype: Variant of {parent}: a real clock (avg MV 3.05).",
+                       name=f"{parent} — Probe")
+        assert ("avg_mv", "3.05", 2.97) in deck.rationale_staleness(d, carddata={})[1]
+
+    def test_the_roster_figure_sweep_is_clean(self):
+        """Behavioural anchor: with archetype prose in scope, the roster must still be
+        clean — a new hit is a rationale someone let go stale."""
+        hits = [(d["id"], f) for d in deck.roster_decks()
+                for f in deck.rationale_staleness(d)[1]]
+        assert hits == [], f"stale rationale figure(s): {hits}"
+
+
 class TestHeaderConsumersJoinOnMsKey:
     """BS4-01, the last open member of the G-63 class (was BS2-07).
 

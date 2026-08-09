@@ -6,6 +6,42 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #3, Batches 1 & 2 (2026-08-09, after the top-5 + sync-docs)
+
+Eleven findings, all verified. Block:
+`.cycle/blocks/2026-08-broad-scan3-batch1-2-broad-implement.md` — read that for detail.
+Gates: `check_all` green, ZERO soft warnings; **1,146 tests** (was 1,105).
+
+**Batch 1 (live wrong output):** BS4-07 archetype figures now audited · BS4-13
+buildability per NAME not per LINE (one definition now: `deck_requirements` /
+`deck_build_gap`) · BS4-14 flex panel through `ownedOf` · BS4-08 wishlist target audit
+raises instead of reporting clean · BS4-41 dashboard loader guarded + freshness-compared.
+**Batch 2 (ingest edges):** BS4-15 intra-paste match dedupe · BS4-39 CSV diagnostic kept ·
+BS4-17 `Retry-After` HTTP-date · BS4-16 sheets push writes-then-trims · BS4-22 wishlist
+`--add` robustness · BS4-24 unreadable Result reported.
+
+**The one worth reading before touching the rationale audit.** BS4-07 looked like a
+one-line scope widening and was not. Its first roster sweep produced **3 hits of which
+only 1 was genuine** — deck 44a quotes another deck's figure BY NAME (the id-based
+suppressor can't see that) and deck 49 quotes *Standard's* Dragons' average MV (a claim
+about the format). Two narrow clause-scoped suppressions were added for those. Then the
+deck-name suppression **muted the one genuine hit**, because the variant convention makes
+26a "Iron Forge — Virulent" — its PARENT's name is a substring of its OWN. Exclusion is
+now "a name that is part of this deck's own name is not another deck." Final: 1 genuine
+hit, corrected (26a avg MV 3.05 → 2.97), anchored by a roster-sweep test. **G-26's rule —
+keep the cue lists narrow and let the roster sweep be the check — is what caught all of
+this; it earned its place again.**
+
+**Also:** `check_dfc._payload_flags` now scans every CONSUMER of the serialized OWNED
+index, not just the `ownedOf` helper — its own docstring had stated that residual while
+`renderFlex` was already violating it. Mutation-tested.
+
+**Where I left off:** Batches 3–5 of the scan remain (gate credibility, structural/latent
+DFC, interface polish) plus the six operator visual checks. A `/sync-docs` pass is owed —
+G-27, G-26 and G-63 all have text that this session made stale, and there is a new gotcha
+candidate ("buildability is per NAME, not per LINE"). The committed `dashboard.html`
+snapshot still carries the pre-BS4-41 loader; `make dashboard` regenerates it.
+
 ## Session — broad scan #3 + top-5 fixes (2026-08-09)
 
 A full `/broad-scan` (three stages, five parallel subsystem deep-reads) followed by

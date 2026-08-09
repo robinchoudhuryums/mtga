@@ -127,13 +127,11 @@ def check_decks():
             errs.append(f"deck {d['id']}: line {lineno} is not a card line, `#:` header, "
                         f"comment or Arena marker — it is silently EXCLUDED from every "
                         f"analysis: {text[:60]!r}")
-        missing = short = 0
-        for q, n, s, c in cards:
-            have, found = deckmod.owned(by_name_qty, n)
-            if not found:
-                missing += 1
-            elif have < q:
-                short += 1
+        # Total-need vs total-owned, through deck.py's one definition. This summary used
+        # to compare each LINE against total owned, so it could report "buildable" for a
+        # deck `deck.py check` calls short (BS4-13) — info-only here, but the gate's own
+        # output disagreeing with the command it summarises is its own problem.
+        missing, short = deckmod.deck_build_gap(cards, by_name_qty)
         status = "buildable" if (missing == 0 and short == 0) else \
             f"{missing} missing, {short} short"
         info.append(f"  deck {d['id']:>4}  {d['name'] or d['id']:<28} {status}")
