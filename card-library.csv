@@ -4482,3 +4482,11 @@ When Mutagen Man enters, create X Mutagen tokens. (They're artifacts with ""{1},
 "Ruby, Daring Tracker",Legendary Creature — Human Scout,"Haste (This creature can attack and {T} as soon as it comes under your control.)
 Whenever Ruby attacks while you control a creature with power 4 or greater, Ruby gets +2/+2 until end of turn.
 {T}: Add {R} or {G}.",R/G,Human; Scout; mana; pump; haste; aggro,FDN,245,2
+Thunderous Velocipede,Artifact — Vehicle,"Trample
+Each other Vehicle and creature you control enters with an additional +1/+1 counter on it if its mana value is 4 or less. Otherwise, it enters with three additional +1/+1 counters on it.
+Crew 3",G,Vehicle; counters; vehicle; crew; vehicles; trample; evasion,DFT,183,1
+Ancient Vendetta,Sorcery,"Choose a card name. Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them. Then that player shuffles.",B,graveyard,DFT,75,1
+Midnight Mangler,Artifact — Vehicle,"During turns other than yours, this Vehicle is an artifact creature.
+Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",U,Vehicle; vehicle; crew; vehicles,DFT,50,1
+Maximum Overdrive,Instant,Put a +1/+1 counter on target creature. It gains deathtouch and indestructible until end of turn.,B,counters,DFT,96,1
+Spikeshell Harrier,Artifact Creature — Robot Turtle,"When this creature enters, return target creature or Vehicle an opponent controls to its owner's hand. If that opponent's speed is greater than each other player's speed, reduce that opponent's speed by 1. This effect can't reduce their speed below 1.",U,Robot; Turtle; etb; bounce,DFT,65,1
