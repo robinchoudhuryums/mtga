@@ -215,7 +215,7 @@
 1 Reckless Ransacking (ECL) 152
 1 Lady Octopus, Inspired Inventor (SPM) 35
 1 Mouser Foundry (TMT) 96
-1 Marauding Mako (DFT) 138
+1 Machinesmith Automaton (MSH) 144
 1 Iron Man, Master of Machines (MSH) 216
 1 Gleaming Barrier (FDN) 252
 1 Gleaming Geardrake (MKM) 205
