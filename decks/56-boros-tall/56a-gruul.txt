@@ -36,16 +36,30 @@
 #: notes: whose warp {2}{G} is a single green pip on a stretched draw). War Machine's
 #: notes: {2}{R/W} hybrid casts on {R} here (G-58). Commercial District counts as
 #: notes: a Mountain for Molten Man (type line Mountain Forest) — 14 Mountains.
-#: notes: 2026-08-09 DEDUP PASS (user-decided): the 2nd Halana — a LEGEND, so the
-#: notes: second copy was insurance-only — came out for Ouroboroid (owned M, EOE):
-#: notes: the same beginning-of-combat trigger but counters on EVERY creature
-#: notes: including itself, so it compounds, and as a non-legend it stacks with
-#: notes: Halana #1 in the same combat step. {2}{G}{G} against 11 G sources is
-#: notes: ~mid-70s% on curve — comparable to the deck's existing G stress. The 2nd
-#: notes: ASHROOT stays a craft on its merits: not a legend, and his trigger targets
-#: notes: ANOTHER creature, so two copies attack and pump each other. The 2nd AGNI
-#: notes: KAI stays a craft and should be crafted FIRST — 56, 56a and 59 are all
-#: notes: short the same copy, so one rare completes three decks (shared collection).
+#: notes: 2026-08-09 — OUROBOROID IN OVER A 2ND HALANA, and the premise was corrected
+#: notes: mid-decision: the 2nd Halana is OWNED, not a craft, so no wildcard argument
+#: notes: applies. Kept on card quality alone. THE REASON IS THE OTHER BOOSTERS:
+#: notes: Ouroboroid counters EACH creature, and both Ashroot and Halana scale their
+#: notes: pump off THEIR OWN power — so Ouroboroid grows them and their triggers grow
+#: notes: with it (order Ouroboroid's beginning-of-combat trigger FIRST and Halana's X
+#: notes: is 3, then 5). A 2nd Halana does nothing for Ashroot, and two legends never
+#: notes: share a battlefield; Ouroboroid is a non-legend that stacks with Halana #1.
+#: notes: CORRECTION TO AN EARLIER READ: Ouroboroid is a 1/3, so X starts at ONE, not
+#: notes: at ~4 — cumulative on a creature it is +1, +3, +7, +15, which means Halana's
+#: notes: flat +2-and-HASTE is AHEAD until the third combat. The cost of this swap is
+#: notes: real: no haste, a worse body, ~2 turns of tempo. It is justified by the
+#: notes: archetype line above ("COMPOUNDS permanent counters ... slower, bigger"),
+#: notes: not by early impact. Booster saturation also argued against a 7th pump
+#: notes: effect across 19 creatures. The 2nd ASHROOT stays a craft on its merits:
+#: notes: not a legend, and his trigger targets ANOTHER creature, so two copies attack
+#: notes: and pump each other. The 2nd AGNI KAI stays a craft and should be crafted
+#: notes: FIRST — 56, 56a and 59 are all short the same copy, so one rare completes
+#: notes: three decks (shared collection).
+#: notes: OPEN QUESTION, flagged 2026-08-09: `#: plan: aggro` disagrees with the
+#: notes: archetype prose ("slower, bigger"). The header is load-bearing — aggro makes
+#: notes: tier_band substitute a clock score (4/7) for interaction, and on a midrange
+#: notes: plan this list's interaction 4 + card advantage 2 would likely fail the A it
+#: notes: claims. Not changed here: the plan is a design declaration, not a metric.
 
 # Tall bodies
 2 Molten Man, Inferno Incarnate (SPM) 84

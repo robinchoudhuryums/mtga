@@ -2524,7 +2524,7 @@ This creature gets +1/+0 and has trample as long as you control a land creature 
 Alien Invasion,Enchantment,"At the beginning of combat on your turn, create a 1/1 red Alien creature token with haste and ""This token attacks each combat if able."" Put a +1/+1 counter on it for each invasion counter on this enchantment, then put an invasion counter on this enchantment.",R/G,counters; tokens,MSH,200,1
 "Halana and Alena, Partners",Legendary Creature — Human Ranger,"First strike (This creature deals combat damage before creatures without first strike.)
 Reach (This creature can block creatures with flying.)
-At the beginning of combat on your turn, put X +1/+1 counters on another target creature you control, where X is Halana and Alena's power. That creature gains haste until end of turn.",R/G,Human; Ranger; counters; reach; defense; first strike; combat,VOW,239,1
+At the beginning of combat on your turn, put X +1/+1 counters on another target creature you control, where X is Halana and Alena's power. That creature gains haste until end of turn.",R/G,Human; Ranger; counters; reach; defense; first strike; combat,VOW,239,2
 "Wolverine, Fierce Fighter",Legendary Creature — Mutant Berserker Hero,"Haste
 When Wolverine enters, he fights up to one other target creature.
 If damage would be dealt to Wolverine, instead that damage is dealt, but all other damage already dealt to him is healed.",R/G,Mutant; Berserker; Hero; etb; haste; aggro; fight; removal; combat,MSH,240,1
