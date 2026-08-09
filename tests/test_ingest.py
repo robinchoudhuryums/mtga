@@ -695,3 +695,61 @@ class TestSetlessLines:
                                              sum_mode=False)
         assert added == 1 and rows[0]["Set Code"] == ""
         assert any("BLANK set code" in n for n in notes)
+
+
+class TestSetStampedLinesWithoutACollector:
+    """BS4-04: `LINE_RE` makes the collector number OPTIONAL, so `4 Llanowar Elves (DOM)`
+    parsed to ("llanowar elves","dom","") — which matches no real row, because every real
+    row carries a collector number. BS2-24 routed only FULLY set-less lines through the
+    summed-total comparison, so this shape still APPENDED a phantom printing beside the
+    owned one, and since every consumer sums across printings a real 4 read as 8.
+
+    It also passed INV-01 (the collector differs), and if `enrich` later backfilled the
+    blank collector from the set-scoped lookup the row became an exact-duplicate printing
+    — breaking INV-01 long after, and far from, the import that caused it."""
+
+    def _rows(self):
+        return [{"Card Name": "Llanowar Elves", "Set Code": "DOM", "Collector #": "168",
+                 "Quantity Owned": "4", "Type": "", "Card Text": "", "Color(s)": "",
+                 "Synergies": ""}]
+
+    def test_covered_claim_appends_nothing(self):
+        rows = self._rows()
+        added, updated, notes = import_arena.merge(
+            rows, [(4, "Llanowar Elves", "DOM", "")], sum_mode=False)
+        assert added == 0 and len(rows) == 1        # NO phantom (DOM)/blank printing
+        assert rows[0]["Quantity Owned"] == "4"
+        assert any("already covered" in n for n in notes)
+
+    def test_claim_above_the_total_tops_up_the_real_printing(self):
+        rows = self._rows()
+        added, _u, notes = import_arena.merge(
+            rows, [(6, "Llanowar Elves", "DOM", "")], sum_mode=False)
+        assert added == 0 and len(rows) == 1
+        assert rows[0]["Quantity Owned"] == "6"
+        assert any("topped up" in n for n in notes)
+
+    def test_a_blank_collector_row_is_topped_up_not_duplicated(self):
+        """G-11: `enrich` leaves Collector # blank rather than guessing an unconfirmed
+        printing, so blank-collector rows are legitimate and must join, not duplicate."""
+        rows = [{"Card Name": "Llanowar Elves", "Set Code": "DOM", "Collector #": "",
+                 "Quantity Owned": "2", "Type": "", "Card Text": "", "Color(s)": "",
+                 "Synergies": ""}]
+        added, _u, _n = import_arena.merge(
+            rows, [(3, "Llanowar Elves", "DOM", "")], sum_mode=False)
+        assert added == 0 and len(rows) == 1
+        assert rows[0]["Quantity Owned"] == "3"
+
+    def test_unknown_card_is_still_added_and_says_what_is_missing(self):
+        rows = []
+        added, _u, notes = import_arena.merge(
+            rows, [(2, "New Card", "DOM", "")], sum_mode=False)
+        assert added == 1 and rows[0]["Set Code"] == "DOM"
+        assert any("BLANK collector #" in n for n in notes)
+
+    def test_a_fully_printed_line_still_takes_the_normal_path(self):
+        """The guard must not swallow ordinary Arena exports — those carry a collector."""
+        rows = self._rows()
+        added, updated, _n = import_arena.merge(
+            rows, [(4, "Llanowar Elves", "DOM", "168")], sum_mode=False)
+        assert added == 0 and len(rows) == 1 and updated == 0

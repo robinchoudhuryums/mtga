@@ -757,7 +757,10 @@ def _castability(cards, declared, mana, carddata, exempt=frozenset()):
                              if len(h) >= 2 and not (h & declared) for x in h})
         if off_strict or bad_hybrid:
             why = "needs " + "/".join(sorted(set(off_strict + bad_hybrid)))
-            (intended if nl in exempt else uncastable).append((n, why))
+            # `exempt` holds _ms_key keys (see `_header_card_keys`), so the join must
+            # too — a raw `nl` test missed any DFC the header named by its front face,
+            # which silently RE-ENABLED the failure the header suppresses.
+            (intended if _ms_key(n) in exempt else uncastable).append((n, why))
             continue
         ident = card_colors(cd["colors"] if cd else "")
         stray = sorted(ident - declared)
@@ -5421,7 +5424,7 @@ def recommendation_row(d, cut, add, source, today=None):
         cl = cut.strip().lower()
         idx = next((i for i, r in enumerate(rows) if r[1].strip().lower() == cl), None)
         row["Cut Of"] = len(rows)
-        row["Cut Protected"] = "yes" if cl in {p.strip().lower() for p in prot_present} \
+        row["Cut Protected"] = "yes" if _ms_key(cut) in {_ms_key(p) for p in prot_present} \
             else "no"
         if idx is not None:
             row["Cut Rank"] = idx + 1          # 1 = the model's most-cuttable card
@@ -5796,8 +5799,9 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
         return 1
     # `_ms_key` both sides (BS2-21): the header may name either face-spelling of the
     # card being cut, and a raw `.lower()` comparison let a protected DFC be cut
-    # without the ⚠ when the spellings differed.
-    if _ms_key(cut) in {_ms_key(p) for p in _protected(d.get("meta") or {})}:
+    # without the ⚠ when the spellings differed. The header side is normalized by
+    # `_protected` itself now (BS4-01), so only the cut argument needs keying here.
+    if _ms_key(cut) in _protected(d.get("meta") or {}):
         eprint(f"⚠ {cut!r} is marked protected (#: protect:) in deck {d['id']} — a "
                "signature/spice card. Proceeding, but reconsider; remove it from the "
                "header if this cut is intentional.")
@@ -6164,20 +6168,47 @@ def cmd_legal(args):
 
 
 # --- cut candidates: the companion to `suggest` (adds) ---------------------- #
+def _header_card_keys(meta, header):
+    """The card names in a semicolon-separated `#: <header>:` list, as `_ms_key`
+    COMPARISON KEYS (lowercased, front face only).
+
+    The normalization is the whole point, and it was the last open member of the G-63
+    class (BS2-07). Both header readers used to return raw `.lower()` names while every
+    consumer compared them against a deck line's raw `.lower()` name — so a header
+    naming a DFC by its FRONT face ("Eddie Brock") never matched the line storing the
+    full name ("Eddie Brock // Venom, Lethal Protector"), and the instruction the header
+    encodes silently did nothing. It was left open on a "zero live instances" measurement
+    that expired the moment deck 66 was drafted: its `#: protect:` header named the
+    deck's own title card, and `cuts` ranked that card as cuttable anyway.
+
+    `header_card_staleness` — the G-68 gate built to catch a dead header entry — has
+    always joined on `_ms_key`, so it reported the header as HEALTHY while the consumers
+    could not read it. A gate that vouches for a disabled instruction is worse than no
+    gate, which is why the fix belongs HERE, at the one place both readers share, rather
+    than at each call site deciding again."""
+    raw = (meta or {}).get(header, "") or ""
+    return {_ms_key(p) for p in raw.split(";") if p.strip()}
+
+
 def _protected(meta):
     """Cards a deck's `#: protect:` header marks as signature/spice — the tooling
     must never propose cutting them. Format: `#: protect: Card A; Card B`
     (repeatable across lines; SEMICOLON-separated — card names contain commas, so
-    comma can't be the separator). Returns a lowercased set of card names."""
-    raw = (meta or {}).get("protect", "") or ""
-    return {p.strip().lower() for p in raw.split(";") if p.strip()}
+    comma can't be the separator). Returns a set of `_ms_key` comparison keys, so
+    every consumer must test `_ms_key(name) in _protected(meta)` — see
+    `_header_card_keys` for why a raw `.lower()` join was a silent no-op on DFCs."""
+    return _header_card_keys(meta, "protect")
 
 
 def _uncastable_ok(meta):
     """Cards the deck AUTHOR asserts are intentionally uncastable — a REANIMATOR's
     targets, which you never cast from hand and cheat in from the graveyard instead.
     Format: `#: uncastable-ok: Card A; Card B` (semicolon-separated, like `#: protect:`,
-    because card names contain commas). Returns a lowercased set.
+    because card names contain commas). Returns a set of `_ms_key` comparison keys —
+    this is the MORE dangerous half of the pair to get wrong, since a name the consumer
+    cannot match doesn't merely fail to protect a card, it silently re-enables the
+    castability failure the header exists to suppress (floor capped at C, `preflight`
+    BLOCKED). See `_header_card_keys`.
 
     Why this exists: the castability lint and `tier_band` both model "you cannot cast
     this" as a build ERROR, which is right by default and wrong for a whole archetype.
@@ -6191,8 +6222,7 @@ def _uncastable_ok(meta):
     shape as `#: protect:` naming signature cards the tooling must not propose cutting.
     An exempt card is still SHOWN everywhere it was shown before — it moves out of the
     failure list, not out of sight (G-52: a verdict surface must print its evidence)."""
-    raw = (meta or {}).get("uncastable-ok", "") or ""
-    return {p.strip().lower() for p in raw.split(";") if p.strip()}
+    return _header_card_keys(meta, "uncastable-ok")
 
 
 def _signature_themes(meta, cards, cardmeta):
@@ -6207,7 +6237,7 @@ def _signature_themes(meta, cards, cardmeta):
         return frozenset()
     sig = set()
     for q, n, s, c in cards:
-        if n.lower() in prot:
+        if _ms_key(n) in prot:                 # G-63: `prot` holds _ms_key keys
             m = cardmeta.get(n.lower())
             if m:
                 sig.update(m["synergies"])
@@ -6376,7 +6406,7 @@ def rank_cut_candidates(d):
         nl = n.lower()
         if nl in BASICS or nl in seen:
             continue
-        if nl in protected:
+        if _ms_key(n) in protected:            # G-63: `protected` holds _ms_key keys
             prot_present.append(n)
             seen.add(nl)
             continue
@@ -7159,7 +7189,9 @@ def _weakest_cut(dmeta, cards, cardmeta, carddata, add_is_fixer=False):
     best = None
     for q, n, s, c in cards:
         nl = n.lower()
-        if nl in BASICS or nl in protected:
+        # G-63: `protected` holds _ms_key keys — must match rank_cut_candidates', or the
+        # two answers to "most-cuttable card" diverge on exactly the protected DFCs.
+        if nl in BASICS or _ms_key(n) in protected:
             continue
         cd = carddata.get(nl)
         tline = (cd["type"] if cd else "") or ""
@@ -7454,7 +7486,7 @@ def _strong_signature_themes(meta, cards, cardmeta, min_cards=2):
         return frozenset()
     counts = {}
     for q, n, s, c in cards:
-        if n.lower() in prot:
+        if _ms_key(n) in prot:                 # G-63: `prot` holds _ms_key keys
             m = cardmeta.get(n.lower())
             if m:
                 for t in set(m["synergies"]):
@@ -7974,7 +8006,11 @@ def cmd_screen(args):
                          owned=owned_qty(qty, name), rar=rar.get(nl, "?"),
                          illegal=bool(fmt and legs and fmt not in legs),
                          castable=cast_ok, cast_note=cast_note,
-                         present=nl in in_deck))
+                         # `in_deck` holds _ms_key keys while `nl` is the resolved card's
+                         # FULL display name, so every pool-keyed DFC read as absent and
+                         # `screen` graded a maindecked card as a fresh candidate —
+                         # silently, on the surface G-47 points at for stale verdicts.
+                         present=_ms_key(nl) in in_deck))
 
     # The header counts RESOLVED candidates, not INPUTS. It used to print len(queries),
     # so `screen 52 "Demon"` announced "screening 1 candidate(s)" and then graded zero —
@@ -8229,8 +8265,11 @@ def cmd_suggest_homes(args):
         if not shared:
             continue
         deck_avg_mv = sum(d_mvs) / len(d_mvs) if d_mvs else 0.0
-        already = bool({card.lower(), card.split(" // ")[0].lower()}
-                       & {n.lower() for _, n, _, _ in cards})
+        # BOTH sides through `_ms_key` (G-63). The card side was front-normalized and the
+        # DECK side was not, so a deck storing the full `Front // Back` spelling read as
+        # not running the card — printing `in? no` plus a cut hint, i.e. advising the deck
+        # make room for a card already in its 60.
+        already = _ms_key(card) in {_ms_key(n) for _, n, _, _ in cards}
         fit = sum(theme_w.get(t, 0) for t in shared)
         d_int, d_ca = deck_role_counts(cards, carddata)
         # STRICT (>=2 protected cards) — see fit_strength's docstring: the loose

@@ -147,17 +147,25 @@ def merge(rows, entries, sum_mode):
     added = updated = 0
     notes = []
     for qty, name, set_code, collector in entries:
-        # A SET-LESS line (`4 Llanowar Elves`, a website list) is a NAME-level claim,
-        # not a printing. It used to key on ("name","","") which matches no real row,
-        # so merge APPENDED a phantom blank-set printing — and since every consumer
-        # SUMS across printings, a real 4 then read as 5: the one OVER-count path in a
-        # subsystem whose documented failure mode is uniformly undercount, later
-        # legitimized by enrich backfilling the phantom row (broad-scan BS2-24;
+        # A line with no COLLECTOR NUMBER (`4 Llanowar Elves`, a website list; or
+        # `4 Llanowar Elves (DOM)`, a set-stamped list) is a NAME-level claim, not a
+        # printing. It keys on ("name", set, "") which matches no real row — every real
+        # row carries a collector number — so merge APPENDED a phantom printing, and
+        # since every consumer SUMS across printings a real 4 then read as 8: the one
+        # OVER-count path in a subsystem whose documented failure mode is uniformly
+        # undercount, later legitimized by enrich backfilling the phantom row into an
+        # exact-duplicate printing that breaks INV-01 long after the import that caused
+        # it (broad-scan BS2-24, extended to set-stamped lines by BS4-04;
         # reconcile_crafts already refuses such lines). For a card the library holds,
         # compare against the summed total and top up the first row only if the line
-        # exceeds it (lower-bound semantics); for an unknown card, keep the blank-set
-        # append but SAY so, since nothing else can represent it.
-        if not set_code and not collector:
+        # exceeds it (lower-bound semantics); for an unknown card, keep the append but
+        # SAY so, since nothing else can represent it.
+        #
+        # A row whose Collector # is legitimately blank (enrich leaves it blank rather
+        # than guessing an unconfirmed printing — G-11) is part of `fam` like any other
+        # printing, so it is topped up through this path rather than duplicated.
+        if not collector:
+            shape = "set-less line" if not set_code else f"({set_code}) line with no collector #"
             fam = by_front.get(key(name, "", "")[0])
             if fam:
                 total = sum(int(q) for r in fam
@@ -169,19 +177,20 @@ def merge(rows, entries, sum_mode):
                     bump = qty if sum_mode else qty - total
                     first["Quantity Owned"] = str(cur_n + bump)
                     updated += 1
-                    notes.append(f"{name}: set-less line ({qty}) exceeded the summed "
+                    notes.append(f"{name}: {shape} ({qty}) exceeded the summed "
                                  f"owned total ({total}) — topped up the "
                                  f"({first.get('Set Code') or '?'}) printing"
                                  if not sum_mode else
-                                 f"{name}: set-less line summed onto the "
+                                 f"{name}: {shape} summed onto the "
                                  f"({first.get('Set Code') or '?'}) printing")
                 else:
-                    notes.append(f"{name}: set-less line ({qty}) already covered by the "
+                    notes.append(f"{name}: {shape} ({qty}) already covered by the "
                                  f"summed owned total ({total}) — no change")
                 continue
-            notes.append(f"{name}: set-less line for a card not in the library — added "
-                         "with a BLANK set code; prefer a printed Arena export or "
-                         "reconcile_crafts.py so the printing is real")
+            notes.append(f"{name}: {shape} for a card not in the library — added with a "
+                         + ("BLANK set code" if not set_code else "BLANK collector #")
+                         + "; prefer a printed Arena export or reconcile_crafts.py so "
+                           "the printing is real")
         k = key(name, set_code, collector)
         existing = index.get(k)
         if existing is None:

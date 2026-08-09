@@ -37,6 +37,15 @@ WISH = os.path.join(REPO_ROOT, "card-wishlist.csv")
 LIB_HEADER = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
               "Set Code", "Collector #", "Quantity Owned"]
 LINE_RE = re.compile(r"^(\d+)\s+(.+?)\s+\(([^)]+)\)\s+(\S+)\s*$")
+# Basic lands are NOT part of the collection (unlimited in Arena), which is why
+# `import_arena` offers --skip-basics and `import_collection` skips them outright.
+# This tool had no guard at all — and it is the one CLAUDE.md (G-10) names as the
+# FASTEST fix for reconciling from an Arena export, i.e. the one most likely to be
+# handed a full deck list. `7 Forest (BLB) 280` resolves against the pool's real
+# basic-land rows, so `--apply` wrote a basics row into the inventory (plus a mana
+# row) with no invariant able to object. Hard-skipped, never opt-in: a basic is
+# never crafted, so there is no legitimate case for this tool to record one.
+BASICS = {"plains", "island", "swamp", "mountain", "forest", "wastes"}
 
 
 def _front(name):
@@ -101,6 +110,7 @@ def reconcile(export_lines, apply=False, set_exact=False):
     wish_fields = list(wish[0].keys()) if wish else []
 
     added, bumped, mana_added, wish_removed, notfound, unparsed = [], [], [], [], [], []
+    basics = []
 
     for raw in export_lines:
         s = raw.strip()
@@ -113,6 +123,11 @@ def reconcile(export_lines, apply=False, set_exact=False):
             unparsed.append(s)
             continue
         qty, name, setc, coll = int(m.group(1)), m.group(2).strip(), m.group(3).strip(), m.group(4).strip()
+        # Skip basics BEFORE any pool lookup — REPORTED, not silently dropped, so a
+        # user pasting a full deck list can see why those lines produced nothing.
+        if _front(name).strip().lower() in BASICS:
+            basics.append(f"{name} ({setc}) {coll} x{qty}")
+            continue
         exact = pool_by_sc.get((setc.upper(), coll))
         # The name index aliases DFC fronts (above), so one lookup covers both a
         # full-name and a front-name paste.
@@ -207,6 +222,9 @@ def reconcile(export_lines, apply=False, set_exact=False):
     section("Quantity bumped", bumped)
     section("Mana rows added (front-name)", mana_added)
     section("Removed from wishlist", wish_removed)
+    if basics:
+        section("Basic lands (skipped — not part of the collection; unlimited in Arena)",
+                basics)
     if notfound:
         section("NOT FOUND in pool (skipped)", notfound)
     if unparsed:

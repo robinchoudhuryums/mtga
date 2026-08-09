@@ -113,9 +113,18 @@ dashboard:
 # thing that gets skipped under time pressure (broad-implement #8). Order matters:
 # the baseline must update BEFORE check_all or the gate warns about the cards the
 # baseline was about to acknowledge.
+#
+# THAT ORDERING IS ALSO HOW THE RADAR GOT MUTED (BS4-02). Consuming
+# the warning is the point of step 1, but consuming it SILENTLY meant a _ROLE_PATTERNS
+# edit that re-zeroed fifty cards was acknowledged wholesale, with an unread diff of a
+# 425-line file as the only trace. So step 1 now (a) names every card it acknowledges
+# and (b) REFUSES a jump bigger than MAXNEW, which is a pattern regression rather than
+# a batch of genuinely roleless new cards. Raise it deliberately for a real bulk
+# acknowledge: `make postedit MAXNEW=40`.
+MAXNEW ?= 8
 postedit:
 	@echo "==> 1/3 check_roles.py --update-baseline  (acknowledge new zero-role cards)"
-	python3 scripts/check_roles.py --update-baseline
+	python3 scripts/check_roles.py --update-baseline --max-new $(MAXNEW)
 	@echo "==> 2/3 build_dashboard.py               (committed snapshot; ~2 min)"
 	python3 scripts/build_dashboard.py
 	@echo "==> 3/3 check_all.py                     (invariants + soft sweeps)"

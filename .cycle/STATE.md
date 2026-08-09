@@ -6,6 +6,57 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #3 + top-5 fixes (2026-08-09)
+
+A full `/broad-scan` (three stages, five parallel subsystem deep-reads) followed by
+`/broad-implement top 5`. New finding IDs **BS4-01…BS4-45** (BS-nn, BS2-nn and BS3-nn
+are taken). The scan's block and its verification live in
+`.cycle/blocks/2026-08-broad-scan3-top5-broad-implement.md` — read that, not this
+summary, for the detail.
+
+**Implemented (6 findings, +18 tests → 1,105 passing, check_all green with ZERO soft
+warnings):**
+
+- **BS4-01 closed the last open member of the G-63 class** (was BS2-07, and it was no
+  longer theoretical). Deck 66's `#: protect:` header names `Eddie Brock` while its
+  line stores `Eddie Brock // Venom, Lethal Protector`, so the deck's own title card
+  sat in the cut ranking. Both header readers now return `_ms_key` keys from one shared
+  `_header_card_keys`, and all six consumers key their side. **The reason it hid: the
+  G-68 staleness gate has always joined on `_ms_key`, so it certified the header
+  HEALTHY while the consumers could not read it** — a gate vouching for a disabled
+  instruction.
+- **BS4-02** `make postedit` ran `check_roles --update-baseline` unconditionally before
+  `check_all`, so the radar's warning was eaten by the command meant to surface it.
+  It now NAMES every card it acknowledges and REFUSES a jump over `MAXNEW` (default 8).
+- **BS4-03** `reconcile_crafts` had no basics guard — a full deck paste wrote basic
+  lands into the inventory. Hard-skipped and reported.
+- **BS4-04** `import_arena` appended a phantom printing for a `(SET)`-but-no-collector
+  line (a real 4 read as 8, and enrich could later turn it into an INV-01 break far
+  from its cause). The name-level-claim guard now keys on the collector alone.
+- **BS4-05/06** `screen`'s `present` probe and `suggest-homes`' `already` join both
+  missed pool-keyed DFCs — `screen` graded a maindecked card as a fresh candidate and
+  `suggest-homes` advised making room for a card already in the 60 (six live combos).
+
+**The measurement worth keeping:** the whole 97-deck roster was A/B'd against a pre-fix
+copy of `scripts/`. **Exactly one deck changed (66), zero tier floors moved (87 A /
+10 B unchanged), zero uncastable counts changed.** The `uncastable-ok` half of BS4-01
+is the one that can RAISE a floor by exempting a card, and it had no live instance — so
+nothing silently re-graded. Do not re-derive this; it is in the block.
+
+**Left open deliberately:** `recommendation_row`'s `Cut Rank` raw-name join (telemetry
+only, next to the line that was fixed), and `BASICS` now living in four modules.
+Findings BS4-07…BS4-45 are unimplemented — the two Mediums with live output impact are
+**BS4-07** (`#: archetype:` figures are never audited despite G-27 claiming they are;
+deck 26a quotes avg MV 3.05 against a live 2.97) and **BS4-13** (`/decks` and
+`check_all`'s info summary compute buildability per LINE, not per summed name, so they
+disagree with `deck.py check` on any deck listing a card twice).
+
+**Docs now stale and NOT yet updated** (a `/sync-docs` pass is owed): `docs/gotchas.md`
+G-63 (~line 3080) and `.cycle/NEXT-SESSION.md` §6 both still describe BS2-07 as open
+"at zero live instances". It is closed, and the measurement expired because deck 66 was
+drafted after it was taken — that is the lesson worth writing down: **a zero-instances
+measurement is a fact about a moment, not a property of the code.**
+
 ## Session — broad scan #2 + top-5 fixes (2026-08-07)
 
 A full `/broad-scan` (three stages, six parallel deep-read passes, every Critical/High

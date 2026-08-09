@@ -752,6 +752,75 @@ Deck
         assert hits == [], f"stale card-name header(s): {hits}"
 
 
+class TestHeaderConsumersJoinOnMsKey:
+    """BS4-01, the last open member of the G-63 class (was BS2-07).
+
+    Both header readers returned raw `.lower()` names while the CONSUMERS compared them
+    against a deck line's raw `.lower()` name, so a header naming a DFC by its FRONT face
+    never matched a line storing the full `Front // Back` — the instruction the header
+    encodes silently did nothing. It was left open on a "zero live instances" measurement
+    that expired when deck 66 was drafted: its `#: protect:` header named the deck's own
+    title card and `cuts` ranked that card as cuttable anyway.
+
+    The reason it needed a TEST rather than a measurement: `header_card_staleness` (the
+    G-68 gate above) has always joined on `_ms_key`, so it reported the header HEALTHY
+    while the consumers could not read it. A gate that vouches for a disabled instruction
+    cannot also be the thing that detects it."""
+
+    DECK = """#: name: Probe
+#: format: Standard
+#: colors: B
+#: protect: Eddie Brock
+#: uncastable-ok: Ojer Axonil, Deepest Might
+
+Deck
+4 Swamp (MSH) 291
+1 Eddie Brock // Venom, Lethal Protector (SPM) 55
+1 Ojer Axonil, Deepest Might // Temple of Power (LCI) 145
+"""
+
+    def _meta(self, tmp_path):
+        p = tmp_path / "deck.txt"
+        p.write_text(self.DECK, encoding="utf-8")
+        return deck.parse_deck_file(str(p))
+
+    def test_readers_return_ms_key_normalized_names(self, tmp_path):
+        meta, _cards = self._meta(tmp_path)
+        assert deck._protected(meta) == {"eddie brock"}
+        assert deck._uncastable_ok(meta) == {"ojer axonil, deepest might"}
+
+    def test_signature_themes_reads_a_front_named_protected_dfc(self, tmp_path):
+        """A real consumer, not a re-implementation of the join. The protected card's tags
+        ARE the deck's signature spine, which drives KEY promotion in `fit_strength` /
+        `screen` / `similar` — so a missed join quietly costs the deck its spine."""
+        meta, cards = self._meta(tmp_path)
+        cardmeta = {"eddie brock // venom, lethal protector": {"synergies": ["reanimator"]}}
+        assert deck._signature_themes(meta, cards, cardmeta) == frozenset({"reanimator"})
+
+    def test_castability_exempts_a_front_named_uncastable_ok_entry(self, tmp_path):
+        """The more dangerous half: a miss here does not fail to protect a card, it
+        silently RE-ENABLES the castability failure the header suppresses — capping the
+        tier floor at C and flipping `preflight` to BLOCKED for a card working as
+        designed (G-64)."""
+        meta, cards = self._meta(tmp_path)
+        carddata = {"ojer axonil, deepest might // temple of power":
+                    {"type": "Legendary Creature — God", "colors": "R", "text": ""}}
+        mana = {"ojer axonil, deepest might // temple of power": ("{2}{R}{R}", 4)}
+        uncast, _off, _abil, intended = deck._castability(
+            cards, {"B"}, mana, carddata, deck._uncastable_ok(meta))
+        assert [n for n, _w in intended] == ["Ojer Axonil, Deepest Might // Temple of Power"]
+        assert uncast == []          # NOT counted as a build error
+
+    def test_deck_66s_protected_title_card_is_off_the_cut_list(self):
+        """The live instance. Deck 66's header names the front face; the line stores the
+        full name. Behavioural anchor against the real roster."""
+        d = deck.find_deck("66")
+        if not d:                                  # roster-dependent, skip if renumbered
+            return
+        _rows, _central, prot_present, _int = deck.rank_cut_candidates(d)
+        assert any(p.startswith("Eddie Brock") for p in prot_present), prot_present
+
+
 class TestLifegainRoleAlignment:
     """`gain(s) life equal to` (Exsanguinate, Corrupt, Sifter Wurm — 68 pool cards) was in
     neither the role classifier nor the tag model. The tag half went in with the `pay
@@ -2965,6 +3034,49 @@ class TestScreenSaturationAndCounts:
         generic signature theme."""
         assert deck.fit_strength(["counters"], {"counters": 20}, "", 9, 5,
                                  frozenset({"counters"})) == "KEY"
+
+
+class TestAlreadyInDeckJoinsAreFrontFaced:
+    """BS4-05 / BS4-06 — two more members of the G-63 class, on the two surfaces that
+    grade a card AGAINST a deck it might already be in.
+
+    `screen` built `in_deck` with `_ms_key` (the comment even said "G-63: front-face
+    join") and then probed it with the candidate's FULL display name, so every pool-keyed
+    DFC read as absent: `screen` graded a maindecked card as a fresh candidate and never
+    printed "already in the deck" — on the surface G-47 points at precisely to defeat
+    stale verdicts. `suggest-homes` had the mirror shape: the CARD side was
+    front-normalized and the DECK side was not, so it printed `in? no` plus a cut hint,
+    recommending a deck make room for a card already in its 60. Six live deck/card
+    combos across decks 6, 11, 31, 40a and 42a."""
+
+    CARD = "Funeral Room // Awakening Hall"
+
+    def _deck_with(self, tmp_path, line_name):
+        p = tmp_path / "deck.txt"
+        p.write_text("#: name: Probe\n#: colors: B\n\nDeck\n"
+                     f"1 {line_name} (DSK) 90\n4 Swamp (MSH) 291\n", encoding="utf-8")
+        return deck.parse_deck_file(str(p))
+
+    def test_a_full_name_deck_line_matches_a_front_name_probe(self, tmp_path):
+        """The `screen` shape: probe key vs index key must agree on the face."""
+        _meta, cards = self._deck_with(tmp_path, self.CARD)
+        in_deck = {deck._ms_key(n) for _q, n, _s, _c in cards}
+        assert deck._ms_key(self.CARD) in in_deck
+        assert deck._ms_key("Funeral Room") in in_deck      # either spelling resolves
+
+    def test_a_front_name_deck_line_matches_a_full_name_probe(self, tmp_path):
+        """The `suggest-homes` shape, which failed in the other direction: the DECK side
+        was the un-normalized one."""
+        _meta, cards = self._deck_with(tmp_path, "Funeral Room")
+        deck_keys = {deck._ms_key(n) for _q, n, _s, _c in cards}
+        assert deck._ms_key(self.CARD) in deck_keys
+
+    def test_a_distinct_card_is_still_not_in_the_deck(self, tmp_path):
+        """The join must not become permissive: a different card stays absent."""
+        _meta, cards = self._deck_with(tmp_path, self.CARD)
+        in_deck = {deck._ms_key(n) for _q, n, _s, _c in cards}
+        assert deck._ms_key("Awakening Hall") not in in_deck     # the BACK face is not a key
+        assert deck._ms_key("Lightning Bolt") not in in_deck
 
 
 class TestBelowFloorArgument:
