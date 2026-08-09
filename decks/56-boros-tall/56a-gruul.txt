@@ -29,8 +29,11 @@
 #: notes: counters land before blockers, and haste means a freshly cast body can
 #: notes: swing the same turn she pumps it. Ashroot targets ANOTHER creature: he
 #: notes: boosts the protected body, not himself — sequence him as the enabler.
-#: notes: Same Self-Destruct / Red Hulk SBA non-combo and Tiger-Dillo / Scalestorm
-#: notes: power-4 gate reads as the core deck (see 56's notes). War Machine's
+#: notes: Same Self-Destruct / Red Hulk SBA non-combo and Scalestorm power-4 gate
+#: notes: reads as the core deck (see 56's notes; Tiger-Dillo was CUT 2026-08-09 —
+#: notes: an unowned vanilla whose only text was a drawback — for the owned
+#: notes: Mightform Harmonizer, whose landfall DOUBLES a tall body's power and
+#: notes: whose warp {2}{G} is a single green pip on a stretched draw). War Machine's
 #: notes: {2}{R/W} hybrid casts on {R} here (G-58). Commercial District counts as
 #: notes: a Mountain for Molten Man (type line Mountain Forest) — 14 Mountains.
 #: notes: 2026-08-09 DEDUP PASS (user-decided): the 2nd Halana — a LEGEND, so the
@@ -52,14 +55,14 @@
 1 Scarlet Spider, Ben Reilly (SPM) 142
 1 Mai, Jaded Edge (TLA) 147
 
-# Power-4 payoff bodies
-1 Tiger-Dillo (TLA) 155
+# Power-4 payoff body
 1 Scalestorm Summoner (OTJ) 144
 
 # Boosters (repeatable, permanent)
 2 Ashroot Animist (FDN) 117
 1 Halana and Alena, Partners (VOW) 239
 1 Ouroboroid (EOE) 201
+1 Mightform Harmonizer (EOE) 200
 1 War Machine, Legacy of Iron (MSH) 238
 
 # Ramp / evasion riders
