@@ -28,10 +28,19 @@
 #: tier:    real hole — an enchantment or planeswalker that blanks the plan is unanswerable.
 #: tier: 3. IT DEPENDS ON RESOLVING AND KEEPING ONE BODY. Protection 3 (Overprotect x2,
 #: tier:    Snakeskin Veil) is real but thin against removal-heavy decks.
-#: tier: A fourth, softer: Scalestorm Summoner and Ruby both gate on POWER 4+, which
-#: tier: only 5 of 19 creature copies satisfy on PRINTED stats — a body that grows
-#: tier: after it enters does not satisfy an ENTERS trigger, so both payoffs are more
-#: tier: conditional than they read.
+#: tier: A FOURTH WEAKNESS WAS CLAIMED HERE AND IS RETRACTED (2026-08-09). `stats`
+#: tier: flags Scalestorm Summoner and Ruby for gating on POWER 4+ with only 5 of 19
+#: tier: creature copies printed at power 4+, and appends its standard caveat that a
+#: tier: body which GROWS after it enters cannot satisfy an ENTERS trigger. NEITHER
+#: tier: CARD HAS AN ENTERS TRIGGER: Scalestorm checks "whenever this creature ATTACKS
+#: tier: ... if you control a creature with power 4 or greater" and Ruby checks
+#: tier: "whenever Ruby ATTACKS WHILE you control" — both read the board at ATTACK
+#: tier: time, so a creature grown by Ashroot, Halana, Ouroboroid, Bulk Up or Twin
+#: tier: Blades DOES satisfy them. In an ultra-tall deck that pumps every combat the
+#: tier: printed-power count understates these gates badly. The flag is a G-16-family
+#: tier: limitation (it measures PRINTED power and cannot see the trigger's timing);
+#: tier: read the trigger before believing it. The B letter is unaffected — it sits AT
+#: tier: the measured floor, which this never fed.
 #: tier: WHAT ARGUES UP, and why it is not enough for A: the compounding ceiling is
 #: tier: genuinely high and no metric sees it — Ouroboroid grows Ashroot and Halana,
 #: tier: whose pumps scale off their own power, so the three multiply each other. But
