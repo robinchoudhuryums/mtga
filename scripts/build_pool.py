@@ -124,19 +124,35 @@ FRESH_DAYS = 7          # a pool younger than this is reused unless --refetch
 
 
 def tagger_fingerprint():
-    """Hash of tag_synergies.py — the file whose `tags_for()` derives every pool row's
-    Synergies at fetch time. Recorded in the build stamp so a tag-pattern edit defeats
-    the freshness reuse: K-10 mandates `build_pool.py --all` after one, and the reuse
-    made that mandated command a silent no-op for up to a week (broad-scan BS2-23).
-    Returns "" when unreadable, which compares equal to nothing and so never forces a
-    rebuild on its own."""
+    """Hash of every file `tags_for()`'s OUTPUT depends on. Recorded in the build stamp so
+    a tag-pattern edit defeats the freshness reuse: K-10 mandates `build_pool.py --all`
+    after one, and the reuse made that mandated command a silent no-op for up to a week
+    (broad-scan BS2-23). Returns "" when unreadable, which compares equal to nothing and
+    so never forces a rebuild on its own.
+
+    It hashed `tag_synergies.py` ALONE, which is not the full dependency: `tags_for` reads
+    `deck.ENGINE_THEMES` through `_engine_keywords` → `is_noise_keyword`, so an
+    ENGINE_THEMES edit changes pool tags without defeating the reuse — the same blind-spot
+    shape BS2-23 fixed, one module further out (BS4-37). deck.py is hashed as a whole
+    because a narrower hash would need to track which of its attributes the tagger reaches,
+    which is the hand-kept-registry pattern this repo keeps watching rot; the cost of the
+    coarser hash is an occasional unnecessary rebuild, and the cost of the narrower one is
+    a silent stale pool.
+
+    NOT hashed: card-mana.csv's keyword frequencies, which also feed the noise floor. A
+    content hash of a 2k-row derived file would change on every mana rebuild and make the
+    reuse fire essentially never — the honest bound is that a keyword crossing the
+    one-card floor is still invisible here, and `--refetch` is the escape hatch."""
     import hashlib
-    try:
-        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                               "tag_synergies.py"), "rb") as fh:
-            return hashlib.sha1(fh.read()).hexdigest()[:16]
-    except OSError:
-        return ""
+    here = os.path.dirname(os.path.abspath(__file__))
+    h = hashlib.sha1()
+    for fn in ("tag_synergies.py", "deck.py"):
+        try:
+            with open(os.path.join(here, fn), "rb") as fh:
+                h.update(fh.read())
+        except OSError:
+            return ""
+    return h.hexdigest()[:16]
 
 
 def read_stamp():

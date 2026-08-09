@@ -232,7 +232,16 @@ def owned_qty(index, name):
     so the three copies of this logic can't drift apart.
     """
     nl = (name or "").strip().lower()
-    return index.get(nl) or index.get(nl.split(" // ")[0], 0)
+    # NOT `index.get(nl) or index.get(front, 0)`: a stored count of a real 0 — which
+    # `import_collection --zero-missing` can now write and INV-01 permits — is falsy, so
+    # `or` treated an explicit "you own none of this" as ABSENT and fell through to the
+    # front-face key. Today the fallback also returns 0, but paired with a front-name
+    # collision it would return a DIFFERENT card's count. `card_power` in this same file
+    # documents exactly this trap for a printed power of 0; the lesson had not been
+    # applied to quantity (BS4-19).
+    if nl in index:
+        return index[nl]
+    return index.get(nl.split(" // ")[0], 0)
 
 
 def card_power(value):

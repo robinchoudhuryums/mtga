@@ -34,7 +34,8 @@ import time
 import urllib.error
 import urllib.request
 
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write, csv_schema_error
+from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, atomic_write,
+                 csv_schema_error, alias_front)
 import scryfall
 from scryfall import ScryfallUnavailable
 
@@ -79,10 +80,12 @@ def _store(out, card):
     cost = _castable_cost(card)
     mv = card.get("cmc", 0)
     kw = ";".join(card.get("keywords", []) or [])
+    # REAL name only; the front alias is a SECOND pass in `fetch` (G-63/BS4-18) — an
+    # in-pass `setdefault` on both keys lets a DFC seen early shadow a distinct card
+    # that legitimately owns the bare front name.
     full = (card.get("name") or "").lower()
-    for key in (full, full.split(" // ")[0]):
-        if key:
-            out.setdefault(key, (cost, mv, kw))
+    if full:
+        out.setdefault(full, (cost, mv, kw))
 
 
 def fetch(names):
@@ -138,7 +141,7 @@ def fetch(names):
                 _store(out, card)
         eprint(f"       front-face {min(i + 75, len(missing))}/{len(missing)}")
         time.sleep(0.1)
-    return out
+    return alias_front(out)          # second pass, shadow-safe (G-63/BS4-18)
 
 
 def collect_names(paths):

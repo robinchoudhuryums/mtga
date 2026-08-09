@@ -6,6 +6,40 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #3, Batch 4 (2026-08-09)
+
+Eleven structural/latent findings. Block:
+`.cycle/blocks/2026-08-broad-scan3-batch4-broad-implement.md`.
+Gates green, zero soft warnings; **1,180 tests** (was 1,170).
+
+BS4-11 rotation flags on all five craft surfaces · BS4-12 needs-model colours from COSTS
+not identity · BS4-18/20 in-pass DFC aliasing closed in enrich/build_mana/deck/wishlist ·
+BS4-19 `owned_qty` no longer reads an explicit 0 as absent · BS4-32 the banned
+`card_power(...) or -1` · BS4-33 creatureless decks no longer read TALL · BS4-34
+front-face creature counts · BS4-35 `_GENERIC_TRIBES` in redundancy · BS4-36 ownership
+dropped from three sort keys · BS4-37 fingerprint covers deck.py.
+
+**Two things to know before the next session.**
+
+1. **The next `make refresh` will do ONE full pool rebuild (~5 min, needs Scryfall).**
+   BS4-37 changed what the fingerprint hashes, so the stored stamp no longer matches.
+   Expected and one-time — not a bug.
+2. **BS4-36 is a deliberate behaviour change, not a bug fix.** The three needs
+   recommenders no longer float an owned card above an unowned one at equal score,
+   matching the decision `suggest_scored` already recorded. If the LANDS view specifically
+   should keep owned-first, that is a one-line revert and a judgment call.
+
+**The most concrete defect I saw and did NOT fix** (out of scope — it is G-37's
+documented residual, not a BS4 finding): `suggest --lands` still offers cards whose LAND
+is on the BACK face — Tarrian's Journal, Grasping Shadows, Aclazotz for deck 52. They are
+reached by transforming, never by a land drop, so maindecking one leaves the deck a land
+short with INV-04 seeing nothing wrong. The new rotation flags now print right next to
+them.
+
+**Where I left off:** Batch 5 (interface polish) and the six operator visual checks. A
+`/sync-docs` pass is owed — G-30, G-37, G-18/K-10, G-63 and G-16 all have text this batch
+made stale.
+
 ## Session — broad scan #3, Batch 3 (2026-08-09)
 
 Eight gate-layer findings. Block:

@@ -4,6 +4,7 @@ import pytest
 
 import import_arena
 import import_collection as ic
+import lib
 import tag_synergies as ts
 
 
@@ -753,3 +754,47 @@ class TestSetStampedLinesWithoutACollector:
         added, updated, _n = import_arena.merge(
             rows, [(4, "Llanowar Elves", "DOM", "168")], sum_mode=False)
         assert added == 0 and len(rows) == 1 and updated == 0
+
+
+class TestBuildersAliasFrontFacesInASecondPass:
+    """BS4-18: `enrich.index_card`, `build_mana._store` and `deck.fetch_missing_rarities`
+    all aliased the DFC front IN-PASS with `setdefault` — the order-dependent shadowing
+    `lib.alias_front`'s contract forbids. A `Front // Back` card seen early claims the
+    bare `Front` key, and a genuinely distinct card of that name arriving later can never
+    claim its own ("Life" is a card as well as the front of "Life // Death").
+
+    Latent today — zero front-name collisions exist in the current Arena pool — but one
+    printing away from writing another card's cost or text over a real one, silently.
+    `check_dfc`'s builder scan cannot see these: it scans functions reading the POOL, and
+    these index Scryfall RESPONSES."""
+
+    def test_index_card_does_not_claim_the_front_key_in_pass(self):
+        import enrich
+        by_name = {}
+        enrich.index_card(by_name, {"name": "Life // Death"})
+        # In-pass the DFC owns only its own full name.
+        assert set(by_name) == {"life // death"}
+
+    def test_a_real_card_owning_the_front_name_is_never_shadowed(self):
+        import enrich
+        by_name = {}
+        enrich.index_card(by_name, {"name": "Life // Death"})   # seen FIRST
+        enrich.index_card(by_name, {"name": "Life", "id": "real"})
+        lib.alias_front(by_name)
+        # The distinct real card keeps its own name; the DFC does not shadow it.
+        assert by_name["life"].get("id") == "real"
+
+    def test_the_front_alias_is_still_added_when_nothing_claims_it(self):
+        import enrich
+        by_name = {}
+        enrich.index_card(by_name, {"name": "Life // Death", "id": "dfc"})
+        lib.alias_front(by_name)
+        assert by_name["life"].get("id") == "dfc"
+
+    def test_store_indexes_only_the_real_name_in_pass(self):
+        import build_mana
+        out = {}
+        build_mana._store(out, {"name": "Life // Death", "cmc": 2, "mana_cost": "{B}"})
+        assert set(out) == {"life // death"}
+        lib.alias_front(out)
+        assert "life" in out

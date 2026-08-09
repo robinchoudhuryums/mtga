@@ -115,12 +115,19 @@ def owned_index():
             continue
         q = (r.get("Quantity Owned") or "").strip()
         c = int(q) if q.isdigit() else 0
-        # Index under the full name AND the front-face name so a lookup by either
-        # resolves. Use a SET so a single-faced card (where the two are identical)
-        # is counted once, not twice — matching pool.py/deck.py's per-name sum
-        # (audit F13). A DFC has two distinct keys, each mapping to its count.
-        for k in {n, n.split(" // ")[0]}:
-            counts[k] = counts.get(k, 0) + c
+        # Sum under the card's REAL stored name only (audit F13's per-name sum across
+        # printings). The front-face alias is a SECOND pass below.
+        counts[n] = counts.get(n, 0) + c
+    # A front alias is added only where NO real row already claims that name — the rule
+    # `lib.alias_front` exists to enforce. The previous loop added the count to BOTH keys
+    # unconditionally, so a distinct real card sharing a DFC's front name ("Life" vs
+    # "Life // Death") had the DFC's copies ADDED to its own total. Inert today because
+    # the library stores DFCs front-only, but BS2-02's whole history is ingest writers
+    # appending full-name rows, and this is the read that would then over-count (BS4-20).
+    for name in list(counts):
+        front = name.split(" // ")[0]
+        if front != name and front not in counts:
+            counts[front] = counts[name]
     return counts
 
 

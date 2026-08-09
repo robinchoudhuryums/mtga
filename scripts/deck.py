@@ -524,10 +524,13 @@ def fetch_missing_rarities(names, rarities):
         for card in data.get("data", []):
             rar = WC_LETTER.get((card.get("rarity") or "").lower(), "?")
             full = card.get("name", "").lower()
+            # REAL name only in-pass; the front alias is a second pass below. Aliasing
+            # both with `setdefault` here let a live-fetched `Front // Back` claim the
+            # bare front key, so a distinct card of that name fetched later could never
+            # record its own rarity — the G-63 in-pass trap (BS4-18).
             rarities.setdefault(full, rar)
-            rarities.setdefault(full.split(" // ")[0], rar)
         time.sleep(0.1)
-    return rarities
+    return alias_front(rarities)
 
 
 def _wc_breakdown(shortfalls, rar_of):
@@ -1714,7 +1717,11 @@ def power_threshold_flags(cards, carddata):
             else:
                 timing = "other"
             qualify = sum(cq for cq, ccd in creatures
-                          if (card_power(ccd.get(attr)) or -1) >= bar)
+                          # NOT `card_power(...) or -1`: a printed 0 is real and common
+                          # (every X-creature is 0/0), and `or` collapses it to unknown —
+                          # the exact idiom G-16 bans, sitting in the function that rule
+                          # documents, ready to be copied (BS4-32).
+                          if (pv := card_power(ccd.get(attr))) is not None and pv >= bar)
             if qualify / total < _POWER_THRESHOLD_THIN:
                 out.append((cd["name"], attr, bar, qualify, total, timing))
     return out
@@ -1788,7 +1795,14 @@ def deck_shape(cards, carddata, mana=None):
     if creatures >= 22:
         wide += 2
     elif creatures <= 14:
-        tall += 2
+        # The body-count nudge only means something when there ARE bodies. It fired
+        # unconditionally, so a 0-creature spells deck scored wide 0 / tall 2 and was
+        # reported "TALL — few bodies, effects that scale one creature UP" with an EMPTY
+        # tall-cards list, and the honest "no board-growth axis" verdict was unreachable
+        # for any deck at or under 14 creature copies (BS4-33). Report-only, but a
+        # verdict that is affirmatively wrong is worse than a vague one.
+        if creatures:
+            tall += 2
     lead = abs(wide - tall)
     if lead < 2:
         axis = "BALANCED / neither" if (wide or tall) else "no board-growth axis"
@@ -2479,10 +2493,14 @@ def deck_needs(d):
     mana_map, carddata = load_mana(), load_card_data()
     deck_colors = _declared_colors(dmeta)
     if not deck_colors:
-        for _q, n, _s, _c in cards:
-            m = meta.get(n.lower())
-            if n.lower() not in BASICS and m:
-                deck_colors |= (m["colors"] & set("WUBRG"))
+        # COSTS, not identity. `suggest_scored` derives an undeclared deck's castable
+        # colours from mana costs and says why — "never color identity, so a card's
+        # off-color activated abilities don't widen the deck and surface uncastable
+        # picks" (audit F3/F15) — while this function and `suggest_lands` fell back to
+        # identity, which is the same question answered two ways on the paths G-38 routes
+        # a scorecard deficit to. Latent today (all 99 decks declare `#: colors:`) and
+        # exactly the G-45 shape: two siblings, different filters (BS4-12).
+        deck_colors = _deck_castable_colors(dmeta, cards, mana_map)
 
     theme_w, names = {}, set()
     sources = {c: 0 for c in deck_colors}
@@ -2760,7 +2778,7 @@ def engine_balance(cards, carddata, central, signature=frozenset(), weights=None
         if not cd:
             continue
         n = disp[nl]
-        if "creature" in (cd.get("type") or "").lower():
+        if "Creature" in _primary_type(cd.get("type") or ""):   # FRONT face (BS4-34)
             creatures += q
         roles = engine_roles(cd.get("text") or "")
         for theme in central_engines:
@@ -4029,15 +4047,14 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
     dmeta, cards = parse_deck_file(d["path"])
     mana_map = load_mana()
     carddata = load_card_data()
+    pool_rot, _has_released = _pool_rotation_index()
 
     deck_colors = _declared_colors(dmeta)
     if not deck_colors:
-        for _q, n, _s, _c in cards:
-            if n.lower() in BASICS:
-                continue
-            m = meta.get(n.lower())
-            if m:
-                deck_colors |= (m["colors"] & set("WUBRG"))
+        # COSTS, not identity — the same rule `suggest_scored` follows and states, so an
+        # off-colour activated ability or a transform face cannot widen the deck and
+        # surface picks it cannot actually cast (audit F3/F15, BS4-12).
+        deck_colors = _deck_castable_colors(dmeta, cards, mana_map)
 
     # central themes (for the synergy nudge) + names already in the deck
     theme_w, deck_names = {}, set()
@@ -4130,8 +4147,19 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
             "fix": fix, "syn": syn, "short": short, "score": round(fix + syn + short, 2),
             "produces": "".join(c for c in "WUBRG" if c in on_color),
             "tapped": tapped, "text": txt, "matches": sorted(set(tags) & central),
+            # G-30 on a WILDCARD-SPEND surface. `check`, `wildcards` and `wishlist --rank`
+            # all flag a rotating craft target; this recommender — which exists to be
+            # spent on — said nothing, and deck 28's plan bought four rotating cards past
+            # views that were quiet in exactly this way (BS4-11).
+            "rot": craft_rot_note(name, pool_rot),
         })
-    picks.sort(key=lambda p: (-p["score"], -min(p["owned"], 1), p["name"].lower()))
+    # Ownership is NOT a ranking term — the same decision `suggest_scored` records and
+    # explains: the goal is the best LIST, not the cheapest one, and this repo's
+    # owned/unowned data is hand-maintained and may be weeks stale (G-10 saw five wrong
+    # counts in one session). It stays SHOWN on every row as `×N` / `craft`. These three
+    # siblings kept the old tiebreak, so at equal score the owned card always outranked a
+    # possibly-better unowned one on exactly the wildcard-spend surfaces (BS4-36).
+    picks.sort(key=lambda p: (-p["score"], p["name"].lower()))
     if limit and limit > 0:
         picks = picks[:limit]
     return {"ok": True, "colors": deck_colors, "picks": picks, "fmt": fmt,
@@ -4159,12 +4187,19 @@ def cmd_suggest_lands(args, d):
     print(f"\n  {'Have':5} {'Land':30} {'Rarity':8} {'Prod':4} {'Fix':>4} {'Syn':>4} "
           f"{'Sh':>4} {'Score':>5}")
     print("-" * 78)
+    rotting = 0
     for p in res["picks"]:
         have = f"×{p['owned']}" if p["owned"] else "craft"
         tap = " ·tapped" if p["tapped"] else ""
+        # Only a CRAFT pick's rotation matters here — an owned land costs no wildcard.
+        rot = f" {p['rot']}" if p.get("rot") and not p["owned"] else ""
+        rotting += 1 if rot else 0
         print(f"  {have:5} {p['name'][:30]:30} {(p['rarity'] or '?')[:8]:8} "
               f"{p['produces']:4} {p['fix']:>4.1f} {p['syn']:>4.1f} {p['short']:>4.1f} "
-              f"{p['score']:>5.1f}{tap}")
+              f"{p['score']:>5.1f}{tap}{rot}")
+    if rotting:
+        print(f"\n⚠ {rotting} craft pick(s) rotate out of Standard this year or next — "
+              "see `deck.py rotation` before spending a wildcard.")
     if getattr(args, "full", False):
         import textwrap
         print("\n── Oracle text of the top picks (grade the ability, not just the fixing) ──")
@@ -4176,7 +4211,9 @@ def cmd_suggest_lands(args, d):
                     print(f"    {line}")
     print("\nScore = FIXING value (0–10, dominant: produces your colors, untapped premium) "
           "+ bounded SYNERGY (land ability hits a deck theme) + bounded SHORTFALL (produces "
-          "the scarce color). Owned first — a 0-wildcard fixer usually beats a craft.")
+          "the scarce color). Ownership is a NOTE (×N / craft), not a ranking term — "
+          "a 0-wildcard fixer is often the right pick, but that is your call, not the "
+          "sort's, and the owned data here goes stale between updates.")
     return 0
 
 
@@ -4195,6 +4232,7 @@ def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
     apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
     _, _, by_name_qty = load_collection()
     owned_of = lambda nl: owned_qty(by_name_qty, nl)
+    pool_rot, _has_released = _pool_rotation_index()      # G-30 craft flag (BS4-11)
     picks = []
     for r in pool:
         name = (r.get("Card Name") or "").strip()
@@ -4241,8 +4279,15 @@ def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
                       "fix": fixb, "accel": accel_c, "restr": restr, "power": round(power, 1),
                       "score": score, "mv": mv if mv is not None else "?",
                       "produces": "".join(c for c in "WUBRG" if c in prod) or "?",
-                      "restricted": _RESTRICT_RE.search(txt) is not None, "text": txt})
-    picks.sort(key=lambda p: (-p["score"], -min(p["owned"], 1), p["name"].lower()))
+                      "restricted": _RESTRICT_RE.search(txt) is not None, "text": txt,
+                      "rot": craft_rot_note(name, pool_rot)})   # G-30 (BS4-11)
+    # Ownership is NOT a ranking term — the same decision `suggest_scored` records and
+    # explains: the goal is the best LIST, not the cheapest one, and this repo's
+    # owned/unowned data is hand-maintained and may be weeks stale (G-10 saw five wrong
+    # counts in one session). It stays SHOWN on every row as `×N` / `craft`. These three
+    # siblings kept the old tiebreak, so at equal score the owned card always outranked a
+    # possibly-better unowned one on exactly the wildcard-spend surfaces (BS4-36).
+    picks.sort(key=lambda p: (-p["score"], p["name"].lower()))
     return picks[:limit] if limit and limit > 0 else picks
 
 
@@ -4260,6 +4305,7 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
     apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
     _, _, by_name_qty = load_collection()
     owned_of = lambda nl: owned_qty(by_name_qty, nl)
+    pool_rot, _has_released = _pool_rotation_index()      # G-30 craft flag (BS4-11)
     picks = []
     for r in pool:
         name = (r.get("Card Name") or "").strip()
@@ -4296,8 +4342,15 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
         score = round(power + boost + flex, 2)
         picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(), "owned": h,
                       "roles": sorted(roles & _INTERACTION_ROLES), "axis": axis, "boost": boost,
-                      "power": round(power, 1), "score": score, "text": txt})
-    picks.sort(key=lambda p: (-p["score"], -min(p["owned"], 1), p["name"].lower()))
+                      "power": round(power, 1), "score": score, "text": txt,
+                      "rot": craft_rot_note(name, pool_rot)})   # G-30 (BS4-11)
+    # Ownership is NOT a ranking term — the same decision `suggest_scored` records and
+    # explains: the goal is the best LIST, not the cheapest one, and this repo's
+    # owned/unowned data is hand-maintained and may be weeks stale (G-10 saw five wrong
+    # counts in one session). It stays SHOWN on every row as `×N` / `craft`. These three
+    # siblings kept the old tiebreak, so at equal score the owned card always outranked a
+    # possibly-better unowned one on exactly the wildcard-spend surfaces (BS4-36).
+    picks.sort(key=lambda p: (-p["score"], p["name"].lower()))
     return picks[:limit] if limit and limit > 0 else picks
 
 
@@ -4353,12 +4406,18 @@ def cmd_suggest_ramp(args, d):
     print(f"\n  {'Have':5} {'Card':28} {'MV':>2} {'Prod':4} {'Acl':>4} {'Fix':>4} {'Rstr':>5} "
           f"{'Pw':>3} {'Score':>5}")
     print("-" * 74)
+    rotting = 0
     for p in picks:
         have = f"×{p['owned']}" if p["owned"] else "craft"
         tag = " ·restricted" if p["restricted"] else ""
+        rot = f" {p['rot']}" if p.get("rot") and not p["owned"] else ""
+        rotting += 1 if rot else 0
         print(f"  {have:5} {p['name'][:28]:28} {str(p['mv']):>2} {p['produces']:4} "
               f"{p['accel']:>4.1f} {p['fix']:>4.1f} {p['restr']:>5.1f} {p['power']:>3.0f} "
-              f"{p['score']:>5.1f}{tag}")
+              f"{p['score']:>5.1f}{tag}{rot}")
+    if rotting:
+        print(f"\n⚠ {rotting} craft pick(s) rotate out of Standard this year or next — "
+              "see `deck.py rotation` before spending a wildcard.")
     print("\nScore = ACCELERATION (cheapness × the deck's accel-want — a cheap dork ramps a "
           "top-heavy deck) + bounded FIXING (scarce color) + RESTRICTION-fit (a restricted dork "
           "matching your deck type; − if mismatched) + power tiebreak. Grade ETB value from text.")
@@ -4382,6 +4441,7 @@ def cmd_suggest_interaction(args, d):
         return 0
     print(f"\n  {'Have':5} {'Card':28} {'Rarity':8} {'Role':16} {'Pw':>3} {'Score':>5}  Scaling")
     print("-" * 86)
+    rotting = 0
     for p in picks:
         have = f"×{p['owned']}" if p["owned"] else "craft"
         role = "/".join(x.split()[0] for x in p["roles"])[:16]
@@ -4389,8 +4449,13 @@ def cmd_suggest_interaction(args, d):
         if p["axis"]:
             metric = _scaling_metric(p["axis"], needs)
             scale = f"⚠ scales w/ {p['axis']} (deck {metric:.0%}, +{p['boost']:.1f})"
+        rot = f" {p['rot']}" if p.get("rot") and not p["owned"] else ""
+        rotting += 1 if rot else 0
         print(f"  {have:5} {p['name'][:28]:28} {(p['rarity'] or '?')[:8]:8} {role:16} "
-              f"{p['power']:>3.0f} {p['score']:>5.1f}  {scale}")
+              f"{p['power']:>3.0f} {p['score']:>5.1f}  {scale}{rot}")
+    if rotting:
+        print(f"\n⚠ {rotting} craft pick(s) rotate out of Standard this year or next — "
+              "see `deck.py rotation` before spending a wildcard.")
     print("\nScore = impact role credit + a bounded SCALING boost (a board-dependent removal "
           "spell your board supports) + power tiebreak. ⚠ scaling cards are FLAGGED with your "
           "deck's strength on that axis — grade them for THIS board from full text.")
@@ -5180,7 +5245,10 @@ def _deck_summary(cards, carddata, mana):
         tline = (cd["type"] if cd else "") or ""
         if "Land" in _primary_type(tline):
             continue
-        if "creature" in tline.lower():
+        # FRONT face (G-63): a whole-line scan counts a DFC whose BACK is a creature,
+        # while `deck_quality_vector` / `deck_shape` use `_primary_type`. Two surfaces
+        # disagreeing on one count (BS4-34).
+        if "Creature" in _primary_type(tline):
             crea += q
         col = (cd["colors"] if cd else "") or ""
         if col.lower() != "colorless":
@@ -8897,6 +8965,7 @@ def craft_role_fillers(d, roles, *, limit=8):
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
     fmt = (meta.get("format") or "").strip().lower()
     RANK = {"Common": 0, "Uncommon": 1, "Rare": 2, "Mythic": 3}
+    pool_rot, _has_released = _pool_rotation_index()
     out, seen = [], set()
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
         for r in csv.DictReader(fh):
@@ -8924,8 +8993,12 @@ def craft_role_fillers(d, roles, *, limit=8):
             entry = mana.get(nl)
             mv = entry[1] if entry and entry[1] is not None else 99
             rar = (r.get("Rarity") or "?").strip()
+            # G-30: `tier --to` is described in CLAUDE.md as doubling as a WILDCARD-SPEND
+            # PLANNER, and this is its craft half — the one list here that costs real
+            # wildcards — so a rotating pick must say so (BS4-11).
+            rot = craft_rot_note(name, pool_rot)
             out.append((RANK.get(rar, 9), mv, name, "".join(sorted(ident)) or "C", rar,
-                        (r.get("Card Text") or "").split("\n")[0][:56]))
+                        (r.get("Card Text") or "").split("\n")[0][:56], rot))
     out.sort(key=lambda x: (x[0], x[1], x[2]))
     return out[:limit]
 
@@ -9054,7 +9127,11 @@ def effect_redundancy(d):
             if r in IMPACT_ROLES:
                 effects.add(("role", r))
         for t in cardmeta.get(nl, {}).get("synergies", []):
-            if t in central and t not in GENERIC_THEMES:   # specific, plan-relevant themes
+            # `_GENERIC_TRIBES` too, not just GENERIC_THEMES: every other specific-theme
+            # test here excludes a background tribe (Human/Hero/Villain), so without it a
+            # central `Human` tag became a redundancy bucket and `cmd_redundancy` could
+            # propose "firming up Human" (BS4-35).
+            if t in central and t not in GENERIC_THEMES and t not in _GENERIC_TRIBES:
                 effects.add(("theme", t))
         for kind, name in effects:
             b = buckets.setdefault(name, {"kind": kind, "cards": []})
@@ -9193,7 +9270,7 @@ def cmd_redundancy(args):
             craft_f = craft_role_fillers(d, {name}, limit=8)
             opts = [(_card_power(nm.lower(), carddata, rar), nm, True) for _mv, nm, *_ in owned_f]
             opts += [(_card_power(nm.lower(), carddata, rar), nm, False)
-                     for _rk, _mv, nm, *_ in craft_f]
+                     for _rk, _mv, nm, *_rest in craft_f]
             opts.sort(key=lambda r: -r[0])
         else:
             opts = [(pw, nm, own) for pw, nm, own, _mv, _r in functional_theme_options(d, name, limit=10)]
@@ -10096,8 +10173,9 @@ def cmd_tier(args):
             # prints on every row; it just no longer decides the order.
             merged = [(mv, name, ident, "owned", "owned", txt)
                       for mv, name, ident, _hit, txt in owned_f]
-            merged += [(mv, name, ident, (rar[:1] or "?") + " craft", "craft", txt)
-                       for _rk, mv, name, ident, rar, txt in craft]
+            merged += [(mv, name, ident, (rar[:1] or "?") + " craft", "craft",
+                        (rot + " " if rot else "") + txt)
+                       for _rk, mv, name, ident, rar, txt, rot in craft]
             merged.sort(key=lambda r: (r[0], r[1].lower()))
             if merged:
                 print(f"\n  on-color, format-legal {label} to add "
