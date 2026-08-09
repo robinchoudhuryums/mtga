@@ -21,11 +21,11 @@ commands disagree.
   restarted from `main` after each merge. **Check `git log origin/main..HEAD` before your
   first commit** — if it is empty, the last PR merged and you must restart from `main`
   (`git fetch origin main && git checkout -B <branch> origin/main`).
-- Gates green: `check_all` all invariants hold, **ZERO soft warnings**. **1,105 tests in
+- Gates green: `check_all` all invariants hold, **ZERO soft warnings**. **1,146 tests in
   29 files.** The 7 blank-Card-Text `validate` warnings are K-11 vanilla creatures and are
   expected, not a data gap.
 - Collection **2,133 library rows**; roster **99 deck files**, numbered through **66**;
-  34 `deck.py` subcommands; 13 model-sanity gates; **1,094 tests in 29 files**. (Decks 64
+  34 `deck.py` subcommands; 13 model-sanity gates. (Decks 64
   Gray Goo, 65 Web of Life and 66 Lethal Protector were drafted 2026-08-08; 66 was
   promoted out of 65's variant slot. **40-brawl** is the roster's third Brawl conversion,
   added 2026-08-09.)

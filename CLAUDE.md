@@ -380,30 +380,31 @@ directions.
   **let a roster-wide sweep be the check**: a false positive is noisy and gets noticed, a
   false negative is silent, and three separate sweeps each found figures the audit had
   reported clean. A CARD citation and a FIGURE go stale differently and must not share a
-  predicate — and the CARD path kept a broad `remov\w*` for a year after the FIGURE path
-  was narrowed for exactly that word, so a card whose own text says "removes" suppressed
-  its own staleness report. The 2026-08-09 rework (five live misses in one day, each now
-  a fixture in `test_deck.py`) clause-scoped both cue families — cross-sentence
-  suppression, a cue inside the card's OWN name ("Crib **Swap**"), possessives, short
-  comma-heads and cross-deck figures are all fixed, and its first roster sweep found six
-  real stale rationales a clean-reporting scan had been passing. **STILL LIVE:** a copula
+  predicate — the CARD path kept a broad `remov\w*` for a year after the FIGURE path was
+  narrowed for that word, so a card whose text says "removes" suppressed its own report.
+  The 2026-08-09 rework clause-scoped both cue families (five live misses, each a fixture
+  in `test_deck.py`) and its first sweep found six real stale rationales. **The sweep is
+  least optional when you WIDEN the scan**: extending it to archetype figures (G-27)
+  returned 3 hits of which 2 were FALSE, and the suppressions written for those then muted
+  the 1 real one until the parent-name case was handled. **STILL LIVE:** a copula
   hides a figure ("protection is 1"); "the swap removes X" about a CUT card reads as
   live; a fragment shared by 4+ cards drops as an epithet; a card absent from the POOL
   is invisible entirely (the scan matches known names only). [G-26]
 - **Run `tier <id> --audit-rationale` after ANY deck edit.** The tier guard checks the
   LETTER; this checks the ARGUMENT — cards the prose cites that the deck no longer runs,
   and figures the live quality vector contradicts. A swap moves those numbers by
-  construction. Scoped to `#: tier:` AND `#: archetype:` — the archetype block is equally a
-  claim about the CURRENT list, and it is the header a reader trusts first, so it is the
-  one that goes stale unnoticed. `#: notes:` stays out of the STALENESS scan — a build log
-  may name an absent card — but an EXCLUSION claim in it ("deliberately NOT included: X")
-  is checked, because that is a claim about the current list in the opposite direction.
-  Report-only. A rationale that legitimately names a card it cut must put the change-cue
-  ADJACENT to the name — adjacent means the SAME clause; "X came out for Y" split across
-  a wrapped `#:` line still read stale, "X was CUT for Y" passed. **Residual: the
-  EXCLUSION check has a proximity window and misses a name several lines into a wrapped
-  list** — deck 52 named Zemo under "Deliberately NOT included" while running him, and
-  `wrong_exclusion_claims` returned empty. [G-27]
+  construction. Scoped to `#: tier:` AND `#: archetype:` — for CARDS since it was written,
+  and for FIGURES only since 2026-08-09: this rule claimed both for a year while the figure
+  loop read `tier` alone, so an archetype figure could contradict the vector indefinitely.
+  Widening it needed two clause-scoped suppressions — a figure about another deck named by
+  NAME, and one whose subject is the card POPULATION ("Standard's Dragons average MV 5.30")
+  — plus the rule that a name forming part of THIS deck's own name is not another deck,
+  since the variant convention makes 26a "Iron Forge — Virulent". `#: notes:` stays out of
+  the STALENESS scan — a build log may name an absent card — but an EXCLUSION claim in it
+  is checked. Report-only. A rationale naming a card it cut must put the change-cue in the
+  SAME clause. **Residual: the EXCLUSION check has a proximity window and misses a name
+  several lines into a wrapped list** — deck 52 named Zemo under "Deliberately NOT
+  included" while running him, and `wrong_exclusion_claims` returned empty. [G-27]
 - **`suggest`'s `Decks` column is cross-deck BREADTH, not curated fit** — castable and
   sharing a *central* theme that is also SPECIFIC, with variants collapsed to their core
   deck. Both gates are load-bearing: centrality alone left the column saturated at 99%,
@@ -680,15 +681,15 @@ directions.
   **COST** (a modal DFC stored only the front), **COLOR** (identity hid 55 castable
   red-pool cards — G-58), **TYPE** (a whole-line scan read the BACK face's; deck 49
   reported 26 lands holding 25), **NAME twice**, **RARITY** (47 roster names priced
-  blank) — plus five more from the 2026-08 scan and the ingest WRITE side, where
-  reconcile/import_arena APPENDED a duplicate front-name row (BS2-02). **Ask which face a
-  column describes; alias an INDEX via `lib.alias_front`, key every name JOIN — a
-  writer's too — on `_ms_key`, and read a `#:` header's card names through
+  blank) — plus five more from the 2026-08 scan and the ingest WRITE side (BS2-02).
+  **Ask which face a column describes; alias an INDEX via `lib.alias_front`, key every
+  name JOIN — a writer's too — on `_ms_key`, and read a `#:` header's card names through
   `deck._header_card_keys`, the ONE home for `#: protect:` + `#: uncastable-ok:`.** Gated
-  by `check_dfc`'s registry, its AST scan for name-index BUILDERS, and the editor-payload
-  pin. The header CONSUMERS were the last open member, closed 2026-08-09 — deferred a
-  cycle on a "zero live instances" count that deck 66 invalidated four days later. **That
-  count is a fact about a moment, not a property of the code.** [G-63]
+  by `check_dfc`'s registry, its AST scan for name-index BUILDERS, and its editor-payload
+  scan (every CONSUMER of the serialized index since BS4-14, not just the helper). The
+  header CONSUMERS were the last open member, closed 2026-08-09 — deferred a cycle on a
+  "zero live instances" count deck 66 invalidated four days later. **That count is a fact
+  about a moment, not a property of the code.** [G-63]
 
 - **A reanimator's uncastable bombs need `#: uncastable-ok:`, and everything else's do
   not.** The castability lint and `tier_band` both model "you cannot cast this" as a build
@@ -758,6 +759,19 @@ directions.
   deliberate bulk pass). **The shape generalizes: when an acknowledge step and a warn step
   run in one command, the ORDER decides whether the warning exists at all** — and the same
   all-or-nothing rewrite still sits under `check_keywords.py --update-baseline`. [G-69]
+
+- **BUILDABILITY IS PER CARD NAME, NEVER PER LINE — one definition, `deck_requirements` /
+  `deck_build_gap`.** A deck may list the same card on two lines, and owned counts are
+  per-name (copies are fungible across printings), so "do I own this deck" must compare
+  TOTAL need against TOTAL owned. `cmd_check` always did and said so in a comment — and a
+  comment is not a mechanism: `app.py`'s `/decks` overview and `check_all`'s info summary
+  each re-derived the question per LINE, so a deck listing 2+2 of a card owned 3 read
+  "buildable" on those two surfaces while `deck.py check`, the dashboard and the deck
+  editor called it short. Three implementations of one question, and the two that drifted
+  were the two that copied the loop instead of calling it — the shape `check_agreement.py`
+  exists to catch, in a spot it does not reach. `/decks` also counted LINES as `unique`.
+  **When you find yourself writing a second loop over `cards` that compares against owned,
+  call the helper instead.** [G-70]
 
 ## Known Issues
 

@@ -1125,6 +1125,45 @@ gets noticed, a false negative is silent.* Until it is fixed, re-read the exclus
 eye whenever a swap adds a card the deck once rejected — which is common, since a
 reconsidered card is exactly the kind that gets excluded in writing first.
 
+**The FIGURE half only joined the archetype scan on 2026-08-09 (BS4-07), and this rule
+claimed otherwise for a year.** `rationale_staleness` swept `("tier", "archetype")` for
+CARD citations from the day it was written, while the figure loop iterated `tier_prose`
+alone — so the documented scope was true of half the function, and an `#: archetype:`
+figure could contradict the live vector indefinitely. Deck 26a quoted *"avg MV 3.05, 15
+early drops"* against a live 2.97, and the audit reported the deck clean.
+
+Widening it was not a one-line change, which is the part worth carrying forward. The first
+roster sweep after the fix returned **three hits, of which only one was genuine**:
+
+| deck | quoted | live | verdict |
+|---|---|---|---|
+| 26a | avg MV 3.05 | 2.97 | **genuine** — corrected |
+| 44a | card advantage 0 | 3 | FALSE — the figure is about deck 1, named "Black Sun" |
+| 49 | avg MV 5.30 | 4.03 | FALSE — the figure is about *Standard's* Dragons |
+
+Deck 44a's clause is *"DISTINCTNESS vs 1 Black Sun … Black Sun is aggro-sacrifice with a
+5/7 clock and card advantage 0"*. The existing cross-deck suppressor is `_OTHER_DECK_RE`,
+which matches the literal `deck N` — and prose names a deck by its NAME. Deck 49's is
+*"Standard's Dragons average MV 5.30, so a deck that wants to field several must SOLVE ITS
+OWN MANA"*: a true claim about the format that the scan read as a claim about the list.
+
+Two clause-scoped suppressions were added — another roster deck named by NAME (reusing
+`_roster_deck_names`, which the CARD scan has masked with since it was written), and
+`_POPULATION_SUBJECT_RE` for a possessive population subject. The possessive form is
+deliberate: *"Standard's Dragons average…"* names a population, while *"fine in Standard,
+avg MV 2.4"* is still a claim about this deck and must keep auditing.
+
+**Then the deck-name suppression muted the one genuine hit**, and the reason is a naming
+convention rather than a bug in the idea: deck 26a is named **"Iron Forge — Virulent"**, so
+its PARENT's name is a substring of its OWN, and an exact-match exclusion treated "Iron
+Forge" as another deck. The rule is now *a name that is part of THIS deck's own name is not
+another deck*. Final state: one genuine hit roster-wide, corrected, with a behavioural
+anchor asserting the roster figure sweep stays clean.
+
+The lesson is G-26's, earned again: **the roster-wide sweep is least optional exactly when
+you WIDEN a scan.** Two-thirds of the new reports were false, and the fix for them was one
+naming convention away from silently deleting the only true one.
+
 
 ## [G-28] `deck.py suggest` shows a cross-deck reuse count (`Decks` column)
 
@@ -3047,6 +3086,31 @@ cannot see a consumer in JavaScript. All five fixed 2026-08 (the JS one by front
 the served payload). The join lesson is now in the standing rule: key every name-facing
 JOIN on `_ms_key`, not only every loader.
 
+**The JS member came back once, through the gate's own stated residual (BS4-14,
+2026-08-09).** The BS-08 fix added `ownedOf(name)` — full name, then front face — and
+`check_dfc._payload_flags` pinned two markers: that the helper exists, and that it
+front-splits. Its docstring then said, honestly:
+
+> Residual, stated honestly: a NEW raw lookup added elsewhere in the template would not
+> fire this — the pin guards the helper, not every use.
+
+`renderFlex` was already that raw lookup, in the same file, thirty lines below `cardStatus`.
+A `#~` flex line naming a DFC by its full `Front // Back` name — which is how the wishlist
+stores DFCs (G-19) and how `deck.py resolve` emits them — displayed "not owned" for a card
+the deck rows above displayed correctly. One template, two consumers of one index, two
+different answers.
+
+The pin guarded the DEFINITION and not the CALLERS, which is the same shape G-40 records
+for `cuts` (a pure-function anchor cannot see whether a caller asks) and the same shape
+`check_commands` exists for one level up. `_payload_flags` now scans every USE of the
+`OWNED` index and fails any lookup outside `ownedOf` — comment lines excluded, since the
+comment explaining the fix necessarily quotes the banned shape. Mutation-tested: reverting
+`renderFlex` to a raw lookup makes the gate fire.
+
+**When a guard's docstring states a residual, that sentence is a bug report about the
+guard.** This one was accurate, specific, and sat unactioned while an instance of exactly
+what it described lived in the file it guarded.
+
 **2026-08-07 broad scan #2: the class reaches the ingest WRITE side (BS2-02/BS2-25,
 fixed same day).** Every prior member was a READER — a loader, an index, a join, a
 serialized payload. The second scan found the same shape in the writers that create
@@ -3471,3 +3535,54 @@ and a WARN step over the same set, the order decides whether the warning exists 
 and the convenience of automating the pair is what hides it. The same all-or-nothing
 rewrite still sits under `check_keywords.py --update-baseline`; it is not currently
 automated into a routine command, which is the only reason it is not the same bug.
+
+## [G-70] Buildability is per card NAME, never per line
+
+"Do I own this deck" is a comparison of TOTAL need against TOTAL owned, for two reasons
+that are both properties of this data rather than conventions:
+
+* a deck file may list the same card on more than one line (two printings, or an edit
+  that appended rather than bumped), and
+* owned counts are per NAME, because copies are fungible across printings — the rule
+  `deck.py` and `pool.py` already share.
+
+So a per-LINE comparison asks a question nobody wanted the answer to: "is each individual
+line covered by my total holding", which passes twice for a card owned once.
+
+`cmd_check` has always done this correctly and carried a comment saying so:
+
+```
+# Aggregate copies per card first: a deck may list the same card on more than
+# one line, and owned counts are per-name (fungible across printings), so the
+# short/missing check must compare total-need vs total-owned, not line-by-line.
+```
+
+**A comment is not a mechanism.** Two other surfaces re-derived the same question with
+their own loop and got it wrong: `app.py`'s `/decks` overview and `check_all`'s deck
+buildability summary both compared each line's quantity against total owned. A deck
+listing `2 Duress` + `2 Duress` with 3 owned therefore read **buildable** on those two
+surfaces while `deck.py check`, the dashboard's `collect()` (which sums `need[n]`) and the
+deck editor's `needFor()` all correctly read **short**. `/decks` additionally reported
+`unique` as a count of LINES.
+
+This is the shape `check_agreement.py` exists to catch — two implementations of one
+question drifting — in a place it does not reach, because the drifted copies were not
+functions it compares. The two that were wrong were precisely the two that had COPIED the
+loop instead of calling something.
+
+**Fixed (BS4-13) by giving the question one definition.** `deck.deck_requirements(cards)`
+returns the distinct cards in first-seen order with copies summed; `deck.deck_build_gap(
+cards, by_name_qty)` returns the `(missing, short)` pair. `cmd_check` calls the first — its
+aggregation was extracted, not altered — and both other surfaces call the second. Verified
+by cross-checking `/decks` against `deck_build_gap` for all 99 roster decks: no
+disagreements.
+
+No displayed number changed on the day of the fix, because no roster deck currently splits
+a card across two lines. That is worth stating plainly: the fix is against the CASE, not
+against a symptom that was visible. The case arrives the first time someone adds a second
+printing of a card a deck already runs — which the editor permits and which the dashboard
+and `deck.py` would then report differently from `/decks`.
+
+**The generalizable rule:** when you are about to write a second loop over a deck's
+`cards` that compares quantities against owned counts, call the helper. The first loop was
+right for ten months and still produced two wrong surfaces.
