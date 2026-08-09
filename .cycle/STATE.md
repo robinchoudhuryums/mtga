@@ -6,6 +6,43 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #3, Batch 5 (2026-08-09) — the scan's batches are DONE
+
+Seven interface findings, the STRUCTURAL half only. Block:
+`.cycle/blocks/2026-08-broad-scan3-batch5-broad-implement.md`.
+Gates green, zero soft warnings; **1,186 tests** (was 1,180).
+
+BS4-43 set-dropdown escaping in both grid pages · S-1 deck-editor tab strip arrow keys ·
+S-2 five dashboard input labels · S-3 gallery light palette + 620px breakpoint · S-4
+gallery select labels · S-5 dashboard follows the OS scheme on a first visit · S-6
+collection save button exposes its disabled state.
+
+**Honest framing: six of the seven are accessibility and theming defects a sighted mouse
+user would never encounter.** That is exactly why they survived five interface passes —
+and it is also why the one with real uncertainty is S-3: the gallery now has a whole
+colour scheme that has never been rendered, and correctness there is the half a file
+cannot prove. **It needs eyes before it is trusted** (see the block's OPERATOR VISUAL
+CHECKS — five concrete walks).
+
+**Both artifacts were regenerated**, so `dashboard.html` finally carries the BS4-41 loader
+fix as well as this batch's labels, and the repo copy agrees with what Pages will build.
+Gallery parity re-verified: 2,133 cards == 2,133 library rows.
+
+**Where I left off — the scan's five batches are complete.** What remains:
+
+1. **G-37's live residual, and it is the most concrete open defect in the repo.**
+   `suggest --lands` offers cards whose LAND is on the BACK face — Tarrian's Journal,
+   Grasping Shadows, Aclazotz for deck 52. Reached by transforming, never by a land drop,
+   so maindecking one leaves the deck a land short with INV-04 seeing nothing wrong. It
+   fell outside every batch because it is a G-37 residual rather than a BS4 finding.
+   **Pick it up explicitly.**
+2. The unbatched Lows: BS4-21/23/27/38/40/42/44/45.
+3. The six operator visual checks + Regression Scenarios 5-8's perceptual halves.
+4. Two doc items: Regression Scenarios 5 and 6 should now include the gallery, which has
+   a light mode and a breakpoint to check for the first time.
+5. Still owner-paced and still the largest gap in the project: **`matches.csv` is empty**,
+   so all 34 provisional tier letters rest on internal consistency alone.
+
 ## Session — broad scan #3, Batch 4 (2026-08-09)
 
 Eleven structural/latent findings. Block:

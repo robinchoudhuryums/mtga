@@ -833,7 +833,7 @@ TEMPLATE = r"""<!DOCTYPE html>
 
   <section id="sec-find">
     <h2 class="sec"><span class="tick"></span>Find a card — which decks run it</h2>
-    <input class="filter" id="cardfind" style="width:340px;max-width:100%" placeholder="type a card name (incl. variants)…" autocomplete="off" spellcheck="false">
+    <input class="filter" id="cardfind" aria-label="Find a card across all decks" style="width:340px;max-width:100%" placeholder="type a card name (incl. variants)…" autocomplete="off" spellcheck="false">
     <div id="cardfindout" style="margin-top:10px"></div>
   </section>
 
@@ -853,7 +853,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   <section id="sec-stale">
     <h2 class="sec"><span class="tick"></span>Check for stale decks — paste your Arena export(s)</h2>
     <p class="auditnote" id="stalenote">Paste one deck's Arena export to see if it drifted from the stored list, or paste several <code>Deck</code> blocks at once for a roster staleness report. Each block is auto-matched to its closest stored deck (variants included) — Arena exports don't carry a deck name. Compared by card name + quantity; printings and basic-land art are treated as the same card (same rules as <code>deck.py verify</code>). Nothing is uploaded — the compare runs entirely in your browser.</p>
-    <textarea id="staletext" class="staletext" placeholder="Deck&#10;1 Y'shtola Rhul (FIN) 86&#10;…"></textarea>
+    <textarea id="staletext" class="staletext" aria-label="Paste an Arena deck export to compare against the stored deck" placeholder="Deck&#10;1 Y'shtola Rhul (FIN) 86&#10;…"></textarea>
     <div class="staleactions"><button class="cta" id="stalego">Compare</button><button class="ghostbtn" id="staleclear">Clear</button></div>
     <div id="staleout"></div>
   </section>
@@ -868,7 +868,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     <h2 class="sec"><span class="tick"></span>Decks &amp; variants</h2>
     <div class="controls">
       <div class="ctl-left">
-        <input class="filter" id="deckfilter" placeholder="filter by id, name, or colors…">
+        <input class="filter" id="deckfilter" aria-label="Filter decks by id, name, or colors" placeholder="filter by id, name, or colors…">
         <div class="colchips" id="colchips"></div>
       </div>
       <div class="viewbtns">
@@ -894,7 +894,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   <section id="sec-wishlist">
     <h2 class="sec"><span class="tick"></span>Wildcard priority — wishlist</h2>
     <div class="wltop">
-      <input class="filter" id="wlfilter" placeholder="filter wishlist by card, target, or signal…">
+      <input class="filter" id="wlfilter" aria-label="Filter the wishlist by card, target, or signal" placeholder="filter wishlist by card, target, or signal…">
       <div class="wlrar" id="wlrar" aria-label="Filter by wildcard rarity"></div>
       <span class="grow"></span>
       <span class="wltip">tip: click a card to see which decks it unlocks</span>
@@ -1013,7 +1013,12 @@ function parseHash(){
 }
 function restorePrefs(){
   let p = {}; try { p = JSON.parse(localStorage.getItem('mtga-prefs')||'{}')||{}; } catch(e){}
-  STATE.theme = p.theme || 'dark'; STATE.viewMode = p.viewMode || 'grid'; STATE.quickFilter = p.quickFilter || 'all';
+  // Follow the OS on a FIRST visit, like the three editor pages have since S-8; a
+  // stored choice still wins. A light-OS user previously got dark until they found
+  // the toggle, and the two surfaces of one tool disagreed about the default.
+  STATE.theme = p.theme || (window.matchMedia
+    && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  STATE.viewMode = p.viewMode || 'grid'; STATE.quickFilter = p.quickFilter || 'all';
   STATE.activeColors = p.activeColors || {}; STATE.open = p.open || {}; STATE.pinned = p.pinned || {};
   STATE.secCollapsed = p.secCollapsed || {}; STATE.wlRarity = p.wlRarity || {};
   const h = parseHash();
@@ -1958,6 +1963,9 @@ function paletteEl(){
   const p = el('div','palette'); p.onclick = e => e.stopPropagation();
   const top = el('div','pin'); top.innerHTML = '<span style="color:var(--accent);font-size:15px">⌘</span>';
   const inp = el('input'); inp.value = STATE.paletteQuery; inp.placeholder = 'Jump to a deck or section…';
+  // A placeholder is a last-resort accessible name: many AT configurations demote it,
+  // and it disappears the moment the user types. This is a dialog's only control.
+  inp.setAttribute('aria-label', 'Jump to a deck or section');
   inp.addEventListener('input', e => { STATE.paletteQuery = e.target.value; STATE.paletteIndex = 0; drawItems(); });
   top.appendChild(inp); top.appendChild(el('span','kbd','esc')); p.appendChild(top);
   const body = el('div','body'); p.appendChild(body);
