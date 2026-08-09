@@ -577,10 +577,14 @@ directions.
   gate.** Every gate verifies a model is right; none can see a command nothing runs.
   `check_commands.py` closes it — every subcommand and script must be invoked by a skill,
   called by another module, or exempted WITH A REASON, and a stale exemption is itself a
-  failure. Coverage requires a REAL call, not a prose mention — on BOTH paths: the
+  failure. Coverage requires a REAL call, not a prose mention — on ALL THREE paths: the
   script half accepted any filename mention until 2026-08 (two of `build_pool.py`'s three
-  were warnings NOT to run it), and now wants `python3 scripts/<fn>` in a skill or
-  `scripts/<fn>` in the Makefile. [G-53]
+  were warnings NOT to run it) and wants `python3 scripts/<fn>`; the Makefile half matched
+  COMMENTS until BS4-25; and the SUBCOMMAND half counted a caution ("never run `deck.py
+  sync` blindly") until BS4-09. **That last one is where the obvious fix was wrong**:
+  demanding the executable shape there would have failed 27 of 34 live subcommands, since
+  the skills write 30 of their references bare and only 3 sit in fenced code blocks — so a
+  caution CLAUSE is suppressed instead, which measured as costing zero coverage. [G-53]
 - **A SET plus a sort key that can TIE is a nondeterministic output.** Tied themes left
   in set-iteration order made an unchanged build produce different output every run.
   **Before sorting anything derived from a set, ask what happens when the key ties** —
@@ -756,9 +760,11 @@ directions.
   `_ROLE_PATTERNS` edit that just re-zeroed fifty; the only residual signal was an unread
   diff of a 425-line file. It now NAMES every card it acknowledges and REFUSES a jump over
   `--max-new` (postedit passes `MAXNEW`, default 8 — `make postedit MAXNEW=40` for a
-  deliberate bulk pass). **The shape generalizes: when an acknowledge step and a warn step
-  run in one command, the ORDER decides whether the warning exists at all** — and the same
-  all-or-nothing rewrite still sits under `check_keywords.py --update-baseline`. [G-69]
+  deliberate bulk pass). `check_keywords.py --update-baseline` got the same delta report
+  and `--max-new` (BS4-10) — it has no automated caller, so it was never MUTED, but K-01's
+  rule that a keyword's reported COUNT is not its population makes naming the entries
+  matter there too. **The shape generalizes: when an acknowledge step and a warn step run
+  in one command, the ORDER decides whether the warning exists at all.** [G-69]
 
 - **BUILDABILITY IS PER CARD NAME, NEVER PER LINE — one definition, `deck_requirements` /
   `deck_build_gap`.** A deck may list the same card on two lines, and owned counts are
@@ -933,16 +939,16 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (29 files: the markup-contract, CLI-entry-point, analysis-model,
+- Testing: tests/ (30 files: the markup-contract, CLI-entry-point, analysis-model,
   gate-pinning, shared-primitive and ingest layers, the 2026-08 ingest-writer /
   sync-guard / resilience-layer / CLI-filter coverage of the formerly untested
-  scripts, plus the broad-scan-2 additions — test_check_all.py, the gate runner's
-  own mutation layer; test_app_editor.py, the editor's write-safety pins
-  (importorskip'd on Flask); test_check_dfc.py, which pins the G-63 builder SCAN
-  rather than the registry it feeds; and test_writer_mutations.py, which runs each
-  write-safety property against a mutant writer so the property is proven to be
-  load-bearing), requirements-dev.txt, pytest.ini,
-  .github/workflows/tests.yml [C-07]
+  scripts, plus test_check_all.py, the gate runner's own mutation layer;
+  test_app_editor.py, the editor's write-safety pins (importorskip'd on Flask);
+  test_check_dfc.py, which pins the G-63 builder SCAN rather than the registry it
+  feeds; test_writer_mutations.py, which runs each write-safety property against a
+  mutant writer so the property is proven load-bearing; and test_gates_fire.py, the
+  watched-it-fail layer for the seven gates that had none — so all fourteen now have
+  one), requirements-dev.txt, pytest.ini, .github/workflows/tests.yml [C-07]
 - Decks: decks/
 
 **Invariant Library:**
