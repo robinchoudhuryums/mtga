@@ -33,6 +33,16 @@
 #: notes: power-4 gate reads as the core deck (see 56's notes). War Machine's
 #: notes: {2}{R/W} hybrid casts on {R} here (G-58). Commercial District counts as
 #: notes: a Mountain for Molten Man (type line Mountain Forest) — 14 Mountains.
+#: notes: 2026-08-09 DEDUP PASS (user-decided): the 2nd Halana — a LEGEND, so the
+#: notes: second copy was insurance-only — came out for Ouroboroid (owned M, EOE):
+#: notes: the same beginning-of-combat trigger but counters on EVERY creature
+#: notes: including itself, so it compounds, and as a non-legend it stacks with
+#: notes: Halana #1 in the same combat step. {2}{G}{G} against 11 G sources is
+#: notes: ~mid-70s% on curve — comparable to the deck's existing G stress. The 2nd
+#: notes: ASHROOT stays a craft on its merits: not a legend, and his trigger targets
+#: notes: ANOTHER creature, so two copies attack and pump each other. The 2nd AGNI
+#: notes: KAI stays a craft and should be crafted FIRST — 56, 56a and 59 are all
+#: notes: short the same copy, so one rare completes three decks (shared collection).
 
 # Tall bodies
 2 Molten Man, Inferno Incarnate (SPM) 84
@@ -48,7 +58,8 @@
 
 # Boosters (repeatable, permanent)
 2 Ashroot Animist (FDN) 117
-2 Halana and Alena, Partners (VOW) 239
+1 Halana and Alena, Partners (VOW) 239
+1 Ouroboroid (EOE) 201
 1 War Machine, Legacy of Iron (MSH) 238
 
 # Ramp / evasion riders
