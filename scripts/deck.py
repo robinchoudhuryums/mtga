@@ -1658,10 +1658,28 @@ def power_threshold_flags(cards, carddata):
             if key in seen:
                 continue
             seen.add(key)
+            # TIMING of the gated trigger, read from the ability's own line (an oracle
+            # ability owns its line — the same `(?m)^` convention K-14 rests on). It
+            # decides what a printed-stat count MEANS: an ENTERS trigger really is
+            # blind to later growth, but Scalestorm Summoner and Ruby check on ATTACK
+            # ("whenever … attacks … if/while you control"), so pumped bodies DO
+            # satisfy them — and the flag's one-size ENTERS caveat was copied into a
+            # tier block as a fabricated weakness and had to be retracted (2026-08-09).
+            line_lo = text.rfind("\n", 0, m.start()) + 1
+            line_hi = text.find("\n", m.start())
+            ability = text[line_lo:line_hi if line_hi >= 0 else len(text)]
+            # "attacks" wins over "enters" when a line has both — the attack reading
+            # (printed count is a FLOOR) is the conservative one for a growing board.
+            if re.search(r"\battack", ability, re.I):
+                timing = "attack"
+            elif re.search(r"\benters?\b", ability, re.I):
+                timing = "enters"
+            else:
+                timing = "other"
             qualify = sum(cq for cq, ccd in creatures
                           if (card_power(ccd.get(attr)) or -1) >= bar)
             if qualify / total < _POWER_THRESHOLD_THIN:
-                out.append((cd["name"], attr, bar, qualify, total))
+                out.append((cd["name"], attr, bar, qualify, total, timing))
     return out
 
 
@@ -2991,11 +3009,20 @@ def cmd_stats(args):
     # synergy model, but only fires off bodies that meet the bar on their PRINTED stats —
     # and an X-creature or a counters payoff is very often printed 0/0. This is measurable
     # only since card-pool.csv started carrying Power/Toughness.
-    for name, attr, bar, qualify, total in power_threshold_flags(cards, carddata):
-        print(f"\n  ⚠ {name} keys on {attr} {bar}+, but only {qualify} of {total} creature "
-              f"copies are printed at {attr} {bar}+ — the trigger is far more conditional "
-              f"than the card reads. (Printed stats: a body that GROWS after it enters "
-              f"still won't satisfy an ENTERS trigger.)")
+    for name, attr, bar, qualify, total, timing in power_threshold_flags(cards, carddata):
+        head = (f"\n  ⚠ {name} keys on {attr} {bar}+, but only {qualify} of {total} "
+                f"creature copies are printed at {attr} {bar}+ — ")
+        if timing == "enters":
+            print(head + "the trigger is far more conditional than the card reads. "
+                  "(Printed stats: a body that GROWS after it enters still won't "
+                  "satisfy an ENTERS trigger.)")
+        elif timing == "attack":
+            print(head + "checked at ATTACK time, so bodies pumped after entering DO "
+                  "qualify. Read the printed count as a FLOOR — in a deck that grows "
+                  "its board, the gate is looser than this number.")
+        else:
+            print(head + "more conditional than the card reads. (Printed stats — read "
+                  "the trigger's own timing before believing the count.)")
 
     # Interaction profile (#5): the raw count treats all interaction alike, but a suite
     # that's all sorcery-speed and creature-only has real gaps. Break it down by speed
@@ -9257,7 +9284,12 @@ _RATIONALE_MIN_LEN = 9
 _HISTORY_CUES = re.compile(
     r"\b(?:was|were|became|becomes|replac\w*|swap\w*|cut\w*|remov(?:ed|ing)|dropp\w*|"
     r"left|leaves|instead|no longer|previously|earlier|former\w*|queued|flex|"
-    r"craft target|alternative|revisit|option|skipped|held out)\b", re.I)
+    r"craft target|alternative|revisit|option|skipped|held out|used to|missing|"
+    r"exclud\w*)\b", re.I)
+# The last three joined on the 2026-08-09 clause-scoping sweep: "the argument this
+# block USED TO make for Ramos", "still MISSING the tribal payoffs (Regal
+# Imperiosaur…)" and "Fire Lord Zuko was EXCLUDED for…" are all change-/WIP-language
+# that the old ±140 window happened to suppress via unrelated cues further away.
 _HISTORY_WINDOW = 140
 # "<in-deck card> is <other card> that …" — a comparison used to EXPLAIN a card the deck
 # runs. Matched immediately before the citation, never as a window cue (see the call site).
@@ -9283,8 +9315,35 @@ _NEGATION_AFTER = re.compile(r"\s+(?:does\s+not|doesn'?t|is\s+not|isn'?t|cannot|
 # the sentence has changed subject.
 _COMPARISON_CUES = re.compile(
     r"\b(?:path to|vs\.?|versus|unlike|compared|comparison|distinctness|roster'?s|"
-    r"another deck|other deck|that deck|that one|elsewhere|would be|would need|"
-    r"consider|candidate|upgrade to|next add|instead of|variant)\b", re.I)
+    r"another deck|other deck|that deck|that one|elsewhere|would|"
+    r"consider|candidate|upgrade to|next add|instead of|variant|rather than|"
+    r"parent|sibling|same shape)\b", re.I)
+# `would` widened from `would be|would need` — "…where Laughing Jasper Flint and
+# Rakdos, the Muscle WOULD each demand a hard {R}" is hypothetical-mode prose about a
+# fork not taken, and the modal alone is the signal. `parent`/`sibling` are this
+# repo's variant-comparison vocabulary ("its PARENT counts CREATURES — Craterhoof's X,
+# Enduring Vitality…"); `same shape` is its simile idiom ("Funeral Room and Susur
+# Secundi are the same shape"). All from the 2026-08-09 roster sweep.
+
+
+# A clause boundary ends a suppression window. `[.;]` and not the em-dash, which this
+# repo's prose uses mid-clause constantly ("— the deck wants"); requires following
+# whitespace so decimals ("avg MV 2.42") and "e.g." survive.
+_CLAUSE_BREAK = re.compile(r"[.;!?](?=\s)")
+# "deck 56" / "deck 40a" — an explicit reference to a deck by id. Requires the word
+# `deck` so a bare count ("16 Birds") can never read as one.
+_OTHER_DECK_RE = re.compile(r"\bdeck\s+(\d+[a-z]?)\b", re.I)
+
+
+def _clause_bounds(prose, start, end):
+    """(lo, hi) of the clause containing prose[start:end] — the span between the
+    nearest sentence-ish breaks. Both suppression families below are scoped to it."""
+    lo = 0
+    for m in _CLAUSE_BREAK.finditer(prose, 0, start):
+        lo = m.end()
+    m = _CLAUSE_BREAK.search(prose, end)
+    hi = m.start() + 1 if m else len(prose)
+    return lo, hi
 
 
 def _cites_as_history(prose, pos, length):
@@ -9292,12 +9351,39 @@ def _cites_as_history(prose, pos, length):
 
     Two families: change-/flex-language (the card left, or was deliberately held out —
     see _HISTORY_CUES) and comparative/prescriptive language (the sentence is about a
-    different deck, or about a card to add — see _COMPARISON_CUES). Window is generous
-    on purpose; a noisy audit gets ignored, which is worse than no audit."""
-    lo = max(0, pos - _HISTORY_WINDOW)
-    hi = min(len(prose), pos + length + _HISTORY_WINDOW)
-    window = prose[lo:hi]
-    return bool(_HISTORY_CUES.search(window) or _COMPARISON_CUES.search(window))
+    different deck, or about a card to add — see _COMPARISON_CUES).
+
+    Two scoping rules, both bought by live misses on 2026-08-09:
+      * The window stops at a CLAUSE boundary. It used to be a flat ±140 chars, so a
+        change-cue about DIFFERENT cards in the PREVIOUS sentence suppressed a live
+        citation — deck 66's "…were cut for the aristocrats package. Mayhem stays as
+        SEASONING on (Spider-Islanders, …)" audited clean after Spider-Islanders left,
+        because "cut" sat one sentence back. A cue only speaks for its own clause.
+      * The citation's own span is EXCLUDED from the cue search. `_HISTORY_CUES` has
+        `swap\\w*`, so the card *Crib Swap* was suppressed by the "Swap" in its own
+        name — the same class as the documented `remov\\w*` incident (a card whose
+        oracle text said "removes" suppressed its own report), one level worse: no
+        prose edit can ever un-suppress a card whose NAME matches a cue."""
+    clo, chi = _clause_bounds(prose, pos, pos + length)
+    lo = max(clo, pos - _HISTORY_WINDOW)
+    hi = min(chi, pos + length + _HISTORY_WINDOW)
+    before, after = prose[lo:pos], prose[pos + length:hi]
+    if (_HISTORY_CUES.search(before) or _COMPARISON_CUES.search(before)
+            or _HISTORY_CUES.search(after) or _COMPARISON_CUES.search(after)):
+        return True
+    # COMPARISON context reaches one clause further back than change-language does.
+    # A distinctness passage sets its frame in the clause BEFORE the citations —
+    # "taking the RED side of the fork instead of the blue one. Where 44 spends its
+    # splash on two one-shot ETB thefts (Azula, Etrata), …" — while a HISTORY cue in
+    # the previous clause is usually about different cards entirely (the deck-66
+    # Spider-Islanders miss), so only the comparison family gets the extension.
+    # An explicit other-deck reference ("Deck 26 ramps with MANA — …, Tony Stark's
+    # free artifact drop") counts as comparison context the cue lists can't spell.
+    prev_lo = max(_clause_bounds(prose, max(0, clo - 2), max(0, clo - 2))[0],
+                  pos - _HISTORY_WINDOW)
+    frame = prose[prev_lo:pos] + " " + prose[pos + length:hi]
+    return bool(_COMPARISON_CUES.search(prose[prev_lo:clo])
+                or _OTHER_DECK_RE.search(frame))
 
 
 # A FIGURE is history under much narrower conditions than a CARD citation, and reusing
@@ -9395,13 +9481,19 @@ def _cites_as_arriving(prose, pos):
     """True when a citation sits on the ARRIVING side of a stated replacement — i.e. the
     prose claims this card came IN, so its absence makes the claim false, not historical.
     """
-    back = prose[max(0, pos - _ARRIVING_WINDOW):pos]
+    # The slice runs one char PAST the citation start: the `+X` cue is a lookahead for
+    # a capital letter, and that capital IS prose[pos] — sliced at pos exactly, the
+    # lookahead had nothing to see, so "+Crib Swap" never read as arriving (found via
+    # the 2026-08-09 fixtures). A cue must still END at or before the citation.
+    lo = max(0, pos - _ARRIVING_WINDOW)
+    back = prose[lo:pos + 1]
     cue = None
     for m in _ARRIVING_CUES.finditer(back):
-        cue = m                                  # nearest cue before the citation
+        if m.end() <= pos - lo:
+            cue = m                              # nearest cue before the citation
     if cue is None:
         return False
-    gap = back[cue.end():]
+    gap = back[cue.end():pos - lo]
     if len(gap) > _ARRIVING_GAP or _ARRIVING_BREAK.search(gap):
         return False
     return not _DEPARTING_CUES.search(gap)
@@ -9441,6 +9533,16 @@ def _find_word_bounded(text, needle):
         before_ok = i == 0 or not (text[i - 1].isalnum() or text[i - 1] in "'-")
         j = i + len(needle)
         after_ok = j >= len(text) or not (text[j].isalnum() or text[j] in "'-")
+        # POSSESSIVE. "`consistency` prices Aven Interrupter's {W}{W} at 58%" cites
+        # Aven Interrupter, but the apostrophe rule above — built to keep *Deliberate*
+        # out of "Deliberately" — read the 's as "inside a longer word", so every
+        # possessive citation was invisible to the scan (the audit's fifth live miss
+        # of 2026-08-09, reproduced in tests). An 's that ENDS the word is grammar,
+        # not a longer card name.
+        if (not after_ok and text[j] == "'" and text[j:j + 2] in ("'s", "'S")
+                and (j + 2 >= len(text)
+                     or not (text[j + 2].isalnum() or text[j + 2] in "'-"))):
+            after_ok = True
         if before_ok and after_ok:
             return i
         start = i + 1
@@ -9471,8 +9573,14 @@ def _shorthand_index(carddata, _cache={}):
         disp = row.get("name") or name
         front = disp.split(" // ")[0]
         cands = set()
+        # Comma-head minimum is 4, not 6: "Inti exiles the top card" cited Inti,
+        # Seneschal of the Sun after he was cut, and a 6-char floor kept every short
+        # legend name (Inti, Ruby, Zuko, Suki, Momo…) out of the index — an entire
+        # class of Universe-Beyond first-name shorthand was invisible (2026-08-09).
+        # The epithet cap (≤3 full names), case-sensitivity and the in-deck substring
+        # suppression carry the false-positive load a shorter floor admits.
         head = front.split(",")[0].strip()
-        if "," in front and len(head) >= 6 and head[0].isupper():
+        if "," in front and len(head) >= 4 and head[0].isupper():
             cands.add(head)
         words = front.replace(",", "").split()
         for i in range(1, max(0, len(words) - 1)):
@@ -9510,6 +9618,12 @@ def _shorthand_candidates(masked, frags):
             lw, lp = tokens[k + n - 1]
             frag = masked[p:lp + len(lw)]
             if frag in frags:
+                # A fragment WRITING A LABEL is prose structure, not a citation:
+                # "Down: the manabase is three colours" is the house "what argues
+                # DOWN" idiom, and with 4-char comma-heads indexed it read as
+                # shorthand for *Down, Down to Goblin-town* (54a, roster sweep).
+                if masked[lp + len(lw):lp + len(lw) + 1] == ":":
+                    continue
                 out.append((frag, p))
     return out
 
@@ -9619,10 +9733,21 @@ def rationale_staleness(d, carddata=None):
         stale_cards = sorted(set(stale_cards))
     vec = deck_quality_vector(d)
     tier_prose = (meta or {}).get("tier", "") or ""
+    own_id = str(d.get("id") or "").lower()
     for rx, key in _RATIONALE_FIGURES:
         for m in rx.finditer(tier_prose):
             quoted, actual = m.group(1), vec.get(key)
             if actual is None:
+                continue
+            # A figure quoted about ANOTHER DECK is not a claim about this one. 56a's
+            # block compared itself to its parent — "deck 56 core is a genuine aggro
+            # deck (clock 5/7, interaction 7, avg MV 2.42)" — and both numbers flagged
+            # as stale against 56a's own vector (two false positives, 2026-08-09).
+            # Scoped to the figure's clause, and only an id OTHER than this deck's
+            # suppresses, so a rationale citing its own number by id still audits.
+            clo, chi = _clause_bounds(tier_prose, m.start(), m.end())
+            ids = {g.lower() for g in _OTHER_DECK_RE.findall(tier_prose[clo:chi])}
+            if ids - {own_id}:
                 continue
             # A rationale legitimately quotes PAST figures when it documents a change
             # ("took interaction 1→4", "it cited a 2.65 curve; the list is now 3.0"), and

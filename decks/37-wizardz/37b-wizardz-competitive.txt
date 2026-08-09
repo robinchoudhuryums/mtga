@@ -8,8 +8,9 @@
 #: tier: `deck.py redundancy 37` named the two thin effects; this firms them up. The win-con
 #: tier: ping ("deal damage to each opponent when you cast a noncreature spell") is a virtual
 #: tier: ~10-of (Coruscation Mage + Firebrand Archer + Thunderdrum Soloist + Black Waltz +
-#: tier: the 0/1-token makers + Lasting Tarfire); counters stand at 3 (Mana Sculpt +
-#: tier: Tishana's Tidebinder + Spell Pierce). A Shriek, Treblemaker swap over Spell Pierce
+#: tier: the 0/1-token makers + Lasting Tarfire); counters stand at 2 (Mana Sculpt +
+#: tier: Tishana's Tidebinder — Spell Pierce was the third and was swapped out for Mu
+#: tier: Yanling in Batch-6). A Shriek, Treblemaker swap over Spell Pierce
 #: tier: was tried and REVERTED: Shriek's main-phase ability is combat enablement bought
 #: tier: with a discard, and it traded an instant for a creature in a deck whose payoffs
 #: tier: (Thunderdrum Soloist, Balmor, Archmage of Runes) key on INSTANT AND SORCERY casts,

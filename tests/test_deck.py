@@ -1974,7 +1974,21 @@ class TestPowerThresholdFlags:
     def test_flags_a_payoff_the_creatures_dont_support(self):
         cards = [(1, "Garruk's Uprising", "", ""), (8, "X Hydra", "", "")]
         flags = deck.power_threshold_flags(cards, self.CD)
-        assert flags == [("Garruk's Uprising", "power", 4, 0, 8)]
+        assert flags == [("Garruk's Uprising", "power", 4, 0, 8, "enters")]
+
+    def test_attack_time_gates_report_their_timing(self):
+        # G-16's live residual: the flag's caveat said "won't satisfy an ENTERS
+        # trigger" for EVERY firing, and Scalestorm/Ruby check on ATTACK — pumped
+        # bodies DO satisfy those. The timing now travels with the flag so the
+        # caveat can tell the truth per trigger.
+        cd = dict(self.CD, **{"attack gate": {
+            "name": "Attack Gate", "type": "Creature — Human",
+            "text": "Whenever this creature attacks while you control a creature "
+                    "with power 4 or greater, draw a card.",
+            "power": "1", "toughness": "1"}})
+        cards = [(1, "Attack Gate", "", ""), (8, "X Hydra", "", "")]
+        flags = deck.power_threshold_flags(cards, cd)
+        assert flags[0][0] == "Attack Gate" and flags[0][5] == "attack"
 
     def test_silent_when_the_deck_supports_it(self):
         cards = [(1, "Garruk's Uprising", "", ""), (8, "Big Beater", "", "")]
@@ -2046,7 +2060,7 @@ class TestPowerThresholdFlags:
         # The whole point of the check must survive the scoping.
         cards = [(1, "Garruk's Uprising", "", ""), (8, "X Hydra", "", "")]
         assert deck.power_threshold_flags(cards, self.SCOPED) == [
-            ("Garruk's Uprising", "power", 4, 0, 8)]
+            ("Garruk's Uprising", "power", 4, 0, 8, "enters")]
 
 
 class TestRationaleStaleness:
@@ -3231,3 +3245,89 @@ class TestSwapCutSideFrontFace:
             lines, "Mirror Room // Fractured Realm", "Negate", ("M21", "69"))
         assert any("applied" in ln for ln in out)
         assert not any(ln.strip().startswith("#~ -Mirror Room |") for ln in out)
+
+
+class TestRationaleStalenessLiveMisses:
+    """Pins the 2026-08-09 audit rework: five LIVE misses found in one session (each
+    reproduced as a fixture before the fix) plus the cross-deck-figure false positive.
+    Every case here reported "rationale is current" — or flagged a correct citation —
+    on real roster decks while a human read caught the truth. The suppression rules
+    are the delicate part of this audit (G-26): each test names the rule it pins."""
+
+    HEAD = "#: name: Probe\n#: format: Standard\n#: colors: GWU\n"
+    BODY = "\nDeck\n1 Llanowar Elves (M19) 314\n1 Storm, Windrider (MSH) 230\n24 Forest (MSH) 295\n"
+
+    def _deck(self, tmp_path, headers):
+        p = tmp_path / "deck.txt"
+        p.write_text(self.HEAD + headers + self.BODY, encoding="utf-8")
+        return {"path": str(p), "id": "99"}
+
+    def _cards(self, tmp_path, headers):
+        cards, _figs = deck.rationale_staleness(self._deck(tmp_path, headers))
+        return [n for n, _h in cards]
+
+    def test_possessive_citation_is_visible(self, tmp_path):
+        # "`consistency` prices Aven Interrupter's {W}{W} at 58%" — the word-boundary
+        # rule read the 's as "inside a longer word" and every possessive citation of
+        # an absent card was invisible (deck 19, the session's fifth live miss).
+        got = self._cards(tmp_path, "#: tier: B. Aven Interrupter's {W}{W} prices at 58% on turn three.\n")
+        assert "Aven Interrupter" in got
+
+    def test_a_cue_word_inside_the_cards_own_name_does_not_suppress(self, tmp_path):
+        # `_HISTORY_CUES` has swap\w* — and the card *Crib Swap* was suppressed by the
+        # "Swap" in its OWN NAME (deck 19's original block). The citation span is now
+        # excluded from the cue window; no prose edit could ever have fixed this one.
+        got = self._cards(tmp_path, "#: tier: B. The package (+Crib Swap) took interaction 1→4.\n")
+        assert "Crib Swap" in got
+
+    def test_short_comma_head_shorthand_is_indexed(self, tmp_path):
+        # "Inti exiles the top card" cited Inti, Seneschal of the Sun after he was cut
+        # (deck 26b); a 6-char comma-head floor kept every short legend name out of
+        # the shorthand index.
+        got = self._cards(tmp_path, "#: archetype: Inti exiles the top card and lets you play it.\n")
+        assert any("Inti" in n for n in got)
+
+    def test_history_cue_does_not_reach_across_a_clause_boundary(self, tmp_path):
+        # Deck 66: "…were cut for the aristocrats package. Mayhem stays as SEASONING
+        # on (Spider-Islanders, …)" audited clean after Spider-Islanders left — the
+        # ±140-char window let "cut" in the PREVIOUS sentence suppress a live citation.
+        got = self._cards(tmp_path,
+            "#: archetype: Timeline Culler was cut for the package. Mayhem stays as\n"
+            "#: archetype: SEASONING on Spider-Islanders here.\n")
+        assert "Spider-Islanders" in got
+
+    def test_history_cue_in_the_same_clause_still_suppresses(self, tmp_path):
+        # The mirror: a rationale that documents its own swap with the cue ADJACENT
+        # (G-27's contract) must stay quiet.
+        got = self._cards(tmp_path, "#: archetype: Spider-Islanders was cut for the package.\n")
+        assert "Spider-Islanders" not in got
+
+    def test_figures_about_another_deck_do_not_flag(self, tmp_path):
+        # 56a quoted its parent's vector — "deck 56 core … interaction 7" — and both
+        # numbers flagged as stale against 56a's own vector (two false positives).
+        d = self._deck(tmp_path,
+            "#: tier: B. CONSISTENT WITH THE PARENT: deck 56 core reads interaction 7\n"
+            "#: tier: and holds A at its own floor.\n")
+        _cards, figs = deck.rationale_staleness(d)
+        assert figs == []
+
+    def test_bare_figures_still_audit(self, tmp_path):
+        # The other-deck rule must not swallow the deck's own numbers: this probe deck
+        # has interaction 0, so a bare "interaction 7" is a stale figure.
+        d = self._deck(tmp_path, "#: tier: B on interaction 7 with real removal.\n")
+        _cards, figs = deck.rationale_staleness(d)
+        assert any(k == "interaction" for k, _q, _a in figs)
+
+    def test_label_idiom_is_not_shorthand(self, tmp_path):
+        # "Down: the manabase is three colours" is the house what-argues-DOWN idiom;
+        # with 4-char comma-heads indexed it read as *Down, Down to Goblin-town*
+        # (54a, roster sweep). A fragment writing a label is prose structure.
+        got = self._cards(tmp_path, "#: tier: B. Down: the manabase is three colours on 25 lands.\n")
+        assert not any("Goblin-town" in n for n in got)
+
+    def test_variant_parent_comparison_does_not_flag(self, tmp_path):
+        # "Its parent counts CREATURES — Craterhoof's X, Enduring Vitality…" (50a) is
+        # variant-comparison vocabulary about the OTHER deck's cards.
+        got = self._cards(tmp_path,
+            "#: archetype: Its parent counts CREATURES — Enduring Vitality reads the same number.\n")
+        assert "Enduring Vitality" not in got

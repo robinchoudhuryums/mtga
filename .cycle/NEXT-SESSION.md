@@ -163,11 +163,13 @@ that sets counts exactly, including downward.
   for interaction, which floated its floor to A. Corrected to `midrange`, the floor read B
   and the letter followed. Nothing flags this — the guard compares the letter to the floor,
   and the floor is what the wrong plan moved.
-- **`stats`' power-N flag appends an ENTERS-trigger caveat regardless of the real trigger
-  timing** (`[G-16]`). Two attack-time triggers were written into a tier block as a
-  weakness and had to be retracted. Read the timing before believing the count.
-- **The rationale audit reads a figure quoted about ANOTHER deck as a claim about this
-  one** (`[G-26]`). Compare with `deck.py tier <other-id>`; do not quote its numbers.
+- **`stats`' power-N flag appended an ENTERS-trigger caveat regardless of timing —
+  FIXED later the same day** (`[G-16]`): the flag now reads the trigger's own line and
+  says "printed count is a FLOOR" for attack-time gates.
+- **The rationale audit missed five live cases in one day and was REWORKED against
+  fixtures** (`[G-26]`): possessives, self-name cues, short comma-heads, cross-sentence
+  suppression and cross-deck figures are fixed; six real stale rationales surfaced on
+  the first clean sweep and were corrected. The still-live residuals are in G-26.
 - **Craft cost is REPORTED, never REASONED FROM** (`[G-10]`). Four ownership counts were
   wrong in one session and one of them was load-bearing in a recommendation.
 
