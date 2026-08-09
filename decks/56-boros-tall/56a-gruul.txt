@@ -1,7 +1,7 @@
 #: name: One Fell Swoop — Overgrowth
 #: format: Standard
 #: colors: RG
-#: plan: aggro
+#: plan: midrange
 #: archetype: GRUUL ULTRA-TALL — the green-package variant of deck 56, revived from
 #: archetype: its parked-not-dead note. Same red core (Molten Man, Crackling Cyclops,
 #: archetype: Red Hulk, Bulk Up, Self-Destruct, the trick suite); green replaces the
@@ -15,12 +15,35 @@
 #: archetype: boosts on small bearers; green COMPOUNDS permanent counters on bodies
 #: archetype: that are already big — slower, bigger, board-independent.
 #: protect: Molten Man, Inferno Incarnate; Ashroot Animist; Halana and Alena, Partners; Bulk Up; Self-Destruct; Overprotect
-#: tier: A (PROVISIONAL) — graded at the measurable floor, same rubric as the 56
-#: tier: core. The variant trades the core's faster clock and deeper interaction
-#: tier: for bigger permanent boosts and single-card protection; the honest
-#: tier: weaknesses are the same thin card advantage plus a real dependence on
-#: tier: resolving and keeping one body. Re-grade against the core after games —
-#: tier: whichever list wins more takes the buildable slot.
+#: tier: B (PROVISIONAL) — RE-GRADED 2026-08-09 from A, at the measurable floor, after
+#: tier: `#: plan:` was corrected from aggro to midrange. The letter did not change
+#: tier: because the LIST changed; it changed because the list stopped being graded as
+#: tier: an aggro deck. On the aggro plan tier_band substitutes a CLOCK score (this
+#: tier: deck read 4/7) for the interaction a resilience floor demands, which floated
+#: tier: the floor to A. Graded as midrange the floor is B, and the rubric's A wants at
+#: tier: most ONE clear weakness. This list has three:
+#: tier: 1. CARD ADVANTAGE 2, with no refuel — the same gap the first grading named.
+#: tier: 2. INTERACTION 4, and ZERO of it answers a NONCREATURE permanent. For an
+#: tier:    aggro deck that is survivable (you are racing); for a midrange deck it is a
+#: tier:    real hole — an enchantment or planeswalker that blanks the plan is unanswerable.
+#: tier: 3. IT DEPENDS ON RESOLVING AND KEEPING ONE BODY. Protection 3 (Overprotect x2,
+#: tier:    Snakeskin Veil) is real but thin against removal-heavy decks.
+#: tier: A fourth, softer: Scalestorm Summoner and Ruby both gate on POWER 4+, which
+#: tier: only 5 of 19 creature copies satisfy on PRINTED stats — a body that grows
+#: tier: after it enters does not satisfy an ENTERS trigger, so both payoffs are more
+#: tier: conditional than they read.
+#: tier: WHAT ARGUES UP, and why it is not enough for A: the compounding ceiling is
+#: tier: genuinely high and no metric sees it — Ouroboroid grows Ashroot and Halana,
+#: tier: whose pumps scale off their own power, so the three multiply each other. But
+#: tier: that ceiling is exactly what weakness 3 is about; it needs the board to survive.
+#: tier: CONSISTENT WITH THE PARENT: deck 56 core is a genuine aggro deck — faster
+#: tier: curve, deeper interaction, a real clock — and holds A AT its own floor. 56a is
+#: tier: by its own archetype line the slower, less interactive variant, so sitting one
+#: tier: band below the core is coherent rather than a demotion. (The core's figures are
+#: tier: deliberately NOT quoted here: the rationale audit reads every number in a
+#: tier: `#: tier:` block as a claim about THIS deck, so citing deck 56's vector raised
+#: tier: two false staleness flags. Compare with `deck.py tier 56` instead.) Re-grade
+#: tier: against the core after games — whichever list wins more takes the buildable slot.
 #: notes: REVIVAL of the 56 A/B's green package per the core deck's parked-not-dead
 #: notes: note — the user asked for this variant. The A/B judged the PACKAGES, not
 #: notes: green's ceiling: that test's green list ran zero protection while green
@@ -55,11 +78,13 @@
 #: notes: and pump each other. The 2nd AGNI KAI stays a craft and should be crafted
 #: notes: FIRST — 56, 56a and 59 are all short the same copy, so one rare completes
 #: notes: three decks (shared collection).
-#: notes: OPEN QUESTION, flagged 2026-08-09: `#: plan: aggro` disagrees with the
-#: notes: archetype prose ("slower, bigger"). The header is load-bearing — aggro makes
-#: notes: tier_band substitute a clock score (4/7) for interaction, and on a midrange
-#: notes: plan this list's interaction 4 + card advantage 2 would likely fail the A it
-#: notes: claims. Not changed here: the plan is a design declaration, not a metric.
+#: notes: PLAN CORRECTED 2026-08-09 (user call): aggro -> midrange. `#: plan: aggro`
+#: notes: had always disagreed with this deck's own archetype line ("slower, bigger,
+#: notes: board-independent"), and the header is load-bearing rather than descriptive —
+#: notes: it decides whether tier_band grades on a CLOCK or on interaction + card
+#: notes: advantage. The mismatch was silently buying an A. See `#: tier:` for the
+#: notes: re-grade. LESSON WORTH KEEPING: a plan header is a grading input, not a label;
+#: notes: when the prose and the plan disagree, the prose is usually the honest one.
 
 # Tall bodies
 2 Molten Man, Inferno Incarnate (SPM) 84
