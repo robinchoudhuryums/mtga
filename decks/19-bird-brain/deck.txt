@@ -12,12 +12,13 @@
 #: tier: list (token doubler across 13 feeders, a board-wide +1/+1-and-flying anthem, and
 #: tier: removal). The case for holding B is singleton variance, card advantage still 2,
 #: tier: and protection 2 with a thin W manabase.
-#: tier: WHAT ACTUALLY CAPS IT, measured: the white manabase. `consistency` priced the
-#: tier: deck's {W}{W} costs in the high-50s-to-low-60s% on curve (Storm, Windrider reads
-#: tier: 61% on turn four), wanting roughly +8 white sources. The 2026-08-09 Route-B
-#: tier: start — Aven Interrupter WAS CUT for Owlin Historian, same Bird flier at one W
-#: tier: pip instead of two — removed the worst row (58% on turn three); Storm and
-#: tier: Elspeth's {W}{W} remain, so the ceiling is thinner but still real.
+#: tier: WHAT ACTUALLY CAPS IT, measured: the white manabase. `consistency` prices the
+#: tier: deck's {W}{W} costs in the high-50s-to-low-60s% on curve — Aven Interrupter at
+#: tier: 58% on turn three, Storm, Windrider at 61% on turn four — wanting roughly +8
+#: tier: white sources. A Route-B swap (Aven out for a one-pip Bird) was applied and
+#: tier: REVERTED 2026-08-09 by user preference: Aven stays, his flash-exile is unread
+#: tier: interaction the count can't see (K-12), and the fix for the {W}{W} rows should
+#: tier: come from LANDS (white duals), not from cutting the card.
 #: tier: THREE STALE CLAIMS WERE CORRECTED HERE and `--audit-rationale` reported the block
 #: tier: CLEAN throughout: it cited Crib Swap, which this deck does not run; it said
 #: tier: "buildable now bar 2 more Gysahl Greens" when all 3 are owned; and it said "no
@@ -69,7 +70,7 @@
 1 Momo, Friendly Flier (TLA) 29
 1 Sunbird Standard (LCI) 262
 1 Shrike Force (BLB) 31
-1 Owlin Historian (SOS) 24
+1 Aven Interrupter (OTJ) 4
 
 # Ramp / support / fun
 1 Studious First-Year (SOS) 162
