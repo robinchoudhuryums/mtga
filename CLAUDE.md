@@ -759,7 +759,10 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   deliberately left, for three different reasons. **A keyword's reported COUNT is not
   its population**: Scryfall lists `Jump` on all 11 `Jump-start` cards, so mapping it
   would have put `evasion` on 11 graveyard spells for the sake of 2 real ones — the same
-  source artifact that emits `Triple`/`Double`/`Somersault` off Tiered's mode names.
+  source artifact that emits `Triple`/`Double`/`Somersault` off Tiered's mode names —
+  and `undying`, added 2026-08-09, is the same shape: it reports 2 cards, of which the
+  new one (Shadow of the Goblin) merely has an ABILITY NAMED "Undying Vengeance" and no
+  Undying mechanic at all. Baselined, not themed.
   `tiered` is a COST SHAPE, not a resource, and its six cards' effects already tag
   correctly from text. A standing warning is a decision nobody has made yet. [K-01]
 - **A keyword maps to the resources it COSTS** — `forage` → `["graveyard", "food"]`, not
