@@ -244,3 +244,6 @@
 1 Swiftwater Cliffs (MOM) 273
 9 Mountain (MSH) 294
 8 Island (MSH) 290
+
+# Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 26b
+#~ -Iron-Fist Pulverizer | +Vision of Love | OWNED, {1}{R} INSTANT: "you may sacrifice an artifact OR discard a card. If you do, draw two cards" — BOTH halves are drain triggers here and it draws two, at instant speed. That last part is the point: the tier note names the 1-instant-against-11-sorcery skew as a compounding weakness, and this is the cheapest fix for it. Pulverizer is the cut because it is the deck's most expensive card against a 2.44 curve and its "second spell each turn: 2 damage, scry 1" is a slower, more conditional version of the same non-combat damage. NOT APPLIED 2026-08-09 (user left the deck as-is): the archetype block explicitly defends Pulverizer as "priced by the same plan", so this is a real editorial call. Alternative cuts if Pulverizer stays: Meticulous Artisan (a 4-drop whose contribution is one Treasure of the deck's 16 artifact sources, plus prowess in a deck that wins without attacking) or Stark Industries Executive ({2}+tap per Treasure is slow, but it is a 1-drop and the deck runs 20 early drops).
