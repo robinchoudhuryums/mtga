@@ -2927,7 +2927,7 @@ Cosmic Spider-Man,Legendary Creature — Spider Human Hero,"Flying, first strike
 At the beginning of combat on your turn, other Spiders you control gain flying, first strike, trample, lifelink, and haste until end of turn.",W/U/B/R/G,Spider; Human; Hero; lifegain; flying; evasion; lifelink; first strike; combat; haste; aggro; trample; Spiders,SPM,127,1
 Castle Doom,Land,"{T}: Add {C}.
 {T}: Add one mana of any color. Spend this mana only to cast an artifact spell.
-{3}, {T}, Sacrifice an artifact: Create a 3/3 colorless Robot Villain artifact creature token named Doombot. Activate only as a sorcery.",Colorless,sacrifice; tokens; mana,MSH,263,2
+{3}, {T}, Sacrifice an artifact: Create a 3/3 colorless Robot Villain artifact creature token named Doombot. Activate only as a sorcery.",Colorless,sacrifice; tokens; mana,MSH,263,3
 Capital City,Land — Town,"{T}: Add {C}.
 {1}, {T}: Add one mana of any color.
 Cycling {2} ({2}, Discard this card: Draw a card.)",Colorless,Town; card draw; mana; cycling,FIN,274,1

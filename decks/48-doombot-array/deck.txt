@@ -25,15 +25,22 @@
 #: tier: targets are context for WHEN to re-grade, not a reason to grade low. Re-grade after
 #: tier: the manabase is fixed and the deck has been played.
 #: protect: Leyline of Transformation; Lifecraft Engine; Chronicle of Victory; Roaming Throne; Ravenous Robots
-#: notes: 2026-08-09 DEDUP PASS (user-decided): the 3rd Castle Doom craft came out for
-#: notes: the OWNED 3rd Stark Industries. The tier note's own measurement decided it —
-#: notes: the manabase is short BOTH colours (U 11 / R 13 against wants of 15-16) and
-#: notes: Castle Doom's coloured mana is artifact-spell-only, so the third copy was a
-#: notes: colourless land deepening the deck's worst weakness. The Doombot mint keeps
-#: notes: two copies; a {3}+tap+sac sorcery-speed engine did not need a third. Stark
-#: notes: Industries adds a source of BOTH short colours (U 11 -> 12, R 13 -> 14),
-#: notes: entering tapped as the honest cost. This also cleared the deck's only
-#: notes: SHORT — every remaining craft target is an unowned single.
+#: notes: 2026-08-09 — 3rd CASTLE DOOM OUT FOR THE 3rd STARK INDUSTRIES, and the
+#: notes: argument was re-tested after the premise changed: Castle Doom turned out to
+#: notes: be OWNED x3 (library said 2), so no wildcard saving applies. The swap stands
+#: notes: on the manabase alone. MEASURED: U 11 -> 12, R 13 -> 14 against the tier
+#: notes: note's weakness 1 (short BOTH colours, wants 15-16).
+#: notes: CORRECTION TO AN EARLIER READ: Castle Doom is NOT "effectively a colourless
+#: notes: land" here — 22 of the deck's 36 nonland cards are ARTIFACT spells, so its
+#: notes: any-colour mana casts 61% of the deck, and it enters UNTAPPED where Stark
+#: notes: does not. That is a real cost and it is why this is close. What decides it is
+#: notes: WHICH 39% it cannot cast: Leyline of Transformation — the keystone, still
+#: notes: only 64.6% on turn four — plus every removal spell (Abrade, Plasma Bolt,
+#: notes: Untimely Malfunction, Into the Flood Maw, Brilliance Unleashed) and seven
+#: notes: creatures/planeswalkers. Castle Doom is colourless for exactly the cards the
+#: notes: tier note names as the problem. `consistency` agrees: it counts Castle Doom
+#: notes: as ZERO U and ZERO R sources. The Doombot mint keeps two copies; a
+#: notes: {3}+tap+sacrifice sorcery-speed engine did not need a third.
 #: archetype: IZZET ROBOT TRIBAL, built on the CHOOSE-A-CREATURE-TYPE lord package rather than
 #: archetype: on cards that say the word "Robot". That distinction is the whole reason this
 #: archetype: deck exists: a pool search for a literal Robot lord ("Robots you control get…")
