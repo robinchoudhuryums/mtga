@@ -3111,6 +3111,30 @@ comment explaining the fix necessarily quotes the banned shape. Mutation-tested:
 guard.** This one was accurate, specific, and sat unactioned while an instance of exactly
 what it described lived in the file it guarded.
 
+**The IN-PASS aliasing members closed 2026-08-09 (BS4-18/20).** `lib.alias_front`'s
+docstring has always said that aliasing inside the row loop with `setdefault` is
+order-dependent and wrong, and four builders were still doing it:
+
+| site | indexes | why the gate could not see it |
+|---|---|---|
+| `enrich.index_card` | Scryfall responses | scan covers POOL readers only |
+| `build_mana._store` | Scryfall responses | same |
+| `deck.fetch_missing_rarities` | Scryfall responses | same |
+| `wishlist.owned_index` | library rows | a `+=` counter, not an index build |
+
+The first three now index the REAL (full) name in-pass and call `lib.alias_front` once
+after the fetch loop; `owned_index` sums under the stored name and adds a front alias only
+where no real row claims it. The failure they share is not that a DFC's front is missing —
+it is that a DFC seen EARLY claims the bare front key, so a genuinely distinct card of
+that name arriving later can never claim its own. "Life" is a card as well as the front of
+"Life // Death".
+
+Measured before and after: **zero front-name collisions exist in the current Arena pool**
+(706 two-faced names checked), so every one of these was latent — one printing away from
+writing another card's cost, text or rarity over a real card's, silently and
+order-dependently. That is the honest reason they were worth fixing anyway: the cost of
+the bug is unbounded and the cost of the fix was four second-pass calls.
+
 **2026-08-07 broad scan #2: the class reaches the ingest WRITE side (BS2-02/BS2-25,
 fixed same day).** Every prior member was a READER — a loader, an index, a join, a
 serialized payload. The second scan found the same shape in the writers that create

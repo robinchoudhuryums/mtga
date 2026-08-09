@@ -310,16 +310,18 @@ directions.
   derived data catches up. [G-15]
 - **`card-pool.csv` carries printed `Power`/`Toughness` — parse them with
   `lib.card_power()`**, which returns `None` for the `*`/`X` printings instead of
-  inventing a number; note `card_power(0)` is a real 0, so the helper can't use `or`.
+  inventing a number; note `card_power(0)` is a real 0, so neither the helper NOR ITS
+  CALLERS can use `or` — `power_threshold_flags` carried `card_power(...) or -1` for a
+  year inside the very function this rule documents, until BS4-32 (every X-creature is
+  printed 0/0, so `or` silently unknowns the commonest real zero there is).
   `deck.py stats` flags a "power N+" payoff few of the deck's creatures meet, **scoped by
   `_POWER_SCOPE_MINE_RE` to clauses about creatures YOU control**: removal measures the
   opponent's board and "TOTAL power N" is a SUM, and counting your own bodies was wrong
   in 16 of 27 roster flags. The flag reads the gating trigger's TIMING from its own
-  ability line (fixed 2026-08-09): an ENTERS gate keeps the "a body that GROWS after it
-  enters won't satisfy it" caveat, while an ATTACK-time gate (Scalestorm Summoner, Ruby —
-  "whenever this creature attacks … if/while you control") says the printed count is a
-  FLOOR, since pumped bodies DO satisfy those. The one-size ENTERS caveat had been copied
-  into a `#: tier:` block as a fabricated weakness and retracted the same day. Printed
+  ability line: an ENTERS gate keeps the "a body that GROWS after it enters won't satisfy
+  it" caveat, while an ATTACK-time gate says the printed count is a FLOOR, since pumped
+  bodies DO satisfy those. The one-size caveat had been copied into a `#: tier:` block as
+  a fabricated weakness and retracted the same day. Printed
   stats still under-state any gate a growing deck loosens — read the timing. [G-16]
 - **`card-wishlist.csv` records Power PROVENANCE** in a `Power Source` column
   (`seed` / `hand` / `unknown`). `wishlist.power_is_seeded()` treats seed, unknown and
@@ -327,16 +329,17 @@ directions.
 - **`build_pool.py --all` and `build_mana.py --pool` are the FULL-coverage scopes.** Both
   DEFAULT to something smaller, so a plain rebuild silently shrinks coverage back; both
   now refuse a >50% shrink (`--allow-shrink` to force). `build_mana.py` is also
-  INCREMENTAL — it reuses already-resolved rows and re-fetches only new or unresolved
-  names, and `build_pool.py` REUSES a pool built within the last week for the same query
-  (99% of the old refresh cost was its 91 paginated pages). Skipping the pool is correct,
-  not just fast: it is the whole Arena pool and independent of what you OWN, so an ingest
-  cannot change it — what goes stale is `Legalities` and a new set's arrival, hence a
-  window. **But a TAG-PATTERN edit also stales it**, which the reuse could not see: the
-  stamp records a content hash of `tag_synergies.py` and a mismatch defeats the reuse
-  (BS2-23). An ABSENT hash means UNKNOWN and rebuilds ONCE — the reuse path returns
-  before writing a stamp, so "unknown = reuse" meant the hatch could never arm (BS3-02).
-  `--refetch` (`make refresh REFETCH=1`) forces both. [G-18]
+  INCREMENTAL — it reuses already-resolved rows — and `build_pool.py` REUSES a pool built
+  within the last week for the same query (99% of the old refresh cost was its 91
+  paginated pages). Skipping it is correct, not just fast: the pool is independent of what
+  you OWN, so an ingest cannot change it; what goes stale is `Legalities` and a new set. **But a TAG-PATTERN edit also stales it**, which the reuse could not see: the
+  stamp records a content hash of the files `tags_for` depends on — `tag_synergies.py`
+  AND `deck.py`, since the tagger reads `deck.ENGINE_THEMES` (BS2-23, widened by BS4-37)
+  — and a mismatch defeats the reuse. An ABSENT hash means UNKNOWN and rebuilds ONCE (the
+  reuse path returned before writing a stamp, so "unknown = reuse" could never arm —
+  BS3-02). **Stated non-goal:** card-mana.csv's keyword frequencies also feed the noise
+  floor and are NOT hashed, because a derived file's hash would change on every mana
+  rebuild and the reuse would never fire. `--refetch` (`make refresh REFETCH=1`). [G-18]
 - **`card-wishlist.csv` is UNOWNED craft targets**, with DFCs under their full
   `Front // Back` name. `--rank` blends a hand-graded Power 50/50 with theme fit plus a
   bounded cross-deck breadth bonus; **lands rank on manabase value instead**, since theme
@@ -415,10 +418,13 @@ directions.
 - **The pool's `Legalities` is a build-time SNAPSHOT — Standard rotates.** `suggest`
   marks an aging pick `⚠rot` from the `Released` date, `deck.py rotation` is the
   roster-wide view, and `wishlist --rank` flags a craft target rotating this year or
-  next. Since 2026-08 the CRAFT views carry the same flag: `deck.py check` marks each
-  missing/short card `⚠rot~YEAR` inline, and `wildcards` (incl. `--dedup`, the
-  cross-deck union ranked by decks-served per copy) flags its leverage list — deck 28's
-  plan bought four rotating cards past unflagged views, and deck 49 held five more.
+  next. **EVERY craft view carries the flag now**: `deck.py check` marks each
+  missing/short card `⚠rot~YEAR` inline, `wildcards` (incl. `--dedup`, the cross-deck
+  union ranked by decks-served per copy) flags its leverage list, and since BS4-11 so do
+  `suggest --lands/--ramp/--interaction` and `tier --to`'s craft fillers — the surfaces
+  whose whole purpose is spending wildcards, and the last ones still silent. Owned rows
+  are exempt by design: an owned card costs no wildcard. Deck 28's plan bought four
+  rotating cards past unflagged views, and deck 49 held five more.
   `rotation_risk` is calendar-YEAR based, since rotation happens annually.
   **Reprint caveat, partly encoded:** the pool keys ONE printing, so a card reprinted
   into a long-legality set inherited the wrong date — `_SET_ROTATION_OVERRIDE` fixes the
@@ -681,19 +687,19 @@ directions.
   scorecard really says interaction, the fix is `suggest --needs` per G-38, not a mill
   card. Deck 51 is the worked case: its mill package is a second win condition. [G-62]
 - **THE FRONT FACE AND THE STORED METADATA DISAGREE — ON EVERY COLUMN, AND IN EVERY
-  INDEX.** G-02 is one member of a class that has produced SIX bugs across five columns —
-  **COST** (a modal DFC stored only the front), **COLOR** (identity hid 55 castable
-  red-pool cards — G-58), **TYPE** (a whole-line scan read the BACK face's; deck 49
-  reported 26 lands holding 25), **NAME twice**, **RARITY** (47 roster names priced
-  blank) — plus five more from the 2026-08 scan and the ingest WRITE side (BS2-02).
-  **Ask which face a column describes; alias an INDEX via `lib.alias_front`, key every
-  name JOIN — a writer's too — on `_ms_key`, and read a `#:` header's card names through
-  `deck._header_card_keys`, the ONE home for `#: protect:` + `#: uncastable-ok:`.** Gated
-  by `check_dfc`'s registry, its AST scan for name-index BUILDERS, and its editor-payload
-  scan (every CONSUMER of the serialized index since BS4-14, not just the helper). The
-  header CONSUMERS were the last open member, closed 2026-08-09 — deferred a cycle on a
-  "zero live instances" count deck 66 invalidated four days later. **That count is a fact
-  about a moment, not a property of the code.** [G-63]
+  INDEX.** G-02 is one member of a class that has produced bugs on five COLUMNS — cost,
+  colour (identity hid 55 castable red cards — G-58), type (deck 49 reported 26 lands
+  holding 25), name twice, rarity — plus the 2026-08 scan's five and the ingest WRITE
+  side (BS2-02).
+  **Ask which face a column describes; alias an INDEX via `lib.alias_front` in a SECOND
+  pass — NEVER in-pass with `setdefault`, which lets a DFC seen early claim the bare front
+  key a distinct card owns (BS4-18 closed the last four, three of them indexing Scryfall
+  RESPONSES and so invisible to the pool-reading scan) — key every name JOIN, a writer's
+  too, on `_ms_key`, and read a `#:` header's card names through
+  `deck._header_card_keys`.** Gated by `check_dfc`'s registry, its AST scan for name-index
+  BUILDERS, and its editor-payload scan (every CONSUMER since BS4-14, not just the
+  helper). The header consumers closed on a "zero live instances" count deck 66
+  invalidated four days later — **a fact about a moment, not a property of the code.** [G-63]
 
 - **A reanimator's uncastable bombs need `#: uncastable-ok:`, and everything else's do
   not.** The castability lint and `tier_band` both model "you cannot cast this" as a build
@@ -839,7 +845,8 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
   which re-derives every pool row's `Synergies` through the same `tags_for()`. Skipping
   the pool rebuild used to leave unowned craft candidates ranking on stale tags SILENTLY;
-  since BS2-23 the pool's build stamp carries the tagger's content hash, so an edit here
+  since BS2-23 the pool's build stamp carries a content hash of the tagger AND (since
+  BS4-37) of `deck.py`, whose `ENGINE_THEMES` the tagger reads, so an edit to either
   defeats the freshness reuse and `make refresh` really does re-derive them. **That
   sentence was false for a year of stamps** — a pre-BS2-23 stamp had no hash and the reuse
   path never wrote one, so the check could not arm (BS3-02, G-18). VERIFY the pool
