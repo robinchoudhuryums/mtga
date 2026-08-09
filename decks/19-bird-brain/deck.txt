@@ -12,10 +12,12 @@
 #: tier: list (token doubler across 13 feeders, a board-wide +1/+1-and-flying anthem, and
 #: tier: removal). The case for holding B is singleton variance, card advantage still 2,
 #: tier: and protection 2 with a thin W manabase.
-#: tier: WHAT ACTUALLY CAPS IT, measured: `consistency` prices Aven Interrupter's {W}{W}
-#: tier: at 58% on turn three and Storm, Windrider at 61% on turn four — the deck wants
-#: tier: roughly +8 to +10 white sources it does not have. That is the real ceiling, and
-#: tier: it is a manabase problem rather than a card-quality one.
+#: tier: WHAT ACTUALLY CAPS IT, measured: the white manabase. `consistency` priced the
+#: tier: deck's {W}{W} costs in the high-50s-to-low-60s% on curve (Storm, Windrider reads
+#: tier: 61% on turn four), wanting roughly +8 white sources. The 2026-08-09 Route-B
+#: tier: start — Aven Interrupter WAS CUT for Owlin Historian, same Bird flier at one W
+#: tier: pip instead of two — removed the worst row (58% on turn three); Storm and
+#: tier: Elspeth's {W}{W} remain, so the ceiling is thinner but still real.
 #: tier: THREE STALE CLAIMS WERE CORRECTED HERE and `--audit-rationale` reported the block
 #: tier: CLEAN throughout: it cited Crib Swap, which this deck does not run; it said
 #: tier: "buildable now bar 2 more Gysahl Greens" when all 3 are owned; and it said "no
@@ -67,7 +69,7 @@
 1 Momo, Friendly Flier (TLA) 29
 1 Sunbird Standard (LCI) 262
 1 Shrike Force (BLB) 31
-1 Aven Interrupter (OTJ) 4
+1 Owlin Historian (SOS) 24
 
 # Ramp / support / fun
 1 Studious First-Year (SOS) 162
