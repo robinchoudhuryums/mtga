@@ -679,16 +679,16 @@ directions.
   INDEX.** G-02 is one member of a class that has produced SIX bugs across five columns —
   **COST** (a modal DFC stored only the front), **COLOR** (identity hid 55 castable
   red-pool cards — G-58), **TYPE** (a whole-line scan read the BACK face's; deck 49
-  reported 26 lands holding 25), **NAME twice** (a bare front name written by
-  `swap --apply`, then read back as DRIFT), **RARITY** (47 roster names priced blank) —
-  plus FIVE more from the 2026-08 scan (two indexes, two exact-name JOINS, the editor's
-  JS payload) and the ingest WRITE side, where reconcile/import_arena APPENDED a
-  duplicate front-name row and split the owned count (BS2-02). **Ask which face a column describes; alias
-  via `lib.alias_front` (the ONE second-pass home, ENFORCED by `check_dfc`'s registry +
-  the editor-payload pin); key every name JOIN — a writer's too — on `_ms_key`.** The
-  registry is now itself gated by an AST scan for pool-shaped name-index BUILDERS: it
-  only ever checked loaders someone listed, and every bug in this class was a loader on
-  no list (2026-08; it found `deck._legality_of` on its first run). [G-63]
+  reported 26 lands holding 25), **NAME twice**, **RARITY** (47 roster names priced
+  blank) — plus five more from the 2026-08 scan and the ingest WRITE side, where
+  reconcile/import_arena APPENDED a duplicate front-name row (BS2-02). **Ask which face a
+  column describes; alias an INDEX via `lib.alias_front`, key every name JOIN — a
+  writer's too — on `_ms_key`, and read a `#:` header's card names through
+  `deck._header_card_keys`, the ONE home for `#: protect:` + `#: uncastable-ok:`.** Gated
+  by `check_dfc`'s registry, its AST scan for name-index BUILDERS, and the editor-payload
+  pin. The header CONSUMERS were the last open member, closed 2026-08-09 — deferred a
+  cycle on a "zero live instances" count that deck 66 invalidated four days later. **That
+  count is a fact about a moment, not a property of the code.** [G-63]
 
 - **A reanimator's uncastable bombs need `#: uncastable-ok:`, and everything else's do
   not.** The castability lint and `tier_band` both model "you cannot cast this" as a build
@@ -746,6 +746,18 @@ directions.
   editorial) and found two more the moment it ran: deck 56's Boros header protected two
   GREEN cards that live only in its Gruul variant 56a. Joined on `_ms_key` per G-63, so a
   DFC named by its front face does not read as stale. [G-68]
+
+- **A BASELINE UPDATED BEFORE THE GATE THAT READS IT IS A MUTED GATE.** `make postedit`
+  ran `check_roles.py --update-baseline` unconditionally and FIRST, so every new zero-role
+  card was acknowledged before `check_all` could warn about it — on the exact workflow
+  (after every deck edit) the radar was built for. `--update-baseline` rewrites the file
+  from the CURRENT set, so it cannot tell one genuinely roleless new card from a
+  `_ROLE_PATTERNS` edit that just re-zeroed fifty; the only residual signal was an unread
+  diff of a 425-line file. It now NAMES every card it acknowledges and REFUSES a jump over
+  `--max-new` (postedit passes `MAXNEW`, default 8 — `make postedit MAXNEW=40` for a
+  deliberate bulk pass). **The shape generalizes: when an acknowledge step and a warn step
+  run in one command, the ORDER decides whether the warning exists at all** — and the same
+  all-or-nothing rewrite still sits under `check_keywords.py --update-baseline`. [G-69]
 
 ## Known Issues
 

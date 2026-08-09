@@ -16,13 +16,12 @@ commands disagree.
 
 ## 1. Repo position
 
-- Working branch **`claude/broad-scan-v74wau`**. Three PRs merged on 2026-08-09: **#110**
-  (the whole broad-scan-2 cycle — #109 before it was closed WITHOUT merging), **#111** (the
-  duplicate-craft sweep) and **#112** (this session). The branch is restarted from `main`
-  after each merge. **Check `git log origin/main..HEAD` before your first commit** — if it
-  is empty, the last PR merged and you must restart from `main`
-  (`git fetch origin main && git checkout -B claude/broad-scan-v74wau origin/main`).
-- Gates green: `check_all` all invariants hold, **ZERO soft warnings**. **1,078 tests in
+- Working branch **`claude/broad-scan-3fw71t`** (broad-scan-3, 2026-08-09), pushed but
+  **not yet merged**. Earlier: PRs #110/#111/#112 all merged 2026-08-09. The branch is
+  restarted from `main` after each merge. **Check `git log origin/main..HEAD` before your
+  first commit** — if it is empty, the last PR merged and you must restart from `main`
+  (`git fetch origin main && git checkout -B <branch> origin/main`).
+- Gates green: `check_all` all invariants hold, **ZERO soft warnings**. **1,105 tests in
   29 files.** The 7 blank-Card-Text `validate` warnings are K-11 vanilla creatures and are
   expected, not a data gap.
 - Collection **2,133 library rows**; roster **99 deck files**, numbered through **66**;
@@ -224,10 +223,21 @@ In priority order, with the reason:
 - **Craft cost is REPORTED, never REASONED FROM** (`[G-10]`). Four ownership counts were
   wrong in one session and one of them was load-bearing in a recommendation.
 
-## 6. The one open item from the cycle's own findings
+## 6. The one open item from the cycle's own findings — NOW CLOSED
 
-**BS2-07's header-consumer sweep.** `rank_cut_candidates` / `_castability` /
-`_weakest_cut` still compare raw lowercase names against `#: protect:` /
-`#: uncastable-ok:`, while `header_card_staleness` joins on `_ms_key`. Zero live instances
-measured, so it is documented as deliberately open in `docs/gotchas.md`'s G-63 section
-rather than fixed blind. It is the one member of the G-63 class this cycle did not close.
+**BS2-07's header-consumer sweep is CLOSED (2026-08-09, as BS4-01), and the way it was
+deferred is worth carrying forward.** It was left open on a measurement — zero live
+instances, all 14 DFC-bearing headers using the full spelling — taken 2026-08-07. **Deck
+66 was drafted 2026-08-08 with `#: protect: Eddie Brock` against a line storing `Eddie
+Brock // Venom, Lethal Protector`, so the count was wrong the next day**: the deck's own
+title card sat in its cut ranking while `header_card_staleness` reported the roster clean,
+because that gate joins on `_ms_key` and the consumers did not. A gate vouching for the
+thing it exists to detect is worse than no gate.
+
+`deck._header_card_keys` is now the one home both headers share; every consumer keys its
+side. Roster A/B against a pre-fix tree: exactly one deck changed (66), **zero tier floors
+moved, zero uncastable counts changed**. Full evidence in `docs/gotchas.md` [G-63].
+
+**The transferable lesson, now written into G-63: defer on the MECHANISM, never on the
+census.** A zero-instances count is a fact about a moment; whether a join can ever be
+wrong is the property that actually decides.

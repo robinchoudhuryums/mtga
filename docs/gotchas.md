@@ -3073,13 +3073,32 @@ already-in-deck filters and `similar`'s shared-card intersection, the last of wh
 the "▸ Most shared CARDS" figure G-47 tells the reader to trust when it disagrees with the
 cosine, so a card the two decks spelled differently simply never counted. `similar`
 intersects KEYS through a key→display map, keeping the count right without printing
-lowercased keys at the reader. **ONE MEMBER REMAINS OPEN**, deliberately: the
-`#: protect:` / `#: uncastable-ok:` CONSUMERS (`rank_cut_candidates`, `_castability`,
-`_weakest_cut`) still compare raw lowercase names while `header_card_staleness` — the gate
-built to catch a dead header entry — joins on `_ms_key`, so a header naming a DFC by its
-other face is a disabled instruction the gate certifies as healthy. Measured at zero live
-instances (all 14 DFC-bearing headers happen to use the full spelling), which is why it was
-left rather than rushed; it is the next thing to close in this class.
+lowercased keys at the reader.
+
+**The last member — the HEADER CONSUMERS — closed 2026-08-09 (BS4-01), and how it was
+deferred is the more useful half of the story.** The `#: protect:` / `#: uncastable-ok:`
+consumers (`rank_cut_candidates`, `_castability`, `_weakest_cut`, both signature-theme
+functions, `recommendation_row`) compared raw lowercase names, while
+`header_card_staleness` — the gate built to catch a dead header entry — joins on
+`_ms_key`. So a header naming a DFC by its other face was a disabled instruction that the
+gate certified as healthy: **a gate vouching for the thing it exists to detect, which is
+strictly worse than no gate**, because the green check is itself the evidence of health.
+
+It was left open on a measurement: zero live instances, all 14 DFC-bearing headers using
+the full spelling. That measurement was taken 2026-08-07. **Deck 66 was drafted 2026-08-08
+with `#: protect: Eddie Brock` against a line storing `Eddie Brock // Venom, Lethal
+Protector`, and the count was wrong the next day** — the deck's own title card sat in its
+cut ranking, and the staleness sweep reported the roster clean throughout. A
+zero-instances count is a fact about a moment; the code property is whether the join can
+ever be wrong, and that had not changed. **Defer on the mechanism, never on the census.**
+
+The fix normalizes at the READER rather than per call site: `deck._header_card_keys` is
+the one home both headers share, returning `_ms_key` keys, and every consumer keys its
+side. Verification worth keeping: the whole 97-deck roster was A/B'd against a pre-fix
+copy of `scripts/`, and **exactly one deck changed (66), with zero tier floors moved and
+zero uncastable counts changed** — the `uncastable-ok` half is the one that can raise a
+floor by exempting a card, and it had no live instance, so nothing silently re-graded.
+Four tests pin it, three of which were confirmed to fail against the pre-fix code.
 
 **Batch A/B of the same scan closed five more members in one pass**, all the raw-name
 join shape: the swap CUT side (`_cards_after_swap` / `_swap_edit_lines` /
@@ -3406,3 +3425,49 @@ card added later could be silently exempted if the names happened to collide.
 
 Five tests pin it, including a roster-wide behavioural anchor: both known instances are
 fixed, so any new hit is a regression someone introduced rather than a backlog item.
+
+## [G-69] A baseline updated before the gate that reads it is a muted gate
+
+`check_roles.py` is the radar for cards `classify_roles` scores with NO functional role.
+Its contract, in its own docstring, is *"the set only ever SHRINKS, and a NEW zero gets
+looked at once."* The looking-at-once is the entire value: `_ROLE_PATTERNS` is a whitelist
+(G-67), its failure mode is a silent under-count, and eight such holes were found in one
+2026-08 session — every one by a human reading a card.
+
+`make postedit`, the after-every-deck-edit tail, ran:
+
+```
+python3 scripts/check_roles.py --update-baseline     # step 1
+python3 scripts/build_dashboard.py                   # step 2
+python3 scripts/check_all.py                         # step 3
+```
+
+and the Makefile comment explained the ordering: *"the baseline must update BEFORE
+check_all or the gate warns about the cards the baseline was about to acknowledge."* That
+sentence is correct about the mechanics and describes a muted radar. Step 1 consumed the
+warning step 3 existed to raise, on precisely the workflow the radar was built for.
+
+**Why it could not self-correct.** `--update-baseline` rewrites the file from the CURRENT
+zero-role set — it is all-or-nothing, with no per-entry acknowledge. So it cannot
+distinguish:
+
+* one genuinely roleless new card (a vanilla body, a pure combat trick), from
+* a `_ROLE_PATTERNS` edit that just re-zeroed fifty cards that used to classify.
+
+Both are "the baseline grew." The only residual signal was an unreviewed diff of a
+425-line file inside a commit that also touched decks and the dashboard, and the printed
+output was a single total — a number that moves without naming what moved is exactly the
+delta-blind shape K-01 documents.
+
+**The fix keeps the ergonomics and removes the silence.** `baseline_delta()` reports what
+an update WOULD change (newly-acknowledged DISPLAY names, plus pruned entries);
+`--update-baseline` now always computes it first, NAMES every card it acknowledges, and
+REFUSES a jump larger than `--max-new` (exit 1, writing nothing, printing the names and
+the remedy). `make postedit` passes `MAXNEW`, default 8; a real bulk acknowledge is
+`make postedit MAXNEW=40`, which is a deliberate act rather than a default.
+
+**The generalization is the point.** When one command contains both an ACKNOWLEDGE step
+and a WARN step over the same set, the order decides whether the warning exists at all —
+and the convenience of automating the pair is what hides it. The same all-or-nothing
+rewrite still sits under `check_keywords.py --update-baseline`; it is not currently
+automated into a routine command, which is the only reason it is not the same bug.

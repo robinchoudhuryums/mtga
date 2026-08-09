@@ -52,7 +52,11 @@ python3 scripts/import_collection.py collection.csv      # dry run; --apply to w
 `import_arena.py` parses MTG Arena's `<qty> <Name> (<SET>) <collector#>` format and
 merges into `card-library.csv`, keyed by Card Name + Set Code + Collector # (one row per
 printing). Re-imports take the **max** quantity seen (decks share one collection, so
-counts don't sum); `--skip-basics` ignores basic lands.
+counts don't sum); `--skip-basics` ignores basic lands. A line with **no collector
+number** — `4 Llanowar Elves`, or `4 Llanowar Elves (DOM)` from a website list — is
+treated as a NAME-level claim rather than a printing: it is compared against the summed
+total across every printing you own and tops up the first row only if it exceeds that,
+so it can never append a phantom printing that makes a real 4 read as 8.
 
 `import_collection.py` is the counterpart for a full-collection export, and the only tool
 here that can **lower** a count — which is why it is dry-run by default, refuses an export
@@ -388,8 +392,10 @@ buildability. For a **new** card the line's quantity is the owned count; for a c
 **already** in the library it takes `max(existing, line)`, so pasting a deck-dump
 slice (each line a lower bound) can't silently drop a real count — pass
 `--set-exact` to set the count exactly (allowing a deliberate decrease). Lines that
-look like a card but don't parse are reported (not silently skipped). Dry-run by
-default; after `--apply`, run `build_gallery.py` + `check_all.py` (or `/refresh`).
+look like a card but don't parse are reported (not silently skipped), and **basic lands
+are skipped** — they aren't part of the collection (unlimited in Arena), so pasting a
+full deck list here is safe; the skipped lines are listed rather than silently dropped.
+Dry-run by default; after `--apply`, run `build_gallery.py` + `check_all.py` (or `/refresh`).
 This is the fast fix for the **"not in library" undercount symptom** — a card you
 own that `deck.py check` still lists as a craft target.
 
@@ -1204,7 +1210,10 @@ make refresh
 Runs the whole chain in dependency order: `enrich` → `build_pool --all` →
 `build_mana --pool` → `tag_synergies --merge` → `build_gallery` → `check_all`.
 (`make postedit` is the separate after-a-DECK-edit tail — re-baseline roles,
-rebuild the dashboard, run the gate — offline and independent of this chain.)
+rebuild the dashboard, run the gate — offline and independent of this chain. Its
+re-baseline step NAMES every zero-role card it acknowledges and refuses a jump over
+`MAXNEW` (default 8), since a large jump is a `_ROLE_PATTERNS` regression rather than a
+batch of new cards; use `make postedit MAXNEW=40` for a deliberate bulk acknowledge.)
 The order is a real dependency graph (`build_mana --pool` reads `card-pool.csv`;
 `tag_synergies` reads `card-mana.csv`'s keywords), and getting it wrong is quiet
 rather than loud — a new set's pool cards end up with no mana row until the next
