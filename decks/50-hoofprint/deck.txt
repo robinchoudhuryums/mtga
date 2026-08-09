@@ -2,14 +2,14 @@
 #: format: Standard
 #: colors: G
 #: plan: midrange
-#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 5
-#: tier: plus card advantage 3 at a 3.25 curve. Two of the three weaknesses this deck was first
+#: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 6
+#: tier: plus card advantage 3 at a 3.31 curve. Two of the three weaknesses this deck was first
 #: tier: graded on have since been ADDRESSED, and the letter is held pending play rather than on
 #: tier: the original argument. What remains:
-#: tier: 1. EVERY REMOVAL SPELL IS STILL A FIGHT EFFECT, so the interaction and the board are the
-#: tier:    SAME resource. A sweeper takes both in one card: the creatures die and the five
-#: tier:    removal spells in hand become blanks at the same moment. No other deck on the roster
-#: tier:    couples its answers to its threats this tightly, and nothing added since fixes it.
+#: tier: 1. THE REMOVAL IS NEARLY ALL FIGHT EFFECTS, so the interaction and the board are mostly
+#: tier:    the SAME resource. A sweeper still takes both in one card. SOFTENED 2026-08-09:
+#: tier:    Vivien Reid's -3 (flier / artifact / enchantment) is the one removal effect here
+#: tier:    that works with an EMPTY board; the other five remain coupled to the creatures.
 #: tier: 2. THE FINISHERS ARE STILL SORCERY-SPEED PERMANENTS. Protection is now 3 rather than 2 —
 #: tier:    Inspiring Call grants indestructible to the whole countered board and Swiftfoot Boots
 #: tier:    covers one creature — but a removal spell on the turn Craterhoof resolves still costs
@@ -232,6 +232,17 @@
 #: notes: WEB OF LIFE AND DESTINY was tested from the same pile and REJECTED: it is a free
 #: notes: creature every combat, but at {6}{G}{G} it took interaction 6 -> 5, avg MV 3.11 ->
 #: notes: 3.31 and early drops 21 -> 20. Convoke makes it castable; it does not make it cheap.
+#: notes: 2026-08-09 DEDUP PASS (user-decided): the 2nd Enduring Vitality — a DUPLICATE
+#: notes: craft of a DSK rare that rotates ~2027 — came out for Vivien Reid (owned M): her
+#: notes: +1 digs toward the singleton Craterhoof, her -3 is the deck's only removal that
+#: notes: works with an empty board, and the -8 emblem is a standing mini-hoof. The engine
+#: notes: redundancy Vitality #2 was insuring moved to a LAND: Evendo, Waking Haven (owned
+#: notes: M) in for a Forest — station 12+ and it taps for {G} per creature, the Itlimoc
+#: notes: effect at zero spell slots; it taps for {G} from turn one so green sources hold.
+#: notes: Honest cost: the Vitality EFFECT is now one enchantment plus one land, a real
+#: notes: consistency step down on that axis, taken against the rotation clock. 2nd
+#: notes: CRATERHOOF STAYS A CRAFT — re-verified 2026-08-09 against the current pool:
+#: notes: still nothing in Standard is a second Craterhoof (closest: owned Overrun).
 #: notes: THE EARTH CRYSTAL WAS TESTED AND REJECTED, against five different cuts. "Green spells
 #: notes: you cast cost {1} less" plus counter-doubling is genuinely good and it is OWNED, but
 #: notes: every cut that funds it costs either a CREATURE — the deck's actual currency, since
@@ -259,7 +270,7 @@
 1 Jadelight Spelunker (LCI) 196
 
 # The board-to-mana converter
-2 Enduring Vitality (DSK) 176
+1 Enduring Vitality (DSK) 176
 
 # The cheat — connects, then puts Craterhoof into play from hand
 1 Michelangelo, Improviser (TMT) 119
@@ -284,7 +295,8 @@
 1 Colossification (BLB) 392
 1 Jumbo Cactuar (FIN) 191
 
-# Interaction — instant-speed fights plus green's only noncreature answers
+# Interaction — instant-speed fights, green's noncreature answers, and Vivien's -3
+1 Vivien Reid (FDN) 234
 1 Hard-Hitting Question (MKM) 164
 1 Bite Down (FDN) 212
 1 Pawpatch Formation (BLB) 186
@@ -295,7 +307,8 @@
 # Lands (24) — Three Tree City names Druid; Rogue's Passage is the 2nd evasion route
 1 Three Tree City (BLB) 260
 1 Rogue's Passage (HOC) 212
-22 Forest (MSH) 295
+21 Forest (MSH) 295
+1 Evendo, Waking Haven (EOE) 253
 
 # Flex — measured and parked. See: deck.py flex 50
 #~ -Plow Through | +Earth's Mightiest Heroes | OWNED, and the biggest cheat effect in green: teamwork 5 (tap creatures with total power 5+), reveal eight, and put ANY NUMBER of creature cards from among them onto the battlefield. In a deck that goes wide and then reads creature count three ways, resolving it with teamwork is often three or four bodies at once — and Craterhoof's X counts every one. Parked because it MEASURED as a curve cost in every configuration: against Clash of the Eikons it took interaction 6 -> 5, avg MV 3.11 -> 3.25 and early drops 21 -> 20; against Great Forest Druid, avg MV -> 3.22 with a creature lost; adding it alongside Sledge-Class Seedship read 3.28 / 19 early. This deck's whole advantage is a 3.11 curve with 21 early drops, and it already runs TWO cheat engines (Michelangelo, Loot). Take this only if the deck plays out as top-heavy-but-slow rather than fast-but-shallow. The rest of the cheat package went to 50a, which is slow enough to pay for it: Ojer Kaslem, Kona Rescue Beastie and Web of Life and Destiny.
