@@ -48,6 +48,16 @@
 #: notes: with "1 artifact to sacrifice" because it counts artifact CARDS in the
 #: notes: list — the deck's artifacts are TOKENS from 14 producer cards, which no
 #: notes: list scan can see. The gates are fed; do not cut the payoffs over it.
+#: notes: 2026-08-09 DEDUP PASS (user-decided): the 2nd Magda — a LEGEND rotating
+#: notes: ~2027, whose Treasure needs a CRIME the deck only conditionally commits —
+#: notes: came out for Death to Our Enemies (owned U): a Treasure per noncreature
+#: notes: spell (~12 here), on an ENCHANTMENT — the one producer type that survives
+#: notes: both the mass-artifact-removal risk the tier note names AND a creature
+#: notes: sweeper — with the 4th plan counter cashing out as 7 damage, reach this
+#: notes: deck otherwise lacks. J. Jonah Jameson was checked for the slot and
+#: notes: REJECTED on a count: his Treasure keys on MENACE attackers and the deck's
+#: notes: menace count is ZERO (his own ETB suspect is the only source) — he wants a
+#: notes: deck that already runs menace, e.g. 66 (G-61: state the count, then decide).
 #: notes: 2026-08-07 — CHANDRA, SPARK HUNTER IN FOR ONE ELVISH ARCHIVIST (1-for-1; the second
 #: notes: Archivist stays). Two reasons. ROTATION: Archivist is WOE and goes ~2026, Chandra is
 #: notes: DFT and owned, so this is the same rotation-proofing trade decks 28 and 36 took.
@@ -67,7 +77,8 @@
 
 # Producers (the mint)
 2 Greedy Freebooter (LCI) 109
-2 Magda, the Hoardmaster (OTJ) 133
+1 Magda, the Hoardmaster (OTJ) 133
+1 Death to Our Enemies (MSH) 127
 2 Jolene, Plundering Pugilist (OTJ) 210
 2 Flamekin Gildweaver (ECL) 140
 2 Terrapact Intimidator (EOE) 164
