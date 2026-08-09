@@ -1,7 +1,28 @@
 #: name: Bird Brain
 #: format: Standard
-#: tier: B — Bant (effectively GW go-wide + a trivial 3-pip U splash) Bird tribal / Chocobo-landfall tokens; fully built. Deep, coherent engine (16 Birds, 8 Bird payoffs, 20 total payoffs + 3 anthems) on a low aggressive curve with clean 2-color-effective mana. Promoted from C after the interaction package: +Crib Swap / +Stroke of Midnight / +Dazzling Denial / +Bushwhack took interaction 1→4 (exile / destroy-any-permanent / Bird-boosted counter / fight) so a sweeper or resolved bomb is no longer an auto-loss, and +The Legend of Kyoshi (over Squirrel Girl) restored a wipe-resilient refuel engine (draws = greatest creature power; later a land-animating mana sink), keeping card advantage from bottoming out. Held below A by singleton variance + a still-modest interaction/card-advantage count (no true bombs, no protection). Buildable now bar 2 more Gysahl Greens (Common).
+#: tier: B — Bant (effectively GW go-wide + a trivial 3-pip U splash) Bird tribal /
+#: tier: Chocobo-landfall tokens; fully built and FULLY OWNED. Deep, coherent engine (16
+#: tier: Birds, 20 total payoffs) on a wide plan `shape` measures at WIDE 12 / TALL 1,
+#: tier: with clean 2-color-effective mana.
+#: tier: RE-GRADE PENDING A HUMAN CALL (2026-08-09). The metrics floor is now A —
+#: tier: interaction 5 + card advantage 2 — after -Dazzling Angel / +Elspeth, Storm
+#: tier: Slayer, and `deck.py tier` reports the deck as possibly UNDER-graded. The letter
+#: tier: is deliberately left at B until a person decides: tier letters are never
+#: tier: auto-written here. The case FOR A is that Elspeth is three cards in one for this
+#: tier: list (token doubler across 13 feeders, a board-wide +1/+1-and-flying anthem, and
+#: tier: removal). The case for holding B is singleton variance, card advantage still 2,
+#: tier: and protection 2 with a thin W manabase.
+#: tier: WHAT ACTUALLY CAPS IT, measured: `consistency` prices Aven Interrupter's {W}{W}
+#: tier: at 58% on turn three and Storm, Windrider at 61% on turn four — the deck wants
+#: tier: roughly +8 to +10 white sources it does not have. That is the real ceiling, and
+#: tier: it is a manabase problem rather than a card-quality one.
+#: tier: THREE STALE CLAIMS WERE CORRECTED HERE and `--audit-rationale` reported the block
+#: tier: CLEAN throughout: it cited Crib Swap, which this deck does not run; it said
+#: tier: "buildable now bar 2 more Gysahl Greens" when all 3 are owned; and it said "no
+#: tier: protection" against a measured 2. The block was one ~1000-character line, which
+#: tier: may be what defeated the scan's proximity windows — it is wrapped now.
 #: colors: GWU
+#: protect: Traveling Chocobo; Choco, Seeker of Paradise; Kastral, the Windcrested; Elspeth, Storm Slayer
 #: archetype: Bant (G/W/U) go-wide tokens — Chocobo landfall Birds + copy-army + flyers/anthems.
 #: notes: Promoted from variant 19a (Bant Tokens) to primary. Bant (GWU) go-wide:
 #: notes: Chocobo landfall Bird tokens + For the Common Good copy-army, with a
@@ -40,7 +61,7 @@
 1 Miner's Guidewing (LCI) 24
 1 Ambrosia Whiteheart (FIN) 6
 1 Dawnwing Marshal (FDN) 570
-1 Dazzling Angel (FDN) 9
+1 Elspeth, Storm Slayer (TDM) 11
 1 Stirring Hopesinger (SOS) 35
 1 Bushwhack (BRO) 174
 1 Momo, Friendly Flier (TLA) 29
