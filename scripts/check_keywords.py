@@ -155,7 +155,16 @@ def flavor_overreach(threshold=3):
     try:
         import deck as _dk
         engine_words = set()
-        for _theme, _sides in getattr(_dk, "ENGINE_THEMES", {}).items():
+        # `getattr(..., {})` would make a RENAME of ENGINE_THEMES return an empty dict and
+        # take the silent-default path: the loop produces no engine words, the `-2` signal
+        # evaporates, and the `except` below — added precisely so this could not die
+        # quietly — never fires, because nothing raised. A structural error was loud while
+        # the likeliest refactor was silent (BS4-26). Ask for the attribute directly.
+        if not hasattr(_dk, "ENGINE_THEMES"):
+            raise AttributeError(
+                "deck.ENGINE_THEMES is gone (renamed?) — the engine-mechanic screen has "
+                "nothing to read. Point this cross-check at its new name")
+        for _theme, _sides in _dk.ENGINE_THEMES.items():
             for _role, _pats in _sides.items():
                 for _p in _pats:
                     engine_words |= {m.lower() for m in re.findall(r"\\b([a-z][a-z'\- ]+)\\b", _p)}
@@ -205,6 +214,24 @@ def check(text_shape=False, include_baselined=False):
     return out
 
 
+def baseline_delta():
+    """(newly_acknowledged, pruned) — what `--update-baseline` WOULD change.
+
+    The keyword sibling of `check_roles.baseline_delta`, and it exists for the same
+    reason (BS4-10/G-69): `_write_baseline` rewrites the file from the CURRENT unindexed
+    set, so it cannot distinguish "one new set's mechanic" from "a `KEYWORD_THEMES` edit
+    just un-indexed thirty keywords". Acknowledging one entry acknowledged every
+    concurrent regression in the same run, and a bare total is what the caller printed.
+
+    K-01 is the reason this matters more here than the count suggests: a keyword's
+    reported COUNT is not its population (`jump` reports 13 cards of which 11 are
+    `Jump-start`), so these entries have to be READ, one at a time, not tallied."""
+    base = load_baseline()
+    current = set(_signal_a(known_keywords(), _owned_names()))
+    return (sorted(k for k in current if k not in base),
+            sorted(k for k in base if k not in current))
+
+
 def _write_baseline():
     known, owned = known_keywords(), _owned_names()
     kws = sorted(_signal_a(known, owned))
@@ -223,11 +250,45 @@ def main():
     ap.add_argument("--all", action="store_true", help="show every unindexed owned keyword (ignore baseline)")
     ap.add_argument("--text-shape", action="store_true", help="also run the '<Word> —' heuristic")
     ap.add_argument("--update-baseline", action="store_true", help="acknowledge the current unindexed set")
+    ap.add_argument("--max-new", type=int, default=0,
+                    help="with --update-baseline, REFUSE to acknowledge more than N new "
+                         "keywords in one run (0 = no limit). A large jump is a "
+                         "KEYWORD_THEMES regression, not a new set")
+    ap.add_argument("--show-delta", action="store_true",
+                    help="with --update-baseline, print exactly what was acknowledged "
+                         "and what stale entries were pruned")
     args = ap.parse_args()
     if args.update_baseline:
+        # Same contract as check_roles: name what you acknowledge, and refuse a
+        # regression-sized jump (BS4-10). A keyword especially must be READ rather than
+        # tallied — K-01's `jump` reports 13 cards of which 11 are the wrong mechanic.
+        new, pruned = baseline_delta()
+        if args.max_new and len(new) > args.max_new:
+            eprint(f"REFUSING to update the baseline: {len(new)} NEW unindexed keyword(s) "
+                   f"exceeds --max-new {args.max_new}. A jump this size is usually a "
+                   f"KEYWORD_THEMES/FLAVOR_KEYWORDS regression rather than a new set. "
+                   f"Review them first:")
+            for kw in new[:20]:
+                eprint(f"    + {kw}")
+            if len(new) > 20:
+                eprint(f"    … and {len(new) - 20} more")
+            return 1
         n = _write_baseline()
         print(f"Baseline updated: {n} acknowledged unindexed keyword(s) written to "
               f"{os.path.basename(BASELINE)}.")
+        if new or pruned:
+            print(f"  {len(new)} newly acknowledged, {len(pruned)} stale entr(ies) pruned.")
+            show = args.show_delta or len(new) <= 10
+            for kw in (new if show else new[:10]):
+                print(f"    + {kw}   (NEW — READ the cards; a reported count is not a "
+                      f"population, see K-01)")
+            if not show and len(new) > 10:
+                print(f"    … and {len(new) - 10} more (--show-delta for all)")
+            if args.show_delta:
+                for kw in pruned:
+                    print(f"    - {kw}   (pruned)")
+        else:
+            print("  No change to the acknowledged set.")
         return 0
     # ALL THREE signals, exactly as check_all consumes them (BS2-C small leaks):
     # a standalone run used to report only the unindexed list — and, worse,

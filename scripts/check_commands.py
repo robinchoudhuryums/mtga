@@ -125,6 +125,60 @@ def _script_text(directory=SCRIPTS_DIR, exclude=("deck.py",)):
                      if f.endswith(".py") and f not in exclude)
 
 
+# A mention that TELLS YOU NOT TO RUN something is not coverage. Narrow on purpose, and
+# clause-scoped, mirroring the rationale audit's suppression design (G-26): a broad cue
+# list here would silently DROP real coverage, which is the expensive direction.
+_CAUTION_CUES = re.compile(
+    r"\b(never|do not|don't|avoid|instead of|rather than|without|deprecated|blindly)\b",
+    re.I)
+# Sentence-ish bounds. A skill is Markdown, so a newline ends a clause as surely as a stop.
+_CLAUSE_EDGE = re.compile(r"[.;:\n]")
+
+
+def _clause_around(text, pos):
+    """The clause containing `pos` — between the nearest sentence-ish breaks."""
+    lo = 0
+    for m in _CLAUSE_EDGE.finditer(text, 0, pos):
+        lo = m.end()
+    m = _CLAUSE_EDGE.search(text, pos)
+    return text[lo:m.start() if m else len(text)]
+
+
+def _cited_as_usage(text, pattern):
+    """True if `pattern` appears at least once OUTSIDE a caution clause.
+
+    The script half of this gate has required an executable shape since BS2-31, because
+    two of `build_pool.py`'s three skill mentions were warnings NOT to run it — so
+    deleting its one real invocation would have left the gate green. The SUBCOMMAND half
+    kept a plain text match, so the same warning-counts-as-coverage hole was open one
+    column over: "never run `deck.py sync --apply` blindly" granted `sync` its coverage
+    (BS4-09).
+
+    Requiring `python3 scripts/deck.py <name>` was measured and REJECTED as the fix: the
+    skills legitimately write 30 of their command references in the bare `deck.py <name>`
+    form and only 3 subcommands appear inside fenced code blocks, so an executable-shape
+    rule would have failed 27 live, genuinely-covered commands. Suppressing the caution
+    CLAUSE instead costs nothing today (measured: zero subcommands lose coverage) while
+    closing the hole — and if every mention of a command is a warning, that command is
+    exactly as unreachable as the gate is meant to detect."""
+    for m in re.finditer(pattern, text):
+        if not _CAUTION_CUES.search(_clause_around(text, m.start())):
+            return True
+    return False
+
+
+def _strip_make_comments(text):
+    """A Makefile with its comment lines removed.
+
+    Coverage for a script may come from `scripts/<fn>` appearing in the Makefile, since
+    `make refresh` IS the invocation. But the match ran against the raw file, so a COMMENT
+    counted — Makefile line 3 mentions `scripts/app.py`, and a future "do NOT run
+    scripts/foo.py here" comment would grant coverage to a script nothing runs (BS4-25).
+    Same warning-counts-as-coverage shape as `_cited_as_usage`, in the other input."""
+    return "\n".join(ln for ln in (text or "").splitlines()
+                     if not ln.lstrip().startswith("#"))
+
+
 def check():
     """Return a list of error strings (empty == healthy). Never raises."""
     errs = []
@@ -148,7 +202,8 @@ def check():
         # A skill drives it... `(?![\w-])`, not `\b`: a bare word boundary is satisfied
         # at a hyphen, so `deck.py suggest\b` matched "deck.py suggest-homes" and the
         # `suggest` subcommand inherited coverage from an unrelated command (BS2-31).
-        if re.search(rf"deck\.py {re.escape(name)}(?![\w-])", skills):
+        # A mention inside a CAUTION does not count — see `_cited_as_usage`.
+        if _cited_as_usage(skills, rf"deck\.py {re.escape(name)}(?![\w-])"):
             continue
         # ...or another module CALLS it programmatically. Deliberately matching the
         # `cmd_*` function rather than the string "deck.py <name>": every docstring in
@@ -190,8 +245,9 @@ def check():
         # skill, or `scripts/<fn>` in the Makefile (the one executable definition of
         # the rebuild chain — `make refresh`/`make dashboard` ARE the invocation).
         mk_path = os.path.join(os.path.dirname(SCRIPTS_DIR), "Makefile")
-        mk = open(mk_path, encoding="utf-8").read() if os.path.exists(mk_path) else ""
-        if re.search(rf"python3 scripts/{re.escape(fn)}", skills) \
+        mk = _strip_make_comments(
+            open(mk_path, encoding="utf-8").read() if os.path.exists(mk_path) else "")
+        if _cited_as_usage(skills, rf"python3 scripts/{re.escape(fn)}") \
                 or re.search(rf"scripts/{re.escape(fn)}", mk):
             continue
         errs.append(
@@ -219,7 +275,15 @@ def check():
 
 def main():
     errs = check()
-    subs, scripts = deck_subcommands(), runnable_scripts()
+    # `check()` converts an unparseable deck.py into a clean error list; re-deriving the
+    # same parse here raised the RuntimeError it had just handled, so the STANDALONE
+    # debugging run — the one you reach for when the gate is unhappy — crashed while the
+    # in-process path reported properly (BS4-31).
+    try:
+        subs, scripts = deck_subcommands(), runnable_scripts()
+    except RuntimeError as e:
+        print(f"Workflow coverage: FAIL — {e}")
+        return 1
     if errs:
         print(f"Workflow coverage: FAIL ({len(errs)} issue(s))")
         for e in errs:

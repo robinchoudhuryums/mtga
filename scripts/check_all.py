@@ -358,10 +358,14 @@ def main():
         import check_themes as ct
         tflags = ct.flags()
         if tflags:
+            # The TOTAL, not the capped list's length. `len(tflags)` counted a 40-row cap,
+            # so 400 mis-tags reported as "40" — a number that cannot move, which reads as
+            # a stable known quantity rather than a growing one (BS4-29).
+            total = ct.flags(count_only=True)
             ex = ", ".join(f"{n} ({t})" for n, t, _ in tflags[:4])
-            soft.append(f"theme coverage: {len(tflags)} owned card(s) may be missing a synergy "
+            soft.append(f"theme coverage: {total} owned card(s) may be missing a synergy "
                         f"tag their text implies (e.g. {ex}"
-                        + (", …" if len(tflags) > 4 else "")
+                        + (", …" if total > 4 else "")
                         + ") — run `check_themes.py`, then tag_synergies.py --merge")
     except Exception as e:
         soft.append(f"theme coverage check skipped ({e})")

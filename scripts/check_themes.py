@@ -36,12 +36,32 @@ THEME_CUES = {
 _COMPILED = {t: ([re.compile(p) for p in cues], sat) for t, (cues, sat) in THEME_CUES.items()}
 
 
-def flags(limit=40):
+def flags(limit=40, count_only=False):
     """[(card_name, theme, cue_keyword)] for owned cards whose text plays a theme they
-    aren't tagged with. Deduped by (name, theme); capped at `limit`."""
+    aren't tagged with. Deduped by (name, theme); capped at `limit`.
+
+    `count_only=True` returns the TOTAL number of flags with no cap, which is what a
+    caller needs to report an honest figure. `check_all` printed
+    `f"theme coverage: {len(tflags)} owned card(s)"` against a capped list, so 400
+    mis-tags reported as "40" with no truncation marker — a standing number that cannot
+    move, which is the delta-blind shape K-01 documents and which check_all's own
+    deck-warning summariser was fixed for (BS4-29)."""
     if not os.path.exists(LIB_CSV):
-        return []
-    out, seen = [], set()
+        return 0 if count_only else []
+    if count_only:
+        return sum(1 for _ in _iter_flags())
+    out = []
+    for row in _iter_flags():
+        out.append(row)
+        if limit and len(out) >= limit:
+            break
+    return out
+
+
+def _iter_flags():
+    """Every (name, theme, cue) mis-tag, uncapped and deduped — the single scan both
+    `flags()` and its count consume, so the capped view and the total can't drift."""
+    seen = set()
     with open(LIB_CSV, newline="", encoding="utf-8") as fh:
         for r in csv.DictReader(fh):
             name = (r.get("Card Name") or "").strip()
@@ -55,10 +75,7 @@ def flags(limit=40):
                 m = next((p for p in cues if p.search(text)), None)
                 if m and (name.lower(), theme) not in seen:
                     seen.add((name.lower(), theme))
-                    out.append((name, theme, m.pattern.strip("\\b")))
-                    if len(out) >= limit:
-                        return out
-    return out
+                    yield (name, theme, m.pattern.strip("\\b"))
 
 
 def check():

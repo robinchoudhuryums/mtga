@@ -1,8 +1,11 @@
 """Mutation tests for scripts/check_all.py — the gate runner itself (BS2-29).
 
 Every other gate has a "watched it fail" layer (test_check_agreement.TestGateFires,
-test_check_commands.TestGateFires, test_check_docs' mutation tests) because the
-project's standing rule is that a check never watched failing is not a check. The
+test_check_commands.TestGateFires, test_check_docs' mutation tests, and — since BS4-30 —
+test_gates_fire.py for the seven that had none) because the project's standing rule is
+that a check never watched failing is not a check. That claim was made HERE while being
+false of seven gates, which is its own instance of the rule: this docstring asserted the
+coverage rather than the coverage existing. The
 runner implementing INV-01…04 was the one component exempt from its own rule: it was
 exercised only by CI running it against a healthy repo, which by construction cannot
 demonstrate that anything fails. BS2-14 was the concrete cost — INV-04's documented

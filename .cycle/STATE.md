@@ -6,6 +6,41 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #3, Batch 3 (2026-08-09)
+
+Eight gate-layer findings. Block:
+`.cycle/blocks/2026-08-broad-scan3-batch3-broad-implement.md`.
+Gates green, zero soft warnings; **1,170 tests** (was 1,146), **30 test files**.
+
+BS4-09 caution-mentions no longer grant subcommand coverage · BS4-10 keyword baseline
+gains the delta + `--max-new` · BS4-25 Makefile comments no longer count · BS4-26
+ENGINE_THEMES rename is loud · BS4-28 `_agree_owned` warns instead of skipping · BS4-29
+theme radar reports the TOTAL, not its 40-row cap · **BS4-30 the seven gates that had no
+watched-it-fail layer now have one** (`tests/test_gates_fire.py`, 24 tests) · BS4-31
+`check_commands.main()` degrades cleanly.
+
+**Two things worth carrying forward.**
+
+1. **The obvious fix for BS4-09 was measured and rejected.** Requiring the executable
+   shape `python3 scripts/deck.py <name>` — the rule the SCRIPT half already uses — would
+   have failed **27 of 34 live subcommands**, because the skills write 30 of their
+   references in the bare `deck.py <name>` form and only 3 subcommands appear in fenced
+   code blocks. Suppressing the caution CLAUSE instead costs zero coverage today. Measure
+   before tightening a passing gate.
+2. **The new gate tests were themselves mutation-tested.** Making each hard gate's
+   `check()` return `[]` unconditionally is DETECTED in all five cases — so they catch a
+   DEAD GATE, not merely a broken model. That is the whole point of BS4-30 and the reason
+   a "watched it fail" layer is not the same as a passing test.
+
+**Read the net score honestly: this batch fixed almost nothing actively misbehaving
+today** (six of eight had zero live instances). It is insurance on the layer everything
+else is trusted through, which is why it ranked third rather than first.
+
+**Where I left off:** Batches 4 and 5 remain (structural/latent DFC; interface polish),
+plus the six operator visual checks. A `/sync-docs` pass is owed — G-53's "both paths"
+claim is now true of all three, G-69's "still sits under check_keywords" sentence is
+stale, and the Testing subsystem inventory says 29 files against a real 30.
+
 ## Session — broad scan #3, Batches 1 & 2 (2026-08-09, after the top-5 + sync-docs)
 
 Eleven findings, all verified. Block:
