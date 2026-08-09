@@ -479,14 +479,16 @@ directions.
   Scored on FIXING value plus two bounded nudges (a land's own synergy text, and the
   deck's scarcest colour). It defaults to the deck's own `#: format:`, as the card-facing
   `suggest` always did — it once offered two non-Standard duals as craft targets, and on
-  a wildcard-spend recommender an unfiltered pick costs real resources. **LIVE RESIDUAL,
-  at the TOP of the list: three of its four highest-scored picks for deck 52 were NOT
-  PLAYABLE LANDS** — a land on the BACK face, a spell on the front, so it is reached by
-  transforming and never by a land drop. Maindeck one and the deck is a land short with
-  INV-04 seeing nothing wrong. Same class as G-63. Two scoring misses ride along: a
-  "spend this mana only to cast a creature spell" land scored top, and a
-  conditionally-tapped land scored as sometimes-untapped on a condition mono-black cannot
-  meet. **Read the type line of every pick before crafting.** [G-37]
+  a wildcard-spend recommender an unfiltered pick costs real resources. **The BACK-FACE
+  LAND bug is FIXED (2026-08-09):** the filter scanned a whole type line, so any card with
+  `// Land` on its BACK qualified — 81 pool cards, and three of deck 52's four top picks
+  were unplayable as lands (reached by transforming, never by a land drop, while INV-04
+  saw a valid line). It now tests `_primary_type`, the FRONT face — the same fix
+  `wishlist._is_land` got in BS2-11 and this sibling did not. **TWO SCORING MISSES REMAIN
+  LIVE:** a "spend this mana only to cast a creature spell" land scores top, and a
+  conditionally-tapped land ("unless you control a Forest") scores as sometimes-untapped
+  in a deck that can never meet the condition. **Read the type line AND the tapped clause
+  of every pick before crafting.** [G-37]
 - **`suggest --ramp / --interaction / --needs` are the NEEDS model** — the structural
   axes theme-`suggest` is blind to (fixing, acceleration, interaction). **If the scorecard
   says the deficit is interaction or mana, the fix comes from here, not from plain
@@ -688,9 +690,9 @@ directions.
   card. Deck 51 is the worked case: its mill package is a second win condition. [G-62]
 - **THE FRONT FACE AND THE STORED METADATA DISAGREE — ON EVERY COLUMN, AND IN EVERY
   INDEX.** G-02 is one member of a class that has produced bugs on five COLUMNS — cost,
-  colour (identity hid 55 castable red cards — G-58), type (deck 49 reported 26 lands
-  holding 25), name twice, rarity — plus the 2026-08 scan's five and the ingest WRITE
-  side (BS2-02).
+  colour (identity hid 55 castable red cards — G-58), TYPE (deck 49 read 26 lands holding
+  25; `suggest --lands` offered 81 back-face lands — the fix `wishlist._is_land` already
+  had, G-37), name twice, rarity — plus the 2026-08 scan's five and the ingest WRITE side.
   **Ask which face a column describes; alias an INDEX via `lib.alias_front` in a SECOND
   pass — NEVER in-pass with `setdefault`, which lets a DFC seen early claim the bare front
   key a distinct card owns (BS4-18 closed the last four, three of them indexing Scryfall
@@ -961,7 +963,7 @@ earned it: [C-01]
 **Invariant Library:**
 - INV-01 | card-library.csv has the canonical 8-column header, every row has 8 fields, no duplicate (Card Name, Set Code, Collector #) printing, and Quantity Owned is blank or a non-negative integer | Subsystem: Data | Verify: scripts/check_all.py (via validate.py)
 - INV-02 | Every Card Name in card-library.csv has a row in card-mana.csv | Subsystem: Data | Verify: scripts/check_all.py
-- INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released+Power+Toughness warn if absent), gallery.html | Subsystem: Data/Presentation | Verify: scripts/check_all.py
+- INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released+Power+Toughness warn if absent), gallery.html (has usable CONTENT — non-trivial size + the `#data` island — since existence alone passed a truncated build) | Subsystem: Data/Presentation | Verify: scripts/check_all.py
 - INV-04 | Every deck file under decks/ parses with no malformed card lines, AND every line's `(SET)` code exists in the pool or library (an unheld COLLECTOR # within a real set is a soft warning, since the pool keys one printing per card) | Subsystem: Decks | Verify: scripts/check_all.py
 - INV-05 | Color(s) stores color identity; actual mana cost lives only in card-mana.csv | Subsystem: Data | Verify: design/manual
 - INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --merge after imports (--merge preserves hand-curated tags; --force replaces them) | Subsystem: Ingest | Verify: manual

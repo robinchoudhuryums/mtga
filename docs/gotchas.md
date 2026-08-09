@@ -1521,15 +1521,33 @@ collector number is held, the card is Standard-legal. `check_all` has no notion 
 line a land". The deck would simply play badly.
 
 **Root cause is G-63's class one layer out.** The pool row for a DFC records a land type
-whenever EITHER face is a land, and `_land_value` reads that row. The accessor rule ("ask
-which face a column describes") was never applied to the land-ness predicate itself.
+whenever EITHER face is a land, and the candidate filter read that row. The accessor rule
+("ask which face a column describes") was never applied to the land-ness predicate itself.
+
+**FIXED 2026-08-09.** `suggest_lands` now admits a candidate only when
+`_primary_type(type_line) == "Land"` — the FRONT face, which is what a land drop can play.
+Measured: **81 pool cards** carry `// Land` on a non-land front and were all eligible
+before. Midgar, City of Mako correctly SURVIVES the change (`Land — Town // Sorcery —
+Adventure`), which is the case `lib.primary_type`'s own docstring calls out.
+
+The lesson is not "DFCs are tricky" — it is that **`wishlist._is_land` was given this
+exact fix in BS2-11 and its sibling recommender was not.** One rule, applied in one place
+and not the other, for a year, on two commands that answer the same question about the
+same pool rows. When you fix a face-reading predicate, grep for the others.
 
 **Rank 5 is a fourth, milder miss.** Great Arashin City is a real land but reads *"enters
 tapped unless you control a Forest or a Plains"* — unreachable in mono-black, so it is
 always tapped. It scored 5.8 fixing rather than the 4.6 given to a flatly-tapped land,
 i.e. the scorer treated an unsatisfiable condition as sometimes-satisfied.
 
-**Until it is fixed, read the type line of every pick.** `card.py <name>` prints it.
+**Two scoring misses REMAIN LIVE** (they were never the same bug as the type filter, and
+neither is fixed): the "spend this mana only to cast a creature spell" land that scored
+top, and Great Arashin City's conditional tap above. Both are `_land_value` scoring
+questions rather than eligibility ones — the card really is a land, it is just worth less
+than the score says.
+
+**So: read the type line AND the tapped clause of every pick.** `card.py <name>` prints
+both. The type-line half is now enforced; the tapped-clause half is still on you.
 
 
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the

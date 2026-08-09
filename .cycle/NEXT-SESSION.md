@@ -1,8 +1,10 @@
 # Handoff — start the next session here
 
-Rewritten 2026-08-07 after the broad-scan-2 cycle closed (top-5 → follow-ons → Batches
-A–H, plus four `/sync-docs` passes), for a session with none of this one's context.
-Read this before CLAUDE.md's Common Gotchas, not instead of them.
+Rewritten 2026-08-09 after the **broad-scan-3** cycle closed (top-5 → Batches 1&2 → 3 →
+4 → 5 → follow-ons + unbatched Lows, with a `/sync-docs` pass between each), for a session
+with none of this one's context. Read this before CLAUDE.md's Common Gotchas, not instead
+of them. The broad-scan-2 cycle it previously described is in
+`.cycle/blocks/2026-08-broad-scan2-*.md` if you need it.
 
 **Read the evidence file when a rule's reasoning matters.** CLAUDE.md carries the RULE and
 any live residual; the incident and measurement live under the anchor the rule ends with —
@@ -21,9 +23,9 @@ commands disagree.
   restarted from `main` after each merge. **Check `git log origin/main..HEAD` before your
   first commit** — if it is empty, the last PR merged and you must restart from `main`
   (`git fetch origin main && git checkout -B <branch> origin/main`).
-- Gates green: `check_all` all invariants hold, **ZERO soft warnings**. **1,146 tests in
-  29 files.** The 7 blank-Card-Text `validate` warnings are K-11 vanilla creatures and are
-  expected, not a data gap.
+- Gates green: `check_all` all invariants hold, **ZERO soft warnings**. **1,188 tests in
+  30 files** — all fourteen model-sanity gates now have a watched-it-fail layer. The 7
+  blank-Card-Text `validate` warnings are K-11 vanilla creatures, expected, not a data gap.
 - Collection **2,133 library rows**; roster **99 deck files**, numbered through **66**;
   34 `deck.py` subcommands; 13 model-sanity gates. (Decks 64
   Gray Goo, 65 Web of Life and 66 Lethal Protector were drafted 2026-08-08; 66 was
@@ -32,51 +34,46 @@ commands disagree.
 - **`ROADMAP.md` is a 2026-07-31 snapshot** with a staleness header on it. Individual
   entries are marked DONE as they land, but it wants a `/roadmap` regeneration.
 
-## 2. What the broad-scan-2 cycle did (2026-08-07)
+## 2. What the broad-scan-3 cycle did (2026-08-09)
 
-One `/broad-scan`, then nine implementation passes. **57 findings closed + 1 retracted**
-in the first eight; Batch H closed the strategic remainder. Tests 951 → 1,078. Every
-block is in `.cycle/blocks/2026-08-broad-scan2-*.md` — read those, not this summary, when
-you need the detail.
+One `/broad-scan` (three stages, five parallel subsystem deep-reads) producing findings
+**BS4-01…BS4-45**, then six implementation passes. Every block is in
+`.cycle/blocks/2026-08-broad-scan3-*.md` — read those, not this summary, for detail.
+Gates ended green with **ZERO soft warnings** and **1,188 tests**.
 
 The changes most likely to affect your daily work:
 
-1. **`deck.py sync` refuses a TRUNCATED paste** (under 75% of the stored deck) — a partial
-   paste is a strict subset, so the shared-card floor read it as a full-confidence match
-   and `--apply` would have rewritten the 60 down to the fragment. `--force` overrides.
-2. **`suggest --ramp / --interaction / --needs` now apply the deck's format filter**, and
-   read castability from the PRINTED cost like `suggest` proper. They were the two
-   siblings the G-58 fix missed, hiding 34 castable interaction cards and 25 mana sources
-   from mono-colour decks — on exactly the paths a scorecard deficit routes you to.
-3. **Player-only burn no longer counts as spot removal** (14 decks over-read interaction).
-4. **The editor refuses a stale deck save with a 409** instead of silently overwriting a
-   file a CLI `swap --apply` changed underneath the tab.
-5. **Seven Universe-Beyond keywords are themed** (Batch H) — vivid, job select, opus,
-   increment, infusion, disappear, paradigm. Roughly 85 pool cards changed tags, so theme
-   weights moved roster-wide.
+1. **`suggest --lands` no longer offers back-face lands.** It filtered on a whole type
+   line, so any card with `// Land` on its BACK qualified — **81 pool cards**, and three
+   of deck 52's four top picks were unplayable as lands. This is the one that would have
+   cost you a real deck slot.
+2. **Every craft surface now flags rotation.** `suggest --lands/--ramp/--interaction` and
+   `tier --to`'s craft fillers were the last silent ones, and they are the surfaces whose
+   whole purpose is spending wildcards.
+3. **`#: protect:` / `#: uncastable-ok:` finally work on DFCs.** Deck 66's header named
+   its own title card and `cuts` ranked it as cuttable anyway.
+4. **The rationale audit now checks `#: archetype:` figures**, which G-27 had claimed for
+   a year while the figure loop read `#: tier:` alone.
+5. **Ownership no longer ranks recommendations.** Three needs recommenders sorted owned
+   cards above unowned at equal score; the goal is the best LIST, and owned data goes
+   stale (see §5's ownership trap).
 
-## 3. Batch H, and the two things it decided rather than built
+## 3. What the cycle decided rather than built
 
-**Read `.cycle/blocks/2026-08-creature-cut-retest.md` before touching the cut ranking.**
-
-- **The creature-cut question is CLOSED for two hypotheses, and the second closure
-  inverts what the tool used to say.** At n=251 the split held (creature 50%, noncreature
-  86%). The mechanism `deck.py feedback` ITSELF asserted — `fit` sums theme weights
-  unnormalized, creatures carry ~2× the tags — is true as an observation (5.31 vs 3.15
-  tags per pool card, so 1.7×) and **refuted as a diagnosis**: normalizing lifts creature
-  agreement 53→68% and **collapses noncreature 83→51%**. The unnormalized sum is
-  load-bearing for the segment that works. **Do not derive a third fix from the tag-count
-  asymmetry** — it is real, visible, and misleading, and two pre-registered tests have now
-  died on it (body quality 2026-07, normalization 2026-08).
-- **The second model is UNDERPOWERED, not rejected.** Excluding creature-subtype tags from
-  `fit` (they are already paid for by `min(tribal,6)`) missed both criteria, but the
-  harness resolved 38 of 103 creature rows. **Fix the harness before re-asking**: its
-  snapshot selector matches a card name anywhere in the file, including a `#:` COMMENT, so
-  it can pick a version where the card is discussed but not played. Match parsed lines.
-- **`jump` is the keyword lesson worth carrying.** It reports 13 cards; 11 of them are
-  `Jump-start` cards that Scryfall also labels "Jump". Mapping it would have put `evasion`
-  on 11 graveyard spells for the sake of 2 real ones. **A keyword's reported COUNT is not
-  its population** — read the cards before believing a tally.
+- **`check_commands`' executable-shape rule was measured and REJECTED for subcommands.**
+  Requiring `python3 scripts/deck.py <name>` — the rule the SCRIPT half uses — would have
+  failed **27 of 34 live subcommands**, because the skills write 30 of their references
+  bare and only 3 sit in fenced code blocks. A caution CLAUSE is suppressed instead, which
+  measured as costing zero coverage. **Measure before tightening a passing gate.**
+- **Widening a scan needs its suppressions in the same change.** Extending the rationale
+  audit to archetype figures returned **3 hits of which 2 were FALSE** (one quoting
+  another deck by NAME, one quoting *Standard's* Dragons), and the suppressions written
+  for those then **muted the 1 real one** until the parent-name case was handled — deck
+  26a is "Iron Forge — Virulent", so its PARENT's name is a substring of its own.
+- **The gate tests were mutation-tested against VACUOUS gates.** Making each hard gate's
+  `check()` return `[]` is DETECTED in all five cases, so `tests/test_gates_fire.py`
+  catches a dead gate, not merely a broken model. That is the difference between a
+  "watched it fail" layer and a passing test.
 
 ## 3b. The 2026-08-09 session: a duplicate-craft sweep, and a data problem
 
@@ -171,10 +168,28 @@ In priority order, with the reason:
    commander — her identity is 5-colour but she CASTS for `{1}{R}{G}`, so she unlocks all
    2,124 owned Historic-legal cards while asking the manabase for two. Avatar Aang was
    measured and rejected: he needs all four bends in one turn and airbend is owned 11
-   against 22-24 for the others.
+   against 22-24 for the others. (BS4-23 widened `wishlist._theme_model`'s deck-size
+   window to accept 95–105 cards, so a 100-card deck will now be VISIBLE to
+   `--suggest-targets` / `--rank` instead of silently dropped. That trap is pre-cleared.)
 5. **Deck 19 Route B** — the white manabase. Aven Interrupter is 58% on turn three and
    Storm 61% on turn four; the fix is white DUALS, not cutting cards (the user said so
    explicitly after a swap was tried and reverted).
+
+**Left open by broad-scan-3, in the order I would take them:**
+
+- **G-37's TWO remaining scoring misses** (the type-filter half is fixed): a "spend this
+  mana only to cast a creature spell" land scores top, and a conditionally-tapped land
+  ("unless you control a Forest") scores as sometimes-untapped in a deck that can never
+  meet the condition. Both live in `_land_value`; both make a real land look better than
+  it is, on a wildcard-spend surface.
+- **`make dashboard`** — the committed snapshot is one rebuild behind BS4-42's KPI data
+  path. The deployed Pages copy builds from source and is fine.
+- **The six operator visual checks** in
+  `.cycle/blocks/2026-08-broad-scan3-batch5-broad-implement.md`, above all the gallery's
+  light palette: Batch 5 gave it a colour scheme that has **never been rendered**, and
+  correctness there is the half a file cannot prove.
+- **`/roadmap`** — ROADMAP.md is a 2026-07-31 snapshot and a whole scan cycle has landed
+  since.
 
 ## 5. Traps re-confirmed this cycle
 
