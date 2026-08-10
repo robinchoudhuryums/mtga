@@ -4001,7 +4001,7 @@ At the beginning of your end step, your life total becomes half your starting li
 −7: You get an emblem with ""At the beginning of combat on your turn, put three +1/+1 counters on target artifact you control. If it's not a creature, it becomes a 0/0 Robot artifact creature.""",Colorless,Tezzeret; Planeswalker; counters; planeswalker,EOE,2,1
 Memorial Team Leader,Creature — Kavu Soldier,"During your turn, other creatures you control get +1/+0.
 Warp {1}{R} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",R,Kavu; Soldier; exile cast; pump; warp; tempo; cost-reduction,EOE,144,1
-Ouroboroid,Creature — Plant Wurm,"At the beginning of combat on your turn, put X +1/+1 counters on each creature you control, where X is this creature's power.",G,Plant; Wurm; counters,EOE,201,1
+Ouroboroid,Creature — Plant Wurm,"At the beginning of combat on your turn, put X +1/+1 counters on each creature you control, where X is this creature's power.",G,Plant; Wurm; counters,EOE,201,3
 Harmonious Grovestrider,Creature — Beast,"Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
 Harmonious Grovestrider's power and toughness are each equal to the number of lands you control.",G,Beast; ward; protection,EOE,189,1
 Meltstrider Eulogist,Creature — Insect Soldier,"Whenever a creature you control with a +1/+1 counter on it dies, draw a card.",G,Insect; Soldier; counters; card draw,EOE,197,1
@@ -4643,3 +4643,6 @@ This creature enters with X +1/+1 counters on it.
 When this creature dies, create a number of tapped Treasure tokens equal to its power.",G,Hydra; counters; tokens; treasure; vigilance; combat; haste; aggro; trample; evasion,OTJ,167,1
 "Haliya, Ascendant Cadet",Legendary Creature — Human Soldier,"Whenever Haliya enters or attacks, put a +1/+1 counter on target creature you control.
 Whenever one or more creatures you control with +1/+1 counters on them deal combat damage to a player, draw a card.",W/G,Human; Soldier; counters; card draw,EOE,218,1
+Quilled Greatwurm,Creature — Wurm,"Trample
+Whenever a creature you control deals combat damage during your turn, put that many +1/+1 counters on it. (It must survive to get the counters.)
+You may cast this card from your graveyard by removing six counters from among creatures you control in addition to paying its other costs.",G,Wurm; counters; graveyard; trample; evasion,FDN,111,1
