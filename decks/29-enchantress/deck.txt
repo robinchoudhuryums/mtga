@@ -1,11 +1,27 @@
 #: name: Enchantress
 #: format: Standard
-#: tier: A — Naya enchantments (creative-first); slow build-arounds with real interaction (8) and, after +Summon: Bahamut (Enchantment-Saga: destroy nonland ×2 + draw 2 + Mega Flare) over Pacifism, card advantage 0→1 → A-floor. Graded on the LIST ignoring ownership (legal 60). Re-graded B→A: the deck also runs an uncounted draw engine (Garruk's Uprising — draw on each power-4+ creature), so A is airtight now, not just floor-consistent. Aspirational full list; the competitive variant is 29a.
+#: tier: A — Naya enchantments (creative-first); slow build-arounds with real interaction 6 and, after +Summon: Bahamut (Enchantment-Saga: destroy nonland ×2 + draw 2 + Mega Flare) over Pacifism, card advantage 0→1 → A-floor. Graded on the LIST ignoring ownership (legal 60). Re-graded B→A: the deck also runs an uncounted draw engine (Garruk's Uprising — draw on each power-4+ creature), so A is airtight now, not just floor-consistent. Aspirational full list; the competitive variant is 29a.
 #: colors: GWR
 #: protect: Yuna, Hope of Spira; Terra, Magical Adept; Political Triumph; Savior of the Sleeping
 #: archetype: Naya (G/W/R) enchantments-matter — Yuna anchors an enchantment-recursion engine
 #: archetype: (return an enchantment from the graveyard each end step) alongside the "Plan"/Saga
 #: archetype: enchantments and Aura beaters. The blue counters build split off to deck 30 (Temur Fractals).
+#: notes: 2026-08-10 BODY-DENSITY TUNE, from real games. Reported failure: hands of
+#: notes: enchantments with no board, or one removal spell undoing the plan. Measured
+#: notes: cause — 12 creatures with exactly ONE at MV<=2, while every cheap enchantment
+#: notes: (Political Triumph, Claim the Kingdom, Anthem, Airbender Ascension) needs a
+#: notes: board to do anything. Swapped in Momo (1-mana body), Sidequest: Raise a Chocobo
+#: notes: (2-mana ENCHANTMENT that makes a 2/2), Enduring Innocence (body + enchantment
+#: notes: that returns itself when it dies, and draws off small tokens) and Frog Butler
+#: notes: (2-mana any-color fixer with deathtouch). Creatures 12->15, MV<=2 bodies 1->3,
+#: notes: any-color fixers 1->2, card advantage 2->3. Interaction 8→6 is the accepted cost.
+#: notes: SECOND PASS same day, at the user's direction: the slots for Enduring Innocence and
+#: notes: Frog Butler came from Unflinching Courage and Airbender Ascension instead, so Furious
+#: notes: Forebear and Claim the Kingdom stayed; Firebender Ascension replaced Avatar Destiny
+#: notes: (a 2-mana enchantment making a 2/2 that also taps for {R} via firebending — the body
+#: notes: and the mana problem in one card). Unflinching Courage and Pain for All were the only
+#: notes: two Auras here with NO self-recursion clause, i.e. the only real 2-for-1s when a
+#: notes: creature is removed; Angelic Destiny x2 and Avatar Destiny all return to hand.
 #: notes: Refined to a legal 60: cut Quandrix Charm (needs blue — uncastable here) and added a
 #: notes: 6-card owned enchantment package — Spiral into Solitude (removal), Origin of the Avengers
 #: notes: (card advantage), Avatar Destiny (recurs + reanimates, loops with Yuna), Welcome to
@@ -14,29 +30,31 @@
 #: notes: closest true enchantress draw engine is a Slumbering Keepguard craft (a Common).
 
 # Creatures / anchors
+1 Furious Forebear (TDM) 13
 1 Terra, Magical Adept (FIN) 245
 1 Lumra, Bellow of the Woods (BLB) 183
 1 Yuna, Hope of Spira (FIN) 250
 1 She-Hulk, Jade Defender (MSH) 188
 1 Savior of the Sleeping (WOE) 28
-1 Lightning Strike (MSH) 142
+1 Momo, Playful Pet (TLA) 30
 1 Topiary Lecturer (SOS) 165
 
 # Enchantments — Plans / Sagas / engines
+1 Firebender Ascension (TLA) 137
 1 Alien Invasion (MSH) 200
 1 Political Triumph (MSH) 31
 1 Death to Our Enemies (MSH) 127
-1 Furious Forebear (TDM) 13
+1 Enduring Innocence (DSK) 6
 1 Enduring Courage (DSK) 133
-1 Claim the Kingdom (MSH) 163
+1 Frog Butler (TMT) 114
 1 Garruk's Uprising (FDN) 220
 1 Heroic Feast (MSH) 172
 1 Sylvan Scavenging (FDN) 113
 1 Additive Evolution (SOS) 139
 1 Eusocial Engineering (EOE) 181
 1 World War Hulk (MSH) 197
-1 Anthem of Champions (FDN) 116
-1 Airbender Ascension (TLA) 6
+1 Sidequest: Raise a Chocobo (FIN) 201
+1 Claim the Kingdom (MSH) 163
 1 Enduring Vitality (DSK) 176
 1 Summon: Fenrir (FIN) 203
 1 Summon: Titan (FIN) 204
@@ -46,12 +64,10 @@
 
 # Auras / removal
 1 Origin of Metalbending (TLA) 187
-1 Unflinching Courage (FDN) 722
 1 Pain for All (EOE) 151
 1 Stasis Snare (FDN) 581
 2 Angelic Destiny (FDN) 565
 1 Spiral into Solitude (ECL) 36
-1 Avatar Destiny (TLA) 165
 
 # Sorcery / utility
 1 Summon: Bahamut (FIN) 1
