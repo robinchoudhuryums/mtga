@@ -1,0 +1,69 @@
+#: name: Warpwright
+#: format: Standard
+#: colors: GWU
+#: plan: midrange
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 8 / card-adv 3)
+#: tier: deliberately: the floor can't see that this is an untested v1 whose three-piece
+#: tier: engine (Kellan / Appa / Aurlock) has ZERO protection effects behind it, a
+#: tier: 9-tapland tri-color manabase, and heavy singleton variance. Re-grade after
+#: tier: real games and a protection/consistency tune; A is reachable if the engine
+#: tier: holds up.
+#: protect: Kellan, the Kid; Appa, Steadfast Guardian; Doc Aurlock, Grizzled Genius
+#: archetype: Bant CAST-FROM-EXILE engine built around Kellan, the Kid — every spell cast
+#: archetype: from anywhere but hand free-casts a cheaper permanent or drops a land. The
+#: archetype: engine is WARP (12 bodies cast cheap now, self-exile, recast from exile
+#: archetype: later = ETB again + Kellan trigger), PLOT (4 pre-paid exile casts), and
+#: archetype: PARADIGM Lessons (2 that recast copies from exile every turn). Appa is the
+#: archetype: second payoff — a token per exile-cast, doubled by Exalted Sunborn — and
+#: archetype: his airbend re-exiles any ETB body for a {2} recast. Doc Aurlock discounts
+#: archetype: the whole machine. DISTINCT from deck 45 (Mardu: drain payoffs on the same
+#: archetype: event) and 45a (Grixis: graveyard, not exile): this is the only build where
+#: archetype: the exile-cast is an ENGINE (free permanents + board) rather than a payoff.
+#: notes: Draft 1, from the 2026-08-10 ingest's Kellan seed. Fully owned by design —
+#: notes: every line was picked from the owned pool; tune for craft upgrades later.
+1 Kellan, the Kid (OTJ) 213
+2 Appa, Steadfast Guardian (TLA) 10
+1 Doc Aurlock, Grizzled Genius (OTJ) 201
+1 Exalted Sunborn (EOE) 15
+1 Haliya, Guided by Light (EOE) 19
+2 Knight Luminary (EOE) 23
+1 Rayblade Trooper (EOE) 30
+1 Starfield Shepherd (EOE) 37
+1 Weftblade Enhancer (EOE) 44
+1 Sinister Cryologist (EOE) 75
+1 Mechanozoa (EOE) 66
+1 Quantum Riddler (EOE) 72
+1 Starbreach Whale (EOE) 77
+1 Drix Fatemaker (EOE) 178
+1 Mightform Harmonizer (EOE) 200
+1 Broodguard Elite (EOE) 175
+1 Eusocial Engineering (EOE) 181
+1 Loading Zone (EOE) 196
+1 Sheriff of Safe Passage (OTJ) 29
+1 Stagecoach Security (OTJ) 30
+1 Plan the Heist (OTJ) 62
+1 Slickshot Lockpicker (OTJ) 67
+1 Visage Bandit (OTJ) 76
+1 Germination Practicum (SOS) 149
+1 Echocasting Symposium (SOS) 44
+1 Virtue of Loyalty // Ardenvale Fealty (WOE) 38
+1 Sonar Strike (BLB) 32
+1 Parting Gust (BLB) 24
+1 Salvation Swan (BLB) 28
+1 Into the Flood Maw (BLB) 52
+1 Spell Pierce (SOA) 23
+1 Syncopate (FIN) 80
+1 Webstrike Elite (DFT) 186
+1 Willowrush Verge (DFT) 270
+1 Gleaming Bastion (MSH) 267
+1 Urban Retreat (SPM) 187
+1 Guadosalam, Farplane Gateway (FIN) 281
+1 Mutant Town (TMT) 187
+1 Pym Technologies (MSH) 271
+1 Suburban Sanctuary (SPM) 185
+1 Tranquil Cove (TDM) 270
+2 University Campus (SPM) 186
+1 North Pole Gates (TLA) 274
+5 Plains (TRK) 317
+5 Island (TRK) 319
+4 Forest (TRK) 325
