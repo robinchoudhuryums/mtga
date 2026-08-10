@@ -121,11 +121,19 @@ disabled both the size floor and the copy limit (`[G-09]`).
 
 ## 4. Standing items, owner-paced — unchanged and still the biggest gaps
 
-- **`matches.csv` is STILL EMPTY. This is the single largest gap in the project.** 34
-  decks carry a PROVISIONAL tier, every one promising a re-grade "after real games", and
-  zero games are recorded. The data is free and already in `Player.log`, the parser is
-  written and tested (`/log-matches`), and until it runs, every tier letter on the roster
-  is graded against internal consistency alone. It needs the user, not the tooling.
+- **`matches.csv` EXISTS NOW — 9 matches, 8 attributed to decks 7 / 19 / 45.** The gap it
+  used to name is only dented: n=2, n=2, n=4 per deck, and `--report` refuses a percentage
+  under 20, so 34 decks still carry a PROVISIONAL tier graded against internal consistency
+  alone. What changed is that the pipeline has now run end to end against real data, and
+  running it again is cheap. **Two things the first real log settled, both the hard way.**
+  `courseId` is the AVATAR cosmetic, not the deck — the nine rows were recorded against it,
+  and a `#: arena: <courseId>` mapping was documented in the parser, the README and the
+  skill, before anyone read the values. The real deck is in `EventSetDeckV3`, so the
+  extraction grep is WIDER than the one every doc used to print; use the current one. And
+  the 7/27 match is permanently unattributable — its log had rotated — which is what the
+  12-hour bound protects: it stays blank rather than borrowing 8/07's deck. Decks 7, 19 and
+  45 now carry `#: arena:` headers with both the Arena name and the stable `DeckId` GUID;
+  add one to each deck as it gets played. See `[G-57]`. Still owner-paced: it needs games.
 - **Deck 49 Scaleforge rotation-proofing — Route A, measured and NOT applied.** The user
   said "I will hold off on these changes for now," so it is queued, not rejected. Do NOT
   re-derive it: −Gishath/+Etali, Primal Storm · −Palani's Hatcher/+Savage Land Dinosaur ·

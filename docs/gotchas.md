@@ -2058,7 +2058,7 @@ one. Prefer a `--dry-run` `swap` or a scratch COPY of the deck when you are only
 measuring; if you do apply-and-revert, delete the trailing row in the same commit.
 
 
-## [G-57] Match results are FREE from `Player.log` — the header line is the load-bearing half
+## [G-57] Match results are FREE from `Player.log` — the lines AROUND the result JSON are the load-bearing halves
 
 **Match results are FREE from `Player.log` — the header line is the load-bearing half.**
 Arena's "Detailed Logs (Plugin Support)" setting writes match events locally; that is the
@@ -2075,12 +2075,9 @@ things the real log settled, none of them guessable from the JSON alone: the log
 LOCAL timestamp must beat the JSON's UTC epoch (an evening session otherwise files a day
 late — the sample's own header said 7/27 while its epoch resolved to 7/28), the epoch is
 still the right FALLBACK when no header date exists (a blank Date sorts to the top and
-can't be scoped in time), and `courseId` is Arena's own deck identifier with **no
-derivable relationship to a repo deck id** — so the mapping is LEARNED from a `#: arena:
-<courseId>` deck header, and an unmapped match is kept and surfaced, never dropped.
+can't be scoped in time), and an unmapped match is kept and surfaced, never dropped.
 Deliberately stores no userId and no playerName: neither is needed for a win rate, and a
-match log is not a place to accumulate identity (opponent *deck* is kept — an archetype,
-not a person). The scan keys on the EVENT rather than on `"finalMatchResult"`, because a
+match log is not a place to accumulate identity. The scan keys on the EVENT rather than on `"finalMatchResult"`, because a
 truncated paste is the expected failure and that marker sits LATE in the line, after both
 seats — so any realistic width cap removed it and the match was dropped in **silence**
 while the run reported success. Found by a test, and it is this project's signature bug
@@ -2094,6 +2091,68 @@ rubric, and a small-sample rate is not evidence at that resolution, so citing on
 be precisely the stale-rationale failure `--audit-rationale` exists to catch. Same
 restraint `count_conf` shows for role counts: a number that looks certain when it isn't
 is the expensive kind of wrong.
+
+**`courseId` is NOT a deck — it is the AVATAR, and the whole first pass was built on the
+opposite assumption.** The field sits on each `reservedPlayers` seat next to `eventId`,
+its name reads like a deck-list identifier, and the parser's docstring, its `--report`
+footer and the `/log-matches` skill all documented a `#: arena: <courseId>` header as the
+way to attribute a match to a repo deck. Nine real matches were recorded that way, all
+with a blank `Deck`. Then someone read the values: **all eleven distinct ones across both
+seats carried the literal `Avatar_` prefix** — `Avatar_Basic_BlackPanther_MSH`,
+`Avatar_Basic_Galactus_MSH`, `Avatar_Basic_Kaito_NEO`, and so on. It is the AVATAR
+cosmetic, a global profile setting the player changes independently of the deck, and it
+identifies nothing. On 2026-08-07 the recorded value went CaptainMarvel → Galactus at
+exactly the point the deck changed, which is what made it look like a deck id; on
+2026-08-09 the same Galactus value covered a completely different deck. The columns are
+`My Avatar` / `Opponent Avatar` now, precisely so the next reader cannot repeat it — and
+the "opponent DECK is kept, that is an archetype not a person" line the privacy paragraph
+used to carry was wrong for the same reason: an avatar is a cosmetic, and it tells you
+nothing about what they were playing. **The general shape: a field whose NAME asserts a
+meaning is a claim, not a measurement.** `Color(s)` (identity, not cost) and a DFC's
+stored Mana Value (both faces) are the same failure in the card data; this is it in the
+match data, and it survived a docstring, a skill and a committed CSV because nobody
+looked at what the column contained.
+
+**The deck actually played is in `EventSetDeckV3`, and the join is on TIME.** Arena writes
+that line when it submits a deck for an event, 2–20 seconds before the match starts across
+the whole sample. Its payload is JSON inside a JSON string and carries the Arena deck NAME,
+a stable `DeckId` GUID, and a `LastPlayed` local timestamp — enough to attribute every
+match except one whose log had already rotated. Four details are load-bearing:
+
+* **The regex path is the primary one, not the fallback.** The documented extraction pipes
+  through `cut`, so neither `json.loads` survives the truncation. The extractors read a
+  backslash-STRIPPED copy of the raw line, which is why `\"DeckId\":\"…\"` is matched as
+  `"DeckId":"…"`. `"Name"` is capital-N while every sibling attribute key is lower-case
+  `"name"`, and `"EventName":"Play"` has no quote before `Name`, so neither can be confused
+  with the deck's own name.
+* **Timestamps beat log order.** A pure order walk breaks on the paste people actually
+  produce: running the match grep and the `EventSetDeckV3` grep as separate commands puts
+  every selection in one block and every match in another, and order then hands the single
+  last selection to every match — one deck for the whole session, which reads as data.
+* **A selection more than 12 hours before a match is refused, with a warning.** Arena
+  re-submits the deck on every event join, so a real selection is seconds old; anything
+  hours old means the log that held the right one rotated. Without the bound the 7/27 match
+  would have borrowed an 8/07 deck. Blank is the only safe direction — an unattributed
+  match is a visible gap, a wrongly attributed one is a fabricated win rate.
+* **Name → repo id resolves most-explicit-first** (`--deck` → `#: arena:` header, which
+  takes the Arena NAME or the GUID or both, comma-separated → the Arena name's leading
+  number), and the run PRINTS every name with the route that resolved it, because a
+  heuristic that ASSIGNS data has to show its work (the G-52 rule). The prefix step is
+  accepted only when the id it produces is a deck that exists. Its regex is
+  case-SENSITIVE on the variant letter and requires the letter be adjacent to the number:
+  the first draft, `^\s*0*(\d+)\s*([a-z]?)` with `re.I`, read "07 Earth's Mightiest" as
+  deck **"7e"**. Note the Arena name need not resemble the repo name at all — "45 The
+  Exiles" is repo deck 45 "Exile Dividend" — so a name-similarity check would have
+  REJECTED a correct match, and the number is the only part that carries the mapping.
+
+Two supporting fixes came out of the same change. `load_matches` renames the pre-rename
+columns on READ, because `write_matches` emits only `HEADER` and would otherwise have
+rewritten an existing `matches.csv` with those cells blank — silently losing the one field
+the old rows had. And the F-02 mirror guard had to learn one exception: it compares headers
+and cannot tell "another file's schema" from "an earlier version of my own", so it refused
+the very write that performs the migration. The allowance is EXACT — only the single header
+this module used to emit — so a genuinely foreign CSV is still refused, and a test pins
+that half too.
 
 
 ## [G-58] Never widen `#: colors:` for a HYBRID card — and never reject a card for a widening you don't need

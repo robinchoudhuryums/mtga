@@ -613,14 +613,21 @@ directions.
   corrupted ledger can't traceback AFTER the deck file is written.
   **A swap applied only to MEASURE something still leaves a row** — prefer a dry run or a
   scratch copy, since a fabricated row is worse than a missing one. [G-56]
-- **Match results are FREE from `Player.log`, and the header line is the load-bearing
-  half** — the `finalMatchResult` JSON carries the outcome and both seats but NOT which
-  seat is yours; that appears only in the `Match to <userId>:` prefix. A paste of the JSON
-  alone is unparseable, so the parser SKIPS with a warning rather than guessing: a
-  50%-accurate record is worse than an empty one because it looks like data. **Read the
-  record with restraint** — under 20 matches `--report` refuses to print a percentage,
-  above it prints a Wilson interval, and a small-sample win rate never belongs in
-  `#: tier:`. [G-57]
+- **Match results are FREE from `Player.log`, and the two lines AROUND the result JSON are
+  the load-bearing halves.** `finalMatchResult` carries the outcome and both seats but NOT
+  which seat is yours; that is only in the `Match to <userId>:` prefix, so a paste of the
+  JSON alone is unparseable and the parser SKIPS with a warning rather than guessing — a
+  50%-accurate record is worse than an empty one because it looks like data. **`courseId`
+  is NOT a deck, it is the AVATAR cosmetic** — a global profile setting changed
+  independently of the deck. Every value the first real sample produced was
+  `Avatar_Basic_*`, and nine matches were recorded against it, with a `#: arena:
+  <courseId>` mapping documented in three places, before anyone read the values; the
+  columns are `My Avatar` / `Opponent Avatar` now. The deck you played is in
+  **`EventSetDeckV3`** (Arena deck NAME + stable `DeckId` GUID + `LastPlayed`), joined to
+  each match on TIMESTAMP (not log order) and resolved `--deck` → `#: arena:` header →
+  the Arena name's leading NUMBER, with the run PRINTING which route it used. **Read the
+  record with restraint** — under 20 matches `--report` refuses a percentage, above it
+  prints a Wilson interval, and a small-sample win rate never belongs in `#: tier:`. [G-57]
 - **NEVER widen `#: colors:` for a HYBRID card, and never reject a card for a widening you
   do not need.** Both halves were violated in one cycle: 26b's header was widened to UBR
   for `{B/R}` Bullseye, and Don & Raph was kept OUT of mono-blue 47 because its R identity
