@@ -52,10 +52,20 @@ Arena name -> repo deck id resolves in three steps, most explicit first:
 A match that resolves to nothing keeps its Arena deck name with a blank Deck; the report
 lists what is unattributed. Nothing is dropped for being unmapped.
 
+`--map-decks` learns those headers for the WHOLE roster from one paste instead of one
+deck at a time: every message type that mentions a deck (EventSetDeckV3,
+DeckUpsertDeckV3, a DeckGetDeckSummariesV3 response) nests the same
+`{"DeckId":…,"Name":…}` object, so one scan harvests the client's deck list, matches each
+by the leading-number convention and writes the header. Dry-run by default; two Arena
+decks claiming one repo deck write NOTHING, because a header naming the wrong one of two
+is worse than no header — the parser would then attribute matches to it with confidence.
+
 Usage:
     python3 scripts/parse_matches.py session.log            # dry run
     python3 scripts/parse_matches.py - --apply              # from stdin
     python3 scripts/parse_matches.py - --apply --deck 12    # tag this session's deck
+    python3 scripts/parse_matches.py session.log --map-decks           # dry run
+    python3 scripts/parse_matches.py session.log --map-decks --apply   # write headers
     python3 scripts/parse_matches.py --report               # win/loss per deck
 
 Extract on the machine running Arena (macOS shown; Player.log is overwritten on every
@@ -378,6 +388,144 @@ def resolve_deck(name, guid, mapping, known_ids=()):
     return "", ""
 
 
+# Any deck SUMMARY, wherever it appears: EventSetDeckV3 carries one, DeckUpsertDeckV3
+# carries the deck you just edited, and a DeckGetDeckSummariesV3 response carries the
+# whole collection at once. All three nest the same {"DeckId":…,"Name":…} object, so one
+# pattern reads every shape rather than three that each guess at a message layout. The
+# window is bounded so a summary MISSING a Name cannot reach into the next entry's.
+_SUMMARY_RE = re.compile(r'"DeckId":"([^"]+)".{0,200}?"Name":"([^"]*)"')
+_ARENA_HEADER_RE = re.compile(r"^#:\s*arena\s*:", re.I)
+
+
+def parse_deck_names(text):
+    """{DeckId GUID: Arena deck name} for every deck summary anywhere in the log.
+
+    LAST occurrence wins, not the first: a deck renamed in the client appears under both
+    names and the later line is the current one. (`setdefault` here would be the G-63
+    first-writer-claims-the-key trap one file over.)"""
+    out = {}
+    for raw in (text or "").splitlines():
+        for guid, name in _SUMMARY_RE.findall(raw.replace("\\", "")):
+            if name.strip():
+                out[guid] = name.strip()
+    return out
+
+
+def _arena_header_plan(names):
+    """[(deck_id, path, header_line, status)] for the decks `names` resolves to.
+
+    Status is one of `add` / `update` / `unchanged` / `conflict`. A CONFLICT — two Arena
+    decks resolving to one repo deck, which is what an old copy left in the client looks
+    like — writes nothing: a header naming the wrong one of two decks is worse than no
+    header, because the parser would then attribute matches to it with full confidence."""
+    try:
+        import deck as dk
+        records = {d["id"]: d for d in dk.discover_decks()}
+    except Exception:
+        return []
+    mapping, known = arena_deck_map(), set(records)
+    claims = {}
+    for guid, name in sorted(names.items(), key=lambda kv: kv[1]):
+        did, _how = resolve_deck(name, guid, mapping, known)
+        if did:
+            claims.setdefault(did, []).append((name, guid))
+    plan = []
+    for did, hits in sorted(claims.items()):
+        rec = records[did]
+        if len(hits) > 1:
+            plan.append((did, rec["path"], "; ".join(n for n, _ in hits), "conflict"))
+            continue
+        name, guid = hits[0]
+        line = f"#: arena: {name}, {guid}"
+        try:
+            with open(rec["path"], encoding="utf-8") as fh:
+                current = [ln.rstrip("\n") for ln in fh]
+        except OSError:
+            continue
+        existing = [ln for ln in current if _ARENA_HEADER_RE.match(ln)]
+        status = "unchanged" if existing == [line] else ("update" if existing else "add")
+        plan.append((did, rec["path"], line, status))
+    return plan
+
+
+def _write_arena_header(path, line):
+    """Insert or replace one `#: arena:` header. Returns the .bak path.
+
+    Routed through `deck._safe_write_lines`, which re-parses the file (INV-04) and
+    verifies the copy count is unchanged before replacing it — a header edit must not be
+    able to touch a card line, and the check that proves it already exists."""
+    import deck as dk
+    with open(path, encoding="utf-8") as fh:
+        lines = [ln.rstrip("\n") for ln in fh]
+    _, cards = dk.parse_deck_file(path)
+    total = sum(q for q, *_ in cards)
+    out, placed = [], False
+    for ln in lines:
+        if _ARENA_HEADER_RE.match(ln):
+            if not placed:
+                out.append(line)
+                placed = True
+            continue                       # drop any duplicate arena headers
+        out.append(ln)
+    if not placed:
+        # After `#: format:` when there is one (that is where the three hand-written
+        # headers sit), else after `#: name:`, else at the top.
+        anchor = -1
+        for i, ln in enumerate(out):
+            if ln.lower().startswith("#: format:"):
+                anchor = i
+        if anchor < 0:
+            for i, ln in enumerate(out):
+                if ln.lower().startswith("#: name:"):
+                    anchor = i
+        out.insert(anchor + 1, line)
+    return dk._safe_write_lines(path, out, total)
+
+
+def map_decks(text, apply=False, out=print):
+    """Learn `#: arena:` headers for the whole roster from one log paste. Returns
+    (written, plan)."""
+    names = parse_deck_names(text)
+    if not names:
+        out("No deck summaries found. The paste needs at least one line carrying a "
+            "{\"DeckId\":…,\"Name\":…} object — EventSetDeckV3, DeckUpsertDeckV3 or a "
+            "DeckGetDeckSummariesV3 response.")
+        return 0, []
+    plan = _arena_header_plan(names)
+    matched = {p[0] for p in plan}
+    out(f"{len(names)} Arena deck(s) in the paste; {len(matched)} resolved to a repo "
+        f"deck.\n")
+    for did, _path, line, status in plan:
+        mark = {"add": "+", "update": "~", "unchanged": "=", "conflict": "!"}[status]
+        out(f"  {mark} deck {did:<5} {line if status != 'conflict' else line}")
+        if status == "conflict":
+            out(f"      ^ two Arena decks claim deck {did} — resolve by hand, nothing "
+                f"written")
+    # Hoisted: both loaders re-parse every deck file, so calling them per candidate made
+    # the roster cost quadratic for a line of diagnostics.
+    mapping, known = arena_deck_map(), deck_ids()
+    unresolved = sorted(n for g, n in names.items()
+                        if not resolve_deck(n, g, mapping, known)[0])
+    if unresolved:
+        out(f"\n{len(unresolved)} Arena deck(s) matched no repo deck (the name carries no "
+            f"leading deck number, or that deck does not exist here):")
+        for n in unresolved[:20]:
+            out(f"    {n}")
+        if len(unresolved) > 20:
+            out(f"    … and {len(unresolved) - 20} more")
+    todo = [p for p in plan if p[3] in ("add", "update")]
+    if not apply:
+        out(f"\n(dry run — {len(todo)} file(s) would change; pass --apply to write)")
+        return 0, plan
+    written = 0
+    for did, path, line, status in todo:
+        _write_arena_header(path, line)
+        written += 1
+    out(f"\nWrote {written} deck file(s), each with a .bak. Run check_all.py to confirm "
+        f"INV-04 still holds.")
+    return written, plan
+
+
 def fresh_rows(rows, existing):
     """The parsed rows not already recorded — deduped by Match ID against `existing`
     AND against each other.
@@ -548,6 +696,9 @@ def main():
     ap.add_argument("--deck", help="tag every match in this paste with a repo deck id")
     ap.add_argument("--me", help="your Arena userId, if the paste lacks the `Match to` headers")
     ap.add_argument("--report", action="store_true", help="win/loss per deck from matches.csv")
+    ap.add_argument("--map-decks", action="store_true",
+                    help="learn `#: arena:` headers for the whole roster from the log's "
+                         "deck summaries, instead of parsing matches")
     ap.add_argument("--out", default=MATCHES_CSV)
     args = ap.parse_args()
 
@@ -562,6 +713,10 @@ def main():
     except OSError as e:
         eprint(f"Could not read {args.source!r}: {e}")
         return 1
+
+    if args.map_decks:
+        map_decks(text, apply=args.apply)
+        return 0
 
     rows, warnings = parse_log(text, me=args.me)
     for w in warnings:

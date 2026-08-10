@@ -108,8 +108,27 @@ and a stable `DeckId` GUID. It resolves to a repo deck in three steps: `--deck <
 overrides everything; then a `#: arena:` header; then the leading number of the Arena name
 ("07 Earth's Mightiest" → deck 7), accepted only when that deck id exists.
 
-For each unattributed Arena deck the report lists, ask the user which repo deck it is,
-then add the header to that deck file — the name, the GUID, or both:
+**Do the whole roster in one pass, not one deck at a time.** Ask for the client's deck
+list and let the parser write every header:
+
+```
+p=~/Library/Logs/"Wizards Of The Coast"/MTGA
+grep -hE 'DeckGetDeckSummariesV3|DeckUpsertDeckV3|==> EventSetDeckV3' "$p"/Player*.log
+```
+
+```
+python3 scripts/parse_matches.py <file> --map-decks           # dry run — always first
+python3 scripts/parse_matches.py <file> --map-decks --apply   # writes, with .baks
+```
+
+It harvests every `{"DeckId":…,"Name":…}` the paste contains, matches each to a repo deck
+by the leading-number convention, and writes `#: arena: <name>, <GUID>`. Read the dry run:
+`+` add, `~` update, `=` unchanged, `!` conflict. **A conflict writes nothing** — two Arena
+decks claiming one repo deck (an old copy left in the client) has to be resolved by hand,
+because a header naming the wrong one of the two is worse than no header. Arena decks
+whose names carry no repo deck number are listed, never forced.
+
+To set one by hand, the header takes the name, the GUID, or both:
 
 ```
 #: arena: 07 Earth’s Mightiest, e3a6c595-914d-4809-bd6d-630b3758ca89

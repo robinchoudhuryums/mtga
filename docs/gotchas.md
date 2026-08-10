@@ -2145,6 +2145,23 @@ match except one whose log had already rotated. Four details are load-bearing:
   Exiles" is repo deck 45 "Exile Dividend" — so a name-similarity check would have
   REJECTED a correct match, and the number is the only part that carries the mapping.
 
+**Doing the whole roster: `--map-decks`.** Setting `#: arena:` one deck at a time is where
+a wrong header hides, and a `#:` header naming something that does not exist is a silent
+no-op — the G-68 class exactly. Every message type that mentions a deck (`EventSetDeckV3`,
+`DeckUpsertDeckV3`, a `DeckGetDeckSummariesV3` response) nests the SAME
+`{"DeckId":…,"Name":…}` object, so one bounded pattern harvests the client's whole deck
+list rather than three patterns each guessing at a message layout. Three rules make the
+bulk write safe: the LAST name for a GUID wins, because a deck renamed in the client
+appears under both and `setdefault` would keep the dead one (the G-63 first-writer-claims-
+the-key trap, one file over); the `.{0,200}?` window between DeckId and Name is the whole
+guard against a summary that has no Name reaching forward and labelling itself with its
+neighbour's deck; and two Arena decks resolving to ONE repo deck — which is what an old
+copy left in the client looks like — write NOTHING and are reported, because a header
+naming the wrong one of two is worse than none: the parser would then attribute matches to
+it with full confidence. Writes route through `deck._safe_write_lines`, which re-parses the
+file and verifies the copy count is unchanged before replacing it, so a header edit
+provably cannot touch a card line.
+
 Two supporting fixes came out of the same change. `load_matches` renames the pre-rename
 columns on READ, because `write_matches` emits only `HEADER` and would otherwise have
 rewritten an existing `matches.csv` with those cells blank — silently losing the one field

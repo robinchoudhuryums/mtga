@@ -547,6 +547,124 @@ class TestDeckMapping:
         assert pm.arena_deck_map() == {}
 
 
+class TestDeckNameHarvest:
+    """`--map-decks` learns a `#: arena:` header per deck from one paste. Every message
+    type that mentions a deck nests the same {"DeckId":…,"Name":…} object, so ONE pattern
+    reads EventSetDeckV3, DeckUpsertDeckV3 and a whole DeckGetDeckSummariesV3 response."""
+
+    def test_it_harvests_from_an_event_set_deck_line(self):
+        assert pm.parse_deck_names(_setdeck()) == {
+            "e3a6c595-914d-4809-bd6d-630b3758ca89": "07 Earth’s Mightiest"}
+
+    def test_several_summaries_on_one_line_all_come_back(self):
+        """A DeckGetDeckSummariesV3 response is the whole collection in a single line."""
+        line = ('<== DeckGetDeckSummariesV3(x) {"Summaries":['
+                '{"DeckId":"g-a","Mana":"","Name":"07 Earth’s Mightiest"},'
+                '{"DeckId":"g-b","Mana":"","Name":"45 The Exiles"}]}')
+        assert pm.parse_deck_names(line) == {"g-a": "07 Earth’s Mightiest",
+                                            "g-b": "45 The Exiles"}
+
+    def test_a_rename_takes_the_LATER_name(self):
+        """A deck renamed in the client appears under both names; the later line is the
+        current one. `setdefault` here would be the G-63 first-writer-wins trap."""
+        log = "\n".join([_setdeck(guid="g-1", name="19 Old Name"),
+                         _setdeck(guid="g-1", name="19 Bird Brain- Bant")])
+        assert pm.parse_deck_names(log) == {"g-1": "19 Bird Brain- Bant"}
+
+    def test_a_nameless_summary_cannot_steal_the_next_ones_name(self):
+        """The bounded window is the whole guard: without it a summary missing a Name
+        reaches forward and labels itself with its neighbour's deck."""
+        line = ('{"Summaries":[{"DeckId":"g-a"},' + '{"Pad":"' + "x" * 400 + '"},'
+                '{"DeckId":"g-b","Name":"45 The Exiles"}]}')
+        assert pm.parse_deck_names(line) == {"g-b": "45 The Exiles"}
+
+    def test_a_log_with_no_summaries_is_empty_not_a_crash(self):
+        assert pm.parse_deck_names(_log(_event())) == {}
+        assert pm.parse_deck_names("") == {} and pm.parse_deck_names(None) == {}
+
+
+class TestArenaHeaderWriting:
+    """Writing 60-odd headers by hand is where a wrong one hides, so the plan is printed
+    before anything is written and every write re-parses the file."""
+
+    def _roster(self, tmp_path, monkeypatch, **decks):
+        import deck as dk
+        d = tmp_path / "decks"
+        for name, body in decks.items():
+            (d / name).mkdir(parents=True)
+            (d / name / "deck.txt").write_text(body, encoding="utf-8")
+        monkeypatch.setattr(dk, "DECKS_DIR", str(d))
+        return d
+
+    PLAIN = "#: name: Earth's Mightiest\n#: format: Standard\n4 Shock (M21) 159\n"
+
+    def test_a_dry_run_writes_nothing(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        before = (d / "07-earths" / "deck.txt").read_text(encoding="utf-8")
+        written, plan = pm.map_decks(_setdeck(), apply=False, out=lambda *_a: None)
+        assert written == 0
+        assert [p[3] for p in plan] == ["add"]
+        assert (d / "07-earths" / "deck.txt").read_text(encoding="utf-8") == before
+
+    def test_apply_inserts_after_the_format_header(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        written, _ = pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
+        assert written == 1
+        lines = (d / "07-earths" / "deck.txt").read_text(encoding="utf-8").splitlines()
+        assert lines[1].startswith("#: format:")
+        assert lines[2] == ("#: arena: 07 Earth’s Mightiest, "
+                            "e3a6c595-914d-4809-bd6d-630b3758ca89")
+        assert "4 Shock (M21) 159" in lines          # card lines untouched
+
+    def test_a_second_run_is_a_no_op(self, tmp_path, monkeypatch):
+        self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
+        written, plan = pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
+        assert written == 0 and [p[3] for p in plan] == ["unchanged"]
+
+    def test_a_renamed_deck_REPLACES_the_old_header_rather_than_stacking(
+            self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        pm.map_decks(_setdeck(name="07 Old Name"), apply=True, out=lambda *_a: None)
+        written, plan = pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
+        assert written == 1 and [p[3] for p in plan] == ["update"]
+        body = (d / "07-earths" / "deck.txt").read_text(encoding="utf-8")
+        assert body.count("#: arena:") == 1
+        assert "07 Old Name" not in body
+
+    def test_two_arena_decks_claiming_one_repo_deck_write_NOTHING(
+            self, tmp_path, monkeypatch):
+        """An old copy left in the client looks exactly like this. A header naming the
+        wrong one of two decks is worse than no header — the parser would then attribute
+        matches to it with full confidence."""
+        d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        log = "\n".join([_setdeck(guid="g-a", name="07 Earth’s Mightiest"),
+                         _setdeck(guid="g-b", name="07 Earth’s Mightiest (old)")])
+        written, plan = pm.map_decks(log, apply=True, out=lambda *_a: None)
+        assert written == 0 and [p[3] for p in plan] == ["conflict"]
+        assert "#: arena:" not in (d / "07-earths" / "deck.txt").read_text(encoding="utf-8")
+
+    def test_an_arena_deck_matching_no_repo_deck_is_reported_not_forced(
+            self, tmp_path, monkeypatch, capsys):
+        self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        written, plan = pm.map_decks(_setdeck(name="Some Precon", guid="g-x"),
+                                     apply=True)
+        assert written == 0 and plan == []
+        assert "Some Precon" in capsys.readouterr().out
+
+    def test_the_header_lands_even_with_no_format_line(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch,
+                         **{"07-earths": "#: name: X\n4 Shock (M21) 159\n"})
+        pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
+        lines = (d / "07-earths" / "deck.txt").read_text(encoding="utf-8").splitlines()
+        assert lines[1].startswith("#: arena:")
+
+    def test_a_backup_is_written(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
+        assert list((d / "07-earths").glob("*.bak"))
+
+
 class TestResolveDeck:
     """Arena deck name -> repo deck id. The name-prefix step ASSIGNS data from a naming
     convention, so its bounds are the load-bearing part."""

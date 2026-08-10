@@ -1254,6 +1254,21 @@ immediately before it, then resolved to a repo deck by `--deck <id>`, else a
 ("07 Earth's Mightiest" → deck 7) when that deck exists. The run prints every name
 with the route that resolved it. Unattributed matches are kept, never dropped.
 
+`--map-decks` writes those headers for the whole roster from one paste, rather
+than one deck at a time — every message type that mentions a deck nests the same
+`{"DeckId":…,"Name":…}` object, so a grep for `DeckGetDeckSummariesV3|
+DeckUpsertDeckV3|==> EventSetDeckV3` harvests the client's deck list:
+
+```
+python3 scripts/parse_matches.py session.log --map-decks           # dry run
+python3 scripts/parse_matches.py session.log --map-decks --apply   # writes, with .baks
+```
+
+Two Arena decks claiming one repo deck (an old copy left in the client) write
+**nothing** and are reported for a hand call — a header naming the wrong one of
+the two is worse than no header, because matches would then attribute to it with
+full confidence.
+
 `--report` shows W/L per deck and **refuses to print a percentage below ~20
 matches**, with a 95% Wilson interval above that. A win rate separates a broken
 deck from a fine one; it will not separate a 55% deck from a 45% one without
