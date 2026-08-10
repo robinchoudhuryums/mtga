@@ -58,8 +58,8 @@ import time
 import urllib.error
 import urllib.request
 
-from lib import (BASICS as lib_BASICS, DEFAULT_CSV, REPO_ROOT, load_rows, eprint,
-                 card_colors, owned_qty,
+from lib import (BASICS as lib_BASICS, DEFAULT_CSV, MATCHES_CSV, REPO_ROOT,
+                 load_rows, eprint, card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
                  mana_value, primary_type, atomic_write, alias_front)
 from scryfall import post_collection, ScryfallUnavailable
@@ -6109,6 +6109,44 @@ def normalize_format(fmt):
 _COMMANDER_FORMATS = {"brawl", "historic brawl", "commander", "duel"}
 
 
+@_file_memo("MATCHES_CSV")
+def load_match_counts():
+    """deck_id -> matches PLAYED, from matches.csv. `{}` when no record exists.
+
+    Read through `parse_matches.load_matches` rather than a local DictReader, so the
+    schema (and the pre-rename `Course ID` migration it performs) has one owner. The
+    import is lazy and the failure is swallowed to `{}` on purpose: matches.csv is
+    deliberately NOT an invariant — the project ran without one for its whole life and
+    a repo with no logged games is healthy — so nothing here may start requiring it.
+
+    Counts ROWS, not results: a row whose Result cell is unreadable is still a match
+    that was played, and dropping it would under-report the one thing this number is
+    for. Variants are NOT folded into their parent (19b keeps its own count) because
+    they are different lists, and the whole point of a variant is to grade it on its
+    own. Deliberately returns a COUNT and no win/loss: at these sample sizes a rate is
+    noise, `--report` refuses to print one below 20 matches, and a `2-2` sitting in a
+    skimmable triage table is exactly the invitation that restraint exists to refuse.
+    """
+    try:
+        import parse_matches as pm
+        # Pass the path EXPLICITLY. `load_matches`' default binds `MATCHES_CSV` at
+        # definition time, so a bare call reads the real file forever while
+        # `_file_memo` keys the cache on whatever `deck.MATCHES_CSV` currently points
+        # at — the two disagree, and the loader serves data from a file the cache is
+        # not watching. That is the same stale-cache wiring bug `_file_memo`'s
+        # docstring describes for POOL_CSV, and it made every repointed-path test
+        # below pass against the live record instead of its fixture.
+        rows = pm.load_matches(MATCHES_CSV)
+    except Exception:
+        return {}
+    out = {}
+    for r in rows:
+        did = (r.get("Deck") or "").strip()
+        if did:
+            out[did] = out.get(did, 0) + 1
+    return out
+
+
 def load_legalities():
     """name_lower -> set(formats the card is legal in), from card-pool.csv's
     Legalities column. Empty if the pool is missing or predates the column."""
@@ -7119,13 +7157,21 @@ def _deck_tier(meta):
     return m.group(1) if m else ""
 
 
-def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta):
+def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta, played=None):
     """Score one deck for the roster triage — the structured core shared by
     `cmd_audit` (CLI table) and build_dashboard.py (the roster Audit view), so the
     two can't drift. Pass the big lookups (collection / card data / mana / legalities
     / card meta) in pre-loaded so a whole-roster pass reads each CSV once. Returns a
     dict of raw counts + a verdict (TUNE / craft / review / ok) + human reasons; each
-    caller renders its own cells. Offline — no Scryfall."""
+    caller renders its own cells. Offline — no Scryfall.
+
+    `played` ({deck_id: matches}, from `load_match_counts`) is OPTIONAL and defaults to
+    an empty map, so a caller that predates it — and a repo with no matches.csv, which
+    is the healthy default state — keeps working unchanged. It is REPORT-ONLY and must
+    stay so: it never reaches `verdict`, `reasons` or any threshold. Feeding outcome
+    data into a structural triage at these sample sizes would let 2 games re-sort the
+    roster, which is the failure `_MIN_SAMPLE` and the protection axis (G-25) are both
+    kept out of scoring to avoid."""
     meta, cards = parse_deck_file(d["path"])
     fmt = (meta.get("format") or "").strip().lower()
 
@@ -7199,6 +7245,9 @@ def audit_deck(d, *, by_name_qty, carddata, mana, leg, cmeta):
         "int": interaction,
         "thm": n_themes,
         "thin": thin,
+        # REPORT-ONLY — deliberately below `verdict`, which is computed above and never
+        # reads it. See the docstring.
+        "played": (played or {}).get(d["id"], 0),
         "verdict": verdict,
         "why": ", ".join(reasons),
     }
@@ -7210,7 +7259,8 @@ def audit_roster():
     order). Shared by the CLI and the dashboard."""
     decks = roster_decks()
     refs = dict(by_name_qty=load_collection()[2], carddata=load_card_data(),
-                mana=load_mana(), leg=load_legalities(), cmeta=load_card_meta())
+                mana=load_mana(), leg=load_legalities(), cmeta=load_card_meta(),
+                played=load_match_counts())
     return [audit_deck(d, **refs) for d in decks]
 
 
@@ -7224,9 +7274,16 @@ def cmd_audit(args):
                 uncastable 'u' + softer off-identity 's'), like `check`/`mana`.
       • Int   — interaction count (removal + sweeper + counter), like `stats`.
       • Thm   — number of CENTRAL synergy themes (redundancy / focus signal).
+      • Pld   — matches PLAYED, from matches.csv (`/log-matches`). REPORT-ONLY.
     A deck is flagged TUNE for a hard problem (illegal / uncastable), review for a
     soft one (off-identity strays / thin interaction), craft when it's just unbuilt,
-    else ok. No Scryfall calls — everything is read from the already-built CSVs."""
+    else ok. No Scryfall calls — everything is read from the already-built CSVs.
+
+    `Pld` answers the one question the match record can support at its current size:
+    which decks have never been tested. It is NOT a win rate and never becomes one —
+    34 decks carry a provisional tier promising a re-grade "after real games", and this
+    column says which ones are still waiting. `parse_matches.py --report` holds the
+    W/L, with its own refusal to print a percentage below 20 matches."""
     scored = audit_roster()
     if not scored:
         print("No decks yet. Add one under decks/<NN-name>/deck.txt (see decks/README.md).")
@@ -7262,7 +7319,7 @@ def cmd_audit(args):
           f"(offline triage; full-tune only the flagged ones)\n")
     name_w = min(32, max(4, max((len(r["name"]) for r in rows), default=4)))
     hdr = (f"  {'ID':<4}  {'Deck':<{name_w}}  {'Tier':<4}  {'Sz':>3}  {'Own':<4}  {'Legal':<5}  "
-           f"{'Cast':<7}  {'Int':>3}  {'Thm':>3}  Action")
+           f"{'Cast':<7}  {'Int':>3}  {'Thm':>3}  {'Pld':>3}  Action")
     print(hdr)
     print("  " + "-" * (len(hdr) - 2))
     for r in rows:
@@ -7270,12 +7327,32 @@ def cmd_audit(args):
         action = label + (f" — {r['why']}" if r["why"] else "")
         print(f"  {r['id']:<4}  {r['name'][:name_w]:<{name_w}}  {(r['tier'] or '·'):<4}  "
               f"{r['sz']:>3}  {r['own']:<4}  {r['legal']:<5}  {r['cast']:<7}  {r['int']:>3}  "
-              f"{r['thm']:>3}  {action}")
+              f"{r['thm']:>3}  {(str(r['played']) if r['played'] else '·'):>3}  {action}")
 
     print(f"\nLegend: Tier S→D competitive/win-capability (· = ungraded) · "
           f"Own/Legal ✓ clean · Cast Nu=uncastable Ns=identity stray "
           f"Na=of those, off-color ABILITY (the rest are hybrids you pay on-color) · "
-          f"Int=removal+sweeper+counter · Thm=central themes")
+          f"Int=removal+sweeper+counter · Thm=central themes · "
+          f"Pld=matches played (· = none), report-only — never a verdict input")
+
+    # A column of dots means two different things, and only one of them is about the
+    # decks: "never played" vs "no record exists at all". Saying which is the whole
+    # difference between a finding and a gap — the failure this subsystem keeps
+    # producing (a blank Deck column read as data for nine matches).
+    played_total = sum(r["played"] for r in scored)
+    if not played_total:
+        print("  Pld is empty because matches.csv holds no attributed matches yet — "
+              "that is a missing RECORD, not 99 untested decks. See /log-matches.")
+    else:
+        never = [r["id"] for r in scored if not r["played"]]
+        print(f"  {played_total} match(es) recorded across "
+              f"{len(scored) - len(never)} deck(s); {len(never)} never played.")
+        # A count attributed to a deck id the roster no longer has is invisible in a
+        # per-deck table — it would just quietly stop appearing.
+        orphans = sorted(set(load_match_counts()) - {r["id"] for r in scored})
+        if orphans:
+            print(f"  ⚠ matches.csv attributes games to {len(orphans)} unknown deck "
+                  f"id(s): {', '.join(orphans)} — renamed or deleted decks.")
     print(f"Summary: {len(tune)} to tune · {len(craft)} to craft · "
           f"{len(review)} to review · {len(scored) - len(tune) - len(craft) - len(review)} ok")
     if tune:

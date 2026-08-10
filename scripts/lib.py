@@ -36,6 +36,11 @@ BASICS = frozenset({"plains", "island", "swamp", "mountain", "forest", "wastes"}
 # Repo root is the parent of the scripts/ directory this file lives in.
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_CSV = os.path.join(REPO_ROOT, "card-library.csv")
+# ONE definition of the played-match record's path, because two modules now read it:
+# parse_matches.py owns the file, and deck.py's roster audit reports games played from
+# it. A second `os.path.join(REPO_ROOT, "matches.csv")` is the drift shape
+# `check_agreement` exists for — same reasoning as BASICS living here.
+MATCHES_CSV = os.path.join(REPO_ROOT, "matches.csv")
 
 
 def load_rows(path=DEFAULT_CSV):

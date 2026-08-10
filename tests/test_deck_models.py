@@ -13,6 +13,8 @@ it. These assert the model's CONTRACT — that the pieces agree with each other,
 change in the input moves the output in the right direction — so they keep working as the
 collection changes, the same property `check_rankings` was built for.
 """
+import argparse
+
 import pytest
 
 import deck
@@ -420,6 +422,11 @@ def world(tmp_path, monkeypatch):
                                      for n, *_ in POOL_CARDS})
         monkeypatch.setattr(deck, "load_collection",
                             lambda: ({}, {}, {n.lower(): 4 for n in owned}))
+        # Repoint the match record too, or `audit_roster` reads the REAL matches.csv
+        # and the games-played column stops being hermetic. Left ABSENT by default,
+        # which is the healthy state the loader has to degrade to.
+        monkeypatch.setattr(deck, "MATCHES_CSV", str(tmp_path / "matches.csv"))
+        deck.load_match_counts.cache_clear()
         d = deck.find_deck("90")
         assert d is not None, "synthetic deck did not resolve — harness broken"
         return d
@@ -587,6 +594,123 @@ class TestRosterWideModels:
                               carddata=deck.load_card_data(), mana=deck.load_mana(),
                               leg=deck.load_legalities(), cmeta=deck.load_card_meta())
         assert deck.audit_roster()[0]["verdict"] == one["verdict"]
+
+    def test_played_defaults_to_zero_with_no_record(self, world):
+        """matches.csv is deliberately NOT an invariant — the project ran without one
+        for its whole life — so its absence must be an ordinary zero, never a raise."""
+        world(["1 Bear", "20 Swamp"], owned=["Pool Zap"])
+        assert deck.load_match_counts() == {}
+        assert deck.audit_roster()[0]["played"] == 0
+
+    def _record(self, world, tmp_path, rows, header=None):
+        import parse_matches as pm
+        d = world(["1 Bear", "20 Swamp"], owned=["Pool Zap"])
+        (tmp_path / "matches.csv").write_text(
+            ",".join(header or pm.HEADER) + "\n" + "".join(r + "\n" for r in rows),
+            encoding="utf-8")
+        deck.load_match_counts.cache_clear()
+        return d
+
+    def test_played_counts_matches_per_deck(self, world, tmp_path):
+        self._record(world, tmp_path, [
+            "2026-08-07,m1,90,Arena Deck,guid,Av,Play,W,1,0,Av2,Success",
+            "2026-08-07,m2,90,Arena Deck,guid,Av,Play,L,0,1,Av2,Success",
+            "2026-08-07,m3,91,Other,guid2,Av,Play,W,1,0,Av2,Success"])
+        assert deck.load_match_counts() == {"90": 2, "91": 1}
+        assert deck.audit_roster()[0]["played"] == 2
+
+    def test_an_unreadable_result_still_counts_as_played(self, world, tmp_path):
+        """It counts ROWS, not results. A match with a mangled Result cell was still
+        played, and this column's only job is 'has this deck been tested'."""
+        self._record(world, tmp_path, [
+            "2026-08-07,m1,90,A,g,Av,Play,,0,0,Av2,Success",
+            "2026-08-07,m2,90,A,g,Av,Play,?,0,0,Av2,Success"])
+        assert deck.load_match_counts() == {"90": 2}
+
+    def test_an_unattributed_match_belongs_to_no_deck(self, world, tmp_path):
+        self._record(world, tmp_path,
+                     ["2026-07-27,m1,,,,Av,Play,L,0,1,Av2,Success"])
+        assert deck.load_match_counts() == {}
+
+    def test_a_pre_rename_csv_is_read_through_the_owning_module(self, world, tmp_path):
+        """Delegating to `parse_matches.load_matches` rather than a local DictReader is
+        what makes the avatar-column migration apply here for free. A second reader
+        would have to re-implement it — and would silently not."""
+        self._record(world, tmp_path,
+                     ["2026-07-27,m1,90,Avatar_X,Play,L,0,1,Avatar_Y,Success"],
+                     header=["Date", "Match ID", "Deck", "Course ID", "Event", "Result",
+                             "Games Won", "Games Lost", "Opponent Course", "Reason"])
+        assert deck.load_match_counts() == {"90": 1}
+
+    def test_the_loader_reads_the_path_the_CACHE_is_watching(self, world, tmp_path):
+        """`pm.load_matches()`' default binds MATCHES_CSV at DEFINITION time, so a bare
+        call reads the real record forever while `_file_memo` keys on the repointed
+        path. The two disagreeing is the stale-cache wiring bug `_file_memo`'s own
+        docstring describes — and it made every fixture above pass against live data."""
+        self._record(world, tmp_path,
+                     ["2026-08-07,m1,90,A,g,Av,Play,W,1,0,Av2,Success"])
+        assert deck.load_match_counts() == {"90": 1}
+        (tmp_path / "matches.csv").unlink()
+        deck.load_match_counts.cache_clear()
+        assert deck.load_match_counts() == {}, "read a path the cache is not watching"
+
+    def test_an_UNREADABLE_record_degrades_instead_of_raising(self, world, tmp_path):
+        """The absent-file case never reaches the `except` — `load_matches` checks
+        os.path.exists and returns []. So the degrade path had no test at all until a
+        mutation pass replaced the handler with `raise` and every test stayed green.
+        A directory where the CSV should be is the cheap real trigger (IsADirectoryError),
+        and standing in for the whole class: an unreadable file, a permission error, a
+        parse_matches that fails to import. None of them may take the roster audit down —
+        matches.csv is optional data, and `audit` is the roster's triage surface."""
+        world(["1 Bear", "20 Swamp"], owned=["Pool Zap"])
+        (tmp_path / "matches.csv").mkdir()
+        deck.load_match_counts.cache_clear()
+        assert deck.load_match_counts() == {}
+        assert deck.audit_roster()[0]["played"] == 0      # and the audit still runs
+
+    def test_played_NEVER_reaches_the_verdict(self, world):
+        """The load-bearing property. Outcome data at these sample sizes must not
+        re-sort a structural triage: 2 games is noise, `--report` refuses to read it,
+        and the same restraint keeps the protection axis (G-25) out of `tier_band`."""
+        d = world(["1 Bear", "20 Swamp"], owned=["Pool Zap"])
+        refs = dict(by_name_qty=deck.load_collection()[2], carddata=deck.load_card_data(),
+                    mana=deck.load_mana(), leg=deck.load_legalities(),
+                    cmeta=deck.load_card_meta())
+        graded = [deck.audit_deck(d, **refs, played=p)
+                  for p in ({}, {"90": 1}, {"90": 999})]
+        scored = [{k: v for k, v in g.items() if k != "played"} for g in graded]
+        assert scored[0] == scored[1] == scored[2]
+        assert [g["played"] for g in graded] == [0, 1, 999]
+
+    def test_audit_deck_still_works_without_the_played_kwarg(self, world):
+        """build_dashboard.py calls audit_deck with explicit kwargs and does not pass
+        this one; a required parameter would have broken the dashboard build."""
+        d = world(["1 Bear", "20 Swamp"], owned=["Pool Zap"])
+        r = deck.audit_deck(d, by_name_qty=deck.load_collection()[2],
+                            carddata=deck.load_card_data(), mana=deck.load_mana(),
+                            leg=deck.load_legalities(), cmeta=deck.load_card_meta())
+        assert r["played"] == 0 and r["verdict"] in ("TUNE", "craft", "review", "ok")
+
+    def test_an_empty_record_is_reported_as_a_GAP_not_as_zero_play(
+            self, world, capsys):
+        """A column of dots means either 'never played' or 'no record exists', and only
+        one of those is about the decks. Saying which is the difference between a
+        finding and a gap — the failure this subsystem already shipped once."""
+        world(["1 Bear", "20 Swamp"], owned=["Pool Zap"])
+        deck.cmd_audit(argparse.Namespace(flagged=False, by_tier=False))
+        out = capsys.readouterr().out
+        assert "Pld" in out
+        assert "missing RECORD" in out and "not 99 untested decks" not in out.split("Pld")[0]
+
+    def test_a_match_on_an_unknown_deck_id_is_flagged(self, world, tmp_path, capsys):
+        """Orphaned counts are invisible in a per-deck table — they would just quietly
+        stop appearing when a deck is renamed or deleted."""
+        self._record(world, tmp_path, [
+            "2026-08-07,m1,90,A,g,Av,Play,W,1,0,Av2,Success",
+            "2026-08-07,m2,ZZ9,A,g,Av,Play,L,0,1,Av2,Success"])
+        deck.cmd_audit(argparse.Namespace(flagged=False, by_tier=False))
+        out = capsys.readouterr().out
+        assert "unknown deck id" in out and "ZZ9" in out
 
     def test_brawl_readiness_reports_distance_per_deck(self, world):
         world(["4 Bear", "20 Swamp"], owned=["Pool Zap"])

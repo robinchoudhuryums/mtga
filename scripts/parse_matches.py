@@ -96,9 +96,8 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import REPO_ROOT, atomic_write, csv_schema_error, eprint  # noqa: E402
-
-MATCHES_CSV = os.path.join(REPO_ROOT, "matches.csv")
+from lib import (MATCHES_CSV, REPO_ROOT, atomic_write,  # noqa: E402,F401
+                 csv_schema_error, eprint)
 HEADER = ["Date", "Match ID", "Deck", "Arena Deck", "Arena Deck ID", "My Avatar",
           "Event", "Result", "Games Won", "Games Lost", "Opponent Avatar", "Reason"]
 
