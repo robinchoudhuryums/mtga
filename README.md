@@ -406,6 +406,7 @@ python3 scripts/deck.py list          # every deck + variant, with buildable sta
 python3 scripts/deck.py wildcards     # roster-wide crafting plan (wildcards to finish decks)
 python3 scripts/deck.py wildcards --dedup   # cross-deck union of craft targets, best value-per-copy first
 python3 scripts/deck.py audit         # roster triage: one line per deck — which decks need a tune
+                                      #   (incl. Pld = matches played, report-only)
 python3 scripts/deck.py similar 40    # decks most alike by central-theme overlap (is it distinct?)
 python3 scripts/deck.py resolve "Bloom Tender" "2 Island"   # names → deck lines `<qty> Name (SET) #`
 python3 scripts/deck.py check 1a      # owned vs needed + a castability lint (off-color cards)

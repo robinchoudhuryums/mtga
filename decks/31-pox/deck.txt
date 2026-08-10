@@ -55,7 +55,7 @@
 1 Bake into a Pie (FDN) 169
 1 Vampire Nighthawk (FDN) 757
 1 South Wind Avatar (TMT) 78
-1 Venom, Evil Unleashed (SPM) 71
+1 Vraska, the Silencer (OTJ) 237
 1 Shredder, Unrelenting (TMT) 74
 1 Professor Dellian Fel (SOS) 214
 1 Virulent Emissary (ECL) 202

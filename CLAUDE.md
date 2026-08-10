@@ -247,7 +247,10 @@ directions.
   review/ok label is not a verdict on the deck. `review` counts only an off-color
   ABILITY, never a hybrid you pay on-color — counting every identity stray had saturated
   the flag to a measured 0% actionable rate. A stale `#: colors:` header inflates the
-  `Cast` column. [G-07]
+  `Cast` column. **`Pld` (matches played, from matches.csv) is REPORT-ONLY and stays so** —
+  a COUNT, never a win rate, answering only "which decks are still untested"; it never
+  reaches the verdict, and an all-`·` column says whether the RECORD is empty rather than
+  letting that read as 99 untested decks. [G-07]
 - **Stored decks drift from the real Arena decks** — the repo only updates when someone
   writes the file. `deck.py verify <id>` diffs a pasted export; **`deck.py sync` is the
   WRITE half**, matching one or many `Deck` blocks to their closest stored decks and

@@ -10,7 +10,7 @@
 #: archetype: BE HONEST ABOUT THE BODY COUNT: at 24 creatures this is not a low-creature
 #: archetype: deck, and `deck.py shape` reads it WIDE 8/3. That verdict is mostly a
 #: archetype: measurement artifact — the wide cues it finds are the creature-ENTERS
-#: archetype: lifegain engines (Hinterland Sanctifier, Dazzling Angel), which are engine
+#: archetype: lifegain engine (Dazzling Angel), which is an engine
 #: archetype: pieces rather than a go-wide plan — but the count is real, and the honest
 #: archetype: statement of the difference is the AXIS, not the body count: nothing here
 #: archetype: scales with how many creatures are on the board, and everything scales with
@@ -27,8 +27,8 @@
 #: archetype: DELNEY IS A TRIGGER DOUBLER, NOT A GO-WIDE CARD. Its second ability doubles
 #: archetype: the triggered abilities of creatures with power 2 or less, and the deck's
 #: archetype: whole engine layer sits at or under that line: Diamond Mare (two lifegain
-#: archetype: events per white spell), Hinterland Sanctifier and Dazzling Angel (two per
-#: archetype: creature), Stirring Hopesinger (two counters on every creature per trick),
+#: archetype: events per white spell), Dazzling Angel (two life per creature that
+#: archetype: enters), Stirring Hopesinger (two counters on every creature per trick),
 #: archetype: Youthful Valkyrie (two counters per ANGEL that lands, and nine of them do),
 #: archetype: Mockingbird, Ace Agent, Silver Sable.
 #: archetype: SERRA REDEEMER IS THE OTHER HALF OF THAT LINE. Delney doubles the triggers of
@@ -69,11 +69,17 @@
 #: archetype: CARDS. This one converts it into creature size and never touches black.
 #: protect: The Wind Crystal; Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Delney, Streetwise Lookout; Stirring Hopesinger; Valkyrie's Call; Lyra Dawnbringer; Giada, Font of Hope; Angelic Destiny; Herald of Eternal Dawn; Silver Sable, Mercenary Leader; Rosa, Resolute White Mage
 #: tier: A — PROVISIONAL (fully crafted and owned, but UNPLAYED). The letter sits AT
-#: tier: the metrics floor: interaction 5 is exactly the A bar, and 5 + card advantage 2 is
-#: tier: exactly the sum of 7, and protection is 4. There is no slack on either axis of
-#: tier: the floor, which is the honest
-#: tier: summary of this build — it spends its slots on ENGINE rather than on answers, and
-#: tier: one more cut to either axis drops it to B.
+#: tier: the metrics floor: interaction 5 is exactly the A bar, 5 + card advantage 2 is
+#: tier: exactly the sum of 7, and protection is 4. There is no slack on either axis,
+#: tier: which is the honest summary of this build — it spends its slots on ENGINE
+#: tier: rather than on answers, and one more cut to either axis drops it to B.
+#: tier: TWO 2026-08-10 SWAPS NETTED OUT HERE. Rally the Monastery was CUT for Aerith
+#: tier: Gainsborough (interaction 5→4, floor B), then RESTORED over Hinterland
+#: tier: Sanctifier — the deck ran two copies of one effect (Sanctifier and Dazzling
+#: tier: Angel share the same creature-enters lifegain line), and the Angel is the
+#: tier: copy that also feeds Giada, Lyra and Youthful Valkyrie. The cost is the CURVE:
+#: tier: a {W} one-drop became a 4-MV instant, taking early drops 12→11 and avg MV
+#: tier: 3.11→3.19 on a deck already short there.
 #: tier: THE PROTECT LIST IS DOING REAL WORK HERE, more than on any other deck. `cuts`
 #: tier: ranks Delney and Valkyrie's Call among the WEAKEST cards in the 60, and both are
 #: tier: engine spine. The classifier reads Delney as "role not auto-detected" because
@@ -81,16 +87,16 @@
 #: tier: Valkyrie's Call is scored as generic reanimation rather than as the card that
 #: tier: makes dead non-Angels into ANGELS and so turns on Lyra and Giada. A synergy model
 #: tier: cannot see a multiplier — it sees a card with no board impact.
-#: tier: WHY THE COUNTS UNDER-READ. Interaction 5 excludes Rally the Monastery's and
-#: tier: Battle Menu's destroy modes being conditional on power 4 or greater, which is
+#: tier: WHY THE COUNTS UNDER-READ. Interaction 5 excludes Battle Menu's destroy mode
+#: tier: being conditional on power 4 or greater, which is
 #: tier: fair, but it also cannot see that Stirring Hopesinger plus any trick is a combat
 #: tier: blowout. Card advantage 2 counts Exemplar of Light and Haliya, and that is now the
 #: tier: WHOLE of the deck's card flow — the third source was traded for Youthful Valkyrie,
 #: tier: a deliberate choice of engine over replacement that the floor cannot see either
 #: tier: way (a one-shot ETB cantrip never counted). This is the axis to watch in play: if
 #: tier: the deck runs out of cards before it runs out of board, that trade is the reason.
-#: tier: HELD AT A RATHER THAN S by four things. 1. THE CURVE IS STILL HEAVY at 3.14 with
-#: tier: only 12 early drops, though cutting Aettir and Priwen and Dawnstrike Vanguard
+#: tier: HELD AT A RATHER THAN S by four things. 1. THE CURVE IS STILL HEAVY at 3.19 with
+#: tier: only 11 early drops, though cutting Aettir and Priwen and Dawnstrike Vanguard
 #: tier: took the 6-plus slots from four down to two. 2. IT NEEDS TWO
 #: tier: HALVES — an engine creature AND a payoff — and a singleton build draws one far
 #: tier: more often than both; the counter payoffs are three-deep and the trigger engines
@@ -98,16 +104,17 @@
 #: tier: 3. DELNEY'S CEILING IS SELF-LIMITING on the payoffs it doubles: Ajani's Pridemate
 #: tier: is a 2/2, so Delney doubles its first lifegain trigger and then the Pridemate has
 #: tier: grown past power 2 and stops qualifying. The doubling is durable on the ENGINE
-#: tier: side (Diamond Mare, Hinterland Sanctifier, Dazzling Angel, Youthful Valkyrie,
+#: tier: side (Diamond Mare, Dazzling Angel, Youthful Valkyrie,
 #: tier: Stirring Hopesinger all stay small) and transient on the payoff side, which is
 #: tier: worth knowing before counting on it. 4. Unplayed, so nothing is outcome-evidence.
 #: tier: Re-grade after games; a win rate is not admissible at this sample size and must
 #: tier: never be written into this header.
 
 # Cheap trigger engines (power 2 or less — Delney doubles all of these)
+1 Aerith Gainsborough (FIN) 4
 1 Haliya, Guided by Light (EOE) 19
 1 Momo, Friendly Flier (TLA) 29
-1 Hinterland Sanctifier (FDN) 730
+1 Rally the Monastery (TDM) 19
 1 Ajani's Pridemate (FDN) 135
 1 Giada, Font of Hope (FDN) 141
 1 Diamond Mare (FDN) 770
@@ -152,7 +159,6 @@
 
 # Interaction
 1 Battle Menu (FIN) 9
-1 Rally the Monastery (TDM) 19
 1 Stasis Snare (FDN) 581
 1 Prayer of Binding (FDN) 739
 

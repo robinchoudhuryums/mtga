@@ -232,7 +232,7 @@
 1 Chandra, Spark Hunter (DFT) 116
 
 # Interaction — also the deck's only defence
-1 Overwhelming Surge (TDM) 115
+1 Legion Extruder (BIG) 12
 1 Bullseye, Death Dealer (MSH) 209
 1 Iron-Fist Pulverizer (OTJ) 131
 

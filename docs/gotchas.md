@@ -208,6 +208,45 @@ ok 22 → 38. Nothing became invisible — the `Cast` column still shows every s
 says WHY a deck did or didn't reach the verdict. Same saturation shape as audit F-04's
 `Decks` column: a flag that always fires reads as working.
 
+**The `Pld` column — the first outcome data on a structural surface, and it is kept
+report-only on purpose.** `matches.csv` finally holds real games, and the question it can
+support at n=9 is not "which deck wins" but "which decks have never been tested" — 34
+decks carry a provisional tier promising a re-grade *after real games*, and this column
+says which ones are still waiting. So it is a COUNT, deliberately not a W-L: `--report`
+already refuses a percentage below 20 matches, and a `2-2` sitting in a skimmable triage
+table is exactly the invitation that refusal exists to decline. Four design rules, each
+mutation-tested:
+
+* **It never reaches the verdict.** `played` is added to the returned dict BELOW the
+  verdict computation, which does not read it; a test grades the same deck with `{}`,
+  `{id: 1}` and `{id: 999}` and asserts every other field is identical. Letting 2 games
+  re-sort a roster triage is the failure `_MIN_SAMPLE` exists to prevent, and the same
+  reason the protection axis (G-25) and the X-cost advisory (G-60) are kept out of
+  `tier_band`.
+* **The `played` kwarg is OPTIONAL.** `matches.csv` is deliberately not an invariant, and
+  `build_dashboard.py` calls `audit_deck` with explicit kwargs — a required parameter
+  would have broken the dashboard build. The loader degrades to `{}` on any failure, and
+  that path needed its own test: the ABSENT-file case never reaches the handler (
+  `load_matches` checks `os.path.exists` and returns `[]`), so a mutation replacing
+  `except: return {}` with `raise` stayed green until a test put a directory where the
+  CSV goes.
+* **It counts ROWS, not results.** A match with a mangled `Result` cell was still played.
+* **An all-`·` column is disambiguated in prose.** Dots mean either "never played" or "no
+  record exists", and only one of those is about the decks — so an empty record prints
+  "that is a missing RECORD, not 99 untested decks". A count attributed to a deck id the
+  roster no longer has is also named, since an orphan would otherwise just quietly stop
+  appearing.
+
+One wiring trap is worth its own note, because it made every fixture pass against live
+data. `load_match_counts` is `@_file_memo("MATCHES_CSV")`, but `pm.load_matches()`'s
+default argument binds `MATCHES_CSV` **at definition time** — so a bare call reads the
+real record forever while the memo keys on whatever `deck.MATCHES_CSV` currently points
+at. The two disagree, and the loader serves data from a file the cache is not watching:
+the exact stale-cache bug `_file_memo`'s own docstring describes for `POOL_CSV`, one
+module over. Pass the path explicitly. The path itself lives in `lib.MATCHES_CSV` — one
+definition, read by both `parse_matches` (which owns the file) and `deck` (which reports
+from it), the same consolidation `BASICS` got.
+
 
 ## [G-08] Stored decks drift from the real Arena decks
 

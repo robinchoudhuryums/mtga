@@ -3,7 +3,7 @@
 #: arena: 07 Earth’s Mightiest, e3a6c595-914d-4809-bd6d-630b3758ca89
 #: tier: B — Selesnya go-wide heroes. The old one-line reason ("fast clock but thin
 #: tier: interaction (3)") is no longer true on either count: the classifier fix reads
-#: tier: interaction 7, and the plan infers as MIDRANGE, not aggro, on a 3.14 curve. The
+#: tier: interaction 7, and the plan infers as MIDRANGE, not aggro, on a 3.17 curve. The
 #: tier: letter still stands, but on a different axis — CARD ADVANTAGE is 0. A go-wide
 #: tier: board with no refuel folds to a single sweeper, and that is the one clear
 #: tier: weakness plus a thin 8-theme spine. Path to A: a repeatable draw engine that
@@ -41,7 +41,7 @@
 1 Knight of Wundagore (MSH) 175
 1 Powerful Broker (MSH) 179
 1 Veteran Beastrider (DFT) 226
-1 Avatar Destiny (TLA) 165
+1 Haliya, Ascendant Cadet (EOE) 218
 1 Primeval Bounty (FDN) 644
 1 Michelangelo, Mutant BFF (TMT) 120
 1 Kapow! (SPM) 103

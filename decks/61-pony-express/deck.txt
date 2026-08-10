@@ -69,7 +69,8 @@
 1 Venomsac Lagac (DFT) 185
 2 Ornery Tumblewagg (OTJ) 171
 2 Seraphic Steed (OTJ) 232
-2 Brightfield Mustang (DFT) 5
+1 Brightfield Mustang (DFT) 5
+1 Haliya, Ascendant Cadet (EOE) 218
 1 Fortune, Loyal Steed (OTJ) 12
 1 Guardian Sunmare (DFT) 15
 1 Unswerving Sloth (DFT) 34

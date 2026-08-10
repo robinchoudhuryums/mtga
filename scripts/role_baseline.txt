@@ -78,7 +78,6 @@ Champions of the Shoal
 Charging Strifeknight
 Child of the Volcano
 Cloud, Midgar Mercenary
-Cloudbound Moogle
 Cloudspire Captain
 Colossification
 Corrupt Court Official
@@ -236,6 +235,7 @@ Mardu Monument
 Masked Meower
 Mechanical Mobster
 Mechanized Ninja Cavalry
+Mechanozoa
 Metalhead
 Michelangelo, Weirdness to 11
 Mind Transfer Protocol
@@ -274,7 +274,6 @@ Pride of the Road
 Prideful Parent
 Procrastinate
 Psychic Whorl
-Putrid Pals
 Pym Particles
 Quaketusk Boar
 Quicksilver, Brash Blur
@@ -333,6 +332,7 @@ Splinter, Hamato Yoshi
 Splinter, Radical Rat
 Stalactite Dagger
 Stalwart Successor
+Starbreach Whale
 Starfield Shepherd
 Stargaze
 Stature, Size Shifter
@@ -395,6 +395,7 @@ Venomized Cat
 Venus, Torn Between Worlds
 Veteran Ice Climber
 Virtue of Loyalty
+Virtue of Loyalty // Ardenvale Fealty
 Virulent Silencer
 Virus Beetle
 Vision Quest
