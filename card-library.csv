@@ -4541,3 +4541,103 @@ Grub's Command,Kindred Sorcery — Goblin,"Choose two —
 • Creatures target player controls get +1/+1 and gain haste until end of turn.
 • Destroy target artifact or creature.
 • Target player mills five cards, then puts each Goblin card milled this way into their hand.",B/R,Goblin; mill; tokens; removal; pump; graveyard,ECL,228,1
+Steal the Show,Sorcery,"Choose one or both —
+• Target player discards any number of cards, then draws that many cards.
+• Steal the Show deals damage equal to the number of instant and sorcery cards in your graveyard to target creature or planeswalker.",R,graveyard; discard,SOS,130,1
+Tanufel Rimespeaker,Creature — Elemental Wizard,"Whenever you cast a spell with mana value 4 or greater, draw a card.",U,Elemental; Wizard; card draw,ECL,77,1
+United Battlefront,Sorcery,"Look at the top seven cards of your library. Put up to two noncreature, nonland permanent cards with mana value 3 or less from among them onto the battlefield. Put the rest on the bottom of your library in a random order.",W,selection,TDM,32,1
+"Sin, Spira's Punishment",Legendary Creature — Leviathan Avatar,"Flying
+Whenever Sin enters or attacks, exile a permanent card from your graveyard at random, then create a tapped token that's a copy of that card. If the exiled card is a land card, repeat this process.",U/B/G,Leviathan; Avatar; graveyard; tokens; flying; evasion,FIN,242,1
+Pest Control,Sorcery,"Destroy all nonland permanents with mana value 1 or less.
+Cycling {2} ({2}, Discard this card: Draw a card.)",W/B,card draw; cycling,BIG,22,1
+"Vraska, the Silencer",Legendary Creature — Gorgon Assassin,"Deathtouch
+Whenever a nontoken creature an opponent controls dies, you may pay {1}. If you do, return that card to the battlefield tapped under your control. It's a Treasure artifact with ""{T}, Sacrifice this artifact: Add one mana of any color,"" and it loses all other card types.",B/G,Gorgon; Assassin; sacrifice; treasure; deathtouch; combat; removal,OTJ,237,1
+Overwhelming Forces,Sorcery,Destroy all creatures target opponent controls. Draw a card for each creature destroyed this way.,B,card draw,OTP,17,1
+"Kellan, the Kid",Legendary Creature — Human Faerie Rogue,"Flying, lifelink
+Whenever you cast a spell from anywhere other than your hand, you may cast a permanent spell with equal or lesser mana value from your hand without paying its mana cost. If you don't, you may put a land card from your hand onto the battlefield.",W/U/G,Human; Faerie; Rogue; lifegain; exile cast; flying; evasion; lifelink,OTJ,213,1
+Legion Extruder,Artifact,"When this artifact enters, it deals 2 damage to any target.
+{2}, {T}, Sacrifice another artifact: Create a 3/3 colorless Golem artifact creature token.",R,sacrifice; tokens; burn; etb; noncombat damage,BIG,12,1
+Fractured Identity,Sorcery,Exile target nonland permanent. Each player other than its controller creates a token that's a copy of it.,W/U,tokens; removal,OTP,45,1
+Wrangler of the Damned,Creature — Human Soldier,"Flash
+At the beginning of your end step, if you haven't cast a spell from your hand this turn, create a 2/2 white Spirit creature token with flying.",W/U,Human; Soldier; tokens; flash; tempo,OTJ,238,1
+Bovine Intervention,Instant,Destroy target artifact or creature. Its controller creates a 2/2 white Ox creature token.,W,tokens; removal,OTJ,6,1
+Hindering Light,Instant,"Counter target spell that targets you or a permanent you control.
+Draw a card.",W/U,counterspell; card draw,OTP,46,1
+Frontier Seeker,Creature — Human Scout,"When this creature enters, look at the top five cards of your library. You may reveal a Mount creature card or a Plains card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",W,Human; Scout; etb; selection,OTJ,13,1
+Essence Capture,Instant,Counter target creature spell. Put a +1/+1 counter on up to one target creature you control.,U,counters; counterspell,NEO,52,1
+Plan the Heist,Sorcery,"Surveil 3 if you have no cards in hand. Then draw three cards. (To surveil 3, look at the top three cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)
+Plot {3}{U} (You may pay {3}{U} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",U,graveyard; exile cast; card draw; selection; surveil; plot; tempo; cost-reduction,OTJ,62,1
+Oasis Gardener,Artifact Creature — Scarecrow,"When this creature enters, you gain 2 life.
+{T}: Add one mana of any color.",Colorless,Scarecrow; lifegain; mana; etb,OTJ,246,1
+Voracious Varmint,Creature — Varmint,"Vigilance
+{1}, Sacrifice this creature: Destroy target artifact or enchantment.",G,Varmint; sacrifice; removal; vigilance; combat,OTJ,188,1
+Sterling Keykeeper,Creature — Human Mercenary,"{2}, {T}: Tap target non-Mount creature.",W,Human; Mercenary,OTJ,32,1
+Mirage Mesa,Land — Desert,"This land enters tapped. As it enters, choose a color.
+{T}: Add one mana of the chosen color.",Colorless,Desert; mana,OTJ,262,1
+Skulduggery,Instant,"Until end of turn, target creature you control gets +1/+1 and target creature an opponent controls gets -1/-1.",B,pump; removal,OTJ,107,1
+Desperate Bloodseeker,Creature — Vampire,"Lifelink
+When this creature enters, target player mills two cards. (They put the top two cards of their library into their graveyard.)",B,Vampire; graveyard; mill; lifegain; etb; lifelink,OTJ,86,1
+Mourner's Surprise,Sorcery,"Return up to one target creature card from your graveyard to your hand. Create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""",B,graveyard; tokens; pump,OTJ,94,1
+Deadeye Duelist,Creature — Human Assassin,"Reach
+{1}, {T}: This creature deals 1 damage to target opponent.",R,Human; Assassin; burn; noncombat damage; reach; defense,OTJ,119,1
+Hardbristle Bandit,Creature — Plant Rogue,"{T}: Add one mana of any color.
+Whenever you commit a crime, untap this creature. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)",G,Plant; Rogue; graveyard; mana,OTJ,168,1
+Festering Gulch,Land — Desert,"This land enters tapped.
+When this land enters, it deals 1 damage to target opponent.
+{T}: Add {B} or {G}.",B/G,Desert; burn; mana; etb; noncombat damage,OTJ,257,1
+Cheering Crowd,Creature — Human Citizen,"At the beginning of each player's first main phase, that player may put a +1/+1 counter on this creature. If they do, they add {C} for each counter on it.",R/G,Human; Citizen; counters,SPM,126,1
+The Speed Demon,Legendary Creature — Demon,"Flying, trample
+Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+At the beginning of your end step, you draw X cards and lose X life, where X is your speed.",B,Demon; pay life; card draw; flying; evasion; trample; start your engines!; speed,DFT,105,1
+Salvation Engine,Artifact — Vehicle,"Other artifact creatures you control get +2/+2.
+Whenever this Vehicle attacks, return up to one target artifact card from your graveyard to the battlefield.
+Crew 6",W,Vehicle; reanimator; graveyard; vehicle; pump; crew; vehicles,DFT,27,1
+Fuel the Flames,Instant,"Fuel the Flames deals 2 damage to each creature.
+Cycling {2} ({2}, Discard this card: Draw a card.)",R,card draw; burn; cycling,DFT,126,1
+Dune Drifter,Artifact — Vehicle,"When this Vehicle enters, return target artifact or creature card with mana value X or less from your graveyard to the battlefield.
+Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",W/B,Vehicle; reanimator; graveyard; etb; vehicle; crew; vehicles,DFT,200,1
+Guidelight Synergist,Artifact Creature — Robot Artificer,"Flying
+This creature gets +1/+0 for each artifact you control.",W,Robot; Artificer; pump; flying; evasion,DFT,16,1
+Voyage Home,Sorcery,"Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)
+You draw three cards and gain 3 life.",W/U,lifegain; cost-reduction; card draw; affinity; artifacts,DFT,227,1
+Intimidation Tactics,Sorcery,"Target opponent reveals their hand. You choose an artifact or creature card from it. Exile that card.
+Cycling {3} ({3}, Discard this card: Draw a card.)",B,card draw; cycling,DFT,92,1
+Point the Way,Enchantment,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+{3}{G}, Sacrifice this enchantment: Search your library for up to X basic land cards, where X is your speed. Put those cards onto the battlefield tapped, then shuffle.",G,sacrifice; start your engines!; speed,DFT,175,1
+Wreck Remover,Artifact Creature — Construct,"Whenever this creature enters or attacks, exile up to one target card from a graveyard. You gain 1 life.
+Cycling {2} ({2}, Discard this card: Draw a card.)",Colorless,Construct; graveyard; lifegain; card draw; cycling,DFT,247,1
+Spotcycle Scouter,Artifact — Vehicle,"When this Vehicle enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)
+Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",W,Vehicle; etb; scry; vehicle; selection; crew; vehicles,DFT,30,1
+Burner Rocket,Artifact — Vehicle,"Flash
+When this Vehicle enters, target creature you control gets +2/+0 and gains trample until end of turn.
+Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",R,Vehicle; etb; vehicle; pump; crew; vehicles; flash; tempo,DFT,114,1
+Loxodon Surveyor,Creature — Elephant Scout,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
+Max speed — {3}, Exile this card from your graveyard: Draw a card.",G,Elephant; Scout; graveyard; card draw; max speed; speed; aggro; start your engines!,DFT,167,1
+Skyship Buccaneer,Creature — Human Pirate,"Flying
+Raid — When this creature enters, if you attacked this turn, draw a card.",U,Human; Pirate; card draw; etb; flying; evasion; raid; aggro,FDN,50,1
+Seeker's Folly,Sorcery,"Choose one —
+• Target opponent discards two cards.
+• Creatures your opponents control get -1/-1 until end of turn.",B,discard,FDN,69,1
+Micromancer,Creature — Human Wizard,"When this creature enters, you may search your library for an instant or sorcery card with mana value 1, reveal it, put it into your hand, then shuffle.",U,Human; Wizard; etb,FDN,158,1
+Choreographed Sparks,Instant,"This spell can't be copied.
+Choose one or both —
+• Copy target instant or sorcery spell you control. You may choose new targets for the copy.
+• Copy target creature spell you control. The copy gains haste and ""At the beginning of the end step, sacrifice this token.""",R,sacrifice; spell copy,SOS,111,1
+Skateboard,Artifact — Equipment,"When this Equipment enters, tap target permanent.
+Equipped creature gets +1/+0 and has haste.
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; etb; equipment; pump; equip,TMT,178,1
+"Vulture, Scheming Scavenger",Legendary Creature — Human Artificer Villain,"Flying
+Whenever Vulture attacks, other Villains you control gain flying until end of turn.",U/B,Human; Artificer; Villain; Villains; flying; evasion,SPM,158,1
+Spider-Bot,Artifact Creature — Spider Robot Scout,"Reach
+When this creature enters, you may search your library for a basic land card, reveal it, then shuffle and put that card on top.",Colorless,Spider; Robot; Scout; ramp; etb; reach; defense,SPM,173,1
+Aerith Gainsborough,Legendary Creature — Human Cleric,"Lifelink
+Whenever you gain life, put a +1/+1 counter on Aerith Gainsborough.
+When Aerith Gainsborough dies, put X +1/+1 counters on each legendary creature you control, where X is the number of +1/+1 counters on Aerith Gainsborough.",W,Human; Cleric; counters; lifegain; lifelink,FIN,4,1
+Rite of the Dragoncaller,Enchantment,"Whenever you cast an instant or sorcery spell, create a 5/5 red Dragon creature token with flying.",R,tokens; spellslinger,FDN,92,1
+Reclamation Sage,Creature — Elf Shaman,"When this creature enters, you may destroy target artifact or enchantment.",G,Elf; Shaman; removal; etb,FDN,231,1
+Pit Automaton,Artifact Creature — Construct,"Defender
+{T}: Add {C}{C}. Spend this mana only to activate abilities.
+{2}, {T}: When you next activate an exhaust ability that isn't a mana ability this turn, copy it. You may choose new targets for the copy.",Colorless,Construct; mana; defender; defense,DFT,238,1
+Goldvein Hydra,Creature — Hydra,"Vigilance, trample, haste
+This creature enters with X +1/+1 counters on it.
+When this creature dies, create a number of tapped Treasure tokens equal to its power.",G,Hydra; counters; tokens; treasure; vigilance; combat; haste; aggro; trample; evasion,OTJ,167,1

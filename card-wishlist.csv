@@ -137,7 +137,6 @@ Omniscience,Enchantment,You may cast spells from your hand without paying their 
 "Ramos, Dragon Engine",Legendary Artifact Creature — Dragon,"Flying
 Whenever you cast a spell, put a +1/+1 counter on Ramos for each of that spell's colors.
 Remove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activate only once each turn.",W/U/B/R/G,Dragon; counters; flying; evasion,FDN,678,Mythic,17; 51,"Deck 51: cost is {6} COLORLESS so it casts on Islands — the identity column (WUBRG, from its MANA ABILITY) is what hid it. Five +1/+1 counters convert to TEN mana, and Fractured Realm doubles the counter trigger. 4/4 flier.",8,hand
-Rite of the Dragoncaller,Enchantment,"Whenever you cast an instant or sorcery spell, create a 5/5 red Dragon creature token with flying.",R,tokens; spellslinger,FDN,92,Mythic,2,,7.0,hand
 Abyssal Harvester,Creature — Demon Warlock,"{T}: Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.",B,Demon; Warlock; Nightmare; graveyard; tokens; removal,FDN,54,Rare,52a,,7.0,seed
 Adaptive Automaton,Artifact Creature — Construct,"As this creature enters, choose a creature type.
 This creature is the chosen type in addition to its other types.
@@ -297,9 +296,6 @@ Power-up — {5}{U}{U}{U}: Put a +1/+1 counter on Kang. Take an extra turn after
 Archangel of Tithes,Creature — Angel,"Flying
 As long as this creature is untapped, creatures can't attack you or planeswalkers you control unless their controller pays {1} for each of those creatures.
 As long as this creature is attacking, creatures can't block unless their controller pays {1} for each of those creatures.",W,Angel; flying; evasion,OTJ,2,Mythic,3,"Go-wide tax (protects you + pushes a wide board through); also fits deck 23 — one copy serves both. Mythic craft, OTJ rotation-soon.",6.5,hand
-Goldvein Hydra,Creature — Hydra,"Vigilance, trample, haste
-This creature enters with X +1/+1 counters on it.
-When this creature dies, create a number of tapped Treasure tokens equal to its power.",G,Hydra; counters; tokens; treasure; vigilance; combat; haste; aggro; trample; evasion,OTJ,167,Mythic,50,,4.5,seed
 Terror of the Peaks,Creature — Dragon,"Flying
 Spells your opponents cast that target this creature cost an additional 3 life to cast.
 Whenever another creature you control enters, this creature deals damage equal to that creature's power to any target.",R,Dragon; flying; evasion,OTJ,149,Mythic,49,,8.0,hand
@@ -355,9 +351,6 @@ Slumbering Trudge,Creature — Plant Beast,"This creature enters with a number o
 Splatter Technique,Sorcery,"Choose one —
 • Draw four cards.
 • Splatter Technique deals 4 damage to each creature and planeswalker.",U/R,card draw; burn,SOS,231,Rare,general,flexible UR: draw 4 OR sweep 4 to each creature/PW — role-player in any UR/grixis shell,6.5,hand
-Steal the Show,Sorcery,"Choose one or both —
-• Target player discards any number of cards, then draws that many cards.
-• Steal the Show deals damage equal to the number of instant and sorcery cards in your graveyard to target creature or planeswalker.",R,graveyard; discard,SOS,130,Rare,,,5.5,seed
 Stormcarved Coast,Land,"This land enters tapped unless you control two or more other lands.
 {T}: Add {U} or {R}.",U/R,mana,SOS,263,Rare,26,"untapped from your 3rd land on, so it is live for Tannuk's {R}{R} on turn 4 and the 5-drops. Prefer over Spirebluff Canal, which is tapped on exactly that turn. Craft over a tapped dual, not an Island, to keep source counts.",4.0,seed
 Sundown Pass,Land,"This land enters tapped unless you control two or more other lands.
