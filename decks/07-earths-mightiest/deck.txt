@@ -1,13 +1,21 @@
 #: name: Earth's Mightiest
 #: format: Standard
 #: arena: 07 Earth’s Mightiest, e3a6c595-914d-4809-bd6d-630b3758ca89
-#: tier: B — Selesnya go-wide heroes. The old one-line reason ("fast clock but thin
-#: tier: interaction (3)") is no longer true on either count: the classifier fix reads
-#: tier: interaction 7, and the plan infers as MIDRANGE, not aggro, on a 3.17 curve. The
-#: tier: letter still stands, but on a different axis — CARD ADVANTAGE is 0. A go-wide
-#: tier: board with no refuel folds to a single sweeper, and that is the one clear
-#: tier: weakness plus a thin 8-theme spine. Path to A: a repeatable draw engine that
-#: tier: scales off the wide board, not more interaction.
+#: tier: B — RE-GRADE CANDIDATE, and the argument for B has now expired. Selesnya
+#: tier: go-wide heroes. The old one-line reason ("fast clock but thin
+#: tier: interaction (3)") stopped being true on either count once the classifier fix
+#: tier: read interaction 8, on a 3.08 curve with the plan inferring MIDRANGE, not
+#: tier: aggro. The B rested on a different axis after that — NO REPEATABLE REFUEL, so
+#: tier: a go-wide board folded to a single sweeper — and the stated path
+#: tier: to A was "a repeatable draw engine that scales off the wide board, not more
+#: tier: interaction". THAT ENGINE IS NOW IN THE DECK: Haliya, Ascendant Cadet was
+#: tier: crafted and maindecked 2026-08-10 (a counter on every attack; a card whenever
+#: tier: countered creatures connect), taking card advantage 0→2, and Valorous Stance
+#: tier: replaced Spider-Man, Brooklyn Visionary the same day for interaction 8 and
+#: tier: protection 4. The metrics floor is A and the letter is one band UNDER it, which
+#: tier: the rubric flags. Held at B pending a HUMAN call only because the deck is
+#: tier: UNPLAYED — the thin 7-theme spine and singleton variance are the remaining
+#: tier: arguments, and neither is measured.
 #: colors: GW
 #: archetype: Selesnya (G/W) Avengers heroes go-wide.
 #: notes: Selesnya (G/W) — Avengers heroes go-wide.
@@ -22,7 +30,7 @@
 1 White Tiger, Ava Ayala (MSH) 196
 1 The Unbeatable Squirrel Girl (MSH) 193
 1 Elspeth, Storm Slayer (TDM) 11
-1 Spider-Man, Brooklyn Visionary (SPM) 115
+1 Valorous Stance (FDN) 583
 1 Wakandan Royal Guard (MSH) 195
 1 The Thing, Ben Grimm (MSH) 190
 1 Spider-Man, To the Rescue (MSH) 228

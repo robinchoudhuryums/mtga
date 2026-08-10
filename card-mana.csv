@@ -2179,6 +2179,8 @@ Rite of the Dragoncaller,{4}{R}{R},6,
 Reclamation Sage,{2}{G},3,
 Pit Automaton,{2},2,Defender
 Goldvein Hydra,{X}{G},1,Vigilance;Treasure;Haste;Trample
+"Haliya, Ascendant Cadet",{2}{G}{W}{W},5,
+Quilled Greatwurm,{4}{G}{G},6,Trample
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -4825,7 +4827,6 @@ Biotech Specialist,{R}{G},2,
 Cosmogoyf,{B}{G},2,
 "Dyadrine, Synthesis Amalgam",{X}{G}{W},2,Trample
 Genemorph Imago,{G}{U},2,Landfall;Flying
-"Haliya, Ascendant Cadet",{2}{G}{W}{W},5,
 Infinite Guideline Station,{W}{U}{B}{R}{G},5,Station
 Interceptor Mechan,{2}{B}{R},4,Flying;Void
 "Mm'menon, Uthros Exile",{1}{U}{R},3,Flying
@@ -4943,7 +4944,6 @@ Sower of Chaos,{3}{R},4,
 Apothecary Stomper,{4}{G}{G},6,Vigilance
 Elvish Regrower,{2}{G}{G},4,
 Preposterous Proportions,{5}{G}{G},7,
-Quilled Greatwurm,{4}{G}{G},6,Trample
 Spinner of Souls,{2}{G},3,Reach
 Dreadwing Scavenger,{1}{U}{B},3,Flying;Threshold
 "Koma, World-Eater",{3}{G}{G}{U}{U},7,Trample;Ward
