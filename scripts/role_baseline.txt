@@ -78,7 +78,6 @@ Champions of the Shoal
 Charging Strifeknight
 Child of the Volcano
 Cloud, Midgar Mercenary
-Cloudbound Moogle
 Cloudspire Captain
 Colossification
 Corrupt Court Official
@@ -275,7 +274,6 @@ Pride of the Road
 Prideful Parent
 Procrastinate
 Psychic Whorl
-Putrid Pals
 Pym Particles
 Quaketusk Boar
 Quicksilver, Brash Blur
