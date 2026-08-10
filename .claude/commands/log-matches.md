@@ -14,8 +14,46 @@ Arena writes match events only when **Detailed Logs (Plugin Support)** is enable
 Arena → Settings → Account → check "Detailed Logs (Plugin Support)", then **restart
 Arena**. Nothing before the restart is captured.
 
-`Player.log` is **overwritten on every launch**, so grab it before relaunching. Ask the
-user to run this on the machine running Arena and paste the output:
+**Recommended one-time setup — the rolling archive.** `Player.log` is **overwritten on
+every launch**, so any session not extracted before the next launch is gone (the
+roster's 2026-07-27 match is a permanent casualty of exactly this). A launchd job that
+appends the filtered lines to `~/mtga-logs/arena.log` every 15 minutes makes that loss
+structurally impossible; re-ingesting the archive is always safe because dedup is by
+`matchId`. Run once on the Mac running Arena:
+
+```sh
+mkdir -p ~/mtga-logs && cat > ~/mtga-logs/snapshot.sh <<'EOF'
+#!/bin/sh
+p="$HOME/Library/Logs/Wizards Of The Coast/MTGA"
+d="$HOME/mtga-logs"
+grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3|==> DeckUpsertDeckV3' \
+    "$p"/Player*.log > "$d/.capture" 2>/dev/null
+cat "$d/arena.log" "$d/.capture" 2>/dev/null | awk '!seen[$0]++' > "$d/.merged" \
+    && mv "$d/.merged" "$d/arena.log"
+EOF
+chmod +x ~/mtga-logs/snapshot.sh
+cat > ~/Library/LaunchAgents/com.mtga.logsnapshot.plist <<'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.mtga.logsnapshot</string>
+  <key>ProgramArguments</key>
+  <array><string>/bin/sh</string><string>-c</string><string>"$HOME"/mtga-logs/snapshot.sh</string></array>
+  <key>StartInterval</key><integer>900</integer>
+  <key>RunAtLoad</key><true/>
+</dict></plist>
+EOF
+launchctl load ~/Library/LaunchAgents/com.mtga.logsnapshot.plist
+```
+
+The dedupe is line-identical and safe: every captured line shape is unique (match
+headers carry timestamps, the JSON payloads carry ids). With the archive in place, the
+per-session ask is just `cat ~/mtga-logs/arena.log | pbcopy` — or, for a leaner paste
+when no decks were renamed, `grep -v '==> DeckUpsertDeckV3' ~/mtga-logs/arena.log |
+pbcopy` (the Upsert lines carry full decklists and are the bulk of the bytes).
+
+**Without the archive**, grab the log before relaunching Arena. Ask the user to run
+this on the machine running Arena and paste the output:
 
 ```
 # macOS
@@ -74,6 +112,13 @@ python3 scripts/parse_matches.py <file> --apply --deck 12   # tag one session's 
 Rows dedupe by Arena's `matchId`, so re-pasting an overlapping log is safe and re-running
 is not destructive.
 
+**Headers keep themselves current.** The same `--apply` also harvests the paste's deck
+summaries and writes any new or renamed `#: arena:` header (with `.bak`s, conflicts
+refused) *before* resolving the matches — so a deck renamed in the client re-maps in the
+same run, and a paste of deck summaries with no matches in it still syncs headers rather
+than erroring. `--map-decks` remains for the explicit roster-wide pass, but routine
+ingests need no separate upkeep step.
+
 ## Stage 2 — Report
 
 ```
@@ -113,8 +158,12 @@ list and let the parser write every header:
 
 ```
 p=~/Library/Logs/"Wizards Of The Coast"/MTGA
-grep -hE 'DeckGetDeckSummariesV3|DeckUpsertDeckV3|==> EventSetDeckV3' "$p"/Player*.log
+grep -hE '==> (EventSetDeckV3|DeckUpsertDeckV3)' "$p"/Player*.log
 ```
+
+(Not `DeckGetDeckSummariesV3` — its name promises the whole collection, but Arena logs
+only the request and a bare ack with no payload: measured 0 decks from 5 calls in the
+first real sample. Grepping for it hauls in nothing.)
 
 ```
 python3 scripts/parse_matches.py <file> --map-decks           # dry run — always first

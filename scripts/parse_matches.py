@@ -52,13 +52,17 @@ Arena name -> repo deck id resolves in three steps, most explicit first:
 A match that resolves to nothing keeps its Arena deck name with a blank Deck; the report
 lists what is unattributed. Nothing is dropped for being unmapped.
 
-`--map-decks` learns those headers for the WHOLE roster from one paste instead of one
-deck at a time: every message type that mentions a deck (EventSetDeckV3,
-DeckUpsertDeckV3, a DeckGetDeckSummariesV3 response) nests the same
-`{"DeckId":…,"Name":…}` object, so one scan harvests the client's deck list, matches each
-by the leading-number convention and writes the header. Dry-run by default; two Arena
-decks claiming one repo deck write NOTHING, because a header naming the wrong one of two
-is worse than no header — the parser would then attribute matches to it with confidence.
+Those headers KEEP THEMSELVES CURRENT: every ingest also harvests the paste's deck
+summaries (EventSetDeckV3 = the deck submitted for an event, DeckUpsertDeckV3 = the deck
+just saved/renamed/imported — both nest the same `{"DeckId":…,"Name":…}` object) and, on
+--apply, writes any new or renamed header before resolving the matches, so header upkeep
+is not a separate command nobody runs. `--map-decks` is the roster-scale version of the
+same pass — feed it a paste grepped for `==> (EventSetDeckV3|DeckUpsertDeckV3)` and it
+maps every deck the client has touched. (NOT DeckGetDeckSummariesV3: Arena logs its
+request and a bare ack with no payload — measured 0 decks from 5 calls.) Dry-run by
+default; two Arena decks claiming one repo deck write NOTHING, because a header naming
+the wrong one of two is worse than no header — the parser would then attribute matches
+to it with confidence.
 
 Usage:
     python3 scripts/parse_matches.py session.log            # dry run
@@ -74,6 +78,12 @@ launch, so grab it before relaunching):
     p=~/Library/Logs/"Wizards Of The Coast"/MTGA
     grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
         "$p"/Player*.log | pbcopy
+
+Better: don't extract by hand at all. A launchd job that appends the filtered lines to a
+rolling archive every 15 minutes makes the overwrite-on-launch data loss structurally
+impossible (the 2026-07-27 match is a permanent casualty of not having one); re-ingesting
+the archive is safe because dedup is by matchId. The setup block lives in
+.claude/commands/log-matches.md, Stage 0.
 """
 
 import argparse
@@ -388,11 +398,14 @@ def resolve_deck(name, guid, mapping, known_ids=()):
     return "", ""
 
 
-# Any deck SUMMARY, wherever it appears: EventSetDeckV3 carries one, DeckUpsertDeckV3
-# carries the deck you just edited, and a DeckGetDeckSummariesV3 response carries the
-# whole collection at once. All three nest the same {"DeckId":…,"Name":…} object, so one
-# pattern reads every shape rather than three that each guess at a message layout. The
-# window is bounded so a summary MISSING a Name cannot reach into the next entry's.
+# Any deck SUMMARY, wherever it appears: EventSetDeckV3 carries the deck submitted for
+# an event, DeckUpsertDeckV3 the deck just saved/renamed/imported. Both nest the same
+# {"DeckId":…,"Name":…} object, so one pattern reads every shape rather than one per
+# message layout — and it still reads a multi-summary line should Arena ever log one.
+# (DeckGetDeckSummariesV3 was ASSUMED to be a third source and measured to be none:
+# Arena logs its request and a bare `<== …(id)` ack, no payload — 0 decks from 5 calls
+# in the first real sample, so grepping for it hauls in nothing.) The window is bounded
+# so a summary MISSING a Name cannot reach into the next entry's.
 _SUMMARY_RE = re.compile(r'"DeckId":"([^"]+)".{0,200}?"Name":"([^"]*)"')
 _ARENA_HEADER_RE = re.compile(r"^#:\s*arena\s*:", re.I)
 
@@ -524,6 +537,34 @@ def map_decks(text, apply=False, out=print):
     out(f"\nWrote {written} deck file(s), each with a .bak. Run check_all.py to confirm "
         f"INV-04 still holds.")
     return written, plan
+
+
+def sync_headers(text, apply=False, out=print):
+    """The quiet sibling of `map_decks`, run inside the NORMAL match flow.
+
+    Any paste that can attribute a match already carries the deck summaries that keep
+    `#: arena:` headers current, so making header upkeep a separate command meant it was
+    upkeep nobody would run — the G-53 shape, a capability nothing reaches. This applies
+    the same `_arena_header_plan` (same conflict refusal, same `.bak`-writing
+    `_write_arena_header`) but reports only what CHANGES, so a routine log ingest is not
+    buried under an all-unchanged roster listing. Returns (written, plan)."""
+    plan = _arena_header_plan(parse_deck_names(text))
+    for did, _path, names, _status in plan:
+        if _status == "conflict":
+            out(f"⚠ deck {did}: two Arena decks claim it ({names}) — no header written; "
+                f"resolve by hand")
+    todo = [p for p in plan if p[3] in ("add", "update")]
+    if not todo:
+        return 0, plan
+    if not apply:
+        out(f"{len(todo)} deck(s) would gain or refresh a `#: arena:` header "
+            f"(written on --apply): " + ", ".join(p[0] for p in todo))
+        return 0, plan
+    for _did, path, line, _status in todo:
+        _write_arena_header(path, line)
+    out(f"Refreshed `#: arena:` header(s) on {len(todo)} deck file(s): "
+        + ", ".join(p[0] for p in todo))
+    return len(todo), plan
 
 
 def fresh_rows(rows, existing):
@@ -721,7 +762,19 @@ def main():
     rows, warnings = parse_log(text, me=args.me)
     for w in warnings:
         eprint(f"WARN:  {w}")
+
+    # Header upkeep rides along with every ingest — BEFORE the mapping is built, so a
+    # header written from this paste resolves this paste's own matches, and BEFORE the
+    # no-matches bailout, so a paste of deck summaries alone (the --map-decks extraction
+    # shape) still keeps headers current instead of dying with a misleading error.
+    sync_headers(text, apply=args.apply)
+
     if not rows:
+        if parse_deck_names(text):
+            print("No completed matches in this paste — deck summaries only. Header "
+                  "changes, if any, are reported above"
+                  + ("." if args.apply else " (dry run — pass --apply to write them)."))
+            return 0
         eprint("No completed matches found. Check that Detailed Logs (Plugin Support) is "
                "enabled in Arena, and that the paste includes the `Match to ...` header "
                "lines as well as the JSON.")

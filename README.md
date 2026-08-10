@@ -1230,7 +1230,10 @@ python3 scripts/parse_matches.py --report               # win/loss per deck
 Every other tool here grades a deck on its **list**. This one records **games**.
 Turn on Arena → Settings → Account → **Detailed Logs (Plugin Support)**, restart
 Arena, then extract the three relevant line shapes in **one** grep (`Player.log`
-is overwritten on every launch, so grab it before relaunching):
+is overwritten on every launch, so grab it before relaunching — or set up the
+launchd rolling archive in `.claude/commands/log-matches.md` Stage 0 once, after
+which nothing is ever lost and the per-session step is pasting
+`~/mtga-logs/arena.log`):
 
 ```
 p=~/Library/Logs/"Wizards Of The Coast"/MTGA          # macOS
@@ -1254,10 +1257,13 @@ immediately before it, then resolved to a repo deck by `--deck <id>`, else a
 ("07 Earth's Mightiest" → deck 7) when that deck exists. The run prints every name
 with the route that resolved it. Unattributed matches are kept, never dropped.
 
-`--map-decks` writes those headers for the whole roster from one paste, rather
-than one deck at a time — every message type that mentions a deck nests the same
-`{"DeckId":…,"Name":…}` object, so a grep for `DeckGetDeckSummariesV3|
-DeckUpsertDeckV3|==> EventSetDeckV3` harvests the client's deck list:
+Those headers keep themselves current: every `--apply` ingest also harvests the
+paste's deck summaries and writes any new or renamed header before resolving the
+matches, so a deck renamed in the Arena client re-maps in the same run.
+`--map-decks` is the explicit roster-wide version — feed it a grep for
+`'==> (EventSetDeckV3|DeckUpsertDeckV3)'` and it maps every deck the client has
+touched (not `DeckGetDeckSummariesV3`: despite the name, Arena logs it with no
+payload — measured 0 decks from 5 calls):
 
 ```
 python3 scripts/parse_matches.py session.log --map-decks           # dry run

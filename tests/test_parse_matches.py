@@ -557,8 +557,12 @@ class TestDeckNameHarvest:
             "e3a6c595-914d-4809-bd6d-630b3758ca89": "07 Earth’s Mightiest"}
 
     def test_several_summaries_on_one_line_all_come_back(self):
-        """A DeckGetDeckSummariesV3 response is the whole collection in a single line."""
-        line = ('<== DeckGetDeckSummariesV3(x) {"Summaries":['
+        """Shape-generality pin: the harvest is per-OBJECT, not per-line, so a message
+        that packs several summaries into one line yields them all. (No live Arena
+        message is known to do this — DeckGetDeckSummariesV3 was assumed to and measured
+        to log NO payload at all — but the property is what makes the scan robust to a
+        message layout nobody anticipated.)"""
+        line = ('{"Summaries":['
                 '{"DeckId":"g-a","Mana":"","Name":"07 Earth’s Mightiest"},'
                 '{"DeckId":"g-b","Mana":"","Name":"45 The Exiles"}]}')
         assert pm.parse_deck_names(line) == {"g-a": "07 Earth’s Mightiest",
@@ -663,6 +667,74 @@ class TestArenaHeaderWriting:
         d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
         pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
         assert list((d / "07-earths").glob("*.bak"))
+
+
+class TestHeaderSyncRidesAlong:
+    """Header upkeep as a separate command is upkeep nobody runs (the G-53 shape), so
+    the normal match flow performs it — quietly, and only when something changes."""
+
+    PLAIN = TestArenaHeaderWriting.PLAIN
+
+    def _roster(self, tmp_path, monkeypatch):
+        return TestArenaHeaderWriting._roster(self, tmp_path, monkeypatch,
+                                              **{"07-earths": self.PLAIN})
+
+    def test_apply_writes_the_header_a_dry_run_does_not(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch)
+        f = d / "07-earths" / "deck.txt"
+        written, _ = pm.sync_headers(_setdeck(), apply=False, out=lambda *_a: None)
+        assert written == 0 and "#: arena:" not in f.read_text(encoding="utf-8")
+        written, _ = pm.sync_headers(_setdeck(), apply=True, out=lambda *_a: None)
+        assert written == 1 and "#: arena:" in f.read_text(encoding="utf-8")
+
+    def test_an_all_unchanged_roster_says_nothing(self, tmp_path, monkeypatch):
+        """A routine re-ingest must not bury the match report under header noise."""
+        self._roster(tmp_path, monkeypatch)
+        pm.sync_headers(_setdeck(), apply=True, out=lambda *_a: None)
+        said = []
+        written, _ = pm.sync_headers(_setdeck(), apply=True, out=said.append)
+        assert written == 0 and said == []
+
+    def test_a_header_written_from_the_paste_resolves_that_pastes_matches(
+            self, tmp_path, monkeypatch):
+        """The ordering promise in main(): sync BEFORE the mapping is built. An Arena
+        name with NO deck-number prefix is resolvable only through its header — via the
+        GUID here, exactly a client-side rename's shape — so if the header landed after
+        the mapping was read, this paste's own match would stay unattributed."""
+        self._roster(tmp_path, monkeypatch)
+        renamed = _setdeck(name="Earth's Finest")             # no leading number
+        pm.sync_headers(_setdeck(), apply=True, out=lambda *_a: None)   # learn the GUID
+        pm.sync_headers(renamed, apply=True, out=lambda *_a: None)      # then the rename
+        assert pm.resolve_deck("Earth's Finest",
+                               "e3a6c595-914d-4809-bd6d-630b3758ca89",
+                               pm.arena_deck_map(), pm.deck_ids())[0] == "7"
+
+    def test_a_conflict_is_reported_and_nothing_written(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch)
+        log = "\n".join([_setdeck(guid="g-a", name="07 Earth’s Mightiest"),
+                         _setdeck(guid="g-b", name="07 Earth’s Mightiest (old)")])
+        said = []
+        written, _ = pm.sync_headers(log, apply=True, out=said.append)
+        assert written == 0
+        assert any("resolve by hand" in s for s in said)
+        assert "#: arena:" not in (d / "07-earths" / "deck.txt").read_text(encoding="utf-8")
+
+    def test_a_summaries_only_paste_syncs_headers_and_exits_cleanly(
+            self, tmp_path, monkeypatch, capsys):
+        """The --map-decks extraction shape fed to the NORMAL command: no matches at all.
+        The first integration ran the no-matches bailout before the sync, so this exact
+        paste died with 'check that Detailed Logs is enabled' — a misleading error about
+        a setting that was fine — and the headers it carried were never written."""
+        import sys as _sys
+        d = self._roster(tmp_path, monkeypatch)
+        log_file = tmp_path / "summaries.log"
+        log_file.write_text(_setdeck() + "\n", encoding="utf-8")
+        monkeypatch.setattr(_sys, "argv",
+                            ["parse_matches.py", str(log_file), "--apply",
+                             "--out", str(tmp_path / "m.csv")])
+        assert pm.main() == 0
+        assert "#: arena:" in (d / "07-earths" / "deck.txt").read_text(encoding="utf-8")
+        assert "deck summaries only" in capsys.readouterr().out
 
 
 class TestResolveDeck:

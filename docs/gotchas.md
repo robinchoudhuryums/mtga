@@ -2147,10 +2147,17 @@ match except one whose log had already rotated. Four details are load-bearing:
 
 **Doing the whole roster: `--map-decks`.** Setting `#: arena:` one deck at a time is where
 a wrong header hides, and a `#:` header naming something that does not exist is a silent
-no-op — the G-68 class exactly. Every message type that mentions a deck (`EventSetDeckV3`,
-`DeckUpsertDeckV3`, a `DeckGetDeckSummariesV3` response) nests the SAME
-`{"DeckId":…,"Name":…}` object, so one bounded pattern harvests the client's whole deck
-list rather than three patterns each guessing at a message layout. Three rules make the
+no-op — the G-68 class exactly. Every message type that mentions a deck (`EventSetDeckV3`
+= the deck submitted for an event, `DeckUpsertDeckV3` = the deck just
+saved/renamed/imported) nests the SAME `{"DeckId":…,"Name":…}` object, so one bounded
+pattern harvests the client's whole deck list rather than one pattern per message layout.
+**`DeckGetDeckSummariesV3` is NOT a third source, and the first draft of this section said
+it was.** Its name promises the whole collection and it was written into the suggested
+grep, the module docstring and a test's docstring on the strength of the name alone —
+measured against the first real paste, Arena logs its request and a bare `<== …(id)` ack
+with NO payload: 0 decks from 5 calls, against 21 from `DeckUpsertDeckV3`. The same
+field-name-as-claim trap as `courseId`, caught the same way (reading the values), and the
+grep now excludes it so nobody hauls in dead lines. Three rules make the
 bulk write safe: the LAST name for a GUID wins, because a deck renamed in the client
 appears under both and `setdefault` would keep the dead one (the G-63 first-writer-claims-
 the-key trap, one file over); the `.{0,200}?` window between DeckId and Name is the whole
@@ -2161,6 +2168,30 @@ naming the wrong one of two is worse than none: the parser would then attribute 
 it with full confidence. Writes route through `deck._safe_write_lines`, which re-parses the
 file and verifies the copy count is unchanged before replacing it, so a header edit
 provably cannot touch a card line.
+
+**Header upkeep rides along with every ingest (`sync_headers`).** A separate `--map-decks`
+run is upkeep nobody performs — the G-53 shape, a working capability nothing reaches — and
+any paste that can attribute a match already carries the summaries that keep headers
+current. So the normal `--apply` flow runs the same plan/write machinery quietly (it
+reports only what CHANGES, so a routine ingest is not buried under an all-unchanged roster
+listing), with two ordering rules that are the actual content of the fix: the sync runs
+BEFORE the deck mapping is built, so a header written from this paste resolves this
+paste's own matches (a client-side RENAME is exactly this shape — the new name has no
+prefix match and only the freshly-written GUID header can place it); and it runs BEFORE
+the no-matches bailout, because the first integration put it after, and a summaries-only
+paste — the `--map-decks` extraction shape fed to the normal command — died with "check
+that Detailed Logs is enabled", a misleading error about a setting that was fine, without
+writing the headers it carried. Both orderings are mutation-tested.
+
+**The rolling archive (Stage 0 of `/log-matches`).** `Player.log` is overwritten on every
+Arena launch, so every extraction habit has a structural hole: a session not grabbed
+before the next launch is gone, and the roster's 2026-07-27 match is a permanent casualty
+(its deck attribution is unrecoverable — the 12-hour bound exists to keep a rotated log's
+stale selection from being borrowed in its place). A launchd job appending the filtered
+lines to `~/mtga-logs/arena.log` every 15 minutes closes the hole; line-identical dedupe
+(`awk '!seen[$0]++'`) is safe because every captured line shape carries a timestamp or an
+id, and re-ingesting the archive is idempotent because match dedup is by `matchId`. The
+setup block lives in the skill so it survives being needed only once.
 
 Two supporting fixes came out of the same change. `load_matches` renames the pre-rename
 columns on READ, because `write_matches` emits only `HEADER` and would otherwise have

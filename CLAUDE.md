@@ -624,10 +624,10 @@ directions.
   places, before anyone read the values; the columns are `My Avatar` / `Opponent Avatar`
   now. The deck you played is in **`EventSetDeckV3`** (NAME + stable `DeckId` + timestamp),
   joined to each match on TIMESTAMP (not log order) and resolved `--deck` → `#: arena:`
-  header → the name's leading NUMBER, with the run PRINTING the route; **`--map-decks`
-  writes those headers for the WHOLE roster from one paste.** **Read the record with
-  restraint** — under 20 matches `--report` refuses a percentage, above it prints a Wilson
-  interval, and a small-sample win rate never belongs in `#: tier:`. [G-57]
+  header → the name's leading NUMBER, with the run PRINTING the route; `--map-decks` maps
+  the WHOLE roster from one paste, and every `--apply` ingest re-syncs the headers. **Read
+  the record with restraint** — under 20 matches `--report` refuses a percentage, above it
+  prints a Wilson interval, and a small-sample win rate never belongs in `#: tier:`. [G-57]
 - **NEVER widen `#: colors:` for a HYBRID card, and never reject a card for a widening you
   do not need.** Both halves were violated in one cycle: 26b's header was widened to UBR
   for `{B/R}` Bullseye, and Don & Raph was kept OUT of mono-blue 47 because its R identity
