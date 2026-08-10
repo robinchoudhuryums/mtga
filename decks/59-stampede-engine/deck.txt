@@ -75,7 +75,8 @@
 1 Garruk's Uprising (M21) 186
 1 The Earth King (TLA) 172
 1 The Boulder, Ready to Rumble (TLA) 168
-2 Scalestorm Summoner (OTJ) 144
+1 Scalestorm Summoner (OTJ) 144
+1 Quilled Greatwurm (FDN) 111
 1 Sylvan Scavenging (FDN) 113
 1 Flopsie, Bumi's Buddy (TLA) 179
 1 Halana and Alena, Partners (VOW) 239
