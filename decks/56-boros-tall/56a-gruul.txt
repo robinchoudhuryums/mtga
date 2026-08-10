@@ -11,8 +11,10 @@
 #: archetype: (X permanent counters + haste every combat) — plus Ruby's ramp. The
 #: archetype: A/B loss that parked this package was protection 0; this list fixes
 #: archetype: what that test never tried: green's OWN protection suite (Overprotect
-#: archetype: is +3/+3 trample hexproof indestructible on ONE card, Snakeskin Veil a
-#: archetype: 1-mana hexproof counter). Distinct tilt vs 56 core: white MULTIPLIES
+#: archetype: is +3/+3 trample hexproof indestructible on ONE card). Snakeskin Veil
+#: archetype: was CUT 2026-08-10 for Sage of the Fang, taking protection 3→2 — the
+#: archetype: green-package rebuild traded resilience for compounding, and that is now
+#: archetype: the deck's thinnest axis. Distinct tilt vs 56 core: white MULTIPLIES
 #: archetype: boosts on small bearers; green COMPOUNDS permanent counters on bodies
 #: archetype: that are already big — slower, bigger, board-independent.
 #: protect: Molten Man, Inferno Incarnate; Ashroot Animist; Halana and Alena, Partners; Bulk Up; Self-Destruct; Overprotect
@@ -27,10 +29,13 @@
 #: tier: 2. INTERACTION 4, and ZERO of it answers a NONCREATURE permanent. For an
 #: tier:    aggro deck that is survivable (you are racing); for a midrange deck it is a
 #: tier:    real hole — an enchantment or planeswalker that blanks the plan is unanswerable.
-#: tier: 3. IT DEPENDS ON RESOLVING AND KEEPING ONE BODY. Protection 3 (Overprotect x2,
-#: tier:    Snakeskin Veil) is real but thin against removal-heavy decks.
-#: tier: A FOURTH WEAKNESS WAS CLAIMED HERE AND IS RETRACTED (2026-08-09). `stats`
-#: tier: flags Scalestorm Summoner and Ruby for gating on POWER 4+ with only 5 of 19
+#: tier: 3. IT DEPENDS ON RESOLVING AND KEEPING ONE BODY, and this is now the WORST
+#: tier:    axis: protection 2, all of it Overprotect x2 — which is itself UNOWNED, so a
+#: tier:    built version currently protects nothing. Snakeskin Veil was cut 2026-08-10.
+#: tier: A FOURTH WEAKNESS WAS CLAIMED HERE AND IS RETRACTED (2026-08-09; Scalestorm
+#: tier: Summoner has since been CUT 2026-08-10, so this now covers Ruby alone and is
+#: tier: kept as the reasoning that retired the flag). `stats`
+#: tier: flagged Scalestorm Summoner and Ruby for gating on POWER 4+ with only 5 of 19
 #: tier: creature copies printed at power 4+, and appends its standard caveat that a
 #: tier: body which GROWS after it enters cannot satisfy an ENTERS trigger. NEITHER
 #: tier: CARD HAS AN ENTERS TRIGGER: Scalestorm checks "whenever this creature ATTACKS
@@ -57,7 +62,7 @@
 #: notes: REVIVAL of the 56 A/B's green package per the core deck's parked-not-dead
 #: notes: note — the user asked for this variant. The A/B judged the PACKAGES, not
 #: notes: green's ceiling: that test's green list ran zero protection while green
-#: notes: owns the format's cheapest (Overprotect, Snakeskin Veil, Blossoming
+#: notes: owns the format's cheapest (Overprotect, Blossoming
 #: notes: Defense as a bench option). Halana triggers at BEGINNING of combat —
 #: notes: counters land before blockers, and haste means a freshly cast body can
 #: notes: swing the same turn she pumps it. Ashroot targets ANOTHER creature: he
@@ -105,14 +110,14 @@
 1 Mai, Jaded Edge (TLA) 147
 
 # Power-4 payoff body
-1 Scalestorm Summoner (OTJ) 144
+1 Quilled Greatwurm (FDN) 111
 
 # Boosters (repeatable, permanent)
 2 Ashroot Animist (FDN) 117
 1 Halana and Alena, Partners (VOW) 239
 1 Ouroboroid (EOE) 201
 1 Mightform Harmonizer (EOE) 200
-1 War Machine, Legacy of Iron (MSH) 238
+1 Railway Brawler (OTJ) 175
 
 # Ramp / evasion riders
 2 Ruby, Daring Tracker (FDN) 245
@@ -120,11 +125,12 @@
 
 # Protection (what the A/B green list never had)
 2 Overprotect (BLB) 185
-1 Snakeskin Veil (TDM) 159
+1 Sage of the Fang (TDM) 155
 
 # Multipliers and tricks
 2 Bulk Up (SOA) 40
-2 Team Tactics (MSH) 155
+1 Team Tactics (MSH) 155
+1 Broodguard Elite (EOE) 175
 2 Twin Blades (TLA) 157
 2 Haste Magic (FIN) 140
 1 Reckless Ransacking (ECL) 152
@@ -140,5 +146,8 @@
 1 Gongaga, Reactor Town (FIN) 280
 1 Training Compound (MSH) 275
 1 Commercial District (MKM) 259
-13 Mountain (MSH) 293
+8 Mountain (MSH) 293
+3 Rugged Highlands (M21) 249
+1 Omashu City (TLA) 275
+1 Gruul Guildgate (RNA) 250
 6 Forest (MSH) 296
