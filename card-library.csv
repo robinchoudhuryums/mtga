@@ -4641,3 +4641,5 @@ Pit Automaton,Artifact Creature — Construct,"Defender
 Goldvein Hydra,Creature — Hydra,"Vigilance, trample, haste
 This creature enters with X +1/+1 counters on it.
 When this creature dies, create a number of tapped Treasure tokens equal to its power.",G,Hydra; counters; tokens; treasure; vigilance; combat; haste; aggro; trample; evasion,OTJ,167,1
+"Haliya, Ascendant Cadet",Legendary Creature — Human Soldier,"Whenever Haliya enters or attacks, put a +1/+1 counter on target creature you control.
+Whenever one or more creatures you control with +1/+1 counters on them deal combat damage to a player, draw a card.",W/G,Human; Soldier; counters; card draw,EOE,218,1

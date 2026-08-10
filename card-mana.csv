@@ -2179,6 +2179,7 @@ Rite of the Dragoncaller,{4}{R}{R},6,
 Reclamation Sage,{2}{G},3,
 Pit Automaton,{2},2,Defender
 Goldvein Hydra,{X}{G},1,Vigilance;Treasure;Haste;Trample
+"Haliya, Ascendant Cadet",{2}{G}{W}{W},5,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -4825,7 +4826,6 @@ Biotech Specialist,{R}{G},2,
 Cosmogoyf,{B}{G},2,
 "Dyadrine, Synthesis Amalgam",{X}{G}{W},2,Trample
 Genemorph Imago,{G}{U},2,Landfall;Flying
-"Haliya, Ascendant Cadet",{2}{G}{W}{W},5,
 Infinite Guideline Station,{W}{U}{B}{R}{G},5,Station
 Interceptor Mechan,{2}{B}{R},4,Flying;Void
 "Mm'menon, Uthros Exile",{1}{U}{R},3,Flying

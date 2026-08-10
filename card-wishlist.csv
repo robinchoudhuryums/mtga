@@ -124,8 +124,6 @@ Dubious Delicacy,Artifact — Food,"Flash
 When this artifact enters, up to one target creature gets -3/-3 until end of turn.
 {2}, {T}, Sacrifice this artifact: You gain 3 life.
 {2}, {T}, Sacrifice this artifact: Target opponent loses 3 life.",B,Food; lifegain; sacrifice; etb; removal; flash; tempo,EOE,96,Uncommon,21; 20,,4.5,hand
-"Haliya, Ascendant Cadet",Legendary Creature — Human Soldier,"Whenever Haliya enters or attacks, put a +1/+1 counter on target creature you control.
-Whenever one or more creatures you control with +1/+1 counters on them deal combat damage to a player, draw a card.",W/G,Human; Soldier; counters; card draw,EOE,21,Uncommon,,,4.5,seed
 Mechan Assembler,Artifact Creature — Robot Artificer,"Whenever another artifact you control enters, create a 2/2 colorless Robot artifact creature token. This ability triggers only once each turn.",U,Robot; Artificer; tokens,EOE,63,Uncommon,48,,4.0,seed
 "Mm'menon, Uthros Exile",Legendary Creature — Jellyfish Advisor,"Flying
 Whenever an artifact you control enters, put a +1/+1 counter on target creature.",U/R,Jellyfish; Advisor; counters; flying; evasion,EOE,221,Uncommon,48,Holds Adaptive Automaton's slot in 48 at Uncommon cost.,4.0,hand
