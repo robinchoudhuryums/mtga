@@ -1,5 +1,6 @@
 #: name: Void Demons — Dark Realms
 #: format: Standard
+#: arena: 52a Void Realm, c076f66b-cb8a-4596-b152-c1ae1071cc5b
 #: colors: B
 #: based-on: deck.txt
 #: plan: midrange

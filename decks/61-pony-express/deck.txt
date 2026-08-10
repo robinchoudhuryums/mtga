@@ -1,5 +1,6 @@
 #: name: Pony Express
 #: format: Standard
+#: arena: 61 Pony Express, 2d3a90e8-22e7-40b3-b185-fb7a138f41af
 #: colors: GW
 #: plan: midrange
 #: archetype: SELESNYA MOUNTS — the third unmade tactic from the color/tactic gap

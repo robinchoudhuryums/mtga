@@ -1,5 +1,6 @@
 #: name: Unlock
 #: format: Standard
+#: arena: 51 Unlocked, e96f57e6-cc01-4a39-aa39-ec607462ee3b
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07. Deliberately one band BELOW the measurable floor, which reads A on

@@ -1,5 +1,6 @@
 #: name: Jeskai Tempest
 #: format: Standard
+#: arena: 57 Tempest, 5e0a2a6c-0191-4a62-920f-bfc8460ddb76
 #: colors: RWU
 #: plan: aggro
 #: archetype: JESKAI PROWESS TEMPO (concept J from the 55-mardu addendum): cheap
