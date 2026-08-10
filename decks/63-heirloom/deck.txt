@@ -9,8 +9,8 @@
 #: archetype: at 3.75+ avg MV); this is the first FAST one, and the first to assemble
 #: archetype: the counter payoffs that were scattered across five different color
 #: archetype: pairs. The engine has three layers. PLACERS put counters cheaply and
-#: archetype: repeatedly (Ironpaw, Cloudbound Moogle, Weftblade Enhancer's two-target
-#: archetype: ETB, Serra Redeemer's two-per-small-creature, Rosa and Ouroboroid every
+#: archetype: repeatedly (Ironpaw, Aerith's counter on every life gain, Haliya's
+#: archetype: per-attack counter, Serra Redeemer's two-per-small-creature, Rosa and Ouroboroid every
 #: archetype: combat, Ride the Shoopuf on every land drop, New Horizons, Armament
 #: archetype: Dragon's three-way distribute). DOUBLERS multiply them — The Earth
 #: archetype: Crystal and Loading Zone each turn one counter into two, and
@@ -72,8 +72,8 @@
 
 # Placers — cheap, repeatable counters
 1 Ironpaw Aspirant (LCI) 18
-1 Cloudbound Moogle (FIN) 11
-1 Weftblade Enhancer (EOE) 44
+1 Aerith Gainsborough (FIN) 4
+1 Haliya, Ascendant Cadet (EOE) 218
 1 Serra Redeemer (BLB) 387
 1 Rosa, Resolute White Mage (FIN) 555
 1 Dawnstrike Vanguard (EOE) 10

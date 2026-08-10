@@ -68,12 +68,13 @@
 #: archetype: lifegain shells: all three are ORZHOV and convert life into DRAIN or into
 #: archetype: CARDS. This one converts it into creature size and never touches black.
 #: protect: The Wind Crystal; Ajani's Pridemate; Twinblade Paladin; Exemplar of Light; Angel of Vitality; Delney, Streetwise Lookout; Stirring Hopesinger; Valkyrie's Call; Lyra Dawnbringer; Giada, Font of Hope; Angelic Destiny; Herald of Eternal Dawn; Silver Sable, Mercenary Leader; Rosa, Resolute White Mage
-#: tier: A — PROVISIONAL (fully crafted and owned, but UNPLAYED). The letter sits AT
-#: tier: the metrics floor: interaction 5 is exactly the A bar, and 5 + card advantage 2 is
-#: tier: exactly the sum of 7, and protection is 4. There is no slack on either axis of
-#: tier: the floor, which is the honest
-#: tier: summary of this build — it spends its slots on ENGINE rather than on answers, and
-#: tier: one more cut to either axis drops it to B.
+#: tier: A — PROVISIONAL (fully crafted and owned, but UNPLAYED), and now ONE BAND
+#: tier: ABOVE the B metrics floor: Rally the Monastery was CUT for Aerith 2026-08-10,
+#: tier: taking interaction 5→4, below the A bar the earlier prose leaned on. The
+#: tier: band credit is the engine the floor can't see — Aerith is a per-gain counter
+#: tier: tick Delney doubles, deepening the deck's actual win route. Protection is 4.
+#: tier: RE-GRADE PENDING A HUMAN CALL: the old prose said one more cut to either
+#: tier: axis drops it to B, and that cut has now been made.
 #: tier: THE PROTECT LIST IS DOING REAL WORK HERE, more than on any other deck. `cuts`
 #: tier: ranks Delney and Valkyrie's Call among the WEAKEST cards in the 60, and both are
 #: tier: engine spine. The classifier reads Delney as "role not auto-detected" because
@@ -81,8 +82,8 @@
 #: tier: Valkyrie's Call is scored as generic reanimation rather than as the card that
 #: tier: makes dead non-Angels into ANGELS and so turns on Lyra and Giada. A synergy model
 #: tier: cannot see a multiplier — it sees a card with no board impact.
-#: tier: WHY THE COUNTS UNDER-READ. Interaction 5 excludes Rally the Monastery's and
-#: tier: Battle Menu's destroy modes being conditional on power 4 or greater, which is
+#: tier: WHY THE COUNTS UNDER-READ. Interaction 4 excludes Battle Menu's destroy mode
+#: tier: being conditional on power 4 or greater, which is
 #: tier: fair, but it also cannot see that Stirring Hopesinger plus any trick is a combat
 #: tier: blowout. Card advantage 2 counts Exemplar of Light and Haliya, and that is now the
 #: tier: WHOLE of the deck's card flow — the third source was traded for Youthful Valkyrie,
@@ -105,6 +106,7 @@
 #: tier: never be written into this header.
 
 # Cheap trigger engines (power 2 or less — Delney doubles all of these)
+1 Aerith Gainsborough (FIN) 4
 1 Haliya, Guided by Light (EOE) 19
 1 Momo, Friendly Flier (TLA) 29
 1 Hinterland Sanctifier (FDN) 730
@@ -152,7 +154,6 @@
 
 # Interaction
 1 Battle Menu (FIN) 9
-1 Rally the Monastery (TDM) 19
 1 Stasis Snare (FDN) 581
 1 Prayer of Binding (FDN) 739
 

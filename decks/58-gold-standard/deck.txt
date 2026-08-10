@@ -15,7 +15,7 @@
 #: archetype: Twitching Doll 2026-08-08; Lightless Evangel was CUT for
 #: archetype: Rot-Curse Rakshasa, whose decayed body feeds the same outlets), bodies
 #: archetype: (Krenko's goblin per artifact death, Magda's 4/4 dragons, Aatchik's
-#: archetype: swarm), cards (Kingpin's Enforcers, Fanatical Offering, Tarrian's
+#: archetype: swarm), cards (Fanatical Offering, Tarrian's
 #: archetype: Journal, Fountainport), and damage (Food Fight turns every token into
 #: archetype: a fling; Gold Rush is the kill-turn pump). Distinct from deck 8 (BRG
 #: archetype: aristocrats — sacrifices CREATURES for drains), deck 21 (WBG Food
@@ -79,6 +79,7 @@
 #: notes: cosmetic, the deck's interaction is still the thin axis its tier note names.
 
 # Producers (the mint)
+1 Goldvein Hydra (OTJ) 167
 2 Greedy Freebooter (LCI) 109
 1 Magda, the Hoardmaster (OTJ) 133
 1 Death to Our Enemies (MSH) 127
@@ -94,6 +95,7 @@
 2 Roxanne, Starfall Savant (OTJ) 228
 
 # Payoffs (the spend)
+1 Vraska, the Silencer (OTJ) 237
 2 Crime Novelist (MKM) 121
 2 Krenko, Baron of Tin Street (MKM) 135
 1 Twitching Doll (DSK) 201
@@ -107,10 +109,9 @@
 1 Gold Rush (OTJ) 166
 
 # Draw / removal (sac-fueled)
-1 Kingpin's Enforcers (MSH) 102
 2 Fanatical Offering (LCI) 105
 1 Salt Road Skirmish (TDM) 88
-2 Deadly Precision (TLA) 95
+1 Deadly Precision (TLA) 95
 
 # Lands
 1 Blood Crypt (ECL) 262
