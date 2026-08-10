@@ -277,12 +277,12 @@ above (check_all stays zero-dependency); both run in CI via `.github/workflows/t
 
 ## [C-02] Subsystem: Data
 
-Data: card-library.csv, card-pool.csv (+ Power/Toughness), card-mana.csv, card-wishlist.csv (+ Power Source provenance), matches.csv (played-match record; created on first `/log-matches`, absent until then — deliberately NOT an invariant, since a repo with no logged games is healthy), recommendations.csv (recommendation-outcome ledger; same treatment — accrues from `swap --apply`, absent until the first swap)
+Data: card-library.csv, card-pool.csv (+ Power/Toughness), card-mana.csv, card-wishlist.csv (+ Power Source provenance), matches.csv (played-match record; LIVE since 2026-08-10 — 9 matches, 8 attributed to decks 7/19/45, the 2026-07-27 row permanently unattributable because its log had already rotated. Deliberately NOT an invariant: it was absent for the project's whole life before that and a repo with no logged games is healthy, so nothing may start requiring it. Columns are `My Avatar`/`Opponent Avatar`, never "Course ID" — see [G-57]), recommendations.csv (recommendation-outcome ledger; same treatment — accrues from `swap --apply`, absent until the first swap)
 
 
 ## [C-03] Subsystem: Outcomes
 
-Outcomes: scripts/parse_matches.py (Arena `Player.log` → matches.csv, `/log-matches`) — the ONLY subsystem that has seen a game; recommendations.csv + `deck.py feedback` (the recommendation ledger — how `cuts`/`suggest` scored against the swaps you actually applied; written by `swap --apply`, report-only, never fed back into a score). Every other model grades a deck on its LIST; `#: tier:` is a human competitive judgment with no outcome data behind it, which is why the rubric leans on measurable proxies.
+Outcomes: scripts/parse_matches.py (Arena `Player.log` → matches.csv, `/log-matches`) — the ONLY subsystem that has seen a game, and as of 2026-08-10 it has actually seen some: 9 matches across decks 7 (0-2), 19 (1-1) and 45 (2-2). That is nowhere near the `_MIN_SAMPLE` floor of 20, so `--report` still refuses to print a percentage for any of them and none of it belongs in a `#: tier:` rationale; what changed is that the pipeline has run end to end against real data, not that the roster's provisional letters can now be settled; recommendations.csv + `deck.py feedback` (the recommendation ledger — how `cuts`/`suggest` scored against the swaps you actually applied; written by `swap --apply`, report-only, never fed back into a score). Every other model grades a deck on its LIST; `#: tier:` is a human competitive judgment with no outcome data behind it, which is why the rubric leans on measurable proxies.
 
 
 ## [C-04] Subsystem: Ingest & Enrich
@@ -389,3 +389,44 @@ was mouse-only. The MARKUP half of this is now pinned automatically by
 `tests/test_templates.py` (attributes, key handler, `aria-pressed` sync, focus ring);
 what still needs a person is the perceptual part — that the ring is actually visible
 and the order actually matches what you see.
+
+
+## [C-12] Regression Scenario 9 — log a session of matches
+
+**Why it needs a person.** `check_all.py` never touches `parse_matches.py` — the gate
+runner imports `deck` and walks the roster, and the match parser is not on that path. The
+pytest layer is thorough (the file is one of the largest in `tests/`) but every fixture is
+SYNTHETIC: a serialized stand-in for Arena's nesting, not a log Arena wrote. So the
+end-to-end path — real client, real overwrite-on-launch, real deck names — is covered by
+nobody, and both of this subsystem's worst bugs (a `courseId` that was the avatar; a
+no-matches bailout that ran before the header sync) were found by a person running real
+data through it, never by a test.
+
+**Steps**
+  - `cat ~/mtga-logs/arena.log | pbcopy` (or the Stage 0 grep, without the archive)
+  - `python3 scripts/parse_matches.py <file>` — dry run, ALWAYS first
+  - `python3 scripts/parse_matches.py <file> --apply`
+  - `python3 scripts/parse_matches.py --report`
+  - Re-run the same paste — nothing may change
+  - Rename a deck in the Arena client, play one match, re-extract, re-run
+
+**Expected**
+  - The dry run prints a `Deck attribution` block: every Arena deck name, the repo deck
+    it resolved to, and the ROUTE (`#: arena: header` / `name prefix`). Read the routes —
+    the prefix step assigns data from a naming convention and is the line worth checking.
+  - `--apply` is idempotent. Re-running reports "0 new, N already recorded" and writes
+    nothing; dedup is by Arena's `matchId`, which is what makes the rolling archive safe
+    to re-ingest wholesale.
+  - The RENAME re-maps in the same run. Header sync deliberately precedes the mapping
+    build, so the freshly-written GUID header places a deck whose new name has no
+    number prefix. If it comes back unattributed, that ordering has regressed.
+  - A match with no deck selection in the paste stays BLANK — it must never borrow a
+    neighbouring session's deck. `⚠ … rotated log` is the correct output when the nearest
+    selection is more than 12h older.
+  - `--report` refuses a percentage below 20 matches per deck and prints a Wilson
+    interval above it. A rate quoted without its interval is the failure mode here.
+  - A paste of deck summaries with NO matches must sync headers and exit 0, not error
+    about Detailed Logs — that error shipped once and blamed a setting that was fine.
+
+Full operator steps, the launchd rolling-archive setup, and the privacy rules (no
+`userId` / `playerName` echoed or committed) live in `.claude/commands/log-matches.md`.

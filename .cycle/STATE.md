@@ -6,6 +6,45 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — first real match data, and the deck-attribution arc (2026-08-10)
+
+Not a scan. The user asked how to populate match data, pasted a real `Player.log`, and
+the subsystem that had never seen a game turned out to be **wrong about what it was
+recording**. Gates green; **1,233 tests**.
+
+**`courseId` is the AVATAR, not the deck.** It sits on each seat next to `eventId`, its
+name reads like a deck identifier, and the parser docstring, the README and the
+`/log-matches` skill all documented `#: arena: <courseId>` as the way to attribute a
+match. Nine real matches were recorded that way, every one with a blank `Deck`. Then
+someone read the values: all eleven distinct ones carried the literal `Avatar_` prefix.
+It is a global cosmetic, changed independently of the deck — on 8/07 it happened to
+change when the deck did, which is what made it look right; on 8/09 one value covered a
+different deck entirely. Columns are `My Avatar` / `Opponent Avatar` now.
+
+**The real source is `EventSetDeckV3`**, written 2-20 seconds before each match with the
+deck NAME, a stable `DeckId` GUID and a `LastPlayed` timestamp. Matches join to it on
+TIME, not log order (the paste people actually produce runs the two greps separately, so
+order hands one deck to a whole session); a selection more than 12h old is refused as a
+rotated log rather than borrowed. 8 of 9 matches attributed — decks 7 (0-2), 19 (1-1),
+45 (2-2). The 2026-07-27 row is permanently blank: its log had already rotated.
+
+**Then the same class of error twice more, in my own work.**
+1. `--map-decks` was documented to read `DeckGetDeckSummariesV3` — I put it in the grep,
+   the docstring and a test docstring on the strength of the NAME. Measured against the
+   real paste: 0 decks from 5 calls (Arena logs a bare ack), against 21 from
+   `DeckUpsertDeckV3`. The courseId trap, one message over, committed by the person who
+   had just documented the courseId trap.
+2. Folding header-sync into the normal ingest, I put it AFTER the no-matches bailout, so
+   a summaries-only paste died with "check that Detailed Logs is enabled" — an error
+   blaming a setting that was fine. Found by running the real file through the real
+   command, not by inspection.
+
+**Carry forward:** every field-name-as-claim in this subsystem has been wrong at least
+once. Read the values. And the standing risk is now OPERATOR-side: `Player.log` is
+overwritten on every launch, the launchd archive that fixes it is written but
+**unverified on the user's machine** (this container is Linux), and until it runs, every
+unextracted session is lost the way 7/27 was.
+
 ## Session — broad scan #3, follow-ons + unbatched Lows (2026-08-09) — SCAN CLOSED
 
 Ten findings. Block:

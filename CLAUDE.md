@@ -940,7 +940,8 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (absent until the first `/log-matches`), recommendations.csv [C-02]
+  (LIVE since 2026-08-10 — 9 matches, 8 attributed to decks; still far under the 20-match
+  read floor), recommendations.csv [C-02]
 - Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only
   subsystems that have seen a real game or a real decision [C-03]
 - Ingest & Enrich: scripts/import_arena.py, scripts/import_collection.py,
@@ -1058,6 +1059,19 @@ format.
    Expected: all three show a toast naming the failure. Remove and Revert used to do
    nothing at all — the rejected fetch died as an unhandled rejection right after a
    destructive confirm (F-02). This is that fix's acceptance test.
+9. Log a session of matches | Subsystem: Outcomes
+   Needs **a person with a real `Player.log`** — check_all never touches
+   `parse_matches.py`, and its pytest layer runs against synthetic fixtures, so the
+   end-to-end path is covered by nobody else.
+   Steps: paste (or `cat`) an archive → `parse_matches.py <file>` (dry run) →
+   `--apply` → `--report`; then rename a deck in the Arena client, play once, and
+   re-run.
+   Expected: the dry run prints a `Deck attribution` block naming every Arena deck and
+   the ROUTE that resolved it; re-running is idempotent (dedup by matchId); the rename
+   re-maps in the SAME run, because header sync precedes the mapping. A match whose
+   deck selection is missing stays blank rather than borrowing a neighbour's, and
+   `--report` refuses a percentage under 20 matches. Full steps + the launchd archive
+   setup: `.claude/commands/log-matches.md`. [C-12]
 
 **Frozen Subsystems:** none.
 

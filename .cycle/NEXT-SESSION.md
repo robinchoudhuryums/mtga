@@ -148,9 +148,20 @@ disabled both the size floor and the copy limit (`[G-09]`).
   run `python3 scripts/sheets_sync.py check` — it names every missing part (packages, key
   file, sheet id, and whether the sheet is shared with the service account) and writes
   nothing.
-- **The perceptual halves of Regression Scenarios 5–8 need a person at a browser.** The
-  markup contracts are pinned by `tests/test_templates.py`; contrast, focus rings and
-  phone-width reflow are not code-checkable.
+- **The match-log rolling archive needs its one-time operator setup, and it is the one
+  setup item with a DEADLINE ATTACHED.** `Player.log` is overwritten on every Arena
+  launch, so until the launchd job in `.claude/commands/log-matches.md` Stage 0 is
+  installed, every unextracted session is lost permanently — the 2026-07-27 match already
+  is, and no tooling can recover its deck. The block was written but NOT executed here
+  (this container is Linux; `launchctl` is untestable from it), so **it is unverified on
+  the user's machine**: the verification step is `~/mtga-logs/snapshot.sh && wc -l
+  ~/mtga-logs/arena.log`, and a zero count most likely means macOS is withholding Full
+  Disk Access from `/bin/sh`. Ask about this before asking for a log paste.
+- **The perceptual halves of Regression Scenarios 5–8 need a person at a browser**, and
+  Scenario 9 needs a person with a real `Player.log`. The markup contracts are pinned by
+  `tests/test_templates.py` and the match parser by `tests/test_parse_matches.py`, but
+  contrast, focus rings, phone-width reflow, and a real Arena client's naming and rotation
+  behaviour are none of them code-checkable.
 - **October rotation pass is pre-loaded**: deck 28's flex block names successors for its
   six owned rotating cards; deck 28a has never had the pass; deck 36 loses Kutzil with no
   safe replacement for his "opponents can't cast spells during your turn" half.

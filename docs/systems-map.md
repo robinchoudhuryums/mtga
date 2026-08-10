@@ -1,9 +1,10 @@
 # Systems map — task-first
 
 **Status: LIVE.** Regenerate when a cycle adds a subcommand or a skill stage.
-Measured 2026-07-29 against 64 decks, 1,853 owned cards, a 15.8k-card pool.
+Measured 2026-07-29 against 64 decks, 1,853 owned cards, a 15.8k-card pool; §5b added
+2026-08-10 when match logging went from a written-but-unused tool to a live workflow.
 
-This maps the four things the user actually **does**, not the modules the code is
+This maps the five things the user actually **does**, not the modules the code is
 organised into. That choice is the point: the module structure
 (`deck.py` / `lib.py` / `wishlist.py` / the gates) is already legible and is not where
 the friction is. The friction is in composition — which commands to run, in what order,
@@ -154,6 +155,42 @@ The longest path, and the one that most needs a map.
 - ⚖ **Breadth (`use`) vs a specific second home.** `--rank` already credits reach; the
   human step is recording only a GENUINE specific second home in `Target`, not stuffing
   every fit into it.
+
+---
+
+## 5b. Log matches — `/log-matches`
+
+Live since 2026-08-10, and the only workflow whose input the repo does not own: it comes
+from a file Arena overwrites on every launch.
+
+| # | Command | Returns | Cost |
+|---|---|---|---|
+| 0 | launchd `snapshot.sh` (one-time) | a rolling `~/mtga-logs/arena.log` | 15-min timer |
+| 1 | `parse_matches.py <file>` | dry run + the deck-attribution routes | <1s |
+| 2 | `parse_matches.py <file> --apply` | matches.csv rows + refreshed `#: arena:` headers | <1s |
+| 3 | `parse_matches.py --report` | W/L per deck, or a refusal to read it | <1s |
+| — | `parse_matches.py <file> --map-decks` | roster-wide header pass (rarely needed now) | <1s |
+
+Step 0 is the load-bearing one, and it is the only step that cannot be re-run to fix a
+mistake: matches not captured before the next Arena launch are gone. Step 2 folds in the
+header sync that used to be step `--map-decks`, so routine logging has no upkeep step.
+
+**Reconciliation points**
+
+- ⚖ **"Which deck was this?" has three answers and the tool prints WHICH ONE it used.**
+  `--deck` (explicit) → `#: arena:` header → the Arena name's leading number. The third is
+  a heuristic reading a naming convention, so the `Deck attribution` block is evidence to
+  READ, not a receipt. Names legitimately diverge — Arena's "45 The Exiles" is repo deck
+  45 "Exile Dividend" — which is exactly why a name-similarity check would be wrong here.
+- ⚖ **An unattributed match is a gap; a wrongly attributed one is a fabricated record.**
+  The 12h bound and the conflict refusal both resolve toward BLANK. When `--report` says
+  "N match(es) have no Arena deck at all", the honest response is usually to accept it —
+  if the log rotated, nothing recovers it.
+- ⚖ **The record cannot yet answer the question it exists for.** 9 matches against a
+  20-match floor; `--report` refuses a percentage and that refusal is the feature. No
+  `#: tier:` letter may cite it. The decision it *can* support is "which deck have I not
+  played" — which is why the next build here is a games-played column in `deck.py audit`,
+  not a win-rate surface.
 
 ---
 
