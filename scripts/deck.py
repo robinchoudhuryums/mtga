@@ -4149,13 +4149,24 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
         syn = _land_synergy_bonus(tags, central_w)
         short = _land_shortfall_bonus(on_color, deficit)
-        tapped = ("enters tapped" in txt.lower()
-                  or "enters the battlefield tapped" in txt.lower())
+        low = txt.lower()
+        tapped = ("enters tapped" in low or "enters the battlefield tapped" in low)
+        # CONDITIONAL vs FLAT tapping, shown separately. `_land_value` treats both as
+        # tapped, which is the conservative read and is exactly right for a deck that
+        # cannot meet the condition — but it is an UNDER-score for one that can (Great
+        # Arashin City enters untapped in any deck with a Forest). Deciding satisfiability
+        # needs the deck's contents, so this REPORTS the condition instead of guessing:
+        # G-52's rule that a verdict surface prints its evidence.
+        cond_tapped = tapped and "unless" in low
+        # Restricted production ("Spend this mana only to cast a creature spell"). The
+        # score already discounts it; this is what lets a human tell WHY.
+        restricted = "spend this mana only" in low
         picks.append({
             "name": name, "rarity": (r.get("Rarity") or "").strip(), "owned": h,
             "fix": fix, "syn": syn, "short": short, "score": round(fix + syn + short, 2),
             "produces": "".join(c for c in "WUBRG" if c in on_color),
-            "tapped": tapped, "text": txt, "matches": sorted(set(tags) & central),
+            "tapped": tapped, "cond_tapped": cond_tapped, "restricted": restricted,
+            "text": txt, "matches": sorted(set(tags) & central),
             # G-30 on a WILDCARD-SPEND surface. `check`, `wildcards` and `wishlist --rank`
             # all flag a rotating craft target; this recommender — which exists to be
             # spent on — said nothing, and deck 28's plan bought four rotating cards past
@@ -4199,7 +4210,8 @@ def cmd_suggest_lands(args, d):
     rotting = 0
     for p in res["picks"]:
         have = f"×{p['owned']}" if p["owned"] else "craft"
-        tap = " ·tapped" if p["tapped"] else ""
+        tap = (" ·tapped?" if p.get("cond_tapped") else " ·tapped") if p["tapped"] else ""
+        tap += " ·restricted" if p.get("restricted") else ""
         # Only a CRAFT pick's rotation matters here — an owned land costs no wildcard.
         rot = f" {p['rot']}" if p.get("rot") and not p["owned"] else ""
         rotting += 1 if rot else 0
@@ -4218,6 +4230,13 @@ def cmd_suggest_lands(args, d):
             for para in (p["text"] or "(no oracle text)").split("\n"):
                 for line in (textwrap.wrap(para, width=86) or [""]):
                     print(f"    {line}")
+    if any(p.get("cond_tapped") for p in res["picks"]):
+        print("\n·tapped? = enters tapped UNLESS a condition holds — scored as tapped "
+              "(conservative). Read the clause: if THIS deck meets it, the land is better "
+              "than its score says.")
+    if any(p.get("restricted") for p in res["picks"]):
+        print("·restricted = the colored mana has a 'spend this only to…' clause. Its "
+              "fixing premium is halved; judge it against what your deck actually casts.")
     print("\nScore = FIXING value (0–10, dominant: produces your colors, untapped premium) "
           "+ bounded SYNERGY (land ability hits a deck theme) + bounded SHORTFALL (produces "
           "the scarce color). Ownership is a NOTE (×N / craft), not a ranking term — "

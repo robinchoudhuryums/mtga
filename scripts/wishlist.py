@@ -663,10 +663,24 @@ def _land_value(row, deck_colors):
     # Only an ADD clause is color PRODUCTION: a bare `{W}` anywhere in the text
     # counted an ACTIVATION COST as fixing ("{W}: …" read as producing white),
     # inflating a land's manabase score (broad-scan batch 5).
-    for m in re.finditer(r"[Aa]dd\b[^.\n]*", txt):
-        for c in "WUBRG":
-            if "{" + c + "}" in m.group(0):
-                prod.add(c)
+    #
+    # RESTRICTED production is tracked separately. A Village cycle land reads
+    # "{T}: Add {B}. Spend this mana only to cast a creature spell." — that {B} is a real
+    # black source for creatures and NOTHING for a removal spell, so scoring it as plain
+    # fixing over-rates it. Mudflat Village ranked #1 of deck 52's land suggestions on
+    # exactly this (G-37's live scoring miss). The restriction is detected PER LINE,
+    # because that is how Magic prints it: the qualifying sentence follows the Add
+    # sentence inside one ability, and the `[^.\n]*` clause scan deliberately stops at
+    # the period before it.
+    restricted_only = set()
+    free = set()
+    for line in txt.splitlines():
+        limited = "spend this mana only" in line.lower()
+        for m in re.finditer(r"[Aa]dd\b[^.\n]*", line):
+            cols = {c for c in "WUBRG" if "{" + c + "}" in m.group(0)}
+            prod |= cols
+            (restricted_only if limited else free).update(cols)
+    restricted_only -= free                       # a color also added freely is free
     if not prod or not deck_colors:
         return 3.5  # colorless/utility land, or no known target — neutral
     used = prod & deck_colors
@@ -675,6 +689,15 @@ def _land_value(row, deck_colors):
     base = 3.5 + 4.5 * match * multi              # ~3.5..8 by color usefulness
     if "enters tapped" not in txt.lower() and "enters the battlefield tapped" not in txt.lower():
         base += 1.5                               # untapped fixing is premium
+    # Halve the fixing PREMIUM (never the 3.5 neutral floor) when every color this deck
+    # wants from the land is restricted. Bounded and one-directional: it can only lower a
+    # land, never raise one, so it cannot invent a recommendation. Half rather than zero
+    # because the restriction is real but narrow — a creature-only source is close to full
+    # value in a creature deck and near-dead in a spell deck, and `_land_value` is only
+    # told the deck's COLORS, so the honest move is a modest discount plus the
+    # `·restricted` marker `suggest --lands` now prints for the human to judge.
+    if used and used <= restricted_only:
+        base = 3.5 + (base - 3.5) * 0.5
     return round(min(10.0, base), 1)
 
 

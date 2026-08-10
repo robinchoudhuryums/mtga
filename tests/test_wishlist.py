@@ -503,3 +503,51 @@ class TestSeedPowerNeverLosesABatch:
     def test_a_healthy_seed_is_returned_unchanged(self, monkeypatch):
         monkeypatch.setattr(wishlist, "_seed_power", lambda r: 6.5)
         assert wishlist._try_seed_power({"Card Name": "X"}, _warned=[]) == 6.5
+
+
+class TestRestrictedManaLands:
+    """G-37's live scoring miss: a Village-cycle land reads "{T}: Add {B}. Spend this mana
+    only to cast a creature spell." — a black source for creatures and NOTHING for a
+    removal spell — and it ranked #1 of deck 52's land suggestions at 7.2 fixing.
+
+    The restriction is detected PER LINE, because that is how Magic prints it: the
+    qualifying sentence follows the Add sentence inside one ability, and `_land_value`'s
+    clause scan deliberately stops at the period before it."""
+
+    def _land(self, text, colors="B"):
+        return {"Card Name": "Probe Land", "Type": "Land", "Card Text": text,
+                "Color(s)": colors}
+
+    FREE = "{T}: Add {B}."
+    RESTRICTED = "{T}: Add {C}.\n{T}: Add {B}. Spend this mana only to cast a creature spell."
+
+    def test_a_restricted_source_scores_below_a_free_one(self):
+        free = wishlist._land_value(self._land(self.FREE), {"B"})
+        restricted = wishlist._land_value(self._land(self.RESTRICTED), {"B"})
+        assert restricted < free
+
+    def test_the_discount_never_goes_below_the_neutral_floor(self):
+        """One-directional and bounded: it halves the PREMIUM, not the 3.5 baseline, so it
+        can only lower a land — never invent one, and never push it under a utility land."""
+        assert wishlist._land_value(self._land(self.RESTRICTED), {"B"}) >= 3.5
+
+    def test_a_color_added_freely_ELSEWHERE_is_not_restricted(self):
+        """`restricted_only -= free`: a land that adds {B} both freely and under a clause
+        is a free source. Scoring it as restricted would under-rate a strictly better card."""
+        both = "{T}: Add {B}.\n{T}: Add {B}. Spend this mana only to cast a creature spell."
+        assert wishlist._land_value(self._land(both), {"B"}) == \
+            wishlist._land_value(self._land(self.FREE), {"B"})
+
+    def test_a_restriction_on_a_color_the_deck_does_not_use_changes_nothing(self):
+        """The discount is gated on the colors the DECK wants. A restricted {U} is already
+        worth nothing to a mono-black deck through the color-match term."""
+        u = "{T}: Add {U}. Spend this mana only to cast a creature spell."
+        assert wishlist._land_value(self._land(u, "U"), {"B"}) == \
+            wishlist._land_value(self._land("{T}: Add {U}.", "U"), {"B"})
+
+    def test_the_real_card_drops_below_the_unrestricted_sources(self):
+        """The motivating case, end to end: Mudflat Village must not outrank a plain
+        mono-black land in a mono-black deck."""
+        mudflat = self._land(self.RESTRICTED)
+        assert wishlist._land_value(mudflat, {"B"}) < wishlist._land_value(self._land(
+            "This land enters tapped unless you control a Mount.\n{T}: Add {B}."), {"B"})

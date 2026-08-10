@@ -1535,19 +1535,47 @@ exact fix in BS2-11 and its sibling recommender was not.** One rule, applied in 
 and not the other, for a year, on two commands that answer the same question about the
 same pool rows. When you fix a face-reading predicate, grep for the others.
 
-**Rank 5 is a fourth, milder miss.** Great Arashin City is a real land but reads *"enters
-tapped unless you control a Forest or a Plains"* — unreachable in mono-black, so it is
-always tapped. It scored 5.8 fixing rather than the 4.6 given to a flatly-tapped land,
-i.e. the scorer treated an unsatisfiable condition as sometimes-satisfied.
+**Rank 5 was recorded as a fourth miss, and on re-measurement IT IS NOT ONE.** The claim
+was that Great Arashin City (*"enters tapped unless you control a Forest or a Plains"*,
+unreachable in mono-black) "scored 5.8 fixing rather than the 4.6 given to a flatly-tapped
+land, i.e. the scorer treated an unsatisfiable condition as sometimes-satisfied." Measured
+2026-08-09:
 
-**Two scoring misses REMAIN LIVE** (they were never the same bug as the type filter, and
-neither is fixed): the "spend this mana only to cast a creature spell" land that scored
-top, and Great Arashin City's conditional tap above. Both are `_land_value` scoring
-questions rather than eligibility ones — the card really is a land, it is just worth less
-than the score says.
+| land | shape | fixing |
+|---|---|---|
+| Great Arashin City | mono-B, conditionally tapped | 5.8 |
+| Foul Roads | mono-B, conditionally tapped | 5.8 |
+| Forum of Amity | **B/W dual**, tapped | 4.6 |
 
-**So: read the type line AND the tapped clause of every pick.** `card.py <name>` prints
-both. The type-line half is now enforced; the tapped-clause half is still on you.
+The 5.8-vs-4.6 gap is COLOUR MATCH — a mono-coloured source the deck fully uses against a
+dual it half-uses — and has nothing to do with tapping. Both conditional lands are denied
+the untapped premium exactly as a flat-tapped land is, because the substring test sees
+"enters tapped" in the clause. **The original note compared two cards that differ on a
+second axis and attributed the gap to the first.** Re-measure a scoring claim against a
+control that differs in only the axis being blamed.
+
+**The real limitation is the OPPOSITE one, and it is conservative.** A conditional land is
+scored as always-tapped even for a deck that trivially meets the condition (Great Arashin
+City enters untapped in anything running a Forest), so it is UNDER-scored, never over-.
+Deciding satisfiability needs the deck's contents, which `_land_value` is not given — so
+`suggest --lands` prints `·tapped?` and the clause instead of guessing (G-52).
+
+**The RESTRICTED-MANA miss was real, and is fixed (2026-08-09).** Mudflat Village reads
+*"{T}: Add {B}. Spend this mana only to cast a creature spell."* — a black source for
+creatures and nothing at all for a removal spell — and it ranked **#1** of deck 52's land
+suggestions at 7.2 fixing. `_land_value` now tracks restricted production separately (per
+LINE, because the qualifying sentence follows the Add sentence inside one ability, and the
+clause scan stops at the period before it) and HALVES the fixing premium when every colour
+the deck wants from that land is restricted. Mudflat drops to 5.4, below the unrestricted
+mono-B sources at 5.8, which is the ordering a manabase wants. 37 pool lands carry the
+clause. The discount is one-directional — it can only lower a land, never invent one — and
+half rather than zero because the restriction is narrow: near-full value in a creature
+deck, near-dead in a spell deck, and `_land_value` is told only the deck's COLOURS. Hence
+the `·restricted` marker for the judgment the score cannot make.
+
+**So: read the type line, the tapped clause and the spend clause.** The type-line half is
+now enforced and the restricted half is priced; the two `·` markers are there because the
+remaining judgments need the deck, not the card.
 
 
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the

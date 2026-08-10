@@ -177,11 +177,15 @@ In priority order, with the reason:
 
 **Left open by broad-scan-3, in the order I would take them:**
 
-- **G-37's TWO remaining scoring misses** (the type-filter half is fixed): a "spend this
-  mana only to cast a creature spell" land scores top, and a conditionally-tapped land
-  ("unless you control a Forest") scores as sometimes-untapped in a deck that can never
-  meet the condition. Both live in `_land_value`; both make a real land look better than
-  it is, on a wildcard-spend surface.
+- ~~G-37's two remaining scoring misses~~ — **DONE 2026-08-09, and only ONE was real.**
+  Restricted mana ("spend this only to cast a creature spell") had ranked #1 for deck 52
+  and is now discounted + marked `·restricted`. The conditionally-tapped miss **did not
+  exist**: the 5.8-vs-4.6 gap the note cited was mono-colour vs DUAL, not tap handling —
+  both tapped shapes score identically. The real limitation is the opposite and
+  conservative (a conditional land never gets the untapped premium even when the deck
+  meets the condition), so it prints `·tapped?` rather than guessing. **The lesson is in
+  `docs/gotchas.md` [G-37]: re-measure a scoring claim against a control that differs in
+  only the axis being blamed.**
 - **`make dashboard`** — the committed snapshot is one rebuild behind BS4-42's KPI data
   path. The deployed Pages copy builds from source and is fine.
 - **The six operator visual checks** in

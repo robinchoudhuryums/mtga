@@ -475,20 +475,18 @@ directions.
   now says the threshold is unreachable and points at cast-on-curve — which is the number
   that settles the question anyway. A planning aid, not a guarantee. [G-36]
 - **`deck.py suggest --lands <id>` is the manabase RECOMMENDER** — plain `suggest` is
-  structurally blind to lands, because it filters to cards sharing a synergy theme.
-  Scored on FIXING value plus two bounded nudges (a land's own synergy text, and the
-  deck's scarcest colour). It defaults to the deck's own `#: format:`, as the card-facing
-  `suggest` always did — it once offered two non-Standard duals as craft targets, and on
-  a wildcard-spend recommender an unfiltered pick costs real resources. **The BACK-FACE
-  LAND bug is FIXED (2026-08-09):** the filter scanned a whole type line, so any card with
-  `// Land` on its BACK qualified — 81 pool cards, and three of deck 52's four top picks
-  were unplayable as lands (reached by transforming, never by a land drop, while INV-04
-  saw a valid line). It now tests `_primary_type`, the FRONT face — the same fix
-  `wishlist._is_land` got in BS2-11 and this sibling did not. **TWO SCORING MISSES REMAIN
-  LIVE:** a "spend this mana only to cast a creature spell" land scores top, and a
-  conditionally-tapped land ("unless you control a Forest") scores as sometimes-untapped
-  in a deck that can never meet the condition. **Read the type line AND the tapped clause
-  of every pick before crafting.** [G-37]
+  structurally blind to lands (it filters to cards sharing a synergy theme). Scored on
+  FIXING value plus bounded synergy/scarce-colour nudges, and it applies the deck's
+  `#: format:`. **Both 2026-08-09 fixes were about admitting or pricing the wrong card:**
+  the candidate filter scanned a whole type line, so 81 pool cards with `// Land` on the
+  BACK qualified — three of deck 52's four top picks were unplayable as lands — now fixed
+  to front-face `_primary_type`, the same fix `wishlist._is_land` got in BS2-11 and this
+  sibling did not; and RESTRICTED mana ("spend this only to cast a creature spell", which
+  had ranked #1) now has its fixing premium halved and prints `·restricted`. **The
+  conditionally-tapped miss this rule used to claim was NOT REAL** — the 5.8-vs-4.6 gap
+  cited was mono-colour vs DUAL, not tap handling. The real limitation is the opposite and
+  conservative: a conditional land never gets the untapped premium even when the deck
+  meets the condition, so it prints `·tapped?` for a human read. [G-37]
 - **`suggest --ramp / --interaction / --needs` are the NEEDS model** — the structural
   axes theme-`suggest` is blind to (fixing, acceleration, interaction). **If the scorecard
   says the deficit is interaction or mana, the fix comes from here, not from plain
