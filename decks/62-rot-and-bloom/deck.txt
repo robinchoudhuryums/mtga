@@ -1,5 +1,6 @@
 #: name: Rot and Bloom
 #: format: Standard
+#: arena: 62 Rot and Bloom, eeb02256-5831-4adf-89b1-2ead171fdfd6
 #: colors: UBG
 #: plan: control
 #: archetype: SULTAI REANIMATOR-CONTROL — the roster's first UBG deck, built around

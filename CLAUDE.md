@@ -310,16 +310,18 @@ directions.
   derived data catches up. [G-15]
 - **`card-pool.csv` carries printed `Power`/`Toughness` — parse them with
   `lib.card_power()`**, which returns `None` for the `*`/`X` printings instead of
-  inventing a number; note `card_power(0)` is a real 0, so the helper can't use `or`.
+  inventing a number; note `card_power(0)` is a real 0, so neither the helper NOR ITS
+  CALLERS can use `or` — `power_threshold_flags` carried `card_power(...) or -1` for a
+  year inside the very function this rule documents, until BS4-32 (every X-creature is
+  printed 0/0, so `or` silently unknowns the commonest real zero there is).
   `deck.py stats` flags a "power N+" payoff few of the deck's creatures meet, **scoped by
   `_POWER_SCOPE_MINE_RE` to clauses about creatures YOU control**: removal measures the
   opponent's board and "TOTAL power N" is a SUM, and counting your own bodies was wrong
   in 16 of 27 roster flags. The flag reads the gating trigger's TIMING from its own
-  ability line (fixed 2026-08-09): an ENTERS gate keeps the "a body that GROWS after it
-  enters won't satisfy it" caveat, while an ATTACK-time gate (Scalestorm Summoner, Ruby —
-  "whenever this creature attacks … if/while you control") says the printed count is a
-  FLOOR, since pumped bodies DO satisfy those. The one-size ENTERS caveat had been copied
-  into a `#: tier:` block as a fabricated weakness and retracted the same day. Printed
+  ability line: an ENTERS gate keeps the "a body that GROWS after it enters won't satisfy
+  it" caveat, while an ATTACK-time gate says the printed count is a FLOOR, since pumped
+  bodies DO satisfy those. The one-size caveat had been copied into a `#: tier:` block as
+  a fabricated weakness and retracted the same day. Printed
   stats still under-state any gate a growing deck loosens — read the timing. [G-16]
 - **`card-wishlist.csv` records Power PROVENANCE** in a `Power Source` column
   (`seed` / `hand` / `unknown`). `wishlist.power_is_seeded()` treats seed, unknown and
@@ -327,16 +329,17 @@ directions.
 - **`build_pool.py --all` and `build_mana.py --pool` are the FULL-coverage scopes.** Both
   DEFAULT to something smaller, so a plain rebuild silently shrinks coverage back; both
   now refuse a >50% shrink (`--allow-shrink` to force). `build_mana.py` is also
-  INCREMENTAL — it reuses already-resolved rows and re-fetches only new or unresolved
-  names, and `build_pool.py` REUSES a pool built within the last week for the same query
-  (99% of the old refresh cost was its 91 paginated pages). Skipping the pool is correct,
-  not just fast: it is the whole Arena pool and independent of what you OWN, so an ingest
-  cannot change it — what goes stale is `Legalities` and a new set's arrival, hence a
-  window. **But a TAG-PATTERN edit also stales it**, which the reuse could not see: the
-  stamp records a content hash of `tag_synergies.py` and a mismatch defeats the reuse
-  (BS2-23). An ABSENT hash means UNKNOWN and rebuilds ONCE — the reuse path returns
-  before writing a stamp, so "unknown = reuse" meant the hatch could never arm (BS3-02).
-  `--refetch` (`make refresh REFETCH=1`) forces both. [G-18]
+  INCREMENTAL — it reuses already-resolved rows — and `build_pool.py` REUSES a pool built
+  within the last week for the same query (99% of the old refresh cost was its 91
+  paginated pages). Skipping it is correct, not just fast: the pool is independent of what
+  you OWN, so an ingest cannot change it; what goes stale is `Legalities` and a new set. **But a TAG-PATTERN edit also stales it**, which the reuse could not see: the
+  stamp records a content hash of the files `tags_for` depends on — `tag_synergies.py`
+  AND `deck.py`, since the tagger reads `deck.ENGINE_THEMES` (BS2-23, widened by BS4-37)
+  — and a mismatch defeats the reuse. An ABSENT hash means UNKNOWN and rebuilds ONCE (the
+  reuse path returned before writing a stamp, so "unknown = reuse" could never arm —
+  BS3-02). **Stated non-goal:** card-mana.csv's keyword frequencies also feed the noise
+  floor and are NOT hashed, because a derived file's hash would change on every mana
+  rebuild and the reuse would never fire. `--refetch` (`make refresh REFETCH=1`). [G-18]
 - **`card-wishlist.csv` is UNOWNED craft targets**, with DFCs under their full
   `Front // Back` name. `--rank` blends a hand-graded Power 50/50 with theme fit plus a
   bounded cross-deck breadth bonus; **lands rank on manabase value instead**, since theme
@@ -380,30 +383,31 @@ directions.
   **let a roster-wide sweep be the check**: a false positive is noisy and gets noticed, a
   false negative is silent, and three separate sweeps each found figures the audit had
   reported clean. A CARD citation and a FIGURE go stale differently and must not share a
-  predicate — and the CARD path kept a broad `remov\w*` for a year after the FIGURE path
-  was narrowed for exactly that word, so a card whose own text says "removes" suppressed
-  its own staleness report. The 2026-08-09 rework (five live misses in one day, each now
-  a fixture in `test_deck.py`) clause-scoped both cue families — cross-sentence
-  suppression, a cue inside the card's OWN name ("Crib **Swap**"), possessives, short
-  comma-heads and cross-deck figures are all fixed, and its first roster sweep found six
-  real stale rationales a clean-reporting scan had been passing. **STILL LIVE:** a copula
+  predicate — the CARD path kept a broad `remov\w*` for a year after the FIGURE path was
+  narrowed for that word, so a card whose text says "removes" suppressed its own report.
+  The 2026-08-09 rework clause-scoped both cue families (five live misses, each a fixture
+  in `test_deck.py`) and its first sweep found six real stale rationales. **The sweep is
+  least optional when you WIDEN the scan**: extending it to archetype figures (G-27)
+  returned 3 hits of which 2 were FALSE, and the suppressions written for those then muted
+  the 1 real one until the parent-name case was handled. **STILL LIVE:** a copula
   hides a figure ("protection is 1"); "the swap removes X" about a CUT card reads as
   live; a fragment shared by 4+ cards drops as an epithet; a card absent from the POOL
   is invisible entirely (the scan matches known names only). [G-26]
 - **Run `tier <id> --audit-rationale` after ANY deck edit.** The tier guard checks the
   LETTER; this checks the ARGUMENT — cards the prose cites that the deck no longer runs,
   and figures the live quality vector contradicts. A swap moves those numbers by
-  construction. Scoped to `#: tier:` AND `#: archetype:` — the archetype block is equally a
-  claim about the CURRENT list, and it is the header a reader trusts first, so it is the
-  one that goes stale unnoticed. `#: notes:` stays out of the STALENESS scan — a build log
-  may name an absent card — but an EXCLUSION claim in it ("deliberately NOT included: X")
-  is checked, because that is a claim about the current list in the opposite direction.
-  Report-only. A rationale that legitimately names a card it cut must put the change-cue
-  ADJACENT to the name — adjacent means the SAME clause; "X came out for Y" split across
-  a wrapped `#:` line still read stale, "X was CUT for Y" passed. **Residual: the
-  EXCLUSION check has a proximity window and misses a name several lines into a wrapped
-  list** — deck 52 named Zemo under "Deliberately NOT included" while running him, and
-  `wrong_exclusion_claims` returned empty. [G-27]
+  construction. Scoped to `#: tier:` AND `#: archetype:` — for CARDS since it was written,
+  and for FIGURES only since 2026-08-09: this rule claimed both for a year while the figure
+  loop read `tier` alone, so an archetype figure could contradict the vector indefinitely.
+  Widening it needed two clause-scoped suppressions — a figure about another deck named by
+  NAME, and one whose subject is the card POPULATION ("Standard's Dragons average MV 5.30")
+  — plus the rule that a name forming part of THIS deck's own name is not another deck,
+  since the variant convention makes 26a "Iron Forge — Virulent". `#: notes:` stays out of
+  the STALENESS scan — a build log may name an absent card — but an EXCLUSION claim in it
+  is checked. Report-only. A rationale naming a card it cut must put the change-cue in the
+  SAME clause. **Residual: the EXCLUSION check has a proximity window and misses a name
+  several lines into a wrapped list** — deck 52 named Zemo under "Deliberately NOT
+  included" while running him, and `wrong_exclusion_claims` returned empty. [G-27]
 - **`suggest`'s `Decks` column is cross-deck BREADTH, not curated fit** — castable and
   sharing a *central* theme that is also SPECIFIC, with variants collapsed to their core
   deck. Both gates are load-bearing: centrality alone left the column saturated at 99%,
@@ -414,10 +418,13 @@ directions.
 - **The pool's `Legalities` is a build-time SNAPSHOT — Standard rotates.** `suggest`
   marks an aging pick `⚠rot` from the `Released` date, `deck.py rotation` is the
   roster-wide view, and `wishlist --rank` flags a craft target rotating this year or
-  next. Since 2026-08 the CRAFT views carry the same flag: `deck.py check` marks each
-  missing/short card `⚠rot~YEAR` inline, and `wildcards` (incl. `--dedup`, the
-  cross-deck union ranked by decks-served per copy) flags its leverage list — deck 28's
-  plan bought four rotating cards past unflagged views, and deck 49 held five more.
+  next. **EVERY craft view carries the flag now**: `deck.py check` marks each
+  missing/short card `⚠rot~YEAR` inline, `wildcards` (incl. `--dedup`, the cross-deck
+  union ranked by decks-served per copy) flags its leverage list, and since BS4-11 so do
+  `suggest --lands/--ramp/--interaction` and `tier --to`'s craft fillers — the surfaces
+  whose whole purpose is spending wildcards, and the last ones still silent. Owned rows
+  are exempt by design: an owned card costs no wildcard. Deck 28's plan bought four
+  rotating cards past unflagged views, and deck 49 held five more.
   `rotation_risk` is calendar-YEAR based, since rotation happens annually.
   **Reprint caveat, partly encoded:** the pool keys ONE printing, so a card reprinted
   into a long-legality set inherited the wrong date — `_SET_ROTATION_OVERRIDE` fixes the
@@ -468,18 +475,18 @@ directions.
   now says the threshold is unreachable and points at cast-on-curve — which is the number
   that settles the question anyway. A planning aid, not a guarantee. [G-36]
 - **`deck.py suggest --lands <id>` is the manabase RECOMMENDER** — plain `suggest` is
-  structurally blind to lands, because it filters to cards sharing a synergy theme.
-  Scored on FIXING value plus two bounded nudges (a land's own synergy text, and the
-  deck's scarcest colour). It defaults to the deck's own `#: format:`, as the card-facing
-  `suggest` always did — it once offered two non-Standard duals as craft targets, and on
-  a wildcard-spend recommender an unfiltered pick costs real resources. **LIVE RESIDUAL,
-  at the TOP of the list: three of its four highest-scored picks for deck 52 were NOT
-  PLAYABLE LANDS** — a land on the BACK face, a spell on the front, so it is reached by
-  transforming and never by a land drop. Maindeck one and the deck is a land short with
-  INV-04 seeing nothing wrong. Same class as G-63. Two scoring misses ride along: a
-  "spend this mana only to cast a creature spell" land scored top, and a
-  conditionally-tapped land scored as sometimes-untapped on a condition mono-black cannot
-  meet. **Read the type line of every pick before crafting.** [G-37]
+  structurally blind to lands (it filters to cards sharing a synergy theme). Scored on
+  FIXING value plus bounded synergy/scarce-colour nudges, and it applies the deck's
+  `#: format:`. **Both 2026-08-09 fixes were about admitting or pricing the wrong card:**
+  the candidate filter scanned a whole type line, so 81 pool cards with `// Land` on the
+  BACK qualified — three of deck 52's four top picks were unplayable as lands — now fixed
+  to front-face `_primary_type`, the same fix `wishlist._is_land` got in BS2-11 and this
+  sibling did not; and RESTRICTED mana ("spend this only to cast a creature spell", which
+  had ranked #1) now has its fixing premium halved and prints `·restricted`. **The
+  conditionally-tapped miss this rule used to claim was NOT REAL** — the 5.8-vs-4.6 gap
+  cited was mono-colour vs DUAL, not tap handling. The real limitation is the opposite and
+  conservative: a conditional land never gets the untapped premium even when the deck
+  meets the condition, so it prints `·tapped?` for a human read. [G-37]
 - **`suggest --ramp / --interaction / --needs` are the NEEDS model** — the structural
   axes theme-`suggest` is blind to (fixing, acceleration, interaction). **If the scorecard
   says the deficit is interaction or mana, the fix comes from here, not from plain
@@ -576,10 +583,14 @@ directions.
   gate.** Every gate verifies a model is right; none can see a command nothing runs.
   `check_commands.py` closes it — every subcommand and script must be invoked by a skill,
   called by another module, or exempted WITH A REASON, and a stale exemption is itself a
-  failure. Coverage requires a REAL call, not a prose mention — on BOTH paths: the
+  failure. Coverage requires a REAL call, not a prose mention — on ALL THREE paths: the
   script half accepted any filename mention until 2026-08 (two of `build_pool.py`'s three
-  were warnings NOT to run it), and now wants `python3 scripts/<fn>` in a skill or
-  `scripts/<fn>` in the Makefile. [G-53]
+  were warnings NOT to run it) and wants `python3 scripts/<fn>`; the Makefile half matched
+  COMMENTS until BS4-25; and the SUBCOMMAND half counted a caution ("never run `deck.py
+  sync` blindly") until BS4-09. **That last one is where the obvious fix was wrong**:
+  demanding the executable shape there would have failed 27 of 34 live subcommands, since
+  the skills write 30 of their references bare and only 3 sit in fenced code blocks — so a
+  caution CLAUSE is suppressed instead, which measured as costing zero coverage. [G-53]
 - **A SET plus a sort key that can TIE is a nondeterministic output.** Tied themes left
   in set-iteration order made an unchanged build produce different output every run.
   **Before sorting anything derived from a set, ask what happens when the key ties** —
@@ -602,14 +613,21 @@ directions.
   corrupted ledger can't traceback AFTER the deck file is written.
   **A swap applied only to MEASURE something still leaves a row** — prefer a dry run or a
   scratch copy, since a fabricated row is worse than a missing one. [G-56]
-- **Match results are FREE from `Player.log`, and the header line is the load-bearing
-  half** — the `finalMatchResult` JSON carries the outcome and both seats but NOT which
-  seat is yours; that appears only in the `Match to <userId>:` prefix. A paste of the JSON
-  alone is unparseable, so the parser SKIPS with a warning rather than guessing: a
-  50%-accurate record is worse than an empty one because it looks like data. **Read the
-  record with restraint** — under 20 matches `--report` refuses to print a percentage,
-  above it prints a Wilson interval, and a small-sample win rate never belongs in
-  `#: tier:`. [G-57]
+- **Match results are FREE from `Player.log`, and the two lines AROUND the result JSON are
+  the load-bearing halves.** `finalMatchResult` carries the outcome and both seats but NOT
+  which seat is yours; that is only in the `Match to <userId>:` prefix, so a paste of the
+  JSON alone is unparseable and the parser SKIPS with a warning rather than guessing — a
+  50%-accurate record is worse than an empty one because it looks like data. **`courseId`
+  is NOT a deck, it is the AVATAR cosmetic** — a global setting changed independently of
+  the deck. Every value the first real sample produced was `Avatar_*`, and nine matches
+  were recorded against it, with a `#: arena: <courseId>` mapping documented in three
+  places, before anyone read the values; the columns are `My Avatar` / `Opponent Avatar`
+  now. The deck you played is in **`EventSetDeckV3`** (NAME + stable `DeckId` + timestamp),
+  joined to each match on TIMESTAMP (not log order) and resolved `--deck` → `#: arena:`
+  header → the name's leading NUMBER, with the run PRINTING the route; `--map-decks` maps
+  the WHOLE roster from one paste, and every `--apply` ingest re-syncs the headers. **Read
+  the record with restraint** — under 20 matches `--report` refuses a percentage, above it
+  prints a Wilson interval, and a small-sample win rate never belongs in `#: tier:`. [G-57]
 - **NEVER widen `#: colors:` for a HYBRID card, and never reject a card for a widening you
   do not need.** Both halves were violated in one cycle: 26b's header was widened to UBR
   for `{B/R}` Bullseye, and Don & Raph was kept OUT of mono-blue 47 because its R identity
@@ -676,19 +694,19 @@ directions.
   scorecard really says interaction, the fix is `suggest --needs` per G-38, not a mill
   card. Deck 51 is the worked case: its mill package is a second win condition. [G-62]
 - **THE FRONT FACE AND THE STORED METADATA DISAGREE — ON EVERY COLUMN, AND IN EVERY
-  INDEX.** G-02 is one member of a class that has produced SIX bugs across five columns —
-  **COST** (a modal DFC stored only the front), **COLOR** (identity hid 55 castable
-  red-pool cards — G-58), **TYPE** (a whole-line scan read the BACK face's; deck 49
-  reported 26 lands holding 25), **NAME twice** (a bare front name written by
-  `swap --apply`, then read back as DRIFT), **RARITY** (47 roster names priced blank) —
-  plus FIVE more from the 2026-08 scan (two indexes, two exact-name JOINS, the editor's
-  JS payload) and the ingest WRITE side, where reconcile/import_arena APPENDED a
-  duplicate front-name row and split the owned count (BS2-02). **Ask which face a column describes; alias
-  via `lib.alias_front` (the ONE second-pass home, ENFORCED by `check_dfc`'s registry +
-  the editor-payload pin); key every name JOIN — a writer's too — on `_ms_key`.** The
-  registry is now itself gated by an AST scan for pool-shaped name-index BUILDERS: it
-  only ever checked loaders someone listed, and every bug in this class was a loader on
-  no list (2026-08; it found `deck._legality_of` on its first run). [G-63]
+  INDEX.** G-02 is one member of a class that has produced bugs on five COLUMNS — cost,
+  colour (identity hid 55 castable red cards — G-58), TYPE (deck 49 read 26 lands holding
+  25; `suggest --lands` offered 81 back-face lands — the fix `wishlist._is_land` already
+  had, G-37), name twice, rarity — plus the 2026-08 scan's five and the ingest WRITE side.
+  **Ask which face a column describes; alias an INDEX via `lib.alias_front` in a SECOND
+  pass — NEVER in-pass with `setdefault`, which lets a DFC seen early claim the bare front
+  key a distinct card owns (BS4-18 closed the last four, three of them indexing Scryfall
+  RESPONSES and so invisible to the pool-reading scan) — key every name JOIN, a writer's
+  too, on `_ms_key`, and read a `#:` header's card names through
+  `deck._header_card_keys`.** Gated by `check_dfc`'s registry, its AST scan for name-index
+  BUILDERS, and its editor-payload scan (every CONSUMER since BS4-14, not just the
+  helper). The header consumers closed on a "zero live instances" count deck 66
+  invalidated four days later — **a fact about a moment, not a property of the code.** [G-63]
 
 - **A reanimator's uncastable bombs need `#: uncastable-ok:`, and everything else's do
   not.** The castability lint and `tier_band` both model "you cannot cast this" as a build
@@ -746,6 +764,33 @@ directions.
   editorial) and found two more the moment it ran: deck 56's Boros header protected two
   GREEN cards that live only in its Gruul variant 56a. Joined on `_ms_key` per G-63, so a
   DFC named by its front face does not read as stale. [G-68]
+
+- **A BASELINE UPDATED BEFORE THE GATE THAT READS IT IS A MUTED GATE.** `make postedit`
+  ran `check_roles.py --update-baseline` unconditionally and FIRST, so every new zero-role
+  card was acknowledged before `check_all` could warn about it — on the exact workflow
+  (after every deck edit) the radar was built for. `--update-baseline` rewrites the file
+  from the CURRENT set, so it cannot tell one genuinely roleless new card from a
+  `_ROLE_PATTERNS` edit that just re-zeroed fifty; the only residual signal was an unread
+  diff of a 425-line file. It now NAMES every card it acknowledges and REFUSES a jump over
+  `--max-new` (postedit passes `MAXNEW`, default 8 — `make postedit MAXNEW=40` for a
+  deliberate bulk pass). `check_keywords.py --update-baseline` got the same delta report
+  and `--max-new` (BS4-10) — it has no automated caller, so it was never MUTED, but K-01's
+  rule that a keyword's reported COUNT is not its population makes naming the entries
+  matter there too. **The shape generalizes: when an acknowledge step and a warn step run
+  in one command, the ORDER decides whether the warning exists at all.** [G-69]
+
+- **BUILDABILITY IS PER CARD NAME, NEVER PER LINE — one definition, `deck_requirements` /
+  `deck_build_gap`.** A deck may list the same card on two lines, and owned counts are
+  per-name (copies are fungible across printings), so "do I own this deck" must compare
+  TOTAL need against TOTAL owned. `cmd_check` always did and said so in a comment — and a
+  comment is not a mechanism: `app.py`'s `/decks` overview and `check_all`'s info summary
+  each re-derived the question per LINE, so a deck listing 2+2 of a card owned 3 read
+  "buildable" on those two surfaces while `deck.py check`, the dashboard and the deck
+  editor called it short. Three implementations of one question, and the two that drifted
+  were the two that copied the loop instead of calling it — the shape `check_agreement.py`
+  exists to catch, in a spot it does not reach. `/decks` also counted LINES as `unique`.
+  **When you find yourself writing a second loop over `cards` that compares against owned,
+  call the helper instead.** [G-70]
 
 ## Known Issues
 
@@ -807,7 +852,8 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   `tag_synergies.py --merge` for the LIBRARY and **`build_pool.py --all` for the pool**,
   which re-derives every pool row's `Synergies` through the same `tags_for()`. Skipping
   the pool rebuild used to leave unowned craft candidates ranking on stale tags SILENTLY;
-  since BS2-23 the pool's build stamp carries the tagger's content hash, so an edit here
+  since BS2-23 the pool's build stamp carries a content hash of the tagger AND (since
+  BS4-37) of `deck.py`, whose `ENGINE_THEMES` the tagger reads, so an edit to either
   defeats the freshness reuse and `make refresh` really does re-derive them. **That
   sentence was false for a year of stamps** — a pre-BS2-23 stamp had no hash and the reuse
   path never wrote one, so the check could not arm (BS3-02, G-18). VERIFY the pool
@@ -894,7 +940,8 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (absent until the first `/log-matches`), recommendations.csv [C-02]
+  (LIVE since 2026-08-10 — 9 matches, 8 attributed to decks; still far under the 20-match
+  read floor), recommendations.csv [C-02]
 - Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only
   subsystems that have seen a real game or a real decision [C-03]
 - Ingest & Enrich: scripts/import_arena.py, scripts/import_collection.py,
@@ -907,22 +954,22 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (29 files: the markup-contract, CLI-entry-point, analysis-model,
+- Testing: tests/ (30 files: the markup-contract, CLI-entry-point, analysis-model,
   gate-pinning, shared-primitive and ingest layers, the 2026-08 ingest-writer /
   sync-guard / resilience-layer / CLI-filter coverage of the formerly untested
-  scripts, plus the broad-scan-2 additions — test_check_all.py, the gate runner's
-  own mutation layer; test_app_editor.py, the editor's write-safety pins
-  (importorskip'd on Flask); test_check_dfc.py, which pins the G-63 builder SCAN
-  rather than the registry it feeds; and test_writer_mutations.py, which runs each
-  write-safety property against a mutant writer so the property is proven to be
-  load-bearing), requirements-dev.txt, pytest.ini,
-  .github/workflows/tests.yml [C-07]
+  scripts, plus test_check_all.py, the gate runner's own mutation layer;
+  test_app_editor.py, the editor's write-safety pins (importorskip'd on Flask);
+  test_check_dfc.py, which pins the G-63 builder SCAN rather than the registry it
+  feeds; test_writer_mutations.py, which runs each write-safety property against a
+  mutant writer so the property is proven load-bearing; and test_gates_fire.py, the
+  watched-it-fail layer for the seven gates that had none — so all fourteen now have
+  one), requirements-dev.txt, pytest.ini, .github/workflows/tests.yml [C-07]
 - Decks: decks/
 
 **Invariant Library:**
 - INV-01 | card-library.csv has the canonical 8-column header, every row has 8 fields, no duplicate (Card Name, Set Code, Collector #) printing, and Quantity Owned is blank or a non-negative integer | Subsystem: Data | Verify: scripts/check_all.py (via validate.py)
 - INV-02 | Every Card Name in card-library.csv has a row in card-mana.csv | Subsystem: Data | Verify: scripts/check_all.py
-- INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released+Power+Toughness warn if absent), gallery.html | Subsystem: Data/Presentation | Verify: scripts/check_all.py
+- INV-03 | Derived reference files exist AND keep their own schema: card-mana.csv (Card Name/Mana Cost/Mana Value/Keywords), card-pool.csv (…/Rarity; Legalities+Released+Power+Toughness warn if absent), gallery.html (has usable CONTENT — non-trivial size + the `#data` island — since existence alone passed a truncated build) | Subsystem: Data/Presentation | Verify: scripts/check_all.py
 - INV-04 | Every deck file under decks/ parses with no malformed card lines, AND every line's `(SET)` code exists in the pool or library (an unheld COLLECTOR # within a real set is a soft warning, since the pool keys one printing per card) | Subsystem: Decks | Verify: scripts/check_all.py
 - INV-05 | Color(s) stores color identity; actual mana cost lives only in card-mana.csv | Subsystem: Data | Verify: design/manual
 - INV-06 | Synergy tags are keyword-aware — regenerate via build_mana.py then tag_synergies.py --merge after imports (--merge preserves hand-curated tags; --force replaces them) | Subsystem: Ingest | Verify: manual
@@ -1012,6 +1059,19 @@ format.
    Expected: all three show a toast naming the failure. Remove and Revert used to do
    nothing at all — the rejected fetch died as an unhandled rejection right after a
    destructive confirm (F-02). This is that fix's acceptance test.
+9. Log a session of matches | Subsystem: Outcomes
+   Needs **a person with a real `Player.log`** — check_all never touches
+   `parse_matches.py`, and its pytest layer runs against synthetic fixtures, so the
+   end-to-end path is covered by nobody else.
+   Steps: paste (or `cat`) an archive → `parse_matches.py <file>` (dry run) →
+   `--apply` → `--report`; then rename a deck in the Arena client, play once, and
+   re-run.
+   Expected: the dry run prints a `Deck attribution` block naming every Arena deck and
+   the ROUTE that resolved it; re-running is idempotent (dedup by matchId); the rename
+   re-maps in the SAME run, because header sync precedes the mapping. A match whose
+   deck selection is missing stays blank rather than borrowing a neighbour's, and
+   `--report` refuses a percentage under 20 matches. Full steps + the launchd archive
+   setup: `.claude/commands/log-matches.md`. [C-12]
 
 **Frozen Subsystems:** none.
 

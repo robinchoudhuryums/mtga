@@ -30,19 +30,29 @@ class FakeWS:
         self.grid = grid
         self.cleared = False
         self.written = None          # (range_name, values, value_input_option)
+        self.trimmed = None          # (start, end) passed to delete_rows
+        self.fail_update = False     # simulate a mid-push transport failure
 
     def get_all_values(self):
         return self.grid
 
-    # The push side of the fake. `clear` before `update` is the destructive part the
-    # BS3-03 guard stands in front of, so the tests need to see whether it happened.
+    # `clear()` is retained on the fake precisely so a test can assert it is NEVER
+    # called: push writes over the tab and then trims, so the destructive
+    # empty-tab window BS4-16 found cannot exist. The BS3-03 shrink guard still
+    # stands in front of the whole operation.
     def clear(self):
         self.cleared = True
         self.grid = []
 
     def update(self, range_name=None, values=None, value_input_option=None):
+        if self.fail_update:
+            raise RuntimeError("connection dropped mid-push")
         self.written = (range_name, values, value_input_option)
         self.grid = values
+
+    def delete_rows(self, start, end):
+        self.trimmed = (start, end)
+        self.grid = self.grid[:start - 1]
 
 
 def _row(name, qty="1", set_code="M21", cn="1"):
@@ -157,11 +167,11 @@ class TestPushGuards:
     CSV over it, so it is the mirror of the operation BS-03 hardened, pointed at the
     operator's other copy. Everything here is the real code with the Google side faked."""
 
-    def test_a_full_size_push_clears_and_writes_the_grid(self, world, monkeypatch):
+    def test_a_full_size_push_writes_the_grid_without_clearing(self, world, monkeypatch):
         _lib, _mana, local = world
         ws = _use_ws(monkeypatch, _grid(local))
         assert ss.push("x", dry_run=False) == 0
-        assert ws.cleared
+        assert not ws.cleared          # BS4-16: write over, then trim — never clear first
         rng, values, opt = ws.written
         assert rng == "A1"
         assert values[0] == list(HEADER)
@@ -193,13 +203,13 @@ class TestPushGuards:
         remote = [_row(f"Remote {i}", cn=str(i)) for i in range(40)]
         ws = _use_ws(monkeypatch, _grid(remote))
         assert ss.push("x", dry_run=False, allow_shrink=True) == 0
-        assert ws.cleared
+        assert ws.written is not None
 
     def test_an_empty_remote_tab_is_not_a_shrink(self, world, monkeypatch):
         """A first push into a fresh tab must not be blocked by its own guard."""
         ws = _use_ws(monkeypatch, [])
         assert ss.push("x", dry_run=False) == 0
-        assert ws.cleared
+        assert ws.written is not None
 
     def test_a_small_shrink_is_allowed(self, world, monkeypatch):
         """The floor is >50%, matching pull and import_collection — 4 against 6 is
@@ -207,7 +217,50 @@ class TestPushGuards:
         remote = [_row(f"Remote {i}", cn=str(i)) for i in range(6)]
         ws = _use_ws(monkeypatch, _grid(remote))
         assert ss.push("x", dry_run=False) == 0
-        assert ws.cleared
+        assert ws.written is not None
+
+
+class TestPushIsNotClearThenWrite:
+    """BS4-16: push cleared the tab and then uploaded as a SEPARATE call, so an auth
+    expiry / transient 5xx / dropped connection in between left the Sheet EMPTY — and the
+    Sheet is the one REMOTE copy `pull` would otherwise recover from. Every local write in
+    this repo stages then promotes (`lib.atomic_write`); this was the one overwrite with
+    no equivalent. Now: write over, then trim the leftover tail."""
+
+    def test_clear_is_never_called(self, world, monkeypatch):
+        ws = _use_ws(monkeypatch, _grid([_row(f"R{i}", cn=str(i)) for i in range(4)]))
+        assert ss.push("x", dry_run=False) == 0
+        assert not ws.cleared
+
+    def test_a_failed_push_leaves_the_old_contents_intact(self, world, monkeypatch):
+        """THE case the fix exists for. Previously: clear() succeeded, update() threw,
+        tab empty. Now the tab still holds what it held before."""
+        remote = [_row(f"Remote {i}", cn=str(i)) for i in range(4)]
+        ws = _use_ws(monkeypatch, _grid(remote))
+        ws.fail_update = True
+        with pytest.raises(Exception):
+            ss.push("x", dry_run=False)
+        assert len(ws.grid) == 5            # header + 4 remote rows, untouched
+        assert not ws.cleared
+
+    def test_a_shorter_push_trims_the_leftover_tail(self, world, monkeypatch):
+        """Overwrite-in-place leaves the OLD rows below the new grid; they must go, or
+        the Sheet keeps cards the library no longer has."""
+        remote = [_row(f"Remote {i}", cn=str(i)) for i in range(6)]
+        ws = _use_ws(monkeypatch, _grid(remote))
+        assert ss.push("x", dry_run=False) == 0      # 4 local rows vs 6 remote
+        # New grid is header+4 = rows 1..5; the old tab ran to row 7, so 6..7 are stale.
+        assert ws.trimmed == (6, 7)
+        assert len(ws.grid) == 5
+
+    def test_a_failed_trim_does_not_report_the_push_as_failed(self, world, monkeypatch):
+        """The data is already correct once update() lands; a failed tidy-up must not
+        invite a re-push of a correct Sheet."""
+        remote = [_row(f"Remote {i}", cn=str(i)) for i in range(6)]
+        ws = _use_ws(monkeypatch, _grid(remote))
+        ws.delete_rows = lambda *a: (_ for _ in ()).throw(RuntimeError("no permission"))
+        assert ss.push("x", dry_run=False) == 0
+        assert ws.written is not None
 
 
 class TestCheckSetup:

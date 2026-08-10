@@ -1,5 +1,6 @@
 #: name: Hoofprint — Strata
 #: format: Standard
+#: arena: 50a Hoofprint- Strata, 3da8355c-bee9-4941-bca7-76b5e86a6ded
 #: colors: G
 #: based-on: deck.txt
 #: plan: midrange

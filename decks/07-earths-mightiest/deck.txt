@@ -1,5 +1,6 @@
 #: name: Earth's Mightiest
 #: format: Standard
+#: arena: 07 Earth’s Mightiest, e3a6c595-914d-4809-bd6d-630b3758ca89
 #: tier: B — Selesnya go-wide heroes. The old one-line reason ("fast clock but thin
 #: tier: interaction (3)") is no longer true on either count: the classifier fix reads
 #: tier: interaction 7, and the plan infers as MIDRANGE, not aggro, on a 3.14 curve. The

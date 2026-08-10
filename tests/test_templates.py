@@ -402,3 +402,52 @@ class TestPhoneBreakpoints:
         bp = src[src.index("@media (max-width:"):]
         assert "flex-wrap:wrap" in bp.replace(" ", "")
         assert "flex:1 1 100%" in bp.replace("  ", " ") or "flex:1 1 100%" in bp
+
+
+class TestBatch5InterfaceContracts:
+    """Batch 5 (the interface-polish slice of broad-scan-3). Each of these is a contract a
+    file CAN prove — an attribute present, an escape applied, a key handled — with the
+    perceptual half left to Regression Scenarios 5-8, as this module's header explains."""
+
+    def test_the_set_dropdown_escapes_the_free_text_set_code(self):
+        """BS4-43: `Set Code` is free text that /api/add stores unvalidated, and this
+        interpolation was the one site the BS2-17 escaping pass missed. A code containing
+        a quote breaks out of value="..."."""
+        src = _read("collection.html")
+        assert 'value="${esc(s)}">${esc(s)}' in src
+        assert 'value="${s}">${s}' not in src
+
+    def test_the_save_button_exposes_its_disabled_state(self):
+        """S-6: the not-allowed cursor and the click handler's early return are both
+        invisible to a screen reader, which announced an ordinary actionable button that
+        then silently did nothing."""
+        tags = _parse("collection.html")
+        save = [a for t, a in tags if a.get("id") == "save"]
+        assert save and save[0].get("aria-disabled") == "true"
+
+    def test_the_save_button_stays_focusable(self):
+        """`aria-disabled`, NOT the `disabled` property: a control that drops out of the
+        tab order as you fix the last edit moves focus out from under the user."""
+        tags = _parse("collection.html")
+        save = [a for t, a in tags if a.get("id") == "save"]
+        assert "disabled" not in save[0]
+
+    def test_the_disabled_state_is_kept_in_sync(self):
+        """A state attribute set once at render and never updated is worse than none —
+        the same rule this file already pins for `aria-pressed` on the colour pips."""
+        src = _read("collection.html")
+        assert src.count("setAttribute('aria-disabled'") >= 2
+
+    def test_the_analysis_tab_strip_handles_arrow_keys(self):
+        """S-1: the strip's own comment claimed it shares one interaction contract with
+        the dashboard's `tablist()`, which installs ArrowLeft/ArrowRight — while this half
+        had Enter/Space only, so the ← / → that Regression Scenario 7 asks for worked on
+        one strip and silently did nothing on the other."""
+        src = _read("deck.html")
+        assert "ArrowRight" in src and "ArrowLeft" in src
+
+    def test_arrow_navigation_routes_through_click(self):
+        """One definition of what a tab does — the same reason Enter is routed that way."""
+        src = _read("deck.html")
+        i = src.find("ArrowRight")
+        assert "n.focus(); n.click();" in src[i:i + 500]

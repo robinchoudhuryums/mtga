@@ -1,5 +1,6 @@
 #: name: Bird Brain
 #: format: Standard
+#: arena: 19 Bird Brain- Bant, f0fd0577-3e62-4786-b7c2-0ce8b8b0ef05
 #: tier: B — Bant (effectively GW go-wide + a trivial 3-pip U splash) Bird tribal /
 #: tier: Chocobo-landfall tokens; fully built and FULLY OWNED. Deep, coherent engine (16
 #: tier: Birds, 20 total payoffs) on a wide plan `shape` measures at WIDE 12 / TALL 1,

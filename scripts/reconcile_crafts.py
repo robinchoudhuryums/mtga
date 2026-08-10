@@ -28,7 +28,8 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import REPO_ROOT, eprint, atomic_write, alias_front  # noqa: E402
+from lib import (BASICS as lib_BASICS, REPO_ROOT, eprint, atomic_write,  # noqa: E402
+                 alias_front)
 
 LIB = os.path.join(REPO_ROOT, "card-library.csv")
 MANA = os.path.join(REPO_ROOT, "card-mana.csv")
@@ -37,6 +38,15 @@ WISH = os.path.join(REPO_ROOT, "card-wishlist.csv")
 LIB_HEADER = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
               "Set Code", "Collector #", "Quantity Owned"]
 LINE_RE = re.compile(r"^(\d+)\s+(.+?)\s+\(([^)]+)\)\s+(\S+)\s*$")
+# Basic lands are NOT part of the collection (unlimited in Arena), which is why
+# `import_arena` offers --skip-basics and `import_collection` skips them outright.
+# This tool had no guard at all — and it is the one CLAUDE.md (G-10) names as the
+# FASTEST fix for reconciling from an Arena export, i.e. the one most likely to be
+# handed a full deck list. `7 Forest (BLB) 280` resolves against the pool's real
+# basic-land rows, so `--apply` wrote a basics row into the inventory (plus a mana
+# row) with no invariant able to object. Hard-skipped, never opt-in: a basic is
+# never crafted, so there is no legitimate case for this tool to record one.
+BASICS = lib_BASICS          # one definition, in lib.py
 
 
 def _front(name):
@@ -45,8 +55,19 @@ def _front(name):
 
 
 def _read(path):
-    with open(path, newline="", encoding="utf-8") as fh:
-        return list(csv.DictReader(fh))
+    """Rows of a canonical/derived CSV, with a clean error when it is not there yet.
+
+    `main()` gives the EXPORT file a readable "No such file" message while these three
+    raised a bare FileNotFoundError — so on a fresh clone, before the first `make
+    refresh`, the tool tracebacked instead of saying which file to build. The
+    inconsistency was inside one script (BS4-38)."""
+    try:
+        with open(path, newline="", encoding="utf-8") as fh:
+            return list(csv.DictReader(fh))
+    except FileNotFoundError:
+        raise SystemExit(
+            f"Missing {os.path.basename(path)} — reconcile_crafts needs the derived data "
+            f"in place. Run `make refresh` (or build_pool.py / build_mana.py) first.")
 
 
 def _wishlist_hit(row, full, front, rec_set, rec_coll):
@@ -101,6 +122,7 @@ def reconcile(export_lines, apply=False, set_exact=False):
     wish_fields = list(wish[0].keys()) if wish else []
 
     added, bumped, mana_added, wish_removed, notfound, unparsed = [], [], [], [], [], []
+    basics = []
 
     for raw in export_lines:
         s = raw.strip()
@@ -113,6 +135,11 @@ def reconcile(export_lines, apply=False, set_exact=False):
             unparsed.append(s)
             continue
         qty, name, setc, coll = int(m.group(1)), m.group(2).strip(), m.group(3).strip(), m.group(4).strip()
+        # Skip basics BEFORE any pool lookup — REPORTED, not silently dropped, so a
+        # user pasting a full deck list can see why those lines produced nothing.
+        if _front(name).strip().lower() in BASICS:
+            basics.append(f"{name} ({setc}) {coll} x{qty}")
+            continue
         exact = pool_by_sc.get((setc.upper(), coll))
         # The name index aliases DFC fronts (above), so one lookup covers both a
         # full-name and a front-name paste.
@@ -207,6 +234,9 @@ def reconcile(export_lines, apply=False, set_exact=False):
     section("Quantity bumped", bumped)
     section("Mana rows added (front-name)", mana_added)
     section("Removed from wishlist", wish_removed)
+    if basics:
+        section("Basic lands (skipped — not part of the collection; unlimited in Arena)",
+                basics)
     if notfound:
         section("NOT FOUND in pool (skipped)", notfound)
     if unparsed:
@@ -236,7 +266,12 @@ def reconcile(export_lines, apply=False, set_exact=False):
     if not (added or bumped or mana_added or wish_removed):
         print("\nNothing to write.")
         return 0
-    _bak_write(LIB, LIB_HEADER, lib)
+    # Only rewrite what CHANGED. The gate above fires if ANY of the four buckets moved,
+    # but the library write ran unconditionally inside it — so a run that merely dropped
+    # a wishlist row rewrote an unchanged 600KB inventory and left a fresh `.bak`, the
+    # exact litter import_arena and build_mana were both taught to avoid (BS4-38).
+    if added or bumped:
+        _bak_write(LIB, LIB_HEADER, lib)
     if mana_added:
         _bak_write(MANA, ["Card Name", "Mana Cost", "Mana Value", "Keywords"], mana)
     if wish_removed:

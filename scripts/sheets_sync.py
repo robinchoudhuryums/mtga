@@ -186,13 +186,38 @@ def push(worksheet_name, dry_run, allow_shrink=False):
                    f"CLEARS the tab. Pass --allow-shrink if the shrink is real. "
                    f"Nothing sent.")
             return 1
-    ws.clear()
+    # WRITE FIRST, then trim — never clear-then-write. `ws.clear()` followed by a
+    # separate `ws.update()` leaves a window in which an auth expiry, a transient 5xx or
+    # a dropped connection ends with the tab EMPTY: the Sheet is the one REMOTE copy the
+    # shrink guard above exists to protect, and the failure destroyed exactly what `pull`
+    # would have recovered from (BS4-16). Every LOCAL write in this repo stages and then
+    # promotes (`lib.atomic_write`); this was the one overwrite with no equivalent.
+    #
+    # Overwriting in place is the closest thing the Sheets API offers to that: after a
+    # successful update the new grid occupies A1..; only the rows BELOW it are stale, and
+    # those are deleted afterwards. A failure at any point leaves either the old content
+    # or the new — never nothing.
+    #
     # RAW so a cell whose text begins with '=', '+', '-', or '@' is stored as
     # literal text, never evaluated as a spreadsheet formula — a CSV-injection
     # guard for the companion Sheet that also keeps values (e.g. leading-zero
     # collector numbers) verbatim, without mutating the pristine local CSV
     # (audit F10). USER_ENTERED would let such a value run as a live formula.
+    try:
+        previous = len(ws.get_all_values())
+    except Exception:
+        previous = 0
     ws.update(range_name="A1", values=grid, value_input_option="RAW")
+    # Trim any rows the OLD contents left below the new grid. Best-effort and
+    # non-fatal: the data is already correct at this point, and a failed tidy-up must
+    # not report the push as failed (it would invite a re-push of a correct Sheet).
+    if previous > len(grid):
+        try:
+            ws.delete_rows(len(grid) + 1, previous)
+        except Exception as e:
+            eprint(f"WARN:  pushed {len(rows)} row(s), but could not delete "
+                   f"{previous - len(grid)} leftover row(s) below the new data "
+                   f"({e}). The pushed rows are correct; clear the tail by hand.")
     print(f"Pushed {len(rows)} row(s) to Google Sheet worksheet {worksheet_name!r}.")
     return 0
 

@@ -121,7 +121,7 @@
     <h1>Collection Editor</h1>
     <span class="stats" id="stats"></span>
     <a class="tool" href="/decks" style="text-decoration:none" title="Edit decks with live buildability">Decks →</a>
-    <button id="save" title="Save edits to card-library.csv (validated, with a .bak backup)">No changes</button>
+    <button id="save" aria-disabled="true" title="Save edits to card-library.csv (validated, with a .bak backup)">No changes</button>
   </div>
   <div class="controls">
     <input type="search" id="q" aria-label="Search the collection by name, type, or text" placeholder="Search name, type, or text…" autocomplete="off">
@@ -186,8 +186,11 @@
   const activeColors = new Set();
 
   const sets = [...new Set(CARDS.map(c => c.set).filter(Boolean))].sort();
+  // esc() on BOTH the attribute and the text. `Set Code` is a free-text CSV column that
+  // /api/add stores unvalidated, and this was the one interpolation the BS2-17 escaping
+  // pass missed — a set code containing a quote breaks out of value="..." (BS4-43).
   setSel.innerHTML = '<option value="">All sets</option>' +
-    sets.map(s => `<option value="${s}">${s}</option>`).join('');
+    sets.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('');
 
   const pipsEl = document.getElementById('pips');
   pipsEl.addEventListener('click', e => {
@@ -234,8 +237,19 @@
 
   function updateSaveButton() {
     const n = dirty.size;
-    if (n === 0) { saveBtn.textContent = 'No changes'; saveBtn.classList.remove('ready'); }
-    else { saveBtn.textContent = `Save changes (${n})`; saveBtn.classList.add('ready'); }
+    // `aria-disabled` alongside the class: the not-allowed cursor and the early return in
+    // the click handler are both invisible to a screen reader, which announced an
+    // ordinary actionable button ("No changes, button") that then silently did nothing.
+    // aria-disabled rather than the `disabled` property so the button stays FOCUSABLE —
+    // a control that vanishes from the tab order as you fix the last edit moves focus out
+    // from under the user.
+    if (n === 0) {
+      saveBtn.textContent = 'No changes'; saveBtn.classList.remove('ready');
+      saveBtn.setAttribute('aria-disabled', 'true');
+    } else {
+      saveBtn.textContent = `Save changes (${n})`; saveBtn.classList.add('ready');
+      saveBtn.setAttribute('aria-disabled', 'false');
+    }
   }
 
   function render() {
@@ -408,7 +422,10 @@
     // right after the user confirmed a destructive dialog (broad-scan F-02).
     try {
       const d = await postJSON('/api/remove', {key: {name: c.name, set: c.set, collector: c.cn}});
-      if (d.ok) { sessionStorage.setItem('flash', `Removed ${c.name}`); location.reload(); }
+      // A partial success carries `warning`: the library write landed, a post-write step
+      // did not. Surfacing it matters because the removal is NOT retryable — the row is
+      // already gone (BS4-40).
+      if (d.ok) { sessionStorage.setItem('flash', d.warning || `Removed ${c.name}`); location.reload(); }
       else toast('Remove failed: ' + (d.errors || ['unknown']).join('  |  '));
     } catch (err) {
       toast('Remove failed (is the server running?): ' + err.message);

@@ -62,6 +62,53 @@ class ScryfallUnavailable(Exception):
     card'. Callers should degrade (show unknown / warn), not treat it as a miss."""
 
 
+def _retry_after_seconds(headers):
+    """`Retry-After` as a float delay, or 0.0 when it is absent or unusable.
+
+    RFC 7231 allows Retry-After in TWO forms — delay-seconds AND an HTTP-date — and this
+    was a bare `float(...)`, so the date form raised ValueError INSIDE the HTTPError
+    handler. That escapes both `_TRANSIENT` and `ScryfallUnavailable`, crossing this
+    module's whole premise that every transport failure degrades to one exception type:
+    the interactive tools would traceback instead of degrading and the rebuild scripts
+    would abort on a traceback rather than a clean "existing file left unchanged"
+    message. Not hypothetical here — this environment routes through an agent proxy that
+    can inject its own 429/503 with its own headers (BS4-17).
+
+    The date form is parsed rather than discarded (it is a legitimate server response),
+    clamped to a sane ceiling so a far-future date can't park the process for hours.
+    """
+    raw = (headers.get("Retry-After") if headers else None)
+    if raw is None:
+        return 0.0
+    raw = str(raw).strip()
+    if not raw:
+        return 0.0
+    try:
+        return max(0.0, float(raw))
+    except ValueError:
+        pass
+    try:
+        from email.utils import parsedate_to_datetime
+        when = parsedate_to_datetime(raw)
+    except Exception:
+        return 0.0
+    if when is None:
+        return 0.0
+    try:
+        import datetime as _dt
+        now = _dt.datetime.now(_dt.timezone.utc)
+        if when.tzinfo is None:
+            when = when.replace(tzinfo=_dt.timezone.utc)
+        return max(0.0, min((when - now).total_seconds(), _RETRY_AFTER_CAP))
+    except Exception:
+        return 0.0
+
+
+# A server (or a proxy) can name a far-future Retry-After; honouring it literally would
+# park a rebuild for hours, so the date form is capped at the longest ordinary backoff.
+_RETRY_AFTER_CAP = 60.0
+
+
 def _run(req, retries=6, timeout=30):
     """Execute a urllib Request with retry/backoff; return parsed JSON.
 
@@ -86,7 +133,7 @@ def _run(req, retries=6, timeout=30):
                 raise ScryfallUnavailable(last + " (client error — not retried; "
                                           "check the request, not the network)")
             if attempt < retries - 1:
-                wait = (float(e.headers.get("Retry-After", 0) or 0)
+                wait = (_retry_after_seconds(e.headers)
                         if e.code == 429 else 0) or 1.0 * (2 ** attempt)
                 time.sleep(wait)
                 continue

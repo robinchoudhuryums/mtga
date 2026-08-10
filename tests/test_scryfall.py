@@ -110,3 +110,40 @@ class TestRunClassification:
         r = _Responder([TimeoutError("blip"), {"ok": 2}])
         _wire(monkeypatch, r)
         assert scryfall.get_json("http://x") == {"ok": 2}
+
+
+class TestRetryAfterHeader:
+    """BS4-17: `float(e.headers.get("Retry-After", 0) or 0)` assumed the delay-seconds
+    form. RFC 7231 allows an HTTP-DATE too, and that raised ValueError INSIDE the
+    HTTPError handler — escaping both `_TRANSIENT` and `ScryfallUnavailable` and breaking
+    this module's whole premise that every transport failure degrades to one exception
+    type. The interactive tools would traceback instead of degrading; the rebuild scripts
+    would abort on a traceback rather than 'existing file left unchanged'."""
+
+    def test_absent_or_blank_is_zero(self):
+        assert scryfall._retry_after_seconds({}) == 0.0
+        assert scryfall._retry_after_seconds({"Retry-After": ""}) == 0.0
+        assert scryfall._retry_after_seconds(None) == 0.0
+
+    def test_delay_seconds_form(self):
+        assert scryfall._retry_after_seconds({"Retry-After": "5"}) == 5.0
+        assert scryfall._retry_after_seconds({"Retry-After": " 7.5 "}) == 7.5
+
+    def test_a_negative_delay_is_clamped(self):
+        assert scryfall._retry_after_seconds({"Retry-After": "-3"}) == 0.0
+
+    def test_http_date_form_does_not_raise(self):
+        import datetime as dt
+        when = dt.datetime.now(dt.timezone.utc) + dt.timedelta(seconds=30)
+        hdr = when.strftime("%a, %d %b %Y %H:%M:%S GMT")
+        got = scryfall._retry_after_seconds({"Retry-After": hdr})
+        assert 20 <= got <= 35          # ~30s, allowing for clock/parse slack
+
+    def test_a_far_future_date_is_capped(self):
+        import datetime as dt
+        when = dt.datetime.now(dt.timezone.utc) + dt.timedelta(days=3)
+        hdr = when.strftime("%a, %d %b %Y %H:%M:%S GMT")
+        assert scryfall._retry_after_seconds({"Retry-After": hdr}) == scryfall._RETRY_AFTER_CAP
+
+    def test_unparseable_garbage_is_zero_not_an_exception(self):
+        assert scryfall._retry_after_seconds({"Retry-After": "soon-ish"}) == 0.0

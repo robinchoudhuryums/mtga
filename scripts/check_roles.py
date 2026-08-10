@@ -50,7 +50,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import REPO_ROOT  # noqa: E402
+from lib import REPO_ROOT, eprint  # noqa: E402
 
 BASELINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "role_baseline.txt")
 
@@ -138,6 +138,26 @@ def stale_baseline_entries():
     return out
 
 
+def baseline_delta():
+    """(newly_acknowledged, pruned) — what `--update-baseline` WOULD change.
+
+    `--update-baseline` rewrites the file from the current zero-role set, so it is
+    all-or-nothing: it cannot tell "one genuinely roleless new card" from "a
+    `_ROLE_PATTERNS` edit just re-zeroed fifty cards". That is tolerable when a human
+    runs it after reading the new entries, and it was NOT what happened — `make
+    postedit` ran it unconditionally, BEFORE `check_all`, so the radar's warning was
+    consumed by the same command that was supposed to surface it (BS4-02). Exposing the
+    delta is what lets the caller show its work instead of absorbing it.
+
+    `newly_acknowledged` carries DISPLAY names — a human is supposed to read these and
+    go look the card up, and the lowercased comparison key is worse at both."""
+    base = load_baseline()
+    rows = zero_role_cards()
+    zero = {r[0].lower() for r in rows}
+    return (sorted((r[0] for r in rows if r[0].lower() not in base), key=str.lower),
+            sorted(n for n in base if n not in zero))
+
+
 def _write_baseline():
     rows = zero_role_cards()
     with open(BASELINE, "w", encoding="utf-8") as fh:
@@ -159,11 +179,47 @@ def main():
     ap.add_argument("--all", action="store_true", help="show every zero-role card (ignore baseline)")
     ap.add_argument("--update-baseline", action="store_true", help="acknowledge the current set")
     ap.add_argument("--limit", type=int, default=40, help="max rows to print (0 = all)")
+    ap.add_argument("--max-new", type=int, default=0,
+                    help="with --update-baseline, REFUSE to acknowledge more than N new "
+                         "zero-role cards in one run (0 = no limit). A large jump is a "
+                         "pattern regression, not a batch of new cards — see --show-delta")
+    ap.add_argument("--show-delta", action="store_true",
+                    help="with --update-baseline, print exactly which cards were newly "
+                         "acknowledged and which stale entries were pruned")
     args = ap.parse_args()
     if args.update_baseline:
+        # ALWAYS compute the delta first. A bulk rewrite that prints only a total is
+        # indistinguishable from a mask (BS4-02): the count moves, nobody reads which
+        # cards moved, and a re-zeroing pattern edit is acknowledged wholesale.
+        new, pruned = baseline_delta()
+        if args.max_new and len(new) > args.max_new:
+            eprint(f"REFUSING to update the baseline: {len(new)} NEW zero-role card(s) "
+                   f"exceeds --max-new {args.max_new}. A jump this size is usually a "
+                   f"_ROLE_PATTERNS regression re-zeroing cards that used to classify, "
+                   f"not a batch of genuinely roleless new cards. Review them first:")
+            for nm in new[:20]:
+                eprint(f"    + {nm}")
+            if len(new) > 20:
+                eprint(f"    … and {len(new) - 20} more")
+            eprint("Then re-run with a higher --max-new (or none) to acknowledge them.")
+            return 1
         n = _write_baseline()
         print(f"Baseline updated: {n} acknowledged zero-role card(s) written to "
               f"{os.path.basename(BASELINE)}.")
+        # Name what changed, unconditionally for a small delta. The whole failure mode
+        # is a number nobody reads standing in for cards nobody looked at.
+        if new or pruned:
+            print(f"  {len(new)} newly acknowledged, {len(pruned)} stale entr(ies) pruned.")
+            show = args.show_delta or len(new) <= 10
+            for nm in (new if show else new[:10]):
+                print(f"    + {nm}   (NEW — read the card; a pattern hole is fixable)")
+            if not show and len(new) > 10:
+                print(f"    … and {len(new) - 10} more (--show-delta for all)")
+            if args.show_delta:
+                for nm in pruned:
+                    print(f"    - {nm}   (pruned)")
+        else:
+            print("  No change to the acknowledged set.")
         return 0
     stale = stale_baseline_entries()
     if stale:

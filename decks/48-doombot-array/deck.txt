@@ -1,5 +1,6 @@
 #: name: Doombot Array
 #: format: Standard
+#: arena: 48 Doombots, 90ada35a-fc58-4e69-9a05-fefeb5ed962a
 #: colors: UR
 #: plan: midrange
 #: tier: B — and deliberately ONE BAND BELOW the measurable floor, which reads A on

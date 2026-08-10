@@ -1125,6 +1125,45 @@ gets noticed, a false negative is silent.* Until it is fixed, re-read the exclus
 eye whenever a swap adds a card the deck once rejected — which is common, since a
 reconsidered card is exactly the kind that gets excluded in writing first.
 
+**The FIGURE half only joined the archetype scan on 2026-08-09 (BS4-07), and this rule
+claimed otherwise for a year.** `rationale_staleness` swept `("tier", "archetype")` for
+CARD citations from the day it was written, while the figure loop iterated `tier_prose`
+alone — so the documented scope was true of half the function, and an `#: archetype:`
+figure could contradict the live vector indefinitely. Deck 26a quoted *"avg MV 3.05, 15
+early drops"* against a live 2.97, and the audit reported the deck clean.
+
+Widening it was not a one-line change, which is the part worth carrying forward. The first
+roster sweep after the fix returned **three hits, of which only one was genuine**:
+
+| deck | quoted | live | verdict |
+|---|---|---|---|
+| 26a | avg MV 3.05 | 2.97 | **genuine** — corrected |
+| 44a | card advantage 0 | 3 | FALSE — the figure is about deck 1, named "Black Sun" |
+| 49 | avg MV 5.30 | 4.03 | FALSE — the figure is about *Standard's* Dragons |
+
+Deck 44a's clause is *"DISTINCTNESS vs 1 Black Sun … Black Sun is aggro-sacrifice with a
+5/7 clock and card advantage 0"*. The existing cross-deck suppressor is `_OTHER_DECK_RE`,
+which matches the literal `deck N` — and prose names a deck by its NAME. Deck 49's is
+*"Standard's Dragons average MV 5.30, so a deck that wants to field several must SOLVE ITS
+OWN MANA"*: a true claim about the format that the scan read as a claim about the list.
+
+Two clause-scoped suppressions were added — another roster deck named by NAME (reusing
+`_roster_deck_names`, which the CARD scan has masked with since it was written), and
+`_POPULATION_SUBJECT_RE` for a possessive population subject. The possessive form is
+deliberate: *"Standard's Dragons average…"* names a population, while *"fine in Standard,
+avg MV 2.4"* is still a claim about this deck and must keep auditing.
+
+**Then the deck-name suppression muted the one genuine hit**, and the reason is a naming
+convention rather than a bug in the idea: deck 26a is named **"Iron Forge — Virulent"**, so
+its PARENT's name is a substring of its OWN, and an exact-match exclusion treated "Iron
+Forge" as another deck. The rule is now *a name that is part of THIS deck's own name is not
+another deck*. Final state: one genuine hit roster-wide, corrected, with a behavioural
+anchor asserting the roster figure sweep stays clean.
+
+The lesson is G-26's, earned again: **the roster-wide sweep is least optional exactly when
+you WIDEN a scan.** Two-thirds of the new reports were false, and the fix for them was one
+naming convention away from silently deleting the only true one.
+
 
 ## [G-28] `deck.py suggest` shows a cross-deck reuse count (`Decks` column)
 
@@ -1482,15 +1521,61 @@ collector number is held, the card is Standard-legal. `check_all` has no notion 
 line a land". The deck would simply play badly.
 
 **Root cause is G-63's class one layer out.** The pool row for a DFC records a land type
-whenever EITHER face is a land, and `_land_value` reads that row. The accessor rule ("ask
-which face a column describes") was never applied to the land-ness predicate itself.
+whenever EITHER face is a land, and the candidate filter read that row. The accessor rule
+("ask which face a column describes") was never applied to the land-ness predicate itself.
 
-**Rank 5 is a fourth, milder miss.** Great Arashin City is a real land but reads *"enters
-tapped unless you control a Forest or a Plains"* — unreachable in mono-black, so it is
-always tapped. It scored 5.8 fixing rather than the 4.6 given to a flatly-tapped land,
-i.e. the scorer treated an unsatisfiable condition as sometimes-satisfied.
+**FIXED 2026-08-09.** `suggest_lands` now admits a candidate only when
+`_primary_type(type_line) == "Land"` — the FRONT face, which is what a land drop can play.
+Measured: **81 pool cards** carry `// Land` on a non-land front and were all eligible
+before. Midgar, City of Mako correctly SURVIVES the change (`Land — Town // Sorcery —
+Adventure`), which is the case `lib.primary_type`'s own docstring calls out.
 
-**Until it is fixed, read the type line of every pick.** `card.py <name>` prints it.
+The lesson is not "DFCs are tricky" — it is that **`wishlist._is_land` was given this
+exact fix in BS2-11 and its sibling recommender was not.** One rule, applied in one place
+and not the other, for a year, on two commands that answer the same question about the
+same pool rows. When you fix a face-reading predicate, grep for the others.
+
+**Rank 5 was recorded as a fourth miss, and on re-measurement IT IS NOT ONE.** The claim
+was that Great Arashin City (*"enters tapped unless you control a Forest or a Plains"*,
+unreachable in mono-black) "scored 5.8 fixing rather than the 4.6 given to a flatly-tapped
+land, i.e. the scorer treated an unsatisfiable condition as sometimes-satisfied." Measured
+2026-08-09:
+
+| land | shape | fixing |
+|---|---|---|
+| Great Arashin City | mono-B, conditionally tapped | 5.8 |
+| Foul Roads | mono-B, conditionally tapped | 5.8 |
+| Forum of Amity | **B/W dual**, tapped | 4.6 |
+
+The 5.8-vs-4.6 gap is COLOUR MATCH — a mono-coloured source the deck fully uses against a
+dual it half-uses — and has nothing to do with tapping. Both conditional lands are denied
+the untapped premium exactly as a flat-tapped land is, because the substring test sees
+"enters tapped" in the clause. **The original note compared two cards that differ on a
+second axis and attributed the gap to the first.** Re-measure a scoring claim against a
+control that differs in only the axis being blamed.
+
+**The real limitation is the OPPOSITE one, and it is conservative.** A conditional land is
+scored as always-tapped even for a deck that trivially meets the condition (Great Arashin
+City enters untapped in anything running a Forest), so it is UNDER-scored, never over-.
+Deciding satisfiability needs the deck's contents, which `_land_value` is not given — so
+`suggest --lands` prints `·tapped?` and the clause instead of guessing (G-52).
+
+**The RESTRICTED-MANA miss was real, and is fixed (2026-08-09).** Mudflat Village reads
+*"{T}: Add {B}. Spend this mana only to cast a creature spell."* — a black source for
+creatures and nothing at all for a removal spell — and it ranked **#1** of deck 52's land
+suggestions at 7.2 fixing. `_land_value` now tracks restricted production separately (per
+LINE, because the qualifying sentence follows the Add sentence inside one ability, and the
+clause scan stops at the period before it) and HALVES the fixing premium when every colour
+the deck wants from that land is restricted. Mudflat drops to 5.4, below the unrestricted
+mono-B sources at 5.8, which is the ordering a manabase wants. 37 pool lands carry the
+clause. The discount is one-directional — it can only lower a land, never invent one — and
+half rather than zero because the restriction is narrow: near-full value in a creature
+deck, near-dead in a spell deck, and `_land_value` is told only the deck's COLOURS. Hence
+the `·restricted` marker for the judgment the score cannot make.
+
+**So: read the type line, the tapped clause and the spend clause.** The type-line half is
+now enforced and the restricted half is priced; the two `·` markers are there because the
+remaining judgments need the deck, not the card.
 
 
 ## [G-38] `deck.py suggest --ramp / --interaction / --needs` are the NEEDS model — the structural axes the
@@ -1973,7 +2058,7 @@ one. Prefer a `--dry-run` `swap` or a scratch COPY of the deck when you are only
 measuring; if you do apply-and-revert, delete the trailing row in the same commit.
 
 
-## [G-57] Match results are FREE from `Player.log` — the header line is the load-bearing half
+## [G-57] Match results are FREE from `Player.log` — the lines AROUND the result JSON are the load-bearing halves
 
 **Match results are FREE from `Player.log` — the header line is the load-bearing half.**
 Arena's "Detailed Logs (Plugin Support)" setting writes match events locally; that is the
@@ -1990,12 +2075,9 @@ things the real log settled, none of them guessable from the JSON alone: the log
 LOCAL timestamp must beat the JSON's UTC epoch (an evening session otherwise files a day
 late — the sample's own header said 7/27 while its epoch resolved to 7/28), the epoch is
 still the right FALLBACK when no header date exists (a blank Date sorts to the top and
-can't be scoped in time), and `courseId` is Arena's own deck identifier with **no
-derivable relationship to a repo deck id** — so the mapping is LEARNED from a `#: arena:
-<courseId>` deck header, and an unmapped match is kept and surfaced, never dropped.
+can't be scoped in time), and an unmapped match is kept and surfaced, never dropped.
 Deliberately stores no userId and no playerName: neither is needed for a win rate, and a
-match log is not a place to accumulate identity (opponent *deck* is kept — an archetype,
-not a person). The scan keys on the EVENT rather than on `"finalMatchResult"`, because a
+match log is not a place to accumulate identity. The scan keys on the EVENT rather than on `"finalMatchResult"`, because a
 truncated paste is the expected failure and that marker sits LATE in the line, after both
 seats — so any realistic width cap removed it and the match was dropped in **silence**
 while the run reported success. Found by a test, and it is this project's signature bug
@@ -2009,6 +2091,116 @@ rubric, and a small-sample rate is not evidence at that resolution, so citing on
 be precisely the stale-rationale failure `--audit-rationale` exists to catch. Same
 restraint `count_conf` shows for role counts: a number that looks certain when it isn't
 is the expensive kind of wrong.
+
+**`courseId` is NOT a deck — it is the AVATAR, and the whole first pass was built on the
+opposite assumption.** The field sits on each `reservedPlayers` seat next to `eventId`,
+its name reads like a deck-list identifier, and the parser's docstring, its `--report`
+footer and the `/log-matches` skill all documented a `#: arena: <courseId>` header as the
+way to attribute a match to a repo deck. Nine real matches were recorded that way, all
+with a blank `Deck`. Then someone read the values: **all eleven distinct ones across both
+seats carried the literal `Avatar_` prefix** — `Avatar_Basic_BlackPanther_MSH`,
+`Avatar_Basic_Galactus_MSH`, `Avatar_Basic_Kaito_NEO`, and so on. It is the AVATAR
+cosmetic, a global profile setting the player changes independently of the deck, and it
+identifies nothing. On 2026-08-07 the recorded value went CaptainMarvel → Galactus at
+exactly the point the deck changed, which is what made it look like a deck id; on
+2026-08-09 the same Galactus value covered a completely different deck. The columns are
+`My Avatar` / `Opponent Avatar` now, precisely so the next reader cannot repeat it — and
+the "opponent DECK is kept, that is an archetype not a person" line the privacy paragraph
+used to carry was wrong for the same reason: an avatar is a cosmetic, and it tells you
+nothing about what they were playing. **The general shape: a field whose NAME asserts a
+meaning is a claim, not a measurement.** `Color(s)` (identity, not cost) and a DFC's
+stored Mana Value (both faces) are the same failure in the card data; this is it in the
+match data, and it survived a docstring, a skill and a committed CSV because nobody
+looked at what the column contained.
+
+**The deck actually played is in `EventSetDeckV3`, and the join is on TIME.** Arena writes
+that line when it submits a deck for an event, 2–20 seconds before the match starts across
+the whole sample. Its payload is JSON inside a JSON string and carries the Arena deck NAME,
+a stable `DeckId` GUID, and a `LastPlayed` local timestamp — enough to attribute every
+match except one whose log had already rotated. Four details are load-bearing:
+
+* **The regex path is the primary one, not the fallback.** The documented extraction pipes
+  through `cut`, so neither `json.loads` survives the truncation. The extractors read a
+  backslash-STRIPPED copy of the raw line, which is why `\"DeckId\":\"…\"` is matched as
+  `"DeckId":"…"`. `"Name"` is capital-N while every sibling attribute key is lower-case
+  `"name"`, and `"EventName":"Play"` has no quote before `Name`, so neither can be confused
+  with the deck's own name.
+* **Timestamps beat log order.** A pure order walk breaks on the paste people actually
+  produce: running the match grep and the `EventSetDeckV3` grep as separate commands puts
+  every selection in one block and every match in another, and order then hands the single
+  last selection to every match — one deck for the whole session, which reads as data.
+* **A selection more than 12 hours before a match is refused, with a warning.** Arena
+  re-submits the deck on every event join, so a real selection is seconds old; anything
+  hours old means the log that held the right one rotated. Without the bound the 7/27 match
+  would have borrowed an 8/07 deck. Blank is the only safe direction — an unattributed
+  match is a visible gap, a wrongly attributed one is a fabricated win rate.
+* **Name → repo id resolves most-explicit-first** (`--deck` → `#: arena:` header, which
+  takes the Arena NAME or the GUID or both, comma-separated → the Arena name's leading
+  number), and the run PRINTS every name with the route that resolved it, because a
+  heuristic that ASSIGNS data has to show its work (the G-52 rule). The prefix step is
+  accepted only when the id it produces is a deck that exists. Its regex is
+  case-SENSITIVE on the variant letter and requires the letter be adjacent to the number:
+  the first draft, `^\s*0*(\d+)\s*([a-z]?)` with `re.I`, read "07 Earth's Mightiest" as
+  deck **"7e"**. Note the Arena name need not resemble the repo name at all — "45 The
+  Exiles" is repo deck 45 "Exile Dividend" — so a name-similarity check would have
+  REJECTED a correct match, and the number is the only part that carries the mapping.
+
+**Doing the whole roster: `--map-decks`.** Setting `#: arena:` one deck at a time is where
+a wrong header hides, and a `#:` header naming something that does not exist is a silent
+no-op — the G-68 class exactly. Every message type that mentions a deck (`EventSetDeckV3`
+= the deck submitted for an event, `DeckUpsertDeckV3` = the deck just
+saved/renamed/imported) nests the SAME `{"DeckId":…,"Name":…}` object, so one bounded
+pattern harvests the client's whole deck list rather than one pattern per message layout.
+**`DeckGetDeckSummariesV3` is NOT a third source, and the first draft of this section said
+it was.** Its name promises the whole collection and it was written into the suggested
+grep, the module docstring and a test's docstring on the strength of the name alone —
+measured against the first real paste, Arena logs its request and a bare `<== …(id)` ack
+with NO payload: 0 decks from 5 calls, against 21 from `DeckUpsertDeckV3`. The same
+field-name-as-claim trap as `courseId`, caught the same way (reading the values), and the
+grep now excludes it so nobody hauls in dead lines. Three rules make the
+bulk write safe: the LAST name for a GUID wins, because a deck renamed in the client
+appears under both and `setdefault` would keep the dead one (the G-63 first-writer-claims-
+the-key trap, one file over); the `.{0,200}?` window between DeckId and Name is the whole
+guard against a summary that has no Name reaching forward and labelling itself with its
+neighbour's deck; and two Arena decks resolving to ONE repo deck — which is what an old
+copy left in the client looks like — write NOTHING and are reported, because a header
+naming the wrong one of two is worse than none: the parser would then attribute matches to
+it with full confidence. Writes route through `deck._safe_write_lines`, which re-parses the
+file and verifies the copy count is unchanged before replacing it, so a header edit
+provably cannot touch a card line.
+
+**Header upkeep rides along with every ingest (`sync_headers`).** A separate `--map-decks`
+run is upkeep nobody performs — the G-53 shape, a working capability nothing reaches — and
+any paste that can attribute a match already carries the summaries that keep headers
+current. So the normal `--apply` flow runs the same plan/write machinery quietly (it
+reports only what CHANGES, so a routine ingest is not buried under an all-unchanged roster
+listing), with two ordering rules that are the actual content of the fix: the sync runs
+BEFORE the deck mapping is built, so a header written from this paste resolves this
+paste's own matches (a client-side RENAME is exactly this shape — the new name has no
+prefix match and only the freshly-written GUID header can place it); and it runs BEFORE
+the no-matches bailout, because the first integration put it after, and a summaries-only
+paste — the `--map-decks` extraction shape fed to the normal command — died with "check
+that Detailed Logs is enabled", a misleading error about a setting that was fine, without
+writing the headers it carried. Both orderings are mutation-tested.
+
+**The rolling archive (Stage 0 of `/log-matches`).** `Player.log` is overwritten on every
+Arena launch, so every extraction habit has a structural hole: a session not grabbed
+before the next launch is gone, and the roster's 2026-07-27 match is a permanent casualty
+(its deck attribution is unrecoverable — the 12-hour bound exists to keep a rotated log's
+stale selection from being borrowed in its place). A launchd job appending the filtered
+lines to `~/mtga-logs/arena.log` every 15 minutes closes the hole; line-identical dedupe
+(`awk '!seen[$0]++'`) is safe because every captured line shape carries a timestamp or an
+id, and re-ingesting the archive is idempotent because match dedup is by `matchId`. The
+setup block lives in the skill so it survives being needed only once.
+
+Two supporting fixes came out of the same change. `load_matches` renames the pre-rename
+columns on READ, because `write_matches` emits only `HEADER` and would otherwise have
+rewritten an existing `matches.csv` with those cells blank — silently losing the one field
+the old rows had. And the F-02 mirror guard had to learn one exception: it compares headers
+and cannot tell "another file's schema" from "an earlier version of my own", so it refused
+the very write that performs the migration. The allowance is EXACT — only the single header
+this module used to emit — so a genuinely foreign CSV is still refused, and a test pins
+that half too.
 
 
 ## [G-58] Never widen `#: colors:` for a HYBRID card — and never reject a card for a widening you don't need
@@ -3047,6 +3239,55 @@ cannot see a consumer in JavaScript. All five fixed 2026-08 (the JS one by front
 the served payload). The join lesson is now in the standing rule: key every name-facing
 JOIN on `_ms_key`, not only every loader.
 
+**The JS member came back once, through the gate's own stated residual (BS4-14,
+2026-08-09).** The BS-08 fix added `ownedOf(name)` — full name, then front face — and
+`check_dfc._payload_flags` pinned two markers: that the helper exists, and that it
+front-splits. Its docstring then said, honestly:
+
+> Residual, stated honestly: a NEW raw lookup added elsewhere in the template would not
+> fire this — the pin guards the helper, not every use.
+
+`renderFlex` was already that raw lookup, in the same file, thirty lines below `cardStatus`.
+A `#~` flex line naming a DFC by its full `Front // Back` name — which is how the wishlist
+stores DFCs (G-19) and how `deck.py resolve` emits them — displayed "not owned" for a card
+the deck rows above displayed correctly. One template, two consumers of one index, two
+different answers.
+
+The pin guarded the DEFINITION and not the CALLERS, which is the same shape G-40 records
+for `cuts` (a pure-function anchor cannot see whether a caller asks) and the same shape
+`check_commands` exists for one level up. `_payload_flags` now scans every USE of the
+`OWNED` index and fails any lookup outside `ownedOf` — comment lines excluded, since the
+comment explaining the fix necessarily quotes the banned shape. Mutation-tested: reverting
+`renderFlex` to a raw lookup makes the gate fire.
+
+**When a guard's docstring states a residual, that sentence is a bug report about the
+guard.** This one was accurate, specific, and sat unactioned while an instance of exactly
+what it described lived in the file it guarded.
+
+**The IN-PASS aliasing members closed 2026-08-09 (BS4-18/20).** `lib.alias_front`'s
+docstring has always said that aliasing inside the row loop with `setdefault` is
+order-dependent and wrong, and four builders were still doing it:
+
+| site | indexes | why the gate could not see it |
+|---|---|---|
+| `enrich.index_card` | Scryfall responses | scan covers POOL readers only |
+| `build_mana._store` | Scryfall responses | same |
+| `deck.fetch_missing_rarities` | Scryfall responses | same |
+| `wishlist.owned_index` | library rows | a `+=` counter, not an index build |
+
+The first three now index the REAL (full) name in-pass and call `lib.alias_front` once
+after the fetch loop; `owned_index` sums under the stored name and adds a front alias only
+where no real row claims it. The failure they share is not that a DFC's front is missing —
+it is that a DFC seen EARLY claims the bare front key, so a genuinely distinct card of
+that name arriving later can never claim its own. "Life" is a card as well as the front of
+"Life // Death".
+
+Measured before and after: **zero front-name collisions exist in the current Arena pool**
+(706 two-faced names checked), so every one of these was latent — one printing away from
+writing another card's cost, text or rarity over a real card's, silently and
+order-dependently. That is the honest reason they were worth fixing anyway: the cost of
+the bug is unbounded and the cost of the fix was four second-pass calls.
+
 **2026-08-07 broad scan #2: the class reaches the ingest WRITE side (BS2-02/BS2-25,
 fixed same day).** Every prior member was a READER — a loader, an index, a join, a
 serialized payload. The second scan found the same shape in the writers that create
@@ -3073,13 +3314,32 @@ already-in-deck filters and `similar`'s shared-card intersection, the last of wh
 the "▸ Most shared CARDS" figure G-47 tells the reader to trust when it disagrees with the
 cosine, so a card the two decks spelled differently simply never counted. `similar`
 intersects KEYS through a key→display map, keeping the count right without printing
-lowercased keys at the reader. **ONE MEMBER REMAINS OPEN**, deliberately: the
-`#: protect:` / `#: uncastable-ok:` CONSUMERS (`rank_cut_candidates`, `_castability`,
-`_weakest_cut`) still compare raw lowercase names while `header_card_staleness` — the gate
-built to catch a dead header entry — joins on `_ms_key`, so a header naming a DFC by its
-other face is a disabled instruction the gate certifies as healthy. Measured at zero live
-instances (all 14 DFC-bearing headers happen to use the full spelling), which is why it was
-left rather than rushed; it is the next thing to close in this class.
+lowercased keys at the reader.
+
+**The last member — the HEADER CONSUMERS — closed 2026-08-09 (BS4-01), and how it was
+deferred is the more useful half of the story.** The `#: protect:` / `#: uncastable-ok:`
+consumers (`rank_cut_candidates`, `_castability`, `_weakest_cut`, both signature-theme
+functions, `recommendation_row`) compared raw lowercase names, while
+`header_card_staleness` — the gate built to catch a dead header entry — joins on
+`_ms_key`. So a header naming a DFC by its other face was a disabled instruction that the
+gate certified as healthy: **a gate vouching for the thing it exists to detect, which is
+strictly worse than no gate**, because the green check is itself the evidence of health.
+
+It was left open on a measurement: zero live instances, all 14 DFC-bearing headers using
+the full spelling. That measurement was taken 2026-08-07. **Deck 66 was drafted 2026-08-08
+with `#: protect: Eddie Brock` against a line storing `Eddie Brock // Venom, Lethal
+Protector`, and the count was wrong the next day** — the deck's own title card sat in its
+cut ranking, and the staleness sweep reported the roster clean throughout. A
+zero-instances count is a fact about a moment; the code property is whether the join can
+ever be wrong, and that had not changed. **Defer on the mechanism, never on the census.**
+
+The fix normalizes at the READER rather than per call site: `deck._header_card_keys` is
+the one home both headers share, returning `_ms_key` keys, and every consumer keys its
+side. Verification worth keeping: the whole 97-deck roster was A/B'd against a pre-fix
+copy of `scripts/`, and **exactly one deck changed (66), with zero tier floors moved and
+zero uncastable counts changed** — the `uncastable-ok` half is the one that can raise a
+floor by exempting a card, and it had no live instance, so nothing silently re-graded.
+Four tests pin it, three of which were confirmed to fail against the pre-fix code.
 
 **Batch A/B of the same scan closed five more members in one pass**, all the raw-name
 join shape: the swap CUT side (`_cards_after_swap` / `_swap_edit_lines` /
@@ -3406,3 +3666,100 @@ card added later could be silently exempted if the names happened to collide.
 
 Five tests pin it, including a roster-wide behavioural anchor: both known instances are
 fixed, so any new hit is a regression someone introduced rather than a backlog item.
+
+## [G-69] A baseline updated before the gate that reads it is a muted gate
+
+`check_roles.py` is the radar for cards `classify_roles` scores with NO functional role.
+Its contract, in its own docstring, is *"the set only ever SHRINKS, and a NEW zero gets
+looked at once."* The looking-at-once is the entire value: `_ROLE_PATTERNS` is a whitelist
+(G-67), its failure mode is a silent under-count, and eight such holes were found in one
+2026-08 session — every one by a human reading a card.
+
+`make postedit`, the after-every-deck-edit tail, ran:
+
+```
+python3 scripts/check_roles.py --update-baseline     # step 1
+python3 scripts/build_dashboard.py                   # step 2
+python3 scripts/check_all.py                         # step 3
+```
+
+and the Makefile comment explained the ordering: *"the baseline must update BEFORE
+check_all or the gate warns about the cards the baseline was about to acknowledge."* That
+sentence is correct about the mechanics and describes a muted radar. Step 1 consumed the
+warning step 3 existed to raise, on precisely the workflow the radar was built for.
+
+**Why it could not self-correct.** `--update-baseline` rewrites the file from the CURRENT
+zero-role set — it is all-or-nothing, with no per-entry acknowledge. So it cannot
+distinguish:
+
+* one genuinely roleless new card (a vanilla body, a pure combat trick), from
+* a `_ROLE_PATTERNS` edit that just re-zeroed fifty cards that used to classify.
+
+Both are "the baseline grew." The only residual signal was an unreviewed diff of a
+425-line file inside a commit that also touched decks and the dashboard, and the printed
+output was a single total — a number that moves without naming what moved is exactly the
+delta-blind shape K-01 documents.
+
+**The fix keeps the ergonomics and removes the silence.** `baseline_delta()` reports what
+an update WOULD change (newly-acknowledged DISPLAY names, plus pruned entries);
+`--update-baseline` now always computes it first, NAMES every card it acknowledges, and
+REFUSES a jump larger than `--max-new` (exit 1, writing nothing, printing the names and
+the remedy). `make postedit` passes `MAXNEW`, default 8; a real bulk acknowledge is
+`make postedit MAXNEW=40`, which is a deliberate act rather than a default.
+
+**The generalization is the point.** When one command contains both an ACKNOWLEDGE step
+and a WARN step over the same set, the order decides whether the warning exists at all —
+and the convenience of automating the pair is what hides it. The same all-or-nothing
+rewrite still sits under `check_keywords.py --update-baseline`; it is not currently
+automated into a routine command, which is the only reason it is not the same bug.
+
+## [G-70] Buildability is per card NAME, never per line
+
+"Do I own this deck" is a comparison of TOTAL need against TOTAL owned, for two reasons
+that are both properties of this data rather than conventions:
+
+* a deck file may list the same card on more than one line (two printings, or an edit
+  that appended rather than bumped), and
+* owned counts are per NAME, because copies are fungible across printings — the rule
+  `deck.py` and `pool.py` already share.
+
+So a per-LINE comparison asks a question nobody wanted the answer to: "is each individual
+line covered by my total holding", which passes twice for a card owned once.
+
+`cmd_check` has always done this correctly and carried a comment saying so:
+
+```
+# Aggregate copies per card first: a deck may list the same card on more than
+# one line, and owned counts are per-name (fungible across printings), so the
+# short/missing check must compare total-need vs total-owned, not line-by-line.
+```
+
+**A comment is not a mechanism.** Two other surfaces re-derived the same question with
+their own loop and got it wrong: `app.py`'s `/decks` overview and `check_all`'s deck
+buildability summary both compared each line's quantity against total owned. A deck
+listing `2 Duress` + `2 Duress` with 3 owned therefore read **buildable** on those two
+surfaces while `deck.py check`, the dashboard's `collect()` (which sums `need[n]`) and the
+deck editor's `needFor()` all correctly read **short**. `/decks` additionally reported
+`unique` as a count of LINES.
+
+This is the shape `check_agreement.py` exists to catch — two implementations of one
+question drifting — in a place it does not reach, because the drifted copies were not
+functions it compares. The two that were wrong were precisely the two that had COPIED the
+loop instead of calling something.
+
+**Fixed (BS4-13) by giving the question one definition.** `deck.deck_requirements(cards)`
+returns the distinct cards in first-seen order with copies summed; `deck.deck_build_gap(
+cards, by_name_qty)` returns the `(missing, short)` pair. `cmd_check` calls the first — its
+aggregation was extracted, not altered — and both other surfaces call the second. Verified
+by cross-checking `/decks` against `deck_build_gap` for all 99 roster decks: no
+disagreements.
+
+No displayed number changed on the day of the fix, because no roster deck currently splits
+a card across two lines. That is worth stating plainly: the fix is against the CASE, not
+against a symptom that was visible. The case arrives the first time someone adds a second
+printing of a card a deck already runs — which the editor permits and which the dashboard
+and `deck.py` would then report differently from `/decks`.
+
+**The generalizable rule:** when you are about to write a second loop over a deck's
+`cards` that compares quantities against owned counts, call the helper. The first loop was
+right for ten months and still produced two wrong surfaces.

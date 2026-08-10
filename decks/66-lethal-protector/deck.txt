@@ -1,5 +1,6 @@
 #: name: Lethal Protector
 #: format: Standard
+#: arena: 66  Lethal Protector, 7d5bedba-fb3a-474e-9fbc-97859ffc47df
 #: colors: BRG
 #: plan: midrange
 #: tier: B (PROVISIONAL — unplayed brew, graded 2026-08-08). Metrics floor is A

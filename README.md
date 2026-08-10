@@ -52,7 +52,11 @@ python3 scripts/import_collection.py collection.csv      # dry run; --apply to w
 `import_arena.py` parses MTG Arena's `<qty> <Name> (<SET>) <collector#>` format and
 merges into `card-library.csv`, keyed by Card Name + Set Code + Collector # (one row per
 printing). Re-imports take the **max** quantity seen (decks share one collection, so
-counts don't sum); `--skip-basics` ignores basic lands.
+counts don't sum); `--skip-basics` ignores basic lands. A line with **no collector
+number** — `4 Llanowar Elves`, or `4 Llanowar Elves (DOM)` from a website list — is
+treated as a NAME-level claim rather than a printing: it is compared against the summed
+total across every printing you own and tops up the first row only if it exceeds that,
+so it can never append a phantom printing that makes a real 4 read as 8.
 
 `import_collection.py` is the counterpart for a full-collection export, and the only tool
 here that can **lower** a count — which is why it is dry-run by default, refuses an export
@@ -283,7 +287,7 @@ python3 scripts/wishlist.py --budget "9M 10R 38U 48C"   # optimal craft plan wit
 python3 scripts/wishlist.py --budget "3R" --set TMT     # ...scoped to one set (filters apply to --rank/--budget/--by-set)
 python3 scripts/wishlist.py --seed-power       # first-pass heuristic estimate for BLANK Power cells (+ --write)
 python3 scripts/wishlist.py --owned            # cards you've since acquired — prune these
-python3 scripts/wishlist.py --audit-targets    # flag cards whose Target deck can't cast them (hybrid-aware color drift)
+python3 scripts/wishlist.py --audit-targets    # flag cards whose Target deck can't cast them (hybrid-aware color drift); exits non-zero if the roster can't be loaded — a SKIP is not a clean bill
 python3 scripts/wishlist.py --suggest-targets  # propose a Target per card (confidence-flagged)
 python3 scripts/wishlist.py --suggest-targets --write   # auto-fill the confident picks
 ```
@@ -388,8 +392,10 @@ buildability. For a **new** card the line's quantity is the owned count; for a c
 **already** in the library it takes `max(existing, line)`, so pasting a deck-dump
 slice (each line a lower bound) can't silently drop a real count — pass
 `--set-exact` to set the count exactly (allowing a deliberate decrease). Lines that
-look like a card but don't parse are reported (not silently skipped). Dry-run by
-default; after `--apply`, run `build_gallery.py` + `check_all.py` (or `/refresh`).
+look like a card but don't parse are reported (not silently skipped), and **basic lands
+are skipped** — they aren't part of the collection (unlimited in Arena), so pasting a
+full deck list here is safe; the skipped lines are listed rather than silently dropped.
+Dry-run by default; after `--apply`, run `build_gallery.py` + `check_all.py` (or `/refresh`).
 This is the fast fix for the **"not in library" undercount symptom** — a card you
 own that `deck.py check` still lists as a craft target.
 
@@ -1204,7 +1210,10 @@ make refresh
 Runs the whole chain in dependency order: `enrich` → `build_pool --all` →
 `build_mana --pool` → `tag_synergies --merge` → `build_gallery` → `check_all`.
 (`make postedit` is the separate after-a-DECK-edit tail — re-baseline roles,
-rebuild the dashboard, run the gate — offline and independent of this chain.)
+rebuild the dashboard, run the gate — offline and independent of this chain. Its
+re-baseline step NAMES every zero-role card it acknowledges and refuses a jump over
+`MAXNEW` (default 8), since a large jump is a `_ROLE_PATTERNS` regression rather than a
+batch of new cards; use `make postedit MAXNEW=40` for a deliberate bulk acknowledge.)
 The order is a real dependency graph (`build_mana --pool` reads `card-pool.csv`;
 `tag_synergies` reads `card-mana.csv`'s keywords), and getting it wrong is quiet
 rather than loud — a new set's pool cards end up with no mana row until the next
@@ -1220,23 +1229,51 @@ python3 scripts/parse_matches.py --report               # win/loss per deck
 
 Every other tool here grades a deck on its **list**. This one records **games**.
 Turn on Arena → Settings → Account → **Detailed Logs (Plugin Support)**, restart
-Arena, then extract the two relevant line shapes (`Player.log` is overwritten on
-every launch, so grab it before relaunching):
+Arena, then extract the three relevant line shapes in **one** grep (`Player.log`
+is overwritten on every launch, so grab it before relaunching — or set up the
+launchd rolling archive in `.claude/commands/log-matches.md` Stage 0 once, after
+which nothing is ever lost and the per-session step is pasting
+`~/mtga-logs/arena.log`):
 
 ```
 p=~/Library/Logs/"Wizards Of The Coast"/MTGA          # macOS
-grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"' "$p"/Player*.log
+grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
+    "$p"/Player*.log
 ```
 
-**Both shapes are required.** The JSON carries the result and both players' seats
+**All three are required.** The JSON carries the result and both players' seats
 but not *which seat is yours* — that appears only in the `Match to <userId>:`
 header prefix — so a paste of the JSON alone is skipped with a warning rather than
 guessed at (`--me <userId>` overrides). Rows dedupe by Arena's match id, so
 re-pasting an overlapping log is safe. No userId or player name is ever stored.
 
-Arena's `courseId` has no derivable relationship to a repo deck id, so the mapping
-is learned: put `#: arena: <courseId>` in a deck file (the report lists the
-unmapped ones) or pass `--deck <id>` to tag one session. Unmapped matches are kept.
+The third shape, `EventSetDeckV3`, is **the deck you played**. A seat's `courseId`
+looks like a deck id and is not — it is the AVATAR cosmetic (`Avatar_Basic_*`),
+changed independently of the deck, and it is recorded as `My Avatar` /
+`Opponent Avatar` for exactly that reason. `EventSetDeckV3` carries the Arena deck
+name, a stable `DeckId` GUID and a timestamp; each match is joined to the selection
+immediately before it, then resolved to a repo deck by `--deck <id>`, else a
+`#: arena: <name-or-GUID>` deck header, else the Arena name's leading number
+("07 Earth's Mightiest" → deck 7) when that deck exists. The run prints every name
+with the route that resolved it. Unattributed matches are kept, never dropped.
+
+Those headers keep themselves current: every `--apply` ingest also harvests the
+paste's deck summaries and writes any new or renamed header before resolving the
+matches, so a deck renamed in the Arena client re-maps in the same run.
+`--map-decks` is the explicit roster-wide version — feed it a grep for
+`'==> (EventSetDeckV3|DeckUpsertDeckV3)'` and it maps every deck the client has
+touched (not `DeckGetDeckSummariesV3`: despite the name, Arena logs it with no
+payload — measured 0 decks from 5 calls):
+
+```
+python3 scripts/parse_matches.py session.log --map-decks           # dry run
+python3 scripts/parse_matches.py session.log --map-decks --apply   # writes, with .baks
+```
+
+Two Arena decks claiming one repo deck (an old copy left in the client) write
+**nothing** and are reported for a hand call — a header naming the wrong one of
+the two is worse than no header, because matches would then attribute to it with
+full confidence.
 
 `--report` shows W/L per deck and **refuses to print a percentage below ~20
 matches**, with a 95% Wilson interval above that. A win rate separates a broken

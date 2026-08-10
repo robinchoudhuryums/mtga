@@ -160,3 +160,39 @@ class TestInputHygiene:
         out = capsys.readouterr().out
         assert "NOT FOUND in pool" in out
         assert all(r["Card Name"] != "Not A Card" for r in _read_csv(world["LIB"]))
+
+
+class TestBasicLands:
+    """BS4-03: basic lands are NOT part of the collection (unlimited in Arena) — which is
+    why `import_arena` offers --skip-basics and `import_collection` skips them outright.
+    This tool had no guard at all, and it is the one G-10 names as the FASTEST fix for
+    reconciling from an Arena export, i.e. the one most likely to be handed a full deck
+    list. The pool carries real basic-land rows, so `7 Forest (BLB) 280` resolved and
+    --apply wrote a basics row into the inventory with no invariant able to object."""
+
+    def _world_with_basics(self, world):
+        rows = _read_csv(world["POOL"])
+        rows.append({"Card Name": "Forest", "Type": "Basic Land — Forest", "Card Text": "",
+                     "Color(s)": "G", "Set Code": "BLB", "Collector #": "280",
+                     "Rarity": "Common", "Synergies": ""})
+        _write_csv(world["POOL"], POOL_HEADER, rows)
+        return world
+
+    def test_a_basic_never_enters_the_library(self, world, capsys):
+        self._world_with_basics(world)
+        rc.reconcile(["1 Duress (M21) 96", "7 Forest (BLB) 280"], apply=True)
+        names = [r["Card Name"] for r in _read_csv(world["LIB"])]
+        assert "Forest" not in names
+        assert "Duress" in names            # the real card on the same paste still lands
+
+    def test_a_basic_gets_no_mana_row_either(self, world):
+        self._world_with_basics(world)
+        rc.reconcile(["7 Forest (BLB) 280"], apply=True)
+        assert all(r["Card Name"] != "Forest" for r in _read_csv(world["MANA"]))
+
+    def test_the_skip_is_reported_not_silent(self, world, capsys):
+        """A dropped line the user pasted must be visible, or the tool looks broken."""
+        self._world_with_basics(world)
+        rc.reconcile(["7 Forest (BLB) 280"], apply=False)
+        out = capsys.readouterr().out
+        assert "Basic lands (skipped" in out and "Forest" in out

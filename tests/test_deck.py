@@ -752,6 +752,172 @@ Deck
         assert hits == [], f"stale card-name header(s): {hits}"
 
 
+class TestBuildabilityIsPerNameNotPerLine:
+    """BS4-13. `cmd_check` has always compared TOTAL need against TOTAL owned — and said
+    so in a comment — but `app.py`'s /decks overview and `check_all`'s info summary each
+    re-derived the question per LINE. A deck listing 2+2 of a card owned 3 therefore read
+    "buildable" on those two surfaces while `deck.py check`, the dashboard and the deck
+    editor all called it short. Three implementations of one question; the two that
+    drifted were the two that copied the loop instead of calling it."""
+
+    CARDS = [(2, "Duress", "M21", "96"), (2, "Duress", "DMU", "94"),
+             (1, "Shock", "M21", "159")]
+
+    def test_requirements_sum_duplicate_lines(self):
+        reqs = deck.deck_requirements(self.CARDS)
+        assert [(n, q) for _k, n, _s, q in reqs] == [("Duress", 4), ("Shock", 1)]
+
+    def test_first_seen_order_and_printing_are_kept(self):
+        reqs = deck.deck_requirements(self.CARDS)
+        assert [r[0] for r in reqs] == ["duress", "shock"]
+        assert reqs[0][2] == "M21"          # the FIRST line's printing, as cmd_check shows
+
+    def test_split_lines_over_total_owned_read_as_short(self):
+        """The exact divergence: 2+2 against 3 owned. Per-line it passes twice."""
+        missing, short = deck.deck_build_gap(self.CARDS, {"duress": 3, "shock": 4})
+        assert (missing, short) == (0, 1)
+
+    def test_enough_copies_is_buildable(self):
+        missing, short = deck.deck_build_gap(self.CARDS, {"duress": 4, "shock": 1})
+        assert (missing, short) == (0, 0)
+
+    def test_absent_card_counts_as_missing_not_short(self):
+        missing, short = deck.deck_build_gap(self.CARDS, {"shock": 1})
+        assert (missing, short) == (1, 0)
+
+
+class TestArchetypeFiguresAreAudited:
+    """BS4-07: the figure half of the rationale audit read `#: tier:` ALONE while the card
+    half swept `#: tier:` AND `#: archetype:`. G-27 documented both, so the doc was true of
+    half the function, and deck 26a quoted "avg MV 3.05" against a live 2.97 for as long as
+    it took someone to check by hand."""
+
+    def _deck(self, tmp_path, header_block, name="Probe"):
+        p = tmp_path / "deck.txt"
+        p.write_text(f"#: name: {name}\n#: colors: B\n{header_block}\n\nDeck\n"
+                     "4 Swamp (MSH) 291\n", encoding="utf-8")
+        return {"id": "zz", "path": str(p), "name": name, "variant": None}
+
+    def test_a_stale_figure_in_archetype_prose_is_found(self, tmp_path, monkeypatch):
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: {"interaction": 7})
+        d = self._deck(tmp_path, "#: archetype: a real clock (interaction 3, fine curve).")
+        _cards, figs = deck.rationale_staleness(d, carddata={})
+        assert ("interaction", "3", 7) in figs
+
+    def test_a_matching_figure_is_not_flagged(self, tmp_path, monkeypatch):
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: {"interaction": 7})
+        d = self._deck(tmp_path, "#: archetype: a real clock (interaction 7, fine curve).")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_a_figure_about_the_card_POPULATION_is_not_a_claim_about_this_deck(
+            self, tmp_path, monkeypatch):
+        """Deck 49 argues "Standard's Dragons average MV 5.30, so a deck that wants to
+        field several must SOLVE ITS OWN MANA" — true about the format, and the first cut
+        of this fix reported it as a stale claim about the deck's own 4.03 curve."""
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: {"avg_mv": 4.03})
+        d = self._deck(tmp_path, "#: archetype: Standard's Dragons average MV 5.30, so "
+                                 "this deck must solve its own mana.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_a_figure_about_ANOTHER_ROSTER_DECK_is_not_a_claim_about_this_one(
+            self, tmp_path, monkeypatch):
+        """Deck 44a's distinctness clause quotes deck 1's card advantage by NAME rather
+        than by 'deck 1', which the id-based suppressor could not see."""
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: {"card_advantage": 3})
+        other = deck._roster_deck_names()[0]
+        d = self._deck(tmp_path, f"#: archetype: DISTINCTNESS vs {other}: it is aggro "
+                                 f"with card advantage 0 — it wins by racing.")
+        assert deck.rationale_staleness(d, carddata={})[1] == []
+
+    def test_a_PARENT_deck_name_does_not_mute_a_variant_own_figure(
+            self, tmp_path, monkeypatch):
+        """The variant convention makes this essential: 26a is named "Iron Forge —
+        Virulent", so its parent's name is a substring of its OWN. An exact-match
+        exclusion suppressed the one genuinely stale figure this fix exists to catch."""
+        monkeypatch.setattr(deck, "deck_quality_vector", lambda d: {"avg_mv": 2.97})
+        parent = deck._roster_deck_names()[0]
+        d = self._deck(tmp_path,
+                       f"#: archetype: Variant of {parent}: a real clock (avg MV 3.05).",
+                       name=f"{parent} — Probe")
+        assert ("avg_mv", "3.05", 2.97) in deck.rationale_staleness(d, carddata={})[1]
+
+    def test_the_roster_figure_sweep_is_clean(self):
+        """Behavioural anchor: with archetype prose in scope, the roster must still be
+        clean — a new hit is a rationale someone let go stale."""
+        hits = [(d["id"], f) for d in deck.roster_decks()
+                for f in deck.rationale_staleness(d)[1]]
+        assert hits == [], f"stale rationale figure(s): {hits}"
+
+
+class TestHeaderConsumersJoinOnMsKey:
+    """BS4-01, the last open member of the G-63 class (was BS2-07).
+
+    Both header readers returned raw `.lower()` names while the CONSUMERS compared them
+    against a deck line's raw `.lower()` name, so a header naming a DFC by its FRONT face
+    never matched a line storing the full `Front // Back` — the instruction the header
+    encodes silently did nothing. It was left open on a "zero live instances" measurement
+    that expired when deck 66 was drafted: its `#: protect:` header named the deck's own
+    title card and `cuts` ranked that card as cuttable anyway.
+
+    The reason it needed a TEST rather than a measurement: `header_card_staleness` (the
+    G-68 gate above) has always joined on `_ms_key`, so it reported the header HEALTHY
+    while the consumers could not read it. A gate that vouches for a disabled instruction
+    cannot also be the thing that detects it."""
+
+    DECK = """#: name: Probe
+#: format: Standard
+#: colors: B
+#: protect: Eddie Brock
+#: uncastable-ok: Ojer Axonil, Deepest Might
+
+Deck
+4 Swamp (MSH) 291
+1 Eddie Brock // Venom, Lethal Protector (SPM) 55
+1 Ojer Axonil, Deepest Might // Temple of Power (LCI) 145
+"""
+
+    def _meta(self, tmp_path):
+        p = tmp_path / "deck.txt"
+        p.write_text(self.DECK, encoding="utf-8")
+        return deck.parse_deck_file(str(p))
+
+    def test_readers_return_ms_key_normalized_names(self, tmp_path):
+        meta, _cards = self._meta(tmp_path)
+        assert deck._protected(meta) == {"eddie brock"}
+        assert deck._uncastable_ok(meta) == {"ojer axonil, deepest might"}
+
+    def test_signature_themes_reads_a_front_named_protected_dfc(self, tmp_path):
+        """A real consumer, not a re-implementation of the join. The protected card's tags
+        ARE the deck's signature spine, which drives KEY promotion in `fit_strength` /
+        `screen` / `similar` — so a missed join quietly costs the deck its spine."""
+        meta, cards = self._meta(tmp_path)
+        cardmeta = {"eddie brock // venom, lethal protector": {"synergies": ["reanimator"]}}
+        assert deck._signature_themes(meta, cards, cardmeta) == frozenset({"reanimator"})
+
+    def test_castability_exempts_a_front_named_uncastable_ok_entry(self, tmp_path):
+        """The more dangerous half: a miss here does not fail to protect a card, it
+        silently RE-ENABLES the castability failure the header suppresses — capping the
+        tier floor at C and flipping `preflight` to BLOCKED for a card working as
+        designed (G-64)."""
+        meta, cards = self._meta(tmp_path)
+        carddata = {"ojer axonil, deepest might // temple of power":
+                    {"type": "Legendary Creature — God", "colors": "R", "text": ""}}
+        mana = {"ojer axonil, deepest might // temple of power": ("{2}{R}{R}", 4)}
+        uncast, _off, _abil, intended = deck._castability(
+            cards, {"B"}, mana, carddata, deck._uncastable_ok(meta))
+        assert [n for n, _w in intended] == ["Ojer Axonil, Deepest Might // Temple of Power"]
+        assert uncast == []          # NOT counted as a build error
+
+    def test_deck_66s_protected_title_card_is_off_the_cut_list(self):
+        """The live instance. Deck 66's header names the front face; the line stores the
+        full name. Behavioural anchor against the real roster."""
+        d = deck.find_deck("66")
+        if not d:                                  # roster-dependent, skip if renumbered
+            return
+        _rows, _central, prot_present, _int = deck.rank_cut_candidates(d)
+        assert any(p.startswith("Eddie Brock") for p in prot_present), prot_present
+
+
 class TestLifegainRoleAlignment:
     """`gain(s) life equal to` (Exsanguinate, Corrupt, Sifter Wurm — 68 pool cards) was in
     neither the role classifier nor the tag model. The tag half went in with the `pay
@@ -2965,6 +3131,49 @@ class TestScreenSaturationAndCounts:
         generic signature theme."""
         assert deck.fit_strength(["counters"], {"counters": 20}, "", 9, 5,
                                  frozenset({"counters"})) == "KEY"
+
+
+class TestAlreadyInDeckJoinsAreFrontFaced:
+    """BS4-05 / BS4-06 — two more members of the G-63 class, on the two surfaces that
+    grade a card AGAINST a deck it might already be in.
+
+    `screen` built `in_deck` with `_ms_key` (the comment even said "G-63: front-face
+    join") and then probed it with the candidate's FULL display name, so every pool-keyed
+    DFC read as absent: `screen` graded a maindecked card as a fresh candidate and never
+    printed "already in the deck" — on the surface G-47 points at precisely to defeat
+    stale verdicts. `suggest-homes` had the mirror shape: the CARD side was
+    front-normalized and the DECK side was not, so it printed `in? no` plus a cut hint,
+    recommending a deck make room for a card already in its 60. Six live deck/card
+    combos across decks 6, 11, 31, 40a and 42a."""
+
+    CARD = "Funeral Room // Awakening Hall"
+
+    def _deck_with(self, tmp_path, line_name):
+        p = tmp_path / "deck.txt"
+        p.write_text("#: name: Probe\n#: colors: B\n\nDeck\n"
+                     f"1 {line_name} (DSK) 90\n4 Swamp (MSH) 291\n", encoding="utf-8")
+        return deck.parse_deck_file(str(p))
+
+    def test_a_full_name_deck_line_matches_a_front_name_probe(self, tmp_path):
+        """The `screen` shape: probe key vs index key must agree on the face."""
+        _meta, cards = self._deck_with(tmp_path, self.CARD)
+        in_deck = {deck._ms_key(n) for _q, n, _s, _c in cards}
+        assert deck._ms_key(self.CARD) in in_deck
+        assert deck._ms_key("Funeral Room") in in_deck      # either spelling resolves
+
+    def test_a_front_name_deck_line_matches_a_full_name_probe(self, tmp_path):
+        """The `suggest-homes` shape, which failed in the other direction: the DECK side
+        was the un-normalized one."""
+        _meta, cards = self._deck_with(tmp_path, "Funeral Room")
+        deck_keys = {deck._ms_key(n) for _q, n, _s, _c in cards}
+        assert deck._ms_key(self.CARD) in deck_keys
+
+    def test_a_distinct_card_is_still_not_in_the_deck(self, tmp_path):
+        """The join must not become permissive: a different card stays absent."""
+        _meta, cards = self._deck_with(tmp_path, self.CARD)
+        in_deck = {deck._ms_key(n) for _q, n, _s, _c in cards}
+        assert deck._ms_key("Awakening Hall") not in in_deck     # the BACK face is not a key
+        assert deck._ms_key("Lightning Bolt") not in in_deck
 
 
 class TestBelowFloorArgument:

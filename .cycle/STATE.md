@@ -6,6 +6,286 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — first real match data, and the deck-attribution arc (2026-08-10)
+
+Not a scan. The user asked how to populate match data, pasted a real `Player.log`, and
+the subsystem that had never seen a game turned out to be **wrong about what it was
+recording**. Gates green; **1,233 tests**.
+
+**`courseId` is the AVATAR, not the deck.** It sits on each seat next to `eventId`, its
+name reads like a deck identifier, and the parser docstring, the README and the
+`/log-matches` skill all documented `#: arena: <courseId>` as the way to attribute a
+match. Nine real matches were recorded that way, every one with a blank `Deck`. Then
+someone read the values: all eleven distinct ones carried the literal `Avatar_` prefix.
+It is a global cosmetic, changed independently of the deck — on 8/07 it happened to
+change when the deck did, which is what made it look right; on 8/09 one value covered a
+different deck entirely. Columns are `My Avatar` / `Opponent Avatar` now.
+
+**The real source is `EventSetDeckV3`**, written 2-20 seconds before each match with the
+deck NAME, a stable `DeckId` GUID and a `LastPlayed` timestamp. Matches join to it on
+TIME, not log order (the paste people actually produce runs the two greps separately, so
+order hands one deck to a whole session); a selection more than 12h old is refused as a
+rotated log rather than borrowed. 8 of 9 matches attributed — decks 7 (0-2), 19 (1-1),
+45 (2-2). The 2026-07-27 row is permanently blank: its log had already rotated.
+
+**Then the same class of error twice more, in my own work.**
+1. `--map-decks` was documented to read `DeckGetDeckSummariesV3` — I put it in the grep,
+   the docstring and a test docstring on the strength of the NAME. Measured against the
+   real paste: 0 decks from 5 calls (Arena logs a bare ack), against 21 from
+   `DeckUpsertDeckV3`. The courseId trap, one message over, committed by the person who
+   had just documented the courseId trap.
+2. Folding header-sync into the normal ingest, I put it AFTER the no-matches bailout, so
+   a summaries-only paste died with "check that Detailed Logs is enabled" — an error
+   blaming a setting that was fine. Found by running the real file through the real
+   command, not by inspection.
+
+**Carry forward:** every field-name-as-claim in this subsystem has been wrong at least
+once. Read the values. And the standing risk is now OPERATOR-side: `Player.log` is
+overwritten on every launch, the launchd archive that fixes it is written but
+**unverified on the user's machine** (this container is Linux), and until it runs, every
+unextracted session is lost the way 7/27 was.
+
+## Session — broad scan #3, follow-ons + unbatched Lows (2026-08-09) — SCAN CLOSED
+
+Ten findings. Block:
+`.cycle/blocks/2026-08-broad-scan3-followon-lows-broad-implement.md`.
+Gates green, zero soft warnings; **1,188 tests**.
+
+**The headline is the G-37 residual, and it was the real defect all along.**
+`suggest --lands` filtered with `"land" in type_line.lower()` — a whole-type-line
+substring scan — so any card with `// Land` on its BACK qualified. **81 pool cards were
+wrongly admitted**, and three of them were the top picks for deck 52. They are reached by
+transforming, never by a land drop, so maindecking one leaves the deck a land short with
+INV-04 seeing nothing wrong. The fix is `_primary_type(...) == "Land"` — **the exact test
+`wishlist._is_land` was fixed to use in BS2-11**, which the manabase RECOMMENDER never
+got. Same rule, one place and not the other, for a year.
+
+Also: BS4-44 validate accepted Unicode digits its own consumers reject · BS4-27 INV-03's
+gallery leg now checks CONTENT not existence · BS4-42 the wildcard KPI reads structured
+data instead of re-parsing `_wc_str`'s display output · BS4-38 reconcile_crafts errors
+cleanly and stops rewriting an unchanged library · BS4-40 app.py's post-write prune is
+guarded and a collector-# -without-set is refused instead of silently dropped · BS4-21/23
+wishlist comment + the 100-card window · the `Cut Rank` `_ms_key` join · `BASICS` now has
+one definition in `lib.py`.
+
+**Two things worth carrying forward.**
+
+1. **I found two test doubles by RUNNING, not by scanning.** `test_check_all.py`'s INV-03
+   fixture wrote a 13-byte `<html></html>` gallery, encoding the existence-only rule
+   BS4-27 replaced. The standing instruction is to scan for doubles BEFORE editing a
+   module; I edited first and the suite caught it. It cost nothing here because the tests
+   were honest — but that is luck, not method.
+2. **BS4-40's collector-without-set fix introduces a REFUSAL.** A save that used to
+   succeed (while silently discarding the field) now blocks with an error. Better than a
+   toast that lied, but it is a behaviour change a user will meet.
+
+**Where I left off — the scan is fully closed.** Every finding is implemented or
+explicitly deferred. What remains:
+
+1. **G-37's two REMAINING scoring residuals**, still live and still documented: a "spend
+   this mana only to cast a creature spell" land scores top, and a conditionally-tapped
+   land scores as sometimes-untapped on a condition mono-black cannot meet. Only the
+   not-a-playable-land half was in scope.
+2. `dashboard.html` is one `make dashboard` behind (BS4-42 changed a KPI data path).
+3. A `/sync-docs` pass — **G-37's rule text now describes the fixed half in the present
+   tense, which is the most misleading stale text in CLAUDE.md.**
+4. The six operator visual checks, incl. the gallery's never-rendered light palette.
+5. Still owner-paced: **`matches.csv` is empty**, so 34 provisional tier letters rest on
+   internal consistency alone. This has been the largest gap for three cycles.
+
+## Session — broad scan #3, Batch 5 (2026-08-09) — the scan's batches are DONE
+
+Seven interface findings, the STRUCTURAL half only. Block:
+`.cycle/blocks/2026-08-broad-scan3-batch5-broad-implement.md`.
+Gates green, zero soft warnings; **1,186 tests** (was 1,180).
+
+BS4-43 set-dropdown escaping in both grid pages · S-1 deck-editor tab strip arrow keys ·
+S-2 five dashboard input labels · S-3 gallery light palette + 620px breakpoint · S-4
+gallery select labels · S-5 dashboard follows the OS scheme on a first visit · S-6
+collection save button exposes its disabled state.
+
+**Honest framing: six of the seven are accessibility and theming defects a sighted mouse
+user would never encounter.** That is exactly why they survived five interface passes —
+and it is also why the one with real uncertainty is S-3: the gallery now has a whole
+colour scheme that has never been rendered, and correctness there is the half a file
+cannot prove. **It needs eyes before it is trusted** (see the block's OPERATOR VISUAL
+CHECKS — five concrete walks).
+
+**Both artifacts were regenerated**, so `dashboard.html` finally carries the BS4-41 loader
+fix as well as this batch's labels, and the repo copy agrees with what Pages will build.
+Gallery parity re-verified: 2,133 cards == 2,133 library rows.
+
+**Where I left off — the scan's five batches are complete.** What remains:
+
+1. **G-37's live residual, and it is the most concrete open defect in the repo.**
+   `suggest --lands` offers cards whose LAND is on the BACK face — Tarrian's Journal,
+   Grasping Shadows, Aclazotz for deck 52. Reached by transforming, never by a land drop,
+   so maindecking one leaves the deck a land short with INV-04 seeing nothing wrong. It
+   fell outside every batch because it is a G-37 residual rather than a BS4 finding.
+   **Pick it up explicitly.**
+2. The unbatched Lows: BS4-21/23/27/38/40/42/44/45.
+3. The six operator visual checks + Regression Scenarios 5-8's perceptual halves.
+4. Two doc items: Regression Scenarios 5 and 6 should now include the gallery, which has
+   a light mode and a breakpoint to check for the first time.
+5. Still owner-paced and still the largest gap in the project: **`matches.csv` is empty**,
+   so all 34 provisional tier letters rest on internal consistency alone.
+
+## Session — broad scan #3, Batch 4 (2026-08-09)
+
+Eleven structural/latent findings. Block:
+`.cycle/blocks/2026-08-broad-scan3-batch4-broad-implement.md`.
+Gates green, zero soft warnings; **1,180 tests** (was 1,170).
+
+BS4-11 rotation flags on all five craft surfaces · BS4-12 needs-model colours from COSTS
+not identity · BS4-18/20 in-pass DFC aliasing closed in enrich/build_mana/deck/wishlist ·
+BS4-19 `owned_qty` no longer reads an explicit 0 as absent · BS4-32 the banned
+`card_power(...) or -1` · BS4-33 creatureless decks no longer read TALL · BS4-34
+front-face creature counts · BS4-35 `_GENERIC_TRIBES` in redundancy · BS4-36 ownership
+dropped from three sort keys · BS4-37 fingerprint covers deck.py.
+
+**Two things to know before the next session.**
+
+1. **The next `make refresh` will do ONE full pool rebuild (~5 min, needs Scryfall).**
+   BS4-37 changed what the fingerprint hashes, so the stored stamp no longer matches.
+   Expected and one-time — not a bug.
+2. **BS4-36 is a deliberate behaviour change, not a bug fix.** The three needs
+   recommenders no longer float an owned card above an unowned one at equal score,
+   matching the decision `suggest_scored` already recorded. If the LANDS view specifically
+   should keep owned-first, that is a one-line revert and a judgment call.
+
+**The most concrete defect I saw and did NOT fix** (out of scope — it is G-37's
+documented residual, not a BS4 finding): `suggest --lands` still offers cards whose LAND
+is on the BACK face — Tarrian's Journal, Grasping Shadows, Aclazotz for deck 52. They are
+reached by transforming, never by a land drop, so maindecking one leaves the deck a land
+short with INV-04 seeing nothing wrong. The new rotation flags now print right next to
+them.
+
+**Where I left off:** Batch 5 (interface polish) and the six operator visual checks. A
+`/sync-docs` pass is owed — G-30, G-37, G-18/K-10, G-63 and G-16 all have text this batch
+made stale.
+
+## Session — broad scan #3, Batch 3 (2026-08-09)
+
+Eight gate-layer findings. Block:
+`.cycle/blocks/2026-08-broad-scan3-batch3-broad-implement.md`.
+Gates green, zero soft warnings; **1,170 tests** (was 1,146), **30 test files**.
+
+BS4-09 caution-mentions no longer grant subcommand coverage · BS4-10 keyword baseline
+gains the delta + `--max-new` · BS4-25 Makefile comments no longer count · BS4-26
+ENGINE_THEMES rename is loud · BS4-28 `_agree_owned` warns instead of skipping · BS4-29
+theme radar reports the TOTAL, not its 40-row cap · **BS4-30 the seven gates that had no
+watched-it-fail layer now have one** (`tests/test_gates_fire.py`, 24 tests) · BS4-31
+`check_commands.main()` degrades cleanly.
+
+**Two things worth carrying forward.**
+
+1. **The obvious fix for BS4-09 was measured and rejected.** Requiring the executable
+   shape `python3 scripts/deck.py <name>` — the rule the SCRIPT half already uses — would
+   have failed **27 of 34 live subcommands**, because the skills write 30 of their
+   references in the bare `deck.py <name>` form and only 3 subcommands appear in fenced
+   code blocks. Suppressing the caution CLAUSE instead costs zero coverage today. Measure
+   before tightening a passing gate.
+2. **The new gate tests were themselves mutation-tested.** Making each hard gate's
+   `check()` return `[]` unconditionally is DETECTED in all five cases — so they catch a
+   DEAD GATE, not merely a broken model. That is the whole point of BS4-30 and the reason
+   a "watched it fail" layer is not the same as a passing test.
+
+**Read the net score honestly: this batch fixed almost nothing actively misbehaving
+today** (six of eight had zero live instances). It is insurance on the layer everything
+else is trusted through, which is why it ranked third rather than first.
+
+**Where I left off:** Batches 4 and 5 remain (structural/latent DFC; interface polish),
+plus the six operator visual checks. A `/sync-docs` pass is owed — G-53's "both paths"
+claim is now true of all three, G-69's "still sits under check_keywords" sentence is
+stale, and the Testing subsystem inventory says 29 files against a real 30.
+
+## Session — broad scan #3, Batches 1 & 2 (2026-08-09, after the top-5 + sync-docs)
+
+Eleven findings, all verified. Block:
+`.cycle/blocks/2026-08-broad-scan3-batch1-2-broad-implement.md` — read that for detail.
+Gates: `check_all` green, ZERO soft warnings; **1,146 tests** (was 1,105).
+
+**Batch 1 (live wrong output):** BS4-07 archetype figures now audited · BS4-13
+buildability per NAME not per LINE (one definition now: `deck_requirements` /
+`deck_build_gap`) · BS4-14 flex panel through `ownedOf` · BS4-08 wishlist target audit
+raises instead of reporting clean · BS4-41 dashboard loader guarded + freshness-compared.
+**Batch 2 (ingest edges):** BS4-15 intra-paste match dedupe · BS4-39 CSV diagnostic kept ·
+BS4-17 `Retry-After` HTTP-date · BS4-16 sheets push writes-then-trims · BS4-22 wishlist
+`--add` robustness · BS4-24 unreadable Result reported.
+
+**The one worth reading before touching the rationale audit.** BS4-07 looked like a
+one-line scope widening and was not. Its first roster sweep produced **3 hits of which
+only 1 was genuine** — deck 44a quotes another deck's figure BY NAME (the id-based
+suppressor can't see that) and deck 49 quotes *Standard's* Dragons' average MV (a claim
+about the format). Two narrow clause-scoped suppressions were added for those. Then the
+deck-name suppression **muted the one genuine hit**, because the variant convention makes
+26a "Iron Forge — Virulent" — its PARENT's name is a substring of its OWN. Exclusion is
+now "a name that is part of this deck's own name is not another deck." Final: 1 genuine
+hit, corrected (26a avg MV 3.05 → 2.97), anchored by a roster-sweep test. **G-26's rule —
+keep the cue lists narrow and let the roster sweep be the check — is what caught all of
+this; it earned its place again.**
+
+**Also:** `check_dfc._payload_flags` now scans every CONSUMER of the serialized OWNED
+index, not just the `ownedOf` helper — its own docstring had stated that residual while
+`renderFlex` was already violating it. Mutation-tested.
+
+**Where I left off:** Batches 3–5 of the scan remain (gate credibility, structural/latent
+DFC, interface polish) plus the six operator visual checks. A `/sync-docs` pass is owed —
+G-27, G-26 and G-63 all have text that this session made stale, and there is a new gotcha
+candidate ("buildability is per NAME, not per LINE"). The committed `dashboard.html`
+snapshot still carries the pre-BS4-41 loader; `make dashboard` regenerates it.
+
+## Session — broad scan #3 + top-5 fixes (2026-08-09)
+
+A full `/broad-scan` (three stages, five parallel subsystem deep-reads) followed by
+`/broad-implement top 5`. New finding IDs **BS4-01…BS4-45** (BS-nn, BS2-nn and BS3-nn
+are taken). The scan's block and its verification live in
+`.cycle/blocks/2026-08-broad-scan3-top5-broad-implement.md` — read that, not this
+summary, for the detail.
+
+**Implemented (6 findings, +18 tests → 1,105 passing, check_all green with ZERO soft
+warnings):**
+
+- **BS4-01 closed the last open member of the G-63 class** (was BS2-07, and it was no
+  longer theoretical). Deck 66's `#: protect:` header names `Eddie Brock` while its
+  line stores `Eddie Brock // Venom, Lethal Protector`, so the deck's own title card
+  sat in the cut ranking. Both header readers now return `_ms_key` keys from one shared
+  `_header_card_keys`, and all six consumers key their side. **The reason it hid: the
+  G-68 staleness gate has always joined on `_ms_key`, so it certified the header
+  HEALTHY while the consumers could not read it** — a gate vouching for a disabled
+  instruction.
+- **BS4-02** `make postedit` ran `check_roles --update-baseline` unconditionally before
+  `check_all`, so the radar's warning was eaten by the command meant to surface it.
+  It now NAMES every card it acknowledges and REFUSES a jump over `MAXNEW` (default 8).
+- **BS4-03** `reconcile_crafts` had no basics guard — a full deck paste wrote basic
+  lands into the inventory. Hard-skipped and reported.
+- **BS4-04** `import_arena` appended a phantom printing for a `(SET)`-but-no-collector
+  line (a real 4 read as 8, and enrich could later turn it into an INV-01 break far
+  from its cause). The name-level-claim guard now keys on the collector alone.
+- **BS4-05/06** `screen`'s `present` probe and `suggest-homes`' `already` join both
+  missed pool-keyed DFCs — `screen` graded a maindecked card as a fresh candidate and
+  `suggest-homes` advised making room for a card already in the 60 (six live combos).
+
+**The measurement worth keeping:** the whole 97-deck roster was A/B'd against a pre-fix
+copy of `scripts/`. **Exactly one deck changed (66), zero tier floors moved (87 A /
+10 B unchanged), zero uncastable counts changed.** The `uncastable-ok` half of BS4-01
+is the one that can RAISE a floor by exempting a card, and it had no live instance — so
+nothing silently re-graded. Do not re-derive this; it is in the block.
+
+**Left open deliberately:** `recommendation_row`'s `Cut Rank` raw-name join (telemetry
+only, next to the line that was fixed), and `BASICS` now living in four modules.
+Findings BS4-07…BS4-45 are unimplemented — the two Mediums with live output impact are
+**BS4-07** (`#: archetype:` figures are never audited despite G-27 claiming they are;
+deck 26a quotes avg MV 3.05 against a live 2.97) and **BS4-13** (`/decks` and
+`check_all`'s info summary compute buildability per LINE, not per summed name, so they
+disagree with `deck.py check` on any deck listing a card twice).
+
+**Docs now stale and NOT yet updated** (a `/sync-docs` pass is owed): `docs/gotchas.md`
+G-63 (~line 3080) and `.cycle/NEXT-SESSION.md` §6 both still describe BS2-07 as open
+"at zero live instances". It is closed, and the measurement expired because deck 66 was
+drafted after it was taken — that is the lesson worth writing down: **a zero-instances
+measurement is a fact about a moment, not a property of the code.**
+
 ## Session — broad scan #2 + top-5 fixes (2026-08-07)
 
 A full `/broad-scan` (three stages, six parallel deep-read passes, every Critical/High

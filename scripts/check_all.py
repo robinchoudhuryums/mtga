@@ -84,6 +84,25 @@ def check_derived_files():
             continue
         required = _REQUIRED_COLUMNS.get(name)
         if not required:
+            # gallery.html has no columns to check, but "exists" was the WHOLE test — a
+            # truncated or zero-byte gallery passed INV-03, which is the same
+            # exists-but-gutted shape the CSV half was hardened against in F-02. It is a
+            # generated artifact, so the cheap structural facts are enough: non-trivial
+            # size and the data island every card in it is read from (BS4-27).
+            if name.endswith(".html"):
+                try:
+                    blob = open(path, encoding="utf-8").read()
+                except OSError as e:
+                    errs.append(f"{name} exists but could not be read: {e}")
+                    continue
+                island = 'id="data"' in blob
+                if len(blob) < 1024 or not island:
+                    errs.append(
+                        f"{name} is present but has no usable content "
+                        f"({len(blob)} bytes, data island "
+                        + ("present" if island else "MISSING")
+                        + ") — a truncated or half-written build looks exactly like "
+                          "this. Rebuild it with build_gallery.py.")
             continue
         header = _header_of(path) or []
         missing = [c for c in required if c not in header]
@@ -127,13 +146,11 @@ def check_decks():
             errs.append(f"deck {d['id']}: line {lineno} is not a card line, `#:` header, "
                         f"comment or Arena marker — it is silently EXCLUDED from every "
                         f"analysis: {text[:60]!r}")
-        missing = short = 0
-        for q, n, s, c in cards:
-            have, found = deckmod.owned(by_name_qty, n)
-            if not found:
-                missing += 1
-            elif have < q:
-                short += 1
+        # Total-need vs total-owned, through deck.py's one definition. This summary used
+        # to compare each LINE against total owned, so it could report "buildable" for a
+        # deck `deck.py check` calls short (BS4-13) — info-only here, but the gate's own
+        # output disagreeing with the command it summarises is its own problem.
+        missing, short = deckmod.deck_build_gap(cards, by_name_qty)
         status = "buildable" if (missing == 0 and short == 0) else \
             f"{missing} missing, {short} short"
         info.append(f"  deck {d['id']:>4}  {d['name'] or d['id']:<28} {status}")
@@ -360,10 +377,14 @@ def main():
         import check_themes as ct
         tflags = ct.flags()
         if tflags:
+            # The TOTAL, not the capped list's length. `len(tflags)` counted a 40-row cap,
+            # so 400 mis-tags reported as "40" — a number that cannot move, which reads as
+            # a stable known quantity rather than a growing one (BS4-29).
+            total = ct.flags(count_only=True)
             ex = ", ".join(f"{n} ({t})" for n, t, _ in tflags[:4])
-            soft.append(f"theme coverage: {len(tflags)} owned card(s) may be missing a synergy "
+            soft.append(f"theme coverage: {total} owned card(s) may be missing a synergy "
                         f"tag their text implies (e.g. {ex}"
-                        + (", …" if len(tflags) > 4 else "")
+                        + (", …" if total > 4 else "")
                         + ") — run `check_themes.py`, then tag_synergies.py --merge")
     except Exception as e:
         soft.append(f"theme coverage check skipped ({e})")

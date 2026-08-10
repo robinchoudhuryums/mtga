@@ -413,3 +413,25 @@ class TestBackupSelection:
         revert()
         assert target.read_text() == "v1\n"      # the pre-save-3 state, not the discarded v2
         assert os.path.exists(target)
+
+
+class TestOwnedQtyExplicitZero:
+    """BS4-19: `index.get(nl) or index.get(front, 0)` treated a stored count of a real 0
+    as ABSENT and fell through to the front-face key. `import_collection --zero-missing`
+    writes exactly that, and INV-01 permits it. `card_power` in the same file documents
+    this trap for a printed power of 0; quantity had not had the lesson applied."""
+
+    def test_an_explicit_zero_is_returned_not_treated_as_missing(self):
+        idx = {"life // death": 0, "life": 4}
+        # The full name says you own NONE. Falling through would answer 4 — a different
+        # card's count.
+        assert lib.owned_qty(idx, "Life // Death") == 0
+
+    def test_the_front_fallback_still_works_when_the_full_name_is_absent(self):
+        assert lib.owned_qty({"life": 3}, "Life // Death") == 3
+
+    def test_a_missing_card_is_zero(self):
+        assert lib.owned_qty({}, "Nonesuch") == 0
+
+    def test_a_real_count_is_unchanged(self):
+        assert lib.owned_qty({"shock": 4}, "Shock") == 4

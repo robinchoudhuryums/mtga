@@ -55,6 +55,43 @@ def _header(date="7/27/2026", time="7:08:46 PM", user=ME):
             f"MatchGameRoomStateChangedEvent")
 
 
+def _setdeck(name="07 Earth’s Mightiest", guid="e3a6c595-914d-4809-bd6d-630b3758ca89",
+             when="2026-08-07T07:33:23.850462-05:00", event="Play", cut=600):
+    """One EventSetDeckV3 line in Arena's real nesting — JSON inside a JSON string, with
+    the timestamp attributes double-encoded on top of that.
+
+    Built by SERIALIZING the structure rather than by typing the escaped text, so the
+    escaping is Arena's rather than the test author's, and truncated at 600 chars because
+    that is what the documented `cut -c1-600` extraction produces — neither `json.loads`
+    survives it, which is exactly the case the regex path exists for."""
+    inner = {
+        "EventName": event,
+        "Summary": {
+            "DeckId": guid, "Mana": "", "Name": name,
+            "Attributes": [
+                {"name": "Version", "value": "11"},
+                {"name": "TileID", "value": "104895"},
+                {"name": "LastPlayed", "value": json.dumps(when)},
+                {"name": "LastUpdated",
+                 "value": json.dumps("2026-07-21T08:41:23.805305-05:00")},
+                {"name": "IsFavorite", "value": "false"},
+                {"name": "Format", "value": "Standard"},
+            ],
+            "Description": None,
+        },
+    }
+    def _j(obj):
+        # Arena emits compact, non-ASCII-escaped JSON: no spaces after `:` or `,`, and a
+        # curly apostrophe stays a curly apostrophe. Both matter — the extraction regexes
+        # read the raw line, so a prettified fixture would be testing a shape the client
+        # never writes.
+        return json.dumps(obj, separators=(",", ":"), ensure_ascii=False)
+
+    line = ("[UnityCrossThreadLogger]==> EventSetDeckV3 "
+            + _j({"id": "634cfd01-d7f2-4012-8355-411362deb142", "request": _j(inner)}))
+    return line[:cut] if cut else line
+
+
 def _log(*events, header=True):
     lines = []
     for e in events:
@@ -78,17 +115,129 @@ class TestTheRealSample:
         rows, _ = pm.parse_log(_log(_event(my_team=1, winner=1)))
         assert rows[0]["Result"] == "W"
 
-    def test_it_records_both_decks_and_the_reason(self):
+    def test_it_records_both_avatars_and_the_reason(self):
         rows, _ = pm.parse_log(_log(_event()))
         r = rows[0]
-        assert r["Course ID"] == "Avatar_Basic_BlackPanther_MSH"
-        assert r["Opponent Course"] == "Avatar_Basic_Slimefoot_DMU"
+        # `courseId` is the AVATAR cosmetic, not a deck — the columns say so.
+        assert r["My Avatar"] == "Avatar_Basic_BlackPanther_MSH"
+        assert r["Opponent Avatar"] == "Avatar_Basic_Slimefoot_DMU"
         assert r["Reason"] == "Success"        # the enum prefix is stripped
         assert r["Event"] == "Play"
 
     def test_game_scores_are_counted_per_team(self):
         rows, _ = pm.parse_log(_log(_event(my_team=2, winner=2, games=((2,), (1,), (2,)))))
         assert (rows[0]["Games Won"], rows[0]["Games Lost"]) == (2, 1)
+
+
+class TestDeckSelection:
+    """`courseId` on a seat is the AVATAR cosmetic, not a deck — nine matches were
+    recorded against it before anyone read the values. The deck actually played is in
+    EventSetDeckV3, which Arena writes seconds before the match starts."""
+
+    def test_it_reads_name_guid_and_time_from_a_truncated_line(self):
+        name, guid, when = pm.parse_deck_selection(_setdeck())
+        assert name == "07 Earth’s Mightiest"
+        assert guid == "e3a6c595-914d-4809-bd6d-630b3758ca89"
+        assert (when.year, when.month, when.day, when.hour) == (2026, 8, 7, 7)
+
+    def test_the_double_encoded_timestamp_survives_the_offset(self):
+        """`LastPlayed` is a JSON string inside a JSON string inside a JSON string, and
+        carries a -05:00 offset the match headers do not. Both end up on one clock."""
+        _, _, when = pm.parse_deck_selection(
+            _setdeck(when="2026-08-09T18:15:50.315752-05:00"))
+        assert when == __import__("datetime").datetime(2026, 8, 9, 18, 15, 50, 315752)
+
+    def test_the_neighbouring_lastupdated_is_not_mistaken_for_it(self):
+        _, _, when = pm.parse_deck_selection(_setdeck())
+        assert when.month == 8            # LastUpdated in the fixture is 2026-07-21
+
+    def test_the_response_line_carries_the_marker_and_no_payload(self):
+        assert pm.parse_deck_selection(
+            "<== EventSetDeckV3(634cfd01-d7f2-4012-8355-411362deb142)") is None
+
+    def test_an_unrelated_line_is_not_a_selection(self):
+        assert pm.parse_deck_selection(_header()) is None
+        assert pm.parse_deck_selection(_event()) is None
+        assert pm.parse_deck_selection("") is None
+        assert pm.parse_deck_selection(None) is None
+
+    def test_the_event_name_key_is_not_read_as_the_deck_name(self):
+        """`"EventName":"Play"` ends in `Name":"Play"`; only a quote-anchored `"Name":"`
+        may match, or every deck would be called Play."""
+        assert pm.parse_deck_selection(_setdeck(event="Ladder"))[0] == "07 Earth’s Mightiest"
+
+
+class TestAttribution:
+    """The join that makes the record useful: which deck was each match played with."""
+
+    def _session(self):
+        """The real 8/7 session: two matches on deck 07, then two on deck 19."""
+        return "\n".join([
+            _setdeck(name="07 Earth’s Mightiest", guid="g7",
+                     when="2026-08-07T07:33:23.850462-05:00"),
+            _header(date="8/7/2026", time="7:33:25 AM"),
+            _header(date="8/7/2026", time="7:39:28 AM"), _event(match_id="m-a"),
+            _setdeck(name="19 Bird Brain- Bant", guid="g19",
+                     when="2026-08-07T07:46:08.103602-05:00"),
+            _header(date="8/7/2026", time="7:46:15 AM"),
+            _header(date="8/7/2026", time="7:46:35 AM"), _event(match_id="m-b"),
+        ])
+
+    def test_each_match_gets_the_deck_selected_before_it(self):
+        rows, warns = pm.parse_log(self._session())
+        assert warns == []
+        assert [(r["Match ID"], r["Arena Deck"]) for r in rows] == [
+            ("m-a", "07 Earth’s Mightiest"), ("m-b", "19 Bird Brain- Bant")]
+        assert [r["Arena Deck ID"] for r in rows] == ["g7", "g19"]
+
+    def test_two_separate_greps_concatenated_still_attribute_by_TIME(self):
+        """The realistic mis-ordering, and the one that produced this feature: the user
+        runs the match grep and the EventSetDeckV3 grep as SEPARATE commands and pastes
+        both, so every selection lands in one block and every match in another. A log-ORDER
+        walk then hands the single last selection to every match — one deck for the whole
+        session, which reads as data. The timestamps still separate them."""
+        lines = self._session().splitlines()
+        sels = [ln for ln in lines if "EventSetDeckV3" in ln]
+        rest = [ln for ln in lines if "EventSetDeckV3" not in ln]
+        rows, _ = pm.parse_log("\n".join(sels + rest))
+        assert {r["Match ID"]: r["Arena Deck"] for r in rows} == {
+            "m-a": "07 Earth’s Mightiest", "m-b": "19 Bird Brain- Bant"}
+
+    def test_a_match_before_every_selection_stays_blank(self):
+        """The 7/27 row in the real record: the log holding its selection had rotated.
+        Blank is the only safe answer — borrowing a LATER session's deck would invent a
+        record that reads exactly like data."""
+        log = "\n".join([_header(date="7/27/2026", time="7:08:46 PM"), _event(),
+                         _setdeck(when="2026-08-07T07:33:23.850462-05:00")])
+        rows, warns = pm.parse_log(log)
+        assert rows[0]["Arena Deck"] == "" and rows[0]["Arena Deck ID"] == ""
+        assert warns == []
+
+    def test_a_selection_past_the_gap_bound_is_refused_and_reported(self):
+        """A rotated log leaves an ancient selection as the nearest one. Arena re-submits
+        the deck on every event join — the whole real sample sits 2–20 SECONDS before its
+        match — so anything hours old is not a deck choice."""
+        log = "\n".join([_setdeck(when="2026-08-01T09:00:00.000000-05:00"),
+                         _header(date="8/7/2026", time="7:33:25 AM"),
+                         _header(date="8/7/2026", time="7:39:28 AM"), _event()])
+        rows, warns = pm.parse_log(log)
+        assert rows[0]["Arena Deck"] == ""
+        assert any("rotated log" in w for w in warns)
+
+    def test_a_paste_with_no_timestamps_falls_back_to_log_order(self):
+        log = "\n".join([_setdeck(when="not-a-timestamp"), _header(date="", time=""),
+                         _event()])
+        rows, _ = pm.parse_log(log, me=ME)
+        assert rows[0]["Arena Deck"] == "07 Earth’s Mightiest"
+
+    def test_the_avatar_is_never_used_as_the_deck(self):
+        """The whole point of the rewrite. Both seats' cosmetics are recorded, and
+        neither may leak into a deck field."""
+        rows, _ = pm.parse_log(self._session())
+        for r in rows:
+            assert "Avatar_" not in r["Arena Deck"]
+            assert "Avatar_" not in r["Arena Deck ID"]
+            assert "Avatar_" not in r["Deck"]
 
 
 class TestIdentityIsNeverStored:
@@ -215,6 +364,35 @@ class TestPersistence:
     def test_a_missing_file_reads_as_empty(self, tmp_path):
         assert pm.load_matches(str(tmp_path / "nope.csv")) == []
 
+    def test_a_pre_attribution_csv_keeps_its_avatar_columns(self, tmp_path):
+        """`write_matches` emits only HEADER, so a CSV still carrying `Course ID` would be
+        rewritten with those cells BLANK — silently losing the one field the old rows had.
+        Renaming on READ makes the migration happen on the next write instead."""
+        out = tmp_path / "m.csv"
+        out.write_text("Date,Match ID,Deck,Course ID,Event,Result,Games Won,Games Lost,"
+                       "Opponent Course,Reason\n"
+                       "2026-07-27,m1,,Avatar_Basic_BlackPanther_MSH,Play,L,0,1,"
+                       "Avatar_Basic_Slimefoot_DMU,Success\n", encoding="utf-8")
+        rows = pm.load_matches(str(out))
+        assert rows[0]["My Avatar"] == "Avatar_Basic_BlackPanther_MSH"
+        assert rows[0]["Opponent Avatar"] == "Avatar_Basic_Slimefoot_DMU"
+        pm.write_matches(rows, str(out))
+        assert pm.load_matches(str(out))[0]["My Avatar"] == "Avatar_Basic_BlackPanther_MSH"
+
+    def test_a_foreign_csv_is_still_refused(self, tmp_path):
+        """The migration allowance accepts exactly ONE predecessor header, so the F-02
+        mirror guard still stops this writer overwriting a file it does not own."""
+        out = tmp_path / "card-library.csv"
+        out.write_text("Card Name,Set Code,Collector #,Quantity Owned,Color(s),"
+                       "Card Type,Card Text,Synergies\nShock,M21,159,4,R,Instant,,burn\n",
+                       encoding="utf-8")
+        try:
+            pm.write_matches([{"Date": "2026-07-27"}], str(out))
+        except ValueError as e:
+            assert "DIFFERENT schema" in str(e)
+        else:
+            raise AssertionError("the mirror guard did not fire")
+
     def test_rows_are_written_in_date_order(self, tmp_path):
         rows = [{"Date": "2026-07-28", "Match ID": "b"},
                 {"Date": "2026-07-01", "Match ID": "a"}]
@@ -230,9 +408,56 @@ class TestDedup:
     def test_the_same_match_id_appears_once_across_two_pastes(self):
         first, _ = pm.parse_log(_log(_event(match_id="m-1")))
         second, _ = pm.parse_log(_log(_event(match_id="m-1"), _event(match_id="m-2")))
-        known = {r["Match ID"] for r in first}
-        fresh = [r for r in second if r["Match ID"] not in known]
-        assert [r["Match ID"] for r in fresh] == ["m-2"]
+        assert [r["Match ID"] for r in pm.fresh_rows(second, first)] == ["m-2"]
+
+    def test_a_duplicate_WITHIN_one_paste_is_recorded_once(self):
+        """BS4-15: concatenating two overlapping extracts puts the same match in ONE
+        paste. The filter only compared against the CSV, so both copies were written and
+        the match was double-counted in `--report` forever — while the docstring and the
+        truncation warning both told the user re-pasting was safe."""
+        rows, _ = pm.parse_log(_log(_event(match_id="m-1"), _event(match_id="m-2"),
+                                    _event(match_id="m-1")))
+        assert len(rows) == 3                       # the parser reports what it saw
+        assert [r["Match ID"] for r in pm.fresh_rows(rows, [])] == ["m-1", "m-2"]
+
+    def test_id_less_rows_are_never_deduped_against_each_other(self):
+        """"" is not an identity. Deduping on it dropped every id-less match after the
+        first as 'already recorded' — a silent loss that reads as data (batch 5)."""
+        rows = [{"Match ID": "", "Result": "W"}, {"Match ID": "", "Result": "L"}]
+        assert len(pm.fresh_rows(rows, [])) == 2
+        assert len(pm.fresh_rows(rows, [{"Match ID": ""}])) == 2
+
+
+class TestUnreadableResults:
+    """BS4-24: `b[r.get("Result", "L")]` only defaulted when the KEY was absent, so a row
+    with `Result=""` incremented a `b[""]` bucket printed in no column and excluded from
+    n = W+L. The header count and the per-deck totals then disagreed with nothing said —
+    the 'reads as data, not as a gap' failure this module is otherwise built to avoid."""
+
+    def _rows(self):
+        return [{"Deck": "5", "Result": "W", "Course ID": "c"},
+                {"Deck": "5", "Result": "", "Course ID": "c"},
+                {"Deck": "5", "Result": "?", "Course ID": "c"}]
+
+    def test_the_bad_rows_are_reported_not_silently_dropped(self, capsys):
+        pm.report(self._rows())
+        out = capsys.readouterr().out
+        assert "unreadable Result" in out
+        assert "do not sum to 3" in out
+
+    def test_good_rows_still_count(self, capsys):
+        pm.report(self._rows())
+        out = capsys.readouterr().out
+        assert "3 match(es) recorded" in out      # the header still counts every row
+
+    def test_a_clean_record_says_nothing_extra(self, capsys):
+        pm.report([{"Deck": "5", "Result": "W", "Course ID": "c"},
+                   {"Deck": "5", "Result": "L", "Course ID": "c"}])
+        assert "unreadable Result" not in capsys.readouterr().out
+
+    def test_case_and_whitespace_are_tolerated(self, capsys):
+        pm.report([{"Deck": "5", "Result": " w ", "Course ID": "c"}])
+        assert "unreadable Result" not in capsys.readouterr().out
 
 
 class TestWilson:
@@ -280,11 +505,21 @@ class TestReportRestraint:
 
     def test_unmapped_matches_are_surfaced_never_dropped(self, capsys):
         rows = [{"Date": "2026-07-27", "Match ID": "m1", "Deck": "",
-                 "Course ID": "Avatar_Basic_BlackPanther_MSH", "Result": "L"}]
+                 "Arena Deck": "07 Earth's Mightiest", "Result": "L"}]
         pm.report(rows)
         out = capsys.readouterr().out
-        assert "Avatar_Basic_BlackPanther_MSH" in out
+        assert "07 Earth's Mightiest" in out
         assert "#: arena:" in out          # tells you how to fix it
+
+    def test_a_match_with_no_deck_selection_is_reported_as_a_gap(self, capsys):
+        """The 7/27 row in the real record: its log had rotated, so no EventSetDeckV3
+        survives. It must read as an unattributed gap with a route to fixing it."""
+        rows = [{"Date": "2026-07-27", "Match ID": "m1", "Deck": "", "Arena Deck": "",
+                 "My Avatar": "Avatar_Basic_BlackPanther_MSH", "Result": "L"}]
+        pm.report(rows)
+        out = capsys.readouterr().out
+        assert "no Arena deck at all" in out
+        assert "EventSetDeckV3" in out
 
     def test_an_empty_record_says_so(self, capsys):
         pm.report([])
@@ -297,12 +532,244 @@ class TestDeckMapping:
         d = tmp_path / "decks"
         (d / "90-test").mkdir(parents=True)
         (d / "90-test" / "deck.txt").write_text(
-            "#: name: Test\n#: arena: Avatar_Basic_BlackPanther_MSH\n4 Shock (M21) 159\n")
+            "#: name: Test\n#: arena: 90 Some Arena Name, dead-beef-guid\n"
+            "4 Shock (M21) 159\n")
         monkeypatch.setattr(dk, "DECKS_DIR", str(d))
-        assert pm.arena_deck_map().get("Avatar_Basic_BlackPanther_MSH") == "90"
+        m = pm.arena_deck_map()
+        # Either key resolves: the GUID survives an Arena rename, the name is typable.
+        assert m.get("90 some arena name") == "90"
+        assert m.get("dead-beef-guid") == "90"
 
     def test_it_degrades_to_empty_rather_than_raising(self, monkeypatch):
         """The parser is usable standalone; a broken deck dir must not take it down."""
         import deck as dk
         monkeypatch.setattr(dk, "discover_decks", lambda: (_ for _ in ()).throw(OSError()))
         assert pm.arena_deck_map() == {}
+
+
+class TestDeckNameHarvest:
+    """`--map-decks` learns a `#: arena:` header per deck from one paste. Every message
+    type that mentions a deck nests the same {"DeckId":…,"Name":…} object, so ONE pattern
+    reads EventSetDeckV3, DeckUpsertDeckV3 and a whole DeckGetDeckSummariesV3 response."""
+
+    def test_it_harvests_from_an_event_set_deck_line(self):
+        assert pm.parse_deck_names(_setdeck()) == {
+            "e3a6c595-914d-4809-bd6d-630b3758ca89": "07 Earth’s Mightiest"}
+
+    def test_several_summaries_on_one_line_all_come_back(self):
+        """Shape-generality pin: the harvest is per-OBJECT, not per-line, so a message
+        that packs several summaries into one line yields them all. (No live Arena
+        message is known to do this — DeckGetDeckSummariesV3 was assumed to and measured
+        to log NO payload at all — but the property is what makes the scan robust to a
+        message layout nobody anticipated.)"""
+        line = ('{"Summaries":['
+                '{"DeckId":"g-a","Mana":"","Name":"07 Earth’s Mightiest"},'
+                '{"DeckId":"g-b","Mana":"","Name":"45 The Exiles"}]}')
+        assert pm.parse_deck_names(line) == {"g-a": "07 Earth’s Mightiest",
+                                            "g-b": "45 The Exiles"}
+
+    def test_a_rename_takes_the_LATER_name(self):
+        """A deck renamed in the client appears under both names; the later line is the
+        current one. `setdefault` here would be the G-63 first-writer-wins trap."""
+        log = "\n".join([_setdeck(guid="g-1", name="19 Old Name"),
+                         _setdeck(guid="g-1", name="19 Bird Brain- Bant")])
+        assert pm.parse_deck_names(log) == {"g-1": "19 Bird Brain- Bant"}
+
+    def test_a_nameless_summary_cannot_steal_the_next_ones_name(self):
+        """The bounded window is the whole guard: without it a summary missing a Name
+        reaches forward and labels itself with its neighbour's deck."""
+        line = ('{"Summaries":[{"DeckId":"g-a"},' + '{"Pad":"' + "x" * 400 + '"},'
+                '{"DeckId":"g-b","Name":"45 The Exiles"}]}')
+        assert pm.parse_deck_names(line) == {"g-b": "45 The Exiles"}
+
+    def test_a_log_with_no_summaries_is_empty_not_a_crash(self):
+        assert pm.parse_deck_names(_log(_event())) == {}
+        assert pm.parse_deck_names("") == {} and pm.parse_deck_names(None) == {}
+
+
+class TestArenaHeaderWriting:
+    """Writing 60-odd headers by hand is where a wrong one hides, so the plan is printed
+    before anything is written and every write re-parses the file."""
+
+    def _roster(self, tmp_path, monkeypatch, **decks):
+        import deck as dk
+        d = tmp_path / "decks"
+        for name, body in decks.items():
+            (d / name).mkdir(parents=True)
+            (d / name / "deck.txt").write_text(body, encoding="utf-8")
+        monkeypatch.setattr(dk, "DECKS_DIR", str(d))
+        return d
+
+    PLAIN = "#: name: Earth's Mightiest\n#: format: Standard\n4 Shock (M21) 159\n"
+
+    def test_a_dry_run_writes_nothing(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        before = (d / "07-earths" / "deck.txt").read_text(encoding="utf-8")
+        written, plan = pm.map_decks(_setdeck(), apply=False, out=lambda *_a: None)
+        assert written == 0
+        assert [p[3] for p in plan] == ["add"]
+        assert (d / "07-earths" / "deck.txt").read_text(encoding="utf-8") == before
+
+    def test_apply_inserts_after_the_format_header(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        written, _ = pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
+        assert written == 1
+        lines = (d / "07-earths" / "deck.txt").read_text(encoding="utf-8").splitlines()
+        assert lines[1].startswith("#: format:")
+        assert lines[2] == ("#: arena: 07 Earth’s Mightiest, "
+                            "e3a6c595-914d-4809-bd6d-630b3758ca89")
+        assert "4 Shock (M21) 159" in lines          # card lines untouched
+
+    def test_a_second_run_is_a_no_op(self, tmp_path, monkeypatch):
+        self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
+        written, plan = pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
+        assert written == 0 and [p[3] for p in plan] == ["unchanged"]
+
+    def test_a_renamed_deck_REPLACES_the_old_header_rather_than_stacking(
+            self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        pm.map_decks(_setdeck(name="07 Old Name"), apply=True, out=lambda *_a: None)
+        written, plan = pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
+        assert written == 1 and [p[3] for p in plan] == ["update"]
+        body = (d / "07-earths" / "deck.txt").read_text(encoding="utf-8")
+        assert body.count("#: arena:") == 1
+        assert "07 Old Name" not in body
+
+    def test_two_arena_decks_claiming_one_repo_deck_write_NOTHING(
+            self, tmp_path, monkeypatch):
+        """An old copy left in the client looks exactly like this. A header naming the
+        wrong one of two decks is worse than no header — the parser would then attribute
+        matches to it with full confidence."""
+        d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        log = "\n".join([_setdeck(guid="g-a", name="07 Earth’s Mightiest"),
+                         _setdeck(guid="g-b", name="07 Earth’s Mightiest (old)")])
+        written, plan = pm.map_decks(log, apply=True, out=lambda *_a: None)
+        assert written == 0 and [p[3] for p in plan] == ["conflict"]
+        assert "#: arena:" not in (d / "07-earths" / "deck.txt").read_text(encoding="utf-8")
+
+    def test_an_arena_deck_matching_no_repo_deck_is_reported_not_forced(
+            self, tmp_path, monkeypatch, capsys):
+        self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        written, plan = pm.map_decks(_setdeck(name="Some Precon", guid="g-x"),
+                                     apply=True)
+        assert written == 0 and plan == []
+        assert "Some Precon" in capsys.readouterr().out
+
+    def test_the_header_lands_even_with_no_format_line(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch,
+                         **{"07-earths": "#: name: X\n4 Shock (M21) 159\n"})
+        pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
+        lines = (d / "07-earths" / "deck.txt").read_text(encoding="utf-8").splitlines()
+        assert lines[1].startswith("#: arena:")
+
+    def test_a_backup_is_written(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
+        pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
+        assert list((d / "07-earths").glob("*.bak"))
+
+
+class TestHeaderSyncRidesAlong:
+    """Header upkeep as a separate command is upkeep nobody runs (the G-53 shape), so
+    the normal match flow performs it — quietly, and only when something changes."""
+
+    PLAIN = TestArenaHeaderWriting.PLAIN
+
+    def _roster(self, tmp_path, monkeypatch):
+        return TestArenaHeaderWriting._roster(self, tmp_path, monkeypatch,
+                                              **{"07-earths": self.PLAIN})
+
+    def test_apply_writes_the_header_a_dry_run_does_not(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch)
+        f = d / "07-earths" / "deck.txt"
+        written, _ = pm.sync_headers(_setdeck(), apply=False, out=lambda *_a: None)
+        assert written == 0 and "#: arena:" not in f.read_text(encoding="utf-8")
+        written, _ = pm.sync_headers(_setdeck(), apply=True, out=lambda *_a: None)
+        assert written == 1 and "#: arena:" in f.read_text(encoding="utf-8")
+
+    def test_an_all_unchanged_roster_says_nothing(self, tmp_path, monkeypatch):
+        """A routine re-ingest must not bury the match report under header noise."""
+        self._roster(tmp_path, monkeypatch)
+        pm.sync_headers(_setdeck(), apply=True, out=lambda *_a: None)
+        said = []
+        written, _ = pm.sync_headers(_setdeck(), apply=True, out=said.append)
+        assert written == 0 and said == []
+
+    def test_a_header_written_from_the_paste_resolves_that_pastes_matches(
+            self, tmp_path, monkeypatch):
+        """The ordering promise in main(): sync BEFORE the mapping is built. An Arena
+        name with NO deck-number prefix is resolvable only through its header — via the
+        GUID here, exactly a client-side rename's shape — so if the header landed after
+        the mapping was read, this paste's own match would stay unattributed."""
+        self._roster(tmp_path, monkeypatch)
+        renamed = _setdeck(name="Earth's Finest")             # no leading number
+        pm.sync_headers(_setdeck(), apply=True, out=lambda *_a: None)   # learn the GUID
+        pm.sync_headers(renamed, apply=True, out=lambda *_a: None)      # then the rename
+        assert pm.resolve_deck("Earth's Finest",
+                               "e3a6c595-914d-4809-bd6d-630b3758ca89",
+                               pm.arena_deck_map(), pm.deck_ids())[0] == "7"
+
+    def test_a_conflict_is_reported_and_nothing_written(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch)
+        log = "\n".join([_setdeck(guid="g-a", name="07 Earth’s Mightiest"),
+                         _setdeck(guid="g-b", name="07 Earth’s Mightiest (old)")])
+        said = []
+        written, _ = pm.sync_headers(log, apply=True, out=said.append)
+        assert written == 0
+        assert any("resolve by hand" in s for s in said)
+        assert "#: arena:" not in (d / "07-earths" / "deck.txt").read_text(encoding="utf-8")
+
+    def test_a_summaries_only_paste_syncs_headers_and_exits_cleanly(
+            self, tmp_path, monkeypatch, capsys):
+        """The --map-decks extraction shape fed to the NORMAL command: no matches at all.
+        The first integration ran the no-matches bailout before the sync, so this exact
+        paste died with 'check that Detailed Logs is enabled' — a misleading error about
+        a setting that was fine — and the headers it carried were never written."""
+        import sys as _sys
+        d = self._roster(tmp_path, monkeypatch)
+        log_file = tmp_path / "summaries.log"
+        log_file.write_text(_setdeck() + "\n", encoding="utf-8")
+        monkeypatch.setattr(_sys, "argv",
+                            ["parse_matches.py", str(log_file), "--apply",
+                             "--out", str(tmp_path / "m.csv")])
+        assert pm.main() == 0
+        assert "#: arena:" in (d / "07-earths" / "deck.txt").read_text(encoding="utf-8")
+        assert "deck summaries only" in capsys.readouterr().out
+
+
+class TestResolveDeck:
+    """Arena deck name -> repo deck id. The name-prefix step ASSIGNS data from a naming
+    convention, so its bounds are the load-bearing part."""
+
+    KNOWN = {"7", "19", "19b", "45"}
+
+    def test_the_arena_header_wins_over_the_prefix(self):
+        mapping = {"07 earth’s mightiest": "45"}      # deliberately contradictory
+        assert pm.resolve_deck("07 Earth’s Mightiest", "", mapping, self.KNOWN) == \
+            ("45", "#: arena: header")
+
+    def test_the_guid_resolves_even_when_the_deck_was_renamed_in_arena(self):
+        mapping = {"e3a6c595": "7"}
+        assert pm.resolve_deck("Totally Different Name", "E3A6C595",
+                               mapping, self.KNOWN)[0] == "7"
+
+    def test_a_zero_padded_prefix_resolves_to_the_unpadded_deck_id(self):
+        assert pm.resolve_deck("07 Earth’s Mightiest", "", {}, self.KNOWN) == \
+            ("7", "name prefix")
+
+    def test_the_prefix_does_not_swallow_the_first_word_as_a_variant_letter(self):
+        """`^\\s*0*(\\d+)\\s*([a-z]?)` with re.I read "07 Earth’s…" as deck "7e" — the
+        letter has to be case-sensitive AND adjacent to the number."""
+        assert pm.resolve_deck("07 Earth’s Mightiest", "", {}, self.KNOWN | {"7e"})[0] == "7"
+
+    def test_a_variant_letter_is_kept_when_it_really_is_adjacent(self):
+        assert pm.resolve_deck("19b GW Chocobo", "", {}, self.KNOWN) == ("19b", "name prefix")
+
+    def test_a_prefix_naming_no_real_deck_resolves_to_nothing(self):
+        """An unattributed match is a visible gap; a wrongly attributed one is a
+        fabricated win rate. Blank is the only safe direction."""
+        assert pm.resolve_deck("88 Not A Deck", "", {}, self.KNOWN) == ("", "")
+        assert pm.resolve_deck("Some Precon", "", {}, self.KNOWN) == ("", "")
+
+    def test_a_leading_year_is_not_a_deck_id(self):
+        assert pm.resolve_deck("2026 Ladder Pile", "", {}, self.KNOWN) == ("", "")

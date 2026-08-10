@@ -169,6 +169,11 @@ def _agree_owned(errs):
     way — is not statically detectable. This is that residual, held behaviourally."""
     _, _, by_name_qty = deck.load_collection()
     if not by_name_qty:
+        # LOUD, matching the discipline its two siblings already follow (BS2-32): an
+        # empty collection silently turned this pair OFF, and "no disagreement found" is
+        # indistinguishable from "nothing was compared" in the output. Quiet = unverified.
+        errs.append("WARN: the ownership-join pair did not run — the collection index is "
+                    "empty, so lib.owned_qty vs deck.owned is UNVERIFIED, not agreed.")
         return
     names = sorted(by_name_qty)[::37][:150]
     # Include real double-faced names, the case the two helpers can differ on.

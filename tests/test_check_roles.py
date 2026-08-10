@@ -50,3 +50,53 @@ class TestCheckRoles:
         for name, ctype, text in check_roles.zero_role_cards():
             assert "Land" not in ctype, name
             assert text.strip(), name
+
+
+class TestBaselineDelta:
+    """BS4-02: `make postedit` ran `--update-baseline` unconditionally BEFORE check_all,
+    so the radar's warning was consumed by the same command meant to surface it. A
+    `_ROLE_PATTERNS` edit re-zeroing fifty cards was acknowledged wholesale with an
+    unread diff of a 425-line file as the only trace. The delta is what lets the caller
+    show its work; --max-new is what stops a regression-sized jump landing silently."""
+
+    def _fake_baseline(self, tmp_path, names):
+        f = tmp_path / "b.txt"
+        f.write_text("# header\n" + "".join(n + "\n" for n in names))
+        return str(f)
+
+    def test_delta_names_new_and_pruned(self, tmp_path, monkeypatch):
+        monkeypatch.setattr(check_roles, "BASELINE",
+                            self._fake_baseline(tmp_path, ["stale card", "kept card"]))
+        monkeypatch.setattr(check_roles, "zero_role_cards",
+                            lambda: [("Kept Card", "Creature", "x"),
+                                     ("Brand New", "Creature", "y")])
+        new, pruned = check_roles.baseline_delta()
+        # DISPLAY names: a human is meant to read these and go look the card up.
+        assert new == ["Brand New"]        # NEW — the thing a human must read
+        assert pruned == ["stale card"]    # acknowledged nothing; safe to drop
+
+    def test_update_refuses_a_regression_sized_jump(self, tmp_path, monkeypatch, capsys):
+        # The load-bearing half: a pattern regression re-zeroes many cards at once, and
+        # that must NOT be absorbable by the routine post-edit command.
+        path = self._fake_baseline(tmp_path, [])
+        monkeypatch.setattr(check_roles, "BASELINE", path)
+        monkeypatch.setattr(check_roles, "zero_role_cards",
+                            lambda: [(f"Card {i}", "Creature", "t") for i in range(30)])
+        monkeypatch.setattr(sys, "argv",
+                            ["check_roles.py", "--update-baseline", "--max-new", "8"])
+        assert check_roles.main() == 1
+        assert "REFUSING" in capsys.readouterr().err
+        # and it must not have written the file it refused to write
+        assert check_roles.load_baseline() == set()
+
+    def test_update_below_the_cap_writes_and_names_the_new_cards(self, tmp_path, monkeypatch, capsys):
+        path = self._fake_baseline(tmp_path, [])
+        monkeypatch.setattr(check_roles, "BASELINE", path)
+        monkeypatch.setattr(check_roles, "zero_role_cards",
+                            lambda: [("Quag Feast", "Sorcery", "t")])
+        monkeypatch.setattr(sys, "argv",
+                            ["check_roles.py", "--update-baseline", "--max-new", "8"])
+        assert check_roles.main() == 0
+        out = capsys.readouterr().out
+        assert "Quag Feast" in out and "NEW" in out      # named, not just counted
+        assert check_roles.load_baseline() == {"quag feast"}

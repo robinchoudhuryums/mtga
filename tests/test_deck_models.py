@@ -715,3 +715,33 @@ class TestQualityVectorOwnership:
     def test_an_unsplit_deck_is_unchanged(self, world):
         d = world(["4 Pool Zap", "20 Swamp"], owned=["Pool Zap"])
         assert deck.deck_quality_vector(d)["buildable"] is True
+
+
+class TestBatch4Corrections:
+    """Batch 4's small correctness set — each a documented rule applied in one place and
+    not another, so the failure is two surfaces disagreeing rather than a crash."""
+
+    def test_power_threshold_counts_a_printed_zero(self):
+        """BS4-32: `card_power(...) or -1` collapses a printed 0 to unknown. Every
+        X-creature is 0/0, so a "power 0 or greater" gate must still count them — and the
+        idiom sat in the very function G-16 documents the rule for."""
+        cd = {
+            "zero body": {"name": "Zero Body", "type": "Creature — Elemental",
+                          "text": "", "power": "0", "toughness": "0"},
+            "payoff": {"name": "Payoff", "type": "Enchantment",
+                       "text": "Whenever a creature you control with power 0 or greater "
+                               "enters, draw a card.", "power": "", "toughness": ""},
+        }
+        cards = [(1, "Zero Body", "TST", "1"), (1, "Payoff", "TST", "2")]
+        flags = deck.power_threshold_flags(cards, cd)
+        # The 0/0 body MEETS a 0-bar, so the payoff must NOT be reported as under-supported.
+        assert all(f[0] != "Payoff" for f in flags), flags
+
+    def test_deck_shape_does_not_call_a_creatureless_deck_TALL(self):
+        """BS4-33: the `creatures <= 14` nudge fired unconditionally, so a 0-creature
+        spells deck scored tall 2 and printed "TALL — few bodies, effects that scale one
+        creature UP" with an EMPTY tall-cards list. The honest verdict was unreachable."""
+        shape = deck.deck_shape([], {}, {})
+        assert shape["creatures"] == 0
+        assert "TALL" not in shape["axis"]
+        assert shape["axis"] == "no board-growth axis"

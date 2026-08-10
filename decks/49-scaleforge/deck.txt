@@ -1,5 +1,6 @@
 #: name: Scaleforge
 #: format: Standard
+#: arena: 49 Big Draco, 945769bf-ab3a-4e98-a4b2-a2a443e971b0
 #: colors: R
 #: plan: midrange
 #: tier: B — PROVISIONAL, one band below the measurable floor, which reads A on interaction 11

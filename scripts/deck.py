@@ -58,7 +58,8 @@ import time
 import urllib.error
 import urllib.request
 
-from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, card_colors, owned_qty,
+from lib import (BASICS as lib_BASICS, DEFAULT_CSV, REPO_ROOT, load_rows, eprint,
+                 card_colors, owned_qty,
                  card_distinctiveness, backup_path, card_power, front_face_cost,
                  mana_value, primary_type, atomic_write, alias_front)
 from scryfall import post_collection, ScryfallUnavailable
@@ -67,7 +68,7 @@ POOL_CSV = os.path.join(REPO_ROOT, "card-pool.csv")
 
 DECKS_DIR = os.path.join(REPO_ROOT, "decks")
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
-BASICS = {"plains", "island", "swamp", "mountain", "forest", "wastes"}
+BASICS = lib_BASICS          # one definition, in lib.py
 
 
 def _file_memo(*path_names):
@@ -524,10 +525,13 @@ def fetch_missing_rarities(names, rarities):
         for card in data.get("data", []):
             rar = WC_LETTER.get((card.get("rarity") or "").lower(), "?")
             full = card.get("name", "").lower()
+            # REAL name only in-pass; the front alias is a second pass below. Aliasing
+            # both with `setdefault` here let a live-fetched `Front // Back` claim the
+            # bare front key, so a distinct card of that name fetched later could never
+            # record its own rarity — the G-63 in-pass trap (BS4-18).
             rarities.setdefault(full, rar)
-            rarities.setdefault(full.split(" // ")[0], rar)
         time.sleep(0.1)
-    return rarities
+    return alias_front(rarities)
 
 
 def _wc_breakdown(shortfalls, rar_of):
@@ -757,7 +761,10 @@ def _castability(cards, declared, mana, carddata, exempt=frozenset()):
                              if len(h) >= 2 and not (h & declared) for x in h})
         if off_strict or bad_hybrid:
             why = "needs " + "/".join(sorted(set(off_strict + bad_hybrid)))
-            (intended if nl in exempt else uncastable).append((n, why))
+            # `exempt` holds _ms_key keys (see `_header_card_keys`), so the join must
+            # too — a raw `nl` test missed any DFC the header named by its front face,
+            # which silently RE-ENABLED the failure the header suppresses.
+            (intended if _ms_key(n) in exempt else uncastable).append((n, why))
             continue
         ident = card_colors(cd["colors"] if cd else "")
         stray = sorted(ident - declared)
@@ -786,6 +793,46 @@ def _castability(cards, declared, mana, carddata, exempt=frozenset()):
     return uncastable, off_ident, off_ability, intended
 
 
+def deck_requirements(cards):
+    """[(key, display_name, set_code, total_qty)] — one entry per DISTINCT card, in
+    first-seen order, with copies SUMMED across duplicate lines.
+
+    A deck may list the same card on more than one line, and owned counts are per-name
+    (fungible across printings), so a buildability check must compare total-need against
+    total-owned rather than line-by-line. `cmd_check` has always done that and says so;
+    the problem was that it said so in a comment, and two other surfaces re-derived the
+    same question per LINE — `app.py`'s `/decks` overview and `check_all`'s info summary
+    both reported "buildable" for a deck listing 2+2 of a card owned 3, while `cmd_check`,
+    the dashboard and the deck editor all correctly reported it short (BS4-13).
+
+    Extracted so the answer has ONE definition. Three implementations of one question is
+    the shape `check_agreement.py` exists to catch, and the two that drifted were the two
+    that had copied the loop instead of calling it."""
+    need, order, printing = {}, [], {}
+    for q, n, s, c in cards:
+        nl = n.lower()
+        if nl not in need:
+            order.append(nl)
+            printing[nl] = (n, s)
+        need[nl] = need.get(nl, 0) + q
+    return [(nl, printing[nl][0], printing[nl][1], need[nl]) for nl in order]
+
+
+def deck_build_gap(cards, by_name_qty):
+    """(missing, short) — counts of DISTINCT cards the collection can't cover for this
+    deck. `missing` = not in the library at all; `short` = held, but fewer than the
+    deck's TOTAL requirement. The summary half of `deck_requirements`, for the callers
+    that want the two numbers rather than the per-card rows."""
+    missing = short = 0
+    for _nl, n, _s, req in deck_requirements(cards):
+        have, found = owned(by_name_qty, n)
+        if not found:
+            missing += 1
+        elif have < req:
+            short += 1
+    return missing, short
+
+
 def cmd_check(args):
     d = find_deck(args.id)
     if not d:
@@ -794,16 +841,10 @@ def cmd_check(args):
     _, _, by_name_qty = load_collection()
     meta, cards = parse_deck_file(d["path"])
 
-    # Aggregate copies per card first: a deck may list the same card on more than
-    # one line, and owned counts are per-name (fungible across printings), so the
-    # short/missing check must compare total-need vs total-owned, not line-by-line.
-    need, order, printing = {}, [], {}
-    for q, n, s, c in cards:
-        nl = n.lower()
-        if nl not in need:
-            order.append(nl)
-            printing[nl] = (n, s)
-        need[nl] = need.get(nl, 0) + q
+    reqs = deck_requirements(cards)
+    need = {nl: q for nl, _n, _s, q in reqs}
+    order = [nl for nl, _n, _s, _q in reqs]
+    printing = {nl: (n, s) for nl, n, s, _q in reqs}
 
     print(f"Deck {d['id']}: {d['name'] or d['path']}")
     print(f"{'Have':>4} / {'Need':<4}  Card")
@@ -1677,7 +1718,11 @@ def power_threshold_flags(cards, carddata):
             else:
                 timing = "other"
             qualify = sum(cq for cq, ccd in creatures
-                          if (card_power(ccd.get(attr)) or -1) >= bar)
+                          # NOT `card_power(...) or -1`: a printed 0 is real and common
+                          # (every X-creature is 0/0), and `or` collapses it to unknown —
+                          # the exact idiom G-16 bans, sitting in the function that rule
+                          # documents, ready to be copied (BS4-32).
+                          if (pv := card_power(ccd.get(attr))) is not None and pv >= bar)
             if qualify / total < _POWER_THRESHOLD_THIN:
                 out.append((cd["name"], attr, bar, qualify, total, timing))
     return out
@@ -1751,7 +1796,14 @@ def deck_shape(cards, carddata, mana=None):
     if creatures >= 22:
         wide += 2
     elif creatures <= 14:
-        tall += 2
+        # The body-count nudge only means something when there ARE bodies. It fired
+        # unconditionally, so a 0-creature spells deck scored wide 0 / tall 2 and was
+        # reported "TALL — few bodies, effects that scale one creature UP" with an EMPTY
+        # tall-cards list, and the honest "no board-growth axis" verdict was unreachable
+        # for any deck at or under 14 creature copies (BS4-33). Report-only, but a
+        # verdict that is affirmatively wrong is worse than a vague one.
+        if creatures:
+            tall += 2
     lead = abs(wide - tall)
     if lead < 2:
         axis = "BALANCED / neither" if (wide or tall) else "no board-growth axis"
@@ -2442,10 +2494,14 @@ def deck_needs(d):
     mana_map, carddata = load_mana(), load_card_data()
     deck_colors = _declared_colors(dmeta)
     if not deck_colors:
-        for _q, n, _s, _c in cards:
-            m = meta.get(n.lower())
-            if n.lower() not in BASICS and m:
-                deck_colors |= (m["colors"] & set("WUBRG"))
+        # COSTS, not identity. `suggest_scored` derives an undeclared deck's castable
+        # colours from mana costs and says why — "never color identity, so a card's
+        # off-color activated abilities don't widen the deck and surface uncastable
+        # picks" (audit F3/F15) — while this function and `suggest_lands` fell back to
+        # identity, which is the same question answered two ways on the paths G-38 routes
+        # a scorecard deficit to. Latent today (all 99 decks declare `#: colors:`) and
+        # exactly the G-45 shape: two siblings, different filters (BS4-12).
+        deck_colors = _deck_castable_colors(dmeta, cards, mana_map)
 
     theme_w, names = {}, set()
     sources = {c: 0 for c in deck_colors}
@@ -2723,7 +2779,7 @@ def engine_balance(cards, carddata, central, signature=frozenset(), weights=None
         if not cd:
             continue
         n = disp[nl]
-        if "creature" in (cd.get("type") or "").lower():
+        if "Creature" in _primary_type(cd.get("type") or ""):   # FRONT face (BS4-34)
             creatures += q
         roles = engine_roles(cd.get("text") or "")
         for theme in central_engines:
@@ -3992,15 +4048,14 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
     dmeta, cards = parse_deck_file(d["path"])
     mana_map = load_mana()
     carddata = load_card_data()
+    pool_rot, _has_released = _pool_rotation_index()
 
     deck_colors = _declared_colors(dmeta)
     if not deck_colors:
-        for _q, n, _s, _c in cards:
-            if n.lower() in BASICS:
-                continue
-            m = meta.get(n.lower())
-            if m:
-                deck_colors |= (m["colors"] & set("WUBRG"))
+        # COSTS, not identity — the same rule `suggest_scored` follows and states, so an
+        # off-colour activated ability or a transform face cannot widen the deck and
+        # surface picks it cannot actually cast (audit F3/F15, BS4-12).
+        deck_colors = _deck_castable_colors(dmeta, cards, mana_map)
 
     # central themes (for the synergy nudge) + names already in the deck
     theme_w, deck_names = {}, set()
@@ -4065,7 +4120,15 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         nl = name.lower()
         if not name or nl.split(" // ")[0] in deck_names or nl in BASICS:
             continue
-        if "land" not in (r.get("Type") or "").lower():
+        # FRONT face, via `_primary_type` — the same test `wishlist._is_land` was fixed to
+        # use in BS2-11, and the manabase RECOMMENDER kept the whole-type-line substring
+        # scan it was fixed away from. So any card with `// Land` on its BACK qualified:
+        # three of `suggest 52 --lands`' four highest-scored picks were Tarrian's Journal
+        # (Artifact front), Grasping Shadows (Enchantment front) and Aclazotz (Creature
+        # front). Those are reached by TRANSFORMING, never by a land drop — maindeck one
+        # and the deck is a land short with INV-04 seeing nothing wrong, because the line
+        # is a perfectly valid card line. G-37's live residual; the G-63 TYPE-column shape.
+        if _primary_type(r.get("Type") or "") != "Land":
             continue
         if apply_fmt and fmt not in {x.strip() for x in (r.get("Legalities") or "").split(";")}:
             continue
@@ -4086,15 +4149,37 @@ def suggest_lands(d, unowned=False, owned=False, limit=20, fmt=None, any_format=
         tags = [t.strip() for t in (r.get("Synergies") or "").split(";") if t.strip()]
         syn = _land_synergy_bonus(tags, central_w)
         short = _land_shortfall_bonus(on_color, deficit)
-        tapped = ("enters tapped" in txt.lower()
-                  or "enters the battlefield tapped" in txt.lower())
+        low = txt.lower()
+        tapped = ("enters tapped" in low or "enters the battlefield tapped" in low)
+        # CONDITIONAL vs FLAT tapping, shown separately. `_land_value` treats both as
+        # tapped, which is the conservative read and is exactly right for a deck that
+        # cannot meet the condition — but it is an UNDER-score for one that can (Great
+        # Arashin City enters untapped in any deck with a Forest). Deciding satisfiability
+        # needs the deck's contents, so this REPORTS the condition instead of guessing:
+        # G-52's rule that a verdict surface prints its evidence.
+        cond_tapped = tapped and "unless" in low
+        # Restricted production ("Spend this mana only to cast a creature spell"). The
+        # score already discounts it; this is what lets a human tell WHY.
+        restricted = "spend this mana only" in low
         picks.append({
             "name": name, "rarity": (r.get("Rarity") or "").strip(), "owned": h,
             "fix": fix, "syn": syn, "short": short, "score": round(fix + syn + short, 2),
             "produces": "".join(c for c in "WUBRG" if c in on_color),
-            "tapped": tapped, "text": txt, "matches": sorted(set(tags) & central),
+            "tapped": tapped, "cond_tapped": cond_tapped, "restricted": restricted,
+            "text": txt, "matches": sorted(set(tags) & central),
+            # G-30 on a WILDCARD-SPEND surface. `check`, `wildcards` and `wishlist --rank`
+            # all flag a rotating craft target; this recommender — which exists to be
+            # spent on — said nothing, and deck 28's plan bought four rotating cards past
+            # views that were quiet in exactly this way (BS4-11).
+            "rot": craft_rot_note(name, pool_rot),
         })
-    picks.sort(key=lambda p: (-p["score"], -min(p["owned"], 1), p["name"].lower()))
+    # Ownership is NOT a ranking term — the same decision `suggest_scored` records and
+    # explains: the goal is the best LIST, not the cheapest one, and this repo's
+    # owned/unowned data is hand-maintained and may be weeks stale (G-10 saw five wrong
+    # counts in one session). It stays SHOWN on every row as `×N` / `craft`. These three
+    # siblings kept the old tiebreak, so at equal score the owned card always outranked a
+    # possibly-better unowned one on exactly the wildcard-spend surfaces (BS4-36).
+    picks.sort(key=lambda p: (-p["score"], p["name"].lower()))
     if limit and limit > 0:
         picks = picks[:limit]
     return {"ok": True, "colors": deck_colors, "picks": picks, "fmt": fmt,
@@ -4122,12 +4207,20 @@ def cmd_suggest_lands(args, d):
     print(f"\n  {'Have':5} {'Land':30} {'Rarity':8} {'Prod':4} {'Fix':>4} {'Syn':>4} "
           f"{'Sh':>4} {'Score':>5}")
     print("-" * 78)
+    rotting = 0
     for p in res["picks"]:
         have = f"×{p['owned']}" if p["owned"] else "craft"
-        tap = " ·tapped" if p["tapped"] else ""
+        tap = (" ·tapped?" if p.get("cond_tapped") else " ·tapped") if p["tapped"] else ""
+        tap += " ·restricted" if p.get("restricted") else ""
+        # Only a CRAFT pick's rotation matters here — an owned land costs no wildcard.
+        rot = f" {p['rot']}" if p.get("rot") and not p["owned"] else ""
+        rotting += 1 if rot else 0
         print(f"  {have:5} {p['name'][:30]:30} {(p['rarity'] or '?')[:8]:8} "
               f"{p['produces']:4} {p['fix']:>4.1f} {p['syn']:>4.1f} {p['short']:>4.1f} "
-              f"{p['score']:>5.1f}{tap}")
+              f"{p['score']:>5.1f}{tap}{rot}")
+    if rotting:
+        print(f"\n⚠ {rotting} craft pick(s) rotate out of Standard this year or next — "
+              "see `deck.py rotation` before spending a wildcard.")
     if getattr(args, "full", False):
         import textwrap
         print("\n── Oracle text of the top picks (grade the ability, not just the fixing) ──")
@@ -4137,9 +4230,18 @@ def cmd_suggest_lands(args, d):
             for para in (p["text"] or "(no oracle text)").split("\n"):
                 for line in (textwrap.wrap(para, width=86) or [""]):
                     print(f"    {line}")
+    if any(p.get("cond_tapped") for p in res["picks"]):
+        print("\n·tapped? = enters tapped UNLESS a condition holds — scored as tapped "
+              "(conservative). Read the clause: if THIS deck meets it, the land is better "
+              "than its score says.")
+    if any(p.get("restricted") for p in res["picks"]):
+        print("·restricted = the colored mana has a 'spend this only to…' clause. Its "
+              "fixing premium is halved; judge it against what your deck actually casts.")
     print("\nScore = FIXING value (0–10, dominant: produces your colors, untapped premium) "
           "+ bounded SYNERGY (land ability hits a deck theme) + bounded SHORTFALL (produces "
-          "the scarce color). Owned first — a 0-wildcard fixer usually beats a craft.")
+          "the scarce color). Ownership is a NOTE (×N / craft), not a ranking term — "
+          "a 0-wildcard fixer is often the right pick, but that is your call, not the "
+          "sort's, and the owned data here goes stale between updates.")
     return 0
 
 
@@ -4158,6 +4260,7 @@ def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
     apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
     _, _, by_name_qty = load_collection()
     owned_of = lambda nl: owned_qty(by_name_qty, nl)
+    pool_rot, _has_released = _pool_rotation_index()      # G-30 craft flag (BS4-11)
     picks = []
     for r in pool:
         name = (r.get("Card Name") or "").strip()
@@ -4204,8 +4307,15 @@ def suggest_mana(d, needs, unowned=False, owned=False, limit=20, fmt=None):
                       "fix": fixb, "accel": accel_c, "restr": restr, "power": round(power, 1),
                       "score": score, "mv": mv if mv is not None else "?",
                       "produces": "".join(c for c in "WUBRG" if c in prod) or "?",
-                      "restricted": _RESTRICT_RE.search(txt) is not None, "text": txt})
-    picks.sort(key=lambda p: (-p["score"], -min(p["owned"], 1), p["name"].lower()))
+                      "restricted": _RESTRICT_RE.search(txt) is not None, "text": txt,
+                      "rot": craft_rot_note(name, pool_rot)})   # G-30 (BS4-11)
+    # Ownership is NOT a ranking term — the same decision `suggest_scored` records and
+    # explains: the goal is the best LIST, not the cheapest one, and this repo's
+    # owned/unowned data is hand-maintained and may be weeks stale (G-10 saw five wrong
+    # counts in one session). It stays SHOWN on every row as `×N` / `craft`. These three
+    # siblings kept the old tiebreak, so at equal score the owned card always outranked a
+    # possibly-better unowned one on exactly the wildcard-spend surfaces (BS4-36).
+    picks.sort(key=lambda p: (-p["score"], p["name"].lower()))
     return picks[:limit] if limit and limit > 0 else picks
 
 
@@ -4223,6 +4333,7 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
     apply_fmt = bool(fmt) and fmt in POOL_FORMATS and has_leg
     _, _, by_name_qty = load_collection()
     owned_of = lambda nl: owned_qty(by_name_qty, nl)
+    pool_rot, _has_released = _pool_rotation_index()      # G-30 craft flag (BS4-11)
     picks = []
     for r in pool:
         name = (r.get("Card Name") or "").strip()
@@ -4259,8 +4370,15 @@ def suggest_interaction(d, needs, unowned=False, owned=False, limit=20, fmt=None
         score = round(power + boost + flex, 2)
         picks.append({"name": name, "rarity": (r.get("Rarity") or "").strip(), "owned": h,
                       "roles": sorted(roles & _INTERACTION_ROLES), "axis": axis, "boost": boost,
-                      "power": round(power, 1), "score": score, "text": txt})
-    picks.sort(key=lambda p: (-p["score"], -min(p["owned"], 1), p["name"].lower()))
+                      "power": round(power, 1), "score": score, "text": txt,
+                      "rot": craft_rot_note(name, pool_rot)})   # G-30 (BS4-11)
+    # Ownership is NOT a ranking term — the same decision `suggest_scored` records and
+    # explains: the goal is the best LIST, not the cheapest one, and this repo's
+    # owned/unowned data is hand-maintained and may be weeks stale (G-10 saw five wrong
+    # counts in one session). It stays SHOWN on every row as `×N` / `craft`. These three
+    # siblings kept the old tiebreak, so at equal score the owned card always outranked a
+    # possibly-better unowned one on exactly the wildcard-spend surfaces (BS4-36).
+    picks.sort(key=lambda p: (-p["score"], p["name"].lower()))
     return picks[:limit] if limit and limit > 0 else picks
 
 
@@ -4316,12 +4434,18 @@ def cmd_suggest_ramp(args, d):
     print(f"\n  {'Have':5} {'Card':28} {'MV':>2} {'Prod':4} {'Acl':>4} {'Fix':>4} {'Rstr':>5} "
           f"{'Pw':>3} {'Score':>5}")
     print("-" * 74)
+    rotting = 0
     for p in picks:
         have = f"×{p['owned']}" if p["owned"] else "craft"
         tag = " ·restricted" if p["restricted"] else ""
+        rot = f" {p['rot']}" if p.get("rot") and not p["owned"] else ""
+        rotting += 1 if rot else 0
         print(f"  {have:5} {p['name'][:28]:28} {str(p['mv']):>2} {p['produces']:4} "
               f"{p['accel']:>4.1f} {p['fix']:>4.1f} {p['restr']:>5.1f} {p['power']:>3.0f} "
-              f"{p['score']:>5.1f}{tag}")
+              f"{p['score']:>5.1f}{tag}{rot}")
+    if rotting:
+        print(f"\n⚠ {rotting} craft pick(s) rotate out of Standard this year or next — "
+              "see `deck.py rotation` before spending a wildcard.")
     print("\nScore = ACCELERATION (cheapness × the deck's accel-want — a cheap dork ramps a "
           "top-heavy deck) + bounded FIXING (scarce color) + RESTRICTION-fit (a restricted dork "
           "matching your deck type; − if mismatched) + power tiebreak. Grade ETB value from text.")
@@ -4345,6 +4469,7 @@ def cmd_suggest_interaction(args, d):
         return 0
     print(f"\n  {'Have':5} {'Card':28} {'Rarity':8} {'Role':16} {'Pw':>3} {'Score':>5}  Scaling")
     print("-" * 86)
+    rotting = 0
     for p in picks:
         have = f"×{p['owned']}" if p["owned"] else "craft"
         role = "/".join(x.split()[0] for x in p["roles"])[:16]
@@ -4352,8 +4477,13 @@ def cmd_suggest_interaction(args, d):
         if p["axis"]:
             metric = _scaling_metric(p["axis"], needs)
             scale = f"⚠ scales w/ {p['axis']} (deck {metric:.0%}, +{p['boost']:.1f})"
+        rot = f" {p['rot']}" if p.get("rot") and not p["owned"] else ""
+        rotting += 1 if rot else 0
         print(f"  {have:5} {p['name'][:28]:28} {(p['rarity'] or '?')[:8]:8} {role:16} "
-              f"{p['power']:>3.0f} {p['score']:>5.1f}  {scale}")
+              f"{p['power']:>3.0f} {p['score']:>5.1f}  {scale}{rot}")
+    if rotting:
+        print(f"\n⚠ {rotting} craft pick(s) rotate out of Standard this year or next — "
+              "see `deck.py rotation` before spending a wildcard.")
     print("\nScore = impact role credit + a bounded SCALING boost (a board-dependent removal "
           "spell your board supports) + power tiebreak. ⚠ scaling cards are FLAGGED with your "
           "deck's strength on that axis — grade them for THIS board from full text.")
@@ -5143,7 +5273,10 @@ def _deck_summary(cards, carddata, mana):
         tline = (cd["type"] if cd else "") or ""
         if "Land" in _primary_type(tline):
             continue
-        if "creature" in tline.lower():
+        # FRONT face (G-63): a whole-line scan counts a DFC whose BACK is a creature,
+        # while `deck_quality_vector` / `deck_shape` use `_primary_type`. Two surfaces
+        # disagreeing on one count (BS4-34).
+        if "Creature" in _primary_type(tline):
             crea += q
         col = (cd["colors"] if cd else "") or ""
         if col.lower() != "colorless":
@@ -5418,10 +5551,15 @@ def recommendation_row(d, cut, add, source, today=None):
     # so the cut always has a well-defined position in a list that always contains it.
     try:
         rows, _central, prot_present, _int = rank_cut_candidates(d)
-        cl = cut.strip().lower()
-        idx = next((i for i, r in enumerate(rows) if r[1].strip().lower() == cl), None)
+        # `_ms_key` both sides, like the `Cut Protected` join below it. A raw `.lower()`
+        # compare blanked `Cut Rank` whenever the deck stored a DFC under one face and the
+        # swap named the other — telemetry only (G-56 keeps this ledger report-only, and
+        # `append_recommendation`'s caller swallows any error), but a silently-empty
+        # column is what `deck.py feedback` computes agreement FROM.
+        cl = _ms_key(cut)
+        idx = next((i for i, r in enumerate(rows) if _ms_key(r[1]) == cl), None)
         row["Cut Of"] = len(rows)
-        row["Cut Protected"] = "yes" if cl in {p.strip().lower() for p in prot_present} \
+        row["Cut Protected"] = "yes" if _ms_key(cut) in {_ms_key(p) for p in prot_present} \
             else "no"
         if idx is not None:
             row["Cut Rank"] = idx + 1          # 1 = the model's most-cuttable card
@@ -5796,8 +5934,9 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
         return 1
     # `_ms_key` both sides (BS2-21): the header may name either face-spelling of the
     # card being cut, and a raw `.lower()` comparison let a protected DFC be cut
-    # without the ⚠ when the spellings differed.
-    if _ms_key(cut) in {_ms_key(p) for p in _protected(d.get("meta") or {})}:
+    # without the ⚠ when the spellings differed. The header side is normalized by
+    # `_protected` itself now (BS4-01), so only the cut argument needs keying here.
+    if _ms_key(cut) in _protected(d.get("meta") or {}):
         eprint(f"⚠ {cut!r} is marked protected (#: protect:) in deck {d['id']} — a "
                "signature/spice card. Proceeding, but reconsider; remove it from the "
                "header if this cut is intentional.")
@@ -6164,20 +6303,47 @@ def cmd_legal(args):
 
 
 # --- cut candidates: the companion to `suggest` (adds) ---------------------- #
+def _header_card_keys(meta, header):
+    """The card names in a semicolon-separated `#: <header>:` list, as `_ms_key`
+    COMPARISON KEYS (lowercased, front face only).
+
+    The normalization is the whole point, and it was the last open member of the G-63
+    class (BS2-07). Both header readers used to return raw `.lower()` names while every
+    consumer compared them against a deck line's raw `.lower()` name — so a header
+    naming a DFC by its FRONT face ("Eddie Brock") never matched the line storing the
+    full name ("Eddie Brock // Venom, Lethal Protector"), and the instruction the header
+    encodes silently did nothing. It was left open on a "zero live instances" measurement
+    that expired the moment deck 66 was drafted: its `#: protect:` header named the
+    deck's own title card, and `cuts` ranked that card as cuttable anyway.
+
+    `header_card_staleness` — the G-68 gate built to catch a dead header entry — has
+    always joined on `_ms_key`, so it reported the header as HEALTHY while the consumers
+    could not read it. A gate that vouches for a disabled instruction is worse than no
+    gate, which is why the fix belongs HERE, at the one place both readers share, rather
+    than at each call site deciding again."""
+    raw = (meta or {}).get(header, "") or ""
+    return {_ms_key(p) for p in raw.split(";") if p.strip()}
+
+
 def _protected(meta):
     """Cards a deck's `#: protect:` header marks as signature/spice — the tooling
     must never propose cutting them. Format: `#: protect: Card A; Card B`
     (repeatable across lines; SEMICOLON-separated — card names contain commas, so
-    comma can't be the separator). Returns a lowercased set of card names."""
-    raw = (meta or {}).get("protect", "") or ""
-    return {p.strip().lower() for p in raw.split(";") if p.strip()}
+    comma can't be the separator). Returns a set of `_ms_key` comparison keys, so
+    every consumer must test `_ms_key(name) in _protected(meta)` — see
+    `_header_card_keys` for why a raw `.lower()` join was a silent no-op on DFCs."""
+    return _header_card_keys(meta, "protect")
 
 
 def _uncastable_ok(meta):
     """Cards the deck AUTHOR asserts are intentionally uncastable — a REANIMATOR's
     targets, which you never cast from hand and cheat in from the graveyard instead.
     Format: `#: uncastable-ok: Card A; Card B` (semicolon-separated, like `#: protect:`,
-    because card names contain commas). Returns a lowercased set.
+    because card names contain commas). Returns a set of `_ms_key` comparison keys —
+    this is the MORE dangerous half of the pair to get wrong, since a name the consumer
+    cannot match doesn't merely fail to protect a card, it silently re-enables the
+    castability failure the header exists to suppress (floor capped at C, `preflight`
+    BLOCKED). See `_header_card_keys`.
 
     Why this exists: the castability lint and `tier_band` both model "you cannot cast
     this" as a build ERROR, which is right by default and wrong for a whole archetype.
@@ -6191,8 +6357,7 @@ def _uncastable_ok(meta):
     shape as `#: protect:` naming signature cards the tooling must not propose cutting.
     An exempt card is still SHOWN everywhere it was shown before — it moves out of the
     failure list, not out of sight (G-52: a verdict surface must print its evidence)."""
-    raw = (meta or {}).get("uncastable-ok", "") or ""
-    return {p.strip().lower() for p in raw.split(";") if p.strip()}
+    return _header_card_keys(meta, "uncastable-ok")
 
 
 def _signature_themes(meta, cards, cardmeta):
@@ -6207,7 +6372,7 @@ def _signature_themes(meta, cards, cardmeta):
         return frozenset()
     sig = set()
     for q, n, s, c in cards:
-        if n.lower() in prot:
+        if _ms_key(n) in prot:                 # G-63: `prot` holds _ms_key keys
             m = cardmeta.get(n.lower())
             if m:
                 sig.update(m["synergies"])
@@ -6376,7 +6541,7 @@ def rank_cut_candidates(d):
         nl = n.lower()
         if nl in BASICS or nl in seen:
             continue
-        if nl in protected:
+        if _ms_key(n) in protected:            # G-63: `protected` holds _ms_key keys
             prot_present.append(n)
             seen.add(nl)
             continue
@@ -7159,7 +7324,9 @@ def _weakest_cut(dmeta, cards, cardmeta, carddata, add_is_fixer=False):
     best = None
     for q, n, s, c in cards:
         nl = n.lower()
-        if nl in BASICS or nl in protected:
+        # G-63: `protected` holds _ms_key keys — must match rank_cut_candidates', or the
+        # two answers to "most-cuttable card" diverge on exactly the protected DFCs.
+        if nl in BASICS or _ms_key(n) in protected:
             continue
         cd = carddata.get(nl)
         tline = (cd["type"] if cd else "") or ""
@@ -7454,7 +7621,7 @@ def _strong_signature_themes(meta, cards, cardmeta, min_cards=2):
         return frozenset()
     counts = {}
     for q, n, s, c in cards:
-        if n.lower() in prot:
+        if _ms_key(n) in prot:                 # G-63: `prot` holds _ms_key keys
             m = cardmeta.get(n.lower())
             if m:
                 for t in set(m["synergies"]):
@@ -7974,7 +8141,11 @@ def cmd_screen(args):
                          owned=owned_qty(qty, name), rar=rar.get(nl, "?"),
                          illegal=bool(fmt and legs and fmt not in legs),
                          castable=cast_ok, cast_note=cast_note,
-                         present=nl in in_deck))
+                         # `in_deck` holds _ms_key keys while `nl` is the resolved card's
+                         # FULL display name, so every pool-keyed DFC read as absent and
+                         # `screen` graded a maindecked card as a fresh candidate —
+                         # silently, on the surface G-47 points at for stale verdicts.
+                         present=_ms_key(nl) in in_deck))
 
     # The header counts RESOLVED candidates, not INPUTS. It used to print len(queries),
     # so `screen 52 "Demon"` announced "screening 1 candidate(s)" and then graded zero —
@@ -8229,8 +8400,11 @@ def cmd_suggest_homes(args):
         if not shared:
             continue
         deck_avg_mv = sum(d_mvs) / len(d_mvs) if d_mvs else 0.0
-        already = bool({card.lower(), card.split(" // ")[0].lower()}
-                       & {n.lower() for _, n, _, _ in cards})
+        # BOTH sides through `_ms_key` (G-63). The card side was front-normalized and the
+        # DECK side was not, so a deck storing the full `Front // Back` spelling read as
+        # not running the card — printing `in? no` plus a cut hint, i.e. advising the deck
+        # make room for a card already in its 60.
+        already = _ms_key(card) in {_ms_key(n) for _, n, _, _ in cards}
         fit = sum(theme_w.get(t, 0) for t in shared)
         d_int, d_ca = deck_role_counts(cards, carddata)
         # STRICT (>=2 protected cards) — see fit_strength's docstring: the loose
@@ -8824,6 +8998,7 @@ def craft_role_fillers(d, roles, *, limit=8):
     declared = set(_declared_colors(meta) or _deck_castable_colors(meta, cards, mana))
     fmt = (meta.get("format") or "").strip().lower()
     RANK = {"Common": 0, "Uncommon": 1, "Rare": 2, "Mythic": 3}
+    pool_rot, _has_released = _pool_rotation_index()
     out, seen = [], set()
     with open(POOL_CSV, newline="", encoding="utf-8") as fh:
         for r in csv.DictReader(fh):
@@ -8851,8 +9026,12 @@ def craft_role_fillers(d, roles, *, limit=8):
             entry = mana.get(nl)
             mv = entry[1] if entry and entry[1] is not None else 99
             rar = (r.get("Rarity") or "?").strip()
+            # G-30: `tier --to` is described in CLAUDE.md as doubling as a WILDCARD-SPEND
+            # PLANNER, and this is its craft half — the one list here that costs real
+            # wildcards — so a rotating pick must say so (BS4-11).
+            rot = craft_rot_note(name, pool_rot)
             out.append((RANK.get(rar, 9), mv, name, "".join(sorted(ident)) or "C", rar,
-                        (r.get("Card Text") or "").split("\n")[0][:56]))
+                        (r.get("Card Text") or "").split("\n")[0][:56], rot))
     out.sort(key=lambda x: (x[0], x[1], x[2]))
     return out[:limit]
 
@@ -8981,7 +9160,11 @@ def effect_redundancy(d):
             if r in IMPACT_ROLES:
                 effects.add(("role", r))
         for t in cardmeta.get(nl, {}).get("synergies", []):
-            if t in central and t not in GENERIC_THEMES:   # specific, plan-relevant themes
+            # `_GENERIC_TRIBES` too, not just GENERIC_THEMES: every other specific-theme
+            # test here excludes a background tribe (Human/Hero/Villain), so without it a
+            # central `Human` tag became a redundancy bucket and `cmd_redundancy` could
+            # propose "firming up Human" (BS4-35).
+            if t in central and t not in GENERIC_THEMES and t not in _GENERIC_TRIBES:
                 effects.add(("theme", t))
         for kind, name in effects:
             b = buckets.setdefault(name, {"kind": kind, "cards": []})
@@ -9120,7 +9303,7 @@ def cmd_redundancy(args):
             craft_f = craft_role_fillers(d, {name}, limit=8)
             opts = [(_card_power(nm.lower(), carddata, rar), nm, True) for _mv, nm, *_ in owned_f]
             opts += [(_card_power(nm.lower(), carddata, rar), nm, False)
-                     for _rk, _mv, nm, *_ in craft_f]
+                     for _rk, _mv, nm, *_rest in craft_f]
             opts.sort(key=lambda r: -r[0])
         else:
             opts = [(pw, nm, own) for pw, nm, own, _mv, _r in functional_theme_options(d, name, limit=10)]
@@ -9355,6 +9538,15 @@ _CLAUSE_BREAK = re.compile(r"[.;!?](?=\s)")
 # "deck 56" / "deck 40a" — an explicit reference to a deck by id. Requires the word
 # `deck` so a bare count ("16 Birds") can never read as one.
 _OTHER_DECK_RE = re.compile(r"\bdeck\s+(\d+[a-z]?)\b", re.I)
+# A figure whose SUBJECT is the card POPULATION rather than this list. Deck 49's
+# archetype prose argues "Standard's Dragons average MV 5.30, so a deck that wants to
+# field several must SOLVE ITS OWN MANA" — a true statement about the format that the
+# figure scan read as a stale claim about the deck's own 4.03 curve. Possessive form
+# only, deliberately: "Standard's Dragons average…" names a population, while "fine in
+# Standard, avg MV 2.4" is still a claim about this deck and must keep auditing.
+_POPULATION_SUBJECT_RE = re.compile(
+    r"\b(?:standard|alchemy|historic|brawl|pioneer|modern|explorer|timeless)'s\b"
+    r"|\bthe (?:format|pool|meta|average)(?:'s)?\b", re.I)
 
 
 def _clause_bounds(prose, start, end):
@@ -9754,35 +9946,66 @@ def rationale_staleness(d, carddata=None):
     if stale_cards:
         stale_cards = sorted(set(stale_cards))
     vec = deck_quality_vector(d)
-    tier_prose = (meta or {}).get("tier", "") or ""
     own_id = str(d.get("id") or "").lower()
-    for rx, key in _RATIONALE_FIGURES:
-        for m in rx.finditer(tier_prose):
-            quoted, actual = m.group(1), vec.get(key)
-            if actual is None:
-                continue
-            # A figure quoted about ANOTHER DECK is not a claim about this one. 56a's
-            # block compared itself to its parent — "deck 56 core is a genuine aggro
-            # deck (clock 5/7, interaction 7, avg MV 2.42)" — and both numbers flagged
-            # as stale against 56a's own vector (two false positives, 2026-08-09).
-            # Scoped to the figure's clause, and only an id OTHER than this deck's
-            # suppresses, so a rationale citing its own number by id still audits.
-            clo, chi = _clause_bounds(tier_prose, m.start(), m.end())
-            ids = {g.lower() for g in _OTHER_DECK_RE.findall(tier_prose[clo:chi])}
-            if ids - {own_id}:
-                continue
-            # A rationale legitimately quotes PAST figures when it documents a change
-            # ("took interaction 1→4", "it cited a 2.65 curve; the list is now 3.0"), and
-            # flagging those makes the check cry wolf, which is how a check gets ignored.
-            # Only a figure presented as the CURRENT state is worth reporting. This used
-            # to reuse the CARD scan's `_cites_as_history`; see `_figure_is_history` for
-            # why that was wrong and what it hid.
-            if _figure_is_history(tier_prose, m.start(), m.end()):
-                continue
-            same = (abs(float(quoted) - float(actual)) < 0.005 if "." in quoted
-                    else int(quoted) == int(actual))
-            if not same and (key, quoted, actual) not in stale_figures:
-                stale_figures.append((key, quoted, actual))
+    # The FIGURE half sweeps the SAME two headers as the CARD half above. It read
+    # `#: tier:` alone, so a figure in `#: archetype:` could contradict the live vector
+    # indefinitely: deck 26a quoted "avg MV 3.05, 15 early drops" against a live 2.97 and
+    # the audit reported the deck clean. G-27 has always DOCUMENTED both headers as in
+    # scope — only the card scan implemented it, so the doc was true of half the function
+    # (BS4-07). Same reasoning as the card half: `#: archetype:` is a claim about the
+    # CURRENT list and is the header a reader trusts first, while `#: notes:` stays out
+    # as a free-form build log.
+    for header in ("tier", "archetype"):
+        prose = (meta or {}).get(header, "") or ""
+        if not prose:
+            continue
+        for rx, key in _RATIONALE_FIGURES:
+            for m in rx.finditer(prose):
+                quoted, actual = m.group(1), vec.get(key)
+                if actual is None:
+                    continue
+                # A figure quoted about ANOTHER DECK is not a claim about this one. 56a's
+                # block compared itself to its parent — "deck 56 core is a genuine aggro
+                # deck (clock 5/7, interaction 7, avg MV 2.42)" — and both numbers flagged
+                # as stale against 56a's own vector (two false positives, 2026-08-09).
+                # Scoped to the figure's clause, and only an id OTHER than this deck's
+                # suppresses, so a rationale citing its own number by id still audits.
+                clo, chi = _clause_bounds(prose, m.start(), m.end())
+                clause = prose[clo:chi]
+                ids = {g.lower() for g in _OTHER_DECK_RE.findall(clause)}
+                if ids - {own_id}:
+                    continue
+                # The same rule by NAME, which is how the prose usually writes it. Deck
+                # 44a's distinctness clause — "Black Sun is aggro-sacrifice with a 5/7
+                # clock and card advantage 0" — is a claim about DECK 1, but names it
+                # rather than saying "deck 1", so the id rule above could not see it and
+                # the figure flagged against 44a's own card advantage of 3. The card scan
+                # has masked roster deck names since it was written; this is the figure
+                # half of the same idea (BS4-07).
+                # A name that is part of THIS deck's own name is not another deck. The
+                # variant convention makes that essential rather than pedantic: 26a is
+                # "Iron Forge — Virulent", so its PARENT's name is a substring of its own,
+                # and an exact-match exclusion suppressed 26a's genuinely stale figure —
+                # the one case this whole fix exists to catch.
+                own_name = (meta or {}).get("name", "").strip()
+                if any(nm in clause for nm in _roster_deck_names()
+                       if nm and nm not in own_name):
+                    continue
+                # …and a figure about the card POPULATION is not a claim about this list.
+                if _POPULATION_SUBJECT_RE.search(clause):
+                    continue
+                # A rationale legitimately quotes PAST figures when it documents a change
+                # ("took interaction 1→4", "it cited a 2.65 curve; the list is now 3.0"),
+                # and flagging those makes the check cry wolf, which is how a check gets
+                # ignored. Only a figure presented as the CURRENT state is worth
+                # reporting. This used to reuse the CARD scan's `_cites_as_history`; see
+                # `_figure_is_history` for why that was wrong and what it hid.
+                if _figure_is_history(prose, m.start(), m.end()):
+                    continue
+                same = (abs(float(quoted) - float(actual)) < 0.005 if "." in quoted
+                        else int(quoted) == int(actual))
+                if not same and (key, quoted, actual) not in stale_figures:
+                    stale_figures.append((key, quoted, actual))
     return stale_cards, stale_figures
 
 
@@ -9983,8 +10206,9 @@ def cmd_tier(args):
             # prints on every row; it just no longer decides the order.
             merged = [(mv, name, ident, "owned", "owned", txt)
                       for mv, name, ident, _hit, txt in owned_f]
-            merged += [(mv, name, ident, (rar[:1] or "?") + " craft", "craft", txt)
-                       for _rk, mv, name, ident, rar, txt in craft]
+            merged += [(mv, name, ident, (rar[:1] or "?") + " craft", "craft",
+                        (rot + " " if rot else "") + txt)
+                       for _rk, mv, name, ident, rar, txt, rot in craft]
             merged.sort(key=lambda r: (r[0], r[1].lower()))
             if merged:
                 print(f"\n  on-color, format-legal {label} to add "

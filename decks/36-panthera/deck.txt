@@ -1,5 +1,6 @@
 #: name: Panthera
 #: format: Standard
+#: arena: 36 Panthera, d3a6fc61-2329-45d1-b8e2-575e98e023bd
 #: colors: GW
 #: tier: B — Selesnya go-wide Cat tribal. Measurable floor reads A, but that A is thin and generous: it rests on interaction=7 that includes conditional fights (Tenderize/Epic Fight/Bushwhack), while measured card-advantage=1 badly under-reads the real engines (Vizier/Ka-Zar top-of-library, Beza, Kutzil). Held one band BELOW the floor at B — but NOT for singleton variance: `deck.py redundancy 36` shows the go-wide Cat plan is functionally redundant (a virtual ~13-of), so draws are steadier than a naive highlander read suggests. What keeps THIS list at B is that it's the spicier, less-optimized build: a go-wide board whose anti-sweeper insurance is Divine Resilience plus Basri's cycling (Cats-only), moderate-quality interaction (fights + O-rings alongside the premium answers), some flavor filler, and no format-warping bomb. The competitive sibling 36a keeps the same singleton core but sharpens it (max premium interaction, cut spice) to a defensible A. Path to A: play 36a, or swap this list's spice for its competitive picks.
 #: archetype: Selesnya (G/W) Cats — go-wide tribal built around Cat lords (Arahbo, Regal

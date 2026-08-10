@@ -37,7 +37,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-from lib import DEFAULT_CSV, load_rows, write_rows, eprint, csv_schema_error
+from lib import (DEFAULT_CSV, load_rows, write_rows, eprint, csv_schema_error,
+                 alias_front)
 import scryfall
 from scryfall import NotFound, ScryfallUnavailable
 
@@ -98,10 +99,17 @@ def oracle_fields(card):
 
 
 def index_card(by_name, card):
-    """Index a card under its full and front-face name (lowercased) for matching."""
+    """Index a card under its REAL (full, lowercased) name.
+
+    The front-face alias is NOT added here. Doing both with `setdefault` in-pass is the
+    order-dependent shadowing trap `lib.alias_front`'s contract forbids: a `Front // Back`
+    card seen early claims the bare `Front` key, and a genuinely distinct card of that name
+    arriving later can never claim its own ("Life" is a card as well as the front of
+    "Life // Death"). Callers alias in a SECOND pass via `lib.alias_front` (G-63, BS4-18).
+    Zero front-name collisions exist in today's Arena pool, so this was latent — one
+    printing away from writing another card's cost/text over a real one, silently."""
     full = card.get("name", "").lower()
     by_name.setdefault(full, card)
-    by_name.setdefault(full.split(" // ")[0], card)
 
 
 def resolve_cards(names):
@@ -122,7 +130,7 @@ def resolve_cards(names):
         if card:
             index_card(by_name, card)
         time.sleep(0.1)
-    return by_name
+    return alias_front(by_name)          # second pass, shadow-safe (G-63)
 
 
 def enrich(path, dry_run=False, force=False, only=None):

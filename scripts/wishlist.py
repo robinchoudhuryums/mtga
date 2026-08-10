@@ -56,8 +56,13 @@ HEADER = ["Card Name", "Type", "Card Text", "Color(s)", "Synergies",
 # PROVENANCE for the Power column. Both `--add` and `--seed-power` write a heuristic
 # estimate into the same cell a hand grade goes in, so nothing could tell an auto-seed
 # from a human judgment — which meant "verify this number" had to be said about EVERY
-# row, including the ones already graded. Written as "seed" by the estimators; anything
-# else (including blank, for rows that predate this column) is treated as hand-graded.
+# row, including the ones already graded. Written as "seed" by the estimators.
+#
+# NOTE the trust rule, because this comment used to state the OPPOSITE of the code: only
+# `hand` is trusted. `seed`, `unknown` AND BLANK are all untrusted — see
+# `power_is_seeded`, which is the definition, and G-17. A blank cell is a row nobody has
+# graded, so treating it as a human judgment is the one reading that cannot be right
+# (BS4-21).
 POWER_SEEDED = "seed"       # written by --add / --seed-power
 POWER_HAND = "hand"         # a human graded it; trust the number
 POWER_UNKNOWN = "unknown"   # predates this column — provenance genuinely not recorded
@@ -115,18 +120,33 @@ def owned_index():
             continue
         q = (r.get("Quantity Owned") or "").strip()
         c = int(q) if q.isdigit() else 0
-        # Index under the full name AND the front-face name so a lookup by either
-        # resolves. Use a SET so a single-faced card (where the two are identical)
-        # is counted once, not twice — matching pool.py/deck.py's per-name sum
-        # (audit F13). A DFC has two distinct keys, each mapping to its count.
-        for k in {n, n.split(" // ")[0]}:
-            counts[k] = counts.get(k, 0) + c
+        # Sum under the card's REAL stored name only (audit F13's per-name sum across
+        # printings). The front-face alias is a SECOND pass below.
+        counts[n] = counts.get(n, 0) + c
+    # A front alias is added only where NO real row already claims that name — the rule
+    # `lib.alias_front` exists to enforce. The previous loop added the count to BOTH keys
+    # unconditionally, so a distinct real card sharing a DFC's front name ("Life" vs
+    # "Life // Death") had the DFC's copies ADDED to its own total. Inert today because
+    # the library stores DFCs front-only, but BS2-02's whole history is ingest writers
+    # appending full-name rows, and this is the read that would then over-count (BS4-20).
+    for name in list(counts):
+        front = name.split(" // ")[0]
+        if front != name and front not in counts:
+            counts[front] = counts[name]
     return counts
 
 
 def _owned_of(owned, name):
     """Copies owned for a wishlist card name — DFC-aware via the shared lib primitive."""
     return owned_qty(owned, name)
+
+
+class TargetAuditUnavailable(Exception):
+    """The wishlist-target audit could not run because the deck roster wouldn't load.
+
+    A distinct exception rather than a swallowed error because the two outcomes it
+    separates look identical downstream and mean opposite things: "no issues found" and
+    "nothing was checked" are both an empty list (BS4-08)."""
 
 
 def load_wishlist():
@@ -235,8 +255,39 @@ def enrich(name, set_code, collector, pool):
     return data, status
 
 
+def _try_seed_power(row, _warned=[]):
+    """`_seed_power(row)`, or None if the seeding model is unavailable (warned once).
+
+    `_seed_power` does `import deck`, and `cmd_add` called it in a bare loop AFTER the
+    Scryfall fetches and BEFORE `write_wishlist` — so a broken deck.py threw away an
+    entire enriched batch, the expensive part, over a cosmetic estimate (BS4-22). A blank
+    Power is a recoverable state the tool already models (`cmd_seed_power` exists to fill
+    exactly those cells); a lost batch is not. pool.py made `classify_roles` a lazy proxy
+    for this same reason — this is that discipline on the write path."""
+    try:
+        return _seed_power(row)
+    except Exception as e:
+        if not _warned:
+            _warned.append(True)
+            eprint(f"WARN:  Power seeding unavailable ({type(e).__name__}: {e}) — rows are "
+                   "being written with a BLANK Power. The batch is safe; fill the "
+                   "estimates later with `wishlist.py --seed-power --write`.")
+        return None
+
+
 def cmd_add(path):
-    text = sys.stdin.read() if path == "-" else open(path, encoding="utf-8").read()
+    if path == "-":
+        text = sys.stdin.read()
+    else:
+        # A clean error, like query.py / pool.py / parse_matches all give. This was a bare
+        # `open(...).read()`, so a mistyped filename dumped a FileNotFoundError traceback
+        # (BS4-22) — and it leaked the handle besides.
+        try:
+            with open(path, encoding="utf-8") as fh:
+                text = fh.read()
+        except OSError as e:
+            eprint(f"Could not read {path!r}: {e}")
+            return 1
     entries = []
     for lineno, raw in enumerate(text.splitlines(), 1):
         line = raw.strip()
@@ -287,8 +338,10 @@ def cmd_add(path):
                 # arrived, recompute an UNTRUSTED power (seed/unknown/blank per
                 # G-17's provenance rule); a hand grade is never touched.
                 if power_is_seeded(prev):
-                    prev["Power"] = str(_seed_power(prev))
-                    prev["Power Source"] = POWER_SEEDED
+                    est = _try_seed_power(prev)
+                    if est is not None:
+                        prev["Power"] = str(est)
+                        prev["Power Source"] = POWER_SEEDED
                 reenriched += 1
             else:
                 dupes += 1
@@ -311,7 +364,10 @@ def cmd_add(path):
     seeded = 0
     for row in new_rows:
         if not (row.get("Power") or "").strip():
-            row["Power"] = str(_seed_power(row))
+            est = _try_seed_power(row)
+            if est is None:
+                break          # already warned; write the batch rather than lose it
+            row["Power"] = str(est)
             row["Power Source"] = POWER_SEEDED
             seeded += 1
 
@@ -426,7 +482,16 @@ def _theme_model():
         if not dk.is_roster_deck(dd):
             continue
         dm, cards = dk.parse_deck_file(dd["path"])
-        if not (55 <= sum(q for q, _n, _s, _c in cards) <= 70):
+        # 60-card constructed OR 100-card singleton (Historic Brawl). The window used to
+        # be 55-70 alone, which silently dropped any 100-card deck from the fingerprint
+        # set — so cards targeted at one would rank "review"/generic while
+        # `--audit-targets` still accepted its id as valid, two views disagreeing about
+        # whether a deck exists. The roster has no 100-card deck yet and the handoff
+        # names building one as a live plan, so this is a trap laid for the next session
+        # rather than a live bug (BS4-23). The filter's real job is excluding untuned
+        # PILES, which both bands still do.
+        _total = sum(q for q, _n, _s, _c in cards)
+        if not (55 <= _total <= 70 or 95 <= _total <= 105):
             continue
         colors, ident, tw = dk._declared_colors(dm), set(), {}
         for q, n, s, c in cards:
@@ -598,10 +663,24 @@ def _land_value(row, deck_colors):
     # Only an ADD clause is color PRODUCTION: a bare `{W}` anywhere in the text
     # counted an ACTIVATION COST as fixing ("{W}: …" read as producing white),
     # inflating a land's manabase score (broad-scan batch 5).
-    for m in re.finditer(r"[Aa]dd\b[^.\n]*", txt):
-        for c in "WUBRG":
-            if "{" + c + "}" in m.group(0):
-                prod.add(c)
+    #
+    # RESTRICTED production is tracked separately. A Village cycle land reads
+    # "{T}: Add {B}. Spend this mana only to cast a creature spell." — that {B} is a real
+    # black source for creatures and NOTHING for a removal spell, so scoring it as plain
+    # fixing over-rates it. Mudflat Village ranked #1 of deck 52's land suggestions on
+    # exactly this (G-37's live scoring miss). The restriction is detected PER LINE,
+    # because that is how Magic prints it: the qualifying sentence follows the Add
+    # sentence inside one ability, and the `[^.\n]*` clause scan deliberately stops at
+    # the period before it.
+    restricted_only = set()
+    free = set()
+    for line in txt.splitlines():
+        limited = "spend this mana only" in line.lower()
+        for m in re.finditer(r"[Aa]dd\b[^.\n]*", line):
+            cols = {c for c in "WUBRG" if "{" + c + "}" in m.group(0)}
+            prod |= cols
+            (restricted_only if limited else free).update(cols)
+    restricted_only -= free                       # a color also added freely is free
     if not prod or not deck_colors:
         return 3.5  # colorless/utility land, or no known target — neutral
     used = prod & deck_colors
@@ -610,6 +689,15 @@ def _land_value(row, deck_colors):
     base = 3.5 + 4.5 * match * multi              # ~3.5..8 by color usefulness
     if "enters tapped" not in txt.lower() and "enters the battlefield tapped" not in txt.lower():
         base += 1.5                               # untapped fixing is premium
+    # Halve the fixing PREMIUM (never the 3.5 neutral floor) when every color this deck
+    # wants from the land is restricted. Bounded and one-directional: it can only lower a
+    # land, never raise one, so it cannot invent a recommendation. Half rather than zero
+    # because the restriction is real but narrow — a creature-only source is close to full
+    # value in a creature deck and near-dead in a spell deck, and `_land_value` is only
+    # told the deck's COLORS, so the honest move is a modest discount plus the
+    # `·restricted` marker `suggest --lands` now prints for the human to judge.
+    if used and used <= restricted_only:
+        base = 3.5 + (base - 3.5) * 0.5
     return round(min(10.0, base), 1)
 
 
@@ -1308,7 +1396,17 @@ def _audit_target_issues(color_only=False):
     against the CURRENT decks: 'color' = the target deck can't cast the card (the
     drift you get when a deck changes colors, e.g. 14 Mardu->Rakdos orphaned Neriv);
     'target' = an unknown deck id; 'power' = a blank Power cell. With color_only,
-    returns just the castability/target-drift issues (for check_all's soft pass)."""
+    returns just the castability/target-drift issues (for check_all's soft pass).
+
+    RAISES `TargetAuditUnavailable` if the deck roster can't be loaded. It used to
+    `except Exception: pass`, which left `deck_ids` and `mana` empty — and every check
+    below is gated on those being non-empty, so the function returned `[]` and
+    `cmd_audit_targets` printed "Wishlist targets are clean: every target deck can cast
+    its card" having checked nothing. Worse on the automated path: `check_all`'s soft
+    sweep has its own try/except that would have reported a skip, but the exception was
+    swallowed one level down, so the gate saw an empty list rather than a failure and the
+    roster sweep became an invisible no-op (BS4-08). Every sibling loader in this file
+    eprints on this exact failure (audit A14); this was the one that didn't."""
     rows = load_wishlist()
     issues = []
     deck_cols, deck_ids = {}, set()
@@ -1320,8 +1418,10 @@ def _audit_target_issues(color_only=False):
             deck_ids.add(d["id"].lower())
             deck_cols[d["id"].lower()] = card_colors(d["meta"].get("colors"))
         mana = dk.load_mana()
-    except Exception:
-        pass
+    except Exception as e:
+        raise TargetAuditUnavailable(
+            f"the deck roster could not be loaded ({type(e).__name__}: {e}), so wishlist "
+            "targets cannot be checked against it — this is a SKIP, not a clean bill") from e
 
     def _castable_in(name, ident, dc):
         """Can a deck of colors `dc` cast this card? Hybrid-aware: a hybrid pip is
@@ -1359,7 +1459,12 @@ def _audit_target_issues(color_only=False):
 def cmd_audit_targets(_rows):
     """Audit wishlist Targets against the current decks: flag cards whose target
     deck can't cast them (color/theme drift after a retune) and blank Power cells."""
-    issues = _audit_target_issues()
+    try:
+        issues = _audit_target_issues()
+    except TargetAuditUnavailable as e:
+        # Non-zero: an audit that could not run must not read as a pass.
+        eprint(f"Wishlist target audit SKIPPED — {e}")
+        return 1
     if not issues:
         print("Wishlist targets are clean: every target deck can cast its card, "
               "and every card has a Power grade.")

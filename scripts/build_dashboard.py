@@ -225,7 +225,14 @@ def collect():
                 shorts.append((n, miss))
         ok = (missing == 0 and short == 0)
         buildable += 1 if ok else 0
-        wc = deckmod._wc_str(deckmod._wc_breakdown(shorts, rar_of))
+        # Emit the BREAKDOWN as data, not just its display string. The roster
+        # "Wildcards needed" KPI used to re-parse `wc` with /(\d+)\s*([MRUC])/g, so a
+        # formatting change in `deck._wc_str` — a separator, a label, a zero suppressed
+        # differently — would silently zero the panel with everything still green. Every
+        # other derived number on this page routes through a shared primitive; this was
+        # the one read back out of prose (BS4-42).
+        wc_by = deckmod._wc_breakdown(shorts, rar_of)
+        wc = deckmod._wc_str(wc_by)
         decks.append({
             "id": d["id"],
             "core": d["core"],
@@ -239,6 +246,7 @@ def collect():
             "short": short,
             "buildable": ok,
             "wc": wc,
+            "wcBy": {r: int(wc_by.get(r, 0)) for r in ("M", "R", "U", "C")},
             "craft": craft_rows(d),
             "viz": deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name),
             "detail": deck_detail(d["id"]),
@@ -833,7 +841,7 @@ TEMPLATE = r"""<!DOCTYPE html>
 
   <section id="sec-find">
     <h2 class="sec"><span class="tick"></span>Find a card — which decks run it</h2>
-    <input class="filter" id="cardfind" style="width:340px;max-width:100%" placeholder="type a card name (incl. variants)…" autocomplete="off" spellcheck="false">
+    <input class="filter" id="cardfind" aria-label="Find a card across all decks" style="width:340px;max-width:100%" placeholder="type a card name (incl. variants)…" autocomplete="off" spellcheck="false">
     <div id="cardfindout" style="margin-top:10px"></div>
   </section>
 
@@ -853,7 +861,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   <section id="sec-stale">
     <h2 class="sec"><span class="tick"></span>Check for stale decks — paste your Arena export(s)</h2>
     <p class="auditnote" id="stalenote">Paste one deck's Arena export to see if it drifted from the stored list, or paste several <code>Deck</code> blocks at once for a roster staleness report. Each block is auto-matched to its closest stored deck (variants included) — Arena exports don't carry a deck name. Compared by card name + quantity; printings and basic-land art are treated as the same card (same rules as <code>deck.py verify</code>). Nothing is uploaded — the compare runs entirely in your browser.</p>
-    <textarea id="staletext" class="staletext" placeholder="Deck&#10;1 Y'shtola Rhul (FIN) 86&#10;…"></textarea>
+    <textarea id="staletext" class="staletext" aria-label="Paste an Arena deck export to compare against the stored deck" placeholder="Deck&#10;1 Y'shtola Rhul (FIN) 86&#10;…"></textarea>
     <div class="staleactions"><button class="cta" id="stalego">Compare</button><button class="ghostbtn" id="staleclear">Clear</button></div>
     <div id="staleout"></div>
   </section>
@@ -868,7 +876,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     <h2 class="sec"><span class="tick"></span>Decks &amp; variants</h2>
     <div class="controls">
       <div class="ctl-left">
-        <input class="filter" id="deckfilter" placeholder="filter by id, name, or colors…">
+        <input class="filter" id="deckfilter" aria-label="Filter decks by id, name, or colors" placeholder="filter by id, name, or colors…">
         <div class="colchips" id="colchips"></div>
       </div>
       <div class="viewbtns">
@@ -894,7 +902,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   <section id="sec-wishlist">
     <h2 class="sec"><span class="tick"></span>Wildcard priority — wishlist</h2>
     <div class="wltop">
-      <input class="filter" id="wlfilter" placeholder="filter wishlist by card, target, or signal…">
+      <input class="filter" id="wlfilter" aria-label="Filter the wishlist by card, target, or signal" placeholder="filter wishlist by card, target, or signal…">
       <div class="wlrar" id="wlrar" aria-label="Filter by wildcard rarity"></div>
       <span class="grow"></span>
       <span class="wltip">tip: click a card to see which decks it unlocks</span>
@@ -928,7 +936,30 @@ TEMPLATE = r"""<!DOCTYPE html>
 // over the embedded snapshot so the fresher data survives the reload (and a new
 // tab/session falls back to the committed embedded data).
 const _live = (function(){ try { return sessionStorage.getItem('mtga-live'); } catch(e){ return null; } })();
-const D = JSON.parse(_live || document.getElementById('data').textContent);
+// Two guards, both bought by BS4-41.
+//  (1) The embedded snapshot is the FLOOR. `JSON.parse` on the stored payload used to run
+//      unguarded at the top of the script, so a truncated/tampered `mtga-live` (a quota-
+//      capped setItem is enough) threw before anything rendered and the page became dead
+//      chrome — every panel empty, no error, for the rest of the tab session.
+//  (2) Prefer the stored payload only when it is genuinely FRESHER. `syncLive` compares
+//      `generated` before STORING, but the loader preferred the stored copy
+//      unconditionally, so a locally rebuilt (newer) dashboard.html kept showing the older
+//      synced data in any tab that had ever synced.
+const D = (function(){
+  const embedded = JSON.parse(document.getElementById('data').textContent);
+  if (!_live) return embedded;
+  let live;
+  try { live = JSON.parse(_live); }
+  catch (e) {
+    try { sessionStorage.removeItem('mtga-live'); } catch (_) {}
+    console.warn('mtga: stored live payload was unreadable; using the embedded snapshot.', e);
+    return embedded;
+  }
+  const lt = Date.parse((live.generated||'').replace(' ','T'));
+  const et = Date.parse((embedded.generated||'').replace(' ','T'));
+  if (isNaN(lt) || (!isNaN(et) && et >= lt)) return embedded;
+  return live;
+})();
 const esc = s => (s==null?'':''+s).replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 const WC = {Mythic:'M',Rare:'R',Uncommon:'U',Common:'C'};
 const RANK = {Mythic:3,Rare:2,Uncommon:1,Common:0};
@@ -990,7 +1021,12 @@ function parseHash(){
 }
 function restorePrefs(){
   let p = {}; try { p = JSON.parse(localStorage.getItem('mtga-prefs')||'{}')||{}; } catch(e){}
-  STATE.theme = p.theme || 'dark'; STATE.viewMode = p.viewMode || 'grid'; STATE.quickFilter = p.quickFilter || 'all';
+  // Follow the OS on a FIRST visit, like the three editor pages have since S-8; a
+  // stored choice still wins. A light-OS user previously got dark until they found
+  // the toggle, and the two surfaces of one tool disagreed about the default.
+  STATE.theme = p.theme || (window.matchMedia
+    && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  STATE.viewMode = p.viewMode || 'grid'; STATE.quickFilter = p.quickFilter || 'all';
   STATE.activeColors = p.activeColors || {}; STATE.open = p.open || {}; STATE.pinned = p.pinned || {};
   STATE.secCollapsed = p.secCollapsed || {}; STATE.wlRarity = p.wlRarity || {};
   const h = parseHash();
@@ -1075,7 +1111,13 @@ $('plan').textContent = D.roster_plan || '(no craft plan)';
 // ---------- analytics: needs / color / format / roster curve ----------
 (function(){
   const N = {M:0,R:0,U:0,C:0};
-  D.decks.forEach(d => { const re = /(\d+)\s*([MRUC])/g; let m; while ((m = re.exec(d.wc||''))) N[m[2]] += +m[1]; });
+  // Structured counts from the island (BS4-42) — never re-parsed from `d.wc`, which is
+  // a DISPLAY string owned by deck._wc_str. Falls back to the old parse for a stale
+  // sessionStorage payload built before `wcBy` existed.
+  D.decks.forEach(d => {
+    if (d.wcBy) { ['M','R','U','C'].forEach(r => { N[r] += (d.wcBy[r] || 0); }); return; }
+    const re = /(\d+)\s*([MRUC])/g; let m; while ((m = re.exec(d.wc||''))) N[m[2]] += +m[1];
+  });
   const order = [['M','Mythic'],['R','Rare'],['U','Uncommon'],['C','Common']];
   const max = Math.max(1, ...order.map(o => N[o[0]]));
   const grad = {M:'linear-gradient(90deg,#f4a03a,#ffca6d)', R:'linear-gradient(90deg,#caa63a,#e6c866)', U:'linear-gradient(90deg,#7f8ba0,#9aa4b2)', C:'linear-gradient(90deg,#6b7480,#8a94a2)'};
@@ -1935,6 +1977,9 @@ function paletteEl(){
   const p = el('div','palette'); p.onclick = e => e.stopPropagation();
   const top = el('div','pin'); top.innerHTML = '<span style="color:var(--accent);font-size:15px">⌘</span>';
   const inp = el('input'); inp.value = STATE.paletteQuery; inp.placeholder = 'Jump to a deck or section…';
+  // A placeholder is a last-resort accessible name: many AT configurations demote it,
+  // and it disappears the moment the user types. This is a dialog's only control.
+  inp.setAttribute('aria-label', 'Jump to a deck or section');
   inp.addEventListener('input', e => { STATE.paletteQuery = e.target.value; STATE.paletteIndex = 0; drawItems(); });
   top.appendChild(inp); top.appendChild(el('span','kbd','esc')); p.appendChild(top);
   const body = el('div','body'); p.appendChild(body);

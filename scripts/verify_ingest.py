@@ -155,8 +155,15 @@ def verify(text, *, exact=False, include_basics=False, lib=None, mana=_UNSET):
         try:
             import import_collection
             centries, cwarnings, _unreadable = import_collection.parse_export(text)
-        except Exception:
+        except Exception as e:
+            # KEEP the diagnostic. `parse_export` raises a ValueError naming the columns
+            # it saw and the `--map` flag that fixes it — and this swallowed it, so the
+            # caller fell through to the generic "No card lines found… Expected Arena
+            # export lines", pointing the operator at the wrong FORMAT entirely. That is
+            # on the recommended path: `import_collection`'s own post-apply message sends
+            # people here with exactly this file (BS4-39).
             centries, cwarnings = [], []
+            warnings = warnings + [f"not readable as a collection CSV/TSV either: {e}"]
         if centries:
             entries = centries
             warnings = cwarnings + [f"read as a collection CSV/TSV export "
