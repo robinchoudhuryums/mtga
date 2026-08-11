@@ -5236,6 +5236,13 @@ def cmd_flex(args):
             label = "  \u2192  ".join(x for x in ((f"\u2212{cut}" if cut else ""),
                                               (f"+{add}" if add else "")) if x)
             print(f"      {label}   ({why} \u2014 retarget or retire the line)")
+    figs = note_figure_staleness(d)
+    if figs:
+        print("\n  \u26a0 STALE figure(s) in `#~ note:` prose "
+              "\u2014 the live vector disagrees:")
+        for note, key, quoted, actual in figs:
+            print(f"      {key} quoted as {quoted}, live {actual}")
+            print(f"        \u2026{' '.join(note.split())[:110]}")
     return 0
 
 
@@ -9744,6 +9751,24 @@ _FIGURE_BACK_WINDOW = 60
 _FIGURE_CMP_WINDOW = 60
 
 
+# A matched number that is not the metric at all. Both shapes are latent in the SHARED
+# `_RATIONALE_FIGURES` patterns, so the guard sits with them and both scans call it.
+#   PERCENT — "cast-on-curve 76.7%" matches `curve (\d+\.\d+)` and was reported as a
+#   76.7 average mana value (deck 28's notes, twice). A percentage is a different
+#   measurement wearing the same words.
+#   DRAW-N  — "sac->draw 2 card advantage" matches `(\d+) card[- ]adv`; the 2 belongs to
+#   "draw", and the adjacency is a coincidence (deck 8).
+_FIGURE_PCT_AFTER = re.compile(r"\s*%")
+_FIGURE_DRAW_BEFORE = re.compile(r"\bdraws?\s*$", re.I)
+
+
+def _figure_misreads_prose(prose, start, end):
+    """True when the pattern matched a number that is not this metric."""
+    if _FIGURE_PCT_AFTER.match(prose, end):
+        return True
+    return bool(_FIGURE_DRAW_BEFORE.search(prose[max(0, start - 10):start]))
+
+
 def _figure_is_history(prose, start, end):
     """True when a quoted figure is presented as a PAST value, not a current claim."""
     if _ARROW_AFTER.match(prose, end):
@@ -10130,11 +10155,89 @@ def rationale_staleness(d, carddata=None):
                 # `_figure_is_history` for why that was wrong and what it hid.
                 if _figure_is_history(prose, m.start(), m.end()):
                     continue
+                # …and the number may not be this metric at all (a percentage, a
+                # "draw N" count). Shared with `note_figure_staleness`, because the
+                # trap is in the PATTERNS both of them use.
+                if _figure_misreads_prose(prose, m.start(), m.end()):
+                    continue
                 same = (abs(float(quoted) - float(actual)) < 0.005 if "." in quoted
                         else int(quoted) == int(actual))
                 if not same and (key, quoted, actual) not in stale_figures:
                     stale_figures.append((key, quoted, actual))
     return stale_cards, stale_figures
+
+
+# The past-cue family, reused CLAUSE-SCOPED by the note scan below. The shared
+# `_FIGURE_PAST` constrains its cue to 24 chars before the figure, which is right for
+# `#: tier:` prose (a claim, where history is the exception) and wrong for a build log
+# (history-dense by construction): deck 50a's "it read avg MV 4.18 with SEVEN early
+# drops and interaction 4" sits the cue ~48 chars from the figure it governs. Widening
+# the shared window instead would loosen every other suppression — the code comment on
+# `_figure_is_history` says so — hence a second, clause-scoped reading of the SAME cues
+# rather than a looser one. It keeps the tense distinction that matters: `\bread\b`
+# does not match "reads", so deck 31's live "role_tally still reads card-adv 1" is not
+# swallowed by the rule that suppresses 50a's past "it read".
+_FIGURE_PAST_CUE = re.compile(_FIGURE_PAST.pattern.split(r"\b[^.;]")[0] + r"\b", re.I)
+
+
+def note_figure_staleness(d, vec=None, meta_cards=None):
+    """[(note, key, quoted, actual)] — figures in `#~ note:` prose the live vector
+    contradicts.
+
+    `#~` notes sat outside every staleness scan. The CARD half deliberately stays out,
+    on G-27's reasoning that a build log naming an ABSENT card is correct — measured at
+    252 such citations across 51 decks of 537 note lines, which would bury any signal.
+    A bare present-tense FIGURE is different: it is a claim about the CURRENT list
+    wherever it is written, and deck 50's "this deck's whole advantage is a 3.11 curve
+    with 21 early drops" is an argument that stops being true when the curve moves.
+
+    Suppressions are the shared ones (arrow/delta, quoted spans, cross-deck ids and
+    names, population subjects, percentages, draw-N) plus the clause-scoped past cue
+    above. Measured on the roster the day it was written: 47 raw matches -> 9 reported,
+    of which 8 were genuinely stale.
+
+    KNOWN RESIDUAL, kept rather than papered over with a one-instance cue: a figure
+    describing a HYPOTHETICAL configuration reads as a live claim. Deck 26's "the best
+    curve of the three pass-3 alternatives (avg MV 3.61, early drops 11)" is the case —
+    that number was true of an option, not of the deck. Report-only, so the cost is one
+    line a human dismisses.
+    """
+    meta, cards = parse_deck_file(d["path"])
+    vec = vec if vec is not None else deck_quality_vector(d)
+    own_id = str(d.get("id") or "").lower()
+    own_name = (meta or {}).get("name", "").strip()
+    out = []
+    for e in parse_flex(d["path"]):
+        note = (e.get("note") or "").strip()
+        if not note:
+            continue
+        for rx, key in _RATIONALE_FIGURES:
+            for m in rx.finditer(note):
+                quoted, actual = m.group(1), vec.get(key)
+                if actual is None:
+                    continue
+                if _figure_is_history(note, m.start(), m.end()):
+                    continue
+                if _figure_misreads_prose(note, m.start(), m.end()):
+                    continue
+                lo, hi = _clause_bounds(note, m.start(), m.end())
+                clause = note[lo:hi]
+                if {g.lower() for g in _OTHER_DECK_RE.findall(clause)} - {own_id}:
+                    continue
+                if any(nm in clause for nm in _roster_deck_names()
+                       if nm and nm not in own_name):
+                    continue
+                if _POPULATION_SUBJECT_RE.search(clause):
+                    continue
+                if _FIGURE_PAST_CUE.search(clause):
+                    continue
+                same = (abs(float(quoted) - float(actual)) < 0.005 if "." in quoted
+                        else int(quoted) == int(actual))
+                if not same:
+                    row = (note, key, quoted, actual)
+                    if row not in out:
+                        out.append(row)
+    return out
 
 
 _EXCLUSION_CUES = re.compile(

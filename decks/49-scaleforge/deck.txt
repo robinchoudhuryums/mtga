@@ -208,4 +208,4 @@
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 49
 #~ -Draconautics Engineer | +Bonehoard Dracosaur | CRAFT (M), DEFERRED: the deck's best card-advantage engine — two cards per upkeep plus a token or Treasure, doubled by Roaming Throne to four. Card advantage is 3 and thin. Engineer holds the slot for 0 wildcards.
-#~ -Breaching Dragonstorm | +Incinerator of the Guilty | CRAFT (M), DEFERRED: screen rates it KEY and it is a real Dragon (16 -> 17). Combat damage collects evidence to wipe their board. MV 6 into a 4.1 curve is the cost, so it wants the curve to come down first.
+#~ -Breaching Dragonstorm | +Incinerator of the Guilty | CRAFT (M), DEFERRED: screen rates it KEY and it is a real Dragon (16 -> 17). Combat damage collects evidence to wipe their board. MV 6 into a 4.03 curve is the cost, so it wants the curve to come down first.

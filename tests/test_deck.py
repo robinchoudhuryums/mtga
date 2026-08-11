@@ -679,6 +679,80 @@ class TestZoneConflict:
         assert deck.zone_conflict_flags(cards, cd) == []
 
 
+class TestNoteFigureStaleness:
+    """Figures in `#~ note:` prose that contradict the live quality vector.
+
+    `#~` notes were outside every staleness scan. The CARD half stays out on G-27's
+    reasoning — a build log naming an absent card is correct, and a scan measured 252
+    such citations across 51 decks. The FIGURE half is checkable, because a bare
+    present-tense number is a claim about the CURRENT list wherever it is written.
+    Every fixture below is real prose from the roster, not a paraphrase.
+    """
+
+    def _deck(self, tmp_path, note, cards=("1 Shock (M21) 159",)):
+        p = tmp_path / "d.txt"
+        p.write_text("\n".join(["#: name: Probe", "#: colors: R", "", "Deck", *cards,
+                                "", f"#~ note: {note}"]) + "\n", encoding="utf-8")
+        return {"id": "t", "name": "Probe", "path": str(p)}
+
+    def _keys(self, d):
+        return [k for _n, k, _q, _a in deck.note_figure_staleness(d)]
+
+    def test_a_bare_present_tense_figure_that_contradicts_the_vector_is_flagged(self, tmp_path):
+        # Deck 50: the note's whole argument rests on the number.
+        d = self._deck(tmp_path, "This deck's whole advantage is a 3.11 curve.")
+        assert "avg_mv" in self._keys(d)
+
+    def test_a_delta_is_not_a_claim(self, tmp_path):
+        # Deck 28: "interaction 5 -> 6" quotes the BEFORE side of a stated change.
+        d = self._deck(tmp_path, "RESULT: interaction 5 -> 6, protection 1 -> 2.")
+        assert self._keys(d) == []
+
+    def test_a_percentage_is_not_an_average_mana_value(self, tmp_path):
+        # Deck 28: "cast-on-curve 76.7%" matched the `curve (\d+\.\d+)` pattern and
+        # reported a 76.7 avg MV. Latent in the SHARED figure patterns, so the guard
+        # lives with them rather than in this scan.
+        d = self._deck(tmp_path, "Average cast-on-curve 76.7% is the real number here.")
+        assert self._keys(d) == []
+
+    def test_draw_n_is_a_card_count_not_a_metric(self, tmp_path):
+        # Deck 8: "more sac->draw 2 card advantage" — the 2 belongs to "draw", and
+        # "2 card advantage" is a coincidence of adjacency.
+        d = self._deck(tmp_path, "SIDEGRADE: more sac->draw 2 card advantage than the cut.")
+        assert self._keys(d) == []
+
+    def test_a_past_cue_anywhere_in_the_clause_suppresses(self, tmp_path):
+        # Deck 50a: "it read avg MV 4.18 with SEVEN early drops and interaction 4".
+        # The cue sits ~48 chars from the figure, past the shared 24-char tail window;
+        # note prose is a build log and is history-dense, so this scan clause-scopes it.
+        d = self._deck(tmp_path,
+                       "As part of a package it read avg MV 4.18 with SEVEN early "
+                       "drops and interaction 4 — unplayable.")
+        assert self._keys(d) == []
+
+    def test_present_tense_reads_is_not_a_past_cue(self, tmp_path):
+        # Deck 31: "role_tally still reads card-adv 1" is a live claim, and the word is
+        # "reads", not "read". The clause-scoped cue must keep that distinction or the
+        # widening above swallows a real finding.
+        d = self._deck(tmp_path,
+                       "Note role_tally still reads card-adv 1 because it does not "
+                       "count a single-draw ability.",
+                       cards=("1 Read the Bones (M21) 117", "1 Sign in Blood (M21) 123"))
+        assert "card_advantage" in self._keys(d)   # live is 2
+
+    def test_a_figure_about_another_deck_is_not_a_claim_about_this_one(self, tmp_path):
+        d = self._deck(tmp_path, "Unlike deck 44, this plan wants interaction 9.")
+        assert self._keys(d) == []
+
+    def test_a_matching_figure_is_silent(self, tmp_path):
+        d = self._deck(tmp_path, "Protection 0 is the honest reading.")
+        assert self._keys(d) == []
+
+    def test_a_note_with_no_figures_is_silent(self, tmp_path):
+        d = self._deck(tmp_path, "applied — Bushwhack in for Shock, purely on curve.")
+        assert deck.note_figure_staleness(d) == []
+
+
 class TestFlexStaleness:
     """A `#~` flex line rots silently: `swap --apply` retires only the lines invalidated
     by the swap it is performing, and the rationale audit reads `#: tier:` / `#:
