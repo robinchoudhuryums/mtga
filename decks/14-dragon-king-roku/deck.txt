@@ -57,5 +57,10 @@
 11 Mountain (MSH) 294
 
 # Flex — suggested swaps. See: deck.py flex 14
-#~ -Summon: Bahamut | +Charging Strifeknight | OWNED (U) SAFE ALT: if the {9} Bahamut bricks in slow hands, swap to a {2}{R} haste body with a repeatable {T},discard:draw loot engine — low-curve, shores up card flow (deck's thin dimension). Bahamut is the higher-ceiling firebending mana-sink finisher (removal + draw + Dragon); Strifeknight is the low-variance consistency pick.
+#~ note: RETIRED 2026-08-11 — the deck now runs BOTH cards, so the either/or this line framed
+#~ note: no longer exists: Charging Strifeknight came in over a different slot and Summon:
+#~ note: Bahamut stayed. The read that produced it is still the right way to compare them if
+#~ note: a slot ever has to give: Bahamut is the higher-ceiling firebending mana-sink finisher
+#~ note: (removal, draw, Dragon), Strifeknight the low-variance {2}{R} haste body whose
+#~ note: repeatable tap-discard-draw shores up this deck's thin card flow.
 #~ note: CRAFT — Realm-Scorcher Hellkite (M) ★: {4}{R}{R} Dragon, flying haste + bargain->4 mana any color + {1}{R} ping -- a Dragon bomb/finisher that also fuels the Dragon payoffs. Queen Brahne (U) ~: prowess + a pinging Wizard-token engine, good with the firebending instant-slinging plan.

@@ -1383,3 +1383,29 @@ that came out of that deck work rather than from a scan:
 one soft warning (the 7 flex lines, which is the new check working). 1253 tests green.
 Docs updates for G-04 / G-26 / G-67 are listed in the block and are the natural next step —
 `/sync-docs`. ROADMAP.md regeneration was requested next.
+
+## 2026-08-11 (late) — flex-line cleanup, and the cycle closed clean
+
+**Completed.** Retired the 7 stale flex lines the new `+In` check surfaced (decks 8, 14,
+26, 26a ×3, 50), converting each to a `#~ note:` record rather than deleting it. Three
+distinct cases, all now labelled in the files: the add landed from a DIFFERENT slot
+(8/14/50, so both cards are in the 60); a genuine DUPLICATE line pair (26a, Invasion
+Submersible, written twice and invisible until the +In half was checked); and one that
+REVERSED rather than went stale (26a Fin Fang Foom — the line argued for excluding it and
+PASS 3 added it anyway).
+
+**check_all now reports ZERO soft warnings** — every staleness sweep is at zero:
+rationale, flex (both halves), header card-names, and the new `#~ note:` figures.
+
+**Decided AGAINST** (do not re-propose without new information):
+- Deleting the retired flex lines outright. The measured reasoning in them is the
+  valuable part; a `#~ note:` keeps it without proposing a change.
+
+**Trap re-confirmed.** `parse_flex` splits on `|`, so a `#~ note:` containing a pipe is
+re-read as -Out/+In fields. This bit the deck 28 note earlier the same day and was
+avoided deliberately here.
+
+**Where I left off.** All work committed and pushed; branch is 1 commit ahead of main
+(PR #119 merged). See `.cycle/NEXT-SESSION.md` §4a-bis for what this session changed and
+§4b for the pick-up shortlist — items 1 (tracker export) and 2 (deck 19's letter) are
+unchanged and still first.
