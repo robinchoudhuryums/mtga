@@ -3,7 +3,7 @@
 #: colors: GUB
 #: plan: midrange
 #: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 8 / card-adv 4 /
-#: tier: protection 4 / 2.92 curve) deliberately, which the rubric permits with argument:
+#: tier: protection 3 / 2.83 curve) deliberately, which the rubric permits with argument:
 #: tier: this is an untested v1 whose engine is nearly all singletons (draw variance on a
 #: tier: two-payoff core — Dour Port-Mage and Three Tree Scribe are one copy each), it
 #: tier: carries 20 craft targets, and the interaction-8 figure counts stun/tap tempo
@@ -40,9 +40,16 @@
 #: notes: and Pond Prophet. GUB was chosen over GUW as primary because black's frogs ARE
 #: notes: frogs (Glarb, The Gitrog, Bogwater Lumaret) while white's pile cards are Rabbit
 #: notes: typal plus Helga; the GUW build exists as variant 68a around Helga's
-#: notes: MV4+-creature-cast engine. The rabbit/squirrel half of the pile (Squirrel Girl,
-#: notes: Camellia, Byrke, Finneas, Warren Warleader...) is a DIFFERENT deck idea, not a
-#: notes: rejected pool for this one — screened below anyway.
+#: notes: MV4+-creature-cast engine. The rabbit/squirrel half of the pile was FIRST sorted
+#: notes: out as "a different deck idea" and that judgment was PARTLY REVERSED on the
+#: notes: user's re-read (same day): Mightcaller / Oakhollow / Treeguard read "Frog,
+#: notes: Rabbit, Raccoon, or Squirrel" and "number of creatures", not "Frog" — the
+#: notes: rabbits were never off-plan, and the wide+counters package is variant 68a's.
+#: notes: SPIDER-HAM was the measured miss of the first pass: `screen` rated it tangential
+#: notes: off a Lifegain tag while its type-list anthem pumps 28 of 31 creatures here —
+#: notes: the K-03 shape (a card whose text names types it never casts carries no tag for
+#: notes: them). It replaced Punk Frogs, a vanilla ward body: avg MV 2.92 -> 2.83.
+#: notes: Sacrifice-axis cards (Camellia) stay out of both lists — that IS a different deck.
 #: notes: Poison Dart Frog was in the pile and is EXCLUDED for rotation (LCI, ~2026);
 #: notes: Frog Butler is the same effect rotation-safe.
 
@@ -83,7 +90,7 @@
 2 Frog Butler (TMT) 114
 1 Berta, Wise Extrapolator (SOS) 175
 1 Burrog Banemaker (SOS) 75
-1 Punk Frogs (TMT) 164
+1 Spider-Ham, Peter Porker (SPM) 114
 
 # Interaction
 1 Polliwallop (BLB) 189
