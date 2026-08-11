@@ -1,7 +1,7 @@
 #: name: Dino Stampede
 #: format: Standard
 #: arena: 28 Triceraton, 0c12490d-6f0f-4603-80a2-8b86422d9e7e
-#: tier: A — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit). Re-graded B→A after the interaction package (+Bushwhack / +Clash of the Eikons fight removal / +Auspicious Arrival investigate-draw, cutting off-tribe Soldier chaff) took interaction to 5, then the 2026-08 rotation-proofing pass (Gishath/Palani's Hatcher/Rampaging Ceratops/Hulking Raptor were CUT for Etali/Spider-Rex/Thrashing Brontodon, plus a Savage Land Dinosaur that has since been CUT itself, 2026-08-11) moved it to interaction 6 and card advantage 3 → A-floor. The 2026-08-11 pass then took interaction to 5 and card advantage to 4 — still A-floor, but interaction now sits EXACTLY on the A minimum of 5, so the next interaction cut drops this to B. A here is a clean, resilient fair-creature A (not a bomb-driven one). The fully-owned playable version is variant 28a.
+#: tier: A — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit). Re-graded B→A after the interaction package (+Bushwhack / +Clash of the Eikons fight removal / +Auspicious Arrival investigate-draw, cutting off-tribe Soldier chaff) took interaction to 5, then the 2026-08 rotation-proofing pass (Gishath/Palani's Hatcher/Rampaging Ceratops/Hulking Raptor were CUT for Etali/Thrashing Brontodon, plus a Savage Land Dinosaur and a Spider-Rex that have since been CUT themselves, 2026-08-11) moved it to interaction 6 and card advantage 3 → A-floor. The 2026-08-11 pass then took interaction to 5 and card advantage to 4 — still A-floor, but interaction now sits EXACTLY on the A minimum of 5, so the next interaction cut drops this to B. A here is a clean, resilient fair-creature A (not a bomb-driven one). The fully-owned playable version is variant 28a.
 #: colors: RGW
 #: archetype: Naya (R/G/W) Dinosaur tribal with a Soldier secondary — Triceraton Commander token engine into big dinos (Ghalta, Etali cheating spells off the top). WIP brew, rotation-proofed 2026-08: every unowned card now survives the ~Q4 2026 rotation.
 
@@ -32,11 +32,11 @@
 1 Belligerent Yearling (LCI) 133
 1 Triumphant Chomp (LCI) 170
 1 Scalestorm Summoner (OTJ) 144
-1 Spider-Rex, Daring Dino (MSC) 818
+1 The Skullspore Nexus (LCI) 212
 1 Dracosaur Auxiliary (DFT) 122
 1 Regal Imperiosaur (DFT) 177
 1 Thrashing Brontodon (FDN) 560
-1 Figure of Fable (ECL) 224
+1 Railway Brawler (OTJ) 175
 1 Etali, Primal Storm (FDN) 194
 1 Ghalta, Primal Hunger (FDN) 222
 1 Itzquinth, Firstborn of Gishath (LCI) 230
@@ -112,6 +112,40 @@
 #~ note: names. The scan indexes card-name FRAGMENTS for shorthand, drops a fragment shared by
 #~ note: more than three names as an epithet, and "Savage Land" is shared by exactly TWO — so it
 #~ note: resolved to Ka-Zar as well. Fixing the single real citation cleared both flags.
+#~ note: THIRD 2026-08-11 PASS (user call, overriding two recommendations of mine — both were
+#~ note: argued, heard and decided against, which is the user's call to make).
+#~ note: -Figure of Fable +Railway Brawler, -Spider-Rex +The Skullspore Nexus.
+#~ note: RAILWAY BRAWLER IS THE STRONGEST ADD OF THE CYCLE and the number backs it: "whenever
+#~ note: another creature you control enters, put X +1/+1 counters on it where X is ITS power",
+#~ note: against creatures averaging 3.86 printed power with 14 of 29 at power 4+. It roughly
+#~ note: DOUBLES every body that lands — Etali enters 6/6 as 12/12, Agonasaur 8/8 as 16/16 —
+#~ note: and Plot {3}{G} pre-pays it on a spare turn. Note for future grading: read the power
+#~ note: creatures have AS THEY ENTER, not after pumping; misreading that is what produced a
+#~ note: wrong "genuine mismatch" call on this same card for deck 56a earlier the same day.
+#~ note: TWO COSTS OF THIS PASS, both measured and neither hidden.
+#~ note: 1. PROTECTION FELL 3 -> 1, close to the ZERO the rubric flags, and both cut cards were
+#~ note: the reason: Figure of Fable's top level grants protection from each opponent, and
+#~ note: Spider-Rex carried ward {2}. Agonasaur Rex's cycle clause is now the deck's ONLY
+#~ note: protection effect. In a deck whose plan is resolving a large creature, that is the
+#~ note: axis to fix next.
+#~ note: 2. THE SKULLSPORE NEXUS WAS RECOMMENDED AGAINST and is recorded so the trade is not
+#~ note: re-litigated blind. The case against, unchanged: it is {6}{G}{G} and the {X}-less
+#~ note: clause can never reduce below the COLOURED pips, so you always pay {G}{G} — on 13
+#~ note: green sources in a deck whose green already wants 22, competing with Ghalta, Etali,
+#~ note: Regal Imperiosaur and Thrashing Brontodon. It is also LCI and ROTATES ~2026, the same
+#~ note: clock as the cards this deck is already planning around. The case FOR, which is real:
+#~ note: this deck has the biggest bodies on the roster (max printed power 12, average 3.86
+#~ note: against mono-green 50a's 8 and 2.83), so the cost reduction is LARGER here than in the
+#~ note: deck that currently lists it — 50a wins on mana, not on creature size. `stats` marks it
+#~ note: ◊ cost-reduction, so its MV 8 over-reads the curve, exactly like Ghalta's.
+#~ note: VAULTBORN TYRANT ({5}{G}{G}, Dinosaur, mythic craft, BIG ~2027) IS THE STANDING
+#~ note: ROTATION SWAP-IN. Bring it in when the ~2026 cards leave — first call is Skullspore
+#~ note: Nexus's own slot, since they rotate on different clocks and both are green top end.
+#~ note: The gate is already met and measured: "whenever this or another creature you control
+#~ note: with power 4 or greater enters, you gain 3 life and DRAW A CARD" reads 14 of 29
+#~ note: creatures, and it measured card advantage 4 -> 5 — the only candidate of the four
+#~ note: tested that moved that axis. Its death trigger also rebuys itself as an artifact copy,
+#~ note: which is a second body against the sweeper this list has no answer to.
 # October successors for the six OWNED cards that rotate ~Q4 2026 (kept until then — they cost nothing):
 #~ -Earthshaker Dreadmaw | +Terrian, World Tyrant | rotates 2026; Terrian is an owned rotation-safe 9/7 for 5 (vanilla, K-11)
 #~ -Belligerent Yearling | +Ragamuffin Raptor | rotates 2026; owned 4/3 whose ETB "return up to one target creature or Food card from your graveyard" adds recursion
