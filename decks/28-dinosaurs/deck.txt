@@ -53,11 +53,13 @@
 1 Sunbillow Verge (DFT) 264
 1 Temple of Triumph (FDN) 705
 1 Abraded Bluffs (OTJ) 251
-5 Plains
+3 Plains
 3 Forest
 1 Kyoshi Village (TLA) 271
 3 Mountain
 1 Rugged Highlands (FDN) 265
+1 Gongaga, Reactor Town (FIN) 280
+1 Suburban Sanctuary (SPM) 185
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 28
 #~ note: 2026-08-11 PASS. Captain America OUT (his attack trigger pumped OTHER Heroes and this
@@ -146,6 +148,35 @@
 #~ note: creatures, and it measured card advantage 4 -> 5 — the only candidate of the four
 #~ note: tested that moved that axis. Its death trigger also rebuys itself as an artifact copy,
 #~ note: which is a second body against the sweeper this list has no answer to.
+#~ note: MANABASE REBALANCED 2026-08-11 after the cycle's swaps: -2 Plains, +Gongaga, Reactor
+#~ note: Town (GR) and +Suburban Sanctuary (GW), both OWNED and both rotation-safe to ~2028.
+#~ note: Sources went W13/R11/G13 -> W12/R12/G15, which finally matches demand: green is the
+#~ note: heaviest colour at 22 pips across 13 cards (8 of them DOUBLE-green) while white is 15
+#~ note: and red 13, and the old base gave green the same 13 sources as white. Average
+#~ note: cast-on-curve 76.7% -> 80.7%, and the real worst case rose 63.1% -> 70.5%.
+#~ note: DISCOUNT TRICERATON COMMANDER'S FIGURE when tuning this manabase. `consistency` prints
+#~ note: it as "55.8% T2 {W}{W}", which fell to 50.7% here and looks like the change made things
+#~ note: worse. It is a G-60 artifact: the card is {X}{X}{W}{W}, mana_value books X as 0, so the
+#~ note: model evaluates it on TURN TWO — where casting it means X=0 and makes ZERO tokens. You
+#~ note: never cast it there. Excluding it, the average went 77.5% -> 81.8%. This deck's own
+#~ note: `#: tier:` advisory already names it as the avg-MV under-read; the same distortion
+#~ note: reaches the colour maths, which the advisory does not say.
+#~ note: RESTLESS RIDGELINE WAS TESTED AND REJECTED as a third dual, even though it measured
+#~ note: well: it is LCI and rotates ~2026, and the flex block above records it being removed
+#~ note: from this deck FOR that reason in 2026-08. Re-adding it would undo a rotation fix.
+#~ note: PROTECTION IS 1 AND IS THE NEXT AXIS. Options, all OWNED, measured as adds:
+#~ note:   Spectacular Tactics {1}{W} — "counter + hexproof" OR "destroy target creature with
+#~ note:   power 4 or greater". The best of them: it is the ONLY class of pick that raises BOTH
+#~ note:   axes (interaction 5 -> 6, protection 1 -> 2), and interaction currently sits exactly
+#~ note:   on the A-floor minimum, so a modal card buys margin on the axis that is one cut from
+#~ note:   dropping the deck to B.
+#~ note:   Boros Charm {R}{W} — same dual movement; its "permanents you control gain
+#~ note:   INDESTRUCTIBLE" mode is a one-sided answer to the sweeper this list cannot beat.
+#~ note:   Snakeskin Veil {G} — OWNED x2, one mana, counter + hexproof, and the counter is
+#~ note:   on-theme. Cheapest and the only one that also improves the curve.
+#~ note:   Swiftfoot Boots {2} — colourless, so no strain on a manabase already stretched;
+#~ note:   hexproof AND haste is repeatable protection rather than a one-shot.
+#~ note: All four read protection 1 -> 2. None fixes the axis alone; two of them would.
 # October successors for the six OWNED cards that rotate ~Q4 2026 (kept until then — they cost nothing):
 #~ -Earthshaker Dreadmaw | +Terrian, World Tyrant | rotates 2026; Terrian is an owned rotation-safe 9/7 for 5 (vanilla, K-11)
 #~ -Belligerent Yearling | +Ragamuffin Raptor | rotates 2026; owned 4/3 whose ETB "return up to one target creature or Food card from your graveyard" adds recursion
