@@ -225,11 +225,18 @@ directions.
 - **Don't judge a card by printed mana value or a single subtype.** Read the card TEXT
   (it is in the CSV): `stats` flags ◊/△ cost flexibility and functional roles, `tribes`
   reads oracle text for cross-type synergies. [G-03]
-- **A `#~` flex line rots SILENTLY.** `swap --apply` retires only the lines its own swap
-  invalidates and `--audit-rationale` never reads the flex block, so a line can sit for
-  rounds proposing a cut that already happened. `deck.py flex <id>` and a soft
-  `check_all` warning surface it; sometimes the fix is to RETIRE the line, not retarget
-  it. Advisory — a flex line is a human note, so nothing edits one. [G-04]
+- **A `#~` flex line rots SILENTLY, and BOTH HALVES of it rot.** `swap --apply` retires
+  only the lines its own swap invalidates and `--audit-rationale` never reads the flex
+  block. **The `+In` half was unchecked until 2026-08-11** — deck 28 proposed adding a
+  card it already ran, and `flex_staleness`' own docstring had encoded that gap as a rule.
+  First sweep: **7 real, 1 false** — BASICS are exempt, being unlimited in Arena, so
+  `+Island` proposes a 25th land rather than a duplicate. **FIGURES in `#~ note:` prose
+  are swept too** (`note_figure_staleness`), and ONLY figures: a card name in a build log
+  is legitimate (252 citations across 51 decks), while a bare present-tense number is a
+  claim about the CURRENT list — deck 50 argued from "a 3.11 curve with 21 early drops"
+  against a live 3.31/16. `deck.py flex <id>` and two soft `check_all` warnings surface
+  all of it; sometimes the fix is to RETIRE the line, not retarget it. Advisory — a flex
+  line is a human note, so nothing edits one. [G-04]
 - **A swap inherits the cut card's `# section` comment**, so the file then lies to the
   next reader. `swap --apply` warns via `section_mismatch`, on UNAMBIGUOUS headers only.
   Advisory: moving the line is a human editorial call. [G-05]
@@ -384,18 +391,18 @@ directions.
 - **`tier --audit-rationale`'s SUPPRESSION RULES are the delicate part** — a citation is
   often legitimately not a claim about the current list. Keep the cue lists NARROW and
   **let a roster-wide sweep be the check**: a false positive is noisy and gets noticed, a
-  false negative is silent, and three separate sweeps each found figures the audit had
-  reported clean. A CARD citation and a FIGURE go stale differently and must not share a
-  predicate — the CARD path kept a broad `remov\w*` for a year after the FIGURE path was
-  narrowed for that word, so a card whose text says "removes" suppressed its own report.
-  The 2026-08-09 rework clause-scoped both cue families (five live misses, each a fixture
-  in `test_deck.py`) and its first sweep found six real stale rationales. **The sweep is
-  least optional when you WIDEN the scan**: extending it to archetype figures (G-27)
-  returned 3 hits of which 2 were FALSE, and the suppressions written for those then muted
-  the 1 real one until the parent-name case was handled. **STILL LIVE:** a copula
-  hides a figure ("protection is 1"); "the swap removes X" about a CUT card reads as
-  live; a fragment shared by 4+ cards drops as an epithet; a card absent from the POOL
-  is invisible entirely (the scan matches known names only). [G-26]
+  false negative is silent, and three sweeps each found figures the audit had reported
+  clean. A CARD citation and a FIGURE go stale differently and must not share a predicate —
+  the CARD path kept a broad `remov\w*` for a year, so a card saying "removes" suppressed
+  its own report. The 2026-08-09 rework clause-scoped both cue families and found six real
+  stale rationales. **The sweep is least optional when you WIDEN the scan**: extending it
+  to archetype figures (G-27) returned 3 hits of which 2 were FALSE, and their suppressions
+  muted the 1 real one until the parent-name case was handled. **CLOSED 2026-08-11: a
+  PREFIX COLLISION** — only IN-DECK names were masked, so a fragment of an ABSENT card's
+  name resolved to a DIFFERENT card. **STILL LIVE:** a copula hides a figure ("protection
+  is 1"); "the swap removes X" about a CUT card reads as live; a 4+-card fragment drops as
+  an epithet; a card absent from the POOL is invisible; and a figure needs its cue ADJACENT
+  ("the fastest curve here at 2.44" is missed, deck 26b). [G-26]
 - **Run `tier <id> --audit-rationale` after ANY deck edit.** The tier guard checks the
   LETTER; this checks the ARGUMENT — cards the prose cites that the deck no longer runs,
   and figures the live quality vector contradicts. A swap moves those numbers by
@@ -407,7 +414,7 @@ directions.
   — plus the rule that a name forming part of THIS deck's own name is not another deck,
   since the variant convention makes 26a "Iron Forge — Virulent". `#: notes:` stays out of
   the STALENESS scan — a build log may name an absent card — but an EXCLUSION claim in it
-  is checked. Report-only. A rationale naming a card it cut must put the change-cue in the
+  is checked. Same split for `#~ note:` prose since 2026-08-11 (G-04). Report-only. A rationale naming a card it cut must put the change-cue in the
   SAME clause. **Residual: the EXCLUSION check has a proximity window and misses a name
   several lines into a wrapped list** — deck 52 named Zemo under "Deliberately NOT
   included" while running him, and `wrong_exclusion_claims` returned empty. [G-27]
@@ -745,7 +752,7 @@ directions.
   UNDER-count — but a too-broad pattern OVER-counts just as silently, and one did for its
   whole life (player-only burn counted as spot removal; 14 decks over-read the interaction
   axis — BS2-06, guard now in the pattern). Eight under-count holes surfaced in one
-  2026-08 session, every one found by a HUMAN reading a card.
+  2026-08 session (and a NINTH on 2026-08-11), every one found by a HUMAN reading a card.
   **`check_roles.py` + `role_baseline.txt` make the population visible** (soft, deck-scoped,
   baselined); read it as a DELTA, not a target. Two habits follow: write a pattern's
   fixture from the CARD'S REAL TEXT, never a paraphrase — that is how you write a pattern
@@ -922,8 +929,9 @@ exits non-zero on any hard invariant break. INV-01…04 plus **fourteen model-sa
 gates** (`check_rankings`, `check_colors`, `check_dfc`, `check_suggest`, `check_engines`,
 `check_tier`, `check_patterns`, `check_commands`, `check_agreement`, `check_docs`, and the
 soft `check_keywords` / `check_roles` / `check_themes` / rationale-and-flex sweeps) — plus
-three further SOFT roster sweeps this list used to omit: wishlist target drift, the G-68
-card-name-header staleness pass, and the tier-mismatch pass. Two things to know
+FOUR further SOFT roster sweeps this list used to omit: wishlist target drift, the G-68
+card-name-header staleness pass, the tier-mismatch pass, and (2026-08-11) the `#~ note:`
+figure sweep. Two things to know
 before touching it: it imports `deck` as a MODULE and calls `cmd_*` directly, so it never
 builds an argparse tree — the CLI surface is covered by `tests/test_cli.py` and a CI smoke
 step — and the reference-table loaders are memoized, which is what makes a roster-wide
@@ -957,7 +965,7 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (30 files: the markup-contract, CLI-entry-point, analysis-model,
+- Testing: tests/ (29 test files + conftest: the markup-contract, CLI-entry-point, analysis-model,
   gate-pinning, shared-primitive and ingest layers, the 2026-08 ingest-writer /
   sync-guard / resilience-layer / CLI-filter coverage of the formerly untested
   scripts, plus test_check_all.py, the gate runner's own mutation layer;

@@ -425,7 +425,7 @@ python3 scripts/deck.py legal 1a      # construction lint: deck size, copy limit
 python3 scripts/deck.py shape 1a      # wide vs tall, fast vs slow — the structural read themes can't give
 python3 scripts/deck.py cuts 1a       # rank the deck's weakest-fit cards as cut candidates
 python3 scripts/deck.py screen 1a <names>    # re-score candidate cards against the deck AS IT IS NOW (★ strict upgrade, ✱ multiplier)
-python3 scripts/deck.py flex 1a       # suggested swaps recorded in the file (#~ lines)
+python3 scripts/deck.py flex 1a       # suggested swaps (#~ lines) + stale ones: dead -Out, already-run +In, contradicted note figures
 python3 scripts/deck.py swap 1a --cut A --add B   # preview deltas + FULL oracle text of both; --apply writes (.bak) + auto-retires stale #~ flex lines
 python3 scripts/deck.py apply-flex 1a 2      # promote flex swap #2 into the 60 (--apply writes)
 python3 scripts/deck.py feedback             # how cuts/suggest scored against the swaps you applied (report-only)
@@ -1341,7 +1341,11 @@ deck can no longer cast it); **new unindexed card mechanics** (`check_keywords.p
 it isn't tagged with (a stale tag distorts every recommendation), summarized to one
 line; **tier mismatch** — a deck whose claimed `#: tier:` sits ≥2 bands above its
 measurable floor; **stale flex lines** — a `#~ -Out | +In` suggestion whose cut card
-already left the deck, which nothing else covered (it found five sitting on the roster);
+already left the deck, **or whose add card the deck already runs** (the `+In` half went
+unchecked until 2026-08-11 and found seven more; basics are exempt, since `+Island` against
+a deck running Islands proposes a 25th land rather than a duplicate); **stale `#~ note:`
+figures** — a number written into a flex note that the live quality vector contradicts,
+figures only, because a build log naming an absent card is correct by construction;
 and **stale tier rationales** — a `#: tier:` argument citing a card the deck no longer
 runs, or quoting a figure the live quality vector contradicts. That last one is the
 cautionary tale: the check EXISTED for a long time and nothing ran it. `deck.py tier
