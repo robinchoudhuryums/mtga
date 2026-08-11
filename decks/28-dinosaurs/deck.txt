@@ -12,7 +12,7 @@
 1 Earthshaker Dreadmaw (LCI) 183
 1 Needletooth Pack (FDN) 108
 1 Nurturing Bristleback (LCI) 203
-1 Quakestrider Ceratops (FDN) 110
+1 Burrowguard Mentor (BLB) 206
 1 Flowerfoot Swordmaster (BLB) 14
 1 Bushwhack (BRO) 174
 1 Raft Security Officer (MSH) 33
@@ -25,7 +25,7 @@
 1 Okoye, Dora Milaje Leader (MSH) 27
 1 Captain Mar-Vell, Space-Born (MSH) 12
 1 Riling Dawnbreaker (TDM) 21
-1 Frontline War-Rager (EOE) 134
+1 Chronicle of Victory (ECL) 253
 1 Kav Landseeker (EOE) 138
 1 Zog, Triceraton Castaway (TMT) 111
 1 Serra Redeemer (BLB) 387
@@ -60,6 +60,33 @@
 1 Rugged Highlands (FDN) 265
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 28
+#~ note: 2026-08-11 PASS. Captain America OUT (his attack trigger pumped OTHER Heroes and this
+#~ note: deck holds only three besides him), Quakestrider Ceratops OUT (a vanilla 12/8 whose
+#~ note: {3}{G}{G}{G} cast on curve at 44.3%, the worst figure in the deck, wanting 24 green
+#~ note: sources against 13), Frontline War-Rager OUT. In: Agonasaur Rex, Burrowguard Mentor,
+#~ note: Chronicle of Victory. Net avg MV 3.83 -> 3.86, early drops 11 -> 12, card advantage 3 -> 4.
+#~ note: THE SOLDIER SUB-THEME HAS NO MECHANICAL SUPPORT IN STANDARD, and this was measured, not
+#~ note: assumed. A literal text sweep for Soldier payoffs returns exactly ONE card in the format
+#~ note: (Ballyrush Banneret, "Kithkin spells and Soldier spells you cast cost {1} less") — no
+#~ note: Soldier lord, no "Soldiers you control get", no "for each Soldier". The real category is
+#~ note: the 24 CHOOSE-A-TYPE cards, which contain the word Soldier nowhere (K-13: search the
+#~ note: effect shape, not the noun). But those reward picking ONE type, and this deck is 18
+#~ note: Dinosaurs against 13 Soldiers with only THREE cards that are both (Triceraton Commander
+#~ note: x2, Zog) — so every one of them is a Dinosaur card here and would always be named
+#~ note: Dinosaur. Treat Soldier as FLAVOUR unless the creature base is rebuilt around it.
+#~ note: BANNER OF KINSHIP IS NOT A TOKEN PAYOFF, whatever the token count says: its fellowship
+#~ note: counters are a SNAPSHOT taken as it enters, one per creature of the chosen type, and it
+#~ note: never gains more. Later tokens RECEIVE the buff but do not grow it, so the number that
+#~ note: decides the card is the board size when it lands, not the 5 Dinosaur-token and 3
+#~ note: Soldier-token effects the deck runs. On an empty board it is a blank {5}.
+#~ note: THREE TREE CITY IS THE WORSE OF THE TWO BANNERS HERE, and for a reason specific to this
+#~ note: deck: it taps for {C}, so putting it over a basic converts a coloured source into a
+#~ note: colourless one in a three-colour deck where EVERY colour is already under target
+#~ note: (W wants 24 has 13, G wants 22 has 13, R wants 18 has 11; Triceraton Commander casts on
+#~ note: curve at 55.8%). Its big fixing ability costs {2} and needs a board, so it arrives late.
+#~ note: PATCHWORK BANNER does the same job from a SPELL slot instead of a land slot — +1/+1 to
+#~ note: 18 Dinosaurs and "{T}: add one mana of any colour" — so it ADDS a rainbow source rather
+#~ note: than trading one away. For this manabase that is the better {3} than the better land.
 # October successors for the six OWNED cards that rotate ~Q4 2026 (kept until then — they cost nothing):
 #~ -Earthshaker Dreadmaw | +Terrian, World Tyrant | rotates 2026; Terrian is an owned rotation-safe 9/7 for 5 (vanilla, K-11)
 #~ -Belligerent Yearling | +Ragamuffin Raptor | rotates 2026; owned 4/3 whose ETB "return up to one target creature or Food card from your graveyard" adds recursion
