@@ -25,7 +25,7 @@
 # Nonland — card-advantage engines
 1 Wan Shi Tong, Librarian (TLA) 78
 1 Kang, Temporal Tyrant (MSH) 217
-1 Gran-Gran (TLA) 54
+1 Kitsa, Otterball Elite (BLB) 54
 1 Silvergill Peddler (ECL) 70
 1 Cryogen Relic (EOE) 52
 1 The Everflowing Well (LCI) 56

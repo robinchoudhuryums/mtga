@@ -1,7 +1,7 @@
 #: name: Dino Stampede
 #: format: Standard
 #: arena: 28 Triceraton, 0c12490d-6f0f-4603-80a2-8b86422d9e7e
-#: tier: A — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit). Re-graded B→A after the interaction package (+Bushwhack / +Clash of the Eikons fight removal / +Auspicious Arrival investigate-draw, cutting off-tribe Soldier chaff) took interaction to 5, then the 2026-08 rotation-proofing pass (Gishath/Palani's Hatcher/Rampaging Ceratops/Hulking Raptor were CUT for Etali/Savage Land Dinosaur/Spider-Rex/Thrashing Brontodon) moved it to interaction 6 and card advantage 3 → A-floor. A here is a clean, resilient fair-creature A (not a bomb-driven one). The fully-owned playable version is variant 28a.
+#: tier: A — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit). Re-graded B→A after the interaction package (+Bushwhack / +Clash of the Eikons fight removal / +Auspicious Arrival investigate-draw, cutting off-tribe Soldier chaff) took interaction to 5, then the 2026-08 rotation-proofing pass (Gishath/Palani's Hatcher/Rampaging Ceratops/Hulking Raptor were CUT for Etali/Thrashing Brontodon, plus a Savage Land Dinosaur and a Spider-Rex that have since been CUT themselves, 2026-08-11) moved it to interaction 6 and card advantage 3 → A-floor. The 2026-08-11 pass then took interaction to 5 and card advantage to 4, which sat EXACTLY on the A minimum; Boros Charm in over Nurturing Bristleback later that same day restored interaction to 6, so the deck clears the floor with one card of margin rather than none. A here is a clean, resilient fair-creature A (not a bomb-driven one). The fully-owned playable version is variant 28a.
 #: colors: RGW
 #: archetype: Naya (R/G/W) Dinosaur tribal with a Soldier secondary — Triceraton Commander token engine into big dinos (Ghalta, Etali cheating spells off the top). WIP brew, rotation-proofed 2026-08: every unowned card now survives the ~Q4 2026 rotation.
 
@@ -11,32 +11,32 @@
 1 Stegron the Dinosaur Man (MSC) 810
 1 Earthshaker Dreadmaw (LCI) 183
 1 Needletooth Pack (FDN) 108
-1 Nurturing Bristleback (LCI) 203
-1 Quakestrider Ceratops (FDN) 110
+1 Boros Charm (FDN) 721
+1 Burrowguard Mentor (BLB) 206
 1 Flowerfoot Swordmaster (BLB) 14
 1 Bushwhack (BRO) 174
 1 Raft Security Officer (MSH) 33
 1 Clash of the Eikons (FIN) 180
-1 Captain America, Wings of Freedom (MSH) 10
+1 Agonasaur Rex (DFT) 151
 1 Cosmogrand Zenith (EOE) 9
 1 Auspicious Arrival (MKM) 5
 1 Earth Kingdom Jailer (TLA) 16
-1 Red Guardian, Super-Soldier (MSH) 34
+1 Patchwork Banner (BLB) 247
 1 Okoye, Dora Milaje Leader (MSH) 27
 1 Captain Mar-Vell, Space-Born (MSH) 12
 1 Riling Dawnbreaker (TDM) 21
-1 Frontline War-Rager (EOE) 134
+1 Chronicle of Victory (ECL) 253
 1 Kav Landseeker (EOE) 138
 1 Zog, Triceraton Castaway (TMT) 111
 1 Serra Redeemer (BLB) 387
 1 Belligerent Yearling (LCI) 133
 1 Triumphant Chomp (LCI) 170
 1 Scalestorm Summoner (OTJ) 144
-1 Spider-Rex, Daring Dino (MSC) 818
+1 The Skullspore Nexus (LCI) 212
 1 Dracosaur Auxiliary (DFT) 122
 1 Regal Imperiosaur (DFT) 177
 1 Thrashing Brontodon (FDN) 560
-1 Savage Land Dinosaur (MSH) 185
+1 Railway Brawler (OTJ) 175
 1 Etali, Primal Storm (FDN) 194
 1 Ghalta, Primal Hunger (FDN) 222
 1 Itzquinth, Firstborn of Gishath (LCI) 230
@@ -53,17 +53,165 @@
 1 Sunbillow Verge (DFT) 264
 1 Temple of Triumph (FDN) 705
 1 Abraded Bluffs (OTJ) 251
-5 Plains
+3 Plains
 3 Forest
 1 Kyoshi Village (TLA) 271
-3 Mountain
+2 Mountain
 1 Rugged Highlands (FDN) 265
+1 Restless Ridgeline (LCI) 283
+1 Gongaga, Reactor Town (FIN) 280
+1 Suburban Sanctuary (SPM) 185
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 28
+#~ note: 2026-08-11 PASS. Captain America OUT (his attack trigger pumped OTHER Heroes and this
+#~ note: deck holds only three besides him), Quakestrider Ceratops OUT (a vanilla 12/8 whose
+#~ note: {3}{G}{G}{G} cast on curve at 44.3%, the worst figure in the deck, wanting 24 green
+#~ note: sources against 13), Frontline War-Rager OUT. In: Agonasaur Rex, Burrowguard Mentor,
+#~ note: Chronicle of Victory. Net avg MV 3.83 -> 3.86, early drops 11 -> 12, card advantage 3 -> 4.
+#~ note: THE SOLDIER SUB-THEME HAS NO MECHANICAL SUPPORT IN STANDARD, and this was measured, not
+#~ note: assumed. A literal text sweep for Soldier payoffs returns exactly ONE card in the format
+#~ note: (Ballyrush Banneret, "Kithkin spells and Soldier spells you cast cost {1} less") — no
+#~ note: Soldier lord, no "Soldiers you control get", no "for each Soldier". The real category is
+#~ note: the 24 CHOOSE-A-TYPE cards, which contain the word Soldier nowhere (K-13: search the
+#~ note: effect shape, not the noun). But those reward picking ONE type, and this deck is 18
+#~ note: Dinosaurs against 13 Soldiers with only THREE cards that are both (Triceraton Commander
+#~ note: x2, Zog) — so every one of them is a Dinosaur card here and would always be named
+#~ note: Dinosaur. Treat Soldier as FLAVOUR unless the creature base is rebuilt around it.
+#~ note: BANNER OF KINSHIP IS NOT A TOKEN PAYOFF, whatever the token count says: its fellowship
+#~ note: counters are a SNAPSHOT taken as it enters, one per creature of the chosen type, and it
+#~ note: never gains more. Later tokens RECEIVE the buff but do not grow it, so the number that
+#~ note: decides the card is the board size when it lands, not the 5 Dinosaur-token and 3
+#~ note: Soldier-token effects the deck runs. On an empty board it is a blank {5}.
+#~ note: THREE TREE CITY IS THE WORSE OF THE TWO BANNERS HERE, and for a reason specific to this
+#~ note: deck: it taps for {C}, so putting it over a basic converts a coloured source into a
+#~ note: colourless one in a three-colour deck where EVERY colour is already under target
+#~ note: (W wants 24 has 13, G wants 22 has 13, R wants 18 has 11; Triceraton Commander casts on
+#~ note: curve at 55.8%). Its big fixing ability costs {2} and needs a board, so it arrives late.
+#~ note: PATCHWORK BANNER does the same job from a SPELL slot instead of a land slot — +1/+1 to
+#~ note: 18 Dinosaurs and "{T}: add one mana of any colour" — so it ADDS a rainbow source rather
+#~ note: than trading one away. For this manabase that is the better {3} than the better land.
+#~ note: SECOND 2026-08-11 PASS (user call). -Red Guardian +Patchwork Banner, -Savage Land
+#~ note: Dinosaur +Figure of Fable. Triumphant Chomp was the tool's #1 cut and was KEPT, and
+#~ note: the tool was wrong for a readable reason: `role_tally` scores it ZERO — it is the
+#~ note: "1 unclassified" noncreature `stats` reports — because "damage equal to 2 or the
+#~ note: greatest power among Dinosaurs you control" is a VARIABLE-damage shape no removal
+#~ note: pattern matches (a G-67 whitelist hole). It is a {R} sorcery that kills anything up to
+#~ note: Ghalta's 12, and the deck's live interaction is really 7, not the 5 the vector prints.
+#~ note: WATCH THIS NUMBER: measured interaction is now 5, EXACTLY the A-floor minimum. The A
+#~ note: holds (5 interaction + 4 card advantage = 9 against a required 7) but the next cut to
+#~ note: an interaction card drops this deck to B. Red Guardian was the counted removal spent
+#~ note: here; his ETB only killed a creature that had already DEALT DAMAGE that turn, which is
+#~ note: why he was the one to spend.
+#~ note: A COUNT IN AN EARLIER DRAFT OF THIS NOTE WAS WRONG and is corrected here rather than
+#~ note: silently fixed: cutting Savage Land Dinosaur was nearly rejected as "the deck's only
+#~ note: land insurance", from a text search for "landcycling" that returned 1. It misses
+#~ note: FORESTcycling and MOUNTAINcycling, which do not contain that substring. Read the
+#~ note: Keywords column: the deck had FOUR cyclers at that moment (Nurturing Bristleback, Zog,
+#~ note: Savage Land Dinosaur, Agonasaur Rex), so the MV-6 one was the affordable cut, not the
+#~ note: load-bearing one. Same shape as K-13 one layer down — a literal search returning a
+#~ note: wrong number that reads like a finding. (Count is TWO now: Savage Land Dinosaur went
+#~ note: that same day, Nurturing Bristleback on 2026-08-11 — Zog and Agonasaur Rex remain.)
+#~ note: RATIONALE-AUDIT FALSE POSITIVE, worth knowing before trusting one: this pass's audit
+#~ note: reported the tier block "argues from Ka-Zar of the Savage Land", a card the prose never
+#~ note: names. The scan indexes card-name FRAGMENTS for shorthand, drops a fragment shared by
+#~ note: more than three names as an epithet, and "Savage Land" is shared by exactly TWO — so it
+#~ note: resolved to Ka-Zar as well. Fixing the single real citation cleared both flags.
+#~ note: THIRD 2026-08-11 PASS (user call, overriding two recommendations of mine — both were
+#~ note: argued, heard and decided against, which is the user's call to make).
+#~ note: -Figure of Fable +Railway Brawler, -Spider-Rex +The Skullspore Nexus.
+#~ note: RAILWAY BRAWLER IS THE STRONGEST ADD OF THE CYCLE and the number backs it: "whenever
+#~ note: another creature you control enters, put X +1/+1 counters on it where X is ITS power",
+#~ note: against creatures averaging 3.86 printed power with 14 of 29 at power 4+. It roughly
+#~ note: DOUBLES every body that lands — Etali enters 6/6 as 12/12, Agonasaur 8/8 as 16/16 —
+#~ note: and Plot {3}{G} pre-pays it on a spare turn. Note for future grading: read the power
+#~ note: creatures have AS THEY ENTER, not after pumping; misreading that is what produced a
+#~ note: wrong "genuine mismatch" call on this same card for deck 56a earlier the same day.
+#~ note: TWO COSTS OF THIS PASS, both measured and neither hidden.
+#~ note: 1. PROTECTION FELL 3 -> 1, close to the ZERO the rubric flags, and both cut cards were
+#~ note: the reason: Figure of Fable's top level grants protection from each opponent, and
+#~ note: Spider-Rex carried ward {2}. Agonasaur Rex's cycle clause is now the deck's ONLY
+#~ note: protection effect. In a deck whose plan is resolving a large creature, that is the
+#~ note: axis to fix next.
+#~ note: 2. THE SKULLSPORE NEXUS WAS RECOMMENDED AGAINST and is recorded so the trade is not
+#~ note: re-litigated blind. The case against, unchanged: it is {6}{G}{G} and the {X}-less
+#~ note: clause can never reduce below the COLOURED pips, so you always pay {G}{G} — on 13
+#~ note: green sources in a deck whose green already wants 22, competing with Ghalta, Etali,
+#~ note: Regal Imperiosaur and Thrashing Brontodon. It is also LCI and ROTATES ~2026, the same
+#~ note: clock as the cards this deck is already planning around. The case FOR, which is real:
+#~ note: this deck has the biggest bodies on the roster (max printed power 12, average 3.86
+#~ note: against mono-green 50a's 8 and 2.83), so the cost reduction is LARGER here than in the
+#~ note: deck that currently lists it — 50a wins on mana, not on creature size. `stats` marks it
+#~ note: ◊ cost-reduction, so its MV 8 over-reads the curve, exactly like Ghalta's.
+#~ note: VAULTBORN TYRANT ({5}{G}{G}, Dinosaur, mythic craft, BIG ~2027) IS THE STANDING
+#~ note: ROTATION SWAP-IN. Bring it in when the ~2026 cards leave — first call is Skullspore
+#~ note: Nexus's own slot, since they rotate on different clocks and both are green top end.
+#~ note: The gate is already met and measured: "whenever this or another creature you control
+#~ note: with power 4 or greater enters, you gain 3 life and DRAW A CARD" reads 14 of 29
+#~ note: creatures, and it measured card advantage 4 -> 5 — the only candidate of the four
+#~ note: tested that moved that axis. Its death trigger also rebuys itself as an artifact copy,
+#~ note: which is a second body against the sweeper this list has no answer to.
+#~ note: MANABASE REBALANCED 2026-08-11 after the cycle's swaps: -2 Plains, +Gongaga, Reactor
+#~ note: Town (GR) and +Suburban Sanctuary (GW), both OWNED and both rotation-safe to ~2028.
+#~ note: Sources went W13/R11/G13 -> W12/R12/G15, which finally matches demand: green is the
+#~ note: heaviest colour at 22 pips across 13 cards (8 of them DOUBLE-green) while white is 15
+#~ note: and red 13, and the old base gave green the same 13 sources as white. Average
+#~ note: cast-on-curve 76.7% -> 80.7%, and the real worst case rose 63.1% -> 70.5%.
+#~ note: DISCOUNT TRICERATON COMMANDER'S FIGURE when tuning this manabase. `consistency` prints
+#~ note: it as "55.8% T2 {W}{W}", which fell to 50.7% here and looks like the change made things
+#~ note: worse. It is a G-60 artifact: the card is {X}{X}{W}{W}, mana_value books X as 0, so the
+#~ note: model evaluates it on TURN TWO — where casting it means X=0 and makes ZERO tokens. You
+#~ note: never cast it there. Excluding it, the average went 77.5% -> 81.8%. This deck's own
+#~ note: `#: tier:` advisory already names it as the avg-MV under-read; the same distortion
+#~ note: reaches the colour maths, which the advisory does not say.
+#~ note: RESTLESS RIDGELINE WAS TESTED AND REJECTED as a third dual, even though it measured
+#~ note: well: it is LCI and rotates ~2026, and the flex block above records it being removed
+#~ note: from this deck FOR that reason in 2026-08. Re-adding it would undo a rotation fix.
+#~ note: PROTECTION IS 1 AND IS THE NEXT AXIS. Options, all OWNED, measured as adds:
+#~ note:   Spectacular Tactics {1}{W} — "counter + hexproof" OR "destroy target creature with
+#~ note:   power 4 or greater". The best of them: it is the ONLY class of pick that raises BOTH
+#~ note:   axes (interaction 5 -> 6, protection 1 -> 2), and interaction currently sits exactly
+#~ note:   on the A-floor minimum, so a modal card buys margin on the axis that is one cut from
+#~ note:   dropping the deck to B.
+#~ note:   Boros Charm {R}{W} — same dual movement; its "permanents you control gain
+#~ note:   INDESTRUCTIBLE" mode is a one-sided answer to the sweeper this list cannot beat.
+#~ note:   Snakeskin Veil {G} — OWNED x2, one mana, counter + hexproof, and the counter is
+#~ note:   on-theme. Cheapest and the only one that also improves the curve.
+#~ note:   Swiftfoot Boots {2} — colourless, so no strain on a manabase already stretched;
+#~ note:   hexproof AND haste is repeatable protection rather than a one-shot.
+#~ note: All four read protection 1 -> 2. None fixes the axis alone; two of them would.
+#~ note: RESTLESS RIDGELINE ADDED BACK 2026-08-11 over a Mountain (W12/R12/G15 -> W12/R12/G16),
+#~ note: a KNOWING re-introduction of a ~2026 rotating land — the user will swap it when it
+#~ note: goes, and the note above recording its earlier removal stands as the reason it left.
+#~ note: BE HONEST ABOUT WHICH AXIS PAID FOR IT: the mana gain is MARGINAL, average
+#~ note: cast-on-curve 81.8% -> 82.6% and sub-90 cards 27 -> 25. Tested over all three basics;
+#~ note: over a Plains gave the fewest sub-90 cards but dropped white to 11 and the worst real
+#~ note: case to 65.1%, so the Mountain was the right basic. What earns the slot is what the
+#~ note: mana model cannot see: {2}{R}{G} makes it a 3/4 DINOSAUR, so it is an on-tribe body for
+#~ note: Regal Imperiosaur, Chronicle of Victory and Patchwork Banner, and a threat that dodges
+#~ note: sorcery-speed removal in a deck whose protection axis reads 1. It also untaps an
+#~ note: attacker when it attacks. A land slot that is also a creature is worth more here than
+#~ note: +0.8 percentage points of casting.
+#~ note: BOROS CHARM IN OVER NURTURING BRISTLEBACK, 2026-08-11 — the user's cut, and a better
+#~ note: one than any of the three offered. Bristleback is MV 7, not the 6 a glance suggests, so
+#~ note: the swap read avg MV 3.89 -> 3.75, a bigger curve gain than Giant Cindermaw, Kav
+#~ note: Landseeker or Belligerent Yearling would have given. It also pre-empts a rotation
+#~ note: (Bristleback is LCI, ~2026), and `swap --apply` auto-retired the flex line that had
+#~ note: been planning that very replacement — G-04's mechanism working as designed.
+#~ note: RESULT: interaction 5 -> 6, protection 1 -> 2. The deck no longer sits ON the A-floor
+#~ note: minimum; it clears it with one card of margin. Boros Charm's "permanents you control
+#~ note: gain INDESTRUCTIBLE" is also a one-sided answer to a sweeper, an effect this list had
+#~ note: none of. COST: cyclers drop to two (Zog, Agonasaur Rex) and a 3/3 token maker leaves.
+#~ note: Protection 2 is still thin for a deck whose plan is resolving one large creature —
+#~ note: Spectacular Tactics and Snakeskin Veil (x2 owned) stay the cheapest further fixes.
 # October successors for the six OWNED cards that rotate ~Q4 2026 (kept until then — they cost nothing):
 #~ -Earthshaker Dreadmaw | +Terrian, World Tyrant | rotates 2026; Terrian is an owned rotation-safe 9/7 for 5 (vanilla, K-11)
 #~ -Belligerent Yearling | +Ragamuffin Raptor | rotates 2026; owned 4/3 whose ETB "return up to one target creature or Food card from your graveyard" adds recursion
-#~ -Nurturing Bristleback | +Migrating Ketradon | rotates 2026; craft C — 6/6 reach, "you gain 4 life", cycling {2} keeps the never-dead-card property
+#~ note: applied — Boros Charm in for Nurturing Bristleback.
 #~ -Itzquinth, Firstborn of Gishath | +Tyrox, Saurid Tyrant | rotates 2026; Tyrox is now OWNED (opened 2026-08-06), a rotation-safe DFT legendary 4/1 vanilla for {1}{R} — no craft needed, promote with `deck.py apply-flex 28` when October comes
-#~ -Triumphant Chomp | +Bushwhack | rotates 2026; the fight mode covers the same job — or craft a surviving fight/burn spell at the time
+#~ note: RETIRED 2026-08-11. This line used to propose Bushwhack as the successor, and Bushwhack
+#~ note: is ALREADY in the maindeck — so it proposed an add the deck already runs. `deck.py flex`
+#~ note: printed it anyway, because a flex line's ADD side is never checked against the current
+#~ note: 60; only its CUT side is. G-04 documents the stale-CUT rot; this is the stale-ADD mirror.
+#~ note: Triumphant Chomp still rotates 2026 and still needs a successor: a surviving fight or
+#~ note: burn spell, sourced fresh rather than from a card the deck already holds.
 # (Restless Ridgeline → Training Compound already applied 2026-08 — the rotating land is handled.)

@@ -12,7 +12,7 @@
 #: tier:    Chocobo, Agatha's Soul Cauldron and Web of Life and Destiny all generate real value
 #: tier:    the classifier cannot read, so the true number is higher — but not by much, and the
 #: tier:    deck has no unconditional draw spell at all.
-#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.79 with only 12 early drops, and
+#: tier: 2. IT IS THE SLOWEST DECK BUILT THIS CYCLE. Avg MV 3.82 with only 11 early drops, and
 #: tier:    the engine needs lands in the GRAVEYARD before it does anything, so the first three
 #: tier:    turns are close to blank. Against a fast start it is behind before Lumra is castable.
 #: tier: 3. CENTRAL THEMES 25 is the most diffuse reading on the roster after deck 23. That is
@@ -61,9 +61,11 @@
 #: archetype: you control"), and it reads the resource this deck actually accumulates.
 #: notes: BUILT 2026-07 from a 47-card review pile alongside its parent's pass 2.
 #: notes: UNGRADED ON PURPOSE — no `#: tier:` until the metrics are read.
-#: notes: GROUNDCHUCK & DIRTBAG IS THE LAND-SIDE BADGERMOLE CUB: "whenever you tap a LAND for
-#: notes: mana, add {G}" where the Cub doubles creatures. It is in this deck and not the parent
-#: notes: for exactly that reason — 26 lands here against 24 dork-heavy ones there.
+#: notes: GROUNDCHUCK & DIRTBAG IS THE LAND-SIDE MANA DOUBLER: "whenever you tap a LAND for
+#: notes: mana, add {G}". It is in this deck and not the parent for exactly that reason — 26
+#: notes: lands here against 24 dork-heavy ones there. (Its creature-side counterpart was
+#: notes: Badgermole Cub, banned out of Standard 2026-08-11; it is the ONLY "add an additional
+#: notes: {G}" card the pool holds, so that half of the pair has no replacement anywhere.)
 #: notes: THE SKULLSPORE NEXUS IS NEARLY FREE HERE. "{6}{G}{G}, costs {X} less where X is the
 #: notes: greatest power among creatures you control" — with an eight-land Lumra on board that
 #: notes: is {G}{G}. Its "{2}, {T}: double target creature's power" then doubles the creature
@@ -72,10 +74,12 @@
 #: notes: cards want the highest land count they can reach, and Sapling Nursery has affinity for
 #: notes: FORESTS. Flooding is close to impossible: the mana sinks are Ba Sing Se's earthbend,
 #: notes: Evendo's 12+ station and Skullspore Nexus's doubler.
-#: notes: BA SING SE AND BADGERMOLE CUB BOTH EARTHBEND, turning a land into a 0/0 creature with
-#: notes: counters that is STILL A LAND — a body that Lumra and Grovestrider still count, and
+#: notes: BA SING SE AND EARTHBENDER ASCENSION BOTH EARTHBEND, turning a land into a 0/0 creature
+#: notes: with counters that is STILL A LAND — a body that Lumra and Grovestrider still count, and
 #: notes: which returns to the battlefield if it dies. It is the one bridge back to the parent
-#: notes: deck's axis, and it is deliberately small.
+#: notes: deck's axis, and it is deliberately small. (Badgermole Cub held the Ascension's slot
+#: notes: until it was banned 2026-08-11; the Ascension earthbends 2 and fetches a basic, so the
+#: notes: bridge got wider rather than narrower.)
 #: notes: PASS 4 — A THIRD MASS LAND RETURN, AND TWO LANDFALL SCALERS.
 #: notes: AFTERMATH ANALYST ({1}{G}) is the card this deck was missing: "when this creature
 #: notes: enters, MILL THREE" and then "{3}{G}, sacrifice this creature: return ALL land cards
@@ -170,7 +174,7 @@
 #: notes: creature with mana value <= your land count onto the battlefield" — the cheat engine,
 #: notes: repeatable across the whole board. You choose which mode the graveyard offers.
 #: notes: THE COUNTER GATE IS ALREADY PAID FOR: Seedship Agrarian, Primeval Bounty (three
-#: notes: counters per noncreature spell), Famished Worldsire, Badgermole Cub and Ba Sing Se
+#: notes: counters per noncreature spell), Famished Worldsire, Earthbender Ascension and Ba Sing Se
 #: notes: (earthbend) and Zanarkand all place +1/+1 counters, and the Cauldron adds one itself
 #: notes: every time it exiles a creature card. Its first line also lets you spend mana as any
 #: notes: colour for creature abilities, which is free here but matters for the granted costs.
@@ -197,8 +201,9 @@
 #: notes: 3.88/3.91 and early drops 11 -> 10 — and this deck cannot afford to get slower.
 #: notes: DISTINCTNESS, MEASURED: `similar` reads 67% against the parent with SIXTEEN shared
 #: notes: nonland cards. That number is high and it is honest: the shared half is the five mana
-#: notes: dorks, the six-card interaction suite and five utility cards (Badgermole Cub, Famished
-#: notes: Worldsire, Garruk's Uprising, Loot, the two land-fetching bodies). All twenty-one cards
+#: notes: dorks, the six-card interaction suite and five utility cards (that overlap counted
+#: notes: Badgermole Cub, banned 2026-08-11 and replaced here by Earthbender Ascension; plus
+#: notes: Famished Worldsire, Garruk's Uprising, Loot, the two land-fetching bodies). All the cards
 #: notes: that carry the PLAN are exclusive. That is what a variant should look like — a shared
 #: notes: shell and a different engine — as against 26b vs 48a at 89%, where the top end itself
 #: notes: was duplicated.
@@ -228,7 +233,7 @@
 1 Tifa Lockhart (FIN) 206
 1 Bristly Bill, Spine Sower (OTJ) 157
 1 Wildwood Scourge (FDN) 236
-1 Badgermole Cub (TLA) 167
+1 Earthbender Ascension (TLA) 175
 1 Mona Lisa, Science Geek (TMT) 123
 
 # Cheat into play — the land-aware half of the family's options
