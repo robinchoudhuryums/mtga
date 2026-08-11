@@ -1,7 +1,7 @@
 #: name: Dino Stampede
 #: format: Standard
 #: arena: 28 Triceraton, 0c12490d-6f0f-4603-80a2-8b86422d9e7e
-#: tier: A — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit). Re-graded B→A after the interaction package (+Bushwhack / +Clash of the Eikons fight removal / +Auspicious Arrival investigate-draw, cutting off-tribe Soldier chaff) took interaction to 5, then the 2026-08 rotation-proofing pass (Gishath/Palani's Hatcher/Rampaging Ceratops/Hulking Raptor were CUT for Etali/Savage Land Dinosaur/Spider-Rex/Thrashing Brontodon) moved it to interaction 6 and card advantage 3 → A-floor. A here is a clean, resilient fair-creature A (not a bomb-driven one). The fully-owned playable version is variant 28a.
+#: tier: A — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit). Re-graded B→A after the interaction package (+Bushwhack / +Clash of the Eikons fight removal / +Auspicious Arrival investigate-draw, cutting off-tribe Soldier chaff) took interaction to 5, then the 2026-08 rotation-proofing pass (Gishath/Palani's Hatcher/Rampaging Ceratops/Hulking Raptor were CUT for Etali/Spider-Rex/Thrashing Brontodon, plus a Savage Land Dinosaur that has since been CUT itself, 2026-08-11) moved it to interaction 6 and card advantage 3 → A-floor. The 2026-08-11 pass then took interaction to 5 and card advantage to 4 — still A-floor, but interaction now sits EXACTLY on the A minimum of 5, so the next interaction cut drops this to B. A here is a clean, resilient fair-creature A (not a bomb-driven one). The fully-owned playable version is variant 28a.
 #: colors: RGW
 #: archetype: Naya (R/G/W) Dinosaur tribal with a Soldier secondary — Triceraton Commander token engine into big dinos (Ghalta, Etali cheating spells off the top). WIP brew, rotation-proofed 2026-08: every unowned card now survives the ~Q4 2026 rotation.
 
@@ -21,7 +21,7 @@
 1 Cosmogrand Zenith (EOE) 9
 1 Auspicious Arrival (MKM) 5
 1 Earth Kingdom Jailer (TLA) 16
-1 Red Guardian, Super-Soldier (MSH) 34
+1 Patchwork Banner (BLB) 247
 1 Okoye, Dora Milaje Leader (MSH) 27
 1 Captain Mar-Vell, Space-Born (MSH) 12
 1 Riling Dawnbreaker (TDM) 21
@@ -36,7 +36,7 @@
 1 Dracosaur Auxiliary (DFT) 122
 1 Regal Imperiosaur (DFT) 177
 1 Thrashing Brontodon (FDN) 560
-1 Savage Land Dinosaur (MSH) 185
+1 Figure of Fable (ECL) 224
 1 Etali, Primal Storm (FDN) 194
 1 Ghalta, Primal Hunger (FDN) 222
 1 Itzquinth, Firstborn of Gishath (LCI) 230
@@ -87,6 +87,31 @@
 #~ note: PATCHWORK BANNER does the same job from a SPELL slot instead of a land slot — +1/+1 to
 #~ note: 18 Dinosaurs and "{T}: add one mana of any colour" — so it ADDS a rainbow source rather
 #~ note: than trading one away. For this manabase that is the better {3} than the better land.
+#~ note: SECOND 2026-08-11 PASS (user call). -Red Guardian +Patchwork Banner, -Savage Land
+#~ note: Dinosaur +Figure of Fable. Triumphant Chomp was the tool's #1 cut and was KEPT, and
+#~ note: the tool was wrong for a readable reason: `role_tally` scores it ZERO — it is the
+#~ note: "1 unclassified" noncreature `stats` reports — because "damage equal to 2 or the
+#~ note: greatest power among Dinosaurs you control" is a VARIABLE-damage shape no removal
+#~ note: pattern matches (a G-67 whitelist hole). It is a {R} sorcery that kills anything up to
+#~ note: Ghalta's 12, and the deck's live interaction is really 7, not the 5 the vector prints.
+#~ note: WATCH THIS NUMBER: measured interaction is now 5, EXACTLY the A-floor minimum. The A
+#~ note: holds (5 interaction + 4 card advantage = 9 against a required 7) but the next cut to
+#~ note: an interaction card drops this deck to B. Red Guardian was the counted removal spent
+#~ note: here; his ETB only killed a creature that had already DEALT DAMAGE that turn, which is
+#~ note: why he was the one to spend.
+#~ note: A COUNT IN AN EARLIER DRAFT OF THIS NOTE WAS WRONG and is corrected here rather than
+#~ note: silently fixed: cutting Savage Land Dinosaur was nearly rejected as "the deck's only
+#~ note: land insurance", from a text search for "landcycling" that returned 1. It misses
+#~ note: FORESTcycling and MOUNTAINcycling, which do not contain that substring. Read the
+#~ note: Keywords column: the deck has FOUR cyclers (Nurturing Bristleback, Zog, Savage Land
+#~ note: Dinosaur, Agonasaur Rex), so the MV-6 one was the affordable cut, not the load-bearing
+#~ note: one. Same shape as K-13 one layer down — a literal search returning a wrong number
+#~ note: that reads like a finding.
+#~ note: RATIONALE-AUDIT FALSE POSITIVE, worth knowing before trusting one: this pass's audit
+#~ note: reported the tier block "argues from Ka-Zar of the Savage Land", a card the prose never
+#~ note: names. The scan indexes card-name FRAGMENTS for shorthand, drops a fragment shared by
+#~ note: more than three names as an epithet, and "Savage Land" is shared by exactly TWO — so it
+#~ note: resolved to Ka-Zar as well. Fixing the single real citation cleared both flags.
 # October successors for the six OWNED cards that rotate ~Q4 2026 (kept until then — they cost nothing):
 #~ -Earthshaker Dreadmaw | +Terrian, World Tyrant | rotates 2026; Terrian is an owned rotation-safe 9/7 for 5 (vanilla, K-11)
 #~ -Belligerent Yearling | +Ragamuffin Raptor | rotates 2026; owned 4/3 whose ETB "return up to one target creature or Food card from your graveyard" adds recursion
