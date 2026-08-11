@@ -1862,7 +1862,7 @@ Whenever this creature attacks, another target creature you control gains deatht
 Dwynen's Elite,Creature — Elf Warrior,"When this creature enters, if you control another Elf, create a 1/1 green Elf Warrior creature token.",G,Elf; Warrior; tokens; etb,FDN,218,1
 Frog Butler,Creature — Frog Spirit,"Deathtouch
 {T}: Add one mana of any color.
-{2}: This creature gains reach until end of turn.",G,Frog; Spirit; mana; deathtouch; combat; removal,TMT,114,1
+{2}: This creature gains reach until end of turn.",G,Frog; Spirit; mana; deathtouch; combat; removal,TMT,114,4
 "Fynn, the Fangbearer",Legendary Creature — Human Warrior,"Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)
 Whenever a creature you control with deathtouch deals combat damage to a player, that player gets two poison counters. (A player with ten or more poison counters loses the game.)",G,Human; Warrior; deathtouch; combat; removal,FCA,46,1
 Goobbue Gardener,Creature — Plant Beast,{T}: Add {G}.,G,Plant; Beast; mana,FIN,188,1
@@ -3148,7 +3148,7 @@ Thunderdrum Soloist,Creature — Dwarf Bard,"Reach
 Opus — Whenever you cast an instant or sorcery spell, this creature deals 1 damage to each opponent. If five or more mana was spent to cast that spell, this creature deals 3 damage to each opponent instead.",R,Dwarf; Bard; burn; spellslinger; reach; defense; opus; noncombat damage; payoff,SOS,134,1
 Topiary Lecturer,Creature — Elf Druid,"Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)
 {T}: Add an amount of {G} equal to this creature's power.",G,Elf; Druid; counters; mana; increment; spellslinger,SOS,165,1
-Bogwater Lumaret,Creature — Spirit Frog,"Whenever this creature or another creature you control enters, you gain 1 life.",B/G,Spirit; Frog; lifegain,SOS,177,1
+Bogwater Lumaret,Creature — Spirit Frog,"Whenever this creature or another creature you control enters, you gain 1 life.",B/G,Spirit; Frog; lifegain,SOS,177,4
 Pest Mascot,Creature — Pest Ape,"Trample
 Whenever you gain life, put a +1/+1 counter on this creature.",B/G,Pest; Ape; counters; trample; evasion; lifegain,SOS,209,1
 Spectacle Summit,Land,"This land enters tapped.

@@ -1,0 +1,108 @@
+#: name: Frog Sage — Seer
+#: format: Standard
+#: colors: GWU
+#: based-on: deck.txt
+#: plan: midrange
+#: tier: B (PROVISIONAL) — same blink core as the parent, graded on the same argument
+#: tier: (untested v1, singleton engine, craft-heavy). After the 2026-08-11 wide-counters
+#: tier: pivot its OWN open question changed: no longer Helga's density (she is a mana
+#: tier: engine now, 7 MV4+ casts) but whether the wide half and the blink half feed each
+#: tier: other or fight — the G-42 role-split in the archetype block is the thing to
+#: tier: watch in games. Measured at the pivot: avg MV 2.97 -> 2.86, early drops 15 -> 17,
+#: tier: central themes 12 -> 16, protection 4 -> 3. Re-grade after games.
+#: protect: Helga, Skittish Seer; Dour Port-Mage; Three Tree Scribe; Clement, the Worrywort; Sab-Sunen, Luxa Embodied; Quina, Qu Gourmet
+#: archetype: Bant (G/W/U) FROG-AND-RABBIT WIDE COUNTERS over the parent's blink skeleton —
+#: archetype: PIVOTED 2026-08-11 on the user's re-read of the pile: Valley Mightcaller,
+#: archetype: Oakhollow Village and Treeguard Duo read "Frog, Rabbit, Raccoon, or
+#: archetype: Squirrel" and "number of creatures you control", so the rabbit package was
+#: archetype: never off-plan. The wide half: Byrke DOUBLES the counters on any attacker
+#: archetype: that has one (14 counter sources feed him), Finneas counters every
+#: archetype: token/Rabbit on attack and draws at total power 10, Burrowguard Mentor IS
+#: archetype: the creature count, Warren Warleader and Hop to It make the bodies — and
+#: archetype: QUINA adds a bonus Frog to every token event, so the rabbit tokens feed the
+#: archetype: Frog payoffs by rule. White's blink (Personify, Daydream, Season of the
+#: archetype: Burrow) stays as the value layer; Helga remains as a mana engine and a
+#: archetype: 7-cast MV4+ draw trigger rather than the deck's center. G-42 CAVEAT, live
+#: archetype: in this list: blink ERASES +1/+1 counters, so the roles are SPLIT — blink
+#: archetype: the ETB bodies (Pond Prophet, Splash Lasher, Dreamdew), grow the attackers
+#: archetype: (Byrke's targets, Mightcaller, Burrowguard); Lilysplash and Daydream return
+#: archetype: the creature WITH a counter, so they are the exempt blinks. DISTINCT from
+#: archetype: the parent by AXIS: 68 converts enter/leave events into cards via Dour
+#: archetype: Port-Mage and Glarb; this converts them into board width and counters.
+#: notes: Variant built 2026-08-11 alongside the parent from the same idea pile; see the
+#: notes: parent's notes for the pile provenance and the K-13 payoff sweep. The user
+#: notes: guessed GUW or GUB up front; GUB won primary because black's cards are Frogs
+#: notes: (Glarb, Gitrog, Bogwater) while white's case rests on Helga plus generic blink.
+#: notes: This list is the test of that judgment — if Helga's engine plays better than
+#: notes: Glarb's, promote it. PIVOT 2026-08-11 (user call, reversing my grouping): OUT
+#: notes: Gigantoad, Pet Avengers, Punk Frogs, Venus, Clifftop Lookout; IN Byrke, Finneas,
+#: notes: Burrowguard Mentor, Warren Warleader, Hop to It. Venus and the tall half live on
+#: notes: in the PARENT (shared collection — the same copies serve both decks).
+#: notes: KNOWN THIN SPOT, accepted at build time: Season of the Burrow wants {W}{W} on a
+#: notes: 7-W-source base — `mana` flags it. It is the deck's only double-white and a
+#: notes: late-game modal, so the G-36 framing is "cast late", not a build error.
+
+# The seer — every big creature cast pays out
+1 Helga, Skittish Seer (BLB) 217
+
+# Payoffs — leave-without-dying
+1 Dour Port-Mage (BLB) 47
+1 Three Tree Scribe (BLB) 199
+
+# Blink / bounce enablers
+1 Splash Portal (BLB) 74
+1 Lilysplash Mentor (BLB) 222
+1 Skyskipper Duo (BLB) 71
+1 Long River Lurker (BLB) 57
+1 Mistbreath Elder (BLB) 184
+1 Stickytongue Sentinel (BLB) 193
+1 Clement, the Worrywort (BLB) 209
+1 Y'shtola Rhul (FIN) 86
+1 Personify (ECL) 28
+1 Daydream (SOS) 9
+1 Season of the Burrow (BLB) 29
+
+# ETB value layer
+1 Pond Prophet (BLB) 229
+1 Dreamdew Entrancer (BLB) 211
+1 Splash Lasher (BLB) 73
+1 Sunshower Druid (BLB) 195
+1 Genghis Frog (TMT) 148
+1 Treeguard Duo (BLB) 200
+1 Hinterland Sanctifier (FDN) 730
+
+# The wide half — rabbit counters package (2026-08-11 pivot)
+1 Byrke, Long Ear of the Law (BLB) 380
+1 Finneas, Ace Archer (BLB) 212
+1 Warren Warleader (BLB) 38
+1 Burrowguard Mentor (BLB) 206
+1 Hop to It (SOA) 6
+1 Sab-Sunen, Luxa Embodied (DFT) 221
+
+# Tribal payoffs and engines
+1 Quina, Qu Gourmet (FIN) 194
+1 Valley Mightcaller (BLB) 202
+1 Valley Floodcaller (BLB) 79
+2 Frog Butler (TMT) 114
+1 Berta, Wise Extrapolator (SOS) 175
+
+# Interaction
+1 Polliwallop (BLB) 189
+1 Into the Flood Maw (BLB) 52
+1 Floodpits Drowner (DSK) 59
+
+# Lands (24)
+1 Lilypad Village (BLB) 255
+1 Oakhollow Village (BLB) 258
+1 Lupinflower Village (BLB) 256
+1 Breeding Pool (EOE) 251
+1 Willowrush Verge (DFT) 270
+1 Thornwood Falls (FDN) 269
+1 Gathering Place (MSH) 266
+1 Suburban Sanctuary (SPM) 185
+1 Hushwood Verge (DSK) 261
+1 Tranquil Cove (TDM) 270
+1 Blossoming Sands (M21) 244
+4 Forest (TRK) 325
+5 Island (TRK) 319
+4 Plains (TRK) 317
