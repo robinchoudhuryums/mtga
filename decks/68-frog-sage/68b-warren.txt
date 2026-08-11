@@ -1,0 +1,105 @@
+#: name: Frog Sage — Warren
+#: format: Standard
+#: colors: GW
+#: based-on: deck.txt
+#: plan: midrange
+#: tier: B (PROVISIONAL) — graded UNDER the A floor on the same argument as its siblings
+#: tier: (untested, singleton-heavy, the roster's heaviest craft list) plus one specific to
+#: tier: this seat: interaction 5 +1? is the thinnest of the three, and a GW deck that has
+#: tier: gone wide has no answer to a sweeper beyond Snakeskin Veil x2 and Season of the
+#: tier: Burrow's exile mode. Card advantage 2 is real but engine-shaped — it is Enduring
+#: tier: Innocence and Exemplar of Light, both of which must SURVIVE to draw. Measured:
+#: tier: avg MV 2.66 (lowest of the three), early drops 18, protection 4, 25 lands with
+#: tier: W15/G16 and zero uncastable strays. Re-grade after games.
+#: protect: The Unbeatable Squirrel Girl; Byrke, Long Ear of the Law; Quina, Qu Gourmet; Enduring Innocence; Spider-Ham, Peter Porker
+#: archetype: Selesnya (G/W) BURROW-WIDE — the third seat for the Frog Sage skeleton, and
+#: archetype: the one that drops BLINK as the engine and keeps only the wide/counters half.
+#: archetype: Built 2026-08-11 after a GW test list was first DECLINED on card advantage 0;
+#: archetype: two owned white draw engines the first pass never reached fix exactly that
+#: archetype: axis, which is why this list exists and the earlier test did not. ENDURING
+#: archetype: INNOCENCE draws whenever another creature with POWER 2 OR LESS enters — this
+#: archetype: deck makes 1/1 Rabbit, Frog and Squirrel tokens every turn, so it is a draw
+#: archetype: per turn, on a lifelink body that RETURNS as an enchantment when it dies.
+#: archetype: EXEMPLAR OF LIGHT converts the deck's incidental lifegain (Hinterland
+#: archetype: Sanctifier, Sunshower Druid, Spider-Ham's Food) into counters and each new
+#: archetype: counter into a card. QUINA is the glue that makes the three tribes one deck:
+#: archetype: every token event makes a bonus FROG, so Rabbit and Squirrel tokens feed
+#: archetype: Valley Mightcaller and Oakhollow Village by rule. BYRKE doubles counters on
+#: archetype: any attacker that has one, FINNEAS counters every token/Rabbit and draws at
+#: archetype: total power 10, BURROWGUARD MENTOR is the creature count, and SPIDER-HAM
+#: archetype: anthems 25 of the 28 creatures. DISTINCT from 68/68a by ENGINE, not just by
+#: archetype: colour: those two convert enter-and-leave events into value; this one never
+#: archetype: blinks for value at all — Personify and Daydream are here as PROTECTION
+#: archetype: (blink in response to removal), and G-42 is not a live tension because the
+#: archetype: counter payoffs and the blink spells are not aimed at the same bodies.
+#: archetype: THE UNBEATABLE SQUIRREL GIRL IS ONLY CASTABLE HERE and that is the point of
+#: archetype: the seat: {1}{G}{G}{G} on 68a's 12 green sources measured 31.6% on curve, and
+#: archetype: greening that base cost the whole deck more than it gained. Two colours makes
+#: archetype: GGG routine. Her X-ability also needs SQUIRRELS, of which 68a runs zero.
+#: notes: THE SQUIRREL DENSITY IS THE SECOND HALF OF THE SQUIRREL GIRL ANSWER, and it is
+#: notes: the half that actually decides her. "I LOVE Squirrels! — {1}{G}{G}{G}: create X
+#: notes: 1/1 Squirrels where X is the number of Squirrels you control" is worth nothing at
+#: notes: X=1. This list runs SIX Squirrel cards (Squirrel Girl, Honored Dreyleader,
+#: notes: Bakersbane Duo, Prairie Dog, Curious Forager, Thornvault Forager) plus every
+#: notes: Squirrel token she makes, and Thornvault Forager TUTORS one. Mana was never her
+#: notes: real problem; density was.
+#: notes: OWNERSHIP: heaviest craft list of the three (see `deck.py check 68b`) — the
+#: notes: Squirrel package and both white draw engines are largely unowned. Aspirational by
+#: notes: design, like its siblings.
+#: notes: G-42 IS DELIBERATELY DEFUSED HERE rather than managed: 68a has to split roles
+#: notes: because its blinks and its counter payoffs compete for the same creatures. This
+#: notes: list keeps only two blink spells and both are instant-speed protection, so a
+#: notes: counter-loaded attacker is never the blink target.
+#: notes: DISTINCTNESS, MEASURED AND HONEST: `similar` reads 84% against 68a with 18 shared
+#: notes: cards, and reports ⚠ overlap. Read both numbers — theme similarity is high BY
+#: notes: CONSTRUCTION (all three share Frog/token/counter themes), while the card overlap
+#: notes: is 24 of ~41-46 distinct nonbasics, with 17 cards unique to this list and 22
+#: notes: unique to 68a. The engines are what actually differ: 68a converts enter/leave
+#: notes: events into value via blink, this one converts small bodies entering into CARDS
+#: notes: via Enduring Innocence and lifegain into cards via Exemplar of Light, and it
+#: notes: never blinks for value. If the roster ever needs pruning, 68b vs 68a is the
+#: notes: closest pair in the family and the honest place to look first.
+
+1 Enduring Innocence (DSK) 6
+1 Exemplar of Light (FDN) 733
+1 Finneas, Ace Archer (BLB) 212
+1 Byrke, Long Ear of the Law (BLB) 380
+1 Burrowguard Mentor (BLB) 206
+1 Warren Warleader (BLB) 38
+1 Head of the Homestead (BLB) 216
+1 Hop to It (SOA) 6
+1 The Unbeatable Squirrel Girl (MSH) 193
+1 Honored Dreyleader (BLB) 178
+1 Bakersbane Duo (BLB) 163
+1 Prairie Dog (OTJ) 24
+1 Quina, Qu Gourmet (FIN) 194
+1 Spider-Ham, Peter Porker (SPM) 114
+1 Valley Mightcaller (BLB) 202
+2 Frog Butler (TMT) 114
+1 Sunshower Druid (BLB) 195
+1 Three Tree Scribe (BLB) 199
+1 Stickytongue Sentinel (BLB) 193
+1 Treeguard Duo (BLB) 200
+1 Mistbreath Elder (BLB) 184
+1 Clifftop Lookout (BLB) 168
+1 Hinterland Sanctifier (FDN) 730
+1 Personify (ECL) 28
+1 Daydream (SOS) 9
+1 Season of the Burrow (BLB) 29
+1 Polliwallop (BLB) 189
+1 Spectacular Tactics (SPM) 15
+2 Snakeskin Veil (TDM) 159
+1 Gigantoad (FIN) 187
+1 Oakhollow Village (BLB) 258
+1 Lupinflower Village (BLB) 256
+1 Hushwood Verge (DSK) 261
+1 Gathering Place (MSH) 266
+1 Suburban Sanctuary (SPM) 185
+1 Blossoming Sands (M21) 244
+1 Birnin Zana Plaza (MSH) 262
+1 Kyoshi Village (TLA) 271
+9 Forest (TRK) 325
+8 Plains (TRK) 317
+1 Curious Forager (BLB) 169
+1 Thornvault Forager (BLB) 197
+1 Claim Jumper (OTJ) 8

@@ -78,6 +78,7 @@ Cephalid Inkmage
 Champions of the Shoal
 Charging Strifeknight
 Child of the Volcano
+Claim Jumper
 Cloud, Midgar Mercenary
 Cloudspire Captain
 Colossification
@@ -152,6 +153,7 @@ Ghost, Spectral Saboteur
 Ghostly Keybearer
 Giant Cindermaw
 Giant Koi
+Gigantoad
 Glamer Gifter
 Glarb, Calamity's Augur
 Glider Kids
@@ -171,6 +173,7 @@ Harmonious Grovestrider
 Hauntwoods Shrieker
 Hawkeye, Master Marksman
 Hawkeye, Young Avenger
+Head of the Homestead
 Hecteyes
 Hei Bai, Spirit of Balance
 Herald of Eternal Dawn
