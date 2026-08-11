@@ -170,9 +170,31 @@ disabled both the size floor and the copy limit (`[G-09]`).
   six owned rotating cards; deck 28a has never had the pass; deck 36 loses Kutzil with no
   safe replacement for his "opponents can't cast spells during your turn" half.
 
+## 4a-bis. WHAT THE 2026-08-11 SESSION CHANGED, in one place
+
+Read this before §4b — several of its items moved.
+
+- **Three PRs merged** (#117 ban replacements + deck 28 rebuild, #118 the deck 68 Frog
+  Sage family, #119 the tooling/doc pass). Roster is **103 deck files through 68**;
+  library **2,186 printings**; **1,262 tests**.
+- **Two cards were BANNED out of Standard** (Badgermole Cub, Gran-Gran) and replaced
+  across ten decks. The pool's `Legalities` is a build-time snapshot, so nothing in the
+  repo flagged it — the ten decks were quietly illegal until a human noticed. **There is
+  no gate for this and there cannot easily be one**; treat a ban announcement as an
+  event that needs a `grep -rl` over `decks/` and a replacement pass.
+- **Two staleness scans gained their missing half** (G-04 `+In`, G-26 prefix collision)
+  and a role-pattern hole closed (G-67 target-first variable damage). The roadmap files
+  the meta-gate for that whole bug class as Tier 2.1.
+- **ROADMAP.md was regenerated** (it had been a 2026-07-31 snapshot through two cycles)
+  and its strategic bet is Tier 2.2, match volume — which is §4's first standing item,
+  now with a working pipeline behind it.
+- **All staleness sweeps are at ZERO** as of this session: rationale, flex (both halves),
+  header card-names, and the new `#~ note:` figures. `check_all` reports no soft
+  warnings. If a fresh session sees one, it appeared after 2026-08-11.
+
 ## 4b. WHERE TO PICK UP — the shortlist for a fresh session
 
-In priority order, with the reason:
+In priority order, with the reason. **Items 1 and 2 are unchanged and still first.**
 
 1. **Run `import_collection.py` against a full tracker export.** FIVE ownership counts
    were wrong on 2026-08-09 (Cosmogrand, Halana, Ruby, Castle Doom, plus Cool but Rude's
