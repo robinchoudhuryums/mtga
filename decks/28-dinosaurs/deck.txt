@@ -17,7 +17,7 @@
 1 Bushwhack (BRO) 174
 1 Raft Security Officer (MSH) 33
 1 Clash of the Eikons (FIN) 180
-1 Captain America, Wings of Freedom (MSH) 10
+1 Agonasaur Rex (DFT) 151
 1 Cosmogrand Zenith (EOE) 9
 1 Auspicious Arrival (MKM) 5
 1 Earth Kingdom Jailer (TLA) 16
@@ -65,5 +65,10 @@
 #~ -Belligerent Yearling | +Ragamuffin Raptor | rotates 2026; owned 4/3 whose ETB "return up to one target creature or Food card from your graveyard" adds recursion
 #~ -Nurturing Bristleback | +Migrating Ketradon | rotates 2026; craft C — 6/6 reach, "you gain 4 life", cycling {2} keeps the never-dead-card property
 #~ -Itzquinth, Firstborn of Gishath | +Tyrox, Saurid Tyrant | rotates 2026; Tyrox is now OWNED (opened 2026-08-06), a rotation-safe DFT legendary 4/1 vanilla for {1}{R} — no craft needed, promote with `deck.py apply-flex 28` when October comes
-#~ -Triumphant Chomp | +Bushwhack | rotates 2026; the fight mode covers the same job — or craft a surviving fight/burn spell at the time
+#~ note: RETIRED 2026-08-11. This line used to propose Bushwhack as the successor, and Bushwhack
+#~ note: is ALREADY in the maindeck — so it proposed an add the deck already runs. `deck.py flex`
+#~ note: printed it anyway, because a flex line's ADD side is never checked against the current
+#~ note: 60; only its CUT side is. G-04 documents the stale-CUT rot; this is the stale-ADD mirror.
+#~ note: Triumphant Chomp still rotates 2026 and still needs a successor: a surviving fight or
+#~ note: burn spell, sourced fresh rather than from a card the deck already holds.
 # (Restless Ridgeline → Training Compound already applied 2026-08 — the rotating land is handled.)
