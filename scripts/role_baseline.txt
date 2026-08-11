@@ -64,6 +64,7 @@ Burning Curiosity
 Burrowguard Mentor
 Buzz Bots
 Bygone Colossus
+Byrke, Long Ear of the Law
 Callous Sell-Sword // Burn Together
 Captain America, Living Legend
 Captain America, Wings of Freedom
@@ -151,7 +152,6 @@ Ghost, Spectral Saboteur
 Ghostly Keybearer
 Giant Cindermaw
 Giant Koi
-Gigantoad
 Glamer Gifter
 Glarb, Calamity's Augur
 Glider Kids
@@ -178,6 +178,7 @@ Heroes' Hangout
 High Fae Trickster
 High Perfect Morcant
 Honored Knight-Captain
+Hop to It
 Hour of Victory
 How to Start a Riot
 HYDRA Troopers
@@ -279,7 +280,6 @@ Pride of the Road
 Prideful Parent
 Procrastinate
 Psychic Whorl
-Punk Frogs
 Pym Particles
 Quaketusk Boar
 Quicksilver, Brash Blur

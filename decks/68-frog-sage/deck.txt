@@ -3,7 +3,7 @@
 #: colors: GUB
 #: plan: midrange
 #: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 8 / card-adv 4 /
-#: tier: protection 3 / 2.83 curve) deliberately, which the rubric permits with argument:
+#: tier: protection 3 / 2.86 curve) deliberately, which the rubric permits with argument:
 #: tier: this is an untested v1 whose engine is nearly all singletons (draw variance on a
 #: tier: two-payoff core — Dour Port-Mage and Three Tree Scribe are one copy each), it
 #: tier: carries 20 craft targets, and the interaction-8 figure counts stun/tap tempo
@@ -89,7 +89,7 @@
 1 Sab-Sunen, Luxa Embodied (DFT) 221
 2 Frog Butler (TMT) 114
 1 Berta, Wise Extrapolator (SOS) 175
-1 Burrog Banemaker (SOS) 75
+1 Vinereap Mentor (BLB) 238
 1 Spider-Ham, Peter Porker (SPM) 114
 
 # Interaction

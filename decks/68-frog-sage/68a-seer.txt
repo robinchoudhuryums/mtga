@@ -4,29 +4,40 @@
 #: based-on: deck.txt
 #: plan: midrange
 #: tier: B (PROVISIONAL) — same blink core as the parent, graded on the same argument
-#: tier: (untested v1, singleton engine, craft-heavy). Its OWN open question is narrower
-#: tier: than the parent's: whether Helga's MV4+ gate is dense enough — the list holds 8
-#: tier: distinct MV4+ creature casts plus Splash Lasher's Offspring mode, and Helga
-#: tier: herself ramps only that half of the deck. Re-grade after games.
+#: tier: (untested v1, singleton engine, craft-heavy). After the 2026-08-11 wide-counters
+#: tier: pivot its OWN open question changed: no longer Helga's density (she is a mana
+#: tier: engine now, 7 MV4+ casts) but whether the wide half and the blink half feed each
+#: tier: other or fight — the G-42 role-split in the archetype block is the thing to
+#: tier: watch in games. Measured at the pivot: avg MV 2.97 -> 2.86, early drops 15 -> 17,
+#: tier: central themes 12 -> 16, protection 4 -> 3. Re-grade after games.
 #: protect: Helga, Skittish Seer; Dour Port-Mage; Three Tree Scribe; Clement, the Worrywort; Sab-Sunen, Luxa Embodied; Quina, Qu Gourmet
-#: archetype: Bant (G/W/U) FROG BLINK — the parent's leave-without-dying engine with the
-#: archetype: black seat handed to HELGA: every creature cast at MV 4+ draws a card,
-#: archetype: gains life and grows her, and her tap ability makes X mana of one color
-#: archetype: spendable ONLY on MV4+/X creature spells — so the variant leans taller
-#: archetype: (Gigantoad, Pet Avengers, Venus, Sab-Sunen, Dreamdew, Lilysplash, Splash
-#: archetype: Lasher, Treeguard) where the parent leans on Glarb's top-of-library and
-#: archetype: The Gitrog's draw. White also brings TRUE blink at instant/sorcery speed
-#: archetype: (Personify — blink plus a 1/1 Glimmer body; Daydream — blink plus a +1/+1
-#: archetype: counter) and Season of the Burrow's exile-removal / mass-recursion modes,
-#: archetype: plus Hinterland Sanctifier reading every re-entry for life. DISTINCT from
-#: archetype: the parent by SEAT: B = surveil/top-cast card advantage, W = the blink
-#: archetype: spells themselves plus Helga's cast engine. Same skeleton, different sage.
+#: archetype: Bant (G/W/U) FROG-AND-RABBIT WIDE COUNTERS over the parent's blink skeleton —
+#: archetype: PIVOTED 2026-08-11 on the user's re-read of the pile: Valley Mightcaller,
+#: archetype: Oakhollow Village and Treeguard Duo read "Frog, Rabbit, Raccoon, or
+#: archetype: Squirrel" and "number of creatures you control", so the rabbit package was
+#: archetype: never off-plan. The wide half: Byrke DOUBLES the counters on any attacker
+#: archetype: that has one (14 counter sources feed him), Finneas counters every
+#: archetype: token/Rabbit on attack and draws at total power 10, Burrowguard Mentor IS
+#: archetype: the creature count, Warren Warleader and Hop to It make the bodies — and
+#: archetype: QUINA adds a bonus Frog to every token event, so the rabbit tokens feed the
+#: archetype: Frog payoffs by rule. White's blink (Personify, Daydream, Season of the
+#: archetype: Burrow) stays as the value layer; Helga remains as a mana engine and a
+#: archetype: 7-cast MV4+ draw trigger rather than the deck's center. G-42 CAVEAT, live
+#: archetype: in this list: blink ERASES +1/+1 counters, so the roles are SPLIT — blink
+#: archetype: the ETB bodies (Pond Prophet, Splash Lasher, Dreamdew), grow the attackers
+#: archetype: (Byrke's targets, Mightcaller, Burrowguard); Lilysplash and Daydream return
+#: archetype: the creature WITH a counter, so they are the exempt blinks. DISTINCT from
+#: archetype: the parent by AXIS: 68 converts enter/leave events into cards via Dour
+#: archetype: Port-Mage and Glarb; this converts them into board width and counters.
 #: notes: Variant built 2026-08-11 alongside the parent from the same idea pile; see the
 #: notes: parent's notes for the pile provenance and the K-13 payoff sweep. The user
 #: notes: guessed GUW or GUB up front; GUB won primary because black's cards are Frogs
 #: notes: (Glarb, Gitrog, Bogwater) while white's case rests on Helga plus generic blink.
 #: notes: This list is the test of that judgment — if Helga's engine plays better than
-#: notes: Glarb's, promote it.
+#: notes: Glarb's, promote it. PIVOT 2026-08-11 (user call, reversing my grouping): OUT
+#: notes: Gigantoad, Pet Avengers, Punk Frogs, Venus, Clifftop Lookout; IN Byrke, Finneas,
+#: notes: Burrowguard Mentor, Warren Warleader, Hop to It. Venus and the tall half live on
+#: notes: in the PARENT (shared collection — the same copies serve both decks).
 #: notes: KNOWN THIN SPOT, accepted at build time: Season of the Burrow wants {W}{W} on a
 #: notes: 7-W-source base — `mana` flags it. It is the deck's only double-white and a
 #: notes: late-game modal, so the G-36 framing is "cast late", not a build error.
@@ -56,15 +67,16 @@
 1 Dreamdew Entrancer (BLB) 211
 1 Splash Lasher (BLB) 73
 1 Sunshower Druid (BLB) 195
-1 Clifftop Lookout (BLB) 168
 1 Genghis Frog (TMT) 148
 1 Treeguard Duo (BLB) 200
 1 Hinterland Sanctifier (FDN) 730
 
-# The tall half — Helga's targets
-1 Gigantoad (FIN) 187
-1 Pet Avengers (MSH) 178
-1 Venus, Torn Between Worlds (TMT) 136
+# The wide half — rabbit counters package (2026-08-11 pivot)
+1 Byrke, Long Ear of the Law (BLB) 380
+1 Finneas, Ace Archer (BLB) 212
+1 Warren Warleader (BLB) 38
+1 Burrowguard Mentor (BLB) 206
+1 Hop to It (SOA) 6
 1 Sab-Sunen, Luxa Embodied (DFT) 221
 
 # Tribal payoffs and engines
@@ -73,7 +85,6 @@
 1 Valley Floodcaller (BLB) 79
 2 Frog Butler (TMT) 114
 1 Berta, Wise Extrapolator (SOS) 175
-1 Punk Frogs (TMT) 164
 
 # Interaction
 1 Polliwallop (BLB) 189
@@ -87,11 +98,11 @@
 1 Breeding Pool (EOE) 251
 1 Willowrush Verge (DFT) 270
 1 Thornwood Falls (FDN) 269
-1 Pym Technologies (MSH) 271
-1 Mutant Town (TMT) 187
-1 Dreamroot Cascade (SOS) 254
+1 Gathering Place (MSH) 266
+1 Suburban Sanctuary (SPM) 185
+1 Hushwood Verge (DSK) 261
 1 Tranquil Cove (TDM) 270
 1 Blossoming Sands (M21) 244
-5 Forest (TRK) 325
-4 Island (TRK) 319
+4 Forest (TRK) 325
+5 Island (TRK) 319
 4 Plains (TRK) 317
