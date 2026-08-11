@@ -103,6 +103,15 @@ _EXCLUDED = {
                                  "suppressor); unit-tested in test_deck.py",
     ("deck", "_SIMILE_BEFORE"): "tier-RATIONALE prose (6-char lookbehind slice, not a "
                                 "card-text corpus); unit-tested in test_deck.py",
+    ("deck", "_FIGURE_PCT_AFTER"): "tier/note-RATIONALE prose (a '%' right after a "
+                                   "matched figure means it is a percentage, not an "
+                                   "avg MV); unit-tested in test_deck.py",
+    ("deck", "_FIGURE_DRAW_BEFORE"): "tier/note-RATIONALE prose (a 'draw N' count that "
+                                     "the card-advantage pattern matched by adjacency); "
+                                     "unit-tested in test_deck.py",
+    ("deck", "_FIGURE_PAST_CUE"): "`#~ note:` RATIONALE prose (the shared _FIGURE_PAST "
+                                  "cues re-read CLAUSE-scoped, because a build log is "
+                                  "history-dense); unit-tested in test_deck.py",
     ("deck", "_EXCLUSION_CUES"): "deck-HEADER prose (wrong_exclusion_claims); "
                                  "unit-tested in test_deck.py",
     ("deck", "_EXCLUSION_PAREN"): "deck-HEADER prose punctuation, not card text; "

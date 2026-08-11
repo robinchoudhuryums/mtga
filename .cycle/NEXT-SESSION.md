@@ -23,14 +23,18 @@ commands disagree.
   restarted from `main` after each merge. **Check `git log origin/main..HEAD` before your
   first commit** — if it is empty, the last PR merged and you must restart from `main`
   (`git fetch origin main && git checkout -B <branch> origin/main`).
-- Gates green: `check_all` all invariants hold, **ZERO soft warnings**. **1,188 tests in
-  30 files** — all fourteen model-sanity gates now have a watched-it-fail layer. The 7
-  blank-Card-Text `validate` warnings are K-11 vanilla creatures, expected, not a data gap.
-- Collection **2,133 library rows**; roster **99 deck files**, numbered through **66**;
-  34 `deck.py` subcommands; 13 model-sanity gates. (Decks 64
-  Gray Goo, 65 Web of Life and 66 Lethal Protector were drafted 2026-08-08; 66 was
-  promoted out of 65's variant slot. **40-brawl** is the roster's third Brawl conversion,
-  added 2026-08-09.)
+- Gates green: `check_all` all invariants hold, with **one soft warning** — the 7 stale
+  flex lines the 2026-08-11 `+In` check surfaced (decks 8, 14, 26, 26a ×3, 50). They are
+  real and NOT edited: G-04 makes retiring a flex line a human editorial call. **1,262
+  tests in 29 files.** The 7 blank-Card-Text `validate` warnings are K-11 vanilla
+  creatures, expected, not a data gap.
+- Collection **2,186 library rows**; roster **103 deck files**, numbered through **68**;
+  34 `deck.py` subcommands; 13 model-sanity gates + `check_all`. (Decks 67 Warpwright and
+  the 68 Frog Sage family — 68 Sultai blink, 68a Bant wide-counters, 68b Selesnya burrow —
+  were drafted 2026-08-10/11. **40-brawl** is the roster's third Brawl conversion.)
+- **PRs #116/#117/#118 merged 2026-08-11**; the branch carries post-merge work again, so
+  run `git log origin/main..HEAD` before your first commit and restart from `main` if it
+  is empty.
 - **`ROADMAP.md` is a 2026-07-31 snapshot** with a staleness header on it. Individual
   entries are marked DONE as they land, but it wants a `/roadmap` regeneration.
 

@@ -398,14 +398,35 @@ def main():
         flex_stale = []
         for d in deckmod.roster_decks():
             for cut, add, _why in deckmod.flex_staleness(d["path"]):
-                flex_stale.append(f"deck {d['id']}: −{cut}" + (f" / +{add}" if add else ""))
+                flex_stale.append(f"deck {d['id']}: " + (f"−{cut}" if cut else "")
+                                  + (f" / +{add}" if add else ""))
         if flex_stale:
-            soft.append(f"stale flex line(s): {len(flex_stale)} propose cutting a card the "
-                        f"deck no longer runs — {'; '.join(flex_stale[:3])}"
+            soft.append(f"stale flex line(s): {len(flex_stale)} name a cut card the deck no "
+                        f"longer runs, or an add it already runs — {'; '.join(flex_stale[:3])}"
                         + (" …" if len(flex_stale) > 3 else "")
                         + " (retarget or retire; see `deck.py flex <id>`)")
     except Exception as e:
         soft.append(f"stale-flex check skipped ({e})")
+
+    # Soft: STALE FIGURES IN `#~ note:` PROSE. The rationale audit reads `#: tier:` /
+    # `#: archetype:` and the flex check above reads only the machine-readable
+    # `-Out | +In` fields, so a NUMBER written into a note was checked by nothing — deck
+    # 50 argues from "a 3.11 curve with 21 early drops" against a live 3.31 / 16. Only
+    # FIGURES: the card half of this scan was measured at 252 citations across 51 decks
+    # and deliberately left out (a build log naming an absent card is correct, G-27).
+    # Advisory like its siblings; a note is a human's prose.
+    try:
+        note_stale = []
+        for d in deckmod.roster_decks():
+            for _note, key, quoted, actual in deckmod.note_figure_staleness(d):
+                note_stale.append(f"deck {d['id']}: {key} {quoted} vs live {actual}")
+        if note_stale:
+            soft.append(f"stale `#~ note:` figure(s): {len(note_stale)} contradict the live "
+                        f"quality vector — {'; '.join(note_stale[:3])}"
+                        + (" …" if len(note_stale) > 3 else "")
+                        + " (re-ground or mark as history; see `deck.py flex <id>`)")
+    except Exception as e:
+        soft.append(f"stale-note-figure check skipped ({e})")
 
     # Soft: STALE CARD-NAME HEADERS — a `#: protect:` or `#: uncastable-ok:` entry naming
     # a card the deck does not run. Both headers are read by the tooling as instructions,

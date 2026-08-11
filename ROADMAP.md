@@ -1,159 +1,177 @@
 # Roadmap — MTG Arena Card Library
 
-Regenerated 2026-07-31 with `/roadmap`. Grounded in measured state, not wishes.
+Regenerated 2026-08-11 with `/roadmap`. Grounded in measured state, not wishes.
 Effort: S ≈ <2h, M ≈ ½–2 days, L ≈ 3+ days (one dev + Claude Code).
 
-State at regeneration: 1,860 cards · 76 deck files · 33 `deck.py` subcommands ·
-767 tests in 16 files · 13 model-sanity gates · `check_all` 14.8s.
+State at regeneration: **2,186 library printings** · 16,071 pool rows · **103 deck files**
+(numbered through 68) · 34 `deck.py` subcommands · 14 model-sanity gates · **1,253 tests in
+29 files** · `check_all` green with 1 soft warning.
 
-> **This file is a 2026-07-31 snapshot and the counts above are stale** (as of 2026-08-07:
-> 2,085 library rows · 95 decks · 34 subcommands · 1,078 tests in 29 files). Individual
-> entries have been marked DONE as they landed, but the whole file wants a `/roadmap`
-> regeneration — read the outcomes and Tier lists, not the header figures.
+Two figures do most of the work below:
+
+- **Tier spread: A 38 / B 56 / C 3 / ungraded 3 — of which 41 are PROVISIONAL.** Every one
+  says the same thing in its file: unplayed.
+- **`matches.csv` holds 9 matches, 8 attributed to a deck.** `--report` refuses a
+  percentage under 20.
+- Buildability: 68 decks fully owned, 35 craft-gated. Rotation exposure: **157**
+  card-instances ~2026, 596 ~2027, 1,608 ~2028.
+
+---
 
 ## What the last roadmap proposed, and where it went
 
 Stated because a roadmap that never records its own outcomes is a wishlist.
 
-- **Mono-U/colorless affinity deck — BUILT** as deck 47, Grid Overload. The measured
-  case (16 artifact-count payoffs, 7 affinity/improvise, Chrome Dome as a real lord) held
-  up; the deck exists and is distinct from 26 in the resource it spends.
-- **Full-collection import — SHIPPED** as `import_collection.py`. It is the only tool here
-  that can set an owned count DOWN, which is why `/ingest` routes by provenance.
-- **Match / win-rate tracking — the CODE shipped**, `parse_matches.py` plus `--report`
-  with the G-57 restraint. **The data did not**: `matches.csv` does not exist. See Tier 1.
-- **Theme the remaining flavor keywords — DONE 2026-08-07**, and the answer was not "ten".
-  Seven were themed with measured deltas (vivid, job select, opus, increment, infusion,
-  disappear, paradigm); three were decided AGAINST, each for its own reason — `jump` is a
-  Scryfall extraction artifact that reports 13 cards of which 11 are `Jump-start`, `tiered`
-  is a cost shape rather than a resource, `triple` was already triaged out. See K-01.
-- **Google Sheets round-trip — the DEV half is now done** (broad-scan H-7): a
-  `sheets_sync.py check` preflight that names every missing setup part and writes nothing,
-  a shrink guard on `push` to match `pull`'s, and a read that no longer creates worksheets
-  in the operator's spreadsheet. What remains is the one-time service-account setup, which
-  is an operator action, not development.
+- **Match / win-rate tracking — the DATA now exists.** The previous entry read "the CODE
+  shipped, the data did not; `matches.csv` does not exist." It exists: 9 matches, 8
+  attributed, the pipeline run end to end against a real `Player.log`. Two things it
+  settled the hard way — `courseId` is the AVATAR cosmetic, not the deck (nine rows were
+  recorded against it before anyone read the values), and the real deck is in
+  `EventSetDeckV3`. Still far under the read floor; see Tier 2.
+- **Google Sheets round-trip — unchanged.** The dev half is done (`sheets_sync.py check`
+  names every missing part and writes nothing). The one-time service-account setup is an
+  operator action and has not been taken.
+- **The creature cut-ranking hypothesis — TESTED, REJECTED**, and the negative result is
+  kept in `docs/systems-map.md` §7 with its sign test. Two pre-registered fixes for `cuts`
+  have now been refuted; G-09 says do not derive a third from the tag-count asymmetry.
+- **Deck 49 Scaleforge rotation-proofing — measured, NOT applied.** Queued at the user's
+  request, not rejected. Do not re-derive it; the five swaps are in `.cycle/NEXT-SESSION.md`.
+- **This file's own staleness header — resolved by this regeneration.** It had been a
+  2026-07-31 snapshot through two full scan cycles.
+
+---
 
 ## Tier 1 — Short-term (days–weeks)
 
-1. **Run the pre-registered creature-cut re-test — DONE 2026-08-07, and it produced an
-   inversion.** At n=251 (103 creature) the split held: creature **50%**, noncreature
-   **86%**. The mechanism `deck.py feedback` itself asserted — that `fit` sums theme
-   weights unnormalized and creatures carry ~2x the tags — is true as an OBSERVATION
-   (5.31 vs 3.15 tags per pool card) and REFUTED as a diagnosis: normalizing lifts
-   creature agreement 53→68% and collapses noncreature 83→**51%**. The unnormalized sum
-   is load-bearing for the segment that works, and the tool was pointing its reader at a
-   change that would make it worse; that prose is corrected. Full record, including the
-   underpowered second model and the harness defect a re-test must fix first:
-   `.cycle/blocks/2026-08-creature-cut-retest.md`. **Do not derive a third fix from the
-   tag-count asymmetry.**
-2. **Fix `tier --audit-rationale`'s two false negatives.** (a) A change-cue about one card
-   suppresses a citation of ANOTHER card in the same window even when the clause says that
-   card stays. (b) A figure joined to its label by a copula is invisible — which fired
-   again this cycle: deck 51 claimed "protection reads 3" against a live 4 and the audit
-   reported the deck clean. Needs a roster sweep before landing, per the cue-list rule.
-   **(M, ~1 day)**
-3. **Log the first real matches.** `matches.csv` does not exist, so the Outcomes subsystem
-   — described in the Cycle Workflow Config as one of the only two that has seen reality —
-   has seen none. The data is free and already in `Player.log`, the parser is written and
-   tested, and until it runs, every tier letter on the roster is graded against internal
-   consistency alone. **(S, <2h, and most of it is playing.)**
-4. **Theme the remaining unindexed keywords — DONE 2026-08-07.** Seven themed, three
-   decided against; see the outcomes section above and K-01. K-01's rule held and earned
-   its keep twice: `jump` and `tiered` would both have been mis-mapped in a bulk pass.
-5. **Give `doubler_restriction` a TYPE scope.** It parses a POWER scope and nothing else,
-   so a type-scoped doubler is counted against the whole deck — 27 feeders in deck 20
-   against a correct 12. A second pattern feeding the same filter, not a second model.
-   **(S, ~2h)**
+1. **Sync G-04 / G-26 / G-67 to the docs.** The 2026-08-11 broad-implement changed what
+   three rules claim: G-04 now covers BOTH halves of a flex line, G-26's prefix-collision
+   residual is closed, G-67 gained the target-first variable-damage hole. CLAUDE.md and
+   `docs/gotchas.md` still describe pre-fix behaviour, and `check_docs.py` gates the anchor
+   link, not the prose. — **S, ~1h**
+2. **Clear the 7 stale flex lines and 12 stale note figures.** Both sets were surfaced by
+   the same session and sit as a soft warning; deck 26a has a literally duplicated line.
+   Editorial rather than tooling — G-04 makes retiring a flex line a human call. — **S, ~1h**
+3. **Run `import_collection.py` against a full tracker export.** Top of the handoff for two
+   cycles. Five ownership counts were wrong on 2026-08-09, each caught only because the
+   user said "I actually have N", one of them load-bearing in a recommendation. Nothing in
+   the toolchain detects this, and it should precede any wildcard spend (G-10). — **S,
+   ~30m + operator**
+4. **Install the launchd log archive.** The one item with a DEADLINE: `Player.log` is
+   overwritten on every Arena launch, so every unextracted session is lost permanently —
+   the 2026-07-27 match already is, and no tooling can recover its deck. Written but
+   unverified on the user's machine (this container is Linux; `launchctl` is untestable
+   from it). Verify with `~/mtga-logs/snapshot.sh && wc -l ~/mtga-logs/arena.log`. — **S,
+   ~30m, operator-only**
+5. **Re-grade the decks the tier guard flags as under-graded.** Deck 19 is the named case —
+   metrics floor A, letter B, both sides recorded in the file. Letters are never
+   auto-written (design constraint), so this is a bounded human pass. — **S, ~1h**
 
 ## Tier 2 — Medium-term (weeks–months)
 
-1. **Finish the G-63 sweep across every merged two-faced field.** Cost, colour, type and
-   name are each fixed and each was found by accident. `card-pool.csv`'s `Power`/
-   `Toughness` for a two-faced card is stored the same merged way costs were before FO-1,
-   and nothing has looked. The class is now understood well enough to audit the remaining
-   columns deliberately instead of waiting for the next deck to trip over one. **(M)**
-2. **Walk the interface regression scenarios with a human at a browser.** Scenarios 5–8
-   (light-mode status colours, phone-width layout, keyboard-only traversal, editor failure
-   feedback) are the perceptual checks a code read structurally cannot make, and they have
-   not been walked in three sessions of heavy tooling change. `tests/test_templates.py`
-   pins the markup half; nothing pins the rest. **(M)**
-3. **Close the outcome loop once `matches.csv` has rows.** Per-deck win rate against the
-   `#: tier:` letter, under the G-57 restraint: no percentage under 20 matches, a Wilson
-   interval above it, and a small-sample rate never written into a tier block. This is the
-   first thing that could confirm or refute a tier grade from outside the model. **(M)**
-4. **Two measured deck builds are queued.** Deck **52**, the unblockable-tempo deck from
-   deck 51's ~20-card overflow (its own number, not `51b`). And the **Dinosaur** question —
-   per G-59's table it is the only tribe besides Dragon with a real payoff count (52
-   bodies / 11 payoffs, against Vampire 69/3 and Mutant 79/2), so it is the one remaining
-   tribal archetype that is not body-count theatre. **(M each)**
-5. **Wire the Google Sheets round-trip.** The code is done; what remains is a service
-   account, the Sheets API, and two environment variables. Listed here rather than dropped
-   because a complete script nobody has ever run is indistinguishable from a broken one.
-   **(S dev + operator setup)**
+1. **A "both sides" meta-gate.** 2026-08-11 produced two bugs of one shape in one session:
+   `rationale_staleness` masked only the cards the deck RUNS (so an absent card's fragment
+   resolved to a different card), and `flex_staleness` checked only the `-Out` half of a
+   two-sided line. G-27 (read `#: tier:` but not `#: archetype:`), BS4-07 and G-63's header
+   consumers are the same class. A gate asserting that symmetric structures are checked
+   symmetrically would catch the next one — and `check_dfc`'s lesson applies: find them in
+   the AST, not in a hand-maintained registry, because a registry cannot see what nobody
+   added to it. — **M, 3–5d**
+2. **Get 3–4 decks past 20 matches.** This is the only work that converts the roster from
+   internally-consistent to *validated*, and it is what unblocks most of Tier 3. The
+   pipeline runs end to end, deck attribution resolves through `EventSetDeckV3`, and
+   `--report` is built and waiting behind its restraint threshold. — **M, owner-paced**
+3. **The October rotation pass.** 157 card-instances rotate ~2026 across 20+ decks. Deck
+   28's flex block is the worked pattern (successors pre-named for its six owned rotating
+   cards); deck 28a has never had the pass; deck 36 loses Kutzil with no safe replacement
+   for his "opponents can't cast spells during your turn" half. — **M, 3–5d**
+4. **Finish Fix 4 — `#~ note:` staleness — properly.** Measured and deliberately declined
+   on 2026-08-11: a card scan fires on 252 citations across 51 decks of 537 note lines (a
+   flex note's job is to discuss cards NOT in the deck), and a figure scan fires 47 times,
+   28 of them arrow/delta form. The narrow variant yields 16 hits, 12 contradicting the
+   live vector, but at least two are cue-gaps rather than staleness. The terrain is mapped;
+   what it needs is a delta-form suppression and additional history verbs, iterated against
+   537 lines. **Note the honest limit: the failure that motivated the finding — a note
+   asserting "the deck has FOUR cyclers" — is neither a card name nor a tracked vector key,
+   so no version of this check catches it.** — **M, 2–3d**
+5. **Regenerate `docs/systems-map.md`.** Measured 2026-07-29 against 64 decks and 1,853
+   cards; the roster is now 103 and 2,186, and five subcommands have landed since. Its
+   reconciliation-point inventory — every place a human must settle two answers by hand —
+   is the most load-bearing doc in the repo, and it is aging on stale figures. — **S/M, 1–2d**
 
 ## Tier 3 — Long-term (months+)
 
-1. **A grading loop that closes on outcomes, not on itself.** Today `tier` grades a list
-   against a metric floor, `cuts` ranks against theme fit, and both are validated by other
-   models in the same repo. The ledger showed what external feedback buys: it is the only
-   reason anyone knows the cut ranking is a coin flip on creatures. Match data plus the
-   ledger together could make the tier rubric's "intangibles" band measurable rather than a
-   human override. **(L)**
-2. **A deck lifecycle.** 76 deck files and rising, with no retire/archive path — `audit`
-   triages which decks need a tune but nothing says which decks are done, dead, or
-   superseded by a variant. Rotation makes this worse on a schedule, not gradually. **(M–L)**
-3. **Reduce the reconciliation points.** `docs/systems-map.md`'s real deliverable is the
-   list of places a human must settle two answers by hand. Each one removed is a class of
-   mistake removed — the cut-model unification took one from 28/64 agreement to 64/64.
-   Work the list rather than waiting for the next disagreement to surface as a bug. **(L)**
+1. **Outcome-driven tiering.** The floor today is `interaction + card-advantage` from a
+   heuristic classifier that is measurably blind: Triumphant Chomp, a `{R}` sorcery that
+   kills anything up to a 12/12, scored ZERO roles until 2026-08-11. Once match volume
+   exists, a Wilson-interval win rate becomes a SECOND axis the floor can be validated
+   against, and the 41-deck PROVISIONAL backlog resolves as a consequence rather than as a
+   grading chore. — **L, 2–3mo, gated on Tier 2.2**
+2. **Roster consolidation.** 103 files, and `similar` already names the closest pairs
+   (68a/68b at 84% theme overlap, 26b/48a at 89%). Every roster-wide sweep, rotation pass
+   and doc regeneration scales with this number, so a deliberate merge/retire pass buys
+   time back on all of them. Deck 68b's file already records that it is the family's
+   closest pair and the first place to look. — **L, 2–4wk**
+3. **A rotation-aware deck lifecycle.** Rotation is currently a flag on craft views plus
+   hand-written flex successors. With 596 card-instances rotating ~2027, the natural step
+   is a first-class "deck after the next rotation" view — computed rather than annotated —
+   so a deck's remaining Standard life is a property you can sort on. — **L, 3–4wk**
+4. **Close the heuristic-classifier gap structurally.** `_ROLE_PATTERNS` is a whitelist
+   whose misses are silent by construction, and `check_roles` baselines the population but
+   reads as a DELTA, not a target. **432 acknowledged zero-role cards** is a large blind
+   spot to carry indefinitely, and every one of the eight holes found in 2026-08 was found
+   by a human reading a card. — **L, 1–2mo**
 
 ## Tier 4 — Future possibilities (exploratory)
 
-**Field-aware grading.** Every judgement here is internal: does this deck hold together,
-can it cast its spells, does it answer things in the abstract. A deck is actually good or
-bad against *a field*. Pulling archetype and meta data — even coarsely, "what are the five
-decks you will actually face" — would turn the interaction count from a number into a
-question with an answer: interaction against *what*. It would also give the tier rubric's
-S band, currently defined as "a human call that it is top-meta capable", something to point
-at. The risk is obvious and worth naming: meta data ages faster than anything else here,
-and a stale meta read is more confidently wrong than no meta read.
+**Play-log-driven deck evolution.** The match parser already recovers which deck was played
+and when. With volume, the interesting object stops being a win rate and becomes the *diff
+between what a deck is and what it does*: which cards sat in hand at concession, which never
+got cast, which decks lose to a specific matchup rather than to variance. That reframes the
+whole toolchain from "is this list coherent" — which every model here currently
+approximates — to "which card in this list is dead weight in practice." It is the only
+direction that could retire a heuristic rather than adding another.
 
-**Play telemetry as model validation.** `Player.log` carries far more than match results.
-Mulligans taken, the turn each card was first cast, what sat in hand unplayed — all of it
-is already on disk. `consistency` predicts keepable 84.4% and a 63.2% chance of four lands
-on turn four; nobody has ever checked those predictions against a real game. A telemetry
-pass would make the hypergeometric model falsifiable, which is a different and better thing
-than making it more sophisticated. It is also the only path that could measure whether the
-cost-reduction cards this roster leans on actually reduce the effective curve.
+**A judgment ledger.** `recommendations.csv` already records where `cuts` ranked each card
+cut and whether `suggest` surfaced the add, captured against the pre-swap deck, and
+`deck.py feedback` leads with the DISAGREEMENTS because agreements are contaminated by the
+shortlist's own influence. Extended over a few hundred more decisions, that is a calibration
+dataset for the heuristics themselves: which flags get overruled, and how often the tool was
+right when it was. The repo already treats a refuted hypothesis as a result worth committing
+(two `cuts` fixes pre-registered and rejected); this would make that systematic instead of
+incidental.
 
-**Rotation as a standing plan rather than an annual surprise.** `rotation_risk` flags a
-card, `deck.py rotation` flags a roster, and both answer "what is at risk". Neither answers
-"what does this collection look like after rotation, and which decks survive it". A
-standing model — decks scored on post-rotation survivability, wildcards steered toward
-cards with runway, the wishlist reordered by remaining legal life — would turn the single
-most predictable disruption in the format into a planning input. It suits this project
-specifically, because the wishlist and budget tooling already exist and only lack a time
-axis.
+**Format-agnostic collection reasoning.** Everything is Standard-shaped today, with Brawl
+bolted on through `normalize_format` and its inverted labels. The pool carries full legality
+data across 16,071 rows and the collection is 2,186 printings. A genuinely format-neutral
+layer — "what is the best Historic deck in this collection that I have not built" — asks a
+different question than any current command, and the data to answer it is already on disk.
+The 100-card Historic Brawl build already queued (seed 35a with Terra as commander, who
+casts for `{1}{R}{G}` while carrying a five-colour identity) is the smallest version of this.
+
+---
 
 ## The strategic bet
 
-**Get real outcome data in, starting with `matches.csv`.**
+**Get match volume on a handful of decks (Tier 2.2).**
 
-Everything in this repo is graded against other things in this repo. Tier floors read the
-quality vector, the quality vector reads the role classifier, the role classifier reads the
-tags, and thirteen gates check that they all agree with each other — which is genuinely
-valuable and is exactly why it can be wrong in a way no gate can see.
+This project has built an unusually rigorous internal-consistency machine: 14 gates, 1,253
+tests, agreement checks between duplicate implementations of the same question, mutation
+testing that proves a gate would fail if its model broke, and a documented incident behind
+nearly every rule. That machinery is genuinely excellent — and it validates the tooling
+against *itself*.
 
-The one place external feedback exists is `recommendations.csv`, and look what it bought:
-at 100 swaps it says the cut ranking sits at **42% on creature cuts**, near a coin flip,
-with the mechanism identified (an unnormalized tag-count sum) and the obvious fix already
-simulated and rejected. No internal check produced that. A ledger of what a human actually
-decided did.
+What it cannot do is tell you whether an A is an A. **41 of 103 decks carry PROVISIONAL
+tiers**, and each file gives the same reason: unplayed. Every item in Tier 3 —
+outcome-driven tiering, lifecycle modelling, closing the classifier gap — is gated on having
+outcomes to check against.
 
-`matches.csv` is the same lever, cheaper, and empty. The data is free — it is already
-written to `Player.log`, the parser exists, it is tested, and G-57 already specifies the
-restraint for reading a small sample. The gap is that nobody has run it.
+The 2026-08-11 session is the argument in miniature. A one-mana sorcery that kills almost
+anything scored zero functional roles, `cuts` therefore ranked it its deck's *weakest* card,
+and the error surfaced only because a human playing the deck said so. No gate could have
+caught it: every gate verifies that the models agree with each other, and they did.
 
-Until it has rows, "deck 51 is a B" is a statement about a metric floor and a human
-argument, and there is no way to be surprised by it. The whole point of building fifty-one
-decks is to play them.
+The cost is low and falling. The pipeline runs end to end, deck attribution resolves,
+`--report` is built and waiting behind its own restraint threshold. The blocker is 30
+minutes of operator setup (Tier 1.4, which is also the one item with a deadline attached)
+and then games. That is the cheapest available conversion of "well-engineered" into "known
+correct."

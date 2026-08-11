@@ -133,6 +133,54 @@ so a line can sit for rounds proposing a cut that already happened. Surfaced by
 counts six — so the fix is sometimes to RETIRE the line, not retarget it. Advisory: a
 flex line is a human note, so this never edits one.
 
+**BOTH HALVES OF THE LINE ROT, and only one was checked (fixed 2026-08-11).** A `#~`
+line is `-Out card | +In card | reason`, and `flex_staleness` only ever verified the
+`-Out`. Deck 28 carried `-Triumphant Chomp | +Bushwhack` while Bushwhack was already in
+the maindeck — a line proposing an add the deck runs — and `deck.py flex` printed it
+without comment. The gap had been written down as a RULE rather than noticed as a bug:
+the function's own docstring said "a line with no `-Out` (a pure note, or an add-only
+suggestion) is never stale — there is nothing to check it against." There is, namely
+whether the deck already runs the `+In`. First roster sweep found **8, of which 7 were
+real**; the one false positive was deck 51's `-Krang, Utrom Warlord | +Island | THE 25TH
+LAND`, and it produced the exemption: basics are unlimited in Arena, so `+Island` against
+a deck already running Islands proposes one more land, not a duplicate. A pure NOTE (no
+`-Out` and no `+In`) really does have nothing to check against and is still never stale.
+
+**FIGURES IN `#~ note:` PROSE ARE CHECKED TOO** (`note_figure_staleness`, 2026-08-11),
+and the asymmetry with card names is the whole design. The card half was measured first
+and DECLINED: 252 absent-card citations across 51 decks of 537 note lines, because a
+build log discussing cards the deck does NOT run is correct by construction — the same
+reasoning G-27 uses to keep `#: notes:` out of the staleness scan. A bare present-tense
+FIGURE is a different object: it is a claim about the CURRENT list wherever it is
+written, and deck 50's parked-suggestion note argued from "this deck's whole advantage is
+a 3.11 curve with 21 early drops" against a live 3.31 / 16. Funnel: **47 raw matches → 9
+reported, 8 genuinely stale.** Most of the suppression was already there (arrow/delta,
+quoted spans, cross-deck ids and names, population subjects); three rules were added.
+
+Two of the three are SHARED with the `#: tier:` scan, because the trap is in the figure
+PATTERNS both use, and neither had a live instance in tier prose to expose it:
+
+- **A percentage is not an average mana value.** "cast-on-curve 76.7%" matches
+  `curve (\d+\.\d+)` and was reported as a 76.7 avg MV, twice, in deck 28's notes.
+- **A "draw N" count is not a card-advantage figure.** "sac->draw 2 card advantage"
+  matches `(\d+) card[- ]adv`; the 2 belongs to "draw" and the adjacency is a coincidence.
+
+The third is deliberately NOT shared. `_FIGURE_PAST` constrains its cue to 24 characters
+before the figure, which is right for `#: tier:` prose (a claim, where history is the
+exception) and wrong for a build log (history-dense by construction): deck 50a's "it read
+avg MV 4.18 with SEVEN early drops and interaction 4" sits the cue ~48 characters from
+the figure it governs. Widening the shared window would loosen every other suppression —
+`_figure_is_history`'s own comment says so — so the note scan re-reads the SAME cues
+CLAUSE-scoped instead. That preserves the distinction that decided two live cases:
+`\bread\b` does not match "reads", so 50a's past "it read" is suppressed while deck 31's
+live "role_tally still reads card-adv 1" is still reported.
+
+**Residual, kept rather than papered over with a one-instance cue:** a figure describing
+a HYPOTHETICAL configuration reads as a live claim. Deck 26's "the best curve of the
+three pass-3 alternatives (avg MV 3.61, early drops 11)" was 1 of the 9 — that number was
+true of an option, not of the deck. The fix for that shape is what the warning already
+advises: mark it as history.
+
 
 ## [G-05] A swap inherits the cut card's `# section` comment
 
@@ -1040,6 +1088,35 @@ citation immediately followed by a negation ("Note Mjölnir does NOT do this") i
 contrast with an absent card, suppressed positionally like the simile rule
 (`_NEGATION_AFTER`). The sweep's single surviving flag was a TRUE positive — deck 21's
 archetype still claimed Ragost as its core after Ragost moved to variant 21a.
+
+**2026-08-11, a PREFIX COLLISION the epithet cap structurally could not see.** The
+shorthand pass scanned `masked`, which blanks only the cards the deck RUNS. So an
+ABSENT card's full name was still sitting in the text when the fragment pass ran, and a
+fragment of it resolved to a DIFFERENT card: deck 28's prose cited "Savage Land Dinosaur"
+— one real stale citation — and the audit reported TWO, the second being "Ka-Zar of the
+Savage Land", a card the prose never names. Fixing the single real citation cleared both
+flags, which is how the false one was identified. Note this is NOT the ambiguity case the
+cap governs: "Savage Land" abbreviates exactly ONE card, so it was never ambiguous — it
+is a prefix of a longer name, which is a different failure.
+
+The fix scans a string with every OCCURRING full card name blanked, not just the in-deck
+ones. Blanking the SUPPRESSED names too is the load-bearing half: without it the fragment
+path smuggles back a citation the full-name scan deliberately let go under history,
+simile or negation, which would quietly defeat every suppression above it. Length-
+preserving, like the mask it extends, so positions stay comparable.
+
+Two guards landed with it, both latent in the FIGURE patterns rather than the card scan,
+and both now called by every consumer of those patterns — the `#: tier:` scan had the
+same bugs with no live instance to expose them. A `%` immediately after a match means a
+percentage, not an average mana value ("cast-on-curve 76.7%" was reported as a 76.7 avg
+MV); and a "draw N" count is not a card-advantage figure ("sac->draw 2 card advantage").
+See G-04 for the `#~ note:` scan they were found by.
+
+**A residual this fix does NOT close, found while fixing the others:** a figure needs its
+cue ADJACENT to the number. Deck 26b's `#: tier:` says "the fastest curve here at 2.44"
+against a live 2.5, and `curve(?: of)?[  ]+(\d+\.\d+)` cannot match across the
+intervening words. Left rather than widened, because widening a figure pattern mid-change
+is exactly what the archetype-figure extension above shows needs its own sweep.
 
 **2026-08, the FALSE-POSITIVE direction — a DATE read as a figure.** Every fix above
 widens what the audit catches; this one narrows it, and the asymmetry is the point. The
@@ -2317,6 +2394,30 @@ exception below).
 Every one was discovered because a human was grading a specific card and noticed the
 number was wrong. That is not a repeatable process, which is the whole argument for the
 gate below.
+
+### A ninth, 2026-08-11 — and it was found the same way
+
+Both variable-damage removal patterns assume the clause reads "deals damage **equal to
+X** … **to target**". Magic also templates the target first, and that half was indexed by
+nothing:
+
+> Triumphant Chomp deals damage **to target creature** equal to 2 or the greatest power
+> among Dinosaurs you control, whichever is greater.
+
+A `{R}` sorcery that kills anything up to a 12/12 scored ZERO functional roles, so it was
+the "1 unclassified noncreature" `stats` reported — and `cuts`, which folds role coverage
+into its ranking, listed it as deck 28's **weakest card**. The user kept it on the merits
+and said so; that objection is what surfaced the hole.
+
+The added pattern is `deals? damage to (any target|… target (?!player|opponent|spell))
+[^.]{0,60}?equal to`, and the exclusions extend BS2-06's guard rather than inventing one:
+player-only burn must not read as spot removal, and "target **spell's controller**"
+(Refuse) is a player too — that was the single false positive when the pattern was
+measured against the whole pool, which is the measurement this rule demands before
+widening a role bucket. Roster before/after: **2 decks moved** (28 interaction 6→7, 28a
+3→4) and **ZERO tier floors**, the same shape K-14 reports. `role_baseline.txt`'s entry
+for Triumphant Chomp was pruned as part of the fix — a baseline listing a card that now
+scores a role is a test double encoding the old behaviour.
 
 ### The largest one, and why it mattered
 
