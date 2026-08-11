@@ -22,7 +22,7 @@
 #: tier:     unindexed Increment keyword per K-01, and none of those carry a counters tag.
 #: tier:     The same ⚠ fires on the parent, where it IS real — this list is the payoff
 #: tier:     layer that deck's eight dead enablers were missing.
-#: tier:   TIGHT CURVE — printed 3.31 average after the plan pass added the Thor/Ovika/
+#: tier:   TIGHT CURVE — printed 3.43 average after the plan pass added the Thor/Ovika/
 #: tier:     Melek top end, but the thesis discounts what printed MV cannot see, which is
 #: tier:     the direct consequence of the design: a granter charging full price rewards
 #: tier:     cheap spells, where the parent's flat {1} rewarded expensive ones.
@@ -168,10 +168,10 @@
 1 Loki Laufeyson (MSH) 143
 1 Germination Practicum (SOS) 149
 
-# Fixing / selection  (NOTE: Accumulate Wisdom is NOT yard fill — it bottoms the
-# cards it doesn't take. It is here for the Lesson-count gate and the dig.)
+# Fixing / selection  (Starbreach Whale took Gran-Gran's slot when she was banned
+# 2026-08-11: surveil 2 for the selection, and warp for the deck's recast engine.)
 1 Hermitic Herbalist (TLA) 226
-1 Gran-Gran (TLA) 54
+1 Starbreach Whale (EOE) 77
 1 Great Divide Guide (TLA) 181
 1 Glacierwood Siege (TDM) 189
 

@@ -125,11 +125,15 @@
 #: notes: at 3, interaction 6, card advantage 2, avg MV 3.11 and 21 early drops all unchanged,
 #: notes: and creature count went 25 -> 26, which this deck reads three separate ways.
 #: notes: PASS 2 — THREE ADDS FROM A 47-CARD REVIEW PILE, all measured free or better.
-#: notes: BADGERMOLE CUB is the best card the pile contained for this deck and it is OWNED:
-#: notes: "whenever you TAP A CREATURE FOR MANA, add an additional {G}" doubles every mana dork
+#: notes: BADGERMOLE CUB was the best card that pile contained for this deck, and it was BANNED
+#: notes: out of Standard 2026-08-11. Recorded because the loss is real and unreplaceable:
+#: notes: "whenever you TAP A CREATURE FOR MANA, add an additional {G}" doubled every mana dork
 #: notes: in the list, and with Enduring Vitality out — which makes EVERY creature tap for mana
-#: notes: — it doubles the whole board. Its earthbend 1 also turns a land into a creature, which
-#: notes: this deck counts three separate ways. Replaced Poison Dart Frog, a vanilla dork.
+#: notes: — it doubled the whole board. A pool sweep for "add an additional" in green returns
+#: notes: exactly ONE card, the Cub itself, so nothing in Standard replaces that clause. Its
+#: notes: slot went to Noxious Newt: same {1}{G}, still a mana creature (so Enduring Vitality
+#: notes: and Craterhoof's X are unchanged), and its deathtouch turns Bite Down, Hard-Hitting
+#: notes: Question and Plow Through into unconditional removal. Curve unmoved at 3.31.
 #: notes: GOLDVEIN HYDRA ({X}{G}, vigilance trample haste, enters with X counters) is the mana
 #: notes: SINK the deck lacked: every other card here converts mana into board, and this one
 #: notes: converts surplus mana into a trampling threat that needs no enabler. It replaced
@@ -259,7 +263,7 @@
 1 Bristly Bill, Spine Sower (OTJ) 157
 1 Shang-Chi, Master of Kung Fu (MSH) 187
 1 Topiary Lecturer (SOS) 165
-1 Badgermole Cub (TLA) 167
+1 Noxious Newt (SOS) 155
 1 Druid of the Cowl (M19) 177
 1 Elvish Archdruid (FDN) 219
 1 Mona Lisa, Science Geek (TMT) 123

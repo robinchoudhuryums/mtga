@@ -3,9 +3,9 @@
 #: colors: U
 #: plan: control
 #: tier: B — GRADED 2026-07. One band below the measurable floor, which reads A on interaction 9
-#: tier: plus card advantage 6 at a 3.14 curve. On the measurables this is the BETTER of the two
+#: tier: plus card advantage 7 at a 3.22 curve. On the measurables this is the BETTER of the two
 #: tier: Unlock decks and it is worth saying so: against parent 51 it wins on interaction (9 vs
-#: tier: 6), curve (3.14 vs 4.14), focus (5 central themes vs 11) and engine health — `engines`
+#: tier: 6), curve (3.22 vs 4.14), focus (5 central themes vs 11) and engine health — `engines`
 #: tier: reports graveyard 20 enablers / 9 payoffs, balanced, with no warning at all. The
 #: tier: interaction is well shaped too: 7 of 9 instant-speed, 6 answering a noncreature permanent.
 #: tier: WHAT HOLDS IT AT B IS ONE NUMBER. The deck is a two-card engine and the second card is a
@@ -46,13 +46,14 @@
 #: archetype: goes from 2 to 6 per enchantment or Room unlock. Exhibition Tidecaller goes from 3 to
 #: archetype: 7 per instant or sorcery, and from 10 to 14 when five or more mana was spent. It also
 #: archetype: still does its day job — {1} off every blue spell — so it is never a dead draw.
-#: archetype: THE LESSON SUBTYPE IS NOT FLAVOUR, it is three payoffs that read the same graveyard.
+#: archetype: THE LESSON SUBTYPE IS NOT FLAVOUR, it is a set of payoffs that read the same graveyard.
 #: archetype: Master Pakku mills X where X is the number of LESSON cards in your graveyard, which
-#: archetype: with the Crystal is X+4 every time he becomes tapped. Gran-Gran makes every NONCREATURE
-#: archetype: spell cost {1} less once three Lessons are in the yard — broader than any instant-and-
-#: archetype: sorcery reducer, because it also discounts the Rooms, Gilded Lotus and the Crystal
-#: archetype: itself. Accumulate Wisdom stops being "look at three, take one" and becomes TAKE ALL
-#: archetype: THREE for {1}{U} at the same threshold. Guru Pathik digs five deep for a Lesson.
+#: archetype: with the Crystal is X+4 every time he becomes tapped. Accumulate Wisdom stops being
+#: archetype: "look at three, take one" and becomes TAKE ALL THREE for {1}{U} at a three-Lesson
+#: archetype: threshold. Guru Pathik digs five deep for a Lesson. (Gran-Gran was the broadest of
+#: archetype: these — {1} off every NONCREATURE spell at the same threshold, so it discounted the
+#: archetype: Rooms and the Crystal too — and was BANNED out of Standard 2026-08-11. Nothing owned
+#: archetype: replaces that clause; her slot went to Plan the Heist for the card flow instead.)
 #: archetype: THE LESSONS ARE NOT A TAX, and that is what makes this build work rather than merely
 #: archetype: cohere. It'll Quench Ya! is Spell Pierce that hits creatures too. Zuko's Exile is
 #: archetype: unconditional exile of an artifact, creature or enchantment — removal deck 51 does not
@@ -62,7 +63,7 @@
 #: archetype: artifacts and creatures — and Master Pakku mills whenever he BECOMES TAPPED. So you
 #: archetype: draw three, tap Pakku to avoid the discard, and mill for it. (Octopus Form
 #: archetype: untapped him for a second loop, but it was CUT for the manabase — first card
-#: archetype: back in if a land can be spared; see notes.) Gran-Gran has the same "becomes tapped" trigger and loots off it.
+#: archetype: back in if a land can be spared; see notes.)
 #: archetype: THE MINDSKINNER CONVERTS THE COMBAT PLAN INSTEAD OF ADDING ONE, and in this deck that
 #: archetype: is pure upside because there was no combat plan to lose. "If a source you control would
 #: archetype: deal damage to an opponent, prevent that damage and each opponent mills that many
@@ -125,7 +126,7 @@
 #: notes: Veteran Ice Climber and The Mindskinner.
 #: notes: WHAT IT COST, all three of which were measured first: interaction 10 -> 9; the Lesson
 #: notes: count 10 -> 9, which is Master Pakku's X directly and fuel for the two thresholds
-#: notes: Gran-Gran and Accumulate Wisdom read at three; and ONE OF ONLY TWO RECURSION-PROOF
+#: notes: Accumulate Wisdom reads at three; and ONE OF ONLY TWO RECURSION-PROOF
 #: notes: ANSWERS. Lost Days TUCKED a creature or enchantment second from the top, so unlike a
 #: notes: counter or a bounce it beat a card that rebuys itself. Zuko's Exile is now the only
 #: notes: one left, and that lands on the matchup this deck is already worst against — see the
@@ -167,8 +168,8 @@ Deck
 1 The Water Crystal (FIN) 85
 1 Transit Mage (DFT) 70
 
-# Lesson payoffs — all three read the same graveyard
-1 Gran-Gran (TLA) 54
+# Lesson payoffs — both read the same graveyard (was three; Gran-Gran was banned
+# 2026-08-11 and her slot went to Plan the Heist under Card advantage)
 1 Guru Pathik (TLA) 223
 1 Cephalid Inkmage (FDN) 32
 
@@ -194,6 +195,7 @@ Deck
 1 Eddymurk Crab (BLB) 48
 
 # Card advantage
+1 Plan the Heist (OTJ) 62
 1 Cerebral Download (EOE) 48
 1 Spellgyre (BLB) 72
 

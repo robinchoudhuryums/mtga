@@ -50,7 +50,7 @@
 #: archetype: Pay converts overkill damage back into Treasure; Crime Novelist turns every
 #: archetype: artifact sacrifice into a +1/+1 counter and a red mana. Armor Wars III and
 #: archetype: Weftstalker Ardent add non-combat damage that does not care about blockers either.
-#: archetype: THE LOOT ENGINES ARE THE ENGINE, not filler: Kitsa and Gran-Gran each loot for
+#: archetype: THE LOOT ENGINES ARE THE ENGINE, not filler: Kitsa loots for
 #: archetype: free every turn, Rewrite History loots whenever your creatures become TAPPED
 #: archetype: (which this deck does constantly for mana), and Kiora draws two and discards two
 #: archetype: on entry — two drain triggers off one card. Iron-Fist Pulverizer is priced by the
@@ -222,10 +222,10 @@
 1 Gleaming Geardrake (MKM) 205
 1 Technodrome (TMT) 179
 1 Scrounging Skyray (DFT) 60
+1 Cryogen Relic (EOE) 52
 
 # Repeatable loot — every activation is a drain trigger
 1 Kitsa, Otterball Elite (BLB) 54
-1 Gran-Gran (TLA) 54
 1 Rewrite History (MSH) 71
 1 Kiora, the Rising Tide (FDN) 45
 1 Artist's Talent (BLB) 124
