@@ -1,7 +1,7 @@
 #: name: Dino Stampede
 #: format: Standard
 #: arena: 28 Triceraton, 0c12490d-6f0f-4603-80a2-8b86422d9e7e
-#: tier: A — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit). Re-graded B→A after the interaction package (+Bushwhack / +Clash of the Eikons fight removal / +Auspicious Arrival investigate-draw, cutting off-tribe Soldier chaff) took interaction to 5, then the 2026-08 rotation-proofing pass (Gishath/Palani's Hatcher/Rampaging Ceratops/Hulking Raptor were CUT for Etali/Thrashing Brontodon, plus a Savage Land Dinosaur and a Spider-Rex that have since been CUT themselves, 2026-08-11) moved it to interaction 6 and card advantage 3 → A-floor. The 2026-08-11 pass then took interaction to 5 and card advantage to 4 — still A-floor, but interaction now sits EXACTLY on the A minimum of 5, so the next interaction cut drops this to B. A here is a clean, resilient fair-creature A (not a bomb-driven one). The fully-owned playable version is variant 28a.
+#: tier: A — Naya Dinosaurs; aggressive dino midrange. Graded on the LIST (legal 60, ownership-independent per the tiering rubric — build-state is tracked by check/audit). Re-graded B→A after the interaction package (+Bushwhack / +Clash of the Eikons fight removal / +Auspicious Arrival investigate-draw, cutting off-tribe Soldier chaff) took interaction to 5, then the 2026-08 rotation-proofing pass (Gishath/Palani's Hatcher/Rampaging Ceratops/Hulking Raptor were CUT for Etali/Thrashing Brontodon, plus a Savage Land Dinosaur and a Spider-Rex that have since been CUT themselves, 2026-08-11) moved it to interaction 6 and card advantage 3 → A-floor. The 2026-08-11 pass then took interaction to 5 and card advantage to 4, which sat EXACTLY on the A minimum; Boros Charm in over Nurturing Bristleback later that same day restored interaction to 6, so the deck clears the floor with one card of margin rather than none. A here is a clean, resilient fair-creature A (not a bomb-driven one). The fully-owned playable version is variant 28a.
 #: colors: RGW
 #: archetype: Naya (R/G/W) Dinosaur tribal with a Soldier secondary — Triceraton Commander token engine into big dinos (Ghalta, Etali cheating spells off the top). WIP brew, rotation-proofed 2026-08: every unowned card now survives the ~Q4 2026 rotation.
 
@@ -11,7 +11,7 @@
 1 Stegron the Dinosaur Man (MSC) 810
 1 Earthshaker Dreadmaw (LCI) 183
 1 Needletooth Pack (FDN) 108
-1 Nurturing Bristleback (LCI) 203
+1 Boros Charm (FDN) 721
 1 Burrowguard Mentor (BLB) 206
 1 Flowerfoot Swordmaster (BLB) 14
 1 Bushwhack (BRO) 174
@@ -106,10 +106,11 @@
 #~ note: silently fixed: cutting Savage Land Dinosaur was nearly rejected as "the deck's only
 #~ note: land insurance", from a text search for "landcycling" that returned 1. It misses
 #~ note: FORESTcycling and MOUNTAINcycling, which do not contain that substring. Read the
-#~ note: Keywords column: the deck has FOUR cyclers (Nurturing Bristleback, Zog, Savage Land
-#~ note: Dinosaur, Agonasaur Rex), so the MV-6 one was the affordable cut, not the load-bearing
-#~ note: one. Same shape as K-13 one layer down — a literal search returning a wrong number
-#~ note: that reads like a finding.
+#~ note: Keywords column: the deck had FOUR cyclers at that moment (Nurturing Bristleback, Zog,
+#~ note: Savage Land Dinosaur, Agonasaur Rex), so the MV-6 one was the affordable cut, not the
+#~ note: load-bearing one. Same shape as K-13 one layer down — a literal search returning a
+#~ note: wrong number that reads like a finding. (Count is TWO now: Savage Land Dinosaur went
+#~ note: that same day, Nurturing Bristleback on 2026-08-11 — Zog and Agonasaur Rex remain.)
 #~ note: RATIONALE-AUDIT FALSE POSITIVE, worth knowing before trusting one: this pass's audit
 #~ note: reported the tier block "argues from Ka-Zar of the Savage Land", a card the prose never
 #~ note: names. The scan indexes card-name FRAGMENTS for shorthand, drops a fragment shared by
@@ -190,10 +191,22 @@
 #~ note: sorcery-speed removal in a deck whose protection axis reads 1. It also untaps an
 #~ note: attacker when it attacks. A land slot that is also a creature is worth more here than
 #~ note: +0.8 percentage points of casting.
+#~ note: BOROS CHARM IN OVER NURTURING BRISTLEBACK, 2026-08-11 — the user's cut, and a better
+#~ note: one than any of the three offered. Bristleback is MV 7, not the 6 a glance suggests, so
+#~ note: the swap read avg MV 3.89 -> 3.75, a bigger curve gain than Giant Cindermaw, Kav
+#~ note: Landseeker or Belligerent Yearling would have given. It also pre-empts a rotation
+#~ note: (Bristleback is LCI, ~2026), and `swap --apply` auto-retired the flex line that had
+#~ note: been planning that very replacement — G-04's mechanism working as designed.
+#~ note: RESULT: interaction 5 -> 6, protection 1 -> 2. The deck no longer sits ON the A-floor
+#~ note: minimum; it clears it with one card of margin. Boros Charm's "permanents you control
+#~ note: gain INDESTRUCTIBLE" is also a one-sided answer to a sweeper, an effect this list had
+#~ note: none of. COST: cyclers drop to two (Zog, Agonasaur Rex) and a 3/3 token maker leaves.
+#~ note: Protection 2 is still thin for a deck whose plan is resolving one large creature —
+#~ note: Spectacular Tactics and Snakeskin Veil (x2 owned) stay the cheapest further fixes.
 # October successors for the six OWNED cards that rotate ~Q4 2026 (kept until then — they cost nothing):
 #~ -Earthshaker Dreadmaw | +Terrian, World Tyrant | rotates 2026; Terrian is an owned rotation-safe 9/7 for 5 (vanilla, K-11)
 #~ -Belligerent Yearling | +Ragamuffin Raptor | rotates 2026; owned 4/3 whose ETB "return up to one target creature or Food card from your graveyard" adds recursion
-#~ -Nurturing Bristleback | +Migrating Ketradon | rotates 2026; craft C — 6/6 reach, "you gain 4 life", cycling {2} keeps the never-dead-card property
+#~ note: applied — Boros Charm in for Nurturing Bristleback.
 #~ -Itzquinth, Firstborn of Gishath | +Tyrox, Saurid Tyrant | rotates 2026; Tyrox is now OWNED (opened 2026-08-06), a rotation-safe DFT legendary 4/1 vanilla for {1}{R} — no craft needed, promote with `deck.py apply-flex 28` when October comes
 #~ note: RETIRED 2026-08-11. This line used to propose Bushwhack as the successor, and Bushwhack
 #~ note: is ALREADY in the maindeck — so it proposed an add the deck already runs. `deck.py flex`
