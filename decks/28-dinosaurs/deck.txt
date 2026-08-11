@@ -56,8 +56,9 @@
 3 Plains
 3 Forest
 1 Kyoshi Village (TLA) 271
-3 Mountain
+2 Mountain
 1 Rugged Highlands (FDN) 265
+1 Restless Ridgeline (LCI) 283
 1 Gongaga, Reactor Town (FIN) 280
 1 Suburban Sanctuary (SPM) 185
 
@@ -177,6 +178,18 @@
 #~ note:   Swiftfoot Boots {2} — colourless, so no strain on a manabase already stretched;
 #~ note:   hexproof AND haste is repeatable protection rather than a one-shot.
 #~ note: All four read protection 1 -> 2. None fixes the axis alone; two of them would.
+#~ note: RESTLESS RIDGELINE ADDED BACK 2026-08-11 over a Mountain (W12/R12/G15 -> W12/R12/G16),
+#~ note: a KNOWING re-introduction of a ~2026 rotating land — the user will swap it when it
+#~ note: goes, and the note above recording its earlier removal stands as the reason it left.
+#~ note: BE HONEST ABOUT WHICH AXIS PAID FOR IT: the mana gain is MARGINAL, average
+#~ note: cast-on-curve 81.8% -> 82.6% and sub-90 cards 27 -> 25. Tested over all three basics;
+#~ note: over a Plains gave the fewest sub-90 cards but dropped white to 11 and the worst real
+#~ note: case to 65.1%, so the Mountain was the right basic. What earns the slot is what the
+#~ note: mana model cannot see: {2}{R}{G} makes it a 3/4 DINOSAUR, so it is an on-tribe body for
+#~ note: Regal Imperiosaur, Chronicle of Victory and Patchwork Banner, and a threat that dodges
+#~ note: sorcery-speed removal in a deck whose protection axis reads 1. It also untaps an
+#~ note: attacker when it attacks. A land slot that is also a creature is worth more here than
+#~ note: +0.8 percentage points of casting.
 # October successors for the six OWNED cards that rotate ~Q4 2026 (kept until then — they cost nothing):
 #~ -Earthshaker Dreadmaw | +Terrian, World Tyrant | rotates 2026; Terrian is an owned rotation-safe 9/7 for 5 (vanilla, K-11)
 #~ -Belligerent Yearling | +Ragamuffin Raptor | rotates 2026; owned 4/3 whose ETB "return up to one target creature or Food card from your graveyard" adds recursion
