@@ -398,10 +398,11 @@ def main():
         flex_stale = []
         for d in deckmod.roster_decks():
             for cut, add, _why in deckmod.flex_staleness(d["path"]):
-                flex_stale.append(f"deck {d['id']}: −{cut}" + (f" / +{add}" if add else ""))
+                flex_stale.append(f"deck {d['id']}: " + (f"−{cut}" if cut else "")
+                                  + (f" / +{add}" if add else ""))
         if flex_stale:
-            soft.append(f"stale flex line(s): {len(flex_stale)} propose cutting a card the "
-                        f"deck no longer runs — {'; '.join(flex_stale[:3])}"
+            soft.append(f"stale flex line(s): {len(flex_stale)} name a cut card the deck no "
+                        f"longer runs, or an add it already runs — {'; '.join(flex_stale[:3])}"
                         + (" …" if len(flex_stale) > 3 else "")
                         + " (retarget or retire; see `deck.py flex <id>`)")
     except Exception as e:

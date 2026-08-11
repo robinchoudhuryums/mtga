@@ -126,6 +126,39 @@ class TestClassifyRoles:
         for text in self.ADJECTIVE_REMOVAL:
             assert "Removal (spot)" in deck.classify_roles(text), text
 
+    # ── Variable damage in TARGET-FIRST word order. Both pre-existing variable-damage
+    # patterns assume "equal to X" precedes "to target"; Magic also templates it the
+    # other way round. Fixtures are the cards' REAL text (G-67), not paraphrases.
+
+    TARGET_FIRST_VARIABLE_DAMAGE = [
+        # Triumphant Chomp — a {R} sorcery that kills anything up to a 12/12, scored
+        # ZERO roles, and `cuts` therefore ranked it deck 28's WEAKEST card.
+        "Triumphant Chomp deals damage to target creature equal to 2 or the greatest "
+        "power among Dinosaurs you control, whichever is greater.",
+        "Rumbling Rockslide deals damage to target creature equal to the number of "
+        "lands you control.",
+        "When this creature enters, it deals damage to target creature an opponent "
+        "controls equal to the number of Goblins you control.",
+    ]
+
+    def test_target_first_variable_damage_is_removal(self):
+        for text in self.TARGET_FIRST_VARIABLE_DAMAGE:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_player_only_variable_damage_is_still_not_removal(self):
+        # BS2-06's guard: player-only burn read as spot removal and 14 decks over-read
+        # the interaction axis. Widening the pattern must not re-open that.
+        assert "Removal (spot)" not in deck.classify_roles(
+            "When this creature enters, it deals damage to each player equal to the "
+            "number of nonbasic lands that player controls.")
+
+    def test_damage_to_a_target_spells_controller_is_not_removal(self):
+        # Refuse — "target spell's controller" is a PLAYER, and it was the only false
+        # positive when this pattern was measured against the whole pool.
+        assert "Removal (spot)" not in deck.classify_roles(
+            "Refuse deals damage to target spell's controller equal to that spell's "
+            "mana value.")
+
     def test_counter_up_to_n_target_counts(self):
         # Repulsive Mutation. Missed by the Counter pattern AND by the coverage net,
         # so the under-read was invisible to the audit meant to catch it.
@@ -688,6 +721,47 @@ Deck
         p = tmp_path / "deck.txt"
         p.write_text("#: name: Probe\n#: colors: B\n\nDeck\n4 Swamp (MSH) 291\n"
                      "#~ -Swamp | +Bloodfell Caves | live\n", encoding="utf-8")
+        assert deck.flex_staleness(str(p)) == []
+
+    # ── The +In side rots too, and nothing checked it. Live on deck 28 (2026-08-11):
+    # `#~ -Triumphant Chomp | +Bushwhack` sat in the flex block while Bushwhack was
+    # ALREADY maindecked, so the line proposed an add the deck runs. G-04 documents
+    # the stale-CUT rot; this is its mirror on the other half of the same line.
+
+    def test_flags_a_line_whose_add_card_is_already_in_the_deck(self, tmp_path):
+        p = tmp_path / "deck.txt"
+        p.write_text("#: name: Probe\n#: colors: B\n\nDeck\n4 Swamp (MSH) 291\n"
+                     "1 Bushwhack (BRO) 174\n"
+                     "#~ -Swamp | +Bushwhack | the add is already maindecked\n",
+                     encoding="utf-8")
+        stale = deck.flex_staleness(str(p))
+        assert [(c, a) for c, a, _w in stale] == [("Swamp", "Bushwhack")]
+        assert "already in the deck" in stale[0][2]
+
+    def test_an_add_only_line_is_checked_on_its_add(self, tmp_path):
+        # The old docstring said a line with no -Out "can never be stale — there is
+        # nothing to check it against". There is: whether the deck already runs the +In.
+        p = tmp_path / "deck.txt"
+        p.write_text("#: name: Probe\n#: colors: B\n\nDeck\n4 Swamp (MSH) 291\n"
+                     "1 Bushwhack (BRO) 174\n"
+                     "#~ +Bushwhack | | add-only, and already here\n", encoding="utf-8")
+        assert [(c, a) for c, a, _w in deck.flex_staleness(str(p))] == [("", "Bushwhack")]
+
+    def test_a_live_add_is_not_flagged(self, tmp_path):
+        p = tmp_path / "deck.txt"
+        p.write_text("#: name: Probe\n#: colors: B\n\nDeck\n4 Swamp (MSH) 291\n"
+                     "#~ -Swamp | +Bushwhack | a genuine craft suggestion\n",
+                     encoding="utf-8")
+        assert deck.flex_staleness(str(p)) == []
+
+    def test_a_basic_land_add_is_never_a_duplicate(self, tmp_path):
+        # Basics are unlimited in Arena, so "+Island" against a deck already running
+        # Islands proposes ONE MORE land. Deck 51's `-Krang | +Island | THE 25TH LAND`
+        # was the only false positive in the +In check's first roster sweep.
+        p = tmp_path / "deck.txt"
+        p.write_text("#: name: Probe\n#: colors: U\n\nDeck\n4 Island (TRK) 319\n"
+                     "1 Bushwhack (BRO) 174\n"
+                     "#~ -Bushwhack | +Island | the 25th land\n", encoding="utf-8")
         assert deck.flex_staleness(str(p)) == []
 
 
@@ -2339,6 +2413,31 @@ class TestRationaleStaleness:
         # 26a explains itself by contrast: "Note Mjölnir does NOT do this". The
         # negation IS the claim that the card isn't here.
         d = self._deck(tmp_path, ["B — note Gishath does NOT fit this plan."])
+        cards, _figs = deck.rationale_staleness(d)
+        assert cards == []
+
+    # ── A fragment INSIDE a longer absent name must not resolve to a different card.
+    # Live on deck 28 (2026-08-11): the prose cited "Savage Land Dinosaur" — one real
+    # stale citation — and the audit reported TWO, the second being "Ka-Zar of the
+    # Savage Land", a card the prose never names. Only IN-DECK names are masked before
+    # the shorthand pass, so an ABSENT card's full name stays in the text and its
+    # fragment gets matched and resolved to whatever else abbreviates to it.
+
+    def test_fragment_inside_a_longer_absent_name_does_not_name_another_card(self, tmp_path):
+        d = self._deck(tmp_path, ["A — the pass added Savage Land Dinosaur for reach."])
+        cards, _figs = deck.rationale_staleness(d)
+        named = [c for c, _h in cards]
+        assert "Savage Land Dinosaur" in named, "the real citation must still flag"
+        assert not any("Ka-Zar" in c for c in named), \
+            "the fragment 'Savage Land' must not resolve to Ka-Zar of the Savage Land"
+
+    def test_a_suppressed_full_name_is_not_re_flagged_via_its_fragment(self, tmp_path):
+        # The dangerous half: if the full-name scan SUPPRESSES a citation (history cue
+        # here), the fragment path must not smuggle it back in under another card's
+        # name — that would defeat every suppression the full-name scan applies.
+        d = self._deck(
+            tmp_path,
+            ["A — Savage Land Dinosaur was CUT 2026-08-11 for a cheaper body."])
         cards, _figs = deck.rationale_staleness(d)
         assert cards == []
 

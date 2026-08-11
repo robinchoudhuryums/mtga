@@ -1297,6 +1297,17 @@ _ROLE_PATTERNS = {
         # not an answer, and a roster sweep of the first draft showed that was the ONLY
         # false-positive class among 116 newly-matched cards.
         r"deals damage equal to [^.]{0,80}?to (?:any target|target (?!player|opponent)\w+)",
+        # TARGET-FIRST word order. The two patterns above both assume "equal to X"
+        # precedes "to target"; Magic also templates it the other way round, and that
+        # half was a whitelist hole (G-67). Triumphant Chomp — "deals damage to target
+        # creature equal to 2 or the greatest power among Dinosaurs you control" — is a
+        # {R} sorcery that kills anything up to a 12/12 and scored ZERO roles, which is
+        # why `cuts` ranked it deck 28's WEAKEST card (2026-08-11). The exclusions are
+        # BS2-06's guard, extended: player-only burn must not read as spot removal, and
+        # "target spell's controller" (Refuse) is a player too — it was the single false
+        # positive when this pattern was measured against the whole pool.
+        r"deals? damage to (?:any target|(?:up to \w+ )?(?:another )?target "
+        r"(?!player\b|opponent\b|spell\b))[^.]{0,60}?equal to",
         # DIVIDED damage — the Fiery Confluence / Death to Our Enemies template. Every
         # fixed-damage pattern above expects "to target"/"to any target" immediately after
         # the number, and this one says "divided as you choose among …" instead.
@@ -5101,7 +5112,7 @@ def parse_flex(path):
 
 
 def flex_staleness(path):
-    """Flex lines whose `-Out` card is NOT in the deck any more → [(out, in, why)].
+    """Flex lines that no longer describe a possible change → [(out, in, why)].
 
     A `#~` line rots silently. `swap --apply` retires only the lines invalidated by
     the swap it is PERFORMING, and `tier --audit-rationale` reads `#: tier:` /
@@ -5110,8 +5121,16 @@ def flex_staleness(path):
     Azula line still named Prideful Parent two swaps after it left, and again where an
     interaction fix pointed at a card three swaps stale.
 
-    A line with no `-Out` (a pure note, or an add-only suggestion) is never stale —
-    there is nothing to check it against.
+    BOTH HALVES OF THE LINE ROT, and only the `-Out` half used to be checked. Deck 28
+    carried `-Triumphant Chomp | +Bushwhack` while Bushwhack was already maindecked —
+    a line proposing an add the deck runs, printed by `deck.py flex` without comment
+    (2026-08-11). This function's own docstring had encoded the gap as a rule ("a line
+    with no -Out … is never stale — there is nothing to check it against"); there is,
+    namely whether the deck already runs the `+In`. G-04 documents the stale-CUT rot;
+    this is its mirror.
+
+    A pure NOTE (no `-Out` and no `+In`) is still never stale — that one really has
+    nothing to check against.
     """
     _, cards = parse_deck_file(path)
     # Lowercased on both sides — every other name join here is case-insensitive
@@ -5119,15 +5138,25 @@ def flex_staleness(path):
     # different case from its deck line read permanently STALE (broad-scan batch 5).
     have = {n.lower() for _q, n, _s, _c in cards}
     have |= {n.split(" // ")[0] for n in list(have)}
+
+    def _held(nm):
+        nl = nm.lower()
+        return nl in have or nl.split(" // ")[0] in have
+
     out = []
     for e in parse_flex(path):
         cut = (e.get("out") or "").strip()
-        if not cut:
-            continue
-        cl = cut.lower()
-        if cl not in have and cl.split(" // ")[0] not in have:
-            out.append((cut, (e.get("in") or "").strip(),
-                        "the -Out card is no longer in the deck"))
+        add = (e.get("in") or "").strip()
+        if cut and not _held(cut):
+            out.append((cut, add, "the -Out card is no longer in the deck"))
+        elif add and add.lower() not in BASICS and _held(add):
+            # BASICS are exempt: they are unlimited in Arena, so "+Island" against a
+            # deck that already runs Islands is a proposal for one MORE land, not a
+            # duplicate. Deck 51's `-Krang | +Island | THE 25TH LAND` was the single
+            # false positive in this check's first roster sweep (7 of 8 were real).
+            # Reported on the ADD side only when the CUT side is still live (or
+            # absent), so one rotten line yields one row rather than two.
+            out.append((cut, add, "the +In card is already in the deck"))
     return out
 
 
@@ -5202,10 +5231,11 @@ def cmd_flex(args):
             print(f"      {e['note']}")
     stale = flex_staleness(d["path"])
     if stale:
-        print("\n  \u26a0 STALE flex line(s) — the card they propose cutting is already gone:")
-        for cut, add, _why in stale:
-            print(f"      \u2212{cut}" + (f"  \u2192  +{add}" if add else "")
-                  + "   (retarget or retire the line)")
+        print("\n  \u26a0 STALE flex line(s) — they no longer describe a possible change:")
+        for cut, add, why in stale:
+            label = "  \u2192  ".join(x for x in ((f"\u2212{cut}" if cut else ""),
+                                              (f"+{add}" if add else "")) if x)
+            print(f"      {label}   ({why} \u2014 retarget or retire the line)")
     return 0
 
 
@@ -9953,6 +9983,9 @@ def rationale_staleness(d, carddata=None):
         # ...and mask roster DECK names, which the distinctness prose names on purpose.
         for nm in _roster_deck_names():
             masked = masked.replace(nm, " " * len(nm))
+        # Every full card name that OCCURS in this prose, whether it was reported stale
+        # or suppressed. Consumed by the shorthand pass below — see the comment there.
+        seen_full_names = set()
         for name, row in carddata.items():
             disp = row.get("name") or name
             if len(disp) < _RATIONALE_MIN_LEN and " " not in disp:
@@ -9976,6 +10009,7 @@ def rationale_staleness(d, carddata=None):
             pos = _find_word_bounded(masked, disp)
             if pos < 0:
                 continue
+            seen_full_names.add(disp)
             # History suppression, EXCEPT on the arriving side of a stated replacement:
             # a card the prose says came IN is a claim about the current list, and its
             # absence means the sentence points the wrong way (see `_cites_as_arriving`).
@@ -9996,8 +10030,25 @@ def rationale_staleness(d, carddata=None):
         # cited by abbreviation ("Gishath" for Gishath, Sun's Avatar; "Okinec Ahau"
         # for Sovereign Okinec Ahau). Both real misses survived a clean audit
         # (broad-implement #2). Same suppressions as a full-name citation.
+        #
+        # Scan a string with every OCCURRING full card name blanked, not `masked`.
+        # `masked` hides only the cards the deck RUNS, so an ABSENT card's full name
+        # is still in the text when the fragment pass runs — and a fragment of it then
+        # resolves to whatever OTHER card abbreviates to that fragment. Live on deck 28
+        # (2026-08-11): prose citing "Savage Land Dinosaur" produced a second, false
+        # report of "Ka-Zar of the Savage Land", a card the prose never names; fixing
+        # the one real citation cleared both flags, which is how the false one was
+        # identified. The epithet cap cannot see this — "Savage Land" abbreviates
+        # exactly ONE card, so it is not ambiguous, it is a PREFIX COLLISION.
+        # Blanking suppressed names too is the load-bearing half: otherwise the
+        # fragment path smuggles back a citation the full-name scan deliberately let
+        # go (history, simile, negation), under a different card's name.
+        # Length-preserving, like the mask above, so `pos` stays comparable.
+        masked_frags = masked
+        for nm in sorted(seen_full_names, key=len, reverse=True):
+            masked_frags = masked_frags.replace(nm, " " * len(nm))
         frags = _shorthand_index(carddata)
-        for frag, pos in _shorthand_candidates(masked, frags):
+        for frag, pos in _shorthand_candidates(masked_frags, frags):
             fulls = frags[frag]
             # If ANY candidate is in the deck, the citation means that card — and an
             # abbreviation contained in an in-deck name is that card's shorthand

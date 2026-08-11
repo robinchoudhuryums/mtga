@@ -92,14 +92,18 @@
 #~ note: than trading one away. For this manabase that is the better {3} than the better land.
 #~ note: SECOND 2026-08-11 PASS (user call). -Red Guardian +Patchwork Banner, -Savage Land
 #~ note: Dinosaur +Figure of Fable. Triumphant Chomp was the tool's #1 cut and was KEPT, and
-#~ note: the tool was wrong for a readable reason: `role_tally` scores it ZERO — it is the
-#~ note: "1 unclassified" noncreature `stats` reports — because "damage equal to 2 or the
-#~ note: greatest power among Dinosaurs you control" is a VARIABLE-damage shape no removal
-#~ note: pattern matches (a G-67 whitelist hole). It is a {R} sorcery that kills anything up to
-#~ note: Ghalta's 12, and the deck's live interaction is really 7, not the 5 the vector prints.
-#~ note: WATCH THIS NUMBER: measured interaction is now 5, EXACTLY the A-floor minimum. The A
-#~ note: holds (5 interaction + 4 card advantage = 9 against a required 7) but the next cut to
-#~ note: an interaction card drops this deck to B. Red Guardian was the counted removal spent
+#~ note: the tool was wrong for a readable reason: `role_tally` scored it ZERO — it was the
+#~ note: "1 unclassified" noncreature `stats` reported — because "damage equal to 2 or the
+#~ note: greatest power among Dinosaurs you control" is a VARIABLE-damage shape in TARGET-FIRST
+#~ note: word order, which no removal pattern matched (a G-67 whitelist hole). It is a {R}
+#~ note: sorcery that kills anything up to Ghalta's 12.
+#~ note: THE HOLE IS NOW FIXED IN THE TOOL (2026-08-11, broad-implement): `_ROLE_PATTERNS`
+#~ note: gained the target-first shape, so this deck's measured interaction rose 6 -> 7 and
+#~ note: the number below is no longer a floor-edge warning. Roster impact of that pattern was
+#~ note: two decks (28 and 28a) and ZERO tier floors moved. Read the live vector, not this note.
+#~ note: THE MARGIN, restated after the fix: interaction 7 + card advantage 4 = 11 against a
+#~ note: required 7, so the deck no longer sits on the A-floor minimum. Red Guardian was the
+#~ note: counted removal spent
 #~ note: here; his ETB only killed a creature that had already DEALT DAMAGE that turn, which is
 #~ note: why he was the one to spend.
 #~ note: A COUNT IN AN EARLIER DRAFT OF THIS NOTE WAS WRONG and is corrected here rather than

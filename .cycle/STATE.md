@@ -1351,3 +1351,35 @@ the rationale-audit rework with `normalize_format`.
 **Where I left off.** All work committed and pushed; PR #112 merged to main. check_all
 clean, 1,094 tests green, roster rationale sweep 0 flags. Pick-up shortlist is
 `.cycle/NEXT-SESSION.md` §4b.
+
+## 2026-08-11 — broad-implement: three staleness/whitelist fixes, one measured and declined
+
+**Completed.** PRs #116/#117/#118 merged earlier the same day (deck 29 second pass; the
+Badgermole Cub / Gran-Gran ban replacements across ten decks plus a full deck-28 rebuild;
+the new deck-68 Frog Sage family). Then a `/broad-implement` pass on four tooling findings
+that came out of that deck work rather than from a scan:
+
+1. **Rationale audit prefix collision** — a fragment inside a longer ABSENT card name
+   resolved to a different card ("Savage Land Dinosaur" → a false report of *Ka-Zar of the
+   Savage Land*). The shorthand pass now scans with every OCCURRING full name blanked,
+   suppressed ones included.
+2. **`flex_staleness` checked only the `-Out` half.** The `+In` half now flags a line
+   proposing an add the deck already runs; basics exempt. First roster sweep: 7 real, 1
+   false positive (deck 51's `+Island`, fixed before landing).
+3. **`_ROLE_PATTERNS` target-first variable-damage hole** — Triumphant Chomp scored zero
+   roles, so `cuts` called a {R} kill-anything deck 28's weakest card. Roster impact: 2
+   decks, ZERO tier floors.
+4. **`#~ note:` staleness — MEASURED AND NOT BUILT.** See the block for the numbers; the
+   short version is that every implementable form is noisy (252 card citations / 51 decks,
+   or 47 figures of which 28 are deltas), and none would have caught the failure that
+   motivated it ("the deck has FOUR cyclers" is neither a card name nor a vector key).
+
+**Decided AGAINST** (do not re-propose without new information):
+- Building Fix 4 as a card-name or figure scan over `#~` notes — measured, above.
+- Editing the 7 stale flex lines the new check found: G-04 makes a flex line a human
+  editorial note, and this pass was scoped to tooling.
+
+**Where I left off.** All work committed and pushed; `check_all` all invariants hold with
+one soft warning (the 7 flex lines, which is the new check working). 1253 tests green.
+Docs updates for G-04 / G-26 / G-67 are listed in the block and are the natural next step —
+`/sync-docs`. ROADMAP.md regeneration was requested next.
