@@ -151,7 +151,9 @@ Ghost, Spectral Saboteur
 Ghostly Keybearer
 Giant Cindermaw
 Giant Koi
+Gigantoad
 Glamer Gifter
+Glarb, Calamity's Augur
 Glider Kids
 Glider Staff
 Gold Rush
@@ -219,10 +221,12 @@ Leyline of Mutation
 Leyline of the Guildpact
 Leyline of Transformation
 Lifecraft Engine
+Lilysplash Mentor
 Living Brain, Mechanical Marvel
 Loading Zone
 Loki Laufeyson
 Long Feng, Grand Secretariat
+Long River Lurker
 Loot, Exuberant Explorer
 Lorehold, the Historian
 Lys Alana Informant
@@ -241,6 +245,7 @@ Mind Transfer Protocol
 Miner's Guidewing
 Mirror Room // Fractured Realm
 Mirrormind Crown
+Mistbreath Elder
 Mob Lookout
 Mobile Homestead
 Molten Man, Inferno Incarnate
@@ -268,15 +273,18 @@ Pain for All
 Paradox Surveyor
 Pet Avengers
 Peter Parker
+Pond Prophet
 Powerful Broker
 Pride of the Road
 Prideful Parent
 Procrastinate
 Psychic Whorl
+Punk Frogs
 Pym Particles
 Quaketusk Boar
 Quicksilver, Brash Blur
 Quill-Blade Laureate
+Quina, Qu Gourmet
 Radiant Lotus
 Ran and Shaw
 Raph & Leo, Sibling Rivals
@@ -315,6 +323,7 @@ Shredder, Unrelenting
 Shrike Force
 Silent Hallcreeper
 Silvergill Mentor
+Skyskipper Duo
 Skyward Spider
 Slick Imitator
 Slime Against Humanity
@@ -327,6 +336,7 @@ Spider-Punk
 Spider-Rex, Daring Dino
 Spider-Suit
 Spider-Woman, Secret Agent
+Splash Lasher
 Splinter, Hamato Yoshi
 Splinter, Radical Rat
 Stalactite Dagger
@@ -336,6 +346,7 @@ Starfield Shepherd
 Stargaze
 Stature, Size Shifter
 Stegron the Dinosaur Man
+Stickytongue Sentinel
 Stormscale Scion
 Sultai Devotee
 Sun Warriors
@@ -364,6 +375,7 @@ The Masters of Evil
 The Mindskinner
 The Thing, Ben Grimm
 The Wondrous Wasp
+Three Tree Scribe
 Thunderous Velocipede
 Tiger-Dillo
 Tinybones, Bauble Burglar
@@ -375,6 +387,7 @@ Tragedy Feaster
 Training Regimen
 Transit Mage
 Traveling Chocobo
+Treeguard Duo
 Treetop Snarespinner
 Triceraton Commander
 Triumphant Chomp

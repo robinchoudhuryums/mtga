@@ -1,0 +1,97 @@
+#: name: Frog Sage — Seer
+#: format: Standard
+#: colors: GWU
+#: based-on: deck.txt
+#: plan: midrange
+#: tier: B (PROVISIONAL) — same blink core as the parent, graded on the same argument
+#: tier: (untested v1, singleton engine, craft-heavy). Its OWN open question is narrower
+#: tier: than the parent's: whether Helga's MV4+ gate is dense enough — the list holds 8
+#: tier: distinct MV4+ creature casts plus Splash Lasher's Offspring mode, and Helga
+#: tier: herself ramps only that half of the deck. Re-grade after games.
+#: protect: Helga, Skittish Seer; Dour Port-Mage; Three Tree Scribe; Clement, the Worrywort; Sab-Sunen, Luxa Embodied; Quina, Qu Gourmet
+#: archetype: Bant (G/W/U) FROG BLINK — the parent's leave-without-dying engine with the
+#: archetype: black seat handed to HELGA: every creature cast at MV 4+ draws a card,
+#: archetype: gains life and grows her, and her tap ability makes X mana of one color
+#: archetype: spendable ONLY on MV4+/X creature spells — so the variant leans taller
+#: archetype: (Gigantoad, Pet Avengers, Venus, Sab-Sunen, Dreamdew, Lilysplash, Splash
+#: archetype: Lasher, Treeguard) where the parent leans on Glarb's top-of-library and
+#: archetype: The Gitrog's draw. White also brings TRUE blink at instant/sorcery speed
+#: archetype: (Personify — blink plus a 1/1 Glimmer body; Daydream — blink plus a +1/+1
+#: archetype: counter) and Season of the Burrow's exile-removal / mass-recursion modes,
+#: archetype: plus Hinterland Sanctifier reading every re-entry for life. DISTINCT from
+#: archetype: the parent by SEAT: B = surveil/top-cast card advantage, W = the blink
+#: archetype: spells themselves plus Helga's cast engine. Same skeleton, different sage.
+#: notes: Variant built 2026-08-11 alongside the parent from the same idea pile; see the
+#: notes: parent's notes for the pile provenance and the K-13 payoff sweep. The user
+#: notes: guessed GUW or GUB up front; GUB won primary because black's cards are Frogs
+#: notes: (Glarb, Gitrog, Bogwater) while white's case rests on Helga plus generic blink.
+#: notes: This list is the test of that judgment — if Helga's engine plays better than
+#: notes: Glarb's, promote it.
+#: notes: KNOWN THIN SPOT, accepted at build time: Season of the Burrow wants {W}{W} on a
+#: notes: 7-W-source base — `mana` flags it. It is the deck's only double-white and a
+#: notes: late-game modal, so the G-36 framing is "cast late", not a build error.
+
+# The seer — every big creature cast pays out
+1 Helga, Skittish Seer (BLB) 217
+
+# Payoffs — leave-without-dying
+1 Dour Port-Mage (BLB) 47
+1 Three Tree Scribe (BLB) 199
+
+# Blink / bounce enablers
+1 Splash Portal (BLB) 74
+1 Lilysplash Mentor (BLB) 222
+1 Skyskipper Duo (BLB) 71
+1 Long River Lurker (BLB) 57
+1 Mistbreath Elder (BLB) 184
+1 Stickytongue Sentinel (BLB) 193
+1 Clement, the Worrywort (BLB) 209
+1 Y'shtola Rhul (FIN) 86
+1 Personify (ECL) 28
+1 Daydream (SOS) 9
+1 Season of the Burrow (BLB) 29
+
+# ETB value layer
+1 Pond Prophet (BLB) 229
+1 Dreamdew Entrancer (BLB) 211
+1 Splash Lasher (BLB) 73
+1 Sunshower Druid (BLB) 195
+1 Clifftop Lookout (BLB) 168
+1 Genghis Frog (TMT) 148
+1 Treeguard Duo (BLB) 200
+1 Hinterland Sanctifier (FDN) 730
+
+# The tall half — Helga's targets
+1 Gigantoad (FIN) 187
+1 Pet Avengers (MSH) 178
+1 Venus, Torn Between Worlds (TMT) 136
+1 Sab-Sunen, Luxa Embodied (DFT) 221
+
+# Tribal payoffs and engines
+1 Quina, Qu Gourmet (FIN) 194
+1 Valley Mightcaller (BLB) 202
+1 Valley Floodcaller (BLB) 79
+2 Frog Butler (TMT) 114
+1 Berta, Wise Extrapolator (SOS) 175
+1 Punk Frogs (TMT) 164
+
+# Interaction
+1 Polliwallop (BLB) 189
+1 Into the Flood Maw (BLB) 52
+1 Floodpits Drowner (DSK) 59
+
+# Lands (24)
+1 Lilypad Village (BLB) 255
+1 Oakhollow Village (BLB) 258
+1 Lupinflower Village (BLB) 256
+1 Breeding Pool (EOE) 251
+1 Willowrush Verge (DFT) 270
+1 Thornwood Falls (FDN) 269
+1 Pym Technologies (MSH) 271
+1 Mutant Town (TMT) 187
+1 Dreamroot Cascade (SOS) 254
+1 Tranquil Cove (TDM) 270
+1 Blossoming Sands (M21) 244
+5 Forest (TRK) 325
+4 Island (TRK) 319
+4 Plains (TRK) 317

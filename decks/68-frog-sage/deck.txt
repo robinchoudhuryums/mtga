@@ -1,0 +1,109 @@
+#: name: Frog Sage
+#: format: Standard
+#: colors: GUB
+#: plan: midrange
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 8 / card-adv 4 /
+#: tier: protection 4 / 2.92 curve) deliberately, which the rubric permits with argument:
+#: tier: this is an untested v1 whose engine is nearly all singletons (draw variance on a
+#: tier: two-payoff core — Dour Port-Mage and Three Tree Scribe are one copy each), it
+#: tier: carries 20 craft targets, and the interaction-8 figure counts stun/tap tempo
+#: tier: pieces whose value depends on the blink loop actually assembling. The floor also
+#: tier: cannot see the deck's real question: whether a one-of blink engine finds its
+#: tier: pieces fast enough. Re-grade after real games; A is reachable if it does.
+#: protect: Glarb, Calamity's Augur; Dour Port-Mage; Three Tree Scribe; Clement, the Worrywort; Sab-Sunen, Luxa Embodied; Quina, Qu Gourmet
+#: archetype: Sultai (B/G/U) FROG BLINK-AND-RETURN value engine — the deck's currency is
+#: archetype: CREATURES ENTERING AND LEAVING WITHOUT DYING. Two payoffs read that exact
+#: archetype: event: Dour Port-Mage (draw per leave-without-dying) and Three Tree Scribe
+#: archetype: (+1/+1 counter per leave-without-dying); the enablers are Splash Portal,
+#: archetype: Lilysplash Mentor, Skyskipper Duo, Long River Lurker's self-exile loop,
+#: archetype: Mistbreath Elder's free upkeep bounce, Stickytongue Sentinel, Clement and
+#: archetype: Y'shtola Rhul (a free blink EVERY end step). The ETB layer they re-buy:
+#: archetype: Pond Prophet / Dreamdew Entrancer (draw), Floodpits Drowner / Splash
+#: archetype: Lasher (stun tempo), Sunshower Druid (counters), Bogwater Lumaret
+#: archetype: (life), Clifftop Lookout (lands), Genghis Frog (Mutagen tokens).
+#: archetype: SECONDARY SYNERGIES, noted at build time: (1) COUNTER-PARITY — Sab-Sunen
+#: archetype: needs an EVEN counter count to attack and draws on ODD, so the deck's
+#: archetype: external counter sources (Sunshower, Scribe, Mutagen, Oakhollow Village)
+#: archetype: TOGGLE her between modes on demand; (2) Quina turns EVERY token event
+#: archetype: (Mutagen, Splash Lasher's Offspring, Berta's Fractals) into an extra Frog
+#: archetype: feeding Valley Mightcaller and the village lands; (3) Glarb casts the
+#: archetype: deck's MV4+ half off the top and his surveil stocks Mudflat Village;
+#: archetype: (4) Valley Floodcaller untaps the team on every noncreature spell, so the
+#: archetype: interaction suite doubles as combat math. DISTINCT from deck 27 (Blink,
+#: archetype: WU value-flicker: different colors, no tribe) and 34 (Zoologist, GU
+#: archetype: type-COUNT: its changelings care about type variety, this cares about one
+#: archetype: type's density and the enter/leave event itself).
+#: notes: BUILT 2026-08-11 from the user's ~48-card "Frog Sage" idea pile. The pile held
+#: notes: EVERY Frog payoff in Standard (a K-13 effect-shape sweep of the pool found zero
+#: notes: outside it) plus four findable bodies the pile missed: Dour Port-Mage — the
+#: notes: blink payoff the archetype is named for — Stickytongue Sentinel, Skyskipper Duo
+#: notes: and Pond Prophet. GUB was chosen over GUW as primary because black's frogs ARE
+#: notes: frogs (Glarb, The Gitrog, Bogwater Lumaret) while white's pile cards are Rabbit
+#: notes: typal plus Helga; the GUW build exists as variant 68a around Helga's
+#: notes: MV4+-creature-cast engine. The rabbit/squirrel half of the pile (Squirrel Girl,
+#: notes: Camellia, Byrke, Finneas, Warren Warleader...) is a DIFFERENT deck idea, not a
+#: notes: rejected pool for this one — screened below anyway.
+#: notes: Poison Dart Frog was in the pile and is EXCLUDED for rotation (LCI, ~2026);
+#: notes: Frog Butler is the same effect rotation-safe.
+
+# Payoffs — the two cards that read the leave-without-dying event
+1 Dour Port-Mage (BLB) 47
+1 Three Tree Scribe (BLB) 199
+
+# The sage — surveil + cast the top half of the deck
+1 Glarb, Calamity's Augur (BLB) 215
+
+# Blink / bounce enablers
+1 Splash Portal (BLB) 74
+1 Lilysplash Mentor (BLB) 222
+1 Skyskipper Duo (BLB) 71
+1 Long River Lurker (BLB) 57
+1 Mistbreath Elder (BLB) 184
+1 Stickytongue Sentinel (BLB) 193
+1 Clement, the Worrywort (BLB) 209
+1 Y'shtola Rhul (FIN) 86
+
+# ETB value layer — what the blinks re-buy
+1 Pond Prophet (BLB) 229
+1 Dreamdew Entrancer (BLB) 211
+1 Splash Lasher (BLB) 73
+1 Sunshower Druid (BLB) 195
+1 Clifftop Lookout (BLB) 168
+1 Genghis Frog (TMT) 148
+1 Treeguard Duo (BLB) 200
+2 Bogwater Lumaret (SOS) 177
+
+# Tribal payoffs and engines
+1 Quina, Qu Gourmet (FIN) 194
+1 Valley Mightcaller (BLB) 202
+1 Valley Floodcaller (BLB) 79
+1 The Gitrog, Ravenous Ride (OTJ) 206
+1 Venus, Torn Between Worlds (TMT) 136
+1 Sab-Sunen, Luxa Embodied (DFT) 221
+2 Frog Butler (TMT) 114
+1 Berta, Wise Extrapolator (SOS) 175
+1 Burrog Banemaker (SOS) 75
+1 Punk Frogs (TMT) 164
+
+# Interaction
+1 Polliwallop (BLB) 189
+1 Into the Flood Maw (BLB) 52
+1 Floodpits Drowner (DSK) 59
+1 Withering Torment (DSK) 124
+1 Nowhere to Run (DSK) 111
+
+# Lands (24) — three creature-typal villages + owned duals
+1 Lilypad Village (BLB) 255
+1 Oakhollow Village (BLB) 258
+1 Mudflat Village (BLB) 257
+1 Breeding Pool (EOE) 251
+1 Overgrown Tomb (TRK) 289
+1 Willowrush Verge (DFT) 270
+1 Wastewood Verge (DFT) 268
+1 Gloomlake Verge (DSK) 260
+1 Opulent Palace (TDM) 264
+1 Undercity Sewers (PZA) 0
+1 Dreamroot Cascade (SOS) 254
+6 Forest (TRK) 325
+4 Island (TRK) 319
+3 Swamp (TRK) 321
