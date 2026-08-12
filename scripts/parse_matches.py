@@ -746,6 +746,11 @@ def main():
         return report(load_matches(args.out))
     if not args.source:
         ap.error("give a log file (or '-' for stdin), or use --report")
+    # `--report` WITH a source used to be dropped on the floor: the gate above requires
+    # `not args.source`, so the natural post-ingest invocation
+    # (`parse_matches.py session.log --apply --report`) did the ingest and printed no
+    # report, with nothing said. Ingest first, then report — the composition the flag
+    # combination obviously means (broad-scan BS5-09).
 
     try:
         text = sys.stdin.read() if args.source == "-" else \
@@ -754,9 +759,21 @@ def main():
         eprint(f"Could not read {args.source!r}: {e}")
         return 1
 
+    def _with_report(rc):
+        """Run `--report` after the ingest when both were asked for (BS5-09), on every
+        SUCCESS path — including the summaries-only one, which is a legitimate outcome
+        and returned before the report on the first pass at this fix. Error paths are
+        deliberately excluded: a report after a failed read would read as reassurance.
+        Reads matches.csv back rather than reporting `existing + fresh` in memory, so a
+        dry run honestly describes the record as it STANDS, not as it would stand."""
+        if args.report:
+            print()
+            report(load_matches(args.out))
+        return rc
+
     if args.map_decks:
         map_decks(text, apply=args.apply)
-        return 0
+        return _with_report(0)
 
     rows, warnings = parse_log(text, me=args.me)
     for w in warnings:
@@ -773,7 +790,7 @@ def main():
             print("No completed matches in this paste — deck summaries only. Header "
                   "changes, if any, are reported above"
                   + ("." if args.apply else " (dry run — pass --apply to write them)."))
-            return 0
+            return _with_report(0)
         eprint("No completed matches found. Check that Detailed Logs (Plugin Support) is "
                "enabled in Arena, and that the paste includes the `Match to ...` header "
                "lines as well as the JSON.")
@@ -818,14 +835,14 @@ def main():
               f"{deck_label}  vs {r['Opponent Avatar'] or '?'}  [{r['Event']}]")
     if not args.apply:
         print("\n(dry run — pass --apply to write matches.csv)")
-        return 0
+        return _with_report(0)
     if not fresh:
         print("\nNothing new to write.")
-        return 0
+        return _with_report(0)
     write_matches(existing + fresh, args.out)
     print(f"\nWrote {args.out} ({len(existing) + len(fresh)} total). "
           f"See the record with: parse_matches.py --report")
-    return 0
+    return _with_report(0)
 
 
 if __name__ == "__main__":

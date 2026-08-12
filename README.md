@@ -475,6 +475,19 @@ invisibly. Note that "add not surfaced" is expected to be common: `suggest` filt
 cards sharing a synergy theme, so it is structurally blind to lands and off-theme
 removal (that's what `--lands` / `--interaction` / `--ramp` are for).
 
+`feedback` also prints an **Outcomes** section, joining the ledger to `matches.csv`. That
+join is the only signal in this toolkit the models cannot influence: everything else grades
+them on their own argument, and even the agreement rate above is partly the shortlist's
+influence on you. It splits each deck's record at its **first recorded swap** — per deck,
+never per swap, because a deck accumulates many swaps whose windows overlap almost
+completely and pinning a result on one of four changes made the same week is a story, not a
+measurement. **It refuses to report a rate below ~20 games on one side**, which is where
+the record sits today (365 swaps against 9 logged matches), so what it prints is the
+COVERAGE — how far the record is from being readable — rather than a number. That refusal
+is the honest output; the analysis exists now so it is ready when the games are. Like every
+other read of the match record, it never feeds back into a score, and
+`tests/test_recommendations.py` enforces that structurally.
+
 `audit` is the **roster triage** for when you don't want to full-tune all your
 decks at once. It prints one offline line per deck — competitive **`Tier`**
 (S/A/B/C/D win-capability, from the deck's `#: tier:` header; sort with
@@ -1397,5 +1410,3 @@ Claude Code slash commands live in `.claude/commands/`:
   [`.cycle/NEXT-SESSION.md`](.cycle/NEXT-SESSION.md) (the current diagnosis, the
   agreed next task, and the measurements not worth re-deriving), with `STATE.md` for
   the prose record and `blocks/` for the per-run implementation summaries.
-  Note `docs/tooling-improvement-plan.md` is a **completed** cycle's plan kept for
-  reference, not instructions.

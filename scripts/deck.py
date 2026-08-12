@@ -89,10 +89,21 @@ def _file_memo(*path_names):
     of the key, so repointing invalidates.
 
     Keyed on (mtime_ns, size) rather than held forever, so a rebuild (`build_mana.py`,
-    an `app.py` write) invalidates it inside a long-running process. Safe because
-    every caller treats these tables as READ-ONLY — verified by scanning all of
-    scripts/ for external mutation of a loader's result; if you ever need to mutate
-    one, copy it first, since the dict is now shared.
+    an `app.py` write) invalidates it inside a long-running process.
+
+    THE RESULT IS SHARED AND MUST BE TREATED AS READ-ONLY. This docstring used to claim
+    that every caller already did, "verified by scanning all of scripts/" — and the scan
+    had missed five call sites in this very file: `fetch_missing_mana` and
+    `fetch_missing_rarities` MUTATE the dict they are handed, and `cmd_stats`, `cmd_mana`,
+    `cmd_consistency`, `_do_swap` and `cmd_wildcards` were handing them the cached object
+    (broad-scan BS5-13). Benign on a one-shot CLI run; visible in the Flask editor, which
+    serves many decks from one process, where deck B's Stats tab then computed its curve
+    from costs deck A's Mana tab had live-fetched and disagreed with a fresh `deck.py
+    stats B`. Those five now pass `dict(load_*())`.
+
+    So: if you need to mutate one, COPY IT FIRST — and note that a claim about all callers
+    is only as good as the last person who added one. `tests/test_deck.py`'s
+    TestMemoizedTablesAreNotMutated pins the property behaviourally instead.
     """
     def deco(fn):
         cache = {}
@@ -440,19 +451,18 @@ def cmd_list(_args):
         for d in group:
             _, cards = parse_deck_file(d["path"])
             total = sum(q for q, *_ in cards)
-            # Aggregate per NAME before comparing against owned — cmd_check's rule:
-            # comparing line-by-line, a card split across two lines of 2 with 3
-            # owned read "OK " here while `check` reported it short (broad-scan
-            # batch 5; latent — no current deck splits a card across lines).
-            need = {}
-            for q, n, s, c in cards:
-                need[n] = need.get(n, 0) + q
-            short = 0
-            for n, req in need.items():
-                have, found = owned(by_name_qty, n)
-                if not found or have < req:
-                    short += 1
-            status = "OK " if short == 0 else f"{short} short"
+            # Through the ONE definition (G-70). This loop aggregated per name — the
+            # rule — but keyed on the raw DISPLAY name while `deck_requirements` keys
+            # lowercase, so two lines differing only in case would not have summed here
+            # and would have summed in `check`. G-70 named three surfaces and
+            # consolidated two; this was the third, still re-deriving (broad-scan BS5-04).
+            # `missing` and `short` are also reported SEPARATELY now: this line used to
+            # fold them into one "N short", so a card you own none of and a card you are
+            # one copy short of read identically against a `check` that distinguishes them.
+            missing, short = deck_build_gap(cards, by_name_qty)
+            status = ("OK " if not (missing or short)
+                      else ", ".join(x for x in ((f"{missing} missing" if missing else ""),
+                                                 (f"{short} short" if short else "")) if x))
             label = d["name"] or os.path.basename(os.path.dirname(d["path"])) or d["id"]
             tag = "  └─ variant" if d["variant"] else "CORE"
             # `list` shows EVERY deck (it's the index), but marks the ones roster-wide
@@ -559,7 +569,10 @@ def cmd_wildcards(args):
         print("No decks yet. Add one under decks/<NN-name>/deck.txt.")
         return 0
     _, _, by_name_qty = load_collection()
-    rarities = load_rarities()
+    # COPY — `fetch_missing_rarities` below mutates the dict it is given, and
+    # `load_rarities` is `@_file_memo`-cached (BS5-13, same class as the `load_mana`
+    # copies; see the note at `cmd_stats`).
+    rarities = dict(load_rarities())
 
     deck_short = {}       # deck id -> [(name, missing_copies)]
     max_need = {}         # name_lower -> max copies any single deck needs
@@ -2977,7 +2990,14 @@ def cmd_stats(args):
             print(f"  {ch}  {colors[ch]:3}  {'#' * colors[ch]}")
 
     # Mana curve from real mana values.
-    mana = load_mana()
+    # COPY, not the memoized table itself: `fetch_missing_mana` MUTATES the dict it
+    # is given, and `load_mana` is `@_file_memo`-cached — so live-fetched rows leaked
+    # into a table every other caller shares. `_file_memo` rests the whole memo on
+    # "every caller treats these tables as READ-ONLY … if you ever need to mutate
+    # one, copy it first", and five call sites did not (broad-scan BS5-13). In the
+    # Flask editor — one long-lived process — that made deck B's Stats tab compute
+    # its curve from costs deck A's Mana tab had fetched, disagreeing with the CLI.
+    mana = dict(load_mana())
     fetch_missing_mana(sorted(set(nonland_names)), mana)
     curve, unknown = {}, 0
     for q, n, s, c in cards:
@@ -4745,7 +4765,14 @@ def cmd_mana(args):
         return 1
     by_key, by_name, _ = load_collection()
     meta, cards = parse_deck_file(d["path"])
-    mana = load_mana()
+    # COPY, not the memoized table itself: `fetch_missing_mana` MUTATES the dict it
+    # is given, and `load_mana` is `@_file_memo`-cached — so live-fetched rows leaked
+    # into a table every other caller shares. `_file_memo` rests the whole memo on
+    # "every caller treats these tables as READ-ONLY … if you ever need to mutate
+    # one, copy it first", and five call sites did not (broad-scan BS5-13). In the
+    # Flask editor — one long-lived process — that made deck B's Stats tab compute
+    # its curve from costs deck A's Mana tab had fetched, disagreeing with the CLI.
+    mana = dict(load_mana())
     if not mana:
         eprint("No card-mana.csv found. Build it: python3 scripts/build_mana.py")
         return 1
@@ -4924,7 +4951,14 @@ def cmd_consistency(args):
         return 1
     by_key, by_name, _ = load_collection()
     meta, cards = parse_deck_file(d["path"])
-    mana = load_mana()
+    # COPY, not the memoized table itself: `fetch_missing_mana` MUTATES the dict it
+    # is given, and `load_mana` is `@_file_memo`-cached — so live-fetched rows leaked
+    # into a table every other caller shares. `_file_memo` rests the whole memo on
+    # "every caller treats these tables as READ-ONLY … if you ever need to mutate
+    # one, copy it first", and five call sites did not (broad-scan BS5-13). In the
+    # Flask editor — one long-lived process — that made deck B's Stats tab compute
+    # its curve from costs deck A's Mana tab had fetched, disagreeing with the CLI.
+    mana = dict(load_mana())
     if not mana:
         eprint("No card-mana.csv found. Build it: python3 scripts/build_mana.py")
         return 1
@@ -5878,6 +5912,115 @@ def _print_recommendation_segments(rows):
                   "Read a dominating deck's rows before trusting the segment rate.")
 
 
+# A deck needs this many logged matches on ONE side of a swap before a record is worth
+# reading as anything. Same number and same reasoning as `_RECS_MIN_SAMPLE` and
+# `parse_matches._MIN_SAMPLE`: below it a W/L is noise, and printing it invites a tuning
+# decision the data cannot support.
+_OUTCOME_MIN_SAMPLE = 20
+
+
+def swap_outcomes(rows, matches):
+    """Join applied swaps to the games played after them → per-deck outcome rows.
+
+    THE GAP THIS CLOSES. `recommendations.csv` records what the models SAID and what the
+    human DECIDED; `matches.csv` records what then HAPPENED. Both have existed for a
+    cycle and nothing connected them, so every ranking model here is still graded on its
+    own argument and on `feedback`'s agreement rate — a number CLAUDE.md itself warns is
+    contaminated, because the human read the shortlist before deciding. An outcome is the
+    only signal in this project that the models cannot influence.
+
+    Returns [{deck, swaps, first_swap, before, after, ...}] sorted by deck id, where
+    `before`/`after` are (wins, losses) split on the deck's FIRST recorded swap — the
+    point from which its list stopped being the one the earlier games were played with.
+    Draws are excluded from both, matching `parse_matches.report`.
+
+    THE SPLIT IS DELIBERATELY COARSE. A per-swap before/after would be the interesting
+    analysis and is not honest at any volume this record will reach soon: a deck
+    accumulates many swaps, their windows overlap almost completely, and attributing a
+    result to one of four changes made the same week is a story, not a measurement. Per
+    DECK, split once, is the strongest claim the data shape supports.
+
+    REPORT-ONLY, and structurally so: nothing here is reachable from a scoring function,
+    and `tests/test_recommendations.py` scans the seven of them for `MATCHES_CSV`,
+    `load_match_counts` and `swap_outcomes` for the same reason it already scans for
+    `load_recommendations` (G-56). An outcome signal is the single most tempting thing to
+    quietly feed back into a ranking, and doing so would defeat the bounded-and-anchored
+    property `check_suggest` exists to hold."""
+    by_deck = {}
+    for r in rows:
+        did = (r.get("Deck") or "").strip()
+        date = (r.get("Date") or "").strip()
+        if not did or not date:
+            continue
+        e = by_deck.setdefault(did, {"deck": did, "swaps": 0, "first_swap": date})
+        e["swaps"] += 1
+        e["first_swap"] = min(e["first_swap"], date)
+
+    played = {}
+    for m in matches:
+        did = (m.get("Deck") or "").strip()
+        if did:
+            played.setdefault(did, []).append(m)
+
+    out = []
+    for did, e in by_deck.items():
+        ms = played.get(did, [])
+        if not ms:
+            continue
+        before = after = None
+        bw = bl = aw = al = 0
+        for m in ms:
+            res = (m.get("Result") or "").strip().upper()
+            if res not in ("W", "L"):
+                continue                      # a draw or an unreadable cell decides nothing
+            if (m.get("Date") or "") < e["first_swap"]:
+                bw, bl = bw + (res == "W"), bl + (res == "L")
+            else:
+                aw, al = aw + (res == "W"), al + (res == "L")
+        before, after = (bw, bl), (aw, al)
+        out.append({**e, "matches": len(ms), "before": before, "after": after,
+                    "n_after": aw + al, "n_before": bw + bl})
+    return sorted(out, key=lambda x: (len(x["deck"]), x["deck"]))
+
+
+def _print_swap_outcomes(rows):
+    """The outcome section of `feedback`. Prints the COVERAGE honestly and refuses the
+    read below `_OUTCOME_MIN_SAMPLE`, which is where this record sits and will sit for a
+    long time — the point of building it now is that the analysis is already in place when
+    volume arrives, not that it can say anything today."""
+    matches = []
+    try:
+        import parse_matches as pm
+        matches = pm.load_matches(MATCHES_CSV)
+    except Exception:
+        pass                                   # matches.csv is deliberately not required
+    if not matches:
+        print("\nOutcomes: no matches.csv yet — `/log-matches` records them, and a swap's "
+              "effect is the one signal these models cannot influence.")
+        return
+    joined = swap_outcomes(rows, matches)
+    attributed = sum(1 for m in matches if (m.get("Deck") or "").strip())
+    print(f"\nOutcomes — {len(rows)} recorded swap(s) against {len(matches)} logged "
+          f"match(es) ({attributed} attributed to a deck):")
+    if not joined:
+        print("  No deck has both a recorded swap and a logged match yet.")
+        return
+    print(f"    {'deck':6} {'swaps':>5} {'games':>6}  {'before':>7} {'after':>7}")
+    for j in joined:
+        b, a = j["before"], j["after"]
+        print(f"    {j['deck']:6} {j['swaps']:>5} {j['matches']:>6}  "
+              f"{b[0]}-{b[1]:<5} {a[0]}-{a[1]:<5}"
+              f"   (split at the first swap, {j['first_swap']})")
+    best = max((j["n_after"] for j in joined), default=0)
+    if best < _OUTCOME_MIN_SAMPLE:
+        print(f"  ⚠ the largest post-swap sample is n={best}, far below the "
+              f"~{_OUTCOME_MIN_SAMPLE} a win rate needs. NO outcome is reported above and "
+              f"none should be read into those records — they are printed so the coverage "
+              f"is visible, not so the numbers are.")
+        print("  This is the project's real bottleneck, and it is owner-paced: the "
+              "pipeline works end to end, so the only missing input is games.")
+
+
 def cmd_feedback(args):
     """Report how the recommenders scored against the swaps actually applied."""
     rows = load_recommendations()
@@ -5938,6 +6081,7 @@ def cmd_feedback(args):
               "agreement rate partly measures the list's INFLUENCE, not its accuracy. "
               "The disagreements above are the part that doesn't suffer from that.")
         _print_recommendation_segments(rows)
+    _print_swap_outcomes(rows)
     print("\nThis ledger is REPORT-ONLY and never feeds back into a score — the ranking "
           "terms are bounded and anchored by check_suggest so they can't silently "
           "reorder a tuned deck, and an automatic re-weighting would defeat that.")
@@ -5963,7 +6107,9 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
         eprint(f"Cut and add are the same card ({cut!r}) — nothing to swap.")
         return 1
     carddata = load_card_data()
-    mana = load_mana()
+    # COPY — this function calls `fetch_missing_mana`, which mutates (BS5-13). See the
+    # longer note at `cmd_stats`' own copy.
+    mana = dict(load_mana())
     _, cards = parse_deck_file(d["path"])
     after = _cards_after_swap(cards, cut, add, (add_set, add_cn))
     if after is None:
@@ -7687,7 +7833,18 @@ def _is_color_fixer(ctags, text):
 
 def _deck_central_weights(meta, cards, cardmeta):
     """A deck's CENTRAL themes as a {theme: copies} weight vector — the same `_central_themes`
-    set the roster tools share, kept weighted so a dominant theme counts for more."""
+    set the roster tools share, kept weighted so a dominant theme counts for more.
+
+    Built in SORTED key order (G-54). `_central_themes` returns a SET, so iterating it
+    gave the dict a hash-seed-dependent insertion order — and every consumer that ranks
+    these themes by weight (`cmd_similar`'s "top themes" line, its shared-theme list, the
+    float summation inside `_theme_cosine`) breaks ties on that order. `deck.py similar`
+    therefore printed a different answer on every run: five PYTHONHASHSEED values produced
+    five different outputs, and because the display truncates to `shared[:5]` and the ⚠ line
+    names `top[5][:3]`, WHICH themes the reader is shown changed run to run — deck 40 read
+    `✦Druid` against 40a on one run and `removal` on the next. G-47 tells the reader to grade
+    on exactly those ✦ SPECIFIC overlaps. Alphabetical is arbitrary but TOTAL, which is the
+    property that matters (broad-scan BS5-01)."""
     tw = {}
     for q, n, s, c in cards:
         if n.lower() in BASICS:
@@ -7696,7 +7853,7 @@ def _deck_central_weights(meta, cards, cardmeta):
         if m:
             for t in m["synergies"]:
                 tw[t] = tw.get(t, 0) + q
-    return {t: tw[t] for t in _central_themes(tw)}
+    return {t: tw[t] for t in sorted(_central_themes(tw))}
 
 
 _SIM_GENERIC_DAMP = 0.35   # generic themes are shared by nearly every value deck, so they
@@ -7778,7 +7935,11 @@ def _theme_cosine(a, b, specific_only=False, keep=frozenset()):
     shared = set(a) & set(b)
     if not shared:
         return 0.0
-    dot = sum(a[t] * b[t] for t in shared)
+    # SORTED, because float addition is not associative: summing over a set made `dot`
+    # differ in its last bits between runs, and `cmd_similar` sorts rows on that value —
+    # so a tie between two decks could flip. Costs nothing and removes the last piece of
+    # run-to-run variance from `similar` (G-54 / broad-scan BS5-01).
+    dot = sum(a[t] * b[t] for t in sorted(shared))
     na = math.sqrt(sum(w * w for w in a.values()))
     nb = math.sqrt(sum(w * w for w in b.values()))
     return dot / (na * nb) if na and nb else 0.0
@@ -7831,7 +7992,12 @@ def cmd_similar(args):
             continue
         bcols = _declared_colors(m2) or _deck_castable_colors(m2, c2, mana)
         colj = len(acols & bcols) / len(acols | bcols) if (acols | bcols) else 0.0
-        shared = sorted(set(aw) & set(bw), key=lambda t: -(min(aw[t], bw[t])))
+        # `(-weight, t)`, not `-weight` alone: `shared` is a SET and the weight ties
+        # constantly (every theme carried by the same number of copies), so the tail of
+        # this list was set-iteration order — and the display shows only `shared[:5]`
+        # (BS5-01). The tag itself is a total order, matching the tie-break
+        # `wishlist._rank_scores` already applies to its own `specific` list.
+        shared = sorted(set(aw) & set(bw), key=lambda t: (-(min(aw[t], bw[t])), t))
         spec = [t for t in shared if _sim_specific(t, keep)]
         # CARD overlap, the thing the theme cosine cannot see. This model compares
         # {theme: weight} vectors, so two decks can read 84% similar while sharing five
@@ -8624,23 +8790,13 @@ def deck_quality_vector(d):
     dmeta, cards = parse_deck_file(d["path"])
     mana, carddata, cardmeta = load_mana(), load_card_data(), load_card_meta()
     _, _, qty = load_collection()
-    missing = short = 0
-    # Ownership per aggregated NAME, not per line (BS2-22): a card split across two
-    # lines (two printings) must compare its TOTAL need against total owned — the
-    # exact bug cmd_list records as fixed and cmd_check aggregates against; this
-    # sibling was missed, so `buildable` here (feeding preflight's verdict and
-    # `quality --vs`'s "became UNbuildable" flag) could disagree with `check`.
-    need = {}
-    for q, n, s, c in cards:
-        if n.lower() in BASICS:
-            continue
-        need[n] = need.get(n, 0) + q
-    for n, req in need.items():
-        have, inlib = owned(qty, n)
-        if not inlib:
-            missing += 1
-        elif have < req:
-            short += 1
+    # Through the ONE definition (G-70). BS2-22 fixed the per-LINE comparison here and
+    # left a hand-rolled per-name loop behind, keyed on the raw DISPLAY name where
+    # `deck_requirements` keys lowercase — so this and `check` could still disagree on a
+    # deck listing one card under two spellings, on the number feeding `preflight`'s
+    # verdict and `quality --vs`'s "became UNbuildable" flag (broad-scan BS5-04). Basics
+    # need no special case: `owned()` already reports them unlimited.
+    missing, short = deck_build_gap(cards, qty)
     theme_w, mvs, early = {}, [], 0
     creatures = reach = 0
     for q, n, s, c in cards:

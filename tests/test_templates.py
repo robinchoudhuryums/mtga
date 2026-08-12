@@ -273,6 +273,44 @@ class TestDashboardA11yRoleDiscipline:
         assert i != -1 and "role:null" in src[i:i + 80]
 
 
+class TestDashboardDelegatedControlsAreControls:
+    """BS5-02 / BS5-03: two of the dashboard's most-used lookup surfaces were
+    mouse-only. The roster-triage Deck cell is an `<a>` with NO href — not a link, not
+    focusable — and the card finder's deck chips are bare `<span>`s; both had a click
+    handler and nothing else, so neither was reachable by keyboard or announced by
+    assistive tech. This is the third and fourth instance of the defect the collection
+    pips (I-01) and the deck editor's analysis tabs (S-2) each had, and it survived those
+    passes because they fixed `templates/` while these two are built by JS in
+    build_dashboard.py, where the only pins were on named controls.
+
+    The a11y() call for the triage anchor must sit in `onRowExtra`, not after the table is
+    appended: sortableTable's internal redraw() rebuilds <tbody> on every sort click, so
+    attributes applied once would be discarded by the first sort."""
+
+    def _src(self):
+        p = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                         "scripts", "build_dashboard.py")
+        with open(p, encoding="utf-8") as fh:
+            return fh.read()
+
+    def test_triage_deck_link_is_made_a_control_on_every_redraw(self):
+        src = self._src()
+        i = src.find("host.appendChild(sortableTable('at'")
+        assert i != -1, "the audit table's construction moved — re-point this pin"
+        block = src[i:i + 400]
+        assert "a11y(a," in block and "querySelector('a.goto')" in block, (
+            "the triage table's Deck cell must go through a11y() inside onRowExtra, "
+            "or it is an href-less <a>: unfocusable and unannounced (BS5-02)")
+
+    def test_card_finder_chips_are_made_controls(self):
+        src = self._src()
+        i = src.find("querySelectorAll('.deckchip')")
+        assert i != -1, "the card finder's chip wiring moved — re-point this pin"
+        assert "a11y(ch," in src[i:i + 200], (
+            "a .deckchip is a bare <span>; without a11y() it has no role, no tabindex "
+            "and no Enter/Space handler (BS5-03)")
+
+
 class TestCollectionRemoveButtonsAreNamed:
     """Batch E (S-10): every card's ✕ fell back to the shared title, so ~2k remove
     buttons announced identically ("Remove this printing") and nothing said WHICH

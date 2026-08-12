@@ -141,7 +141,17 @@ def fetch(names):
                 _store(out, card)
         eprint(f"       front-face {min(i + 75, len(missing))}/{len(missing)}")
         time.sleep(0.1)
-    return alias_front(out)          # second pass, shadow-safe (G-63/BS4-18)
+    # REAL names only. The front-face aliasing moved OUT of this function to the merge in
+    # `main()` (broad-scan BS5-11): `alias_front` guarantees it will not shadow a real row
+    # — but only within the dict it is HANDED, and here that dict does not contain the
+    # already-resolved `reuse` rows. So a newly-fetched `Life // Death` emitted an alias
+    # under `life`, and `data.update()` wrote it over the real card named Life, putting one
+    # card's cost on another's row in the canonical mana file. Aliasing after the merge
+    # sees both halves and cannot. (Latent when found: 0 genuinely-distinct front-name
+    # collisions in the pool — but G-63's lesson is to fix the MECHANISM, not to defer on
+    # a census, and this file's own front-face retry already refuses a wrong-card match
+    # for exactly this reason.)
+    return out
 
 
 def collect_names(paths):
@@ -266,6 +276,12 @@ def main():
         # Nothing to fetch means nothing to ask Scryfall for, so a no-change refresh now
         # completes OFFLINE. Worth stating rather than leaving the reader to infer it.
         eprint("Nothing new to fetch — every name already has a resolved row.")
+
+    # ONE alias pass, over the MERGED table — see `fetch`. The library stores most DFCs
+    # under their FRONT name while the pool stores the full `A // B`, so both spellings are
+    # in `names` and the front one needs a key; `alias_front` supplies it without ever
+    # displacing a real row, which is only true if it can SEE every real row (G-63/BS4-18).
+    alias_front(data)
 
     # A name Scryfall's batch didn't return gets a BLANK row. That is the right value
     # (we must not invent a cost), but it must not be SILENT: this file is rewritten

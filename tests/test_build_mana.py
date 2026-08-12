@@ -126,6 +126,53 @@ class TestIncrementalFetch:
         assert sorted(env["calls"][0]) == ["Alpha", "Beta", "Gamma"]
 
 
+class TestAliasingCannotClobberAReusedRow:
+    """BS5-11: `alias_front` promises it will not shadow a real row — but only inside the
+    dict it is HANDED. `fetch()` aliased its own output, which does not contain the
+    already-resolved `reuse` rows, so `data.update(fetch(todo))` could write a newly
+    fetched `Life // Death`'s cost onto the row of the distinct real card named `Life`,
+    in the canonical mana file every curve and castability read is built on.
+
+    Latent when found (0 genuinely-distinct front-name collisions in the pool), so this
+    is a MECHANISM pin, per G-63: a census is a fact about a moment."""
+
+    def test_a_fetched_dfc_does_not_overwrite_a_real_card_of_its_front_name(self):
+        from lib import alias_front
+        reuse = {"life": ("{G}", 1, "")}                       # the real card, resolved
+        fetched = {"life // death": ("{B} // {1}{B}", 1, "")}   # the DFC, newly fetched
+        data = dict(reuse)
+        data.update(fetched)
+        alias_front(data)                                      # the merged-table pass
+        assert data["life"] == ("{G}", 1, ""), (
+            "the DFC's cost was written onto a different card's row (BS5-11)")
+        assert data["life // death"] == ("{B} // {1}{B}", 1, "")
+
+    def test_the_front_spelling_still_gets_a_key_when_nothing_claims_it(self):
+        """The aliasing is load-bearing and must not be lost: the LIBRARY stores most DFCs
+        under the front name while the pool stores `A // B`, so both spellings reach the
+        write loop and the front one needs a value or the card writes out BLANK."""
+        from lib import alias_front
+        data = {"aang, at the crossroads // aang, destined savior": ("{G}", 2, "")}
+        alias_front(data)
+        assert data["aang, at the crossroads"] == ("{G}", 2, "")
+
+    def test_fetch_returns_real_names_only(self, monkeypatch):
+        """WHERE the alias happens is the fix, pinned behaviourally rather than by
+        scanning the source (the explanatory comment names `alias_front`, and a test that
+        greps for it would fail on the comment that explains why it moved)."""
+        card = {"name": "Life // Death", "cmc": 1, "keywords": [], "mana_cost": "{B} // {1}{B}"}
+
+        def fake_post(names, **kw):
+            return {"data": [card] if list(names) == ["Life // Death"] else []}
+
+        monkeypatch.setattr(build_mana.scryfall, "post_collection", fake_post)
+        monkeypatch.setattr(build_mana.time, "sleep", lambda *_: None)
+        out = build_mana.fetch(["Life // Death"])
+        assert "life // death" in out
+        assert "life" not in out, (
+            "fetch() aliases again — the merge in main() is where it is safe (BS5-11)")
+
+
 class TestManaValueRendering:
     """The bug the reuse path exposed. Scryfall's `cmc` is a FLOAT; a reused row carries
     the STRING already in the file. The original `int(mv) if isinstance(mv, (int, float))

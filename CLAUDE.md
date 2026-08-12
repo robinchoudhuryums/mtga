@@ -214,14 +214,14 @@ directions.
   already do. A **MODAL DFC** is stored the same way now — either face is castable from
   hand — but its Mana Value is the FRONT face's, so it escapes residual 2 below; a
   TRANSFORM DFC keeps one cost, since its back is reached by transforming, not by paying.
-  **Residual 1: a deck that plays a split card mainly for its BACK half reads
-  cheaper than it plays — grade that one from the printed card. Residual 2, and it is on
-  the surface you are told to trust: `card.py` prints the COMBINED mana value**, so a Room
-  reads far MORE expensive than it plays — Mirror Room // Fractured Realm displays MV 10
-  when it is a `{2}{U}` three-drop whose back door unlocks separately for `{5}{U}{U}`, and
-  you never pay ten. Every analysis path (`stats`, `consistency`, the curve) already uses
-  the front face, so the inspection surface and the analysis surface disagree. Read the
-  printed cost, not the MV, whenever a name contains `" // "`. [G-02]
+  **The one live residual: a deck that plays a split card mainly for its BACK half reads
+  cheaper than it plays** — grade that one from the printed card. (The second residual —
+  `card.py` printing the COMBINED mana value, so Mirror Room // Fractured Realm displayed
+  MV 10 for a `{2}{U}` three-drop — is CLOSED as of 2026-08-12: it recomputes from the
+  front face like `load_mana` always did, and names which half the number describes. It
+  had put the inspection surface G-01 mandates in direct contradiction with every analysis
+  surface for a year, which is the shape to watch for: the fix landed in the ANALYSIS path
+  and the READING path was never brought along.) [G-02]
 - **Don't judge a card by printed mana value or a single subtype.** Read the card TEXT
   (it is in the CSV): `stats` flags ◊/△ cost flexibility and functional roles, `tribes`
   reads oracle text for cross-type synergies. [G-03]
@@ -343,9 +343,9 @@ directions.
   within the last week for the same query (99% of the old refresh cost was its 91
   paginated pages). Skipping it is correct, not just fast: the pool is independent of what
   you OWN, so an ingest cannot change it; what goes stale is `Legalities` and a new set. **But a TAG-PATTERN edit also stales it**, which the reuse could not see: the
-  stamp records a content hash of the files `tags_for` depends on — `tag_synergies.py`
-  AND `deck.py`, since the tagger reads `deck.ENGINE_THEMES` (BS2-23, widened by BS4-37)
-  — and a mismatch defeats the reuse. An ABSENT hash means UNKNOWN and rebuilds ONCE (the
+  stamp records a content hash of what `tags_for` depends on — `tag_synergies.py`'s BYTES
+  plus the VALUE of `deck.ENGINE_THEMES` (BS2-23; BS4-37 hashed all of deck.py, BS5-06
+  narrowed it back because that staled the pool every cycle) — and a mismatch defeats it. An ABSENT hash means UNKNOWN and rebuilds ONCE (the
   reuse path returned before writing a stamp, so "unknown = reuse" could never arm —
   BS3-02). **Stated non-goal:** card-mana.csv's keyword frequencies also feed the noise
   floor and are NOT hashed, because a derived file's hash would change on every mana
@@ -604,7 +604,17 @@ directions.
 - **A SET plus a sort key that can TIE is a nondeterministic output.** Tied themes left
   in set-iteration order made an unchanged build produce different output every run.
   **Before sorting anything derived from a set, ask what happens when the key ties** —
-  make the key a total order. [G-54]
+  make the key a total order. **First LIVE violation, 2026-08-12: `deck.py similar`
+  answered differently on every run** (five `PYTHONHASHSEED` values, five outputs) —
+  `_deck_central_weights` built its weight vector by iterating `_central_themes()`, a
+  SET, and the display truncates to `shared[:5]`, so WHICH themes you were shown changed
+  run to run on the exact ✦ SPECIFIC overlaps G-47 says to grade from. **The fix is the
+  KEY, not the return type**: two callers do `ctags & _central_themes(...)`, so making it
+  a tuple is a TypeError. Fix the ORDER where order is consumed, and remember a float SUM
+  over a set is the same bug wearing arithmetic. **ENFORCED since 2026-08-12 by
+  `tests/test_determinism.py`** (7 commands × 2 `PYTHONHASHSEED` values, byte-compared).
+  It sits in PYTEST, not `check_all`, for G-55's reason — it needs separate interpreters —
+  so `make check` alone misses this class and `make verify` catches it. [G-54]
 - **NO GATE BUILT AN ARGPARSE TREE, so a broken `--help` was invisible** for four days
   with three green workflows. `check_all` imports `deck` as a MODULE and calls `cmd_*`
   directly, so the CLI surface is covered separately by `tests/test_cli.py` and a CI
@@ -622,7 +632,10 @@ directions.
   never blocks a swap — the caller catches any exception, not just `OSError`, so a
   corrupted ledger can't traceback AFTER the deck file is written.
   **A swap applied only to MEASURE something still leaves a row** — prefer a dry run or a
-  scratch copy, since a fabricated row is worse than a missing one. [G-56]
+  scratch copy. **`swap_outcomes` joins the ledger to `matches.csv`** — the one signal
+  these models cannot influence — banned from those same seven functions for a STRONGER
+  reason (a win rate looks like ground truth), split per DECK not per swap, and refusing
+  to read under 20, which is where it sits. G-57 governs it. [G-56]
 - **Match results are FREE from `Player.log`, and the two lines AROUND the result JSON are
   the load-bearing halves.** `finalMatchResult` carries the outcome and both seats but NOT
   which seat is yours; that is only in the `Match to <userId>:` prefix, so a paste of the
@@ -802,6 +815,33 @@ directions.
   **When you find yourself writing a second loop over `cards` that compares against owned,
   call the helper instead.** [G-70]
 
+- **A MEMOIZED TABLE IS SHARED STATE, and a helper that mutates its ARGUMENT will mutate
+  it.** `_file_memo` hands every caller the same dict, and its docstring rested the whole
+  memo on "every caller treats these tables as READ-ONLY — verified by scanning all of
+  scripts/". Five sites in that same file were mutating them: `fetch_missing_mana` /
+  `fetch_missing_rarities` write into the dict they are GIVEN, and `cmd_stats`, `cmd_mana`,
+  `cmd_consistency`, `_do_swap` and `cmd_wildcards` were handing them the cached object.
+  Invisible on a one-shot CLI run; in the Flask editor — one process, many decks — deck B's
+  Stats tab computed its curve from costs deck A's Mana tab had live-fetched, so the editor
+  disagreed with a fresh `deck.py stats B` depending on click order. **Pass
+  `dict(load_*())` whenever a fetcher will touch it.** The transferable half: *a claim
+  about all callers is only as good as the last person who added one* — the property is
+  pinned behaviourally now (`TestMemoizedTablesAreNotMutated`), because a source scan is
+  what failed. [G-71]
+- **A CONTROL BUILT IN JAVASCRIPT IS A CONTROL ONLY IF IT GOES THROUGH `a11y()`.** Four
+  times now a click handler has been bound to a non-interactive node — the collection
+  pips (I-01), the deck-editor analysis tabs (S-2), and in 2026-08 the dashboard's
+  roster-triage Deck cell (an `<a>` with NO href, so not focusable) and the card finder's
+  `<span>` chips. **All three 2026-08 interface defects were in the GENERATED pages**
+  (`build_dashboard.py`, `build_gallery.py`), because `tests/test_templates.py` pins
+  `templates/` plus a few NAMED dashboard controls and cannot see a new one. When
+  a11y-ing a node inside a table, apply it in `sortableTable`'s `onRowExtra` — the
+  internal `redraw()` rebuilds `<tbody>` on every sort, discarding attributes set once.
+  The same files hide hardcoded colours (`gallery.html`'s light mode painted a literal
+  `#0f1115` track on a white panel). **A STATIC GATE WAS MEASURED UNBUILDABLE — do not
+  restart it**: three designs, every flag FALSE, since the controls are a11y'd at RUNTIME
+  and JS scoping defeats regex. **Scenario 7's keyboard walk is the only coverage.** [G-72]
+
 ## Known Issues
 
 Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
@@ -863,7 +903,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   which re-derives every pool row's `Synergies` through the same `tags_for()`. Skipping
   the pool rebuild used to leave unowned craft candidates ranking on stale tags SILENTLY;
   since BS2-23 the pool's build stamp carries a content hash of the tagger AND (since
-  BS4-37) of `deck.py`, whose `ENGINE_THEMES` the tagger reads, so an edit to either
+  BS4-37, narrowed by BS5-06) of `deck.ENGINE_THEMES`, which the tagger reads, so an edit to either
   defeats the freshness reuse and `make refresh` really does re-derive them. **That
   sentence was false for a year of stamps** — a pre-BS2-23 stamp had no hash and the reuse
   path never wrote one, so the check could not arm (BS3-02, G-18). VERIFY the pool
@@ -1024,13 +1064,21 @@ format.
      - Look at a deck card's build badge (buildable / N missing / N short)
      - Expand "Recently edited" — the +added / −removed delta lines
      - Paste any deck into the stale-deck panel — the in-sync / drifted text
+     - Then `gallery.html` in a LIGHT OS scheme (it has no toggle — it follows the OS):
+       the "Collection overview" bar tracks, each colour bar, and a card's ×N badge /
+       set-code label
    Expected: green/amber/red read clearly against the LIGHT panel background, are
    distinguishable from each other and from body text, AND each pill still reads as a
    bounded CHIP — a visible fill and border, not a loose coloured word. The TEXT moved
    onto `var(--ok)` / `var(--warn)` / `var(--bad)` at I-03; the FILLS and BORDERS
    followed at S-9, via `color-mix` off the same tokens (they had been dark-tuned
    literals whose ~1.3:1 edge disappeared over a white panel). A washed-out pill means
-   one regressed back off the tokens.
+   one regressed back off the tokens. **The gallery leg is NEW and its palette has never
+   been rendered by anyone**: the bar tracks must read as a light neutral (`--track`, not
+   the `#0f1115` literal they carried until BS5-10), every colour bar must be visible
+   against that track (`--W…--C` are mid-tone in light mode — the dark pastels vanish on
+   it), and the ×N / set-code plates stay deliberately DARK because they sit on card ART,
+   so check their ink is still light-on-dark rather than dark-on-dark.
 6. Phone width — dashboard AND editor | Subsystem: Presentation & Interface
    Steps:
      - Open `dashboard.html` at 390×844 (or a real phone); scroll top to bottom
@@ -1046,7 +1094,8 @@ format.
    row needed 472px inside the 350px a 390px viewport leaves.
 7. Keyboard-only traversal | Subsystem: Presentation & Interface
    Steps: in `dashboard.html`, using Tab / Shift-Tab only, reach a colour filter chip, a
-   quick-filter pill, a roster-table sort header, a section header (collapse it with
+   quick-filter pill, a roster-table sort header, **a Triage row's DECK NAME and a Card
+   finder CHIP** (both mouse-only until BS5-02/03), a section header (collapse it with
    Enter or Space) and a deck's ⤢ opener; open the modal, Tab through it, press Escape.
    On a deck card's tab strip try ← / →, and focus a wishlist card NAME to check the
    card image appears. Then the EDITOR (`make app`, `templates/collection.html`) colour
@@ -1056,7 +1105,10 @@ format.
    activate; ← / → move along a tab strip (S-2 made them real tablists); the card
    preview follows FOCUS, not just the mouse (S-7); removing a row leaves focus on the
    next row's ✕, never on `<body>` (S-6); Tab inside the modal never reaches the page
-   behind; Escape returns focus to the ⤢ that opened it. **Walk it once in each OS
+   behind; Escape returns focus to the ⤢ that opened it. The Triage deck name and the
+   Card finder chip must BOTH filter the deck list on Enter AND on Space, and the Triage
+   one must survive a SORT click (its a11y is applied per-redraw, so sorting and re-Tabbing
+   is the real test). **Walk it once in each OS
    colour scheme** — the editor pages follow `prefers-color-scheme` since S-8 and no
    longer snap to forced dark mid-walk. The MARKUP half is pinned by
    `tests/test_templates.py`; what needs a person is the perceptual part. Full step list,
@@ -1195,8 +1247,12 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   answers, and the overlapping-answer inventory with measured agreement. Read it when
   you need to know which command answers a question, or why two of them disagree. Live.
 - **`ROADMAP.md`** — long-range ideas; regenerate with `/roadmap`. Live.
-- **`docs/tooling-improvement-plan.md`** — **HISTORICAL, do not follow.** Findings
-  F01–F15 all landed cycles ago and it is referenced from nowhere, but it reads like
-  a live plan and one of its instructions is now WRONG (F01 specifies adding
-  `lib.full_card_text()`, which was added, never acquired a caller, and was deleted
-  as dead code). It carries a status header saying so.
+- **`docs/tooling-improvement-plan.md` — DELETED 2026-08-12**, and the reasoning is
+  worth keeping for the next document like it. Findings F01–F15 had all landed cycles
+  earlier, nothing referenced it, and one instruction had gone WRONG (F01 specified
+  adding `lib.full_card_text()`, which was added, never acquired a caller, and was
+  deleted as dead code). A status header saying "historical, do not follow" was tried
+  first and is not enough: the file still read like a plan to anything that grepped it,
+  which is exactly how a fresh session finds things. **A completed plan is not a
+  record** — the record is `.cycle/blocks/`, which is per-run, dated and consumed by
+  the workflow commands. Git holds the file if it is ever wanted.

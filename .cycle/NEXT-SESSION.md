@@ -1,10 +1,10 @@
 # Handoff — start the next session here
 
-Rewritten 2026-08-09 after the **broad-scan-3** cycle closed (top-5 → Batches 1&2 → 3 →
-4 → 5 → follow-ons + unbatched Lows, with a `/sync-docs` pass between each), for a session
-with none of this one's context. Read this before CLAUDE.md's Common Gotchas, not instead
-of them. The broad-scan-2 cycle it previously described is in
-`.cycle/blocks/2026-08-broad-scan2-*.md` if you need it.
+Rewritten 2026-08-09 after the **broad-scan-3** cycle closed, then updated 2026-08-12 for
+the **broad-scan-4** cycle (§0 below is the newest state and supersedes anything under it
+where they disagree). Written for a session with none of this one's context. Read it before
+CLAUDE.md's Common Gotchas, not instead of them. The broad-scan-2 cycle it previously
+described is in `.cycle/blocks/2026-08-broad-scan2-*.md` if you need it.
 
 **Read the evidence file when a rule's reasoning matters.** CLAUDE.md carries the RULE and
 any live residual; the incident and measurement live under the anchor the rule ends with —
@@ -16,27 +16,40 @@ commands disagree.
 
 ---
 
-## 1. Repo position
+## 0. Repo position — CURRENT (2026-08-12, broad-scan-4)
 
-- Working branch **`claude/broad-scan-3fw71t`** (broad-scan-3, 2026-08-09), pushed but
-  **not yet merged**. Earlier: PRs #110/#111/#112 all merged 2026-08-09. The branch is
-  restarted from `main` after each merge. **Check `git log origin/main..HEAD` before your
-  first commit** — if it is empty, the last PR merged and you must restart from `main`
+- Working branch **`claude/broad-scan-xju0r1`**, one commit ahead of `origin/main`
+  (`3b8e9bd`, the broad-scan-4 top-5 implementation), **pushed, no PR opened**. PR #120
+  merged 2026-08-11, so the branch was restarted from `main` at the start of this cycle.
+  **Check `git log origin/main..HEAD` before your first commit** — if it is empty, the last
+  PR merged and you must restart from `main`
   (`git fetch origin main && git checkout -B <branch> origin/main`).
-- Gates green: `check_all` all invariants hold, with **one soft warning** — the 7 stale
-  flex lines the 2026-08-11 `+In` check surfaced (decks 8, 14, 26, 26a ×3, 50). They are
-  real and NOT edited: G-04 makes retiring a flex line a human editorial call. **1,262
-  tests in 29 files.** The 7 blank-Card-Text `validate` warnings are K-11 vanilla
-  creatures, expected, not a data gap.
-- Collection **2,186 library rows**; roster **103 deck files**, numbered through **68**;
-  34 `deck.py` subcommands; 13 model-sanity gates + `check_all`. (Decks 67 Warpwright and
-  the 68 Frog Sage family — 68 Sultai blink, 68a Bant wide-counters, 68b Selesnya burrow —
-  were drafted 2026-08-10/11. **40-brawl** is the roster's third Brawl conversion.)
-- **PRs #116/#117/#118 merged 2026-08-11**; the branch carries post-merge work again, so
-  run `git log origin/main..HEAD` before your first commit and restart from `main` if it
-  is empty.
-- **`ROADMAP.md` is a 2026-07-31 snapshot** with a staleness header on it. Individual
-  entries are marked DONE as they land, but it wants a `/roadmap` regeneration.
+- Gates green: `check_all` all invariants hold with **ZERO soft warnings**; **1,266 tests
+  in 29 files + conftest**, full suite green. The 7 blank-Card-Text `validate` warnings are
+  K-11 vanilla creatures, expected, not a data gap. (The 7 stale flex lines §1 used to name
+  were retired in `253cd13`.)
+- Collection **2,186 library rows / 2,182 distinct names**; roster **103 deck files, 101
+  of them roster-counted**, numbered through **68**; 34 `deck.py` subcommands; 13
+  model-sanity gates + `check_all`. **40-brawl** is the roster's third Brawl conversion.
+- **`dashboard.html` and `gallery.html` were both rebuilt this cycle** and are current — no
+  `make dashboard` outstanding.
+- **`ROADMAP.md` was regenerated 2026-08-11**; its strategic bet is match volume.
+- **TWO OPERATOR VISUAL CHECKS ARE OUTSTANDING** and are the only part of broad-scan-4 a
+  file cannot prove: the gallery in LIGHT mode (Regression Scenario 5's new leg — that
+  palette has still never been rendered by a person) and a keyboard walk of the two
+  repaired dashboard controls (Scenario 7). Neither blocks anything.
+
+## 1. Repo position (broad-scan-3, 2026-08-09 — superseded by §0)
+
+- Working branch **`claude/broad-scan-3fw71t`** (broad-scan-3, 2026-08-09) — **merged as
+  PR #120 on 2026-08-11.** Earlier: PRs #110/#111/#112 all merged 2026-08-09.
+- Gates at the time: `check_all` all invariants hold, with **one soft warning** — the 7
+  stale flex lines the 2026-08-11 `+In` check surfaced (decks 8, 14, 26, 26a ×3, 50), since
+  retired. **1,262 tests in 29 files.**
+- Collection **2,186 library rows**; roster **103 deck files**, numbered through **68**.
+  (Decks 67 Warpwright and the 68 Frog Sage family — 68 Sultai blink, 68a Bant
+  wide-counters, 68b Selesnya burrow — were drafted 2026-08-10/11.)
+- **PRs #116/#117/#118 merged 2026-08-11.**
 
 ## 2. What the broad-scan-3 cycle did (2026-08-09)
 

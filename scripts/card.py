@@ -20,7 +20,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import REPO_ROOT, owned_qty  # noqa: E402
+from lib import REPO_ROOT, front_face_cost, mana_value, owned_qty  # noqa: E402
 
 LIBRARY = os.path.join(REPO_ROOT, "card-library.csv")
 POOL = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -223,6 +223,17 @@ def main():
     syn = lr.get("Synergies") or pr.get("Synergies") or ""
     cost = (m.get("Mana Cost") or "").strip()
     mv = (m.get("Mana Value") or "").strip()
+    # G-02 residual 2, closed. card-mana.csv stores Scryfall's Mana Value, which for a
+    # split / Room / Adventure card is the COMBINED total of both halves — and you never
+    # pay both. `deck.load_mana` recomputes it from the front face for exactly this
+    # reason; this file read the column straight off the CSV, so Mirror Room // Fractured
+    # Realm displayed MV 10 when it is a {2}{U} three-drop whose back door unlocks
+    # separately. That put the inspection surface G-01 mandates for pre-grading reads in
+    # direct contradiction with every analysis surface (stats, the curve, consistency),
+    # which have all used the front face for a year (broad-scan BS5-08).
+    split = " // " in cost
+    if split:
+        mv = str(mana_value(front_face_cost(cost)))
     kw = (m.get("Keywords") or "").strip()
     rarity = (pr.get("Rarity") or "").strip()
     legal = (pr.get("Legalities") or "").strip()
@@ -234,6 +245,13 @@ def main():
     print(f"━━ {name} ━━")
     head = typ + (f"   ·   {cost}" if cost else "") + (f" (MV {mv})" if mv else "")
     print(head)
+    if split:
+        # Say WHICH half the number describes. The cost line shows both — that is the
+        # printed card and the reader wants it — so an unqualified MV beside it invites
+        # the same misreading in a human that the raw column caused in the code.
+        print(f"  ↳ two castable halves; MV {mv} is the FRONT half "
+              f"({front_face_cost(cost)}) — the one you pay to cast it. The other half "
+              f"is paid separately, so never add them (G-02).")
 
     meta = [f"colors(identity): {colors or 'C'}"]
     if rarity:

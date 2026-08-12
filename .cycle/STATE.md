@@ -6,6 +6,198 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #4, Batch E (2026-08-12) — SCAN CLOSED
+
+Fourth and final implementation pass. Gates green: all invariants hold, ZERO soft warnings,
+docs/commands/agreement gates OK. Block:
+`.cycle/blocks/2026-08-broad-scan4-batchE-broad-implement.md`.
+
+**Batch E was mostly not mine to do, and saying so is the outcome.** E1 (match volume) is
+owner-paced, E3 (Sheets) needs credentials, E4 is taste, E5 is a design constraint —
+CLAUDE.md says a `#: tier:` letter is NEVER auto-written. One item was real engineering.
+
+**E2 built the outcome join.** `swap_outcomes` + an Outcomes section in `deck.py feedback`
+connect `recommendations.csv` (what the models said, what the human decided) to
+`matches.csv` (what happened). Split per DECK at its first recorded swap — deliberately
+coarse, because a per-swap before/after with overlapping windows is a story, not a
+measurement. **It refuses to read**: 365 swaps, 9 matches, 8 attributed, 3 decks with both,
+largest post-swap sample n=4 against a threshold of 20. That refusal IS the current answer;
+the reason to build now is that the analysis is in place when volume arrives. Made
+report-only structurally — the existing seven-function scan now bans `swap_outcomes`,
+`MATCHES_CSV` and `load_match_counts` too, because an outcome is the most tempting thing
+here to feed back into a ranking and would both break `check_suggest`'s bounded property
+and make the models chase an 8-match sample.
+
+**E4's estimate was wrong in the useful direction.** All three planned Brawl conversions
+(4, 46, 11) are at **distance 0** on `deck.py brawl` — already singleton and on-identity —
+so each is a header plus a commander card, not a ~20-card rebuild. **Not built**, because
+what remains is exactly the taste: the tool picks Aerith for 46 where §4b records the user
+wanting Delney, the user has already flagged Bullseye's BR identity against mono-B 11, and
+each needs one cut to make room. Re-estimate as S each once the commanders are chosen.
+
+**E5, checked rather than assumed:** deck 19 is genuinely flagged (claimed B, floor A,
+"possibly UNDER-graded"). Deck 21a is **not** — `tier` reports "deliberately conservative
+— B sits below the A floor and the rationale argues why", so the K-14 card-advantage move
+NEXT-SESSION cites as the reason to re-grade has already been absorbed by the written
+rationale. Only one of the two is owed a decision.
+
+**Where I left off:** the broad-scan-4 cycle is CLOSED — all 13 findings are implemented,
+retracted or recorded as not-implementable, across four blocks. What remains is entirely
+owner work: play games (E1, now the top item and unblocked by A1), run
+`import_collection.py` (A2), the two visual checks (A3), Sheets credentials (E3), three
+commander decisions (E4), deck 19's letter (E5) — plus one expected pool rebuild on the
+next `make refresh`. A `/sync-docs` pass follows this entry.
+
+## Session — broad scan #4, Batch C & D (2026-08-12)
+
+Third implementation pass. Gates green: `check_all` all invariants hold with **ZERO soft
+warnings**, **1278 tests**, docs and commands gates OK. Block:
+`.cycle/blocks/2026-08-broad-scan4-batchCD-broad-implement.md`. **A1 is DONE** (the user
+installed the launchd archive); A2 and A3 remain.
+
+**The project now checks that it gives the same answer twice.** `tests/test_determinism.py`
+runs seven read-only commands under two `PYTHONHASHSEED` values and asserts byte-identical
+output. Fourteen gates verify each model is correct and one verifies two models agree; none
+could see BS5-01, because they all evaluate the code once inside one interpreter where set
+order is fixed. It lives in pytest rather than check_all for the reason G-55 gives about
+the argparse tree — it needs separate interpreters, which an in-process gate cannot arrange
+— and costs 7.3s. Watched failing against the real pre-fix `deck.py` (checked out at
+d017353, then restored byte-exact).
+
+**C2 was NOT built, and the measurement is the point.** An a11y scan over the generated
+pages was prototyped three ways: a click-binding scan (14 flags, all false), a refined one
+with declaration lookup (13, all false — four different `tb`/`x`/`p`/`s` in different JS
+scopes, unresolvable by regex over a Python string holding JS), and markup-level rules
+(flags the two sites that ARE fixed, because they are a11y'd at RUNTIME, plus a comment and
+two iteration selectors). The blocker is structural and needs a JS parser, which breaks the
+zero-dependency constraint. **Do not re-attempt from scratch** — the only design that
+survived scrutiny is a baselined delta-scan, which inherits G-69's acknowledge-before-warn
+muting risk. The real coverage is Regression Scenario 7's keyboard walk, which is now the
+only coverage for that class and is correspondingly more valuable.
+
+**D2 is the one with an operator consequence.** The pool's tag fingerprint hashed all of
+deck.py, so it read stale after essentially every cycle — it was stale on 2026-08-12 purely
+because unrelated `similar` and buildability edits had landed, forcing a ~4-min refetch of
+15.9k cards for a reason that was almost never real. It now hashes the VALUE the tagger
+consumes (`ENGINE_THEMES`, canonicalised with `sort_keys` so the change-detector cannot
+itself become order-dependent). **Expect ONE full pool rebuild on the next `make refresh`**
+— the algorithm changed, so every existing stamp mismatches. That is designed behaviour,
+not the bug returning.
+
+**Also closed:** G-02's residual 2 — `card.py` showed Mirror Room at MV 10 where every
+analysis surface said 3; it says 3 now, with a line naming which half. `check_colors`'
+exemption was a substring test a COMMENT satisfied (the very shape that file exists to
+catch); it is an AST comparison now. `parse_matches --report` composes with a source on all
+three success paths — the first attempt fixed only the last return and still dropped it on
+the summaries-only path, caught by running all three rather than the obvious one.
+`docs/tooling-improvement-plan.md` is deleted; a "do not follow" header was not enough,
+because the file still read like a plan to anything that grepped it.
+
+**Where I left off:** Batch E (strategic) and A2/A3 are all that remain from the scan. Four
+doc updates are queued in the block for `/sync-docs` — G-54's enforcement pointer, G-72's
+C2 measurement, G-18/K-10's fingerprint description, and striking G-02's residual 2.
+
+## Session — broad scan #4, Batch A & B (2026-08-12)
+
+Second implementation pass of the broad-scan-4 cycle, after `/sync-docs`. Gates green:
+`check_all` all invariants hold with **ZERO soft warnings**, **1270 tests**, and
+`check_agreement` now reports **7 questions** instead of 6. Block:
+`.cycle/blocks/2026-08-broad-scan4-batchAB-broad-implement.md`.
+
+**Batch A was not implementable and that is the honest outcome.** A1 (install the launchd
+rolling archive), A2 (run `import_collection.py` against a real tracker export) and A3 (the
+two visual checks) are all human-only — they need `launchctl` on the Mac running Arena, an
+export file only the owner has, and a person at a browser. Instead of skipping A1, its
+install block was VERIFIED end to end here: the Stage 0 snapshot script ran against a
+synthetic `Player.log` tree and behaved correctly across the case that matters (a relaunch
+that wipes `Player.log` leaves the archive intact and appends the new match), the plist
+parses, and the resulting archive feeds `parse_matches.py` cleanly. **The block is correct
+as written — it just needs running.** A1 remains the most time-sensitive item in the repo:
+every Arena launch destroys an unextracted session.
+
+**BS5-04 closed the gap G-70 claimed was already closed.** Buildability had three MORE
+re-derivations past the two BS4-13 consolidated (`cmd_list`, `deck_quality_vector`,
+`build_dashboard.collect`), and two of them keyed the per-name aggregation on the raw
+DISPLAY name where `deck_requirements` keys lowercase — so they agreed only because no
+roster deck spells one card two ways. All three route through the helper now, and the
+question finally has an agreement pair. A visible side-effect: `deck.py list` used to fold
+missing and short into one "N short" label, so deck 44 read "12 short" where `check` said
+"12 not in library"; it reads "12 missing" now.
+
+**BS5-12 WAS A FALSE FINDING and the way it was wrong is the useful part.**
+`collection.html` already joins its row key with `'\x01'`, a control character that cannot
+appear in a CSV cell. I read it as `join('')` because the Read tool renders a raw 0x01 byte
+invisibly — and then "confirmed" it with a Python collision check that reproduced my
+MISREADING rather than the code. The measurement looked like verification and was a second
+copy of the assumption. Worse, the fix I proposed (join on a space) would have introduced
+the exact ambiguity I claimed to be removing, since a space CAN appear in a card name.
+**Read the bytes when a finding is about a delimiter.**
+
+**Also worth keeping:** the rebuilt `dashboard.html` differs from the committed one by 300
+bytes, and I checked why rather than assuming — it is `delta_windows` only, because the
+7-day git base slid overnight. Every buildability field is identical across all 101 decks,
+which is what makes the refactor provably behaviour-preserving.
+
+**Where I left off:** Batches A (owner), C (determinism gate, a11y scan, BS5-07), D (BS5-06,
+BS5-08, BS5-09, retire the historical plan doc) and E (strategic) are untouched and remain
+prioritised as listed. Two doc updates are queued in the block for the next `/sync-docs`.
+
+## Session — broad scan #4, top-5 implementation (2026-08-12)
+
+A full three-stage `/broad-scan` producing findings **BS5-01…BS5-13**, then one
+implementation pass over the top five. Gates green: `check_all` all invariants hold with
+**ZERO soft warnings**, full suite green at **1266 tests** (+10 this session; the honest
+pre-change baseline was 1,256 — Stage 1 of the scan quoted "1,264" read off dot output
+rather than a summary line). The verbatim block is
+`.cycle/blocks/2026-08-broad-scan4-top5-broad-implement.md`; read that, not this summary.
+
+**The headline finding is the one this project already has a rule for.** `deck.py similar`
+returned a **different answer on every run** — five PYTHONHASHSEED values, five outputs.
+`_deck_central_weights` built its weight vector by iterating `_central_themes()`, which is
+a SET, and `cmd_similar` then sorted that set on a key that ties constantly. G-54 states
+exactly this shape ("a SET plus a sort key that can TIE is a nondeterministic output") and
+nothing enforced it. Because the display truncates to `shared[:5]` and the ⚠ line names
+three specific themes, WHICH themes the reader was shown changed run to run — deck 40 read
+`✦Druid` against 40a on one run and `removal` on the next, on the surface G-47 tells you to
+grade identity overlap from. Fixed by making the ORDER total in three places; the return
+type of `_central_themes` stays a set, because two callers do `ctags & _central_themes(...)`.
+
+**A stated safety premise turned out to be false.** `_file_memo`'s docstring rested the
+whole memoization on "every caller treats these tables as READ-ONLY — verified by scanning
+all of scripts/". Five call sites in the same file were mutating them: `fetch_missing_mana`
+and `fetch_missing_rarities` write into the dict they are handed, and cmd_stats / cmd_mana /
+cmd_consistency / _do_swap / cmd_wildcards were handing them the cached object. Benign on a
+one-shot CLI run; in the Flask editor — one process, many decks — deck B's Stats tab computed
+its curve from costs deck A's Mana tab had fetched. The five now copy, and the property is
+pinned behaviourally rather than by another source scan, because a source scan is what failed.
+
+**Two more mouse-only controls, in the generated pages.** The roster-triage table's Deck cell
+is an `<a>` with no href and the card finder's chips are bare `<span>`s. This is the third and
+fourth instance of the defect the collection pips (I-01) and the deck-editor tabs (S-2) each
+had, and it survived those passes because they fixed `templates/` while these are built by JS
+in `build_dashboard.py`, where the only pins were on NAMED controls. Same lesson for BS5-10:
+`gallery.html`'s light palette — the one `.cycle/NEXT-SESSION.md` already flags as never
+rendered — painted a hardcoded `#0f1115` bar track on a near-white panel. **The generated
+pages are where all three lived.**
+
+**Decided rather than built.** Four findings were left as follow-ons deliberately, all
+measured at zero live instances and all worth fixing on the MECHANISM per G-63: BS5-04
+(three more buildability re-derivations past G-70's "one definition"), BS5-11 (build_mana's
+alias merge can overwrite a distinct card's cost), BS5-12 (a delimiter-free row key in the
+collection editor), BS5-06 (the pool fingerprint hashes all of deck.py, so the pool reads
+stale after any deck.py edit — including this session's).
+
+**Also asked and answered:** whether the project would be better served as an Apps Script
+web app. No — the value is `deck.py`'s models plus the gate/test layer, git is load-bearing
+for `history` / `quality --at` / the Recently-edited panel, and Apps Script's 6-minute
+execution cap collides with the ~2-min dashboard and ~4-min pool builds. The real need
+underneath (phone access) is already served by finishing `sheets_sync.py`'s one-time setup.
+
+**Where I left off:** the five fixes are committed and pushed; no PR opened (not asked for).
+Two non-blocking OPERATOR VISUAL CHECKS are outstanding and are the only part a file cannot
+prove — the gallery in light mode, and a keyboard walk of the two repaired dashboard
+controls. `/sync-docs` has four queued CLAUDE.md updates listed at the end of the block.
+
 ## Session — first real match data, and the deck-attribution arc (2026-08-10)
 
 Not a scan. The user asked how to populate match data, pasted a real `Player.log`, and
