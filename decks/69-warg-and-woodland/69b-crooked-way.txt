@@ -48,10 +48,19 @@
 #: notes: the fixers die too often, the first manabase move is +1 Sandsteppe Citadel
 #: notes: over a Forest, and the first cut consideration is Tolsimir, whose {W}{W} is
 #: notes: the single hardest cost in the deck.
-#: notes: SIX BASIC-FETCHERS AGAINST 8 BASICS (Fenrir I, Map the Frontier x2, Grow from
-#: notes: the Ashes, Roamer's Routine, Scrounge's Lander, The Earth King's attack
-#: notes: trigger) — the same tension deck 13 records. Acceptable here because the
-#: notes: fetches are also landfall fodder, but do not trim basics below 8.
+#: notes: FIVE BASIC-FETCH EFFECTS AGAINST 8 BASICS (Fenrir I, Grow from the Ashes,
+#: notes: Roamer's Routine, Scrounge's Lander, The Earth King's attack trigger) — the
+#: notes: same tension deck 13 records, eased one notch when Map the Frontier left for
+#: notes: The Mountain-king's Return. Acceptable because the fetches are also landfall
+#: notes: fodder, but do not trim basics below 8.
+#: notes: THE MOUNTAIN-KING'S RETURN IS A LOOP PIECE, NOT JUST VALUE (owner's find,
+#: notes: 2026-08-12). Chapter I loots — the discard STOCKS the graveyard the black
+#: notes: seat feeds on, and a discarded nonland leaves a 1/1 Soldier behind. Chapter
+#: notes: II returns a creature MV 3 or less — 15 copies qualify here, and the two
+#: notes: that matter are Abzan Devotee and Great Divide Guide: it rebuys exactly the
+#: notes: mana creature whose death is this deck's stated failure mode. And because
+#: notes: the creature LEAVES the graveyard, chapter II itself triggers Along the
+#: notes: Crooked Way's amass. In over Map the Frontier (`cuts` fit 0).
 #: notes: ALONG THE CROOKED WAY'S AMASS RIDES THE LOOP, NOT MILL: this build stocks the
 #: notes: graveyard from combat and from Ainok Wayfarer / Vastlands Scavenger, then
 #: notes: every recursion effect double-dips — the creature comes back AND the Goblin
@@ -80,7 +89,7 @@
 1 Dancing from Dark to Dawn (HOB) 123
 1 Through the Forest Gate (HOB) 137
 1 Summon: Fenrir (FIN) 203
-1 Map the Frontier (OTJ) 170
+1 The Mountain-king's Return (HOB) 22
 1 Grow from the Ashes (FDN) 225
 1 The Chief Warg (HOB) 150
 1 Zimone's Experiment (SOS) 169
