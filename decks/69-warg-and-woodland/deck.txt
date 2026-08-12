@@ -3,7 +3,7 @@
 #: colors: BG
 #: plan: midrange
 #: tier: B — PROVISIONAL, and deliberately graded UNDER the metrics floor, which reads
-#: tier: A. The floor is earned honestly (interaction 5, card advantage 5) but it cannot
+#: tier: A. The floor is earned honestly (interaction 6, card advantage 5) but it cannot
 #: tier: see this deck's single point of failure: 8 card names / 11 copies do nothing
 #: tier: until a power-4 body is on the board, and only 7 creatures are PRINTED at power
 #: tier: 4 or greater. One well-timed removal spell on the enabler switches off a third
@@ -17,9 +17,9 @@
 #: archetype: GOLGARI FEROCIOUS — a Wolf tribal shell whose payoffs are gated on "a
 #: archetype: creature with power 4 or greater," and a Bear package that exists to TURN
 #: archetype: THAT GATE ON. The Bears are the cheapest reliable way to satisfy it:
-#: archetype: Vastlands Scavenger is a 4/4 deathtouch on turn three, Drover Grizzly a 4/2
-#: archetype: on three, The Earth King arrives with a 4/4 Bear token, Beorn the Fierce is
-#: archetype: a 6/6. Beorn is the joint — he pumps Bears AND makes one creature per
+#: archetype: Vastlands Scavenger is a 4/4 deathtouch on turn three, Leatherhead a 5/4 on
+#: archetype: four, The Earth King arrives with a 4/4 Bear token, Beorn the Fierce is a
+#: archetype: 6/6. Beorn is the joint — he pumps Bears AND makes one creature per
 #: archetype: combat into a Bear, so a Wolf becomes a Bear becomes a power-4 body becomes
 #: archetype: the enabler — and Spider-Ham pumps both tribes at once. The DISTINCTIVENESS
 #: archetype: is the gate, not the tribe: no other roster deck is built around a
@@ -76,9 +76,10 @@
 1 Wildborn Preserver (FDN) 650
 1 Goldvein Hydra (OTJ) 167
 2 Bejeweled Warg (HOB) 117
-2 Ravening Warg (HOB) 80
+1 Ravening Warg (HOB) 80
+1 The Earth Crystal (FIN) 184
 1 Duskwatch Hunter (HOB) 153
-1 Ambush Wolf (FDN) 98
+1 Leatherhead, Swamp Stalker (TMT) 117
 1 Summon: Fenrir (FIN) 203
 1 Chief Warg's Company (HOB) 151
 1 The Chief Warg (HOB) 150
@@ -88,7 +89,7 @@
 # ── Bears (the Ferocious enablers) ──────────────────
 1 Vastlands Scavenger // Bind to Life (SOS) 166
 1 Little Bear (HOB) 128
-1 Drover Grizzly (OTJ) 161
+1 Germination Practicum (SOS) 149
 1 The Earth King (TLA) 172
 1 Beorn the Fierce (HOB) 119
 1 Lumra, Bellow of the Woods (BLB) 183

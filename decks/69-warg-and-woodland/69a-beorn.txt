@@ -5,7 +5,7 @@
 #: plan: midrange
 #: tier: B — PROVISIONAL, graded UNDER the A metrics floor, and for different reasons
 #: tier: than its parent. The floor reads A on interaction 5, but card advantage 2 is
-#: tier: thin and the deck is SLOW: avg MV 3.44 with few early drops, and the engine
+#: tier: thin and the deck is SLOW: avg MV 3.68 with few early drops, and the engine
 #: tier: wants lands in the GRAVEYARD before it does anything, so the first three turns
 #: tier: are close to blank. A sweeper mid-assembly catches it. WHAT ARGUES UP: the manabase is nearly flawless for a deck
 #: tier: with this many double-green costs, and a resolved Lumra or Summon: Titan with
@@ -70,6 +70,18 @@
 #: notes: for six. All three cost only redundant ramp (Grow from the Ashes, Clifftop
 #: notes: Lookout, Galactic Wayfarer) and every axis held: interaction 5, card advantage
 #: notes: 2, protection 2, floor A, and the cast-on-curve table unchanged.
+#: notes: THE CURVE WAS DELIBERATELY PUSHED 2026-08-12 (3.44 -> 3.68) and that is the
+#: notes: cost of this pass, not an accident. Through the Forest Gate (MV 8) and
+#: notes: Groundchuck & Dirtbag (MV 6) came in over Grow from the Ashes and a second
+#: notes: Rainveil Rejuvenator. The trade: Through the Forest Gate puts EVERY land from
+#: notes: the top twenty onto the battlefield, so it is many landfall triggers in one
+#: notes: card in a deck where Chocobo doubles each of them, and Groundchuck doubles the
+#: notes: whole 26-land manabase where Rainveil was one 2/4 tapping for its own power.
+#: notes: `consistency` held exactly flat through both (keepable 87.4%, the same two
+#: notes: cards under 90% on curve). If the deck plays too slowly, these two are the
+#: notes: first cuts back, not the fetch lands.
+#: notes: MIGHTFORM HARMONIZER replaced one of two Mirkwood Pathmakers — same lands-scaling
+#: notes: slot, but a 4/4 base WITH landfall power-doubling instead of a vanilla */*.
 #: notes: NO COUNTERS PAYOFF, BY DESIGN — `deck.py engines` flags 5 enablers with no
 #: notes: reward. Counters here are incidental (Ainok Wayfarer, Beorn's Hospitality,
 #: notes: Famished Worldsire); the deck's scaling comes from the land count, not from
@@ -83,7 +95,8 @@
 1 Little Bear (HOB) 128
 1 Drover Grizzly (OTJ) 161
 1 Spider-Ham, Peter Porker (SPM) 114
-2 Mirkwood Pathmaker (HOB) 129
+1 Mirkwood Pathmaker (HOB) 129
+1 Mightform Harmonizer (EOE) 200
 1 Tifa Lockhart (FIN) 206
 1 Summon: Titan (FIN) 204
 1 Famished Worldsire (EOE) 182
@@ -94,11 +107,12 @@
 1 Pull Through the Weft (EOE) 202
 1 Elemental Teachings (TLA) 178
 1 Ainok Wayfarer (TDM) 134
-2 Rainveil Rejuvenator (TDM) 152
+1 Rainveil Rejuvenator (TDM) 152
+1 Groundchuck & Dirtbag (TMT) 115
 1 Traveling Chocobo (FIN) 210
 1 Michelangelo, Improviser (TMT) 119
 1 Kraven's Last Hunt (SPM) 105
-1 Grow from the Ashes (FDN) 225
+1 Through the Forest Gate (HOB) 137
 1 Loot, Exuberant Explorer (FDN) 106
 1 Part in Friendship (HOB) 134
 1 Dance of the Tumbleweeds (OTJ) 160

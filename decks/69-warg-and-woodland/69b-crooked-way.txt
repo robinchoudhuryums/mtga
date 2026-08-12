@@ -3,8 +3,8 @@
 #: colors: GWB
 #: based-on: deck.txt
 #: plan: midrange
-#: tier: B — PROVISIONAL, at the measurable floor. Interaction reads 4 +1? and card
-#: tier: advantage 1, and both under-read (K-12): The Chief Warg draws on every
+#: tier: B — PROVISIONAL, at the measurable floor. Interaction reads 3 +1? and card
+#: tier: advantage 3, and both under-read (K-12): The Chief Warg draws on every
 #: tier: satisfied attack, Kraven draws when their best creature dies, Wolfbat rebuys
 #: tier: itself on the second draw — all shapes the classifier cannot see. The honest
 #: tier: cost is the mana: Tolsimir reads 65% and Head of the Hunt 74% on curve, and
@@ -78,7 +78,7 @@
 1 Ainok Wayfarer (TDM) 134
 1 Abzan Devotee (TDM) 68
 1 Wolfbat (TLA) 122
-1 Duskwatch Hunter (HOB) 153
+1 Tom, Bert, and William (HOB) 169
 1 Chief Warg's Company (HOB) 151
 1 Head of the Hunt (HOB) 75
 1 Tolsimir, Midnight's Light (MKM) 236
@@ -90,9 +90,9 @@
 1 Through the Forest Gate (HOB) 137
 1 Summon: Fenrir (FIN) 203
 1 The Mountain-king's Return (HOB) 22
-1 Grow from the Ashes (FDN) 225
+1 Overlord of the Hauntwoods (DSK) 194
 1 The Chief Warg (HOB) 150
-1 Zimone's Experiment (SOS) 169
+1 Vizier of the Menagerie (FDN) 649
 1 Along the Crooked Way (HOB) 60
 1 Perennation (TDM) 212
 1 Badlands Revival (OTJ) 194
@@ -101,7 +101,7 @@
 1 Bite Down (FDN) 212
 1 Fell (BLB) 95
 1 Warg Tactics (HOB) 139
-1 Withering Torment (DSK) 124
+1 Doubling Season (FDN) 216
 4 Overgrown Tomb (TRK) 289
 4 Temple Garden (TRK) 301
 4 Deathcap Glade (SOS) 253
