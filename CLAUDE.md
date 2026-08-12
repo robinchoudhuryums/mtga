@@ -1239,8 +1239,12 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   answers, and the overlapping-answer inventory with measured agreement. Read it when
   you need to know which command answers a question, or why two of them disagree. Live.
 - **`ROADMAP.md`** — long-range ideas; regenerate with `/roadmap`. Live.
-- **`docs/tooling-improvement-plan.md`** — **HISTORICAL, do not follow.** Findings
-  F01–F15 all landed cycles ago and it is referenced from nowhere, but it reads like
-  a live plan and one of its instructions is now WRONG (F01 specifies adding
-  `lib.full_card_text()`, which was added, never acquired a caller, and was deleted
-  as dead code). It carries a status header saying so.
+- **`docs/tooling-improvement-plan.md` — DELETED 2026-08-12**, and the reasoning is
+  worth keeping for the next document like it. Findings F01–F15 had all landed cycles
+  earlier, nothing referenced it, and one instruction had gone WRONG (F01 specified
+  adding `lib.full_card_text()`, which was added, never acquired a caller, and was
+  deleted as dead code). A status header saying "historical, do not follow" was tried
+  first and is not enough: the file still read like a plan to anything that grepped it,
+  which is exactly how a fresh session finds things. **A completed plan is not a
+  record** — the record is `.cycle/blocks/`, which is per-run, dated and consumed by
+  the workflow commands. Git holds the file if it is ever wanted.

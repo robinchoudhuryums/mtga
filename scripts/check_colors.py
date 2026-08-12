@@ -118,6 +118,34 @@ def _scan_stale_allowlist():
     return errs
 
 
+def _guards_colorless(node):
+    """True iff `node` (a function) actually TESTS for the literal "Colorless", rather
+    than merely mentioning the word.
+
+    The exemption used to be ``"colorless" in ast.get_source_segment(...).lower()`` — a
+    substring test over the whole enclosing function, which a COMMENT satisfies (broad-scan
+    BS5-07). That is the same shape as the bug this file exists to catch: a substring
+    standing in for a real comparison. All four exempted sites do compare
+    (``col.lower() == "colorless"``), so nothing changes today; what changes is that a
+    future function which only talks about the trap can no longer claim to handle it.
+
+    Two accepted shapes: an equality/membership comparison against the literal, and a call
+    to the safe primitives — a function that routes through ``card_colors`` /
+    ``color_matches`` has delegated the trap rather than guarding it inline."""
+    for n in ast.walk(node):
+        if isinstance(n, ast.Compare):
+            parts = [n.left, *n.comparators]
+            if any(isinstance(p, ast.Constant) and isinstance(p.value, str)
+                   and p.value.strip().lower() == "colorless" for p in parts):
+                return True
+        if isinstance(n, ast.Call):
+            fn = n.func
+            name = getattr(fn, "id", None) or getattr(fn, "attr", None)
+            if name in ("card_colors", "color_matches"):
+                return True
+    return False
+
+
 def _scan_inline_color_parses():
     """Static call-site guard: fail if any script outside lib.py re-implements color-
     identity extraction with the naive ``if ch in "WUBRG"`` comprehension instead of
@@ -150,9 +178,10 @@ def _scan_inline_color_parses():
             fname = enc.name if enc else "<module>"
             if (fn, fname) in _INLINE_PARSE_ALLOW:
                 continue
-            enc_src = (ast.get_source_segment(src, enc) or "") if enc else src
-            if "colorless" in enc_src.lower():
-                continue  # the function guards the "Colorless" trap explicitly
+            if enc is not None and _guards_colorless(enc):
+                continue  # the function TESTS for the trap, not just mentions it
+            if enc is None and _guards_colorless(tree):
+                continue  # module-level comprehension in a module that guards
             shape = ("for-statement" if isinstance(node, (ast.For, ast.AsyncFor))
                      else "comprehension")
             errs.append(

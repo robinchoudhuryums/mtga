@@ -6,6 +6,55 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #4, Batch C & D (2026-08-12)
+
+Third implementation pass. Gates green: `check_all` all invariants hold with **ZERO soft
+warnings**, **1278 tests**, docs and commands gates OK. Block:
+`.cycle/blocks/2026-08-broad-scan4-batchCD-broad-implement.md`. **A1 is DONE** (the user
+installed the launchd archive); A2 and A3 remain.
+
+**The project now checks that it gives the same answer twice.** `tests/test_determinism.py`
+runs seven read-only commands under two `PYTHONHASHSEED` values and asserts byte-identical
+output. Fourteen gates verify each model is correct and one verifies two models agree; none
+could see BS5-01, because they all evaluate the code once inside one interpreter where set
+order is fixed. It lives in pytest rather than check_all for the reason G-55 gives about
+the argparse tree — it needs separate interpreters, which an in-process gate cannot arrange
+— and costs 7.3s. Watched failing against the real pre-fix `deck.py` (checked out at
+d017353, then restored byte-exact).
+
+**C2 was NOT built, and the measurement is the point.** An a11y scan over the generated
+pages was prototyped three ways: a click-binding scan (14 flags, all false), a refined one
+with declaration lookup (13, all false — four different `tb`/`x`/`p`/`s` in different JS
+scopes, unresolvable by regex over a Python string holding JS), and markup-level rules
+(flags the two sites that ARE fixed, because they are a11y'd at RUNTIME, plus a comment and
+two iteration selectors). The blocker is structural and needs a JS parser, which breaks the
+zero-dependency constraint. **Do not re-attempt from scratch** — the only design that
+survived scrutiny is a baselined delta-scan, which inherits G-69's acknowledge-before-warn
+muting risk. The real coverage is Regression Scenario 7's keyboard walk, which is now the
+only coverage for that class and is correspondingly more valuable.
+
+**D2 is the one with an operator consequence.** The pool's tag fingerprint hashed all of
+deck.py, so it read stale after essentially every cycle — it was stale on 2026-08-12 purely
+because unrelated `similar` and buildability edits had landed, forcing a ~4-min refetch of
+15.9k cards for a reason that was almost never real. It now hashes the VALUE the tagger
+consumes (`ENGINE_THEMES`, canonicalised with `sort_keys` so the change-detector cannot
+itself become order-dependent). **Expect ONE full pool rebuild on the next `make refresh`**
+— the algorithm changed, so every existing stamp mismatches. That is designed behaviour,
+not the bug returning.
+
+**Also closed:** G-02's residual 2 — `card.py` showed Mirror Room at MV 10 where every
+analysis surface said 3; it says 3 now, with a line naming which half. `check_colors`'
+exemption was a substring test a COMMENT satisfied (the very shape that file exists to
+catch); it is an AST comparison now. `parse_matches --report` composes with a source on all
+three success paths — the first attempt fixed only the last return and still dropped it on
+the summaries-only path, caught by running all three rather than the obvious one.
+`docs/tooling-improvement-plan.md` is deleted; a "do not follow" header was not enough,
+because the file still read like a plan to anything that grepped it.
+
+**Where I left off:** Batch E (strategic) and A2/A3 are all that remain from the scan. Four
+doc updates are queued in the block for `/sync-docs` — G-54's enforcement pointer, G-72's
+C2 measurement, G-18/K-10's fingerprint description, and striking G-02's residual 2.
+
 ## Session — broad scan #4, Batch A & B (2026-08-12)
 
 Second implementation pass of the broad-scan-4 cycle, after `/sync-docs`. Gates green:

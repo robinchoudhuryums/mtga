@@ -133,11 +133,24 @@ def tagger_fingerprint():
     It hashed `tag_synergies.py` ALONE, which is not the full dependency: `tags_for` reads
     `deck.ENGINE_THEMES` through `_engine_keywords` → `is_noise_keyword`, so an
     ENGINE_THEMES edit changes pool tags without defeating the reuse — the same blind-spot
-    shape BS2-23 fixed, one module further out (BS4-37). deck.py is hashed as a whole
-    because a narrower hash would need to track which of its attributes the tagger reaches,
-    which is the hand-kept-registry pattern this repo keeps watching rot; the cost of the
-    coarser hash is an occasional unnecessary rebuild, and the cost of the narrower one is
-    a silent stale pool.
+    shape BS2-23 fixed, one module further out (BS4-37).
+
+    BS4-37 then hashed deck.py AS A WHOLE, reasoning that a narrower hash would need a
+    hand-kept list of the attributes the tagger reaches. The cost was described as "an
+    occasional unnecessary rebuild" and measured as anything but: deck.py changes in
+    essentially every cycle, so the pool read STALE after almost every session — it was
+    stale on 2026-08-12 purely because unrelated `similar` and buildability edits had
+    landed — forcing a ~4-minute full refetch of 15.9k cards for a reason that was almost
+    never real. A signal that cries wolf every cycle is one an operator learns to wave
+    through, which is the same "standing warning nobody acts on" failure K-01 records.
+
+    So the hash reads the VALUE the tagger actually consumes, not the file that holds it.
+    That is not a hand-kept registry: `_engine_keywords` reads exactly one attribute, and
+    if it ever reads a second, the fix is to add it here — a one-line, visible dependency,
+    versus a coarse hash whose false positives hide the true ones. Canonicalised with
+    `sort_keys` so the fingerprint cannot itself become order-dependent (the leaves are
+    lists today, but a future set would silently make this hash-seed dependent — the exact
+    G-54 shape, in the mechanism meant to detect change).
 
     NOT hashed: card-mana.csv's keyword frequencies, which also feed the noise floor. A
     content hash of a 2k-row derived file would change on every mana rebuild and make the
@@ -146,12 +159,22 @@ def tagger_fingerprint():
     import hashlib
     here = os.path.dirname(os.path.abspath(__file__))
     h = hashlib.sha1()
-    for fn in ("tag_synergies.py", "deck.py"):
-        try:
-            with open(os.path.join(here, fn), "rb") as fh:
-                h.update(fh.read())
-        except OSError:
-            return ""
+    try:
+        with open(os.path.join(here, "tag_synergies.py"), "rb") as fh:
+            h.update(fh.read())
+    except OSError:
+        return ""
+    # The one thing `tags_for` reads out of deck.py (via tag_synergies._engine_keywords).
+    try:
+        import json
+        import deck as _dk
+        h.update(json.dumps(getattr(_dk, "ENGINE_THEMES", {}),
+                            sort_keys=True, default=str).encode("utf-8"))
+    except Exception:
+        # Unreadable => UNKNOWN, and unknown must not silently mean "unchanged": returning
+        # "" makes the stamp compare unequal to nothing and rebuild, the conservative
+        # direction (and the same one the OSError above takes).
+        return ""
     return h.hexdigest()[:16]
 
 

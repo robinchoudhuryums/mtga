@@ -1397,5 +1397,3 @@ Claude Code slash commands live in `.claude/commands/`:
   [`.cycle/NEXT-SESSION.md`](.cycle/NEXT-SESSION.md) (the current diagnosis, the
   agreed next task, and the measurements not worth re-deriving), with `STATE.md` for
   the prose record and `blocks/` for the per-run implementation summaries.
-  Note `docs/tooling-improvement-plan.md` is a **completed** cycle's plan kept for
-  reference, not instructions.
