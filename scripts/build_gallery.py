@@ -300,6 +300,19 @@ HTML_TEMPLATE = """<!doctype html>
     --text: #e7e9ee; --muted: #949bab; --accent: #d9a441;
     --W:#f4e7c3; --U:#a5c8e8; --B:#b7a3c7; --R:#e39a8a; --G:#9dc7a3; --C:#c9ccd3;
     --header: rgba(15,17,21,.95);
+    /* The bar-chart track. A TOKEN, not the literal #0f1115 it used to be: the track
+       sits on --panel2, which flips to near-white in light mode while a hardcoded
+       value cannot, so the whole Collection-overview panel rendered as black slabs on
+       white (broad-scan BS5-10). Every colour on this page must have a value in BOTH
+       blocks or it is not themed, it is dark-only. */
+    --track: #0f1115;
+    /* The plate behind a card's ×N badge and set code. This one deliberately does NOT
+       flip: it sits on card ART, not on the page, so the backdrop is dark in either
+       scheme. What DID flip underneath it were the tokens it used for INK (--muted /
+       --accent), turning dark-on-dark in light mode — hence the two dedicated ink
+       tokens, which stay light in both blocks for the same reason the plate does. */
+    --plate: rgba(10,11,14,.85);
+    --plate-ink: #949bab; --plate-accent: #d9a441;
   }
   /* The S-8 pass unified the three templates/ pages on the OS colour scheme and stopped
      short of the gallery, which stayed dark-only — so a light-OS user got one page of
@@ -310,6 +323,13 @@ HTML_TEMPLATE = """<!doctype html>
       --bg: #f2f3f6; --panel: #ffffff; --panel2: #f4f5f8; --line: #d9dde5;
       --text: #1b1e25; --muted: #5a6472; --accent: #9a6b12;
       --header: rgba(242,243,246,.96);
+      --track: #e4e7ee;
+      /* Mid-tone mana colours. The dark-mode set is pastel — tuned to glow against
+         #0f1115 — and a pastel fill on a light track is invisible, so flipping the
+         track without flipping these would have traded one unreadable panel for
+         another. Chosen mid-saturation so they stay legible as a bar fill on --track
+         AND keep the pip's #1a1a1a ink readable on top. */
+      --W:#d9c88a; --U:#5f9fd6; --B:#9a86b4; --R:#d4705c; --G:#63a877; --C:#a8adb8;
     }
   }
   * { box-sizing: border-box; }
@@ -343,11 +363,11 @@ HTML_TEMPLATE = """<!doctype html>
   .fallback .fname { font-weight: 700; font-size: 15px; }
   .fallback .ftype { color: var(--muted); font-size: 12px; }
   .fallback .ftext { color: var(--muted); font-size: 11px; overflow: hidden; }
-  .qty { position: absolute; top: 8px; right: 8px; background: rgba(10,11,14,.85);
-    border: 1px solid var(--line); color: var(--accent); font-weight: 700; font-size: 12px;
+  .qty { position: absolute; top: 8px; right: 8px; background: var(--plate);
+    border: 1px solid var(--line); color: var(--plate-accent); font-weight: 700; font-size: 12px;
     padding: 2px 7px; border-radius: 20px; }
-  .setcode { position: absolute; bottom: 8px; left: 8px; background: rgba(10,11,14,.8);
-    color: var(--muted); font-size: 10px; letter-spacing: .5px; padding: 2px 6px; border-radius: 5px; }
+  .setcode { position: absolute; bottom: 8px; left: 8px; background: var(--plate);
+    color: var(--plate-ink); font-size: 10px; letter-spacing: .5px; padding: 2px 6px; border-radius: 5px; }
   .empty { padding: 60px 20px; text-align: center; color: var(--muted); }
   footer { color: var(--muted); font-size: 12px; text-align: center; padding: 20px; }
   .dash { margin: 16px 20px 0; background: var(--panel); border: 1px solid var(--line);
@@ -363,7 +383,7 @@ HTML_TEMPLATE = """<!doctype html>
   .bar { display: grid; grid-template-columns: 82px 1fr 30px; align-items: center;
     gap: 8px; margin: 4px 0; font-size: 12px; }
   .bar > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .bar .track { height: 10px; background: #0f1115; border-radius: 6px; overflow: hidden; }
+  .bar .track { height: 10px; background: var(--track); border-radius: 6px; overflow: hidden; }
   .bar .fill { height: 100%; background: var(--accent); border-radius: 6px; }
   .bar .num { text-align: right; color: var(--muted); }
   .bar.W .fill{background:var(--W)} .bar.U .fill{background:var(--U)} .bar.B .fill{background:var(--B)}

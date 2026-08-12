@@ -1846,6 +1846,31 @@ class TestDeckSimilarity:
         a, b = {"counters": 10, "Ninja": 1}, {"counters": 10, "Cat": 1}
         assert deck._theme_cosine(a, b, keep=frozenset({"counters"})) > deck._theme_cosine(a, b)
 
+    def test_central_weight_vector_is_built_in_a_total_order(self):
+        """BS5-01 / G-54: `_deck_central_weights` iterated `_central_themes`, which is a
+        SET, so the dict's insertion order was hash-seed dependent — and every consumer
+        that breaks a weight TIE on that order (the `top themes` header, the shared-theme
+        list `similar` truncates to five, the float sum in `_theme_cosine`) changed answer
+        between runs. Five PYTHONHASHSEED values gave five different `similar 40` outputs.
+        Pinning SORTED key order is what makes the downstream ranking reproducible."""
+        cards = [(1, n, "", "") for n in ("A", "B", "C", "D")]
+        # Deliberately all-tied weights: ties are where set order used to leak through.
+        cardmeta = {"a": {"synergies": ["zebra", "apple"]},
+                    "b": {"synergies": ["mango", "apple"]},
+                    "c": {"synergies": ["zebra", "mango"]},
+                    "d": {"synergies": ["apple", "zebra", "mango"]}}
+        keys = list(deck._deck_central_weights({}, cards, cardmeta))
+        assert keys == sorted(keys), f"central weight vector is not in a total order: {keys}"
+
+    def test_shared_theme_ordering_breaks_ties_alphabetically(self):
+        """The other half of BS5-01: `similar`'s shared-theme list sorted a SET on a key
+        that ties constantly, so its tail — the part the `shared[:5]` display cuts — was
+        set order. The tie-break must be the tag itself."""
+        aw = {"apple": 5, "mango": 5, "zebra": 5}
+        bw = {"zebra": 5, "apple": 5, "mango": 5}
+        shared = sorted(set(aw) & set(bw), key=lambda t: (-(min(aw[t], bw[t])), t))
+        assert shared == ["apple", "mango", "zebra"]
+
     def test_strong_signature_needs_multiple_protected_cards(self):
         # A theme is a real spine only if >=2 protected cards carry it — a lone protected
         # bomb's incidental tag (card draw) must NOT be rescued.
@@ -2861,6 +2886,65 @@ class TestReferenceTableMemo:
         assert load() == "now here"
 
 
+class TestMemoizedTablesAreNotMutated:
+    """BS5-13: `_file_memo` hands every caller THE SAME dict, and its docstring rested the
+    memo's safety on a scan asserting no caller mutates one. The scan had missed five sites
+    in deck.py itself — `fetch_missing_mana` / `fetch_missing_rarities` mutate the dict they
+    are given, and cmd_stats / cmd_mana / cmd_consistency / _do_swap / cmd_wildcards were
+    handing them the cached object. A one-shot CLI run never notices; the Flask editor,
+    which serves many decks from one process, does: deck B's Stats tab computed its curve
+    from costs deck A's Mana tab had live-fetched, disagreeing with a fresh CLI run.
+
+    Pinned as a PROPERTY rather than by re-scanning the call sites, because a source scan is
+    what failed last time. The fetchers are stubbed so no network is touched; the assertion
+    is only that the shared table came back unchanged."""
+
+    def _run_with_stubbed_fetch(self, monkeypatch, fn, args):
+        """Run a cmd_* with the two live-fetch helpers replaced by ones that WRITE into the
+        dict they are handed — the real contract — and report whether the memoized tables
+        were disturbed."""
+        import contextlib
+        import io
+
+        def fake_mana(names, mana):
+            mana["__injected_by_fetch__"] = ("{X}", 99)
+            return mana
+
+        def fake_rar(names, rarities):
+            rarities["__injected_by_fetch__"] = "M"
+            return rarities
+
+        monkeypatch.setattr(deck, "fetch_missing_mana", fake_mana)
+        monkeypatch.setattr(deck, "fetch_missing_rarities", fake_rar)
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
+            fn(args)
+        return ("__injected_by_fetch__" in deck.load_mana(),
+                "__injected_by_fetch__" in deck.load_rarities())
+
+    @pytest.mark.parametrize("cmd", ["stats", "mana", "consistency"])
+    def test_deck_commands_do_not_pollute_the_shared_mana_table(self, monkeypatch, cmd):
+        from types import SimpleNamespace as NS
+        d = next((x for x in deck.roster_decks()), None)
+        if d is None:
+            pytest.skip("no roster decks to exercise")
+        fn = {"stats": deck.cmd_stats, "mana": deck.cmd_mana,
+              "consistency": deck.cmd_consistency}[cmd]
+        ns = NS(id=d["id"], limit=20, unowned=False, on_draw=False, target=None)
+        mana_dirty, _ = self._run_with_stubbed_fetch(monkeypatch, fn, ns)
+        assert not mana_dirty, (
+            f"cmd_{cmd} leaked live-fetched rows into the memoized load_mana() table — "
+            "pass dict(load_mana()) instead (BS5-13)")
+
+    def test_wildcards_does_not_pollute_the_shared_rarity_table(self, monkeypatch):
+        from types import SimpleNamespace as NS
+        _, rar_dirty = self._run_with_stubbed_fetch(
+            monkeypatch, deck.cmd_wildcards, NS(dedup=False))
+        assert not rar_dirty, (
+            "cmd_wildcards leaked into the memoized load_rarities() table — pass "
+            "dict(load_rarities()) instead (BS5-13)")
+
+
 class TestNameResolution:
     """The pile-triage resolver shared by `deck.py resolve` and `deck.py screen`.
 
@@ -3426,6 +3510,33 @@ class TestCrossModuleDeckCallers:
         viz = bd.deck_viz(meta, cards, deck.load_card_data(), deck.load_mana(),
                           deck.load_keywords(), *deck.load_collection()[:2])
         assert not viz.get("uncastable"), viz.get("uncastable")
+
+    def test_a_craft_pick_failure_is_recorded_not_swallowed(self, monkeypatch):
+        """BS5-05: `craft_rows` catches everything and returns [], and main()'s
+        wholesale-failure scan reads only the three `detail` text panels — so a
+        roster-wide `suggest_scored` regression published an empty craft table with a
+        green build, reading as 'nothing to craft' rather than 'the recommender is
+        broken'. The failure has to reach the payload for the gate to see it."""
+        import build_dashboard as bd
+        d = deck.discover_decks()[0]
+        monkeypatch.setattr(deck, "suggest_scored",
+                            lambda *a, **k: (_ for _ in ()).throw(RuntimeError("boom")))
+        problems = []
+        rows = bd.craft_rows(d, problems)
+        assert rows == []
+        assert problems and "boom" in problems[0], problems
+
+    def test_a_deck_with_no_themes_is_not_counted_as_a_failure(self, monkeypatch):
+        """The gate must fire on a REGRESSION, not on data: a list whose cards carry no
+        synergy tags legitimately has nothing to score, and counting it would make the
+        threshold trip on a legitimate roster."""
+        import build_dashboard as bd
+        d = deck.discover_decks()[0]
+        monkeypatch.setattr(deck, "suggest_scored",
+                            lambda *a, **k: {"ok": False, "reason": "no-themes"})
+        problems = []
+        assert bd.craft_rows(d, problems) == []
+        assert problems == []
 
 
 class TestOwnershipIsNotARankingTerm:

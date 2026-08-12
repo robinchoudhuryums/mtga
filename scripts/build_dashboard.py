@@ -161,16 +161,31 @@ def deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name):
     }
 
 
-def craft_rows(d):
+def craft_rows(d, problems=None):
     """Structured craft picks (unowned, on-color, on-theme) for the interactive
     table — from the SAME suggest_scored() the `deck.py suggest` CLI renders, so
-    the dashboard table can't drift from the command."""
+    the dashboard table can't drift from the command.
+
+    Appends a reason to `problems` when the picks could not be COMPUTED, which is what
+    makes the failure visible to main()'s aggregate self-check. That check inspected only
+    the three `detail` text panels, so a roster-wide `suggest_scored` regression rendered
+    every craft table empty, exited 0, and Pages published a page that reads "nothing to
+    craft" rather than "the recommender is broken" (broad-scan BS5-05).
+
+    A `no-themes` deck is NOT a problem — a list whose cards carry no synergy tags
+    legitimately has nothing to score, and counting it would make the gate fire on data
+    rather than on a regression. `no-pool` is, even though INV-03 also covers it: this
+    build is the surface where its consequence shows up."""
     try:
         res = deckmod.suggest_scored(d, unowned=True, limit=15)
     except Exception as e:
         eprint(f"WARN: craft picks for deck {d['id']} unavailable ({e})")
+        if problems is not None:
+            problems.append(f"{d['id']}: {type(e).__name__}: {e}")
         return []
     if not res.get("ok"):
+        if res.get("reason") == "no-pool" and problems is not None:
+            problems.append(f"{d['id']}: no card-pool.csv to score against")
         return []
     return [{"name": p["name"], "rarity": p["rarity"], "decks": p["decks"],
              "matches": p["matches"]} for p in res["picks"]]
@@ -201,6 +216,7 @@ def collect():
             "30": (_today - datetime.timedelta(days=30)).isoformat()}
 
     decks, buildable = [], 0
+    craft_problems = []          # decks whose craft picks could not be COMPUTED (BS5-05)
     # Roster-wide page, so it shows the ROSTER: a `#: status: example` placeholder is
     # excluded here exactly as it is from `deck.py audit`, whose scorer this shares —
     # otherwise the triage table leads with the same permanent false positives (F-06).
@@ -247,7 +263,7 @@ def collect():
             "buildable": ok,
             "wc": wc,
             "wcBy": {r: int(wc_by.get(r, 0)) for r in ("M", "R", "U", "C")},
-            "craft": craft_rows(d),
+            "craft": craft_rows(d, craft_problems),
             "viz": deck_viz(meta, cards, carddata, mana, keywords, by_key, by_name),
             "detail": deck_detail(d["id"]),
             # Roster-triage score from the SAME audit_deck() the `deck.py audit` CLI
@@ -311,6 +327,10 @@ def collect():
         "wishlist": tiers,
         "wishlist_rollup": rollup,
         "rotation": rotation,
+        # NOT rendered — build-time diagnostics main()'s self-check reads (BS5-05). Kept
+        # in the payload rather than in a module global so the check grades the artifact
+        # it is about to publish, the way the `[analysis error` scan already does.
+        "_craft_problems": craft_problems,
     }
 
 
@@ -1766,7 +1786,16 @@ renderWishlist(); renderSim();
   const host = $('audit');
   function drawAudit(){
     host.innerHTML = '';
-    host.appendChild(sortableTable('at', cols, showAllDecks ? rows : flagged, sort, (tr) => tr.classList.add('clk')));
+    // The Deck cell is an <a> with NO href, which is not a link and not focusable — so the
+    // triage table's one documented action ("Click a deck to filter the list below") was
+    // mouse-only, past three prior a11y passes (broad-scan BS5-02). a11y() in onRowExtra,
+    // not after appendChild: sortableTable's internal redraw() rebuilds <tbody> on every
+    // SORT click, so attributes applied once would be thrown away by the first sort.
+    host.appendChild(sortableTable('at', cols, showAllDecks ? rows : flagged, sort, (tr, r) => {
+      tr.classList.add('clk');
+      const a = tr.querySelector('a.goto');
+      if (a) a11y(a, {label: 'Filter the deck list to ' + r.name});
+    }));
     if (okN > 0 && flagged.length > 0){
       const t = el('button','ghostbtn', showAllDecks ? ('▴ hide ' + okN + ' ok deck' + (okN===1?'':'s')) : ('▾ show all ' + rows.length + '  (+' + okN + ' ok)'));
       t.style.marginTop = '11px';
@@ -1794,7 +1823,12 @@ renderWishlist(); renderSim();
     const hits = entries.filter(e => e.disp.toLowerCase().includes(q)).slice(0, 50);
     if (!hits.length){ out.innerHTML = '<p class="auditnote">No card matching “' + esc(q) + '” in any deck.</p>'; return; }
     out.innerHTML = hits.map(e => { const decks = e.decks.slice().sort((a,b) => (''+a.id).localeCompare(''+b.id, undefined, {numeric:true})); const chips = decks.map(d => '<span class="deckchip" data-id="' + esc(d.id) + '"><b>' + esc(d.id) + '</b>' + (d.qty>1?' ×'+d.qty:'') + ' · ' + esc(d.name||d.id) + '</span>').join(''); return '<div class="cardfind-row"><div class="cardfind-name">' + esc(e.disp) + '<span class="cardfind-count">in ' + decks.length + ' deck' + (decks.length>1?'s':'') + '</span></div><div class="cardfind-decks">' + chips + '</div></div>'; }).join('');
-    out.querySelectorAll('.deckchip').forEach(ch => ch.addEventListener('click', () => { STATE.deckFilter = ch.dataset.id; $('deckfilter').value = ch.dataset.id; persist(); renderDecks(); $('sec-decks').scrollIntoView({behavior:'smooth', block:'start'}); }));
+    // a11y() before the handler: a bare <span> with a click listener is not a control —
+    // the card finder's deck chips were the second mouse-only surface on this page
+    // (broad-scan BS5-03), the same defect the collection pips (I-01) and the deck
+    // editor's analysis tabs (S-2) each had. Routed through the shared helper so all
+    // four now answer to one interaction contract.
+    out.querySelectorAll('.deckchip').forEach(ch => { a11y(ch, {label: 'Filter the deck list to deck ' + ch.dataset.id}); ch.addEventListener('click', () => { STATE.deckFilter = ch.dataset.id; $('deckfilter').value = ch.dataset.id; persist(); renderDecks(); $('sec-decks').scrollIntoView({behavior:'smooth', block:'start'}); }); });
   }
   draw(''); inp.addEventListener('input', e => draw(e.target.value));
 })();
@@ -2141,6 +2175,23 @@ def main():
                f"(e.g. {', '.join(err_decks[:6])}) — a deck.py command likely regressed. "
                f"The dashboard was written but is DEGRADED; refusing to report success.")
         return 1
+    # The FOURTH analysis payload. The scan above covers the three `detail` text panels
+    # and has never covered `craft`, which is built by a different function with its own
+    # try/except — so a roster-wide `suggest_scored` regression published an empty craft
+    # table under a green build, reading as "nothing to craft" rather than "the
+    # recommender is broken" (BS5-05). Same majority threshold and same posture: the file
+    # is still written for inspection, but success is not reported.
+    craft_bad = payload.get("_craft_problems") or []
+    if ndecks and len(craft_bad) * 2 >= ndecks:
+        eprint(f"WARN:  craft picks failed for {len(craft_bad)}/{ndecks} decks "
+               f"(e.g. {'; '.join(craft_bad[:3])}) — suggest_scored likely regressed, or "
+               f"card-pool.csv is unusable. The dashboard was written but its craft tables "
+               f"are EMPTY; refusing to report success.")
+        return 1
+    if craft_bad:
+        eprint(f"WARN:  craft picks unavailable for {len(craft_bad)} deck(s): "
+               f"{'; '.join(craft_bad[:6])}"
+               + (" …" if len(craft_bad) > 6 else ""))
     return 0
 
 

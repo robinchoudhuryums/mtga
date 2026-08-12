@@ -89,10 +89,21 @@ def _file_memo(*path_names):
     of the key, so repointing invalidates.
 
     Keyed on (mtime_ns, size) rather than held forever, so a rebuild (`build_mana.py`,
-    an `app.py` write) invalidates it inside a long-running process. Safe because
-    every caller treats these tables as READ-ONLY — verified by scanning all of
-    scripts/ for external mutation of a loader's result; if you ever need to mutate
-    one, copy it first, since the dict is now shared.
+    an `app.py` write) invalidates it inside a long-running process.
+
+    THE RESULT IS SHARED AND MUST BE TREATED AS READ-ONLY. This docstring used to claim
+    that every caller already did, "verified by scanning all of scripts/" — and the scan
+    had missed five call sites in this very file: `fetch_missing_mana` and
+    `fetch_missing_rarities` MUTATE the dict they are handed, and `cmd_stats`, `cmd_mana`,
+    `cmd_consistency`, `_do_swap` and `cmd_wildcards` were handing them the cached object
+    (broad-scan BS5-13). Benign on a one-shot CLI run; visible in the Flask editor, which
+    serves many decks from one process, where deck B's Stats tab then computed its curve
+    from costs deck A's Mana tab had live-fetched and disagreed with a fresh `deck.py
+    stats B`. Those five now pass `dict(load_*())`.
+
+    So: if you need to mutate one, COPY IT FIRST — and note that a claim about all callers
+    is only as good as the last person who added one. `tests/test_deck.py`'s
+    TestMemoizedTablesAreNotMutated pins the property behaviourally instead.
     """
     def deco(fn):
         cache = {}
@@ -559,7 +570,10 @@ def cmd_wildcards(args):
         print("No decks yet. Add one under decks/<NN-name>/deck.txt.")
         return 0
     _, _, by_name_qty = load_collection()
-    rarities = load_rarities()
+    # COPY — `fetch_missing_rarities` below mutates the dict it is given, and
+    # `load_rarities` is `@_file_memo`-cached (BS5-13, same class as the `load_mana`
+    # copies; see the note at `cmd_stats`).
+    rarities = dict(load_rarities())
 
     deck_short = {}       # deck id -> [(name, missing_copies)]
     max_need = {}         # name_lower -> max copies any single deck needs
@@ -2977,7 +2991,14 @@ def cmd_stats(args):
             print(f"  {ch}  {colors[ch]:3}  {'#' * colors[ch]}")
 
     # Mana curve from real mana values.
-    mana = load_mana()
+    # COPY, not the memoized table itself: `fetch_missing_mana` MUTATES the dict it
+    # is given, and `load_mana` is `@_file_memo`-cached — so live-fetched rows leaked
+    # into a table every other caller shares. `_file_memo` rests the whole memo on
+    # "every caller treats these tables as READ-ONLY … if you ever need to mutate
+    # one, copy it first", and five call sites did not (broad-scan BS5-13). In the
+    # Flask editor — one long-lived process — that made deck B's Stats tab compute
+    # its curve from costs deck A's Mana tab had fetched, disagreeing with the CLI.
+    mana = dict(load_mana())
     fetch_missing_mana(sorted(set(nonland_names)), mana)
     curve, unknown = {}, 0
     for q, n, s, c in cards:
@@ -4745,7 +4766,14 @@ def cmd_mana(args):
         return 1
     by_key, by_name, _ = load_collection()
     meta, cards = parse_deck_file(d["path"])
-    mana = load_mana()
+    # COPY, not the memoized table itself: `fetch_missing_mana` MUTATES the dict it
+    # is given, and `load_mana` is `@_file_memo`-cached — so live-fetched rows leaked
+    # into a table every other caller shares. `_file_memo` rests the whole memo on
+    # "every caller treats these tables as READ-ONLY … if you ever need to mutate
+    # one, copy it first", and five call sites did not (broad-scan BS5-13). In the
+    # Flask editor — one long-lived process — that made deck B's Stats tab compute
+    # its curve from costs deck A's Mana tab had fetched, disagreeing with the CLI.
+    mana = dict(load_mana())
     if not mana:
         eprint("No card-mana.csv found. Build it: python3 scripts/build_mana.py")
         return 1
@@ -4924,7 +4952,14 @@ def cmd_consistency(args):
         return 1
     by_key, by_name, _ = load_collection()
     meta, cards = parse_deck_file(d["path"])
-    mana = load_mana()
+    # COPY, not the memoized table itself: `fetch_missing_mana` MUTATES the dict it
+    # is given, and `load_mana` is `@_file_memo`-cached — so live-fetched rows leaked
+    # into a table every other caller shares. `_file_memo` rests the whole memo on
+    # "every caller treats these tables as READ-ONLY … if you ever need to mutate
+    # one, copy it first", and five call sites did not (broad-scan BS5-13). In the
+    # Flask editor — one long-lived process — that made deck B's Stats tab compute
+    # its curve from costs deck A's Mana tab had fetched, disagreeing with the CLI.
+    mana = dict(load_mana())
     if not mana:
         eprint("No card-mana.csv found. Build it: python3 scripts/build_mana.py")
         return 1
@@ -5963,7 +5998,9 @@ def _do_swap(d, cut, add, apply, flex_entry=None):
         eprint(f"Cut and add are the same card ({cut!r}) — nothing to swap.")
         return 1
     carddata = load_card_data()
-    mana = load_mana()
+    # COPY — this function calls `fetch_missing_mana`, which mutates (BS5-13). See the
+    # longer note at `cmd_stats`' own copy.
+    mana = dict(load_mana())
     _, cards = parse_deck_file(d["path"])
     after = _cards_after_swap(cards, cut, add, (add_set, add_cn))
     if after is None:
@@ -7687,7 +7724,18 @@ def _is_color_fixer(ctags, text):
 
 def _deck_central_weights(meta, cards, cardmeta):
     """A deck's CENTRAL themes as a {theme: copies} weight vector — the same `_central_themes`
-    set the roster tools share, kept weighted so a dominant theme counts for more."""
+    set the roster tools share, kept weighted so a dominant theme counts for more.
+
+    Built in SORTED key order (G-54). `_central_themes` returns a SET, so iterating it
+    gave the dict a hash-seed-dependent insertion order — and every consumer that ranks
+    these themes by weight (`cmd_similar`'s "top themes" line, its shared-theme list, the
+    float summation inside `_theme_cosine`) breaks ties on that order. `deck.py similar`
+    therefore printed a different answer on every run: five PYTHONHASHSEED values produced
+    five different outputs, and because the display truncates to `shared[:5]` and the ⚠ line
+    names `top[5][:3]`, WHICH themes the reader is shown changed run to run — deck 40 read
+    `✦Druid` against 40a on one run and `removal` on the next. G-47 tells the reader to grade
+    on exactly those ✦ SPECIFIC overlaps. Alphabetical is arbitrary but TOTAL, which is the
+    property that matters (broad-scan BS5-01)."""
     tw = {}
     for q, n, s, c in cards:
         if n.lower() in BASICS:
@@ -7696,7 +7744,7 @@ def _deck_central_weights(meta, cards, cardmeta):
         if m:
             for t in m["synergies"]:
                 tw[t] = tw.get(t, 0) + q
-    return {t: tw[t] for t in _central_themes(tw)}
+    return {t: tw[t] for t in sorted(_central_themes(tw))}
 
 
 _SIM_GENERIC_DAMP = 0.35   # generic themes are shared by nearly every value deck, so they
@@ -7778,7 +7826,11 @@ def _theme_cosine(a, b, specific_only=False, keep=frozenset()):
     shared = set(a) & set(b)
     if not shared:
         return 0.0
-    dot = sum(a[t] * b[t] for t in shared)
+    # SORTED, because float addition is not associative: summing over a set made `dot`
+    # differ in its last bits between runs, and `cmd_similar` sorts rows on that value —
+    # so a tie between two decks could flip. Costs nothing and removes the last piece of
+    # run-to-run variance from `similar` (G-54 / broad-scan BS5-01).
+    dot = sum(a[t] * b[t] for t in sorted(shared))
     na = math.sqrt(sum(w * w for w in a.values()))
     nb = math.sqrt(sum(w * w for w in b.values()))
     return dot / (na * nb) if na and nb else 0.0
@@ -7831,7 +7883,12 @@ def cmd_similar(args):
             continue
         bcols = _declared_colors(m2) or _deck_castable_colors(m2, c2, mana)
         colj = len(acols & bcols) / len(acols | bcols) if (acols | bcols) else 0.0
-        shared = sorted(set(aw) & set(bw), key=lambda t: -(min(aw[t], bw[t])))
+        # `(-weight, t)`, not `-weight` alone: `shared` is a SET and the weight ties
+        # constantly (every theme carried by the same number of copies), so the tail of
+        # this list was set-iteration order — and the display shows only `shared[:5]`
+        # (BS5-01). The tag itself is a total order, matching the tie-break
+        # `wishlist._rank_scores` already applies to its own `specific` list.
+        shared = sorted(set(aw) & set(bw), key=lambda t: (-(min(aw[t], bw[t])), t))
         spec = [t for t in shared if _sim_specific(t, keep)]
         # CARD overlap, the thing the theme cosine cannot see. This model compares
         # {theme: weight} vectors, so two decks can read 84% similar while sharing five

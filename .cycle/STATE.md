@@ -6,6 +6,62 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #4, top-5 implementation (2026-08-12)
+
+A full three-stage `/broad-scan` producing findings **BS5-01…BS5-13**, then one
+implementation pass over the top five. Gates green: `check_all` all invariants hold with
+**ZERO soft warnings**, full suite green at **1266 tests** (+10 this session; the honest
+pre-change baseline was 1,256 — Stage 1 of the scan quoted "1,264" read off dot output
+rather than a summary line). The verbatim block is
+`.cycle/blocks/2026-08-broad-scan4-top5-broad-implement.md`; read that, not this summary.
+
+**The headline finding is the one this project already has a rule for.** `deck.py similar`
+returned a **different answer on every run** — five PYTHONHASHSEED values, five outputs.
+`_deck_central_weights` built its weight vector by iterating `_central_themes()`, which is
+a SET, and `cmd_similar` then sorted that set on a key that ties constantly. G-54 states
+exactly this shape ("a SET plus a sort key that can TIE is a nondeterministic output") and
+nothing enforced it. Because the display truncates to `shared[:5]` and the ⚠ line names
+three specific themes, WHICH themes the reader was shown changed run to run — deck 40 read
+`✦Druid` against 40a on one run and `removal` on the next, on the surface G-47 tells you to
+grade identity overlap from. Fixed by making the ORDER total in three places; the return
+type of `_central_themes` stays a set, because two callers do `ctags & _central_themes(...)`.
+
+**A stated safety premise turned out to be false.** `_file_memo`'s docstring rested the
+whole memoization on "every caller treats these tables as READ-ONLY — verified by scanning
+all of scripts/". Five call sites in the same file were mutating them: `fetch_missing_mana`
+and `fetch_missing_rarities` write into the dict they are handed, and cmd_stats / cmd_mana /
+cmd_consistency / _do_swap / cmd_wildcards were handing them the cached object. Benign on a
+one-shot CLI run; in the Flask editor — one process, many decks — deck B's Stats tab computed
+its curve from costs deck A's Mana tab had fetched. The five now copy, and the property is
+pinned behaviourally rather than by another source scan, because a source scan is what failed.
+
+**Two more mouse-only controls, in the generated pages.** The roster-triage table's Deck cell
+is an `<a>` with no href and the card finder's chips are bare `<span>`s. This is the third and
+fourth instance of the defect the collection pips (I-01) and the deck-editor tabs (S-2) each
+had, and it survived those passes because they fixed `templates/` while these are built by JS
+in `build_dashboard.py`, where the only pins were on NAMED controls. Same lesson for BS5-10:
+`gallery.html`'s light palette — the one `.cycle/NEXT-SESSION.md` already flags as never
+rendered — painted a hardcoded `#0f1115` bar track on a near-white panel. **The generated
+pages are where all three lived.**
+
+**Decided rather than built.** Four findings were left as follow-ons deliberately, all
+measured at zero live instances and all worth fixing on the MECHANISM per G-63: BS5-04
+(three more buildability re-derivations past G-70's "one definition"), BS5-11 (build_mana's
+alias merge can overwrite a distinct card's cost), BS5-12 (a delimiter-free row key in the
+collection editor), BS5-06 (the pool fingerprint hashes all of deck.py, so the pool reads
+stale after any deck.py edit — including this session's).
+
+**Also asked and answered:** whether the project would be better served as an Apps Script
+web app. No — the value is `deck.py`'s models plus the gate/test layer, git is load-bearing
+for `history` / `quality --at` / the Recently-edited panel, and Apps Script's 6-minute
+execution cap collides with the ~2-min dashboard and ~4-min pool builds. The real need
+underneath (phone access) is already served by finishing `sheets_sync.py`'s one-time setup.
+
+**Where I left off:** the five fixes are committed and pushed; no PR opened (not asked for).
+Two non-blocking OPERATOR VISUAL CHECKS are outstanding and are the only part a file cannot
+prove — the gallery in light mode, and a keyboard walk of the two repaired dashboard
+controls. `/sync-docs` has four queued CLAUDE.md updates listed at the end of the block.
+
 ## Session — first real match data, and the deck-attribution arc (2026-08-10)
 
 Not a scan. The user asked how to populate match data, pasted a real `Player.log`, and
