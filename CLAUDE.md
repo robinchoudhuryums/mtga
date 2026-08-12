@@ -214,14 +214,14 @@ directions.
   already do. A **MODAL DFC** is stored the same way now — either face is castable from
   hand — but its Mana Value is the FRONT face's, so it escapes residual 2 below; a
   TRANSFORM DFC keeps one cost, since its back is reached by transforming, not by paying.
-  **Residual 1: a deck that plays a split card mainly for its BACK half reads
-  cheaper than it plays — grade that one from the printed card. Residual 2, and it is on
-  the surface you are told to trust: `card.py` prints the COMBINED mana value**, so a Room
-  reads far MORE expensive than it plays — Mirror Room // Fractured Realm displays MV 10
-  when it is a `{2}{U}` three-drop whose back door unlocks separately for `{5}{U}{U}`, and
-  you never pay ten. Every analysis path (`stats`, `consistency`, the curve) already uses
-  the front face, so the inspection surface and the analysis surface disagree. Read the
-  printed cost, not the MV, whenever a name contains `" // "`. [G-02]
+  **The one live residual: a deck that plays a split card mainly for its BACK half reads
+  cheaper than it plays** — grade that one from the printed card. (The second residual —
+  `card.py` printing the COMBINED mana value, so Mirror Room // Fractured Realm displayed
+  MV 10 for a `{2}{U}` three-drop — is CLOSED as of 2026-08-12: it recomputes from the
+  front face like `load_mana` always did, and names which half the number describes. It
+  had put the inspection surface G-01 mandates in direct contradiction with every analysis
+  surface for a year, which is the shape to watch for: the fix landed in the ANALYSIS path
+  and the READING path was never brought along.) [G-02]
 - **Don't judge a card by printed mana value or a single subtype.** Read the card TEXT
   (it is in the CSV): `stats` flags ◊/△ cost flexibility and functional roles, `tribes`
   reads oracle text for cross-type synergies. [G-03]
@@ -343,9 +343,9 @@ directions.
   within the last week for the same query (99% of the old refresh cost was its 91
   paginated pages). Skipping it is correct, not just fast: the pool is independent of what
   you OWN, so an ingest cannot change it; what goes stale is `Legalities` and a new set. **But a TAG-PATTERN edit also stales it**, which the reuse could not see: the
-  stamp records a content hash of the files `tags_for` depends on — `tag_synergies.py`
-  AND `deck.py`, since the tagger reads `deck.ENGINE_THEMES` (BS2-23, widened by BS4-37)
-  — and a mismatch defeats the reuse. An ABSENT hash means UNKNOWN and rebuilds ONCE (the
+  stamp records a content hash of what `tags_for` depends on — `tag_synergies.py`'s BYTES
+  plus the VALUE of `deck.ENGINE_THEMES` (BS2-23; BS4-37 hashed all of deck.py, BS5-06
+  narrowed it back because that staled the pool every cycle) — and a mismatch defeats it. An ABSENT hash means UNKNOWN and rebuilds ONCE (the
   reuse path returned before writing a stamp, so "unknown = reuse" could never arm —
   BS3-02). **Stated non-goal:** card-mana.csv's keyword frequencies also feed the noise
   floor and are NOT hashed, because a derived file's hash would change on every mana
@@ -611,7 +611,10 @@ directions.
   run to run on the exact ✦ SPECIFIC overlaps G-47 says to grade from. **The fix is the
   KEY, not the return type**: two callers do `ctags & _central_themes(...)`, so making it
   a tuple is a TypeError. Fix the ORDER where order is consumed, and remember a float SUM
-  over a set is the same bug wearing arithmetic. [G-54]
+  over a set is the same bug wearing arithmetic. **ENFORCED since 2026-08-12 by
+  `tests/test_determinism.py`** (7 commands × 2 `PYTHONHASHSEED` values, byte-compared).
+  It sits in PYTEST, not `check_all`, for G-55's reason — it needs separate interpreters —
+  so `make check` alone misses this class and `make verify` catches it. [G-54]
 - **NO GATE BUILT AN ARGPARSE TREE, so a broken `--help` was invisible** for four days
   with three green workflows. `check_all` imports `deck` as a MODULE and calls `cmd_*`
   directly, so the CLI surface is covered separately by `tests/test_cli.py` and a CI
@@ -629,7 +632,10 @@ directions.
   never blocks a swap — the caller catches any exception, not just `OSError`, so a
   corrupted ledger can't traceback AFTER the deck file is written.
   **A swap applied only to MEASURE something still leaves a row** — prefer a dry run or a
-  scratch copy, since a fabricated row is worse than a missing one. [G-56]
+  scratch copy. **`swap_outcomes` joins the ledger to `matches.csv`** — the one signal
+  these models cannot influence — banned from those same seven functions for a STRONGER
+  reason (a win rate looks like ground truth), split per DECK not per swap, and refusing
+  to read under 20, which is where it sits. G-57 governs it. [G-56]
 - **Match results are FREE from `Player.log`, and the two lines AROUND the result JSON are
   the load-bearing halves.** `finalMatchResult` carries the outcome and both seats but NOT
   which seat is yours; that is only in the `Match to <userId>:` prefix, so a paste of the
@@ -831,8 +837,10 @@ directions.
   `templates/` plus a few NAMED dashboard controls and cannot see a new one. When
   a11y-ing a node inside a table, apply it in `sortableTable`'s `onRowExtra` — the
   internal `redraw()` rebuilds `<tbody>` on every sort, discarding attributes set once.
-  Same file is where a hardcoded colour hides: `gallery.html`'s light mode painted a
-  literal `#0f1115` bar track on a near-white panel. [G-72]
+  The same files hide hardcoded colours (`gallery.html`'s light mode painted a literal
+  `#0f1115` track on a white panel). **A STATIC GATE WAS MEASURED UNBUILDABLE — do not
+  restart it**: three designs, every flag FALSE, since the controls are a11y'd at RUNTIME
+  and JS scoping defeats regex. **Scenario 7's keyboard walk is the only coverage.** [G-72]
 
 ## Known Issues
 
@@ -895,7 +903,7 @@ Same convention as above — `[K-nn]` resolves in `docs/gotchas.md`.
   which re-derives every pool row's `Synergies` through the same `tags_for()`. Skipping
   the pool rebuild used to leave unowned craft candidates ranking on stale tags SILENTLY;
   since BS2-23 the pool's build stamp carries a content hash of the tagger AND (since
-  BS4-37) of `deck.py`, whose `ENGINE_THEMES` the tagger reads, so an edit to either
+  BS4-37, narrowed by BS5-06) of `deck.ENGINE_THEMES`, which the tagger reads, so an edit to either
   defeats the freshness reuse and `make refresh` really does re-derive them. **That
   sentence was false for a year of stamps** — a pre-BS2-23 stamp had no hash and the reuse
   path never wrote one, so the check could not arm (BS3-02, G-18). VERIFY the pool
