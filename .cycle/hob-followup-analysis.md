@@ -247,3 +247,61 @@ Moon-Vigil is stale — re-derived below.
 **⚠ 69b caution unchanged:** interaction is 3 and the deck has ZERO answers to a
 noncreature permanent since Withering Torment left. None of the three cuts above makes
 that worse, but do not cut Bite Down, Fell or Warg Tactics for anything.
+
+## 9. Fourth pass — the 69b interaction-repair candidates (7 cards)
+
+**ROTATION IS THE DOMINANT FILTER: 4 of the 7 rotate ~2027**, against a family whose HOB
+core lives to 2029. Durable: **Trystan's Command (2029)**, Seedship Impact (2028),
+Shattered Wings (2028). Rotating 2027: Wear Down, Season of Gathering, Drag to the Roots,
+Urgent Necropsy.
+
+**Castability:** Drag to the Roots, Urgent Necropsy and Trystan's Command are BG — fine in
+69b and 69, **NOT castable in mono-green 69a** (`screen` confirms all three).
+
+**MEASURED — delirium IS reachable in 69b, contrary to first impression.** Drag to the
+Roots wants 4+ card types in the yard. 69b holds 5 types (Creature 23 / Land 25 /
+Enchantment 6 / Sorcery 6 / Instant 2) and each has a real path: creatures die in combat,
+**lands arrive via Ainok Wayfarer's mill 3 and Vastlands Scavenger's mill 7** (lands are
+42% of the deck), sorceries cast, and the ENCHANTMENT type gets there off self-sacrificing
+Sagas (Summon: Fenrir, The Mountain-king's Return) plus Scrounge for Eternity. Only Instant
+is thin at 2 copies. So price it at {2}{B}{G} early and {B}{G} from mid-game.
+
+**TWO AMASS SYNERGIES the tools cannot see.** Along the Crooked Way amasses whenever a
+creature card LEAVES the graveyard:
+- **Trystan's Command**'s "return one or two target permanent cards from your graveyard to
+  your hand" mode triggers it.
+- **Urgent Necropsy**'s collect-evidence cost EXILES cards from the graveyard, which also
+  triggers it — but that same exile competes with Perennation / Badlands Revival /
+  Scrounge / Mountain-king's Return, all of which want creature cards to stay there. A real
+  tension, not a clean win.
+
+### Ranked for 69b (fixes interaction 3 + ZERO noncreature answers)
+| # | Card | Verdict | Cut candidates |
+|---|---|---|---|
+| 1 | **Seedship Impact** {1}{G} | ★★★ cheapest fix, instant, owned, 2028. Lander mode also feeds fixing. Narrow (artifact/ench only). | Roamer's Routine (`cuts` 11) · Abzan Devotee (6) · Veteran Beastrider (5) |
+| 2 | **Trystan's Command** {4}{B}{G} | ★★★ the only 2029 card here. Two modes = removal + graveyard→hand recursion, and that recursion triggers amass. MV 6 is the cost. | Badlands Revival (`cuts` 8 — same slot, Trystan does both jobs) · Perennation (12) · Roamer's Routine |
+| 3 | **Drag to the Roots** {2}{B}{G} | ★★ instant, destroys ANY nonland permanent — the most complete single answer. ⚠rot~2027. | Veteran Beastrider (5) · Abzan Devotee (6) · Roamer's Routine |
+| 4 | **Urgent Necropsy** {2}{B}{G} | ★★ highest ceiling (4-for-1 at instant speed) but craft MYTHIC, ⚠rot~2027, and its cost fights the deck's own recursion. | Veteran Beastrider · Abzan Devotee |
+| 5 | **Shattered Wings** {2}{G} | ★ owned, 2028, but SORCERY speed. | Roamer's Routine · Abzan Devotee |
+| 6 | **Wear Down** {1}{G} | △ ⚠rot~2027, sorcery, and the gift mode hands the opponent a card. Strictly worse than Seedship Impact here. | — |
+| 7 | **Season of Gathering** {4}{G}{G} | ✗ for 69b — `screen` reads it tangential and MV 6 in a three-colour deck is the wrong slot. **Wrong deck; see below.** | — |
+
+### ★ THE STANDOUT IS FOR 69a, NOT 69b — Season of Gathering
+`screen` reads it **KEY in 69a and 69**, tangential in 69b. In 69a it hits the deck's two
+weakest axes at once with one card:
+- `{P}{P}{P}` — "draw cards equal to the greatest power among creatures you control".
+  69a fields **Groundchuck 8/8, Summon: Titan 7/7, Beorn 6/6, Lumra */* (~8)**, so that is
+  a 6–8 card draw into an axis sitting at **card advantage 2**, the deck's worst.
+- `{P}{P}` — "destroy all permanents of the chosen type" is a SWEEPER, and 69a runs zero.
+- Five pips total, so ONE cast can be draw-8 AND wipe every enchantment.
+
+Cost: MV 6 on a 3.71 curve, and **⚠rot~2027**. Cuts: **Pull Through the Weft** (`cuts` 10,
+5 MV — nearest slot, keeps the curve flat) · Walk-In Closet (8) · Mirkwood Pathmaker (1).
+
+It currently sits in deck 19b — irrelevant to whether it belongs here, since a card is
+never consumed by a deck (CLAUDE.md); one copy can be in both lists at once.
+
+**For deck 69:** Season of Gathering also reads KEY, but 69's card advantage is already 5
+and its curve is 3.22, so the same card buys much less. Seedship Impact is the only other
+one worth a slot there, and 69 already has two noncreature answers (Unforgiving Aim,
+Leatherhead's combat trigger) — so this whole group is a 69b/69a question, not a 69 one.
