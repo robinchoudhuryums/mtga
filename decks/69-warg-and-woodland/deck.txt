@@ -3,7 +3,7 @@
 #: colors: BG
 #: plan: midrange
 #: tier: B — PROVISIONAL, and deliberately graded UNDER the metrics floor, which reads
-#: tier: A. The floor is earned honestly (interaction 6, card advantage 5) but it cannot
+#: tier: A. The floor is earned honestly (interaction 5, card advantage 5) but it cannot
 #: tier: see this deck's single point of failure: 8 card names / 11 copies do nothing
 #: tier: until a power-4 body is on the board, and only 7 creatures are PRINTED at power
 #: tier: 4 or greater. One well-timed removal spell on the enabler switches off a third
@@ -72,7 +72,7 @@
 
 # ── Wolves ──────────────────────────────────────────
 1 Nighthowl Pursuer (HOB) 78
-2 Wargling (HOB) 140
+1 Wargling (HOB) 140
 1 Wildborn Preserver (FDN) 650
 1 Goldvein Hydra (OTJ) 167
 2 Bejeweled Warg (HOB) 117
@@ -87,6 +87,7 @@
 2 Wilderland Scrounger (HOB) 141
 
 # ── Bears (the Ferocious enablers) ──────────────────
+1 Moon-Vigil Adherents (ECL) 184
 1 Vastlands Scavenger // Bind to Life (SOS) 166
 1 Little Bear (HOB) 128
 1 Germination Practicum (SOS) 149
@@ -103,13 +104,13 @@
 1 Dancing from Dark to Dawn (HOB) 123
 
 # ── Card advantage off the gate ─────────────────────
+1 Radagast of Rhosgobel (HOB) 136
 1 Garruk's Uprising (M21) 186
 1 Inspiring Call (TLE) 168
 
 # ── Interaction ─────────────────────────────────────
 1 Hunter's Talent (BLB) 179
 1 Warg Tactics (HOB) 139
-1 Bite Down (FDN) 212
 1 Felling Blow (FDN) 105
 1 Unforgiving Aim (ECL) 200
 

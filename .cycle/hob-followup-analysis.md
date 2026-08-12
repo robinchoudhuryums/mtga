@@ -221,3 +221,29 @@ value in the rest of the deck, which theme overlap cannot see (F7).
 - **Groundchuck & Dirtbag** (`cuts` 6) and **Through the Forest Gate** (`cuts` 8) rank as
   cut candidates in 69a only because they were just added and `cuts` grades a lands-scaler
   at its floor.
+
+## 8. Third pass — Moon-Vigil Adherents cut candidates for 69a / 69b
+Applied first: 69 +Moon-Vigil Adherents −1 Wargling, 69 +Radagast −Bite Down,
+69a +Radagast −Drover Grizzly. Post-state: 69 int 5 / MV 3.22 / 11 early drops ·
+69a int 5 / MV 3.71 · 69b unchanged (int 3, ZERO noncreature answers).
+
+**Drover Grizzly is gone from 69a** (spent on Radagast), so the earlier 69a list for
+Moon-Vigil is stale — re-derived below.
+
+### Moon-Vigil Adherents → 69a
+| # | Cut | Why |
+|---|---|---|
+| 1 | **Mirkwood Pathmaker** (last copy, `cuts` 1, fit 3) | Straight upgrade in the same slot: both are self-sizing bodies at 3–4 MV, but Pathmaker is a vanilla */* keyed ONLY to lands, while Adherents counts creatures AND creature cards in the yard — and 69a has 9 mill effects feeding the second half. Adds trample too. |
+| 2 | **Walk-In Closet** (`cuts` 8) | Its front half ("play lands from your graveyard") is the third copy of an effect Icetill Explorer and Mole Man already provide. |
+| 3 | **Pull Through the Weft** (5 MV, `cuts` 10) | Only if Diamond Weapon is NOT also being added — it is that swap's first cut. |
+
+### Moon-Vigil Adherents → 69b
+| # | Cut | Why |
+|---|---|---|
+| 1 | **Abzan Devotee** (`cuts` 6) | Weakest body in the list (2/1 for a once-a-turn mana filter). Vizier of the Menagerie now does the any-colour job for every creature spell, which is what Devotee was mainly there for. |
+| 2 | **Veteran Beastrider** (`cuts` 5) | Its end-step untap has few tap outlets left in the list; its {2}{G}{W} pump competes with Doubling Season for the same late mana. |
+| 3 | **Roamer's Routine** (`cuts` 11) | Redundant basic-fetch — the notes already flag five fetch effects against 8 basics. |
+
+**⚠ 69b caution unchanged:** interaction is 3 and the deck has ZERO answers to a
+noncreature permanent since Withering Torment left. None of the three cuts above makes
+that worse, but do not cut Bite Down, Fell or Warg Tactics for anything.

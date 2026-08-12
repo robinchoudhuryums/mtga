@@ -5,7 +5,7 @@
 #: plan: midrange
 #: tier: B — PROVISIONAL, graded UNDER the A metrics floor, and for different reasons
 #: tier: than its parent. The floor reads A on interaction 5, but card advantage 2 is
-#: tier: thin and the deck is SLOW: avg MV 3.68 with few early drops, and the engine
+#: tier: thin and the deck is SLOW: avg MV 3.71 with few early drops, and the engine
 #: tier: wants lands in the GRAVEYARD before it does anything, so the first three turns
 #: tier: are close to blank. A sweeper mid-assembly catches it. WHAT ARGUES UP: the manabase is nearly flawless for a deck
 #: tier: with this many double-green costs, and a resolved Lumra or Summon: Titan with
@@ -70,7 +70,7 @@
 #: notes: for six. All three cost only redundant ramp (Grow from the Ashes, Clifftop
 #: notes: Lookout, Galactic Wayfarer) and every axis held: interaction 5, card advantage
 #: notes: 2, protection 2, floor A, and the cast-on-curve table unchanged.
-#: notes: THE CURVE WAS DELIBERATELY PUSHED 2026-08-12 (3.44 -> 3.68) and that is the
+#: notes: THE CURVE WAS DELIBERATELY PUSHED 2026-08-12 (3.44 -> 3.71) and that is the
 #: notes: cost of this pass, not an accident. Through the Forest Gate (MV 8) and
 #: notes: Groundchuck & Dirtbag (MV 6) came in over Grow from the Ashes and a second
 #: notes: Rainveil Rejuvenator. The trade: Through the Forest Gate puts EVERY land from
@@ -93,7 +93,7 @@
 1 Dancing from Dark to Dawn (HOB) 123
 1 Vastlands Scavenger // Bind to Life (SOS) 166
 1 Little Bear (HOB) 128
-1 Drover Grizzly (OTJ) 161
+1 Radagast of Rhosgobel (HOB) 136
 1 Spider-Ham, Peter Porker (SPM) 114
 1 Mirkwood Pathmaker (HOB) 129
 1 Mightform Harmonizer (EOE) 200
