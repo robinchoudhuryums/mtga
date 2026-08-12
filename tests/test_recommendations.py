@@ -239,6 +239,16 @@ class TestItIsReportOnly:
             src = inspect.getsource(fn)
             assert "load_recommendations" not in src, fn.__name__
             assert "RECS_CSV" not in src, fn.__name__
+            # OUTCOMES are banned from the scoring stack for a stronger reason than the
+            # ledger is. `swap_outcomes` joins applied swaps to games played, and a win
+            # rate is the single most tempting thing to feed back into a ranking — it
+            # looks like ground truth. Wiring it in would destroy the property
+            # `check_suggest` exists to hold (the scoring terms are bounded and anchored
+            # so they cannot silently reorder a tuned deck) AND would make the models
+            # chase an 8-match sample. Report-only, structurally (broad-scan E2).
+            assert "swap_outcomes" not in src, fn.__name__
+            assert "MATCHES_CSV" not in src, fn.__name__
+            assert "load_match_counts" not in src, fn.__name__
 
 
 class TestReportOutput:
@@ -457,3 +467,56 @@ class TestSegmentConcentration:
         non = deck.segment_concentration(rows, self._creatures("Body"),
                                          segment="noncreature", min_rows=3)
         assert cre[0][1] == 3 and non[0][1] == 3
+
+
+class TestSwapOutcomes:
+    """E2: `recommendations.csv` records what the models said and what the human decided;
+    `matches.csv` records what then happened. Both existed for a cycle with nothing
+    joining them, so every ranking model here is graded on its own argument and on an
+    agreement rate CLAUDE.md itself calls contaminated (you read the shortlist before
+    deciding). An outcome is the only signal these models cannot influence.
+
+    The split is per DECK at its FIRST recorded swap, deliberately coarse: a deck
+    accumulates many swaps whose windows overlap almost completely, and attributing a
+    result to one of four changes made the same week is a story, not a measurement."""
+
+    def _m(self, deck_id, date, result):
+        return {"Deck": deck_id, "Date": date, "Result": result}
+
+    def test_it_splits_a_decks_record_at_the_first_swap(self):
+        recs = [_row(Deck="7", Date="2026-08-10"), _row(Deck="7", Date="2026-08-12")]
+        matches = [self._m("7", "2026-08-01", "W"), self._m("7", "2026-08-02", "L"),
+                   self._m("7", "2026-08-11", "W")]
+        (j,) = deck.swap_outcomes(recs, matches)
+        assert j["deck"] == "7" and j["swaps"] == 2
+        assert j["first_swap"] == "2026-08-10"      # the EARLIEST, not the last seen
+        assert j["before"] == (1, 1) and j["after"] == (1, 0)
+
+    def test_a_draw_or_an_unreadable_result_decides_nothing(self):
+        recs = [_row(Deck="7", Date="2026-08-01")]
+        matches = [self._m("7", "2026-08-02", "D"), self._m("7", "2026-08-03", ""),
+                   self._m("7", "2026-08-04", "W")]
+        (j,) = deck.swap_outcomes(recs, matches)
+        assert j["after"] == (1, 0) and j["n_after"] == 1
+        assert j["matches"] == 3                    # still COUNTED as games played
+
+    def test_a_deck_with_no_matches_is_omitted_not_zeroed(self):
+        """A deck with swaps and no games has NO record — printing it as 0-0 would read
+        as a result rather than as an absence."""
+        recs = [_row(Deck="7", Date="2026-08-01"), _row(Deck="99", Date="2026-08-01")]
+        assert [j["deck"] for j in
+                deck.swap_outcomes(recs, [self._m("7", "2026-08-02", "W")])] == ["7"]
+
+    def test_an_unattributed_match_joins_to_nothing(self):
+        """A match whose Deck is blank must never be folded into a deck's record — the
+        blank is the parser refusing to guess a seat, and borrowing it would fabricate."""
+        recs = [_row(Deck="7", Date="2026-08-01")]
+        assert deck.swap_outcomes(recs, [self._m("", "2026-08-02", "W")]) == []
+
+    def test_the_report_refuses_to_read_a_small_sample(self, capsys):
+        """The whole record is ~8 attributed matches. The section must print the coverage
+        and REFUSE the read, the same restraint `--report` and `feedback` already show."""
+        deck._print_swap_outcomes([_row(Deck="7", Date="2026-08-01")])
+        out = capsys.readouterr().out
+        assert "far below" in out or "no matches.csv" in out
+        assert "%" not in out, "a win rate must not appear at this sample size"

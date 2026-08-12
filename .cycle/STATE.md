@@ -6,6 +6,48 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #4, Batch E (2026-08-12) — SCAN CLOSED
+
+Fourth and final implementation pass. Gates green: all invariants hold, ZERO soft warnings,
+docs/commands/agreement gates OK. Block:
+`.cycle/blocks/2026-08-broad-scan4-batchE-broad-implement.md`.
+
+**Batch E was mostly not mine to do, and saying so is the outcome.** E1 (match volume) is
+owner-paced, E3 (Sheets) needs credentials, E4 is taste, E5 is a design constraint —
+CLAUDE.md says a `#: tier:` letter is NEVER auto-written. One item was real engineering.
+
+**E2 built the outcome join.** `swap_outcomes` + an Outcomes section in `deck.py feedback`
+connect `recommendations.csv` (what the models said, what the human decided) to
+`matches.csv` (what happened). Split per DECK at its first recorded swap — deliberately
+coarse, because a per-swap before/after with overlapping windows is a story, not a
+measurement. **It refuses to read**: 365 swaps, 9 matches, 8 attributed, 3 decks with both,
+largest post-swap sample n=4 against a threshold of 20. That refusal IS the current answer;
+the reason to build now is that the analysis is in place when volume arrives. Made
+report-only structurally — the existing seven-function scan now bans `swap_outcomes`,
+`MATCHES_CSV` and `load_match_counts` too, because an outcome is the most tempting thing
+here to feed back into a ranking and would both break `check_suggest`'s bounded property
+and make the models chase an 8-match sample.
+
+**E4's estimate was wrong in the useful direction.** All three planned Brawl conversions
+(4, 46, 11) are at **distance 0** on `deck.py brawl` — already singleton and on-identity —
+so each is a header plus a commander card, not a ~20-card rebuild. **Not built**, because
+what remains is exactly the taste: the tool picks Aerith for 46 where §4b records the user
+wanting Delney, the user has already flagged Bullseye's BR identity against mono-B 11, and
+each needs one cut to make room. Re-estimate as S each once the commanders are chosen.
+
+**E5, checked rather than assumed:** deck 19 is genuinely flagged (claimed B, floor A,
+"possibly UNDER-graded"). Deck 21a is **not** — `tier` reports "deliberately conservative
+— B sits below the A floor and the rationale argues why", so the K-14 card-advantage move
+NEXT-SESSION cites as the reason to re-grade has already been absorbed by the written
+rationale. Only one of the two is owed a decision.
+
+**Where I left off:** the broad-scan-4 cycle is CLOSED — all 13 findings are implemented,
+retracted or recorded as not-implementable, across four blocks. What remains is entirely
+owner work: play games (E1, now the top item and unblocked by A1), run
+`import_collection.py` (A2), the two visual checks (A3), Sheets credentials (E3), three
+commander decisions (E4), deck 19's letter (E5) — plus one expected pool rebuild on the
+next `make refresh`. A `/sync-docs` pass follows this entry.
+
 ## Session — broad scan #4, Batch C & D (2026-08-12)
 
 Third implementation pass. Gates green: `check_all` all invariants hold with **ZERO soft

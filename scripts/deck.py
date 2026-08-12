@@ -5912,6 +5912,115 @@ def _print_recommendation_segments(rows):
                   "Read a dominating deck's rows before trusting the segment rate.")
 
 
+# A deck needs this many logged matches on ONE side of a swap before a record is worth
+# reading as anything. Same number and same reasoning as `_RECS_MIN_SAMPLE` and
+# `parse_matches._MIN_SAMPLE`: below it a W/L is noise, and printing it invites a tuning
+# decision the data cannot support.
+_OUTCOME_MIN_SAMPLE = 20
+
+
+def swap_outcomes(rows, matches):
+    """Join applied swaps to the games played after them → per-deck outcome rows.
+
+    THE GAP THIS CLOSES. `recommendations.csv` records what the models SAID and what the
+    human DECIDED; `matches.csv` records what then HAPPENED. Both have existed for a
+    cycle and nothing connected them, so every ranking model here is still graded on its
+    own argument and on `feedback`'s agreement rate — a number CLAUDE.md itself warns is
+    contaminated, because the human read the shortlist before deciding. An outcome is the
+    only signal in this project that the models cannot influence.
+
+    Returns [{deck, swaps, first_swap, before, after, ...}] sorted by deck id, where
+    `before`/`after` are (wins, losses) split on the deck's FIRST recorded swap — the
+    point from which its list stopped being the one the earlier games were played with.
+    Draws are excluded from both, matching `parse_matches.report`.
+
+    THE SPLIT IS DELIBERATELY COARSE. A per-swap before/after would be the interesting
+    analysis and is not honest at any volume this record will reach soon: a deck
+    accumulates many swaps, their windows overlap almost completely, and attributing a
+    result to one of four changes made the same week is a story, not a measurement. Per
+    DECK, split once, is the strongest claim the data shape supports.
+
+    REPORT-ONLY, and structurally so: nothing here is reachable from a scoring function,
+    and `tests/test_recommendations.py` scans the seven of them for `MATCHES_CSV`,
+    `load_match_counts` and `swap_outcomes` for the same reason it already scans for
+    `load_recommendations` (G-56). An outcome signal is the single most tempting thing to
+    quietly feed back into a ranking, and doing so would defeat the bounded-and-anchored
+    property `check_suggest` exists to hold."""
+    by_deck = {}
+    for r in rows:
+        did = (r.get("Deck") or "").strip()
+        date = (r.get("Date") or "").strip()
+        if not did or not date:
+            continue
+        e = by_deck.setdefault(did, {"deck": did, "swaps": 0, "first_swap": date})
+        e["swaps"] += 1
+        e["first_swap"] = min(e["first_swap"], date)
+
+    played = {}
+    for m in matches:
+        did = (m.get("Deck") or "").strip()
+        if did:
+            played.setdefault(did, []).append(m)
+
+    out = []
+    for did, e in by_deck.items():
+        ms = played.get(did, [])
+        if not ms:
+            continue
+        before = after = None
+        bw = bl = aw = al = 0
+        for m in ms:
+            res = (m.get("Result") or "").strip().upper()
+            if res not in ("W", "L"):
+                continue                      # a draw or an unreadable cell decides nothing
+            if (m.get("Date") or "") < e["first_swap"]:
+                bw, bl = bw + (res == "W"), bl + (res == "L")
+            else:
+                aw, al = aw + (res == "W"), al + (res == "L")
+        before, after = (bw, bl), (aw, al)
+        out.append({**e, "matches": len(ms), "before": before, "after": after,
+                    "n_after": aw + al, "n_before": bw + bl})
+    return sorted(out, key=lambda x: (len(x["deck"]), x["deck"]))
+
+
+def _print_swap_outcomes(rows):
+    """The outcome section of `feedback`. Prints the COVERAGE honestly and refuses the
+    read below `_OUTCOME_MIN_SAMPLE`, which is where this record sits and will sit for a
+    long time — the point of building it now is that the analysis is already in place when
+    volume arrives, not that it can say anything today."""
+    matches = []
+    try:
+        import parse_matches as pm
+        matches = pm.load_matches(MATCHES_CSV)
+    except Exception:
+        pass                                   # matches.csv is deliberately not required
+    if not matches:
+        print("\nOutcomes: no matches.csv yet — `/log-matches` records them, and a swap's "
+              "effect is the one signal these models cannot influence.")
+        return
+    joined = swap_outcomes(rows, matches)
+    attributed = sum(1 for m in matches if (m.get("Deck") or "").strip())
+    print(f"\nOutcomes — {len(rows)} recorded swap(s) against {len(matches)} logged "
+          f"match(es) ({attributed} attributed to a deck):")
+    if not joined:
+        print("  No deck has both a recorded swap and a logged match yet.")
+        return
+    print(f"    {'deck':6} {'swaps':>5} {'games':>6}  {'before':>7} {'after':>7}")
+    for j in joined:
+        b, a = j["before"], j["after"]
+        print(f"    {j['deck']:6} {j['swaps']:>5} {j['matches']:>6}  "
+              f"{b[0]}-{b[1]:<5} {a[0]}-{a[1]:<5}"
+              f"   (split at the first swap, {j['first_swap']})")
+    best = max((j["n_after"] for j in joined), default=0)
+    if best < _OUTCOME_MIN_SAMPLE:
+        print(f"  ⚠ the largest post-swap sample is n={best}, far below the "
+              f"~{_OUTCOME_MIN_SAMPLE} a win rate needs. NO outcome is reported above and "
+              f"none should be read into those records — they are printed so the coverage "
+              f"is visible, not so the numbers are.")
+        print("  This is the project's real bottleneck, and it is owner-paced: the "
+              "pipeline works end to end, so the only missing input is games.")
+
+
 def cmd_feedback(args):
     """Report how the recommenders scored against the swaps actually applied."""
     rows = load_recommendations()
@@ -5972,6 +6081,7 @@ def cmd_feedback(args):
               "agreement rate partly measures the list's INFLUENCE, not its accuracy. "
               "The disagreements above are the part that doesn't suffer from that.")
         _print_recommendation_segments(rows)
+    _print_swap_outcomes(rows)
     print("\nThis ledger is REPORT-ONLY and never feeds back into a score — the ranking "
           "terms are bounded and anchored by check_suggest so they can't silently "
           "reorder a tuned deck, and an automatic re-weighting would defeat that.")
