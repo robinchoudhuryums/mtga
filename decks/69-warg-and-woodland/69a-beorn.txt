@@ -5,11 +5,9 @@
 #: plan: midrange
 #: tier: B — PROVISIONAL, graded UNDER the A metrics floor, and for different reasons
 #: tier: than its parent. The floor reads A on interaction 5, but card advantage 2 is
-#: tier: thin and the deck is SLOW: avg MV 3.35 with few early drops, and the engine
+#: tier: thin and the deck is SLOW: avg MV 3.44 with few early drops, and the engine
 #: tier: wants lands in the GRAVEYARD before it does anything, so the first three turns
-#: tier: are close to blank. A sweeper mid-assembly catches it. Central themes 24 is
-#: tier: also a diffuse reading — the list is doing land ramp, self-mill, Bear tribal
-#: tier: and tokens at once. WHAT ARGUES UP: the manabase is nearly flawless for a deck
+#: tier: are close to blank. A sweeper mid-assembly catches it. WHAT ARGUES UP: the manabase is nearly flawless for a deck
 #: tier: with this many double-green costs, and a resolved Lumra or Summon: Titan with
 #: tier: eight lands is a swing nothing else in these colours matches. Unplayed.
 #: archetype: MONO-GREEN LANDS-AS-BEARS — the parent counts POWER 4; this variant counts
@@ -45,12 +43,33 @@
 #: notes: those cards; put the chosen cards into your GRAVEYARD" is a cost in any other
 #: notes: deck and a second mode in this one — you get two lands on the battlefield and
 #: notes: two more in the yard for the return package.
-#: notes: BLACK WAS CONSIDERED AND DROPPED. Badlands Revival, Scrounge for Eternity and
-#: notes: Abzan Devotee would add creature reanimation that mono-green structurally
-#: notes: cannot do, which is a real argument — but every land-fetch effect here grabs
-#: notes: basics, and the list carries seven double-green costs plus Famished Worldsire's
-#: notes: {G}{G}{G}. Three cards is a splash, not a colour. Revisit if the reanimation
-#: notes: package grows.
+#: notes: BLACK WAS CONSIDERED, MEASURED, AND DECLINED — and the measurement was NOT what
+#: notes: was assumed. The hole is real: this list mills heavily and, mono-green, had no
+#: notes: way to get a milled creature back. Badlands Revival was tested on a scratch
+#: notes: copy with eight BG duals replacing eight Forests: green sources HELD at 21
+#: notes: (the duals make both) and Badlands Revival landed at 82% on curve, so the
+#: notes: splash costs far less than the seven double-green costs suggested. It is
+#: notes: declined only because Kraven's Last Hunt does the same job for {3}{G} with no
+#: notes: manabase cost at all — chapter III returns a creature card from the graveyard
+#: notes: (to HAND, which is the one place Badlands Revival is genuinely better), while
+#: notes: chapter I mills five AND deals damage equal to the greatest power among
+#: notes: creature cards in the graveyard, which in a deck milling Lumra, Summon: Titan
+#: notes: and Beorn is removal that kills almost anything. Revisit the splash if the
+#: notes: black package ever reaches three or four cards; at one card it is not worth
+#: notes: eight land slots.
+#: notes: THREE CARDS WERE RESTORED 2026-08-12 ON THE OWNER'S CHALLENGE, and the reason
+#: notes: they were cut is worth keeping. PART IN FRIENDSHIP was cut off a `cuts` score
+#: notes: of 1/26 — on the same row where `cuts` printed "⌁scales w/ lands — graded here
+#: notes: at its FLOOR". The flag exists to stop exactly that cut and it was ignored: at
+#: notes: 26 lands its "if its mana value is less than or equal to the number of lands"
+#: notes: clause is nearly always satisfied, so it reads as a free replacement body, not
+#: notes: a five-drop. LOOT is a second land drop per turn plus a creature cheat gated on
+#: notes: the same land count; it read "tangential" only because the theme tagger cannot
+#: notes: see an MV-vs-lands clause. DANCE OF THE TUMBLEWEEDS is modal — Spree buys a
+#: notes: land early and an X/X where X is your land count late, and both modes at once
+#: notes: for six. All three cost only redundant ramp (Grow from the Ashes, Clifftop
+#: notes: Lookout, Galactic Wayfarer) and every axis held: interaction 5, card advantage
+#: notes: 2, protection 2, floor A, and the cast-on-curve table unchanged.
 #: notes: NO COUNTERS PAYOFF, BY DESIGN — `deck.py engines` flags 5 enablers with no
 #: notes: reward. Counters here are incidental (Ainok Wayfarer, Beorn's Hospitality,
 #: notes: Famished Worldsire); the deck's scaling comes from the land count, not from
@@ -78,10 +97,11 @@
 2 Rainveil Rejuvenator (TDM) 152
 1 Traveling Chocobo (FIN) 210
 1 Michelangelo, Improviser (TMT) 119
-1 Tenderize (TMT) 133
-2 Grow from the Ashes (FDN) 225
-1 Clifftop Lookout (BLB) 168
-1 Galactic Wayfarer (EOE) 185
+1 Kraven's Last Hunt (SPM) 105
+1 Grow from the Ashes (FDN) 225
+1 Loot, Exuberant Explorer (FDN) 106
+1 Part in Friendship (HOB) 134
+1 Dance of the Tumbleweeds (OTJ) 160
 1 Warg Tactics (HOB) 139
 1 Garruk's Uprising (M21) 186
 1 Bite Down (FDN) 212
