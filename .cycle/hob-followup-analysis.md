@@ -168,3 +168,56 @@ three-colour deck is not recommended; no cut proposed.
 
 **⚠ Interaction is 4 (+1?).** Withering Torment is listed as a 3rd option only — cutting it
 drops the deck to 3 and moves the floor.
+
+## 7. Second pass — Diamond Weapon / Moon-Vigil Adherents / Radagast, re-checked
+Against the post-swap state (69: 25 creatures, int 6, MV 3.11 · 69a: 21 creatures,
+int 5, MV 3.68, TWO 7+ drops · 69b: 23 creatures, int 3, MV 3.46, ZERO noncreature answers).
+
+**NEW MEASUREMENT — Diamond Weapon's discount is bigger than assumed, and it has a
+sequencing anti-synergy nobody had named.** 69a is **88% permanent cards** (26 lands +
+27 nonland permanents of 60), so nearly everything milled discounts it: 6–10 cards milled
+by turn 5 ≈ 5–9 permanents ≈ it costs {2}{G}{G} down to {G}{G}. **But SEVEN effects in
+69a return LANDS from the graveyard** (Lumra, Summon: Titan, Icetill, Mole Man, Walk-In
+Closet, Aftermath Analyst, Pull Through the Weft) and lands are 43% of the deck — so a
+mass return SPIKES Diamond Weapon's cost back up. Cast it BEFORE the big return, or after
+the yard refills. The 27 nonland permanents are the discount FLOOR, since the returners
+only take lands.
+
+**All three read `tangential` on `screen` in every deck.** That is the expected false
+negative: a cost reducer, a self-sizing 0/0 and a graveyard-scaled cost all have their
+value in the rest of the deck, which theme overlap cannot see (F7).
+
+| Card | 69 | 69a | 69b | Reasoning |
+|---|---|---|---|---|
+| Diamond Weapon | ✗ | ★★★ | ✗ | 88% permanents; only 69a mills. Third 7+ drop is the cost. |
+| Moon-Vigil Adherents | ★★ | ★★ | ★★ | 0/0 counting ITSELF, so min 1/1. Best where bodies are widest. |
+| Radagast of Rhosgobel | ★★ | ★★★ | ★ | Best in 69a: the biggest creatures in the family (Lumra 6, Titan 5, Worldsire 8, Groundchuck 6, Diamond Weapon 9) all take the {2}. |
+
+### Cut candidates — Diamond Weapon → 69a
+| # | Cut | Why |
+|---|---|---|
+| 1 | **Pull Through the Weft** (5 MV, `cuts` 10) | It is one of the SEVEN land-returners, i.e. it actively shrinks Diamond Weapon's own discount. Cutting it makes room AND protects the discount. |
+| 2 | **Mirkwood Pathmaker** (last copy, `cuts` 1, fit 3) | Vanilla */* with no ability; Mightform Harmonizer now fills the lands-scaling-body slot better. |
+| 3 | **Through the Forest Gate** (8 MV, `cuts` 8) | Only if you want to hold the 7+ count at two — both are top-end and Diamond Weapon is a body. |
+
+### Cut candidates — Moon-Vigil Adherents
+| Deck | 1st | 2nd | 3rd |
+|---|---|---|---|
+| **69** (best: 25 creatures, WIDE 9 — it is a gate PROVIDER at 4 mana) | Wargling (last 2, `cuts` 4) | Bite Down (1) | Beorn's Hospitality (9) |
+| **69a** (graveyard half is strongest here — 9 mill effects) | Mirkwood Pathmaker (1) | Drover Grizzly (9) | Walk-In Closet (7) |
+| **69b** (23 creatures, WIDE 9) | Abzan Devotee (`cuts` 6) | Veteran Beastrider (5) | Roamer's Routine (11) |
+
+### Cut candidates — Radagast of Rhosgobel
+| Deck | 1st | 2nd | 3rd |
+|---|---|---|---|
+| **69a** (best) | Mirkwood Pathmaker (1) | Drover Grizzly (9) | Walk-In Closet (7) |
+| **69** (stacks with The Earth Crystal — a green creature spell costs {3} less) | Wargling (last 2) | Beorn's Hospitality (9) | Bite Down (1) |
+| **69b** (weakest — its problem is COLOUR, which Vizier already fixes) | Roamer's Routine (11) | Abzan Devotee (6) | Veteran Beastrider (5) |
+
+### PROTECT — do not re-propose
+- **Part in Friendship** (`cuts` 2, fit 0) and **Loot** (`cuts` 3) were both RESTORED on
+  the owner's challenge last cycle, both carrying `⌁scales w/ lands — graded at its FLOOR`.
+  The ranking has not learned; they are off the cut list by decision, not by score.
+- **Groundchuck & Dirtbag** (`cuts` 6) and **Through the Forest Gate** (`cuts` 8) rank as
+  cut candidates in 69a only because they were just added and `cuts` grades a lands-scaler
+  at its floor.
