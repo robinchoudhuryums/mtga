@@ -121,3 +121,50 @@ Of the seven proposed: Earth Crystal ★★ and Seedship Agrarian ★★ are nex
   NOT cuttable (it was restored on the owner's challenge last cycle for exactly this).
 - **Garruk's Uprising** sorts 4th on 69's cut list and is the deck's card-advantage engine.
 - **Beorn's Hospitality** sorts 6th on 69's list with the same floor flag.
+
+## 6. Cut candidates per add (owner request) — PROPOSED, nothing applied
+
+Cut pools are SHARED: each name below can only be cut once, so the primaries are
+deliberately distinct within a deck.
+
+### Deck 69 — adds are 4/5/5/4 MV into a 2.97 curve; taking all four moves it to ~3.2
+| Add | 1st cut | 2nd | 3rd | Why the 1st |
+|---|---|---|---|---|
+| The Earth Crystal {2}{G}{G} | Ravening Warg (1 of 2) | Bite Down (`cuts` 1) | Wargling (3rd copy) | F2: Warg is a gate CONSUMER whose ferocious payoff is 2 life — the weakest in the deck. Crystal's {1} green discount partly repays its own cost. |
+| Germination Practicum {3}{G}{G} | Drover Grizzly (`cuts` 2) | Little Bear (19) | Nighthowl Pursuer (18) | Grizzly's saddle-trample is REDUNDANT with Garruk's Uprising, which already grants team trample. |
+| Selfless Safewright {3}{G}{G} | Warg Tactics (`cuts` 9) | Nighthowl Pursuer | Ambush Wolf (13) | Warg Tactics' flier-kill is duplicated by Unforgiving Aim; its unique half is single-creature hexproof, which Safewright dominates tribe-wide. |
+| Leatherhead {2}{G}{G} | Unforgiving Aim (`cuts` 3) | Little Bear | Ambush Wolf | Leatherhead does the noncreature-answer job REPEATABLY and on a power-5 body. But see the warning below. |
+
+**⚠ Two constraints that bind if you take more than two of these:**
+1. **Interaction is 5.** Bite Down, Unforgiving Aim and Warg Tactics are all interaction —
+   cutting two of them puts the deck at 3 and the tier floor moves.
+2. **Printed Bears = 5** (Vastlands, Little Bear, Drover Grizzly, Beorn, Lumra). Beorn's
+   "if you control three or more Bears, draw two cards" needs 3. Cutting BOTH Drover
+   Grizzly and Little Bear leaves exactly 3 printed with zero margin.
+
+### Deck 69a — ⚠ CURVE: these five add 8+9+6+4+4 MV to a deck already at 3.44 with 9 early drops
+| Add | 1st cut | 2nd | 3rd | Why the 1st |
+|---|---|---|---|---|
+| Through the Forest Gate {6}{G}{G} | Grow from the Ashes (`cuts` 7) | Dance of the Tumbleweeds (14) | Pull Through the Weft (9) | Same job — fetch lands — at a fraction of the scale. |
+| Diamond Weapon | Part in Friendship (`cuts` 1, fit 0) | Famished Worldsire (21) | Pull Through the Weft | Worldsire is the G-42 note: its devour-land SACRIFICES the resource Lumra, Grovestrider and Mirkwood Pathmaker all count. Optional, but the tension is real. |
+| Groundchuck & Dirtbag | Rainveil Rejuvenator (1 of 2, `cuts` 20) | Dance of the Tumbleweeds | Little Bear (15) | Groundchuck doubles the WHOLE manabase (26 lands); Rainveil is one 2/4 that taps for its power. Keep the 2nd copy for the ETB mill. |
+| Mightform Harmonizer | Mirkwood Pathmaker (1 of 2, `cuts` 3) | Little Bear | Drover Grizzly (8) | Same slot and same lands-scaling role; Harmonizer is a 4/4 base WITH an ability vs a vanilla */*. |
+| Planar Engineering | Dance of the Tumbleweeds (`cuts` 14) | Grow from the Ashes | Walk-In Closet (6) | Both are small ramp; Planar Engineering is net +2 lands AND +2 graveyard lands. |
+
+**Recommendation: take 3, not 5.** Diamond Weapon, Groundchuck and Mightform Harmonizer
+are the three that do not push the top end. Through the Forest Gate at MV 8 and a second
+big finisher together is what makes the curve unplayable.
+
+### Deck 69b
+**Through the Forest Gate is ALREADY IN 69b** (1 copy) — a second at MV 8 in a
+three-colour deck is not recommended; no cut proposed.
+
+| Add | 1st cut | 2nd | 3rd | Why the 1st |
+|---|---|---|---|---|
+| Vizier of the Menagerie {3}{G} | Zimone's Experiment (`cuts` 1, fit 2) | Grow from the Ashes (4) | Roamer's Routine (11) | Same MV, and Zimone's is the deck's lowest-fit card. Vizier is F5's answer. |
+| Doubling Season {4}{G} | Badlands Revival (`cuts` 8) | Roamer's Routine | Withering Torment (6) | Same MV. The deck holds SIX recursion effects; it holds zero doublers. Trades redundancy for a new axis. |
+| Overlord of the Hauntwoods | Grow from the Ashes (`cuts` 4) | Roamer's Routine | Raucous Audience (17) | Overlord's land token is every basic type — it is a better ramp card AND the fixing this deck bets on. ⚠rot~2027. |
+| Tom, Bert, and William {3}{B}{G} | Raucous Audience (`cuts` 17) | Duskwatch Hunter (13) | Wildborn Preserver (10) | Audience's {G}{G} mode needs power 4+, thin here; Tom feeds card advantage 1, the family's weakest axis. |
+
+**⚠ Interaction is 4 (+1?).** Withering Torment is listed as a 3rd option only — cutting it
+drops the deck to 3 and moves the floor.
