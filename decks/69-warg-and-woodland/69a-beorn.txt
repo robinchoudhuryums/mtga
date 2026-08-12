@@ -1,0 +1,94 @@
+#: name: Warg and Woodland — Beorn
+#: format: Standard
+#: colors: G
+#: based-on: deck.txt
+#: plan: midrange
+#: tier: B — PROVISIONAL, graded UNDER the A metrics floor, and for different reasons
+#: tier: than its parent. The floor reads A on interaction 5, but card advantage 2 is
+#: tier: thin and the deck is SLOW: avg MV 3.35 with few early drops, and the engine
+#: tier: wants lands in the GRAVEYARD before it does anything, so the first three turns
+#: tier: are close to blank. A sweeper mid-assembly catches it. Central themes 24 is
+#: tier: also a diffuse reading — the list is doing land ramp, self-mill, Bear tribal
+#: tier: and tokens at once. WHAT ARGUES UP: the manabase is nearly flawless for a deck
+#: tier: with this many double-green costs, and a resolved Lumra or Summon: Titan with
+#: tier: eight lands is a swing nothing else in these colours matches. Unplayed.
+#: archetype: MONO-GREEN LANDS-AS-BEARS — the parent counts POWER 4; this variant counts
+#: archetype: LANDS, and the Bear spine is what carries over. Four of the payoffs are
+#: archetype: literally sized by the land count: Lumra is an Elemental BEAR whose power
+#: archetype: equals your lands, Beorn's Hospitality becomes a Bear with the same
+#: archetype: clause, Mirkwood Pathmaker is the same body without the type, and Summon:
+#: archetype: Titan's third chapter pumps by that number. Dancing from Dark to Dawn turns
+#: archetype: every land drop into a 2/2 Bear, Mole Man turns it into a Moloid, and
+#: archetype: Traveling Chocobo makes both of those fire TWICE.
+#: archetype: THE ENGINE IS SELF-MILL INTO LAND RECURSION, and this list takes the
+#: archetype: RECURSION-LOOP half of that idea rather than the one-big-return half:
+#: archetype: Icetill Explorer, Mole Man and Walk-In Closet all let you REPLAY lands out
+#: archetype: of the graveyard turn after turn, Elemental Teachings deliberately puts two
+#: archetype: there while putting two onto the battlefield, and Pull Through the Weft
+#: archetype: rebuys both halves. Lumra, Summon: Titan and Aftermath Analyst are the mass
+#: archetype: returns that cash it in.
+#: archetype: DISTINCTNESS from deck 50a, the roster's other mono-green lands deck: 26 of
+#: archetype: this list's 35 nonland names are not in it, `deck.py shape` reads this WIDE
+#: archetype: (7/4) against 50a's BALANCED (7 tall / 6 wide), and 50a has no tribal spine
+#: archetype: at all — its engine is a suite of artifact and enchantment value pieces
+#: archetype: that appear nowhere in this concept pile. The nine shared names are the
+#: archetype: unavoidable mono-green lands staples.
+#: protect: Beorn the Fierce; Lumra, Bellow of the Woods; Beorn's Hospitality; Dancing from Dark to Dawn; Summon: Titan; Traveling Chocobo
+#: notes: THE FETCH LANDS ARE NOT FILLER. Evolving Wilds, Terramorphic Expanse and Hobbit
+#: notes: Hole each put a land in the GRAVEYARD, which Lumra, Summon: Titan, Aftermath
+#: notes: Analyst and Pull Through the Weft all return; they also give Elemental
+#: notes: Teachings the four DIFFERENTLY-NAMED lands it requires, which a 26-Forest
+#: notes: manabase could not. They are capped at four because `consistency` charges them
+#: notes: honestly — they tap for nothing, and at eight of them Famished Worldsire fell
+#: notes: to 66% on curve.
+#: notes: ELEMENTAL TEACHINGS' DRAWBACK IS AN UPSIDE HERE. "An opponent chooses two of
+#: notes: those cards; put the chosen cards into your GRAVEYARD" is a cost in any other
+#: notes: deck and a second mode in this one — you get two lands on the battlefield and
+#: notes: two more in the yard for the return package.
+#: notes: BLACK WAS CONSIDERED AND DROPPED. Badlands Revival, Scrounge for Eternity and
+#: notes: Abzan Devotee would add creature reanimation that mono-green structurally
+#: notes: cannot do, which is a real argument — but every land-fetch effect here grabs
+#: notes: basics, and the list carries seven double-green costs plus Famished Worldsire's
+#: notes: {G}{G}{G}. Three cards is a splash, not a colour. Revisit if the reanimation
+#: notes: package grows.
+#: notes: NO COUNTERS PAYOFF, BY DESIGN — `deck.py engines` flags 5 enablers with no
+#: notes: reward. Counters here are incidental (Ainok Wayfarer, Beorn's Hospitality,
+#: notes: Famished Worldsire); the deck's scaling comes from the land count, not from
+#: notes: counters, so adding a counters payoff would be building a second deck.
+
+1 Beorn the Fierce (HOB) 119
+1 Lumra, Bellow of the Woods (BLB) 183
+1 Beorn's Hospitality (HOB) 120
+1 Dancing from Dark to Dawn (HOB) 123
+1 Vastlands Scavenger // Bind to Life (SOS) 166
+1 Little Bear (HOB) 128
+1 Drover Grizzly (OTJ) 161
+1 Spider-Ham, Peter Porker (SPM) 114
+2 Mirkwood Pathmaker (HOB) 129
+1 Tifa Lockhart (FIN) 206
+1 Summon: Titan (FIN) 204
+1 Famished Worldsire (EOE) 182
+1 Icetill Explorer (EOE) 192
+1 Mole Man, Moloid Master (MSH) 177
+1 Walk-In Closet // Forgotten Cellar (DSK) 205
+1 Aftermath Analyst (MKM) 148
+1 Pull Through the Weft (EOE) 202
+1 Elemental Teachings (TLA) 178
+1 Ainok Wayfarer (TDM) 134
+2 Rainveil Rejuvenator (TDM) 152
+1 Traveling Chocobo (FIN) 210
+1 Michelangelo, Improviser (TMT) 119
+1 Tenderize (TMT) 133
+2 Grow from the Ashes (FDN) 225
+1 Clifftop Lookout (BLB) 168
+1 Galactic Wayfarer (EOE) 185
+1 Warg Tactics (HOB) 139
+1 Garruk's Uprising (M21) 186
+1 Bite Down (FDN) 212
+1 Unforgiving Aim (ECL) 200
+1 Insidious Fungus (DSK) 186
+2 Evolving Wilds (ECL) 264
+1 Hobbit Hole (HOB) 184
+1 Terramorphic Expanse (MSC) 828
+1 Cryptic Caves (FDN) 771
+21 Forest (TRK) 325
