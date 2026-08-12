@@ -21,6 +21,7 @@ Airbending Lesson
 Ajani, Caller of the Pride
 Alien Invasion
 Alpharael, Stonechosen
+Ambush Wolf
 Ancient Adamantoise
 Angel of Vitality
 Angelic Destiny
@@ -77,6 +78,7 @@ Central Elevator // Promising Stairs
 Cephalid Inkmage
 Champions of the Shoal
 Charging Strifeknight
+Chief Warg's Company
 Child of the Volcano
 Claim Jumper
 Cloud, Midgar Mercenary
@@ -108,6 +110,8 @@ Dragoon's Wyvern
 Dread Summons
 Dream Harvest
 Drix Fatemaker
+Drover Grizzly
+Duskwatch Hunter
 Dwynen's Elite
 Earth Kingdom General
 Earth Kingdom Soldier
@@ -174,6 +178,7 @@ Hauntwoods Shrieker
 Hawkeye, Master Marksman
 Hawkeye, Young Avenger
 Head of the Homestead
+Head of the Hunt
 Hecteyes
 Hei Bai, Spirit of Balance
 Herald of Eternal Dawn
@@ -213,6 +218,7 @@ Kavaron Skywarden
 Kitsune's Technique
 Klaw, Sonic Subjugator
 Knight Luminary
+Kraven the Hunter
 Krenko, Baron of Tin Street
 Krenko, Mob Boss
 Krumar Initiate
@@ -226,6 +232,7 @@ Leyline of the Guildpact
 Leyline of Transformation
 Lifecraft Engine
 Lilysplash Mentor
+Little Bear
 Living Brain, Mechanical Marvel
 Loading Zone
 Loki Laufeyson
@@ -420,6 +427,7 @@ Wanderbrine Trapper
 War Balloon
 War Machine, Legacy of Iron
 War Squeak
+Wargling
 Warrior's Sword
 Wary Watchdog
 Water Tribe Rallier
