@@ -604,7 +604,14 @@ directions.
 - **A SET plus a sort key that can TIE is a nondeterministic output.** Tied themes left
   in set-iteration order made an unchanged build produce different output every run.
   **Before sorting anything derived from a set, ask what happens when the key ties** —
-  make the key a total order. [G-54]
+  make the key a total order. **First LIVE violation, 2026-08-12: `deck.py similar`
+  answered differently on every run** (five `PYTHONHASHSEED` values, five outputs) —
+  `_deck_central_weights` built its weight vector by iterating `_central_themes()`, a
+  SET, and the display truncates to `shared[:5]`, so WHICH themes you were shown changed
+  run to run on the exact ✦ SPECIFIC overlaps G-47 says to grade from. **The fix is the
+  KEY, not the return type**: two callers do `ctags & _central_themes(...)`, so making it
+  a tuple is a TypeError. Fix the ORDER where order is consumed, and remember a float SUM
+  over a set is the same bug wearing arithmetic. [G-54]
 - **NO GATE BUILT AN ARGPARSE TREE, so a broken `--help` was invisible** for four days
   with three green workflows. `check_all` imports `deck` as a MODULE and calls `cmd_*`
   directly, so the CLI surface is covered separately by `tests/test_cli.py` and a CI
@@ -801,6 +808,31 @@ directions.
   exists to catch, in a spot it does not reach. `/decks` also counted LINES as `unique`.
   **When you find yourself writing a second loop over `cards` that compares against owned,
   call the helper instead.** [G-70]
+
+- **A MEMOIZED TABLE IS SHARED STATE, and a helper that mutates its ARGUMENT will mutate
+  it.** `_file_memo` hands every caller the same dict, and its docstring rested the whole
+  memo on "every caller treats these tables as READ-ONLY — verified by scanning all of
+  scripts/". Five sites in that same file were mutating them: `fetch_missing_mana` /
+  `fetch_missing_rarities` write into the dict they are GIVEN, and `cmd_stats`, `cmd_mana`,
+  `cmd_consistency`, `_do_swap` and `cmd_wildcards` were handing them the cached object.
+  Invisible on a one-shot CLI run; in the Flask editor — one process, many decks — deck B's
+  Stats tab computed its curve from costs deck A's Mana tab had live-fetched, so the editor
+  disagreed with a fresh `deck.py stats B` depending on click order. **Pass
+  `dict(load_*())` whenever a fetcher will touch it.** The transferable half: *a claim
+  about all callers is only as good as the last person who added one* — the property is
+  pinned behaviourally now (`TestMemoizedTablesAreNotMutated`), because a source scan is
+  what failed. [G-71]
+- **A CONTROL BUILT IN JAVASCRIPT IS A CONTROL ONLY IF IT GOES THROUGH `a11y()`.** Four
+  times now a click handler has been bound to a non-interactive node — the collection
+  pips (I-01), the deck-editor analysis tabs (S-2), and in 2026-08 the dashboard's
+  roster-triage Deck cell (an `<a>` with NO href, so not focusable) and the card finder's
+  `<span>` chips. **All three 2026-08 interface defects were in the GENERATED pages**
+  (`build_dashboard.py`, `build_gallery.py`), because `tests/test_templates.py` pins
+  `templates/` plus a few NAMED dashboard controls and cannot see a new one. When
+  a11y-ing a node inside a table, apply it in `sortableTable`'s `onRowExtra` — the
+  internal `redraw()` rebuilds `<tbody>` on every sort, discarding attributes set once.
+  Same file is where a hardcoded colour hides: `gallery.html`'s light mode painted a
+  literal `#0f1115` bar track on a near-white panel. [G-72]
 
 ## Known Issues
 
@@ -1024,13 +1056,21 @@ format.
      - Look at a deck card's build badge (buildable / N missing / N short)
      - Expand "Recently edited" — the +added / −removed delta lines
      - Paste any deck into the stale-deck panel — the in-sync / drifted text
+     - Then `gallery.html` in a LIGHT OS scheme (it has no toggle — it follows the OS):
+       the "Collection overview" bar tracks, each colour bar, and a card's ×N badge /
+       set-code label
    Expected: green/amber/red read clearly against the LIGHT panel background, are
    distinguishable from each other and from body text, AND each pill still reads as a
    bounded CHIP — a visible fill and border, not a loose coloured word. The TEXT moved
    onto `var(--ok)` / `var(--warn)` / `var(--bad)` at I-03; the FILLS and BORDERS
    followed at S-9, via `color-mix` off the same tokens (they had been dark-tuned
    literals whose ~1.3:1 edge disappeared over a white panel). A washed-out pill means
-   one regressed back off the tokens.
+   one regressed back off the tokens. **The gallery leg is NEW and its palette has never
+   been rendered by anyone**: the bar tracks must read as a light neutral (`--track`, not
+   the `#0f1115` literal they carried until BS5-10), every colour bar must be visible
+   against that track (`--W…--C` are mid-tone in light mode — the dark pastels vanish on
+   it), and the ×N / set-code plates stay deliberately DARK because they sit on card ART,
+   so check their ink is still light-on-dark rather than dark-on-dark.
 6. Phone width — dashboard AND editor | Subsystem: Presentation & Interface
    Steps:
      - Open `dashboard.html` at 390×844 (or a real phone); scroll top to bottom
@@ -1046,7 +1086,8 @@ format.
    row needed 472px inside the 350px a 390px viewport leaves.
 7. Keyboard-only traversal | Subsystem: Presentation & Interface
    Steps: in `dashboard.html`, using Tab / Shift-Tab only, reach a colour filter chip, a
-   quick-filter pill, a roster-table sort header, a section header (collapse it with
+   quick-filter pill, a roster-table sort header, **a Triage row's DECK NAME and a Card
+   finder CHIP** (both mouse-only until BS5-02/03), a section header (collapse it with
    Enter or Space) and a deck's ⤢ opener; open the modal, Tab through it, press Escape.
    On a deck card's tab strip try ← / →, and focus a wishlist card NAME to check the
    card image appears. Then the EDITOR (`make app`, `templates/collection.html`) colour
@@ -1056,7 +1097,10 @@ format.
    activate; ← / → move along a tab strip (S-2 made them real tablists); the card
    preview follows FOCUS, not just the mouse (S-7); removing a row leaves focus on the
    next row's ✕, never on `<body>` (S-6); Tab inside the modal never reaches the page
-   behind; Escape returns focus to the ⤢ that opened it. **Walk it once in each OS
+   behind; Escape returns focus to the ⤢ that opened it. The Triage deck name and the
+   Card finder chip must BOTH filter the deck list on Enter AND on Space, and the Triage
+   one must survive a SORT click (its a11y is applied per-redraw, so sorting and re-Tabbing
+   is the real test). **Walk it once in each OS
    colour scheme** — the editor pages follow `prefers-color-scheme` since S-8 and no
    longer snap to forced dark mid-walk. The MARKUP half is pinned by
    `tests/test_templates.py`; what needs a person is the perceptual part. Full step list,

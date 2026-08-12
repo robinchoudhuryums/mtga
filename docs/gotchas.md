@@ -2083,6 +2083,35 @@ was found by CHECKING the "restyle is template-only" claim (rebuild twice, diff 
 payload) rather than asserting it — worth keeping as a habit for any dashboard change,
 since a build-to-build diff is the only thing that makes this class visible.
 
+**The first LIVE violation of the rule, 2026-08-12 (broad-scan BS5-01).** The rule above
+was written and then broken, in a command a skill runs. `deck.py similar` produced a
+different output on every invocation:
+
+    $ for s in 1 2 3 4 5; do PYTHONHASHSEED=$s python3 scripts/deck.py similar 40 | md5sum; done
+    731be5ac…  0c6bffc8…  99b2adbb…  924ed4bb…  5b18b811…
+
+Three sites, one cause. `_deck_central_weights` returned `{t: tw[t] for t in
+_central_themes(tw)}` — a dict built by iterating a SET, so its key order was hash-seed
+dependent; `cmd_similar` then sorted `set(aw) & set(bw)` on `-min(aw[t], bw[t])`, a key
+that ties constantly; and `_theme_cosine` summed `a[t]*b[t]` over a set, so even the
+similarity VALUE carried float-addition jitter that could flip a row-sort tie.
+
+Why it mattered rather than merely being untidy: the display prints `shared[:5]` and the
+⚠ headline names `top[5][:3]`, so the truncation decided WHICH themes a reader saw. Deck
+40 read `✦Druid` against 40a on one run and `removal` on the next — and G-47's standing
+instruction for this command is "read the ✦ SPECIFIC overlaps, not the number".
+
+**Two things to carry forward.** First, the fix is the KEY, never the return type: two
+callers do `ctags & _central_themes(theme_w)`, so returning a tuple would be a TypeError,
+and the honest fix is a total order at each site that CONSUMES order (sorted dict build,
+`(-weight, t)` tie-break, `sorted(shared)` before the sum). Second, a float SUM over a set
+is this same bug wearing arithmetic — associativity makes the result order-dependent in
+the last bits, which is enough to reorder a sort. A determinism check is cheap: run the
+command twice under different `PYTHONHASHSEED` values and diff. Doing that across the
+whole CLI found `similar` and nothing else — `stats`, `cuts`, `tier`, `suggest`, `audit`,
+`wildcards`, `screen`, `brawl`, `rotation`, `wishlist --rank`, `pool.py` and `query.py`
+were all already stable.
+
 
 ## [G-55] NO GATE BUILT AN ARGPARSE TREE, so a broken `--help` was invisible
 
@@ -3903,3 +3932,85 @@ and `deck.py` would then report differently from `/decks`.
 **The generalizable rule:** when you are about to write a second loop over a deck's
 `cards` that compares quantities against owned counts, call the helper. The first loop was
 right for ten months and still produced two wrong surfaces.
+
+
+## [G-71] A memoized table is shared state, and a mutating helper will mutate it
+
+**A MEMOIZED TABLE IS SHARED STATE, and a helper that mutates its ARGUMENT will mutate
+it.** `deck._file_memo` exists for a good reason — the reference CSVs were re-parsed on
+every loader call, 65 decks × ~0.31s in a roster pass, which is why the rationale sweep
+looked too expensive to run automatically and therefore never ran (see G-26). It takes
+`check_all` from ~23s to ~4s. The cost is that every caller now receives THE SAME dict.
+
+Its docstring acknowledged that and made a claim about it:
+
+> Safe because every caller treats these tables as READ-ONLY — **verified by scanning all
+> of scripts/ for external mutation of a loader's result**; if you ever need to mutate one,
+> copy it first, since the dict is now shared.
+
+**The scan had missed five call sites in the same file** (broad-scan BS5-13).
+`fetch_missing_mana(names, mana)` and `fetch_missing_rarities(names, rarities)` write into
+the dict they are GIVEN — their whole job is to fill gaps — and `cmd_stats`, `cmd_mana`,
+`cmd_consistency`, `_do_swap` and `cmd_wildcards` were each handing them `load_mana()` /
+`load_rarities()` directly. Demonstrated:
+
+    >>> m1 = deck.load_mana(); m1['__probe__'] = ('{X}', 99)
+    >>> '__probe__' in deck.load_mana()
+    True
+
+**Why it stayed invisible, and where it was not.** A one-shot CLI run exits before anything
+else reads the polluted table, and `build_dashboard._no_network()` stubs both fetchers out,
+so the published artifact was never affected. The surface that DOES notice is the Flask
+editor: `/api/deck/analysis/<id>/<kind>` serves many decks from one long-lived process, so
+opening deck A's Mana tab live-fetched costs into the shared table and deck B's Stats tab
+then computed its curve from them — an answer that depended on what you had clicked earlier
+in the session, and that disagreed with a fresh `deck.py stats B`.
+
+**The fix** is the docstring's own prescription: the five sites pass `dict(load_mana())` /
+`dict(load_rarities())`. A shallow copy suffices (values are tuples and strings) and costs
+sub-milliseconds against the ~300ms parse the memo exists to avoid.
+
+**The transferable half is about the CLAIM, not the bug.** "Verified by scanning all of
+scripts/" is a statement about a moment, and it decays the instant someone adds a caller —
+the same shape as G-63's "defer on the MECHANISM, never on the census" and G-53's
+capability-nothing-reaches. So the property is pinned BEHAVIOURALLY now
+(`tests/test_deck.py::TestMemoizedTablesAreNotMutated` stubs the fetchers with ones that
+write, runs the real `cmd_*`, and asserts the shared table came back unchanged) rather than
+by a second source scan — because a source scan is precisely what failed. All four pins
+fail with `assert not True` against the unfixed module.
+
+
+## [G-72] A control built in JavaScript is a control only if it goes through a11y()
+
+**A CONTROL BUILT IN JAVASCRIPT IS A CONTROL ONLY IF IT GOES THROUGH `a11y()`.** A `<div>`,
+`<span>` or href-less `<a>` carrying a click handler is invisible to a keyboard and to
+assistive tech: no role, no tab stop, no Enter/Space. This project has now hit that four
+times, and the pattern in WHERE is the useful part:
+
+| where | what | found |
+|---|---|---|
+| `templates/collection.html` | six colour filter pips | I-01 |
+| `templates/deck.html` | the four Analysis tabs | S-2 |
+| `build_dashboard.py` | the roster-triage Deck cell (`<a>` with no href) | BS5-02 |
+| `build_dashboard.py` | the card finder's `<span>` chips | BS5-03 |
+
+**All three 2026-08 interface defects were in the GENERATED pages** — the two above plus
+BS5-10, where `gallery.html`'s light mode painted a hardcoded `#0f1115` bar track onto a
+near-white panel. That is not coincidence. `tests/test_templates.py` parses `templates/`
+with `html.parser` and can assert "this element is a control"; for `build_dashboard.py` and
+`build_gallery.py` the markup does not exist until the browser runs, so the file can only
+be pinned by SOURCE assertions on individual named controls — and a control nobody thought
+to name is unpinned by construction. The triage table's own note even told the user "Click
+a deck to filter the list below" while that click was mouse-only.
+
+**Two mechanics worth remembering.** First, `a11y(node, opts)` is the single definition of
+what a control is on that page — it sets role (or preserves a semantic one with
+`role:null`), `tabIndex = 0`, the aria state, and an Enter/Space handler that routes through
+`.click()` so the click handler stays the only copy of the behaviour. Reuse it; do not
+hand-write `tabindex` next to a listener. Second, **inside a sortable table apply it in
+`onRowExtra`, not after `appendChild`**: `sortableTable`'s internal `redraw()` rebuilds
+`<tbody>` on every sort click, so attributes applied once are discarded by the first sort —
+which would have made the fix look correct and fail on the second interaction.
+
+The perceptual halves (focus-ring visibility, the gallery's light palette) cannot be proven
+from a file and live in Regression Scenarios 5 and 7.

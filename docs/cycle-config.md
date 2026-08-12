@@ -353,6 +353,12 @@ Steps:
   - In `dashboard.html`, using Tab / Shift-Tab only, reach in order: a color filter
     chip, a quick-filter pill, a roster-table sort header, a section header (collapse
     it with Enter or Space), and a deck's ⤢ detail opener
+  - In the Triage table, Tab to a row's DECK NAME and activate it with Enter, then with
+    Space; SORT the table by any header and Tab to a deck name again. Both were
+    mouse-only until BS5-02 (an `<a>` with no href is not focusable), and the fix is
+    applied per-redraw, so the post-sort pass is the one that actually tests it
+  - In the Card finder, type two characters and Tab to a deck CHIP; Enter and Space must
+    both filter the deck list (bare `<span>`s until BS5-03)
   - Open the modal, Tab through it, press Escape
   - On a deck card's tab strip (Craft / Stats / Mana / Legal / Cuts), press ← and →
   - Tab to a wishlist card NAME and check the card image appears without a mouse
