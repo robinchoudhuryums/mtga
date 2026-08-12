@@ -1,0 +1,113 @@
+#: name: Warg and Woodland — Crooked Way
+#: format: Standard
+#: colors: GWB
+#: based-on: deck.txt
+#: plan: midrange
+#: tier: B — PROVISIONAL, at the measurable floor. Interaction reads 4 +1? and card
+#: tier: advantage 1, and both under-read (K-12): The Chief Warg draws on every
+#: tier: satisfied attack, Kraven draws when their best creature dies, Wolfbat rebuys
+#: tier: itself on the second draw — all shapes the classifier cannot see. The honest
+#: tier: cost is the mana: Tolsimir reads 65% and Head of the Hunt 74% on curve, and
+#: tier: the Karsten targets (18 W / 20 B) are unreachable in a green-primary three-
+#: tier: colour deck, so BOTH are graded as cast-late cards unless a creature fixer is
+#: tier: online. That bet — Abzan Devotee and Great Divide Guide turning the whole
+#: tier: manabase any-colour — is the deck's identity and its failure mode at once: it
+#: tier: dies to a removal spell aimed at a mana creature. Unplayed; re-grade after
+#: tier: real games say how often the fixers survive.
+#: archetype: ABZAN CONVERGENCE — the pile's three ideas run TOGETHER instead of split:
+#: archetype: Torgal grows every Human off the Dog/Wolf count (13 Humans, and the Dogs
+#: archetype: the other builds ignore — Ainok Wayfarer and Abzan Devotee — count for
+#: archetype: him); Tifa, Dancing from Dark to Dawn and Beorn-style landfall cash the
+#: archetype: land count; and THROUGH THE FOREST GATE is the convergence card — top
+#: archetype: twenty, EVERY land among them enters, each one a landfall trigger, so one
+#: archetype: cast can double Tifa several times and hand Dancing a Bear per land. The
+#: archetype: MANA PLAN IS CREATURES, not just lands: Abzan Devotee ({1}: W, B or G) and
+#: archetype: Great Divide Guide (every land AND Ally taps for any colour) are what make
+#: archetype: three colours castable, and Suki feeds Guide by making more Allies —
+#: archetype: tapped-and-attacking ones Veteran Beastrider untaps at end step.
+#: archetype: THE BLACK SEAT is the recursion loop: Along the Crooked Way returns a
+#: archetype: creature on entry and amasses a Goblin army every time a creature card
+#: archetype: LEAVES the graveyard — which Perennation, Badlands Revival, Scrounge for
+#: archetype: Eternity, Roamer's Routine's harmonize and Wolfbat's self-rebuy all cause.
+#: archetype: DISTINCTNESS: the parent is the Ferocious gate deck and 69a the mono-green
+#: archetype: land-recursion engine; this is the only build where the tribal counters,
+#: archetype: the landfall payoffs and a graveyard loop share one list, and the only one
+#: archetype: in three colours.
+#: protect: Torgal, A Fine Hound; Through the Forest Gate; Along the Crooked Way; Tifa Lockhart; Suki, Kyoshi Warrior; Tolsimir, Midnight's Light
+#: notes: BUILT 2026-08-12 FROM THE OWNER'S CONCEPT after the GW read was challenged:
+#: notes: the Torgal chain (Humans that fix mana, grown by the Dog/Wolf board) plus the
+#: notes: landfall explosion plus the black Wolf package, as one deck rather than three.
+#: notes: WYLIE DUKE WAS THE ONE CONCEPT CARD DECLINED, on a rules read, not a judgment
+#: notes: call: his draw triggers "whenever he BECOMES TAPPED", he has vigilance so
+#: notes: attacking never taps him, and Great Divide Guide grants its tap ability to
+#: notes: lands and ALLIES — Wylie is a Human Ranger, not an Ally. Nothing in this list
+#: notes: taps him. He comes back the moment a saddle, crew or station cost does.
+#: notes: TOLSIMIR AND HEAD OF THE HUNT ARE KEPT AT KNOWN-BAD CURVE NUMBERS (65% / 74%)
+#: notes: because both are concept cards and both get fixed by the creature-mana plan;
+#: notes: the numbers above are the no-fixer floor, not the expected case. If play shows
+#: notes: the fixers die too often, the first manabase move is +1 Sandsteppe Citadel
+#: notes: over a Forest, and the first cut consideration is Tolsimir, whose {W}{W} is
+#: notes: the single hardest cost in the deck.
+#: notes: FIVE BASIC-FETCH EFFECTS AGAINST 8 BASICS (Fenrir I, Grow from the Ashes,
+#: notes: Roamer's Routine, Scrounge's Lander, The Earth King's attack trigger) — the
+#: notes: same tension deck 13 records, eased one notch when Map the Frontier left for
+#: notes: The Mountain-king's Return. Acceptable because the fetches are also landfall
+#: notes: fodder, but do not trim basics below 8.
+#: notes: THE MOUNTAIN-KING'S RETURN IS A LOOP PIECE, NOT JUST VALUE (owner's find,
+#: notes: 2026-08-12). Chapter I loots — the discard STOCKS the graveyard the black
+#: notes: seat feeds on, and a discarded nonland leaves a 1/1 Soldier behind. Chapter
+#: notes: II returns a creature MV 3 or less — 15 copies qualify here, and the two
+#: notes: that matter are Abzan Devotee and Great Divide Guide: it rebuys exactly the
+#: notes: mana creature whose death is this deck's stated failure mode. And because
+#: notes: the creature LEAVES the graveyard, chapter II itself triggers Along the
+#: notes: Crooked Way's amass. In over Map the Frontier (`cuts` fit 0).
+#: notes: ALONG THE CROOKED WAY'S AMASS RIDES THE LOOP, NOT MILL: this build stocks the
+#: notes: graveyard from combat and from Ainok Wayfarer / Vastlands Scavenger, then
+#: notes: every recursion effect double-dips — the creature comes back AND the Goblin
+#: notes: army grows. The Orcs-gain-menace mode is a mana sink the deck can actually
+#: notes: pay late.
+
+1 Torgal, A Fine Hound (FIN) 208
+1 Tifa Lockhart (FIN) 206
+1 Raucous Audience (TLA) 190
+1 Great Divide Guide (TLA) 181
+1 Suki, Kyoshi Warrior (TLA) 243
+1 Veteran Beastrider (DFT) 226
+1 Rinoa Heartilly (FIN) 237
+1 The Earth King (TLA) 172
+1 Ainok Wayfarer (TDM) 134
+1 Abzan Devotee (TDM) 68
+1 Wolfbat (TLA) 122
+1 Duskwatch Hunter (HOB) 153
+1 Chief Warg's Company (HOB) 151
+1 Head of the Hunt (HOB) 75
+1 Tolsimir, Midnight's Light (MKM) 236
+1 Spider-Ham, Peter Porker (SPM) 114
+1 Kraven the Hunter (SPM) 133
+1 Wildborn Preserver (FDN) 650
+1 Vastlands Scavenger // Bind to Life (SOS) 166
+1 Dancing from Dark to Dawn (HOB) 123
+1 Through the Forest Gate (HOB) 137
+1 Summon: Fenrir (FIN) 203
+1 The Mountain-king's Return (HOB) 22
+1 Grow from the Ashes (FDN) 225
+1 The Chief Warg (HOB) 150
+1 Zimone's Experiment (SOS) 169
+1 Along the Crooked Way (HOB) 60
+1 Perennation (TDM) 212
+1 Badlands Revival (OTJ) 194
+1 Scrounge for Eternity (EOE) 114
+1 Roamer's Routine (TDM) 154
+1 Bite Down (FDN) 212
+1 Fell (BLB) 95
+1 Warg Tactics (HOB) 139
+1 Withering Torment (DSK) 124
+4 Overgrown Tomb (TRK) 289
+4 Temple Garden (TRK) 301
+4 Deathcap Glade (SOS) 253
+3 Sandsteppe Citadel (TDM) 266
+1 Gathering Place (MSH) 266
+1 Bleachbone Verge (DFT) 250
+4 Forest (TRK) 325
+2 Swamp (TRK) 321
+2 Plains (TRK) 317
