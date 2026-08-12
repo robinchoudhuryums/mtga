@@ -58,6 +58,7 @@ REQUIRED = [
     ("deck", "_interaction_count"), ("deck", "role_tally"),
     ("deck", "_power_seed"), ("wishlist", "_seed_power"),
     ("deck", "owned_role_fillers"), ("deck", "craft_role_fillers"),
+    ("deck", "deck_requirements"), ("deck", "deck_build_gap"),
 ]
 
 
@@ -311,8 +312,83 @@ def _agree_role_fillers(errs):
                     + "\n    ".join(bad[:8]))
 
 
+def _agree_buildability(errs):
+    """QUESTION: how many distinct cards can this deck's collection not cover?
+
+    A: `deck_build_gap` — the shared definition `cmd_check`, `check_all`, `app.py`'s
+       `/decks`, `cmd_list`, `deck_quality_vector` and the dashboard all route through.
+    B: the per-LINE comparison every one of those surfaces was ORIGINALLY written with.
+
+    This is the question with the worst drift record in the repo and it had no pair. G-70
+    says it has "one definition" — and when that rule was written, three surfaces called
+    the helper and three others still re-derived it (BS4-13 fixed two, broad-scan BS5-04
+    found the remaining three: `cmd_list`, `deck_quality_vector`, `build_dashboard`). Two
+    of the three keyed their per-name aggregation on the raw DISPLAY name while
+    `deck_requirements` keys lowercase, so they agreed only because no roster deck happens
+    to spell one card two ways.
+
+    Checked on the LIVE ROSTER against a deliberately WRONG implementation — the per-line
+    loop — so the pair fails if the helper ever regresses TO it, and additionally on a
+    synthetic split-line deck, which is the case no roster deck currently exercises and
+    therefore the one a roster-only check cannot see."""
+    _by_key, _by_name, qty = deck.load_collection()
+
+    def per_line(cards, owned_idx):
+        """The pre-G-70 shape: compare each LINE against total owned."""
+        missing = short = 0
+        for q, n, _s, _c in cards:
+            have, found = deck.owned(owned_idx, n)
+            if not found:
+                missing += 1
+            elif have < q:
+                short += 1
+        return missing, short
+
+    # (1) The synthetic case the roster cannot supply: one card over two lines. 2+2 of a
+    #     card owned 3 is SHORT, and the per-line reading calls it buildable.
+    split = [(2, "Duress", "M20", "97"), (2, "Duress", "DMU", "89")]
+    if deck.deck_build_gap(split, {"duress": 3}) != (0, 1):
+        errs.append("deck_build_gap no longer sums a card split across two lines — "
+                    "'do I own this deck' is a TOTAL-need question (G-70). Got "
+                    f"{deck.deck_build_gap(split, {'duress': 3})}, expected (0, 1).")
+    if per_line(split, {"duress": 3}) == deck.deck_build_gap(split, {"duress": 3}):
+        errs.append("the per-line control now AGREES with deck_build_gap on a split-line "
+                    "deck, so this pair is asserting nothing — the control is wrong.")
+
+    # (2) CASE-insensitivity, the axis the three re-derivations got wrong: two spellings
+    #     of one card must aggregate.
+    cased = [(2, "duress", "M20", "97"), (2, "Duress", "DMU", "89")]
+    if deck.deck_build_gap(cased, {"duress": 3}) != (0, 1):
+        errs.append("deck_build_gap stopped folding two CASINGS of one card together — "
+                    "that is the axis cmd_list / deck_quality_vector / build_dashboard "
+                    "each got wrong by keying on the display name (BS5-04).")
+
+    # (3) The live roster: every deck's summary must match a fresh walk of the canonical
+    #     requirements, so a change to either half shows up here.
+    bad = []
+    for d in deck.roster_decks():
+        _meta, cards = deck.parse_deck_file(d["path"])
+        if not cards:
+            continue
+        a = deck.deck_build_gap(cards, qty)
+        miss = shrt = 0
+        for _nl, n, _s, req in deck.deck_requirements(cards):
+            have, found = deck.owned(qty, n)
+            if not found:
+                miss += 1
+            elif have < req:
+                shrt += 1
+        if a != (miss, shrt):
+            bad.append(f"{d['id']}: deck_build_gap={a} vs deck_requirements walk={(miss, shrt)}")
+    if bad:
+        errs.append("the buildability summary disagrees with the requirements it "
+                    "summarises — `check` and every surface reading the pair would report "
+                    "different craft targets.\n    " + "\n    ".join(bad[:6]))
+
+
 PAIRS = (_agree_weakest_cut, _agree_legality, _agree_owned,
-         _agree_interaction, _agree_power_seed, _agree_role_fillers)
+         _agree_interaction, _agree_power_seed, _agree_role_fillers,
+         _agree_buildability)
 
 
 def check():

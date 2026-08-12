@@ -222,21 +222,20 @@ def collect():
     # otherwise the triage table leads with the same permanent false positives (F-06).
     for d in deckmod.roster_decks():
         meta, cards = deckmod.parse_deck_file(d["path"])
-        need, total = {}, 0
-        for q, n, s, c in cards:
-            total += q
-            if n.lower() in deckmod.BASICS:
-                continue
-            need[n] = need.get(n, 0) + q
-        missing = short = 0
+        total = sum(q for q, *_ in cards)
+        # Counts through the ONE definition (G-70). This was the third surface still
+        # re-deriving them after BS4-13 consolidated two, and it keyed the per-name
+        # aggregation on the raw DISPLAY name where `deck_requirements` keys lowercase
+        # (broad-scan BS5-04). No basics special-case is needed — `deck.owned()` reports
+        # a basic as unlimited, which is why `deck_build_gap` does not carry one either.
+        missing, short = deckmod.deck_build_gap(cards, qty)
+        # The per-card copies-short list has no shared helper (nothing else needs it), but
+        # it iterates the SAME canonical requirements, so it cannot disagree with the
+        # counts above about what the deck needs.
         shorts = []
-        for n, req in need.items():
-            have, found = deckmod.owned(qty, n)
+        for _nl, n, _s, req in deckmod.deck_requirements(cards):
+            have, _found = deckmod.owned(qty, n)
             miss = max(0, req - have)
-            if not found:
-                missing += 1
-            elif have < req:
-                short += 1
             if miss > 0:
                 shorts.append((n, miss))
         ok = (missing == 0 and short == 0)

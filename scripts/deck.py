@@ -451,19 +451,18 @@ def cmd_list(_args):
         for d in group:
             _, cards = parse_deck_file(d["path"])
             total = sum(q for q, *_ in cards)
-            # Aggregate per NAME before comparing against owned — cmd_check's rule:
-            # comparing line-by-line, a card split across two lines of 2 with 3
-            # owned read "OK " here while `check` reported it short (broad-scan
-            # batch 5; latent — no current deck splits a card across lines).
-            need = {}
-            for q, n, s, c in cards:
-                need[n] = need.get(n, 0) + q
-            short = 0
-            for n, req in need.items():
-                have, found = owned(by_name_qty, n)
-                if not found or have < req:
-                    short += 1
-            status = "OK " if short == 0 else f"{short} short"
+            # Through the ONE definition (G-70). This loop aggregated per name — the
+            # rule — but keyed on the raw DISPLAY name while `deck_requirements` keys
+            # lowercase, so two lines differing only in case would not have summed here
+            # and would have summed in `check`. G-70 named three surfaces and
+            # consolidated two; this was the third, still re-deriving (broad-scan BS5-04).
+            # `missing` and `short` are also reported SEPARATELY now: this line used to
+            # fold them into one "N short", so a card you own none of and a card you are
+            # one copy short of read identically against a `check` that distinguishes them.
+            missing, short = deck_build_gap(cards, by_name_qty)
+            status = ("OK " if not (missing or short)
+                      else ", ".join(x for x in ((f"{missing} missing" if missing else ""),
+                                                 (f"{short} short" if short else "")) if x))
             label = d["name"] or os.path.basename(os.path.dirname(d["path"])) or d["id"]
             tag = "  └─ variant" if d["variant"] else "CORE"
             # `list` shows EVERY deck (it's the index), but marks the ones roster-wide
@@ -8681,23 +8680,13 @@ def deck_quality_vector(d):
     dmeta, cards = parse_deck_file(d["path"])
     mana, carddata, cardmeta = load_mana(), load_card_data(), load_card_meta()
     _, _, qty = load_collection()
-    missing = short = 0
-    # Ownership per aggregated NAME, not per line (BS2-22): a card split across two
-    # lines (two printings) must compare its TOTAL need against total owned — the
-    # exact bug cmd_list records as fixed and cmd_check aggregates against; this
-    # sibling was missed, so `buildable` here (feeding preflight's verdict and
-    # `quality --vs`'s "became UNbuildable" flag) could disagree with `check`.
-    need = {}
-    for q, n, s, c in cards:
-        if n.lower() in BASICS:
-            continue
-        need[n] = need.get(n, 0) + q
-    for n, req in need.items():
-        have, inlib = owned(qty, n)
-        if not inlib:
-            missing += 1
-        elif have < req:
-            short += 1
+    # Through the ONE definition (G-70). BS2-22 fixed the per-LINE comparison here and
+    # left a hand-rolled per-name loop behind, keyed on the raw DISPLAY name where
+    # `deck_requirements` keys lowercase — so this and `check` could still disagree on a
+    # deck listing one card under two spellings, on the number feeding `preflight`'s
+    # verdict and `quality --vs`'s "became UNbuildable" flag (broad-scan BS5-04). Basics
+    # need no special case: `owned()` already reports them unlimited.
+    missing, short = deck_build_gap(cards, qty)
     theme_w, mvs, early = {}, [], 0
     creatures = reach = 0
     for q, n, s, c in cards:

@@ -6,6 +6,51 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #4, Batch A & B (2026-08-12)
+
+Second implementation pass of the broad-scan-4 cycle, after `/sync-docs`. Gates green:
+`check_all` all invariants hold with **ZERO soft warnings**, **1270 tests**, and
+`check_agreement` now reports **7 questions** instead of 6. Block:
+`.cycle/blocks/2026-08-broad-scan4-batchAB-broad-implement.md`.
+
+**Batch A was not implementable and that is the honest outcome.** A1 (install the launchd
+rolling archive), A2 (run `import_collection.py` against a real tracker export) and A3 (the
+two visual checks) are all human-only — they need `launchctl` on the Mac running Arena, an
+export file only the owner has, and a person at a browser. Instead of skipping A1, its
+install block was VERIFIED end to end here: the Stage 0 snapshot script ran against a
+synthetic `Player.log` tree and behaved correctly across the case that matters (a relaunch
+that wipes `Player.log` leaves the archive intact and appends the new match), the plist
+parses, and the resulting archive feeds `parse_matches.py` cleanly. **The block is correct
+as written — it just needs running.** A1 remains the most time-sensitive item in the repo:
+every Arena launch destroys an unextracted session.
+
+**BS5-04 closed the gap G-70 claimed was already closed.** Buildability had three MORE
+re-derivations past the two BS4-13 consolidated (`cmd_list`, `deck_quality_vector`,
+`build_dashboard.collect`), and two of them keyed the per-name aggregation on the raw
+DISPLAY name where `deck_requirements` keys lowercase — so they agreed only because no
+roster deck spells one card two ways. All three route through the helper now, and the
+question finally has an agreement pair. A visible side-effect: `deck.py list` used to fold
+missing and short into one "N short" label, so deck 44 read "12 short" where `check` said
+"12 not in library"; it reads "12 missing" now.
+
+**BS5-12 WAS A FALSE FINDING and the way it was wrong is the useful part.**
+`collection.html` already joins its row key with `'\x01'`, a control character that cannot
+appear in a CSV cell. I read it as `join('')` because the Read tool renders a raw 0x01 byte
+invisibly — and then "confirmed" it with a Python collision check that reproduced my
+MISREADING rather than the code. The measurement looked like verification and was a second
+copy of the assumption. Worse, the fix I proposed (join on a space) would have introduced
+the exact ambiguity I claimed to be removing, since a space CAN appear in a card name.
+**Read the bytes when a finding is about a delimiter.**
+
+**Also worth keeping:** the rebuilt `dashboard.html` differs from the committed one by 300
+bytes, and I checked why rather than assuming — it is `delta_windows` only, because the
+7-day git base slid overnight. Every buildability field is identical across all 101 decks,
+which is what makes the refactor provably behaviour-preserving.
+
+**Where I left off:** Batches A (owner), C (determinism gate, a11y scan, BS5-07), D (BS5-06,
+BS5-08, BS5-09, retire the historical plan doc) and E (strategic) are untouched and remain
+prioritised as listed. Two doc updates are queued in the block for the next `/sync-docs`.
+
 ## Session — broad scan #4, top-5 implementation (2026-08-12)
 
 A full three-stage `/broad-scan` producing findings **BS5-01…BS5-13**, then one
