@@ -21,7 +21,6 @@ Airbending Lesson
 Ajani, Caller of the Pride
 Alien Invasion
 Alpharael, Stonechosen
-Ambush Wolf
 Ancient Adamantoise
 Angel of Vitality
 Angelic Destiny
@@ -103,6 +102,7 @@ Devastating Onslaught
 Diligent Zookeeper
 Donatello, Mutant Mechanic
 Donatello, Turtle Techie
+Doubling Season
 Draconautics Engineer
 Dragon Fodder
 Dragoon's Lance
@@ -110,7 +110,6 @@ Dragoon's Wyvern
 Dread Summons
 Dream Harvest
 Drix Fatemaker
-Drover Grizzly
 Duskwatch Hunter
 Dwynen's Elite
 Earth Kingdom General

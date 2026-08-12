@@ -4,7 +4,7 @@
 #: plan: midrange
 #: tier: B — PROVISIONAL, and deliberately graded UNDER the metrics floor, which reads
 #: tier: A. The floor is earned honestly (interaction 5, card advantage 5) but it cannot
-#: tier: see this deck's single point of failure: 8 card names / 13 copies do nothing
+#: tier: see this deck's single point of failure: 8 card names / 11 copies do nothing
 #: tier: until a power-4 body is on the board, and only 7 creatures are PRINTED at power
 #: tier: 4 or greater. One well-timed removal spell on the enabler switches off a third
 #: tier: of the deck at once, which is not a weakness any deck at A carries. Against
@@ -17,9 +17,9 @@
 #: archetype: GOLGARI FEROCIOUS — a Wolf tribal shell whose payoffs are gated on "a
 #: archetype: creature with power 4 or greater," and a Bear package that exists to TURN
 #: archetype: THAT GATE ON. The Bears are the cheapest reliable way to satisfy it:
-#: archetype: Vastlands Scavenger is a 4/4 deathtouch on turn three, Drover Grizzly a 4/2
-#: archetype: on three, The Earth King arrives with a 4/4 Bear token, Beorn the Fierce is
-#: archetype: a 6/6. Beorn is the joint — he pumps Bears AND makes one creature per
+#: archetype: Vastlands Scavenger is a 4/4 deathtouch on turn three, Leatherhead a 5/4 on
+#: archetype: four, The Earth King arrives with a 4/4 Bear token, Beorn the Fierce is a
+#: archetype: 6/6. Beorn is the joint — he pumps Bears AND makes one creature per
 #: archetype: combat into a Bear, so a Wolf becomes a Bear becomes a power-4 body becomes
 #: archetype: the enabler — and Spider-Ham pumps both tribes at once. The DISTINCTIVENESS
 #: archetype: is the gate, not the tribe: no other roster deck is built around a
@@ -48,14 +48,38 @@
 #: notes: Inspiring Call is the one card that also cashes them for cards.
 #: notes: Voja, Jaws of the Conclave was in the pile and is {2}{R}{G}{W} — uncastable in
 #: notes: any two-colour build of this pile, not merely off-plan.
+#: notes: WARGLING TRIMMED 4 -> 2 (2026-08-12) AND THE PRINCIPLE GENERALISES: Wargling is
+#: notes: a gate CONSUMER — a vanilla 2/2 until a power-4 body exists — so drawing
+#: notes: multiples stacks cards that all wait on the same trigger, which is the deck's
+#: notes: stated failure mode in miniature. Its trample mode is also redundant now that
+#: notes: Garruk's Uprising grants it team-wide. The two slots bought gate PROVIDERS
+#: notes: instead: GOLDVEIN HYDRA ({X}{G}) has HASTE, so it satisfies Ferocious the turn
+#: notes: it lands rather than the turn after — the gate is checked at attack time — and
+#: notes: its death Treasures help pay Head of the Hunt's {B}{B}, the deck's worst
+#: notes: cast-on-curve figure. WILDBORN PRESERVER grows itself at instant speed off
+#: notes: every non-Human creature entering, and with only 3 Humans in the list that is
+#: notes: nearly every body plus every Wolf token. Wolf count 17 -> 15, so Chief Warg's
+#: notes: Company's "two or more other Wolves" clause is unaffected.
+#: notes: A THIRD WARGLING CUT WAS CONSIDERED AND DECLINED. Raucous Audience is another
+#: notes: gate consumer and the deck wants no ramp (24 lands against avg MV 2.97).
+#: notes: ALONG THE CROOKED WAY is the sharper lesson: its repeatable half amasses
+#: notes: "whenever a creature card LEAVES your graveyard", and this list causes that
+#: notes: ZERO times — Lumra returns LAND cards. It is not a weak card, it is a card
+#: notes: whose value lives in a deck property this deck lacks; variant 69b has six such
+#: notes: triggers and 21 targets, and runs it. If a third copy ever goes, Wolfbat is
+#: notes: the pick — it holds the Wolf count and its self-rebuy is live off this deck's
+#: notes: second-draw effects.
 
 # ── Wolves ──────────────────────────────────────────
 1 Nighthowl Pursuer (HOB) 78
-4 Wargling (HOB) 140
+1 Wargling (HOB) 140
+1 Wildborn Preserver (FDN) 650
+1 Goldvein Hydra (OTJ) 167
 2 Bejeweled Warg (HOB) 117
-2 Ravening Warg (HOB) 80
+1 Ravening Warg (HOB) 80
+1 The Earth Crystal (FIN) 184
 1 Duskwatch Hunter (HOB) 153
-1 Ambush Wolf (FDN) 98
+1 Leatherhead, Swamp Stalker (TMT) 117
 1 Summon: Fenrir (FIN) 203
 1 Chief Warg's Company (HOB) 151
 1 The Chief Warg (HOB) 150
@@ -63,9 +87,10 @@
 2 Wilderland Scrounger (HOB) 141
 
 # ── Bears (the Ferocious enablers) ──────────────────
+1 Moon-Vigil Adherents (ECL) 184
 1 Vastlands Scavenger // Bind to Life (SOS) 166
 1 Little Bear (HOB) 128
-1 Drover Grizzly (OTJ) 161
+1 Germination Practicum (SOS) 149
 1 The Earth King (TLA) 172
 1 Beorn the Fierce (HOB) 119
 1 Lumra, Bellow of the Woods (BLB) 183
@@ -79,13 +104,13 @@
 1 Dancing from Dark to Dawn (HOB) 123
 
 # ── Card advantage off the gate ─────────────────────
+1 Radagast of Rhosgobel (HOB) 136
 1 Garruk's Uprising (M21) 186
 1 Inspiring Call (TLE) 168
 
 # ── Interaction ─────────────────────────────────────
 1 Hunter's Talent (BLB) 179
 1 Warg Tactics (HOB) 139
-1 Bite Down (FDN) 212
 1 Felling Blow (FDN) 105
 1 Unforgiving Aim (ECL) 200
 
