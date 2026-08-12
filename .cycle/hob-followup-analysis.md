@@ -56,3 +56,68 @@ below that leans on "the rest of the deck" is a human read, not a tool output.
   it is better here than in deck 50a, which cut it).
 - **Variant signal: none.** Every card slots into an existing family member; no coherent
   cluster is being rejected for the same reason.
+
+## 4. Running verdicts
+
+Legend: `★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out`
+
+| Card | 69 Ferocious | 69a Lands | 69b Convergence | Note |
+|---|---|---|---|---|
+| The Earth Crystal | ★★★ | ★★ | ★ | F3. 17 feeders in 69 + {1} off ~85%-green spells. Best doubler for 69. |
+| Germination Practicum | ★★★ | ★ | ★★ | Two counters on EACH of 27 creatures, Paradigm = free recast every turn. The counters PAYOFF. |
+| Selfless Safewright | ★★★ | ◇ | ★ | F2 provider at FLASH speed + names Wolf (15 bodies) for hexproof/indestructible vs a wipe. Convoke is cheap in a wide deck. |
+| Leatherhead, Swamp Stalker | ★★★ | ★ | ★ | 5/4 provider, hexproof counter (protection 2), and 69's SECOND noncreature answer. |
+| Vizier of the Menagerie | ★ | ★ | ★★★ | F5. "Spend mana of any type to cast creature spells" fixes every creature in 3-colour 69b; top-of-library feeds card-adv 1. |
+| Doubling Season | ★★ | △ | ★★★ | 69b: 10 token + 9 counter enablers — doubles Suki's Allies, Torgal's counters, Crooked Way's amass. |
+| Diamond Weapon | ✗ | ★★★ | ✗ | F4. {1} less per permanent in graveyard; 69a mills 4–7 at a time. 8/8 reach, immune to combat damage. Only 69a can cast it cheap. |
+| Harmonious Grovestrider | ★ | ★★★ | ◇ | 26 lands → 6/6+ with ward 2. Natural 69a body. |
+| Mightform Harmonizer | ★ | ★★★ | ◇ | 4/4 + landfall power-doubling; Traveling Chocobo doubles the trigger. |
+| Groundchuck & Dirtbag | ★★ | ★★★ | ◇ | 8/8 trample; land-tap doubler against 26 lands and ~1 creature mana source. |
+| Overlord of the Hauntwoods | ★★ | ★★ | ★★★ | Land token is EVERY BASIC TYPE = 69b fixing, on enter AND attack. **⚠rot~2027.** |
+| Galion, Elvenking's Butler | ★★ | ★ | ★ | 4/4 provider that also makes a 2/2 Wargling a 4/4 — double gate provision. |
+| Moon-Vigil Adherents | ★★ | ★★ | ★★ | +1/+1 per creature AND per creature card in graveyard. Base 0/0 is the risk. |
+| Troll Negotiations | ★★ | ★ | ★ | Counters + fight: removal that feeds the central theme. |
+| Radagast of Rhosgobel | ★★ | ★ | ★★ | First creature each turn {2} cheaper + flash. 27 creatures in 69. |
+| Gigantic Big Bear | ★★ | ★ | ◇ | Bear (Beorn +2/+2), HASTE = same-turn gate, hexproof dodges 69's stated failure mode. 7 MV. |
+| Overrun | ★★ | ◇ | ★ | WIDE finisher (69 wide score 9). {G}{G}{G} is fine at G 20 in 69, tense in 3-colour 69b. |
+| Loading Zone | ★★ | △ | ★ | Third doubler; Warp {G} deploys turn 1. 17 feeders in 69. |
+| Seedship Agrarian | △ | ★★ | ◇ | Landfall counter + Lander on tap. |
+| Planar Engineering | ✗ | ★★ | ✗ | Sacrificed lands go to the GRAVEYARD, which Lumra/Titan/Analyst return — better here than in 50a, which cut it. |
+| Rise of the Varmints | ◇ | ★★ | ◇ | X 2/1s = creature cards in yard. **⚠rot~2027.** |
+| Tom, Bert, and William | ★ | ✗ **uncastable** | ★★ | F1. BG. In 69b its death-return is a creature card LEAVING the graveyard → Crooked Way amass. |
+| Through the Forest Gate | ✗ | ★★ | (in deck) | 8 MV against 69's 2.97 curve is a non-starter; in 69a every land is a landfall trigger, doubled by Chocobo. |
+| Flopsie, Bumi's Buddy | ★ | ◇ | ★ | ETB counter on each creature + power-4 evasion. 6 MV. |
+| Michelangelo's Technique | ★ | ◇ | ★ | Dig 8, two creatures totalling MV ≤6 — 69's cheap creatures fit that cap; 69a's do not. |
+| Glacier Godmaw | ◇ | ★ | ◇ | Landfall team pump. 7 MV. |
+| Primeval Bounty | △ | ◇ | △ | 6 MV, no immediate board. Too slow for every curve in the family. |
+
+## 5. Consolidated plan (live) — PROPOSED, not applied
+
+### Deck 69 — answer the "no counters payoff" warning
+1. **The Earth Crystal** (owned) ← Bite Down  · doubles 17 feeders + {1} off green
+2. **Germination Practicum** (owned) ← Drover Grizzly  · repeatable mass counters
+3. **Selfless Safewright** (craft R) ← Unforgiving Aim  · flash provider + anti-wipe
+4. **Leatherhead** (owned) ← Felling Blow  · provider + 2nd noncreature answer
+Cut pool is thin on interaction (5) — take 1–2, not all four, or replace the removal elsewhere.
+
+### Deck 69a — the owner's seven, ranked, with cuts
+1. **Diamond Weapon** (owned) ← Part in Friendship (`cuts` 1/28)
+2. **Harmonious Grovestrider** (owned) ← Mirkwood Pathmaker (`cuts` 3/28, and Grovestrider is the same body with ward 2)
+3. **Groundchuck & Dirtbag** (craft R) ← Grow from the Ashes (`cuts` 7/28)
+4. **Mightform Harmonizer** (owned) ← Drover Grizzly (`cuts` 8/28)
+Of the seven proposed: Earth Crystal ★★ and Seedship Agrarian ★★ are next in line;
+**Primeval Bounty is the one to skip** (6 MV, no board impact, on a 3.44 curve).
+
+### Deck 69b — fix the colour, then the card advantage
+1. **Vizier of the Menagerie** (owned) — the best card in the pile for this deck
+2. **Doubling Season** (owned)
+3. **Overlord of the Hauntwoods** (owned) — but ⚠rot~2027
+4. **Tom, Bert, and William** (craft R) — card advantage 1 is the family's weakest axis
+
+### PROTECT — what the ranking structurally cannot see
+- **Loot, Exuberant Explorer** and **Part in Friendship** both sort high on 69a's cut list
+  and both carry `⌁scales w/ lands — graded at its FLOOR`. Part in Friendship is listed as
+  a cut above only because Diamond Weapon does its job better at the same slot; Loot is
+  NOT cuttable (it was restored on the owner's challenge last cycle for exactly this).
+- **Garruk's Uprising** sorts 4th on 69's cut list and is the deck's card-advantage engine.
+- **Beorn's Hospitality** sorts 6th on 69's list with the same floor flag.
