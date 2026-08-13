@@ -453,11 +453,21 @@ directions.
   Abzan deck" claim against FOUR WBG decks. And KEY scores THEME OVERLAP ALONE, so for a
   structurally-valued card it says little: Chandra rated KEY in 14 of 42 decks, nearly all
   on the generic red trio, while the counts that decided placement were unseen. [G-31]
-- **`suggest-homes` reads castability as an identity SUBSET, which says nothing about
-  whether you can pay the PIPS.** A `{W}{W}{W}{W}{W}` card was rated KEY for decks with
-  10–11 white sources, roughly a 1% chance on turn five. `pip_depth_warning` prints
-  `⚠⚠ 5x{W} vs 10 sources` from the same hypergeometric model `consistency` uses. It is a
-  FLAG, never a score change. [G-32]
+- **`suggest` and `suggest-homes` read castability as an identity SUBSET, which says
+  nothing about whether you can pay the PIPS.** A `{W}{W}{W}{W}{W}` card was rated KEY for
+  decks with 10–11 white sources, roughly a 1% chance on turn five. `pip_depth_warning`
+  prints `⚠⚠ 5x{W} vs 10 sources` from the same hypergeometric model `consistency` uses.
+  It is a FLAG, never a score change. **Two 2026-08-13 fixes, and both are the G-40 shape
+  — a working primitive nothing asked.** It had ONE caller, `suggest-homes`, so the
+  DECK-level recommender that surfaces craft targets never ran it; `cmd_suggest` calls it
+  now. And the floor was 3 pips, so `{2}{B}{B}` Elegy Acolyte was recommended into a deck
+  holding EIGHT black sources — 45% on curve — and the helper returned None. The bar is
+  pip-count aware now (`_PIP_DEPTH_TARGET_BY_PIPS`): 3+ pips grade at 0.70 UNCHANGED, 2
+  pips at 0.55. Read the bands as different claims — 3+ says "you cannot cast this", 2
+  says "you will cast this late". 0.55 was measured, not chosen: at 0.70 the 2-pip band
+  fires on 109 maindecked cards against 25 today and most are ordinary 10–11-source
+  cards, which trains you to ignore it; at 0.55 it fires on 43 and isolates 3–9
+  sources. [G-32]
 - **A DOUBLER is worth what it doubles, so `doubler_support` counts the deck's feeders**
   on that axis (tokens / counters / triggers / lifegain), bounded and promoting to KEY
   only at real density. `doubler_restriction` reads the doubler's OWN scope so a
