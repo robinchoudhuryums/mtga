@@ -69,7 +69,8 @@
 2 Pursue the Past (SOS) 216
 1 Ultimate Green Goblin (SPM) 157
 1 The Infamous Cruelclaw (BLB) 219
-2 Electro's Bolt (SPM) 77
+1 Electro's Bolt (SPM) 77
+1 Duel Tactics (SOS) 112
 1 Auron's Inspiration (FIN) 8
 1 Practiced Offense (SOS) 25
 
