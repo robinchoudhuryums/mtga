@@ -41,7 +41,8 @@
 #: notes: deck ever wants a fifth second-spell payoff over interaction.
 
 # Payoffs (per-cast converters)
-2 Judith, Carnage Connoisseur (MKM) 210
+1 Judith, Carnage Connoisseur (MKM) 210
+1 Thunder Magic (FIN) 165
 2 Cori Mountain Stalwart (TDM) 175
 1 Thor Odinson (MSH) 234
 1 Monica Rambeau (MSH) 23
@@ -58,7 +59,8 @@
 1 Aziza, Mage Tower Captain (SOS) 174
 1 Equilibrium Adept (TDM) 106
 2 Cosmogrand Zenith (EOE) 9
-2 Sunstar Lightsmith (EOE) 42
+1 Sunstar Lightsmith (EOE) 42
+1 Iroh's Demonstration (TLA) 141
 2 Rally the Monastery (TDM) 19
 1 Antiquities on the Loose (SOS) 7
 
