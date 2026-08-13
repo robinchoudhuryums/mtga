@@ -2203,6 +2203,22 @@ The Arkenstone,{5} // {2}{W},5,
 Great Gilded Boat,{2}{U},3,Crew
 The Sackville-Bagginses,{1}{B},2,Treasure
 Bejeweled Warg,{1}{G},2,Treasure;Trample
+Uncover the Moon-Letters,{3}{U},4,
+Radagast of Rhosgobel,{2}{G}{G},4,
+Roll-Roll-Roll-Roll,{2}{U},3,
+The Notary Hobbits,{3}{G}{G},5,
+Beorn's Hospitality,{1}{G},2,Landfall
+"Galion, Elvenking's Butler",{2}{G}{G},4,
+Mirkwood Pathmaker,{2}{G},3,
+Stone by Sunlight,{1}{W},2,
+Wilderland Scrounger,{4}{G},5,Ferocious
+The Black Arrow,{3},3,Equip;Flash
+Dwarven Shortsword,{3}{W},4,Equip
+Pinecone Strike,{1}{R},2,
+Moment of Glory,{W},1,Flashback
+Thorin's Last Stand,{2}{W}{W},4,
+Iron Hills Stalwart,{4}{R},5,Reach;Trample
+Plunder the Trollshaws,{1}{U},2,Flashback
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5920,7 +5936,6 @@ Bilbo's Gambit,{1}{W},2,Gift;Treasure
 Celebrate the Mountain-king,{3}{W},4,
 "Dáin, Lord of the Iron Hills",{1}{W},2,Vigilance
 Dwarven Provisioner,{1}{W},2,
-Dwarven Shortsword,{3}{W},4,Equip
 Eagle of the Great Shelf,{4}{W},5,Flying
 Esgaroth Garrison,{4}{W},5,
 Fíli the Pathfinder,{3}{W},4,
@@ -5930,13 +5945,10 @@ Kíli the Resourceful,{1}{W},2,
 Lake-town Lookout,{W},1,
 Lake-town Toymaker,{3}{W},4,
 Magnificent End,{4}{W},5,
-Moment of Glory,{W},1,Flashback
 The Mountain-king's Return,{2}{W},3,
 "Ori, Keeper of Songs",{2}{W},3,
 "Roads Go Ever, Ever On",{1}{W},2,
 Settle the Wreckage,{2}{W}{W},4,
-Stone by Sunlight,{1}{W},2,
-Thorin's Last Stand,{2}{W}{W},4,
 An Unexpected Party // At the Door,{2}{W}{W} // {X}{2}{W},4,
 Velvetwing Butterflies // Gaze in Wonder,{2}{W} // {1}{W},3,Flying
 Vow to Erebor,{1}{W},2,
@@ -5955,13 +5967,10 @@ Master's Councillors,{1}{U},2,Vigilance;Mill
 Mirkwood Meditator,{2}{U},3,Landfall
 Most Decrepit Old Bird // Speak Secrets,{U} // {1}{U},1,Flying;Threshold;Mill
 Old Fat Spider Can't See Me,{2}{U},3,
-Plunder the Trollshaws,{1}{U},2,Flashback
 Ravenhill Flock,{3}{U},4,Flying
 Riddles in the Dark,{2}{U},3,
-Roll-Roll-Roll-Roll,{2}{U},3,
 Sound the Trumpets,{1}{U}{U},3,
 Thranduil's Decree,{4}{U}{U},6,
-Uncover the Moon-Letters,{3}{U},4,
 Uneasy Partings,{3}{U},4,
 Wizard's Staff,{1}{U},2,Equip
 Along the Crooked Way,{2}{B},3,Amass
@@ -5998,12 +6007,10 @@ Desolation of Smaug,{2}{R}{R},4,
 Getaway Barrel,{3}{R},4,
 Glóin the Mighty // Easy Pickings,{3}{R} // {2}{R},4,
 Gundabad Opportunist,{3}{R},4,
-Iron Hills Stalwart,{4}{R},5,Reach;Trample
 Last Light of Durin's Day,{1}{R},2,Mountaincycling;Landcycling;Typecycling;Cycling
 The Misty Mountains Cold,{2}{R},3,Treasure
 Misty Mountains Raider,{4}{R},5,Amass
 Óin the Brave,{1}{R},2,
-Pinecone Strike,{1}{R},2,
 Ragged Short Spear,{1}{R},2,Equip
 "Smaug, the Great Calamity // Spew Flame",{5}{R}{R} // {4}{R},7,Flying
 Smaug the Magnificent,{2}{R}{R},4,Flying;Treasure;Haste
@@ -6015,27 +6022,21 @@ Tidings of War,{R},1,Amass;Flashback
 Attercop,{1}{G},2,Reach;Deathtouch;Landfall
 "Beorn, Reluctant Host // Till and Tend",{4}{G} // {1}{G},5,Trample
 Beorn the Fierce,{3}{G}{G},5,Trample
-Beorn's Hospitality,{1}{G},2,Landfall
 Boughside Wanderers,{4}{G}{G},6,Landfall
 Cantankerous Keepers,{5}{G},6,Affinity;Mill
 Dancing from Dark to Dawn,{3}{G}{G},5,Landfall
 Down in the Valley,{2}{G},3,
-"Galion, Elvenking's Butler",{2}{G}{G},4,
 Gigantic Big Bear,{5}{G}{G},7,Hexproof;Haste
 Guardian of the Halls,{1}{G},2,Trample
 Little Bear,{2}{G},3,Flash
-Mirkwood Pathmaker,{2}{G},3,
 Nasty Little Rabbit,{G},1,Ferocious
-The Notary Hobbits,{3}{G}{G},5,
 Old Fat Spider,{4}{G}{G},6,Reach
 Ordinary Bear,{3}{G},4,
 Part in Friendship,{4}{G},5,
 Quarrel,{1}{G},2,
-Radagast of Rhosgobel,{2}{G}{G},4,
 Through the Forest Gate,{6}{G}{G},8,
 Warg Tactics,{1}{G},2,
 Wargling,{1}{G},2,Ferocious
-Wilderland Scrounger,{4}{G},5,Ferocious
 Wood Elves,{2}{G},3,
 Woodland Weavemaster,{1}{G},2,Vigilance
 "Bard, King of Dale",{4}{W}{U},6,Reach;Vigilance
@@ -6064,7 +6065,6 @@ Thorin Oakenshield,{R}{W},2,Trample
 Thranduil's Company,{2}{G}{U},4,Landfall
 "Tom, Bert, and William",{3}{B}{G},5,
 The Arkenstone // Seek the Heart,{5} // {2}{W},5,
-The Black Arrow,{3},3,Equip;Flash
 Dwarven Mattock,{2},2,Equip
 Giant's Boulder,{1},1,Scry
 "Glamdring, Foe-hammer // Gleam of Death",{2} // {3}{U},2,Equip;Mill

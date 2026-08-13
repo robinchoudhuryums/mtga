@@ -4688,3 +4688,36 @@ Bejeweled Warg,Creature — Wolf,"Trample
 Whenever this creature deals combat damage to a player, choose one —
 • Put a +1/+1 counter on target Wolf you control.
 • Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",G,Wolf; counters; sacrifice; tokens; treasure; trample; evasion,HOB,117,1
+Uncover the Moon-Letters,Enchantment,"Whenever you cast a noncreature spell, you may draw X cards, where X is the amount of mana spent to cast that spell. If you do, discard two cards.",U,card draw,HOB,57,1
+Radagast of Rhosgobel,Legendary Creature — Avatar Wizard,The first creature spell you cast each turn costs {2} less to cast and can be cast as though it had flash.,G,Avatar; Wizard; cost-reduction,HOB,136,1
+Roll-Roll-Roll-Roll,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
+I, II, III, IV — Exile up to one target creature or land you control. If you do, return it to the battlefield under its owner's control at the beginning of the next end step.",U,Saga; sacrifice; saga; blink,HOB,54,1
+The Notary Hobbits,Legendary Creature — Halfling Advisor,"When The Notary Hobbits enter, if they're not a token, create two tokens that are copies of them, except the tokens aren't legendary.
+{T}: Add {C} for each Halfling you control.",G,Halfling; Advisor; tokens; mana,HOB,131,1
+Beorn's Hospitality,Enchantment,"Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature you control.
+{5}{G}{G}: This enchantment becomes a Bear creature in addition to its other types and gains ""This creature's power and toughness are each equal to the number of lands you control."" (This effect doesn't end.)",G,counters; landfall; lands; ramp,HOB,120,1
+"Galion, Elvenking's Butler",Legendary Creature — Elf Advisor,"Whenever Galion attacks, choose up to one other target creature you control. Its base power and toughness become equal to Galion's power and toughness until end of turn.",G,Elf; Advisor,HOB,125,1
+Mirkwood Pathmaker,Creature — Elf Ranger,Mirkwood Pathmaker's power and toughness are each equal to the number of lands you control.,G,Elf; Ranger,HOB,129,1
+Stone by Sunlight,Instant,"Choose one —
+• Destroy target creature with power 4 or greater.
+• Until end of turn, target creature becomes an artifact in addition to its other types and gains indestructible. (Damage and effects that say ""destroy"" don't destroy it.)",W,removal,HOB,27,1
+Wilderland Scrounger,Creature — Wolf,"Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, put a +1/+1 counter on each creature you control.",G,Wolf; counters; ferocious,HOB,141,1
+The Black Arrow,Legendary Artifact — Equipment,"Flash
+When The Black Arrow enters, it deals 1 damage to any target. If a Dragon is dealt damage this way, destroy it.
+Equipped creature gets +1/+1 and has reach.
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; burn; etb; equipment; pump; noncombat damage; equip; flash; tempo,HOB,171,1
+Dwarven Shortsword,Artifact — Equipment,"When this Equipment enters, create a 2/2 red Dwarf creature token, then attach this Equipment to it.
+Equipped creature gets +1/+2.
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; equip,HOB,10,1
+Pinecone Strike,Instant,"Choose one or both —
+• Pinecone Strike deals 3 damage to target creature. If that creature would die this turn, exile it instead.
+• Destroy target artifact token.",R,removal; burn,HOB,107,1
+Moment of Glory,Sorcery,"Put a +1/+1 counter on target creature you control. If this spell was cast from a graveyard, also put a +1/+1 counter on each other creature you control.
+Flashback {4}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",W,counters; graveyard; flashback; recursion; spellslinger,HOB,21,1
+Thorin's Last Stand,Instant,"Choose one —
+• Creatures you control get +2/+1 until end of turn.
+• Destroy target artifact or enchantment. You gain 2 life.",W,lifegain; removal; pump,HOB,28,1
+Iron Hills Stalwart,Creature — Dwarf Warrior,"Reach, trample
+When this creature enters, attach target Equipment you control to up to one target creature you control.",R,Dwarf; Warrior; etb; reach; defense; trample; evasion,HOB,102,1
+Plunder the Trollshaws,Instant,"Draw a card. If this spell was cast from a graveyard, draw two cards instead.
+Flashback {3}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; card draw; flashback; recursion; spellslinger,HOB,51,1
