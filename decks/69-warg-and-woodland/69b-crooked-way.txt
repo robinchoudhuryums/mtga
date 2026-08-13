@@ -125,3 +125,8 @@
 4 Forest (TRK) 325
 2 Swamp (TRK) 321
 2 Plains (TRK) 317
+#~ -Fell | +Azog, Moria's Ruin | OWNED (HOB, ingested 2026-08-13): fit 27. Weaker on theme overlap
+#~   than in the parent, but the AMASS is the point here — Along the Crooked Way already amasses off
+#~   the graveyard, and Azog adds a second, larger source. Fell is generic unconditional removal at
+#~   `cuts` #1. Caveat: killing THEIR creature amasses for THEM, so the mode that helps this deck is
+#~   killing your own — which also draws.
