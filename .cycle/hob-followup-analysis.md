@@ -305,3 +305,37 @@ never consumed by a deck (CLAUDE.md); one copy can be in both lists at once.
 and its curve is 3.22, so the same card buys much less. Seedship Impact is the only other
 one worth a slot there, and 69 already has two noncreature answers (Unforgiving Aim,
 Leatherhead's combat trigger) — so this whole group is a 69b/69a question, not a 69 one.
+
+## 10. Fifth pass — applied, plus a GATE RESIDUAL found while verifying
+
+Applied 2026-08-13. 69a: +Diamond Weapon −Spider-Ham, +Season of Gathering −Dance of the
+Tumbleweeds, Planar Engineering to flex+wishlist. 69b: +Moon-Vigil Adherents −Spider-Ham,
++Seedship Impact −Wolfbat, +Trystan's Command −The Mountain-king's Return, +Drag to the
+Roots −Bite Down.
+
+**69b's repair worked: interaction 3 → 5, noncreature answers 0 → 3, floor B → A.**
+69a: interaction 5 → 6, card advantage 2 → 3, but curve 3.68 → 4.00 (guard flagged it).
+
+### GATE RESIDUAL — `_RATIONALE_MIN_LEN = 9` hides short card names, and it fired live
+`rationale_staleness` skips any card whose display name is under 9 chars with no space,
+BEFORE any suppression runs. So **Wolfbat was cited in BOTH `#: tier:` and `#: archetype:`
+after being cut, and `--audit-rationale` reported the rationale CLEAN.** Found by hand, not
+by the gate.
+
+**MEASURED before calling it a bug, and it is NOT one — it is a deliberate precision
+trade.** 258 pool cards have a single-word name under 9 chars. Scanning them roster-wide
+yields 32 raw hits; after the same masking and shorthand rules the real function applies,
+**12 survive** — and most are ordinary English that happens to be a card name (`Push`,
+`Six`, `Rescue`, `Pacifism`, `Negate`, `Impulse`, `Erode`). Only ~3 look like genuine
+citations (Wolfbat ×2, Ahriman). Raising the constant would trade ~3 true positives for
+~9 false ones, so **do not change it.**
+
+**The residual to remember:** a cut card with a SHORT one-word name rots silently in
+`#: tier:` / `#: archetype:` prose. Wolfbat is the worked example. When a swap cuts a card
+whose name is one short word, re-read the prose by hand — the audit will not help.
+
+### Cards cut in this pass, still cited (all fixed by hand this commit)
+- 69b `#: tier:` + `#: archetype:` cited **Wolfbat** (missed by the gate, above).
+- 69b `#: notes:` cited **Grow from the Ashes** and **The Mountain-king's Return** in a
+  fetch-count that had changed twice. `#: notes:` is deliberately OUT of the staleness
+  scan (G-27), so this is expected, not a gate miss — but it still misleads a reader.
