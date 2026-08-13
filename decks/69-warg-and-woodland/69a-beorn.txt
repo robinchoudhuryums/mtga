@@ -5,7 +5,7 @@
 #: plan: midrange
 #: tier: B — PROVISIONAL, graded UNDER the A metrics floor, and for different reasons
 #: tier: than its parent. The floor reads A on interaction 5, but card advantage 2 is
-#: tier: thin and the deck is SLOW: avg MV 3.71 with few early drops, and the engine
+#: tier: thin and the deck is SLOW: avg MV 4.0 with few early drops, and the engine
 #: tier: wants lands in the GRAVEYARD before it does anything, so the first three turns
 #: tier: are close to blank. A sweeper mid-assembly catches it. WHAT ARGUES UP: the manabase is nearly flawless for a deck
 #: tier: with this many double-green costs, and a resolved Lumra or Summon: Titan with
@@ -70,7 +70,7 @@
 #: notes: for six. All three cost only redundant ramp (Grow from the Ashes, Clifftop
 #: notes: Lookout, Galactic Wayfarer) and every axis held: interaction 5, card advantage
 #: notes: 2, protection 2, floor A, and the cast-on-curve table unchanged.
-#: notes: THE CURVE WAS DELIBERATELY PUSHED 2026-08-12 (3.44 -> 3.71) and that is the
+#: notes: THE CURVE WAS DELIBERATELY PUSHED 2026-08-12 (3.44 -> 4.0) and that is the
 #: notes: cost of this pass, not an accident. Through the Forest Gate (MV 8) and
 #: notes: Groundchuck & Dirtbag (MV 6) came in over Grow from the Ashes and a second
 #: notes: Rainveil Rejuvenator. The trade: Through the Forest Gate puts EVERY land from
@@ -82,6 +82,41 @@
 #: notes: first cuts back, not the fetch lands.
 #: notes: MIGHTFORM HARMONIZER replaced one of two Mirkwood Pathmakers — same lands-scaling
 #: notes: slot, but a 4/4 base WITH landfall power-doubling instead of a vanilla */*.
+#: notes: SEEDSHIP IMPACT REPLACED UNFORGIVING AIM, and the argument is REDUNDANCY, not
+#: notes: raw power. Mapping what each interaction piece can answer: fliers were covered
+#: notes: FOUR ways (Bite Down, Kraven's Last Hunt, Warg Tactics, Unforgiving Aim) and
+#: notes: enchantments twice, while ARTIFACTS had exactly one answer — Insidious Fungus,
+#: notes: which costs {2} and sacrifices itself. Unforgiving Aim's two removal modes were
+#: notes: both already covered and its third mode is a 2/2 Elf, filler in a deck built on
+#: notes: 8/8s. Seedship Impact is a mana cheaper, still instant, and doubles the artifact
+#: notes: answers; its Lander mode also ramps when it kills a cheap permanent.
+#: notes: THE COST IS REAL AND WORTH REMEMBERING: Unforgiving Aim was NEVER DEAD (its
+#: notes: token mode needs no target), while Seedship Impact strands in hand against a
+#: notes: creature deck with no artifact or enchantment. Unforgiving Aim also rotates
+#: notes: 2029 against Seedship Impact's 2028. Shattered Wings was the alternative and
+#: notes: lost on being a SORCERY at the same mana value — its extra flier mode buys
+#: notes: nothing against four existing answers.
+#: notes: DIAMOND WEAPON AND SEASON OF GATHERING CAME IN OVER SPIDER-HAM AND DANCE OF THE
+#: notes: TUMBLEWEEDS, and the avg MV 4.0 that resulted OVERSTATES the real curve. Diamond
+#: notes: Weapon books as MV 9 but costs {1} less per PERMANENT card in the graveyard, and
+#: notes: this deck is 88% permanents (26 lands + 27 nonland permanents), so 6-10 cards
+#: notes: milled by turn five prices it at roughly {2}{G}{G} down to {G}{G}. `consistency`
+#: notes: is the honest check and it held EXACTLY flat: keepable 87.4%, the same two cards
+#: notes: under 90% on curve. Season of Gathering is the card-advantage fix — its
+#: notes: {P}{P}{P} mode draws cards equal to the greatest power among your creatures, and
+#: notes: this deck fields Groundchuck 8/8, Summon: Titan 7/7 and Lumra, while {P}{P}
+#: notes: destroys all permanents of a chosen type, the only sweeper in the list.
+#: notes: DIAMOND WEAPON HAS A SEQUENCING ANTI-SYNERGY worth knowing before you cast it:
+#: notes: SEVEN effects here return LANDS from the graveyard (Lumra, Summon: Titan,
+#: notes: Icetill, Mole Man, Walk-In Closet, Aftermath Analyst, Pull Through the Weft) and
+#: notes: lands are 43% of the deck, so a mass return SPIKES its cost back up. Cast it
+#: notes: before the big return, or after the yard refills. The 27 nonland permanents are
+#: notes: the discount floor, since the returners only take lands.
+#: notes: SPIDER-HAM WAS THE COST and it was a real anthem — it pumped every Bear here
+#: notes: (Beorn, Lumra, Little Bear, Vastlands Scavenger and Dancing's tokens). Watch
+#: notes: whether the Bears feel small without it; if so, Spider-Ham is the first card
+#: notes: back and Pull Through the Weft is the slot.
+#: notes: SEASON OF GATHERING ROTATES ~2027, a year before the rest of this list's core.
 #: notes: NO COUNTERS PAYOFF, BY DESIGN — `deck.py engines` flags 5 enablers with no
 #: notes: reward. Counters here are incidental (Ainok Wayfarer, Beorn's Hospitality,
 #: notes: Famished Worldsire); the deck's scaling comes from the land count, not from
@@ -94,7 +129,7 @@
 1 Vastlands Scavenger // Bind to Life (SOS) 166
 1 Little Bear (HOB) 128
 1 Radagast of Rhosgobel (HOB) 136
-1 Spider-Ham, Peter Porker (SPM) 114
+1 Diamond Weapon (FIN) 183
 1 Mirkwood Pathmaker (HOB) 129
 1 Mightform Harmonizer (EOE) 200
 1 Tifa Lockhart (FIN) 206
@@ -115,14 +150,21 @@
 1 Through the Forest Gate (HOB) 137
 1 Loot, Exuberant Explorer (FDN) 106
 1 Part in Friendship (HOB) 134
-1 Dance of the Tumbleweeds (OTJ) 160
+1 Season of Gathering (BLB) 192
 1 Warg Tactics (HOB) 139
 1 Garruk's Uprising (M21) 186
 1 Bite Down (FDN) 212
-1 Unforgiving Aim (ECL) 200
+1 Seedship Impact (EOE) 205
 1 Insidious Fungus (DSK) 186
 2 Evolving Wilds (ECL) 264
 1 Hobbit Hole (HOB) 184
 1 Terramorphic Expanse (MSC) 828
 1 Cryptic Caves (FDN) 771
 21 Forest (TRK) 325
+
+#~ craft: Planar Engineering {3}{G} — sac two lands, fetch four basics. The two
+#~ craft: sacrificed lands go to the GRAVEYARD, which Lumra / Summon: Titan / Aftermath
+#~ craft: Analyst all return, so it is net +2 lands AND +2 graveyard lands here. Already
+#~ craft: on card-wishlist.csv targeted at deck 13; a copy serves both (cards are not
+#~ craft: consumed by a deck). Slot if the deck wants more land velocity: cut Walk-In
+#~ craft: Closet or Pull Through the Weft.

@@ -3,10 +3,11 @@
 #: colors: GWB
 #: based-on: deck.txt
 #: plan: midrange
-#: tier: B — PROVISIONAL, at the measurable floor. Interaction reads 3 +1? and card
-#: tier: advantage 3, and both under-read (K-12): The Chief Warg draws on every
-#: tier: satisfied attack, Kraven draws when their best creature dies, Wolfbat rebuys
-#: tier: itself on the second draw — all shapes the classifier cannot see. The honest
+#: tier: B — PROVISIONAL, and now graded UNDER the floor rather than at it: the
+#: tier: 2026-08-13 interaction repair took the measurable floor from B to A. Interaction
+#: tier: reads 5 +1? and card advantage 3, and both still under-read (K-12): The Chief
+#: tier: Warg draws on every satisfied attack and Kraven draws when their best creature
+#: tier: dies — shapes the classifier cannot see. The honest
 #: tier: cost is the mana: Tolsimir reads 65% and Head of the Hunt 74% on curve, and
 #: tier: the Karsten targets (18 W / 20 B) are unreachable in a green-primary three-
 #: tier: colour deck, so BOTH are graded as cast-late cards unless a creature fixer is
@@ -28,7 +29,7 @@
 #: archetype: THE BLACK SEAT is the recursion loop: Along the Crooked Way returns a
 #: archetype: creature on entry and amasses a Goblin army every time a creature card
 #: archetype: LEAVES the graveyard — which Perennation, Badlands Revival, Scrounge for
-#: archetype: Eternity, Roamer's Routine's harmonize and Wolfbat's self-rebuy all cause.
+#: archetype: Eternity, Roamer's Routine's harmonize and Trystan's Command all cause.
 #: archetype: DISTINCTNESS: the parent is the Ferocious gate deck and 69a the mono-green
 #: archetype: land-recursion engine; this is the only build where the tribal counters,
 #: archetype: the landfall payoffs and a graveyard loop share one list, and the only one
@@ -48,11 +49,24 @@
 #: notes: the fixers die too often, the first manabase move is +1 Sandsteppe Citadel
 #: notes: over a Forest, and the first cut consideration is Tolsimir, whose {W}{W} is
 #: notes: the single hardest cost in the deck.
-#: notes: FIVE BASIC-FETCH EFFECTS AGAINST 8 BASICS (Fenrir I, Grow from the Ashes,
-#: notes: Roamer's Routine, Scrounge's Lander, The Earth King's attack trigger) — the
-#: notes: same tension deck 13 records, eased one notch when Map the Frontier left for
-#: notes: The Mountain-king's Return. Acceptable because the fetches are also landfall
-#: notes: fodder, but do not trim basics below 8.
+#: notes: THREE BASIC-FETCH EFFECTS AGAINST 8 BASICS (Fenrir I, Roamer's Routine,
+#: notes: Scrounge's Lander, plus The Earth King's attack trigger) — the same tension
+#: notes: deck 13 records, eased twice over as Map the Frontier and then Grow from the
+#: notes: Ashes left. No longer a live concern, but do not trim basics below 8.
+#: notes: THE INTERACTION REPAIR, 2026-08-13. The deck had fallen to interaction 3 with
+#: notes: ZERO answers to a noncreature permanent when Withering Torment was cut for
+#: notes: Doubling Season. Seedship Impact (over Wolfbat), Trystan's Command (over The
+#: notes: Mountain-king's Return) and Drag to the Roots (over Bite Down) took it to
+#: notes: interaction 5 and THREE noncreature answers, and moved the metrics floor B->A.
+#: notes: Two of the three also feed Along the Crooked Way: Trystan's Command returns
+#: notes: permanent cards from the graveyard to hand, and any creature card LEAVING the
+#: notes: yard is an amass trigger.
+#: notes: WHAT THE REPAIR COST: The Mountain-king's Return was the cheap rebuy for Abzan
+#: notes: Devotee and Great Divide Guide — the mana creatures whose death is this deck's
+#: notes: stated failure mode — and Trystan's Command does that job at MV 6 instead of
+#: notes: MV 3. If the fixers keep dying before Trystan is castable, the Return is the
+#: notes: first card back. DRAG TO THE ROOTS ROTATES ~2027, a year before this list's
+#: notes: core; Trystan's Command (2029) and Seedship Impact (2028) do not.
 #: notes: THE MOUNTAIN-KING'S RETURN IS A LOOP PIECE, NOT JUST VALUE (owner's find,
 #: notes: 2026-08-12). Chapter I loots — the discard STOCKS the graveyard the black
 #: notes: seat feeds on, and a discarded nonland leaves a 1/1 Soldier behind. Chapter
@@ -77,19 +91,19 @@
 1 The Earth King (TLA) 172
 1 Ainok Wayfarer (TDM) 134
 1 Abzan Devotee (TDM) 68
-1 Wolfbat (TLA) 122
+1 Seedship Impact (EOE) 205
 1 Tom, Bert, and William (HOB) 169
 1 Chief Warg's Company (HOB) 151
 1 Head of the Hunt (HOB) 75
 1 Tolsimir, Midnight's Light (MKM) 236
-1 Spider-Ham, Peter Porker (SPM) 114
+1 Moon-Vigil Adherents (ECL) 184
 1 Kraven the Hunter (SPM) 133
 1 Wildborn Preserver (FDN) 650
 1 Vastlands Scavenger // Bind to Life (SOS) 166
 1 Dancing from Dark to Dawn (HOB) 123
 1 Through the Forest Gate (HOB) 137
 1 Summon: Fenrir (FIN) 203
-1 The Mountain-king's Return (HOB) 22
+1 Trystan's Command (ECL) 247
 1 Overlord of the Hauntwoods (DSK) 194
 1 The Chief Warg (HOB) 150
 1 Vizier of the Menagerie (FDN) 649
@@ -98,7 +112,7 @@
 1 Badlands Revival (OTJ) 194
 1 Scrounge for Eternity (EOE) 114
 1 Roamer's Routine (TDM) 154
-1 Bite Down (FDN) 212
+1 Drag to the Roots (DSK) 213
 1 Fell (BLB) 95
 1 Warg Tactics (HOB) 139
 1 Doubling Season (FDN) 216

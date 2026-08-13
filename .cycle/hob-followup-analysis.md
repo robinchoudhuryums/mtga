@@ -247,3 +247,95 @@ Moon-Vigil is stale — re-derived below.
 **⚠ 69b caution unchanged:** interaction is 3 and the deck has ZERO answers to a
 noncreature permanent since Withering Torment left. None of the three cuts above makes
 that worse, but do not cut Bite Down, Fell or Warg Tactics for anything.
+
+## 9. Fourth pass — the 69b interaction-repair candidates (7 cards)
+
+**ROTATION IS THE DOMINANT FILTER: 4 of the 7 rotate ~2027**, against a family whose HOB
+core lives to 2029. Durable: **Trystan's Command (2029)**, Seedship Impact (2028),
+Shattered Wings (2028). Rotating 2027: Wear Down, Season of Gathering, Drag to the Roots,
+Urgent Necropsy.
+
+**Castability:** Drag to the Roots, Urgent Necropsy and Trystan's Command are BG — fine in
+69b and 69, **NOT castable in mono-green 69a** (`screen` confirms all three).
+
+**MEASURED — delirium IS reachable in 69b, contrary to first impression.** Drag to the
+Roots wants 4+ card types in the yard. 69b holds 5 types (Creature 23 / Land 25 /
+Enchantment 6 / Sorcery 6 / Instant 2) and each has a real path: creatures die in combat,
+**lands arrive via Ainok Wayfarer's mill 3 and Vastlands Scavenger's mill 7** (lands are
+42% of the deck), sorceries cast, and the ENCHANTMENT type gets there off self-sacrificing
+Sagas (Summon: Fenrir, The Mountain-king's Return) plus Scrounge for Eternity. Only Instant
+is thin at 2 copies. So price it at {2}{B}{G} early and {B}{G} from mid-game.
+
+**TWO AMASS SYNERGIES the tools cannot see.** Along the Crooked Way amasses whenever a
+creature card LEAVES the graveyard:
+- **Trystan's Command**'s "return one or two target permanent cards from your graveyard to
+  your hand" mode triggers it.
+- **Urgent Necropsy**'s collect-evidence cost EXILES cards from the graveyard, which also
+  triggers it — but that same exile competes with Perennation / Badlands Revival /
+  Scrounge / Mountain-king's Return, all of which want creature cards to stay there. A real
+  tension, not a clean win.
+
+### Ranked for 69b (fixes interaction 3 + ZERO noncreature answers)
+| # | Card | Verdict | Cut candidates |
+|---|---|---|---|
+| 1 | **Seedship Impact** {1}{G} | ★★★ cheapest fix, instant, owned, 2028. Lander mode also feeds fixing. Narrow (artifact/ench only). | Roamer's Routine (`cuts` 11) · Abzan Devotee (6) · Veteran Beastrider (5) |
+| 2 | **Trystan's Command** {4}{B}{G} | ★★★ the only 2029 card here. Two modes = removal + graveyard→hand recursion, and that recursion triggers amass. MV 6 is the cost. | Badlands Revival (`cuts` 8 — same slot, Trystan does both jobs) · Perennation (12) · Roamer's Routine |
+| 3 | **Drag to the Roots** {2}{B}{G} | ★★ instant, destroys ANY nonland permanent — the most complete single answer. ⚠rot~2027. | Veteran Beastrider (5) · Abzan Devotee (6) · Roamer's Routine |
+| 4 | **Urgent Necropsy** {2}{B}{G} | ★★ highest ceiling (4-for-1 at instant speed) but craft MYTHIC, ⚠rot~2027, and its cost fights the deck's own recursion. | Veteran Beastrider · Abzan Devotee |
+| 5 | **Shattered Wings** {2}{G} | ★ owned, 2028, but SORCERY speed. | Roamer's Routine · Abzan Devotee |
+| 6 | **Wear Down** {1}{G} | △ ⚠rot~2027, sorcery, and the gift mode hands the opponent a card. Strictly worse than Seedship Impact here. | — |
+| 7 | **Season of Gathering** {4}{G}{G} | ✗ for 69b — `screen` reads it tangential and MV 6 in a three-colour deck is the wrong slot. **Wrong deck; see below.** | — |
+
+### ★ THE STANDOUT IS FOR 69a, NOT 69b — Season of Gathering
+`screen` reads it **KEY in 69a and 69**, tangential in 69b. In 69a it hits the deck's two
+weakest axes at once with one card:
+- `{P}{P}{P}` — "draw cards equal to the greatest power among creatures you control".
+  69a fields **Groundchuck 8/8, Summon: Titan 7/7, Beorn 6/6, Lumra */* (~8)**, so that is
+  a 6–8 card draw into an axis sitting at **card advantage 2**, the deck's worst.
+- `{P}{P}` — "destroy all permanents of the chosen type" is a SWEEPER, and 69a runs zero.
+- Five pips total, so ONE cast can be draw-8 AND wipe every enchantment.
+
+Cost: MV 6 on a 3.71 curve, and **⚠rot~2027**. Cuts: **Pull Through the Weft** (`cuts` 10,
+5 MV — nearest slot, keeps the curve flat) · Walk-In Closet (8) · Mirkwood Pathmaker (1).
+
+It currently sits in deck 19b — irrelevant to whether it belongs here, since a card is
+never consumed by a deck (CLAUDE.md); one copy can be in both lists at once.
+
+**For deck 69:** Season of Gathering also reads KEY, but 69's card advantage is already 5
+and its curve is 3.22, so the same card buys much less. Seedship Impact is the only other
+one worth a slot there, and 69 already has two noncreature answers (Unforgiving Aim,
+Leatherhead's combat trigger) — so this whole group is a 69b/69a question, not a 69 one.
+
+## 10. Fifth pass — applied, plus a GATE RESIDUAL found while verifying
+
+Applied 2026-08-13. 69a: +Diamond Weapon −Spider-Ham, +Season of Gathering −Dance of the
+Tumbleweeds, Planar Engineering to flex+wishlist. 69b: +Moon-Vigil Adherents −Spider-Ham,
++Seedship Impact −Wolfbat, +Trystan's Command −The Mountain-king's Return, +Drag to the
+Roots −Bite Down.
+
+**69b's repair worked: interaction 3 → 5, noncreature answers 0 → 3, floor B → A.**
+69a: interaction 5 → 6, card advantage 2 → 3, but curve 3.68 → 4.00 (guard flagged it).
+
+### GATE RESIDUAL — `_RATIONALE_MIN_LEN = 9` hides short card names, and it fired live
+`rationale_staleness` skips any card whose display name is under 9 chars with no space,
+BEFORE any suppression runs. So **Wolfbat was cited in BOTH `#: tier:` and `#: archetype:`
+after being cut, and `--audit-rationale` reported the rationale CLEAN.** Found by hand, not
+by the gate.
+
+**MEASURED before calling it a bug, and it is NOT one — it is a deliberate precision
+trade.** 258 pool cards have a single-word name under 9 chars. Scanning them roster-wide
+yields 32 raw hits; after the same masking and shorthand rules the real function applies,
+**12 survive** — and most are ordinary English that happens to be a card name (`Push`,
+`Six`, `Rescue`, `Pacifism`, `Negate`, `Impulse`, `Erode`). Only ~3 look like genuine
+citations (Wolfbat ×2, Ahriman). Raising the constant would trade ~3 true positives for
+~9 false ones, so **do not change it.**
+
+**The residual to remember:** a cut card with a SHORT one-word name rots silently in
+`#: tier:` / `#: archetype:` prose. Wolfbat is the worked example. When a swap cuts a card
+whose name is one short word, re-read the prose by hand — the audit will not help.
+
+### Cards cut in this pass, still cited (all fixed by hand this commit)
+- 69b `#: tier:` + `#: archetype:` cited **Wolfbat** (missed by the gate, above).
+- 69b `#: notes:` cited **Grow from the Ashes** and **The Mountain-king's Return** in a
+  fetch-count that had changed twice. `#: notes:` is deliberately OUT of the staleness
+  scan (G-27), so this is expected, not a gate miss — but it still misleads a reader.
