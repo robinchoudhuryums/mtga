@@ -5,6 +5,7 @@
 double
 eerie
 enchant
+ferocious
 food
 foretell
 hexproof from

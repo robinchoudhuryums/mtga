@@ -82,3 +82,14 @@
 #~ note: ROUTE C is built out as variant 38a (Cloud value-combo) — all-in on Cloud's trigger-doubling: more combat-damage equipment + evasion + redundant carriers, minus the go-wide/voltron scalers. Spicier + more explosive, but fragile (leans on Cloud).
 #~ -Trusty Boomerang | +2nd cheap carrier | if you want even more bodies, the Boomerang is the weakest equipment slot
 #~ -Aettir and Priwen | +With Great Power . . . | RARE craft (go-tall voltron) — enchanted creature gets +2/+2 per Aura/Equipment attached and redirects your damage to it. A spicier, faster "make one creature huge" payoff than the ~11-mana Aettir; craft it if you'd rather that finisher.
+#~ -Super-Soldier Serum | +Crude Bent Blade | OWNED (HOB, ingested 2026-08-13): fit 106 here, the
+#~   highest of any card in the batch. ETB makes an opponent sacrifice a creature, then +2/+1 and
+#~   Equip {2}. Removal stapled to an Equipment.
+#~ -Miner's Guidewing | +Orcrist, Goblin-cleaver | OWNED (HOB): fit 91. +2/+2 and trample, and on
+#~   combat damage choose a creature type and make a Treasure for EACH creature of it — read that
+#~   against this deck's board width before grading it as a pump.
+#~ -Zack Fair | +Sting, Bilbo's Sword | OWNED (HOB): fit 86. {2} FLASH Equipment that enters with a
+#~   hone counter per creature the opponent controls and auto-attaches. Scales with THEIR board.
+#~ note: all three are owned as of the 2026-08-13 HOB ingest, so this is a 0-wildcard package.
+#~ note: the three cuts are distinct on purpose — `cuts` names Super-Soldier Serum for all three,
+#~ note: and it can only be cut once. Serum is also floor-graded (⌁scales w/ equipment).

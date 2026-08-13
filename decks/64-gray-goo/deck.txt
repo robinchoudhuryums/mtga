@@ -100,3 +100,7 @@
 6 Forest (TRK) 325
 4 Island (TRK) 319
 4 Swamp (TRK) 321
+#~ -Slick Imitator | +Gathering of Darkness | OWNED (HOB, ingested 2026-08-13): fit 57. Returns a
+#~   creature card from the graveyard to hand AND amasses Goblins 3 — a graveyard payoff that also
+#~   builds a body, in a deck whose currency is the graveyard. Slick Imitator is `cuts` #1 here and
+#~   is flagged off the deck's central themes.

@@ -128,3 +128,11 @@
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 58
 #~ -War Effort | +Generous Plunderer | benched 2026-08 for War Effort: a menace body whose upkeep Treasure is symmetric (the opponent gets one too) and whose attack damage scales with THEIR artifact count, not ours — good in an artifact meta, worse as generic fodder. Bring it back if the Warrior tokens prove surplus.
+#~ -Deadly Precision | +The Sackville-Bagginses | OWNED (HOB, ingested 2026-08-13): fit 73. ETB may
+#~   sacrifice another creature or artifact to draw AND make a Treasure, then every token you
+#~   sacrifice drains 1. Both halves are this deck's engine, not incidental.
+#~ -Gold Rush | +Bejeweled Warg | OWNED (HOB): fit 91, the highest in the batch for this deck.
+#~   Trample, and on combat damage choose a +1/+1 counter on a Wolf OR a Treasure — the Treasure
+#~   mode is what earns the slot here, not the Wolf clause.
+#~ note: Deadly Precision carries ⚡cost-as-upside HERE (its sacrifice cost feeds your outlets), so
+#~ note: grade that cut from full text before taking it — the flag says the tool under-rates it.

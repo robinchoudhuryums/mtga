@@ -2181,6 +2181,28 @@ Pit Automaton,{2},2,Defender
 Goldvein Hydra,{X}{G},1,Vigilance;Treasure;Haste;Trample
 "Haliya, Ascendant Cadet",{2}{G}{W}{W},5,
 Quilled Greatwurm,{4}{G}{G},6,Trample
+Fateful Discovery,{3}{U}{U},5,
+The Eagles Are Coming!,{1}{W},2,Kicker
+"Azog, Moria's Ruin",{2}{B},3,Amass
+The Chief Warg,{2}{B}{G},4,Ferocious;Menace
+Gathering of Darkness,{3}{B},4,Amass
+"Bilbo, Luckwearer",{1}{U} // {4}{U},2,
+Troll Negotiations,{2}{G}{G},4,Fight
+"Bofur, Reliable Guardian",{W} // {1}{W},1,Lifelink
+Dwarven Mauler,{R},1,
+Lakeshore Apothecary,{1}{U},2,Vigilance
+Front Porch Sentries,{1}{B},2,
+Crude Bent Blade,{2}{B},3,Equip
+Goblin-town Flunkies,{1}{R},2,Amass;Haste
+Stony-Voiced Goblins,{1}{B},2,
+Confusticate and Bebother,{2}{U},3,
+The Queen of Dale,{1}{W},2,
+The Arkenstone,{5} // {2}{W},5,
+"Orcrist, Goblin-cleaver",{3},3,Treasure;Equip
+"Sting, Bilbo's Sword",{2},2,Equip;Flash
+Great Gilded Boat,{2}{U},3,Crew
+The Sackville-Bagginses,{1}{B},2,Treasure
+Bejeweled Warg,{1}{G},2,Treasure;Trample
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -5900,7 +5922,6 @@ Celebrate the Mountain-king,{3}{W},4,
 Dwarven Provisioner,{1}{W},2,
 Dwarven Shortsword,{3}{W},4,Equip
 Eagle of the Great Shelf,{4}{W},5,Flying
-The Eagles Are Coming!,{1}{W},2,Kicker
 Esgaroth Garrison,{4}{W},5,
 Fíli the Pathfinder,{3}{W},4,
 Gleaming Splendor,{1}{W},2,Treasure
@@ -5912,7 +5933,6 @@ Magnificent End,{4}{W},5,
 Moment of Glory,{W},1,Flashback
 The Mountain-king's Return,{2}{W},3,
 "Ori, Keeper of Songs",{2}{W},3,
-The Queen of Dale,{1}{W},2,
 "Roads Go Ever, Ever On",{1}{W},2,
 Settle the Wreckage,{2}{W}{W},4,
 Stone by Sunlight,{1}{W},2,
@@ -5923,15 +5943,11 @@ Vow to Erebor,{1}{W},2,
 "Bilbo, Luckwearer // Burglar's Plot",{1}{U} // {4}{U},2,
 "Bilbo, Thief in the Night",{1}{U},2,
 "Bilbo Baggins, Burglar // Take a Glance",{2}{U} // {U},3,Scry
-Confusticate and Bebother,{2}{U},3,
 "Elrond, Moon-Reader",{2}{U},3,
 Elven Raft-Steerer,{2}{U},3,Landfall
 Elvenking's Harper,{1}{U},2,
 Enchanted River's Grasp,{2}{U},3,Enchant
-Fateful Discovery,{3}{U}{U},5,
 "Gandalf, Wandering Wizard",{4}{U},5,Ward
-Great Gilded Boat,{2}{U},3,Crew
-Lakeshore Apothecary,{1}{U},2,Vigilance
 Lake-town Mariners // Gone Fishing,{4}{U}{U} // {3}{U},6,Vigilance;Ward
 Long Lake Nuisance,{3}{U},4,Flying
 The Lord of the Eagles,{7}{U}{U},9,Flying;Flash
@@ -5949,14 +5965,10 @@ Uncover the Moon-Letters,{3}{U},4,
 Uneasy Partings,{3}{U},4,
 Wizard's Staff,{1}{U},2,Equip
 Along the Crooked Way,{2}{B},3,Amass
-"Azog, Moria's Ruin",{2}{B},3,Amass
 Bilbo's Deadly Slice,{1}{B}{B},3,
-Crude Bent Blade,{2}{B},3,Equip
 Desolation Prowler,{1}{B},2,
 "Down, Down to Goblin-town",{2}{B},3,Amass
 Dreaded Bat-Cloud,{4}{B},5,Deathtouch;Flying
-Front Porch Sentries,{1}{B},2,
-Gathering of Darkness,{3}{B},4,Amass
 Gnashing of Teeth,{1}{B}{B},3,
 "Gollum, Riddle Master",{1}{B},2,
 "Gollum, Silent Slinker // Meager Meal",{3}{B} // {B},4,Menace
@@ -5971,9 +5983,7 @@ Rage into the Valley,{2}{B},3,Amass
 Ravening Warg,{1}{B},2,Ferocious;Deathtouch
 Reverent Howl,{2}{B},3,
 Rhovanion Rampager,{2}{B},3,Amass
-The Sackville-Bagginses,{1}{B},2,Treasure
 Stir Up Trouble,{B},1,
-Stony-Voiced Goblins,{1}{B},2,
 Supper for Spiders,{1}{B},2,
 "Balin, Loremaster",{3}{R}{R},5,
 "Bombur, Gentle Dreamer",{2}{R},3,
@@ -5983,12 +5993,10 @@ Dáin Ironfoot,{2}{R},3,
 Desert Were-Worm,{4}{R}{R},6,
 Desolation of Smaug,{2}{R}{R},4,
 "Dori, Bearer of Friends",{2}{R},3,Treasure;Trample
-Dwarven Mauler,{R},1,
 "Gandalf, Goblins' Bane // Flameshape",{2}{R} // {1}{R},3,
 "Gandalf, Spark Starter",{4}{R}{R},6,Reach
 Getaway Barrel,{3}{R},4,
 Glóin the Mighty // Easy Pickings,{3}{R} // {2}{R},4,
-Goblin-town Flunkies,{1}{R},2,Amass;Haste
 Gundabad Opportunist,{3}{R},4,
 Iron Hills Stalwart,{4}{R},5,Reach;Trample
 Last Light of Durin's Day,{1}{R},2,Mountaincycling;Landcycling;Typecycling;Cycling
@@ -6005,7 +6013,6 @@ Stone-Giant of High Pass,{5}{R}{R},7,
 "Thorin, Mountain-king",{3}{R},4,Trample
 Tidings of War,{R},1,Amass;Flashback
 Attercop,{1}{G},2,Reach;Deathtouch;Landfall
-Bejeweled Warg,{1}{G},2,Treasure;Trample
 "Beorn, Reluctant Host // Till and Tend",{4}{G} // {1}{G},5,Trample
 Beorn the Fierce,{3}{G}{G},5,Trample
 Beorn's Hospitality,{1}{G},2,Landfall
@@ -6026,7 +6033,6 @@ Part in Friendship,{4}{G},5,
 Quarrel,{1}{G},2,
 Radagast of Rhosgobel,{2}{G}{G},4,
 Through the Forest Gate,{6}{G}{G},8,
-Troll Negotiations,{2}{G}{G},4,Fight
 Warg Tactics,{1}{G},2,
 Wargling,{1}{G},2,Ferocious
 Wilderland Scrounger,{4}{G},5,Ferocious
@@ -6038,7 +6044,6 @@ Bard's Company,{2}{W}{U},4,
 "Bifur, Melodic Rider",{4}{R/W}{R/W},6,
 Bolg of the North,{3}{B}{R},5,Amass
 Bolg's Company,{B}{R},2,
-The Chief Warg,{2}{B}{G},4,Ferocious;Menace
 Chief Warg's Company,{1}{B}{G},3,Trample
 Dáin's Company,{R}{W},2,
 Duskwatch Hunter,{2}{B/G},3,
@@ -6065,8 +6070,6 @@ Giant's Boulder,{1},1,Scry
 "Glamdring, Foe-hammer // Gleam of Death",{2} // {3}{U},2,Equip;Mill
 Key to the Side-Door,{1},1,
 My Precious // Allure of Power,{3} // {1}{B},3,Equip
-"Orcrist, Goblin-cleaver",{3},3,Treasure;Equip
-"Sting, Bilbo's Sword",{2},2,Equip;Flash
 Thrór's Map,{2},2,
 Well-Worn Spatula,{1},1,Equip
 Elven Passage,,0,Behold
@@ -6089,29 +6092,15 @@ Smaug the Impenetrable,{5}{B}{R},7,Flying;Indestructible;Treasure;Haste
 Bilbo's Burglaring,{4}{U}{U},6,
 Dragon's Desire,{2}{R}{R},4,
 Necklace of Girion,{2}{G},3,
-The Gaffer,{2}{W},3,
 Galadriel's Dismissal,{W},1,Kicker
 Raise the Palisade,{4}{U},5,
 Call Forth the Tempest,{5}{R}{R}{R},8,Cascade
 Cavern-Hoard Dragon,{7}{R}{R},9,Flying;Treasure;Haste;Trample
-"Arwen, Weaver of Hope",{1}{G}{G},3,
 "Galadriel, Light of Valinor",{2}{G}{W}{U},5,Alliance;Scry
 "Gríma, Saruman's Footman",{2}{U}{B},4,
 "Andúril, Narsil Reforged",{2},2,Ascend;Equip
-Relic of Sauron,{4},4,
 The Black Gate,,0,
 "Minas Morgul, Dark Fortress",,0,
-Dwarven Warriors,{2}{R},3,
-The Reaver Cleaver,{2}{R},3,Treasure;Equip
-"Bilbo, Unexpected Adventurer",{3}{W},4,
-"Gandalf, Shadow's Foe",{5}{U}{U},7,Vigilance;Landfall
-"Thorin, Company's Leader",{4}{R},5,Treasure
-"Bard, Heir of Girion",{2}{W}{U},4,Reach;Vigilance
-"Bolg, Erebor's Reckoning",{4}{B}{R},6,Trample
-Chief of the Wilds,{2}{B}{G},4,Menace
-Dáin of the Ancient Halls,{3}{R}{W},5,Vigilance;Haste
-"Great Goblin, Foul-Hearted",{3}{B}{R},5,Amass
-Thranduil the Strategist,{3}{G}{U},5,Landfall
 Dawn of a New Age,{1}{W},2,
 Dúnedain Blade,{1}{W},2,Equip
 Eagles of the North,{5}{W},6,Flying;Plainscycling;Landcycling;Typecycling;Cycling
@@ -8351,6 +8340,14 @@ Dolmen Gate,{2},2,
 Thousand-Year Elixir,{3},3,
 Auntie's Hovel,,0,
 Shelldock Isle,,0,Hideaway
+"Frodo, Adventurous Hobbit",{W}{B},2,Partner with;Vigilance;Partner
+"Sauron, Lord of the Rings",{5}{U}{B}{R},8,Amass;Trample;Mill
+"Sam, Loyal Attendant",{1}{G}{W},3,Partner with;Food;Partner
+"Saruman, the White Hand",{1}{U}{B}{R},4,Amass
+The Gaffer,{2}{W},3,
+"Arwen, Weaver of Hope",{1}{G}{G},3,
+Relic of Sauron,{4},4,
+Legolas's Quick Reflexes,{G},1,Split second
 A-Orcish Bowmasters,{1}{B},2,Amass;Flash
 A-The One Ring,{4},4,Indestructible
 Banish from Edoras,{4}{W},5,
@@ -14279,6 +14276,7 @@ Highly Illogical,{1}{U},2,Kicker
 "Hoshi Sato, Exolinguist",{4}{U},5,
 Humpback Whales,{4}{U}{U},6,Vigilance;Landcycling;Basic landcycling;Ward;Typecycling;Cycling
 Marooned,{U},1,Enchant
+Open Communications,{U},1,
 "V'Ger, the Intruder",{6}{U},7,Flying
 Assault Drone,{3}{B},4,
 Automated Warfare System,{2}{B},3,Flying
@@ -14287,6 +14285,7 @@ Battle-Scarred Survivalist,{1}{B},2,Menace
 Cha'DIch Investigator,{4}{B},5,
 Collective Drone,{1}{B},2,
 Eject the Warp Core,{1}{B},2,Kicker
+"General Chang, Cold Warrior",{B},1,
 A Good Day to Die,{B},1,
 "He's Dead, Jim",{3}{B},4,Surveil
 Hive Mind Coprocessor,{4}{B},5,

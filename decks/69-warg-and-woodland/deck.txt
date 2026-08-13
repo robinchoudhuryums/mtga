@@ -121,3 +121,13 @@
 2 Temple of Malady (FDN) 700
 7 Forest (TRK) 325
 4 Swamp (TRK) 321
+#~ -Head of the Hunt | +Azog, Moria's Ruin | OWNED (HOB, ingested 2026-08-13): fit 51. ETB destroy a
+#~   creature, its controller amasses Goblins X = that creature's power, and if it was YOURS you
+#~   draw. Removal on a body in a deck at interaction 5. NOTE the amass is a gift to the OPPONENT
+#~   when you kill their creature — read it as removal that hands back a scaled Army, not clean.
+#~ -Felling Blow | +Troll Negotiations | OWNED (HOB): fit 31. Two +1/+1 counters then FIGHT — the
+#~   same shape as Felling Blow (counter + damage) but two counters instead of one, and it feeds
+#~   The Earth Crystal's doubler. Strictly the better version of a card already here.
+#~ note: `cuts` names Radagast of Rhosgobel for both, at fit 4 — it is NOT the cut to take. Radagast
+#~ note: was added deliberately 2026-08-12 and stacks with The Earth Crystal for {3} off a green
+#~ note: creature spell; `cuts` cannot see a cost reducer's worth (G-40 shape).

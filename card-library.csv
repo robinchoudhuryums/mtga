@@ -4646,3 +4646,45 @@ Whenever one or more creatures you control with +1/+1 counters on them deal comb
 Quilled Greatwurm,Creature — Wurm,"Trample
 Whenever a creature you control deals combat damage during your turn, put that many +1/+1 counters on it. (It must survive to get the counters.)
 You may cast this card from your graveyard by removing six counters from among creatures you control in addition to paying its other costs.",G,Wurm; counters; graveyard; trample; evasion,FDN,111,1
+Fateful Discovery,Enchantment,"Whenever an artifact you control enters, draw a card.",U,card draw,HOB,40,1
+The Eagles Are Coming!,Instant,"Kicker {2}{W}{W} (You may pay an additional {2}{W}{W} as you cast this spell.)
+Choose target creature you own. If this spell was kicked, instead choose any number of target creatures you own. Return each chosen creature to your hand. At the beginning of the next upkeep, create a 4/4 white Bird Soldier creature token with flying for each creature returned to your hand this way.",W,tokens; kicker; value,HOB,12,1
+"Azog, Moria's Ruin",Legendary Creature — Goblin Soldier,"When Azog enters, destroy up to one other target creature. Its controller amasses Goblins X, where X is that creature's power. If you controlled that creature, draw a card. (To amass Goblins X, that player puts X +1/+1 counters on an Army they control. It's also a Goblin. If they don't control an Army, they create a 0/0 black Goblin Army creature token first.)",B,Goblin; Soldier; counters; card draw; tokens; etb; amass; go-wide,HOB,61,1
+The Chief Warg,Legendary Creature — Wolf,"Menace (This creature can't be blocked except by two or more creatures.)
+Ferocious — Whenever you attack while you control a creature with power 4 or greater, you draw a card and lose 1 life.",B/G,Wolf; pay life; card draw; ferocious; menace; evasion,HOB,150,1
+Gathering of Darkness,Sorcery,"Return up to one target creature card from your graveyard to your hand.
+Amass Goblins 3. (Put three +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",B,counters; graveyard; tokens; amass; go-wide,HOB,68,1
+"Bilbo, Luckwearer",Legendary Creature — Halfling Rogue // Sorcery — Adventure,"Bilbo can't be blocked.
+Whenever Bilbo deals combat damage to a player, draw a card, then discard a card. // Exchange control of two target nonland permanents that share a card type. (Then exile this card. You may cast the creature later from exile.)",U,Halfling; Rogue; Adventure; exile cast; card draw,HOB,32,1
+Troll Negotiations,Sorcery,Put two +1/+1 counters on target creature you control. Then it fights target creature an opponent controls. (Each deals damage equal to its power to the other.),G,counters; fight; removal; combat,HOB,138,1
+"Bofur, Reliable Guardian",Legendary Creature — Dwarf Scout // Instant — Adventure,Lifelink // Target artifact or creature you control gains hexproof and indestructible until end of turn. (Then exile this card. You may cast the creature later from exile.),W,Dwarf; Scout; Adventure; lifegain; exile cast; lifelink,HOB,6,1
+Dwarven Mauler,Creature — Dwarf Warrior,Equip abilities you activate that target this creature cost {2} less to activate.,R,Dwarf; Warrior; cost-reduction; equipment,HOB,95,1
+Lakeshore Apothecary,Creature — Human Cleric,"Vigilance
+Whenever you draw your second card each turn, put a +1/+1 counter on this creature.",U,Human; Cleric; counters; vigilance; combat,HOB,43,1
+Front Porch Sentries,Creature — Goblin Soldier,"When this creature dies, target creature an opponent controls gets -1/-1 until end of turn.",B,Goblin; Soldier; removal,HOB,67,1
+Crude Bent Blade,Artifact — Equipment,"When this Equipment enters, target opponent sacrifices a creature of their choice.
+Equipped creature gets +2/+1.
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",B,Equipment; sacrifice; etb; equipment; pump; equip,HOB,63,1
+Goblin-town Flunkies,Creature — Goblin Soldier,"Haste
+When this creature enters, amass Goblins 1. (Put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",R,Goblin; Soldier; counters; tokens; etb; amass; go-wide; haste; aggro,HOB,100,1
+Stony-Voiced Goblins,Creature — Goblin Bard,"When this creature enters, each opponent discards a card.",B,Goblin; Bard; etb; discard,HOB,85,1
+Confusticate and Bebother,Instant,"Choose one —
+• Counter target spell unless its controller pays {4}.
+• Draw two cards, then discard a card.",U,counterspell; card draw,HOB,35,1
+The Queen of Dale,Legendary Creature — Human Noble,"Whenever an opponent casts their first noncreature spell each turn, you recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W,Human; Noble; card draw; tokens,HOB,24,1
+The Arkenstone,Legendary Artifact // Sorcery — Adventure,"Creatures you control get +1/+1.
+At the beginning of your end step, draw a card. // Search your library for a legendary creature card, reveal it, put it into your hand, then shuffle. (Then exile this card. You may cast the artifact later from exile.)",W,Adventure; exile cast; card draw; pump,HOB,170,1
+"Orcrist, Goblin-cleaver",Legendary Artifact — Equipment,"Equipped creature gets +2/+2 and has trample.
+Whenever equipped creature deals combat damage to a player, choose a creature type. Create a Treasure token for each creature you control of that type.
+Equip {3}",Colorless,Equipment; tokens; treasure; equipment; pump; equip,HOB,177,1
+"Sting, Bilbo's Sword",Legendary Artifact — Equipment,"Flash
+When Sting enters, put a hone counter on Sting for each creature target opponent controls. Attach Sting to up to one target creature you control. (Each hone counter on an Equipment grants +1/+0 to equipped creature.)
+Equip {3}",Colorless,Equipment; counters; etb; equipment; equip; flash; tempo,HOB,178,1
+Great Gilded Boat,Artifact — Vehicle,"Whenever you attack, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)
+Crew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)",U,Vehicle; card draw; tokens; vehicle; crew; vehicles,HOB,42,1
+The Sackville-Bagginses,Legendary Creature — Halfling Citizen,"When The Sackville-Bagginses enter, you may sacrifice another creature or artifact. If you do, draw a card and create a Treasure token.
+Whenever you sacrifice a token, target opponent loses 1 life.",B,Halfling; Citizen; card draw; sacrifice; tokens; treasure,HOB,83,1
+Bejeweled Warg,Creature — Wolf,"Trample
+Whenever this creature deals combat damage to a player, choose one —
+• Put a +1/+1 counter on target Wolf you control.
+• Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",G,Wolf; counters; sacrifice; tokens; treasure; trample; evasion,HOB,117,1
