@@ -92,3 +92,20 @@
 6 Mountain (MSH) 293
 8 Plains (MSH) 287
 1 Swamp (MSH) 291
+#~ -Frantic Firebolt | +Molten Note | CRAFT (U) — DEFERRED UNTIL ROTATION, on purpose.
+#~   Frantic Firebolt is the BETTER card and stays for now: {2}{R} mono-red against Molten
+#~   Note's {X}{R}{W}, cheaper, and it scales off the graveyard for FREE ("X is 2 plus the
+#~   number of instant and sorcery cards in your graveyard") where Molten Note scales off
+#~   mana you actually spend. Nothing about power argues for the swap.
+#~   WHAT ARGUES FOR IT IS THE CALENDAR: Frantic Firebolt rotates ~2026 — the only card in
+#~   this deck that does — and it is UNOWNED at 2 copies, so crafting it spends two rare
+#~   wildcards for a few months of legality. Molten Note does the same job (scalable damage
+#~   removal) and rotates ~2029, outliving Judith (2027) and Brazen Collector (2027).
+#~   TRIGGER: make this swap when Frantic Firebolt rotates, NOT before. Until then the two
+#~   slots are better left uncrafted than replaced.
+#~   COST WHEN YOU DO: Molten Note is {R}{W}, and every gold two-drop here already casts at
+#~   76.9% on curve; its Flashback {6}{R}{W} is 8 mana and effectively a dead mode at this
+#~   deck's 2.86 curve. Also note the deck would then hold three scalable-damage spells
+#~   (Thunder Salvo, Molten Note, the 2nd Firebolt) plus Thunder Magic's Tiered modes —
+#~   trim the redundancy rather than stacking it.
+
