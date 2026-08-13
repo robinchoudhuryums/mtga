@@ -45,12 +45,13 @@
 2 Cori Mountain Stalwart (TDM) 175
 1 Thor Odinson (MSH) 234
 1 Monica Rambeau (MSH) 23
-2 Heartflame Duelist // Heartflame Slash (WOE) 228
+1 Heartflame Duelist // Heartflame Slash (WOE) 228
 
 # Mana engine (spells fund spells)
-2 Electro, Assaulting Battery (SPM) 76
+1 Electro, Assaulting Battery (SPM) 76
+1 Joshua, Phoenix's Dominant // Phoenix, Warden of Fire (FIN) 229
 1 Brazen Collector (BLB) 128
-1 Tablet of Discovery (SOS) 132
+2 Tablet of Discovery (SOS) 132
 1 Death to Our Enemies (MSH) 127
 
 # Velocity (second-spell layer)
