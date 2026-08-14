@@ -4752,3 +4752,38 @@ Season of the Bold,Sorcery,"Choose up to five {P} worth of modes. You may choose
 "Maha, Its Feathers Night",Legendary Creature — Elemental Bird,"Flying, trample
 Ward—Discard a card.
 Creatures your opponents control have base toughness 1.",B,Elemental; Bird; flying; evasion; trample; ward; protection,BLB,100,1
+Mouse Trapper,Creature — Mouse Soldier,"Flash
+Valiant — Whenever this creature becomes the target of a spell or ability you control for the first time each turn, tap target creature an opponent controls.",W,Mouse; Soldier; valiant; combat; counters; flash; tempo,BLB,22,1
+Overprotect,Instant,"Target creature you control gets +3/+3 and gains trample, hexproof, and indestructible until end of turn.",G,pump,BLB,185,1
+Eddymurk Crab,Creature — Elemental Crab,"Flash
+This spell costs {1} less to cast for each instant and sorcery card in your graveyard.
+This creature enters tapped if it's not your turn.
+When this creature enters, tap up to two target creatures.",U,Elemental; Crab; graveyard; cost-reduction; etb; flash; tempo,BLB,48,1
+Knightfisher,Creature — Bird Knight,"Flying
+Whenever another nontoken Bird you control enters, create a 1/1 blue Fish creature token.",U,Bird; Knight; tokens; flying; evasion,BLB,55,1
+Mind Spiral,Sorcery,"Gift a tapped Fish (You may promise an opponent a gift as you cast this spell. If you do, they create a tapped 1/1 blue Fish creature token before its other effects.)
+Target player draws three cards. If the gift was promised, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,counters; tokens; gift; value,BLB,59,1
+Rabbit Response,Instant,"Creatures you control get +2/+1 until end of turn. If you control a Rabbit, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)",W,scry; pump; selection,BLB,26,1
+Whiskerquill Scribe,Creature — Mouse Citizen,"Valiant — Whenever this creature becomes the target of a spell or ability you control for the first time each turn, you may discard a card. If you do, draw a card.",R,Mouse; Citizen; card draw; valiant; combat; counters,BLB,161,1
+Early Winter,Instant,"Choose one —
+• Exile target creature.
+• Target opponent exiles an enchantment they control.",B,removal,BLB,93,1
+Moonrise Cleric,Creature — Bat Cleric,"Flying
+Whenever this creature attacks, you gain 1 life.",W/B,Bat; Cleric; lifegain; flying; evasion,BLB,226,2
+Run Away Together,Instant,Choose two target creatures controlled by different players. Return those creatures to their owners' hands.,U,bounce,ECL,67,1
+Scales of Shale,Instant,"Affinity for Lizards (This spell costs {1} less to cast for each Lizard you control.)
+Target creature gets +2/+0 and gains lifelink and indestructible until end of turn.",B,lifegain; cost-reduction; pump; affinity; artifacts,BLB,110,1
+Ravine Raider,Creature — Lizard Rogue,"Menace (This creature can't be blocked except by two or more creatures.)
+{1}{B}: This creature gets +1/+1 until end of turn.",B,Lizard; Rogue; pump; menace; evasion,BLB,106,1
+Might of the Meek,Instant,"Target creature gains trample until end of turn. It also gets +1/+0 until end of turn if you control a Mouse.
+Draw a card.",R,card draw; pump,BLB,144,1
+Diresight,Sorcery,"Surveil 2, then draw two cards. You lose 2 life. (To surveil 2, look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",B,graveyard; pay life; card draw; selection; surveil,TLE,162,1
+Polliwallop,Instant,"Affinity for Frogs (This spell costs {1} less to cast for each Frog you control.)
+Target creature you control deals damage equal to twice its power to target creature you don't control.",G,cost-reduction; affinity; artifacts,BLB,189,1
+Nightwhorl Hermit,Creature — Rat Rogue,"Vigilance
+Threshold — As long as there are seven or more cards in your graveyard, this creature gets +1/+0 and can't be blocked.",U,Rat; Rogue; graveyard; pump; vigilance; combat; threshold,BLB,62,1
+Lifecreed Duo,Creature — Bat Bird,"Flying
+Whenever another creature you control enters, you gain 1 life.",W,Bat; Bird; lifegain; flying; evasion,BLB,20,1
+Finch Formation,Creature — Bird Scout,"Offspring {3} (You may pay an additional {3} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
+Flying
+When this creature enters, target creature you control gains flying until end of turn.",U,Bird; Scout; tokens; etb; flying; evasion; offspring; go-wide,BLB,50,1

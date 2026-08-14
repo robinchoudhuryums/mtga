@@ -2235,6 +2235,24 @@ Dáin's Company,{R}{W},2,
 "Helga, Skittish Seer",{G}{W}{U},3,
 Season of the Bold,{3}{R}{R},5,Treasure
 "Maha, Its Feathers Night",{3}{B}{B},5,Flying;Trample;Ward
+Mouse Trapper,{2}{W},3,Valiant;Flash
+Overprotect,{1}{G},2,
+Eddymurk Crab,{5}{U}{U},7,Flash
+Knightfisher,{3}{U}{U},5,Flying
+Mind Spiral,{4}{U},5,Gift
+Rabbit Response,{2}{W}{W},4,Scry
+Whiskerquill Scribe,{1}{R},2,Valiant
+Early Winter,{4}{B},5,
+Moonrise Cleric,{1}{W/B}{W/B},3,Flying
+Run Away Together,{1}{U},2,
+Scales of Shale,{2}{B},3,Affinity
+Ravine Raider,{B},1,Menace
+Might of the Meek,{R},1,
+Diresight,{2}{B},3,Surveil
+Polliwallop,{3}{G},4,Affinity
+Nightwhorl Hermit,{2}{U},3,Vigilance;Threshold
+Lifecreed Duo,{1}{W},2,Flying
+Finch Formation,{2}{U},3,Flying;Offspring
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -2932,12 +2950,9 @@ Feather of Flight,{1}{W},2,Enchant;Flash
 Harvestrite Host,{2}{W},3,
 Intrepid Rabbit,{2}{W},3,Offspring
 Jolly Gerbils,{1}{W},2,
-Lifecreed Duo,{1}{W},2,Flying
 Mabel's Mettle,{1}{W},2,
-Mouse Trapper,{2}{W},3,Valiant;Flash
 Nettle Guard,{1}{W},2,Valiant
 Pileated Provisioner,{4}{W},5,Flying
-Rabbit Response,{2}{W}{W},4,Scry
 Repel Calamity,{1}{W},2,
 Seasoned Warrenguard,{W},1,
 Star Charter,{3}{W},4,Flying
@@ -2951,17 +2966,12 @@ Bellowing Crier,{1}{U},2,
 Calamitous Tide,{4}{U}{U},6,
 Dire Downdraft,{3}{U},4,
 Dour Port-Mage,{1}{U},2,
-Eddymurk Crab,{5}{U}{U},7,Flash
 "Eluge, the Shoreless Sea",{1}{U}{U}{U},4,
-Finch Formation,{2}{U},3,Flying;Offspring
 Kitnap,{2}{U}{U},4,Gift;Enchant
-Knightfisher,{3}{U}{U},5,Flying
 Long River Lurker,{2}{U},3,Ward
 Long River's Pull,{U}{U},2,Gift
-Mind Spiral,{4}{U},5,Gift
 Mindwhisker,{2}{U},3,Surveil;Threshold
 Mockingbird,{X}{U},1,Flying
-Nightwhorl Hermit,{2}{U},3,Vigilance;Threshold
 Otterball Antics,{1}{U},2,Flashback
 Plumecreed Escort,{1}{U},2,Flying;Flash
 Season of Weaving,{4}{U}{U},6,
@@ -2983,7 +2993,6 @@ Consumed by Greed,{1}{B}{B},3,Gift
 Cruelclaw's Heist,{B}{B},2,Gift
 Daggerfang Duo,{2}{B},3,Mill;Deathtouch
 Downwind Ambusher,{3}{B},4,Flash
-Early Winter,{4}{B},5,
 Feed the Cycle,{1}{B},2,Forage
 Fell,{1}{B},2,
 Glidedive Duo,{4}{B},5,Flying
@@ -2994,10 +3003,8 @@ Moonstone Harbinger,{2}{B},3,Deathtouch;Flying
 Nocturnal Hunger,{2}{B},3,Gift;Food
 Osteomancer Adept,{1}{B},2,Deathtouch
 Persistent Marshstalker,{1}{B},2,Threshold
-Ravine Raider,{B},1,Menace
 Ruthless Negotiation,{B},1,Flashback
 Savor,{1}{B},2,Food
-Scales of Shale,{2}{B},3,Affinity
 Sinister Monolith,{3}{B},4,
 Starlit Soothsayer,{2}{B},3,Flying;Surveil
 Thornplate Intimidator,{3}{B},4,Offspring
@@ -3019,7 +3026,6 @@ Hired Claw,{R},1,
 Hoarder's Overflow,{1}{R},2,
 Kindlespark Duo,{2}{R},3,
 Manifold Mouse,{1}{R},2,Offspring
-Might of the Meek,{R},1,
 Playful Shove,{1}{R},2,
 Quaketusk Boar,{3}{R}{R},5,Reach;Haste;Trample
 Rabid Gnaw,{1}{R},2,
@@ -3034,7 +3040,6 @@ Take Out the Trash,{1}{R},2,
 Teapot Slinger,{3}{R},4,Menace
 Valley Flamecaller,{2}{R},3,
 Valley Rally,{2}{R},3,Gift;Food
-Whiskerquill Scribe,{1}{R},2,Valiant
 Wildfire Howl,{1}{R}{R},3,Gift
 Bark-Knuckle Boxer,{1}{G},2,
 Brambleguard Veteran,{1}{G}{G},3,
@@ -3054,11 +3059,9 @@ Hunter's Talent,{1}{G},2,
 Innkeeper's Talent,{1}{G},2,
 Keen-Eyed Curator,{G}{G},2,
 Mistbreath Elder,{G},1,
-Overprotect,{1}{G},2,
 Pawpatch Formation,{1}{G},2,Food
 Pawpatch Recruit,{G},1,Offspring;Trample
 Peerless Recycling,{1}{G},2,Gift
-Polliwallop,{3}{G},4,Affinity
 Rust-Shield Rampager,{3}{G},4,Offspring
 Scrapshooter,{1}{G}{G},3,Reach;Gift
 Stickytongue Sentinel,{2}{G},3,Reach
@@ -3086,7 +3089,6 @@ Head of the Homestead,{3}{G/W}{G/W},5,
 Junkblade Bruiser,{3}{R/G}{R/G},5,Trample
 Lilysplash Mentor,{2}{G}{U},4,Reach
 Mind Drill Assailant,{2}{U/B}{U/B},4,Surveil;Threshold
-Moonrise Cleric,{1}{W/B}{W/B},3,Flying
 "Muerra, Trash Tactician",{1}{R}{G},3,
 Plumecreed Mentor,{1}{W}{U},3,Flying
 "Ral, Crackling Wit",{2}{U}{R},4,
@@ -4415,7 +4417,6 @@ Lofty Dreams,{3}{U}{U},5,Enchant;Convoke
 "Oko, Lorwyn Liege // Oko, Shadowmoor Scion",{2}{U},3,Transform;Mill
 Rime Chill,{6}{U},7,Vivid
 Rimekin Recluse,{2}{U},3,
-Run Away Together,{1}{U},2,
 Shinestriker,{4}{U}{U},6,Flying;Vivid
 Spell Snare,{U},1,
 Summit Sentinel,{1}{U},2,
@@ -14121,7 +14122,6 @@ Dramatic Reversal,{1}{U},2,
 Frantic Search,{2}{U},3,
 Bastion of Remembrance,{2}{B},3,
 Dark Deal,{2}{B},3,
-Diresight,{2}{B},3,Surveil
 Bolt Bend,{3}{R},4,
 Cathartic Reunion,{1}{R},2,
 Fiery Confluence,{2}{R}{R},4,
