@@ -264,3 +264,9 @@
 
 # Flex — measured and parked. See: deck.py flex 50a
 #~ -Hard-Hitting Question | +A Realm Reborn | "Other permanents you control have '{T}: Add one mana of any color'" — and the breadth is the point: not just lands or creatures, but the enchantments (Sapling Nursery, Primeval Bounty, Garruk's Uprising) and artifacts too, which no other mana card here reaches. This deck has no Enduring Vitality, so nothing currently turns its creatures into mana at all. Parked purely on COST: at {4}{G}{G} it is the wrong end of the curve for the slowest deck on the roster. Measured as the fourth add of a package (with Sledge-Class Seedship, Summoner's Grimoire and Rainveil Rejuvenator) it read avg MV 4.18 with SEVEN early drops and interaction 4 — unplayable. Take it only after the curve comes down, e.g. if the land-fetch bodies get cheaper replacements.
+#~ -Harmonious Grovestrider | +Beorn's Hospitality | OWNED (HOB, 2026-08-13 ingest): fit 45.
+#~   Landfall puts a +1/+1 counter on a creature, and {5}{G}{G} turns it into a Bear whose
+#~   power and toughness equal your land count — the same clause Grovestrider has, on a
+#~   TWO-drop that does something before it flips. Grovestrider is `cuts` #1 here at fit 7,
+#~   flagged off the deck's central themes.
+#~ note: also in decks 69 and 69a; copies are fungible, so one copy serves all three.

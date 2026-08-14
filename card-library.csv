@@ -4721,3 +4721,34 @@ Iron Hills Stalwart,Creature — Dwarf Warrior,"Reach, trample
 When this creature enters, attach target Equipment you control to up to one target creature you control.",R,Dwarf; Warrior; etb; reach; defense; trample; evasion,HOB,102,1
 Plunder the Trollshaws,Instant,"Draw a card. If this spell was cast from a graveyard, draw two cards instead.
 Flashback {3}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; card draw; flashback; recursion; spellslinger,HOB,51,1
+"Smaug, the Great Calamity",Legendary Creature — Dragon // Sorcery — Adventure,Flying // Spew Flame deals 5 damage to target creature. (Then exile this card. You may cast the creature later from exile.),R,Dragon; Adventure; exile cast; burn; flying; evasion,HOB,109,1
+Magnificent End,Instant,"This spell costs {3} less to cast if it targets a tapped creature.
+Magnificent End deals 5 damage to target creature.",W,cost-reduction; burn,HOB,20,1
+Mirkwood Nurturer,Creature — Elf Ranger,"When this creature enters, return up to one other target permanent you control to its owner's hand. If you do, put a +1/+1 counter on this creature.",U/G,Elf; Ranger; counters; etb; bounce,HOB,160,1
+Smaug's Fury,Instant,Target creature gets +3/+0 and gains reach and first strike until end of turn.,R,pump,HOB,111,1
+Long Lake Nuisance,Creature — Bird,"Flying
+When this creature enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",U,Bird; card draw; tokens; etb; flying; evasion,HOB,45,1
+Boughside Wanderers,Creature — Elf Scout,"When this creature enters, look at the top four cards of your library. You may reveal a permanent card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.
+Landfall — Whenever a land you control enters, this creature gets +2/+2 until end of turn.",G,Elf; Scout; etb; landfall; pump; selection; lands; ramp,HOB,121,1
+Bilbo's Deadly Slice,Instant,Destroy target creature.,B,removal,HOB,62,1
+"Bilbo Baggins, Burglar",Legendary Creature — Halfling Rogue // Sorcery — Adventure,"When Bilbo Baggins enters, draw a card. // Scry 2. (Then exile this card. You may cast the creature later from exile.)",U,Halfling; Rogue; Adventure; exile cast; card draw; etb; scry; selection,HOB,34,1
+Enchanted River's Grasp,Enchantment — Aura,"Enchant creature
+When this Aura enters, tap enchanted creature and remove all counters from it.
+Enchanted creature loses all abilities and doesn't untap during its controller's untap step.",U,Aura; etb; aura; enchant,HOB,39,1
+Attercop,Creature — Spider,"Reach, deathtouch
+Landfall — Whenever a land you control enters, this creature gets +1/+1 until end of turn.",G,Spider; landfall; pump; reach; defense; deathtouch; combat; removal; lands; ramp,HOB,116,1
+Dáin's Company,Creature — Dwarf Warrior,"This creature has lifelink as long as you control another Dwarf.
+When this creature enters, look at the top four cards of your library. You may reveal a Dwarf or Equipment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",W/R,Dwarf; Warrior; lifegain; etb; selection,HOB,152,1
+"Zanarkand, Ancient Metropolis",Land — Town // Sorcery — Adventure,"This land enters tapped.
+{T}: Add {G}. // Create a 1/1 colorless Hero creature token. Put a +1/+1 counter on it for each land you control. (Then exile this card. You may play the land later from exile.)",G,Town; Adventure; counters; exile cast; tokens; mana,FIN,293,1
+"Tom, Bert, and William",Legendary Creature — Troll,"{1}, Sacrifice another creature: Draw cards equal to the sacrificed creature's power, then discard a card.
+When Tom, Bert, and William die, if they were a creature, return them to the battlefield. They're an artifact. (They're no longer a creature.)",B/G,Troll; card draw; sacrifice,HOB,169,1
+"Helga, Skittish Seer",Legendary Creature — Frog Druid,"Whenever you cast a creature spell with mana value 4 or greater, you draw a card, gain 1 life, and put a +1/+1 counter on Helga.
+{T}: Add X mana of any one color, where X is Helga's power. Spend this mana only to cast creature spells with mana value 4 or greater or creature spells with {X} in their mana costs.",W/U/G,Frog; Druid; counters; lifegain; card draw; mana,BLB,217,1
+Season of the Bold,Sorcery,"Choose up to five {P} worth of modes. You may choose the same mode more than once.
+{P} — Create a tapped Treasure token.
+{P}{P} — Exile the top two cards of your library. Until the end of your next turn, you may play them.
+{P}{P}{P} — Until the end of your next turn, whenever you cast a spell, Season of the Bold deals 2 damage to up to one target creature.",R,tokens; burn; treasure; impulse,BLB,152,1
+"Maha, Its Feathers Night",Legendary Creature — Elemental Bird,"Flying, trample
+Ward—Discard a card.
+Creatures your opponents control have base toughness 1.",B,Elemental; Bird; flying; evasion; trample; ward; protection,BLB,100,1

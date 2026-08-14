@@ -93,3 +93,16 @@
 #~ note: all three are owned as of the 2026-08-13 HOB ingest, so this is a 0-wildcard package.
 #~ note: the three cuts are distinct on purpose — `cuts` names Super-Soldier Serum for all three,
 #~ note: and it can only be cut once. Serum is also floor-graded (⌁scales w/ equipment).
+#~ -Whiplash, Vengeful Engineer | +Dwarven Shortsword | OWNED (HOB, 2026-08-13 ingest):
+#~   fit 107 — the highest any card has scored against this deck. "When this Equipment
+#~   enters, create a 2/2 red Dwarf creature token, then attach this Equipment to it" is a
+#~   BODY AND AN AURA in one card, so it does not need a creature already on board the way
+#~   the rest of the package does. Equip {2} after that.
+#~ -Sun-Spider, Nimble Webber | +The Black Arrow | OWNED (HOB): fit 100. FLASH Equipment,
+#~   ETB 1 damage to any target — and it DESTROYS a Dragon outright regardless of
+#~   toughness — then +1/+1 and reach for Equip {1}, the cheapest equip cost in the deck.
+#~ note: cuts are distinct from the three named above (Super-Soldier Serum / Miner's
+#~ note: Guidewing / Zack Fair) because the cut pool is shared and each name goes once.
+#~ note: This deck now carries FIVE flexed Equipment suggestions from two HOB batches;
+#~ note: they cannot all be taken. Priority by fit: Dwarven Shortsword 107, Crude Bent
+#~ note: Blade 106, The Black Arrow 100, Orcrist 91, Sting 86.

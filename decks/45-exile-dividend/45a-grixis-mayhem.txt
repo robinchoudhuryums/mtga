@@ -132,3 +132,8 @@
 2 Mountain (MSH) 293
 1 Swamp (MSH) 291
 1 Ominous Asylum (SPM) 181
+#~ -Weftstalker Ardent | +Plunder the Trollshaws | OWNED (HOB, 2026-08-13 ingest): fit 74.
+#~   "{1}{U} Draw a card. If this spell was cast from a graveyard, draw two cards instead.
+#~   Flashback {3}{U}" — one card that draws THREE across two casts, and the second cast
+#~   comes from the graveyard this deck is already filling. Do not cut from the removal
+#~   block for it: `cuts` ranks four removal spells above Weftstalker and the deck runs 10.
