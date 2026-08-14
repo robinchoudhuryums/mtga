@@ -20,12 +20,17 @@ OPP = "ZZZZYYYYXXXXWWWWVVVVUUUUTT"
 
 def _event(match_id="m-1", my_team=2, winner=1, games=((1,),), timestamp="1785197326489",
            my_course="Avatar_Basic_BlackPanther_MSH", opp_course="Avatar_Basic_Slimefoot_DMU",
-           reason="MatchCompletedReasonType_Success"):
-    """One finalMatchResult line, in Arena's real nesting."""
+           reason="MatchCompletedReasonType_Success", ended_by="ResultReason_Game"):
+    """One finalMatchResult line, in Arena's real nesting.
+
+    `reason` and `ended_by` are DIFFERENT fields and the distinction is the point:
+    `reason` is `matchCompletedReason` (Success for every completed match, hence the
+    column that carried no information), `ended_by` is the match-scope result's own
+    reason (Game vs Concede, the half that varies)."""
     results = [{"scope": "MatchScope_Game", "result": "ResultType_WinLoss",
-                "winningTeamId": g[0], "reason": "ResultReason_Game"} for g in games]
+                "winningTeamId": g[0], "reason": ended_by} for g in games]
     results.append({"scope": "MatchScope_Match", "result": "ResultType_WinLoss",
-                    "winningTeamId": winner, "reason": "ResultReason_Game"})
+                    "winningTeamId": winner, "reason": ended_by})
     payload = {
         "transactionId": "t-1", "requestId": 332, "timestamp": timestamp,
         "matchGameRoomStateChangedEvent": {"gameRoomInfo": {
@@ -123,6 +128,52 @@ class TestTheRealSample:
         assert r["Opponent Avatar"] == "Avatar_Basic_Slimefoot_DMU"
         assert r["Reason"] == "Success"        # the enum prefix is stripped
         assert r["Event"] == "Play"
+
+    def test_ended_by_separates_a_concede_from_a_played_out_game(self):
+        """The half of the reason data that VARIES. `matchCompletedReason` is Success for
+        every completed match — all 15 rows of the first real record read `Success`, i.e.
+        the stored column carried zero bits, while this one distinguished 2 of 3."""
+        played, _ = pm.parse_log(_log(_event(match_id="m-a")))
+        scooped, _ = pm.parse_log(_log(_event(match_id="m-b",
+                                              ended_by="ResultReason_Concede")))
+        assert played[0]["Ended By"] == "Game"
+        assert scooped[0]["Ended By"] == "Concede"
+        # Both still complete normally, so the OLD column cannot tell them apart.
+        assert played[0]["Reason"] == scooped[0]["Reason"] == "Success"
+
+    def test_a_missing_result_reason_is_blank_not_guessed(self):
+        raw = json.loads(_event())
+        fin = (raw["matchGameRoomStateChangedEvent"]["gameRoomInfo"]["finalMatchResult"])
+        for r in fin["resultList"]:
+            r.pop("reason", None)
+        rows, _ = pm.parse_log(_log(json.dumps(raw)))
+        assert rows[0]["Ended By"] == ""
+
+    def test_the_result_evidence_is_carried_but_never_written(self):
+        """G-52 — the dry run prints the two integers the W/L verdict came from. They ride
+        on the row as underscore keys; `write_matches` emits only HEADER, so they must not
+        reach the CSV (and must not appear as columns)."""
+        rows, _ = pm.parse_log(_log(_event(my_team=2, winner=1)))
+        assert (rows[0]["_my_team"], rows[0]["_win_team"]) == (2, 1)
+        assert "my team 2" in pm._result_evidence(rows[0])
+        assert "winner 1" in pm._result_evidence(rows[0])
+        assert not [k for k in pm.HEADER if k.startswith("_")]
+
+    def test_the_evidence_names_a_draw_rather_than_printing_team_zero(self):
+        rows, _ = pm.parse_log(_log(_event(winner=0)))
+        assert rows[0]["Result"] == "D"
+        assert "winner none" in pm._result_evidence(rows[0])
+
+    def test_evidence_is_empty_for_a_row_that_came_back_from_csv(self):
+        """`report` runs over rows loaded from disk, which never carry the fields."""
+        assert pm._result_evidence({"Date": "2026-08-14", "Result": "W"}) == ""
+
+    def test_a_seat_with_no_team_prints_a_question_mark_not_nothing(self):
+        """The distinction the presence check buys. A parsed row whose seat carries no
+        `teamId` still derives a W/L — and that is the LEAST trustworthy verdict there is,
+        so it must not fall into the same silent-empty branch as a CSV row."""
+        assert pm._result_evidence({"_my_team": None, "_win_team": 1}) == \
+            "[my team ? · winner 1]"
 
     def test_game_scores_are_counted_per_team(self):
         rows, _ = pm.parse_log(_log(_event(my_team=2, winner=2, games=((2,), (1,), (2,)))))
@@ -379,9 +430,44 @@ class TestPersistence:
         pm.write_matches(rows, str(out))
         assert pm.load_matches(str(out))[0]["My Avatar"] == "Avatar_Basic_BlackPanther_MSH"
 
+    def test_the_previous_schema_migrates_when_a_column_is_added(self, tmp_path):
+        """The regression that generalized `_is_own_earlier_schema`. It used to compare
+        against the ONE header remembered from the avatar rename, which worked exactly
+        once: adding `Ended By` made the then-current file an "earlier schema" too, and an
+        exact match cannot see that — so the guard would refuse the very write that
+        performs the upgrade, which is the bug it exists to prevent."""
+        out = tmp_path / "m.csv"
+        prev = [c for c in pm.HEADER if c != "Ended By"]
+        out.write_text(",".join(prev) + "\n"
+                       + "2026-08-14,m1,15,15 Air Nomads,g-1,Avatar_Basic_ShangChi_MSH,"
+                         "Play,W,1,0,Avatar_Basic_ScarletWitch_MSH,Success\n",
+                       encoding="utf-8")
+        rows = pm.load_matches(str(out))
+        pm.write_matches(rows, str(out))       # must not raise
+        back = pm.load_matches(str(out))
+        assert back[0]["Result"] == "W"
+        assert back[0]["Deck"] == "15"
+        assert back[0]["Ended By"] == ""       # unknown, not invented
+
+    def test_a_reordered_header_is_refused(self, tmp_path):
+        """Every column is one of mine — but not in my order, so it is not my file."""
+        out = tmp_path / "m.csv"
+        swapped = list(pm.HEADER)
+        swapped[0], swapped[1] = swapped[1], swapped[0]
+        out.write_text(",".join(swapped) + "\n", encoding="utf-8")
+        assert pm._is_own_earlier_schema(str(out)) is False
+
+    def test_a_schema_missing_the_core_columns_is_refused(self, tmp_path):
+        """An ordered subset of my names is not enough: without Match ID there is no
+        identity to dedup on, so it cannot be a matches.csv."""
+        out = tmp_path / "m.csv"
+        out.write_text("Date,Deck,Event\n", encoding="utf-8")
+        assert pm._is_own_earlier_schema(str(out)) is False
+
     def test_a_foreign_csv_is_still_refused(self, tmp_path):
-        """The migration allowance accepts exactly ONE predecessor header, so the F-02
-        mirror guard still stops this writer overwriting a file it does not own."""
+        """The migration allowance accepts only headers built from THIS module's own
+        column names in their own order, so the F-02 mirror guard still stops this writer
+        overwriting a file it does not own."""
         out = tmp_path / "card-library.csv"
         out.write_text("Card Name,Set Code,Collector #,Quantity Owned,Color(s),"
                        "Card Type,Card Text,Synergies\nShock,M21,159,4,R,Instant,,burn\n",
@@ -667,6 +753,326 @@ class TestArenaHeaderWriting:
         d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
         pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
         assert list((d / "07-earths").glob("*.bak"))
+
+
+class TestNamePrefixGuessIsDisclosed:
+    """The prefix route validates the leading NUMBER and nothing else — "15 Anything At
+    All" resolves to deck 15 — and `--apply` then writes that guess into the deck file as
+    a permanent `#: arena:` header, after which every later match resolves to it with
+    full confidence. So the run must SHOW which repo deck it landed on.
+
+    Deliberately not a name-agreement GATE. Measured over the 22 correct `#: arena:`
+    mappings on the roster, 8 disagree with the repo name ("49 Big Draco" is Scaleforge,
+    "58 Treasure Planet" is Gold Standard): the Arena names are flavour names. A gate
+    would block a correct attribution better than a third of the time.
+
+    Driven through `main()` on purpose. `deck_names` is a working primitive, and G-40 is
+    the recurring failure here — a primitive nothing calls is invisible to every gate, so
+    the assertion has to run the path a user runs."""
+
+    PLAIN = "#: name: Air Nomads\n#: format: Standard\n4 Shock (M21) 159\n"
+
+    def _run(self, tmp_path, monkeypatch, capsys, arena_name):
+        d = TestArenaHeaderWriting._roster(self, tmp_path, monkeypatch,
+                                           **{"15-air-nomads": self.PLAIN})
+        log = "\n".join([_setdeck(name=arena_name, guid="g-15"),
+                         _header(date="8/7/2026", time="7:33:25 AM"), _event()])
+        src = tmp_path / "s.log"
+        src.write_text(log, encoding="utf-8")
+        monkeypatch.setattr("sys.argv", ["parse_matches.py", str(src),
+                                         "--out", str(tmp_path / "m.csv")])
+        pm.main()
+        return d, capsys.readouterr().out
+
+    def test_the_repo_deck_name_is_printed_next_to_the_guess(
+            self, tmp_path, monkeypatch, capsys):
+        _d, out = self._run(tmp_path, monkeypatch, capsys, "15 Air Nomads")
+        assert "name prefix" in out
+        assert "'Air Nomads'" in out            # the REPO deck's name, to confirm against
+        assert "LEADING NUMBER only" in out     # and the warning that it is a guess
+
+    def test_a_flavour_name_still_resolves_rather_than_being_blocked(
+            self, tmp_path, monkeypatch, capsys):
+        """The 8-of-22 case. `15 Sky Bison` is a legitimate Arena name for deck 15; a
+        name-agreement gate would refuse it and lose the attribution."""
+        _d, out = self._run(tmp_path, monkeypatch, capsys, "15 Sky Bison")
+        assert "deck 15" in out and "UNRESOLVED" not in out
+        assert "'Air Nomads'" in out            # …and the disagreement is visible
+
+    def test_the_explicit_header_route_is_not_nagged(
+            self, tmp_path, monkeypatch, capsys):
+        """A header a human wrote needs no confirming — only the guess does."""
+        body = self.PLAIN.replace("#: format: Standard\n",
+                                  "#: format: Standard\n#: arena: 15 Sky Bison, g-15\n")
+        TestArenaHeaderWriting._roster(self, tmp_path, monkeypatch,
+                                       **{"15-air-nomads": body})
+        log = "\n".join([_setdeck(name="15 Sky Bison", guid="g-15"),
+                         _header(date="8/7/2026", time="7:33:25 AM"), _event()])
+        src = tmp_path / "s.log"
+        src.write_text(log, encoding="utf-8")
+        monkeypatch.setattr("sys.argv", ["parse_matches.py", str(src),
+                                         "--out", str(tmp_path / "m.csv")])
+        pm.main()
+        out = capsys.readouterr().out
+        assert "#: arena: header" in out
+        assert "LEADING NUMBER only" not in out
+
+
+class TestResultEvidenceIsPrinted:
+    """G-52 — the surface that decides W/L must show what it decided from. A single
+    inverted seat read flips every row in a paste the same way, which reads as a losing
+    streak rather than as a bug; the first fifteen matches were checked by re-reading the
+    JSON by hand, which is the cost this removes."""
+
+    def _run(self, tmp_path, monkeypatch, capsys, **ev):
+        src = tmp_path / "s.log"
+        src.write_text("\n".join([_header(), _event(**ev)]), encoding="utf-8")
+        monkeypatch.setattr("sys.argv", ["parse_matches.py", str(src),
+                                         "--out", str(tmp_path / "m.csv")])
+        pm.main()
+        return capsys.readouterr().out
+
+    def test_the_dry_run_prints_the_two_integers_behind_the_verdict(
+            self, tmp_path, monkeypatch, capsys):
+        out = self._run(tmp_path, monkeypatch, capsys, my_team=2, winner=2)
+        assert "[my team 2 · winner 2]" in out
+        assert "finalMatchResult read" in out    # and how to read it
+
+    def test_a_loss_shows_the_mismatching_pair(self, tmp_path, monkeypatch, capsys):
+        out = self._run(tmp_path, monkeypatch, capsys, my_team=2, winner=1)
+        assert "[my team 2 · winner 1]" in out
+
+    def test_the_concede_shows_in_the_line(self, tmp_path, monkeypatch, capsys):
+        out = self._run(tmp_path, monkeypatch, capsys,
+                        ended_by="ResultReason_Concede")
+        assert "by concede" in out
+
+
+class TestAdoptingArenaDeckNames:
+    """Arena is allowed to be the source of truth for a deck's NAME — but only where the
+    pairing is proven, and only where the difference is real."""
+
+    def _roster(self, tmp_path, monkeypatch, **decks):
+        return TestArenaHeaderWriting._roster(self, tmp_path, monkeypatch, **decks)
+
+    GUID = "e3a6c595-914d-4809-bd6d-630b3758ca89"
+
+    def _cored(self, name, arena=None, extra="", guid=None):
+        """`guid` defaults to this class's GUID. Every deck in a fixture roster needs its
+        OWN — `arena_deck_map` keys on the GUID, so two decks sharing one silently make
+        the map resolve to whichever was read last."""
+        head = f"#: name: {name}\n#: format: Standard\n"
+        if arena:
+            head += f"#: arena: {arena}, {guid or self.GUID}\n"
+        return head + extra + "4 Shock (M21) 159\n"
+
+    def test_a_guid_matched_rename_is_adopted(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch,
+                         **{"45-exile": self._cored("Exile Dividend", "45 Old Name")})
+        written, plan = pm.sync_deck_names(_setdeck(name="45 The Exiles", guid=self.GUID),
+                                           apply=True, out=lambda *_a: None)
+        assert written == 1
+        assert [(p[0], p[2], p[3]) for p in plan] == [("45", "Exile Dividend",
+                                                       "The Exiles")]
+        assert "#: name: The Exiles" in (d / "45-exile" / "deck.txt").read_text(
+            encoding="utf-8")
+
+    def test_a_name_prefix_match_NEVER_adopts(self, tmp_path, monkeypatch):
+        """The deck resolves for ATTRIBUTION on the number alone, which is not proof of
+        identity — so it must not be allowed to rewrite the deck's name."""
+        self._roster(tmp_path, monkeypatch,
+                     **{"45-exile": self._cored("Exile Dividend")})   # no #: arena:
+        written, plan = pm.sync_deck_names(_setdeck(name="45 The Exiles", guid="g-new"),
+                                           apply=True, out=lambda *_a: None)
+        assert (written, plan) == (0, [])
+
+    def test_typography_alone_is_not_a_rename(self, tmp_path, monkeypatch):
+        """Arena writes a curly apostrophe, a doubled space and a hyphen for an em dash.
+        Adopting those would churn the repo every run and import the degradation."""
+        self._roster(tmp_path, monkeypatch,
+                     **{"07-e": self._cored("Earth's Mightiest", "07 X")})
+        _w, plan = pm.sync_deck_names(_setdeck(name="07  Earth’s Mightiest",
+                                               guid=self.GUID), out=lambda *_a: None)
+        assert plan == []
+
+    def test_a_variant_keeps_its_parent_prefix(self, tmp_path, monkeypatch):
+        """G-27's rationale audit leans on the "<parent> — <variant>" convention, so a
+        variant adopting "Ancient Decay" must not become a bare orphaned name."""
+        self._roster(tmp_path, monkeypatch, **{
+            "26-iron-forge": self._cored("Iron Forge", "26 Iron Forge", guid="g-parent"),
+        })
+        (tmp_path / "decks" / "26-iron-forge" / "26b-scrap.txt").write_text(
+            self._cored("Iron Forge — Scrapyard Tithe", "26b Old"), encoding="utf-8")
+        _w, plan = pm.sync_deck_names(_setdeck(name="26b Ancient Decay", guid=self.GUID),
+                                      out=lambda *_a: None)
+        assert [(p[0], p[3]) for p in plan] == [("26b", "Iron Forge — Ancient Decay")]
+
+    def test_a_variant_whose_arena_name_repeats_the_parent_is_not_doubled(
+            self, tmp_path, monkeypatch):
+        """"54b Grand Lotus- Comet" already carries the parent; adopting it naively gives
+        "Grand Lotus — Grand Lotus- Comet". Here it should be a no-op entirely."""
+        self._roster(tmp_path, monkeypatch, **{
+            "54-lotus": self._cored("Grand Lotus", "54 Grand Lotus", guid="g-parent"),
+        })
+        (tmp_path / "decks" / "54-lotus" / "54b-comet.txt").write_text(
+            self._cored("Grand Lotus — Comet", "54b Old"), encoding="utf-8")
+        _w, plan = pm.sync_deck_names(_setdeck(name="54b Grand Lotus- Comet",
+                                               guid=self.GUID), out=lambda *_a: None)
+        assert plan == []
+
+    def test_it_reports_without_the_flag_and_writes_nothing(self, tmp_path, monkeypatch):
+        """G-53 — a capability behind a flag nobody runs is invisible, so the run says a
+        rename is available even when it will not make one."""
+        d = self._roster(tmp_path, monkeypatch,
+                         **{"45-exile": self._cored("Exile Dividend", "45 Old")})
+        said = []
+        written, plan = pm.sync_deck_names(_setdeck(name="45 The Exiles", guid=self.GUID),
+                                           apply=False, out=said.append)
+        assert written == 0 and len(plan) == 1
+        assert "--sync-names" in "\n".join(said)
+        assert "#: name: Exile Dividend" in (d / "45-exile" / "deck.txt").read_text(
+            encoding="utf-8")
+
+    def test_card_lines_survive_the_rename(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch,
+                         **{"45-exile": self._cored("Exile Dividend", "45 Old")})
+        pm.sync_deck_names(_setdeck(name="45 The Exiles", guid=self.GUID),
+                           apply=True, out=lambda *_a: None)
+        body = (d / "45-exile" / "deck.txt").read_text(encoding="utf-8")
+        assert "4 Shock (M21) 159" in body                      # INV-04 content intact
+        assert body.count("#: name:") == 1                      # replaced, not stacked
+        assert list((d / "45-exile").glob("*.bak"))              # and a backup exists
+
+    def test_a_stranded_citation_is_flagged(self, tmp_path, monkeypatch):
+        """A rename can orphan a reference in ANOTHER deck's prose; nothing rewrites those
+        and the rationale audit reads card names, not deck names."""
+        self._roster(tmp_path, monkeypatch, **{
+            "45-exile": self._cored("Exile Dividend", "45 Old"),
+            "54-lotus": self._cored("Grand Lotus", "54 GL", guid="g-other",
+                                    extra="#: notes: splits the role with Exile "
+                                          "Dividend\n"),
+        })
+        said = []
+        pm.sync_deck_names(_setdeck(name="45 The Exiles", guid=self.GUID), out=said.append)
+        assert "old name cited in 1 other deck file(s): 54" in "\n".join(said)
+
+    def test_renaming_a_parent_flags_the_variants_it_orphans(self, tmp_path, monkeypatch):
+        """The mirror of the convention `_adopted_name` protects. Renaming a VARIANT keeps
+        its "<parent> — <variant>" shape; renaming the PARENT breaks that shape for every
+        variant beneath it, and those have no Arena GUID of their own so nothing can
+        rename them from evidence. The real sync orphaned four decks this way."""
+        self._roster(tmp_path, monkeypatch, **{
+            "28-dinos": self._cored("Dino Stampede", "28 Old", guid="g-parent"),
+        })
+        (tmp_path / "decks" / "28-dinos" / "28a-owned.txt").write_text(
+            self._cored("Dino Stampede — Owned Build"), encoding="utf-8")
+        said = []
+        pm.sync_deck_names(_setdeck(name="28 Triceraton", guid="g-parent"), out=said.append)
+        out = "\n".join(said)
+        assert "VARIANT(S) carry the old parent name" in out
+        assert "28a 'Dino Stampede — Owned Build'" in out
+
+    def test_renaming_a_VARIANT_flags_no_orphans(self, tmp_path, monkeypatch):
+        """Only a parent rename can orphan anything — a variant has nothing beneath it."""
+        self._roster(tmp_path, monkeypatch, **{
+            "28-dinos": self._cored("Dino Stampede", "28 Dino Stampede", guid="g-parent"),
+        })
+        (tmp_path / "decks" / "28-dinos" / "28a-owned.txt").write_text(
+            self._cored("Dino Stampede — Owned Build", "28a Old"), encoding="utf-8")
+        said = []
+        pm.sync_deck_names(_setdeck(name="28a Raptor Pack", guid=self.GUID),
+                           out=said.append)
+        assert "VARIANT(S)" not in "\n".join(said)
+
+    def test_a_citation_that_still_reads_correctly_is_not_flagged(
+            self, tmp_path, monkeypatch):
+        """"Unlock" -> "Unlocked" keeps every citation valid. Flagging it would bury the
+        real cases in noise."""
+        self._roster(tmp_path, monkeypatch, **{
+            "51-unlock": self._cored("Unlock", "51 Old"),
+            "54-lotus": self._cored("Grand Lotus", "54 GL", guid="g-other",
+                                    extra="#: notes: the Unlock shell does this too\n"),
+        })
+        said = []
+        pm.sync_deck_names(_setdeck(name="51 Unlocked", guid=self.GUID), out=said.append)
+        assert "cited in" not in "\n".join(said)
+
+
+class TestSourcelessNameReconcile:
+    """`--sync-names` with no log. The repo already holds Arena's name for every
+    GUID-paired deck, so reconciling a months-old divergence must not require a paste
+    covering all 106 decks — that is a capability nobody reaches (G-53)."""
+
+    def _roster(self, tmp_path, monkeypatch, **decks):
+        return TestArenaHeaderWriting._roster(self, tmp_path, monkeypatch, **decks)
+
+    def test_it_reads_arena_names_back_out_of_the_headers(self, tmp_path, monkeypatch):
+        self._roster(tmp_path, monkeypatch, **{
+            "45-exile": TestAdoptingArenaDeckNames._cored(
+                TestAdoptingArenaDeckNames, "Exile Dividend", "45 The Exiles",
+                guid="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+        })
+        assert pm.stored_arena_names() == {
+            "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee": "45 The Exiles"}
+        _w, plan = pm.sync_deck_names_from_headers(out=lambda *_a: None)
+        assert [(p[0], p[3]) for p in plan] == [("45", "The Exiles")]
+
+    def test_the_guid_is_found_by_SHAPE_not_by_position(self, tmp_path, monkeypatch):
+        """A deck NAME can look like anything, including something comma-ish, so the two
+        header fields cannot be told apart by order."""
+        self._roster(tmp_path, monkeypatch, **{
+            "45-exile": "#: name: Exile Dividend\n#: format: Standard\n"
+                        "#: arena: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee, 45 The Exiles\n"
+                        "4 Shock (M21) 159\n",
+        })
+        assert pm.stored_arena_names() == {
+            "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee": "45 The Exiles"}
+
+    def test_a_header_with_no_guid_is_skipped(self, tmp_path, monkeypatch):
+        """Only a GUID is proof of identity, so a name-only header cannot drive a
+        rename."""
+        self._roster(tmp_path, monkeypatch, **{
+            "45-exile": "#: name: Exile Dividend\n#: format: Standard\n"
+                        "#: arena: 45 The Exiles\n4 Shock (M21) 159\n",
+        })
+        assert pm.stored_arena_names() == {}
+        assert pm.sync_deck_names_from_headers(out=lambda *_a: None) == (0, [])
+
+
+class TestPooledReads:
+    """The per-deck split cannot reach the sample floor at this roster size, so the
+    record needs a denominator that can."""
+
+    def _rows(self, spec):
+        return [{"Deck": d, "Result": r, "Event": e} for d, r, e in spec]
+
+    def test_all_decks_pools_across_the_roster(self, capsys):
+        pm.report(self._rows([("7", "W", "Play"), ("7", "L", "Play"),
+                              ("45", "W", "Ladder")]))
+        out = capsys.readouterr().out
+        assert "ALL DECKS" in out
+        assert "n=3 — 17 more for a read" in out
+
+    def test_the_event_split_appears_only_when_there_is_more_than_one(self, capsys):
+        pm.report(self._rows([("7", "W", "Play"), ("7", "L", "Play")]))
+        one = capsys.readouterr().out
+        assert "Ladder" not in one and "  Play" not in one
+        pm.report(self._rows([("7", "W", "Play"), ("7", "L", "Ladder")]))
+        assert "Ladder" in capsys.readouterr().out
+
+    def test_pooling_still_refuses_a_small_sample(self, capsys):
+        pm.report(self._rows([("7", "W", "Play")] * 5))
+        out = capsys.readouterr().out
+        assert "%" not in out.split("Pooled")[1].split("A pooled rate")[0]
+
+    def test_a_reachable_sample_does_print_a_rate_and_interval(self, capsys):
+        pm.report(self._rows([("7", "W", "Play")] * 12 + [("45", "L", "Play")] * 8))
+        pooled = capsys.readouterr().out.split("Pooled")[1]
+        assert "60%" in pooled and "95% CI" in pooled
+
+    def test_the_pooled_caveat_is_always_printed(self, capsys):
+        pm.report(self._rows([("7", "W", "Play")]))
+        assert "never whether a deck is good" in capsys.readouterr().out
 
 
 class TestHeaderSyncRidesAlong:

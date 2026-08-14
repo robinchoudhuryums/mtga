@@ -1,5 +1,6 @@
 #: name: Grand Lotus — Comet
 #: format: Standard
+#: arena: 54b Grand Lotus- Comet, bc4d5b7d-1298-4c3d-bb38-247dab5a070b
 #: colors: BGUR
 #: based-on: deck.txt
 #: plan: aggro

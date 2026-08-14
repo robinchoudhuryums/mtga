@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Parse MTG Arena match results out of Player.log into matches.csv.
+# RAW docstring: the extraction recipe below contains shell regex (`\[`, `\\"`), and in a
+# normal string those are invalid escape sequences — a DeprecationWarning today and a
+# SyntaxError on a future Python, from a comment.
+r"""Parse MTG Arena match results out of Player.log into matches.csv.
 
 Arena's "Detailed Logs (Plugin Support)" setting (Settings -> Account) makes the client
 write match events to a local log. That is free — it is the same feed every third-party
@@ -77,7 +80,16 @@ launch, so grab it before relaunching):
 
     p=~/Library/Logs/"Wizards Of The Coast"/MTGA
     grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
-        "$p"/Player*.log | pbcopy
+        "$p"/Player*.log \
+      | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' | pbcopy
+
+The `sed` stage drops EventSetDeckV3's CARD LISTS, which nothing here reads — attribution
+uses only the Name, DeckId and LastPlayed from the same line. It is not cosmetic: a real
+52-card selection line measures 1919 bytes and slims to 152, a 92% cut, and there is one
+such line per event join. Without it the paste is mostly card ids, and the pastes that
+surfaced this were hand-truncated in an editor before use — which is JSON surgery on the
+one line the whole attribution chain depends on. Let sed do it, or keep the arrays; do
+not trim them by hand.
 
 Better: don't extract by hand at all. A launchd job that appends the filtered lines to a
 rolling archive every 15 minutes makes the overwrite-on-launch data loss structurally
@@ -99,7 +111,23 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import (MATCHES_CSV, REPO_ROOT, atomic_write,  # noqa: E402,F401
                  csv_schema_error, eprint)
 HEADER = ["Date", "Match ID", "Deck", "Arena Deck", "Arena Deck ID", "My Avatar",
-          "Event", "Result", "Games Won", "Games Lost", "Opponent Avatar", "Reason"]
+          "Event", "Result", "Games Won", "Games Lost", "Opponent Avatar", "Reason",
+          "Ended By"]
+
+# TWO reason fields, and for a year only the uninformative one was stored.
+#   `Reason`   = `matchCompletedReason`, which is `Success` for every match that
+#                COMPLETED — by construction. All 15 rows of the first real record read
+#                `Success`, i.e. the column carried exactly zero bits. It is kept because
+#                a non-Success value (a disconnect, a timeout) is genuinely worth having;
+#                it simply has not fired yet.
+#   `Ended By`  = the MATCH-scope result's own `reason` — `Game` vs `Concede`. This one
+#                varies (2 of 3 in the batch that surfaced the gap) and is the half that
+#                means something at low n: a concede-win on turn three is not the same
+#                evidence about a deck as a game-win, and the record lives permanently
+#                near the small-sample floor where that distinction is most of the signal.
+# Blank on every pre-existing row, which is honest — those matches were parsed before the
+# field was read, so the value is unknown rather than "Game".
+_ENDED_BY_PREFIX = "ResultReason_"
 
 # The pre-attribution column names, kept readable so an unmigrated matches.csv is not
 # silently blanked on the next write. `Course ID` was never a course or a deck — it is
@@ -342,6 +370,14 @@ def parse_log(text, me=None):
             "Opponent Avatar": opp.get("courseId", ""),
             "Reason": (fin.get("matchCompletedReason", "")
                        .replace("MatchCompletedReasonType_", "")),
+            "Ended By": (match_res.get("reason") or "").replace(_ENDED_BY_PREFIX, ""),
+            # Not columns — `write_matches` emits only HEADER, so these are dropped on
+            # write. They exist so the dry run can PRINT the raw read the W/L verdict
+            # came from (G-52: a verdict surface must print its evidence). Without them
+            # the only way to check an inverted result was to re-read the JSON by hand,
+            # which is exactly what was being done, match by match.
+            "_my_team": my_team,
+            "_win_team": win_team,
         }
         rows.append(row)
         pending.append((order, current_dt, row))
@@ -377,6 +413,40 @@ def deck_ids():
         return {d["id"] for d in dk.discover_decks()}
     except Exception:
         return set()
+
+
+def deck_names():
+    """{deck id: repo `#: name:`}, for DISCLOSING what a name-prefix guess resolved to.
+
+    Report-only, and that is a measured decision rather than a cautious one. The obvious
+    design was a name-AGREEMENT gate: the prefix route validates only the leading NUMBER,
+    so "15 Anything At All" resolves to deck 15 and `--apply` then writes a permanent
+    `#: arena:` header off that guess. Comparing the name's remainder against the repo
+    deck's name looked like a free confirmation.
+
+    It is not. Measured 2026-08-14 over the 22 `#: arena:` headers then on the roster —
+    every one of them a correct mapping — 8 DISAGREED with the repo name under a
+    containment test: Arena's "49 Big Draco" was repo deck 49 "Scaleforge", "58 Treasure
+    Planet" was "Gold Standard", "45 The Exiles" was "Exile Dividend". The Arena names are
+    flavour names, not repo names. A gate would therefore have been wrong 36% of the time,
+    blocking correct attributions — the same saturation that made the `review` flag 0%
+    actionable in G-07.
+
+    Those three examples now read as agreements, because `--sync-names` was run the same
+    day and the repo adopted Arena's names. **That does not retire the measurement.** The
+    divergence is generated by how the owner names decks in the client, not by a one-time
+    drift, so it regrows the moment a deck is renamed there — and the sync is opt-in, so
+    the roster is only ever as reconciled as the last run. Re-measure before trusting a
+    name; do not read today's agreement as a reason to add the gate.
+
+    So the number stays the sole criterion and the NAME is shown instead: a wrong guess
+    is visible in the dry run, before --apply makes it a header, and a right-but-renamed
+    deck still resolves. Disclosure over gating, the G-38 stance for a fuzzy signal."""
+    try:
+        import deck as dk
+        return {d["id"]: d["name"] for d in dk.discover_decks()}
+    except Exception:
+        return {}
 
 
 def resolve_deck(name, guid, mapping, known_ids=()):
@@ -458,6 +528,248 @@ def _arena_header_plan(names):
         status = "unchanged" if existing == [line] else ("update" if existing else "add")
         plan.append((did, rec["path"], line, status))
     return plan
+
+
+_NAME_HEADER_RE = re.compile(r"^#:\s*name\s*:", re.I)
+# An `#: arena:` header holds `<name>, <GUID>` in either order, and a deck NAME can look
+# like anything — so the GUID is identified by its own shape rather than by position.
+_GUID_RE = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",
+                      re.I)
+# Arena's deck names cannot hold an em dash, so the client copy of a variant is typed
+# "54b Grand Lotus- Comet" against the repo's "Grand Lotus — Comet". Adopting the raw
+# string would import that degradation into the repo and, worse, make a name that is
+# ALREADY correct look different every run. Only a hyphen followed by whitespace is
+# converted — "Spider-Man" has none, so it is untouched.
+_ARENA_DASH_RE = re.compile(r"(\S)-\s+")
+
+
+def _name_key(s):
+    """Comparison key for two deck names: words only, case- and punctuation-blind.
+
+    The trigger for a rename must be a difference in WORDS, never in typography. Arena
+    writes a curly apostrophe ("Earth’s"), a doubled space ("66  Lethal Protector") and a
+    hyphen for an em dash; all three are the SAME name and must not churn the repo."""
+    return re.sub(r"[^a-z0-9]+", "", (s or "").lower())
+
+
+def _adopted_name(arena_name, rec, parent_name):
+    """The repo `#: name:` that adopting `arena_name` implies, or '' if it cannot tell.
+
+    Two rules beyond stripping the deck number. Arena's degraded separator is restored to
+    the repo's em dash (see `_ARENA_DASH_RE`). And the VARIANT CONVENTION is preserved:
+    repo variants are named "<parent> — <variant>", which G-27's rationale audit depends
+    on ("a name forming part of THIS deck's own name is not another deck"), so a variant
+    adopting "Ancient Decay" becomes "Iron Forge — Ancient Decay", not a bare name that
+    would orphan it from its family. When Arena's own name already carries the parent
+    ("Grand Lotus- Comet") the prefix is not doubled."""
+    rest = _NUM_PREFIX_RE.sub("", (arena_name or "").strip()).strip()
+    rest = _ARENA_DASH_RE.sub(r"\1 — ", rest).strip()
+    if not rest:
+        return ""
+    if not (rec.get("variant") and parent_name):
+        return rest
+    pk, rk = _name_key(parent_name), _name_key(rest)
+    if rk.startswith(pk) and rk != pk:
+        # Arena repeated the parent — keep the repo's spelling of it, not Arena's.
+        tail = rest
+        while tail and _name_key(tail) != rk[len(pk):]:
+            tail = tail[1:]
+        rest = tail.lstrip(" —-").strip() or rest
+    return f"{parent_name} — {rest}" if _name_key(rest) != pk else parent_name
+
+
+def deck_name_plan(names):
+    """[(deck_id, path, current_name, adopted_name)] for decks Arena has RENAMED.
+
+    IDENTITY IS THE DeckId GUID, not a card list and not the deck number. That is a
+    deliberate substitution for what was asked, and it is the stronger test: a GUID is
+    stable across every edit Arena lets you make, whereas a card list changes the moment
+    you tune — so card-matching would refuse exactly the decks under active development,
+    which are the ones most likely to have been renamed. It is also the only option that
+    works today: nothing in this repo maps Arena's numeric `cardId` to a card name, and
+    the documented extraction now strips the `MainDeck` array precisely because nothing
+    reads it.
+
+    So a deck qualifies only when its own `#: arena:` header carries the GUID the paste
+    reports under a new name — i.e. a human already confirmed the pairing. A name-prefix
+    match is NOT enough and never adopts: that route validates the leading number alone.
+    """
+    try:
+        import deck as dk
+        records = {d["id"]: d for d in dk.discover_decks()}
+    except Exception:
+        return []
+    mapping = arena_deck_map()
+    plan = []
+    for guid, arena_name in sorted(names.items(), key=lambda kv: kv[1]):
+        did = mapping.get((guid or "").strip().lower())     # GUID proof, nothing weaker
+        rec = records.get(did or "")
+        if not rec:
+            continue
+        parent = records.get(rec.get("core") or "")
+        adopted = _adopted_name(arena_name, rec, (parent or {}).get("name", ""))
+        current = rec.get("name") or ""
+        if adopted and _name_key(adopted) != _name_key(current):
+            plan.append((did, rec["path"], current, adopted))
+    return plan
+
+
+def _write_deck_name(path, new_name):
+    """Rewrite one `#: name:` line. Returns the .bak path.
+
+    Same `deck._safe_write_lines` route as the arena-header writer: re-parses the file
+    (INV-04) and verifies the copy count is unchanged, so a header edit cannot touch a
+    card line."""
+    import deck as dk
+    with open(path, encoding="utf-8") as fh:
+        lines = [ln.rstrip("\n") for ln in fh]
+    _, cards = dk.parse_deck_file(path)
+    total = sum(q for q, *_ in cards)
+    out, placed = [], False
+    for ln in lines:
+        if not placed and _NAME_HEADER_RE.match(ln):
+            out.append(f"#: name: {new_name}")
+            placed = True
+            continue
+        out.append(ln)
+    if not placed:
+        out.insert(0, f"#: name: {new_name}")
+    return dk._safe_write_lines(path, out, total)
+
+
+def _variant_orphans(old_name, own_id, adopted):
+    """[(variant id, its name)] for variants whose own name carries the OLD parent name.
+
+    The mirror of the convention `_adopted_name` protects. Renaming a variant keeps its
+    "<parent> — <variant>" shape; renaming the PARENT silently breaks that shape for every
+    variant beneath it. The 2026-08-14 sync did exactly that four times — deck 28a was
+    left as "Dino Stampede — Owned Build" under a parent renamed to "Triceraton", and 45a,
+    48a and 51a the same — which is why this flag exists and why the four were then fixed
+    by hand. Those variants have no Arena pairing of their own — a GUID is per Arena
+    deck and the repo's variants mostly are not separate Arena decks — so nothing here can
+    rename them from evidence. Flagged rather than cascaded: picking the new variant name
+    is editorial, and this tool adopts, it does not compose."""
+    if not old_name or _name_key(old_name) in _name_key(adopted):
+        return []
+    try:
+        import deck as dk
+        decks = dk.discover_decks()
+    except Exception:
+        return []
+    own = next((d for d in decks if d["id"] == own_id), None)
+    if not own or own.get("variant"):
+        return []                          # only a PARENT rename can orphan anything
+    return [(d["id"], d["name"]) for d in decks
+            if d["id"] != own_id and d.get("core") == own.get("core")
+            and old_name.lower() in (d.get("name") or "").lower()]
+
+
+def _name_citations(old_name, own_id, adopted):
+    """Deck ids whose `#:` header prose names `old_name` and would be left stale.
+
+    A rename is not a local edit: 50 of the 106 decks are named inside another deck's
+    header prose, so adopting Arena's name can strand a reference the rationale audit
+    cannot see (it checks CARD names and FIGURES, never deck names). Nothing rewrites
+    prose automatically — that is editorial — so the cost is shown at decision time
+    instead.
+
+    Suppressed when the adopted name still CONTAINS the old one ("Unlock" -> "Unlocked",
+    "Bird Brain" -> "Bird Brain — Bant"): the citation keeps reading correctly, and
+    flagging it would bury the five real cases in noise."""
+    if _name_key(old_name) in _name_key(adopted):
+        return []
+    if len(old_name or "") < 6:            # too short to match on without false hits
+        return []
+    try:
+        import deck as dk
+        decks = dk.discover_decks()
+    except Exception:
+        return []
+    hits = []
+    for d in decks:
+        if d["id"] == own_id:
+            continue
+        try:
+            with open(d["path"], encoding="utf-8") as fh:
+                prose = "\n".join(ln for ln in fh if ln.startswith("#"))
+        except OSError:
+            continue
+        if old_name.lower() in prose.lower():
+            hits.append(d["id"])
+    return hits
+
+
+def sync_deck_names(text, apply=False, out=print):
+    """Adopt Arena's deck names into the repo. Returns (written, plan).
+
+    ALWAYS REPORTS, writes only under `--sync-names`. An `#: arena:` header is bookkeeping
+    the tooling owns; a deck's NAME is human-authored prose that other files cite — 50 of
+    the 106 decks are named inside another deck's header prose — so a rename is offered
+    rather than performed. Reporting unconditionally is the other half: a capability
+    behind a flag nobody runs is invisible (G-53), so the run says a rename is available
+    even when it will not make one."""
+    return _report_name_plan(deck_name_plan(parse_deck_names(text)), apply=apply, out=out)
+
+
+def _report_name_plan(plan, apply=False, out=print):
+    """Print a rename plan and, on `apply`, perform it. Returns (written, plan)."""
+    if not plan:
+        return 0, []
+    out(f"\n{len(plan)} deck(s) are named differently in Arena than in the repo "
+        f"(matched on the DeckId GUID, so these are the same decks):")
+    for did, _path, current, adopted in plan:
+        out(f"   deck {did:<5} {current!r}  ->  {adopted!r}")
+        orphans = _variant_orphans(current, did, adopted)
+        if orphans:
+            out(f"        ⚠ VARIANT(S) carry the old parent name and are NOT renamed "
+                f"here: {', '.join(f'{i} {n!r}' for i, n in orphans)}")
+        cites = _name_citations(current, did, adopted)
+        if cites:
+            out(f"        ⚠ old name cited in {len(cites)} other deck file(s): "
+                f"{', '.join(cites)}")
+    if not apply:
+        out("   (reported only — pass --sync-names to adopt Arena's names. Nothing "
+            "rewrites\n    the prose in other deck files, so a ⚠ above is a citation you "
+            "fix by hand.)")
+        return 0, plan
+    written = 0
+    for did, path, _current, adopted in plan:
+        _write_deck_name(path, adopted)
+        written += 1
+    out(f"   adopted {written} name(s); a .bak was written beside each deck file.")
+    return written, plan
+
+
+def stored_arena_names():
+    """{DeckId GUID: Arena deck name} from the `#: arena:` headers already on disk.
+
+    The headers are Arena's own answer, recorded by earlier runs — reading them back is
+    how a divergence that built up over months gets reconciled without a paste covering
+    the whole roster. Only a header carrying BOTH a name and a GUID is used, since the
+    GUID is the identity proof `deck_name_plan` requires."""
+    try:
+        import deck as dk
+        decks = dk.discover_decks()
+    except Exception:
+        return {}
+    out = {}
+    for d in decks:
+        meta, _ = dk.parse_deck_file(d["path"])
+        parts = [p.strip() for p in (meta.get("arena") or "").replace(";", ",").split(",")]
+        parts = [p for p in parts if p]
+        if len(parts) < 2:
+            continue
+        name = next((p for p in parts if not _GUID_RE.fullmatch(p)), "")
+        guid = next((p for p in parts if _GUID_RE.fullmatch(p)), "")
+        if name and guid:
+            out[guid] = name
+    return out
+
+
+def sync_deck_names_from_headers(apply=False, out=print):
+    """`sync_deck_names` sourced from the stored headers instead of a fresh paste."""
+    plan = deck_name_plan(stored_arena_names())
+    return _report_name_plan(plan, apply=apply, out=out)
 
 
 def _write_arena_header(path, line):
@@ -615,21 +927,44 @@ def load_matches(path=MATCHES_CSV):
         return rows
 
 
+# Any earlier schema must still carry these, or it is not a matches.csv at all. They are
+# the row's identity and its payload: without Match ID dedup cannot work, and without
+# Date/Result there is nothing to migrate that is worth keeping.
+_SCHEMA_CORE = ("Date", "Match ID", "Result")
+
+
 def _is_own_earlier_schema(path):
-    """True when `path` is a matches.csv written before the avatar-column rename.
+    """True when `path` is a matches.csv written by an EARLIER version of this module.
 
     The F-02 mirror guard compares headers and cannot tell "another file's schema" from
     "an earlier version of MY OWN" — so without this the guard refuses the one write that
     performs the migration, and a user with an existing matches.csv gets a traceback
-    instead of an upgrade. Deliberately EXACT: only the one header this module used to
-    emit is accepted, so a genuinely foreign CSV is still refused."""
+    instead of an upgrade.
+
+    This used to hard-code the ONE header the module emitted before the avatar rename,
+    which worked exactly once. The next column to land (`Ended By`) made the CURRENT file
+    an "earlier schema" too, and an exact match against a single remembered header cannot
+    see that — so the guard would have refused the very write that performs the upgrade,
+    reproducing the bug this function exists to prevent. Generalized to: every column is
+    one of MINE, in MY order, with nothing foreign and nothing missing from the core.
+    That accepts any past or intermediate shape (columns have been both RENAMED and
+    INSERTED MID-HEADER here, so neither a prefix nor a subset test would do) while still
+    refusing a genuinely foreign CSV, which would have to be an ordered sub-sequence of
+    these thirteen names by accident."""
     try:
         with open(path, newline="", encoding="utf-8") as fh:
             head = next(csv.reader(fh), None)
     except (OSError, UnicodeDecodeError):
         return False
     legacy = [_LEGACY_COLUMNS.get(c, c) for c in (head or [])]
-    return legacy == [c for c in HEADER if c not in ("Arena Deck", "Arena Deck ID")]
+    if not legacy or any(c not in HEADER for c in legacy):
+        return False
+    if len(set(legacy)) != len(legacy):
+        return False                       # a duplicate column is not a schema of mine
+    if any(c not in legacy for c in _SCHEMA_CORE):
+        return False
+    order = [HEADER.index(c) for c in legacy]
+    return order == sorted(order)
 
 
 def write_matches(rows, path=MATCHES_CSV):
@@ -648,6 +983,26 @@ def write_matches(rows, path=MATCHES_CSV):
     atomic_write(path, _w)
 
 
+def _result_evidence(row):
+    """`[my team 1 · winner 1]` — the raw read the W/L verdict came from.
+
+    G-52: a verdict surface must print its evidence. The result is derived from exactly
+    two integers, and a single inverted seat read would flip EVERY row in a paste in the
+    same direction — a failure that looks like a losing streak rather than like a bug.
+    Printing the pair costs one column and makes the check a glance instead of a hand
+    re-read of the JSON, which is how the first fifteen matches were actually verified.
+    Keyed on the field's PRESENCE, not its truthiness. A row loaded back from CSV never
+    carries these at all and must print nothing (the report path). But a parsed row whose
+    seat has no `teamId` carries the key with None — and that is the case where the
+    verdict is least trustworthy, so it prints `?` rather than falling into the same
+    silent-empty branch as a CSV row."""
+    if "_my_team" not in row:
+        return ""
+    mine, win = row.get("_my_team"), row.get("_win_team")
+    return (f"[my team {mine if mine is not None else '?'} · "
+            f"winner {win if win not in (None, 0) else 'none'}]")
+
+
 def _wilson(wins, n, z=1.96):
     """95% Wilson score interval for a win rate — correct at small n, where the naive
     normal approximation is not. Returns (low, high) as percentages."""
@@ -658,6 +1013,65 @@ def _wilson(wins, n, z=1.96):
     centre = (p + z * z / (2 * n)) / d
     half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
     return (100 * max(0.0, centre - half), 100 * min(1.0, centre + half))
+
+
+def _tally(rows):
+    """{W,L,D} over `rows`, ignoring anything whose Result is not W/L/D."""
+    b = {"W": 0, "L": 0, "D": 0}
+    for r in rows:
+        res = (r.get("Result") or "").strip().upper()
+        if res in b:
+            b[res] += 1
+    return b
+
+
+def _read_of(b):
+    """The Read cell for a tally — a rate with its interval, or the distance to one."""
+    n = b["W"] + b["L"]
+    if n >= _MIN_SAMPLE:
+        lo, hi = _wilson(b["W"], n)
+        return f"{100 * b['W'] / n:.0f}%  (95% CI {lo:.0f}–{hi:.0f}%)"
+    short = _MIN_SAMPLE - n
+    return f"n={n} — {short} more for a read"
+
+
+def _print_pooled(rows):
+    """Pooled reads, because the per-deck split cannot reach the sample floor.
+
+    The per-deck table is the honest way to ask "is THIS deck good", and at 106 decks it
+    is also unreachable: the best row after a month of play sits at n=4 against a floor of
+    20, and splitting new matches across the roster keeps it there. A record that can
+    never be read is a record nobody keeps.
+
+    Pooling fixes the arithmetic by answering a DIFFERENT question, and the difference has
+    to stay in front of the reader or the number gets used for deck decisions it cannot
+    support. `ALL DECKS` measures the player-and-roster together — "am I winning" — not
+    any deck in it. The EVENT split is the one cut worth making at this size: Play and
+    Ladder face different opposition, so pooling across them measures a blend of two
+    populations, and separating them costs nothing.
+
+    Same `_MIN_SAMPLE` refusal as everywhere else — pooling buys a reachable denominator,
+    not permission to read a small one. The distance is printed instead of a percentage
+    so the floor reads as a countdown rather than as a wall."""
+    graded = [r for r in rows if (r.get("Result") or "").strip().upper() in ("W", "L", "D")]
+    if not graded:
+        return
+    overall = _tally(graded)
+    print(f"\n  {'Pooled — a DIFFERENT question than the rows above':50}  {'W':>3} "
+          f"{'L':>3} {'D':>3}   Read")
+    print("  " + "-" * 68)
+    print(f"  {'ALL DECKS — the player and the roster together':50}  {overall['W']:>3} "
+          f"{overall['L']:>3} {overall['D']:>3}   {_read_of(overall)}")
+    by_event = {}
+    for r in graded:
+        by_event.setdefault((r.get("Event") or "").strip() or "(no event)", []).append(r)
+    if len(by_event) > 1:
+        for ev in sorted(by_event, key=lambda e: -len(by_event[e])):
+            b = _tally(by_event[ev])
+            print(f"    {ev[:48]:48}  {b['W']:>3} {b['L']:>3} {b['D']:>3}   {_read_of(b)}")
+    print("\n  A pooled rate says whether YOU are winning, never whether a deck is good — "
+          "it\n  averages a tuned deck with a brew. Use it to notice a slump; use the "
+          "per-deck\n  rows, once they fill, to judge a deck.")
 
 
 def report(rows):
@@ -702,6 +1116,7 @@ def report(rows):
             lo, hi = _wilson(b["W"], n)
             read = f"{100*b['W']/n:.0f}%  (95% CI {lo:.0f}–{hi:.0f}%)"
         print(f"  {key[:32]:32}  {b['W']:>3} {b['L']:>3} {b['D']:>3}   {read}")
+    _print_pooled(rows)
     if unreadable:
         print(f"\n⚠ {len(unreadable)} row(s) have an unreadable Result and are in NO "
               f"column above — the per-deck totals therefore do not sum to "
@@ -739,11 +1154,26 @@ def main():
     ap.add_argument("--map-decks", action="store_true",
                     help="learn `#: arena:` headers for the whole roster from the log's "
                          "deck summaries, instead of parsing matches")
+    ap.add_argument("--sync-names", action="store_true",
+                    help="adopt Arena's deck names into the repo `#: name:` headers "
+                         "(GUID-matched decks only; reported without this flag)")
     ap.add_argument("--out", default=MATCHES_CSV)
     args = ap.parse_args()
 
     if args.report and not args.source:
         return report(load_matches(args.out))
+    if args.sync_names and not args.source:
+        # Sourceless reconcile. The repo ALREADY holds Arena's name for every deck with
+        # an `#: arena:` header — harvested from real pastes by previous runs — so the
+        # names are on hand and no fresh log is needed. Not circular: the header is
+        # Arena's answer, recorded; this only asks whether `#: name:` still agrees with
+        # it. Without this the feature needs a paste covering all 106 decks to reconcile
+        # a divergence that accumulated over months, which is a capability nobody
+        # reaches (G-53).
+        written, plan = sync_deck_names_from_headers(apply=True)
+        if not plan:
+            print("Every GUID-paired deck's `#: name:` already matches its Arena name.")
+        return 0
     if not args.source:
         ap.error("give a log file (or '-' for stdin), or use --report")
     # `--report` WITH a source used to be dropped on the floor: the gate above requires
@@ -773,6 +1203,9 @@ def main():
 
     if args.map_decks:
         map_decks(text, apply=args.apply)
+        # The roster-scale header pass is exactly where a roster-scale RENAME shows up,
+        # so it offers the same adoption the match path does.
+        sync_deck_names(text, apply=args.sync_names)
         return _with_report(0)
 
     rows, warnings = parse_log(text, me=args.me)
@@ -784,6 +1217,10 @@ def main():
     # no-matches bailout, so a paste of deck summaries alone (the --map-decks extraction
     # shape) still keeps headers current instead of dying with a misleading error.
     sync_headers(text, apply=args.apply)
+    # AFTER the header sync, which is what establishes the GUID pairing this reads. A
+    # deck first seen in this paste therefore becomes eligible in the SAME run — but only
+    # via the header the sync just wrote, never via the number-prefix guess that found it.
+    sync_deck_names(text, apply=args.sync_names)
 
     if not rows:
         if parse_deck_names(text):
@@ -820,19 +1257,41 @@ def main():
     # — it is reported by the per-match lines below and by the report's own blind count.
     shown = {k: v for k, v in routes.items() if k[0].strip() or k[1].strip()}
     if shown:
+        repo_names = deck_names()
         print(f"\nDeck attribution — {len(shown)} Arena deck(s) seen:")
+        guessed = False
         for (name, guid), (did, how) in sorted(shown.items()):
             label = name or guid
             target = f"deck {did}  ({how})" if did else "UNRESOLVED — blank Deck"
-            print(f"   {label[:40]:40}  ->  {target}")
+            # The repo deck's own name, on the GUESS route only. The explicit header
+            # route needs no confirming — a human wrote it — but the prefix route
+            # validates the NUMBER and nothing else, and --apply turns it into a
+            # permanent header. See `deck_names` for why this discloses instead of gates.
+            extra = ""
+            if did and how == "name prefix":
+                guessed = True
+                extra = f"  — repo deck is {repo_names.get(did, '?')!r}, confirm it"
+            print(f"   {label[:40]:40}  ->  {target}{extra}")
+        if guessed:
+            print("\n   A `name prefix` route matched on the LEADING NUMBER only. If the "
+                  "repo deck\n   named above is not the deck you played, stop: --apply "
+                  "writes that guess into\n   the deck file as a `#: arena:` header, and "
+                  "every later match resolves to it.")
         print()
 
     print(f"Found {len(rows)} completed match(es); {len(fresh)} new, "
           f"{len(rows) - len(fresh)} already recorded.")
     for r in fresh:
         deck_label = r["Deck"] or f"(unattributed: {r['Arena Deck'] or 'deck unknown'})"
-        print(f"   {r['Date']}  {r['Result']}  {r['Games Won']}-{r['Games Lost']}  "
-              f"{deck_label}  vs {r['Opponent Avatar'] or '?'}  [{r['Event']}]")
+        ended = f" by {r['Ended By'].lower()}" if r.get("Ended By") else ""
+        print(f"   {r['Date']}  {r['Result']}  {r['Games Won']}-{r['Games Lost']}{ended}  "
+              f"{deck_label}  vs {r['Opponent Avatar'] or '?'}  [{r['Event']}]"
+              f"   {_result_evidence(r)}")
+    if fresh:
+        print("\n   Evidence is the raw finalMatchResult read: W when your team is the "
+              "winning\n   team, L when it is not, D when there is none. Check it — an "
+              "inverted seat\n   read would make every row here wrong in the same "
+              "direction.")
     if not args.apply:
         print("\n(dry run — pass --apply to write matches.csv)")
         return _with_report(0)

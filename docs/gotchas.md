@@ -1469,8 +1469,8 @@ placements was a set of counts the model cannot see, measured by hand per G-61:
 | deck | artifact cards | token producers | Vehicles | the deciding payoff |
 |---|---|---|---|---|
 | 48a Motor Pool | 19 | 17 | **7** | her combat trigger is live at all |
-| 48 Doombot Array | 22 | 12 | 1 | Mechan Assembler, once per turn, matches her `0` |
-| 58 Gold Standard | 0 | **19** | 0 | Crime Novelist / Krenko / Pirate Peddlers read her `+2` |
+| 48 Doombots | 22 | 12 | 1 | Mechan Assembler, once per turn, matches her `0` |
+| 58 Treasure Planet | 0 | **19** | 0 | Crime Novelist / Krenko / Pirate Peddlers read her `+2` |
 | 10 Mad Villainy | 9 | 7 | 0 | card advantage 1 — the deficit her `+2` fixes |
 | 45a Grixis Mayhem | 2 | 2 | 0 | 5 Mayhem cards want a free repeating discard |
 
@@ -2364,9 +2364,13 @@ match except one whose log had already rotated. Four details are load-bearing:
   accepted only when the id it produces is a deck that exists. Its regex is
   case-SENSITIVE on the variant letter and requires the letter be adjacent to the number:
   the first draft, `^\s*0*(\d+)\s*([a-z]?)` with `re.I`, read "07 Earth's Mightiest" as
-  deck **"7e"**. Note the Arena name need not resemble the repo name at all — "45 The
-  Exiles" is repo deck 45 "Exile Dividend" — so a name-similarity check would have
+  deck **"7e"**. Note the Arena name need not resemble the repo name at all — when
+  measured on 2026-08-14, Arena's "45 The Exiles" was repo deck 45 "Exile Dividend", and 8
+  of the 22 paired decks diverged the same way — so a name-similarity check would have
   REJECTED a correct match, and the number is the only part that carries the mapping.
+  `--sync-names` is the RECONCILE half (adopting Arena's name for GUID-paired decks, which
+  is how deck 45 came to be called "The Exiles" here). It is opt-in, so the divergence
+  regrows on the next client-side rename: the number stays the only safe match key.
 
 **Doing the whole roster: `--map-decks`.** Setting `#: arena:` one deck at a time is where
 a wrong header hides, and a `#:` header naming something that does not exist is a silent
@@ -2421,9 +2425,65 @@ columns on READ, because `write_matches` emits only `HEADER` and would otherwise
 rewritten an existing `matches.csv` with those cells blank — silently losing the one field
 the old rows had. And the F-02 mirror guard had to learn one exception: it compares headers
 and cannot tell "another file's schema" from "an earlier version of my own", so it refused
-the very write that performs the migration. The allowance is EXACT — only the single header
-this module used to emit — so a genuinely foreign CSV is still refused, and a test pins
-that half too.
+the very write that performs the migration.
+
+**2026-08-14: that allowance was EXACT, and an exact allowance works exactly once.** It
+hard-coded the single header the module emitted before the avatar rename. Adding a column
+(`Ended By`, below) made the THEN-CURRENT file an "earlier schema" too — which an exact
+match cannot see — so the guard would have refused the very migration write it exists to
+permit, reproducing the bug by being narrow. `_is_own_earlier_schema` now asks a general
+question: every column is one of MINE, in MY order, no duplicates, and the core three
+(`Date` / `Match ID` / `Result`) present. That accepts any past or intermediate shape —
+columns here have been both RENAMED and INSERTED MID-HEADER, so neither a prefix nor a
+subset test would do — while still refusing a foreign CSV, which would have to be an
+ordered sub-sequence of these thirteen names by accident. **The transferable form: a
+migration guard that remembers ONE predecessor is a guard against the migration you
+already did.**
+
+**Two reason fields, and for a year only the uninformative one was stored.** `Reason` holds
+`matchCompletedReason`, which is `Success` for every match that COMPLETED — by
+construction. All 15 rows of the first real record read `Success`; the column carried zero
+bits. Meanwhile the MATCH-scope result's own `reason` — `ResultReason_Game` vs
+`ResultReason_Concede` — was read and discarded. That one varies (2 of 3 in the batch that
+surfaced it) and is most of the signal at low n, which is where this record permanently
+lives: a concede-win on turn three is not the same evidence about a deck as a game-win.
+`Ended By` now carries it. `Reason` is KEPT rather than replaced, because a non-Success
+value (a disconnect, a timeout) is genuinely worth having and simply has not fired yet.
+Pre-existing rows are BLANK, not backfilled to "Game" — they were parsed before the field
+was read, so the value is unknown. Six were recovered from logs still on disk, through
+`parse_log` rather than by hand, and the first thing they showed was that deck 15's 2–0
+was two opponent concedes.
+
+**The verdict surface prints its evidence (G-52).** The W/L is derived from two integers —
+your seat's `teamId` against the match's `winningTeamId` — and printed as a single letter.
+A single inverted seat read would flip EVERY row in a paste the same direction, which reads
+as a losing streak rather than as a bug, so the first fifteen matches were checked by
+re-reading the raw JSON by hand, one at a time. The dry run now prints `[my team 1 · winner
+1]` per new match. The fields ride on the row as underscore keys and never reach the CSV;
+they key on PRESENCE, not truthiness, so a CSV-loaded row prints nothing while a parsed row
+whose seat has no `teamId` prints `?` — that being the least trustworthy verdict there is,
+it must not share the silent-empty branch.
+
+**The per-deck split cannot reach the sample floor, so `--report` also POOLS.** At 106
+decks the arithmetic never arrives: after a month of play the best per-deck row sat at n=4
+against a floor of 20, and every new match splits further. A record that can never be read
+is a record nobody keeps. Pooling fixes the denominator by answering a DIFFERENT question,
+and that difference has to stay in front of the reader or the number gets used for deck
+decisions it cannot support — `ALL DECKS` measures the player and the roster together, not
+any deck in it. The EVENT split (Play vs Ladder) is the one cut worth making at this size,
+since the two face different opposition. The `_MIN_SAMPLE` refusal is unchanged: pooling
+buys a reachable denominator, not permission to read a small one, and the distance prints
+as a countdown ("5 more for a read") rather than as a wall.
+
+**The extraction recipe strips the card arrays.** `EventSetDeckV3`'s `MainDeck` is never
+read — attribution uses only Name, DeckId and LastPlayed off the same line — and it is
+almost the whole payload: a real 52-card selection line measures 1919 bytes and slims to
+152, a 92% cut, once per event join. Both documented recipes pipe through
+`sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g'`. Slim at PASTE time,
+never at capture: doing it inside `snapshot.sh` would put two forms of each line in the
+rolling archive and defeat its own `awk '!seen[$0]++'` dedupe. Before this existed the
+pastes were hand-trimmed in an editor, which is JSON surgery on the one line the whole
+attribution chain depends on.
 
 
 ## [G-58] Never widen `#: colors:` for a HYBRID card — and never reject a card for a widening you don't need
@@ -3101,7 +3161,7 @@ Victory, Lifecraft Engine, Banner of Kinship, Adaptive Automaton, Patchwork Bann
 Throne. Every one of them reads `As this enters, choose a creature type` and then talks
 about `the chosen type` — the category NEVER contains the type name, because naming it is
 the player's job at resolution. The regex was searching for a word the cards structurally
-cannot contain. Deck 48 (Doombot Array) exists only because a later card pile happened to
+cannot contain. Deck 48 (Doombots) exists only because a later card pile happened to
 include Lifecraft Engine and forced the correction; nothing in the toolchain would have
 surfaced it, because no gate can see a search that was run once, in chat, and believed.
 
@@ -3715,7 +3775,7 @@ recorded for `suggest`'s Decks column (99%, G-28) and `cuts`' protect keep-boost
 G-09). **A gate earns a row only when the resource can be SHORT.** A test now forbids the
 rule returning.
 
-**2026-08 residual, found by deck 58 (Gold Standard): the counter sees CARDS, and a token
+**2026-08 residual, found by deck 58 (Treasure Planet): the counter sees CARDS, and a token
 economy's resource is TOKENS.** The Jund Treasure deck's whole engine mints artifact tokens
 (Treasures, Meteorites, Landers, Maps — 14 producer cards), and `targets` reported its two
 artifact-sac payoffs as `⚠ thin — 1 artifact to sacrifice`, counting the one nontoken
@@ -3767,7 +3827,7 @@ she does on the turn you cast her.
 
 ### The cost, on a real swap
 
-Deck 58 Gold Standard, `-Elvish Archivist +Chandra`. The quality guard reported
+Deck 58 Treasure Planet, `-Elvish Archivist +Chandra`. The quality guard reported
 `⚠ card advantage dropped (4→3)`. Both halves of that are backwards:
 
 - Archivist's draw half is *"whenever one or more ENCHANTMENTS you control enter, draw a
@@ -4122,3 +4182,89 @@ walk. That makes Scenario 7 materially more valuable than a routine perceptual c
 is the only thing standing between this defect class and production.
 
 
+
+---
+
+## [G-73] A deck's repo name and its Arena name are different strings, and neither is authoritative
+
+**The measurement, 2026-08-14.** The name-prefix attribution route (`"07 Earth's
+Mightiest"` → deck 7) validates the leading NUMBER and nothing else, and `--apply` then
+writes that guess into the deck file as a permanent `#: arena:` header, after which every
+later match resolves to it with full confidence. Cross-checking the name's remainder
+against the repo deck's `#: name:` looks like a free confirmation, and it was proposed as
+exactly that.
+
+It is not free. Measured over all 22 `#: arena:` headers then on the roster — **every one
+of them a correct mapping** — 8 DISAGREED with the repo name under a containment test:
+
+| Arena name | repo name at the time |
+|---|---|
+| 48 Doombots | Doombot Array |
+| 49 Big Draco | Scaleforge |
+| 26b Ancient Decay | Iron Forge — Scrapyard Tithe |
+| 45 The Exiles | Exile Dividend |
+| 52a Void Realm | Void Demons — Dark Realms |
+| 56a Executioner's Song | One Fell Swoop — Overgrowth |
+| 58 Treasure Planet | Gold Standard |
+| 28 Triceraton | Dino Stampede |
+
+The Arena names are FLAVOUR names, chosen in the client for their own reasons. A gate
+would have refused a correct attribution 36% of the time — the same saturation that made
+the `review` flag 0% actionable in G-07, arrived at from the opposite direction. So the
+number stays the sole match key and the repo name is merely DISCLOSED next to a `name
+prefix` route, with a warning that `--apply` makes the guess permanent. Disclosure over
+gating, the G-38 stance for a fuzzy signal.
+
+**The reconcile half: `parse_matches.py --sync-names`.** Adopting Arena's name into the
+repo removes the divergence rather than tolerating it. It reports on every run and writes
+only under the flag, because an `#: arena:` header is bookkeeping the tooling owns while a
+deck's NAME is human-authored prose other files cite. It also runs SOURCELESS — the stored
+headers already hold Arena's answer, harvested by earlier runs, so a divergence built up
+over months reconciles without a paste covering all 106 decks. That is not circular: the
+header is Arena's answer recorded; the sync only asks whether `#: name:` still agrees.
+
+Four rules keep it from doing damage, and each was earned rather than assumed:
+
+1. **Identity is the DeckId GUID.** Not the deck number, and NOT a card list — which is
+   what was originally asked for. The GUID is strictly stronger: it survives every edit
+   Arena permits, whereas a card list changes the moment you tune, so card-matching would
+   refuse exactly the decks under active development, which are the ones most likely to
+   have been renamed. It is also the only option available — nothing in this repo maps
+   Arena's numeric `cardId` to a card name, and the documented extraction now strips the
+   `MainDeck` array precisely because nothing reads it (G-57). A name-prefix match NEVER
+   renames.
+2. **Typography is not a rename.** Arena writes a curly apostrophe (`Earth's`), doubled
+   spaces (`66  Lethal Protector`) and a hyphen where the repo uses an em dash
+   (`Grand Lotus- Comet`). Comparison is on words only — lowercase, punctuation stripped —
+   so 10 of the 22 paired decks correctly reported no change instead of churning the repo
+   every run and importing the degradation. Adoption restores the em dash on the way in.
+3. **The variant convention survives, in both directions.** Repo variants are named
+   `<parent> — <variant>`, which G-27's rationale audit leans on ("a name forming part of
+   THIS deck's own name is not another deck"). A variant adopting `Ancient Decay` becomes
+   `Iron Forge — Ancient Decay`, and Arena repeating the parent is not doubled. The MIRROR
+   has no automatic fix: renaming a PARENT breaks the shape for every variant beneath it,
+   and those variants have no Arena GUID of their own, so nothing can rename them from
+   evidence. The 2026-08-14 sync orphaned four (28a, 45a, 48a, 51a) and they were fixed by
+   hand. `_variant_orphans` flags the case; it does not cascade, because composing a
+   variant's new name is editorial and this tool adopts rather than composes.
+4. **A rename strands prose citations.** 50 of the 106 decks are named inside another
+   deck's `#:` header prose, and nothing rewrites prose automatically — the rationale audit
+   reads CARD names and FIGURES, never deck names, so it cannot see this. `_name_citations`
+   reports them at decision time (5 across 3 decks in the real run). Suppressed when the
+   new name still CONTAINS the old one (`Unlock` → `Unlocked`, `Bird Brain` →
+   `Bird Brain — Bant`), where the citation keeps reading correctly and flagging it would
+   bury the real cases.
+
+**THE DIVERGENCE REGROWS, and that is the part most likely to be misread later.** It is
+generated by how decks get named in the client, not by a one-time drift, and the sync is
+opt-in — so the roster is only ever as reconciled as the last run. Several docs cite the
+8-of-22 measurement using examples that now read as agreements *because* the sync ran;
+they are dated for that reason. **Do not read today's agreement as evidence the gate is
+now safe.** Re-measure first.
+
+**Directory slugs are cosmetic.** A deck id comes from the leading NUMBER of its directory
+(`45-the-exiles` → 45) and a variant's from its filename prefix (`26b-…`), so the slug text
+after the number is free-form. The slugs were re-pointed after the rename for readability
+only; the convention is family-dir plus variant-suffix (`54-grand-lotus/54b-comet.txt` for
+"Grand Lotus — Comet"), NOT slug-equals-name, so a variant file is slugged on its
+distinguishing half alone.

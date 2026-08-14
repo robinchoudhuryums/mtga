@@ -1,4 +1,4 @@
-#: name: Doombot Array
+#: name: Doombots
 #: format: Standard
 #: arena: 48 Doombots, 90ada35a-fc58-4e69-9a05-fefeb5ed962a
 #: colors: UR

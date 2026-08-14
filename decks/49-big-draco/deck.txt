@@ -1,4 +1,4 @@
-#: name: Scaleforge
+#: name: Big Draco
 #: format: Standard
 #: arena: 49 Big Draco, 945769bf-ab3a-4e98-a4b2-a2a443e971b0
 #: colors: R

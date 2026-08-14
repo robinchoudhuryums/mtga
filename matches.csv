@@ -1,10 +1,16 @@
-Date,Match ID,Deck,Arena Deck,Arena Deck ID,My Avatar,Event,Result,Games Won,Games Lost,Opponent Avatar,Reason
-2026-07-27,118fefb9-2769-482c-a810-d62a8a333825,,,,Avatar_Basic_BlackPanther_MSH,Play,L,0,1,Avatar_Basic_Slimefoot_DMU,Success
-2026-08-07,086ac249-80c6-4e80-bda1-68aa4b64fe0c,7,07 Earth’s Mightiest,e3a6c595-914d-4809-bd6d-630b3758ca89,Avatar_Basic_CaptainMarvel_MSH,Play,L,0,1,Avatar_Basic_AjaniGoldmane,Success
-2026-08-07,922c5606-b583-4011-95da-166a7ba0735b,19,19 Bird Brain- Bant,f0fd0577-3e62-4786-b7c2-0ce8b8b0ef05,Avatar_Basic_Galactus_MSH,Play,W,1,0,Avatar_Basic_Eowyn_LTR,Success
-2026-08-07,b48ecdfd-60a1-49a2-940b-96e673182aa5,7,07 Earth’s Mightiest,e3a6c595-914d-4809-bd6d-630b3758ca89,Avatar_Basic_CaptainMarvel_MSH,Play,L,0,1,Avatar_Basic_CaptainAmerica_MSH,Success
-2026-08-07,f2b4a84a-b1f3-4d74-98bd-e26e32d8f10a,19,19 Bird Brain- Bant,f0fd0577-3e62-4786-b7c2-0ce8b8b0ef05,Avatar_Basic_Galactus_MSH,Play,L,0,1,Avatar_Basic_Kaito_NEO,Success
-2026-08-09,6184e330-e976-486b-b80f-274a83f45c18,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Play,W,1,0,Avatar_Basic_Ashiok_WAR,Success
-2026-08-09,a9c0cec2-bd63-4736-927f-e0e9a239f94c,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Ladder,L,0,1,Avatar_Basic_Kaito_NEO,Success
-2026-08-09,cfffd1b8-5161-4f8b-9b30-a4d41b5954c5,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Play,W,1,0,Avatar_Basic_IronMan_MSH,Success
-2026-08-09,eeb55562-4b25-443d-b800-ac86a1ad5985,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Ladder,L,0,1,Avatar_Basic_Tidus_FIN,Success
+Date,Match ID,Deck,Arena Deck,Arena Deck ID,My Avatar,Event,Result,Games Won,Games Lost,Opponent Avatar,Reason,Ended By
+2026-07-27,118fefb9-2769-482c-a810-d62a8a333825,,,,Avatar_Basic_BlackPanther_MSH,Play,L,0,1,Avatar_Basic_Slimefoot_DMU,Success,
+2026-08-07,086ac249-80c6-4e80-bda1-68aa4b64fe0c,7,07 Earth’s Mightiest,e3a6c595-914d-4809-bd6d-630b3758ca89,Avatar_Basic_CaptainMarvel_MSH,Play,L,0,1,Avatar_Basic_AjaniGoldmane,Success,
+2026-08-07,922c5606-b583-4011-95da-166a7ba0735b,19,19 Bird Brain- Bant,f0fd0577-3e62-4786-b7c2-0ce8b8b0ef05,Avatar_Basic_Galactus_MSH,Play,W,1,0,Avatar_Basic_Eowyn_LTR,Success,
+2026-08-07,b48ecdfd-60a1-49a2-940b-96e673182aa5,7,07 Earth’s Mightiest,e3a6c595-914d-4809-bd6d-630b3758ca89,Avatar_Basic_CaptainMarvel_MSH,Play,L,0,1,Avatar_Basic_CaptainAmerica_MSH,Success,
+2026-08-07,f2b4a84a-b1f3-4d74-98bd-e26e32d8f10a,19,19 Bird Brain- Bant,f0fd0577-3e62-4786-b7c2-0ce8b8b0ef05,Avatar_Basic_Galactus_MSH,Play,L,0,1,Avatar_Basic_Kaito_NEO,Success,
+2026-08-09,6184e330-e976-486b-b80f-274a83f45c18,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Play,W,1,0,Avatar_Basic_Ashiok_WAR,Success,
+2026-08-09,a9c0cec2-bd63-4736-927f-e0e9a239f94c,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Ladder,L,0,1,Avatar_Basic_Kaito_NEO,Success,
+2026-08-09,cfffd1b8-5161-4f8b-9b30-a4d41b5954c5,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Play,W,1,0,Avatar_Basic_IronMan_MSH,Success,
+2026-08-09,eeb55562-4b25-443d-b800-ac86a1ad5985,45,45 The Exiles,994ff050-0f38-4c7c-b187-eef8d44e5ec2,Avatar_Basic_Galactus_MSH,Ladder,L,0,1,Avatar_Basic_Tidus_FIN,Success,
+2026-08-13,c65e485a-d84a-45f5-92dd-89e949737407,7,07 Earth’s Mightiest,e3a6c595-914d-4809-bd6d-630b3758ca89,Avatar_Basic_CaptainMarvel_MSH,Ladder,L,0,1,Avatar_Basic_JaceBeleren,Success,Concede
+2026-08-14,42e74d53-b355-4a31-8549-9d98b9cf2039,54b,54b Grand Lotus- Comet,bc4d5b7d-1298-4c3d-bb38-247dab5a070b,Avatar_Basic_Galactus_MSH,Play,W,1,0,Avatar_Basic_GideonJura,Success,Game
+2026-08-14,69611cd1-82b1-493d-9acc-fcb7b5959554,54b,54b Grand Lotus- Comet,bc4d5b7d-1298-4c3d-bb38-247dab5a070b,Avatar_Basic_Galactus_MSH,Play,L,0,1,Avatar_Basic_Krang_TMT,Success,Game
+2026-08-14,772dc70f-5249-4d53-9843-9656f016f490,15,15 Air Nomads,8dc84eb5-b2e3-450c-9a00-b2d6a7ec516d,Avatar_Basic_ShangChi_MSH,Play,W,1,0,Avatar_Basic_ScarletWitch_MSH,Success,Concede
+2026-08-14,884de5ba-cb80-4162-ba26-a461057de55a,54b,54b Grand Lotus- Comet,bc4d5b7d-1298-4c3d-bb38-247dab5a070b,Avatar_Basic_Galactus_MSH,Play,L,0,1,Avatar_Basic_AjaniGoldmane,Success,Game
+2026-08-14,ca8bd230-fa7b-4cd4-abea-91594325baab,15,15 Air Nomads,8dc84eb5-b2e3-450c-9a00-b2d6a7ec516d,Avatar_Basic_ShangChi_MSH,Play,W,1,0,Avatar_Basic_AjaniGoldmane,Success,Concede

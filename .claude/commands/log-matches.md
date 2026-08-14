@@ -48,9 +48,21 @@ launchctl load ~/Library/LaunchAgents/com.mtga.logsnapshot.plist
 
 The dedupe is line-identical and safe: every captured line shape is unique (match
 headers carry timestamps, the JSON payloads carry ids). With the archive in place, the
-per-session ask is just `cat ~/mtga-logs/arena.log | pbcopy` — or, for a leaner paste
-when no decks were renamed, `grep -v '==> DeckUpsertDeckV3' ~/mtga-logs/arena.log |
-pbcopy` (the Upsert lines carry full decklists and are the bulk of the bytes).
+per-session ask is:
+
+```sh
+sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' ~/mtga-logs/arena.log | pbcopy
+```
+
+**Slim at PASTE time, never at capture time.** The `sed` drops the deck CARD LISTS, which
+nothing in the parser reads — attribution uses only Name, DeckId and LastPlayed off the
+same line — and they are almost the entire payload: a real 52-card selection line is 1919
+bytes and slims to 152, a 92% cut, once per event join. Leaving the archive itself
+unslimmed keeps it a full-fidelity record AND keeps `awk '!seen[$0]++'` working; slimming
+inside `snapshot.sh` would put two forms of the same line in the archive and defeat its
+own dedupe. If the paste is still too big and no decks were renamed, additionally drop
+`==> DeckUpsertDeckV3` lines — but they are what keeps `#: arena:` headers current
+through a rename, so prefer the sed.
 
 **Without the archive**, grab the log before relaunching Arena. Ask the user to run
 this on the machine running Arena and paste the output:
@@ -61,8 +73,13 @@ p=~/Library/Logs/"Wizards Of The Coast"/MTGA
 # Windows (PowerShell): $p="$env:APPDATA\..\LocalLow\Wizards Of The Coast\MTGA"
 
 grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
-    "$p"/Player*.log
+    "$p"/Player*.log \
+  | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g'
 ```
+
+The `sed` drops the deck card lists (92% of an EventSetDeckV3 line, and nothing reads
+them). Keep it: without it the pastes get hand-trimmed in an editor instead, which is
+JSON surgery on the one line attribution depends on.
 
 **All three line shapes are required, in ONE grep.** The JSON carries the result and both
 seats but NOT which seat is theirs — the local `userId` appears only in the `Match to
@@ -119,6 +136,41 @@ same run, and a paste of deck summaries with no matches in it still syncs header
 than erroring. `--map-decks` remains for the explicit roster-wide pass, but routine
 ingests need no separate upkeep step.
 
+**Deck NAMES are offered, never adopted silently.** Every run also reports any deck whose
+repo `#: name:` differs from its Arena name, and `--sync-names` adopts them:
+
+```
+python3 scripts/parse_matches.py --sync-names          # reconcile from the stored headers
+python3 scripts/parse_matches.py <file> --sync-names   # …or from a fresh paste
+```
+
+Four things make this safe enough to be automatic, and each one is load-bearing:
+
+- **Identity is the DeckId GUID**, never the deck number and never the card list. A GUID
+  survives every edit Arena permits; a card list changes the moment you tune, so
+  card-matching would refuse exactly the decks under active development. A `name prefix`
+  match is *never* enough to rename — that route validates the leading number alone.
+- **Typography is not a rename.** Arena writes a curly apostrophe, doubled spaces and a
+  hyphen where the repo uses an em dash. Comparison is on words only, so
+  `54b Grand Lotus- Comet` leaves `Grand Lotus — Comet` untouched instead of churning it
+  every run.
+- **The variant convention survives.** A variant adopting `Ancient Decay` becomes
+  `Iron Forge — Ancient Decay`, because G-27's rationale audit leans on the
+  `<parent> — <variant>` shape. Arena repeating the parent is not doubled.
+- **Stranded citations are flagged.** 50 of the 106 decks are named inside another deck's
+  header prose, and nothing rewrites prose automatically. A `⚠` on a rename means the old
+  name is cited elsewhere and you fix those by hand. Suppressed when the new name still
+  contains the old one (`Unlock` → `Unlocked` keeps every citation valid).
+
+A parent rename also **orphans its variants** — they carry the old parent name in their
+own `#: name:` and have no Arena GUID of their own, so nothing can rename them from
+evidence. Those are flagged too, and composing the new variant name is a hand edit.
+
+Report the plan to the user and let them choose. Renaming is editorial: when the roster
+was first reconciled (2026-08-14, 12 decks) `Stampede Engine` → `Stampede` and
+`Jeskai Tempest` → `Tempest` each dropped a word that was doing work, and only the owner
+knows whether Arena's name or the repo's is the one they meant.
+
 ## Stage 2 — Report
 
 ```
@@ -128,6 +180,15 @@ python3 scripts/parse_matches.py --report
 **Read this the way the tool prints it, not the way a percentage invites.** Below ~20
 matches it refuses to show a rate at all, and above it the 95% Wilson interval is usually
 still 30 points wide. State the interval whenever you quote a number.
+
+**The per-deck rows will not fill, and the pooled block is the answer to that.** At 106
+decks the per-deck split cannot reach n=20 in any realistic timeframe — after a month of
+play the best row sat at n=4 — so the report also pools: `ALL DECKS`, then a Play/Ladder
+split, each with the distance to a readable sample printed as a countdown rather than a
+wall. **Pooling answers a different question and the difference is not decorative**: a
+pooled rate says whether *you* are winning, never whether a deck is good, because it
+averages a tuned deck with a brew. Use it to notice a slump. Route any per-deck verdict
+to the rows above, once they fill.
 
 The honest reading: **a win rate separates a broken deck from a fine one; it will not
 separate a 55% deck from a 45% one without hundreds of games.** Use it to find disasters,

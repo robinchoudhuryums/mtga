@@ -1,4 +1,4 @@
-#: name: One Fell Swoop — Overgrowth
+#: name: One Fell Swoop — Executioner’s Song
 #: format: Standard
 #: arena: 56a Executioner’s Song, 1cd4b42b-b983-4ba8-b070-25e43a576dd9
 #: colors: RG

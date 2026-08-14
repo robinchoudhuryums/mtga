@@ -1,4 +1,4 @@
-#: name: Exile Dividend
+#: name: The Exiles
 #: format: standard
 #: arena: 45 The Exiles, 994ff050-0f38-4c7c-b187-eef8d44e5ec2
 #: colors: WBR

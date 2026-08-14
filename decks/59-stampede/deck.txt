@@ -1,4 +1,4 @@
-#: name: Stampede Engine
+#: name: Stampede
 #: format: Standard
 #: arena: 59 Stampede, ad82fe6f-4d38-458d-9563-087499c190bf
 #: colors: RG

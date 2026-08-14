@@ -1,6 +1,6 @@
-#: name: Dino Stampede — Owned Build
+#: name: Triceraton — Owned Build
 #: format: Standard
-#: tier: B — Dino Stampede owned build. Re-graded C->B: interaction is 3, not 2 (plus an
+#: tier: B — Triceraton owned build. Re-graded C->B: interaction is 3, not 2 (plus an
 #: tier: under-read Spider-Rex), and 12 central themes on a fully BUILT, castable Naya Dino
 #: tier: shell is a coherent tribe, so the C hard-cap (near-zero interaction / thin themes)
 #: tier: no longer fits. Metrics floor is B. Held at B by thin interaction and a 3.86 curve

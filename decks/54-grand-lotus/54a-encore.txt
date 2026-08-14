@@ -90,7 +90,7 @@
 #: archetype: vs deck 25 (Spellstorm, UR): 25 casts from HAND and counts spells per turn;
 #: archetype: this casts from the YARD and counts nothing — and 25 cannot play the green
 #: archetype: half at all. vs deck 30 (Fractals, GUR): counters as utility, above. vs deck
-#: archetype: 45 (Exile Dividend): that is WBR and reads spells cast from EXILE, off impulse
+#: archetype: 45 (The Exiles): that is WBR and reads spells cast from EXILE, off impulse
 #: archetype: and heist; this reads the graveyard and shares no colour pair with it.
 #: protect: Iroh, Grand Lotus; Thor, God of Thunder; Spider-Verse; Songcrafter Mage; Agatha's Soul Cauldron; Doc Aurlock, Grizzled Genius
 #: notes: WIP / aspirational — drafted 2026-08 from scratch. Craft cost is real; run
