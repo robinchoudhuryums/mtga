@@ -956,6 +956,34 @@ class TestAdoptingArenaDeckNames:
         pm.sync_deck_names(_setdeck(name="45 The Exiles", guid=self.GUID), out=said.append)
         assert "old name cited in 1 other deck file(s): 54" in "\n".join(said)
 
+    def test_renaming_a_parent_flags_the_variants_it_orphans(self, tmp_path, monkeypatch):
+        """The mirror of the convention `_adopted_name` protects. Renaming a VARIANT keeps
+        its "<parent> — <variant>" shape; renaming the PARENT breaks that shape for every
+        variant beneath it, and those have no Arena GUID of their own so nothing can
+        rename them from evidence. The real sync orphaned four decks this way."""
+        self._roster(tmp_path, monkeypatch, **{
+            "28-dinos": self._cored("Dino Stampede", "28 Old", guid="g-parent"),
+        })
+        (tmp_path / "decks" / "28-dinos" / "28a-owned.txt").write_text(
+            self._cored("Dino Stampede — Owned Build"), encoding="utf-8")
+        said = []
+        pm.sync_deck_names(_setdeck(name="28 Triceraton", guid="g-parent"), out=said.append)
+        out = "\n".join(said)
+        assert "VARIANT(S) carry the old parent name" in out
+        assert "28a 'Dino Stampede — Owned Build'" in out
+
+    def test_renaming_a_VARIANT_flags_no_orphans(self, tmp_path, monkeypatch):
+        """Only a parent rename can orphan anything — a variant has nothing beneath it."""
+        self._roster(tmp_path, monkeypatch, **{
+            "28-dinos": self._cored("Dino Stampede", "28 Dino Stampede", guid="g-parent"),
+        })
+        (tmp_path / "decks" / "28-dinos" / "28a-owned.txt").write_text(
+            self._cored("Dino Stampede — Owned Build", "28a Old"), encoding="utf-8")
+        said = []
+        pm.sync_deck_names(_setdeck(name="28a Raptor Pack", guid=self.GUID),
+                           out=said.append)
+        assert "VARIANT(S)" not in "\n".join(said)
+
     def test_a_citation_that_still_reads_correctly_is_not_flagged(
             self, tmp_path, monkeypatch):
         """"Unlock" -> "Unlocked" keeps every citation valid. Flagging it would bury the

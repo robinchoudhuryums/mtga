@@ -1,4 +1,4 @@
-#: name: Unlock
+#: name: Unlocked
 #: format: Standard
 #: arena: 51 Unlocked, e96f57e6-cc01-4a39-aa39-ec607462ee3b
 #: colors: U

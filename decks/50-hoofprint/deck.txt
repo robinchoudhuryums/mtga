@@ -48,7 +48,7 @@
 #: archetype: attacker, absurd), Colossification (+20/+20 on anything), Famished Worldsire
 #: archetype: (devour land 3 makes it enormous and its ETB puts the lands back from the top).
 #: archetype: DISTINCTNESS: this is not a tribal deck and that is the point. Deck 31 Pox is BG
-#: archetype: ELF go-wide plus a Fynn poison kill; deck 28 Dino Stampede is RGW aggro; deck 34
+#: archetype: ELF go-wide plus a Fynn poison kill; deck 28 Triceraton is RGW aggro; deck 34
 #: archetype: Zoologist is Simic CHANGELING type-diversity. This deck cares only about how MANY
 #: archetype: creatures it has, never which kind — the Druid count is a bonus Three Tree City
 #: archetype: reads, not a plan anything else depends on.

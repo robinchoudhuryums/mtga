@@ -16,6 +16,30 @@ commands disagree.
 
 ---
 
+## 0-pre. TWELVE DECKS WERE RENAMED on 2026-08-14 — read this before searching by name
+
+The repo adopted MTG Arena's own deck names via `parse_matches.py --sync-names`. **Older
+notes in this file, in `.cycle/STATE.md` and in `.cycle/blocks/` still use the OLD names**
+— those are dated records and were deliberately left alone. Match on the deck NUMBER, not
+the name, when following an older note.
+
+| # | was | now |  | # | was | now |
+|---|---|---|---|---|---|---|
+| 19 | Bird Brain | Bird Brain — Bant | | 51 | Unlock | Unlocked |
+| 26b | Iron Forge — Scrapyard Tithe | Iron Forge — Ancient Decay | | 52a | Void Demons — Dark Realms | Void Demons — Void Realm |
+| 28 | Dino Stampede | Triceraton | | 56a | One Fell Swoop — Overgrowth | One Fell Swoop — Executioner's Song |
+| 45 | Exile Dividend | The Exiles | | 57 | Jeskai Tempest | Tempest |
+| 48 | Doombot Array | Doombots | | 58 | Gold Standard | Treasure Planet |
+| 49 | Scaleforge | Big Draco | | 59 | Stampede Engine | Stampede |
+
+Four variants were then renamed BY HAND to keep the `<parent> — <variant>` convention
+(28a, 45a, 48a, 51a); the tool flags those but cannot compose the new name. Three prose
+citations in other decks were repointed. **The divergence regrows** — it comes from how
+decks are named in the client — so re-run `--sync-names` (it is opt-in and reports without
+the flag) rather than assuming the two sides still agree.
+
+---
+
 ## 0. Repo position — CURRENT (2026-08-12, broad-scan-4)
 
 - Working branch **`claude/broad-scan-xju0r1`**, one commit ahead of `origin/main`
@@ -151,7 +175,8 @@ disabled both the size floor and the copy limit (`[G-09]`).
   12-hour bound protects: it stays blank rather than borrowing 8/07's deck. Decks 7, 19 and
   45 now carry `#: arena:` headers with both the Arena name and the stable `DeckId` GUID;
   add one to each deck as it gets played. See `[G-57]`. Still owner-paced: it needs games.
-- **Deck 49 Scaleforge rotation-proofing — Route A, measured and NOT applied.** The user
+- **Deck 49 Big Draco (renamed from "Scaleforge" 2026-08-14) rotation-proofing — Route A,
+  measured and NOT applied.** The user
   said "I will hold off on these changes for now," so it is queued, not rejected. Do NOT
   re-derive it: −Gishath/+Etali, Primal Storm · −Palani's Hatcher/+Savage Land Dinosaur ·
   −Decadent Dragon/+Nova Hellkite · −Realm-Scorcher Hellkite/+Steel Hellkite (craft R) ·

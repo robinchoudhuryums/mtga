@@ -1,4 +1,4 @@
-#: name: Doombot Array — Motor Pool
+#: name: Doombots — Motor Pool
 #: format: Standard
 #: colors: UR
 #: based-on: deck.txt

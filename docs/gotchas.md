@@ -1469,8 +1469,8 @@ placements was a set of counts the model cannot see, measured by hand per G-61:
 | deck | artifact cards | token producers | Vehicles | the deciding payoff |
 |---|---|---|---|---|
 | 48a Motor Pool | 19 | 17 | **7** | her combat trigger is live at all |
-| 48 Doombot Array | 22 | 12 | 1 | Mechan Assembler, once per turn, matches her `0` |
-| 58 Gold Standard | 0 | **19** | 0 | Crime Novelist / Krenko / Pirate Peddlers read her `+2` |
+| 48 Doombots | 22 | 12 | 1 | Mechan Assembler, once per turn, matches her `0` |
+| 58 Treasure Planet | 0 | **19** | 0 | Crime Novelist / Krenko / Pirate Peddlers read her `+2` |
 | 10 Mad Villainy | 9 | 7 | 0 | card advantage 1 — the deficit her `+2` fixes |
 | 45a Grixis Mayhem | 2 | 2 | 0 | 5 Mayhem cards want a free repeating discard |
 
@@ -2364,9 +2364,13 @@ match except one whose log had already rotated. Four details are load-bearing:
   accepted only when the id it produces is a deck that exists. Its regex is
   case-SENSITIVE on the variant letter and requires the letter be adjacent to the number:
   the first draft, `^\s*0*(\d+)\s*([a-z]?)` with `re.I`, read "07 Earth's Mightiest" as
-  deck **"7e"**. Note the Arena name need not resemble the repo name at all — "45 The
-  Exiles" is repo deck 45 "Exile Dividend" — so a name-similarity check would have
+  deck **"7e"**. Note the Arena name need not resemble the repo name at all — when
+  measured on 2026-08-14, Arena's "45 The Exiles" was repo deck 45 "Exile Dividend", and 8
+  of the 22 paired decks diverged the same way — so a name-similarity check would have
   REJECTED a correct match, and the number is the only part that carries the mapping.
+  `--sync-names` is the RECONCILE half (adopting Arena's name for GUID-paired decks, which
+  is how deck 45 came to be called "The Exiles" here). It is opt-in, so the divergence
+  regrows on the next client-side rename: the number stays the only safe match key.
 
 **Doing the whole roster: `--map-decks`.** Setting `#: arena:` one deck at a time is where
 a wrong header hides, and a `#:` header naming something that does not exist is a silent
@@ -3101,7 +3105,7 @@ Victory, Lifecraft Engine, Banner of Kinship, Adaptive Automaton, Patchwork Bann
 Throne. Every one of them reads `As this enters, choose a creature type` and then talks
 about `the chosen type` — the category NEVER contains the type name, because naming it is
 the player's job at resolution. The regex was searching for a word the cards structurally
-cannot contain. Deck 48 (Doombot Array) exists only because a later card pile happened to
+cannot contain. Deck 48 (Doombots) exists only because a later card pile happened to
 include Lifecraft Engine and forced the correction; nothing in the toolchain would have
 surfaced it, because no gate can see a search that was run once, in chat, and believed.
 
@@ -3715,7 +3719,7 @@ recorded for `suggest`'s Decks column (99%, G-28) and `cuts`' protect keep-boost
 G-09). **A gate earns a row only when the resource can be SHORT.** A test now forbids the
 rule returning.
 
-**2026-08 residual, found by deck 58 (Gold Standard): the counter sees CARDS, and a token
+**2026-08 residual, found by deck 58 (Treasure Planet): the counter sees CARDS, and a token
 economy's resource is TOKENS.** The Jund Treasure deck's whole engine mints artifact tokens
 (Treasures, Meteorites, Landers, Maps — 14 producer cards), and `targets` reported its two
 artifact-sac payoffs as `⚠ thin — 1 artifact to sacrifice`, counting the one nontoken
@@ -3767,7 +3771,7 @@ she does on the turn you cast her.
 
 ### The cost, on a real swap
 
-Deck 58 Gold Standard, `-Elvish Archivist +Chandra`. The quality guard reported
+Deck 58 Treasure Planet, `-Elvish Archivist +Chandra`. The quality guard reported
 `⚠ card advantage dropped (4→3)`. Both halves of that are backwards:
 
 - Archivist's draw half is *"whenever one or more ENCHANTMENTS you control enter, draw a

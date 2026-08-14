@@ -162,9 +162,14 @@ Four things make this safe enough to be automatic, and each one is load-bearing:
   name is cited elsewhere and you fix those by hand. Suppressed when the new name still
   contains the old one (`Unlock` → `Unlocked` keeps every citation valid).
 
-Report the plan to the user and let them choose. Renaming is editorial: `Stampede Engine`
-→ `Stampede` is a real loss of a word, and only the owner knows whether Arena's name or
-the repo's is the one they meant.
+A parent rename also **orphans its variants** — they carry the old parent name in their
+own `#: name:` and have no Arena GUID of their own, so nothing can rename them from
+evidence. Those are flagged too, and composing the new variant name is a hand edit.
+
+Report the plan to the user and let them choose. Renaming is editorial: when the roster
+was first reconciled (2026-08-14, 12 decks) `Stampede Engine` → `Stampede` and
+`Jeskai Tempest` → `Tempest` each dropped a word that was doing work, and only the owner
+knows whether Arena's name or the repo's is the one they meant.
 
 ## Stage 2 — Report
 

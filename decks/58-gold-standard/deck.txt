@@ -1,4 +1,4 @@
-#: name: Gold Standard
+#: name: Treasure Planet
 #: format: Standard
 #: arena: 58 Treasure Planet, dfe5ff2f-f782-4e39-b4f7-88f6c15d0d3a
 #: colors: BRG

@@ -34,7 +34,7 @@ Stated because a roadmap that never records its own outcomes is a wishlist.
 - **The creature cut-ranking hypothesis — TESTED, REJECTED**, and the negative result is
   kept in `docs/systems-map.md` §7 with its sign test. Two pre-registered fixes for `cuts`
   have now been refuted; G-09 says do not derive a third from the tag-count asymmetry.
-- **Deck 49 Scaleforge rotation-proofing — measured, NOT applied.** Queued at the user's
+- **Deck 49 Big Draco rotation-proofing — measured, NOT applied.** Queued at the user's
   request, not rejected. Do not re-derive it; the five swaps are in `.cycle/NEXT-SESSION.md`.
 - **This file's own staleness header — resolved by this regeneration.** It had been a
   2026-07-31 snapshot through two full scan cycles.

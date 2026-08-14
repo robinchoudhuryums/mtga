@@ -426,9 +426,12 @@ data through it, never by a test.
     A `name prefix` row also prints the REPO deck's own name and says to confirm it: that
     route matches on the leading NUMBER alone, and `--apply` writes the guess into the
     deck file as a permanent header. It is disclosure, not a gate, and deliberately so —
-    8 of the 22 correct `#: arena:` mappings on the roster have an Arena name that does
-    NOT resemble the repo name ("49 Big Draco" is Scaleforge), so refusing on a name
-    mismatch would block a correct attribution more than a third of the time.
+    when this was measured (2026-08-14) 8 of the 22 correct `#: arena:` mappings had an
+    Arena name that did NOT resemble the repo name — Arena's "49 Big Draco" was repo deck
+    49 "Scaleforge" — so refusing on a name mismatch would block a correct attribution
+    more than a third of the time. The repo adopted those names later the same day via
+    `--sync-names`, which does NOT retire the finding: the divergence comes from how decks
+    get named in the client, so it regrows on the next rename.
   - Each new match line prints the evidence behind its verdict — `[my team 1 · winner 1]`
     — and `by concede` / `by game` where Arena reported it. Spot-check one against the
     raw JSON: an inverted seat read would make every row in a paste wrong the same way,

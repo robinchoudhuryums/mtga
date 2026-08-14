@@ -1,4 +1,4 @@
-#: name: Iron Forge — Scrapyard Tithe
+#: name: Iron Forge — Ancient Decay
 #: format: Standard
 #: arena: 26b Ancient Decay, 99251dba-9f43-4b00-885f-f4e3893cd7f4
 #: colors: UR

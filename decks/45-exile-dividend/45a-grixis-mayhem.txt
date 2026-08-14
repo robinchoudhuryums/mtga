@@ -1,4 +1,4 @@
-#: name: Exile Dividend — Grixis Mayhem
+#: name: The Exiles — Grixis Mayhem
 #: format: standard
 #: colors: UBR
 #: plan: midrange

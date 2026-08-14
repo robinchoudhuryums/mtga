@@ -1,4 +1,4 @@
-#: name: Void Demons — Dark Realms
+#: name: Void Demons — Void Realm
 #: format: Standard
 #: arena: 52a Void Realm, c076f66b-cb8a-4596-b152-c1ae1071cc5b
 #: colors: B
