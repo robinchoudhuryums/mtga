@@ -104,3 +104,12 @@
 #~   creature card from the graveyard to hand AND amasses Goblins 3 — a graveyard payoff that also
 #~   builds a body, in a deck whose currency is the graveyard. Slick Imitator is `cuts` #1 here and
 #~   is flagged off the deck's central themes.
+#~ -Slick Imitator | +Eddymurk Crab | OWNED (BLB, 2026-08-13 ingest): fit 41. The cost
+#~   reduction reads off instants and sorceries in the yard, which this deck stocks by
+#~   design; Slick Imitator is `cuts` #1 and flagged off the deck's central themes.
+#~ -Ouroboroid | +Stargaze | OWNED (BLB): fit 34. "{X}{B}{B} Look at twice X cards, put X
+#~   into your HAND and the rest into your GRAVEYARD" — the rejected half is not a cost
+#~   here, it is the second mode. ⚠⚠ pip check: 2x{B} vs 9 sources, so cast it late.
+#~ -Stalwart Successor | +Nightwhorl Hermit | OWNED (BLB): fit 34. Threshold — unblockable
+#~   at seven cards in the yard, which this deck reaches on its own.
+#~ note: three suggestions, three distinct cuts, all 0-wildcard.

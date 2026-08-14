@@ -1497,6 +1497,42 @@ fit row plus the source count that would clear the bar. It's a FLAG, never a sco
 — a deck can legitimately want a color-hungry bomb and fix for it — but the number is now
 on screen instead of implied by a subset test that can't see it.
 
+### 2026-08-13 — two gaps closed, both found by the OWNER catching a bad recommendation
+
+`deck.py suggest 55a --unowned` offered **Elegy Acolyte (`{2}{B}{B}`)** as a craft target
+to Mardu Spellstorm, which holds **8 black sources**. The owner declined it on a manabase
+read; `consistency` priced it at **40.0% on turn four** against a Karsten target of 20
+sources. Neither the flag above nor anything else had said a word. Two separate reasons:
+
+**1. The primitive had ONE caller.** `pip_depth_warning` was wired into `cmd_suggest_homes`
+and nothing else — so the deck-level recommender, the surface that actually proposes craft
+targets, never called it. This is exactly the shape G-40 names: *a pure-function anchor
+cannot see whether a caller asks.* The helper was correct, documented and unit-tested the
+whole time. `cmd_suggest` calls it now and prints `⚠⚠2x{B} vs 8 src` inline plus a summary
+line pointing at `consistency`.
+
+**2. The 3-pip floor excluded the card entirely.** `_PIP_DEPTH_MIN` was 3 — *"only 3+ pips
+of ONE colour are worth checking"* — and Elegy Acolyte has two. Even wired in, it would
+have returned None. The test suite pinned this exactly (`pip_depth_warning("{3}{W}{W}",
+{"W": 8}) is None`), which is the test-double-encoding-old-behaviour case: that assertion
+was updated deliberately, not reactively.
+
+**Why 0.55 and not 0.70 for the 2-pip band — measured across all 37 deck files:**
+
+| setting | maindecked cards flagged |
+|---|---|
+| `MIN=3, target=0.70` (the old rule) | 25 |
+| `MIN=2, target=0.70` | **109** |
+| `MIN=2, target=0.55` | **43** |
+| `MIN=2, target=0.50` | 30 |
+
+Straight `MIN=2` at the existing 0.70 adds 84 flags, ~3 per deck, and the additions are
+overwhelmingly ordinary — Vampire Nighthawk on 11 black sources, Phyrexian Arena on 11,
+Angelic Destiny on 11. That is noise that teaches a reader to skip the flag. At 0.55 the
+band isolates the real class: 2 pips on **3–9** sources — Wonder Man on 3 red, Progenitus
+and Appa on 4 white, deck 21's black cards on 5, Overlord on 6, Elegy Acolyte on 8. The
+3+ band keeps 0.70 so its meaning is untouched, and a test pins that it is unchanged.
+
 
 ## [G-33] `suggest-homes` also weighs a DOUBLER against the deck's magnitude on its axis
 

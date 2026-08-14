@@ -104,3 +104,17 @@
 #~ note: all OWNED (0 wildcards). Bushwhack / Harsh Annotation / Run Over remain owned interaction options too.
 #~ +East Wind Avatar | OWNED (salvage from retired 19c pile): {3}{W} Bird — "Flying, vigilance. Alliance — whenever another creature you control enters, +1/+0 EOT." Evasive Bird that grows on go-wide; top-ranked pile leftover (suggest #9 here). ~ role-player over a weaker flyer.
 #~ note: 19c "WIP Pile (raw dump)" retired 2026-07 — checked all 46 pile orphans via updated `suggest --owned`; only East Wind Avatar ranks as a strong fit for this Bant primary (green landfall leftovers fit the GW 19b instead). The rest correctly trimmed (Cat-Owl already handled above).
+#~ -Dazzling Denial | +Finch Formation | OWNED (BLB, 2026-08-13 ingest): fit 69, the
+#~   batch's best. {2}{U} 2/2 flier with OFFSPRING {3} — pay it and the ETB makes a 1/1
+#~   token copy, so one card is two Birds, and its own ETB grants flying to another
+#~   creature. Dazzling Denial is `cuts` #1 here at fit 1.
+#~ -Stroke of Midnight | +Knightfisher | OWNED (BLB): fit 58. "Whenever another NONTOKEN
+#~   Bird you control enters, create a 1/1 blue Fish creature token" — a Bird-tribal engine
+#~   on a 4/5 flier. Read the nontoken clause before pairing it with Finch Formation's
+#~   Offspring token, which does NOT trigger it.
+#~ -For the Common Good | +Lifecreed Duo | OWNED (BLB): fit 48. {1}{W} 1/2 flier, and
+#~   "whenever another creature you control enters, you gain 1 life" reads off EVERY body,
+#~   not just Birds. Also fit 51 in deck 46 — one copy serves both.
+#~ note: all three are 0-wildcard and Standard-legal. Cuts are distinct because the cut
+#~ note: pool is shared; two of the three are interaction and this deck runs 5, so taking
+#~ note: more than one of Dazzling Denial / Stroke of Midnight / Bushwhack moves the floor.

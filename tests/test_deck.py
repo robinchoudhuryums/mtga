@@ -2667,9 +2667,27 @@ class TestPipDepthWarning:
     def test_deep_pips_with_deep_sources_do_not_warn(self):
         assert deck.pip_depth_warning("{B}{B}{B}", {"B": 24}) is None
 
-    def test_two_pips_are_below_the_floor(self):
-        # 2 pips is ordinary; only 3+ of ONE colour is worth flagging.
-        assert deck.pip_depth_warning("{3}{W}{W}", {"W": 8}) is None
+    def test_two_pips_on_a_thin_colour_warn_at_the_stricter_bar(self):
+        # CHANGED 2026-08-13. This used to assert None: the floor was 3 pips, so a
+        # {2}{B}{B} craft target was recommended into a deck with 8 black sources (45%
+        # on curve) and nothing said so. 2 pips are now checked against 0.55 rather
+        # than the 0.70 the 3+ band uses.
+        w = deck.pip_depth_warning("{3}{W}{W}", {"W": 8})
+        assert w is not None
+        col, pips, have, want = w
+        assert (col, pips, have) == ("W", 2, 8)
+        assert want > have
+
+    def test_two_pips_on_a_normal_colour_stay_quiet(self):
+        # The reason the 2-pip bar is 0.55 and not 0.70: at 0.70 this fires, and a
+        # 2-pip card on 11 sources is ordinary. Flagging it would train the reader to
+        # ignore the flag (109 roster flags vs 43 at 0.55, measured).
+        assert deck.pip_depth_warning("{3}{W}{W}", {"W": 11}) is None
+
+    def test_the_three_pip_band_is_unchanged(self):
+        # The original rule must keep its exact meaning: 3+ pips grade at 0.70.
+        assert deck.pip_depth_warning("{B}{B}{B}", {"B": 24}) is None
+        assert deck.pip_depth_warning("{B}{B}{B}", {"B": 10}) is not None
 
     def test_hybrids_excluded(self):
         # Hybrid pips are strictly easier to pay, matching parse_pips' rule.

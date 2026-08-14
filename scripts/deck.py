@@ -329,9 +329,21 @@ def load_collection():
     return by_key, by_name, by_name_qty
 
 
-_PIP_DEPTH_MIN = 3          # only 3+ pips of ONE colour are worth checking
+_PIP_DEPTH_MIN = 2          # 2 pips are checked too, but against a STRICTER bar (below)
 _PIP_DEPTH_TURN = 5         # grade on-curve-ish, capped like `consistency` does
 _PIP_DEPTH_TARGET = 0.70    # below this, say so; deliberately looser than consistency's 0.90
+# The bar is PIP-COUNT AWARE, and the two rows mean different things.
+#
+# 3+ pips at 0.70 is the original rule and is UNCHANGED: that band catches the
+# arithmetically hopeless card (the {W}{W}{W}{W}{W} case in the docstring below).
+#
+# 2 pips joined the check after a {2}{B}{B} craft target was recommended into a deck
+# holding EIGHT black sources — 45% on curve — and nothing said so, because the floor
+# was 3. But 2 pips graded at 0.70 is far too loud: it fires on 109 maindecked cards
+# across the roster against 25 today, and most of the additions are ordinary (a 2-pip
+# card on 10-11 sources), which would train the reader to ignore the flag. At 0.55 it
+# fires on 43 and isolates the real class — 2 pips on 3-9 sources. Measured 2026-08-13.
+_PIP_DEPTH_TARGET_BY_PIPS = {2: 0.55}
 
 
 def deck_color_sources(cards, meta, carddata):
@@ -372,6 +384,12 @@ def pip_depth_warning(cost, sources, total=None):
     Reported as a FLAG, never a filter: a deep-pip card can still be a fine late-game
     play in a deck that leans hard on its colour, and the caller prints the numbers so a
     human decides. Hybrids are excluded (strictly easier), matching `parse_pips`.
+
+    THE BAR IS PIP-COUNT AWARE (`_PIP_DEPTH_TARGET_BY_PIPS`). 3+ pips grade at 0.70,
+    unchanged. 2 pips grade at 0.55, because the 3-pip floor let a {2}{B}{B} craft target
+    be recommended into a deck with eight black sources — 45% on curve — and returned
+    None. Read the two bands as different claims: a 3-pip flag says "you cannot cast
+    this", a 2-pip flag says "you will cast this late".
     """
     strict, _hybrid = parse_pips(cost or "")
     if not strict:
@@ -390,10 +408,11 @@ def pip_depth_warning(cost, sources, total=None):
     # hardest. Latent today (every roster deck is 60), and `legality_report` already
     # contemplates min_size 100 for BIG_DECK_FORMATS.
     n = total or 60
-    if hypergeom_at_least(n, have, seen, pips) >= _PIP_DEPTH_TARGET:
+    target = _PIP_DEPTH_TARGET_BY_PIPS.get(pips, _PIP_DEPTH_TARGET)
+    if hypergeom_at_least(n, have, seen, pips) >= target:
         return None
     want = next((s for s in range(have + 1, 41)
-                 if hypergeom_at_least(n, s, seen, pips) >= _PIP_DEPTH_TARGET), None)
+                 if hypergeom_at_least(n, s, seen, pips) >= target), None)
     return (col, pips, have, want)
 
 
@@ -4626,6 +4645,22 @@ def cmd_suggest(args):
     rotn = sum(1 for p in res["picks"] if p.get("rotates"))
     if rotn:
         print(f"({rotn} pick(s) marked ⚠rot — set >3yr old, may have rotated / rotates soon)")
+    # PIP DEPTH. `suggest`'s colour filter is a SET test (card identity ⊆ deck colours)
+    # and cannot see whether the deck can pay the pips — the same blind spot
+    # `suggest-homes` has carried a flag for since G-32, which this surface never called.
+    # It recommended Elegy Acolyte ({2}{B}{B}) into a deck holding 8 black sources, 45%
+    # on curve. Display only: it never filters a pick or moves a score.
+    _pipmeta, _pipcards = parse_deck_file(d["path"])
+    _pipsrc = deck_color_sources(_pipcards, load_card_meta(), load_card_data())
+    _piptot = sum(q for q, *_ in _pipcards)
+    _pipmana = load_mana()
+    pipwarns = {}
+    for p in res["picks"]:
+        _e = (_pipmana.get(p["name"].lower())
+              or _pipmana.get(p["name"].split(" // ")[0].lower()))
+        w = pip_depth_warning(_e[0] if _e else "", _pipsrc, total=_piptot)
+        if w:
+            pipwarns[p["name"]] = w
     print(f"\n{'Have':>5}  {'Card':28}  {'Rarity':8}  {'Decks':>5}  Matches (deck themes)")
     print("-" * 82)
     craftby = {}
@@ -4636,8 +4671,15 @@ def cmd_suggest(args):
         if h == 0:
             craftby[rar] = craftby.get(rar, 0) + 1
         rotflag = " ⚠rot" if p.get("rotates") else ""
+        pw = pipwarns.get(p["name"])
+        pipflag = f"  ⚠⚠{pw[1]}x{{{pw[0]}}} vs {pw[2]} src" if pw else ""
         print(f"{have:>5}  {p['name'][:28]:28}  {rar[:8]:8}  {p['decks']:>5}  "
-              f"{', '.join(p['matches'][:5])}{rotflag}")
+              f"{', '.join(p['matches'][:5])}{rotflag}{pipflag}")
+    if pipwarns:
+        print(f"⚠⚠ {len(pipwarns)} pick(s) flagged on PIP DEPTH — the colour filter is a set "
+              "test and cannot see whether you can pay the pips. 3+ pips means you likely "
+              "cannot cast it; 2 pips means you will cast it late. `deck.py consistency "
+              f"{d['id']}` prices any of them exactly.")
     ncraft = sum(craftby.values())
     print("-" * 82)
     print(f"{res['total']} suggestion(s) — {res['total'] - ncraft} owned, {ncraft} to craft"

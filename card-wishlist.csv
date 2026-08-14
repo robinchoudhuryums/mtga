@@ -34,10 +34,6 @@ Whenever one or more noncreature, nonland permanents you control enter, put a +1
 {4}{W}: Level 3
 When this Class becomes level 3, return target noncreature, nonland permanent card from your graveyard to the battlefield.",W,Class; counters; reanimator; graveyard; tokens; etb,BLB,5,Uncommon,29,,5.5,hand
 Calamitous Tide,Sorcery,"Return up to two target creatures to their owners' hands. Draw two cards, then discard a card.",U,card draw; bounce,BLB,43,Uncommon,51,,3.5,seed
-Eddymurk Crab,Creature — Elemental Crab,"Flash
-This spell costs {1} less to cast for each instant and sorcery card in your graveyard.
-This creature enters tapped if it's not your turn.
-When this creature enters, tap up to two target creatures.",U,Elemental; Crab; graveyard; cost-reduction; etb; flash; tempo,BLB,48,Uncommon,51a,"Deck 51a: the G-46 virtual copy of Tolarian Terror - identical ""costs {1} less for each instant and sorcery card in your graveyard"" clause on a different card, against 14 instants/sorceries, so routinely a 3-4 mana flash 5/5. ETB taps two creatures, clearing blockers for Veteran Ice Climber and The Mindskinner. In NO other deck, so the wildcard buys nothing outside 51a.",6.6,hand
 Long River's Pull,Instant,"Gift a card (You may promise an opponent a gift as you cast this spell. If you do, they draw a card before its other effects.)
 Counter target creature spell. If the gift was promised, instead counter target spell.",U,counterspell; card draw; gift; value,BLB,58,Uncommon,51,,3.0,seed
 Pawpatch Formation,Instant,"Choose one —
@@ -204,8 +200,6 @@ Landfall — Whenever a land you control enters, double Tifa Lockhart's power un
 Vincent Valentine // Galian Beast,Legendary Creature — Assassin // Legendary Creature — Werewolf Beast,"Whenever a creature an opponent controls dies, put a number of +1/+1 counters on Vincent Valentine equal to that creature's power.
 Whenever Vincent Valentine attacks, you may transform it. // Trample, lifelink
 When Galian Beast dies, return it to the battlefield tapped (front face up).",B,Assassin; Werewolf; Beast; counters; lifegain; lifelink; transform; trample; evasion,FIN,125,Rare,52,,6.0,seed
-"Zanarkand, Ancient Metropolis // Lasting Fayth",Land — Town // Sorcery — Adventure,"This land enters tapped.
-{T}: Add {G}. // Create a 1/1 colorless Hero creature token. Put a +1/+1 counter on it for each land you control. (Then exile this card. You may play the land later from exile.)",G,Town; Adventure; counters; exile cast; tokens; mana,FIN,293,Rare,50a,,4.0,seed
 "Zodiark, Umbral God",Legendary Creature — God,"Indestructible
 When Zodiark enters, each player sacrifices half the non-God creatures they control of their choice, rounded down.
 Whenever a player sacrifices another creature, put a +1/+1 counter on Zodiark.",B,God; counters; sacrifice; etb; indestructible; resilience,FIN,128,Rare,52,,6.0,seed

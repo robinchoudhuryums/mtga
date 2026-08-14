@@ -4688,3 +4688,102 @@ Bejeweled Warg,Creature — Wolf,"Trample
 Whenever this creature deals combat damage to a player, choose one —
 • Put a +1/+1 counter on target Wolf you control.
 • Create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",G,Wolf; counters; sacrifice; tokens; treasure; trample; evasion,HOB,117,1
+Uncover the Moon-Letters,Enchantment,"Whenever you cast a noncreature spell, you may draw X cards, where X is the amount of mana spent to cast that spell. If you do, discard two cards.",U,card draw,HOB,57,1
+Radagast of Rhosgobel,Legendary Creature — Avatar Wizard,The first creature spell you cast each turn costs {2} less to cast and can be cast as though it had flash.,G,Avatar; Wizard; cost-reduction,HOB,136,1
+Roll-Roll-Roll-Roll,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
+I, II, III, IV — Exile up to one target creature or land you control. If you do, return it to the battlefield under its owner's control at the beginning of the next end step.",U,Saga; sacrifice; saga; blink,HOB,54,1
+The Notary Hobbits,Legendary Creature — Halfling Advisor,"When The Notary Hobbits enter, if they're not a token, create two tokens that are copies of them, except the tokens aren't legendary.
+{T}: Add {C} for each Halfling you control.",G,Halfling; Advisor; tokens; mana,HOB,131,1
+Beorn's Hospitality,Enchantment,"Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature you control.
+{5}{G}{G}: This enchantment becomes a Bear creature in addition to its other types and gains ""This creature's power and toughness are each equal to the number of lands you control."" (This effect doesn't end.)",G,counters; landfall; lands; ramp,HOB,120,1
+"Galion, Elvenking's Butler",Legendary Creature — Elf Advisor,"Whenever Galion attacks, choose up to one other target creature you control. Its base power and toughness become equal to Galion's power and toughness until end of turn.",G,Elf; Advisor,HOB,125,1
+Mirkwood Pathmaker,Creature — Elf Ranger,Mirkwood Pathmaker's power and toughness are each equal to the number of lands you control.,G,Elf; Ranger,HOB,129,1
+Stone by Sunlight,Instant,"Choose one —
+• Destroy target creature with power 4 or greater.
+• Until end of turn, target creature becomes an artifact in addition to its other types and gains indestructible. (Damage and effects that say ""destroy"" don't destroy it.)",W,removal,HOB,27,1
+Wilderland Scrounger,Creature — Wolf,"Ferocious — Whenever this creature attacks while you control a creature with power 4 or greater, put a +1/+1 counter on each creature you control.",G,Wolf; counters; ferocious,HOB,141,1
+The Black Arrow,Legendary Artifact — Equipment,"Flash
+When The Black Arrow enters, it deals 1 damage to any target. If a Dragon is dealt damage this way, destroy it.
+Equipped creature gets +1/+1 and has reach.
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; burn; etb; equipment; pump; noncombat damage; equip; flash; tempo,HOB,171,1
+Dwarven Shortsword,Artifact — Equipment,"When this Equipment enters, create a 2/2 red Dwarf creature token, then attach this Equipment to it.
+Equipped creature gets +1/+2.
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",W,Equipment; tokens; etb; equipment; pump; equip,HOB,10,1
+Pinecone Strike,Instant,"Choose one or both —
+• Pinecone Strike deals 3 damage to target creature. If that creature would die this turn, exile it instead.
+• Destroy target artifact token.",R,removal; burn,HOB,107,1
+Moment of Glory,Sorcery,"Put a +1/+1 counter on target creature you control. If this spell was cast from a graveyard, also put a +1/+1 counter on each other creature you control.
+Flashback {4}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",W,counters; graveyard; flashback; recursion; spellslinger,HOB,21,1
+Thorin's Last Stand,Instant,"Choose one —
+• Creatures you control get +2/+1 until end of turn.
+• Destroy target artifact or enchantment. You gain 2 life.",W,lifegain; removal; pump,HOB,28,1
+Iron Hills Stalwart,Creature — Dwarf Warrior,"Reach, trample
+When this creature enters, attach target Equipment you control to up to one target creature you control.",R,Dwarf; Warrior; etb; reach; defense; trample; evasion,HOB,102,1
+Plunder the Trollshaws,Instant,"Draw a card. If this spell was cast from a graveyard, draw two cards instead.
+Flashback {3}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; card draw; flashback; recursion; spellslinger,HOB,51,1
+"Smaug, the Great Calamity",Legendary Creature — Dragon // Sorcery — Adventure,Flying // Spew Flame deals 5 damage to target creature. (Then exile this card. You may cast the creature later from exile.),R,Dragon; Adventure; exile cast; burn; flying; evasion,HOB,109,1
+Magnificent End,Instant,"This spell costs {3} less to cast if it targets a tapped creature.
+Magnificent End deals 5 damage to target creature.",W,cost-reduction; burn,HOB,20,1
+Mirkwood Nurturer,Creature — Elf Ranger,"When this creature enters, return up to one other target permanent you control to its owner's hand. If you do, put a +1/+1 counter on this creature.",U/G,Elf; Ranger; counters; etb; bounce,HOB,160,1
+Smaug's Fury,Instant,Target creature gets +3/+0 and gains reach and first strike until end of turn.,R,pump,HOB,111,1
+Long Lake Nuisance,Creature — Bird,"Flying
+When this creature enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",U,Bird; card draw; tokens; etb; flying; evasion,HOB,45,1
+Boughside Wanderers,Creature — Elf Scout,"When this creature enters, look at the top four cards of your library. You may reveal a permanent card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.
+Landfall — Whenever a land you control enters, this creature gets +2/+2 until end of turn.",G,Elf; Scout; etb; landfall; pump; selection; lands; ramp,HOB,121,1
+Bilbo's Deadly Slice,Instant,Destroy target creature.,B,removal,HOB,62,1
+"Bilbo Baggins, Burglar",Legendary Creature — Halfling Rogue // Sorcery — Adventure,"When Bilbo Baggins enters, draw a card. // Scry 2. (Then exile this card. You may cast the creature later from exile.)",U,Halfling; Rogue; Adventure; exile cast; card draw; etb; scry; selection,HOB,34,1
+Enchanted River's Grasp,Enchantment — Aura,"Enchant creature
+When this Aura enters, tap enchanted creature and remove all counters from it.
+Enchanted creature loses all abilities and doesn't untap during its controller's untap step.",U,Aura; etb; aura; enchant,HOB,39,1
+Attercop,Creature — Spider,"Reach, deathtouch
+Landfall — Whenever a land you control enters, this creature gets +1/+1 until end of turn.",G,Spider; landfall; pump; reach; defense; deathtouch; combat; removal; lands; ramp,HOB,116,1
+Dáin's Company,Creature — Dwarf Warrior,"This creature has lifelink as long as you control another Dwarf.
+When this creature enters, look at the top four cards of your library. You may reveal a Dwarf or Equipment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",W/R,Dwarf; Warrior; lifegain; etb; selection,HOB,152,1
+"Zanarkand, Ancient Metropolis",Land — Town // Sorcery — Adventure,"This land enters tapped.
+{T}: Add {G}. // Create a 1/1 colorless Hero creature token. Put a +1/+1 counter on it for each land you control. (Then exile this card. You may play the land later from exile.)",G,Town; Adventure; counters; exile cast; tokens; mana,FIN,293,1
+"Tom, Bert, and William",Legendary Creature — Troll,"{1}, Sacrifice another creature: Draw cards equal to the sacrificed creature's power, then discard a card.
+When Tom, Bert, and William die, if they were a creature, return them to the battlefield. They're an artifact. (They're no longer a creature.)",B/G,Troll; card draw; sacrifice,HOB,169,1
+"Helga, Skittish Seer",Legendary Creature — Frog Druid,"Whenever you cast a creature spell with mana value 4 or greater, you draw a card, gain 1 life, and put a +1/+1 counter on Helga.
+{T}: Add X mana of any one color, where X is Helga's power. Spend this mana only to cast creature spells with mana value 4 or greater or creature spells with {X} in their mana costs.",W/U/G,Frog; Druid; counters; lifegain; card draw; mana,BLB,217,1
+Season of the Bold,Sorcery,"Choose up to five {P} worth of modes. You may choose the same mode more than once.
+{P} — Create a tapped Treasure token.
+{P}{P} — Exile the top two cards of your library. Until the end of your next turn, you may play them.
+{P}{P}{P} — Until the end of your next turn, whenever you cast a spell, Season of the Bold deals 2 damage to up to one target creature.",R,tokens; burn; treasure; impulse,BLB,152,1
+"Maha, Its Feathers Night",Legendary Creature — Elemental Bird,"Flying, trample
+Ward—Discard a card.
+Creatures your opponents control have base toughness 1.",B,Elemental; Bird; flying; evasion; trample; ward; protection,BLB,100,1
+Mouse Trapper,Creature — Mouse Soldier,"Flash
+Valiant — Whenever this creature becomes the target of a spell or ability you control for the first time each turn, tap target creature an opponent controls.",W,Mouse; Soldier; valiant; combat; counters; flash; tempo,BLB,22,1
+Overprotect,Instant,"Target creature you control gets +3/+3 and gains trample, hexproof, and indestructible until end of turn.",G,pump,BLB,185,1
+Eddymurk Crab,Creature — Elemental Crab,"Flash
+This spell costs {1} less to cast for each instant and sorcery card in your graveyard.
+This creature enters tapped if it's not your turn.
+When this creature enters, tap up to two target creatures.",U,Elemental; Crab; graveyard; cost-reduction; etb; flash; tempo,BLB,48,1
+Knightfisher,Creature — Bird Knight,"Flying
+Whenever another nontoken Bird you control enters, create a 1/1 blue Fish creature token.",U,Bird; Knight; tokens; flying; evasion,BLB,55,1
+Mind Spiral,Sorcery,"Gift a tapped Fish (You may promise an opponent a gift as you cast this spell. If you do, they create a tapped 1/1 blue Fish creature token before its other effects.)
+Target player draws three cards. If the gift was promised, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",U,counters; tokens; gift; value,BLB,59,1
+Rabbit Response,Instant,"Creatures you control get +2/+1 until end of turn. If you control a Rabbit, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)",W,scry; pump; selection,BLB,26,1
+Whiskerquill Scribe,Creature — Mouse Citizen,"Valiant — Whenever this creature becomes the target of a spell or ability you control for the first time each turn, you may discard a card. If you do, draw a card.",R,Mouse; Citizen; card draw; valiant; combat; counters,BLB,161,1
+Early Winter,Instant,"Choose one —
+• Exile target creature.
+• Target opponent exiles an enchantment they control.",B,removal,BLB,93,1
+Moonrise Cleric,Creature — Bat Cleric,"Flying
+Whenever this creature attacks, you gain 1 life.",W/B,Bat; Cleric; lifegain; flying; evasion,BLB,226,2
+Run Away Together,Instant,Choose two target creatures controlled by different players. Return those creatures to their owners' hands.,U,bounce,ECL,67,1
+Scales of Shale,Instant,"Affinity for Lizards (This spell costs {1} less to cast for each Lizard you control.)
+Target creature gets +2/+0 and gains lifelink and indestructible until end of turn.",B,lifegain; cost-reduction; pump; affinity; artifacts,BLB,110,1
+Ravine Raider,Creature — Lizard Rogue,"Menace (This creature can't be blocked except by two or more creatures.)
+{1}{B}: This creature gets +1/+1 until end of turn.",B,Lizard; Rogue; pump; menace; evasion,BLB,106,1
+Might of the Meek,Instant,"Target creature gains trample until end of turn. It also gets +1/+0 until end of turn if you control a Mouse.
+Draw a card.",R,card draw; pump,BLB,144,1
+Diresight,Sorcery,"Surveil 2, then draw two cards. You lose 2 life. (To surveil 2, look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",B,graveyard; pay life; card draw; selection; surveil,TLE,162,1
+Polliwallop,Instant,"Affinity for Frogs (This spell costs {1} less to cast for each Frog you control.)
+Target creature you control deals damage equal to twice its power to target creature you don't control.",G,cost-reduction; affinity; artifacts,BLB,189,1
+Nightwhorl Hermit,Creature — Rat Rogue,"Vigilance
+Threshold — As long as there are seven or more cards in your graveyard, this creature gets +1/+0 and can't be blocked.",U,Rat; Rogue; graveyard; pump; vigilance; combat; threshold,BLB,62,1
+Lifecreed Duo,Creature — Bat Bird,"Flying
+Whenever another creature you control enters, you gain 1 life.",W,Bat; Bird; lifegain; flying; evasion,BLB,20,1
+Finch Formation,Creature — Bird Scout,"Offspring {3} (You may pay an additional {3} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
+Flying
+When this creature enters, target creature you control gains flying until end of turn.",U,Bird; Scout; tokens; etb; flying; evasion; offspring; go-wide,BLB,50,1

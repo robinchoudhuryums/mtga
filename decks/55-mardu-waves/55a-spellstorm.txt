@@ -108,4 +108,12 @@
 #~   deck's 2.86 curve. Also note the deck would then hold three scalable-damage spells
 #~   (Thunder Salvo, Molten Note, the 2nd Firebolt) plus Thunder Magic's Tiered modes —
 #~   trim the redundancy rather than stacking it.
-
+#~ -Brazen Collector | +Moment of Glory | OWNED (HOB, 2026-08-13 ingest): fit 55. "{W} Put a
+#~   +1/+1 counter on target creature you control. If this spell was cast from a GRAVEYARD,
+#~   also put a +1/+1 counter on each OTHER creature you control. Flashback {4}{W}" — a
+#~   one-mana spell whose second cast is a board-wide anthem, so it triggers the nine
+#~   second-spell payoffs twice for one card slot. Brazen Collector is `cuts` #1 at fit 5,
+#~   is UNOWNED, and rotates ~2027 — cutting it also drops a rare craft.
+#~ note: Pinecone Strike (OWNED, HOB) is the weaker second option at fit 15 — {1}{R} instant,
+#~ note: 3 damage WITH EXILE plus a kill-an-artifact-token mode. It deals damage, so unlike
+#~ note: most cheap spells here Judith's deathtouch/lifelink grant is live on it.

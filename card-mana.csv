@@ -2203,6 +2203,56 @@ The Arkenstone,{5} // {2}{W},5,
 Great Gilded Boat,{2}{U},3,Crew
 The Sackville-Bagginses,{1}{B},2,Treasure
 Bejeweled Warg,{1}{G},2,Treasure;Trample
+Uncover the Moon-Letters,{3}{U},4,
+Radagast of Rhosgobel,{2}{G}{G},4,
+Roll-Roll-Roll-Roll,{2}{U},3,
+The Notary Hobbits,{3}{G}{G},5,
+Beorn's Hospitality,{1}{G},2,Landfall
+"Galion, Elvenking's Butler",{2}{G}{G},4,
+Mirkwood Pathmaker,{2}{G},3,
+Stone by Sunlight,{1}{W},2,
+Wilderland Scrounger,{4}{G},5,Ferocious
+The Black Arrow,{3},3,Equip;Flash
+Dwarven Shortsword,{3}{W},4,Equip
+Pinecone Strike,{1}{R},2,
+Moment of Glory,{W},1,Flashback
+Thorin's Last Stand,{2}{W}{W},4,
+Iron Hills Stalwart,{4}{R},5,Reach;Trample
+Plunder the Trollshaws,{1}{U},2,Flashback
+"Smaug, the Great Calamity",{5}{R}{R} // {4}{R},7,Flying
+Magnificent End,{4}{W},5,
+Mirkwood Nurturer,{2}{G/U},3,
+Smaug's Fury,{1}{R},2,
+Long Lake Nuisance,{3}{U},4,Flying
+Boughside Wanderers,{4}{G}{G},6,Landfall
+Bilbo's Deadly Slice,{1}{B}{B},3,
+"Bilbo Baggins, Burglar",{2}{U} // {U},3,Scry
+Enchanted River's Grasp,{2}{U},3,Enchant
+Attercop,{1}{G},2,Reach;Deathtouch;Landfall
+Dáin's Company,{R}{W},2,
+"Zanarkand, Ancient Metropolis",{4}{G}{G},0,
+"Tom, Bert, and William",{3}{B}{G},5,
+"Helga, Skittish Seer",{G}{W}{U},3,
+Season of the Bold,{3}{R}{R},5,Treasure
+"Maha, Its Feathers Night",{3}{B}{B},5,Flying;Trample;Ward
+Mouse Trapper,{2}{W},3,Valiant;Flash
+Overprotect,{1}{G},2,
+Eddymurk Crab,{5}{U}{U},7,Flash
+Knightfisher,{3}{U}{U},5,Flying
+Mind Spiral,{4}{U},5,Gift
+Rabbit Response,{2}{W}{W},4,Scry
+Whiskerquill Scribe,{1}{R},2,Valiant
+Early Winter,{4}{B},5,
+Moonrise Cleric,{1}{W/B}{W/B},3,Flying
+Run Away Together,{1}{U},2,
+Scales of Shale,{2}{B},3,Affinity
+Ravine Raider,{B},1,Menace
+Might of the Meek,{R},1,
+Diresight,{2}{B},3,Surveil
+Polliwallop,{3}{G},4,Affinity
+Nightwhorl Hermit,{2}{U},3,Vigilance;Threshold
+Lifecreed Duo,{1}{W},2,Flying
+Finch Formation,{2}{U},3,Flying;Offspring
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -2900,12 +2950,9 @@ Feather of Flight,{1}{W},2,Enchant;Flash
 Harvestrite Host,{2}{W},3,
 Intrepid Rabbit,{2}{W},3,Offspring
 Jolly Gerbils,{1}{W},2,
-Lifecreed Duo,{1}{W},2,Flying
 Mabel's Mettle,{1}{W},2,
-Mouse Trapper,{2}{W},3,Valiant;Flash
 Nettle Guard,{1}{W},2,Valiant
 Pileated Provisioner,{4}{W},5,Flying
-Rabbit Response,{2}{W}{W},4,Scry
 Repel Calamity,{1}{W},2,
 Seasoned Warrenguard,{W},1,
 Star Charter,{3}{W},4,Flying
@@ -2919,17 +2966,12 @@ Bellowing Crier,{1}{U},2,
 Calamitous Tide,{4}{U}{U},6,
 Dire Downdraft,{3}{U},4,
 Dour Port-Mage,{1}{U},2,
-Eddymurk Crab,{5}{U}{U},7,Flash
 "Eluge, the Shoreless Sea",{1}{U}{U}{U},4,
-Finch Formation,{2}{U},3,Flying;Offspring
 Kitnap,{2}{U}{U},4,Gift;Enchant
-Knightfisher,{3}{U}{U},5,Flying
 Long River Lurker,{2}{U},3,Ward
 Long River's Pull,{U}{U},2,Gift
-Mind Spiral,{4}{U},5,Gift
 Mindwhisker,{2}{U},3,Surveil;Threshold
 Mockingbird,{X}{U},1,Flying
-Nightwhorl Hermit,{2}{U},3,Vigilance;Threshold
 Otterball Antics,{1}{U},2,Flashback
 Plumecreed Escort,{1}{U},2,Flying;Flash
 Season of Weaving,{4}{U}{U},6,
@@ -2951,22 +2993,18 @@ Consumed by Greed,{1}{B}{B},3,Gift
 Cruelclaw's Heist,{B}{B},2,Gift
 Daggerfang Duo,{2}{B},3,Mill;Deathtouch
 Downwind Ambusher,{3}{B},4,Flash
-Early Winter,{4}{B},5,
 Feed the Cycle,{1}{B},2,Forage
 Fell,{1}{B},2,
 Glidedive Duo,{4}{B},5,Flying
 Hazel's Nocturne,{3}{B},4,
 Huskburster Swarm,{7}{B},8,Menace;Deathtouch
 Iridescent Vinelasher,{B},1,Offspring;Landfall
-"Maha, Its Feathers Night",{3}{B}{B},5,Flying;Trample;Ward
 Moonstone Harbinger,{2}{B},3,Deathtouch;Flying
 Nocturnal Hunger,{2}{B},3,Gift;Food
 Osteomancer Adept,{1}{B},2,Deathtouch
 Persistent Marshstalker,{1}{B},2,Threshold
-Ravine Raider,{B},1,Menace
 Ruthless Negotiation,{B},1,Flashback
 Savor,{1}{B},2,Food
-Scales of Shale,{2}{B},3,Affinity
 Sinister Monolith,{3}{B},4,
 Starlit Soothsayer,{2}{B},3,Flying;Surveil
 Thornplate Intimidator,{3}{B},4,Offspring
@@ -2988,7 +3026,6 @@ Hired Claw,{R},1,
 Hoarder's Overflow,{1}{R},2,
 Kindlespark Duo,{2}{R},3,
 Manifold Mouse,{1}{R},2,Offspring
-Might of the Meek,{R},1,
 Playful Shove,{1}{R},2,
 Quaketusk Boar,{3}{R}{R},5,Reach;Haste;Trample
 Rabid Gnaw,{1}{R},2,
@@ -2996,7 +3033,6 @@ Raccoon Rallier,{1}{R},2,
 Reptilian Recruiter,{3}{R}{R},5,Trample
 Roughshod Duo,{2}{R},3,Trample
 Sazacap's Brew,{1}{R},2,Gift
-Season of the Bold,{3}{R}{R},5,Treasure
 Steampath Charger,{1}{R},2,Offspring
 Stormsplitter,{3}{R},4,Haste
 Sunspine Lynx,{2}{R}{R},4,
@@ -3004,7 +3040,6 @@ Take Out the Trash,{1}{R},2,
 Teapot Slinger,{3}{R},4,Menace
 Valley Flamecaller,{2}{R},3,
 Valley Rally,{2}{R},3,Gift;Food
-Whiskerquill Scribe,{1}{R},2,Valiant
 Wildfire Howl,{1}{R}{R},3,Gift
 Bark-Knuckle Boxer,{1}{G},2,
 Brambleguard Veteran,{1}{G}{G},3,
@@ -3024,11 +3059,9 @@ Hunter's Talent,{1}{G},2,
 Innkeeper's Talent,{1}{G},2,
 Keen-Eyed Curator,{G}{G},2,
 Mistbreath Elder,{G},1,
-Overprotect,{1}{G},2,
 Pawpatch Formation,{1}{G},2,Food
 Pawpatch Recruit,{G},1,Offspring;Trample
 Peerless Recycling,{1}{G},2,Gift
-Polliwallop,{3}{G},4,Affinity
 Rust-Shield Rampager,{3}{G},4,Offspring
 Scrapshooter,{1}{G}{G},3,Reach;Gift
 Stickytongue Sentinel,{2}{G},3,Reach
@@ -3053,11 +3086,9 @@ Fireglass Mentor,{B}{R},2,
 "Gev, Scaled Scorch",{B}{R},2,Ward
 "Glarb, Calamity's Augur",{B}{G}{U},3,Surveil;Deathtouch
 Head of the Homestead,{3}{G/W}{G/W},5,
-"Helga, Skittish Seer",{G}{W}{U},3,
 Junkblade Bruiser,{3}{R/G}{R/G},5,Trample
 Lilysplash Mentor,{2}{G}{U},4,Reach
 Mind Drill Assailant,{2}{U/B}{U/B},4,Surveil;Threshold
-Moonrise Cleric,{1}{W/B}{W/B},3,Flying
 "Muerra, Trash Tactician",{1}{R}{G},3,
 Plumecreed Mentor,{1}{W}{U},3,Flying
 "Ral, Crackling Wit",{2}{U}{R},4,
@@ -4386,7 +4417,6 @@ Lofty Dreams,{3}{U}{U},5,Enchant;Convoke
 "Oko, Lorwyn Liege // Oko, Shadowmoor Scion",{2}{U},3,Transform;Mill
 Rime Chill,{6}{U},7,Vivid
 Rimekin Recluse,{2}{U},3,
-Run Away Together,{1}{U},2,
 Shinestriker,{4}{U}{U},6,Flying;Vivid
 Spell Snare,{U},1,
 Summit Sentinel,{1}{U},2,
@@ -5920,7 +5950,6 @@ Bilbo's Gambit,{1}{W},2,Gift;Treasure
 Celebrate the Mountain-king,{3}{W},4,
 "Dáin, Lord of the Iron Hills",{1}{W},2,Vigilance
 Dwarven Provisioner,{1}{W},2,
-Dwarven Shortsword,{3}{W},4,Equip
 Eagle of the Great Shelf,{4}{W},5,Flying
 Esgaroth Garrison,{4}{W},5,
 Fíli the Pathfinder,{3}{W},4,
@@ -5929,14 +5958,10 @@ Iron Hills Blacksmith,{1}{W},2,Double strike
 Kíli the Resourceful,{1}{W},2,
 Lake-town Lookout,{W},1,
 Lake-town Toymaker,{3}{W},4,
-Magnificent End,{4}{W},5,
-Moment of Glory,{W},1,Flashback
 The Mountain-king's Return,{2}{W},3,
 "Ori, Keeper of Songs",{2}{W},3,
 "Roads Go Ever, Ever On",{1}{W},2,
 Settle the Wreckage,{2}{W}{W},4,
-Stone by Sunlight,{1}{W},2,
-Thorin's Last Stand,{2}{W}{W},4,
 An Unexpected Party // At the Door,{2}{W}{W} // {X}{2}{W},4,
 Velvetwing Butterflies // Gaze in Wonder,{2}{W} // {1}{W},3,Flying
 Vow to Erebor,{1}{W},2,
@@ -5946,26 +5971,20 @@ Vow to Erebor,{1}{W},2,
 "Elrond, Moon-Reader",{2}{U},3,
 Elven Raft-Steerer,{2}{U},3,Landfall
 Elvenking's Harper,{1}{U},2,
-Enchanted River's Grasp,{2}{U},3,Enchant
 "Gandalf, Wandering Wizard",{4}{U},5,Ward
 Lake-town Mariners // Gone Fishing,{4}{U}{U} // {3}{U},6,Vigilance;Ward
-Long Lake Nuisance,{3}{U},4,Flying
 The Lord of the Eagles,{7}{U}{U},9,Flying;Flash
 Master's Councillors,{1}{U},2,Vigilance;Mill
 Mirkwood Meditator,{2}{U},3,Landfall
 Most Decrepit Old Bird // Speak Secrets,{U} // {1}{U},1,Flying;Threshold;Mill
 Old Fat Spider Can't See Me,{2}{U},3,
-Plunder the Trollshaws,{1}{U},2,Flashback
 Ravenhill Flock,{3}{U},4,Flying
 Riddles in the Dark,{2}{U},3,
-Roll-Roll-Roll-Roll,{2}{U},3,
 Sound the Trumpets,{1}{U}{U},3,
 Thranduil's Decree,{4}{U}{U},6,
-Uncover the Moon-Letters,{3}{U},4,
 Uneasy Partings,{3}{U},4,
 Wizard's Staff,{1}{U},2,Equip
 Along the Crooked Way,{2}{B},3,Amass
-Bilbo's Deadly Slice,{1}{B}{B},3,
 Desolation Prowler,{1}{B},2,
 "Down, Down to Goblin-town",{2}{B},3,Amass
 Dreaded Bat-Cloud,{4}{B},5,Deathtouch;Flying
@@ -5998,44 +6017,33 @@ Desolation of Smaug,{2}{R}{R},4,
 Getaway Barrel,{3}{R},4,
 Glóin the Mighty // Easy Pickings,{3}{R} // {2}{R},4,
 Gundabad Opportunist,{3}{R},4,
-Iron Hills Stalwart,{4}{R},5,Reach;Trample
 Last Light of Durin's Day,{1}{R},2,Mountaincycling;Landcycling;Typecycling;Cycling
 The Misty Mountains Cold,{2}{R},3,Treasure
 Misty Mountains Raider,{4}{R},5,Amass
 Óin the Brave,{1}{R},2,
-Pinecone Strike,{1}{R},2,
 Ragged Short Spear,{1}{R},2,Equip
 "Smaug, the Great Calamity // Spew Flame",{5}{R}{R} // {4}{R},7,Flying
 Smaug the Magnificent,{2}{R}{R},4,Flying;Treasure;Haste
-Smaug's Fury,{1}{R},2,
 Snowslope Hunter,{2}{R},3,
 Stone-Giant of High Pass,{5}{R}{R},7,
 "Thorin, Mountain-king",{3}{R},4,Trample
 Tidings of War,{R},1,Amass;Flashback
-Attercop,{1}{G},2,Reach;Deathtouch;Landfall
 "Beorn, Reluctant Host // Till and Tend",{4}{G} // {1}{G},5,Trample
 Beorn the Fierce,{3}{G}{G},5,Trample
-Beorn's Hospitality,{1}{G},2,Landfall
-Boughside Wanderers,{4}{G}{G},6,Landfall
 Cantankerous Keepers,{5}{G},6,Affinity;Mill
 Dancing from Dark to Dawn,{3}{G}{G},5,Landfall
 Down in the Valley,{2}{G},3,
-"Galion, Elvenking's Butler",{2}{G}{G},4,
 Gigantic Big Bear,{5}{G}{G},7,Hexproof;Haste
 Guardian of the Halls,{1}{G},2,Trample
 Little Bear,{2}{G},3,Flash
-Mirkwood Pathmaker,{2}{G},3,
 Nasty Little Rabbit,{G},1,Ferocious
-The Notary Hobbits,{3}{G}{G},5,
 Old Fat Spider,{4}{G}{G},6,Reach
 Ordinary Bear,{3}{G},4,
 Part in Friendship,{4}{G},5,
 Quarrel,{1}{G},2,
-Radagast of Rhosgobel,{2}{G}{G},4,
 Through the Forest Gate,{6}{G}{G},8,
 Warg Tactics,{1}{G},2,
 Wargling,{1}{G},2,Ferocious
-Wilderland Scrounger,{4}{G},5,Ferocious
 Wood Elves,{2}{G},3,
 Woodland Weavemaster,{1}{G},2,Vigilance
 "Bard, King of Dale",{4}{W}{U},6,Reach;Vigilance
@@ -6045,7 +6053,6 @@ Bard's Company,{2}{W}{U},4,
 Bolg of the North,{3}{B}{R},5,Amass
 Bolg's Company,{B}{R},2,
 Chief Warg's Company,{1}{B}{G},3,Trample
-Dáin's Company,{R}{W},2,
 Duskwatch Hunter,{2}{B/G},3,
 "Dwalin, Weaponmaster",{1}{R/W},2,First strike
 Eagle's Rescue,{2}{W/U}{W/U},4,Enchant
@@ -6053,7 +6060,6 @@ Fearsome Goblin Pair,{2}{B/R},3,Amass
 Goblin Plate Mail,{1}{B/R},2,Amass;Equip
 The Great Goblin,{1}{B/R}{B/R},3,
 Large Bear,{3}{B/G}{B/G},5,Reach;Haste;Trample
-Mirkwood Nurturer,{2}{G/U},3,
 "Nori, Teller of Tales",{1}{R/W},2,
 Patient Instructor,{2}{W/U},3,Vigilance
 Silvan Reveler,{2}{G}{U},4,Landfall
@@ -6062,9 +6068,7 @@ Thorin Oakenshield,{R}{W},2,Trample
 "Thranduil, Sindarin Liege // Silvan Rally",{2}{G/U}{G/U} // {1}{G/U}{G/U},4,Mill;Landfall
 "Thranduil, the Elvenking",{2}{B}{G}{U},5,
 Thranduil's Company,{2}{G}{U},4,Landfall
-"Tom, Bert, and William",{3}{B}{G},5,
 The Arkenstone // Seek the Heart,{5} // {2}{W},5,
-The Black Arrow,{3},3,Equip;Flash
 Dwarven Mattock,{2},2,Equip
 Giant's Boulder,{1},1,Scry
 "Glamdring, Foe-hammer // Gleam of Death",{2} // {3}{U},2,Equip;Mill
@@ -14118,7 +14122,6 @@ Dramatic Reversal,{1}{U},2,
 Frantic Search,{2}{U},3,
 Bastion of Remembrance,{2}{B},3,
 Dark Deal,{2}{B},3,
-Diresight,{2}{B},3,Surveil
 Bolt Bend,{3}{R},4,
 Cathartic Reunion,{1}{R},2,
 Fiery Confluence,{2}{R}{R},4,
