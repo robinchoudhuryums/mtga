@@ -1,5 +1,6 @@
 #: name: Air Nomads
 #: format: Standard
+#: arena: 15 Air Nomads, 8dc84eb5-b2e3-450c-9a00-b2d6a7ec516d
 #: tier: B — Azorius fliers tempo (strong B); airbend/waterbend tempo + a counter (It'll Quench Ya!) + Wan Shi Tong card advantage. The interaction metric now reads 6 (the classifier was fixed to
 #: tier: credit artifact/enchantment removal and library-tuck answers), and airbend
 #: tier: exile / waterbend / Watery Grasp lockdown still aren't tallied on top of that —
