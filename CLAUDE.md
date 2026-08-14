@@ -649,18 +649,17 @@ directions.
 - **Match results are FREE from `Player.log`, and the two lines AROUND the result JSON are
   the load-bearing halves.** `finalMatchResult` carries the outcome and both seats but NOT
   which seat is yours; that is only in the `Match to <userId>:` prefix, so a paste of the
-  JSON alone is unparseable and the parser SKIPS with a warning rather than guessing — a
-  50%-accurate record is worse than an empty one because it looks like data. **`courseId`
-  is NOT a deck, it is the AVATAR cosmetic** — a global setting changed independently of
-  the deck. Every value the first real sample produced was `Avatar_*`, and nine matches
-  were recorded against it, with a `#: arena: <courseId>` mapping documented in three
-  places, before anyone read the values; the columns are `My Avatar` / `Opponent Avatar`
-  now. The deck you played is in **`EventSetDeckV3`** (NAME + stable `DeckId` + timestamp),
-  joined to each match on TIMESTAMP (not log order) and resolved `--deck` → `#: arena:`
-  header → the name's leading NUMBER, with the run PRINTING the route; `--map-decks` maps
-  the WHOLE roster from one paste, and every `--apply` ingest re-syncs the headers. **Read
-  the record with restraint** — under 20 matches `--report` refuses a percentage, above it
-  prints a Wilson interval, and a small-sample win rate never belongs in `#: tier:`. [G-57]
+  JSON alone is unparseable and the parser SKIPS rather than guessing — a 50%-accurate
+  record is worse than an empty one. **`courseId` is NOT a deck, it is the AVATAR
+  cosmetic**; the columns are `My Avatar` / `Opponent Avatar`. The deck you played is in
+  **`EventSetDeckV3`**, joined on TIMESTAMP and resolved `--deck` → `#: arena:` header →
+  the name's leading NUMBER, with the run PRINTING the route AND the two integers behind
+  each W/L (G-52). **Two reason fields and only one carries information**: `Reason`
+  (`matchCompletedReason`) is `Success` for every match that COMPLETED — 15 of 15 — while
+  `Ended By` (Game vs Concede) varies and is most of the signal at low n. **Read with
+  restraint** — under 20 matches `--report` refuses a percentage. The per-deck split
+  CANNOT reach that floor at 106 decks (best row n=4), so it also POOLS, which answers a
+  different question: whether YOU are winning, never whether a deck is good. [G-57]
 - **NEVER widen `#: colors:` for a HYBRID card, and never reject a card for a widening you
   do not need.** Both halves were violated in one cycle: 26b's header was widened to UBR
   for `{B/R}` Bullseye, and Don & Raph was kept OUT of mono-blue 47 because its R identity
@@ -851,6 +850,20 @@ directions.
   `#0f1115` track on a white panel). **A STATIC GATE WAS MEASURED UNBUILDABLE — do not
   restart it**: three designs, every flag FALSE, since the controls are a11y'd at RUNTIME
   and JS scoping defeats regex. **Scenario 7's keyboard walk is the only coverage.** [G-72]
+- **A DECK'S REPO NAME AND ITS ARENA NAME ARE DIFFERENT STRINGS, and NEITHER is
+  authoritative — so never gate anything on their agreeing.** Of 22 CORRECT `#: arena:`
+  mappings, **8 DISAGREED** ("49 Big Draco" was repo deck 49 "Scaleforge"): the Arena names
+  are FLAVOUR names, so a name-agreement check on the attribution path would block a
+  correct attribution 36% of the time (the G-07 saturation shape). The leading NUMBER stays
+  the only match key; the repo name is merely DISCLOSED beside a guess. `--sync-names` is
+  the RECONCILE half (ran 2026-08-14, adopting 12). Four earned rules: identity is the
+  **DeckId GUID**, never a card list (which changes the moment you tune, so it refuses
+  exactly the decks under development); **typography is not a rename**; a variant keeps its
+  `<parent> — <variant>` prefix, and renaming a PARENT orphans its variants — flagged,
+  never cascaded; and a rename **strands prose citations**, 50 of 106 decks being named in
+  another deck's prose. **The divergence REGROWS** from client-side renaming, so today's
+  agreement is a snapshot, not a reason to add the gate — docs cite it with examples that
+  now read as agreements *because* the sync ran. Re-measure first. [G-73]
 
 ## Known Issues
 
@@ -1001,8 +1014,8 @@ earned it: [C-01]
 
 **Subsystems:**
 - Data: card-library.csv, card-pool.csv, card-mana.csv, card-wishlist.csv, matches.csv
-  (LIVE since 2026-08-10 — 9 matches, 8 attributed to decks; still far under the 20-match
-  read floor), recommendations.csv [C-02]
+  (LIVE since 2026-08-10 — 15 matches, 14 attributed to decks 7/15/19/45/54b; still under
+  the 20-match read floor per deck, which is why `--report` also POOLS), recommendations.csv [C-02]
 - Outcomes: scripts/parse_matches.py, recommendations.csv + `deck.py feedback` — the only
   subsystems that have seen a real game or a real decision [C-03]
 - Ingest & Enrich: scripts/import_arena.py, scripts/import_collection.py,
@@ -1207,8 +1220,8 @@ pass itself whenever an ingest added NEW cards, so the half that actually decide
 something stopped being the optional half), `add-wishlist` (intake UNOWNED craft targets to the wishlist —
 add+enrich+Power-seed, set the home Target, do the cross-deck fit review via the
 specific-theme-gated `suggest-homes`, audit), `log-matches` (record played matches from
-Arena's `Player.log` into `matches.csv` via `parse_matches.py`, then read the record with
-the restraint it needs — see the match-record gotcha below), and `apply-changes` (apply confirmed
+Arena's `Player.log` into `matches.csv` via `parse_matches.py`, reconcile deck names with
+`--sync-names`, then read the record with the restraint it needs — see G-57/G-73 below), and `apply-changes` (apply confirmed
 swaps, run the F10 quality guard, re-ground the `#: tier:` prose via
 `--audit-rationale`, verify + commit) **orchestrate the scripts, never
 re-implement them** — the scripts stay the single source of truth so the skills

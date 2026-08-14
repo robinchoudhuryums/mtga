@@ -1252,14 +1252,29 @@ which nothing is ever lost and the per-session step is pasting
 ```
 p=~/Library/Logs/"Wizards Of The Coast"/MTGA          # macOS
 grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
-    "$p"/Player*.log
+    "$p"/Player*.log \
+  | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g'
 ```
+
+The `sed` drops `EventSetDeckV3`'s card lists, which nothing here reads — attribution uses
+only the deck name, its `DeckId` and a timestamp off the same line. It is not cosmetic: a
+real 52-card selection line is 1919 bytes and slims to 152, once per event join. Slim at
+**paste** time, never inside the archive script — two forms of one line would defeat the
+archive's own dedupe.
 
 **All three are required.** The JSON carries the result and both players' seats
 but not *which seat is yours* — that appears only in the `Match to <userId>:`
 header prefix — so a paste of the JSON alone is skipped with a warning rather than
 guessed at (`--me <userId>` overrides). Rows dedupe by Arena's match id, so
 re-pasting an overlapping log is safe. No userId or player name is ever stored.
+
+Each new match prints **the evidence behind its verdict** — `[my team 1 · winner 1]`, the
+two integers the W/L came from — because an inverted seat read would make every row in a
+paste wrong in the same direction, which looks like a losing streak rather than a bug.
+Rows also record **`Ended By`** (Game vs Concede). The neighbouring `Reason` column holds
+`matchCompletedReason`, which is `Success` for every match that completed and so carries
+nothing; `Ended By` is the half that varies, and at small samples it is most of the signal
+— a concede-win on turn three is not the same evidence as a game-win.
 
 The third shape, `EventSetDeckV3`, is **the deck you played**. A seat's `courseId`
 looks like a deck id and is not — it is the AVATAR cosmetic (`Avatar_Basic_*`),
@@ -1289,10 +1304,33 @@ Two Arena decks claiming one repo deck (an old copy left in the client) write
 the two is worse than no header, because matches would then attribute to it with
 full confidence.
 
+Deck **names** are reconciled separately. A repo deck's name and its Arena name are
+different strings and neither is authoritative — of 22 correct mappings, 8 disagreed
+("49 Big Draco" was repo deck 49 "Scaleforge"), which is exactly why attribution matches
+on the leading number and never on the name. `--sync-names` adopts Arena's name into
+`#: name:`, for GUID-matched decks only:
+
+```
+python3 scripts/parse_matches.py --sync-names          # reconcile from the stored headers
+python3 scripts/parse_matches.py session.log --sync-names
+```
+
+It reports on every run and writes only under the flag. Typography alone is not a rename,
+a variant keeps its `<parent> — <variant>` prefix, and it flags what a rename would strand:
+prose citations in other decks, and variants left carrying the old parent name. **It is
+opt-in and needs re-running** — the divergence regrows the next time a deck is renamed in
+the client.
+
 `--report` shows W/L per deck and **refuses to print a percentage below ~20
 matches**, with a 95% Wilson interval above that. A win rate separates a broken
 deck from a fine one; it will not separate a 55% deck from a 45% one without
 hundreds of games. Read it for disasters, not for marginal swaps.
+
+Because the per-deck split cannot reach that floor at this roster size — the best row sits
+at n=4 across 100+ decks — the report also **pools**: `ALL DECKS`, then a Play/Ladder
+split, each printing the distance to a readable sample as a countdown. Pooling answers a
+different question and the report says so every time: it tells you whether *you* are
+winning, never whether a deck is good, because it averages a tuned deck with a brew.
 
 ## Typical workflow
 
