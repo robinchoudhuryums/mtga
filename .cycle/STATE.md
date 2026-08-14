@@ -1601,3 +1601,46 @@ avoided deliberately here.
 (PR #119 merged). See `.cycle/NEXT-SESSION.md` §4a-bis for what this session changed and
 §4b for the pick-up shortlist — items 1 (tracker export) and 2 (deck 19's letter) are
 unchanged and still first.
+
+## 2026-08-14 — match-log ergonomics (broad-implement 1–4)
+
+**Context.** Two `Player.log` ingests this session (13 → 15 matches) surfaced four
+workflow problems, all found by DOING the ingest rather than by reading the code. The
+review that produced them is in the chat; the block is
+`.cycle/blocks/2026-08-match-log-ergonomics-broad-implement.md`.
+
+**Completed.** All four, plus one enabling fix:
+1. `parse_matches.py` prints the W/L evidence (`[my team 1 · winner 1]`) and `by
+   concede` / `by game` per new match. G-52 — the surface deciding W/L now shows what it
+   decided from, which is how the first 15 matches were checked (by hand, one at a time).
+2. New `Ended By` column carrying Game/Concede. `Reason` (`matchCompletedReason`) read
+   `Success` on all 15 rows — a column carrying zero bits — while the field that varies
+   was discarded. matches.csv migrated + 6 rows backfilled from retained logs.
+2b. `_is_own_earlier_schema` generalized. It hard-coded ONE remembered header, so the
+   next added column would have made the guard refuse its own migration write.
+3. Name-prefix attribution now DISCLOSES the repo deck's name instead of gating on it.
+4. Both extraction recipes (+ C-12's copy) gained a `sed` stage dropping the card arrays.
+
+**Decided AGAINST** (do not re-propose without new information):
+- **A name-AGREEMENT gate on the prefix route.** This was finding 3 as specified, and it
+  is refuted by measurement: of the 22 `#: arena:` headers on the roster — every one a
+  CORRECT mapping — 8 DISAGREE with the repo name. "49 Big Draco" is Scaleforge, "58
+  Treasure Planet" is Gold Standard, "45 The Exiles" is Exile Dividend. The Arena names
+  are flavour names. A gate would block a correct attribution 36% of the time (the G-07
+  saturation shape). Disclosure was shipped instead.
+- **Cross-checking Arena's `Format` attribute against `#: format:`.** Deck 15 reports
+  Alchemy in Arena against Standard in the repo, which looks like drift and is not:
+  `deck.py legal 15` passes clean, the deck sits in the client's Alchemy slot, and
+  Standard is a subset. The check fires on every such deck.
+- **Slimming inside `snapshot.sh`.** It would put two forms of the same line in the
+  rolling archive and defeat its own `awk '!seen[$0]++'` dedupe. Slim at PASTE time.
+
+**Worth knowing.** Deck 15's 2–0 is two opponent CONCEDES — visible only because of
+fix 2, and the kind of thing that would otherwise read as a deck performing well.
+
+**Where I left off.** 1299 tests green (+14), `check_all` all invariants hold, zero soft
+warnings, `check_docs` OK, `check_commands` OK. Regression Scenario 9 walked against the
+real log (rename leg NOT APPLICABLE — needs the Arena client). Remaining doc drift:
+CLAUDE.md G-57 / docs/gotchas.md [G-57] still describe the old column set — that is the
+`/sync-docs` follow-up. The record is at 15 matches; no per-deck row is near the n=20
+floor, and at 106 decks it will not get there — an AGGREGATE read is the open idea.

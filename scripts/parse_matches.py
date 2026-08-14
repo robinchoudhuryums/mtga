@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Parse MTG Arena match results out of Player.log into matches.csv.
+# RAW docstring: the extraction recipe below contains shell regex (`\[`, `\\"`), and in a
+# normal string those are invalid escape sequences — a DeprecationWarning today and a
+# SyntaxError on a future Python, from a comment.
+r"""Parse MTG Arena match results out of Player.log into matches.csv.
 
 Arena's "Detailed Logs (Plugin Support)" setting (Settings -> Account) makes the client
 write match events to a local log. That is free — it is the same feed every third-party
@@ -77,7 +80,16 @@ launch, so grab it before relaunching):
 
     p=~/Library/Logs/"Wizards Of The Coast"/MTGA
     grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
-        "$p"/Player*.log | pbcopy
+        "$p"/Player*.log \
+      | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' | pbcopy
+
+The `sed` stage drops EventSetDeckV3's CARD LISTS, which nothing here reads — attribution
+uses only the Name, DeckId and LastPlayed from the same line. It is not cosmetic: a real
+52-card selection line measures 1919 bytes and slims to 152, a 92% cut, and there is one
+such line per event join. Without it the paste is mostly card ids, and the pastes that
+surfaced this were hand-truncated in an editor before use — which is JSON surgery on the
+one line the whole attribution chain depends on. Let sed do it, or keep the arrays; do
+not trim them by hand.
 
 Better: don't extract by hand at all. A launchd job that appends the filtered lines to a
 rolling archive every 15 minutes makes the overwrite-on-launch data loss structurally
@@ -99,7 +111,23 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import (MATCHES_CSV, REPO_ROOT, atomic_write,  # noqa: E402,F401
                  csv_schema_error, eprint)
 HEADER = ["Date", "Match ID", "Deck", "Arena Deck", "Arena Deck ID", "My Avatar",
-          "Event", "Result", "Games Won", "Games Lost", "Opponent Avatar", "Reason"]
+          "Event", "Result", "Games Won", "Games Lost", "Opponent Avatar", "Reason",
+          "Ended By"]
+
+# TWO reason fields, and for a year only the uninformative one was stored.
+#   `Reason`   = `matchCompletedReason`, which is `Success` for every match that
+#                COMPLETED — by construction. All 15 rows of the first real record read
+#                `Success`, i.e. the column carried exactly zero bits. It is kept because
+#                a non-Success value (a disconnect, a timeout) is genuinely worth having;
+#                it simply has not fired yet.
+#   `Ended By`  = the MATCH-scope result's own `reason` — `Game` vs `Concede`. This one
+#                varies (2 of 3 in the batch that surfaced the gap) and is the half that
+#                means something at low n: a concede-win on turn three is not the same
+#                evidence about a deck as a game-win, and the record lives permanently
+#                near the small-sample floor where that distinction is most of the signal.
+# Blank on every pre-existing row, which is honest — those matches were parsed before the
+# field was read, so the value is unknown rather than "Game".
+_ENDED_BY_PREFIX = "ResultReason_"
 
 # The pre-attribution column names, kept readable so an unmigrated matches.csv is not
 # silently blanked on the next write. `Course ID` was never a course or a deck — it is
@@ -342,6 +370,14 @@ def parse_log(text, me=None):
             "Opponent Avatar": opp.get("courseId", ""),
             "Reason": (fin.get("matchCompletedReason", "")
                        .replace("MatchCompletedReasonType_", "")),
+            "Ended By": (match_res.get("reason") or "").replace(_ENDED_BY_PREFIX, ""),
+            # Not columns — `write_matches` emits only HEADER, so these are dropped on
+            # write. They exist so the dry run can PRINT the raw read the W/L verdict
+            # came from (G-52: a verdict surface must print its evidence). Without them
+            # the only way to check an inverted result was to re-read the JSON by hand,
+            # which is exactly what was being done, match by match.
+            "_my_team": my_team,
+            "_win_team": win_team,
         }
         rows.append(row)
         pending.append((order, current_dt, row))
@@ -377,6 +413,32 @@ def deck_ids():
         return {d["id"] for d in dk.discover_decks()}
     except Exception:
         return set()
+
+
+def deck_names():
+    """{deck id: repo `#: name:`}, for DISCLOSING what a name-prefix guess resolved to.
+
+    Report-only, and that is a measured decision rather than a cautious one. The obvious
+    design was a name-AGREEMENT gate: the prefix route validates only the leading NUMBER,
+    so "15 Anything At All" resolves to deck 15 and `--apply` then writes a permanent
+    `#: arena:` header off that guess. Comparing the name's remainder against the repo
+    deck's name looked like a free confirmation.
+
+    It is not. Measured over the 22 `#: arena:` headers on the roster — every one of them
+    a correct mapping — 8 DISAGREE with the repo name under a containment test: "49 Big
+    Draco" is deck 49 Scaleforge, "58 Treasure Planet" is Gold Standard, "45 The Exiles"
+    is Exile Dividend. The Arena names are flavour names, not repo names. A gate would
+    therefore have been wrong 36% of the time, blocking correct attributions — the same
+    saturation that made the `review` flag 0% actionable in G-07.
+
+    So the number stays the sole criterion and the NAME is shown instead: a wrong guess
+    is visible in the dry run, before --apply makes it a header, and a right-but-renamed
+    deck still resolves. Disclosure over gating, the G-38 stance for a fuzzy signal."""
+    try:
+        import deck as dk
+        return {d["id"]: d["name"] for d in dk.discover_decks()}
+    except Exception:
+        return {}
 
 
 def resolve_deck(name, guid, mapping, known_ids=()):
@@ -615,21 +677,44 @@ def load_matches(path=MATCHES_CSV):
         return rows
 
 
+# Any earlier schema must still carry these, or it is not a matches.csv at all. They are
+# the row's identity and its payload: without Match ID dedup cannot work, and without
+# Date/Result there is nothing to migrate that is worth keeping.
+_SCHEMA_CORE = ("Date", "Match ID", "Result")
+
+
 def _is_own_earlier_schema(path):
-    """True when `path` is a matches.csv written before the avatar-column rename.
+    """True when `path` is a matches.csv written by an EARLIER version of this module.
 
     The F-02 mirror guard compares headers and cannot tell "another file's schema" from
     "an earlier version of MY OWN" — so without this the guard refuses the one write that
     performs the migration, and a user with an existing matches.csv gets a traceback
-    instead of an upgrade. Deliberately EXACT: only the one header this module used to
-    emit is accepted, so a genuinely foreign CSV is still refused."""
+    instead of an upgrade.
+
+    This used to hard-code the ONE header the module emitted before the avatar rename,
+    which worked exactly once. The next column to land (`Ended By`) made the CURRENT file
+    an "earlier schema" too, and an exact match against a single remembered header cannot
+    see that — so the guard would have refused the very write that performs the upgrade,
+    reproducing the bug this function exists to prevent. Generalized to: every column is
+    one of MINE, in MY order, with nothing foreign and nothing missing from the core.
+    That accepts any past or intermediate shape (columns have been both RENAMED and
+    INSERTED MID-HEADER here, so neither a prefix nor a subset test would do) while still
+    refusing a genuinely foreign CSV, which would have to be an ordered sub-sequence of
+    these thirteen names by accident."""
     try:
         with open(path, newline="", encoding="utf-8") as fh:
             head = next(csv.reader(fh), None)
     except (OSError, UnicodeDecodeError):
         return False
     legacy = [_LEGACY_COLUMNS.get(c, c) for c in (head or [])]
-    return legacy == [c for c in HEADER if c not in ("Arena Deck", "Arena Deck ID")]
+    if not legacy or any(c not in HEADER for c in legacy):
+        return False
+    if len(set(legacy)) != len(legacy):
+        return False                       # a duplicate column is not a schema of mine
+    if any(c not in legacy for c in _SCHEMA_CORE):
+        return False
+    order = [HEADER.index(c) for c in legacy]
+    return order == sorted(order)
 
 
 def write_matches(rows, path=MATCHES_CSV):
@@ -646,6 +731,26 @@ def write_matches(rows, path=MATCHES_CSV):
         for r in sorted(rows, key=lambda x: (x.get("Date") or "", x.get("Match ID") or "")):
             w.writerow({c: r.get(c, "") for c in HEADER})
     atomic_write(path, _w)
+
+
+def _result_evidence(row):
+    """`[my team 1 · winner 1]` — the raw read the W/L verdict came from.
+
+    G-52: a verdict surface must print its evidence. The result is derived from exactly
+    two integers, and a single inverted seat read would flip EVERY row in a paste in the
+    same direction — a failure that looks like a losing streak rather than like a bug.
+    Printing the pair costs one column and makes the check a glance instead of a hand
+    re-read of the JSON, which is how the first fifteen matches were actually verified.
+    Keyed on the field's PRESENCE, not its truthiness. A row loaded back from CSV never
+    carries these at all and must print nothing (the report path). But a parsed row whose
+    seat has no `teamId` carries the key with None — and that is the case where the
+    verdict is least trustworthy, so it prints `?` rather than falling into the same
+    silent-empty branch as a CSV row."""
+    if "_my_team" not in row:
+        return ""
+    mine, win = row.get("_my_team"), row.get("_win_team")
+    return (f"[my team {mine if mine is not None else '?'} · "
+            f"winner {win if win not in (None, 0) else 'none'}]")
 
 
 def _wilson(wins, n, z=1.96):
@@ -820,19 +925,41 @@ def main():
     # — it is reported by the per-match lines below and by the report's own blind count.
     shown = {k: v for k, v in routes.items() if k[0].strip() or k[1].strip()}
     if shown:
+        repo_names = deck_names()
         print(f"\nDeck attribution — {len(shown)} Arena deck(s) seen:")
+        guessed = False
         for (name, guid), (did, how) in sorted(shown.items()):
             label = name or guid
             target = f"deck {did}  ({how})" if did else "UNRESOLVED — blank Deck"
-            print(f"   {label[:40]:40}  ->  {target}")
+            # The repo deck's own name, on the GUESS route only. The explicit header
+            # route needs no confirming — a human wrote it — but the prefix route
+            # validates the NUMBER and nothing else, and --apply turns it into a
+            # permanent header. See `deck_names` for why this discloses instead of gates.
+            extra = ""
+            if did and how == "name prefix":
+                guessed = True
+                extra = f"  — repo deck is {repo_names.get(did, '?')!r}, confirm it"
+            print(f"   {label[:40]:40}  ->  {target}{extra}")
+        if guessed:
+            print("\n   A `name prefix` route matched on the LEADING NUMBER only. If the "
+                  "repo deck\n   named above is not the deck you played, stop: --apply "
+                  "writes that guess into\n   the deck file as a `#: arena:` header, and "
+                  "every later match resolves to it.")
         print()
 
     print(f"Found {len(rows)} completed match(es); {len(fresh)} new, "
           f"{len(rows) - len(fresh)} already recorded.")
     for r in fresh:
         deck_label = r["Deck"] or f"(unattributed: {r['Arena Deck'] or 'deck unknown'})"
-        print(f"   {r['Date']}  {r['Result']}  {r['Games Won']}-{r['Games Lost']}  "
-              f"{deck_label}  vs {r['Opponent Avatar'] or '?'}  [{r['Event']}]")
+        ended = f" by {r['Ended By'].lower()}" if r.get("Ended By") else ""
+        print(f"   {r['Date']}  {r['Result']}  {r['Games Won']}-{r['Games Lost']}{ended}  "
+              f"{deck_label}  vs {r['Opponent Avatar'] or '?'}  [{r['Event']}]"
+              f"   {_result_evidence(r)}")
+    if fresh:
+        print("\n   Evidence is the raw finalMatchResult read: W when your team is the "
+              "winning\n   team, L when it is not, D when there is none. Check it — an "
+              "inverted seat\n   read would make every row here wrong in the same "
+              "direction.")
     if not args.apply:
         print("\n(dry run — pass --apply to write matches.csv)")
         return _with_report(0)

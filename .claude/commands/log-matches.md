@@ -48,9 +48,21 @@ launchctl load ~/Library/LaunchAgents/com.mtga.logsnapshot.plist
 
 The dedupe is line-identical and safe: every captured line shape is unique (match
 headers carry timestamps, the JSON payloads carry ids). With the archive in place, the
-per-session ask is just `cat ~/mtga-logs/arena.log | pbcopy` — or, for a leaner paste
-when no decks were renamed, `grep -v '==> DeckUpsertDeckV3' ~/mtga-logs/arena.log |
-pbcopy` (the Upsert lines carry full decklists and are the bulk of the bytes).
+per-session ask is:
+
+```sh
+sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' ~/mtga-logs/arena.log | pbcopy
+```
+
+**Slim at PASTE time, never at capture time.** The `sed` drops the deck CARD LISTS, which
+nothing in the parser reads — attribution uses only Name, DeckId and LastPlayed off the
+same line — and they are almost the entire payload: a real 52-card selection line is 1919
+bytes and slims to 152, a 92% cut, once per event join. Leaving the archive itself
+unslimmed keeps it a full-fidelity record AND keeps `awk '!seen[$0]++'` working; slimming
+inside `snapshot.sh` would put two forms of the same line in the archive and defeat its
+own dedupe. If the paste is still too big and no decks were renamed, additionally drop
+`==> DeckUpsertDeckV3` lines — but they are what keeps `#: arena:` headers current
+through a rename, so prefer the sed.
 
 **Without the archive**, grab the log before relaunching Arena. Ask the user to run
 this on the machine running Arena and paste the output:
@@ -61,8 +73,13 @@ p=~/Library/Logs/"Wizards Of The Coast"/MTGA
 # Windows (PowerShell): $p="$env:APPDATA\..\LocalLow\Wizards Of The Coast\MTGA"
 
 grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
-    "$p"/Player*.log
+    "$p"/Player*.log \
+  | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g'
 ```
+
+The `sed` drops the deck card lists (92% of an EventSetDeckV3 line, and nothing reads
+them). Keep it: without it the pastes get hand-trimmed in an editor instead, which is
+JSON surgery on the one line attribution depends on.
 
 **All three line shapes are required, in ONE grep.** The JSON carries the result and both
 seats but NOT which seat is theirs — the local `userId` appears only in the `Match to

@@ -20,12 +20,17 @@ OPP = "ZZZZYYYYXXXXWWWWVVVVUUUUTT"
 
 def _event(match_id="m-1", my_team=2, winner=1, games=((1,),), timestamp="1785197326489",
            my_course="Avatar_Basic_BlackPanther_MSH", opp_course="Avatar_Basic_Slimefoot_DMU",
-           reason="MatchCompletedReasonType_Success"):
-    """One finalMatchResult line, in Arena's real nesting."""
+           reason="MatchCompletedReasonType_Success", ended_by="ResultReason_Game"):
+    """One finalMatchResult line, in Arena's real nesting.
+
+    `reason` and `ended_by` are DIFFERENT fields and the distinction is the point:
+    `reason` is `matchCompletedReason` (Success for every completed match, hence the
+    column that carried no information), `ended_by` is the match-scope result's own
+    reason (Game vs Concede, the half that varies)."""
     results = [{"scope": "MatchScope_Game", "result": "ResultType_WinLoss",
-                "winningTeamId": g[0], "reason": "ResultReason_Game"} for g in games]
+                "winningTeamId": g[0], "reason": ended_by} for g in games]
     results.append({"scope": "MatchScope_Match", "result": "ResultType_WinLoss",
-                    "winningTeamId": winner, "reason": "ResultReason_Game"})
+                    "winningTeamId": winner, "reason": ended_by})
     payload = {
         "transactionId": "t-1", "requestId": 332, "timestamp": timestamp,
         "matchGameRoomStateChangedEvent": {"gameRoomInfo": {
@@ -123,6 +128,52 @@ class TestTheRealSample:
         assert r["Opponent Avatar"] == "Avatar_Basic_Slimefoot_DMU"
         assert r["Reason"] == "Success"        # the enum prefix is stripped
         assert r["Event"] == "Play"
+
+    def test_ended_by_separates_a_concede_from_a_played_out_game(self):
+        """The half of the reason data that VARIES. `matchCompletedReason` is Success for
+        every completed match — all 15 rows of the first real record read `Success`, i.e.
+        the stored column carried zero bits, while this one distinguished 2 of 3."""
+        played, _ = pm.parse_log(_log(_event(match_id="m-a")))
+        scooped, _ = pm.parse_log(_log(_event(match_id="m-b",
+                                              ended_by="ResultReason_Concede")))
+        assert played[0]["Ended By"] == "Game"
+        assert scooped[0]["Ended By"] == "Concede"
+        # Both still complete normally, so the OLD column cannot tell them apart.
+        assert played[0]["Reason"] == scooped[0]["Reason"] == "Success"
+
+    def test_a_missing_result_reason_is_blank_not_guessed(self):
+        raw = json.loads(_event())
+        fin = (raw["matchGameRoomStateChangedEvent"]["gameRoomInfo"]["finalMatchResult"])
+        for r in fin["resultList"]:
+            r.pop("reason", None)
+        rows, _ = pm.parse_log(_log(json.dumps(raw)))
+        assert rows[0]["Ended By"] == ""
+
+    def test_the_result_evidence_is_carried_but_never_written(self):
+        """G-52 — the dry run prints the two integers the W/L verdict came from. They ride
+        on the row as underscore keys; `write_matches` emits only HEADER, so they must not
+        reach the CSV (and must not appear as columns)."""
+        rows, _ = pm.parse_log(_log(_event(my_team=2, winner=1)))
+        assert (rows[0]["_my_team"], rows[0]["_win_team"]) == (2, 1)
+        assert "my team 2" in pm._result_evidence(rows[0])
+        assert "winner 1" in pm._result_evidence(rows[0])
+        assert not [k for k in pm.HEADER if k.startswith("_")]
+
+    def test_the_evidence_names_a_draw_rather_than_printing_team_zero(self):
+        rows, _ = pm.parse_log(_log(_event(winner=0)))
+        assert rows[0]["Result"] == "D"
+        assert "winner none" in pm._result_evidence(rows[0])
+
+    def test_evidence_is_empty_for_a_row_that_came_back_from_csv(self):
+        """`report` runs over rows loaded from disk, which never carry the fields."""
+        assert pm._result_evidence({"Date": "2026-08-14", "Result": "W"}) == ""
+
+    def test_a_seat_with_no_team_prints_a_question_mark_not_nothing(self):
+        """The distinction the presence check buys. A parsed row whose seat carries no
+        `teamId` still derives a W/L — and that is the LEAST trustworthy verdict there is,
+        so it must not fall into the same silent-empty branch as a CSV row."""
+        assert pm._result_evidence({"_my_team": None, "_win_team": 1}) == \
+            "[my team ? · winner 1]"
 
     def test_game_scores_are_counted_per_team(self):
         rows, _ = pm.parse_log(_log(_event(my_team=2, winner=2, games=((2,), (1,), (2,)))))
@@ -379,9 +430,44 @@ class TestPersistence:
         pm.write_matches(rows, str(out))
         assert pm.load_matches(str(out))[0]["My Avatar"] == "Avatar_Basic_BlackPanther_MSH"
 
+    def test_the_previous_schema_migrates_when_a_column_is_added(self, tmp_path):
+        """The regression that generalized `_is_own_earlier_schema`. It used to compare
+        against the ONE header remembered from the avatar rename, which worked exactly
+        once: adding `Ended By` made the then-current file an "earlier schema" too, and an
+        exact match cannot see that — so the guard would refuse the very write that
+        performs the upgrade, which is the bug it exists to prevent."""
+        out = tmp_path / "m.csv"
+        prev = [c for c in pm.HEADER if c != "Ended By"]
+        out.write_text(",".join(prev) + "\n"
+                       + "2026-08-14,m1,15,15 Air Nomads,g-1,Avatar_Basic_ShangChi_MSH,"
+                         "Play,W,1,0,Avatar_Basic_ScarletWitch_MSH,Success\n",
+                       encoding="utf-8")
+        rows = pm.load_matches(str(out))
+        pm.write_matches(rows, str(out))       # must not raise
+        back = pm.load_matches(str(out))
+        assert back[0]["Result"] == "W"
+        assert back[0]["Deck"] == "15"
+        assert back[0]["Ended By"] == ""       # unknown, not invented
+
+    def test_a_reordered_header_is_refused(self, tmp_path):
+        """Every column is one of mine — but not in my order, so it is not my file."""
+        out = tmp_path / "m.csv"
+        swapped = list(pm.HEADER)
+        swapped[0], swapped[1] = swapped[1], swapped[0]
+        out.write_text(",".join(swapped) + "\n", encoding="utf-8")
+        assert pm._is_own_earlier_schema(str(out)) is False
+
+    def test_a_schema_missing_the_core_columns_is_refused(self, tmp_path):
+        """An ordered subset of my names is not enough: without Match ID there is no
+        identity to dedup on, so it cannot be a matches.csv."""
+        out = tmp_path / "m.csv"
+        out.write_text("Date,Deck,Event\n", encoding="utf-8")
+        assert pm._is_own_earlier_schema(str(out)) is False
+
     def test_a_foreign_csv_is_still_refused(self, tmp_path):
-        """The migration allowance accepts exactly ONE predecessor header, so the F-02
-        mirror guard still stops this writer overwriting a file it does not own."""
+        """The migration allowance accepts only headers built from THIS module's own
+        column names in their own order, so the F-02 mirror guard still stops this writer
+        overwriting a file it does not own."""
         out = tmp_path / "card-library.csv"
         out.write_text("Card Name,Set Code,Collector #,Quantity Owned,Color(s),"
                        "Card Type,Card Text,Synergies\nShock,M21,159,4,R,Instant,,burn\n",
@@ -667,6 +753,99 @@ class TestArenaHeaderWriting:
         d = self._roster(tmp_path, monkeypatch, **{"07-earths": self.PLAIN})
         pm.map_decks(_setdeck(), apply=True, out=lambda *_a: None)
         assert list((d / "07-earths").glob("*.bak"))
+
+
+class TestNamePrefixGuessIsDisclosed:
+    """The prefix route validates the leading NUMBER and nothing else — "15 Anything At
+    All" resolves to deck 15 — and `--apply` then writes that guess into the deck file as
+    a permanent `#: arena:` header, after which every later match resolves to it with
+    full confidence. So the run must SHOW which repo deck it landed on.
+
+    Deliberately not a name-agreement GATE. Measured over the 22 correct `#: arena:`
+    mappings on the roster, 8 disagree with the repo name ("49 Big Draco" is Scaleforge,
+    "58 Treasure Planet" is Gold Standard): the Arena names are flavour names. A gate
+    would block a correct attribution better than a third of the time.
+
+    Driven through `main()` on purpose. `deck_names` is a working primitive, and G-40 is
+    the recurring failure here — a primitive nothing calls is invisible to every gate, so
+    the assertion has to run the path a user runs."""
+
+    PLAIN = "#: name: Air Nomads\n#: format: Standard\n4 Shock (M21) 159\n"
+
+    def _run(self, tmp_path, monkeypatch, capsys, arena_name):
+        d = TestArenaHeaderWriting._roster(self, tmp_path, monkeypatch,
+                                           **{"15-air-nomads": self.PLAIN})
+        log = "\n".join([_setdeck(name=arena_name, guid="g-15"),
+                         _header(date="8/7/2026", time="7:33:25 AM"), _event()])
+        src = tmp_path / "s.log"
+        src.write_text(log, encoding="utf-8")
+        monkeypatch.setattr("sys.argv", ["parse_matches.py", str(src),
+                                         "--out", str(tmp_path / "m.csv")])
+        pm.main()
+        return d, capsys.readouterr().out
+
+    def test_the_repo_deck_name_is_printed_next_to_the_guess(
+            self, tmp_path, monkeypatch, capsys):
+        _d, out = self._run(tmp_path, monkeypatch, capsys, "15 Air Nomads")
+        assert "name prefix" in out
+        assert "'Air Nomads'" in out            # the REPO deck's name, to confirm against
+        assert "LEADING NUMBER only" in out     # and the warning that it is a guess
+
+    def test_a_flavour_name_still_resolves_rather_than_being_blocked(
+            self, tmp_path, monkeypatch, capsys):
+        """The 8-of-22 case. `15 Sky Bison` is a legitimate Arena name for deck 15; a
+        name-agreement gate would refuse it and lose the attribution."""
+        _d, out = self._run(tmp_path, monkeypatch, capsys, "15 Sky Bison")
+        assert "deck 15" in out and "UNRESOLVED" not in out
+        assert "'Air Nomads'" in out            # …and the disagreement is visible
+
+    def test_the_explicit_header_route_is_not_nagged(
+            self, tmp_path, monkeypatch, capsys):
+        """A header a human wrote needs no confirming — only the guess does."""
+        body = self.PLAIN.replace("#: format: Standard\n",
+                                  "#: format: Standard\n#: arena: 15 Sky Bison, g-15\n")
+        TestArenaHeaderWriting._roster(self, tmp_path, monkeypatch,
+                                       **{"15-air-nomads": body})
+        log = "\n".join([_setdeck(name="15 Sky Bison", guid="g-15"),
+                         _header(date="8/7/2026", time="7:33:25 AM"), _event()])
+        src = tmp_path / "s.log"
+        src.write_text(log, encoding="utf-8")
+        monkeypatch.setattr("sys.argv", ["parse_matches.py", str(src),
+                                         "--out", str(tmp_path / "m.csv")])
+        pm.main()
+        out = capsys.readouterr().out
+        assert "#: arena: header" in out
+        assert "LEADING NUMBER only" not in out
+
+
+class TestResultEvidenceIsPrinted:
+    """G-52 — the surface that decides W/L must show what it decided from. A single
+    inverted seat read flips every row in a paste the same way, which reads as a losing
+    streak rather than as a bug; the first fifteen matches were checked by re-reading the
+    JSON by hand, which is the cost this removes."""
+
+    def _run(self, tmp_path, monkeypatch, capsys, **ev):
+        src = tmp_path / "s.log"
+        src.write_text("\n".join([_header(), _event(**ev)]), encoding="utf-8")
+        monkeypatch.setattr("sys.argv", ["parse_matches.py", str(src),
+                                         "--out", str(tmp_path / "m.csv")])
+        pm.main()
+        return capsys.readouterr().out
+
+    def test_the_dry_run_prints_the_two_integers_behind_the_verdict(
+            self, tmp_path, monkeypatch, capsys):
+        out = self._run(tmp_path, monkeypatch, capsys, my_team=2, winner=2)
+        assert "[my team 2 · winner 2]" in out
+        assert "finalMatchResult read" in out    # and how to read it
+
+    def test_a_loss_shows_the_mismatching_pair(self, tmp_path, monkeypatch, capsys):
+        out = self._run(tmp_path, monkeypatch, capsys, my_team=2, winner=1)
+        assert "[my team 2 · winner 1]" in out
+
+    def test_the_concede_shows_in_the_line(self, tmp_path, monkeypatch, capsys):
+        out = self._run(tmp_path, monkeypatch, capsys,
+                        ended_by="ResultReason_Concede")
+        assert "by concede" in out
 
 
 class TestHeaderSyncRidesAlong:

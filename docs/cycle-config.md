@@ -409,7 +409,10 @@ no-matches bailout that ran before the header sync) were found by a person runni
 data through it, never by a test.
 
 **Steps**
-  - `cat ~/mtga-logs/arena.log | pbcopy` (or the Stage 0 grep, without the archive)
+  - `sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' ~/mtga-logs/arena.log
+    | pbcopy` (or the Stage 0 grep, without the archive). The `sed` drops the deck card
+    lists — 92% of an EventSetDeckV3 line and read by nothing. Slim at PASTE time only;
+    slimming inside `snapshot.sh` defeats the archive's own line dedupe.
   - `python3 scripts/parse_matches.py <file>` — dry run, ALWAYS first
   - `python3 scripts/parse_matches.py <file> --apply`
   - `python3 scripts/parse_matches.py --report`
@@ -420,6 +423,16 @@ data through it, never by a test.
   - The dry run prints a `Deck attribution` block: every Arena deck name, the repo deck
     it resolved to, and the ROUTE (`#: arena: header` / `name prefix`). Read the routes —
     the prefix step assigns data from a naming convention and is the line worth checking.
+    A `name prefix` row also prints the REPO deck's own name and says to confirm it: that
+    route matches on the leading NUMBER alone, and `--apply` writes the guess into the
+    deck file as a permanent header. It is disclosure, not a gate, and deliberately so —
+    8 of the 22 correct `#: arena:` mappings on the roster have an Arena name that does
+    NOT resemble the repo name ("49 Big Draco" is Scaleforge), so refusing on a name
+    mismatch would block a correct attribution more than a third of the time.
+  - Each new match line prints the evidence behind its verdict — `[my team 1 · winner 1]`
+    — and `by concede` / `by game` where Arena reported it. Spot-check one against the
+    raw JSON: an inverted seat read would make every row in a paste wrong the same way,
+    which looks like a losing streak rather than like a bug.
   - `--apply` is idempotent. Re-running reports "0 new, N already recorded" and writes
     nothing; dedup is by Arena's `matchId`, which is what makes the rolling archive safe
     to re-ingest wholesale.
