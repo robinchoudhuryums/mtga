@@ -114,3 +114,12 @@
 6 Forest (TRK) 325
 4 Island (TRK) 319
 3 Swamp (TRK) 321
+#~ -Withering Torment | +Run Away Together | OWNED (ECL, 2026-08-13 ingest): owner's pick, and the
+#~   TAG FIT IS LOW — 5 in 68a, and it does not rank for 68 or 68b at all, because the
+#~   tagger sees only `bounce`. Grade it from the text instead: "{1}{U} Choose two target
+#~   creatures controlled by DIFFERENT players. Return those creatures to their owners'
+#~   hands." In a blink/ETB deck the forced second target is the upside — you re-buy your
+#~   own enters-the-battlefield trigger while bouncing a threat, for two mana at instant
+#~   speed. The symmetry is the point, not the drawback.
+#~   CAVEAT: it cannot hit two of YOUR creatures, so it is not a free double-blink; and
+#~   with no opposing creature on board it is uncastable.

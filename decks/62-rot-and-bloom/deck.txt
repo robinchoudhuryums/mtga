@@ -111,3 +111,7 @@
 6 Swamp (HOB) 191
 5 Forest (HOB) 193
 2 Island (HOB) 190
+#~ -Withering Torment | +Diresight | OWNED (BLB, 2026-08-13 ingest): fit 38. Surveil 2 then
+#~   draw two — graveyard stocking plus card advantage on one {2}{B} sorcery. Cut from the
+#~   removal block only if you can spare it: `cuts` ranks Villainous Wrath and Hero's
+#~   Downfall above it and the deck runs 11 interaction pieces, so there is room.

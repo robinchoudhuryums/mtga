@@ -137,3 +137,13 @@
 #~   Flashback {3}{U}" — one card that draws THREE across two casts, and the second cast
 #~   comes from the graveyard this deck is already filling. Do not cut from the removal
 #~   block for it: `cuts` ranks four removal spells above Weftstalker and the deck runs 10.
+#~ -Long Goodbye | +Diresight | OWNED (BLB, 2026-08-13 ingest): fit 43. "{2}{B} Surveil 2,
+#~   THEN draw two cards. You lose 2 life" — it fills the yard and refills the hand in one
+#~   card, which is this deck's whole axis.
+#~ -Pumpkin Bombardment | +Eddymurk Crab | OWNED (BLB): fit 41. "Costs {1} less to cast for
+#~   each instant and sorcery card in your graveyard" — in THIS deck that is routinely a
+#~   flash 5/5 for three or four mana that taps two blockers on arrival. Flagged top-heavy
+#~   by fit alone at MV 7; the graveyard discount is what the curve reading cannot see.
+#~ note: Nightwhorl Hermit and Stargaze also read fit 30 here and are owned — lower
+#~ note: priority than the two above. Do NOT take more than two of these: `cuts` ranks four
+#~ note: removal spells at the top and the deck runs 10 interaction pieces.
