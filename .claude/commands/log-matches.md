@@ -136,6 +136,36 @@ same run, and a paste of deck summaries with no matches in it still syncs header
 than erroring. `--map-decks` remains for the explicit roster-wide pass, but routine
 ingests need no separate upkeep step.
 
+**Deck NAMES are offered, never adopted silently.** Every run also reports any deck whose
+repo `#: name:` differs from its Arena name, and `--sync-names` adopts them:
+
+```
+python3 scripts/parse_matches.py --sync-names          # reconcile from the stored headers
+python3 scripts/parse_matches.py <file> --sync-names   # …or from a fresh paste
+```
+
+Four things make this safe enough to be automatic, and each one is load-bearing:
+
+- **Identity is the DeckId GUID**, never the deck number and never the card list. A GUID
+  survives every edit Arena permits; a card list changes the moment you tune, so
+  card-matching would refuse exactly the decks under active development. A `name prefix`
+  match is *never* enough to rename — that route validates the leading number alone.
+- **Typography is not a rename.** Arena writes a curly apostrophe, doubled spaces and a
+  hyphen where the repo uses an em dash. Comparison is on words only, so
+  `54b Grand Lotus- Comet` leaves `Grand Lotus — Comet` untouched instead of churning it
+  every run.
+- **The variant convention survives.** A variant adopting `Ancient Decay` becomes
+  `Iron Forge — Ancient Decay`, because G-27's rationale audit leans on the
+  `<parent> — <variant>` shape. Arena repeating the parent is not doubled.
+- **Stranded citations are flagged.** 50 of the 106 decks are named inside another deck's
+  header prose, and nothing rewrites prose automatically. A `⚠` on a rename means the old
+  name is cited elsewhere and you fix those by hand. Suppressed when the new name still
+  contains the old one (`Unlock` → `Unlocked` keeps every citation valid).
+
+Report the plan to the user and let them choose. Renaming is editorial: `Stampede Engine`
+→ `Stampede` is a real loss of a word, and only the owner knows whether Arena's name or
+the repo's is the one they meant.
+
 ## Stage 2 — Report
 
 ```
@@ -145,6 +175,15 @@ python3 scripts/parse_matches.py --report
 **Read this the way the tool prints it, not the way a percentage invites.** Below ~20
 matches it refuses to show a rate at all, and above it the 95% Wilson interval is usually
 still 30 points wide. State the interval whenever you quote a number.
+
+**The per-deck rows will not fill, and the pooled block is the answer to that.** At 106
+decks the per-deck split cannot reach n=20 in any realistic timeframe — after a month of
+play the best row sat at n=4 — so the report also pools: `ALL DECKS`, then a Play/Ladder
+split, each with the distance to a readable sample printed as a countdown rather than a
+wall. **Pooling answers a different question and the difference is not decorative**: a
+pooled rate says whether *you* are winning, never whether a deck is good, because it
+averages a tuned deck with a brew. Use it to notice a slump. Route any per-deck verdict
+to the rows above, once they fill.
 
 The honest reading: **a win rate separates a broken deck from a fine one; it will not
 separate a 55% deck from a 45% one without hundreds of games.** Use it to find disasters,

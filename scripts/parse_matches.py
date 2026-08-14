@@ -522,6 +522,216 @@ def _arena_header_plan(names):
     return plan
 
 
+_NAME_HEADER_RE = re.compile(r"^#:\s*name\s*:", re.I)
+# An `#: arena:` header holds `<name>, <GUID>` in either order, and a deck NAME can look
+# like anything — so the GUID is identified by its own shape rather than by position.
+_GUID_RE = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",
+                      re.I)
+# Arena's deck names cannot hold an em dash, so the client copy of a variant is typed
+# "54b Grand Lotus- Comet" against the repo's "Grand Lotus — Comet". Adopting the raw
+# string would import that degradation into the repo and, worse, make a name that is
+# ALREADY correct look different every run. Only a hyphen followed by whitespace is
+# converted — "Spider-Man" has none, so it is untouched.
+_ARENA_DASH_RE = re.compile(r"(\S)-\s+")
+
+
+def _name_key(s):
+    """Comparison key for two deck names: words only, case- and punctuation-blind.
+
+    The trigger for a rename must be a difference in WORDS, never in typography. Arena
+    writes a curly apostrophe ("Earth’s"), a doubled space ("66  Lethal Protector") and a
+    hyphen for an em dash; all three are the SAME name and must not churn the repo."""
+    return re.sub(r"[^a-z0-9]+", "", (s or "").lower())
+
+
+def _adopted_name(arena_name, rec, parent_name):
+    """The repo `#: name:` that adopting `arena_name` implies, or '' if it cannot tell.
+
+    Two rules beyond stripping the deck number. Arena's degraded separator is restored to
+    the repo's em dash (see `_ARENA_DASH_RE`). And the VARIANT CONVENTION is preserved:
+    repo variants are named "<parent> — <variant>", which G-27's rationale audit depends
+    on ("a name forming part of THIS deck's own name is not another deck"), so a variant
+    adopting "Ancient Decay" becomes "Iron Forge — Ancient Decay", not a bare name that
+    would orphan it from its family. When Arena's own name already carries the parent
+    ("Grand Lotus- Comet") the prefix is not doubled."""
+    rest = _NUM_PREFIX_RE.sub("", (arena_name or "").strip()).strip()
+    rest = _ARENA_DASH_RE.sub(r"\1 — ", rest).strip()
+    if not rest:
+        return ""
+    if not (rec.get("variant") and parent_name):
+        return rest
+    pk, rk = _name_key(parent_name), _name_key(rest)
+    if rk.startswith(pk) and rk != pk:
+        # Arena repeated the parent — keep the repo's spelling of it, not Arena's.
+        tail = rest
+        while tail and _name_key(tail) != rk[len(pk):]:
+            tail = tail[1:]
+        rest = tail.lstrip(" —-").strip() or rest
+    return f"{parent_name} — {rest}" if _name_key(rest) != pk else parent_name
+
+
+def deck_name_plan(names):
+    """[(deck_id, path, current_name, adopted_name)] for decks Arena has RENAMED.
+
+    IDENTITY IS THE DeckId GUID, not a card list and not the deck number. That is a
+    deliberate substitution for what was asked, and it is the stronger test: a GUID is
+    stable across every edit Arena lets you make, whereas a card list changes the moment
+    you tune — so card-matching would refuse exactly the decks under active development,
+    which are the ones most likely to have been renamed. It is also the only option that
+    works today: nothing in this repo maps Arena's numeric `cardId` to a card name, and
+    the documented extraction now strips the `MainDeck` array precisely because nothing
+    reads it.
+
+    So a deck qualifies only when its own `#: arena:` header carries the GUID the paste
+    reports under a new name — i.e. a human already confirmed the pairing. A name-prefix
+    match is NOT enough and never adopts: that route validates the leading number alone.
+    """
+    try:
+        import deck as dk
+        records = {d["id"]: d for d in dk.discover_decks()}
+    except Exception:
+        return []
+    mapping = arena_deck_map()
+    plan = []
+    for guid, arena_name in sorted(names.items(), key=lambda kv: kv[1]):
+        did = mapping.get((guid or "").strip().lower())     # GUID proof, nothing weaker
+        rec = records.get(did or "")
+        if not rec:
+            continue
+        parent = records.get(rec.get("core") or "")
+        adopted = _adopted_name(arena_name, rec, (parent or {}).get("name", ""))
+        current = rec.get("name") or ""
+        if adopted and _name_key(adopted) != _name_key(current):
+            plan.append((did, rec["path"], current, adopted))
+    return plan
+
+
+def _write_deck_name(path, new_name):
+    """Rewrite one `#: name:` line. Returns the .bak path.
+
+    Same `deck._safe_write_lines` route as the arena-header writer: re-parses the file
+    (INV-04) and verifies the copy count is unchanged, so a header edit cannot touch a
+    card line."""
+    import deck as dk
+    with open(path, encoding="utf-8") as fh:
+        lines = [ln.rstrip("\n") for ln in fh]
+    _, cards = dk.parse_deck_file(path)
+    total = sum(q for q, *_ in cards)
+    out, placed = [], False
+    for ln in lines:
+        if not placed and _NAME_HEADER_RE.match(ln):
+            out.append(f"#: name: {new_name}")
+            placed = True
+            continue
+        out.append(ln)
+    if not placed:
+        out.insert(0, f"#: name: {new_name}")
+    return dk._safe_write_lines(path, out, total)
+
+
+def _name_citations(old_name, own_id, adopted):
+    """Deck ids whose `#:` header prose names `old_name` and would be left stale.
+
+    A rename is not a local edit: 50 of the 106 decks are named inside another deck's
+    header prose, so adopting Arena's name can strand a reference the rationale audit
+    cannot see (it checks CARD names and FIGURES, never deck names). Nothing rewrites
+    prose automatically — that is editorial — so the cost is shown at decision time
+    instead.
+
+    Suppressed when the adopted name still CONTAINS the old one ("Unlock" -> "Unlocked",
+    "Bird Brain" -> "Bird Brain — Bant"): the citation keeps reading correctly, and
+    flagging it would bury the five real cases in noise."""
+    if _name_key(old_name) in _name_key(adopted):
+        return []
+    if len(old_name or "") < 6:            # too short to match on without false hits
+        return []
+    try:
+        import deck as dk
+        decks = dk.discover_decks()
+    except Exception:
+        return []
+    hits = []
+    for d in decks:
+        if d["id"] == own_id:
+            continue
+        try:
+            with open(d["path"], encoding="utf-8") as fh:
+                prose = "\n".join(ln for ln in fh if ln.startswith("#"))
+        except OSError:
+            continue
+        if old_name.lower() in prose.lower():
+            hits.append(d["id"])
+    return hits
+
+
+def sync_deck_names(text, apply=False, out=print):
+    """Adopt Arena's deck names into the repo. Returns (written, plan).
+
+    ALWAYS REPORTS, writes only under `--sync-names`. An `#: arena:` header is bookkeeping
+    the tooling owns; a deck's NAME is human-authored prose that other files cite — 50 of
+    the 106 decks are named inside another deck's header prose — so a rename is offered
+    rather than performed. Reporting unconditionally is the other half: a capability
+    behind a flag nobody runs is invisible (G-53), so the run says a rename is available
+    even when it will not make one."""
+    return _report_name_plan(deck_name_plan(parse_deck_names(text)), apply=apply, out=out)
+
+
+def _report_name_plan(plan, apply=False, out=print):
+    """Print a rename plan and, on `apply`, perform it. Returns (written, plan)."""
+    if not plan:
+        return 0, []
+    out(f"\n{len(plan)} deck(s) are named differently in Arena than in the repo "
+        f"(matched on the DeckId GUID, so these are the same decks):")
+    for did, _path, current, adopted in plan:
+        cites = _name_citations(current, did, adopted)
+        tail = (f"   ⚠ old name cited in {len(cites)} other deck file(s): "
+                f"{', '.join(cites)}" if cites else "")
+        out(f"   deck {did:<5} {current!r}  ->  {adopted!r}{tail}")
+    if not apply:
+        out("   (reported only — pass --sync-names to adopt Arena's names. Nothing "
+            "rewrites\n    the prose in other deck files, so a ⚠ above is a citation you "
+            "fix by hand.)")
+        return 0, plan
+    written = 0
+    for did, path, _current, adopted in plan:
+        _write_deck_name(path, adopted)
+        written += 1
+    out(f"   adopted {written} name(s); a .bak was written beside each deck file.")
+    return written, plan
+
+
+def stored_arena_names():
+    """{DeckId GUID: Arena deck name} from the `#: arena:` headers already on disk.
+
+    The headers are Arena's own answer, recorded by earlier runs — reading them back is
+    how a divergence that built up over months gets reconciled without a paste covering
+    the whole roster. Only a header carrying BOTH a name and a GUID is used, since the
+    GUID is the identity proof `deck_name_plan` requires."""
+    try:
+        import deck as dk
+        decks = dk.discover_decks()
+    except Exception:
+        return {}
+    out = {}
+    for d in decks:
+        meta, _ = dk.parse_deck_file(d["path"])
+        parts = [p.strip() for p in (meta.get("arena") or "").replace(";", ",").split(",")]
+        parts = [p for p in parts if p]
+        if len(parts) < 2:
+            continue
+        name = next((p for p in parts if not _GUID_RE.fullmatch(p)), "")
+        guid = next((p for p in parts if _GUID_RE.fullmatch(p)), "")
+        if name and guid:
+            out[guid] = name
+    return out
+
+
+def sync_deck_names_from_headers(apply=False, out=print):
+    """`sync_deck_names` sourced from the stored headers instead of a fresh paste."""
+    plan = deck_name_plan(stored_arena_names())
+    return _report_name_plan(plan, apply=apply, out=out)
+
+
 def _write_arena_header(path, line):
     """Insert or replace one `#: arena:` header. Returns the .bak path.
 
@@ -765,6 +975,65 @@ def _wilson(wins, n, z=1.96):
     return (100 * max(0.0, centre - half), 100 * min(1.0, centre + half))
 
 
+def _tally(rows):
+    """{W,L,D} over `rows`, ignoring anything whose Result is not W/L/D."""
+    b = {"W": 0, "L": 0, "D": 0}
+    for r in rows:
+        res = (r.get("Result") or "").strip().upper()
+        if res in b:
+            b[res] += 1
+    return b
+
+
+def _read_of(b):
+    """The Read cell for a tally — a rate with its interval, or the distance to one."""
+    n = b["W"] + b["L"]
+    if n >= _MIN_SAMPLE:
+        lo, hi = _wilson(b["W"], n)
+        return f"{100 * b['W'] / n:.0f}%  (95% CI {lo:.0f}–{hi:.0f}%)"
+    short = _MIN_SAMPLE - n
+    return f"n={n} — {short} more for a read"
+
+
+def _print_pooled(rows):
+    """Pooled reads, because the per-deck split cannot reach the sample floor.
+
+    The per-deck table is the honest way to ask "is THIS deck good", and at 106 decks it
+    is also unreachable: the best row after a month of play sits at n=4 against a floor of
+    20, and splitting new matches across the roster keeps it there. A record that can
+    never be read is a record nobody keeps.
+
+    Pooling fixes the arithmetic by answering a DIFFERENT question, and the difference has
+    to stay in front of the reader or the number gets used for deck decisions it cannot
+    support. `ALL DECKS` measures the player-and-roster together — "am I winning" — not
+    any deck in it. The EVENT split is the one cut worth making at this size: Play and
+    Ladder face different opposition, so pooling across them measures a blend of two
+    populations, and separating them costs nothing.
+
+    Same `_MIN_SAMPLE` refusal as everywhere else — pooling buys a reachable denominator,
+    not permission to read a small one. The distance is printed instead of a percentage
+    so the floor reads as a countdown rather than as a wall."""
+    graded = [r for r in rows if (r.get("Result") or "").strip().upper() in ("W", "L", "D")]
+    if not graded:
+        return
+    overall = _tally(graded)
+    print(f"\n  {'Pooled — a DIFFERENT question than the rows above':50}  {'W':>3} "
+          f"{'L':>3} {'D':>3}   Read")
+    print("  " + "-" * 68)
+    print(f"  {'ALL DECKS — the player and the roster together':50}  {overall['W']:>3} "
+          f"{overall['L']:>3} {overall['D']:>3}   {_read_of(overall)}")
+    by_event = {}
+    for r in graded:
+        by_event.setdefault((r.get("Event") or "").strip() or "(no event)", []).append(r)
+    if len(by_event) > 1:
+        for ev in sorted(by_event, key=lambda e: -len(by_event[e])):
+            b = _tally(by_event[ev])
+            print(f"    {ev[:48]:48}  {b['W']:>3} {b['L']:>3} {b['D']:>3}   {_read_of(b)}")
+    print("\n  A pooled rate says whether YOU are winning, never whether a deck is good — "
+          "it\n  averages a tuned deck with a brew. Use it to notice a slump; use the "
+          "per-deck\n  rows, once they fill, to judge a deck.")
+
+
 def report(rows):
     """Win/loss per deck, with an explicit refusal to read a small sample.
 
@@ -807,6 +1076,7 @@ def report(rows):
             lo, hi = _wilson(b["W"], n)
             read = f"{100*b['W']/n:.0f}%  (95% CI {lo:.0f}–{hi:.0f}%)"
         print(f"  {key[:32]:32}  {b['W']:>3} {b['L']:>3} {b['D']:>3}   {read}")
+    _print_pooled(rows)
     if unreadable:
         print(f"\n⚠ {len(unreadable)} row(s) have an unreadable Result and are in NO "
               f"column above — the per-deck totals therefore do not sum to "
@@ -844,11 +1114,26 @@ def main():
     ap.add_argument("--map-decks", action="store_true",
                     help="learn `#: arena:` headers for the whole roster from the log's "
                          "deck summaries, instead of parsing matches")
+    ap.add_argument("--sync-names", action="store_true",
+                    help="adopt Arena's deck names into the repo `#: name:` headers "
+                         "(GUID-matched decks only; reported without this flag)")
     ap.add_argument("--out", default=MATCHES_CSV)
     args = ap.parse_args()
 
     if args.report and not args.source:
         return report(load_matches(args.out))
+    if args.sync_names and not args.source:
+        # Sourceless reconcile. The repo ALREADY holds Arena's name for every deck with
+        # an `#: arena:` header — harvested from real pastes by previous runs — so the
+        # names are on hand and no fresh log is needed. Not circular: the header is
+        # Arena's answer, recorded; this only asks whether `#: name:` still agrees with
+        # it. Without this the feature needs a paste covering all 106 decks to reconcile
+        # a divergence that accumulated over months, which is a capability nobody
+        # reaches (G-53).
+        written, plan = sync_deck_names_from_headers(apply=True)
+        if not plan:
+            print("Every GUID-paired deck's `#: name:` already matches its Arena name.")
+        return 0
     if not args.source:
         ap.error("give a log file (or '-' for stdin), or use --report")
     # `--report` WITH a source used to be dropped on the floor: the gate above requires
@@ -878,6 +1163,9 @@ def main():
 
     if args.map_decks:
         map_decks(text, apply=args.apply)
+        # The roster-scale header pass is exactly where a roster-scale RENAME shows up,
+        # so it offers the same adoption the match path does.
+        sync_deck_names(text, apply=args.sync_names)
         return _with_report(0)
 
     rows, warnings = parse_log(text, me=args.me)
@@ -889,6 +1177,10 @@ def main():
     # no-matches bailout, so a paste of deck summaries alone (the --map-decks extraction
     # shape) still keeps headers current instead of dying with a misleading error.
     sync_headers(text, apply=args.apply)
+    # AFTER the header sync, which is what establishes the GUID pairing this reads. A
+    # deck first seen in this paste therefore becomes eligible in the SAME run — but only
+    # via the header the sync just wrote, never via the number-prefix guess that found it.
+    sync_deck_names(text, apply=args.sync_names)
 
     if not rows:
         if parse_deck_names(text):

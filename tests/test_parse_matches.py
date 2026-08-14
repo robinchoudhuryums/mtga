@@ -848,6 +848,205 @@ class TestResultEvidenceIsPrinted:
         assert "by concede" in out
 
 
+class TestAdoptingArenaDeckNames:
+    """Arena is allowed to be the source of truth for a deck's NAME — but only where the
+    pairing is proven, and only where the difference is real."""
+
+    def _roster(self, tmp_path, monkeypatch, **decks):
+        return TestArenaHeaderWriting._roster(self, tmp_path, monkeypatch, **decks)
+
+    GUID = "e3a6c595-914d-4809-bd6d-630b3758ca89"
+
+    def _cored(self, name, arena=None, extra="", guid=None):
+        """`guid` defaults to this class's GUID. Every deck in a fixture roster needs its
+        OWN — `arena_deck_map` keys on the GUID, so two decks sharing one silently make
+        the map resolve to whichever was read last."""
+        head = f"#: name: {name}\n#: format: Standard\n"
+        if arena:
+            head += f"#: arena: {arena}, {guid or self.GUID}\n"
+        return head + extra + "4 Shock (M21) 159\n"
+
+    def test_a_guid_matched_rename_is_adopted(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch,
+                         **{"45-exile": self._cored("Exile Dividend", "45 Old Name")})
+        written, plan = pm.sync_deck_names(_setdeck(name="45 The Exiles", guid=self.GUID),
+                                           apply=True, out=lambda *_a: None)
+        assert written == 1
+        assert [(p[0], p[2], p[3]) for p in plan] == [("45", "Exile Dividend",
+                                                       "The Exiles")]
+        assert "#: name: The Exiles" in (d / "45-exile" / "deck.txt").read_text(
+            encoding="utf-8")
+
+    def test_a_name_prefix_match_NEVER_adopts(self, tmp_path, monkeypatch):
+        """The deck resolves for ATTRIBUTION on the number alone, which is not proof of
+        identity — so it must not be allowed to rewrite the deck's name."""
+        self._roster(tmp_path, monkeypatch,
+                     **{"45-exile": self._cored("Exile Dividend")})   # no #: arena:
+        written, plan = pm.sync_deck_names(_setdeck(name="45 The Exiles", guid="g-new"),
+                                           apply=True, out=lambda *_a: None)
+        assert (written, plan) == (0, [])
+
+    def test_typography_alone_is_not_a_rename(self, tmp_path, monkeypatch):
+        """Arena writes a curly apostrophe, a doubled space and a hyphen for an em dash.
+        Adopting those would churn the repo every run and import the degradation."""
+        self._roster(tmp_path, monkeypatch,
+                     **{"07-e": self._cored("Earth's Mightiest", "07 X")})
+        _w, plan = pm.sync_deck_names(_setdeck(name="07  Earth’s Mightiest",
+                                               guid=self.GUID), out=lambda *_a: None)
+        assert plan == []
+
+    def test_a_variant_keeps_its_parent_prefix(self, tmp_path, monkeypatch):
+        """G-27's rationale audit leans on the "<parent> — <variant>" convention, so a
+        variant adopting "Ancient Decay" must not become a bare orphaned name."""
+        self._roster(tmp_path, monkeypatch, **{
+            "26-iron-forge": self._cored("Iron Forge", "26 Iron Forge", guid="g-parent"),
+        })
+        (tmp_path / "decks" / "26-iron-forge" / "26b-scrap.txt").write_text(
+            self._cored("Iron Forge — Scrapyard Tithe", "26b Old"), encoding="utf-8")
+        _w, plan = pm.sync_deck_names(_setdeck(name="26b Ancient Decay", guid=self.GUID),
+                                      out=lambda *_a: None)
+        assert [(p[0], p[3]) for p in plan] == [("26b", "Iron Forge — Ancient Decay")]
+
+    def test_a_variant_whose_arena_name_repeats_the_parent_is_not_doubled(
+            self, tmp_path, monkeypatch):
+        """"54b Grand Lotus- Comet" already carries the parent; adopting it naively gives
+        "Grand Lotus — Grand Lotus- Comet". Here it should be a no-op entirely."""
+        self._roster(tmp_path, monkeypatch, **{
+            "54-lotus": self._cored("Grand Lotus", "54 Grand Lotus", guid="g-parent"),
+        })
+        (tmp_path / "decks" / "54-lotus" / "54b-comet.txt").write_text(
+            self._cored("Grand Lotus — Comet", "54b Old"), encoding="utf-8")
+        _w, plan = pm.sync_deck_names(_setdeck(name="54b Grand Lotus- Comet",
+                                               guid=self.GUID), out=lambda *_a: None)
+        assert plan == []
+
+    def test_it_reports_without_the_flag_and_writes_nothing(self, tmp_path, monkeypatch):
+        """G-53 — a capability behind a flag nobody runs is invisible, so the run says a
+        rename is available even when it will not make one."""
+        d = self._roster(tmp_path, monkeypatch,
+                         **{"45-exile": self._cored("Exile Dividend", "45 Old")})
+        said = []
+        written, plan = pm.sync_deck_names(_setdeck(name="45 The Exiles", guid=self.GUID),
+                                           apply=False, out=said.append)
+        assert written == 0 and len(plan) == 1
+        assert "--sync-names" in "\n".join(said)
+        assert "#: name: Exile Dividend" in (d / "45-exile" / "deck.txt").read_text(
+            encoding="utf-8")
+
+    def test_card_lines_survive_the_rename(self, tmp_path, monkeypatch):
+        d = self._roster(tmp_path, monkeypatch,
+                         **{"45-exile": self._cored("Exile Dividend", "45 Old")})
+        pm.sync_deck_names(_setdeck(name="45 The Exiles", guid=self.GUID),
+                           apply=True, out=lambda *_a: None)
+        body = (d / "45-exile" / "deck.txt").read_text(encoding="utf-8")
+        assert "4 Shock (M21) 159" in body                      # INV-04 content intact
+        assert body.count("#: name:") == 1                      # replaced, not stacked
+        assert list((d / "45-exile").glob("*.bak"))              # and a backup exists
+
+    def test_a_stranded_citation_is_flagged(self, tmp_path, monkeypatch):
+        """A rename can orphan a reference in ANOTHER deck's prose; nothing rewrites those
+        and the rationale audit reads card names, not deck names."""
+        self._roster(tmp_path, monkeypatch, **{
+            "45-exile": self._cored("Exile Dividend", "45 Old"),
+            "54-lotus": self._cored("Grand Lotus", "54 GL", guid="g-other",
+                                    extra="#: notes: splits the role with Exile "
+                                          "Dividend\n"),
+        })
+        said = []
+        pm.sync_deck_names(_setdeck(name="45 The Exiles", guid=self.GUID), out=said.append)
+        assert "old name cited in 1 other deck file(s): 54" in "\n".join(said)
+
+    def test_a_citation_that_still_reads_correctly_is_not_flagged(
+            self, tmp_path, monkeypatch):
+        """"Unlock" -> "Unlocked" keeps every citation valid. Flagging it would bury the
+        real cases in noise."""
+        self._roster(tmp_path, monkeypatch, **{
+            "51-unlock": self._cored("Unlock", "51 Old"),
+            "54-lotus": self._cored("Grand Lotus", "54 GL", guid="g-other",
+                                    extra="#: notes: the Unlock shell does this too\n"),
+        })
+        said = []
+        pm.sync_deck_names(_setdeck(name="51 Unlocked", guid=self.GUID), out=said.append)
+        assert "cited in" not in "\n".join(said)
+
+
+class TestSourcelessNameReconcile:
+    """`--sync-names` with no log. The repo already holds Arena's name for every
+    GUID-paired deck, so reconciling a months-old divergence must not require a paste
+    covering all 106 decks — that is a capability nobody reaches (G-53)."""
+
+    def _roster(self, tmp_path, monkeypatch, **decks):
+        return TestArenaHeaderWriting._roster(self, tmp_path, monkeypatch, **decks)
+
+    def test_it_reads_arena_names_back_out_of_the_headers(self, tmp_path, monkeypatch):
+        self._roster(tmp_path, monkeypatch, **{
+            "45-exile": TestAdoptingArenaDeckNames._cored(
+                TestAdoptingArenaDeckNames, "Exile Dividend", "45 The Exiles",
+                guid="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+        })
+        assert pm.stored_arena_names() == {
+            "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee": "45 The Exiles"}
+        _w, plan = pm.sync_deck_names_from_headers(out=lambda *_a: None)
+        assert [(p[0], p[3]) for p in plan] == [("45", "The Exiles")]
+
+    def test_the_guid_is_found_by_SHAPE_not_by_position(self, tmp_path, monkeypatch):
+        """A deck NAME can look like anything, including something comma-ish, so the two
+        header fields cannot be told apart by order."""
+        self._roster(tmp_path, monkeypatch, **{
+            "45-exile": "#: name: Exile Dividend\n#: format: Standard\n"
+                        "#: arena: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee, 45 The Exiles\n"
+                        "4 Shock (M21) 159\n",
+        })
+        assert pm.stored_arena_names() == {
+            "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee": "45 The Exiles"}
+
+    def test_a_header_with_no_guid_is_skipped(self, tmp_path, monkeypatch):
+        """Only a GUID is proof of identity, so a name-only header cannot drive a
+        rename."""
+        self._roster(tmp_path, monkeypatch, **{
+            "45-exile": "#: name: Exile Dividend\n#: format: Standard\n"
+                        "#: arena: 45 The Exiles\n4 Shock (M21) 159\n",
+        })
+        assert pm.stored_arena_names() == {}
+        assert pm.sync_deck_names_from_headers(out=lambda *_a: None) == (0, [])
+
+
+class TestPooledReads:
+    """The per-deck split cannot reach the sample floor at this roster size, so the
+    record needs a denominator that can."""
+
+    def _rows(self, spec):
+        return [{"Deck": d, "Result": r, "Event": e} for d, r, e in spec]
+
+    def test_all_decks_pools_across_the_roster(self, capsys):
+        pm.report(self._rows([("7", "W", "Play"), ("7", "L", "Play"),
+                              ("45", "W", "Ladder")]))
+        out = capsys.readouterr().out
+        assert "ALL DECKS" in out
+        assert "n=3 — 17 more for a read" in out
+
+    def test_the_event_split_appears_only_when_there_is_more_than_one(self, capsys):
+        pm.report(self._rows([("7", "W", "Play"), ("7", "L", "Play")]))
+        one = capsys.readouterr().out
+        assert "Ladder" not in one and "  Play" not in one
+        pm.report(self._rows([("7", "W", "Play"), ("7", "L", "Ladder")]))
+        assert "Ladder" in capsys.readouterr().out
+
+    def test_pooling_still_refuses_a_small_sample(self, capsys):
+        pm.report(self._rows([("7", "W", "Play")] * 5))
+        out = capsys.readouterr().out
+        assert "%" not in out.split("Pooled")[1].split("A pooled rate")[0]
+
+    def test_a_reachable_sample_does_print_a_rate_and_interval(self, capsys):
+        pm.report(self._rows([("7", "W", "Play")] * 12 + [("45", "L", "Play")] * 8))
+        pooled = capsys.readouterr().out.split("Pooled")[1]
+        assert "60%" in pooled and "95% CI" in pooled
+
+    def test_the_pooled_caveat_is_always_printed(self, capsys):
+        pm.report(self._rows([("7", "W", "Play")]))
+        assert "never whether a deck is good" in capsys.readouterr().out
+
+
 class TestHeaderSyncRidesAlong:
     """Header upkeep as a separate command is upkeep nobody runs (the G-53 shape), so
     the normal match flow performs it — quietly, and only when something changes."""
