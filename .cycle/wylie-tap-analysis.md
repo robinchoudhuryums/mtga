@@ -55,6 +55,36 @@ second axis. Track variant-deck signals explicitly (user asked).
 
 Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ marginal · ✗ out
 
+### Batch 1 (cards 1–25 of the 74)
+
+| Card | Verdict | Why (framework rule) |
+|---|---|---|
+| Kirol, Attentive First-Year | ★★★ | F1 outlet that taps WYLIE + copies his trigger (tap Wylie+1 → copy the tapped-trigger = 2 life 2 cards). {1}{R/W}{R/W} hybrid, 1/turn (F8). |
+| Adagia, Windswept Bastion | ★★★ | A LAND with station: repeatable sorcery-speed "tap another creature you control" — a free Wylie outlet in the manabase. W source. |
+| Sunstar Chaplain | ★★ | F2 payoff: "two or more tapped creatures → +1/+1 counter" every end step; its own ability taps for more. |
+| Starport Security | ★★ | Repeatable instant-speed "tap another target creature": taps Wylie for value OR their attacker (F6 dual-axis). Owned. |
+| Great Train Heist | ★★ | F4 mass-untap = re-tap all outlets in one turn + extra combat; modal. |
+| Ertha Jo, Frontier Mentor | ★★ | Copies every activated ability that targets (Mercenary pumps, Starport taps); brings a Mercenary. |
+| Hellspur Posse Boss | ★ | 2 Mercenary tokens (self-tapping pump bodies = saddle/crew fuel + Wylie pumps) + outlaw haste. |
+| Brimstone Roundup | ★ | Mercenary per 2nd spell; plot. Token stream for tap costs. |
+| Alacrian Jaguar | ★ | Vigilant Mount; saddle 1 taps Wylie (F1); self-pump. 5 MV common. |
+| Thunder Lasso | ★ | Axis-B (F6): repeatable attack-tap of a defender; cheap. |
+| Summon: Primal Garuda | ★ | Axis-B payoff: 4 dmg to a TAPPED creature + evasion sagas. |
+| Rootwise Survivor | ★ | F2-adjacent payoff: "if this is tapped at 2nd main → 3 counters on a land"; wants crew/saddle to tap it. |
+| Spring-Loaded Sawblades | ★ | Axis-B payoff (5 dmg to tapped) + crew-1 Vehicle back face. |
+| Vow to Erebor | ◇ | F4 untap trick + pump; owned. Fine filler, not engine. |
+| Vengeful Villagers | ◇ | Axis-B on attack; sac rider is off-plan. Owned. |
+| Mouse Trapper | ◇ | Valiant tap-down needs a targeting shell we may not run. |
+| Rimefur Reindeer | ◇ | Tap-down per ENCHANTMENT ETB — only with an enchantment sub-build. |
+| Wayspeaker Bodyguard | ◇ | Flurry tap-down + small regrowth; cadence 1/turn. |
+| Raccoon Rallier | △ | Haste granter; taps itself for marginal value. |
+| Stubborn Burrowfiend | △ | Saddle payoff is mill-grow — a different (graveyard) axis. |
+| Hedge Whisperer | △ | Land-animation w/ collect evidence; off-plan. |
+| Rhys, the Evermore | △ | Persist trick; counter-removal niche. |
+| Venat, Heart of Hydaelyn | △ | Legendary-matters engine — good card, wrong deck. |
+| Take for a Ride | ✗ | Steal effect; nothing here wants it (F1/F2 zero). |
+| Rydia, Summoner of Mist | ✗ | Saga recursion; no saga density planned. |
+
 ## 5. Consolidated plan (live)
 
 - (builds after batch 1)
