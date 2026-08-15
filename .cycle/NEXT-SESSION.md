@@ -38,6 +38,47 @@ citations in other decks were repointed. **The divergence regrows** — it comes
 decks are named in the client — so re-run `--sync-names` (it is opt-in and reports without
 the flag) rather than assuming the two sides still agree.
 
+**EIGHT DIRECTORY SLUGS MOVED WITH THEM**, so an older note's PATH will 404 even when its
+deck number is right. Deck ids come from the leading number, so nothing broke:
+
+    28-dinosaurs -> 28-triceraton          51-unlock          -> 51-unlocked
+    45-exile-dividend -> 45-the-exiles     57-jeskai-tempest  -> 57-tempest
+    48-doombot-array -> 48-doombots        58-gold-standard   -> 58-treasure-planet
+    49-scaleforge -> 49-big-draco          59-stampede-engine -> 59-stampede
+
+Plus three variant FILES: `26b-scrapyard-tithe` → `26b-ancient-decay`, `52a-dark-realms`
+→ `52a-void-realm`, `56a-gruul` → `56a-executioners-song`. Resolve any path through
+`deck.py`/`discover_decks`, never by typing a slug from an old note.
+
+---
+
+## 0-now. THE 2026-08-15 SESSION (read second — it is the newest state)
+
+**Landed:** a 17-card HOB ingest, four swaps applied, five flex lines added, and the
+match-log tooling batch (findings 1–4) that preceded them. Library 2254 → 2275 printings.
+
+- **Ingest (17, all new).** Routed crafted/opened → `reconcile_crafts.py`, 1 copy each.
+  Two names had to be corrected before the paste would parse and BOTH are the shape that
+  silently loses a card: "Misty mountain raider" is **Misty MountainS Raider** (plural),
+  and "Down, down to goblin-" was truncated mid-name. `deck.py resolve` reported the
+  first as not-found rather than guessing — trust that refusal.
+- **Swaps applied:** 39 −The Last Agni Kai +Chainsaw · 29a −Bombard +The Mountain-king's
+  Return · 54a −Loki Laufeyson +Bilbo, Thief in the Night · 19 −Dazzling Denial +Bard,
+  King of Dale. All four preflight READY, all four rationales re-grounded.
+- **DECK 19'S OPEN RE-GRADE IS CLOSED, and not the way it was leaning.** It had been
+  flagged possibly UNDER-graded since 2026-08-09 (floor A, letter held at B pending a
+  human call). The swap moved interaction 5 → 4 and card advantage 2 → 3, so the floor is
+  now B and matches the letter. Do not re-open it as an under-grade. **Watch interaction
+  4** — one more cut on that axis and the floor drops BELOW the claimed B.
+- **Open, parked in the decks' own flex blocks** (so they cannot be lost): Bolg of the
+  North → 55, Down Down to Goblin-town → 42a, Gandalf Goblins' Bane → 37 / 37a / 37b.
+  Each line names its cut and the reasoning. Gandalf goes in ALL THREE — copies are
+  fungible, it is not a choice.
+- **Owned but with no home yet:** Gleaming Splendor, Key to the Side-Door, Elrond
+  Moon-Reader, Misty Mountains Raider, Great Ugly-Looking Goblin, Old Fat Spider Can't
+  See Me. The two amass cards want an Army deck the roster does not have — that is a
+  build-a-deck idea, not a fit problem.
+
 ---
 
 ## 0. Repo position — CURRENT (2026-08-12, broad-scan-4)

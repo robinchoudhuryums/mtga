@@ -102,3 +102,6 @@
 6 Mountain (MSH) 293
 7 Plains (MSH) 287
 2 Swamp (MSH) 291
+
+# Flex — from the 2026-08-15 HOB ingest
+#~ -Raph & Leo, Sibling Rivals | +Bolg of the North | owned: ETB sacrifice a creature, deal its power to another, and amass the excess as a Goblin Army. Graded here over deck 58 (which scored higher) because Bolg wants CREATURE fodder and this deck mints 16 sources of attacking tokens where 58's 27 token-makers are mostly Treasures. Cut is the deck's lowest-fit card, off the central themes. Cost: Bolg is MV 5 on an aggro curve.

@@ -98,3 +98,5 @@
 # Flex — more virtual copies (comments; not part of the 60). See: deck.py redundancy 37b
 #~ -Boomerang Basics | +Divert Disaster | owned: a 3rd counter (virtual copy) if the meta rewards interaction over a cantrip
 #~ note: applied — Shipwreck Dowser in for Impractical Joke.
+
+#~ -Mana Sculpt | +Gandalf, Goblins' Bane | owned: same swap as deck 37. Copies are FUNGIBLE in Arena, so the one owned Gandalf plays in 37, 37a and 37b simultaneously — this is not a choice between the three.

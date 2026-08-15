@@ -1644,3 +1644,38 @@ real log (rename leg NOT APPLICABLE — needs the Arena client). Remaining doc d
 CLAUDE.md G-57 / docs/gotchas.md [G-57] still describe the old column set — that is the
 `/sync-docs` follow-up. The record is at 15 matches; no per-deck row is near the n=20
 floor, and at 106 decks it will not get there — an AGGREGATE read is the open idea.
+
+## 2026-08-15 — HOB ingest, four swaps, five flex lines
+
+**Completed.** 17 opened cards ingested (crafted/opened route, 1 each, all new — library
+2254 → 2275). Four swaps applied and committed: 39 −The Last Agni Kai +Chainsaw · 29a
+−Bombard +The Mountain-king's Return · 54a −Loki Laufeyson +Bilbo, Thief in the Night ·
+19 −Dazzling Denial +Bard, King of Dale. Five flex lines parked the remaining graded fits
+(55, 42a, 37, 37a, 37b).
+
+**Deck 19's re-grade closed.** Open since 2026-08-09 as "possibly under-graded, floor A
+vs letter B". The swap moved interaction 5 → 4 and card advantage 2 → 3; floor is now B
+and matches. Recorded in the deck's own `#: tier:` prose with the caveat that interaction
+4 is the number to watch.
+
+**Two names needed correcting before the ingest would parse**, both worth remembering
+because the failure is silent: "Misty mountain raider" → Misty Mountain**s** Raider
+(plural), and "Down, down to goblin-" was truncated. `deck.py resolve` refused the first
+rather than guessing, which is the behaviour to trust.
+
+**Decided AGAINST** (do not re-propose without new information):
+- **Bolg of the North into deck 58** despite it scoring 86 there against 53 in deck 55.
+  Bolg wants CREATURE sacrifice fodder; 58's 27 token-makers are mostly Treasures, while
+  55 mints 16 sources of attacking creature tokens. Went to 55's flex.
+- **Cutting The Ten Rings from deck 43** for Bard. `cuts` ranks it 4th and is wrong — 43's
+  own `#: archetype:` names it as one of three no-max-hand-size pieces, and it combos with
+  Bard directly (refills to ten each end step, Bard doubles each draw).
+- **Cutting Deadly Precision (42a) or Shadow of the Goblin (54a)** — both carry the
+  `⚡cost-as-upside HERE` flag, which is the engine, not a drawback.
+- **Cutting Super-Soldier Serum (39) or Team Avatar (55)** — both `⌁scales w/` and graded
+  at their FLOOR, so their printed numbers understate them in those decks.
+
+**Where I left off.** All work committed and pushed. `check_all` all invariants hold (7
+warnings, all K-11 vanilla-creature blanks — the expected baseline). Dashboard rebuilt.
+PR #127 merged; the ingest/swap/flex work is a NEW change on the same branch and needs
+its own PR.

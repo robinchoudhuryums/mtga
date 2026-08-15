@@ -90,3 +90,5 @@
 # Flex — options (comments; not part of the 60). See: deck.py flex 37a
 #~ -Return the Favor | +Sorceress's Schemes | owned: recur an instant/sorcery from the yard (+R) — more grind/recursion for the value plan
 #~ -Circle of Power | +Daring Waverider | owned: a 6-drop that free-casts an instant/sorcery from your graveyard — big value swing if the curve can support it
+
+#~ -Mana Sculpt | +Gandalf, Goblins' Bane | owned: same swap as deck 37 — the noncreature trigger is the shared plan. Careful NOT to cut Return the Favor instead despite its lower fit: Spree copy and redirect is this variant's whole copy-storm axis.
