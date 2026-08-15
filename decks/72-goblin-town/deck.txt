@@ -1,7 +1,7 @@
 #: name: Goblin-town
 #: format: Standard
 #: colors: BR
-#: tier: B (PROVISIONAL) — matches the B metrics floor (interaction 4 with 2 possible
+#: tier: B (PROVISIONAL) — matches the B metrics floor (interaction 5 with 2 possible
 #: tier: under-counts — Azog, Bolg, Volley Veteran and Blasphemous Edict all remove
 #: tier: things the classifier reads unevenly — against card advantage 4, again
 #: tier: under-read: The Great Goblin's death-impulse, Vampiric Rites, Corrupted
@@ -45,9 +45,9 @@
 1 Azog, Moria's Ruin (HOB) 61
 1 Down, Down to Goblin-town (HOB) 65
 1 Rage into the Valley (HOB) 79
-2 Gathering of Darkness (HOB) 68
+1 Gathering of Darkness (HOB) 68
 2 Great Ugly-Looking Goblin (HOB) 74
-2 Tidings of War (HOB) 115
+1 Tidings of War (HOB) 115
 2 Goblin-town Flunkies (HOB) 100
 1 Bothersome Noisemaker (HOB) 89
 1 Misty Mountains Raider (HOB) 105
@@ -71,6 +71,8 @@
 1 Zoyowa Lava-Tongue (LCI) 245
 
 # Sacrifice value + removal
+1 Sidequest: Hunt the Mark (FIN) 119
+1 Buzzard-Wasp Colony (TLA) 88
 1 Vampiric Rites (WOT) 37
 1 Eaten Alive (FDN) 172
 1 Corrupted Conviction (OTJ) 84
@@ -86,3 +88,9 @@
 2 Bloodfell Caves (TDM) 250
 9 Swamp (TRK) 321
 9 Mountain (TRK) 323
+
+# Flex — options (comments; not part of the 60). See: deck.py flex 72
+#~ note: applied — Buzzard-Wasp Colony in for the 2nd Gathering of Darkness (Army insurance: a dying Army's counters jump to the Wasp), and Sidequest: Hunt the Mark in for the 2nd Tidings of War (removal on the short axis).
+#~ -Great Ugly-Looking Goblin | +Zhao, Ruthless Admiral | owned: every sacrifice — Treasures included — pumps the team, and his attack-ritual {R}{R} deploys Krenko post-combat. The swap to make if games show the menace plan mattering less than the go-wide push.
+#~ -Blasphemous Edict | +Goblin Negotiation | craft U: ONLY if the meta is removal-light — Edict is the deck's lone sweeper and its 13-creature {B} mode is real here; Negotiation is spot removal that leaves Goblin bodies on excess.
+#~ note: Rakdos, the Muscle stays OUT on a rules point, not a vibe: a token's mana value is 0, so sacrificing this deck's abundant token fodder exiles ZERO cards — his repeatable ability only pays on nontoken sacrifices, which are the engine pieces you keep.
