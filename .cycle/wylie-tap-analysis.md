@@ -1,7 +1,9 @@
 # Wylie Duke tap-synergy pile — analysis (TEMPORARY working doc)
 
-**Status: IN PROGRESS.** Delete once the deck(s) are drafted and the findings are folded
-into the deck files' `#: notes:` blocks. A scratchpad, not a source of truth — decks/ are.
+**Status: CORE DRAFTED (deck 73 Duke's Vigil, 2026-08-15).** Doc stays live for the
+pending variants: the user wants VARIANT A next (Naya WGR, Mercenary-token emphasis —
+see §3b/§5) and possibly VARIANT C if it becomes buildable. Delete after the variants
+are drafted or declined.
 
 **Source list:** scratchpad `wylie-pile.txt` — 106 distinct names; 74 not currently in any
 deck (`wylie-remaining.txt`), 32 already in decks. **For a NEW-deck pile the 32 stay
