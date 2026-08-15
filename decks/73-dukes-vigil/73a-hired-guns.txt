@@ -1,0 +1,91 @@
+#: name: Duke's Vigil — Hired Guns
+#: format: Standard
+#: colors: WGR
+#: plan: aggro
+#: based-on: deck.txt
+#: tier: B (PROVISIONAL) — the Mercenary-emphasis variant of 73, graded fresh once
+#: tier: validated; UNTESTED and craft-heavy like its parent. The wide token plan with
+#: tier: haste (Hellspur, Samut) and extra combats (Aurelia, Anzrag, Raph & Leo) gives
+#: tier: it a real clock; interaction is the thin axis by design (aggro plan). Re-grade
+#: tier: with games.
+#: archetype: Naya (W/G/R) MERCENARY-TOKEN aggro — the Variant A the Wylie pile analysis
+#: archetype: predicted (.cycle/wylie-tap-analysis.md §3b). PLAN: flood the board with
+#: archetype: 1/1 Mercenary tokens (Ertha Jo, Hellspur Posse Boss, Brimstone Roundup,
+#: archetype: Form a Posse, Selvala on every creature spell) — each token is a repeatable
+#: archetype: sorcery-speed +1/+0 pump that TAPS ITSELF — and convert the stream three
+#: archetype: ways: BAYLEN taps 2/3/4 tokens for mana / a card / counters+trample,
+#: archetype: GHIRED turns every nontoken creature into "{T}: copy a token that entered
+#: archetype: this turn" (more Mercenaries), and the pumps stack on evasive attackers.
+#: archetype: Old Hob and War Effort add a free attacker every combat, Samut and the
+#: archetype: extra-combat package (Aurelia, Anzrag, Raph & Leo) close, and Caparocti /
+#: archetype: Orphans of the Wheat convert spare taps into cards and power. Wylie, Kirol
+#: archetype: and Veteran Beastrider carry the parent deck's tap-value core over — every
+#: archetype: Mercenary pump pointed at Wylie is still a tap engine.
+#: archetype: DISTINCTIVENESS vs parent 73: same colors, opposite posture — 73 is a
+#: archetype: midrange VALUE engine that wants to sit and tap; this races. Token themes
+#: archetype: overlap 55 Mardu Waves (go-wide) but Mercenary self-tap + Baylen is an
+#: archetype: engine no other deck runs.
+#: notes: Shared copies with parent 73 are FUNGIBLE (Wylie, Selvala, Ghired, Kirol,
+#: notes: Veteran Beastrider, Virtue of Loyalty, Springleaf Drum, Dragonbroods' Relic,
+#: notes: Orphans, Great Train Heist, the teamwork spells, most lands) — one craft
+#: notes: serves both lists.
+#: notes: BAYLEN'S ABILITIES ARE UNRESTRICTED (no sorcery clause): with Veteran
+#: notes: Beastrider untapping everything at your end step, the token board pays Baylen
+#: notes: again on each opponent's turn.
+#: protect: Baylen, the Haymaker; Wylie Duke, Atiin Hero; Ghired, Mirror of the Wilds; Ertha Jo, Frontier Mentor; Anzrag, the Quake-Mole
+
+# Mercenary engine — token makers + sinks
+1 Baylen, the Haymaker (BLB) 205
+1 Ertha Jo, Frontier Mentor (OTJ) 203
+1 Hellspur Posse Boss (OTJ) 128
+1 Selvala, Eager Trailblazer (OTJ) 231
+1 Ghired, Mirror of the Wilds (OTJ) 205
+1 Old Hob, Alleycat Blues (TMT) 99
+1 Kirol, Attentive First-Year (ECL) 231
+1 Wylie Duke, Atiin Hero (OTJ) 239
+1 Orphans of the Wheat (DSK) 22
+1 Caparocti Sunborn (LCI) 226
+1 Veteran Beastrider (DFT) 226
+1 Hardbristle Bandit (OTJ) 168
+1 Spider Manifestation (SPM) 148
+1 Outcaster Trailblazer (OTJ) 173
+
+# Top end — anthems + extra combats
+1 Samut, the Driving Force (DFT) 222
+1 Aurelia, the Warleader (FDN) 651
+1 Anzrag, the Quake-Mole (MKM) 186
+1 Raph & Leo, Sibling Rivals (TMT) 166
+1 Bounding Felidar (OTJ) 5
+1 Bridled Bighorn (OTJ) 7
+1 Gilded Ghoda (DFT) 130
+1 Tangle Tumbler (BLB) 250
+
+# Noncreature — token spells / pumps / interaction
+1 Form a Posse (OTJ) 204
+1 Brimstone Roundup (OTJ) 115
+1 War Effort (TDM) 131
+1 Great Train Heist (OTJ) 125
+1 Virtue of Loyalty (WOE) 38
+1 Springleaf Drum (ECL) 260
+1 Dragonbroods' Relic (TDM) 140
+1 Helicarrier Strike (MSH) 15
+1 HULK SMASH! (MSH) 135
+1 Team Tactics (MSH) 155
+1 Go Nuts! (MSH) 168
+1 Fate of the Sun-Cryst (FIN) 19
+1 Rustler Rampage (OTJ) 27
+1 Zealous Display (EOE) 45
+
+# Lands — 24 Naya (fungible with 73)
+1 Command Bridge (EOE) 252
+1 Sunbillow Verge (DFT) 264
+1 Thornspire Verge (DSK) 270
+1 Hushwood Verge (DSK) 261
+1 Blossoming Sands (M21) 244
+1 Kyoshi Village (TLA) 271
+1 Rugged Highlands (FDN) 265
+1 Gongaga, Reactor Town (FIN) 280
+1 Restless Ridgeline (LCI) 283
+6 Plains (TRK) 317
+4 Forest (TRK) 325
+5 Mountain (TRK) 323
