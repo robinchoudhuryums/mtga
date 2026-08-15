@@ -3,7 +3,8 @@
 #: colors: WGR
 #: plan: midrange
 #: tier: B (PROVISIONAL) — graded UNDER the A metrics floor, which this list meets
-#: tier: exactly (interaction 5, interaction+card-adv 7) under the honest plan (the
+#: tier: exactly (interaction 5, with the two axes summing right at the threshold)
+#: tier: under the honest plan (the
 #: tier: inference guessed aggro off the cheap curve, but this is a VALUE ENGINE —
 #: tier: plan set to midrange per the 56a lesson, so the floor weighs interaction +
 #: tier: card advantage). Interaction reads 5; card advantage reads 2 and is the most
