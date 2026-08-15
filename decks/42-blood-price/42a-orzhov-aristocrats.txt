@@ -202,3 +202,5 @@ Deck
 #~ note: applied — Krovod Haunch in for Resolute Reinforcements.
 #~ note: applied — Vein Ripper in for Robot Domination.
 #~ note: SLOT MATH, closed — the three cheap bodies (Resolute Reinforcements, Agents of HYDRA, and Anafenza for the interaction fix) are spent, and Fiendish Panda was kept on a re-read. The deck is now 35 nonlands with no filler, which is the good version of 'no room': any further add has to beat an engine card, not a spare one.
+
+#~ -Krumar Initiate | +Down, Down to Goblin-town | owned: a Saga that strips a nonland card, then amasses a body, then drains twice — three things this deck wants, on one card. This is the add the SLOT MATH note above demands: Krumar Initiate is not a spare, it is the weakest engine card (sorcery-speed, pay-X-life, worst fit in the deck at 39). NOT a cut for Deadly Precision or Hero's Downfall — the first is cost-as-upside here and the second is 1 of only 5 interaction.

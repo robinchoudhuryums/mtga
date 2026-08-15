@@ -108,3 +108,5 @@
 #~ -Harmonized Trio | +We Say Thee Nay! | if you want a hard-ish counter over the draw-body; Trio's teamwork tap competes with attacking
 #~ note: Taigam copies your 2nd spell each turn AND suspends the original back — the one copy effect that adds real future CASTS (which re-trigger the pings). Copies themselves don't trigger "cast" pings/prowess. Variants: 37a = value/storm take; 37b = competitive functional-redundancy A build (`deck.py redundancy 37`).
 #~ note: For a more consistent build without 4-ofs, add virtual copies of the thin effects — `deck.py redundancy 37` names them (e.g. counters: Spell Pierce / Divert Disaster).
+
+#~ -Mana Sculpt | +Gandalf, Goblins' Bane | owned: whenever you cast a noncreature spell he grows and pings each opponent, which IS this deck's ping-race plan, and the Adventure half exiles the top two to play while you control a Wizard. Same MV 3 as the cut. Losing one counter is cheap against 12 interaction.

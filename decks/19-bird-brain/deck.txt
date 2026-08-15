@@ -5,14 +5,19 @@
 #: tier: Chocobo-landfall tokens; fully built and FULLY OWNED. Deep, coherent engine (16
 #: tier: Birds, 20 total payoffs) on a wide plan `shape` measures at WIDE 12 / TALL 1,
 #: tier: with clean 2-color-effective mana.
-#: tier: RE-GRADE PENDING A HUMAN CALL (2026-08-09). The metrics floor is now A —
-#: tier: interaction 5 + card advantage 2 — after -Dazzling Angel / +Elspeth, Storm
-#: tier: Slayer, and `deck.py tier` reports the deck as possibly UNDER-graded. The letter
-#: tier: is deliberately left at B until a person decides: tier letters are never
-#: tier: auto-written here. The case FOR A is that Elspeth is three cards in one for this
-#: tier: list (token doubler across 13 feeders, a board-wide +1/+1-and-flying anthem, and
-#: tier: removal). The case for holding B is singleton variance, card advantage still 2,
-#: tier: and protection 2 with a thin W manabase.
+#: tier: RE-GRADE RESOLVED BY A SWAP, NOT A JUDGMENT (2026-08-15). The floor had read A
+#: tier: on interaction 5 + card advantage 2 after -Dazzling Angel / +Elspeth, Storm
+#: tier: Slayer, and the deck was flagged possibly UNDER-graded while the letter was held
+#: tier: at B pending a human call. -Dazzling Denial / +Bard, King of Dale settled it the
+#: tier: other way: interaction 5 -> 4 (the cut was a soft counter) and card advantage
+#: tier: 2 -> 3 (Bard doubles every draw after the first each turn), so the floor is now B
+#: tier: and matches the claimed letter. The A case has NOT gone away — Elspeth is still
+#: tier: three cards in one here (token doubler across 13 feeders, a board-wide
+#: tier: +1/+1-and-flying anthem, and removal) and Bard doubles the same token layer — but
+#: tier: it now needs an argument from bombs the vector cannot see rather than from a
+#: tier: floor that was already there. Against holding B: singleton variance, protection 2
+#: tier: and a thin W manabase, all unchanged. Interaction 4 is the number to watch — one
+#: tier: more cut on that axis and the floor slips below the letter.
 #: tier: WHAT ACTUALLY CAPS IT, measured: the white manabase. `consistency` prices the
 #: tier: deck's {W}{W} costs in the high-50s-to-low-60s% on curve — Aven Interrupter at
 #: tier: 58% on turn three, Storm, Windrider at 61% on turn four — wanting roughly +8
@@ -52,7 +57,7 @@
 1 Galactic Wayfarer (EOE) 185
 1 Glacier Godmaw (EOE) 188
 1 Kishla Skimmer (TDM) 201
-1 Dazzling Denial (BLB) 45
+1 Bard, King of Dale (HOB) 144
 1 The Legend of Kyoshi (TLA) 186
 1 Michelangelo, Mutant BFF (TMT) 120
 1 Storm, Windrider (MSH) 230
@@ -104,7 +109,7 @@
 #~ note: all OWNED (0 wildcards). Bushwhack / Harsh Annotation / Run Over remain owned interaction options too.
 #~ +East Wind Avatar | OWNED (salvage from retired 19c pile): {3}{W} Bird — "Flying, vigilance. Alliance — whenever another creature you control enters, +1/+0 EOT." Evasive Bird that grows on go-wide; top-ranked pile leftover (suggest #9 here). ~ role-player over a weaker flyer.
 #~ note: 19c "WIP Pile (raw dump)" retired 2026-07 — checked all 46 pile orphans via updated `suggest --owned`; only East Wind Avatar ranks as a strong fit for this Bant primary (green landfall leftovers fit the GW 19b instead). The rest correctly trimmed (Cat-Owl already handled above).
-#~ -Dazzling Denial | +Finch Formation | OWNED (BLB, 2026-08-13 ingest): fit 69, the
+#~ note: applied — Bard, King of Dale in for Dazzling Denial.
 #~   batch's best. {2}{U} 2/2 flier with OFFSPRING {3} — pay it and the ETB makes a 1/1
 #~   token copy, so one card is two Birds, and its own ETB grants flying to another
 #~   creature. Dazzling Denial is `cuts` #1 here at fit 1.

@@ -1,7 +1,8 @@
 #: name: Starforge
 #: format: Standard
 #: tier: A — Boros (W/R) equipment aggro-midrange. Metrics floor is A on the aggro
-#: tier: plan (clock + interaction, ~5 with Agni Kai): a coherent double-strike /
+#: tier: plan (clock + interaction, 6 — Chainsaw replaced Agni Kai 2026-08-15 and the
+#: tier: count held): a coherent double-strike /
 #: tier: extra-combat engine (Hard-Won Jitte, Twin Blades, Cloud Planet's Champion,
 #: tier: Raphael, Blacksmith's Talent, Sami; Aurelia + Raph & Leo add combat phases),
 #: tier: a huge legendary count that turns on Mjölnir's `worthy {1}`, and real bombs
@@ -18,7 +19,10 @@
 #: notes: Cloud MM and Aurelia cast on curve far more often, near-zero tapland tempo
 #: notes: loss. Added Buster Sword (combat-damage card advantage), Mardu Devotee
 #: notes: (1-drop fix + scry 2 + a cheap carrier), and The Last Agni Kai (fight
-#: notes: removal that scales with equipment and ramps off overkill). Cut the weakest
+#: notes: removal that scales with equipment and ramps off overkill) — Agni Kai was
+#: notes: itself cut for Chainsaw on 2026-08-15: same MV 2 and same removal slot, but
+#: notes: `deals 3 damage` on ETB needs no board, where a fight needs a creature and
+#: notes: risks it, and Chainsaw stays as an Equipment afterward. Cut the weakest
 #: notes: filler: Dig Site Inventory, Quintessential Katana, Coral Sword, Knife,
 #: notes: Unexpected Request. Shares its equipment/carrier package with 38/38a —
 #: notes: copies fungible. NOTE: Mardu Devotee reads as a B "stray" in the castability
@@ -65,7 +69,7 @@ Deck
 1 Raph & Leo, Sibling Rivals (TMT) 166
 
 # Spells
-1 The Last Agni Kai (TLA) 144
+1 Chainsaw (DSK) 128
 1 Gilgamesh, Master-at-Arms (FIN) 139
 1 Go Ninja Go (TMT) 149
 

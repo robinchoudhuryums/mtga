@@ -4787,3 +4787,45 @@ Whenever another creature you control enters, you gain 1 life.",W,Bat; Bird; lif
 Finch Formation,Creature — Bird Scout,"Offspring {3} (You may pay an additional {3} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
 Flying
 When this creature enters, target creature you control gains flying until end of turn.",U,Bird; Scout; tokens; etb; flying; evasion; offspring; go-wide,BLB,50,1
+Chainsaw,Artifact — Equipment,"When this Equipment enters, it deals 3 damage to up to one target creature.
+Whenever one or more creatures die, put a rev counter on this Equipment.
+Equipped creature gets +X/+0, where X is the number of rev counters on this Equipment.
+Equip {3}",R,Equipment; counters; burn; etb; equipment; pump; equip,DSK,128,1
+The Lonely Mountain,Land — Mountain,"({T}: Add {R}.)
+This land enters tapped unless you control an Equipment.
+{4}{R}, {T}: Create a 2/2 red Dwarf creature token. This ability costs {1} less to activate for each Equipment you control. Activate only as a sorcery.",R,Mountain; cost-reduction; tokens; mana,HOB,187,1
+Mardu Siegebreaker,Creature — Human Warrior,"Deathtouch, haste
+When this creature enters, exile up to one other target creature you control until this creature leaves the battlefield.
+Whenever this creature attacks, for each opponent, create a tapped token that's a copy of the exiled card attacking that opponent. At the beginning of your next end step, sacrifice those tokens.",W/B/R,Human; Warrior; sacrifice; tokens; etb; haste; aggro; deathtouch; combat; removal,TDM,206,1
+"Bard, King of Dale",Legendary Creature — Human Noble Archer,"Reach, vigilance
+If you would draw a card except the first one you draw in each of your draw steps, draw two cards instead.
+If one or more tokens would be created under your control, twice that many of those tokens are created instead.",W/U,Human; Noble; Archer; card draw; tokens; reach; defense; vigilance; combat,HOB,144,1
+Gleaming Splendor,Enchantment,"Whenever an opponent draws their second card each turn, you create a Treasure token.
+{2}{W}: Two target players each draw a card.",W,card draw; tokens; treasure,HOB,15,1
+"Thorin, Mountain-king",Legendary Creature — Dwarf Noble,"Trample
+When Thorin enters, attach any number of target Equipment you control to target creature you control. When one or more Equipment become attached to that creature this way, that creature deals damage equal to its power to up to one target creature.",R,Dwarf; Noble; etb; trample; evasion,HOB,114,1
+"Elrond, Moon-Reader",Legendary Creature — Elf Noble,"Whenever you activate an ability of a creature, draw a card. This ability triggers only once each turn.
+{5}{U}{U}: Exile up to two other target nonland permanents you control. Return those cards to the battlefield under their owner's control at the beginning of the next end step.",U,Elf; Noble; card draw; blink,HOB,36,1
+"Bilbo, Thief in the Night",Legendary Creature — Halfling Rogue,"Spells you cast from anywhere other than your hand cost {1} less to cast.
+Whenever Bilbo attacks, you may cast an artifact, instant, or sorcery spell from your graveyard. If an instant or sorcery spell cast this way would be put into your graveyard, exile it instead.",U,Halfling; Rogue; graveyard; cost-reduction,HOB,33,1
+Beorn the Fierce,Legendary Creature — Bear Shapeshifter Warrior,"Trample
+Other Bears you control get +2/+2.
+At the beginning of combat on your turn, put a trample counter on up to one target creature you control. It becomes a Bear in addition to its other types. Then if you control three or more Bears, draw two cards.",G,Bear; Shapeshifter; Warrior; counters; card draw; pump; trample; evasion,HOB,119,1
+"Gandalf, Goblins' Bane",Legendary Creature — Avatar Wizard // Sorcery — Adventure,"Whenever you cast a noncreature spell, Gandalf gets +1/+1 until end of turn and deals 1 damage to each opponent. // Look at the top two cards of your library and exile them face down. For as long as they remain exiled, you may play them if you control a Wizard.",R,Avatar; Wizard; Adventure; exile cast; burn; pump; selection,HOB,96,1
+Bolg of the North,Legendary Creature — Goblin Soldier,"When Bolg enters, you may sacrifice another creature. When you do, Bolg deals damage equal to that creature's power to another target creature. If excess damage was dealt this way, amass Goblins X, where X is that excess damage. (Put X +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",B/R,Goblin; Soldier; counters; sacrifice; tokens; etb; amass; go-wide,HOB,148,1
+Old Fat Spider Can't See Me,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
+I — Target creature you control gains hexproof for as long as this Saga remains on the battlefield.
+II — Prevent all damage that would be dealt by up to one target creature for as long as this Saga remains on the battlefield.
+III, IV — Draw a card.",U,Saga; card draw; sacrifice; saga,HOB,50,1
+The Mountain-king's Return,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)
+I — Recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)
+II — Return target creature card with mana value 3 or less from your graveyard to the battlefield.
+III — Put a +1/+1 counter on up to one target creature.",W,Saga; counters; reanimator; graveyard; card draw; sacrifice; tokens; saga,HOB,22,1
+Key to the Side-Door,Artifact,"{2}, {T}: Target creature can't be blocked this turn.
+{1}, {T}, Discard a legendary card with the same name as a legendary permanent you control: Draw two cards.",Colorless,card draw,HOB,175,1
+Great Ugly-Looking Goblin,Creature — Goblin Soldier // Sorcery — Adventure,Each creature you control with a +1/+1 counter on it has menace. (It can't be blocked except by two or more creatures.) // Amass Goblins 2. (Then exile this card. You may cast the creature later from exile.),B,Goblin; Soldier; Adventure; counters; exile cast; amass; tokens; go-wide,HOB,74,1
+Misty Mountains Raider,Creature — Goblin Soldier,"Whenever you attack, amass Goblins 2. (Put two +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",R,Goblin; Soldier; counters; tokens; amass; go-wide,HOB,105,1
+"Down, Down to Goblin-town",Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
+I — Target opponent reveals their hand. You choose a nonland card from it. That player discards that card.
+II — Amass Goblins 1. (Put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)
+III, IV — Target opponent loses 1 life and you gain 1 life.",B,Saga; counters; lifegain; sacrifice; tokens; saga; discard; amass; go-wide,HOB,65,1
