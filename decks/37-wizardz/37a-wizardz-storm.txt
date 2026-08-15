@@ -20,8 +20,8 @@
 #: notes: they don't storm the pings. Taigam is the exception that helps the ping plan: it
 #: notes: suspends the original spell back, giving a real future CAST. So this build leans on
 #: notes: copy-for-VALUE + the draw-two engine, not a ping-storm.
-#: notes: vs base 37: +Thousand-Year Storm, +Kitsa (craft), +Taigam, +Return the Favor (copiers);
-#: notes: +Super Intelligence, +Construct a Cosmic Cube, +Clinquant Skymage (craft) (draw-two);
+#: notes: vs base 37: +Thousand-Year Storm, +Kitsa, +Taigam, +Return the Favor (copiers);
+#: notes: +Super Intelligence, +Construct a Cosmic Cube, +Clinquant Skymage (draw-two);
 #: notes: +Uncover the Moon-Letters, +Artist's Talent (both trigger on the noncreature cast this
 #: notes: variant spams — the Moon-Letters draw scales with the mana spent, so it rewards the
 #: notes: expensive value spells, and Talent's loot feeds the draw-two payoffs before its
@@ -29,7 +29,9 @@
 #: notes: -the most aggressive one-of bodies (Razzle-Dazzler, Harnesser of Storms, Crackling
 #: notes: Cyclops — 37 keeps the last two), -Heartless Act and a little cheap burn.
 #: notes: 25 lands for the heavier curve. Copies are fungible, so the shared single-copy duals
-#: notes: overlap with base 37 at no cost. WIP — several craft targets (Kitsa, Clinquant, etc.).
+#: notes: overlap with base 37 at no cost. FULLY OWNED — Kitsa, Clinquant Skymage and the rest
+#: notes: of this variant's former craft targets have been acquired; `deck.py check 37a` is the
+#: notes: authority on build state.
 #: protect: Coruscation Mage; Niv-Mizzet, Visionary; Thousand-Year Storm; Taigam, Master Opportunist; Kefka, Court Mage
 
 # Creatures — Wizard pingers / copiers / draw payoffs / engines

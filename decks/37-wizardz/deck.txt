@@ -29,8 +29,9 @@
 #: notes: board folds to an opposing sweeper. Redundancy (4× the best pingers/payoffs) is the
 #: notes: path up — the competitive 37b variant does that via functional redundancy
 #: notes: (`deck.py redundancy 37`), and 37a is a distinct value/storm take on the core.
-#: notes: 11 cards are unowned craft targets (incl. Coruscation Mage / Black Waltz No. 3 — the
-#: notes: engine's core), so this is a WIP build target.
+#: notes: FULLY OWNED — the 11 craft targets this note used to list (incl. the engine core,
+#: notes: Coruscation Mage / Black Waltz No. 3) have all been acquired. `deck.py check 37` is
+#: notes: the authority on build state; don't re-add a count here.
 #: protect: Coruscation Mage; Black Waltz No. 3; Queen Brahne; Balmor, Battlemage Captain; Kefka, Court Mage
 #: notes: PROTECTION: `deck.py stats` flags protection 0 against 5 `#: protect:` cards,
 #: notes: which reads alarming and is mostly a FALSE ALARM — the protect header marks
