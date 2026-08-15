@@ -27,12 +27,6 @@ Thornvault Forager,Creature — Squirrel Ranger,"{T}: Add {G}.
 Three Tree City,Legendary Land,"As Three Tree City enters, choose a creature type.
 {T}: Add {C}.
 {2}, {T}: Choose a color. Add an amount of mana of that color equal to the number of creatures you control of the chosen type.",Colorless,mana,BLB,260,Rare,49,"25th land in 49. {2},{T}: mana equal to Dragon count — needs 4+ of a type to beat a plain tap; 49 is the only deck on the roster that is mono-colour, dense enough, has a top end, and does not sweep its own board.",6.0,hand
-Builder's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
-When this Class enters, create a 0/4 white Wall creature token with defender.
-{W}: Level 2
-Whenever one or more noncreature, nonland permanents you control enter, put a +1/+1 counter on target creature you control.
-{4}{W}: Level 3
-When this Class becomes level 3, return target noncreature, nonland permanent card from your graveyard to the battlefield.",W,Class; counters; reanimator; graveyard; tokens; etb,BLB,5,Uncommon,29,,5.5,hand
 Calamitous Tide,Sorcery,"Return up to two target creatures to their owners' hands. Draw two cards, then discard a card.",U,card draw; bounce,BLB,43,Uncommon,51,,3.5,seed
 Long River's Pull,Instant,"Gift a card (You may promise an opponent a gift as you cast this spell. If you do, they draw a card before its other effects.)
 Counter target creature spell. If the gift was promised, instead counter target spell.",U,counterspell; card draw; gift; value,BLB,58,Uncommon,51,,3.0,seed
@@ -49,7 +43,6 @@ When this Equipment enters, if the gift was promised, attach this Equipment to t
 Equipped creature gets +3/+3 and loses flying.
 Equip {3}",Colorless,Equipment; tokens; etb; equipment; pump; gift; value; equip,BLB,249,Uncommon,38,,3.0,hand
 Sunshower Druid,Creature — Frog Druid,"When this creature enters, put a +1/+1 counter on target creature and you gain 1 life.",G,Frog; Druid; counters; lifegain; etb,BLB,195,Common,50,,1.5,seed
-Three Tree Rootweaver,Creature — Mole Druid,{T}: Add one mana of any color.,G,Mole; Druid; mana,BLB,198,Common,50,,1.5,seed
 Full Throttle,Sorcery,"After this main phase, there are two additional combat phases.
 At the beginning of each combat this turn, untap all creatures that attacked this turn.",R,,DFT,127,Rare,,,3.0,seed
 Regal Imperiosaur,Creature — Dinosaur,Other Dinosaurs you control get +1/+1.,G,Dinosaur; pump,DFT,177,Rare,28,,5.5,hand

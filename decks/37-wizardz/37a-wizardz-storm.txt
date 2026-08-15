@@ -6,7 +6,7 @@
 #: tier: pile (Phyrexian Arena / Super Intelligence / cantrips), turn "draw your second card"
 #: tier: into board (Erudite Wizard, Clinquant Skymage, Construct a Cosmic Cube), and blow
 #: tier: out with copiers (Thousand-Year Storm, Kitsa, Taigam) on a high-value spell. Floor
-#: tier: is A on card advantage 6 + interaction 9 (up from a mis-read 6); held at B by the
+#: tier: is A on card advantage 7 + interaction 8; held at B by the
 #: tier: ZERO protection against 5 `#: protect:` build-arounds, singleton variance, and the
 #: tier: copy-payoff caveat below (copies don't fire the pings). A distinct build to compare.
 #: based-on: deck.txt
@@ -20,11 +20,18 @@
 #: notes: they don't storm the pings. Taigam is the exception that helps the ping plan: it
 #: notes: suspends the original spell back, giving a real future CAST. So this build leans on
 #: notes: copy-for-VALUE + the draw-two engine, not a ping-storm.
-#: notes: vs base 37: +Thousand-Year Storm, +Kitsa (craft), +Taigam, +Return the Favor (copiers);
-#: notes: +Super Intelligence, +Construct a Cosmic Cube, +Clinquant Skymage (craft) (draw-two);
-#: notes: -the most aggressive one-of bodies (Razzle-Dazzler, Harbinger) and a little cheap burn.
+#: notes: vs base 37: +Thousand-Year Storm, +Kitsa, +Taigam, +Return the Favor (copiers);
+#: notes: +Super Intelligence, +Construct a Cosmic Cube, +Clinquant Skymage (draw-two);
+#: notes: +Uncover the Moon-Letters, +Artist's Talent (both trigger on the noncreature cast this
+#: notes: variant spams — the Moon-Letters draw scales with the mana spent, so it rewards the
+#: notes: expensive value spells, and Talent's loot feeds the draw-two payoffs before its
+#: notes: level-2 cost reduction and level-3 noncombat-damage boost come online);
+#: notes: -the most aggressive one-of bodies (Razzle-Dazzler, Harnesser of Storms, Crackling
+#: notes: Cyclops — 37 keeps the last two), -Heartless Act and a little cheap burn.
 #: notes: 25 lands for the heavier curve. Copies are fungible, so the shared single-copy duals
-#: notes: overlap with base 37 at no cost. WIP — several craft targets (Kitsa, Clinquant, etc.).
+#: notes: overlap with base 37 at no cost. FULLY OWNED — Kitsa, Clinquant Skymage and the rest
+#: notes: of this variant's former craft targets have been acquired; `deck.py check 37a` is the
+#: notes: authority on build state.
 #: protect: Coruscation Mage; Niv-Mizzet, Visionary; Thousand-Year Storm; Taigam, Master Opportunist; Kefka, Court Mage
 
 # Creatures — Wizard pingers / copiers / draw payoffs / engines
@@ -37,9 +44,8 @@
 1 Hydro-Channeler (SOS) 54
 1 Queen Brahne (FIN) 149
 1 Mysidian Elder (FIN) 145
-1 Crackling Cyclops (FDN) 83
 1 Tempest Angler (BLB) 235
-1 Harnesser of Storms (BLB) 137
+1 Gandalf, Goblins' Bane (HOB) 96
 1 Erudite Wizard (FDN) 37
 1 Tishana's Tidebinder (LCI) 81
 1 Clinquant Skymage (FDN) 33
@@ -56,6 +62,8 @@
 1 Phyrexian Arena (FDN) 180
 1 Super Intelligence (MSH) 77
 1 Construct a Cosmic Cube (MSH) 90
+1 Uncover the Moon-Letters (HOB) 57
+1 Artist's Talent (BLB) 124
 1 Circle of Power (FIN) 92
 
 # Noncreature — token / ping enablers + cantrips
@@ -66,10 +74,9 @@
 1 Portent of Calamity (BLB) 66
 
 # Noncreature — removal / interaction
-1 Thunder Magic (FIN) 165
+1 Playful Shove (BLB) 145
 1 Bitter Triumph (SOA) 26
 1 Dark Deed (MSH) 93
-1 Heartless Act (TLA) 103
 1 Mana Sculpt (SOS) 57
 
 # Lands — 25, U-weighted Grixis (owned duals + basics; fungible with 37)
@@ -91,4 +98,5 @@
 #~ -Return the Favor | +Sorceress's Schemes | owned: recur an instant/sorcery from the yard (+R) — more grind/recursion for the value plan
 #~ -Circle of Power | +Daring Waverider | owned: a 6-drop that free-casts an instant/sorcery from your graveyard — big value swing if the curve can support it
 
-#~ -Mana Sculpt | +Gandalf, Goblins' Bane | owned: same swap as deck 37 — the noncreature trigger is the shared plan. Careful NOT to cut Return the Favor instead despite its lower fit: Spree copy and redirect is this variant's whole copy-storm axis.
+#~ note: applied — Gandalf, Goblins' Bane in for Harnesser of Storms.
+#~ note: applied — Artist's Talent in for Heartless Act, and Uncover the Moon-Letters in for Crackling Cyclops.

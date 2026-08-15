@@ -7,8 +7,9 @@
 #: tier: cards), so it draws its plan every game — the consistency that separates B from A.
 #: tier: `deck.py redundancy 37` named the two thin effects; this firms them up. The win-con
 #: tier: ping ("deal damage to each opponent when you cast a noncreature spell") is a virtual
-#: tier: ~10-of (Coruscation Mage + Firebrand Archer + Thunderdrum Soloist + Black Waltz +
-#: tier: the 0/1-token makers + Lasting Tarfire); counters stand at 2 (Mana Sculpt +
+#: tier: ~11-of (Coruscation Mage + Firebrand Archer + Thunderdrum Soloist + Black Waltz +
+#: tier: Gandalf, Goblins' Bane + the 0/1-token makers + Lasting Tarfire);
+#: tier: counters stand at 2 (Mana Sculpt +
 #: tier: Tishana's Tidebinder — Spell Pierce was the third and was swapped out for Mu
 #: tier: Yanling in Batch-6). A Shriek, Treblemaker swap over Spell Pierce
 #: tier: was tried and REVERTED: Shriek's main-phase ability is combat enablement bought
@@ -28,8 +29,10 @@
 #: notes: by analyzing the core (37) with `deck.py redundancy` and applying its "virtual copies
 #: notes: first" plan. vs core 37: +Firebrand Archer +Thunderdrum Soloist (near-reprints of
 #: notes: Coruscation Mage — deepen the ping win-con to a virtual ~10-of) +Mana Sculpt (2nd
-#: notes: counter); -Harmonized Trio (clunky teamwork draw-body) -Harbinger of the Tides (tempo,
-#: notes: less needed) -Tribute to Hunger (redundant edict with Cornered). Singleton throughout.
+#: notes: counter) +Gandalf, Goblins' Bane (an 11th virtual copy of the ping win-con, and the
+#: notes: only one that grows itself); -Harmonized Trio (clunky teamwork draw-body)
+#: notes: -Tribute to Hunger (redundant edict with Cornered) -Magic Damper (a one-creature
+#: notes: combat trick, near-worthless to a go-wide board). Singleton throughout.
 #: notes: More owned virtual copies on tap (see `deck.py redundancy 37b`): counters —
 #: notes: Divert Disaster / Negate / Disdainful Stroke; reach/removal — Lightning Strike / Shock.
 #: notes: Lands are fungible with 37/37a, so the shared single-copy duals cost nothing extra.
@@ -42,11 +45,13 @@
 1 Coruscation Mage (BLB) 131
 1 Firebrand Archer (FDN) 196
 1 Thunderdrum Soloist (SOS) 134
+1 Gandalf, Goblins' Bane (HOB) 96
 1 Balmor, Battlemage Captain (FDN) 237
 1 Razzle-Dazzler (OTJ) 63
 1 Queen Brahne (FIN) 149
 1 Mysidian Elder (FIN) 145
 1 Crackling Cyclops (FDN) 83
+1 Kindlespark Duo (BLB) 142
 1 Tempest Angler (BLB) 235
 1 Harnesser of Storms (BLB) 137
 1 Erudite Wizard (FDN) 37
@@ -69,7 +74,6 @@
 
 # Noncreature — cantrips / card advantage
 1 Think Twice (FDN) 165
-1 Boomerang Basics (TLA) 46
 1 Portent of Calamity (BLB) 66
 1 Hawkeye, Young Avenger (MSH) 131
 
@@ -77,7 +81,6 @@
 1 Thunder Magic (FIN) 165
 1 Lightning Strike (MSH) 142
 1 Unsparing Boltcaster (TDM) 130
-1 Magic Damper (FIN) 61
 1 Mana Sculpt (SOS) 57
 
 # Lands — 24, U-weighted Grixis (owned duals + basics; fungible with 37/37a)
@@ -96,7 +99,7 @@
 2 Mountain (MSH) 294
 
 # Flex — more virtual copies (comments; not part of the 60). See: deck.py redundancy 37b
-#~ -Boomerang Basics | +Divert Disaster | owned: a 3rd counter (virtual copy) if the meta rewards interaction over a cantrip
+#~ note: applied — Kindlespark Duo in for Boomerang Basics.
 #~ note: applied — Shipwreck Dowser in for Impractical Joke.
 
-#~ -Mana Sculpt | +Gandalf, Goblins' Bane | owned: same swap as deck 37. Copies are FUNGIBLE in Arena, so the one owned Gandalf plays in 37, 37a and 37b simultaneously — this is not a choice between the three.
+#~ note: applied — Gandalf, Goblins' Bane in for Magic Damper.

@@ -1,0 +1,103 @@
+#: name: Goblin-town
+#: format: Standard
+#: colors: BR
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 7 after the
+#: tier: Stadium Headliner / Goblin Negotiation swaps, against card advantage 4 that
+#: tier: under-reads: The Great Goblin's death-impulse, Vampiric Rites, Corrupted
+#: tier: Conviction and Sackville-Bagginses all draw through sacrifice). A coherent
+#: tier: two-axis engine (tall Army + wide tokens converging on
+#: tier: The Great Goblin's pings), but UNTESTED, craft targets outstanding including
+#: tier: the build-around itself, and the known structural risk: the Army concentrates
+#: tier: value in one body, so a single exile spell eats every counter amassed —
+#: tier: Buzzard-Wasp Colony is the one hedge. The list also now runs NO sweeper
+#: tier: (Blasphemous Edict was CUT for Goblin Negotiation, a meta call recorded in
+#: tier: the changelog) — an opposing go-wide board must be raced, not reset.
+#: tier: Re-grade with games and the crafts in hand.
+#: archetype: Rakdos (B/R) GOBLIN AMASS-ARMY aristocrats. PLAN: grow one big Army with
+#: archetype: amass from every angle (sorceries, ETBs, attacks, deaths — 13 distinct amass
+#: archetype: sources) while going wide with Goblin tokens (Krenko, Howlsquad, Searslicer,
+#: archetype: Dragon Fodder), then convert both into damage: The Great Goblin turns EVERY
+#: archetype: counter drop into 2 damage and every Goblin death into an impulse card;
+#: archetype: Boggart Cursecrafter and Boggart Mischief drain on each death; the sac
+#: archetype: outlets (Vampiric Rites, Bolg's Company, The Sackville-Bagginses, Azog and
+#: archetype: Bolg's own modes) convert fodder into cards, mana and removal. Great
+#: archetype: Ugly-Looking Goblin gives every counter-carrier menace, so the tall Army
+#: archetype: actually connects, and Calamity turns any 1/1 saddler into two extra
+#: archetype: attackers a turn — saddle Fearsome Goblin Pair and the two dying copies
+#: archetype: amass 8 and double-trigger every death payoff.
+#: archetype: DISTINCTIVENESS: the roster has no amass deck and no Rakdos goblin deck; the
+#: archetype: nearest neighbours are 69b (runs Along the Crooked Way for its graveyard
+#: archetype: axis, not amass) and 53 Sibsig (sac, but ceremony/mill identity).
+#: notes: Drafted 2026-08-15 by /draft-deck from the user's 88-card pile, every text read
+#: notes: in three batches. The pile held THREE archetypes — amass core, goblin tokens,
+#: notes: and big-sac goodstuff (Akul, both Rakdos, Meathook II, Bringer) — and this
+#: notes: list commits to amass+aristocrats; the big-sac half is a different deck
+#: notes: (those cards want fewer, fatter bodies, not a counter Army). Calamity was
+#: notes: first binned there too and re-graded IN on a 2026-08-15 re-read: any 1/1
+#: notes: saddles her, and "repeat this process once" makes two token copies per
+#: notes: attack — the tokens ARE the saddlers, and Fearsome Goblin Pair is the payoff.
+#: notes: AZOG CAVEAT, read before targeting: destroying THEIR creature makes THEM amass
+#: notes: X (its power) — an Army for the opponent. Point him at your own sac fodder for
+#: notes: draw + your own amass, or at their creature only when the Army they get is
+#: notes: cheaper than the body you kill.
+#: notes: Tidings of War reads "cast from a graveyard → amass 3": its own flashback turns
+#: notes: it on; nothing else here casts from the yard, so grade it as 1-mana amass 1
+#: notes: with a late-game flashback 3.
+#: protect: The Great Goblin; Azog, Moria's Ruin; Krenko, Mob Boss; Along the Crooked Way; Calamity, Galloping Inferno
+
+# Amass core — the Army engine
+1 Along the Crooked Way (HOB) 60
+1 Azog, Moria's Ruin (HOB) 61
+1 Down, Down to Goblin-town (HOB) 65
+1 Rage into the Valley (HOB) 79
+1 Gathering of Darkness (HOB) 68
+1 Great Ugly-Looking Goblin (HOB) 74
+1 Tidings of War (HOB) 115
+1 Goblin-town Flunkies (HOB) 100
+1 Bothersome Noisemaker (HOB) 89
+1 Misty Mountains Raider (HOB) 105
+1 Goblin Plate Mail (HOB) 157
+1 Fearsome Goblin Pair (HOB) 156
+1 Bolg of the North (HOB) 148
+1 The Great Goblin (HOB) 158
+1 Grub's Command (ECL) 228
+1 Bolg's Company (HOB) 149
+1 Rhovanion Rampager (HOB) 82
+
+# Goblin swarm — tokens, lords, tribal payoffs
+1 Calamity, Galloping Inferno (OTJ) 116
+1 Boneclub Berserker (ECL) 126
+1 Krenko, Mob Boss (FDN) 204
+1 Howlsquad Heavy (DFT) 134
+1 Searslicer Goblin (FDN) 93
+1 Dragon Fodder (FDN) 535
+1 Boggart Cursecrafter (ECL) 206
+1 Boggart Mischief (ECL) 92
+1 Volley Veteran (FDN) 550
+1 Stadium Headliner (TDM) 122
+1 Zoyowa Lava-Tongue (LCI) 245
+
+# Sacrifice value + removal
+1 Sidequest: Hunt the Mark (FIN) 119
+1 Buzzard-Wasp Colony (TLA) 88
+1 Vampiric Rites (WOT) 37
+1 Eaten Alive (FDN) 172
+1 Corrupted Conviction (OTJ) 84
+1 The Sackville-Bagginses (HOB) 83
+1 Goblin Negotiation (FDN) 88
+1 Season of Loss (BLB) 112
+
+# Lands — 24 Rakdos
+1 Blood Crypt (ECL) 262
+1 Blazemire Verge (DSK) 256
+1 Temple of Malice (FDN) 701
+1 Razortrap Gorge (DSK) 267
+2 Bloodfell Caves (TDM) 250
+9 Swamp (TRK) 321
+9 Mountain (TRK) 323
+
+# Flex — options (comments; not part of the 60). See: deck.py flex 72
+#~ note: applied — Buzzard-Wasp Colony in for the 2nd Gathering of Darkness (Army insurance: a dying Army's counters jump to the Wasp), and Sidequest: Hunt the Mark in for the 2nd Tidings of War (removal on the short axis).
+#~ -Great Ugly-Looking Goblin | +Zhao, Ruthless Admiral | owned: every sacrifice — Treasures included — pumps the team, and his attack-ritual {R}{R} deploys Krenko post-combat. The swap to make if games show the menace plan mattering less than the go-wide push.
+#~ note: applied — Goblin Negotiation in for Blasphemous Edict.
+#~ note: Rakdos, the Muscle stays OUT on a rules point, not a vibe: a token's mana value is 0, so sacrificing this deck's abundant token fodder exiles ZERO cards — his repeatable ability only pays on nontoken sacrifices, which are the engine pieces you keep.

@@ -1,0 +1,90 @@
+#: name: Maelstrom Conservatory
+#: format: Standard
+#: colors: UR
+#: plan: control
+#: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor (interaction 13,
+#: tier: card advantage 7 — a real control suite). Held at B because: UNTESTED first
+#: tier: draft; the engine has a real speed question the metrics cannot see (nothing
+#: tier: happens until turn 4-5, and an aggro start punishes a hand of 7-drops — the
+#: tier: keepable/mulligan texture of a 10-haymaker list only shows up in games);
+#: tier: consistency prices the triple-pip hard-casts at 66% on curve, partly answered
+#: tier: by any-color Treasure/Ashling mana but not proven; and singleton variance on
+#: tier: the engine pieces means some games present no Zaffai/Capstone/Melek at all.
+#: tier: Re-grade after games; the ceiling reads A if the curve texture holds up.
+#: archetype: Izzet (U/R) BIG-SPELL ramp-control around Zaffai and the Tempests: survive
+#: archetype: with cheap counters and burn, ramp with Ashling's back face ({C}{C} that can
+#: archetype: only pay for MV-4+ spells), Rapturous Moment and Treasures, then land an
+#: archetype: engine (Zaffai casting a free instant/sorcery every turn; Improvisation
+#: archetype: Capstone recurring itself via paradigm; Melek discounting the first spell
+#: archetype: each turn by {3}) and chain haymakers — Hit the Mother Lode, Turtles in
+#: archetype: Time, Multiversal Incursion, Season of Weaving — with Taigam copying AND
+#: archetype: suspending the best one for a free recast. DISTINCTIVENESS: the 37 family
+#: archetype: is a cheap-spell PING race (win = many small triggers); this deck is the
+#: archetype: opposite corner of spellslinger — few, huge spells, and the win is the
+#: archetype: haymakers themselves. THE X-SPELL TRAP shapes the list: a spell cast
+#: archetype: without paying has X=0, so every payload is FIXED-cost on purpose — never
+#: archetype: add a big X-draw or X-burn spell as a Zaffai hit (Syncopate is here as
+#: archetype: hard-cast interaction, never a free cast).
+#: notes: Drafted 2026-08-15 from the /draft-deck survey. Most of the payload suite was
+#: notes: already owned (Turtles in Time, Time Stop, Improvisation Capstone, Brass's
+#: notes: Bounty, Multiversal Incursion, Wisdom of Ages); 5 craft targets — Hit the
+#: notes: Mother Lode (R), Faerie Slumber Party (R), River's Rebuke (R), Season of
+#: notes: Weaving (M), Rapturous Moment (U).
+#: notes: Wisdom of Ages was CUT from deck 37's concept pile as clunky top-end there;
+#: notes: here the 7-drop refuel is the plan (and it grows Melek's spell-count body).
+#: notes: Vnwxt's no-maximum-hand-size underwrites the draw-7s (Turtles in Time) and
+#: notes: Wisdom of Ages without a discard step.
+#: protect: Zaffai and the Tempests; Melek, Reforged Researcher; Ashling, Rekindled; Improvisation Capstone; Taigam, Master Opportunist
+
+# Bodies / engines
+1 Zaffai and the Tempests (SOS) 246
+1 Melek, Reforged Researcher (MKM) 430
+1 Ashling, Rekindled (ECL) 124
+1 Taigam, Master Opportunist (TDM) 60
+1 Archmage of Runes (FDN) 30
+1 Tishana's Tidebinder (LCI) 81
+1 Vnwxt, Verbose Host (DFT) 73
+
+# Payloads — big FIXED-cost spells (Zaffai / Capstone / Mother Lode hits)
+1 Improvisation Capstone (SOS) 120
+1 Hit the Mother Lode (LCI) 153
+1 Turtles in Time (TMT) 55
+1 Multiversal Incursion (MSH) 68
+1 Brass's Bounty (FDN) 190
+1 Wisdom of Ages (SOS) 71
+1 Time Stop (FDN) 166
+1 Faerie Slumber Party (WOE) 311
+1 Season of Weaving (BLB) 68
+1 River's Rebuke (FDN) 595
+
+# Ramp / rituals
+1 Rapturous Moment (SOS) 219
+2 Reckless Ransacking (ECL) 152
+
+# Draw / velocity
+1 Roaring Furnace // Steaming Sauna (DSK) 230
+1 Bottomless Pool // Locker Room (DSK) 43
+1 Self-Reflection (FDN) 163
+1 Homesickness (SOS) 53
+1 Think Twice (FDN) 165
+
+# Interaction — counters + burn (hard-cast; Time Stop above doubles as the catch-all)
+1 Syncopate (FIN) 80
+1 An Offer You Can't Refuse (FDN) 160
+1 Divert Disaster (EOE) 55
+1 Confusticate and Bebother (HOB) 35
+1 Spell Pierce (SOA) 23
+1 Conduct Electricity (BLB) 130
+1 Crash and Burn (DFT) 119
+1 Lightning Strike (TLA) 146
+1 Untimely Malfunction (DSK) 161
+
+# Lands — 26, U-weighted Izzet
+1 Riverpyre Verge (DFT) 260
+1 Temple of Epiphany (FDN) 699
+1 Spectacle Summit (SOS) 262
+2 Stark Industries (MSH) 272
+2 Swiftwater Cliffs (MOM) 273
+1 Baron, Airship Kingdom (FIN) 273
+9 Island (TRK) 319
+9 Mountain (TRK) 323

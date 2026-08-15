@@ -1,0 +1,91 @@
+#: name: Empty Threats
+#: format: Standard
+#: colors: B
+#: tier: B (PROVISIONAL) — graded deliberately UNDER the A metrics floor, and the floor
+#: tier: itself needs a caveat in both directions: interaction reads 7 with 3 possible
+#: tier: under-counts, while card advantage reads 2 against a real engine the classifier
+#: tier: cannot see (Hostile Investigator's investigate-per-discard, Aclazotz's
+#: tier: draw-when-they-can't, Bandit's Talent level 3, Hollow Marauder — 6 cards sit
+#: tier: unclassified, the K-12 shape). Held at B because: this is an UNTESTED first
+#: tier: draft; the two best payoffs (Tinybones, Aclazotz) plus Hostile Investigator are
+#: tier: uncrafted, so the list that would earn the letter is not the list on the table;
+#: tier: singleton variance throughout; and hand-attack's structural weakness — once the
+#: tier: opponent is topdecking, every discard spell is dead — is exactly the failure the
+#: tier: metrics cannot price. Re-grade after the craft targets land and it has games.
+#: archetype: Mono-black OPPONENT-DISCARD attrition (the roster's first hand-attack deck).
+#: archetype: PLAN: strip the hand with a wall of ETB-discard bodies (Virus Beetle, Hecteyes,
+#: archetype: Stony-Voiced Goblins, Malboro, Klaw) and discard spells (Psychic Whorl, Ozai's
+#: archetype: Cruelty, Rankle's Prank, Rush of Dread), then win the empty-hand state three
+#: archetype: ways: PUNISH it (Bandit's Talent level 2 upkeep drain + level 3 extra draws,
+#: archetype: Aclazotz drawing when they can't discard, Entropic Battlecruiser turning each
+#: archetype: discard into 3 life, Painful Quandary taxing every topdeck 5 life), STEAL it
+#: archetype: (Tinybones stashes every discarded card for you to play), and BEAT DOWN with
+#: archetype: the bodies the enablers leave behind (Jecht flipping into a discard Saga,
+#: archetype: Thornplate, Malboro, Arbiter of Woe fed by the cheap bodies). DISTINCTIVENESS:
+#: archetype: 44 Grand Larceny casts cards from their LIBRARY via combat heist; this deck
+#: archetype: attacks the HAND and wins the attrition state — different zone, different axis.
+#: notes: Built 2026-08-15 from the /draft-deck pool survey seeded on Bandit's Talent +
+#: notes: Thornplate Intimidator (the two placed-nowhere cards from the 2026-08-15 ingest).
+#: notes: The K-13 effect-shape sweep found 8 payoffs and ~40 enablers in B/R Standard;
+#: notes: mono-B keeps the identity tight — the red half (Cool but Rude, Hobgoblin,
+#: notes: Case of the Crimson Pulse) is SELF-discard, a mechanically different deck, and
+#: notes: unioning the two would be the K-06 mistake. Self-discard payoffs (Monument to
+#: notes: Endurance, Moonstone) deliberately excluded for the same reason.
+#: notes: WIP — 9 craft targets (Tinybones, Aclazotz, Hostile Investigator, Entropic
+#: notes: Battlecruiser, Bloodtithe Collector, Hollow Marauder, Arbiter of Woe,
+#: notes: Rankle's Prank, Rush of Dread: 2 mythic / 4 rare / 3 uncommon). The owned core
+#: notes: (27 of 36 nonland) already plays the plan.
+#: notes: Arbiter of Woe's sacrifice cost is COST-AS-UPSIDE here (G-41): the deck fields
+#: notes: nine 1-2 MV bodies whose ETB value is already spent by the time they feed him.
+#: protect: Bandit's Talent; Tinybones, Bauble Burglar; Aclazotz, Deepest Betrayal; Painful Quandary; Jecht, Reluctant Guardian
+
+# Payoffs / engines — punish, steal, or tax the stripped hand
+1 Bandit's Talent (BLB) 83
+1 Tinybones, Bauble Burglar (FDN) 72
+1 Aclazotz, Deepest Betrayal // Temple of the Dead (LCI) 88
+1 Entropic Battlecruiser (EOE) 99
+1 Hostile Investigator (BIG) 10
+1 Painful Quandary (FDN) 179
+1 Osseous Sticktwister (DSK) 112
+1 Thornplate Intimidator (BLB) 117
+1 Jecht, Reluctant Guardian (FIN) 104
+
+# Enabler bodies — ETB / attack discard triggers
+1 Virus Beetle (EOE) 124
+1 Hecteyes (FIN) 103
+1 Stony-Voiced Goblins (HOB) 85
+1 Corrupt Court Official (TLA) 92
+1 Dream Seizer (ECL) 101
+1 Malboro (FIN) 106
+1 Klaw, Sonic Subjugator (MSH) 103
+1 Bloodtithe Collector (FDN) 751
+1 Hollow Marauder (OTJ) 90
+1 Arbiter of Woe (FDN) 55
+1 Ripclaw Wrangler (DFT) 101
+
+# Discard spells / enchantment enablers
+1 Psychic Whorl (BLB) 105
+1 Pilfer (FDN) 181
+1 Auntie's Sentence (ECL) 85
+1 Seeker's Folly (FDN) 69
+1 Ozai's Cruelty (TLA) 113
+1 Temporal Intervention (EOE) 120
+1 Down, Down to Goblin-town (HOB) 65
+1 Rankle's Prank (WOE) 102
+1 Rush of Dread (OTJ) 104
+1 Momentum Breaker (DFT) 97
+1 HYDRA Infiltration (MSH) 100
+
+# Removal / card advantage
+2 Nocturnal Hunger (BLB) 102
+1 Savor (BLB) 109
+1 Bitter Triumph (SOA) 26
+1 Phyrexian Arena (FDN) 180
+
+# Lands — 24, mono-black
+24 Swamp (TRK) 321
+
+# Flex — options (comments; not part of the 60). See: deck.py flex 70
+#~ -Pilfer | +Ego Drain | owned: a mana cheaper for the same effect, but screen's ★ strict-upgrade call is WRONG — "exile a card from your hand unless you control a Faerie" is a real cost (Dream Seizer is the only Faerie here). Play it only if the meta rewards the tempo.
+#~ -Momentum Breaker | +Burglar Rat | craft C: a second Virus Beetle if the ETB-body count matters more than the sac-or-discard edict
+#~ note: the red SELF-discard package (Cool but Rude, Hobgoblin, Case of the Crimson Pulse, Fear of Missing Out) was screened and excluded — mechanically a different deck (K-06); a Rakdos variant could explore it later without touching this list.

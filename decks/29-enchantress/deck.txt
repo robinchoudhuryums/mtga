@@ -21,7 +21,8 @@
 #: notes: (a 2-mana enchantment making a 2/2 that also taps for {R} via firebending — the body
 #: notes: and the mana problem in one card). Unflinching Courage and Pain for All were the only
 #: notes: two Auras here with NO self-recursion clause, i.e. the only real 2-for-1s when a
-#: notes: creature is removed; Angelic Destiny x2 and Avatar Destiny all return to hand.
+#: notes: creature is removed; Angelic Destiny (x1 since Builder's Talent took the other
+#: notes: copy's slot) and Avatar Destiny both return to hand.
 #: notes: Refined to a legal 60: cut Quandrix Charm (needs blue — uncastable here) and added a
 #: notes: 6-card owned enchantment package — Spiral into Solitude (removal), Origin of the Avengers
 #: notes: (card advantage), Avatar Destiny (recurs + reanimates, loops with Yuna), Welcome to
@@ -40,6 +41,7 @@
 1 Topiary Lecturer (SOS) 165
 
 # Enchantments — Plans / Sagas / engines
+1 Builder's Talent (BLB) 5
 1 Firebender Ascension (TLA) 137
 1 Alien Invasion (MSH) 200
 1 Political Triumph (MSH) 31
@@ -66,7 +68,7 @@
 1 Origin of Metalbending (TLA) 187
 1 Pain for All (EOE) 151
 1 Stasis Snare (FDN) 581
-2 Angelic Destiny (FDN) 565
+1 Angelic Destiny (FDN) 565
 1 Spiral into Solitude (ECL) 36
 
 # Sorcery / utility

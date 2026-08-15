@@ -4829,3 +4829,50 @@ Misty Mountains Raider,Creature — Goblin Soldier,"Whenever you attack, amass G
 I — Target opponent reveals their hand. You choose a nonland card from it. That player discards that card.
 II — Amass Goblins 1. (Put a +1/+1 counter on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)
 III, IV — Target opponent loses 1 life and you gain 1 life.",B,Saga; counters; lifegain; sacrifice; tokens; saga; discard; amass; go-wide,HOB,65,1
+"Ori, Keeper of Songs",Legendary Creature — Dwarf Bard,"Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
+As long as you have an enduring story, Ori gets +1/+0 and has vigilance.",W,Dwarf; Bard; pump,HOB,23,1
+Patient Instructor,Creature — Human Citizen,"Vigilance
+When this creature enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W/U,Human; Citizen; card draw; tokens; etb; vigilance; combat,HOB,162,1
+Vow to Erebor,Instant,"Untap target creature you control. It gets +2/+2 until end of turn. If it's a Dwarf, you may attach an Equipment you control to it.",W,pump,HOB,31,1
+Builder's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+When this Class enters, create a 0/4 white Wall creature token with defender.
+{W}: Level 2
+Whenever one or more noncreature, nonland permanents you control enter, put a +1/+1 counter on target creature you control.
+{4}{W}: Level 3
+When this Class becomes level 3, return target noncreature, nonland permanent card from your graveyard to the battlefield.",W,Class; counters; reanimator; graveyard; tokens; etb,BLB,5,1
+Feather of Flight,Enchantment — Aura,"Flash
+Enchant creature
+When this Aura enters, draw a card.
+Enchanted creature gets +1/+0 and has flying.",W,Aura; card draw; etb; aura; pump; enchant; flash; tempo,BLB,13,1
+Nocturnal Hunger,Instant,"Gift a Food (You may promise an opponent a gift as you cast this spell. If you do, they create a Food token before its other effects. It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
+Destroy target creature. If the gift wasn't promised, you lose 2 life.",B,lifegain; pay life; sacrifice; tokens; removal; food; gift; value,BLB,102,2
+Head of the Homestead,Creature — Rabbit Citizen,"When this creature enters, create two 1/1 white Rabbit creature tokens.",W/G,Rabbit; Citizen; tokens; etb,BLB,216,2
+Rust-Shield Rampager,Creature — Raccoon Warrior,"Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
+This creature can't be blocked by creatures with power 2 or less.",G,Raccoon; Warrior; tokens; etb; offspring; go-wide,BLB,190,1
+Savor,Instant,"Target creature gets -2/-2 until end of turn. Create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")",B,lifegain; sacrifice; tokens; food; removal,BLB,109,1
+Hazel's Nocturne,Instant,Return up to two target creature cards from your graveyard to your hand. Each opponent loses 2 life and you gain 2 life.,B,graveyard; lifegain,BLB,97,1
+Seasoned Warrenguard,Creature — Rabbit Warrior,"Whenever this creature attacks while you control a token, this creature gets +2/+0 until end of turn.",W,Rabbit; Warrior; pump,BLB,30,1
+Bandit's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+When this Class enters, each opponent discards two cards unless they discard a nonland card.
+{B}: Level 2
+At the beginning of each opponent's upkeep, if that player has one or fewer cards in hand, they lose 2 life.
+{3}{B}: Level 3
+At the beginning of your draw step, draw an additional card for each opponent who has one or fewer cards in hand.",B,Class; etb; discard,BLB,83,1
+Playful Shove,Sorcery,"Playful Shove deals 1 damage to any target.
+Draw a card.",R,card draw; burn,BLB,145,1
+Thornplate Intimidator,Creature — Rat Rogue,"Offspring {3} (You may pay an additional {3} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)
+When this creature enters, target opponent loses 3 life unless they sacrifice a nonland permanent of their choice or discard a card.",B,Rat; Rogue; sacrifice; tokens; etb; discard; offspring; go-wide,BLB,117,1
+Three Tree Rootweaver,Creature — Mole Druid,{T}: Add one mana of any color.,G,Mole; Druid; mana,BLB,198,1
+Raccoon Rallier,Creature — Raccoon Bard,{T}: Target creature you control gains haste until end of turn. Activate only as a sorcery.,R,Raccoon; Bard,BLB,148,1
+Dire Downdraft,Instant,"This spell costs {1} less to cast if it targets an attacking or tapped creature.
+Target creature's owner puts it on their choice of the top or bottom of their library.",U,cost-reduction,BLB,46,1
+Brave-Kin Duo,Creature — Rabbit Mouse,"{1}, {T}: Target creature gets +1/+1 until end of turn. Activate only as a sorcery.",W,Rabbit; Mouse; pump,BLB,3,1
+Kindlespark Duo,Creature — Lizard Otter,"{T}: This creature deals 1 damage to target opponent.
+Whenever you cast a noncreature spell, untap this creature.",R,Lizard; Otter; burn; noncombat damage,BLB,142,1
+Corpseberry Cultivator,Creature — Squirrel Warlock,"At the beginning of combat on your turn, you may forage. (Exile three cards from your graveyard or sacrifice a Food.)
+Whenever you forage, put a +1/+1 counter on this creature.",B/G,Squirrel; Warlock; counters; graveyard; sacrifice; food; forage,BLB,210,1
+Supper for Spiders,Instant,"Put onto the battlefield under your control all creature cards in your opponents' graveyards that were put there from the battlefield this turn. They are Food artifacts with ""{2}, {T}, Sacrifice this artifact: You gain 3 life."" (They lose all other types and subtypes.)",B,reanimator; graveyard; lifegain; sacrifice; food,HOB,86,1
+Along the Crooked Way,Enchantment,"When this enchantment enters, return target creature card from your graveyard to your hand.
+Whenever a creature card leaves your graveyard, amass Goblins 1.
+{1}{B}: Goblins and Orcs you control gain menace until end of turn.",B,Orc; graveyard; etb; amass; tokens; go-wide,HOB,60,1
+Zaffai and the Tempests,Legendary Creature — Human Bard Sorcerer,"Once during each of your turns, you may cast an instant or sorcery spell from your hand without paying its mana cost.",U/R,Human; Bard; Sorcerer,SOS,246,1
