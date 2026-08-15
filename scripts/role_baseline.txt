@@ -36,8 +36,10 @@ Aurelia, the Warleader
 Avatar's Wrath
 Avengers Assemble!
 Avengers: Under Siege
+Azog, Moria's Ruin
 Azula, Cunning Usurper
 Badgermole
+Bandit's Talent
 Banner of Kinship
 Bark of Doran
 Barret Wallace
@@ -55,6 +57,9 @@ Blacksmith's Talent
 Blasphemous Edict
 Blitzball Shot
 Bloodthirsty Conqueror
+Bloodtithe Collector
+Bolg of the North
+Bolg's Company
 Brazen Collector
 Brightspear Zealot
 Broodguard Elite
@@ -109,6 +114,7 @@ Dragoon's Lance
 Dragoon's Wyvern
 Dread Summons
 Dream Harvest
+Dream Seizer
 Drix Fatemaker
 Duskwatch Hunter
 Dwynen's Elite
@@ -126,10 +132,13 @@ Empyrean Eagle
 End of the Hunt
 Enigma Drake
 Enter the Enigma
+Entropic Battlecruiser
 Extravagant Replication
+Faerie Slumber Party
 Falcon's Wing Harness
 Falcon, Winged Wonder
 Fated Firepower
+Fearsome Goblin Pair
 Felonious Rage
 Fire Sages
 Firebender Ascension
@@ -161,9 +170,12 @@ Glamer Gifter
 Glarb, Calamity's Augur
 Glider Kids
 Glider Staff
+Goblin Plate Mail
+Goblin-town Flunkies
 Gold Rush
 Goldvein Hydra
 Gravelgill Scoundrel
+Great Ugly-Looking Goblin
 Greenbelt Guardian
 Groundchuck & Dirtbag
 Growth Curve
@@ -243,6 +255,7 @@ Lys Alana Informant
 Madame Web, Clairvoyant
 Magitek Armor
 Mai, Scornful Striker
+Malboro
 Mardu Devotee
 Mardu Monument
 Masked Meower
@@ -257,6 +270,7 @@ Mirkwood Pathmaker
 Mirror Room // Fractured Realm
 Mirrormind Crown
 Mistbreath Elder
+Misty Mountains Raider
 Mob Lookout
 Mobile Homestead
 Molten Man, Inferno Incarnate
@@ -284,6 +298,7 @@ Pain for All
 Paradox Surveyor
 Pet Avengers
 Peter Parker
+Pilfer
 Pond Prophet
 Powerful Broker
 Pride of the Road
@@ -296,6 +311,7 @@ Quicksilver, Brash Blur
 Quill-Blade Laureate
 Quina, Qu Gourmet
 Radiant Lotus
+Rage into the Valley
 Rainveil Rejuvenator
 Ran and Shaw
 Raph & Leo, Sibling Rivals
@@ -310,10 +326,14 @@ Reno and Rude
 Resolute Reinforcements
 Restorative Technique
 Return the Favor
+Rhovanion Rampager
+Ripclaw Wrangler
 Risen Necroregent
+River's Rebuke
 Riverchurn Monument
 Roaming Throne
 Rough Rhino Cavalry
+Rush of Dread
 S.H.I.E.L.D. Spy Kit
 Samurai's Katana
 Satoru, the Infiltrator
@@ -323,6 +343,7 @@ Scarlet Spider, Ben Reilly
 Scrabbling Skullcrab
 Scrounging Skyray
 Searslicer Goblin
+Season of Weaving
 Secret of Bloodbending
 Seedglaive Mentor
 Seismic Sense
@@ -358,6 +379,7 @@ Stargaze
 Stature, Size Shifter
 Stegron the Dinosaur Man
 Stickytongue Sentinel
+Stony-Voiced Goblins
 Stormscale Scion
 Sultai Devotee
 Sun Warriors
@@ -403,6 +425,7 @@ Treetop Snarespinner
 Triceraton Commander
 Trusty Boomerang
 Turtle-Duck
+Turtles in Time
 Twin Blades
 Twinflame Tyrant
 U.S.Agent, John Walker

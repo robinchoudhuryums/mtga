@@ -1,0 +1,88 @@
+#: name: Goblin-town
+#: format: Standard
+#: colors: BR
+#: tier: B (PROVISIONAL) — matches the B metrics floor (interaction 4 with 2 possible
+#: tier: under-counts — Azog, Bolg, Volley Veteran and Blasphemous Edict all remove
+#: tier: things the classifier reads unevenly — against card advantage 4, again
+#: tier: under-read: The Great Goblin's death-impulse, Vampiric Rites, Corrupted
+#: tier: Conviction and Sackville-Bagginses all draw through sacrifice). A coherent
+#: tier: two-axis engine (tall Army + wide tokens converging on The Great Goblin's
+#: tier: pings), but UNTESTED, 14 craft targets including the build-around itself, and
+#: tier: the known structural risk: the Army concentrates value in one body, so a
+#: tier: single exile spell eats every counter amassed — the deck's own Blasphemous
+#: tier: Edict caveat cuts both ways. Re-grade with games and the crafts in hand.
+#: archetype: Rakdos (B/R) GOBLIN AMASS-ARMY aristocrats. PLAN: grow one big Army with
+#: archetype: amass from every angle (sorceries, ETBs, attacks, deaths — 13 distinct amass
+#: archetype: sources) while going wide with Goblin tokens (Krenko, Howlsquad, Searslicer,
+#: archetype: Dragon Fodder), then convert both into damage: The Great Goblin turns EVERY
+#: archetype: counter drop into 2 damage and every Goblin death into an impulse card;
+#: archetype: Boggart Cursecrafter and Boggart Mischief drain on each death; the sac
+#: archetype: outlets (Vampiric Rites, Bolg's Company, The Sackville-Bagginses, Azog and
+#: archetype: Bolg's own modes) convert fodder into cards, mana and removal. Great
+#: archetype: Ugly-Looking Goblin gives every counter-carrier menace, so the tall Army
+#: archetype: actually connects. Blasphemous Edict is the {B} board wipe this deck turns
+#: archetype: on itself (13 creatures is a real state here) — the Army's counters survive
+#: archetype: a wipe poorly, so cast it with amass follow-up in hand.
+#: archetype: DISTINCTIVENESS: the roster has no amass deck and no Rakdos goblin deck; the
+#: archetype: nearest neighbours are 69b (runs Along the Crooked Way for its graveyard
+#: archetype: axis, not amass) and 53 Sibsig (sac, but ceremony/mill identity).
+#: notes: Drafted 2026-08-15 by /draft-deck from the user's 88-card pile, every text read
+#: notes: in three batches. The pile held THREE archetypes — amass core, goblin tokens,
+#: notes: and big-sac goodstuff (Akul, both Rakdos, Calamity, Meathook II, Bringer) — and
+#: notes: this list commits to amass+aristocrats; the big-sac half is a different deck
+#: notes: (those cards want fewer, fatter bodies, not a counter Army).
+#: notes: AZOG CAVEAT, read before targeting: destroying THEIR creature makes THEM amass
+#: notes: X (its power) — an Army for the opponent. Point him at your own sac fodder for
+#: notes: draw + your own amass, or at their creature only when the Army they get is
+#: notes: cheaper than the body you kill.
+#: notes: Tidings of War reads "cast from a graveyard → amass 3": its own flashback turns
+#: notes: it on; nothing else here casts from the yard, so grade it as 1-mana amass 1
+#: notes: with a late-game flashback 3.
+#: protect: The Great Goblin; Azog, Moria's Ruin; Krenko, Mob Boss; Along the Crooked Way; Blasphemous Edict
+
+# Amass core — the Army engine
+1 Along the Crooked Way (HOB) 60
+1 Azog, Moria's Ruin (HOB) 61
+1 Down, Down to Goblin-town (HOB) 65
+1 Rage into the Valley (HOB) 79
+2 Gathering of Darkness (HOB) 68
+2 Great Ugly-Looking Goblin (HOB) 74
+2 Tidings of War (HOB) 115
+2 Goblin-town Flunkies (HOB) 100
+1 Bothersome Noisemaker (HOB) 89
+1 Misty Mountains Raider (HOB) 105
+1 Goblin Plate Mail (HOB) 157
+1 Fearsome Goblin Pair (HOB) 156
+1 Bolg of the North (HOB) 148
+1 The Great Goblin (HOB) 158
+1 Grub's Command (ECL) 228
+1 Bolg's Company (HOB) 149
+1 Rhovanion Rampager (HOB) 82
+
+# Goblin swarm — tokens, lords, tribal payoffs
+1 Krenko, Mob Boss (FDN) 204
+1 Howlsquad Heavy (DFT) 134
+1 Searslicer Goblin (FDN) 93
+1 Dragon Fodder (FDN) 535
+1 Boggart Cursecrafter (ECL) 206
+1 Boggart Mischief (ECL) 92
+1 Volley Veteran (FDN) 550
+1 Stony-Voiced Goblins (HOB) 85
+1 Zoyowa Lava-Tongue (LCI) 245
+
+# Sacrifice value + removal
+1 Vampiric Rites (WOT) 37
+1 Eaten Alive (FDN) 172
+1 Corrupted Conviction (OTJ) 84
+1 The Sackville-Bagginses (HOB) 83
+1 Blasphemous Edict (FDN) 57
+1 Season of Loss (BLB) 112
+
+# Lands — 24 Rakdos
+1 Blood Crypt (ECL) 262
+1 Blazemire Verge (DSK) 256
+1 Temple of Malice (FDN) 701
+1 Razortrap Gorge (DSK) 267
+2 Bloodfell Caves (TDM) 250
+9 Swamp (TRK) 321
+9 Mountain (TRK) 323
