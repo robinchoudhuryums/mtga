@@ -5,8 +5,10 @@
 #: tier: Black Waltz / the 0/1 black-Wizard-token makers all deal noncombat damage on every
 #: tier: noncreature spell) backed by prowess payoffs, deep card advantage (Kefka/Niv-Mizzet/
 #: tier: Archmage) and a real removal suite. The floor is A and not marginally so —
-#: tier: interaction 12 against card advantage 7, once the bounce/edict/X-damage lines the
-#: tier: old classifier could not read are counted;
+#: tier: interaction 11 against card advantage 7, once the bounce/edict/X-damage lines the
+#: tier: old classifier could not read are counted (12 before Harbinger of the Tides was cut
+#: tier: for Gandalf, Goblins' Bane — the bounce ETB was the lost point, bought back as a
+#: tier: second noncreature-cast pinger, which is the plan);
 #: tier: held at B by three-color singleton variance and a fragile go-wide board (a sweeper
 #: tier: from the opponent hurts). Plays up as it gains redundancy (see the competitive 37b).
 #: archetype: Grixis (U/B/R, U-primary) Wizard tribal spellslinger. Cast cheap noncreature
@@ -49,7 +51,7 @@
 1 The Emperor of Palamecia (FIN) 219
 1 Stormcatch Mentor (BLB) 234
 1 Coruscation Mage (BLB) 131
-1 Harbinger of the Tides (FDN) 593
+1 Gandalf, Goblins' Bane (HOB) 96
 1 Balmor, Battlemage Captain (FDN) 237
 1 Razzle-Dazzler (OTJ) 63
 1 Queen Brahne (FIN) 149
@@ -109,4 +111,4 @@
 #~ note: Taigam copies your 2nd spell each turn AND suspends the original back — the one copy effect that adds real future CASTS (which re-trigger the pings). Copies themselves don't trigger "cast" pings/prowess. Variants: 37a = value/storm take; 37b = competitive functional-redundancy A build (`deck.py redundancy 37`).
 #~ note: For a more consistent build without 4-ofs, add virtual copies of the thin effects — `deck.py redundancy 37` names them (e.g. counters: Spell Pierce / Divert Disaster).
 
-#~ -Mana Sculpt | +Gandalf, Goblins' Bane | owned: whenever you cast a noncreature spell he grows and pings each opponent, which IS this deck's ping-race plan, and the Adventure half exiles the top two to play while you control a Wizard. Same MV 3 as the cut. Losing one counter is cheap against 12 interaction.
+#~ note: applied — Gandalf, Goblins' Bane in for Harbinger of the Tides.
