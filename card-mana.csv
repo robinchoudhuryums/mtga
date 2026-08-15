@@ -2270,6 +2270,29 @@ Key to the Side-Door,{1},1,
 Great Ugly-Looking Goblin,{5}{B} // {1}{B},6,Amass
 Misty Mountains Raider,{4}{R},5,Amass
 "Down, Down to Goblin-town",{2}{B},3,Amass
+"Ori, Keeper of Songs",{2}{W},3,
+Patient Instructor,{2}{W/U},3,Vigilance
+Vow to Erebor,{1}{W},2,
+Builder's Talent,{1}{W},2,
+Feather of Flight,{1}{W},2,Enchant;Flash
+Nocturnal Hunger,{2}{B},3,Gift;Food
+Head of the Homestead,{3}{G/W}{G/W},5,
+Rust-Shield Rampager,{3}{G},4,Offspring
+Savor,{1}{B},2,Food
+Hazel's Nocturne,{3}{B},4,
+Seasoned Warrenguard,{W},1,
+Bandit's Talent,{1}{B},2,
+Playful Shove,{1}{R},2,
+Thornplate Intimidator,{3}{B},4,Offspring
+Three Tree Rootweaver,{1}{G},2,
+Raccoon Rallier,{1}{R},2,
+Dire Downdraft,{3}{U},4,
+Brave-Kin Duo,{W},1,
+Kindlespark Duo,{2}{R},3,
+Corpseberry Cultivator,{1}{B/G}{B/G},3,Forage
+Supper for Spiders,{1}{B},2,
+Along the Crooked Way,{2}{B},3,Amass
+Zaffai and the Tempests,{5}{U}{R},7,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -2954,16 +2977,13 @@ Transmutation Font,{5},5,Food
 Fomori Vault,,0,
 Tarnation Vista,,0,
 A-Heartfire Hero,{R},1,Valiant
-Brave-Kin Duo,{W},1,
 Brightblade Stoat,{1}{W},2,Lifelink;First strike
-Builder's Talent,{1}{W},2,
 Caretaker's Talent,{2}{W},3,
 Carrot Cake,{1}{W},2,Scry
 Dawn's Truce,{1}{W},2,Gift
 Dewdrop Cure,{2}{W},3,Gift
 Driftgloom Coyote,{3}{W}{W},5,
 Essence Channeler,{1}{W},2,
-Feather of Flight,{1}{W},2,Enchant;Flash
 Harvestrite Host,{2}{W},3,
 Intrepid Rabbit,{2}{W},3,Offspring
 Jolly Gerbils,{1}{W},2,
@@ -2971,7 +2991,6 @@ Mabel's Mettle,{1}{W},2,
 Nettle Guard,{1}{W},2,Valiant
 Pileated Provisioner,{4}{W},5,Flying
 Repel Calamity,{1}{W},2,
-Seasoned Warrenguard,{W},1,
 Star Charter,{3}{W},4,Flying
 Thistledown Players,{2}{W},3,
 Valley Questcaller,{1}{W},2,Scry
@@ -2981,7 +3000,6 @@ Whiskervale Forerunner,{3}{W},4,Valiant
 Azure Beastbinder,{1}{U},2,Vigilance
 Bellowing Crier,{1}{U},2,
 Calamitous Tide,{4}{U}{U},6,
-Dire Downdraft,{3}{U},4,
 Dour Port-Mage,{1}{U},2,
 "Eluge, the Shoreless Sea",{1}{U}{U}{U},4,
 Kitnap,{2}{U}{U},4,Gift;Enchant
@@ -3005,7 +3023,6 @@ Valley Floodcaller,{2}{U},3,Flash
 Waterspout Warden,{2}{U},3,
 Wishing Well,{3}{U},4,
 Agate-Blade Assassin,{1}{B},2,
-Bandit's Talent,{1}{B},2,
 Consumed by Greed,{1}{B}{B},3,Gift
 Cruelclaw's Heist,{B}{B},2,Gift
 Daggerfang Duo,{2}{B},3,Mill;Deathtouch
@@ -3013,18 +3030,14 @@ Downwind Ambusher,{3}{B},4,Flash
 Feed the Cycle,{1}{B},2,Forage
 Fell,{1}{B},2,
 Glidedive Duo,{4}{B},5,Flying
-Hazel's Nocturne,{3}{B},4,
 Huskburster Swarm,{7}{B},8,Menace;Deathtouch
 Iridescent Vinelasher,{B},1,Offspring;Landfall
 Moonstone Harbinger,{2}{B},3,Deathtouch;Flying
-Nocturnal Hunger,{2}{B},3,Gift;Food
 Osteomancer Adept,{1}{B},2,Deathtouch
 Persistent Marshstalker,{1}{B},2,Threshold
 Ruthless Negotiation,{B},1,Flashback
-Savor,{1}{B},2,Food
 Sinister Monolith,{3}{B},4,
 Starlit Soothsayer,{2}{B},3,Flying;Surveil
-Thornplate Intimidator,{3}{B},4,Offspring
 Thought-Stalker Warlock,{2}{B},3,Menace
 Valley Rotcaller,{1}{B},2,Menace
 "Wick, the Whorled Mind",{3}{B},4,
@@ -3041,12 +3054,9 @@ Frilled Sparkshooter,{3}{R},4,Reach;Menace
 Hearthborn Battler,{2}{R},3,Haste
 Hired Claw,{R},1,
 Hoarder's Overflow,{1}{R},2,
-Kindlespark Duo,{2}{R},3,
 Manifold Mouse,{1}{R},2,Offspring
-Playful Shove,{1}{R},2,
 Quaketusk Boar,{3}{R}{R},5,Reach;Haste;Trample
 Rabid Gnaw,{1}{R},2,
-Raccoon Rallier,{1}{R},2,
 Reptilian Recruiter,{3}{R}{R},5,Trample
 Roughshod Duo,{2}{R},3,Trample
 Sazacap's Brew,{1}{R},2,Gift
@@ -3079,14 +3089,12 @@ Mistbreath Elder,{G},1,
 Pawpatch Formation,{1}{G},2,Food
 Pawpatch Recruit,{G},1,Offspring;Trample
 Peerless Recycling,{1}{G},2,Gift
-Rust-Shield Rampager,{3}{G},4,Offspring
 Scrapshooter,{1}{G}{G},3,Reach;Gift
 Stickytongue Sentinel,{2}{G},3,Reach
 Stocking the Pantry,{G},1,
 Sunshower Druid,{G},1,
 Tender Wildguide,{1}{G},2,Offspring
 Thornvault Forager,{1}{G},2,Forage
-Three Tree Rootweaver,{1}{G},2,
 Three Tree Scribe,{1}{G},2,
 Treeguard Duo,{3}{G},4,
 Treetop Sentries,{3}{G},4,Forage;Reach
@@ -3097,12 +3105,10 @@ Wear Down,{1}{G},2,Gift
 Burrowguard Mentor,{G}{W},2,Trample
 Cindering Cutthroat,{2}{B/R},3,
 "Clement, the Worrywort",{1}{G}{U},3,Vigilance
-Corpseberry Cultivator,{1}{B/G}{B/G},3,Forage
 "Finneas, Ace Archer",{G}{W},2,Reach;Vigilance
 Fireglass Mentor,{B}{R},2,
 "Gev, Scaled Scorch",{B}{R},2,Ward
 "Glarb, Calamity's Augur",{B}{G}{U},3,Surveil;Deathtouch
-Head of the Homestead,{3}{G/W}{G/W},5,
 Junkblade Bruiser,{3}{R/G}{R/G},5,Trample
 Lilysplash Mentor,{2}{G}{U},4,Reach
 Mind Drill Assailant,{2}{U/B}{U/B},4,Surveil;Threshold
@@ -5973,12 +5979,10 @@ Iron Hills Blacksmith,{1}{W},2,Double strike
 Kíli the Resourceful,{1}{W},2,
 Lake-town Lookout,{W},1,
 Lake-town Toymaker,{3}{W},4,
-"Ori, Keeper of Songs",{2}{W},3,
 "Roads Go Ever, Ever On",{1}{W},2,
 Settle the Wreckage,{2}{W}{W},4,
 An Unexpected Party // At the Door,{2}{W}{W} // {X}{2}{W},4,
 Velvetwing Butterflies // Gaze in Wonder,{2}{W} // {1}{W},3,Flying
-Vow to Erebor,{1}{W},2,
 "Bilbo, Luckwearer // Burglar's Plot",{1}{U} // {4}{U},2,
 "Bilbo Baggins, Burglar // Take a Glance",{2}{U} // {U},3,Scry
 Elven Raft-Steerer,{2}{U},3,Landfall
@@ -5995,7 +5999,6 @@ Sound the Trumpets,{1}{U}{U},3,
 Thranduil's Decree,{4}{U}{U},6,
 Uneasy Partings,{3}{U},4,
 Wizard's Staff,{1}{U},2,Equip
-Along the Crooked Way,{2}{B},3,Amass
 Desolation Prowler,{1}{B},2,
 Dreaded Bat-Cloud,{4}{B},5,Deathtouch;Flying
 Gnashing of Teeth,{1}{B}{B},3,
@@ -6013,7 +6016,6 @@ Ravening Warg,{1}{B},2,Ferocious;Deathtouch
 Reverent Howl,{2}{B},3,
 Rhovanion Rampager,{2}{B},3,Amass
 Stir Up Trouble,{B},1,
-Supper for Spiders,{1}{B},2,
 "Balin, Loremaster",{3}{R}{R},5,
 "Bombur, Gentle Dreamer",{2}{R},3,
 Bothersome Noisemaker,{1}{R},2,Amass
@@ -6066,7 +6068,6 @@ Goblin Plate Mail,{1}{B/R},2,Amass;Equip
 The Great Goblin,{1}{B/R}{B/R},3,
 Large Bear,{3}{B/G}{B/G},5,Reach;Haste;Trample
 "Nori, Teller of Tales",{1}{R/W},2,
-Patient Instructor,{2}{W/U},3,Vigilance
 Silvan Reveler,{2}{G}{U},4,Landfall
 "Smaug, Wicked Worm",{3}{B}{R},5,Flying;Treasure
 Thorin Oakenshield,{R}{W},2,Trample
@@ -13097,7 +13098,6 @@ Splatter Technique,{1}{U}{U}{R}{R},5,
 Stirring Honormancer,{2}{W}{W/B}{B},5,
 Suspend Aggression,{1}{R}{W},3,
 Traumatic Critique,{X}{U}{R},2,
-Zaffai and the Tempests,{5}{U}{R},7,
 Diary of Dreams,{2},2,
 Mage Tower Referee,{2},2,
 "Page, Loose Leaf",{2},2,Grandeur
