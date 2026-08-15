@@ -182,7 +182,7 @@ Deck
 
 # Removal
 1 Ruthless Lawbringer (OTJ) 229
-1 Hero's Downfall (FDN) 175
+1 Nocturnal Hunger (BLB) 102
 
 # Lands — 25, Orzhov
 1 Bleachbone Verge (DFT) 250

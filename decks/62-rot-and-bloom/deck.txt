@@ -47,8 +47,8 @@
 #: notes: Hauntwoods Shrieker, whose attack-manifest fills the yard AND builds a board
 #: notes: — the deck's two axes on one card, against 12 interaction it could spare.)
 #: notes: ROTATION: BLB pieces (Scavenger's Talent, Coiling Rebirth, Rottenmouth
-#: notes: Viper, Wick's Patrol, Psychic Whorl, Lumra) rotate ~2027; DSK bodies
-#: notes: likewise — noted, not a build constraint.
+#: notes: Viper, Wick's Patrol, Lumra) rotate ~2027 (Psychic Whorl was CUT for Supper
+#: notes: for Spiders); DSK bodies likewise — noted, not a build constraint.
 
 # Self-mill / setup
 1 Hauntwoods Shrieker (DSK) 182
@@ -94,7 +94,7 @@
 1 Don't Make a Sound (DSK) 49
 
 # Glue
-1 Psychic Whorl (BLB) 105
+1 Supper for Spiders (HOB) 86
 1 Forum Necroscribe (SOS) 84
 
 # Lands

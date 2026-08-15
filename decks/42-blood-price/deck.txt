@@ -105,7 +105,7 @@ Deck
 1 Stroke of Midnight (FDN) 148
 1 Feed the Swarm (SOA) 29
 1 Sephiroth's Intervention (FIN) 116
-1 Hour of Defeat (MSH) 99
+1 Nocturnal Hunger (BLB) 102
 1 Erode (SOS) 15
 
 # Lands — 24, Orzhov
@@ -120,7 +120,6 @@ Deck
 
 #~ note: applied — Grave Researcher in for Snarling Gorehound.
 #~ note: applied — Stargaze in for Infestation Sage.
-#~ +Silverquill Charm | -Hour of Defeat | Two-mana modal instant: two counters, exile a power-2-or-less creature, or drain 3 and gain 3. Never dead, and cheaper than the four-drop removal it would replace. Craft (U).
+#~ note: applied — Nocturnal Hunger in for Hour of Defeat.
 #~ +Exsanguinate | -Erode | {X}{B}{B} scalable drain-and-gain — the finisher the deck's PATH TO A asks for. Caveat that keeps it in flex rather than the 60: it pushes THEIR total down, which shrinks the Mister Negative refund, so it is plan-B support that mildly undercuts plan A. Craft (U).
-#~ +Starseer Mentor | -Hour of Defeat | "Gained OR LOST life this turn" is met every turn here without trying, so it is a repeatable lose-3-or-sacrifice-or-discard clock on a flier. Held out on curve: MV 5 against a 2.66 average. Craft (U).
 #~ note: applied — Gwenom, Remorseless in for Harsh Annotation.

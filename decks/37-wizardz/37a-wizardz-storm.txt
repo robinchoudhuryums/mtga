@@ -74,7 +74,7 @@
 1 Portent of Calamity (BLB) 66
 
 # Noncreature — removal / interaction
-1 Thunder Magic (FIN) 165
+1 Playful Shove (BLB) 145
 1 Bitter Triumph (SOA) 26
 1 Dark Deed (MSH) 93
 1 Mana Sculpt (SOS) 57

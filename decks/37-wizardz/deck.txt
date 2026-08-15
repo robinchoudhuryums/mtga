@@ -5,10 +5,10 @@
 #: tier: Black Waltz / the 0/1 black-Wizard-token makers all deal noncombat damage on every
 #: tier: noncreature spell) backed by prowess payoffs, deep card advantage (Kefka/Niv-Mizzet/
 #: tier: Archmage) and a real removal suite. The floor is A and not marginally so —
-#: tier: interaction 11 against card advantage 7, once the bounce/edict/X-damage lines the
-#: tier: old classifier could not read are counted (12 before Harbinger of the Tides was cut
-#: tier: for Gandalf, Goblins' Bane — the bounce ETB was the lost point, bought back as a
-#: tier: second noncreature-cast pinger, which is the plan);
+#: tier: interaction 10 against card advantage 7, once the bounce/edict/X-damage lines the
+#: tier: old classifier could not read are counted (12 before two removal slots — Harbinger
+#: tier: of the Tides, then Tribute to Hunger — were traded for Gandalf, Goblins' Bane and
+#: tier: Kindlespark Duo: both points spent ON the noncreature-cast ping plan, deliberately);
 #: tier: held at B by three-color singleton variance and a fragile go-wide board (a sweeper
 #: tier: from the opponent hurts). Plays up as it gains redundancy (see the competitive 37b).
 #: archetype: Grixis (U/B/R, U-primary) Wizard tribal spellslinger. Cast cheap noncreature
@@ -58,6 +58,7 @@
 1 Queen Brahne (FIN) 149
 1 Mysidian Elder (FIN) 145
 1 Crackling Cyclops (FDN) 83
+1 Kindlespark Duo (BLB) 142
 1 Tempest Angler (BLB) 235
 1 Harnesser of Storms (BLB) 137
 1 Erudite Wizard (FDN) 37
@@ -88,7 +89,6 @@
 1 Bitter Triumph (SOA) 26
 1 Unsparing Boltcaster (TDM) 130
 1 Heartless Act (TLA) 103
-1 Tribute to Hunger (FDN) 614
 1 Mana Sculpt (SOS) 57
 
 # Lands — 24, U-weighted Grixis (owned duals + basics)
@@ -107,7 +107,7 @@
 2 Mountain (MSH) 294
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 37
-#~ -Tribute to Hunger | +Fire Magic | ONLY if the meta is aggro-go-wide: Fire Magic is a tiered mini-wrath, but it kills your OWN 0/1 tokens — sideboard tech, not maindeck
+#~ note: applied — Kindlespark Duo in for Tribute to Hunger.
 #~ -Harmonized Trio | +We Say Thee Nay! | if you want a hard-ish counter over the draw-body; Trio's teamwork tap competes with attacking
 #~ note: Taigam copies your 2nd spell each turn AND suspends the original back — the one copy effect that adds real future CASTS (which re-trigger the pings). Copies themselves don't trigger "cast" pings/prowess. Variants: 37a = value/storm take; 37b = competitive functional-redundancy A build (`deck.py redundancy 37`).
 #~ note: For a more consistent build without 4-ofs, add virtual copies of the thin effects — `deck.py redundancy 37` names them (e.g. counters: Spell Pierce / Divert Disaster).

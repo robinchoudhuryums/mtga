@@ -51,6 +51,7 @@
 1 Queen Brahne (FIN) 149
 1 Mysidian Elder (FIN) 145
 1 Crackling Cyclops (FDN) 83
+1 Kindlespark Duo (BLB) 142
 1 Tempest Angler (BLB) 235
 1 Harnesser of Storms (BLB) 137
 1 Erudite Wizard (FDN) 37
@@ -73,7 +74,6 @@
 
 # Noncreature — cantrips / card advantage
 1 Think Twice (FDN) 165
-1 Boomerang Basics (TLA) 46
 1 Portent of Calamity (BLB) 66
 1 Hawkeye, Young Avenger (MSH) 131
 
@@ -99,7 +99,7 @@
 2 Mountain (MSH) 294
 
 # Flex — more virtual copies (comments; not part of the 60). See: deck.py redundancy 37b
-#~ -Boomerang Basics | +Divert Disaster | owned: a 3rd counter (virtual copy) if the meta rewards interaction over a cantrip
+#~ note: applied — Kindlespark Duo in for Boomerang Basics.
 #~ note: applied — Shipwreck Dowser in for Impractical Joke.
 
 #~ note: applied — Gandalf, Goblins' Bane in for Magic Damper.
