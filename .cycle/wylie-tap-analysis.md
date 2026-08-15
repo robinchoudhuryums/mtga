@@ -85,6 +85,30 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | Take for a Ride | ✗ | Steal effect; nothing here wants it (F1/F2 zero). |
 | Rydia, Summoner of Mist | ✗ | Saga recursion; no saga density planned. |
 
+### Batch 2 (cards 26–50 of the 74)
+
+| Card | Verdict | Why (framework rule) |
+|---|---|---|
+| Wanderbrine Preacher | ★★★ | PAYOFF #2 (F2): "whenever this becomes tapped, gain 2 life" — a Wylie clone at common. Owned. |
+| Selvala, Eager Trailblazer | ★★★ | Vigilance (F3) + Mercenary per creature spell + {T}: huge mana. Engine on one card. |
+| Ghired, Mirror of the Wilds | ★★★ | Grants EVERY nontoken creature "{T}: copy a token that entered this turn" — a mass tap outlet (F1) that turns Wylie's tap into a Mercenary copy. |
+| Dragonbroods' Relic | ★★★ | G-58 CASE: identity 5c but CAST COST {1}{G} — castable. "{T}, tap an untapped creature you control: any color" = repeatable Wylie tap + fixing. Owned. |
+| The Wandering Rescuer | ★★★ | Convoke (casting it taps Wylie = triggers) + "other TAPPED creatures you control have hexproof" — protects the whole tapped board. Flash. |
+| Guardian of the Great Door | ★★ | Cast cost taps FOUR untapped permanents incl. lands (F1: 4 triggers in one cast); 4/4 flier for {W}{W}. |
+| Encumbered Reejerey | ★★ | Tap-payoff body: 5/4 for 2 that upgrades itself each time it becomes tapped. |
+| Split Up | ★★ | Asymmetric BOTH ways here: our board taps down (destroy all untapped hits them), their board taps down via axis B (destroy all tapped). |
+| Authority of the Consuls | ★★ | Axis-B keystone: their creatures ENTER tapped → every tapped-punish spell is always live; drips life. |
+| Flight-Deck Coordinator | ★ | Payoff #3: 2+ tapped creatures → gain 2 each end step. |
+| Glimmer Seeker | ★ | Survival payoff that DRAWS (or makes a body); tap it with crew/saddle/convoke. |
+| Veteran Survivor / Savior of the Small | ★ | Survival cluster: graveyard hate / recursion riders on tapped-at-2nd-main. |
+| Form a Posse | ★ | X Mercenaries (self-tapping pump bodies, tap-cost fuel). |
+| Deadly Riposte / Eriette's Lullaby / Ajani's Response / Fate of the Sun-Cryst / Reroute Systems | ★ | The tapped-punish removal suite (axis B): all cheap or discounted vs tapped targets — always live under Authority. |
+| Baseball Bat | ◇ | Attack-tap equipment; axis B, combat-gated. |
+| Archangel of Tithes | ◇ | Wants to stay UNTAPPED (tax wall) — fine body, off the tap engine. |
+| Settle the Wreckage | ◇ | Generic wrath; fine, no synergy. |
+| Helping Hand | △ | Reanimates ETB-tapped — "enters tapped" is NOT "becomes tapped": no triggers. Owned. |
+| Tam, Mindful First-Year | ✗ | OFF-color (G/U identity, {G/U} cast — U pip not payable in WGR). |
+
 ## 5. Consolidated plan (live)
 
 - (builds after batch 1)
