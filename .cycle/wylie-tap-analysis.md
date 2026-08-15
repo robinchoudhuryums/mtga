@@ -109,6 +109,93 @@ Legend: ★★★ take · ★★ strong · ★ real · ◇ situational · △ ma
 | Helping Hand | △ | Reanimates ETB-tapped — "enters tapped" is NOT "becomes tapped": no triggers. Owned. |
 | Tam, Mindful First-Year | ✗ | OFF-color (G/U identity, {G/U} cast — U pip not payable in WGR). |
 
+### Batch 3 (cards 51–74) — highlights
+
+| Card | Verdict | Why |
+|---|---|---|
+| Annie Joins Up | ★★★ | DOUBLES legendary creatures' triggered abilities — Wylie taps for 2 life + 2 cards. Naya gold. |
+| A Realm Reborn | ★★★ | Every permanent gains "{T}: any color" — mass outlet + complete WGR fixing. Owned. |
+| Hawkeye's Bow | ★★★ | Equipment PAYOFF: "whenever equipped creature becomes tapped, 1 dmg each opponent" — staple it to Wylie. {R}, owned. |
+| Springleaf Drum / Gene Pollinator | ★★ | 1-mana tap-a-creature fixers: a Wylie trigger every turn that also fixes 3 colors. |
+| Baylen, the Haymaker | ★★★ | Taps TOKENS for mana/draw/counters — the Mercenary stream becomes an engine. |
+| Command Bridge | ★★ | Land that taps a permanent on ETB (a trigger from the manabase) + any color. |
+| Traveling Botanist | ★★ | Payoff: becomes tapped → land selection. |
+| Agent Maria Hill | ★★ | Teamwork-tap payoff: +1/+1 counter AND draw. Owned. |
+| Helicarrier Strike | ★★ | Teamwork removal — the cost taps Wylie = trigger + 4 dmg. Owned. |
+| Samut, the Driving Force | ★★ | Vigilant Naya anthem + cost reduction; curve top. |
+| Redshift, Rocketeer Chief | ★★ | Vigilant; {T}: X mana for ABILITIES — pays crew/saddle/equip/station costs. |
+| Frontline War-Rager | ★ | 2+ tapped → grows. Owned. |
+| Hardbristle Bandit | ★ | Any-color dork; axis-B targeting is a crime → untaps → extra activation. Owned. |
+| Bender's Waterskin / Dependable Quinjet | ★ | Any-color rocks; Quinjet is also a crew-4 outlet. Owned. |
+| Bridled Bighorn / Gilded Ghoda | ★/◇ | Saddle outlets (Bighorn vigilant per F3). |
+| Foggy Swamp Vinebender | ◇ | Waterbend = tap-to-pay outlet, but slow. Owned. |
+| Shimmerwilds Growth / Ishgard / Crowd-Control Warden / Old Hob | ◇/△ | Fine cards, off the engine. |
+
+### In-deck 32 sweep (fungible — all still candidates)
+
+**Payoffs already owned:** Compassionate Healer (tapped → life+scry — a third Wylie),
+Spider-Gwen (tapped → loot), Hawkeye, Master Marksman (tapped → modal arrows),
+Seedship Agrarian (tapped → Lander), Dawnstrike Vanguard (2+ tapped → mass counters),
+Roxanne (artifact-token tap payoff). **Outlets/engines owned:** Enduring Vitality
+(creatures gain "{T}: any color" — vigilant + recursive), Aziza (tap 3 → copy spell),
+Wanderbrine Trapper (tap own → tap theirs, both axes), Aurelia (untap all + extra
+combat), Unswerving Sloth (attack → untap ALL), The Eternity Elevator + Adagia
+(station), Wrench, Frog Butler, Surveillance Room, teamwork suite (Go Nuts!,
+HULK SMASH!, Team Tactics). **Axis-B owned:** Solitary Sanctuary, Spider-Woman
+({3}{W/U} hybrid — castable in W per G-58), Push // Pull (front face), Zidane/Neutrinos
+(off-plan steal/blink — skip).
+
+## 3b. Cross-batch observations (final)
+
+- **Payoff population (F2): ~15** "becomes tapped"/tapped-state cards across pile +
+  collection — comfortably viable by the G-59 test. The engine's best turn: tap Wylie
+  to Springleaf/Relic/Vitality mana or Ghired/Aziza/convoke, with Annie doubling and
+  Kirol copying the triggers, under Wandering Rescuer's tapped-hexproof umbrella.
+- **The mana problem solves itself**: the tap-fixers (Drum, Pollinator, Relic, Vitality,
+  Realm Reborn, Selvala, Surveillance Room) ARE engine pieces — a WGR base with
+  any-color access that triggers Wylie to fix.
+- **VARIANT A — RW/Naya Mercenary-outlaw tokens** (viable): Form a Posse, Hellspur
+  Posse Boss, Brimstone Roundup, Ertha Jo, Great Train Heist, War Effort, Old Hob +
+  Baylen as the token-tap engine. Self-tapping Mercenaries + haste lord + ability
+  copying. Distinct plan (aggro swarm) from the value engine.
+- **VARIANT B — W(±u splash-free) tap-down control** (viable): Authority of the Consuls
+  (they ENTER tapped) + Spider-Woman/Solitary Sanctuary/Thunder Lasso/Mouse
+  Trapper/Rimefur locks + the tapped-punish suite (Deadly Riposte, Eriette's Lullaby,
+  Ajani's Response, Fate of the Sun-Cryst, Reroute Systems, Sawblades, Garuda,
+  Split Up, Push front face) + Archangel of Tithes/Settle the Wreckage. No such deck
+  in the roster. Wanderbrine Trapper bridges A-axis and B-axis.
+- **NOT variants, just packages:** teamwork/MSH cluster (1 payoff — Maria Hill) and the
+  DSK survival cluster (tapped-at-2nd-main) both fold into the main deck.
+
 ## 5. Consolidated plan (live)
 
-- (builds after batch 1)
+**MAIN DECK — "Wylie tap-value" (WGR, Standard).** Draft via /draft-deck from this
+shortlist (~44 nonland candidates for ~35 slots; cut at draft time):
+
+- **Core engine (protect):** Wylie Duke (craft R — THE seed), Wanderbrine Preacher,
+  Compassionate Healer, Annie Joins Up (craft R), Kirol (craft R), The Wandering
+  Rescuer (craft M), Hawkeye's Bow, A Realm Reborn, Enduring Vitality.
+- **Payoff bodies:** Spider-Gwen, Hawkeye Master Marksman, Traveling Botanist (craft U),
+  Seedship Agrarian, Encumbered Reejerey, Sunstar Chaplain (craft R), Flight-Deck
+  Coordinator (craft C), Frontline War-Rager, Dawnstrike Vanguard, Agent Maria Hill,
+  Rootwise Survivor (craft U), Glimmer Seeker (craft U).
+- **Outlets/fixing:** Springleaf Drum (craft U), Gene Pollinator (craft C),
+  Dragonbroods' Relic, Aziza, Selvala (craft M), Ghired (craft M), Baylen (craft R),
+  Redshift (craft R), Guardian of the Great Door (craft U), Group Project (craft U),
+  Dependable Quinjet, Wanderbrine Trapper.
+- **Re-tap/protection:** Aurelia, Unswerving Sloth, Great Train Heist (craft R),
+  Biosynthic Burst, Vow to Erebor.
+- **Interaction:** Helicarrier Strike, HULK SMASH!, Split Up (craft R), Deadly Riposte
+  (craft C), Fate of the Sun-Cryst.
+- **Lands of note:** Adagia (craft M), Command Bridge (craft C), The Eternity Elevator
+  (artifact), Surveillance Room, Abandoned Air Temple, Fire Nation Palace + owned
+  Naya duals.
+- **PROTECT list (what `cuts` cannot see):** Dragonbroods' Relic and Springleaf Drum
+  (fixers whose value is the TRIGGER, not the mana), Hawkeye's Bow (payoff lives on
+  the equipped creature), Annie Joins Up (doubler — value in the rest of the deck),
+  A Realm Reborn / Enduring Vitality (mass outlets that read as mana filler).
+
+**VARIANT A (later, /draft-deck):** RW/Naya Mercenary tokens — Baylen + Form a Posse +
+Hellspur + Brimstone + Ertha Jo + Great Train Heist + War Effort + Old Hob.
+**VARIANT B (later, /draft-deck):** Mono-W tap-down control — Authority + stun/lock
+bodies + the tapped-punish removal suite + Archangel of Tithes.
