@@ -167,6 +167,40 @@ HULK SMASH!, Team Tactics). **Axis-B owned:** Solitary Sanctuary, Spider-Woman
 - **NOT variants, just packages:** teamwork/MSH cluster (1 payoff — Maria Hill) and the
   DSK survival cluster (tapped-at-2nd-main) both fold into the main deck.
 
+### Batch 4 — pile part 2 (32 cards, user-supplied additions; * = user-starred)
+
+| Card | Verdict | Why (framework rule) |
+|---|---|---|
+| Captain America, Living Legend | ★★★ | EVERY creature's first tap each turn untaps it — free double activation deck-wide, doubling Wylie/Preacher/Healer triggers (F4 as a permanent). {1}{W}{U}: real U pip — castable off the deck's ~8-10 any-color fixers, but a splash the colors header must own honestly. Owned. |
+| Tyvar, the Pummeler* | ★★★ | ZERO-mana repeatable tap outlet ("tap another untapped creature: indestructible, tap Tyvar") — taps Wylie every turn for free, any number of creatures. Craft M. |
+| Dazzling Theater // Prop Room* | ★★★ | Both rooms are engine: convoke on every creature spell (taps = triggers), Prop Room untaps your creatures on EACH other player's untap step (re-tap fuel every turn cycle). Craft R. |
+| Veteran Beastrider* | ★★★ | Untaps EVERY creature at your end step — total engine reset each turn + anthem mode. Owned. |
+| Orphans of the Wheat* | ★★★ | Attack → tap ANY number of your creatures (mass trigger every combat) and grows for each. Craft U. |
+| Virtue of Loyalty | ★★★ | End-step: counter on each creature + UNTAP them — anthem and reset in one. Owned mythic. |
+| Fear of Exposure | ★★ | Cast cost taps two creatures (2 triggers) → 5/4 trample for {2}{G}. |
+| Formidable Speaker | ★★ | Tutor body + "{1},{T}: untap another permanent" — repeatable re-tap enabler. Craft R. |
+| Ragost, Deft Gastronaut | ★★ | The lifegain the payoffs throw off untaps Ragost every end step; taps to ping each opponent; makes every artifact a Food. Owned. |
+| Caparocti Sunborn | ★★ | Attack → tap 2 permanents → discover 3: outlet + card advantage. Craft U. |
+| Anzrag, the Quake-Mole* | ★★ | Untap-all + extra combat on being blocked; 8/4 for 4. More Variant-A finisher than value engine (combat-gated). Craft M. |
+| Tangle Tumbler* | ★★ | Vigilant 6/6 vehicle crewed by TOKENS (Baylen/Mercenary cluster) + counter placer. Variant A first, main-deck real. Craft U. |
+| Rustler Rampage | ★ | Spree: untap ALL your creatures (target yourself) + double strike. Owned. |
+| Fancy Footwork / Zealous Display / Panther Pounce | ★ | Best of the untap-trick cluster: 2-creature reset / mass reset on their turn / clue rider. Owned. |
+| Spider Manifestation | ★ | RG dork (own 3) that untaps on MV4+ casts. |
+| Raph & Leo, Sibling Rivals | ★ | Untap attackers + extra combat; RW hybrid. Owned (in 20/24 — fungible). |
+| Little Bear | ★ | Flash untapper with a body. Craft C. |
+| Flash Thompson, Spider-Fan | ★ | Flash modal tap (axis B) or untap (axis A). Owned. |
+| Kindlespark Duo | ◇ | Untaps on noncreature casts — this build is creature-heavy. Owned. |
+| Elite Interceptor / Thistledown Players / Cat-Owl ({3}{W/U} hybrid — castable) | ◇ | Minor untap utility. |
+| Acrobatic Leap / Riverguard's Reflexes / Silken Strength / Guac & Marshmallow Pizza | ◇ | Untap tricks below the cluster's best three. |
+| Spire Mechcycle | ◇ | Mount/Vehicle exhaust cluster — a THIRD variant seed at low density (with Quinjet, mounts, Tumbler); note, don't build. |
+| Jet's Brainwashing | △ | Steal rider; off-plan (same reason as Take for a Ride). |
+| S.H.I.E.L.D. Spy Kit | △ | "Attacks ALONE" gate fights a board that wants many bodies. Owned. |
+
+**Part-2 structural finding:** part 1 supplied taps and payoffs; part 2 supplies the
+UNTAP half (F4) — Captain America + Prop Room + Veteran Beastrider + Virtue of Loyalty
++ Tyvar turn each payoff into 2-4 triggers per turn cycle. The engine is now
+tap → payoff → free untap → tap again.
+
 ## 5. Consolidated plan (live)
 
 **MAIN DECK — "Wylie tap-value" (WGR, Standard).** Draft via /draft-deck from this
@@ -190,12 +224,27 @@ shortlist (~44 nonland candidates for ~35 slots; cut at draft time):
 - **Lands of note:** Adagia (craft M), Command Bridge (craft C), The Eternity Elevator
   (artifact), Surveillance Room, Abandoned Air Temple, Fire Nation Palace + owned
   Naya duals.
+- **Part-2 upgrades to the core (revised):** Captain America (owned; U-splash the
+  colors header must own — his double-tap is the single biggest multiplier),
+  Tyvar (craft M — free repeatable outlet), Dazzling Theater // Prop Room (craft R),
+  Veteran Beastrider + Virtue of Loyalty (owned resets), Orphans of the Wheat
+  (craft U — mass trigger per combat), Fear of Exposure, Formidable Speaker,
+  Ragost, Caparocti. The untap-trick slots go to Fancy Footwork / Zealous Display /
+  Panther Pounce (owned). These displace the weaker batch-1/2 ◇ cards at draft time.
 - **PROTECT list (what `cuts` cannot see):** Dragonbroods' Relic and Springleaf Drum
   (fixers whose value is the TRIGGER, not the mana), Hawkeye's Bow (payoff lives on
   the equipped creature), Annie Joins Up (doubler — value in the rest of the deck),
-  A Realm Reborn / Enduring Vitality (mass outlets that read as mana filler).
+  A Realm Reborn / Enduring Vitality (mass outlets that read as mana filler),
+  Captain America (an "untap" line that reads as nothing and is the engine's
+  multiplier), Prop Room (reads as a tapped-land liability, is the reset engine).
 
 **VARIANT A (later, /draft-deck):** RW/Naya Mercenary tokens — Baylen + Form a Posse +
-Hellspur + Brimstone + Ertha Jo + Great Train Heist + War Effort + Old Hob.
+Hellspur + Brimstone + Ertha Jo + Great Train Heist + War Effort + Old Hob; part 2
+adds Tangle Tumbler (token-crewed 6/6), Anzrag + Raph & Leo (extra-combat finishers),
+Orphans of the Wheat.
 **VARIANT B (later, /draft-deck):** Mono-W tap-down control — Authority + stun/lock
-bodies + the tapped-punish removal suite + Archangel of Tithes.
+bodies + the tapped-punish removal suite + Archangel of Tithes; part 2 adds Flash
+Thompson (flash tap) and Cat-Owl ({3}{W/U} hybrid, castable in W).
+**VARIANT C (seed only, low density):** Mounts/Vehicles exhaust cluster — Spire
+Mechcycle + Dependable Quinjet + Tangle Tumbler + the saddle Mounts. Not enough
+payoffs yet (G-59); note for a future set.
