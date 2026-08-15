@@ -9,15 +9,16 @@
 #: tier: on interaction 5 + card advantage 2 after -Dazzling Angel / +Elspeth, Storm
 #: tier: Slayer, and the deck was flagged possibly UNDER-graded while the letter was held
 #: tier: at B pending a human call. -Dazzling Denial / +Bard, King of Dale settled it the
-#: tier: other way: interaction 5 -> 4 (the cut was a soft counter) and card advantage
-#: tier: 2 -> 3 (Bard doubles every draw after the first each turn), so the floor is now B
-#: tier: and matches the claimed letter. The A case has NOT gone away — Elspeth is still
-#: tier: three cards in one here (token doubler across 13 feeders, a board-wide
-#: tier: +1/+1-and-flying anthem, and removal) and Bard doubles the same token layer — but
-#: tier: it now needs an argument from bombs the vector cannot see rather than from a
-#: tier: floor that was already there. Against holding B: singleton variance, protection 2
-#: tier: and a thin W manabase, all unchanged. Interaction 4 is the number to watch — one
-#: tier: more cut on that axis and the floor slips below the letter.
+#: tier: other way: interaction dropped (the cut was a soft counter) and card advantage
+#: tier: rose to 3 (Bard doubles every draw after the first each turn), putting the floor
+#: tier: at B. REOPENED 2026-08-15: Dawnwing Marshal was CUT (a five-mana anthem body
+#: tier: the deck's 20 payoffs outclassed) and Dazzling Denial returned in its slot, so
+#: tier: interaction is 5 again with card advantage 3 — the floor reads A and the
+#: tier: under-graded flag is back. The A case: Elspeth is still three cards in one (token doubler across 13
+#: tier: feeders, a board-wide +1/+1-and-flying anthem, and removal), Bard doubles the
+#: tier: same token layer, and both counters now sit alongside them. Against re-grading:
+#: tier: singleton variance, protection 2 and a thin W manabase, all unchanged. The
+#: tier: letter stays B pending the human call the flag asks for.
 #: tier: WHAT ACTUALLY CAPS IT, measured: the white manabase. `consistency` prices the
 #: tier: deck's {W}{W} costs in the high-50s-to-low-60s% on curve — Aven Interrupter at
 #: tier: 58% on turn three, Storm, Windrider at 61% on turn four — wanting roughly +8
@@ -69,7 +70,7 @@
 1 Salvation Swan (BLB) 28
 1 Miner's Guidewing (LCI) 24
 1 Ambrosia Whiteheart (FIN) 6
-1 Dawnwing Marshal (FDN) 570
+1 Dazzling Denial (BLB) 45
 1 Elspeth, Storm Slayer (TDM) 11
 1 Stirring Hopesinger (SOS) 35
 1 Bushwhack (BRO) 174
@@ -123,3 +124,4 @@
 #~ note: all three are 0-wildcard and Standard-legal. Cuts are distinct because the cut
 #~ note: pool is shared; two of the three are interaction and this deck runs 5, so taking
 #~ note: more than one of Dazzling Denial / Stroke of Midnight / Bushwhack moves the floor.
+#~ note: applied — Dazzling Denial back in for Dawnwing Marshal (2026-08-15, user call): the counter returns, the five-mana anthem body goes; interaction 5 / card-adv 3, floor back to A with the letter held at B.
