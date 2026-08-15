@@ -47,7 +47,35 @@ second axis. Track variant-deck signals explicitly (user asked).
 
 ## 2. Standing error list
 
-- (none yet)
+- **E1 (G-58, self-inflicted): Tam, Mindful First-Year was rejected as "off-color —
+  U pip not payable"** while its cost is {1}{G/U} HYBRID, payable with green. The
+  batch pull's identity flag (OFF-GU) was read as a castability fact — the exact trap
+  the framework's own F5 warns about. Corrected; Tam grades ◇ on merits (hexproof-
+  from-own-colors + a self-tap utility ability), but the castability claim was wrong.
+- **E2 (CLAUDE.md decks-share-the-collection): the "reserved for Variant B" framing
+  was the recurring misread** — copies are fungible, so putting an axis-B card in 73
+  costs Variant B nothing. The honest reason each axis-B card is out of 73 is
+  PLAN-FIT (tap-down doesn't feed the engine), re-verified per card 2026-08-15:
+  Garuda/Push//Pull whiff on your own turn without Authority keeping their board
+  tapped; Baseball Bat was the one axis-B card that re-graded UP for 73 (it can tap
+  YOUR creature instead — dual-mode).
+
+### Batch 5 — user-prompted re-reads (2026-08-15)
+
+| Card | Was | Now | Why |
+|---|---|---|---|
+| Foggy Swamp Vinebender | ◇ | ★★ | Waterbend {5} taps up to five of your permanents FOR ZERO MANA — a mass trigger outlet once per turn. Owned. |
+| Baseball Bat | ◇ | ★★ | "Tap up to one target creature" on attack — THEIRS (axis B) or YOUR OWN (a Wylie trigger every combat, free on a vigilant attacker). |
+| Unswerving Sloth | out | ★★ | Saddle 4 taps ~4 power of your creatures (triggers), then the attack untaps EVERYTHING — cost and refund on one card. Owned. |
+| Group Project | ★→cut | ★★ | The flashback cost (tap three creatures) is the POINT: 3 triggers + a 2/2, twice from one card. |
+| Fishing Pole | (unread) | ★★ | The user's untap-trigger hunch: the ONLY "becomes untapped" trigger in Standard. Its granted ability is itself a tap outlet, and every Beastrider/Cap-America untap converts a bait counter to a Fish. Owned, {1}. |
+| Thistledown Players | ◇ | ★ | Untap target nonland permanent per attack — re-arms Wylie or a fixer every combat. |
+| Crowd-Control Warden | △ | ★ (73a) | With the Mercenary flood it enters 7/7+; disguise ward 2. Win-more but real. |
+| Glimmer Seeker | cut | ★ | Best of the survival trio — with outlets it draws every turn. Rootwise/Savior stay tune-pool. |
+| Fear of Exposure | ★★ (slots) | ★★ | Unchanged grade; first in line for a payoff-body slot. |
+| Summon: Primal Garuda / Push // Pull | B-only | B-only confirmed | Their tapped-targets whiff on YOUR turn (their board untaps first) — they need Authority, i.e. Variant B. |
+| Hedge Whisperer / Shimmerwilds Growth / Stubborn Burrowfiend / Riverguard's / Guac / Roxanne | cut | cut confirmed | Self-taps without triggering, land-mana rider, graveyard axis, trick-class below Biosynthic, artifact-token density too low. |
+| Rustler Rampage | — | already IN 73a | (User listed it; no action.) |
 
 ## 3. Cross-batch observations
 
