@@ -18,7 +18,7 @@
 #: tier:     spells is the ratio the plan wants. DISCOUNT the one ⚠ it prints: "counters: 7
 #: tier:     enablers, no payoff" is the tagger blind, not a real gap. Every payoff on that
 #: tier:     axis here is a POWER-scaling activated ability (Topiary Lecturer's {G} equal to
-#: tier:     power, Songcrafter Mage's harmonize reduction, Loki's mana-value gate) or the
+#: tier:     power, Songcrafter Mage's harmonize reduction) or the
 #: tier:     unindexed Increment keyword per K-01, and none of those carry a counters tag.
 #: tier:     The same ⚠ fires on the parent, where it IS real — this list is the payoff
 #: tier:     layer that deck's eight dead enablers were missing.
@@ -71,9 +71,11 @@
 #: archetype: THE COUNTERS LAYER IS UTILITY, NOT A WIN CONDITION, and that is the line that
 #: archetype: keeps it out of deck 30. Songcrafter Mage's harmonize cost is reduced by the
 #: archetype: POWER of a creature you tap; Topiary Lecturer taps for {G} equal to its power;
-#: archetype: Berta turns any counter placed on her into mana of any colour; Loki Laufeyson
-#: archetype: copies a spell whose mana value is at most his power, which on this curve
-#: archetype: covers most of the list before a single counter lands. Germination
+#: archetype: Berta turns any counter placed on her into mana of any colour. (Loki
+#: archetype: Laufeyson used to sit here as a power-gated spell copier; he was cut for
+#: archetype: Bilbo on 2026-08-15 — Bilbo discounts EVERY not-from-hand cast by {1} and
+#: archetype: recasts an artifact/instant/sorcery from the yard on attack, which serves
+#: archetype: the deck's own axis instead of the counters sub-theme.) Germination
 #: archetype: Practicum puts two
 #: archetype: counters on EACH creature and then, via Paradigm, casts a FREE copy of itself
 #: archetype: every turn forever — so the counters arrive on their own. In deck 30 counters
@@ -165,7 +167,7 @@
 1 Topiary Lecturer (SOS) 165
 1 Berta, Wise Extrapolator (SOS) 175
 1 Norman Osborn (SPM) 39
-1 Loki Laufeyson (MSH) 143
+1 Bilbo, Thief in the Night (HOB) 33
 1 Germination Practicum (SOS) 149
 
 # Fixing / selection  (Starbreach Whale took Gran-Gran's slot when she was banned

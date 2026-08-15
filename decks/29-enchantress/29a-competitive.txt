@@ -36,6 +36,7 @@
 1 Topiary Lecturer (SOS) 165
 
 # Enchantment engine / card advantage
+1 The Mountain-king's Return (HOB) 22
 1 Political Triumph (MSH) 31
 1 Garruk's Uprising (FDN) 220
 1 Anthem of Champions (FDN) 116
@@ -58,7 +59,6 @@
 1 Pacifism (ANB) 16
 1 Abrade (FDN) 188
 1 Lightning Strike (MSH) 142
-1 Bombard (EOE) 129
 1 Unforgiving Aim (ECL) 200
 1 Valorous Stance (FDN) 583
 1 Harsh Annotation (SOS) 18
