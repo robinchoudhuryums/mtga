@@ -1,0 +1,111 @@
+#: name: Iron Hills Forge
+#: format: Standard
+#: colors: WR
+#: plan: midrange
+#: tier: B (PROVISIONAL) — matches the B metrics floor (interaction 5 after Thorin's
+#: tier: Last Stand closed the noncreature-answer hole, card advantage
+#: tier: 3 — Ragged Short Spear, the one classified rummage, was CUT for Item Shopkeep
+#: tier: on 2026-08-16 — with several unclassified per axis, the K-12 shape at its
+#: tier: widest: Kíli, Giott, Balin, Dáin's Company and Buster Sword all draw through
+#: tier: loot/wheel/dig/hit triggers no pattern reads, and Bifur/Cloud double them).
+#: tier: A coherent two-half engine with real protection (3) and a live anthem plan;
+#: tier: held at B: UNTESTED, 18 craft targets including most of the ★★★ core, the
+#: tier: tag-level similarity to the roster's equipment decks demands games to prove
+#: tier: the tribal identity plays as differently as it reads, and avg MV under-reads
+#: tier: by one X-spell. Re-grade with games and the crafts in hand.
+#: archetype: Boros (W/R) DWARF/EQUIPMENT TRIGGER ENGINE. The equipment here are cheap
+#: archetype: trigger fodder, not a voltron suit — that is the identity line against
+#: archetype: deck 38 Armory. PLAN: every Dwarf and every Equipment that enters feeds
+#: archetype: the draw engine (Kíli draws on either and makes the first equip each turn
+#: archetype: FREE; Giott loots on either; Balin wheels on each Dwarf and burns with an
+#: archetype: enduring story; Dáin's Company digs), while Fíli turns each nontoken
+#: archetype: Dwarf into a second 2/2 body and An Unexpected Party anthems the type.
+#: archetype: TWO DOUBLERS split the halves: Bifur doubles every Dwarf triggered
+#: archetype: ability, Cloud doubles every trigger of the creature he's equipped to.
+#: archetype: Mjölnir's "equip worthy {1}" covers essentially every Dwarf legend — a
+#: archetype: one-mana damage doubler — and Orcrist names Dwarf for a Treasure per body
+#: archetype: on hit. STORIED (3+ artifacts/legendaries/Sagas) is the deck's natural
+#: archetype: state by turn 3 and switches on Fíli's anthem, Thorin Oakenshield's ward,
+#: archetype: Ori's vigilance and Kíli's free equips. Gilgamesh and Thorin
+#: archetype: Mountain-king cheat and re-arrange the weapons; Judgment Bolt is removal
+#: archetype: that scales with the Equipment count.
+#: archetype: DISTINCTIVENESS, argued against BOTH equipment decks: 38 Armory is Orzhov
+#: archetype: voltron (one suited threat); 39 Starforge is Boros suit-up AGGRO with the
+#: archetype: Thor/God-Squad top end. This deck is a TRIBAL TRIGGER engine — the win is
+#: archetype: card-advantage grind plus a wide Dwarf token board, and the equipment are
+#: archetype: ETB fodder. The first draft imported six of 39's support cards; Weapons
+#: archetype: Vendor and Blacksmith's Talent were CUT for Iron Hills Blacksmith and
+#: archetype: Iron Hills Stalwart (two more Dwarves) to hold the line — the remaining
+#: archetype: shared four (Cloud, Gilgamesh, Mjölnir, Buster Sword) are fungible copies
+#: archetype: doing deck-specific work here (Cloud doubles, Mjölnir equips worthy
+#: archetype: Dwarf legends for {1}).
+#: notes: Drafted 2026-08-16 from .cycle/dwarf-equipment-analysis.md (130 cards read).
+#: notes: The TREASURE sub-theme the pile surfaced (Smaug, Misty Mountains Cold,
+#: notes: Magda's dragon, the producer suite) is specced there as the 74a variant —
+#: notes: this list keeps only the bridges that pay the main plan (Magda, Orcrist,
+#: notes: Dori, Gold Pan).
+#: notes: TAP-DOWN EQUIPMENT (Web-Shooters, Thunder Lasso, Captain America's Shield,
+#: notes: Skateboard, Trusty Boomerang) were graded to the Wylie-family decks, but the
+#: notes: user pushed back on eliminating them entirely — see the flex block; revisit
+#: notes: after games rather than treating the exclusion as settled.
+#: protect: Kíli the Resourceful; Bifur, Melodic Rider; Cloud, Midgar Mercenary; Mjölnir, Hammer of Thor; Orcrist, Goblin-cleaver; Magda, the Hoardmaster
+
+# Dwarves — the trigger engine
+1 Kíli the Resourceful (HOB) 17
+1 Giott, King of the Dwarves (FIN) 223
+1 Balin, Loremaster (HOB) 87
+1 Fíli the Pathfinder (HOB) 14
+1 Bifur, Melodic Rider (HOB) 147
+1 Dáin's Company (HOB) 152
+1 Dwalin, Weaponmaster (HOB) 154
+1 Dáin Ironfoot (HOB) 91
+1 Thorin, Mountain-king (HOB) 114
+1 Magda, the Hoardmaster (OTJ) 133
+1 Dori, Bearer of Friends (HOB) 94
+1 Glóin the Mighty // Easy Pickings (HOB) 99
+1 Thorin Oakenshield (HOB) 165
+1 Ori, Keeper of Songs (HOB) 23
+1 Dwarven Mauler (HOB) 95
+1 Bofur, Reliable Guardian (HOB) 6
+1 Iron Hills Blacksmith (HOB) 16
+1 Iron Hills Stalwart (HOB) 102
+
+# Support — doublers, cheats, attach engines
+1 Cloud, Midgar Mercenary (FIN) 10
+1 Gilgamesh, Master-at-Arms (FIN) 139
+1 Firion, Wild Rose Warrior (FIN) 137
+1 Item Shopkeep (FIN) 142
+
+# Equipment — cheap, auto-attaching, trigger-dense
+1 Orcrist, Goblin-cleaver (HOB) 177
+1 Mjölnir, Hammer of Thor (MSH) 146
+1 Dwarven Shortsword (HOB) 10
+1 Dwarven Mattock (HOB) 172
+1 Buster Sword (FIN) 255
+1 Leyline Axe (FDN) 129
+1 Gold Pan (OTJ) 242
+1 Sting, Bilbo's Sword (HOB) 178
+
+# Noncreature support / interaction
+1 Vow to Erebor (HOB) 31
+1 An Unexpected Party // At the Door (HOB) 29
+1 Thorin's Last Stand (HOB) 28
+1 Judgment Bolt (FIN) 559
+1 One Last Job (OTJ) 22
+1 The Black Arrow (HOB) 171
+
+# Lands — 24 Boros (Lonely Mountain + Iron Hills are on-plan)
+1 The Lonely Mountain (HOB) 187
+1 Iron Hills (HOB) 185
+1 Sunbillow Verge (DFT) 264
+1 Abraded Bluffs (OTJ) 251
+1 Sun-Blessed Peak (TLA) 280
+1 Temple of Triumph (FDN) 705
+9 Plains (TRK) 317
+9 Mountain (TRK) 323
+
+# Flex — options (comments; not part of the 60). See: deck.py flex 74
+#~ note: applied — Thorin's Last Stand in for Coral Sword (the modal artifact/enchantment answer closes the G-24 noncreature-answer hole).
+#~ -Gold Pan | +Web-Shooters | owned: the user's tap-down pushback lives here — the best of that cluster for THIS deck (repeatable attack-tap on a body the engine already equips). Revisit after games.
+#~ -Iron Hills Stalwart | +Beatrix, Loyal General | craft R: mass re-attach every combat instead of an ETB attach body; the trade is a Dwarf for a Human and curve 5 -> 6.
+#~ note: applied — Item Shopkeep in for Ragged Short Spear.
