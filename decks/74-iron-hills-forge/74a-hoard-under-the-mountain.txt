@@ -3,8 +3,10 @@
 #: colors: WR
 #: plan: midrange
 #: based-on: deck.txt
-#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 8 — the crime
-#: tier: suite doubles as removal — against card advantage 3, under-read per K-12:
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 7 — the crime
+#: tier: suite doubles as removal, one point lighter since the 2026-08-16 menace-package
+#: tier: tune traded a removal slot for combat treasures — against card advantage 3,
+#: tier: under-read per K-12:
 #: tier: Giott's loot, Balin's wheel, Dáin's Company's dig and Seize the Spoils all
 #: tier: count unevenly). Held at B: UNTESTED, 14 craft targets including the
 #: tier: centerpiece (Smaug M), a hoard plan whose payoffs need the game to go long
@@ -15,12 +17,16 @@
 #: archetype: treasure sub-theme demanded (.cycle/dwarf-equipment-analysis.md §3b).
 #: archetype: PLAN: the Dwarves dig the gold — Dori's ETB, Magda's crime trigger, the
 #: archetype: mining equipment (Diamond Pick-Axe, Goldvein Pick, Gold Pan, Orcrist
-#: archetype: naming Dwarf for a Treasure per body on hit), Prompto and Death to Our
-#: archetype: Enemies on noncreature casts, Stark Industries Executive, J. Jonah
-#: archetype: Jameson's menace bounty, Sarkhan beholding a Dragon, Luxurious
-#: archetype: Locomotive, and the
-#: archetype: burst producers (Brass's Bounty, Hell to Pay, Seize the Spoils, Season
-#: archetype: of the Bold, Reckless Ransacking) — and the DRAGONS collect it: Smaug
+#: archetype: naming Dwarf for a Treasure per body on hit), Death to Our Enemies on
+#: archetype: noncreature casts, Stark Industries Executive, Sarkhan beholding a
+#: archetype: Dragon, Luxurious Locomotive, the burst producers (Brass's Bounty, Hell
+#: archetype: to Pay, Seize the Spoils, Season of the Bold) and the J. JONAH JAMESON
+#: archetype: MENACE PACKAGE — JJJ mints a Treasure per menace attacker per combat, fed
+#: archetype: by Ferocification (menace+haste every combat), Demonic Ruckus (a big
+#: archetype: menace attacker that draws on death, plottable) and Daily Bugle Building
+#: archetype: granting menace to a legend from a land; Windcrag Siege's Mardu mode then
+#: archetype: DOUBLES the attack triggers (Smaug's hoard damage, JJJ's bounty,
+#: archetype: Locomotive's Treasures) — and the DRAGONS collect it: Smaug
 #: archetype: (upkeep Treasure; attack damage equal to the Treasure count), Magda
 #: archetype: sacrificing three for a 4/4 Dragon, The Misty Mountains Cold flipping
 #: archetype: four into a 6/6 Dragon. The hoard is also mana: every Treasure hard-casts
@@ -44,11 +50,9 @@
 #: notes: Dáin's Company, Bofur, Thorin Oakenshield, Orcrist, Dwarven Shortsword,
 #: notes: An Unexpected Party, the lands) — one craft serves both lists.
 #: notes: MAGDA'S CRIME TRIGGER needs you to target opponents or their stuff: Hell to
-#: notes: Pay, Involuntary Employment, The Black Arrow, J. Jonah Jameson's suspect,
-#: notes: Flick a Coin pointed at an opponent, and Smaug the Great Calamity's Spew
-#: notes: Flame all commit crimes on cast — count them (6) before cutting interaction
-#: notes: from this list. (Fate of the Sun-Cryst and Lightning Strike were CUT
-#: notes: 2026-08-16 for Spew Flame and Flick a Coin — like-for-like crime removal.)
+#: notes: Pay, Involuntary Employment, The Black Arrow, J. Jonah Jameson's suspect and
+#: notes: Flick a Coin pointed at an opponent all commit crimes on cast — count them
+#: notes: (5) before cutting interaction from this list.
 #: notes: 2026-08-16 additions: Sami, Wildcat Captain (spells gain affinity for
 #: notes: artifacts — the banked hoard discounts everything, and she arrives half-free
 #: notes: off her own rule) and Sarkhan, Dragon Ascendant (behold a Dragon — including
@@ -69,7 +73,6 @@
 
 # Treasure producers — creatures and crew
 1 Stark Industries Executive (MSH) 153
-1 Prompto Argentum (FIN) 148
 1 J. Jonah Jameson (SPM) 81
 1 Sami, Wildcat Captain (EOE) 226
 1 Sarkhan, Dragon Ascendant (TDM) 118
@@ -77,7 +80,6 @@
 
 # Dragons — the hoard's owners
 1 Smaug the Magnificent (HOB) 110
-1 Smaug, the Great Calamity (HOB) 109
 1 Rapacious Dragon (FDN) 544
 
 # Mining equipment
@@ -87,11 +89,13 @@
 1 Gold Pan (OTJ) 242
 1 Dwarven Shortsword (HOB) 10
 
-# Noncreature — treasure spells / tribe / interaction
+# Noncreature — treasure spells / menace package / interaction
+1 Windcrag Siege (TDM) 235
+1 Ferocification (OTJ) 123
+1 Demonic Ruckus (OTJ) 120
 1 The Misty Mountains Cold (HOB) 104
 1 Death to Our Enemies (MSH) 127
 1 Seize the Spoils (SOS) 129
-1 Reckless Ransacking (ECL) 152
 1 Brass's Bounty (FDN) 190
 1 Hell to Pay (OTJ) 126
 1 Season of the Bold (BLB) 152
@@ -113,3 +117,9 @@
 1 Fountainport (BLB) 253
 6 Plains (TRK) 317
 1 Daily Bugle Building (SPM) 179
+
+# Flex — options (comments; not part of the 60). See: deck.py flex 74a
+#~ +Prompto Argentum | OWNED, CUT 2026-08-16 for Windcrag Siege: a Treasure per 4-mana noncreature cast — back in if the menace package underperforms.
+#~ +Reckless Ransacking | OWNED, CUT for Ferocification: instant +3/+2 and a Treasure — the one-shot version of what Ferocification does every combat.
+#~ +Smaug, the Great Calamity | OWNED, CUT for Demonic Ruckus: Spew Flame removal that banks a 5/5 Dragon. Balin was the considered alternative cut and was KEPT deliberately — he feeds card advantage (the thin axis, and Fíli's tokens trigger him) while Great Calamity fed interaction (the deep axis). Note the cut also dropped the crime count 6 -> 5.
+#~ -Involuntary Employment | +Ramos, Dragon Engine | craft M: a Dragon (Sarkhan beholds it), a treasures-funded early cast, and a 10-mana any-color sink — its counter engine reads slow here (~1.6 colors/spell, zero external counter sources), which is the number that must move (G-61).

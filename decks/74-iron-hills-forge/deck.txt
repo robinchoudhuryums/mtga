@@ -2,7 +2,8 @@
 #: format: Standard
 #: colors: WR
 #: plan: midrange
-#: tier: B (PROVISIONAL) — matches the B metrics floor (interaction 4, card advantage
+#: tier: B (PROVISIONAL) — matches the B metrics floor (interaction 5 after Thorin's
+#: tier: Last Stand closed the noncreature-answer hole, card advantage
 #: tier: 3 — Ragged Short Spear, the one classified rummage, was CUT for Item Shopkeep
 #: tier: on 2026-08-16 — with several unclassified per axis, the K-12 shape at its
 #: tier: widest: Kíli, Giott, Balin, Dáin's Company and Buster Sword all draw through
@@ -82,13 +83,13 @@
 1 Dwarven Mattock (HOB) 172
 1 Buster Sword (FIN) 255
 1 Leyline Axe (FDN) 129
-1 Coral Sword (FIN) 134
 1 Gold Pan (OTJ) 242
 1 Sting, Bilbo's Sword (HOB) 178
 
 # Noncreature support / interaction
 1 Vow to Erebor (HOB) 31
 1 An Unexpected Party // At the Door (HOB) 29
+1 Thorin's Last Stand (HOB) 28
 1 Judgment Bolt (FIN) 559
 1 One Last Job (OTJ) 22
 1 The Black Arrow (HOB) 171
@@ -104,6 +105,7 @@
 9 Mountain (TRK) 323
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 74
-#~ -Coral Sword | +Web-Shooters | owned: the user's tap-down pushback lives here — Web-Shooters is the best of that cluster for THIS deck (a repeatable attack-tap on a body the engine already equips). Revisit after games.
+#~ note: applied — Thorin's Last Stand in for Coral Sword (the modal artifact/enchantment answer closes the G-24 noncreature-answer hole).
+#~ -Gold Pan | +Web-Shooters | owned: the user's tap-down pushback lives here — the best of that cluster for THIS deck (repeatable attack-tap on a body the engine already equips). Revisit after games.
 #~ -Iron Hills Stalwart | +Beatrix, Loyal General | craft R: mass re-attach every combat instead of an ETB attach body; the trade is a Dwarf for a Human and curve 5 -> 6.
 #~ note: applied — Item Shopkeep in for Ragged Short Spear.
