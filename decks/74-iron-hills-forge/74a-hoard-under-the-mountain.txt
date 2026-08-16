@@ -17,7 +17,8 @@
 #: archetype: mining equipment (Diamond Pick-Axe, Goldvein Pick, Gold Pan, Orcrist
 #: archetype: naming Dwarf for a Treasure per body on hit), Prompto and Death to Our
 #: archetype: Enemies on noncreature casts, Stark Industries Executive, J. Jonah
-#: archetype: Jameson's menace bounty, Gilded Ghoda, Luxurious Locomotive, and the
+#: archetype: Jameson's menace bounty, Sarkhan beholding a Dragon, Luxurious
+#: archetype: Locomotive, and the
 #: archetype: burst producers (Brass's Bounty, Hell to Pay, Seize the Spoils, Season
 #: archetype: of the Bold, Reckless Ransacking) — and the DRAGONS collect it: Smaug
 #: archetype: (upkeep Treasure; attack damage equal to the Treasure count), Magda
@@ -44,8 +45,13 @@
 #: notes: An Unexpected Party, the lands) — one craft serves both lists.
 #: notes: MAGDA'S CRIME TRIGGER needs you to target opponents or their stuff: Fate of
 #: notes: the Sun-Cryst, Lightning Strike, Hell to Pay, Involuntary Employment, The
-#: notes: Black Arrow, J. Jonah Jameson's suspect and Zidane's steal all commit crimes
-#: notes: on cast — count them (7) before cutting interaction from this list.
+#: notes: Black Arrow and J. Jonah Jameson's suspect all commit crimes on cast — count
+#: notes: them (6) before cutting interaction from this list.
+#: notes: 2026-08-16 additions: Sami, Wildcat Captain (spells gain affinity for
+#: notes: artifacts — the banked hoard discounts everything, and she arrives half-free
+#: notes: off her own rule) and Sarkhan, Dragon Ascendant (behold a Dragon — including
+#: notes: Magda's and Misty Mountains' tokens — for a Treasure, then grow with every
+#: notes: Dragon). Fountainport replaced a Mountain as the token-economy utility land.
 #: protect: Smaug the Magnificent; Magda, the Hoardmaster; Orcrist, Goblin-cleaver; The Misty Mountains Cold; The Black Arrow
 
 # Dwarves — the diggers
@@ -64,8 +70,8 @@
 1 Stark Industries Executive (MSH) 153
 1 Prompto Argentum (FIN) 148
 1 J. Jonah Jameson (SPM) 81
-1 Zidane, Tantalus Thief (FIN) 251
-1 Gilded Ghoda (DFT) 130
+1 Sami, Wildcat Captain (EOE) 226
+1 Sarkhan, Dragon Ascendant (TDM) 118
 1 Luxurious Locomotive (OTJ) 244
 
 # Dragons — the hoard's owners
@@ -101,5 +107,6 @@
 1 Sunbillow Verge (DFT) 264
 1 Abraded Bluffs (OTJ) 251
 1 Wind-Scarred Crag (FDN) 271
-11 Mountain (TRK) 323
+10 Mountain (TRK) 323
+1 Fountainport (BLB) 253
 7 Plains (TRK) 317
