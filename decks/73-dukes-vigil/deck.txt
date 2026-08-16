@@ -7,11 +7,15 @@
 #: tier: under the honest plan (the
 #: tier: inference guessed aggro off the cheap curve, but this is a VALUE ENGINE —
 #: tier: plan set to midrange per the 56a lesson, so the floor weighs interaction +
-#: tier: card advantage). Interaction reads 5; card advantage reads 2 and is the most
+#: tier: card advantage). Interaction reads 5; card advantage reads 1 and is the most
 #: tier: under-counted axis in the roster (K-12 shape): Wylie, Spider-Gwen, Traveling
-#: tier: Botanist, Agent Maria Hill, Seedship Agrarian and Compassionate Healer all
-#: tier: draw/filter through becomes-tapped triggers no pattern reads, Captain America
-#: tier: doubles them, and Annie doubles Wylie. Held at B: UNTESTED, 16 craft targets
+#: tier: Botanist, Seedship Agrarian, Compassionate Healer and Fishing Pole all
+#: tier: draw/filter/generate through becomes-tapped or untap triggers no pattern
+#: tier: reads, Captain America doubles them, and Annie doubles Wylie. In the
+#: tier: 2026-08-16 tune Agent Maria Hill was CUT (she was the one classified draw,
+#: tier: underfed by only two teamwork spells) for unclassified engine pieces — the
+#: tier: printed figure fell while the real axis rose. Held at B: UNTESTED, 18 craft
+#: tier: targets
 #: tier: including the seed itself, singleton variance on a combo-ish engine, and a
 #: tier: 3-color manabase whose fixing half lives on nonlands the consistency model
 #: tier: cannot see. Re-grade with games.
@@ -21,16 +25,19 @@
 #: archetype: a COST — the tap-for-mana fixers (Springleaf Drum, Gene Pollinator,
 #: archetype: Dragonbroods' Relic, Enduring Vitality, A Realm Reborn), convoke (The
 #: archetype: Wandering Rescuer, Dazzling Theater), teamwork (Helicarrier Strike,
-#: archetype: HULK SMASH!, Agent Maria Hill), Tyvar's free outlet, Aziza's spell-copy,
-#: archetype: Ghired's token-copy grant, Orphans of the Wheat — into a wall of
-#: archetype: becomes-tapped payoffs (Wylie, Wanderbrine Preacher, Compassionate Healer,
-#: archetype: Spider-Gwen, Hawkeye + his Bow, Traveling Botanist, Seedship Agrarian,
-#: archetype: Encumbered Reejerey) and tapped-state payoffs (Sunstar Chaplain, Frontline
-#: archetype: War-Rager, Dawnstrike Vanguard). Then the UNTAP half re-arms it all:
+#: archetype: HULK SMASH!), Tyvar's free outlet, Foggy Swamp Vinebender's zero-mana
+#: archetype: waterbend (tap up to five permanents once a turn), Group Project's
+#: archetype: flashback (tap three creatures), Aziza's spell-copy, Ghired's token-copy
+#: archetype: grant, Orphans of the Wheat — into a wall of becomes-tapped payoffs
+#: archetype: (Wylie, Wanderbrine Preacher, Compassionate Healer, Spider-Gwen, Hawkeye
+#: archetype: + his Bow, Traveling Botanist, Seedship Agrarian, Fishing Pole) plus the
+#: archetype: tapped-state payoff Sunstar Chaplain. Then the UNTAP half re-arms it all:
 #: archetype: Captain America refunds every creature's first tap each turn, Veteran
-#: archetype: Beastrider and Virtue of Loyalty reset at end step, Prop Room resets on
-#: archetype: EACH other player's untap step, Annie doubles and Kirol copies the
-#: archetype: triggers, and The Wandering Rescuer gives the tapped board hexproof.
+#: archetype: Beastrider and Virtue of Loyalty reset at end step, Unswerving Sloth
+#: archetype: refunds every attack, Prop Room resets on EACH other player's untap
+#: archetype: step, Annie doubles and Kirol copies the triggers, and The Wandering
+#: archetype: Rescuer gives the tapped board hexproof. Baseball Bat taps THEIR blocker
+#: archetype: or YOUR Wylie, whichever the turn wants.
 #: archetype: DISTINCTIVENESS: no tap-engine deck exists in the roster; nearest themes
 #: archetype: (vigilance/counters aggro) share no engine text.
 #: notes: Drafted 2026-08-15 from the two-part /pile-analysis (.cycle/wylie-tap-analysis.md,
@@ -57,13 +64,11 @@
 1 Hawkeye's Bow (MSH) 132
 1 Traveling Botanist (TDM) 164
 1 Seedship Agrarian (EOE) 204
-1 Encumbered Reejerey (ECL) 14
 1 Sunstar Chaplain (EOE) 40
-1 Frontline War-Rager (EOE) 134
-1 Dawnstrike Vanguard (EOE) 10
-1 Agent Maria Hill (MSH) 2
+1 Fishing Pole (FDN) 128
 
 # Multipliers / resets — the untap half
+1 Unswerving Sloth (DFT) 34
 1 Captain America, Living Legend (MSH) 210
 1 Annie Joins Up (OTJ) 191
 1 Kirol, Attentive First-Year (ECL) 231
@@ -74,6 +79,8 @@
 1 The Wandering Rescuer (DSK) 41
 
 # Outlets / fixing — every tap is a trigger
+1 Foggy Swamp Vinebender (TLA) 180
+1 Group Project (SOS) 17
 1 Springleaf Drum (ECL) 260
 1 Gene Pollinator (EOE) 186
 1 Dragonbroods' Relic (TDM) 140
@@ -88,7 +95,7 @@
 # Interaction / tricks
 1 Helicarrier Strike (MSH) 15
 1 HULK SMASH! (MSH) 135
-1 Fancy Footwork (TLA) 19
+1 Baseball Bat (DSK) 209
 1 Great Train Heist (OTJ) 125
 1 Fate of the Sun-Cryst (FIN) 19
 
