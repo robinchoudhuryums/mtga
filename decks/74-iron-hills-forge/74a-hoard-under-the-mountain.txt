@@ -1,0 +1,105 @@
+#: name: Iron Hills Forge — Hoard Under the Mountain
+#: format: Standard
+#: colors: WR
+#: plan: midrange
+#: based-on: deck.txt
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 8 — the crime
+#: tier: suite doubles as removal — against card advantage 3, under-read per K-12:
+#: tier: Giott's loot, Balin's wheel, Dáin's Company's dig and Seize the Spoils all
+#: tier: count unevenly). Held at B: UNTESTED, 14 craft targets including the
+#: tier: centerpiece (Smaug M), a hoard plan whose payoffs need the game to go long
+#: tier: enough to bank four-plus Treasures, and avg MV under-reads by two X-spells.
+#: tier: The W side is deliberately thin (11 sources) — An Unexpected Party is a
+#: tier: late-game X-spell by design, not a curve play. Re-grade with games.
+#: archetype: Boros (red-heavy W/R) DWARF TREASURE-HOARD — the variant the dwarf pile's
+#: archetype: treasure sub-theme demanded (.cycle/dwarf-equipment-analysis.md §3b).
+#: archetype: PLAN: the Dwarves dig the gold — Dori's ETB, Magda's crime trigger, the
+#: archetype: mining equipment (Diamond Pick-Axe, Goldvein Pick, Gold Pan, Orcrist
+#: archetype: naming Dwarf for a Treasure per body on hit), Prompto and Death to Our
+#: archetype: Enemies on noncreature casts, Stark Industries Executive, J. Jonah
+#: archetype: Jameson's menace bounty, Gilded Ghoda, Luxurious Locomotive, and the
+#: archetype: burst producers (Brass's Bounty, Hell to Pay, Seize the Spoils, Season
+#: archetype: of the Bold, Reckless Ransacking) — and the DRAGONS collect it: Smaug
+#: archetype: (upkeep Treasure; attack damage equal to the Treasure count), Magda
+#: archetype: sacrificing three for a 4/4 Dragon, The Misty Mountains Cold flipping
+#: archetype: four into a 6/6 Dragon. The hoard is also mana: every Treasure hard-casts
+#: archetype: the top of the curve and funds Hell to Pay's X. Giott/Balin/Dáin's
+#: archetype: Company keep the Dwarf draw engine from the parent, Fíli and An
+#: archetype: Unexpected Party widen the tribe (each token is another Orcrist Treasure
+#: archetype: on hit), and The Black Arrow is in the deck it was printed for.
+#: archetype: DISTINCTIVENESS vs parent 74: the parent is the equipment TRIGGER engine
+#: archetype: (Kíli/Bifur/Cloud, storied); this variant trades that half for the
+#: archetype: treasure economy and its Dragon payoffs — same tribe, different resource.
+#: archetype: The two treasure-adjacent roster decks differ on identity, argued
+#: archetype: explicitly: 58 Treasure Planet is artifacts/SACRIFICE (4 shared cards,
+#: archetype: wrong colors), and 48a Motor Pool is IZZET Vehicles+Treasure that CHEATS
+#: archetype: permanents into play — it shares 9 generic red PRODUCERS with this list
+#: archetype: (Brass's Bounty, Hell to Pay, Prompto, Stark Exec, the Picks…, all
+#: archetype: fungible copies) but zero of the PAYOFF half: Smaug, Magda's Dragon,
+#: archetype: Misty Mountains, Orcrist and the Dwarf engine exist nowhere else. Same
+#: archetype: vocabulary, different sentence.
+#: notes: Drafted 2026-08-16 from the dwarf/equipment analysis doc's variant spec.
+#: notes: Shared copies with parent 74 are FUNGIBLE (Magda, Giott, Balin, Fíli, Dori,
+#: notes: Dáin's Company, Ori, Bofur, Thorin Oakenshield, Orcrist, Dwarven Shortsword,
+#: notes: An Unexpected Party, the lands) — one craft serves both lists.
+#: notes: MAGDA'S CRIME TRIGGER needs you to target opponents or their stuff: Fate of
+#: notes: the Sun-Cryst, Lightning Strike, Hell to Pay, Involuntary Employment, The
+#: notes: Black Arrow, J. Jonah Jameson's suspect and Zidane's steal all commit crimes
+#: notes: on cast — count them (7) before cutting interaction from this list.
+#: protect: Smaug the Magnificent; Magda, the Hoardmaster; Orcrist, Goblin-cleaver; The Misty Mountains Cold; The Black Arrow
+
+# Dwarves — the diggers
+1 Magda, the Hoardmaster (OTJ) 133
+1 Dori, Bearer of Friends (HOB) 94
+1 Balin, Loremaster (HOB) 87
+1 Glóin the Mighty // Easy Pickings (HOB) 99
+1 Fíli the Pathfinder (HOB) 14
+1 Giott, King of the Dwarves (FIN) 223
+1 Dáin's Company (HOB) 152
+1 Ori, Keeper of Songs (HOB) 23
+1 Bofur, Reliable Guardian (HOB) 6
+1 Thorin Oakenshield (HOB) 165
+
+# Treasure producers — creatures and crew
+1 Stark Industries Executive (MSH) 153
+1 Prompto Argentum (FIN) 148
+1 J. Jonah Jameson (SPM) 81
+1 Zidane, Tantalus Thief (FIN) 251
+1 Gilded Ghoda (DFT) 130
+1 Luxurious Locomotive (OTJ) 244
+
+# Dragons — the hoard's owners
+1 Smaug the Magnificent (HOB) 110
+1 Rapacious Dragon (FDN) 544
+
+# Mining equipment
+1 Orcrist, Goblin-cleaver (HOB) 177
+1 Diamond Pick-Axe (LCI) 143
+1 Goldvein Pick (FDN) 253
+1 Gold Pan (OTJ) 242
+1 Dwarven Shortsword (HOB) 10
+
+# Noncreature — treasure spells / tribe / interaction
+1 The Misty Mountains Cold (HOB) 104
+1 Death to Our Enemies (MSH) 127
+1 Seize the Spoils (SOS) 129
+1 Reckless Ransacking (ECL) 152
+1 Brass's Bounty (FDN) 190
+1 Hell to Pay (OTJ) 126
+1 Season of the Bold (BLB) 152
+1 An Unexpected Party // At the Door (HOB) 29
+1 Great Train Heist (OTJ) 125
+1 Involuntary Employment (FDN) 203
+1 Fate of the Sun-Cryst (FIN) 19
+1 Lightning Strike (TLA) 146
+1 The Black Arrow (HOB) 171
+
+# Lands — 24, red-weighted Boros (Gold Saucer + Lonely Mountain + Iron Hills on-plan)
+1 The Gold Saucer (FIN) 279
+1 The Lonely Mountain (HOB) 187
+1 Iron Hills (HOB) 185
+1 Sunbillow Verge (DFT) 264
+1 Abraded Bluffs (OTJ) 251
+1 Wind-Scarred Crag (FDN) 271
+11 Mountain (TRK) 323
+7 Plains (TRK) 317
