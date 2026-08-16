@@ -1,0 +1,117 @@
+#: name: Duke's Vigil
+#: format: Standard
+#: colors: WGR
+#: plan: midrange
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor, which this list meets
+#: tier: exactly (interaction 5, with the two axes summing right at the threshold)
+#: tier: under the honest plan (the
+#: tier: inference guessed aggro off the cheap curve, but this is a VALUE ENGINE —
+#: tier: plan set to midrange per the 56a lesson, so the floor weighs interaction +
+#: tier: card advantage). Interaction reads 5; card advantage reads 1 and is the most
+#: tier: under-counted axis in the roster (K-12 shape): Wylie, Spider-Gwen, Traveling
+#: tier: Botanist, Seedship Agrarian, Compassionate Healer and Fishing Pole all
+#: tier: draw/filter/generate through becomes-tapped or untap triggers no pattern
+#: tier: reads, Captain America doubles them, and Annie doubles Wylie. In the
+#: tier: 2026-08-16 tune Agent Maria Hill was CUT (she was the one classified draw,
+#: tier: underfed by only two teamwork spells) for unclassified engine pieces — the
+#: tier: printed figure fell while the real axis rose. Held at B: UNTESTED, 18 craft
+#: tier: targets
+#: tier: including the seed itself, singleton variance on a combo-ish engine, and a
+#: tier: 3-color manabase whose fixing half lives on nonlands the consistency model
+#: tier: cannot see. Re-grade with games.
+#: archetype: Naya (W/G/R) TAP-VALUE engine around Wylie Duke, Atiin Hero ("whenever
+#: archetype: Wylie becomes tapped, gain 1 life and draw a card" — vigilance means combat
+#: archetype: never taps him, so every tap is a CHOICE). PLAN: tap your own creatures as
+#: archetype: a COST — the tap-for-mana fixers (Springleaf Drum, Gene Pollinator,
+#: archetype: Dragonbroods' Relic, Enduring Vitality, A Realm Reborn), convoke (The
+#: archetype: Wandering Rescuer, Dazzling Theater), teamwork (Helicarrier Strike,
+#: archetype: HULK SMASH!), Tyvar's free outlet, Foggy Swamp Vinebender's zero-mana
+#: archetype: waterbend (tap up to five permanents once a turn), Group Project's
+#: archetype: flashback (tap three creatures), Aziza's spell-copy, Ghired's token-copy
+#: archetype: grant, Orphans of the Wheat — into a wall of becomes-tapped payoffs
+#: archetype: (Wylie, Wanderbrine Preacher, Compassionate Healer, Spider-Gwen, Hawkeye
+#: archetype: + his Bow, Traveling Botanist, Seedship Agrarian, Fishing Pole) plus the
+#: archetype: tapped-state payoff Sunstar Chaplain. Then the UNTAP half re-arms it all:
+#: archetype: Captain America refunds every creature's first tap each turn, Veteran
+#: archetype: Beastrider and Virtue of Loyalty reset at end step, Unswerving Sloth
+#: archetype: refunds every attack, Prop Room resets on EACH other player's untap
+#: archetype: step, Annie doubles and Kirol copies the triggers, and The Wandering
+#: archetype: Rescuer gives the tapped board hexproof. Baseball Bat taps THEIR blocker
+#: archetype: or YOUR Wylie, whichever the turn wants.
+#: archetype: DISTINCTIVENESS: no tap-engine deck exists in the roster; nearest themes
+#: archetype: (vigilance/counters aggro) share no engine text.
+#: notes: Drafted 2026-08-15 from the two-part /pile-analysis (.cycle/wylie-tap-analysis.md,
+#: notes: 138 cards read; the doc holds the framework, verdicts and the two variant deck
+#: notes: lists — Variant A Naya Mercenary-tokens and Variant B mono-W tap-down control).
+#: notes: CAPTAIN AMERICA'S {U} PIP is real (not hybrid — G-58 does not apply) and paid
+#: notes: by the deck's any-color engine: 2x Mystic Monastery + Surveillance Room +
+#: notes: Command Bridge on the land side, plus Springleaf Drum / Gene Pollinator /
+#: notes: Dragonbroods' Relic / Enduring Vitality / A Realm Reborn / Selvala among
+#: notes: nonlands. The colors header stays WGR so future off-color adds still get
+#: notes: flagged; he carries #: uncastable-ok: as the designed per-card exemption.
+#: notes: SEQUENCING NOTE: tap-for-mana BEFORE casting — a Drum/Relic/Vitality
+#: notes: activation is a Wylie draw the spell then benefits from; with Captain America
+#: notes: out, tap each fixer body once for value, get it refunded, then tap for mana.
+#: uncastable-ok: Captain America, Living Legend
+#: protect: Wylie Duke, Atiin Hero; Captain America, Living Legend; Dazzling Theater // Prop Room; Annie Joins Up; Dragonbroods' Relic
+
+# Payoffs — becomes-tapped / tapped-state
+1 Wylie Duke, Atiin Hero (OTJ) 239
+1 Wanderbrine Preacher (ECL) 41
+1 Compassionate Healer (TLA) 13
+1 Spider-Gwen, Free Spirit (MSC) 874
+1 Hawkeye, Master Marksman (MSH) 130
+1 Hawkeye's Bow (MSH) 132
+1 Traveling Botanist (TDM) 164
+1 Seedship Agrarian (EOE) 204
+1 Sunstar Chaplain (EOE) 40
+1 Fishing Pole (FDN) 128
+
+# Multipliers / resets — the untap half
+1 Unswerving Sloth (DFT) 34
+1 Captain America, Living Legend (MSH) 210
+1 Annie Joins Up (OTJ) 191
+1 Kirol, Attentive First-Year (ECL) 231
+1 Tyvar, the Pummeler (DSK) 202
+1 Veteran Beastrider (DFT) 226
+1 Virtue of Loyalty (WOE) 38
+1 Dazzling Theater // Prop Room (DSK) 3
+1 The Wandering Rescuer (DSK) 41
+
+# Outlets / fixing — every tap is a trigger
+1 Foggy Swamp Vinebender (TLA) 180
+1 Group Project (SOS) 17
+1 Springleaf Drum (ECL) 260
+1 Gene Pollinator (EOE) 186
+1 Dragonbroods' Relic (TDM) 140
+1 Enduring Vitality (DSK) 176
+1 A Realm Reborn (FIN) 196
+1 Aziza, Mage Tower Captain (SOS) 174
+1 Selvala, Eager Trailblazer (OTJ) 231
+1 Ghired, Mirror of the Wilds (OTJ) 205
+1 Wanderbrine Trapper (ECL) 42
+1 Orphans of the Wheat (DSK) 22
+
+# Interaction / tricks
+1 Helicarrier Strike (MSH) 15
+1 HULK SMASH! (MSH) 135
+1 Baseball Bat (DSK) 209
+1 Great Train Heist (OTJ) 125
+1 Fate of the Sun-Cryst (FIN) 19
+
+# Lands — 24 (Adagia + Command Bridge are outlets; Monastery/Surveillance pay the U)
+1 Adagia, Windswept Bastion (EOE) 250
+1 Command Bridge (EOE) 252
+1 Surveillance Room (MSH) 274
+1 Sunbillow Verge (DFT) 264
+1 Thornspire Verge (DSK) 270
+1 Hushwood Verge (DSK) 262
+2 Mystic Monastery (TDM) 262
+1 Blossoming Sands (TDM) 249
+1 Kyoshi Village (TLA) 273
+1 Rugged Highlands (TDM) 258
+1 Gongaga, Reactor Town (FIN) 281
+1 Restless Ridgeline (LCI) 276
+4 Plains (TRK) 317
+5 Forest (TRK) 325
+2 Mountain (TRK) 323
