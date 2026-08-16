@@ -3,8 +3,9 @@
 #: colors: WR
 #: plan: midrange
 #: tier: B (PROVISIONAL) — matches the B metrics floor (interaction 4, card advantage
-#: tier: 4, each with SIX unclassified — the K-12 shape at its widest: Kíli, Giott,
-#: tier: Balin, Dáin's Company, Ragged Short Spear and Buster Sword all draw through
+#: tier: 3 — Ragged Short Spear, the one classified rummage, was CUT for Item Shopkeep
+#: tier: on 2026-08-16 — with several unclassified per axis, the K-12 shape at its
+#: tier: widest: Kíli, Giott, Balin, Dáin's Company and Buster Sword all draw through
 #: tier: loot/wheel/dig/hit triggers no pattern reads, and Bifur/Cloud double them).
 #: tier: A coherent two-half engine with real protection (3) and a live anthem plan;
 #: tier: held at B: UNTESTED, 18 craft targets including most of the ★★★ core, the
@@ -72,6 +73,7 @@
 1 Cloud, Midgar Mercenary (FIN) 10
 1 Gilgamesh, Master-at-Arms (FIN) 139
 1 Firion, Wild Rose Warrior (FIN) 137
+1 Item Shopkeep (FIN) 142
 
 # Equipment — cheap, auto-attaching, trigger-dense
 1 Orcrist, Goblin-cleaver (HOB) 177
@@ -90,7 +92,6 @@
 1 Judgment Bolt (FIN) 559
 1 One Last Job (OTJ) 22
 1 The Black Arrow (HOB) 171
-1 Ragged Short Spear (HOB) 108
 
 # Lands — 24 Boros (Lonely Mountain + Iron Hills are on-plan)
 1 The Lonely Mountain (HOB) 187
@@ -105,4 +106,4 @@
 # Flex — options (comments; not part of the 60). See: deck.py flex 74
 #~ -Coral Sword | +Web-Shooters | owned: the user's tap-down pushback lives here — Web-Shooters is the best of that cluster for THIS deck (a repeatable attack-tap on a body the engine already equips). Revisit after games.
 #~ -Iron Hills Stalwart | +Beatrix, Loyal General | craft R: mass re-attach every combat instead of an ETB attach body; the trade is a Dwarf for a Human and curve 5 -> 6.
-#~ -Ragged Short Spear | +Hard-Won Jitte | owned: raw double strike over the rummage if the board wants damage more than cards.
+#~ note: applied — Item Shopkeep in for Ragged Short Spear.

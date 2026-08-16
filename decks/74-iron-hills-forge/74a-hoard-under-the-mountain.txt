@@ -41,12 +41,14 @@
 #: archetype: vocabulary, different sentence.
 #: notes: Drafted 2026-08-16 from the dwarf/equipment analysis doc's variant spec.
 #: notes: Shared copies with parent 74 are FUNGIBLE (Magda, Giott, Balin, Fíli, Dori,
-#: notes: Dáin's Company, Ori, Bofur, Thorin Oakenshield, Orcrist, Dwarven Shortsword,
+#: notes: Dáin's Company, Bofur, Thorin Oakenshield, Orcrist, Dwarven Shortsword,
 #: notes: An Unexpected Party, the lands) — one craft serves both lists.
-#: notes: MAGDA'S CRIME TRIGGER needs you to target opponents or their stuff: Fate of
-#: notes: the Sun-Cryst, Lightning Strike, Hell to Pay, Involuntary Employment, The
-#: notes: Black Arrow and J. Jonah Jameson's suspect all commit crimes on cast — count
-#: notes: them (6) before cutting interaction from this list.
+#: notes: MAGDA'S CRIME TRIGGER needs you to target opponents or their stuff: Hell to
+#: notes: Pay, Involuntary Employment, The Black Arrow, J. Jonah Jameson's suspect,
+#: notes: Flick a Coin pointed at an opponent, and Smaug the Great Calamity's Spew
+#: notes: Flame all commit crimes on cast — count them (6) before cutting interaction
+#: notes: from this list. (Fate of the Sun-Cryst and Lightning Strike were CUT
+#: notes: 2026-08-16 for Spew Flame and Flick a Coin — like-for-like crime removal.)
 #: notes: 2026-08-16 additions: Sami, Wildcat Captain (spells gain affinity for
 #: notes: artifacts — the banked hoard discounts everything, and she arrives half-free
 #: notes: off her own rule) and Sarkhan, Dragon Ascendant (behold a Dragon — including
@@ -62,7 +64,6 @@
 1 Fíli the Pathfinder (HOB) 14
 1 Giott, King of the Dwarves (FIN) 223
 1 Dáin's Company (HOB) 152
-1 Ori, Keeper of Songs (HOB) 23
 1 Bofur, Reliable Guardian (HOB) 6
 1 Thorin Oakenshield (HOB) 165
 
@@ -76,6 +77,7 @@
 
 # Dragons — the hoard's owners
 1 Smaug the Magnificent (HOB) 110
+1 Smaug, the Great Calamity (HOB) 109
 1 Rapacious Dragon (FDN) 544
 
 # Mining equipment
@@ -96,8 +98,8 @@
 1 An Unexpected Party // At the Door (HOB) 29
 1 Great Train Heist (OTJ) 125
 1 Involuntary Employment (FDN) 203
-1 Fate of the Sun-Cryst (FIN) 19
-1 Lightning Strike (TLA) 146
+1 Collector's Vault (WOE) 244
+1 Flick a Coin (WOE) 128
 1 The Black Arrow (HOB) 171
 
 # Lands — 24, red-weighted Boros (Gold Saucer + Lonely Mountain + Iron Hills on-plan)
@@ -109,4 +111,5 @@
 1 Wind-Scarred Crag (FDN) 271
 10 Mountain (TRK) 323
 1 Fountainport (BLB) 253
-7 Plains (TRK) 317
+6 Plains (TRK) 317
+1 Daily Bugle Building (SPM) 179
