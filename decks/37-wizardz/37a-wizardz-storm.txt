@@ -13,9 +13,17 @@
 #: tier: the rules caveat below), while Rakdos reanimates a creature with two +1/+1
 #: tier: counters — the shortcut to the Emperor's three-counter transform — and turns each
 #: tier: legend's death into noncombat damage Niv-Mizzet redraws. Floor
-#: tier: is A on card advantage 7 + interaction 6 (Boomerang Basics was CUT 2026-08-17
-#: tier: for Astrologian's Planisphere, trading the deck's weakest card for a Wizard-making
-#: tier: counter engine — but the bounce had been carrying an interaction point).
+#: tier: is A on card advantage 8 + interaction 5, and interaction now sits EXACTLY on the
+#: tier: A floor's minimum — the next interaction cut drops this deck to B, so treat 5 as a
+#: tier: hard floor, not a budget. Two 2026-08-17 trades spent those points deliberately:
+#: tier: Boomerang Basics was CUT for Astrologian's Planisphere (the deck's weakest card for
+#: tier: a Wizard-making counter engine, but the bounce had been carrying an interaction
+#: tier: point), and Dark Deed was CUT for Mu Yanling, Wind Rider — Dark Deed being the
+#: tier: redundant half of a pair with Bitter Triumph (same cost, same colour, but -4/-4 is
+#: tier: creature-only where Bitter Triumph also answers a planeswalker), and Mu Yanling
+#: tier: being a repeatable draw engine off 6 fliers plus her own flying Vehicle token.
+#: tier: The cut kept the noncreature-answer count at 3; cutting Mana Sculpt instead would
+#: tier: have dropped it to 2, since it is the only hard counter.
 #: tier: WHY THE LETTER MOVED B -> A: the two reasons the old B rested on have both been
 #: tier: retired by the 2026-08-17 tune. (1) It said ZERO protection; protection reads 1
 #: tier: now that Kid Loki came in and Balmor, Battlemage Captain was CUT. (2) It said the copy payoff was a trap
@@ -77,6 +85,7 @@
 1 Kefka, Court Mage (FIN) 231
 1 Niv-Mizzet, Visionary (FDN) 123
 1 Most Decrepit Old Bird (HOB) 49
+1 Mu Yanling, Wind Rider (DFT) 52
 
 # Noncreature — reanimation (Rakdos returns a creature with two +1/+1 counters)
 1 Rakdos Joins Up (OTJ) 225
@@ -100,7 +109,6 @@
 # Noncreature — removal / interaction
 1 Playful Shove (BLB) 145
 1 Bitter Triumph (SOA) 26
-1 Dark Deed (MSH) 93
 1 Mana Sculpt (SOS) 57
 
 # Lands — 25, U-weighted Grixis (owned duals + basics; fungible with 37)
