@@ -4961,3 +4961,56 @@ Watery Grave,Land — Island Swamp,"({T}: Add {U} or {B}.)
 As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/B,Island; Swamp; pay life; mana,TRK,306,1
 Rakdos Joins Up,Legendary Enchantment,"When Rakdos Joins Up enters, return target creature card from your graveyard to the battlefield with two additional +1/+1 counters on it.
 Whenever a legendary creature you control dies, Rakdos Joins Up deals damage equal to that creature's power to target opponent.",B/R,counters; reanimator; graveyard; etb,OTJ,225,1
+The Lord of the Eagles,Legendary Creature — Bird Noble,"Flash
+This spell costs {X} less to cast, where X is the total power of creatures you control with flying.
+Flying",U,Bird; Noble; cost-reduction; flying; evasion; flash; tempo,HOB,46,1
+Starfield Vocalist,Creature — Human Bard,"If a permanent entering the battlefield causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.
+Warp {1}{U} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",U,Human; Bard; exile cast; warp; tempo; cost-reduction,EOE,78,1
+"Thranduil, the Elvenking",Legendary Creature — Elf Noble,"Thranduil has all activated abilities of all Elf cards in your graveyard.
+Whenever another legendary Elf you control enters, draw two cards, then discard a card.",U/B/G,Elf; Noble; graveyard; card draw,HOB,167,2
+Dalkovan Encampment,Land,"This land enters tapped unless you control a Swamp or a Mountain.
+{T}: Add {W}.
+{2}{W}, {T}: Whenever you attack this turn, create two 1/1 red Warrior creature tokens that are tapped and attacking. Sacrifice them at the beginning of the next end step.",W,sacrifice; tokens; mana,TDM,253,1
+Restricted Office,Enchantment — Room // Enchantment — Room,"When you unlock this door, destroy all creatures with power 3 or greater.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.) // Other permanents you control have hexproof.
+(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",W/U,Room,DSK,227,1
+"Oko, the Ringleader",Legendary Planeswalker — Oko,"At the beginning of combat on your turn, Oko becomes a copy of up to one target creature you control until end of turn, except he has hexproof.
++1: Draw two cards. If you've committed a crime this turn, discard a card. Otherwise, discard two cards.
+−1: Create a 3/3 green Elk creature token.
+−5: For each other nonland permanent you control, create a token that's a copy of that permanent.",U/G,Oko; Planeswalker; card draw; tokens; planeswalker,OTJ,223,1
+Nimble Brigand,Creature — Human Rogue,"This creature can't be blocked if you've committed a crime this turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)
+Whenever this creature deals combat damage to a player, draw a card.",U,Human; Rogue; graveyard; card draw,OTJ,58,1
+Unscrupulous Contractor,Creature — Human Assassin,"When this creature enters, you may sacrifice a creature. When you do, target player draws two cards and loses 2 life.
+Plot {2}{B} (You may pay {2}{B} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",B,Human; Assassin; exile cast; sacrifice; etb; plot; tempo; cost-reduction,OTJ,112,1
+Gold Rush,Instant,"Create a Treasure token. Until end of turn, up to one target creature gets +2/+2 for each Treasure you control.",G,tokens; treasure; pump,OTJ,166,1
+Blood Hustler,Creature — Vampire Rogue,"Whenever you commit a crime, put a +1/+1 counter on this creature. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)
+{3}{B}: Target opponent loses 1 life and you gain 1 life.",B,Vampire; Rogue; counters; graveyard; lifegain,OTJ,80,1
+Seize the Secrets,Sorcery,"This spell costs {1} less to cast if you've committed a crime this turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)
+Draw two cards.",U,graveyard; cost-reduction; card draw,OTJ,64,1
+Stormsplitter,Creature — Otter Wizard,"Haste
+Whenever you cast an instant or sorcery spell, create a token that's a copy of this creature. Exile that token at the beginning of the next end step.",R,Otter; Wizard; tokens; spellslinger; haste; aggro,BLB,154,1
+Old Fat Spider,Creature — Spider,"Reach
+This creature can't be blocked by creatures with power 2 or less.
+Whenever this creature becomes the target of a spell or ability an opponent controls, draw a card.",G,Spider; card draw; reach; defense,HOB,132,1
+Dancing from Dark to Dawn,Enchantment,"Whenever you cast a creature spell, put X +1/+1 counters on target creature you control, where X is that spell's mana value.
+Landfall — Whenever a land you control enters, create a 2/2 green Bear creature token.",G,counters; tokens; landfall; lands; ramp,HOB,123,1
+Troop of Ponies,Creature — Horse,"{2}, {T}, Sacrifice this creature: Search your library for up to two basic land cards, reveal them, put one onto the battlefield tapped and the other into your hand, then shuffle.",Colorless,Horse; sacrifice,HOB,3,2
+Eagle of the Great Shelf,Creature — Bird Soldier,"Flying
+Whenever this creature attacks, it gets +1/+1 until end of turn for each other creature you control.",W,Bird; Soldier; pump; flying; evasion,HOB,11,1
+Eagle's Rescue,Enchantment — Aura,"Enchant creature
+Enchanted creature gets +2/+2 and has flying.
+{2}{W/U}{W/U}: Return this card from your graveyard to the battlefield attached to target creature you control with power 1 or less. Activate only as a sorcery.",W/U,Aura; reanimator; graveyard; aura; pump; enchant,HOB,155,1
+"Gandalf, Spark Starter",Legendary Creature — Avatar Wizard,"Reach
+When Gandalf enters, he deals 3 damage divided as you choose among one, two, or three targets.",R,Avatar; Wizard; burn; etb; reach; defense,HOB,97,1
+Most Decrepit Old Bird,Creature — Bird // Sorcery — Adventure,"Flying
+Threshold — This creature gets +1/+1 as long as there are seven or more cards in your graveyard. // Mill four cards, then put an instant or sorcery card from among them into your hand.",U,Bird; Adventure; graveyard; mill; exile cast; pump; flying; evasion; threshold,HOB,49,1
+Celebrate the Mountain-king,Enchantment,"When this enchantment enters, for each opponent, exile up to one target nonland permanent that player controls until this enchantment leaves the battlefield.
+When this enchantment enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W,card draw; tokens; etb,HOB,7,1
+Sandsteppe Citadel,Land,"This land enters tapped.
+{T}: Add {W}, {B}, or {G}.",W/B/G,mana,TDM,266,1
+Simulacrum Synthesizer,Artifact,"When this artifact enters, scry 2.
+Whenever another artifact you control with mana value 3 or greater enters, create a 0/0 colorless Construct artifact creature token with ""This token gets +1/+1 for each artifact you control.""",U,tokens; etb; scry; pump; selection,BIG,6,1
+Jailbreak Scheme,Sorcery,"Spree (Choose one or more additional costs.)
++ {3} — Put a +1/+1 counter on target creature. It can't be blocked this turn.
++ {2} — Target artifact or creature's owner puts it on their choice of the top or bottom of their library.",U,counters; spree; value,OTJ,53,1
+Double Down,Enchantment,"Whenever you cast an outlaw spell, copy that spell. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws. Copies of permanent spells become tokens.)",U,spell copy,OTJ,44,1

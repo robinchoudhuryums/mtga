@@ -1,7 +1,8 @@
 #: name: Wizardz — Value/Storm (copy + draw-two)
 #: format: Standard
 #: colors: UBR
-#: tier: B — a grindier, value-leaning cousin of the aggressive base (37). Same Grixis Wizard
+#: tier: A (re-graded up from B on 2026-08-17, at the user's call, after the tune below) — a
+#: tier: grindier, value-leaning cousin of the aggressive base (37). Same Grixis Wizard
 #: tier: spellslinger spine, but tilted toward card advantage and spell-copy payoffs: draw a
 #: tier: pile (Combat Tutorial / Think Twice / cantrips — Phyrexian Arena was CUT
 #: tier: 2026-08-17, its {B}{B} being the worst cast-on-curve cost in the deck), turn "draw your second card"
@@ -14,13 +15,21 @@
 #: tier: legend's death into noncombat damage Niv-Mizzet redraws. Floor
 #: tier: is A on card advantage 7 + interaction 6 (Boomerang Basics was CUT 2026-08-17
 #: tier: for Astrologian's Planisphere, trading the deck's weakest card for a Wizard-making
-#: tier: counter engine — but the bounce had been carrying an interaction point); held at B by
-#: tier: THIN protection for the 4 `#: protect:` build-arounds, singleton variance, and the
-#: tier: copy-payoff caveat below (copies don't fire the pings). Protection reads 1 as of
-#: tier: 2026-08-17, when Kid Loki came in over Balmor: his hexproof covers only creatures
-#: tier: that took a +1/+1 counter THIS turn, which is Clinquant Skymage, Tempest Angler,
-#: tier: the Emperor and himself by default — the build-arounds are covered only when
-#: tier: Combat Tutorial's counter is aimed at one. A distinct build to compare.
+#: tier: counter engine — but the bounce had been carrying an interaction point).
+#: tier: WHY THE LETTER MOVED B -> A: the two reasons the old B rested on have both been
+#: tier: retired by the 2026-08-17 tune. (1) It said ZERO protection; protection reads 1
+#: tier: now that Kid Loki came in and Balmor, Battlemage Captain was CUT. (2) It said the copy payoff was a trap
+#: tier: because copies don't fire the pings; the six-mana copier that argument was about
+#: tier: is gone, and the remaining copiers (Kitsa, Taigam) are cheap per-turn effects that
+#: tier: never asked to be stormed. The engine also got materially more coherent: the
+#: tier: instant/sorcery base went 10 -> 12 with two-cast cards (Think Twice), the manabase
+#: tier: dropped from 9 tapped lands to 7, and Rakdos Joins Up gave the Emperor's transform
+#: tier: a real route. A rather than S: the deck is still UNTESTED, still a singleton pile
+#: tier: whose two halves (engine creature + payoff) must be drawn together, and the
+#: tier: protection is CONDITIONAL — Kid Loki's hexproof covers only creatures that took a
+#: tier: +1/+1 counter THIS turn (Clinquant Skymage, Tempest Angler, the Emperor, the
+#: tier: Planisphere's Hero and himself by default), so the `#: protect:` build-arounds are
+#: tier: covered only when Combat Tutorial's counter is aimed at one. Re-grade with games.
 #: based-on: deck.txt
 #: archetype: Grixis (U-primary) Wizard VALUE/STORM. The base 37 races with ping triggers; this
 #: archetype: variant grinds: heavy card draw feeds "draw your second card" payoffs and fuels a
