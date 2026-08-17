@@ -57,10 +57,10 @@
 1 Kona, Rescue Beastie (DSK) 187
 1 Caradora, Heart of Alacria (DFT) 195
 2 Miriam, Herd Whisperer (OTJ) 221
-2 Cloudspire Captain (DFT) 9
+1 Cloudspire Captain (DFT) 9
 1 Interface Ace (DFT) 17
 1 Giant Beaver (OTJ) 165
-2 Frontier Seeker (OTJ) 13
+1 Frontier Seeker (OTJ) 13
 
 # Mounts (saddled-attack engine)
 1 Congregation Gryff (OTJ) 200
@@ -75,6 +75,8 @@
 1 Guardian Sunmare (DFT) 15
 1 Unswerving Sloth (DFT) 34
 1 Bounding Felidar (OTJ) 5
+1 Rambling Possum (OTJ) 176
+1 Bridled Bighorn (OTJ) 7
 
 # Vehicles
 1 Voyager Glidecar (DFT) 36

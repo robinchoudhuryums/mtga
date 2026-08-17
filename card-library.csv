@@ -4876,3 +4876,88 @@ Along the Crooked Way,Enchantment,"When this enchantment enters, return target c
 Whenever a creature card leaves your graveyard, amass Goblins 1.
 {1}{B}: Goblins and Orcs you control gain menace until end of turn.",B,Orc; graveyard; etb; amass; tokens; go-wide,HOB,60,1
 Zaffai and the Tempests,Legendary Creature — Human Bard Sorcerer,"Once during each of your turns, you may cast an instant or sorcery spell from your hand without paying its mana cost.",U/R,Human; Bard; Sorcerer,SOS,246,1
+Down in the Valley,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
+I — Search your library for a basic land card, reveal it, put it into your hand, then shuffle.
+II — This Saga gains ""Landfall — Whenever a land you control enters, create a 1/1 green Elf creature token.""
+III, IV — Elves you control get +1/+0 and gain vigilance until end of turn.",G,Saga; Elve; sacrifice; tokens; ramp; landfall; saga; pump,HOB,124,1
+Zenos yae Galvus,Legendary Creature — Human Noble Warrior // Legendary Creature — Dragon,"My First Friend — When Zenos yae Galvus enters, choose a creature an opponent controls. Until end of turn, creatures other than Zenos yae Galvus and the chosen creature get -2/-2.
+When the chosen creature leaves the battlefield, transform Zenos yae Galvus. // Flying
+As this creature transforms into Shinryu, choose an opponent.
+Burning Chains — When the chosen player loses the game, you win the game.",B,Human; Noble; Warrior; Dragon; etb; flying; evasion; transform,FIN,127,1
+Azure Beastbinder,Creature — Rat Rogue,"Vigilance
+This creature can't be blocked by creatures with power 2 or greater.
+Whenever this creature attacks, up to one target artifact, creature, or planeswalker an opponent controls loses all abilities until your next turn. If it's a creature, it also has base power and toughness 2/2 until your next turn.",U,Rat; Rogue; vigilance; combat,BLB,41,1
+Luminollusk,Creature — Elemental,"Deathtouch
+Vivid — When this creature enters, you gain life equal to the number of colors among permanents you control.",G,Elemental; lifegain; etb; vivid; multicolor; payoff; deathtouch; combat; removal,ECL,179,1
+Retched Wretch,Creature — Goblin,"When this creature dies, if it had a -1/-1 counter on it, return it to the battlefield under its owner's control and it loses all abilities.",B,Goblin; counters,ECL,117,1
+Blanchwood Armor,Enchantment — Aura,"Enchant creature
+Enchanted creature gets +1/+1 for each Forest you control.",G,Aura; aura; pump; enchant,FDN,213,1
+"Selvala, Eager Trailblazer",Legendary Creature — Elf Scout,"Vigilance
+Whenever you cast a creature spell, create a 1/1 red Mercenary creature token with ""{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.""
+{T}: Choose a color. Add one mana of that color for each different power among creatures you control.",W/G,Elf; Scout; tokens; pump; vigilance; combat,OTJ,231,1
+"Geralf, the Fleshwright",Legendary Creature — Human Warlock,"Whenever you cast a spell during your turn other than your first spell that turn, create a 2/2 blue and black Zombie Rogue creature token.
+Whenever a Zombie you control enters, put a +1/+1 counter on it for each other Zombie that entered the battlefield under your control this turn.",U,Human; Warlock; Zombie; counters; tokens,OTJ,50,1
+Rambling Possum,Creature — Possum Mount,"Whenever this creature attacks while saddled, it gets +1/+2 until end of turn. Then you may return any number of creatures that saddled it this turn to their owner's hand.
+Saddle 1 (Tap any number of other creatures you control with total power 1 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",G,Possum; Mount; pump; bounce; saddle; go-wide; combat,OTJ,176,1
+Badlands Revival,Sorcery,Return up to one target creature card from your graveyard to the battlefield. Return up to one target permanent card from your graveyard to your hand.,B/G,reanimator; graveyard,OTJ,194,1
+Djinn of Fool's Fall,Creature — Djinn,"Flying
+Plot {3}{U} (You may pay {3}{U} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",U,Djinn; exile cast; flying; evasion; plot; tempo; cost-reduction,OTJ,43,1
+Patient Naturalist,Creature — Human Scout,"When this creature enters, mill three cards. Put a land card from among the milled cards into your hand. If you can't, create a Treasure token. (To mill three cards, put the top three cards of your library into your graveyard.)",G,Human; Scout; graveyard; mill; tokens; etb; treasure,OTJ,174,1
+Bridled Bighorn,Creature — Sheep Mount,"Vigilance
+Whenever this creature attacks while saddled, create a 1/1 white Sheep creature token.
+Saddle 2 (Tap any number of other creatures you control with total power 2 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",W,Sheep; Mount; tokens; saddle; go-wide; combat; vigilance,OTJ,7,1
+Meddling Youths,Creature — Human Detective,"Haste
+Whenever you attack with three or more creatures, investigate. (Create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",W/R,Human; Detective; card draw; sacrifice; tokens; clue; investigate; haste; aggro,MKM,219,1
+Makeshift Binding,Enchantment,"When this enchantment enters, exile target creature an opponent controls until this enchantment leaves the battlefield. You gain 2 life.",W,lifegain; removal; etb,MKM,23,1
+Person of Interest,Creature — Human Rogue,"When this creature enters, suspect it. Create a 2/2 white and blue Detective creature token. (A suspected creature has menace and can't block.)",R,Human; Rogue; tokens; etb; suspect; aristocrats,MKM,139,1
+Rubblebelt Braggart,Creature — Lizard Warrior,"Whenever this creature attacks, if it's not suspected, you may suspect it. (A suspected creature has menace and can't block.)",R,Lizard; Warrior; suspect; aristocrats,MKM,143,1
+"Roads Go Ever, Ever On",Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
+I — Search your library for up to two basic Plains cards, exile them, then shuffle. You gain 2 life.
+II, III — Put a card exiled with this Saga into its owner's hand.
+IV — Whenever you attack this turn, target creature you control gets +1/+1 until end of turn for each Plains you control.",W,Saga; Plain; lifegain; sacrifice; saga; pump,HOB,25,1
+"Drakuseth, Maw of Flames",Legendary Creature — Dragon,"Flying
+Whenever Drakuseth attacks, it deals 4 damage to any target and 3 damage to each of up to two other targets.",R,Dragon; burn; noncombat damage; flying; evasion,FDN,760,1
+The Misty Mountains Cold,Enchantment — Saga,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
+I, II, III, IV — Create a Treasure token. Then if you control four or more Treasures, sacrifice this Saga. If you do, create a 6/6 red Dragon creature token with flying. (A Treasure token is an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,Saga; sacrifice; tokens; treasure; saga,HOB,104,1
+Valley Flamecaller,Creature — Lizard Warlock,"If a Lizard, Mouse, Otter, or Raccoon you control would deal damage to a permanent or player, it deals that much damage plus 1 instead.",R,Lizard; Warlock,BLB,158,1
+"Gollum, Riddle Master",Legendary Creature — Halfling Horror,"As Gollum enters, choose odd or even. (Zero is even.)
+Whenever an opponent casts a spell with mana value of the chosen quality, choose one that hasn't been chosen —
+• Put a +1/+1 counter on Gollum.
+• Each opponent loses 2 life and you gain 2 life.
+• Draw a card.",B,Halfling; Horror; counters; lifegain; card draw,HOB,70,1
+Honored Dreyleader,Creature — Squirrel Warrior,"Trample
+When this creature enters, put a +1/+1 counter on it for each other Squirrel and/or Food you control.
+Whenever another Squirrel or Food you control enters, put a +1/+1 counter on this creature.",G,Squirrel; Warrior; counters; etb; food; trample; evasion,BLB,178,1
+Wildfire Howl,Sorcery,"Gift a card (You may promise an opponent a gift as you cast this spell. If you do, they draw a card before its other effects.)
+Wildfire Howl deals 2 damage to each creature. If the gift was promised, instead Wildfire Howl deals 1 damage to any target and 2 damage to each creature.",R,card draw; burn; gift; value,BLB,162,1
+"Dragonhawk, Fate's Tempest",Legendary Creature — Bird Dragon,"Flying
+Whenever Dragonhawk enters or attacks, exile the top X cards of your library, where X is the number of creatures you control with power 4 or greater. You may play those cards until your next end step. At the beginning of your next end step, Dragonhawk deals 2 damage to each opponent for each of those cards that are still exiled.",R,Bird; Dragon; burn; impulse; noncombat damage; flying; evasion,BLB,132,1
+Hidden Grotto,Land,"When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)
+{T}: Add {C}.
+{1}, {T}: Add one mana of any color.",Colorless,graveyard; mana; etb; selection; surveil,BLB,254,1
+Fountainport Bell,Artifact,"When this artifact enters, you may search your library for a basic land card, reveal it, then shuffle and put that card on top.
+{1}, Sacrifice this artifact: Draw a card.",Colorless,card draw; sacrifice; ramp; etb,BLB,245,1
+Archangel of Tithes,Creature — Angel,"Flying
+As long as this creature is untapped, creatures can't attack you or planeswalkers you control unless their controller pays {1} for each of those creatures.
+As long as this creature is attacking, creatures can't block unless their controller pays {1} for each of those creatures.",W,Angel; flying; evasion,OTJ,2,1
+Binding Negotiation,Sorcery,"Target opponent reveals their hand. You may choose a nonland card from it. If you do, they discard it. Otherwise, you may put a face-up exiled card they own into their graveyard.",B,graveyard,OTJ,78,1
+Intimidation Campaign,Enchantment,"When this enchantment enters, each opponent loses 1 life, you gain 1 life, and you draw a card.
+Whenever you commit a crime, you may return this enchantment to its owner's hand. (It returns only from the battlefield. Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)",U/B,graveyard; lifegain; card draw; etb; bounce,OTJ,208,1
+Boneyard Desecrator,Creature — Zombie Mercenary,"Menace
+{1}{B}, Sacrifice another creature: Put a +1/+1 counter on this creature. If an outlaw was sacrificed this way, create a Treasure token. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)",B,Zombie; Mercenary; counters; sacrifice; tokens; treasure; menace; evasion,OTJ,81,1
+Bolg's Company,Creature — Goblin Soldier,"This creature has haste as long as you control another Goblin.
+{T}, Sacrifice another Goblin: Add {B}{R}.",B/R,Goblin; Soldier; sacrifice,HOB,149,1
+Rage into the Valley,Sorcery,"You draw a card and lose 1 life.
+Amass Goblins 2. (Put two +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)",B,counters; pay life; card draw; tokens; amass; go-wide,HOB,79,1
+"Dáin, Lord of the Iron Hills",Legendary Creature — Dwarf Noble,"Vigilance
+Storied (If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)
+As long as you have an enduring story, creatures can't attack you unless their controller pays {1} for each of those creatures.",W,Dwarf; Noble; vigilance; combat,HOB,8,1
+Dwarven Mattock,Artifact — Equipment,"When this Equipment enters, attach it to target Dwarf you control.
+Equipped creature gets +2/+2 and has ward {1}. (Whenever equipped creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)
+Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; etb; equipment; pump; equip,HOB,172,1
+Old Thrush,Creature — Bird,"Flying
+When this creature enters, you gain 2 life. You may search your library for a basic land card, reveal it, then shuffle and put that card on top.",Colorless,Bird; lifegain; ramp; etb; flying; evasion,HOB,2,1
+Watery Grave,Land — Island Swamp,"({T}: Add {U} or {B}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/B,Island; Swamp; pay life; mana,TRK,306,1
+Rakdos Joins Up,Legendary Enchantment,"When Rakdos Joins Up enters, return target creature card from your graveyard to the battlefield with two additional +1/+1 counters on it.
+Whenever a legendary creature you control dies, Rakdos Joins Up deals damage equal to that creature's power to target opponent.",B/R,counters; reanimator; graveyard; etb,OTJ,225,1

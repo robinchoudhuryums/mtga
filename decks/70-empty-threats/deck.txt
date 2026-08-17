@@ -75,9 +75,10 @@
 1 Rush of Dread (OTJ) 104
 1 Momentum Breaker (DFT) 97
 1 HYDRA Infiltration (MSH) 100
+1 Binding Negotiation (OTJ) 78
 
 # Removal / card advantage
-2 Nocturnal Hunger (BLB) 102
+1 Nocturnal Hunger (BLB) 102
 1 Savor (BLB) 109
 1 Bitter Triumph (SOA) 26
 1 Phyrexian Arena (FDN) 180

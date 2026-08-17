@@ -23,7 +23,9 @@
 #: archetype: bodies rather than concentrated, and why so much of the deck GRANTS it —
 #: archetype: Lyra to every other Angel, Silver Sable to any modified creature (counters
 #: archetype: are modifications, so effectively all of them), Rosa every combat, Enter the
-#: archetype: Avatar State and Take Up the Shield at instant speed.
+#: archetype: Avatar State at instant speed (Take Up the Shield was CUT 2026-08-17 for
+#: archetype: Archangel of Tithes, whose untapped-body tax and attack-time block tax give
+#: archetype: the lifelink board a defensive shell a one-shot trick could not).
 #: archetype: DELNEY IS A TRIGGER DOUBLER, NOT A GO-WIDE CARD. Its second ability doubles
 #: archetype: the triggered abilities of creatures with power 2 or less, and the deck's
 #: archetype: whole engine layer sits at or under that line: Diamond Mare (two lifegain
@@ -95,8 +97,8 @@
 #: tier: a deliberate choice of engine over replacement that the floor cannot see either
 #: tier: way (a one-shot ETB cantrip never counted). This is the axis to watch in play: if
 #: tier: the deck runs out of cards before it runs out of board, that trade is the reason.
-#: tier: HELD AT A RATHER THAN S by four things. 1. THE CURVE IS STILL HEAVY at 3.19 with
-#: tier: only 11 early drops, though cutting Aettir and Priwen and Dawnstrike Vanguard
+#: tier: HELD AT A RATHER THAN S by four things. 1. THE CURVE IS STILL HEAVY at 3.25 with
+#: tier: only 10 early drops, though cutting Aettir and Priwen and Dawnstrike Vanguard
 #: tier: took the 6-plus slots from four down to two. 2. IT NEEDS TWO
 #: tier: HALVES — an engine creature AND a payoff — and a singleton build draws one far
 #: tier: more often than both; the counter payoffs are three-deep and the trigger engines
@@ -140,6 +142,7 @@
 1 Youthful Valkyrie (FDN) 149
 1 Lyra Dawnbringer (FDN) 707
 1 Herald of Eternal Dawn (FDN) 17
+1 Archangel of Tithes (OTJ) 2
 
 # Repeatable top end (not Angels — no Lyra bonus)
 1 Ancestor Dragon (FDN) 489
@@ -152,7 +155,6 @@
 1 Sheltered by Ghosts (DSK) 30
 
 # Tricks — every one targets a creature, which is what Repartee and Ace Agent read
-1 Take Up the Shield (MSH) 39
 1 Enter the Avatar State (TLA) 18
 1 Restoration Magic (FIN) 30
 1 Practiced Offense (SOS) 25
