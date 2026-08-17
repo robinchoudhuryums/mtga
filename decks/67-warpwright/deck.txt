@@ -1,8 +1,10 @@
-#: name: Warpwright
+#: name: Kid Flash
 #: format: Standard
 #: colors: GWU
 #: plan: midrange
-#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 8 / card-adv 3)
+#: tier: B (PROVISIONAL) — graded UNDER the A metrics floor (interaction 7 / card-adv 3;
+#: tier: Spell Pierce was CUT 2026-08-17 for Djinn of Fool's Fall, trading a conditional
+#: tier: counter for a plotted flier)
 #: tier: deliberately: the floor can't see that this is an untested v1 whose three-piece
 #: tier: engine (Kellan / Appa / Aurlock) has ZERO protection effects behind it, a
 #: tier: 9-tapland tri-color manabase, and heavy singleton variance. Re-grade after
@@ -29,7 +31,7 @@
 2 Knight Luminary (EOE) 23
 1 Rayblade Trooper (EOE) 30
 1 Starfield Shepherd (EOE) 37
-1 Weftblade Enhancer (EOE) 44
+1 Sphinx of Forgotten Lore (FDN) 51
 1 Sinister Cryologist (EOE) 75
 1 Mechanozoa (EOE) 66
 1 Quantum Riddler (EOE) 72
@@ -51,7 +53,7 @@
 1 Parting Gust (BLB) 24
 1 Salvation Swan (BLB) 28
 1 Into the Flood Maw (BLB) 52
-1 Spell Pierce (SOA) 23
+1 Djinn of Fool's Fall (OTJ) 43
 1 Syncopate (FIN) 80
 1 Webstrike Elite (DFT) 186
 1 Willowrush Verge (DFT) 270

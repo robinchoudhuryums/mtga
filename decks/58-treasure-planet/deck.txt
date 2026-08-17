@@ -90,6 +90,7 @@
 1 Brass's Bounty (FDN) 190
 1 Reckless Ransacking (ECL) 152
 1 Mutagen Man, Living Ooze (TMT) 124
+1 Boneyard Desecrator (OTJ) 81
 
 # The mana engine
 2 Roxanne, Starfall Savant (OTJ) 228
@@ -97,7 +98,8 @@
 # Payoffs (the spend)
 1 Vraska, the Silencer (OTJ) 237
 2 Crime Novelist (MKM) 121
-2 Krenko, Baron of Tin Street (MKM) 135
+1 Krenko, Baron of Tin Street (MKM) 135
+1 The Misty Mountains Cold (HOB) 104
 1 Twitching Doll (DSK) 201
 1 Chandra, Spark Hunter (DFT) 116
 2 Pirate Peddlers (TLA) 115
@@ -109,7 +111,7 @@
 1 Gold Rush (OTJ) 166
 
 # Draw / removal (sac-fueled)
-2 Fanatical Offering (LCI) 105
+1 Fanatical Offering (LCI) 105
 1 Salt Road Skirmish (TDM) 88
 1 Deadly Precision (TLA) 95
 
