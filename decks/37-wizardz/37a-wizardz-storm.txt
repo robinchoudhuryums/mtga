@@ -3,7 +3,8 @@
 #: colors: UBR
 #: tier: B — a grindier, value-leaning cousin of the aggressive base (37). Same Grixis Wizard
 #: tier: spellslinger spine, but tilted toward card advantage and spell-copy payoffs: draw a
-#: tier: pile (Phyrexian Arena / Super Intelligence / cantrips), turn "draw your second card"
+#: tier: pile (Combat Tutorial / Think Twice / cantrips — Phyrexian Arena was CUT
+#: tier: 2026-08-17, its {B}{B} being the worst cast-on-curve cost in the deck), turn "draw your second card"
 #: tier: into board (Erudite Wizard, Clinquant Skymage, Construct a Cosmic Cube), and blow
 #: tier: out with copiers (Thousand-Year Storm, Kitsa, Taigam) on a high-value spell. Floor
 #: tier: is A on card advantage 7 + interaction 8; held at B by the
@@ -41,7 +42,7 @@
 1 Kitsa, Otterball Elite (BLB) 54
 1 Taigam, Master Opportunist (TDM) 60
 1 Balmor, Battlemage Captain (FDN) 237
-1 Hydro-Channeler (SOS) 54
+1 Sphinx of Forgotten Lore (FDN) 51
 1 Queen Brahne (FIN) 149
 1 Mysidian Elder (FIN) 145
 1 Tempest Angler (BLB) 235
@@ -59,7 +60,7 @@
 1 Return the Favor (SOA) 47
 
 # Noncreature — card draw / draw-two engine + payoffs
-1 Phyrexian Arena (FDN) 180
+1 Combat Tutorial (FIN) 48
 1 Super Intelligence (MSH) 77
 1 Construct a Cosmic Cube (MSH) 90
 1 Uncover the Moon-Letters (HOB) 57
@@ -69,7 +70,7 @@
 # Noncreature — token / ping enablers + cantrips
 1 Cornered by Black Mages (FIN) 93
 1 Lasting Tarfire (ECL) 149
-1 Enter the Enigma (DSK) 52
+1 Think Twice (FDN) 165
 1 Boomerang Basics (TLA) 46
 1 Portent of Calamity (BLB) 66
 
