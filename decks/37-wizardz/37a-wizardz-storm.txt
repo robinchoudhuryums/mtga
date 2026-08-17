@@ -6,15 +6,22 @@
 #: tier: pile (Combat Tutorial / Think Twice / cantrips — Phyrexian Arena was CUT
 #: tier: 2026-08-17, its {B}{B} being the worst cast-on-curve cost in the deck), turn "draw your second card"
 #: tier: into board (Erudite Wizard, Clinquant Skymage, Construct a Cosmic Cube), and blow
-#: tier: out with copiers (Thousand-Year Storm, Kitsa, Taigam) on a high-value spell. Floor
-#: tier: is A on card advantage 7 + interaction 8; held at B by the
-#: tier: ZERO protection against 5 `#: protect:` build-arounds, singleton variance, and the
+#: tier: out with copiers (Kitsa, Taigam) on a high-value spell. Thousand-Year Storm was
+#: tier: CUT 2026-08-17 for Rakdos Joins Up: at six mana it needed a multi-spell turn off
+#: tier: an 11-card instant/sorcery base, and its copies never fired the pings anyway (see
+#: tier: the rules caveat below), while Rakdos reanimates a creature with two +1/+1
+#: tier: counters — the shortcut to the Emperor's three-counter transform — and turns each
+#: tier: legend's death into noncombat damage Niv-Mizzet redraws. Floor
+#: tier: is A on card advantage 7 + interaction 7; held at B by the
+#: tier: ZERO protection against 4 `#: protect:` build-arounds, singleton variance, and the
 #: tier: copy-payoff caveat below (copies don't fire the pings). A distinct build to compare.
 #: based-on: deck.txt
 #: archetype: Grixis (U-primary) Wizard VALUE/STORM. The base 37 races with ping triggers; this
 #: archetype: variant grinds: heavy card draw feeds "draw your second card" payoffs and fuels a
-#: archetype: spell chain that copiers (Thousand-Year Storm scaling per spell, Kitsa/Taigam per
-#: archetype: turn) turn into blowouts. Niv-Mizzet + the pingers are still the kill.
+#: archetype: spell chain that copiers (Kitsa/Taigam, once per turn) turn into blowouts —
+#: archetype: Thousand-Year Storm was CUT 2026-08-17, so the "Storm" half of the name is now
+#: archetype: the per-turn copiers rather than a scaling chain. Niv-Mizzet + the pingers are
+#: archetype: still the kill.
 #: notes: RULES CAVEAT that shapes this build: a COPY is put on the stack, not CAST — so copies
 #: notes: do NOT trigger "whenever you cast a noncreature spell" (Coruscation Mage / Black Waltz
 #: notes: / the 0/1 tokens) or prowess. Copiers here DOUBLE THE EFFECT (removal, burn, draw),
@@ -33,7 +40,7 @@
 #: notes: overlap with base 37 at no cost. FULLY OWNED — Kitsa, Clinquant Skymage and the rest
 #: notes: of this variant's former craft targets have been acquired; `deck.py check 37a` is the
 #: notes: authority on build state.
-#: protect: Coruscation Mage; Niv-Mizzet, Visionary; Thousand-Year Storm; Taigam, Master Opportunist; Kefka, Court Mage
+#: protect: Coruscation Mage; Niv-Mizzet, Visionary; Taigam, Master Opportunist; Kefka, Court Mage
 
 # Creatures — Wizard pingers / copiers / draw payoffs / engines
 1 The Emperor of Palamecia (FIN) 219
@@ -48,15 +55,14 @@
 1 Tempest Angler (BLB) 235
 1 Gandalf, Goblins' Bane (HOB) 96
 1 Erudite Wizard (FDN) 37
-1 Tishana's Tidebinder (LCI) 81
 1 Clinquant Skymage (FDN) 33
 1 Black Waltz No. 3 (FIN) 214
 1 Archmage of Runes (FDN) 30
 1 Kefka, Court Mage (FIN) 231
 1 Niv-Mizzet, Visionary (FDN) 123
 
-# Noncreature — copiers (double the EFFECT of a high-value spell)
-1 Thousand-Year Storm (FDN) 248
+# Noncreature — copier / reanimation (Rakdos returns a creature with two +1/+1 counters)
+1 Rakdos Joins Up (OTJ) 225
 1 Return the Favor (SOA) 47
 
 # Noncreature — card draw / draw-two engine + payoffs
@@ -73,6 +79,7 @@
 1 Think Twice (FDN) 165
 1 Boomerang Basics (TLA) 46
 1 Portent of Calamity (BLB) 66
+1 Unstable Experiment (SPM) 47
 
 # Noncreature — removal / interaction
 1 Playful Shove (BLB) 145
