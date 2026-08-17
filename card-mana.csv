@@ -2331,6 +2331,30 @@ Dwarven Mattock,{2},2,Equip
 Old Thrush,{2},2,Flying
 Watery Grave,,0,
 Rakdos Joins Up,{3}{B}{R},5,
+The Lord of the Eagles,{7}{U}{U},9,Flying;Flash
+Starfield Vocalist,{3}{U},4,Warp
+"Thranduil, the Elvenking",{2}{B}{G}{U},5,
+Dalkovan Encampment,,0,
+Restricted Office,{2}{W}{W} // {5}{U}{U},11,
+"Oko, the Ringleader",{2}{G}{U},4,
+Nimble Brigand,{2}{U},3,
+Unscrupulous Contractor,{2}{B},3,Plot
+Gold Rush,{1}{G},2,Treasure
+Blood Hustler,{1}{B},2,
+Seize the Secrets,{2}{U},3,
+Stormsplitter,{3}{R},4,Haste
+Old Fat Spider,{4}{G}{G},6,Reach
+Dancing from Dark to Dawn,{3}{G}{G},5,Landfall
+Troop of Ponies,{2},2,
+Eagle of the Great Shelf,{4}{W},5,Flying
+Eagle's Rescue,{2}{W/U}{W/U},4,Enchant
+"Gandalf, Spark Starter",{4}{R}{R},6,Reach
+Most Decrepit Old Bird,{U} // {1}{U},1,Flying;Threshold;Mill
+Celebrate the Mountain-king,{3}{W},4,
+Sandsteppe Citadel,,0,
+Simulacrum Synthesizer,{2}{U},3,Scry
+Jailbreak Scheme,{U},1,Spree
+Double Down,{3}{U},4,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -2991,7 +3015,6 @@ Grand Abolisher,{W}{W},2,
 Oltec Matterweaver,{2}{W},3,
 Rest in Peace,{1}{W},2,
 Esoteric Duplicator,{2}{U},3,
-Simulacrum Synthesizer,{2}{U},3,Scry
 Worldwalker Helm,{2}{U},3,Explore
 Greed's Gambit,{3}{B},4,
 Harvester of Misery,{3}{B}{B},5,Menace
@@ -3097,7 +3120,6 @@ Reptilian Recruiter,{3}{R}{R},5,Trample
 Roughshod Duo,{2}{R},3,Trample
 Sazacap's Brew,{1}{R},2,Gift
 Steampath Charger,{1}{R},2,Offspring
-Stormsplitter,{3}{R},4,Haste
 Sunspine Lynx,{2}{R}{R},4,
 Take Out the Trash,{1}{R},2,
 Teapot Slinger,{3}{R},4,Menace
@@ -4865,7 +4887,6 @@ Mechan Shieldmate,{1}{U},2,Defender
 Moonlit Meditation,{2}{U},3,Enchant
 Scour for Scrap,{3}{U},4,
 Selfcraft Mechan,{3}{U},4,
-Starfield Vocalist,{3}{U},4,Warp
 Starwinder,{5}{U}{U},7,Warp
 Unravel,{1}{U}{U},3,
 Uthros Psionicist,{2}{U},3,
@@ -5991,13 +6012,10 @@ Mirror of Life Trapping,{4},4,
 Navigation Orb,{3},3,
 Baldur's Gate,,0,
 Long-Bodied Grey Dog,{3},3,Reach;Treasure;Flash
-Troop of Ponies,{2},2,
 Belladonna Took,{1}{W},2,
 Bilbo's Gambit,{1}{W},2,Gift;Treasure
 "Bofur, Reliable Guardian // Concerted Care",{W} // {1}{W},1,Lifelink
-Celebrate the Mountain-king,{3}{W},4,
 Dwarven Provisioner,{1}{W},2,
-Eagle of the Great Shelf,{4}{W},5,Flying
 Esgaroth Garrison,{4}{W},5,
 Fíli the Pathfinder,{3}{W},4,
 Iron Hills Blacksmith,{1}{W},2,Double strike
@@ -6013,7 +6031,6 @@ Elven Raft-Steerer,{2}{U},3,Landfall
 Elvenking's Harper,{1}{U},2,
 "Gandalf, Wandering Wizard",{4}{U},5,Ward
 Lake-town Mariners // Gone Fishing,{4}{U}{U} // {3}{U},6,Vigilance;Ward
-The Lord of the Eagles,{7}{U}{U},9,Flying;Flash
 Master's Councillors,{1}{U},2,Vigilance;Mill
 Mirkwood Meditator,{2}{U},3,Landfall
 Most Decrepit Old Bird // Speak Secrets,{U} // {1}{U},1,Flying;Threshold;Mill
@@ -6047,7 +6064,6 @@ Desert Were-Worm,{4}{R}{R},6,
 Desolation of Smaug,{2}{R}{R},4,
 "Dori, Bearer of Friends",{2}{R},3,Treasure;Trample
 "Gandalf, Goblins' Bane // Flameshape",{2}{R} // {1}{R},3,
-"Gandalf, Spark Starter",{4}{R}{R},6,Reach
 Getaway Barrel,{3}{R},4,
 Glóin the Mighty // Easy Pickings,{3}{R} // {2}{R},4,
 Gundabad Opportunist,{3}{R},4,
@@ -6061,12 +6077,10 @@ Stone-Giant of High Pass,{5}{R}{R},7,
 Tidings of War,{R},1,Amass;Flashback
 "Beorn, Reluctant Host // Till and Tend",{4}{G} // {1}{G},5,Trample
 Cantankerous Keepers,{5}{G},6,Affinity;Mill
-Dancing from Dark to Dawn,{3}{G}{G},5,Landfall
 Gigantic Big Bear,{5}{G}{G},7,Hexproof;Haste
 Guardian of the Halls,{1}{G},2,Trample
 Little Bear,{2}{G},3,Flash
 Nasty Little Rabbit,{G},1,Ferocious
-Old Fat Spider,{4}{G}{G},6,Reach
 Ordinary Bear,{3}{G},4,
 Part in Friendship,{4}{G},5,
 Quarrel,{1}{G},2,
@@ -6081,7 +6095,6 @@ Bard's Company,{2}{W}{U},4,
 Chief Warg's Company,{1}{B}{G},3,Trample
 Duskwatch Hunter,{2}{B/G},3,
 "Dwalin, Weaponmaster",{1}{R/W},2,First strike
-Eagle's Rescue,{2}{W/U}{W/U},4,Enchant
 Fearsome Goblin Pair,{2}{B/R},3,Amass
 Goblin Plate Mail,{1}{B/R},2,Amass;Equip
 The Great Goblin,{1}{B/R}{B/R},3,
@@ -6091,7 +6104,6 @@ Silvan Reveler,{2}{G}{U},4,Landfall
 "Smaug, Wicked Worm",{3}{B}{R},5,Flying;Treasure
 Thorin Oakenshield,{R}{W},2,Trample
 "Thranduil, Sindarin Liege // Silvan Rally",{2}{G/U}{G/U} // {1}{G/U}{G/U},4,Mill;Landfall
-"Thranduil, the Elvenking",{2}{B}{G}{U},5,
 Thranduil's Company,{2}{G}{U},4,Landfall
 The Arkenstone // Seek the Heart,{5} // {2}{W},5,
 Giant's Boulder,{1},1,Scry
@@ -11460,21 +11472,17 @@ Wanted Griffin,{3}{W},4,Flying
 Canyon Crab,{1}{U},2,
 Daring Thunder-Thief,{3}{U},4,Flash
 Deepmuck Desperado,{2}{U},3,Mill
-Double Down,{3}{U},4,
 Duelist of the Mind,{1}{U},2,Flying;Vigilance
 Emergent Haunting,{1}{U},2,Surveil
 "Fblthp, Lost on the Range",{1}{U}{U},3,Plot;Ward
 Fleeting Reflection,{1}{U},2,
 Harrier Strix,{U},1,Flying
-Jailbreak Scheme,{U},1,Spree
 The Key to the Vault,{1}{U},2,Equip
 Loan Shark,{3}{U},4,Plot
 Marauding Sphinx,{3}{U}{U},5,Flying;Surveil;Vigilance;Ward
 Metamorphic Blast,{U},1,Spree
-Nimble Brigand,{2}{U},3,
 Outlaw Stitcher,{3}{U},4,Plot
 Peerless Ropemaster,{4}{U},5,
-Seize the Secrets,{2}{U},3,
 Shackle Slinger,{2}{U},3,
 Shifting Grift,{U}{U},2,Spree
 Slickshot Vault-Buster,{2}{U},3,Vigilance
@@ -11486,7 +11494,6 @@ Take the Fall,{U},1,
 Three Steps Ahead,{U},1,Spree
 Ambush Gigapede,{4}{B}{B},6,Flash
 Blacksnag Buzzard,{2}{B},3,Flying;Plot
-Blood Hustler,{1}{B},2,
 Caustic Bronco,{1}{B},2,Saddle
 Corrupted Conviction,{B},1,
 Desert's Due,{1}{B},2,
@@ -11508,7 +11515,6 @@ Rush of Dread,{1}{B}{B},3,Spree
 Shoot the Sheriff,{1}{B},2,
 Tinybones Joins Up,{B},1,Mill
 Unfortunate Accident,{B},1,Spree
-Unscrupulous Contractor,{2}{B},3,Plot
 "Vadmir, New Blood",{1}{B},2,
 Vault Plunderer,{2}{B},3,
 Brimstone Roundup,{1}{R},2,Plot
@@ -11544,7 +11550,6 @@ Drover Grizzly,{2}{G},3,Saddle
 Freestrider Commando,{2}{G},3,Plot
 Freestrider Lookout,{2}{G},3,Reach
 Full Steam Ahead,{3}{G}{G},5,
-Gold Rush,{1}{G},2,Treasure
 Intrepid Stablemaster,{1}{G},2,Reach
 Map the Frontier,{3}{G},4,
 Ornery Tumblewagg,{2}{G},3,Saddle;Double
@@ -11586,7 +11591,6 @@ Make Your Own Luck,{3}{G}{U},5,Plot
 "Marchesa, Dealer of Death",{U}{B}{R},3,
 "Miriam, Herd Whisperer",{G}{W},2,
 "Obeka, Splitter of Seconds",{1}{U}{B}{R},4,Menace
-"Oko, the Ringleader",{2}{G}{U},4,
 Pillage the Bog,{B}{G},2,Plot
 "Rakdos, the Muscle",{2}{B}{B}{R},5,Flying;Trample
 Riku of Many Paths,{G}{U}{R},3,
@@ -13690,13 +13694,11 @@ Sultai Monument,{2},2,
 Temur Monument,{2},2,
 Watcher of the Wayside,{3},3,Mill
 Cori Mountain Monastery,,0,
-Dalkovan Encampment,,0,
 Frontier Bivouac,,0,
 Great Arashin City,,0,
 Kishla Village,,0,Surveil
 Maelstrom of the Spirit Dragon,,0,
 Mistrise Village,,0,
-Sandsteppe Citadel,,0,
 Alseid of Life's Bounty,{W},1,Lifelink
 Archon of Falling Stars,{4}{W}{W},6,Flying
 Archon of Sun's Grace,{2}{W}{W},4,Flying;Lifelink;Constellation

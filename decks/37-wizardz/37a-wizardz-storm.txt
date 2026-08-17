@@ -1,7 +1,8 @@
 #: name: Wizardz — Value/Storm (copy + draw-two)
 #: format: Standard
 #: colors: UBR
-#: tier: B — a grindier, value-leaning cousin of the aggressive base (37). Same Grixis Wizard
+#: tier: A (re-graded up from B on 2026-08-17, at the user's call, after the tune below) — a
+#: tier: grindier, value-leaning cousin of the aggressive base (37). Same Grixis Wizard
 #: tier: spellslinger spine, but tilted toward card advantage and spell-copy payoffs: draw a
 #: tier: pile (Combat Tutorial / Think Twice / cantrips — Phyrexian Arena was CUT
 #: tier: 2026-08-17, its {B}{B} being the worst cast-on-curve cost in the deck), turn "draw your second card"
@@ -12,13 +13,23 @@
 #: tier: the rules caveat below), while Rakdos reanimates a creature with two +1/+1
 #: tier: counters — the shortcut to the Emperor's three-counter transform — and turns each
 #: tier: legend's death into noncombat damage Niv-Mizzet redraws. Floor
-#: tier: is A on card advantage 7 + interaction 7; held at B by
-#: tier: THIN protection for the 4 `#: protect:` build-arounds, singleton variance, and the
-#: tier: copy-payoff caveat below (copies don't fire the pings). Protection reads 1 as of
-#: tier: 2026-08-17, when Kid Loki came in over Balmor: his hexproof covers only creatures
-#: tier: that took a +1/+1 counter THIS turn, which is Clinquant Skymage, Tempest Angler,
-#: tier: the Emperor and himself by default — the build-arounds are covered only when
-#: tier: Combat Tutorial's counter is aimed at one. A distinct build to compare.
+#: tier: is A on card advantage 7 + interaction 6 (Boomerang Basics was CUT 2026-08-17
+#: tier: for Astrologian's Planisphere, trading the deck's weakest card for a Wizard-making
+#: tier: counter engine — but the bounce had been carrying an interaction point).
+#: tier: WHY THE LETTER MOVED B -> A: the two reasons the old B rested on have both been
+#: tier: retired by the 2026-08-17 tune. (1) It said ZERO protection; protection reads 1
+#: tier: now that Kid Loki came in and Balmor, Battlemage Captain was CUT. (2) It said the copy payoff was a trap
+#: tier: because copies don't fire the pings; the six-mana copier that argument was about
+#: tier: is gone, and the remaining copiers (Kitsa, Taigam) are cheap per-turn effects that
+#: tier: never asked to be stormed. The engine also got materially more coherent: the
+#: tier: instant/sorcery base went 10 -> 12 with two-cast cards (Think Twice), the manabase
+#: tier: dropped from 9 tapped lands to 7, and Rakdos Joins Up gave the Emperor's transform
+#: tier: a real route. A rather than S: the deck is still UNTESTED, still a singleton pile
+#: tier: whose two halves (engine creature + payoff) must be drawn together, and the
+#: tier: protection is CONDITIONAL — Kid Loki's hexproof covers only creatures that took a
+#: tier: +1/+1 counter THIS turn (Clinquant Skymage, Tempest Angler, the Emperor, the
+#: tier: Planisphere's Hero and himself by default), so the `#: protect:` build-arounds are
+#: tier: covered only when Combat Tutorial's counter is aimed at one. Re-grade with games.
 #: based-on: deck.txt
 #: archetype: Grixis (U-primary) Wizard VALUE/STORM. The base 37 races with ping triggers; this
 #: archetype: variant grinds: heavy card draw feeds "draw your second card" payoffs and fuels a
@@ -32,7 +43,8 @@
 #: notes: they don't storm the pings. Taigam is the exception that helps the ping plan: it
 #: notes: suspends the original spell back, giving a real future CAST. So this build leans on
 #: notes: copy-for-VALUE + the draw-two engine, not a ping-storm.
-#: notes: vs base 37: +Thousand-Year Storm, +Kitsa, +Taigam, +Return the Favor (copiers);
+#: notes: vs base 37 (as drafted): +Thousand-Year Storm, +Kitsa, +Taigam, +Return the Favor
+#: notes: (copiers — the first and last were later CUT, see the tier log);
 #: notes: +Super Intelligence, +Construct a Cosmic Cube, +Clinquant Skymage (draw-two);
 #: notes: +Uncover the Moon-Letters, +Artist's Talent (both trigger on the noncreature cast this
 #: notes: variant spams — the Moon-Letters draw scales with the mana spent, so it rewards the
@@ -64,10 +76,10 @@
 1 Archmage of Runes (FDN) 30
 1 Kefka, Court Mage (FIN) 231
 1 Niv-Mizzet, Visionary (FDN) 123
+1 Most Decrepit Old Bird (HOB) 49
 
-# Noncreature — copier / reanimation (Rakdos returns a creature with two +1/+1 counters)
+# Noncreature — reanimation (Rakdos returns a creature with two +1/+1 counters)
 1 Rakdos Joins Up (OTJ) 225
-1 Return the Favor (SOA) 47
 
 # Noncreature — card draw / draw-two engine + payoffs
 1 Combat Tutorial (FIN) 48
@@ -81,7 +93,7 @@
 1 Cornered by Black Mages (FIN) 93
 1 Lasting Tarfire (ECL) 149
 1 Think Twice (FDN) 165
-1 Boomerang Basics (TLA) 46
+1 Astrologian's Planisphere (FIN) 46
 1 Portent of Calamity (BLB) 66
 1 Unstable Experiment (SPM) 47
 
@@ -99,7 +111,7 @@
 1 Spectacle Summit (SOS) 262
 1 Temple of Epiphany (FDN) 699
 1 Temple of Malice (FDN) 701
-1 Dismal Backwater (FDN) 261
+1 Watery Grave (TRK) 306
 1 Hidden Lair (MSH) 269
 2 Swiftwater Cliffs (MOM) 273
 1 Bloodfell Caves (TDM) 250
@@ -109,7 +121,7 @@
 2 Mountain (MSH) 294
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 37a
-#~ -Return the Favor | +Sorceress's Schemes | owned: recur an instant/sorcery from the yard (+R) — more grind/recursion for the value plan
+#~ note: applied — Most Decrepit Old Bird in for Return the Favor.
 #~ -Circle of Power | +Daring Waverider | owned: a 6-drop that free-casts an instant/sorcery from your graveyard — big value swing if the curve can support it
 
 #~ note: applied — Gandalf, Goblins' Bane in for Harnesser of Storms.

@@ -39,7 +39,7 @@
 #: protect: Coruscation Mage; Black Waltz No. 3; Balmor, Battlemage Captain; Kefka, Court Mage; Niv-Mizzet, Visionary
 
 # Creatures — Wizard pingers (virtual copies of the win-con) / prowess payoffs / engines
-1 Mu Yanling, Wind Rider (DFT) 52
+1 Gandalf, Spark Starter (HOB) 97
 1 The Emperor of Palamecia (FIN) 219
 1 Stormcatch Mentor (BLB) 234
 1 Coruscation Mage (BLB) 131
@@ -53,11 +53,11 @@
 1 Crackling Cyclops (FDN) 83
 1 Kindlespark Duo (BLB) 142
 1 Tempest Angler (BLB) 235
-1 Harnesser of Storms (BLB) 137
+1 Stormsplitter (BLB) 154
 1 Erudite Wizard (FDN) 37
 1 Tishana's Tidebinder (LCI) 81
 1 Taigam, Master Opportunist (TDM) 60
-1 Hydro-Channeler (SOS) 54
+1 Mu Yanling, Wind Rider (DFT) 52
 1 Black Waltz No. 3 (FIN) 214
 1 Archmage of Runes (FDN) 30
 1 Kefka, Court Mage (FIN) 231
@@ -91,9 +91,11 @@
 1 Spectacle Summit (SOS) 262
 1 Temple of Epiphany (FDN) 699
 1 Temple of Malice (FDN) 701
-2 Dismal Backwater (FDN) 261
+1 Watery Grave (TRK) 306
+1 Hidden Lair (MSH) 269
 2 Swiftwater Cliffs (MOM) 273
-2 Bloodfell Caves (TDM) 250
+1 Bloodfell Caves (TDM) 250
+1 Dark Fortress (MSH) 264
 7 Island (MSH) 290
 2 Swamp (MSH) 292
 2 Mountain (MSH) 294
