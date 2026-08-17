@@ -2330,6 +2330,7 @@ Rage into the Valley,{2}{B},3,Amass
 Dwarven Mattock,{2},2,Equip
 Old Thrush,{2},2,Flying
 Watery Grave,,0,
+Rakdos Joins Up,{3}{B}{R},5,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -11587,7 +11588,6 @@ Make Your Own Luck,{3}{G}{U},5,Plot
 "Obeka, Splitter of Seconds",{1}{U}{B}{R},4,Menace
 "Oko, the Ringleader",{2}{G}{U},4,
 Pillage the Bog,{B}{G},2,Plot
-Rakdos Joins Up,{3}{B}{R},5,
 "Rakdos, the Muscle",{2}{B}{B}{R},5,Flying;Trample
 Riku of Many Paths,{G}{U}{R},3,
 "Roxanne, Starfall Savant",{3}{R}{G},5,
