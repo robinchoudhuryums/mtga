@@ -2329,6 +2329,7 @@ Rage into the Valley,{2}{B},3,Amass
 "Dáin, Lord of the Iron Hills",{1}{W},2,Vigilance
 Dwarven Mattock,{2},2,Equip
 Old Thrush,{2},2,Flying
+Watery Grave,,0,
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -14339,7 +14340,6 @@ Sacred Foundry,,0,
 Steam Vents,,0,
 Stomping Ground,,0,
 Temple Garden,,0,
-Watery Grave,,0,
 Plains,,0,
 Island,,0,
 Swamp,,0,

@@ -4957,3 +4957,5 @@ Equipped creature gets +2/+2 and has ward {1}. (Whenever equipped creature becom
 Equip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)",Colorless,Equipment; etb; equipment; pump; equip,HOB,172,1
 Old Thrush,Creature — Bird,"Flying
 When this creature enters, you gain 2 life. You may search your library for a basic land card, reveal it, then shuffle and put that card on top.",Colorless,Bird; lifegain; ramp; etb; flying; evasion,HOB,2,1
+Watery Grave,Land — Island Swamp,"({T}: Add {U} or {B}.)
+As this land enters, you may pay 2 life. If you don't, it enters tapped.",U/B,Island; Swamp; pay life; mana,TRK,306,1
