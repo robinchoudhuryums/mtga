@@ -5,10 +5,11 @@
 #: tier: Black Waltz / the 0/1 black-Wizard-token makers all deal noncombat damage on every
 #: tier: noncreature spell) backed by prowess payoffs, deep card advantage (Kefka/Niv-Mizzet/
 #: tier: Archmage) and a real removal suite. The floor is A and not marginally so —
-#: tier: interaction 10 against card advantage 7, once the bounce/edict/X-damage lines the
-#: tier: old classifier could not read are counted (12 before two removal slots — Harbinger
-#: tier: of the Tides, then Tribute to Hunger — were traded for Gandalf, Goblins' Bane and
-#: tier: Kindlespark Duo: both points spent ON the noncreature-cast ping plan, deliberately);
+#: tier: interaction 9 against card advantage 7, once the bounce/edict/X-damage lines the
+#: tier: old classifier could not read are counted (12 before three removal slots — Harbinger
+#: tier: of the Tides, then Tribute to Hunger, then Heartless Act (CUT 2026-08-17) — were
+#: tier: traded for Gandalf, Goblins' Bane, Kindlespark Duo and Stormsplitter: every point
+#: tier: spent ON the noncreature-cast ping plan, deliberately);
 #: tier: held at B by three-color singleton variance and a fragile go-wide board (a sweeper
 #: tier: from the opponent hurts). Plays up as it gains redundancy (see the competitive 37b).
 #: archetype: Grixis (U/B/R, U-primary) Wizard tribal spellslinger. Cast cheap noncreature
@@ -70,6 +71,7 @@
 1 Archmage of Runes (FDN) 30
 1 Kefka, Court Mage (FIN) 231
 1 Niv-Mizzet, Visionary (FDN) 123
+1 Stormsplitter (BLB) 154
 
 # Noncreature — token / ping enablers
 1 Cornered by Black Mages (FIN) 93
@@ -88,7 +90,6 @@
 1 Impractical Joke (SOS) 119
 1 Bitter Triumph (SOA) 26
 1 Unsparing Boltcaster (TDM) 130
-1 Heartless Act (TLA) 103
 1 Mana Sculpt (SOS) 57
 
 # Lands — 24, U-weighted Grixis (owned duals + basics)

@@ -43,7 +43,8 @@
 #: notes: they don't storm the pings. Taigam is the exception that helps the ping plan: it
 #: notes: suspends the original spell back, giving a real future CAST. So this build leans on
 #: notes: copy-for-VALUE + the draw-two engine, not a ping-storm.
-#: notes: vs base 37: +Thousand-Year Storm, +Kitsa, +Taigam, +Return the Favor (copiers);
+#: notes: vs base 37 (as drafted): +Thousand-Year Storm, +Kitsa, +Taigam, +Return the Favor
+#: notes: (copiers — the first and last were later CUT, see the tier log);
 #: notes: +Super Intelligence, +Construct a Cosmic Cube, +Clinquant Skymage (draw-two);
 #: notes: +Uncover the Moon-Letters, +Artist's Talent (both trigger on the noncreature cast this
 #: notes: variant spams — the Moon-Letters draw scales with the mana spent, so it rewards the
@@ -75,10 +76,10 @@
 1 Archmage of Runes (FDN) 30
 1 Kefka, Court Mage (FIN) 231
 1 Niv-Mizzet, Visionary (FDN) 123
+1 Most Decrepit Old Bird (HOB) 49
 
-# Noncreature — copier / reanimation (Rakdos returns a creature with two +1/+1 counters)
+# Noncreature — reanimation (Rakdos returns a creature with two +1/+1 counters)
 1 Rakdos Joins Up (OTJ) 225
-1 Return the Favor (SOA) 47
 
 # Noncreature — card draw / draw-two engine + payoffs
 1 Combat Tutorial (FIN) 48
@@ -120,7 +121,7 @@
 2 Mountain (MSH) 294
 
 # Flex — options (comments; not part of the 60). See: deck.py flex 37a
-#~ -Return the Favor | +Sorceress's Schemes | owned: recur an instant/sorcery from the yard (+R) — more grind/recursion for the value plan
+#~ note: applied — Most Decrepit Old Bird in for Return the Favor.
 #~ -Circle of Power | +Daring Waverider | owned: a 6-drop that free-casts an instant/sorcery from your graveyard — big value swing if the curve can support it
 
 #~ note: applied — Gandalf, Goblins' Bane in for Harnesser of Storms.

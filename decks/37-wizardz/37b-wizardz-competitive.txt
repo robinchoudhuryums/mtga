@@ -53,7 +53,7 @@
 1 Crackling Cyclops (FDN) 83
 1 Kindlespark Duo (BLB) 142
 1 Tempest Angler (BLB) 235
-1 Harnesser of Storms (BLB) 137
+1 Stormsplitter (BLB) 154
 1 Erudite Wizard (FDN) 37
 1 Tishana's Tidebinder (LCI) 81
 1 Taigam, Master Opportunist (TDM) 60
