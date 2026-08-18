@@ -6,7 +6,7 @@
 #: plan: midrange
 #: tier: B — the CLOSEST call of the three graded this pass, and the only one where A is
 #: tier: genuinely arguable rather than merely allowed by the floor. The measurable case is the
-#: tier: strongest in the family by a wide margin: interaction 10 plus card advantage 8 against
+#: tier: strongest in the family by a wide margin: interaction 10 plus card advantage 9 against
 #: tier: 10 and 9 for the two Doombot lists, on the fastest curve here at 2.44, and with only
 #: tier: ONE unclassified card — so unlike its siblings these numbers are not hiding an engine
 #: tier: the classifier cannot read. The role tally is the deepest on the roster's artifact
@@ -53,9 +53,16 @@
 #: archetype: THE LOOT ENGINES ARE THE ENGINE, not filler: Kitsa loots for
 #: archetype: free every turn, Rewrite History loots whenever your creatures become TAPPED
 #: archetype: (which this deck does constantly for mana), and Kiora draws two and discards two
-#: archetype: on entry — two drain triggers off one card. Iron-Fist Pulverizer is priced by the
-#: archetype: same plan: it deals 2 to an opponent whenever you cast your SECOND spell each
-#: archetype: turn, which a 2.44-curve deck manages most turns.
+#: archetype: on entry — two drain triggers off one card. Iron-Fist Pulverizer was CUT
+#: archetype: 2026-08-18 for Krang & Shredder, whose Disappear clause free-casts an exiled
+#: archetype: card at end step whenever a permanent left the battlefield that turn — a
+#: archetype: condition this deck's 17 artifact-token makers meet nearly every turn.
+#: archetype: THE TOP END is now real rather than notional: Lady Octopus free-casts an
+#: archetype: artifact whose mana value is at most her ingenuity counters, and until this
+#: archetype: pass the deck's most expensive artifact was MV 4. Ironheart (improvise, and it
+#: archetype: grants improvise to every noncreature spell), Nexus of Becoming and Fateful
+#: archetype: Discovery give her targets worth the wait; Discovery also draws off every
+#: archetype: artifact TOKEN, which accelerates her counters.
 #: archetype: DISTINCTNESS from its own parent: deck 26 and this deck share colours, an artifact
 #: archetype: base and a taste for big top-end, but 26 needs its permanents to CONNECT and this
 #: archetype: one is indifferent to whether it has a creature at all.
@@ -211,18 +218,19 @@
 1 Death to Our Enemies (MSH) 127
 
 # Treasure and artifact fuel — and the one payoff that counts them
-1 Meticulous Artisan (TDM) 112
+1 The Mechanist, Aerial Artisan (TLA) 64
 1 Stark Industries Executive (MSH) 153
 1 Reckless Ransacking (ECL) 152
 1 Lady Octopus, Inspired Inventor (SPM) 35
 1 Mouser Foundry (TMT) 96
-1 Machinesmith Automaton (MSH) 144
+1 Fateful Discovery (HOB) 40
 1 Iron Man, Master of Machines (MSH) 216
-1 Gleaming Barrier (FDN) 252
+1 Ironheart, Clever Champion (MSH) 60
 1 Gleaming Geardrake (MKM) 205
-1 Technodrome (TMT) 179
+1 Nexus of Becoming (BIG) 25
 1 Scrounging Skyray (DFT) 60
 1 Cryogen Relic (EOE) 52
+1 Krang & Shredder (TMT) 153
 
 # Repeatable loot — every activation is a drain trigger
 1 Kitsa, Otterball Elite (BLB) 54
@@ -234,7 +242,6 @@
 # Interaction — also the deck's only defence
 1 Legion Extruder (BIG) 12
 1 Bullseye, Death Dealer (MSH) 209
-1 Iron-Fist Pulverizer (OTJ) 131
 
 # Lands (24)
 1 Castle Doom (MSH) 263
@@ -247,4 +254,4 @@
 8 Island (MSH) 290
 
 # Flex — suggested swaps (comments; not part of the 60). See: deck.py flex 26b
-#~ -Iron-Fist Pulverizer | +Vision of Love | OWNED, {1}{R} INSTANT: "you may sacrifice an artifact OR discard a card. If you do, draw two cards" — BOTH halves are drain triggers here and it draws two, at instant speed. That last part is the point: the tier note names the 1-instant-against-11-sorcery skew as a compounding weakness, and this is the cheapest fix for it. Pulverizer is the cut because it is the deck's most expensive card against a 2.5 curve and its "second spell each turn: 2 damage, scry 1" is a slower, more conditional version of the same non-combat damage. NOT APPLIED 2026-08-09 (user left the deck as-is): the archetype block explicitly defends Pulverizer as "priced by the same plan", so this is a real editorial call. Alternative cuts if Pulverizer stays: Meticulous Artisan (a 4-drop whose contribution is one Treasure of the deck's 16 artifact sources, plus prowess in a deck that wins without attacking) or Stark Industries Executive ({2}+tap per Treasure is slow, but it is a 1-drop and the deck runs 20 early drops).
+#~ note: applied — Krang & Shredder in for Iron-Fist Pulverizer.

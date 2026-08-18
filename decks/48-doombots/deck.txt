@@ -5,7 +5,9 @@
 #: plan: midrange
 #: tier: B — and deliberately ONE BAND BELOW the measurable floor, which reads A on
 #: tier: interaction 9 (4 instant-speed, 6 able to answer a noncreature permanent) plus card
-#: tier: advantage 4 on a 3.19 curve. The guard will soft-flag this as possibly under-graded;
+#: tier: advantage 4 on a 3.25 curve (Viv Vision was CUT 2026-08-18 for Simulacrum
+#: tier: Synthesizer — her conditional attack-draw for a Construct engine off 14 MV-3+
+#: tier: artifacts). The guard will soft-flag this as possibly under-graded;
 #: tier: that is intentional and should not be "fixed". The rubric's A wants a coherent engine,
 #: tier: a tight curve and AT MOST ONE clear weakness. This list has three:
 #: tier: 1. THE MANABASE IS THE WORST ON THE ROSTER. 19 coloured cards cast below 90% on curve
@@ -212,7 +214,7 @@
 1 Retrieve the Esper (FIN) 68
 1 Mechan Assembler (EOE) 63
 1 Chandra, Spark Hunter (DFT) 116
-1 Adaptive Automaton (FDN) 723
+1 Fateful Discovery (HOB) 40
 
 # Robot bodies
 1 Aerial Doombot (MSH) 43
@@ -221,7 +223,7 @@
 1 Machinesmith Automaton (MSH) 144
 1 Ultron, Artificial Malevolence (MSH) 252
 1 Henchbots (TMT) 174
-1 Viv Vision, Teen Synthezoid (MSH) 256
+1 Simulacrum Synthesizer (BIG) 6
 1 Tezzeret, Cruel Captain (EOE) 2
 1 Firdoch Core (ECL) 255
 1 The Mechanist, Aerial Artisan (TLA) 64
@@ -256,3 +258,4 @@
 #~ +Dauntless Scrapbot | CRAFT (Uncommon) — {3} 3/1 Robot: ETB exiles each opponent's graveyard and creates a Lander token (ramp + an artifact token). Genuinely reasonable, and it MEASURED as a non-upgrade in every configuration tried: paying for it by cutting cheap bodies (Aerial Doombot, Viv Vision) dropped card advantage 2 -> 1, and paying with Untimely Malfunction dropped interaction 10 -> 9. Not rejected on fit — the deck simply has no slot whose loss is cheaper than the gain.
 #~ +Spider-Bot | CRAFT (Common) — {2} 2/1 reach Robot with a land-smoothing ETB. Same finding as above; it is the marginal card in a 36-slot list that is already tight.
 #~ note: applied — Adaptive Automaton in for Mirrormind Crown.
+#~ -Fateful Discovery | +Adaptive Automaton | OWNED, 0 WC: the tribal-anthem body this slot held until 2026-08-18 — bring it back if the Robot lord line matters more than drawing off 12 artifact-token makers.
