@@ -24,7 +24,7 @@
 1 Galactic Wayfarer (EOE) 185
 1 Glacier Godmaw (EOE) 188
 1 Bushwhack (BRO) 174
-1 Rydia's Return (FIN) 198
+1 Eagle of the Great Shelf (HOB) 11
 1 Clash of the Eikons (FIN) 180
 1 Michelangelo, Mutant BFF (TMT) 120
 1 Storm, Windrider (MSH) 230
@@ -39,7 +39,7 @@
 1 Ambrosia Whiteheart (FIN) 6
 1 Erode (SOS) 15
 1 Season of Gathering (BLB) 192
-1 Stirring Hopesinger (SOS) 35
+1 Eagle's Rescue (HOB) 155
 1 Momo, Friendly Flier (TLA) 29
 1 Sunbird Standard (LCI) 262
 1 Shrike Force (BLB) 31

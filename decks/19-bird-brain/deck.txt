@@ -72,11 +72,11 @@
 1 Ambrosia Whiteheart (FIN) 6
 1 Dazzling Denial (BLB) 45
 1 Elspeth, Storm Slayer (TDM) 11
-1 Stirring Hopesinger (SOS) 35
+1 The Lord of the Eagles (HOB) 46
 1 Bushwhack (BRO) 174
 1 Momo, Friendly Flier (TLA) 29
 1 Sunbird Standard (LCI) 262
-1 Shrike Force (BLB) 31
+1 Eagle of the Great Shelf (HOB) 11
 1 Aven Interrupter (OTJ) 4
 
 # Ramp / support / fun
