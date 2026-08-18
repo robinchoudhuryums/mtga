@@ -78,9 +78,9 @@
 1 Sunbird Standard (LCI) 262
 1 Eagle of the Great Shelf (HOB) 11
 1 Aven Interrupter (OTJ) 4
+1 The Eagles Are Coming! (HOB) 12
 
 # Ramp / support / fun
-1 Studious First-Year (SOS) 162
 1 Earthbender Ascension (TLA) 175
 1 Stroke of Midnight (FDN) 148
 
