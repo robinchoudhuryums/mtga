@@ -5016,3 +5016,10 @@ Jailbreak Scheme,Sorcery,"Spree (Choose one or more additional costs.)
 Double Down,Enchantment,"Whenever you cast an outlaw spell, copy that spell. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws. Copies of permanent spells become tokens.)",U,spell copy,OTJ,44,1
 Hobbit Hole,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
 Halflingcycling {4} ({4}, Discard this card: Search your library for a Halfling card, reveal it, put it into your hand, then shuffle.)",Colorless,sacrifice; ramp,HOB,184,1
+Explosive Derailment,Instant,"Spree (Choose one or more additional costs.)
++ {2} — Explosive Derailment deals 4 damage to target creature.
++ {2} — Destroy target artifact.",R,removal; burn; spree; value,OTJ,122,2
+Great Train Heist,Instant,"Spree (Choose one or more additional costs.)
++ {2}{R} — Untap all creatures you control. If it's your combat phase, there is an additional combat phase after this phase.
++ {2} — Creatures you control get +1/+0 and gain first strike until end of turn.
++ {R} — Choose target opponent. Whenever a creature you control deals combat damage to that player this turn, create a tapped Treasure token.",R,tokens; treasure; pump; spree; value,OTJ,125,1
