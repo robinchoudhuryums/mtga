@@ -10,7 +10,7 @@
 #: archetype: damage into a real clock (avg MV 2.97, 15 early drops, 23 evasive creatures).
 #: archetype: NOT a "wide" deck, and the measurement corrected the first draft of this line:
 #: archetype: `deck.py shape` reads TALL 5 / WIDE 3, because every buff here is single-target
-#: archetype: (Falcon's Wing Harness, Iron Man Armor, I Am Iron Man, Mind Transfer Protocol,
+#: archetype: (Falcon's Wing Harness, Iron Man Armor, Mind Transfer Protocol,
 #: archetype: Living Brain). So the real contrast with 26 is not wide-vs-tall — both are tall —
 #: archetype: it is CHEAP-AND-EVASIVE-many-times versus EXPENSIVE-AND-HUGE-once, and the win
 #: archetype: condition (poison, which ignores life totals entirely) rather than the shape.
@@ -67,7 +67,7 @@
 #: archetype: each one is its own "deals combat damage to a player" event — so an equipped
 #: archetype: carrier gives FOUR poison per attack. Note Mjölnir does NOT do this; it doubles
 #: archetype: the damage amount, not the number of trigger events, which is why it stayed in 26.
-#: archetype: ANIMATION TURNS DEAD ARTIFACTS INTO CARRIERS. I Am Iron Man and Mind Transfer
+#: archetype: ANIMATION TURNS DEAD ARTIFACTS INTO CARRIERS. Mind Transfer
 #: archetype: Protocol both make a noncreature artifact into a nontoken artifact creature (the
 #: archetype: former with flying) and replace themselves; Living Brain does it FREE every
 #: archetype: combat; and Iron Man Armor self-animates for {2} into a flier that grows with the
@@ -201,7 +201,7 @@
 1 Krang, Utrom Warlord (TMT) 175
 1 Falcon's Wing Harness (MSH) 53
 1 Iron Man Armor (MSH) 248
-1 I Am Iron Man (MSH) 58
+1 Simulacrum Synthesizer (BIG) 6
 1 Mind Transfer Protocol (TMT) 45
 1 Living Brain, Mechanical Marvel (SPM) 167
 1 Shuri, Wakandan Inventor (MSH) 75
@@ -215,7 +215,7 @@
 1 Diversion Unit (DFT) 41
 1 Machinesmith Automaton (MSH) 144
 1 War Machine, Legacy of Iron (MSH) 238
-1 Silent Hallcreeper (DSK) 72
+1 Legion Extruder (BIG) 12
 1 Rook Turret (FIN) 69
 1 Metalhead (TMT) 44
 1 Fin Fang Foom (MSH) 129

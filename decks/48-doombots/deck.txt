@@ -5,7 +5,9 @@
 #: plan: midrange
 #: tier: B — and deliberately ONE BAND BELOW the measurable floor, which reads A on
 #: tier: interaction 9 (4 instant-speed, 6 able to answer a noncreature permanent) plus card
-#: tier: advantage 4 on a 3.19 curve. The guard will soft-flag this as possibly under-graded;
+#: tier: advantage 3 on a 3.19 curve (Viv Vision was CUT 2026-08-18 for Simulacrum
+#: tier: Synthesizer — her conditional attack-draw for a Construct engine off 14 MV-3+
+#: tier: artifacts). The guard will soft-flag this as possibly under-graded;
 #: tier: that is intentional and should not be "fixed". The rubric's A wants a coherent engine,
 #: tier: a tight curve and AT MOST ONE clear weakness. This list has three:
 #: tier: 1. THE MANABASE IS THE WORST ON THE ROSTER. 19 coloured cards cast below 90% on curve
@@ -13,13 +15,13 @@
 #: tier:    has 13). Leyline of Transformation, the keystone, is 64.6% on turn four.
 #: tier: 2. NO SWEEPER AND NO REBUILD. The plan is to win a board stall by going over the top
 #: tier:    with anthems, so the losing matchup is a deck that answers the lords and leaves the
-#: tier:    1/1s — and with card advantage 4 there is little to rebuild with.
+#: tier:    1/1s — and with card advantage 3 there is little to rebuild with.
 #: tier: 3. A COUNTERS SUB-THEME WITH NO PAYOFF. `engines` reports 7 enablers placing +1/+1
 #: tier:    counters against zero cards that reward HAVING them (and sacrifice reads 5/0 too).
 #: tier: WHAT ARGUES UP, for a later re-grade: `shape` reads WIDE 10 / TALL 0, the cleanest
 #: tier: match of plan to measurement in this family; effect depth is genuinely deep where it
 #: tier: matters (Robot 13, payoff 12, removal 9), which is what lets a singleton list grade
-#: tier: well; and CARD ADVANTAGE 4 STILL UNDERSTATES — Chronicle of Victory draws on every
+#: tier: well; and CARD ADVANTAGE 3 STILL UNDERSTATES — Chronicle of Victory draws on every
 #: tier: chosen-type spell, which after Leyline is every creature spell in the deck, and the
 #: tier: whole lord package reads as roleless (6 unclassified).
 #: tier: NOT GRADED DOWN FOR BEING UNBUILT. Tier rates the LIST, not ownership; the 13 craft
@@ -221,7 +223,7 @@
 1 Machinesmith Automaton (MSH) 144
 1 Ultron, Artificial Malevolence (MSH) 252
 1 Henchbots (TMT) 174
-1 Viv Vision, Teen Synthezoid (MSH) 256
+1 Simulacrum Synthesizer (BIG) 6
 1 Tezzeret, Cruel Captain (EOE) 2
 1 Firdoch Core (ECL) 255
 1 The Mechanist, Aerial Artisan (TLA) 64

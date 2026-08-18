@@ -3,8 +3,10 @@
 #: colors: UR
 #: plan: midrange
 #: tier: A — Izzet artifacts/robots, rebuilt 2026-07 around RAMP-TO-HEAVY-HITTERS plus a
-#: tier: Station package. Metrics floor is A on interaction 8 + card
-#: tier: advantage 8, protection 3, avg MV 3.64. The letter buys what the floor cannot see:
+#: tier: Station package. Metrics floor is A on interaction 7 + card
+#: tier: advantage 8, protection 3, avg MV 3.67 (Abrade was CUT 2026-08-18 for Legion
+#: tier: Extruder, trading a two-mana removal spell for an artifact that pings on entry
+#: tier: and converts spare artifacts into 3/3 Golems). The letter buys what the floor cannot see:
 #: tier: Krang, Bygone Colossus, Chronicle of Victory, Ultron, Iron Man and Dawnsire are
 #: tier: real bombs, and Tony Stark's back face plus Tannuk make them arrive early. Held at
 #: tier: A rather than argued up to S because the plan is UNPLAYED in this configuration and
@@ -249,14 +251,14 @@
 
 # Artifacts / Spells
 1 Fiery Annihilation (FDN) 86
-1 Abrade (FDN) 188
+1 Legion Extruder (BIG) 12
 1 Iron Man Armor (MSH) 248
 1 Mjölnir, Hammer of Thor (MSH) 146
 1 The Ooze (TMT) 177
 1 Plasma Bolt (EOE) 152
 1 Full Bore (EOE) 135
 1 I Am Iron Man (MSH) 58
-1 Price of Freedom (TLA) 149
+1 Simulacrum Synthesizer (BIG) 6
 1 Armor Wars (MSH) 203
 1 Buster Sword (FIN) 255
 1 Cosmic Cube (MSH) 245
