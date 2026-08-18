@@ -7,7 +7,7 @@
 #: tier: (ungraded — new build, grade after a play session)
 #: archetype: Izzet (U/R) artifact POISON. Variant of 26 Iron Forge: where core 26 ramps into a
 #: archetype: few enormous bodies, this deck fields CHEAP EVASIVE ones and converts their chip
-#: archetype: damage into a real clock (avg MV 2.92, 16 early drops, 23 evasive creatures).
+#: archetype: damage into a real clock (avg MV 2.94, 15 early drops, 23 evasive creatures).
 #: archetype: NOT a "wide" deck, and the measurement corrected the first draft of this line:
 #: archetype: `deck.py shape` reads TALL 5 / WIDE 3, because every buff here is single-target
 #: archetype: (Falcon's Wing Harness, Iron Man Armor, Mind Transfer Protocol,
@@ -124,8 +124,9 @@
 #: notes: worse (interaction 7, avg MV 3.03).
 #: notes: FIN FANG FOOM MOVED IN, reversing the build-day exclusion, and the reason is a real
 #: notes: measurement: it has EIGHT artifact-targeting spells to copy here (Relm's Sketching,
-#: notes: Scour for Scrap, I Am Iron Man, Mind Transfer Protocol, Abrade, Untimely Malfunction,
-#: notes: Price of Freedom, Fiery Annihilation) against four in core 26. It still carries no
+#: notes: Scour for Scrap, Mind Transfer Protocol, Abrade, Untimely Malfunction) against four
+#: notes: in core 26 — measured before I Am Iron Man, Fiery Annihilation and Price of Freedom
+#: notes: were CUT across 2026-08-18, so read it as five today. It still carries no
 #: notes: poison — it is not an artifact creature — but "put two +1/+1 counters" on a 3/5 flier
 #: notes: every trigger is a genuine second threat, and Krang makes it indestructible.
 #: notes: DO NOT CUT INTERACTION TO PAY FOR THE COPY EFFECTS. It was proposed and it is
@@ -230,17 +231,16 @@
 1 Abrade (FDN) 188
 1 Untimely Malfunction (DSK) 161
 1 Invasion Submersible (TLA) 57
-1 Price of Freedom (TLA) 149
 1 Trial of Agony (DSK) 159
 1 Pym Particles (MSH) 70
 1 Mechan Navigator (EOE) 64
 
-# Lands (23) — leaner and less tapped than core 26's
+# Lands (24) — leaner and less tapped than core 26's; the 24th came in 2026-08-18 for Price of Freedom, land drops by T4 having read 58.6%
 1 Riverpyre Verge (DFT) 260
 2 Stark Industries (MSH) 272
 2 Swiftwater Cliffs (MOM) 273
 1 Rogue's Passage (HOC) 212
-8 Island (MSH) 290
+9 Island (MSH) 290
 9 Mountain (MSH) 294
 
 # Flex — considered and parked. See: deck.py flex 26a
