@@ -5014,3 +5014,5 @@ Jailbreak Scheme,Sorcery,"Spree (Choose one or more additional costs.)
 + {3} — Put a +1/+1 counter on target creature. It can't be blocked this turn.
 + {2} — Target artifact or creature's owner puts it on their choice of the top or bottom of their library.",U,counters; spree; value,OTJ,53,1
 Double Down,Enchantment,"Whenever you cast an outlaw spell, copy that spell. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws. Copies of permanent spells become tokens.)",U,spell copy,OTJ,44,1
+Hobbit Hole,Land,"{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.
+Halflingcycling {4} ({4}, Discard this card: Search your library for a Halfling card, reveal it, put it into your hand, then shuffle.)",Colorless,sacrifice; ramp,HOB,184,1
