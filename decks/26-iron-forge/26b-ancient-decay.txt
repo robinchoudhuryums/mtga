@@ -6,7 +6,7 @@
 #: plan: midrange
 #: tier: B — the CLOSEST call of the three graded this pass, and the only one where A is
 #: tier: genuinely arguable rather than merely allowed by the floor. The measurable case is the
-#: tier: strongest in the family by a wide margin: interaction 10 plus card advantage 8 against
+#: tier: strongest in the family by a wide margin: interaction 10 plus card advantage 9 against
 #: tier: 10 and 9 for the two Doombot lists, on the fastest curve here at 2.44, and with only
 #: tier: ONE unclassified card — so unlike its siblings these numbers are not hiding an engine
 #: tier: the classifier cannot read. The role tally is the deepest on the roster's artifact
@@ -218,7 +218,7 @@
 1 Death to Our Enemies (MSH) 127
 
 # Treasure and artifact fuel — and the one payoff that counts them
-1 Meticulous Artisan (TDM) 112
+1 The Mechanist, Aerial Artisan (TLA) 64
 1 Stark Industries Executive (MSH) 153
 1 Reckless Ransacking (ECL) 152
 1 Lady Octopus, Inspired Inventor (SPM) 35
