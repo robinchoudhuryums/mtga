@@ -33,7 +33,7 @@
 1 Starfield Shepherd (EOE) 37
 1 Sphinx of Forgotten Lore (FDN) 51
 1 Sinister Cryologist (EOE) 75
-1 Mechanozoa (EOE) 66
+1 The Lord of the Eagles (HOB) 46
 1 Quantum Riddler (EOE) 72
 1 Starbreach Whale (EOE) 77
 1 Drix Fatemaker (EOE) 178

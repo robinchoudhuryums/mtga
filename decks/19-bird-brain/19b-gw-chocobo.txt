@@ -15,16 +15,18 @@
 1 Sidequest: Raise a Chocobo (FIN) 201
 1 Sazh's Chocobo (FIN) 200
 1 Chocobo Racetrack (FIN) 179
-3 Gysahl Greens (FIN) 190
+1 Gysahl Greens (FIN) 190
+1 Loot, Exuberant Explorer (FDN) 106
+1 The Eagles Are Coming! (HOB) 12
 
 # Token / go-wide payoffs (+ fun includes)
 1 For the Common Good (BLB) 172
 1 Ka-Zar of the Savage Land (MSH) 174
 1 Mole Man, Moloid Master (MSH) 177
-1 Galactic Wayfarer (EOE) 185
+1 Seedship Agrarian (EOE) 204
 1 Glacier Godmaw (EOE) 188
 1 Bushwhack (BRO) 174
-1 Rydia's Return (FIN) 198
+1 Eagle of the Great Shelf (HOB) 11
 1 Clash of the Eikons (FIN) 180
 1 Michelangelo, Mutant BFF (TMT) 120
 1 Storm, Windrider (MSH) 230
@@ -39,7 +41,7 @@
 1 Ambrosia Whiteheart (FIN) 6
 1 Erode (SOS) 15
 1 Season of Gathering (BLB) 192
-1 Stirring Hopesinger (SOS) 35
+1 Eagle's Rescue (HOB) 155
 1 Momo, Friendly Flier (TLA) 29
 1 Sunbird Standard (LCI) 262
 1 Shrike Force (BLB) 31
@@ -51,15 +53,19 @@
 1 The Earth King (TLA) 172
 1 The Legend of Kyoshi (TLA) 186
 
-# Lands (GW — 6 nonbasic + 18 basics, green-weighted)
+# Lands (GW — 10 nonbasic + 14 basics; 3 sac-fetches double every landfall trigger)
 1 Birnin Zana Plaza (MSH) 262
 1 Blossoming Sands (M21) 244
 1 Hushwood Verge (DSK) 261
 1 Gathering Place (MSH) 266
 1 Kyoshi Village (TLA) 271
 1 Ba Sing Se (TLA) 266
-10 Forest
-8 Plains
+1 Evolving Wilds (ECL) 264
+1 Terramorphic Expanse (MSC) 828
+1 Vibrant Cityscape (SPM) 188
+1 Urban Retreat (SPM) 187
+8 Forest
+6 Plains
 
 # Flex — best owned fits found scouring the whole collection (comments; not part of the 60). See: deck.py flex 19b
 # (Applied: Choco/Mog over Studious First-Year; Earth King over Rabaroo Troop; Legend of Kyoshi over Cat-Owl. Earthbender Ascension stays.)

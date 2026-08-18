@@ -49,13 +49,14 @@
 1 Sazh's Chocobo (FIN) 200
 1 Chocobo Racetrack (FIN) 179
 1 Choco, Seeker of Paradise (FIN) 215
-3 Gysahl Greens (FIN) 190
+2 Gysahl Greens (FIN) 190
+1 Loot, Exuberant Explorer (FDN) 106
 
 # Token / go-wide payoffs (+ fun includes)
 1 For the Common Good (BLB) 172
 1 Ka-Zar of the Savage Land (MSH) 174
 1 Mole Man, Moloid Master (MSH) 177
-1 Galactic Wayfarer (EOE) 185
+1 Seedship Agrarian (EOE) 204
 1 Glacier Godmaw (EOE) 188
 1 Kishla Skimmer (TDM) 201
 1 Bard, King of Dale (HOB) 144
@@ -72,19 +73,19 @@
 1 Ambrosia Whiteheart (FIN) 6
 1 Dazzling Denial (BLB) 45
 1 Elspeth, Storm Slayer (TDM) 11
-1 Stirring Hopesinger (SOS) 35
+1 The Lord of the Eagles (HOB) 46
 1 Bushwhack (BRO) 174
 1 Momo, Friendly Flier (TLA) 29
 1 Sunbird Standard (LCI) 262
-1 Shrike Force (BLB) 31
+1 Eagle of the Great Shelf (HOB) 11
 1 Aven Interrupter (OTJ) 4
+1 The Eagles Are Coming! (HOB) 12
 
 # Ramp / support / fun
-1 Studious First-Year (SOS) 162
 1 Earthbender Ascension (TLA) 175
 1 Stroke of Midnight (FDN) 148
 
-# Lands (Bant — 13 duals + 11 basics)
+# Lands (Bant — 13 duals + 2 sac-fetches + 9 basics; 12 landfall payoffs want the extra triggers)
 1 Hallowed Fountain (ECL) 265
 1 Breeding Pool (EOE) 251
 1 Temple of Enlightenment (FDN) 698
@@ -98,9 +99,11 @@
 1 Restless Anchorage (LCI) 280
 1 Floodfarm Verge (DSK) 259
 1 Birnin Zana Plaza (MSH) 262
-5 Forest
+1 Evolving Wilds (ECL) 264
+1 Terramorphic Expanse (MSC) 828
+4 Forest
 3 Plains
-3 Island
+2 Island
 
 # Flex — best owned fits found scouring the whole collection (comments; not part of the 60). See: deck.py flex 19
 # (The Legend of Kyoshi already swapped in over Rabaroo Troop; Earthbender Ascension stays.)
