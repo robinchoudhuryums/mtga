@@ -250,8 +250,8 @@
 1 Riverpyre Verge (DFT) 260
 3 Stark Industries (MSH) 272
 1 Swiftwater Cliffs (MOM) 273
-8 Mountain (MSH) 294
-7 Island (MSH) 290
+7 Mountain (MSH) 294
+8 Island (MSH) 290
 1 Secluded Courtyard (FDN) 267
 
 # Flex — measured and parked. See: deck.py flex 48
