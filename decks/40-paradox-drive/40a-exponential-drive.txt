@@ -16,7 +16,11 @@
 #: archetype: body. (Emil is here for its trample line, not its Fractal mana sink.)
 #: tier: A — Simic landfall counters-midrange. Re-graded B->A after the Garruk's Uprising
 #: tier: / The Legend of Kyoshi pass, which closed the last of the three caps the B was
-#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 6 on a 2.91 curve).
+#: tier: resting on. Metrics floor is A (interaction 7 + card-adv 7 on a 2.91 curve; the
+#: tier: axis rose when Grappling Kraken was CUT 2026-08-18 for Bonny Pall, Clearcutter,
+#: tier: trading a landfall tap-and-stun for a landfall ENGINE — attack to draw a card and
+#: tier: put a land onto the battlefield from hand or graveyard, plus Beau, whose power
+#: tier: equals your land count).
 #: tier: The ENGINE was never the problem: `deck.py redundancy 40a` reads a virtual 8-of
 #: tier: counter-DOUBLER plus 5-of landfall / 5-of lands / 9-of payoff / 4-of ramp, on a
 #: tier: clean manabase (26 lands, 87% keepable openers, 0 uncastable). What kept it at B
@@ -77,6 +81,7 @@ Deck
 1 Seedship Agrarian (EOE) 204
 1 Tam, Observant Sequencer // Deep Sight (SOS) 237
 1 Emeritus of Abundance (SOS) 145
+1 Bonny Pall, Clearcutter (OTJ) 196
 
 # Counter DOUBLERS — the engine
 1 Bristly Bill, Spine Sower (OTJ) 157
@@ -102,7 +107,6 @@ Deck
 1 Origin of Metalbending (TLA) 187
 
 # Interaction
-1 Grappling Kraken (FDN) 39
 1 Bottomless Pool // Locker Room (DSK) 43
 1 Seedship Impact (EOE) 205
 1 Chocobo Kick (FIN) 178
