@@ -4,7 +4,7 @@
 #: plan: midrange
 #: tier: A — Izzet artifacts/robots, rebuilt 2026-07 around RAMP-TO-HEAVY-HITTERS plus a
 #: tier: Station package. Metrics floor is A on interaction 7 + card
-#: tier: advantage 8, protection 3, avg MV 3.67 (Abrade was CUT 2026-08-18 for Legion
+#: tier: advantage 8, protection 3, avg MV 3.61 (Abrade was CUT 2026-08-18 for Legion
 #: tier: Extruder, trading a two-mana removal spell for an artifact that pings on entry
 #: tier: and converts spare artifacts into 3/3 Golems). The letter buys what the floor cannot see:
 #: tier: Krang, Bygone Colossus, Chronicle of Victory, Ultron, Iron Man and Dawnsire are
@@ -250,7 +250,7 @@
 1 Ugin, Eye of the Storms (TDM) 1
 
 # Artifacts / Spells
-1 Fiery Annihilation (FDN) 86
+1 Explosive Derailment (OTJ) 122
 1 Legion Extruder (BIG) 12
 1 Iron Man Armor (MSH) 248
 1 Mjölnir, Hammer of Thor (MSH) 146

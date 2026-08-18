@@ -7,7 +7,7 @@
 #: tier: (ungraded — new build, grade after a play session)
 #: archetype: Izzet (U/R) artifact POISON. Variant of 26 Iron Forge: where core 26 ramps into a
 #: archetype: few enormous bodies, this deck fields CHEAP EVASIVE ones and converts their chip
-#: archetype: damage into a real clock (avg MV 2.97, 15 early drops, 23 evasive creatures).
+#: archetype: damage into a real clock (avg MV 2.92, 16 early drops, 23 evasive creatures).
 #: archetype: NOT a "wide" deck, and the measurement corrected the first draft of this line:
 #: archetype: `deck.py shape` reads TALL 5 / WIDE 3, because every buff here is single-target
 #: archetype: (Falcon's Wing Harness, Iron Man Armor, Mind Transfer Protocol,
@@ -231,7 +231,7 @@
 1 Untimely Malfunction (DSK) 161
 1 Invasion Submersible (TLA) 57
 1 Price of Freedom (TLA) 149
-1 Fiery Annihilation (FDN) 86
+1 Trial of Agony (DSK) 159
 1 Pym Particles (MSH) 70
 1 Mechan Navigator (EOE) 64
 
