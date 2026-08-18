@@ -119,15 +119,18 @@ Deck
 1 Ignis Scientia (FIN) 227
 1 Venus, Torn Between Worlds (TMT) 136
 
-# Lands — 26, Simic; land count pushed up for the landfall package
+# Lands — 26, Simic; 3 sac-fetches give two landfall triggers per land drop
 1 Breeding Pool (EOE) 251
 1 Willowrush Verge (DFT) 270
 1 Dreamroot Cascade (SOS) 254
 1 Thornwood Falls (FDN) 269
 1 Meditation Pools (TLA) 272
 1 Agna Qel'a (TLA) 264
-11 Forest (MSH) 295
-9 Island (MSH) 289
+1 Evolving Wilds (ECL) 264
+1 Terramorphic Expanse (MSC) 828
+1 Vibrant Cityscape (SPM) 188
+9 Forest (MSH) 295
+8 Island (MSH) 289
 
 #~ note: applied — Beast, Erudite Aerialist in for Portent of Calamity.
 #~   potential finisher, held OUT of the 60 by choice. 83% of the nonlands here are

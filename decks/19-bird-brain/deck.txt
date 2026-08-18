@@ -85,7 +85,7 @@
 1 Earthbender Ascension (TLA) 175
 1 Stroke of Midnight (FDN) 148
 
-# Lands (Bant — 13 duals + 11 basics)
+# Lands (Bant — 13 duals + 2 sac-fetches + 9 basics; 12 landfall payoffs want the extra triggers)
 1 Hallowed Fountain (ECL) 265
 1 Breeding Pool (EOE) 251
 1 Temple of Enlightenment (FDN) 698
@@ -99,9 +99,11 @@
 1 Restless Anchorage (LCI) 280
 1 Floodfarm Verge (DSK) 259
 1 Birnin Zana Plaza (MSH) 262
-5 Forest
+1 Evolving Wilds (ECL) 264
+1 Terramorphic Expanse (MSC) 828
+4 Forest
 3 Plains
-3 Island
+2 Island
 
 # Flex — best owned fits found scouring the whole collection (comments; not part of the 60). See: deck.py flex 19
 # (The Legend of Kyoshi already swapped in over Rabaroo Troop; Earthbender Ascension stays.)
