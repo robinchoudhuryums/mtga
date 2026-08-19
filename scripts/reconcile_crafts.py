@@ -224,6 +224,25 @@ def reconcile(export_lines, apply=False, set_exact=False):
         if len(wish) != before:
             wish_removed.append(full)
 
+    # WRITE BEFORE REPORTING. The report used to run first, and every print() is a
+    # chance to die: when stdout is a pipe that closes early (`... --apply | head -6`)
+    # the next print raises BrokenPipeError, the process exits 1, and the writes never
+    # happen — after the user has already read what looks like a success summary. Two
+    # real batches were lost that way on 2026-08-18 (Nexus of Becoming + Racers'
+    # Scoreboard, then Krang & Shredder), each found only because someone re-grepped
+    # the library. check_all cannot see it: a card missing from the inventory breaks no
+    # invariant. Doing the durable work first makes the failure mode "report truncated"
+    # instead of "data silently lost".
+    wrote = False
+    if apply and (added or bumped or mana_added or wish_removed):
+        if added or bumped:
+            _bak_write(LIB, LIB_HEADER, lib)
+        if mana_added:
+            _bak_write(MANA, ["Card Name", "Mana Cost", "Mana Value", "Keywords"], mana)
+        if wish_removed:
+            _bak_write(WISH, wish_fields, wish)
+        wrote = True
+
     # report
     def section(title, items):
         print(f"{title}: {len(items)}")
@@ -263,19 +282,9 @@ def reconcile(export_lines, apply=False, set_exact=False):
         print("\n(dry run — pass --apply to write card-library.csv / card-mana.csv / "
               "card-wishlist.csv with .bak backups)")
         return 0
-    if not (added or bumped or mana_added or wish_removed):
+    if not wrote:
         print("\nNothing to write.")
         return 0
-    # Only rewrite what CHANGED. The gate above fires if ANY of the four buckets moved,
-    # but the library write ran unconditionally inside it — so a run that merely dropped
-    # a wishlist row rewrote an unchanged 600KB inventory and left a fresh `.bak`, the
-    # exact litter import_arena and build_mana were both taught to avoid (BS4-38).
-    if added or bumped:
-        _bak_write(LIB, LIB_HEADER, lib)
-    if mana_added:
-        _bak_write(MANA, ["Card Name", "Mana Cost", "Mana Value", "Keywords"], mana)
-    if wish_removed:
-        _bak_write(WISH, wish_fields, wish)
     print("\nApplied (with .bak backups). Next:\n"
           "  make refresh                              # rebuild derived data\n"
           "  python3 scripts/verify_ingest.py <export>  # confirm the batch landed")

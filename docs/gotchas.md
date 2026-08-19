@@ -544,6 +544,42 @@ same rule from the other direction — do not let a craft cost enter the argumen
 *reason* either. When a recommendation does depend on ownership, say so explicitly, so
 the premise most likely to be false is the one the reader checks first.
 
+
+### 2026-08-18: `--apply | head -N` silently lost two batches
+
+`reconcile_crafts.py` computed its changes, printed the full report, and only then
+called `_bak_write` three times. Every `print()` between those two points is a place the
+process can die, and piping to `head -N` guarantees it will: once `head` has taken its N
+lines it closes the pipe, the next `print()` raises `BrokenPipeError`, and Python exits 1
+**before any file is touched**.
+
+The failure is maximally deceptive. The report that already reached the terminal reads
+`Add to library: 2` followed by the card names — indistinguishable from a successful run,
+because the one line that would have disambiguated it (`Applied (with .bak backups)`) is
+below the `head` cutoff. Two batches were lost this way in one session:
+
+- Nexus of Becoming + Racers' Scoreboard ×2 — found later by a CSV parse, and confirmed
+  by `git show` on the commit that claimed to carry them
+- Krang & Shredder — found because a follow-up `grep` came back empty
+
+Both were invisible to `check_all`: a card missing from `card-library.csv` breaks no
+invariant, which is the same structural blindness `verify_ingest.py` exists to cover. The
+`/ingest` skill mandates that verify step; ad hoc `reconcile_crafts` calls outside the
+skill have no such backstop, which is how both slipped through.
+
+Reproduced deliberately before fixing: a card referenced in a deck file produces a
+`Decks referencing a reconciled card` section after line 6, so `... --apply | head -6`
+exits 1 and writes nothing, while the same command with `| head -8` (or any `tail`, which
+drains the pipe) completes normally. That is why the failure looked intermittent — it
+depended entirely on how many lines the report happened to emit.
+
+**Fix:** the writes now run before the report. A truncated pipe can lose OUTPUT but never
+DATA. `test_writes_land_even_when_stdout_dies_mid_report` pins the ordering by raising
+`BrokenPipeError` from a monkeypatched `print` partway through and asserting the rows are
+on disk anyway; it was watched to fail against the unfixed source first.
+
+**Generalize it:** any script here that both mutates a canonical file and narrates what it
+did should do the durable work first. Narration is the part that is safe to lose.
 ## [G-11] MTG Arena set codes can differ from Scryfall
 
 **MTG Arena set codes can differ from Scryfall** (e.g. Arena `DAR` = Scryfall

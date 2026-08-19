@@ -293,7 +293,10 @@ directions.
   but it need not have. Report craft cost as INFORMATION at the end, per the Player
   Profile; when a decision leans on ownership, say so, because that is the premise most
   likely to be false. `import_collection.py` against a tracker export is the only tool
-  that sets counts EXACTLY (including down) — run it before a wildcard-spending pass. [G-10]
+  that sets counts EXACTLY (including down) — run it before a wildcard-spending pass.
+  **A script that WRITES and NARRATES must write first**: reporting before writing let
+  `--apply | head -6` die on BrokenPipeError having printed success and written nothing
+  (two batches lost 2026-08-18, invisible to `check_all`). Fixed and pinned. [G-10]
 - **MTG Arena set codes can differ from Scryfall** (`DAR` = `DOM`). `enrich.py` maps the
   known ones in `SET_ALIASES` and leaves Collector # blank rather than writing one from
   an unconfirmed printing. [G-11]

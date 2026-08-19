@@ -100,6 +100,36 @@ class TestApply:
         # here the whole wishlist emptied, so assert the file still parses.
         assert _read_csv(world["WISH"]) == []
 
+    def test_writes_land_even_when_stdout_dies_mid_report(self, world, monkeypatch):
+        """DURABLE WORK BEFORE NARRATION. The report used to run before any write, and
+        every print() is a chance to die: with stdout a pipe that closes early
+        (`reconcile_crafts.py ... --apply | head -6`) the next print raises
+        BrokenPipeError, the process exits 1, and NOTHING is written — after the user
+        has already read what looks like a success summary. Two real batches were lost
+        that way on 2026-08-18 (Nexus of Becoming + Racers' Scoreboard, then Krang &
+        Shredder), each caught only by re-grepping the library afterwards. `check_all`
+        is structurally blind to it: a card missing from the inventory breaks no
+        invariant. Pin the ORDER, not the symptom."""
+        import builtins
+        real_print = builtins.print
+        seen = {"n": 0}
+
+        def dying_print(*a, **kw):
+            seen["n"] += 1
+            if seen["n"] > 2:                      # die partway through the report
+                raise BrokenPipeError(32, "Broken pipe")
+            return real_print(*a, **kw)
+
+        monkeypatch.setattr(builtins, "print", dying_print)
+        with pytest.raises(BrokenPipeError):
+            rc.reconcile(["1 Duress (M21) 96"], apply=True)
+        monkeypatch.setattr(builtins, "print", real_print)
+        # The whole point: the row is on disk even though the report never finished.
+        assert any(r["Card Name"] == "Duress" for r in _read_csv(world["LIB"])), \
+            "library write was lost when stdout closed mid-report"
+        assert "Duress" in {r["Card Name"] for r in _read_csv(world["MANA"])}
+        assert all(r["Card Name"] != "Duress" for r in _read_csv(world["WISH"]))
+
     def test_apply_writes_bak_backups(self, world):
         rc.reconcile(["1 Duress (M21) 96"], apply=True)
         baks = [f for f in os.listdir(os.path.dirname(world["LIB"])) if f.endswith(".bak")]
