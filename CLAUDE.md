@@ -1031,7 +1031,7 @@ earned it: [C-01]
 - Presentation: scripts/build_gallery.py, gallery.html, image-manifest.json,
   scripts/build_dashboard.py, dashboard.html, .github/workflows/pages.yml,
   scripts/app.py, templates/, Makefile [C-06]
-- Testing: tests/ (29 test files + conftest: the markup-contract, CLI-entry-point, analysis-model,
+- Testing: tests/ (30 test files + conftest: the markup-contract, CLI-entry-point, analysis-model,
   gate-pinning, shared-primitive and ingest layers, the 2026-08 ingest-writer /
   sync-guard / resilience-layer / CLI-filter coverage of the formerly untested
   scripts, plus test_check_all.py, the gate runner's own mutation layer;
@@ -1250,8 +1250,13 @@ is invisible, and a handoff nobody is told to read is the same failure one layer
   consolidated swap plan; it is TEMPORARY and says so, and it is deleted once the
   swaps land. Named here because a fresh session loads nothing else, and the whole
   point of committing it per batch is that it outlives one context window.
-  **None currently live** — the 54-family doc was deleted when its swaps landed
-  (2026-08-05), which is the contract working as intended.
+  **THREE are live as of 2026-08-19** — read them before re-deriving their findings:
+  `prune-analysis.md` (the roster-wide prune shortlist for Arena's 100-deck cap:
+  card-overlap matrix + `similar` sweep + a three-tier candidate list, awaiting the
+  user's keep/cut calls); `wylie-tap-analysis.md` (Variant B, the mono-W tap-down
+  control build, still specced-but-undrafted; Variant C parked); and
+  `hob-followup-analysis.md`. Each is deleted when its work lands — the 54-family doc
+  went on 2026-08-05, which is the contract working as intended.
 - **`.cycle/STATE.md`** — prose record: what was completed, decisions made, what was
   decided AGAINST (worth reading before re-proposing a rejected fix), and where the
   last session left off.
