@@ -399,6 +399,16 @@ Dry-run by default; after `--apply`, run `build_gallery.py` + `check_all.py` (or
 This is the fast fix for the **"not in library" undercount symptom** — a card you
 own that `deck.py check` still lists as a craft target.
 
+**Never pipe an `--apply` run through `head`.** The writes run BEFORE the report by
+design: the report used to come first, so a pipe that closed early
+(`... --apply | head -6`) raised `BrokenPipeError` on the next `print()`, exited 1, and
+wrote **nothing** — after printing what read as a success summary, because the one
+disambiguating line (`Applied (with .bak backups)`) fell below the cutoff. Two batches
+were lost that way on 2026-08-18. Writing first means a truncated pipe can only cost you
+OUTPUT, never DATA, but the truncated report is still unreadable — use `tail`, or no pipe
+at all. Note `check_all` cannot catch this class: a card missing from `card-library.csv`
+breaks no invariant, which is exactly why `verify_ingest.py` exists (see below).
+
 ### Deck — manage decks and variations
 
 ```
