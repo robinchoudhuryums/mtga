@@ -2,8 +2,10 @@
 #: format: Standard
 #: colors: WR
 #: plan: midrange
-#: tier: B (PROVISIONAL) — matches the B metrics floor (interaction 5 after Thorin's
-#: tier: Last Stand closed the noncreature-answer hole, card advantage
+#: tier: B (PROVISIONAL) — matches the B metrics floor (interaction 6 — Thorin's
+#: tier: Last Stand closed the noncreature-answer hole, and Thorin, Mountain-king's
+#: tier: equip-then-deal-damage trigger became readable when the scaling-damage
+#: tier: pattern gained its "up to one target" twin on 2026-08-19 — card advantage
 #: tier: 3 — Ragged Short Spear, the one classified rummage, was CUT for Item Shopkeep
 #: tier: on 2026-08-16 — with several unclassified per axis, the K-12 shape at its
 #: tier: widest: Kíli, Giott, Balin, Dáin's Company and Buster Sword all draw through

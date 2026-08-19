@@ -1313,6 +1313,21 @@ _ROLE_PATTERNS = {
         # older templating can hit a planeswalker, which is an answer (42 pool cards).
         r"deals? \d+ damage to (?:any target|(?:another )?target (?!(?:player|opponent)\b(?! or planeswalker)))",
         r"deals? \d+ damage to up to \w+ target",
+        # BACK-REFERENCED target: the target is named in one clause and the damage lands
+        # in a later one, pointing back with "that creature". Every fixed-damage pattern
+        # above needs the literal word "target" adjacent to the damage clause, so this
+        # whole templating was a whitelist hole (G-67) — Trial of Agony ("Choose two
+        # target creatures controlled by the same opponent. That player chooses one of
+        # those creatures. Trial of Agony deals 5 damage to that creature.") scored ZERO
+        # roles. It is the anaphor twin of the "destroy the chosen permanent" pattern
+        # above, and the same anchoring makes it precise. Two guards, both measured
+        # against the whole pool: `(?!\'s)` excludes "that creature\'s CONTROLLER" (Blur
+        # of Blades), which is reach at a player, not an answer; and requiring an explicit
+        # "choose ... target creature" upstream excludes incidental COMBAT damage, where
+        # "that creature" back-references a blocker (Ashmouth Hound, Ornery Goblin). With
+        # both, the pattern matches exactly 3 pool cards and all 3 are true positives.
+        r"(?s)choose (?:up to )?(?:\w+ )?target creatures?"
+        r".{0,300}?deals? \d+ damage to that creature(?!\'s)",
         # any "fight" is removal (Novel Nunchaku "fights up to one target", Longstalk
         # Brawl "fight each other") — the old pattern only caught "fights target".
         r"\bfights?\b|creatures? fight",
@@ -1329,6 +1344,16 @@ _ROLE_PATTERNS = {
         # not an answer, and a roster sweep of the first draft showed that was the ONLY
         # false-positive class among 116 newly-matched cards.
         r"deals damage equal to [^.]{0,80}?to (?:any target|target (?!player|opponent)\w+)",
+        # "UP TO ONE target" — the optional-target templating. Both scaling-damage patterns
+        # above require "to target" or "to any target" immediately after the size clause,
+        # and the fixed-damage half has carried its `up to \w+ target` twin since the
+        # beginning; the scaling half never got one, so 8 pool cards that all point damage
+        # at a creature scored no Removal (Thorin, Mountain-king; Assert Perfection; Burrog
+        # Barrage; Feral Encounter; Legolas x2; Pyretic Rebirth; Dragonspark Reactor).
+        # Measured against the whole pool: 8 matches, zero false positives — the player
+        # guard is kept anyway, since "to up to one target player" is the same reach the
+        # sibling patterns exclude.
+        r"deals damage equal to [^.]{0,80}?to up to \w+ target (?!player|opponent)\w+",
         # TARGET-FIRST word order. The two patterns above both assume "equal to X"
         # precedes "to target"; Magic also templates it the other way round, and that
         # half was a whitelist hole (G-67). Triumphant Chomp — "deals damage to target
@@ -1427,6 +1452,17 @@ _ROLE_PATTERNS = {
                        # card advantage and inverted the rule this pattern implements.
                        r"at the beginning of (?:your|each|the) "
                        r"(?:upkeep|end step|draw step|combat|precombat main phase)"
+                       r"[^.]{0,60}?draws? a card",
+                       # The phase-trigger pattern above puts the possessive FIRST
+                       # ("at the beginning of YOUR combat"), but Magic templates the
+                       # combat trigger the other way round — "at the beginning of combat
+                       # ON YOUR TURN" — so the word order defeats the `(?:your|each|the)`
+                       # group and that whole templating was a whitelist hole (G-67).
+                       # Nexus of Becoming and Mister Fantastic both draw every turn and
+                       # scored no card advantage. Same repeatability test as above: a
+                       # phase trigger recurs by construction. Matches exactly those 2
+                       # pool cards, both true positives.
+                       r"at the beginning of combat on your turn"
                        r"[^.]{0,60}?draws? a card",
                        # The draw must fall AFTER the trigger's comma. Magic templates a
                        # triggered ability as "Whenever <condition>, <effect>", so the
@@ -1609,7 +1645,22 @@ _ROLE_PATTERNS = {
         r"\baffinity\b", r"\bconvoke\b", r"\bimprovise\b", r"\bcascade\b",
         r"without paying its mana cost",
     ],
-    "Team pump / anthem": [r"(?:other )?creatures you control get \+"],
+    "Team pump / anthem": [
+        r"(?:other )?creatures you control get \+",
+        # TRIBAL LORDS. The pattern above hard-codes the noun "creatures", so every lord
+        # in the format — "Other Elves you control get +1/+1", "Zombies you control get
+        # +1/+0", "Creature tokens you control get +1/+1" — scored NO anthem role. 146
+        # pool cards, i.e. the largest single whitelist hole measured here (G-67), and it
+        # sits on the exact card class a tribal deck is built out of. Requiring the full
+        # +N/+N body keeps this off "lands you control get" style text; the first half
+        # must be a PLUS so a symmetric shrink can't read as a pump.
+        r"\b\w+s you control get \+\d+/[-+]\d+",
+        # A QUALIFIER between the noun and the verb defeats both patterns above:
+        # "Creatures you control WITH FLYING get +1/+1" (Favorable Winds, Empyrean Eagle),
+        # "Creatures you control OF THE CHOSEN TYPE get +2/+2" (An Unexpected Party) --
+        # the choose-a-type category K-13 warns never contains the type name.
+        r"creatures you control (?:of the chosen type |with [^.]{0,30}?)get \+",
+    ],
     "Protection / trick": [r"\bhexproof\b", r"\bindestructible\b", r"protection from",
                            r"gets \+\d+/\+\d+ until end of turn"],
     "Recursion": [r"from your graveyard", r"card in your graveyard",

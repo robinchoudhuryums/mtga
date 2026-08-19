@@ -188,6 +188,55 @@ class TestClassifyRoles:
             "destroy the chosen permanent if its mana value is less than or equal to "
             "the number of cards in your graveyard.")
 
+    def test_back_referenced_damage_target_is_removal(self):
+        # Trial of Agony and Spiked Pit Trap name the target in one clause and land the
+        # damage in a later one, pointing back with "that creature". Every fixed-damage
+        # pattern needs the literal word "target" adjacent to the damage clause, so both
+        # scored ZERO roles — the anaphor twin of the Quag Feast hole above (G-67).
+        # Text is verbatim from the cards, not a paraphrase.
+        assert "Removal (spot)" in deck.classify_roles(
+            "Choose two target creatures controlled by the same opponent. That player "
+            "chooses one of those creatures. Trial of Agony deals 5 damage to that "
+            "creature, and the other can't block this turn.")
+        assert "Removal (spot)" in deck.classify_roles(
+            "Flash\n{5}, {T}, Sacrifice this artifact: Choose target creature, then roll "
+            "a d20.\n1\u20149 | This artifact deals 5 damage to that creature.\n"
+            "10\u201420 | This artifact deals 5 damage to that creature. Create a "
+            "Treasure token.")
+
+    def test_back_reference_to_a_controller_is_not_removal(self):
+        # Blur of Blades points back at "that creature's CONTROLLER" — reach at a player,
+        # not an answer. It was the false positive that forced the `(?!'s)` guard, the
+        # same BS2-06 rule the fixed-damage patterns already carry.
+        assert "Removal (spot)" not in deck.classify_roles(
+            "Put a -1/-1 counter on target creature. Blur of Blades deals 2 damage to "
+            "that creature's controller.")
+
+    def test_incidental_combat_damage_is_not_removal(self):
+        # "That creature" also back-references a BLOCKER in ordinary combat triggers
+        # (Ashmouth Hound, Ornery Goblin). Requiring an explicit "choose ... target
+        # creature" upstream is what keeps those out; without it the pattern swept every
+        # fight-adjacent creature into the interaction count.
+        assert "Removal (spot)" not in deck.classify_roles(
+            "Whenever this creature blocks or becomes blocked by a creature, this "
+            "creature deals 1 damage to that creature.")
+
+    def test_combat_on_your_turn_draw_is_card_advantage(self):
+        # Magic templates this trigger as "at the beginning of combat ON YOUR TURN", so
+        # the possessive lands AFTER the phase and defeats the `(?:your|each|the)` group
+        # the other phase triggers use. Nexus of Becoming and Mister Fantastic both draw
+        # every turn and scored no card advantage (G-67).
+        assert "Card advantage" in deck.classify_roles(
+            "At the beginning of combat on your turn, draw a card. Then you may exile an "
+            "artifact or creature card from your hand. If you do, create a token "
+            "that's a copy of the exiled card, except it's a 3/3 Golem artifact "
+            "creature in addition to its other types.")
+        assert "Card advantage" in deck.classify_roles(
+            "Reach, vigilance\nAt the beginning of combat on your turn, if you've cast a "
+            "noncreature spell this turn, draw a card.\n{R}{G}{W}{U}, {T}: Copy target "
+            "triggered ability you control twice. You may choose new targets for the "
+            "copies.")
+
     def test_creature_or_enchantment_answers_a_noncreature_permanent(self):
         # The planeswalker cues allowed any text between "target" and the type; the
         # artifact/enchantment cues required the type IMMEDIATELY after "target". So

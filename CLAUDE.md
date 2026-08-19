@@ -773,17 +773,17 @@ directions.
 - **A PATTERN SET IS A WHITELIST, AND A WHITELIST'S MISSES ARE INVISIBLE.** `_ROLE_PATTERNS`
   matches PHRASINGS, and Magic templates one effect several ways — so a card worded a way no
   pattern anticipates scores ZERO roles, and the tier floor, `cuts`, the quality guard and
-  `check_all` all inherit that as fact. Never an error; the DEFAULT failure is a silent
-  UNDER-count — but a too-broad pattern OVER-counts just as silently, and one did for its
-  whole life (player-only burn counted as spot removal; 14 decks over-read the interaction
-  axis — BS2-06, guard now in the pattern). Eight under-count holes surfaced in one
-  2026-08 session (and a NINTH on 2026-08-11), every one found by a HUMAN reading a card.
-  **`check_roles.py` + `role_baseline.txt` make the population visible** (soft, deck-scoped,
-  baselined); read it as a DELTA, not a target. Two habits follow: write a pattern's
-  fixture from the CARD'S REAL TEXT, never a paraphrase — that is how you write a pattern
-  for a card that does not exist — and check for a TEST DOUBLE encoding the old behaviour,
-  since `check_suggest` anchor 15 asserted a fixer ranks most-cuttable PRECISELY BECAUSE it
-  had no role. [G-67]
+  `check_all` inherit that as fact. Never an error; the DEFAULT failure is a silent
+  UNDER-count — but a too-broad pattern OVER-counts just as silently (BS2-06). Nine holes
+  surfaced across 2026-08, each found by a HUMAN reading one card; **2026-08-19 found FOUR
+  MORE by reading the zero-role backlog end to end** — the largest being that the anthem
+  pattern hard-coded the noun `creatures`, so EVERY TRIBAL LORD (146 cards) scored none,
+  hidden because anthem is not an axis `tier_band` grades. Treat that list as a WORKLIST;
+  its leftovers are mostly TAXONOMY (11 of 26 are Equipment, which has no bucket).
+  **`check_roles.py` + `role_baseline.txt` make the population visible** (soft, baselined);
+  read it as a DELTA, not a target. Two habits: write a fixture from the CARD'S REAL TEXT,
+  never a paraphrase — that is how you write a pattern for a card that does not exist — and
+  check for a TEST DOUBLE encoding the old behaviour (`check_suggest` anchor 15). [G-67]
 
 - **A `#:` HEADER THAT LISTS CARD NAMES GOES STALE, AND UNTIL 2026-08-07 NOTHING CHECKED
   ONE.** `#: protect:` and `#: uncastable-ok:` are read by the tooling as INSTRUCTIONS, so

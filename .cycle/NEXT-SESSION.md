@@ -1,8 +1,9 @@
 # Handoff — start the next session here
 
-Rewritten 2026-08-09 after the **broad-scan-3** cycle closed, then updated 2026-08-12 for
-the **broad-scan-4** cycle (§0 below is the newest state and supersedes anything under it
-where they disagree). Written for a session with none of this one's context. Read it before
+Rewritten 2026-08-09 after the **broad-scan-3** cycle closed, updated 2026-08-12 for the
+**broad-scan-4** cycle, and refreshed 2026-08-19 (**§0-newest is the current state and
+supersedes anything under it where they disagree**; the numbered sections below it are
+dated records, kept because their reasoning is still worth reading). Written for a session with none of this one's context. Read it before
 CLAUDE.md's Common Gotchas, not instead of them. The broad-scan-2 cycle it previously
 described is in `.cycle/blocks/2026-08-broad-scan2-*.md` if you need it.
 
@@ -52,7 +53,94 @@ Plus three variant FILES: `26b-scrapyard-tithe` → `26b-ancient-decay`, `52a-da
 
 ---
 
-## 0-now. THE 2026-08-15 SESSION (read second — it is the newest state)
+## 0-newest. THE 2026-08-16 → 2026-08-19 SESSIONS (read this first — newest state)
+
+**Everything below this section predates 2026-08-16.** §0-now's "Library 2254 → 2275
+printings" is four days stale: the roster is now **2362 cards / 113 decks** (the
+session-start hook prints the live figures — trust it, not any number written here).
+
+### What landed
+
+- **Two ingests** (36 cards, then 24) plus a run of one-off ownership corrections the
+  user supplied as they were noticed: Watery Grave, Hobbit Hole, Explosive Derailment ×2,
+  Great Train Heist, Nexus of Becoming, Racers' Scoreboard ×2, Krang & Shredder.
+- **The 37 Wizard family (37 / 37a / 37b) was tuned hard** off a user observation that
+  turned out to be the right diagnosis: the payoffs split into "noncreature spell"
+  triggers (17 feeders) and "instant or sorcery" triggers (only 10), and the latter was
+  the starved half. Roughly a dozen swaps followed, the manabases went 9 → 6/7 tapped
+  lands, and **37a was re-graded B → A at the user's call** (never auto-write a letter).
+- **Eagle package** placed into 19 / 19b / 67; **landfall / land-puller** work across
+  19, 19b, 40a, 50a (sac-fetch lands, Bonny Pall, Seedship Agrarian, Loot).
+- **Artifact family** 26 / 26a / 26b / 48: Simulacrum Synthesizer placement, Lady Octopus
+  top-end for 26b, manabase audits (26a 23 → 24 lands, 48 Mountain → Island).
+- **`reconcile_crafts.py` write bug FIXED** — it reported before writing, so
+  `--apply | head -6` died on BrokenPipeError having printed a success summary and
+  written nothing. Two real batches were lost that way, each found only because the user
+  re-grepped the library, and `check_all` could not see it. Writes now precede the
+  report; pinned by a test that fails against the unfixed source. Rule is G-10.
+- **A `/sync-docs` pass**, then **four `_ROLE_PATTERNS` whitelist holes closed** — see
+  the G-67 section of `docs/gotchas.md` for the measurements. The big one: the anthem
+  pattern hard-coded the noun `creatures`, so every tribal lord (146 cards) scored no
+  anthem role, invisible because anthem is not an axis `tier_band` grades.
+
+### State you should verify rather than assume
+
+- **PRs #136 and #137 are merged. Commit `b6ff446` (the role-pattern work) is pushed to
+  `claude/magic-deck-swaps-b1h3no` but NOT merged** — no PR was opened for it, because
+  the user asks for PRs explicitly and had not for that one. Check `git log
+  origin/main..HEAD` before assuming the branch is clean, and per CLAUDE.md restart the
+  branch from `origin/main` if its PR turns out to have been squash-merged.
+- `check_all` is green with **one** soft warning (6 unverified printings, all deck 73).
+  It was three earlier in the cycle; do not read the drop as a regression in the gate.
+
+### Open items, in the order they are worth picking up
+
+1. **`.cycle/prune-analysis.md` — the largest outstanding item, and it is BLOCKED ON THE
+   USER, not on analysis.** The roster is at 113 decks against Arena's 100-deck cap. The
+   doc carries the finished work — card-overlap matrix, `similar` sweep, playstyle belts,
+   a three-tier candidate list — and is waiting on keep/cut calls. Do not re-derive it.
+2. **Ownership drift — the two KNOWN cards are cleared, the CLASS is not.** Cool but Rude
+   and Captain Howler, Sea Scourge were reconciled on 2026-08-19 and 26b now checks
+   fully buildable. But every one of the ~10 corrections this stretch was found the same
+   way — **the user noticed**, not a gate — so the honest read is that the library is
+   still drifted in places nobody has looked. `import_collection.py` against a tracker
+   export is the only tool that sets counts EXACTLY (including DOWN, which
+   `import_arena.py` cannot by construction) and would settle the whole class at once.
+   Worth doing before any wildcard-spending pass, since ownership is the premise most
+   likely to be false (G-10).
+3. **Craft options named but not taken** (information, not a budget — per the Player
+   Profile, never gate a card on ownership): Undergrowth Recon (best home is now 50a),
+   Steam Vents (serves 26 / 26a / 26b / 48), Icetill Explorer, Forensic Gadgeteer,
+   Mystical Teachings, Fabled Passage.
+4. **Parked cards, with the condition that would un-park them recorded** — Thranduil
+   needs a BGU Elf shell; Double Down needs NONLEGENDARY outlaws in blue (the legend rule
+   kills the copies, which is why 44/44a were rejected); a second Simulacrum Synthesizer
+   is not needed because copies are fungible across decks.
+5. **A taxonomy question the role-pattern pass deliberately did not answer.** 11 of the
+   26 remaining zero-role cards are **Equipment** (attach / equip / hone counters), a
+   class `_ROLE_PATTERNS` has no bucket for; tap-down, extra-combat, taxing and hand
+   attack are in the same position. Adding a bucket re-scores every deck running the
+   type, so it is a decision to take deliberately, not a pattern fix to slip in.
+6. **Wylie Variant B** (mono-W tap-down control) remains specced-but-undrafted in
+   `.cycle/wylie-tap-analysis.md`; Variant C parked.
+7. Noted in passing: **26a's own file flags that a near-mono-blue rebuild would eliminate
+   its mana problems** — a real option nobody has priced.
+
+### Traps this stretch re-confirmed
+
+- **A stale `#: tier:` figure is created BY a successful tune.** Moving a graded axis
+  makes the prose citing it wrong; `tier <id> --audit-rationale` catches it and the
+  roster sweep in `check_all` is the backstop. Two figures went stale on 2026-08-19 from
+  a pattern change alone — the deck files were not even edited.
+- **Write a test fixture from the card's REAL text.** A paraphrased Blur of Blades
+  fixture passed a pattern that the real card refutes — G-67's stated trap, hit live.
+- The user corrects card assessments and is usually right (Lasting Tarfire, Super
+  Intelligence, Cornered by Black Mages, Mona Lisa were all defended successfully).
+  Re-derive from oracle text before holding a position.
+
+---
+
+## 0-now. THE 2026-08-15 SESSION (superseded by §0-newest above)
 
 **Landed:** a 17-card HOB ingest, four swaps applied, five flex lines added, and the
 match-log tooling batch (findings 1–4) that preceded them. Library 2254 → 2275 printings.

@@ -5029,3 +5029,11 @@ Nexus of Becoming,Artifact,"At the beginning of combat on your turn, draw a card
 Racers' Scoreboard,Artifact,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
 When this artifact enters, draw two cards, then discard a card.
 Max speed — Spells you cast cost {1} less to cast.",Colorless,cost-reduction; card draw; etb; max speed; speed; aggro; start your engines!,DFT,239,2
+Cool but Rude,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
+Whenever you attack, you may discard a card. If you do, draw a card.
+{1}{R}: Level 2
+Whenever you discard a card, this Class deals 2 damage to each opponent.
+{1}{R}: Level 3
+When this Class becomes level 3, search your library for a card, put it into your hand, shuffle, then discard a card at random.",R,Class; card draw; burn; noncombat damage,TMT,89,1
+"Captain Howler, Sea Scourge",Legendary Creature — Shark Pirate,"Ward—{2}, Pay 2 life.
+Whenever you discard one or more cards, target creature gets +2/+0 until end of turn for each card discarded this way. Whenever that creature deals combat damage to a player this turn, you draw a card.",U/R,Shark; Pirate; pay life; card draw; pump; ward; protection,DFT,194,1
