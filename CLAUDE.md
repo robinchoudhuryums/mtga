@@ -96,9 +96,21 @@ docs. This file is the source of truth for the workflow commands in
   owned 1× in two sets counts as 2) — never count a single printing in isolation.
   The pool-facing ownership joins (`pool.py`, `deck.py suggest`) fall back to a
   DFC's **front** face, since the pool keys the full `Front // Back` name but the
-  library stores the front only — else an owned DFC would read as `craft` (audit F6).
+  library MOSTLY stores the front — else an owned DFC would read as `craft` (audit F6).
   Route every such join through `lib.owned_qty` (front-face aware); `check_dfc.py`
   hard-gates this (behavioral anchor + a static scan for raw lookups that bypass it).
+  **"MOSTLY" is load-bearing — the library holds BOTH spellings, and this file claimed
+  otherwise (BS6-01).** Eight rows are stored under the full name (the DSK Rooms + two
+  DFCs), so the fallback only ran one way: `owned_qty` resolves full → front, nothing
+  resolved front → full, and `deck.owned` answered **"NOT IN LIBRARY" for an owned
+  card** — the exact string G-10 sends you to `reconcile_crafts.py` about. Both gates
+  were blind: `check_agreement`'s ownership pair got the same wrong 0 from both sides,
+  and `check_dfc`'s completeness scan walks only **card-pool.csv** builders while every
+  ownership index reads card-library.csv. **All four library-side builders now alias
+  through `lib.alias_front`** (`deck.load_collection`, `pool.owned_counts`,
+  `card._owned_index`, `wishlist.owned_index`). `reconcile_crafts` and
+  `import_collection` had each worked around this locally for years: when two writers
+  route around a documented rule, the RULE is the thing that is wrong.
   **`card.py` belongs in that list too, and was the violation**: it read `Quantity Owned`
   off the FIRST matching row, so every card owned in two sets under-reported (Rugged
   Highlands showed 1 against a real 3) — on the surface G-01 makes the mandated

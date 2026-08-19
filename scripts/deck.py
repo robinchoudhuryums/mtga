@@ -312,6 +312,22 @@ def load_collection():
     by_key/by_name map to a representative row (for type/printing lookups);
     by_name_qty sums Quantity Owned across every printing of a name, since Arena
     copies are fungible across sets (see owned()).
+
+    FRONT-FACE ALIASED, in a second pass (G-63). `lib.owned_qty` resolves the full
+    `A // B` name down to a front-face key, which is the right direction for the
+    library's stated convention — and that convention is not what the data actually
+    holds. Eight rows are stored under the FULL name (the DSK Rooms, plus two DFCs),
+    so a query by the FRONT name resolved to nothing and `deck.owned` reported an
+    owned card as "NOT IN LIBRARY" — the exact string G-10 trains you to fix with
+    `reconcile_crafts.py`, pointing at a card that is already there (broad-scan
+    BS6-01). `import_collection.plan` and `reconcile_crafts` each discovered the
+    exception and handled it locally; the SHARED join never did, and
+    `check_agreement`'s ownership pair could not see it because both implementations
+    agreed on the same wrong answer (0).
+
+    `alias_front` adds a front key only where no real row already claims it, so a
+    distinct card named `Front` is never shadowed by a DFC — the reason this is a
+    second pass and not a `setdefault` inside the loop.
     """
     _, rows = load_rows(DEFAULT_CSV)
     by_key, by_name, by_name_qty = {}, {}, {}
@@ -326,7 +342,7 @@ def load_collection():
         by_name.setdefault(nl, r)
         q = (r.get("Quantity Owned") or "").strip()
         by_name_qty[nl] = by_name_qty.get(nl, 0) + (int(q) if q.isdigit() else 0)
-    return by_key, by_name, by_name_qty
+    return by_key, alias_front(by_name), alias_front(by_name_qty)
 
 
 _PIP_DEPTH_MIN = 2          # 2 pips are checked too, but against a STRICTER bar (below)
@@ -1292,6 +1308,53 @@ _ROLE_PATTERNS = {
         # the collection stopped matching and 46 decks lost interaction. Caught only by
         # the roster-wide before/after diff, which is why that diff is worth running.
         rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+ ){{0,2}}?{_PERM_TYPE_LIST}",
+        # COORDINATED QUALIFIER LIST before the type. The run above allows at most TWO
+        # adjective words, which covers "target TAPPED creature" but not the qualifier
+        # LISTS Magic templates constantly — "attacking or blocking" and "green or white"
+        # are three words, and "non-Angel, non-Demon, non-Devil, non-Dragon" is four with
+        # commas that `[a-z-]+ ` cannot cross. So an entire family of plain removal scored
+        # ZERO roles: Divine Verdict, Sudden Strike, Puncturing Light, Protective Response,
+        # Devouring Light, Farm // Market (attacking-or-blocking), Deathmark (colour), Power
+        # Word Kill (the exclusion list), Nissa's Defeat, Thraben Exorcism, Sigrid. Eleven
+        # cards, all of them unambiguous spot removal, on the axis the tier floor grades
+        # (G-67; broad-scan BS6-10).
+        #
+        # A SEPARATE pattern rather than widening the run above, deliberately: raising
+        # `{0,2}` to `{0,5}` would re-score every removal card in the pool at once, and
+        # BS2-06 is the record of what a silent OVER-count costs. Requiring at least THREE
+        # qualifier words makes this strictly additive — anything the existing run already
+        # reaches is out of scope here — so the roster diff attributes every change to it.
+        #
+        # The zone guard is load-bearing and was measured, not assumed: `land` and
+        # `creature` are in `_PERM_TYPE`, so without it "exile target card other than a
+        # basic land card from an opponent's graveyard" (Kotose) and "exile target red,
+        # white, or black creature card from your graveyard" (Offspring's Revenge) both
+        # read as removal — graveyard hate and a recursion cost, neither an answer to a
+        # permanent. `[^.]` keeps the lookahead inside the same sentence, so "Destroy
+        # target creature." is untouched. With it: 11 matches, zero false positives.
+        rf"(?:destroy|exile) (?:up to \w+ )?target (?:[a-z-]+,? ){{3,5}}?{_PERM_TYPE_LIST}"
+        rf"(?![^.]{{0,40}}?\bgraveyard\b)",
+        # REMOVAL AURA. `enchanted creature can't attack or block` (Pacifism) is already
+        # in this bucket a few lines down, which settles the design question: this repo
+        # counts a neutralizing Aura as spot removal. Its twin — the Aura that shrinks the
+        # creature instead of taxing it — was never written, so Dead Weight, Debilitating
+        # Injury, Mire's Grasp, Stab Wound, Failed Conversion and 15 more scored ZERO
+        # roles. The non-Aura templating of the identical effect (`target creature gets
+        # -N/-N`) is fully covered — 120 pool cards, no misses — which is G-67's exact
+        # signature: same effect, one noun covered and its sibling not.
+        #
+        # It is also a live K-09 violation, and that is how it was found: `tag_synergies`
+        # tags Dead Weight `removal` while `classify_roles` returned nothing, so the two
+        # models disagreed about the same text on the axis `tier_band` grades.
+        #
+        # `-N/-0` counts alongside `-N/-N` for the Pacifism reason: a -6/-0 creature has
+        # been answered as an attacker. The `enchant creature you control` guard is the
+        # one measured false positive — Craving of Yeenoghu is a BUFF Aura on your own
+        # creature whose recursion clause perpetually gains "-1/-1". Note it must not
+        # catch Duskmourn's Domination, whose "You control enchanted creature" is a
+        # Control-Magic steal (a real answer) and reads in the other word order. Guarded:
+        # 20 matches, zero false positives.
+        r"(?s)\A(?!.*enchant creature you control).*?enchanted creature gets -\d+/-\d+",
         # SPLIT TEMPLATE: the target is named in one sentence and the destroy verb lands
         # in a later one, with an anaphor standing in for the target — Quag Feast reads
         # "CHOOSE target creature, planeswalker, or Vehicle. Mill two cards, then destroy

@@ -1,7 +1,7 @@
 # Handoff — start the next session here
 
 Rewritten 2026-08-09 after the **broad-scan-3** cycle closed, updated 2026-08-12 for the
-**broad-scan-4** cycle, and refreshed 2026-08-19 (**§0-newest is the current state and
+**broad-scan-4** cycle, and refreshed 2026-08-19 (**§0-latest is the current state and
 supersedes anything under it where they disagree**; the numbered sections below it are
 dated records, kept because their reasoning is still worth reading). Written for a session with none of this one's context. Read it before
 CLAUDE.md's Common Gotchas, not instead of them. The broad-scan-2 cycle it previously
@@ -50,6 +50,56 @@ deck number is right. Deck ids come from the leading number, so nothing broke:
 Plus three variant FILES: `26b-scrapyard-tithe` → `26b-ancient-decay`, `52a-dark-realms`
 → `52a-void-realm`, `56a-gruul` → `56a-executioners-song`. Resolve any path through
 `deck.py`/`discover_decks`, never by typing a slug from an old note.
+
+---
+
+## 0-latest. BROAD SCAN #6 — the top 5 landed 2026-08-19 (READ THIS FIRST)
+
+**Supersedes §0-newest below where they disagree.** Gates: all invariants hold with **ZERO
+soft warnings**; **1333 pytest passed / 1 skipped**. Full block:
+`.cycle/blocks/2026-08-broad-scan6-top5-broad-implement.md`.
+
+### Landed
+- **Four removal templatings now score interaction** (they scored ZERO): the removal AURA
+  (`enchanted creature gets -N/-N` — Dead Weight, Debilitating Injury, Mire's Grasp, 20 cards)
+  and three coordinated-qualifier shapes the two-adjective run could not reach (11 cards).
+  **K-14 roster diff: 0 decks moved, 0 tier floors moved** — no deck runs one of the 29, so the
+  value is entirely in the recommender's candidate set.
+- **Ownership now resolves a FRONT name against a FULL-name library row.** `lib.owned_qty` only
+  ever went full → front; 8 rows are stored under the full `A // B` name, so `deck.owned` said
+  "NOT IN LIBRARY" for an owned card. Aliased in all four library-side builders
+  (`deck.load_collection`, `pool.owned_counts`, `card._owned_index`; `wishlist.owned_index`
+  already had it) via `lib.alias_front`.
+- **CLAUDE.md's "the library stores the front only" is corrected** — it is false for those 8
+  rows, and README had it right the whole time.
+- Dashboard mana tokens got **light-mode values** (they were pastel-on-near-white in the deck
+  detail's colour bars); `attachHover` takes an explicit **focus host**, so the card preview
+  follows focus on all three surfaces instead of one; **deck 73's six hand-written collector
+  numbers** were replaced with resolved ones.
+
+### The open item this created, and it is a real decision
+**The TAXONOMY half of the classifier hole was deliberately not taken.** 128 pool cards
+neutralize rather than destroy — 83 "doesn't untap during its controller's untap step"
+(tap-down), 45 "loses all abilities" — and carry no interaction role. **Six decks under-count
+interaction today**: 15 by 2; 16, 27, 32, 38a, 38 by 1. None crosses a band right now, but
+**deck 38 sits at interaction 3, exactly the B floor**, so one more cut on that axis grades it
+wrong in the other direction. This is the same shape as the Equipment-bucket question already
+on the list (§0-newest item 5): adding a bucket re-scores every deck running the type, so take
+it deliberately with a K-14 diff, not as a pattern slip-in.
+
+### Two gate gaps worth closing before they produce the next instance
+- `check_dfc`'s registry-completeness scan only walks builders that read **card-pool.csv**.
+  Every ownership index reads card-library.csv, which is why BS6-01 was invisible to it.
+- `check_agreement`'s ownership pair compares `lib.owned_qty` against `deck.owned` — which
+  agreed on the same WRONG answer. A pair whose two sides share a primitive can only catch
+  divergence, never a shared blind spot; that is worth remembering when registering the next one.
+
+### Two operator checks are outstanding (a file cannot prove either)
+- **Scenario 5, extended:** dashboard in light mode → a deck's Stats "Color identity" bars and
+  Mana "Strict color requirements" bars must be visible against their track.
+- **Scenario 7, extended:** Tab to a card name in the roster CRAFT-PLAN table and in the IMPACT
+  grid — the card image must appear on focus, as it already does for a wishlist name. Re-check
+  the craft table after clicking a sort header.
 
 ---
 

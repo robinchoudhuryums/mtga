@@ -380,6 +380,26 @@ TEMPLATE = r"""<!DOCTYPE html>
     --W:#efe4bf; --U:#5aa9ec; --B:#b9a6d6; --R:#ec7a63; --G:#6cc684; --Cc:#b9c0cc;
     --Wf:#2a2618; --Uf:#06263d; --Bf:#241833; --Rf:#350e08; --Gf:#06280f; --Ccf:#1c2129;
   }
+  /* MANA COLOURS IN LIGHT MODE (broad-scan BS6-02). The six above are pastels tuned to
+     glow against #0a0c0f, and they live in a bare `:root` with no `[data-theme="light"]`
+     twin — but they are used two ways, and only one of them survives the flip. As a PIP
+     background they are fine either way (a coloured chip with dark ink). As a BAR FILL
+     they sit on `.hbar .track`, which is `--fill2` — and `--fill2` flips to
+     rgba(18,24,34,.02) over a white panel, so the deck detail's "Color identity" bars
+     (renderStats) and "Strict color requirements" pip bars (renderMana) painted cream on
+     near-white: two panels carrying no readable information in light mode.
+
+     This is BS5-10 one file over. build_gallery.py hit the identical bug, fixed it by
+     giving the mana tokens mid-tone light values, and wrote the rule down — "a pastel
+     fill on a light track is invisible" — and the dashboard sibling was never brought
+     along. Same VALUES as the gallery's light block, deliberately, so the two pages
+     cannot drift into disagreeing about what white looks like.
+
+     The `-f` ink twins need no override: they are dark inks used only as pip TEXT on
+     the coloured chip above, which stays coloured in both schemes. */
+  [data-theme="light"] {
+    --W:#d9c88a; --U:#5f9fd6; --B:#9a86b4; --R:#d4705c; --G:#63a877; --Cc:#a8adb8;
+  }
   * { box-sizing:border-box; }
   body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--font-body);
     -webkit-font-smoothing:antialiased; transition:background .3s,color .3s; }
@@ -1234,19 +1254,38 @@ function tablist(strip, panel, label, pid){
   });
 }
 
-function attachHover(node, name){
+function attachHover(node, name, focusHost){
   node.addEventListener('mouseenter', e => showPreview(name, e.clientX, e.clientY));
   node.addEventListener('mousemove', e => { if (previewOn) positionPreview(e.clientX, e.clientY); });
   node.addEventListener('mouseleave', hidePreview);
   // Keyboard parity (Batch E / S-7): I-01 made these nodes focusable and announced,
   // but the card image — the EVIDENCE for a craft decision (G-52 in interface form)
   // — only appeared on mouse hover. Mirror it on focus/blur, positioned from the
-  // node's own box since there is no cursor.
-  node.addEventListener('focus', () => {
-    const r = node.getBoundingClientRect();
+  // focused element's own box since there is no cursor.
+  //
+  // THE FIX ONLY EVER REACHED ONE OF ITS THREE CALL SITES (broad-scan BS6-03). `focus`
+  // does not fire on a non-focusable element and does not bubble, and two of the three
+  // nodes handed to this function are bare <span>s: `craftNameCell`'s `.hovname` in the
+  // roster craft table, and the `.nm` in the "cards that advance the most decks" grid.
+  // Only the wishlist site passes an a11y'd node, so the S-7 guarantee held there and
+  // silently did not elsewhere — and Scenario 7 walks exactly that one, so the check
+  // passed while two thirds of the feature was inert. This is G-40's shape in the
+  // interface layer: a working primitive nobody asked.
+  //
+  // So the focus host is explicit. By default it is the node itself, MADE focusable —
+  // which is what a bare span needs. A call site whose node already sits inside a
+  // focusable control passes that control instead, so no nested tab stop is created
+  // inside a role="button" (the leverage card, where the whole card is the control).
+  const host = focusHost || node;
+  if (host === node && !node.hasAttribute('tabindex')){
+    node.tabIndex = 0;
+    if (!node.hasAttribute('aria-label')) node.setAttribute('aria-label', name + ' — show card image');
+  }
+  host.addEventListener('focus', () => {
+    const r = host.getBoundingClientRect();
     showPreview(name, r.right, r.top + r.height / 2);
   });
-  node.addEventListener('blur', hidePreview);
+  host.addEventListener('blur', hidePreview);
 }
 
 // ---------- generic sortable table ----------
@@ -1666,7 +1705,10 @@ renderRecent(); renderRotation();
       const cnt = el('div','cnt', lv.decks.length); card.appendChild(cnt);
       const body = el('div','body');
       const nmrow = el('div'); nmrow.style.display='flex'; nmrow.style.alignItems='center'; nmrow.style.gap='6px';
-      const nm = el('span','nm', lv.name); attachHover(nm, lv.name); nmrow.appendChild(nm);
+      // Focus host is the CARD, not this span: the card is already the a11y'd control
+      // (below), so a second tab stop inside it would nest a focusable node in a
+      // role="button". Mouse behaviour is unchanged — hover still keys off the name.
+      const nm = el('span','nm', lv.name); attachHover(nm, lv.name, card); nmrow.appendChild(nm);
       nmrow.appendChild(wcPill(lv.rarity));
       const a = el('a','scry','↗'); a.href = scryUrl(lv.name); a.target='_blank'; a.rel='noopener'; nmrow.appendChild(a);
       body.appendChild(nmrow);

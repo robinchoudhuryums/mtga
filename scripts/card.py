@@ -20,7 +20,8 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import REPO_ROOT, front_face_cost, mana_value, owned_qty  # noqa: E402
+from lib import (REPO_ROOT, front_face_cost, mana_value, owned_qty,  # noqa: E402
+                 alias_front)
 
 LIBRARY = os.path.join(REPO_ROOT, "card-library.csv")
 POOL = os.path.join(REPO_ROOT, "card-pool.csv")
@@ -122,7 +123,15 @@ def _owned_index(rows):
 
     `deck.py` (`load_collection`), `pool.py` (`owned_counts`) and `wishlist.py` all build
     this same summed index; the lookup goes through `lib.owned_qty` so the DFC front-face
-    fallback is shared rather than re-implemented (the A3/A4/F6 rule)."""
+    fallback is shared rather than re-implemented (the A3/A4/F6 rule).
+
+    Front-face aliased in a SECOND pass, like those three. `owned_qty` resolves the full
+    `A // B` name DOWN to a front key — the direction the library's stated convention
+    calls for — but eight rows are stored under the FULL name (the DSK Rooms and two
+    DFCs), so a query by the FRONT name resolved to nothing and this surface reported
+    OWNED: 0 for a card in the collection (broad-scan BS6-01). `alias_front` adds a
+    front key only where no real row claims it, so a distinct card named `Front` is
+    never shadowed (G-63)."""
     idx = {}
     for r in rows:
         n = (r.get("Card Name") or "").strip().lower()
@@ -130,7 +139,7 @@ def _owned_index(rows):
             continue
         q = (r.get("Quantity Owned") or "").strip()
         idx[n] = idx.get(n, 0) + (int(q) if q.isdigit() else 0)
-    return idx
+    return alias_front(idx)
 
 
 def _owned_printings(rows, name):

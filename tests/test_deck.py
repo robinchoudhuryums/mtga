@@ -221,6 +221,72 @@ class TestClassifyRoles:
             "Whenever this creature blocks or becomes blocked by a creature, this "
             "creature deals 1 damage to that creature.")
 
+    # ── Coordinated qualifier LISTS before the permanent type (broad-scan BS6-10).
+    # The main removal pattern allows at most two adjective words, so a three-or-four
+    # word qualifier list matched nothing. Fixtures are verbatim card text (G-67).
+
+    QUALIFIER_LIST_REMOVAL = [
+        # "attacking or blocking" — three words. Divine Verdict, Sudden Strike,
+        # Protective Response, Farm // Market, Puncturing Light, Devouring Light.
+        "Destroy target attacking or blocking creature.",
+        "Exile target attacking or blocking creature.",
+        "Destroy target attacking or blocking creature with power 3 or less.",
+        # Colour-restricted removal — Deathmark.
+        "Destroy target green or white creature.",
+        # An exclusion LIST, with commas `[a-z-]+ ` cannot cross — Power Word Kill.
+        "Destroy target non-Angel, non-Demon, non-Devil, non-Dragon creature.",
+        # Mixed type-and-colour list — Nissa's Defeat, Thraben Exorcism.
+        "Destroy target Forest, green enchantment, or green planeswalker.",
+        "Exile target Spirit, creature with disturb, or enchantment.",
+    ]
+
+    def test_qualifier_list_removal_counts(self):
+        for text in self.QUALIFIER_LIST_REMOVAL:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_exiling_a_card_from_a_graveyard_is_not_removal(self):
+        # `land` and `creature` are in _PERM_TYPE, so without the zone guard both of
+        # these read as removal. Kotose is graveyard HATE and Offspring's Revenge is a
+        # recursion cost — neither answers a permanent. They were the only two false
+        # positives when the qualifier-list pattern was measured against the whole pool.
+        assert "Removal (spot)" not in deck.classify_roles(
+            "When Kotose, the Silent Spider enters, exile target card other than a "
+            "basic land card from an opponent's graveyard.")
+        assert "Removal (spot)" not in deck.classify_roles(
+            "At the beginning of combat on your turn, exile target red, white, or "
+            "black creature card from your graveyard.")
+
+    # ── The removal AURA (broad-scan BS6-10). Pacifism's "can't attack or block" was
+    # already in this bucket; the Aura that SHRINKS the creature was never written, so
+    # 20 cards scored zero roles — including Dead Weight, which `tag_synergies` tags
+    # `removal`, making it a live K-09 tagger/classifier disagreement.
+
+    AURA_REMOVAL = [
+        "Enchant creature\nEnchanted creature gets -2/-2.",              # Dead Weight
+        "Enchant creature\nEnchanted creature gets -3/-3.",              # Mire's Grasp
+        "Enchant creature\nEnchanted creature gets -6/-0 and loses flying.",
+        "Flash\nEnchant creature\nEnchanted creature gets -2/-0 and loses all abilities.",
+        # A steal effect that also shrinks — Duskmourn's Domination. "You control
+        # enchanted creature" is the OTHER word order and must not trip the guard below.
+        "Enchant creature\nYou control enchanted creature.\nEnchanted creature gets "
+        "-3/-0 and loses all abilities.",
+    ]
+
+    def test_shrinking_aura_is_removal(self):
+        for text in self.AURA_REMOVAL:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_buff_aura_on_your_own_creature_is_not_removal(self):
+        # Craving of Yeenoghu — a BUFF Aura whose recursion clause perpetually gains
+        # "Enchanted creature gets -1/-1". The only measured false positive, and the
+        # reason the pattern guards on `enchant creature you control`.
+        assert "Removal (spot)" not in deck.classify_roles(
+            "Enchant creature you control\nEnchanted creature gets +3/+2, has haste, "
+            "and attacks each combat if able.\n{R}: Return Craving of Yeenoghu from "
+            "your graveyard to the battlefield attached to target creature you "
+            "control. Craving of Yeenoghu perpetually gains \"Enchanted creature gets "
+            "-1/-1.\" Activate only as a sorcery.")
+
     def test_combat_on_your_turn_draw_is_card_advantage(self):
         # Magic templates this trigger as "at the beginning of combat ON YOUR TURN", so
         # the possessive lands AFTER the phase and defeats the `(?:your|each|the)` group
@@ -947,6 +1013,73 @@ Deck
         hits = [(d["id"], h, n) for d in deck.roster_decks()
                 for h, n in deck.header_card_staleness(d["path"])]
         assert hits == [], f"stale card-name header(s): {hits}"
+
+
+class TestOwnershipResolvesAFrontNameAgainstAFullNameRow:
+    """BS6-01. `lib.owned_qty` resolves the full `A // B` name DOWN to a front key,
+    which is the right direction for the library's stated front-only convention — and
+    that convention is not what the data holds. Eight rows are stored under the FULL
+    name (the DSK Rooms plus two DFCs), so a query by the FRONT name resolved to
+    nothing and `deck.owned` answered "NOT IN LIBRARY" for an owned card.
+
+    `check_agreement`'s ownership pair could not see it: `lib.owned_qty` and
+    `deck.owned` agreed on the same wrong answer (0). `check_dfc`'s registry could not
+    either — its completeness scan only walks builders that read `card-pool.csv`, and
+    every one of these reads `card-library.csv`. So the property is pinned here, across
+    all four builders at once, which is the shape that would have caught it."""
+
+    ROWS = [{"Card Name": "Funeral Room // Awakening Hall", "Set Code": "DSK",
+             "Collector #": "100", "Quantity Owned": "1"},
+            {"Card Name": "Llanowar Elves", "Set Code": "DOM",
+             "Collector #": "168", "Quantity Owned": "4"}]
+
+    def _index(self):
+        idx = {}
+        for r in self.ROWS:
+            idx[r["Card Name"].lower()] = int(r["Quantity Owned"])
+        return lib.alias_front(idx)
+
+    def test_owned_resolves_the_front_name(self):
+        assert deck.owned(self._index(), "Funeral Room") == (1, True)
+
+    def test_owned_still_resolves_the_full_name(self):
+        assert deck.owned(self._index(), "Funeral Room // Awakening Hall") == (1, True)
+
+    def test_owned_qty_agrees_with_owned_on_the_front_name(self):
+        """The pair `check_agreement` registers — it must agree on the RIGHT answer."""
+        idx = self._index()
+        assert lib.owned_qty(idx, "Funeral Room") == deck.owned(idx, "Funeral Room")[0] == 1
+
+    def test_a_real_card_is_not_shadowed_by_a_dfc_front_alias(self):
+        """`Life` is a card as well as the front of `Life // Death`, so the alias pass
+        must never overwrite a real row — the reason it is a SECOND pass and not a
+        `setdefault` inside the build loop (G-63)."""
+        idx = lib.alias_front({"life // death": 2, "life": 5})
+        assert idx["life"] == 5
+
+    def test_every_library_side_builder_aliases(self):
+        """Behavioural, against the real collection: the four surfaces that answer "how
+        many do I own" must give the SAME answer for a front name whose library row is
+        stored under the full name. Skips cleanly if the collection holds no such row."""
+        import csv as _csv
+        import card as cardmod
+        import pool as poolmod
+        import wishlist as wishmod
+        with open(lib.DEFAULT_CSV, newline="", encoding="utf-8") as fh:
+            rows = [dict(r) for r in _csv.DictReader(fh)]
+        full = next((r["Card Name"] for r in rows if " // " in (r["Card Name"] or "")), None)
+        if not full:
+            pytest.skip("no full-name library row to exercise the alias with")
+        front = full.split(" // ")[0]
+        _, _, qty = deck.load_collection()
+        answers = {
+            "deck.load_collection": lib.owned_qty(qty, front),
+            "pool.owned_counts": lib.owned_qty(poolmod.owned_counts(), front),
+            "card._owned_index": lib.owned_qty(cardmod._owned_index(rows), front),
+            "wishlist.owned_index": lib.owned_qty(wishmod.owned_index(), front),
+        }
+        assert all(v > 0 for v in answers.values()), answers
+        assert len(set(answers.values())) == 1, answers
 
 
 class TestBuildabilityIsPerNameNotPerLine:

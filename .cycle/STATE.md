@@ -6,6 +6,52 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #6, top 5 (2026-08-19) — IMPLEMENTED
+
+Sixth broad scan; the top 5 findings by production impact were implemented in one pass.
+Gates green: all invariants hold with **ZERO soft warnings** (the deck-73 unverified-printing
+warning is cleared), 1333 pytest passed / 1 skipped (+9 new). Block:
+`.cycle/blocks/2026-08-broad-scan6-top5-broad-implement.md`.
+
+**The headline finding was a classifier hole, not a code bug.** Four removal templatings scored
+ZERO interaction — the axis `tier_band` grades: the removal AURA (`enchanted creature gets
+-N/-N`, 20 cards incl. Dead Weight), and three coordinated-qualifier shapes the two-adjective
+run could not reach ("attacking or blocking", "green or white", "non-A, non-B, non-C", 11 cards).
+Both were found by reading the zero-role backlog corpus-wide rather than waiting for a card to
+surface one. The Aura half is also a live **K-09** violation and that is how it was caught:
+`tag_synergies` tags Dead Weight `removal` while `classify_roles` returned nothing, so the two
+models disagreed about the same text. The K-14 roster diff moved **0 decks and 0 tier floors** —
+no deck runs one of the 29 — so the whole value is in the recommender's candidate set:
+`suggest 38 --interaction` says "SHORT (3 < 5)" and now offers a 1-mana common instead of only
+mythics.
+
+**BS6-01 is the more instructive one.** `lib.owned_qty` resolves full → front, and nothing
+resolved front → full — while EIGHT library rows are stored under the full `A // B` name. So
+`deck.owned` answered "NOT IN LIBRARY" for an owned card, the exact string G-10 sends you to
+`reconcile_crafts.py` about. **Both gates were structurally blind**: `check_agreement`'s
+ownership pair compared two implementations that agreed on the same wrong 0, and `check_dfc`'s
+completeness scan only walks card-pool.csv builders while every ownership index reads
+card-library.csv. Fixed in all four library-side builders via `lib.alias_front`. CLAUDE.md had
+asserted the front-only convention as fact; README had it right. **When two writers
+(`reconcile_crafts`, `import_collection`) each work around a documented rule locally, the rule
+is what is wrong** — that is the transferable lesson, and the reason the doc fix shipped with
+the code fix.
+
+Also landed: the dashboard's mana tokens got light-mode values (BS5-10 one file over — the
+gallery fixed the identical pastel-on-white bug and wrote the rule down; the sibling was never
+brought along); `attachHover` now takes an explicit focus host, because `focus` does not fire on
+a bare span and the S-7 keyboard-preview fix had therefore reached only ONE of its three call
+sites — and Scenario 7 walks exactly that one, so the check passed over an inert feature; and
+deck 73's six hand-written collector numbers were replaced with resolved ones (its own variant
+73a already had them right, which is what confirmed the G-65 diagnosis).
+
+**Deliberately NOT taken:** the taxonomy half of the classifier hole — 128 pool cards that
+neutralize rather than destroy (83 tap-down, 45 "loses all abilities"). Six decks under-count
+interaction today because of it (15 by 2; 16/27/32/38a/38 by 1); none crosses a band right now,
+but deck 38 sits at interaction 3, exactly the B floor. Adding a bucket re-scores every deck
+running the type, so it stays a deliberate decision, alongside the Equipment question already on
+the handoff.
+
 ## Session — broad scan #4, Batch E (2026-08-12) — SCAN CLOSED
 
 Fourth and final implementation pass. Gates green: all invariants hold, ZERO soft warnings,
