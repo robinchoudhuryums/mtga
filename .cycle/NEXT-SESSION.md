@@ -99,11 +99,15 @@ session-start hook prints the live figures — trust it, not any number written 
    USER, not on analysis.** The roster is at 113 decks against Arena's 100-deck cap. The
    doc carries the finished work — card-overlap matrix, `similar` sweep, playstyle belts,
    a three-tier candidate list — and is waiting on keep/cut calls. Do not re-derive it.
-2. **Ownership drift is still open**: `deck.py check 26b` reports **Cool but Rude** and
-   **Captain Howler, Sea Scourge** NOT IN LIBRARY. This is the G-10 deck-dump undercount
-   symptom. `import_collection.py` against a tracker export is the only tool that sets
-   counts EXACTLY (including DOWN) and would clear the whole class at once — worth doing
-   before any wildcard-spending pass, since ownership is the premise most likely false.
+2. **Ownership drift — the two KNOWN cards are cleared, the CLASS is not.** Cool but Rude
+   and Captain Howler, Sea Scourge were reconciled on 2026-08-19 and 26b now checks
+   fully buildable. But every one of the ~10 corrections this stretch was found the same
+   way — **the user noticed**, not a gate — so the honest read is that the library is
+   still drifted in places nobody has looked. `import_collection.py` against a tracker
+   export is the only tool that sets counts EXACTLY (including DOWN, which
+   `import_arena.py` cannot by construction) and would settle the whole class at once.
+   Worth doing before any wildcard-spending pass, since ownership is the premise most
+   likely to be false (G-10).
 3. **Craft options named but not taken** (information, not a budget — per the Player
    Profile, never gate a card on ownership): Undergrowth Recon (best home is now 50a),
    Steam Vents (serves 26 / 26a / 26b / 48), Icetill Explorer, Forensic Gadgeteer,

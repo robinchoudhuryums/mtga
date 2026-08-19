@@ -160,6 +160,11 @@
 #: notes: and -Captain Storm, Cosmium Raider / +Scrounging Skyray (OWNED). Cool but Rude
 #: notes: is the third pending craft, does NOT rotate, and stays — it is one of the three
 #: notes: named drain engines.
+#: notes: 2026-08-19 — THAT ROTATION PASS IS NOW CLOSED: Cool but Rude and Captain Howler
+#: notes: are both OWNED, and `deck.py check 26b` reports the whole 60 buildable with no
+#: notes: missing or short lines. The two "(craft R)" markers above are a dated record of
+#: notes: how the slots were decided, not a live build state — read build state from
+#: notes: `check`, never from prose (G-10).
 #: notes: CAPTAIN STORM WAS A BAD CARD HERE BEFORE ROTATION EVER APPLIED, and the count
 #: notes: says so: his counter targets PIRATES and the deck held TWO, one of which was
 #: notes: himself — against `engines`' standing report of 6 counter enablers and no
