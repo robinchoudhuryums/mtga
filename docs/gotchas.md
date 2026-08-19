@@ -2685,6 +2685,44 @@ classified role**". The ramp fix falsifies the second half, so the anchor starte
 for the right reason. It was re-premised rather than deleted: role credit makes a fixer
 *less* cuttable, not uncuttable, so the `add_is_fixer` guard it protects is still load-bearing.
 
+### 2026-08-19: four more holes, found by triaging the `check_roles` backlog
+
+The earlier holes were each found by a human reading one card. This pass worked the other
+way round — down the 30-card `check_roles` zero-role list — and found four, of which the
+largest had been sitting in plain sight for the life of the pattern set.
+
+| Hole | Templating no pattern read | Pool cards |
+| --- | --- | --- |
+| Removal — back-referenced target | "Choose two target creatures … deals 5 damage to **that creature**" (Trial of Agony, Spiked Pit Trap) | 3 |
+| Removal — optional target on the scaling half | "deals damage equal to its power to **up to one** target creature" (Thorin, Mountain-king + 7) | 8 |
+| Card advantage — combat trigger, other word order | "at the beginning of **combat on your turn**, draw a card" (Nexus of Becoming, Mister Fantastic) | 2 |
+| **Team pump — tribal lords** | "**Other Elves** you control get +1/+1" — the pattern hard-coded the noun `creatures` | **146** |
+
+The anthem hole is the instructive one. It is not an exotic templating; it is how *every
+lord ever printed* is worded, and the roster has tribal decks built out of nothing else.
+It survived because anthem is not one of the axes `tier_band` grades, so no floor ever
+moved and no gate ever complained — the invisibility G-67 is about, in its purest form.
+Twelve of the cards it fixed were already sitting *acknowledged* in `role_baseline.txt`,
+which is exactly what a baseline is for: it kept them nameable until someone looked.
+
+Two false-positive classes were measured and excluded before anything shipped, both on the
+back-reference pattern: "that creature's **controller**" is reach at a player, not an
+answer (Blur of Blades), and "that creature" also back-references a **blocker** in ordinary
+combat triggers (Ashmouth Hound, Ornery Goblin). Requiring an explicit upstream "choose …
+target creature" and a `(?!'s)` guard takes the pattern to 3 matches, all true.
+
+The K-14 before/after diff over all 113 decks: **3 decks moved on a graded axis (26a +1
+interaction, 26b +1 card advantage, 74 +1 interaction), ZERO tier floors moved.** Two
+`#: tier:` figures went stale as a direct consequence and were re-grounded — which is the
+G-27 rationale sweep doing its job, and the reason to run the diff at all.
+
+**The transferable habit:** the zero-role backlog is a *worklist*, not a chore. Reading it
+end to end costs one pass and found in four cards what a year of incidental discovery
+found in nine. What remains after this pass is mostly not holes at all — 11 of the 26
+still-unclassified cards are Equipment (attach / equip / hone counters), a card class this
+taxonomy has no bucket for. That is a TAXONOMY question, not a pattern question, and the
+two must not be confused: adding a bucket re-scores every deck that runs the type.
+
 ### Relationship to the neighbouring rules
 
 G-53 says a capability that works and is never reached is invisible to every correctness

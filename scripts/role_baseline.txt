@@ -10,7 +10,6 @@ A.I.M. Synthoids
 Aang's Iceberg
 Absorbing Man
 Accumulate Wisdom
-Adaptive Automaton
 Additive Evolution
 Aerial Doombot
 Aettir and Priwen
@@ -26,29 +25,31 @@ Angel of Vitality
 Angelic Destiny
 Another Round
 Anticausal Vestige
+Anzrag, the Quake-Mole
 Appa, Loyal Sky Bison
 Applied Geometry
+Archangel of Tithes
 Armament Dragon
 Arnim Zola, Bio-Fanatic
 Ashroot Animist
 Atomic Microsizer
 Aurelia, the Warleader
 Avatar's Wrath
-Avengers Assemble!
 Avengers: Under Siege
 Azog, Moria's Ruin
 Azula, Cunning Usurper
 Badgermole
 Bandit's Talent
-Banner of Kinship
 Bark of Doran
 Barret Wallace
+Baseball Bat
 Baxter Stockman
 Become Brutes
 Beetle-Headed Merchants
 Benevolent River Spirit
 Bespoke Bō
 Betor, Kin to All
+Binding Negotiation
 Biogenic Upgrade
 Bitterbloom Bearer
 Black Cat, Cunning Thief
@@ -60,6 +61,8 @@ Bloodthirsty Conqueror
 Bloodtithe Collector
 Bolg of the North
 Bolg's Company
+Boneclub Berserker
+Boneyard Desecrator
 Brazen Collector
 Brightspear Zealot
 Broodguard Elite
@@ -70,6 +73,7 @@ Burrowguard Mentor
 Buzz Bots
 Bygone Colossus
 Byrke, Long Ear of the Law
+Calamity, Galloping Inferno
 Callous Sell-Sword // Burn Together
 Captain America, Living Legend
 Captain America, Wings of Freedom
@@ -86,7 +90,6 @@ Chief Warg's Company
 Child of the Volcano
 Claim Jumper
 Cloud, Midgar Mercenary
-Cloudspire Captain
 Colossification
 Corrupt Court Official
 Crashing Wave
@@ -96,7 +99,6 @@ Crustacean Commando
 Cryogen Relic
 Dark Confidant
 Darkstar Augur
-Death Baron
 Deceit
 Deepchannel Duelist
 Deepmuck Desperado
@@ -117,7 +119,11 @@ Dream Harvest
 Dream Seizer
 Drix Fatemaker
 Duskwatch Hunter
+Dwalin, Weaponmaster
+Dwarven Mattock
+Dwarven Shortsword
 Dwynen's Elite
+Dáin Ironfoot
 Earth Kingdom General
 Earth Kingdom Soldier
 Earthbending Lesson
@@ -128,7 +134,6 @@ Effortless Master
 Ember Island Production
 Emeritus of Woe
 Emil, Vastlands Roamer
-Empyrean Eagle
 End of the Hunt
 Enigma Drake
 Enter the Enigma
@@ -143,10 +148,12 @@ Felonious Rage
 Fire Sages
 Firebender Ascension
 Fireshrieker
+Fishing Pole
 Flamehold Grappler
 Flexible Waterbender
 Flopsie, Bumi's Buddy
 Flowerfoot Swordmaster
+Foggy Swamp Vinebender
 Foggy Swamp Visions
 Fortress Kin-Guard
 Frantic Strength
@@ -161,6 +168,7 @@ Gas Guzzler
 Gastal Raider
 Gather the White Lotus
 Genji Glove
+Ghired, Mirror of the Wilds
 Ghost, Spectral Saboteur
 Ghostly Keybearer
 Giant Cindermaw
@@ -176,7 +184,6 @@ Gold Rush
 Goldvein Hydra
 Gravelgill Scoundrel
 Great Ugly-Looking Goblin
-Greenbelt Guardian
 Groundchuck & Dirtbag
 Growth Curve
 Guardian Sunmare
@@ -205,17 +212,19 @@ Hylderblade
 Hymn of the Faller
 I Am Iron Man
 Imperious Inkmage
-Imperious Perfect
 Improvised Arsenal
 Ingenious Leonin
 Insatiable Skittermaw
 Interface Ace
 Invasion Reinforcements
 Invasion Submersible
+Iron Hills Blacksmith
+Iron Hills Stalwart
 Iron Lad, Diverging Destiny
 Iron Man Armor
 Iron Man, Master of Machines
 Ironpaw Aspirant
+Item Shopkeep
 Itzquinth, Firstborn of Gishath
 Jadelight Spelunker
 Jecht, Reluctant Guardian
@@ -226,6 +235,7 @@ K'un-Lun Warrior
 Katara, Bending Prodigy
 Katara, Water Tribe's Hope
 Kavaron Skywarden
+Kirol, Attentive First-Year
 Kitsune's Technique
 Klaw, Sonic Subjugator
 Knight Luminary
@@ -238,6 +248,7 @@ Kyoshi Battle Fan
 Laughing Jasper Flint
 Leader, Super-Genius
 Leonardo, Big Brother
+Leyline Axe
 Leyline of Mutation
 Leyline of the Guildpact
 Leyline of Transformation
@@ -261,7 +272,6 @@ Mardu Monument
 Masked Meower
 Mechanical Mobster
 Mechanized Ninja Cavalry
-Mechanozoa
 Metalhead
 Michelangelo, Weirdness to 11
 Mind Transfer Protocol
@@ -277,6 +287,7 @@ Molten Man, Inferno Incarnate
 Moonshadow
 Moonshaker Cavalry
 Morcant's Eyes
+Most Decrepit Old Bird
 Multiversal Incursion
 Namazu Trader
 Nashi, Searcher in the Dark
@@ -288,6 +299,7 @@ Nurturing Bristleback
 Okoye, Dora Milaje Leader
 Omniscience
 Omnivorous Flytrap
+Ori, Keeper of Songs
 Ornery Tumblewagg
 Ostrich-Horse
 Ouroboroid
@@ -313,13 +325,11 @@ Quina, Qu Gourmet
 Radiant Lotus
 Rage into the Valley
 Rainveil Rejuvenator
-Ran and Shaw
 Raph & Leo, Sibling Rivals
 Raphael, the Nightwatcher
 Reckless Velocitaur
 Red Room Recruit
 Redirect Lightning
-Regal Imperiosaur
 Relm's Sketching
 Renet, Temporal Apprentice
 Reno and Rude
@@ -334,6 +344,7 @@ Riverchurn Monument
 Roaming Throne
 Rough Rhino Cavalry
 Rush of Dread
+Rustler Rampage
 S.H.I.E.L.D. Spy Kit
 Samurai's Katana
 Satoru, the Infiltrator
@@ -369,7 +380,6 @@ Spider-Rex, Daring Dino
 Spider-Suit
 Spider-Woman, Secret Agent
 Splash Lasher
-Splinter, Hamato Yoshi
 Splinter, Radical Rat
 Stalactite Dagger
 Stalwart Successor
@@ -379,12 +389,13 @@ Stargaze
 Stature, Size Shifter
 Stegron the Dinosaur Man
 Stickytongue Sentinel
+Sting, Bilbo's Sword
 Stony-Voiced Goblins
-Stormscale Scion
 Sultai Devotee
 Sun Warriors
 Sun-Spider, Nimble Webber
 Sunpearl Kirin
+Sunstar Chaplain
 Super Strength
 Super-Soldier Serum
 Surrak, Elusive Hunter
@@ -404,10 +415,10 @@ The Cave of Two Lovers
 The Infamous Cruelclaw
 The Jolly Balloon Man
 The Last Ronin's Technique
-The Masters of Evil
 The Mindskinner
 The Thing, Ben Grimm
 The Wondrous Wasp
+Thorin Oakenshield
 Three Tree Scribe
 Thunderous Velocipede
 Tiger-Dillo
@@ -419,6 +430,7 @@ Trade the Helm
 Tragedy Feaster
 Training Regimen
 Transit Mage
+Traveling Botanist
 Traveling Chocobo
 Treeguard Duo
 Treetop Snarespinner
