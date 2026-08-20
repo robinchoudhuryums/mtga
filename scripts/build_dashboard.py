@@ -921,6 +921,14 @@ TEMPLATE = r"""<!DOCTYPE html>
   .logrow .lx:hover, .logrow .lx:focus-visible { color:var(--bad); outline:2px solid var(--acc); outline-offset:1px; }
   .logw { color:var(--ok); font-weight:700; } .logl { color:var(--bad); font-weight:700; }
   .logd { color:var(--warn); font-weight:700; }
+  .logsub { max-width:1180px; margin:22px auto 0; font-size:14px; font-weight:600; color:var(--fg);
+            border-top:1px solid var(--line); padding-top:16px; }
+  .annocard { max-width:1180px; margin:10px auto 0; border:1px solid var(--line); border-radius:10px;
+              padding:10px 12px; background:var(--panel); }
+  .annohead { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:13px; margin-bottom:8px; }
+  .annohead .mid { color:var(--dim); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11px; }
+  .annogrid { display:grid; gap:8px; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); }
+  @media (max-width:640px){ .annogrid { grid-template-columns:1fr; } }
   .logout { min-height:76px; margin-top:10px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; }
   #logqueue:empty + .logout { display:none; }
   @media (max-width:640px){ .logform { grid-template-columns:1fr; } }
@@ -1060,6 +1068,13 @@ TEMPLATE = r"""<!DOCTYPE html>
     <div class="staleactions"><button class="cta" id="logadd">Add match</button><button class="ghostbtn" id="logcopy">Copy all</button><button class="ghostbtn" id="logclear">Clear queue</button></div>
     <div id="logqueue"></div>
     <textarea id="logout" class="staletext logout" readonly aria-label="Queued matches, ready to copy"></textarea>
+
+    <h3 class="logsub">…or annotate matches Arena already logged</h3>
+    <p class="auditnote">Paste a <code>Player.log</code> block (the same one <code>make matches</code> extracts) to list its matches and add the parts the log cannot see. These <b>update</b> the rows the log created — they join on Arena's match id, so they can never double-count a match you already ingested. Ingest the log first; annotate after.</p>
+    <textarea id="annotext" class="staletext" aria-label="Paste a Player.log block to annotate its matches" placeholder="[UnityCrossThreadLogger]8/20/2026 7:44:21 AM: Match to ABC…: MatchGameRoomStateChangedEvent&#10;{ &quot;timestamp&quot;: …"></textarea>
+    <div class="staleactions"><button class="cta" id="annogo">Find matches</button><button class="ghostbtn" id="annocopy">Copy annotations</button><button class="ghostbtn" id="annoclear">Clear</button></div>
+    <div id="annoout"></div>
+    <textarea id="annoline" class="staletext logout" readonly aria-label="Annotation lines, ready to copy"></textarea>
   </section>
 
   <section id="sec-rotation">
@@ -2391,6 +2406,162 @@ function logRender(){
     LOGQ = []; logPersist(); logRender(); toast('Queue cleared');
   });
   logRender();
+})();
+
+// ---------- annotate matches the LOG already recorded ----------
+// The paste is read ONLY to identify matches and label them for the human. Every
+// annotation this emits is keyed on Arena's matchId and carries no deck, result or
+// date — so if this parser got the seat wrong, the worst case is a confusing LABEL,
+// never a wrong W/L in matches.csv. The Python parser stays the single source of truth
+// for everything the log can answer; this supplies only what it cannot.
+const ANNOKEY = 'mtga-annotations';
+let ANNO = {};
+try { ANNO = JSON.parse(localStorage.getItem(ANNOKEY) || '{}') || {}; } catch(e){ ANNO = {}; }
+let ANNOFOUND = [];
+function annoPersist(){ try { localStorage.setItem(ANNOKEY, JSON.stringify(ANNO)); } catch(e){} }
+
+function parseLogBlock(text){
+  const out = [];
+  let me = null, deck = '';
+  (text || '').split(/\r?\n/).forEach(raw => {
+    const m = raw.match(/Match to ([A-Za-z0-9_\-]+)\s*:/);
+    if (m) me = m[1];
+    if (raw.indexOf('EventSetDeckV3') >= 0){
+      const n = raw.replace(/\\/g,'').match(/"Name":"([^"]*)"/);
+      if (n && n[1]) deck = n[1];
+    }
+    if (raw.indexOf('matchGameRoomStateChangedEvent') < 0) return;
+    const i = raw.indexOf('{'); if (i < 0) return;
+    let d; try { d = JSON.parse(raw.slice(i)); } catch(e){ return; }
+    try {
+      const info = d.matchGameRoomStateChangedEvent.gameRoomInfo;
+      const players = info.gameRoomConfig.reservedPlayers;
+      const fin = info.finalMatchResult;
+      if (!fin || !fin.matchId) return;
+      // No `Match to` header means the local seat is UNKNOWN. Python skips the match
+      // outright there; here the row is still useful for annotating, so it is kept with
+      // the result shown as '?' — displayed as unknown, never guessed.
+      const mine = me ? players.find(p => p.userId === me) : null;
+      const winner = (fin.resultList || []).filter(r => r.scope === 'MatchScope_Match').pop();
+      const res = (mine && winner) ? (mine.teamId === winner.winningTeamId ? 'W' : 'L') : '?';
+      const opp = players.find(p => !mine || p.userId !== me);
+      out.push({ id: fin.matchId, result: res, deck: deck,
+                 date: d.timestamp ? new Date(+d.timestamp).toISOString().slice(0,10) : '',
+                 oppAvatar: (opp && opp.courseId) ? String(opp.courseId).replace(/^Avatar_Basic_/,'') : '' });
+    } catch(e){ /* a state change that is not a completed match */ }
+  });
+  const seen = new Set();
+  return out.filter(m => !seen.has(m.id) && seen.add(m.id));
+}
+
+function annoLine(m){
+  const a = ANNO[m.id] || {};
+  const q = v => { const t = String(v).replace(/"/g,''); return /\s/.test(t) ? '"'+t+'"' : t; };
+  const bits = [];
+  if (a.opp)  bits.push('opp=' + q(a.opp));
+  if (a.why)  bits.push('why=' + a.why);
+  if (a.play) bits.push('play=' + a.play);
+  if (a.note) bits.push('note=' + q(a.note));
+  return bits.length ? m.id + ' ' + bits.join(' ') : '';
+}
+function annoSync(){
+  const box = $('annoline'); if (box) box.value = ANNOFOUND.map(annoLine).filter(Boolean).join('\n');
+}
+
+function annoRender(){
+  const host = $('annoout'); if (!host) return;
+  host.innerHTML = '';
+  if (!ANNOFOUND.length){ annoSync(); return; }
+  const head = el('div','metaline2', ANNOFOUND.length + ' match(es) found. Fill in what the log could not see — blanks are simply not written.');
+  host.appendChild(head);
+  ANNOFOUND.forEach(m => {
+    const a = ANNO[m.id] = ANNO[m.id] || {};
+    const card = el('div','annocard');
+    const h = el('div','annohead');
+    const cls = m.result === 'W' ? 'logw' : (m.result === 'L' ? 'logl' : 'logd');
+    h.innerHTML = '<span class="' + cls + '">' + esc(m.result) + '</span>' +
+                  '<b>' + esc(m.deck || 'deck unknown') + '</b>' +
+                  '<span class="mid">' + esc(m.date) + ' · ' + esc(m.id.slice(0,8)) + '</span>' +
+                  (m.oppAvatar ? '<span class="mid">their avatar: ' + esc(m.oppAvatar) + '</span>' : '');
+    card.appendChild(h);
+    const g = el('div','annogrid');
+
+    const oppL = el('label','logfield'); oppL.innerHTML = '<span>Opponent</span>';
+    const oppI = document.createElement('input');
+    oppI.setAttribute('list','logopplist'); oppI.value = a.opp || '';
+    oppI.placeholder = 'mono-red'; oppI.setAttribute('aria-label','Opponent archetype for this match');
+    oppI.oninput = () => { a.opp = oppI.value.trim(); annoPersist(); annoSync(); };
+    oppL.appendChild(oppI); g.appendChild(oppL);
+
+    const whyL = el('label','logfield'); whyL.innerHTML = '<span>Why lost</span>';
+    const whyS = document.createElement('select');
+    whyS.setAttribute('aria-label','Reason for the loss');
+    whyS.appendChild(new Option('— not recorded —',''));
+    Object.entries(D.loss_reasons || {}).forEach(([k,v]) => whyS.appendChild(new Option(k + ' — ' + v, k)));
+    whyS.value = a.why || '';
+    // Same rule the CLI enforces: a loss reason on a non-loss is refused there, so it is
+    // not offerable here. '?' counts as non-loss — an unknown result must not invite one.
+    whyS.disabled = m.result !== 'L';
+    if (whyS.disabled) whyL.style.opacity = '.45';
+    whyS.onchange = () => { a.why = whyS.value; annoPersist(); annoSync(); };
+    whyL.appendChild(whyS); g.appendChild(whyL);
+
+    const playL = el('div','logfield'); playL.innerHTML = '<span>On the</span>';
+    const bar = el('div','segbar'); bar.setAttribute('role','group');
+    bar.setAttribute('aria-label','On the play or the draw for this match');
+    [['play','Play'],['draw','Draw']].forEach(([val,label]) => {
+      const b = a11y(el('span','segbtn', label), {label:label, pressed:a.play === val});
+      if (a.play === val) b.classList.add('on');
+      b.onclick = () => {
+        a.play = (a.play === val) ? '' : val; annoPersist();
+        bar.querySelectorAll('.segbtn').forEach((n,i) => {
+          const v = i === 0 ? 'play' : 'draw';
+          n.classList.toggle('on', a.play === v);
+          n.setAttribute('aria-pressed', String(a.play === v));
+        });
+        annoSync();
+      };
+      bar.appendChild(b);
+    });
+    playL.appendChild(bar); g.appendChild(playL);
+
+    const noteL = el('label','logfield logwide'); noteL.innerHTML = '<span>Note</span>';
+    const noteI = document.createElement('input');
+    noteI.value = a.note || ''; noteI.placeholder = 'optional';
+    noteI.setAttribute('aria-label','Free-text note for this match');
+    noteI.oninput = () => { a.note = noteI.value.trim(); annoPersist(); annoSync(); };
+    noteL.appendChild(noteI); g.appendChild(noteL);
+
+    card.appendChild(g);
+    host.appendChild(card);
+  });
+  annoSync();
+}
+
+(function initAnnotate(){
+  if (!$('annogo')) return;
+  $('annogo').addEventListener('click', () => {
+    const found = parseLogBlock($('annotext').value);
+    if (!found.length){
+      $('annoout').innerHTML = '<div class="metaline2">No completed matches in that paste. It needs the <code>matchGameRoomStateChangedEvent</code> lines — see <code>make matches</code>.</div>';
+      ANNOFOUND = []; annoSync(); return;
+    }
+    ANNOFOUND = found;
+    annoRender();
+    const unknown = found.filter(m => m.result === '?').length;
+    toast(found.length + ' match(es)' + (unknown ? ' · ' + unknown + ' with an unknown seat' : ''));
+  });
+  $('annocopy').addEventListener('click', async () => {
+    const text = ANNOFOUND.map(annoLine).filter(Boolean).join('\n');
+    if (!text){ toast('Nothing annotated yet'); return; }
+    try { await navigator.clipboard.writeText(text); toast('Copied ' + text.split('\n').length + ' line(s)'); }
+    catch(e){ const o = $('annoline'); o.focus(); o.select(); toast('Select-and-copy the box below'); }
+  });
+  $('annoclear').addEventListener('click', () => {
+    if (!confirm('Clear the paste and every annotation typed against it? They have not been copied anywhere.')) return;
+    ANNOFOUND.forEach(m => { delete ANNO[m.id]; });
+    ANNOFOUND = []; $('annotext').value = ''; annoPersist(); annoRender(); toast('Cleared');
+  });
 })();
 
 // ---------- collapsible sections + section-nav strip (progressive disclosure) ----------

@@ -1275,3 +1275,83 @@ class TestTheDashboardFormAndTheCliAgree:
         import build_dashboard
         assert build_dashboard._loss_reasons() == pm.LOSS_REASONS
         assert "flood" in build_dashboard._loss_reasons()
+
+
+class TestAnnotation:
+    """`--annotate`: fill the hand-only columns on matches the LOG already recorded.
+
+    The reason this exists rather than reusing `--add`: a match Arena logged already has
+    a row. Adding it again would DOUBLE-COUNT exactly the matches you cared enough to
+    annotate, and `--add` cannot dedupe because a hand row has no Arena matchId."""
+
+    def _rows(self):
+        return [dict(zip(pm.HEADER, ["2026-08-20", "abc123", "49", "", "", "", "Play",
+                                     "L", "", "", "", "", "", "", "", "", ""]))]
+
+    def test_it_updates_in_place_and_never_appends(self, tmp_path):
+        csvp = tmp_path / "m.csv"
+        pm.write_matches(self._rows(), str(csvp))
+        pm.annotate('abc123 opp="Mono Red" why=flood play=draw', str(csvp), apply=True)
+        out = pm.load_matches(str(csvp))
+        assert len(out) == 1, "annotate must UPDATE the row, not add a second one"
+        assert out[0]["Opponent Archetype"] == "mono-red"
+        assert out[0]["Loss Reason"] == "flood"
+        assert out[0]["On Play"] == "draw"
+
+    def test_it_leaves_every_log_sourced_column_alone(self, tmp_path):
+        csvp = tmp_path / "m.csv"
+        pm.write_matches(self._rows(), str(csvp))
+        pm.annotate("abc123 opp=mono-red", str(csvp), apply=True)
+        r = pm.load_matches(str(csvp))[0]
+        assert (r["Deck"], r["Result"], r["Date"], r["Event"]) == ("49", "L", "2026-08-20", "Play")
+
+    def test_it_is_idempotent(self, tmp_path):
+        csvp = tmp_path / "m.csv"
+        pm.write_matches(self._rows(), str(csvp))
+        pm.annotate("abc123 why=flood", str(csvp), apply=True)
+        first = pm.load_matches(str(csvp))
+        pm.annotate("abc123 why=flood", str(csvp), apply=True)
+        assert pm.load_matches(str(csvp)) == first
+
+    def test_an_unknown_id_changes_nothing(self, tmp_path):
+        """A mistyped id must not report success having done nothing."""
+        csvp = tmp_path / "m.csv"
+        pm.write_matches(self._rows(), str(csvp))
+        pm.annotate("nope opp=mono-red", str(csvp), apply=True)
+        assert pm.load_matches(str(csvp))[0]["Opponent Archetype"] == ""
+
+    def test_a_why_on_a_non_loss_is_dropped_but_the_rest_lands(self, tmp_path):
+        csvp = tmp_path / "m.csv"
+        rows = self._rows()
+        rows[0]["Result"] = "W"
+        pm.write_matches(rows, str(csvp))
+        pm.annotate("abc123 opp=mono-red why=flood", str(csvp), apply=True)
+        r = pm.load_matches(str(csvp))[0]
+        assert r["Loss Reason"] == "" and r["Opponent Archetype"] == "mono-red"
+
+    def test_an_empty_value_clears_the_field(self, tmp_path):
+        """Correcting a wrong annotation must be possible without editing the CSV."""
+        csvp = tmp_path / "m.csv"
+        pm.write_matches(self._rows(), str(csvp))
+        pm.annotate("abc123 opp=mono-red why=flood", str(csvp), apply=True)
+        pm.annotate("abc123 opp= why=", str(csvp), apply=True)
+        r = pm.load_matches(str(csvp))[0]
+        assert r["Opponent Archetype"] == "" and r["Loss Reason"] == ""
+
+    def test_deck_result_and_date_are_not_annotatable(self, tmp_path):
+        """They come from the log. Accepting them here would create a second, silent
+        way to state a result — two writers for one fact."""
+        pairs, warns = pm.parse_annotations("abc123 deck=12 result=W")
+        assert pairs == []
+        assert any("not editable here" in w for w in warns)
+
+    def test_the_line_the_page_emits_parses_exactly(self):
+        """Byte-for-byte what `annoLine()` produces. Nothing else connects the published
+        page to this parser, so the line's SHAPE is a contract that rots silently."""
+        line = 'b48ecdfd-60a1-49a2-940b-96e673182aa5 opp="Mono Red" why=flood play=draw'
+        pairs, warns = pm.parse_annotations(line)
+        assert warns == []
+        mid, fields = pairs[0]
+        assert mid == "b48ecdfd-60a1-49a2-940b-96e673182aa5"
+        assert fields == {"Opponent Archetype": "mono-red", "Loss Reason": "flood",
+                          "On Play": "draw"}

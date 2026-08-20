@@ -4689,3 +4689,30 @@ live rather than a copy, so the page and the CLI cannot drift into disagreeing a
 vocabulary (the K-09 shape). `tests/test_parse_matches.py::TestTheDashboardFormAndTheCliAgree`
 pins the emitted line's SHAPE, because nothing else connects the two modules and a
 malformed line would surface only as a warning on someone's next paste.
+
+**The `--add` vs `--annotate` split, added the same day.** The first design had one
+writer. That is wrong, and the reason is worth keeping: a match Arena logged already has
+a row carrying a real deck, result and date, and `--add` appends unconditionally because
+a hand-entered row has no Arena `matchId` to dedupe on. Feeding logged matches through it
+would have DOUBLE-COUNTED exactly the matches someone cared enough to annotate — the
+subset most likely to be a deck under active tuning, so the corruption would concentrate
+where the record is read hardest.
+
+`--annotate` keys on the match id and writes only the four hand columns. That makes it
+idempotent (run it twice, the row is identical), makes an empty value a legitimate CLEAR
+so a wrong annotation is fixable without hand-editing the CSV, and makes an unknown id a
+hard REJECT rather than a no-op — a truncated id would otherwise report success having
+changed nothing. `deck`, `result` and `date` are refused outright: accepting them would
+create a second, silent way to state a result, which is the "two writers, one fact" shape
+that INV-03 and the `write_rows` schema guard exist to prevent one directory over.
+
+**The page parses the log, and that is a second implementation of a question Python
+already answers** — normally the `check_agreement` trap. It is acceptable here only
+because of a containment property: the page reads the block ONLY to label rows for a
+human, and every line it emits carries the match id and the four hand fields, never a
+deck or a result. A seat-parsing error on that side can therefore produce a confusing
+LABEL and nothing worse; `matches.csv`'s W/L comes from the Python parser in all cases.
+Measured anyway on the 57-match sample: the page's result agreed with the stored Python
+result on 57 of 57, with 0 ids found by one and not the other. Re-measure if either
+parser's seat logic is touched — the containment is what makes a disagreement survivable,
+not acceptable.

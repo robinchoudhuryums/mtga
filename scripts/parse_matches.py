@@ -1212,6 +1212,117 @@ def _print_pooled(rows):
           "per-deck\n  rows, once they fill, to judge a deck.")
 
 
+def parse_annotations(text):
+    """([(match_id, {col: value}), ...], [warning, ...]) from `<matchId> key=value ...`.
+
+    The counterpart to `parse_manual`, and the DIFFERENCE is the whole point. A match
+    Arena already logged has a real `matchId` and a real W/L; what it lacks is the four
+    things only a human knows. Emitting it through `--add` would append a SECOND row for
+    a match already recorded — `--add` cannot dedupe, so the record would double-count
+    exactly the matches you cared enough to annotate. Keying on the id UPDATES instead,
+    which also makes re-annotating idempotent: run it twice and the row is the same."""
+    import shlex
+    out, warnings = [], []
+    for lineno, raw in enumerate((text or "").splitlines(), 1):
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        try:
+            parts = shlex.split(line)
+        except ValueError as e:
+            warnings.append(f"line {lineno}: unbalanced quotes ({e}) — skipped")
+            continue
+        mid, rest = parts[0], parts[1:]
+        if not rest:
+            continue                    # an id with nothing to add is a no-op, not an error
+        kv, bad = {}, False
+        for tok in rest:
+            if "=" not in tok:
+                warnings.append(f"line {lineno}: {tok!r} is not key=value — line skipped")
+                bad = True
+                break
+            k, v = tok.split("=", 1)
+            kv[k.strip().lower()] = v.strip()
+        if bad:
+            continue
+        unknown = set(kv) - {"opp", "why", "play", "note"}
+        if unknown:
+            warnings.append(f"line {lineno}: unknown key(s) {sorted(unknown)} — skipped. "
+                            f"Annotation takes opp, why, play, note; the deck, result and "
+                            f"date come from the log and are not editable here.")
+            continue
+        fields = {}
+        if "opp" in kv:
+            fields["Opponent Archetype"] = _slug(kv["opp"])
+        if "note" in kv:
+            fields["Note"] = kv["note"]
+        if "play" in kv:
+            v = kv["play"].lower()
+            if v and v not in _ON_PLAY:
+                warnings.append(f"line {lineno}: play={v!r} is not play/draw — dropped")
+            else:
+                fields["On Play"] = v
+        if "why" in kv:
+            v = kv["why"].lower()
+            if v and v not in LOSS_REASONS:
+                warnings.append(f"line {lineno}: why={v!r} is not in the vocabulary — "
+                                f"applied anyway, but it will not group with "
+                                f"{', '.join(sorted(LOSS_REASONS))}.")
+            fields["Loss Reason"] = v
+        if fields:
+            out.append((mid, fields))
+    return out, warnings
+
+
+def annotate(text, out=MATCHES_CSV, apply=False):
+    """`--annotate`: fill the hand-only columns on matches the LOG already recorded.
+
+    An unknown id is a hard reject rather than a silent no-op: a mistyped or truncated
+    id would otherwise report success having changed nothing, and the operator would
+    believe the annotation landed. A `why` on a non-loss is refused for the same reason
+    `--add` refuses it — a loss reason on a win has no reading."""
+    rows = load_matches(out)
+    by_id = {(r.get("Match ID") or "").strip(): r for r in rows}
+    pairs, warnings = parse_annotations(text)
+    for w in warnings:
+        eprint(f"WARN:  {w}")
+    applied, changes = 0, []
+    for mid, fields in pairs:
+        row = by_id.get(mid)
+        if row is None:
+            eprint(f"WARN:  no match {mid!r} in {os.path.basename(out)} — skipped. "
+                   f"Annotation joins on the Arena match id; ingest the log first.")
+            continue
+        if fields.get("Loss Reason") and (row.get("Result") or "").upper() != "L":
+            eprint(f"WARN:  {mid[:8]}: why={fields['Loss Reason']!r} on a "
+                   f"{row.get('Result')} — dropped, the rest applied.")
+            fields = {k: v for k, v in fields.items() if k != "Loss Reason"}
+            if not fields:
+                continue
+        was = {k: row.get(k, "") for k in fields}
+        if all((was.get(k) or "") == v for k, v in fields.items()):
+            continue                      # already says this — idempotent, not a change
+        row.update(fields)
+        applied += 1
+        changes.append((mid, row, was, fields))
+    if not changes:
+        print("Nothing to change — every annotation already matches what is stored.")
+        return 0
+    print(f"{applied} match(es) to annotate:")
+    for mid, row, was, fields in changes:
+        bits = [f"{row.get('Date','?')}  {row.get('Result','?')}  deck {row.get('Deck') or '?':<4}"]
+        for k, v in fields.items():
+            old = (was.get(k) or "").strip()
+            bits.append(f"{k}: {old + ' → ' if old else ''}{v or '(cleared)'}")
+        print("   " + "  ·  ".join(bits))
+    if not apply:
+        print(f"\n(dry run — pass --apply to update {os.path.basename(out)})")
+        return 0
+    write_matches(rows, out)
+    print(f"\nUpdated {applied} match(es) in {os.path.basename(out)}.")
+    return 0
+
+
 def add_manual(text, out=MATCHES_CSV, apply=False, report_after=False):
     """`--add`: append hand-entered matches. DRY RUN by default, like every writer here.
 
@@ -1406,9 +1517,19 @@ def main():
                     help="record HAND-ENTERED matches (phone games, or anything the log "
                          "cannot see) from `<deck> <W|L|D> [opp= why= play= note=]` "
                          "lines given as the source file or on stdin")
+    ap.add_argument("--annotate", action="store_true",
+                    help="fill opp/why/play/note on matches the LOG already recorded, "
+                         "from `<matchId> key=value` lines — updates rows in place "
+                         "rather than appending, so it cannot double-count")
     ap.add_argument("--out", default=MATCHES_CSV)
     args = ap.parse_args()
 
+    if args.annotate:
+        if not args.source:
+            ap.error("--annotate needs the lines: a file, or '-' for stdin")
+        text = sys.stdin.read() if args.source == "-" else \
+            open(args.source, encoding="utf-8", errors="replace").read()
+        return annotate(text, args.out, apply=args.apply)
     if args.add:
         if not args.source:
             ap.error("--add needs the lines: a file, or '-' for stdin")

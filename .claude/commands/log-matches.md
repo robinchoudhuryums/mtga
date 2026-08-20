@@ -251,6 +251,42 @@ exact lines to copy. Log during a session, copy the block afterwards, then `--ad
 queue survives a reload, which is the load-bearing part: without it, backgrounding the
 browser would discard an evening's matches.
 
+## Stage 1c — Annotate matches the log DID record (`--annotate`)
+
+Stage 1b is for matches Arena never saw. This is the other half: a match Arena *did*
+log already has a row with a real deck, result and date — what it lacks is the four
+things only you know. **Do not re-enter those through `--add`.** `--add` cannot dedupe
+(no Arena `matchId` on a hand row), so it would append a second row for a match already
+recorded — double-counting precisely the matches you cared enough to annotate.
+
+`--annotate` joins on the match id and UPDATES in place:
+
+```
+b48ecdfd-60a1-49a2-940b-96e673182aa5 opp="Mono Red" why=flood play=draw
+```
+
+```
+python3 scripts/parse_matches.py <file> --annotate            # dry run
+python3 scripts/parse_matches.py <file> --annotate --apply
+```
+
+Takes `opp`, `why`, `play`, `note` only. **`deck`, `result` and `date` are refused** —
+they come from the log, and accepting them here would be a second, silent way to state a
+result. An **unknown id is a hard reject**, not a no-op, so a truncated id cannot report
+success having changed nothing. An **empty value clears** the field, which is how you fix
+a wrong annotation without hand-editing the CSV. Re-running is idempotent.
+
+**Getting the ids without reading a log by hand: the dashboard.** Paste a `Player.log`
+block into the "…or annotate matches Arena already logged" box; the page lists every
+match it finds with date, deck, result and the opponent's avatar, gives each one the same
+four fields, and hands back these lines. It parses the block **only to label the rows for
+you** — every line it emits carries the match id and nothing else, so even a parsing error
+on that side cannot put a wrong W/L into `matches.csv`. (Cross-checked at build time on
+the 57-match sample: the page's seat read agreed with the parser's on all 57.)
+
+The normal order is: ingest the log (Stage 1) → annotate (here). Annotating first fails
+loudly, because the ids are not in `matches.csv` yet.
+
 ## Stage 2 — Report
 
 ```
