@@ -2,14 +2,18 @@
 #: format: Standard
 #: colors: BGU
 #: plan: midrange
-#: tier: C (PROVISIONAL — ungraded; a human letter comes after games). Floor talk:
-#: tier: interaction 5 counted (+1 unclassified — Raft-Steerer's tap-down is the K-12
-#: tier: shape) and card advantage 4 riding the Elvenking draw-2, Champions, Keepers
-#: tier: and Reveler, so the measurable floor reads A. Held at C deliberately: the
-#: tier: engine is graveyard-shaped and UNTESTED, protection is ZERO while the whole
-#: tier: plan sits on one 5-drop legend (removal on the Elvenking is the deck's bad
-#: tier: matchup in miniature), and 10 craft targets sit in the core. Grade after the
-#: tier: crafts land and the deck has a record.
+#: tier: B (PROVISIONAL) — re-graded C→B 2026-08-20 after the protection pass, and
+#: tier: the C's own reasoning corrected: it leaned on "10 craft targets", which the
+#: tier: rubric says is BUILD-STATE, not tier — tier rates the list. On the list's
+#: tier: merits: the measurable floor reads A (interaction 5 counted +1 unclassified —
+#: tier: Raft-Steerer's tap-down is the K-12 shape — card advantage 4 riding the
+#: tier: Elvenking draw-2, Champions, Keepers, Reveler), protection 2 (Snakeskin Veil,
+#: tier: Airtight Alibi — flash hexproof that also UNTAPS the Elvenking for a second
+#: tier: activation), curve 3.53. Held ONE band under the floor at B, not A: the
+#: tier: engine concentrates in a single 5-drop legend (protection 2 mitigates, does
+#: tier: not remove), the graveyard toolbox folds to exile-class hate the meta does
+#: tier: run, and zero games played means the floor's under-rating credit is unearned.
+#: tier: A is the target once it has a record.
 #: archetype: Sultai (B/G/U) ELVENKING GRAVEYARD-OF-ABILITIES. Thranduil, the Elvenking
 #: archetype: has all activated abilities of all Elf CARDS IN YOUR GRAVEYARD — so the
 #: archetype: yard is a toolbox, not a loss: mill and surveil bin Lathril (tap ten
@@ -29,6 +33,11 @@
 #: notes: Standard — deeper than Dragon's 71/20, which built deck 49). Shares yard
 #: notes: DONORS with deck 31 (Lathril, Archdruid, Imperious Perfect, Morcant's Eyes,
 #: notes: Lys Alana) — copies are fungible, both decks run them simultaneously.
+#: notes: 2026-08-20 later: Weavemaster ingested as OWNED (crafts 10→9). Protection
+#: notes: pass: Snakeskin Veil + Airtight Alibi in, Galion (cuts 6/30, zero-role) and
+#: notes: Boughside Wanderers OUT — noting honestly that cuts ranked Boughside 28/30,
+#: notes: a strong keep on landfall fit; the structural axis (protection 0 with three
+#: notes: #: protect: build-arounds) was judged worth the theme-fit price (G-38).
 #: notes: Surveil lands are deliberate: each one bins an Elf card for the Elvenking.
 #: notes: Elfsworn Giant is proposed for CUT from 31 (Sindarin Liege outclasses it
 #: notes: there); its landfall tokens are core here.
@@ -42,7 +51,7 @@
 1 Trystan, Callous Cultivator // Trystan, Penitent Culler (ECL) 199
 1 High Perfect Morcant (ECL) 229
 1 Dwynen, Gilt-Leaf Daen (FDN) 217
-1 Galion, Elvenking's Butler (HOB) 125
+1 Snakeskin Veil (TDM) 159
 1 Emil, Vastlands Roamer (SOS) 146
 
 # — Yard fill + card flow —
@@ -66,7 +75,7 @@
 1 Thranduil's Company (HOB) 168
 1 Elven Raft-Steerer (HOB) 37
 1 Elfsworn Giant (FDN) 103
-1 Boughside Wanderers (HOB) 121
+1 Airtight Alibi (MKM) 149
 1 Wood Elves (HOB) 142
 
 # — Interaction —

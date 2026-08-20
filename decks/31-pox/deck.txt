@@ -2,7 +2,10 @@
 #: format: Standard
 #: colors: BG
 #: tier: A — Golgari (BG) Elf go-wide x Fynn deathtouch-poison hybrid; fully built. Elf engine (Lathril drain finish + Elvish Archdruid ramp/anthem + Imperious Perfect / Morcant's Loyalist anthems + High Perfect Morcant blight), interaction 8 (the count now credits the bounce/edict lines the old classifier missed; The Serpent Society / Sporogenic Infection still read as interaction on top of that) — Bite Down (any deathtoucher kills anything for {G}) + Bake into a Pie clearing the poison clock's blockers — plus card advantage from Morcant's Eyes surveil + token dump, on a clean 2-color base → A-floor. Re-graded B→A on corrected interaction; the only reason it's not a clearer S-conversation is the singleton dilution across two half-density plans (Elf go-wide + poison).
-#: archetype: Golgari (B/G) poison (Fynn + deathtouch) x Elf tribal go-wide hybrid.
+#: archetype: Golgari (B/G) ELF TRIBAL GO-WIDE — Lathril drain finish, Archdruid
+#: archetype: ramp, three anthem effects — with a deathtouch sub-package that Fynn
+#: archetype: turns into poison reach (2 poison cards, 11 deathtouch sources; the
+#: archetype: old header called this a poison hybrid, which the list stopped being).
 #: protect: Fynn, the Fangbearer; Lathril, Blade of the Elves; The Serpent Society; Elvish Archdruid
 #: notes: Two reinforcing plans: go-wide Elves (Lathril/Imperious Perfect/Elvish Archdruid
 #: notes: engine — CRAFT targets — + Dwynen's Elite/Elfsworn Giant tokens, Druid ramp) AND a
@@ -38,14 +41,14 @@
 1 Emeritus of Abundance (SOS) 145
 1 Unforgiving Aim (ECL) 200
 1 Topiary Lecturer (SOS) 165
-1 Vinebred Brawler (ECL) 201
-1 Elfsworn Giant (FDN) 103
+1 Cantankerous Keepers (HOB) 122
+1 Thranduil, Sindarin Liege (HOB) 166
 1 Lluwen, Exchange Student (SOS) 199
 1 Wardens of the Cycle (FDN) 125
 1 Bite Down (FDN) 212
 1 Dawnhand Eulogist (ECL) 99
 1 Gloom Ripper (ECL) 102
-1 Scarblade's Malice (ECL) 119
+1 Woodland Weavemaster (HOB) 143
 1 Morcant's Loyalist (ECL) 236
 1 Lathril, Blade of the Elves (FDN) 242
 1 High Perfect Morcant (ECL) 229
@@ -81,3 +84,11 @@
 #~ note: applied — Killmonger, Scourge of Wakanda (-Putrid Pals): owned. ETB may sac a creature -> destroy target nonland permanent (the noncreature answer the deck lacked; 2->raises noncreature-answer count) AND the sac cost feeds the death-trigger payoffs (Arnyn/South Wind/Serpent Society); +2/+1 with 2+ creatures in yard is self-fed by combat deaths.
 #~ +Izoni, Center of the Web | CRAFT (Rare, R wildcard) — Standard-legal Elf Detective card-advantage engine. Menace; enter/attack collect evidence 4 -> two 2/1 Spiders; sac four tokens: surveil 2, draw 2, gain 2. On-theme card advantage (Elf/tokens/graveyard/sac), but DOWNGRADED to a sidegrade: Professor Dellian Fel now supplies a repeatable draw for 0 wildcards at MV 4 vs Izoni's MV 6 + a Rare. Owned-first rule — skip unless you want a second engine. Note role_tally under-counts this axis because it does not score a single-draw ability; the deck reads card-adv 2. See wishlist Target 31.
 #~ note: applied — Virulent Emissary in for Serpent Specialist.
+#~ note: applied 2026-08-20 — HOB Elf package: Thranduil, Sindarin Liege in for
+#~ note: Elfsworn Giant (same landfall Elf-token job at MV 4 hybrid, green-payable,
+#~ note: plus an Elves-anthem); Cantankerous Keepers in for Vinebred Brawler (card
+#~ note: advantage in a tribal body — affinity makes it a 2-3 mana 4/3; its mill-4
+#~ note: -take-Elves does not classify, so the CA axis still reads 2 — K-12);
+#~ note: Woodland Weavemaster in for Scarblade's Malice (1-drop scaling Elf-only
+#~ note: ramp). Malice's deathtouch grant left with it — the poison bridge the
+#~ note: notes above describe is now carried by the ~11 NATIVE deathtouchers alone.
