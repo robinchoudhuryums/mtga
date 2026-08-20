@@ -67,11 +67,39 @@ through a rename, so prefer the sed.
 **Without the archive**, grab the log before relaunching Arena. Ask the user to run
 this on the machine running Arena and paste the output.
 
-**Shortcut: `make matches`** wraps exactly the extraction below plus the dry-run parse,
-so neither the grep nor the log path has to be remembered. `make matches APPLY=1` writes.
-Windows or a non-default install: `make matches MTGA_LOGS="$APPDATA/../LocalLow/Wizards Of The Coast/MTGA"`.
-The long form stays here because it is what you paste when Arena runs on a machine that
-does not have this repo checked out — which is the common case.
+**Two shortcuts, and WHICH ONE APPLIES DEPENDS ON WHETHER THE ARENA MACHINE HAS THIS
+REPO.** That is the question to ask first, and it is easy to get wrong from inside a
+session: the repo is checked out wherever *you* are reading this, which says nothing
+about the Mac running Arena. Measured the hard way — `make matches` was added, handed
+over, and failed with "No rule to make target", because the machine playing Arena had
+never cloned the repo at all.
+
+**Repo IS on the Arena machine** → `make matches` (dry run) / `make matches APPLY=1`
+(writes). It wraps the extraction below plus the parse. `MTGA_LOGS=...` overrides the
+path for Windows or a non-default install.
+
+**Repo is NOT on the Arena machine** (the common case — Arena on a Mac, this repo only in
+Claude sessions) → a shell function in `~/.zshrc`, which needs nothing checked out:
+
+```sh
+mtga-matches() {
+  local p="$HOME/Library/Logs/Wizards Of The Coast/MTGA"
+  grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
+      "$HOME/mtga-logs/arena.log" "$p"/Player*.log 2>/dev/null \
+    | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' \
+    | pbcopy
+  echo "copied $(pbpaste | wc -l | tr -d ' ') lines to the clipboard"
+}
+```
+
+`mtga-matches` then puts a pasteable export on the clipboard. It reads the rolling
+archive first and the live `Player.log` second, so it covers history Arena has already
+overwritten.
+
+**NEVER pipe either form through `sort`/`sort -u`.** `resolve_matches` walks the log IN
+ORDER and pairs each result with the most recent `Match to <userId>` header — the only
+place your seat appears — so sorting silently mis-attributes every W/L. Duplicate lines
+are harmless: the parser dedups by matchId.
 
 ```
 # macOS

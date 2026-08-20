@@ -91,6 +91,10 @@ REFETCH ?=
 # paste missing either is unparseable, and the parser SKIPS rather than guessing.
 # The sed drops the deck card lists, which are 92% of an EventSetDeckV3 line.
 # Needs Arena → Settings → Account → "Detailed Logs (Plugin Support)", then a restart.
+# PREREQUISITE THIS TARGET CANNOT CHECK: the Arena machine must have this repo cloned.
+# It often does not — Arena on a Mac, the repo only ever opened in Claude sessions — and
+# then this target does not exist to run. `/log-matches` carries a ~/.zshrc function that
+# needs no checkout; that is the right shortcut for that setup.
 MTGA_LOGS ?= $(HOME)/Library/Logs/Wizards Of The Coast/MTGA
 MATCHES_OUT ?= /tmp/mtga-matches.log
 matches:
