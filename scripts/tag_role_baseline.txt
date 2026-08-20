@@ -26,7 +26,6 @@ Argivian Avenger
 Armored Scrapgorger
 Ashiok's Erasure
 Ashnod's Harvester
-Auger Spree
 Aven Interrupter
 Baneblade Scoundrel // Baneclaw Marauder
 Barbed Batterfist
@@ -48,7 +47,6 @@ Dawnhand Dissident
 Death's Approach
 Death's Shadow
 Deathgorge Scavenger
-Desperate Measures
 Die Young
 Diminished Returner
 Dire Fleet Daredevil
@@ -60,7 +58,6 @@ Enemy of Enlightenment
 Fear of Death
 Fear of Falling
 Fierce Retribution
-Flowstone Infusion
 Flowstone Kavu
 Founding the Third Path
 Frostburn Weird
@@ -89,7 +86,6 @@ Klothys, God of Destiny
 Kotose, the Silent Spider
 Kraul Whipcracker
 Kutzil's Flanker
-Lash of Malice
 Lazav, Wearer of Faces
 Leonin of the Lost Pride
 Lion Sash
@@ -99,7 +95,6 @@ Metropolis Sprite
 Mistwalker
 Mizzix's Mastery
 Mogis's Favor
-Nameless Inversion
 Narset, Enlightened Exile
 Nita, Forum Conciliator
 Nyxathid

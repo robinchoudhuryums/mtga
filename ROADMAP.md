@@ -44,7 +44,7 @@ Stated because a roadmap that never records its own outcomes is a wishlist.
   cheaper and different: nineteen whitelist holes closed across 2026-08, the last four by
   reading the POOL corpus-wide rather than waiting for a human to notice a card, plus a
   standing disagreement gate (`check_roles --tags`) that watches the two models for
-  divergence. The blind spot is now 474 baselined zero-role cards and a 143-entry
+  divergence. The blind spot is now 474 baselined zero-role cards and a 138-entry
   disagreement worklist — bigger numbers, but both are now *instrumented* rather than
   unknown, and the last three holes were found by a sweep rather than by accident.
 
@@ -67,7 +67,7 @@ Stated because a roadmap that never records its own outcomes is a wishlist.
    against Arena's 100-deck cap, so some decks in this repo cannot exist in the client at
    all. The analysis is finished and committed — card-overlap matrix, `similar` sweep,
    three-tier candidate list — and blocked on judgment, not work. — **S, ~2h once decided**
-4. **Read down the 143-entry disagreement worklist.** New this cycle: `check_roles --tags`
+4. **Read down the 138-entry disagreement worklist.** New this cycle: `check_roles --tags`
    now lists every pool card the tagger calls `removal` while the classifier scores no
    interaction role. The known-legitimate classes are graveyard hate (the tagger's
    `"exile target"` substring) and self-shrinks. What is left is the next batch of
@@ -132,7 +132,7 @@ Stated because a roadmap that never records its own outcomes is a wishlist.
 4. **Close the classifier gap structurally.** Downgraded in urgency, and the reason is a
    result rather than a decision: the cheap route worked. Nineteen holes closed by reading
    corpora, plus a standing disagreement gate, moved this from "unknown blind spot" to
-   "474 baselined zero-role cards and a 143-entry worklist, both instrumented". The
+   "474 baselined zero-role cards and a 138-entry worklist, both instrumented". The
    structural version — a classifier that is not a phrase whitelist — is still the only
    thing that RETIRES the problem, but it is no longer the only thing that shrinks it.
    — **L, 1–2mo**

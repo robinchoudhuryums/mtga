@@ -3068,7 +3068,7 @@ The pool-blank residual stands at **380** and is still the long tail the rule de
 
 The comparison above was run by hand to find Dead Weight. `check_roles.py --tags` makes it
 permanent: a pool-scoped sweep for cards the tagger calls `removal` from their TEXT while
-`classify_roles` scores no interaction role, baselined at 143, folded into `check_all` as
+`classify_roles` scores no interaction role, baselined at 138, folded into `check_all` as
 a soft warning, with `--update-tag-baseline`, `--max-new` and the G-69 delta report.
 
 **Two design choices are the whole reason it is readable.**
@@ -3084,7 +3084,7 @@ Second, it asks the NARROW question. The obvious design — a pool-scoped zero-r
 which is what the broad scan originally proposed — was measured and rejected:
 `check_roles._roster_cards` already refuses pool scope in its docstring, and the numbers
 back it. **5,368 nonland pool cards score no role, 33% of the pool.** The disagreement set
-is 143. Build a radar on disagreement, not on zero.
+is 138. Build a radar on disagreement, not on zero.
 
 Watched failing at introduction: removing the pattern that fixed BS6-10 brings back 16
 disagreements, Dead Weight among them.
@@ -4169,10 +4169,29 @@ permanent work. `Auger Spree` is a removal spell in a way `Merfolk Trickster` is
 despite both saying "until end of turn". Any pattern for this family has to be written
 against LETHALITY, not duration.
 
-All five are already sitting in `tag_role_baseline.txt` — the tagger's `gets [+-]?N/-N`
-rule catches them, the classifier does not, so the disagreement sweep is carrying them as
-a worklist entry rather than losing them. That is the sweep doing its job on the first
+All five were already sitting in `tag_role_baseline.txt` — the tagger's `gets [+-]?N/-N`
+rule caught them, the classifier did not, so the disagreement sweep carried them as
+worklist entries rather than losing them. That is the sweep doing its job on the first
 hole discovered after it was built.
+
+**CLOSED the same cycle**, and the way it closed is the part worth keeping. The pattern is
+scoped to the TARGETED spell, because 23 of the 29 pool cards carrying a `+N/-M` clause are
+firebreathing-style self-pumps on your own body ("{U}: This creature gets +1/-1") — the same
+drawback-vs-answer split `its controller's` handles for tap-down, one family over. With
+`target … creature` plus a `you control` guard: 5 matches, zero false positives, and the
+baseline pruned from 143 to 138 by its own stale-entry pass.
+
+**The AURA form is deliberately left unclassified**, and this is the honest kind of residual.
+Immolation ("Enchanted creature gets +2/-2") reads as removal; Mogis's Favor ("+2/-1", with
+an escape cost) reads as a pump you put on your own creature. Two cards, opposite intents,
+identical shape — no regex separates them, and inventing a rule that picks one would be
+guessing rather than measuring. Grade those two from the card.
+
+**And the transferable lesson is about rule REUSE, not about pumps.** The neutralization
+patterns immediately above rest on PERMANENCE, and reaching for that rule here would have
+been wrong in the other direction: it would have excluded exactly the cards that belong.
+When a new family looks adjacent to one you have already solved, ask which rule the family
+takes before reusing the one that is to hand.
 
 ## [G-68] A `#:` header that lists card names goes stale, and nothing checked one
 
