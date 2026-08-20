@@ -84,6 +84,19 @@ Valgavoth's Faithful,Creature — Human Cleric,"{3}{B}, Sacrifice this creature:
 Spineseeker Centipede,Creature — Insect,"When this creature enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.
 Delirium — This creature gets +1/+2 and has vigilance as long as there are four or more card types among cards in your graveyard.",G,Insect; graveyard; ramp; etb; pump; delirium,DSK,199,Common,50,,1.5,seed
 End-Blaze Epiphany,Instant,"End-Blaze Epiphany deals X damage to target creature. When that creature dies this turn, exile a number of cards from the top of your library equal to its power, then choose a card exiled this way. Until the end of your next turn, you may play that card.",R,burn,ECL,134,Rare,24,X-burn removal + impulse; Quintorius/exile payoff,6.0,hand
+"Maralen, Fae Ascendant",Legendary Creature — Elf Faerie Noble,"Flying
+Whenever Maralen or another Elf or Faerie you control enters, exile the top two cards of target opponent's library.
+Once each turn, you may cast a spell with mana value less than or equal to the number of Elves and Faeries you control from among cards exiled with Maralen this turn without paying its mana cost.",U/B/G,Elf; Faerie; Noble; heist; flying; evasion,ECL,233,Rare,75,deck 75: evasive 5-drop engine; exiles 2 per Elf/Faerie ETB and casts them free,7.0,hand
+Trystan's Command,Kindred Sorcery — Elf,"Choose two —
+• Create a token that's a copy of target Elf you control.
+• Return one or two target permanent cards from your graveyard to your hand.
+• Destroy target creature or enchantment.
+• Creatures target player controls get +3/+3 until end of turn. Untap them.",B/G,Elf; graveyard; tokens; removal; pump,ECL,247,Rare,75,"deck 75: modal two-of-four, but MV 6 in a deck already at 3.5",6.0,hand
+"Trystan, Callous Cultivator // Trystan, Penitent Culler",Legendary Creature — Elf Druid // Legendary Creature — Elf Warlock,"Deathtouch
+Whenever this creature enters or transforms into Trystan, Callous Cultivator, mill three cards. Then if there is an Elf card in your graveyard, you gain 2 life.
+At the beginning of your first main phase, you may pay {B}. If you do, transform Trystan. // Deathtouch
+Whenever this creature transforms into Trystan, Penitent Culler, mill three cards, then you may exile an Elf card from your graveyard. If you do, each opponent loses 2 life.
+At the beginning of your first main phase, you may pay {G}. If you do, transform Trystan.",B/G,Elf; Druid; Warlock; graveyard; mill; lifegain; transform; deathtouch; combat; removal,ECL,199,Rare,75,"deck 75: repeatable self-mill that FEEDS the Elvenking toolbox, on a deathtouch body, + drain",7.5,hand
 Iron-Shield Elf,Creature — Elf Warrior,"Discard a card: This creature gains indestructible until end of turn. Tap it. (Damage and effects that say ""destroy"" don't destroy it. If its toughness is 0 or less, it still dies.)",B,Elf; Warrior,ECL,108,Uncommon,52a,,2.5,seed
 Spell Snare,Instant,Counter target spell with mana value 2.,U,counterspell,ECL,71,Uncommon,51,,3.0,seed
 "Susur Secundi, Void Altar",Land — Planet,"This land enters tapped.
@@ -197,6 +210,18 @@ When Ragnarok dies, destroy target permanent and return target nonlegendary perm
 Balamb T-Rexaur,Creature — Dinosaur,"Trample
 When this creature enters, you gain 3 life.
 Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",G,Dinosaur; lifegain; etb; landcycling; card draw; lands; trample; evasion; forestcycling; typecycling; cycling,FIN,173,Common,28,,2.0,hand
+Elven Passage,Land,"{T}, Pay 1 life, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. You may behold an Elf. If you do, untap that land. (To behold an Elf, choose an Elf you control or reveal an Elf card from your hand.)",Colorless,pay life; sacrifice; ramp; behold; dragons,HOB,181,Rare,75,"deck 75: land: slow basic-fetch, untaps only if you behold an Elf",4.0,hand
+Thranduil's Company,Creature — Elf Soldier,"As long as you control another Elf, you may play an additional land on each of your turns.
+Landfall — Whenever a land you control enters, put two +1/+1 counters on target creature you control. It gains vigilance until end of turn.",U/G,Elf; Soldier; counters; landfall; lands; ramp,HOB,168,Rare,75,deck 75: extra land each turn + landfall counters — the landfall half s engine,6.5,hand
+Elven Raft-Steerer,Creature — Elf Pilot,"Landfall — Whenever a land you control enters, choose one —
+• Tap target creature an opponent controls.
+• Untap target creature you control.",U,Elf; Pilot; landfall; lands; ramp,HOB,37,Uncommon,75,deck 75: landfall tap-down OR untap the Elvenking for a second activation,5.5,hand
+Silvan Reveler,Creature — Elf Citizen,"When this creature enters, draw a card, then discard a card. If you discard a land card this way, put it from your graveyard onto the battlefield tapped.
+Landfall — Whenever a land you control enters, you may pay {1}{G}{U}. If you do, return this card from your graveyard to your hand.",U/G,Elf; Citizen; reanimator; graveyard; card draw; etb; landfall; lands; ramp,HOB,163,Uncommon,75,"deck 75: loot with land-drop upside, and self-recurs from the yard on landfall",6.0,hand
+Elvenking's Halls,Land,"This land enters tapped.
+{T}: Add {G} or {U}.
+{2}{G}{U}, {T}, Sacrifice this land: Put two +1/+1 counters on target Elf you control. Activate only as a sorcery.",U/G,counters; sacrifice; mana,HOB,182,Common,75,"deck 75: land: enters tapped, GU, late sac for two counters — marginal",3.0,hand
+Wood Elves,Creature — Elf Scout,"When this creature enters, search your library for a Forest card, put that card onto the battlefield, then shuffle.",G,Elf; Scout; Forest; etb,HOB,142,Common,75,"deck 75: ETB Forest to the battlefield — ramp, fixing and an Elf body on one common",5.0,hand
 Bonehoard Dracosaur,Creature — Dinosaur Dragon,"Flying, first strike
 At the beginning of your upkeep, exile the top two cards of your library. You may play them this turn. If you exiled a land card this way, create a 3/1 red Dinosaur creature token. If you exiled a nonland card this way, create a Treasure token.",R,Dinosaur; Dragon; tokens; treasure; impulse; flying; evasion; first strike; combat,LCI,134,Mythic,49,,7.5,hand
 "Ojer Axonil, Deepest Might // Temple of Power",Legendary Creature — God // Land,"Trample
