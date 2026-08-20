@@ -1,0 +1,105 @@
+#: name: Woodland Realm
+#: format: Standard
+#: colors: BGU
+#: plan: midrange
+#: tier: B (PROVISIONAL) — re-graded C→B 2026-08-20 after the protection pass, and
+#: tier: the C's own reasoning corrected: it leaned on "10 craft targets", which the
+#: tier: rubric says is BUILD-STATE, not tier — tier rates the list. On the list's
+#: tier: merits: the measurable floor reads A (interaction 5 counted +1 unclassified —
+#: tier: Raft-Steerer's tap-down is the K-12 shape — card advantage 4 riding the
+#: tier: Elvenking draw-2, Champions, Keepers, Reveler), protection 2 (Snakeskin Veil,
+#: tier: Airtight Alibi — flash hexproof that also UNTAPS the Elvenking for a second
+#: tier: activation), curve 3.53. Held ONE band under the floor at B, not A: the
+#: tier: engine concentrates in a single 5-drop legend (protection 2 mitigates, does
+#: tier: not remove), the graveyard toolbox folds to exile-class hate the meta does
+#: tier: run, and zero games played means the floor's under-rating credit is unearned.
+#: tier: A is the target once it has a record.
+#: archetype: Sultai (B/G/U) ELVENKING GRAVEYARD-OF-ABILITIES. Thranduil, the Elvenking
+#: archetype: has all activated abilities of all Elf CARDS IN YOUR GRAVEYARD — so the
+#: archetype: yard is a toolbox, not a loss: mill and surveil bin Lathril (tap ten
+#: archetype: Elves: drain 10), Elvish Archdruid (add G per Elf), Imperious Perfect
+#: archetype: (token per activation), Woodland Weavemaster and Lys Alana (ramp), and
+#: archetype: the Elvenking casts the whole court from the throne. Elrond turns every
+#: archetype: activation into a card; each legendary Elf that enters draws two and
+#: archetype: DISCARDS one — the discard is fuel, not a cost. The landfall half
+#: archetype: (Sindarin Liege tokens, Thranduil's Company extra lands + counters,
+#: archetype: Raft-Steerer tap/untap — untapping the Elvenking re-activates) keeps the
+#: archetype: board wide enough that a binned Lathril still finds ten Elves to tap.
+#: archetype: Identity vs deck 31 Pox: 31 is Golgari go-wide drain aristocrats; this
+#: archetype: is a Sultai engine deck where the graveyard is the second hand.
+#: protect: Thranduil, the Elvenking; Elrond, Moon-Reader; Thranduil, Sindarin Liege
+#: uncastable-ok:
+#: notes: Drafted 2026-08-20 from the HOB Elf survey (98 bodies / 28 payoffs in
+#: notes: Standard — deeper than Dragon's 71/20, which built deck 49). Shares yard
+#: notes: DONORS with deck 31 (Lathril, Archdruid, Imperious Perfect, Morcant's Eyes,
+#: notes: Lys Alana) — copies are fungible, both decks run them simultaneously.
+#: notes: 2026-08-20 later: Weavemaster ingested as OWNED (crafts 10→9). Protection
+#: notes: pass: Snakeskin Veil + Airtight Alibi in, Galion (cuts 6/30, zero-role) and
+#: notes: Boughside Wanderers OUT — noting honestly that cuts ranked Boughside 28/30,
+#: notes: a strong keep on landfall fit; the structural axis (protection 0 with three
+#: notes: #: protect: build-arounds) was judged worth the theme-fit price (G-38).
+#: notes: Surveil lands are deliberate: each one bins an Elf card for the Elvenking.
+#: notes: Elfsworn Giant is proposed for CUT from 31 (Sindarin Liege outclasses it
+#: notes: there); its landfall tokens are core here.
+
+# — The court (legendary Elves; each one the Elvenking sees = draw 2, discard 1) —
+2 Thranduil, the Elvenking (HOB) 167
+1 Elrond, Moon-Reader (HOB) 36
+1 Thranduil, Sindarin Liege (HOB) 166
+1 Lathril, Blade of the Elves (FDN) 242
+1 Maralen, Fae Ascendant (ECL) 233
+1 Trystan, Callous Cultivator // Trystan, Penitent Culler (ECL) 199
+1 High Perfect Morcant (ECL) 229
+1 Dwynen, Gilt-Leaf Daen (FDN) 217
+1 Snakeskin Veil (TDM) 159
+1 Emil, Vastlands Roamer (SOS) 146
+
+# — Yard fill + card flow —
+1 Cantankerous Keepers (HOB) 122
+1 Champions of the Perfect (ECL) 171
+1 Silvan Reveler (HOB) 163
+1 Down in the Valley (HOB) 124
+1 Morcant's Eyes (ECL) 185
+1 Trystan's Command (ECL) 247
+
+# — Ramp / ability donors (good on board, still good in the bin) —
+1 Llanowar Elves (M19) 314
+1 Elvish Archdruid (FDN) 219
+1 Imperious Perfect (FDN) 719
+1 Woodland Weavemaster (HOB) 143
+1 Lys Alana Dignitary (ECL) 180
+1 Bloom Tender (ECL) 166
+1 Stoic Grove-Guide (ECL) 243
+
+# — Landfall package —
+1 Thranduil's Company (HOB) 168
+1 Elven Raft-Steerer (HOB) 37
+1 Elfsworn Giant (FDN) 103
+1 Airtight Alibi (MKM) 149
+1 Wood Elves (HOB) 142
+
+# — Interaction —
+1 Thranduil's Decree (HOB) 56
+1 Bake into a Pie (FDN) 169
+1 Vraska, the Silencer (OTJ) 237
+1 Unforgiving Aim (ECL) 200
+1 Bite Down (FDN) 212
+
+# — Lands (26; surveil lands feed the Elvenking) —
+1 Elvenking's Halls (HOB) 182
+1 Elven Passage (HOB) 181
+1 Breeding Pool (EOE) 251
+1 Overgrown Tomb (TRK) 289
+1 Watery Grave (TRK) 306
+1 Gloomlake Verge (DSK) 260
+1 Wastewood Verge (DFT) 268
+1 Willowrush Verge (DFT) 270
+1 Dreamroot Cascade (SOS) 254
+1 Hidden Grotto (BLB) 254
+1 Undercity Sewers (MKM) 270
+1 Surveillance Room (MSH) 274
+1 Opulent Palace (TDM) 264
+1 Temple of Malady (FDN) 700
+5 Forest (MSH) 296
+4 Swamp (MSH) 292
+3 Island (MSH) 288

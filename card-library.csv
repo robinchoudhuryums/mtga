@@ -5077,3 +5077,6 @@ Cantankerous Keepers,Creature — Elf Soldier,"Affinity for Elves (This spell co
 When this creature enters, mill four cards, then put all Elf cards from among them into your hand.",G,Elf; Soldier; mill; cost-reduction; etb; affinity; artifacts; graveyard,HOB,122,1
 Last Light of Durin's Day,Enchantment,"Whenever a Mountain you control enters, put a quest counter on this enchantment. If it has six or more quest counters on it, sacrifice it. If you do, search your hand and/or library for a Dragon card and put it onto the battlefield. If you search your library this way, shuffle.
 Mountaincycling {2} ({2}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)",R,counters; sacrifice; mountaincycling; card draw; lands; landcycling; typecycling; cycling; Dragon,HOB,103,1
+Woodland Weavemaster,Creature — Elf Druid,"Vigilance
+Whenever another Elf you control enters, this creature gets +1/+1 until end of turn.
+{T}: Add X mana of any one color, where X is this creature's power. Spend this mana only to cast Elf spells and activate abilities of Elf sources.",G,Elf; Druid; mana; pump; vigilance; combat,HOB,143,1

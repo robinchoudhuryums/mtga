@@ -2383,6 +2383,7 @@ Canyon Vaulter,{1}{W},2,
 Travel the Overworld,{5}{U}{U},7,Affinity
 Cantankerous Keepers,{5}{G},6,Affinity;Mill
 Last Light of Durin's Day,{1}{R},2,Mountaincycling;Landcycling;Typecycling;Cycling
+Woodland Weavemaster,{1}{G},2,Vigilance
 Manamorphose,{1}{R/G},2,
 Pentad Prism,{2},2,Sunburst
 Azorius Signet,{2},2,
@@ -6105,7 +6106,6 @@ Through the Forest Gate,{6}{G}{G},8,
 Warg Tactics,{1}{G},2,
 Wargling,{1}{G},2,Ferocious
 Wood Elves,{2}{G},3,
-Woodland Weavemaster,{1}{G},2,Vigilance
 Bard the Bowman,{1}{W}{U},3,Reach
 Bard's Company,{2}{W}{U},4,
 "Bifur, Melodic Rider",{4}{R/W}{R/W},6,
