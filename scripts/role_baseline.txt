@@ -159,7 +159,6 @@ Fortress Kin-Guard
 Frantic Strength
 Frontier Seeker
 Frontline Rush
-Frozen in Ice
 Full Throttle
 Fynn, the Fangbearer
 Galuf's Final Act
@@ -417,7 +416,6 @@ The Jolly Balloon Man
 The Last Ronin's Technique
 The Mindskinner
 The Thing, Ben Grimm
-The Wondrous Wasp
 Thorin Oakenshield
 Three Tree Scribe
 Thunderous Velocipede

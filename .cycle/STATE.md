@@ -6,6 +6,60 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #6, Batch 1 + the neutralization bucket (2026-08-19)
+
+Gates green: all invariants hold with **ZERO soft warnings**; full pytest suite green
+(+22 tests). Block: `.cycle/blocks/2026-08-broad-scan6-batch1-broad-implement.md`.
+
+**The taxonomy question is answered, and the answer was already in the code.** Magic
+answers a creature three ways — kill it, exile it, turn it off — and `_ROLE_PATTERNS` read
+only the first two, while Pacifism's `can't attack or block` had been sitting in the
+Removal bucket the whole time. So the repo had already decided a neutralizing effect IS
+spot removal; only half the templatings were ever written. Four patterns close it: tap-down
+(37 cards), ability-strip as an Aura (19), targeted (6), and one anaphor case that exists
+purely to stop two cards with the same effect landing on opposite sides of the line.
+**The line is PERMANENCE** — `NEXT untap step` and `until end of turn` are tempo, not
+answers, and stay out. K-14: **6 decks moved interaction, 0 tier floors, 0 letters to
+re-grade**, exactly the six predicted. Deck 38 moved off the B floor it sat exactly on.
+
+**The real payoff is upstream.** Blue's removal is mostly neutralization, so it was
+invisible to the recommender: `suggest 47 --interaction` now surfaces Sleep Magic, Charmed
+Sleep and Witness Protection — and the last one is already OWNED.
+
+**I did not build the gate I proposed in the scan, and measuring is why.** Stage 3 said
+"baseline the role classifier against the POOL"; `check_roles` explicitly refuses that and
+is right — 5,368 pool cards score no role, 33% of the pool, unreadable. The DISAGREEMENT
+set is 143. So the sweep asks the narrow question instead: where does `tag_synergies` call
+a card `removal` from its TEXT while `classify_roles` scores no interaction role? Scoped by
+CONSTRUCTION — it reads the tagger's own `MECHANIC_RULES` rather than a copy, and the
+deathtouch keyword path is excluded because it lives in a different table, which is 250 of
+the 388 raw hits that an allowlist would otherwise have had to enumerate.
+
+**Widening `check_dfc` found a live bug within minutes, which is the argument for it.**
+The builder scan was pool-scoped while every ownership index reads card-library.csv — the
+reason a gate built for BS6-01's bug class missed four instances of it. Widened, it flagged
+`verify_ingest.library_index` as the 4th, still unaliased: a paste naming a Room card by its
+front face verified as ABSENT, from the tool whose only job is confirming an ingest landed.
+Two second-order fixes were needed to make the widening honest — a tuple-key discriminator
+(3 of the first 8 hits were printing indexes, and a scan with that false-positive rate stops
+being read) and a LIBRARY probe, because the pool probe made every new registration pass
+**vacuously**.
+
+Also: the committed dashboard has a freshness contract now (BS6-04). It watches DATA and
+not code, deliberately — hashing deck.py wholesale is what made the pool read stale every
+cycle in BS4-37, and a signal that cries wolf is one you wave through.
+
+**Found and deliberately NOT fixed:** Nameless Inversion scores zero roles — a
+toughness-reducing PUMP (`+N/-N`) is removal and the covered shape needs a leading minus.
+Different family, out of scope, and it is sitting in the new disagreement baseline rather
+than being lost.
+
+**Where I left off:** docs need a `/sync-docs` pass — G-67's live residual now describes
+work that is done, K-09 and G-63 have both moved, and the two new soft sweeps plus
+`tag_role_baseline.txt` are not in the Cycle Workflow Config inventory. Batch 2.2 (one
+`import_collection.py` run against a tracker export) is still the highest-value item and
+is still blocked on you.
+
 ## Session — broad scan #6, top 5 (2026-08-19) — IMPLEMENTED
 
 Sixth broad scan; the top 5 findings by production impact were implemented in one pass.

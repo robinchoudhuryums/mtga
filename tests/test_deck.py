@@ -287,6 +287,76 @@ class TestClassifyRoles:
             "control. Craving of Yeenoghu perpetually gains \"Enchanted creature gets "
             "-1/-1.\" Activate only as a sorcery.")
 
+    # ── NEUTRALIZATION: the answer that leaves the permanent on the battlefield.
+    # Magic answers a creature three ways — kill it, exile it, turn it off — and this
+    # bucket read only the first two, even though Pacifism's `can't attack or block` was
+    # already in it. The line is PERMANENCE: a one-turn effect is tempo, not an answer.
+    # Fixtures verbatim (G-67).
+
+    NEUTRALIZATION = [
+        # Tap-down, permanent — Waterknot / Capture Sphere / Frozen in Ice shape.
+        "Enchant creature\nWhen this Aura enters, tap enchanted creature.\nEnchanted "
+        "creature doesn't untap during its controller's untap step.",
+        # Dungeon Geists — the same lock on a body.
+        "Flying\nWhen this creature enters, tap target creature an opponent controls. "
+        "That creature doesn't untap during its controller's untap step for as long as "
+        "you control this creature.",
+        # Ability-strip, Aura form — Frogify / Kasmina's Transmutation / Witness Protection.
+        "Enchant creature\nEnchanted creature loses all abilities and is a blue Frog "
+        "creature with base power and toughness 1/1.",
+        # Ability-strip, targeted and permanent — Abigale, Eloquent First-Year.
+        "Flying, first strike, lifelink\nWhen Abigale enters, up to one other target "
+        "creature loses all abilities. Put a flying counter, a first strike counter, and "
+        "a lifelink counter on that creature.",
+        # The ANAPHOR twin — The Wondrous Wasp. Its effect is identical in shape to Ty
+        # Lee's tap-lock above, and the two must not land on opposite sides of the line.
+        "Flash\nFlying\nWasp's Sting — When The Wondrous Wasp enters, tap up to one "
+        "target creature. It loses all abilities for as long as The Wondrous Wasp "
+        "remains on the battlefield.",
+    ]
+
+    def test_permanent_neutralization_is_removal(self):
+        for text in self.NEUTRALIZATION:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    ONE_TURN_TEMPO = [
+        # Frost Lynx — `NEXT untap step` is one turn of tempo, not an answer.
+        "When this creature enters, tap target creature an opponent controls. That "
+        "creature doesn't untap during its controller's next untap step.",
+        # Merfolk Trickster — ability-strip that wears off at end of turn.
+        "Flash\nWhen this creature enters, tap target creature an opponent controls. It "
+        "loses all abilities until end of turn.",
+        # Azure Beastbinder — `until your next turn` is the same class one word over.
+        "Vigilance\nWhenever this creature attacks, up to one target artifact, creature, "
+        "or planeswalker an opponent controls loses all abilities until your next turn.",
+        # Mercurial Transformation — the duration leads the sentence, so a trailing
+        # lookahead alone would miss it.
+        "Until end of turn, target nonland permanent loses all abilities and becomes "
+        "your choice of a blue Frog creature with base power and toughness 1/1 or a "
+        "blue Octopus creature with base power and toughness 4/4.",
+    ]
+
+    def test_one_turn_tempo_is_not_removal(self):
+        for text in self.ONE_TURN_TEMPO:
+            assert "Removal (spot)" not in deck.classify_roles(text), text
+
+    def test_self_referential_untap_drawback_is_not_removal(self):
+        # Colossus of Sardia: the SAME clause as the tap-down pattern, but pointed at
+        # your own card as a drawback. `its controller's` is what separates them, and 11
+        # pool cards ride on that word.
+        assert "Removal (spot)" not in deck.classify_roles(
+            "Trample\nColossus of Sardia doesn't untap during your untap step.\n"
+            "{9}: Untap Colossus of Sardia.")
+
+    def test_stripping_only_mana_abilities_off_a_land_is_not_removal(self):
+        # Town-Razer Tyrant punishes a land; it does not answer a threat, and it is the
+        # reason the targeted pattern guards on `except `.
+        assert "Removal (spot)" not in deck.classify_roles(
+            "Flying\nWhen this creature enters the battlefield, target nonbasic land you "
+            "don't control loses all abilities except mana abilities and gains \"At the "
+            "beginning of your upkeep, this permanent deals 2 damage to you unless you "
+            "sacrifice it.\"")
+
     def test_combat_on_your_turn_draw_is_card_advantage(self):
         # Magic templates this trigger as "at the beginning of combat ON YOUR TURN", so
         # the possessive lands AFTER the phase and defeats the `(?:your|each|the)` group

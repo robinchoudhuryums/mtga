@@ -48,7 +48,8 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from lib import DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty  # noqa: E402
+from lib import (DEFAULT_CSV, REPO_ROOT, load_rows, eprint, owned_qty,  # noqa: E402
+                 alias_front)
 from import_arena import parse, BASICS  # noqa: E402
 
 MANA_CSV = os.path.join(REPO_ROOT, "card-mana.csv")
@@ -80,6 +81,17 @@ def library_index(path=None):
             qty[name.lower()] = qty.get(name.lower(), 0) + (int(raw) if raw else 0)
         except ValueError:
             continue                      # INV-01's problem, not this tool's
+    # Front-face aliased in a SECOND pass, like `deck.load_collection`,
+    # `pool.owned_counts` and `card._owned_index` (BS6-01). `owned_qty` resolves the
+    # full `A // B` name DOWN to a front key, which is the direction the library's
+    # stated front-only convention calls for — and eight rows are actually stored under
+    # the FULL name. Without the alias a paste naming a Room card by its FRONT face
+    # verified as ABSENT, which is the worst possible answer from the tool whose entire
+    # job is confirming an ingest landed. Found by `check_dfc`'s widened builder scan,
+    # which is the point of widening it: three of its four siblings were fixed by hand
+    # and this one was not on anybody's list.
+    alias_front(qty)
+    names |= {n.split(" // ")[0] for n in list(names) if " // " in n}
     return qty, names
 
 

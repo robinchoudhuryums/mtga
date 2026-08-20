@@ -32,6 +32,69 @@ import wishlist
 
 OUT = os.path.join(REPO_ROOT, "dashboard.html")
 
+# The files the dashboard is DERIVED from. If any is newer than the committed page, the
+# page describes a roster that no longer exists.
+_SOURCES = ("card-library.csv", "card-mana.csv", "card-pool.csv", "card-wishlist.csv")
+
+
+def dashboard_staleness(out=None):
+    """(stale_by_seconds, newest_source) if the committed dashboard predates its inputs,
+    else None. `None` also for "no dashboard yet" and "no readable stamp" — absence is
+    not staleness, and a missing page is INV-03's business for the gallery and nobody's
+    for this one.
+
+    WHY THIS EXISTS (BS6-04). `make postedit` rebuilds this page after every deck edit,
+    and skipping it is silent: the committed page keeps its old numbers, `check_all`
+    stays green, and the only symptom is a human reading a roster that moved. It was
+    three days and two cycles stale when the broad scan found it — by reading the
+    `generated` stamp out of the data island, which is what this does.
+
+    The DEPLOYED copy is not at risk: pages.yml rebuilds from committed data on every
+    push to main. This guards the local snapshot, which is the one people open.
+
+    STATED RESIDUAL: it watches DATA, not code. A `_ROLE_PATTERNS` edit re-scores every
+    deck without touching a single file in `_SOURCES`, so this check stays quiet for it.
+    That is deliberate, and it is the lesson `tagger_fingerprint` paid for twice: hashing
+    deck.py wholesale made the pool read stale after almost every session (BS4-37, undone
+    by BS5-06), and a signal that cries wolf every cycle is one an operator waves
+    through. Data staleness is the case that actually recurs — a deck edit without a
+    rebuild — so that is the case this catches."""
+    import json
+    import re as _re
+    path = out or OUT
+    if not os.path.exists(path):
+        return None
+    try:
+        with open(path, encoding="utf-8") as fh:
+            src = fh.read()
+        m = _re.search(r'<script id="data"[^>]*>(.*?)</script>', src, _re.S)
+        built = json.loads(m.group(1))["generated"] if m else None
+        stamp = time.mktime(time.strptime(built, "%Y-%m-%d %H:%M")) if built else None
+    except (OSError, ValueError, KeyError, TypeError, json.JSONDecodeError):
+        return None
+    if stamp is None:
+        return None
+    newest, newest_name = 0.0, None
+    for rel in _SOURCES:
+        p = os.path.join(REPO_ROOT, rel)
+        if os.path.exists(p) and os.path.getmtime(p) > newest:
+            newest, newest_name = os.path.getmtime(p), rel
+    decks_dir = os.path.join(REPO_ROOT, "decks")
+    for root, _dirs, files in os.walk(decks_dir):
+        for f in files:
+            if not f.endswith(".txt"):
+                continue
+            p = os.path.join(root, f)
+            try:
+                mt = os.path.getmtime(p)
+            except OSError:
+                continue
+            if mt > newest:
+                newest, newest_name = mt, os.path.relpath(p, REPO_ROOT)
+    # A minute of slack: the stamp has minute resolution, so a rebuild and the write that
+    # triggered it legitimately land in the same minute.
+    return (newest - stamp, newest_name) if newest - stamp > 60 else None
+
 
 def _no_network():
     """Neutralize deck.py's live-Scryfall fallbacks so the build stays offline

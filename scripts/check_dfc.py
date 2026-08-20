@@ -186,7 +186,26 @@ _ALIASED_LOADERS = (
     # `_legality_of` builds the same shape and nothing verified it. It takes the names
     # it should index, so it needs an args_factory; every other entry is zero-arg.
     ("deck", "_legality_of", None, lambda full, front: ([full],)),
+    # LIBRARY-SHAPED ownership indexes (BS6-01). Every one of these was outside the
+    # scan's old pool-only scope, which is how a gate built for exactly this bug class
+    # missed four instances of it at once. `verify_ingest.library_index` was still
+    # BROKEN when the widened scan found it — the other three had been fixed by hand.
+    ("deck", "load_collection", 2),
+    ("pool", "owned_counts", None),
+    ("card", "_owned_index", None, lambda full, front: (_library_rows(),)),
+    ("verify_ingest", "library_index", 0),
+    ("wishlist", "owned_index", None),
 )
+
+
+def _library_rows():
+    """card-library.csv as a list of row dicts — the argument `card._owned_index` takes."""
+    import csv as _csv
+    from lib import DEFAULT_CSV as _lib_csv
+    if not os.path.exists(_lib_csv):
+        return []
+    with open(_lib_csv, newline="", encoding="utf-8") as fh:
+        return [dict(r) for r in _csv.DictReader(fh)]
 
 
 def _index_alias_flags():
@@ -203,9 +222,26 @@ def _index_alias_flags():
                 if " // " in n:
                     full, front = n.lower(), n.lower().split(" // ")[0].strip()
                     break
-    if not front:
-        # No two-faced card in the pool at all — say so rather than pass silently.
-        print("check_dfc: no DFC in card-pool.csv — index-alias registry not exercised.")
+    # A SECOND probe, from the LIBRARY. The pool probe alone made every library-shaped
+    # loader pass VACUOUSLY: the check is `full in idx and front not in idx`, and the
+    # pool's first DFC ("Life // Death") is not in the collection at all, so `full in
+    # idx` was False and the loader was never actually exercised. A gate that cannot
+    # fire is not a gate — so probe with a name the index can actually hold, and say so
+    # out loud when neither probe reaches a registered loader.
+    lib_full = None
+    lib_csv = os.path.join(_root, "card-library.csv")
+    if os.path.exists(lib_csv):
+        with open(lib_csv, newline="", encoding="utf-8") as fh:
+            for r in _csv.DictReader(fh):
+                n = (r.get("Card Name") or "").strip()
+                if " // " in n:
+                    lib_full = n.lower()
+                    break
+    probes = [(f, f.split(" // ")[0].strip()) for f in (full, lib_full) if f]
+    if not probes:
+        # No two-faced card in either file — say so rather than pass silently.
+        print("check_dfc: no DFC in card-pool.csv or card-library.csv — "
+              "index-alias registry not exercised.")
         return []
     errs = []
     for entry in _ALIASED_LOADERS:
@@ -220,10 +256,20 @@ def _index_alias_flags():
             errs.append(f"index-alias registry: {mod_name}.{attr} failed to run "
                         f"({type(e).__name__}: {e}) — stale entry, or the loader broke.")
             continue
-        if full in idx and front not in idx:
-            errs.append(f"{mod_name}.{attr}: holds the full name {full!r} but not its "
-                        f"front {front!r} — the index lost its front-face alias pass "
-                        f"(route it through lib.alias_front; G-63/BS-12).")
+        exercised = False
+        for pfull, pfront in probes:
+            if pfull not in idx:
+                continue
+            exercised = True
+            if pfront not in idx:
+                errs.append(f"{mod_name}.{attr}: holds the full name {pfull!r} but not "
+                            f"its front {pfront!r} — the index lost its front-face alias "
+                            f"pass (route it through lib.alias_front; G-63/BS-12).")
+        if not exercised:
+            # NOT an error — a loader may legitimately hold neither probe — but it must
+            # not read as a pass. Silence is what made the library entries vacuous.
+            print(f"check_dfc: {mod_name}.{attr} holds neither probe "
+                  f"({', '.join(p[0] for p in probes)}) — alias NOT exercised.")
     return errs
 
 
@@ -246,9 +292,35 @@ def _index_alias_flags():
 # that nothing verified).
 _BUILDER_SCAN_SKIP = {"lib.py", "check_dfc.py"}
 
+# WHAT THE SCAN LOOKS AT. It was POOL-ONLY (`DictReader` + a card-pool.csv cue) until
+# BS6-01, and that scope is exactly why the gate could not see its own bug class: every
+# OWNERSHIP index reads card-library.csv, through `lib.load_rows` rather than a
+# DictReader, so all four of them sat outside a scan written to find unaliased name
+# indexes. `deck.owned` then answered "NOT IN LIBRARY" for an owned card while this gate
+# stayed green. A scan whose scope excludes the file the bug lives in is not a narrow
+# gate, it is an absent one.
+_READER_CUES = ("DictReader", "load_rows", "Quantity Owned")
+_SOURCE_CUES = ("card-pool.csv", "POOL_CSV", "card-library.csv", "DEFAULT_CSV",
+                "Quantity Owned")
+
 # Builders that legitimately stay out of the behavioral registry, each WITH A REASON —
-# a bare allowlist is the stale-assertion shape _ACCESS_ALLOW was burned by above.
-_BUILDER_ALLOW = {}
+# a bare allowlist is the stale-assertion shape _ACCESS_ALLOW was burned by above. All
+# three entries are false positives of the WIDENED scan, kept visible rather than tuned
+# away, because the tuning that would remove them would also remove real builders.
+_BUILDER_ALLOW = {
+    ("query", "print_table"):
+        "keys a COLUMN-WIDTH map by column name, and one of the columns is literally "
+        "'Card Name' — so the taint analysis is right that a Card Name string reaches "
+        "the key, and wrong about what the dict is. Nothing here is a card index.",
+    ("import_arena", "merge"):
+        "a WRITER's printing index keyed by `key(name, set, collector)`. The tuple comes "
+        "back from a call rather than a literal, so `_tuple_bound_names` cannot see it. "
+        "A printing key is INV-01's business; a front-face alias is meaningless for one.",
+    ("reconcile_crafts", "reconcile"):
+        "already aliases its pool map inline via `lib.alias_front` (BS-16 put it there). "
+        "It is a whole reconcile RUN with side effects, not a loader that can be called "
+        "for its index, so the behavioral registry cannot exercise it.",
+}
 
 
 def _seg(lines, node):
@@ -279,17 +351,17 @@ def _pool_index_builders():
         except (OSError, SyntaxError) as e:
             found.append(("<unparsed>", str(e), fn, 0))
             continue
-        # Whole-file pre-filter: most scripts never touch the pool at all.
-        if "DictReader" not in src or not any(c in src for c in ("card-pool.csv", "POOL_CSV")):
+        # Whole-file pre-filter: most scripts never touch either card CSV at all.
+        if not any(c in src for c in _READER_CUES) or not any(c in src for c in _SOURCE_CUES):
             continue
         lines = src.splitlines(keepends=True)
         for f in ast.walk(tree):
             if not isinstance(f, (ast.FunctionDef, ast.AsyncFunctionDef)):
                 continue
             seg = _seg(lines, f)
-            if "DictReader" not in seg:
+            if not any(cue in seg for cue in _READER_CUES):
                 continue
-            if not any(cue in seg for cue in ("card-pool.csv", "POOL_CSV")):
+            if not any(cue in seg for cue in _SOURCE_CUES):
                 continue
             keys = _cardname_derived(f, lines)
             if keys and _stores_keyed_by(f, keys):
@@ -323,9 +395,31 @@ def _cardname_derived(f, lines):
     return tainted
 
 
+def _tuple_bound_names(f):
+    """Local names bound from a TUPLE literal — a `(name, set, collector)` PRINTING key.
+
+    A front-face alias is meaningless for a printing key: it identifies one physical
+    printing, which is INV-01's business, not G-63's. Without this the widened scan
+    below reported `app.save`, `validate.validate` and `import_arena.merge` as
+    unregistered name indexes — three false positives out of eight, which is the rate at
+    which a scan stops being read."""
+    out = set()
+    for n in ast.walk(f):
+        if isinstance(n, ast.Assign) and isinstance(n.value, ast.Tuple):
+            for t in n.targets:
+                for x in ast.walk(t):
+                    if isinstance(x, ast.Name):
+                        out.add(x.id)
+    return out
+
+
 def _stores_keyed_by(f, keys):
     """True iff the function stores into a dict under one of `keys` — either
-    ``d[name] = …`` or ``d.setdefault(name, …)``."""
+    ``d[name] = …`` or ``d.setdefault(name, …)`` — where the key is a BARE NAME.
+
+    A tuple key (literal or via a tuple-bound local) is excluded; see
+    `_tuple_bound_names`."""
+    keys = keys - _tuple_bound_names(f)
     for n in ast.walk(f):
         subs = []
         if isinstance(n, ast.Assign):
@@ -333,13 +427,14 @@ def _stores_keyed_by(f, keys):
         elif isinstance(n, ast.AnnAssign) and isinstance(n.target, ast.Subscript):
             subs = [n.target]
         for t in subs:
-            if not isinstance(t.value, ast.Name):
+            if not isinstance(t.value, ast.Name) or isinstance(t.slice, ast.Tuple):
                 continue
             if {x.id for x in ast.walk(t.slice) if isinstance(x, ast.Name)} & keys:
                 return True
         if (isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute)
                 and n.func.attr == "setdefault" and n.args
-                and isinstance(n.func.value, ast.Name)):
+                and isinstance(n.func.value, ast.Name)
+                and not isinstance(n.args[0], ast.Tuple)):
             if {x.id for x in ast.walk(n.args[0]) if isinstance(x, ast.Name)} & keys:
                 return True
     return False

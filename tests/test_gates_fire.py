@@ -28,6 +28,7 @@ import check_colors      # noqa: E402
 import check_engines     # noqa: E402
 import check_keywords    # noqa: E402
 import check_rankings    # noqa: E402
+import check_roles       # noqa: E402
 import check_suggest     # noqa: E402
 import check_themes      # noqa: E402
 import check_tier        # noqa: E402
@@ -203,3 +204,84 @@ class TestCheckKeywordsFires:
         monkeypatch.delattr(deck, "ENGINE_THEMES", raising=False)
         check_keywords.flavor_overreach()
         assert "ENGINE_THEMES cross-check skipped" in capsys.readouterr().err
+
+
+class TestTagRoleDisagreementSweepFires:
+    """BS6-10 follow-up. The zero-role radar is ROSTER-scoped, which is why it could not
+    see the removal Auras: those are cards you do not own. This sweep is the pool-scoped
+    half, and it asks the one pool-wide question that is readable — where the tagger and
+    the classifier disagree about the same text (K-09).
+
+    A baselined sweep is the easiest kind of gate to make vacuous: bless the current set
+    and it goes quiet forever, whether or not it still detects anything. So the mutation
+    here is the real one — remove the pattern that FIXED BS6-10 and assert the card that
+    found the bug comes back."""
+
+    def test_quiet_on_the_healthy_repo(self):
+        assert check_roles.check_tags() == []
+
+    def test_it_fires_when_the_removal_aura_pattern_regresses(self, monkeypatch):
+        import re
+        pats = deck._ROLE_PATTERNS["Removal (spot)"]
+        kept = [p for p in pats if "enchanted creature gets -" not in p]
+        assert len(kept) == len(pats) - 1, "the Aura pattern moved — update this mutation"
+        patched = dict(deck._ROLE_PATTERNS, **{"Removal (spot)": kept})
+        monkeypatch.setattr(deck, "_ROLE_PATTERNS", patched)
+        monkeypatch.setattr(deck, "_ROLE_COMPILED",
+                            [(l, [re.compile(x) for x in patched[l]]) for l in deck.ROLE_ORDER])
+        flagged = {n for n, _t, _x in check_roles.check_tags()}
+        assert "Dead Weight" in flagged, flagged
+
+    def test_the_keyword_path_is_excluded_by_construction(self):
+        """deathtouch → removal comes from KEYWORD_THEMES, not MECHANIC_RULES, so a
+        deathtouch body must never reach this sweep. That exclusion is 250 of the 388
+        raw disagreements; if it ever became an allowlist it would rot."""
+        import tag_synergies
+        rules = check_roles._removal_text_rules()
+        assert rules, "the tagger's removal text rules vanished — the sweep is vacuous"
+        vanilla_deathtouch = "deathtouch"
+        assert not any(check_roles._safe(p, "creature — snake", vanilla_deathtouch)
+                       for p in rules)
+        assert "removal" in tag_synergies.KEYWORD_THEMES["deathtouch"]
+
+    def test_the_baseline_suppresses_an_acknowledged_one(self, monkeypatch):
+        everything = {n.lower() for n, _t, _x
+                      in check_roles.check_tags(include_baselined=True)}
+        monkeypatch.setattr(check_roles, "load_tag_baseline", lambda: everything)
+        assert check_roles.check_tags() == []
+
+
+class TestDashboardFreshnessFires:
+    """BS6-04. `make postedit` rebuilds the committed dashboard after every deck edit,
+    and skipping it is silent: the page keeps its old numbers and check_all stays green.
+    INV-03 gives gallery.html a content contract; the dashboard had none."""
+
+    def test_quiet_when_the_page_is_current(self):
+        import build_dashboard
+        assert build_dashboard.dashboard_staleness() is None
+
+    def test_it_fires_when_a_deck_file_is_newer(self, tmp_path, monkeypatch):
+        import glob
+        import os
+        import time
+        import build_dashboard
+        target = glob.glob(os.path.join(build_dashboard.REPO_ROOT, "decks", "*", "*.txt"))[0]
+        st = os.stat(target)
+        try:
+            os.utime(target, (st.st_atime, time.time() + 7200))
+            res = build_dashboard.dashboard_staleness()
+            assert res is not None
+            assert res[0] > 0 and res[1].endswith(".txt")
+        finally:
+            os.utime(target, (st.st_atime, st.st_mtime))
+        assert build_dashboard.dashboard_staleness() is None
+
+    def test_a_missing_or_unstamped_page_is_not_reported_as_stale(self, tmp_path):
+        """Absence is not staleness — a missing page is INV-03's business for the
+        gallery and nobody's for this one, and reporting it here would be a second,
+        disagreeing answer to 'does the artifact exist'."""
+        import build_dashboard
+        assert build_dashboard.dashboard_staleness(str(tmp_path / "nope.html")) is None
+        junk = tmp_path / "junk.html"
+        junk.write_text("<html>no data island</html>", encoding="utf-8")
+        assert build_dashboard.dashboard_staleness(str(junk)) is None

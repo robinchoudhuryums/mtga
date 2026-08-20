@@ -1355,6 +1355,56 @@ _ROLE_PATTERNS = {
         # Control-Magic steal (a real answer) and reads in the other word order. Guarded:
         # 20 matches, zero false positives.
         r"(?s)\A(?!.*enchant creature you control).*?enchanted creature gets -\d+/-\d+",
+        # ── NEUTRALIZATION: the answer that leaves the permanent on the battlefield ──
+        # Magic answers a creature three ways — kill it, exile it, or turn it off — and this
+        # bucket read only the first two. The third was 124 pool cards of nothing (G-67's
+        # standing TAXONOMY residual), even though `enchanted creature can't attack or block`
+        # (Pacifism) has been in this bucket all along, which is the repo already deciding
+        # that a neutralizing Aura IS spot removal. These three patterns finish that thought.
+        #
+        # THE LINE IS PERMANENCE, and it is drawn deliberately. A one-turn effect is TEMPO,
+        # not an answer, so `doesn't untap during its controller's NEXT untap step` (Frost
+        # Lynx, White Dragon — 35 cards) and `loses all abilities UNTIL end of turn / until
+        # your next turn` (Merfolk Trickster, Azure Beastbinder) are all EXCLUDED. That
+        # matches how the rest of this file treats a one-shot, and it is the conservative
+        # direction: a tempo card read as removal would inflate the axis the tier floor
+        # grades on, which is the BS2-06 failure.
+        #
+        # (1) TAP-DOWN, permanent. `its controller's` is doing real work: the same clause
+        # appears as a DRAWBACK on your own card ("Colossus of Sardia doesn't untap during
+        # YOUR untap step"), and 11 such cards would otherwise read as removal. With it:
+        # 37 matches — Waterknot, Capture Sphere, Frozen in Ice, Dungeon Geists, Tidebinder
+        # Mage, Tamiyo's Compleation — and zero false positives.
+        r"doesn't untap during its controller's untap step",
+        # (2) ABILITY-STRIP, Aura form. Same `enchant creature you control` guard as the
+        # removal-Aura pattern above and for the same reason (a bestow/buff Aura on your own
+        # creature is not an answer), plus the permanence rule. 19 matches — Frogify,
+        # Kasmina's Transmutation, Witness Protection, Ichthyomorphosis, Reprobation — and
+        # zero false positives. Trickster's Elk is a TRUE positive despite being a bestow
+        # creature: cast as an Aura on a bomb it strips the bomb, which is the play.
+        r"(?s)\A(?!.*enchant creature you control)"
+        r"(?!.*until end of turn[^.]{0,50}loses all abilities)"
+        r".*?enchanted (?:creature|permanent|artifact)[^.]{0,60}?loses all abilities",
+        # (3) ABILITY-STRIP, targeted form. `except ` excludes Town-Razer Tyrant's "loses all
+        # abilities EXCEPT mana abilities" — land punishment, not an answer to a threat.
+        # 6 matches: Oko, Patriar's Humiliation, Resolute Rejection, Curious Colossus,
+        # Abigale, Lizard. All permanent, all true positives.
+        r"(?s)\A(?!.*until (?:end of turn|your next turn)[^.]{0,50}loses all abilities)"
+        r".*?(?:target|each creature target opponent controls)[^.]{0,70}?"
+        r"loses all abilities(?![^.]{0,40}(?:until |except ))",
+        # (4) ABILITY-STRIP, ANAPHOR form — the target is named in one sentence and the
+        # strip lands in the next, pointing back with "It". Matches exactly ONE card today
+        # (The Wondrous Wasp), and a pattern for one card is normally a smell — this one
+        # earns its place because it closes an INCONSISTENCY rather than adding coverage.
+        # The Wasp taps a creature and strips it "for as long as The Wondrous Wasp remains
+        # on the battlefield"; Ty Lee, Chi Blocker does the identical thing one clause over
+        # ("for as long as you control Ty Lee") and IS counted by pattern (1). Two cards
+        # with one effect shape were landing on opposite sides of the line. Anchored the
+        # same way the file's other anaphor patterns are (an explicit upstream `target`, a
+        # sentence boundary, and both duration guards), so it cannot drift onto a
+        # self-referential "It loses all abilities" on your own card.
+        r"(?s)\A(?!.*until (?:end of turn|your next turn)[^.]{0,50}loses all abilities)"
+        r".*?target [^.]{0,60}\.\s*it loses all abilities(?![^.]{0,40}(?:until |except ))",
         # SPLIT TEMPLATE: the target is named in one sentence and the destroy verb lands
         # in a later one, with an anaphor standing in for the target — Quag Feast reads
         # "CHOOSE target creature, planeswalker, or Vehicle. Mill two cards, then destroy
