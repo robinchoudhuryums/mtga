@@ -287,6 +287,30 @@ class TestClassifyRoles:
             "control. Craving of Yeenoghu perpetually gains \"Enchanted creature gets "
             "-1/-1.\" Activate only as a sorcery.")
 
+    # ── LETHAL SHRINK in the +N/-M shape. `target creature gets -N/-N` was covered and
+    # its twin was not. The permanence rule the neutralization block below rests on does
+    # NOT transfer: a `-4/-4 until end of turn` still KILLS, so this family is graded on
+    # LETHALITY. Fixtures verbatim (G-67).
+
+    LETHAL_SHRINK = [
+        "Target creature gets +4/-4 until end of turn.",                # Auger Spree
+        "Target creature gets +2/-2 until end of turn.",                # Lash of Malice
+        "Changeling (This card is every creature type.)\nTarget creature gets +3/-3 "
+        "and loses all creature types until end of turn.",              # Nameless Inversion
+    ]
+
+    def test_lethal_shrink_is_removal(self):
+        for text in self.LETHAL_SHRINK:
+            assert "Removal (spot)" in deck.classify_roles(text), text
+
+    def test_a_firebreathing_self_pump_is_not_removal(self):
+        """23 of the 29 pool cards carrying a `+N/-M` clause pump their OWN body. That is
+        the same drawback-vs-answer split `its controller's` handles for tap-down."""
+        for text in ["{U}: This creature gets +1/-1 until end of turn.",
+                     "Discard a card: This creature gets +2/-2 until end of turn.",
+                     "Target creature you control gets +2/-2 until end of turn."]:
+            assert "Removal (spot)" not in deck.classify_roles(text), text
+
     # ── NEUTRALIZATION: the answer that leaves the permanent on the battlefield.
     # Magic answers a creature three ways — kill it, exile it, turn it off — and this
     # bucket read only the first two, even though Pacifism's `can't attack or block` was
@@ -4125,3 +4149,51 @@ class TestFormatNormalization:
         rep = deck.legality_report({"commander": ""}, cards, "historic-brawl", {})
         assert not any("minimum is 60" in p for p in rep["problems"])
         assert rep["min_size"] == 100 and rep["copy_limit"] == 1
+
+
+class TestOwnedDistinguishesZeroFromAbsent:
+    """BS6-07. `owned()` ended `return (qty, True) if qty else (0, False)` — truthiness,
+    not membership — so a stored count of a real 0 read as NOT IN LIBRARY, the exact
+    string G-10 sends you to reconcile_crafts.py about, pointing at a row already there.
+    No library row carries 0 today, but `import_collection --zero-missing` writes them
+    and INV-01 permits them."""
+
+    IDX = {"shock": 0, "bolt": 2, "fable of the mirror-breaker": 3}
+
+    def test_a_zero_count_is_in_the_library(self):
+        assert deck.owned(self.IDX, "Shock") == (0, True)
+
+    def test_an_absent_card_is_not(self):
+        assert deck.owned(self.IDX, "Nonexistent Card") == (0, False)
+
+    def test_a_normal_count_is_unchanged(self):
+        assert deck.owned(self.IDX, "Bolt") == (2, True)
+
+    def test_the_dfc_fallback_still_delegates(self):
+        """The count must still come from lib.owned_qty — inlining the front-face split
+        here would be the A3/A4/F6 bypass check_dfc statically bans."""
+        assert deck.owned(self.IDX, "Fable of the Mirror-Breaker // Reflection of "
+                                    "Kiki-Rikki") == (3, True)
+
+    def test_basics_are_still_unlimited(self):
+        assert deck.owned({}, "Island") == (99, True)
+
+
+class TestClockScoreHandlesAMeasuredZeroCurve:
+    """BS6-12. `vec.get("avg_mv") or 99.0` turned a measured 0.0 curve into the
+    no-data sentinel — the falsy-zero trap, inside the one function that can RAISE a
+    tier band. Conservative in effect, but the shape must not be copied."""
+
+    FAST = {"early_drops": 20, "reach": 20}
+
+    def test_a_zero_curve_is_a_measurement_not_missing_data(self):
+        assert deck._clock_score({**self.FAST, "avg_mv": 0.0}) > \
+               deck._clock_score({**self.FAST})
+
+    def test_missing_avg_mv_still_scores_no_curve_credit(self):
+        assert deck._clock_score({**self.FAST}) == deck._clock_score(
+            {**self.FAST, "avg_mv": 99.0})
+
+    def test_bounds_hold(self):
+        for v in ({**self.FAST, "avg_mv": 0.0}, {"avg_mv": 9.0, "early_drops": 0, "reach": 0}):
+            assert 0 <= deck._clock_score(v) <= 7

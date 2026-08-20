@@ -6,6 +6,48 @@
 > For "which command answers X, and why do two of them disagree", read
 > **`docs/systems-map.md`** — that is now a live reference, not a cycle artifact.
 
+## Session — broad scan #6, Batch 4 + follow-ons + ROADMAP (2026-08-19)
+
+Gates green: all invariants, ZERO soft warnings; 1362 tests (+13). Block:
+`.cycle/blocks/2026-08-broad-scan6-batch4-broad-implement.md`.
+
+Seven small fixes and a roadmap regeneration. The one with real content is the `+N/-M`
+LETHAL-SHRINK hole, found while measuring the previous batch: `target creature gets -N/-N`
+was covered and `gets +N/-N` was not. **The permanence rule from the neutralization batch
+does not transfer, which is why it is a separate pattern** — a `-4/-4 until end of turn`
+still KILLS, and a dead creature does not come back at cleanup, so the temporary version
+does permanent work. Auger Spree is removal in a way Merfolk Trickster is not, despite both
+saying "until end of turn". Graded on LETHALITY, scoped to the targeted spell (23 of the 29
+`+N/-M` cards are firebreathing self-pumps). K-14: 0 decks, 0 floors.
+
+The rest are shape fixes rather than live bugs, taken because these are shapes the repo has
+been burned by repeatedly: a memo that never invalidated (BS6-08 — and its silent case is
+the bad one, an empty model pinned for the process lifetime), a falsy-zero inside the one
+function that can raise a tier band (BS6-12), truthiness standing in for membership so an
+owned-0 card read "NOT IN LIBRARY" (BS6-07), two in-pass `setdefault` aliases routed
+through the shared helper and registered (BS6-09), the last hand-rolled copy of the alias
+loop (wishlist), and `card.py:_find` deleted.
+
+**Worth recording because it nearly landed:** my first BS6-07 fix inlined the front-face
+split, which re-implements `lib.owned_qty` and is exactly the A3/A4/F6 bypass `check_dfc`
+statically bans. Caught before commit. The correct shape keeps the COUNT coming from the
+shared helper and computes only the membership flag locally.
+
+**ROADMAP.md regenerated** — it was measured against 2,186 printings / 103 decks / 1,253
+tests / 9 matches against a live 2,368 / 111 / 1,362 / 15. Two honest non-outcomes recorded:
+`import_collection.py` has been top of the handoff for FOUR cycles, and the launchd archive
+still carries the only real deadline. Tier 3.4 is marked advanced **by a route the file did
+not predict** — it budgeted L/1–2mo for a structural classifier fix, and what actually
+worked was reading corpora and adding a disagreement gate. The strategic bet is unchanged
+but sharpened: matches went 9 → 15 while PROVISIONAL decks went 41 → 51, so play volume is
+LOSING GROUND, which is why coarser outcome aggregation now sits beside the bet rather than
+behind it.
+
+**Where I left off:** one bullet of doc drift — G-67 names `+N/-N` as the open residual and
+it is now closed (the AURA form and the 143-entry worklist are what remain). Everything
+else is carried in the regenerated ROADMAP. Tier 1.1 (one `import_collection.py` run) is
+still the highest-value item and still blocked on an export only you can produce.
+
 ## Session — broad scan #6, Batch 1 + the neutralization bucket (2026-08-19)
 
 Gates green: all invariants hold with **ZERO soft warnings**; full pytest suite green

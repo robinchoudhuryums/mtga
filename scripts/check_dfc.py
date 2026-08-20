@@ -190,6 +190,7 @@ _ALIASED_LOADERS = (
     # scan's old pool-only scope, which is how a gate built for exactly this bug class
     # missed four instances of it at once. `verify_ingest.library_index` was still
     # BROKEN when the widened scan found it — the other three had been fixed by hand.
+    ("deck", "load_mana", None),
     ("deck", "load_collection", 2),
     ("pool", "owned_counts", None),
     ("card", "_owned_index", None, lambda full, front: (_library_rows(),)),

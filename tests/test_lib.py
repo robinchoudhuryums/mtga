@@ -435,3 +435,26 @@ class TestOwnedQtyExplicitZero:
 
     def test_a_real_count_is_unchanged(self):
         assert lib.owned_qty({"shock": 4}, "Shock") == 4
+
+
+class TestPoolAbilityModelCacheIsKeyed:
+    """BS6-08. It memoized on a bare `if _cache:`, so the FIRST call won permanently —
+    a pool rebuilt inside a long-lived process served the old model, and a first call
+    made before the pool existed pinned the EMPTY model for the life of the process.
+    That second case is a silent degradation: `card_distinctiveness` falls back to the
+    structural term alone and `cuts`' Uq co-signal flattens with nothing printed."""
+
+    def test_the_live_model_is_populated(self):
+        _idf, _tribes, n = lib.pool_ability_model()
+        assert n > 0, "no pool — the rest of this class cannot distinguish cache from data"
+
+    def test_repointing_the_pool_invalidates(self, monkeypatch):
+        before = lib.pool_ability_model()[2]
+        monkeypatch.setattr(lib, "_POOL_CSV", "/nonexistent/card-pool.csv")
+        assert lib.pool_ability_model()[2] == 0, "stale model served after the file moved"
+        monkeypatch.undo()
+        assert lib.pool_ability_model()[2] == before
+
+    def test_cache_clear_is_exposed(self):
+        lib.pool_ability_model.cache_clear()
+        assert lib.pool_ability_model()[2] > 0

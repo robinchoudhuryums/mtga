@@ -453,8 +453,15 @@ def owned(by_name_qty, name):
     # said that about Norman Osborn the moment it was opened, while `lib.owned_qty`
     # resolved it correctly the whole time. Route through the shared helper rather
     # than re-implement the split — that is the A3/A4/F6 rule.
+    # The front-face fallback, via the shared helper (the A3/A4/F6 rule). Membership,
+    # NOT truthiness (BS6-07): `if qty` treated a stored count of a real 0 as ABSENT and
+    # answered "not in library" for a card that IS in it — the exact string G-10 sends
+    # you to `reconcile_crafts.py` about, pointing at a row already there. No library row
+    # carries 0 today, but `import_collection --zero-missing` writes them and INV-01
+    # permits them, at which point a single-faced 0 read "short" while a front/full 0
+    # read "missing" — two spellings of one state. Same trap as `owned_qty`'s own `or`.
     qty = owned_qty(by_name_qty, name)
-    return (qty, True) if qty else (0, False)
+    return qty, (nl in by_name_qty or nl.split(" // ")[0] in by_name_qty)
 
 
 # --------------------------------------------------------------------------- #
@@ -1065,8 +1072,14 @@ def load_mana():
                 # them and only corrects the split/Room shape.
                 mv = mana_value(front_face_cost(cost))
             out[n] = (cost, mv)
-            out.setdefault(n.split(" // ")[0], out[n])
-    return out
+    # SECOND pass through the shared helper (BS6-09). This aliased in-pass with
+    # `setdefault`, the shape G-63 bans. It happened to be SAFE — a real card's own row
+    # is a direct assignment, so it always wins over a DFC's setdefault whatever the file
+    # order — but "safe by accident of assignment order" is a property nobody verified
+    # and nothing gated: this reads card-mana.csv, so `check_dfc`'s builder scan (even
+    # widened to the library) did not reach it. Registered now, and routed through the
+    # one home so a future correction to aliasing lands here too.
+    return alias_front(out)
 
 
 def fetch_missing_mana(names, mana):
@@ -1096,9 +1109,12 @@ def fetch_missing_mana(names, mana):
                 mv = mana_value(front_face_cost(cost))
             full = card.get("name", "").lower()
             mana[full] = (cost or "", mv)
-            mana.setdefault(full.split(" // ")[0], mana[full])
         time.sleep(0.1)
-    return mana
+    # Second pass, like `load_mana` above (BS6-09) — and note this one MUTATES the dict
+    # it was handed, which is why the alias runs after the whole batch rather than per
+    # card: `alias_front` only adds a front key when nothing already claims it, so
+    # aliasing mid-batch could let an early DFC claim a key a later real card owns.
+    return alias_front(mana)
 
 
 SYMBOL_RE = re.compile(r"\{([^}]+)\}")
@@ -1355,6 +1371,26 @@ _ROLE_PATTERNS = {
         # Control-Magic steal (a real answer) and reads in the other word order. Guarded:
         # 20 matches, zero false positives.
         r"(?s)\A(?!.*enchant creature you control).*?enchanted creature gets -\d+/-\d+",
+        # LETHAL SHRINK in the +N/-M shape. `target creature gets -N/-N` is covered (120
+        # cards) and its twin `gets +N/-N` was not, so Auger Spree, Nameless Inversion,
+        # Lash of Malice, Flowstone Infusion and Desperate Measures scored zero roles.
+        #
+        # DO NOT reach for the PERMANENCE rule the neutralization block below rests on —
+        # it INVERTS here, and that is the whole point of writing this separately. A
+        # `-4/-4 until end of turn` still KILLS, and a dead creature does not come back at
+        # cleanup, so the temporary version does permanent work. Auger Spree is a removal
+        # spell in a way Merfolk Trickster is not, despite both saying "until end of turn".
+        # This family is graded on LETHALITY, not duration.
+        #
+        # Scoped to the TARGETED spell. 29 pool cards carry a `+N/-M` clause and 23 of
+        # them are firebreathing-style self-pumps on your own body ("{U}: This creature
+        # gets +1/-1") — the same drawback-vs-answer split `its controller's` handles for
+        # tap-down. `target … creature` plus a `you control` guard isolates the 5 real
+        # ones with no false positives. The AURA form (+N/-M) is deliberately LEFT OUT:
+        # Immolation reads as removal and Mogis's Favor (+2/-1) reads as a pump, two cards
+        # that a shape test genuinely cannot separate — the leading-minus Aura pattern
+        # below already covers the unambiguous half.
+        r"target (?:[a-z-]+ ){0,2}?creature (?!you control)[^.]{0,20}?gets \+\d+/-\d",
         # ── NEUTRALIZATION: the answer that leaves the permanent on the battlefield ──
         # Magic answers a creature three ways — kill it, exile it, or turn it off — and this
         # bucket read only the first two. The third was 124 pool cards of nothing (G-67's
@@ -9255,7 +9291,14 @@ def _clock_score(vec):
     """Aggressive 'clock' proxy (0–7): a low curve + cheap threats + reach to close.
     Substitutes for interaction in `tier_band` ONLY for an aggro plan — a fast deck's
     resilience is its speed, not its removal count. Bounded so it can't wildly inflate."""
-    mv = vec.get("avg_mv") or 99.0
+    # NOT `vec.get("avg_mv") or 99.0` (BS6-12): a deck whose nonland cards all lack cost
+    # data has avg_mv 0.0, and `0.0 or 99.0` is 99.0 — the falsy-zero trap `card_power`
+    # and `owned_qty` each carry a paragraph about, sitting in the one function that can
+    # RAISE a tier band. The effect was conservative (no clock credit) so nothing was
+    # mis-graded, but the shape must not be copied. `None` is the real "no data" case and
+    # is what deserves the sentinel; a measured 0.0 curve is a fact about the deck.
+    mv = vec.get("avg_mv")
+    mv = 99.0 if mv is None else mv
     early = vec.get("early_drops", 0)
     reach = vec.get("reach", 0)
     c = 3 if mv <= 2.2 else 2 if mv <= 2.6 else 1 if mv <= 3.0 else 0

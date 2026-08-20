@@ -77,20 +77,13 @@ def _exact(query, rows):
             or _front(r.get("Card Name") or "") == nl]
 
 
-def _find(query, rows):
-    """(best_row, distinct_matches) WITHIN one source. An exact hit (case-insensitive,
-    including a DFC front face) wins outright; otherwise substring matches are ranked
-    closest-first and deduped by name, so both the pick and the "N cards match" count
-    are honest. Cross-SOURCE resolution lives in `_resolve` — exactness must outrank
-    source there, so don't chain two `_find`s with `or`."""
-    exact = _exact(query, rows)
-    if exact:
-        return exact[0], _distinct(exact)
-    subs = _rank(query, [r for r in rows
-                         if query.strip().lower() in (r.get("Card Name") or "").lower()])
-    return (subs[0] if subs else None), _distinct(subs)
-
-
+# NOTE: a single-source `_find(query, rows)` used to live here and was deleted as dead
+# code in 2026-08 (broad-scan BS6-05). Nothing had called it since `_resolve` replaced
+# it, and its docstring ended with a warning not to chain two of them with `or` — i.e.
+# it survived as a documented invitation to re-introduce the exact shadowing bug BS-02
+# fixed. If you find yourself wanting a per-source lookup, read `_resolve` first: the
+# reason it exists is that exactness has to outrank SOURCE, which a per-source helper
+# structurally cannot express.
 def _resolve(query, lib, pool):
     """(best_row, distinct_matches, is_exact) across BOTH sources.
 
