@@ -8885,15 +8885,36 @@ def cmd_suggest_homes(args):
     # Roster only (BS-14): a retired/example deck must not be rated a KEY home —
     # `suggest`'s Decks column already excludes them via _deck_fingerprints, and the
     # two surfaces answering "where does this card fit" must agree on the universe.
+    _ce = mana.get(card.lower()) or mana.get(card.split(" // ")[0].lower())
     for dd in roster_decks():
         dmeta, cards = parse_deck_file(dd["path"])
         castable = _deck_castable_colors(dmeta, cards, mana)
-        if not ccols.issubset(castable):
+        # Read castability from the PRINTED COST, not from color identity — the same
+        # `_candidate_castability` `suggest`/`--lands`/`--ramp`/`--interaction` use.
+        # This was the LAST identity-subset test on a recommender path, and it is the
+        # G-58 rule failing in the tool that exists to apply it: `{2}{G/U}{G/U}`
+        # Thranduil, Sindarin Liege reads identity {G,U}, which is not a subset of a
+        # BG deck's colours — so an Elf lord was withheld from the roster's 16-Elf
+        # deck (16 green sources, both pips payable off green) and every other hybrid
+        # was withheld the same way. `mana` fell back to identity when a cost is
+        # missing, which is what `_candidate_castability` does with cost="" anyway.
+        # NO COST ON FILE FALLS BACK TO IDENTITY, which is not a detail — it is the
+        # difference between a fix and a regression. `_candidate_castability("")`
+        # returns castable-with-a-note, right for triaging a PILE (show it, annotate
+        # it) and wrong for a recommender GATE: a LAND carries no cost, so the bare
+        # cost-aware test offered WUR Mystic Monastery to decks in none of those
+        # colours — a land's whole value is the colours it produces. `wishlist`'s
+        # `_castable_in` already resolves this exact case the same way ("no cost data
+        # -> identity fallback"); this is that convention, not a new one.
+        if _ce and _ce[0]:
+            cast_ok, _cnote = _candidate_castability(_ce[0], ccols, castable)
+        else:
+            cast_ok = ccols.issubset(castable)
+        if not cast_ok:
             continue
-        # Castability above is a SET test (identity ⊆ deck colours) and cannot see pip
-        # DEPTH; pip_depth_warning supplies the arithmetic the set test is missing.
+        # Castability above reads the cost but still cannot see pip DEPTH;
+        # pip_depth_warning supplies the arithmetic (G-32).
         # load_mana values are (cost, mana_value) tuples, not dicts.
-        _ce = mana.get(card.lower()) or mana.get(card.split(" // ")[0].lower())
         pipwarn = pip_depth_warning(_ce[0] if _ce else "",
                                     deck_color_sources(cards, cardmeta, carddata),
                                     total=sum(q for q, *_ in cards))

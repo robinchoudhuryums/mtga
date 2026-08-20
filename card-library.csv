@@ -43,7 +43,7 @@ When Momo leaves the battlefield, choose one —
 • Create a Food token. (It's an artifact with ""{2}, {T}, Sacrifice this token: You gain 3 life."")
 • Put a +1/+1 counter on target creature you control.
 • Scry 2.",W,Lemur; Bat; Ally; counters; lifegain; sacrifice; tokens; scry; food; selection; flying; evasion; vigilance; combat,TLA,30,1
-"Nick Fury, Agent of S.H.I.E.L.D.",Legendary Creature — Human Spy Hero,"Power-up — {W}{U}{B}{R}{G}: Put two +1/+1 counters on Nick Fury, then look at the top seven cards of your library. You may put a Hero, Equipment, or Vehicle card from among them onto the battlefield. If it's a double-faced card, you may transform it. Put the rest on the bottom of your library in a random order. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",W/U/B/R/G,Human; Spy; Hero; counters; selection; power-up; payoff; transform,MSH,25,1
+"Nick Fury, Agent of S.H.I.E.L.D.",Legendary Creature — Human Spy Hero,"Power-up — {W}{U}{B}{R}{G}: Put two +1/+1 counters on Nick Fury, then look at the top seven cards of your library. You may put a Hero, Equipment, or Vehicle card from among them onto the battlefield. If it's a double-faced card, you may transform it. Put the rest on the bottom of your library in a random order. (Activate each power-up ability only once. Reduce the cost by his mana cost if he entered this turn.)",W/U/B/R/G,Human; Spy; Hero; counters; selection; power-up; payoff; transform; Vehicle,MSH,25,1
 Panther Pounce,Instant,"Target player investigates. Target creature gets +1/+0 and gains flying until end of turn. Untap it. (To investigate, create a Clue token. It's an artifact with ""{2}, Sacrifice this token: Draw a card."")",W,card draw; sacrifice; tokens; clue; pump; investigate,MSH,29,1
 Political Triumph,Enchantment — Plan,"Whenever a creature you control enters, scry 1 and put a plan counter on this enchantment.
 When the fourth plan counter is put on this enchantment, sacrifice it, draw a card, and put a +1/+1 counter on each creature you control.",W,Plan; counters; card draw; sacrifice; scry; selection,MSH,31,1
@@ -98,7 +98,7 @@ Bulwark Ox,Creature — Ox Mount,"Whenever this creature attacks while saddled, 
 Sacrifice this creature: Creatures you control with counters on them gain hexproof and indestructible until end of turn.
 Saddle 1 (Tap any number of other creatures you control with total power 1 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)",W,Ox; Mount; counters; sacrifice; saddle; go-wide; combat,DFT,7,1
 "Cloud, Midgar Mercenary",Legendary Creature — Human Soldier Mercenary,"When Cloud enters, search your library for an Equipment card, reveal it, put it into your hand, then shuffle.
-As long as Cloud is equipped, if a triggered ability of Cloud or an Equipment attached to it triggers, that ability triggers an additional time.",W,Human; Soldier; Mercenary; etb,FIN,10,1
+As long as Cloud is equipped, if a triggered ability of Cloud or an Equipment attached to it triggers, that ability triggers an additional time.",W,Human; Soldier; Mercenary; etb; Equipment,FIN,10,1
 Coeurl,Creature — Cat Beast,"{1}{W}, {T}: Tap target nonenchantment creature.",W,Cat; Beast,FIN,12,1
 "Colleen Wing, Street Samurai",Legendary Creature — Human Samurai Hero,"Whenever you cast a spell that targets a creature you control, put a +1/+1 counter on Colleen Wing. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)",W,Human; Samurai; Hero; counters; scry; selection,MSH,13,1
 Compassionate Healer,Creature — Human Cleric Ally,"Whenever this creature becomes tapped, you gain 1 life and scry 1. (Look at the top card of your library. You may put it on the bottom.)",W,Human; Cleric; Ally; lifegain; scry; selection,TLA,13,1
@@ -170,7 +170,7 @@ Enchanted creature can't attack or block.
 Stone Docent,Creature — Spirit Chimera,"{W}, Exile this card from your graveyard: You gain 2 life. Surveil 1. Activate only as a sorcery. (Look at the top card of your library. You may put it into your graveyard.)",W,Spirit; Chimera; graveyard; lifegain; selection; surveil,SOS,36,1
 Super-Soldier Serum,Enchantment — Aura,"Enchant creature
 Enchanted creature gets +2/+2, has first strike and vigilance, and is a legendary Soldier in addition to its other types.
-Whenever enchanted creature attacks or blocks, attach any number of target Equipment you control to it.",W,Aura; aura; pump; enchant,MSH,38,1
+Whenever enchanted creature attacks or blocks, attach any number of target Equipment you control to it.",W,Aura; aura; pump; enchant; Equipment,MSH,38,1
 Super Villain Lockup,Enchantment,"Flash
 When this enchantment enters, exile target tapped creature an opponent controls until this enchantment leaves the battlefield.",W,removal; etb; flash; tempo,MSH,37,1
 Take Up the Shield,Instant,"Put a +1/+1 counter on target creature. It gains lifelink and indestructible until end of turn. (Damage and effects that say ""destroy"" don't destroy it.)",W,counters; lifegain,MSH,39,1
@@ -234,7 +234,7 @@ Exile target creature. Its controller creates a 1/1 colorless Shapeshifter creat
 Crusader of Odric,Creature — Human Soldier,Crusader of Odric's power and toughness are each equal to the number of creatures you control.,W,Human; Soldier,FDN,569,1
 Cursed Courtier,Creature — Human Noble,"Lifelink
 When this creature enters, create a Cursed Role token attached to it. (Enchanted creature is 1/1.)",W,Human; Noble; lifegain; tokens; etb; lifelink; role token; auras,WOE,9,1
-Daring Mechanic,Creature — Human Artificer,{3}{W}: Put a +1/+1 counter on target Mount or Vehicle.,W,Human; Artificer; counters,DFT,11,1
+Daring Mechanic,Creature — Human Artificer,{3}{W}: Put a +1/+1 counter on target Mount or Vehicle.,W,Human; Artificer; counters; Mount,DFT,11,1
 Dauntless Veteran,Creature — Human Soldier,"Whenever this creature attacks, creatures you control get +1/+1 until end of turn.",W,Human; Soldier; pump,FDN,8,1
 Dazzling Angel,Creature — Angel,"Flying
 Whenever another creature you control enters, you gain 1 life.",W,Angel; lifegain; flying; evasion,FDN,9,1
@@ -795,7 +795,7 @@ Think Twice,Instant,"Draw a card.
 Flashback {2}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; card draw; flashback; recursion; spellslinger,FDN,165,1
 Tony Stark,Legendary Creature — Human Artificer Hero // Legendary Artifact Creature — Human Hero,"{1}, {T}: Look at the top four cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.
 {4}{U}{R}: Transform Tony Stark. Activate only as a sorcery. // Flying, haste
-At the beginning of combat on your turn, you may put an artifact card from your hand onto the battlefield. If it's an Equipment, attach it to The Invincible Iron Man.",U/R,Human; Artificer; Hero; selection; flying; evasion; transform; haste; aggro,MSH,80,1
+At the beginning of combat on your turn, you may put an artifact card from your hand onto the battlefield. If it's an Equipment, attach it to The Invincible Iron Man.",U/R,Human; Artificer; Hero; selection; flying; evasion; transform; haste; aggro; Equipment,MSH,80,1
 The Wondrous Wasp,Legendary Creature — Human Hero,"Flash
 Flying
 Wasp's Sting — When The Wondrous Wasp enters, tap up to one target creature. It loses all abilities for as long as The Wondrous Wasp remains on the battlefield.",U,Human; Hero; etb; flying; evasion; flash; tempo,MSH,84,1
@@ -1106,7 +1106,7 @@ Timeline Culler,Creature — Drix Warlock,"Haste
 You may cast this card from your graveyard using its warp ability.
 Warp—{B}, Pay 2 life. (You may cast this card from your hand or graveyard for its warp cost. If you do, exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)",B,Drix; Warlock; graveyard; haste; aggro; warp; tempo; cost-reduction; pay life; exile cast,EOE,121,1
 "Swordsman, Sharp Scoundrel",Legendary Creature — Human Hero Villain,"Whenever another Villain you control enters, attach up to one target Equipment you control to target creature you control.
-Whenever an equipped creature you control attacks, it connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",B,Human; Hero; Villain; counters; card draw; connive; graveyard,MSH,116,1
+Whenever an equipped creature you control attacks, it connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",B,Human; Hero; Villain; counters; card draw; connive; graveyard; Equipment,MSH,116,1
 Tunnel Rats,Creature — Rat,{4}{B}: Return this card from your graveyard to the battlefield tapped.,B,Rat; graveyard,TMT,84,1
 Umbral Collar Zealot,Creature — Human Cleric,Sacrifice another creature or artifact: Surveil 1. (Look at the top card of your library. You may put it into your graveyard.),B,Human; Cleric; graveyard; sacrifice; selection; surveil,EOE,123,1
 Vampire Gourmand,Creature — Vampire,"Whenever this creature attacks, you may sacrifice another creature. If you do, draw a card and this creature can't be blocked this turn.",B,Vampire; card draw; sacrifice,FDN,74,1
@@ -1570,7 +1570,7 @@ When Electro leaves the battlefield, you may pay {X}. When you do, he deals X da
 Electro's Bolt,Sorcery,"Electro's Bolt deals 4 damage to target creature.
 Mayhem {1}{R} (You may cast this card from your graveyard for {1}{R} if you discarded it this turn. Timing rules still apply.)",R,graveyard; burn; mayhem; aggro,SPM,77,1
 Evil's Thrall,Sorcery,"Gain control of target creature until end of turn. If you control a Villain with greater mana value than that creature, gain control of that creature until the end of your next turn instead. Untap that creature. It gains haste until end of turn.",R,theft,MSH,128,1
-Fiery Annihilation,Instant,"Fiery Annihilation deals 5 damage to target creature. Exile up to one target Equipment attached to that creature. If that creature would die this turn, exile it instead.",R,burn,FDN,86,1
+Fiery Annihilation,Instant,"Fiery Annihilation deals 5 damage to target creature. Exile up to one target Equipment attached to that creature. If that creature would die this turn, exile it instead.",R,burn; Equipment,FDN,86,1
 Frontline War-Rager,Creature — Kavu Soldier,"At the beginning of your end step, if you control two or more tapped creatures, put a +1/+1 counter on this creature.",R,Kavu; Soldier; counters,EOE,134,1
 Goblin Boarders,Creature — Goblin Pirate,Raid — This creature enters with a +1/+1 counter on it if you attacked this turn.,R,Goblin; Pirate; counters; raid; aggro,FDN,87,1
 Goblin Surprise,Instant,"Choose one —
@@ -1703,7 +1703,7 @@ II — Add one mana of any color.
 III — Exile this Saga, then return it to the battlefield transformed under your control. // Firebending 4 (Whenever this creature attacks, add {R}{R}{R}{R}. This mana lasts until end of combat.)
 {8}: Create a 4/4 red Dragon creature token with flying and firebending 4.",R,Saga; Avatar; tokens; saga; impulse; blink; transform; firebending; bending,TLA,145,1
 Truck Toss,Instant,"This spell costs {2} less to cast if you control a Vehicle.
-Truck Toss deals 4 damage to any target.",R,burn; cost-reduction,MSH,157,1
+Truck Toss deals 4 damage to any target.",R,burn; cost-reduction; Vehicle,MSH,157,1
 Warrior's Sword,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +3/+2 and is a Warrior in addition to its other types.
 Equip {5} ({5}: Attach to target creature you control. Equip only as a sorcery.)",R,Equipment; tokens; etb; equipment; pump; job select; equip,FIN,169,1
@@ -1744,7 +1744,7 @@ Stormshriek Feral,Creature — Dragon // Sorcery — Omen,"Flying, haste
 {1}{R}: This creature gets +1/+0 until end of turn. // Discard a card. If you do, draw two cards. (Then shuffle this card into its owner's library.)",R,Dragon; Omen; card draw; pump; flying; evasion; haste; aggro,TDM,124,1
 "Thor, God of Thunder",Legendary Creature — God Warrior Hero,"Flying
 When Thor enters, exile target Equipment, instant, or sorcery card from your graveyard. Until the end of your next turn, you may play that card.
-Whenever you cast a noncreature spell, Thor deals damage equal to that spell's mana value to any target.",R,God; Warrior; Hero; graveyard; removal; etb; flying; evasion,MSH,156,1
+Whenever you cast a noncreature spell, Thor deals damage equal to that spell's mana value to any target.",R,God; Warrior; Hero; graveyard; removal; etb; flying; evasion; Equipment,MSH,156,1
 "Zog, Triceraton Castaway",Legendary Creature — Dinosaur Soldier,"Reach, trample
 When Zog enters, target creature can't block this turn.
 Mountaincycling {2} ({2}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)",R,Dinosaur; Soldier; etb; mountaincycling; card draw; lands; reach; defense; landcycling; trample; evasion; typecycling; cycling,TMT,111,1
@@ -1789,7 +1789,7 @@ Station (Tap another creature you control: Put charge counters equal to its powe
 Ambitious Augmenter,Creature — Turtle Wizard,"Increment (Whenever you cast a spell, if the amount of mana you spent is greater than this creature's power or toughness, put a +1/+1 counter on this creature.)
 When this creature dies, if it had one or more counters on it, create a 0/0 green and blue Fractal creature token, then put this creature's counters on that token.",G,Turtle; Wizard; counters; tokens; increment; spellslinger,SOS,140,1
 Run Over,Instant,"This spell costs {1} less to cast if it targets a Mount or Vehicle you control.
-Target creature you control deals damage equal to its power to target creature an opponent controls.",G,removal; cost-reduction,DFT,179,1
+Target creature you control deals damage equal to its power to target creature an opponent controls.",G,removal; cost-reduction; Mount; Vehicle,DFT,179,1
 Analyze the Pollen,Sorcery,"As an additional cost to cast this spell, you may collect evidence 8. (Exile cards with total mana value 8 or greater from your graveyard.)
 Search your library for a basic land card. If evidence was collected, instead search your library for a creature or land card. Reveal that card, put it into your hand, then shuffle.",G,graveyard; ramp; collect evidence,MKM,150,1
 Bushwhack,Sorcery,"Choose one —
@@ -1799,7 +1799,7 @@ Ankle Biter,Creature — Snake,Deathtouch,G,Snake; deathtouch; combat; removal,O
 Clash of the Eikons,Sorcery,"Choose one or more —
 • Target creature you control fights target creature an opponent controls.
 • Remove a lore counter from target Saga you control. (Removing lore counters doesn't cause chapter abilities to trigger.)
-• Put a lore counter on target Saga you control.",G,counters; fight; removal; combat,FIN,180,1
+• Put a lore counter on target Saga you control.",G,counters; fight; removal; combat; Saga,FIN,180,1
 Commune with Beavers,Sorcery,"Look at the top three cards of your library. You may reveal an artifact, creature, or land card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",G,selection,FIN,182,1
 Earthen Ally,Creature — Human Soldier Ally,"This creature gets +1/+0 for each color among Allies you control.
 {2}{W}{U}{B}{R}{G}: Earthbend 5. (Target land you control becomes a 0/0 creature with haste that's still a land. Put five +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)",W/U/B/R/G,Human; Soldier; Ally; counters; pump; blink; earthbend; bending; Allie,TLA,177,1
@@ -2217,7 +2217,7 @@ Empyrean Eagle,Creature — Bird Spirit,"Flying
 Other creatures you control with flying get +1/+1.",W/U,Bird; Spirit; pump; flying; evasion,FDN,239,1
 "The Mighty Thor, Jane Foster",Legendary Creature — Human God Hero,"Flying
 Whenever The Mighty Thor attacks, exile up to one target nontoken artifact or creature, then return that card to the battlefield tapped under its owner's control.
-Whenever an Equipment you control enters, draw a card.",W/U,Human; God; Hero; card draw; blink; flying; evasion,MSH,222,1
+Whenever an Equipment you control enters, draw a card.",W/U,Human; God; Hero; card draw; blink; flying; evasion; Equipment,MSH,222,1
 Cat-Owl,Creature — Cat Bird,"Flying
 Whenever this creature attacks, untap target artifact or creature.",W/U,Cat; Bird; flying; evasion,TLA,212,1
 Cloudblazer,Creature — Human Scout,"Flying
@@ -2269,7 +2269,7 @@ When this creature dies, you may exile it. When you do, return target creature c
 Soul Search,Sorcery,"Target opponent reveals their hand. You choose a nonland card from it. Exile that card. If the card's mana value is 1 or less, create a 1/1 white and black Spirit creature token with flying.",W/B,tokens,MKM,232,1
 "Winter Soldier, Icy Assassin",Legendary Creature — Human Assassin Villain,"Vigilance, menace
 Winter Soldier gets +2/+0 for each Equipment attached to him.
-{3}{W}{B}: Return this card from your graveyard to the battlefield with a finality counter on him. Then you may attach an Equipment you control to him. (If a creature with a finality counter on it would die, exile it instead.)",W/B,Human; Assassin; Villain; counters; reanimator; graveyard; pump; vigilance; combat; menace; evasion,MSH,239,1
+{3}{W}{B}: Return this card from your graveyard to the battlefield with a finality counter on him. Then you may attach an Equipment you control to him. (If a creature with a finality counter on it would die, exile it instead.)",W/B,Human; Assassin; Villain; counters; reanimator; graveyard; pump; vigilance; combat; menace; evasion; Equipment,MSH,239,1
 Tolls of War,Enchantment,"When this enchantment enters, create a Clue token. (It's an artifact with ""{2}, Sacrifice this token: Draw a card."")
 Whenever you sacrifice a permanent during your turn, create a 1/1 white Ally creature token. This ability triggers only once each turn.",W/B,card draw; sacrifice; tokens; etb; clue,TLA,245,1
 "Cloak and Dagger, Entwined",Legendary Creature — Human Hero,"Deathtouch, lifelink
@@ -2616,7 +2616,7 @@ Temple of Triumph,Land,"This land enters tapped.
 When this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)
 {T}: Add {R} or {W}.",W/R,mana; etb; scry; selection,FDN,705,1
 "Garnet, Princess of Alexandria",Legendary Creature — Human Noble Cleric,"Lifelink
-Whenever Garnet attacks, you may remove a lore counter from each of any number of Sagas you control. Put a +1/+1 counter on Garnet for each lore counter removed this way.",W/G,Human; Noble; Cleric; counters; lifegain; lifelink,FIN,222,1
+Whenever Garnet attacks, you may remove a lore counter from each of any number of Sagas you control. Put a +1/+1 counter on Garnet for each lore counter removed this way.",W/G,Human; Noble; Cleric; counters; lifegain; lifelink; Saga,FIN,222,1
 "Mikey & Leo, Chaos & Order",Legendary Creature — Mutant Ninja Turtle,"Whenever you put a counter on a creature you control, draw a card. This ability triggers only once each turn.",W/G,Mutant; Ninja; Turtle; counters; card draw,TMT,158,1
 White Lotus Reinforcements,Creature — Human Soldier Ally,"Vigilance
 Other Allies you control get +1/+1.",W/G,Human; Soldier; Ally; pump; vigilance; combat; Allie,TLA,251,1
@@ -2632,7 +2632,7 @@ When this creature enters, you may search your library for up to two artifact, c
 Creatures with flying can't attack you or block creatures you control.
 Whenever you cast a spell that targets one or more creatures, those creatures gain flying until end of turn.",W/G,Mutant; Hero; flying; evasion,MSH,230,1
 "Caradora, Heart of Alacria",Legendary Creature — Human Knight,"When Caradora enters, you may search your library for a Mount or Vehicle card, reveal it, put it into your hand, then shuffle.
-If one or more +1/+1 counters would be put on a creature or Vehicle you control, that many plus one +1/+1 counters are put on it instead.",W/G,Human; Knight; counters; etb,DFT,195,1
+If one or more +1/+1 counters would be put on a creature or Vehicle you control, that many plus one +1/+1 counters are put on it instead.",W/G,Human; Knight; counters; etb; Mount; Vehicle,DFT,195,1
 "Suki, Kyoshi Warrior",Legendary Creature — Human Warrior Ally,"Suki's power is equal to the number of creatures you control.
 Whenever Suki attacks, create a 1/1 white Ally creature token that's tapped and attacking.",W/G,Human; Warrior; Ally; tokens,TLA,243,1
 Earth Kingdom Soldier,Creature — Human Soldier,"Vigilance
@@ -2814,7 +2814,7 @@ Station (Tap another creature you control: Put charge counters equal to its powe
 4+ | Flying",Colorless,Spacecraft; etb; surveil; graveyard; station; counters; artifacts,EOE,249,1
 Guidelight Matrix,Artifact,"When this artifact enters, draw a card.
 {2}, {T}: Target Mount you control becomes saddled until end of turn. Activate only as a sorcery.
-{2}, {T}: Target Vehicle you control becomes an artifact creature until end of turn.",Colorless,card draw; etb,DFT,233,1
+{2}, {T}: Target Vehicle you control becomes an artifact creature until end of turn.",Colorless,card draw; etb; Mount; Vehicle,DFT,233,1
 "Dawnsire, Sunstar Dreadnought",Legendary Artifact — Spacecraft,"Station (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 20+.)
 10+ | Whenever you attack, Dawnsire deals 100 damage to up to one target creature or planeswalker.
 20+ | Flying",Colorless,Spacecraft; burn; station; counters; artifacts,EOE,238,1
@@ -3536,11 +3536,11 @@ Whenever you draw a card, put a +1/+1 counter on this creature.",U,Bird; Wizard;
 Quill-Blade Laureate,Creature — Human Cleric // Sorcery,"Double strike
 This creature enters prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.) // Target creature gets +1/+0 and gains double strike until end of turn.",W,Human; Cleric; pump; prepared; spellslinger; tempo; double strike; combat; aggro,SOS,27,1
 Zack Fair,Legendary Creature — Human Soldier,"Zack Fair enters with a +1/+1 counter on it.
-{1}, Sacrifice Zack Fair: Target creature you control gains indestructible until end of turn. Put Zack Fair's counters on that creature and attach an Equipment that was attached to Zack Fair to that creature.",W,Human; Soldier; counters; sacrifice,FIN,45,1
+{1}, Sacrifice Zack Fair: Target creature you control gains indestructible until end of turn. Put Zack Fair's counters on that creature and attach an Equipment that was attached to Zack Fair to that creature.",W,Human; Soldier; counters; sacrifice; Equipment,FIN,45,1
 "Sun-Spider, Nimble Webber",Legendary Creature — Spider Human Hero,"During your turn, Sun-Spider has flying.
-When Sun-Spider enters, search your library for an Aura or Equipment card, reveal it, put it into your hand, then shuffle.",W/U,Spider; Human; Hero; etb,SPM,154,1
+When Sun-Spider enters, search your library for an Aura or Equipment card, reveal it, put it into your hand, then shuffle.",W/U,Spider; Human; Hero; etb; Equipment,SPM,154,1
 Weapons Vendor,Creature — Human Artificer,"When this creature enters, draw a card.
-At the beginning of combat on your turn, if you control an Equipment, you may pay {1}. When you do, attach target Equipment you control to target creature you control.",W,Human; Artificer; card draw; etb,FIN,40,2
+At the beginning of combat on your turn, if you control an Equipment, you may pay {1}. When you do, attach target Equipment you control to target creature you control.",W,Human; Artificer; card draw; etb; Equipment,FIN,40,2
 Dual-Sun Technique,Instant,"Target creature you control gains double strike until end of turn. If it has a +1/+1 counter on it, draw a card.",W,counters; card draw,EOE,13,1
 Dragoon's Lance,Artifact — Equipment,"Job select (When this Equipment enters, create a 1/1 colorless Hero creature token, then attach this to it.)
 Equipped creature gets +1/+0 and is a Knight in addition to its other types.
@@ -3578,8 +3578,8 @@ Equip abilities you activate that target Cloud cost {2} less to activate.",W/R,H
 Seedglaive Mentor,Creature — Mouse Soldier,"Vigilance, haste
 Valiant — Whenever this creature becomes the target of a spell or ability you control for the first time each turn, put a +1/+1 counter on it.",W/R,Mouse; Soldier; counters; vigilance; combat; valiant; haste; aggro,BLB,231,1
 Honored Knight-Captain,Creature — Human Advisor Knight,"When this creature enters, create a 1/1 white Human Soldier creature token.
-{4}{W}{W}, Sacrifice this creature: Search your library for an Equipment card, put it onto the battlefield, then shuffle.",W,Human; Advisor; Knight; sacrifice; tokens; etb,EOE,22,1
-Slash of Light,Instant,Slash of Light deals damage equal to the number of creatures you control plus the number of Equipment you control to target creature.,W,,FIN,32,1
+{4}{W}{W}, Sacrifice this creature: Search your library for an Equipment card, put it onto the battlefield, then shuffle.",W,Human; Advisor; Knight; sacrifice; tokens; etb; Equipment,EOE,22,1
+Slash of Light,Instant,Slash of Light deals damage equal to the number of creatures you control plus the number of Equipment you control to target creature.,W,Equipment,FIN,32,1
 Spider-Man No More,Enchantment — Aura,"Enchant creature
 Enchanted creature is a Citizen with base power and toughness 1/1. It has defender and loses all other abilities. (It also loses all other creature types.)",U,Aura; aura; enchant,SPM,45,1
 Thwip!,Instant,"Target creature gets +2/+2 and gains flying until end of turn. If it's a Spider, you gain 2 life.",W,lifegain; pump,MSC,780,1
@@ -3710,7 +3710,7 @@ Day of Judgment,Sorcery,Destroy all creatures.,W,,FDN,140,1
 Enduring Tenacity,Enchantment Creature — Snake Glimmer,"Whenever you gain life, target opponent loses that much life.
 When Enduring Tenacity dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)",B,Snake; Glimmer; lifegain,DSK,95,1
 Adelbert Steiner,Legendary Creature — Human Knight,"Lifelink
-Adelbert Steiner gets +1/+1 for each Equipment you control.",W,Human; Knight; lifegain; pump; lifelink,FIN,3,1
+Adelbert Steiner gets +1/+1 for each Equipment you control.",W,Human; Knight; lifegain; pump; lifelink; Equipment,FIN,3,1
 The Earth Crystal,Legendary Artifact,"Green spells you cast cost {1} less to cast.
 If one or more +1/+1 counters would be put on a creature you control, twice that many +1/+1 counters are put on that creature instead.
 {4}{G}{G}, {T}: Distribute two +1/+1 counters among one or two target creatures you control.",G,counters; cost-reduction,FIN,184,1
@@ -3730,7 +3730,7 @@ Cargo Ship,Artifact — Vehicle,"Flying, vigilance
 {T}: Add {C}. Spend this mana only to cast an artifact spell or activate an ability of an artifact source.
 Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",U,Vehicle; mana; vehicle; flying; evasion; vigilance; combat; crew; vehicles,FIN,47,1
 "Giott, King of the Dwarves",Legendary Creature — Dwarf Noble,"Double strike
-Whenever Giott or another Dwarf you control enters and whenever an Equipment you control enters, you may discard a card. If you do, draw a card.",W/R,Dwarf; Noble; card draw; double strike; combat; aggro,FIN,223,1
+Whenever Giott or another Dwarf you control enters and whenever an Equipment you control enters, you may discard a card. If you do, draw a card.",W/R,Dwarf; Noble; card draw; double strike; combat; aggro; Equipment,FIN,223,1
 Magitek Armor,Artifact — Vehicle,"When this Vehicle enters, create a 1/1 colorless Hero creature token.
 Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",W,Vehicle; tokens; etb; vehicle; crew; vehicles,FIN,24,1
 "Cid, Timeless Artificer",Legendary Creature — Human Artificer,"Artifact creatures and Heroes you control get +1/+1 for each Artificer you control and each Artificer card in your graveyard.
@@ -4039,7 +4039,7 @@ Whenever Sally Pride attacks, put a +1/+1 counter on each creature you control."
 Leyline of the Guildpact,Enchantment,"If this card is in your opening hand, you may begin the game with it on the battlefield.
 Each nonland permanent you control is all colors.
 Lands you control are every basic land type in addition to their other types.",W/U/B/R/G,mana,MKM,217,1
-"Gilgamesh, Master-at-Arms",Legendary Creature — Human Samurai,"Whenever Gilgamesh enters or attacks, look at the top six cards of your library. You may put any number of Equipment cards from among them onto the battlefield. Put the rest on the bottom of your library in a random order. When you put one or more Equipment onto the battlefield this way, you may attach one of them to a Samurai you control.",R,Human; Samurai; selection,FIN,139,1
+"Gilgamesh, Master-at-Arms",Legendary Creature — Human Samurai,"Whenever Gilgamesh enters or attacks, look at the top six cards of your library. You may put any number of Equipment cards from among them onto the battlefield. Put the rest on the bottom of your library in a random order. When you put one or more Equipment onto the battlefield this way, you may attach one of them to a Samurai you control.",R,Human; Samurai; selection; Equipment,FIN,139,1
 Superior Foes of Spider-Man,Creature — Human Rogue Villain,"Trample
 Whenever you cast a spell with mana value 4 or greater, you may exile the top card of your library. If you do, you may play that card until you exile another card with this creature.",R,Human; Rogue; Villain; impulse; trample; evasion,SPM,96,1
 Fireshrieker,Artifact — Equipment,"Equipped creature has double strike. (It deals both first-strike and regular combat damage.)
@@ -4157,7 +4157,7 @@ Darkness — Whenever Cecil deals damage, you lose that much life. Then if your 
 Protect — Whenever Cecil attacks, other attacking creatures gain indestructible until end of turn.",W/B,Human; Knight; lifegain; pay life; lifelink; transform; deathtouch; combat; removal,FIN,91,1
 "Mu Yanling, Wind Rider",Legendary Creature — Human Wizard Pilot,"When Mu Yanling enters, create a 3/2 colorless Vehicle artifact token with crew 1.
 Vehicles you control have flying.
-Whenever one or more creatures you control with flying deal combat damage to a player, draw a card.",U,Human; Wizard; Pilot; card draw; tokens; etb,DFT,52,1
+Whenever one or more creatures you control with flying deal combat damage to a player, draw a card.",U,Human; Wizard; Pilot; card draw; tokens; etb; Vehicle,DFT,52,1
 The Aetherspark,Legendary Artifact Planeswalker — Equipment,"As long as The Aetherspark is attached to a creature, The Aetherspark can't be attacked and has ""Whenever equipped creature deals combat damage during your turn, put that many loyalty counters on The Aetherspark.""
 +1: Attach The Aetherspark to up to one target creature you control. Put a +1/+1 counter on that creature.
 −5: Draw two cards.
@@ -4284,17 +4284,17 @@ Scrounging Skyray,Creature — Fish Pirate,"Flying
 Whenever you discard one or more cards, put that many +1/+1 counters on this creature.
 Cycling {2} ({2}, Discard this card: Draw a card.)",U,Fish; Pirate; counters; card draw; flying; evasion; cycling,DFT,60,1
 Cloudspire Captain,Creature — Human Pilot,"Mounts and Vehicles you control get +1/+1.
-This creature saddles Mounts and crews Vehicles as though its power were 2 greater.",W,Human; Pilot; pump,DFT,9,1
+This creature saddles Mounts and crews Vehicles as though its power were 2 greater.",W,Human; Pilot; pump; Vehicle,DFT,9,1
 Shefet Archfiend,Creature — Demon,"Flying
 When this creature enters, all other creatures get -2/-2 until end of turn.
 Cycling {2} ({2}, Discard this card: Draw a card.)",B,Demon; card draw; etb; flying; evasion; cycling,DFT,104,1
-Road Rage,Instant,"Road Rage deals X damage to target creature or planeswalker, where X is 2 plus the number of Mounts and Vehicles you control.",R,burn,DFT,145,1
+Road Rage,Instant,"Road Rage deals X damage to target creature or planeswalker, where X is 2 plus the number of Mounts and Vehicles you control.",R,burn; Vehicle,DFT,145,1
 Momentum Breaker,Enchantment,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
 When this enchantment enters, each opponent sacrifices a creature or Vehicle of their choice. Each opponent who can't discards a card.
 {2}, Sacrifice this enchantment: You gain life equal to your speed.",B,lifegain; sacrifice; etb; discard; start your engines!; speed,DFT,97,1
 Dredger's Insight,Enchantment,"Whenever one or more artifact and/or creature cards leave your graveyard, you gain 1 life.
 When this enchantment enters, mill four cards. You may put an artifact, creature, or land card from among the milled cards into your hand. (To mill four cards, put the top four cards of your library into your graveyard.)",G,graveyard; mill; lifegain; etb,DFT,159,1
-Back on Track,Sorcery,"Return target creature or Vehicle card from your graveyard to the battlefield. Create a 1/1 colorless Pilot creature token with ""This token saddles Mounts and crews Vehicles as though its power were 2 greater.""",B,reanimator; graveyard; tokens,DFT,76,1
+Back on Track,Sorcery,"Return target creature or Vehicle card from your graveyard to the battlefield. Create a 1/1 colorless Pilot creature token with ""This token saddles Mounts and crews Vehicles as though its power were 2 greater.""",B,reanimator; graveyard; tokens; Vehicle,DFT,76,1
 Aether Syphon,Artifact,"Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)
 {2}, {T}: Draw a card.
 Max speed — Whenever you draw a card, each opponent mills two cards. (Each opponent puts the top two cards of their library into their graveyard.)",U,graveyard; mill; card draw; max speed; speed; aggro; start your engines!,DFT,38,1
@@ -4309,7 +4309,7 @@ Howler's Heavy,Creature — Seal Pirate,"Cycling {1}{U} ({1}{U}, Discard this ca
 When you cycle this card, target creature or Vehicle an opponent controls gets -3/-0 until end of turn.",U,Seal; Pirate; card draw; removal; cycling,DFT,46,1
 Crash and Burn,Instant,"Choose one —
 • Destroy target Vehicle.
-• Crash and Burn deals 6 damage to target creature or planeswalker.",R,removal; burn,DFT,119,1
+• Crash and Burn deals 6 damage to target creature or planeswalker.",R,removal; burn; Vehicle,DFT,119,1
 Beastrider Vanguard,Creature — Human Knight,{4}{G}: Look at the top three cards of your library. You may reveal a permanent card from among them and put it into your hand. Put the rest on the bottom of your library in any order.,G,Human; Knight; selection,DFT,154,1
 Silken Strength,Enchantment — Aura,"Flash
 Enchant creature or Vehicle
@@ -4425,7 +4425,7 @@ Flashback {1}{R} (You may cast this card from your graveyard for its flashback c
 "Chandra, Spark Hunter",Legendary Planeswalker — Chandra,"At the beginning of combat on your turn, choose up to one target Vehicle you control. Until end of turn, it becomes an artifact creature and gains haste.
 +2: You may sacrifice an artifact or discard a card. If you do, draw a card.
 0: Create a 3/2 colorless Vehicle artifact token with crew 1.
-−7: You get an emblem with ""Whenever an artifact you control enters, this emblem deals 3 damage to any target.""",R,Chandra; Planeswalker; card draw; sacrifice; tokens; burn; planeswalker; noncombat damage,DFT,116,1
+−7: You get an emblem with ""Whenever an artifact you control enters, this emblem deals 3 damage to any target.""",R,Chandra; Planeswalker; card draw; sacrifice; tokens; burn; planeswalker; noncombat damage; Vehicle,DFT,116,1
 Armored Armadillo,Creature — Armadillo,"Ward {1} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)
 {3}{W}: This creature gets +X/+0 until end of turn, where X is its toughness.",W,Armadillo; pump; ward; protection,OTJ,3,1
 Iron-Fist Pulverizer,Creature — Giant Warrior,"Reach
@@ -4455,7 +4455,7 @@ Stalwart Successor,Creature — Human Warrior,"Menace (This creature can't be bl
 Whenever one or more counters are put on a creature you control, if it's the first time counters have been put on that creature this turn, put a +1/+1 counter on that creature.",B/G,Human; Warrior; counters; menace; evasion,TDM,227,1
 Transit Mage,Creature — Human Wizard,"When this creature enters, you may search your library for an artifact card with mana value 4 or 5, reveal it, put it into your hand, then shuffle.",U,Human; Wizard; etb,DFT,70,1
 Alacrian Armory,Artifact,"Creatures you control get +0/+1 and have vigilance.
-At the beginning of combat on your turn, choose up to one target Mount or Vehicle you control. Until end of turn, that permanent becomes saddled if it's a Mount and becomes an artifact creature if it's a Vehicle.",W,pump,DFT,2,1
+At the beginning of combat on your turn, choose up to one target Mount or Vehicle you control. Until end of turn, that permanent becomes saddled if it's a Mount and becomes an artifact creature if it's a Vehicle.",W,pump; Mount; Vehicle,DFT,2,1
 Guidelight Pathmaker,Artifact — Vehicle,"Vigilance
 When this Vehicle enters, you may search your library for an artifact card and reveal it. Put it onto the battlefield if its mana value is 2 or less. Otherwise, put it into your hand. If you search your library this way, shuffle.
 Crew 2",W/U,Vehicle; etb; vehicle; vigilance; combat; crew; vehicles,DFT,206,1
@@ -4475,7 +4475,7 @@ The Ooze,Legendary Artifact,"Whenever a creature you control with a +1/+1 counte
 Full Bore,Instant,"Target creature you control gets +3/+2 until end of turn. If that creature was cast for its warp cost, it also gains trample and haste until end of turn.",R,exile cast; pump,EOE,135,1
 "Iron Spider, Stark Upgrade",Legendary Artifact Creature — Spider Hero,"Vigilance
 {T}: Put a +1/+1 counter on each artifact creature and/or Vehicle you control.
-{2}, Remove two +1/+1 counters from among artifacts you control: Draw a card.",Colorless,Spider; Hero; counters; card draw; vigilance; combat,SPM,166,1
+{2}, Remove two +1/+1 counters from among artifacts you control: Draw a card.",Colorless,Spider; Hero; counters; card draw; vigilance; combat; Vehicle,SPM,166,1
 "Mutagen Man, Living Ooze",Legendary Creature — Ooze Mutant,"Trample
 Activated abilities of artifact tokens you control cost {1} less to activate.
 When Mutagen Man enters, create X Mutagen tokens. (They're artifacts with ""{1}, {T}, Sacrifice this token: Put a +1/+1 counter on target creature. Activate only as a sorcery."")",G,Ooze; Mutant; counters; cost-reduction; sacrifice; tokens; etb; trample; evasion,TMT,124,1
@@ -4563,7 +4563,7 @@ At the beginning of your end step, if you haven't cast a spell from your hand th
 Bovine Intervention,Instant,Destroy target artifact or creature. Its controller creates a 2/2 white Ox creature token.,W,tokens; removal,OTJ,6,1
 Hindering Light,Instant,"Counter target spell that targets you or a permanent you control.
 Draw a card.",W/U,counterspell; card draw,OTP,46,1
-Frontier Seeker,Creature — Human Scout,"When this creature enters, look at the top five cards of your library. You may reveal a Mount creature card or a Plains card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",W,Human; Scout; etb; selection,OTJ,13,1
+Frontier Seeker,Creature — Human Scout,"When this creature enters, look at the top five cards of your library. You may reveal a Mount creature card or a Plains card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",W,Human; Scout; etb; selection; Mount,OTJ,13,1
 Essence Capture,Instant,Counter target creature spell. Put a +1/+1 counter on up to one target creature you control.,U,counters; counterspell,NEO,52,1
 Plan the Heist,Sorcery,"Surveil 3 if you have no cards in hand. Then draw three cards. (To surveil 3, look at the top three cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)
 Plot {3}{U} (You may pay {3}{U} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",U,graveyard; exile cast; card draw; selection; surveil; plot; tempo; cost-reduction,OTJ,62,1
@@ -4718,7 +4718,7 @@ Thorin's Last Stand,Instant,"Choose one —
 • Creatures you control get +2/+1 until end of turn.
 • Destroy target artifact or enchantment. You gain 2 life.",W,lifegain; removal; pump,HOB,28,1
 Iron Hills Stalwart,Creature — Dwarf Warrior,"Reach, trample
-When this creature enters, attach target Equipment you control to up to one target creature you control.",R,Dwarf; Warrior; etb; reach; defense; trample; evasion,HOB,102,1
+When this creature enters, attach target Equipment you control to up to one target creature you control.",R,Dwarf; Warrior; etb; reach; defense; trample; evasion; Equipment,HOB,102,1
 Plunder the Trollshaws,Instant,"Draw a card. If this spell was cast from a graveyard, draw two cards instead.
 Flashback {3}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",U,graveyard; card draw; flashback; recursion; spellslinger,HOB,51,1
 "Smaug, the Great Calamity",Legendary Creature — Dragon // Sorcery — Adventure,Flying // Spew Flame deals 5 damage to target creature. (Then exile this card. You may cast the creature later from exile.),R,Dragon; Adventure; exile cast; burn; flying; evasion,HOB,109,1
@@ -4738,7 +4738,7 @@ Enchanted creature loses all abilities and doesn't untap during its controller's
 Attercop,Creature — Spider,"Reach, deathtouch
 Landfall — Whenever a land you control enters, this creature gets +1/+1 until end of turn.",G,Spider; landfall; pump; reach; defense; deathtouch; combat; removal; lands; ramp,HOB,116,1
 Dáin's Company,Creature — Dwarf Warrior,"This creature has lifelink as long as you control another Dwarf.
-When this creature enters, look at the top four cards of your library. You may reveal a Dwarf or Equipment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",W/R,Dwarf; Warrior; lifegain; etb; selection,HOB,152,1
+When this creature enters, look at the top four cards of your library. You may reveal a Dwarf or Equipment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",W/R,Dwarf; Warrior; lifegain; etb; selection; Equipment,HOB,152,1
 "Zanarkand, Ancient Metropolis",Land — Town // Sorcery — Adventure,"This land enters tapped.
 {T}: Add {G}. // Create a 1/1 colorless Hero creature token. Put a +1/+1 counter on it for each land you control. (Then exile this card. You may play the land later from exile.)",G,Town; Adventure; counters; exile cast; tokens; mana,FIN,293,1
 "Tom, Bert, and William",Legendary Creature — Troll,"{1}, Sacrifice another creature: Draw cards equal to the sacrificed creature's power, then discard a card.
@@ -4793,7 +4793,7 @@ Equipped creature gets +X/+0, where X is the number of rev counters on this Equi
 Equip {3}",R,Equipment; counters; burn; etb; equipment; pump; equip,DSK,128,1
 The Lonely Mountain,Land — Mountain,"({T}: Add {R}.)
 This land enters tapped unless you control an Equipment.
-{4}{R}, {T}: Create a 2/2 red Dwarf creature token. This ability costs {1} less to activate for each Equipment you control. Activate only as a sorcery.",R,Mountain; cost-reduction; tokens; mana,HOB,187,1
+{4}{R}, {T}: Create a 2/2 red Dwarf creature token. This ability costs {1} less to activate for each Equipment you control. Activate only as a sorcery.",R,Mountain; cost-reduction; tokens; mana; Equipment,HOB,187,1
 Mardu Siegebreaker,Creature — Human Warrior,"Deathtouch, haste
 When this creature enters, exile up to one other target creature you control until this creature leaves the battlefield.
 Whenever this creature attacks, for each opponent, create a tapped token that's a copy of the exiled card attacking that opponent. At the beginning of your next end step, sacrifice those tokens.",W/B/R,Human; Warrior; sacrifice; tokens; etb; haste; aggro; deathtouch; combat; removal,TDM,206,1
@@ -4803,7 +4803,7 @@ If one or more tokens would be created under your control, twice that many of th
 Gleaming Splendor,Enchantment,"Whenever an opponent draws their second card each turn, you create a Treasure token.
 {2}{W}: Two target players each draw a card.",W,card draw; tokens; treasure,HOB,15,1
 "Thorin, Mountain-king",Legendary Creature — Dwarf Noble,"Trample
-When Thorin enters, attach any number of target Equipment you control to target creature you control. When one or more Equipment become attached to that creature this way, that creature deals damage equal to its power to up to one target creature.",R,Dwarf; Noble; etb; trample; evasion,HOB,114,1
+When Thorin enters, attach any number of target Equipment you control to target creature you control. When one or more Equipment become attached to that creature this way, that creature deals damage equal to its power to up to one target creature.",R,Dwarf; Noble; etb; trample; evasion; Equipment,HOB,114,1
 "Elrond, Moon-Reader",Legendary Creature — Elf Noble,"Whenever you activate an ability of a creature, draw a card. This ability triggers only once each turn.
 {5}{U}{U}: Exile up to two other target nonland permanents you control. Return those cards to the battlefield under their owner's control at the beginning of the next end step.",U,Elf; Noble; card draw; blink,HOB,36,1
 "Bilbo, Thief in the Night",Legendary Creature — Halfling Rogue,"Spells you cast from anywhere other than your hand cost {1} less to cast.
@@ -4833,7 +4833,7 @@ III, IV — Target opponent loses 1 life and you gain 1 life.",B,Saga; counters;
 As long as you have an enduring story, Ori gets +1/+0 and has vigilance.",W,Dwarf; Bard; pump,HOB,23,1
 Patient Instructor,Creature — Human Citizen,"Vigilance
 When this creature enters, recruit. (Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)",W/U,Human; Citizen; card draw; tokens; etb; vigilance; combat,HOB,162,1
-Vow to Erebor,Instant,"Untap target creature you control. It gets +2/+2 until end of turn. If it's a Dwarf, you may attach an Equipment you control to it.",W,pump,HOB,31,1
+Vow to Erebor,Instant,"Untap target creature you control. It gets +2/+2 until end of turn. If it's a Dwarf, you may attach an Equipment you control to it.",W,pump; Equipment,HOB,31,1
 Builder's Talent,Enchantment — Class,"(Gain the next level as a sorcery to add its ability.)
 When this Class enters, create a 0/4 white Wall creature token with defender.
 {W}: Level 2
@@ -5051,7 +5051,7 @@ When this creature enters, any number of target opponents each discard a card. F
 At the beginning of your end step, if you haven't cast a spell from your hand this turn, draw a card.",W/U,Human; Scout; card draw; flying; evasion; vigilance; combat,OTJ,209,1
 Reckless Lackey,Creature — Goblin Pirate,"First strike, haste
 {2}{R}, Sacrifice this creature: Draw a card and create a Treasure token. (It's an artifact with ""{T}, Sacrifice this token: Add one mana of any color."")",R,Goblin; Pirate; card draw; sacrifice; tokens; treasure; first strike; combat; haste; aggro,OTJ,140,1
-Steer Clear,Instant,Steer Clear deals 2 damage to target attacking or blocking creature. Steer Clear deals 4 damage to that creature instead if you controlled a Mount as you cast this spell.,W,burn,OTJ,31,1
+Steer Clear,Instant,Steer Clear deals 2 damage to target attacking or blocking creature. Steer Clear deals 4 damage to that creature instead if you controlled a Mount as you cast this spell.,W,burn; Mount,OTJ,31,1
 "Thranduil, Sindarin Liege",Legendary Creature — Elf Noble // Sorcery — Adventure,"Other Elves you control get +1/+1.
 Landfall — Whenever a land you control enters, create a 1/1 green Elf creature token. // Mill four cards, then put up to two land cards from among them into your hand. (Then exile this card. You may cast the creature later from exile.)",U/G,Elf; Noble; Adventure; Elve; mill; exile cast; tokens; landfall; pump; graveyard; lands; ramp,HOB,166,1
 Whirlwing Stormbrood,Creature — Dragon // Sorcery — Omen,"Flash
@@ -5070,10 +5070,10 @@ Whenever this permanent enters or attacks, create two 2/1 white Insect creature 
 Hardlight Containment,Enchantment — Aura,"Enchant artifact you control
 When this Aura enters, exile target creature an opponent controls until this Aura leaves the battlefield.
 Enchanted permanent has ward {1}.",W,Aura; removal; etb; aura; enchant,EOE,20,1
-Canyon Vaulter,Creature — Kor Pilot,"Whenever this creature saddles a Mount or crews a Vehicle during your main phase, that Mount or Vehicle gains flying until end of turn.",W,Kor; Pilot,DFT,8,1
+Canyon Vaulter,Creature — Kor Pilot,"Whenever this creature saddles a Mount or crews a Vehicle during your main phase, that Mount or Vehicle gains flying until end of turn.",W,Kor; Pilot; Mount; Vehicle,DFT,8,1
 Travel the Overworld,Sorcery,"Affinity for Towns (This spell costs {1} less to cast for each Town you control.)
 Draw four cards.",U,cost-reduction; card draw; affinity; artifacts,FIN,82,1
 Cantankerous Keepers,Creature — Elf Soldier,"Affinity for Elves (This spell costs {1} less to cast for each Elf you control.)
 When this creature enters, mill four cards, then put all Elf cards from among them into your hand.",G,Elf; Soldier; mill; cost-reduction; etb; affinity; artifacts; graveyard,HOB,122,1
 Last Light of Durin's Day,Enchantment,"Whenever a Mountain you control enters, put a quest counter on this enchantment. If it has six or more quest counters on it, sacrifice it. If you do, search your hand and/or library for a Dragon card and put it onto the battlefield. If you search your library this way, shuffle.
-Mountaincycling {2} ({2}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)",R,counters; sacrifice; mountaincycling; card draw; lands; landcycling; typecycling; cycling,HOB,103,1
+Mountaincycling {2} ({2}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)",R,counters; sacrifice; mountaincycling; card draw; lands; landcycling; typecycling; cycling; Dragon,HOB,103,1

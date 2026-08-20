@@ -10,7 +10,7 @@
 #: tier:    time, Avatar Aang 8%, Thanos 9%, and {B}{B}{B} Super-Skrull 1%. A deck whose
 #: tier:    marquee cards are single-digit percentages to be castable when they are
 #: tier:    supposed to be castable is capped regardless of how good those cards are.
-#: tier: 2. No spine. 21 central themes across a rainbow singleton pile is the textbook
+#: tier: 2. No spine. 22 central themes across a rainbow singleton pile is the textbook
 #: tier:    "thin themes / heavy variance" C, not a coherent engine with one weakness.
 #: tier: The bombs are real and this deck wins games off them — that is the point of the
 #: tier: build — but they win by drawing well, which is what a C grade describes.

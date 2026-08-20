@@ -505,7 +505,32 @@ _NON_TRIBE_WORDS = {
     "Equipment", "Vehicle", "Saga", "Legendary", "Snow", "Attacking", "Blocking",
     "Tapped", "Untapped", "Target", "Nonland", "Colored", "Colorless", "Opponent",
     "Opponents", "Player", "Players", "Modified", "Another", "Other",
+    # NOT basic land types. Excluding them was tried and MEASURED WRONG: the widening
+    # below mints exactly ZERO new basic-type tags (checked across all 16,067 pool
+    # rows), while the exclusion silently dropped the tag from 28 real land-matters
+    # payoffs — Corrupt, Tendrils of Corruption, Spitting Earth, Gates Ablaze, Eluge.
+    # The reasoning that motivated it ("every landcycling reminder would mint a
+    # Mountain theme") was plausible and false; the count is what settled it.
 }
+
+# Card TYPES a deck genuinely builds around, tagged when the card's TEXT names one it
+# interacts with. `_NON_TRIBE_WORDS` deliberately excludes these from the tribal path
+# (they are types, not tribes) and `TYPE_TAGS` reads only the TYPE LINE — so a card that
+# CARES about a type carried no tag for it. That is K-03's stated residual ("Gilgamesh
+# digs for Equipment cards" and so never surfaced in the roster's 13-Equipment deck),
+# and it is why `deck.py suggest-homes Canyon Vaulter` returned NO DECK AT ALL: its only
+# themes were its own subtypes (Kor, Pilot), while "saddles a Mount or crews a Vehicle"
+# — the entire card — was invisible. A Mount/Vehicle deck shares no theme with a card
+# whose text is exclusively about Mounts and Vehicles.
+#
+# Scoped to an INTERACTION clause, not a bare mention, so a Vehicle's own crew reminder
+# text doesn't retag every Vehicle with what it already is.
+_TYPE_MATTERS = ("Mount", "Vehicle", "Equipment", "Saga", "Battle", "Planeswalker")
+_TYPE_MATTERS_RES = [
+    re.compile(r"\b(?:a|an|target|another|each|any) (%s)\b" % "|".join(_TYPE_MATTERS)),
+    re.compile(r"\b(%s)s? you control\b" % "|".join(_TYPE_MATTERS)),
+    re.compile(r"\b(%s) cards?\b" % "|".join(_TYPE_MATTERS)),
+]
 # Templates where a SPECIFIC creature type is a payoff subject the card may not itself be
 # — a tribal lord / tutor (Huatli searching for and pumping Dinosaurs). Capturing the
 # type lets a tribal PAYOFF share its tribe's theme, so it reads KEY in that tribal deck
@@ -514,7 +539,11 @@ _NON_TRIBE_WORDS = {
 # the generic "creatures you control", so `[A-Z][a-z]+` is itself a strong tribe filter.
 _TRIBAL_PAYOFF_RES = [
     re.compile(r"\b([A-Z][a-z]+)s you control\b"),
-    re.compile(r"\bsearch your library for (?:a|an) ([A-Z][a-z]+) card\b"),
+    # "search your HAND AND/OR library for a Dragon card" (Last Light of Durin's Day)
+    # matched nothing while the pattern demanded "search your library for" verbatim —
+    # so a Dragon TUTOR carried no Dragon theme and `suggest-homes` never offered it to
+    # the roster's 23-Mountain, 18-Dragon deck. One template, one word, one silent miss.
+    re.compile(r"\bsearch [^.]{0,40}?\bfor (?:a|an) ([A-Z][a-z]+) card\b"),
     re.compile(r"\bother ([A-Z][a-z]+)s?\b"),
     re.compile(r"\b([A-Z][a-z]+) creatures you control\b"),
 ]
@@ -651,6 +680,12 @@ def tags_for(row, keywords=None):
             typ = m.group(1)
             if typ and typ not in _NON_TRIBE_WORDS and typ not in tags:
                 tags.append(typ)
+    # Card types the card's TEXT builds around (see _TYPE_MATTERS_RES).
+    for rx in _TYPE_MATTERS_RES:
+        for m in rx.finditer(text):
+            tt = m.group(1)
+            if tt not in tags:
+                tags.append(tt)
     # Notable card types.
     for tt in TYPE_TAGS:
         if tt.lower() in t_low and tt not in tags:

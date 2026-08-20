@@ -65,7 +65,13 @@ own dedupe. If the paste is still too big and no decks were renamed, additionall
 through a rename, so prefer the sed.
 
 **Without the archive**, grab the log before relaunching Arena. Ask the user to run
-this on the machine running Arena and paste the output:
+this on the machine running Arena and paste the output.
+
+**Shortcut: `make matches`** wraps exactly the extraction below plus the dry-run parse,
+so neither the grep nor the log path has to be remembered. `make matches APPLY=1` writes.
+Windows or a non-default install: `make matches MTGA_LOGS="$APPDATA/../LocalLow/Wizards Of The Coast/MTGA"`.
+The long form stays here because it is what you paste when Arena runs on a machine that
+does not have this repo checked out — which is the common case.
 
 ```
 # macOS

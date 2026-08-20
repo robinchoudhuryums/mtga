@@ -869,3 +869,54 @@ class TestBatch4Corrections:
         assert shape["creatures"] == 0
         assert "TALL" not in shape["axis"]
         assert shape["axis"] == "no board-growth axis"
+
+
+class TestTaggerSeesTypesTheCardOnlyTALKSAbout:
+    """Two holes of one family, both found by a card returning NO home at all.
+
+    `_TRIBAL_PAYOFF_RES` demanded `search your library for a X card`, so Last Light of
+    Durin's Day — "search your hand and/or library for a Dragon card" — carried no
+    Dragon theme and never reached the roster's 23-Mountain, 18-Dragon deck. And card
+    TYPES are excluded from the tribal path by design (they are types, not tribes)
+    while `TYPE_TAGS` reads only the TYPE LINE, so a card that CARES about a type had
+    no tag for it: Canyon Vaulter's themes were `Kor, Pilot` while "saddles a Mount or
+    crews a Vehicle" — the entire card — was invisible, and `suggest-homes` returned
+    zero decks. That is K-03's stated Gilgamesh residual.
+
+    Measured old-vs-new across all 16,067 pool rows: 180 cards change, 196 tags gained,
+    NOTHING lost."""
+
+    def _tags(self, type_line, text):
+        import tag_synergies
+        return set(tag_synergies.tags_for({"Type": type_line, "Card Text": text}))
+
+    def test_a_tutor_that_searches_hand_and_library_still_names_its_tribe(self):
+        tags = self._tags("Enchantment",
+                          "If it has six or more quest counters on it, sacrifice it. "
+                          "If you do, search your hand and/or library for a Dragon card "
+                          "and put it onto the battlefield.")
+        assert "Dragon" in tags
+
+    def test_a_card_that_only_interacts_with_a_type_carries_that_type(self):
+        tags = self._tags("Creature — Kor Pilot",
+                          "Whenever this creature saddles a Mount or crews a Vehicle "
+                          "during your main phase, that Mount or Vehicle gains flying "
+                          "until end of turn.")
+        assert {"Mount", "Vehicle"} <= tags
+
+    def test_MOUNTAIN_IS_NOT_A_MOUNT(self):
+        """`'Mount' in type_line` matches 'Mountain' — the substring trap `card_colors`
+        documents one file over, and it bit the ad-hoc count that measured this fix
+        (24 Mounts reported in a deck holding one). The patterns use \\b for exactly
+        this reason; a basic land must never read as a Mount."""
+        assert "Mount" not in self._tags("Basic Land — Mountain", "({T}: Add {R}.)")
+        assert "Mount" not in self._tags(
+            "Sorcery", "Search your library for a Mountain card, then shuffle.")
+
+    def test_basic_land_types_still_tag_their_land_matters_payoffs(self):
+        """Suppressing basic types globally was TRIED and measured wrong: it minted zero
+        new tags to prevent and silently stripped 28 real payoffs (Corrupt, Tendrils of
+        Corruption, Gates Ablaze, Eluge). The count settled it, not the reasoning."""
+        assert "Swamp" in self._tags(
+            "Sorcery", "Corrupt deals damage to any target equal to the number of "
+                       "Swamps you control. You gain that much life.")

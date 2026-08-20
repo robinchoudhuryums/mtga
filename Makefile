@@ -18,6 +18,8 @@ help:
 	@echo "make refresh REFETCH=1   same, but re-price every card from scratch (slow)"
 	@echo "make dashboard       rebuild the committed dashboard.html (offline, ~2 min; pages.yml also rebuilds it on every push to main)"
 	@echo "make postedit        the after-every-deck-edit tail: re-baseline roles, rebuild dashboard, run the gate"
+	@echo "make matches         extract Arena match results from Player.log (run on the Arena machine)"
+	@echo "make matches APPLY=1 same, but write them into matches.csv"
 	@echo "make clean-venv      remove the local .venv"
 
 # Launch the editor. Depends on the venv sentinel so deps install on first run
@@ -81,6 +83,24 @@ verify: check test-units
 # That is a FLAG on this one target, not a second target: the order is the thing that must
 # have a single definition, and a separate "quick refresh" recipe is how it drifts.
 REFETCH ?=
+
+# Pull match results out of Arena's Player.log. Run this ON THE MACHINE RUNNING ARENA.
+# The grep is the whole trick and the two lines AROUND the result JSON are load-bearing
+# (G-57): `finalMatchResult` carries the outcome but NOT which seat is yours — only the
+# `Match to <userId>:` prefix does — and the deck you played is in `EventSetDeckV3`. A
+# paste missing either is unparseable, and the parser SKIPS rather than guessing.
+# The sed drops the deck card lists, which are 92% of an EventSetDeckV3 line.
+# Needs Arena → Settings → Account → "Detailed Logs (Plugin Support)", then a restart.
+MTGA_LOGS ?= $(HOME)/Library/Logs/Wizards Of The Coast/MTGA
+MATCHES_OUT ?= /tmp/mtga-matches.log
+matches:
+	@echo "==> reading $(MTGA_LOGS)"
+	@grep -hE 'Match to .*MatchGameRoomStateChangedEvent|"finalMatchResult"|==> EventSetDeckV3' \
+	    "$(MTGA_LOGS)"/Player*.log \
+	  | sed -E 's/\\"(MainDeck|Sideboard)\\":\[[^]]*\]/\\"\1\\":[]/g' > $(MATCHES_OUT)
+	@echo "==> wrote $(MATCHES_OUT) ($$(wc -l < $(MATCHES_OUT)) lines)"
+	python3 scripts/parse_matches.py $(MATCHES_OUT) $(if $(APPLY),--apply,)
+	@$(if $(APPLY),,echo "";echo "DRY RUN — nothing written. Re-run with: make matches APPLY=1")
 
 refresh:
 	@echo "==> 1/6 enrich.py            (fill blank Type/Text/Color/Collector #)"
